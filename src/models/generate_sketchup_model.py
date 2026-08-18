@@ -682,7 +682,7 @@ RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 # arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is
 # appropriate (Alvin 2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
 RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
-RWK_J6_EP_H    = 148.0                                       # end-plate height (taller so both bolts fit above the arm)
+RWK_J6_EP_H    = 155.0                                       # end-plate height: top (Z192) clears the upper bolt (Z170) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
 # Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
 # the beam into the corridor.  The carriage crown (Z66) to beam soffit (Z80) gap is too tight for the pipe to
 # pass under, so the beam's top web is slotted instead (Z92-115), leaving the Z80-92 bottom web intact.  These

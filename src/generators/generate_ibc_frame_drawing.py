@@ -804,7 +804,7 @@ def sheet2():
     # J6 BEARING-TYPE (matches Sheet 5): an end-plate WELDED to the arm end (post FRONT face) + a REAR
     # backing plate, with 2× M12 through the post ABOVE the arm — the bolts run left→right THROUGH the
     # post (not into the page), both high so they clear the arm and the corridor bottom rail below.
-    ep_z0, ep_z1 = 56, 185                                                           # bottom raised to clear the base ring + its weld (ring top Z50.8); still covers the arm + both bolts
+    ep_z0, ep_z1 = 56, 192                                                           # bottom raised to clear the base ring + its weld (ring top Z50.8); top Z192 gives the upper bolt (Z170) 22mm edge (≥1.5·D)
     _rhs_rect(ax, FX_FRONT - EP_T, ep_z0, EP_T, ep_z1 - ep_z0, fc=C_STEEL, alpha=0.85, zo=8)         # end-plate (front, welded to arm)
     _rhs_rect(ax, FX_FRONT + FRAME_RHS, ep_z0, EP_T, ep_z1 - ep_z0, fc=C_STEEL, alpha=0.85, zo=8)    # rear backing plate
     for bz in (ARM_Z1 + 25, ARM_Z1 + 55):                                            # 2× M12 — HORIZONTAL, both ABOVE the arm
@@ -1395,7 +1395,7 @@ def sheet5():
     # ── END-PLATE — BEARING-TYPE, both bolts ABOVE the arm; rail ghosted below (no bolt near it) ──
     _dcell(ax, 20, 40, 500, 440, "END-PLATE + REAR BACKING PLATE (×2)  ·  2× M12 ABOVE the arm")
     cx, pw2 = 270, 84                                           # plate center X / half width drawn (65 real)
-    zb, zt, yb, yt = 37.0, 185.0, 92, 430                       # plate spans Z37..185 (148 tall) → drawing y 92..430
+    zb, zt, yb, yt = 37.0, 192.0, 92, 430                       # plate spans Z37..192 (155 tall) → drawing y 92..430
     def zmap(z): return yb + (z - zb) * (yt - yb) / (zt - zb)
     ax.add_patch(Rectangle((cx - 65, yb - 8), 130, (yt - yb) + 16, fc="none", ec=C_DIM, lw=1.1, ls=(0, (5, 3)), zorder=6))  # GHOST post behind (hidden-line)
     leader(ax, cx + 65, yt - 6, cx + 150, yt + 2, "post behind\n(50.8 sq)", fs=5.0, font=FONT, ha="left")
@@ -1413,11 +1413,11 @@ def sheet5():
         ax.plot([cx - 13, cx + 13], [by, by], color=C_OUT, lw=0.6, zorder=7)
         ax.plot([cx, cx], [by - 13, by + 13], color=C_OUT, lw=0.6, zorder=7)
     draw_dim_h(ax, cx - pw2, cx + pw2, yb - 20, "65mm", fs=5.8, font=FONT, above=False)                                     # plate width
-    draw_dim_v(ax, cx - pw2 - 22, yb, yt, "148mm", fs=5.8, font=FONT)                                                       # plate height (taller for bolts above)
+    draw_dim_v(ax, cx - pw2 - 22, yb, yt, "155mm", fs=5.8, font=FONT)                                                       # plate height (top clears the upper bolt by ≥1.5·D)
     # hole centres: horizontally centred (left edge → centreline), and located VERTICALLY off the plate-TOP datum
     draw_dim_h(ax, cx - pw2, cx, zmap(170) + 22, "32.5mm", fs=5.6, font=FONT, above=True)                                   # left edge → hole centreline
-    draw_dim_v(ax, cx + pw2 + 22, zmap(170), yt, "15mm", fs=5.6, font=FONT)                                                 # plate top → UPPER hole centre
-    draw_dim_v(ax, cx + pw2 + 48, zmap(140), yt, "45mm", fs=5.6, font=FONT)                                                 # plate top → LOWER hole centre
+    draw_dim_v(ax, cx + pw2 + 22, zmap(170), yt, "22mm", fs=5.6, font=FONT)                                                 # plate top → UPPER hole centre (≥1.5·D M12 edge)
+    draw_dim_v(ax, cx + pw2 + 48, zmap(140), yt, "52mm", fs=5.6, font=FONT)                                                 # plate top → LOWER hole centre
     ax.text(cx, yb - 44, "2× M12 ABOVE the arm (bearing-type) — 5mm fillet ALL ROUND",
             fontsize=5.1, ha="center", color=C_DIM, **FONT)
 

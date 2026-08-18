@@ -69,7 +69,7 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
-| Vertical mounting plate | 8×170mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
+| Vertical mounting plate | 8×180mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
 | Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating |
 | Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim |
 
@@ -115,7 +115,7 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
 | Plate thickness | 8mm | 10mm |
-| Vertical leg height | 170mm | 200mm |
+| Vertical leg height | 180mm | 200mm |
 | Arm reach | 300mm | 500mm |
 | Gusset reach | 70mm | 70mm (tray rim constrained) |
 | Bolt pattern | 3x M12 triangular (2+1) | 4x M12 rectangular (2+2) |
@@ -460,7 +460,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | Molded GRP grating (American Grating, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48"×144" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md. | 1 lot | American Grating / McNichols | $830–$1,050 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
-| Cantilever bracket — standard (near/far) | 8mm steel plate: 170mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers) | 13 ea | Local fab | $390–$650 |
+| Cantilever bracket — standard (near/far) | 8mm steel plate: 180mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers) | 13 ea | Local fab | $390–$650 |
 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone, X1055–3083 = 5 bays) | 5 ea | Local fab | $200–$350 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | Cantilever-bracket wall bolts (3 per std + 4 per widened), sized for the 30mm-corrugation grip (~48–50mm), partial thread. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 59 ea | McMaster-Carr | $94 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×65 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 59 ea | McMaster-Carr | $15 |

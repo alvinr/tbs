@@ -235,8 +235,9 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     gusset_reach = 70
     # Bolt patterns (X offset, Z): standard 3 (triangular); widened 4 (rectangular,
     # per Sheet 7: lower pair Z=35, upper pair Z=160, both ±32mm from CL).
-    bolt_pat_std  = [(0, vh - 30), (-32, 42), (32, 42)]
-    bolt_pat_wide = [(-32, 35), (32, 35), (-32, 160), (32, 160)]
+    _ubz = k.WALKWAY_BRACKET_UPPER_BOLT_Z   # 155 — upper bolt clears the grate deck (SHARED std + widened)
+    bolt_pat_std  = [(0, _ubz), (-32, 42), (32, 42)]
+    bolt_pat_wide = [(-32, 35), (32, 35), (-32, _ubz), (32, _ubz)]
 
     b   = btw if wide else bt                       # plate/arm/gusset thickness
     v   = vhw if wide else vh                        # vertical leg height

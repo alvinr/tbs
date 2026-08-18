@@ -910,7 +910,8 @@ WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, 
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
-WALKWAY_BRACKET_H = 170  # bracket vertical leg height on wall (mm) — raised 150→170 so the upper 3rd-bolt clears the cantilever arm (Alvin 2026-08-18)
+WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 150→170→180 so the upper wall-bolt clears the grate DECK (not just the arm); holds the shared WALKWAY_BRACKET_UPPER_BOLT_Z with ≥1.5·D top edge (Alvin 2026-08-18)
+WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + 15  # 155 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Sits 15mm above the grate top (WALKWAY_H) so the nut clears the deck. Both legs (std 180 / widened 200) hold it with ≥1.5·D top edge.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # rev10: the panel + drum SWING ~56° about the pivot for transport and the swinging cage

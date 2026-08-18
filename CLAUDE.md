@@ -35,6 +35,7 @@ site/                    ← built output — gitignored, never commit
 - `skills/skill_tidy_labels.md` — the PROCESS that applies those rules to one diagram: `tidy_labels.py --fix` (static) + a rendered crop-zoom visual pass; invoke when asked to "tidy labels on <diagram>" or before shipping a new/edited diagram
 - `skills/skill_plumbing_drawing.md` — pipe drawing conventions, fittings, crossings, flow arrows
 - `skills/skill_model_consistency.md` — find 2D↔3D↔docs drift: failure-mode taxonomy + the `check_consistency.py` audit (run after any geometry/design change)
+- `skills/skill_fastener_convention.md` — how to draw a structural through-bolt correctly: the `ruby_bolt` axis/head/nut sign convention + the edge-distance/grip/orientation rules + the `check_interference.py --bolts` lint (read before adding/moving any fastener in a 3D model)
 - `skills/skill_report_writing.md` — house style for the report `.md` narrative: prose-vs-single-source-vs-diagram triage, placeholder-first, one-source-of-record (no duplication), no old-vs-new archaeology, source citation, terminology/spelling (read before writing or editing any report)
 
 ---

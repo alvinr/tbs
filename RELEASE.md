@@ -24,7 +24,32 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **IBC Frame Blueprints.** Required a lot of detail changes to ensure blots did not interfere with welds, hangers retained bars in the correct way etc. TEK screws used to secure the cantilevers to the walkway frame.
+- **IBC bar-restraint redesign — J2/J7 L-cleats + single horizontal M12×65 (edge-distance fix), full cascade.**
+  The front retaining bars previously bolted VERTICALLY through the 20 mm-wide face of the 50×20 RHS, leaving a
+  Ø14 hole only ~3 mm of edge. Redesigned **both** bar ends (corridor J2 + wall J7) to the same detail: the bar
+  **drops into an 8 mm-plate L-angle** (welded to the upright / wall backing plate) and a **single horizontal
+  M12×65** runs through the L's vertical leg + the bar's tall 50 mm web — ~18 mm edge. Retaining bars doubled to
+  **2 per tier (8 total)** for the EN 12195-1 loaded-transport case; wall hangers **inside-aligned** to the
+  corridor face (not the back surface); D-rings repitched **clear of the cleat legs**; **16 nut-side backing
+  plates** added. Cascaded end-to-end: frame Sheets 1–6 + the Plate Fabrication Schedule, all **five** SketchUp
+  models (ibc-stack / water / overview / construction / film-plane re-sent + uploaded), `parts.py` (M12×65 ×16 +
+  `ibcf-cleat-backing` ×16), `costing.py`, and `ibc-stacking-report.md`. Interference re-audit against the live
+  model confirms the redesign **adds no new clash** (all 10 remaining are pre-existing pipe-routing).
+
+- **J6 walkway-arm → corridor-upright joint firmed.** The cantilever-arm end connection went from 4 bolts to
+  **2 (a central vertical column)** on a **65×130 end-plate** with a simple 5 mm fillet all round, and the arm
+  uprights now seat on their foot plates. Flagged the one **real** residual clash — the lower J6 bolt vs the
+  corridor bottom X-rail — for a post-release 3D fix (notch the rail / drop its start).
+
+- **IBC 2D diagram-standard pass — units, leaders, and outlines.** Swept the whole IBC frame + plate set to the
+  drawing standards: **`mm` on every dimension** (de-crowded the sub-30 mm micro-dims to notes), **re-targeted
+  Sheet 1 leaders** after the 2-bars-per-tier change (they had anchored in the empty gap between the paired
+  bars), redrew the **container wall as a full-height ghost outline** (matching the tote outlines) and dropped
+  the stray beam-tip wall boxes on Sheet 6, plus an editorial + tidy-labels tidy across the set.
+
+- **IBC Frame Blueprints (rollup).** The above sits on a broader blueprint push over this cycle: bar-end cleats
+  moved to the outside edge, the 2-ring / 8-weld map (Sheet 6), notch-TEK detail (Sheet 5), the member cut
+  list, and TEK screws securing the cantilevers to the walkway frame.
 
 - **NEW tooling — 3D readability seam audits (`check_interference.py --solids / --pipes / --seams`).**
   Two READ-ONLY, advisory passes against the live model that surface a *drawing* defect (distinct parts

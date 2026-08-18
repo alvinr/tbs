@@ -477,6 +477,10 @@ def sheet1():
     # Each bar covers its column, ends (cleated) at the upright's OUTSIDE edge (NEAR_COL_R / FAR_COL_L), and
     # its wall end runs to the INSIDE of the container wall, resting on the hanger SHELF.
     WALL_T, BPT, SHELF_D = 14, 8, 55                   # container-wall thickness (exaggerated) / backing-plate thickness / shelf projection
+    # Container side walls — full-height ghost outline (same light rendering as the IBC totes), at each side
+    for wall_yd, din in ((0, +1), (C_WID, -1)):
+        ax.add_patch(Rectangle((min(wall_yd, wall_yd - din * WALL_T), 0), WALL_T, C_HGT,
+                               fc=C_CAGE, ec=C_CAGE, lw=0.8, alpha=0.15, zorder=1))
     for bz in (500, 950, 1500, 1950):
         for y0, y1 in ((0, NEAR_COL_R), (FAR_COL_L, C_WID)):
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
@@ -493,7 +497,6 @@ def sheet1():
         lout = wall_yd + din * SHELF_D                 # L-cleat projects into the corridor
         def _seg(a, b, z0, h, **kw):
             ax.add_patch(Rectangle((min(a, b), z0), abs(b - a), h, **kw))
-        _seg(wall_yd, wo, bz - 62, FRAME_RHS + 124, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.5, zorder=7)   # container wall (the GAP)
         _seg(wo, bpo, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)                 # OUTSIDE backing plate
         _seg(wall_yd, ipf, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)            # INSIDE plate
         # SAME L-cleat as the post end (welded to the inside plate): horizontal leg (bar sits on it) + vertical
@@ -1488,8 +1491,6 @@ def sheet6():
     xLi, xRi = xL + upw / 2, xR - upw / 2              # inner (corridor-facing) faces
     wallL, wallR = 120, 1240                           # schematic side-wall positions the bars reach
     bxo, bzo = 46, 54                                  # back-bay ghost offset (isometric hint)
-    for wx in (wallL, wallR):                          # side walls (context)
-        ax.add_patch(Rectangle((wx - 4, 230), 8, 320, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
     # BACK bay (ghost, dashed): the 450mm-behind upright pair + its top/bottom rings + feet — this is WHY
     # there are 2 rings and 8 ring-welds (the front bay shows only 4 of them).
     _gh = dict(fc="none", ec=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=2)

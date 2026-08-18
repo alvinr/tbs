@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Sketchfab re-upload automated (in-place, hands-free).** The manual "re-upload each `.skp` to Sketchfab"
+  step at the end of every model cascade is now scripted. `push_sketchfab.py` uses `PUT /v3/models/{uid}` to
+  replace a model's geometry **in place** — same URL, viewer settings/materials/name preserved — instead of the
+  old create-new-model-and-delete-old dance (which reset viewer settings each time). A single-writer guard
+  refuses to push unless the live doc is the saved `<name>.skp`; legacy behavior stays available behind `--new`.
+  Validated end-to-end (a scratch box→box+cylinder lifecycle and a real overview push to its existing UID).
+
 - **3D models: single-owner dedup pass + a ratchet gate.** Components were being re-implemented in more than
   one model generator (the drift behind "the detail is right in one model, wrong in another"). Added a `lint.py`
   **ratchet gate** — no component name may be emitted as a `ruby_*` literal in >1 model file — and consolidated

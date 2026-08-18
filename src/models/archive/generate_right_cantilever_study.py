@@ -255,12 +255,12 @@ def ibc_rack():
     the right-walkway cantilever arms their clamp point and mounts the (forward) wet-end panel.
     """
     parts = []
-    s = ov.IBC_FRAME_RHS                # 50×50 RHS
-    top_z = 2 * ov.IBC_H_1000 - 40      # 2296 — restraint reaches near the stack top
+    s = k.IBC_FRAME_RHS                # 50×50 RHS
+    top_z = 2 * k.IBC_H_1000 - 40      # 2296 — restraint reaches near the stack top
     yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
     up_yds = (yd_near, yd_far - s)
     fx = ov.RWK_X_UP                    # 4734 — front portal uprights (walkway arms clamp here)
-    front_x = ov.IBC_COL_X - 20         # 4654 — front bars seated in the 25mm gap, just in front of the tote face (clear of the film rail at 4649)
+    front_x = k.IBC_COL_X - 20         # 4654 — front bars seated in the 25mm gap, just in front of the tote face (clear of the film rail at 4649)
     bar_d = 20                          # bar depth in X (50×20×3 RHS — fits the gap; a full 50×50 would cut into the totes)
     c_bolt = "#3A3A42"
 
@@ -270,11 +270,11 @@ def ibc_rack():
     parts.append(ov.ruby_box("Front Portal Top Tie", fx, yd_near, top_z - s, s, yd_far - yd_near, s, color=ov.C_STEEL))
     parts.append(ov.ruby_box("Front Portal Floor Beam", fx, yd_near, 0, s, yd_far - yd_near, s, color=ov.C_STEEL))
     # Panel-mount rail tying the (forward) panel face back to the portal at the top.
-    parts.append(ov.ruby_box("Panel Mount Rail", fx, yd_near, ov.EQPANEL_Z_HI - s,
-                          (ov.EQPANEL_X + ov.EQPANEL_T) - fx, yd_far - yd_near, s, color=ov.C_STEEL))
+    parts.append(ov.ruby_box("Panel Mount Rail", fx, yd_near, k.EQPANEL_Z_HI - s,
+                          (k.EQPANEL_X + k.EQPANEL_T) - fx, yd_far - yd_near, s, color=ov.C_STEEL))
 
     # Floor feet under the two front uprights (150×150×12 plate + 4× M12 anchors).
-    fp, ft, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_PLATE_T, ov.IBC_FOOT_BOLT_PCD // 2
+    fp, ft, bpc = k.IBC_FOOT_PLATE, k.IBC_FOOT_PLATE_T, k.IBC_FOOT_BOLT_PCD // 2
     for yd in up_yds:
         cx, cy = fx + s / 2, yd + s / 2
         parts.append(ov.ruby_box("Foot Flange Plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=ov.C_STEEL))
@@ -285,7 +285,7 @@ def ibc_rack():
     # Front retaining bars (50×20×3 RHS) seated in the gap just in front of the tote
     # face, both tiers, tied back to the portal.
     bar_zs = (560, 1760)
-    for y0, y1 in ((0, yd_near + s), (yd_far - s, ov.C_WID)):
+    for y0, y1 in ((0, yd_near + s), (yd_far - s, k.C_WID)):
         for bz in bar_zs:
             parts.append(ov.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, s, color=ov.C_STEEL))
     for yd in up_yds:
@@ -293,7 +293,7 @@ def ibc_rack():
             parts.append(ov.ruby_box("Front Bar Stub", front_x, yd, bz, fx - front_x + s, s, s, color=ov.C_STEEL))
 
     # D-ring lashing holders on the front bars.
-    for ydh in (520, ov.C_WID - 520):
+    for ydh in (520, k.C_WID - 520):
         for bz in bar_zs:
             parts.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + s / 2, 16, 10, color=ov.C_STEEL, axis="x"))
 
@@ -301,7 +301,7 @@ def ibc_rack():
     # to an EXTERIOR backing plate (load-spreading, hex heads outside — the thin
     # corrugated wall would otherwise pull through under the totes' transport thrust).
     ext_pt, ext_pw, ext_ph = 8, 100, 135        # exterior plate: 100(X) × 135(Z) × 8 thick
-    for wall_yd, din in ((0, 1), (ov.C_WID, -1)):
+    for wall_yd, din in ((0, 1), (k.C_WID, -1)):
         for bz in bar_zs:
             ht, dep = 4, 70
             p_y = wall_yd if din > 0 else wall_yd - ht
@@ -311,8 +311,8 @@ def ibc_rack():
             # Exterior backing plate just outside the container wall + 4 M12 through-bolts.
             ecx = front_x - 8 + (s + 16) / 2     # plate center X (on the hanger)
             ecz = bz + s / 2                      # plate center Z (on the bar)
-            plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
-            bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
+            plate_y = (-k.WALL_T - ext_pt) if din > 0 else (k.C_WID + k.WALL_T)
+            bolt_cy = (-k.WALL_T - ext_pt) if din > 0 else (k.C_WID - 10)
             parts.append(ov.ruby_box("IBC Wall Backing Plate (ext)",
                                   ecx - ext_pw / 2, plate_y, ecz - ext_ph / 2,
                                   ext_pw, ext_pt, ext_ph, color=ov.C_STEEL))

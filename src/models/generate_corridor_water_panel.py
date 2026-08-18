@@ -199,8 +199,9 @@ def frame(part="all"):
 
 def tote_restraint():
     """Front retaining bars (trap the direct-stacked totes against the side/end walls) + the
-    exterior wall anchor plates — ported from ov.ibc_rack (dropped when the deep box was
-    forked).  Lives with the IBC stack, not the pump frame."""
+    exterior wall anchor plates — ported from the old single-portal ibc_rack (dropped when the
+    deep box was forked; ibc_rack now lives only in the archived right-cantilever study).
+    Lives with the IBC stack, not the pump frame."""
     p = []
     front_x = ov.IBC_COL_X - 20            # 4654 — bars in the gap just in front of the tote face
     bar_d = ov.IBC_FRONT_BAR_D             # 20 — 50×20×3 RHS, slot-constrained depth in -X

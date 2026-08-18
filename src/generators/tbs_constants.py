@@ -694,7 +694,7 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # The upper-tote platform cross-beams are SIMPLY SUPPORTED wall-to-wall: propped
 # at the two corridor uprights AND at the container side walls via welded seat
 # brackets (no longer cantilevered). Floor flange feet anchor the uprights down.
-# These mirror src/models/generate_sketchup_model.py → ibc_rack().
+# The live model reads these in src/models/generate_corridor_water_panel.py → frame()/tote_restraint().
 IBC_FRAME_RHS      = 50.8  # 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
 IBC_FRAME_T        = 3     # RHS wall thickness (mm) ≈ 0.120in — reserved (spec; not yet drawn)
 # Front transport-restraint bars (50×20×3 RHS) — TWO per tote face (upper + lower), both in the
@@ -727,7 +727,8 @@ FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket — reserved (seat spe
 # Equipment-panel support frame — the wet-end panel is pushed back to butt the
 # film-plane (-X) face of the MIDDLE corridor upright station, which is extended
 # up to the panel top and closed into a rectangle (two corridor uprights + top
-# rail + floor-level beam) that the panel bolts to. Mirrors ibc_rack().
+# rail + floor-level beam) that the panel bolts to. The live model reads these in
+# src/models/generate_corridor_water_panel.py → frame().
 PANEL_FRAME_X      = IBC_COL_X + IBC_W // 2 - IBC_FRAME_RHS // 2  # 5258 — middle corridor X-station (RHS -X edge)
 PANEL_FRAME_TOP_Z  = EQPANEL_Z_HI   # 2310 — extended uprights / top rail level
 PANEL_FRAME_YD_N   = CORRIDOR_YD_NEAR  # 1046 — near corridor upright — reserved (alias; code uses CORRIDOR_YD_NEAR)

@@ -18,11 +18,12 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   model must not drift. The GOOD pattern already exists — the IBC front bars are one shared builder
   (`generate_corridor_water_panel.py` `tote_restraint()`) that overview/ibc-stack/water all call, so the
   4-bar + cleat + M12×65 + hex-bolt changes flow to every model on regen. The DRIFT RISK is **dead/divergent
-  re-implementations left lying around**: e.g. `generate_sketchup_model.py` `ibc_rack()` still holds an OLD
-  **2-bar + stub** front-bar version (marked "effectively dead", not called) — if anyone re-wires it, overview
-  silently reverts. **Task:** delete/retire the dead divergent builders (ibc_rack et al.); audit every
-  component drawn in >1 model and confirm each is ONE shared builder each model *selects* (its view), never a
-  copy; wire a `check_consistency.py` gate that flags a second geometry emitter for the same named part.
+  re-implementations left lying around**. **PROGRESS 2026-08-17:** `ibc_rack()` (the OLD single-portal 2-bar+stub
+  front-bar frame, X4734) was RELOCATED out of the live `generate_sketchup_model.py` into its sole consumer, the
+  archived right-cantilever study — so the live module can no longer accidentally re-wire it (overview can't
+  silently revert). **REMAINING:** audit every component drawn in >1 model and confirm each is ONE shared builder
+  each model *selects* (its view), never a copy; wire a `check_consistency.py` gate that flags a second geometry
+  emitter for the same named part.
 
 - [ ] **`--solids` larger sanctioning pass (model-wide, beyond the named categories).** The
   `check_interference.py --solids` sanctioned list currently covers only the categories triaged in the
@@ -40,13 +41,14 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   new solid** — all 10 are pre-existing pipe-routing (7× pipe↔frame-rail, 2× P-02→ACC-02 ↔ J6 cantilever
   end-plate, 1 pipe-on-pipe DV-02×P-02 at 14mm<27mm). Those pipe-routing clashes remain open below.
 
-- [ ] **J6 walkway-arm ↔ corridor bottom frame-rail interference (REAL clash, not readability).** The J6
-  backing plate (Z37–167) and its **lower M12 bolt (Z≈57)** intersect the corridor frame's **bottom X-rail**
-  (Z12–62, starts at `FRONT_X+S`=4704) at the shared corner behind the front upright — the bolt passes
-  through the rail. Surfaced by `check_interference.py --solids` (left OPEN, deliberately not sanctioned).
-  **Fix options (design call):** raise the whole J6 joint so the lower bolt clears Z62; OR notch/reroute the
-  bottom rail around the plate; OR drop the rail's start to `FRONT_X+S+ep_t` (8mm gap to the upright).
-  Whichever — it cascades the J6 constants + a re-send. (Found 2026-08-16 working the --solids butts.)
+- [x] **J6 walkway-arm ↔ corridor bottom frame-rail interference — RESOLVED 2026-08-17.** The bolt-through-rail
+  part was already gone (the 2026-08-17 bearing-type rework put both M12 above the arm at Z140/170). The residual
+  was the tall REAR backing plate (Z37→185) still dipping into the bottom X-rail (top Z62.8) — a 10.4 cm³
+  interpenetration at each front upright (Yd1046/1265.2), confirmed by `--solids` on live ibc-stack. Fix: raised
+  the backing plate's bottom to `IBC_FOOT_PLATE_T + IBC_FRAME_RHS` (Z62.8) so it BUTTS the rail top (top held at
+  Z185.3; the bolt group at Z140/170 is still fully spread). End-plate + bolts untouched. `--solids` re-verified:
+  the 2 J6↔rail OPENs are gone. Cascade: `ibc_cantilever_arms` (ov) → re-send ibc-stack/overview/walkway/
+  construction/water.
 
 - [~] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid
   members render with NO seam line, so distinct parts read as one fused piece (found 2026-08-14 at the IBC
@@ -55,10 +57,14 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   don't flag) above a volume threshold, sorted, each tagged `weld` or `BUTT?` (bolted/cleated). Convention
   codified in `skills/skill_model_consistency.md` (§Readability seam audits). **REMAINING — triage + fix:**
   the pass reports ~60 on the water model (33 `BUTT?`); most `BUTT?` are actually welds (foot-plate↔post,
-  filter cap↔port = molded). Genuine butt candidates to fix: **RWk J6 backing plate ↔ frame rail**, **RWk
-  wall cleat plate ↔ end beam / long beam**. Each fix = generator edit (butt the member) + model re-send
-  (single-writer, ALVIN saves). Run against the **overview** model (has all structural members) for the full
-  list. (Alvin 2026-08-14.)
+  filter cap↔port = molded). **PROGRESS 2026-08-17:** **RWk J6 backing plate ↔ frame rail** — FIXED (see the
+  J6 item above; the plate now butts the rail top). **RWk end beam ↔ long beams** — already butts (right_walkway_
+  cantilever lines 950–953). **REMAINING:** the RWk **long-beam ENDS ↔ wall-cleat back-plates** (the inner/outer
+  beams run to Yd0/C_WID and poke ~8mm into the 8mm cleat back-plate) — inset each beam end by the plate thickness
+  so it butts. Readability only (not a real clash); do it when **overview/walkway** is open (can't verify against
+  the live ibc-stack). Also on ibc-stack `--solids`: **9 OPEN are by-design** (filter cap↔port ×6 molded, bar↔
+  D-ring holder, the two-leg welded L-cleats) — pending a **sanction list** in check_interference so they stop
+  flagging. Run against the **overview** model (has all structural members) for the full list. (Alvin 2026-08-14.)
 
 - [~] **Pipe-through-surface seam audit (3D readability) — same class as the beam fix above.** A pipe
   passing *through* a surface (plywood panel, wall, plate) shows NO seam/butt line — reads as fused into the

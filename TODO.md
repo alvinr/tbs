@@ -108,9 +108,11 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   the saved `<name>.skp`. Legacy POST-new kept behind `--new`. Validated end-to-end twice: a scratch box→box+cylinder
   lifecycle (same UID, name survived a PUT that never resent it, stayed public) AND a real **overview** push to its
   existing uid `e624e210…` (HTTP 204, URL + settings unchanged, ALVIN confirmed). Note: overview.dae exports at
-  ~31 MB — under the 50 MB free-tier cap but the biggest model; if it grows further, Pro tier is 200 MB. **REMAINING
-  (optional):** wire a token-gated `--push` into the `--send` flow so a cascade offers to push after ALVIN validates
-  each model. [Data API v3](https://sketchfab.com/developers/data-api/v3/python)
+  ~31 MB — under the 50 MB free-tier cap but the biggest model; if it grows further, Pro tier is 200 MB.
+  **DONE:** `src/models/send_model.py <name> --send --push` wraps the send + an in-place push in one command —
+  delegates the build to the model's generator, then (token-gated) OFFERS to push after you validate. It PROMPTS
+  in a terminal and SKIPS safely in a non-interactive shell (so an agent can't push unvalidated geometry); `-y`
+  skips the prompt, `--new` does the legacy POST. [Data API v3](https://sketchfab.com/developers/data-api/v3/python)
 
 - [x] **Reconcile the `project-cost-breakdown.md` §5 water-system breakdown table to `costing.py` — DONE 2026-08-05.** Root cause: `costing._render_detail` is a POSITIONAL value fill (keeps the doc's hand-edited labels, rewrites value cells from `WATER[di]` by row index). Inserting the pinhole-wall ply as `WATER` item #5 shifted every value from #5 on up by one row while the doc kept 13 labels — so labels/values misaligned and the last item ($257 consumables) fell off the bottom (TOTAL≠sum by $257). Fix = insert the missing **ply label row** at position 5, then `--inject` refilled all 14 values correctly (Filter skid $541, Valves $922, Pipe $84, tray $1,473/$2,121, spray $584/$596, consumables $257). Rows now sum to $6,579/$7,730 = the TOTAL; "table arithmetic" lint [OK].
 

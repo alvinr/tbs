@@ -13,6 +13,21 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
+  drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
+  emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking
+  [overview's full-length copy corrected to em's fitted extent], inverter box, master switch), **Fan B box**
+  (lighttrap), **processing tray** (overview `processing_tray(alpha=)` — spraybar now shows the real sloped pan
+  ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **REMAINING 3 real
+  findings to resolve, then consolidate + remove from `_EMITTER_DUP_ALLOW`:**
+  - **Fan B mount band / cargo-door panel thickness** — overview draws the door + band at `PANEL_CENTER_T=120`mm,
+    lighttrap at **40**mm. Which door thickness is right? Unify the PANEL representation, then the band → lighttrap.
+  - **Tray sump strainer foot position** — cp puts it at **Yd155** (center pickup), pw at **Yd104** (under the
+    riser), 51mm apart + different color. Resolve the real sump-pickup Yd (+ pw riser routing), then → cp.
+  - **Pinhole wall (mini_tbs)** — ACCEPTED as-is: mini_tbs is a scale toy (BOX_W×BOX_H), pw a real wall section;
+    different representations (like the context floors). No action unless mini_tbs is retired.
+  (The 2 `Floor`/`Floor (context)` ghosts are permanent allowlist — featureless per-model context.)
+
 - [ ] **`check_interference.py --bolts` — orientation/grip lint (PROTOTYPE landed 2026-08-17).** New read-only
   advisory pass: for every structural grip bolt it finds the members its centerline pierces and flags **EDGE**
   (center-to-edge < 1.5·D — the J2/J7 3mm-edge class that kept slipping to review), **FLOATING** (pierces no

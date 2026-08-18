@@ -24,7 +24,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 
-from tbs_constants import PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z
+from tbs_constants import PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R
 
 TAGS = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "Labels"]
 
@@ -385,26 +385,11 @@ def build_feed_pole():
 
 
 def build_tray():
-    """The 304 SS processing tray the gantry rolls in: floor + 50mm rim walls +
-    drain sump. Drawn translucent so the spray bar reads inside it."""
-    parts = []
-    xl, xr = PROC_TRAY_X_L, PROC_TRAY_X_R
-    yn, yf = PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
-    w, d = xr - xl, yf - yn
-    rim, ft, wt = PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR, 3   # rim height, floor + wall thickness
-    zc = ov.PROC_TRAY_FLOOR_Z_LOW                         # 20 — pan RAISED so the sump bottom rests on Z0
-    parts.append(ov.ruby_box("Tray Shim Base", xl, yn, 0, w, d, zc - ft, color="#D8CFBC", alpha=0.4))
-    parts.append(ov.ruby_box("Tray Floor", xl, yn, zc - ft, w, d, ft, color=C_TRAY, alpha=0.55))
-    parts.append(ov.ruby_box("Tray Rim Near", xl, yn, zc - ft, w, wt, rim, color=C_TRAY, alpha=0.3))
-    parts.append(ov.ruby_box("Tray Rim Far", xl, yf - wt, zc - ft, w, wt, rim, color=C_TRAY, alpha=0.3))
-    parts.append(ov.ruby_box("Tray Rim Left", xl, yn, zc - ft, wt, d, rim, color=C_TRAY, alpha=0.3))
-    parts.append(ov.ruby_box("Tray Rim Right", xr - wt, yn, zc - ft, wt, d, rim, color=C_TRAY, alpha=0.3))
-    # drain sump well — bottom rests on the container floor (Z0), up to the raised pan floor
-    parts.append(ov.ruby_box("Tray Sump",
-                             PROC_TRAY_DRAIN_X - PROC_TRAY_SUMP_W / 2, PROC_TRAY_DRAIN_YD,
-                             0, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D,
-                             PROC_TRAY_SUMP_Z, color=C_TRAY, alpha=0.55))
-    return '\n'.join(parts)
+    """The 304 SS processing tray the gantry rolls in, drawn as a faint CONTEXT ghost so the
+    spray bar reads inside it. OWNED by overview (ov.processing_tray) — call it ghosted so the
+    spray-bar model shows the SAME dual-axis-sloped pan the overview does (was a flat simplified
+    copy here, which drifted from the real sloped tray)."""
+    return ov.processing_tray(alpha=0.35)
 
 
 def generate_ruby():

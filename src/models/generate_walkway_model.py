@@ -164,6 +164,23 @@ def container_ghost():
 
 # ── Walkway grated decks (the removable "gates") ─────────────────────────────
 
+def far_deck(alpha=None):
+    """The FAR walkway deck grate (WALL edge inset by the bracket plate thickness). SINGLE OWNER —
+    the overview model calls this so the far deck can't drift from the walkway model."""
+    near_x_l = WK_LEFT_X + WK_W
+    return ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
+                    WK_RIGHT_X - near_x_l, WK_W - BRK_T, GRATE_T, color=C_WALKWAY, alpha=alpha)
+
+
+def near_removable_deck(alpha=None):
+    """The door-end REMOVABLE band of the NEAR walkway (lifts out for transport, distinct color).
+    SINGLE OWNER — the light-trap model draws it (ghosted) as door-end context."""
+    near_x_l = WK_LEFT_X + WK_W
+    liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
+    return ruby_box("Walkway Near (door-end, removable)", near_x_l, BRK_T, GRATE_Z,
+                    liftout_x - near_x_l, WK_W - BRK_T, GRATE_T, color=C_REMOVABLE, alpha=alpha)
+
+
 def walkway_decks():
     """The four grated walkway sections that lift off for tray access — the
     'gates'. Geometry mirrors the overview's walkways() (minus the brackets,
@@ -186,14 +203,12 @@ def walkway_decks():
     # The rest of the near deck is ONE continuous fixed piece with the EP/battery bump-out
     # integral (no butt joints at the widening) — shared helper so it can't drift from overview.
     liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
-    parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, BRK_T, GRATE_Z,
-                          liftout_x - near_x_l, WK_W - BRK_T, t, color=C_REMOVABLE))
+    parts.append(near_removable_deck())
     parts.append(ov.near_fixed_deck_grate("Walkway Near (fixed, bump integral)",
                                           liftout_x, GRATE_Z, t, C_WALKWAY))
 
     # Far deck.
-    parts.append(ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
-                          near_x_r - near_x_l, WK_W - BRK_T, t, color=C_WALKWAY))
+    parts.append(far_deck())
 
     # (The right grate rides the Walkways tag via ov.right_walkway_grate() — see the
     #  component list — so it shows with the decks but not in the bare Right-Cantilever scene.)

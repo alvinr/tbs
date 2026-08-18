@@ -530,11 +530,11 @@ def panel_power(include_switch=True, part="all"):
     # ── MASTER SWITCH on the ELECTRICAL PANEL — one cutoff upstream of EVERYTHING (avoids a
     #    corridor switch + its through-panel wiring; puts BOTH P-02 and the corridor pumps
     #    downstream of it).  Red disconnect lever like the DV handles. ──
-    if include_switch:   # standalone: draw the master switch here + feed off it (swx)
+    if include_switch:   # standalone: draw the REAL EP master switch (owned by em) + feed off it
+        import generate_electrical_model as em
         if do_link:
-            p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", swx - 26, 30, 1840, 52, 48, 56, color="#202020"))
-            p.append(ov.ruby_box("Master switch lever (OFF cutoff)", swx - 7, 78, 1852, 14, 46, 14, color=cp.C_HANDLE))
-        fx, fy, fz = swx, 54, 1896
+            p.append(em.master_switch())
+        fx, fy, fz = em.MASTER_SW_POS
     else:                # EP present (overview + water): feed off the EP panel's OWN master switch, ON the panel
         import generate_electrical_model as em
         fx, fy, fz = em.MASTER_SW_POS

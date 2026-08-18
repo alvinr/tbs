@@ -302,6 +302,11 @@ walkway, hinged panel, light lock, electrical, optics, …)._
     `check_interference.py --solids`. Do it in the walkway blueprint pass alongside the shortening + shared-bracket
     fixes above (they're likely related — the over-long deck + doubled brackets drive some of these).
 
+- [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
+  (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
+  lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
+  (Surfaced during the egress review that retired the swing-out floorplan sheet.)
+
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
 - [ ] **Film-plane support-beam LEFT brackets — no bolts + no external plates (2D↔3D gap, Alvin 2026-08-17).**

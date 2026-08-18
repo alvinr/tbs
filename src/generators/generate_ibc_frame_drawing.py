@@ -619,8 +619,8 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, (NEAR_COL_R - 60), (1760 + FRAME_RHS / 2),
-           (NEAR_COL_R - 70), (1900),
+    leader(ax, (NEAR_COL_R - 60), (1950 + FRAME_RHS / 2),
+           (NEAR_COL_R - 70), (1700),
            "FRONT RETAINING BARS (×8, 2/tier)\n50×20×3 RHS at IBC front\n(25mm gap), Z500/950 + Z1500/1950 — slide-stop\n+ weld-on ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -631,8 +631,8 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, (30), (1760 + FRAME_RHS / 2),
-           (330), (1500),
+    leader(ax, (30), (1500 + FRAME_RHS / 2),
+           (330), (1680),
            "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 J7\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×65 (J3), head out / nut in",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)

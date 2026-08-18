@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Wall-end bar restraint unified with the post end (L-cleat), + nut-side backing plates.** The bar's wall
+  end now uses the **same L-cleat + single horizontal M12×65** as the corridor end (the L's horizontal leg is
+  the shelf, the vertical leg takes the bolt through the bar's 50mm web) — welded to the inside wall plate,
+  which with the outside backing plate clamps the container wall via the 2× J3 through-bolts (head out, nut
+  in). Every L-cleat bolt (J2 + J7, ×16) gets a small **nut-side backing plate** on the bar's far web so the
+  nut can't dish the thin RHS wall (+16 plates, +$10/$20). Cascade: 3D `tote_restraint` (NEEDS RE-SEND),
+  Sheet 1 wall hanger, Plate 4 (end section + plan now show the backing plate), parts + costing + report.
+  Also: Sheet 1 J3 bolts now show the inside-face **nuts**; Sheet 6 shows all **8 D-ring welds** (4/tier);
+  Detail C dimensions the **ring pitch (420mm)**; Plate 4 plan shows the backing plate + the L side.
+
 - **IBC frame drawings — 6 more review fixes (Alvin).** (1) **Sheet 1 wall hanger** redrawn to match the 3D:
   the bar rests on a **shelf/seat** (not butting a pocket), a **J7 bolt runs vertically through the bar +
   shelf**, and the inside + outside plates clamp the container wall — shown as the **gap** between them — with

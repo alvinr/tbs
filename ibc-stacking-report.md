@@ -154,7 +154,7 @@ The forward thrust is blocked by the **front retaining bars**, seated in the 25m
 The two bars give **defense in depth**: as positive blocking they pass on their own (**SF 1.59**, mat degraded or absent); with the anti-slip mat the friction credit lifts the margin to **SF 4.77**. Everything downstream of the bars is comfortably strong — the wall-hanger bolts, the corrugated-wall bearing (backing-plate-spread), the cleat bolts, and the tie-down straps all clear SF ≥ 8. In the **drained** transport state (site-filled water, totes empty) every element clears SF ≥ 12.
 
 - **Front retaining bars** (two per tote face, 50×20×3 RHS, ~1,046mm span) share each tote's forward (−X) thrust into the floor feet + wall hangers.
-- **Wall joist hangers** — **one identical 2-bolt hanger per bar** (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each **through-bolted (2 × M12×65) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. Total wall penetrations stay at 16 (8 hangers × 2 bolts = the old 4 × 4). M12×65 (partial thread) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger); the corridor-end **L-cleat J2** is a single horizontal M12×65 through the bar's 50mm web and the wall-end **J7** is M12×65 through the ~58mm stack (per Detail B).
+- **Wall joist hangers** — **one identical 2-bolt hanger per bar** (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each **through-bolted (2 × M12×65) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. Total wall penetrations stay at 16 (8 hangers × 2 bolts = the old 4 × 4). M12×65 (partial thread) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger). **Both ends of the bar now use the SAME L-cleat** — the corridor-end **J2** and the wall-end **J7** each drop the bar into an L-angle and run a single horizontal M12×65 through the L's vertical leg + the bar's 50mm web, with a small nut-side **backing plate** spreading the load into the bar's far web.
 - **Anti-slip matting** (certified μ ≥ 0.6) under each tote interface is the primary friction lever — it triples the effective margin and directly answers the "totes must not shift" requirement.
 - **Weld-on lashing rings + 2 straps/stack** (3,333 lb / ~1,512 kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.
 - **Floor feet** (150×150×12, 4 × M12 each) anchor the uprights against uplift and transfer loads into the slab.
@@ -184,7 +184,7 @@ are the standard values for the grade.
 | J4 | Rear panel → L-bracket upstand (off the back upright) | M8 hex into captive 5/16 tee-nut set from the ply BACK face (tension pulls the flange against the wood) | zinc | 6 brackets | snug + locker (light static load) | flat washer under head | thread-locker |
 | J5 | Side-panel pipe-run boards → L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
 | J6 | Walkway cantilever arm → front upright (arm end-plate → **rear backing plate**, bolted through the upright; **bearing-type — both bolts above the arm**, clear of the corridor bottom rail + the welded arm; internal crush sleeve per bolt) | M12×100 hex through-bolt | Gr.8.8 zinc | 2 arms × 2 bolts = 4 | **~90 N·m** (85–95 band) | flat both ends | nyloc nut |
-| J7 | Front-bar wall end → hanger pocket seat (vertical retention — the bar is bolted, not welded, to the hanger; **1 centered** bolt, reverted from 2 — the pocket + the fixed 2-bolt corridor cleat already stop the bar rotating, so the 2nd was redundant and crowded the seat) | M12×65 hex (92800A481, 18-8 SS) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
+| J7 | Front-bar wall end → wall-hanger **L-cleat** — the SAME joint as the post end: the bar drops into the L, **1 HORIZONTAL** M12×65 through the vertical leg + the bar's 50mm web (nut on a far-web backing plate). The L is welded to the inside wall plate; the inside + outside plates clamp the container wall via J3 | M12×65 hex (92800A481, 18-8 SS) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
 | J8 | Rear-panel L-bracket → back upright (post leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 6 = 12 | driven to seat — no torque spec (self-drilling; light static panel load) | bonded washer | thread-forming, self-locking |
 | J9 | Side-panel pipe-run L-bracket → side post (weld leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 12 = 24 | driven to seat — no torque spec (self-drilling; light pipe load) | bonded washer | thread-forming, self-locking |
 
@@ -489,9 +489,10 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 wall-hanger bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 64 ea | McMaster-Carr | $6 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 wall-hanger bolts (plain nut + split = locked). $11.97/pack of 100. | 16 ea | McMaster-Carr | $2 |
 | Steel backing plate 60×205×8mm | Exterior wall backing plates — 8 identical, one per 2-bolt hanger — flat 60×205×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 2× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through. | 8 ea | Metal Supermarkets | $32–$56 |
+| L-cleat nut backing plate 40×50×8mm | Small nut-side spreader plate (~40×50×8mm A36) on the bar's FAR web at each L-cleat through-bolt — 8 corridor-end (J2) + 8 wall-end (J7). The single horizontal M12 nut bears on this plate instead of the thin (3mm) RHS bar wall, so the wall can't dish (Alvin 2026-08-18). Cut from A36 plate offcuts. | 16 ea | Metal Supermarkets | $10–$19 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$1,183–$1,717** |
+| **Ibc-Frame total** | | | | **$1,193–$1,737** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -511,7 +512,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,183<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,717<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,193<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,737<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

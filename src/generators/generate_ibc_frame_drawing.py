@@ -620,19 +620,19 @@ def sheet1():
            arrow_style="-|>", font=FONT)
 
     leader(ax, (NEAR_COL_R - 60), (1950 + FRAME_RHS / 2),
-           (NEAR_COL_R - 70), (1700),
+           (NEAR_COL_R - 70), (1800),
            "FRONT RETAINING BARS (×8, 2/tier)\n50×20×3 RHS at IBC front\n(25mm gap), Z500/950 + Z1500/1950 — slide-stop\n+ weld-on ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, (NEAR_COL_R - 40), (1500 + FRAME_RHS / 2),
-           (NEAR_COL_R - 60), (1330),
+           (NEAR_COL_R - 60), (1430),
            "J2 CORRIDOR-END L-CLEAT (×8)\nL-angle welded to the upright (W3); bar drops in,\n1× M12×65 HORIZONTAL through the leg + web (J2)\n— see Sheet 4 Det B / Plate 4",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     leader(ax, (30), (1500 + FRAME_RHS / 2),
-           (330), (1680),
+           (330), (1700),
            "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 J7\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×65 (J3), head out / nut in",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
@@ -825,7 +825,7 @@ def sheet2():
         ax.add_patch(Rectangle((FX_BACK - 34, tz - 4), 34, 8, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))   # tab leg (projects into the corridor)
         ax.add_patch(Circle((FX_BACK - 28, tz), 5, fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))                # J4 ply bolt head
         _weld_tick(ax, FX_BACK, tz, side='left', size=5)                                                  # J8 TEK to the post
-    leader(ax, (FX_BACK - 34), 980, (FX_BACK - 150), 980 + 150,
+    leader(ax, (FX_BACK - 34), 980, (FX_BACK - 350), 880,
            "PLYWOOD MOUNTING TABS (×6)\nrear-panel brackets: J8 TEK to the post\n+ J4 bolt into a tee-nut in the ply\n— see Sheet 4 Det D / Plate 5",
            color=C_OUT, fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -850,7 +850,7 @@ def sheet2():
     # ── Member labels ───────────────────────────────────────────────────────
     # Short leader into the open upper-tier face just right of the post (rule 67).
     leader(ax, (FX_FRONT + FRAME_RHS), (TOP_Z * 0.62),
-           (FX_FRONT + FRAME_RHS + 55), (TOP_Z * 0.62 + 25),
+           (FX_FRONT + FRAME_RHS + 55), (TOP_Z * 0.62 + 50),
            "DEEP-BOX UPRIGHTS\n2×2×0.120in steel, floor to top\n(front + back pair, ×2 across Yd = 4 legs)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -1185,7 +1185,7 @@ def sheet4():
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # 2 wall through-bolts: fix HANGER to wall — NOT the bar
     draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150mm")
     leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×65 (J3)\nHANGER→wall", fs=6, font=FONT, ha="left")
-    leader(ax, jbx, zc + 28, wy + 116, zc + 78, "M12 (J7)\nbar→seat, centered", fs=6, font=FONT, ha="left")
+    leader(ax, jbx, zc + 28, wy + 60, zc + 85, "M12 (J7)\nbar→seat, centered", fs=6, font=FONT, ha="left")
     leader(ax, wy + 14, zc - 25, wy - 100, zc - 40, "seat↔plate\nweld (W5)", fs=6, font=FONT, ha="left")
     leader(ax, wy - 22, zc - 100, wy - 40, zc - 128, "60×205×8 A36\n(hex heads out)", fs=6, font=FONT, ha="right")
     ax.text(wy - 42, ay0 + 32, "OUTSIDE", fontsize=6, ha="center", **FONT)
@@ -1207,7 +1207,7 @@ def sheet4():
     bzc = ez + lt2 + barH2 / 2                                                                      # bolt at the bar mid-height
     _bolt(ax, ex - 6, bzc, lt2 + barW2 + 14, d=13, nut=True)                                        # 1× M12 HORIZONTAL through the leg + the bar's 50 web
     draw_dim_v(ax, ex - 24, ez + lt2, ez + lt2 + barH2, "50mm")                                       # bar web the bolt passes through (→ ~18mm edge)
-    leader(ax, ex, ez + barH2 + 30, ex - 26, ez + barH2 + 76, "L FILLET WELDED\nto upright (W3 4mm)", fs=6, font=FONT, ha="right")
+    leader(ax, ex, ez + barH2 + 35, ex + 25, ez + barH2 + 76, "L FILLET WELDED\nto upright (W3 4mm)", fs=6, font=FONT, ha="right")
     leader(ax, ex + lt2 + barW2 + 8, bzc, ex + lt2 + barW2 + 40, bzc - 44, "1× M12×65 (J2)\nHORIZONTAL through\nthe leg + the 50 web", fs=6, font=FONT, ha="left")
 
     # ── DETAIL C — FRONT-BAR LASH RINGS (2 rings on weld plates + distances + break) ──
@@ -1251,8 +1251,8 @@ def sheet4():
     ax.add_patch(Rectangle((px + 116, bz - 11), 4, 22, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))      # washer under the head
     _bolt(ax, px + 120, bz, 32, d=8, nut=False)                                                      # head (corridor side) + shank through upstand & ply → threads into the tee-nut barrel
     ax.text(px + 145, lz + 142, "PLYWOOD (rear panel)", fontsize=5.6, ha="center", **FONT, zorder=9)
-    leader(ax, px + 48, lz + 26, px + 6, lz - 44, "L-BRACKET → POST:\n2× #14 TEK (J8)", fs=6, font=FONT, ha="left")
-    leader(ax, px + 108, bz, px + 24, bz + 70, "M8 hex + washer thru the upstand\n→ tee-nut, flange on the ply BACK\nface (bolt pulls it tight) — J4", fs=6, font=FONT, ha="left")
+    leader(ax, px + 48, lz + 26, px + 6, lz - 75, "L-BRACKET → POST:\n2× #14 TEK (J8)", fs=6, font=FONT, ha="left")
+    leader(ax, px + 108, bz, px + 50, bz - 90, "M8 hex + washer thru the upstand\n→ tee-nut, flange on the ply BACK\nface (bolt pulls it tight) — J4", fs=6, font=FONT, ha="left")
 
     # ── DETAIL E — SIDE-PANEL PIPE-RUN SUPPORT L-BRACKET (carries the pipe runs, NOT pumps) ──
     ex0, ey0 = 470, 60

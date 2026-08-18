@@ -181,7 +181,7 @@ def sheet1():
     draw_notes(ax, [
         "• All holes Ø14 = M12 clearance (Plates 1–3). Deburr both faces. A36 mild-steel plate.",
         "• Datums: hole centers ±1 mm, PCD ±0.5 mm (§3.6). Backing (2) + pocket (3) share the 60mm stock; their J3 holes align through the wall.",
-    ], 470, -40, spacing=18, fs=6.2, font=FONT, width=880)
+    ], 470, -40, spacing=18, fs=6.2, font=FONT, width=860)
 
     title_block(ax, "PLATE SHEET 1 OF 2", drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLATE FABRICATION SCHEDULE — STRUCTURAL PLATES",
@@ -288,8 +288,9 @@ def sheet2():
     _scale_bar(ax, 60, -70)
     draw_notes(ax, [
         "• Holes: Plate 4 Ø14 (M12×65), Plate 5 Ø9 (M8), Plate 6 Ø7 (¼-20). Cut square, deburr all edges. A36.",
-        "• Each plate shown twice: L-section end + drilled-leg face. Attach: Plate 4 upstand welds to the upright (W3); Plates 5/6 TEK-screw to the post (J8/J9) — no weld.",
-    ], 470, -40, spacing=18, fs=6.2, font=FONT, width=880)
+        "• Each plate shown twice: L-section end + drilled-leg face. Attach: Plate 4 upstand welds to the upright (W3); Plates 5/6",
+        "  TEK-screw to the post (J8/J9) — no weld.",
+    ], 470, -40, spacing=18, fs=6.2, font=FONT, width=860)
 
     title_block(ax, "PLATE SHEET 2 OF 2", drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLATE FABRICATION SCHEDULE — ANGLE BRACKETS",

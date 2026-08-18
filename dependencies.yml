@@ -53,7 +53,7 @@ generators:
 #                  replaced the committed .rb. `lint.py --verify-all` recomputes + compares; a mismatch
 #                  means the .skp is stale vs source (regenerate + re-send). `manifest.py --update` refreshes.
 models:
-  overview: {script: src/models/generate_sketchup_model.py, outputs: [models/overview.skp, src/models/overview.rb], uid: e624e210bf3d4de08b1a7b7261a66c45, embed_files: [project-summary.md], source_hash: "sha256:d42420dc85b4fdc768b240dd9dba1350d0a74094c189148a59b524a9acaac3fe"}
+  overview: {script: src/models/generate_sketchup_model.py, outputs: [models/overview.skp, src/models/overview.rb], uid: e624e210bf3d4de08b1a7b7261a66c45, embed_files: [project-summary.md], source_hash: "sha256:cd8b43096c10c22186d7f171febbaef227fa41d37dd882b29b8f60dd8c601b2c"}
   spraybar: {script: src/models/generate_spraybar_model.py, outputs: [models/spraybar.skp, src/models/spraybar.rb], uid: 18fb381fbf48459cac25dcaa23958387, embed_files: [processing-tray-and-spray-bar.md], source_hash: "sha256:e3838f951648c62d527b171192e7bd70e68ac7e499a0516da64e6ee15dbce728"}
   ibc-stack: {script: src/models/generate_ibc_model.py, outputs: [models/ibc-stack.skp, src/models/ibc-stack.rb], uid: 8d091c60e93848f38e26c9c89a08cbc8, embed_files: [ibc-stacking-report.md], source_hash: "sha256:ba549c64158294fc1f0c1dbfa561d734a9d0f678e4914240e49bdbf13ba0219e"}
   construction: {script: src/models/generate_construction_model.py, outputs: [models/construction.skp, src/models/construction.rb], uid: dcc54fb3d02e46c3ab070dd49adc5d1e, embed_files: [construction-report.md], source_hash: "sha256:fea83ed58e1e094e789730381ff62a809d941e762d44db6bd4fec9d1f94c85e5"}

@@ -65,4 +65,4 @@ models:
   # water = the combined wet-end + IBC plumbing corridor (both plumbing panels). generate_pinhole_water_panel.py
   # imports generate_corridor_water_panel.py; --save writes water.rb (byte-verifiable) + saves water.skp via --send.
   # corridor-panel.skp is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
-  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [plumbing-report.md], source_hash: "sha256:d1cf168dddf5c91854b0e8529d5705876129a01299f7153efa9b3a18c3d7b197"}
+  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [plumbing-report.md], source_hash: "sha256:2b64c37849db7d6f97158bed0a022b3ebe2ad1692de94e1ff3c02d18ce84c1e8"}

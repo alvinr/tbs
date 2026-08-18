@@ -769,7 +769,7 @@ def _rwk_long_beam(x, cross_ranges, notches=(), y0=0, y1=C_WID, split=None):
     return out
 
 
-def _rwk_inner_beam_cranked(x, cross_ranges):
+def _rwk_inner_beam_cranked(x, cross_ranges, y_inset=0):
     """The inner right-walkway long beam, CRANKED outboard by RWK_CRANK_DX over the muslin-drop notch
     (Yd RWK_CRANK_N0..N1) with angled ramps, so the rigid muslin rod drops straight down at the tray
     edge (X=x) clear of the beam — while the beam stays ONE continuous (uncut) member. Built as: the
@@ -777,7 +777,7 @@ def _rwk_inner_beam_cranked(x, cross_ranges):
     segment + a ramp-in prism + the straight run after. The crank zone has no arms/pipe-notches."""
     w, z0, h, dx = RWK_BEARER_W, RWK_BEARER_Z0, RWK_ARM_TOP - RWK_BEARER_Z0, RWK_CRANK_DX
     out = []
-    out += _rwk_long_beam(x, cross_ranges, y0=0, y1=RWK_CRANK_Y0)                 # straight (arms)
+    out += _rwk_long_beam(x, cross_ranges, y0=y_inset, y1=RWK_CRANK_Y0)           # straight (arms) — butts the near plate
     out.append(ruby_prism("RWk Long beam inner ramp-out",                        # angled ramp X→X+dx
                           [(x, RWK_CRANK_Y0), (x + w, RWK_CRANK_Y0),
                            (x + dx + w, RWK_CRANK_N0), (x + dx, RWK_CRANK_N0)], z0, h, color=C_STEEL))
@@ -785,24 +785,34 @@ def _rwk_inner_beam_cranked(x, cross_ranges):
     out.append(ruby_prism("RWk Long beam inner ramp-in",                         # angled ramp X+dx→X
                           [(x + dx, RWK_CRANK_N1), (x + dx + w, RWK_CRANK_N1),
                            (x + w, RWK_CRANK_Y1), (x, RWK_CRANK_Y1)], z0, h, color=C_STEEL))
-    out += _rwk_long_beam(x, cross_ranges, y0=RWK_CRANK_Y1, y1=C_WID)            # straight run after
+    out += _rwk_long_beam(x, cross_ranges, y0=RWK_CRANK_Y1, y1=C_WID - y_inset)   # straight run after — butts the far plate
     return out
 
 
 def _rwk_wall_cleat(tag, x, wall_yd, din):
-    """L-cleat the LEFT long beam seats on: back-plate through-bolted to the wall (interior +
-    exterior plate, 2 bolts) + a horizontal shelf the beam lands on/welds to."""
-    piy = wall_yd if din > 0 else wall_yd - 8
-    poy = -WALL_T - 8 if din > 0 else C_WID + WALL_T
+    """Plate 2 — the tray-facing walkway long-beam bracket. The beam RESTS on a horizontal SHELF and is
+    locked down by a TEK screw; the plate is through-bolted to the wall by 2 HORIZONTAL bolts placed
+    CLEAR of the beam (one below the shelf, one above the beam) so the wall anchors don't foul the beam
+    edge (Alvin 2026-08-18). Interior + exterior plate sandwich the wall."""
+    bt = 8                                                   # plate thickness (Yd)
+    shelf_top = RWK_ARM_BOT                                  # beam bottom = shelf top (89.6)
+    bolt_lo = shelf_top - 10 - 30                            # 30mm below the shelf underside
+    bolt_hi = RWK_ARM_TOP + 30                               # 30mm above the beam top — both clear of the beam
+    pz0, pz1 = bolt_lo - 18, bolt_hi + 18                    # plate spans both bolts + ≥1.5·D edge margin
+    piy = wall_yd if din > 0 else wall_yd - bt
+    poy = -WALL_T - bt if din > 0 else C_WID + WALL_T
     shelf_y = wall_yd if din > 0 else wall_yd - 55
     out = [
-        ruby_box(f"RWk wall cleat plate ({tag})", x - 45, piy, RWK_ARM_BOT - 10, 90, 8, RWK_AH + 20, color=C_STEEL),
-        ruby_box(f"RWk wall cleat ext plate ({tag})", x - 45, poy, RWK_ARM_BOT - 10, 90, 8, RWK_AH + 20, color=C_STEEL),
-        ruby_box(f"RWk wall cleat shelf ({tag})", x - 45, shelf_y, RWK_ARM_BOT - 10, 90, 55, 10, color=C_STEEL),
+        ruby_box(f"RWk wall cleat plate ({tag})", x - 45, piy, pz0, 90, bt, pz1 - pz0, color=C_STEEL),
+        ruby_box(f"RWk wall cleat ext plate ({tag})", x - 45, poy, pz0, 90, bt, pz1 - pz0, color=C_STEEL),
+        ruby_box(f"RWk wall cleat shelf ({tag})", x - 45, shelf_y, shelf_top - 10, 90, 55, 10, color=C_STEEL),
     ]
-    blo, bhi = min(piy, poy), max(piy, poy) + 8
-    for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP - 6):
+    blo, bhi = min(piy, poy), max(piy, poy) + bt
+    for bz in (bolt_lo, bolt_hi):                            # 2 HORIZONTAL wall bolts, both CLEAR of the beam
         out.append(ruby_bolt(f"RWk wall bolt ({tag}) Z{int(bz)}", x, blo, bz, bhi - blo, radius=5, axis="y", color=C_STEEL, head="base", nut="far"))
+    # TEK screw locking the beam DOWN onto the shelf — vertical self-driller through the shelf + beam.
+    out.append(ruby_bolt(f"RWk beam TEK screw ({tag})", x, shelf_y + 27, shelf_top - 10,
+                         (RWK_ARM_TOP + 4) - (shelf_top - 10), radius=3, axis="z", color="#3A3A42", head="far", nut=None))
     return out
 
 
@@ -821,18 +831,32 @@ def fp_combined_corner_plate(wall_yd, din, cx=None):
     tag = "near" if wall_yd == 0 else "far"
     piy = wall_yd if din > 0 else wall_yd - 10
     poy = -WALL_T - 10 if din > 0 else C_WID + WALL_T
-    sy = wall_yd if din > 0 else wall_yd - 55
-    z0, z1 = RWK_ARM_BOT - 12, rail_top + 5                 # walkway right-beam seat up to backing the rail end flange
+    sy = wall_yd + 10 if din > 0 else wall_yd - 10 - 55   # shelves PROJECT from the plate inboard face (Yd10) so they BUTT the plate (a seam shows), not bury into it
+    # Plate WIDENED inboard by one bearer width (to x_in) so the walkway beam — pulled inboard to X4523
+    # by F1 — is BACKED by the plate. The beam rests on the WELDED SHELF (right-beam seat) and is locked
+    # by 2 TEK screws (not bolted through). The plate's 4 wall through-bolts sit at the plate CORNERS, the
+    # LOW pair dropped BELOW the beam so they don't foul it; the outboard region carries the BR film rail
+    # (seated + end-flanged). (F2 rework per Alvin, 2026-08-18.)
+    x_in = cx - pw / 2 - RWK_BEARER_W                      # 4523.2 — plate inboard edge (= walkway beam inboard edge)
+    x_out = cx + pw / 2                                    # 4724 — plate outboard edge
+    plate_w = pw + RWK_BEARER_W                            # 200.8 — widened plate width
+    beam_cx = x_in + RWK_BEARER_W / 2                      # 4548.6 — walkway beam centre
+    z0, z1 = RWK_ARM_BOT - 48, rail_top + 5                 # plate bottom dropped so the LOW corner bolts clear the beam; top backs the rail end flange
     out = [
-        ruby_box(f"FP combined corner plate ({tag})", cx - pw / 2, piy, z0, pw, 10, z1 - z0, color=C_STEEL),
-        ruby_box(f"FP combined corner ext plate ({tag})", cx - pw / 2, poy, z0, pw, 10, z1 - z0, color=C_STEEL),
-        ruby_box(f"FP combined right-beam seat ({tag})", cx - pw / 2, sy, RWK_ARM_BOT - 12, pw, 55, 12, color=C_STEEL),
+        ruby_box(f"FP combined corner plate ({tag})", x_in, piy, z0, plate_w, 10, z1 - z0, color=C_STEEL),
+        ruby_box(f"FP combined corner ext plate ({tag})", x_in, poy, z0, plate_w, 10, z1 - z0, color=C_STEEL),
+        ruby_box(f"FP combined right-beam seat ({tag})", x_in, sy, RWK_ARM_BOT - 12, RWK_BEARER_W, 55, 12, color=C_STEEL),   # SHELF — only under the beam footprint (not full plate width)
+        ruby_box(f"FP combined beam upstand ({tag})", x_in + RWK_BEARER_W, sy + 8, RWK_ARM_BOT, 8, 40, RWK_AH, color=C_STEEL),  # VERTICAL leg the beam bolts to (IBC bar-cleat pattern)
         ruby_box(f"FP combined BR rail seat ({tag})", cx - 30, sy, rail_bot - 12, 60, 55, 12, color=C_STEEL),
     ]
     blo, bhi = min(piy, poy), max(piy, poy) + 10
-    for bx in (cx - 50, cx + 50):
-        for bz in (RWK_ARM_BOT + 14, rail_c):              # walkway-beam bolt (low) + rail-height bolt (web centre)
+    # 4 wall through-bolts at the plate CORNERS — LOW pair BELOW the beam, HIGH pair near the top.
+    for bx in (x_in + 20, x_out - 20):
+        for bz in (RWK_ARM_BOT - 30, rail_top - 15):
             out.append(ruby_bolt(f"FP combined bolt M12 ({tag}) X{int(bx)} Z{int(bz)}", bx, blo, bz, bhi - blo, radius=6, axis="y", color=C_STEEL, head="base", nut="far"))
+    # Beam locked to the upstand by 1 HORIZONTAL TEK screw (axis X) through the beam web + the upstand.
+    out.append(ruby_bolt(f"FP combined beam TEK screw ({tag})", x_in - 4, sy + 28, (RWK_ARM_BOT + RWK_ARM_TOP) / 2,
+                         RWK_BEARER_W + 16, radius=3, axis="x", color="#3A3A42", head="base", nut=None))
     return out
 
 
@@ -950,9 +974,9 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
     notch_ranges = [(cy - RWK_RIBBON_NOTCH_W / 2, RWK_RIBBON_NOTCH_W) for cy in RWK_RIBBON_NOTCH_YDS]
-    parts += _rwk_inner_beam_cranked(lx, arm_ranges)          # inner beam — CRANKED around the muslin-rod slot (uncut)
-    parts += _rwk_long_beam(rx, arm_ranges, notch_ranges, split=RWK_HL_POST)   # outer beam — takes the DEEP half-lap notch (keeps 9.4) + open-top pipe notches
-    for ey in (0, C_WID - RWK_BEARER_W):
+    parts += _rwk_inner_beam_cranked(lx, arm_ranges, y_inset=8)   # inner beam — CRANKED around the muslin slot; ends BUTT the cleat plates (Yd8..C_WID-8)
+    parts += _rwk_long_beam(rx, arm_ranges, notch_ranges, split=RWK_HL_POST, y0=10, y1=C_WID - 10)   # outer beam — DEEP half-lap notch + pipe notches; ends BUTT the combined plates (Yd10..C_WID-10)
+    for ey in (10, C_WID - 10 - RWK_BEARER_W):
         # end beam BUTTS between the two long beams (X lx+W .. rx) instead of overlapping them at the
         # corners — the closed rectangle is welded, but the weld is not modeled, so a clean butt reads
         # as two distinct members meeting rather than one fused corner (check_interference.py --solids).

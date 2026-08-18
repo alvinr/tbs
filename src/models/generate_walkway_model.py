@@ -72,6 +72,7 @@ C_BOLT = "#505058"
 # Left lift-out support — FLOOR-LEG CANTILEVER brackets (replaces the edge beam + wall seats).
 LC_LEGX, LC_POST, LC_PW = k.LEFT_WK_CANT_LEG_X, k.LEFT_WK_CANT_POST, k.LEFT_WK_CANT_POST_W
 LC_FOOT, LC_FX0 = k.LEFT_WK_CANT_FOOT, k.LEFT_WK_CANT_FOOT_X0
+LC_FOOT_BOLT_DX, LC_FOOT_BOLT_DY = k.LEFT_WK_CANT_FOOT_BOLT_DX, k.LEFT_WK_CANT_FOOT_BOLT_DY
 LC_ARM_Z0, LC_ARM_W, LC_ARM_WW = k.LEFT_WK_CANT_ARM_Z0, k.LEFT_WK_CANT_ARM_W, k.LEFT_WK_CANT_ARM_W_WIDE
 LC_STD, LC_WIDE, LC_YDS = k.LEFT_WK_CANT_STD_REACH, k.LEFT_WK_CANT_WIDE_REACH, k.LEFT_WK_CANT_LEG_YDS
 
@@ -147,16 +148,13 @@ def walkway_labels():
 # ── Ghost container (floor + ceiling + both long walls) ──────────────────────
 
 def container_ghost():
-    """Low-alpha floor, ceiling and the two long side walls, so the exterior
-    cantilever reinforcing plates + bolt-throughs read through the near/far
-    walls. End walls omitted (they'd clutter this view)."""
+    """Low-alpha floor + the FAR (film-plane) side wall only. The roof (ceiling) and the NEAR
+    (pinhole) side wall are omitted so the model orbits freely without the view boxing in
+    (Alvin 2026-08-18); the far cantilever reinforcing plates + bolt-throughs still read against
+    the far wall. End walls were already omitted."""
     return '\n'.join([
         ruby_box("Floor (ghost)", 0, 0, -WALL_T, C_LEN, C_WID, WALL_T,
                  color=C_SHELL, alpha=0.22),
-        ruby_box("Ceiling (ghost)", 0, 0, C_HGT, C_LEN, C_WID, WALL_T,
-                 color=C_SHELL, alpha=0.10),
-        ruby_box("Side wall near (ghost)", 0, -WALL_T, 0, C_LEN, WALL_T, C_HGT,
-                 color=C_SHELL, alpha=0.14),
         ruby_box("Side wall far (ghost)", 0, C_WID, 0, C_LEN, WALL_T, C_HGT,
                  color=C_SHELL, alpha=0.14),
     ])
@@ -264,7 +262,10 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     # gusset triangle bracing the arm from below — same X as the arm (directly under
     # it, push −b), and its back edge butts the plate's container-facing face so the
     # gusset→plate joint reads as a clean edge (not passing through the plate)
-    xg = x - b / 2
+    # xg is sign-aware so the gusset lands CENTERED under the arm on BOTH walls: ruby_tri pushpulls along
+    # the (winding-dependent) face normal, which flips near↔far, so a fixed xg would offset the far gusset
+    # by one plate thickness. x − sign·b/2 cancels that → gusset spans [x−b/2, x+b/2] both sides (Alvin 2026-08-18).
+    xg = x - sign * b / 2
     y_back = wall_yd + sign * b           # plate's container-facing face
     y_far = wall_yd + sign * gusset_reach
     parts.append(ruby_tri(f"{nm} gusset",
@@ -441,6 +442,14 @@ def left_floor_cantilevers():
                               LC_POST, LC_PW, az1 - foot_t, color=C_STEEL))
         parts.append(ruby_box(f"Left cantilever {i} arm (to X{int(reach)})", arm_x0,
                               y - aw / 2, az0, reach - arm_x0, aw, az1 - az0, color=C_STEEL))
+        # Floor anchors — 4× #14 SS self-drillers through the foot plate into the ply-over-steel
+        # floor, in the INBOARD outrigger clear of the post (F3, 2026-08-18). Hex head at the top;
+        # nut=None (self-drilling, no back nut).
+        for dx in LC_FOOT_BOLT_DX:
+            for dy in (-LC_FOOT_BOLT_DY, LC_FOOT_BOLT_DY):
+                parts.append(ruby_bolt(f"Left cantilever {i} floor anchor",
+                                       LC_FX0 + dx, y + dy, 0, foot_t + 4, radius=4,
+                                       axis="z", color=C_BOLT, head="far", nut=None))
     return parts
 
 

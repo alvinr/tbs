@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -839,14 +839,19 @@ def ibc_cantilever_arms(x_to=None):
     `x_to` is how far the arm reaches inward (default RWK_X_L — the inner long beam)."""
     x_to = RWK_X_L if x_to is None else x_to
     ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 65, RWK_J6_EP_H   # arm mid-Z / end-plate thickness, width(Yd = arm 50.8 + weld toe) / height(Z, taller for bolts above)
-    ep_bz = ac_z - 65.0                                                     # plate BOTTOM unchanged (Z37 — covers the arm + bears; overlaps the rail below = ghosted, no bolt there)
+    ep_bz = ac_z - 65.0                                                     # end-plate (FRONT) bottom Z37 — covers the arm weld + bears against the upright front face (clear of any rail)
+    # The REAR backing plate sits in the box-interior corner, where the corridor bottom-ring X-rail also
+    # starts — so its bottom is raised to BUTT the rail top (no interpenetration, no fused seam). The bolt
+    # group is at Z140/170, so the shorter plate still fully spreads it. (J6 rail clash fix, 2026-08-17.)
+    bp_bz = IBC_FOOT_PLATE_T + IBC_FRAME_RHS                                 # 62.8 — corridor bottom-ring X-rail TOP; backing plate rests on it
+    bp_h  = (ep_bz + ep_h) - bp_bz                                          # keep the plate TOP at Z185.3
     c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)
     parts = []
     for yd in RWK_UP_YDS:
         parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP - ep_t)   # arm ends SHORT so the end-plate isn't buried in it
         ac_y = yd + RWK_ARM_W / 2.0
         parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ep_bz, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end (between arm + upright)
-        parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, ep_bz, ep_t, ep_w, ep_h, color=C_STEEL))  # rear backing plate
+        parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, bp_bz, ep_t, ep_w, bp_h, color=C_STEEL))  # rear backing plate — BUTTS the bottom rail (bp_bz)
         for bz in RWK_J6_BOLT_ZS:                                           # 2 M12 — CENTRAL column (Yd 0), BOTH above the arm (bearing-type); clears the rail AND the welded arm
             bx0 = RWK_X_UP - ep_t                                           # shank start = end-plate front (−X) face
             blen = IBC_FRAME_RHS + 2*ep_t + 8                               # 74 — through end-plate + upright + backing plate, protruding
@@ -1233,9 +1238,10 @@ def spray_bar():
 # now render the split Corridor / Pinhole-Wall panel design and stay in sync with
 # water.skp.  The OLD pre-corridor-refactor builders (equipment_panel / water_hookups /
 # spray_bar_plumbing / water_plumbing) + the legacy FSKID_X/F1_Z/F2_Z/F3_Z corridor-filter
-# constants were DELETED 2026-07-05.  ibc_rack() (old single-portal frame, X4734) is now referenced
-# ONLY by the ARCHIVED right-cantilever study (src/models/archive/) — the live models use the
-# deep-box cp.frame() (X4654); kept so the archived study still imports, but effectively dead.
+# constants were DELETED 2026-07-05.  ibc_rack() (old single-portal frame, X4734) was RELOCATED
+# 2026-08-17 out of this live module into its sole consumer, the ARCHIVED right-cantilever study
+# (src/models/archive/generate_right_cantilever_study.py), so the live module can't accidentally
+# re-wire it — the live models use the deep-box cp.frame() (X4654).
 
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
@@ -1302,87 +1308,6 @@ def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None, mute=None):
         out.append('  grp.material = mat')
     out.append('')
     return '\n'.join(out)
-
-
-def ibc_rack():
-    """ibc-reconfig-v2 RESTRAINT frame — a SINGLE FRONT PORTAL.
-
-    The 1000L caged totes DIRECT-STACK (no load-bearing deck — 52mm headroom), are
-    non-removable, and are trapped by the side + sealed-end walls. So restraint is
-    the front portal + front retaining bars + D-ring lashing; the deep mid/back
-    corridor stations of the old load-bearing rack are dropped. The portal (at
-    RWK_X_UP=4734) also gives the right-walkway cantilever arms their clamp point
-    and mounts the (forward) wet-end panel.
-    """
-    parts = []
-    s = IBC_FRAME_RHS                   # 50×50 RHS
-    top_z = 2 * IBC_H_1000 - 40         # 2296 — restraint reaches near the stack top
-    yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
-    up_yds = (yd_near, yd_far - s)
-    fx = RWK_X_UP                       # 4734 — front portal uprights (walkway arms clamp here)
-    front_x = IBC_COL_X - 20            # 4654 — front bars seated in the 25mm gap, just in front of the tote face (clear of the film rail at 4649)
-    bar_d = 20                          # bar depth in X (50×20×3 RHS — fits the gap; a full 50×50 would cut into the totes)
-    c_bolt = "#3A3A42"
-
-    # Front portal: two full-height uprights + top tie + floor beam.
-    for yd in up_yds:
-        parts.append(ruby_box("Front Portal Upright", fx, yd, 0, s, s, top_z, color=C_STEEL))
-    parts.append(ruby_box("Front Portal Top Tie", fx, yd_near, top_z - s, s, yd_far - yd_near, s, color=C_STEEL))
-    parts.append(ruby_box("Front Portal Floor Beam", fx, yd_near, 0, s, yd_far - yd_near, s, color=C_STEEL))
-    # Panel-mount rail tying the (forward) panel face back to the portal at the top.
-    parts.append(ruby_box("Panel Mount Rail", fx, yd_near, EQPANEL_Z_HI - s,
-                          (EQPANEL_X + EQPANEL_T) - fx, yd_far - yd_near, s, color=C_STEEL))
-
-    # Floor feet under the two front uprights (150×150×12 plate + 4× M12 anchors).
-    fp, ft, bpc = IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD // 2
-    for yd in up_yds:
-        cx, cy = fx + s / 2, yd + s / 2
-        parts.append(ruby_box("Foot Flange Plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=C_STEEL))
-        for dx in (-bpc, bpc):
-            for dy in (-bpc, bpc):
-                parts.append(ruby_bolt("Foot Anchor Bolt M12", cx + dx, cy + dy, 0, ft + 4, radius=7, axis="z", color=c_bolt, head="far", nut=None))  # anchor into the floor — hex head at the top, no nut
-
-    # Front retaining bars (50×20×3 RHS) seated in the gap just in front of the tote
-    # face, both tiers, tied back to the portal.
-    bar_zs = (560, 1760)
-    for y0, y1 in ((0, yd_near + s), (yd_far - s, C_WID)):
-        for bz in bar_zs:
-            parts.append(ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, s, color=C_STEEL))
-    for yd in up_yds:
-        for bz in bar_zs:
-            parts.append(ruby_box("Front Bar Stub", front_x, yd, bz, fx - front_x + s, s, s, color=C_STEEL))
-
-    # D-ring lashing holders on the front bars.
-    for ydh in (520, C_WID - 520):
-        for bz in bar_zs:
-            parts.append(ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + s / 2, 16, 10, color=C_STEEL, axis="x"))
-
-    # Wall joist hangers (Simpson U-pocket) at each front-bar wall end, through-bolted
-    # to an EXTERIOR backing plate (load-spreading, hex heads outside — the thin
-    # corrugated wall would otherwise pull through under the totes' transport thrust).
-    ext_pt, ext_pw, ext_ph = 8, 100, 135        # exterior plate: 100(X) × 135(Z) × 8 thick
-    for wall_yd, din in ((0, 1), (C_WID, -1)):
-        for bz in bar_zs:
-            ht, dep = 4, 70
-            p_y = wall_yd if din > 0 else wall_yd - ht
-            s_y = wall_yd if din > 0 else wall_yd - dep
-            parts.append(ruby_box("Wall Hanger Plate", front_x - 8, p_y, bz - 30, s + 16, ht, s + 70, color=C_STEEL))
-            parts.append(ruby_box("Wall Hanger Seat", front_x - 4, s_y, bz - ht, s + 8, dep, ht, color=C_STEEL))
-            # Exterior backing plate just outside the container wall + 4 M12 through-bolts.
-            ecx = front_x - 8 + (s + 16) / 2     # plate center X (on the hanger)
-            ecz = bz + s / 2                      # plate center Z (on the bar)
-            plate_y = (-WALL_T - ext_pt) if din > 0 else (C_WID + WALL_T)
-            bolt_cy = (-WALL_T - ext_pt) if din > 0 else (C_WID - 10)
-            parts.append(ruby_box("IBC Wall Backing Plate (ext)",
-                                  ecx - ext_pw / 2, plate_y, ecz - ext_ph / 2,
-                                  ext_pw, ext_pt, ext_ph, color=C_STEEL))
-            for dx in (-ext_pw / 2 + 18, ext_pw / 2 - 18):
-                for dz in (-ext_ph / 2 + 22, ext_ph / 2 - 22):
-                    parts.append(ruby_bolt("IBC Wall Through-Bolt M12",
-                                           ecx + dx, bolt_cy, ecz + dz, 58, radius=7,
-                                           axis="y", color=c_bolt, head="far", nut="base"))  # head OUTSIDE (far), nut inside
-
-    return '\n'.join(parts)
 
 
 # ── Film plane mechanism ─────────────────────────────────────────────────────

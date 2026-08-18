@@ -241,10 +241,94 @@ def labels_ruby():
     return '\n'.join(rows)
 
 
+def ibc_rack():
+    """ibc-reconfig-v2 RESTRAINT frame — a SINGLE FRONT PORTAL (OLD single-portal design).
+
+    Relocated here from generate_sketchup_model.py 2026-08-17: the live models use the
+    deep-box `cp.frame()` (X4654), so this old single-portal frame (X4734) was dead in the
+    live module and a drift risk (if re-wired, overview silently reverted). It survives ONLY
+    for this archived study, so it lives with the study.
+
+    The 1000L caged totes DIRECT-STACK (no load-bearing deck — 52mm headroom), are
+    non-removable, and are trapped by the side + sealed-end walls. So restraint is the front
+    portal + front retaining bars + D-ring lashing. The portal (at RWK_X_UP=4734) also gives
+    the right-walkway cantilever arms their clamp point and mounts the (forward) wet-end panel.
+    """
+    parts = []
+    s = ov.IBC_FRAME_RHS                # 50×50 RHS
+    top_z = 2 * ov.IBC_H_1000 - 40      # 2296 — restraint reaches near the stack top
+    yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
+    up_yds = (yd_near, yd_far - s)
+    fx = ov.RWK_X_UP                    # 4734 — front portal uprights (walkway arms clamp here)
+    front_x = ov.IBC_COL_X - 20         # 4654 — front bars seated in the 25mm gap, just in front of the tote face (clear of the film rail at 4649)
+    bar_d = 20                          # bar depth in X (50×20×3 RHS — fits the gap; a full 50×50 would cut into the totes)
+    c_bolt = "#3A3A42"
+
+    # Front portal: two full-height uprights + top tie + floor beam.
+    for yd in up_yds:
+        parts.append(ov.ruby_box("Front Portal Upright", fx, yd, 0, s, s, top_z, color=ov.C_STEEL))
+    parts.append(ov.ruby_box("Front Portal Top Tie", fx, yd_near, top_z - s, s, yd_far - yd_near, s, color=ov.C_STEEL))
+    parts.append(ov.ruby_box("Front Portal Floor Beam", fx, yd_near, 0, s, yd_far - yd_near, s, color=ov.C_STEEL))
+    # Panel-mount rail tying the (forward) panel face back to the portal at the top.
+    parts.append(ov.ruby_box("Panel Mount Rail", fx, yd_near, ov.EQPANEL_Z_HI - s,
+                          (ov.EQPANEL_X + ov.EQPANEL_T) - fx, yd_far - yd_near, s, color=ov.C_STEEL))
+
+    # Floor feet under the two front uprights (150×150×12 plate + 4× M12 anchors).
+    fp, ft, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_PLATE_T, ov.IBC_FOOT_BOLT_PCD // 2
+    for yd in up_yds:
+        cx, cy = fx + s / 2, yd + s / 2
+        parts.append(ov.ruby_box("Foot Flange Plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=ov.C_STEEL))
+        for dx in (-bpc, bpc):
+            for dy in (-bpc, bpc):
+                parts.append(ov.ruby_bolt("Foot Anchor Bolt M12", cx + dx, cy + dy, 0, ft + 4, radius=7, axis="z", color=c_bolt, head="far", nut=None))  # anchor into the floor — hex head at the top, no nut
+
+    # Front retaining bars (50×20×3 RHS) seated in the gap just in front of the tote
+    # face, both tiers, tied back to the portal.
+    bar_zs = (560, 1760)
+    for y0, y1 in ((0, yd_near + s), (yd_far - s, ov.C_WID)):
+        for bz in bar_zs:
+            parts.append(ov.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, s, color=ov.C_STEEL))
+    for yd in up_yds:
+        for bz in bar_zs:
+            parts.append(ov.ruby_box("Front Bar Stub", front_x, yd, bz, fx - front_x + s, s, s, color=ov.C_STEEL))
+
+    # D-ring lashing holders on the front bars.
+    for ydh in (520, ov.C_WID - 520):
+        for bz in bar_zs:
+            parts.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + s / 2, 16, 10, color=ov.C_STEEL, axis="x"))
+
+    # Wall joist hangers (Simpson U-pocket) at each front-bar wall end, through-bolted
+    # to an EXTERIOR backing plate (load-spreading, hex heads outside — the thin
+    # corrugated wall would otherwise pull through under the totes' transport thrust).
+    ext_pt, ext_pw, ext_ph = 8, 100, 135        # exterior plate: 100(X) × 135(Z) × 8 thick
+    for wall_yd, din in ((0, 1), (ov.C_WID, -1)):
+        for bz in bar_zs:
+            ht, dep = 4, 70
+            p_y = wall_yd if din > 0 else wall_yd - ht
+            s_y = wall_yd if din > 0 else wall_yd - dep
+            parts.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, bz - 30, s + 16, ht, s + 70, color=ov.C_STEEL))
+            parts.append(ov.ruby_box("Wall Hanger Seat", front_x - 4, s_y, bz - ht, s + 8, dep, ht, color=ov.C_STEEL))
+            # Exterior backing plate just outside the container wall + 4 M12 through-bolts.
+            ecx = front_x - 8 + (s + 16) / 2     # plate center X (on the hanger)
+            ecz = bz + s / 2                      # plate center Z (on the bar)
+            plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
+            bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
+            parts.append(ov.ruby_box("IBC Wall Backing Plate (ext)",
+                                  ecx - ext_pw / 2, plate_y, ecz - ext_ph / 2,
+                                  ext_pw, ext_pt, ext_ph, color=ov.C_STEEL))
+            for dx in (-ext_pw / 2 + 18, ext_pw / 2 - 18):
+                for dz in (-ext_ph / 2 + 22, ext_ph / 2 - 22):
+                    parts.append(ov.ruby_bolt("IBC Wall Through-Bolt M12",
+                                           ecx + dx, bolt_cy, ecz + dz, 58, radius=7,
+                                           axis="y", color=c_bolt, head="far", nut="base"))  # head OUTSIDE (far), nut inside
+
+    return '\n'.join(parts)
+
+
 def generate_ruby():
     comps = [
         ov.component("Container (ghost)", "Context", context()),
-        ov.component("IBC Frame", "IBC Frame", ov.ibc_rack()),
+        ov.component("IBC Frame", "IBC Frame", ibc_rack()),
         ov.component("Tray + Spray bar", "Tray + Spray", tray_and_spray()),
         ov.component("Film Rail + Saddles", "Film Rail + Saddle", film_rail_saddle()),
         ov.component("Cantilever Right Walkway", "Cantilever Walkway", right_cantilever()),

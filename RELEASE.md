@@ -24,7 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **3D-model hygiene (post-0.7).** Three drift/readability items off the tracker: (1) **retired the dead
+  `ibc_rack()`** — the old single-portal frame builder (X4734), dead in the live model but a drift risk, moved
+  out of `generate_sketchup_model.py` into its sole consumer (the archived right-cantilever study) so overview
+  can't silently revert to the pre-redesign frame; (2) **fixed the real J6 clash** — the walkway cantilever-arm
+  rear backing plate dipped ~10 cm³ into the corridor bottom X-rail at each front upright; raised its bottom to
+  butt the rail top (Z62.8), moment joint untouched, `--solids`-verified gone on the live model; (3) the RWk end
+  beam↔long-beam butt was already resolved — narrowed the remaining seam-audit sliver (long-beam ends ↔ wall
+  cleat) for a walkway-open pass. Cascade: `ibc_cantilever_arms` re-sent to ibc-stack (+ overview/walkway/
+  construction/water to follow).
 
 ## [0.7] — 2026-08-17
 

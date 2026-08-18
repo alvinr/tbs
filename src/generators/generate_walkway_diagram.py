@@ -59,7 +59,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -728,8 +728,8 @@ def sheet2():
     NUT_H     = 10   # nut height (Yd direction)
     WASHER_T  = 3
     C_BOLT    = "#505058"
-    bolt_z_lo = 35   # lower pair — flanking gusset in X, ±27mm from CL
-    bolt_z_hi = 120  # upper single — above grating deck (Z=100), on gusset CL
+    bolt_z_lo = 42   # lower pair — flanking gusset in X, ±27mm from CL (matches the 3D pattern)
+    bolt_z_hi = BRKT_VERT - 30  # = 140 — upper single, 30mm below the plate top (matches the 3D vh−30 far cantilevers); clears the arm top (Z115)
 
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
@@ -988,7 +988,7 @@ def sheet2():
              ha="center", va="center", fontsize=5, color="#E0E0E0",
              **FONT, zorder=15)
 
-    ax2.add_patch(Rectangle((pl2, arm_bot), REINF_W, ARM_DEPTH,
+    ax2.add_patch(Rectangle((cx2 - BRKT_T / 2, arm_bot), BRKT_T, ARM_DEPTH,
                              fc="none", ec=C_OUT, lw=1.2, ls="--", zorder=6))
     ax2.text(pr2 + 4, (arm_bot + brkt_arm_z) / 2,
              f"ARM\nZ={arm_bot}–{brkt_arm_z}",
@@ -1700,7 +1700,7 @@ def sheet6():
     # Grate (sits on the arm/post tops)
     axA.add_patch(Rectangle((170, grate_bot), std_reach - 170, grate_top - grate_bot,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", alpha=0.85, zorder=8))
-    leader(axA, 430, grate_top, 445, grate_top + 30, "15mm GRATE (lift-out)",
+    leader(axA, 430, grate_top, 445, grate_top + 30, f"{WALKWAY_GRATE_T}mm GRATE (lift-out)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Spray bar (passes UNDER the arm tip — 40×25 SS RHS, rides the sloped tray floor)
     axA.add_patch(Rectangle((std_reach, sb0), 40, sb1 - sb0, fc=C_SB, ec=C_OUT, lw=1.2, zorder=5))
@@ -1711,12 +1711,13 @@ def sheet6():
     draw_dim_v(axA, std_reach + 5, sb1, arm_z0, f"{arm_z0 - sb1:.0f}mm", offset=8, fs=6, right=True, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
-    # Floor anchors (4x M10 through the foot plate; 2 visible in this section).
-    # Labelled in VIEW B + the notes, so no leader here (keeps clear of the notes block).
-    # BOTH columns sit OUTBOARD of the post (X115-165) — same as VIEW B (post over the
-    # anchor holes would be unbuildable). Mirror VIEW B's formula: fx0+14 and fx0+fl-post-14.
-    for ax_ in (fx0 + 14, fx0 + fl - post - 14):
-        axA.add_patch(Rectangle((ax_ - 3, -14), 6, 14 + ft, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=7))
+    # Floor anchors — #14 SS self-drillers (2 of the 4 visible in this section). Head bears on the foot
+    # plate; the shank drives DOWN through the plate into the ply-over-steel floor. Positions single-
+    # sourced from LEFT_WK_CANT_FOOT_BOLT_DX (outboard, clear of the post — Alvin 2026-08-18).
+    for dx in LEFT_WK_CANT_FOOT_BOLT_DX:
+        ax_ = fx0 + dx
+        axA.add_patch(Rectangle((ax_ - 3, -14), 6, 14 + ft, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=7))   # shank into floor
+        axA.add_patch(Rectangle((ax_ - 7, ft), 14, 6, fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))          # hex head bearing on the plate
     # Load arrow at the arm tip
     axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=2.0))
@@ -1724,6 +1725,9 @@ def sheet6():
     draw_dim_v(axA, 95, 0, grate_bot, f"{grate_bot}mm", offset=6, fs=6, right=False, font=FONT)
     draw_dim_h(axA, arm_x0, std_reach, arm_z0 - 16, f"{int(std_reach - arm_x0)}mm reach",
                offset=4, fs=6, above=True, font=FONT)
+    # Foot plate length + the outboard anchor column position (fab dims)
+    draw_dim_h(axA, fx0, fx0 + fl, -30, f"{fl}mm FOOT", offset=4, fs=5.5, above=False, font=FONT)
+    draw_dim_v(axA, fx0 - 12, 0, grate_bot, f"{int(grate_bot)}mm POST", offset=5, fs=5.5, right=False, font=FONT)
 
     # ===================== VIEW B — foot-plate plan =====================
     axB.set_xlim(-90, 90)
@@ -1732,22 +1736,30 @@ def sheet6():
              ha="center", va="bottom", fontsize=8, color=C_OUT, fontweight="bold", **FONT)
     # plate fl x fw centred
     axB.add_patch(Rectangle((-fl / 2, -fw / 2), fl, fw, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
-    # post footprint (50x50) — offset toward the inboard (tray) edge as in the bracket
-    axB.add_patch(Rectangle((fl / 2 - post - 4, -post / 2), post, post, fill=False,
+    # post footprint — REAL position (from LEFT_WK_CANT_LEG_X), in the centered plan frame
+    post_cx = legx - (fx0 + fl / 2)          # post centre, centered frame (foot centre at 0)
+    axB.add_patch(Rectangle((post_cx - post / 2, -post / 2), post, post, fill=False,
                             ec="#888", lw=0.8, ls=(0, (4, 3)), zorder=6))
-    axB.text(fl / 2 - post / 2 - 4, 0, "POST", ha="center", va="center", fontsize=5,
+    axB.text(post_cx, 0, "POST", ha="center", va="center", fontsize=5,
              color="#888", fontfamily="monospace", zorder=7)
-    # 4 M10 anchors — BOTH columns on the OUTRIGGER, clear of the post footprint (the post sits at the
-    # inboard edge, so the anchors go outboard of it; they resist the cantilever's overturning uplift).
-    for ox in (-fl / 2 + 14, fl / 2 - post - 14):
-        for oy in (-fw / 2 + 13, fw / 2 - 13):
+    # 4 anchors — columns from LEFT_WK_CANT_FOOT_BOLT_DX (centered = dx − fl/2), rows ±DY. Both columns
+    # OUTBOARD of the post (it reacts the cantilever uplift), with driver clearance to the post.
+    anchor_oxs = [dx - fl / 2 for dx in LEFT_WK_CANT_FOOT_BOLT_DX]
+    anchor_oys = [-LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_FOOT_BOLT_DY]
+    for ox in anchor_oxs:
+        for oy in anchor_oys:
             axB.add_patch(Circle((ox, oy), 7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))
             axB.add_patch(Circle((ox, oy), 5, fc=BG, ec=C_BOLT, lw=0.6, zorder=9))
-    leader(axB, -fl / 2 + 14, fw / 2 - 13, -fl / 2 - 18, fw / 2 + 24,
-           f"{nb}x M10 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
+    leader(axB, anchor_oxs[0], anchor_oys[1], -fl / 2 - 18, fw / 2 + 24,
+           f"{nb}x #14 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
     draw_dim_h(axB, -fl / 2, fl / 2, -fw / 2 - 12, f"{fl}mm", offset=4, fs=6, above=False, font=FONT)
     draw_dim_v(axB, fl / 2 + 14, -fw / 2, fw / 2, f"{fw}mm", offset=6, fs=6, right=True, font=FONT)
+    # Anchor PATTERN dims (what the shop drills to): column spacing (dim_h) + row spacing (dim_v)
+    draw_dim_h(axB, anchor_oxs[0], anchor_oxs[1], anchor_oys[1] + 13,
+               f"{int(anchor_oxs[1] - anchor_oxs[0])}mm", offset=4, fs=5.5, above=True, font=FONT)
+    draw_dim_v(axB, anchor_oxs[0] - 13, anchor_oys[0], anchor_oys[1],
+               f"{int(anchor_oys[1] - anchor_oys[0])}mm", offset=5, fs=5.5, right=False, font=FONT)
 
     # ── Notes ──
     notes = [
@@ -1916,15 +1928,15 @@ def sheet7():
     ax.plot([(0), (W_ARM_W)], [(brkt_arm_z), (brkt_arm_z)],
             color=C_OUT, lw=2.0, zorder=7)
 
-    # 3. Gusset underneath arm
+    # 3. Gusset underneath arm — back edge ON the plate inner face (Yd=W_BRKT_T), not through the plate
     gusset_verts = [
-        ((0), (0)),
-        ((0), (w_arm_bot)),
+        ((W_BRKT_T), (0)),
+        ((W_BRKT_T), (w_arm_bot)),
         ((W_GUSSET), (w_arm_bot)),
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([(0), (W_GUSSET)], [(0), (w_arm_bot)],
+    ax.plot([(W_BRKT_T), (W_GUSSET)], [(0), (w_arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
     # Weld symbol
@@ -2144,7 +2156,7 @@ def sheet7():
              **FONT, zorder=15)
 
     ARM_DEPTH_B = W_ARM_DEPTH
-    ax2.add_patch(Rectangle((pl2, w_arm_bot), W_REINF_W, ARM_DEPTH_B,
+    ax2.add_patch(Rectangle((cx2 - W_BRKT_T / 2, w_arm_bot), W_BRKT_T, ARM_DEPTH_B,
                              fc="none", ec=C_OUT, lw=1.2, ls="--", zorder=6))
     ax2.text(pr2 + 4, (w_arm_bot + brkt_arm_z) / 2,
              f"ARM\nZ={w_arm_bot}–{brkt_arm_z}",

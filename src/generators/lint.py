@@ -819,6 +819,73 @@ def warn_duplication() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["staged duplicated emitters agree"])
 
 
+# ── Cross-file emitter RATCHET ───────────────────────────────────────────────
+# A component's geometry must have ONE owning builder that every model calls — never a divergent copy.
+# This detects the copies STATICALLY: any component NAME emitted as a `ruby_*` literal first-arg in more
+# than one model generator. The allowlist is the CURRENTLY-permitted set; the gate fails on any NEW
+# duplicate AND on any STALE entry (a name no longer duplicated must be removed here in the SAME commit)
+# — a one-way ratchet driving the count to zero as the 3D-dedup pass consolidates each cluster.
+_EMIT_HELPERS = ("ruby_box", "ruby_cylinder", "ruby_bolt", "ruby_tri", "ruby_arc_wall",
+                 "ruby_cone", "ruby_prism")
+_EMITTER_DUP_ALLOW = {
+    # PERMANENT — featureless per-model CONTEXT ghost (a plain floor slab; no details to drift):
+    "Floor": "context ghost — featureless per-model floor slab, no drift risk",
+    "Floor (context)": "context ghost — featureless per-model floor slab, no drift risk",
+    # TEMPORARY — being consolidated by the 3D-dedup pass (owner in parens); remove each as it lands:
+    "Cable Trunking (40x25 PVC)": "consolidate → electrical (em)",
+    "Cct E Inverter (12->120V AC)": "consolidate → electrical (em)",
+    "Master pump switch (Cct C, on EP)": "consolidate → electrical (em)",
+    "Master switch lever (OFF cutoff)": "consolidate → electrical (em)",
+    "Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)": "consolidate → lighttrap (lt)",
+    "Fan B mount band (18mm ply)": "consolidate → lighttrap (lt)",
+    "Tray Rim Near": "consolidate → overview (ov.processing_tray)",
+    "Tray Rim Far": "consolidate → overview (ov.processing_tray)",
+    "Tray Rim Left": "consolidate → overview (ov.processing_tray)",
+    "Tray Rim Right": "consolidate → overview (ov.processing_tray)",
+    "Tray Shim Base": "consolidate → overview (ov.processing_tray)",
+    "Walkway Far": "consolidate → walkway (wm)",
+    "Walkway Near (door-end, removable)": "consolidate → walkway (wm)",
+    "Tray sump strainer foot": "consolidate → corridor (cp)",
+    "Pinhole wall": "consolidate → pinhole-water/overview",
+}
+
+
+def _cross_file_emitter_dups() -> dict:
+    """{name: [model files]} for every ruby_* literal component name emitted in >1 model generator."""
+    import ast, glob
+    nf: dict = {}
+    for path in sorted(glob.glob(os.path.join(_MODELS, "generate_*.py"))):
+        mod = os.path.basename(path)
+        try:
+            tree = ast.parse(open(path, encoding="utf-8").read())
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Call) and node.args:
+                f = node.func
+                nm = f.attr if isinstance(f, ast.Attribute) else getattr(f, "id", None)
+                a0 = node.args[0]
+                if nm in _EMIT_HELPERS and isinstance(a0, ast.Constant) and isinstance(a0.value, str):
+                    nf.setdefault(a0.value, set()).add(mod)
+    return {k: sorted(v) for k, v in nf.items() if len(v) > 1}
+
+
+def gate_emitter_dups() -> tuple[bool, list[str]]:
+    detected = _cross_file_emitter_dups()
+    allow = set(_EMITTER_DUP_ALLOW)
+    issues = []
+    for name, mods in sorted(detected.items()):
+        if name not in allow:
+            short = [m.replace("generate_", "").replace("_model.py", "").replace(".py", "") for m in mods]
+            issues.append(f"NEW cross-file duplicate emitter {name!r} in {short} — "
+                          f"give it ONE owning builder the other model calls")
+    for name in sorted(allow - set(detected)):
+        issues.append(f"stale allowlist entry {name!r} — no longer duplicated; "
+                      f"remove it from _EMITTER_DUP_ALLOW (ratchet to zero)")
+    return (not issues), (issues or [f"no un-allowlisted cross-file duplicate emitters "
+                                     f"({len(detected)} allowlisted: {len(allow) - 2} pending, 2 context)"])
+
+
 def warn_unused_imports() -> tuple[bool, list[str]]:
     """A generator/model that imports a name it no longer uses — code cruft that
     check_unused_imports.py (a release gate) strips with --fix. Surfaced here as a per-commit
@@ -915,6 +982,7 @@ GATES = [
     ("parts doc-blocks (generated == doc)", gate_parts_blocks),
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),
     ("plumbing routing change ships a refreshed interference report", gate_interference_report),
+    ("no NEW cross-file duplicate geometry emitter (ratchet)", gate_emitter_dups),
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),

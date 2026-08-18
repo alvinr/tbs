@@ -265,7 +265,7 @@ def sheet2():
     draw_dim_v(ax, fx2 - 20, fy2 + TAB_H - 25, fy2 + TAB_H, "25mm", fs=5.5, font=FONT)
     ax.text(fx2 + TAB_LEG/2, fy2 - 16, "TAB face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
     _specbox(ax, 560, 320, [f"1× Ø{TAB_HOLE_D} (M8) — J4 bolt into a tee-nut in the ply",
-                            "25 from the tab top; centered on the 50 leg"])
+                            "25mm from the tab top; centered on the 50mm leg"])
 
     # ── PLATE 6 — PIPE-RUN L-BRACKET (1×1×⅛ angle, 1× Ø7/¼-20) ──
     _panel(ax, 900, 40, 440, 340, "PLATE 6 — PIPE-RUN L-BRACKET", "1×1×⅛ angle (25×25×3.2) · L120 · ×12")

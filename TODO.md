@@ -13,6 +13,17 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **`check_interference.py --bolts` — orientation/grip lint (PROTOTYPE landed 2026-08-17).** New read-only
+  advisory pass: for every structural grip bolt it finds the members its centerline pierces and flags **EDGE**
+  (center-to-edge < 1.5·D — the J2/J7 3mm-edge class that kept slipping to review), **FLOATING** (pierces no
+  member), **PROJECT** (shank runs past the grip). Bounding-box based, scoped to structural steel (film-plane
+  precision mechanism + liquids excluded), drawn-D so slightly conservative. **Triage the 15 current overview
+  flags:** the genuine one is **RWk J6 top bolt 15.3mm from the end-plate top edge** (make `RWK_J6_EP_H` ~6mm
+  taller, or accept); **Frame-corner bolt 7<9 in the X-slide shaft support** (film-plane bracket — confirm);
+  the `0.6/2.0mm in beam upper/lower` are half-lap remnant clips (benign if the remnant isn't load-bearing
+  there); IBC wall-bolt 18<21 is nominal-OK (drawn D14 vs M12). **Next:** wire it into the pre-send routine +
+  a lint advisory; consider a `bolted_joint()` emitter so orientation is correct-by-construction (retro item A).
+
 - [ ] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (Alvin
   2026-08-17, HARD PRINCIPLE).** A design change must reflect in **every** model when they regenerate; the
   model must not drift. The GOOD pattern already exists — the IBC front bars are one shared builder

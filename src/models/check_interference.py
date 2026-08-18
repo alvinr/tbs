@@ -26,6 +26,12 @@ render as one fused piece because no seam line shows — a semantic-triage revie
   --pipes   pipes driven THROUGH a thin surface slab (panel/wall/plate) and emerging the far side with
             no drilled-hole seam.  Fix: a collar/grommet ring at the face, or split the pipe to butt it.
   --seams   both readability passes.
+
+One READ-ONLY fastener-orientation pass (advisory) catches through-bolts that are dimensionally fine but
+physically wrong — the class that only ever surfaced when a render was eyeballed:
+  --bolts   for every grip bolt, find the members its centerline pierces and flag EDGE (hole < 1.5xD from
+            a member edge — the J2/J7 3mm-edge class), FLOATING (pierces no structural member), and
+            PROJECT (shank runs well past the grip — the "bolts projecting past the plates" class).
 """
 import sys, os, json
 from collections import defaultdict
@@ -498,6 +504,111 @@ def pipes_pass(data, margin=1.0):
     return len(open_hits)
 
 
+# ── fastener orientation / grip audit (--bolts) ──────────────────────────────
+# A through-bolt drawn with the wrong axis, through the wrong FACE, at the wrong length, or too near an
+# edge is dimensionally "correct" but physically wrong — and it stays invisible until someone eyeballs a
+# render (the J2 3mm-edge flaw, "bolts projecting past the plates", "bolt through the 20mm face").  This
+# pass makes the computer catch what the eye was catching: for every grip bolt (a fastener cylinder that
+# is NOT a head/nut/washer sub-part), it finds the structural members its centerline PIERCES and checks:
+#   EDGE      center-to-edge distance in the gripped member < edge_factor·D  (1.5·D — the J2/J7 class)
+#   FLOATING  the bolt pierces NO structural member (placed in air / wrong spot)
+#   PROJECT   the shank runs > proj_tol mm beyond the outermost member it grips (sticking out / wrong len)
+# Bounding-box based (bolts are axis-aligned cylinders, so their AABB is tight + the axis unambiguous).
+# READ-ONLY, advisory — a triage list, not a gate.  D is read from the shank's own cross-section.
+# Fasteners that carry NO structural edge-distance rule (precision fits, seals, non-through parts) — the
+# pass is scoped to structural STEEL through-bolts (the J2/J7/J6/wall/flange class), so the film-plane
+# skate/clamp precision mechanism and liquid vessels are out of scope on either the bolt OR the member.
+_NON_BOLT_FASTENER = ("u-joint", "u joint", "gib", " pad", "shim", "dowel", "washer", "threaded rod",
+                      "stud")
+_MECH_KEYS = ("axle", "wheel", "skate", "carriage", "cam-brake", "cam brake", "ball-joint", "ball joint",
+              "clamp bolt", "clamp csk", "roller", "socket", "manifold", "water in", "bath", "lever",
+              "u-joint", "u joint", "gib", "cam ")
+MAX_BOLT_D = 22.0        # a grip bolt AABB cross-section ≤ ~M20; a plate/lever/arm is wider (filters "…bolted…")
+SLENDER_RATIO = 1.8      # the two cross-section dims must be within this (round shank, not a flat plate)
+
+
+def _bolt_subpart(name):
+    nl = name.lower()
+    return "head" in nl or nl.endswith(" nut") or " nut " in nl or "washer" in nl or "csk" in nl
+
+
+def is_grip_bolt(name):
+    """A load-bearing structural through-bolt/screw/anchor with an edge-distance rule — not a head/nut/
+    washer/CSK sub-part, not a non-through/precision fastener, not a mechanism part that merely says
+    'bolted'."""
+    n = name.lower()
+    if not is_fastener(name) or _bolt_subpart(name):
+        return False
+    if any(k in n for k in _NON_BOLT_FASTENER) or any(k in n for k in _MECH_KEYS):
+        return False
+    return True
+
+
+def bolts_pass(data, edge_factor=1.5, proj_tol=25.0, grace_mm=1.0):
+    # NOTE: D is the DRAWN shank AABB (radius 6-7 → D12-14), slightly larger than the nominal thread
+    # (M12=12), so the 1.5·D bar is a touch conservative — a flag within a few mm of the bar may be
+    # nominal-OK.  grace_mm suppresses exact-threshold boundary hits.  This is a TRIAGE list: when a bolt
+    # pierces several members the WORST-edge member is named, which may be an incidental notched-beam
+    # remnant rather than the primary gripped plate — a human confirms.
+    shanks = [g for g in data if is_grip_bolt(g["n"])]
+    solids = [g for g in data if g.get("co") and is_readable_solid(g["n"])
+              and not is_fastener(g["n"]) and classify(g["n"])[0] not in ("pipe", "skip")
+              and not any(k in g["n"].lower() for k in _MECH_KEYS)]   # structural members only (no axle/liquid)
+    flags = []       # (kind, bolt, member|None, value, D)
+    for s in shanks:
+        dims = [s["mx"][i] - s["mn"][i] for i in range(3)]
+        la = max(range(3), key=lambda i: dims[i])                     # bolt axis = dominant extent
+        perp = [i for i in range(3) if i != la]
+        p0, p1 = sorted((dims[perp[0]], dims[perp[1]]))
+        D = p0 or 1.0                                                 # shank diameter (smaller cross dim)
+        # SLENDERNESS gate: a real shank is round (perp dims ≈ equal) and ≤ ~M20; a plate/lever that merely
+        # says "bolted" has a wide, lopsided cross-section — skip it.
+        if p1 > MAX_BOLT_D or (p0 > 0.5 and p1 / p0 > SLENDER_RATIO):
+            continue
+        ctr = [(s["mn"][i] + s["mx"][i]) / 2 for i in range(3)]
+        stack = []                                                    # members the centerline pierces
+        for g in solids:
+            if min(s["mx"][la], g["mx"][la]) - max(s["mn"][la], g["mn"][la]) <= 0:
+                continue                                              # no depth overlap along the bolt axis
+            if all(g["mn"][p] + 0.5 <= ctr[p] <= g["mx"][p] - 0.5 for p in perp):
+                stack.append(g)                                       # centerline runs inside its cross-section
+        if not stack:
+            flags.append(("FLOATING", s, None, 0.0, D))
+            continue
+        we, wg = None, None                                          # worst (min) edge distance + its member
+        for g in stack:
+            ed = min(min(ctr[p] - g["mn"][p], g["mx"][p] - ctr[p]) for p in perp)
+            if we is None or ed < we:
+                we, wg = ed, g
+        if we < edge_factor * D - grace_mm:
+            flags.append(("EDGE", s, wg, we, D))
+        lo = min(g["mn"][la] for g in stack); hi = max(g["mx"][la] for g in stack)
+        over = max(lo - s["mn"][la], s["mx"][la] - hi)
+        if over > proj_tol:
+            flags.append(("PROJECT", s, None, over, D))
+    # dedupe (phased/duplicated models repeat a joint)
+    seen, uniq = set(), []
+    for f in flags:
+        k = (f[0], f[1]["n"], f[2]["n"] if f[2] else "")
+        if k not in seen:
+            seen.add(k); uniq.append(f)
+    axis_nm = ("X", "Yd", "Z")
+    print(f"grip-bolt orientation/grip flags: {len(uniq)}  "
+          f"(EDGE = hole < {edge_factor}xD from a member edge; FLOATING = pierces nothing; "
+          f"PROJECT = shank > {proj_tol:.0f}mm past the grip)")
+    for kind, s, g, val, D in sorted(uniq, key=lambda f: (f[0], -f[3] if f[0] != "EDGE" else f[3])):
+        dims = [s["mx"][i] - s["mn"][i] for i in range(3)]
+        la = max(range(3), key=lambda i: dims[i])
+        c = [round((s["mn"][i] + s["mx"][i]) / 2) for i in range(3)]
+        if kind == "EDGE":
+            print(f"  EDGE      {s['n']:40.40s} axis {axis_nm[la]:2s} D{D:.0f}  edge {val:.1f}mm < {edge_factor*D:.0f}mm  in {g['n']}")
+        elif kind == "FLOATING":
+            print(f"  FLOATING  {s['n']:40.40s} axis {axis_nm[la]:2s}  pierces no structural member @ ({c[0]},{c[1]},{c[2]})")
+        else:
+            print(f"  PROJECT   {s['n']:40.40s} axis {axis_nm[la]:2s}  shank {val:.0f}mm past the grip @ ({c[0]},{c[1]},{c[2]})")
+    return len(uniq)
+
+
 def main():
     payload = json.loads(send_ruby(RUBY))
     title = payload.get("title", "?")
@@ -614,6 +725,8 @@ def _readability(which):
         n += solids_pass(data)
     if which in ("pipes", "all"):
         n += pipes_pass(data)
+    if which in ("bolts", "all"):
+        n += bolts_pass(data)
     return 0 if n == 0 else 0   # advisory only — never a nonzero (non-gating) exit
 
 
@@ -622,6 +735,8 @@ if __name__ == "__main__":
         sys.exit(_readability("solids"))
     if "--pipes" in sys.argv:
         sys.exit(_readability("pipes"))
+    if "--bolts" in sys.argv:
+        sys.exit(_readability("bolts"))
     if "--readability" in sys.argv or "--seams" in sys.argv:
         sys.exit(_readability("all"))
     if "--write" in sys.argv:

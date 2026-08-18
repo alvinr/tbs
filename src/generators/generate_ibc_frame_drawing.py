@@ -514,7 +514,7 @@ def sheet1():
     for bz in (500, 950, 1500, 1950):
         _wall_hanger(0, +1, bz)
         _wall_hanger(C_WID, -1, bz)
-    for ydh in (520, 940, 1422, C_WID - 520):    # D-ring lashing holders (4 per tier, 8 total)
+    for ydh in (520, 900, 1462, C_WID - 520):    # D-ring lashing holders (4 per tier, 8 total) — clear of the corridor cleats (matches 3D)
         for bz in (500, 1500):
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))
@@ -1516,7 +1516,7 @@ def sheet6():
         ax.add_patch(Rectangle((xLo - 24, bz - 11), 24, 11, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))    # near cleat leg (outside edge)
         ax.add_patch(Rectangle((xRo, bz - 11), 24, 11, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))         # far cleat leg (outside edge)
     for bz in (210, 480):                              # lashing rings — 4 per tier (2 near bar + 2 far bar) × 2 tiers = 8
-        for rx in (240, 400, 840, 1000):
+        for rx in (310, 450, 824, 1000):
             ax.add_patch(Circle((rx, bz + 12), 13, fc="none", ec=C_OUT, lw=1.8, zorder=8))
     ax.text((xLi + xRi) / 2, zb + (zt - zb) / 2, "CORRIDOR\n(rings tie\nthe uprights)", fontsize=5.0, ha="center", va="center", color=C_DIM, **FONT)
     ax.text(xL, zt + 22, "NEAR\nUPRIGHT", fontsize=5.3, ha="center", va="bottom", color=C_DIM, **FONT)
@@ -1543,13 +1543,13 @@ def sheet6():
         _weld_tick(ax, xRo, bz + 5, side='right', size=5)
     # W4 — lashing ring↔bar: ALL 8 (4 per tier × 2 tiers)
     for bz in (210, 480):
-        for rx in (240, 400, 840, 1000):
+        for rx in (310, 450, 824, 1000):
             _weld_tick(ax, rx, bz + 12, side='up', size=4)
     # one leader per weld TYPE
     leader(ax, xLi, zt - upw / 2, xL - 150, zt + 26, "W1 (×8 = 4 legs × 2 rings)", fs=6.6, font=FONT, ha="right")
     leader(ax, xLo, zb, xLo - 130, zb - 60, "W2 (×4 feet)", fs=6.6, font=FONT, ha="right")
     leader(ax, xRo, 485, xRo + 130, 430, "W3 (×8 cleats)", fs=6.6, font=FONT, ha="left")
-    leader(ax, 240, 210 + 12, 170, 120, "W4 (×8 rings)", fs=6.6, font=FONT, ha="right")
+    leader(ax, 310, 210 + 12, 230, 120, "W4 (×8 rings)", fs=6.6, font=FONT, ha="right")
     ax.text(670, -18, "W5 — wall-hanger seat↔back-plate (off-frame; see Plate Schedule, Plate 3)   ·   "
             "W6 — ribbon cross-beam↔walkway bearer (plumbing-corridor ribbon, not the tote frame)",
             fontsize=5.2, ha="center", color=C_DIM, **FONT)

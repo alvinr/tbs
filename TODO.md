@@ -101,8 +101,17 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   drain). **REMAINING — fix each:** either (a) draw a short collar/grommet ring at the face, or (b) split the
   pipe so each side butts it. Each fix = generator edit + re-send (single-writer). (Alvin 2026-08-15.)
 
-- [ ] **Explore the Sketchfab Data API (Python) to automate model re-upload.** [Sketchfab Data API v3 — Python](https://sketchfab.com/developers/data-api/v3/python).
-  Today the single-writer protocol ends with ALVIN manually re-uploading each `.skp` to Sketchfab (same model UID). Investigate driving that upload programmatically (PATCH/upload to the existing model UID via the Data API + a token), so a re-send could optionally push to Sketchfab without the manual step. Respect the single-writer rule (ALVIN still saves the `.skp`); the API would replace only the *upload* leg. Prereqs: API token handling, per-model UID already lives in `dependencies.yml` (`push_sketchfab.py` reads it), verify the API supports replacing a model's source file in place.
+- [ ] **Automate Sketchfab re-upload via `PUT /v3/models/{uid}` — VIABILITY PROVEN 2026-08-18, ready to build.**
+  The Data API DOES support in-place geometry replacement: **`PUT /v3/models/{uid}` with `modelFile`** replaces
+  the mesh while KEEPING the same UID/URL and PRESERVING attributes (name/settings/materials). Only PATCH is
+  metadata-only — `push_sketchfab.py`'s docstring ("cannot replace geometry, create a new model each push") is
+  WRONG and predates checking PUT. **Validated the full lifecycle** with a scratch model (`scratchpad/
+  sketchfab_experiment.py`): POST box → PUT box+cylinder → same UID, name survived a PUT that never resent it,
+  stayed public, faceCount grew, HTTP 204. `.dae` export unchanged (API still rejects `.skp`; overview.dae is
+  2.3 MB « the 50 MB free-tier cap). **BUILD:** rewrite `push_sketchfab.py` to `PUT {uid}` instead of POST-new
+  → **deletes** the embed-rewrite + `dependencies.yml` uid-swap + old-model-delete steps AND stops resetting
+  viewer settings. Keep POST as a `--new` fallback. Single-writer respected (ALVIN saves the `.skp`; PUT is the
+  upload leg). Optionally add a `--push` flag to the `--send` flow, token-gated. [Data API v3](https://sketchfab.com/developers/data-api/v3/python)
 
 - [x] **Reconcile the `project-cost-breakdown.md` §5 water-system breakdown table to `costing.py` — DONE 2026-08-05.** Root cause: `costing._render_detail` is a POSITIONAL value fill (keeps the doc's hand-edited labels, rewrites value cells from `WATER[di]` by row index). Inserting the pinhole-wall ply as `WATER` item #5 shifted every value from #5 on up by one row while the doc kept 13 labels — so labels/values misaligned and the last item ($257 consumables) fell off the bottom (TOTAL≠sum by $257). Fix = insert the missing **ply label row** at position 5, then `--inject` refilled all 14 values correctly (Filter skid $541, Valves $922, Pipe $84, tray $1,473/$2,121, spray $584/$596, consumables $257). Rows now sum to $6,579/$7,730 = the TOTAL; "table arithmetic" lint [OK].
 

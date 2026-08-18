@@ -298,12 +298,7 @@ The panel + drum swing about the Ø89 pivot — ~56° inboard for transport (the
 | Pump manifold | No — far inboard (IBC end) |
 | Water lines | No — far inboard |
 
-**Cargo door egress detail — panel open 180° outward:**
-![TBS-001 Cargo Door Egress Detail](assets/container-floorplan-sheet2.png)
-
-The light trap drum sweeps through exterior space during 180° rotation. No interior equipment exists in the left end zone floor area.
-
-**Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.
+**Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress (through the revolving-drum light lock) and full clearance for the panel's inward transport swing at the cargo door end.
 
 ---
 

@@ -967,7 +967,7 @@ LEFT_WK_CANT_FOOT     = (165, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the p
 # Was hardcoded 38 (correct only while LEG_X=140); it got stranded when FP_X_L moved 150→260 (2026-08-11) cascaded LEG_X→250. (2026-08-16)
 LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈147; foot right edge ≈ post right edge, ~5mm clear of the tray L
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
-LEFT_WK_CANT_FOOT_BOLT_DX = (30, 90)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+30/+90 (=140/200), both in the clear INBOARD outrigger, clear of the post (X224.6+) [F3, 2026-08-18]
+LEFT_WK_CANT_FOOT_BOLT_DX = (20, 60)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+20/+60 (=130/170), OUTBOARD in the clear land: ~55mm clear of the post (X224.6) for driver access AND best-placed to react the cantilever's uplift (Alvin 2026-08-18) [F3]
 LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline (within the 60mm foot width) [F3, 2026-08-18]
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)

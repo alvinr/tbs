@@ -32,8 +32,6 @@
 
 ![TBS-001 — Container Floor Plan](assets/container-floorplan.png)
 
-![TBS-001 — Cargo Door Egress Detail](assets/container-floorplan-sheet2.png)
-
 ---
 
 ## 5. Optical Line-of-Sight Clearance

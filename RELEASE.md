@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **3D models: single-owner dedup pass + a ratchet gate.** Components were being re-implemented in more than
+  one model generator (the drift behind "the detail is right in one model, wrong in another"). Added a `lint.py`
+  **ratchet gate** — no component name may be emitted as a `ruby_*` literal in >1 model file — and consolidated
+  4 clusters to a single owning builder each that the other models call: **electrical** (em owns cable trunking,
+  inverter box, master switch — overview's full-length trunking corrected to em's fitted extent), **Fan B box**
+  (lighttrap), **processing tray** (overview owns the sloped pan; the spray-bar model now shows the *same* tray
+  ghosted instead of a flat copy), **walkway Far/Near decks** (walkway model). 17 cross-file duplicates → 5,
+  and the 5 are documented (2 permanent context ghosts + 3 real drifts the audit surfaced: cargo-door panel
+  thickness 120 vs 40 mm, sump-pickup Yd 155 vs 104, and the mini-tbs scale-toy wall — all tracked in TODO).
+
 - **J6 end-plate grown 148→155 mm (edge-distance triage) + BOM drift fixed.** The new `--bolts` lint flagged the
   upper J6 bolt at only 15.3 mm from the end-plate top edge (< 1.5·D = 18 mm for M12). Grew the plate top to
   Z192 (`RWK_J6_EP_H` 148→155) so the bolt gets 22 mm edge — `--bolts`-verified clear on the live model; cascaded

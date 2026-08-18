@@ -236,6 +236,17 @@ def context():
     return '\n'.join(p)
 
 
+def master_switch():
+    """The Cct-C master pump cutoff — body + red OFF lever — on the EP, in the reachable disconnect
+    cluster (grouped with the main + PV disconnects). SINGLE OWNER — power_core() and the water
+    plumbing-panel's standalone view both call this. `MASTER_SW_POS` is its top feed terminal."""
+    _msx, _msz = EP_X + 130, EP_DISC_Z
+    return '\n'.join([
+        ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, 0, _msz, 50, 46, 84, color="#202020"),
+        ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, 46, _msz + 40, 16, 34, 16, color="#C0202A"),
+    ])
+
+
 def power_core(external_links=True, links_only=False):
     """EP internals on a PLYWOOD BACKING PANEL, with the DC gear inside a ghosted IP65 enclosure
     (its back IS the plywood): MPPT, fuse block,
@@ -308,11 +319,7 @@ def power_core(external_links=True, links_only=False):
                              _FUSE_W, _FUSE_T, _FUSE_H, color=CCT[c][0]))
     # MASTER PUMP SWITCH — Cct-C single cutoff on the EP, at the Circuit-C fuse (red-lever disconnect,
     # mounted on the panel at Yd0). The switched Cct-C feed runs the ceiling trunk to the pump wireway.
-    _msx, _msz = EP_X + 130, EP_DISC_Z          # into the reachable disconnect cluster (grouped w/ main + PV)
-    p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, 0, _msz,
-                         50, 46, 84, color="#202020"))
-    p.append(ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, 46, _msz + 40,
-                         16, 34, 16, color="#C0202A"))
+    p.append(master_switch())
     p.append(ov.ruby_box("Busbar (+)", EP_X + 15, 30, ez + 170,
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
     p.append(ov.ruby_box("Busbar (-)", EP_X + 15, 30, ez + 140,
@@ -505,11 +512,17 @@ def external_panel(include_estop=True, include_disconnect=True):
     return '\n'.join(p)
 
 
+def inverter_box():
+    """The Cct-E 12->120V inverter BODY on the EP ply. SINGLE OWNER — inverter() + the overview
+    model both call this, so the box can't drift between models."""
+    return ov.ruby_box("Cct E Inverter (12->120V AC)", INVERTER_X, 0, INVERTER_Z,
+                       INVERTER_W, INVERTER_D, INVERTER_H, color="#404848")
+
+
 def inverter():
     """Circuit-E 12->120V inverter, mounted on the EP plywood panel (lower section, below
     the main gear), + its 120V AC output line across to the external panel's GFCI outlet."""
-    p = [ov.ruby_box("Cct E Inverter (12->120V AC)", INVERTER_X, 0, INVERTER_Z,
-                     INVERTER_W, INVERTER_D, INVERTER_H, color="#404848")]
+    p = [inverter_box()]
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
     gfci_z = PWR_PANEL_Z + _OUTLET_VF * PWR_PANEL_H
     p.append(ov.ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
@@ -572,17 +585,22 @@ def _pump_circuit():
     return '\n'.join(p)
 
 
+def cable_trunking():
+    """The 40x25 PVC ceiling trunk bundling every circuit. SINGLE OWNER — circuit_runs() + the
+    overview model both call this. Spans ONLY the circuit range (door-end first tap → Fan A) so
+    there is no dead-end grey stub past the last drop (the overview used to draw it full-length)."""
+    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
+          [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
+    tx0, tx1 = min(cxs) - 40, max(cxs) + 40
+    return ov.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
+                       25, color=ov.C_TRUNK)
+
+
 def circuit_runs():
     """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads.
     Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
     (G white LED, D safelight) fan out to ALL three of their ceiling fixtures."""
-    # Trunking spans only the circuit range (door-end first tap → Fan A), so there is
-    # no dead-end grey stub past the last drop.
-    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
-          [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
-    tx0, tx1 = min(cxs) - 40, max(cxs) + 40
-    p = [ov.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
-                     25, color=ov.C_TRUNK)]
+    p = [cable_trunking()]
     for cct in ("A", "B", "E"):
         p.append(_run(cct, LOADS[cct]))
     p.append(_pump_circuit())              # Cct C: master switch + distribution block → pumps

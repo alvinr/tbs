@@ -832,21 +832,16 @@ _EMITTER_DUP_ALLOW = {
     "Floor": "context ghost — featureless per-model floor slab, no drift risk",
     "Floor (context)": "context ghost — featureless per-model floor slab, no drift risk",
     # TEMPORARY — being consolidated by the 3D-dedup pass (owner in parens); remove each as it lands:
-    "Cable Trunking (40x25 PVC)": "consolidate → electrical (em)",
-    "Cct E Inverter (12->120V AC)": "consolidate → electrical (em)",
-    "Master pump switch (Cct C, on EP)": "consolidate → electrical (em)",
-    "Master switch lever (OFF cutoff)": "consolidate → electrical (em)",
-    "Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)": "consolidate → lighttrap (lt)",
-    "Fan B mount band (18mm ply)": "consolidate → lighttrap (lt)",
-    "Tray Rim Near": "consolidate → overview (ov.processing_tray)",
-    "Tray Rim Far": "consolidate → overview (ov.processing_tray)",
-    "Tray Rim Left": "consolidate → overview (ov.processing_tray)",
-    "Tray Rim Right": "consolidate → overview (ov.processing_tray)",
-    "Tray Shim Base": "consolidate → overview (ov.processing_tray)",
-    "Walkway Far": "consolidate → walkway (wm)",
-    "Walkway Near (door-end, removable)": "consolidate → walkway (wm)",
-    "Tray sump strainer foot": "consolidate → corridor (cp)",
-    "Pinhole wall": "consolidate → pinhole-water/overview",
+    # BLOCKED — the Fan B band is entangled with a deeper drift: overview draws the cargo-door panel
+    # (+band) at PANEL_CENTER_T=120mm thick, lighttrap at 40mm. Unify the PANEL representation first
+    # (which door thickness is right?), then the band consolidates → lighttrap. See TODO.md.
+    "Fan B mount band (18mm ply)": "BLOCKED on cargo-door panel thickness drift (overview 120 vs lighttrap 40)",
+    "Tray sump strainer foot": "BLOCKED — cp puts it at Yd155 (center pickup), pw at Yd104 (under the "
+        "riser): a real sump-pickup position drift entangled with pw's riser routing. Resolve the pickup "
+        "Yd + pw routing, THEN consolidate → cp. See TODO.md.",
+    "Pinhole wall": "ACCEPTED — pw draws a standalone-panel wall SECTION, mini_tbs a SCALE-TOY miniature "
+        "(BOX_W×BOX_H); different representations for different focused models, not a shared component "
+        "(same class as the context floors).",
 }
 
 

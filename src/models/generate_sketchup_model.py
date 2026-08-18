@@ -611,43 +611,49 @@ def container_shell():
 
 # ── Processing tray ──────────────────────────────────────────────────────────
 
-def processing_tray():
+def processing_tray(alpha=None):
     """Processing tray — RAISED, dual-axis-sloped 304 SS welded pan (tilted floor + rim)
     on a tapered HDPE shim base, holding a translucent chemistry bath.  The low corner
     (near-right / IBC side = the sump) sits at Z=PROC_TRAY_FLOOR_Z_LOW so the sump bottom
     rests on the container floor; the pan rises 1:200 in BOTH axes to the far-left corner
-    (see tray_floor_z / tray_rim_top_z)."""
+    (see tray_floor_z / tray_rim_top_z).
+
+    SINGLE OWNER of the tray geometry — the spray-bar model calls this with `alpha` set to draw
+    the SAME sloped pan as a faint CONTEXT ghost (so the gantry reads inside the real tray).
+    `alpha=None` (default) = solid detail — byte-identical to the original overview output."""
     xl, xr = PROC_TRAY_X_L, PROC_TRAY_X_R
     yn, yf = PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
     tray_w, tray_d = xr - xl, yf - yn
     sheet_t, rim_t = 2, 2
     zc = PROC_TRAY_FLOOR_Z_LOW                       # low-corner floor top = shim base top
+    a_shim = 0.9 if alpha is None else alpha         # ghost mode fades every part uniformly
+    a_bath = 0.45 if alpha is None else alpha
 
     parts = []
     # Tapered HDPE shim base — raises the pan so the 20mm sump well bottom rests on Z0
     parts.append(ruby_box("Tray Shim Base",
                           xl, yn, 0, tray_w, tray_d, zc - sheet_t,
-                          color="#D8CFBC", alpha=0.9))
+                          color="#D8CFBC", alpha=a_shim))
     # Welded pan FLOOR — dual-axis-tilted plane (two triangles at the true corner Z's)
     c_nl = [xl, yn, tray_floor_z(xl, yn)]
     c_nr = [xr, yn, tray_floor_z(xr, yn)]
     c_fr = [xr, yf, tray_floor_z(xr, yf)]
     c_fl = [xl, yf, tray_floor_z(xl, yf)]
-    parts.append(ruby_tri("Processing Tray Floor A", c_nl, c_nr, c_fr, -sheet_t, color=C_TRAY))
-    parts.append(ruby_tri("Processing Tray Floor B", c_nl, c_fr, c_fl, -sheet_t, color=C_TRAY))
+    parts.append(ruby_tri("Processing Tray Floor A", c_nl, c_nr, c_fr, -sheet_t, color=C_TRAY, alpha=alpha))
+    parts.append(ruby_tri("Processing Tray Floor B", c_nl, c_fr, c_fl, -sheet_t, color=C_TRAY, alpha=alpha))
     # Rims — walls on the raised, tilted pan (each placed at the local floor Z for its edge)
     znr = tray_floor_z((xl + xr) / 2, yn); zfr = tray_floor_z((xl + xr) / 2, yf)
     zlr = tray_floor_z(xl, (yn + yf) / 2); zrr = tray_floor_z(xr, (yn + yf) / 2)
-    parts.append(ruby_box("Tray Rim Near", xl, yn, znr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY))
-    parts.append(ruby_box("Tray Rim Far",  xl, yf - rim_t, zfr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY))
-    parts.append(ruby_box("Tray Rim Left", xl, yn, zlr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY))
-    parts.append(ruby_box("Tray Rim Right", xr - rim_t, yn, zrr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY))
+    parts.append(ruby_box("Tray Rim Near", xl, yn, znr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
+    parts.append(ruby_box("Tray Rim Far",  xl, yf - rim_t, zfr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
+    parts.append(ruby_box("Tray Rim Left", xl, yn, zlr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
+    parts.append(ruby_box("Tray Rim Right", xr - rim_t, yn, zrr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
     # Translucent chemistry bath inside the rims (at the raised level)
     zb = tray_floor_z((xl + xr) / 2, (yn + yf) / 2)
     parts.append(ruby_box("Chemistry Bath",
                           xl + rim_t, yn + rim_t, zb,
                           tray_w - 2 * rim_t, tray_d - 2 * rim_t,
-                          PROC_TRAY_RIM - sheet_t - 8, color=C_BATH, alpha=0.45))
+                          PROC_TRAY_RIM - sheet_t - 8, color=C_BATH, alpha=a_bath))
     return '\n'.join(parts)
 
 
@@ -997,10 +1003,10 @@ def walkways(include_right=True, include_right_hangers=None, grates_only=False):
     parts.append(near_fixed_deck_grate("Walkway Near (fixed, bump integral)",
                                        near_x_l, grate_z, t, C_WALKWAY))
 
-    # far deck: inset the FAR (wall) edge by the standard plate thickness; near edge unchanged
-    parts.append(ruby_box("Walkway Far",
-                          near_x_l, WALKWAY_FAR_YD, grate_z,
-                          near_len, WALKWAY_W - bt, t, color=C_WALKWAY))
+    # far deck — OWNED by the walkway model (wm.far_deck), which insets the wall edge by the plate
+    # thickness; call it so the two models can't diverge (was an in-sync copy here).
+    import generate_walkway_model as wm
+    parts.append(wm.far_deck())
 
     if include_right:
         if include_right_hangers and not grates_only:
@@ -1648,9 +1654,11 @@ def lighting_wiring():
     parts = []
     cz = C_HGT                                 # ceiling
 
-    # Cable trunking — 40×25 PVC along the pinhole wall ceiling, full length.
-    parts.append(ruby_box("Cable Trunking (40x25 PVC)",
-                          0, 0, cz - 25, C_LEN, 40, 25, color=C_TRUNK))
+    # Cable trunking — 40×25 PVC ceiling channel. OWNED by the electrical model (em.cable_trunking),
+    # which fits it to the circuit range (no dead-end stub past the last drop); call it so the trunk
+    # can't diverge between overview + electrical (was a full-length copy here).
+    import generate_electrical_model as em
+    parts.append(em.cable_trunking())
 
     # White LED strips (Cct G) — 3× 12V COB strips (in 981 channels): 2 run PARALLEL to
     # the two DRUM/cargo-door-side red strips (X≈520/2270, offset +80mm) over the tray;
@@ -1784,8 +1792,8 @@ def fan_wiring(which="both", a_to_ep=False):
                                    [(fb_drop_x, fb_wall_yd, czr),
                                     (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
                                    fcr, color=C_TRUNK))
-        parts.append(ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
-                              fb_drop_x - 40, 0, fb_box_z - 45, 80, 60, 90, color=C_SWITCH))
+        import generate_lighttrap_model as lt
+        parts.append(lt.fan_b_box())   # OWNED by lighttrap (the cargo-door end); was an identical copy here
         # The short FLEXIBLE CONNECTOR from the fixed wall box out to Fan B on the swing panel —
         # now drawn (a SOFT cord) as a curly coil, distinguishing it from the rigid Cct B conduit
         # feeding the box. This is the jumper that is unplugged before the panel swings.
@@ -1826,10 +1834,9 @@ def evap_cooler():
 
     # Circuit-E inverter (Victron Phoenix 12/375 GFCI) — INTERIOR, wall-mounted on
     # the pinhole wall below the EP / above the battery; converts 12V→120V for the
-    # cooler.  See electrical-report.md §7.6 (AC isolation & safety).
-    parts.append(ruby_box("Cct E Inverter (12->120V AC)",
-                          INVERTER_X, 0, INVERTER_Z,
-                          INVERTER_W, INVERTER_D, INVERTER_H, color="#404848"))
+    # cooler.  See electrical-report.md §7.6.  OWNED by em.inverter_box() (was a copy here).
+    import generate_electrical_model as em
+    parts.append(em.inverter_box())
 
     # Cct E 120V AC line: inverter output -> the external panel's GFCI outlet (interior
     # face), which then runs the cooler cord outside. Ported from the electrical model's

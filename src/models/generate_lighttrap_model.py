@@ -697,15 +697,15 @@ def liftout_walkways():
     """The amber REMOVABLE lift-out decks — left walkway (full width) + drum-exit punch-out
     + the near door-end band. Built at WORLD coords; placed as a CHILD of the Panel Swing
     DC so they HIDE when the panel swings open (lifted out for the transport swing)."""
+    import generate_walkway_model as wm
     t = ov.WALKWAY_GRATE_T
     full_z = ov.WALKWAY_H - t
-    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W          # 470 — long decks begin
-    liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R        # 950 — door-end band end
     return '\n'.join([
         # ONE continuous lift-out piece: drum-exit punch-out tab + muslin notch both integral.
         ov.left_liftout_grate("Left walkway (removable)", full_z, t, ov.C_REMOVABLE, alpha=0.6),
-        ruby_box("Walkway Near (door-end, removable)", x0, 0, full_z,
-                 liftout_x - x0, ov.WALKWAY_W, t, color=ov.C_REMOVABLE, alpha=0.6),
+        # door-end removable near band — OWNED by the walkway model (wm), ghosted here as context
+        # (was a copy that drew it full-width, not bracket-inset like the real deck).
+        wm.near_removable_deck(alpha=0.6),
     ])
 
 

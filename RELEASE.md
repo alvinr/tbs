@@ -31,8 +31,8 @@ file** — a release must not ship without a changelog entry:
   rear backing plate dipped ~10 cm³ into the corridor bottom X-rail at each front upright; raised its bottom to
   butt the rail top (Z62.8), moment joint untouched, `--solids`-verified gone on the live model; (3) the RWk end
   beam↔long-beam butt was already resolved — narrowed the remaining seam-audit sliver (long-beam ends ↔ wall
-  cleat) for a walkway-open pass. Cascade: `ibc_cantilever_arms` re-sent to ibc-stack (+ overview/walkway/
-  construction/water to follow).
+  cleat) for a walkway-open pass. Cascade: `ibc_cantilever_arms` re-sent to all 5 models (ibc-stack / walkway /
+  construction / water / overview — saved + uploaded); `manifest --check` clean.
 
 ## [0.7] — 2026-08-17
 

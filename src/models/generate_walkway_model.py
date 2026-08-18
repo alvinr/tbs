@@ -284,12 +284,14 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     return parts
 
 
-def cantilevers():
+def cantilevers(which="both"):
     """Near + far wall-cantilevered gusset brackets IN SITU, each shown with its
     full through-wall detail through the ghosted side walls. STANDARD brackets are
-    8mm plate / 150mm leg / 300mm arm with 3× M12 (triangular); the four WIDENED
+    8mm plate / 170mm leg / 300mm arm with 3× M12 (triangular); the four WIDENED
     brackets in the near EP/battery zone (X 1155–2629) are 10mm plate / 200mm leg /
-    500mm arm with 4× M12 (rectangular, matching walkway Sheet 7)."""
+    500mm arm with 4× M12 (rectangular, matching walkway Sheet 7). `which` = "both"
+    (default) / "near" / "far" — this is the SINGLE bracket builder (the overview's
+    `walkway_brackets()` delegates here so the two can't diverge)."""
     near_x_l = WK_LEFT_X + WK_W
     near_x_r = WK_RIGHT_X
     stations = []
@@ -301,6 +303,10 @@ def cantilevers():
     # (label, wall Yd, inward sign, arm reach under that side's grate)
     sides = [("Near", 0, +1, WK_W),
              ("Far", C_WID, -1, C_WID - WK_FAR_YD)]
+    if which == "near":
+        sides = [sides[0]]
+    elif which == "far":
+        sides = [sides[1]]
 
     parts = []
     for label, wall_yd, sign, reach in sides:

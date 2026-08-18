@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -1072,86 +1072,21 @@ def walkway_brackets(which="both"):
 
     Triangular-gusset steel brackets bolted to the long side-wall ribs at
     CONTAINER_RIB_SPACING (457mm / 18") centers — the cantilevers the decks rest
-    on. STANDARD brackets are 8mm plate / 150mm leg / 300mm arm with 3× M12
+    on. STANDARD brackets are 8mm plate / 170mm leg / 300mm arm with 3× M12
     (triangular: 2 lower + 1 upper); the four WIDENED brackets in the near
     EP/battery zone (X 1155–2629) are 10mm plate / 200mm leg / 500mm arm with
-    4× M12 (2×2 rectangular), per walkway Sheet 7. The RIGHT walkway is
-    ceiling-hung and the LEFT walkway is a removable lift-out, so neither is
+    4× M12 (2×2 rectangular), per walkway Sheet 7. The RIGHT walkway is a
+    cantilever-rectangle and the LEFT walkway is a removable lift-out, so neither is
     wall-cantilevered — they get no brackets here.
 
-    LEVEL OF DETAIL (intentional, signed off 2026-06): this whole-system view models
-    each bracket simplified — interior plate + arm + gusset + short interior bolt studs.
-    The dedicated walkway model's `_cantilever_parts()` (generate_walkway_model.py) is the
-    full-fab version: it adds the EXTERIOR reinforcing plates and the full-length M12
-    through-bolts. The two intentionally differ in detail (not in the load-bearing
-    dimensions); `lint.py --duplication` lists the gap as EXPECTED, not drift.
+    SINGLE-SOURCED (Alvin 2026-08-18): this delegates to the walkway model's full-fab bracket
+    builder (`generate_walkway_model.cantilevers()`) — plate + arm + gusset + EXTERIOR reinforcing
+    plate + full-length M12 through-bolts — so the overview and the dedicated walkway model can NEVER
+    diverge (was a simplified duplicate that had to be hand-kept-in-sync). Late import breaks the
+    wm→ov import cycle.
     """
-    grate_z = WALKWAY_H - WALKWAY_GRATE_T   # arm top = grate underside
-    bt = WALKWAY_BRACKET_T                    # 8 — standard plate thickness
-    vh = WALKWAY_BRACKET_H                    # 150 — standard vertical leg
-    btw = WALKWAY_WIDE_BRACKET_T              # 10 — widened plate thickness
-    vhw = WALKWAY_WIDE_BRACKET_H              # 200 — widened vertical leg
-    plate_w = 120                             # mounting-plate footprint along the run (X)
-    gusset_reach = 70                         # gusset depth from wall (< tray rim at Yd=80)
-
-    # Bracket X stations along the long walls: 457mm centers across the near deck span.
-    near_x_l = WALKWAY_LEFT_X + WALKWAY_W
-    near_x_r = WALKWAY_RIGHT_X
-    stations = []
-    xs = near_x_l + CONTAINER_RIB_SPACING // 2
-    while xs < near_x_r:
-        stations.append(xs)
-        xs += CONTAINER_RIB_SPACING
-
-    # side: (label, wall Yd, inward sign, arm reach under that side's grate)
-    sides = [
-        ("Near", 0,     +1, WALKWAY_W),                 # grate Yd 0..300
-        ("Far",  C_WID, -1, C_WID - WALKWAY_FAR_YD),    # grate inner edge .. far wall
-    ]
-    if which == "near":
-        sides = [sides[0]]
-    elif which == "far":
-        sides = [sides[1]]
-
-    parts = []
-    for label, wall_yd, sign, reach in sides:
-        for i, x in enumerate(stations, 1):
-            wide = (label == "Near"
-                    and WALKWAY_NEAR_WIDE_X_L <= x <= WALKWAY_NEAR_WIDE_X_R)
-            b = btw if wide else bt
-            v = vhw if wide else vh
-            arm_d = b + 2
-            arm_bot = grate_z - arm_d
-            rch = WALKWAY_NEAR_WIDE_W if wide else reach
-            # 3× M12 triangular (std) or 4× M12 2×2 rectangular (widened), (X off, Z)
-            bolts = ([(-35, 40), (35, 40), (-35, v - 40), (35, v - 40)] if wide
-                     else [(0, v - 30), (-35, 40), (35, 40)])
-            nm = f"Walkway {label} bracket {i}" + (" (widened)" if wide else "")
-            # 1. vertical mounting plate flat on the wall rib
-            y_plate = wall_yd if sign > 0 else wall_yd - b
-            parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
-                                  plate_w, b, v, color=C_STEEL))
-            # 2. M12 anchor bolts through the plate — Ø12 shanks
-            for dx, bz in bolts:
-                parts.append(ruby_bolt(f"{nm} bolt M12",
-                              x + dx, y_plate - 6, bz, b + 12, radius=6,
-                              axis="y", color="#505058", head="base", nut="far"))
-            # 3. horizontal cantilever arm at grate level (deck rests on it) — its
-            #    back end butts the plate face so the arm→plate joint draws an edge
-            y_arm = (wall_yd + b) if sign > 0 else (wall_yd - rch)
-            parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
-                                  b, rch - b, arm_d, color=C_STEEL))
-            # 4. gusset triangle bracing the arm from below — directly UNDER the arm
-            #    (push −b), back edge butted to the plate face for a clean joint
-            xg = x - b / 2
-            y_back = wall_yd + sign * b
-            y_far = wall_yd + sign * gusset_reach
-            parts.append(ruby_tri(f"{nm} gusset",
-                                  (xg, y_back, 0),
-                                  (xg, y_back, arm_bot),
-                                  (xg, y_far, arm_bot),
-                                  -b, color=C_STEEL))
-    return '\n'.join(parts)
+    import generate_walkway_model as wm
+    return wm.cantilevers(which)
 
 
 # ── Pinhole assembly ─────────────────────────────────────────────────────────

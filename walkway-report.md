@@ -69,7 +69,7 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
-| Vertical mounting plate | 8×150mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
+| Vertical mounting plate | 8×170mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
 | Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating |
 | Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim |
 
@@ -115,7 +115,7 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
 | Plate thickness | 8mm | 10mm |
-| Vertical leg height | 150mm | 200mm |
+| Vertical leg height | 170mm | 200mm |
 | Arm reach | 300mm | 500mm |
 | Gusset reach | 70mm | 70mm (tray rim constrained) |
 | Bolt pattern | 3x M12 triangular (2+1) | 4x M12 rectangular (2+2) |
@@ -189,8 +189,9 @@ deflection stays well under 1mm. (2×⅞ would clear by 15mm but isn't a stock s
 Supermarkets carry only **2×1**; being *deeper* it gives **stronger** arms, SF≈2.5, at the cost of 3.4mm
 clearance, which keeps the deck height unchanged.) The frame:
 
-- **Two long beams** run the full container width, with the 300mm grating spans between them.
-- **Two short end beams** (≈300mm) close the near and far ends, joining the long
+- **Two long beams** run the full container width, with the 245mm grating spanning between them
+  (the right deck is shortened to land on the shared combined corner plate).
+- **Two short end beams** (≈245mm) close the near and far ends, joining the long
   beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
 
 **Cranked inner beam at the muslin-rod slot.** The muslin-drop notch on the right walkway
@@ -459,7 +460,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | Molded GRP grating (American Grating, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48"×144" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md. | 1 lot | American Grating / McNichols | $830–$1,050 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
-| Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers) | 13 ea | Local fab | $390–$650 |
+| Cantilever bracket — standard (near/far) | 8mm steel plate: 170mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers) | 13 ea | Local fab | $390–$650 |
 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone, X1055–3083 = 5 bays) | 5 ea | Local fab | $200–$350 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | Cantilever-bracket wall bolts (3 per std + 4 per widened), sized for the 30mm-corrugation grip (~48–50mm), partial thread. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 59 ea | McMaster-Carr | $94 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×65 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 59 ea | McMaster-Carr | $15 |
@@ -467,10 +468,10 @@ bounces noticeably less than the rod-hung version it replaces.
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×13) + 120×220mm widened (×5) | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
-| Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) that make the closed rectangle, ~5.4 m (17.6 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
+| Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (~245mm, the 245mm right deck) that make the closed rectangle, ~5.2 m (17.1 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
 | Right walkway center cantilever arms (solid bar) | SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces. | 2 ea | Metal Supermarkets | $91 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
-| Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
+| Combined corner plate (right corners) | 10mm steel, ~200mm wide (widened inboard to back the walkway right beam) — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Right-walkway wall cleats + combined corner plates, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. (The 2 center arms no longer use these — they bolt via the J6 end-plate, see bolt-m12x100.) $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 20 ea | McMaster-Carr | $35 |
 | M12×100 hex through-bolt, Grade 8.8 zinc | J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate: BEARING-TYPE, both bolts ABOVE the arm (30mm apart) as a tension group with the plate bearing compression at its base — clears the welded arm + the corridor bottom rail; the central column keeps max edge distance on both the plate and the post. Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab. | 4 ea | McMaster-Carr | $8–$10 |
 | Walkway-arm end + backing plates (J6) | 65×155×8mm mild-steel plate (arm 50.8 wide + weld toe; 155 tall so the upper bolt keeps ≥1.5·D edge to the plate top), 2× Ø13 for M12 in a central column, both above the arm at 30mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate. | 4 ea | Local fab | $12–$24 |

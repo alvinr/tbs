@@ -228,9 +228,19 @@ def sheet2():
     draw_dim_v(ax, fx + CLEAT_LEG + 18, fy, fy + CLEAT_UP, f"{CLEAT_UP:.0f}mm", fs=6, font=FONT)
     draw_dim_v(ax, fx - 16, fy + CLEAT_T, hyc, f"{int(CLEAT_BOLT_Z)}mm", fs=5.5, font=FONT)             # hole up from the bar seat (→ 18mm edge in the 50 web)
     ax.text(fx + CLEAT_LEG/2, fy - 16, "vertical (drilled) leg — face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
-    _specbox(ax, 40, 355, [f"1× Ø{HOLE_CLR} (M12×65) — J2, HORIZONTAL through",
+    # PLAN VIEW (top-down) — the L's vertical leg ALSO welds to the corridor upright (Yd along +x, X depth along +y)
+    px0, pyb = 130, 58
+    ax.add_patch(Rectangle((px0 + CLEAT_LEG, pyb - 5), 24, barW + CLEAT_T + 10, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.0, zorder=4))  # upright (corridor end)
+    ax.text(px0 + CLEAT_LEG + 12, pyb + barW/2, "upright", fontsize=4.2, ha="center", va="center", color=C_DIM, rotation=90, **FONT, zorder=7)
+    ax.add_patch(Rectangle((px0, pyb + CLEAT_T), CLEAT_LEG, barW, fc=C_FRAME, ec=C_OUT, alpha=0.35, lw=1.0, zorder=5))   # bar on the horizontal leg (90 Yd × 20 X)
+    ax.add_patch(Rectangle((px0, pyb), CLEAT_LEG, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))                      # vertical leg (front strip)
+    bxp = px0 + CLEAT_LEG * 0.5
+    ax.add_patch(Rectangle((bxp - 4, pyb - 6), 8, CLEAT_T + barW + 10, fc="#D8D8DC", ec=C_OUT, lw=0.7, zorder=8))        # horizontal bolt (along X → vertical here)
+    ax.add_patch(Rectangle((bxp - 7, pyb - 6), 14, 5, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))                          # head
+    ax.text(px0 + CLEAT_LEG/2, pyb - 15, "PLAN (top-down) — L also welds to the upright (W3)", fontsize=4.4, ha="center", color=C_DIM, **FONT, zorder=7)
+    _specbox(ax, 40, 306, [f"1× Ø{HOLE_CLR} (M12×65) — J2, HORIZONTAL through",
                            "the leg + the bar's 50mm web (~18mm edge)",
-                           "L: end section (bar drops in) · R: drilled leg face"])
+                           "end section (L) · drilled leg face (R) · plan (below)"])
 
     # ── PLATE 5 — REAR-PANEL TAB (angle 50×50×5, 1× Ø9/M8) ──
     _panel(ax, 460, 40, 420, 340, "PLATE 5 — REAR-PANEL TAB", "A36 angle 50×50×5 · ×6")

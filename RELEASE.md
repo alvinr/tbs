@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame drawings — 6 more review fixes (Alvin).** (1) **Sheet 1 wall hanger** redrawn to match the 3D:
+  the bar rests on a **shelf/seat** (not butting a pocket), a **J7 bolt runs vertically through the bar +
+  shelf**, and the inside + outside plates clamp the container wall — shown as the **gap** between them — with
+  the 2× J3 through-bolts horizontal + stacked. (2) **Sheet 2** now ticks **8 ring welds** (top + bottom ring ×
+  4 legs; the near/far legs overlap in the along-Yd view, so 2 ticks per corner) — was 4. (3) **Sheet 2** the
+  two grey verticals are labelled **FRONT / BACK UPRIGHT (×2: near+far)**. (4) **Sheet 5 plan view** now draws
+  the **#14 TEK clearance holes** through each notch. (5) **Sheet 5 VIEW A** now dimensions the TEK holes
+  (25.4 CL from the notch edge + Ø7-thru). (6) **Plate 4** gains a **plan view** showing the L's vertical leg
+  also welds to the upright, with the single horizontal bolt through.
+
 - **J2 corridor-end cleat redesigned to an L-angle + a single horizontal bolt (fixes the edge-distance flaw).**
   The old cleat put 2 vertical M12 bolts down through the 20 mm-wide bar/leg, leaving only ~3 mm hole edge. The
   bar now DROPS INTO an L-angle (horizontal leg under it, vertical leg welded to the upright, W3) and ONE

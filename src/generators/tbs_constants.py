@@ -910,7 +910,7 @@ WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, 
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
-WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
+WALKWAY_BRACKET_H = 170  # bracket vertical leg height on wall (mm) — raised 150→170 so the upper 3rd-bolt clears the cantilever arm (Alvin 2026-08-18)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # rev10: the panel + drum SWING ~56° about the pivot for transport and the swinging cage
@@ -926,7 +926,9 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # 2D plan in generate_walkway_diagram.py sheet3().  No floor contact, no roof
 # penetrations.  The prior ceiling-hung bearer/hanger/ceiling-plate constants
 # (WALKWAY_RIGHT_BEARER_*, _HANGER_*, _CEIL_*) are RETIRED.
-WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
+# WALKWAY_RIGHT_W (the ACTUAL right-deck width, 245mm) is derived below with
+# WALKWAY_RIGHT_X / _X_R — the right walkway is shortened to land on the combined-corner-plate
+# face (F1, 2026-08-18), so it is no longer the same 300mm module as near/far.
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
@@ -960,18 +962,25 @@ LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on th
 LEFT_WK_CANT_POST     = 50.8  # post section (mm) — 2×2×0.120in steel SHS (#26 — 50mm nominal isn't stock, 2in is)
 LEFT_WK_CANT_POST_T   = 3     # post wall thickness (mm) ≈ 0.120in
 LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
-LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the post sits on its inboard end; foot extends outboard as an outrigger
+LEFT_WK_CANT_FOOT     = (165, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the post sits on its OUTBOARD end; foot extends INBOARD as an outrigger. Lengthened 128→165 (F3, 2026-08-18) so the 4 floor anchors clear the post footprint (post X224.6–275.4 → clear inboard land X110–224.6).
 # Foot LEFT edge DERIVED so the foot always sits under the post (inboard edge = post inboard edge; foot then runs outboard).
 # Was hardcoded 38 (correct only while LEG_X=140); it got stranded when FP_X_L moved 150→260 (2026-08-11) cascaded LEG_X→250. (2026-08-16)
 LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈147; foot right edge ≈ post right edge, ~5mm clear of the tray L
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
+LEFT_WK_CANT_FOOT_BOLT_DX = (30, 90)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+30/+90 (=140/200), both in the clear INBOARD outrigger, clear of the post (X224.6+) [F3, 2026-08-18]
+LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline (within the 60mm foot width) [F3, 2026-08-18]
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)
 LEFT_WK_CANT_ARM_W_WIDE = 50.8  # widened (punch-out) arm — same 2×1in section
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
-# Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
-WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
+# Right walkway (IBC end): the deck's INNER (tray-facing) edge is anchored to the tray module
+# (X4329); its OUTER edge lands on the shared COMBINED-CORNER-PLATE FACE (F1, 2026-08-18) —
+# RAIL_X_R − FP_CORNER_SEAT_PLATE_W/2 = 4574 — so the cantilever rectangle no longer overruns the
+# plate (the old 300mm deck ran to the tray edge X4629, 55mm into the plate → solid + bolt clashes).
+WALKWAY_RIGHT_X   = PROC_TRAY_X_R - WALKWAY_W                 # = 4329mm — INNER (tray-facing) edge
+WALKWAY_RIGHT_X_R = RAIL_X_R - FP_CORNER_SEAT_PLATE_W // 2    # = 4574mm — OUTER edge = combined-plate face
+WALKWAY_RIGHT_W   = WALKWAY_RIGHT_X_R - WALKWAY_RIGHT_X       # = 245mm  — actual right-deck width (was 300)
 # Near walkway widened section — 500mm-wide access band for the chem shelf + EP column + spray-bar
 # operating room. CANTILEVER-LIMITED: the grate may overhang the outer widened brackets by at most
 # WALKWAY_MAX_OVERHANG. rev 2026-07-23b: extended a SECOND rib toward the IBC (cantilever X2983+100 =

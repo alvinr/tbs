@@ -310,6 +310,14 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   backing plate** (the same interior+exterior paired-plate wall-mount pattern as the container-wall cantilevers /
   IBC wall hangers). Design the bolt pattern + external plates for both left brackets in the film-plane blueprint,
   add the geometry to the 3D, and cascade to the 2D + parts. (Right corners already share the `fp_combined_corner_plate`.)
+- [ ] **Film-plane LEFT support beam seats on the wall-bracket OUTSIDE edge, not the inside face (Alvin
+  2026-08-18, walkway.skp review).** The left (BL/TL) film-plane beam lands on the OUTER edge of its wall bracket
+  instead of bearing against the bracket's inside (container-facing) face. Reseat it to the inside face (matching
+  the right corners) when detailing the film-plane LEFT brackets above; cascade 3D→2D.
+- [ ] **Processing tray interferes with the IBC-frame floor-post anchor bolts (Alvin 2026-08-18, walkway.skp
+  review).** The processing-tray basin overlaps the IBC deep-box frame's floor-post (foot) anchor bolts — the
+  anchors can't be driven / the tray fouls them. Trace in overview/ibc-stack, then trim the tray corner or shift
+  the foot/anchor pattern clear, and verify with `check_interference.py --solids`/`--bolts`. (IBC-frame + tray.)
 - [x] **Fully-dimensioned multi-view detail of ONE corner — DONE 2026-08-10 (branch `corner-eng-design`).**
   Sheets 3/4/8/9 dimensioned to blueprint grade: skate roller ODs + Ø10 axle + 40mm pitch (Sheet 3), rail
   wall-flange bolt pattern + M8×25 (Sheet 4), cross-slide bar section/travel/gib/UHMW (Sheet 8), U-joint

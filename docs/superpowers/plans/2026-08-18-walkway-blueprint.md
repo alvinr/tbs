@@ -49,7 +49,7 @@ Nothing downstream may start until `check_interference.py --solids` is clean on 
 
 - [ ] **Step 1: Baseline the current geometry via the interference tool**
 
-Run: `python3 src/generators/check_interference.py --solids`
+Run: `python3 src/models/check_interference.py --solids`
 Expected: it reports the current clashes; capture the walkway-zone entries (left lift-out arm/bolt/grate, far section, right-walkway-into-film-bracket overlap).
 
 - [ ] **Step 2: Measure the film-plane bottom-rail bracket X (the F1 limit)**
@@ -137,12 +137,12 @@ git commit -m "walkway F3/F4: foot anchors into the outrigger + resolve left/far
 
 - [ ] **Step 1: Interference must be clean**
 
-Run: `python3 src/generators/check_interference.py --solids`
+Run: `python3 src/models/check_interference.py --solids`
 Expected: the walkway-zone clashes (left, far, right-into-film-bracket) are GONE. If not, return to Task 0.3.
 
 - [ ] **Step 2: Bolt lint**
 
-Run: `python3 src/generators/check_interference.py --bolts`
+Run: `python3 src/models/check_interference.py --bolts`
 Expected: no new bolt violations from the relocated foot anchors / shared bracket.
 
 - [ ] **Step 3: Re-send focus-model-first (ASK Alvin to open each; verify title before each send)**

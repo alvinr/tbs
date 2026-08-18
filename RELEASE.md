@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase 0 geometry (branch `walkway-bp`, focus model banked).** Right-corner + support
+  rework on `walkway.skp`: right walkway shortened to land on the shared corner plate (245mm deck, `WALKWAY_RIGHT_W`
+  decoupled from the tray module); the combined "shared plate" reworked to carry the film rail + the wall-side
+  walkway beam (4 corner bolts, welded shelf + upstand, horizontal TEK) with the beams/end-beams inset to butt
+  the plates (butt-joint seams show); the tray-side beam on its own shelf-cleat (horizontal bolts clear of the
+  beam + TEK); floor-leg foot outrigger lengthened 128→165 with the 4 left-support floor anchors drawn;
+  standard-bracket leg raised 150→170 so the upper bolt clears the arm; near/far standard cantilever gusset
+  centered on both walls (one fab part, mirror-installed); ghost container trimmed for orbiting. (2D sheets +
+  the other 5 cascade models to follow.)
 - **Sketchfab re-upload automated (in-place, hands-free).** The manual "re-upload each `.skp` to Sketchfab"
   step at the end of every model cascade is now scripted. `push_sketchfab.py` uses `PUT /v3/models/{uid}` to
   replace a model's geometry **in place** — same URL, viewer settings/materials/name preserved — instead of the

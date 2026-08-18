@@ -1649,7 +1649,7 @@ def sheet6():
     """Sheet 6 — Detail D: Left walkway FLOOR-LEG CANTILEVER bracket.
     VIEW A — section through one bracket (X-Z, looking along Yd): foot plate on bare
     floor outside the tray + 50x50 post + arm reaching IN over the (floor-level) spray
-    bar to the grate inner edge. VIEW B — foot-plate plan with the 4x M10 floor anchors."""
+    bar to the grate inner edge. VIEW B — foot-plate plan with the 4x #14 SS self-drilling floor anchors."""
     C_BOLT = "#505058"
     C_SB = "#C8D8E8"                          # spray bar (aluminum)
     legx = LEFT_WK_CANT_LEG_X                # 140
@@ -1713,13 +1713,15 @@ def sheet6():
     draw_dim_v(axA, std_reach + 5, sb1, arm_z0, f"{arm_z0 - sb1:.0f}mm", offset=8, fs=6, right=True, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
-    # Floor anchors — #14 SS self-drillers (2 of the 4 visible in this section). Head bears on the foot
-    # plate; the shank drives DOWN through the plate into the ply-over-steel floor. Positions single-
-    # sourced from LEFT_WK_CANT_FOOT_BOLT_DX (outboard, clear of the post — Alvin 2026-08-18).
+    # Floor anchors — #14 SS self-drillers (2 of the 4 visible). SAME convention as the IBC corridor-post
+    # floor anchors (_foot_elev): hex head on the plate + a shank driving DOWN into the ply-over-steel
+    # floor to a drill-point marker — self-driller, NO nut (no accessible underside on a container floor).
+    # Positions single-sourced from LEFT_WK_CANT_FOOT_BOLT_DX (outboard, clear of the post).
     for dx in LEFT_WK_CANT_FOOT_BOLT_DX:
         ax_ = fx0 + dx
-        axA.add_patch(Rectangle((ax_ - 3, -14), 6, 14 + ft, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=7))   # shank into floor
-        axA.add_patch(Rectangle((ax_ - 7, ft), 14, 6, fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))          # hex head bearing on the plate
+        axA.plot([ax_, ax_], [ft, -16], color=C_OUT, lw=1.8, zorder=8)              # shank: head level → into the floor
+        axA.plot(ax_, -16, 'v', color=C_OUT, ms=4, mew=0, zorder=8)                 # self-drill point (into floor)
+        axA.add_patch(Rectangle((ax_ - 6, ft), 12, 5, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=9))   # hex head on the plate
     # Load arrow at the arm tip
     axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=2.0))
@@ -1727,9 +1729,9 @@ def sheet6():
     draw_dim_v(axA, 95, 0, grate_bot, f"{grate_bot}mm", offset=6, fs=6, right=False, font=FONT)
     draw_dim_h(axA, arm_x0, std_reach, arm_z0 - 16, f"{int(std_reach - arm_x0)}mm reach",
                offset=4, fs=6, above=True, font=FONT)
-    # Foot plate length + the outboard anchor column position (fab dims)
+    # Foot plate length (fab dim). The post-height dim_v is already drawn on the left (grate_bot), so no
+    # second one here (obs 3).
     draw_dim_h(axA, fx0, fx0 + fl, -30, f"{fl}mm FOOT", offset=4, fs=5.5, above=False, font=FONT)
-    draw_dim_v(axA, fx0 - 12, 0, grate_bot, f"{int(grate_bot)}mm POST", offset=5, fs=5.5, right=False, font=FONT)
 
     # ===================== VIEW B — foot-plate plan =====================
     axB.set_xlim(-90, 90)
@@ -1748,10 +1750,17 @@ def sheet6():
     # OUTBOARD of the post (it reacts the cantilever uplift), with driver clearance to the post.
     anchor_oxs = [dx - fl / 2 for dx in LEFT_WK_CANT_FOOT_BOLT_DX]
     anchor_oys = [-LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_FOOT_BOLT_DY]
+    HOLE_R6 = 7   # open hole + center crosshair — SAME convention as sheet7 View B (obs 1)
     for ox in anchor_oxs:
         for oy in anchor_oys:
-            axB.add_patch(Circle((ox, oy), 7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))
-            axB.add_patch(Circle((ox, oy), 5, fc=BG, ec=C_BOLT, lw=0.6, zorder=9))
+            axB.add_patch(Circle((ox, oy), HOLE_R6, fc=BG, ec=C_BOLT, lw=1.5, zorder=8))
+            _ch = HOLE_R6 + 3
+            axB.plot([ox - _ch, ox + _ch], [oy, oy], color=C_BOLT, lw=0.6, zorder=9)
+            axB.plot([ox, ox], [oy - _ch, oy + _ch], color=C_BOLT, lw=0.6, zorder=9)
+    # dashed rectangle connecting the 4 anchor centers (bolt-pattern outline, as sheet7)
+    axB.plot([anchor_oxs[0], anchor_oxs[1], anchor_oxs[1], anchor_oxs[0], anchor_oxs[0]],
+             [anchor_oys[0], anchor_oys[0], anchor_oys[1], anchor_oys[1], anchor_oys[0]],
+             color=C_BOLT, lw=0.6, ls=(0, (3, 3)), zorder=7, alpha=0.5)
     leader(axB, anchor_oxs[0], anchor_oys[1], -fl / 2 - 18, fw / 2 + 24,
            f"{nb}x #14 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -1767,7 +1776,7 @@ def sheet6():
     notes = [
         "FLOOR-LEG CANTILEVER BRACKET (x5, at Yd 250/800/1180/1560/2110):",
         "1. Bolted to BARE FLOOR outboard of the tray (X<170) — ZERO tray contact, ZERO wall fixings.",
-        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x M10 floor anchors per foot.",
+        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x #14 SS self-drilling floor anchors per foot (no nut — bite the ply floor).",
         f"3. Arm Z{arm_z0}-{grate_bot} (40mm deep) reaches in to carry the grate inner edge (X470); the 3 punch-out brackets EXTEND to X770.",
         "4. The arm passes 15mm OVER the floor-level spray bar (Z60) — only possible after the +50mm walkway raise.",
         "5. The grate lifts out for transport; the brackets stay bolted (permanent). Replaces the former edge-beam-on-wall-seats.",

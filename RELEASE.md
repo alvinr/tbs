@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Process: attack the orientation-rework class (retro follow-up).** A two-release retro found the biggest
+  rework driver is fastener **orientation/interface** — bolts dimensionally correct but pointed the wrong way,
+  through the wrong face, wrong length, or too near an edge (the J2/J7 3 mm-edge flaw, "bolts projecting past
+  the plates"), caught only when a render was eyeballed. Three concrete fixes: (1) **`check_interference.py
+  --bolts`** — a read-only lint that, for every structural grip bolt, finds the members its centerline pierces
+  and flags EDGE (< 1.5·D), FLOATING, PROJECT (prototype; 15 flags on overview incl. a real J6 top-bolt edge);
+  (2) **`skills/skill_fastener_convention.md`** — codifies the `ruby_bolt` axis/head/nut sign convention + the
+  edge-distance/grip/accessibility rules so builders stop guessing; (3) **`manifest --update <name>`** now scopes
+  to the named model(s) instead of rewriting every hash (it twice clobbered un-sent models' hashes this session).
+
 - **3D-model hygiene (post-0.7).** Three drift/readability items off the tracker: (1) **retired the dead
   `ibc_rack()`** — the old single-portal frame builder (X4734), dead in the live model but a drift risk, moved
   out of `generate_sketchup_model.py` into its sole consumer (the archived right-cantilever study) so overview

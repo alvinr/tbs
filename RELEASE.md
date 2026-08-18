@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **J6 end-plate grown 148→155 mm (edge-distance triage) + BOM drift fixed.** The new `--bolts` lint flagged the
+  upper J6 bolt at only 15.3 mm from the end-plate top edge (< 1.5·D = 18 mm for M12). Grew the plate top to
+  Z192 (`RWK_J6_EP_H` 148→155) so the bolt gets 22 mm edge — `--bolts`-verified clear on the live model; cascaded
+  to Sheet 2 + the Sheet 5 END-PLATE detail (155 / 22 / 52 mm). The triage also caught two **stale BOM errors** in
+  `parts.py` `walkway-arm-endplates`: it listed the plate as `65×130` (vs 148) *and* "90 mm pitch" when the bolts
+  are 30 mm apart, both above the arm — corrected.
+
 - **Process: attack the orientation-rework class (retro follow-up).** A two-release retro found the biggest
   rework driver is fastener **orientation/interface** — bolts dimensionally correct but pointed the wrong way,
   through the wrong face, wrong length, or too near an edge (the J2/J7 3 mm-edge flaw, "bolts projecting past

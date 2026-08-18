@@ -34,11 +34,11 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   and extend `_SANCTIONED_SOLID` with the rest (each with a reason). Larger effort; do per-mechanism.
   (Scoped out of the 2026-08-16 named-category pass.)
 
-- [ ] **Re-audit the redesigned J2 L-cleat solids (2026-08-18).** The corridor cleat changed to an L-angle
-  with a vertical leg on the bar's FRONT (−X) face + a horizontal M12 (in `tote_restraint`). The routing-sha
-  was bumped (pipe paths unchanged), but the new upstand is a new solid at the tote front — run
-  `check_interference.py --solids` against the LIVE water/ibc-stack model to confirm it doesn't clash with the
-  corridor pipework, once that model is re-sent + open.
+- [x] **Re-audit the redesigned IBC-restraint solids — DONE (2026-08-18, live ibc-stack).** The cleat/hanger
+  redesign (L-cleats both ends, 16 backing plates, inside-aligned wall hangers, cleat-clear D-rings) added
+  ~76 solids (155→231). `check_interference.py --write` confirms **none of the 10 interferences involve any
+  new solid** — all 10 are pre-existing pipe-routing (7× pipe↔frame-rail, 2× P-02→ACC-02 ↔ J6 cantilever
+  end-plate, 1 pipe-on-pipe DV-02×P-02 at 14mm<27mm). Those pipe-routing clashes remain open below.
 
 - [ ] **J6 walkway-arm ↔ corridor bottom frame-rail interference (REAL clash, not readability).** The J6
   backing plate (Z37–167) and its **lower M12 bolt (Z≈57)** intersect the corridor frame's **bottom X-rail**

@@ -1183,7 +1183,7 @@ def sheet4():
     ax.add_patch(Rectangle((jbx - _hh7/2, zc - 34 - _hl7), _hh7, _hl7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))   # nut UNDER the seat
     for dz in (75, -75):
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # 2 wall through-bolts: fix HANGER to wall — NOT the bar
-    draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150")
+    draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150mm")
     leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×65 (J3)\nHANGER→wall", fs=6, font=FONT, ha="left")
     leader(ax, jbx, zc + 28, wy + 116, zc + 78, "M12 (J7)\nbar→seat, centered", fs=6, font=FONT, ha="left")
     leader(ax, wy + 14, zc - 25, wy - 100, zc - 40, "seat↔plate\nweld (W5)", fs=6, font=FONT, ha="left")
@@ -1206,7 +1206,7 @@ def sheet4():
     _weld_tick(ax, ex, ez + barH2, side='left', size=8)                                             # W3 (vertical leg ↔ upright)
     bzc = ez + lt2 + barH2 / 2                                                                      # bolt at the bar mid-height
     _bolt(ax, ex - 6, bzc, lt2 + barW2 + 14, d=13, nut=True)                                        # 1× M12 HORIZONTAL through the leg + the bar's 50 web
-    draw_dim_v(ax, ex - 24, ez + lt2, ez + lt2 + barH2, "50")                                       # bar web the bolt passes through (→ ~18mm edge)
+    draw_dim_v(ax, ex - 24, ez + lt2, ez + lt2 + barH2, "50mm")                                       # bar web the bolt passes through (→ ~18mm edge)
     leader(ax, ex, ez + barH2 + 30, ex - 26, ez + barH2 + 76, "L FILLET WELDED\nto upright (W3 4mm)", fs=6, font=FONT, ha="right")
     leader(ax, ex + lt2 + barW2 + 8, bzc, ex + lt2 + barW2 + 40, bzc - 44, "1× M12×65 (J2)\nHORIZONTAL through\nthe leg + the 50 web", fs=6, font=FONT, ha="left")
 
@@ -1337,20 +1337,16 @@ def sheet5():
     leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 100, az - ah/2 - 65,
            "#14 TEK hold-down\n(×4 — 1 per lap; see detail)", fs=5.3, font=FONT, ha="left")
     for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # LOCATE each TEK clearance hole: dim_h along the arm (from the notch edge → CL)
-        draw_dim_h(ax, n0, (n0 + n1) / 2, az + ah/2 + 15, "25.4", fs=4.6, font=FONT, above=True)
-    draw_dim_v(ax, (XIN0 + XIN1) / 2 - 24, az - ah/2, az + ah/2, "25.4", fs=4.6, font=FONT)  # dim_v: the Ø7 hole runs THRU the 25.4 arm depth
+        draw_dim_h(ax, n0, (n0 + n1) / 2, az + ah/2 + 15, "25.4mm", fs=4.6, font=FONT, above=True)
+    draw_dim_v(ax, (XIN0 + XIN1) / 2 - 24, az - ah/2, az + ah/2, "25.4mm", fs=4.6, font=FONT)  # dim_v: the Ø7 hole runs THRU the 25.4 arm depth
     ax.text((XIN0 + XIN1) / 2 - 24, az - ah/2 - 9, "Ø7 thru", fontsize=4.4, ha="center", color=C_DIM, **FONT)
     ax.text((XIN1 + XOUT0)/2, az, "2×1 SOLID STEEL BAR", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
     leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 55, az + 84, "inner long beam\n(at the arm tip)", fs=6, font=FONT, ha="left")
     leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam\n(post end)", fs=6, font=FONT, ha="right")
-    hzi = _hlz(ARM_KEEP["inner"])                                                          # TIP: low moment -> deep arm notch
-    draw_dim_v(ax, XT - 20, az - ah/2, hzi, "5.4", fs=5.4, font=FONT)
-    draw_dim_v(ax, XT - 20, hzi, az + ah/2, "20", fs=5.4, font=FONT)
-    ax.text(XT - 20, az + ah/2 + 15, "TIP notch\narm 5.4 / beam 20", fontsize=5.0, ha="center", color=C_DIM, **FONT)
-    hzo = _hlz(ARM_KEEP["outer"])                                                          # POST END: high moment -> notch the BEAM
-    draw_dim_v(ax, XOUT0 - 8, az - ah/2, hzo, "16", fs=5.4, font=FONT)
-    draw_dim_v(ax, XOUT0 - 8, hzo, az + ah/2, "9.4", fs=5.4, font=FONT)
-    ax.text(XOUT0 - 8, az + ah/2 + 15, "POST notch\narm 16 / beam 9.4", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    # notch depths are sub-30mm → stated as notes (not stacked micro-dims, which crowd the 25.4mm arm); the
+    # half-lap line already shows the split visually.
+    ax.text(XT - 20, az + ah/2 + 15, "TIP notch\narm 5.4mm / beam 20mm", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    ax.text(XOUT0 - 8, az + ah/2 + 15, "POST notch\narm 16mm / beam 9.4mm", fontsize=5.0, ha="center", color=C_DIM, **FONT)
     p_bz, p_ht = az - ah/2 - 12, 132                                                       # end-plate bottom just below the arm; TALLER, extends UP so both bolts sit above the arm
     ax.add_patch(Rectangle((XUP - ep_x, p_bz), ep_x, p_ht, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))  # end-plate (welded to arm, extends up)
     ax.add_patch(Rectangle((XUP + 60, p_bz), ep_x, p_ht, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))    # rear backing plate
@@ -1358,11 +1354,11 @@ def sheet5():
         _bolt(ax, XUP - ep_x, bz, 60 + 2 * ep_x, d=8, nut=True)
     leader(ax, XUP + 60 + ep_x, az + ah/2 + 52, XUP - 40, az + 100, "J6 (bearing-type)\n2 bolts ABOVE arm →\nPLATE detail + Sheet 4 F", fs=5.6, font=FONT, ha="right")
     zc = az - ah/2 - 34                                                                    # longitudinal chain-dim line
-    draw_dim_h(ax, XT, XIN1, zc, "50.8", fs=5.8, font=FONT, above=False)                   # inner notch width
-    draw_dim_h(ax, XIN1, XOUT0, zc, "198.4", fs=5.8, font=FONT, above=False)               # clear gap
-    draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8", fs=5.8, font=FONT, above=False)               # outer notch width
-    draw_dim_h(ax, XOUT1, XUP - ep_x, zc, "17", fs=5.8, font=FONT, above=False)            # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
-    draw_dim_h(ax, XUP - ep_x, XUP, zc, "8", fs=5.0, font=FONT, above=False)               # end-plate (welded to the arm end; fills to the upright face — part of the 325)
+    draw_dim_h(ax, XT, XIN1, zc, "50.8mm", fs=5.8, font=FONT, above=False)                   # inner notch width
+    draw_dim_h(ax, XIN1, XOUT0, zc, "198.4mm", fs=5.8, font=FONT, above=False)               # clear gap
+    draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8mm", fs=5.8, font=FONT, above=False)               # outer notch width
+    draw_dim_h(ax, XOUT1, XUP - ep_x, zc, "17mm", fs=5.8, font=FONT, above=False)            # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
+    draw_dim_h(ax, XUP - ep_x, XUP, zc, "8mm", fs=5.0, font=FONT, above=False)               # end-plate (welded to the arm end; fills to the upright face — part of the 325)
     draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (incl. 8 end-plate)", fs=6.5, font=FONT, above=False)
 
     # ── PLAN VIEW — top-down: each half-lap is a full-width crossing (notch = beam width) ──
@@ -1377,7 +1373,7 @@ def sheet5():
         ax.add_patch(Circle((xc, py), 6, fc=BG, ec=C_OUT, lw=1.3, zorder=9))
         ax.plot([xc - 9, xc + 9], [py, py], color=C_CL, lw=0.5, zorder=9)
         ax.plot([xc, xc], [py - 9, py + 9], color=C_CL, lw=0.5, zorder=9)
-        draw_dim_h(ax, n0, xc, py - dw/2 - 6, "25.4", fs=4.6, font=FONT, above=False)               # hole CL from the notch edge
+        draw_dim_h(ax, n0, xc, py - dw/2 - 6, "25.4mm", fs=4.6, font=FONT, above=False)               # hole CL from the notch edge
     ax.text(XT - 8, py, "TIP", fontsize=5.5, ha="right", va="center", color=C_DIM, **FONT)
     leader(ax, (XIN0 + XIN1) / 2, py + 6, (XIN0 + XIN1) / 2 - 30, py + dw/2 + 46, "Ø7 TEK clearance\n(1 per notch)", fs=5, font=FONT, ha="right")
     # J6 connection (top-down): the through-bolts run from the end-plate, through the POST, into the rear
@@ -1387,13 +1383,13 @@ def sheet5():
     ax.add_patch(Rectangle((XUP + 50, py - dw/2 - 6), ep_x, dw + 12, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=7))   # rear backing plate edge
     _bolt(ax, XUP - ep_x, py, 2 * ep_x + 50, d=8, nut=True)                                                                # M12 through-bolt: head butts the end-plate front, nut butts the backing-plate back (post is 50 wide here)
     leader(ax, XUP + 25, py, XUP + 40, py + dw/2 + 30, "2× M12 through-bolts\n(both project here —\nZ's on the end-plate detail)", fs=5.2, font=FONT, ha="center")
-    draw_dim_v(ax, XUP - ep_x - 18, py - dw/2, py + dw/2, "50.8", fs=5.6, font=FONT)                # arm width = beam width
+    draw_dim_v(ax, XUP - ep_x - 18, py - dw/2, py + dw/2, "50.8mm", fs=5.6, font=FONT)                # arm width = beam width
     zcp = py - dw/2 - 22                                                                            # chain-dim line (mirrors VIEW A)
-    draw_dim_h(ax, XT, XIN1, zcp, "50.8", fs=5.8, font=FONT, above=False)                           # inner notch width
-    draw_dim_h(ax, XIN1, XOUT0, zcp, "198.4", fs=5.8, font=FONT, above=False)                       # clear gap
-    draw_dim_h(ax, XOUT0, XOUT1, zcp, "50.8", fs=5.8, font=FONT, above=False)                       # outer notch width
-    draw_dim_h(ax, XOUT1, XUP - ep_x, zcp, "17", fs=5.8, font=FONT, above=False)                     # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
-    draw_dim_h(ax, XUP - ep_x, XUP, zcp, "8", fs=5.0, font=FONT, above=False)                        # end-plate (part of the 325)
+    draw_dim_h(ax, XT, XIN1, zcp, "50.8mm", fs=5.8, font=FONT, above=False)                           # inner notch width
+    draw_dim_h(ax, XIN1, XOUT0, zcp, "198.4mm", fs=5.8, font=FONT, above=False)                       # clear gap
+    draw_dim_h(ax, XOUT0, XOUT1, zcp, "50.8mm", fs=5.8, font=FONT, above=False)                       # outer notch width
+    draw_dim_h(ax, XOUT1, XUP - ep_x, zcp, "17mm", fs=5.8, font=FONT, above=False)                     # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
+    draw_dim_h(ax, XUP - ep_x, XUP, zcp, "8mm", fs=5.0, font=FONT, above=False)                        # end-plate (part of the 325)
     draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (incl. 8 end-plate)", fs=6.3, font=FONT, above=False)
 
     # ── END-PLATE — BEARING-TYPE, both bolts ABOVE the arm; rail ghosted below (no bolt near it) ──
@@ -1416,12 +1412,12 @@ def sheet5():
         ax.add_patch(Circle((cx, by), 8, fc=BG, ec=C_OUT, lw=1.3, zorder=7))
         ax.plot([cx - 13, cx + 13], [by, by], color=C_OUT, lw=0.6, zorder=7)
         ax.plot([cx, cx], [by - 13, by + 13], color=C_OUT, lw=0.6, zorder=7)
-    draw_dim_h(ax, cx - pw2, cx + pw2, yb - 20, "65", fs=5.8, font=FONT, above=False)                                     # plate width
-    draw_dim_v(ax, cx - pw2 - 22, yb, yt, "148", fs=5.8, font=FONT)                                                       # plate height (taller for bolts above)
+    draw_dim_h(ax, cx - pw2, cx + pw2, yb - 20, "65mm", fs=5.8, font=FONT, above=False)                                     # plate width
+    draw_dim_v(ax, cx - pw2 - 22, yb, yt, "148mm", fs=5.8, font=FONT)                                                       # plate height (taller for bolts above)
     # hole centres: horizontally centred (left edge → centreline), and located VERTICALLY off the plate-TOP datum
-    draw_dim_h(ax, cx - pw2, cx, zmap(170) + 22, "32.5", fs=5.6, font=FONT, above=True)                                   # left edge → hole centreline
-    draw_dim_v(ax, cx + pw2 + 22, zmap(170), yt, "15", fs=5.6, font=FONT)                                                 # plate top → UPPER hole centre
-    draw_dim_v(ax, cx + pw2 + 48, zmap(140), yt, "45", fs=5.6, font=FONT)                                                 # plate top → LOWER hole centre
+    draw_dim_h(ax, cx - pw2, cx, zmap(170) + 22, "32.5mm", fs=5.6, font=FONT, above=True)                                   # left edge → hole centreline
+    draw_dim_v(ax, cx + pw2 + 22, zmap(170), yt, "15mm", fs=5.6, font=FONT)                                                 # plate top → UPPER hole centre
+    draw_dim_v(ax, cx + pw2 + 48, zmap(140), yt, "45mm", fs=5.6, font=FONT)                                                 # plate top → LOWER hole centre
     ax.text(cx, yb - 44, "2× M12 ABOVE the arm (bearing-type) — 5mm fillet ALL ROUND",
             fontsize=5.1, ha="center", color=C_DIM, **FONT)
 
@@ -1448,8 +1444,8 @@ def sheet5():
     ax.add_patch(Rectangle((hx - 12, zab - 19), 24, 11, fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=11))     # hex head (underside)
     ax.add_patch(Rectangle((hx - mw - 12, 214), 2 * mw + 24, 20, fc="#C8D8E8", ec=C_OUT, lw=1.0, alpha=0.5, zorder=4))  # spray beam (context, below)
     ax.text(hx, 224, "spray beam (Z78) — head clears (~6.6)", fontsize=4.6, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
-    draw_dim_v(ax, hx - mw - 14, zab, zs, "16", fs=5.0, font=FONT)                         # arm kept (solid)
-    draw_dim_v(ax, hx - mw - 14, zs, zbt, "9.4", fs=5.0, font=FONT)                        # beam kept (hollow)
+    draw_dim_v(ax, hx - mw - 14, zab, zs, "16mm", fs=5.0, font=FONT)                         # arm kept (solid)
+    draw_dim_v(ax, hx - mw - 14, zs, zbt, "9.4mm", fs=5.0, font=FONT)                        # beam kept (hollow)
     ax.text(hx, 175, "#14 self-drilling TEK from the UNDERSIDE: Ø7 CLEARANCE", fontsize=5.2, ha="center", color=C_DIM, **FONT)
     ax.text(hx, 161, "hole through the SOLID arm, threads into the beam's", fontsize=5.2, ha="center", color=C_DIM, **FONT)
     ax.text(hx, 147, "SOLID bottom wall (faces down on the arm); clamp the lap.", fontsize=5.2, ha="center", color=C_DIM, **FONT)

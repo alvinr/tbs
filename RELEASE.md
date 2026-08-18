@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Wall-hanger + D-ring 3D alignment fixes (Alvin).** The wall-hanger clamp assembly now sits on the INSIDE
+  (corridor) side of the bar — its back edge flush with the bar back / tote front (X 4614–4674) instead of
+  projecting 32mm into the tote (was 4646–4706). And the D-ring lashing holders moved off the corridor cleats
+  (520/900/1462/1842, was 520/940/1422/1842 — the 940 + 1422 rings touched the cleat legs at 956/1406).
+  Sheet 1 + Sheet 6 D-ring positions updated to match the 3D (they had drifted apart). 3D re-sent.
+
 - **Wall-end bar restraint unified with the post end (L-cleat), + nut-side backing plates.** The bar's wall
   end now uses the **same L-cleat + single horizontal M12×65** as the corridor end (the L's horizontal leg is
   the shelf, the vertical leg takes the bolt through the bar's 50mm web) — welded to the inside wall plate,

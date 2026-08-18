@@ -230,7 +230,9 @@ def tote_restraint():
                                   bar_d + 2 * lt, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))                 # SINGLE horizontal bolt: leg + bar web + backing plate
     # D-ring lashing holders — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1); on the LOWER
     # bar of each tier (one per tier) so the ring count stays 8 despite the doubled bars.
-    for ydh in (520, 940, 1422, ov.C_WID - 520):
+    # Yd positions clear of the corridor-end cleat legs (near leg 956–1046, far leg 1316–1406) so the
+    # D-ring holders don't intersect them (was 520/940/1422/1842 — the 940 + 1422 rings touched the cleats).
+    for ydh in (520, 900, 1462, ov.C_WID - 520):
         for bz in tier_zs:
             p.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + S / 2, 16, 10,
                                       color=ov.C_STEEL, axis="x"))
@@ -253,14 +255,17 @@ def tote_restraint():
             p_y = wall_yd if din > 0 else wall_yd - ht
             s_y = wall_yd if din > 0 else wall_yd - dep
             pocket_w = 60                  # back-plate + seat both 60mm wide — REUSE the exterior backing stock (2026-08-15; was S+16/S+8)
-            p.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, plate_z0, pocket_w, ht, ext_ph, color=ov.C_STEEL))
+            # Clamp assembly sits on the INSIDE (corridor) side of the bar — its back edge flush with the bar
+            # back (= tote front), NOT projecting into the tote (was front_x−8 → +52, 32mm into the tote).
+            hx0 = front_x + bar_d - pocket_w                  # inside plate / backing-plate X start
+            p.append(ov.ruby_box("Wall Hanger Plate", hx0, p_y, plate_z0, pocket_w, ht, ext_ph, color=ov.C_STEEL))
             # SAME L-cleat as the post end (welded to the inside plate): a horizontal leg the bar sits on +
             # a vertical leg on the bar FRONT, with 1 HORIZONTAL J7 bolt through the leg + the bar's 50mm web.
             lt2 = 8
             p.append(ov.ruby_box("Wall Hanger L-leg (J7)", front_x, s_y, bz - lt2, bar_d, dep, lt2, color=ov.C_STEEL))          # horizontal leg (bar sits on it)
             p.append(ov.ruby_box("Wall Hanger L-upstand (J7/W)", front_x - lt2, s_y, bz - lt2, lt2, dep, S + lt2, color=ov.C_STEEL))  # vertical leg on the bar FRONT
             p.append(ov.ruby_box("Wall Hanger backing plate (J7)", front_x + bar_d, wall_yd + din * 28 - 25, bz + 5, lt2, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
-            ecx = front_x - 8 + pocket_w / 2
+            ecx = hx0 + pocket_w / 2
             plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
             bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
             p.append(ov.ruby_box("IBC Wall Backing Plate (ext)",

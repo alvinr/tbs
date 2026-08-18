@@ -473,31 +473,33 @@ def sheet1():
         ax.plot([(col_l), (col_r)], [(PLATFORM_Z)] * 2,
                 color=C_OUT, lw=2.0, zorder=8)
 
-    # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (EN 12195-1 loaded case)
-    # Each bar covers its column, ends (cleated) at the upright's OUTSIDE (column-facing) edge — NEAR_COL_R /
-    # FAR_COL_L — and its wall end BUTTS the hanger pocket just inboard of the container wall (HANGER_D).
-    HANGER_D, WALL_T, BPT = 55, 14, 8                  # pocket depth / container-wall thickness (exaggerated) / backing-plate thickness
+    # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (EN 12195-1 loaded case).
+    # Each bar covers its column, ends (cleated) at the upright's OUTSIDE edge (NEAR_COL_R / FAR_COL_L), and
+    # its wall end runs to the INSIDE of the container wall, resting on the hanger SHELF.
+    WALL_T, BPT, SHELF_D = 14, 8, 55                   # container-wall thickness (exaggerated) / backing-plate thickness / shelf projection
     for bz in (500, 950, 1500, 1950):
-        for y0, y1 in ((HANGER_D, NEAR_COL_R), (FAR_COL_L, C_WID - HANGER_D)):
+        for y0, y1 in ((0, NEAR_COL_R), (FAR_COL_L, C_WID)):
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
-    # Wall hangers — the bar's wall end drops into a pocket at the INSIDE of the container wall; the pocket is
-    # clamped to the wall by an INSIDE plate + an OUTSIDE backing plate with 2× M12 (J3) through-bolts STACKED
-    # vertically (one below the seat, one above the bar) running horizontally through the wall, plus a vertical
-    # M12 (J7) retaining the bar in the pocket.  (Matches the 3D + Sheet 4 Detail A.)
+    # Wall hangers (matches the 3D + Sheet 4 Detail A): the bar's wall end rests on a SHELF/seat carried off an
+    # INSIDE plate; a J7 bolt runs VERTICALLY through the bar + the shelf.  The inside plate + an OUTSIDE backing
+    # plate clamp the container wall (shown as the GAP between them) with 2× M12 (J3) through-bolts run
+    # HORIZONTALLY through both plates, STACKED one below the seat + one above the bar.
     def _wall_hanger(wall_yd, din, bz):
         wo = wall_yd - din * WALL_T                    # wall OUTER face
         bpo = wo - din * BPT                           # backing-plate OUTER face
-        pin = wall_yd + din * HANGER_D                 # pocket INNER face (bar butts here)
+        ipf = wall_yd + din * 8                        # INSIDE plate inner face
+        shelf_out = wall_yd + din * SHELF_D            # shelf projects into the corridor
         def _seg(a, b, z0, h, **kw):
             ax.add_patch(Rectangle((min(a, b), z0), abs(b - a), h, **kw))
-        _seg(wall_yd, wo, bz - 62, FRAME_RHS + 124, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.5, zorder=7)   # container wall
+        _seg(wall_yd, wo, bz - 62, FRAME_RHS + 124, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.5, zorder=7)   # container wall (the GAP)
         _seg(wo, bpo, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)                 # OUTSIDE backing plate
-        _seg(wall_yd, pin, bz - 12, FRAME_RHS + 24, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)             # inside hanger pocket
-        for zz in (bz - 22, bz + FRAME_RHS + 22):      # 2× J3 through-bolts — horizontal, STACKED, head OUTSIDE
-            _seg(bpo, wall_yd + din * 28, zz - 4.5, 9, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12)         # shank (through backing plate + wall + pocket)
+        _seg(wall_yd, ipf, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)            # INSIDE plate
+        _seg(ipf, shelf_out, bz - 12, 12, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=10)                      # SHELF / seat (bar rests on TOP)
+        for zz in (bz - 24, bz + FRAME_RHS + 24):      # 2× J3 through-bolts — HORIZONTAL, STACKED, through both plates + wall, head OUTSIDE
+            _seg(bpo, ipf, zz - 4.5, 9, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12)
             _seg(bpo, bpo - din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex head (outside)
-        _bolt(ax, wall_yd + din * 28, bz - 8, FRAME_RHS + 8, vert=True, d=8, nut=True)                  # J7 vertical bar-retention bolt
+        _bolt(ax, wall_yd + din * 30, bz - 14, FRAME_RHS + 14, vert=True, d=8, nut=True)                # J7 VERTICAL — through the bar + the shelf
     for bz in (500, 950, 1500, 1950):
         _wall_hanger(0, +1, bz)
         _wall_hanger(C_WID, -1, bz)
@@ -762,10 +764,24 @@ def sheet2():
         _rhs_rect(ax, FX_FRONT, bz, FRAME_RHS, FRAME_RHS,
                   fc=C_STEEL, alpha=0.6, lw=1.0, zo=8)
 
-    # ── Weld symbols at upright/beam joints ─────────────────────────────────
-    for fx in FX_POSTS:
-        for bz in [FRAME_RHS, PLATFORM_Z + FRAME_RHS]:
-            _weld_tick(ax, fx + FRAME_RHS + 3, bz, side='right')
+    # ── W1 ring↔upright welds: top + bottom ring × front + back upright × near+far leg = 8 ──
+    #    (the near and far legs overlap in this along-Yd view, so each corner carries 2 welds)
+    for rz in (FRAME_RHS / 2, TOP_Z - FRAME_RHS / 2):                 # bottom-ring mid / top-ring mid
+        for fx in (FX_FRONT + FRAME_RHS, FX_BACK):                    # front upright inner face / back upright left face
+            sd = 'right' if fx < FRAME_FOOTPRINT_D / 2 else 'left'
+            for dz in (-15, 15):                                      # 2 ticks — near + far leg (overlap in this view)
+                _weld_tick(ax, fx, rz + dz, side=sd, size=6)
+    for fx in FX_POSTS:                                               # W2 foot↔upright (2 columns shown; ×4 with near+far)
+        _weld_tick(ax, fx + FRAME_RHS + 3, FRAME_RHS, side='right')
+    leader(ax, (FX_FRONT + FRAME_RHS), (TOP_Z - FRAME_RHS / 2),
+           (FX_FRONT + FRAME_RHS + 70), (TOP_Z - 150),
+           "W1 (×8) — top + bottom ring\n× 4 legs (near+far overlap here)",
+           color=C_OUT, fs=5.3, ha="left", va="top", arrow_style="-|>", font=FONT)
+    # ── Label the two grey verticals: the deep-box FRONT + BACK upright pairs ──
+    ax.text((FX_FRONT + FRAME_RHS / 2), (TOP_Z - 90), "FRONT\nUPRIGHT\n(×2: near+far)", fontsize=5.0,
+            ha="center", va="top", color=C_DIM, **FONT, zorder=9)
+    ax.text((FX_BACK + FRAME_RHS / 2), (TOP_Z - 90), "BACK\nUPRIGHT\n(×2: near+far)", fontsize=5.0,
+            ha="center", va="top", color=C_DIM, **FONT, zorder=9)
 
     # ── Right-walkway cantilever arm (rev12) — attaches to the front corridor
     # upright and projects off the front of the frame toward the walkway.  In side
@@ -1308,6 +1324,10 @@ def sheet5():
         _bolt(ax, xc, az - ah/2, ah + 6, vert=True, d=5, nut=False)                        # standard bolt/screw convention (hex head + shank), driven from the underside
     leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 20, az - ah/2 - 78,
            "#14 TEK hold-down\n(×4 — 1 per lap; see detail)", fs=5.3, font=FONT, ha="left")
+    for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # LOCATE each TEK clearance hole: dim_h along the arm (from the notch edge → CL)
+        draw_dim_h(ax, n0, (n0 + n1) / 2, az + ah/2 + 15, "25.4", fs=4.6, font=FONT, above=True)
+    draw_dim_v(ax, (XIN0 + XIN1) / 2 - 24, az - ah/2, az + ah/2, "25.4", fs=4.6, font=FONT)  # dim_v: the Ø7 hole runs THRU the 25.4 arm depth
+    ax.text((XIN0 + XIN1) / 2 - 24, az - ah/2 - 9, "Ø7 thru", fontsize=4.4, ha="center", color=C_DIM, **FONT)
     ax.text((XIN1 + XOUT0)/2, az, "2×1 SOLID STEEL BAR", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
     leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 55, az + 84, "inner long beam\n(at the arm tip)", fs=6, font=FONT, ha="left")
     leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam\n(post end)", fs=6, font=FONT, ha="right")
@@ -1341,7 +1361,13 @@ def sheet5():
     for (n0, n1), lbl in (((XIN0, XIN1), "inner long beam\n(arm tip)"), ((XOUT0, XOUT1), "outer long beam")):
         ax.add_patch(Rectangle((n0, py - dw/2), n1 - n0, dw, lw=1.2, zorder=6, **_hatch))          # notch = beam width, full arm width
         ax.text((n0 + n1)/2, py + dw/2 + 22, lbl, fontsize=5.8, ha="center", va="center", color=C_DIM, **FONT)
+        xc = (n0 + n1) / 2                                                                          # #14 TEK clearance hole through the notched half-lap (1 per notch)
+        ax.add_patch(Circle((xc, py), 6, fc=BG, ec=C_OUT, lw=1.3, zorder=9))
+        ax.plot([xc - 9, xc + 9], [py, py], color=C_CL, lw=0.5, zorder=9)
+        ax.plot([xc, xc], [py - 9, py + 9], color=C_CL, lw=0.5, zorder=9)
+        draw_dim_h(ax, n0, xc, py - dw/2 - 6, "25.4", fs=4.6, font=FONT, above=False)               # hole CL from the notch edge
     ax.text(XT - 8, py, "TIP", fontsize=5.5, ha="right", va="center", color=C_DIM, **FONT)
+    leader(ax, (XIN0 + XIN1) / 2, py + 6, (XIN0 + XIN1) / 2 - 30, py + dw/2 + 46, "Ø7 TEK clearance\n(1 per notch)", fs=5, font=FONT, ha="right")
     # J6 connection (top-down): the through-bolts run from the end-plate, through the POST, into the rear
     # backing plate.  Both bolts share the Yd centreline (a central column), so they project onto one line here.
     ax.add_patch(Rectangle((XUP, py - dw/2 - 4), 50, dw + 8, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.2, zorder=6))            # upright (POST), top-down

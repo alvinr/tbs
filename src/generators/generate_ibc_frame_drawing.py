@@ -397,7 +397,7 @@ def _cut_list(ax, x, y):
         f" 12   pump-support L-brkt   1×1×⅛ angle    per detail",
         f"  4   ribbon cross-beam     25×3 flat bar  ~300",
     ]
-    draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(1500))
+    draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(700))
 
 
 def _datum_tol_block(ax, x, y):
@@ -414,7 +414,7 @@ def _datum_tol_block(ax, x, y):
         " backing-plate M12 holes ..... ±1",
         " corridor clear width ........ +2 / −0",
     ]
-    draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(1500))
+    draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(700))
 
 
 def sheet1():
@@ -673,7 +673,8 @@ def sheet1():
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
-        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
+        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into",
+         "   a Simpson-style wall joist",
         f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×65) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
@@ -687,8 +688,8 @@ def sheet1():
                fs=7, font=FONT, width=(2200))
 
     # ── Member cut list + datum/tolerance block (Phase D, fab-grade) ──────────
-    _cut_list(ax, (-260), (TOP_Z + 600))
-    _datum_tol_block(ax, (-260), (TOP_Z - 340))
+    _cut_list(ax, (-220), (TOP_Z + 600))
+    _datum_tol_block(ax, (-220), (TOP_Z - 340))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -1333,7 +1334,7 @@ def sheet5():
         ax.plot([n0, n1], [hlz, hlz], color=C_OUT, lw=1.0, zorder=8)                       # half-lap line
         xc = (n0 + n1) / 2                                                                 # #14 TEK hold-down at EACH lap (tip + post) — from the underside up into the walkway beam
         _bolt(ax, xc, az - ah/2, ah + 6, vert=True, d=5, nut=False)                        # standard bolt/screw convention (hex head + shank), driven from the underside
-    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 20, az - ah/2 - 78,
+    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 100, az - ah/2 - 65,
            "#14 TEK hold-down\n(×4 — 1 per lap; see detail)", fs=5.3, font=FONT, ha="left")
     for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # LOCATE each TEK clearance hole: dim_h along the arm (from the notch edge → CL)
         draw_dim_h(ax, n0, (n0 + n1) / 2, az + ah/2 + 15, "25.4", fs=4.6, font=FONT, above=True)
@@ -1459,7 +1460,8 @@ def sheet5():
         "NOTES — WALKWAY CANTILEVER ARM (×2, one per IBC FRONT upright; 2×1 SOLID steel bar, 50.8×25.4):",
         "• Reach 325mm = arm length (upright FACE → tip), INCL. the 8mm end-plate; the arm-steel stub from the outer notch to the arm end = 17mm.",
         "• Crosses BOTH long beams → TWO half-lap notches (X-located on VIEW A): outer 25mm from the post, inner at the tip, 198.4 clear.",
-        "• Notch REBALANCED to the moment (solid bar): TIP (M≈30 Nm) arm keeps 5.4 / beam 20;  POST (M≈334 Nm) arm keeps 16 (SF≈1.6) — the beam's 9.4 notch is a BEARING SEAT, so the beam spans simply-supported on its full section.",
+        "• Notch REBALANCED to the moment (solid bar): TIP (M≈30 Nm) arm keeps 5.4 / beam 20;  POST (M≈334 Nm) arm keeps 16 (SF≈1.6) — the beam's 9.4 notch is a BEARING SEAT,",
+        "  so the beam spans simply-supported on its full section.",
         "• HOLD-DOWN: 1× #14 TEK per lap (×4), from the UNDERSIDE through the beam into the solid arm (locks the beam to the seat). Arm underside Z90; top Z115 (grate).",
         "• J6 (bearing-type): an end-plate WELDED to the arm end → 2× M12 (central column, BOTH above the arm) → REAR backing plate. Full connection on Sheet 4, Det F.",
     ], 30, -30, spacing=30, fs=6.2, font=FONT, width=1310)
@@ -1555,8 +1557,8 @@ def sheet6():
             fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
     # ── legend ──
-    _dcell(ax, 20, -300, 1340, 250, "WELD SCHEDULE (fillet, E70xx; §3.5)")
     draw_notes(ax, [
+        "WELD SCHEDULE (fillet, E70xx; §3.5)",
         "W1 — Upright ↔ top/bottom ring: 5mm fillet, ALL-AROUND (×8 corners; min fillet).",
         "W2 — Foot plate ↔ upright base: 6mm fillet, ALL-AROUND (×4 feet; min fillet).",
         "W3 — Bar-end cleat ↔ upright: 4mm fillet, BOTH cleat legs (×8 cleats; SF 37, demand 1.8 kN).",
@@ -1564,7 +1566,7 @@ def sheet6():
         "W5 — Wall-hanger seat ↔ pocket back-plate: 4mm fillet (×8 hangers; the bar is BOLTED to the hanger via J7, not welded).",
         "W6 — Ribbon cross-beam ↔ walkway bearer: 4mm fillet, both ends (×4 — on the plumbing-corridor ribbon, not the tote frame).",
         "• Grind zinc back at all weld zones; weld a pre-finished frame only at the TEK-screwed brackets (J8/J9 — no hot work).",
-    ], 44, -70, spacing=32, fs=6.6, font=FONT, width=1300)
+    ], 44, -70, spacing=24, fs=6.6, font=FONT, width=1300)
 
     title_block(ax, "SHEET 6 OF 6", drawing_title="IBC SUPPORT FRAME",
                 subtitle="WELD MAP — W1–W6 LOCATIONS + SCHEDULE",

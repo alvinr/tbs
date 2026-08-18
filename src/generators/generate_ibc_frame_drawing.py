@@ -481,25 +481,33 @@ def sheet1():
         for y0, y1 in ((0, NEAR_COL_R), (FAR_COL_L, C_WID)):
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
-    # Wall hangers (matches the 3D + Sheet 4 Detail A): the bar's wall end rests on a SHELF/seat carried off an
-    # INSIDE plate; a J7 bolt runs VERTICALLY through the bar + the shelf.  The inside plate + an OUTSIDE backing
-    # plate clamp the container wall (shown as the GAP between them) with 2× M12 (J3) through-bolts run
-    # HORIZONTALLY through both plates, STACKED one below the seat + one above the bar.
+    # Wall hangers: the bar's wall end is secured by the SAME L-cleat as the post end (horizontal leg the bar
+    # sits on + vertical leg on the bar front, 1 horizontal J7 bolt through the leg + the bar web), welded to an
+    # INSIDE plate.  That inside plate + an OUTSIDE backing plate clamp the container wall (shown as the GAP
+    # between them) with 2× M12 (J3) through-bolts run HORIZONTALLY through both plates (head out, nut in).
     def _wall_hanger(wall_yd, din, bz):
+        bmid = bz + FRAME_RHS / 2
         wo = wall_yd - din * WALL_T                    # wall OUTER face
         bpo = wo - din * BPT                           # backing-plate OUTER face
         ipf = wall_yd + din * 8                        # INSIDE plate inner face
-        shelf_out = wall_yd + din * SHELF_D            # shelf projects into the corridor
+        lout = wall_yd + din * SHELF_D                 # L-cleat projects into the corridor
         def _seg(a, b, z0, h, **kw):
             ax.add_patch(Rectangle((min(a, b), z0), abs(b - a), h, **kw))
         _seg(wall_yd, wo, bz - 62, FRAME_RHS + 124, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.5, zorder=7)   # container wall (the GAP)
         _seg(wo, bpo, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)                 # OUTSIDE backing plate
         _seg(wall_yd, ipf, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)            # INSIDE plate
-        _seg(ipf, shelf_out, bz - 12, 12, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=10)                      # SHELF / seat (bar rests on TOP)
-        for zz in (bz - 24, bz + FRAME_RHS + 24):      # 2× J3 through-bolts — HORIZONTAL, STACKED, through both plates + wall, head OUTSIDE
-            _seg(bpo, ipf, zz - 4.5, 9, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12)
-            _seg(bpo, bpo - din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex head (outside)
-        _bolt(ax, wall_yd + din * 30, bz - 14, FRAME_RHS + 14, vert=True, d=8, nut=True)                # J7 VERTICAL — through the bar + the shelf
+        # SAME L-cleat as the post end (welded to the inside plate): horizontal leg (bar sits on it) + vertical
+        # leg on the bar FRONT, with 1 HORIZONTAL J7 bolt through the leg + the bar web (end-on in this view).
+        _seg(ipf, lout, bz - 11, 11, fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8)                            # L horizontal leg (shelf, edge-on)
+        _seg(ipf, lout, bz - 2, FRAME_RHS + 4, fc=C_FRAME, ec=C_OUT, lw=0.9, alpha=0.45, zorder=11)     # L vertical leg (bar FRONT, welded to the inside plate)
+        for zz in (bz - 24, bz + FRAME_RHS + 24):      # 2× J3 through-bolts — HORIZONTAL, STACKED, through both plates + wall
+            _seg(bpo, ipf + din * 6, zz - 4.5, 9, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12)              # shank (protrudes past the inside plate for the nut)
+            _seg(bpo, bpo - din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex head (OUTSIDE)
+            _seg(ipf, ipf + din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex NUT (INSIDE face)
+        bxc = wall_yd + din * 26                                                                        # 1× J7 bolt — HORIZONTAL through the L leg + the bar web (END-ON here), like J2 at the post
+        ax.add_patch(Circle((bxc, bmid), 9, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=13))
+        ax.plot([bxc - 6, bxc + 6], [bmid, bmid], color=C_OUT, lw=0.8, zorder=14)
+        ax.plot([bxc, bxc], [bmid - 6, bmid + 6], color=C_OUT, lw=0.8, zorder=14)
     for bz in (500, 950, 1500, 1950):
         _wall_hanger(0, +1, bz)
         _wall_hanger(C_WID, -1, bz)
@@ -622,7 +630,7 @@ def sheet1():
 
     leader(ax, (30), (1760 + FRAME_RHS / 2),
            (330), (1500),
-           "WALL JOIST HANGER (×8, 1/bar)\nidentical 2-bolt Simpson U-pocket,\nthrough-bolted (2× M12×65) to a 60×205×8\nEXTERIOR backing plate (hex heads out)",
+           "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 J7\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×65 (J3), head out / nut in",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -1210,7 +1218,7 @@ def sheet4():
         ax.add_patch(Rectangle((rx - 7, bz + 66), 14, 10, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=7))     # ring→base neck (ONE piece)
         ax.add_patch(Circle((rx, bz + 92), 24, fc="none", ec=C_OUT, lw=2.4, zorder=8))               # ring — integral with its base
         _weld_tick(ax, rx - 20, bz + 60, side='down', size=6); _weld_tick(ax, rx + 20, bz + 60, side='down', size=6)  # base↔bar (W4)
-    draw_dim_h(ax, lx0 + 120, lx0 + 250, bz + 150, "ring pitch")
+    draw_dim_h(ax, lx0 + 120, lx0 + 250, bz + 150, "ring pitch 420")
     draw_dim_h(ax, lx0 + 250, lx0 + 336, bz - 32, "→ bar end")
     leader(ax, lx0 + 120, bz + 58, lx0 + 40, bz - 48, "weld-on ring: ring + base\nare ONE piece; base FILLET\n6mm to the bar (W4)", fs=6, font=FONT, ha="left")
 
@@ -1506,9 +1514,9 @@ def sheet6():
         ax.add_patch(Rectangle((xRo, bz), wallR - xRo, 24, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))     # FAR bar
         ax.add_patch(Rectangle((xLo - 24, bz - 11), 24, 11, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))    # near cleat leg (outside edge)
         ax.add_patch(Rectangle((xRo, bz - 11), 24, 11, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))         # far cleat leg (outside edge)
-    for bz in (210, 480):                              # lashing rings on the LOWER bar of each tier (near + far)
-        for rx in (300, 1000):
-            ax.add_patch(Circle((rx, bz + 12), 14, fc="none", ec=C_OUT, lw=1.8, zorder=8))
+    for bz in (210, 480):                              # lashing rings — 4 per tier (2 near bar + 2 far bar) × 2 tiers = 8
+        for rx in (240, 400, 840, 1000):
+            ax.add_patch(Circle((rx, bz + 12), 13, fc="none", ec=C_OUT, lw=1.8, zorder=8))
     ax.text((xLi + xRi) / 2, zb + (zt - zb) / 2, "CORRIDOR\n(rings tie\nthe uprights)", fontsize=5.0, ha="center", va="center", color=C_DIM, **FONT)
     ax.text(xL, zt + 22, "NEAR\nUPRIGHT", fontsize=5.3, ha="center", va="bottom", color=C_DIM, **FONT)
     ax.text(xR, zt + 22, "FAR\nUPRIGHT", fontsize=5.3, ha="center", va="bottom", color=C_DIM, **FONT)
@@ -1532,15 +1540,15 @@ def sheet6():
     for bz in bar_zs:
         _weld_tick(ax, xLo, bz + 5, side='left', size=5)
         _weld_tick(ax, xRo, bz + 5, side='right', size=5)
-    # W4 — lashing ring↔bar
+    # W4 — lashing ring↔bar: ALL 8 (4 per tier × 2 tiers)
     for bz in (210, 480):
-        for rx in (300, 1000):
-            _weld_tick(ax, rx, bz + 12, side='up', size=5)
+        for rx in (240, 400, 840, 1000):
+            _weld_tick(ax, rx, bz + 12, side='up', size=4)
     # one leader per weld TYPE
     leader(ax, xLi, zt - upw / 2, xL - 150, zt + 26, "W1 (×8 = 4 legs × 2 rings)", fs=6.6, font=FONT, ha="right")
     leader(ax, xLo, zb, xLo - 130, zb - 60, "W2 (×4 feet)", fs=6.6, font=FONT, ha="right")
     leader(ax, xRo, 485, xRo + 130, 430, "W3 (×8 cleats)", fs=6.6, font=FONT, ha="left")
-    leader(ax, 300, 210 + 12, 200, 120, "W4 (×8 rings)", fs=6.6, font=FONT, ha="right")
+    leader(ax, 240, 210 + 12, 170, 120, "W4 (×8 rings)", fs=6.6, font=FONT, ha="right")
     ax.text(670, -18, "W5 — wall-hanger seat↔back-plate (off-frame; see Plate Schedule, Plate 3)   ·   "
             "W6 — ribbon cross-beam↔walkway bearer (plumbing-corridor ribbon, not the tote frame)",
             fontsize=5.2, ha="center", color=C_DIM, **FONT)

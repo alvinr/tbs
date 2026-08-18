@@ -211,10 +211,12 @@ def sheet2():
     ax.add_patch(Rectangle((cx, cy), CLEAT_T + barW, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=6))  # horizontal leg (bar sits on)
     ax.add_patch(Rectangle((cx + CLEAT_T, cy + CLEAT_T), barW, barH, fc=C_FRAME, ec=C_OUT, lw=1.0, alpha=0.35, zorder=5))  # bar, dropped in (ghost)
     ax.text(cx + CLEAT_T + barW/2, cy + CLEAT_T + barH/2, "bar\n50×20\ndrops in", fontsize=4.6, ha="center", va="center", color=C_DIM, **FONT, zorder=7)
+    ax.add_patch(Rectangle((cx + CLEAT_T + barW, cy + CLEAT_T), CLEAT_T, barH, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))  # BACKING PLATE on the bar's far web (nut spreader)
+    ax.text(cx + CLEAT_T + barW + 22, cy + CLEAT_T + barH * 0.8, "backing\nplate", fontsize=4.2, ha="left", va="center", color=C_DIM, **FONT, zorder=7)
     bz_ = cy + CLEAT_T + CLEAT_BOLT_Z                                                                  # bolt at the bar mid-height
     ax.add_patch(Rectangle((cx - 10, bz_ - 8), 10, 16, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))         # hex head (front)
-    ax.add_patch(Rectangle((cx, bz_ - 4), CLEAT_T + barW + 6, 8, fc="#D8D8DC", ec=C_OUT, lw=0.8, zorder=8))  # shank through the leg + bar
-    ax.add_patch(Rectangle((cx + CLEAT_T + barW + 6, bz_ - 7), 5, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))  # nut (back)
+    ax.add_patch(Rectangle((cx, bz_ - 4), CLEAT_T + barW + CLEAT_T + 6, 8, fc="#D8D8DC", ec=C_OUT, lw=0.8, zorder=8))  # shank through the leg + bar + backing plate
+    ax.add_patch(Rectangle((cx + CLEAT_T + barW + CLEAT_T + 6, bz_ - 7), 5, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))  # nut (back)
     draw_dim_v(ax, cx - 24, cy, cy + CLEAT_UP, f"{CLEAT_UP:.0f}mm", fs=5.5, font=FONT)                  # vertical-leg height
     draw_dim_h(ax, cx, cx + CLEAT_T + barW, cy - 16, f"{CLEAT_T + barW}mm", fs=5.5, font=FONT, above=False)   # horizontal-leg reach
     ax.text(cx - 6, cy + CLEAT_UP + 26, "END SECTION — bar drops into the L;\nvertical leg welds to the upright (W3)", fontsize=4.8, ha="left", color=C_DIM, **FONT, zorder=7)
@@ -233,11 +235,15 @@ def sheet2():
     ax.add_patch(Rectangle((px0 + CLEAT_LEG, pyb - 5), 24, barW + CLEAT_T + 10, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.0, zorder=4))  # upright (corridor end)
     ax.text(px0 + CLEAT_LEG + 12, pyb + barW/2, "upright", fontsize=4.2, ha="center", va="center", color=C_DIM, rotation=90, **FONT, zorder=7)
     ax.add_patch(Rectangle((px0, pyb + CLEAT_T), CLEAT_LEG, barW, fc=C_FRAME, ec=C_OUT, alpha=0.35, lw=1.0, zorder=5))   # bar on the horizontal leg (90 Yd × 20 X)
-    ax.add_patch(Rectangle((px0, pyb), CLEAT_LEG, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))                      # vertical leg (front strip)
+    ax.add_patch(Rectangle((px0, pyb), CLEAT_LEG, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))                      # vertical leg (front strip — the L side)
+    ax.add_patch(Rectangle((px0 + 18, pyb + CLEAT_T + barW), CLEAT_LEG - 36, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))  # BACKING PLATE on the bar's far web (nut side)
+    ax.text(px0 - 2, pyb + CLEAT_T, "L side", fontsize=4.0, ha="right", va="center", color=C_DIM, **FONT, zorder=7)
+    ax.text(px0 - 2, pyb + CLEAT_T + barW + CLEAT_T, "backing plate", fontsize=4.0, ha="right", va="center", color=C_DIM, **FONT, zorder=7)
     bxp = px0 + CLEAT_LEG * 0.5
-    ax.add_patch(Rectangle((bxp - 4, pyb - 6), 8, CLEAT_T + barW + 10, fc="#D8D8DC", ec=C_OUT, lw=0.7, zorder=8))        # horizontal bolt (along X → vertical here)
-    ax.add_patch(Rectangle((bxp - 7, pyb - 6), 14, 5, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))                          # head
-    ax.text(px0 + CLEAT_LEG/2, pyb - 15, "PLAN (top-down) — L also welds to the upright (W3)", fontsize=4.4, ha="center", color=C_DIM, **FONT, zorder=7)
+    ax.add_patch(Rectangle((bxp - 4, pyb - 6), 8, CLEAT_T + barW + CLEAT_T + 12, fc="#D8D8DC", ec=C_OUT, lw=0.7, zorder=8))  # horizontal bolt (along X → vertical here): leg → bar → backing plate
+    ax.add_patch(Rectangle((bxp - 7, pyb - 6), 14, 5, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))                          # head (L side)
+    ax.add_patch(Rectangle((bxp - 7, pyb + CLEAT_T + barW + CLEAT_T + 1, ), 14, 5, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))  # nut (backing-plate side)
+    ax.text(px0 + CLEAT_LEG/2, pyb - 15, "PLAN (top-down) — L (near) + backing plate (far); 1 horizontal bolt; L also welds to the upright (W3)", fontsize=4.0, ha="center", color=C_DIM, **FONT, zorder=7)
     _specbox(ax, 40, 306, [f"1× Ø{HOLE_CLR} (M12×65) — J2, HORIZONTAL through",
                            "the leg + the bar's 50mm web (~18mm edge)",
                            "end section (L) · drilled leg face (R) · plan (below)"])

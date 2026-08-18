@@ -225,8 +225,9 @@ def tote_restraint():
             leg_y0 = cor_yd - llen if wdir < 0 else cor_yd
             p.append(ov.ruby_box("Bar cleat leg (J2)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=ov.C_STEEL))          # horizontal leg UNDER the bar
             p.append(ov.ruby_box("Bar cleat upstand (J2/W3)", front_x - lt, leg_y0, bz - lt, lt, llen, S + lt, color=ov.C_STEEL))  # vertical leg on the bar FRONT (−X), welded to the upright
+            p.append(ov.ruby_box("Bar cleat backing plate (J2)", front_x + bar_d, cor_yd + wdir * 45 - 25, bz + 5, lt, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
             p.append(ov.ruby_bolt("IBC Bar Cleat Bolt M12x65 (J2)", front_x - lt, cor_yd + wdir * 45, bz + S / 2,
-                                  bar_d + 2 * lt, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))                 # SINGLE horizontal bolt: through the leg + the bar's 50mm web
+                                  bar_d + 2 * lt, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))                 # SINGLE horizontal bolt: leg + bar web + backing plate
     # D-ring lashing holders — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1); on the LOWER
     # bar of each tier (one per tier) so the ring count stays 8 despite the doubled bars.
     for ydh in (520, 940, 1422, ov.C_WID - 520):
@@ -253,7 +254,12 @@ def tote_restraint():
             s_y = wall_yd if din > 0 else wall_yd - dep
             pocket_w = 60                  # back-plate + seat both 60mm wide — REUSE the exterior backing stock (2026-08-15; was S+16/S+8)
             p.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, plate_z0, pocket_w, ht, ext_ph, color=ov.C_STEEL))
-            p.append(ov.ruby_box("Wall Hanger Seat", front_x - 8, s_y, bz - ht, pocket_w, dep, ht, color=ov.C_STEEL))
+            # SAME L-cleat as the post end (welded to the inside plate): a horizontal leg the bar sits on +
+            # a vertical leg on the bar FRONT, with 1 HORIZONTAL J7 bolt through the leg + the bar's 50mm web.
+            lt2 = 8
+            p.append(ov.ruby_box("Wall Hanger L-leg (J7)", front_x, s_y, bz - lt2, bar_d, dep, lt2, color=ov.C_STEEL))          # horizontal leg (bar sits on it)
+            p.append(ov.ruby_box("Wall Hanger L-upstand (J7/W)", front_x - lt2, s_y, bz - lt2, lt2, dep, S + lt2, color=ov.C_STEEL))  # vertical leg on the bar FRONT
+            p.append(ov.ruby_box("Wall Hanger backing plate (J7)", front_x + bar_d, wall_yd + din * 28 - 25, bz + 5, lt2, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
             ecx = front_x - 8 + pocket_w / 2
             plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
             bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
@@ -262,9 +268,10 @@ def tote_restraint():
             for bolt_z in (bolt_lo, bolt_hi):   # 2 through-bolts, ≥50mm clear of the bar + seat
                 p.append(ov.ruby_bolt("IBC Wall Through-Bolt M12", ecx, bolt_cy, bolt_z, 58, radius=7,
                                       axis="y", color=C_BOLT, head="far", nut="base"))  # head outside, nut inside
-            # J7 retention bolt: ONE centered vertical M12 down through the bar into the seat (bar bolted, not welded, to the hanger)
-            p.append(ov.ruby_bolt("IBC Bar Retention Bolt M12 (J7)", front_x + bar_d / 2, wall_yd + din * 35,
-                                  bz - 4, S + 8, radius=6, axis="z", color=C_BOLT, head="far", nut="base"))  # head on top, nut under the seat
+            # J7 retention bolt: ONE HORIZONTAL M12 through the L's vertical leg + the bar's 50mm web (like J2 at
+            # the post) — good edge distance; the L-corner carries the load, the bolt secures the unsupported direction.
+            p.append(ov.ruby_bolt("IBC Bar Retention Bolt M12 (J7)", front_x - lt2, wall_yd + din * 28,
+                                  bz + S / 2, bar_d + 2 * lt2, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))
     return "\n".join(p)
 
 

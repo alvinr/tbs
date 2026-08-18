@@ -400,6 +400,8 @@ PARTS: list[Part] = [
          "ibc-frame", 16, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×65 wall-hanger bolts (plain nut + split = locked). $11.97/pack of 100."),
     Part("ibcf-wall-backing", "Steel backing plate 60×205×8mm", "steel-structural",
          "ibc-frame", 8, "ea", 4, 7, "Metal Supermarkets", spec="Exterior wall backing plates — 8 identical, one per 2-bolt hanger — flat 60×205×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 2× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through."),
+    Part("ibcf-cleat-backing", "L-cleat nut backing plate 40×50×8mm", "steel-structural",
+         "ibc-frame", 16, "ea", 0.6, 1.2, "Metal Supermarkets", spec="Small nut-side spreader plate (~40×50×8mm A36) on the bar's FAR web at each L-cleat through-bolt — 8 corridor-end (J2) + 8 wall-end (J7). The single horizontal M12 nut bears on this plate instead of the thin (3mm) RHS bar wall, so the wall can't dish (Alvin 2026-08-18). Cut from A36 plate offcuts."),
     Part("ibcf-fabrication", "Welding / fabrication (frame assembly)", "fabrication-labor",
          "ibc-frame", 1, "lot", 688, 1018, "local fab", spec="~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range)"),
     Part("ibcf-paint", "Primer + paint", "adhesives-finishes",

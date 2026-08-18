@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.7] — 2026-08-17
+
 - **IBC bar-restraint redesign — J2/J7 L-cleats + single horizontal M12×65 (edge-distance fix), full cascade.**
   The front retaining bars previously bolted VERTICALLY through the 20 mm-wide face of the 50×20 RHS, leaving a
   Ø14 hole only ~3 mm of edge. Redesigned **both** bar ends (corridor J2 + wall J7) to the same detail: the bar

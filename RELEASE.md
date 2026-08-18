@@ -24,143 +24,7 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Wall-hanger + D-ring 3D alignment fixes (Alvin).** The wall-hanger clamp assembly now sits on the INSIDE
-  (corridor) side of the bar — its back edge flush with the bar back / tote front (X 4614–4674) instead of
-  projecting 32mm into the tote (was 4646–4706). And the D-ring lashing holders moved off the corridor cleats
-  (520/900/1462/1842, was 520/940/1422/1842 — the 940 + 1422 rings touched the cleat legs at 956/1406).
-  Sheet 1 + Sheet 6 D-ring positions updated to match the 3D (they had drifted apart). 3D re-sent.
-
-- **Wall-end bar restraint unified with the post end (L-cleat), + nut-side backing plates.** The bar's wall
-  end now uses the **same L-cleat + single horizontal M12×65** as the corridor end (the L's horizontal leg is
-  the shelf, the vertical leg takes the bolt through the bar's 50mm web) — welded to the inside wall plate,
-  which with the outside backing plate clamps the container wall via the 2× J3 through-bolts (head out, nut
-  in). Every L-cleat bolt (J2 + J7, ×16) gets a small **nut-side backing plate** on the bar's far web so the
-  nut can't dish the thin RHS wall (+16 plates, +$10/$20). Cascade: 3D `tote_restraint` (NEEDS RE-SEND),
-  Sheet 1 wall hanger, Plate 4 (end section + plan now show the backing plate), parts + costing + report.
-  Also: Sheet 1 J3 bolts now show the inside-face **nuts**; Sheet 6 shows all **8 D-ring welds** (4/tier);
-  Detail C dimensions the **ring pitch (420mm)**; Plate 4 plan shows the backing plate + the L side.
-
-- **IBC frame drawings — 6 more review fixes (Alvin).** (1) **Sheet 1 wall hanger** redrawn to match the 3D:
-  the bar rests on a **shelf/seat** (not butting a pocket), a **J7 bolt runs vertically through the bar +
-  shelf**, and the inside + outside plates clamp the container wall — shown as the **gap** between them — with
-  the 2× J3 through-bolts horizontal + stacked. (2) **Sheet 2** now ticks **8 ring welds** (top + bottom ring ×
-  4 legs; the near/far legs overlap in the along-Yd view, so 2 ticks per corner) — was 4. (3) **Sheet 2** the
-  two grey verticals are labelled **FRONT / BACK UPRIGHT (×2: near+far)**. (4) **Sheet 5 plan view** now draws
-  the **#14 TEK clearance holes** through each notch. (5) **Sheet 5 VIEW A** now dimensions the TEK holes
-  (25.4 CL from the notch edge + Ø7-thru). (6) **Plate 4** gains a **plan view** showing the L's vertical leg
-  also welds to the upright, with the single horizontal bolt through.
-
-- **J2 corridor-end cleat redesigned to an L-angle + a single horizontal bolt (fixes the edge-distance flaw).**
-  The old cleat put 2 vertical M12 bolts down through the 20 mm-wide bar/leg, leaving only ~3 mm hole edge. The
-  bar now DROPS INTO an L-angle (horizontal leg under it, vertical leg welded to the upright, W3) and ONE
-  horizontal M12×65 runs through the vertical leg + the bar's TALL 50 mm web (~18 mm edge); the L-corner carries
-  the load, the bolt secures the unsupported direction (Alvin's call). J2 drops from 2 bolts → 1 per cleat
-  (16 → 8 M12×65 SS, same 92800A481 SKU reused — no new part). Full cascade: 3D `tote_restraint`, Plate 4,
-  Sheet 1 corridor cleat, Sheet 4 Detail B, parts (−8 bolts), costing (ibc-frame −$16, grand total −$16), and
-  the report fastener schedule + fab tables. **Pending: 3D re-send** (water + overview + ibc-stack reuse
-  `tote_restraint`) for Alvin's save, then `manifest --update`.
-
-- **IBC frame drawings — 6 review fixes (Alvin).** (1) **Sheet 1** now draws each retaining bar's two
-  connections that were missing: the J2 L-cleat + 2 bolts at the corridor (upright) end and the J3/J7 bolts
-  at the wall-end hangers. (2) **Sheet 6 weld map** is symmetric near↔far and now ticks EVERY weld instance
-  (both uprights × both rings, both feet, all cleats, both rings) with one labelled count per type — was a
-  confusing asymmetric set of representative ticks. (3) **Sheet 5** reach now shows that the 325 INCLUDES the
-  8 mm end-plate: the "25" stub splits into 17 arm-steel + 8 end-plate (both VIEW A + PLAN), plate drawn to
-  scale. (4) **Sheet 2** cantilever J6 bolts were on the wrong plane (2 dots into the page); redrawn as the
-  bearing-type detail — 2× M12 running horizontally THROUGH the post ABOVE the arm via an end-plate (front) +
-  rear backing plate, matching Sheet 5 — and the **plywood mounting tabs** (rear-panel brackets, J8/J4) are
-  now shown on the back upright. Round-2 refinements: Sheet 1 bolts now drawn in TRUE orientation (J2/J7
-  vertical bolt symbols down through the bar, J3 horizontal through the wall — not ambiguous dots); Sheet 6
-  redrawn so the two CORRIDOR uprights sit close together (tied by the rings across the corridor gap) with the
-  retaining bars projecting OUTWARD to the side walls — the earlier "bar spanning between the uprights" read
-  was geometrically wrong; Sheet 5 NOTES moved to a single standard block along the bottom (was a nested
-  double-box in a right-side cell) and the plan-view through-bolt head/nut now butt the plate faces; Sheet 2
-  J6 rear backing plate shortened (bottom raised to Z56) so it clears the base-ring weld. Round-3: Sheet 1
-  cleats moved to the upright's OUTSIDE (column-facing) edge (were on the corridor-inside edge — wrong), and
-  the bars now end there; Sheet 6 redrawn to show FOUR retaining bars (2/tier × 2 tiers) and the deep box's
-  back upright pair ghosted so the TWO rings read as 8 ring-welds (W1 ×8 = 4 legs × 2 rings), with the cleats
-  on the outside edges too; Sheet 5 VIEW A now shows the #14 TEK hold-down at each half-lap notch. Round-4:
-  Sheet 1 wall ends redrawn to match the 3D — each bar now BUTTS a hanger pocket just inboard of the container
-  wall, clamped by an inside plate + an outside backing plate with the 2× M12 (J3) through-bolts stacked
-  vertically (horizontal through the wall) + the vertical J7 retention bolt; and the Sheet 5 notch TEK now
-  uses the standard hex-head + shank bolt/screw convention (was drawn as a plain pin).
-
-- **IBC frame fab-detail package (Phase D): member cut list, weld map, plate reconcile.** The IBC support
-  frame drawing set is now buildable end-to-end. (1) **§3.7 member cut list** — a single-sourced stick
-  schedule (`ibc_frame_cutlist.py` → `<!-- BEGIN cutlist -->`) computed from the model constants: 4 uprights
-  ×2284, rings, 8 front bars ×1042, feet/backing/hanger/cleat plates, with stock roll-up (2 sticks 50.8 SHS +
-  2 sticks 50×20 RHS). (2) **Sheet 6 weld map** — a schematic front elevation with every fillet W1–W6 ticked
-  to where it lands, plus the full weld schedule (size / all-around vs both-legs / qty / governing SF). (3)
-  **Plate Schedule PLATE 4 reconciled to the 3D** — the bar-end cleat was a stale 50×50×6 rolled-angle spec;
-  redrawn as the current fabricated 8 mm-plate L (90 leg + 59 upstand, 20 wide, 2× Ø14 for M12×65 @ 40 pitch)
-  to match `tote_restraint`. The redundant draft "Sheet 7 fab details" was dropped — the 1:1 Plate Schedule
-  already owns those parts (no duplication). (4) **J2/J7 SKU firmed** — M12×65 18-8 SS partial-thread, McMaster
-  92800A481, $9.95/pack of 5 (parts + worklist stamped).
-
-- **Every fastener now renders as a real bolt — hex head + hex nut (3D).** New `ruby_bolt` helper (shank +
-  hex-prism head/nut, `head`/`nut` = base/far/None) replaces the plain-cylinder + square-block bolt drawing
-  across the models. Converted foot anchors, wall through-bolts, cleat/saddle/flange/upright bolts, TEK screws,
-  J6, and the walkway wall-seat bolts (whose heads were 18×18 square boxes mislabeled "hex"). 7-model cascade
-  re-sent + saved.
-
-- **NEW — front retaining-bar → upright cleat modeled (2D↔3D gap fix).** Detail B always showed the bar sitting
-  on an L-cleat (welded to the upright) clamped by 2× J2 bolts, but the 3D just butted the bar to the post.
-  Added the cleat (horizontal leg + upstand) + the 2 vertical J2 bolts at each bar's corridor end (8 cleats,
-  16 bolts). And the J2/J7 bolts were re-spec'd **M12×40 → M12×65** (each spans the ~58mm bar section per Detail
-  B / the 3D — 40mm was too short); parts/costing/report cascaded (+$13/$32 ibc-frame; the exact SS SKU + firm
-  price flagged for re-source; the hollow-bar crush question logged for the quote-phase blueprint).
-
-- **J6 walkway-arm connection → BEARING-TYPE end-plate (real interference fix).** The lower J6 through-bolt
-  was trapped in a 21.8 mm window between the corridor bottom frame rail (top Z63) and the welded arm (weld
-  toe Z84.6) — the original symmetric pair drove the lower bolt straight through the rail. Redesigned (Alvin's
-  call) to a bearing-type end-plate: **both M12 sit above the arm** (a tension bolt group; the taller 148 mm
-  plate bears compression at the bottom), clearing both the rail and the welded arm. A walkway support is
-  down-load only, so the asymmetric joint is appropriate; SF ≈ 20. Cascade: 3D (`RWK_J6_BOLT_ZS`/`RWK_J6_EP_H`),
-  `ibc_frame_load.py` (bearing-type model), Sheet 4 Detail F + Sheet 5 (both bolts above the arm, the corridor
-  bottom rail ghost-marked behind the plate with no bolt near it), report §3.4/§3.5.
-
-- **Sheet 5 half-lap hold-down detail corrected.** The upper element is the **hollow** walkway support beam
-  (not a solid arm) and the #14 TEK **threads into that beam's top wall**; the solid cantilever arm below gets
-  a **Ø7 clearance hole** (clears the thread). The section was inverted — now: solid arm (hatched, clearance
-  hole) below, hollow RHS beam (top wall threaded) above, screw from the underside.
-
-- **ibc-stack model: dropped the ceiling + sealed end-wall context stubs.** They boxed the model in and
-  blocked a smooth Sketchfab orbit; the IBC context is now floor + two side walls only (the X1/X3/X4 ports are
-  their own geometry and still read).
-
-- **Sanctioned the intentional same-color solid overlaps (`--solids` triage).** After the clean end-butts,
-  every remaining flagged overlap in the named categories is *by design* — a butt would be wrong. Added
-  `check_interference.py --solids` a sanctioned classifier (mirrors `--pipes`) covering: one-piece formed
-  parts drawn as primitives (U-rail web+flange, welded L-cleat, door frame, drum shell+caps, combined
-  corner plate), compression seals (EPDM/brush — must interpenetrate to seal), bearing/shaft fits + press
-  collars, liquid contents (bath, nested manifolds), the welded/bolted fan assembly, and seated structural
-  connections (beam bearing in its wall cleat, pivot post in its roof mount). `--solids` now prints
-  `N OPEN + M sanctioned(OK)`, deduped, so only genuine fused-seam defects surface. (The film-plane
-  corner-gimbal internals are a separate mechanism, out of this scope.)
-
-- **FLAGGED a real J6 interference (not readability).** The walkway-arm J6 backing plate and its lower M12
-  bolt (Z≈57, plate Z37–167) intersect the corridor's **bottom frame X-rail** (Z12–62) at the shared corner
-  behind the front upright — the bolt physically passes through the rail. Left OPEN in `--solids` and logged
-  in TODO.md for a design fix (raise the joint / reroute the rail / relocate the bolt).
-
-- **Butted the walkway structural-steel joints that read as fused (`--solids` fixes).** Two distinct
-  members that interpenetrate render as one piece (same color, no seam) — the weld bead isn't modeled, so
-  a clean butt reads better. Fixed the two clean end-butts: the **floor-leg posts now sit ON their foot
-  plates** (were sunk in) and the **RWk end beams butt between the long beams** (were overlapping the
-  corners). 5-model cascade re-sent + saved: walkway, overview, construction, water, film-plane. Left the
-  perpendicular *crossings* (wall-cleat plate ↔ beam, J6 backing plate ↔ frame rail — those need a notch,
-  not a butt) and the genuine one-piece / compression cases (U-rail web+flange, EPDM/brush seals, bearings,
-  bath, drum, fan frames).
-
-- **Drilled the corridor ply-panel pipe penetrations (3D readability, `--pipes` fixes).** The rear panel,
-  pump-mount shirt, and drain-riser spine carried no actual holes where the port→riser connectors and the
-  Cct-C power branches pass through — the pipes read as fused into the ply (the comments already called for
-  "round holes"). `ruby_box` gains a `holes=`/`hole_axis=` parameter that cuts real clearance holes by the
-  robust coplanar-face-pushpull method (Group#subtract does NOT chain in this SketchUp — the 2nd boolean
-  collapses the solid; documented in the helper). 13 holes cut (7 rear + 5 shirt + 1 spine), each panel
-  verified manifold at 6+24·n faces. `check_interference.py --pipes` now records the 13 as `drilled(OK)` so
-  it only warns on new penetrations (2 remain: the tray-floor sump drain — overview builder). Water model
-  re-sent + verified. (3D `.skp` save + Sketchfab upload to follow.)
+- **IBC Frame Blueprints.** Required a lot of detail changes to ensure blots did not interfere with welds, hangers retained bars in the correct way etc. TEK screws used to secure the cantilevers to the walkway frame.
 
 - **NEW tooling — 3D readability seam audits (`check_interference.py --solids / --pipes / --seams`).**
   Two READ-ONLY, advisory passes against the live model that surface a *drawing* defect (distinct parts
@@ -170,29 +34,6 @@ file** — a release must not ship without a changelog entry:
   `--pipes` flags pipes driven through the full thickness of a panel/wall/plate slab with no drilled-hole
   seam (fix: collar ring, or split to butt). The butt-vs-weld convention is codified in
   `skills/skill_model_consistency.md`. (The per-hit geometry fixes are a triaged follow-on — TODO.md.)
-
-- **J6 walkway-arm joint: 4 bolts → 2 (central vertical column).** The 4-bolt (2×2) pattern put a Yd pair
-  ~10 mm from the post's side wall — the same tight-edge problem, now on the *post*. Since the moment couple
-  is purely the **vertical** 90 mm spacing, a single **central column of 2 M12** carries it (top bolt ~4.4 kN,
-  **SF ≈ 14**) and sits on the post centerline with max edge distance on both plate and post. End-plate width is now set by
-  the **weld** (not the bolts) — **65 × 130** (arm 50.8 + ~7 mm each side for the fillet toe), with a simple
-  **5 mm fillet all round**. Cascade: Sheet 4 Detail F + Sheet 5 end-plate + 3D model (2 bolts, Yd 0, plate 65)
-  + parts (`bolt-m12x100` 8→4, crush sleeves 8→4, plate 65×130) + costing (−$10/$13/$15) + report §3.4/§3.5.
-
-- **Fix — J6 walkway-arm connection read as one gray blob in the 3D model.** The end-plate was drawn
-  *inside* the arm's last segment (both X4646–4654, same steel material), so it was buried and lost its
-  edges, and the 4 M12 bolts were `C_STEEL` (invisible against the plates). Now the arm ends **short** so the
-  end-plate sits in its own 8 mm space between the arm and the upright, and the bolts (+ the 4 hold-down TEK
-  screws) use the **dark bolt color** and protrude past the backing plate — visible like the foot anchors.
-  Also added a **ghost of the post** (50.8 sq, dashed hidden-line) to the Sheet 5 end-plate detail so the
-  bolt pattern reads against the column behind it.
-
-- **Fix — IBC frame uprights sat *through* their foot plates in the 3D model.** `frame()` drew both the
-  uprights and the 150×150×12 foot plates from Z0, so each upright's bottom 12 mm was buried in its plate.
-  The uprights now **sit on the plates** (bottom at the plate thickness, `ft`), with the bottom ring lifted
-  onto the plate and the top held at `TOP_Z` — so the frame height, tote stack, and ceiling clearance are
-  unchanged (no shift to any panel/rail/bracket Z). The 2D blueprint was already correct (it draws the plate
-  below the leg). Re-sent to overview / ibc-stack / water / construction.
 
 - **Half-lap hold-down — #14 TEK screw per lap (Sheet 5 detail + model + parts).** The long beams sat on the
   arm's bearing seat by gravity only; added a positive fastener so they're secured. One **#14 self-drilling TEK
@@ -217,10 +58,6 @@ file** — a release must not ship without a changelog entry:
   as solid bar + J6 end-plate hardware: 8× M12×100, 4 plates, 8 crush sleeves; −4 clamp bolts), costing
   reconciled (+$62/$85/$108 walkway), Sheet 5 + report §3.4 updated. (3D `.skp` re-send to follow.)
 
-- **Walkway cantilever arm price firmed.** Metal Supermarkets quote for the 2×1 solid bar: **$91.32 / 36 in
-  cut** — one stick covers both arms plus a spare. Replaces the $36–$60 estimate; arm line now **$91 flat**
-  across low/mid/high. Cascade: `parts.py` + `costing.py` (+$55/$43/$31 walkway → grand-total $26.8k–$37.9k).
-
 - **Fix — walkway Sheet 6 (floor-leg cantilever): post drawn over the anchor holes.** In both VIEW A
   (section) and VIEW B (plan) one of the two M10 anchor columns fell under the 50×50 post footprint —
   unbuildable (can't drive a floor anchor through the post). Both anchor columns now sit **outboard of the
@@ -237,16 +74,6 @@ file** — a release must not ship without a changelog entry:
   setup_docs / dependencies.yml and embedded in report §3.5 + §8. The two "detailed in the walkway blueprint"
   notes re-scoped to point at Sheet 5. (2D only; the 3D ibc-stack arm + full model cascade to follow.)
 
-- **J6 walkway-arm joint redesigned: clamp → bolted end-plate (Sheet 4 Detail F + Sheet 5 + report).** The old
-  J6 (2 clamp plates wrapping the upright + 2× M12, carrying the moment by friction over a 37 mm spacing) read
-  as an unclear load path — the bolts gripped nothing. Replaced with a proper **bolted end-plate moment
-  connection**, mirroring the container-wall cantilever detail: an **end-plate welded to the arm end** (shop
-  weld, off the frame), then **4× M12 through the upright into a rear backing plate + nuts** (internal crush
-  sleeve per bolt so the hollow RHS can't dish). Moment goes in as a tension/compression couple across the
-  ~90 mm bolt group → ~2.2 kN/bolt, **SF > 20** (was 3.8). Detail F redrawn (plan section + elevation with the
-  2×2 bolt pattern), VIEW A on Sheet 5 redrawn, and report §3.4 / §3.5-J6 (M12×40 clamp ×4 → M12×100 through
-  ×8) / joint prose updated. (2D + report; parts.py/costing + 3D cascade to follow.)
-
 - **NEW — IBC frame load-case sheet (`ibc-frame-load-case.png`).** `ibc_frame_load.py` gained a `--png` render:
   a one-page load-case drawing — the transport load-path elevation with the EN 12195-1 arrows (0.8 g fwd /
   1.0 g down / 0.5 g lateral), the method box (coefficients, f_s, μ, the blocking inequality, both fill
@@ -254,21 +81,6 @@ file** — a release must not ship without a changelog entry:
   wall-hanger + cleat bolts, wall bearing, lash strap, walkway-arm clamp, upright) — all driven from the same
   `compute()` the validation table uses. Registered + embedded in report §3.4. Completes the IBC-frame
   blueprint's visual set (the film-plane Sheet 10 analogue).
-
-- **IBC frame blueprint §3.7 — Assembly + Weld Sequence.** Added the build order: a 4-phase sequence (shop-weld
-  the deep 4-leg box → bolt-on fit-out → install + anchor → load + secure), with balanced/symmetric weld order
-  for distortion control (tack + check-square before finish-welding, feet welded on the flat table to hold
-  datum A). Captures the payoff of the TEK-screw + bolt-on design: the only hot work is the box weldment;
-  everything else attaches to a finished, painted frame with no field welding.
-
-- **3D-model reconciliation + a missed-cascade fix (6 models re-sent).** Synced the SketchUp models to the
-  2D blueprint: the IBC wall-hanger **pocket → 60/60 mm + a single centered J7 retention bolt** (water,
-  ibc-stack), and removed the stray **Yd-600 depth-reference plane** from the water deliverable (it read as a
-  blue rectangle, was only a viewing scaffold). While verifying, caught a real bug: the **left walkway
-  cantilever's foot plate was disconnected from its post** (~60 mm gap) — root cause was `LEFT_WK_CANT_FOOT_X0`
-  hardcoded at 38 while the derived post moved inboard when `FP_X_L` was pulled 150→260 (2026-08-11). Fixed by
-  **deriving the foot X0 from the post** (the derive-don't-hardcode rule). Re-sent + verified all six affected
-  models (water, overview, walkway, construction, ibc-stack, film-plane-mechanism); manifest hashes refreshed.
 
 - **Rear-panel + pipe-run brackets: welds → TEK screws (W6/W7 → J8/J9).** The two light bracket-to-post
   joints are no longer welded — they attach with **2× #14 self-drilling TEK screws** each, so the brackets
@@ -287,27 +99,12 @@ file** — a release must not ship without a changelog entry:
   the 2nd was redundancy not strength, and at the wall the pocket + the fixed 2-bolt corridor cleat already
   stop the bar rotating — one centered bolt also clears the seat edges cleanly. Detail A + report §3.5 + costing updated.
 
-- **Constant rename: `IBC_WBKT_*` → `FP_CORNER_SEAT_*`.** The name read as the IBC wall bracket but the
-  values (150-wide back-plate, 110 seat, 4× M12) are the **film-plane corner seat** that props each
-  platform-beam end at the side wall — a different part from the IBC retaining-bar wall hanger (the 2-bolt /
-  60-wide unit in the corridor model + plate schedule). Renamed across `tbs_constants.py` + all consumers
-  (SketchUp model, film-plane mechanism, archived study, plate-schedule comment); values unchanged so every
-  output is byte-identical and model `source_hash` stays current (no re-send). Also removed the **dead
-  `BRACKET_*` aliases + import** from `generate_ibc_frame_drawing.py` (the retired welded-seat detail —
-  flagged in the 2026-07 audit + unused-imports tracker).
-
 - **IBC frame Sheet 4 — detail-correction sweep (B/D/F + tone).** DETAIL D redrawn per Alvin's sketch as a
   welded **L-bracket** off the post with the rear panel bolted to its upstand via an **M8 hex + washer into a
   pronged tee-nut** — and the tee-nut moved to the ply **back face** (bolt tension pulls the flange against the
   wood, the correct orientation). DETAIL B cleat bolts now span the bar+cleat stack exactly so head/nut seat
   **flush** (no exposed shank). DETAIL F elevation bolts shortened to bear on the clamp-plate faces (were
   projecting past the plates). Steel fills **lightened to sheet 3's tone** for readability.
-
-- **IBC retaining bar — 2 retention bolts at BOTH ends (was 2 corridor / 1 wall).** The single wall-end
-  bolt was asymmetric with the 2-bolt corridor cleat; shear is trivial either way (SF ~20 on one M12), but
-  anti-rotation + redundancy for a transport restraint holding 1-tonne totes call for 2 at each end. J7
-  doubled to **2 per bar (8→16 M12×40, +$12)**: Detail A gets a 2nd vertical bolt + pitch dim, plate-schedule
-  Plate 3 gets a 2nd seat hole, report §3.5 J7 + costing reconciled.
 
 - **NEW — IBC Plate Fabrication Schedule (2 sheets).** `generate_ibc_plate_schedule.py` draws every plate in
   the IBC/corridor metal **1:1** (with a 100 mm scale bar) so a shop can cut and drill each: Sheet 1 —
@@ -318,25 +115,6 @@ file** — a release must not ship without a changelog entry:
   constants + the current corridor model (deliberately NOT the shared `FP_CORNER_SEAT_*`, which is the film-plane
   corner-seat spec). Registered in the gallery / publish.sh / setup_docs / dependencies.yml and embedded in
   report §8.
-
-- **IBC frame Sheet 4 — fourth review pass + label tidy.** DETAIL A: the J7 retention bolt is now **vertical**
-  (down through the bar into the seat), not horizontal into the wall plate. DETAIL B: **flipped horizontally**
-  (corridor upright on the right, bar running left to the wall) so it reads as the wall-on-left assembly.
-  DETAIL D: the rear panel is bolted **through the welded metal tab into a pronged tee-nut in the ply** (M8 hex,
-  J4), replacing the countersunk-from-ply-face depiction — matches the schedule. DETAIL E: renamed **side-panel
-  pipe-run L-bracket** (the near/far side-wall boards carry the pipe runs via P-clips, **not pumps**) across the
-  drawing, report §3.5, and the parts spec. Ran the label skill over the sheet — terse in-cell tags, prose moved
-  to a **tightened single-spaced notes band** (added Cleat (B) + a consolidated "Where used" line), no more
-  crossing text.
-
-- **IBC frame Sheet 4 — third review pass (A/B/D/F).** DETAIL A: the wall-hanger weld is reassigned to
-  the PLATE weldment (seat↔pocket back-plate, W5) and the retaining bar is now **bolted** to the pocket
-  (new fastener **J7**, an M12 retention bolt — 1 per bar × 8), so the bar is removable, not welded, to
-  the hanger (+8× M12×40 in the BOM, +$12). DETAIL B: added a jagged break so the bar reads as continuing
-  to the wall hanger. DETAIL D: where-used note made specific (3 per back upright × 2 = 6; see Sheet 2/3).
-  DETAIL F: added a **PLAN SECTION** (top-down) beside the elevation so it lines up with the 3D model, and
-  corrected the clamp bolt pitch label (was 112 mm → **~37 mm**, matching `ibc_cantilever_arms`). Report
-  §3.5 gains J7 + the W5 clarification.
 
 - **IBC frame Sheet 4 — DETAIL F: walkway arm → front-upright connection.** Added the sixth detail inset:
   how each right-walkway cantilever arm attaches to a front corridor upright. Corrected from an assumed
@@ -356,60 +134,6 @@ file** — a release must not ship without a changelog entry:
   (the 8 lash-point locations + strap routing — the rigger's plan; construction → Frame Sheet 4), dropping
   the operational ratchet-buckle close-up.
 
-- **IBC frame blueprint Phase D detail insets → new Sheet 4 (Fabrication Details).** `ibc-frame-sheet4`
-  draws the connections a shop builds from — **A** wall joist hanger (per-bar 2-bolt, 50 mm bolt
-  clearance, 60×205×8 backing plate), **B** bar→upright cleat, **C** weld-on lashing ring, **D** rear-panel
-  bracket, **E** pump-support L-bracket, **F** walkway arm→upright clamp — each with its weld (W) + fastener
-  (J) callout and a notes cell.
-  Registered in the gallery / publish.sh / setup_docs and embedded in report §3.5 + §8 (frame set now 4
-  sheets). Completes the IBC-corridor metal blueprint (A–E) — validated design + fastener/weld/tolerance
-  schedules + cut list + detail sheet.
-
-- **IBC frame blueprint scope EXTENDED to the whole IBC-corridor metal construction.** The deep-box frame
-  is one welded structure serving three roles, so the review now also covers the plumbing-corridor metal
-  that shares it. Added **service + walkway load cases** (`ibc_frame_load.py`): the plumbing panel + pumps
-  (~33 N/bracket, trivial) and the right-walkway cantilever (each arm ~1.2 kN at 325 mm = a 395 N·m moment
-  into the front upright → upright bending **SF 6.9**, arm→upright bolted-clamp connection **SF 3.8**) —
-  both non-governing vs the EN 12195-1 transport case. Extended report §3.4 (service cases), §3.5 (J4 panel-
-  bracket bolts, J5 pump-support-board fixings, J6 arm clamp; welds W6 panel-bracket, W7 L-bracket, W8
-  ribbon-beam), §3.6 (panel-mount + L-bracket landing tolerances), and the sheet-1 cut list (+6 rear-
-  panel brackets, +12 pump-support L-brackets, +4 ribbon cross-beams). Walkway-arm CONNECTION checked here;
-  the arm's own detailing stays with the walkway blueprint (Alvin's boundary).
-
-- **IBC frame blueprint Phase C + D-core: datum/tolerance scheme + fab-sheet detailing.** Report §3.6
-  adds the datum scheme (A = 4-foot plane, B = front-upright faces, C = corridor CL) + functional
-  tolerances (foot coplanarity ±1.5, upright plumb ±2/2296, diagonal square ±3, hole PCDs, corridor width
-  +2/−0; general ISO 13920 Class B, welds AWS D1.1). `ibc-frame-sheet1` now carries a **member cut list**
-  (lengths computed from the frame constants) + a **DATUMS & TOLERANCES** callout block, and the fab notes
-  fold in the §3.5 weld schedule. Cleaned stale sheet literals (100×80→60×205 backing plate, ~119→~123 kg,
-  bar Z560/1760→Z500/950+1500/1950). Remaining Phase-D refinement (dedicated hanger-fold / backing-plate /
-  cleat / lashing-ring detail insets) tracked in `ibc-frame-blueprint-spec.md`.
-
-- **IBC frame blueprint Phase B: fastener + weld schedule.** Added `ibc-stacking-report.md` §3.5 — every
-  bolted joint (J1 floor self-drillers ×16 driven-to-seat; J2 bar→upright cleat M12×40 A2-70 ×16 @ ~50 N·m
-  + anti-seize; J3 wall-hanger through-bolt M12×65 Gr.8.8 ×16 @ ~90 N·m) with grade/torque/washer/locking,
-  and every weld (W4 lashing-ring→bar 6 mm fillet SF 9.1, W3 cleat→upright 4 mm SF 37, W1/W2/W5 minimum
-  practical fillets), sizes computed in `ibc_frame_load.py`, torques cited (Fastenal/Bossard/ITW-Buildex).
-  Caught a Phase-A miss along the way — the bar→upright cleat bolts were still qty 8; doubled to **16** with
-  the 8 bars (+$12 ibc-frame). Grand-total mid → ~$31,158.
-
-- **IBC stacking frame — blueprint Phase A: EN 12195-1 transport-restraint validation + redesign.** Took
-  the IBC restraint frame from a qualitative "it's trapped" note to a computed load case
-  (`ibc_frame_load.py`, new). The camera runs **self-contained**, so it transports **with water aboard** —
-  the [EN 12195-1:2010](https://cdn.standards.iteh.ai/samples/32961/4592590bcf194f1a8ffa917a5db7d258/SIST-EN-12195-1-2011.pdf)
-  loaded case (0.8 g forward braking, a full 965 kg top tote) governs. The single 50×20×3 front bar is
-  weak-axis (20 mm in the load direction, film-rail-slot-limited) and **fails (bending SF 0.79)**. Redesign
-  **R5**: **two 50×20×3 bars per tote face** (4→8) **+ certified anti-slip matting** (μ 0.2→0.6) **+ 2
-  straps/stack** → bar **SF 1.59 bar-alone / 4.77 with the mat**, all downstream elements SF ≥ 8, drained
-  state SF ≥ 12. Fab-detailed the restraint in the 3D model: bars **butt** the corridor uprights + the
-  wall-hanger back plates (cleated joints read as joined, not one continuous piece); **8 identical per-bar
-  2-bolt wall hangers** (16 through-bolts = same 16 wall penetrations as before) with the bolts stacked
-  vertically, **50 mm clear of the seat** for wrench access; the pair spread ~450 mm so each hanger has
-  room. Cascaded through `tbs_constants` (IBC_FRONT_BAR_*), the 3D `tote_restraint()` (5 models re-sent),
-  the weight model (frame 90→123 kg), `parts.py` (+anti-slip mat, 8 hangers + 8 backing plates) + costing
-  (+$78/$146 ibc-frame), the ibc-frame/ibc-stacking 2D sheets, and `ibc-stacking-report.md` §3.2/§3.4. New
-  tracking doc `ibc-frame-blueprint-spec.md`; Phase B (fastener + weld schedule) next.
-
 - **IBC equipment panel top dropped to open the Fan A air path.** The corridor equipment panel (18mm
   rear ply + 25mm pump-mount shirt) was capped at Z2191/2256, blocking airflow through the panel to the
   sealed-end Fan A exhaust. Dropped **both plies to Z1900** — the underside of the Fan A baffle window
@@ -422,8 +146,6 @@ file** — a release must not ship without a changelog entry:
   solid backdrop rather than the faint 0.18-alpha ghost. Re-sent the 6 models that draw the shared
   corridor frame/panel (overview, water, walkway, construction, film-plane-mechanism, ibc-stack). No
   BOM/cost change (same sheets, cut shorter).
-
-_Nothing yet — add a bullet per notable change here as work lands._
 
 ## [0.6] — 2026-08-13
 

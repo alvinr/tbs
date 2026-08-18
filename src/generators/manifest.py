@@ -18,7 +18,8 @@ mismatch = regenerate + re-send the .skp); `manifest.py --update` refreshes the 
 after a legitimate re-send.
 
     python3 src/generators/manifest.py --check     # nonzero exit if any model hash is stale
-    python3 src/generators/manifest.py --update     # recompute + write hashes into dependencies.yml
+    python3 src/generators/manifest.py --update              # recompute + write ALL hashes
+    python3 src/generators/manifest.py --update ibc-stack    # scope to one (or more) re-sent model(s)
 """
 import hashlib
 import os
@@ -81,12 +82,21 @@ def check() -> list:
     return stale
 
 
-def update() -> dict:
-    """Recompute every model hash and write it into dependencies.yml (surgical per-line
-    edit — the flow file's comments/format are preserved). Returns {name: hash}."""
+def update(only=None) -> dict:
+    """Recompute model hashes and write them into dependencies.yml (surgical per-line edit — the
+    flow file's comments/format are preserved). `only` (a name or iterable of names) scopes the
+    write to just those models — use it after re-sending ONE model so the others' hashes (which
+    reflect their own last-sent .skp) are NOT silently rewritten. Returns {name: hash}."""
+    names = model_names()
+    if only is not None:
+        only = {only} if isinstance(only, str) else set(only)
+        unknown = only - set(names)
+        if unknown:
+            raise SystemExit(f"manifest: unknown model(s) {sorted(unknown)}; known: {sorted(names)}")
+        names = [n for n in names if n in only]
     text = open(deps.YAML_PATH, encoding="utf-8").read()
     written = {}
-    for n in model_names():
+    for n in names:
         got = compute(n)
         pat = re.compile(r'(^  ' + re.escape(n) + r':\s*\{.*?source_hash:\s*")[^"]*(")', re.M)
         text, k = pat.subn(lambda m: m.group(1) + got + m.group(2), text)
@@ -99,9 +109,13 @@ def update() -> dict:
 
 def main() -> int:
     if "--update" in sys.argv:
-        for n, h in update().items():
+        # positional args after the flags = the model(s) to scope the write to (default: all)
+        only = [a for a in sys.argv[1:] if not a.startswith("-")] or None
+        written = update(only=only)
+        for n, h in written.items():
             print(f"  updated {n}: {h}")
-        print("dependencies.yml source_hash values refreshed.")
+        scope = "all" if only is None else ", ".join(only)
+        print(f"dependencies.yml source_hash refreshed ({scope}).")
         return 0
     if "--check" in sys.argv:
         stale = check()

@@ -967,7 +967,7 @@ PARTS: list[Part] = [
          "walkway", 1, "lot", 50, 65, "McNichols", spec="Extra GRP landing (~0.23 m²) at the light-lock exit"),
     Part("walkway-std-brackets", "Cantilever bracket — standard (near/far)", "steel-structural",
          "walkway", 13, "ea", 30, 50, "Local fab",
-         spec="8mm steel plate: 170mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers)"),
+         spec="8mm steel plate: 180mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers)"),
     Part("walkway-wide-brackets", "Cantilever bracket — widened (near)", "steel-structural",
          "walkway", 5, "ea", 40, 70, "Local fab",
          spec="10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone, X1055–3083 = 5 bays)"),

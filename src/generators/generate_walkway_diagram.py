@@ -59,7 +59,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -729,7 +729,7 @@ def sheet2():
     WASHER_T  = 3
     C_BOLT    = "#505058"
     bolt_z_lo = 42   # lower pair — flanking gusset in X, ±27mm from CL (matches the 3D pattern)
-    bolt_z_hi = BRKT_VERT - 30  # = 140 — upper single, 30mm below the plate top (matches the 3D vh−30 far cantilevers); clears the arm top (Z115)
+    bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 155 — SHARED with sheet7 + the 3D; clears the grate deck top (Z140)
 
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
@@ -1672,17 +1672,19 @@ def sheet6():
         ax.set_aspect("equal"); ax.axis("off")
 
     # ===================== VIEW A — bracket section (X-Z) =====================
-    axA.set_xlim(0, 560)
+    TX = PROC_TRAY_X_L                 # real tray LEFT edge (280) — the floor-leg post/arm sit outboard/over it
+    XW = int(std_reach + 120)          # view width — reach to the arm tip (grate inner edge) + margin
+    axA.set_xlim(0, XW)
     axA.set_ylim(-95, 205)
-    axA.text(280, 196, "VIEW A — FLOOR-LEG CANTILEVER BRACKET (section, looking along Yd)",
+    axA.text(XW / 2, 196, "VIEW A — FLOOR-LEG CANTILEVER BRACKET (section, looking along Yd)",
              ha="center", va="bottom", fontsize=8, color=C_OUT, fontweight="bold", **FONT)
     # Container floor (hatched)
-    axA.add_patch(Rectangle((0, -14), 560, 14, fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
-    # Processing tray — near rim wall at X=170 (Z0-50), floor + bath to its right
-    axA.add_patch(Rectangle((170, 0), 4, rim, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))
-    axA.add_patch(Rectangle((174, 0), 560 - 174, 2, fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=3))
-    axA.add_patch(Rectangle((174, 2), 560 - 174, rim - 2 - 8, fc="#BFE0F0", ec="none", alpha=0.45, zorder=2))
-    leader(axA, 172, rim, 240, rim - 5, "PROCESSING TRAY RIM\n(Z0-50, STAYS at floor level)",
+    axA.add_patch(Rectangle((0, -14), XW, 14, fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+    # Processing tray — near rim wall at X=PROC_TRAY_X_L (Z0-50), floor + bath to its right
+    axA.add_patch(Rectangle((TX, 0), 4, rim, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))
+    axA.add_patch(Rectangle((TX + 4, 0), XW - (TX + 4), 2, fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=3))
+    axA.add_patch(Rectangle((TX + 4, 2), XW - (TX + 4), rim - 2 - 8, fc="#BFE0F0", ec="none", alpha=0.45, zorder=2))
+    leader(axA, TX + 2, rim, TX + 70, rim - 5, "PROCESSING TRAY RIM\n(Z0-50, STAYS at floor level)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Foot plate (on bare floor, outboard of the tray)
     axA.add_patch(Rectangle((fx0, 0), fl, ft, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))
@@ -1698,7 +1700,7 @@ def sheet6():
            f"CANTILEVER ARM 40mm DEEP\n(Z{arm_z0}-{grate_bot}); EXTENDED\nto X770 on the punch-out",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Grate (sits on the arm/post tops)
-    axA.add_patch(Rectangle((170, grate_bot), std_reach - 170, grate_top - grate_bot,
+    axA.add_patch(Rectangle((TX, grate_bot), std_reach - TX, grate_top - grate_bot,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", alpha=0.85, zorder=8))
     leader(axA, 430, grate_top, 445, grate_top + 30, f"{WALKWAY_GRATE_T}mm GRATE (lift-out)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
@@ -1950,7 +1952,7 @@ def sheet7():
 
     # ── Through-bolts (4× M12 rectangular pattern: 2 lower + 2 upper) ───────
     bolt_z_lo = 35
-    bolt_z_hi = 160
+    bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 155 — SHARED with sheet2 + the 3D (same rule: clears the grate deck)
     BOLT_HEAD = 8
     NUT_H     = 10
     WASHER_T  = 3

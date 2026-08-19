@@ -2683,6 +2683,20 @@ def sheet10():
     pitch = WALKWAY_GRATE_CLIP_PITCH               # 610
     GRP_MAX = 3048                                 # 10 ft molded panel length
     slit_c = PH_X - (WALKWAY_LEFT_X + WALKWAY_W)   # slit X within the near/far piece
+    # Spray-slit support: the grate on EACH side of the slit bears on the flanking wall bracket.
+    _st = list(np.arange((WALKWAY_LEFT_X + WALKWAY_W) + WALKWAY_BRACKET_SPACING / 2,
+                         PROC_TRAY_X_L + PROC_TRAY_W, WALKWAY_BRACKET_SPACING))
+    flL = max(s for s in _st if s < PH_X) - (WALKWAY_LEFT_X + WALKWAY_W)   # left flanking bracket (within-piece X)
+    flR = min(s for s in _st if s > PH_X) - (WALKWAY_LEFT_X + WALKWAY_W)   # right flanking bracket
+
+    def slit(y, depth):
+        """Spray-bar pole slit through the FULL grate depth + the flanking-bracket support marks (▲)."""
+        ax.add_patch(Rectangle((slit_c - SPRAY_BAR_SLIT_W / 2, y), SPRAY_BAR_SLIT_W, depth,
+                               fc="#FFFFFF", ec=C_CUT, lw=1.1, zorder=6))
+        for fx in (flL, flR):
+            ax.plot([fx], [y - 20], marker="^", ms=7, color="#208020", zorder=9)   # ▲ bears on a bracket
+        ax.text(slit_c, y - 44, f"SLIT X{PH_X}", ha="center", va="top",
+                fontsize=5, color=C_CUT, **FONT)
     lw_l, lw_r = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R             # punch-out 800-1560
     lw_w = WALKWAY_LEFT_WIDE_W                      # 600
     mn0, mnd, mnw = WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY  # 1912/100/150
@@ -2737,7 +2751,7 @@ def sheet10():
     ax.add_patch(Rectangle((xoff_nw_l, y + W), xoff_nw_r - xoff_nw_l, WW - W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
     ax.text((xoff_nw_l + xoff_nw_r) / 2, y + W + (WW - W) / 2, "BUMP-OUT to 500 (EP/battery)",
             ha="center", va="center", fontsize=6, color="#206020", fontweight="bold", **FONT, zorder=7)
-    ax.add_patch(Rectangle((slit_c - SPRAY_BAR_SLIT_W / 2, y), SPRAY_BAR_SLIT_W, W, fc="#FFFFFF", ec=C_CUT, lw=1.1, zorder=6))
+    slit(y, WW)   # the near slit is INSIDE the bump-out → cut the full 500mm depth
     ax.plot([GRP_MAX, GRP_MAX], [y - 20, y + W + 20], color="#A040A0", lw=1.6, ls=(0, (5, 3)), zorder=8)
     ax.text(GRP_MAX, y - 34, f"GRP SEAM\n(3048 panel)", ha="center", va="top", fontsize=5.5, color="#A040A0", **FONT)
     nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
@@ -2745,12 +2759,11 @@ def sheet10():
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
     draw_dim_h(ax, 0, nf_len, y - 90, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
-    ax.text(slit_c, y + W + 20, f"SLIT @ X{PH_X}", ha="center", va="bottom", fontsize=5.5, color=C_CUT, **FONT)
 
     # ── FAR piece (4049 × 300, spray slit, seam) ──
     y = 650
     ax.add_patch(Rectangle((0, y), nf_len, W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
-    ax.add_patch(Rectangle((slit_c - SPRAY_BAR_SLIT_W / 2, y), SPRAY_BAR_SLIT_W, W, fc="#FFFFFF", ec=C_CUT, lw=1.1, zorder=6))
+    slit(y, W)   # far walkway is uniform 300 (no bump-out) — full 300mm depth
     ax.plot([GRP_MAX, GRP_MAX], [y - 20, y + W + 20], color="#A040A0", lw=1.6, ls=(0, (5, 3)), zorder=8)
     nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
     ax.text(0, y + W + 55, f"FAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
@@ -2765,7 +2778,9 @@ def sheet10():
         "2. Near/far runs are 4,049mm > the 3,048 panel, so each splices at ONE seam (place clear of the bump-out/slit).",
         f"3. HOLD-DOWN CLIPS (WF5): 316 SS M-clips at {pitch}mm ({int(pitch/25.4+0.5)}\") along both bearing edges + one at each corner (■).",
         "4. LEFT walkway lifts out by gravity — NO clips (removed before panel transport).",
-        "5. Field-seal all cut edges (epoxy kit); cut features: spray-bar slits (near+far), drum-exit punch-out (left),",
+        f"5. SPRAY-BAR SLIT cuts the FULL grate depth (500mm through the near bump-out, 300mm far). The grate on",
+        f"   EACH side of the slit bears on the flanking wall bracket (▲, X{int(flL + WALKWAY_LEFT_X + WALKWAY_W)} / X{int(flR + WALKWAY_LEFT_X + WALKWAY_W)}) — both sides supported.",
+        "6. Field-seal all cut edges (epoxy kit); cut features: spray-bar slits, drum-exit punch-out (left),",
         "   near bump-out, muslin notches (left+right). All dims from tbs_constants — see report §8 + §10.4.",
     ]
     ax.plot([-380], [460], marker="s", ms=3.4, color=C_CLIP)

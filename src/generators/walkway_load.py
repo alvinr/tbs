@@ -277,6 +277,39 @@ def weld_rows():
     ]
 
 
+# ── Phase C: datum + tolerance scheme ────────────────────────────────────────
+# Datums registered to the container + the film plane so the walkway lands in the same frame as the
+# subsystems it interfaces (the spray bar, the film-plane rail).  General weldment tolerance = ISO 13920
+# Class B; welds = AWS D1.1.  Functional (tighter) tolerances are listed per critical feature.
+def datums_md():
+    return "\n".join([
+        "| Datum | Definition | References |",
+        "|-------|-----------|------------|",
+        "| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z140, arm top Z115, bolt Z42/Z155, beam soffit Z89.6 |",
+        f"| **B** | The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd{int(k.C_WID)}) interior faces the brackets bolt to | all Yd bracket/deck positions, bracket spacing 457 |",
+        f"| **C** | Rail datum — film-plane rail X{int(k.RAIL_X_L)} (left) / X{int(k.RAIL_X_R)} (right) | the right-walkway outer edge (X{int(k.WALKWAY_RIGHT_X_R)}) + combined corner plate register to C (shared with the film plane) |",
+    ])
+
+
+def tolerances_md():
+    dx = k.WALKWAY_BRACKET_BOLT_DX
+    rows = [
+        ("Deck coplanarity — grate-bearing tops, all 4 sections", "A", "±2 mm", "level walking surface"),
+        ("Bracket arm reach (tip X)", "B", "±2 mm", "grate-edge bearing only"),
+        (f"Wall-bolt pattern (±{dx}/±{k.WALKWAY_BRACKET_BOLT_DX_WIDE} X, Z{k.WALKWAY_BRACKET_BOLT_Z_LO}/Z{k.WALKWAY_BRACKET_UPPER_BOLT_Z})", "B", "±0.5 mm", "must align reinf-plate + wall holes"),
+        (f"Foot-anchor pattern (X +{k.LEFT_WK_CANT_FOOT_BOLT_DX[0]}/+{k.LEFT_WK_CANT_FOOT_BOLT_DX[1]}, ±{k.LEFT_WK_CANT_FOOT_BOLT_DY} Yd)", "A", "±1 mm", "self-drillers are forgiving"),
+        (f"Spray-bar slit position (X{int(k.PH_X) if hasattr(k,'PH_X') else 2454})", "C", "±2 mm", "align to the traveling spray bar"),
+        ("Muslin notch / drum-exit punch-out position", "B/C", "±3 mm", "clearance features"),
+        ("Combined corner-plate seat Z (walkway beam + film rail)", "A+C", "±1 mm", "shared level interface with the film plane"),
+        (f"Rectangle beam soffit Z{k.WALKWAY_BRACKET_ARM_Z0:.1f} (spray-bar clearance)", "A", "+2 / −0 mm", "must NOT drop below the spray-bar clearance"),
+    ]
+    lines = ["| Feature | Datum | Tolerance | Why |", "|---------|-------|-----------|-----|"]
+    for f, d, tol, why in rows:
+        lines.append(f"| {f} | {d} | {tol} | {why} |")
+    lines.append("| *General (all else)* | — | **ISO 13920 Class B** | weldment linear/angular; welds per **AWS D1.1** |")
+    return "\n".join(lines)
+
+
 def weld_table_md():
     lines = ["| Mark | Weld | Leg | Basis / check |",
              "|------|------|-----|---------------|"]
@@ -292,6 +325,9 @@ def schedules_report():
     out.append("\n########## WELD SCHEDULE (WW#) — governing throats load-checked ##########")
     for mark, joint, leg, note in weld_rows():
         out.append(f"  {mark}: {joint} — {leg} — {note}")
+    out.append("\n########## DATUMS + TOLERANCES (Phase C) ##########")
+    out.append("  A = floor plane · B = wall faces · C = film-plane rail datum (X260/X4649)")
+    out.append("  general = ISO 13920 Class B; welds = AWS D1.1; functional tolerances per feature (see report §10.3)")
     return "\n".join(out)
 
 
@@ -331,6 +367,8 @@ _BLOCKS = {
     "load:validation": table_md,
     "load:fasteners": fastener_table_md,
     "load:welds": weld_table_md,
+    "load:datums": datums_md,
+    "load:tolerances": tolerances_md,
 }
 
 

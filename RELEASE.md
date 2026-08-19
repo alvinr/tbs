@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase C: datum + tolerance scheme (branch `walkway-bp`).** Defined 3 datums —
+  **A** floor plane (all Z), **B** the two long wall faces (all Yd), **C** the film-plane rail datum
+  (X260/X4649, shared with the film plane so the right corner + combined plate register to it) — plus a
+  functional-tolerance table (deck coplanarity ±2, wall-bolt pattern ±0.5, combined-corner seat Z ±1, beam
+  soffit +2/−0, etc.), general **ISO 13920 Class B** / welds **AWS D1.1**. Single-sourced in `walkway_load.py`,
+  injected into report §10.3 (lint-gated), with a **DATUMS & TOLERANCES** callout on the Sheet 1 plan.
 - **Walkway blueprint — Phase B: fastener + weld schedules (branch `walkway-bp`).** Added a **fastener
   schedule** (WF1–WF5: std/widened bracket wall bolts M12×65, right cleat/combined-corner M12×70, floor-leg
   #14 self-drillers, grating clips — cited SKUs, grade, qty, torque ~90 N·m, washers, lockers) and a **weld

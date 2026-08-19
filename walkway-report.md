@@ -65,13 +65,16 @@ with the left and right walkways.
 
 ### 3.1 Cantilever Bracket Design
 
-Each bracket is a three-piece welded 8mm steel plate assembly:
+Each bracket is a welded assembly — an 8mm steel plate (vertical mounting leg + gusset) with a
+**steel tube arm** welded on. The arm was redesigned to the US IBC/OSHA basis (§9): the original
+8mm-plate arm yielded at ~25 lbf, so the arm is now a **2×1×0.120in tube** (standard) that carries
+the 300 lbf tip load at SF 2.1.
 
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
 | Vertical mounting plate | 8×180mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
-| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating |
-| Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim |
+| Horizontal arm | **2×1×0.120in steel tube** (50.8×25.4), 300mm cantilever (**3×1** in the widened zone) | Supports grating; sized to IBC/OSHA (§9) |
+| Triangular gusset | Right triangle, 70mm reach from wall | Braces the arm root; reach stops before tray rim |
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
@@ -114,12 +117,13 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
-| Plate thickness | 8mm | 10mm |
+| Plate thickness (leg + gusset) | 8mm | 10mm |
 | Vertical leg height | 180mm | 200mm |
+| Arm section | 2×1×0.120in tube (SF 2.1) | 3×1×0.120in tube (SF 1.83, defl-governed) |
 | Arm reach | 300mm | 500mm |
 | Gusset reach | 70mm | 70mm (tray rim constrained) |
 | Bolt pattern | 3x M12 triangular (2+1) | 4x M12 rectangular (2+2) |
-| Reinforcing plate | 100x180x6mm | 120x220x6mm |
+| Reinforcing plate | 100x180x6mm | 120x200x6mm |
 
 The gusset reach remains 70mm on both bracket types — limited by the processing
 tray rim. The widened bracket compensates with heavier plate, taller
@@ -134,7 +138,7 @@ the 10mm gusset plate at ±32mm from the plate centerline in X (centered
 between plate edge and gusset). Two upper bolts (30mm above the grating
 deck) at the same ±32mm X offset. The
 container corrugation ribs are hollow — each bolt bridges the air gap inside
-the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
+the rib. A 6mm reinforcing plate (120×200mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
 View B for the bolt pattern detail.
 
@@ -260,13 +264,13 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Floor-leg cantilever bracket (×5) | 2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + 2×1×0.120in (50.8×25.4mm) arm (25.4mm deep) + 165×60×8mm foot plate (inboard outrigger — the post sits on its outboard end, the plate reaches inboard so the 4 floor anchors clear the post footprint) | 5 brackets (outside the tray) |
+| Floor-leg cantilever bracket (×5) | 2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + arm (2×1×0.120in standard / **4×1×0.120in** on the 3 punch-out legs, §9) + 165×60×8mm foot plate (inboard outrigger — the post sits on its outboard end, the plate reaches inboard so the 4 floor anchors clear the post footprint) | 5 brackets (outside the tray) |
 | Floor screws | 4× #14×2″ 410 SS self-drilling structural screws per foot plate (20 total) | Bite the plywood-over-steel container floor — wedge/concrete anchors don't hold there |
 | Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
 | Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
 
 The grate rests on the cantilever arms and lifts straight out — no fasteners, no
-kerb. The operator load travels grating → 2×1×0.120in cantilever arm → 2×2×0.120in post →
+kerb. The operator load travels grating → cantilever arm (2×1; 4×1 at the punch-out) → 2×2×0.120in post →
 foot plate → floor anchor, with **zero tray contact**: the posts stand on bare
 floor outside the tray and the arms cantilever over it. The arm bottom clears the floor-level spray bar
 by 15mm and the tray rim
@@ -274,12 +278,13 @@ by 25mm. Because the brackets
 stand entirely outside the panel's transport-swing footprint, the grate simply
 lifts out before the panel swings; the floor-bolted posts stay put.
 
-**Load path / hand-check.** The longest cantilever is the punch-out arm. With a ~1kN footfall at the arm tip, the
-2×1×0.120in arm and 2×2×0.120in SHS post carry the moment with margin and the foot
-plate's 4× M10 anchors react the overturning. This is a hand-check, not a signed
-analysis; the brackets bolt to the floor permanently and only the grate lifts out
-for transport. This floor-leg cantilever supersedes the earlier full-width
-edge-beam scheme — it is simpler and lighter and needs no through-wall seats.
+**Load path.** The operator load travels grate → cantilever arm → 2×2×0.120in post → foot plate → floor
+anchors. The longest cantilever is the drum-exit punch-out arm (605mm). Under the US IBC/OSHA 300 lbf tip
+load this needs a **4×1×0.120in tube** (SF 1.99) — a plain 2×1 was only SF 1.04 — while the standard
+305mm arms stay 2×1 (SF 2.06); the post carries SF 2.68 (all computed in §9, `walkway_load.py`). The foot
+plate's 4× #14 anchors react the ~2.4 kN/screw overturning uplift and **must engage the container's steel
+floor pan**, not the plywood alone. This floor-leg cantilever supersedes the earlier full-width edge-beam
+scheme — simpler, lighter, and needs no through-wall seats.
 
 ### 5.2 Drum-Exit Punch-Out
 
@@ -299,14 +304,15 @@ the cone).
 
 **Support.** The 600mm punch-out is carried by the **3 middle
 floor-leg brackets** — the same posts that carry the
-standard left walkway, but with their arms **extended to X=770mm**.
-Each arm cantilevers the full ~630mm over the tray from its
+standard left walkway, but with their arms **extended to X=880mm** on the heavier
+**4×1×0.120in tube** section (IBC/OSHA — see §9).
+Each arm cantilevers ~605mm over the tray from its
 post on bare floor, with **zero tray contact**, and lifts out with the rest
 of the left walkway for transport. No separate sub-frame, edge beam, or bearing
 strip is needed.
 
 The drum-exit punch-out and its support are shown on **Sheet 5 (Detail C)** — the deeper
-landing on the 3 middle floor-leg brackets with arms extended to X770, cantilevering over
+landing on the 3 middle floor-leg brackets with 4×1 arms extended to X880, cantilevering over
 the tray with zero tray contact — alongside the rest of the left-walkway floor-leg system.
 See also **Sheet 6 (Detail D)** for the floor-leg bracket itself.
 
@@ -322,8 +328,8 @@ contact.
 |-----------|--------------|
 | Post | 2×2×0.120in steel SHS, ~115mm tall (floor to grate bottom), on bare floor at X=140mm |
 | Foot plate | 165×60×8mm steel plate (inboard outrigger — F3), with **4× #14×2″ 410 SS self-drilling screws** into the plywood-over-steel container floor |
-| Arm | 2×1×0.120in (50.8×25.4mm) steel, reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
-| Overturning reaction | reacted by the foot-plate anchors; ~1kN footfall at the arm tip is the worst case |
+| Arm | 2×1×0.120in (50.8×25.4mm) steel reaching X=580mm (2 standard brackets, SF 2.06); **4×1×0.120in** extended to X=880mm (3 punch-out brackets, SF 1.99 — IBC/OSHA, §9) |
+| Overturning reaction | reacted by the 4× #14 foot-plate anchors (~2.4 kN/screw uplift → engage the steel floor pan); 300 lbf tip point load governs (§9) |
 
 The grate simply rests on the cantilever arms — located laterally by butting the
 near/far grate edges, free to lift straight out (no fasteners, no kerb).
@@ -427,28 +433,54 @@ floor-bolted posts stay put.
 
 ---
 
-## 9. Load Considerations
+## 9. Structural Validation
 
-The walkway must support an operator (~100kg) plus portable equipment. The
-critical load case is the widened near walkway section (500mm cantilever) with an
-operator standing at the outer edge.
+Every walkway element is checked to the **US IBC/OSHA** load basis — [IBC-2021
+Table 1607.1](https://codes.iccsafe.org/content/IBC2021P2/chapter-16-structural-design#IBC2021P2_Ch16_Sec1607)
+for walkways / elevated platforms: a **60 psf (2.87 kPa) uniform** live load and a **300 lbf (1.33 kN)
+concentrated** load applied at the location of maximum stress, mirrored by [OSHA 29 CFR
+1910.28](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.28) for the workplace. Per IBC
+1607.1 the two need not be combined; for every cantilever the **concentrated load at the free tip governs**.
+The figures below are computed by `src/generators/walkway_load.py` (safety factors on yield, target ≥ 2.0),
+so they cannot drift from the geometry.
 
-The standard 8mm steel plate gusset brackets at 457mm centers provide substantial
-structural capacity. Each standard bracket is a rigid triangle (vertical leg +
-horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The four
-widened brackets use 10mm plate with 4x M12
-rectangular bolt patterns and 200mm vertical legs for the increased moment
-demand of the 500mm cantilever arm.
+<!-- BEGIN load:validation -->
+| Element | Design demand | Capacity | SF | Basis |
+|---------|---------------|----------|----|-------|
+| Grate — uniform | 60 psf | 2360 psf max-rec | 39 | Fibergrate 1" 1×4 molded FRP; span ≤ 12" tabulated min |
+| Grate — concentrated | 300 lbf | 0.8 mm defl | — | 0.03" @ 18" span (Fibergrate); less at our shorter span |
+| Wall bracket STD arm | 400 N·m | 838 N·m | 2.09 | 2×1×0.120 tube, 300 mm; tip defl 1.4 mm (L/213) |
+| Wall bracket WIDE arm | 667 N·m | 1222 N·m | 1.83 | 3×1×0.120 tube, 500 mm; deflection-governed, tip L/112 |
+| Wall bolt tension (M12 8.8) | 3543 N | 60696 N | 17 | root-moment couple, 113 mm lever |
+| Corrugated-rib pull-through | 3543 N | 25334 N | 7 | 1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip |
+| Floor-leg STD arm | 406 N·m | 838 N·m | 2.06 | 2×1×0.120, 305 mm cant. |
+| Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. (redesign; 2×1 was SF 1.04) |
+| Floor-leg post | 807 N·m | 2158 N·m | 2.68 | 2×2×0.120 SHS |
+| Foot-anchor uplift | 2445 N/screw | engage steel pan | ≈1 | 4× #14 SS self-driller; 2 outboard react the couple over the 165 mm foot |
+| Combined corner plate | 1612 N | 161856 N | 100 | 10 mm plate, 4× M12; shared with the BR film rail |
+| RWK long beam (cross-ref) | person + grate | SF 7.1 | 7.1 | ibc_frame_load.outer_beam_frame_check — simply-supported full section |
+| RWK arm half-lap notch (cross-ref) | 334 N·m | SF 2.03 | 2.03 | ibc_frame_load.arm_notch_check — solid-bar rebalanced split |
+| Arm→upright J6 (IBC-owned) | 395 N·m | SF 20 | 20 | ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only |
+<!-- END load:validation -->
 
-The right walkway is a **cantilever rectangle**. A closed 2×1×0.120in steel frame is picked up
-at mid-span by two arms
-cantilevering off the IBC corridor uprights and at its four corners by wall
-cleats (left) and the combined corner plates (right). The governing case is the
-arm root, where the design footfall produces a peak moment of only ≈0.35 kN·m —
-comfortably within the ≈0.84 kN·m elastic capacity of 2×1×0.120in (Z≈3.35 cm³ × 250 MPa → SF≈2.4) (see the
-[cantilever study](right-walkway-cantilever-study.md)). The closed rectangle
-resists twist far better than the previous free-ended bearer angles, so the deck
-bounces noticeably less than the rod-hung version it replaces.
+**Reading the table.** The grate is far over-capacity (SF ≈ 39 on the 245–300mm span — well below the
+manufacturer's shortest tabulated 12" span). The **wall-cantilever bracket arms were redesigned** to this
+basis: the as-drawn 8×10mm plate arm yielded at ~25 lbf, so the arm is now a **2×1×0.120in tube** (standard,
+SF 2.1) / **3×1×0.120in tube** (widened, SF 1.83). The widened bracket is **deflection-governed** — at the
+25.4mm depth the spray bar allows, its 500mm reach gives L/112 tip deflection under the worst-case corner point
+load (a rare position; distributed standing deflects far less). The **left-walkway floor-leg** punch-out arm was
+likewise upgraded to a **4×1×0.120in tube** (SF 1.99; the 2×1 was only SF 1.04 at the 605mm reach). Two items
+carry fabrication conditions rather than a clean margin: the **corrugated-rib pull-through** (SF 7) depends on the
+≥30mm corrugation confirmation for bolt grip, and the **floor-leg foot anchors** (~2.4 kN/screw uplift) require
+the #14 self-drillers to engage the container's **steel floor pan**, not the plywood alone.
+
+The **right walkway** is a closed **2×1×0.120in cantilever rectangle** picked up at mid-span by two arms off the
+IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates (right). Its long/end
+beams and the arm half-lap notch are validated in `ibc_frame_load.py` (`outer_beam_frame_check`, SF 7.1;
+`arm_notch_check`, SF 2.03) and cross-referenced above; the **arm→upright connection (joint J6) is IBC-frame-owned**
+and drawn on IBC-frame Sheet 5, so it is cross-referenced, not re-validated here (see the
+[cantilever study](right-walkway-cantilever-study.md)). The closed rectangle resists twist far better than the
+free-ended bearer angles it replaces, so the deck barely bounces.
 
 ---
 
@@ -460,13 +492,13 @@ bounces noticeably less than the rod-hung version it replaces.
 | Molded GRP grating (American Grating, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48"×144" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md. | 1 lot | American Grating / McNichols | $830–$1,050 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
-| Cantilever bracket — standard (near/far) | 8mm steel plate: 180mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers) | 13 ea | Local fab | $390–$650 |
-| Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone, X1055–3083 = 5 bays) | 5 ea | Local fab | $200–$350 |
+| Cantilever bracket — standard (near/far) | 8mm steel plate (180mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 4 near + 9 far at 457mm centers. ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms). | 13 ea | Local fab | $390–$650 |
+| Cantilever bracket — widened (near) | 10mm steel plate (200mm vert leg + 70mm gusset) + a 500mm 3×1×0.120in steel tube arm, welded — US IBC/OSHA redesign: the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point; arm depth is spray-bar-capped at 25.4mm so the widened bracket takes a WIDER 3×1 section, not deeper). EP/battery/slit zone, X1055–3083 = 5 bays. ~0.5 m of 3×1 tube/bracket. | 5 ea | Local fab | $200–$350 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | Cantilever-bracket wall bolts (3 per std + 4 per widened), sized for the 30mm-corrugation grip (~48–50mm), partial thread. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 59 ea | McMaster-Carr | $94 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×65 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 59 ea | McMaster-Carr | $15 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 cantilever bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 236 ea | McMaster-Carr | $23 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
-| Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×13) + 120×220mm widened (×5) | 18 ea | Local fab | $75–$130 |
+| Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
 | Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (~245mm, the 245mm right deck) that make the closed rectangle, ~5.2 m (17.1 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
 | Right walkway center cantilever arms (solid bar) | SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces. | 2 ea | Metal Supermarkets | $91 |
@@ -480,7 +512,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 right-walkway bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 24 ea | McMaster-Carr | $6 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 right-walkway bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 96 ea | McMaster-Carr | $9 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked). | 24 ea | McMaster-Carr | $3 |
-| Floor-leg cantilever bracket (left walkway, ×5) | 2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 165×60×8mm foot plate (F3: lengthened 128→165 so the 4 floor anchors clear the post footprint as an inboard outrigger). #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote. | 5 ea | MetalsDepot / Local fab | $65–$105 |
+| Floor-leg cantilever bracket (left walkway, ×5) | 2×2×0.120in SHS post (~115mm) + arm: 2×1×0.120in for the 2 standard legs (reach X580, SF 2.06) / 4×1×0.120in for the 3 drum-exit punch-out legs (extended to X880 — REDESIGNED to US IBC/OSHA, the 2×1 was only SF 1.04, 4×1 → SF 1.99; walkway_load.py) + 165×60×8mm foot plate (F3: lengthened 128→165 so the 4 floor anchors clear the post footprint as an inboard outrigger). #26: post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote. | 5 ea | MetalsDepot / Local fab | $65–$105 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 4 per foot plate (20 total). Self-drills the 6mm plate + 28mm plywood (structural bite in the ply — wedge/concrete anchors don't hold in a ply-over-steel container floor). Hex washer head bears on the plate. 410 SS. Simpson SDWS 316 (pre-drilled plate holes) if max corrosion is wanted. | 20 ea | Bridge Fasteners / ASMC | $7–$11 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
 | **Walkway total** | | | | **$2,195–$3,076** |

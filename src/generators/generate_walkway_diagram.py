@@ -60,7 +60,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -680,9 +680,9 @@ def sheet2():
     #      extends 70mm from wall (stops before tray rim at Yd=80mm).
     #      Vertices: wall/floor (0,0), wall/arm-bottom (0, arm_bot), (70, arm_bot).
 
-    brkt_arm_z = BRKT_ARM_H  # = 65mm (top of horizontal arm = grate support)
-    ARM_DEPTH  = BRKT_T + 2  # arm cross-section depth shown (visual thickness)
-    arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm
+    brkt_arm_z = BRKT_ARM_H  # top of horizontal arm = grate support (Z115)
+    ARM_DEPTH  = WALKWAY_BRACKET_ARM_H  # 25.4 — arm is a 2×1×0.120 tube (redesign; was an 8mm plate edge)
+    arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm (Z89.6)
     GUSSET_REACH = WALKWAY_GUSSET_REACH  # gusset extends 70mm from wall (< 80mm tray rim position)
 
     # 1. Vertical mounting plate (flat against rib interior face, Yd=0 to BRKT_T)
@@ -758,7 +758,7 @@ def sheet2():
     # Bracket label — point at the arm
     leader(ax, (WALKWAY_W * 0.4), (brkt_arm_z - 5),
            (WALKWAY_W * 0.4 + 50), (brkt_arm_z - 30),
-           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
+           f"CANTILEVER BRACKET\n{BRKT_T}mm PLATE (vert leg + gusset)\n+ 2×1×0.120 TUBE ARM\n(50.8×25.4, welded on)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -826,9 +826,9 @@ def sheet2():
     # ── Clear tray area annotation ───────────────────────────────────────────
     # Arrow showing clear air under the entire walkway — no legs, no beam
     clr_x = (WALKWAY_W * 0.7)
-    ax.annotate("", xy=(clr_x, (TRAY_FLOOR + 1)), xytext=(clr_x, (brkt_arm_z - 1)),
+    ax.annotate("", xy=(clr_x, (TRAY_FLOOR + 1)), xytext=(clr_x, (arm_bot - 1)),
                 arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
-    gap_mm = brkt_arm_z - TRAY_FLOOR
+    gap_mm = arm_bot - TRAY_FLOOR   # clear air below the arm UNDERSIDE (the lowest obstruction)
     ax.text(clr_x + (5), ((TRAY_FLOOR + brkt_arm_z) / 2),
             f"{gap_mm:.0f}mm\nCLEAR AIR\n(NO LEGS,\nNO BEAM —\nFILM LAYS\nFLAT HERE)",
             ha="left", va="center", fontsize=5, color="#208020",
@@ -918,9 +918,9 @@ def sheet2():
         f"1. Grating: {WALKWAY_GRATE_T}mm molded GRP (fiberglass),",
          "   vinyl-ester resin, grit top. Corrosion-proof",
          "   in the wet chemistry zone.",
-        f"2. Cantilever brackets: {BRKT_T}mm steel plate",
-        f"   gusset, bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm",
-         "   centers.",
+        f"2. Cantilever brackets: {BRKT_T}mm plate (vert leg +",
+        f"   gusset) + 2×1×0.120 tube arm, bolted to wall",
+        f"   ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"3. Rib is HOLLOW — bolt bridges the air gap.",
         f"   Path: head \u2192 reinf plate \u2192 ext panel",
         f"   \u2192 air gap \u2192 rib face \u2192 bracket",
@@ -1540,8 +1540,8 @@ def sheet5():
     pw   = LEFT_WK_CANT_POST_W                # 60
     fl, fw, ft = LEFT_WK_CANT_FOOT            # 128, 60, 8
     fx0  = LEFT_WK_CANT_FOOT_X0               # 38
-    aw_s, aw_w = LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE   # 40, 60
-    std, wide = LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH  # 470, 770
+    aw_s, aw_w = LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE   # 50.8 (2×1) / 101.6 (4×1, IBC/OSHA)
+    std, wide = LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH  # 580 / 880 tip X
     arm_x0 = legx + post / 2                  # 165
     wyl, wyr = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R    # 800, 1560
     tray_x = PROC_TRAY_X_L                    # 170
@@ -1584,11 +1584,11 @@ def sheet5():
 
     # Callouts: one standard + one widened bracket
     leader(ax, yds[0], legx, yds[0] - 210, legx - 70,
-           "FLOOR-LEG CANTILEVER\nBRACKET (x5) - 50x50 post\non bare floor + arm to X470",
+           f"FLOOR-LEG CANTILEVER\nBRACKET (x5) - 2×2 post\non bare floor + 2×1 arm to X{int(std)}",
            color=C_SUPPORT, fs=6, ha="center", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, 1180, (std + wide) / 2, 1180, wide + 70,
-           "WIDENED arm EXTENDED to X770\n(3 punch-out brackets)",
-           color=C_SUPPORT, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+    leader(ax, 1180, (std + wide) / 2, 1180, arm_x0 - 130,
+           f"4×1 arm (punch-out)\nSF 1.99",
+           color=C_SUPPORT, fs=6, ha="center", va="top", arrow_style="-|>", font=FONT)
 
     # Bracket Yd spacing chain (along the bottom)
     chain_x = -70
@@ -1607,11 +1607,11 @@ def sheet5():
     notes = [
         "FLOOR-LEG CANTILEVER SUPPORT (replaces the edge beam):",
         "1. 5 brackets bolted to BARE FLOOR (X<170) - zero tray/wall contact.",
-        "2. foot plate + 50x50x3 post + 40mm arm (Z75-115) to grate edge X470.",
-        "3. 3 punch-out brackets EXTEND to X770 - widened section supported.",
-        "4. arms pass 15mm over the floor-level spray bar (Z60, +50 raise enables it); zero tray contact.",
-        "5. DRUM-EXIT PUNCH-OUT: deck deepened to 600mm (X170-770) over Yd800-1560 — landing at the",
-        "   light-lock exit, on the 3 extended (X770) brackets.",
+        f"2. foot plate + 2×2×0.120 post + 2×1×0.120 arm (Z{int(LEFT_WK_CANT_ARM_Z0)}-115) to grate edge X{int(std)}.",
+        f"3. 3 punch-out brackets EXTEND to X{int(wide)} on 4×1×0.120 arms (IBC/OSHA SF 1.99).",
+        "4. arms clear the traveling spray bar (top Z67) by ~22mm; zero tray contact.",
+        f"5. DRUM-EXIT PUNCH-OUT: deck deepened to 600mm over Yd800-1560 — landing at the",
+        f"   light-lock exit, on the 3 extended (X{int(wide)}) brackets.",
         "6. grate + punch-out lift out together before panel transport; brackets stay floor-bolted.",
         "   No kerb. Bracket section on Sheet 6.",
     ]
@@ -1698,7 +1698,7 @@ def sheet6():
     axA.add_patch(Rectangle((arm_x0, arm_z0), std_reach - arm_x0, grate_bot - arm_z0,
                             fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
     leader(axA, 245, arm_z0 + 20, 220, arm_z0 + 75,
-           f"CANTILEVER ARM 40mm DEEP\n(Z{arm_z0}-{grate_bot}); EXTENDED\nto X770 on the punch-out",
+           f"CANTILEVER ARM 2×1 (25.4 DEEP)\n(Z{int(arm_z0)}-{int(grate_bot)}); punch-out arms\nEXTEND to X{int(LEFT_WK_CANT_WIDE_REACH)} on a 4×1",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Grate (sits on the arm/post tops)
     axA.add_patch(Rectangle((TX, grate_bot), std_reach - TX, grate_top - grate_bot,
@@ -1778,8 +1778,8 @@ def sheet6():
         "FLOOR-LEG CANTILEVER BRACKET (x5, at Yd 250/800/1180/1560/2110):",
         "1. Bolted to BARE FLOOR outboard of the tray (X<170) — ZERO tray contact, ZERO wall fixings.",
         f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x #14 SS self-drilling floor anchors per foot (no nut — bite the ply floor).",
-        f"3. Arm Z{arm_z0}-{grate_bot} (40mm deep) reaches in to carry the grate inner edge (X470); the 3 punch-out brackets EXTEND to X770.",
-        "4. The arm passes 15mm OVER the floor-level spray bar (Z60) — only possible after the +50mm walkway raise.",
+        f"3. Arm Z{int(arm_z0)}-{int(grate_bot)} (2×1×0.120, 25.4 deep) carries the grate inner edge (X{int(LEFT_WK_CANT_STD_REACH)}); the 3 punch-out brackets EXTEND to X{int(LEFT_WK_CANT_WIDE_REACH)} on a 4×1×0.120 arm (IBC/OSHA SF 1.99).",
+        "4. The arm clears the traveling spray bar (top Z67) by ~22mm — enabled by the raised Z140 deck.",
         "5. The grate lifts out for transport; the brackets stay bolted (permanent). Replaces the former edge-beam-on-wall-seats.",
     ]
     draw_notes(axA, notes, 4, -58, spacing=7, fs=6.5, ha="left", width=552, font=FONT)
@@ -1825,11 +1825,11 @@ def sheet7():
     W_BRKT_T    = WALKWAY_WIDE_BRACKET_T        # 10mm plate
     W_BRKT_VERT = WALKWAY_WIDE_BRACKET_H        # 200mm vertical leg
     W_ARM_W     = WALKWAY_NEAR_WIDE_W           # 500mm arm reach
-    W_ARM_DEPTH = W_BRKT_T + 2
-    w_arm_bot   = BRKT_ARM_H - W_ARM_DEPTH
+    W_ARM_DEPTH = WALKWAY_BRACKET_ARM_H         # 25.4 — arm is a 3×1×0.120 tube (redesign; was a 12mm plate edge)
+    w_arm_bot   = BRKT_ARM_H - W_ARM_DEPTH       # Z89.6
     W_GUSSET    = 70
-    W_REINF_W   = 120
-    W_REINF_H   = 220
+    W_REINF_W   = WALKWAY_REINF_W_WIDE   # 120
+    W_REINF_H   = WALKWAY_REINF_H_WIDE   # 200 — = the widened vertical leg (interior + exterior plates same footprint)
     BOLT_D      = 12
     BOLT_R      = BOLT_D / 2
     C_BOLT      = "#505058"
@@ -1988,7 +1988,7 @@ def sheet7():
     # Bracket label
     leader(ax, (W_ARM_W * 0.4), (brkt_arm_z - 5),
            (W_ARM_W * 0.4 + 50), (brkt_arm_z - 30),
-           f"WIDENED BRACKET\n{W_BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
+           f"WIDENED BRACKET\n{W_BRKT_T}mm PLATE (vert leg + gusset)\n+ 3×1×0.120 TUBE ARM\n(76.2×25.4, welded on)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -2048,9 +2048,9 @@ def sheet7():
     # ── Clear tray annotation ────────────────────────────────────────────────
     clr_x = (W_ARM_W * 0.7)
     ax.annotate("", xy=(clr_x, (TRAY_FLOOR + 1)),
-                xytext=(clr_x, (brkt_arm_z - 1)),
+                xytext=(clr_x, (w_arm_bot - 1)),
                 arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
-    gap_mm = brkt_arm_z - TRAY_FLOOR
+    gap_mm = w_arm_bot - TRAY_FLOOR   # clear air below the arm underside (lowest obstruction)
     ax.text(clr_x + (5), ((TRAY_FLOOR + brkt_arm_z) / 2),
             f"{gap_mm:.0f}mm\nCLEAR AIR\n(NO LEGS,\nNO BEAM —\nFILM LAYS\nFLAT HERE)",
             ha="left", va="center", fontsize=5, color="#208020",

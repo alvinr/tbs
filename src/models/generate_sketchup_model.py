@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_GRATE_Z, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_HL_TIP, RWK_HL_POST, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_X_UP, RWK_UP_YDS, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, RWK_RIBBON_NOTCH_W, RWK_NOTCH_FLOOR, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_DX, RWK_CRANK_Y0, RWK_CRANK_Y1
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -660,56 +660,12 @@ def processing_tray(alpha=None):
 # ── Walkways ─────────────────────────────────────────────────────────────────
 
 # ── Right walkway — CANTILEVER-RECTANGLE support (rev12; replaces the ceiling hangers) ──
+# The right-walkway geometry constants (RWK_*) were PROMOTED to tbs_constants.py (Phase 1,
+# 2026-08-18) and are imported above — so the 2D fab drawings dimension the right walkway from
+# the SAME source as this builder (no more hardcoded ARM_X / edge literals in the diagram).
 # A closed rectangle (2 long beams + 2 end beams) under the deck, supported at mid-span by 2
-# CENTER cantilever arms off the IBC corridor uprights (half-lapped where the long beams cross).
-# LEFT corners on wall cleats; RIGHT corners on a COMBINED plate shared with the bottom film
-# rail. Single-sourced here; the focused walkway + film-plane study models reuse these.
-RWK_X_L = WALKWAY_RIGHT_X                              # 4329 — deck left edge
-RWK_X_R = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W            # 4629 — deck right edge
-RWK_GRATE_Z = WALKWAY_H - WALKWAY_GRATE_T              # 115 — grate bottom
-RWK_ARM_BOT, RWK_ARM_TOP = LEFT_WK_CANT_ARM_Z0, RWK_GRATE_Z   # arm underside Z89.6 (matches the LEFT arm; single-sourced) — 11.6mm over the full-width 1½ spray beam
-RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 25.4 (2×1in section, 1in deep — #26)
-RWK_ARM_W = 50.8                                       # 2in — arm width in Yd (2×1in section)
-# Arm = SOLID 2×1 flat bar (a notched partial section must be solid to be strong — a notched HOLLOW
-# tube opens into a weak channel; the un-notched LEFT cantilevers stay tube). Half-lap split REBALANCED
-# to the moment: DEEP arm notch at the tip (low moment) and SHALLOW at the post end (high moment → the
-# OUTER beam takes the deep notch). Sized in ibc_frame_load.arm_notch_check().
-RWK_HL_TIP  = round(RWK_ARM_BOT + 5.4, 1)             # 95.0 — TIP crossing split: arm keeps 5.4 (M≈30 Nm); inner beam keeps 20
-RWK_HL_POST = round(RWK_ARM_BOT + 16.0, 1)           # 105.6 — POST crossing split: arm keeps 16 (M≈334 Nm); outer beam notched to 9.4
-RWK_HL = RWK_HL_TIP                                    # legacy alias / default split
-RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×1in section)
-RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
-RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
-RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
-RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
-# J6 BEARING-TYPE end-plate.  BOTH M12 sit ABOVE the arm weld toe (Z120) as a tension bolt group; the taller
-# plate bears compression at the bottom against the upright.  This clears the 3-way corner congestion — the
-# corridor bottom frame X-rail (Z12–63) runs below with NO bolt near it, and neither bolt fouls the welded
-# arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is
-# appropriate (Alvin 2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
-RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
-RWK_J6_EP_H    = 155.0                                       # end-plate height: top (Z192) clears the upper bolt (Z170) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
-# Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
-# the beam into the corridor.  The carriage crown (Z66) to beam soffit (Z80) gap is too tight for the pipe to
-# pass under, so the beam's top web is slotted instead (Z92-115), leaving the Z80-92 bottom web intact.  These
-# Yds are the single source the corridor pipe routing (cp.ribbon_run / the sump line) reads back for its
-# crossing Yd, so the notches and the pipes can't drift apart.
-RWK_RIBBON_NOTCH_YDS = [1110, 1132, 1194, 1241]        # lanes 0,1,2,3 corridor-crossing Yd (index-matched to cp.RIBBON_LANE_X)
-RWK_RIBBON_NOTCH_W   = 34                              # Yd width per notch (pipe OD 21 + clearance)
-RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — notch floor, 2mm below the flush pipe soffit (Z94)
-
-# Inner long beam is CRANKED outboard around the muslin-drop rod slot: the rigid muslin batten drops
-# straight down at the tray edge (X=RWK_X_L), which sits over the inner beam — so over the notch Yd the
-# beam is jogged outboard by the full notch depth (its inboard face moves R_X0→R_X1) with angled ramps,
-# vacating the entire notch footprint for the rod while the beam stays ONE continuous (uncut) member.
-# Right walkway only — the left notch falls between floor-leg brackets, no beam under it. Tied to the
-# muslin-notch constants so the crank can't drift from the notch it clears.
-RWK_CRANK_N0   = WALKWAY_MUSLIN_NOTCH_YD0                              # 1912 — notch Yd start
-RWK_CRANK_N1   = WALKWAY_MUSLIN_NOTCH_YD0 + WALKWAY_MUSLIN_NOTCH_DY    # 2062 — notch Yd end
-RWK_CRANK_DX   = WALKWAY_MUSLIN_NOTCH_R_X1 - WALKWAY_MUSLIN_NOTCH_R_X0 # 100 — jog = notch depth (clears the full notch)
-RWK_CRANK_RAMP = 100                                                  # angled ramp Yd length each side
-RWK_CRANK_Y0   = RWK_CRANK_N0 - RWK_CRANK_RAMP                        # 1812 — ramp-out start
-RWK_CRANK_Y1   = RWK_CRANK_N1 + RWK_CRANK_RAMP                        # 2162 — ramp-in end
+# CENTER cantilever arms off the IBC corridor uprights; LEFT corners on wall cleats, RIGHT corners
+# on a COMBINED plate shared with the bottom film rail.  The builder below reads the RWK_* imports.
 
 
 def _yd_split(y0, y1, cuts):

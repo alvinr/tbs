@@ -18,8 +18,9 @@ Sheet 2 — Cross-section + bolt pattern (near walkway bracket):
   View B: Plate face showing triangular 3× M12 bolt pattern.
 
 Sheet 3 — Detail A: Right walkway cantilever support (IBC end)  [rev 12]:
-  300mm wide, same as near/far.  Plan view of the closed 40×40×3 SHS
-  rectangle (2 long beams at X=4329/4629 running the full container width +
+  245mm wide (F1-shortened from the standard 300 so the outer beam lands on the
+  combined-plate seat).  Plan view of the closed 2×1in-tube (50.8×25.4)
+  rectangle (2 long beams at X=4329/4574 running the full container width +
   2 short end beams), picked up at mid-span by 2 arms cantilevering off the
   IBC corridor uprights (half-lapped where the long beams cross), on wall
   cleats at the left corners and combined corner plates (shared with the
@@ -59,7 +60,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -218,7 +219,7 @@ def sheet1():
         if name == "LEFT":
             lbl = f"LEFT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nREMOVABLE LIFT-OUT"
         elif name == "RIGHT":
-            lbl = f"RIGHT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nCANTILEVER"
+            lbl = f"RIGHT WALKWAY\n{int(length)}\u00d7{WALKWAY_RIGHT_W}mm\nCANTILEVER"
         elif name == "NEAR":
             lbl = f"NEAR WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\n(WIDENED TO {WALKWAY_NEAR_WIDE_W}mm\nAT EP/BATT ZONE)"
         else:
@@ -496,7 +497,7 @@ def sheet1():
         f"   seam placed away from the bump shoulders (molded GRP max 3'\u00d710').",
         f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint), clear of the door-end panel swing sweep.",
-        f"4. Right: CANTILEVER RECTANGLE \u2014 closed 40\u00d740 SHS frame on 2 arms off the IBC uprights + combined corner plates.",
+        f"4. Right: CANTILEVER RECTANGLE \u2014 closed 2\u00d71in-tube frame on 2 arms off the IBC uprights + combined corner plates.",
         f"5. Left: REMOVABLE LIFT-OUT \u2014 5 FLOOR-LEG CANTILEVER brackets on bare floor (X140, outside tray),",
         f"   arms reach the grate inner edge (X={LXR}); 3 extend to X770 on the drum-exit punch-out. See sheets 5/6.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
@@ -1088,7 +1089,7 @@ def sheet2():
 # SHEET 3 — Detail A: Right Walkway Cantilever Support (IBC End)  [rev 12]
 #
 # PLAN view (looking down): X horizontal, Yd vertical.  The right walkway is a
-# closed 40×40 SHS rectangle (2 long beams at X=4329/4629 running full width +
+# closed 2×1in-tube rectangle (2 long beams at X=4329/4574 running full width +
 # 2 short end beams) picked up at mid-span by 2 arms cantilevering off the IBC
 # corridor uprights, on wall cleats at the left corners and combined corner
 # plates (shared with the bottom film rail) at the right corners.  Replaces the
@@ -1101,12 +1102,12 @@ def sheet3():
     """
 
     # ── Geometry ─────────────────────────────────────────────────────────────
-    SHS       = 40                            # 40×40×3 SHS section
-    WK_L_X    = WALKWAY_RIGHT_X               # 4329 — left long beam
-    WK_R_X    = WALKWAY_RIGHT_X + WALKWAY_W   # 4629 — right long beam
+    SHS       = RWK_BEARER_W                  # 50.8 — 2×1in section face shown in plan (long beam, end beam & arm all present their 2in face top-down)
+    WK_L_X    = RWK_X_L                       # 4329 — inner long beam / deck left edge
+    WK_R_X    = RWK_X_R                       # 4574 — outer long beam / deck right edge (F1-shortened; lands on the combined-plate seat)
     WALL_X    = RAIL_X_R                      # 4649 — right side-wall station (film rail / combined plate)
-    UP_X0     = IBC_COL_X - 20                # 4654 — deep-box FRONT upright (arm clamps here; reconciled from tote-col 4674)
-    ARM_X     = IBC_COL_X - 20                # 4654 — arm root station (= RWK_X_UP; reconciled from 4734)
+    UP_X0     = RWK_X_UP                      # 4654 — deep-box FRONT upright (arm clamps here)
+    ARM_X     = RWK_X_UP                      # 4654 — arm root station
     UP_YDS    = [(CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + IBC_FRAME_RHS),  # near upright 1046–1096
                  (CORRIDOR_YD_FAR - IBC_FRAME_RHS, CORRIDOR_YD_FAR)]     # far  upright 1266–1316
     ARM_YDS   = [yc + IBC_FRAME_RHS / 2 for (yc, _) in UP_YDS]           # arm centerlines
@@ -1156,7 +1157,7 @@ def sheet3():
     # ── Closed SHS rectangle: 2 long beams + 2 end beams ─────────────────────
     # Outer long beam — straight; inner long beam — CRANKED outboard around the muslin-drop rod
     # slot (mirrors the model's _rwk_inner_beam_cranked: jog = notch depth, 100mm angled ramps).
-    ax.add_patch(Rectangle(((WK_R_X), (0)), (SHS), (C_WID),
+    ax.add_patch(Rectangle(((WK_R_X - SHS), (0)), (SHS), (C_WID),
                             fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
     cN0 = WALKWAY_MUSLIN_NOTCH_YD0
     cN1 = WALKWAY_MUSLIN_NOTCH_YD0 + WALKWAY_MUSLIN_NOTCH_DY
@@ -1167,8 +1168,8 @@ def sheet3():
     inner_beam = [(xi, 0), (xi, cY0), (xi + cDX, cN0), (xi + cDX, cN1), (xi, cY1), (xi, C_WID),
                   (xo, C_WID), (xo, cY1), (xo + cDX, cN1), (xo + cDX, cN0), (xo, cY0), (xo, 0)]
     ax.add_patch(Polygon(inner_beam, closed=True, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
-    for ey in [0, C_WID - SHS]:
-        ax.add_patch(Rectangle(((WK_L_X), (ey)), ((WK_R_X + SHS) - WK_L_X), (SHS),
+    for ey in [0, C_WID - SHS]:   # end beams butt BETWEEN the long beams (inner faces), matching the model
+        ax.add_patch(Rectangle(((WK_L_X + SHS), (ey)), ((WK_R_X - SHS) - (WK_L_X + SHS)), (SHS),
                                 fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
 
     # Muslin-rod drop slot — vacated by the crank (clear vertical passage at the tray edge)
@@ -1181,7 +1182,7 @@ def sheet3():
 
     leader(ax, (WK_L_X + SHS / 2), (C_WID * 0.80),
            (GUT_X - 150), (C_WID * 0.84),
-           f"LONG BEAM\n40×40×3 SHS\n(×2, X={WK_L_X}/{WK_R_X};\ninner cranked at the rod slot)",
+           f"LONG BEAM\n2×1in tube (50.8×25.4)\n(×2, X={WK_L_X}/{WK_R_X};\ninner cranked at the rod slot)",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, ((WK_L_X + WK_R_X) / 2), (C_WID - SHS / 2),
            ((WK_L_X + WK_R_X) / 2), (C_WID + 120),
@@ -1194,12 +1195,12 @@ def sheet3():
                                 fc=C_IBC, ec=C_OUT, lw=1.0, zorder=6, alpha=0.7))
         ax.add_patch(Rectangle(((WK_L_X), (ay - SHS / 2)), (ARM_X - WK_L_X), (SHS),
                                 fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=7, alpha=0.95))
-        for bx in [WK_L_X, WK_R_X]:
+        for bx in [WK_L_X, WK_R_X - SHS]:   # half-lap boxes on the two long beams (inner flush-left, outer flush-right)
             ax.add_patch(Rectangle(((bx), (ay - SHS / 2)), (SHS), (SHS),
                                     fc="none", ec=C_OUT, lw=0.9, ls=(0, (2, 1.5)), zorder=9))
     leader(ax, (WK_L_X + SHS / 2), (ARM_YDS[0]),
            (GUT_X - 150), (C_WID * 0.52),
-           "CENTER CANTILEVER ARM (×2)\n40×40×3 SHS off the IBC\ncorridor uprights",
+           "CENTER CANTILEVER ARM (×2)\n2×1in solid flat bar off the IBC\ncorridor uprights",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, (WK_R_X + SHS / 2), (ARM_YDS[1] + SHS / 2),
            (WK_R_X + 330), (ARM_YDS[1] + 180),
@@ -1233,7 +1234,7 @@ def sheet3():
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, (WK_L_X), (WK_R_X), (-90),
-               f"{WALKWAY_W}mm", offset=(9), fs=7, above=False, font=FONT)
+               f"{WALKWAY_RIGHT_W}mm", offset=(9), fs=7, above=False, font=FONT)
     # Label to the LEFT (right=False) so it doesn't overhang X_HI — otherwise the dim text
     # pokes past the axes box and the (transAxes) title block reads narrower than the crop.
     draw_dim_v(ax, (PLAN_X_R - 25), (0), (C_WID),
@@ -1242,7 +1243,7 @@ def sheet3():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "RIGHT WALKWAY — CANTILEVER RECTANGLE:",
-        f"1. Closed 40×40×3 SHS frame: 2 long beams (X={WK_L_X}/{WK_R_X},",
+        f"1. Closed 2×1in-tube frame: 2 long beams (X={WK_L_X}/{WK_R_X},",
         f"   full {C_WID}mm width) + 2 end beams.",
         "2. Picked up at mid-span by 2 arms cantilevering off the",
         f"   IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",

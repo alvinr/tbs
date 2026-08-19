@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase 1.1: `RWK_*` promoted to `tbs_constants.py` (branch `walkway-bp`).** The
+  right-walkway geometry family (26 constants: `RWK_X_L/R`, `RWK_ARM_*`, `RWK_BEARER_*`, `RWK_HL_*`,
+  `RWK_X_UP`, `RWK_J6_*`, `RWK_RIBBON_NOTCH_*`, `RWK_CRANK_*`) moved out of `generate_sketchup_model.py`
+  into the shared constants so the 2D fab drawings dimension the right walkway from the SAME source as
+  the 3D builder (models byte-identical → no re-send). Repointing `generate_walkway_diagram.py` to them
+  surfaced + fixed real drift on **sheet 3** (right-walkway plan): wrong beam section (was "40×40×3 SHS",
+  is **2×1in tube / flat bar**, 50.8×25.4), wrong deck width (was 300, is the F1 **245**), and the outer
+  beam / end beams now sit model-accurate (outer flush-right-inboard at X4574, end beams butted between).
+  Sheet 1's RIGHT-WALKWAY width label + notes reconciled to 245 / 2×1in.
 - **Walkway F1 → water re-route (branch `walkway-bp`).** Shortening the right walkway (F1) moved the outer
   long beam inboard into the under-walkway pipe channel. Fixed the two clashes it caused: **#1** the 4 ribbon
   lanes (`RIBBON_LANE_X`) were hardcoded for the old wider channel — now **derived** from the inner-outboard..

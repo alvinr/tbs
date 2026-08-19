@@ -25,7 +25,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from tbs_constants import (IBC_FRAME_RHS, IBC_FRAME_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
                            CONTAINER_CORRUGATION_DEPTH,
                            IBC_FRONT_BAR_D, IBC_FRONT_BAR_W, IBC_FRONT_BAR_T,
-                           IBC_FRONT_BAR_N_PER_TIER)
+                           IBC_FRONT_BAR_N_PER_TIER,
+                           RWK_ARM_W, RWK_AH, RWK_X_UP, RWK_X_L, RWK_BEARER_W,
+                           RWK_BEARER_XS, RWK_UP_YDS)
 
 # ── EN 12195-1:2010 load basis ───────────────────────────────────────────────
 G       = 9.81
@@ -226,15 +228,8 @@ def service_loads():
 # (Z = w*h^2/6 on the kept depth) and REBALANCING the split per crossing — deep ARM notch only where the
 # moment ~0 (the tip); deep BEAM notch at the POST END where the arm moment peaks — keeps the arm strong
 # with no position change.
-# Arm/beam geometry mirrors the RWK_* constants in generate_sketchup_model.py (kept as literals here,
-# same as ARM_REACH_M above — this module intentionally does not import the model builders).
-RWK_ARM_W    = 50.8              # arm width in Yd (2in) = long-beam width
-RWK_AH       = 25.4             # arm depth (1in envelope: Z89.6 -> grate bottom Z115)
-RWK_X_UP     = 4654            # front upright (post) X
-RWK_X_L      = 4329            # arm tip X (= inner long-beam left edge)
-RWK_BEARER_W = 50.8            # long-beam width in X
-RWK_BEARER_XS = (4329, 4578.2)  # inner + outer long-beam left edges (RWK_X_R - RWK_BEARER_W)
-
+# Arm/beam geometry = the promoted RWK_* constants from tbs_constants (imported above; single-sourced
+# since Phase 1.1 — was a stale hand-copy here, incl. a pre-F1 RWK_BEARER_XS outer edge 4578.2 → 4523.2).
 FY_A36 = 250.0   # solid mild-steel flat-bar min yield (MPa, A36)
 
 
@@ -300,7 +295,7 @@ def outer_beam_frame_check():
     E = 200000.0
     z_full = z_rhs(RWK_AH, RWK_BEARER_W, 3.05)
     i_full = z_full * RWK_AH / 2.0
-    sup = [0.0] + sorted((1046.0, 1266.0)) + [C_WID_MM]        # 2 corner + 2 arm supports (RWK_UP_YDS)
+    sup = [0.0] + sorted(float(y) for y in RWK_UP_YDS) + [C_WID_MM]   # 2 corner + 2 arm supports (RWK_UP_YDS)
     spans = [sup[i + 1] - sup[i] for i in range(len(sup) - 1)]
     lmax = max(spans)
     w = 0.063                                                 # N/mm — GRP grate (half the 300mm deck) + self-weight (light)

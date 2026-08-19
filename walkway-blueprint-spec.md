@@ -106,8 +106,10 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
   `c01542cd`):
   - **Promoted** (were duplicated in the model + diagram): reinforcing-plate blanks (`WALKWAY_REINF_W/H/T`
     100/180/6 std, `_W_WIDE/_H_WIDE` 120/220), gusset reach (`WALKWAY_GUSSET_REACH` 70), wall-bolt edge
-    distances (`WALKWAY_BRACKET_BOLT_DX` **32** — the built value; the spec's "±27" was a stale estimate,
-    `_BOLT_Z_LO` 42 / `_LO_WIDE` 35). Models byte-identical, PNGs unchanged.
+    distances. **Standard** bracket = `WALKWAY_BRACKET_BOLT_DX` **27** (Sheet 2 View B; 23mm edge on the
+    100mm plate); **widened** bracket = `WALKWAY_BRACKET_BOLT_DX_WIDE` **32** (Sheet 7 View B; 120mm plate).
+    `_BOLT_Z_LO` 42 / `_LO_WIDE` 35. The 3D model had drifted to ±32 for BOTH — corrected in Phase 1.3 to
+    ±27 standard (matches the drawings), re-sending walkway/overview/construction.
   - **Already done** (Phase 0): foot-anchor PCD (`LEFT_WK_CANT_FOOT_BOLT_DX/DY`).
   - **Out of scope — IBC-frame-owned:** the arm end-plate blank (65×155×8) is the **J6** joint (walkway
     arm → IBC upright), drawn on **IBC-frame Sheet 5**; the walkway blueprint cross-references it, does not

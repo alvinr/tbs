@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase 1.3: drift sweep + standard-bracket bolt correctness fix (branch `walkway-bp`).**
+  Swept the report/generators/dep-map for stale literals: **foot plate 128→165mm** (the F3 outrigger; fixed in
+  `parts.py` + 3 report tables), **dep-map right-beam X 4629→4574** (F1). Found + fixed a real **3D-vs-drawing
+  conflict**: the standard wall-bracket lower bolts were built at **±32mm** in the 3D model but the report and
+  **Sheet 2 View B** both dimension them at **±27mm** (23mm plate-edge distance vs only 18mm — the 1.5×D
+  minimum — at ±32). Split the constant (`WALKWAY_BRACKET_BOLT_DX` 27 standard / `_WIDE` 32 widened) and
+  corrected the model to ±27, matching the drawings. Re-sent + re-uploaded all 5 models that render the
+  bracket (walkway, overview, construction, film-plane-mechanism, water); 2D drawings were already correct
+  (zero PNG changes); interference unchanged (12).
 - **Walkway blueprint — Phase 1.2: wall-cantilever bracket detail blanks single-sourced (branch `walkway-bp`).**
   The reinforcing-plate blanks (`WALKWAY_REINF_W/H/T` = 100/180/6 std + `_W_WIDE/_H_WIDE` = 120/220), gusset
   reach (`WALKWAY_GUSSET_REACH` = 70), and wall-bolt edge distances (`WALKWAY_BRACKET_BOLT_DX` = 32,

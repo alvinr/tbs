@@ -924,7 +924,8 @@ WALKWAY_REINF_T = 6      # exterior reinforcing-plate thickness (mm)
 WALKWAY_REINF_W_WIDE = 120   # widened-bracket reinforcing-plate width  (mm) — larger blank for the 4-bolt rectangular pattern
 WALKWAY_REINF_H_WIDE = 220   # widened-bracket reinforcing-plate height (mm)
 WALKWAY_GUSSET_REACH = 70    # gusset triangle reach from the wall face (mm) — < the 80mm tray-rim standoff so the gusset clears the rim
-WALKWAY_BRACKET_BOLT_DX = 32   # wall-bolt X offset from the bracket centerline (mm) — flank the gusset; SHARED std (2+1) + widened (2+2)
+WALKWAY_BRACKET_BOLT_DX = 27        # STANDARD-bracket wall-bolt X offset from CL (mm) — flanks the 8mm gusset; ±27 keeps 23mm edge to the 100mm reinforcing-plate edge (vs only 18mm = 1.5·D at ±32). Drawn on Sheet 2 View B.
+WALKWAY_BRACKET_BOLT_DX_WIDE = 32   # WIDENED-bracket wall-bolt X offset from CL (mm) — the wider 120mm reinforcing plate carries ±32 at 28mm edge. Drawn on Sheet 7 View B.
 WALKWAY_BRACKET_BOLT_Z_LO = 42       # standard bracket: lower-pair bolt Z (mm) — the 2 bolts flanking the gusset
 WALKWAY_BRACKET_BOLT_Z_LO_WIDE = 35  # widened bracket:  lower-pair bolt Z (mm)
 # rev10: the panel + drum SWING ~56° about the pivot for transport and the swinging cage

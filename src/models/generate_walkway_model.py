@@ -234,12 +234,13 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
     plate_w = k.WALKWAY_REINF_W_WIDE
     gusset_reach = k.WALKWAY_GUSSET_REACH
-    # Bolt patterns (X offset, Z): standard 3 (triangular); widened 4 (rectangular,
-    # per Sheet 7: lower pair, upper pair, both ±WALKWAY_BRACKET_BOLT_DX from CL).
+    # Bolt patterns (X offset, Z): standard 3 (triangular, ±WALKWAY_BRACKET_BOLT_DX = 27 — Sheet 2 View B);
+    # widened 4 (rectangular, ±WALKWAY_BRACKET_BOLT_DX_WIDE = 32 — Sheet 7 View B).
     _ubz = k.WALKWAY_BRACKET_UPPER_BOLT_Z   # 155 — upper bolt clears the grate deck (SHARED std + widened)
-    _dx  = k.WALKWAY_BRACKET_BOLT_DX         # 32 — wall-bolt X offset (SHARED std + widened)
+    _dx  = k.WALKWAY_BRACKET_BOLT_DX          # 27 — STANDARD wall-bolt X offset (Sheet 2 View B)
+    _dxw = k.WALKWAY_BRACKET_BOLT_DX_WIDE     # 32 — WIDENED wall-bolt X offset (Sheet 7 View B)
     bolt_pat_std  = [(0, _ubz), (-_dx, k.WALKWAY_BRACKET_BOLT_Z_LO), (_dx, k.WALKWAY_BRACKET_BOLT_Z_LO)]
-    bolt_pat_wide = [(-_dx, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (_dx, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (-_dx, _ubz), (_dx, _ubz)]
+    bolt_pat_wide = [(-_dxw, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (_dxw, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (-_dxw, _ubz), (_dxw, _ubz)]
 
     b   = btw if wide else bt                       # plate/arm/gusset thickness
     v   = vhw if wide else vh                        # vertical leg height

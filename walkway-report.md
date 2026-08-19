@@ -407,6 +407,13 @@ All four walkway sections use the same grating:
 | Open area | ~40% |
 | Surface finish | Grit top (slip-resistant) |
 
+The four sections' overall sizes, cut features (spray-bar slits, drum-exit punch-out, near bump-out,
+muslin notches), GRP panel seams (each 4,049mm near/far run splices at the 3,048mm panel length), and
+hold-down-clip positions (WF5, 610mm centers + corners) are dimensioned on the **Sheet 10 grate cut-plan**
+— a nesting/fabricator drawing:
+
+![TBS-001 Walkway — Sheet 10: Grate Cut-Plan (GRP Nesting)](assets/walkway-sheet10.png)
+
 ### 8.1 Grating Retention by Walkway Section
 
 | Walkway | Retention Method | Attachment Point | Removal |
@@ -501,7 +508,7 @@ practical fillets for the plate thickness.
 | WF2 | Widened bracket → wall rib | M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/) | Gr.8.8 zinc | 4/brkt × 5 = 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF3 | Right-walkway wall cleat + combined corner plate → wall | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF4 | Floor-leg foot plate → container floor | #14×2″ HWH self-driller | 410 SS | 4/foot × 5 = 20 | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
-| WF5 | Grating hold-down clip → bracket arm | M-type FRP grating clip + bolt | 316 SS | pitch TBD — Phase D (McNichols clip datasheet) | snug | — | — |
+| WF5 | Grating hold-down clip → bracket arm / long beam | M-type FRP grating clip + bolt | 316 SS | 610 mm (24") along bearing edges + corners | snug | — | — |
 | J6 (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |
 <!-- END load:fasteners -->
 
@@ -521,6 +528,11 @@ practical fillets for the plate thickness.
 | WW9 | Combined corner plate — beam seat + upstand | 5mm | AWS D1.1 min; shared with the BR film rail |
 | J6/W (IBC-owned) | Half-lap seat + arm end-plate welds | 5mm | IBC-frame schedule — cross-ref, not scheduled here |
 <!-- END load:welds -->
+
+**Weld-location map** — each mark is ticked at its joint on the detail sheets: **WW1/WW3** on Sheet 2
+(standard bracket), **WW2/WW3** on Sheet 7 (widened), **WW6/WW7** on Sheet 6 (floor-leg), and
+**WW5/WW8/WW9** on Sheet 3 (right cantilever rectangle). **WF1–WF4** land on the same sheets; **WF5**
+(grating clips) is dimensioned on the Sheet 10 cut-plan.
 
 All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame J3/J6 wall bolts) with a
 flat washer each end, a plain nut, and a split-lock washer. The floor-leg #14 self-drillers are driven

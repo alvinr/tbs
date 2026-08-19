@@ -900,6 +900,7 @@ WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 +
 #       and spray bar do NOT rise. Panel swing sweeps the bare Z115 brackets (walkway lifted out for
 #       transport) → PANEL_FLOOR_GAP is NOT tied to this. Costs ~60mm film-plane bottom (was 130/15mm).
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — 1" McNichols MS-S-100 molded FRP (real product min; 15mm molded FRP doesn't exist, 2.60 lb/sf). Sits on the SAME Z115 arm → deck top 140.
+WALKWAY_GRATE_CLIP_PITCH = 610  # FRP hold-down clip spacing (mm) — 24" along the supported (bearing) edges + one at each panel corner; standard McNichols/Fibergrate molded-grating clip guidance for a pedestrian deck (Alvin 2026-08-19)
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
 WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, Yd0–300) is a
                          # REMOVABLE lift-out for transport — the swing sweeps this band to X≈896

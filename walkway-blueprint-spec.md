@@ -173,19 +173,19 @@ they can't drift.
 
 ## Phase D — Fab-detail sheets (extend `generate_walkway_diagram.py`)
 
-- [ ] **J/W callouts** onto the existing detail sheets (bracket cross-section Sheet 2/7, floor-leg
+- [x] **J/W callouts** onto the existing detail sheets (bracket cross-section Sheet 2/7, floor-leg
   Sheet 6, transition Sheet 8, right cantilever Sheet 3).
-- [ ] **Member cut list** — computed from the constants (near/far bracket plates, right-rectangle long
+- [x] **Member cut list** — computed from the constants (near/far bracket plates, right-rectangle long
   + end + cranked beams, floor-leg posts/arms, feet, reinforcing plates, cleats, corner plates,
   transition plates + a stock linear-feet summary). The two IBC-post arms are in the **IBC-frame** cut
   list, not here.
-- [ ] **Plate fabrication schedule (1:1)** — foot plate (with relocated anchors), std + widened
+- [x] **Plate fabrication schedule (1:1)** — foot plate (with relocated anchors), std + widened
   reinforcing plates, combined corner plate, wall cleat, transition bearing plate — each with hole
   Ø/positions/PCD. (The J6 arm end/backing plates are on the **IBC-frame** plate schedule.)
-- [ ] **Grate cut-plan** — the 4 sections dimensioned with spray slits, drum-exit punch-out, near
+- [x] **Grate cut-plan** — the 4 sections dimensioned with spray slits, drum-exit punch-out, near
   bump-out, muslin notches, and clip positions (a fabricator/nesting drawing).
-- [ ] **Consolidated weld map** — W1…Wn ticked to their frame locations + the schedule.
-- [ ] Register every new sheet: `all-diagrams.md` gallery, `publish.sh`, `setup_docs.py`,
+- [x] **Consolidated weld map** — W1…Wn ticked to their frame locations + the schedule.
+- [x] Register every new sheet: `all-diagrams.md` gallery, `publish.sh`, `setup_docs.py`,
   `dependencies.yml`; embed in the report.
 
 ## Phase E — Cascade + close (as changes land)

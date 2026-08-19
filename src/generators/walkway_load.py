@@ -215,8 +215,8 @@ FASTENERS = [
      "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF4", "Floor-leg foot plate → container floor", "#14×2″ HWH self-driller",
      "410 SS", "4/foot × 5 = 20", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
-    ("WF5", "Grating hold-down clip → bracket arm", "M-type FRP grating clip + bolt",
-     "316 SS", "pitch TBD — Phase D (McNichols clip datasheet)", "snug", "—", "—"),
+    ("WF5", "Grating hold-down clip → bracket arm / long beam", "M-type FRP grating clip + bolt",
+     "316 SS", f"{k.WALKWAY_GRATE_CLIP_PITCH} mm (24\") along bearing edges + corners", "snug", "—", "—"),
 ]
 
 

@@ -60,7 +60,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -535,7 +535,7 @@ def sheet1():
             bbox=dict(boxstyle="round,pad=0.6", fc="#F4F4F0", ec=C_OUT, lw=1.0))
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 9",
+    title_block(ax, "SHEET 1 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
@@ -1089,7 +1089,7 @@ def sheet2():
                width=PL_X_HI - PL_X_LO - 10)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 9",
+    title_block(ax, "SHEET 2 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION + BOLT PATTERN — STANDARD NEAR WALKWAY BRACKET",
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
@@ -1271,7 +1271,7 @@ def sheet3():
                spacing=(52), fs=6.5, width=(IBC_W - 60), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 9",
+    title_block(ax, "SHEET 3 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A — RIGHT WALKWAY CANTILEVER SUPPORT (IBC END)",
                 scale_note="Axes in mm · PLAN VIEW LOOKING DOWN",
@@ -1515,7 +1515,7 @@ def sheet4():
     draw_notes(ax, notes, notes_x, notes_top, spacing=(8), fs=7, width=(600), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 9",
+    title_block(ax, "SHEET 4 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -1631,7 +1631,7 @@ def sheet5():
     ]
     draw_notes(ax, notes, 10, 930, spacing=24, fs=6, ha="left", width=760, font=FONT)
 
-    title_block(ax, "SHEET 5 OF 9",
+    title_block(ax, "SHEET 5 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C - LEFT WALKWAY FLOOR-LEG SUPPORT + DRUM-EXIT PUNCH-OUT",
                 scale_note="Axes in mm . PLAN (looking down)",
@@ -1804,7 +1804,7 @@ def sheet6():
     fig.subplots_adjust(bottom=0.16)
     axT = fig.add_axes([0.03, 0.005, 0.94, 0.13]); axT.axis("off")
     axT.set_xlim(0, 1); axT.set_ylim(0, 1)
-    title_block(axT, "SHEET 6 OF 9",
+    title_block(axT, "SHEET 6 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D — LEFT FLOOR-LEG CANTILEVER BRACKET",
                 scale_note="Axes in mm · VIEWS A/B",
@@ -2276,7 +2276,7 @@ def sheet7():
                width=PL_X_HI - PL_X_LO - 30)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 9",
+    title_block(ax, "SHEET 7 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION + BOLT PATTERN — WIDENED BRACKET (EP/BATTERY ZONE, 500mm ARM)",
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
@@ -2537,7 +2537,7 @@ def sheet8():
                width=(225))
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 8 OF 9",
+    title_block(ax, "SHEET 8 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="WIDTH TRANSITION DETAIL — PLAN VIEW AT BRACKET",
                 scale_note="SCALE 1:2 · LOOKING DOWN · Yd HORIZONTAL / X VERTICAL",
@@ -2656,7 +2656,7 @@ def sheet9():
     ]
     draw_notes(ax, notes, 700, 1085, spacing=40, fs=6.5, ha="left", width=1950, font=FONT)
 
-    title_block(ax, "SHEET 9 OF 9",
+    title_block(ax, "SHEET 9 OF 10",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL F — NEAR-WALKWAY BUMP-OUT (PINHOLE WALL, PLAN)",
                 scale_note="Axes in mm · PLAN VIEW (X right, Yd up from pinhole wall)",
@@ -2665,6 +2665,118 @@ def sheet9():
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet9.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 10 — Grate cut-plan (GRP nesting)
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet10():
+    """Sheet 10 — GRATE CUT-PLAN: the 4 molded-FRP grate sections laid out for the fabricator,
+    each dimensioned with its cut features (spray-bar slits, drum-exit punch-out, near bump-out,
+    muslin notches) and FRP hold-down-clip positions (WF5, 610mm centers + corners). Molded GRP
+    ships in 3'×10' (914×3048mm) panels, so the 4049mm near/far runs splice at one seam."""
+    C_GRP = "#BFE3C9"; C_CUT = "#C03028"; C_CLIP = "#2060A0"
+    W, WW = WALKWAY_W, WALKWAY_NEAR_WIDE_W          # 300 / 500
+    RW = WALKWAY_RIGHT_W                            # 245
+    nf_len = (PROC_TRAY_X_L + PROC_TRAY_W) - (WALKWAY_LEFT_X + WALKWAY_W)   # 4049
+    lr_len = (WALKWAY_FAR_YD + WALKWAY_W) - WALKWAY_NEAR_YD                 # 2362
+    pitch = WALKWAY_GRATE_CLIP_PITCH               # 610
+    GRP_MAX = 3048                                 # 10 ft molded panel length
+    slit_c = PH_X - (WALKWAY_LEFT_X + WALKWAY_W)   # slit X within the near/far piece
+    lw_l, lw_r = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R             # punch-out 800-1560
+    lw_w = WALKWAY_LEFT_WIDE_W                      # 600
+    mn0, mnd, mnw = WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY  # 1912/100/150
+    nw_l, nw_r = WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R               # 1165-3193
+
+    fig, ax = plt.subplots(figsize=(18, 11))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-500, 4400); ax.set_ylim(-700, 3800)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.text(1950, 3720, "GRATE CUT-PLAN — 4 molded-FRP sections (nesting / fabricator drawing)",
+            ha="center", va="bottom", fontsize=10, color=C_OUT, fontweight="bold", **FONT)
+
+    def clips(x0, x1, y, n_edge=2, ysp=None):
+        """Tick the clip positions along a bearing edge from x0..x1 at `pitch`, + the two ends."""
+        xs = list(np.arange(x0, x1 + 1, pitch))
+        if xs[-1] < x1 - 30:
+            xs.append(x1)
+        for x in xs:
+            ax.plot([x], [y], marker="s", ms=3.4, color=C_CLIP, zorder=9)
+        return len(xs)
+
+    rows = []  # (y_base, width, length, label, feature_fn)
+    y = 2850
+    # ── LEFT piece (2362 × 300, punch-out to 600 over Yd800-1560, muslin notch) ──
+    ax.add_patch(Rectangle((0, y), lr_len, W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
+    ax.add_patch(Rectangle((lw_l, y + W), lw_r - lw_l, lw_w - W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))  # punch-out
+    ax.text(lw_l + (lw_r - lw_l) / 2, y + W + (lw_w - W) / 2, "DRUM-EXIT\nPUNCH-OUT\n600 deep",
+            ha="center", va="center", fontsize=6, color="#206020", fontweight="bold", **FONT, zorder=7)
+    ax.add_patch(Rectangle((mn0, y), mnw, mnd, fc="#FFFFFF", ec=C_CUT, lw=1.1, ls=(0, (3, 2)), zorder=6))  # muslin notch
+    ax.text(0, y + lw_w + 35, "LEFT WALKWAY GRATE (removable lift-out) — 1 pc, no clips (gravity)",
+            ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
+    draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    ax.text(mn0 + mnw + 20, y + mnd / 2, f"MUSLIN NOTCH {mnd}×{mnw}", ha="left", va="center",
+            fontsize=5.5, color=C_CUT, **FONT)
+
+    # ── RIGHT piece (2362 × 245, muslin notch) ──
+    y = 2250
+    ax.add_patch(Rectangle((0, y), lr_len, RW, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
+    ax.add_patch(Rectangle((mn0, y), mnw, mnd, fc="#FFFFFF", ec=C_CUT, lw=1.1, ls=(0, (3, 2)), zorder=6))
+    nc = clips(0, lr_len, y - 8) + clips(0, lr_len, y + RW + 8)
+    ax.text(0, y + RW + 55, f"RIGHT WALKWAY GRATE (cantilever) — 1 pc · {nc} clips (WF5)",
+            ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
+    draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + RW, f"{RW}mm", offset=8, fs=6, right=False, font=FONT)
+
+    # ── NEAR piece (4049 × 300, widened to 500 over X1165-3193, spray slit, GRP seam) ──
+    y = 1350
+    xoff_nw_l = nw_l - (WALKWAY_LEFT_X + WALKWAY_W)   # widened region within the piece
+    xoff_nw_r = nw_r - (WALKWAY_LEFT_X + WALKWAY_W)
+    ax.add_patch(Rectangle((0, y), nf_len, W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
+    ax.add_patch(Rectangle((xoff_nw_l, y + W), xoff_nw_r - xoff_nw_l, WW - W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
+    ax.text((xoff_nw_l + xoff_nw_r) / 2, y + W + (WW - W) / 2, "BUMP-OUT to 500 (EP/battery)",
+            ha="center", va="center", fontsize=6, color="#206020", fontweight="bold", **FONT, zorder=7)
+    ax.add_patch(Rectangle((slit_c - SPRAY_BAR_SLIT_W / 2, y), SPRAY_BAR_SLIT_W, W, fc="#FFFFFF", ec=C_CUT, lw=1.1, zorder=6))
+    ax.plot([GRP_MAX, GRP_MAX], [y - 20, y + W + 20], color="#A040A0", lw=1.6, ls=(0, (5, 3)), zorder=8)
+    ax.text(GRP_MAX, y - 34, f"GRP SEAM\n(3048 panel)", ha="center", va="top", fontsize=5.5, color="#A040A0", **FONT)
+    nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
+    ax.text(0, y + W + 260, f"NEAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
+            ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
+    draw_dim_h(ax, 0, nf_len, y - 90, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    ax.text(slit_c, y + W + 20, f"SLIT @ X{PH_X}", ha="center", va="bottom", fontsize=5.5, color=C_CUT, **FONT)
+
+    # ── FAR piece (4049 × 300, spray slit, seam) ──
+    y = 650
+    ax.add_patch(Rectangle((0, y), nf_len, W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
+    ax.add_patch(Rectangle((slit_c - SPRAY_BAR_SLIT_W / 2, y), SPRAY_BAR_SLIT_W, W, fc="#FFFFFF", ec=C_CUT, lw=1.1, zorder=6))
+    ax.plot([GRP_MAX, GRP_MAX], [y - 20, y + W + 20], color="#A040A0", lw=1.6, ls=(0, (5, 3)), zorder=8)
+    nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
+    ax.text(0, y + W + 55, f"FAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
+            ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
+    draw_dim_h(ax, 0, nf_len, y - 60, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+
+    # ── Notes / legend ──
+    notes = [
+        "GRATE CUT-PLAN NOTES:",
+        "1. Material: 1\" (25mm) molded GRP, vinyl-ester, grit top (McNichols MS-S-100); ships 3'×10' (914×3048mm).",
+        "2. Near/far runs are 4,049mm > the 3,048 panel, so each splices at ONE seam (place clear of the bump-out/slit).",
+        f"3. HOLD-DOWN CLIPS (WF5): 316 SS M-clips at {pitch}mm ({int(pitch/25.4+0.5)}\") along both bearing edges + one at each corner (■).",
+        "4. LEFT walkway lifts out by gravity — NO clips (removed before panel transport).",
+        "5. Field-seal all cut edges (epoxy kit); cut features: spray-bar slits (near+far), drum-exit punch-out (left),",
+        "   near bump-out, muslin notches (left+right). All dims from tbs_constants — see report §8 + §10.4.",
+    ]
+    ax.plot([-380], [460], marker="s", ms=3.4, color=C_CLIP)
+    ax.text(-350, 460, "= FRP hold-down clip (WF5)", ha="left", va="center", fontsize=6.5, color=C_CLIP, **FONT)
+    draw_notes(ax, notes, -450, 360, spacing=58, fs=7, width=4600, font=FONT)
+
+    title_block(ax, "SHEET 10 OF 10", drawing_title="PERIMETER WALKWAY",
+                subtitle="GRATE CUT-PLAN — 4 GRP SECTIONS (nesting) · CLIPS AT 610mm")
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet10.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet10.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2682,4 +2794,5 @@ if __name__ == "__main__":
     sheet7()  # widened bracket → sheet7.png
     sheet8()  # width transition → sheet8.png
     sheet9()  # drum-exit punch-out support → sheet9.png
+    sheet10()  # grate cut-plan (GRP nesting) → sheet10.png
     print("Done.")

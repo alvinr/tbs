@@ -172,6 +172,8 @@
 
 ![TBS-001 Walkway — Sheet 9: Near-Walkway Bump-Out (Pinhole Wall)](assets/walkway-sheet9.png)
 
+![TBS-001 Walkway — Sheet 10: Grate Cut-Plan (GRP Nesting)](assets/walkway-sheet10.png)
+
 ---
 
 ## 14. Plumbing Panel & Plumbing

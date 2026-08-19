@@ -43,11 +43,11 @@ Capital systems ranked by mid cost:
 <!-- BEGIN costing:ca-ranking -->
 | System | Mid | % of capital | Notes |
 |---|--:|--:|---|
-| **Processing water system** | $7,353 | 26% | Tray (304 SS) + IBC frame dominate |
+| **Processing water system** | $7,478 | 27% | Tray (304 SS) + IBC frame dominate |
 | **Film-plane mechanism** | $4,470 | 16% | Carriages, Option-A 304 cross-slides, muslin spring clips, wall-seat saddles |
 | **Power & electrical** | $3,464 | 12% | Battery + solar + distribution + protection |
 | **Container + delivery** | $3,300 | 12% | Grade-dependent (CW vs WWT) |
-| **Perimeter walkway** | $2,623 | 9% | GRP grating + steel cantilevers |
+| **Perimeter walkway** | $2,498 | 9% | GRP grating + steel cantilevers |
 | **Light lock** | $2,280 | 8% | Plastic-skin custom fabrication |
 | **Swing pivot** | $1,395 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
 | **Hinged panel structure** | $1,382 | 5% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
@@ -57,7 +57,7 @@ Capital systems ranked by mid cost:
 | **Optics — pinhole** | $155 | 0.6% | Trivial (it is a pinhole) |
 <!-- END costing:ca-ranking -->
 
-The **water system is <!-- BEGIN costing:ca-water-pct -->26<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
+The **water system is <!-- BEGIN costing:ca-water-pct -->27<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
 single biggest line** (<!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high -->) — the same item that topped the weight study.
 
 ---

@@ -24,7 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Walkway blueprint — Phase D (in progress): member cut list + plate schedule (branch `walkway-bp`).**
+- **Walkway blueprint — Phase E: BOM reconciliation + close (branch `walkway-bp`).** Moved the IBC-owned
+  center-arm + J6 parts (2 solid-bar arms, end/backing plates, crush sleeves, M12×100 bolts, half-lap screws)
+  from the **walkway** parts system to **ibc-frame**, per the ownership boundary — **$116/$125/$135** shifts
+  from walkway (§6a now $2,079/$2,498/$2,941) to the IBC frame (§5 now $6,841/$7,478/$8,126); the grand total
+  is unchanged ($26,793/$31,314/$37,907). Cascaded through `parts.py`/`costing.py`/master-shopping-list/
+  cost-breakdown (both reconciliation gates green). **The walkway blueprint (Phases 0–E) is complete.**
+- **Walkway blueprint — Phase D: member cut list + plate schedule (branch `walkway-bp`).**
   Added a **member cut list** (every steel member's stock section + length + qty, computed from
   `tbs_constants.py`, with a net stock linear-feet summary: 2×1 tube ~31 ft, 3×1 ~8 ft, 4×1 ~6 ft, 2×2
   ~2 ft) and a **plate fabrication schedule** (foot / reinforcing / corner / cleat / transition plates with

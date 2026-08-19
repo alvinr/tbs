@@ -989,7 +989,7 @@ PARTS: list[Part] = [
          "walkway", 1, "lot", 125, 153, "MetalsDepot", "Metal Supermarkets",
          spec="2×1×0.120in steel tube — 2 long beams ({{fact:container_width_mm}}mm) + 2 end beams (~245mm, the 245mm right deck) that make the closed rectangle, ~5.2 m (17.1 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07."),
     Part("walkway-cantilever-arms", "Right walkway center cantilever arms (solid bar)", "steel-structural",
-         "walkway", 2, "ea", 45.66, 45.66, "Metal Supermarkets",
+         "ibc-frame", 2, "ea", 45.66, 45.66, "Metal Supermarkets",   # IBC-owned (off the IBC uprights) — reconciled from 'walkway' 2026-08-19
          spec="SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces."),
     Part("walkway-right-cleats", "Wall cleat (left corners)", "steel-structural",
          "walkway", 2, "ea", 10, 17.5, "Local fab", spec="8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall"),
@@ -1001,16 +1001,16 @@ PARTS: list[Part] = [
          url="https://www.mcmaster.com/91280A732/",
          spec="Right-walkway wall cleats + combined corner plates, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. (The 2 center arms no longer use these — they bolt via the J6 end-plate, see bolt-m12x100.) $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm."),
     Part("bolt-m12x100", "M12×100 hex through-bolt, Grade 8.8 zinc", "fasteners-hardware",
-         "walkway", 4, "ea", 1.9, 2.4, "McMaster-Carr",
+         "ibc-frame", 4, "ea", 1.9, 2.4, "McMaster-Carr",   # J6 through-bolt — IBC-owned, reconciled from 'walkway' 2026-08-19
          spec="J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate: BEARING-TYPE, both bolts ABOVE the arm (30mm apart) as a tension group with the plate bearing compression at its base — clears the welded arm + the corridor bottom rail; the central column keeps max edge distance on both the plate and the post. Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab."),
     Part("walkway-arm-endplates", "Walkway-arm end + backing plates (J6)", "steel-structural",
-         "walkway", 4, "ea", 3, 6, "Local fab",
+         "ibc-frame", 4, "ea", 3, 6, "Local fab",   # J6 plates — IBC-owned, reconciled from 'walkway' 2026-08-19
          spec="65×155×8mm mild-steel plate (arm 50.8 wide + weld toe; 155 tall so the upper bolt keeps ≥1.5·D edge to the plate top), 2× Ø13 for M12 in a central column, both above the arm at 30mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate."),
     Part("walkway-arm-sleeves", "Walkway-arm J6 crush sleeves", "steel-structural",
-         "walkway", 4, "ea", 0.75, 1.5, "Local fab",
+         "ibc-frame", 4, "ea", 0.75, 1.5, "Local fab",   # J6 sleeves — IBC-owned, reconciled from 'walkway' 2026-08-19
          spec="Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per J6 through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut."),
     Part("walkway-arm-holddown", "Half-lap hold-down screws (#14 TEK + washer)", "fasteners-hardware",
-         "walkway", 4, "ea", 0.5, 1.0, "Bridge Fasteners",
+         "ibc-frame", 4, "ea", 0.5, 1.0, "Bridge Fasteners",   # arm half-lap fixing — IBC-owned, reconciled from 'walkway' 2026-08-19
          spec="1× #14 self-drilling TEK screw + washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). 410 SS self-driller, same family as the J8/J9 bracket screws."),
     Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
          "walkway", 24, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut — M12×70 right-walkway bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),

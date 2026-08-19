@@ -1014,6 +1014,60 @@ WALKWAY_MUSLIN_NOTCH_L_X1 = WALKWAY_LEFT_X + WALKWAY_W                          
 WALKWAY_MUSLIN_NOTCH_L_X0 = WALKWAY_MUSLIN_NOTCH_L_X1 - WALKWAY_MUSLIN_NOTCH_DX     # 370 — left notch cut in from X470
 WALKWAY_MUSLIN_NOTCH_R_X0 = WALKWAY_RIGHT_X                                        # 4329 — right walkway INBOARD (tray) edge
 WALKWAY_MUSLIN_NOTCH_R_X1 = WALKWAY_MUSLIN_NOTCH_R_X0 + WALKWAY_MUSLIN_NOTCH_DX     # 4429 — right notch cut in from X4329
+
+# ── Right walkway — CANTILEVER-RECTANGLE support (rev12; replaces the ceiling hangers) ──
+# A closed rectangle (2 long beams + 2 end beams) under the deck, supported at mid-span by 2
+# CENTER cantilever arms off the IBC corridor uprights (half-lapped where the long beams cross).
+# LEFT corners on wall cleats; RIGHT corners on a COMBINED plate shared with the bottom film
+# rail.  Single-sourced here so the 3D builders (overview / walkway / corridor-water) AND the 2D
+# fab drawings dimension the right walkway from ONE place (promoted from generate_sketchup_model.py,
+# Phase 1, 2026-08-18).
+RWK_X_L = WALKWAY_RIGHT_X                              # 4329 — deck left edge
+RWK_X_R = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W            # 4574 — deck right edge (= WALKWAY_RIGHT_X_R, lands on the combined-plate seat; F1-shortened deck = 245mm)
+RWK_GRATE_Z = WALKWAY_H - WALKWAY_GRATE_T              # 115 — grate bottom
+RWK_ARM_BOT, RWK_ARM_TOP = LEFT_WK_CANT_ARM_Z0, RWK_GRATE_Z   # arm underside Z89.6 (matches the LEFT arm; single-sourced) — 11.6mm over the full-width 1½ spray beam
+RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 25.4 (2×1in section, 1in deep — #26)
+RWK_ARM_W = 50.8                                       # 2in — arm width in Yd (2×1in section)
+# Arm = SOLID 2×1 flat bar (a notched partial section must be solid to be strong — a notched HOLLOW
+# tube opens into a weak channel; the un-notched LEFT cantilevers stay tube). Half-lap split REBALANCED
+# to the moment: DEEP arm notch at the tip (low moment) and SHALLOW at the post end (high moment → the
+# OUTER beam takes the deep notch). Sized in ibc_frame_load.arm_notch_check().
+RWK_HL_TIP  = round(RWK_ARM_BOT + 5.4, 1)             # 95.0 — TIP crossing split: arm keeps 5.4 (M≈30 Nm); inner beam keeps 20
+RWK_HL_POST = round(RWK_ARM_BOT + 16.0, 1)           # 105.6 — POST crossing split: arm keeps 16 (M≈334 Nm); outer beam notched to 9.4
+RWK_HL = RWK_HL_TIP                                    # legacy alias / default split
+RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×1in section)
+RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
+RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
+RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
+RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
+# J6 BEARING-TYPE end-plate.  BOTH M12 sit ABOVE the arm weld toe (Z120) as a tension bolt group; the taller
+# plate bears compression at the bottom against the upright.  This clears the 3-way corner congestion — the
+# corridor bottom frame X-rail (Z12–63) runs below with NO bolt near it, and neither bolt fouls the welded
+# arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is
+# appropriate (Alvin 2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
+RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
+RWK_J6_EP_H    = 155.0                                       # end-plate height: top (Z192) clears the upper bolt (Z170) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
+# Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
+# the beam into the corridor.  The carriage crown (Z66) to beam soffit (Z80) gap is too tight for the pipe to
+# pass under, so the beam's top web is slotted instead (Z92-115), leaving the Z80-92 bottom web intact.  These
+# Yds are the single source the corridor pipe routing (cp.ribbon_run / the sump line) reads back for its
+# crossing Yd, so the notches and the pipes can't drift apart.
+RWK_RIBBON_NOTCH_YDS = [1110, 1132, 1194, 1241]        # lanes 0,1,2,3 corridor-crossing Yd (index-matched to cp.RIBBON_LANE_X)
+RWK_RIBBON_NOTCH_W   = 34                              # Yd width per notch (pipe OD 21 + clearance)
+RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — notch floor, 2mm below the flush pipe soffit (Z94)
+# Inner long beam is CRANKED outboard around the muslin-drop rod slot: the rigid muslin batten drops
+# straight down at the tray edge (X=RWK_X_L), which sits over the inner beam — so over the notch Yd the
+# beam is jogged outboard by the full notch depth (its inboard face moves R_X0→R_X1) with angled ramps,
+# vacating the entire notch footprint for the rod while the beam stays ONE continuous (uncut) member.
+# Right walkway only — the left notch falls between floor-leg brackets, no beam under it. Tied to the
+# muslin-notch constants so the crank can't drift from the notch it clears.
+RWK_CRANK_N0   = WALKWAY_MUSLIN_NOTCH_YD0                              # 1912 — notch Yd start
+RWK_CRANK_N1   = WALKWAY_MUSLIN_NOTCH_YD0 + WALKWAY_MUSLIN_NOTCH_DY    # 2062 — notch Yd end
+RWK_CRANK_DX   = WALKWAY_MUSLIN_NOTCH_R_X1 - WALKWAY_MUSLIN_NOTCH_R_X0 # 100 — jog = notch depth (clears the full notch)
+RWK_CRANK_RAMP = 100                                                  # angled ramp Yd length each side
+RWK_CRANK_Y0   = RWK_CRANK_N0 - RWK_CRANK_RAMP                        # 1812 — ramp-out start
+RWK_CRANK_Y1   = RWK_CRANK_N1 + RWK_CRANK_RAMP                        # 2162 — ramp-in end
+
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 470mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4329mm

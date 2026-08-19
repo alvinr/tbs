@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway F1 → water re-route (branch `walkway-bp`).** Shortening the right walkway (F1) moved the outer
+  long beam inboard into the under-walkway pipe channel. Fixed the two clashes it caused: **#1** the 4 ribbon
+  lanes (`RIBBON_LANE_X`) were hardcoded for the old wider channel — now **derived** from the inner-outboard..
+  outer-inboard beam gap so they can't drift again; **#2** the near-corner SV-01/DV-02 risers were speared by
+  the end-beam butt-line inset — the **near RWk end beam is un-inset to Yd0** to clear them. (Two pre-existing
+  under-corridor clashes — recycle×J6-plate, lines×IBC-frame-rail — are logged in TODO, not from this work.)
 - **Walkway blueprint — Phase 0 geometry (branch `walkway-bp`, focus model banked).** Right-corner + support
   rework on `walkway.skp`: right walkway shortened to land on the shared corner plate (245mm deck, `WALKWAY_RIGHT_W`
   decoupled from the tray module); the combined "shared plate" reworked to carry the film rail + the wall-side

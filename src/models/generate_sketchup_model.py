@@ -976,10 +976,12 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     notch_ranges = [(cy - RWK_RIBBON_NOTCH_W / 2, RWK_RIBBON_NOTCH_W) for cy in RWK_RIBBON_NOTCH_YDS]
     parts += _rwk_inner_beam_cranked(lx, arm_ranges, y_inset=8)   # inner beam — CRANKED around the muslin slot; ends BUTT the cleat plates (Yd8..C_WID-8)
     parts += _rwk_long_beam(rx, arm_ranges, notch_ranges, split=RWK_HL_POST, y0=10, y1=C_WID - 10)   # outer beam — DEEP half-lap notch + pipe notches; ends BUTT the combined plates (Yd10..C_WID-10)
-    for ey in (10, C_WID - 10 - RWK_BEARER_W):
+    for ey in (0, C_WID - 10 - RWK_BEARER_W):
         # end beam BUTTS between the two long beams (X lx+W .. rx) instead of overlapping them at the
         # corners — the closed rectangle is welded, but the weld is not modeled, so a clean butt reads
         # as two distinct members meeting rather than one fused corner (check_interference.py --solids).
+        # NEAR end beam kept at Yd0 (NOT inset to the plate face) so it clears the SV-01/DV-02 near-corner
+        # ribbon risers (the Yd10 inset speared them — water F1 fix #2 / option A, Alvin 2026-08-18).
         parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx + RWK_BEARER_W, ey, RWK_BEARER_Z0, rx - (lx + RWK_BEARER_W), RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
     parts += ibc_cantilever_arms()
     for wall_yd, din, tag in ((0, 1, "near"), (C_WID, -1, "far")):

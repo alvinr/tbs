@@ -484,7 +484,7 @@ free-ended bearer angles it replaces, so the deck barely bounces.
 
 ---
 
-## 10. Fastener & Weld Schedules
+## 10. Fabrication Schedules
 
 Walkway-scoped marks (**WF#** fasteners, **WW#** welds) so they don't collide with the IBC-frame
 joint schedule (J1–J9). The center-arm end-plate bolts and the half-lap hold-down screws belong to
@@ -560,6 +560,48 @@ tolerances because a fit or a clearance depends on them:
 <!-- END load:tolerances -->
 
 A **DATUMS & TOLERANCES** callout carrying this scheme lands on the Sheet 1 plan.
+
+### 10.4 Member Cut List
+
+Every steel member computed from `tbs_constants.py` (so the lengths can't drift), with a net stock
+linear-feet summary to order from — add kerf/handling waste at the shop. The two IBC-post center arms
+are in the **IBC-frame** cut list, not here.
+
+<!-- BEGIN load:cutlist -->
+| Member | Stock | Length (mm) | Qty |
+|--------|-------|-------------|-----|
+| Near/far bracket arm — standard | 2×1×0.120in tube | 300 | 13 |
+| Near/far bracket arm — widened | 3×1×0.120in tube | 500 | 5 |
+| Right-rectangle long beam (inner cranked + outer) | 2×1×0.120in tube | 2362 | 2 |
+| Right-rectangle end beam | 2×1×0.120in tube | 143 | 2 |
+| Floor-leg post | 2×2×0.120in SHS | 115 | 5 |
+| Floor-leg arm — standard | 2×1×0.120in tube | 305 | 2 |
+| Floor-leg arm — drum-exit punch-out | 4×1×0.120in tube | 605 | 3 |
+| **Stock summary (net, add kerf/waste)** | | | |
+| 2×1×0.120in tube | — | 9520 = 31.2 ft | — |
+| 3×1×0.120in tube | — | 2500 = 8.2 ft | — |
+| 4×1×0.120in tube | — | 1815 = 6.0 ft | — |
+| 2×2×0.120in SHS | — | 575 = 1.9 ft | — |
+| *IBC-post center arms (×2, solid 2×1 bar)* | | | *IBC-frame cut list* |
+<!-- END load:cutlist -->
+
+### 10.5 Plate Fabrication Schedule
+
+Flat-plate parts with their hole sizes and positions (the bolt patterns are referenced to the datums of
+§10.3). The J6 arm end/backing plates are on the **IBC-frame** plate schedule.
+
+<!-- BEGIN load:plates -->
+| Plate | Blank (mm) | Thk (mm) | Holes | Positions / PCD | Qty |
+|-------|-----------|----------|-------|-----------------|-----|
+| Foot plate | 165×60 | 8 | 4× Ø5.5 (#14) | X +20/+60 from left edge × Yd ±18 | 5 |
+| Reinforcing plate — std | 100×180 | 6 | 3× Ø13 (M12) | ±27 X @ Z42; 0 @ Z155 (triangular) | 13 |
+| Reinforcing plate — widened | 120×200 | 6 | 4× Ø13 (M12) | ±32 X @ Z35 & Z155 (rectangular) | 5 |
+| Bracket vertical leg — std / widened | 100×180 / 120×200 | 8 / 10 | matches reinf plate | same bolt pattern; arm + gusset welded on | 13 / 5 |
+| Combined corner plate | 150×~271 | 10 | 4× Ø13 corner | shared with the BR film rail (fp_combined_corner_plate) | 2 |
+| Wall cleat (back + ext + shelf) | 90×(bolt span) | 8 | 2× Ø13 horizontal | below-shelf + above-beam, clear of the beam edge | 2 |
+| Transition bearing plate | 40×500 | 5 | — | welded to the arm top at each 300↔500 width step | 2 |
+| *J6 arm end + backing plates (×4)* | 65×155 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |
+<!-- END load:plates -->
 
 ---
 

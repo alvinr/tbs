@@ -165,11 +165,11 @@ they can't drift.
 
 ## Phase C — Datum + tolerance scheme
 
-- [ ] **Datums:** A = floor plane (foot undersides / container floor); B = pinhole + film-plane wall
+- [x] **Datums:** A = floor plane (foot undersides / container floor); B = pinhole + film-plane wall
   faces (the two long walls the brackets bolt to); C = rail datum X260/X4649 (film-plane left/right).
-- [ ] **Functional tolerances:** deck level/coplanarity, bracket arm reach, wall-bolt PCDs, foot-anchor
+- [x] **Functional tolerances:** deck level/coplanarity, bracket arm reach, wall-bolt PCDs, foot-anchor
   PCD, grate cut/slit/notch positions, corner-plate seat Z. General = ISO 13920 Class B; welds = AWS D1.1.
-- [ ] Report § + a **DATUMS & TOLERANCES** callout block on the plan sheet.
+- [x] Report § + a **DATUMS & TOLERANCES** callout block on the plan sheet.
 
 ## Phase D — Fab-detail sheets (extend `generate_walkway_diagram.py`)
 

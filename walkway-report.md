@@ -527,6 +527,40 @@ flat washer each end, a plain nut, and a split-lock washer. The floor-leg #14 se
 to seat (no torque spec — thread-forming). The grating hold-down clip pitch is fixed in Phase D against
 the McNichols clip datasheet.
 
+### 10.3 Datums & Tolerances
+
+Three datums register the walkway to the container **and** the film plane, so it lands in the same frame
+as the subsystems it interfaces (the traveling spray bar, the film-plane rail):
+
+<!-- BEGIN load:datums -->
+| Datum | Definition | References |
+|-------|-----------|------------|
+| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z140, arm top Z115, bolt Z42/Z155, beam soffit Z89.6 |
+| **B** | The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd2362) interior faces the brackets bolt to | all Yd bracket/deck positions, bracket spacing 457 |
+| **C** | Rail datum — film-plane rail X260 (left) / X4649 (right) | the right-walkway outer edge (X4574) + combined corner plate register to C (shared with the film plane) |
+<!-- END load:datums -->
+
+General weldment tolerance is [**ISO 13920**](https://www.iso.org/standard/23282.html) **Class B**
+(medium — appropriate for a bolted-and-welded steel walkway); welds are qualified to
+[**AWS D1.1**](https://www.aws.org/standards/). The following features carry tighter **functional**
+tolerances because a fit or a clearance depends on them:
+
+<!-- BEGIN load:tolerances -->
+| Feature | Datum | Tolerance | Why |
+|---------|-------|-----------|-----|
+| Deck coplanarity — grate-bearing tops, all 4 sections | A | ±2 mm | level walking surface |
+| Bracket arm reach (tip X) | B | ±2 mm | grate-edge bearing only |
+| Wall-bolt pattern (±27/±32 X, Z42/Z155) | B | ±0.5 mm | must align reinf-plate + wall holes |
+| Foot-anchor pattern (X +20/+60, ±18 Yd) | A | ±1 mm | self-drillers are forgiving |
+| Spray-bar slit position (X2454) | C | ±2 mm | align to the traveling spray bar |
+| Muslin notch / drum-exit punch-out position | B/C | ±3 mm | clearance features |
+| Combined corner-plate seat Z (walkway beam + film rail) | A+C | ±1 mm | shared level interface with the film plane |
+| Rectangle beam soffit Z89.6 (spray-bar clearance) | A | +2 / −0 mm | must NOT drop below the spray-bar clearance |
+| *General (all else)* | — | **ISO 13920 Class B** | weldment linear/angular; welds per **AWS D1.1** |
+<!-- END load:tolerances -->
+
+A **DATUMS & TOLERANCES** callout carrying this scheme lands on the Sheet 1 plan.
+
 ---
 
 ## 11. Parts List

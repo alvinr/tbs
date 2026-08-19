@@ -2718,7 +2718,12 @@ def sheet10():
             ax.plot([x], [y], marker="s", ms=3.4, color=C_CLIP, zorder=9)
         return len(xs)
 
-    rows = []  # (y_base, width, length, label, feature_fn)
+    def chain(pts, y_dim):
+        """A dimension chain along a piece bottom locating every cutout edge (skips <25mm slivers)."""
+        for a, b in zip(sorted(set(pts))[:-1], sorted(set(pts))[1:]):
+            if b - a >= 25:
+                draw_dim_h(ax, a, b, y_dim, f"{b - a:.0f}", offset=3, fs=4.5, above=False, font=FONT)
+
     y = 2850
     # ── LEFT piece (2362 × 300, punch-out to 600 over Yd800-1560, muslin notch) ──
     ax.add_patch(Rectangle((0, y), lr_len, W, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
@@ -2730,8 +2735,13 @@ def sheet10():
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
     draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    # cutout dims — punch-out (width above, 600 depth on the right) + muslin notch depth + position chain
+    draw_dim_h(ax, lw_l, lw_r, y + lw_w + 12, f"{lw_r - lw_l:.0f}", offset=4, fs=5.5, font=FONT)
+    draw_dim_v(ax, lw_r + 58, y, y + lw_w, f"{lw_w:.0f}", offset=5, fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, mn0 - 26, y, y + mnd, f"{mnd:.0f}", offset=4, fs=5, right=False, font=FONT)
     ax.text(mn0 + mnw + 20, y + mnd / 2, f"MUSLIN NOTCH {mnd}×{mnw}", ha="left", va="center",
             fontsize=5.5, color=C_CUT, **FONT)
+    chain([0, lw_l, lw_r, mn0, mn0 + mnw, lr_len], y - 108)
 
     # ── RIGHT piece (2362 × 245, muslin notch) ──
     y = 2250
@@ -2742,6 +2752,11 @@ def sheet10():
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
     draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + RW, f"{RW}mm", offset=8, fs=6, right=False, font=FONT)
+    # muslin notch — depth + width + position chain
+    draw_dim_v(ax, mn0 - 26, y, y + mnd, f"{mnd:.0f}", offset=4, fs=5, right=False, font=FONT)
+    ax.text(mn0 + mnw + 20, y + mnd / 2, f"MUSLIN NOTCH {mnd}×{mnw}", ha="left", va="center",
+            fontsize=5.5, color=C_CUT, **FONT)
+    chain([0, mn0, mn0 + mnw, lr_len], y - 108)
 
     # ── NEAR piece (4049 × 300, widened to 500 over X1165-3193, spray slit, GRP seam) ──
     y = 1350
@@ -2759,6 +2774,10 @@ def sheet10():
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
     draw_dim_h(ax, 0, nf_len, y - 90, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    # cutout dims — bump-out (width above, 500 depth on the right) + position chain (incl. the 30 slit)
+    draw_dim_h(ax, xoff_nw_l, xoff_nw_r, y + WW + 12, f"{xoff_nw_r - xoff_nw_l:.0f}", offset=4, fs=5.5, font=FONT)
+    draw_dim_v(ax, xoff_nw_r + 58, y, y + WW, f"{WW}mm", offset=5, fs=5.5, right=True, font=FONT)
+    chain([0, xoff_nw_l, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, xoff_nw_r, GRP_MAX, nf_len], y - 138)
 
     # ── FAR piece (4049 × 300, spray slit, seam) ──
     y = 650
@@ -2770,6 +2789,7 @@ def sheet10():
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
     draw_dim_h(ax, 0, nf_len, y - 60, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    chain([0, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, GRP_MAX, nf_len], y - 108)
 
     # ── Notes / legend ──
     notes = [

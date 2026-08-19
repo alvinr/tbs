@@ -187,6 +187,7 @@ DIAG_IMAGE_FILES = [
     "walkway-sheet7.png",
     "walkway-sheet8.png",
     "walkway-sheet9.png",
+    "walkway-sheet10.png",
     "ibc-stacking-sheet1.png",
     "ibc-stacking-sheet2.png",
     "ibc-stacking-sheet3.png",

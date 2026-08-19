@@ -32,7 +32,11 @@ file** — a release must not ship without a changelog entry:
   (lint-gated). IBC-post center arms + J6 plates cross-referenced to the IBC-frame lists. §10 renamed
   "Fabrication Schedules". Landed the **WF#/WW# callouts** on the detail sheets (Sheet 2 std bracket,
   Sheet 7 widened, Sheet 6 floor-leg, Sheet 3 right cantilever) so every schedule mark appears on its
-  drawing. *(Remaining Phase D: grate cut-plan sheet + consolidated weld map.)*
+  drawing. Added a new **Sheet 10 — grate cut-plan** (the 4 GRP sections nested + dimensioned with spray
+  slits, drum-exit punch-out, near bump-out, muslin notches, GRP panel seams, and **hold-down-clip
+  positions** — fixing the deferred clip pitch at **610mm/24" + corners**, `WALKWAY_GRATE_CLIP_PITCH`),
+  registered in the gallery/publish/setup/deps + embedded in report §8. A weld-location map ties each
+  WW#/WF# mark to its sheet. **Phase D complete.**
 - **Walkway blueprint — Phase C: datum + tolerance scheme (branch `walkway-bp`).** Defined 3 datums —
   **A** floor plane (all Z), **B** the two long wall faces (all Yd), **C** the film-plane rail datum
   (X260/X4649, shared with the film plane so the right corner + combined plate register to it) — plus a

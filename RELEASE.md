@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase 1.2: wall-cantilever bracket detail blanks single-sourced (branch `walkway-bp`).**
+  The reinforcing-plate blanks (`WALKWAY_REINF_W/H/T` = 100/180/6 std + `_W_WIDE/_H_WIDE` = 120/220), gusset
+  reach (`WALKWAY_GUSSET_REACH` = 70), and wall-bolt edge distances (`WALKWAY_BRACKET_BOLT_DX` = 32,
+  `_BOLT_Z_LO` = 42 / `_LO_WIDE` = 35) were **duplicated literals** in both `generate_walkway_model.py` and
+  `generate_walkway_diagram.py`; promoted to `tbs_constants.py` so both dimension one source (models
+  byte-identical → no re-send; PNGs unchanged → values already agreed). Fixed a stale "±27mm" bolt-offset
+  comment in the diagram (the 3D builds ±32).
 - **Walkway blueprint — Phase 1.1: `RWK_*` promoted to `tbs_constants.py` (branch `walkway-bp`).** The
   right-walkway geometry family (26 constants: `RWK_X_L/R`, `RWK_ARM_*`, `RWK_BEARER_*`, `RWK_HL_*`,
   `RWK_X_UP`, `RWK_J6_*`, `RWK_RIBBON_NOTCH_*`, `RWK_CRANK_*`) moved out of `generate_sketchup_model.py`

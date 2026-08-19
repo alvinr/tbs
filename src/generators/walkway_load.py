@@ -310,6 +310,77 @@ def tolerances_md():
     return "\n".join(lines)
 
 
+# ── Phase D: member cut list + stock linear-feet summary ─────────────────────
+def _mm_ft(mm):
+    return f"{mm/304.8:.1f} ft"
+
+
+def cut_list_md():
+    arm_x0 = k.LEFT_WK_CANT_LEG_X + k.LEFT_WK_CANT_POST / 2
+    fl_std = round(k.LEFT_WK_CANT_STD_REACH - arm_x0)
+    fl_wide = round(k.LEFT_WK_CANT_WIDE_REACH - arm_x0)
+    end_beam = round(k.RWK_BEARER_XS[1] - (k.RWK_X_L + k.RWK_BEARER_W))
+    post_h = round(k.WALKWAY_H - k.WALKWAY_GRATE_T)   # ~115 floor→grate bottom
+    # (member, stock section, length mm, qty)
+    members = [
+        ("Near/far bracket arm — standard", "2×1×0.120in tube", k.WALKWAY_W, 13),
+        ("Near/far bracket arm — widened", "3×1×0.120in tube", k.WALKWAY_NEAR_WIDE_W, 5),
+        ("Right-rectangle long beam (inner cranked + outer)", "2×1×0.120in tube", k.C_WID, 2),
+        ("Right-rectangle end beam", "2×1×0.120in tube", end_beam, 2),
+        ("Floor-leg post", "2×2×0.120in SHS", post_h, 5),
+        ("Floor-leg arm — standard", "2×1×0.120in tube", fl_std, 2),
+        ("Floor-leg arm — drum-exit punch-out", "4×1×0.120in tube", fl_wide, 3),
+    ]
+    lines = ["| Member | Stock | Length (mm) | Qty |", "|--------|-------|-------------|-----|"]
+    for name, stock, ln, qty in members:
+        lines.append(f"| {name} | {stock} | {ln:.0f} | {qty} |")
+    # stock linear-feet (net; add cut/kerf waste at the shop)
+    tube_2x1 = 13 * k.WALKWAY_W + 2 * fl_std + 2 * k.C_WID + 2 * end_beam
+    tube_3x1 = 5 * k.WALKWAY_NEAR_WIDE_W
+    tube_4x1 = 3 * fl_wide
+    shs_2x2 = 5 * post_h
+    lines += [
+        "| **Stock summary (net, add kerf/waste)** | | | |",
+        f"| 2×1×0.120in tube | — | {tube_2x1:.0f} = {_mm_ft(tube_2x1)} | — |",
+        f"| 3×1×0.120in tube | — | {tube_3x1:.0f} = {_mm_ft(tube_3x1)} | — |",
+        f"| 4×1×0.120in tube | — | {tube_4x1:.0f} = {_mm_ft(tube_4x1)} | — |",
+        f"| 2×2×0.120in SHS | — | {shs_2x2:.0f} = {_mm_ft(shs_2x2)} | — |",
+    ]
+    lines.append("| *IBC-post center arms (×2, solid 2×1 bar)* | | | *IBC-frame cut list* |")
+    return "\n".join(lines)
+
+
+# ── Phase D: plate fabrication schedule (holes / PCD) ─────────────────────────
+def plate_schedule_md():
+    dx, dxw = k.WALKWAY_BRACKET_BOLT_DX, k.WALKWAY_BRACKET_BOLT_DX_WIDE
+    zlo, zlow, zhi = k.WALKWAY_BRACKET_BOLT_Z_LO, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE, k.WALKWAY_BRACKET_UPPER_BOLT_Z
+    fdx = k.LEFT_WK_CANT_FOOT_BOLT_DX
+    fdy = k.LEFT_WK_CANT_FOOT_BOLT_DY
+    fl, fw, ft = k.LEFT_WK_CANT_FOOT
+    rows = [
+        ("Foot plate", f"{fl:.0f}×{fw:.0f}", f"{ft:.0f}", "4× Ø5.5 (#14)",
+         f"X +{fdx[0]}/+{fdx[1]} from left edge × Yd ±{fdy}", "5"),
+        ("Reinforcing plate — std", f"{k.WALKWAY_REINF_W}×{k.WALKWAY_REINF_H}", f"{k.WALKWAY_REINF_T:.0f}", "3× Ø13 (M12)",
+         f"±{dx} X @ Z{zlo}; 0 @ Z{zhi} (triangular)", "13"),
+        ("Reinforcing plate — widened", f"{k.WALKWAY_REINF_W_WIDE}×{k.WALKWAY_REINF_H_WIDE}", f"{k.WALKWAY_REINF_T:.0f}", "4× Ø13 (M12)",
+         f"±{dxw} X @ Z{zlow} & Z{zhi} (rectangular)", "5"),
+        ("Bracket vertical leg — std / widened", f"{k.WALKWAY_REINF_W}×{k.WALKWAY_REINF_H} / {k.WALKWAY_REINF_W_WIDE}×{k.WALKWAY_REINF_H_WIDE}", "8 / 10", "matches reinf plate",
+         "same bolt pattern; arm + gusset welded on", "13 / 5"),
+        ("Combined corner plate", f"{k.FP_CORNER_SEAT_PLATE_W}×~271", f"{k.FP_CORNER_SEAT_PLATE_T + 2:.0f}", "4× Ø13 corner",
+         "shared with the BR film rail (fp_combined_corner_plate)", "2"),
+        ("Wall cleat (back + ext + shelf)", "90×(bolt span)", "8", "2× Ø13 horizontal",
+         "below-shelf + above-beam, clear of the beam edge", "2"),
+        ("Transition bearing plate", "40×500", "5", "—",
+         "welded to the arm top at each 300↔500 width step", "2"),
+    ]
+    lines = ["| Plate | Blank (mm) | Thk (mm) | Holes | Positions / PCD | Qty |",
+             "|-------|-----------|----------|-------|-----------------|-----|"]
+    for r in rows:
+        lines.append("| " + " | ".join(r) + " |")
+    lines.append("| *J6 arm end + backing plates (×4)* | 65×155 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |")
+    return "\n".join(lines)
+
+
 def weld_table_md():
     lines = ["| Mark | Weld | Leg | Basis / check |",
              "|------|------|-----|---------------|"]
@@ -328,6 +399,10 @@ def schedules_report():
     out.append("\n########## DATUMS + TOLERANCES (Phase C) ##########")
     out.append("  A = floor plane · B = wall faces · C = film-plane rail datum (X260/X4649)")
     out.append("  general = ISO 13920 Class B; welds = AWS D1.1; functional tolerances per feature (see report §10.3)")
+    out.append("\n########## MEMBER CUT LIST + STOCK SUMMARY (Phase D) ##########")
+    out.append("  " + cut_list_md().replace("\n", "\n  "))
+    out.append("\n########## PLATE FABRICATION SCHEDULE (Phase D) ##########")
+    out.append("  " + plate_schedule_md().replace("\n", "\n  "))
     return "\n".join(out)
 
 
@@ -369,6 +444,8 @@ _BLOCKS = {
     "load:welds": weld_table_md,
     "load:datums": datums_md,
     "load:tolerances": tolerances_md,
+    "load:cutlist": cut_list_md,
+    "load:plates": plate_schedule_md,
 }
 
 

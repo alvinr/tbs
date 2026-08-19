@@ -306,6 +306,14 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
   (Surfaced during the egress review that retired the swing-out floorplan sheet.)
+- [ ] **Water — PRE-EXISTING under-corridor plumbing clashes (surfaced during the walkway F1 water re-route,
+  Alvin 2026-08-18; NOT caused by the walkway work).** Two clash groups that predate F1 — the J6 plate (IBC
+  upright X4654), the IBC frame rail, and the corridor routing didn't move at F1: (1) **P-02→ACC-02 recycle ×
+  RWk J6 arm end-plate** — the recycle's corridor turn at Yd1110 (`RWK_RIBBON_NOTCH_YDS[0]`) clips the arm plate
+  at X4646-4654; (2) **several lines (blue trunk · DV-02 waste · P-02 recycle · SV-01) × the IBC corridor frame
+  rail** (X4663-4900, Yd1132-1279). Reroute/notch in a focused plumbing pass (plumbing skill). The F1-CAUSED
+  clashes are already fixed: #1 ribbon-lane×outer-beam (RIBBON_LANE_X derived from the channel), #2 end-beam×
+  near-corner-risers (near RWk end beam un-inset to Yd0).
 
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 

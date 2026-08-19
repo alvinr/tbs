@@ -306,6 +306,17 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
   (Surfaced during the egress review that retired the swing-out floorplan sheet.)
+- [ ] **Walkway blueprint Phase D — wall-cleat blank + grate-clip pitch (deferred from Phase 1.2, 2026-08-18).**
+  Two single-consumer detail dims left in the model for now (per the "leave detail dims" rule): (1) the
+  **RIGHT-walkway wall-cleat blank** (`_rwk_wall_cleat`: plate 90×8, shelf 90×55×10) — promote to
+  `WALKWAY_CLEAT_*` constants when its Phase D cut sheet is drawn (so 2D + 3D share); (2) the
+  **grate-clip pitch** — no value exists anywhere; fix it against the McNichols MS-S-100 FRP hold-down-clip
+  datasheet when the grate/clip fab-detail sheet is authored (spec placeholder was ~914mm/36in).
+- [ ] **IBC frame — joint-mark naming (J1–J9) revisit (Alvin 2026-08-18).** Alvin finds the bare `J#` joint
+  marks opaque / doesn't identify with them. Consider human-descriptive marks for the IBC connection
+  schedule — but it's cross-cutting (IBC report + drawings + parts + costing + master-shopping-list), so do
+  it as its OWN IBC-blueprint task, keeping the schedule internally consistent. See
+  [[feedback_joint_mark_must_label_diagram]].
 - [ ] **Water — PRE-EXISTING under-corridor plumbing clashes (surfaced during the walkway F1 water re-route,
   Alvin 2026-08-18; NOT caused by the walkway work).** Two clash groups that predate F1 — the J6 plate (IBC
   upright X4654), the IBC frame rail, and the corridor routing didn't move at F1: (1) **P-02→ACC-02 recycle ×

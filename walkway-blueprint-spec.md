@@ -96,17 +96,31 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
 
 ## Phase 1 — Reconcile + parametrize (so every drawn dimension is a constant)
 
-- [ ] **Promote model-local structural constants → `tbs_constants.py`.** The `RWK_*` family
-  (`RWK_X_L/X_R/X_UP`, `RWK_ARM_BOT/TOP`, `RWK_AH`, `RWK_ARM_W`, `RWK_BEARER_W`, `RWK_HL_TIP/POST`,
-  `RWK_CRANK_*`) currently lives in `generate_sketchup_model.py`, not the shared constants — so the 2D
-  generators can't reference them and would hardcode. Promote the ones a drawing dimensions.
-- [ ] **Add the un-parametrized blueprint dimensions as constants:** reinforcing-plate blanks
-  (100×180×6 std, 120×220×6 widened), gusset reach (70), wall-bolt PCDs + edge distances (std 2+1 at
-  ±27; widened 2+2 at ±32), foot-anchor PCD (new, from F3), arm end-plate blank (65×155×8) + its 2-hole
-  column, wall-cleat blank, transition bearing plate (40×500×5), grate clip pitch (~914). Design each,
-  then capture as a constant.
+- [x] **Promote model-local structural constants → `tbs_constants.py`.** DONE (Phase 1.1, commit
+  `a8dc8788`): the 26-constant `RWK_*` family moved out of `generate_sketchup_model.py` into the shared
+  constants (models byte-identical → no re-send). Repointing `generate_walkway_diagram.py` surfaced +
+  fixed real drift on **sheet 3** (right-walkway plan): beam section "40×40×3 SHS" → **2×1in** (50.8×25.4,
+  tube long/end + solid flat-bar arm), deck **300 → 245** (F1), outer/end-beam layout now model-accurate;
+  sheet 1 label reconciled.
+- [x] **Add the un-parametrized blueprint dimensions as constants.** DONE + scoped (Phase 1.2, commit
+  `c01542cd`):
+  - **Promoted** (were duplicated in the model + diagram): reinforcing-plate blanks (`WALKWAY_REINF_W/H/T`
+    100/180/6 std, `_W_WIDE/_H_WIDE` 120/220), gusset reach (`WALKWAY_GUSSET_REACH` 70), wall-bolt edge
+    distances (`WALKWAY_BRACKET_BOLT_DX` **32** — the built value; the spec's "±27" was a stale estimate,
+    `_BOLT_Z_LO` 42 / `_LO_WIDE` 35). Models byte-identical, PNGs unchanged.
+  - **Already done** (Phase 0): foot-anchor PCD (`LEFT_WK_CANT_FOOT_BOLT_DX/DY`).
+  - **Out of scope — IBC-frame-owned:** the arm end-plate blank (65×155×8) is the **J6** joint (walkway
+    arm → IBC upright), drawn on **IBC-frame Sheet 5**; the walkway blueprint cross-references it, does not
+    re-dimension it. (Height already single-sourced as `RWK_J6_EP_H`.)
+  - **Retired:** the "transition bearing plate (40×500×5)" no longer exists — the left edge beam + wall
+    seats were replaced by the floor-leg cantilevers.
+  - **Deferred to Phase D** (single-consumer detail dims → promote when their cut sheet is authored, per
+    the "leave detail dims" rule): the **wall-cleat blank** and the **grate-clip pitch** (fix against the
+    McNichols clip datasheet). Logged in TODO.
 - [ ] **Drift sweep** — stale literals in `walkway-report.md`, the two generators, and
   `component-dependency-map.md`; reconcile any residual "4734" RWK comments and pre-Phase-0 geometry.
+  Also confirm the walkway-report's **J6** mention points to IBC-frame Sheet 5 (a mark must resolve to a
+  labeled drawing).
 
 ## Phase A — Structural validation (`walkway_load.py`, analog of `ibc_frame_load.py`)
 

@@ -260,7 +260,7 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Floor-leg cantilever bracket (×5) | 2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + 2×1×0.120in (50.8×25.4mm) arm (25.4mm deep) + 128×60×8mm foot plate | 5 brackets (outside the tray) |
+| Floor-leg cantilever bracket (×5) | 2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + 2×1×0.120in (50.8×25.4mm) arm (25.4mm deep) + 165×60×8mm foot plate (inboard outrigger — the post sits on its outboard end, the plate reaches inboard so the 4 floor anchors clear the post footprint) | 5 brackets (outside the tray) |
 | Floor screws | 4× #14×2″ 410 SS self-drilling structural screws per foot plate (20 total) | Bite the plywood-over-steel container floor — wedge/concrete anchors don't hold there |
 | Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
 | Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
@@ -321,7 +321,7 @@ contact.
 | Component | Specification |
 |-----------|--------------|
 | Post | 2×2×0.120in steel SHS, ~115mm tall (floor to grate bottom), on bare floor at X=140mm |
-| Foot plate | 128×60×8mm steel plate, with **4× #14×2″ 410 SS self-drilling screws** into the plywood-over-steel container floor |
+| Foot plate | 165×60×8mm steel plate (inboard outrigger — F3), with **4× #14×2″ 410 SS self-drilling screws** into the plywood-over-steel container floor |
 | Arm | 2×1×0.120in (50.8×25.4mm) steel, reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
 | Overturning reaction | reacted by the foot-plate anchors; ~1kN footfall at the arm tip is the worst case |
 
@@ -480,7 +480,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 right-walkway bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 24 ea | McMaster-Carr | $6 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 right-walkway bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 96 ea | McMaster-Carr | $9 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked). | 24 ea | McMaster-Carr | $3 |
-| Floor-leg cantilever bracket (left walkway, ×5) | 2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate. #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote. | 5 ea | MetalsDepot / Local fab | $65–$105 |
+| Floor-leg cantilever bracket (left walkway, ×5) | 2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 165×60×8mm foot plate (F3: lengthened 128→165 so the 4 floor anchors clear the post footprint as an inboard outrigger). #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote. | 5 ea | MetalsDepot / Local fab | $65–$105 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 4 per foot plate (20 total). Self-drills the 6mm plate + 28mm plywood (structural bite in the ply — wedge/concrete anchors don't hold in a ply-over-steel container floor). Hex washer head bears on the plate. 410 SS. Simpson SDWS 316 (pre-drilled plate holes) if max corrosion is wanted. | 20 ea | Bridge Fasteners / ASMC | $7–$11 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
 | **Walkway total** | | | | **$2,195–$3,076** |

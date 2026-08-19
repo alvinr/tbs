@@ -1,5 +1,5 @@
-routing-sources-sha: 689eda96d2d0
-model=overview  pipes=511 solids=430  interferences=12
+routing-sources-sha: e49e4af10880
+model=overview  pipes=511 solids=586  interferences=12
   PIPE  SV-01 -> DV-01 (single filtered line)      (Pinhole-Wall Kit)
     x  FRAME      Frame rail (Yd)                         near (4665,1241,65)
   PIPE  SV-01 -> DV-01 (single filtered line) elbo (Pinhole-Wall Kit)

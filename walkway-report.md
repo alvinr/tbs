@@ -484,7 +484,52 @@ free-ended bearer angles it replaces, so the deck barely bounces.
 
 ---
 
-## 10. Parts List
+## 10. Fastener & Weld Schedules
+
+Walkway-scoped marks (**WF#** fasteners, **WW#** welds) so they don't collide with the IBC-frame
+joint schedule (J1–J9). The center-arm end-plate bolts and the half-lap hold-down screws belong to
+the **IBC-frame J6** schedule and are cross-referenced, not scheduled here. Governing weld throats are
+load-checked in `walkway_load.py`; the rest are [AWS D1.1](https://www.aws.org/standards/) minimum
+practical fillets for the plate thickness.
+
+### 10.1 Fastener Schedule
+
+<!-- BEGIN load:fasteners -->
+| Mark | Joint | Fastener | Grade | Qty | Torque | Washer | Locker |
+|------|-------|----------|-------|-----|--------|--------|--------|
+| WF1 | Standard bracket → wall rib | M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/) | Gr.8.8 zinc | 3/brkt × 13 = 39 | ~90 N·m | flat both ends | plain nut + split-lock |
+| WF2 | Widened bracket → wall rib | M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/) | Gr.8.8 zinc | 4/brkt × 5 = 20 | ~90 N·m | flat both ends | plain nut + split-lock |
+| WF3 | Right-walkway wall cleat + combined corner plate → wall | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 20 | ~90 N·m | flat both ends | plain nut + split-lock |
+| WF4 | Floor-leg foot plate → container floor | #14×2″ HWH self-driller | 410 SS | 4/foot × 5 = 20 | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
+| WF5 | Grating hold-down clip → bracket arm | M-type FRP grating clip + bolt | 316 SS | pitch TBD — Phase D (McNichols clip datasheet) | snug | — | — |
+| J6 (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |
+<!-- END load:fasteners -->
+
+### 10.2 Weld Schedule
+
+<!-- BEGIN load:welds -->
+| Mark | Weld | Leg | Basis / check |
+|------|------|-----|---------------|
+| WW1 | Std bracket 2×1 arm → 8mm leg (GOVERNING) | 5mm all-round | root M 400 N·m → 310 N/mm vs 1018 N/mm, SF 3.3 |
+| WW2 | Widened 3×1 arm → 10mm leg (GOVERNING) | 5mm all-round | root M 667 N·m → SF 3.0 |
+| WW3 | Gusset → leg + gusset → arm | 5mm | braces the arm root; AWS D1.1 min for 8/10mm plate |
+| WW4 | Reinforcing plate → exterior wall panel | 5mm stitched | bearing plate; nominal load, AWS D1.1 min |
+| WW5 | Rectangle long ↔ end-beam corners (right walkway) | 5mm | closed-frame corners; AWS D1.1 min (tube ≤6mm) |
+| WW6 | Floor-leg 4×1 arm → 2×2 post (GOVERNING) | 5mm all-round | root M 807 N·m → 313 N/mm vs 1018 N/mm, SF 3.3 |
+| WW7 | Floor-leg post → foot plate (GOVERNING) | 5mm all-round | base M 807 N·m → SF 3.3; also carries the 1334 N vertical in shear |
+| WW8 | Wall cleat — back-plate + shelf + upstand | 5mm | AWS D1.1 min; the long beam bears on the shelf, TEK-locked |
+| WW9 | Combined corner plate — beam seat + upstand | 5mm | AWS D1.1 min; shared with the BR film rail |
+| J6/W (IBC-owned) | Half-lap seat + arm end-plate welds | 5mm | IBC-frame schedule — cross-ref, not scheduled here |
+<!-- END load:welds -->
+
+All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame J3/J6 wall bolts) with a
+flat washer each end, a plain nut, and a split-lock washer. The floor-leg #14 self-drillers are driven
+to seat (no torque spec — thread-forming). The grating hold-down clip pitch is fixed in Phase D against
+the McNichols clip datasheet.
+
+---
+
+## 11. Parts List
 
 <!-- BEGIN parts:walkway -->
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -522,7 +567,7 @@ free-ended bearer angles it replaces, so the deck barely bounces.
 
 ---
 
-## 11. Maintenance
+## 12. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -539,7 +584,7 @@ free-ended bearer angles it replaces, so the deck barely bounces.
 
 ---
 
-## 12. Source References
+## 13. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
    Container rib spacing 457mm (18").

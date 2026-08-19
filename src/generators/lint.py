@@ -980,7 +980,7 @@ GATES = [
     ("fact placeholders (generated == doc)", gate_fact_blocks),
     ("energy doc-blocks (generated == doc)", gate_energy_blocks),
     ("weight doc-blocks (generated == doc)", gate_weight_blocks),
-    ("walkway §9 load table (generated == doc)", gate_walkway_load_blocks),
+    ("walkway load + fastener/weld blocks (generated == doc)", gate_walkway_load_blocks),
     ("dependency-map registry (generated == doc)", gate_depmap_blocks),
     ("parts doc-blocks (generated == doc)", gate_parts_blocks),
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),

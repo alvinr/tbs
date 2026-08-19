@@ -74,19 +74,19 @@ Resolve each in the generating Python (`src/models/*.py` + `tbs_constants.py`), 
 into the matching open doc, verify with `check_interference.py --solids` + read-only `eval_ruby`, then
 ALVIN saves + uploads. Re-send order **focus-model-first** (walkway before overview/construction).
 
-- [ ] **F1 — Shorten the right walkway.** It currently overruns into the film-plane bottom-rail
+- [x] **F1 — Shorten the right walkway.** It currently overruns into the film-plane bottom-rail
   support brackets. Pull the right deck / cantilever-rectangle right edge back so it stops clear of
   those brackets. Derive the new right edge from the film-plane bracket X; check IBC-valve/filter/pump
   reach-in access is preserved. (Alvin 2026-08-17.)
-- [ ] **F2 — One shared right-corner bracket.** At each near/far RIGHT corner the film-plane beam
+- [x] **F2 — One shared right-corner bracket.** At each near/far RIGHT corner the film-plane beam
   bracket and the walkway right-beam bracket read as two separate brackets — make the geometry read as
   **one** (the `fp_combined_corner_plate` already shares the seat). Cross-ref the film-plane blueprint.
   (Alvin 2026-08-17.)
-- [ ] **F3 — Relocate floor-leg foot anchors.** On `walkway-sheet6` View B the post is drawn welded
+- [x] **F3 — Relocate floor-leg foot anchors.** On `walkway-sheet6` View B the post is drawn welded
   **over** the 4 foot-plate anchor holes, so the screws can't be driven. Move the 4 anchors into the
   foot's outboard **outrigger** (X≈147–225, clear of the 50.8 post at X225–275 after the 2026-08-16
   foot-X0 derive fix), or otherwise clear the post footprint. Add a foot-anchor PCD constant.
-- [ ] **F4 — Resolve cantilever/bolt/grate clashes.** Two zones: (1) the **left lift-out** section —
+- [x] **F4 — Resolve cantilever/bolt/grate clashes.** Two zones: (1) the **left lift-out** section —
   cantilever arm / bolt / grate overlap; (2) the **far** section — same class of clash. Trace each in
   the model, resolve (shorten/reposition arm, move bolt, or trim grate), verify clean with
   `check_interference.py --solids`. Likely coupled to F1/F2.
@@ -129,21 +129,21 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
 New driftproof compute script → optional rendered `walkway-load-case.png`. Each element: IBC/OSHA
 design force → capacity → SF, authoritative voice, every capacity/coefficient cited.
 
-- [ ] **Grate span** — MS-S-100 molded FRP between bearers under 2.87 kPa uniform + 1.33 kN
+- [x] **Grate span** — MS-S-100 molded FRP between bearers under 2.87 kPa uniform + 1.33 kN
   concentrated; deflection + bearing.
-- [ ] **Standard wall gusset bracket** — 8 mm plate arm (300 mm cantilever) bending/deflection at the
+- [x] **Standard wall gusset bracket** — 8 mm plate arm (300 mm cantilever) bending/deflection at the
   arm tip; gusset.
-- [ ] **Widened wall gusset bracket** — 10 mm plate, 500 mm cantilever (governing wall bracket).
-- [ ] **Wall bolt group** — 3× (std) / 4× (widened) M12 in shear + **reinforcing-plate bearing /
+- [x] **Widened wall gusset bracket** — 10 mm plate, 500 mm cantilever (governing wall bracket).
+- [x] **Wall bolt group** — 3× (std) / 4× (widened) M12 in shear + **reinforcing-plate bearing /
   corrugated-wall pull-through** (ties to the parked 30 mm corrugation-depth procurement gate).
-- [ ] **Floor-leg cantilever** — worst = extended punch-out arm (X770 reach): 2×1 arm + 2×2 post
+- [x] **Floor-leg cantilever** — worst = extended punch-out arm (X770 reach): 2×1 arm + 2×2 post
   bending; **foot-anchor group** (4× #14×2 screws) shear + uplift into ply-over-steel.
-- [ ] **Right cantilever rectangle** — long/end/cranked-beam bending + rectangle deflection **assuming
+- [x] **Right cantilever rectangle** — long/end/cranked-beam bending + rectangle deflection **assuming
   the mid-span pickup** by the two IBC-post arms; half-lap notch net section at the crossings. The
   arm-root moment (≈0.35 kN·m vs ≈0.84 kN·m capacity per the
   [cantilever study](right-walkway-cantilever-study.md)) is the **IBC-frame** J6's check — cross-ref
   `ibc_frame_load.py`, do not re-validate here.
-- [ ] **Combined corner plate** — 10 mm plate carrying walkway beam + film rail; bolt group.
+- [x] **Combined corner plate** — 10 mm plate carrying walkway beam + film rail; bolt group.
 
 Deliverable: a computed validation table into `walkway-report.md` §9 (replacing the qualitative
 hand-check prose). Fold the existing `right-walkway-cantilever-study.md` numbers into the script so
@@ -151,17 +151,17 @@ they can't drift.
 
 ## Phase B — Fastener + weld schedule
 
-- [ ] **Fastener schedule J1…Jn** (size/grade/torque/washer/locker, cited): std bracket wall bolt
+- [x] **Fastener schedule J1…Jn** (size/grade/torque/washer/locker, cited): std bracket wall bolt
   (M12×65 91280A728); widened bracket wall bolt (M12×65); right cleat / combined-corner bolt (M12×70
   91280A732); floor-leg foot screw (#14×2 410 SS self-driller); grating clips. (The center-arm end-plate
   bolt M12×100 + the half-lap hold-down screws that fix the two arms belong to the **IBC-frame** J6
   schedule — cross-ref, not scheduled here.)
-- [ ] **Weld schedule W1…Wn** (leg/symbol/extent): bracket gusset↔leg↔arm fillets; reinforcing-plate;
+- [x] **Weld schedule W1…Wn** (leg/symbol/extent): bracket gusset↔leg↔arm fillets; reinforcing-plate;
   rectangle long↔end beam corners; cranked-beam ramps; floor-leg post↔foot + post↔arm; wall-cleat welds;
   combined-corner-plate seats. Load-check the governing throats in `walkway_load.py`; the rest are AWS
   D1.1 minimum practical fillets (note which). (The half-lap seat + arm-end-plate welds are the
   **IBC-frame** J6/W schedule — cross-ref, not scheduled here.)
-- [ ] Tables into `walkway-report.md` (§ near the parts list); J/W callouts land on the sheets in Phase D.
+- [x] Tables into `walkway-report.md` (§ near the parts list); J/W callouts land on the sheets in Phase D.
 
 ## Phase C — Datum + tolerance scheme
 

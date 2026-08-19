@@ -203,6 +203,98 @@ def cross_refs():
             "  connection (joint J6) is IBC-frame-owned (IBC-frame Sheet 5) — cross-referenced, not re-checked here.")
 
 
+# ── Phase B: fastener schedule (WF#) ─────────────────────────────────────────
+# Walkway-scoped marks (WF/WW) so they can't collide with the IBC-frame J1–J9 / W1–W5.
+# Torque for M12 Gr.8.8 through the (dry) corrugated wall ~90 N·m (matches the IBC J3/J6 wall bolts).
+FASTENERS = [
+    ("WF1", "Standard bracket → wall rib", "M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/)",
+     "Gr.8.8 zinc", "3/brkt × 13 = 39", "~90 N·m", "flat both ends", "plain nut + split-lock"),
+    ("WF2", "Widened bracket → wall rib", "M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/)",
+     "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
+    ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
+     "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
+    ("WF4", "Floor-leg foot plate → container floor", "#14×2″ HWH self-driller",
+     "410 SS", "4/foot × 5 = 20", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
+    ("WF5", "Grating hold-down clip → bracket arm", "M-type FRP grating clip + bolt",
+     "316 SS", "pitch TBD — Phase D (McNichols clip datasheet)", "snug", "—", "—"),
+]
+
+
+def fastener_table_md():
+    lines = ["| Mark | Joint | Fastener | Grade | Qty | Torque | Washer | Locker |",
+             "|------|-------|----------|-------|-----|--------|--------|--------|"]
+    for r in FASTENERS:
+        lines.append("| " + " | ".join(r) + " |")
+    lines.append("| J6 (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | "
+                 "M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |")
+    return "\n".join(lines)
+
+
+# ── Phase B: weld schedule (WW#) ─────────────────────────────────────────────
+FU_WELD = 480.0   # E70xx electrode ultimate (MPa)
+
+
+def _fillet_cap_permm(leg):
+    """Fillet-weld capacity per mm of length (N/mm) at throat = 0.707·leg, shear 0.6·Fu."""
+    return 0.707 * leg * 0.6 * FU_WELD
+
+
+def _moment_weld(m_nm, depth_mm, weld_len_mm, leg):
+    """A root moment carried as a tension/compression couple over the section depth: the flange
+    weld (weld_len long) sees force M/depth. Returns (demand N/mm, cap N/mm, SF)."""
+    dem = (m_nm * 1e3 / depth_mm) / weld_len_mm
+    cap = _fillet_cap_permm(leg)
+    return dem, cap, cap / dem
+
+
+def weld_rows():
+    """(mark, joint, leg, note-with-SF). Governing throats load-checked; the rest AWS D1.1 minimums."""
+    # WW1 std bracket ARM(2×1)→leg: root moment 400 N·m over the tube depth 25.4, top weld 50.8 long.
+    d1, c1, sf1 = _moment_weld(P_CONC * k.WALKWAY_W / 1e3, k.WALKWAY_BRACKET_ARM_H, k.WALKWAY_BRACKET_ARM_W, 5)
+    # WW2 widened ARM(3×1)→leg: 667 N·m, top weld 76.2 long.
+    d2, c2, sf2 = _moment_weld(P_CONC * k.WALKWAY_NEAR_WIDE_W / 1e3, k.WALKWAY_BRACKET_ARM_H, k.WALKWAY_BRACKET_ARM_W_WIDE, 5)
+    # WW6 floor-leg punch-out ARM(4×1)→post: 807 N·m, top weld 101.6 long.
+    arm_x0 = k.LEFT_WK_CANT_LEG_X + k.LEFT_WK_CANT_POST / 2
+    m_fl = P_CONC * (k.LEFT_WK_CANT_WIDE_REACH - arm_x0) / 1e3
+    d6, c6, sf6 = _moment_weld(m_fl, k.WALKWAY_BRACKET_ARM_H, k.LEFT_WK_CANT_ARM_W_WIDE, 5)
+    # WW7 floor-leg post→foot: same base moment over the 50.8 post depth, top weld 50.8 long.
+    d7, c7, sf7 = _moment_weld(m_fl, k.LEFT_WK_CANT_POST, k.LEFT_WK_CANT_POST, 5)
+    return [
+        ("WW1", "Std bracket 2×1 arm → 8mm leg (GOVERNING)", "5mm all-round",
+         f"root M {P_CONC*k.WALKWAY_W/1e3:.0f} N·m → {d1:.0f} N/mm vs {c1:.0f} N/mm, SF {sf1:.1f}"),
+        ("WW2", "Widened 3×1 arm → 10mm leg (GOVERNING)", "5mm all-round",
+         f"root M {P_CONC*k.WALKWAY_NEAR_WIDE_W/1e3:.0f} N·m → SF {sf2:.1f}"),
+        ("WW3", "Gusset → leg + gusset → arm", "5mm", "braces the arm root; AWS D1.1 min for 8/10mm plate"),
+        ("WW4", "Reinforcing plate → exterior wall panel", "5mm stitched", "bearing plate; nominal load, AWS D1.1 min"),
+        ("WW5", "Rectangle long ↔ end-beam corners (right walkway)", "5mm", "closed-frame corners; AWS D1.1 min (tube ≤6mm)"),
+        ("WW6", "Floor-leg 4×1 arm → 2×2 post (GOVERNING)", "5mm all-round",
+         f"root M {m_fl:.0f} N·m → {d6:.0f} N/mm vs {c6:.0f} N/mm, SF {sf6:.1f}"),
+        ("WW7", "Floor-leg post → foot plate (GOVERNING)", "5mm all-round",
+         f"base M {m_fl:.0f} N·m → SF {sf7:.1f}; also carries the {P_CONC:.0f} N vertical in shear"),
+        ("WW8", "Wall cleat — back-plate + shelf + upstand", "5mm", "AWS D1.1 min; the long beam bears on the shelf, TEK-locked"),
+        ("WW9", "Combined corner plate — beam seat + upstand", "5mm", "AWS D1.1 min; shared with the BR film rail"),
+        ("J6/W (IBC-owned)", "Half-lap seat + arm end-plate welds", "5mm", "IBC-frame schedule — cross-ref, not scheduled here"),
+    ]
+
+
+def weld_table_md():
+    lines = ["| Mark | Weld | Leg | Basis / check |",
+             "|------|------|-----|---------------|"]
+    for mark, joint, leg, note in weld_rows():
+        lines.append(f"| {mark} | {joint} | {leg} | {note} |")
+    return "\n".join(lines)
+
+
+def schedules_report():
+    out = ["\n########## FASTENER SCHEDULE (WF#) ##########"]
+    for r in FASTENERS:
+        out.append(f"  {r[0]}: {r[1]} — {r[2]} {r[3]}, {r[4]}, {r[5]}")
+    out.append("\n########## WELD SCHEDULE (WW#) — governing throats load-checked ##########")
+    for mark, joint, leg, note in weld_rows():
+        out.append(f"  {mark}: {joint} — {leg} — {note}")
+    return "\n".join(out)
+
+
 # ── Report + table ───────────────────────────────────────────────────────────
 def full_report():
     ROWS.clear()
@@ -219,6 +311,7 @@ def full_report():
         arm_notch_check(),
         outer_beam_frame_check(),
         service_loads(),
+        schedules_report(),
     ]
     return "\n".join(blocks)
 
@@ -233,20 +326,33 @@ def table_md():
     return "\n".join(lines)
 
 
-_BLOCK = re.compile(r"(<!-- BEGIN load:validation -->)(.*?)(<!-- END load:validation -->)", re.DOTALL)
+# All injected report blocks: key -> function returning the markdown body.
+_BLOCKS = {
+    "load:validation": table_md,
+    "load:fasteners": fastener_table_md,
+    "load:welds": weld_table_md,
+}
+
+
+def _block_pat(key):
+    return re.compile(r"(<!-- BEGIN " + re.escape(key) + r" -->)(.*?)(<!-- END " + re.escape(key) + r" -->)", re.DOTALL)
 
 
 def inject_blocks(write=True):
     if not os.path.exists(_REPORT):
-        return [("load:validation", "NO-REPORT")]
+        return [("load:*", "NO-REPORT")]
     text = open(_REPORT, encoding="utf-8").read()
-    new_body = "\n" + table_md() + "\n"
-    results = []
-    for m in _BLOCK.finditer(text):
-        results.append(("load:validation", "ok" if m.group(2) == new_body else "STALE"))
-    new = _BLOCK.sub(lambda m: m.group(1) + new_body + m.group(3), text)
-    if not results:
-        results.append(("load:validation", "MISSING"))
+    new, results = text, []
+    for key, fn in _BLOCKS.items():
+        body = "\n" + fn() + "\n"
+        pat = _block_pat(key)
+        found = False
+        for m in pat.finditer(text):
+            found = True
+            results.append((key, "ok" if m.group(2) == body else "STALE"))
+        if not found:
+            results.append((key, "MISSING"))
+        new = pat.sub(lambda m, body=body: m.group(1) + body + m.group(3), new)
     if write and new != text:
         open(_REPORT, "w", encoding="utf-8").write(new)
     return results
@@ -263,11 +369,11 @@ def main():
     elif "--check-blocks" in sys.argv:
         bad = check_blocks()
         if bad:
-            print("✗ §9 load block out of sync (run: walkway_load.py --inject):")
+            print("✗ walkway load/schedule blocks out of sync (run: walkway_load.py --inject):")
             for b in bad:
                 print("   " + b)
             sys.exit(1)
-        print("✓ §9 load block in sync")
+        print("✓ walkway load + fastener/weld blocks in sync")
     else:
         print(full_report())
 

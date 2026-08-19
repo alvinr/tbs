@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase B: fastener + weld schedules (branch `walkway-bp`).** Added a **fastener
+  schedule** (WF1–WF5: std/widened bracket wall bolts M12×65, right cleat/combined-corner M12×70, floor-leg
+  #14 self-drillers, grating clips — cited SKUs, grade, qty, torque ~90 N·m, washers, lockers) and a **weld
+  schedule** (WW1–WW9) to `walkway_load.py`, both injected into a new report §10 (lint-gated). The governing
+  weld throats are load-checked — the arm→leg, floor-leg arm→post, and post→foot fillets all clear **SF ≈ 3**
+  at a 5mm leg; the rest are AWS D1.1 minimum practical fillets. Walkway-scoped marks (WF/WW) so they don't
+  collide with the IBC-frame J1–J9; the center-arm J6 bolts + half-lap screws are cross-referenced to the
+  IBC-frame schedule, not re-scheduled. Fixed a stale reinf-plate size (120×220→120×200) in `costing.py`.
 - **Walkway blueprint — Phase A: structural validation + IBC/OSHA bracket redesign (branch `walkway-bp`).**
   Added `walkway_load.py` — a driftproof validation of every walkway element to the **US IBC/OSHA** basis
   (IBC Table 1607.1: 60 psf + 300 lbf concentrated), feeding a computed §9 table into `walkway-report.md`

@@ -119,7 +119,7 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
   - **Deferred to Phase D** (single-consumer detail dims → promote when their cut sheet is authored, per
     the "leave detail dims" rule): the **wall-cleat blank** and the **grate-clip pitch** (fix against the
     McNichols clip datasheet). Logged in TODO.
-- [ ] **Drift sweep** — stale literals in `walkway-report.md`, the two generators, and
+- [x] **Drift sweep** — DONE (Phase 1.3): stale literals in `walkway-report.md`, the two generators, and
   `component-dependency-map.md`; reconcile any residual "4734" RWK comments and pre-Phase-0 geometry.
   Also confirm the walkway-report's **J6** mention points to IBC-frame Sheet 5 (a mark must resolve to a
   labeled drawing).

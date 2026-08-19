@@ -2772,12 +2772,12 @@ def sheet10():
     nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
     ax.text(0, y + W + 260, f"NEAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
-    draw_dim_h(ax, 0, nf_len, y - 90, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
-    # cutout dims — bump-out (width above, 500 depth on the right) + position chain (incl. the 30 slit)
+    # cutout dims — bump-out (width above, 500 depth on the right) + position chain (incl. the 30 slit);
+    # the position chain replaces the overall length line on the long near/far sections (Alvin 2026-08-19)
     draw_dim_h(ax, xoff_nw_l, xoff_nw_r, y + WW + 12, f"{xoff_nw_r - xoff_nw_l:.0f}", offset=4, fs=5.5, font=FONT)
     draw_dim_v(ax, xoff_nw_r + 58, y, y + WW, f"{WW}mm", offset=5, fs=5.5, right=True, font=FONT)
-    chain([0, xoff_nw_l, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, xoff_nw_r, GRP_MAX, nf_len], y - 138)
+    chain([0, xoff_nw_l, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, xoff_nw_r, GRP_MAX, nf_len], y - 92)
 
     # ── FAR piece (4049 × 300, spray slit, seam) ──
     y = 650
@@ -2787,9 +2787,8 @@ def sheet10():
     nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
     ax.text(0, y + W + 55, f"FAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
-    draw_dim_h(ax, 0, nf_len, y - 60, f"{nf_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
-    chain([0, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, GRP_MAX, nf_len], y - 108)
+    chain([0, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, GRP_MAX, nf_len], y - 92)
 
     # ── Notes / legend ──
     notes = [

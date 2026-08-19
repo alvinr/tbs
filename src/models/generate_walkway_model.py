@@ -230,9 +230,11 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     it omits the exterior reinforcing plates and the full-length through-bolts (modeling
     short interior studs instead). The difference is level-of-detail only, not the
     load-bearing dimensions; `lint.py --duplication` reports it as EXPECTED, not drift."""
-    bt, vh = BRK_T, BRK_H                                   # standard 8mm / 150mm
+    bt, vh = BRK_T, BRK_H                                   # standard 8mm / 180mm
     btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
-    plate_w = k.WALKWAY_REINF_W_WIDE
+    # interior mounting plate width = the exterior reinforcing-plate width per type, so the two
+    # plates that sandwich the wall are the SAME footprint (100 std / 120 widened; Alvin 2026-08-19).
+    plate_w = k.WALKWAY_REINF_W_WIDE if wide else REINF_W
     gusset_reach = k.WALKWAY_GUSSET_REACH
     # Bolt patterns (X offset, Z): standard 3 (triangular, ±WALKWAY_BRACKET_BOLT_DX = 27 — Sheet 2 View B);
     # widened 4 (rectangular, ±WALKWAY_BRACKET_BOLT_DX_WIDE = 32 — Sheet 7 View B).
@@ -242,10 +244,14 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     bolt_pat_std  = [(0, _ubz), (-_dx, k.WALKWAY_BRACKET_BOLT_Z_LO), (_dx, k.WALKWAY_BRACKET_BOLT_Z_LO)]
     bolt_pat_wide = [(-_dxw, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (_dxw, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (-_dxw, _ubz), (_dxw, _ubz)]
 
-    b   = btw if wide else bt                       # plate/arm/gusset thickness
+    b   = btw if wide else bt                       # plate/gusset thickness
     v   = vhw if wide else vh                        # vertical leg height
-    arm_d = b + 2
-    arm_bot = GRATE_Z - arm_d
+    # ARM = a steel TUBE (redesigned to IBC/OSHA — was an 8mm×10mm plate edge that yielded at ~25 lbf):
+    # std 2×1×0.120 (50.8 wide), widened 3×1×0.120 (76.2 wide), both 25.4 deep (spray-bar-capped),
+    # underside Z89.6.  Sized by walkway_load.py (300 lbf tip: SF 2.10 std / 1.83 widened).
+    arm_w = k.WALKWAY_BRACKET_ARM_W_WIDE if wide else k.WALKWAY_BRACKET_ARM_W   # 76.2 / 50.8 (X)
+    arm_d = k.WALKWAY_BRACKET_ARM_H                 # 25.4 (Z depth)
+    arm_bot = k.WALKWAY_BRACKET_ARM_Z0             # 89.6 (grate bottom − arm depth)
     rch = WK_NEAR_WIDE_W if wide else reach         # arm reach (500mm widened deck)
     rw  = k.WALKWAY_REINF_W_WIDE if wide else REINF_W   # exterior reinf plate W
     rh  = k.WALKWAY_REINF_H_WIDE if wide else REINF_H   #                       H
@@ -261,8 +267,8 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     # horizontal cantilever arm at grate level (deck rests on it) — its back end
     # butts the plate's container-facing face so the arm→plate joint draws an edge
     y_arm = (wall_yd + b) if sign > 0 else (wall_yd - rch)   # plate front .. outboard
-    parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
-                          b, rch - b, arm_d, color=C_STEEL))
+    parts.append(ruby_box(f"{nm} arm", x - arm_w / 2, y_arm, arm_bot,
+                          arm_w, rch - b, arm_d, color=C_STEEL))
     # gusset triangle bracing the arm from below — same X as the arm (directly under
     # it, push −b), and its back edge butts the plate's container-facing face so the
     # gusset→plate joint reads as a clean edge (not passing through the plate)
@@ -330,25 +336,37 @@ CT_RWK_CLEAT_X, CT_RWK_PLATE_X, CT_RWK_ARM_X = 6000, 7000, 8000
 
 
 def _rwk_arm_type_parts(x0):
-    """ONE right-walkway CENTER CANTILEVER ARM for the catalog: an IBC-upright stub + the
-    40x40 SHS arm cantilevering off it (toward -X) + the upright clamp + an M12 bolt."""
-    armb, armt, aw = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W   # 75, 115, 40 (arm underside now matches the left)
-    s = ov.IBC_FRAME_RHS                                            # 50 upright RHS
-    reach = ov.RWK_X_UP - ov.RWK_X_L   # 325 (was hardcoded 405, stale from the retired 4734 portal)
-    return [
+    """ONE right-walkway CENTER CANTILEVER ARM for the catalog, mirroring the CURRENT design
+    (ov.ibc_cantilever_arms): an IBC-upright stub + a SOLID 2×1 flat-bar arm cantilevering off it
+    (toward -X) + the J6 BEARING-TYPE connection — a welded END-PLATE + a REAR backing plate +
+    2× M12 through-bolts, both above the arm. (Was an old 40×40 SHS arm + single-bolt clamp.)"""
+    armb, armt, aw, ah = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W, ov.RWK_AH   # 89.6, 115, 50.8, 25.4
+    s = ov.IBC_FRAME_RHS                                            # 50.8 upright RHS
+    reach = ov.RWK_X_UP - ov.RWK_X_L                               # 325 — upright front → inner long beam
+    ep_t, ep_w, ep_h = 8, 65, ov.RWK_J6_EP_H                        # end-plate thickness / Yd width / Z height (155)
+    ac_z = (armb + armt) / 2.0
+    ep_bz = ac_z - 65.0                                            # end-plate bottom Z37 (mirrors the real builder)
+    bp_bz = ov.IBC_FOOT_PLATE_T + ov.IBC_FRAME_RHS                  # rear backing-plate bottom (butts the bottom rail)
+    bp_h = (ep_bz + ep_h) - bp_bz
+    ac_y = aw / 2.0                                                # arm centre in Yd
+    parts = [
         ov.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
-        ov.ruby_box("Type RWk cantilever arm (40x40 SHS)", x0 - reach, 0, armb, reach, aw, armt - armb, color=ov.C_STEEL),
-        ov.ruby_box("Type RWk upright clamp", x0 - 4, aw + 4, armb - 25, s + 8, 8, (armt - armb) + 55, color=ov.C_STEEL),
-        ov.ruby_bolt("Type RWk upright bolt M12", x0 + s / 2, -12, armb + 6, aw + 24, radius=6, axis="y", color=ov.C_STEEL, head="base", nut="far"),
+        ov.ruby_box("Type RWk cantilever arm (solid 2x1 flat bar)", x0 - reach, 0, armb, reach - ep_t, aw, ah, color=ov.C_STEEL),
+        ov.ruby_box("Type RWk J6 end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=ov.C_STEEL),
+        ov.ruby_box("Type RWk J6 backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=ov.C_STEEL),
     ]
+    for bz in ov.RWK_J6_BOLT_ZS:                                    # 2× M12, both above the arm (bearing-type)
+        parts.append(ov.ruby_bolt("Type RWk J6 bolt M12", x0 - ep_t, ac_y, bz, s + 2 * ep_t + 8,
+                                  radius=6, axis="x", color="#3A3A42", head="base", nut="far"))
+    return parts
 
 
-def _floor_cant_type_parts(x0, reach, suffix, target_x):
+def _floor_cant_type_parts(x0, reach, suffix, target_x, arm_w):
     """ONE LEFT-walkway FLOOR-LEG CANTILEVER bracket for the type-catalog — foot plate +
-    50x50 post to the grate bottom + arm at Z75-115 reaching `reach` mm in — isolated at
+    50x50 post to the grate bottom + arm at Z89.6-115 reaching `reach` mm in — isolated at
     catalog X station `x0`, near wall. Built twice: the STANDARD reach (arm to the grate
-    inner edge, X470) and the EXTENDED reach (X770, the 3 brackets on the drum-exit
-    punch-out)."""
+    inner edge, X580, 2×1 arm) and the EXTENDED reach (X880, the 3 drum-exit punch-out
+    brackets, 4×1 arm — IBC/OSHA). `arm_w` is the arm's Yd width per type."""
     foot_l, foot_w, foot_t = LC_FOOT
     az0, az1 = LC_ARM_Z0, GRATE_Z
     return [
@@ -356,8 +374,8 @@ def _floor_cant_type_parts(x0, reach, suffix, target_x):
                  foot_l, foot_w, foot_t, color=C_STEEL),
         ruby_box(f"Type FloorCant {suffix} post (2x2x0.120 SHS)", x0 - LC_POST / 2, 0, 0,
                  LC_POST, LC_PW, az1, color=C_STEEL),
-        ruby_box(f"Type FloorCant {suffix} arm (to X{target_x})", x0 + LC_POST / 2, 0, az0,
-                 reach, LC_ARM_W, az1 - az0, color=C_STEEL),
+        ruby_box(f"Type FloorCant {suffix} arm (to X{target_x})", x0 + LC_POST / 2, -arm_w / 2, az0,
+                 reach, arm_w, az1 - az0, color=C_STEEL),
     ]
 
 
@@ -374,8 +392,8 @@ def cantilever_types():
         CENTER CANTILEVER ARM off the IBC corridor uprights."""
     arm_x0 = LC_LEGX + LC_POST / 2                  # 165 — arm starts at the post inner face
     parts = []
-    parts += _floor_cant_type_parts(CT_SEAT_X, LC_STD - arm_x0, "short", int(LC_STD))
-    parts += _floor_cant_type_parts(CT_SEAT_LONG_X, LC_WIDE - arm_x0, "long", int(LC_WIDE))
+    parts += _floor_cant_type_parts(CT_SEAT_X, LC_STD - arm_x0, "short", int(LC_STD), LC_ARM_W)
+    parts += _floor_cant_type_parts(CT_SEAT_LONG_X, LC_WIDE - arm_x0, "long", int(LC_WIDE), LC_ARM_WW)
     parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
     parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
     # rev12 right-walkway support brackets (reuse the single-sourced overview builders):
@@ -390,16 +408,16 @@ def cantilever_type_labels():
     tag so they show only in the 'Cantilevers' scene."""
     labels = [  # left→right: floor-leg short, floor-leg long, standard, widened
         (CT_SEAT_X, 0, GRATE_Z,
-         "FLOOR-LEG CANTILEVER — standard reach\n50x50 post on bare floor + arm to the\ngrate inner edge (X=470)",
+         f"FLOOR-LEG CANTILEVER — standard reach\n2x2 post on bare floor + 2x1 arm to the\ngrate inner edge (X={int(LC_STD)})",
          -200, -300, 800),
         (CT_SEAT_LONG_X, 0, GRATE_Z,
-         "FLOOR-LEG CANTILEVER — extended reach\n3 of the 5 brackets reach to X=770 on\nthe drum-exit punch-out (deeper landing)",
+         f"FLOOR-LEG CANTILEVER — extended reach\n3 of the 5 brackets reach to X={int(LC_WIDE)} on a\n4x1 arm (drum-exit punch-out; IBC/OSHA SF 1.99)",
          -200, -300, 800),
         (CT_STD_X, 0, BRK_H,
-         "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
+         "STANDARD CANTILEVER\n8mm plate / 180 leg / 2x1 tube arm\n3x M12 (triangular)",
          0, -300, 720),
         (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
-         "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
+         "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 3x1 tube arm\n4x M12 (rectangular)",
          200, -300, 850),
         (CT_RWK_CLEAT_X, 0, ov.RWK_ARM_TOP,
          "RIGHT WALKWAY — WALL CLEAT (left corners)\n8mm back-plate + ext plate + shelf,\nthe long beam lands on it; M12 through-bolts",
@@ -408,7 +426,7 @@ def cantilever_type_labels():
          "RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)\n10mm, carries the walkway right beam (Z70 seat)\n+ the BR film rail (web-vertical: Z232 seat / Z270 bolt); 4x M12",
          0, -300, 850),
         (CT_RWK_ARM_X, 0, ov.RWK_ARM_TOP,
-         "RIGHT WALKWAY — CENTER CANTILEVER ARM\n40x40 SHS off an IBC corridor upright\n(half-lapped at the long beams); M12 clamp",
+         "RIGHT WALKWAY — CENTER CANTILEVER ARM\nsolid 2x1 flat bar off an IBC corridor upright\n(half-lapped at the long beams); J6 end-plate, 2x M12",
          150, -300, 820),
     ]
     rows = []
@@ -443,8 +461,8 @@ def left_floor_cantilevers():
     parts = []
     for i, y in enumerate(LC_YDS, 1):
         wide = WK_LEFT_WIDE_YL <= y <= WK_LEFT_WIDE_YR
-        reach = LC_WIDE if wide else LC_STD     # 770 (punch-out) / 470 (standard)
-        aw = LC_ARM_WW if wide else LC_ARM_W    # 60 / 40
+        reach = LC_WIDE if wide else LC_STD     # 880 (punch-out) / 580 (standard) tip X
+        aw = LC_ARM_WW if wide else LC_ARM_W    # 101.6 (4×1, IBC/OSHA) / 50.8 (2×1) arm width in Yd
         parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, 0,
                               foot_l, foot_w, foot_t, color=C_STEEL))
         parts.append(ruby_box(f"Left cantilever {i} post (2x2x0.120 SHS)",

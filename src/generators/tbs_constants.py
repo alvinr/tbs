@@ -914,6 +914,16 @@ WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 1
 WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + 15  # 155 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Sits 15mm above the grate top (WALKWAY_H) so the nut clears the deck. Both legs (std 180 / widened 200) hold it with ≥1.5·D top edge.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
+# Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,
+# IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
+# case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm
+# by the traveling spray bar (top Z67; arm underside Z89.6 clears it 22mm), so the widened bracket takes
+# a WIDER section, not a deeper one (Alvin 2026-08-19).
+WALKWAY_BRACKET_ARM_W      = 50.8   # standard arm width in X (mm) — 2×1×0.120in steel tube (2in face); SF 2.10 on the 300mm cantilever. Same stock as the left floor-leg + right RWK arms.
+WALKWAY_BRACKET_ARM_W_WIDE = 76.2   # widened arm width in X (mm) — 3×1×0.120in tube (3in face); the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point).
+WALKWAY_BRACKET_ARM_H      = 25.4   # arm depth in Z (mm) — 1in; spray-bar-capped (can't go deeper over the tray).
+WALKWAY_BRACKET_ARM_T      = 3.05   # arm wall thickness (mm) — 0.120in
+WALKWAY_BRACKET_ARM_Z0     = WALKWAY_H - WALKWAY_GRATE_T - WALKWAY_BRACKET_ARM_H  # 89.6 — arm underside (grate bottom Z115 − 25.4); clears the spray-bar top (Z67)
 # Wall-cantilever bracket DETAIL blanks — single-sourced so the 3D builder
 # (generate_walkway_model._cantilever_parts) AND the 2D fab sheets (View C reinforcing
 # plate + sheet 7 bolt pattern) dimension the same part (Phase 1.2, 2026-08-18; these
@@ -922,7 +932,7 @@ WALKWAY_REINF_W = 100    # exterior reinforcing-plate width  (mm) — covers the
 WALKWAY_REINF_H = 180    # exterior reinforcing-plate height (mm) — standard bracket
 WALKWAY_REINF_T = 6      # exterior reinforcing-plate thickness (mm)
 WALKWAY_REINF_W_WIDE = 120   # widened-bracket reinforcing-plate width  (mm) — larger blank for the 4-bolt rectangular pattern
-WALKWAY_REINF_H_WIDE = 220   # widened-bracket reinforcing-plate height (mm)
+WALKWAY_REINF_H_WIDE = 200   # widened-bracket reinforcing-plate height (mm) — = the widened vertical leg (WALKWAY_WIDE_BRACKET_H) so the interior mounting plate + exterior reinforcing plate are the SAME footprint (Alvin 2026-08-19); covers the upper bolt Z155 with 45mm edge
 WALKWAY_GUSSET_REACH = 70    # gusset triangle reach from the wall face (mm) — < the 80mm tray-rim standoff so the gusset clears the rim
 WALKWAY_BRACKET_BOLT_DX = 27        # STANDARD-bracket wall-bolt X offset from CL (mm) — flanks the 8mm gusset; ±27 keeps 23mm edge to the 100mm reinforcing-plate edge (vs only 18mm = 1.5·D at ±32). Drawn on Sheet 2 View B.
 WALKWAY_BRACKET_BOLT_DX_WIDE = 32   # WIDENED-bracket wall-bolt X offset from CL (mm) — the wider 120mm reinforcing plate carries ±32 at 28mm edge. Drawn on Sheet 7 View B.
@@ -986,7 +996,7 @@ LEFT_WK_CANT_FOOT_BOLT_DX = (20, 60)  # anchor X offsets from the foot LEFT edge
 LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline (within the 60mm foot width) [F3, 2026-08-18]
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)
-LEFT_WK_CANT_ARM_W_WIDE = 50.8  # widened (punch-out) arm — same 2×1in section
+LEFT_WK_CANT_ARM_W_WIDE = 101.6  # widened (drum-exit punch-out) arm — 4×1×0.120in tube (4in face in Yd × 25.4 Z). REDESIGNED to US IBC/OSHA: the 605mm punch-out cantilever at 2×1 was only SF 1.04 under the 300 lbf tip load; 4×1 → SF 1.99 (walkway_load.py). Depth spray-bar-capped, so wider not deeper (Alvin 2026-08-19).
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): the deck's INNER (tray-facing) edge is anchored to the tray module

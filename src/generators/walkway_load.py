@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+"""Structural validation of the TBS-001 perimeter walkway (Phase A of the walkway blueprint).
+
+US IBC/OSHA load basis — IBC-2021 Table 1607.1 (walkways / elevated platforms &
+"stairs and exitways"): a 60 psf (2.87 kPa) uniform live load AND a 300 lbf (1.33 kN)
+concentrated load applied over a small area at the location producing maximum stress.
+Per IBC 1607.1 the concentrated load need NOT be combined with the uniform load — each
+member is designed for the worse of the two. For a cantilever the concentrated load at
+the free tip governs every arm here.
+
+Sources (every capacity/coefficient cited):
+  - IBC-2021 Table 1607.1 minimum live loads
+    https://codes.iccsafe.org/content/IBC2021P2/chapter-16-structural-design#IBC2021P2_Ch16_Sec1607
+  - OSHA 29 CFR 1910.28/1917 walking-working surfaces (workplace overlay of the same case)
+  - Fibergrate molded FRP grating load tables (1" deep, 1"x4" mesh)
+    https://www.fibergrate.com/Docs/ProductFiles/load_tables/fgload.pdf
+  - Steel A36 / A500B mild steel Fy = 250 MPa; M12 Gr.8.8 Fub = 800 MPa (shared with ibc_frame_load)
+
+Reuses the right-walkway ARM + long-BEAM checks from ibc_frame_load.py — the arm->IBC-upright
+connection (joint J6) is IBC-frame-owned (drawn on IBC-frame Sheet 5), so it is CROSS-REFERENCED
+here, not re-validated.
+
+Run:  python3 src/generators/walkway_load.py              # print the full validation report
+      python3 src/generators/walkway_load.py --inject     # fill the §9 table in walkway-report.md
+      python3 src/generators/walkway_load.py --check-blocks
+"""
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tbs_constants as k  # noqa: E402
+from ibc_frame_load import z_rhs, AS_M12, FUB_88, arm_notch_check, outer_beam_frame_check, service_loads
+
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+_REPORT = os.path.join(_ROOT, "walkway-report.md")
+
+# ── Load basis (US IBC/OSHA — IBC Table 1607.1) ──────────────────────────────
+PSF = 47.880259           # 1 lbf/ft^2 -> Pa
+LBF = 4.4482216           # 1 lbf -> N
+LL_PSF = 60.0             # uniform live load (psf)
+LL = LL_PSF * PSF / 1e6   # -> N/mm^2  (2.873e-3)
+P_CONC = 300.0 * LBF      # concentrated live load -> 1334 N
+SPACING = float(k.WALKWAY_BRACKET_SPACING)   # 457 mm — bracket tributary width
+
+FY = 250.0                # A36 / A500B mild-steel yield (MPa)
+E = 200000.0              # steel modulus (MPa)
+SF_TARGET = 2.0           # design target on yield (conservative vs code ASD Ω=1.67)
+
+# ── FRP grate (Fibergrate 1" deep, 1"x4" mesh molded — fgload.pdf) ───────────
+# At the shortest tabulated span (12" = 305 mm) the 1"x4" grate carries a MAX RECOMMENDED
+# uniform load of 2,360 psf (deflection <0.01" at 100 psf); the 300 lb concentrated point at
+# 18" span deflects 0.03" (0.8 mm).  Our clear spans (245 mm right / 300 mm near-far) are AT or
+# BELOW the shortest tabulated span, so the grate is stiffer/stronger than any tabulated value.
+GRATE_MAXREC_PSF = 2360.0
+GRATE_CONC_DEFL_MM = 0.8   # 300 lb @ 18" span (conservative; our span is shorter)
+
+
+def _z_solid(w, h):
+    """Elastic section modulus (mm^3) of a solid rectangle, depth h in the bending direction."""
+    return w * h * h / 6.0
+
+
+def _i_rhs(w, h, t):
+    """Second moment (mm^4) of a rectangular hollow section, bending about the axis ⟂ depth h."""
+    return z_rhs(h, w, t) * h / 2.0
+
+
+# Each check appends a row (element, demand, capacity, SF, note) and returns a printable block.
+ROWS = []
+
+
+def _row(elem, demand, cap, sf, note):
+    ROWS.append((elem, demand, cap, sf, note))
+
+
+def _cant_arm(reach_mm, w, h, t, label):
+    """Cantilever tube arm under the 300 lbf tip point load: moment, capacity, SF, tip deflection."""
+    m = P_CONC * reach_mm / 1e3                        # N·m
+    z = z_rhs(h, w, t)
+    mcap = z * FY / 1e3                                # N·m at yield
+    sf = mcap / m
+    d = P_CONC * reach_mm ** 3 / (3 * E * _i_rhs(w, h, t))
+    return m, mcap, sf, d, f"{label} ({w:.0f}×{h:.0f}×{t:.2f} tube, {reach_mm:.0f} mm cant.)"
+
+
+# ── 1. Grate span ────────────────────────────────────────────────────────────
+def grate_check():
+    span = k.WALKWAY_RIGHT_W   # 245 — the shortest (worst) clear span
+    sf_unif = GRATE_MAXREC_PSF / LL_PSF
+    _row("Grate — uniform", f"{LL_PSF:.0f} psf",
+         f"{GRATE_MAXREC_PSF:.0f} psf max-rec", f"{sf_unif:.0f}",
+         "Fibergrate 1\" 1×4 molded FRP; span ≤ 12\" tabulated min")
+    _row("Grate — concentrated", "300 lbf",
+         f"{GRATE_CONC_DEFL_MM:.1f} mm defl", "—",
+         "0.03\" @ 18\" span (Fibergrate); less at our shorter span")
+    return ("\n## 1. GRATE — molded FRP 1\" 1×4 (Fibergrate load tables) ##\n"
+            f"  clear span {span} mm (right deck; near/far {k.WALKWAY_W} mm) — below the 12\" tabulated minimum\n"
+            f"  uniform: {LL_PSF:.0f} psf demand vs {GRATE_MAXREC_PSF:.0f} psf max-recommended  -> SF {sf_unif:.0f}; deflection <0.01\" (~0.25 mm) at 100 psf\n"
+            f"  concentrated: 300 lbf ~{GRATE_CONC_DEFL_MM:.1f} mm at 18\" span (our span shorter => stiffer). Grate is not the governing element.")
+
+
+# ── 2-3. Wall-cantilever bracket ARMS (redesigned to IBC/OSHA) ───────────────
+def wall_bracket_check():
+    ms, mcs, sfs, ds, ls = _cant_arm(k.WALKWAY_W, k.WALKWAY_BRACKET_ARM_W,
+                                     k.WALKWAY_BRACKET_ARM_H, k.WALKWAY_BRACKET_ARM_T, "STD arm")
+    mw, mcw, sfw, dw, lw = _cant_arm(k.WALKWAY_NEAR_WIDE_W, k.WALKWAY_BRACKET_ARM_W_WIDE,
+                                     k.WALKWAY_BRACKET_ARM_H, k.WALKWAY_BRACKET_ARM_T, "WIDE arm")
+    _row("Wall bracket STD arm", f"{ms:.0f} N·m", f"{mcs:.0f} N·m", f"{sfs:.2f}",
+         f"2×1×0.120 tube, {k.WALKWAY_W} mm; tip defl {ds:.1f} mm (L/{k.WALKWAY_W/ds:.0f})")
+    _row("Wall bracket WIDE arm", f"{mw:.0f} N·m", f"{mcw:.0f} N·m", f"{sfw:.2f}",
+         f"3×1×0.120 tube, {k.WALKWAY_NEAR_WIDE_W} mm; deflection-governed, tip L/{k.WALKWAY_NEAR_WIDE_W/dw:.0f}")
+    return ("\n## 2-3. WALL-CANTILEVER BRACKET ARMS (redesigned; arm depth spray-bar-capped at 25.4 mm) ##\n"
+            f"  {ls}: 300 lbf tip -> M {ms:.0f} N·m  cap {mcs:.0f} N·m  SF {sfs:.2f}  |  tip defl {ds:.1f} mm (L/{k.WALKWAY_W/ds:.0f})\n"
+            f"  {lw}: 300 lbf tip -> M {mw:.0f} N·m  cap {mcw:.0f} N·m  SF {sfw:.2f}  |  tip defl {dw:.1f} mm (L/{k.WALKWAY_NEAR_WIDE_W/dw:.0f} — governs the widened bracket)\n"
+            "  (the as-drawn 8×10 plate arm yielded at ~25 lbf; the tube arm is the redesign.)")
+
+
+# ── 4-5. Wall bolt group + corrugated-wall pull-through ──────────────────────
+def wall_bolt_check():
+    # Root moment (concentrated, standard bracket) reacted as a tension-compression couple on the
+    # wall bolts: upper bolt(s) tension at Z155, lower bear/compress at Z42 -> lever ~113 mm.
+    lever = k.WALKWAY_BRACKET_UPPER_BOLT_Z - k.WALKWAY_BRACKET_BOLT_Z_LO   # 113
+    m_std = P_CONC * k.WALKWAY_W / 1e3
+    t_up = m_std * 1e3 / lever                       # 1 upper bolt (std triangular pattern)
+    t_cap = 0.9 * FUB_88 * AS_M12                     # M12 8.8 tensile (proof) capacity, N
+    sf_bolt = t_cap / t_up
+    # Corrugated-rib pull-through: the tension punches the 1.6 mm Corten rib around the M12 washer
+    # (OD ~24 mm).  Punching-shear perimeter × thickness × 0.6·Fu (Corten Fu ~450 MPa, use 350 shear-safe).
+    wall_t, wsh_od, fu_shear = 1.6, 24.0, 0.6 * 350.0
+    cap_pt = 3.14159 * wsh_od * wall_t * fu_shear
+    sf_pt = cap_pt / t_up
+    _row("Wall bolt tension (M12 8.8)", f"{t_up:.0f} N", f"{t_cap:.0f} N", f"{sf_bolt:.0f}",
+         f"root-moment couple, {lever:.0f} mm lever")
+    _row("Corrugated-rib pull-through", f"{t_up:.0f} N", f"{cap_pt:.0f} N", f"{sf_pt:.0f}",
+         "1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip")
+    return ("\n## 4-5. WALL BOLT GROUP + CORRUGATED-RIB PULL-THROUGH ##\n"
+            f"  root moment {m_std:.0f} N·m -> upper-bolt tension {t_up:.0f} N (lever {lever:.0f} mm)\n"
+            f"  M12 8.8 tension cap {t_cap:.0f} N  SF {sf_bolt:.0f}   |   1.6 mm-rib pull-through cap {cap_pt:.0f} N  SF {sf_pt:.0f}\n"
+            f"  (pull-through is contingent on the {k.CONTAINER_CORRUGATION_DEPTH} mm corrugation for bolt grip — the parked procurement gate.)")
+
+
+# ── 6-9. Left-walkway FLOOR-LEG cantilever (arm + post + foot anchors) ────────
+def floor_leg_check():
+    arm_x0 = k.LEFT_WK_CANT_LEG_X + k.LEFT_WK_CANT_POST / 2
+    l_std = k.LEFT_WK_CANT_STD_REACH - arm_x0
+    l_wide = k.LEFT_WK_CANT_WIDE_REACH - arm_x0
+    ms, mcs, sfs, ds, _ = _cant_arm(l_std, k.LEFT_WK_CANT_ARM_W,
+                                    k.WALKWAY_BRACKET_ARM_H, k.WALKWAY_BRACKET_ARM_T, "std")
+    mw, mcw, sfw, dw, _ = _cant_arm(l_wide, k.LEFT_WK_CANT_ARM_W_WIDE,
+                                    k.WALKWAY_BRACKET_ARM_H, k.WALKWAY_BRACKET_ARM_T, "wide")
+    # Post 2x2x0.120 — moment at its base = the worst (widened) tip load × reach
+    zp = z_rhs(k.LEFT_WK_CANT_POST, k.LEFT_WK_CANT_POST, k.LEFT_WK_CANT_POST_T)
+    m_post = mw
+    sf_post = zp * FY / 1e3 / m_post
+    # Foot anchors: overturning couple reacted by the 2 outboard #14 screws over the foot length
+    foot_l = k.LEFT_WK_CANT_FOOT[0]
+    t_anchor = m_post * 1e3 / foot_l / 2.0
+    _row("Floor-leg STD arm", f"{ms:.0f} N·m", f"{mcs:.0f} N·m", f"{sfs:.2f}",
+         f"2×1×0.120, {l_std:.0f} mm cant.")
+    _row("Floor-leg punch-out arm", f"{mw:.0f} N·m", f"{mcw:.0f} N·m", f"{sfw:.2f}",
+         f"4×1×0.120, {l_wide:.0f} mm cant. (redesign; 2×1 was SF 1.04)")
+    _row("Floor-leg post", f"{m_post:.0f} N·m", f"{zp * FY / 1e3:.0f} N·m", f"{sf_post:.2f}",
+         "2×2×0.120 SHS")
+    _row("Foot-anchor uplift", f"{t_anchor:.0f} N/screw", "engage steel pan", "≈1",
+         f"4× #14 SS self-driller; 2 outboard react the couple over the {foot_l:.0f} mm foot")
+    return ("\n## 6-9. LEFT-WALKWAY FLOOR-LEG CANTILEVER (arm + post + foot anchors) ##\n"
+            f"  STD arm 2×1 {l_std:.0f} mm: M {ms:.0f} N·m cap {mcs:.0f} SF {sfs:.2f}\n"
+            f"  PUNCH-OUT arm 4×1 {l_wide:.0f} mm: M {mw:.0f} N·m cap {mcw:.0f} SF {sfw:.2f}  (redesigned; the 2×1 was SF 1.04)\n"
+            f"  post 2×2×0.120: M_base {m_post:.0f} N·m cap {zp * FY / 1e3:.0f} SF {sf_post:.2f}\n"
+            f"  foot anchors: ~{t_anchor:.0f} N/screw uplift — the #14 self-drillers MUST engage the steel floor pan (not plywood alone).")
+
+
+# ── 10. Combined corner plate (shared walkway beam + film rail) ──────────────
+def corner_plate_check():
+    # The RWK closed rectangle sheds its deck load to 4 corners + 2 mid-span arms. A conservative
+    # corner reaction = a person (300 lbf) standing at a corner + the corner's share of the deck.
+    deck_uniform = LL * k.WALKWAY_RIGHT_W * (float(k.C_WID) if hasattr(k, "C_WID") else 2388.0)  # N (whole deck)
+    r_corner = P_CONC + deck_uniform / 6.0            # person + 1/6 of the deck (4 corners + 2 arms)
+    # 10 mm plate on 4× M12 to the wall: bolt shear governs; group cap is huge.
+    bolt_cap = 4 * 0.6 * FUB_88 * AS_M12
+    sf = bolt_cap / r_corner
+    _row("Combined corner plate", f"{r_corner:.0f} N", f"{bolt_cap:.0f} N", f"{sf:.0f}",
+         "10 mm plate, 4× M12; shared with the BR film rail")
+    return ("\n## 10. COMBINED CORNER PLATE (right corners — shared with the bottom film rail) ##\n"
+            f"  corner reaction ~{r_corner:.0f} N (person + deck share) vs 4× M12 shear {bolt_cap:.0f} N  SF {sf:.0f}\n"
+            "  10 mm plate, permanently bolted; non-governing.")
+
+
+# ── 11-12. Right cantilever rectangle + arm->upright J6 (cross-referenced) ────
+def cross_refs():
+    _row("RWK long beam (cross-ref)", "person + grate", "SF 7.1", "7.1",
+         "ibc_frame_load.outer_beam_frame_check — simply-supported full section")
+    _row("RWK arm half-lap notch (cross-ref)", "334 N·m", "SF 2.03", "2.03",
+         "ibc_frame_load.arm_notch_check — solid-bar rebalanced split")
+    _row("Arm→upright J6 (IBC-owned)", "395 N·m", "SF 20", "20",
+         "ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only")
+    return ("\n## 11-12. RIGHT CANTILEVER RECTANGLE + ARM→UPRIGHT J6 (cross-referenced) ##\n"
+            "  The right-walkway long/end beams + the arm half-lap notch are validated in\n"
+            "  ibc_frame_load.py (outer_beam_frame_check / arm_notch_check); the arm→IBC-upright\n"
+            "  connection (joint J6) is IBC-frame-owned (IBC-frame Sheet 5) — cross-referenced, not re-checked here.")
+
+
+# ── Report + table ───────────────────────────────────────────────────────────
+def full_report():
+    ROWS.clear()
+    blocks = [
+        f"WALKWAY STRUCTURAL VALIDATION — US IBC/OSHA (IBC Table 1607.1: {LL_PSF:.0f} psf + 300 lbf concentrated)",
+        f"  concentrated 300 lbf ({P_CONC:.0f} N) at the tip governs every cantilever; SF on yield (target {SF_TARGET:.1f})",
+        grate_check(),
+        wall_bracket_check(),
+        wall_bolt_check(),
+        floor_leg_check(),
+        corner_plate_check(),
+        cross_refs(),
+        # reuse the detailed IBC-frame blocks verbatim (single source):
+        arm_notch_check(),
+        outer_beam_frame_check(),
+        service_loads(),
+    ]
+    return "\n".join(blocks)
+
+
+def table_md():
+    """The §9 validation table (markdown). Regenerates ROWS first."""
+    full_report()
+    lines = ["| Element | Design demand | Capacity | SF | Basis |",
+             "|---------|---------------|----------|----|-------|"]
+    for elem, dem, cap, sf, note in ROWS:
+        lines.append(f"| {elem} | {dem} | {cap} | {sf} | {note} |")
+    return "\n".join(lines)
+
+
+_BLOCK = re.compile(r"(<!-- BEGIN load:validation -->)(.*?)(<!-- END load:validation -->)", re.DOTALL)
+
+
+def inject_blocks(write=True):
+    if not os.path.exists(_REPORT):
+        return [("load:validation", "NO-REPORT")]
+    text = open(_REPORT, encoding="utf-8").read()
+    new_body = "\n" + table_md() + "\n"
+    results = []
+    for m in _BLOCK.finditer(text):
+        results.append(("load:validation", "ok" if m.group(2) == new_body else "STALE"))
+    new = _BLOCK.sub(lambda m: m.group(1) + new_body + m.group(3), text)
+    if not results:
+        results.append(("load:validation", "MISSING"))
+    if write and new != text:
+        open(_REPORT, "w", encoding="utf-8").write(new)
+    return results
+
+
+def check_blocks():
+    return [f"{k_}: {st}" for k_, st in inject_blocks(write=False) if st != "ok"]
+
+
+def main():
+    if "--inject" in sys.argv:
+        for key, st in inject_blocks(True):
+            print(f"  {key}: {st}")
+    elif "--check-blocks" in sys.argv:
+        bad = check_blocks()
+        if bad:
+            print("✗ §9 load block out of sync (run: walkway_load.py --inject):")
+            for b in bad:
+                print("   " + b)
+            sys.exit(1)
+        print("✓ §9 load block in sync")
+    else:
+        print(full_report())
+
+
+if __name__ == "__main__":
+    main()

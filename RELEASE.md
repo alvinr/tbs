@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway blueprint — Phase A: structural validation + IBC/OSHA bracket redesign (branch `walkway-bp`).**
+  Added `walkway_load.py` — a driftproof validation of every walkway element to the **US IBC/OSHA** basis
+  (IBC Table 1607.1: 60 psf + 300 lbf concentrated), feeding a computed §9 table into `walkway-report.md`
+  (lint-gated; reuses the IBC-owned arm/beam checks from `ibc_frame_load.py`). It surfaced that the
+  **wall-cantilever bracket arm** (an 8×10mm plate) yielded at ~25 lbf, and the **floor-leg punch-out arm**
+  (2×1, 605mm) was only SF 1.04 — both **redesigned**: wall bracket arm → **2×1×0.120in tube** (std, SF 2.10)
+  / **3×1** (widened, SF 1.83, deflection-governed L/112); floor-leg punch-out arm → **4×1×0.120in tube**
+  (SF 1.99). Cascaded through constants → 3D model → 2D Sheets 2/5/6/7 → parts → report §3.1/§5/§9. Also fixed
+  a pre-F1 stale outer-beam X in `ibc_frame_load.py` (arm notch SF 1.6→2.0) by single-sourcing its `RWK_*`.
 - **Walkway blueprint — Phase 1.3: drift sweep + standard-bracket bolt correctness fix (branch `walkway-bp`).**
   Swept the report/generators/dep-map for stale literals: **foot plate 128→165mm** (the F3 outrigger; fixed in
   `parts.py` + 3 report tables), **dep-map right-beam X 4629→4574** (F1). Found + fixed a real **3D-vs-drawing

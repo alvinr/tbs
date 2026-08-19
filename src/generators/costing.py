@@ -144,7 +144,7 @@ WALKWAY = [
     LineItem("GRP grating edge-seal kit (Fibergrate)", 40, 50, 60, "field-seal molded FRP cut edges (epoxy, not snap-trim)"),
     LineItem("Standard wall brackets, 8mm steel plate (×13)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
     LineItem("Widened wall brackets, 10mm steel plate (×5)", 84, 102, 134, "EP/battery/slit zone; 200mm vert × 500mm arm (bump extended a 2nd rib toward IBC, X1055–3083 = 5 bays)"),
-    LineItem("Reinforcing plates, std 100×180×6mm (×13) + wide 120×220×6mm (×5)", 47, 60, 73, "Welded to wall exterior behind each bracket"),
+    LineItem("Reinforcing plates, std 100×180×6mm (×13) + wide 120×200×6mm (×5)", 47, 60, 73, "Welded to wall exterior behind each bracket"),
     LineItem("M12×65 partial-thread bolts + nuts + washers (×59)", 137, 137, 137, "91280A728 $1.595 + plain nut 90591A181 $0.256 + 4 flat 91166A290 + split 91202A246 /bolt; 3 per std bracket (39) + 4 per widened (20)"),
     LineItem("Transition bearing plates, 40×500×5mm flat bar (×2)", 5, 8, 10, "Welded to arm top at width transitions"),
     LineItem("Right walkway cantilever frame (long + end beams), 2×1×0.120in steel (~5.4m)", 125, 139, 153, "#26 (2026-08-07): 2×⅞ non-stock → 2×1×0.120 (MetalsDepot $76.20/12ft = $6.35/ft; 2 sticks). The closed rectangle (2 long + 2 end beams). The 2 center arms are now a SEPARATE solid-bar line (a notched hollow tube opens into a weak channel). Old $28-40 was a guess for the non-stock section."),

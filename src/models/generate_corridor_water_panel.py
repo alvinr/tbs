@@ -43,8 +43,14 @@ C_HANDLE = "#C0202A"                      # red diverter handle
 RIBBON_Z       = ov.WALKWAY_H - ov.WALKWAY_GRATE_T - ov.PUMP_PIPE_OD / 2   # 104.5 — FLUSH: pipe crown at the
 #   deck underside (Z115).  RAISED from the old Z98 so the corridor exit never has to dip toward the tray floor —
 #   the whole over-tray run now clears the spray-carriage crown (Z66) by ~28mm the entire way to the corridor.
-RIBBON_LANE_X  = [4556, 4530, 4504, 4478]       # 4 flat lanes in the clear channel BETWEEN the walkway long beams
-#   (inner X4329-4369, outer X4589-4629) — outer lane + its up-turn elbow clear the outer beam at 4589 (26mm pitch)
+# 4 flat ribbon lanes, DERIVED to sit evenly in the clear channel BETWEEN the walkway long beams (inner
+# outboard face .. outer inboard face). Was hardcoded [4556,4530,4504,4478] for the OLD wider channel;
+# F1 shortened the right walkway (outer beam 4629→4574), narrowing the channel to ~143mm, so lanes 0/1
+# clashed the moved beam — deriving keeps all 4 clear of BOTH beams for good (Alvin 2026-08-18).
+_LANE_R, _LANE_CLR = 10.5, 10                                   # OD21 ribbon radius / min gap from each beam face
+_ch_out = ov.RWK_X_R - ov.RWK_BEARER_W - _LANE_CLR - _LANE_R    # outermost lane centre (off the outer-beam inboard face)
+_ch_in  = ov.RWK_X_L + ov.RWK_BEARER_W + _LANE_CLR + _LANE_R    # innermost lane centre (off the inner-beam outboard face)
+RIBBON_LANE_X  = [round(_ch_out - i * (_ch_out - _ch_in) / 3) for i in range(4)]   # ~[4503,4469,4434,4400], index-matched to RWK_RIBBON_NOTCH_YDS
 RIBBON_YD_UP   = 1000                           # up-through-grate Yd — just BEFORE the first cantilever (Yd1046-1086)
 RIBBON_YD_DOWN = 1110                           # down-through-grate Yd — just PAST the cantilever (Yd1086); = lane-0 crest far-end (RWK_RIBBON_NOTCH_YDS[0]) so the sump over-crest length matches pipe 1 (Alvin 2026-07-24)
 RIBBON_OVER_Z  = ov.WALKWAY_H + 12              # 142 — loop crest, just above the grate (130) / cantilever top (115) — kept low

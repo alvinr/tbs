@@ -30,7 +30,9 @@ file** — a release must not ship without a changelog entry:
   ~2 ft) and a **plate fabrication schedule** (foot / reinforcing / corner / cleat / transition plates with
   hole Ø + positions/PCD referenced to the datums) to `walkway_load.py`, injected into report §10.4/§10.5
   (lint-gated). IBC-post center arms + J6 plates cross-referenced to the IBC-frame lists. §10 renamed
-  "Fabrication Schedules". *(Remaining Phase D: J/W callouts on the detail sheets, grate cut-plan, weld map.)*
+  "Fabrication Schedules". Landed the **WF#/WW# callouts** on the detail sheets (Sheet 2 std bracket,
+  Sheet 7 widened, Sheet 6 floor-leg, Sheet 3 right cantilever) so every schedule mark appears on its
+  drawing. *(Remaining Phase D: grate cut-plan sheet + consolidated weld map.)*
 - **Walkway blueprint — Phase C: datum + tolerance scheme (branch `walkway-bp`).** Defined 3 datums —
   **A** floor plane (all Z), **B** the two long wall faces (all Yd), **C** the film-plane rail datum
   (X260/X4649, shared with the film plane so the right corner + combined plate register to it) — plus a

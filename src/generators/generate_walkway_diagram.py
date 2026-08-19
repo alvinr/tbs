@@ -730,7 +730,7 @@ def sheet2():
     ax.plot([(weld_x - 4), (weld_x), (weld_x + 4)],
             [(arm_bot), (arm_bot - 5), (arm_bot)],
             color="#CC4400", lw=1.5, zorder=8)
-    ax.text((weld_x), (arm_bot - 7), "WELD",
+    ax.text((weld_x), (arm_bot - 7), "WELD WW1/WW3\n(§10.2)",
             ha="center", va="top", fontsize=4.5, color="#CC4400",
             **FONT, zorder=15)
 
@@ -786,7 +786,7 @@ def sheet2():
     # Bolt labels
     leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_lo),
            (reinf_yd - 30), (bolt_z_lo + 20),
-           f"2\u00d7 M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X \u2014 SEE VIEW B)",
+           f"WF1 \u00b7 2\u00d7 M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X \u2014 SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_hi),
@@ -1200,7 +1200,7 @@ def sheet3():
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, ((WK_L_X + WK_R_X) / 2), (C_WID - SHS / 2),
            ((WK_L_X + WK_R_X) / 2), (C_WID + 120),
-           "END BEAM (×2)\ncloses the rectangle",
+           "END BEAM (×2)\ncloses the rectangle\nWW5 corners (§10.2)",
            color=C_STEEL, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Center cantilever arms off the IBC uprights ──────────────────────────
@@ -1229,7 +1229,7 @@ def sheet3():
                                 fc=C_PLATE, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
     leader(ax, (WK_L_X + SHS / 2), (SHS / 2),
            (GUT_X - 150), (C_WID * 0.24),
-           "WALL CLEAT (left corners)\nback-plate + ext. plate +\nshelf, M12 through-bolts",
+           "WALL CLEAT (left corners)\nback-plate + ext. plate +\nshelf, M12 through-bolts\nWF3 bolts · WW8 welds",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # Right corners (X≈WALL_X) on combined corner plates — shared with BR film rail
@@ -1243,7 +1243,7 @@ def sheet3():
             ha="left", va="center", fontsize=5.5, color=C_CL, rotation=90, **FONT)
     leader(ax, (WK_R_X + SHS / 2), (70),
            (GUT_X + 1000), (C_WID * 0.06),
-           "COMBINED CORNER PLATE (right corners)\nshared with the BR film rail — 10mm,\n4× M12, permanently bolted",
+           "COMBINED CORNER PLATE (right corners)\nshared with the BR film rail — 10mm,\n4× M12, permanently bolted\nWF3 bolts · WW9 welds",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -1706,13 +1706,13 @@ def sheet6():
     # Post 50x50 (floor to grate bottom)
     axA.add_patch(Rectangle((legx - post / 2, 0), post, grate_bot, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))
     leader(axA, legx, grate_bot * 0.55, legx - 20, grate_bot * 1.3,
-           "50x50x3 STEEL\nSHS POST\n(bare floor,\noutside tray)",
+           "50x50x3 STEEL\nSHS POST\n(bare floor, outside tray)\nWW7 post→foot (§10.2)",
            color=C_OUT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
     # Cantilever arm (Z75-115) reaching to the grate inner edge (X470)
     axA.add_patch(Rectangle((arm_x0, arm_z0), std_reach - arm_x0, grate_bot - arm_z0,
                             fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
     leader(axA, 245, arm_z0 + 20, 220, arm_z0 + 75,
-           f"CANTILEVER ARM 2×1 (25.4 DEEP)\n(Z{int(arm_z0)}-{int(grate_bot)}); punch-out arms\nEXTEND to X{int(LEFT_WK_CANT_WIDE_REACH)} on a 4×1",
+           f"CANTILEVER ARM 2×1 (25.4 DEEP)\n(Z{int(arm_z0)}-{int(grate_bot)}); punch-out arms\nEXTEND to X{int(LEFT_WK_CANT_WIDE_REACH)} on a 4×1\nWW6 arm→post (§10.2)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Grate (sits on the arm/post tops)
     axA.add_patch(Rectangle((TX, grate_bot), std_reach - TX, grate_top - grate_bot,
@@ -1777,7 +1777,7 @@ def sheet6():
              [anchor_oys[0], anchor_oys[0], anchor_oys[1], anchor_oys[1], anchor_oys[0]],
              color=C_BOLT, lw=0.6, ls=(0, (3, 3)), zorder=7, alpha=0.5)
     leader(axB, anchor_oxs[0], anchor_oys[1], -fl / 2 - 18, fw / 2 + 24,
-           f"{nb}x #14 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
+           f"WF4 · {nb}x #14 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
     draw_dim_h(axB, -fl / 2, fl / 2, -fw / 2 - 12, f"{fl}mm", offset=4, fs=6, above=False, font=FONT)
     draw_dim_v(axB, fl / 2 + 14, -fw / 2, fw / 2, f"{fw}mm", offset=6, fs=6, right=True, font=FONT)
@@ -1970,7 +1970,7 @@ def sheet7():
     ax.plot([(weld_x - 4), (weld_x), (weld_x + 4)],
             [(w_arm_bot), (w_arm_bot - 5), (w_arm_bot)],
             color="#CC4400", lw=1.5, zorder=8)
-    ax.text((weld_x), (w_arm_bot - 7), "WELD",
+    ax.text((weld_x), (w_arm_bot - 7), "WELD WW2/WW3\n(§10.2)",
             ha="center", va="top", fontsize=4.5, color="#CC4400",
             **FONT, zorder=15)
 
@@ -2016,7 +2016,7 @@ def sheet7():
     # Bolt labels
     leader(ax, (reinf_yd - BOLT_HEAD), (bolt_z_lo),
            (reinf_yd - 30), (bolt_z_lo + 20),
-           f"2× M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X — SEE VIEW B)",
+           f"WF2 · 2× M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X — SEE VIEW B)",
            color=C_DIM, fs=5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     leader(ax, (reinf_yd - BOLT_HEAD), (bolt_z_hi),

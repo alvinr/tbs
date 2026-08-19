@@ -914,6 +914,19 @@ WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 1
 WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + 15  # 155 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Sits 15mm above the grate top (WALKWAY_H) so the nut clears the deck. Both legs (std 180 / widened 200) hold it with ≥1.5·D top edge.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
+# Wall-cantilever bracket DETAIL blanks — single-sourced so the 3D builder
+# (generate_walkway_model._cantilever_parts) AND the 2D fab sheets (View C reinforcing
+# plate + sheet 7 bolt pattern) dimension the same part (Phase 1.2, 2026-08-18; these
+# were duplicated 100/180/6 + gusset-70 literals in both files before promotion).
+WALKWAY_REINF_W = 100    # exterior reinforcing-plate width  (mm) — covers the triangular bolt pattern, standard bracket
+WALKWAY_REINF_H = 180    # exterior reinforcing-plate height (mm) — standard bracket
+WALKWAY_REINF_T = 6      # exterior reinforcing-plate thickness (mm)
+WALKWAY_REINF_W_WIDE = 120   # widened-bracket reinforcing-plate width  (mm) — larger blank for the 4-bolt rectangular pattern
+WALKWAY_REINF_H_WIDE = 220   # widened-bracket reinforcing-plate height (mm)
+WALKWAY_GUSSET_REACH = 70    # gusset triangle reach from the wall face (mm) — < the 80mm tray-rim standoff so the gusset clears the rim
+WALKWAY_BRACKET_BOLT_DX = 32   # wall-bolt X offset from the bracket centerline (mm) — flank the gusset; SHARED std (2+1) + widened (2+2)
+WALKWAY_BRACKET_BOLT_Z_LO = 42       # standard bracket: lower-pair bolt Z (mm) — the 2 bolts flanking the gusset
+WALKWAY_BRACKET_BOLT_Z_LO_WIDE = 35  # widened bracket:  lower-pair bolt Z (mm)
 # rev10: the panel + drum SWING ~56° about the pivot for transport and the swinging cage
 # rides the Z130 floor gap — its underside passes OVER the Z115 door-end bracket tops, so
 # NO walkway bracket is struck for transport (the old WALKWAY_BRACKET_DEMOUNT_X is retired).

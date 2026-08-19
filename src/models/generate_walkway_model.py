@@ -62,8 +62,9 @@ R_X, R_W = ov.WALKWAY_RIGHT_X, k.WALKWAY_RIGHT_W
 # (rev12: the ceiling-hung bearer/hanger/ceiling-plate constants are retired —
 #  the right walkway is now ov.right_walkway_cantilever().)
 
-# Exterior reinforcing plate (from generate_walkway_diagram.py View C).
-REINF_W, REINF_H, REINF_T = 100, 180, 6
+# Exterior reinforcing plate (single-sourced in tbs_constants; also drawn by
+# generate_walkway_diagram.py View C).
+REINF_W, REINF_H, REINF_T = k.WALKWAY_REINF_W, k.WALKWAY_REINF_H, k.WALKWAY_REINF_T
 
 C_STEEL, C_TRAY, C_SHELL = ov.C_STEEL, ov.C_TRAY, ov.C_SHELL
 C_WALKWAY, C_REMOVABLE, C_ALUM = ov.C_WALKWAY, ov.C_REMOVABLE, ov.C_ALUM
@@ -231,21 +232,22 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     load-bearing dimensions; `lint.py --duplication` reports it as EXPECTED, not drift."""
     bt, vh = BRK_T, BRK_H                                   # standard 8mm / 150mm
     btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
-    plate_w = 120
-    gusset_reach = 70
+    plate_w = k.WALKWAY_REINF_W_WIDE
+    gusset_reach = k.WALKWAY_GUSSET_REACH
     # Bolt patterns (X offset, Z): standard 3 (triangular); widened 4 (rectangular,
-    # per Sheet 7: lower pair Z=35, upper pair Z=160, both ±32mm from CL).
+    # per Sheet 7: lower pair, upper pair, both ±WALKWAY_BRACKET_BOLT_DX from CL).
     _ubz = k.WALKWAY_BRACKET_UPPER_BOLT_Z   # 155 — upper bolt clears the grate deck (SHARED std + widened)
-    bolt_pat_std  = [(0, _ubz), (-32, 42), (32, 42)]
-    bolt_pat_wide = [(-32, 35), (32, 35), (-32, _ubz), (32, _ubz)]
+    _dx  = k.WALKWAY_BRACKET_BOLT_DX         # 32 — wall-bolt X offset (SHARED std + widened)
+    bolt_pat_std  = [(0, _ubz), (-_dx, k.WALKWAY_BRACKET_BOLT_Z_LO), (_dx, k.WALKWAY_BRACKET_BOLT_Z_LO)]
+    bolt_pat_wide = [(-_dx, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (_dx, k.WALKWAY_BRACKET_BOLT_Z_LO_WIDE), (-_dx, _ubz), (_dx, _ubz)]
 
     b   = btw if wide else bt                       # plate/arm/gusset thickness
     v   = vhw if wide else vh                        # vertical leg height
     arm_d = b + 2
     arm_bot = GRATE_Z - arm_d
     rch = WK_NEAR_WIDE_W if wide else reach         # arm reach (500mm widened deck)
-    rw  = 120 if wide else REINF_W                  # exterior reinf plate W
-    rh  = 220 if wide else REINF_H                  #                       H
+    rw  = k.WALKWAY_REINF_W_WIDE if wide else REINF_W   # exterior reinf plate W
+    rh  = k.WALKWAY_REINF_H_WIDE if wide else REINF_H   #                       H
     bolt_pat = bolt_pat_wide if wide else bolt_pat_std
     shank_len = WALL_T + REINF_T + b
     reinf_z0 = max(0, (v - rh) // 2)

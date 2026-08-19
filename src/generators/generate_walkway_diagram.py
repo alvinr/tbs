@@ -60,7 +60,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_Z_LO, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -552,9 +552,9 @@ def sheet2():
     BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 65mm (bracket arm top Z)
     BRKT_T     = WALKWAY_BRACKET_T  # 8mm plate thickness
     BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm vertical leg on wall
-    REINF_W    = 100   # reinforcing plate width (covers triangular bolt pattern)
-    REINF_H    = 180   # reinforcing plate height
-    REINF_T    = 6     # reinforcing plate thickness
+    REINF_W    = WALKWAY_REINF_W   # reinforcing plate width (covers triangular bolt pattern)
+    REINF_H    = WALKWAY_REINF_H   # reinforcing plate height
+    REINF_T    = WALKWAY_REINF_T   # reinforcing plate thickness
 
     # Positions (mm real)
     TRAY_RIM_YD = PROC_TRAY_YD_NEAR  # = 80mm from wall
@@ -683,7 +683,7 @@ def sheet2():
     brkt_arm_z = BRKT_ARM_H  # = 65mm (top of horizontal arm = grate support)
     ARM_DEPTH  = BRKT_T + 2  # arm cross-section depth shown (visual thickness)
     arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm
-    GUSSET_REACH = 70  # gusset extends 70mm from wall (< 80mm tray rim position)
+    GUSSET_REACH = WALKWAY_GUSSET_REACH  # gusset extends 70mm from wall (< 80mm tray rim position)
 
     # 1. Vertical mounting plate (flat against rib interior face, Yd=0 to BRKT_T)
     ax.add_patch(Rectangle(((0), (0)),
@@ -721,15 +721,15 @@ def sheet2():
             **FONT, zorder=15)
 
     # Through-bolts (3× M12) — horizontal shanks through wall + bracket
-    # Triangular pattern: 2× at Z=35 (flanking gusset in X), 1× at Z=120 (centered)
-    # In this side view (along X), the two Z=35 bolts overlap — shown as one + "2×" label
+    # Triangular pattern: 2× lower (flanking gusset in X), 1× upper (centered)
+    # In this side view (along X), the two lower bolts overlap — shown as one + "2×" label
     BOLT_D    = 12
     BOLT_R    = BOLT_D / 2
     BOLT_HEAD = 8    # hex head height (Yd direction)
     NUT_H     = 10   # nut height (Yd direction)
     WASHER_T  = 3
     C_BOLT    = "#505058"
-    bolt_z_lo = 42   # lower pair — flanking gusset in X, ±27mm from CL (matches the 3D pattern)
+    bolt_z_lo = WALKWAY_BRACKET_BOLT_Z_LO   # 42 — lower pair, flanking gusset in X at ±WALKWAY_BRACKET_BOLT_DX (32mm) from CL (matches the 3D pattern)
     bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 155 — SHARED with sheet7 + the 3D; clears the grate deck top (Z140)
 
     for bz in [bolt_z_lo, bolt_z_hi]:

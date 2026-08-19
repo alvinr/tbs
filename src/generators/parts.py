@@ -1020,7 +1020,7 @@ PARTS: list[Part] = [
          "walkway", 24, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked)."),
     Part("walkway-floor-legs", "Floor-leg cantilever bracket (left walkway, ×5)", "steel-structural",
          "walkway", 5, "ea", 13, 21, "MetalsDepot", "Local fab",
-         spec="2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate. #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote."),
+         spec="2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 165×60×8mm foot plate (F3: lengthened 128→165 so the 4 floor anchors clear the post footprint as an inboard outrigger). #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote."),
     Part("walkway-floor-anchors", "Self-drilling structural screw, #14×2″ HWH, 410 SS", "fasteners-hardware",
          "walkway", 20, "ea", 0.35, 0.55, "Bridge Fasteners", "ASMC",
          url="https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread",

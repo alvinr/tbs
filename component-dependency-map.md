@@ -398,7 +398,7 @@ Permanently installed — no removal for transport mode conversion.*
 
 *Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 
-Right: cantilever rectangle — a closed 2×1×0.120in steel frame (2 long beams at X=4329/4629 +
+Right: cantilever rectangle — a closed 2×1×0.120in steel frame (2 long beams at X=4329/4574 +
 2 end beams) picked up at mid-span by 2 arms cantilevering off the IBC corridor uprights (half-lapped
 where the long beams cross), on wall cleats at the left corners and combined corner plates (shared with
 the bottom film rail BR) at the right corners. No floor contact, no roof penetrations — clears IBC stack entirely.

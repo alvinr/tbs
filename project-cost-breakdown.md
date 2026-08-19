@@ -18,11 +18,11 @@
 | **2. Interior conversion** | $526 | $605 | $693 |
 | **3. Optics — pinhole plate** | $100 | $155 | $215 |
 | **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $4,271 | $4,470 | $4,673 |
-| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,725 | $7,353 | $7,991 |
+| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,841 | $7,478 | $8,126 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $3,431 | $3,464 | $3,496 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $748 | $808 | $898 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $2,046 | $2,280 | $2,516 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,195 | $2,623 | $3,076 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,079 | $2,498 | $2,941 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,180 | $1,395 | $1,610 |
 | **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,278 | $1,382 | $1,484 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $223 | $229 | $235 |
@@ -236,7 +236,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Category | Low† | High† |
 |----------|------|-------|
 | Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee) | $664 | $664 |
-| IBC stacking frame (2×2×0.120in restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $1,193 | $1,737 |
+| IBC stacking frame (2×2×0.120in restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $1,309 | $1,872 |
 | Pumps and accumulator (P-01/P-02/P-03/P-05 IBC corridor + P-04 tray-drain on the filter skid) | $572 | $572 |
 | Corridor plumbing panel structure (23/32" exterior ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners) | $84 | $109 |
 | Pinhole-wall filter-skid backing ply (23/32" exterior, pieced from 2 sheets) | $58 | $58 |
@@ -252,7 +252,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Spray bar assembly (gantry: beam, LDPE pipe, 44 nozzles, single center feed, 4 wheels, ball joint, arm, hose) | $587 | $599 |
 | Electrical (wiring only — fuse block in Electrical Report) | $31 | $31 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $257 | $257 |
-| **Water system total** | **$6,725** | **$7,991** |
+| **Water system total** | **$6,841** | **$8,126** |
 <!-- END costing:water -->
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
@@ -307,19 +307,16 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | Reinforcing plates, std 100×180×6mm (×13) + wide 120×220×6mm (×5) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
 | M12×65 partial-thread bolts + nuts + washers (×59) | $137 | $137 | $137 | 91280A728 $1.595 + plain nut 90591A181 $0.256 + 4 flat 91166A290 + split 91202A246 /bolt; 3 per std bracket (39) + 4 per widened (20) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
-| Right walkway cantilever frame (long + end beams), 2×1×0.120in steel (~5.4m) | $125 | $139 | $153 | rev12: closed rectangle (2 long + 2 end beams); the 2 center arms are now a separate solid-bar line |
-| Right walkway center arms, solid 2×1 flat bar (×2) | $91 | $91 | $91 | FIRM — Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare). Solid (not tube) so the half-lap notch keeps its strength; notch rebalanced to the moment |
+| Right walkway cantilever frame (long + end beams), 2×1×0.120in steel (~5.4m) | $125 | $139 | $153 | rev12: closed rectangle (2 long + 2 end beams); the 2 center arms are IBC-owned (see the IBC frame §5) |
 | Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — through-bolted to the wall |
 | Combined corner plates, 10mm steel (×2) | $50 | $65 | $80 | Right corners — shared with the bottom film rail |
-| M12×70 partial-thread bolts + nuts/washers (~20) | $53 | $53 | $53 | 91280A732 $1.736 + plain nut + 4 flat + split /bolt; wall cleats + combined plates (arms moved to the J6 end-plate line) |
-| Walkway-arm J6 end-plate hardware (4× M12×100 + 4 plates 55×130×8 + 4 crush sleeves) | $23 | $31 | $40 | Bolted end-plate + rear backing plate + 2 M12/arm (central vertical column) through the upright + crush sleeve/bolt |
-| Half-lap hold-down screws (#14 TEK + washer, ×4) | $2 | $3 | $4 | 1 self-drilling TEK screw per half-lap — from the underside through a Ø7 hole in the beam into the solid arm; positively secures the beam to the seat |
+| M12×70 partial-thread bolts + nuts/washers (~20) | $53 | $53 | $53 | 91280A732 $1.736 + plain nut + 4 flat + split /bolt; wall cleats + combined plates (arms bolt via the J6 end-plate, now IBC-frame §5) |
 | 316 SS hold-down clips (FRP M/G-clip, ×20) | $25 | $32 | $40 | Near/far/right walkway GRP grating retention |
 | Drum-exit punch-out — extra GRP grating (~0.23 m²) | $50 | $57 | $65 | 600mm-deep landing at the light-lock exit |
 | Left floor-leg cantilever brackets (×5) | $65 | $80 | $105 | 2×2×0.120in posts + 2×1×0.120in arms + foot plates |
 | Floor screws — #14×2″ HWH 410 SS self-drilling (×20) | $7 | $9 | $11 | 2026-07-22: wedge anchors → structural self-drillers (ply-over-steel container floor); Bridge Fasteners ~$0.35–0.55 ea |
 | Fabrication (brackets, cantilever frame, install) | $424 | $590 | $750 | 13 std + 5 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices |
-| **Perimeter walkway total** | **$2,195** | **$2,623** | **$3,076** | |
+| **Perimeter walkway total** | **$2,079** | **$2,498** | **$2,941** | |
 <!-- END costing:walkway -->
 
 ---
@@ -524,11 +521,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $526 |
 | Pinhole plate | $100 |
 | Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $4,271 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,725 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,841 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,431 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $748 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,046 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $2,195 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,079 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,180 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,278 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $223 |
@@ -547,11 +544,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $605 |
 | Pinhole plate | $155 |
 | Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $4,470 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,353 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,478 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,464 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $808 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,280 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $2,623 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,498 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,395 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,382 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $229 |

@@ -280,10 +280,11 @@ parametrically from `tbs_constants` so they can't drift. Do the **film-plane cor
 as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
 walkway, hinged panel, light lock, electrical, optics, …)._
 
-- [ ] **Walkway blueprint pass (roll the IBC-frame standard onto the walkway set).** Definitive walkway drawings
-  — floor-leg cantilevers, right cantilever-rectangle, wall gusset brackets, grate cut-plans — with hole
-  positions / datums / fastener + weld callouts / material-finish, driven from `tbs_constants`. **Known fixes to
-  resolve in it:**
+- [x] **Walkway blueprint pass (roll the IBC-frame standard onto the walkway set).** DONE (branch `walkway-bp`,
+  Phases 0–E, 2026-08-19): definitive walkway drawings with hole positions / datums / fastener + weld callouts,
+  driven from `tbs_constants`; incl. the IBC/OSHA bracket + floor-leg redesign, §9 validation, §10 fastener/weld/
+  cut/plate/datum schedules, Sheet 10 grate cut-plan, and the J6 cost reconciliation to the IBC frame. All four
+  known fixes below resolved in Phase 0. **Known fixes (all resolved):**
   - `walkway-sheet6` **View B — the cantilever post is drawn welded OVER the foot-plate anchor
     bolt holes**, so the M10 floor anchors (`LEFT_WK_CANT_FOOT_BOLT_N`) can't be driven. Relocate the 4 anchor
     holes into the foot's **outboard outrigger** (X≈147–225, clear of the 50.8 post now sitting at X225–275 after
@@ -306,12 +307,10 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
   (Surfaced during the egress review that retired the swing-out floorplan sheet.)
-- [ ] **Walkway blueprint Phase D — wall-cleat blank + grate-clip pitch (deferred from Phase 1.2, 2026-08-18).**
-  Two single-consumer detail dims left in the model for now (per the "leave detail dims" rule): (1) the
-  **RIGHT-walkway wall-cleat blank** (`_rwk_wall_cleat`: plate 90×8, shelf 90×55×10) — promote to
-  `WALKWAY_CLEAT_*` constants when its Phase D cut sheet is drawn (so 2D + 3D share); (2) the
-  **grate-clip pitch** — no value exists anywhere; fix it against the McNichols MS-S-100 FRP hold-down-clip
-  datasheet when the grate/clip fab-detail sheet is authored (spec placeholder was ~914mm/36in).
+- [ ] **Walkway — RIGHT-walkway wall-cleat blank promotion (minor residual from Phase 1.2).** The wall-cleat
+  blank (`_rwk_wall_cleat`: plate 90×8, shelf 90×55×10) is still a model-local literal; promote to
+  `WALKWAY_CLEAT_*` constants if/when the cleat gets its own 1:1 cut sheet (the §10.5 plate schedule already
+  lists it). *(The grate-clip pitch was resolved in Phase D — `WALKWAY_GRATE_CLIP_PITCH` = 610mm/24".)*
 - [ ] **IBC frame — joint-mark naming (J1–J9) revisit (Alvin 2026-08-18).** Alvin finds the bare `J#` joint
   marks opaque / doesn't identify with them. Consider human-descriptive marks for the IBC connection
   schedule — but it's cross-cutting (IBC report + drawings + parts + costing + master-shopping-list), so do

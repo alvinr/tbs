@@ -190,12 +190,12 @@ they can't drift.
 
 ## Phase E — Cascade + close (as changes land)
 
-- [ ] Firm any spec change into `parts.py` / `costing.py` / master-shopping-list / cost-breakdown (same
+- [x] Firm any spec change into `parts.py` / `costing.py` / master-shopping-list / cost-breakdown (same
   commit); `parts.py --check` + `costing.py --check-registry`.
-- [ ] Regenerate + gallery-register new sheets; re-send models only if geometry detail changed (Phase 0
+- [x] Regenerate + gallery-register new sheets; re-send models only if geometry detail changed (Phase 0
   already covers the geometry); `manifest.py --update`.
-- [ ] `lint.py` (+ `--verify-all` before publish) + `check_consistency.py` clean.
-- [ ] RELEASE `[Unreleased]` bullet; tick the TODO "Walkway blueprint pass" sub-items.
+- [x] `lint.py` (+ `--verify-all` before publish) + `check_consistency.py` clean.
+- [x] RELEASE `[Unreleased]` bullet; tick the TODO "Walkway blueprint pass" sub-items.
 
 ## Open decisions
 

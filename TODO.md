@@ -327,6 +327,12 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
+- [ ] **Film-plane blueprint — check the wall-bracket BOLT PATTERN vs the beams for clash (Alvin 2026-08-20).**
+  The new saddle / far-left-flange / combined-plate wall bolts (4× M12 each) sit near the film-rail (U-channel)
+  ends. Verify the bolt centerlines + heads/nuts don't foul the rail webs/flanges or the seat/upstand at any
+  corner — run `check_interference.py --bolts` scoped to the film-plane brackets and eyeball the 3D. (Surfaced
+  while adding the bolts + exterior plates to the 2D on Sheets 4/11.)
+
 - [ ] **Film-plane support-beam LEFT brackets — no bolts + no external plates (2D↔3D gap, Alvin 2026-08-17).**
   The film-plane support beams' LEFT-side wall brackets are drawn without their fixings: (1) the **left UPPER
   bracket** (TL corner) and (2) the **left LOWER bracket** (BL corner) both lack the **through-bolts + exterior

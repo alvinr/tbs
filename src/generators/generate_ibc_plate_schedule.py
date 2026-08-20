@@ -24,7 +24,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
 from tbs_constants import (IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD,
-                           IBC_FOOT_BOLT_N, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FRONT_BAR_W, DIAGRAM_DPI, DIAGRAMS_DIR)
+                           IBC_FOOT_BOLT_N, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FRONT_BAR_W,
+                           IBC_FRONT_FOOT_DX, DIAGRAM_DPI, DIAGRAMS_DIR)
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes
 
@@ -120,22 +121,33 @@ def sheet1():
             fontweight="bold", ha="center", **FONT)
 
     # ── PLATE 1 — IBC FLOOR FOOT (150×150×12, 4× Ø14 @ 100 sq PCD) ──
-    _panel(ax, 20, 40, 420, 340, "PLATE 1 — IBC FLOOR FOOT", "A36 · 12 mm · ×4")
-    cx, cy = 170, 200
+    _panel(ax, 20, 40, 420, 340, "PLATE 1 — IBC FLOOR FOOT", "A36 · 12 mm · ×4 (2 back + 2 front-offset)")
+    cx, cy = 175, 205
+    fdx = IBC_FRONT_FOOT_DX
     ax.add_patch(Rectangle((cx - FOOT_W/2, cy - FOOT_W/2), FOOT_W, FOOT_W, fc=C_STEEL, ec=C_OUT, lw=1.6, zorder=4))
+    # BACK feet (×2): upright welded at the plate CENTER
     ax.add_patch(Rectangle((cx - IBC_FRAME_RHS/2, cy - IBC_FRAME_RHS/2), IBC_FRAME_RHS, IBC_FRAME_RHS,
-                           fc="none", ec=C_CL, lw=0.9, ls=(0, (5, 3)), zorder=5))     # upright weld footprint
-    ax.text(cx, cy, "upright\nweld", fontsize=5, ha="center", va="center", color=C_CL, **FONT, zorder=6)
+                           fc="none", ec=C_CL, lw=0.9, ls=(0, (5, 3)), zorder=5))
+    ax.text(cx, cy + 9, "BACK ×2\nupright CL", fontsize=4.3, ha="center", va="center", color=C_CL, **FONT, zorder=6)
+    # FRONT feet (×2): the plate is shifted +DX OUTBOARD (clears the tray) so the upright welds DX toward
+    # the TRAY side of the plate center — a DIFFERENT weld position, same plate + hole pattern.
+    ax.add_patch(Rectangle((cx - fdx - IBC_FRAME_RHS/2, cy - IBC_FRAME_RHS/2), IBC_FRAME_RHS, IBC_FRAME_RHS,
+                           fc="none", ec="#B03030", lw=1.0, ls=(0, (2, 2)), zorder=6))
+    ax.text(cx - fdx, cy - 11, "FRONT ×2", fontsize=4.3, ha="center", va="center", color="#B03030", **FONT, zorder=7)
+    draw_dim_h(ax, cx - fdx, cx, cy + IBC_FRAME_RHS/2 + 8, f"{int(round(fdx))}mm", fs=5, font=FONT)
     for sx in (-1, 1):
         for sy in (-1, 1):
             _hole(ax, cx + sx*FOOT_PCD/2, cy + sy*FOOT_PCD/2, FOOT_BOLT_D + 2)
-    draw_dim_h(ax, cx - FOOT_W/2, cx + FOOT_W/2, cy + FOOT_W/2 + 22, f"{FOOT_W}mm", fs=6, font=FONT)
+    draw_dim_h(ax, cx - FOOT_W/2, cx + FOOT_W/2, cy + FOOT_W/2 + 26, f"{FOOT_W}mm", fs=6, font=FONT)
     draw_dim_v(ax, cx + FOOT_W/2 + 22, cy - FOOT_W/2, cy + FOOT_W/2, f"{FOOT_W}mm", fs=6, font=FONT)
     draw_dim_h(ax, cx - FOOT_PCD/2, cx + FOOT_PCD/2, cy - FOOT_W/2 - 20, f"{FOOT_PCD}mm PCD", fs=6, font=FONT, above=False)
     draw_dim_v(ax, cx - FOOT_W/2 - 22, cy - FOOT_PCD/2, cy + FOOT_PCD/2, f"{FOOT_PCD}mm", fs=6, font=FONT)
-    _specbox(ax, 300, 300, [f"4× Ø{FOOT_BOLT_D+2} (M{FOOT_BOLT_D})",
-                            f"@ {FOOT_PCD}×{FOOT_PCD} sq PCD", "(±50 from each CL)",
-                            "corner marks = CL", "weld upright to center"])
+    _specbox(ax, 300, 308, [f"4× Ø{FOOT_BOLT_D+2} (M{FOOT_BOLT_D})",
+                            f"@ {FOOT_PCD}×{FOOT_PCD} sq PCD",
+                            "holes centered on plate",
+                            "BACK ×2: weld upright @ CL",
+                            f"FRONT ×2: weld {int(round(fdx))}mm",
+                            "toward tray (Frame Sh.3)"])
 
     # ── PLATE 2 — WALL-HANGER BACKING (60×205×8, 2× Ø14) ──
     _panel(ax, 460, 40, 420, 340, "PLATE 2 — WALL-HANGER BACKING", "A36 · 8 mm · ×8 (exterior)")
@@ -215,8 +227,8 @@ def sheet2():
     ax.text(cx + CLEAT_T + barW + 22, cy + CLEAT_T + barH * 0.8, "backing\nplate", fontsize=4.2, ha="left", va="center", color=C_DIM, **FONT, zorder=7)
     bz_ = cy + CLEAT_T + CLEAT_BOLT_Z                                                                  # bolt at the bar mid-height
     ax.add_patch(Rectangle((cx - 10, bz_ - 8), 10, 16, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))         # hex head (front)
-    ax.add_patch(Rectangle((cx, bz_ - 4), CLEAT_T + barW + CLEAT_T + 6, 8, fc="#D8D8DC", ec=C_OUT, lw=0.8, zorder=8))  # shank through the leg + bar + backing plate
-    ax.add_patch(Rectangle((cx + CLEAT_T + barW + CLEAT_T + 6, bz_ - 7), 5, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))  # nut (back)
+    ax.add_patch(Rectangle((cx, bz_ - 4), CLEAT_T + barW + CLEAT_T + 5, 8, fc="#D8D8DC", ec=C_OUT, lw=0.8, zorder=8))  # shank through the leg + bar + backing plate (protrudes only through the nut)
+    ax.add_patch(Rectangle((cx + CLEAT_T + barW + CLEAT_T, bz_ - 7), 5, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))  # nut — FLUSH on the backing-plate surface
     draw_dim_v(ax, cx - 24, cy, cy + CLEAT_UP, f"{CLEAT_UP:.0f}mm", fs=5.5, font=FONT)                  # vertical-leg height
     draw_dim_h(ax, cx, cx + CLEAT_T + barW, cy - 16, f"{CLEAT_T + barW}mm", fs=5.5, font=FONT, above=False)   # horizontal-leg reach
     ax.text(cx - 6, cy + CLEAT_UP + 26, "END SECTION — bar drops into the L;\nvertical leg welds to the upright (W3)", fontsize=4.8, ha="left", color=C_DIM, **FONT, zorder=7)

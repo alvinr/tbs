@@ -327,6 +327,7 @@ _SANCTIONED_SOLID = [
     ("wall cleat ext plate", "wall cleat shelf", "one welded L-cleat (ext plate + shelf)"),
     ("door frame", "door frame", "one welded door frame (stiles/top/threshold)"),
     ("fp combined", "fp combined", "one combined corner plate (seat + rail seat + plate)"),
+    ("saddle", "saddle", "one welded film-plane wall-seat saddle (back/outside plate + seat + gusset)"),
     ("drum c-shell", "drum bottom cap", "one welded drum (shell + cap)"),
     ("drum c-shell", "drum top cap", "one welded drum (shell + cap)"),
     ("housing arc", "drum", "light-trap housing + drum assembly"),
@@ -350,6 +351,8 @@ _SANCTIONED_SOLID = [
     ("long beam", "wall cleat plate", "left long beam seated in its wall cleat"),
     ("end beam", "wall cleat plate", "end beam seated in its wall cleat"),
     ("long beam", "fp combined", "right long beam seated on the combined corner plate"),
+    ("u-rail", "saddle seat", "film depth-rail bears on its wall-seat saddle (336)"),
+    ("u-rail", "saddle upstand", "film depth-rail END butts/bolts to the saddle upstand (inside-face joint, 336)"),
     ("pivot post", "roof mount plate", "pivot post seated in its roof mount"),
 ]
 

@@ -181,8 +181,11 @@ def frame(part="all"):
         # floor feet (150×150×12 plate + 4× M12) under each upright
         fp, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_BOLT_PCD // 2   # ft hoisted above (uprights sit on the plate)
         for ux in box_xs:
+            # FRONT feet shift OUTBOARD (plate + anchors) to clear the processing-tray basin; the upright
+            # stays put (still fully on the plate) — plate/anchor spec unchanged, only the X station moves.
+            foot_dx = ov.IBC_FRONT_FOOT_DX if ux == FRONT_X else 0.0
             for yd in up_yds:
-                cx, cy = ux + S / 2, yd + S / 2
+                cx, cy = ux + S / 2 + foot_dx, yd + S / 2
                 p.append(ov.ruby_box("Foot plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=ov.C_STEEL))
                 for dx in (-bpc, bpc):
                     for dy in (-bpc, bpc):

@@ -24,7 +24,20 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
+  the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
+  outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate
+  spec is unchanged, only the station moves. **Left film-rail wall mounts:** restored the budgeted wall-seat
+  **saddles** the redesign had dropped — seat + gusset + **upstand** on the container-facing face (rail bears
+  on the inside face, not the outer edge), back-plate lengthened so the gusset welds fully, and the rail ends
+  trimmed to butt the plate. Count firmed 6→4 (BL/TL-near + TR near+far); the two far-LEFT ends land on the
+  Ø89 **pivot post** (it carries their weight) so they get a lighter flange **tie** (interior flange + exterior
+  plate + 4× M12) instead — sized to clear the post + roof-mount plate. All wall-bolt **heads sit outside**.
+  **Cascade:** parts/costing reconciled (−$161 film), 3D re-sent to all 7 models, and the 2D updated — IBC
+  foot-plan (front-offset), Plate 1 fab (BACK-centered vs FRONT-offset weld), the film-plane rail-end brackets
+  on Sheets 4/11 (exterior plates + bolts + nuts), new **Sheet 11** (far-left → pivot-post attachment detail),
+  Sheet 3 gib now adjustable through the bottom plate, and an `mm`-unit pass on the film-plane sheets. Fan A/B
+  ceiling feeds rerouted clear of the top saddle bolts.
 
 ## [0.8] — 2026-08-19
 

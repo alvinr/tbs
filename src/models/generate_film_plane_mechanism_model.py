@@ -174,13 +174,18 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
     splice_z = botf - 12                                 # length splice on the outboard web-back (both)
 
     # ── U-CHANNEL DEPTH RAIL ──
-    if side == "R":                                     # RIGHT: continuous, flanged wall-to-wall (IBC combined plate)
-        P += rail("U-rail (FLANGED)", 0, ov.C_WID)
-        for fy in (0, ov.C_WID - 12):                    # end plate trimmed 35mm on the OUTBOARD (+X) side to clear the IBC frame
-            P.append(ov.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, 12, sec_h + 10, color=C_CROSS))
+    if side == "R":                                     # RIGHT: continuous, flanged wall-to-wall
+        if is_bot:                                       # BOTTOM-RIGHT (BR): combined corner plates at both walls
+            P += rail("U-rail (FLANGED)", 0, ov.C_WID)
+            for fy in (0, ov.C_WID - 12):                # end flange trimmed 35mm on the OUTBOARD (+X) side to clear the IBC frame
+                P.append(ov.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, 12, sec_h + 10, color=C_CROSS))
+        else:                                            # TOP-RIGHT (TR): budgeted wall-seat saddle at BOTH walls; the rail
+            sp = ov.FP_CORNER_SEAT_PLATE_T               # ENDS align to the saddle plate INNER faces (butt the upstand) — no end flange (the saddle mounts + caps it)
+            P += rail("U-rail (FLANGED)", sp, ov.C_WID - 2 * sp)
+            P.append(ov.film_plane_saddles({tag: (cx, zc)}))
     else:                                              # LEFT: parking stub + removable + welded bridge + support + gusset
-        P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, ov.C_WID - LEFT_CUT_YD)
-        P += rail("U-rail REMOVABLE (out for transport)", 0, LEFT_CUT_YD, 0.30)
+        P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, (ov.C_WID - 12) - LEFT_CUT_YD)   # far end BUTTS the INNER face of the pivot-post flange plate (12mm), not through it (Alvin 2026-08-19)
+        P += rail("U-rail REMOVABLE (out for transport)", ov.FP_CORNER_SEAT_PLATE_T, LEFT_CUT_YD - ov.FP_CORNER_SEAT_PLATE_T, 0.30)   # near end ALIGNED to the saddle plate INNER face (butts the upstand)
         # the bridge is WELDED to the REMOVABLE beam and LAPS + BEARS on the stub (weight rides the bridge,
         # not the screw); a retaining SCREW into the STUB just holds it — drops straight in, then lock
         # BRIDGE welded to the REMOVABLE bears ON TOP of the stub (gravity-held) + a locating PIN (flush to the
@@ -193,7 +198,22 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # welded bridge BEARS on the stub, whose pivot-post anchor carries the reaction, so a floor post
         # (which would foul the sliding carriage) is unnecessary.
         P.append(ov.ruby_box(f"Rail far flange (pivot post) {tag}", cx - 55, ov.C_WID - 12, botf - 5, 110, 12, sec_h + 10, color=C_CROSS))
-        P.append(ov.ruby_box(f"Pinhole-wall gusset/seat {tag}", cx - 56, 0, botf - 30, 112, 45, sec_h + 55, color=C_CROSS))
+        # FAR-LEFT (rear) bracket WALL FIXING — exterior backing plate + 4× M12 through the far wall (Alvin
+        # 2026-08-19). The flange (above) is the interior plate the rail butts; this adds the exterior plate +
+        # bolts. Sized to the flange Z-extent (botf-5 .. botf+sec_h+5) so it clears the pivot ROOF-mount plate
+        # up at Z2368 — a full 150-tall saddle would foul it, which is why the far-left carries a flange bracket.
+        _fp_t = ov.FP_CORNER_SEAT_PLATE_T
+        P.append(ov.ruby_box(f"FP far-left EXT plate {tag}", cx - 55, ov.C_WID + ov.WALL_T, botf - 5, 110, _fp_t, sec_h + 10, color=C_STEEL))
+        for _bx in (cx - 38, cx + 38):
+            for _bz in (botf + 8, botf + sec_h - 8):
+                P.append(ov.ruby_bolt(f"FP far-left bolt M12 {tag} X{int(_bx)} Z{int(_bz)}", _bx, ov.C_WID - 12, _bz, ov.WALL_T + _fp_t + 12, radius=6, axis="y", color=C_STEEL, head="far", nut="base"))   # hex head OUTSIDE (far wall), nut inside
+        # WALL-SEAT SADDLES restored at BOTH left ends (items 330/336): the budgeted ICP-11 saddle
+        # (back + exterior plate + seat + gusset + 4× M12 + M8 thumb-screw) the fpm redesign had dropped,
+        # leaving a bare gusset/seat block with no wall fixing. Single-sourced from ov.film_plane_saddles
+        # (draws near Yd0 + far C_WID walls); the web-vertical rail bears on the seat's container-facing
+        # projection (336), and the through-bolted interior+exterior plates are the standard wall fixing
+        # (330). BOM unchanged — parts.py already carries these ends in the 6-saddle wall-seat-saddle line.
+        P.append(ov.film_plane_saddles({tag: (cx, zc)}, walls=(0,)))   # NEAR (pinhole-wall) only — the far end is the pivot post
         # length splice (removable = 6ft + 260mm) at the PINHOLE end — shortest-throw, least-travelled;
         # same outboard-web placement so it's clear of the carriage
         P.append(ov.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))

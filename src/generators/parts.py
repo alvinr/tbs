@@ -803,19 +803,21 @@ PARTS: list[Part] = [
          "film", 1, "roll", 40.12, 40.12, "Home Depot", part_no="51982", url="https://www.homedepot.com/p/332820356", spec="Film-Gard 10 ft × 100 ft × 4-mil black poly (film-plane blackout). 4-mil is fully opaque for a light-seal (opacity is the black pigment, not the gauge) — 6-mil was over-spec for a non-structural curtain."),
     Part("gorilla-tape", '2" black Gorilla Tape', "adhesives-finishes",
          "film", 6, "roll", 9.94, 9.94, "Home Depot", "Amazon", part_no="106718", url="https://www.homedepot.com/p/316372144", spec='Gorilla 30 yd × 1.88" black tape'),
-    # — Wall-Seat Saddles (440; rev12 ×6, the 2 BR ends are walkway combined plates) —
+    # — Wall-Seat Saddles (ICP-11; ×4 = BL-near + TL-near [left, thumb-screw drop-in] + TR-near + TR-far
+    #   [right, permanent bolt]. The 2 BR ends are the walkway COMBINED plates; the 2 far-LEFT ends land on
+    #   the pivot-post floor/roof mount plates → NO saddle. Count firmed 6→4, Alvin 2026-08-19.) —
     Part("wall-seat-saddle-8mm", "Wall-seat saddle 8mm A36 plate (ICP-11)", "steel-structural",
-         "film", 1, "sheet", 216, 216, "Metal Supermarkets",
-         dims="610×760×8mm (24×30in)",
-         spec="8mm A36 mild-steel plate, 610×760mm (24×30in) — nests all 6 saddles' back-plates (150×200) + exterior plates (150×200) + gusset triangles (from 3× 200×110). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $216 placeholder (part of the old $318 saddle line, split 8mm/10mm) pending quote."),
+         "film", 1, "sheet", 160, 160, "Metal Supermarkets",
+         dims="610×560×8mm (24×22in)",
+         spec="8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×243, lengthened so the gusset's back edge welds FULLY to the plate) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (110×86). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate lengthened 200→243 for full gusset weld) pending quote."),
     Part("wall-seat-saddle-10mm", "Wall-seat saddle 10mm A36 plate (ICP-11)", "steel-structural",
-         "film", 1, "sheet", 102, 102, "Metal Supermarkets",
-         dims="610×254×10mm (24×10in)",
-         spec="10mm A36 mild-steel plate, 610×254mm (24×10in) — nests the 6 saddle seats (150×110). Cut to size; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $102 placeholder (split from the old $318 saddle line) pending quote."),
+         "film", 1, "sheet", 68, 68, "Metal Supermarkets",
+         dims="610×170×10mm (24×7in)",
+         spec="10mm A36 mild-steel plate, 610×170mm (24×7in) — nests the 4 saddle seats (150×110). Cut to size; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $68 placeholder (scaled from the 6-saddle $102 line at 4/6) pending quote."),
     Part("bolt-m12x65", "M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
          "film", 28, "ea", 15.95 / 10, 15.95 / 10, "McMaster-Carr", part_no="91280A728",
          url="https://www.mcmaster.com/91280A728/",
-         spec="ICP-12: wall-sandwich through-bolt (4/saddle ×6 + 4 spare), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm."),
+         spec="ICP-12: wall-sandwich through-bolt (4/saddle ×4 + 4/far-left flange bracket ×2 + 4 spare = 28), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm."),
     Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
          "film", 28, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut — M12×65 wall-sandwich bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
     Part("washer-m12-flat", "M12 flat washer, zinc", "fasteners-hardware",
@@ -826,7 +828,7 @@ PARTS: list[Part] = [
     # McMaster 94645A230, $10.08/pack of 10 = $1.008 ea. Swap in (and drop the split washers) if
     # adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
-         "film", 12, "ea", 11.8, 11.8, "McMaster-Carr", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare", part_no="92581A540", url="https://www.mcmaster.com/92581A540/"),
+         "film", 6, "ea", 11.8, 11.8, "McMaster-Carr", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×2 left (BL-near, TL-near) + 2 spare", part_no="92581A540", url="https://www.mcmaster.com/92581A540/"),
     Part("bolt-m8-fixing", "M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)", "fasteners-hardware",
          "film", 8, "ea", 13.91 / 50, 13.91 / 50, "McMaster-Carr", part_no="91310A535", url="https://www.mcmaster.com/91310A535/", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2\" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (Alvin 2026-08-13)."),
     Part("nut-m8-plain", "M8×1.25 hex nut, plain SS", "fasteners-hardware",

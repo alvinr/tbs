@@ -4,7 +4,8 @@
 
 # Walkway System — Definitive Blueprint Spec
 
-**Status:** scoped, awaiting sign-off before implementation. Branch **`walkway-bp`**.
+**Status:** COMPLETE — Phases 0–E landed on branch **`walkway-bp`** (2026-08-19). The design-of-record
+table below is refreshed to the as-built design; the living source is `walkway-report.md` + `tbs_constants.py`.
 **Purpose:** upgrade the perimeter walkway from arrangement-schematic to a **dimensionally-exact,
 fabricator-ready** drawing package — the third subsystem to take the film-plane-corner milestone
 standard (dimensioned details + fastener schedule + weld schedule + datums/GD&T + a computed load
@@ -43,16 +44,16 @@ model *before* dimensioning, because you cannot blueprint geometry that is about
 |---|---|
 | Deck | 300 mm wide (`WALKWAY_W`), 140 mm high (`WALKWAY_H`) = Z115 arm/bracket top + 25 mm grate (`WALKWAY_GRATE_T`) |
 | Grating | 1" (25 mm) molded GRP, vinyl-ester grit — McNichols MS-S-100; 4 removable sections |
-| Near/far wall gusset bracket — standard | 8 mm plate (`WALKWAY_BRACKET_T`): 150 mm leg (`WALKWAY_BRACKET_H`) + 300 mm arm + 70 mm gusset; **3× M12** through-bolt (2+1) at 457 mm rib centers (`WALKWAY_BRACKET_SPACING`); 100×180×6 exterior reinforcing plate |
-| Near wall gusset bracket — widened | 10 mm plate (`WALKWAY_WIDE_BRACKET_T`): 200 mm leg (`WALKWAY_WIDE_BRACKET_H`) + 500 mm arm (`WALKWAY_NEAR_WIDE_W`) + 70 mm gusset; **4× M12** (2+2); 120×220×6 reinforcing plate; ×5 over X1055–3083 |
+| Near/far wall gusset bracket — standard | 8 mm plate (`WALKWAY_BRACKET_T`) vert leg 180 mm (`WALKWAY_BRACKET_H`) + gusset (70 mm reach) + a **2×1×0.120in tube arm** (`WALKWAY_BRACKET_ARM_*`, 300 mm, IBC/OSHA SF 2.10); **3× M12** through-bolt (2+1, ±27) at 457 mm rib centers (`WALKWAY_BRACKET_SPACING`); 100×180×6 exterior reinforcing plate (= the mounting-plate footprint) |
+| Near wall gusset bracket — widened | 10 mm plate (`WALKWAY_WIDE_BRACKET_T`) vert leg 200 mm (`WALKWAY_WIDE_BRACKET_H`) + gusset + a **3×1×0.120in tube arm** (500 mm, `WALKWAY_NEAR_WIDE_W`, SF 1.83 defl-governed); **4× M12** (2+2, ±32); 120×200×6 reinforcing plate; ×5 over X1055–3083 |
 | Width-transition bearing plate | 40×500×5 flat bar, welded to arm top at each 300↔500 transition (×2) |
-| Right cantilever rectangle | 2×1×0.120in (50.8×25.4) A500 RHS closed frame: 2 long beams (`RWK_BEARER_W`, span `C_WID` 2362) + 2 end beams (~300), soffit Z89.6 (`LEFT_WK_CANT_ARM_Z0`/`RWK_ARM_BOT`) clears the 1½ spray beam by 11.6 mm |
+| Right cantilever rectangle | 2×1×0.120in (50.8×25.4) A500 RHS closed frame: 2 long beams (`RWK_BEARER_W`, span `C_WID` 2362) + 2 end beams (~143, the 245 mm F1-shortened deck `WALKWAY_RIGHT_W`), soffit Z89.6 (`LEFT_WK_CANT_ARM_Z0`/`RWK_ARM_BOT`) clears the 1½ spray beam by 11.6 mm |
 | Cranked inner beam | inner long beam jogged outboard 100 mm (`RWK_CRANK_DX`) over the muslin notch Yd1912–2062 with 100 mm ramps (`RWK_CRANK_*`) — one continuous uncut member |
 | Center cantilever arms (×2) — **IBC-frame owned** | **solid** 2×1in bar, half-lapped over both long beams (`RWK_HL_TIP` 95.0 / `RWK_HL_POST` 105.6 rebalanced splits); cantilever off the IBC front uprights (`RWK_X_UP` 4654). Detailed/validated/costed in the **IBC-frame blueprint** (J6); listed here only for the rectangle interface (the mid-span pickup) |
 | Combined corner plate (right ×2) | 10 mm plate, 150 mm wide — carries the walkway right beam (70 mm seat) AND the film bottom/top rail (150 mm seat); 4× M12 permanent, interior+exterior sandwich (`fp_combined_corner_plate`) |
 | Wall cleat (left corners of right walkway ×2) | 8 mm back-plate + exterior plate + shelf; M12 through-bolt |
-| Floor-leg cantilever bracket (left walkway ×5) | 2×2×0.120in SHS post (~115 mm, `LEFT_WK_CANT_POST`) + 2×1×0.120in arm (`LEFT_WK_CANT_ARM_*`, reach X470 std ×2 / X770 punch-out ×3) + 128×60×8 foot plate (`LEFT_WK_CANT_FOOT`); **4× #14×2″ 410 SS** screws into ply-over-steel floor (`LEFT_WK_CANT_FOOT_BOLT_N`) |
-| Grate retention | 316 SS hold-down clips (near/far/right, ~914 mm centers); gravity lift-out (left) |
+| Floor-leg cantilever bracket (left walkway ×5) | 2×2×0.120in SHS post (~115 mm, `LEFT_WK_CANT_POST`) + arm (`LEFT_WK_CANT_ARM_*`): **2×1×0.120in** for the 2 std legs (reach X580, SF 2.06) / **4×1×0.120in** for the 3 drum-exit punch-out legs (reach X880, IBC/OSHA SF 1.99) + 165×60×8 foot plate (F3 outrigger, `LEFT_WK_CANT_FOOT`); **4× #14×2″ 410 SS** screws into ply-over-steel floor (`LEFT_WK_CANT_FOOT_BOLT_N`) |
+| Grate retention | 316 SS hold-down clips (near/far/right, 610 mm/24" centers + corners, `WALKWAY_GRATE_CLIP_PITCH`); gravity lift-out (left) |
 | Grate cut features | spray-bar slits (30 mm, near+far), left drum-exit punch-out (600 mm, Yd800–1560), near bump-out (500 mm, X1055–3083), muslin notches (100×150, left+right) |
 
 ## Load basis — IBC 2021 / ASCE 7 / OSHA 1910.22

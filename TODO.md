@@ -327,26 +327,25 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
-- [ ] **Film-plane blueprint — check the wall-bracket BOLT PATTERN vs the beams for clash (Alvin 2026-08-20).**
-  The new saddle / far-left-flange / combined-plate wall bolts (4× M12 each) sit near the film-rail (U-channel)
-  ends. Verify the bolt centerlines + heads/nuts don't foul the rail webs/flanges or the seat/upstand at any
-  corner — run `check_interference.py --bolts` scoped to the film-plane brackets and eyeball the 3D. (Surfaced
-  while adding the bolts + exterior plates to the 2D on Sheets 4/11.)
+- [x] **Film-plane blueprint — wall-bracket BOLT PATTERN vs beams check — DONE 2026-08-20 (branch
+  `fp-farleft-edge`).** Ran `check_interference.py --bolts`: the SADDLE bolts (BL/TL/TR) are clean (no edge
+  flags); the 8 far-left flange-bracket M12 were only 13mm from the flange edge (< 18mm = 1.5·D), so the flange
+  + exterior plate were widened 110×86 → **120×96** for ≥18mm edge (TL still clears the roof-mount plate). Re-sent
+  the 5 affected film-plane models; `--bolts` far-left flags all cleared, no new interference. (Residual pre-
+  existing flags: cross-slide Frame-corner bolt 7<9mm M6 — separate item; drop-in thumb screws PROJECT by design.)
 
-- [ ] **Film-plane support-beam LEFT brackets — no bolts + no external plates (2D↔3D gap, Alvin 2026-08-17).**
-  The film-plane support beams' LEFT-side wall brackets are drawn without their fixings: (1) the **left UPPER
-  bracket** (TL corner) and (2) the **left LOWER bracket** (BL corner) both lack the **through-bolts + exterior
-  backing plate** (the same interior+exterior paired-plate wall-mount pattern as the container-wall cantilevers /
-  IBC wall hangers). Design the bolt pattern + external plates for both left brackets in the film-plane blueprint,
-  add the geometry to the 3D, and cascade to the 2D + parts. (Right corners already share the `fp_combined_corner_plate`.)
-- [ ] **Film-plane LEFT support beam seats on the wall-bracket OUTSIDE edge, not the inside face (Alvin
-  2026-08-18, walkway.skp review).** The left (BL/TL) film-plane beam lands on the OUTER edge of its wall bracket
-  instead of bearing against the bracket's inside (container-facing) face. Reseat it to the inside face (matching
-  the right corners) when detailing the film-plane LEFT brackets above; cascade 3D→2D.
-- [ ] **Processing tray interferes with the IBC-frame floor-post anchor bolts (Alvin 2026-08-18, walkway.skp
-  review).** The processing-tray basin overlaps the IBC deep-box frame's floor-post (foot) anchor bolts — the
-  anchors can't be driven / the tray fouls them. Trace in overview/ibc-stack, then trim the tray corner or shift
-  the foot/anchor pattern clear, and verify with `check_interference.py --solids`/`--bolts`. (IBC-frame + tray.)
+- [x] **Film-plane support-beam LEFT brackets — bolts + external plates — DONE 2026-08-20 (branch
+  `film-plane-left-brackets`, merged).** Restored the budgeted wall-seat SADDLE at the near (pinhole-wall) end of
+  BL + TL (back-plate + exterior plate + 4× M12 + seat + gusset + upstand); the far-LEFT ends land on the pivot
+  post so they get a lighter flange TIE (interior flange + exterior plate + 4× M12), sized to clear the post +
+  roof-mount plate. Count firmed 6→4. Cascaded to 3D (all 7 models), 2D (Sheets 4/11 + new Sheet 11), parts + costing.
+- [x] **Film-plane LEFT support beam seats on the inside face — DONE 2026-08-20.** Reseated: the saddle seat +
+  UPSTAND now project from the plate's container-facing face so the rail bears on the inside face (not the outer
+  edge), and the rail ends are trimmed to butt the plate. Cascaded 3D→2D (Sheet 11 section shows it).
+- [x] **Processing tray ↔ IBC-frame floor-post anchor bolts — DONE 2026-08-20.** The two FRONT IBC feet were
+  shifted OUTBOARD (`IBC_FRONT_FOOT_DX`, derived from the tray edge) so the 150×150 plate + inboard anchors clear
+  the basin (5mm) and the anchors are drivable; plate spec unchanged. `check_interference` = no new clash; 2D
+  frame-plan + Plate 1 fab updated (BACK-centered vs FRONT-offset weld).
 - [x] **Fully-dimensioned multi-view detail of ONE corner — DONE 2026-08-10 (branch `corner-eng-design`).**
   Sheets 3/4/8/9 dimensioned to blueprint grade: skate roller ODs + Ø10 axle + 40mm pitch (Sheet 3), rail
   wall-flange bolt pattern + M8×25 (Sheet 4), cross-slide bar section/travel/gib/UHMW (Sheet 8), U-joint

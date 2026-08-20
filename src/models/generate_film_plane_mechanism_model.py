@@ -197,13 +197,14 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # far-left post) + the far wall, and the cut is only ~197mm cantilevered from it — the removable's
         # welded bridge BEARS on the stub, whose pivot-post anchor carries the reaction, so a floor post
         # (which would foul the sliding carriage) is unnecessary.
-        P.append(ov.ruby_box(f"Rail far flange (pivot post) {tag}", cx - 55, ov.C_WID - 12, botf - 5, 110, 12, sec_h + 10, color=C_CROSS))
+        P.append(ov.ruby_box(f"Rail far flange (pivot post) {tag}", cx - 60, ov.C_WID - 12, botf - 10, 120, 12, sec_h + 20, color=C_CROSS))
         # FAR-LEFT (rear) bracket WALL FIXING — exterior backing plate + 4× M12 through the far wall (Alvin
         # 2026-08-19). The flange (above) is the interior plate the rail butts; this adds the exterior plate +
-        # bolts. Sized to the flange Z-extent (botf-5 .. botf+sec_h+5) so it clears the pivot ROOF-mount plate
-        # up at Z2368 — a full 150-tall saddle would foul it, which is why the far-left carries a flange bracket.
+        # bolts. 120×96 (Z-extent botf-10 .. botf+86) — sized so the 4× M12 get ≥18mm edge distance (1.5·D, edge
+        # lint) AND the TL flange top (2348) still clears the pivot ROOF-mount plate at Z2368 (a full 150-tall
+        # saddle would foul it, which is why the far-left carries a flange bracket).
         _fp_t = ov.FP_CORNER_SEAT_PLATE_T
-        P.append(ov.ruby_box(f"FP far-left EXT plate {tag}", cx - 55, ov.C_WID + ov.WALL_T, botf - 5, 110, _fp_t, sec_h + 10, color=C_STEEL))
+        P.append(ov.ruby_box(f"FP far-left EXT plate {tag}", cx - 60, ov.C_WID + ov.WALL_T, botf - 10, 120, _fp_t, sec_h + 20, color=C_STEEL))
         for _bx in (cx - 38, cx + 38):
             for _bz in (botf + 8, botf + sec_h - 8):
                 P.append(ov.ruby_bolt(f"FP far-left bolt M12 {tag} X{int(_bx)} Z{int(_bz)}", _bx, ov.C_WID - 12, _bz, ov.WALL_T + _fp_t + 12, radius=6, axis="y", color=C_STEEL, head="far", nut="base"))   # hex head OUTSIDE (far wall), nut inside

@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.8] — 2026-08-19
+
 - **Walkway blueprint.** Reworked the walkway into a full fabrication blueprint set. Reworked the cantilevers so the near and far ones use the same fabrication. Added floor bolts to the right cantilevers, clearing the processing tray. Reworked the shared container-wall plates with the film-plane beam and walkway beam. Performed structural validation + IBC/OSHA bracket analysis, which required upgrading the cantilever arms to conform to the standards. Added a grate cut-sheet plan.
 
 - **Walkway F1 → water re-route (branch `walkway-bp`).** Shortening the right walkway (F1) moved the outer

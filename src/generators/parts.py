@@ -809,7 +809,7 @@ PARTS: list[Part] = [
     Part("wall-seat-saddle-8mm", "Wall-seat saddle 8mm A36 plate (ICP-11)", "steel-structural",
          "film", 1, "sheet", 160, 160, "Metal Supermarkets",
          dims="610×560×8mm (24×22in)",
-         spec="8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×243, lengthened so the gusset's back edge welds FULLY to the plate) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (110×86). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate lengthened 200→243 for full gusset weld) pending quote."),
+         spec="8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×243, lengthened so the gusset's back edge welds FULLY to the plate) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (120×96, sized for ≥18mm M12 edge). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate lengthened 200→243 for full gusset weld) pending quote."),
     Part("wall-seat-saddle-10mm", "Wall-seat saddle 10mm A36 plate (ICP-11)", "steel-structural",
          "film", 1, "sheet", 68, 68, "Metal Supermarkets",
          dims="610×170×10mm (24×7in)",

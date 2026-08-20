@@ -2141,7 +2141,7 @@ def sheet11():
     fig = plt.figure(figsize=(16, 10.5)); fig.patch.set_facecolor(BG)
     cx = RAIL_X_L                                  # 260 — left rail X
     fl_t, ext_t = 12, FP_CORNER_SEAT_PLATE_T       # interior flange 12mm / exterior plate 8mm
-    bw, web = 110, FP_RAIL_WEB                     # bracket X-width / rail web depth (76)
+    bw, web = 120, FP_RAIL_WEB                     # bracket X-width (120, for ≥18mm M12 edge) / rail web depth (76)
     botf_top = FP_RAIL_ZC_TOP - web / 2            # 2262 — TL rail section bottom
     botf_bot = FP_RAIL_ZC_BOT - web / 2            # 232  — BL rail section bottom
     C_POST, C_MNT, C_PL, C_BOLT = "#C8C8D0", "#A8A8B0", "#9AA0A8", "#3A3A42"
@@ -2180,7 +2180,7 @@ def sheet11():
         ax.text(2250, (mnt_z0 + mnt_z1) / 2 + (14 if edge_lbl == "FLOOR" else -14), mnt_lbl, fontsize=5.0, ha="center", va="center", color=DIM, **FONT, zorder=6)
         ax.plot([2150, 2436], [edge_z, edge_z], color=OUT, lw=1.2, ls=(0, (6, 3)) if edge_lbl == "CEILING" else "-")
         ax.text(2185, edge_z + (-18 if edge_lbl == "CEILING" else 14), edge_lbl, fontsize=5.2, ha="left", color=DIM, **FONT)
-        fz0, fh = botf - 5, web + 10
+        fz0, fh = botf - 10, web + 20
         ax.add_patch(Rectangle((2168, botf), (C_WID - fl_t) - 2168, web, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))   # rail (broken off left)
         ax.add_patch(Rectangle((C_WID - fl_t, fz0), fl_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))                 # flange (interior)
         ax.add_patch(Rectangle((C_WID + WALL_T, fz0), ext_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))             # exterior plate

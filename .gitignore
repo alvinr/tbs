@@ -4,6 +4,11 @@ site/
 # Auto-generated publish directory — rebuilt by publish.sh on every deploy
 published/
 
+# Generated report copies in docs/ — publish.sh/setup_docs.py rebuild these from the
+# root-level .md sources on every deploy. Only the top-level docs/*.md are generated;
+# docs/superpowers/** (brainstorming plans/specs) are real tracked sources and stay tracked.
+docs/*.md
+
 # Brochure PDFs — generated on publish, not committed
 tbs-brochure.pdf
 tbs-002-brochure.pdf

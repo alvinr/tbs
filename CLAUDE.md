@@ -29,6 +29,8 @@ site/                    ← built output — gitignored, never commit
 
 **Key config files:** `mkdocs.yml` (nav + theme), `publish.sh` (sync + deploy), `src/generators/setup_docs.py` (one-time setup).
 
+**HARD RULE — scratch files NEVER live inside a repo directory.** Temporary/working files — one-off scripts, intermediate data, downloaded references, conversation dumps, throwaway images, experiment output — go in the **session scratchpad directory** (given in the environment prompt), never in the project tree. Nothing that isn't a committed source or a registered build artifact belongs under the repo. If a scratch file is genuinely worth keeping, promote it to its proper home (a `src/` script, a `diagrams/` output, a datasheet under the gitignored `eng-specs/`) — don't leave it loose in the root. This keeps `git status` clean and prevents an accidental `git add` from sweeping in junk.
+
 **Skills** (read these before working on diagrams):
 - `skills/skill_diagram_structure.md` — coordinate system, view conventions, multi-sheet generator boilerplate, shared helper catalog
 - `skills/skill_label_placement.md` — the label/leader/dimension/notes RULE SET (12 principles + self-review gate)

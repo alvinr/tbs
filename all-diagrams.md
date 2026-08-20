@@ -128,11 +128,11 @@
 
 ---
 
-## 11. Light Trap Ventilation
+## 11. Ventilation
 
-![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
+![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/ventilation-sheet1.png)
 
-![TBS-001 Ventilation — Sheet 2: Fan and Baffle Duct Assembly](assets/lighttrap-sheet2.png)
+![TBS-001 Ventilation — Sheet 2: Fan and Baffle Duct Assembly](assets/ventilation-sheet2.png)
 
 ---
 

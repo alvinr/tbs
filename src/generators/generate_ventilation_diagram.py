@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
 """
-generate_lighttrap_diagram.py
+generate_ventilation_diagram.py
 TBS-001  Ventilation System — two drawing sheets.
 
 Sheet 1: Ventilation system — container longitudinal section
@@ -360,10 +360,10 @@ def draw_sheet1():
                 scale_note="Schematic — not to scale",
                 doc_id="TBS-LT · Light Trap & Ventilation")
 
-    plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet1.png  Done.")
+    print("  → diagrams/ventilation-sheet1.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -607,10 +607,10 @@ def draw_sheet2():
                 scale_note="Dimensions in mm — wall thickness exaggerated",
                 doc_id="TBS-LT · Light Trap & Ventilation")
 
-    plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet2.png  Done.")
+    print("  → diagrams/ventilation-sheet2.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

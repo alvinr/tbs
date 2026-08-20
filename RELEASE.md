@@ -24,88 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Walkway blueprint — Phase E: BOM reconciliation + close (branch `walkway-bp`).** Moved the IBC-owned
-  center-arm + J6 parts (2 solid-bar arms, end/backing plates, crush sleeves, M12×100 bolts, half-lap screws)
-  from the **walkway** parts system to **ibc-frame**, per the ownership boundary — **$116/$125/$135** shifts
-  from walkway (§6a now $2,079/$2,498/$2,941) to the IBC frame (§5 now $6,841/$7,478/$8,126); the grand total
-  is unchanged ($26,793/$31,314/$37,907). Cascaded through `parts.py`/`costing.py`/master-shopping-list/
-  cost-breakdown (both reconciliation gates green). **The walkway blueprint (Phases 0–E) is complete.**
-- **Walkway blueprint — Phase D: member cut list + plate schedule (branch `walkway-bp`).**
-  Added a **member cut list** (every steel member's stock section + length + qty, computed from
-  `tbs_constants.py`, with a net stock linear-feet summary: 2×1 tube ~31 ft, 3×1 ~8 ft, 4×1 ~6 ft, 2×2
-  ~2 ft) and a **plate fabrication schedule** (foot / reinforcing / corner / cleat / transition plates with
-  hole Ø + positions/PCD referenced to the datums) to `walkway_load.py`, injected into report §10.4/§10.5
-  (lint-gated). IBC-post center arms + J6 plates cross-referenced to the IBC-frame lists. §10 renamed
-  "Fabrication Schedules". Landed the **WF#/WW# callouts** on the detail sheets (Sheet 2 std bracket,
-  Sheet 7 widened, Sheet 6 floor-leg, Sheet 3 right cantilever) so every schedule mark appears on its
-  drawing. Added a new **Sheet 10 — grate cut-plan** (the 4 GRP sections nested + dimensioned with spray
-  slits, drum-exit punch-out, near bump-out, muslin notches, GRP panel seams, and **hold-down-clip
-  positions** — fixing the deferred clip pitch at **610mm/24" + corners**, `WALKWAY_GRATE_CLIP_PITCH`),
-  registered in the gallery/publish/setup/deps + embedded in report §8. A weld-location map ties each
-  WW#/WF# mark to its sheet. **Phase D complete.**
-- **Walkway blueprint — Phase C: datum + tolerance scheme (branch `walkway-bp`).** Defined 3 datums —
-  **A** floor plane (all Z), **B** the two long wall faces (all Yd), **C** the film-plane rail datum
-  (X260/X4649, shared with the film plane so the right corner + combined plate register to it) — plus a
-  functional-tolerance table (deck coplanarity ±2, wall-bolt pattern ±0.5, combined-corner seat Z ±1, beam
-  soffit +2/−0, etc.), general **ISO 13920 Class B** / welds **AWS D1.1**. Single-sourced in `walkway_load.py`,
-  injected into report §10.3 (lint-gated), with a **DATUMS & TOLERANCES** callout on the Sheet 1 plan.
-- **Walkway blueprint — Phase B: fastener + weld schedules (branch `walkway-bp`).** Added a **fastener
-  schedule** (WF1–WF5: std/widened bracket wall bolts M12×65, right cleat/combined-corner M12×70, floor-leg
-  #14 self-drillers, grating clips — cited SKUs, grade, qty, torque ~90 N·m, washers, lockers) and a **weld
-  schedule** (WW1–WW9) to `walkway_load.py`, both injected into a new report §10 (lint-gated). The governing
-  weld throats are load-checked — the arm→leg, floor-leg arm→post, and post→foot fillets all clear **SF ≈ 3**
-  at a 5mm leg; the rest are AWS D1.1 minimum practical fillets. Walkway-scoped marks (WF/WW) so they don't
-  collide with the IBC-frame J1–J9; the center-arm J6 bolts + half-lap screws are cross-referenced to the
-  IBC-frame schedule, not re-scheduled. Fixed a stale reinf-plate size (120×220→120×200) in `costing.py`.
-- **Walkway blueprint — Phase A: structural validation + IBC/OSHA bracket redesign (branch `walkway-bp`).**
-  Added `walkway_load.py` — a driftproof validation of every walkway element to the **US IBC/OSHA** basis
-  (IBC Table 1607.1: 60 psf + 300 lbf concentrated), feeding a computed §9 table into `walkway-report.md`
-  (lint-gated; reuses the IBC-owned arm/beam checks from `ibc_frame_load.py`). It surfaced that the
-  **wall-cantilever bracket arm** (an 8×10mm plate) yielded at ~25 lbf, and the **floor-leg punch-out arm**
-  (2×1, 605mm) was only SF 1.04 — both **redesigned**: wall bracket arm → **2×1×0.120in tube** (std, SF 2.10)
-  / **3×1** (widened, SF 1.83, deflection-governed L/112); floor-leg punch-out arm → **4×1×0.120in tube**
-  (SF 1.99). Cascaded through constants → 3D model → 2D Sheets 2/5/6/7 → parts → report §3.1/§5/§9. Also fixed
-  a pre-F1 stale outer-beam X in `ibc_frame_load.py` (arm notch SF 1.6→2.0) by single-sourcing its `RWK_*`.
-- **Walkway blueprint — Phase 1.3: drift sweep + standard-bracket bolt correctness fix (branch `walkway-bp`).**
-  Swept the report/generators/dep-map for stale literals: **foot plate 128→165mm** (the F3 outrigger; fixed in
-  `parts.py` + 3 report tables), **dep-map right-beam X 4629→4574** (F1). Found + fixed a real **3D-vs-drawing
-  conflict**: the standard wall-bracket lower bolts were built at **±32mm** in the 3D model but the report and
-  **Sheet 2 View B** both dimension them at **±27mm** (23mm plate-edge distance vs only 18mm — the 1.5×D
-  minimum — at ±32). Split the constant (`WALKWAY_BRACKET_BOLT_DX` 27 standard / `_WIDE` 32 widened) and
-  corrected the model to ±27, matching the drawings. Re-sent + re-uploaded all 5 models that render the
-  bracket (walkway, overview, construction, film-plane-mechanism, water); 2D drawings were already correct
-  (zero PNG changes); interference unchanged (12).
-- **Walkway blueprint — Phase 1.2: wall-cantilever bracket detail blanks single-sourced (branch `walkway-bp`).**
-  The reinforcing-plate blanks (`WALKWAY_REINF_W/H/T` = 100/180/6 std + `_W_WIDE/_H_WIDE` = 120/220), gusset
-  reach (`WALKWAY_GUSSET_REACH` = 70), and wall-bolt edge distances (`WALKWAY_BRACKET_BOLT_DX` = 32,
-  `_BOLT_Z_LO` = 42 / `_LO_WIDE` = 35) were **duplicated literals** in both `generate_walkway_model.py` and
-  `generate_walkway_diagram.py`; promoted to `tbs_constants.py` so both dimension one source (models
-  byte-identical → no re-send; PNGs unchanged → values already agreed). Fixed a stale "±27mm" bolt-offset
-  comment in the diagram (the 3D builds ±32).
-- **Walkway blueprint — Phase 1.1: `RWK_*` promoted to `tbs_constants.py` (branch `walkway-bp`).** The
-  right-walkway geometry family (26 constants: `RWK_X_L/R`, `RWK_ARM_*`, `RWK_BEARER_*`, `RWK_HL_*`,
-  `RWK_X_UP`, `RWK_J6_*`, `RWK_RIBBON_NOTCH_*`, `RWK_CRANK_*`) moved out of `generate_sketchup_model.py`
-  into the shared constants so the 2D fab drawings dimension the right walkway from the SAME source as
-  the 3D builder (models byte-identical → no re-send). Repointing `generate_walkway_diagram.py` to them
-  surfaced + fixed real drift on **sheet 3** (right-walkway plan): wrong beam section (was "40×40×3 SHS",
-  is **2×1in tube / flat bar**, 50.8×25.4), wrong deck width (was 300, is the F1 **245**), and the outer
-  beam / end beams now sit model-accurate (outer flush-right-inboard at X4574, end beams butted between).
-  Sheet 1's RIGHT-WALKWAY width label + notes reconciled to 245 / 2×1in.
+- **Walkway blueprint.** Rework to create blueprints for this system. Reqoeked the cantilvers so that the near and far used the same fabrication. Added floor bolts to the right cantilevers, cleared the processing tray. Reworked the shared container wall plates witht he film plane beam and walkways beam. Performed structural validation + IBC/OSHA bracket analsis; required upgrading the arms of the cantilevers to conform to the standards. Added grate cut-sheet plan.
+
 - **Walkway F1 → water re-route (branch `walkway-bp`).** Shortening the right walkway (F1) moved the outer
   long beam inboard into the under-walkway pipe channel. Fixed the two clashes it caused: **#1** the 4 ribbon
   lanes (`RIBBON_LANE_X`) were hardcoded for the old wider channel — now **derived** from the inner-outboard..
   outer-inboard beam gap so they can't drift again; **#2** the near-corner SV-01/DV-02 risers were speared by
   the end-beam butt-line inset — the **near RWk end beam is un-inset to Yd0** to clear them. (Two pre-existing
   under-corridor clashes — recycle×J6-plate, lines×IBC-frame-rail — are logged in TODO, not from this work.)
-- **Walkway blueprint — Phase 0 geometry (branch `walkway-bp`, focus model banked).** Right-corner + support
-  rework on `walkway.skp`: right walkway shortened to land on the shared corner plate (245mm deck, `WALKWAY_RIGHT_W`
-  decoupled from the tray module); the combined "shared plate" reworked to carry the film rail + the wall-side
-  walkway beam (4 corner bolts, welded shelf + upstand, horizontal TEK) with the beams/end-beams inset to butt
-  the plates (butt-joint seams show); the tray-side beam on its own shelf-cleat (horizontal bolts clear of the
-  beam + TEK); floor-leg foot outrigger lengthened 128→165 with the 4 left-support floor anchors drawn;
-  standard-bracket leg raised 150→170 so the upper bolt clears the arm; near/far standard cantilever gusset
-  centered on both walls (one fab part, mirror-installed); ghost container trimmed for orbiting. (2D sheets +
-  the other 5 cascade models to follow.)
+
 - **Sketchfab re-upload automated (in-place, hands-free).** The manual "re-upload each `.skp` to Sketchfab"
   step at the end of every model cascade is now scripted. `push_sketchfab.py` uses `PUT /v3/models/{uid}` to
   replace a model's geometry **in place** — same URL, viewer settings/materials/name preserved — instead of the
@@ -125,13 +52,6 @@ file** — a release must not ship without a changelog entry:
   ghosted instead of a flat copy), **walkway Far/Near decks** (walkway model). 17 cross-file duplicates → 5,
   and the 5 are documented (2 permanent context ghosts + 3 real drifts the audit surfaced: cargo-door panel
   thickness 120 vs 40 mm, sump-pickup Yd 155 vs 104, and the mini-tbs scale-toy wall — all tracked in TODO).
-
-- **J6 end-plate grown 148→155 mm (edge-distance triage) + BOM drift fixed.** The new `--bolts` lint flagged the
-  upper J6 bolt at only 15.3 mm from the end-plate top edge (< 1.5·D = 18 mm for M12). Grew the plate top to
-  Z192 (`RWK_J6_EP_H` 148→155) so the bolt gets 22 mm edge — `--bolts`-verified clear on the live model; cascaded
-  to Sheet 2 + the Sheet 5 END-PLATE detail (155 / 22 / 52 mm). The triage also caught two **stale BOM errors** in
-  `parts.py` `walkway-arm-endplates`: it listed the plate as `65×130` (vs 148) *and* "90 mm pitch" when the bolts
-  are 30 mm apart, both above the arm — corrected.
 
 - **Process: attack the orientation-rework class (retro follow-up).** A two-release retro found the biggest
   rework driver is fastener **orientation/interface** — bolts dimensionally correct but pointed the wrong way,

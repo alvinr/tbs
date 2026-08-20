@@ -24,7 +24,7 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Walkway blueprint.** Rework to create blueprints for this system. Reqoeked the cantilvers so that the near and far used the same fabrication. Added floor bolts to the right cantilevers, cleared the processing tray. Reworked the shared container wall plates witht he film plane beam and walkways beam. Performed structural validation + IBC/OSHA bracket analsis; required upgrading the arms of the cantilevers to conform to the standards. Added grate cut-sheet plan.
+- **Walkway blueprint.** Reworked the walkway into a full fabrication blueprint set. Reworked the cantilevers so the near and far ones use the same fabrication. Added floor bolts to the right cantilevers, clearing the processing tray. Reworked the shared container-wall plates with the film-plane beam and walkway beam. Performed structural validation + IBC/OSHA bracket analysis, which required upgrading the cantilever arms to conform to the standards. Added a grate cut-sheet plan.
 
 - **Walkway F1 → water re-route (branch `walkway-bp`).** Shortening the right walkway (F1) moved the outer
   long beam inboard into the under-walkway pipe channel. Fixed the two clashes it caused: **#1** the 4 ribbon

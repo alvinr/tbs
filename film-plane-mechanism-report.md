@@ -108,6 +108,10 @@ The cross-slide travel and load were firmed against the rotation geometry and th
 
 ![Sheet 10 — Corner load case: cross-slide travel + bending safety factor](assets/film-plane-sheet10.png)
 
+- **Rear-corner attachment** — the two far-left (rear) rail ends land at the Ø89 pivot post, which carries their weight (the stub is anchored to it). Each is tied to the far wall by a **flange + exterior backing plate + 4× M12** — the rail END butts the flange's inner face — with the bolt gauge narrowed so the bolts clear the post, and the bracket kept below the roof-mount plate (a full saddle would foul it). No seat/gusset: it's a lateral tie, not a load-bearing seat.
+
+![Sheet 11 — Far-left (rear) rail bracket → pivot-post + far-wall attachment](assets/film-plane-sheet11.png)
+
 ### Positioning
 
 Each corner is set by hand: roll the acetal skate along its U-channel to the target depth, slide the Z and X cross-slides to take up the rotation arc, then throw the **cam clamp** to lock the skate to the rail. The gib drag holds the vertical (Z) axis while the clamp is set, and the U-joint's twist-lock holds the angle.
@@ -192,16 +196,16 @@ All items ship within the United States. Local Southern California pickup noted 
 | [Impact 9oz Duvetyne 57" × 10yd (B&H)](https://www.bhphotovideo.com/c/product/1775270-REG/impact_dr9_10_9_oz_duvetyne_10.html) (1775270) | Impact DR9-10 (B&H #1775270) 9oz black light-absorbing duvetyne, 57"×10yd, $69 (research 2026-07-30). B&H does not stock Rosco brand; the Impact house brand is equivalent. 57" vs the 60" spec — fine (cut/hung). 16oz = DR16-10 if heavier wanted. | 1 ea | B&H Photo | $69 |
 | [4-mil black poly sheeting](https://www.homedepot.com/p/332820356) (51982) | Film-Gard 10 ft × 100 ft × 4-mil black poly (film-plane blackout). 4-mil is fully opaque for a light-seal (opacity is the black pigment, not the gauge) — 6-mil was over-spec for a non-structural curtain. | 1 roll | Home Depot | $40 |
 | [2" black Gorilla Tape](https://www.homedepot.com/p/316372144) (106718) | Gorilla 30 yd × 1.88" black tape | 6 roll | Home Depot / Amazon | $60 |
-| Wall-seat saddle 8mm A36 plate (ICP-11) | 8mm A36 mild-steel plate, 610×760mm (24×30in) — nests all 6 saddles' back-plates (150×200) + exterior plates (150×200) + gusset triangles (from 3× 200×110). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $216 placeholder (part of the old $318 saddle line, split 8mm/10mm) pending quote. | 1 sheet | Metal Supermarkets | $216 |
-| Wall-seat saddle 10mm A36 plate (ICP-11) | 10mm A36 mild-steel plate, 610×254mm (24×10in) — nests the 6 saddle seats (150×110). Cut to size; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $102 placeholder (split from the old $318 saddle line) pending quote. | 1 sheet | Metal Supermarkets | $102 |
-| [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | ICP-12: wall-sandwich through-bolt (4/saddle ×6 + 4 spare), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 28 ea | McMaster-Carr | $45 |
+| Wall-seat saddle 8mm A36 plate (ICP-11) | 8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×243, lengthened so the gusset's back edge welds FULLY to the plate) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (110×86). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate lengthened 200→243 for full gusset weld) pending quote. | 1 sheet | Metal Supermarkets | $160 |
+| Wall-seat saddle 10mm A36 plate (ICP-11) | 10mm A36 mild-steel plate, 610×170mm (24×7in) — nests the 4 saddle seats (150×110). Cut to size; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $68 placeholder (scaled from the 6-saddle $102 line at 4/6) pending quote. | 1 sheet | Metal Supermarkets | $68 |
+| [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | ICP-12: wall-sandwich through-bolt (4/saddle ×4 + 4/far-left flange bracket ×2 + 4 spare = 28), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 28 ea | McMaster-Carr | $45 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×65 wall-sandwich bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 28 ea | McMaster-Carr | $7 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 112 ea | McMaster-Carr | $11 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100. | 28 ea | McMaster-Carr | $3 |
-| [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | McMaster-Carr / Maedler | $142 |
+| [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×2 left (BL-near, TL-near) + 2 spare | 6 ea | McMaster-Carr / Maedler | $71 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91310A535/) (91310A535) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (Alvin 2026-08-13). | 8 ea | McMaster-Carr | $2 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$4,126–$4,430** |
+| **Film total** | | | | **$3,965–$4,269** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -228,7 +232,7 @@ The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_widt
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,271<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,110<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

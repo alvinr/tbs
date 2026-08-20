@@ -35,6 +35,8 @@ from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X
                           SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP,
                           CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP,
                           CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z)
+from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
+                          FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -419,7 +421,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 10",
+    title_block(ax, "SHEET 1 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -676,7 +678,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 10",
+    title_block(ax_tb, "SHEET 2 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -727,7 +729,7 @@ def view_a(ax):
             ax.add_patch(plt.Circle((_hx, _hz), SKATE_AXLE_OD / 2, fc=BG, ec=C_PIN, lw=1.0, zorder=6))
             ax.plot([_hx - 8, _hx + 8], [_hz, _hz], color=C_PIN, lw=0.4, zorder=6)
             ax.plot([_hx, _hx], [_hz - 8, _hz + 8], color=C_PIN, lw=0.4, zorder=6)
-    draw_dim_v(ax, 122, 253, 253 + CARRIAGE_AXLE_ROW_SP, f"{CARRIAGE_AXLE_ROW_SP:.0f}", offset=6, fs=4.8, color=C_PIN, font=FONT)
+    draw_dim_v(ax, 122, 253, 253 + CARRIAGE_AXLE_ROW_SP, f"{CARRIAGE_AXLE_ROW_SP:.0f}mm", offset=6, fs=4.8, color=C_PIN, font=FONT)
     leader(ax, 190, 291, 300, 360,
            f"CARRIAGE PLATE {CARRIAGE_PLATE_W:.0f}×{CARRIAGE_PLATE_H:.0f}×{CARRIAGE_PLATE_T:.0f}mm 6061-T6\n"
            f"· 4× Ø{SKATE_AXLE_OD:.0f} STUB-AXLE holes, {SKATE_ROLLER_SP:.0f}(Yd)×{CARRIAGE_AXLE_ROW_SP:.0f}(Z) pattern\n"
@@ -748,7 +750,7 @@ def view_a(ax):
         ax.add_patch(plt.Circle((wx, 253), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller
         ax.add_patch(plt.Circle((wx, 291), 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=10))  # keeper
     ax.plot([_rc - _sp / 2, _rc + _sp / 2], [253, 253], color=OUT, lw=0.6, dashes=(3, 2), zorder=10)   # axle (ghost)
-    draw_dim_h(ax, _rc - _sp / 2, _rc + _sp / 2, 325, f"{SKATE_ROLLER_SP:.0f} roller pitch", offset=7, fs=5.2, color=DIM, above=True, font=FONT)
+    draw_dim_h(ax, _rc - _sp / 2, _rc + _sp / 2, 325, f"{SKATE_ROLLER_SP:.0f}mm roller pitch", offset=7, fs=5.2, color=DIM, above=True, font=FONT)
     # section A-A cut through the bottom carriage
     ax.plot([170, 170], [232, 250], color=OUT, lw=0.6, zorder=11)
     ax.plot([170, 170], [120, 134], color=OUT, lw=0.6, zorder=11)
@@ -980,16 +982,19 @@ def view_c(ax):
     # adjustable gib + brass-tip screw
     _rect(ax, 14, 8.5, 44, 4, C_STEEL, z=6)
     hatch_rect(ax, 14, 8.5, 44, 4, color="#8A93A0", hatch="///", lw=0.0)
-    _rect(ax, 33, 3.5, 6, 5.5, C_PIN, z=8)
-    for yy in (4.6, 5.9, 7.2):
-        ax.plot([31.7, 40.3], [yy, yy], color=OUT, lw=0.4, zorder=9)
+    # brass-tip ADJUSTER SCREW — passes THROUGH the whole bottom plate (threaded in it) so it turns from
+    # OUTSIDE; the tip bears UP on the gib, the drive head sits below the carriage.
+    _rect(ax, 34, -5, 4, 14, C_PIN, z=8)
+    for yy in (-3.2, -1.6, 0.0, 1.6, 3.2):
+        ax.plot([33.2, 38.8], [yy, yy], color=OUT, lw=0.4, zorder=9)
+    ax.add_patch(plt.Rectangle((32.3, -6.8), 7.4, 2, fc=C_PIN, ec=OUT, lw=0.5, zorder=9))   # drive head — OUTSIDE, accessible
     leader(ax, 44, 20, 68, 48, "304 flat-bar WAY (Z tilt / X swing)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, 25.5, 68, 36, "UHMW pad — self-lube, DRY (both faces)",
            ha="left", fs=5.8, color="#8A6A2A", font=FONT, bbox=LBL_BG)
     leader(ax, 12, 32, 68, 24, "304 carriage — the MOVING part",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 36, 5, 42, -16, "adjustable GIB + brass-tip screw — sets the drag that HOLDS\nthe gravity-loaded Z axis, yet still hand-slides (re-tune after break-in)",
+    leader(ax, 36, -6, 46, -18, "adjustable GIB + brass-tip screw THROUGH the bottom plate (turns from OUTSIDE) —\nsets the drag that HOLDS the gravity-loaded Z axis, yet still hand-slides (re-tune after break-in)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-40, 64, "C — CROSS-SLIDE SECTION  (Z tilt / X swing): UHMW pad on 304 flat bar; the gib holds the vertical axis",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1048,7 +1053,7 @@ def sheet3():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 10",
+    title_block(ax_tb, "SHEET 3 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner carriage detail — acetal skate on 3×1.5 6061 Al U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="Proportional (mm)",
@@ -1152,24 +1157,34 @@ def transport_elev(ax):
         ax.plot([wx, wx + 10], [rz0 - 1, rz0 - 1], color=OUT, lw=2.0, zorder=10)
     # length SPLICE at the pinhole end — on the OUTBOARD WEB-BACK (far side), so shown as a GHOST outline
     ax.add_patch(plt.Rectangle((SPLICE_YD - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
-    # pinhole-wall gusset/seat (Yd 0)
+    # pinhole-wall SADDLE — interior seat/gusset (Yd 0) + EXTERIOR plate + 2 M12 through-bolts (heads OUTSIDE, nuts inside)
     _rect(ax, 0, rz0 - 36, 44, (rz1 - rz0) + 42, C_STEEL, z=3)
+    ax.add_patch(plt.Rectangle((-24, rz0 - 30), 8, (rz1 - rz0) + 52, fc=C_STEEL, ec=OUT, lw=0.9, zorder=4))
+    for bz in (rz0 + 6, rz1 - 6):
+        ax.add_patch(plt.Rectangle((-28, bz - 1.8), 40, 3.6, fc="#3A3A42", ec="none", zorder=9))
+        ax.add_patch(plt.Rectangle((-31, bz - 5), 6, 10, fc="#3A3A42", ec=OUT, lw=0.5, zorder=10))     # HEX HEAD — outside
+        ax.add_patch(plt.Rectangle((7, bz - 4.5), 5, 9, fc="#6A6A72", ec=OUT, lw=0.6, zorder=10))      # NUT — inside
     # pivot post down to floor (Ø89 CHS)
     _rect(ax, PIVOT_YD - PIVOT_POST_OD / 2, 0, PIVOT_POST_OD, rz0, C_STEEL, z=3)
     hatch_rect(ax, PIVOT_YD - PIVOT_POST_OD / 2, 0, PIVOT_POST_OD, rz0, color="#8A93A0", hatch="//", lw=0.0)
-    # far flange (stub → far wall)
+    # far-wall FLANGE BRACKET — interior flange (stub → far wall) + EXTERIOR plate + 2 M12 through-bolts
     _rect(ax, C_WID - 42, rz0 - 8, 42, (rz1 - rz0) + 16, C_CAR, z=6)
+    ax.add_patch(plt.Rectangle((C_WID + 16, rz0 - 8), 8, (rz1 - rz0) + 16, fc=C_STEEL, ec=OUT, lw=0.9, zorder=4))
+    for bz in (rz0 + 6, rz1 - 6):
+        ax.add_patch(plt.Rectangle((C_WID - 8, bz - 1.8), 40, 3.6, fc="#3A3A42", ec="none", zorder=9))
+        ax.add_patch(plt.Rectangle((C_WID + 25, bz - 5), 6, 10, fc="#3A3A42", ec=OUT, lw=0.5, zorder=10))   # HEX HEAD — outside
+        ax.add_patch(plt.Rectangle((C_WID - 12, bz - 4.5), 5, 9, fc="#6A6A72", ec=OUT, lw=0.6, zorder=10))  # NUT — inside
     # transport-fold note — the fold is about the VERTICAL pivot (a plan-view motion, 90° to this elevation),
     # so no in-plane arc; the removable simply lifts UP/out of the channel first. Placed below the rail.
     ax.text(1000, -20, "REMOVABLE lifts OUT (↑) for transport; the panel then folds about\nthe vertical pivot (a plan-view motion — see Sheet 1)",
             fontsize=5.8, color=C_T3, ha="center", va="top", **FONT)
     # ── dimensions (Yd) ──
-    draw_dim_h(ax, 0, LEFT_CUT_YD, -70, f"REMOVABLE = {LEFT_CUT_YD} (lifts out)", offset=12, fs=6, color=DIM, above=False, font=FONT)
-    draw_dim_h(ax, LEFT_CUT_YD, C_WID, -130, f"STUB = {C_WID - LEFT_CUT_YD}\n(parks corner)", offset=12, fs=6, color=DIM, above=False, font=FONT)
+    draw_dim_h(ax, 0, LEFT_CUT_YD, -70, f"REMOVABLE = {LEFT_CUT_YD}mm (lifts out)", offset=12, fs=6, color=DIM, above=False, font=FONT)
+    draw_dim_h(ax, LEFT_CUT_YD, C_WID, -130, f"STUB = {C_WID - LEFT_CUT_YD}mm\n(parks corner)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     # ── leaders (spread above / below the rail to keep the crowded cut region legible) ──
     leader(ax, SPLICE_YD, (rz0 + rz1) / 2, 470, -55, "length SPLICE (web-back, GHOST — far side) — 6 ft stock + reach",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 22, rz0 - 18, 60, -58, "pinhole-wall GUSSET / seat",
+    leader(ax, -20, rz0 + 6, 30, -108, "pinhole-wall SADDLE — seat + gusset + EXTERIOR plate + 4× M12\n(hex heads OUTSIDE, nuts inside)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, LEFT_CUT_YD + 44, rz1 + 12, 1380, 150, "welded BRIDGE (ON TOP) — welded to the REMOVABLE; GRAVITY bears it on the STUB;\na locating PIN (flush to the inner-rail top) stops it lifting (weight on the bridge, not the pin)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
@@ -1177,7 +1192,7 @@ def transport_elev(ax):
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, PIVOT_YD, 30, PIVOT_YD + 30, -150, f"swing PIVOT POST (Ø{PIVOT_POST_OD} CHS)\nanchors the stub — no floor post at the cut",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, C_WID - 20, rz0 + 8, C_WID + 34, 58, "far flange\n→ far wall",
+    leader(ax, C_WID + 20, rz0 + 6, C_WID + 40, 62, "far-wall FLANGE BRACKET — flange + EXTERIOR plate\n+ 4× M12 (hex heads OUTSIDE); post carries the weight",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-320, 182, "LEFT RAIL — TRANSPORT DROP-IN  (bottom rail shown; the top rail splits the same way)",
             fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1195,19 +1210,23 @@ def right_flanged(ax):
     ax.add_patch(plt.Rectangle((C_WID, -20), 16, 160, fc=STRUCT, ec=OUT, lw=1.0, zorder=2))
     ax.plot([-260, 2620], [0, 0], color="#999", lw=0.9, zorder=1)
     _rail_band(ax, 0, C_WID, rz0, rz1, C_STEEL)
-    for yf in (0, C_WID - 40):                    # end flanges through-bolted to each wall
+    # end brackets → each wall: interior flange/seat + EXTERIOR plate + 2 M12 through-bolts (heads OUTSIDE, nuts inside).
+    # BR corner = the shared IBC COMBINED corner plate; TR corner = a wall-seat SADDLE — both 4× M12.
+    for yf, yext, yhd, ynt in ((0, -24, -31, 6), (C_WID - 40, C_WID + 16, C_WID + 25, C_WID - 12)):
         _rect(ax, yf, rz0 - 8, 40, (rz1 - rz0) + 16, C_CAR, z=6)
-        for bz in (rz0 + 4, rz1 - 4):
-            draw_circle(ax, yf + 20, bz, 3, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=8)
-    # flange bolt pattern — detail dims (diagram-of-record): 2× M8 vertical, on the flange CL
-    draw_dim_v(ax, -44, rz0 + 4, rz1 - 4, f"{(rz1 - 4) - (rz0 + 4):.0f}", offset=8, fs=5.2, color=DIM, font=FONT)   # bolt vertical spacing
-    draw_dim_h(ax, 0, 40, rz1 + 20, "40", offset=6, fs=5.2, color=DIM, above=True, font=FONT)                       # flange width
+        ax.add_patch(plt.Rectangle((yext, rz0 - 8), 8, (rz1 - rz0) + 16, fc=C_STEEL, ec=OUT, lw=0.9, zorder=4))
+        for bz in (rz0 + 6, rz1 - 6):
+            ax.add_patch(plt.Rectangle((min(yhd, ynt) - 2, bz - 1.8), abs(yhd - ynt) + 4, 3.6, fc="#3A3A42", ec="none", zorder=9))
+            ax.add_patch(plt.Rectangle((yhd - 3, bz - 5), 6, 10, fc="#3A3A42", ec=OUT, lw=0.5, zorder=10))     # HEX HEAD — outside
+            ax.add_patch(plt.Rectangle((ynt - 2.5, bz - 4.5), 5, 9, fc="#6A6A72", ec=OUT, lw=0.6, zorder=10))  # NUT — inside
+    draw_dim_v(ax, -52, rz0 + 6, rz1 - 6, f"{(rz1 - 6) - (rz0 + 6):.0f}mm", offset=8, fs=5.2, color=DIM, font=FONT)   # bolt vertical spacing
+    draw_dim_h(ax, 0, 40, rz1 + 20, "40mm", offset=6, fs=5.2, color=DIM, above=True, font=FONT)                       # flange width
     # length SPLICE (GHOST) — the 2362 mm wall-to-wall rail also exceeds 6 ft stock, so it too takes one splice
     sx = 900
     ax.add_patch(plt.Rectangle((sx - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
     leader(ax, sx, rz1, sx + 40, 132, "length SPLICE (web-back, GHOST) — rail > 6 ft stock",
            ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
-    leader(ax, 20, rz1, 120, 132, "end flange → wall — 2× M8×25 through-bolt (ICP-14)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, -20, rz1, 430, 138, "end bracket → wall — EXTERIOR plate + 4× M12 (hex heads OUTSIDE);\nBR = IBC combined corner plate · TR = wall-seat saddle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, C_WID - 20, rz0 - 4, C_WID - 260, -44, "outboard end plate trimmed 35mm (IBC clearance);\nshares the IBC combined corner plate",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-260, 146, "RIGHT RAIL — FLANGED WALL-TO-WALL  (permanent; no transport split)",
@@ -1245,7 +1264,7 @@ def sheet4():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 4 OF 10", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 4 OF 11", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1399,7 +1418,7 @@ def sheet5():
                 ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
-    title_block(ax, "SHEET 5 OF 10",
+    title_block(ax, "SHEET 5 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
@@ -1528,7 +1547,7 @@ def sheet6():
     # ── Title block ──
     ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.05])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 10",
+    title_block(ax_tb, "SHEET 6 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — nylon spring clamp + HDPE filler at the ALU frame edge",
                 scale_note="SCHEMATIC — SEE INDIVIDUAL PANELS",
@@ -1826,7 +1845,7 @@ def sheet7():
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 10",
+    title_block(ax, "SHEET 7 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System elevation — four-corner frame front elevation (proportional)",
                 scale_note="Proportional (mm)",
@@ -1938,9 +1957,9 @@ def _corner_elevation(ax):
     E, SP, P0 = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, 96
     for (bx, bz) in [(P0, E), (P0 + SP, E), (E, P0), (E, P0 + SP)]:
         draw_circle(ax, bx, bz, 3.0, color=OUT, fill=True, fc=C_PIN, lw=0.9, zorder=9)
-    draw_dim_h(ax, P0, P0 + SP, E - 17, f"{SP:.0f}", fs=5.0, above=False, font=FONT)      # J5 pair spacing
-    draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
-    draw_dim_v(ax, 162, 0, AL, "2\" (50.8)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
+    draw_dim_h(ax, P0, P0 + SP, E - 17, f"{SP:.0f}mm", fs=5.0, above=False, font=FONT)      # J5 pair spacing
+    draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}mm", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
+    draw_dim_v(ax, 162, 0, AL, "2\" (50.8mm)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
     leader(ax, 75, 120, 175, 150, f"304 SS corner plate — 6×8×¼\" blank ({CORNER_PLATE_H:.0f}×{CORNER_PLATE_W:.0f}×{CORNER_PLATE_T:g})\npress-brake 90° L (R{CORNER_PLATE_BEND_R:.1f}, 1T); U-joint mount", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden SSNBUJ750x3/8KB", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
@@ -2004,8 +2023,8 @@ def _corner_section(ax):
     for by in (-8.5, 8.5):                                        # 2 bolts fix the support to the carriage (purple slide)
         ax.add_patch(plt.Rectangle((40, by - 0.9), 9.6, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))
     # dimensions
-    draw_dim_h(ax, 72, 140, 30, f"{UJOINT_LEN:.0f}", fs=5.2, font=FONT)                    # U-joint overall length (UJOINT_LEN)
-    draw_dim_v(ax, 150, -9.5, 9.5, f"Ø{UJOINT_OD:.1f}", fs=5.2, font=FONT)                 # U-joint yoke OD (UJOINT_OD)
+    draw_dim_h(ax, 72, 140, 30, f"{UJOINT_LEN:.0f}mm", fs=5.2, font=FONT)                    # U-joint overall length (UJOINT_LEN)
+    draw_dim_v(ax, 150, -9.5, 9.5, f"Ø{UJOINT_OD:.1f}mm", fs=5.2, font=FONT)                 # U-joint yoke OD (UJOINT_OD)
     draw_dim_h(ax, 176, 172 + AW + AL, -70, '2" (50.8)', fs=5.2, font=FONT)                # perp leg
     # → TO PINHOLE — horizontal, 90° to the vertical X slide
     ax.annotate("", xy=(244, 0), xytext=(220, 0), arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.4))
@@ -2060,7 +2079,7 @@ def sheet9():
     ], 58, 97, spacing=4.5, fs=6.6, title_fs=7.2, color=DIM, title_color=ANNO, font=FONT, width=40, wrap=62)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 9 OF 10",
+    title_block(ax_tb, "SHEET 9 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame + ACM ↔ U-joint ↔ X (swing) slide — corner connection detail",
                 scale_note="TO SCALE — SEE PANELS",
@@ -2105,7 +2124,7 @@ def sheet8():
     ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=65, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 8 OF 10",
+    title_block(ax_tb, "SHEET 8 OF 11",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
                 scale_note="Proportional (mm)",
@@ -2114,6 +2133,92 @@ def sheet8():
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet8.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet8.png")
+
+
+def sheet11():
+    """Far-left (REAR) film-rail bracket → pivot-post + far-wall attachment detail."""
+    reset_label_registry()
+    fig = plt.figure(figsize=(16, 10.5)); fig.patch.set_facecolor(BG)
+    cx = RAIL_X_L                                  # 260 — left rail X
+    fl_t, ext_t = 12, FP_CORNER_SEAT_PLATE_T       # interior flange 12mm / exterior plate 8mm
+    bw, web = 110, FP_RAIL_WEB                     # bracket X-width / rail web depth (76)
+    botf_top = FP_RAIL_ZC_TOP - web / 2            # 2262 — TL rail section bottom
+    botf_bot = FP_RAIL_ZC_BOT - web / 2            # 232  — BL rail section bottom
+    C_POST, C_MNT, C_PL, C_BOLT = "#C8C8D0", "#A8A8B0", "#9AA0A8", "#3A3A42"
+
+    # ── VIEW A — PLAN (looking DOWN at the rear-left corner) ──
+    axA = fig.add_axes([0.035, 0.52, 0.44, 0.44]); axA.set_facecolor(BG); axA.axis("off"); axA.set_aspect("equal")
+    axA.set_xlim(85, 375); axA.set_ylim(2222, 2432)
+    axA.add_patch(Rectangle((85, C_WID), 290, WALL_T, fc="#EAEAEE", ec=OUT, lw=1.0, zorder=2))
+    axA.text(370, C_WID + WALL_T / 2, "FAR WALL", fontsize=6, ha="right", va="center", color=DIM, **FONT, zorder=7)
+    axA.add_patch(Circle((PIVOT_X, PIVOT_YD), PIVOT_POST_OD / 2, fc=C_POST, ec=OUT, lw=1.2, zorder=3))
+    axA.text(PIVOT_X, PIVOT_YD, f"Ø{PIVOT_POST_OD:.0f}\nPIVOT\nPOST", fontsize=5, ha="center", va="center", color=OUT, **FONT, zorder=6)
+    axA.add_patch(Rectangle((cx - web / 2, 2228), web, (C_WID - fl_t) - 2228, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+    axA.text(cx, 2244, "FILM\nRAIL", fontsize=5, ha="center", va="center", color=OUT, **FONT, zorder=6)
+    axA.add_patch(Rectangle((cx - bw / 2, C_WID - fl_t), bw, fl_t, fc=C_PL, ec=OUT, lw=1.2, zorder=4))       # flange (interior)
+    axA.add_patch(Rectangle((cx - bw / 2, C_WID + WALL_T), bw, ext_t, fc=C_PL, ec=OUT, lw=1.2, zorder=4))    # exterior plate
+    for bx in (cx - 38, cx + 38):
+        axA.add_patch(Rectangle((bx - 2.5, C_WID - fl_t - 6), 5, WALL_T + fl_t + ext_t + 12, fc=C_BOLT, ec="none", zorder=5))  # shank
+        axA.add_patch(Rectangle((bx - 5.5, C_WID + WALL_T + ext_t), 11, 5.5, fc=C_BOLT, ec=OUT, lw=0.5, zorder=6))            # HEX HEAD — OUTSIDE
+        axA.add_patch(Rectangle((bx - 5, C_WID - fl_t - 5.5), 10, 5.5, fc="#6A6A72", ec=OUT, lw=0.6, zorder=6))               # NUT — INSIDE
+    leader(axA, cx + 38, C_WID - fl_t - 5.5, cx + 78, C_WID - fl_t - 30, "M12 NUTS inside (container)", ha="left", fs=5.0, color=OUT, font=FONT)
+    draw_dim_h(axA, cx - bw / 2, cx + bw / 2, C_WID - fl_t - 40, f"{bw}mm", fs=5.5, font=FONT, above=False)
+    draw_dim_h(axA, cx - 38, cx + 38, 2250, "76mm gauge", fs=5, font=FONT)
+    leader(axA, cx + 18, C_WID - fl_t, cx + 82, C_WID - fl_t - 7, "rail END butts the flange INNER face", ha="left", fs=5.2, color=OUT, font=FONT)
+    leader(axA, cx + bw / 2, C_WID + WALL_T + ext_t, cx + 78, C_WID + WALL_T + 7, "exterior plate — hex heads OUTSIDE", ha="left", fs=5.2, color=OUT, font=FONT)
+    leader(axA, cx - 38, C_WID - fl_t + 2, PIVOT_X + PIVOT_POST_OD / 2 + 4, 2316, "M12 bolts CLEAR\nthe Ø89 post", ha="left", fs=5, color=OUT, font=FONT)
+    axA.text(230, 2426, "VIEW A — PLAN (looking down, rear-left corner)", fontsize=7, ha="center", fontweight="bold", color=ANNO, **FONT)
+
+    # ── VIEW B — SECTION (Yd–Z at the rail plane) — BROKEN: TOP (TL↔roof mount) + BOTTOM (BL↔floor mount) ──
+    def _sec(ax, zlo, zhi, botf, tag, mnt_z0, mnt_z1, mnt_lbl, edge_z, edge_lbl, clr_a, clr_b):
+        ax.set_facecolor(BG); ax.axis("off"); ax.set_aspect("equal")
+        ax.set_xlim(2150, 2436); ax.set_ylim(zlo, zhi)
+        ax.add_patch(Rectangle((C_WID, zlo), WALL_T, zhi - zlo, fc="#EAEAEE", ec=OUT, lw=0.8, zorder=2))
+        ax.add_patch(Rectangle((PIVOT_YD - PIVOT_POST_OD / 2, zlo), PIVOT_POST_OD, zhi - zlo, fc="none", ec=C_POST, lw=1.0, ls=(0, (4, 3)), zorder=3))
+        ax.text(PIVOT_YD, (zlo + zhi) / 2, "Ø89 post\n(behind, X175)", fontsize=4.8, ha="center", va="center", color=DIM, **FONT, zorder=6)
+        ax.add_patch(Rectangle((2177, mnt_z0), 220, mnt_z1 - mnt_z0, fc=C_MNT, ec=OUT, lw=0.8, zorder=4))
+        ax.text(2250, (mnt_z0 + mnt_z1) / 2 + (14 if edge_lbl == "FLOOR" else -14), mnt_lbl, fontsize=5.0, ha="center", va="center", color=DIM, **FONT, zorder=6)
+        ax.plot([2150, 2436], [edge_z, edge_z], color=OUT, lw=1.2, ls=(0, (6, 3)) if edge_lbl == "CEILING" else "-")
+        ax.text(2185, edge_z + (-18 if edge_lbl == "CEILING" else 14), edge_lbl, fontsize=5.2, ha="left", color=DIM, **FONT)
+        fz0, fh = botf - 5, web + 10
+        ax.add_patch(Rectangle((2168, botf), (C_WID - fl_t) - 2168, web, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))   # rail (broken off left)
+        ax.add_patch(Rectangle((C_WID - fl_t, fz0), fl_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))                 # flange (interior)
+        ax.add_patch(Rectangle((C_WID + WALL_T, fz0), ext_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))             # exterior plate
+        for bz in (botf + 8, botf + web - 8):
+            ax.add_patch(Rectangle((C_WID - fl_t - 6, bz - 2.5), WALL_T + fl_t + ext_t + 12, 5, fc=C_BOLT, ec="none", zorder=7))   # shank
+            ax.add_patch(Rectangle((C_WID + WALL_T + ext_t, bz - 5.5), 5.5, 11, fc=C_BOLT, ec=OUT, lw=0.5, zorder=8))             # HEX HEAD — OUTSIDE
+            ax.add_patch(Rectangle((C_WID - fl_t - 5.5, bz - 5), 5.5, 10, fc="#6A6A72", ec=OUT, lw=0.6, zorder=8))                # NUT — INSIDE
+        ax.text(2172, botf + web + 22, f"{tag} rail", fontsize=5.6, ha="left", color=OUT, **FONT, zorder=8)
+        draw_dim_v(ax, 2424, clr_a, clr_b, f"{int(round(clr_b - clr_a))}mm clr", fs=5.0, font=FONT)
+    axBt = fig.add_axes([0.52, 0.685, 0.46, 0.27])
+    _sec(axBt, 2175, 2405, botf_top, "TL", C_HGT - 20, C_HGT, "roof mount plate", C_HGT, "CEILING", botf_top + web + 5, C_HGT - 20)
+    axBb = fig.add_axes([0.52, 0.395, 0.46, 0.27])
+    _sec(axBb, -45, 385, botf_bot, "BL", 0, 20, "floor mount plate", 0, "FLOOR", 20, botf_bot - 5)
+    fig.text(0.75, 0.668, "⋮   Ø89 pivot post continuous  floor → ceiling   ⋮", fontsize=6, ha="center", color=DIM, **FONT)
+    fig.text(0.75, 0.965, "VIEW B — SECTION (broken; looking along the rail axis)", fontsize=7, ha="center", fontweight="bold", color=ANNO, **FONT)
+
+    # ── notes ──
+    axN = fig.add_axes([0.05, 0.06, 0.90, 0.24]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    draw_notes(axN, [
+        "FAR-LEFT (REAR) FILM-RAIL BRACKET → PIVOT POST + FAR WALL:",
+        "Each rear rail end (TL top + BL bottom) lands at the Ø89 pivot post — the film far-left post, which runs "
+        "floor-to-ceiling and CARRIES the rail's vertical weight (the ~272mm stub is anchored to it). So the bracket "
+        "here is a LATERAL WALL TIE, not a load-bearing seat — no seat/gusset (unlike the pinhole-wall saddles).",
+        "ATTACHMENT:  the rail END butts the INNER face of a 12mm flange plate; the flange + an 8mm EXTERIOR backing "
+        "plate sandwich the corrugated far wall, drawn up by 4× M12×65 through-bolts (hex heads outside). The bolt "
+        "gauge is narrowed to 76mm (X222 / X298) so the bolts CLEAR the Ø89 post (X131–220).",
+        "CLEARANCES:  the TL (top) bracket sits just BELOW the Z2368 roof-mount plate; the BL (bottom) bracket sits "
+        "ABOVE the Z0–20 floor-mount plate. A full 150-tall saddle would foul the roof-mount plate — which is why "
+        "the rear ends carry the shallower flange bracket, not a saddle.",
+    ], 1, 97, spacing=4.6, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=94, wrap=152)
+
+    ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 11 OF 11", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Far-left (rear) rail bracket → pivot-post + far-wall attachment detail",
+                scale_note="TO SCALE — SEE PANELS", doc_id="TBS-FM01 · Film Plane Mechanism", height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet11.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet11.png")
 
 
 if __name__ == "__main__":
@@ -2127,4 +2232,5 @@ if __name__ == "__main__":
     sheet7()
     sheet8()
     sheet9()
+    sheet11()
     print("Done.")

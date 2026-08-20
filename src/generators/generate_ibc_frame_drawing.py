@@ -41,7 +41,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
-from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
+from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_constants import DIAGRAM_DPI
@@ -765,7 +765,8 @@ def sheet2():
 
     # ── Floor flange feet under each upright ─────────────────────────────────
     for fx in FX_POSTS:
-        _foot_elev(ax, fx + FRAME_RHS / 2)
+        foot_dx = IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0   # FRONT feet shifted outboard to clear the processing tray
+        _foot_elev(ax, fx + FRAME_RHS / 2 + foot_dx)
 
     # ── Direct-stack junction line (totes bear cage-on-cage — no deck) ──────
     ax.plot([(ibc_x_offset), (ibc_x_offset + IBC_W)], [(PLATFORM_Z)] * 2,
@@ -976,9 +977,16 @@ def sheet3():
            color=C_ARM, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Floor flange feet (projected, under the 4 box legs: front + back) ────
+    # The FRONT feet are shifted OUTBOARD (+X, toward the corridor) by IBC_FRONT_FOOT_DX so the
+    # 150×150 plate + inboard anchors clear the processing-tray basin (the plate spec is unchanged).
     for fx in FX_POSTS:
+        foot_dx = IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0
         for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
-            _foot_plan(ax, fx + FRAME_RHS / 2, post_yd + FRAME_RHS / 2)
+            _foot_plan(ax, fx + FRAME_RHS / 2 + foot_dx, post_yd + FRAME_RHS / 2)
+    leader(ax, (FX_FRONT + FRAME_RHS / 2 + IBC_FRONT_FOOT_DX), (POST_FAR_YD + FRAME_RHS / 2 + FOOT_PLATE / 2),
+           (FX_FRONT - 40), (POST_FAR_YD + 150),
+           f"FRONT FEET OFFSET +{IBC_FRONT_FOOT_DX:.0f}mm OUTBOARD\n(clear the processing tray; plate spec unchanged)",
+           color=C_OUT, fs=5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall depth

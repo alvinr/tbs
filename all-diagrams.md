@@ -70,6 +70,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 10: Corner Load Case (cross-slide travel + bending SF)](assets/film-plane-sheet10.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 11: Far-Left (Rear) Rail Bracket → Pivot-Post + Far-Wall Attachment](assets/film-plane-sheet11.png)
+
 ### Corner Joint — Design Study
 
 ![TBS-001 Film-Plane Corner Joint — Concept Options (2 axes, ±45°, carries the plane)](assets/film-joint-options.png)

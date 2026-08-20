@@ -743,6 +743,14 @@ PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pin
 PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2280mm
 PROC_TRAY_RIM  = 50              # rim height (mm)
 PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
+# The two FRONT corridor floor feet (under the film-plane-side uprights, FRONT_X) sit at the tray's
+# right edge; the standard 150×150 plate + inboard anchors reach UNDER the basin (X4604) and foul it.
+# Shift ONLY the front feet OUTBOARD so the plate + anchors clear the tray rim by IBC_FOOT_TRAY_GAP —
+# the 150×150×12 plate + 4×M12@PCD100 spec is UNCHANGED (validated), only the X station moves. Derived
+# from PROC_TRAY_X_R so a tray-edge change carries the feet with it (can't drift back into the basin).
+IBC_FOOT_TRAY_GAP    = 5    # front foot plate inboard edge → tray rim clearance (mm)
+_IBC_FRONT_FOOT_X0_STD = (IBC_COL_X - 20 + IBC_FRAME_RHS / 2) - IBC_FOOT_PLATE / 2   # 4604.4 — std inboard edge (centered on FRONT_X upright)
+IBC_FRONT_FOOT_DX    = max(0.0, (PROC_TRAY_X_R + IBC_FOOT_TRAY_GAP) - _IBC_FRONT_FOOT_X0_STD)  # 29.6 — outboard shift applied to the FRONT feet only
 # Yd-ONLY drainage slope (rev 2026-08-03): the rigid pan falls 1:200 in Yd only (far rim → near
 # rim) and is LEVEL across X.  Level-across-X keeps the full-width spray beam (which rides the
 # floor) level so it clears the level walkway support arms — a dual-axis (to-a-corner) fall tilted

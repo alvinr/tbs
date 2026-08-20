@@ -170,7 +170,7 @@ def render_png(path=None):
                  fontsize=12.5, fontweight="bold", color=C_OUT, y=0.955, **FT)
     fig.text(0.5, 0.915, f"moving mass {m:.1f} kg (weight model)  ·  304 SS ¼\"×1½\" bar  ·  driven from tbs_constants  ·  "
              "DECISION: bars mounted DEEP (strong axis)", fontsize=9, color=C_DIM, ha="center", **FT)
-    fig.text(0.5, 0.02, "SHEET 10 OF 10  ·  MOVEABLE FILM PLANE  ·  TBS-FM01  ·  © 2026 Alvin Richards",
+    fig.text(0.5, 0.02, "SHEET 10 OF 11  ·  MOVEABLE FILM PLANE  ·  TBS-FM01  ·  © 2026 Alvin Richards",
              fontsize=8.5, color=C_DIM, ha="center", **FT)
     fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
     plt.close(fig)

@@ -137,8 +137,9 @@ design force → capacity → SF, authoritative voice, every capacity/coefficien
 - [x] **Widened wall gusset bracket** — 10 mm plate, 500 mm cantilever (governing wall bracket).
 - [x] **Wall bolt group** — 3× (std) / 4× (widened) M12 in shear + **reinforcing-plate bearing /
   corrugated-wall pull-through** (ties to the parked 30 mm corrugation-depth procurement gate).
-- [x] **Floor-leg cantilever** — worst = extended punch-out arm (X770 reach): 2×1 arm + 2×2 post
-  bending; **foot-anchor group** (4× #14×2 screws) shear + uplift into ply-over-steel.
+- [x] **Floor-leg cantilever** — worst = extended punch-out arm (X880 reach): the 2×1 was SF 1.04, so
+  **redesigned to a 4×1 arm** (SF 1.99) + 2×2 post bending; **foot-anchor group** (4× #14×2 screws) shear
+  + uplift into ply-over-steel (must engage the steel floor pan).
 - [x] **Right cantilever rectangle** — long/end/cranked-beam bending + rectangle deflection **assuming
   the mid-span pickup** by the two IBC-post arms; half-lap notch net section at the crossings. The
   arm-root moment (≈0.35 kN·m vs ≈0.84 kN·m capacity per the

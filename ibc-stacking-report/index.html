@@ -3177,7 +3177,7 @@ therefore designed for the loaded case, not just the drained one.</p>
 <p><strong>Service + walkway load cases</strong> (the same frame also carries the plumbing panel and the walkway — both <strong>non-governing</strong> vs the transport case):</p>
 <ul>
 <li><strong>Plumbing panel + pumps</strong> (~20 kg on the 6 rear-panel brackets) = ~33 N/bracket, static — trivial (SF ≫ 10).</li>
-<li><strong>Right-walkway cantilever</strong> — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a <strong>395 N·m moment into the front upright</strong>: the 50.8 RHS upright bends at <strong>SF 6.9</strong>, and the arm→upright connection — a <strong>bolted end-plate</strong>, <strong>bearing-type</strong> (a plate welded to the arm end, then 2× M12 <strong>both above the arm</strong> through the upright into a <strong>rear backing plate</strong>, J6): the top bolt group takes the tension while the plate bears compression at the bottom against the upright. At the ~65 mm lever the two bolts share <strong>~3.0 kN each</strong> (<strong>SF ≈ 20</strong> on the M12), and the backing plate spreads the reaction so the hollow RHS wall can't dish. <strong>Both bolts sit above the arm</strong> — this clears the 3-way corner congestion at the front upright: the corridor's bottom frame X-rail (Z12–63) runs behind the plate's lower edge (ghost-marked on Sheet 5) with <strong>no bolt near it</strong>, and neither bolt fouls the welded arm (Z90–115). A walkway support carries <strong>down-load only</strong> (deck + people; the grate lifts out without loading the arm up), so the asymmetric bearing-type joint is appropriate. The arm itself is a <strong>solid 2×1 flat bar</strong> (not a tube): each arm half-laps over <em>both</em> walkway long beams, and a notched hollow tube opens into a weak channel — a notched partial section has to be solid to keep its strength. The half-lap is <strong>rebalanced to the moment</strong>: a deep arm notch at the tip (M ≈ 30 N·m, arm keeps 5.4 mm), and at the post end (M ≈ 334 N·m) the <strong>outer beam</strong> takes the deep notch so the arm keeps 16 mm (<strong>SF ≈ 1.6</strong> on the solid bar). The outer beam's thin 9.4 mm notch sits at an arm support, but a thin channel can't carry that support's hogging — so the half-lap is a <strong>bearing seat</strong> (the beam's upper 9.4 mm rests on the arm's lower 16 at ~0.2 MPa), i.e. a pinned support. The beam therefore spans <strong>simply-supported on its full 25.4 mm section</strong> — <strong>SF ≈ 7</strong> and <strong>~2 mm</strong> deflection under a person (<code>ibc_frame_load.outer_beam_frame_check</code>; the light grate load and person-share are estimates to firm with the full walkway-frame model). Each half-lap is <strong>positively secured</strong> by one <strong>#14 self-drilling TEK screw</strong> (4 total) driven from the underside through a Ø7 <strong>clearance</strong> hole in the solid arm, threading into the hollow beam's <strong>solid bottom wall</strong> (which faces down onto the arm) — an anti-lift/anti-slide locator whose head clears the traveling spray beam. The arm's fabrication (including the hold-down section) is drawn on Sheet 5.</li>
+<li><strong>Right-walkway cantilever</strong> — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a <strong>395 N·m moment into the front upright</strong>: the 50.8 RHS upright bends at <strong>SF 6.9</strong>, and the arm→upright connection — a <strong>bolted end-plate</strong>, <strong>bearing-type</strong> (a plate welded to the arm end, then 2× M12 <strong>both above the arm</strong> through the upright into a <strong>rear backing plate</strong>, J6): the top bolt group takes the tension while the plate bears compression at the bottom against the upright. At the ~65 mm lever the two bolts share <strong>~3.0 kN each</strong> (<strong>SF ≈ 20</strong> on the M12), and the backing plate spreads the reaction so the hollow RHS wall can't dish. <strong>Both bolts sit above the arm</strong> — this clears the 3-way corner congestion at the front upright: the corridor's bottom frame X-rail (Z12–63) runs behind the plate's lower edge (ghost-marked on Sheet 5) with <strong>no bolt near it</strong>, and neither bolt fouls the welded arm (Z90–115). A walkway support carries <strong>down-load only</strong> (deck + people; the grate lifts out without loading the arm up), so the asymmetric bearing-type joint is appropriate. The arm itself is a <strong>solid 2×1 flat bar</strong> (not a tube): each arm half-laps over <em>both</em> walkway long beams, and a notched hollow tube opens into a weak channel — a notched partial section has to be solid to keep its strength. The half-lap is <strong>rebalanced to the moment</strong>: a deep arm notch at the tip (M ≈ 30 N·m, arm keeps 5.4 mm), and at the post end (M ≈ 267 N·m) the <strong>outer beam</strong> takes the deep notch so the arm keeps 16 mm (<strong>SF ≈ 2.0</strong> on the solid bar). The outer beam's thin 9.4 mm notch sits at an arm support, but a thin channel can't carry that support's hogging — so the half-lap is a <strong>bearing seat</strong> (the beam's upper 9.4 mm rests on the arm's lower 16 at ~0.2 MPa), i.e. a pinned support. The beam therefore spans <strong>simply-supported on its full 25.4 mm section</strong> — <strong>SF ≈ 7</strong> and <strong>~2 mm</strong> deflection under a person (<code>ibc_frame_load.outer_beam_frame_check</code>; the light grate load and person-share are estimates to firm with the full walkway-frame model). Each half-lap is <strong>positively secured</strong> by one <strong>#14 self-drilling TEK screw</strong> (4 total) driven from the underside through a Ø7 <strong>clearance</strong> hole in the solid arm, threading into the hollow beam's <strong>solid bottom wall</strong> (which faces down onto the arm) — an anti-lift/anti-slide locator whose head clears the traveling spray beam. The arm's fabrication (including the hold-down section) is drawn on Sheet 5.</li>
 </ul>
 <p>The load path, the EN 12195-1 method, and the full demand/capacity/SF matrix (driven from <code>ibc_frame_load.py</code>) are drawn on the load-case sheet:</p>
 <p><img alt="TBS-001 IBC Frame — Load Case (EN 12195-1)" src="../assets/ibc-frame-load-case.png" /></p>
@@ -3885,11 +3885,46 @@ relevant sections above; the full set is collected here and in <a href="../engin
 <td>$30–$50</td>
 </tr>
 <tr>
+<td>Right walkway center cantilever arms (solid bar)</td>
+<td>SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces.</td>
+<td>2 ea</td>
+<td>Metal Supermarkets</td>
+<td>$91</td>
+</tr>
+<tr>
+<td>M12×100 hex through-bolt, Grade 8.8 zinc</td>
+<td>J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate: BEARING-TYPE, both bolts ABOVE the arm (30mm apart) as a tension group with the plate bearing compression at its base — clears the welded arm + the corridor bottom rail; the central column keeps max edge distance on both the plate and the post. Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab.</td>
+<td>4 ea</td>
+<td>McMaster-Carr</td>
+<td>$8–$10</td>
+</tr>
+<tr>
+<td>Walkway-arm end + backing plates (J6)</td>
+<td>65×155×8mm mild-steel plate (arm 50.8 wide + weld toe; 155 tall so the upper bolt keeps ≥1.5·D edge to the plate top), 2× Ø13 for M12 in a central column, both above the arm at 30mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate.</td>
+<td>4 ea</td>
+<td>Local fab</td>
+<td>$12–$24</td>
+</tr>
+<tr>
+<td>Walkway-arm J6 crush sleeves</td>
+<td>Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per J6 through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut.</td>
+<td>4 ea</td>
+<td>Local fab</td>
+<td>$3–$6</td>
+</tr>
+<tr>
+<td>Half-lap hold-down screws (#14 TEK + washer)</td>
+<td>1× #14 self-drilling TEK screw + washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). 410 SS self-driller, same family as the J8/J9 bracket screws.</td>
+<td>4 ea</td>
+<td>Bridge Fasteners</td>
+<td>$2–$4</td>
+</tr>
+<tr>
 <td><strong>Ibc-Frame total</strong></td>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$1,193–$1,737</strong></td>
+<td><strong>$1,309–$1,872</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3937,8 +3972,8 @@ the stacking structure and the totes it restrains.</p>
 <tbody>
 <tr>
 <td>Stacking frame (restraint deep 4-leg box)</td>
-<td><!-- BEGIN costing:ibc-frame-low -->$1,193<!-- END costing:ibc-frame-low --></td>
-<td><!-- BEGIN costing:ibc-frame-high -->$1,737<!-- END costing:ibc-frame-high --></td>
+<td><!-- BEGIN costing:ibc-frame-low -->$1,309<!-- END costing:ibc-frame-low --></td>
+<td><!-- BEGIN costing:ibc-frame-high -->$1,872<!-- END costing:ibc-frame-high --></td>
 </tr>
 <tr>
 <td>IBC totes (4×)</td>

@@ -1529,10 +1529,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-load-considerations" class="md-nav__link">
+  <a href="#9-structural-validation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Load Considerations
+        9. Structural Validation
       
     </span>
   </a>
@@ -1540,10 +1540,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-parts-list" class="md-nav__link">
+  <a href="#10-fabrication-schedules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Parts List
+        10. Fabrication Schedules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Fabrication Schedules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-fastener-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Fastener Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-weld-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Weld Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-datums-tolerances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Datums &amp; Tolerances
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-member-cut-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Member Cut List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-plate-fabrication-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 Plate Fabrication Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-parts-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Parts List
       
     </span>
   </a>
@@ -1551,10 +1623,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-maintenance" class="md-nav__link">
+  <a href="#12-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Maintenance
+        12. Maintenance
       
     </span>
   </a>
@@ -1562,10 +1634,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-source-references" class="md-nav__link">
+  <a href="#13-source-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12. Source References
+        13. Source References
       
     </span>
   </a>
@@ -2871,7 +2943,10 @@ tray's watertight seal.</p>
 the full length of the processing tray zone, from the left walkway butt joint at
 with the left and right walkways.</p>
 <h3 id="31-cantilever-bracket-design">3.1 Cantilever Bracket Design<a class="headerlink" href="#31-cantilever-bracket-design" title="Permanent link">&para;</a></h3>
-<p>Each bracket is a three-piece welded 8mm steel plate assembly:</p>
+<p>Each bracket is a welded assembly — an 8mm steel plate (vertical mounting leg + gusset) with a
+<strong>steel tube arm</strong> welded on. The arm was redesigned to the US IBC/OSHA basis (§9): the original
+8mm-plate arm yielded at ~25 lbf, so the arm is now a <strong>2×1×0.120in tube</strong> (standard) that carries
+the 300 lbf tip load at SF 2.1.</p>
 <table>
 <thead>
 <tr>
@@ -2883,18 +2958,18 @@ with the left and right walkways.</p>
 <tbody>
 <tr>
 <td>Vertical mounting plate</td>
-<td>8×150mm (height), flat against wall rib</td>
+<td>8×180mm (height), flat against wall rib</td>
 <td>Bolted to container corrugation rib interior face</td>
 </tr>
 <tr>
 <td>Horizontal arm</td>
-<td>8mm plate, 300mm cantilever (500mm in widened zone)</td>
-<td>Supports grating</td>
+<td><strong>2×1×0.120in steel tube</strong> (50.8×25.4), 300mm cantilever (<strong>3×1</strong> in the widened zone)</td>
+<td>Supports grating; sized to IBC/OSHA (§9)</td>
 </tr>
 <tr>
 <td>Triangular gusset</td>
 <td>Right triangle, 70mm reach from wall</td>
-<td>Braces arm from below; reach stops before tray rim</td>
+<td>Braces the arm root; reach stops before tray rim</td>
 </tr>
 </tbody>
 </table>
@@ -2938,14 +3013,19 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).</p>
 </thead>
 <tbody>
 <tr>
-<td>Plate thickness</td>
+<td>Plate thickness (leg + gusset)</td>
 <td>8mm</td>
 <td>10mm</td>
 </tr>
 <tr>
 <td>Vertical leg height</td>
-<td>150mm</td>
+<td>180mm</td>
 <td>200mm</td>
+</tr>
+<tr>
+<td>Arm section</td>
+<td>2×1×0.120in tube (SF 2.1)</td>
+<td>3×1×0.120in tube (SF 1.83, defl-governed)</td>
 </tr>
 <tr>
 <td>Arm reach</td>
@@ -2965,7 +3045,7 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).</p>
 <tr>
 <td>Reinforcing plate</td>
 <td>100x180x6mm</td>
-<td>120x220x6mm</td>
+<td>120x200x6mm</td>
 </tr>
 </tbody>
 </table>
@@ -2981,7 +3061,7 @@ the 10mm gusset plate at ±32mm from the plate centerline in X (centered
 between plate edge and gusset). Two upper bolts (30mm above the grating
 deck) at the same ±32mm X offset. The
 container corrugation ribs are hollow — each bolt bridges the air gap inside
-the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
+the rib. A 6mm reinforcing plate (120×200mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
 View B for the bolt pattern detail.</p>
 <p><strong>Width transition:</strong> At the two transition brackets,
@@ -3045,8 +3125,9 @@ deflection stays well under 1mm. (2×⅞ would clear by 15mm but isn't a stock s
 Supermarkets carry only <strong>2×1</strong>; being <em>deeper</em> it gives <strong>stronger</strong> arms, SF≈2.5, at the cost of 3.4mm
 clearance, which keeps the deck height unchanged.) The frame:</p>
 <ul>
-<li><strong>Two long beams</strong> run the full container width, with the 300mm grating spans between them.</li>
-<li><strong>Two short end beams</strong> (≈300mm) close the near and far ends, joining the long
+<li><strong>Two long beams</strong> run the full container width, with the 245mm grating spanning between them
+  (the right deck is shortened to land on the shared combined corner plate).</li>
+<li><strong>Two short end beams</strong> (≈245mm) close the near and far ends, joining the long
   beams into a torsionally stiff closed rectangle (no free bearer ends to droop).</li>
 </ul>
 <p><strong>Cranked inner beam at the muslin-rod slot.</strong> The muslin-drop notch on the right walkway
@@ -3128,7 +3209,7 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.<
 <tbody>
 <tr>
 <td>Floor-leg cantilever bracket (×5)</td>
-<td>2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + 2×1×0.120in (50.8×25.4mm) arm (25.4mm deep) + 128×60×8mm foot plate</td>
+<td>2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + arm (2×1×0.120in standard / <strong>4×1×0.120in</strong> on the 3 punch-out legs, §9) + 165×60×8mm foot plate (inboard outrigger — the post sits on its outboard end, the plate reaches inboard so the 4 floor anchors clear the post footprint)</td>
 <td>5 brackets (outside the tray)</td>
 </tr>
 <tr>
@@ -3149,19 +3230,20 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.<
 </tbody>
 </table>
 <p>The grate rests on the cantilever arms and lifts straight out — no fasteners, no
-kerb. The operator load travels grating → 2×1×0.120in cantilever arm → 2×2×0.120in post →
+kerb. The operator load travels grating → cantilever arm (2×1; 4×1 at the punch-out) → 2×2×0.120in post →
 foot plate → floor anchor, with <strong>zero tray contact</strong>: the posts stand on bare
 floor outside the tray and the arms cantilever over it. The arm bottom clears the floor-level spray bar
 by 15mm and the tray rim
 by 25mm. Because the brackets
 stand entirely outside the panel's transport-swing footprint, the grate simply
 lifts out before the panel swings; the floor-bolted posts stay put.</p>
-<p><strong>Load path / hand-check.</strong> The longest cantilever is the punch-out arm. With a ~1kN footfall at the arm tip, the
-2×1×0.120in arm and 2×2×0.120in SHS post carry the moment with margin and the foot
-plate's 4× M10 anchors react the overturning. This is a hand-check, not a signed
-analysis; the brackets bolt to the floor permanently and only the grate lifts out
-for transport. This floor-leg cantilever supersedes the earlier full-width
-edge-beam scheme — it is simpler and lighter and needs no through-wall seats.</p>
+<p><strong>Load path.</strong> The operator load travels grate → cantilever arm → 2×2×0.120in post → foot plate → floor
+anchors. The longest cantilever is the drum-exit punch-out arm (605mm). Under the US IBC/OSHA 300 lbf tip
+load this needs a <strong>4×1×0.120in tube</strong> (SF 1.99) — a plain 2×1 was only SF 1.04 — while the standard
+305mm arms stay 2×1 (SF 2.06); the post carries SF 2.68 (all computed in §9, <code>walkway_load.py</code>). The foot
+plate's 4× #14 anchors react the ~2.4 kN/screw overturning uplift and <strong>must engage the container's steel
+floor pan</strong>, not the plywood alone. This floor-leg cantilever supersedes the earlier full-width edge-beam
+scheme — simpler, lighter, and needs no through-wall seats.</p>
 <h3 id="52-drum-exit-punch-out">5.2 Drum-Exit Punch-Out<a class="headerlink" href="#52-drum-exit-punch-out" title="Permanent link">&para;</a></h3>
 <p>The operator steps out of the revolving-door light lock at its interior face, but the standard 300mm walkway
 ends — leaving only ~20mm of
@@ -3177,13 +3259,14 @@ of the image edge. Confirmed by <code>generate_line_of_sight.py</code> (no equip
 the cone).</p>
 <p><strong>Support.</strong> The 600mm punch-out is carried by the <strong>3 middle
 floor-leg brackets</strong> — the same posts that carry the
-standard left walkway, but with their arms <strong>extended to X=770mm</strong>.
-Each arm cantilevers the full ~630mm over the tray from its
+standard left walkway, but with their arms <strong>extended to X=880mm</strong> on the heavier
+<strong>4×1×0.120in tube</strong> section (IBC/OSHA — see §9).
+Each arm cantilevers ~605mm over the tray from its
 post on bare floor, with <strong>zero tray contact</strong>, and lifts out with the rest
 of the left walkway for transport. No separate sub-frame, edge beam, or bearing
 strip is needed.</p>
 <p>The drum-exit punch-out and its support are shown on <strong>Sheet 5 (Detail C)</strong> — the deeper
-landing on the 3 middle floor-leg brackets with arms extended to X770, cantilevering over
+landing on the 3 middle floor-leg brackets with 4×1 arms extended to X880, cantilevering over
 the tray with zero tray contact — alongside the rest of the left-walkway floor-leg system.
 See also <strong>Sheet 6 (Detail D)</strong> for the floor-leg bracket itself.</p>
 <h3 id="53-floor-leg-cantilever-bracket-detail">5.3 Floor-Leg Cantilever Bracket Detail<a class="headerlink" href="#53-floor-leg-cantilever-bracket-detail" title="Permanent link">&para;</a></h3>
@@ -3205,15 +3288,15 @@ contact.</p>
 </tr>
 <tr>
 <td>Foot plate</td>
-<td>128×60×8mm steel plate, with <strong>4× #14×2″ 410 SS self-drilling screws</strong> into the plywood-over-steel container floor</td>
+<td>165×60×8mm steel plate (inboard outrigger — F3), with <strong>4× #14×2″ 410 SS self-drilling screws</strong> into the plywood-over-steel container floor</td>
 </tr>
 <tr>
 <td>Arm</td>
-<td>2×1×0.120in (50.8×25.4mm) steel, reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out)</td>
+<td>2×1×0.120in (50.8×25.4mm) steel reaching X=580mm (2 standard brackets, SF 2.06); <strong>4×1×0.120in</strong> extended to X=880mm (3 punch-out brackets, SF 1.99 — IBC/OSHA, §9)</td>
 </tr>
 <tr>
 <td>Overturning reaction</td>
-<td>reacted by the foot-plate anchors; ~1kN footfall at the arm tip is the worst case</td>
+<td>reacted by the 4× #14 foot-plate anchors (~2.4 kN/screw uplift → engage the steel floor pan); 300 lbf tip point load governs (§9)</td>
 </tr>
 </tbody>
 </table>
@@ -3339,6 +3422,11 @@ tray is drained and empty during transport.</p>
 </tr>
 </tbody>
 </table>
+<p>The four sections' overall sizes, cut features (spray-bar slits, drum-exit punch-out, near bump-out,
+muslin notches), GRP panel seams (each 4,049mm near/far run splices at the 3,048mm panel length), and
+hold-down-clip positions (WF5, 610mm centers + corners) are dimensioned on the <strong>Sheet 10 grate cut-plan</strong>
+— a nesting/fabricator drawing:</p>
+<p><img alt="TBS-001 Walkway — Sheet 10: Grate Cut-Plan (GRP Nesting)" src="../assets/walkway-sheet10.png" /></p>
 <h3 id="81-grating-retention-by-walkway-section">8.1 Grating Retention by Walkway Section<a class="headerlink" href="#81-grating-retention-by-walkway-section" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3389,27 +3477,606 @@ near/far grate edges. No fasteners are used because the left walkway must be rem
 quickly for hinged panel transport mode — lift straight up and carry out; the
 floor-bolted posts stay put.</p>
 <hr />
-<h2 id="9-load-considerations">9. Load Considerations<a class="headerlink" href="#9-load-considerations" title="Permanent link">&para;</a></h2>
-<p>The walkway must support an operator (~100kg) plus portable equipment. The
-critical load case is the widened near walkway section (500mm cantilever) with an
-operator standing at the outer edge.</p>
-<p>The standard 8mm steel plate gusset brackets at 457mm centers provide substantial
-structural capacity. Each standard bracket is a rigid triangle (vertical leg +
-horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The four
-widened brackets use 10mm plate with 4x M12
-rectangular bolt patterns and 200mm vertical legs for the increased moment
-demand of the 500mm cantilever arm.</p>
-<p>The right walkway is a <strong>cantilever rectangle</strong>. A closed 2×1×0.120in steel frame is picked up
-at mid-span by two arms
-cantilevering off the IBC corridor uprights and at its four corners by wall
-cleats (left) and the combined corner plates (right). The governing case is the
-arm root, where the design footfall produces a peak moment of only ≈0.35 kN·m —
-comfortably within the ≈0.84 kN·m elastic capacity of 2×1×0.120in (Z≈3.35 cm³ × 250 MPa → SF≈2.4) (see the
-<a href="../right-walkway-cantilever-study/">cantilever study</a>). The closed rectangle
-resists twist far better than the previous free-ended bearer angles, so the deck
-bounces noticeably less than the rod-hung version it replaces.</p>
+<h2 id="9-structural-validation">9. Structural Validation<a class="headerlink" href="#9-structural-validation" title="Permanent link">&para;</a></h2>
+<p>Every walkway element is checked to the <strong>US IBC/OSHA</strong> load basis — <a href="https://codes.iccsafe.org/content/IBC2021P2/chapter-16-structural-design#IBC2021P2_Ch16_Sec1607">IBC-2021
+Table 1607.1</a>
+for walkways / elevated platforms: a <strong>60 psf (2.87 kPa) uniform</strong> live load and a <strong>300 lbf (1.33 kN)
+concentrated</strong> load applied at the location of maximum stress, mirrored by <a href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.28">OSHA 29 CFR
+1910.28</a> for the workplace. Per IBC
+1607.1 the two need not be combined; for every cantilever the <strong>concentrated load at the free tip governs</strong>.
+The figures below are computed by <code>src/generators/walkway_load.py</code> (safety factors on yield, target ≥ 2.0),
+so they cannot drift from the geometry.</p>
+<!-- BEGIN load:validation -->
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Design demand</th>
+<th>Capacity</th>
+<th>SF</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grate — uniform</td>
+<td>60 psf</td>
+<td>2360 psf max-rec</td>
+<td>39</td>
+<td>Fibergrate 1" 1×4 molded FRP; span ≤ 12" tabulated min</td>
+</tr>
+<tr>
+<td>Grate — concentrated</td>
+<td>300 lbf</td>
+<td>0.8 mm defl</td>
+<td>—</td>
+<td>0.03" @ 18" span (Fibergrate); less at our shorter span</td>
+</tr>
+<tr>
+<td>Wall bracket STD arm</td>
+<td>400 N·m</td>
+<td>838 N·m</td>
+<td>2.09</td>
+<td>2×1×0.120 tube, 300 mm; tip defl 1.4 mm (L/213)</td>
+</tr>
+<tr>
+<td>Wall bracket WIDE arm</td>
+<td>667 N·m</td>
+<td>1222 N·m</td>
+<td>1.83</td>
+<td>3×1×0.120 tube, 500 mm; deflection-governed, tip L/112</td>
+</tr>
+<tr>
+<td>Wall bolt tension (M12 8.8)</td>
+<td>3543 N</td>
+<td>60696 N</td>
+<td>17</td>
+<td>root-moment couple, 113 mm lever</td>
+</tr>
+<tr>
+<td>Corrugated-rib pull-through</td>
+<td>3543 N</td>
+<td>25334 N</td>
+<td>7</td>
+<td>1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip</td>
+</tr>
+<tr>
+<td>Floor-leg STD arm</td>
+<td>406 N·m</td>
+<td>838 N·m</td>
+<td>2.06</td>
+<td>2×1×0.120, 305 mm cant.</td>
+</tr>
+<tr>
+<td>Floor-leg punch-out arm</td>
+<td>807 N·m</td>
+<td>1605 N·m</td>
+<td>1.99</td>
+<td>4×1×0.120, 605 mm cant. (redesign; 2×1 was SF 1.04)</td>
+</tr>
+<tr>
+<td>Floor-leg post</td>
+<td>807 N·m</td>
+<td>2158 N·m</td>
+<td>2.68</td>
+<td>2×2×0.120 SHS</td>
+</tr>
+<tr>
+<td>Foot-anchor uplift</td>
+<td>2445 N/screw</td>
+<td>engage steel pan</td>
+<td>≈1</td>
+<td>4× #14 SS self-driller; 2 outboard react the couple over the 165 mm foot</td>
+</tr>
+<tr>
+<td>Combined corner plate</td>
+<td>1612 N</td>
+<td>161856 N</td>
+<td>100</td>
+<td>10 mm plate, 4× M12; shared with the BR film rail</td>
+</tr>
+<tr>
+<td>RWK long beam (cross-ref)</td>
+<td>person + grate</td>
+<td>SF 7.1</td>
+<td>7.1</td>
+<td>ibc_frame_load.outer_beam_frame_check — simply-supported full section</td>
+</tr>
+<tr>
+<td>RWK arm half-lap notch (cross-ref)</td>
+<td>334 N·m</td>
+<td>SF 2.03</td>
+<td>2.03</td>
+<td>ibc_frame_load.arm_notch_check — solid-bar rebalanced split</td>
+</tr>
+<tr>
+<td>Arm→upright J6 (IBC-owned)</td>
+<td>395 N·m</td>
+<td>SF 20</td>
+<td>20</td>
+<td>ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only</td>
+</tr>
+</tbody>
+</table>
+<!-- END load:validation -->
+
+<p><strong>Reading the table.</strong> The grate is far over-capacity (SF ≈ 39 on the 245–300mm span — well below the
+manufacturer's shortest tabulated 12" span). The <strong>wall-cantilever bracket arms were redesigned</strong> to this
+basis: the as-drawn 8×10mm plate arm yielded at ~25 lbf, so the arm is now a <strong>2×1×0.120in tube</strong> (standard,
+SF 2.1) / <strong>3×1×0.120in tube</strong> (widened, SF 1.83). The widened bracket is <strong>deflection-governed</strong> — at the
+25.4mm depth the spray bar allows, its 500mm reach gives L/112 tip deflection under the worst-case corner point
+load (a rare position; distributed standing deflects far less). The <strong>left-walkway floor-leg</strong> punch-out arm was
+likewise upgraded to a <strong>4×1×0.120in tube</strong> (SF 1.99; the 2×1 was only SF 1.04 at the 605mm reach). Two items
+carry fabrication conditions rather than a clean margin: the <strong>corrugated-rib pull-through</strong> (SF 7) depends on the
+≥30mm corrugation confirmation for bolt grip, and the <strong>floor-leg foot anchors</strong> (~2.4 kN/screw uplift) require
+the #14 self-drillers to engage the container's <strong>steel floor pan</strong>, not the plywood alone.</p>
+<p>The <strong>right walkway</strong> is a closed <strong>2×1×0.120in cantilever rectangle</strong> picked up at mid-span by two arms off the
+IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates (right). Its long/end
+beams and the arm half-lap notch are validated in <code>ibc_frame_load.py</code> (<code>outer_beam_frame_check</code>, SF 7.1;
+<code>arm_notch_check</code>, SF 2.03) and cross-referenced above; the <strong>arm→upright connection (joint J6) is IBC-frame-owned</strong>
+and drawn on IBC-frame Sheet 5, so it is cross-referenced, not re-validated here (see the
+<a href="../right-walkway-cantilever-study/">cantilever study</a>). The closed rectangle resists twist far better than the
+free-ended bearer angles it replaces, so the deck barely bounces.</p>
 <hr />
-<h2 id="10-parts-list">10. Parts List<a class="headerlink" href="#10-parts-list" title="Permanent link">&para;</a></h2>
+<h2 id="10-fabrication-schedules">10. Fabrication Schedules<a class="headerlink" href="#10-fabrication-schedules" title="Permanent link">&para;</a></h2>
+<p>Walkway-scoped marks (<strong>WF#</strong> fasteners, <strong>WW#</strong> welds) so they don't collide with the IBC-frame
+joint schedule (J1–J9). The center-arm end-plate bolts and the half-lap hold-down screws belong to
+the <strong>IBC-frame J6</strong> schedule and are cross-referenced, not scheduled here. Governing weld throats are
+load-checked in <code>walkway_load.py</code>; the rest are <a href="https://www.aws.org/standards/">AWS D1.1</a> minimum
+practical fillets for the plate thickness.</p>
+<h3 id="101-fastener-schedule">10.1 Fastener Schedule<a class="headerlink" href="#101-fastener-schedule" title="Permanent link">&para;</a></h3>
+<!-- BEGIN load:fasteners -->
+<table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Joint</th>
+<th>Fastener</th>
+<th>Grade</th>
+<th>Qty</th>
+<th>Torque</th>
+<th>Washer</th>
+<th>Locker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WF1</td>
+<td>Standard bracket → wall rib</td>
+<td>M12×65 hex, <a href="https://www.mcmaster.com/91280A728/">91280A728</a></td>
+<td>Gr.8.8 zinc</td>
+<td>3/brkt × 13 = 39</td>
+<td>~90 N·m</td>
+<td>flat both ends</td>
+<td>plain nut + split-lock</td>
+</tr>
+<tr>
+<td>WF2</td>
+<td>Widened bracket → wall rib</td>
+<td>M12×65 hex, <a href="https://www.mcmaster.com/91280A728/">91280A728</a></td>
+<td>Gr.8.8 zinc</td>
+<td>4/brkt × 5 = 20</td>
+<td>~90 N·m</td>
+<td>flat both ends</td>
+<td>plain nut + split-lock</td>
+</tr>
+<tr>
+<td>WF3</td>
+<td>Right-walkway wall cleat + combined corner plate → wall</td>
+<td>M12×70 hex, <a href="https://www.mcmaster.com/91280A732/">91280A732</a></td>
+<td>Gr.8.8 zinc</td>
+<td>20</td>
+<td>~90 N·m</td>
+<td>flat both ends</td>
+<td>plain nut + split-lock</td>
+</tr>
+<tr>
+<td>WF4</td>
+<td>Floor-leg foot plate → container floor</td>
+<td>#14×2″ HWH self-driller</td>
+<td>410 SS</td>
+<td>4/foot × 5 = 20</td>
+<td>driven to seat (no torque spec)</td>
+<td>bonded washer</td>
+<td>thread-forming (self-locking)</td>
+</tr>
+<tr>
+<td>WF5</td>
+<td>Grating hold-down clip → bracket arm / long beam</td>
+<td>M-type FRP grating clip + bolt</td>
+<td>316 SS</td>
+<td>610 mm (24") along bearing edges + corners</td>
+<td>snug</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>J6 (IBC-owned)</td>
+<td>Center-arm end-plate → IBC upright + half-lap hold-down</td>
+<td>M12×100 + #14 TEK</td>
+<td>Gr.8.8 / 410 SS</td>
+<td>cross-ref</td>
+<td>—</td>
+<td>—</td>
+<td>see IBC-frame Sheet 5</td>
+</tr>
+</tbody>
+</table>
+<!-- END load:fasteners -->
+
+<h3 id="102-weld-schedule">10.2 Weld Schedule<a class="headerlink" href="#102-weld-schedule" title="Permanent link">&para;</a></h3>
+<!-- BEGIN load:welds -->
+<table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Weld</th>
+<th>Leg</th>
+<th>Basis / check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WW1</td>
+<td>Std bracket 2×1 arm → 8mm leg (GOVERNING)</td>
+<td>5mm all-round</td>
+<td>root M 400 N·m → 310 N/mm vs 1018 N/mm, SF 3.3</td>
+</tr>
+<tr>
+<td>WW2</td>
+<td>Widened 3×1 arm → 10mm leg (GOVERNING)</td>
+<td>5mm all-round</td>
+<td>root M 667 N·m → SF 3.0</td>
+</tr>
+<tr>
+<td>WW3</td>
+<td>Gusset → leg + gusset → arm</td>
+<td>5mm</td>
+<td>braces the arm root; AWS D1.1 min for 8/10mm plate</td>
+</tr>
+<tr>
+<td>WW4</td>
+<td>Reinforcing plate → exterior wall panel</td>
+<td>5mm stitched</td>
+<td>bearing plate; nominal load, AWS D1.1 min</td>
+</tr>
+<tr>
+<td>WW5</td>
+<td>Rectangle long ↔ end-beam corners (right walkway)</td>
+<td>5mm</td>
+<td>closed-frame corners; AWS D1.1 min (tube ≤6mm)</td>
+</tr>
+<tr>
+<td>WW6</td>
+<td>Floor-leg 4×1 arm → 2×2 post (GOVERNING)</td>
+<td>5mm all-round</td>
+<td>root M 807 N·m → 313 N/mm vs 1018 N/mm, SF 3.3</td>
+</tr>
+<tr>
+<td>WW7</td>
+<td>Floor-leg post → foot plate (GOVERNING)</td>
+<td>5mm all-round</td>
+<td>base M 807 N·m → SF 3.3; also carries the 1334 N vertical in shear</td>
+</tr>
+<tr>
+<td>WW8</td>
+<td>Wall cleat — back-plate + shelf + upstand</td>
+<td>5mm</td>
+<td>AWS D1.1 min; the long beam bears on the shelf, TEK-locked</td>
+</tr>
+<tr>
+<td>WW9</td>
+<td>Combined corner plate — beam seat + upstand</td>
+<td>5mm</td>
+<td>AWS D1.1 min; shared with the BR film rail</td>
+</tr>
+<tr>
+<td>J6/W (IBC-owned)</td>
+<td>Half-lap seat + arm end-plate welds</td>
+<td>5mm</td>
+<td>IBC-frame schedule — cross-ref, not scheduled here</td>
+</tr>
+</tbody>
+</table>
+<!-- END load:welds -->
+
+<p><strong>Weld-location map</strong> — each mark is ticked at its joint on the detail sheets: <strong>WW1/WW3</strong> on Sheet 2
+(standard bracket), <strong>WW2/WW3</strong> on Sheet 7 (widened), <strong>WW6/WW7</strong> on Sheet 6 (floor-leg), and
+<strong>WW5/WW8/WW9</strong> on Sheet 3 (right cantilever rectangle). <strong>WF1–WF4</strong> land on the same sheets; <strong>WF5</strong>
+(grating clips) is dimensioned on the Sheet 10 cut-plan.</p>
+<p>All M12 Gr.8.8 wall bolts torque to <strong>~90 N·m</strong> (dry, matching the IBC-frame J3/J6 wall bolts) with a
+flat washer each end, a plain nut, and a split-lock washer. The floor-leg #14 self-drillers are driven
+to seat (no torque spec — thread-forming). The grating hold-down clip pitch is fixed in Phase D against
+the McNichols clip datasheet.</p>
+<h3 id="103-datums-tolerances">10.3 Datums &amp; Tolerances<a class="headerlink" href="#103-datums-tolerances" title="Permanent link">&para;</a></h3>
+<p>Three datums register the walkway to the container <strong>and</strong> the film plane, so it lands in the same frame
+as the subsystems it interfaces (the traveling spray bar, the film-plane rail):</p>
+<!-- BEGIN load:datums -->
+<table>
+<thead>
+<tr>
+<th>Datum</th>
+<th>Definition</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Floor plane — the container floor / foot-plate undersides (Z0)</td>
+<td>all heights: deck Z140, arm top Z115, bolt Z42/Z155, beam soffit Z89.6</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd2362) interior faces the brackets bolt to</td>
+<td>all Yd bracket/deck positions, bracket spacing 457</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Rail datum — film-plane rail X260 (left) / X4649 (right)</td>
+<td>the right-walkway outer edge (X4574) + combined corner plate register to C (shared with the film plane)</td>
+</tr>
+</tbody>
+</table>
+<!-- END load:datums -->
+
+<p>General weldment tolerance is <a href="https://www.iso.org/standard/23282.html"><strong>ISO 13920</strong></a> <strong>Class B</strong>
+(medium — appropriate for a bolted-and-welded steel walkway); welds are qualified to
+<a href="https://www.aws.org/standards/"><strong>AWS D1.1</strong></a>. The following features carry tighter <strong>functional</strong>
+tolerances because a fit or a clearance depends on them:</p>
+<!-- BEGIN load:tolerances -->
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Datum</th>
+<th>Tolerance</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deck coplanarity — grate-bearing tops, all 4 sections</td>
+<td>A</td>
+<td>±2 mm</td>
+<td>level walking surface</td>
+</tr>
+<tr>
+<td>Bracket arm reach (tip X)</td>
+<td>B</td>
+<td>±2 mm</td>
+<td>grate-edge bearing only</td>
+</tr>
+<tr>
+<td>Wall-bolt pattern (±27/±32 X, Z42/Z155)</td>
+<td>B</td>
+<td>±0.5 mm</td>
+<td>must align reinf-plate + wall holes</td>
+</tr>
+<tr>
+<td>Foot-anchor pattern (X +20/+60, ±18 Yd)</td>
+<td>A</td>
+<td>±1 mm</td>
+<td>self-drillers are forgiving</td>
+</tr>
+<tr>
+<td>Spray-bar slit position (X2454)</td>
+<td>C</td>
+<td>±2 mm</td>
+<td>align to the traveling spray bar</td>
+</tr>
+<tr>
+<td>Muslin notch / drum-exit punch-out position</td>
+<td>B/C</td>
+<td>±3 mm</td>
+<td>clearance features</td>
+</tr>
+<tr>
+<td>Combined corner-plate seat Z (walkway beam + film rail)</td>
+<td>A+C</td>
+<td>±1 mm</td>
+<td>shared level interface with the film plane</td>
+</tr>
+<tr>
+<td>Rectangle beam soffit Z89.6 (spray-bar clearance)</td>
+<td>A</td>
+<td>+2 / −0 mm</td>
+<td>must NOT drop below the spray-bar clearance</td>
+</tr>
+<tr>
+<td><em>General (all else)</em></td>
+<td>—</td>
+<td><strong>ISO 13920 Class B</strong></td>
+<td>weldment linear/angular; welds per <strong>AWS D1.1</strong></td>
+</tr>
+</tbody>
+</table>
+<!-- END load:tolerances -->
+
+<p>A <strong>DATUMS &amp; TOLERANCES</strong> callout carrying this scheme lands on the Sheet 1 plan.</p>
+<h3 id="104-member-cut-list">10.4 Member Cut List<a class="headerlink" href="#104-member-cut-list" title="Permanent link">&para;</a></h3>
+<p>Every steel member computed from <code>tbs_constants.py</code> (so the lengths can't drift), with a net stock
+linear-feet summary to order from — add kerf/handling waste at the shop. The two IBC-post center arms
+are in the <strong>IBC-frame</strong> cut list, not here.</p>
+<!-- BEGIN load:cutlist -->
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Stock</th>
+<th>Length (mm)</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Near/far bracket arm — standard</td>
+<td>2×1×0.120in tube</td>
+<td>300</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Near/far bracket arm — widened</td>
+<td>3×1×0.120in tube</td>
+<td>500</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Right-rectangle long beam (inner cranked + outer)</td>
+<td>2×1×0.120in tube</td>
+<td>2362</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Right-rectangle end beam</td>
+<td>2×1×0.120in tube</td>
+<td>143</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Floor-leg post</td>
+<td>2×2×0.120in SHS</td>
+<td>115</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Floor-leg arm — standard</td>
+<td>2×1×0.120in tube</td>
+<td>305</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Floor-leg arm — drum-exit punch-out</td>
+<td>4×1×0.120in tube</td>
+<td>605</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Stock summary (net, add kerf/waste)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2×1×0.120in tube</td>
+<td>—</td>
+<td>9520 = 31.2 ft</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3×1×0.120in tube</td>
+<td>—</td>
+<td>2500 = 8.2 ft</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4×1×0.120in tube</td>
+<td>—</td>
+<td>1815 = 6.0 ft</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2×2×0.120in SHS</td>
+<td>—</td>
+<td>575 = 1.9 ft</td>
+<td>—</td>
+</tr>
+<tr>
+<td><em>IBC-post center arms (×2, solid 2×1 bar)</em></td>
+<td></td>
+<td></td>
+<td><em>IBC-frame cut list</em></td>
+</tr>
+</tbody>
+</table>
+<!-- END load:cutlist -->
+
+<h3 id="105-plate-fabrication-schedule">10.5 Plate Fabrication Schedule<a class="headerlink" href="#105-plate-fabrication-schedule" title="Permanent link">&para;</a></h3>
+<p>Flat-plate parts with their hole sizes and positions (the bolt patterns are referenced to the datums of
+§10.3). The J6 arm end/backing plates are on the <strong>IBC-frame</strong> plate schedule.</p>
+<!-- BEGIN load:plates -->
+<table>
+<thead>
+<tr>
+<th>Plate</th>
+<th>Blank (mm)</th>
+<th>Thk (mm)</th>
+<th>Holes</th>
+<th>Positions / PCD</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foot plate</td>
+<td>165×60</td>
+<td>8</td>
+<td>4× Ø5.5 (#14)</td>
+<td>X +20/+60 from left edge × Yd ±18</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Reinforcing plate — std</td>
+<td>100×180</td>
+<td>6</td>
+<td>3× Ø13 (M12)</td>
+<td>±27 X @ Z42; 0 @ Z155 (triangular)</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Reinforcing plate — widened</td>
+<td>120×200</td>
+<td>6</td>
+<td>4× Ø13 (M12)</td>
+<td>±32 X @ Z35 &amp; Z155 (rectangular)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Bracket vertical leg — std / widened</td>
+<td>100×180 / 120×200</td>
+<td>8 / 10</td>
+<td>matches reinf plate</td>
+<td>same bolt pattern; arm + gusset welded on</td>
+<td>13 / 5</td>
+</tr>
+<tr>
+<td>Combined corner plate</td>
+<td>150×~271</td>
+<td>10</td>
+<td>4× Ø13 corner</td>
+<td>shared with the BR film rail (fp_combined_corner_plate)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Wall cleat (back + ext + shelf)</td>
+<td>90×(bolt span)</td>
+<td>8</td>
+<td>2× Ø13 horizontal</td>
+<td>below-shelf + above-beam, clear of the beam edge</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Transition bearing plate</td>
+<td>40×500</td>
+<td>5</td>
+<td>—</td>
+<td>welded to the arm top at each 300↔500 width step</td>
+<td>2</td>
+</tr>
+<tr>
+<td><em>J6 arm end + backing plates (×4)</em></td>
+<td>65×155</td>
+<td>8</td>
+<td>2× Ø13</td>
+<td><em>IBC-frame plate schedule</em></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<!-- END load:plates -->
+
+<hr />
+<h2 id="11-parts-list">11. Parts List<a class="headerlink" href="#11-parts-list" title="Permanent link">&para;</a></h2>
 <!-- BEGIN parts:walkway -->
 <table>
 <thead>
@@ -3445,14 +4112,14 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tr>
 <tr>
 <td>Cantilever bracket — standard (near/far)</td>
-<td>8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (4 near + 9 far at 457mm centers)</td>
+<td>8mm steel plate (180mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 4 near + 9 far at 457mm centers. ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms).</td>
 <td>13 ea</td>
 <td>Local fab</td>
 <td>$390–$650</td>
 </tr>
 <tr>
 <td>Cantilever bracket — widened (near)</td>
-<td>10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone, X1055–3083 = 5 bays)</td>
+<td>10mm steel plate (200mm vert leg + 70mm gusset) + a 500mm 3×1×0.120in steel tube arm, welded — US IBC/OSHA redesign: the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point; arm depth is spray-bar-capped at 25.4mm so the widened bracket takes a WIDER 3×1 section, not deeper). EP/battery/slit zone, X1055–3083 = 5 bays. ~0.5 m of 3×1 tube/bracket.</td>
 <td>5 ea</td>
 <td>Local fab</td>
 <td>$200–$350</td>
@@ -3487,7 +4154,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tr>
 <tr>
 <td>Reinforcing plate (exterior)</td>
-<td>6mm steel: 100×180mm std (×13) + 120×220mm widened (×5)</td>
+<td>6mm steel: 100×180mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint</td>
 <td>18 ea</td>
 <td>Local fab</td>
 <td>$75–$130</td>
@@ -3501,17 +4168,10 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tr>
 <tr>
 <td>Right walkway cantilever frame (long + end beams)</td>
-<td>2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) that make the closed rectangle, ~5.4 m (17.6 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07.</td>
+<td>2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (~245mm, the 245mm right deck) that make the closed rectangle, ~5.2 m (17.1 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07.</td>
 <td>1 lot</td>
 <td>MetalsDepot / Metal Supermarkets</td>
 <td>$125–$153</td>
-</tr>
-<tr>
-<td>Right walkway center cantilever arms (solid bar)</td>
-<td>SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces.</td>
-<td>2 ea</td>
-<td>Metal Supermarkets</td>
-<td>$91</td>
 </tr>
 <tr>
 <td>Wall cleat (left corners)</td>
@@ -3522,7 +4182,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tr>
 <tr>
 <td>Combined corner plate (right corners)</td>
-<td>10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail</td>
+<td>10mm steel, ~200mm wide (widened inboard to back the walkway right beam) — carries the walkway right beam AND the bottom film rail</td>
 <td>2 ea</td>
 <td>Local fab</td>
 <td>$50–$80</td>
@@ -3533,34 +4193,6 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 <td>20 ea</td>
 <td>McMaster-Carr</td>
 <td>$35</td>
-</tr>
-<tr>
-<td>M12×100 hex through-bolt, Grade 8.8 zinc</td>
-<td>J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate: BEARING-TYPE, both bolts ABOVE the arm (30mm apart) as a tension group with the plate bearing compression at its base — clears the welded arm + the corridor bottom rail; the central column keeps max edge distance on both the plate and the post. Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab.</td>
-<td>4 ea</td>
-<td>McMaster-Carr</td>
-<td>$8–$10</td>
-</tr>
-<tr>
-<td>Walkway-arm end + backing plates (J6)</td>
-<td>65×155×8mm mild-steel plate (arm 50.8 wide + weld toe; 155 tall so the upper bolt keeps ≥1.5·D edge to the plate top), 2× Ø13 for M12 in a central column, both above the arm at 30mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate.</td>
-<td>4 ea</td>
-<td>Local fab</td>
-<td>$12–$24</td>
-</tr>
-<tr>
-<td>Walkway-arm J6 crush sleeves</td>
-<td>Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per J6 through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut.</td>
-<td>4 ea</td>
-<td>Local fab</td>
-<td>$3–$6</td>
-</tr>
-<tr>
-<td>Half-lap hold-down screws (#14 TEK + washer)</td>
-<td>1× #14 self-drilling TEK screw + washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). 410 SS self-driller, same family as the J8/J9 bracket screws.</td>
-<td>4 ea</td>
-<td>Bridge Fasteners</td>
-<td>$2–$4</td>
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/90591A181/">M12 hex nut, plain</a> (90591A181)</td>
@@ -3585,7 +4217,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tr>
 <tr>
 <td>Floor-leg cantilever bracket (left walkway, ×5)</td>
-<td>2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate. #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote.</td>
+<td>2×2×0.120in SHS post (~115mm) + arm: 2×1×0.120in for the 2 standard legs (reach X580, SF 2.06) / 4×1×0.120in for the 3 drum-exit punch-out legs (extended to X880 — REDESIGNED to US IBC/OSHA, the 2×1 was only SF 1.04, 4×1 → SF 1.99; walkway_load.py) + 165×60×8mm foot plate (F3: lengthened 128→165 so the 4 floor anchors clear the post footprint as an inboard outrigger). #26: post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote.</td>
 <td>5 ea</td>
 <td>MetalsDepot / Local fab</td>
 <td>$65–$105</td>
@@ -3609,7 +4241,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$2,195–$3,076</strong></td>
+<td><strong>$2,079–$2,941</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3617,7 +4249,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 
 <p><em>Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the <a href="../ventilation-report/">Ventilation &amp; Cooling parts list</a>, not here.</em></p>
 <hr />
-<h2 id="11-maintenance">11. Maintenance<a class="headerlink" href="#11-maintenance" title="Permanent link">&para;</a></h2>
+<h2 id="12-maintenance">12. Maintenance<a class="headerlink" href="#12-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3669,7 +4301,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tbody>
 </table>
 <hr />
-<h2 id="12-source-references">12. Source References<a class="headerlink" href="#12-source-references" title="Permanent link">&para;</a></h2>
+<h2 id="13-source-references">13. Source References<a class="headerlink" href="#13-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://www.iso.org/standard/76912.html">ISO 668:2020</a> — Series 1 freight containers: Classification, dimensions and ratings.
    Container rib spacing 457mm (18").</li>

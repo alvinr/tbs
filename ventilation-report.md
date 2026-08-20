@@ -44,7 +44,7 @@ For operator comfort during processing in warm conditions, but also to ensure th
 Longitudinal section showing the cross-flow ventilation path: Fan B intake at the cargo door panel (low position), diagonal airflow up through the container volume, Fan A exhaust at the sealed end wall (high, in the plumbing corridor below the X1 fill port). Evaporative cooler intake duct on the pinhole wall.
 
 **Sheet 1 — Container Ventilation Section**
-![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
+![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/ventilation-sheet1.png)
 
 
 | Parameter | Specification |
@@ -90,7 +90,7 @@ Both fan penetrations include L-shaped offset baffles inside a duct stub to prev
 **Sheet 2 — Fan & Baffle Duct Assembly**
 Detail views of the L-shaped light-safe baffle duct construction for both the 6" ventilation fans and the 8" cooler intake duct. Shows offset baffle geometry, duct stub dimensions, and light path verification.
 
-![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/lighttrap-sheet2.png)
+![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/ventilation-sheet2.png)
 
 The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct is fixed to the hinged panel interior. Both fans and ducts are fully interior-mounted — only the weatherproof louvre grille is on the exterior face.
 

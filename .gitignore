@@ -56,6 +56,9 @@ parts-worklist.numbers
 parts-worklist.xlsx
 
 # Downloaded vendor quotes
-quoates/
+quotes/
+
+# Playwright MCP browser session/cache scratch dir
+.playwright-mcp/
 
 

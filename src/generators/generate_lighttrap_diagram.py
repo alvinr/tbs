@@ -29,7 +29,7 @@ from tbs_constants import (
     DRUM_CX, DRUM_CY, DRUM_D, DRUM_R, DRUM_H_LT, PANEL_FLOOR_GAP,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_PITCH,
-    LT_RIVET_N,
+    LT_RIVET_N, LT_RIM_LEG, LT_RIM_T,
     DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
@@ -184,8 +184,8 @@ def draw_sheet1():
                f"{DRUM_H_LT - PANEL_FLOOR_GAP}mm CLEAR", offset=95, fs=7, font=FONT)
     draw_dim_v(ax, X_HI - 160, 0, Z_TOP, f"{DRUM_H_LT}mm TOP AFF",
                offset=95, fs=7, right=True, font=FONT)
-    leader(ax, HI_R - 2, 1320,
-           HO_R + 330, 1720,
+    leader(ax, HI_R - 2, 1300,
+           HO_R + 250, 1880,
            f"≈{RUN_GAP}mm radial running gap\n(drum OD → housing bore; sealed — Sheet 6)",
            fs=6.5, color=C_DIM, ha="center", arrow_style="->", font=FONT)
 
@@ -214,13 +214,14 @@ def draw_sheet1():
         f"2 DRUM SHELL    1   {LT_DRUM_T:.2f}mm (1/8in) HDPE, Ø{2 * LT_DRUM_OR}",
         f"3 TOP CAP       1   {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}",
         f"4 BOTTOM CAP    1   {LT_CAP_BOT_T:.0f}mm A36 steel, Ø{LT_CAP_OD}",
-        f"5 BEARING       2   SKF 6215-2RS1 (Ø{SKF6215_ID} bore)",
-        f"6 SHELL RIVETS  {2 * LT_RIVET_N}  Ø{LT_RIVET_D} SS blind (~{LT_RIVET_PITCH}mm pitch)",
-        "7 JOINT BOND    -   3M DP8010 (shell→cap lap seal)",
-        "8 SEALS         -   12/20mm neoprene + silicone",
-        f"9 GRAB RAIL     1   Ø{GRAB_D}×{GRAB_L} SS round",
+        f"5 RIM ANGLE     2   {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} rolled R{LT_CAP_OD // 2} (Al/steel)",
+        f"6 BEARING       2   SKF 6215-2RS1 (Ø{SKF6215_ID} bore)",
+        f"7 SHELL RIVETS  {2 * LT_RIVET_N}  Ø{LT_RIVET_D} SS blind (~{LT_RIVET_PITCH}mm pitch)",
+        "8 JOINT BOND    -   3M DP8010 (shell→cap lap seal)",
+        "9 SEALS         -   12/20mm neoprene + silicone",
+        f"10 GRAB RAIL    1   Ø{GRAB_D}×{GRAB_L} SS round",
     ]
-    draw_notes(ax, bom, HO_R + 720, 1600, 118, fs=6.8, font=FONT,
+    draw_notes(ax, bom, HO_R + 720, 1610, 108, fs=6.8, font=FONT,
                width=1000, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 1 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
@@ -683,7 +684,7 @@ def draw_sheet5():
            f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, -10, LIP - 20, -300, LIP + 60,
-           "RIM ANGLE 25×25×3, rolled to R427\nTOP: 6061-T6 Al (riveted to cap)\nBOTTOM: A36 steel (welded to cap)",
+           f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\nTOP: 6061-T6 Al (riveted to cap)\nBOTTOM: A36 steel (welded to cap)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, 20, LIP + 40, 250, LIP + 30,
            f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
@@ -722,7 +723,7 @@ def draw_sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SHELL → CAP LAP-AND-FASTEN JOINT  (both caps)",
-        "1. Rim: 25×25×3 angle ring rolled to R427 — TOP 6061-T6 Al (riveted to Al cap); BOTTOM A36 steel (welded to steel cap).",
+        f"1. Rim: {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} angle ring rolled to R{LT_CAP_OD // 2} — TOP 6061-T6 Al (riveted to Al cap); BOTTOM A36 steel (welded to steel cap).",
         f"2. Shell sleeves {LT_LAP_H}mm over the standing lip.",
         "3. Apply 3M DP8010 bead to the lap (structural LSE bond + light seal); clamp.",
         f"4. Drill Ø5, set {LT_RIVET_N}× Ø{LT_RIVET_D} SS closed-end blind rivets per cap (~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",

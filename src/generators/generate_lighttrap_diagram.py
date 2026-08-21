@@ -169,6 +169,8 @@ def draw_sheet1():
                fs=6.5, font=FONT)
     draw_dim_h(ax, GX - GRAB_D / 2, GX + GRAB_D / 2, GZ1 + 75, f"Ø{GRAB_D}mm",
                offset=45, fs=6.5, font=FONT)
+    draw_dim_v(ax, GX - GRAB_D / 2 - 150, 0, GRAB_Z, f"{GRAB_Z}mm AFF\n(floor → rail CL)",
+               offset=45, fs=6.5, font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",
@@ -446,11 +448,11 @@ def draw_sheet4():
     SC = 2.2                                       # enlargement factor
     rs, ro, bw = SKF6215_ID / 2 * SC, SKF6215_OD / 2 * SC, SKF6215_W / 2 * SC
     CAPd = LT_CAP_T * SC * 2.4                      # cap draw thickness (exaggerated)
-    UX, LX = 0.0, 820.0                            # the two hub axes
+    UX, LX = 0.0, 1150.0                           # the two hub axes
     HALF = 150 * SC
 
     # ── Data window → figure size ────────────────────────────────────────────
-    PAD_L, PAD_R, PAD_B, PAD_T = 660, 660, 900, 430
+    PAD_L, PAD_R, PAD_B, PAD_T = 720, 780, 1450, 380
     X_LO, X_HI = UX - HALF - PAD_L, LX + HALF + PAD_R
     Z_LO, Z_HI = -135 * SC - PAD_B, 70 * SC + PAD_T
     FIG_W = 20.0
@@ -532,21 +534,36 @@ def draw_sheet4():
     for zt, (tx, tz), txt in up_labels:
         leader(ax, UX + tx, tz, LxT, zt, txt, fs=6.5, color=C_OUT, ha="right",
                arrow_style="->", font=FONT)
-    # bearing dimension lines (upper hub; both bearings identical)
-    draw_dim_h(ax, UX - ro, UX + ro, -70, f"Ø{SKF6215_OD} BEARING OD",
-               offset=48, fs=6.5, font=FONT)
-    draw_dim_h(ax, UX - rs, UX + rs, -125, f"Ø{SKF6215_ID} SHAFT (h6)",
-               offset=48, fs=6.5, above=False, font=FONT)
-    draw_dim_v(ax, UX + 100 * SC + 35, -bw, bw, f"{SKF6215_W}mm W",
-               offset=48, fs=6.5, right=True, font=FONT)
-    # bearing + circlip labels into the center gap (right of upper hub)
-    RxU = UX + HALF + 60
-    leader(ax, UX + (rs + ro) / 2, 0, RxU, 40 * SC,
-           f"SKF 6215-2RS1\nØ{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}, sealed C3",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, UX + rs, 18 * SC, RxU, -50 * SC,
-           "CIRCLIP each side\n(DIN 471) — axial retention",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    # ── Upper-hub dimension lines — every part, horizontal (Ø/width) below ────
+    draw_dim_h(ax, UX - rs, UX + rs, -310, f"Ø{SKF6215_ID} SHAFT (h6)",
+               offset=46, fs=6.2, above=False, font=FONT)
+    draw_dim_h(ax, UX - ro, UX + ro, -372, f"Ø{SKF6215_OD} BEARING OD",
+               offset=46, fs=6.2, above=False, font=FONT)
+    draw_dim_h(ax, UX - 80 * SC, UX + 80 * SC, -434, "Ø160 STEEL FLANGE",
+               offset=46, fs=6.2, above=False, font=FONT)
+    draw_dim_h(ax, UX - 100 * SC, UX + 100 * SC, -500, "Ø200 Al TOP RING OD",
+               offset=46, fs=6.2, above=False, font=FONT)
+    draw_dim_h(ax, UX - 140 * SC, UX + 140 * SC, -570, "280mm PANEL RAIL W",
+               offset=46, fs=6.2, above=False, font=FONT)
+    # Vertical (height / thickness), stacked in the centre gap:
+    draw_dim_v(ax, UX + 255, -bw, bw, f"{SKF6215_W}mm BRG W", offset=44, fs=6.0,
+               right=True, font=FONT)
+    draw_dim_v(ax, UX + 350, -15 * SC, 15 * SC, "30mm RING H", offset=44, fs=6.0,
+               right=True, font=FONT)
+    draw_dim_v(ax, UX + 445, 15 * SC, 63 * SC, "48mm RAIL H", offset=44, fs=6.0,
+               right=True, font=FONT)
+    draw_dim_v(ax, UX + 540, -115 * SC, -100 * SC, "15mm FLANGE T", offset=44,
+               fs=6.0, right=True, font=FONT)
+    draw_dim_v(ax, UX + 635, -115 * SC - CAPd, -115 * SC, f"{LT_CAP_T:.2f}mm CAP T",
+               offset=44, fs=6.0, right=True, font=FONT)
+    draw_dim_v(ax, UX - 245, -100 * SC, 40 * SC, "140mm SHAFT L", offset=44,
+               fs=6.0, font=FONT)
+    leader(ax, UX - 100 * SC, -115 * SC - CAPd / 2, UX - HALF - 60, -150 * SC,
+           "HDPE CAP Ø864\n(width — see Sheet 3)", fs=6.2, color=C_DIM,
+           ha="right", arrow_style="->", font=FONT)
+    leader(ax, UX + rs, 18 * SC, UX + 150, 102 * SC,
+           "CIRCLIP each side\n(DIN 471)", fs=6.2, color=C_OUT, ha="left",
+           arrow_style="->", font=FONT)
 
     # ── Lower-hub callouts (right column) ────────────────────────────────────
     RxL = LX + HALF + 60
@@ -558,6 +575,17 @@ def draw_sheet4():
     for zt, (tx, tz), txt in lo_labels:
         leader(ax, LX + tx, tz, RxL, zt, txt, fs=6.5, color=C_OUT, ha="left",
                arrow_style="->", font=FONT)
+    # Lower-hub dimension lines — collar + floor plate (h + v) ────────────────
+    draw_dim_h(ax, LX - 105 * SC, LX + 105 * SC, -310, "Ø210 COLLAR OD",
+               offset=46, fs=6.2, above=False, font=FONT)
+    draw_dim_h(ax, LX - 140 * SC, LX + 140 * SC, -372, "280mm FLOOR PLATE W",
+               offset=46, fs=6.2, above=False, font=FONT)
+    draw_dim_v(ax, LX - HALF - 40, -15 * SC, 15 * SC, "30mm COLLAR H", offset=44,
+               fs=6.0, font=FONT)
+    draw_dim_v(ax, LX - HALF - 120, -63 * SC, -15 * SC, "48mm PLATE H", offset=44,
+               fs=6.0, font=FONT)
+    ax.text(LX, -235, "bearing · shaft · flange · cap  AS UPPER HUB", ha="center",
+            va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
 
     # ── Fabrication / spec notes ─────────────────────────────────────────────
     notes = [
@@ -567,10 +595,11 @@ def draw_sheet4():
         "Upper: bearing in isolated aluminum top ring, 6×M10 to panel top rail.",
         "Lower: bearing in welded steel floor collar, 8×M10 to bottom rail.",
         "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
+        "Ring / rail / flange / collar / plate sizes PROVISIONAL — confirm vs panel-frame design.",
         "ENLARGED ~2:1 · CAP THICKNESS EXAGGERATED · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, Z_LO + PAD_B - 120, 95, fs=7, font=FONT,
-               width=2200, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 60, -740, 92, fs=7, font=FONT,
+               width=2350, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 4 OF 6", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT DETAIL",

@@ -362,6 +362,8 @@ LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
+LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness). Drum = single 80° opening → a 280° C-shell (not a full cylinder).
+LT_SHELL_ARC   = 360 - LT_OPENING_DEG   # 280 — drum shell / rim-angle / rivet arc (the 80° egress slot has no shell there)
 LT_CAP_T       = 4.76     # DEPRECATED (2026-08-21): superseded by the split metal caps below (LT_CAP_TOP_T / LT_CAP_BOT_T). Retained only until the 3D model + weight/parts consumers migrate off it. Do NOT reference in new code.
 # ── End caps — STRUCTURAL hub discs (carry the steel stub shafts into the SKF
 # 6215 bearings). rev (2026-08-21): HDPE → METAL; then both caps → ALUMINUM
@@ -372,14 +374,15 @@ LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
 LT_CAP_BOT_T   = 8.0      # bottom cap: 8mm 6061-T6 aluminum plate (identical to top)
 LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
 # ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
-LT_RIM_LEG     = 25       # rim-angle leg (mm) — rolled ring at each cap rim, provides the rivetable lip
-LT_RIM_T       = 3        # rim-angle thickness (mm); 25×25×3, Al top (riveted to cap) / steel bottom (welded to cap)
+# The rim angle + shell lap + rivets follow the drum's 280° C-shell arc (LT_SHELL_ARC) —
+# NOT a full ring; the 80° operator opening has no shell/rim there.
+LT_RIM_LEG     = 25       # rim-angle leg (mm) — rolled 280° arc at each cap rim, provides the rivetable lip
+LT_RIM_T       = 3        # rim-angle thickness (mm); 25×25×3 6061-T6 Al, riveted to both caps over the 280° arc
 LT_LAP_H       = 25       # shell lap over each cap rim (mm)
 LT_RIVET_D     = 4.8      # 3/16" stainless closed-end blind rivet
 LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)
-LT_RIVET_N     = round(math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 45 rivets per cap
+LT_RIVET_N     = round((LT_SHELL_ARC / 360) * math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 35 rivets per cap (280° shell arc)
 LT_RIM_RIVET_PITCH = 120  # rim-angle flat-leg → cap rivet pitch (mm; coarser than the shell rivets)
-LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,
 # enclosing the offset housing, so the film-plane rails stay internal.

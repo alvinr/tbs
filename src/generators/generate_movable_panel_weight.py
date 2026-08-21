@@ -85,8 +85,8 @@ def _rows():
     add("C Drum", "Al end caps (2)", f"Ø{k.LT_CAP_OD}×{k.LT_CAP_TOP_T:.0f}mm 6061-T6 (bolted hubs)",
         cap_area * ((k.LT_CAP_TOP_T + k.LT_CAP_BOT_T) / 1000.0) * RHO_ALUM)
     rim_area = (k.LT_RIM_LEG * k.LT_RIM_T + (k.LT_RIM_LEG - k.LT_RIM_T) * k.LT_RIM_T) * 1e-6
-    add("C Drum", "Rim-angle rings (2)", "25×25×3 rolled R427, 6061-T6 Al",
-        2 * math.pi * (k.LT_CAP_OD / 1000.0) * rim_area * RHO_ALUM)
+    add("C Drum", "Rim-angle arcs (2)", f"25×25×3 rolled R427, 6061-T6 Al, {k.LT_SHELL_ARC}° arc",
+        2 * (k.LT_SHELL_ARC / 360) * math.pi * (k.LT_CAP_OD / 1000.0) * rim_area * RHO_ALUM)
     add("C Drum", "Steel stub shafts (2)", "Ø75×150",
         2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL)
     add("C Drum", "SKF 6215 bearings (2)", "sealed deep-groove", 2 * 1.3)

@@ -29,7 +29,7 @@ from tbs_constants import (
     DRUM_CX, DRUM_CY, DRUM_D, DRUM_R, DRUM_H_LT, PANEL_FLOOR_GAP,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_PITCH,
-    LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH,
+    LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC,
     DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
@@ -718,15 +718,25 @@ def draw_sheet5():
            "FLAT LEG → CAP\nriveted (both caps)", fs=6.2, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
 
-    # ── Rivet pattern — cap plan + pitch detail ──────────────────────────────
+    # ── Rivet pattern — cap plan (280° C-shell arc; the 80° opening has no rim) ─
     pcx, pcz, pr = 760, 300, 190
-    draw_circle(ax, pcx, pcz, pr, lw=1.6, color=C_OUT, zorder=5)
-    for i in range(LT_RIVET_N):
-        aa = 2 * math.pi * i / LT_RIVET_N
-        draw_circle(ax, pcx + pr * math.cos(aa), pcz + pr * math.sin(aa), 5,
-                    lw=0.8, color="#CC4422", fill=True, fc="#CC4422", zorder=6)
-    ax.text(pcx, pcz, f"Ø{LT_CAP_OD}\ncap rim", ha="center", va="center",
-            fontsize=7, color=C_DIM, **FONT, zorder=7)
+    draw_circle(ax, pcx, pcz, pr, lw=1.0, color=C_DIM, ls="--", zorder=5)   # cap disc (full Ø855)
+    oh = LT_OPENING_DEG / 2
+    aarc = [math.radians(oh + t) for t in range(0, LT_SHELL_ARC + 1, 4)]    # 280° rim-angle arc
+    ax.plot([pcx + pr * math.cos(a) for a in aarc], [pcz + pr * math.sin(a) for a in aarc],
+            color=C_OUT, lw=2.6, zorder=6)
+    for i in range(LT_RIVET_N):                                            # rivets over the 280° arc
+        a = math.radians(oh + (i + 0.5) / LT_RIVET_N * LT_SHELL_ARC)
+        draw_circle(ax, pcx + pr * math.cos(a), pcz + pr * math.sin(a), 5,
+                    lw=0.8, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
+    for t in (-oh, oh):                                                    # opening jambs
+        a = math.radians(t)
+        ax.plot([pcx, pcx + pr * math.cos(a)], [pcz, pcz + pr * math.sin(a)],
+                color="#B08020", lw=1.4, zorder=6)
+    ax.text(pcx + pr + 18, pcz, f"{LT_OPENING_DEG}° OPENING\n(no rim / shell)", ha="left",
+            va="center", fontsize=6.2, color="#B08020", **FONT, zorder=7)
+    ax.text(pcx, pcz, f"Ø{LT_CAP_OD}\ncap rim ({LT_SHELL_ARC}° arc)", ha="center",
+            va="center", fontsize=7, color=C_DIM, **FONT, zorder=7)
     ax.text(pcx, pcz - pr - 45,
             f"RIVET PATTERN — {LT_RIVET_N}× Ø{LT_RIVET_D} per cap @ ~{LT_RIVET_PITCH}mm pitch\n"
             f"(BOTH caps · {2 * LT_RIVET_N} rivets total)", ha="center", va="top",

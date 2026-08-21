@@ -165,6 +165,10 @@ def draw_sheet1():
            HO_R + 330, GRAB_Z - 380,
            f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS (vertical)\ninside bore, interior side · {GRAB_Z}mm AFF",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+    draw_dim_v(ax, GX - GRAB_D / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm", offset=45,
+               fs=6.5, font=FONT)
+    draw_dim_h(ax, GX - GRAB_D / 2, GX + GRAB_D / 2, GZ1 + 75, f"Ø{GRAB_D}mm",
+               offset=45, fs=6.5, font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",
@@ -520,15 +524,21 @@ def draw_sheet4():
     # ── Upper-hub callouts (left column) ─────────────────────────────────────
     LxT = UX - HALF - 60
     up_labels = [
-        (48 * SC,  (-100 * SC, 40 * SC),  "PANEL TOP RAIL\n6×M10 (isolated mount)"),
+        (55 * SC,  (-100 * SC, 40 * SC),  "PANEL TOP RAIL\n6×M10 (isolated mount)"),
         (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD, H7)"),
-        (-58 * SC, (-rs, -60 * SC),       "STUB SHAFT Ø75 (h6)"),
-        (-108 * SC,(-70 * SC, -107 * SC), "STEEL FLANGE\n4×M10 to cap"),
-        (-132 * SC,(-90 * SC, -122 * SC), "HDPE DRUM CAP 3/16in"),
+        (-110 * SC,(-70 * SC, -107 * SC), "STEEL FLANGE\n4×M10 to cap"),
+        (-134 * SC,(-90 * SC, -122 * SC), "HDPE DRUM CAP 3/16in"),
     ]
     for zt, (tx, tz), txt in up_labels:
         leader(ax, UX + tx, tz, LxT, zt, txt, fs=6.5, color=C_OUT, ha="right",
                arrow_style="->", font=FONT)
+    # bearing dimension lines (upper hub; both bearings identical)
+    draw_dim_h(ax, UX - ro, UX + ro, -70, f"Ø{SKF6215_OD} BEARING OD",
+               offset=48, fs=6.5, font=FONT)
+    draw_dim_h(ax, UX - rs, UX + rs, -125, f"Ø{SKF6215_ID} SHAFT (h6)",
+               offset=48, fs=6.5, above=False, font=FONT)
+    draw_dim_v(ax, UX + 100 * SC + 35, -bw, bw, f"{SKF6215_W}mm W",
+               offset=48, fs=6.5, right=True, font=FONT)
     # bearing + circlip labels into the center gap (right of upper hub)
     RxU = UX + HALF + 60
     leader(ax, UX + (rs + ro) / 2, 0, RxU, 40 * SC,

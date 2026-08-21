@@ -79,10 +79,16 @@ def _rows():
     # ── C. Rotating drum ──
     drum_circ = math.pi * (2 * k.LT_DRUM_OR / 1000.0)
     td = k.LT_DRUM_T / 1000.0
-    cap_area = math.pi * (k.LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
+    cap_area = math.pi * (k.LT_CAP_OD / 2 / 1000.0) ** 2      # FULL metal disc
     add("C Drum", "HDPE C-shell", f"Ø864×1/8\", one {k.LT_OPENING_DEG}° opening",
         drum_circ * (1 - open_frac) * Hd * td * RHO_HDPE)
-    add("C Drum", "HDPE end caps (2)", "C-shaped, 3/16\" (hub load path)", 2 * cap_area * (k.LT_CAP_T / 1000.0) * RHO_HDPE)
+    add("C Drum", "Al top cap", f"Ø{k.LT_CAP_OD}×{k.LT_CAP_TOP_T:.0f}mm 6061-T6 (bolted hub)",
+        cap_area * (k.LT_CAP_TOP_T / 1000.0) * RHO_ALUM)
+    add("C Drum", "Steel bottom cap", f"Ø{k.LT_CAP_OD}×{k.LT_CAP_BOT_T:.0f}mm A36 (welded hub)",
+        cap_area * (k.LT_CAP_BOT_T / 1000.0) * RHO_STEEL)
+    rim_area = (k.LT_RIM_LEG * k.LT_RIM_T + (k.LT_RIM_LEG - k.LT_RIM_T) * k.LT_RIM_T) * 1e-6
+    add("C Drum", "Rim-angle rings (2)", "25×25×3 rolled R427, Al top + steel bottom",
+        math.pi * (k.LT_CAP_OD / 1000.0) * rim_area * (RHO_ALUM + RHO_STEEL))
     add("C Drum", "Steel stub shafts (2)", "Ø75×150",
         2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL)
     add("C Drum", "SKF 6215 bearings (2)", "sealed deep-groove", 2 * 1.3)

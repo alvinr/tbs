@@ -372,6 +372,8 @@ LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
 LT_CAP_BOT_T   = 6.0      # bottom cap: 6mm A36 mild-steel plate
 LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
 # ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
+LT_RIM_LEG     = 25       # rim-angle leg (mm) — rolled ring at each cap rim, provides the rivetable lip
+LT_RIM_T       = 3        # rim-angle thickness (mm); 25×25×3, Al top (riveted to cap) / steel bottom (welded to cap)
 LT_LAP_H       = 25       # shell lap over each cap rim (mm)
 LT_RIVET_D     = 4.8      # 3/16" stainless closed-end blind rivet
 LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)

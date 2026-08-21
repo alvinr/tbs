@@ -432,8 +432,15 @@ LT_FRAME_T         = 3     # RHS wall (mm)
 LT_FRAME_PLATE_T   = 10    # top/bottom bearing-plate thickness (mm steel)
 LT_TOPRING_OD      = 200   # upper bearing seat: isolated 6061-T6 Al top ring OD (mm); ID = bearing OD
 LT_COLLAR_OD       = 210   # lower bearing seat: welded steel floor collar OD (mm)
-LT_FRAME_MOUNT_BOLT_TOP = 6   # top-ring → plate bolts (M10)
-LT_FRAME_MOUNT_BOLT_BOT = 8   # floor-collar → plate bolts (M10)
+LT_FRAME_MOUNT_BOLT_TOP = 6   # top-ring → beam bolts (M10)
+LT_FRAME_MOUNT_BOLT_BOT = 8   # floor-collar → beam bolts (M10)
+# Axle-support BEAM — the cross-beam spanning the cage (Yd, at the drum axis X) that
+# carries the central SKF 6215 bearing; the drum hangs from the top beam. Deeper than
+# the perimeter RHS for span stiffness (962mm span, drum ~58kg + person moment).
+LT_AXLE_BEAM_H     = 100   # beam depth (mm) — 100×50×3 steel RHS
+LT_AXLE_BEAM_W     = 50    # beam width (mm)
+LT_AXLE_BEAM_T     = 3     # beam wall (mm)
+LT_AXLE_BEAM_SPAN  = DRUM_CAGE_YD_R - DRUM_CAGE_YD_L   # 962 — beam clear span (Yd)
 
 # Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
 # the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.

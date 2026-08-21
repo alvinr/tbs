@@ -234,3 +234,64 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 2. [Hinged Panel Report](hinged-panel-report.md) — Panel construction, pivot, latch, and swing-mechanism specification.
 3. [Equipment Layout Report](equipment-layout-report.md) — Panel transport mode and swing clearance analysis.
 4. [Electrical Report](electrical-report.md) — Circuit D safelight specification for drum interior.
+5. [3M Scotch-Weld DP8010 datasheet](https://www.3m.com/3M/en_US/p/d/b40071180/) — Structural acrylic adhesive for low-surface-energy plastics (HDPE), used for the shell-to-cap and housing-to-frame bonds.
+
+---
+
+## 9. Fabrication Blueprints
+
+The following sheets are the **fabrication source-of-record** for the revolving
+assembly. A plastics/metal shop builds the housing, drum, end caps, bearing hubs,
+seals, and integrated support cage from them. Every dimension is driven from
+`tbs_constants.py` — the sheets, not this narrative, carry the exact geometry, cut
+positions, and fastener patterns.
+
+The set is drawn to the current design: **aluminum end caps** on bolted stub-shaft
+hubs, a **lap-and-fasten** shell-to-cap joint (rolled rim-angle lip, stainless blind
+rivets, DP8010 bond), and a **steel welded box cage** integrated with the swing-panel
+weldment that carries the bearings and the fixed outer skin.
+
+**Sheet 1 — General Arrangement.** Full vertical section on the drum axis: fixed
+housing, rotating C-shell drum, both SKF 6215 bearings, stub shafts, caps, grab rail,
+and the support-cage envelope, keyed to the assembly BOM.
+
+![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
+
+**Sheet 2 — Housing cylinder cut sheet.** The fixed UV-HDPE outer skin as a flat
+pattern: developed length, height, weld-seam location, and the two 80° opening cutouts.
+
+![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
+
+**Sheet 3 — Drum — Cut.** The HDPE C-shell flat pattern (single 80° opening) and the
+two end caps with the stub-shaft bore.
+
+![TBS-001 Light-Trap — Sheet 3: Drum — Cut](assets/lighttrap-sheet3.png)
+
+**Sheet 4 — Drum — Secure.** The shell-to-cap lap-and-fasten joint: the rolled
+rim-angle lip, the stainless closed-end blind-rivet pattern, and the DP8010 structural
+bond that closes the joint against light.
+
+![TBS-001 Light-Trap — Sheet 4: Drum — Secure](assets/lighttrap-sheet4.png)
+
+**Sheet 5 — Bearing hub & stub-shaft detail.** The SKF 6215 seat, the stub-shaft
+capture in the cap, and circlip axial retention, top and bottom.
+
+![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft Detail](assets/lighttrap-sheet5.png)
+
+**Sheet 6 — Seals & light-path verification.** The running-gap wiper and top/bottom
+seals, and the three-position proof (open-to-exterior, open-to-interior, mid-rotation)
+that no straight-through light path exists at any rotation.
+
+![TBS-001 Light-Trap — Sheet 6: Seals & Light-Path Verification](assets/lighttrap-sheet6.png)
+
+**Sheet 7 — Support frame general arrangement.** The integrated steel welded box cage
+that carries the bearing loads and the fixed housing, in plan and elevation, with the
+axle-support beam at the drum axis.
+
+![TBS-001 Light-Trap — Sheet 7: Support Frame General Arrangement](assets/lighttrap-sheet7.png)
+
+**Sheet 8 — Housing → frame attachment.** The section showing the fixed outer skin
+lapped and riveted to the rolled rim-angle welded on the frame beams and jamb frames —
+the drum rotating free inside.
+
+![TBS-001 Light-Trap — Sheet 8: Housing → Frame Attachment](assets/lighttrap-sheet8.png)

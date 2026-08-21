@@ -11,6 +11,30 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## 🔩 Revolving light-trap — metal-cap + lap-joint cascade (2026-08-21)
+
+The 2D blueprint set (`generate_lighttrap_diagram.py`) now reflects the design change: **end caps
+HDPE → metal (8mm 6061-T6 Al top, 6mm A36 steel bottom)**, **shell→cap joint = lap-and-fasten**
+(SS Ø4.8 blind rivets @ ~60mm + 3M DP8010), superseding the extrusion weld; **new Sheet 5** (joint),
+seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`LT_CAP_BOT_T`/`LT_CAP_OD`/
+`LT_LAP_H`/`LT_RIVET_*`). `LT_CAP_T` (4.76) is kept as a **deprecated alias** only. Remaining cascade
+(the numeric single-source layer + 3D) — do as one batch, then retire `LT_CAP_T`:
+
+- [ ] **Weight** — `generate_weight_analysis.py:179` + `generate_movable_panel_weight.py:85` still use
+  `LT_CAP_T`×`RHO_HDPE`. Switch caps to FULL discs, Al top (`RHO_ALUM`) + steel bottom (`RHO_STEEL`);
+  drum mass jumps ~5kg → ~40kg (bearing/revolve-effort consequence — sanity-check). Re-`--inject` the
+  weight blocks so the gate stays green.
+- [ ] **parts.py / cost** — revise the drum shell spec (drop "caps from housing offcut"); ADD parts:
+  8mm 6061-T6 Al plate Ø855, 6mm A36 steel plate Ø855, ~90 SS Ø4.8 closed-end blind rivets, 3M DP8010.
+  Source SKUs + prices (Online Metals plate; McMaster rivets/DP8010) — material now, fab later. Reconcile costing.
+- [ ] **light-trap-selection.md §4** — §4.1 cap material (metal, not HDPE), §4.3/§4.4 shell→cap joint
+  (lap + rivet + DP8010, not weld), §4.5 add plate/rivet/adhesive suppliers.
+- [ ] **3D model** — `generate_lighttrap_model.py` (`DRUM_CAP_T`) + overview (reuses the drum builder):
+  split cap thickness + materials (Al/steel), add the rim-angle/lap if modeled. Regenerate; **hold `--send`
+  for a session with ALVIN at SketchUp** (focus-model-first: lighttrap, then overview). Then retire `LT_CAP_T`.
+- [ ] **Registration** (was Task 8) — add `lighttrap-sheet1..7` to `dependencies.yml`, `all-diagrams.md`,
+  `publish.sh`, `setup_docs.py`; nav + report embed; then the gallery + unused-import warnings clear.
+
 ## 🛠 Tooling / infra
 
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real

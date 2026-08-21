@@ -20,6 +20,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import math
 import os
 
 from tbs_constants import (
@@ -218,9 +219,112 @@ def draw_sheet1():
     print("  → diagrams/lighttrap-sheet1.png saved")
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 2 — Housing cylinder cut sheet (flat pattern)
+# The 5mm UV-HDPE skin developed flat: roll to Ø900 and extrusion-weld the seam,
+# then cut the two 80° openings. Developed length = π·Ø900.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet2():
+    L        = math.pi * DRUM_D                       # developed length
+    HOUSING_H = DRUM_H_LT - PANEL_FLOOR_GAP           # blank height = 2120
+    OW       = (LT_OPENING_DEG / 360.0) * L           # opening arc width
+    SEAM_DEG = 90                                     # seam falls mid-solid-arc (near-Yd)
+
+    def dev(theta):                                   # angle → developed x from seam
+        return ((theta - SEAM_DEG) % 360) / 360.0 * L
+
+    # Opening cut positions along the developed width (EXT @180°, INT @0°) ──────
+    ext_x0, ext_x1 = dev(180 - LT_OPENING_DEG / 2), dev(180 + LT_OPENING_DEG / 2)
+    int_x0, int_x1 = dev(360 - LT_OPENING_DEG / 2), dev(360 + LT_OPENING_DEG / 2)
+    # Sill + header bands keep the welded cylinder continuous (chosen cut heights).
+    SILL_H, HEADER_H = 80, 150
+    op_z0, op_z1 = SILL_H, HOUSING_H - HEADER_H
+
+    # ── Data window → figure size ────────────────────────────────────────────
+    PAD_L, PAD_R, PAD_B, PAD_T = 520, 520, 1180, 470
+    X_LO, X_HI = -PAD_L, L + PAD_R
+    Z_LO, Z_HI = -PAD_B, HOUSING_H + PAD_T
+    FIG_W = 18.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── Developed blank ──────────────────────────────────────────────────────
+    draw_rect(ax, 0, 0, L, HOUSING_H, fc="#DDE4EC", lw=2.0, zorder=3)
+    # ── Two 80° opening cutouts ──────────────────────────────────────────────
+    for x0, x1, tag, col in ((ext_x0, ext_x1, "EXTERIOR OPENING", "#5060A0"),
+                             (int_x0, int_x1, "INTERIOR OPENING\n(onto walkway)", "#407040")):
+        draw_rect(ax, x0, op_z0, x1 - x0, op_z1 - op_z0, fc="white", lw=1.6, zorder=5)
+        ax.plot([x0, x1], [op_z0, op_z1], color=C_DIM, lw=0.5, ls=":", zorder=5)
+        ax.plot([x0, x1], [op_z1, op_z0], color=C_DIM, lw=0.5, ls=":", zorder=5)
+        ax.text((x0 + x1) / 2, (op_z0 + op_z1) / 2, f"{tag}\n{LT_OPENING_DEG}° · CUT OUT",
+                ha="center", va="center", fontsize=8, color=col, fontweight="bold",
+                **FONT, zorder=15)
+
+    # ── Weld seam (blank edges join here; mid-solid-arc at θ=90°) ─────────────
+    for xs in (0, L):
+        ax.plot([xs, xs], [0, HOUSING_H], color="#CC4422", lw=2.4, zorder=6)
+    leader(ax, 0, HOUSING_H * 0.62, -300, HOUSING_H * 0.62,
+           "ROLL + EXTRUSION\nWELD SEAM\n(edges joined; seam\nmid-arc at 90°)",
+           fs=6.5, color="#CC4422", ha="center", arrow_style="->", font=FONT)
+
+    # ── Angular registration ticks along the top edge ────────────────────────
+    for theta, lab in ((90, "90° SEAM"), (180, "180° EXT"), (270, "270°"),
+                       (360, "0/360° INT")):
+        xd = dev(theta) if theta != 90 else 0
+        ax.plot([xd, xd], [HOUSING_H, HOUSING_H + 55], color=C_CL, lw=0.7, zorder=6)
+        ax.text(xd, HOUSING_H + 70, lab, ha="center", va="bottom", fontsize=6,
+                color=C_CL, **FONT, zorder=15)
+
+    # ── Dimensions ───────────────────────────────────────────────────────────
+    draw_dim_h(ax, 0, L, HOUSING_H + 230,
+               f"DEVELOPED LENGTH = π·Ø{DRUM_D} = {L:.0f}mm", offset=80, fs=8, font=FONT)
+    draw_dim_v(ax, -150, 0, HOUSING_H, f"{HOUSING_H}mm BLANK HEIGHT",
+               offset=90, fs=7.5, font=FONT)
+    draw_dim_h(ax, ext_x0, ext_x1, op_z1 + 90,
+               f"{OW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=55, fs=6.5, font=FONT)
+    draw_dim_h(ax, int_x0, int_x1, op_z1 + 90,
+               f"{OW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=55, fs=6.5, font=FONT)
+    draw_dim_h(ax, 0, ext_x0, op_z0 - 120, f"{ext_x0:.0f}mm", offset=50, fs=6.5,
+               above=False, font=FONT)
+    draw_dim_v(ax, int_x1 + 130, op_z0, op_z1, f"{op_z1 - op_z0:.0f}mm\nOPENING",
+               offset=80, fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, L + 130, 0, SILL_H, f"{SILL_H}mm\nSILL", offset=70, fs=6, right=True, font=FONT)
+    draw_dim_v(ax, L + 130, HOUSING_H - HEADER_H, HOUSING_H, f"{HEADER_H}mm\nHEADER",
+               offset=70, fs=6, right=True, font=FONT)
+
+    # ── Fabrication notes ────────────────────────────────────────────────────
+    notes = [
+        "HOUSING SKIN — FABRICATION",
+        f"Material: {LT_HOUSING_T}mm UV-stabilized HDPE sheet (~7 m²).",
+        f"1. Cut blank {L:.0f} × {HOUSING_H}mm; cut the two {LT_OPENING_DEG}° openings.",
+        "2. Roll to Ø900 (R450); extrusion-weld the seam (mid-arc, 90°).",
+        "3. Interior face black-pigmented + flat-black touch-in at welds.",
+        "   Exterior face UV-stabilized — no primer.",
+        "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, 40, -240, 100, fs=7, font=FONT, width=1650,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 2 OF 6", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="HOUSING CYLINDER — CUT SHEET (FLAT PATTERN)",
+                scale_note="FLAT PATTERN · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet2.png saved")
+
+
 def main():
     print("Generating TBS-001 Revolving Light-Trap blueprint sheets...")
     draw_sheet1()
+    draw_sheet2()
     print("Done.")
 
 

@@ -377,3 +377,23 @@
 ## 23. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
+
+---
+
+## 24. Revolving Light-Trap — Fabrication Blueprints
+
+![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
+
+![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
+
+![TBS-001 Light-Trap — Sheet 3: Drum — Cut (C-shell + caps)](assets/lighttrap-sheet3.png)
+
+![TBS-001 Light-Trap — Sheet 4: Drum — Secure (lap-and-fasten joint)](assets/lighttrap-sheet4.png)
+
+![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft Detail](assets/lighttrap-sheet5.png)
+
+![TBS-001 Light-Trap — Sheet 6: Seals & Light-Path Verification](assets/lighttrap-sheet6.png)
+
+![TBS-001 Light-Trap — Sheet 7: Support Frame General Arrangement](assets/lighttrap-sheet7.png)
+
+![TBS-001 Light-Trap — Sheet 8: Housing → Frame Attachment](assets/lighttrap-sheet8.png)

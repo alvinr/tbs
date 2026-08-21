@@ -486,10 +486,11 @@ def draw_sheet4():
                         color="#CC4422", lw=1.2, zorder=8)
         # both caps: 6061-T6 Al, bolted steel stub-shaft flange (4×M10)
         capd = LT_CAP_TOP_T * SC * 2.4
-        zc0, zc1 = -115 * SC * s, -115 * SC * s - capd * s
-        # stub shaft Ø75 — reaches the flange face
-        z_stub = 40 * SC * s
-        z_fl = -100 * SC * s
+        zc0, zc1 = -55 * SC * s, -55 * SC * s - capd * s
+        # stub shaft Ø75 — short stub: flange face → past the bearing (only what the
+        # bearing seat + circlips + flange need; no reason for a long shaft)
+        z_stub = 30 * SC * s
+        z_fl = -40 * SC * s
         draw_rect(ax, cx - rs, min(z_stub, z_fl), 2 * rs, abs(z_stub - z_fl),
                   fc=C_STEEL, lw=1.4, zorder=6)
         # bearing mount: isolated Al top ring (upper) / welded steel floor collar (lower)
@@ -503,11 +504,11 @@ def draw_sheet4():
         # Al drum cap + bolted steel stub-shaft flange
         draw_rect(ax, cx - 110 * SC, min(zc0, zc1), 220 * SC, abs(zc1 - zc0),
                   fc=C_ALUM, lw=1.4, zorder=6)
-        zf0, zf1 = -100 * SC * s, -115 * SC * s
+        zf0, zf1 = -40 * SC * s, -55 * SC * s
         draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
                   fc=C_STEEL, lw=1.4, zorder=6)
         for g in (-1, 1):
-            ax.plot([cx + g * 55 * SC] * 2, [-100 * SC * s, zc1],
+            ax.plot([cx + g * 55 * SC] * 2, [-40 * SC * s, zc1],
                     color=C_OUT, lw=1.8, zorder=9)       # flange bolts
         # bearing mount bolts (ring/collar → rail) + circlip grooves
         for g in (-1, 1):
@@ -535,39 +536,36 @@ def draw_sheet4():
     up_labels = [
         (55 * SC,  (-100 * SC, 40 * SC),  "PANEL TOP RAIL\n6×M10 (isolated mount)"),
         (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD, H7)"),
-        (-110 * SC,(-70 * SC, -107 * SC), "STEEL FLANGE\n4×M10 to Al cap"),
-        (-134 * SC,(-90 * SC, -122 * SC), f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al"),
+        (-52 * SC, (-70 * SC, -47 * SC),  "STEEL FLANGE\n4×M10 to Al cap"),
+        (-90 * SC, (-90 * SC, -62 * SC),  f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}\n(width — see Sheet 3)"),
     ]
     for zt, (tx, tz), txt in up_labels:
         leader(ax, UX + tx, tz, LxT, zt, txt, fs=6.5, color=C_OUT, ha="right",
                arrow_style="->", font=FONT)
     # ── Upper-hub dimension lines — every part, horizontal (Ø/width) below ────
-    draw_dim_h(ax, UX - rs, UX + rs, -310, f"Ø{SKF6215_ID} SHAFT (h6)",
+    draw_dim_h(ax, UX - rs, UX + rs, -195, f"Ø{SKF6215_ID} SHAFT (h6)",
                offset=46, fs=6.2, above=False, font=FONT)
-    draw_dim_h(ax, UX - ro, UX + ro, -372, f"Ø{SKF6215_OD} BEARING OD",
+    draw_dim_h(ax, UX - ro, UX + ro, -257, f"Ø{SKF6215_OD} BEARING OD",
                offset=46, fs=6.2, above=False, font=FONT)
-    draw_dim_h(ax, UX - 80 * SC, UX + 80 * SC, -434, "Ø160 STEEL FLANGE",
+    draw_dim_h(ax, UX - 80 * SC, UX + 80 * SC, -319, "Ø160 STEEL FLANGE",
                offset=46, fs=6.2, above=False, font=FONT)
-    draw_dim_h(ax, UX - 100 * SC, UX + 100 * SC, -500, "Ø200 Al TOP RING OD",
+    draw_dim_h(ax, UX - 100 * SC, UX + 100 * SC, -385, "Ø200 Al TOP RING OD",
                offset=46, fs=6.2, above=False, font=FONT)
-    draw_dim_h(ax, UX - 140 * SC, UX + 140 * SC, -570, "280mm PANEL RAIL W",
+    draw_dim_h(ax, UX - 140 * SC, UX + 140 * SC, -455, "280mm PANEL RAIL W",
                offset=46, fs=6.2, above=False, font=FONT)
     # Vertical (height / thickness), stacked in the centre gap:
     draw_dim_v(ax, UX + 255, -bw, bw, f"{SKF6215_W}mm BRG W", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 350, -15 * SC, 15 * SC, "30mm RING H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 330, -15 * SC, 15 * SC, "30mm RING H", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 445, 15 * SC, 63 * SC, "48mm RAIL H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 405, 15 * SC, 63 * SC, "48mm RAIL H", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 540, -115 * SC, -100 * SC, "15mm FLANGE T", offset=44,
+    draw_dim_v(ax, UX + 480, -55 * SC, -40 * SC, "15mm FLANGE T", offset=44,
                fs=6.0, right=True, font=FONT)
-    draw_dim_v(ax, UX + 635, -115 * SC - CAPd, -115 * SC, f"{LT_CAP_TOP_T:.0f}mm Al CAP T",
+    draw_dim_v(ax, UX + 555, -55 * SC - CAPd, -55 * SC, f"{LT_CAP_TOP_T:.0f}mm Al CAP T",
                offset=44, fs=6.0, right=True, font=FONT)
-    draw_dim_v(ax, UX - 245, -100 * SC, 40 * SC, "140mm SHAFT L", offset=44,
+    draw_dim_v(ax, UX - 255, -40 * SC, 30 * SC, "70mm SHAFT L", offset=44,
                fs=6.0, font=FONT)
-    leader(ax, UX - 100 * SC, -115 * SC - CAPd / 2, UX - HALF - 60, -150 * SC,
-           f"Al CAP Ø{LT_CAP_OD}\n(width — see Sheet 3)", fs=6.2, color=C_DIM,
-           ha="right", arrow_style="->", font=FONT)
     leader(ax, UX + rs, 18 * SC, UX + 150, 102 * SC,
            "CIRCLIP each side\n(DIN 471)", fs=6.2, color=C_OUT, ha="left",
            arrow_style="->", font=FONT)

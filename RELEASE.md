@@ -25,20 +25,21 @@ file** — a release must not ship without a changelog entry:
 ## [Unreleased]
 
 - **Revolving light-trap fabrication blueprint set + metal-cap / lap-joint redesign + integrated frame
-  (branch `lighttrap-bp`).** New dedicated 2D set `generate_lighttrap_diagram.py` → `lighttrap-sheet1..8`
+  (branch `lighttrap-bp`).** New dedicated 2D set `generate_lighttrap_diagram.py` → `lighttrap-sheet1..9`
   (the misnamed ventilation diagrams were renamed off the `lighttrap-*` name first): **1** General
   Arrangement, **2** housing cylinder cut sheet (flat pattern), **3** Drum — Cut (C-shell + caps),
   **4** Drum — Secure (shell→cap lap-and-fasten joint), **5** bearing hub & stub-shaft detail, **6** seals &
-  light-path verification, **7** support-frame general arrangement, **8** housing → frame attachment. Embedded
-  as **[Light-Trap Selection §9 Fabrication Blueprints](light-trap-selection.md)** and registered in the
-  gallery/publish lists. **Design changes:** the drum **end caps go HDPE → metal** — both **8mm 6061-T6
-  aluminum**, identical, with bolted 4×M10 stub-shaft hubs — and the **shell→cap joint becomes lap-and-fasten**
-  (shell laps a rolled rim-angle lip, SS Ø4.8 blind rivets @ ~60mm + 3M DP8010 bond/light-seal), superseding
-  the extrusion weld. Scope grew to specify the **support structure**: a **steel welded box cage integrated
-  with the swing-panel weldment** carries the bearings (axle-support beam at the drum axis) and the fixed outer
-  skin (housing laps + rivets to a rolled rim-angle welded on the frame beams + jamb frames). New
-  `tbs_constants` cap/joint/frame constants. Report §4 prose + parts/cost + weight/CG + 3D-model cascade
-  tracked in `TODO.md`. *(In progress.)*
+  light-path verification, **7** support-frame general arrangement, **8** housing → frame attachment,
+  **9** combined top-end assembly (both lap joints nested at one level). Embedded as **[Light-Trap Selection
+  §9 Fabrication Blueprints](light-trap-selection.md)** and registered in the gallery/publish lists;
+  **§4 spec prose reconciled** to the metal-cap / lap-joint / integrated-frame design. **Design changes:** the
+  drum **end caps go HDPE → metal** — both **8mm 6061-T6 aluminum**, identical, with bolted 4×M10 stub-shaft
+  hubs — and the **shell→cap joint becomes lap-and-fasten** (shell laps a rolled rim-angle lip, SS Ø4.8 blind
+  rivets @ ~60mm + 3M DP8010 bond/light-seal), superseding the extrusion weld. Scope grew to specify the
+  **support structure**: a **steel welded box cage integrated with the swing-panel weldment** carries the
+  bearings (axle-support beam at the drum axis) and the fixed outer skin (housing laps + rivets to a rolled
+  rim-angle welded on the frame beams + jamb frames). New `tbs_constants` cap/joint/frame constants. Parts/cost
+  + weight/CG + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

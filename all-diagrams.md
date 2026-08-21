@@ -397,3 +397,5 @@
 ![TBS-001 Light-Trap — Sheet 7: Support Frame General Arrangement](assets/lighttrap-sheet7.png)
 
 ![TBS-001 Light-Trap — Sheet 8: Housing → Frame Attachment](assets/lighttrap-sheet8.png)
+
+![TBS-001 Light-Trap — Sheet 9: Combined Top-End Assembly](assets/lighttrap-sheet9.png)

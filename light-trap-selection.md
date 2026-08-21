@@ -120,14 +120,14 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded full height; bolted (isolated) into the panel center zone, set in the punch-out bay |
+| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded seam; laps a rolled rim-angle welded to the integrated support frame — SS blind rivets + DP8010 (see §9 Sheet 8), set in the punch-out bay |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
-| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
+| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
 | Drum/housing height | 2,200mm |
-| Top cap | 3/16" HDPE plate, flanged, welded to the drum; steel hub insert for the stub shaft |
-| Bottom cap | 3/16" HDPE plate, flanged, steel hub insert with 75mm stub shaft for lower bearing |
-| Upper stub shaft | 75mm Ø × 150mm steel stub, into the drum top-cap steel hub (nylon-isolated) |
+| Top cap | 8mm 6061-T6 aluminum disc (LT_CAP_TOP_T), bolted stub-shaft hub (4×M10 flange); the HDPE shell laps + SS-rivets + DP8010 to a rolled rim-angle on the cap (see §9 Sheet 4) |
+| Bottom cap | 8mm 6061-T6 aluminum disc (LT_CAP_BOT_T), matching the top — bolted stub-shaft hub, same lap-and-rivet shell joint |
+| Stub shafts (×2) | 75mm Ø × 150mm steel, bolted to the aluminum cap hubs (nylon-isolated); carry the drum in the upper + lower SKF 6215 bearings |
 | Surface treatment | Interior: black-pigmented sheet + flat-black at welds; exterior: UV-stabilized sheet (no primer) |
 
 ### 4.2 Bearings and Mounting
@@ -135,30 +135,33 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Item | Specification |
 |------|--------------|
 | Bearings (×2) | SKF 6215-2RS1 (75mm ID, 130mm OD, 25mm wide, sealed, C3 clearance) |
-| Upper bearing mount | Aluminum housing top ring bolted to panel top rail (isolated) |
-| Lower bearing mount | Welded steel floor collar, 8 × M10 bolts into panel bottom rail |
+| Upper bearing mount | Isolated aluminum top ring, 6×M10 into the integrated frame top beam |
+| Lower bearing mount | Welded steel floor collar, 8×M10 into the integrated frame bottom beam |
 | Axial retention | Circlip on stub shaft each side |
 
 ### 4.3 Seals
 
 | Item | Specification |
 |------|--------------|
-| Top seal | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against ceiling mount plate |
-| Bottom seal | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against floor mount plate |
-| Drum-to-panel gap | 15mm radial clearance, closed by 20mm neoprene compression strip bonded to panel drum aperture |
+| Top seal | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against the frame top plate |
+| Bottom seal | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against the frame bottom plate |
+| Drum-to-housing running gap | ≈13mm radial clearance, closed by a felt/brush wiper the drum rotates against (a compression strip would bind on the turning drum) — see §9 Sheet 6 |
 
 ### 4.4 Hardware
 
 | Item | Specification |
 |------|--------------|
 | Entry handle | 100mm Ø × 400mm SS round grab rail, interior face only, at 900mm height — welded bracket, no through-hole in drum wall |
-| Panel bolts | 8 × M10 flush-head hex bolts (lower collar) + 6 × M10 (upper housing), stainless |
+| Panel bolts | 8 × M10 flush-head hex bolts (lower collar) + 6 × M10 (upper ring), stainless |
+| Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + SS Ø4.8 closed-end blind rivets @ ~60mm + 3M DP8010 structural bond (light-tight lap, both joints) |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
 
 | Item | Supplier | Part / Notes |
 |------|----------|-------------|
 | 5mm UV-HDPE sheet (housing, ~7 m²) + 1/8" HDPE sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | Rolled + extrusion-welded cylinders |
+| 8mm 6061-T6 aluminum plate (2 caps, Ø855) + 25×25×3 6061-T6 Al angle (2 rim rings) | [Online Metals](https://www.onlinemetals.com/) / Industrial Metal Supply (SoCal) | Water-jet the cap discs + hub bolt circle; roll the angle to R427 |
+| SS Ø4.8 closed-end blind rivets (~70/joint) + 3M Scotch-Weld DP8010 adhesive | McMaster-Carr; [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | Rivets @ ~60mm pitch; DP8010 is the structural bond + light seal for HDPE (low surface energy) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
@@ -295,3 +298,10 @@ lapped and riveted to the rolled rim-angle welded on the frame beams and jamb fr
 the drum rotating free inside.
 
 ![TBS-001 Light-Trap — Sheet 8: Housing → Frame Attachment](assets/lighttrap-sheet8.png)
+
+**Sheet 9 — Combined top-end assembly.** A single half-section at the top end showing
+both lap joints nested concentrically: the rotating drum shell→cap joint (Sheet 4) and
+the fixed housing→frame joint (Sheet 8), with the upper bearing and the felt-sealed
+running gap between them — how the rotating and fixed halves coexist at one level.
+
+![TBS-001 Light-Trap — Sheet 9: Combined Top-End Assembly](assets/lighttrap-sheet9.png)

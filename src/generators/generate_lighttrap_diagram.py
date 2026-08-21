@@ -3,7 +3,7 @@
 # © 2026 Alvin Richards
 """
 generate_lighttrap_diagram.py
-TBS-001  Revolving Light-Trap — fabrication blueprint set (8 sheets).
+TBS-001  Revolving Light-Trap — fabrication blueprint set (9 sheets).
 
 Sheet 1: General Arrangement — vertical section on the drum axis
 Sheet 2: Housing cylinder — cut sheet (flat pattern)
@@ -13,6 +13,7 @@ Sheet 5: Bearing hub & stub-shaft detail
 Sheet 6: Seals & light-path verification
 Sheet 7: Support frame — general arrangement (integrated steel cage)
 Sheet 8: Housing → frame attachment (outer-skin fixing)
+Sheet 9: Combined top-end assembly (inner + outer lap joints, half-section)
 
 All geometry reads from tbs_constants.py (single source of truth). Bearing /
 seal / hardware specs trace to light-trap-selection.md §4.
@@ -256,7 +257,7 @@ def draw_sheet1():
     draw_notes(ax, bom, HO_R + 720, 1610, 112, fs=6.8, font=FONT,
                width=1000, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 1 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 1 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="GENERAL ARRANGEMENT — VERTICAL SECTION ON DRUM AXIS",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -358,7 +359,7 @@ def draw_sheet2():
     draw_notes(ax, notes, 40, -240, 100, fs=7, font=FONT, width=1650,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 2 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 2 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING CYLINDER — CUT SHEET (FLAT PATTERN)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -466,7 +467,7 @@ def draw_sheet3():
     draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 3 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 3 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM — CUT (FLAT PATTERN + CAPS)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -639,7 +640,7 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
     draw_notes(ax, notes, X_LO + 60, -740, 92, fs=7, font=FONT,
                width=2350, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 5 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 5 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT DETAIL",
                 scale_note="ENLARGED ~2:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -765,7 +766,7 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 4 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 4 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
                 scale_note="ENLARGED · NTS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -922,7 +923,7 @@ def draw_sheet7():
     draw_notes(ax, notes, X_LO + 60, -300, 92, fs=7, font=FONT, width=2500,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 7 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 7 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SUPPORT FRAME — GENERAL ARRANGEMENT (INTEGRATED STEEL CAGE)",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -966,11 +967,26 @@ def draw_sheet6():
         return abs((a - b + 180) % 360 - 180)
 
     for cx, dth, title in plans:
-        draw_circle(ax, cx, 0, DR - LT_DRUM_T, lw=0, color="none", fill=True,
-                    fc="#20242A", zorder=3)                       # dark = light-tight interior
+        # daylight wedge — light crossing an ALIGNED opening into the bore (drawn behind)
+        for oc in (0, 180):
+            if angdiff(dth, oc) < oh:
+                a_lo, a_hi = math.radians(oc - oh), math.radians(oc + oh)
+                wl = [(cx, 0)] + [(cx + HR * math.cos(a_lo + (a_hi - a_lo) * k / 24),
+                                   HR * math.sin(a_lo + (a_hi - a_lo) * k / 24)) for k in range(25)]
+                ax.add_patch(mpatches.Polygon(wl, closed=True, fc="#FBE7A0", ec="none",
+                                              alpha=0.85, zorder=1))
+        # running-gap ring (drum OD → housing bore) — thin, so the annulus reads
+        draw_circle(ax, cx, 0, HR - LT_HOUSING_T, lw=0.8, color="#B8BDC6", fill=False, zorder=2)
+        # fixed housing walls — two 80° openings, 180° apart (bold black)
         for gc in (0, 180):
-            arc(cx, 0, HR, gc, LT_OPENING_DEG, C_OUT, 3.0)        # housing walls (2 openings)
-        arc(cx, 0, DR, dth, LT_OPENING_DEG, "#8A7A55", 3.0)      # drum wall (1 opening at dth)
+            arc(cx, 0, HR, gc, LT_OPENING_DEG, C_OUT, 4.0)
+        # rotating drum wall — single 80° opening at dth (bold opaque tan band)
+        arc(cx, 0, DR, dth, LT_OPENING_DEG, "#6B5D3E", 7.0)
+        for t in (dth - oh, dth + oh):                            # drum opening jamb ticks
+            a = math.radians(t)
+            ax.plot([cx + (DR - 24) * math.cos(a), cx + (DR + 24) * math.cos(a)],
+                    [(DR - 24) * math.sin(a), (DR + 24) * math.sin(a)],
+                    color="#B08020", lw=1.4, zorder=7)
         ax.text(cx, HR + 60, title, ha="center", va="bottom", fontsize=7.5,
                 color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
         for oc, tag, hx, col in ((180, "EXT", cx - HR, "#5060A0"), (0, "INT", cx + HR, "#407040")):
@@ -1012,6 +1028,7 @@ def draw_sheet6():
 
     notes = [
         "SEALS & LIGHT-PATH",
+        "Plans A–C: yellow wedge = daylight entering the bore through an aligned opening; the drum's opaque wall covers the opposite opening at every angle.",
         f"Running gap {RUN_GAP}mm (drum OD → housing bore): closed by a felt/brush wiper — drum rotates against it.",
         "Top + bottom: 12mm closed-cell neoprene wiper strips (cap ↔ frame) + silicone bead to the frame plates.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation.",
@@ -1020,7 +1037,7 @@ def draw_sheet6():
     draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=2400,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 6 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 6 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SEALS & LIGHT-PATH VERIFICATION",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -1061,7 +1078,7 @@ def draw_sheet8():
     draw_rect(ax, 10, -220, 24, 230, fc="#DDE4EC", lw=1.6, zorder=6)       # housing (5mm) laps down
     for zz in (-200 + 70, -200 + 82, -200 + 94):                          # break line (housing continues)
         ax.plot([8, 36], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    blind_rivet(ax, 5, -110, 90, 130, d=11)                               # radial? here vertical through lip+housing
+    blind_rivet(ax, 7, -110, 0, 54, d=11)          # radial rivet: housing → lip (dome outside, set from outside)
     draw_dim_v(ax, 55, -180, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
     draw_dim_h(ax, 10, 34, -240, f"{LT_HOUSING_T}mm HOUSING", offset=38, fs=6.2,
                above=False, font=FONT)
@@ -1069,7 +1086,7 @@ def draw_sheet8():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, 22, -60, 250, -30, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, 5, -110, 250, -150, f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET\n+ DP8010 bead (light seal)",
+    leader(ax, 42, -110, 250, -150, f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough housing + lip · + DP8010 bead (light seal)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, -160, FBt / 2, -300, FBt + 40, "FRAME TOP BEAM / RAIL (steel)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
@@ -1119,7 +1136,7 @@ def draw_sheet8():
     draw_notes(ax, notes, X_LO + 60, -340, 60, fs=7, font=FONT, width=2050,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 8 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 8 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
                 scale_note="ENLARGED · NTS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -1127,6 +1144,113 @@ def draw_sheet8():
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet8.png saved")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 9 — Combined top-end assembly (half-section, NTS)
+# One radial half-section at the TOP end showing BOTH joints nested concentrically:
+#   inner ROTATING drum shell→cap lap joint (Sheet 4) + outer FIXED housing→frame
+#   lap joint (Sheet 8), with the upper SKF 6215 bearing and the running-gap seal
+#   between them — so the reader sees how the two combine at the same level.
+# Axis on the LEFT (r = 0), radius increases to the right; z = height near the top.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet9():
+    X_LO, X_HI, Z_LO, Z_HI = -140, 760, -340, 430
+    FIG_W = 15.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    ax.text(310, Z_HI - 10, "TOP-END ASSEMBLY  (half-section on the drum axis — NOT TO SCALE)",
+            ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=15)
+
+    # ── Rotation axis (left edge) ────────────────────────────────────────────
+    draw_cl_v(ax, 0, Z_LO + 40, Z_HI - 70)
+    ax.text(-8, Z_HI - 80, "DRUM\nAXIS", ha="right", va="top", fontsize=6.2,
+            color=C_CL, **FONT, zorder=9)
+
+    # ── FIXED frame (steel beam + Al bearing ring) ───────────────────────────
+    draw_rect(ax, 300, 210, 260, 110, fc=C_STEEL, lw=1.6, zorder=4)          # frame top beam (RHS)
+    draw_rect(ax, 60, 190, 240, 20, fc=C_ALUM, lw=1.2, zorder=5)             # upper bearing ring / plate
+    # ── Upper SKF 6215 bearing on the stub shaft ─────────────────────────────
+    draw_rect(ax, 54, 140, 12, 50, fc=C_STEEL, lw=1.0, zorder=6)             # outer race
+    draw_rect(ax, 32, 140, 12, 50, fc=C_STEEL, lw=1.0, zorder=6)             # inner race
+    for zb in (156, 174):
+        draw_circle(ax, 49, zb, 6, lw=0.8, color=C_OUT, fill=True, fc="white", zorder=7)
+    # ── ROTATING stub shaft + hub + cap ──────────────────────────────────────
+    draw_rect(ax, 0, -26, 32, 226, fc=C_STEEL, lw=1.2, zorder=5)             # stub shaft
+    ax.plot([0, 40], [192, 192], color=C_OUT, lw=1.0, zorder=8)              # circlip plane
+    draw_rect(ax, 0, -26, 300, 26, fc=C_ALUM, lw=1.4, zorder=5)             # top cap disc (Al)
+    draw_rect(ax, 0, 0, 70, 20, fc=C_ALUM, lw=1.2, zorder=6)                # bolted hub boss
+
+    # ── INNER joint — drum shell → cap lap (Sheet 4) ─────────────────────────
+    draw_rect(ax, 266, 0, 34, 12, fc=C_ALUM, lw=1.2, zorder=6)              # rim-angle flat leg on cap
+    draw_rect(ax, 288, 0, 12, 92, fc=C_ALUM, lw=1.2, zorder=6)              # standing lip (up)
+    draw_rect(ax, 300, -8, 7, 100, fc=C_GASKT, lw=0.7, zorder=6)            # DP8010 (inner)
+    draw_rect(ax, 307, -60, 13, 168, fc=C_LT_DRUM, lw=1.6, zorder=7)        # drum shell (laps up, hangs down)
+    for zz in (-38, -44, -50):                                             # break line (shell continues down)
+        ax.plot([305, 322], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=8)
+    blind_rivet(ax, 305, 46, 0, 40, d=11)                                  # radial shell → lip rivet
+
+    # ── Running gap + felt seal (Sheet 6) ────────────────────────────────────
+    for zf in (-30, 30):
+        draw_rect(ax, 320, zf - 12, 13, 24, fc="#7E7E76", lw=0.6, zorder=6)
+
+    # ── FIXED outer skin — housing + housing→frame lap (Sheet 8) ─────────────
+    draw_rect(ax, 333, -60, 12, 270, fc="#DDE4EC", lw=1.6, zorder=6)        # fixed housing wall
+    for zz in (-38, -44, -50):                                             # break line (housing continues down)
+        ax.plot([331, 347], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=8)
+    draw_rect(ax, 319, 197, 26, 13, fc=C_ALUM, lw=1.2, zorder=7)           # rim-angle flat leg (welded to beam)
+    draw_rect(ax, 319, 120, 10, 90, fc=C_ALUM, lw=1.2, zorder=7)           # standing lip (down)
+    draw_rect(ax, 329, 120, 4, 85, fc=C_GASKT, lw=0.6, zorder=7)           # DP8010 (outer)
+    ax.add_patch(mpatches.Polygon([(319, 210), (319, 194), (334, 210)], closed=True,
+                                  fc="#CC4422", ec="#CC4422", zorder=8))    # weld to beam
+    blind_rivet(ax, 333, 158, 0, 34, d=11)                                 # radial housing → lip rivet
+
+    # ── Zone tags ────────────────────────────────────────────────────────────
+    ax.text(155, -48, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
+            color="#407040", fontweight="bold", **FONT, zorder=9)
+    ax.text(470, 355, "FIXED (FRAME + HOUSING) ►", ha="center", va="center", fontsize=7,
+            color="#5060A0", fontweight="bold", **FONT, zorder=9)
+
+    # ── Leaders ──────────────────────────────────────────────────────────────
+    leader(ax, 49, 165, 175, 300, "SKF 6215-2RS1 · upper bearing\nin Al ring, bolts to frame (Sheet 5)",
+           fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+    leader(ax, 35, 10, -80, 70, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
+           ha="right", arrow_style="->", font=FONT)
+    leader(ax, 305, 46, 470, -30, "DRUM SHELL → CAP LAP JOINT\nrim-angle + SS blind rivet + DP8010 (Sheet 4)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, 326, 0, 600, 60, f"RUNNING GAP {RUN_GAP}mm\n+ felt/brush seal (Sheet 6)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, 333, 158, 600, 190, "HOUSING → FRAME LAP JOINT\nrim-angle welded to beam + rivet + DP8010 (Sheet 8)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, 430, 265, 560, 330, "FRAME TOP BEAM (steel RHS)\nswing-panel weldment (Sheet 7)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
+    notes = [
+        "COMBINED TOP-END ASSEMBLY  (how the two lap joints nest at one level)",
+        "The rotating drum (cap + shell, on the stub shaft) turns inside the fixed outer skin; the two never touch — a felt-sealed running gap separates them.",
+        "INNER joint (rotating): drum shell laps the cap rim-angle — SS blind rivets + DP8010 (Sheet 4).",
+        "OUTER joint (fixed): housing laps a rim-angle welded to the frame beam — SS blind rivets + DP8010 (Sheet 8).",
+        "Bottom end mirrors this, except the lower bearing seats in a welded steel floor collar (Sheet 5). NOT TO SCALE · ALL DIMS IN mm.",
+    ]
+    draw_notes(ax, notes, X_LO + 40, -95, 34, fs=7, font=FONT, width=1180,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 9 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="COMBINED TOP-END ASSEMBLY (INNER + OUTER LAP JOINTS)",
+                scale_note="HALF-SECTION · NTS · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet9.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet9.png saved")
 
 
 def main():
@@ -1139,6 +1263,7 @@ def main():
     draw_sheet6()          # Sheet 6 — seals & light-path
     draw_sheet7()          # Sheet 7 — support frame GA
     draw_sheet8()          # Sheet 8 — housing → frame attachment
+    draw_sheet9()          # Sheet 9 — combined top-end assembly (inner + outer joints)
     print("Done.")
 
 

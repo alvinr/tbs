@@ -383,6 +383,10 @@ LT_RIVET_D     = 4.8      # 3/16" stainless closed-end blind rivet
 LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)
 LT_RIVET_N     = round((LT_SHELL_ARC / 360) * math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 35 rivets per cap (280° shell arc)
 LT_RIM_RIVET_PITCH = 120  # rim-angle flat-leg → cap rivet pitch (mm; coarser than the shell rivets)
+# ── Housing (outer skin) → FRAME attachment (2026-08-21). The fixed housing laps a
+# rolled rim-angle welded to the frame top/bottom beams + jamb frames; SS rivets + DP8010.
+LT_HOUSING_ARC     = 360 - 2 * LT_OPENING_DEG   # 200 — housing material arc (two 100° arcs; two 80° openings)
+LT_HOUSING_RIVET_N = round((LT_HOUSING_ARC / 360) * math.pi * 2 * LT_HOUSING_R / LT_RIVET_PITCH)  # ≈ 26 per top/bottom edge
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,
 # enclosing the offset housing, so the film-plane rails stay internal.

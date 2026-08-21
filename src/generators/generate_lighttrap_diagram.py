@@ -27,7 +27,7 @@ import os
 
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM,
-    DRUM_CX, DRUM_CY, DRUM_D, DRUM_R, DRUM_H_LT, PANEL_FLOOR_GAP,
+    DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_PITCH,
     LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC,
@@ -35,6 +35,7 @@ from tbs_constants import (
     LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD,
     LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT,
     LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN,
+    LT_HOUSING_ARC, LT_HOUSING_RIVET_N,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
 from tbs_drawing import (
@@ -60,6 +61,34 @@ GRAB_Z = 900   # mounting height above floor (mm)
 
 # ── Derived running clearance (drum OD → housing bore), single-sourced ───────
 RUN_GAP = LT_HOUSING_R - LT_HOUSING_T - LT_DRUM_OR   # radial gap, mm
+
+
+def blind_rivet(ax, cx, cz, ang, grip, d=12):
+    """Installed SS closed-end blind rivet in section — dome factory head at +axis,
+    upset (set) blind head at −axis; `ang` = axis direction (deg), `grip` = joint stack."""
+    RSC = "#C9CCD2"
+    ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
+
+    def T(u, v):
+        return (cx + u * ca - v * sa, cz + u * sa + v * ca)
+    g = grip / 2
+    ax.add_patch(mpatches.Polygon([T(-g, -d / 2), T(g, -d / 2), T(g, d / 2), T(-g, d / 2)],
+                                  closed=True, fc=RSC, ec=C_OUT, lw=1.0, zorder=8))
+    fb, hr = g + d * 0.35, d * 0.9
+    dome = [T(g, d * 0.95)]
+    for kk in range(13):
+        a = math.pi * (0.5 - kk / 12.0)
+        dome.append(T(fb + hr * math.cos(a), d * 0.95 * math.sin(a)))
+    dome.append(T(g, -d * 0.95))
+    ax.add_patch(mpatches.Polygon(dome, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+    ax.plot(*zip(T(fb + hr * 0.5, 0), T(fb + hr, 0)), color=C_OUT, lw=0.7, zorder=10)
+    bb, br = -g - d * 0.25, d * 0.7
+    blind = [T(-g, d * 0.7)]
+    for kk in range(13):
+        a = math.pi * (0.5 - kk / 12.0)
+        blind.append(T(bb - br * math.cos(a), d * 1.25 * math.sin(a)))
+    blind.append(T(-g, -d * 0.7))
+    ax.add_patch(mpatches.Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -657,42 +686,11 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     # break line at shell top
     for zz in (LIP + 70, LIP + 82, LIP + 94):
         ax.plot([8, 32], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    # ── Installed SS closed-end blind rivet symbol (reused for all lap rivets).
-    #    Solid fastener → NOT section-hatched (standard). Factory dome head at +axis,
-    #    upset (set) blind head at -axis; `ang` = axis direction, `grip` = joint stack.
-    RSC = "#C9CCD2"
-
-    def rivet(cx, cz, ang, grip, d=12):
-        ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
-
-        def T(u, v):
-            return (cx + u * ca - v * sa, cz + u * sa + v * ca)
-        g = grip / 2
-        ax.add_patch(mpatches.Polygon(                                     # shank (grip)
-            [T(-g, -d / 2), T(g, -d / 2), T(g, d / 2), T(-g, d / 2)],
-            closed=True, fc=RSC, ec=C_OUT, lw=1.0, zorder=8))
-        # factory dome head — flange + smooth rounded dome (bulges +axis)
-        fb, hr = g + d * 0.35, d * 0.9
-        dome = [T(g, d * 0.95)]
-        for kk in range(13):
-            a = math.pi * (0.5 - kk / 12.0)
-            dome.append(T(fb + hr * math.cos(a), d * 0.95 * math.sin(a)))
-        dome.append(T(g, -d * 0.95))
-        ax.add_patch(mpatches.Polygon(dome, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
-        ax.plot(*zip(T(fb + hr * 0.5, 0), T(fb + hr, 0)), color=C_OUT, lw=0.7, zorder=10)
-        # upset (set) blind head — rounded flared mushroom (bulges -axis, wider)
-        bb, br = -g - d * 0.25, d * 0.7
-        blind = [T(-g, d * 0.7)]
-        for kk in range(13):
-            a = math.pi * (0.5 - kk / 12.0)
-            blind.append(T(bb - br * math.cos(a), d * 1.25 * math.sin(a)))
-        blind.append(T(-g, -d * 0.7))
-        ax.add_patch(mpatches.Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
-
+    # Installed SS closed-end blind rivets (module helper — dome + upset head, no hatch)
     rz = LIP * 0.5
-    rivet(5, rz, 0, 50, d=12)                    # shell → lip rivet (set from the shell side)
+    blind_rivet(ax, 5, rz, 0, 50, d=12)          # shell → lip rivet (set from the shell side)
     for xr in (-140, -75):                       # rim flat-leg → cap rivets (set from above)
-        rivet(xr, -20, 90, 80, d=8)
+        blind_rivet(ax, xr, -20, 90, 80, d=8)
     # rivet-position dimensions
     draw_dim_v(ax, -52, 0, rz, f"{LT_LAP_H / 2:.1f}mm", offset=36, fs=6, font=FONT)   # shell-rivet CL above the L
     draw_dim_h(ax, -140, -75, -92, f"{LT_RIM_RIVET_PITCH}mm pitch (rim→cap)",
@@ -934,6 +932,203 @@ def draw_sheet7():
     print("  → diagrams/lighttrap-sheet7.png saved")
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 6 — Seals & light-path verification
+# Three drum rotations proving no straight-through EXT↔INT light path (the drum's
+# single 280° wall always blocks one side) + the running-gap / wiper seal details.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet6():
+    HR, DR = LT_HOUSING_R, LT_DRUM_OR
+    oh = LT_OPENING_DEG / 2
+    dx = 2 * HR + 640
+    plans = [(0, 180, "A · DRUM OPEN TO EXTERIOR"),
+             (dx, 0, "B · DRUM OPEN TO INTERIOR"),
+             (2 * dx, 90, "C · DRUM MID-ROTATION")]
+    X_LO, X_HI = -HR - 320, 2 * dx + HR + 320
+    Z_LO, Z_HI = -HR - 1420, HR + 360
+    FIG_W = 20.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    def arc(cx, cz, r, gapc, gapd, color, lw):
+        a0, a1 = gapc + gapd / 2, gapc + 360 - gapd / 2
+        ts = [math.radians(a0 + (a1 - a0) * k / 72) for k in range(73)]
+        ax.plot([cx + r * math.cos(t) for t in ts], [cz + r * math.sin(t) for t in ts],
+                color=color, lw=lw, zorder=6)
+
+    def angdiff(a, b):
+        return abs((a - b + 180) % 360 - 180)
+
+    for cx, dth, title in plans:
+        draw_circle(ax, cx, 0, DR - LT_DRUM_T, lw=0, color="none", fill=True,
+                    fc="#20242A", zorder=3)                       # dark = light-tight interior
+        for gc in (0, 180):
+            arc(cx, 0, HR, gc, LT_OPENING_DEG, C_OUT, 3.0)        # housing walls (2 openings)
+        arc(cx, 0, DR, dth, LT_OPENING_DEG, "#8A7A55", 3.0)      # drum wall (1 opening at dth)
+        ax.text(cx, HR + 60, title, ha="center", va="bottom", fontsize=7.5,
+                color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+        for oc, tag, hx, col in ((180, "EXT", cx - HR, "#5060A0"), (0, "INT", cx + HR, "#407040")):
+            aligned = angdiff(dth, oc) < oh
+            dirx = -1 if oc == 180 else 1
+            ax.annotate("", xy=(cx + dirx * (DR if aligned else HR - 6), 0),
+                        xytext=(cx + dirx * (HR + 120), 0),
+                        arrowprops=dict(arrowstyle="-|>",
+                                        color=("#2E9E4F" if aligned else "#D33"),
+                                        lw=2.2), zorder=8)
+            ax.text(cx + dirx * (HR + 135), 0, f"{tag}\n{'OPEN (entry)' if aligned else 'SEALED'}",
+                    ha=("right" if oc == 180 else "left"), va="center", fontsize=6.5,
+                    color=(col if aligned else "#D33"), **FONT, zorder=9)
+
+    ax.text(dx, -HR - 120,
+            f"NO STRAIGHT-THROUGH LIGHT PATH: the drum's {LT_SHELL_ARC}° opaque wall always seals at least\n"
+            f"one side (openings {LT_OPENING_DEG}° < 90°, housing openings 180° apart, drum has one). Interior stays dark.",
+            ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold", **FONT, zorder=9)
+
+    # ── Seal detail (radial section at the running gap) ──────────────────────
+    sx, sz = dx, -HR - 620
+    draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # housing wall
+    draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # drum wall
+    for zz in (sz - 60, sz + 60):                                              # brush/felt seal bristles
+        for xx in range(-135, 140, 10):
+            ax.plot([sx + xx, sx + xx + 8], [zz - 3, zz + 3], color="#7E7E76", lw=0.5, zorder=6)
+    draw_rect(ax, sx - 140, sz - 12, 280, 24, fc="#7E7E76", lw=0.8, zorder=4)   # felt gap seal band
+    draw_dim_h(ax, sx - 140, sx + 140, sz - 120, f"≈{RUN_GAP}mm RUNNING GAP", offset=40,
+               fs=6.5, above=False, font=FONT)
+    leader(ax, sx, sz + 20, sx - 320, sz + 80,
+           "FELT / BRUSH GAP SEAL\n(drum ↔ housing running gap)", fs=6.5, color=C_OUT,
+           ha="right", arrow_style="->", font=FONT)
+    leader(ax, sx - 170, sz, sx - 300, sz - 60, f"HOUSING {LT_HOUSING_T}mm", fs=6,
+           color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, sx + 163, sz, sx + 300, sz - 60, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
+           color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    ax.text(sx, sz + 190, "SEAL DETAIL — RUNNING GAP (enlarged)", ha="center", va="bottom",
+            fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+
+    notes = [
+        "SEALS & LIGHT-PATH",
+        f"Running gap {RUN_GAP}mm (drum OD → housing bore): closed by a felt/brush wiper — drum rotates against it.",
+        "Top + bottom: 12mm closed-cell neoprene wiper strips (cap ↔ frame) + silicone bead to the frame plates.",
+        f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation.",
+        "Interior faces flat-black; residual scatter is killed at the matte wall. ALL DIMS IN mm.",
+    ]
+    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=2400,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 6 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="SEALS & LIGHT-PATH VERIFICATION",
+                scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
+                height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet6.png saved")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 8 — Housing → frame attachment (outer-skin fixing)
+# The fixed housing (5mm) laps a rolled rim-angle welded to the frame; SS rivets +
+# DP8010. Section + jamb detail + plan (200° housing material, two 100° arcs).
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet8():
+    X_LO, X_HI, Z_LO, Z_HI = -470, 1140, -680, 300
+    FIG_W = 18.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── SECTION A-A — housing edge → frame (enlarged, NTS) ────────────────────
+    ax.text(-160, Z_HI - 40, "SECTION A–A  (housing → frame, enlarged — NTS)",
+            ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=15)
+    FBt = 150   # frame member draw depth
+    draw_rect(ax, -340, 0, 340, FBt, fc=C_STEEL, lw=1.6, zorder=4)         # frame top beam/rail
+    draw_rect(ax, -180, -20, 180, 20, fc=C_STEEL, lw=1.4, zorder=5)        # rim-angle flat leg (welded)
+    draw_rect(ax, -20, -180, 20, 160, fc=C_STEEL, lw=1.4, zorder=5)        # rim-angle standing lip
+    ax.add_patch(mpatches.Polygon([(-180, 0), (-165, 0), (-180, 18)], closed=True,
+                                  fc="#CC4422", ec="#CC4422", zorder=6))    # weld to frame
+    draw_rect(ax, 0, -190, 10, 180, fc=C_GASKT, lw=0.8, zorder=5)          # DP8010
+    draw_rect(ax, 10, -220, 24, 230, fc="#DDE4EC", lw=1.6, zorder=6)       # housing (5mm) laps down
+    for zz in (-200 + 70, -200 + 82, -200 + 94):                          # break line (housing continues)
+        ax.plot([8, 36], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
+    blind_rivet(ax, 5, -110, 90, 130, d=11)                               # radial? here vertical through lip+housing
+    draw_dim_v(ax, 55, -180, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, 10, 34, -240, f"{LT_HOUSING_T}mm HOUSING", offset=38, fs=6.2,
+               above=False, font=FONT)
+    leader(ax, -10, -100, -300, -60, "RIM ANGLE 25×25×3 6061-T6 Al\nWELDED to the frame beam",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, 22, -60, 250, -30, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, 5, -110, 250, -150, f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET\n+ DP8010 bead (light seal)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, -160, FBt / 2, -300, FBt + 40, "FRAME TOP BEAM / RAIL (steel)",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    ax.text(430, 70, "(bottom edge identical,\nmirrored, to the bottom beam)",
+            ha="center", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
+
+    # ── PLAN — housing footprint (200° material, two 100° arcs) + rivets ──────
+    pcx, pcz, pr = 800, 10, 160
+    oh = LT_OPENING_DEG / 2
+
+    def arc(cx, cz, r, gapc, gapd, color, lw, z=6):
+        a0, a1 = gapc + gapd / 2, gapc + 360 - gapd / 2
+        # draw both material arcs separately (two openings) — caller loops gaps
+        ts = [math.radians(a0 + (a1 - a0) * k / 40) for k in range(41)]
+        ax.plot([cx + r * math.cos(t) for t in ts], [cz + r * math.sin(t) for t in ts],
+                color=color, lw=lw, zorder=z)
+    # two 100° housing arcs (material between the two 80° openings at 0° and 180°)
+    for a_lo, a_hi in ((oh, 180 - oh), (180 + oh, 360 - oh)):
+        ts = [math.radians(a_lo + (a_hi - a_lo) * k / 40) for k in range(41)]
+        ax.plot([pcx + pr * math.cos(t) for t in ts], [pcz + pr * math.sin(t) for t in ts],
+                color=C_OUT, lw=2.6, zorder=6)
+        # rivets along each arc
+        n = max(2, round(LT_HOUSING_RIVET_N / 2))
+        for k in range(n):
+            t = math.radians(a_lo + (a_hi - a_lo) * (k + 0.5) / n)
+            draw_circle(ax, pcx + pr * math.cos(t), pcz + pr * math.sin(t), 5,
+                        lw=0.8, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
+    for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
+        ax.text(pcx + (pr + 70) * math.cos(math.radians(oc)),
+                pcz + (pr + 70) * math.sin(math.radians(oc)), f"{tag}\nOPENING\n(no rim)",
+                ha="center", va="center", fontsize=6.2, color=col, **FONT, zorder=8)
+    ax.text(pcx, pcz, f"Ø{DRUM_D}\nHOUSING\n({LT_HOUSING_ARC}° rim,\n2 arcs)", ha="center",
+            va="center", fontsize=6.8, color=C_DIM, **FONT, zorder=8)
+    ax.text(pcx, pcz - pr - 55,
+            f"RIVET PATTERN — {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} per edge @ ~{LT_RIVET_PITCH}mm\n"
+            f"(top + bottom · {2 * LT_HOUSING_RIVET_N} rivets total)", ha="center", va="top",
+            fontsize=6.8, color=C_OUT, **FONT, zorder=8)
+
+    notes = [
+        "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
+        "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, WELDED to the frame top + bottom beams (two 100° arcs — the openings have no rim).",
+        f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
+        f"3. {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS closed-end blind rivets per edge (~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
+        "4. Housing vertical edges (at the openings) rivet to the jamb frames the same way (see Sheet 7).",
+        "ENLARGED — NOT TO SCALE · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, X_LO + 60, -340, 60, fs=7, font=FONT, width=2050,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 8 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
+                scale_note="ENLARGED · NTS · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet8.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet8.png saved")
+
+
 def main():
     print("Generating TBS-001 Revolving Light-Trap blueprint sheets...")
     draw_sheet1()
@@ -941,7 +1136,9 @@ def main():
     draw_sheet3()
     draw_sheet_secure()    # Sheet 4 — drum secure (shell → cap joint)
     draw_sheet_hub()       # Sheet 5 — bearing hub
-    draw_sheet7()
+    draw_sheet6()          # Sheet 6 — seals & light-path
+    draw_sheet7()          # Sheet 7 — support frame GA
+    draw_sheet8()          # Sheet 8 — housing → frame attachment
     print("Done.")
 
 

@@ -363,13 +363,13 @@ LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE p
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
 LT_CAP_T       = 4.76     # DEPRECATED (2026-08-21): superseded by the split metal caps below (LT_CAP_TOP_T / LT_CAP_BOT_T). Retained only until the 3D model + weight/parts consumers migrate off it. Do NOT reference in new code.
-# ── End caps — STRUCTURAL hub discs (carry the stub shafts into the SKF 6215
-# bearings). rev (2026-08-21): HDPE → METAL. TOP = aluminum (light, corrosion-
-# free, stub shaft BOLTED); BOTTOM = steel (ground reaction, stub shaft WELDED
-# straight to the cap → no bolted flange). Full Ø discs (the opening is in the
-# cylindrical shell only, not the caps).
+# ── End caps — STRUCTURAL hub discs (carry the steel stub shafts into the SKF
+# 6215 bearings). rev (2026-08-21): HDPE → METAL; then both caps → ALUMINUM
+# (identical parts, lighter than the steel-bottom option). A steel stub shaft
+# can't weld to an Al cap, so BOTH stub shafts are BOLTED via a 4×M10 flange.
+# Full Ø discs (the opening is in the cylindrical shell only, not the caps).
 LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
-LT_CAP_BOT_T   = 6.0      # bottom cap: 6mm A36 mild-steel plate
+LT_CAP_BOT_T   = 8.0      # bottom cap: 8mm 6061-T6 aluminum plate (identical to top)
 LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
 # ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
 LT_RIM_LEG     = 25       # rim-angle leg (mm) — rolled ring at each cap rim, provides the rivetable lip

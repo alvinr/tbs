@@ -378,6 +378,7 @@ LT_LAP_H       = 25       # shell lap over each cap rim (mm)
 LT_RIVET_D     = 4.8      # 3/16" stainless closed-end blind rivet
 LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)
 LT_RIVET_N     = round(math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 45 rivets per cap
+LT_RIM_RIVET_PITCH = 120  # rim-angle flat-leg → cap rivet pitch (mm; coarser than the shell rivets)
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,

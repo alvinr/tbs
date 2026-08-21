@@ -29,7 +29,7 @@ from tbs_constants import (
     DRUM_CX, DRUM_CY, DRUM_D, DRUM_R, DRUM_H_LT, PANEL_FLOOR_GAP,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_PITCH,
-    LT_RIVET_N, LT_RIM_LEG, LT_RIM_T,
+    LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH,
     DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
@@ -655,24 +655,38 @@ def draw_sheet5():
     # break line at shell top
     for zz in (LIP + 70, LIP + 82, LIP + 94):
         ax.plot([8, 32], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    # ── Installed SS closed-end blind rivet (radial) — set from the shell side ──
+    # ── Installed SS closed-end blind rivet symbol (reused for all lap rivets).
+    #    Solid fastener → NOT section-hatched (standard). Factory dome head at +axis,
+    #    upset (set) blind head at -axis; `ang` = axis direction, `grip` = joint stack.
+    RSC = "#C9CCD2"
+
+    def rivet(cx, cz, ang, grip, d=12):
+        ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
+
+        def T(u, v):
+            return (cx + u * ca - v * sa, cz + u * sa + v * ca)
+        g, fh, bh = grip / 2, d * 1.7, d * 1.0
+        ax.add_patch(mpatches.Polygon(                                     # shank (grip)
+            [T(-g, -d / 2), T(g, -d / 2), T(g, d / 2), T(-g, d / 2)],
+            closed=True, fc=RSC, ec=C_OUT, lw=1.0, zorder=8))
+        ax.add_patch(mpatches.Polygon(                                     # factory dome head
+            [T(g, -d * 0.95), T(g + fh * 0.5, -d * 0.95), T(g + fh * 0.85, -d * 0.4),
+             T(g + fh, 0), T(g + fh * 0.85, d * 0.4), T(g + fh * 0.5, d * 0.95),
+             T(g, d * 0.95)], closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+        ax.plot(*zip(T(g + fh * 0.85, 0), T(g + fh, 0)), color=C_OUT, lw=0.7, zorder=10)
+        ax.add_patch(mpatches.Polygon(                                     # upset blind head
+            [T(-g, -d * 0.7), T(-g - bh * 0.75, -d * 1.25), T(-g - bh, 0),
+             T(-g - bh * 0.75, d * 1.25), T(-g, d * 0.7)],
+            closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+
     rz = LIP * 0.5
-    d, RSC = 12, "#C9CCD2"
-    draw_rect(ax, -20, rz - d / 2, 50, d, fc=RSC, lw=1.2, zorder=8)        # shank (grip)
-    for xt in (-14, -4, 6, 16, 26):                                       # cut-shank hatch
-        ax.plot([xt - 3, xt + 3], [rz - 4, rz + 4], color=C_OUT, lw=0.5, zorder=9)
-    ax.add_patch(mpatches.Polygon(                                        # factory dome head (outside)
-        [(30, rz - d * 0.95), (40, rz - d * 0.95), (48, rz - d * 0.4),
-         (50, rz), (48, rz + d * 0.4), (40, rz + d * 0.95), (30, rz + d * 0.95)],
-        closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
-    ax.plot([47, 50], [rz, rz], color=C_OUT, lw=0.7, zorder=10)           # mandrel-break dimple
-    ax.add_patch(mpatches.Polygon(                                        # upset blind head (inside)
-        [(-20, rz - d * 0.7), (-29, rz - d * 1.25), (-32, rz),
-         (-29, rz + d * 1.25), (-20, rz + d * 0.7)],
-        closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
-    # flat-leg → cap fasteners (Al: rivet / steel: weld)
-    for xr in (-140, -75):
-        draw_rect(ax, xr - 4, -CAPT, 8, LEGT + CAPT, fc=C_STEEL, lw=0.8, zorder=7)
+    rivet(5, rz, 0, 50, d=12)                    # shell → lip rivet (set from the shell side)
+    for xr in (-140, -75):                       # rim flat-leg → cap rivets (set from above)
+        rivet(xr, -20, 90, 80, d=8)
+    # rivet-position dimensions
+    draw_dim_v(ax, -52, 0, rz, f"{LT_LAP_H / 2:.1f}mm", offset=36, fs=6, font=FONT)   # shell-rivet CL above the L
+    draw_dim_h(ax, -140, -75, -92, f"{LT_RIM_RIVET_PITCH}mm pitch (rim→cap)",
+               offset=36, fs=6, above=False, font=FONT)
 
     # ── Section dimensions + callouts ────────────────────────────────────────
     draw_dim_v(ax, 60, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
@@ -730,7 +744,7 @@ def draw_sheet5():
         "5. Closed-end rivets + DP8010 keep the joint light-tight; supersedes the extrusion weld.",
         "ENLARGED — NOT TO SCALE · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -150, 52, fs=7, font=FONT, width=1980,
+    draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 5 OF 7", drawing_title="REVOLVING LIGHT-TRAP",

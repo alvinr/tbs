@@ -134,7 +134,7 @@ def draw_sheet1():
     cap_x0 = X_AX - LT_CAP_OD / 2
     draw_rect(ax, cap_x0, Z_CAP_T, LT_CAP_OD, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=7)
     draw_rect(ax, cap_x0, Z_CAP_B - LT_CAP_BOT_T, LT_CAP_OD, LT_CAP_BOT_T,
-              fc=C_STEEL, lw=1.2, zorder=7)
+              fc=C_ALUM, lw=1.2, zorder=7)
 
     # ── Rotation axis + stub shafts + SKF 6215 bearings ──────────────────────
     draw_cl_v(ax, X_AX, Z_LO + 120, Z_HI - 120)          # drum rotation axis
@@ -154,7 +154,7 @@ def draw_sheet1():
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, X_AX - SKF6215_OD / 2, Z_BOT + SKF6215_W / 2,
            X_LO + 250, Z_BOT - 20,
-           f"LOWER: {LT_CAP_BOT_T:.0f}mm A36 steel cap + WELDED stub shaft →\n"
+           f"LOWER: {LT_CAP_BOT_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
            f"SKF 6215-2RS1 · welded steel floor collar, 8×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
 
@@ -212,16 +212,15 @@ def draw_sheet1():
         "BILL OF MATERIALS",
         f"1 HOUSING SKIN  1   {LT_HOUSING_T}mm UV-HDPE, Ø{DRUM_D}",
         f"2 DRUM SHELL    1   {LT_DRUM_T:.2f}mm (1/8in) HDPE, Ø{2 * LT_DRUM_OR}",
-        f"3 TOP CAP       1   {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}",
-        f"4 BOTTOM CAP    1   {LT_CAP_BOT_T:.0f}mm A36 steel, Ø{LT_CAP_OD}",
-        f"5 RIM ANGLE     2   {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} rolled R{LT_CAP_OD // 2} (Al/steel)",
-        f"6 BEARING       2   SKF 6215-2RS1 (Ø{SKF6215_ID} bore)",
-        f"7 SHELL RIVETS  {2 * LT_RIVET_N}  Ø{LT_RIVET_D} SS blind (~{LT_RIVET_PITCH}mm pitch)",
-        "8 JOINT BOND    -   3M DP8010 (shell→cap lap seal)",
-        "9 SEALS         -   12/20mm neoprene + silicone",
-        f"10 GRAB RAIL    1   Ø{GRAB_D}×{GRAB_L} SS round",
+        f"3 END CAPS      2   {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}",
+        f"4 RIM ANGLE     2   {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} rolled R{LT_CAP_OD // 2} (6061-T6 Al)",
+        f"5 BEARING       2   SKF 6215-2RS1 (Ø{SKF6215_ID} bore)",
+        f"6 SHELL RIVETS  {2 * LT_RIVET_N}  Ø{LT_RIVET_D} SS blind (~{LT_RIVET_PITCH}mm pitch)",
+        "7 JOINT BOND    -   3M DP8010 (shell→cap lap seal)",
+        "8 SEALS         -   12/20mm neoprene + silicone",
+        f"9 GRAB RAIL     1   Ø{GRAB_D}×{GRAB_L} SS round",
     ]
-    draw_notes(ax, bom, HO_R + 720, 1610, 108, fs=6.8, font=FONT,
+    draw_notes(ax, bom, HO_R + 720, 1610, 112, fs=6.8, font=FONT,
                width=1000, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 1 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
@@ -404,18 +403,19 @@ def draw_sheet3():
     ax.text(cap_cx, cz_top - cap_r - 55, f"TOP CAP\n{LT_CAP_TOP_T:.0f}mm 6061-T6 Al",
             ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold",
             **FONT, zorder=15)
-    # Bottom cap — A36 steel, stub shaft welded (no flange bolts); weld ticks on boss
+    # Bottom cap — 6061-T6 Al, bolted stub-shaft flange (identical to top)
     draw_circle(ax, cap_cx, cz_bot, cap_r, lw=2.0, color=C_OUT, fill=True,
-                fc=C_STEEL, zorder=4)
-    draw_circle(ax, cap_cx, cz_bot, 78, lw=1.2, color="#CC4422", zorder=6)   # welded boss
+                fc=C_ALUM, zorder=4)
+    draw_circle(ax, cap_cx, cz_bot, 78, lw=1.2, color=C_OUT, zorder=6)       # hub boss
     draw_circle(ax, cap_cx, cz_bot, SKF6215_ID / 2, lw=1.4, color="#CC4422", zorder=7)
-    ax.text(cap_cx, cz_bot - cap_r - 55, f"BOTTOM CAP\n{LT_CAP_BOT_T:.0f}mm A36 steel",
+    bolt_holes(ax, cap_cx, cz_bot, 55, 4, 6, color=C_OUT, zorder=7)          # 4× M10 flange
+    ax.text(cap_cx, cz_bot - cap_r - 55, f"BOTTOM CAP\n{LT_CAP_BOT_T:.0f}mm 6061-T6 Al",
             ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold",
             **FONT, zorder=15)
     draw_dim_h(ax, cap_cx - cap_r, cap_cx + cap_r, cz_top + cap_r + 90,
                f"Ø{LT_CAP_OD}", offset=70, fs=7.5, font=FONT)
     leader(ax, cap_cx + 60, cz_top, cap_cx + cap_r + 70, cz_top + cap_r * 0.7,
-           f"TOP: stub-shaft hub BOLTED 4×M10 (Al cap)\nBOTTOM: stub shaft WELDED (steel cap)\n"
+           f"Both caps: stub-shaft hub BOLTED 4×M10 (6061-T6 Al)\n"
            f"Ø{SKF6215_ID} → SKF 6215 (Sheet 4)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
@@ -423,10 +423,10 @@ def draw_sheet3():
     notes = [
         "ROTATING DRUM — FABRICATION",
         f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm.",
-        f"Caps (Ø{LT_CAP_OD}): TOP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al · BOTTOM {LT_CAP_BOT_T:.0f}mm A36 steel.",
+        f"Caps (Ø{LT_CAP_OD}): both {LT_CAP_TOP_T:.0f}mm 6061-T6 Al (identical).",
         f"1. Roll shell to R{LT_DRUM_OR}; the two free edges are the opening jambs.",
         f"2. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 5).",
-        "3. TOP hub bolted 4×M10 to Al cap; BOTTOM stub shaft welded to steel cap; Ø75 → SKF 6215.",
+        "3. Both stub-shaft hubs bolted 4×M10 to the Al caps; Ø75 → SKF 6215.",
         f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 6.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
@@ -484,16 +484,15 @@ def draw_sheet4():
             for zf in (-bw, bw):
                 ax.plot([cx + g * (rs + 3 * SC), cx + g * (ro - 3 * SC)], [zf, zf],
                         color="#CC4422", lw=1.2, zorder=8)
-        # per-hub cap: 6061-T6 Al (top) / A36 steel (bottom)
-        capd = (LT_CAP_TOP_T if up else LT_CAP_BOT_T) * SC * 2.4
-        cap_fc = C_ALUM if up else C_STEEL
+        # both caps: 6061-T6 Al, bolted steel stub-shaft flange (4×M10)
+        capd = LT_CAP_TOP_T * SC * 2.4
         zc0, zc1 = -115 * SC * s, -115 * SC * s - capd * s
-        # stub shaft Ø75 — reaches the flange face (top) or the cap face (bottom, welded)
+        # stub shaft Ø75 — reaches the flange face
         z_stub = 40 * SC * s
-        z_fl = (-100 if up else -115) * SC * s
+        z_fl = -100 * SC * s
         draw_rect(ax, cx - rs, min(z_stub, z_fl), 2 * rs, abs(z_stub - z_fl),
                   fc=C_STEEL, lw=1.4, zorder=6)
-        # housing ring (Al, upper) / floor collar (steel, lower)
+        # bearing mount: isolated Al top ring (upper) / welded steel floor collar (lower)
         HRr = (100 if up else 105) * SC
         band(cx, ro, HRr, -15 * SC, 15 * SC,
              fc=(C_ALUM if up else C_STEEL), lw=1.4, zorder=5)
@@ -501,22 +500,15 @@ def draw_sheet4():
         zr0, zr1 = 15 * SC * s, 63 * SC * s
         draw_rect(ax, cx - 140 * SC, min(zr0, zr1), 280 * SC, abs(zr1 - zr0),
                   fc=C_STEEL, lw=1.4, zorder=4)
-        # drum cap
+        # Al drum cap + bolted steel stub-shaft flange
         draw_rect(ax, cx - 110 * SC, min(zc0, zc1), 220 * SC, abs(zc1 - zc0),
-                  fc=cap_fc, lw=1.4, zorder=6)
-        if up:                                     # Al cap → bolted steel stub-shaft flange
-            zf0, zf1 = -100 * SC * s, -115 * SC * s
-            draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
-                      fc=C_STEEL, lw=1.4, zorder=6)
-            for g in (-1, 1):
-                ax.plot([cx + g * 55 * SC] * 2, [-100 * SC * s, zc1],
-                        color=C_OUT, lw=1.8, zorder=9)       # flange bolts
-        else:                                      # steel cap → stub shaft welded (fillets)
-            for g in (-1, 1):
-                ax.add_patch(mpatches.Polygon(
-                    [(cx + g * rs, zc0), (cx + g * rs, zc0 + 22 * SC * s),
-                     (cx + g * (rs + 22 * SC), zc0)],
-                    closed=True, fc="#CC4422", ec="#CC4422", zorder=9))
+                  fc=C_ALUM, lw=1.4, zorder=6)
+        zf0, zf1 = -100 * SC * s, -115 * SC * s
+        draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
+                  fc=C_STEEL, lw=1.4, zorder=6)
+        for g in (-1, 1):
+            ax.plot([cx + g * 55 * SC] * 2, [-100 * SC * s, zc1],
+                    color=C_OUT, lw=1.8, zorder=9)       # flange bolts
         # bearing mount bolts (ring/collar → rail) + circlip grooves
         for g in (-1, 1):
             ax.plot([cx + g * 85 * SC] * 2, [15 * SC * s, 60 * SC * s],
@@ -583,7 +575,7 @@ def draw_sheet4():
     # ── Lower-hub callouts (right column) ────────────────────────────────────
     RxL = LX + HALF + 60
     lo_labels = [
-        (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm A36 steel\nstub shaft WELDED (no flange)"),
+        (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nstub shaft BOLTED 4×M10"),
         (-48 * SC, (100 * SC, -40 * SC),  "PANEL BOTTOM RAIL /\nFLOOR PLATE — 8×M10"),
         (12 * SC,  (ro + 20 * SC, 0),     "WELDED STEEL\nFLOOR COLLAR"),
         (-16 * SC, (ro - 6 * SC, -16 * SC), "COLLAR → PLATE WELD"),
@@ -600,15 +592,14 @@ def draw_sheet4():
                fs=6.0, font=FONT)
     draw_dim_v(ax, LX - HALF - 120, -63 * SC, -15 * SC, "48mm PLATE H", offset=44,
                fs=6.0, font=FONT)
-    ax.text(LX, -235, "bearing · shaft · bearing-mount  AS UPPER HUB", ha="center",
+    ax.text(LX, -235, "bearing · shaft · cap · flange  AS UPPER HUB", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
 
     # ── Fabrication / spec notes ─────────────────────────────────────────────
     notes = [
         "BEARING HUB — SPECIFICATION",
         f"Bearing ×2: SKF 6215-2RS1 — Ø{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}mm, sealed 2RS, C3, 0–120°C, 52.7 kN dyn.",
-        f"TOP: drum → {LT_CAP_TOP_T:.0f}mm 6061-T6 Al cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
-        f"BOTTOM: drum → {LT_CAP_BOT_T:.0f}mm A36 steel cap → stub shaft WELDED to cap → Ø75 → bearing.",
+        f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
         "Bearing mounts: upper in isolated aluminum top ring (6×M10); lower in welded steel floor collar (8×M10).",
         "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
         "Ring / rail / flange / collar / plate sizes PROVISIONAL — confirm vs panel-frame design.",
@@ -684,7 +675,7 @@ def draw_sheet5():
            f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, -10, LIP - 20, -300, LIP + 60,
-           f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\nTOP: 6061-T6 Al (riveted to cap)\nBOTTOM: A36 steel (welded to cap)",
+           f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, 20, LIP + 40, 250, LIP + 30,
            f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
@@ -693,7 +684,7 @@ def draw_sheet5():
            "3M DP8010 bead\n(bond + light seal)", fs=6.5, color="#5A3020",
            ha="left", arrow_style="->", font=FONT)
     leader(ax, -75, -CAPT + 20, -300, -CAPT - 55,
-           "FLAT LEG → CAP\nAl: rivet · steel: weld", fs=6.2, color=C_DIM,
+           "FLAT LEG → CAP\nriveted (both caps)", fs=6.2, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
 
     # ── Rivet pattern — cap plan + pitch detail ──────────────────────────────
@@ -723,7 +714,7 @@ def draw_sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SHELL → CAP LAP-AND-FASTEN JOINT  (both caps)",
-        f"1. Rim: {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} angle ring rolled to R{LT_CAP_OD // 2} — TOP 6061-T6 Al (riveted to Al cap); BOTTOM A36 steel (welded to steel cap).",
+        f"1. Rim: {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} angle ring rolled to R{LT_CAP_OD // 2} — 6061-T6 Al, riveted to both Al caps.",
         f"2. Shell sleeves {LT_LAP_H}mm over the standing lip.",
         "3. Apply 3M DP8010 bead to the lap (structural LSE bond + light seal); clamp.",
         f"4. Drill Ø5, set {LT_RIVET_N}× Ø{LT_RIVET_D} SS closed-end blind rivets per cap (~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",

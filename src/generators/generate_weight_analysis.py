@@ -175,13 +175,12 @@ def _lighttrap_weight():
     t_d = LT_DRUM_T / 1000.0
     drum_circ = math.pi * (2 * LT_DRUM_OR / 1000.0)
     drum_shell_kg = drum_circ * (1 - open_frac) * H * t_d * RHO_HDPE
-    # End caps — FULL Ø855 metal discs (2026-08-21): 8mm 6061-T6 Al top + 6mm A36 steel bottom.
+    # End caps — FULL Ø855 discs, both 8mm 6061-T6 Al (2026-08-21; bottom steel → Al).
     cap_area = math.pi * (LT_CAP_OD / 2 / 1000.0) ** 2
-    drum_cap_kg = (cap_area * (LT_CAP_TOP_T / 1000.0) * RHO_ALUM
-                   + cap_area * (LT_CAP_BOT_T / 1000.0) * RHO_STEEL)
-    # Rolled rim-angle rings (25×25×3) at each cap rim — Al top + steel bottom.
+    drum_cap_kg = cap_area * ((LT_CAP_TOP_T + LT_CAP_BOT_T) / 1000.0) * RHO_ALUM
+    # Rolled rim-angle rings (25×25×3) at each cap rim — both 6061-T6 Al.
     rim_area = (LT_RIM_LEG * LT_RIM_T + (LT_RIM_LEG - LT_RIM_T) * LT_RIM_T) * 1e-6  # 25×25×3 angle (m²)
-    rim_kg = math.pi * (LT_CAP_OD / 1000.0) * rim_area * (RHO_ALUM + RHO_STEEL)
+    rim_kg = 2 * math.pi * (LT_CAP_OD / 1000.0) * rim_area * RHO_ALUM
     # Steel stub shafts (Ø75×150, bearing fit) + 2 sealed bearings; plastic
     # edge stiffeners on the opening + grab rail + brush seals + SS lap rivets
     shaft_kg = 2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL

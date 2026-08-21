@@ -29,7 +29,7 @@ file** — a release must not ship without a changelog entry:
   diagrams were renamed off the `lighttrap-*` name first): **1** General Arrangement, **2** housing cut sheet
   (flat pattern), **3** drum cut sheet + caps, **4** bearing hub & stub-shaft detail, **5** shell→cap
   lap-and-fasten joint, **6** seals & light-path, **7** drum cage. **Design change:** the drum **end caps go
-  HDPE → metal** — 8mm 6061-T6 aluminum top (stub shaft bolted), 6mm A36 steel bottom (stub shaft welded) —
+  HDPE → metal** — both **8mm 6061-T6 aluminum**, identical, with bolted 4×M10 stub-shaft hubs (drum ~59 kg) —
   and the **shell→cap joint becomes lap-and-fasten** (shell laps a rolled rim-angle lip, SS Ø4.8 blind rivets
   @ ~60mm + 3M DP8010 bond/light-seal), superseding the extrusion weld. New `tbs_constants` cap/joint
   constants. Weight/parts/cost/report §4/3D-model cascade tracked in `TODO.md`. *(In progress.)*

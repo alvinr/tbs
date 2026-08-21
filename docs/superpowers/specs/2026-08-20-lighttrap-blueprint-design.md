@@ -7,6 +7,20 @@
 
 ---
 
+## 0. Revision 2026-08-21 — metal caps + lap joint (7 sheets)
+
+Two design changes landed during the build (superseding parts of §3 below):
+- **End caps HDPE → metal:** 8mm 6061-T6 aluminum **top** (stub shaft bolted, 4×M10 flange), 6mm A36
+  steel **bottom** (stub shaft welded straight to the cap — no flange). Caps are full Ø855 discs that
+  nest inside the shell. Drives new `tbs_constants` (`LT_CAP_TOP_T`/`LT_CAP_BOT_T`/`LT_CAP_OD`).
+- **Shell → cap joint = lap-and-fasten** (not extrusion weld): the shell laps 25mm over a rolled
+  rim-angle lip on each cap, SS Ø4.8 closed-end blind rivets @ ~60mm + 3M DP8010 (bond + light seal).
+  New joint constants (`LT_LAP_H`/`LT_RIVET_*`) and a **new Sheet 5** (shell→cap joint). Sheet count
+  **6 → 7**: seals→6, cage→7.
+
+The numeric single-source cascade (weight, parts/cost, `light-trap-selection.md` §4, 3D model) is
+tracked in `TODO.md`; `LT_CAP_T` is a deprecated alias until the 3D model migrates.
+
 ## 1. Goal
 
 Produce a **fabrication-grade 2D blueprint set for the revolving light-trap assembly** — the

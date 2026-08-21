@@ -362,7 +362,20 @@ LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
-LT_CAP_T       = 4.76     # drum top/bottom cap thickness (mm) — 3/16" HDPE, THICKER than the 1/8" shell: the caps carry the steel stub shafts into the SKF 6215 bearings (structural hub load path). Cut from the housing 46685 offcut (no extra sheet).
+LT_CAP_T       = 4.76     # DEPRECATED (2026-08-21): superseded by the split metal caps below (LT_CAP_TOP_T / LT_CAP_BOT_T). Retained only until the 3D model + weight/parts consumers migrate off it. Do NOT reference in new code.
+# ── End caps — STRUCTURAL hub discs (carry the stub shafts into the SKF 6215
+# bearings). rev (2026-08-21): HDPE → METAL. TOP = aluminum (light, corrosion-
+# free, stub shaft BOLTED); BOTTOM = steel (ground reaction, stub shaft WELDED
+# straight to the cap → no bolted flange). Full Ø discs (the opening is in the
+# cylindrical shell only, not the caps).
+LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
+LT_CAP_BOT_T   = 6.0      # bottom cap: 6mm A36 mild-steel plate
+LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
+# ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
+LT_LAP_H       = 25       # shell lap over each cap rim (mm)
+LT_RIVET_D     = 4.8      # 3/16" stainless closed-end blind rivet
+LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)
+LT_RIVET_N     = round(math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 45 rivets per cap
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,

@@ -3,7 +3,7 @@
 # © 2026 Alvin Richards
 """
 generate_lighttrap_diagram.py
-TBS-001  Revolving Light-Trap — fabrication blueprint set (7 sheets).
+TBS-001  Revolving Light-Trap — fabrication blueprint set (8 sheets).
 
 Sheet 1: General Arrangement — vertical section on the drum axis
 Sheet 2: Housing cylinder — cut sheet (flat pattern)
@@ -11,7 +11,8 @@ Sheet 3: Rotating drum — cut sheet (flat pattern) + caps
 Sheet 4: Bearing hub & stub-shaft detail
 Sheet 5: Shell → cap lap-and-fasten joint (rivets + DP8010)
 Sheet 6: Seals & light-path verification
-Sheet 7: Drum cage / support frame
+Sheet 7: Support frame — general arrangement (integrated steel cage)
+Sheet 8: Housing → frame attachment (outer-skin fixing)
 
 All geometry reads from tbs_constants.py (single source of truth). Bearing /
 seal / hardware specs trace to light-trap-selection.md §4.
@@ -31,6 +32,8 @@ from tbs_constants import (
     LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_PITCH,
     LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC,
     DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
+    LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD,
+    LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
 from tbs_drawing import (
@@ -223,7 +226,7 @@ def draw_sheet1():
     draw_notes(ax, bom, HO_R + 720, 1610, 112, fs=6.8, font=FONT,
                width=1000, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 1 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 1 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="GENERAL ARRANGEMENT — VERTICAL SECTION ON DRUM AXIS",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -325,7 +328,7 @@ def draw_sheet2():
     draw_notes(ax, notes, 40, -240, 100, fs=7, font=FONT, width=1650,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 2 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 2 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING CYLINDER — CUT SHEET (FLAT PATTERN)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -433,7 +436,7 @@ def draw_sheet3():
     draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 3 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 3 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM — CUT SHEET (FLAT PATTERN) + CAPS",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -606,7 +609,7 @@ def draw_sheet4():
     draw_notes(ax, notes, X_LO + 60, -740, 92, fs=7, font=FONT,
                width=2350, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 4 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 4 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT DETAIL",
                 scale_note="ENLARGED ~2:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -763,7 +766,7 @@ def draw_sheet5():
     draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 5 OF 7", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 5 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SHELL → CAP LAP-AND-FASTEN JOINT (RIVETS + DP8010)",
                 scale_note="ENLARGED · NTS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -773,6 +776,153 @@ def draw_sheet5():
     print("  → diagrams/lighttrap-sheet5.png saved")
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 7 — Support frame, general arrangement
+# The integrated steel welded box cage (part of the swing-panel frame) that carries
+# both SKF 6215 bearings + the fixed housing. ELEVATION (left) + PLAN (top-right).
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet7():
+    CX, CY, HR = DRUM_CX, DRUM_CY, LT_HOUSING_R
+    Z_BOT, Z_TOP = PANEL_FLOOR_GAP, DRUM_H_LT
+    RHS = LT_FRAME_RHS
+    cx0, cx1, cyl, cyr = DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R
+    cW_x, cW_y, cH = cx1 - cx0, cyr - cyl, Z_TOP - Z_BOT
+    PLd = LT_FRAME_PLATE_T * 3          # plate draw thickness (exaggerated)
+
+    # View placements (generic fig units, mm-scaled)
+    EX, EZ = 0, 0                        # ELEVATION origin (Yd→x, Z→z)
+    PX, PZ = cW_y + 780, cH - cW_y       # PLAN origin (X→x, Yd→z), top-right
+
+    def fe(yd, z):   # elevation map
+        return (EX + (yd - cyl), EZ + (z - Z_BOT))
+
+    def fp(x, yd):   # plan map
+        return (PX + (x - cx0), PZ + (yd - cyl))
+
+    X_LO, X_HI = -560, PX + cW_x + 360
+    Z_LO, Z_HI = -900, cH + 300
+    FIG_W = 20.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    def rrect(p0, w, h, **kw):
+        draw_rect(ax, p0[0], p0[1], w, h, **kw)
+
+    # ══ ELEVATION (looking along −X: Yd horizontal, Z vertical) ═══════════════
+    ax.text(*fe(cyl + cW_y / 2, Z_TOP + 170), s="ELEVATION — LOOKING ALONG DRUM AXIS DEPTH",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=15)
+    # housing cylinder (outer skin) — walls at CY±HR
+    for yd in (CY - HR, CY + HR - LT_HOUSING_T):
+        rrect(fe(yd, Z_BOT), LT_HOUSING_T, cH, fc="#DDE4EC", lw=1.2, zorder=5)
+    # drum shell inside
+    for yd in (CY - LT_DRUM_OR, CY + LT_DRUM_OR - LT_DRUM_T):
+        rrect(fe(yd, Z_BOT + 40), LT_DRUM_T, cH - 80, fc=C_LT_DRUM, lw=1.0, zorder=5)
+    # top + bottom bearing plates (steel, span the cage width)
+    rrect(fe(cyl, Z_TOP - PLd), cW_y, PLd, fc=C_STEEL, lw=1.4, zorder=6)
+    rrect(fe(cyl, Z_BOT), cW_y, PLd, fc=C_STEEL, lw=1.4, zorder=6)
+    # 4 corner posts → in elevation the front/back pairs overlap: 2 vertical RHS
+    for yd in (cyl, cyr - RHS):
+        rrect(fe(yd, Z_BOT), RHS, cH, fc=C_STEEL, lw=1.4, zorder=4)
+    # bearings on the axis, seated in the plates
+    for z_brg in (Z_TOP - PLd - SKF6215_W, Z_BOT + PLd):
+        rrect(fe(CY - SKF6215_OD / 2, z_brg), SKF6215_OD, SKF6215_W, fc="#B0B0B8", lw=1.2, zorder=8)
+        rrect(fe(CY - SKF6215_ID / 2, z_brg), SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=9)
+    draw_cl_v(ax, fe(CY, 0)[0], fe(CY, Z_BOT)[1] - 80, fe(CY, Z_TOP)[1] + 80)
+    # panel-rail tie context (ghost above/below the plates)
+    for z0 in (Z_TOP + 6, Z_BOT - 55):
+        rrect(fe(cyl - 90, z0), cW_y + 180, 50, fc="#EDEDED", lw=0.8, zorder=2)
+    # elevation dims + labels
+    draw_dim_v(ax, fe(cyl, 0)[0] - 90, fe(cyl, Z_BOT)[1], fe(cyl, Z_TOP)[1],
+               f"{cH}mm POST H", offset=70, fs=7, font=FONT)
+    draw_dim_h(ax, fe(cyl, 0)[0], fe(cyr, 0)[0], fe(0, Z_TOP)[1] + 70,
+               f"{cW_y}mm CAGE (Yd)", offset=60, fs=7, font=FONT)
+    leader(ax, *fe(cyr - RHS / 2, Z_TOP * 0.62), *fe(cyr + 130, Z_TOP * 0.66),
+           f"CORNER POST\n{RHS}×{RHS}×{LT_FRAME_T} RHS (×4)\nwelded into panel rails",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, *fe(cyl + 120, Z_TOP - PLd / 2), *fe(cyl - 80, Z_TOP + 90),
+           f"TOP BEARING PLATE\n{LT_FRAME_PLATE_T}mm steel", fs=6.5, color=C_OUT,
+           ha="right", arrow_style="->", font=FONT)
+    leader(ax, *fe(cyl + 120, Z_BOT + PLd / 2), *fe(cyl - 80, Z_BOT - 120),
+           f"BOTTOM BEARING PLATE\n{LT_FRAME_PLATE_T}mm steel + floor anchor",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, *fe(CY + SKF6215_OD / 2, Z_BOT + PLd + SKF6215_W / 2),
+           *fe(CY + 300, Z_BOT + 260), "SKF 6215 ×2\n(top + bottom)", fs=6.5,
+           color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, *fe(CY - HR + LT_HOUSING_T, Z_TOP * 0.4), *fe(cyl - 80, Z_TOP * 0.34),
+           f"FIXED HOUSING Ø{DRUM_D}\n(outer skin — Sheet 8)", fs=6.5, color=C_OUT,
+           ha="right", arrow_style="->", font=FONT)
+
+    # ══ PLAN (top-down: X horizontal, Yd vertical) ════════════════════════════
+    ax.text(*fp(cx0 + cW_x / 2, cyl - 150), s="PLAN — LOOKING DOWN",
+            ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=15)
+    # cage box outline
+    rrect(fp(cx0, cyl), cW_x, cW_y, fc="none", lw=1.2, zorder=3)
+    # 4 corner posts (RHS squares)
+    for xx in (cx0, cx1 - RHS):
+        for yy in (cyl, cyr - RHS):
+            rrect(fp(xx, yy), RHS, RHS, fc=C_STEEL, lw=1.2, zorder=6)
+    # housing + drum circles
+    hc = fp(CX, CY)
+    draw_circle(ax, hc[0], hc[1], HR, lw=1.6, color=C_OUT, zorder=5)
+    draw_circle(ax, hc[0], hc[1], HR - LT_HOUSING_T, lw=0.8, color=C_DIM, zorder=5)
+    draw_circle(ax, hc[0], hc[1], LT_DRUM_OR, lw=1.0, color=C_LT_DRUM, fill=True,
+                fc="#F1ECE0", zorder=4)
+    # openings (exterior 180° → −X, interior 0° → +X) + jamb frames at the edges
+    oh = LT_OPENING_DEG / 2
+    for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
+        for e in (oc - oh, oc + oh):
+            a = math.radians(e)
+            jx, jy = hc[0] + HR * math.cos(a), hc[1] + HR * math.sin(a)
+            rrect((jx - RHS / 2, jy - RHS / 2), RHS, RHS, fc=C_STEEL, lw=1.0, zorder=7)
+        ax.text(hc[0] + (HR + 70) * math.cos(math.radians(oc)),
+                hc[1] + (HR + 70) * math.sin(math.radians(oc)), f"{tag}\nOPENING",
+                ha="center", va="center", fontsize=6.5, color=col, **FONT, zorder=8)
+    # panel plane at the inner cage face (X1)
+    ax.plot([fp(cx1, cyl)[0], fp(cx1, cyr)[0]], [fp(cx1, cyl)[1], fp(cx1, cyl)[1]],
+            color=C_CL, lw=0.8, ls="--", zorder=3)
+    # plan dims + labels
+    draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 70,
+               f"{cW_x}mm CAGE (X)", offset=55, fs=7, above=False, font=FONT)
+    draw_dim_v(ax, fp(cx0, 0)[0] - 70, fp(cx0, cyl)[1], fp(cx0, cyr)[1],
+               f"{cW_y}mm (Yd)", offset=55, fs=7, font=FONT)
+    leader(ax, hc[0] + HR * 0.7, hc[1] + HR * 0.7, fp(cx1, cyr)[0] + 60, fp(cx1, cyr)[1] + 40,
+           f"JAMB FRAMES {RHS}×{RHS} RHS\nframe the two {LT_OPENING_DEG}° apertures",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hc[0], hc[1] - HR + 20, fp(cx0, cyl)[0] - 40, fp(cx0, cyl)[1] + 120,
+           f"FIXED HOUSING Ø{DRUM_D}\n(outer skin)", fs=6.5, color=C_OUT,
+           ha="right", arrow_style="->", font=FONT)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    notes = [
+        "SUPPORT FRAME — INTEGRATED STEEL WELDED BOX CAGE (part of the swing-panel weldment)",
+        f"Members: {RHS}×{RHS}×{LT_FRAME_T} steel RHS (matches the panel frame) — 4 corner posts + 2 jamb frames per opening.",
+        f"Top/bottom bearing plates: {LT_FRAME_PLATE_T}mm steel, welded across the cage; carry the SKF 6215 seats.",
+        f"Bearing seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower welded steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
+        "Fixed housing (outer skin) laps + rivets to rim-angle on the plates + jamb frames — see Sheet 8. Drum rotates free inside.",
+        "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
+        "ALL DIMS IN mm · plate thickness exaggerated for clarity",
+    ]
+    draw_notes(ax, notes, X_LO + 60, -300, 92, fs=7, font=FONT, width=2500,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 7 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="SUPPORT FRAME — GENERAL ARRANGEMENT (INTEGRATED STEEL CAGE)",
+                scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
+                height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet7.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet7.png saved")
+
+
 def main():
     print("Generating TBS-001 Revolving Light-Trap blueprint sheets...")
     draw_sheet1()
@@ -780,6 +930,7 @@ def main():
     draw_sheet3()
     draw_sheet4()
     draw_sheet5()
+    draw_sheet7()
     print("Done.")
 
 

@@ -21,6 +21,26 @@ Two design changes landed during the build (superseding parts of §3 below):
 The numeric single-source cascade (weight, parts/cost, `light-trap-selection.md` §4, 3D model) is
 tracked in `TODO.md`; `LT_CAP_T` is a deprecated alias until the 3D model migrates.
 
+## 0b. Revision 2026-08-21 — integrated support frame (scope grows 7 → 8 sheets)
+
+The blueprint must show how the **fixed outer skin (housing) is supported** and how the **drum
+bearings are carried** — previously undrawn (Sheet 4's ring/collar/rail sizes were "PROVISIONAL").
+Approved design: a **steel welded box cage that is integrated with the swing-panel's own steel
+frame** — one weldment, swinging together (not a bolt-in sub-frame). It lives in the existing
+`DRUM_CAGE` envelope inside the B2 punch-out bay.
+
+- **Frame members** (steel RHS, matching the panel's ~50×50×3 SHS): 4 corner posts at the cage
+  corners (X −890→50, Yd 700/1662) welded into the panel top/bottom rails; a **top bearing plate**
+  (upper SKF 6215 in the isolated Al ring + housing top) and a **bottom bearing plate** (lower
+  bearing steel collar + housing bottom + floor anchor); two **jamb frames** at the 80° openings.
+- **Outer skin (housing) attachment** mirrors the drum joint: rolled rim-angle on the top/bottom
+  plates + jamb frames; the fixed housing laps + SS-rivets + DP8010 to it. Drum rotates free inside.
+- **Sheet growth:** Sheet 7 → "Support Frame — General Arrangement"; **new Sheet 8** "Housing →
+  Frame Attachment"; Sheet 4 bearing mounts become real frame members (drop "provisional"). Seals
+  stay Sheet 6.
+- **Coordination:** the hinged-panel report/model owns the whole panel; this set details the
+  light-trap cage portion of that frame — it does not redesign the panel.
+
 ## 1. Goal
 
 Produce a **fabrication-grade 2D blueprint set for the revolving light-trap assembly** — the

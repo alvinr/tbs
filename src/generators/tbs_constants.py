@@ -423,6 +423,17 @@ DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
 DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
 DRUM_CAGE_YD_L = DRUM_CY - DRUM_R - 31  # 700 — cage side ~30mm clear of the Ø900 housing
 DRUM_CAGE_YD_R = DRUM_CY + DRUM_R + 31  # 1662
+# ── Light-trap SUPPORT FRAME (2026-08-21) — steel welded box cage, INTEGRATED with the
+# swing-panel frame (one weldment). Carries both SKF 6215 bearings + the fixed housing
+# (outer skin). Members = steel RHS matching the panel; top/bottom bearing plates; jamb
+# frames at the two 80° openings.
+LT_FRAME_RHS       = 50    # cage post / rail RHS section (mm; ~2" SHS, matches the panel frame)
+LT_FRAME_T         = 3     # RHS wall (mm)
+LT_FRAME_PLATE_T   = 10    # top/bottom bearing-plate thickness (mm steel)
+LT_TOPRING_OD      = 200   # upper bearing seat: isolated 6061-T6 Al top ring OD (mm); ID = bearing OD
+LT_COLLAR_OD       = 210   # lower bearing seat: welded steel floor collar OD (mm)
+LT_FRAME_MOUNT_BOLT_TOP = 6   # top-ring → plate bolts (M10)
+LT_FRAME_MOUNT_BOLT_BOT = 8   # floor-collar → plate bolts (M10)
 
 # Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
 # the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.

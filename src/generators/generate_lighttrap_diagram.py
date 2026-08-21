@@ -655,12 +655,21 @@ def draw_sheet5():
     # break line at shell top
     for zz in (LIP + 70, LIP + 82, LIP + 94):
         ax.plot([8, 32], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    # radial SS blind rivet through shell + DP + lip
+    # ── Installed SS closed-end blind rivet (radial) — set from the shell side ──
     rz = LIP * 0.5
-    draw_rect(ax, -20, rz - 5, 50, 10, fc=C_STEEL, lw=1.0, zorder=8)    # shank
-    draw_rect(ax, -34, rz - 12, 14, 24, fc=C_STEEL, lw=1.0, zorder=8)   # head (inside)
-    ax.add_patch(mpatches.Polygon([(30, rz - 5), (42, rz), (30, rz + 5)],
-                                  closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=8))
+    d, RSC = 12, "#C9CCD2"
+    draw_rect(ax, -20, rz - d / 2, 50, d, fc=RSC, lw=1.2, zorder=8)        # shank (grip)
+    for xt in (-14, -4, 6, 16, 26):                                       # cut-shank hatch
+        ax.plot([xt - 3, xt + 3], [rz - 4, rz + 4], color=C_OUT, lw=0.5, zorder=9)
+    ax.add_patch(mpatches.Polygon(                                        # factory dome head (outside)
+        [(30, rz - d * 0.95), (40, rz - d * 0.95), (48, rz - d * 0.4),
+         (50, rz), (48, rz + d * 0.4), (40, rz + d * 0.95), (30, rz + d * 0.95)],
+        closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+    ax.plot([47, 50], [rz, rz], color=C_OUT, lw=0.7, zorder=10)           # mandrel-break dimple
+    ax.add_patch(mpatches.Polygon(                                        # upset blind head (inside)
+        [(-20, rz - d * 0.7), (-29, rz - d * 1.25), (-32, rz),
+         (-29, rz + d * 1.25), (-20, rz + d * 0.7)],
+        closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
     # flat-leg → cap fasteners (Al: rivet / steel: weld)
     for xr in (-140, -75):
         draw_rect(ax, xr - 4, -CAPT, 8, LEGT + CAPT, fc=C_STEEL, lw=0.8, zorder=7)

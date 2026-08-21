@@ -34,6 +34,7 @@ from tbs_constants import (
     DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
     LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD,
     LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT,
+    LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
 from tbs_drawing import (
@@ -824,36 +825,37 @@ def draw_sheet7():
     # drum shell inside
     for yd in (CY - LT_DRUM_OR, CY + LT_DRUM_OR - LT_DRUM_T):
         rrect(fe(yd, Z_BOT + 40), LT_DRUM_T, cH - 80, fc=C_LT_DRUM, lw=1.0, zorder=5)
-    # top + bottom bearing plates (steel, span the cage width)
-    rrect(fe(cyl, Z_TOP - PLd), cW_y, PLd, fc=C_STEEL, lw=1.4, zorder=6)
-    rrect(fe(cyl, Z_BOT), cW_y, PLd, fc=C_STEEL, lw=1.4, zorder=6)
+    # top + bottom AXLE-SUPPORT BEAMS (100×50 RHS, span Yd, carry the central bearing)
+    BH = LT_AXLE_BEAM_H
+    rrect(fe(cyl, Z_TOP - BH), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=6)
+    rrect(fe(cyl, Z_BOT), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=6)
     # 4 corner posts → in elevation the front/back pairs overlap: 2 vertical RHS
     for yd in (cyl, cyr - RHS):
         rrect(fe(yd, Z_BOT), RHS, cH, fc=C_STEEL, lw=1.4, zorder=4)
-    # bearings on the axis, seated in the plates
-    for z_brg in (Z_TOP - PLd - SKF6215_W, Z_BOT + PLd):
+    # bearings on the axis, seated in the beams (drum HANGS from the top beam)
+    for z_brg in (Z_TOP - BH - SKF6215_W, Z_BOT + BH):
         rrect(fe(CY - SKF6215_OD / 2, z_brg), SKF6215_OD, SKF6215_W, fc="#B0B0B8", lw=1.2, zorder=8)
         rrect(fe(CY - SKF6215_ID / 2, z_brg), SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=9)
     draw_cl_v(ax, fe(CY, 0)[0], fe(CY, Z_BOT)[1] - 80, fe(CY, Z_TOP)[1] + 80)
-    # panel-rail tie context (ghost above/below the plates)
+    # panel-rail tie context (ghost above/below the beams)
     for z0 in (Z_TOP + 6, Z_BOT - 55):
         rrect(fe(cyl - 90, z0), cW_y + 180, 50, fc="#EDEDED", lw=0.8, zorder=2)
     # elevation dims + labels
     draw_dim_v(ax, fe(cyl, 0)[0] - 90, fe(cyl, Z_BOT)[1], fe(cyl, Z_TOP)[1],
                f"{cH}mm POST H", offset=70, fs=7, font=FONT)
-    draw_dim_h(ax, fe(cyl, 0)[0], fe(cyr, 0)[0], fe(0, Z_TOP)[1] + 70,
-               f"{cW_y}mm CAGE (Yd)", offset=60, fs=7, font=FONT)
+    draw_dim_h(ax, fe(cyl, 0)[0], fe(cyr, 0)[0], fe(0, Z_TOP)[1] + 90,
+               f"{LT_AXLE_BEAM_SPAN}mm BEAM SPAN (Yd)", offset=60, fs=7, font=FONT)
     leader(ax, *fe(cyr - RHS / 2, Z_TOP * 0.62), *fe(cyr + 130, Z_TOP * 0.66),
            f"CORNER POST\n{RHS}×{RHS}×{LT_FRAME_T} RHS (×4)\nwelded into panel rails",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, *fe(cyl + 120, Z_TOP - PLd / 2), *fe(cyl - 80, Z_TOP + 90),
-           f"TOP BEARING PLATE\n{LT_FRAME_PLATE_T}mm steel", fs=6.5, color=C_OUT,
-           ha="right", arrow_style="->", font=FONT)
-    leader(ax, *fe(cyl + 120, Z_BOT + PLd / 2), *fe(cyl - 80, Z_BOT - 120),
-           f"BOTTOM BEARING PLATE\n{LT_FRAME_PLATE_T}mm steel + floor anchor",
+    leader(ax, *fe(cyl + 150, Z_TOP - BH / 2), *fe(cyl - 80, Z_TOP + 110),
+           f"TOP AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\n(carries upper bearing — drum hangs from it)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, *fe(CY + SKF6215_OD / 2, Z_BOT + PLd + SKF6215_W / 2),
-           *fe(CY + 300, Z_BOT + 260), "SKF 6215 ×2\n(top + bottom)", fs=6.5,
+    leader(ax, *fe(cyl + 150, Z_BOT + BH / 2), *fe(cyl - 80, Z_BOT - 130),
+           f"BOTTOM AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\n+ floor anchor (locates lower bearing)",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, *fe(CY + SKF6215_OD / 2, Z_BOT + BH + SKF6215_W / 2),
+           *fe(CY + 300, Z_BOT + 320), "SKF 6215 ×2\n(seated in the beams)", fs=6.5,
            color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, *fe(CY - HR + LT_HOUSING_T, Z_TOP * 0.4), *fe(cyl - 80, Z_TOP * 0.34),
            f"FIXED HOUSING Ø{DRUM_D}\n(outer skin — Sheet 8)", fs=6.5, color=C_OUT,
@@ -863,50 +865,59 @@ def draw_sheet7():
     ax.text(*fp(cx0 + cW_x / 2, cyl - 150), s="PLAN — LOOKING DOWN",
             ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=15)
-    # cage box outline
-    rrect(fp(cx0, cyl), cW_x, cW_y, fc="none", lw=1.2, zorder=3)
-    # 4 corner posts (RHS squares)
+    hc = fp(CX, CY)
+    # housing + drum circles (background)
+    draw_circle(ax, hc[0], hc[1], LT_DRUM_OR, lw=1.0, color=C_LT_DRUM, fill=True,
+                fc="#F1ECE0", zorder=3)
+    draw_circle(ax, hc[0], hc[1], HR, lw=1.6, color=C_OUT, zorder=4)
+    draw_circle(ax, hc[0], hc[1], HR - LT_HOUSING_T, lw=0.8, color=C_DIM, zorder=4)
+    # perimeter box frame — 4 rails between the corner posts
+    rrect(fp(cx0, cyl), cW_x, RHS, fc=C_STEEL, lw=1.2, zorder=5)
+    rrect(fp(cx0, cyr - RHS), cW_x, RHS, fc=C_STEEL, lw=1.2, zorder=5)
+    rrect(fp(cx0, cyl), RHS, cW_y, fc=C_STEEL, lw=1.2, zorder=5)
+    rrect(fp(cx1 - RHS, cyl), RHS, cW_y, fc=C_STEEL, lw=1.2, zorder=5)
+    # 4 corner posts
     for xx in (cx0, cx1 - RHS):
         for yy in (cyl, cyr - RHS):
-            rrect(fp(xx, yy), RHS, RHS, fc=C_STEEL, lw=1.2, zorder=6)
-    # housing + drum circles
-    hc = fp(CX, CY)
-    draw_circle(ax, hc[0], hc[1], HR, lw=1.6, color=C_OUT, zorder=5)
-    draw_circle(ax, hc[0], hc[1], HR - LT_HOUSING_T, lw=0.8, color=C_DIM, zorder=5)
-    draw_circle(ax, hc[0], hc[1], LT_DRUM_OR, lw=1.0, color=C_LT_DRUM, fill=True,
-                fc="#F1ECE0", zorder=4)
-    # openings (exterior 180° → −X, interior 0° → +X) + jamb frames at the edges
+            rrect(fp(xx, yy), RHS, RHS, fc="#9BA0A8", lw=1.2, zorder=6)
+    # AXLE BEAM — spans Yd at the drum axis X, central bearing at midspan
+    rrect(fp(CX - LT_AXLE_BEAM_W / 2, cyl), LT_AXLE_BEAM_W, cW_y, fc=C_STEEL, lw=1.4, zorder=7)
+    draw_circle(ax, hc[0], hc[1], SKF6215_OD / 2, lw=1.2, color=C_OUT, fill=True,
+                fc="#B0B0B8", zorder=8)
+    draw_circle(ax, hc[0], hc[1], SKF6215_ID / 2, lw=1.0, color="#CC4422", zorder=9)
+    # jamb frames at the aperture edges + opening labels
     oh = LT_OPENING_DEG / 2
     for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
         for e in (oc - oh, oc + oh):
             a = math.radians(e)
             jx, jy = hc[0] + HR * math.cos(a), hc[1] + HR * math.sin(a)
-            rrect((jx - RHS / 2, jy - RHS / 2), RHS, RHS, fc=C_STEEL, lw=1.0, zorder=7)
-        ax.text(hc[0] + (HR + 70) * math.cos(math.radians(oc)),
-                hc[1] + (HR + 70) * math.sin(math.radians(oc)), f"{tag}\nOPENING",
-                ha="center", va="center", fontsize=6.5, color=col, **FONT, zorder=8)
-    # panel plane at the inner cage face (X1)
-    ax.plot([fp(cx1, cyl)[0], fp(cx1, cyr)[0]], [fp(cx1, cyl)[1], fp(cx1, cyl)[1]],
-            color=C_CL, lw=0.8, ls="--", zorder=3)
+            rrect((jx - RHS / 2, jy - RHS / 2), RHS, RHS, fc="#9BA0A8", lw=1.0, zorder=8)
+        ax.text(hc[0] + (HR + 78) * math.cos(math.radians(oc)),
+                hc[1] + (HR + 78) * math.sin(math.radians(oc)), f"{tag}\nOPENING",
+                ha="center", va="center", fontsize=6.5, color=col, **FONT, zorder=9)
     # plan dims + labels
-    draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 70,
+    draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 80,
                f"{cW_x}mm CAGE (X)", offset=55, fs=7, above=False, font=FONT)
-    draw_dim_v(ax, fp(cx0, 0)[0] - 70, fp(cx0, cyl)[1], fp(cx0, cyr)[1],
+    draw_dim_v(ax, fp(cx0, 0)[0] - 80, fp(cx0, cyl)[1], fp(cx0, cyr)[1],
                f"{cW_y}mm (Yd)", offset=55, fs=7, font=FONT)
-    leader(ax, hc[0] + HR * 0.7, hc[1] + HR * 0.7, fp(cx1, cyr)[0] + 60, fp(cx1, cyr)[1] + 40,
-           f"JAMB FRAMES {RHS}×{RHS} RHS\nframe the two {LT_OPENING_DEG}° apertures",
+    leader(ax, hc[0] + LT_AXLE_BEAM_W / 2, hc[1] + 120, fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] - 20,
+           f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\ncarries central SKF 6215 at midspan",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hc[0], hc[1] - HR + 20, fp(cx0, cyl)[0] - 40, fp(cx0, cyl)[1] + 120,
-           f"FIXED HOUSING Ø{DRUM_D}\n(outer skin)", fs=6.5, color=C_OUT,
-           ha="right", arrow_style="->", font=FONT)
+    leader(ax, *fp(cx0 + RHS / 2, cyr - RHS / 2), fp(cx0, cyr)[0] - 40, fp(cx0, cyr)[1] + 50,
+           f"CORNER POST + PERIMETER RAILS\n{RHS}×{RHS}×{LT_FRAME_T} RHS welded box",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
+           fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] + 55,
+           f"JAMB FRAME {RHS}×{RHS} RHS (×2/opening)", fs=6.5, color=C_OUT,
+           ha="left", arrow_style="->", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SUPPORT FRAME — INTEGRATED STEEL WELDED BOX CAGE (part of the swing-panel weldment)",
-        f"Members: {RHS}×{RHS}×{LT_FRAME_T} steel RHS (matches the panel frame) — 4 corner posts + 2 jamb frames per opening.",
-        f"Top/bottom bearing plates: {LT_FRAME_PLATE_T}mm steel, welded across the cage; carry the SKF 6215 seats.",
+        f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails + 2 jamb frames per opening (welded).",
+        f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS, span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
         f"Bearing seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower welded steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
-        "Fixed housing (outer skin) laps + rivets to rim-angle on the plates + jamb frames — see Sheet 8. Drum rotates free inside.",
+        "Fixed housing (outer skin) laps + rivets to rim-angle on the beams + jamb frames — see Sheet 8. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
     ]

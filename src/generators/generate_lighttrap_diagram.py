@@ -665,19 +665,27 @@ def draw_sheet5():
 
         def T(u, v):
             return (cx + u * ca - v * sa, cz + u * sa + v * ca)
-        g, fh, bh = grip / 2, d * 1.7, d * 1.0
+        g = grip / 2
         ax.add_patch(mpatches.Polygon(                                     # shank (grip)
             [T(-g, -d / 2), T(g, -d / 2), T(g, d / 2), T(-g, d / 2)],
             closed=True, fc=RSC, ec=C_OUT, lw=1.0, zorder=8))
-        ax.add_patch(mpatches.Polygon(                                     # factory dome head
-            [T(g, -d * 0.95), T(g + fh * 0.5, -d * 0.95), T(g + fh * 0.85, -d * 0.4),
-             T(g + fh, 0), T(g + fh * 0.85, d * 0.4), T(g + fh * 0.5, d * 0.95),
-             T(g, d * 0.95)], closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
-        ax.plot(*zip(T(g + fh * 0.85, 0), T(g + fh, 0)), color=C_OUT, lw=0.7, zorder=10)
-        ax.add_patch(mpatches.Polygon(                                     # upset blind head
-            [T(-g, -d * 0.7), T(-g - bh * 0.75, -d * 1.25), T(-g - bh, 0),
-             T(-g - bh * 0.75, d * 1.25), T(-g, d * 0.7)],
-            closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+        # factory dome head — flange + smooth rounded dome (bulges +axis)
+        fb, hr = g + d * 0.35, d * 0.9
+        dome = [T(g, d * 0.95)]
+        for kk in range(13):
+            a = math.pi * (0.5 - kk / 12.0)
+            dome.append(T(fb + hr * math.cos(a), d * 0.95 * math.sin(a)))
+        dome.append(T(g, -d * 0.95))
+        ax.add_patch(mpatches.Polygon(dome, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+        ax.plot(*zip(T(fb + hr * 0.5, 0), T(fb + hr, 0)), color=C_OUT, lw=0.7, zorder=10)
+        # upset (set) blind head — rounded flared mushroom (bulges -axis, wider)
+        bb, br = -g - d * 0.25, d * 0.7
+        blind = [T(-g, d * 0.7)]
+        for kk in range(13):
+            a = math.pi * (0.5 - kk / 12.0)
+            blind.append(T(bb - br * math.cos(a), d * 1.25 * math.sin(a)))
+        blind.append(T(-g, -d * 0.7))
+        ax.add_patch(mpatches.Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
 
     rz = LIP * 0.5
     rivet(5, rz, 0, 50, d=12)                    # shell → lip rivet (set from the shell side)
@@ -692,7 +700,7 @@ def draw_sheet5():
     draw_dim_v(ax, 60, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
     draw_dim_h(ax, 10, 30, -60, f"{LT_DRUM_T:.2f}mm SHELL", offset=40, fs=6.2,
                above=False, font=FONT)
-    draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_BOT_T:.0f}–{LT_CAP_TOP_T:.0f}mm CAP",
+    draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP",
                offset=44, fs=6.2, font=FONT)
     leader(ax, 5, rz, 250, rz + 70,
            f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm pitch",

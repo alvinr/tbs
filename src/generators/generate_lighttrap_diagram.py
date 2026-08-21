@@ -7,9 +7,9 @@ TBS-001  Revolving Light-Trap — fabrication blueprint set (8 sheets).
 
 Sheet 1: General Arrangement — vertical section on the drum axis
 Sheet 2: Housing cylinder — cut sheet (flat pattern)
-Sheet 3: Rotating drum — cut sheet (flat pattern) + caps
-Sheet 4: Bearing hub & stub-shaft detail
-Sheet 5: Shell → cap lap-and-fasten joint (rivets + DP8010)
+Sheet 3: Rotating drum — cut (flat pattern + caps)
+Sheet 4: Rotating drum — secure (shell → cap lap-and-fasten joint)
+Sheet 5: Bearing hub & stub-shaft detail
 Sheet 6: Seals & light-path verification
 Sheet 7: Support frame — general arrangement (integrated steel cage)
 Sheet 8: Housing → frame attachment (outer-skin fixing)
@@ -420,7 +420,7 @@ def draw_sheet3():
                f"Ø{LT_CAP_OD}", offset=70, fs=7.5, font=FONT)
     leader(ax, cap_cx + 60, cz_top, cap_cx + cap_r + 70, cz_top + cap_r * 0.7,
            f"Both caps: stub-shaft hub BOLTED 4×M10 (6061-T6 Al)\n"
-           f"Ø{SKF6215_ID} → SKF 6215 (Sheet 4)",
+           f"Ø{SKF6215_ID} → SKF 6215 (Sheet 5)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Fabrication notes ────────────────────────────────────────────────────
@@ -429,7 +429,7 @@ def draw_sheet3():
         f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm.",
         f"Caps (Ø{LT_CAP_OD}): both {LT_CAP_TOP_T:.0f}mm 6061-T6 Al (identical).",
         f"1. Roll shell to R{LT_DRUM_OR}; the two free edges are the opening jambs.",
-        f"2. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 5).",
+        f"2. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 4).",
         "3. Both stub-shaft hubs bolted 4×M10 to the Al caps; Ø75 → SKF 6215.",
         f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 6.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
@@ -438,7 +438,7 @@ def draw_sheet3():
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 3 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="ROTATING DRUM — CUT SHEET (FLAT PATTERN) + CAPS",
+                subtitle="ROTATING DRUM — CUT (FLAT PATTERN + CAPS)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet3.png"),
@@ -452,7 +452,7 @@ def draw_sheet3():
 # Two enlarged sections (drum axis vertical): UPPER hub (isolated Al top ring,
 # 6×M10) and LOWER hub (welded steel floor collar, 8×M10). SKF 6215-2RS1.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet4():
+def draw_sheet_hub():                              # Sheet 5 — bearing hub
     SC = 2.2                                       # enlargement factor
     rs, ro, bw = SKF6215_ID / 2 * SC, SKF6215_OD / 2 * SC, SKF6215_W / 2 * SC
     CAPd = LT_CAP_TOP_T * SC * 2.4                  # top-cap draw thickness (exaggerated; layout ref)
@@ -610,14 +610,14 @@ def draw_sheet4():
     draw_notes(ax, notes, X_LO + 60, -740, 92, fs=7, font=FONT,
                width=2350, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 4 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 5 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT DETAIL",
                 scale_note="ENLARGED ~2:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet5.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet4.png saved")
+    print("  → diagrams/lighttrap-sheet5.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -625,7 +625,7 @@ def draw_sheet4():
 # The HDPE shell edge laps over a rolled rim-angle lip on each metal cap and is
 # radially riveted (SS blind) + DP8010-bonded. Enlarged section + rivet pattern.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet5():
+def draw_sheet_secure():                           # Sheet 4 — drum secure (shell→cap joint)
     # ── Data window ──────────────────────────────────────────────────────────
     X_LO, X_HI, Z_LO, Z_HI = -470, 1090, -650, 540
     FIG_W = 18.0
@@ -767,14 +767,14 @@ def draw_sheet5():
     draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 5 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="SHELL → CAP LAP-AND-FASTEN JOINT (RIVETS + DP8010)",
+    title_block(ax, "SHEET 4 OF 8", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
                 scale_note="ENLARGED · NTS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet5.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet5.png saved")
+    print("  → diagrams/lighttrap-sheet4.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -939,8 +939,8 @@ def main():
     draw_sheet1()
     draw_sheet2()
     draw_sheet3()
-    draw_sheet4()
-    draw_sheet5()
+    draw_sheet_secure()    # Sheet 4 — drum secure (shell → cap joint)
+    draw_sheet_hub()       # Sheet 5 — bearing hub
     draw_sheet7()
     print("Done.")
 

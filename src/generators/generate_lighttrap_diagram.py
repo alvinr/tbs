@@ -433,11 +433,151 @@ def draw_sheet3():
     print("  → diagrams/lighttrap-sheet3.png saved")
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 4 — Bearing hub & stub-shaft detail
+# Two enlarged sections (drum axis vertical): UPPER hub (isolated Al top ring,
+# 6×M10) and LOWER hub (welded steel floor collar, 8×M10). SKF 6215-2RS1.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet4():
+    SC = 2.2                                       # enlargement factor
+    rs, ro, bw = SKF6215_ID / 2 * SC, SKF6215_OD / 2 * SC, SKF6215_W / 2 * SC
+    CAPd = LT_CAP_T * SC * 2.4                      # cap draw thickness (exaggerated)
+    UX, LX = 0.0, 820.0                            # the two hub axes
+    HALF = 150 * SC
+
+    # ── Data window → figure size ────────────────────────────────────────────
+    PAD_L, PAD_R, PAD_B, PAD_T = 660, 660, 900, 430
+    X_LO, X_HI = UX - HALF - PAD_L, LX + HALF + PAD_R
+    Z_LO, Z_HI = -135 * SC - PAD_B, 70 * SC + PAD_T
+    FIG_W = 20.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    def band(cx, r0, r1, z0, z1, **kw):            # symmetric radial band (section)
+        draw_rect(ax, cx + r0, z0, r1 - r0, z1 - z0, **kw)
+        draw_rect(ax, cx - r1, z0, r1 - r0, z1 - z0, **kw)
+
+    def hub(cx, up):
+        s = 1 if up else -1
+        # SKF 6215 bearing races + balls + 2RS seals
+        band(cx, rs, rs + 9 * SC, -bw, bw, fc=C_STEEL, lw=1.0, zorder=7)
+        band(cx, ro - 9 * SC, ro, -bw, bw, fc=C_STEEL, lw=1.0, zorder=7)
+        for g in (-1, 1):
+            draw_circle(ax, cx + g * (rs + ro) / 2, 0, 6.5 * SC, lw=1.0,
+                        color=C_OUT, fill=True, fc="white", zorder=8)
+            for zf in (-bw, bw):
+                ax.plot([cx + g * (rs + 3 * SC), cx + g * (ro - 3 * SC)], [zf, zf],
+                        color="#CC4422", lw=1.2, zorder=8)
+        # stub shaft Ø75
+        z_stub, z_fl = 40 * SC * s, -100 * SC * s
+        draw_rect(ax, cx - rs, min(z_stub, z_fl), 2 * rs, abs(z_stub - z_fl),
+                  fc=C_STEEL, lw=1.4, zorder=6)
+        # housing ring (Al, upper) / floor collar (steel, lower)
+        HRr = (100 if up else 105) * SC
+        band(cx, ro, HRr, -15 * SC, 15 * SC,
+             fc=(C_ALUM if up else C_STEEL), lw=1.4, zorder=5)
+        # panel rail / floor plate
+        zr0, zr1 = 15 * SC * s, 63 * SC * s
+        draw_rect(ax, cx - 140 * SC, min(zr0, zr1), 280 * SC, abs(zr1 - zr0),
+                  fc=C_STEEL, lw=1.4, zorder=4)
+        # steel stub-shaft flange
+        zf0, zf1 = -100 * SC * s, -115 * SC * s
+        draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
+                  fc=C_STEEL, lw=1.4, zorder=6)
+        # HDPE drum cap
+        zc0, zc1 = -115 * SC * s, -115 * SC * s - CAPd * s
+        draw_rect(ax, cx - 110 * SC, min(zc0, zc1), 220 * SC, abs(zc1 - zc0),
+                  fc="#D9CFB8", lw=1.4, zorder=6)
+        # mount bolts (ring/collar → rail) and flange bolts (cap → flange)
+        for g in (-1, 1):
+            ax.plot([cx + g * 85 * SC] * 2, [15 * SC * s, 60 * SC * s],
+                    color=C_OUT, lw=2.4, zorder=9)
+            ax.plot([cx + g * 55 * SC] * 2, [-100 * SC * s, zc1],
+                    color=C_OUT, lw=1.8, zorder=9)
+            for zc in (18 * SC, -18 * SC):         # circlip grooves each side
+                ax.plot([cx + g * rs, cx + g * (rs - 5 * SC)], [zc, zc],
+                        color=C_OUT, lw=1.6, zorder=9)
+        if not up:                                 # collar-to-plate weld
+            for g in (-1, 1):
+                ax.add_patch(mpatches.Polygon(
+                    [(cx + g * ro, -15 * SC), (cx + g * ro, -15 * SC - 15 * SC),
+                     (cx + g * (ro - 15 * SC), -15 * SC)],
+                    closed=True, fc="#CC4422", ec="#CC4422", zorder=9))
+        draw_cl_v(ax, cx, -135 * SC, 135 * SC)
+        ax.text(cx, 115 * SC + CAPd + 60, "UPPER HUB — DRUM TOP" if up else
+                "LOWER HUB — DRUM BOTTOM", ha="center", va="bottom", fontsize=8.5,
+                color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+
+    hub(UX, True)
+    hub(LX, False)
+
+    # ── Upper-hub callouts (left column) ─────────────────────────────────────
+    LxT = UX - HALF - 60
+    up_labels = [
+        (48 * SC,  (-100 * SC, 40 * SC),  "PANEL TOP RAIL\n6×M10 (isolated mount)"),
+        (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD, H7)"),
+        (-58 * SC, (-rs, -60 * SC),       "STUB SHAFT Ø75 (h6)"),
+        (-108 * SC,(-70 * SC, -107 * SC), "STEEL FLANGE\n4×M10 to cap"),
+        (-132 * SC,(-90 * SC, -122 * SC), "HDPE DRUM CAP 3/16in"),
+    ]
+    for zt, (tx, tz), txt in up_labels:
+        leader(ax, UX + tx, tz, LxT, zt, txt, fs=6.5, color=C_OUT, ha="right",
+               arrow_style="->", font=FONT)
+    # bearing + circlip labels into the center gap (right of upper hub)
+    RxU = UX + HALF + 60
+    leader(ax, UX + (rs + ro) / 2, 0, RxU, 40 * SC,
+           f"SKF 6215-2RS1\nØ{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}, sealed C3",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, UX + rs, 18 * SC, RxU, -50 * SC,
+           "CIRCLIP each side\n(DIN 471) — axial retention",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
+    # ── Lower-hub callouts (right column) ────────────────────────────────────
+    RxL = LX + HALF + 60
+    lo_labels = [
+        (-48 * SC, (100 * SC, -40 * SC),  "PANEL BOTTOM RAIL /\nFLOOR PLATE — 8×M10"),
+        (12 * SC,  (ro + 20 * SC, 0),     "WELDED STEEL\nFLOOR COLLAR"),
+        (-16 * SC, (ro - 6 * SC, -16 * SC), "COLLAR → PLATE WELD"),
+    ]
+    for zt, (tx, tz), txt in lo_labels:
+        leader(ax, LX + tx, tz, RxL, zt, txt, fs=6.5, color=C_OUT, ha="left",
+               arrow_style="->", font=FONT)
+
+    # ── Fabrication / spec notes ─────────────────────────────────────────────
+    notes = [
+        "BEARING HUB — SPECIFICATION",
+        f"Bearing ×2: SKF 6215-2RS1 — Ø{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}mm, sealed 2RS, C3, 0–120°C, 52.7 kN dyn.",
+        "Load path: drum → HDPE cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
+        "Upper: bearing in isolated aluminum top ring, 6×M10 to panel top rail.",
+        "Lower: bearing in welded steel floor collar, 8×M10 to bottom rail.",
+        "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
+        "ENLARGED ~2:1 · CAP THICKNESS EXAGGERATED · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, X_LO + 60, Z_LO + PAD_B - 120, 95, fs=7, font=FONT,
+               width=2200, title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 4 OF 6", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="BEARING HUB & STUB-SHAFT DETAIL",
+                scale_note="ENLARGED ~2:1 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet4.png saved")
+
+
 def main():
     print("Generating TBS-001 Revolving Light-Trap blueprint sheets...")
     draw_sheet1()
     draw_sheet2()
     draw_sheet3()
+    draw_sheet4()
     print("Done.")
 
 

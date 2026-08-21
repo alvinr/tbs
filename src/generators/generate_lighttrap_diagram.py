@@ -32,7 +32,7 @@ from tbs_constants import (
 )
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v,
-    leader, draw_notes,
+    leader, draw_notes, bolt_holes,
 )
 from tbs_title_block import title_block
 
@@ -321,10 +321,123 @@ def draw_sheet2():
     print("  → diagrams/lighttrap-sheet2.png saved")
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 3 — Rotating drum cut sheet (flat pattern) + caps
+# The 1/8in HDPE C-shell developed flat (single 80° opening → 280° of material),
+# plus the two 3/16in top/bottom caps with bolted steel stub-shaft hubs.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet3():
+    DRUM_OD   = 2 * LT_DRUM_OR                          # Ø864
+    L_FULL    = math.pi * DRUM_OD                       # full circumference
+    W_SHELL   = (360 - LT_OPENING_DEG) / 360.0 * L_FULL # 280° of material
+    OW        = (LT_OPENING_DEG / 360.0) * L_FULL       # removed opening arc
+    SHELL_H   = DRUM_H_LT - PANEL_FLOOR_GAP - 80        # drum body height (= 2040)
+    RUN_GAP_L = LT_HOUSING_R - LT_HOUSING_T - LT_DRUM_OR
+
+    cap_r  = LT_DRUM_OR
+    cap_cx = W_SHELL + 360 + cap_r
+    cz_top = SHELL_H - cap_r
+    cz_bot = cap_r
+
+    # ── Data window → figure size ────────────────────────────────────────────
+    PAD_L, PAD_R, PAD_B, PAD_T = 380, 430, 1520, 430
+    X_LO, X_HI = -PAD_L, cap_cx + cap_r + PAD_R
+    Z_LO, Z_HI = -PAD_B, SHELL_H + PAD_T
+    FIG_W = 20.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── Drum C-shell developed blank ─────────────────────────────────────────
+    draw_rect(ax, 0, 0, W_SHELL, SHELL_H, fc=C_LT_DRUM, lw=2.0, zorder=3)
+    for xe in (0, W_SHELL):                    # the two opening jambs (free edges)
+        ax.plot([xe, xe], [0, SHELL_H], color="#B08020", lw=3.0, zorder=6)
+    ax.text(W_SHELL / 2, SHELL_H / 2,
+            f"ROTATING DRUM C-SHELL\n{LT_DRUM_T:.2f}mm (1/8in) HDPE\n"
+            f"280° of Ø{DRUM_OD} — roll to R{LT_DRUM_OR}",
+            ha="center", va="center", fontsize=9, color=C_OUT, fontweight="bold",
+            **FONT, zorder=15)
+    leader(ax, 0, SHELL_H * 0.28, -300, SHELL_H * 0.28,
+           f"OPENING JAMB\n(free edge)", fs=6.5, color="#B08020", ha="center",
+           arrow_style="->", font=FONT)
+    leader(ax, W_SHELL, SHELL_H * 0.72, W_SHELL + 250, SHELL_H * 0.80,
+           f"OPENING JAMB\n(free edge)", fs=6.5, color="#B08020", ha="center",
+           arrow_style="->", font=FONT)
+
+    # ── Dimensions (shell) ───────────────────────────────────────────────────
+    draw_dim_h(ax, 0, W_SHELL, SHELL_H + 210,
+               f"DEVELOPED WIDTH = 280°·π·Ø{DRUM_OD} = {W_SHELL:.0f}mm",
+               offset=80, fs=8, font=FONT)
+    draw_dim_v(ax, -160, 0, SHELL_H, f"{SHELL_H}mm SHELL HEIGHT",
+               offset=90, fs=7.5, font=FONT)
+    ax.text(W_SHELL / 2, SHELL_H + 340,
+            f"single {LT_OPENING_DEG}° opening removed  ·  arc = {OW:.0f}mm",
+            ha="center", va="bottom", fontsize=7, color=C_DIM, **FONT, zorder=15)
+
+    # ── Top + bottom caps (Ø864, 3/16in HDPE, bolted stub-shaft hub) ─────────
+    for cz, tag in ((cz_top, "TOP CAP"), (cz_bot, "BOTTOM CAP")):
+        draw_circle(ax, cap_cx, cz, cap_r, lw=2.0, color=C_OUT,
+                    fill=True, fc="#D9CFB8", zorder=4)
+        draw_circle(ax, cap_cx, cz, 78, lw=1.2, color=C_OUT, zorder=6)   # steel hub boss
+        draw_circle(ax, cap_cx, cz, SKF6215_ID / 2, lw=1.4, color="#CC4422",
+                    zorder=7)                                             # Ø75 stub-shaft bore
+        bolt_holes(ax, cap_cx, cz, 55, 4, 6, color=C_OUT, zorder=7)      # 4× M10 flange bolts
+        ax.text(cap_cx, cz - cap_r - 55, tag, ha="center", va="top", fontsize=8,
+                color=C_OUT, fontweight="bold", **FONT, zorder=15)
+    draw_dim_h(ax, cap_cx - cap_r, cap_cx + cap_r, cz_top + cap_r + 90,
+               f"Ø{DRUM_OD}", offset=70, fs=7.5, font=FONT)
+    leader(ax, cap_cx, cz_top, cap_cx + cap_r + 60, cz_top + 150,
+           f"steel stub-shaft hub, 4×M10 to cap\nØ{SKF6215_ID} shaft → SKF 6215 (Sheet 4)",
+           fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+
+    # ── Shell → cap weld detail (enlarged, NTS) ──────────────────────────────
+    wx, wz = W_SHELL / 2 - 200, -470
+    draw_rect(ax, wx, wz, 420, 70, fc="#D9CFB8", lw=1.4, zorder=5)          # cap edge
+    draw_rect(ax, wx + 180, wz + 70, 44, 260, fc=C_LT_DRUM, lw=1.4, zorder=5)  # shell wall
+    ax.add_patch(mpatches.Polygon([(wx + 180, wz + 70), (wx + 150, wz + 70),
+                                   (wx + 180, wz + 130)], closed=True,
+                                  fc="#CC4422", ec="#CC4422", zorder=6))
+    ax.add_patch(mpatches.Polygon([(wx + 224, wz + 70), (wx + 254, wz + 70),
+                                   (wx + 224, wz + 130)], closed=True,
+                                  fc="#CC4422", ec="#CC4422", zorder=6))
+    leader(ax, wx + 202, wz + 90, wx + 470, wz + 30,
+           f"SHELL → CAP\nEXTRUSION FILLET WELD\n(both faces) · DETAIL NTS",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
+    # ── Fabrication notes ────────────────────────────────────────────────────
+    notes = [
+        "ROTATING DRUM — FABRICATION",
+        f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm.",
+        f"Caps: {LT_CAP_T:.2f}mm (3/16in) HDPE, Ø{DRUM_OD} — cut from housing offcut.",
+        f"1. Roll shell to R{LT_DRUM_OR}; the two free edges are the opening jambs.",
+        "2. Extrusion-fillet-weld shell to both caps (both faces).",
+        "3. Bolt steel stub-shaft hub (4×M10) to each cap; Ø75 shaft to SKF 6215.",
+        f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 5.",
+        "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 3 OF 6", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="ROTATING DRUM — CUT SHEET (FLAT PATTERN) + CAPS",
+                scale_note="FLAT PATTERN · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet3.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet3.png saved")
+
+
 def main():
     print("Generating TBS-001 Revolving Light-Trap blueprint sheets...")
     draw_sheet1()
     draw_sheet2()
+    draw_sheet3()
     print("Done.")
 
 

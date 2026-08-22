@@ -390,12 +390,14 @@
 
 ![TBS-001 Light-Trap — Sheet 4: Drum — Secure (lap-and-fasten joint)](assets/lighttrap-sheet4.png)
 
-![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft Detail](assets/lighttrap-sheet5.png)
+![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)
 
-![TBS-001 Light-Trap — Sheet 6: Seals & Light-Path Verification](assets/lighttrap-sheet6.png)
+![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 
-![TBS-001 Light-Trap — Sheet 7: Support Frame General Arrangement](assets/lighttrap-sheet7.png)
+![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 
-![TBS-001 Light-Trap — Sheet 8: Housing → Frame Attachment](assets/lighttrap-sheet8.png)
+![TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement](assets/lighttrap-sheet8.png)
 
-![TBS-001 Light-Trap — Sheet 9: Combined Top-End Assembly](assets/lighttrap-sheet9.png)
+![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
+
+![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)

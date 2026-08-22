@@ -120,7 +120,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded seam; laps a rolled rim-angle welded to the integrated support frame — SS blind rivets + DP8010 (see §9 Sheet 8), set in the punch-out bay |
+| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded seam; laps a rolled rim-angle welded to the integrated support frame — SS blind rivets + DP8010 (see §9 Sheet 9), set in the punch-out bay |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
 | Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
@@ -145,7 +145,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Top seal | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against the frame top plate |
 | Bottom seal | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against the frame bottom plate |
-| Drum-to-housing running gap | ≈13mm radial clearance, closed by a felt/brush wiper the drum rotates against (a compression strip would bind on the turning drum) — see §9 Sheet 6 |
+| Drum-to-housing running gap | ≈13mm radial clearance, closed by a felt/brush wiper the drum rotates against (a compression strip would bind on the turning drum) — see §9 Sheet 7 |
 
 ### 4.4 Hardware
 
@@ -276,32 +276,40 @@ bond that closes the joint against light.
 
 ![TBS-001 Light-Trap — Sheet 4: Drum — Secure](assets/lighttrap-sheet4.png)
 
-**Sheet 5 — Bearing hub & stub-shaft detail.** The SKF 6215 seat, the stub-shaft
-capture in the cap, and circlip axial retention, top and bottom.
+**Sheet 5 — Bearing hub & stub-shaft (assembly).** How the parts stack: the SKF 6215
+seat, the stub-shaft capture in the cap, and circlip axial retention, top and bottom.
+The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 
-![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft Detail](assets/lighttrap-sheet5.png)
+![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)
 
-**Sheet 6 — Seals & light-path verification.** The running-gap wiper and top/bottom
+**Sheet 6 — Machined components (bearing seats & stub-shaft).** Single-part blueprints
+for the turned/machined metal parts: the upper 6061-T6 Al bearing ring, the lower A36
+steel floor collar, and the stub-shaft + flange — each with OD, bore + fit, thickness,
+bolt pattern (PCD/count/Ø), material, and weld notes.
+
+![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
+
+**Sheet 7 — Seals & light-path verification.** The running-gap wiper and top/bottom
 seals, and the three-position proof (open-to-exterior, open-to-interior, mid-rotation)
 that no straight-through light path exists at any rotation.
 
-![TBS-001 Light-Trap — Sheet 6: Seals & Light-Path Verification](assets/lighttrap-sheet6.png)
+![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 
-**Sheet 7 — Support frame general arrangement.** The integrated steel welded box cage
+**Sheet 8 — Support frame general arrangement.** The integrated steel welded box cage
 that carries the bearing loads and the fixed housing, in plan and elevation, with the
-axle-support beam at the drum axis.
+axle-support beam at the drum axis and the members dimensioned.
 
-![TBS-001 Light-Trap — Sheet 7: Support Frame General Arrangement](assets/lighttrap-sheet7.png)
+![TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement](assets/lighttrap-sheet8.png)
 
-**Sheet 8 — Housing → frame attachment.** The section showing the fixed outer skin
+**Sheet 9 — Housing → frame attachment.** The section showing the fixed outer skin
 lapped and riveted to the rolled rim-angle welded on the frame beams and jamb frames —
 the drum rotating free inside.
 
-![TBS-001 Light-Trap — Sheet 8: Housing → Frame Attachment](assets/lighttrap-sheet8.png)
+![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
 
-**Sheet 9 — Combined top-end assembly.** A single half-section at the top end showing
+**Sheet 10 — Combined top-end assembly.** A single half-section at the top end showing
 both lap joints nested concentrically: the rotating drum shell→cap joint (Sheet 4) and
-the fixed housing→frame joint (Sheet 8), with the upper bearing and the felt-sealed
+the fixed housing→frame joint (Sheet 9), with the upper bearing and the felt-sealed
 running gap between them — how the rotating and fixed halves coexist at one level.
 
-![TBS-001 Light-Trap — Sheet 9: Combined Top-End Assembly](assets/lighttrap-sheet9.png)
+![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)

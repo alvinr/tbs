@@ -171,6 +171,7 @@ DIAG_IMAGE_FILES = [
     "lighttrap-sheet7.png",
     "lighttrap-sheet8.png",
     "lighttrap-sheet9.png",
+    "lighttrap-sheet10.png",
     "hingepanel-sheet1.png",
     "hingepanel-sheet2.png",
     "hingepanel-sheet3.png",

@@ -1158,7 +1158,7 @@ def draw_sheet8():
 # Axis on the LEFT (r = 0), radius increases to the right; z = height near the top.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet9():
-    X_LO, X_HI, Z_LO, Z_HI = -200, 760, -560, 320
+    X_LO, X_HI, Z_LO, Z_HI = -200, 820, -560, 320
     FIG_W = 15.5
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -1192,6 +1192,13 @@ def draw_sheet9():
 
     # ── FIXED: axle beam (steel RHS) — carries central bearing AND housing ───
     draw_rect(ax, 0, Z_BEAM0, LT_AXLE_BEAM_SPAN / 2, LT_AXLE_BEAM_H, fc=C_STEEL, lw=1.4, zorder=4)
+    # ── FIXED: cage corner post (vertical RHS) framing the beam end ──────────
+    POST_R0 = LT_AXLE_BEAM_SPAN / 2                                          # 481 — beam outer end / cage corner
+    draw_rect(ax, POST_R0, Z_BRK, LT_FRAME_RHS, Z_BEAM0 + LT_AXLE_BEAM_H - Z_BRK,
+              fc=C_STEEL, lw=1.4, zorder=3)                                  # corner post (continues down full height)
+    for dz in (0, 8, 16):                                                    # break line (post continues down)
+        ax.plot([POST_R0 + 4, POST_R0 + LT_FRAME_RHS - 4], [Z_BRK + 6 + dz, Z_BRK + 14 + dz],
+                color=C_OUT, lw=0.6, zorder=9)
     # ── Upper SKF 6215 bearing (to scale) + isolated Al ring ─────────────────
     draw_rect(ax, bOD, Z_BRG0, 30, Z_BEAM0 - Z_BRG0, fc=C_ALUM, lw=1.0, zorder=5)   # Al ring bolts up to beam
     draw_rect(ax, bOD - 7.5, Z_BRG0, 7.5, bW, fc=C_STEEL, lw=0.8, zorder=6)         # outer race
@@ -1226,12 +1233,12 @@ def draw_sheet9():
         for dz in (0, 8, 16):
             ax.plot([r0, r1], [Z_BRK + 6 + dz, Z_BRK + 14 + dz], color=C_OUT, lw=0.6, zorder=9)
 
-    # ── Detail bubbles → the enlarged joint sheets ───────────────────────────
-    for (rc, zc, tag, sh) in ((CAPR, LT_LAP_H / 2, "A", "SHEET 4"),
-                              (HIR_, Z_BEAM0 - LT_LAP_H / 2, "B", "SHEET 8")):
-        draw_circle(ax, rc, zc, 46, lw=1.0, color=C_DIM, ls="--", zorder=8)
-        ax.text(rc + 52, zc + 40, f"DETAIL {tag}\n(→ {sh})", ha="left", va="center",
-                fontsize=6.4, color=C_DIM, fontweight="bold", **FONT, zorder=9)
+    # ── Detail bubbles → the enlarged joint sheets (A→4, B→8; see notes) ─────
+    for (rc, zc, tag) in ((CAPR, LT_LAP_H / 2, "A"), (HIR_, Z_BEAM0 - LT_LAP_H / 2, "B")):
+        draw_circle(ax, rc, zc, 40, lw=1.0, color=C_DIM, ls="--", zorder=8)
+        ax.annotate(tag, xy=(rc - 34, zc), xytext=(rc - 95, zc),
+                    ha="center", va="center", fontsize=11, fontweight="bold", color=C_DIM,
+                    arrowprops=dict(arrowstyle="->", color=C_DIM, lw=0.9), zorder=9, **FONT)
 
     # ── Scale bar (100 mm, to scale) ─────────────────────────────────────────
     sb_z = Z_BRK - 70
@@ -1259,13 +1266,16 @@ def draw_sheet9():
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, 30, 8, -150, -35, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
-    leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 610, 40,
+    leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 700, 55,
            f"RUNNING GAP {RUN_GAP}mm + felt/brush seal (Sheet 6)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 610, Z_BEAM0 + 120,
+    leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 700, Z_BEAM0 + 120,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing; swing-panel weldment (Sheet 7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, HOR_, -60, 610, -90, f"FIXED HOUSING Ø{DRUM_D} (outer skin)\nrotating drum Ø{2 * LT_DRUM_OR} inside",
+    leader(ax, POST_R0 + LT_FRAME_RHS / 2, -35, 700, -35,
+           f"CAGE CORNER POST {LT_FRAME_RHS}×{LT_FRAME_RHS}×{LT_FRAME_T} RHS\nframes the beam end · welded to the panel rails (Sheet 7)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, HOR_, -110, 700, -130, f"FIXED HOUSING Ø{DRUM_D} (outer skin)\nrotating drum Ø{2 * LT_DRUM_OR} inside",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     notes = [

@@ -25,12 +25,13 @@ file** — a release must not ship without a changelog entry:
 ## [Unreleased]
 
 - **Revolving light-trap fabrication blueprint set + metal-cap / lap-joint redesign + integrated frame
-  (branch `lighttrap-bp`).** New dedicated 2D set `generate_lighttrap_diagram.py` → `lighttrap-sheet1..9`
+  (branch `lighttrap-bp`).** New dedicated 2D set `generate_lighttrap_diagram.py` → `lighttrap-sheet1..10`
   (the misnamed ventilation diagrams were renamed off the `lighttrap-*` name first): **1** General
-  Arrangement, **2** housing cylinder cut sheet (flat pattern), **3** Drum — Cut (C-shell + caps),
-  **4** Drum — Secure (shell→cap lap-and-fasten joint), **5** bearing hub & stub-shaft detail, **6** seals &
-  light-path verification, **7** support-frame general arrangement, **8** housing → frame attachment,
-  **9** combined top-end assembly (both lap joints nested at one level). Embedded as **[Light-Trap Selection
+  Arrangement, **2** housing cylinder cut sheet (flat pattern), **3** Drum — Cut (shell flat pattern +
+  end-cap blueprint), **4** Drum — Secure (shell→cap lap-and-fasten joint), **5** bearing hub & stub-shaft
+  ASSEMBLY, **6** machined components (bearing-seat rings + stub-shaft, single-part blueprints), **7** seals &
+  light-path verification, **8** support-frame general arrangement, **9** housing → frame attachment,
+  **10** combined top-end assembly (both lap joints nested at one level). Embedded as **[Light-Trap Selection
   §9 Fabrication Blueprints](light-trap-selection.md)** and registered in the gallery/publish lists;
   **§4 spec prose reconciled** to the metal-cap / lap-joint / integrated-frame design. **Design changes:** the
   drum **end caps go HDPE → metal** — both **8mm 6061-T6 aluminum**, identical, with bolted 4×M10 stub-shaft
@@ -38,13 +39,17 @@ file** — a release must not ship without a changelog entry:
   rivets @ ~60mm + 3M DP8010 bond/light-seal), superseding the extrusion weld. Scope grew to specify the
   **support structure**: a **steel welded box cage integrated with the swing-panel weldment** carries the
   bearings (axle-support beam at the drum axis) and the fixed outer skin (housing laps + rivets to a rolled
-  rim-angle welded on the frame beams + jamb frames). New `tbs_constants` cap/joint/frame constants. The detail
-  sheets are being recast **to stated scale** (Sheets 4 & 8 sections at **7:1** + plans **1:2** + scale bars;
-  Sheet 9 a true isotropic half-section with a 100mm bar + cage corner post; Sheet 6 given distinct inner/outer
-  panel colors + light-path rays; Sheet 5 relabel pending). The lap rivet is now spec'd to a real datasheet —
-  **1/8" (Ø3.18mm) 18-8 SS domed-head blind, McMaster 97525A425 (shell→cap) / 97525A435 (housing→frame)**,
-  drill Ø3.3 — so `LT_RIVET_D` 4.8→3.18 and the drawn rivets are to scale. Parts/cost + weight/CG + 3D-model
-  cascade + a bolt/screw-hole detailing pass tracked in `TODO.md`. *(In progress.)*
+  rim-angle welded on the frame beams + jamb frames). New `tbs_constants` cap/joint/frame constants. Every
+  detail sheet was recast **to a stated scale** (no more "NTS"): the joint sections at **7:1** (Sheets 4/9),
+  the bearing-hub + component sections at **2.2:1 / 1:1**, and the assembly views to true isotropic scale with
+  **scale bars** (Sheet 10 half-section 100mm bar + cage corner post; Sheet 8 with the frame members
+  dimensioned; Sheet 7 given distinct inner/outer panel colors + light-path rays). A **bolt/screw-hole
+  detailing pass** added real hole patterns (PCD, count, Ø, positions): the machined parts got their own
+  **single-part component blueprints (new Sheet 6)** and the end-cap its full blueprint on Sheet 3, referenced
+  from the hub assembly (Sheet 5) — the Sheet-9→4/8 reference pattern. The lap rivet is spec'd to a real
+  datasheet — **1/8" (Ø3.18mm) 18-8 SS domed-head blind, McMaster 97525A425 (shell→cap) / 97525A435
+  (housing→frame)**, drill Ø3.3 — so `LT_RIVET_D` 4.8→3.18 and the drawn rivets are to scale; SKUs stamped in
+  `parts-worklist.csv`. Full parts/cost + weight/CG + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

@@ -1082,37 +1082,52 @@ def draw_sheet8():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── SECTION A-A — housing edge → frame (enlarged, NTS) ────────────────────
-    ax.text(-160, Z_HI - 40, "SECTION A–A  (housing → frame, enlarged — NTS)",
+    # ── SECTION A-A — housing edge → frame (SCALE 7:1, isotropic) ─────────────
+    S = 7                                    # drawn = real mm × 7 (both axes)
+    LEGT = S * LT_RIM_T                        # rim-angle leg thickness (3mm)
+    LIP  = S * LT_LAP_H                        # lap / lip height (25mm)
+    DPT  = S * 1.0                             # DP8010 bead (~1mm)
+    HOUT = S * LT_HOUSING_T                    # housing thickness (5mm)
+    RIML = S * LT_RIM_LEG                      # rim flat-leg length (25mm)
+    RVD  = S * LT_RIVET_D                      # rivet Ø (4.8mm)
+    BEAMH = S * 16                             # 16mm of the frame beam shown (broken)
+    ax.text(-150, Z_HI - 40, "SECTION A–A  (housing → frame rim · SCALE 7:1)",
             ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=15)
-    FBt = 150   # frame member draw depth
-    draw_rect(ax, -340, 0, 340, FBt, fc=C_STEEL, lw=1.6, zorder=4)         # frame top beam/rail
-    draw_rect(ax, -180, -20, 180, 20, fc=C_STEEL, lw=1.4, zorder=5)        # rim-angle flat leg (welded)
-    draw_rect(ax, -20, -180, 20, 160, fc=C_STEEL, lw=1.4, zorder=5)        # rim-angle standing lip
-    ax.add_patch(mpatches.Polygon([(-180, 0), (-165, 0), (-180, 18)], closed=True,
-                                  fc="#CC4422", ec="#CC4422", zorder=6))    # weld to frame
-    draw_rect(ax, 0, -190, 10, 180, fc=C_GASKT, lw=0.8, zorder=5)          # DP8010
-    draw_rect(ax, 10, -220, 24, 230, fc="#DDE4EC", lw=1.6, zorder=6)       # housing (5mm) laps down
-    for zz in (-200 + 70, -200 + 82, -200 + 94):                          # break line (housing continues)
-        ax.plot([8, 36], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    blind_rivet(ax, 7, -110, 0, 54, d=11)          # radial rivet: housing → lip (dome outside, set from outside)
-    draw_dim_v(ax, 55, -180, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, 10, 34, -240, f"{LT_HOUSING_T}mm HOUSING", offset=38, fs=6.2,
+    draw_rect(ax, -RIML - 40, 0, RIML + 100, BEAMH, fc=C_STEEL, lw=1.6, zorder=4)  # frame beam (broken)
+    for xx in (-RIML - 20, -RIML + 20, -RIML + 60):                              # break line (beam continues up)
+        ax.plot([xx - 4, xx + 4], [BEAMH - 8, BEAMH + 8], color=C_OUT, lw=0.6, zorder=7)
+    draw_rect(ax, -RIML, -LEGT, RIML, LEGT, fc=C_ALUM, lw=1.4, zorder=5)          # rim flat leg (welded under beam)
+    draw_rect(ax, -LEGT, -LIP, LEGT, LIP, fc=C_ALUM, lw=1.4, zorder=5)            # standing lip (down)
+    ax.add_patch(mpatches.Polygon([(-RIML, 0), (-RIML + 16, 0), (-RIML, -16)], closed=True,
+                                  fc="#CC4422", ec="#CC4422", zorder=6))          # weld to beam
+    draw_rect(ax, 0, -LIP, DPT, LIP, fc=C_GASKT, lw=0.8, zorder=5)                # DP8010 bead
+    draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 100, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down (broken)
+    for zz in (-LIP - 55, -LIP - 67, -LIP - 79):                                 # break line (housing continues down)
+        ax.plot([DPT - 3, DPT + HOUT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
+    blind_rivet(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 0, S * (LT_HOUSING_T + 1 + LT_RIM_T), d=RVD)  # radial housing → lip rivet
+    draw_dim_v(ax, DPT + HOUT + 40, -LIP, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 50, f"{LT_HOUSING_T}mm HOUSING", offset=38, fs=6.2,
                above=False, font=FONT)
-    leader(ax, -10, -100, -300, -60, "RIM ANGLE 25×25×3 6061-T6 Al\nWELDED to the frame beam",
+    leader(ax, -LEGT, -LIP + 30, -300, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al\nWELDED to the frame beam",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, 22, -60, 250, -30, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
+    leader(ax, DPT + HOUT, -LIP + 30, 250, -55, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, 42, -110, 250, -150, f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough housing + lip · + DP8010 bead (light seal)",
+    leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 250, -215, f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough housing + lip · + DP8010 (light seal)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, -160, FBt / 2, -300, FBt + 40, "FRAME TOP BEAM / RAIL (steel)",
+    leader(ax, -RIML + 40, BEAMH / 2, -300, BEAMH + 40, "FRAME TOP BEAM / RAIL (steel · Sheet 7)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    ax.text(430, 70, "(bottom edge identical,\nmirrored, to the bottom beam)",
+    ax.text(150, -LIP - 130, "(bottom edge identical, mirrored, to the bottom beam)",
             ha="center", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
+    sbx, sbz = -300, -LIP - 60                                                   # section scale bar (20mm)
+    ax.plot([sbx, sbx + S * 20], [sbz, sbz], color=C_OUT, lw=1.4, zorder=8)
+    for xt in (sbx, sbx + S * 10, sbx + S * 20):
+        ax.plot([xt, xt], [sbz - 6, sbz + 6], color=C_OUT, lw=1.0, zorder=8)
+    ax.text(sbx + S * 10, sbz - 13, "20 mm  (SECTION 7:1)", ha="center", va="top",
+            fontsize=6, color=C_OUT, **FONT, zorder=8)
 
     # ── PLAN — housing footprint (200° material, two 100° arcs) + rivets ──────
-    pcx, pcz, pr = 800, 10, 160
+    pcx, pcz, pr = 820, 10, LT_HOUSING_R / 2
     oh = LT_OPENING_DEG / 2
 
     def arc(cx, cz, r, gapc, gapd, color, lw, z=6):
@@ -1136,11 +1151,11 @@ def draw_sheet8():
         ax.text(pcx + (pr + 70) * math.cos(math.radians(oc)),
                 pcz + (pr + 70) * math.sin(math.radians(oc)), f"{tag}\nOPENING\n(no rim)",
                 ha="center", va="center", fontsize=6.2, color=col, **FONT, zorder=8)
-    ax.text(pcx, pcz, f"Ø{DRUM_D}\nHOUSING\n({LT_HOUSING_ARC}° rim,\n2 arcs)", ha="center",
+    ax.text(pcx, pcz, f"Ø{DRUM_D}\nHOUSING\n({LT_HOUSING_ARC}° rim, 2 arcs)\nHOUSING PLAN — 1:2", ha="center",
             va="center", fontsize=6.8, color=C_DIM, **FONT, zorder=8)
     ax.text(pcx, pcz - pr - 55,
             f"RIVET PATTERN — {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} per edge @ ~{LT_RIVET_PITCH}mm\n"
-            f"(top + bottom · {2 * LT_HOUSING_RIVET_N} rivets total)", ha="center", va="top",
+            f"(top + bottom · {2 * LT_HOUSING_RIVET_N} rivets total · rivet symbols schematic)", ha="center", va="top",
             fontsize=6.8, color=C_OUT, **FONT, zorder=8)
 
     notes = [
@@ -1149,14 +1164,14 @@ def draw_sheet8():
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
         f"3. {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS closed-end blind rivets per edge (~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
         "4. Housing vertical edges (at the openings) rivet to the jamb frames the same way (see Sheet 7).",
-        "ENLARGED — NOT TO SCALE · ALL DIMS IN mm",
+        "SECTION A–A 7:1 (isotropic) · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -340, 60, fs=7, font=FONT, width=2050,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 8 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
-                scale_note="ENLARGED · NTS · ALL DIMS IN mm",
+                scale_note="SECTION 7:1 · HOUSING PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet8.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

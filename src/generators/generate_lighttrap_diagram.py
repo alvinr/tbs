@@ -668,59 +668,60 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── SECTION A-A — radial section through the rim (enlarged, NTS) ──────────
-    CAPT = 60          # cap disc draw thickness (rep 6–8mm)
-    LEGT = 20          # rim-angle leg draw thickness (rep 3mm)
-    LIP  = 180         # standing-leg draw height (rep 25mm lap)
-    ax.text(-160, Z_HI - 40, "SECTION A–A  (rim, enlarged — NOT TO SCALE)",
+    # ── SECTION A-A — radial section through the rim (SCALE 7:1, isotropic) ───
+    S = 7                                    # drawn = real mm × 7 (both axes)
+    CAPT = S * LT_CAP_TOP_T                   # cap thickness (8mm)
+    LEGT = S * LT_RIM_T                        # rim-angle leg thickness (3mm)
+    LIP  = S * LT_LAP_H                        # lap / standing-lip height (25mm)
+    SHT  = S * LT_DRUM_T                       # shell thickness (3.18mm)
+    DPT  = S * 1.0                             # DP8010 bead (~1mm)
+    RIML = S * LT_RIM_LEG                      # rim flat-leg length (25mm)
+    RVD  = S * LT_RIVET_D                      # rivet Ø (4.8mm)
+    ax.text(-150, Z_HI - 40, "SECTION A–A  (shell → cap rim · SCALE 7:1)",
             ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=15)
-    # metal cap disc
-    draw_rect(ax, -340, -CAPT, 340, CAPT, fc=C_ALUM, lw=1.6, zorder=4)
-    # rim angle (flat leg on cap + standing lip), rolled 25×25×3
-    draw_rect(ax, -180, 0, 180, LEGT, fc=C_ALUM, lw=1.4, zorder=5)      # flat leg
-    draw_rect(ax, -20, 0, 20, LIP, fc=C_ALUM, lw=1.4, zorder=5)         # standing lip
-    # DP8010 bead in the lap
-    draw_rect(ax, 0, -10, 10, LIP + 10, fc=C_GASKT, lw=0.8, zorder=5)
-    # HDPE shell lapping over the lip
-    draw_rect(ax, 10, -40, 20, LIP + 100, fc=C_LT_DRUM, lw=1.6, zorder=6)
-    # break line at shell top
-    for zz in (LIP + 70, LIP + 82, LIP + 94):
-        ax.plot([8, 32], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    # Installed SS closed-end blind rivets (module helper — dome + upset head, no hatch)
+    draw_rect(ax, -340, -CAPT, 340, CAPT, fc=C_ALUM, lw=1.6, zorder=4)         # cap disc (Al)
+    draw_rect(ax, -RIML, 0, RIML, LEGT, fc=C_ALUM, lw=1.4, zorder=5)           # rim flat leg on cap
+    draw_rect(ax, -LEGT, 0, LEGT, LIP, fc=C_ALUM, lw=1.4, zorder=5)            # standing lip
+    draw_rect(ax, 0, -DPT, DPT, LIP + DPT, fc=C_GASKT, lw=0.8, zorder=5)       # DP8010 bead
+    draw_rect(ax, DPT, -40, SHT, LIP + 90, fc=C_LT_DRUM, lw=1.6, zorder=6)     # shell laps over lip
+    for zz in (LIP + 55, LIP + 67, LIP + 79):                                 # break line (shell continues down)
+        ax.plot([DPT - 3, DPT + SHT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
     rz = LIP * 0.5
-    blind_rivet(ax, 5, rz, 0, 50, d=12)          # shell → lip rivet (set from the shell side)
-    for xr in (-140, -75):                       # rim flat-leg → cap rivets (set from above)
-        blind_rivet(ax, xr, -20, 90, 80, d=8)
-    # rivet-position dimensions
-    draw_dim_v(ax, -52, 0, rz, f"{LT_LAP_H / 2:.1f}mm", offset=36, fs=6, font=FONT)   # shell-rivet CL above the L
-    draw_dim_h(ax, -140, -75, -92, f"{LT_RIM_RIVET_PITCH}mm pitch (rim→cap)",
-               offset=36, fs=6, above=False, font=FONT)
+    blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
+    blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
 
-    # ── Section dimensions + callouts ────────────────────────────────────────
-    draw_dim_v(ax, 60, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, 10, 30, -60, f"{LT_DRUM_T:.2f}mm SHELL", offset=40, fs=6.2,
+    # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
+    draw_dim_v(ax, DPT + SHT + 40, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, DPT, DPT + SHT, -55, f"{LT_DRUM_T:.2f}mm SHELL", offset=40, fs=6.2,
                above=False, font=FONT)
-    draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP",
-               offset=44, fs=6.2, font=FONT)
-    leader(ax, 5, rz, 250, rz + 70,
-           f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm pitch",
+    draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP", offset=44, fs=6.2, font=FONT)
+    leader(ax, (DPT + SHT - LEGT) / 2, rz, 250, rz + 70,
+           f"SS Ø{LT_RIVET_D} CLOSED-END BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, -10, LIP - 20, -300, LIP + 60,
+    leader(ax, -LEGT, LIP - 20, -300, LIP + 55,
            f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, 20, LIP + 40, 250, LIP + 30,
+    leader(ax, DPT + SHT, LIP + 30, 250, LIP + 20,
            f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, 5, 40, 250, -30,
+    leader(ax, DPT / 2, 40, 250, -30,
            "3M DP8010 bead\n(bond + light seal)", fs=6.5, color="#5A3020",
            ha="left", arrow_style="->", font=FONT)
-    leader(ax, -75, -CAPT + 20, -300, -CAPT - 55,
-           "FLAT LEG → CAP\nriveted (both caps)", fs=6.2, color=C_DIM,
+    leader(ax, -RIML / 2, LEGT / 2, -300, -CAPT - 55,
+           f"FLAT LEG → CAP rivet\n(SS blind, @ {LT_RIM_RIVET_PITCH}mm circumferential)", fs=6.2, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
 
+    # ── Section scale bar (20 mm, to the 7:1 geometry) ───────────────────────
+    sbx, sbz = 60, -CAPT - 60
+    ax.plot([sbx, sbx + S * 20], [sbz, sbz], color=C_OUT, lw=1.4, zorder=8)
+    for xt in (sbx, sbx + S * 10, sbx + S * 20):
+        ax.plot([xt, xt], [sbz - 6, sbz + 6], color=C_OUT, lw=1.0, zorder=8)
+    ax.text(sbx + S * 10, sbz - 13, "20 mm  (SECTION 7:1)", ha="center", va="top",
+            fontsize=6, color=C_OUT, **FONT, zorder=8)
+
     # ── Rivet pattern — cap plan (280° C-shell arc; the 80° opening has no rim) ─
-    pcx, pcz, pr = 760, 300, 190
+    pcx, pcz, pr = 790, 300, LT_CAP_OD / 4                                  # cap outline at 1:2
     draw_circle(ax, pcx, pcz, pr, lw=1.0, color=C_DIM, ls="--", zorder=5)   # cap disc (full Ø855)
     oh = LT_OPENING_DEG / 2
     aarc = [math.radians(oh + t) for t in range(0, LT_SHELL_ARC + 1, 4)]    # 280° rim-angle arc
@@ -736,11 +737,11 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
                 color="#B08020", lw=1.4, zorder=6)
     ax.text(pcx + pr + 18, pcz, f"{LT_OPENING_DEG}° OPENING\n(no rim / shell)", ha="left",
             va="center", fontsize=6.2, color="#B08020", **FONT, zorder=7)
-    ax.text(pcx, pcz, f"Ø{LT_CAP_OD}\ncap rim ({LT_SHELL_ARC}° arc)", ha="center",
+    ax.text(pcx, pcz, f"Ø{LT_CAP_OD}\ncap rim ({LT_SHELL_ARC}° arc)\nCAP PLAN — 1:2", ha="center",
             va="center", fontsize=7, color=C_DIM, **FONT, zorder=7)
-    ax.text(pcx, pcz - pr - 45,
+    ax.text(pcx, pcz - pr - 40,
             f"RIVET PATTERN — {LT_RIVET_N}× Ø{LT_RIVET_D} per cap @ ~{LT_RIVET_PITCH}mm pitch\n"
-            f"(BOTH caps · {2 * LT_RIVET_N} rivets total)", ha="center", va="top",
+            f"(BOTH caps · {2 * LT_RIVET_N} rivets total · rivet symbols schematic)", ha="center", va="top",
             fontsize=6.8, color=C_OUT, **FONT, zorder=7)
     # pitch detail strip
     sx0, sz = 470, -40
@@ -750,7 +751,7 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
                     fill=True, fc="#CC4422", zorder=6)
     draw_dim_h(ax, sx0 + 30, sx0 + 78, sz + 55, f"{LT_RIVET_PITCH}mm", offset=34,
                fs=6.2, font=FONT)
-    ax.text(sx0 + 150, sz - 40, "developed rim — rivet pitch", ha="center",
+    ax.text(sx0 + 150, sz - 40, "developed rim — rivet pitch (schematic)", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
 
     # ── Notes ────────────────────────────────────────────────────────────────
@@ -761,14 +762,14 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
         "3. Apply 3M DP8010 bead to the lap (structural LSE bond + light seal); clamp.",
         f"4. Drill Ø5, set {LT_RIVET_N}× Ø{LT_RIVET_D} SS closed-end blind rivets per cap (~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
         "5. Closed-end rivets + DP8010 keep the joint light-tight; supersedes the extrusion weld.",
-        "ENLARGED — NOT TO SCALE · ALL DIMS IN mm",
+        "SECTION A–A 7:1 (isotropic) · CAP PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 4 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
-                scale_note="ENLARGED · NTS · ALL DIMS IN mm",
+                scale_note="SECTION 7:1 · CAP PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -941,6 +942,8 @@ def draw_sheet7():
 def draw_sheet6():
     HR, DR = LT_HOUSING_R, LT_DRUM_OR
     oh = LT_OPENING_DEG / 2
+    C6_HOUSE = "#2E5E8C"          # FIXED housing (outer skin) — steel blue
+    C6_DRUM = "#B5732E"           # ROTATING drum (inner wall) — warm amber
     dx = 2 * HR + 640
     plans = [(0, 180, "A · DRUM OPEN TO EXTERIOR"),
              (dx, 0, "B · DRUM OPEN TO INTERIOR"),
@@ -973,11 +976,11 @@ def draw_sheet6():
     for cx, dth, title in plans:
         # running-gap ring (drum OD → housing bore) — thin, so the annulus reads
         draw_circle(ax, cx, 0, HR - LT_HOUSING_T, lw=0.8, color="#B8BDC6", fill=False, zorder=2)
-        # fixed housing walls — two 80° openings, 180° apart (bold black)
+        # fixed housing walls (OUTER) — two 80° openings, 180° apart (steel blue)
         for gc in (0, 180):
-            arc(cx, 0, HR, gc, LT_OPENING_DEG, C_OUT, 4.0)
-        # rotating drum wall — single 80° opening at dth (bold opaque tan band)
-        arc(cx, 0, DR, dth, LT_OPENING_DEG, "#6B5D3E", 7.0)
+            arc(cx, 0, HR, gc, LT_OPENING_DEG, C6_HOUSE, 5.0)
+        # rotating drum wall (INNER) — single 80° opening at dth (warm amber)
+        arc(cx, 0, DR, dth, LT_OPENING_DEG, C6_DRUM, 7.0)
         for t in (dth - oh, dth + oh):                            # drum opening jamb ticks
             a = math.radians(t)
             ax.plot([cx + (DR - 24) * math.cos(a), cx + (DR + 24) * math.cos(a)],
@@ -1008,6 +1011,18 @@ def draw_sheet6():
             f"NO STRAIGHT-THROUGH LIGHT PATH: the drum's {LT_SHELL_ARC}° opaque wall always seals at least\n"
             f"one side (openings {LT_OPENING_DEG}° < 90°, housing openings 180° apart, drum has one). Interior stays dark.",
             ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold", **FONT, zorder=9)
+
+    # ── Legend — inner vs outer panel + light path ───────────────────────────
+    lz = -HR - 250
+    keys = [(C6_HOUSE, "FIXED HOUSING (outer)", 6.0),
+            (C6_DRUM, "ROTATING DRUM (inner)", 7.0),
+            ("#E8A800", "LIGHT PATH (ray)", 2.0)]
+    lx = dx - 930
+    for col, lab, w in keys:
+        ax.plot([lx, lx + 70], [lz, lz], color=col, lw=w, zorder=9)
+        ax.text(lx + 85, lz, lab, ha="left", va="center", fontsize=7, color=C_OUT,
+                **FONT, zorder=9)
+        lx += 640
 
     # ── Seal detail (radial section at the running gap) ──────────────────────
     sx, sz = dx, -HR - 620

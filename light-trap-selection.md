@@ -153,7 +153,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Entry handle | 100mm Ø × 400mm SS round grab rail, interior face only, at 900mm height — welded bracket, no through-hole in drum wall |
 | Panel bolts | 8 × M10 flush-head hex bolts (lower collar) + 6 × M10 (upper ring), stainless |
-| Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + SS Ø4.8 closed-end blind rivets @ ~60mm + 3M DP8010 structural bond (light-tight lap, both joints) |
+| Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS domed-head blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
 
@@ -161,7 +161,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|----------|-------------|
 | 5mm UV-HDPE sheet (housing, ~7 m²) + 1/8" HDPE sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | Rolled + extrusion-welded cylinders |
 | 8mm 6061-T6 aluminum plate (2 caps, Ø855) + 25×25×3 6061-T6 Al angle (2 rim rings) | [Online Metals](https://www.onlinemetals.com/) / Industrial Metal Supply (SoCal) | Water-jet the cap discs + hub bolt circle; roll the angle to R427 |
-| SS Ø4.8 closed-end blind rivets (~70/joint) + 3M Scotch-Weld DP8010 adhesive | McMaster-Carr; [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | Rivets @ ~60mm pitch; DP8010 is the structural bond + light seal for HDPE (low surface energy) |
+| 1/8" 18-8 SS domed-head blind rivets — [97525A425](https://www.mcmaster.com/97525A425/) (shell→cap, $13.83/100) + [97525A435](https://www.mcmaster.com/97525A435/) (housing→frame, $14.59/100) — + 3M Scotch-Weld DP8010 adhesive | [McMaster-Carr](https://www.mcmaster.com/); [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | ~35/cap + ~26/edge @ ~60mm pitch, drill Ø3.3 (#30); DP8010 is the structural bond + light seal for HDPE (low surface energy) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
@@ -271,7 +271,7 @@ two end caps with the stub-shaft bore.
 ![TBS-001 Light-Trap — Sheet 3: Drum — Cut](assets/lighttrap-sheet3.png)
 
 **Sheet 4 — Drum — Secure.** The shell-to-cap lap-and-fasten joint: the rolled
-rim-angle lip, the stainless closed-end blind-rivet pattern, and the DP8010 structural
+rim-angle lip, the 1/8" stainless domed-head blind-rivet pattern, and the DP8010 structural
 bond that closes the joint against light.
 
 ![TBS-001 Light-Trap — Sheet 4: Drum — Secure](assets/lighttrap-sheet4.png)

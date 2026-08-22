@@ -1158,7 +1158,7 @@ def draw_sheet8():
 # Axis on the LEFT (r = 0), radius increases to the right; z = height near the top.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet9():
-    X_LO, X_HI, Z_LO, Z_HI = -170, 800, -330, 470
+    X_LO, X_HI, Z_LO, Z_HI = -200, 760, -560, 320
     FIG_W = 15.5
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -1166,95 +1166,123 @@ def draw_sheet9():
     ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI)
     ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")
+    ax.set_aspect("equal")                                                   # ISOTROPIC — drawn to scale
     ax.axis("off")
 
-    ax.text(320, Z_HI - 8, "TOP-END ASSEMBLY  (radial half-section along the axle beam — NOT TO SCALE)",
+    ax.text(300, Z_HI - 6, "TOP-END ASSEMBLY  (radial half-section on the drum axis — DRAWN TO SCALE)",
             ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=15)
 
+    # ── Real dimensions (mm) from constants; z datum = cap top plane ─────────
+    CAPR = LT_CAP_OD / 2                     # 427.5  cap radius
+    DIR_ = LT_DRUM_OR - LT_DRUM_T            # 428.82 drum shell inner
+    DOR_ = LT_DRUM_OR                        # 432    drum shell outer
+    HIR_ = LT_HOUSING_R - LT_HOUSING_T       # 445    housing inner
+    HOR_ = LT_HOUSING_R                      # 450    housing outer
+    bID, bOD, bW = SKF6215_ID / 2, SKF6215_OD / 2, SKF6215_W   # 37.5 / 65 / 25
+    SHAFT_L = 150                            # 75Ø × 150 stub
+    Z_BRG0 = SHAFT_L - 20 - bW               # bearing bottom (bW wide, 20 below shaft top)
+    Z_BEAM0 = SHAFT_L - 8                     # beam underside just below shaft top
+    Z_BRK = -150                             # break-line level (drum/housing continue down)
+
     # ── Rotation axis (left edge, r = 0) ─────────────────────────────────────
-    draw_cl_v(ax, 0, Z_LO + 30, Z_HI - 60)
-    ax.text(-10, Z_HI - 70, "DRUM\nAXIS", ha="right", va="top", fontsize=6.2,
+    draw_cl_v(ax, 0, Z_BRK - 20, Z_BEAM0 + 130)
+    ax.text(-10, Z_BEAM0 + 120, "DRUM\nAXIS", ha="right", va="top", fontsize=6.2,
             color=C_CL, **FONT, zorder=9)
 
-    # ── FIXED: axle beam (carries central bearing AND the housing) ───────────
-    draw_rect(ax, 0, 300, 500, 100, fc=C_STEEL, lw=1.6, zorder=4)            # axle beam (steel RHS), spans past housing
-    # ── Upper SKF 6215 bearing — hangs below the beam, on the vertical shaft ──
-    draw_rect(ax, 66, 244, 42, 56, fc=C_ALUM, lw=1.2, zorder=5)              # isolated Al bearing ring (bolts up to beam)
-    draw_rect(ax, 56, 244, 10, 52, fc=C_STEEL, lw=1.0, zorder=6)             # outer race
-    draw_rect(ax, 30, 244, 10, 52, fc=C_STEEL, lw=1.0, zorder=6)             # inner race
-    draw_circle(ax, 48, 270, 13, lw=1.0, color=C_OUT, fill=True, fc="white", zorder=7)  # one ball (section)
+    # ── FIXED: axle beam (steel RHS) — carries central bearing AND housing ───
+    draw_rect(ax, 0, Z_BEAM0, LT_AXLE_BEAM_SPAN / 2, LT_AXLE_BEAM_H, fc=C_STEEL, lw=1.4, zorder=4)
+    # ── Upper SKF 6215 bearing (to scale) + isolated Al ring ─────────────────
+    draw_rect(ax, bOD, Z_BRG0, 30, Z_BEAM0 - Z_BRG0, fc=C_ALUM, lw=1.0, zorder=5)   # Al ring bolts up to beam
+    draw_rect(ax, bOD - 7.5, Z_BRG0, 7.5, bW, fc=C_STEEL, lw=0.8, zorder=6)         # outer race
+    draw_rect(ax, bID, Z_BRG0, 7.5, bW, fc=C_STEEL, lw=0.8, zorder=6)               # inner race
+    draw_circle(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 8, lw=0.7, color=C_OUT,
+                fill=True, fc="white", zorder=7)                                     # one ball (section)
     # ── ROTATING: stub shaft + bolted hub + cap ──────────────────────────────
-    draw_rect(ax, 0, 46, 30, 254, fc=C_STEEL, lw=1.2, zorder=5)              # stub shaft (up into bearing)
-    ax.plot([30, 44], [298, 298], color=C_OUT, lw=1.0, zorder=8)            # circlip plane
-    draw_rect(ax, 0, 20, 300, 26, fc=C_ALUM, lw=1.4, zorder=5)              # top cap disc (Al)
-    draw_rect(ax, 0, 46, 70, 20, fc=C_ALUM, lw=1.2, zorder=6)               # bolted hub boss (4×M10)
+    draw_rect(ax, 0, -LT_CAP_TOP_T, bID, SHAFT_L, fc=C_STEEL, lw=1.0, zorder=5)     # 75Ø×150 stub shaft
+    ax.plot([bID, bID + 8], [Z_BRG0 + bW + 4, Z_BRG0 + bW + 4], color=C_OUT, lw=0.9, zorder=8)  # circlip
+    draw_rect(ax, 0, -LT_CAP_TOP_T, CAPR, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=5)  # 8mm Al cap disc
+    draw_rect(ax, 0, 0, 55, 16, fc=C_ALUM, lw=1.0, zorder=6)                         # bolted hub boss (4×M10)
 
-    # ── INNER joint — drum shell → cap lap (rotating, Sheet 4) ───────────────
-    draw_rect(ax, 266, 46, 34, 12, fc=C_ALUM, lw=1.2, zorder=6)             # rim-angle flat leg on cap
-    draw_rect(ax, 288, 46, 12, 90, fc=C_ALUM, lw=1.2, zorder=6)             # standing lip (up)
-    draw_rect(ax, 300, 38, 7, 98, fc=C_GASKT, lw=0.7, zorder=6)             # DP8010 (inner)
-    draw_rect(ax, 307, -60, 13, 212, fc=C_LT_DRUM, lw=1.6, zorder=7)        # drum shell (laps up over lip, hangs down)
-    for zz in (-40, -46, -52):                                             # break line (shell continues down)
-        ax.plot([305, 322], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=8)
-    blind_rivet(ax, 304, 92, 0, 32, d=10)                                  # radial shell → lip rivet (heads on both faces)
+    # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────
+    draw_rect(ax, CAPR - LT_RIM_LEG, 0, LT_RIM_LEG, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=6)   # rim flat leg
+    draw_rect(ax, CAPR - LT_RIM_T, 0, LT_RIM_T, LT_LAP_H, fc=C_ALUM, lw=0.8, zorder=6)       # standing lip (up)
+    draw_rect(ax, DIR_, Z_BRK, LT_DRUM_T, LT_LAP_H - Z_BRK, fc=C_LT_DRUM, lw=1.0, zorder=7)  # drum shell (laps up, hangs down)
+    draw_circle(ax, (CAPR - LT_RIM_T + DOR_) / 2, LT_LAP_H / 2, LT_RIVET_D / 2,
+                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø4.8, to scale)
 
-    # ── Running gap + felt seal (Sheet 6) ────────────────────────────────────
-    for zf in (72, 128):
-        draw_rect(ax, 320, zf - 10, 13, 20, fc="#7E7E76", lw=0.6, zorder=6)
+    # ── Running gap + felt seal (to scale; detail on Sheet 6) ────────────────
+    draw_rect(ax, DOR_, LT_LAP_H / 2 - 4, RUN_GAP, 8, fc="#7E7E76", lw=0.5, zorder=6)
 
-    # ── FIXED outer skin — housing + housing → frame lap (Sheet 8) ───────────
-    draw_rect(ax, 333, -60, 12, 360, fc="#DDE4EC", lw=1.6, zorder=6)        # fixed housing wall (up to beam)
-    for zz in (-40, -46, -52):                                             # break line (housing continues down)
-        ax.plot([331, 347], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=8)
-    draw_rect(ax, 319, 287, 26, 13, fc=C_ALUM, lw=1.2, zorder=7)           # rim-angle flat leg (welded to beam underside)
-    draw_rect(ax, 319, 215, 10, 85, fc=C_ALUM, lw=1.2, zorder=7)           # standing lip (down)
-    draw_rect(ax, 329, 215, 4, 73, fc=C_GASKT, lw=0.6, zorder=7)           # DP8010 (outer)
-    ax.add_patch(mpatches.Polygon([(319, 300), (319, 286), (334, 300)], closed=True,
-                                  fc="#CC4422", ec="#CC4422", zorder=8))    # weld to beam
-    blind_rivet(ax, 332, 250, 0, 26, d=10)                                 # radial housing → lip rivet
+    # ── FIXED outer skin — housing + housing → frame lap (detail on Sheet 8) ─
+    draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, Z_BEAM0 - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing wall
+    draw_rect(ax, HIR_ - LT_RIM_T, Z_BEAM0 - LT_LAP_H, LT_RIM_T, LT_LAP_H, fc=C_ALUM, lw=0.8, zorder=7)  # lip (down)
+    draw_rect(ax, HIR_ - LT_RIM_LEG, Z_BEAM0 - LT_RIM_T, LT_RIM_LEG, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=7)  # flat leg → beam
+    draw_circle(ax, (HIR_ - LT_RIM_T + HOR_) / 2, Z_BEAM0 - LT_LAP_H / 2, LT_RIVET_D / 2,
+                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø4.8, to scale)
 
-    # ── Rivet-clearance callout (the two joints sit at different heights) ─────
-    ax.annotate("", xy=(370, 250), xytext=(370, 92),
-                arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0), zorder=6)
-    ax.text(378, 171, "joints at\ndifferent levels\n→ rivets clear\nthrough rotation",
-            ha="left", va="center", fontsize=6, color=C_DIM, **FONT, zorder=9)
+    # break lines (drum + housing continue down the full 2,200mm) ─────────────
+    for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):
+        for dz in (0, 8, 16):
+            ax.plot([r0, r1], [Z_BRK + 6 + dz, Z_BRK + 14 + dz], color=C_OUT, lw=0.6, zorder=9)
+
+    # ── Detail bubbles → the enlarged joint sheets ───────────────────────────
+    for (rc, zc, tag, sh) in ((CAPR, LT_LAP_H / 2, "A", "SHEET 4"),
+                              (HIR_, Z_BEAM0 - LT_LAP_H / 2, "B", "SHEET 8")):
+        draw_circle(ax, rc, zc, 46, lw=1.0, color=C_DIM, ls="--", zorder=8)
+        ax.text(rc + 52, zc + 40, f"DETAIL {tag}\n(→ {sh})", ha="left", va="center",
+                fontsize=6.4, color=C_DIM, fontweight="bold", **FONT, zorder=9)
+
+    # ── Scale bar (100 mm, to scale) ─────────────────────────────────────────
+    sb_z = Z_BRK - 70
+    ax.plot([0, 100], [sb_z, sb_z], color=C_OUT, lw=1.6, zorder=9)
+    for xt in (0, 50, 100):
+        ax.plot([xt, xt], [sb_z - 7, sb_z + 7], color=C_OUT, lw=1.2, zorder=9)
+    ax.text(50, sb_z - 16, "100 mm  (scale bar)", ha="center", va="top", fontsize=6.5,
+            color=C_OUT, **FONT, zorder=9)
+
+    # ── Key dimensions (to scale) ────────────────────────────────────────────
+    draw_dim_v(ax, -95, -LT_CAP_TOP_T, Z_BEAM0 - 8, f"{SHAFT_L} STUB (Ø{SKF6215_ID})",
+               offset=48, fs=6.5, font=FONT)
+    draw_dim_h(ax, 0, CAPR, -LT_CAP_TOP_T - 60, f"Ø{LT_CAP_OD} CAP (radius)", offset=44,
+               fs=6.5, above=False, font=FONT)
 
     # ── Zone tags ────────────────────────────────────────────────────────────
-    ax.text(150, -18, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
+    ax.text(210, -70, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
             color="#407040", fontweight="bold", **FONT, zorder=9)
-    ax.text(250, 440, "FIXED (FRAME + HOUSING) ►", ha="center", va="center", fontsize=7,
+    ax.text(300, Z_BEAM0 + 70, "FIXED (FRAME + HOUSING) ►", ha="center", va="center", fontsize=7,
             color="#5060A0", fontweight="bold", **FONT, zorder=9)
 
     # ── Leaders ──────────────────────────────────────────────────────────────
-    leader(ax, 48, 270, 150, 410, "SKF 6215-2RS1 · upper bearing\nin isolated Al ring, bolted up to the axle beam (Sheet 5)",
+    leader(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 210, Z_BEAM0 + 30,
+           "SKF 6215-2RS1 upper bearing\nin isolated Al ring, bolted to the axle beam (Sheet 5)",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, 35, 56, -120, 120, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
+    leader(ax, 30, 8, -150, -35, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
-    leader(ax, 304, 92, 470, 30, "DRUM SHELL → CAP LAP JOINT (rotating)\nrim-angle + SS blind rivet + DP8010 (Sheet 4)",
+    leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 610, 40,
+           f"RUNNING GAP {RUN_GAP}mm + felt/brush seal (Sheet 6)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, 326, 128, 600, 120, f"RUNNING GAP {RUN_GAP}mm + felt/brush seal (Sheet 6)",
+    leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 610, Z_BEAM0 + 120,
+           f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing; swing-panel weldment (Sheet 7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, 332, 250, 600, 250, "HOUSING → FRAME LAP JOINT (fixed)\nrim-angle welded to beam + rivet + DP8010 (Sheet 8)",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, 450, 350, 600, 400, "AXLE BEAM (steel RHS) — carries the central bearing\n+ the fixed housing; swing-panel weldment (Sheet 7)",
+    leader(ax, HOR_, -60, 610, -90, f"FIXED HOUSING Ø{DRUM_D} (outer skin)\nrotating drum Ø{2 * LT_DRUM_OR} inside",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     notes = [
-        "COMBINED TOP-END ASSEMBLY  (how the two lap joints nest at one level)",
+        "COMBINED TOP-END ASSEMBLY  (drawn to scale — see 100mm bar)",
         "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a felt-sealed running gap separates them.",
-        "INNER joint (rotating): drum shell laps the cap rim-angle — SS blind rivets + DP8010 (Sheet 4). OUTER joint (fixed): housing laps a rim-angle welded to the axle beam — SS blind rivets + DP8010 (Sheet 8).",
-        "The two rivet lines sit at different heights (drum joint at the cap, housing joint at the beam), so the rotating rivets clear the fixed ones. Rivet heads sit within the running gap.",
-        "Bottom end mirrors this, except the lower bearing seats in a welded steel floor collar (Sheet 5). NOT TO SCALE · ALL DIMS IN mm.",
+        "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
+        "OUTER joint (fixed), DETAIL B: housing laps a rim-angle welded to the axle beam — SS blind rivets + DP8010; full detail on Sheet 8.",
+        "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
+        "Drum + housing continue the full 2,200mm below the break lines. Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 40, -90, 34, fs=7, font=FONT, width=1220,
+    draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 34, fs=7, font=FONT, width=1240,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 9 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="COMBINED TOP-END ASSEMBLY (INNER + OUTER LAP JOINTS)",
-                scale_note="HALF-SECTION · NTS · ALL DIMS IN mm",
-                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+                scale_note="HALF-SECTION · TO SCALE (100mm bar) · DETAILS A/B → SHEETS 4 & 8",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.72)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet9.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)

@@ -23,16 +23,29 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
 - [x] **Weight/CG** — DONE 2026-08-21. Both weight generators switched to FULL Ø855 metal discs (both
   8mm 6061-T6 Al after Alvin flipped the bottom steel→Al) + rolled rim-angle rings; drum ~40 → **58.6 kg**.
   CG diagrams regenerated, weight blocks re-injected (gate green).
-- [ ] **parts.py / cost** — revise the drum shell spec (drop "caps from housing offcut"); ADD parts:
-  8mm 6061-T6 Al plate Ø855, 6mm A36 steel plate Ø855, ~90 SS Ø4.8 closed-end blind rivets, 3M DP8010.
-  Source SKUs + prices (Online Metals plate; McMaster rivets/DP8010) — material now, fab later. Reconcile costing.
-- [ ] **light-trap-selection.md §4** — §4.1 cap material (metal, not HDPE), §4.3/§4.4 shell→cap joint
-  (lap + rivet + DP8010, not weld), §4.5 add plate/rivet/adhesive suppliers.
+  Set has since GROWN to **9 sheets** (1 GA, 2 housing-cut, 3 drum-cut, 4 drum-secure, 5 bearing-hub,
+  6 seals & light-path, 7 support-frame GA, 8 housing→frame, 9 combined top-end) + an **integrated steel
+  cage frame**, and the detail sheets are being recast **to stated scale** (4/8 at 7:1 + plans 1:2 + scale
+  bars DONE; **Sheet 5 relabel to scale still TODO**). Rivet now SPEC'D: **1/8" 18-8 SS domed-head blind,
+  McMaster 97525A425 (shell→cap) / 97525A435 (housing→frame)**, `LT_RIVET_D`=3.18, hole Ø3.3.
+
+- [ ] **parts.py / cost** — ADD light-trap joint/material parts as ONE batch (reconcile costing): 8mm 6061-T6
+  Al plate Ø855 ×2 (both caps now Al), 25×25×3 6061-T6 Al rim-angle (2 rings), **1/8" SS domed-head blind
+  rivets 97525A425 $13.83/100 + 97525A435 $14.59/100**, 3M DP8010, frame steel RHS (50×50×3 posts/rails +
+  100×50×3 axle beams + 10mm bearing plates). Prices in report §4.5; material now, fab later.
+- [x] **light-trap-selection.md §4** — DONE. §4.1 metal caps, §4.2 frame-mounted bearings, §4.3 felt/brush
+  running gap, §4.4/§4.5 lap-joint fasteners + real rivet SKUs + Al plate/angle suppliers.
+- [x] **Registration** — DONE. All 9 sheets in `dependencies.yml`/`all-diagrams.md`/`publish.sh`/`setup_docs.py`;
+  embedded as **§9 Fabrication Blueprints** in `light-trap-selection.md`. Gallery + unused-import warnings clear.
+- [ ] **Sheet 5 relabel to scale** — bearing hub is ~2.2:1 isotropic except the cap (×2.4 exaggerated);
+  make isotropic + scale bar + drop "~2:1 NTS". Fold in with the bolt-hole pass (below) since it owns the bolt patterns.
+- [ ] **Bolt/screw-hole detailing pass** (Alvin 2026-08-22: "show how items are joined") — draw real hole
+  patterns (PCD, count, Ø, positions) for every bolted joint on its owning sheet: **4×M10** cap→stub-hub flange
+  (Sheets 3 & 5), **6×M10** upper bearing ring→beam + **8×M10** lower collar→beam (Sheets 5 & 7), + "drill Ø_ ×N
+  on Ø_ PCD" callouts. Per `skills/skill_fastener_convention.md`.
 - [ ] **3D model** — `generate_lighttrap_model.py` (`DRUM_CAP_T`) + overview (reuses the drum builder):
-  split cap thickness + materials (Al/steel), add the rim-angle/lap if modeled. Regenerate; **hold `--send`
-  for a session with ALVIN at SketchUp** (focus-model-first: lighttrap, then overview). Then retire `LT_CAP_T`.
-- [ ] **Registration** (was Task 8) — add `lighttrap-sheet1..7` to `dependencies.yml`, `all-diagrams.md`,
-  `publish.sh`, `setup_docs.py`; nav + report embed; then the gallery + unused-import warnings clear.
+  split cap thickness + materials (both Al now), add the rim-angle/lap + cage frame if modeled. Regenerate;
+  **hold `--send` for a session with ALVIN at SketchUp** (focus-model-first: lighttrap, then overview). Then retire `LT_CAP_T`.
 
 ## 🛠 Tooling / infra
 

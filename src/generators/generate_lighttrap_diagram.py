@@ -485,7 +485,7 @@ def draw_sheet3():
 def draw_sheet_hub():                              # Sheet 5 — bearing hub
     SC = 2.2                                       # enlargement factor
     rs, ro, bw = SKF6215_ID / 2 * SC, SKF6215_OD / 2 * SC, SKF6215_W / 2 * SC
-    CAPd = LT_CAP_TOP_T * SC * 2.4                  # top-cap draw thickness (exaggerated; layout ref)
+    CAPd = LT_CAP_TOP_T * SC                        # top-cap draw thickness (to scale; layout ref)
     UX, LX = 0.0, 1150.0                           # the two hub axes
     HALF = 150 * SC
 
@@ -519,7 +519,7 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
                 ax.plot([cx + g * (rs + 3 * SC), cx + g * (ro - 3 * SC)], [zf, zf],
                         color="#CC4422", lw=1.2, zorder=8)
         # both caps: 6061-T6 Al, bolted steel stub-shaft flange (4×M10)
-        capd = LT_CAP_TOP_T * SC * 2.4
+        capd = LT_CAP_TOP_T * SC
         zc0, zc1 = -55 * SC * s, -55 * SC * s - capd * s
         # stub shaft Ø75 — short stub: flange face → past the bearing (only what the
         # bearing seat + circlips + flange need; no reason for a long shaft)
@@ -627,6 +627,35 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
     ax.text(LX, -235, "bearing · shaft · cap · flange  AS UPPER HUB", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
 
+    # ── Bolt-hole pattern plans — how each joint is bolted (OD/PCD to 1:2) ────
+    def bolt_plan(cx, cz, od, pcd, n, bore, title, sub):
+        s2 = 0.5                                                              # 1:2
+        rod, rpcd, rbore = od / 2 * s2, pcd / 2 * s2, bore / 2 * s2
+        draw_circle(ax, cx, cz, rbore, lw=1.0, color=C_DIM, zorder=6)         # center bore (shaft / bearing seat)
+        draw_circle(ax, cx, cz, rpcd, lw=0.8, color=C_CL, ls="--", zorder=5)  # PCD (bolt circle)
+        draw_circle(ax, cx, cz, rod, lw=1.6, color=C_OUT, zorder=6)           # part OD
+        for i in range(n):
+            a = math.radians(90 + i * 360.0 / n)
+            hx, hy = cx + rpcd * math.cos(a), cz + rpcd * math.sin(a)
+            draw_circle(ax, hx, hy, 5, lw=1.0, color=C_OUT, fill=True, fc="white", zorder=7)  # bolt hole (enlarged)
+            ax.plot([hx - 9, hx + 9], [hy, hy], color=C_OUT, lw=0.5, zorder=8)                # center marks
+            ax.plot([hx, hx], [hy - 9, hy + 9], color=C_OUT, lw=0.5, zorder=8)
+        ax.text(cx, cz + rod + 20, title, ha="center", va="bottom", fontsize=7,
+                color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+        ax.text(cx, cz - rod - 14, sub, ha="center", va="top", fontsize=6.3,
+                color=C_OUT, **FONT, zorder=9)
+
+    bp_z = -620
+    bolt_plan(150, bp_z, 160, 120, 4, SKF6215_ID,
+              "CAP → STUB-HUB FLANGE",
+              f"4×M10 on Ø120 PCD · drill Ø11\nØ{SKF6215_ID} shaft bore")
+    bolt_plan(650, bp_z, LT_TOPRING_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, SKF6215_OD,
+              "UPPER RING → AXLE BEAM",
+              f"{LT_FRAME_MOUNT_BOLT_TOP}×M10 on Ø165 PCD · drill Ø11\nØ{LT_TOPRING_OD} ring, Ø{SKF6215_OD} bearing seat")
+    bolt_plan(1150, bp_z, LT_COLLAR_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, SKF6215_OD,
+              "LOWER COLLAR → AXLE BEAM",
+              f"{LT_FRAME_MOUNT_BOLT_BOT}×M10 on Ø175 PCD · drill Ø11\nØ{LT_COLLAR_OD} collar, Ø{SKF6215_OD} bearing seat")
+
     # ── Fabrication / spec notes ─────────────────────────────────────────────
     notes = [
         "BEARING HUB — SPECIFICATION",
@@ -634,15 +663,23 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
         "Bearing mounts: upper in isolated aluminum top ring (6×M10); lower in welded steel floor collar (8×M10).",
         "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
-        "Ring / rail / flange / collar / plate sizes PROVISIONAL — confirm vs panel-frame design.",
-        "ENLARGED ~2:1 · CAP THICKNESS EXAGGERATED · ALL DIMS IN mm",
+        "Bolt patterns (below): cap→hub flange 4×M10 on Ø120 PCD; upper ring 6×M10 on Ø165 PCD; lower collar 8×M10 on Ø175 PCD — drill Ø11 clearance (holes shown enlarged). Frame members per Sheet 7.",
+        "SECTIONS 2.2:1 (isotropic) · BOLT PLANS 1:2 · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -740, 92, fs=7, font=FONT,
+    draw_notes(ax, notes, X_LO + 60, -830, 92, fs=7, font=FONT,
                width=2350, title_color=TITLE_COL)
+
+    # ── Section scale bar (50 mm, to the 2.2:1 section geometry) ─────────────
+    sbx, sbz = UX - HALF - 40, -560
+    ax.plot([sbx, sbx + 50 * SC], [sbz, sbz], color=C_OUT, lw=1.4, zorder=8)
+    for xt in (sbx, sbx + 25 * SC, sbx + 50 * SC):
+        ax.plot([xt, xt], [sbz - 10, sbz + 10], color=C_OUT, lw=1.0, zorder=8)
+    ax.text(sbx + 25 * SC, sbz - 22, "50 mm  (SECTIONS 2.2:1)", ha="center", va="top",
+            fontsize=6.5, color=C_OUT, **FONT, zorder=8)
 
     title_block(ax, "SHEET 5 OF 9", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT DETAIL",
-                scale_note="ENLARGED ~2:1 · ALL DIMS IN mm",
+                scale_note="SECTIONS 2.2:1 · BOLT PLANS 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet5.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

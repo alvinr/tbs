@@ -38,8 +38,13 @@ file** — a release must not ship without a changelog entry:
   rivets @ ~60mm + 3M DP8010 bond/light-seal), superseding the extrusion weld. Scope grew to specify the
   **support structure**: a **steel welded box cage integrated with the swing-panel weldment** carries the
   bearings (axle-support beam at the drum axis) and the fixed outer skin (housing laps + rivets to a rolled
-  rim-angle welded on the frame beams + jamb frames). New `tbs_constants` cap/joint/frame constants. Parts/cost
-  + weight/CG + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
+  rim-angle welded on the frame beams + jamb frames). New `tbs_constants` cap/joint/frame constants. The detail
+  sheets are being recast **to stated scale** (Sheets 4 & 8 sections at **7:1** + plans **1:2** + scale bars;
+  Sheet 9 a true isotropic half-section with a 100mm bar + cage corner post; Sheet 6 given distinct inner/outer
+  panel colors + light-path rays; Sheet 5 relabel pending). The lap rivet is now spec'd to a real datasheet —
+  **1/8" (Ø3.18mm) 18-8 SS domed-head blind, McMaster 97525A425 (shell→cap) / 97525A435 (housing→frame)**,
+  drill Ø3.3 — so `LT_RIVET_D` 4.8→3.18 and the drawn rivets are to scale. Parts/cost + weight/CG + 3D-model
+  cascade + a bolt/screw-hole detailing pass tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

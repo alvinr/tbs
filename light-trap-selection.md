@@ -265,8 +265,9 @@ pattern: developed length, height, weld-seam location, and the two 80° opening 
 
 ![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
 
-**Sheet 3 — Drum — Cut.** The HDPE C-shell flat pattern (single 80° opening) and the
-two end caps with the stub-shaft bore.
+**Sheet 3 — Drum — Cut (shell flat pattern + end-cap blueprint).** The HDPE C-shell flat
+pattern (single 80° opening) and the full end-cap blueprint: Ø855 disc, Ø75 hub bore,
+4×M10 stub-shaft flange on Ø120 PCD, and the 280° arc of rim-angle rivet holes.
 
 ![TBS-001 Light-Trap — Sheet 3: Drum — Cut](assets/lighttrap-sheet3.png)
 

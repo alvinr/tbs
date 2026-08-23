@@ -49,7 +49,11 @@ file** — a release must not ship without a changelog entry:
   from the hub assembly (Sheet 5) — the Sheet-9→4/8 reference pattern. The lap rivet is spec'd to a real
   datasheet — **1/8" (Ø3.18mm) 18-8 SS domed-head blind, McMaster 97525A425 (shell→cap) / 97525A435
   (housing→frame)**, drill Ø3.3 — so `LT_RIVET_D` 4.8→3.18 and the drawn rivets are to scale; SKUs stamped in
-  `parts-worklist.csv`. Full parts/cost + weight/CG + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
+  `parts-worklist.csv`. **Fastening resolved:** cap→stub-shaft = bolt into a **tapped** steel flange; bearing
+  ring/collar→axle beam = M10 into **weld-nuts** on the 3mm RHS (too thin to tap, closed tube), Al ring
+  nylon-isolated — annotated on Sheets 5/6. The **end-cap blueprint moved to Sheet 6** (all machined metal parts
+  together); Sheet 3 is now the pure drum-shell cut sheet (the developed flat blank). Full parts/cost + weight/CG
+  + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

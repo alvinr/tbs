@@ -203,13 +203,13 @@ def draw_sheet1():
                   lw=1.0, fc=C_STEEL, zorder=8)
     leader(ax, GX, GRAB_Z,
            HO_R + 330, GRAB_Z - 380,
-           f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS (vertical)\ninside bore, interior side · {GRAB_Z}mm AFF",
+           f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS (vertical)\ninside bore, interior side · {GRAB_Z - Z_CAP_B:.0f}mm above cap inner edge",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     draw_dim_v(ax, GX - GRAB_D / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm", offset=45,
                fs=6.5, font=FONT)
     draw_dim_h(ax, GX - GRAB_D / 2, GX + GRAB_D / 2, GZ1 + 75, f"Ø{GRAB_D}mm",
                offset=45, fs=6.5, font=FONT)
-    draw_dim_v(ax, GX - GRAB_D / 2 - 150, 0, GRAB_Z, f"{GRAB_Z}mm AFF\n(floor → rail CL)",
+    draw_dim_v(ax, GX - GRAB_D / 2 - 150, Z_CAP_B, GRAB_Z, f"{GRAB_Z - Z_CAP_B:.0f}mm\n(cap inner edge → rail CL)",
                offset=45, fs=6.5, font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -537,9 +537,9 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
     # ── Upper-hub callouts (left column) ─────────────────────────────────────
     LxT = UX - HALF - 60
     up_labels = [
-        (55 * SC,  (-100 * SC, 40 * SC),  "PANEL TOP RAIL\n6×M10 (isolated mount)"),
-        (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD, H7)"),
-        (-52 * SC, (-70 * SC, -47 * SC),  "STEEL FLANGE\n4×M10 to Al cap"),
+        (55 * SC,  (-100 * SC, 40 * SC),  "AXLE BEAM — 6×M10\ninto WELD-NUTS (beam is 3mm RHS)"),
+        (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD H7; nylon-isolated)"),
+        (-52 * SC, (-70 * SC, -47 * SC),  "STEEL FLANGE — bolt from cap\ninto TAPPED 4×M10"),
         (-90 * SC, (-90 * SC, -62 * SC),  f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}\n(single-part blueprint — Sheet 6)"),
     ]
     for zt, (tx, tz), txt in up_labels:
@@ -576,9 +576,9 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
     # ── Lower-hub callouts (right column) ────────────────────────────────────
     RxL = LX + HALF + 60
     lo_labels = [
-        (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nstub shaft BOLTED 4×M10"),
-        (-48 * SC, (100 * SC, -40 * SC),  "PANEL BOTTOM RAIL /\nFLOOR PLATE — 8×M10"),
-        (12 * SC,  (ro + 20 * SC, 0),     "WELDED STEEL\nFLOOR COLLAR"),
+        (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nbolt into TAPPED 4×M10 flange"),
+        (-48 * SC, (100 * SC, -40 * SC),  "AXLE BEAM — 8×M10\ninto WELD-NUTS"),
+        (12 * SC,  (ro + 20 * SC, 0),     "WELDED STEEL FLOOR COLLAR\n(seats bearing OD)"),
         (-16 * SC, (ro - 6 * SC, -16 * SC), "COLLAR → PLATE WELD"),
     ]
     for zt, (tx, tz), txt in lo_labels:
@@ -681,6 +681,9 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     draw_dim_h(ax, DPT, DPT + SHT, -55, f"{LT_DRUM_T:.2f}mm SHELL", offset=40, fs=6.2,
                above=False, font=FONT)
     draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP", offset=44, fs=6.2, font=FONT)
+    # rivet positions (dim_v: shell-rivet CL height on the lap; dim_h: leg-rivet in from the lip)
+    draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f} shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
+    draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f} leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
     leader(ax, (DPT + SHT - LEGT) / 2, rz, 250, rz + 70,
            f"SS Ø{LT_RIVET_D} DOMED-HEAD BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -873,15 +876,23 @@ def draw_sheet7():
     draw_circle(ax, hc[0], hc[1], SKF6215_OD / 2, lw=1.2, color=C_OUT, fill=True,
                 fc="#B0B0B8", zorder=8)
     draw_circle(ax, hc[0], hc[1], SKF6215_ID / 2, lw=1.0, color="#CC4422", zorder=9)
-    # jamb frames at the aperture edges + opening labels
+    # jamb frames at the aperture edges + opening labels. The 80° housing opening is
+    # drawn as a colored arc so the two jamb posts read as framing that opening's edges.
     oh = LT_OPENING_DEG / 2
     for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
+        a0, a1 = math.radians(oc - oh), math.radians(oc + oh)
+        ts = [a0 + (a1 - a0) * k / 20 for k in range(21)]
+        ax.plot([hc[0] + HR * math.cos(t) for t in ts], [hc[1] + HR * math.sin(t) for t in ts],
+                color=col, lw=5.0, zorder=7)                        # 80° opening (aperture)
         for e in (oc - oh, oc + oh):
             a = math.radians(e)
             jx, jy = hc[0] + HR * math.cos(a), hc[1] + HR * math.sin(a)
-            rrect((jx - RHS / 2, jy - RHS / 2), RHS, RHS, fc="#9BA0A8", lw=1.0, zorder=8)
-        ax.text(hc[0] + (HR + 78) * math.cos(math.radians(oc)),
-                hc[1] + (HR + 78) * math.sin(math.radians(oc)), f"{tag}\nOPENING",
+            rrect((jx - RHS / 2, jy - RHS / 2), RHS, RHS, fc="#9BA0A8", lw=1.2, zorder=8)
+            ax.plot([hc[0] + (HR - 46) * math.cos(a), hc[0] + (HR + 46) * math.cos(a)],
+                    [hc[1] + (HR - 46) * math.sin(a), hc[1] + (HR + 46) * math.sin(a)],
+                    color=col, lw=0.9, ls=":", zorder=8)            # jamb sits on the opening edge
+        ax.text(hc[0] + (HR + 86) * math.cos(math.radians(oc)),
+                hc[1] + (HR + 86) * math.sin(math.radians(oc)), f"{tag}\nOPENING\n({LT_OPENING_DEG}°)",
                 ha="center", va="center", fontsize=6.5, color=col, **FONT, zorder=9)
     # plan dims + labels
     draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 80,
@@ -896,7 +907,7 @@ def draw_sheet7():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
            fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] + 55,
-           f"JAMB FRAME {RHS}×{RHS} RHS (×2/opening)", fs=6.5, color=C_OUT,
+           f"JAMB FRAME {RHS}×{RHS} RHS — vertical post at each\nopening edge (×2/opening); the housing rivets to it", fs=6.5, color=C_OUT,
            ha="left", arrow_style="->", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
@@ -1016,15 +1027,18 @@ def draw_sheet6():
     sx, sz = dx, -HR - 620
     draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # housing wall
     draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # drum wall
-    for zz in (sz - 60, sz + 60):                                              # brush/felt seal bristles
-        for xx in range(-135, 140, 10):
-            ax.plot([sx + xx, sx + xx + 8], [zz - 3, zz + 3], color="#7E7E76", lw=0.5, zorder=6)
-    draw_rect(ax, sx - 140, sz - 12, 280, 24, fc="#7E7E76", lw=0.8, zorder=4)   # felt gap seal band
+    # brush/felt held in an Al retainer channel SCREWED to the fixed housing; bristles wipe the drum
+    draw_rect(ax, sx - 140, sz - 42, 28, 84, fc=C_ALUM, lw=1.2, zorder=6)       # retainer channel (on housing)
+    draw_rect(ax, sx - 114, sz - 32, 12, 64, fc="#7E7E76", lw=0.6, zorder=5)    # brush/felt root in the channel
+    for zz in range(-30, 32, 7):                                               # bristles reach across to the drum
+        ax.plot([sx - 102, sx + 138], [sz + zz, sz + zz + 3], color="#7E7E76", lw=0.5, zorder=6)
+    for zc in (sz - 22, sz + 22):                                              # screws: retainer → housing
+        ax.plot([sx - 152, sx - 126], [zc, zc], color=C_OUT, lw=1.6, zorder=7)
     draw_dim_h(ax, sx - 140, sx + 140, sz - 120, f"≈{RUN_GAP}mm RUNNING GAP", offset=40,
                fs=6.5, above=False, font=FONT)
-    leader(ax, sx, sz + 20, sx - 320, sz + 80,
-           "FELT / BRUSH GAP SEAL\n(drum ↔ housing running gap)", fs=6.5, color=C_OUT,
-           ha="right", arrow_style="->", font=FONT)
+    leader(ax, sx - 127, sz + 30, sx - 320, sz + 90,
+           "FELT / BRUSH WIPER in an Al RETAINER CHANNEL\nscrewed to the FIXED housing; bristles wipe the\nrotating drum (nothing is fixed to the drum)",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, sx - 170, sz, sx - 300, sz - 60, f"HOUSING {LT_HOUSING_T}mm", fs=6,
            color=C_DIM, ha="right", arrow_style="->", font=FONT)
     leader(ax, sx + 163, sz, sx + 300, sz - 60, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
@@ -1267,7 +1281,7 @@ def draw_sheet9():
             color=C_OUT, **FONT, zorder=9)
 
     # ── Key dimensions (to scale) ────────────────────────────────────────────
-    draw_dim_v(ax, -95, -LT_CAP_TOP_T, Z_BEAM0 - 8, f"{SHAFT_L} STUB (Ø{SKF6215_ID})",
+    draw_dim_v(ax, -95, -LT_CAP_TOP_T, -LT_CAP_TOP_T + SHAFT_L, f"{SHAFT_L} STUB (Ø{SKF6215_ID})",
                offset=48, fs=6.5, font=FONT)
     draw_dim_h(ax, 0, CAPR, -LT_CAP_TOP_T - 60, f"Ø{LT_CAP_OD} CAP (radius)", offset=44,
                fs=6.5, above=False, font=FONT)
@@ -1293,7 +1307,7 @@ def draw_sheet9():
     leader(ax, 30, 8, -150, -35, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 700, 55,
-           f"RUNNING GAP {RUN_GAP}mm + felt/brush seal (Sheet 7)",
+           f"RUNNING GAP {RUN_GAP}mm — felt/brush wiper in an Al retainer channel\nscrewed to the FIXED housing bore; the rotating drum wipes against it (Sheet 7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 700, Z_BEAM0 + 120,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing; swing-panel weldment (Sheet 8)",

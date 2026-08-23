@@ -904,6 +904,9 @@ def draw_sheet7():
             rrect(fp(xx, yy), RHS, RHS, fc="#9BA0A8", lw=1.2, zorder=6)
     # AXLE BEAM — spans Yd at the drum axis X, central bearing at midspan
     rrect(fp(CX - LT_AXLE_BEAM_W / 2, cyl), LT_AXLE_BEAM_W, cW_y, fc=C_STEEL, lw=1.4, zorder=7)
+    draw_dim_h(ax, fp(CX - LT_AXLE_BEAM_W / 2, cyr)[0], fp(CX + LT_AXLE_BEAM_W / 2, cyr)[0],
+               fp(0, cyr)[1] + 40, f"{LT_AXLE_BEAM_W}mm AXLE BEAM W (at drum axis X)",
+               offset=45, fs=6.5, font=FONT)
     draw_circle(ax, hc[0], hc[1], SKF6215_OD / 2, lw=1.2, color=C_OUT, fill=True,
                 fc="#B0B0B8", zorder=8)
     draw_circle(ax, hc[0], hc[1], SKF6215_ID / 2, lw=1.0, color="#CC4422", zorder=9)
@@ -1124,7 +1127,7 @@ def draw_sheet8():
     ax.add_patch(mpatches.Polygon([(-RIML, 0), (-RIML + 16, 0), (-RIML, -16)], closed=True,
                                   fc="#CC4422", ec="#CC4422", zorder=6))          # weld to beam
     draw_rect(ax, 0, -LIP, DPT, LIP, fc=C_GASKT, lw=0.8, zorder=5)                # DP8010 bead
-    draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 100, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down (broken)
+    draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 90, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down, butts beam underside (broken below)
     for zz in (-LIP - 55, -LIP - 67, -LIP - 79):                                 # break line (housing continues down)
         ax.plot([DPT - 3, DPT + HOUT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
     blind_rivet(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 0, S * (LT_HOUSING_T + 1 + LT_RIM_T), d=RVD)  # radial housing → lip rivet
@@ -1305,6 +1308,14 @@ def draw_sheet9():
                offset=48, fs=6.5, font=FONT)
     draw_dim_h(ax, 0, CAPR, -LT_CAP_TOP_T - 60, f"Ø{LT_CAP_OD} CAP (radius)", offset=44,
                fs=6.5, above=False, font=FONT)
+    # ── A/B rail positions — radial (dim_h) + vertical joint rise (dim_v) ────
+    draw_dim_h(ax, 0, DOR_, -LT_CAP_TOP_T - 95, f"R{DOR_:.0f} — A: rotating drum rail (Ø{2 * LT_DRUM_OR})",
+               offset=40, fs=6.0, above=False, font=FONT)
+    draw_dim_h(ax, 0, HOR_, -LT_CAP_TOP_T - 135, f"R{HOR_:.0f} — B: fixed housing rail (Ø{DRUM_D})",
+               offset=40, fs=6.0, above=False, font=FONT)
+    draw_dim_v(ax, HOR_ + 55, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
+               f"{Z_BEAM0 - LT_LAP_H:.0f} — A→B joint rise\n(drum joint at cap · housing joint at beam)",
+               offset=38, fs=6.0, right=True, font=FONT)
 
     # ── Zone tags ────────────────────────────────────────────────────────────
     ax.text(210, -70, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
@@ -1358,7 +1369,7 @@ def draw_sheet9():
 # OD / bore / PCD / bolt holes) + SECTION (thickness) + full dims + material.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet_components():
-    X_LO, X_HI, Z_LO, Z_HI = -170, 1980, -650, 400
+    X_LO, X_HI, Z_LO, Z_HI = -120, 2500, -900, 560
     FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -1368,8 +1379,8 @@ def draw_sheet_components():
     ax.set_ylim(Z_LO, Z_HI)
     ax.set_aspect("equal")                                                   # ISOTROPIC 1:2
     ax.axis("off")
-    s2 = 1.0                                                                  # 1:1
-    ax.text(880, Z_HI - 8, "MACHINED COMPONENTS — BEARING SEATS & STUB-SHAFT  (single-part blueprints · 1:1)",
+    s2 = 1.5                                                                  # 1.5:1
+    ax.text(1150, Z_HI - 8, "MACHINED COMPONENTS — BEARING SEATS & STUB-SHAFT  (single-part blueprints · 1.5:1)",
             ha="center", va="top", fontsize=9, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
 
     def holes(cx, cz, rpcd, n):
@@ -1382,7 +1393,7 @@ def draw_sheet_components():
 
     def ring(cx, od, bore, pcd, n, thk, fc, title, mat, weldnote=None):
         rod, rbore, rpcd = od / 2 * s2, bore / 2 * s2, pcd / 2 * s2
-        pz, sz = 160, -150                                                   # plan / section z-centers
+        pz, sz = 260, -240                                                   # plan / section z-centers
         # ── PLAN (end view) ──
         ax.text(cx, pz + rod + 40, title, ha="center", va="bottom", fontsize=8,
                 color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
@@ -1413,18 +1424,18 @@ def draw_sheet_components():
                 ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT, zorder=9)
 
     # ── 1 · Upper Al bearing ring ────────────────────────────────────────────
-    ring(200, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
+    ring(320, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
          "UPPER BEARING RING", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
     # ── 2 · Lower steel floor collar ─────────────────────────────────────────
-    ring(880, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,  # collar
+    ring(1120, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,  # collar
          "LOWER FLOOR COLLAR", "A36 steel · bore Ø130 (bearing seat)", weldnote="6mm fillet weld to floor plate")
 
     # ── 3 · Stub-shaft + flange (elevation + flange plan) ────────────────────
-    cx = 1580
+    cx = 1900
     sh_r, fl_r, fl_t = SKF6215_ID / 2 * s2, 160 / 2 * s2, 12 * s2
     shaft_L = 150 * s2
-    ez = -230                                                                # elevation base (flange top)
-    ax.text(cx, 160 + fl_r + 40, "STUB-SHAFT + FLANGE", ha="center", va="bottom", fontsize=8,
+    ez = -380                                                                # elevation base (flange top)
+    ax.text(cx, 260 + fl_r + 40, "STUB-SHAFT + FLANGE", ha="center", va="bottom", fontsize=8,
             color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
     # ELEVATION: flange (bottom) + shaft (up)
     draw_rect(ax, cx - fl_r, ez - fl_t, 2 * fl_r, fl_t, fc=C_STEEL, lw=1.6, zorder=5)     # flange
@@ -1441,7 +1452,7 @@ def draw_sheet_components():
     ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove each end", ha="center", va="bottom",
             fontsize=6.2, color=C_DIM, **FONT, zorder=9)
     # FLANGE PLAN (above the elevation)
-    fpz = 160
+    fpz = 260
     draw_circle(ax, cx, fpz, fl_r, lw=1.8, color=C_OUT, fill=True, fc=C_STEEL, zorder=5)
     draw_circle(ax, cx, fpz, sh_r, lw=1.4, color=C_OUT, fill=True, fc="#9BA0A8", zorder=6)  # shaft (solid)
     draw_circle(ax, cx, fpz, 120 / 2 * s2, lw=0.8, color=C_CL, ls="--", zorder=6)
@@ -1458,13 +1469,13 @@ def draw_sheet_components():
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
         "Upper ring 6061-T6 Al (electrically isolated from the steel frame by a nylon shoulder + isolating washers); lower collar A36 steel, fillet-welded to the floor plate.",
         "Stub-shaft flange bolts to the cap (4×M10, Sheet 3); ring/collar bolt to the axle beam (Sheet 8). Bolt holes shown enlarged; drill Ø11 clearance for M10.",
-        "PLANS + SECTIONS 1:1 (isotropic) · ALL DIMS IN mm",
+        "PLANS + SECTIONS 1.5:1 (isotropic) · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -350, 40, fs=7, font=FONT, width=2450, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 60, -560, 40, fs=7, font=FONT, width=2450, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — BEARING SEATS & STUB-SHAFT",
-                scale_note="PLANS + SECTIONS 1:1 · ALL DIMS IN mm",
+                scale_note="PLANS + SECTIONS 1.5:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

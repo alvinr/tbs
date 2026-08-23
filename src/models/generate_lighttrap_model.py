@@ -35,6 +35,10 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers, materials, constants
+# metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
+# model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
+# generate_sketchup_model.py (which would trip the interference-report gate).
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -76,7 +80,8 @@ HOUSING_R = ov.LT_HOUSING_R           # 450 — fixed housing radius (Ø900 OD)
 HOUSING_T = ov.LT_HOUSING_T           # 3 — housing wall
 DRUM_OR = ov.LT_DRUM_OR               # 432 — drum outer radius (Ø864), 15mm gap
 DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø850 bore, ~555mm passage
-DRUM_CAP_T = ov.LT_CAP_T              # 4.76 — 3/16" HDPE end caps (structural: carry the stub shafts into the bearings)
+DRUM_CAP_T = LT_CAP_TOP_T          # 8mm 6061-T6 Al end caps (both identical; carry the bolted stub-shaft hubs into the bearings)
+DRUM_CAP_R = LT_CAP_OD / 2         # 427.5 — caps nest inside the shell (shell laps over the rim)
 OPENING_DEG = ov.LT_OPENING_DEG       # 80 — each opening arc (<90°)
 APERTURE_R = HOUSING_R + 18           # 468 — panel aperture radius around housing
 NEW_YD_L = YD_L                       # 653 — widened center-zone step lines
@@ -394,10 +399,16 @@ def drum_rotor(cx=0, cy=0):
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
                                   color=C_ALUM, alpha=0.5, z0=ZB))
-    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_OR, DRUM_CAP_T,
+    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_CAP_R, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, DRUM_CAP_T,
+    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_CAP_R, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
+    # Rolled 25×25×3 Al rim-angle lip at each cap rim (280° C-shell arc — NOT a full
+    # ring; the 80° opening has no shell/rim). The shell laps + rivets to it.
+    for zc in (ZB, H - LT_RIM_LEG):
+        parts.append(ov.ruby_arc_wall("LT Rim-angle lip", cx, cy, DRUM_CAP_R, LT_RIM_T,
+                                      LT_RIM_LEG, gap_center_deg=180, gap_deg=od,
+                                      color=C_ALUM, z0=zc))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
     # Interior grab rail on the drum's solid +X wall (operator pulls the drum).

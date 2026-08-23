@@ -682,8 +682,8 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
                above=False, font=FONT)
     draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP", offset=44, fs=6.2, font=FONT)
     # rivet positions (dim_v: shell-rivet CL height on the lap; dim_h: leg-rivet in from the lip)
-    draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f} shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
-    draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f} leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
+    draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f}mm shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
+    draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f}mm leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
     leader(ax, (DPT + SHT - LEGT) / 2, rz, 250, rz + 70,
            f"SS Ø{LT_RIVET_D} DOMED-HEAD BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1291,7 +1291,7 @@ def draw_sheet9():
     draw_dim_h(ax, 0, HOR_, -LT_CAP_TOP_T - 135, f"R{HOR_:.0f} — B: fixed housing rail (Ø{DRUM_D})",
                offset=40, fs=6.0, above=False, font=FONT)
     draw_dim_v(ax, HOR_ + 55, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
-               f"{Z_BEAM0 - LT_LAP_H:.0f} — A→B joint rise\n(drum joint at cap · housing joint at beam)",
+               f"{Z_BEAM0 - LT_LAP_H:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
                offset=38, fs=6.0, right=True, font=FONT)
 
     # ── Zone tags ────────────────────────────────────────────────────────────
@@ -1389,7 +1389,7 @@ def draw_sheet_components():
         for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
             draw_rect(ax, xr0, sz, xr1 - xr0, tz, fc=fc, lw=1.4, zorder=5)
         draw_cl_v(ax, cx, sz - 14, sz + tz + 14)
-        draw_dim_v(ax, cx + rod + 30, sz, sz + tz, f"{thk} THK", offset=30, fs=6.4, right=True, font=FONT)
+        draw_dim_v(ax, cx + rod + 30, sz, sz + tz, f"{thk}mm THK", offset=30, fs=6.4, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 18, f"Ø{bore} BORE", offset=26, fs=6.0,
                    above=False, font=FONT)
         if weldnote:
@@ -1425,7 +1425,7 @@ def draw_sheet_components():
         ax.plot([cx + sh_r - 6, cx + sh_r], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
     draw_cl_v(ax, cx, ez - fl_t - 14, ez + shaft_L + 14)
     draw_dim_v(ax, cx - fl_r - 30, ez, ez + shaft_L, f"{150} LG (Ø{SKF6215_ID})", offset=30, fs=6.4, font=FONT)
-    draw_dim_v(ax, cx + fl_r + 30, ez - fl_t, ez, "12 THK", offset=28, fs=6.0, right=True, font=FONT)
+    draw_dim_v(ax, cx + fl_r + 30, ez - fl_t, ez, "12mm THK", offset=28, fs=6.0, right=True, font=FONT)
     ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove each end", ha="center", va="bottom",
             fontsize=6.2, color=C_DIM, **FONT, zorder=9)
     # FLANGE PLAN (above the elevation)

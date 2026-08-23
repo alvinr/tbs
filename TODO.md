@@ -26,11 +26,11 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
   Set has since GROWN to **9 sheets** (1 GA, 2 housing-cut, 3 drum-cut, 4 drum-secure, 5 bearing-hub,
   6 seals & light-path, 7 support-frame GA, 8 housing→frame, 9 combined top-end) + an **integrated steel
   cage frame**, and the detail sheets are being recast **to stated scale** (4/8 at 7:1 + plans 1:2 + scale
-  bars DONE; **Sheet 5 relabel to scale still TODO**). Rivet now SPEC'D: **1/8" 18-8 SS domed-head blind,
+  bars DONE; **Sheet 5 relabel to scale still TODO**). Rivet now SPEC'D: **1/8" 18-8 SS blind (low-profile head),
   McMaster 97525A425 (shell→cap) / 97525A435 (housing→frame)**, `LT_RIVET_D`=3.18, hole Ø3.3.
 
 - [ ] **parts.py / cost** — ADD light-trap joint/material parts as ONE batch (reconcile costing): 8mm 6061-T6
-  Al plate Ø855 ×2 (both caps now Al), 25×25×3 6061-T6 Al rim-angle (2 rings), **1/8" SS domed-head blind
+  Al plate Ø855 ×2 (both caps now Al), 25×25×3 6061-T6 Al rim-angle (2 rings), **1/8" SS blind (low-profile head)
   rivets 97525A425 $13.83/100 + 97525A435 $14.59/100**, 3M DP8010, frame steel RHS (50×50×3 posts/rails +
   100×50×3 axle beams + 10mm bearing plates), **4× 6063-T5 Al U-channel ~20×18×3 opening-edge stiffeners**
   (confirm stocked section; + 8× L-clip + 8× M8 end bolts) — REPLACED the steel jamb posts (2026-08-23).

@@ -39,7 +39,10 @@ file** — a release must not ship without a changelog entry:
   rivets @ ~60mm + 3M DP8010 bond/light-seal), superseding the extrusion weld. Scope grew to specify the
   **support structure**: a **steel welded box cage integrated with the swing-panel weldment** carries the
   bearings (axle-support beam at the drum axis) and the fixed outer skin (housing laps + rivets to a rolled
-  rim-angle welded on the frame beams + jamb frames). New `tbs_constants` cap/joint/frame constants. Every
+  rim-angle welded on the top/bottom frame beams). The two housing openings' free HDPE edges are stiffened by
+  a **bonded aluminum U-channel** per edge (ends bolted to the top/bottom beams via L-clips) — a lighter
+  replacement for the steel jamb posts, given the housing is one rolled sheet; drawn as **Detail B** on Sheet 9
+  and shown at the opening edges on Sheet 8. New `tbs_constants` cap/joint/frame/edge-channel constants. Every
   detail sheet was recast **to a stated scale** (no more "NTS"): the joint sections at **7:1** (Sheets 4/9),
   the bearing-hub + component sections at **2.2:1 / 1:1**, and the assembly views to true isotropic scale with
   **scale bars** (Sheet 10 half-section 100mm bar + cage corner post; Sheet 8 with the frame members

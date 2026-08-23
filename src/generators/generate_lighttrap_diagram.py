@@ -37,6 +37,8 @@ from tbs_constants import (
     LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD,
     LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT,
     LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN,
+    LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N,
+    LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT,
     LT_HOUSING_ARC, LT_HOUSING_RIVET_N,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
@@ -876,21 +878,28 @@ def draw_sheet7():
     draw_circle(ax, hc[0], hc[1], SKF6215_OD / 2, lw=1.2, color=C_OUT, fill=True,
                 fc="#B0B0B8", zorder=8)
     draw_circle(ax, hc[0], hc[1], SKF6215_ID / 2, lw=1.0, color="#CC4422", zorder=9)
-    # jamb frames at the aperture edges + opening labels. The 80° housing opening is
-    # drawn as a colored arc so the two jamb posts read as framing that opening's edges.
+    # aperture edges + opening labels. The 80° housing opening is drawn as a colored arc;
+    # each free HDPE edge is capped by a bonded Al U-channel (slot grips the 5mm wall,
+    # legs run into the material arc) — the stiffener that replaced the steel jamb posts.
     oh = LT_OPENING_DEG / 2
+    AL_CH = "#5B6E8C"
     for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
         a0, a1 = math.radians(oc - oh), math.radians(oc + oh)
         ts = [a0 + (a1 - a0) * k / 20 for k in range(21)]
         ax.plot([hc[0] + HR * math.cos(t) for t in ts], [hc[1] + HR * math.sin(t) for t in ts],
                 color=col, lw=5.0, zorder=7)                        # 80° opening (aperture)
-        for e in (oc - oh, oc + oh):
+        for e, sgn in ((oc - oh, -1), (oc + oh, +1)):               # -1/+1 = tangent into the material arc
             a = math.radians(e)
-            jx, jy = hc[0] + HR * math.cos(a), hc[1] + HR * math.sin(a)
-            rrect((jx - RHS / 2, jy - RHS / 2), RHS, RHS, fc="#9BA0A8", lw=1.2, zorder=8)
-            ax.plot([hc[0] + (HR - 46) * math.cos(a), hc[0] + (HR + 46) * math.cos(a)],
-                    [hc[1] + (HR - 46) * math.sin(a), hc[1] + (HR + 46) * math.sin(a)],
-                    color=col, lw=0.9, ls=":", zorder=8)            # jamb sits on the opening edge
+            rx, ry, tx, ty = math.cos(a), math.sin(a), -math.sin(a), math.cos(a)
+            ox, oy = hc[0] + HR * rx, hc[1] + HR * ry                            # outer edge face
+            ix, iy = hc[0] + (HR - LT_HOUSING_T) * rx, hc[1] + (HR - LT_HOUSING_T) * ry  # inner face
+            L = LT_EDGE_CHAN_LEG
+            ax.plot([ox, ix], [oy, iy], color=AL_CH, lw=2.6, zorder=9)           # channel base (caps the cut edge)
+            ax.plot([ox, ox + sgn * L * tx], [oy, oy + sgn * L * ty], color=AL_CH, lw=2.6, zorder=9)  # outer leg
+            ax.plot([ix, ix + sgn * L * tx], [iy, iy + sgn * L * ty], color=AL_CH, lw=2.6, zorder=9)  # inner leg
+            ax.plot([hc[0] + (HR - 46) * rx, hc[0] + (HR + 60) * rx],
+                    [hc[1] + (HR - 46) * ry, hc[1] + (HR + 60) * ry],
+                    color=col, lw=0.9, ls=":", zorder=7)            # opening edge
         ax.text(hc[0] + (HR + 86) * math.cos(math.radians(oc)),
                 hc[1] + (HR + 86) * math.sin(math.radians(oc)), f"{tag}\nOPENING\n({LT_OPENING_DEG}°)",
                 ha="center", va="center", fontsize=6.5, color=col, **FONT, zorder=9)
@@ -907,16 +916,16 @@ def draw_sheet7():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
            fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] + 55,
-           f"JAMB FRAME {RHS}×{RHS} RHS — vertical post at each\nopening edge (×2/opening); the housing rivets to it", fs=6.5, color=C_OUT,
-           ha="left", arrow_style="->", font=FONT)
+           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — bonded over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to top/bottom beams — see Sheet 9",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SUPPORT FRAME — INTEGRATED STEEL WELDED BOX CAGE (part of the swing-panel weldment)",
-        f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails + 2 jamb frames per opening (welded).",
+        f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails (welded). No jamb posts: the free HDPE opening edges are stiffened by Al edge channels (below).",
         f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS, span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
         f"Bearing seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower welded steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
-        "Fixed housing (outer skin) laps + rivets to rim-angle on the beams + jamb frames — see Sheet 9. Drum rotates free inside.",
+        f"Fixed housing (outer skin) laps + rivets to rim-angle on the top/bottom beams; free opening edges capped by {LT_EDGE_CHAN_N}× Al U-channel (ends bolt to the beams) — see Sheet 9. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
     ]
@@ -980,7 +989,7 @@ def draw_sheet6():
             ts = [math.radians(a_lo + (a_hi - a_lo) * k / 30) for k in range(31)]
             ax.plot([cx + HR * math.cos(t) for t in ts], [HR * math.sin(t) for t in ts],
                     color=C6_HOUSE, lw=5.0, zorder=6)
-        for gc in (0, 180):                                       # housing opening jamb ticks
+        for gc in (0, 180):                                       # housing opening-edge ticks
             for e in (gc - oh, gc + oh):
                 a = math.radians(e)
                 ax.plot([cx + (HR - 22) * math.cos(a), cx + (HR + 22) * math.cos(a)],
@@ -1078,7 +1087,7 @@ def draw_sheet6():
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 8 — Housing → frame attachment (outer-skin fixing)
 # The fixed housing (5mm) laps a rolled rim-angle welded to the frame; SS rivets +
-# DP8010. Section + jamb detail + plan (200° housing material, two 100° arcs).
+# DP8010. Section + Detail B (opening-edge Al U-channel) + plan (200° housing, two 100° arcs).
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet8():
     X_LO, X_HI, Z_LO, Z_HI = -470, 1140, -680, 300
@@ -1136,6 +1145,35 @@ def draw_sheet8():
     ax.text(sbx + S * 10, sbz - 13, "20 mm  (SECTION 7:1)", ha="center", va="top",
             fontsize=6, color=C_OUT, **FONT, zorder=8)
 
+    # ── DETAIL B — free opening EDGE: Al U-channel over the HDPE (plan · 7:1) ──
+    # Horizontal cut through a vertical opening edge: the shell runs in from the left
+    # and is capped at the cut edge (right) by the bonded Al U-channel that replaced the
+    # jamb post. Legs run back along the inner + outer faces; rivet through both + HDPE.
+    dx, dz = 400, 55
+    HT2 = S * LT_HOUSING_T                 # HDPE wall thickness in section
+    LEG2 = S * LT_EDGE_CHAN_LEG            # channel leg length (over the faces)
+    CT2 = S * LT_EDGE_CHAN_T               # channel wall
+    WL = S * 30                            # length of shell shown (broken on the left)
+    ax.text(dx - LEG2 / 2, dz + HT2 / 2 + CT2 + 48, "DETAIL B — OPENING EDGE  (plan · SCALE 7:1)",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=15)
+    draw_rect(ax, dx - WL, dz - HT2 / 2, WL, HT2, fc="#DDE4EC", lw=1.6, zorder=5)   # HDPE shell wall
+    for xb in (dx - WL, dx - WL + 12, dx - WL + 24):                                # break (shell continues)
+        ax.plot([xb - 4, xb + 4], [dz - HT2 / 2 - 4, dz + HT2 / 2 + 4], color=C_OUT, lw=0.6, zorder=7)
+    draw_rect(ax, dx - 6, dz - HT2 / 2, 6, HT2, fc=C_GASKT, lw=0.6, zorder=6)       # DP8010 in the slot
+    draw_rect(ax, dx - LEG2, dz + HT2 / 2, LEG2, CT2, fc=C_ALUM, lw=1.4, zorder=6)  # outer leg
+    draw_rect(ax, dx - LEG2, dz - HT2 / 2 - CT2, LEG2, CT2, fc=C_ALUM, lw=1.4, zorder=6)  # inner leg
+    draw_rect(ax, dx, dz - HT2 / 2 - CT2, CT2, HT2 + 2 * CT2, fc=C_ALUM, lw=1.4, zorder=6)  # base (caps edge)
+    blind_rivet(ax, dx - LEG2 * 0.5, dz, 90, S * (2 * LT_EDGE_CHAN_T + LT_HOUSING_T), d=RVD)  # thru legs + HDPE
+    draw_dim_h(ax, dx - LEG2, dx, dz - HT2 / 2 - CT2 - 30, f"{LT_EDGE_CHAN_LEG}mm LEG",
+               offset=26, fs=6.0, above=False, font=FONT)
+    leader(ax, dx - LEG2 + 12, dz + HT2 / 2 + CT2, dx - LEG2 - 60, dz + HT2 / 2 - 8,
+           f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5\nbonded over the {LT_HOUSING_T}mm HDPE edge · DP8010",
+           fs=6.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
+           f"Ø{LT_RIVET_D} SS DOMED-HEAD BLIND RIVET\nthru both legs + HDPE",
+           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
     # ── PLAN — housing footprint (200° material, two 100° arcs) + rivets ──────
     pcx, pcz, pr = 820, 10, LT_HOUSING_R / 2
     oh = LT_OPENING_DEG / 2
@@ -1173,15 +1211,15 @@ def draw_sheet8():
         "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, WELDED to the frame top + bottom beams (two 100° arcs — the openings have no rim).",
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS domed-head blind rivets per edge (McMaster 97525A435, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
-        "4. Housing vertical edges (at the openings) rivet to the jamb frames the same way (see Sheet 8).",
-        "SECTION A–A 7:1 (isotropic) · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
+        f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
+        "SECTION A–A 7:1 (isotropic) · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -340, 60, fs=7, font=FONT, width=2050,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 9 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
-                scale_note="SECTION 7:1 · HOUSING PLAN 1:2 · ALL DIMS IN mm",
+                scale_note="SECTION 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet9.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

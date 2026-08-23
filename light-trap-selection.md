@@ -304,8 +304,9 @@ axle-support beam at the drum axis and the members dimensioned.
 ![TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement](assets/lighttrap-sheet8.png)
 
 **Sheet 9 — Housing → frame attachment.** The section showing the fixed outer skin
-lapped and riveted to the rolled rim-angle welded on the frame beams and jamb frames —
-the drum rotating free inside.
+lapped and riveted to the rolled rim-angle welded on the top and bottom frame beams,
+with Detail B showing each free opening edge capped by a bonded aluminum U-channel
+(the stiffener that replaces the jamb posts) — the drum rotating free inside.
 
 ![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
 

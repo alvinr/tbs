@@ -430,8 +430,9 @@ DRUM_CAGE_YD_L = DRUM_CY - DRUM_R - 31  # 700 — cage side ~30mm clear of the �
 DRUM_CAGE_YD_R = DRUM_CY + DRUM_R + 31  # 1662
 # ── Light-trap SUPPORT FRAME (2026-08-21) — steel welded box cage, INTEGRATED with the
 # swing-panel frame (one weldment). Carries both SKF 6215 bearings + the fixed housing
-# (outer skin). Members = steel RHS matching the panel; top/bottom bearing plates; jamb
-# frames at the two 80° openings.
+# (outer skin). Members = steel RHS matching the panel; top/bottom bearing plates. The
+# two 80° openings' free HDPE edges are stiffened by bonded Al U-channels (below), NOT
+# steel jamb posts (dropped 2026-08-23 — lighter, and the housing is one rolled sheet).
 LT_FRAME_RHS       = 50    # cage post / rail RHS section (mm; ~2" SHS, matches the panel frame)
 LT_FRAME_T         = 3     # RHS wall (mm)
 LT_FRAME_PLATE_T   = 10    # top/bottom bearing-plate thickness (mm steel)
@@ -446,6 +447,17 @@ LT_AXLE_BEAM_H     = 100   # beam depth (mm) — 100×50×3 steel RHS
 LT_AXLE_BEAM_W     = 50    # beam width (mm)
 LT_AXLE_BEAM_T     = 3     # beam wall (mm)
 LT_AXLE_BEAM_SPAN  = DRUM_CAGE_YD_R - DRUM_CAGE_YD_L   # 962 — beam clear span (Yd)
+# Housing OPENING-EDGE stiffener (2026-08-23) — replaces the steel jamb posts. Each of
+# the fixed housing's two openings (EXT+INT) leaves two free vertical HDPE edges; a
+# bonded 6063-T5 aluminum U-channel caps each edge (stiffener + rivet anchor) and its
+# two ends bolt to the fixed top/bottom frame beams. (Nominal section — confirm stocked
+# size at the parts pass.)
+LT_EDGE_CHAN_W        = 20   # U-channel outside width across the base (mm; 6063-T5 Al)
+LT_EDGE_CHAN_LEG      = 18   # leg height (mm) — bond + rivet land on the HDPE face
+LT_EDGE_CHAN_T        = 3    # channel wall (mm); inside slot = W − 2T = 14mm (5mm HDPE + DP8010)
+LT_EDGE_CHAN_N        = 4    # channels total (2 openings × 2 edges)
+LT_EDGE_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — same 1/8" SS domed-head as the rim joints
+LT_EDGE_CHAN_END_BOLT = 8    # M8 bolt each channel end → frame top/bottom beam (via L-clip)
 
 # Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
 # the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.

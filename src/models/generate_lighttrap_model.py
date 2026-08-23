@@ -39,7 +39,8 @@ import generate_sketchup_model as ov   # helpers, materials, constants
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
 from tbs_constants import (LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T,
-                           LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T)
+                           LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T,
+                           LT_WIPER_N, LT_WIPER_SPACING)
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -405,7 +406,7 @@ def drum_housing(cx, cy):
 
 def drum_rotor(cx=0, cy=0):
     """ROTATING part of the revolving door: the single-opening C-shell drum +
-    caps + top stub shaft + interior grab rail + opening brush seals. Built
+    caps + top stub shaft + interior grab rail + running-gap wiper strips. Built
     relative to (cx, cy) so it can live in a NESTED Dynamic Component whose RotZ
     revolves it (the revolving-door action). Pass (0,0) for the DC sub-component
     (origin on the drum axis); drum() passes the absolute drum center for the
@@ -436,13 +437,19 @@ def drum_rotor(cx=0, cy=0):
     for bz in (720, 1080):
         parts.append(ruby_box("LT Grab rail standoff", gx, cy - 6, bz,
                               inner - gx, 12, 12, color=C_STEEL))
-    # Felt/brush wiper strips on the two vertical edges of the drum opening.
-    seal_r = (DRUM_OR + HOUSING_R - HOUSING_T) / 2
-    for edge in (180 - od / 2, 180 + od / 2):
-        bx = cx + seal_r * math.cos(math.radians(edge))
-        by = cy + seal_r * math.sin(math.radians(edge))
-        parts.append(ruby_cylinder("LT Drum opening brush seal", bx, by, ZB, 7, H - ZB,
-                                   color=felt, axis="z"))
+    # Running-gap light-seal WIPER — N vertical nylon brush strips RIVETED to the drum OD,
+    # bristles reaching across the gap to the fixed housing bore (McMaster 74715T2). Spaced
+    # 93° on the 280° wall (from the opening edge) so ≥1 always sits in each 100° housing arc
+    # at every rotation → the annular gap can never carry light (see 2D Sheet 7 study).
+    brz = HOUSING_R - HOUSING_T                  # housing bore — bristle tips reach here
+    hw = 3.0                                     # tangential half-width of a strip
+    for k in range(LT_WIPER_N):
+        sa = math.radians(180 + od / 2 + k * LT_WIPER_SPACING)
+        cr, sr = math.cos(sa), math.sin(sa)
+        uv = [(DRUM_OR, -hw), (brz, -hw), (brz, hw), (DRUM_OR, hw)]   # radial fin (drum OD → bore)
+        pts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in uv]
+        parts.append(ov.ruby_prism(f"LT Drum wiper strip ({math.degrees(sa) % 360:.0f}°)",
+                                   pts, ZB, H - ZB, color=felt))
     return '\n'.join(parts)
 
 

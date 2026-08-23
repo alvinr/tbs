@@ -386,13 +386,13 @@
 
 ![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
 
-![TBS-001 Light-Trap — Sheet 3: Drum — Cut (C-shell + caps)](assets/lighttrap-sheet3.png)
+![TBS-001 Light-Trap — Sheet 3: Drum Shell — Cut Sheet (flat pattern)](assets/lighttrap-sheet3.png)
 
 ![TBS-001 Light-Trap — Sheet 4: Drum — Secure (lap-and-fasten joint)](assets/lighttrap-sheet4.png)
 
 ![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)
 
-![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
+![TBS-001 Light-Trap — Sheet 6: Machined Components — End Cap + Bearing Seats + Stub-Shaft](assets/lighttrap-sheet6.png)
 
 ![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 

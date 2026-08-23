@@ -38,7 +38,8 @@ import generate_sketchup_model as ov   # helpers, materials, constants
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T
+from tbs_constants import (LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T,
+                           LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T)
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -376,6 +377,22 @@ def drum_housing(cx, cy):
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
                                   color=C_ALUM, alpha=0.5, z0=ZB))
+    # Opening-edge stiffeners — a bonded Al U-channel caps each of the 4 free HDPE
+    # edges (2 openings × 2 edges), replacing the old steel jamb posts. Each is a
+    # vertical U prism wrapping the wall: base across the edge + two legs (length
+    # LEG) running tangentially into the material arc. Slot faces the material.
+    Ro, Ri = HOUSING_R, HOUSING_R - HOUSING_T          # wall outer / inner face radii
+    CT, LG = LT_EDGE_CHAN_T, LT_EDGE_CHAN_LEG
+    for oc in (0, 180):                                 # INT (0°) + EXT (180°) openings
+        for e, sgn in ((oc - od / 2, -1), (oc + od / 2, +1)):  # -oh / +oh edges (sgn = into material)
+            a = math.radians(e)
+            cr, sr = math.cos(a), math.sin(a)
+            # U cross-section in (radial R, tangential S) — S positive = into material
+            uv = [(Ri - CT, -CT), (Ro + CT, -CT), (Ro + CT, LG), (Ro, LG),
+                  (Ro, 0), (Ri, 0), (Ri, LG), (Ri - CT, LG)]
+            pts = [(cx + R * cr - sgn * Sc * sr, cy + R * sr + sgn * Sc * cr) for R, Sc in uv]
+            parts.append(ov.ruby_prism(f"LT Housing edge channel ({e:.0f}°)", pts, ZB, H - ZB,
+                                       color=C_ALUM))
     parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 25,
                                color=C_STEEL, axis="z"))   # Ø130 OD (r65) × 25mm B — SKF 6215 datasheet
     # (Lower bearing collar + mount plate omitted in this model — the drum is

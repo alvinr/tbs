@@ -106,7 +106,7 @@ Custom fabrication is the correct choice for a field-deployed, transport-rated c
 2. **No galvanic couple.** Plastic-to-steel has no galvanic couple, so isolation reduces to plain nylon washers at the shaft only — no full isolation kit, and no outdoor-corrosion risk at the panel-frame and bearing interfaces.
 3. **Cost and fabrication.** HDPE sheet is inexpensive, and hot-air / extrusion welding of a Ø900 cylinder is low-skill labor relative to metal seam welding.
 
-A 3–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is plastic's higher thermal expansion, accommodated by the 15mm running gap between drum and housing.
+A 3–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is plastic's higher thermal expansion, accommodated by the 13mm running gap between drum and housing.
 
 The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at 0–120°C — far beyond any field requirement. The neoprene/silicone top seal provides IP44 protection against splash and rain ingress. Black-pigmented sheet with flat-black touch-in at the welds is optically dead at visible wavelengths.
 
@@ -145,7 +145,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Top seal | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against the frame top plate |
 | Bottom seal | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against the frame bottom plate |
-| Drum-to-housing running gap | ≈13mm radial clearance, closed by a felt/brush wiper the drum rotates against (a compression strip would bind on the turning drum) — see §9 Sheet 7 |
+| Drum-to-housing running gap | ≈13mm radial clearance, closed by **4 vertical nylon brush strips** ([McMaster 74715T2](https://www.mcmaster.com/74715T2-74715T207/) — 1/8″ stainless-backed, 0.008″ black nylon, 1″ overall / 7/8″ trim) riveted to the **rotating drum** OD at 93° spacing; bristles lay over onto the fixed housing bore. Sold by the foot → one continuous piece per line over the full drum height. Strip count set by the Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a strip always seals each arc between the openings at every rotation) — see §9 Sheet 7 |
 
 ### 4.4 Hardware
 
@@ -164,6 +164,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | 1/8" 18-8 SS blind rivets — [97525A425](https://www.mcmaster.com/97525A425/) (shell→cap, $13.83/100) + [97525A435](https://www.mcmaster.com/97525A435/) (housing→frame, $14.59/100) — + 3M Scotch-Weld DP8010 adhesive | [McMaster-Carr](https://www.mcmaster.com/); [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | ~35/cap + ~26/edge @ ~60mm pitch, drill Ø3.3 (#30); DP8010 is the structural bond + light seal for HDPE (low surface energy) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
+| Running-gap wiper — nylon strip brush (4 lines × ~7 ft) | [McMaster-Carr 74715T2](https://www.mcmaster.com/74715T2-74715T207/) ($27.02/7 ft) | 1/8″ stainless-backed, 0.008″ black nylon, 1″ overall / 7/8″ trim; riveted to the drum OD, one 7 ft piece per line (~$108 total) |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
 | SS grab rail 100mm Ø (×1) | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length; interior face only |
@@ -291,9 +292,12 @@ scheme (cap→flange tapped; ring/collar→beam weld-nuts; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 
-**Sheet 7 — Seals & light-path verification.** The running-gap wiper and top/bottom
-seals, and the three-position proof (open-to-exterior, open-to-interior, mid-rotation)
-that no straight-through light path exists at any rotation.
+**Sheet 7 — Seals & light-path verification.** The running-gap wiper (4 drum-mounted
+nylon brush strips) and top/bottom seals, and the three-position proof (open-to-exterior,
+open-to-interior, mid-rotation) that no straight-through light path exists at any rotation.
+The plans also carry the strip-count study — the 93°-spaced strips keep at least one wiper
+in each 100° housing material arc at every rotation, so the annular gap can never carry
+light between the openings.
 
 ![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 

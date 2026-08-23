@@ -33,8 +33,9 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
   Al plate Ø855 ×2 (both caps now Al), 25×25×3 6061-T6 Al rim-angle (2 rings), **1/8" SS blind (low-profile head)
   rivets 97525A425 $13.83/100 + 97525A435 $14.59/100**, 3M DP8010, frame steel RHS (50×50×3 posts/rails +
   100×50×3 axle beams + 10mm bearing plates), **4× 6063-T5 Al U-channel ~20×18×3 opening-edge stiffeners**
-  (confirm stocked section; + 8× L-clip + 8× M8 end bolts) — REPLACED the steel jamb posts (2026-08-23).
-  Prices in report §4.5; material now, fab later.
+  (confirm stocked section; + 8× L-clip + 8× M8 end bolts) — REPLACED the steel jamb posts (2026-08-23),
+  **4× running-gap wiper brush strips (McMaster 74715T2, $27.02/7 ft, ~$108 total; 1/8" SS-backed 0.008" black
+  nylon, riveted to the drum OD)** (2026-08-24, stamped in parts-worklist.csv). Prices in report §4.5; material now, fab later.
 - [x] **light-trap-selection.md §4** — DONE. §4.1 metal caps, §4.2 frame-mounted bearings, §4.3 felt/brush
   running gap, §4.4/§4.5 lap-joint fasteners + real rivet SKUs + Al plate/angle suppliers.
 - [x] **Registration** — DONE. All 9 sheets in `dependencies.yml`/`all-diagrams.md`/`publish.sh`/`setup_docs.py`;

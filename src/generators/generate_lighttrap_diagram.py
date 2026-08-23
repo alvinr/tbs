@@ -40,6 +40,7 @@ from tbs_constants import (
     LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N,
     LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT,
     LT_HOUSING_ARC, LT_HOUSING_RIVET_N,
+    LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING,
     DIAGRAM_DPI, DIAGRAMS_DIR,
 )
 from tbs_drawing import (
@@ -945,7 +946,7 @@ def draw_sheet6():
              (dx, 0, "B · DRUM OPEN TO INTERIOR"),
              (2 * dx, 90, "C · DRUM MID-ROTATION")]
     X_LO, X_HI = -HR - 320, 2 * dx + HR + 320
-    Z_LO, Z_HI = -HR - 1420, HR + 360
+    Z_LO, Z_HI = -HR - 1720, HR + 360               # extra bottom room: wrapped seal notes clear the title block
     FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -990,6 +991,16 @@ def draw_sheet6():
             ax.plot([cx + (DR - 24) * math.cos(a), cx + (DR + 24) * math.cos(a)],
                     [(DR - 24) * math.sin(a), (DR + 24) * math.sin(a)],
                     color="#B08020", lw=1.4, zorder=7)
+        # WIPER STRIPS on the drum wall (rotate WITH the drum) — bristles span the gap to
+        # the housing bore. N strips @ spacing° ≤ 100° keep ≥1 in each material arc always.
+        brz = HR - LT_HOUSING_T
+        for k in range(LT_WIPER_N):
+            sa = math.radians(dth + oh + k * LT_WIPER_SPACING)
+            cw, sw = math.cos(sa), math.sin(sa)
+            ax.plot([cx + DR * cw, cx + brz * cw], [DR * sw, brz * sw],
+                    color="#4A4A4A", lw=3.4, zorder=8)                          # strip + bristles across the gap
+            draw_circle(ax, cx + DR * cw, DR * sw, 7, lw=0.6, color="#222",
+                        fill=True, fc="#222", zorder=9)                          # holder on the drum OD
         # LIGHT-PATH RAYS — daylight enters an aligned opening, stopped by the drum wall
         any_aligned = any(angdiff(dth, o) < oh for o in (0, 180))
         for oc in (0, 180):
@@ -1020,6 +1031,7 @@ def draw_sheet6():
     lz = -HR - 250
     keys = [(C6_HOUSE, "FIXED HOUSING (outer)", 6.0),
             (C6_DRUM, "ROTATING DRUM (inner)", 7.0),
+            ("#4A4A4A", f"WIPER STRIP ×{LT_WIPER_N} (on drum)", 3.4),
             ("#E8A800", "LIGHT PATH (ray)", 2.0)]
     lx = dx - 930
     for col, lab, w in keys:
@@ -1029,24 +1041,25 @@ def draw_sheet6():
         lx += 640
 
     # ── Seal detail (radial section at the running gap) ──────────────────────
+    # Brush strip RIVETED to the ROTATING drum OD; bristles wipe the FIXED housing bore.
     sx, sz = dx, -HR - 620
-    draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # housing wall
-    draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # drum wall
-    # brush/felt held in an Al retainer channel SCREWED to the fixed housing; bristles wipe the drum
-    draw_rect(ax, sx - 140, sz - 42, 28, 84, fc=C_ALUM, lw=1.2, zorder=6)       # retainer channel (on housing)
-    draw_rect(ax, sx - 114, sz - 32, 12, 64, fc="#7E7E76", lw=0.6, zorder=5)    # brush/felt root in the channel
-    for zz in range(-30, 32, 7):                                               # bristles reach across to the drum
-        ax.plot([sx - 102, sx + 138], [sz + zz, sz + zz + 3], color="#7E7E76", lw=0.5, zorder=6)
-    for zc in (sz - 22, sz + 22):                                              # screws: retainer → housing
-        ax.plot([sx - 152, sx - 126], [zc, zc], color=C_OUT, lw=1.6, zorder=7)
+    draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # FIXED housing wall (bore face at sx-140)
+    draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # ROTATING drum wall (OD face at sx+140)
+    draw_rect(ax, sx + 128, sz - 44, 12, 88, fc="#8A8F98", lw=1.0, zorder=6)    # SS backing (1/8") on the drum OD
+    for zz in range(-32, 34, 6):                                               # bristles lay over onto the housing bore
+        ax.plot([sx + 128, sx - 138], [sz + zz, sz + zz + 10], color="#555", lw=0.6, zorder=6)
+    for zc in (sz - 26, sz + 26):                                              # blind rivets: SS backing → drum OD
+        ax.plot([sx + 140, sx + 170], [zc, zc], color=C_OUT, lw=1.6, zorder=8)
     draw_dim_h(ax, sx - 140, sx + 140, sz - 120, f"≈{RUN_GAP}mm RUNNING GAP", offset=40,
                fs=6.5, above=False, font=FONT)
-    leader(ax, sx - 127, sz + 30, sx - 320, sz + 90,
-           "FELT / BRUSH WIPER in an Al RETAINER CHANNEL\nscrewed to the FIXED housing; bristles wipe the\nrotating drum (nothing is fixed to the drum)",
-           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, sx - 170, sz, sx - 300, sz - 60, f"HOUSING {LT_HOUSING_T}mm", fs=6,
+    leader(ax, sx + 134, sz + 40, sx + 250, sz + 120,
+           f"BRUSH STRIP ×{LT_WIPER_N} (McMaster 74715T2 — 0.008\" black nylon, {LT_WIPER_TRIM:.0f}mm trim,\n"
+           f"1/8\" STAINLESS backing) RIVETED to the ROTATING drum OD; bristles wipe the FIXED\n"
+           f"housing bore (lay over ~{LT_WIPER_TRIM - RUN_GAP:.0f}mm across the {RUN_GAP}mm gap) · one piece / line",
+           fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, sx - 170, sz - 40, sx - 300, sz - 80, f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6,
            color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, sx + 163, sz, sx + 300, sz - 60, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
+    leader(ax, sx + 163, sz - 60, sx + 300, sz - 90, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
            color=C_DIM, ha="left", arrow_style="->", font=FONT)
     ax.text(sx, sz + 190, "SEAL DETAIL — RUNNING GAP (enlarged)", ha="center", va="bottom",
             fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
@@ -1054,12 +1067,12 @@ def draw_sheet6():
     notes = [
         "SEALS & LIGHT-PATH",
         "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
-        f"Running gap {RUN_GAP}mm (drum OD → housing bore): closed by a felt/brush wiper — drum rotates against it.",
+        f"Running-gap wiper: {LT_WIPER_N}× vertical nylon brush strips (McMaster 74715T2 — 1/8\" STAINLESS-backed, 0.008\" black nylon, {LT_WIPER_TRIM:.0f}mm trim) RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing; bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. Sold by the foot → each line is ONE continuous piece over the full drum height (no joint).",
+        f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
         "Top + bottom: 12mm closed-cell neoprene wiper strips (cap ↔ frame) + silicone bead to the frame plates.",
-        f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation.",
-        "Interior faces flat-black; residual scatter is killed at the matte wall. ALL DIMS IN mm.",
+        f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=2400,
+    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=2400, wrap=175,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 7 OF 10", drawing_title="REVOLVING LIGHT-TRAP",

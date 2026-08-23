@@ -265,9 +265,9 @@ pattern: developed length, height, weld-seam location, and the two 80° opening 
 
 ![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
 
-**Sheet 3 — Drum — Cut (shell flat pattern + end-cap blueprint).** The HDPE C-shell flat
-pattern (single 80° opening) and the full end-cap blueprint: Ø855 disc, Ø75 hub bore,
-4×M10 stub-shaft flange on Ø120 PCD, and the 280° arc of rim-angle rivet holes.
+**Sheet 3 — Drum shell — cut sheet.** The HDPE C-shell as a true developed flat pattern
+(2,111 × 2,040 mm, single 80° opening) — the plastics shop's cutting/rolling template.
+The end caps are machined metal parts and are drawn on Sheet 6.
 
 ![TBS-001 Light-Trap — Sheet 3: Drum — Cut](assets/lighttrap-sheet3.png)
 
@@ -283,10 +283,11 @@ The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 
 ![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)
 
-**Sheet 6 — Machined components (bearing seats & stub-shaft).** Single-part blueprints
-for the turned/machined metal parts: the upper 6061-T6 Al bearing ring, the lower A36
-steel floor collar, and the stub-shaft + flange — each with OD, bore + fit, thickness,
-bolt pattern (PCD/count/Ø), material, and weld notes.
+**Sheet 6 — Machined components (end cap + bearing seats + stub-shaft).** Single-part
+blueprints for the machined metal parts: the Ø855 6061-T6 Al end cap, the upper Al
+bearing ring, the lower A36 steel floor collar, and the stub-shaft + flange — each with
+OD, bore + fit, thickness, bolt pattern (PCD/count/Ø), material, and the fastening
+scheme (cap→flange tapped; ring/collar→beam weld-nuts; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 

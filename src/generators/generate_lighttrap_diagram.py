@@ -42,7 +42,7 @@ from tbs_constants import (
 )
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v, draw_cl_h,
-    leader, draw_notes, bolt_holes,
+    leader, draw_notes,
 )
 from tbs_title_block import title_block
 
@@ -371,7 +371,7 @@ def draw_sheet2():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — Rotating drum cut sheet (flat pattern) + caps
+# SHEET 3 — Rotating drum shell cut sheet (flat pattern; caps → Sheet 6)
 # The 1/8in HDPE C-shell developed flat (single 80° opening → 280° of material),
 # plus the two 3/16in top/bottom caps with bolted steel stub-shaft hubs.
 # ═════════════════════════════════════════════════════════════════════════════
@@ -383,14 +383,9 @@ def draw_sheet3():
     SHELL_H   = DRUM_H_LT - PANEL_FLOOR_GAP - 80        # drum body height (= 2040)
     RUN_GAP_L = LT_HOUSING_R - LT_HOUSING_T - LT_DRUM_OR
 
-    cap_r  = LT_CAP_OD / 2
-    cap_cx = W_SHELL + 360 + cap_r
-    cz_top = SHELL_H - cap_r
-    cz_bot = cap_r
-
-    # ── Data window → figure size ────────────────────────────────────────────
+    # ── Data window → figure size (shell flat pattern only; caps → Sheet 6) ──
     PAD_L, PAD_R, PAD_B, PAD_T = 380, 430, 1520, 430
-    X_LO, X_HI = -PAD_L, cap_cx + cap_r + PAD_R
+    X_LO, X_HI = -PAD_L, W_SHELL + PAD_R
     Z_LO, Z_HI = -PAD_B, SHELL_H + PAD_T
     FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
@@ -428,54 +423,22 @@ def draw_sheet3():
             f"single {LT_OPENING_DEG}° opening removed  ·  arc = {OW:.0f}mm",
             ha="center", va="bottom", fontsize=7, color=C_DIM, **FONT, zorder=15)
 
-    # ── Top + bottom caps — full END-CAP blueprint (Ø855 6061-T6 Al discs) ───
-    oh = LT_OPENING_DEG / 2
-    n_rim = round((LT_SHELL_ARC / 360.0) * math.pi * LT_CAP_OD / LT_RIM_RIVET_PITCH)  # rim-angle → cap rivets
-    r_rim = cap_r - 14                                                       # rim-rivet bolt circle (near edge)
-
-    def end_cap(cz, label):
-        draw_circle(ax, cap_cx, cz, cap_r, lw=2.0, color=C_OUT, fill=True, fc=C_ALUM, zorder=4)
-        draw_circle(ax, cap_cx, cz, 78, lw=1.2, color=C_OUT, zorder=6)       # hub boss
-        draw_circle(ax, cap_cx, cz, SKF6215_ID / 2, lw=1.4, color="#CC4422", zorder=7)  # Ø75 shaft bore
-        bolt_holes(ax, cap_cx, cz, 60, 4, 5.5, color=C_OUT, zorder=7)        # 4× M10 flange on Ø120 PCD
-        # rim-angle → cap rivet holes on the 280° arc (the 80° opening has no rim)
-        for i in range(n_rim):
-            a = math.radians(oh + (i + 0.5) / n_rim * LT_SHELL_ARC)
-            draw_circle(ax, cap_cx + r_rim * math.cos(a), cz + r_rim * math.sin(a), 4,
-                        lw=0.8, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
-        draw_circle(ax, cap_cx, cz, r_rim, lw=0.7, color=C_CL, ls="--", zorder=5)
-        ax.text(cap_cx, cz - cap_r - 40, label, ha="center", va="top", fontsize=8,
-                color=C_OUT, fontweight="bold", **FONT, zorder=15)
-
-    end_cap(cz_top, f"TOP CAP\n{LT_CAP_TOP_T:.0f}mm 6061-T6 Al")
-    end_cap(cz_bot, f"BOTTOM CAP (identical)\n{LT_CAP_BOT_T:.0f}mm 6061-T6 Al")
-    draw_dim_h(ax, cap_cx - cap_r, cap_cx + cap_r, cz_top + cap_r + 90, f"Ø{LT_CAP_OD}",
-               offset=70, fs=7.5, font=FONT)
-    leader(ax, cap_cx, cz_top, cap_cx - cap_r - 70, cz_top + cap_r + 40,
-           f"4×M10 on Ø120 PCD (drill Ø11) — stub-shaft flange\nØ{SKF6215_ID} h6 hub bore → SKF 6215 (Sheet 5)",
-           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, cap_cx + r_rim * math.cos(math.radians(50)), cz_top + r_rim * math.sin(math.radians(50)),
-           cap_cx + cap_r + 70, cz_top + cap_r * 0.5,
-           f"{n_rim}× Ø{LT_RIVET_HOLE} rim-angle → cap rivet holes\non 280° arc @ {LT_RIM_RIVET_PITCH}mm (Sheet 4)",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-
     # ── Fabrication notes ────────────────────────────────────────────────────
     notes = [
-        "ROTATING DRUM — FABRICATION",
-        f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm.",
-        f"Caps (Ø{LT_CAP_OD}): both {LT_CAP_TOP_T:.0f}mm 6061-T6 Al (identical).",
-        f"1. Roll shell to R{LT_DRUM_OR}; the two free edges are the opening jambs.",
+        "ROTATING DRUM SHELL — CUT SHEET (flat pattern)",
+        f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm — this developed blank is the shop's cutting/rolling template.",
+        f"1. Cut the blank, roll to R{LT_DRUM_OR}; the two free edges are the {LT_OPENING_DEG}° opening jambs.",
         f"2. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 4).",
-        "3. Cap holes: 4×M10 on Ø120 PCD (stub-shaft flange, drill Ø11) + Ø75 h6 hub bore + the 280° arc of rim-angle rivet holes (drill Ø3.3).",
-        f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 7. Bearing-seat rings + stub-shaft on Sheet 6.",
-        "SHELL: FLAT PATTERN, TRUE DEVELOPED SCALE · CAPS: end-cap blueprint · ALL DIMS IN mm",
+        "The end caps (Ø855 6061-T6 Al, hub bore + 4×M10 flange + rim-rivet holes) are drawn on Sheet 6 with the other machined metal parts.",
+        f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 7.",
+        "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 3 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="ROTATING DRUM — SHELL FLAT PATTERN + END-CAP BLUEPRINT",
-                scale_note="FLAT PATTERN · ALL DIMS IN mm",
+                subtitle="ROTATING DRUM SHELL — CUT SHEET (FLAT PATTERN)",
+                scale_note="FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet3.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -577,7 +540,7 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         (55 * SC,  (-100 * SC, 40 * SC),  "PANEL TOP RAIL\n6×M10 (isolated mount)"),
         (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD, H7)"),
         (-52 * SC, (-70 * SC, -47 * SC),  "STEEL FLANGE\n4×M10 to Al cap"),
-        (-90 * SC, (-90 * SC, -62 * SC),  f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}\n(width — see Sheet 3)"),
+        (-90 * SC, (-90 * SC, -62 * SC),  f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}\n(single-part blueprint — Sheet 6)"),
     ]
     for zt, (tx, tz), txt in up_labels:
         leader(ax, UX + tx, tz, LxT, zt, txt, fs=6.5, color=C_OUT, ha="right",
@@ -637,7 +600,7 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
     ax.text((UX + LX) / 2, -640,
             "MACHINED COMPONENTS (Al top ring · steel floor collar · stub-shaft + flange) —\n"
             "fully dimensioned single-part blueprints incl. bolt patterns on SHEET 6.\n"
-            "End cap (Ø855 6061-T6 Al, 4×M10 hub flange) — SHEET 3.",
+            "End cap (Ø855 6061-T6 Al, 4×M10 hub flange) — SHEET 6.",
             ha="center", va="center", fontsize=8, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=9)
 
@@ -646,9 +609,9 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         "BEARING HUB — SPECIFICATION",
         f"Bearing ×2: SKF 6215-2RS1 — Ø{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}mm, sealed 2RS, C3, 0–120°C, 52.7 kN dyn.",
         f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
-        "Bearing mounts: upper in isolated aluminum top ring (6×M10); lower in welded steel floor collar (8×M10).",
+        "Bearing mounts: upper in isolated aluminum top ring (6×M10 into weld-nuts on the beam, nylon-isolated); lower in welded steel floor collar (8×M10). Cap→flange: bolt from the cap into the TAPPED steel flange. Full fastening on Sheet 6.",
         "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
-        "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft on SHEET 6; end cap on SHEET 3; frame members on SHEET 8.",
+        "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
         "SECTIONS 2.2:1 (isotropic) · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -830, 92, fs=7, font=FONT,
@@ -1369,7 +1332,7 @@ def draw_sheet9():
 # OD / bore / PCD / bolt holes) + SECTION (thickness) + full dims + material.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet_components():
-    X_LO, X_HI, Z_LO, Z_HI = -120, 2500, -900, 560
+    X_LO, X_HI, Z_LO, Z_HI = -120, 3320, -900, 560
     FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -1380,7 +1343,7 @@ def draw_sheet_components():
     ax.set_aspect("equal")                                                   # ISOTROPIC 1:2
     ax.axis("off")
     s2 = 1.5                                                                  # 1.5:1
-    ax.text(1150, Z_HI - 8, "MACHINED COMPONENTS — BEARING SEATS & STUB-SHAFT  (single-part blueprints · 1.5:1)",
+    ax.text(1550, Z_HI - 8, "MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT  (single-part blueprints)",
             ha="center", va="top", fontsize=9, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
 
     def holes(cx, cz, rpcd, n):
@@ -1405,7 +1368,7 @@ def draw_sheet_components():
         draw_cl_v(ax, cx, pz - rod - 16, pz + rod + 16)
         draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 8, f"Ø{od} OD", offset=30, fs=6.4, font=FONT)
         ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
-        ax.text(cx, pz - rod - 16, f"{n}×M10 on Ø{pcd} PCD · drill Ø11", ha="center", va="top",
+        ax.text(cx, pz - rod - 16, f"{n}×M10 on Ø{pcd} PCD · Ø11 clearance → weld-nut on beam", ha="center", va="top",
                 fontsize=6.6, color=C_OUT, **FONT, zorder=9)
         # ── SECTION (annular, thickness) ──
         tz = thk * s2
@@ -1459,23 +1422,51 @@ def draw_sheet_components():
     holes(cx, fpz, 120 / 2 * s2, 4)
     draw_cl_h(ax, cx - fl_r - 16, cx + fl_r + 16, fpz)
     draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 8, "Ø160 FLANGE", offset=28, fs=6.2, font=FONT)
-    ax.text(cx, fpz - fl_r - 14, "4×M10 on Ø120 PCD · drill Ø11", ha="center", va="top",
+    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolts in)", ha="center", va="top",
             fontsize=6.6, color=C_OUT, **FONT, zorder=9)
     ax.text(cx, ez - fl_t - 30, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
             va="top", fontsize=6.6, color=C_OUT, **FONT, zorder=9)
 
+    # ── 4 · End cap (Ø855 — the largest part, drawn at 1:3) ──────────────────
+    scc = 1.0 / 3.0
+    ccx, ccz = 2870, 260
+    cr = LT_CAP_OD / 2 * scc
+    ax.text(ccx, ccz + cr + 40, "END CAP (×2 identical) · 1:3", ha="center", va="bottom",
+            fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
+    draw_circle(ax, ccx, ccz, cr, lw=1.8, color=C_OUT, fill=True, fc=C_ALUM, zorder=5)
+    draw_circle(ax, ccx, ccz, 78 * scc, lw=1.0, color=C_OUT, zorder=6)                   # hub boss
+    draw_circle(ax, ccx, ccz, SKF6215_ID / 2 * scc, lw=1.2, color="#CC4422", zorder=7)   # Ø75 bore
+    holes(ccx, ccz, 60 * scc, 4)                                                         # 4× flange clearance holes
+    oh2 = LT_OPENING_DEG / 2
+    n_rim = round((LT_SHELL_ARC / 360.0) * math.pi * LT_CAP_OD / LT_RIM_RIVET_PITCH)
+    rrc = (LT_CAP_OD / 2 - 14) * scc
+    for i in range(n_rim):
+        a = math.radians(oh2 + (i + 0.5) / n_rim * LT_SHELL_ARC)
+        draw_circle(ax, ccx + rrc * math.cos(a), ccz + rrc * math.sin(a), 3,
+                    lw=0.7, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
+    draw_circle(ax, ccx, ccz, rrc, lw=0.7, color=C_CL, ls="--", zorder=6)
+    draw_cl_h(ax, ccx - cr - 16, ccx + cr + 16, ccz)
+    draw_cl_v(ax, ccx, ccz - cr - 16, ccz + cr + 16)
+    draw_dim_h(ax, ccx - cr, ccx + cr, ccz + cr + 8, f"Ø{LT_CAP_OD} OD", offset=30, fs=6.4, font=FONT)
+    ax.text(ccx, ccz - cr - 16,
+            f"4× Ø11 clearance on Ø120 PCD (bolt → tapped flange) · Ø{SKF6215_ID} h6 bore\n"
+            f"{n_rim}× Ø{LT_RIVET_HOLE} rim-rivet holes @ {LT_RIM_RIVET_PITCH}mm (280° arc)",
+            ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT, zorder=9)
+    ax.text(ccx, ccz - cr - 78, f"{LT_CAP_TOP_T:.0f}mm 6061-T6 Al plate (both caps identical)",
+            ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT, zorder=9)
+
     notes = [
-        "MACHINED COMPONENTS  (bearing seats + stub-shaft — assembled on Sheet 5)",
+        "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
+        f"End cap ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al Ø{LT_CAP_OD} disc — Ø{SKF6215_ID} h6 hub bore, 4× Ø11 flange holes on Ø120 PCD, + the 280° rim-rivet hole arc (shell → cap, Sheet 4).",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
-        "Upper ring 6061-T6 Al (electrically isolated from the steel frame by a nylon shoulder + isolating washers); lower collar A36 steel, fillet-welded to the floor plate.",
-        "Stub-shaft flange bolts to the cap (4×M10, Sheet 3); ring/collar bolt to the axle beam (Sheet 8). Bolt holes shown enlarged; drill Ø11 clearance for M10.",
-        "PLANS + SECTIONS 1.5:1 (isotropic) · ALL DIMS IN mm",
+        "FASTENING — cap → stub-shaft flange: M10 bolt from the cap into the TAPPED steel flange (cap has Ø11 clearance). Ring + collar → axle beam: M10 into WELD-NUTS on the 100×50×3 RHS beam (3mm wall is too thin to tap; the tube is closed). The Al ring is electrically isolated from the steel by a nylon shoulder + isolating washers; the steel collar is fillet-welded to the floor plate.",
+        "CAP 1:3 · RINGS + STUB 1.5:1 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -560, 40, fs=7, font=FONT, width=2450, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 60, -560, 46, fs=7, font=FONT, width=3150, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="MACHINED COMPONENTS — BEARING SEATS & STUB-SHAFT",
-                scale_note="PLANS + SECTIONS 1.5:1 · ALL DIMS IN mm",
+                subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
+                scale_note="CAP 1:3 · RINGS + STUB 1.5:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

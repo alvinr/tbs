@@ -379,15 +379,28 @@ LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests I
 LT_RIM_LEG     = 25       # rim-angle leg (mm) — rolled 280° arc at each cap rim, provides the rivetable lip
 LT_RIM_T       = 3        # rim-angle thickness (mm); 25×25×3 6061-T6 Al, riveted to both caps over the 280° arc
 LT_LAP_H       = 25       # shell lap over each cap rim (mm)
-LT_RIVET_D     = 3.18     # 1/8" 18-8 SS domed-head blind rivet (McMaster 97525A425 shell→cap / 97525A435 housing→frame)
+LT_RIVET_D     = 3.18     # 1/8" 18-8 SS blind rivet, low-profile head (McMaster 97525A425 shell→cap / 97525A435 housing→frame)
 LT_RIVET_HOLE  = 3.3      # drill hole Ø (mm) — #30 drill, 0.129–0.133" per the rivet datasheet
 LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)
 LT_RIVET_N     = round((LT_SHELL_ARC / 360) * math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 35 rivets per cap (280° shell arc)
 LT_RIM_RIVET_PITCH = 120  # rim-angle flat-leg → cap rivet pitch (mm; coarser than the shell rivets)
 # ── Housing (outer skin) → FRAME attachment (2026-08-21). The fixed housing laps a
-# rolled rim-angle welded to the frame top/bottom beams + jamb frames; SS rivets + DP8010.
+# rolled rim-angle welded to the frame top/bottom beams (opening edges stiffened by Al
+# edge channels, not jamb posts); SS rivets + DP8010.
 LT_HOUSING_ARC     = 360 - 2 * LT_OPENING_DEG   # 200 — housing material arc (two 100° arcs; two 80° openings)
 LT_HOUSING_RIVET_N = round((LT_HOUSING_ARC / 360) * math.pi * 2 * LT_HOUSING_R / LT_RIVET_PITCH)  # ≈ 26 per top/bottom edge
+# ── Running-gap light-seal WIPER (2026-08-24) — nylon strip brushes on the ROTATING drum.
+# Vertical brush strips riveted to the drum OD, bristles wiping the FIXED housing bore.
+# Spaced ≤100° (the housing material-arc width) so a strip always sits in each 100° arc at
+# every drum rotation → guaranteed gap-light block (light-trap-selection §9 Sheet 7 study).
+# McMaster 74715T2: corrosion-resistant tight-seal strip brush — 1/8"×1/8" STAINLESS-STEEL
+# backing, 0.008" (0.20mm) black nylon, 1" overall (7/8"/22.2mm trim); sold by the foot, so
+# each line is ONE continuous cut over the full drum height (no butt joint). SS backing suits
+# the damp container; black bristles absorb stray light.
+LT_WIPER_N         = 4      # brush strips around the drum (280° wall / 3 gaps = 93.3° spacing ≤ 100°)
+LT_WIPER_TRIM      = 22.2   # bristle trim / free length (mm) — 7/8" (bridges the 13mm gap, lays over ~9mm)
+LT_WIPER_BRISTLE_D = 0.20   # bristle Ø (mm) — 0.008" fine dense black nylon (dense = light block, black = absorb)
+LT_WIPER_SPACING   = LT_SHELL_ARC / (LT_WIPER_N - 1)   # 93.3° between strips on the 280° drum wall
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,
 # enclosing the offset housing, so the film-plane rails stay internal.

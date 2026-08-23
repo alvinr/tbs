@@ -57,7 +57,12 @@ file** — a release must not ship without a changelog entry:
   `parts-worklist.csv`. **Fastening resolved:** cap→stub-shaft = bolt into a **tapped** steel flange; bearing
   ring/collar→axle beam = M10 into **weld-nuts** on the 3mm RHS (too thin to tap, closed tube), Al ring
   nylon-isolated — annotated on Sheets 5/6. The **end-cap blueprint moved to Sheet 6** (all machined metal parts
-  together); Sheet 3 is now the pure drum-shell cut sheet (the developed flat blank). Full parts/cost + weight/CG
+  together); Sheet 3 is now the pure drum-shell cut sheet (the developed flat blank). **Running-gap light seal
+  spec'd:** the drum↔housing 13 mm gap is closed by **4 vertical nylon brush strips** ([McMaster 74715T2](https://www.mcmaster.com/74715T2-74715T207/)
+  — 1/8″ stainless-backed, 0.008″ black nylon, 7/8″ trim, $27.02/7 ft) **riveted to the rotating drum** OD at
+  93° spacing; the count comes from a Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a
+  strip always seals each arc between the openings at every rotation). Sold by the foot → one continuous piece
+  per line (no joint). Sheet 7's seal detail + three-position plans now carry the study. Full parts/cost + weight/CG
   + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted

@@ -975,9 +975,17 @@ def draw_sheet6():
     for cx, dth, title in plans:
         # running-gap ring (drum OD → housing bore) — thin, so the annulus reads
         draw_circle(ax, cx, 0, HR - LT_HOUSING_T, lw=0.8, color="#B8BDC6", fill=False, zorder=2)
-        # fixed housing walls (OUTER) — two 80° openings, 180° apart (steel blue)
-        for gc in (0, 180):
-            arc(cx, 0, HR, gc, LT_OPENING_DEG, C6_HOUSE, 5.0)
+        # fixed housing walls (OUTER) — TWO 100° material arcs (two 80° openings at 0° & 180°)
+        for a_lo, a_hi in ((oh, 180 - oh), (180 + oh, 360 - oh)):
+            ts = [math.radians(a_lo + (a_hi - a_lo) * k / 30) for k in range(31)]
+            ax.plot([cx + HR * math.cos(t) for t in ts], [HR * math.sin(t) for t in ts],
+                    color=C6_HOUSE, lw=5.0, zorder=6)
+        for gc in (0, 180):                                       # housing opening jamb ticks
+            for e in (gc - oh, gc + oh):
+                a = math.radians(e)
+                ax.plot([cx + (HR - 22) * math.cos(a), cx + (HR + 22) * math.cos(a)],
+                        [(HR - 22) * math.sin(a), (HR + 22) * math.sin(a)],
+                        color=C6_HOUSE, lw=1.2, zorder=7)
         # rotating drum wall (INNER) — single 80° opening at dth (warm amber)
         arc(cx, 0, DR, dth, LT_OPENING_DEG, C6_DRUM, 7.0)
         for t in (dth - oh, dth + oh):                            # drum opening jamb ticks
@@ -1293,6 +1301,8 @@ def draw_sheet9():
     draw_dim_v(ax, HOR_ + 55, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
                f"{Z_BEAM0 - LT_LAP_H:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
                offset=38, fs=6.0, right=True, font=FONT)
+    draw_dim_h(ax, DOR_, POST_R0, -55, f"{POST_R0 - DOR_:.0f}mm — rotating drum skin → fixed corner post",
+               offset=32, fs=6.0, above=False, font=FONT)
 
     # ── Zone tags ────────────────────────────────────────────────────────────
     ax.text(210, -70, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
@@ -1346,107 +1356,105 @@ def draw_sheet9():
 # OD / bore / PCD / bolt holes) + SECTION (thickness) + full dims + material.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet_components():
-    X_LO, X_HI, Z_LO, Z_HI = -120, 3320, -900, 560
-    FIG_W = 20.0
-    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    # PORTRAIT single column — four machined parts stacked, drawn large (page width).
+    s2 = 2.2                                                                  # 2.2:1 (rings / collar / stub)
+    scc = 0.5                                                                 # 1:2 (the big Ø855 end cap)
+    CX = 560                                                                  # single-column center
+    SEC_DZ = 400                                                             # plan → section drop (rings)
+    R_RING, R_COLLAR, R_STUB, R_CAP = -150, -1060, -1990, -3110              # plan-z of each row
+    X_LO, X_HI = -260, 1380
+    Z_LO, Z_HI = R_CAP - 620, 360
+    FIG_H = 26.0
+    FIG_W = FIG_H * (X_HI - X_LO) / (Z_HI - Z_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI)
     ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")                                                   # ISOTROPIC 1:2
+    ax.set_aspect("equal")                                                   # ISOTROPIC
     ax.axis("off")
-    s2 = 1.5                                                                  # 1.5:1
-    ax.text(1550, Z_HI - 8, "MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT  (single-part blueprints)",
-            ha="center", va="top", fontsize=9, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    ax.text(CX, Z_HI - 8, "MACHINED COMPONENTS\nEND CAP + BEARING SEATS + STUB-SHAFT",
+            ha="center", va="top", fontsize=11, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
 
     def holes(cx, cz, rpcd, n):
         for i in range(n):
             a = math.radians(90 + i * 360.0 / n)
             hx, hy = cx + rpcd * math.cos(a), cz + rpcd * math.sin(a)
-            draw_circle(ax, hx, hy, 5, lw=1.0, color=C_OUT, fill=True, fc="white", zorder=8)
-            ax.plot([hx - 9, hx + 9], [hy, hy], color=C_OUT, lw=0.5, zorder=9)
-            ax.plot([hx, hx], [hy - 9, hy + 9], color=C_OUT, lw=0.5, zorder=9)
+            draw_circle(ax, hx, hy, 7, lw=1.0, color=C_OUT, fill=True, fc="white", zorder=8)
+            ax.plot([hx - 12, hx + 12], [hy, hy], color=C_OUT, lw=0.5, zorder=9)
+            ax.plot([hx, hx], [hy - 12, hy + 12], color=C_OUT, lw=0.5, zorder=9)
 
-    def ring(cx, od, bore, pcd, n, thk, fc, title, mat, weldnote=None):
+    def ring(pz, od, bore, pcd, n, thk, fc, title, mat, weldnote=None):
+        cx = CX
         rod, rbore, rpcd = od / 2 * s2, bore / 2 * s2, pcd / 2 * s2
-        pz, sz = 260, -240                                                   # plan / section z-centers
-        # ── PLAN (end view) ──
-        ax.text(cx, pz + rod + 40, title, ha="center", va="bottom", fontsize=8,
+        sz = pz - SEC_DZ
+        ax.text(cx, pz + rod + 82, title, ha="center", va="bottom", fontsize=9.5,
                 color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
         draw_circle(ax, cx, pz, rod, lw=1.8, color=C_OUT, fill=True, fc=fc, zorder=5)
         draw_circle(ax, cx, pz, rbore, lw=1.4, color=C_OUT, fill=True, fc="white", zorder=6)
-        draw_circle(ax, cx, pz, rpcd, lw=0.8, color=C_CL, ls="--", zorder=6)
+        draw_circle(ax, cx, pz, rpcd, lw=0.9, color=C_CL, ls="--", zorder=6)
         holes(cx, pz, rpcd, n)
-        draw_cl_h(ax, cx - rod - 16, cx + rod + 16, pz)
-        draw_cl_v(ax, cx, pz - rod - 16, pz + rod + 16)
-        draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 8, f"Ø{od} OD", offset=30, fs=6.4, font=FONT)
-        ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
-        ax.text(cx, pz - rod - 16, f"{n}×M10 on Ø{pcd} PCD · Ø11 clearance → weld-nut on beam", ha="center", va="top",
-                fontsize=6.6, color=C_OUT, **FONT, zorder=9)
-        # ── SECTION (annular, thickness) ──
-        tz = thk * s2
+        draw_cl_h(ax, cx - rod - 20, cx + rod + 20, pz)
+        draw_cl_v(ax, cx, pz - rod - 20, pz + rod + 20)
+        draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 6, f"Ø{od} OD", offset=34, fs=7, font=FONT)
+        ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=7, color=C_DIM, **FONT, zorder=9)
+        ax.text(cx, pz - rod - 14, f"{n}×M10 on Ø{pcd} PCD · Ø11 clearance → weld-nut on beam",
+                ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+        tz = thk * s2                                                         # SECTION (annular)
         for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
             draw_rect(ax, xr0, sz, xr1 - xr0, tz, fc=fc, lw=1.4, zorder=5)
-        draw_cl_v(ax, cx, sz - 14, sz + tz + 14)
-        draw_dim_v(ax, cx + rod + 30, sz, sz + tz, f"{thk}mm THK", offset=30, fs=6.4, right=True, font=FONT)
-        draw_dim_h(ax, cx - rbore, cx + rbore, sz - 18, f"Ø{bore} BORE", offset=26, fs=6.0,
-                   above=False, font=FONT)
+        draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
+        draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
+        draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
         if weldnote:
-            ax.add_patch(mpatches.Polygon([(cx - rod, sz), (cx - rod - 14, sz), (cx - rod, sz + 14)],
-                                          closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
-            ax.add_patch(mpatches.Polygon([(cx + rod, sz), (cx + rod + 14, sz), (cx + rod, sz + 14)],
-                                          closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
-        ax.text(cx, sz - 48, mat + ("" if not weldnote else f"\n{weldnote}"),
-                ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT, zorder=9)
+            for g in (-1, 1):
+                ax.add_patch(mpatches.Polygon([(cx + g * rod, sz), (cx + g * (rod + 16), sz),
+                                               (cx + g * rod, sz + 16)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
+        ax.text(cx, sz - 54, mat + ("" if not weldnote else f"\n{weldnote}"),
+                ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
-    # ── 1 · Upper Al bearing ring ────────────────────────────────────────────
-    ring(320, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
-         "UPPER BEARING RING", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
-    # ── 2 · Lower steel floor collar ─────────────────────────────────────────
-    ring(1120, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,  # collar
-         "LOWER FLOOR COLLAR", "A36 steel · bore Ø130 (bearing seat)", weldnote="6mm fillet weld to floor plate")
+    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
+         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
+    ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,
+         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · bore Ø130 (bearing seat)", weldnote="6mm fillet weld to floor plate")
 
-    # ── 3 · Stub-shaft + flange (elevation + flange plan) ────────────────────
-    cx = 1900
+    # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
+    cx = CX
     sh_r, fl_r, fl_t = SKF6215_ID / 2 * s2, 160 / 2 * s2, 12 * s2
     shaft_L = 150 * s2
-    ez = -380                                                                # elevation base (flange top)
-    ax.text(cx, 260 + fl_r + 40, "STUB-SHAFT + FLANGE", ha="center", va="bottom", fontsize=8,
+    fpz = R_STUB
+    ez = R_STUB - 690                                                        # elevation base (flange), shaft up
+    ax.text(cx, fpz + fl_r + 82, "STUB-SHAFT + FLANGE  (2.2:1)", ha="center", va="bottom", fontsize=9.5,
             color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
-    # ELEVATION: flange (bottom) + shaft (up)
+    draw_circle(ax, cx, fpz, fl_r, lw=1.8, color=C_OUT, fill=True, fc=C_STEEL, zorder=5)
+    draw_circle(ax, cx, fpz, sh_r, lw=1.4, color=C_OUT, fill=True, fc="#9BA0A8", zorder=6)
+    draw_circle(ax, cx, fpz, 120 / 2 * s2, lw=0.9, color=C_CL, ls="--", zorder=6)
+    holes(cx, fpz, 120 / 2 * s2, 4)
+    draw_cl_h(ax, cx - fl_r - 20, cx + fl_r + 20, fpz)
+    draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 6, "Ø160 FLANGE", offset=32, fs=7, font=FONT)
+    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolts in)", ha="center", va="top",
+            fontsize=7.5, color=C_OUT, **FONT, zorder=9)
     draw_rect(ax, cx - fl_r, ez - fl_t, 2 * fl_r, fl_t, fc=C_STEEL, lw=1.6, zorder=5)     # flange
     draw_rect(ax, cx - sh_r, ez, 2 * sh_r, shaft_L, fc=C_STEEL, lw=1.6, zorder=5)         # shaft
-    for g in (-1, 1):                                                                     # fillet weld shaft→flange
-        ax.add_patch(mpatches.Polygon([(cx + g * sh_r, ez), (cx + g * (sh_r + 12), ez),
-                                       (cx + g * sh_r, ez + 12)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
-    for zc in (ez + shaft_L - 10, ez + shaft_L - 22):                                     # circlip grooves
-        ax.plot([cx - sh_r, cx - sh_r + 6], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
-        ax.plot([cx + sh_r - 6, cx + sh_r], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
-    draw_cl_v(ax, cx, ez - fl_t - 14, ez + shaft_L + 14)
-    draw_dim_v(ax, cx - fl_r - 30, ez, ez + shaft_L, f"{150} LG (Ø{SKF6215_ID})", offset=30, fs=6.4, font=FONT)
-    draw_dim_v(ax, cx + fl_r + 30, ez - fl_t, ez, "12mm THK", offset=28, fs=6.0, right=True, font=FONT)
+    for g in (-1, 1):
+        ax.add_patch(mpatches.Polygon([(cx + g * sh_r, ez), (cx + g * (sh_r + 14), ez),
+                                       (cx + g * sh_r, ez + 14)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
+    for zc in (ez + shaft_L - 12, ez + shaft_L - 26):
+        ax.plot([cx - sh_r, cx - sh_r + 8], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
+        ax.plot([cx + sh_r - 8, cx + sh_r], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
+    draw_cl_v(ax, cx, ez - fl_t - 16, ez + shaft_L + 16)
+    draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"150 LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
+    draw_dim_v(ax, cx + fl_r + 34, ez - fl_t, ez, "12mm THK", offset=32, fs=6.6, right=True, font=FONT)
     ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove each end", ha="center", va="bottom",
-            fontsize=6.2, color=C_DIM, **FONT, zorder=9)
-    # FLANGE PLAN (above the elevation)
-    fpz = 260
-    draw_circle(ax, cx, fpz, fl_r, lw=1.8, color=C_OUT, fill=True, fc=C_STEEL, zorder=5)
-    draw_circle(ax, cx, fpz, sh_r, lw=1.4, color=C_OUT, fill=True, fc="#9BA0A8", zorder=6)  # shaft (solid)
-    draw_circle(ax, cx, fpz, 120 / 2 * s2, lw=0.8, color=C_CL, ls="--", zorder=6)
-    holes(cx, fpz, 120 / 2 * s2, 4)
-    draw_cl_h(ax, cx - fl_r - 16, cx + fl_r + 16, fpz)
-    draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 8, "Ø160 FLANGE", offset=28, fs=6.2, font=FONT)
-    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolts in)", ha="center", va="top",
-            fontsize=6.6, color=C_OUT, **FONT, zorder=9)
-    ax.text(cx, ez - fl_t - 30, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
-            va="top", fontsize=6.6, color=C_OUT, **FONT, zorder=9)
+            fontsize=7, color=C_DIM, **FONT, zorder=9)
+    ax.text(cx, ez - fl_t - 34, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
+            va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
-    # ── 4 · End cap (Ø855 — the largest part, drawn at 1:3) ──────────────────
-    scc = 1.0 / 3.0
-    ccx, ccz = 2870, 260
+    # ── End cap (Ø855) — plan + thickness note (1:2) ─────────────────────────
+    ccx, ccz = CX, R_CAP
     cr = LT_CAP_OD / 2 * scc
-    ax.text(ccx, ccz + cr + 40, "END CAP (×2 identical) · 1:3", ha="center", va="bottom",
-            fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
+    ax.text(ccx, ccz + cr + 82, "END CAP ×2 identical  (1:2)", ha="center", va="bottom",
+            fontsize=9.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
     draw_circle(ax, ccx, ccz, cr, lw=1.8, color=C_OUT, fill=True, fc=C_ALUM, zorder=5)
     draw_circle(ax, ccx, ccz, 78 * scc, lw=1.0, color=C_OUT, zorder=6)                   # hub boss
     draw_circle(ax, ccx, ccz, SKF6215_ID / 2 * scc, lw=1.2, color="#CC4422", zorder=7)   # Ø75 bore
@@ -1456,32 +1464,29 @@ def draw_sheet_components():
     rrc = (LT_CAP_OD / 2 - 14) * scc
     for i in range(n_rim):
         a = math.radians(oh2 + (i + 0.5) / n_rim * LT_SHELL_ARC)
-        draw_circle(ax, ccx + rrc * math.cos(a), ccz + rrc * math.sin(a), 3,
+        draw_circle(ax, ccx + rrc * math.cos(a), ccz + rrc * math.sin(a), 4,
                     lw=0.7, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
     draw_circle(ax, ccx, ccz, rrc, lw=0.7, color=C_CL, ls="--", zorder=6)
-    draw_cl_h(ax, ccx - cr - 16, ccx + cr + 16, ccz)
-    draw_cl_v(ax, ccx, ccz - cr - 16, ccz + cr + 16)
-    draw_dim_h(ax, ccx - cr, ccx + cr, ccz + cr + 8, f"Ø{LT_CAP_OD} OD", offset=30, fs=6.4, font=FONT)
-    ax.text(ccx, ccz - cr - 16,
-            f"4× Ø11 clearance on Ø120 PCD (bolt → tapped flange) · Ø{SKF6215_ID} h6 bore\n"
-            f"{n_rim}× Ø{LT_RIVET_HOLE} rim-rivet holes @ {LT_RIM_RIVET_PITCH}mm (280° arc)",
-            ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT, zorder=9)
-    ax.text(ccx, ccz - cr - 78, f"{LT_CAP_TOP_T:.0f}mm 6061-T6 Al plate (both caps identical)",
-            ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT, zorder=9)
+    draw_cl_h(ax, ccx - cr - 20, ccx + cr + 20, ccz)
+    draw_cl_v(ax, ccx, ccz - cr - 20, ccz + cr + 20)
+    draw_dim_h(ax, ccx - cr, ccx + cr, ccz + cr + 6, f"Ø{LT_CAP_OD} OD", offset=34, fs=7, font=FONT)
+    ax.text(ccx, ccz - cr - 14,
+            f"4× Ø11 clearance on Ø120 PCD (bolt → tapped flange) · Ø{SKF6215_ID} h6 bore · {LT_CAP_TOP_T:.0f}mm 6061-T6 Al plate\n"
+            f"{n_rim}× Ø{LT_RIVET_HOLE} rim-rivet holes @ {LT_RIM_RIVET_PITCH}mm on the 280° arc",
+            ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
-        f"End cap ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al Ø{LT_CAP_OD} disc — Ø{SKF6215_ID} h6 hub bore, 4× Ø11 flange holes on Ø120 PCD, + the 280° rim-rivet hole arc (shell → cap, Sheet 4).",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
-        "FASTENING — cap → stub-shaft flange: M10 bolt from the cap into the TAPPED steel flange (cap has Ø11 clearance). Ring + collar → axle beam: M10 into WELD-NUTS on the 100×50×3 RHS beam (3mm wall is too thin to tap; the tube is closed). The Al ring is electrically isolated from the steel by a nylon shoulder + isolating washers; the steel collar is fillet-welded to the floor plate.",
-        "CAP 1:3 · RINGS + STUB 1.5:1 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
+        "FASTENING — cap → stub-shaft flange: bolt from the cap into the TAPPED steel flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into WELD-NUTS on the 100×50×3 RHS beam (3mm wall too thin to tap; closed tube). Al ring nylon-isolated; steel collar fillet-welded to the floor plate.",
+        "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -560, 46, fs=7, font=FONT, width=3150, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
-                scale_note="CAP 1:3 · RINGS + STUB 1.5:1 · ALL DIMS IN mm",
-                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+                scale_note="RINGS + STUB 2.2:1 · CAP 1:2 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.02, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)

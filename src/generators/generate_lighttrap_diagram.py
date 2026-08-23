@@ -247,22 +247,6 @@ def draw_sheet1():
             f"PLAN (schematic) — two {LT_OPENING_DEG}° openings\n180° apart · detail Sheets 2 & 6",
             ha="center", va="top", fontsize=6.5, color=C_DIM, **FONT, zorder=15)
 
-    # ── Bill of materials ────────────────────────────────────────────────────
-    bom = [
-        "BILL OF MATERIALS",
-        f"1 HOUSING SKIN  1   {LT_HOUSING_T}mm UV-HDPE, Ø{DRUM_D}",
-        f"2 DRUM SHELL    1   {LT_DRUM_T:.2f}mm (1/8in) HDPE, Ø{2 * LT_DRUM_OR}",
-        f"3 END CAPS      2   {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}",
-        f"4 RIM ANGLE     2   {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} rolled R{LT_CAP_OD // 2} (6061-T6 Al)",
-        f"5 BEARING       2   SKF 6215-2RS1 (Ø{SKF6215_ID} bore)",
-        f"6 SHELL RIVETS  {2 * LT_RIVET_N}  Ø{LT_RIVET_D} SS blind (~{LT_RIVET_PITCH}mm pitch)",
-        "7 JOINT BOND    -   3M DP8010 (shell→cap lap seal)",
-        "8 SEALS         -   12/20mm neoprene + silicone",
-        f"9 GRAB RAIL     1   Ø{GRAB_D}×{GRAB_L} SS round",
-    ]
-    draw_notes(ax, bom, HO_R + 720, 1610, 112, fs=6.8, font=FONT,
-               width=1000, title_color=TITLE_COL)
-
     title_block(ax, "SHEET 1 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="GENERAL ARRANGEMENT — VERTICAL SECTION ON DRUM AXIS",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
@@ -1449,10 +1433,22 @@ def draw_sheet_components():
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
         if weldnote:
-            for g in (-1, 1):
-                ax.add_patch(mpatches.Polygon([(cx + g * rod, sz), (cx + g * (rod + 16), sz),
-                                               (cx + g * rod, sz + 16)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
-        ax.text(cx, sz - 54, mat + ("" if not weldnote else f"\n{weldnote}"),
+            # CAGE FLOOR / BOTTOM PLATE under the collar + fillet weld down to it
+            plate_tz = LT_FRAME_PLATE_T * s2
+            plate_hw = rod + 100
+            draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
+            for g in (-1, 1):                        # 6mm fillet weld: collar outer base → plate
+                ax.add_patch(mpatches.Polygon([(cx + g * rod, sz), (cx + g * (rod + 18), sz),
+                                               (cx + g * rod, sz + 18)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
+            draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
+                       offset=30, fs=6.4, right=True, font=FONT)
+            leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 46,
+                   "CAGE FLOOR / BOTTOM PLATE\n(collar 6mm fillet-welded down)", fs=6.4, color=C_OUT,
+                   ha="right", arrow_style="->", font=FONT)
+            mat_z = sz - plate_tz - 100
+        else:
+            mat_z = sz - 54
+        ax.text(cx, mat_z, mat + ("" if not weldnote else f"\n{weldnote}"),
                 ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
     ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,

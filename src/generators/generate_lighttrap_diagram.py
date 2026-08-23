@@ -68,7 +68,8 @@ RUN_GAP = LT_HOUSING_R - LT_HOUSING_T - LT_DRUM_OR   # radial gap, mm
 
 
 def blind_rivet(ax, cx, cz, ang, grip, d=12):
-    """Installed SS closed-end blind rivet in section — dome factory head at +axis,
+    """Installed SS blind rivet in section — LOW-PROFILE head at +axis (McMaster
+    97525A425 standard head: Ø ≈ 2× body, only ~0.32× body tall — NOT a tall dome),
     upset (set) blind head at −axis; `ang` = axis direction (deg), `grip` = joint stack."""
     RSC = "#C9CCD2"
     ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
@@ -78,20 +79,22 @@ def blind_rivet(ax, cx, cz, ang, grip, d=12):
     g = grip / 2
     ax.add_patch(mpatches.Polygon([T(-g, -d / 2), T(g, -d / 2), T(g, d / 2), T(-g, d / 2)],
                                   closed=True, fc=RSC, ec=C_OUT, lw=1.0, zorder=8))
-    fb, hr = g + d * 0.35, d * 0.9
-    dome = [T(g, d * 0.95)]
+    # Factory head — low, wide, shallow-domed (head Ø≈2d, height≈0.35d per datasheet)
+    HW, HH = d * 1.0, d * 0.35
+    head = [T(g, HW)]
     for kk in range(13):
         a = math.pi * (0.5 - kk / 12.0)
-        dome.append(T(fb + hr * math.cos(a), d * 0.95 * math.sin(a)))
-    dome.append(T(g, -d * 0.95))
-    ax.add_patch(mpatches.Polygon(dome, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
-    ax.plot(*zip(T(fb + hr * 0.5, 0), T(fb + hr, 0)), color=C_OUT, lw=0.7, zorder=10)
-    bb, br = -g - d * 0.25, d * 0.7
-    blind = [T(-g, d * 0.7)]
+        head.append(T(g + HH * math.cos(a), HW * math.sin(a)))
+    head.append(T(g, -HW))
+    ax.add_patch(mpatches.Polygon(head, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+    # snapped-off mandrel stub at the head center (open-end rivet — DP8010 seals the bore)
+    ax.plot(*zip(T(g, 0), T(g + HH + d * 0.12, 0)), color=C_OUT, lw=0.7, zorder=10)
+    bb, br = -g - d * 0.22, d * 0.55
+    blind = [T(-g, d * 0.6)]
     for kk in range(13):
         a = math.pi * (0.5 - kk / 12.0)
-        blind.append(T(bb - br * math.cos(a), d * 1.25 * math.sin(a)))
-    blind.append(T(-g, -d * 0.7))
+        blind.append(T(bb - br * math.cos(a), d * 0.9 * math.sin(a)))
+    blind.append(T(-g, -d * 0.6))
     ax.add_patch(mpatches.Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
 
 
@@ -616,8 +619,8 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
         "SECTIONS 2.2:1 (isotropic) · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -830, 92, fs=7, font=FONT,
-               width=2350, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 60, -830, 46, fs=7, font=FONT,
+               width=2350, wrap=140, title_color=TITLE_COL)
 
     # ── Section scale bar (50 mm, to the 2.2:1 section geometry) ─────────────
     sbx, sbz = UX - HALF - 40, -560
@@ -686,8 +689,9 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     # rivet positions (dim_v: shell-rivet CL height on the lap; dim_h: leg-rivet in from the lip)
     draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f}mm shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
     draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f}mm leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
+    draw_dim_v(ax, -RIML / 2 - 30, -CAPT, LEGT, f"{LT_CAP_TOP_T + LT_RIM_T:.0f}mm leg-rivet grip\n(flat leg → cap)", offset=40, fs=6.0, font=FONT)
     leader(ax, (DPT + SHT - LEGT) / 2, rz, 250, rz + 70,
-           f"SS Ø{LT_RIVET_D} DOMED-HEAD BLIND RIVET (radial)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
+           f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, -LEGT, LIP - 20, -300, LIP + 55,
            f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
@@ -750,8 +754,8 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
         f"1. Rim: {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} angle ring rolled to R{LT_CAP_OD // 2} — 6061-T6 Al, riveted to both Al caps.",
         f"2. Shell sleeves {LT_LAP_H}mm over the standing lip.",
         "3. Apply 3M DP8010 bead to the lap (structural LSE bond + light seal); clamp.",
-        f"4. Drill Ø{LT_RIVET_HOLE:.1f} (#30), set {LT_RIVET_N}× Ø{LT_RIVET_D} SS domed-head blind rivets per cap (McMaster 97525A425, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
-        "5. Closed-end rivets + DP8010 keep the joint light-tight; supersedes the extrusion weld.",
+        f"4. Drill Ø{LT_RIVET_HOLE:.1f} (#30), set {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per cap (McMaster 97525A425, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
+        "5. DP8010 (wet in the lap + the open mandrel bore) keeps the joint light-tight; supersedes the extrusion weld.",
         "SECTION A–A 7:1 (isotropic) · CAP PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
@@ -1132,7 +1136,7 @@ def draw_sheet8():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, DPT + HOUT, -LIP + 30, 250, -55, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 250, -215, f"SS Ø{LT_RIVET_D} DOMED-HEAD BLIND RIVET (radial)\nthrough housing + lip · + DP8010 (light seal)",
+    leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 250, -215, f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough housing + lip · + DP8010 (light seal)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, -RIML + 40, BEAMH / 2, -300, BEAMH + 40, "FRAME TOP BEAM / RAIL (steel · Sheet 8)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
@@ -1171,7 +1175,7 @@ def draw_sheet8():
            f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5\nbonded over the {LT_HOUSING_T}mm HDPE edge · DP8010",
            fs=6.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
-           f"Ø{LT_RIVET_D} SS DOMED-HEAD BLIND RIVET\nthru both legs + HDPE",
+           f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru both legs + HDPE",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── PLAN — housing footprint (200° material, two 100° arcs) + rivets ──────
@@ -1210,7 +1214,7 @@ def draw_sheet8():
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
         "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, WELDED to the frame top + bottom beams (two 100° arcs — the openings have no rim).",
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
-        f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS domed-head blind rivets per edge (McMaster 97525A435, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
+        f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge (McMaster 97525A435, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
         f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
         "SECTION A–A 7:1 (isotropic) · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
@@ -1294,7 +1298,7 @@ def draw_sheet9():
     draw_rect(ax, CAPR - LT_RIM_T, 0, LT_RIM_T, LT_LAP_H, fc=C_ALUM, lw=0.8, zorder=6)       # standing lip (up)
     draw_rect(ax, DIR_, Z_BRK, LT_DRUM_T, LT_LAP_H - Z_BRK, fc=C_LT_DRUM, lw=1.0, zorder=7)  # drum shell (laps up, hangs down)
     draw_circle(ax, (CAPR - LT_RIM_T + DOR_) / 2, LT_LAP_H / 2, LT_RIVET_D / 2,
-                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø4.8, to scale)
+                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø3.18, to scale)
 
     # ── Running gap + felt seal (to scale; detail on Sheet 7) ────────────────
     draw_rect(ax, DOR_, LT_LAP_H / 2 - 4, RUN_GAP, 8, fc="#7E7E76", lw=0.5, zorder=6)
@@ -1304,7 +1308,7 @@ def draw_sheet9():
     draw_rect(ax, HIR_ - LT_RIM_T, Z_BEAM0 - LT_LAP_H, LT_RIM_T, LT_LAP_H, fc=C_ALUM, lw=0.8, zorder=7)  # lip (down)
     draw_rect(ax, HIR_ - LT_RIM_LEG, Z_BEAM0 - LT_RIM_T, LT_RIM_LEG, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=7)  # flat leg → beam
     draw_circle(ax, (HIR_ - LT_RIM_T + HOR_) / 2, Z_BEAM0 - LT_LAP_H / 2, LT_RIVET_D / 2,
-                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø4.8, to scale)
+                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø3.18, to scale)
 
     # break lines (drum + housing continue down the full 2,200mm) ─────────────
     for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):
@@ -1339,7 +1343,7 @@ def draw_sheet9():
     draw_dim_v(ax, HOR_ + 55, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
                f"{Z_BEAM0 - LT_LAP_H:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
                offset=38, fs=6.0, right=True, font=FONT)
-    draw_dim_h(ax, DOR_, POST_R0, -55, f"{POST_R0 - DOR_:.0f}mm — rotating drum skin → fixed corner post",
+    draw_dim_h(ax, HOR_, POST_R0, -55, f"{POST_R0 - HOR_:.0f}mm — fixed housing outer skin → corner post",
                offset=32, fs=6.0, above=False, font=FONT)
 
     # ── Zone tags ────────────────────────────────────────────────────────────
@@ -1401,7 +1405,7 @@ def draw_sheet_components():
     SEC_DZ = 400                                                             # plan → section drop (rings)
     R_RING, R_COLLAR, R_STUB, R_CAP = -150, -1060, -1990, -3110              # plan-z of each row
     X_LO, X_HI = -260, 1380
-    Z_LO, Z_HI = R_CAP - 620, 360
+    Z_LO, Z_HI = R_CAP - 860, 360                                            # extra bottom margin: wrapped notes clear the title block
     FIG_H = 26.0
     FIG_W = FIG_H * (X_HI - X_LO) / (Z_HI - Z_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -1516,10 +1520,10 @@ def draw_sheet_components():
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
-        "FASTENING — cap → stub-shaft flange: bolt from the cap into the TAPPED steel flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into WELD-NUTS on the 100×50×3 RHS beam (3mm wall too thin to tap; closed tube). Al ring nylon-isolated; steel collar fillet-welded to the floor plate.",
+        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into WELD-NUTS (100×50×3 RHS, 3mm wall too thin to tap). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",

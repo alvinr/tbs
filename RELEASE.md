@@ -35,7 +35,7 @@ file** — a release must not ship without a changelog entry:
   §9 Fabrication Blueprints](light-trap-selection.md)** and registered in the gallery/publish lists;
   **§4 spec prose reconciled** to the metal-cap / lap-joint / integrated-frame design. **Design changes:** the
   drum **end caps go HDPE → metal** — both **8mm 6061-T6 aluminum**, identical, with bolted 4×M10 stub-shaft
-  hubs — and the **shell→cap joint becomes lap-and-fasten** (shell laps a rolled rim-angle lip, SS Ø4.8 blind
+  hubs — and the **shell→cap joint becomes lap-and-fasten** (shell laps a rolled rim-angle lip, SS Ø3.18 blind
   rivets @ ~60mm + 3M DP8010 bond/light-seal), superseding the extrusion weld. Scope grew to specify the
   **support structure**: a **steel welded box cage integrated with the swing-panel weldment** carries the
   bearings (axle-support beam at the drum axis) and the fixed outer skin (housing laps + rivets to a rolled
@@ -52,7 +52,7 @@ file** — a release must not ship without a changelog entry:
   detailing pass** added real hole patterns (PCD, count, Ø, positions): the machined parts got their own
   **single-part component blueprints (new Sheet 6)** and the end-cap its full blueprint on Sheet 3, referenced
   from the hub assembly (Sheet 5) — the Sheet-9→4/8 reference pattern. The lap rivet is spec'd to a real
-  datasheet — **1/8" (Ø3.18mm) 18-8 SS domed-head blind, McMaster 97525A425 (shell→cap) / 97525A435
+  datasheet — **1/8" (Ø3.18mm) 18-8 SS blind, McMaster 97525A425 (shell→cap) / 97525A435
   (housing→frame)**, drill Ø3.3 — so `LT_RIVET_D` 4.8→3.18 and the drawn rivets are to scale; SKUs stamped in
   `parts-worklist.csv`. **Fastening resolved:** cap→stub-shaft = bolt into a **tapped** steel flange; bearing
   ring/collar→axle beam = M10 into **weld-nuts** on the 3mm RHS (too thin to tap, closed tube), Al ring

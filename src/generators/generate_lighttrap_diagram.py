@@ -143,10 +143,15 @@ def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", cs
     if end == "nut":
         rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
              fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                       # hex nut
-    elif end == "rivnut":                              # rivet-nut (blind threaded insert set in the wall)
-        into = 1 if head < 0 else -1                   # +axis into the wall for a head-below bolt
-        rect(fu, fu + into * hh * 1.7, -hw * 0.40, hw * 0.40, fc="#B0B0B8", ec=C_OUT, lw=0.8, zorder=zb + 1)   # body sleeve
-        rect(fu, fu - into * hh * 0.35, -hw * 0.55, hw * 0.55, fc="#B0B0B8", ec=C_OUT, lw=0.9, zorder=zb + 1)  # flange on the wall face
+    elif end == "rivnut":                              # rivet-nut / blind threaded insert — matches the
+        # McMaster profile: a FLANGE seated on the near (accessible) wall face + an internally-threaded
+        # BARREL that passes THROUGH the wall and protrudes into the bore on the far side (the bolt threads
+        # into the barrel). Drawn in a distinct BRONZE so it reads apart from the silver blind rivets.
+        RN = "#A8763A"
+        into = 1 if head < 0 else -1                   # +axis = through the wall, away from the bolt head
+        rect(fu, fu + into * hh * 2.2, -hw * 0.42, hw * 0.42, fc=RN, ec=C_OUT, lw=0.8, zorder=zb + 1)   # barrel: through wall + into bore
+        rect(fu, fu + into * hh * 1.5, -d * 0.48, d * 0.48, fc=SHK, ec="none", zorder=zb + 2)           # bolt threaded into the barrel
+        rect(fu - into * hh * 0.45, fu, -hw * 0.64, hw * 0.64, fc=RN, ec=C_OUT, lw=0.9, zorder=zb + 3)  # flange on the near face
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -608,7 +613,7 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
         for g in (-1, 1):
             ring_far = -15 * SC * s                    # ring face away from the beam (head bears here)
-            wnz = (15 + LT_FRAME_T) * SC * s           # rivet-nut in the beam's near wall (set from outside)
+            wnz = 15 * SC * s                          # rivet-nut FLANGE on the beam's near wall face; barrel through the wall into the bore
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="rivnut", zb=9)
             for zc in (18 * SC, -18 * SC):         # circlip grooves each side
@@ -702,8 +707,8 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
     draw_rect(ax, rx(-30), rz(-15), IS * 60, IS * 15, fc=C_ALUM, lw=1.2, zorder=6)                 # Al top ring (below the beam)
     draw_rect(ax, rx(-38), rz(0), IS * 76, IS * BH, fc=C_STEEL, lw=1.4, zorder=5)                  # closed RHS beam — outer
     draw_rect(ax, rx(-38) + IS * T, rz(T), IS * (76 - 2 * T), IS * (BH - 2 * T), fc=BG, lw=0.8, zorder=5)  # hollow bore (empty)
-    cz = (rz(-15) + rz(T)) / 2                                # ring → beam bolt: head under the ring, up
-    draw_bolt(ax, ox, cz, rz(T) - rz(-15), d=58, head=-1, end="rivnut")   # through ring + bottom wall → RIVET-NUT
+    cz = (rz(-15) + rz(0)) / 2                                # ring → beam bolt: head under the ring, up through the ring;
+    draw_bolt(ax, ox, cz, rz(0) - rz(-15), d=58, head=-1, end="rivnut")   # flange on the near face, barrel through wall → bore
     leader(ax, ox - 20, rz(-15), rx(-42), rz(-15) - 34, "BOLT head on the ring underside\n(driven from below — accessible)",
            fs=6.0, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, ox + 24, rz(T + 6), rx(48), rz(T + 30), "RIVET-NUT (blind threaded insert) set in the beam's\nBOTTOM wall from below — its barrel provides the\ncaptive thread; the bolt clamps the ring up to the wall",
@@ -1520,7 +1525,7 @@ def draw_sheet9():
     # Ring → beam: head on the RING BOTTOM, up through the ring + the beam's 3mm bottom
     # wall, into a RIVET-NUT (blind threaded insert) set in that wall from outside (does NOT float into the void).
     rbx = bOD + 15
-    wnz = Z_BEAM0 + LT_AXLE_BEAM_T                                                    # rivet-nut set in the beam bottom wall
+    wnz = Z_BEAM0                                                                     # rivet-nut FLANGE on the beam's bottom (near) wall face; barrel up through the wall into the bore
     draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="rivnut")
     # Cap → flange: countersunk flush in the CAP UNDERSIDE, up through the cap into the TAPPED flange.
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge

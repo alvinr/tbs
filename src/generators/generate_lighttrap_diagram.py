@@ -99,6 +99,36 @@ def blind_rivet(ax, cx, cz, ang, grip, d=12):
     ax.add_patch(mpatches.Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
 
 
+def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", zb=10):
+    """Bolt in section — the project convention (cf. corner-gimbal bolt()): a filled shank
+    with a wider HEAD at the `head` end and, at the far end, a hex NUT / weld-nut / tapped
+    thread. cx,cz = shank mid; `length` = grip along the axis; d = nominal Ø (drawn).
+    head = -1 → head at the −axis end (below/left); +1 → +axis end.
+    end: 'nut' plain hex nut · 'weld' weld-nut (red weld tick) · 'tapped' into a tapped hole (no nut)."""
+    SHK, HN = "#8A8F98", C_STEEL
+    hh, hw = d * 0.6, d * 1.9                              # head/nut along-axis / across
+    g = length / 2
+
+    def rect(u0, u1, v0, v1, **kw):                       # (along-axis u, across v) → x/z
+        if vertical:
+            ax.add_patch(mpatches.Rectangle((cx + v0, cz + u0), v1 - v0, u1 - u0, **kw))
+        else:
+            ax.add_patch(mpatches.Rectangle((cx + u0, cz + v0), u1 - u0, v1 - v0, **kw))
+    rect(-g, g, -d / 2, d / 2, fc=SHK, ec=C_OUT, lw=0.8, zorder=zb)                        # shank
+    hu = -g if head < 0 else g                                                             # head end
+    rect(hu - (hh if head < 0 else 0), hu + (0 if head < 0 else hh), -hw / 2, hw / 2,
+         fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                           # head
+    fu = g if head < 0 else -g                                                             # far (thread) end
+    if end in ("nut", "weld"):
+        rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
+             fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                       # nut
+        if end == "weld":                                                                  # weld-nut → red weld ticks
+            for sgn in (-1, 1):
+                wv = sgn * hw / 2
+                rect(fu, fu + (-hh * 0.5 if head < 0 else hh * 0.5),
+                     wv - sgn * 3, wv, fc="#CC4422", ec="#CC4422", lw=0, zorder=zb + 2)
+
+
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — General Arrangement
 # Vertical section on the drum axis (view looks along +Yd):
@@ -508,13 +538,15 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         zf0, zf1 = -40 * SC * s, -55 * SC * s
         draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
                   fc=C_STEEL, lw=1.4, zorder=6)
+        for g in (-1, 1):                          # cap → flange bolts (M10, tapped)
+            fb0, fb1 = -40 * SC * s, zc1
+            draw_bolt(ax, cx + g * 55 * SC, (fb0 + fb1) / 2, abs(fb1 - fb0),
+                      d=8 * SC, head=int(-s), end="tapped", zb=9)
+        # bearing mount bolts (ring/collar → beam, M10 into weld-nuts) + circlip grooves
         for g in (-1, 1):
-            ax.plot([cx + g * 55 * SC] * 2, [-40 * SC * s, zc1],
-                    color=C_OUT, lw=1.8, zorder=9)       # flange bolts
-        # bearing mount bolts (ring/collar → rail) + circlip grooves
-        for g in (-1, 1):
-            ax.plot([cx + g * 85 * SC] * 2, [15 * SC * s, 60 * SC * s],
-                    color=C_OUT, lw=2.4, zorder=9)
+            rb0, rb1 = 15 * SC * s, 60 * SC * s
+            draw_bolt(ax, cx + g * 85 * SC, (rb0 + rb1) / 2, abs(rb1 - rb0),
+                      d=8 * SC, head=int(-s), end="weld", zb=9)
             for zc in (18 * SC, -18 * SC):         # circlip grooves each side
                 ax.plot([cx + g * rs, cx + g * (rs - 5 * SC)], [zc, zc],
                         color=C_OUT, lw=1.6, zorder=9)
@@ -1321,13 +1353,13 @@ def draw_sheet9():
     ax.plot([bID, bID + 8], [Z_BRG0 + bW + 4, Z_BRG0 + bW + 4], color=C_OUT, lw=0.9, zorder=8)  # circlip
     draw_rect(ax, 0, -LT_CAP_TOP_T, CAPR, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=5)  # 8mm Al cap disc
     draw_rect(ax, 0, 0, 55, 16, fc=C_ALUM, lw=1.0, zorder=6)                         # bolted hub boss (4×M10)
-    # ── Securing bolts: Al ring → axle beam (M10 into weld-nuts) + cap → flange (M10 tapped) ─
+    # ── Securing bolts (project convention): Al ring → beam (M10 weld-nut) + cap → flange (M10 tapped) ─
     rbx = bOD + 15                                                                    # ring → beam bolt
-    ax.plot([rbx, rbx], [Z_BRG0 - 3, Z_BEAM0 + LT_AXLE_BEAM_H * 0.55], color=C_OUT, lw=2.4, zorder=9)
-    ax.plot([rbx - 8, rbx + 8], [Z_BRG0 - 3, Z_BRG0 - 3], color=C_OUT, lw=2.6, zorder=9)   # bolt head under the ring
+    rb0, rb1 = Z_BRG0 - 3, Z_BEAM0 + LT_AXLE_BEAM_H * 0.5
+    draw_bolt(ax, rbx, (rb0 + rb1) / 2, rb1 - rb0, d=10, head=-1, end="weld")         # head under the ring, weld-nut in the beam
     cbx = 46                                                                          # cap → flange bolt
-    ax.plot([cbx, cbx], [-LT_CAP_TOP_T - 3, 16], color=C_OUT, lw=2.4, zorder=9)
-    ax.plot([cbx - 8, cbx + 8], [-LT_CAP_TOP_T - 3, -LT_CAP_TOP_T - 3], color=C_OUT, lw=2.6, zorder=9)  # bolt head under the cap
+    cb0, cb1 = -LT_CAP_TOP_T - 3, 16
+    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped")       # head under the cap, tapped into the flange
     leader(ax, rbx, Z_BEAM0 + LT_AXLE_BEAM_H * 0.4, POST_R0 - 30, Z_BEAM0 + LT_AXLE_BEAM_H + 60,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 into weld-nuts", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)

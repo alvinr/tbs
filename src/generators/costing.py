@@ -196,15 +196,23 @@ CONTAINER = [
 # §6 = hinged-panel-report.md §8.2 (housing + drum). Line items mirror that BOM.
 LIGHTLOCK = [
     LineItem("3/16\" UV-stab HDPE — Ø900 housing shell (3× 4×8 ft, ~65 ft²)", 555, 555, 555, "rolled + extrusion-welded; US Plastics 46685 @ $184.99/sheet"),
-    LineItem("1/8\" HDPE — Ø864 drum shell + 2 caps (3× 4×8 ft)", 370, 370, 370, "US Plastics 46684 1/8\" black HDPE @ $123.34/sheet"),
+    LineItem("1/8\" HDPE — Ø864 drum shell (3× 4×8 ft)", 370, 370, 370, "US Plastics 46684 @ $123.34/sheet; caps are now Al (separate line)"),
+    LineItem("8mm 6061-T6 Al plate — 2 drum caps (Ø855, waterjet)", 400, 550, 700, "est. material + waterjet, Online Metals; firm at the Aug-2026 re-price"),
+    LineItem("25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427)", 45, 68, 90, "shell→cap lap lip; material + roll; est."),
     LineItem("6215-2RS sealed bearing ×2 (Ø75×130×25, ABEC-1)", 121, 121, 121, "$60.59 ea firm, Bearings Direct; alt McMaster 6138K125 $394.88"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
-    LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 57, 75, "Frost King BP17A brush + 1/2\" neoprene by yard"),
-    LineItem("Silicone bead sealant (bearing housing)", 20, 20, 20, "2026-07-27: firm — Maxisil black natural-stone silicone 10.5 oz $19.91 (weather/UV, neutral-cure), Home Depot"),
-    LineItem("100mm Ø SS grab rail (400mm cut)", 25, 35, 45, "16\" marine SS grab bar; 316 $45 / 304 ~$25"),
+    LineItem("SS blind rivets — shell→cap (McMaster 97525A425, 100-pack)", 14, 14, 14, "$13.83/100 firm"),
+    LineItem("SS blind rivets — housing→frame (McMaster 97525A435, 100-pack)", 15, 15, 15, "$14.59/100"),
+    LineItem("3M Scotch-Weld DP8010 structural adhesive (green)", 48, 58, 68, "LSE bond + light-seal for the HDPE lap joints; est."),
+    LineItem("Al U-channel opening-edge stiffeners (×4) + L-clips + M8", 55, 83, 110, "housing free-edge stiffeners (replaces the jamb posts); est."),
+    LineItem("Running-gap wiper — nylon strip brush ×4 (McMaster 74715T2, 7 ft)", 108, 108, 108, "$27.02/7 ft firm; 4 lines riveted to the drum OD"),
+    LineItem("12mm closed-cell neoprene — top/bottom cap wiper seals", 25, 33, 40, "cap↔frame seals; the running-gap seal is the drum brush"),
+    LineItem("Silicone bead sealant (bearing housing)", 20, 20, 20, "Maxisil black natural-stone silicone 10.5 oz $19.91, Home Depot"),
+    LineItem("100mm Ø SS grab rail (400mm cut)", 25, 35, 45, "16\" marine SS grab bar; welded to the stile"),
+    LineItem("40×40 SS RHS grab-rail stile (cap→cap) + M12 cap bolts", 45, 65, 85, "carries the pull load into the Al caps (not the HDPE wall); est."),
     LineItem("Matte-black interior finish", 40, 55, 70, "scuff + flat-black touch-in"),
-    LineItem("Stainless fasteners + nylon isolation washers (no galvanic couple)", 45, 52, 60, "US Plastic 92674 shoulder washers + SS fastener kit"),
-    LineItem("Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs)", 800, 975, 1150, "Local plastic fab"),
+    LineItem("Stainless bolts (cap/ring/edge/stile) + nylon isolation washers", 45, 58, 70, "no galvanic couple; rivets/M8/M12 on separate lines"),
+    LineItem("Fabrication — roll + weld 2 cylinders, roll rim-angle, fit metal caps/bearings (16–22 hrs)", 800, 975, 1150, "Local plastic + metal fab"),
 ]
 
 # §6b = hinged-panel-report.md §8.3 (swing pivot) + §8.4 (fixed door frame). Line items mirror both.
@@ -1027,11 +1035,11 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "lean": {"chem": 951, "total": 1250, "per_print": 25}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich": {"chem": 2802, "total": 3100, "per_print": 62}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (26632, 31153, 37746), # 2026-08-20: −$161 film (wall-seat saddle 6→4 reconcile + far-left brackets). 2026-08-18b: +$10/$15/$20 ibc-frame (16 L-cleat nut backing plates). 2026-08-18: −$16/$15/$16 ibc-frame (J2 corridor cleat → L + 1 horizontal bolt, 16→8 M12×65 SS). 2026-08-16c: −$10/$13/$15 walkway (J6 4→2 bolts/arm, central column). ... (earlier cost history: RELEASE.md + git log).
+    "grand_total": (27347, 32096, 38911), # 2026-08-24: +$715/$943/$1165 lightlock (metal-cap / lap-joint / edge-channel / drum-brush / stile batch — see EXPECTED["lightlock"]). 2026-08-20: −$161 film (wall-seat saddle 6→4 reconcile + far-left brackets). 2026-08-18b: +$10/$15/$20 ibc-frame (16 L-cleat nut backing plates). 2026-08-18: −$16/$15/$16 ibc-frame (J2 corridor cleat → L + 1 horizontal bolt, 16→8 M12×65 SS). 2026-08-16c: −$10/$13/$15 walkway (J6 4→2 bolts/arm, central column). ... (earlier cost history: RELEASE.md + git log).
     "walkway": (2079, 2498, 2941), # 2026-08-19: −$116/$125/$135 — IBC-owned center arms + J6 hardware + half-lap screws moved to ibc-frame (§5), per the ownership boundary. 2026-08-16d: +$55/+$43/+$31 — arm FIRM price (Metal Supermarkets $91.32/36in cut vs the $36-60 est). 2026-08-16c: −$10/−$13/−$15 — J6 4→2 bolts/arm (central column) less 4 M12×100 + 4 crush sleeves. 2026-08-16b: +$2/+$3/+$4 — 4× #14 TEK half-lap hold-down screws. 2026-08-16: +$62/+$85/+$108 — RWK center arms hollow tube → SOLID 2×1 flat bar (split out) + J6 end-plate hardware (8× M12×100 + 4 plates + 8 crush sleeves) less 4 arm-clamp M12×70. # 2026-08-07 (#26): +$107/+$123 — RWK frame 2×⅞ (non-stock) → 2×1×0.120 real MetalsDepot price + floor-leg arms 2×1. # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6841, 7478, 8126), # 2026-08-19: +$116/$125/$135 ibc-frame — the IBC-owned walkway center arms + J6 connection reconciled from walkway §6a. 2026-08-18b: +$10/$15/$20 ibc-frame (16 L-cleat nut backing plates). 2026-08-18: −$16/$15/$16 ibc-frame (J2 corridor cleat → L-angle + 1 horizontal bolt). ... (earlier cost history: RELEASE.md + git log).
     "container": (2300, 3300, 4300),
-    "lightlock": (2046, 2280, 2516), # 2026-07-27: light-trap seam silicone firm — Maxisil black 10.5oz $19.91 (+$14/+$10). 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370. §6 = hinged-panel §8.2 (housing + drum) line items
+    "lightlock": (2761, 3223, 3681), # 2026-08-24: metal-cap / lap-joint / edge-channel / drum-brush / stile batch — added Al caps (8mm 6061, est $400–700), rim-angle (est $45–90), SS rivets (97525A425 $13.83 + 97525A435 $14.59), DP8010 (est $48–68), Al edge channels (est $55–110), drum wiper brush (74715T2 4× $27.02 = $108), handle stile (est $45–85); caps went HDPE→Al, wiper felt→brush. Al-plate/rim-angle/DP8010/edge/stile prices are ESTIMATES (firm at the Aug-2026 re-price). Was (2046, 2280, 2516)
     "swingpivot": (1180, 1395, 1610), # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1278, 1382, 1484), # 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12 retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2. §6c = hinged-panel §8.1 
     "shelf": (223, 229, 235), # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.

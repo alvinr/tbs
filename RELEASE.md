@@ -64,7 +64,11 @@ file** — a release must not ship without a changelog entry:
   strip always seals each arc between the openings at every rotation). Sold by the foot → one continuous piece
   per line (no joint). Sheet 7's seal detail + three-position plans now carry the study.
   **Blueprint detailing pass (review round):** bolts now use the section convention (shank + head + hex/weld-nut/tapped, `draw_bolt()`) on Sheets 5 & 10; frame RHS members drawn as HOLLOW cut sections (Sheet 8 plan posts + a dimensioned 50×50×3 / 100×50×3 section inset, `tube_rect()`); the running-gap brush added to Sheet 4 (staggered below the cap lap, clearing the shell→cap rivets); Sheet 10 details A/B rivets redrawn radial (were circles) + ring→beam / cap→flange bolts shown; and a **grab-rail mount detail** on Sheet 1 (steel standoff DP8010-bonded to an extrusion-welded HDPE pad — NO through-hole, correcting the impossible 'welded to HDPE' bracket; report §4 updated). **Fastener-correctness follow-up:** every bolt now butts the faces it joins — the ring→beam bolts terminate at a WELD-NUT on the beam's 3mm bottom wall (not floating mid-beam), with the head on the ring's outer face (the ring↔beam contact carries no fastener); axle beams drawn as hollow RHS (dashed walls) so the weld-nut engagement reads; the Sheet 4 running-gap brush now rivets into the shell (extended to hang down) instead of thin air; and the grab-rail mount was reworked onto a **steel stile bolted between the two Al caps** (load lands in the caps, superseding the HDPE-pad bond).
-  Full parts/cost + weight/CG + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
+  **Parts/cost batch imported:** the light-trap material/joint parts are now in the `parts.py` `lightlock`
+  registry + costing §6 reconciled (**$2,046–$2,516 → $2,761–$3,681**, grand total +$715/$943/$1,165, all cost
+  gates green) — Al caps, rim-angle, SS rivets, DP8010, Al edge channels, 4× drum brush, handle stile (metal-
+  price lines flagged PRICE-VERIFY for the Aug-2026 re-price); caps went HDPE→Al and the wiper felt→brush.
+  Weight/CG + the §6b swing-cage frame-steel itemization + 3D-model cascade still tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

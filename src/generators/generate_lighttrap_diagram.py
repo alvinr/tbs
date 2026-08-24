@@ -99,6 +99,13 @@ def blind_rivet(ax, cx, cz, ang, grip, d=12):
     ax.add_patch(mpatches.Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
 
 
+def tube_rect(ax, x, y, w, h, wall, *, fc=C_STEEL, lw=1.4, zorder=6):
+    """RHS/SHS tube shown in CUT cross-section — wall material filled, bore void (BG).
+    x,y = outer corner; w,h = outer size; wall = wall thickness."""
+    draw_rect(ax, x, y, w, h, fc=fc, lw=lw, zorder=zorder)                                  # outer (wall)
+    draw_rect(ax, x + wall, y + wall, w - 2 * wall, h - 2 * wall, fc=BG, lw=lw * 0.7, zorder=zorder)  # bore (hollow)
+
+
 def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", zb=10):
     """Bolt in section — the project convention (cf. corner-gimbal bolt()): a filled shank
     with a wider HEAD at the `head` end and, at the far end, a hex NUT / weld-nut / tapped
@@ -706,6 +713,19 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     rz = LIP * 0.5
     blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
     blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
+    # ── Running-gap brush wiper (Sheet 7) on the drum OD — starts BELOW the cap lap so its
+    # backing rivets stagger clear of the shell→cap rivets (the clash the reader would ask about).
+    bkx, bkT = DPT + SHT, S * 3.2                          # shell outer (drum OD) face · 1/8" SS backing
+    bk_bot, bk_top = -95, -18                              # below the lap zone (which is z 0..LIP)
+    draw_rect(ax, bkx, bk_bot, bkT, bk_top - bk_bot, fc="#8A8F98", lw=1.0, zorder=7)        # SS backing
+    for zz in range(int(bk_bot) + 8, int(bk_top), 8):                                       # bristles lay over into the gap
+        ax.plot([bkx + bkT, bkx + bkT + S * 18], [zz, zz + 14], color="#555", lw=0.5, zorder=7)
+    blind_rivet(ax, bkx + bkT / 2, (bk_bot + bk_top) / 2, 0, bkT + SHT + S * 1.0, d=RVD * 0.7)  # backing → shell rivet
+    for zz in (bk_bot - 6, bk_bot - 14):                                                    # break (brush + drum continue down)
+        ax.plot([bkx - 3, bkx + bkT + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.5, zorder=8)
+    leader(ax, bkx + bkT + S * 9, bk_top - 18, 250, -CAPT - 150,
+           f"RUNNING-GAP BRUSH ({LT_WIPER_N} strips on the drum OD — Sheet 7):\nstarts clear BELOW the cap lap, so its backing rivets\nstagger past the shell→cap rivets (no clash)",
+           fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
     draw_dim_v(ax, DPT + SHT + 40, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
@@ -821,7 +841,7 @@ def draw_sheet7():
         return (PX + (x - cx0), PZ + (yd - cyl))
 
     X_LO, X_HI = -560, PX + cW_x + 360
-    Z_LO, Z_HI = -900, cH + 300
+    Z_LO, Z_HI = -1180, cH + 300                    # extra bottom room: wrapped notes clear the title block
     FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -903,10 +923,11 @@ def draw_sheet7():
     rrect(fp(cx0, cyr - RHS), cW_x, RHS, fc=C_STEEL, lw=1.2, zorder=5)
     rrect(fp(cx0, cyl), RHS, cW_y, fc=C_STEEL, lw=1.2, zorder=5)
     rrect(fp(cx1 - RHS, cyl), RHS, cW_y, fc=C_STEEL, lw=1.2, zorder=5)
-    # 4 corner posts
+    # 4 corner posts — CUT cross-section (looking down the vertical RHS) → drawn HOLLOW
     for xx in (cx0, cx1 - RHS):
         for yy in (cyl, cyr - RHS):
-            rrect(fp(xx, yy), RHS, RHS, fc="#9BA0A8", lw=1.2, zorder=6)
+            px, pz = fp(xx, yy)
+            tube_rect(ax, px, pz, RHS, RHS, LT_FRAME_T, fc="#9BA0A8", lw=1.2, zorder=6)
     # AXLE BEAM — spans Yd at the drum axis X, central bearing at midspan
     rrect(fp(CX - LT_AXLE_BEAM_W / 2, cyl), LT_AXLE_BEAM_W, cW_y, fc=C_STEEL, lw=1.4, zorder=7)
     # FILLET WELDS (plan) — small red triangles at each member junction (fp-based, orientation-safe)
@@ -971,6 +992,27 @@ def draw_sheet7():
            f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — bonded over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to top/bottom beams — see Sheet 9",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
+    # ── RHS tube-section inset — the frame members are HOLLOW tube, not solid bar ──
+    sxi, szi, SCi = PX + 70, 470, 1.8
+    ax.text(sxi + 210, szi + LT_AXLE_BEAM_H * SCi + 66,
+            "FRAME MEMBERS = RHS TUBE (HOLLOW) — cut sections:", ha="center", va="bottom",
+            fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    tube_rect(ax, sxi, szi, RHS * SCi, RHS * SCi, LT_FRAME_T * SCi, fc="#9BA0A8", lw=1.4, zorder=6)
+    draw_dim_h(ax, sxi, sxi + RHS * SCi, szi - 26, f"{RHS}mm", offset=26, fs=6.2, above=False, font=FONT)
+    draw_dim_v(ax, sxi - 26, szi, szi + RHS * SCi, f"{RHS}mm", offset=26, fs=6.2, font=FONT)
+    ax.text(sxi + RHS * SCi / 2, szi + RHS * SCi + 18, f"{RHS}×{RHS}×{LT_FRAME_T} RHS\nposts + rails",
+            ha="center", va="bottom", fontsize=6.5, color=C_OUT, **FONT, zorder=9)
+    bxi = sxi + 360
+    tube_rect(ax, bxi, szi, LT_AXLE_BEAM_W * SCi, LT_AXLE_BEAM_H * SCi, LT_AXLE_BEAM_T * SCi,
+              fc="#9BA0A8", lw=1.4, zorder=6)
+    draw_dim_h(ax, bxi, bxi + LT_AXLE_BEAM_W * SCi, szi - 26, f"{LT_AXLE_BEAM_W}mm", offset=26, fs=6.2, above=False, font=FONT)
+    draw_dim_v(ax, bxi - 26, szi, szi + LT_AXLE_BEAM_H * SCi, f"{LT_AXLE_BEAM_H}mm", offset=26, fs=6.2, font=FONT)
+    ax.text(bxi + LT_AXLE_BEAM_W * SCi / 2, szi + LT_AXLE_BEAM_H * SCi + 18,
+            f"{LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\naxle beams", ha="center",
+            va="bottom", fontsize=6.5, color=C_OUT, **FONT, zorder=9)
+    ax.text(bxi + LT_AXLE_BEAM_W * SCi + 50, szi + LT_AXLE_BEAM_H * SCi / 2,
+            f"wall {LT_FRAME_T}mm (typ.)", ha="left", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
+
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SUPPORT FRAME — INTEGRATED STEEL WELDED BOX CAGE (part of the swing-panel weldment)",
@@ -982,7 +1024,7 @@ def draw_sheet7():
         "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
     ]
-    draw_notes(ax, notes, X_LO + 60, -300, 92, fs=7, font=FONT, width=2500, wrap=138,
+    draw_notes(ax, notes, X_LO + 60, -300, 58, fs=7, font=FONT, width=2500, wrap=138,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 8 OF 10", drawing_title="REVOLVING LIGHT-TRAP",

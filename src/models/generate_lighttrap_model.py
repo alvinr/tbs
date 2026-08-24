@@ -429,14 +429,18 @@ def drum_rotor(cx=0, cy=0):
                                       color=C_ALUM, z0=zc))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
-    # Interior grab rail on the drum's solid +X wall (operator pulls the drum).
-    inner = cx + DRUM_OR - DRUM_T
-    gx = cx + DRUM_OR - 75
-    parts.append(ruby_cylinder("LT Grab rail", gx, cy, 700, 15, 400,
-                               color=C_STEEL, axis="z"))
-    for bz in (720, 1080):
-        parts.append(ruby_box("LT Grab rail standoff", gx, cy - 6, bz,
-                              inner - gx, 12, 12, color=C_STEEL))
+    # Interior grab rail on a steel STILE spanning the two caps — the operator's pull load lands
+    # in the structural Al caps, NOT the thin HDPE wall. Stile bolted to each cap (2D Sheet 1).
+    STILE_W = 40
+    stile_x = cx + DRUM_OR - DRUM_T - STILE_W                # against the interior wall, just inboard
+    z_stile0, z_stile1 = ZB + DRUM_CAP_T, H - DRUM_CAP_T     # between the two caps
+    parts.append(ruby_box("LT Handle stile", stile_x, cy - STILE_W / 2, z_stile0,
+                          STILE_W, STILE_W, z_stile1 - z_stile0, color=C_STEEL))
+    gx = stile_x - 45                                        # grab rail center, inboard of the stile
+    parts.append(ruby_cylinder("LT Grab rail", gx, cy, 700, 15, 400, color=C_STEEL, axis="z"))
+    for bz in (720, 1080):                                   # 2 standoff lugs → welded to the stile
+        parts.append(ruby_box("LT Grab rail standoff", gx + 12, cy - 6, bz,
+                              stile_x - (gx + 12), 12, 12, color=C_STEEL))
     # Running-gap light-seal WIPER — N vertical nylon brush strips RIVETED to the drum OD,
     # bristles reaching across the gap to the fixed housing bore (McMaster 74715T2). Spaced
     # 93° on the 280° wall (from the opening edge) so ≥1 always sits in each 100° housing arc

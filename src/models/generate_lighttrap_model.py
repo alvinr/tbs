@@ -6,7 +6,7 @@ generate_lighttrap_model.py — Generate Ruby for the TBS-001 "Light Trap"
 focus model (models/lighttrap.skp).
 
 A detailed, report-accurate model of the cargo-door end assembly only:
-  - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, grab bar),
+  - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, pull handle),
   - the hinged stepped PANEL (3 zones + drum aperture + EPDM seal + latches),
   - the ROTATION transport system (rev10 — supersedes the slide): the panel+drum
     +drum-cage assembly SWINGS 56° about a vertical Ø89 CHS pivot post (the film
@@ -406,7 +406,7 @@ def drum_housing(cx, cy):
 
 def drum_rotor(cx=0, cy=0):
     """ROTATING part of the revolving door: the single-opening C-shell drum +
-    caps + top stub shaft + interior grab bar + running-gap wiper brushes. Built
+    caps + top stub shaft + interior pull handle + running-gap wiper brushes. Built
     relative to (cx, cy) so it can live in a NESTED Dynamic Component whose RotZ
     revolves it (the revolving-door action). Pass (0,0) for the DC sub-component
     (origin on the drum axis); drum() passes the absolute drum center for the
@@ -429,20 +429,20 @@ def drum_rotor(cx=0, cy=0):
                                       color=C_ALUM, z0=zc))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
-    # Interior grab bar on a steel STILE spanning the two caps — the operator's pull load lands
+    # Interior pull handle on a steel STILE spanning the two caps — the operator's pull load lands
     # in the structural Al caps, NOT the thin HDPE wall. Stile bolted to each cap (2D Sheet 1).
     STILE_W = 40
     stile_x = cx + DRUM_OR - DRUM_T - STILE_W                # against the interior wall, just inboard
     z_stile0, z_stile1 = ZB + DRUM_CAP_T, H - DRUM_CAP_T     # between the two caps
     parts.append(ruby_box("LT Handle stile", stile_x, cy - STILE_W / 2, z_stile0,
                           STILE_W, STILE_W, z_stile1 - z_stile0, color=C_STEEL))
-    # Off-the-shelf 16" bolt-on marine SS grab bar (Ø25 tube), BOLTED at both feet to the stile.
-    gx = stile_x - 70                                        # grab-bar tube center, 70mm standoff
-    g0, g1 = 900 - 203, 900 + 203                            # 406mm (16") grab, centered at 900
-    parts.append(ruby_cylinder("LT Grab bar (16in bolt-on marine SS)", gx, cy, g0, 12.5, g1 - g0, color=C_STEEL, axis="z"))
-    for bz in (g0, g1):                                      # 2 bolt-on feet → BOLTED to the stile (no welds)
-        parts.append(ruby_box("LT Grab bar foot", gx, cy - 14, bz - 14,
-                              stile_x - gx, 28, 28, color=C_STEEL))
+    # Off-the-shelf 12" round pull handle (McMaster 1871A65, Ø0.5" bar), BOLTED at both feet to the stile.
+    gx = stile_x - 52                                        # grip standoff (2.06"), inboard of the stile
+    g0, g1 = 900 - 154, 900 + 154                            # 308mm (12") overall, centered at 900
+    parts.append(ruby_cylinder("LT Pull handle (McMaster 1871A65)", gx, cy, g0, 6.35, g1 - g0, color=C_STEEL, axis="z"))
+    for bz in (g0, g1):                                      # 2 feet → arm to the stile, BOLTED (1/4", no welds)
+        parts.append(ruby_box("LT Pull-handle arm", gx, cy - 6.35, bz - 6.35,
+                              stile_x - gx, 12.7, 12.7, color=C_STEEL))
     # Running-gap light-seal WIPER — N vertical #4 (3/16") nylon strip brushes, each snapped into
     # an anodized-Al straight-flange holder whose flange rivets to the drum OD (rivets clear of the
     # brush). Bristles reach across the gap to the fixed housing bore. Spaced 93° on the 280° wall

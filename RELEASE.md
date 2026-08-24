@@ -62,8 +62,9 @@ file** — a release must not ship without a changelog entry:
   — 1/8″ stainless-backed, 0.008″ black nylon, 7/8″ trim, $27.02/7 ft) **riveted to the rotating drum** OD at
   93° spacing; the count comes from a Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a
   strip always seals each arc between the openings at every rotation). Sold by the foot → one continuous piece
-  per line (no joint). Sheet 7's seal detail + three-position plans now carry the study. Full parts/cost + weight/CG
-  + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
+  per line (no joint). Sheet 7's seal detail + three-position plans now carry the study.
+  **Blueprint detailing pass (review round):** bolts now use the section convention (shank + head + hex/weld-nut/tapped, `draw_bolt()`) on Sheets 5 & 10; frame RHS members drawn as HOLLOW cut sections (Sheet 8 plan posts + a dimensioned 50×50×3 / 100×50×3 section inset, `tube_rect()`); the running-gap brush added to Sheet 4 (staggered below the cap lap, clearing the shell→cap rivets); Sheet 10 details A/B rivets redrawn radial (were circles) + ring→beam / cap→flange bolts shown; and a **grab-rail mount detail** on Sheet 1 (steel standoff DP8010-bonded to an extrusion-welded HDPE pad — NO through-hole, correcting the impossible 'welded to HDPE' bracket; report §4 updated).
+  Full parts/cost + weight/CG + 3D-model cascade tracked in `TODO.md`. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

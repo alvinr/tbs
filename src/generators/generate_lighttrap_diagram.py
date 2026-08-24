@@ -241,12 +241,12 @@ def draw_sheet1():
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2
     draw_rect(ax, GX - GRAB_D / 2, GZ0, GRAB_D, GRAB_L, lw=1.4,
               fc="#C9CCD2", zorder=9)
-    for zb in (GZ0 + 40, GZ1 - 40):      # welded bracket stubs to the drum wall
+    for zb in (GZ0 + 40, GZ1 - 40):      # 2 standoff brackets → drum wall (bond+rivet, see MOUNT DETAIL)
         draw_rect(ax, GX + GRAB_D / 2, zb - 12, DI_R - (GX + GRAB_D / 2), 24,
                   lw=1.0, fc=C_STEEL, zorder=8)
     leader(ax, GX, GRAB_Z,
            HO_R + 330, GRAB_Z - 380,
-           f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS (vertical)\ninside bore, interior side · {GRAB_Z - Z_CAP_B:.0f}mm above cap inner edge",
+           f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS (vertical) inside bore, interior side ·\n{GRAB_Z - Z_CAP_B:.0f}mm above cap inner edge · 2 standoffs → wall (see MOUNT DETAIL)",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     draw_dim_v(ax, GX - GRAB_D / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm", offset=45,
                fs=6.5, font=FONT)
@@ -254,6 +254,28 @@ def draw_sheet1():
                offset=45, fs=6.5, font=FONT)
     draw_dim_v(ax, GX - GRAB_D / 2 - 150, Z_CAP_B, GRAB_Z, f"{GRAB_Z - Z_CAP_B:.0f}mm\n(cap inner edge → rail CL)",
                offset=45, fs=6.5, font=FONT)
+
+    # ── DETAIL — grab-rail standoff → drum wall (you can't weld steel to HDPE) ────
+    hdx, hdz = HO_R + 560, 980
+    ax.text(hdx + 10, hdz + 250, "DETAIL — GRAB-RAIL MOUNT\n(standoff → HDPE drum wall)", ha="center",
+            va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    dwT = 34                                                                            # HDPE drum wall (exaggerated)
+    draw_rect(ax, hdx, hdz - 175, dwT, 350, fc=C_LT_DRUM, lw=1.4, zorder=6)             # drum wall
+    for zz in (hdz - 168, hdz + 156):                                                   # break (wall continues)
+        for dz in (0, 8):
+            ax.plot([hdx - 4, hdx + dwT + 4], [zz + dz - 4, zz + dz + 4], color=C_OUT, lw=0.6, zorder=9)
+    draw_rect(ax, hdx - 50, hdz - 95, 50, 190, fc="#EDE7DA", lw=1.2, zorder=6)          # HDPE reinforcement pad (interior)
+    for wz in (hdz - 85, hdz + 85):                                                     # extrusion-weld beads (pad → wall, HDPE↔HDPE)
+        ax.add_patch(mpatches.Polygon([(hdx, wz), (hdx, wz + 16), (hdx - 16, wz)], closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
+    draw_rect(ax, hdx - 56, hdz - 95, 6, 190, fc=C_GASKT, lw=1.2, zorder=7)             # DP8010 STRUCTURAL BOND film (bracket → pad)
+    draw_rect(ax, hdx - 150, hdz - 45, 94, 90, fc=C_STEEL, lw=1.4, zorder=6)            # steel standoff bracket
+    draw_circle(ax, hdx - 205, hdz, 52, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # grab rail Ø100 (welded to bracket)
+    for wz in (hdz - 16, hdz + 16):                                                     # weld (rail → bracket, steel↔steel)
+        ax.add_patch(mpatches.Polygon([(hdx - 150, wz), (hdx - 150, wz + 13), (hdx - 163, wz)], closed=True, fc="#CC4422", ec="#CC4422", zorder=9))
+    leader(ax, hdx + dwT, hdz + 130, hdx + 130, hdz + 210, "DRUM WALL (1/8\" HDPE)\nNO through-hole (no light leak)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx - 25, hdz - 92, hdx + 130, hdz - 20, "HDPE REINF. PAD —\nextrusion-welded to the wall\n(spreads the pull load)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx - 53, hdz + 60, hdx + 130, hdz - 165, "STEEL STANDOFF —\nDP8010-BONDED to the pad\n(no wall penetration)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx - 205, hdz - 52, hdx + 130, hdz - 300, f"GRAB RAIL Ø{GRAB_D} SS —\nwelded to the standoff", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",

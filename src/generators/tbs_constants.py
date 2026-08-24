@@ -390,16 +390,22 @@ LT_RIM_RIVET_PITCH = 120  # rim-angle flat-leg → cap rivet pitch (mm; coarser 
 LT_HOUSING_ARC     = 360 - 2 * LT_OPENING_DEG   # 200 — housing material arc (two 100° arcs; two 80° openings)
 LT_HOUSING_RIVET_N = round((LT_HOUSING_ARC / 360) * math.pi * 2 * LT_HOUSING_R / LT_RIVET_PITCH)  # ≈ 26 per top/bottom edge
 # ── Running-gap light-seal WIPER (2026-08-24) — nylon strip brushes on the ROTATING drum.
-# Vertical brush strips riveted to the drum OD, bristles wiping the FIXED housing bore.
+# Vertical brush strips on the drum OD, bristles wiping the FIXED housing bore.
 # Spaced ≤100° (the housing material-arc width) so a strip always sits in each 100° arc at
 # every drum rotation → guaranteed gap-light block (light-trap-selection §9 Sheet 7 study).
-# McMaster 74715T2: corrosion-resistant tight-seal strip brush — 1/8"×1/8" STAINLESS-STEEL
-# backing, 0.008" (0.20mm) black nylon, 1" overall (7/8"/22.2mm trim); sold by the foot, so
-# each line is ONE continuous cut over the full drum height (no butt joint). SS backing suits
-# the damp container; black bristles absorb stray light.
+# #4 staple-set strip brush — 3/16" (4.76mm) metal channel backing, 0.008" (0.20mm) BLACK
+# nylon, 0.687" (17.5mm) trim; black bristles absorb stray light, the fine dense fill blocks it.
+# Each strip snaps into a Tanis anodized-aluminum STRAIGHT-FLANGE holder whose offset flat
+# flange is blind-riveted to the drum OD — the rivets land in the aluminum flange, CLEAR of
+# the brush (a 3/16" channel is too small to rivet through). The holder body is low-profile
+# (< the 13mm gap); bristles lay over onto the bore, tolerant of HDPE out-of-roundness.
+# 96" (2.44m) stock → ONE continuous piece over the full drum height (no butt joint).
+# Anodized aluminum (not SS) suits the damp container. Gordon Brush / Tanis; sizes #2.5–#12.
 LT_WIPER_N         = 4      # brush strips around the drum (280° wall / 3 gaps = 93.3° spacing ≤ 100°)
-LT_WIPER_TRIM      = 22.2   # bristle trim / free length (mm) — 7/8" (bridges the 13mm gap, lays over ~9mm)
-LT_WIPER_BRISTLE_D = 0.20   # bristle Ø (mm) — 0.008" fine dense black nylon (dense = light block, black = absorb)
+LT_WIPER_TRIM      = 17.5   # bristle trim / free length (mm) — 0.687" #4 strip brush (bridges the 13mm gap, lays over)
+LT_WIPER_BRISTLE_D = 0.20   # reserved — bristle Ø (mm); labels state the 0.008" catalog spec directly (dense = light block, black = absorb)
+LT_WIPER_BACKING   = 4.76   # brush channel backing (mm) — 3/16" #4 metal channel (snaps into the Al holder track)
+LT_WIPER_HOLDER_W  = 1.27   # holder flange wall (mm) — 0.050" anodized-Al Tanis straight-flange holder
 LT_WIPER_SPACING   = LT_SHELL_ARC / (LT_WIPER_N - 1)   # 93.3° between strips on the 280° drum wall
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,

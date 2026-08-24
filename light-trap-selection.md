@@ -93,16 +93,16 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm steel stub shaft, bolted to the drum cap via a nylon-isolated hub |
 | Bottom bearing | SKF 6215 sealed, stub shaft into floor-mount collar, panel-bolted |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
-| Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
+| Handle | Off-the-shelf 16″ bolt-on marine SS grab bar (Ø25 tube), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,761<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,681<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,818<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,902<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
 
 Custom fabrication is the correct choice for a field-deployed, transport-rated camera system — every specification can be set to exactly what is required (clear bore, panel-thickness interface, bearing grade, seal type, drum height). The shell is a all-HDPE plastic skin: a 5mm UV-stabilized HDPE fixed housing and a 1/8" HDPE revolving drum. Three properties make plastic the right skin here:
 
-1. **Weight / center of gravity.** The plastic skin holds the drum/housing shell mass to ~60 kg (the steel shaft, bearings, and grab rail set a floor the shell cannot drop below). Because the whole assembly hangs off the swinging leaf and revolves ~56° about the pivot post for transport, low shell mass keeps the swing cantilever moment on the pivot — and the container CG shift — small.
+1. **Weight / center of gravity.** The plastic skin holds the drum/housing shell mass to ~60 kg (the steel shaft, bearings, and grab bar set a floor the shell cannot drop below). Because the whole assembly hangs off the swinging leaf and revolves ~56° about the pivot post for transport, low shell mass keeps the swing cantilever moment on the pivot — and the container CG shift — small.
 2. **No galvanic couple.** Plastic-to-steel has no galvanic couple, so isolation reduces to plain nylon washers at the shaft only — no full isolation kit, and no outdoor-corrosion risk at the panel-frame and bearing interfaces.
 3. **Cost and fabrication.** HDPE sheet is inexpensive, and hot-air / extrusion welding of a Ø900 cylinder is low-skill labor relative to metal seam welding.
 
@@ -145,13 +145,13 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Top seal | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against the frame top plate |
 | Bottom seal | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against the frame bottom plate |
-| Drum-to-housing running gap | ≈13mm radial clearance, closed by **4 vertical nylon brush strips** ([McMaster 74715T2](https://www.mcmaster.com/74715T2-74715T207/) — 1/8″ stainless-backed, 0.008″ black nylon, 1″ overall / 7/8″ trim) riveted to the **rotating drum** OD at 93° spacing; bristles lay over onto the fixed housing bore. Sold by the foot → one continuous piece per line over the full drum height. Strip count set by the Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a strip always seals each arc between the openings at every rotation) — see §9 Sheet 7 |
+| Drum-to-housing running gap | ≈13mm radial clearance, closed by **4 vertical #4 (3/16″) nylon strip brushes** ([Gordon Brush](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) / Tanis — metal channel backing, 0.008″ black nylon, 0.687″/17.5mm trim), each snapped into an **anodized-Al straight-flange holder** ([Tanis](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders)) whose offset flange is **flange-riveted to the rotating drum** OD at 93° spacing — the rivets land in the aluminum flange, clear of the brush (a 3/16″ channel is too small to rivet through); bristles lay over onto the fixed housing bore. One continuous 8 ft piece per line over the full drum height. Strip count set by the Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a strip always seals each arc between the openings at every rotation) — see §9 Sheets 4 & 7 |
 
 ### 4.4 Hardware
 
 | Item | Specification |
 |------|--------------|
-| Entry handle | 100mm Ø × 400mm SS round grab rail, interior face only, at 900mm height — welded to a steel **stile that spans and bolts to the two Al caps**, so the pull load lands in the structural caps (not the thin HDPE wall); no fastener pierces the drum wall (no through-hole, no light leak). Mount detail on §9 Sheet 1 |
+| Entry handle | Off-the-shelf 16″ (406mm) bolt-on marine SS grab bar (Ø25 tube), interior face only, at 900mm height — **bolted at both feet** (2× M8 tapped per foot) to a steel **stile that spans and bolts to the two Al caps** (4× M12 tapped into the caps), so the pull load lands in the structural caps (not the thin HDPE wall); no welds, and no fastener pierces the drum wall (no through-hole, no light leak). Mount detail on §9 Sheet 1 |
 | Panel bolts | 8 × M10 flush-head hex bolts (lower collar) + 6 × M10 (upper ring), stainless |
 | Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
 
@@ -164,14 +164,14 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | 1/8" 18-8 SS blind rivets — [97525A425](https://www.mcmaster.com/97525A425/) (shell→cap, $13.83/100) + [97525A435](https://www.mcmaster.com/97525A435/) (housing→frame, $14.59/100) — + 3M Scotch-Weld DP8010 adhesive | [McMaster-Carr](https://www.mcmaster.com/); [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | ~35/cap + ~26/edge @ ~60mm pitch, drill Ø3.3 (#30); DP8010 is the structural bond + light seal for HDPE (low surface energy) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
-| Running-gap wiper — nylon strip brush (4 lines × ~7 ft) | [McMaster-Carr 74715T2](https://www.mcmaster.com/74715T2-74715T207/) ($27.02/7 ft) | 1/8″ stainless-backed, 0.008″ black nylon, 1″ overall / 7/8″ trim; riveted to the drum OD, one 7 ft piece per line (~$108 total) |
+| Running-gap wiper — #4 (3/16″) nylon strip brush (4 lines × 8 ft) + anodized-Al straight-flange holders (4 × 8 ft) | [Gordon Brush](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) / [Tanis](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) | Metal channel backing, 0.008″ black nylon, 0.687″/17.5mm trim; brush snaps into the holder, holder flange-riveted to the drum OD (rivets clear of the brush); one 8 ft piece per line |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
-| SS grab rail 100mm Ø (×1) | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length; interior face only |
+| SS grab bar — 16″ bolt-on marine (×1) | [Marine Fiberglass Direct](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | Off-the-shelf Ø25 (1″) tube, 406mm; bolts to the stile (interior face only) |
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,761<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,681<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,818<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,902<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -207,7 +207,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,761<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,681<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,818<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,902<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -223,7 +223,7 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 
 - The drum is installed into the hinged panel before the panel is hung. The combined panel + drum weight (~196 kg; itemized breakdown in [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) and [Weight Distribution §3.2](weight-distribution-report.md)) is beyond a two-person lift, so hanging requires an engine crane or gantry hoist. The pivot post, bearings, and cage are separate transport hardware, not carried in the panel + drum lift.
 - The lower bearing collar is bolted to the panel bottom rail with 8 × M10 stainless bolts. The upper bearing housing is bolted to the panel top rail with 6 × M10. Both connections can be disassembled with standard hex keys for maintenance.
-- The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS on a steel **stile bolted between the two Al caps** — the load lands in the caps, no fastener through the wall) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
+- The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab bar (off-the-shelf 16″ bolt-on marine SS, Ø25 tube, bolted to a steel **stile that is itself bolted between the two Al caps** — the load lands in the caps, no fastener through the wall) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and pull the panel inwards. The panel swings open about its left-edge pivot post, clearing the door opening. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
 - **Stepped panel construction:** The thick center zone houses the drum; the thinner corner zones sit flush with the container walls. Zone thicknesses, the step-transition positions, and the frame/skin build-up are specified in the [Hinged Panel Report](hinged-panel-report.md).
@@ -256,7 +256,7 @@ rivets, DP8010 bond), and a **steel welded box cage** integrated with the swing-
 weldment that carries the bearings and the fixed outer skin.
 
 **Sheet 1 — General Arrangement.** Full vertical section on the drum axis: fixed
-housing, rotating C-shell drum, both SKF 6215 bearings, stub shafts, caps, grab rail,
+housing, rotating C-shell drum, both SKF 6215 bearings, stub shafts, caps, grab bar,
 and the support-cage envelope, keyed to the assembly BOM.
 
 ![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
@@ -288,12 +288,13 @@ The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 blueprints for the machined metal parts: the Ø855 6061-T6 Al end cap, the upper Al
 bearing ring, the lower A36 steel floor collar, and the stub-shaft + flange — each with
 OD, bore + fit, thickness, bolt pattern (PCD/count/Ø), material, and the fastening
-scheme (cap→flange tapped; ring/collar→beam weld-nuts; Al nylon-isolated).
+scheme (cap→flange tapped on the Ø120 PCD; ring/collar→beam into rivet-nuts / blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 
 **Sheet 7 — Seals & light-path verification.** The running-gap wiper (4 drum-mounted
-nylon brush strips) and top/bottom seals, and the three-position proof (open-to-exterior,
+#4 strip brushes in Al flange holders — see the Sheet 4 holder-profile inset for the
+flange-riveted mount) and top/bottom seals, and the three-position proof (open-to-exterior,
 open-to-interior, mid-rotation) that no straight-through light path exists at any rotation.
 The plans also carry the strip-count study — the 93°-spaced strips keep at least one wiper
 in each 100° housing material arc at every rotation, so the annular gap can never carry

@@ -130,9 +130,9 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).*
 
 *Components: fixed Ø900 aluminum housing with two 80° openings (exterior + interior-onto-walkway,
 180° apart); single-opening C-shell rotating drum (Ø864, ~Ø850 bore, NO internal fins) — light-tight
-by geometry; 5mm top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed bearings, drum↔housing
-felt/brush wiper seals (opening edges + top/bottom rings), 100mm SS interior grab rail, housing-to-panel
-neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
+by geometry; 8mm Al top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed bearings, drum↔housing
+running-gap #4 strip brushes in Al flange holders + top/bottom neoprene cap seals, off-the-shelf 16″ bolt-on
+SS interior grab bar, housing-to-panel neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
 
 *Reports: [Light Trap Selection](light-trap-selection.md) §4/§5 (housed revolving-door specification, light-path verification); [Hinged Light-Trap Panel](hinged-panel-report.md) §3 (as-integrated light lock: spec, bearings, drum seals).*
 

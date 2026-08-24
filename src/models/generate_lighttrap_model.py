@@ -6,7 +6,7 @@ generate_lighttrap_model.py — Generate Ruby for the TBS-001 "Light Trap"
 focus model (models/lighttrap.skp).
 
 A detailed, report-accurate model of the cargo-door end assembly only:
-  - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, grab rail),
+  - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, grab bar),
   - the hinged stepped PANEL (3 zones + drum aperture + EPDM seal + latches),
   - the ROTATION transport system (rev10 — supersedes the slide): the panel+drum
     +drum-cage assembly SWINGS 56° about a vertical Ø89 CHS pivot post (the film
@@ -406,7 +406,7 @@ def drum_housing(cx, cy):
 
 def drum_rotor(cx=0, cy=0):
     """ROTATING part of the revolving door: the single-opening C-shell drum +
-    caps + top stub shaft + interior grab rail + running-gap wiper strips. Built
+    caps + top stub shaft + interior grab bar + running-gap wiper brushes. Built
     relative to (cx, cy) so it can live in a NESTED Dynamic Component whose RotZ
     revolves it (the revolving-door action). Pass (0,0) for the DC sub-component
     (origin on the drum axis); drum() passes the absolute drum center for the
@@ -429,30 +429,38 @@ def drum_rotor(cx=0, cy=0):
                                       color=C_ALUM, z0=zc))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
-    # Interior grab rail on a steel STILE spanning the two caps — the operator's pull load lands
+    # Interior grab bar on a steel STILE spanning the two caps — the operator's pull load lands
     # in the structural Al caps, NOT the thin HDPE wall. Stile bolted to each cap (2D Sheet 1).
     STILE_W = 40
     stile_x = cx + DRUM_OR - DRUM_T - STILE_W                # against the interior wall, just inboard
     z_stile0, z_stile1 = ZB + DRUM_CAP_T, H - DRUM_CAP_T     # between the two caps
     parts.append(ruby_box("LT Handle stile", stile_x, cy - STILE_W / 2, z_stile0,
                           STILE_W, STILE_W, z_stile1 - z_stile0, color=C_STEEL))
-    gx = stile_x - 45                                        # grab rail center, inboard of the stile
-    parts.append(ruby_cylinder("LT Grab rail", gx, cy, 700, 15, 400, color=C_STEEL, axis="z"))
-    for bz in (720, 1080):                                   # 2 standoff lugs → welded to the stile
-        parts.append(ruby_box("LT Grab rail standoff", gx + 12, cy - 6, bz,
-                              stile_x - (gx + 12), 12, 12, color=C_STEEL))
-    # Running-gap light-seal WIPER — N vertical nylon brush strips RIVETED to the drum OD,
-    # bristles reaching across the gap to the fixed housing bore (McMaster 74715T2). Spaced
-    # 93° on the 280° wall (from the opening edge) so ≥1 always sits in each 100° housing arc
-    # at every rotation → the annular gap can never carry light (see 2D Sheet 7 study).
+    # Off-the-shelf 16" bolt-on marine SS grab bar (Ø25 tube), BOLTED at both feet to the stile.
+    gx = stile_x - 70                                        # grab-bar tube center, 70mm standoff
+    g0, g1 = 900 - 203, 900 + 203                            # 406mm (16") grab, centered at 900
+    parts.append(ruby_cylinder("LT Grab bar (16in bolt-on marine SS)", gx, cy, g0, 12.5, g1 - g0, color=C_STEEL, axis="z"))
+    for bz in (g0, g1):                                      # 2 bolt-on feet → BOLTED to the stile (no welds)
+        parts.append(ruby_box("LT Grab bar foot", gx, cy - 14, bz - 14,
+                              stile_x - gx, 28, 28, color=C_STEEL))
+    # Running-gap light-seal WIPER — N vertical #4 (3/16") nylon strip brushes, each snapped into
+    # an anodized-Al straight-flange holder whose flange rivets to the drum OD (rivets clear of the
+    # brush). Bristles reach across the gap to the fixed housing bore. Spaced 93° on the 280° wall
+    # (from the opening edge) so ≥1 always sits in each 100° housing arc at every rotation → the
+    # annular gap can never carry light (see 2D Sheets 4 & 7).
     brz = HOUSING_R - HOUSING_T                  # housing bore — bristle tips reach here
     hw = 3.0                                     # tangential half-width of a strip
+    hold_d = 6.0                                 # Al holder radial depth at the drum OD
     for k in range(LT_WIPER_N):
         sa = math.radians(180 + od / 2 + k * LT_WIPER_SPACING)
         cr, sr = math.cos(sa), math.sin(sa)
-        uv = [(DRUM_OR, -hw), (brz, -hw), (brz, hw), (DRUM_OR, hw)]   # radial fin (drum OD → bore)
+        huv = [(DRUM_OR, -hw * 1.6), (DRUM_OR + hold_d, -hw * 1.6),
+               (DRUM_OR + hold_d, hw * 1.6), (DRUM_OR, hw * 1.6)]        # Al flange holder on the OD
+        hpts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in huv]
+        parts.append(ov.ruby_prism("LT Drum wiper holder (Al flange)", hpts, ZB, H - ZB, color="#C8D8E8"))
+        uv = [(DRUM_OR + hold_d, -hw), (brz, -hw), (brz, hw), (DRUM_OR + hold_d, hw)]  # nylon bristles → bore
         pts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in uv]
-        parts.append(ov.ruby_prism(f"LT Drum wiper strip ({math.degrees(sa) % 360:.0f}°)",
+        parts.append(ov.ruby_prism(f"LT Drum wiper brush ({math.degrees(sa) % 360:.0f}°)",
                                    pts, ZB, H - ZB, color=felt))
     return '\n'.join(parts)
 

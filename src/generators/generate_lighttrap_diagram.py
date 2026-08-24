@@ -236,46 +236,44 @@ def draw_sheet1():
            f"SKF 6215-2RS1 · welded steel floor collar, 8×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
 
-    # ── Grab rail — VERTICAL bar inside the bore, interior-side wall ──────────
-    GX = DI_R - GRAB_D / 2 - 15          # rail center X, inside the bore
+    # ── Grab rail on a STEEL STILE spanning the two caps — the pull load goes into the
+    # structural Al caps, NOT the thin HDPE drum wall. (interior side of the bore) ───
+    STILE_W = 40
+    stile_x = DI_R - STILE_W                                     # stile just off the interior wall
+    draw_rect(ax, stile_x, Z_CAP_B, STILE_W, Z_CAP_T - Z_CAP_B, fc=C_STEEL, lw=1.2, zorder=6)   # handle stile (cap→cap)
+    draw_bolt(ax, stile_x + STILE_W / 2, Z_CAP_T - 8, 44, d=14, head=-1, end="tapped")          # stile → TOP cap
+    draw_bolt(ax, stile_x + STILE_W / 2, Z_CAP_B + 8, 44, d=14, head=1, end="tapped")           # stile → BOTTOM cap
+    GX = stile_x - 18 - GRAB_D / 2                               # rail center, inboard of the stile
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2
-    draw_rect(ax, GX - GRAB_D / 2, GZ0, GRAB_D, GRAB_L, lw=1.4,
-              fc="#C9CCD2", zorder=9)
-    for zb in (GZ0 + 40, GZ1 - 40):      # 2 standoff brackets → drum wall (bond+rivet, see MOUNT DETAIL)
-        draw_rect(ax, GX + GRAB_D / 2, zb - 12, DI_R - (GX + GRAB_D / 2), 24,
-                  lw=1.0, fc=C_STEEL, zorder=8)
-    leader(ax, GX, GRAB_Z,
-           HO_R + 330, GRAB_Z - 380,
-           f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS (vertical) inside bore, interior side ·\n{GRAB_Z - Z_CAP_B:.0f}mm above cap inner edge · 2 standoffs → wall (see MOUNT DETAIL)",
+    draw_rect(ax, GX - GRAB_D / 2, GZ0, GRAB_D, GRAB_L, lw=1.4, fc="#C9CCD2", zorder=9)          # grab rail
+    for zb in (GZ0 + 40, GZ1 - 40):                             # 2 standoff lugs, WELDED to the stile
+        draw_rect(ax, GX + GRAB_D / 2, zb - 12, stile_x - (GX + GRAB_D / 2), 24, lw=1.0, fc=C_STEEL, zorder=8)
+    leader(ax, stile_x + STILE_W / 2, GRAB_Z, HO_R + 330, GRAB_Z - 380,
+           f"GRAB RAIL Ø{GRAB_D}×{GRAB_L} SS on a steel STILE ({STILE_W}×{STILE_W} SS RHS)\nspanning + bolted to the two Al caps — load into the caps · see MOUNT DETAIL",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    draw_dim_v(ax, GX - GRAB_D / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm", offset=45,
-               fs=6.5, font=FONT)
-    draw_dim_h(ax, GX - GRAB_D / 2, GX + GRAB_D / 2, GZ1 + 75, f"Ø{GRAB_D}mm",
-               offset=45, fs=6.5, font=FONT)
+    draw_dim_v(ax, GX - GRAB_D / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm", offset=45, fs=6.5, font=FONT)
+    draw_dim_h(ax, GX - GRAB_D / 2, GX + GRAB_D / 2, GZ1 + 75, f"Ø{GRAB_D}mm", offset=45, fs=6.5, font=FONT)
     draw_dim_v(ax, GX - GRAB_D / 2 - 150, Z_CAP_B, GRAB_Z, f"{GRAB_Z - Z_CAP_B:.0f}mm\n(cap inner edge → rail CL)",
                offset=45, fs=6.5, font=FONT)
 
-    # ── DETAIL — grab-rail standoff → drum wall (you can't weld steel to HDPE) ────
-    hdx, hdz = HO_R + 560, 980
-    ax.text(hdx + 10, hdz + 250, "DETAIL — GRAB-RAIL MOUNT\n(standoff → HDPE drum wall)", ha="center",
+    # ── DETAIL — grab-rail STILE → cap (top end): the pull load lands in the Al cap ─
+    hdx, hdz = HO_R + 560, 640
+    ax.text(hdx + 10, hdz + 250, "DETAIL — GRAB-RAIL MOUNT\n(stile → cap · top end)", ha="center",
             va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
-    dwT = 34                                                                            # HDPE drum wall (exaggerated)
-    draw_rect(ax, hdx, hdz - 175, dwT, 350, fc=C_LT_DRUM, lw=1.4, zorder=6)             # drum wall
-    for zz in (hdz - 168, hdz + 156):                                                   # break (wall continues)
-        for dz in (0, 8):
-            ax.plot([hdx - 4, hdx + dwT + 4], [zz + dz - 4, zz + dz + 4], color=C_OUT, lw=0.6, zorder=9)
-    draw_rect(ax, hdx - 50, hdz - 95, 50, 190, fc="#EDE7DA", lw=1.2, zorder=6)          # HDPE reinforcement pad (interior)
-    for wz in (hdz - 85, hdz + 85):                                                     # extrusion-weld beads (pad → wall, HDPE↔HDPE)
-        ax.add_patch(mpatches.Polygon([(hdx, wz), (hdx, wz + 16), (hdx - 16, wz)], closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
-    draw_rect(ax, hdx - 56, hdz - 95, 6, 190, fc=C_GASKT, lw=1.2, zorder=7)             # DP8010 STRUCTURAL BOND film (bracket → pad)
-    draw_rect(ax, hdx - 150, hdz - 45, 94, 90, fc=C_STEEL, lw=1.4, zorder=6)            # steel standoff bracket
-    draw_circle(ax, hdx - 205, hdz, 52, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # grab rail Ø100 (welded to bracket)
-    for wz in (hdz - 16, hdz + 16):                                                     # weld (rail → bracket, steel↔steel)
-        ax.add_patch(mpatches.Polygon([(hdx - 150, wz), (hdx - 150, wz + 13), (hdx - 163, wz)], closed=True, fc="#CC4422", ec="#CC4422", zorder=9))
-    leader(ax, hdx + dwT, hdz + 130, hdx + 130, hdz + 210, "DRUM WALL (1/8\" HDPE)\nNO through-hole (no light leak)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx - 25, hdz - 92, hdx + 130, hdz - 20, "HDPE REINF. PAD —\nextrusion-welded to the wall\n(spreads the pull load)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx - 53, hdz + 60, hdx + 130, hdz - 165, "STEEL STANDOFF —\nDP8010-BONDED to the pad\n(no wall penetration)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx - 205, hdz - 52, hdx + 130, hdz - 300, f"GRAB RAIL Ø{GRAB_D} SS —\nwelded to the standoff", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    cpy = hdz + 150                                                                     # top-cap underside plane
+    draw_rect(ax, hdx - 150, cpy, 260, 32, fc=C_ALUM, lw=1.4, zorder=6)                 # TOP CAP (Al)
+    draw_rect(ax, hdx - 20, hdz - 150, 40, cpy - (hdz - 150), fc=C_STEEL, lw=1.4, zorder=6)  # handle stile
+    draw_bolt(ax, hdx, (hdz - 30 + cpy + 46) / 2, (cpy + 46) - (hdz - 30), d=14, head=-1, end="nut")  # stile → cap: through-bolt + nut
+    draw_rect(ax, hdx - 92, hdz - 16, 72, 32, fc=C_STEEL, lw=1.2, zorder=6)             # rail standoff lug
+    draw_circle(ax, hdx - 132, hdz, 42, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # grab rail Ø100
+    for wx in (hdx - 92, hdx - 20):                                                     # welds (rail↔lug, lug↔stile)
+        for wz in (hdz - 15, hdz + 15):
+            ax.add_patch(mpatches.Polygon([(wx, wz), (wx, wz + 12), (wx - 12, wz)], closed=True, fc="#CC4422", ec="#CC4422", zorder=9))
+    for zz in (hdz - 144, hdz - 152):                                                   # break (stile continues to the bottom cap)
+        ax.plot([hdx - 24, hdx + 24], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=9)
+    leader(ax, hdx + 70, cpy + 16, hdx + 170, cpy + 78, "TOP CAP (8mm 6061-T6 Al)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx, cpy + 30, hdx + 170, cpy - 34, f"STILE → CAP: M12 through-bolt + nut —\npull load lands in the Al cap.\nStile ({STILE_W}×{STILE_W} SS RHS) spans both\ncaps (bottom end identical).", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx - 132, hdz - 42, hdx + 170, hdz - 210, f"GRAB RAIL Ø{GRAB_D} SS — welded to a lug,\nwelded to the stile (steel↔steel)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",
@@ -557,10 +555,12 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         HRr = (100 if up else 105) * SC
         band(cx, ro, HRr, -15 * SC, 15 * SC,
              fc=(C_ALUM if up else C_STEEL), lw=1.4, zorder=5)
-        # panel rail / floor plate
+        # axle beam / floor plate (3mm RHS tube — dashed = the hollow walls the weld-nuts sit on)
         zr0, zr1 = 15 * SC * s, 63 * SC * s
         draw_rect(ax, cx - 140 * SC, min(zr0, zr1), 280 * SC, abs(zr1 - zr0),
                   fc=C_STEEL, lw=1.4, zorder=4)
+        for wz in (zr0 + LT_FRAME_T * SC * s, zr1 - LT_FRAME_T * SC * s):     # tube wall inner faces (hidden)
+            ax.plot([cx - 140 * SC, cx + 140 * SC], [wz, wz], color=C_DIM, lw=0.7, ls=(0, (5, 3)), zorder=5)
         # Al drum cap + bolted steel stub-shaft flange
         draw_rect(ax, cx - 110 * SC, min(zc0, zc1), 220 * SC, abs(zc1 - zc0),
                   fc=C_ALUM, lw=1.4, zorder=6)
@@ -571,10 +571,13 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
             fb0, fb1 = -40 * SC * s, zc1
             draw_bolt(ax, cx + g * 55 * SC, (fb0 + fb1) / 2, abs(fb1 - fb0),
                       d=8 * SC, head=int(-s), end="tapped", zb=9)
-        # bearing mount bolts (ring/collar → beam, M10 into weld-nuts) + circlip grooves
+        # ring/collar → beam bolts: HEAD on the ring's outer face (accessible), up through the
+        # ring + the beam's near 3mm wall, into a WELD-NUT on that wall (the ring↔beam contact
+        # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
         for g in (-1, 1):
-            rb0, rb1 = 15 * SC * s, 60 * SC * s
-            draw_bolt(ax, cx + g * 85 * SC, (rb0 + rb1) / 2, abs(rb1 - rb0),
+            ring_far = -15 * SC * s                    # ring face away from the beam (head bears here)
+            wnz = (15 + LT_FRAME_T) * SC * s           # weld-nut on the beam's near wall (inner face)
+            draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="weld", zb=9)
             for zc in (18 * SC, -18 * SC):         # circlip grooves each side
                 ax.plot([cx + g * rs, cx + g * (rs - 5 * SC)], [zc, zc],
@@ -729,22 +732,20 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     draw_rect(ax, -RIML, 0, RIML, LEGT, fc=C_ALUM, lw=1.4, zorder=5)           # rim flat leg on cap
     draw_rect(ax, -LEGT, 0, LEGT, LIP, fc=C_ALUM, lw=1.4, zorder=5)            # standing lip
     draw_rect(ax, 0, -DPT, DPT, LIP + DPT, fc=C_GASKT, lw=0.8, zorder=5)       # DP8010 bead
-    draw_rect(ax, DPT, -40, SHT, LIP + 90, fc=C_LT_DRUM, lw=1.6, zorder=6)     # shell laps over lip
-    for zz in (LIP + 55, LIP + 67, LIP + 79):                                 # break line (shell continues down)
-        ax.plot([DPT - 3, DPT + SHT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
+    draw_rect(ax, DPT, -125, SHT, LIP + 175, fc=C_LT_DRUM, lw=1.6, zorder=6)   # shell laps the lip + hangs down (drum body)
     rz = LIP * 0.5
     blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
     blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
     # ── Running-gap brush wiper (Sheet 7) on the drum OD — starts BELOW the cap lap so its
     # backing rivets stagger clear of the shell→cap rivets (the clash the reader would ask about).
     bkx, bkT = DPT + SHT, S * 3.2                          # shell outer (drum OD) face · 1/8" SS backing
-    bk_bot, bk_top = -95, -18                              # below the lap zone (which is z 0..LIP)
+    bk_bot, bk_top = -118, -18                             # on the shell body, below the lap zone (z 0..LIP)
     draw_rect(ax, bkx, bk_bot, bkT, bk_top - bk_bot, fc="#8A8F98", lw=1.0, zorder=7)        # SS backing
-    for zz in range(int(bk_bot) + 8, int(bk_top), 8):                                       # bristles lay over into the gap
+    for zz in range(int(bk_bot) + 10, int(bk_top), 9):                                      # bristles lay over into the gap
         ax.plot([bkx + bkT, bkx + bkT + S * 18], [zz, zz + 14], color="#555", lw=0.5, zorder=7)
-    blind_rivet(ax, bkx + bkT / 2, (bk_bot + bk_top) / 2, 0, bkT + SHT + S * 1.0, d=RVD * 0.7)  # backing → shell rivet
-    for zz in (bk_bot - 6, bk_bot - 14):                                                    # break (brush + drum continue down)
-        ax.plot([bkx - 3, bkx + bkT + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.5, zorder=8)
+    blind_rivet(ax, (DPT + bkx + bkT) / 2, (bk_bot + bk_top) / 2, 0, (bkx + bkT) - DPT, d=RVD * 0.7)  # backing → SHELL rivet (thru backing + shell)
+    for zz in (-124, -116):                                                                 # break (shell + brush continue down)
+        ax.plot([DPT - 3, bkx + bkT + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=8)
     leader(ax, bkx + bkT + S * 9, bk_top - 18, 250, -CAPT - 150,
            f"RUNNING-GAP BRUSH ({LT_WIPER_N} strips on the drum OD — Sheet 7):\nstarts clear BELOW the cap lap, so its backing rivets\nstagger past the shell→cap rivets (no clash)",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1397,8 +1398,10 @@ def draw_sheet9():
     ax.text(-10, Z_BEAM0 + 120, "DRUM\nAXIS", ha="right", va="top", fontsize=6.2,
             color=C_CL, **FONT, zorder=9)
 
-    # ── FIXED: axle beam (steel RHS) — carries central bearing AND housing ───
+    # ── FIXED: axle beam (steel RHS tube — longitudinal; dashed = the hollow walls) ─
     draw_rect(ax, 0, Z_BEAM0, LT_AXLE_BEAM_SPAN / 2, LT_AXLE_BEAM_H, fc=C_STEEL, lw=1.4, zorder=4)
+    for wz in (Z_BEAM0 + LT_AXLE_BEAM_T, Z_BEAM0 + LT_AXLE_BEAM_H - LT_AXLE_BEAM_T):   # tube wall inner faces (hidden)
+        ax.plot([0, LT_AXLE_BEAM_SPAN / 2], [wz, wz], color=C_DIM, lw=0.7, ls=(0, (5, 3)), zorder=5)
     # ── FIXED: cage corner post (vertical RHS) framing the beam end ──────────
     POST_R0 = LT_AXLE_BEAM_SPAN / 2                                          # 481 — beam outer end / cage corner
     draw_rect(ax, POST_R0, Z_BRK, LT_FRAME_RHS, Z_BEAM0 + LT_AXLE_BEAM_H - Z_BRK,
@@ -1417,17 +1420,20 @@ def draw_sheet9():
     ax.plot([bID, bID + 8], [Z_BRG0 + bW + 4, Z_BRG0 + bW + 4], color=C_OUT, lw=0.9, zorder=8)  # circlip
     draw_rect(ax, 0, -LT_CAP_TOP_T, CAPR, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=5)  # 8mm Al cap disc
     draw_rect(ax, 0, 0, 55, 16, fc=C_ALUM, lw=1.0, zorder=6)                         # bolted hub boss (4×M10)
-    # ── Securing bolts (project convention): Al ring → beam (M10 weld-nut) + cap → flange (M10 tapped) ─
-    rbx = bOD + 15                                                                    # ring → beam bolt
-    rb0, rb1 = Z_BRG0 - 3, Z_BEAM0 + LT_AXLE_BEAM_H * 0.5
-    draw_bolt(ax, rbx, (rb0 + rb1) / 2, rb1 - rb0, d=10, head=-1, end="weld")         # head under the ring, weld-nut in the beam
-    cbx = 46                                                                          # cap → flange bolt
-    cb0, cb1 = -LT_CAP_TOP_T - 3, 16
-    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped")       # head under the cap, tapped into the flange
-    leader(ax, rbx, Z_BEAM0 + LT_AXLE_BEAM_H * 0.4, POST_R0 - 30, Z_BEAM0 + LT_AXLE_BEAM_H + 60,
-           f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 into weld-nuts", fs=6.0, color=C_OUT,
+    # ── Securing bolts (project convention) — each butts the faces it joins ─────
+    # Ring → beam: head on the RING BOTTOM, up through the ring + the beam's 3mm bottom
+    # wall, into a WELD-NUT on that wall's inner face (does NOT float into the void).
+    rbx = bOD + 15
+    wnz = Z_BEAM0 + LT_AXLE_BEAM_T                                                    # weld-nut on the beam bottom wall
+    draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="weld")
+    # Cap → flange: head on the CAP UNDERSIDE, up through the cap into the TAPPED flange.
+    cbx = 46
+    cb0, cb1 = -LT_CAP_TOP_T, 14
+    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped")
+    leader(ax, rbx, wnz + 6, POST_R0 - 30, Z_BEAM0 + LT_AXLE_BEAM_H + 60,
+           f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 into WELD-NUTS on the\nbeam bottom wall (3mm RHS)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
-    leader(ax, cbx, -LT_CAP_TOP_T - 3, 250, -LT_CAP_TOP_T - 175,
+    leader(ax, cbx, -LT_CAP_TOP_T, 250, -LT_CAP_TOP_T - 175,
            "CAP → FLANGE\n4×M10 (tapped)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────

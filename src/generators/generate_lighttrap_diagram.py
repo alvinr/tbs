@@ -1181,7 +1181,7 @@ def draw_sheet6():
     plans = [(0, 180, "A · DRUM OPEN TO EXTERIOR"),
              (dx, 0, "B · DRUM OPEN TO INTERIOR"),
              (2 * dx, 90, "C · DRUM MID-ROTATION")]
-    X_LO, X_HI = -HR - 320, 2 * dx + HR + 320
+    X_LO, X_HI = -HR - 320, 2 * dx + HR + 640       # extra right room for the top-end light-path section
     Z_LO, Z_HI = -HR - 1720, HR + 360               # extra bottom room: wrapped seal notes clear the title block
     FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
@@ -1302,12 +1302,40 @@ def draw_sheet6():
     ax.text(sx, sz + 190, "SEAL DETAIL — RUNNING GAP (enlarged)", ha="center", va="bottom",
             fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
 
+    # ── TOP-END LIGHT PATH — the running gap is CAPPED at its axial top by the cap↔frame neoprene
+    # wiper, so a ray up the gap can't circumnavigate OVER the brushes. Bottom end is identical. ──
+    tex, tez = 2 * dx + 320, -HR - 640
+    gx0, gw = tex - 10, 46                                                         # gap: drum OD (left) → housing bore (right)
+    gx1 = gx0 + gw
+    ax.text(tex, tez + 210, "TOP-END LIGHT PATH — gap CAPPED at top\n(cap ↔ frame neoprene seal · bottom identical)",
+            ha="center", va="bottom", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+    draw_rect(ax, gx0 - 12, tez - 175, 12, 205, fc=C_LT_DRUM, lw=1.2, zorder=5)    # drum shell (rotating)
+    draw_rect(ax, gx1, tez - 175, 14, 235, fc="#DDE4EC", lw=1.2, zorder=5)         # housing wall (fixed)
+    draw_rect(ax, gx0 - 110, tez + 6, 110, 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
+    draw_rect(ax, gx0 - 110, tez + 48, gw + 150, 18, fc=C_STEEL, lw=1.4, zorder=6) # frame top plate (fixed)
+    draw_rect(ax, gx0 - 78, tez + 28, gw + 76, 18, fc=C_GASKT, lw=1.0, zorder=7)   # neoprene wiper — caps the gap
+    for zz in range(-120, -66, 8):                                                # brush (running-gap seal), lower
+        ax.plot([gx0, gx1 - 4], [tez + zz, tez + zz + 5], color="#222", lw=0.6, zorder=6)
+    draw_rect(ax, gx0 - 6, tez - 132, 6, 70, fc="#A8763A", lw=0.5, zorder=6)       # brush holder (bronze)
+    ax.annotate("", xy=(gx0 + gw / 2, tez + 24), xytext=(gx0 + gw / 2, tez - 165),  # daylight ray UP the gap …
+                arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
+    for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                  # … killed at the seal (red ✗)
+        ax.plot([gx0 + gw / 2 + s1[0], gx0 + gw / 2 + s2[0]], [tez + s1[1], tez + s2[1]], color="#D33", lw=2.2, zorder=9)
+    leader(ax, gx0 + 20, tez + 40, gx1 + 40, tez + 120, "NEOPRENE WIPER (cap↔frame)\ncaps the gap — light STOPS here",
+           fs=6, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    ax.text(gx1 + 46, tez + 57, "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6, color=C_DIM, **FONT, zorder=9)
+    leader(ax, gx0 - 60, tez + 17, gx0 - 118, tez + 40, "DRUM CAP (rotating)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, gx1 + 7, tez - 90, gx1 + 120, tez - 70, "HOUSING (fixed)", fs=6, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, gx0 + 3, tez - 95, gx0 - 118, tez - 150, f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    ax.text(gx0 + gw / 2, tez - 195, "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
+            fontsize=6, color=C_OUT, **FONT, zorder=9)
+
     notes = [
         "SEALS & LIGHT-PATH",
         "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
         f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
         f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
-        "Top + bottom: 12mm closed-cell neoprene wiper strips (cap ↔ frame) + silicone bead to the frame plates.",
+        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — see the TOP-END LIGHT PATH detail. The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
     draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=2400, wrap=175,

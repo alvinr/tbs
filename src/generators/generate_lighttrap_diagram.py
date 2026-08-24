@@ -59,10 +59,10 @@ SKF6215_ID = 75    # bore Ø (mm)
 SKF6215_OD = 130   # outer Ø (mm)
 SKF6215_W  = 25    # width (mm)
 
-# ── Off-the-shelf 16" bolt-on marine SS grab bar (light-trap-selection.md §4.4) ──
-GRAB_D  = 25    # grab-bar tube Ø (mm) — 1" marine grab bar
-GRAB_L  = 406   # grab length between the two bolt-on feet (mm) — 16"
-GRAB_SO = 70    # foot standoff from the stile face (mm)
+# ── Off-the-shelf round pull handle — McMaster 1871A65 (light-trap-selection.md §4.4) ──
+GRAB_D  = 12.7  # handle bar Ø (mm) — 0.50" round bar (1871A65)
+GRAB_L  = 308   # overall handle length (mm) — 12.13" (feet at the ends)
+GRAB_SO = 52    # grip standoff / arch height off the stile face (mm) — 2.06"
 GRAB_Z  = 900   # mounting height above floor (mm)
 
 # ── Derived running clearance (drum OD → housing bore), single-sourced ───────
@@ -107,11 +107,13 @@ def tube_rect(ax, x, y, w, h, wall, *, fc=C_STEEL, lw=1.4, zorder=6):
     draw_rect(ax, x + wall, y + wall, w - 2 * wall, h - 2 * wall, fc=BG, lw=lw * 0.7, zorder=zorder)  # bore (hollow)
 
 
-def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", zb=10):
+def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", csk=False, zb=10):
     """Bolt in section — the project convention (cf. corner-gimbal bolt()): a filled shank
     with a wider HEAD at the `head` end and, at the far end, a hex NUT / weld-nut / tapped
     thread. cx,cz = shank mid; `length` = grip along the axis; d = nominal Ø (drawn).
     head = -1 → head at the −axis end (below/left); +1 → +axis end.
+    csk = True → flush COUNTERSUNK head (tapered flat head recessed into the joined face),
+    e.g. an Al cap into a steel flange; else a protruding hex head.
     end: 'nut' plain hex nut · 'rivnut' rivet-nut / blind threaded insert (flanged sleeve set in the
     wall from outside) · 'tapped' into a tapped hole (no nut)."""
     SHK, HN = "#8A8F98", C_STEEL
@@ -123,10 +125,20 @@ def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", zb
             ax.add_patch(mpatches.Rectangle((cx + v0, cz + u0), v1 - v0, u1 - u0, **kw))
         else:
             ax.add_patch(mpatches.Rectangle((cx + u0, cz + v0), u1 - u0, v1 - v0, **kw))
+
+    def pmap(u, v):                                        # (along-axis u, across v) → point
+        return (cx + v, cz + u) if vertical else (cx + u, cz + v)
     rect(-g, g, -d / 2, d / 2, fc=SHK, ec=C_OUT, lw=0.8, zorder=zb)                        # shank
-    hu = -g if head < 0 else g                                                             # head end
-    rect(hu - (hh if head < 0 else 0), hu + (0 if head < 0 else hh), -hw / 2, hw / 2,
-         fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                           # head
+    hu = -g if head < 0 else g                                                             # head end (outer face)
+    if csk:                                               # flush countersunk flat head — tapers INTO the material
+        into = 1 if head < 0 else -1                      # +axis into the joint for a head-below bolt
+        cw = hw * 0.85
+        pts = [pmap(hu, -cw / 2), pmap(hu, cw / 2),
+               pmap(hu + into * hh * 1.4, d / 2), pmap(hu + into * hh * 1.4, -d / 2)]
+        ax.add_patch(mpatches.Polygon(pts, closed=True, fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1))
+    else:
+        rect(hu - (hh if head < 0 else 0), hu + (0 if head < 0 else hh), -hw / 2, hw / 2,
+             fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                       # protruding hex head
     fu = g if head < 0 else -g                                                             # far (thread) end
     if end == "nut":
         rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
@@ -244,41 +256,56 @@ def draw_sheet1():
     draw_rect(ax, stile_x, Z_CAP_B, STILE_W, Z_CAP_T - Z_CAP_B, fc=C_STEEL, lw=1.2, zorder=6)   # handle stile (cap→cap)
     draw_bolt(ax, stile_x + STILE_W / 2, Z_CAP_T - 8, 44, d=14, head=-1, end="tapped")          # stile → TOP cap
     draw_bolt(ax, stile_x + STILE_W / 2, Z_CAP_B + 8, 44, d=14, head=1, end="tapped")           # stile → BOTTOM cap
-    GX = stile_x - GRAB_SO                                       # grab-bar tube centerline, inboard of the stile
+    leader(ax, stile_x + STILE_W / 2, Z_CAP_T - 8, stile_x - 210, Z_CAP_T + 140,
+           "STILE → CAP: M12 tapped into each Al cap\n(anchors the stile — 1 top + 1 bottom)", fs=6.0, color=C_DIM,
+           ha="right", arrow_style="->", font=FONT)
+    GX = stile_x - GRAB_SO                                       # grip standoff, inboard of the stile
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2
-    draw_rect(ax, GX - GRAB_D / 2, GZ0, GRAB_D, GRAB_L, lw=1.4, fc="#C9CCD2", zorder=9)          # vertical grab-bar tube
-    for gz in (GZ0, GZ1):                                        # two bolt-on feet: tube → stile, BOLTED (no welds)
-        draw_rect(ax, GX, gz - GRAB_D / 2, stile_x - GX, GRAB_D, lw=1.2, fc="#C9CCD2", zorder=9)  # foot leg to the stile
-        draw_rect(ax, stile_x - 7, gz - 26, 7, 52, fc=C_STEEL, lw=1.0, zorder=8)                  # foot mounting pad on the stile
-        draw_bolt(ax, stile_x - 4, gz, 30, d=8, vertical=False, head=-1, end="tapped")            # foot → stile: SHORT M8, tapped
-    leader(ax, GX - GRAB_D / 2, GRAB_Z + GRAB_L / 4, -110, GRAB_Z + 520,
-           f"GRAB BAR — off-the-shelf 16\" bolt-on marine SS (Ø{GRAB_D} × {GRAB_L}mm),\nBOLTED at both feet to a steel STILE ({STILE_W}×{STILE_W}×5 SS RHS) that spans\n+ bolts to the two Al caps — pull load into the caps · see MOUNT DETAIL",
+    hd = GRAB_D
+    hbar = "#C9CCD2"
+    # rounded round-bar pull handle (1871A65): grip parallel to the stile + two arms to the feet, drawn
+    # as a capsule silhouette so the corners read ROUNDED, like a bent pipe (not a squared bracket).
+    def capsule(x0, z0, x1, z1):
+        ang = math.atan2(z1 - z0, x1 - x0)
+        nx, nz = -math.sin(ang) * hd / 2, math.cos(ang) * hd / 2
+        ax.add_patch(mpatches.Polygon([(x0 + nx, z0 + nz), (x1 + nx, z1 + nz),
+                                       (x1 - nx, z1 - nz), (x0 - nx, z0 - nz)], closed=True, fc=hbar, ec="none", zorder=9))
+        for cx0, cz0 in ((x0, z0), (x1, z1)):
+            ax.add_patch(mpatches.Circle((cx0, cz0), hd / 2, fc=hbar, ec="none", zorder=9))
+    capsule(GX, GZ0 + hd, GX, GZ1 - hd)                          # grip (vertical)
+    capsule(GX, GZ0 + hd, stile_x - 4, GZ0)                      # bottom arm (rounded corner)
+    capsule(GX, GZ1 - hd, stile_x - 4, GZ1)                      # top arm (rounded corner)
+    for gz in (GZ0, GZ1):                                        # two flat feet, BOLTED to the stile (no welds)
+        draw_rect(ax, stile_x - 6, gz - 16, 6, 32, fc=C_STEEL, lw=1.0, zorder=8)                 # flat foot pad (0.27")
+        draw_bolt(ax, stile_x - 3, gz, 26, d=6.35, vertical=False, head=-1, end="tapped")        # foot → stile: 1/4" tapped
+    leader(ax, GX - hd / 2, GRAB_Z + GRAB_L / 4, -110, GRAB_Z + 520,
+           f"PULL HANDLE — off-the-shelf 12\" round pull handle (McMaster 1871A65, Ø0.5\" bar),\n1/4\" through-holes BOLTED (tapped) at both feet to a steel STILE ({STILE_W}×{STILE_W}×5 SS RHS)\nthat spans + bolts to the two Al caps — pull load into the caps · see MOUNT DETAIL",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    draw_dim_v(ax, GX - GRAB_D / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm grab", offset=45, fs=6.5, font=FONT)
+    draw_dim_v(ax, GX - hd / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm handle", offset=45, fs=6.5, font=FONT)
     draw_dim_h(ax, GX, stile_x, GZ1 + 75, f"{GRAB_SO}mm standoff", offset=45, fs=6.5, font=FONT)
-    draw_dim_v(ax, GX - GRAB_D / 2 - 150, Z_CAP_B, GRAB_Z, f"{GRAB_Z - Z_CAP_B:.0f}mm\n(cap inner edge → bar CL)",
+    draw_dim_v(ax, GX - hd / 2 - 150, Z_CAP_B, GRAB_Z, f"{GRAB_Z - Z_CAP_B:.0f}mm\n(cap inner edge → grip CL)",
                offset=45, fs=6.5, font=FONT)
 
     # ── DETAIL — grab-bar mount: off-the-shelf bar BOLTED to the stile, stile TAPPED to the cap ─
     hdx, hdz = HO_R + 560, 640
-    ax.text(hdx + 10, hdz + 250, "DETAIL — GRAB-BAR MOUNT\n(bar → stile → cap · top end)", ha="center",
+    ax.text(hdx + 10, hdz + 250, "DETAIL — PULL-HANDLE MOUNT\n(handle → stile → cap · top end)", ha="center",
             va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     cpy = hdz + 150                                                                     # top-cap underside plane
     draw_rect(ax, hdx - 150, cpy, 260, 32, fc=C_ALUM, lw=1.4, zorder=6)                 # TOP CAP (Al)
     draw_rect(ax, hdx - 20, hdz - 150, 40, cpy - (hdz - 150), fc=C_STEEL, lw=1.4, zorder=6)  # handle stile (40×40×5 SS RHS)
     draw_rect(ax, hdx - 15, hdz - 145, 30, cpy - (hdz - 145) - 5, fc=BG, lw=0.7, zorder=7)   # RHS bore (hollow, 5mm wall)
     draw_bolt(ax, hdx, cpy - 6, 40, d=12, head=-1, end="tapped")                        # stile → cap: SHORT M12 TAPPED into the cap
-    # off-the-shelf grab-bar foot BOLTED to the stile (two short M8, tapped into the RHS wall — NO welds)
-    draw_rect(ax, hdx - 78, hdz - 30, 58, 60, fc="#C9CCD2", lw=1.2, zorder=5)           # grab-bar foot leg → stile
-    draw_rect(ax, hdx - 26, hdz - 34, 8, 68, fc=C_STEEL, lw=1.0, zorder=6)              # foot mounting pad on the stile face
-    for fz in (hdz - 18, hdz + 18):
-        draw_bolt(ax, hdx - 22, fz, 30, d=8, vertical=False, head=-1, end="tapped")     # foot → stile: SHORT M8 TAPPED
-    draw_circle(ax, hdx - 116, hdz, 30, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # grab bar Ø25 tube
+    # off-the-shelf pull-handle foot BOLTED to the stile (2× 1/4" through-screws, tapped into the RHS wall — NO welds)
+    draw_rect(ax, hdx - 78, hdz - 30, 58, 60, fc="#C9CCD2", lw=1.2, zorder=5)           # pull-handle arm → foot
+    draw_rect(ax, hdx - 26, hdz - 40, 7, 80, fc=C_STEEL, lw=1.0, zorder=6)              # flat foot pad (0.27") on the stile face
+    for fz in (hdz - 24, hdz + 24):
+        draw_bolt(ax, hdx - 22, fz, 28, d=6.35, vertical=False, head=-1, end="tapped")  # foot → stile: 1/4" TAPPED
+    draw_circle(ax, hdx - 116, hdz, 20, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # pull-handle Ø0.5" bar
     for zz in (hdz - 144, hdz - 152):                                                   # break (stile continues to the bottom cap)
         ax.plot([hdx - 24, hdx + 24], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=9)
     leader(ax, hdx + 70, cpy + 16, hdx + 170, cpy + 78, "TOP CAP (8mm 6061-T6 Al)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
     leader(ax, hdx + 6, cpy - 24, hdx + 170, cpy - 30, f"STILE → CAP: SHORT M12 TAPPED into the cap —\npull load lands in the Al cap. Stile ({STILE_W}×{STILE_W}×5\nSS RHS) spans both caps (bottom end identical).", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx - 22, hdz - 34, hdx + 170, hdz - 150, "GRAB-BAR FOOT → STILE: 2× SHORT M8 TAPPED\ninto the RHS wall (off-the-shelf bolt-on bar — NO welds)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx - 22, hdz - 40, hdx + 170, hdz - 150, "HANDLE FOOT → STILE: 2× 1/4\" TAPPED into the\nRHS wall (McMaster 1871A65 pull handle — NO welds)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",
@@ -572,10 +599,10 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         zf0, zf1 = -40 * SC * s, -55 * SC * s
         draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
                   fc=C_STEEL, lw=1.4, zorder=6)
-        for g in (-1, 1):                          # cap → flange bolts (M10, tapped, Ø120 PCD)
+        for g in (-1, 1):                          # cap → flange bolts (M10 countersunk, tapped, Ø120 PCD)
             fb0, fb1 = -40 * SC * s, zc1
             draw_bolt(ax, cx + g * 60 * SC, (fb0 + fb1) / 2, abs(fb1 - fb0),
-                      d=8 * SC, head=int(-s), end="tapped", zb=9)
+                      d=8 * SC, head=int(-s), end="tapped", csk=True, zb=9)
         # ring/collar → beam bolts: HEAD on the ring's outer face (accessible), up through the
         # ring + the beam's near 3mm wall, into a RIVET-NUT (blind threaded insert) in that wall (the ring↔beam contact
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
@@ -662,6 +689,27 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
                fs=6.0, font=FONT)
     ax.text(LX, -235, "bearing · shaft · cap · flange  AS UPPER HUB", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
+
+    # ── RIVET-NUT DETAIL — how the ring/collar secures to the CLOSED axle beam (no inside nut) ──
+    IS = 7
+    ox, oz = 1830, -560
+    def rx(mm): return ox + IS * mm
+    def rz(mm): return oz + IS * mm
+    T = LT_FRAME_T                                            # 3mm RHS wall
+    BH = 2 * T + 40                                           # beam box height shown (mm)
+    ax.text(ox, rz(BH + 10), "RIVET-NUT DETAIL — ring → CLOSED axle beam  (7:1)",
+            ha="center", va="bottom", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, rx(-30), rz(-15), IS * 60, IS * 15, fc=C_ALUM, lw=1.2, zorder=6)                 # Al top ring (below the beam)
+    draw_rect(ax, rx(-38), rz(0), IS * 76, IS * BH, fc=C_STEEL, lw=1.4, zorder=5)                  # closed RHS beam — outer
+    draw_rect(ax, rx(-38) + IS * T, rz(T), IS * (76 - 2 * T), IS * (BH - 2 * T), fc=BG, lw=0.8, zorder=5)  # hollow bore (empty)
+    cz = (rz(-15) + rz(T)) / 2                                # ring → beam bolt: head under the ring, up
+    draw_bolt(ax, ox, cz, rz(T) - rz(-15), d=58, head=-1, end="rivnut")   # through ring + bottom wall → RIVET-NUT
+    leader(ax, ox - 20, rz(-15), rx(-42), rz(-15) - 34, "BOLT head on the ring underside\n(driven from below — accessible)",
+           fs=6.0, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, ox + 24, rz(T + 6), rx(48), rz(T + 30), "RIVET-NUT (blind threaded insert) set in the beam's\nBOTTOM wall from below — its barrel provides the\ncaptive thread; the bolt clamps the ring up to the wall",
+           fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, rx(-16), rz(BH * 0.62), rx(-48), rz(BH + 4), "BORE — EMPTY:\nNO nut inside the closed tube",
+           fs=6.0, color=C_DIM, ha="right", arrow_style="->", font=FONT)
 
     # ── Component blueprints are on Sheet 6 (single-part drawings) ───────────
     ax.text((UX + LX) / 2, -640,
@@ -1474,15 +1522,15 @@ def draw_sheet9():
     rbx = bOD + 15
     wnz = Z_BEAM0 + LT_AXLE_BEAM_T                                                    # rivet-nut set in the beam bottom wall
     draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="rivnut")
-    # Cap → flange: head on the CAP UNDERSIDE, up through the cap into the TAPPED flange.
+    # Cap → flange: countersunk flush in the CAP UNDERSIDE, up through the cap into the TAPPED flange.
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge
     cb0, cb1 = -LT_CAP_TOP_T, 10
-    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped")
+    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
     leader(ax, rbx, wnz + 6, POST_R0 - 30, Z_BEAM0 + LT_AXLE_BEAM_H + 60,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 into RIVET-NUTS (blind inserts)\nset in the beam bottom wall (3mm RHS)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, cbx, -LT_CAP_TOP_T, 250, -LT_CAP_TOP_T - 175,
-           "CAP → FLANGE\n4×M10 (tapped)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+           "CAP → FLANGE\n4×M10 COUNTERSUNK (tapped)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────
     draw_rect(ax, CAPR - LT_RIM_LEG, 0, LT_RIM_LEG, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=6)   # rim flat leg

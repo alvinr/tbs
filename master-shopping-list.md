@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,110 | $4,512 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,126 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,818 | $3,902 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,799 | $3,864 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,079 | $2,941 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,278 | $1,484 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,354** | **~$36,192** |
+| **TOTAL (base build + 50-print run)** | **~$27,335** | **~$36,154** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -249,7 +249,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 16 ea | Fasteners Plus | ibc-frame | $16 |
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Home Depot | ibc-frame | $68 |
 | [Stainless bolts (cap/ring/edge/stile/grab) + M10 rivet-nuts + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | 1 lot | US Plastic + McMaster | lightlock | $45–$70 |
-| [Ø25 SS grab bar — 16" bolt-on (marine)](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | 1 ea | Marine Fiberglass Direct | lightlock | $25–$45 |
+| [12" round pull handle — McMaster 1871A65](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | lightlock | $6 |
 | [1/8" 18-8 SS blind rivets — housing→frame lap (100-pack)](https://www.mcmaster.com/97525A435/) (97525A435) | 1 pack-100 | McMaster-Carr | lightlock | $15 |
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
@@ -279,7 +279,7 @@ indicative low–high estimates — get quotes before ordering.
 | Half-lap hold-down screws (#14 TEK + washer) | 4 ea | Bridge Fasteners | ibc-frame | $2–$4 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,731–$2,095** |
+| **fasteners-hardware subtotal** | | | | **$1,712–$2,057** |
 
 ### plastics-sheet
 
@@ -376,7 +376,7 @@ indicative low–high estimates — get quotes before ordering.
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $316–$516 |
 | [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1 ea | Metals Depot | spray | $183 |
-| 40×40×5 SS RHS grab-bar stile (cap→cap) + M12 cap bolts | 1 lot | Metal Supermarkets | lightlock | $50–$95 |
+| 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | 1 lot | Metal Supermarkets | lightlock | $50–$95 |
 | 4mm folded plate | 8 ea | Local fab | ibc-frame | $60–$100 |
 | 75mm Ø × 150mm steel stub shaft | 2 ea | Steel service center | lightlock | $30–$50 |
 | Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
@@ -473,7 +473,7 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| McMaster-Carr | 51 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,349–$1,375 |
+| McMaster-Carr | 52 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,355–$1,381 |
 | Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | US Plastic Corp | 13 | plastics-sheet, plumbing-fittings | $1,001 |
@@ -515,7 +515,6 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
-| Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | Canal Rubber | 1 | seals-gaskets | $25–$40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |

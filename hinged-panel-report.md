@@ -104,7 +104,7 @@ is slightly lower than the whole-panel figure carried in the
 | | HDPE center skins | 1/8" HDPE, Ø900 aperture deducted | 11.4 |
 | | **A subtotal** | | **85.9** |
 | **B · Housing** | HDPE shell + steel flange/hub | Ø900×3/16", two 80° openings | 21.8 |
-| **C · Drum** | HDPE C-shell (1/8") + 8mm Al caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab bar | Ø864 | 35.9 |
+| **C · Drum** | HDPE C-shell (1/8") + 8mm Al caps + Ø75 shafts + 2× SKF 6215 + stiffeners + pull handle | Ø864 | 35.9 |
 | **D · Bay** | B2 punch-out bay walls | 1/8" HDPE, 4-wall tube 0.89m deep | 20.8 |
 | **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
 | **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
@@ -209,12 +209,12 @@ See [Light Trap Selection](light-trap-selection.md) §5 and **Sheet 5**
 
 ### 3.5 Handle
 
-An off-the-shelf 16″ (406mm) bolt-on marine stainless grab bar (Ø25 tube) is mounted
-on the interior face at 900mm height. It bolts to a steel stile that spans and bolts
-to the two aluminum caps — no welds, and no through-bolt penetration of the drum wall
-on the exterior face, so the pull load lands in the structural caps and no light leak
-path is created. The operator enters by pushing the bare exterior drum wall, then
-uses the interior grab bar to pull the drum closed and brace during exit.
+An off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/),
+Ø0.5″ bar, 2.06″ standoff) is mounted on the interior face at 900mm height. It bolts (1/4″
+screws) to a steel stile that spans and bolts to the two aluminum caps — no welds, and no
+through-bolt penetration of the drum wall on the exterior face, so the pull load lands in the
+structural caps and no light leak path is created. The operator enters by pushing the bare
+exterior drum wall, then uses the interior pull handle to pull the drum closed and brace during exit.
 
 ### 3.6 Access & Light-Tightness Verification (both tests pass)
 
@@ -458,12 +458,12 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [Anodized-Al straight-flange holder for the #4 wiper brush (×4 lines)](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) (AH400436) | 4× extruded anodized-aluminum straight-flange holders (0.050" wall) for the #4 (3/16") strip brush — the brush channel snaps in; the offset flat flange blind-rivets to the drum OD, so fasteners land in the aluminum flange, clear of the brush. One 8 ft length per line → 4× 8ft. Exact profile P/N confirmed at order (Tanis/Gordon release the section via CAD/quote). | 4 8ft | Tanis Brush / Gordon Brush | $72–$160 |
 | 12mm closed-cell neoprene — top/bottom cap wiper seals | Top + bottom drum-cap wiper seals (12mm closed-cell neoprene, PSA back) + silicone bead to the frame plates. The drum↔housing running-gap seal is now the drum-mounted brush (ll-wiper-brush), not felt. | 1 lot | Canal Rubber / McMaster-Carr | $25–$40 |
 | [Silicone bead sealant (black, UV-stable)](https://www.homedepot.com/p/331895623) (RDX1001bl) | Bearing-housing / light-trap seam seal. Maxisil black natural-stone silicone, 10.5 oz (weather/UV grade, neutral-cure — not a mildewcide bath caulk). | 1 ea | Home Depot | $20 |
-| [Ø25 SS grab bar — 16" bolt-on (marine)](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | Interior handle — off-the-shelf 16" (406mm) bolt-on marine SS grab bar, Ø25 (1") tube. BOLTED at its two feet to the handle stile (ll-handle-stile) — 2× M8 tapped per foot — NOT welded, and not to the drum wall. | 1 ea | Marine Fiberglass Direct | $25–$45 |
-| 40×40×5 SS RHS grab-bar stile (cap→cap) + M12 cap bolts | Steel stile (40×40×5 SS RHS, ~2.1 m) spanning + bolted between the two Al caps (4× M12 SHORT bolts TAPPED into the caps) — carries the grab-bar pull load into the structural caps, NOT the thin HDPE wall. The off-the-shelf grab bar (ll-grab-rail) bolts to the stile (2× M8 tapped per foot). Est.; firm at order. | 1 lot | Metal Supermarkets / Online Metals | $50–$95 |
+| [12" round pull handle — McMaster 1871A65](https://www.mcmaster.com/1871A65/) (1871A65) | Interior handle — off-the-shelf 12.13" unthreaded-through-hole-mount round pull handle (Ø0.5" bar, 2.06" standoff, 1/4" mounting screws). BOLTED at its two feet to the handle stile (ll-handle-stile) — 1/4" screws tapped into the RHS wall — NOT welded, and not to the drum wall. $6.43 firm. | 1 ea | McMaster-Carr | $6 |
+| 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | Steel stile (40×40×5 SS RHS, ~2.1 m) spanning + bolted between the two Al caps (4× M12 SHORT bolts TAPPED into the caps) — carries the pull-handle load into the structural caps, NOT the thin HDPE wall. The off-the-shelf pull handle (ll-grab-rail, McMaster 1871A65) bolts to the stile (1/4" screws tapped into the RHS wall). Est.; firm at order. | 1 lot | Metal Supermarkets / Online Metals | $50–$95 |
 | Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | Local fab | $40–$70 |
-| [Stainless bolts (cap/ring/edge/stile/grab) + M10 rivet-nuts + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | Cap→flange 4×M10 ×2 (tapped steel flange, Ø120 PCD); ring→beam 6×M10 + collar→beam 8×M10 into M10 RIVET-NUTS (blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; mechanism per Sheets 5/10); stile→cap 4×M12 tapped + grab-bar feet 4×M8 tapped; nylon isolation shoulder washers at every steel↔Al/HDPE joint (no galvanic couple). Rivets and edge-channel M8 are separate lines. | 1 lot | US Plastic + McMaster | $45–$70 |
-| Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | ~16–22 hrs: roll + hot-air/extrusion-weld the 2 HDPE cylinders, roll the Al rim-angle rings, fit the metal caps + SKF 6215 bearings + stub shafts, rivet the lap joints, mount the drum brush holders + edge channels + grab-bar stile. | 1 lot | Local plastic + metal fab | $800–$1,150 |
-| **Lightlock total** | | | | **$2,818–$3,902** |
+| [Stainless bolts (cap/ring/edge/stile/grab) + M10 rivet-nuts + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | Cap→flange 4×M10 ×2 (tapped steel flange, Ø120 PCD); ring→beam 6×M10 + collar→beam 8×M10 into M10 RIVET-NUTS (blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; mechanism per Sheets 5/10); stile→cap 4×M12 tapped + pull-handle feet 4×1/4" tapped; nylon isolation shoulder washers at every steel↔Al/HDPE joint (no galvanic couple). Rivets and edge-channel M8 are separate lines. | 1 lot | US Plastic + McMaster | $45–$70 |
+| Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | ~16–22 hrs: roll + hot-air/extrusion-weld the 2 HDPE cylinders, roll the Al rim-angle rings, fit the metal caps + SKF 6215 bearings + stub shafts, rivet the lap joints, mount the drum brush holders + edge channels + pull-handle stile. | 1 lot | Local plastic + metal fab | $800–$1,150 |
+| **Lightlock total** | | | | **$2,799–$3,864** |
 <!-- END parts:lightlock -->
 
 
@@ -499,10 +499,10 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,278<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,484<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,818<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,902<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,799<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,864<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,276<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$6,996<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,257<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$6,958<!-- END costing:hp-total-high -->** |
 
 ---
 

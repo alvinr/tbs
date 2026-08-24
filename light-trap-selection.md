@@ -298,7 +298,11 @@ flange-riveted mount) and top/bottom seals, and the three-position proof (open-t
 open-to-interior, mid-rotation) that no straight-through light path exists at any rotation.
 The plans also carry the strip-count study — the 93°-spaced strips keep at least one wiper
 in each 100° housing material arc at every rotation, so the annular gap can never carry
-light between the openings.
+light between the openings **circumferentially**. A **top-end light-path detail** closes the
+other axis: the running gap is capped at its axial top/bottom by the **rotating-cap ↔ fixed-frame
+neoprene wiper seal + silicone bead**, so a ray travelling up the gap is stopped at the seal and
+cannot bypass the brushes over the top/bottom. The brushes seal the gap circumferentially; the
+neoprene seals it axially.
 
 ![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 

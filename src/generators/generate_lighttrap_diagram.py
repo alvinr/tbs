@@ -486,6 +486,14 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         z_fl = -40 * SC * s
         draw_rect(ax, cx - rs, min(z_stub, z_fl), 2 * rs, abs(z_stub - z_fl),
                   fc=C_STEEL, lw=1.4, zorder=6)
+        # CLEARANCE bore where the stub shaft passes the beam/rail — it seats in the BEARING,
+        # NOT in the frame; a Ø80 clearance bore keeps the rotating shaft off the fixed beam.
+        zb_bot, bore_hw = 15 * SC * s, rs + 5 * SC
+        draw_rect(ax, cx - bore_hw, min(zb_bot, z_stub), 2 * bore_hw, abs(z_stub - zb_bot),
+                  fc="white", lw=0, zorder=5)
+        for g in (-1, 1):
+            ax.plot([cx + g * bore_hw] * 2, [min(zb_bot, z_stub), max(zb_bot, z_stub)],
+                    color=C_DIM, lw=0.8, ls=(0, (4, 2)), zorder=6)   # clearance-bore walls
         # bearing mount: isolated Al top ring (upper) / welded steel floor collar (lower)
         HRr = (100 if up else 105) * SC
         band(cx, ro, HRr, -15 * SC, 15 * SC,
@@ -601,6 +609,7 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
         f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
         "Bearing mounts: upper in isolated aluminum top ring (6×M10 into weld-nuts on the beam, nylon-isolated); lower in welded steel floor collar (8×M10). Cap→flange: bolt from the cap into the TAPPED steel flange. Full fastening on Sheet 6.",
         "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
+        "Shaft seat: the stub shaft seats ONLY in the Ø75 h6 bearing bore — the SKF 6215 IS the 'socket' (off-the-shelf; shaft blueprint on Sheet 6). It does NOT socket into the frame: where it passes the beam it runs in a Ø80 clearance bore (dashed), clear of the fixed steel.",
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
         "SECTIONS 2.2:1 (isotropic) · ALL DIMS IN mm",
     ]
@@ -811,6 +820,13 @@ def draw_sheet7():
     # 4 corner posts → in elevation the front/back pairs overlap: 2 vertical RHS
     for yd in (cyl, cyr - RHS):
         rrect(fe(yd, Z_BOT), RHS, cH, fc=C_STEEL, lw=1.4, zorder=4)
+    # FILLET WELDS (typ.) at every post↔beam joint — red triangles in the re-entrant corners
+    ws = 16
+    for yd, s in ((cyl + RHS, 1), (cyr - RHS, -1)):
+        for zb, zdir in ((Z_TOP - BH, -1), (Z_BOT + BH, 1)):
+            px, pz = fe(yd, zb)
+            ax.add_patch(mpatches.Polygon([(px, pz), (px + s * ws, pz), (px, pz + zdir * ws)],
+                                          closed=True, fc="#CC4422", ec="#CC4422", zorder=10))
     # bearings on the axis, seated in the beams (drum HANGS from the top beam)
     for z_brg in (Z_TOP - BH - SKF6215_W, Z_BOT + BH):
         rrect(fe(CY - SKF6215_OD / 2, z_brg), SKF6215_OD, SKF6215_W, fc="#B0B0B8", lw=1.2, zorder=8)
@@ -861,6 +877,21 @@ def draw_sheet7():
             rrect(fp(xx, yy), RHS, RHS, fc="#9BA0A8", lw=1.2, zorder=6)
     # AXLE BEAM — spans Yd at the drum axis X, central bearing at midspan
     rrect(fp(CX - LT_AXLE_BEAM_W / 2, cyl), LT_AXLE_BEAM_W, cW_y, fc=C_STEEL, lw=1.4, zorder=7)
+    # FILLET WELDS (plan) — small red triangles at each member junction (fp-based, orientation-safe)
+    wsp = 16
+
+    def weld_tri(Xc, Ydc, Xd, Ydd):
+        ax.add_patch(mpatches.Polygon([fp(Xc, Ydc), fp(Xc + Xd, Ydc), fp(Xc, Ydc + Ydd)],
+                                      closed=True, fc="#CC4422", ec="#CC4422", zorder=10))
+    for xx in (cx0, cx1 - RHS):                            # 4 corner posts ↔ rails
+        sx = wsp if xx < CX else -wsp
+        cX = xx + RHS if xx < CX else xx
+        for yy in (cyl, cyr - RHS):
+            sy = wsp if yy < CY else -wsp
+            cY = yy + RHS if yy < CY else yy
+            weld_tri(cX, cY, sx, sy)
+    weld_tri(CX - LT_AXLE_BEAM_W / 2, cyl + RHS, LT_AXLE_BEAM_W, wsp)      # axle beam ↔ near rail
+    weld_tri(CX - LT_AXLE_BEAM_W / 2, cyr - RHS, LT_AXLE_BEAM_W, -wsp)     # axle beam ↔ far rail
     draw_dim_h(ax, fp(CX - LT_AXLE_BEAM_W / 2, cyr)[0], fp(CX + LT_AXLE_BEAM_W / 2, cyr)[0],
                fp(0, cyr)[1] + 40, f"{LT_AXLE_BEAM_W}mm AXLE BEAM W (at drum axis X)",
                offset=45, fs=6.5, font=FONT)
@@ -916,9 +947,10 @@ def draw_sheet7():
         f"Bearing seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower welded steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
         f"Fixed housing (outer skin) laps + rivets to rim-angle on the top/bottom beams; free opening edges capped by {LT_EDGE_CHAN_N}× Al U-channel (ends bolt to the beams) — see Sheet 9. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
+        "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
     ]
-    draw_notes(ax, notes, X_LO + 60, -300, 92, fs=7, font=FONT, width=2500,
+    draw_notes(ax, notes, X_LO + 60, -300, 92, fs=7, font=FONT, width=2500, wrap=138,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 8 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
@@ -1289,13 +1321,25 @@ def draw_sheet9():
     ax.plot([bID, bID + 8], [Z_BRG0 + bW + 4, Z_BRG0 + bW + 4], color=C_OUT, lw=0.9, zorder=8)  # circlip
     draw_rect(ax, 0, -LT_CAP_TOP_T, CAPR, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=5)  # 8mm Al cap disc
     draw_rect(ax, 0, 0, 55, 16, fc=C_ALUM, lw=1.0, zorder=6)                         # bolted hub boss (4×M10)
+    # ── Securing bolts: Al ring → axle beam (M10 into weld-nuts) + cap → flange (M10 tapped) ─
+    rbx = bOD + 15                                                                    # ring → beam bolt
+    ax.plot([rbx, rbx], [Z_BRG0 - 3, Z_BEAM0 + LT_AXLE_BEAM_H * 0.55], color=C_OUT, lw=2.4, zorder=9)
+    ax.plot([rbx - 8, rbx + 8], [Z_BRG0 - 3, Z_BRG0 - 3], color=C_OUT, lw=2.6, zorder=9)   # bolt head under the ring
+    cbx = 46                                                                          # cap → flange bolt
+    ax.plot([cbx, cbx], [-LT_CAP_TOP_T - 3, 16], color=C_OUT, lw=2.4, zorder=9)
+    ax.plot([cbx - 8, cbx + 8], [-LT_CAP_TOP_T - 3, -LT_CAP_TOP_T - 3], color=C_OUT, lw=2.6, zorder=9)  # bolt head under the cap
+    leader(ax, rbx, Z_BEAM0 + LT_AXLE_BEAM_H * 0.4, POST_R0 - 30, Z_BEAM0 + LT_AXLE_BEAM_H + 60,
+           f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 into weld-nuts", fs=6.0, color=C_OUT,
+           ha="right", arrow_style="->", font=FONT)
+    leader(ax, cbx, -LT_CAP_TOP_T - 3, 250, -LT_CAP_TOP_T - 175,
+           "CAP → FLANGE\n4×M10 (tapped)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────
     draw_rect(ax, CAPR - LT_RIM_LEG, 0, LT_RIM_LEG, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=6)   # rim flat leg
     draw_rect(ax, CAPR - LT_RIM_T, 0, LT_RIM_T, LT_LAP_H, fc=C_ALUM, lw=0.8, zorder=6)       # standing lip (up)
     draw_rect(ax, DIR_, Z_BRK, LT_DRUM_T, LT_LAP_H - Z_BRK, fc=C_LT_DRUM, lw=1.0, zorder=7)  # drum shell (laps up, hangs down)
-    draw_circle(ax, (CAPR - LT_RIM_T + DOR_) / 2, LT_LAP_H / 2, LT_RIVET_D / 2,
-                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø3.18, to scale)
+    blind_rivet(ax, (CAPR - LT_RIM_T + DOR_) / 2, LT_LAP_H / 2, 0,
+                DOR_ - (CAPR - LT_RIM_T), d=LT_RIVET_D)                                       # RADIAL blind rivet (in-section, dome outboard)
 
     # ── Running gap + felt seal (to scale; detail on Sheet 7) ────────────────
     draw_rect(ax, DOR_, LT_LAP_H / 2 - 4, RUN_GAP, 8, fc="#7E7E76", lw=0.5, zorder=6)
@@ -1304,8 +1348,8 @@ def draw_sheet9():
     draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, Z_BEAM0 - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing wall
     draw_rect(ax, HIR_ - LT_RIM_T, Z_BEAM0 - LT_LAP_H, LT_RIM_T, LT_LAP_H, fc=C_ALUM, lw=0.8, zorder=7)  # lip (down)
     draw_rect(ax, HIR_ - LT_RIM_LEG, Z_BEAM0 - LT_RIM_T, LT_RIM_LEG, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=7)  # flat leg → beam
-    draw_circle(ax, (HIR_ - LT_RIM_T + HOR_) / 2, Z_BEAM0 - LT_LAP_H / 2, LT_RIVET_D / 2,
-                lw=0.6, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)                       # blind rivet (Ø3.18, to scale)
+    blind_rivet(ax, (HIR_ - LT_RIM_T + HOR_) / 2, Z_BEAM0 - LT_LAP_H / 2, 0,
+                HOR_ - (HIR_ - LT_RIM_T), d=LT_RIVET_D)                                       # RADIAL blind rivet (in-section, dome outboard)
 
     # break lines (drum + housing continue down the full 2,200mm) ─────────────
     for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):
@@ -1356,7 +1400,7 @@ def draw_sheet9():
     leader(ax, 30, 8, -150, -35, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 700, 55,
-           f"RUNNING GAP {RUN_GAP}mm — felt/brush wiper in an Al retainer channel\nscrewed to the FIXED housing bore; the rotating drum wipes against it (Sheet 7)",
+           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× nylon brush strips RIVETED to the\nROTATING drum OD, bristles wiping the fixed housing bore (Sheet 7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 700, Z_BEAM0 + 120,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing; swing-panel weldment (Sheet 8)",

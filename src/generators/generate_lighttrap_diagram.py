@@ -1552,8 +1552,9 @@ def draw_sheet9():
     blind_rivet(ax, (CAPR - LT_RIM_T + DOR_) / 2, LT_LAP_H / 2, 0,
                 DOR_ - (CAPR - LT_RIM_T), d=LT_RIVET_D)                                       # RADIAL blind rivet (in-section, dome outboard)
 
-    # ── Running gap + felt seal (to scale; detail on Sheet 7) ────────────────
-    draw_rect(ax, DOR_, LT_LAP_H / 2 - 4, RUN_GAP, 8, fc="#7E7E76", lw=0.5, zorder=6)
+    # ── Running gap (open here) — the seal is the 4 VERTICAL drum-OD strip brushes, which sit
+    # BELOW the cap lap (not at this level); shown + detailed on Sheets 4 & 7, called out by the
+    # leader below. (No horizontal seal element here — that was a stale felt-seal artifact.)
 
     # ── FIXED outer skin — housing + housing → frame lap (detail on Sheet 9) ─
     draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, Z_BEAM0 - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing wall
@@ -1624,7 +1625,7 @@ def draw_sheet9():
 
     notes = [
         "COMBINED TOP-END ASSEMBLY  (drawn to scale — see 100mm bar)",
-        "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a felt-sealed running gap separates them.",
+        "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a brush-sealed running gap separates them (4× vertical #4 strip brushes on the drum OD, Sheets 4 & 7).",
         "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
         "OUTER joint (fixed), DETAIL B: housing laps a rim-angle welded to the axle beam — SS blind rivets + DP8010; full detail on Sheet 9.",
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",

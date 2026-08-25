@@ -830,13 +830,13 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
     draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f}mm shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
     draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f}mm leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
     draw_dim_v(ax, -RIML / 2 - 30, -CAPT, LEGT, f"{LT_CAP_TOP_T + LT_RIM_T:.0f}mm leg-rivet grip\n(flat leg → cap)", offset=40, fs=6.0, font=FONT)
-    leader(ax, (DPT + SHT - LEGT) / 2, rz, 250, rz + 70,
+    leader(ax, (DPT + SHT - LEGT) / 2, rz, 200, rz + 70,
            f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, -LEGT, LIP - 20, -300, LIP + 55,
+    leader(ax, -LEGT, LIP - 20, -200, LIP + 55,
            f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, DPT + SHT, LIP + 30, 250, LIP + 20,
+    leader(ax, DPT + SHT, LIP + 30, 250, LIP + 30,
            f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, DPT / 2, 40, 250, -30,
@@ -934,7 +934,7 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
         "5. DP8010 (wet in the lap + the open mandrel bore) keeps the joint light-tight; supersedes the extrusion weld.",
         "SECTION A–A 7:1 (isotropic) · CAP PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -150, 15, fs=7, font=FONT, width=1980,
+    draw_notes(ax, notes, X_LO + 60, -450, 15, fs=7, font=FONT, width=1780,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 4 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
@@ -1032,7 +1032,7 @@ def draw_sheet7():
            f"BOTTOM AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\n+ floor anchor (locates lower bearing)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, *fe(CY + SKF6215_OD / 2, Z_BOT + BH + SKF6215_W / 2),
-           *fe(CY + 300, Z_BOT + 320), "SKF 6215 ×2\n(seated in the beams)", fs=6.5,
+           *fe(CY + 150, Z_BOT + 320), "SKF 6215 ×2\n(seated in the beams)", fs=6.5,
            color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, *fe(CY - HR + LT_HOUSING_T, Z_TOP * 0.4), *fe(cyl - 80, Z_TOP * 0.34),
            f"FIXED HOUSING Ø{DRUM_D}\n(outer skin — Sheet 9)", fs=6.5, color=C_OUT,
@@ -1111,7 +1111,7 @@ def draw_sheet7():
                f"{cW_x}mm CAGE (X)", offset=55, fs=7, above=False, font=FONT)
     draw_dim_v(ax, fp(cx0, 0)[0] - 80, fp(cx0, cyl)[1], fp(cx0, cyr)[1],
                f"{cW_y}mm (Yd)", offset=55, fs=7, font=FONT)
-    leader(ax, hc[0] + LT_AXLE_BEAM_W / 2, hc[1] + 120, fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] - 20,
+    leader(ax, hc[0] + LT_AXLE_BEAM_W / 2, hc[1] + 120, fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] - 270,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\ncarries central SKF 6215 at midspan",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, *fp(cx0 + RHS / 2, cyr - RHS / 2), fp(cx0, cyr)[0] - 40, fp(cx0, cyr)[1] + 50,
@@ -1338,7 +1338,7 @@ def draw_sheet6():
         "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — see the TOP-END LIGHT PATH detail. The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=2400, wrap=175,
+    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=3600, wrap=190,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 7 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
@@ -1393,15 +1393,15 @@ def draw_sheet8():
         ax.plot([DPT - 3, DPT + HOUT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
     blind_rivet(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 0, S * (LT_HOUSING_T + 1 + LT_RIM_T), d=RVD)  # radial housing → lip rivet
     draw_dim_v(ax, DPT + HOUT + 40, -LIP, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 50, f"{LT_HOUSING_T}mm HOUSING", offset=38, fs=6.2,
-               above=False, font=FONT)
-    leader(ax, -LEGT, -LIP + 30, -300, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al\nWELDED to the frame beam",
+    draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 40, f"{LT_HOUSING_T}mm HOUSING", offset=48, fs=6.2,
+               above=True, font=FONT)
+    leader(ax, -LEGT, -LIP + 30, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al\nWELDED to the frame beam",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, DPT + HOUT, -LIP + 30, 250, -55, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
+    leader(ax, DPT + HOUT, -LIP + 30, 125, -255, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 250, -215, f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough housing + lip · + DP8010 (light seal)",
+    leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 125, -135, f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough housing + lip · + DP8010 (light seal)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, -RIML + 40, BEAMH / 2, -300, BEAMH + 40, "FRAME TOP BEAM / RAIL (steel · Sheet 8)",
+    leader(ax, -RIML + 40, BEAMH / 2, -150, BEAMH + 40, "FRAME TOP BEAM / RAIL (steel · Sheet 8)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     ax.text(150, -LIP - 130, "(bottom edge identical, mirrored, to the bottom beam)",
             ha="center", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
@@ -1434,7 +1434,7 @@ def draw_sheet8():
     blind_rivet(ax, dx - LEG2 * 0.5, dz, 90, S * (2 * LT_EDGE_CHAN_T + LT_HOUSING_T), d=RVD)  # thru legs + HDPE
     draw_dim_h(ax, dx - LEG2, dx, dz - HT2 / 2 - CT2 - 30, f"{LT_EDGE_CHAN_LEG}mm LEG",
                offset=26, fs=6.0, above=False, font=FONT)
-    leader(ax, dx - LEG2 + 12, dz + HT2 / 2 + CT2, dx - LEG2 - 60, dz + HT2 / 2 - 8,
+    leader(ax, dx - LEG2 + 12, dz + HT2 / 2 + CT2, dx - LEG2 - 60, dz + HT2 /2 + 50,
            f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5\nbonded over the {LT_HOUSING_T}mm HDPE edge · DP8010",
            fs=6.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
@@ -1481,8 +1481,8 @@ def draw_sheet8():
         f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
         "SECTION A–A 7:1 (isotropic) · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -340, 60, fs=7, font=FONT, width=2050,
-               title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 60, -360, 24, fs=7, font=FONT, width=1450,
+               title_color=TITLE_COL, wrap=180)
 
     title_block(ax, "SHEET 9 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
@@ -1567,10 +1567,10 @@ def draw_sheet9():
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge
     cb0, cb1 = -LT_CAP_TOP_T, 10
     draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
-    leader(ax, rbx, wnz + 6, POST_R0 - 30, Z_BEAM0 + LT_AXLE_BEAM_H + 60,
+    leader(ax, rbx, wnz + 6, POST_R0 - 80, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 into RIVET-NUTS (blind inserts)\nset in the beam bottom wall (3mm RHS)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
-    leader(ax, cbx, -LT_CAP_TOP_T, 250, -LT_CAP_TOP_T - 175,
+    leader(ax, cbx, -LT_CAP_TOP_T, -120, -LT_CAP_TOP_T - 45,
            "CAP → FLANGE\n4×M10 COUNTERSUNK (tapped)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────
@@ -1628,27 +1628,27 @@ def draw_sheet9():
                offset=32, fs=6.0, above=False, font=FONT)
 
     # ── Zone tags ────────────────────────────────────────────────────────────
-    ax.text(210, -70, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
+    ax.text(210, -60, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
             color="#407040", fontweight="bold", **FONT, zorder=9)
     ax.text(300, Z_BEAM0 + 70, "FIXED (FRAME + HOUSING) ►", ha="center", va="center", fontsize=7,
             color="#5060A0", fontweight="bold", **FONT, zorder=9)
 
     # ── Leaders ──────────────────────────────────────────────────────────────
-    leader(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 210, Z_BEAM0 + 30,
+    leader(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 270, Z_BEAM0 + 30,
            "SKF 6215-2RS1 upper bearing\nin isolated Al ring, bolted to the axle beam (Sheet 5)",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, 30, 8, -150, -35, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
+    leader(ax, 30, 8, -20, -20, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
-    leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 700, 55,
+    leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 575, 55,
            f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× #4 strip brushes in Al flange holders\nFLANGE-RIVETED to the ROTATING drum OD, bristles wiping the fixed bore (Sheets 4/7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 700, Z_BEAM0 + 120,
+    leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 575, Z_BEAM0 + 120,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing; swing-panel weldment (Sheet 8)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, POST_R0 + LT_FRAME_RHS / 2, -35, 700, -35,
+    leader(ax, POST_R0 + LT_FRAME_RHS / 2, -35, 575, -35,
            f"CAGE CORNER POST {LT_FRAME_RHS}×{LT_FRAME_RHS}×{LT_FRAME_T} RHS\nframes the beam end · welded to the panel rails (Sheet 8)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, HOR_, -110, 700, -130, f"FIXED HOUSING Ø{DRUM_D} (outer skin)\nrotating drum Ø{2 * LT_DRUM_OR} inside",
+    leader(ax, HOR_, -110, 575, -130, f"FIXED HOUSING Ø{DRUM_D} (outer skin)\nrotating drum Ø{2 * LT_DRUM_OR} inside",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     notes = [
@@ -1659,8 +1659,8 @@ def draw_sheet9():
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
         "Drum + housing continue the full 2,200mm below the break lines. Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 34, fs=7, font=FONT, width=1240,
-               title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 24, fs=7, font=FONT, width=1000,
+               title_color=TITLE_COL, wrap=200)
 
     title_block(ax, "SHEET 10 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="COMBINED TOP-END ASSEMBLY (INNER + OUTER LAP JOINTS)",

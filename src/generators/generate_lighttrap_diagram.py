@@ -823,7 +823,11 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # extends 5mm PAST the shaft top toward the beam (its beam-side face is the bolting datum), so
         # the shaft top is recessed inside the ring bore with a clear gap up to the beam.
         HRr = (100 if up else 105) * SC
-        band(cx, ro, HRr, min(-18 * SC * s, 20 * SC * s), max(-18 * SC * s, 20 * SC * s),
+        # ring beam-side face: UPPER raised so the ring stands 45mm tall (was 38) — this lifts the beam
+        # ~7mm so the end-retainer plate clears the fixed beam by ≈10mm (welding-tolerance margin);
+        # LOWER collar stays 38mm (no retainer plate there).
+        rtop = (27 if up else 20) * SC
+        band(cx, ro, HRr, min(-18 * SC * s, rtop * s), max(-18 * SC * s, rtop * s),
              fc=(C_ALUM if up else C_STEEL), lw=1.4, zorder=5)
         if up:
             # UPPER = LOCATED bearing: the outer race is fixed BOTH ways. A machined SHOULDER on the
@@ -838,7 +842,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # axle beam — HOLLOW 100×50×3 RHS shown in LONGITUDINAL section: solid near + far 3mm
         # walls with the hollow bore VOID between them (white). It sits on the ring's beam-side face,
         # 5mm clear above the shaft top — the shaft never touches it (see the GAP dimension).
-        zr0, zr1 = 20 * SC * s, 68 * SC * s
+        zr0, zr1 = rtop * s, (rtop + 48 * SC) * s
         _bz0, _bz1 = min(zr0, zr1), max(zr0, zr1)
         _bw = LT_FRAME_T * SC                                                # drawn wall thickness
         _bx0, _bwd = cx - 140 * SC, 280 * SC
@@ -862,7 +866,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
         for g in (-1, 1):
             ring_far = -18 * SC * s                    # ring face away from the beam (head bears here)
-            wnz = 20 * SC * s                          # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
+            wnz = rtop * s                             # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="rivnut", wall=LT_FRAME_T * SC, csk=True, zb=9)
             # DIN 471 EXTERNAL circlip(s) — seated in the Ø72 shaft groove, projecting OUTWARD past the
@@ -908,9 +912,9 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     # Vertical (height / thickness), stacked in the centre gap:
     draw_dim_v(ax, UX + 255, -bw, bw, f"{SKF6215_W}mm BRG W", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 330, -18 * SC, 20 * SC, "38mm RING H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 330, -18 * SC, 27 * SC, "45mm RING H", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 405, 20 * SC, 68 * SC, "48mm RAIL H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 405, 27 * SC, 75 * SC, "48mm RAIL H", offset=44, fs=6.0,
                right=True, font=FONT)
     draw_dim_v(ax, UX + 480, -55 * SC, -40 * SC, "15mm FLANGE T", offset=44,
                fs=6.0, right=True, font=FONT)
@@ -924,7 +928,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     leader(ax, UX + 40 * SC, bw + 2 * SC, UX - 150, 118 * SC,
            "END-RETAINER PLATE — Ø90×4 steel, bolted to the shaft end (M10 CSK); its rim\n"
            "clamps the inner-race face, so the hanging load runs through a BOLTED member,\n"
-           "not a lone circlip. Sits in the ring-bore pocket, ≈3.5mm clear of the fixed beam",
+           "not a lone circlip. Sits in the ring-bore pocket, ≈10mm clear of the fixed beam",
            fs=6.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
 
     # ── Lower-hub callouts (right column) ────────────────────────────────────
@@ -1096,8 +1100,8 @@ def draw_sheet6():
         ax.text(cx, mat_z, mat + ("" if not weldnote else f"\n{weldnote}"),
                 ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
-    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 38, C_ALUM,
-         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · Ø130 H7 seat + Ø122 shoulder + DIN 472 groove — LOCATED · nylon-isolated", located=True)
+    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 45, C_ALUM,
+         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · Ø130 H7 seat + Ø122 shoulder + DIN 472 groove — LOCATED · nylon-isolated · 45mm tall (raised beam-side standoff → ≈10mm end-retainer-plate clearance)", located=True)
     ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 38, C_STEEL,
          "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · plain Ø130 H7 bore — FLOATING (outer race slides)", weldnote="BOLTED to floor plate (8× M10) — no weld")
 

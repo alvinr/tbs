@@ -1651,7 +1651,7 @@ def draw_sheet9():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 10 — Combined top-end assembly (half-section, NTS)
+# SHEET 10 — Combined top-end assembly (radial half-section, drawn to scale · 100mm bar)
 # One radial half-section at the TOP end showing BOTH joints nested concentrically:
 #   inner ROTATING drum shell→cap lap joint (Sheet 4) + outer FIXED housing→frame
 #   lap joint (Sheet 9), with the upper SKF 6215 bearing and the running-gap seal

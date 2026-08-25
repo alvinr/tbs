@@ -181,11 +181,16 @@ def _lighttrap_weight():
     # Rolled rim-angle arcs (25×25×3) at each cap rim — both 6061-T6 Al, 280° C-shell arc.
     rim_area = (LT_RIM_LEG * LT_RIM_T + (LT_RIM_LEG - LT_RIM_T) * LT_RIM_T) * 1e-6  # 25×25×3 angle (m²)
     rim_kg = 2 * (LT_SHELL_ARC / 360) * math.pi * (LT_CAP_OD / 1000.0) * rim_area * RHO_ALUM
-    # Steel stub shafts (Ø75×150, bearing fit) + 2 sealed bearings; plastic
-    # edge stiffeners on the opening + grab rail + brush seals + SS lap rivets
-    shaft_kg = 2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL
-    edge_stiff_kg = 2 * H * 0.30            # 2× HDPE edge stiffener (~0.30 kg/m)
-    drum_hw_kg = shaft_kg + 2 * 1.3 + edge_stiff_kg + 4.0
+    # Steel stub shafts (Ø75×150, bearing fit) + 2 sealed bearings; the interior pull-handle
+    # STILE (40×40×5 SS RHS, cap→cap — bolts to the caps so it ROTATES with the drum) + its 2
+    # solid end plugs + the off-the-shelf pull handle; plastic edge stiffeners + brush + lap rivets.
+    shaft_kg = 2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL       # 2× Ø75×150 stub shaft
+    bearings_kg = 2 * 1.3                                            # 2× SKF 6215-2RS1
+    edge_stiff_kg = 2 * H * 0.30                                     # 2× HDPE opening-edge stiffener
+    stile_kg = (0.040 ** 2 - 0.030 ** 2) * H * RHO_STEEL            # 40×40×5 SS RHS stile (cap→cap)
+    stile_hw_kg = 2 * (0.030 ** 2 * 0.040 * RHO_STEEL) + 1.0        # 2× solid steel end plugs + pull handle (McMaster 1871A65)
+    misc_kg = 2.0                                                    # 4× brush strip + Al holders + SS lap rivets
+    drum_hw_kg = shaft_kg + bearings_kg + edge_stiff_kg + stile_kg + stile_hw_kg + misc_kg
     drum_kg = drum_shell_kg + drum_cap_kg + rim_kg + drum_hw_kg
     # Fixed UV-HDPE housing: Ø900 cylinder minus two 80° openings
     t_h = LT_HOUSING_T / 1000.0
@@ -433,7 +438,7 @@ def build_components():
                   *swing_bbox(0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R),
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note="1/8\" HDPE C-shell drum (Ø864, no baffles) + steel shaft/bearings. Transport: swung 56° about the pivot"),
+                  calc_note="1/8\" HDPE C-shell drum (Ø864, no baffles) + 2× 8mm Al caps + steel shafts/bearings + rotating SS pull-handle stile. Transport: swung 56° about the pivot"),
         # Panel + drum: deployed position (at cargo door end) for camera ready
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
@@ -443,7 +448,7 @@ def build_components():
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,
                   states=("ready",),
-                  calc_note="1/8\" HDPE C-shell drum (Ø864, no baffles) + steel shaft/bearings"),
+                  calc_note="1/8\" HDPE C-shell drum (Ø864, no baffles) + 2× 8mm Al caps + steel shafts/bearings + rotating SS pull-handle stile"),
         Component("Processing tray", "structure", 114.0,
                   PROC_TRAY_X_L, PROC_TRAY_X_R,
                   PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,

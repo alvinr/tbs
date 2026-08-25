@@ -539,11 +539,11 @@ def draw_sheet3():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — Bearing hub & stub-shaft detail
+# SHEET 5 — Bearing hub & stub-shaft detail
 # Two enlarged sections (drum axis vertical): UPPER hub (isolated Al top ring,
 # 6×M10) and LOWER hub (welded steel floor collar, 8×M10). SKF 6215-2RS1.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet_hub():                              # Sheet 5 — bearing hub
+def draw_sheet5():                              # Sheet 5 — bearing hub
     SC = 2.2                                       # enlargement factor
     rs, ro, bw = SKF6215_ID / 2 * SC, SKF6215_OD / 2 * SC, SKF6215_W / 2 * SC
     CAPd = LT_CAP_TOP_T * SC                        # top-cap draw thickness (to scale; layout ref)
@@ -765,11 +765,11 @@ def draw_sheet_hub():                              # Sheet 5 — bearing hub
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 5 — Shell → cap lap-and-fasten joint
+# SHEET 4 — Shell → cap lap-and-fasten joint
 # The HDPE shell edge laps over a rolled rim-angle lip on each metal cap and is
 # radially riveted (SS blind) + DP8010-bonded. Enlarged section + rivet pattern.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet_secure():                           # Sheet 4 — drum secure (shell→cap joint)
+def draw_sheet4():                           # Sheet 4 — drum secure (shell→cap joint)
     # ── Data window ──────────────────────────────────────────────────────────
     X_LO, X_HI, Z_LO, Z_HI = -470, 1540, -650, 540
     FIG_W = 18.0
@@ -948,11 +948,11 @@ def draw_sheet_secure():                           # Sheet 4 — drum secure (sh
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Support frame, general arrangement
+# SHEET 8 — Support frame, general arrangement
 # The integrated steel welded box cage (part of the swing-panel frame) that carries
 # both SKF 6215 bearings + the fixed housing. ELEVATION (left) + PLAN (top-right).
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet7():
+def draw_sheet8():
     CX, CY, HR = DRUM_CX, DRUM_CY, LT_HOUSING_R
     Z_BOT, Z_TOP = PANEL_FLOOR_GAP, DRUM_H_LT
     RHS = LT_FRAME_RHS
@@ -1168,11 +1168,11 @@ def draw_sheet7():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 6 — Seals & light-path verification
+# SHEET 7 — Seals & light-path verification
 # Three drum rotations proving no straight-through EXT↔INT light path (the drum's
 # single 280° wall always blocks one side) + the running-gap / wiper seal details.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet6():
+def draw_sheet7():
     HR, DR = LT_HOUSING_R, LT_DRUM_OR
     oh = LT_OPENING_DEG / 2
     C6_HOUSE = "#2E5E8C"          # FIXED housing (outer skin) — steel blue
@@ -1352,11 +1352,11 @@ def draw_sheet6():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 8 — Housing → frame attachment (outer-skin fixing)
+# SHEET 9 — Housing → frame attachment (outer-skin fixing)
 # The fixed housing (5mm) laps a rolled rim-angle welded to the frame; SS rivets +
 # DP8010. Section + Detail B (opening-edge Al U-channel) + plan (200° housing, two 100° arcs).
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet8():
+def draw_sheet9():
     X_LO, X_HI, Z_LO, Z_HI = -470, 1140, -680, 300
     FIG_W = 18.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
@@ -1495,14 +1495,14 @@ def draw_sheet8():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 9 — Combined top-end assembly (half-section, NTS)
+# SHEET 10 — Combined top-end assembly (half-section, NTS)
 # One radial half-section at the TOP end showing BOTH joints nested concentrically:
 #   inner ROTATING drum shell→cap lap joint (Sheet 4) + outer FIXED housing→frame
 #   lap joint (Sheet 9), with the upper SKF 6215 bearing and the running-gap seal
 #   between them — so the reader sees how the two combine at the same level.
 # Axis on the LEFT (r = 0), radius increases to the right; z = height near the top.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet9():
+def draw_sheet10():
     X_LO, X_HI, Z_LO, Z_HI = -200, 820, -560, 320
     FIG_W = 15.5
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
@@ -1678,7 +1678,7 @@ def draw_sheet9():
 # lower steel floor collar, and the stub-shaft + flange. Each: PLAN (end view with
 # OD / bore / PCD / bolt holes) + SECTION (thickness) + full dims + material.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet_components():
+def draw_sheet6():
     # PORTRAIT single column — four machined parts stacked, drawn large (page width).
     s2 = 2.2                                                                  # 2.2:1 (rings / collar / stub)
     scc = 0.5                                                                 # 1:2 (the big Ø855 end cap)
@@ -1833,13 +1833,13 @@ def main():
     draw_sheet1()
     draw_sheet2()
     draw_sheet3()
-    draw_sheet_secure()    # Sheet 4 — drum secure (shell → cap joint)
-    draw_sheet_hub()       # Sheet 5 — bearing hub (assembly)
-    draw_sheet_components() # Sheet 6 — machined components (bearing seats + stub-shaft)
-    draw_sheet6()          # Sheet 7 — seals & light-path
-    draw_sheet7()          # Sheet 8 — support frame GA
-    draw_sheet8()          # Sheet 9 — housing → frame attachment
-    draw_sheet9()          # Sheet 10 — combined top-end assembly (inner + outer joints)
+    draw_sheet4()    # Sheet 4 — drum secure (shell → cap joint)
+    draw_sheet5()       # Sheet 5 — bearing hub (assembly)
+    draw_sheet6() # Sheet 6 — machined components (bearing seats + stub-shaft)
+    draw_sheet7()          # Sheet 7 — seals & light-path
+    draw_sheet8()          # Sheet 8 — support frame GA
+    draw_sheet9()          # Sheet 9 — housing → frame attachment
+    draw_sheet10()          # Sheet 10 — combined top-end assembly (inner + outer joints)
     print("Done.")
 
 

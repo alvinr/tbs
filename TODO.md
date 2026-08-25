@@ -11,10 +11,6 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
-## 🔧 Fastener standardization — minimize distinct part types (2026-08-24, Alvin)
-
-- [ ] **Reconcile ALL fasteners (bolts, screws, nuts, rivets, rivet-nuts, washers) across the WHOLE camera to the minimum number of distinct types.** Goal: build the entire TBS-001 from the fewest different parts — fewer SKUs, fewer spares, simpler procurement/assembly (design-for-assembly). This will require **re-engineering blueprints** where a joint can move to a shared size/length/thread without hurting the design (e.g. converge M8/M10 families, standardize lengths, pick one rivet Ø, one washer). Method: (1) inventory every fastener across all systems from `parts.py` + the generators (thread × pitch × length × head × material × count); (2) cluster + pick a minimal standard set; (3) flag the joints that must change geometry to adopt it; (4) cascade the drawing/constants/parts/cost per system. Cross-cuts every subsystem, not just the light-trap — do it as its own pass after the light-trap BOM settles.
-
 ## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
 
 - [x] **Fastener/hardware batch FIRMED 2026-08-24d** — DP8010 (7467A36 $76.29), fasteners lot → $97 firm (F1–F7 McMaster SS SKUs), NEW `ll-rivet-nuts` $53 (20× M10 twist-resist 95105A199 + setting tool 96349A866), NEW `ll-holder-rivets` $11 (97447A015 ×250). lightlock → $2,943–3,963; all gates green.
@@ -38,7 +34,7 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
   Set has since GROWN to **9 sheets** (1 GA, 2 housing-cut, 3 drum-cut, 4 drum-secure, 5 bearing-hub,
   6 seals & light-path, 7 support-frame GA, 8 housing→frame, 9 combined top-end) + an **integrated steel
   cage frame**, and the detail sheets are being recast **to stated scale** (4/8 at 7:1 + plans 1:2 + scale
-  bars DONE; **Sheet 5 relabel to scale still TODO**). Rivet now SPEC'D: **1/8" 18-8 SS blind (low-profile head),
+  bars DONE; **Sheet 5 relabel to scale DONE — commit `18c92770`**). Rivet now SPEC'D: **1/8" 18-8 SS blind (low-profile head),
   McMaster 97525A425 (shell→cap) / 97525A435 (housing→frame)**, `LT_RIVET_D`=3.18, hole Ø3.3.
 
 - [x] **parts.py / cost — DONE 2026-08-24.** Light-trap joint/material batch imported into the `lightlock`
@@ -52,12 +48,8 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
   running gap, §4.4/§4.5 lap-joint fasteners + real rivet SKUs + Al plate/angle suppliers.
 - [x] **Registration** — DONE. All 9 sheets in `dependencies.yml`/`all-diagrams.md`/`publish.sh`/`setup_docs.py`;
   embedded as **§9 Fabrication Blueprints** in `light-trap-selection.md`. Gallery + unused-import warnings clear.
-- [ ] **Sheet 5 relabel to scale** — bearing hub is ~2.2:1 isotropic except the cap (×2.4 exaggerated);
-  make isotropic + scale bar + drop "~2:1 NTS". Fold in with the bolt-hole pass (below) since it owns the bolt patterns.
-- [ ] **Bolt/screw-hole detailing pass** (Alvin 2026-08-22: "show how items are joined") — draw real hole
-  patterns (PCD, count, Ø, positions) for every bolted joint on its owning sheet: **4×M10** cap→stub-hub flange
-  (Sheets 3 & 5), **6×M10** upper bearing ring→beam + **8×M10** lower collar→beam (Sheets 5 & 7), + "drill Ø_ ×N
-  on Ø_ PCD" callouts. Per `skills/skill_fastener_convention.md`.
+- [x] **Sheet 5 relabel to scale — DONE (commit `18c92770`).** Recast to true 2.2:1 isotropic (cap de-exaggerated to `LT_CAP_TOP_T * SC`), scale bar + "SECTIONS 2.2:1 (isotropic)" on the note/bar/title-block, no "NTS". Verified 2026-08-25. (Also fixed the stale "NTS" in the Sheet 10 banner *comment* — that sheet was already drawn to scale w/ a 100mm bar.)
+- [x] **Bolt/screw-hole detailing pass — DONE (commit `18c92770`).** Added the hole-pattern plans: **4×M10** cap→stub-hub flange (Ø120 PCD, on the Sheet 6 flange plan), **6×M10** upper ring→beam + **8×M10** lower collar→beam (Sheet 5), with "drill Ø11 ×N on Ø_ PCD" callouts, per `skills/skill_fastener_convention.md`. The subsequent feedback rounds firmed the mount detail (rivet-nut profile, countersunk cap bolts, Ø120 PCD).
 - [ ] **3D model** — `generate_lighttrap_model.py` (`DRUM_CAP_T`) + overview (reuses the drum builder):
   split cap thickness + materials (both Al now), add the rim-angle/lap + cage frame if modeled. Regenerate;
   **hold `--send` for a session with ALVIN at SketchUp** (focus-model-first: lighttrap, then overview). Then retire `LT_CAP_T`.
@@ -330,6 +322,8 @@ precise hole positions, tolerances, fastener callouts, datums, section views, ma
 parametrically from `tbs_constants` so they can't drift. Do the **film-plane corner mechanism FIRST** (below)
 as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
 walkway, hinged panel, light lock, electrical, optics, …)._
+
+- [ ] **★ FINAL cross-cutting step — GATED on ALL blueprint sets complete (moved here 2026-08-24, Alvin): fastener standardization — reconcile ALL fasteners (bolts, screws, nuts, rivets, rivet-nuts, washers) across the WHOLE camera to the minimum number of distinct types.** Goal: build TBS-001 from the fewest different parts — fewer SKUs, fewer spares, simpler procurement/assembly (design-for-assembly). Requires **re-engineering blueprints** where a joint can move to a shared size/length/thread without hurting the design (converge M8/M10 families, standardize lengths, pick one rivet Ø, one washer). Method: (1) inventory every fastener across all systems from `parts.py` + the generators (thread × pitch × length × head × material × count); (2) cluster + pick a minimal standard set; (3) flag the joints that must change geometry to adopt it; (4) cascade drawing/constants/parts/cost per system. **Do NOT start until every subsystem blueprint above is done** — standardize against the final set, not a moving target.
 
 - [x] **Walkway blueprint pass (roll the IBC-frame standard onto the walkway set).** DONE (branch `walkway-bp`,
   Phases 0–E, 2026-08-19): definitive walkway drawings with hole positions / datums / fastener + weld callouts,

@@ -248,7 +248,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 16 ea | Fasteners Plus | ibc-frame | $16 |
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Home Depot | ibc-frame | $68 |
-| [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91280A634/) (91280A634) | 1 lot | McMaster-Carr | lightlock | $97 |
+| [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91294A328/) (91294A328) | 1 lot | McMaster-Carr | lightlock | $97 |
 | [12" round pull handle — McMaster 1871A65](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | lightlock | $6 |
 | [1/8" blind rivets — brush-holder flange → drum OD (250-pack)](https://www.mcmaster.com/97447A015/) (97447A015) | 1 pack-250 | McMaster-Carr | lightlock | $11 |
 | [M10 twist-resistant rivet-nuts (ring/collar→beam) + setting tool](https://www.mcmaster.com/95105A199/) (95105A199) | 1 lot | McMaster-Carr | lightlock | $53 |

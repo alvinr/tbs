@@ -152,7 +152,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Item | Specification |
 |------|--------------|
 | Entry handle | Off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar, 2.06″ standoff), interior face only, at 900mm height — **bolted at both feet** (1/4″ screws tapped into the RHS wall) to a steel **stile that spans and bolts to the two Al caps** (4× M12 tapped into the caps), so the pull load lands in the structural caps (not the thin HDPE wall); no welds, and no fastener pierces the drum wall (no through-hole, no light leak). Mount detail on §9 Sheet 1 |
-| Panel bolts | 8 × M10 flush-head hex bolts (lower collar) + 6 × M10 (upper ring), stainless |
+| Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, into the beam-wall rivet-nuts |
 | Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
@@ -288,7 +288,7 @@ The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 blueprints for the machined metal parts: the Ø855 6061-T6 Al end cap, the upper Al
 bearing ring, the lower A36 steel floor collar, and the stub-shaft + flange — each with
 OD, bore + fit, thickness, bolt pattern (PCD/count/Ø), material, and the fastening
-scheme (cap→flange tapped on the Ø120 PCD; ring/collar→beam into rivet-nuts / blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; Al nylon-isolated).
+scheme (cap→flange tapped on the Ø120 PCD; ring/collar→beam via M10 countersunk flat-head bolts — flush in the ring/collar underside — into rivet-nuts / blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 

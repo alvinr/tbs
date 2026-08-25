@@ -801,14 +801,24 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # both caps: 6061-T6 Al, bolted steel stub-shaft flange (4×M10)
         capd = LT_CAP_TOP_T * SC
         zc0, zc1 = -55 * SC * s, -55 * SC * s - capd * s
-        # stub shaft Ø75 — SHORT stub: it engages ONLY the bearing bore + is fixed axially by the two
-        # circlips (bearing captive between them). It terminates just above the upper circlip, with a
-        # designed 5mm AXIAL GAP to the beam — the rotating shaft never touches the fixed beam; the
-        # circlips maintain that clearance. The bearing carries + locates the drum; load → ring bolts.
-        z_stub = 15 * SC * s                           # shaft top: just above the upper circlip (13.5*SC)
+        # stub shaft Ø75 — SHORT stub engaging ONLY the bearing bore. LOWER hub: fixed axially by two
+        # circlips (terminates just above the upper circlip). UPPER hub (located, carries the hang): the
+        # beam-side circlip is REPLACED by a bolted END-RETAINER PLATE, so the shaft is faced FLUSH with
+        # the inner-race top face and the drum's hanging load runs through a POSITIVE bolted member, not a
+        # single circlip. Either way a designed AXIAL GAP keeps the rotating parts clear of the fixed beam.
+        z_stub = bw if up else 15 * SC * s             # upper: flush with the inner-race face; lower: just above the upper circlip
         z_fl = -40 * SC * s
         draw_rect(ax, cx - rs, min(z_stub, z_fl), 2 * rs, abs(z_stub - z_fl),
                   fc=C_STEEL, lw=1.4, zorder=6)
+        if up:
+            # END-RETAINER PLATE — Ø90×4 steel disc bolted to the shaft end by a central M10 CSK cap
+            # screw; its rim clamps the SKF 6215 inner-race top face against the drum-side circlip, so the
+            # drum's hanging load is carried by a bolted member (transport-shock robust). Sits in the
+            # ring-bore pocket, ~3.5mm clear of the beam. Replaces the beam-side circlip.
+            rp_h = 4 * SC
+            draw_rect(ax, cx - 45 * SC, z_stub, 90 * SC, rp_h, fc="#9AA0A8", lw=1.4, zorder=10)   # Ø90 plate
+            _rt, _rb = z_stub + rp_h, z_stub - 12 * SC                                            # central M10 CSK into the shaft end
+            draw_bolt(ax, cx, (_rt + _rb) / 2, _rt - _rb, d=7 * SC, head=1, end="tapped", csk=True, zb=11)
         # bearing mount: isolated Al top ring (upper) / welded steel floor collar (lower). The ring
         # extends 5mm PAST the shaft top toward the beam (its beam-side face is the bolting datum), so
         # the shaft top is recessed inside the ring bore with a clear gap up to the beam.
@@ -855,8 +865,10 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
             wnz = 20 * SC * s                          # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="rivnut", wall=LT_FRAME_T * SC, csk=True, zb=9)
-            for zc in (13.5 * SC, -13.5 * SC):     # DIN 471 EXTERNAL circlip — seated in the Ø72 shaft groove,
-                # projecting OUTWARD past the shaft OD to butt the bearing inner-race face (majority stands proud).
+            # DIN 471 EXTERNAL circlip(s) — seated in the Ø72 shaft groove, projecting OUTWARD past the
+            # shaft OD to butt the bearing inner-race face. UPPER hub: drum-side circlip only (the beam-side
+            # one is replaced by the end-retainer plate). LOWER hub: both sides.
+            for zc in ((-13.5 * SC,) if up else (13.5 * SC, -13.5 * SC)):
                 draw_rect(ax, min(cx + g * (rs - 1.5 * SC), cx + g * (rs + 3 * SC)), zc - 1.3 * SC,
                           4.5 * SC, 2.6 * SC, fc="#707078", lw=0.8, zorder=9)
         # (Lower collar is BOLTED to the floor plate — 8× M10 into rivet-nuts, same as the upper
@@ -904,13 +916,16 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                fs=6.0, right=True, font=FONT)
     draw_dim_v(ax, UX + 555, -55 * SC - CAPd, -55 * SC, f"{LT_CAP_TOP_T:.0f}mm Al CAP T",
                offset=44, fs=6.0, right=True, font=FONT)
-    draw_dim_v(ax, UX - 255, -40 * SC, 15 * SC, "55mm SHAFT L", offset=44,
+    draw_dim_v(ax, UX - 255, -40 * SC, bw, "52mm SHAFT L", offset=44,
                fs=6.0, font=FONT)
-    leader(ax, UX + rs, 13.5 * SC, UX + 150, 102 * SC,
-           "CIRCLIPS (DIN 471) each side —\nfix the bearing axially on the shaft,\nso the shaft→beam GAP is held",
+    leader(ax, UX + rs, -13.5 * SC, UX + 150, 102 * SC,
+           "DRUM-SIDE CIRCLIP (DIN 471) +\nBEAM-SIDE END-RETAINER PLATE —\ntogether fix the bearing on the shaft",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    # designed 5mm axial gap: shaft top → beam underside (the shaft never touches the fixed beam)
-    draw_dim_v(ax, UX + 120, 15 * SC, 20 * SC, "5mm GAP\n(shaft→beam)", offset=14, fs=5.5, right=True, font=FONT)
+    leader(ax, UX + 40 * SC, bw + 2 * SC, UX - 150, 118 * SC,
+           "END-RETAINER PLATE — Ø90×4 steel, bolted to the shaft end (M10 CSK); its rim\n"
+           "clamps the inner-race face, so the hanging load runs through a BOLTED member,\n"
+           "not a lone circlip. Sits in the ring-bore pocket, ≈3.5mm clear of the fixed beam",
+           fs=6.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
 
     # ── Lower-hub callouts (right column) ────────────────────────────────────
     RxL = LX + HALF + 60
@@ -1110,10 +1125,20 @@ def draw_sheet6():
     for zc in (ez + shaft_L - 12, ez + shaft_L - 26):
         ax.plot([cx - sh_r, cx - sh_r + 8], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
         ax.plot([cx + sh_r - 8, cx + sh_r], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
+    # M10 tapped hole in the BEAM-SIDE end — UPPER shaft only (end-retainer-plate screw)
+    _thd = 5.25 * s2                                                                     # Ø10.5 tap drill (shown)
+    draw_rect(ax, cx - _thd, ez + shaft_L - 34, 2 * _thd, 34, fc="white", lw=1.0, zorder=8)
+    for _k in (6, 14, 22, 30):
+        _tz = ez + shaft_L - _k
+        ax.plot([cx - _thd, cx - _thd + 5], [_tz, _tz + 4], color=C_OUT, lw=0.6, zorder=9)
+        ax.plot([cx + _thd - 5, cx + _thd], [_tz + 4, _tz], color=C_OUT, lw=0.6, zorder=9)
+    leader(ax, cx + _thd, ez + shaft_L - 18, cx + fl_r + 40, ez + shaft_L - 66,
+           "M10 ×16 TAPPED (beam end,\nUPPER shaft) — retainer-plate screw", fs=6.4,
+           color=C_OUT, ha="left", arrow_style="->", font=FONT)
     draw_cl_v(ax, cx, ez - fl_t - 16, ez + shaft_L + 16)
     draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"150 LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
     draw_dim_v(ax, cx + fl_r + 34, ez - fl_t, ez, "12mm THK", offset=32, fs=6.6, right=True, font=FONT)
-    ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove Ø72.0 × 2.65 each end (90154A895)", ha="center", va="bottom",
+    ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove Ø72.0 × 2.65 (90154A895) — LOWER shaft: each end (2 clips) · UPPER shaft: drum end only + M10 tapped beam end", ha="center", va="bottom",
             fontsize=7, color=C_DIM, **FONT, zorder=9)
     ax.text(cx, ez - fl_t - 34, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
             va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
@@ -1145,7 +1170,7 @@ def draw_sheet6():
 
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
-        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD. Stub shaft Ø{SKF6215_ID} h6, with a circlip groove Ø72.0 × 2.65 each side of each bearing (INNER-race retention; McMaster 90154A895, ext, Ø75). OUTER race — UPPER ring LOCATED: the bore steps Ø130→Ø122 to form a ~4mm-high shoulder (drum end, outer-race abutment) + a retaining-ring groove Ø134.0 × 4.15 (beam end; McMaster 98455A170, int, Ø130). LOWER collar: plain Ø130 H7 bore, FLOATING (outer race free to slide — the upper bearing is the located one).",
+        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD. Stub shaft Ø{SKF6215_ID} h6, circlip groove Ø72.0 × 2.65 (INNER-race retention; McMaster 90154A895, ext, Ø75). LOWER shaft: a groove each side of the bearing (2 clips). UPPER shaft (carries the hang): drum-side groove only — the beam-side clip is REPLACED by a bolted END-RETAINER PLATE (Ø90 × 4 mild steel, central Ø10.5 c'bore for an M10×25 flat-head CSK screw) into an M10 ×16 tapped hole in the beam-side shaft end; its rim clamps the inner-race face, so the hang is on a bolted member, not one circlip. OUTER race — UPPER ring LOCATED: the bore steps Ø130→Ø122 to form a ~4mm-high shoulder (drum end, outer-race abutment) + a retaining-ring groove Ø134.0 × 4.15 (beam end; McMaster 98455A170, int, Ø130). LOWER collar: plain Ø130 H7 bore, FLOATING (outer race free to slide — the upper bearing is the located one).",
         "FASTENING — cap → flange: countersunk bolt in the cap, THROUGH the stub-shaft flange + a nut (Ø11 clearance both parts — drilled through, simpler fab than a blind-tapped flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]

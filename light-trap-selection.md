@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,955<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,979<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,958<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,983<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -137,7 +137,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Bearings (×2) | SKF 6215-2RS1 (75mm ID, 130mm OD, 25mm wide, sealed, C3 clearance) |
 | Upper bearing mount | Isolated aluminum top ring, 6×M10 into the integrated frame top beam |
 | Lower bearing mount | Bolted steel floor collar, 8×M10 into the integrated frame bottom beam (no weld) |
-| Axial retention | INNER race: DIN 471 circlip on the stub shaft each side. OUTER race: upper bearing LOCATED (seats on a Ø122 machined shoulder, drum side, + a DIN 472 retaining ring, beam side); lower bearing FLOATING (plain Ø130 H7 bore, outer race free to slide) |
+| Axial retention | INNER race: LOWER (floating) shaft — DIN 471 circlip each side. UPPER (located) shaft, which carries the drum's hanging weight — a drum-side DIN 471 circlip + a bolted END-RETAINER PLATE (Ø90×4 steel, central M10 CSK screw into the shaft end) whose rim clamps the inner-race face, so the hang runs through a positive bolted member rather than a single circlip. OUTER race: upper bearing LOCATED (seats on a Ø122 machined shoulder, drum side, + a DIN 472 retaining ring, beam side); lower bearing FLOATING (plain Ø130 H7 bore, outer race free to slide) |
 
 ### 4.3 Seals
 
@@ -171,7 +171,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,955<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,979<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,958<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,983<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -207,7 +207,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,955<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,979<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,958<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,983<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -279,7 +279,7 @@ bond that closes the joint against light.
 ![TBS-001 Light-Trap — Sheet 4: Drum — Secure](assets/lighttrap-sheet4.png)
 
 **Sheet 5 — Bearing hub & stub-shaft (assembly).** How the parts stack: the SKF 6215
-seat, the stub-shaft capture in the cap, and the bearing axial retention — inner race by circlips, outer race located (upper: shoulder + DIN 472 ring) / floating (lower) — top and bottom.
+seat, the stub-shaft capture in the cap, and the bearing axial retention — inner race by a circlip each side (lower) or a drum-side circlip + a bolted end-retainer plate (upper, which carries the hang), outer race located (upper: shoulder + DIN 472 ring) / floating (lower) — top and bottom.
 The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 
 ![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)

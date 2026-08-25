@@ -15,6 +15,7 @@ Sheet 7: Seals & light-path verification
 Sheet 8: Support frame — general arrangement (integrated steel cage)
 Sheet 9: Housing → frame attachment (outer-skin fixing)
 Sheet 10: Combined top-end assembly (inner + outer lap joints, half-section)
+Sheet 11: Pull-handle mount detail — stile → cap plug joint + handle arrangement (to scale)
 
 All geometry reads from tbs_constants.py (single source of truth). Bearing /
 seal / hardware specs trace to light-trap-selection.md §4.
@@ -301,7 +302,7 @@ def draw_sheet1():
         draw_rect(ax, stile_x + 8, min(zc, zc + hd_ * 70), STILE_W - 16, 70, fc="#9AA0A8", lw=0.8, zorder=7)  # solid plug in tube end
         draw_bolt(ax, stile_x + STILE_W / 2, zc + hd_ * 22, 40, d=11, head=hd_, end="tapped", zb=8)           # M12 tapped into cap
     leader(ax, stile_x + STILE_W / 2, Z_CAP_T - 20, stile_x + 620, Z_CAP_T + 140,
-           "STILE → CAP: M12 tapped into each Al cap via a\nsolid plug in the RHS end (1 top + 1 bottom) — see DETAIL", fs=6.0, color=C_DIM,
+           "STILE → CAP: M12 tapped into each Al cap via a\nsolid plug in the RHS end (1 top + 1 bottom) — see Sheet 11", fs=6.0, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
     GX = stile_x - GRAB_SO                                       # grip standoff, inboard of the stile
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2
@@ -330,35 +331,10 @@ def draw_sheet1():
     draw_dim_v(ax, GX - hd / 2 - 150, Z_CAP_B, GRAB_Z, f"{GRAB_Z - Z_CAP_B:.0f}mm\n(cap inner edge → grip CL)",
                offset=45, fs=6.5, font=FONT)
 
-    # ── DETAIL — grab-bar mount: off-the-shelf bar BOLTED to the stile, stile TAPPED to the cap ─
-    hdx, hdz = HO_R + 560, 640
-    ax.text(hdx + 10, hdz + 250, "DETAIL — PULL-HANDLE MOUNT\n(handle → stile → cap · top end)", ha="center",
-            va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
-    cpy = hdz + 150                                                                     # top-cap underside plane
-    draw_rect(ax, hdx - 150, cpy, 260, 32, fc=C_ALUM, lw=1.4, zorder=6)                 # TOP CAP (8mm Al)
-    # handle stile — 40×40×5 SS RHS in section (two 5mm side walls + hollow bore)
-    draw_rect(ax, hdx - 20, hdz - 150, 40, cpy - (hdz - 150), fc=C_STEEL, lw=1.4, zorder=6)
-    draw_rect(ax, hdx - 15, hdz - 145, 30, cpy - (hdz - 145), fc=BG, lw=0.7, zorder=7)  # RHS bore (hollow, 5mm wall)
-    # SOLID STEEL PLUG fitted in the open RHS end — gives the tube a face to fasten; the M12
-    # clamps it up to the cap, and it is cross-bolted to the tube walls so the pull load transfers.
-    draw_rect(ax, hdx - 15, cpy - 96, 30, 96, fc="#9AA0A8", lw=1.2, zorder=8)           # solid plug (fills the bore)
-    ax.add_patch(mpatches.Rectangle((hdx - 7, cpy - 96), 14, 96, fc=BG, ec="none", zorder=8))  # M12 clearance thru plug
-    draw_bolt(ax, hdx, cpy - 43, 98, d=13, head=-1, end="tapped", zb=10)               # M12 up into the TAPPED cap
-    for cz in (cpy - 34, cpy - 66):                                                    # 2× M8 cross-bolts → plug (retention)
-        draw_bolt(ax, hdx - 14, cz, 12, d=8, vertical=False, head=-1, end="tapped", zb=11)
-    # off-the-shelf pull-handle foot BOLTED to the stile (2× 1/4" through-screws, tapped into the RHS wall — NO welds)
-    draw_rect(ax, hdx - 78, hdz - 30, 58, 60, fc="#C9CCD2", lw=1.2, zorder=5)           # pull-handle arm → foot
-    draw_rect(ax, hdx - 26, hdz - 40, 7, 80, fc=C_STEEL, lw=1.0, zorder=6)              # flat foot pad (0.27") on the stile face
-    for fz in (hdz - 24, hdz + 24):
-        draw_bolt(ax, hdx - 22, fz, 28, d=6.35, vertical=False, head=-1, end="tapped")  # foot → stile: 1/4" TAPPED
-    draw_circle(ax, hdx - 116, hdz, 20, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # pull-handle Ø0.5" bar
-    for zz in (hdz - 144, hdz - 152):                                                   # break (stile continues to the bottom cap)
-        ax.plot([hdx - 24, hdx + 24], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=9)
-    leader(ax, hdx + 70, cpy + 16, hdx + 175, cpy + 80, "TOP CAP (8mm 6061-T6 Al)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx + 8, cpy - 48, hdx + 175, cpy - 30,
-           f"STILE → CAP: a SOLID STEEL PLUG fills the open {STILE_W}×{STILE_W}×5\nRHS end (cross-bolted 2× M8 through the 5mm wall, tapped\ninto the plug) and is clamped up to the cap by an M12\nTAPPED into it — blind, ~8mm engagement (no pierce / no\nlight leak). Pull load: handle → tube → plug → cap. No welds.",
-           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx - 22, hdz - 40, hdx + 175, hdz - 150, "HANDLE FOOT → STILE: 2× 1/4\" TAPPED into the\nRHS wall (McMaster 1871A65 pull handle — NO welds)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    # (The pull-handle mount detail — handle → stile → cap plug joint — is drawn to scale on its
+    #  own Sheet 11; the GA above shows only the assembled arrangement + a reference.)
+    ax.text(HO_R + 470, 900, "PULL-HANDLE MOUNT — see SHEET 11\n(handle → stile → cap · plug joint, to scale)",
+            ha="center", va="center", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",
@@ -390,7 +366,7 @@ def draw_sheet1():
             f"PLAN (schematic) — two {LT_OPENING_DEG}° openings\n180° apart · detail Sheets 2 & 6",
             ha="center", va="top", fontsize=6.5, color=C_DIM, **FONT, zorder=15)
 
-    title_block(ax, "SHEET 1 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 1 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="GENERAL ARRANGEMENT — VERTICAL SECTION ON DRUM AXIS",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -492,7 +468,7 @@ def draw_sheet2():
     draw_notes(ax, notes, 40, -240, 34, fs=7, font=FONT, width=1650,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 2 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 2 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING CYLINDER — CUT SHEET (FLAT PATTERN)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -568,7 +544,7 @@ def draw_sheet3():
     draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 3 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 3 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM SHELL — CUT SHEET (FLAT PATTERN)",
                 scale_note="FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -756,7 +732,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     draw_notes(ax, notes, X_LO + 60, -450, 15, fs=7, font=FONT, width=1780,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 4 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 4 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
                 scale_note="SECTION 7:1 · CAP PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -988,7 +964,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     ax.text(sbx + 25 * SC, sbz - 22, "50 mm  (SECTIONS 2.2:1)", ha="center", va="top",
             fontsize=6.5, color=C_OUT, **FONT, zorder=8)
 
-    title_block(ax, "SHEET 5 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 5 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT — ASSEMBLY",
                 scale_note="SECTIONS 2.2:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -1144,7 +1120,7 @@ def draw_sheet6():
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 6 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
                 scale_note="RINGS + STUB 2.2:1 · CAP 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.02, scale=0.75)
@@ -1334,7 +1310,7 @@ def draw_sheet7():
     draw_notes(ax, notes, X_LO + 60, -HR - 880, 34, fs=7, font=FONT, width=3600, wrap=190,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 7 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 7 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SEALS & LIGHT-PATH VERIFICATION",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -1554,7 +1530,7 @@ def draw_sheet8():
     draw_notes(ax, notes, X_LO + 60, -300, 58, fs=7, font=FONT, width=2500, wrap=138,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 8 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 8 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SUPPORT FRAME — GENERAL ARRANGEMENT (INTEGRATED STEEL CAGE)",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -1704,7 +1680,7 @@ def draw_sheet9():
     draw_notes(ax, notes, X_LO + 60, -360, 24, fs=7, font=FONT, width=1450,
                title_color=TITLE_COL, wrap=180)
 
-    title_block(ax, "SHEET 9 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 9 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
                 scale_note="SECTION 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -1880,7 +1856,7 @@ def draw_sheet10():
     draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 14, fs=7, font=FONT, width=1000,
                title_color=TITLE_COL, wrap=200)
 
-    title_block(ax, "SHEET 10 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 10 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="COMBINED TOP-END ASSEMBLY (INNER + OUTER LAP JOINTS)",
                 scale_note="HALF-SECTION · TO SCALE (100mm bar) · DETAILS A/B → SHEETS 4 & 9",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.72)
@@ -1888,6 +1864,108 @@ def draw_sheet10():
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet10.png saved")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 11 — Pull-handle mount detail (to scale): stile → cap PLUG joint + handle
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet11():
+    X_LO, X_HI, Z_LO, Z_HI = -120, 1240, -560, 320
+    FIG_W = 15.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    STW = 40                                        # handle stile — 40×40×5 SS RHS
+
+    # ══ VIEW A — STILE → CAP PLUG JOINT (section · SCALE 3:1) ═════════════════
+    A = 3.0
+    ax0, cz = 150, 120                              # joint x-center; cap-underside plane
+    def AX(mm): return ax0 + A * mm
+    def AZ(mm): return cz + A * mm
+    ax.text(ax0, AZ(LT_CAP_TOP_T) + 52, "VIEW A — STILE → CAP PLUG JOINT  (section · 3:1)",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, AX(-43), AZ(0), A * 86, A * LT_CAP_TOP_T, fc=C_ALUM, lw=1.6, zorder=6)        # 8mm Al top cap
+    sbot = -110
+    draw_rect(ax, AX(-STW / 2), AZ(sbot), A * STW, A * (0 - sbot), fc=C_STEEL, lw=1.6, zorder=6)  # stile RHS (section)
+    draw_rect(ax, AX(-STW / 2 + 5), AZ(sbot + 5), A * (STW - 10), A * (0 - sbot - 5), fc=BG, lw=0.8, zorder=7)  # bore
+    draw_rect(ax, AX(-15), AZ(-40), A * 30, A * 40, fc="#9AA0A8", lw=1.4, zorder=8)             # solid steel plug
+    ax.add_patch(mpatches.Rectangle((AX(-6.5), AZ(-40)), A * 13, A * 40, fc=BG, ec="none", zorder=8))  # M12 clearance thru plug
+    draw_bolt(ax, ax0, (AZ(-40) + AZ(8)) / 2, AZ(8) - AZ(-40), d=A * 12, head=-1, end="tapped", zb=10)  # M12 → tapped cap
+    for zc in (-14, -30):                           # 2× M8 cross-bolts → plug (retention)
+        draw_bolt(ax, AX(-11), AZ(zc), A * 21, d=A * 8, vertical=False, head=-1, end="tapped", zb=11)
+    for zz in (sbot + 6, sbot + 12):                # break marks (stile continues down)
+        ax.plot([AX(-STW / 2) + 5, AX(STW / 2) - 5], [AZ(zz) - 5, AZ(zz) + 5], color=C_OUT, lw=0.8, zorder=9)
+    draw_dim_v(ax, AX(-43) - 34, AZ(0), AZ(LT_CAP_TOP_T), f"{LT_CAP_TOP_T:.0f}", offset=24, fs=6.0, font=FONT)
+    draw_dim_h(ax, AX(-STW / 2), AX(STW / 2), AZ(sbot) - 38, f"{STW}", offset=28, fs=6.5, above=False, font=FONT)
+    draw_dim_v(ax, AX(STW / 2) + 38, AZ(-40), AZ(0), "40", offset=24, fs=6.0, right=True, font=FONT)
+    draw_dim_h(ax, AX(-15), AX(15), AZ(-40) - 34, "30", offset=26, fs=6.0, above=False, font=FONT)
+    leader(ax, AX(30), AZ(4), AX(66) + 46, AZ(4) + 60, "TOP CAP — 8mm 6061-T6 Al", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, ax0 + A * 6, AZ(-18), AX(43) + 46, AZ(-8),
+           "M12 TAPPED into the cap (blind, ~8mm engagement —\nno pierce / no light leak); clamps the plug up to the cap",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, AX(-11), AZ(-30), AX(43) + 46, AZ(-56),
+           f"SOLID STEEL PLUG (~30×30×40) fills the\nopen {STW}×{STW}×5 RHS end + 2× M8 cross-bolts\nthrough the 5mm wall, tapped into the plug —\ngives the open tube a bolting face (pull\nload → handle → tube → plug → cap)",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, AX(-STW / 2), AZ(sbot + 34), AX(-43) - 34, AZ(sbot + 78),
+           f"STILE — {STW}×{STW}×5 SS RHS\n(spans cap → cap, ~2.1 m)", fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+
+    # ══ VIEW B — HANDLE ARRANGEMENT (interior elevation · SCALE 1:2) ══════════
+    B = 0.55
+    bx, bz = 780, -40                               # stile axis; grip midpoint
+    def BX(mm): return bx + B * mm
+    def BZ(mm): return bz + B * mm
+    hd = GRAB_D
+    ax.text(bx, BZ(GRAB_L / 2) + 74, "VIEW B — HANDLE ARRANGEMENT  (interior elevation · 1:2)",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, BX(-STW / 2), BZ(-GRAB_L / 2 - 70), B * STW, B * (GRAB_L + 140), fc=C_STEEL, lw=1.4, zorder=5)  # stile (elevation)
+    for zz in (BZ(GRAB_L / 2 + 55), BZ(GRAB_L / 2 + 62), BZ(-GRAB_L / 2 - 55), BZ(-GRAB_L / 2 - 62)):  # break marks
+        ax.plot([BX(-STW / 2) + 3, BX(STW / 2) - 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=8)
+
+    def cap_bar(x0, z0, x1, z1):
+        ang = math.atan2(z1 - z0, x1 - x0)
+        nx, nz = -math.sin(ang) * B * hd / 2, math.cos(ang) * B * hd / 2
+        ax.add_patch(mpatches.Polygon([(BX(x0) + nx, BZ(z0) + nz), (BX(x1) + nx, BZ(z1) + nz),
+                                       (BX(x1) - nx, BZ(z1) - nz), (BX(x0) - nx, BZ(z0) - nz)],
+                                      closed=True, fc="#C9CCD2", ec=C_OUT, lw=1.0, zorder=8))
+        for cx0, cz0 in ((x0, z0), (x1, z1)):
+            ax.add_patch(mpatches.Circle((BX(cx0), BZ(cz0)), B * hd / 2, fc="#C9CCD2", ec=C_OUT, lw=1.0, zorder=8))
+    gxo = -GRAB_SO
+    cap_bar(gxo, -GRAB_L / 2 + hd, gxo, GRAB_L / 2 - hd)          # grip (parallel to stile)
+    cap_bar(gxo, -GRAB_L / 2 + hd, -STW / 2 - 4, -GRAB_L / 2)     # bottom arm
+    cap_bar(gxo, GRAB_L / 2 - hd, -STW / 2 - 4, GRAB_L / 2)       # top arm
+    for gz in (-GRAB_L / 2, GRAB_L / 2):                          # 2 feet, bolted to the stile
+        draw_rect(ax, BX(-STW / 2 - 6), BZ(gz - 16), B * 6, B * 32, fc=C_STEEL, lw=0.9, zorder=7)
+        draw_bolt(ax, BX(-STW / 2 - 3), BZ(gz), B * 26, d=B * 6.35, vertical=False, head=-1, end="tapped", zb=9)
+    draw_dim_v(ax, BX(gxo) - B * hd - 46, BZ(-GRAB_L / 2), BZ(GRAB_L / 2), f"{GRAB_L} HANDLE", offset=28, fs=6.5, font=FONT)
+    draw_dim_h(ax, BX(gxo), BX(-STW / 2), BZ(-GRAB_L / 2) - 40, f"{GRAB_SO} STANDOFF", offset=26, fs=6.5, above=False, font=FONT)
+    leader(ax, BX(gxo), BZ(GRAB_L / 4), BX(STW / 2) + 70, BZ(GRAB_L / 4 + 40),
+           f"McMaster 1871A65 — Ø{GRAB_D:.1f} (0.5\") round pull handle;\nbolted at both feet (2× 1/4\" tapped into the RHS wall) · NO welds",
+           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
+    # ══ Notes ═════════════════════════════════════════════════════════════════
+    notes = [
+        "PULL-HANDLE MOUNT  (interior face only — no fastener pierces the drum wall / no light leak)",
+        f"1. Stile: {STW}×{STW}×5 SS RHS, spans + fastens between the two 8mm 6061-T6 Al caps (top + bottom ends identical).",
+        "2. Each open RHS end takes a SOLID STEEL PLUG (~30×30×40) cross-bolted 2× M8 through the tube walls (tapped into the plug) — this gives the open section a bolting face.",
+        "3. A single M12 TAPPED into the cap clamps each plug up to it (blind, ~8mm engagement — no pierce). Pull load path: handle → tube → plug → cap, landing in the structural cap (not the thin HDPE wall).",
+        "4. Off-the-shelf pull handle McMaster 1871A65 (Ø0.5\" bar, 308mm long, 52mm standoff) bolts at its two feet with 1/4\" screws tapped into the RHS wall. No welds anywhere.",
+        "VIEW A 3:1 · VIEW B 1:2 · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, X_LO + 40, -320, 20, fs=7, font=FONT, width=1360, wrap=120, title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 11 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="PULL-HANDLE MOUNT — STILE → CAP PLUG JOINT + HANDLE ARRANGEMENT",
+                scale_note="VIEW A 3:1 · VIEW B 1:2 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet11.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet11.png saved")
 
 
 def main():
@@ -1902,6 +1980,7 @@ def main():
     draw_sheet8()          # Sheet 8 — support frame GA
     draw_sheet9()          # Sheet 9 — housing → frame attachment
     draw_sheet10()          # Sheet 10 — combined top-end assembly (inner + outer joints)
+    draw_sheet11()          # Sheet 11 — pull-handle mount detail (to scale)
     print("Done.")
 
 

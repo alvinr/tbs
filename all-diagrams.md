@@ -401,3 +401,5 @@
 ![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
 
 ![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)
+
+![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)

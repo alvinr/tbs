@@ -325,3 +325,7 @@ the fixed housing→frame joint (Sheet 9), with the upper bearing and the felt-s
 running gap between them — how the rotating and fixed halves coexist at one level.
 
 ![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)
+
+**Sheet 11 — Pull-Handle Mount (to scale): stile → cap plug joint (View A, 3:1) + handle arrangement (View B, 1:2).** How the interior pull handle mounts without piercing the drum wall: the stile is a 40×40×5 SS RHS whose open ends are closed by solid steel plugs (cross-bolted 2× M8), each clamped up to its 8mm Al cap by a single M12 tapped into the cap — so the pull load lands in the structural caps, not the HDPE wall. The off-the-shelf McMaster 1871A65 pull handle bolts to the stile at its two feet. No welds.
+
+![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)

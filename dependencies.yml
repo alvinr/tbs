@@ -25,7 +25,7 @@ generators:
   ibc_stacking_diagram: {script: src/generators/generate_ibc_stacking_diagram.py, outputs: [diagrams/ibc-stacking-sheet1.png, diagrams/ibc-stacking-sheet2.png, diagrams/ibc-stacking-sheet3.png, diagrams/ibc-stacking-sheet4.png, diagrams/ibc-stacking-sheet5.png]}
   joint_options: {script: src/generators/generate_joint_options.py, outputs: [diagrams/film-joint-options.png]}
   joint_study: {script: src/generators/generate_joint_study.py, outputs: [diagrams/film-joint-study-gimbal.png, diagrams/film-joint-study-ujoint.png]}
-  lighttrap_diagram: {script: src/generators/generate_lighttrap_diagram.py, outputs: [diagrams/lighttrap-sheet1.png, diagrams/lighttrap-sheet2.png, diagrams/lighttrap-sheet3.png, diagrams/lighttrap-sheet4.png, diagrams/lighttrap-sheet5.png, diagrams/lighttrap-sheet6.png, diagrams/lighttrap-sheet7.png, diagrams/lighttrap-sheet8.png, diagrams/lighttrap-sheet9.png, diagrams/lighttrap-sheet10.png]}
+  lighttrap_diagram: {script: src/generators/generate_lighttrap_diagram.py, outputs: [diagrams/lighttrap-sheet1.png, diagrams/lighttrap-sheet2.png, diagrams/lighttrap-sheet3.png, diagrams/lighttrap-sheet4.png, diagrams/lighttrap-sheet5.png, diagrams/lighttrap-sheet6.png, diagrams/lighttrap-sheet7.png, diagrams/lighttrap-sheet8.png, diagrams/lighttrap-sheet9.png, diagrams/lighttrap-sheet10.png, diagrams/lighttrap-sheet11.png]}
   ventilation_diagram: {script: src/generators/generate_ventilation_diagram.py, outputs: [diagrams/ventilation-sheet1.png, diagrams/ventilation-sheet2.png]}
   line_of_sight: {script: src/generators/generate_line_of_sight.py, outputs: [diagrams/line-of-sight.png]}
   mini_tbs_diagram: {script: src/generators/generate_mini_tbs_diagram.py, outputs: [diagrams/mini-tbs-sheet1.png]}

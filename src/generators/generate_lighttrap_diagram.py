@@ -381,7 +381,7 @@ def draw_sheet1():
             f"PLAN (schematic) — two {LT_OPENING_DEG}° openings\n180° apart · detail Sheets 2 & 6",
             ha="center", va="top", fontsize=6.5, color=C_DIM, **FONT, zorder=15)
 
-    title_block(ax, "SHEET 1 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 1 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="GENERAL ARRANGEMENT — VERTICAL SECTION ON DRUM AXIS",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -483,7 +483,7 @@ def draw_sheet2():
     draw_notes(ax, notes, 40, -240, 34, fs=7, font=FONT, width=1650,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 2 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 2 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING CYLINDER — CUT SHEET (FLAT PATTERN)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -559,7 +559,7 @@ def draw_sheet3():
     draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 3 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 3 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM SHELL — CUT SHEET (FLAT PATTERN)",
                 scale_note="FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -747,7 +747,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     draw_notes(ax, notes, X_LO + 60, -450, 15, fs=7, font=FONT, width=1780,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 4 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 4 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
                 scale_note="SECTION 7:1 · CAP PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -986,7 +986,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     ax.text(sbx + 25 * SC, sbz - 22, "50 mm  (SECTIONS 2.2:1)", ha="center", va="top",
             fontsize=6.5, color=C_OUT, **FONT, zorder=8)
 
-    title_block(ax, "SHEET 5 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 5 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="BEARING HUB & STUB-SHAFT — ASSEMBLY",
                 scale_note="SECTIONS 2.2:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -1151,7 +1151,7 @@ def draw_sheet6():
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 6 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 6 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
                 scale_note="RINGS + STUB 2.2:1 · CAP 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.02, scale=0.75)
@@ -1270,78 +1270,25 @@ def draw_sheet7():
                 **FONT, zorder=9)
         lx += 640
 
-    # ── Seal detail (radial section at the running gap) ──────────────────────
-    # Brush strip RIVETED to the ROTATING drum OD; bristles wipe the FIXED housing bore.
-    sx, sz = dx, -HR - 620
-    draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # FIXED housing wall (bore face at sx-140)
-    draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # ROTATING drum wall (OD face at sx+140)
-    # Al straight-flange holder — ONE continuous extrusion: vertical mounting flange against the
-    # drum OD (riveted) integral with a U-track (opening inboard) that grips the #4 brush channel.
-    ax.add_patch(mpatches.Polygon([
-        (sx + 112, sz + 22), (sx + 132, sz + 22), (sx + 132, sz + 42), (sx + 140, sz + 42),
-        (sx + 140, sz - 42), (sx + 132, sz - 42), (sx + 132, sz - 22), (sx + 112, sz - 22),
-        (sx + 112, sz - 16), (sx + 132, sz - 16), (sx + 132, sz + 16), (sx + 112, sz + 16)],
-        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=6))                    # flanged-U holder (one piece)
-    draw_rect(ax, sx + 112, sz - 16, 20, 32, fc="#8A8F98", lw=1.0, zorder=7)    # #4 (3/16") channel seated in the U-track
-    for zz in range(-14, 16, 6):                                               # black-nylon bristles lay over onto the bore
-        ax.plot([sx + 112, sx - 138], [sz + zz, sz + zz + 10], color="#222", lw=0.6, zorder=6)
-    for zc in (sz - 38, sz + 38):                                              # flange blind rivets (offset from the channel)
-        ax.plot([sx + 132, sx + 182], [zc, zc], color=C_OUT, lw=1.8, zorder=8)
-    draw_dim_h(ax, sx - 140, sx + 140, sz - 120, f"≈{RUN_GAP}mm RUNNING GAP", offset=40,
-               fs=6.5, above=False, font=FONT)
-    leader(ax, sx + 100, sz + 30, sx + 250, sz + 120,
-           f"BRUSH STRIP ×{LT_WIPER_N} — #4 (3/16\") strip brush, 0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim,\n"
-           f"snapped into an Al straight-flange holder FLANGE-RIVETED to the ROTATING drum OD\n"
-           f"(rivets in the flange, offset from the brush — see Sheet 4); bristles wipe the FIXED\n"
-           f"housing bore across the {RUN_GAP}mm gap · one 96\" piece per line (no joint)",
-           fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, sx - 170, sz - 40, sx - 300, sz - 80, f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6,
-           color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, sx + 163, sz - 60, sx + 300, sz - 90, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
-           color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    ax.text(sx, sz + 190, "SEAL DETAIL — RUNNING GAP (enlarged)", ha="center", va="bottom",
-            fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
-
-    # ── TOP-END LIGHT PATH — the running gap is CAPPED at its axial top by the cap↔frame neoprene
-    # wiper, so a ray up the gap can't circumnavigate OVER the brushes. Bottom end is identical. ──
-    tex, tez = 2 * dx + 320, -HR - 640
-    gx0, gw = tex - 10, 46                                                         # gap: drum OD (left) → housing bore (right)
-    gx1 = gx0 + gw
-    ax.text(tex, tez + 210, "TOP-END LIGHT PATH — gap CAPPED at top\n(cap ↔ frame neoprene seal · bottom identical)",
-            ha="center", va="bottom", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
-    draw_rect(ax, gx0 - 12, tez - 175, 12, 205, fc=C_LT_DRUM, lw=1.2, zorder=5)    # drum shell (rotating)
-    draw_rect(ax, gx1, tez - 175, 14, 235, fc="#DDE4EC", lw=1.2, zorder=5)         # housing wall (fixed)
-    draw_rect(ax, gx0 - 110, tez + 6, 110, 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
-    draw_rect(ax, gx0 - 110, tez + 48, gw + 150, 18, fc=C_STEEL, lw=1.4, zorder=6) # frame top plate (fixed)
-    draw_rect(ax, gx0 - 78, tez + 28, gw + 76, 18, fc=C_GASKT, lw=1.0, zorder=7)   # neoprene wiper — caps the gap
-    for zz in range(-120, -66, 8):                                                # brush (running-gap seal), lower
-        ax.plot([gx0, gx1 - 4], [tez + zz, tez + zz + 5], color="#222", lw=0.6, zorder=6)
-    draw_rect(ax, gx0 - 6, tez - 132, 6, 70, fc="#A8763A", lw=0.5, zorder=6)       # brush holder (bronze)
-    ax.annotate("", xy=(gx0 + gw / 2, tez + 24), xytext=(gx0 + gw / 2, tez - 165),  # daylight ray UP the gap …
-                arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
-    for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                  # … killed at the seal (red ✗)
-        ax.plot([gx0 + gw / 2 + s1[0], gx0 + gw / 2 + s2[0]], [tez + s1[1], tez + s2[1]], color="#D33", lw=2.2, zorder=9)
-    leader(ax, gx0 + 20, tez + 40, gx1 + 40, tez + 120, "NEOPRENE WIPER (cap↔frame)\ncaps the gap — light STOPS here",
-           fs=6, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    ax.text(gx1 + 46, tez + 57, "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6, color=C_DIM, **FONT, zorder=9)
-    leader(ax, gx0 - 60, tez + 17, gx0 - 118, tez + 40, "DRUM CAP (rotating)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, gx1 + 7, tez - 90, gx1 + 120, tez - 70, "HOUSING (fixed)", fs=6, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, gx0 + 3, tez - 95, gx0 - 118, tez - 150, f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    ax.text(gx0 + gw / 2, tez - 195, "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
-            fontsize=6, color=C_OUT, **FONT, zorder=9)
+    # ── Seal cross-sections moved to Sheet 12 (enlarged for readability) ──────
+    ax.text(dx + 160, -HR - 620,
+            "SEAL CROSS-SECTIONS\n\nrunning-gap brush (radial)\n+ top-end neoprene (axial)\n\nSEE SHEET 12 — drawn 1.5:1",
+            ha="center", va="center", fontsize=10, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=9,
+            bbox=dict(boxstyle="round,pad=0.9", fc="#EEF3F8", ec=C_OUT, lw=1.4))
 
     notes = [
         "SEALS & LIGHT-PATH",
         "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
         f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015) — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
         f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
-        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — see the TOP-END LIGHT PATH detail. The brushes seal the gap circumferentially; the neoprene seals it axially.",
+        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged running-gap + top-end seal cross-sections. The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
     draw_notes(ax, notes, X_LO + 60, -HR - 880, 34, fs=7, font=FONT, width=3600, wrap=190,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 7 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 7 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SEALS & LIGHT-PATH VERIFICATION",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -1561,7 +1508,7 @@ def draw_sheet8():
     draw_notes(ax, notes, X_LO + 60, -300, 58, fs=7, font=FONT, width=2500, wrap=138,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 8 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 8 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SUPPORT FRAME — GENERAL ARRANGEMENT (INTEGRATED STEEL CAGE)",
                 scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
@@ -1717,7 +1664,7 @@ def draw_sheet9():
     draw_notes(ax, notes, X_LO + 60, -360, 24, fs=7, font=FONT, width=1450,
                title_color=TITLE_COL, wrap=180)
 
-    title_block(ax, "SHEET 9 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 9 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",
                 scale_note="SECTION 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -1893,7 +1840,7 @@ def draw_sheet10():
     draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 14, fs=7, font=FONT, width=1000,
                title_color=TITLE_COL, wrap=200)
 
-    title_block(ax, "SHEET 10 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 10 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="COMBINED TOP-END ASSEMBLY (INNER + OUTER LAP JOINTS)",
                 scale_note="HALF-SECTION · TO SCALE (100mm bar) · DETAILS A/B → SHEETS 4 & 9",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.72)
@@ -1998,7 +1945,7 @@ def draw_sheet11():
     ]
     draw_notes(ax, notes, X_LO + 40, -320, 20, fs=7, font=FONT, width=1360, wrap=120, title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 11 OF 11", drawing_title="REVOLVING LIGHT-TRAP",
+    title_block(ax, "SHEET 11 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="PULL-HANDLE MOUNT — STILE → CAP PLUG JOINT + HANDLE ARRANGEMENT",
                 scale_note="VIEW A 3:1 · VIEW B 1:2 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
@@ -2006,6 +1953,97 @@ def draw_sheet11():
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet11.png saved")
+
+
+def draw_sheet12():
+    # Two seal cross-sections pulled off Sheet 7 and drawn large (1.5:1) so the
+    # brush/neoprene geometry is easy to read.
+    X_LO, X_HI, Z_LO, Z_HI = 120, 1900, -360, 1000
+    FIG_W = 15.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    S = 1.5
+
+    # ══ DETAIL 1 — RUNNING-GAP SEAL (radial section · 1.5:1) ══════════════════
+    osx, osz = 720, 560
+    def SX(mm): return osx + S * mm
+    def SZ(mm): return osz + S * mm
+    ax.text(SX(0), SZ(210), "DETAIL 1 — RUNNING-GAP SEAL  (radial section · 1.5:1)",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, SX(-200), SZ(-90), S * 60, S * 180, fc="#DDE4EC", lw=1.4, zorder=5)   # FIXED housing wall
+    draw_rect(ax, SX(140), SZ(-90), S * 46, S * 180, fc=C_LT_DRUM, lw=1.4, zorder=5)    # ROTATING drum wall
+    ax.add_patch(mpatches.Polygon([                                                     # flanged-U holder (one piece)
+        (SX(112), SZ(22)), (SX(132), SZ(22)), (SX(132), SZ(42)), (SX(140), SZ(42)),
+        (SX(140), SZ(-42)), (SX(132), SZ(-42)), (SX(132), SZ(-22)), (SX(112), SZ(-22)),
+        (SX(112), SZ(-16)), (SX(132), SZ(-16)), (SX(132), SZ(16)), (SX(112), SZ(16))],
+        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=6))
+    draw_rect(ax, SX(112), SZ(-16), S * 20, S * 32, fc="#8A8F98", lw=1.0, zorder=7)     # #4 channel in the U-track
+    for zz in range(-14, 16, 6):                                                        # bristles lay over onto the bore
+        ax.plot([SX(112), SX(-138)], [SZ(zz), SZ(zz + 10)], color="#222", lw=0.6, zorder=6)
+    for zc in (-38, 38):                                                                # flange blind rivets
+        ax.plot([SX(132), SX(182)], [SZ(zc), SZ(zc)], color=C_OUT, lw=1.8, zorder=8)
+    draw_dim_h(ax, SX(-140), SX(140), SZ(-120), f"≈{RUN_GAP}mm RUNNING GAP", offset=44,
+               fs=7.0, above=False, font=FONT)
+    leader(ax, SX(100), SZ(30), SX(150), SZ(150),
+           f"#4 (3/16\") STRIP BRUSH ×{LT_WIPER_N}\n"
+           f"FLANGE-RIVETED to the drum OD;\n"
+           f"bristles wipe the FIXED housing\n"
+           f"bore across the {RUN_GAP}mm gap (see notes)",
+           fs=6.8, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, SX(-170), SZ(-40), SX(-300), SZ(-90), f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6.5,
+           color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, SX(163), SZ(-60), SX(300), SZ(-100), f"DRUM {LT_DRUM_T:.2f}mm", fs=6.5,
+           color=C_DIM, ha="left", arrow_style="->", font=FONT)
+
+    # ══ DETAIL 2 — TOP-END LIGHT PATH (axial section · 1.5:1) ═════════════════
+    otx, otz = 1520, 560
+    def TX(mm): return otx + S * mm
+    def TZ(mm): return otz + S * mm
+    ax.text(TX(0), TZ(230), "DETAIL 2 — TOP-END LIGHT PATH  (axial section · 1.5:1)\ngap CAPPED at top · cap ↔ frame neoprene seal · bottom identical",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, TX(-22), TZ(-175), S * 12, S * 205, fc=C_LT_DRUM, lw=1.2, zorder=5)   # drum shell (rotating)
+    draw_rect(ax, TX(36), TZ(-175), S * 14, S * 235, fc="#DDE4EC", lw=1.2, zorder=5)    # housing wall (fixed)
+    draw_rect(ax, TX(-120), TZ(6), S * 110, S * 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
+    draw_rect(ax, TX(-120), TZ(48), S * 196, S * 18, fc=C_STEEL, lw=1.4, zorder=6)      # frame top plate (fixed)
+    draw_rect(ax, TX(-88), TZ(28), S * 122, S * 18, fc=C_GASKT, lw=1.0, zorder=7)       # neoprene wiper — caps the gap
+    for zz in range(-120, -66, 8):                                                      # brush (running-gap seal), lower
+        ax.plot([TX(-10), TX(32)], [TZ(zz), TZ(zz + 5)], color="#222", lw=0.6, zorder=6)
+    draw_rect(ax, TX(-16), TZ(-132), S * 6, S * 70, fc="#A8763A", lw=0.5, zorder=6)     # brush holder (bronze)
+    ax.annotate("", xy=(TX(13), TZ(24)), xytext=(TX(13), TZ(-165)),                     # daylight ray UP the gap …
+                arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
+    for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                       # … killed at the seal (red ✗)
+        ax.plot([TX(13 + s1[0]), TX(13 + s2[0])], [TZ(s1[1]), TZ(s2[1])], color="#D33", lw=2.2, zorder=9)
+    leader(ax, TX(10), TZ(40), TX(76), TZ(140), "NEOPRENE WIPER (cap↔frame)\ncaps the gap — light STOPS here",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    ax.text(TX(82), TZ(57), "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6.5, color=C_DIM, **FONT, zorder=9)
+    leader(ax, TX(-70), TZ(17), TX(-128), TZ(50), "DRUM CAP (rotating)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, TX(43), TZ(-90), TX(156), TZ(-70), "HOUSING (fixed)", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, TX(-7), TZ(-95), TX(-128), TZ(-160), f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    ax.text(TX(13), TZ(-195), "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
+            fontsize=6.5, color=C_OUT, **FONT, zorder=9)
+
+    notes = [
+        "SEAL DETAILS  (enlarged from Sheet 7)",
+        f"DETAIL 1 — running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015 — the rivets land in the aluminum flange, clear of the brush); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint). Seals the gap CIRCUMFERENTIALLY.",
+        "DETAIL 2 — top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes there is no straight-through or over-the-top light path.",
+        "SCALE 1.5:1 · ALL DIMS IN mm · see Sheet 7 for the rotation/light-path plans A–C.",
+    ]
+    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1740, wrap=150, title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 12 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="SEAL DETAILS — RUNNING-GAP BRUSH + TOP-END NEOPRENE (enlarged)",
+                scale_note="1.5:1 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet12.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet12.png saved")
 
 
 def main():
@@ -2021,6 +2059,7 @@ def main():
     draw_sheet9()          # Sheet 9 — housing → frame attachment
     draw_sheet10()          # Sheet 10 — combined top-end assembly (inner + outer joints)
     draw_sheet11()          # Sheet 11 — pull-handle mount detail (to scale)
+    draw_sheet12()          # Sheet 12 — seal details (enlarged from Sheet 7)
     print("Done.")
 
 

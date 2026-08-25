@@ -403,3 +403,5 @@
 ![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)
 
 ![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)
+
+![TBS-001 Light-Trap — Sheet 12: Seal Details (enlarged)](assets/lighttrap-sheet12.png)

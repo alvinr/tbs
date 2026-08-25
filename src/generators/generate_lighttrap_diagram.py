@@ -120,20 +120,35 @@ def l_angle(ax, cx, cz, leg_x, leg_z, t, *, fc=C_ALUM, lw=1.4, zorder=5):
         closed=True, fc=fc, ec=C_OUT, lw=lw, zorder=zorder))
 
 
-def hollow_beam_long(ax, x, z, w, h, wall, near, *, fc=C_STEEL, lw=1.4, zorder=4, breaks=True):
+def hollow_beam_long(ax, x, z, w, h, wall, near, *, fc=C_STEEL, lw=1.4, zorder=4, breaks=True, open_ends=()):
     """RHS/SHS shown in LONGITUDINAL section (cut along its length) — the two walls the cut passes
     through read as solid bands, the bore between is void (BG). x,z = outer corner; w,h = drawn size;
-    `wall` = wall thickness; `near` in {'bottom','top','left','right'} = which wall faces the viewer/joint
-    (kept solid across its full length); the opposite wall is the far band. `breaks` adds end break-marks."""
-    draw_rect(ax, x, z, w, h, fc=fc, lw=lw, zorder=zorder)                                   # outer (both walls)
-    draw_rect(ax, x + wall, z + wall, w - 2 * wall, h - 2 * wall, fc=BG, lw=lw * 0.7, zorder=zorder + 1)  # hollow bore (void)
-    if breaks:                                                                              # beam continues past the crop
-        if near in ("bottom", "top"):
+    `wall` = wall thickness; `near` in {'bottom','top','left','right'} = which wall faces the viewer/joint.
+    `open_ends` = a set of sides ('left','right','top','bottom') drawn WITHOUT an end cap — so the hollow
+    reads as an open / cut tube end (not a closed box). `breaks` adds end break-marks on the capped ends."""
+    horiz = near in ("bottom", "top")
+    draw_rect(ax, x + wall, z + wall, w - 2 * wall, h - 2 * wall, fc=BG, lw=0, zorder=zorder)  # hollow bore (void)
+    if horiz:                                                                                # near = top/bottom → horizontal wall bands
+        draw_rect(ax, x, z, w, wall, fc=fc, lw=lw, zorder=zorder + 1)                         # bottom wall (full length)
+        draw_rect(ax, x, z + h - wall, w, wall, fc=fc, lw=lw, zorder=zorder + 1)              # top wall
+        if "left" not in open_ends:  draw_rect(ax, x, z, wall, h, fc=fc, lw=lw, zorder=zorder + 1)          # left end cap
+        if "right" not in open_ends: draw_rect(ax, x + w - wall, z, wall, h, fc=fc, lw=lw, zorder=zorder + 1)  # right end cap
+    else:                                                                                    # near = left/right → vertical wall bands
+        draw_rect(ax, x, z, wall, h, fc=fc, lw=lw, zorder=zorder + 1)                         # left wall
+        draw_rect(ax, x + w - wall, z, wall, h, fc=fc, lw=lw, zorder=zorder + 1)              # right wall
+        if "bottom" not in open_ends: draw_rect(ax, x, z, w, wall, fc=fc, lw=lw, zorder=zorder + 1)          # bottom end cap
+        if "top" not in open_ends:    draw_rect(ax, x, z + h - wall, w, wall, fc=fc, lw=lw, zorder=zorder + 1)  # top end cap
+    if breaks:                                                                              # capped ends that continue past the crop
+        if horiz:
             for bx in (x, x + w):
+                if ("left" if bx == x else "right") in open_ends:
+                    continue
                 ax.plot([bx - 4, bx + 4, bx - 4], [z + wall, z + h / 2, z + h - wall],
                         color=C_OUT, lw=0.8, zorder=zorder + 3, solid_capstyle="round")
         else:
             for bz in (z, z + h):
+                if ("bottom" if bz == z else "top") in open_ends:
+                    continue
                 ax.plot([x + wall, x + w / 2, x + w - wall], [bz - 4, bz + 4, bz - 4],
                         color=C_OUT, lw=0.8, zorder=zorder + 3, solid_capstyle="round")
 
@@ -709,7 +724,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     blind_rivet(ax, ix(-17), iz((HWmm - LT_DRUM_T) / 2), 90, IS * (LT_DRUM_T + HWmm), d=IS * LT_RIVET_D)
     draw_dim_v(ax, ix(-36), iz(0), iz(GAPmm), f"{GAPmm}mm GAP", offset=30, fs=6.2, font=FONT)
     leader(ax, ix(-17), iz(HWmm), ix(-20), iz(-LT_DRUM_T) - 44,
-           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall)\nBLIND-RIVETED to the shell — rivet in the flange,\noffset from the brush (head out, bulb inside the drum)",
+           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall —\nTanis/Gordon AH400436) BLIND-RIVETED to the shell —\nrivet in the flange, offset from the brush (head out, bulb in)",
            fs=6.0, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(30), iz(GAPmm) + 60,
            f"#4 STRIP BRUSH — 3/16\" channel,\n0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
@@ -828,10 +843,10 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         zf0, zf1 = -40 * SC * s, -55 * SC * s
         draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
                   fc=C_STEEL, lw=1.4, zorder=6)
-        for g in (-1, 1):                          # cap → flange bolts (M10 countersunk, tapped, Ø120 PCD)
+        for g in (-1, 1):                          # cap → flange bolts (M10 countersunk in the cap, THROUGH the flange + nut, Ø120 PCD)
             fb0, fb1 = -40 * SC * s, zc1
             draw_bolt(ax, cx + g * 60 * SC, (fb0 + fb1) / 2, abs(fb1 - fb0),
-                      d=8 * SC, head=int(-s), end="tapped", csk=True, zb=9)
+                      d=8 * SC, head=int(-s), end="nut", csk=True, zb=9)
         # ring/collar → beam bolts: HEAD on the ring's outer face (accessible), up through the
         # ring + the beam's near 3mm wall, into a RIVET-NUT (blind threaded insert) in that wall (the ring↔beam contact
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
@@ -954,7 +969,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         "BEARING HUB — SPECIFICATION",
         f"Bearing ×2: SKF 6215-2RS1 — Ø{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}mm, sealed 2RS, C3, 0–120°C, 52.7 kN dyn.",
         f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
-        "Bearing mounts: upper in isolated aluminum top ring (6×M10 into rivet-nuts / blind threaded inserts set in the beam wall, nylon-isolated); lower in welded steel floor collar (8×M10). Cap→flange: bolt from the cap into the TAPPED steel flange. Full fastening on Sheet 6.",
+        "Bearing mounts: upper in isolated aluminum top ring (6×M10 into rivet-nuts / blind threaded inserts set in the beam wall, nylon-isolated); lower in a bolted steel floor collar (8×M10 into the floor plate, no weld). Cap→flange: countersunk bolt in the cap, THROUGH the steel flange + a nut (drilled through — not tapped). Full fastening on Sheet 6.",
         "Axial retention — INNER race: circlip on the stub shaft each side of each bearing (DIN 471). OUTER race: the UPPER bearing is LOCATED — the outer race seats on a machined shoulder (bore steps Ø130→Ø122, drum side) that carries the hanging load, captured by a DIN 472 retaining ring on the beam side; the LOWER bearing FLOATS (plain Ø130 H7 bore, outer race free to slide) so it can't fight thermal growth.",
         "Shaft seat: the stub shaft seats ONLY in the Ø75 h6 bearing bore — the SKF 6215 IS the 'socket' (off-the-shelf; shaft blueprint on Sheet 6). It TERMINATES just below the beam underside — it does NOT penetrate the beam and needs NO clearance bore; the bearing (in the ring below the beam) carries + locates the drum, and the load goes to the beam through the ring bolts.",
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
@@ -1085,7 +1100,7 @@ def draw_sheet6():
     holes(cx, fpz, 120 / 2 * s2, 4)
     draw_cl_h(ax, cx - fl_r - 20, cx + fl_r + 20, fpz)
     draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 6, "Ø160 FLANGE", offset=32, fs=7, font=FONT)
-    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolts in)", ha="center", va="top",
+    ax.text(cx, fpz - fl_r - 14, "4×M10 Ø11 CLEARANCE on Ø120 PCD (cap bolt THROUGH + nut)", ha="center", va="top",
             fontsize=7.5, color=C_OUT, **FONT, zorder=9)
     draw_rect(ax, cx - fl_r, ez - fl_t, 2 * fl_r, fl_t, fc=C_STEEL, lw=1.6, zorder=5)     # flange
     draw_rect(ax, cx - sh_r, ez, 2 * sh_r, shaft_L, fc=C_STEEL, lw=1.6, zorder=5)         # shaft
@@ -1131,7 +1146,7 @@ def draw_sheet6():
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD. Stub shaft Ø{SKF6215_ID} h6, with a circlip groove Ø72.0 × 2.65 each side of each bearing (INNER-race retention; McMaster 90154A895, ext, Ø75). OUTER race — UPPER ring LOCATED: the bore steps Ø130→Ø122 to form a ~4mm-high shoulder (drum end, outer-race abutment) + a retaining-ring groove Ø134.0 × 4.15 (beam end; McMaster 98455A170, int, Ø130). LOWER collar: plain Ø130 H7 bore, FLOATING (outer race free to slide — the upper bearing is the located one).",
-        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
+        "FASTENING — cap → flange: countersunk bolt in the cap, THROUGH the stub-shaft flange + a nut (Ø11 clearance both parts — drilled through, simpler fab than a blind-tapped flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
@@ -1593,7 +1608,13 @@ def draw_sheet9():
     # rim-angle — ONE continuous 25×25×3 L-section (single extrusion, not two plates): the
     # horizontal leg is TEK-SCREWED up under the beam; the standing lip hangs down for the housing to lap.
     l_angle(ax, 0, 0, -RIML, -LIP, LEGT, fc=C_ALUM, lw=1.4, zorder=5)             # rim-angle (L)
-    draw_bolt(ax, -RIML * 0.5, (-LEGT + _fw) / 2, LEGT + _fw, d=8, head=-1, end="tapped", zb=7)  # TEK screw: flat leg → beam bottom wall
+    # TEK self-drilling screw (same convention as the ibc-frame details): hex-washer head under the
+    # flat leg + shank UP through the leg, self-tapping into the beam bottom wall (thread ticks there).
+    _tx = -RIML * 0.5
+    ax.add_patch(mpatches.Rectangle((_tx - 4, -LEGT), 8, LEGT + _fw, fc="#8A8F98", ec=C_OUT, lw=0.8, zorder=8))  # shank
+    ax.add_patch(mpatches.Rectangle((_tx - 12, -LEGT - 8), 24, 8, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=9))       # hex-washer head
+    for _tz in (3, 9, 15):                                                                                        # thread ticks — in the beam bottom wall
+        ax.plot([_tx - 4, _tx + 4], [_tz, _tz + 3], color=C_OUT, lw=0.6, zorder=10)
     draw_rect(ax, 0, -LIP, DPT, LIP, fc=C_GASKT, lw=0.8, zorder=5)                # DP8010 bead
     draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 90, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down, butts beam underside (broken below)
     for zz in (-LIP - 55, -LIP - 67, -LIP - 79):                                 # break line (housing continues down)
@@ -1749,14 +1770,13 @@ def draw_sheet10():
 
     # ── FIXED: axle beam — HOLLOW RHS in longitudinal section (both walls solid, bore void) ─
     hollow_beam_long(ax, 0, Z_BEAM0, LT_AXLE_BEAM_SPAN / 2, LT_AXLE_BEAM_H,
-                     LT_AXLE_BEAM_T, "bottom", fc=C_STEEL, lw=1.4, zorder=4, breaks=False)
+                     LT_AXLE_BEAM_T, "bottom", fc=C_STEEL, lw=1.4, zorder=4, breaks=False,
+                     open_ends=("left",))               # OPEN at the drum axis (tube continues to the other half)
     # ── FIXED: cage corner post — HOLLOW vertical RHS framing the beam end ────
     POST_R0 = LT_AXLE_BEAM_SPAN / 2                                          # 481 — beam outer end / cage corner
     hollow_beam_long(ax, POST_R0, Z_BRK, LT_FRAME_RHS, Z_BEAM0 + LT_AXLE_BEAM_H - Z_BRK,
-                     LT_FRAME_T, "left", fc=C_STEEL, lw=1.4, zorder=3, breaks=False)  # continues down (break below)
-    for dz in (0, 8, 16):                                                    # break line (post continues down)
-        ax.plot([POST_R0 + 4, POST_R0 + LT_FRAME_RHS - 4], [Z_BRK + 6 + dz, Z_BRK + 14 + dz],
-                color=C_OUT, lw=0.6, zorder=9)
+                     LT_FRAME_T, "left", fc=C_STEEL, lw=1.4, zorder=3, breaks=False,
+                     open_ends=("bottom",))             # OPEN at the bottom (post continues down full height)
     # ── Upper SKF 6215 bearing (to scale) + isolated Al ring ─────────────────
     draw_rect(ax, bOD, Z_BRG0, 30, Z_BEAM0 - Z_BRG0, fc=C_ALUM, lw=1.0, zorder=5)   # Al ring bolts up to beam
     draw_rect(ax, bOD - 7.5, Z_BRG0, 7.5, bW, fc=C_STEEL, lw=0.8, zorder=6)         # outer race
@@ -1775,15 +1795,16 @@ def draw_sheet10():
     rbx = bOD + 15
     wnz = Z_BEAM0                                                                     # beam bottom (near) wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
     draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="rivnut", wall=LT_AXLE_BEAM_T, csk=True)
-    # Cap → flange: countersunk flush in the CAP UNDERSIDE, up through the cap into the TAPPED flange.
+    # Cap → flange: countersunk flush in the cap face, THROUGH the cap + a Ø11 clearance hole in the
+    # flange, secured by a nut on the far side (drilled through — simpler fab than a blind-tapped flange).
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge
     cb0, cb1 = -LT_CAP_TOP_T, 10
-    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
+    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="nut", csk=True)
     leader(ax, rbx, wnz + 6, POST_R0 - 250, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 COUNTERSUNK into RIVET-NUTS\n(blind inserts, beam bottom wall — 3mm RHS)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, cbx, -LT_CAP_TOP_T, -120, -LT_CAP_TOP_T - 45,
-           "CAP → FLANGE\n4×M10 COUNTERSUNK (tapped)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+           "CAP → FLANGE\n4×M10 COUNTERSUNK,\nTHROUGH flange + nut", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────
     l_angle(ax, CAPR, 0, -LT_RIM_LEG, LT_LAP_H, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=6)       # rim-angle (L) — flat leg on cap + lip up

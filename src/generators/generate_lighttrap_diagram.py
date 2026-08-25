@@ -833,12 +833,8 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
             for zc in (13.5 * SC, -13.5 * SC):     # circlip grooves — snug each side of the bearing (below the beam)
                 ax.plot([cx + g * rs, cx + g * (rs - 5 * SC)], [zc, zc],
                         color=C_OUT, lw=1.6, zorder=9)
-        if not up:                                 # collar-to-plate weld
-            for g in (-1, 1):
-                ax.add_patch(mpatches.Polygon(
-                    [(cx + g * ro, -15 * SC), (cx + g * ro, -15 * SC - 15 * SC),
-                     (cx + g * (ro - 15 * SC), -15 * SC)],
-                    closed=True, fc="#CC4422", ec="#CC4422", zorder=9))
+        # (Lower collar is BOLTED to the floor plate — 8× M10 into rivet-nuts, same as the upper
+        #  ring; no weld. The ring→beam bolts above are the collar→plate connection.)
         draw_cl_v(ax, cx, -135 * SC, 135 * SC)
         ax.text(cx, 115 * SC + CAPd + 60, "UPPER HUB — DRUM TOP" if up else
                 "LOWER HUB — DRUM BOTTOM", ha="center", va="bottom", fontsize=8.5,
@@ -895,8 +891,8 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     lo_labels = [
         (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nbolt into TAPPED 4×M10 flange"),
         (-48 * SC, (100 * SC, -40 * SC),  "AXLE BEAM — 8×M10\ninto RIVET-NUTS"),
-        (12 * SC,  (ro + 20 * SC, 0),     "WELDED STEEL FLOOR COLLAR\n(seats bearing OD)"),
-        (-16 * SC, (ro - 6 * SC, -16 * SC), "COLLAR → PLATE WELD"),
+        (12 * SC,  (ro + 20 * SC, 0),     "STEEL FLOOR COLLAR\n(seats bearing OD · BOLTED, not welded)"),
+        (-18 * SC, (ro - 6 * SC, -18 * SC), "COLLAR → FLOOR PLATE:\n8×M10 BOLTED (rivet-nuts, no weld)"),
     ]
     for zt, (tx, tz), txt in lo_labels:
         leader(ax, LX + tx, tz, RxL, zt, txt, fs=6.5, color=C_OUT, ha="left",
@@ -1032,17 +1028,17 @@ def draw_sheet6():
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
         if weldnote:
-            # CAGE FLOOR / BOTTOM PLATE under the collar + fillet weld down to it
+            # CAGE FLOOR / BOTTOM PLATE under the collar + bolts down to it (was a fillet weld)
             plate_tz = LT_FRAME_PLATE_T * s2
             plate_hw = rod + 100
             draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
-            for g in (-1, 1):                        # 6mm fillet weld: collar outer base → plate
-                ax.add_patch(mpatches.Polygon([(cx + g * rod, sz), (cx + g * (rod + 18), sz),
-                                               (cx + g * rod, sz + 18)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
+            for g in (-1, 1):                        # collar BOLTED down to the plate (was a fillet weld)
+                draw_bolt(ax, cx + g * (rod - 24), (sz + tz + sz - plate_tz) / 2, (tz + plate_tz),
+                          d=10 * s2, head=1, end="tapped", zb=8)
             draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
                        offset=30, fs=6.4, right=True, font=FONT)
             leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 46,
-                   "CAGE FLOOR / BOTTOM PLATE\n(collar 6mm fillet-welded down)", fs=6.4, color=C_OUT,
+                   "CAGE FLOOR / BOTTOM PLATE\n(collar BOLTED down — 8× M10, no weld)", fs=6.4, color=C_OUT,
                    ha="right", arrow_style="->", font=FONT)
             mat_z = sz - plate_tz - 100
         else:
@@ -1053,7 +1049,7 @@ def draw_sheet6():
     ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
          "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
     ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,
-         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · bore Ø130 (bearing seat)", weldnote="6mm fillet weld to floor plate")
+         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · bore Ø130 (bearing seat)", weldnote="BOLTED to floor plate (8× M10) — no weld")
 
     # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
     cx = CX
@@ -1115,7 +1111,7 @@ def draw_sheet6():
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
-        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
+        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)

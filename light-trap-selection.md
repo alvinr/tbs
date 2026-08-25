@@ -136,7 +136,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Bearings (×2) | SKF 6215-2RS1 (75mm ID, 130mm OD, 25mm wide, sealed, C3 clearance) |
 | Upper bearing mount | Isolated aluminum top ring, 6×M10 into the integrated frame top beam |
-| Lower bearing mount | Welded steel floor collar, 8×M10 into the integrated frame bottom beam |
+| Lower bearing mount | Bolted steel floor collar, 8×M10 into the integrated frame bottom beam (no weld) |
 | Axial retention | Circlip on stub shaft each side |
 
 ### 4.3 Seals

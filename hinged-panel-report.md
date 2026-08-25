@@ -464,8 +464,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91294A328/) (91294A328) | 18-8 SS, buy one pack per line (generous spares): F1 cap→flange 8× M10×1.5 CSK (91294A328, $11.58/25); F2/F3 ring/collar→beam 14× M10×1.5 COUNTERSUNK flat-head into the rivet-nuts — flush in the ring/collar underside (McMaster 91294A334, $5.22/10 → 2 packs $10.44; same CSK family as F1); F4 stile→cap 2× M12×1.75 into the caps via the RHS-end plugs (91180A743, $12.40/10) + 4× M8×1.25 plug cross-bolts (from the F6 M8 pack); F5 pull-handle feet 4× 1/4"-20 (90272A537, $7.21/100); F6 edge-channel→beam + stile-plug cross-bolts 12× M8×1.25 (91280A083, $11.17/50); F7 housing→panel 8× M10×1.5 CSK (91280A370, $10.55/25) + 8× M10 nuts (90576A118, $9.53/50); W ~22× M10 nylon isolation shoulder washers (95610A400, $18.39/100) at every steel↔Al/HDPE joint. Rivet-nuts + blind rivets are separate lines. ≈$91 firm. | 1 lot | McMaster-Carr | $91 |
 | [M10 twist-resistant rivet-nuts (ring/collar→beam) + setting tool](https://www.mcmaster.com/95105A199/) (95105A199) | 14 needed (6 top-ring + 8 floor-collar → the 3mm RHS axle beam wall, flange on the near face + barrel through into the bore, per Sheets 5/10). 20× M10×1.5 twist-resistant (anti-spin, chromate-plated steel) 0.8–3.0mm grip, 95105A199 ($8.12/10 → 2 packs $16.24) + 1× M10 rivet-nut setting tool (96349A866, $36.62). Twist-resistant over SS since the joint is torqued and sits in the dry walk-through zone. ≈$53 firm. | 1 lot | McMaster-Carr | $53 |
 | [1/8" blind rivets — brush-holder flange → drum OD (250-pack)](https://www.mcmaster.com/97447A015/) (97447A015) | ~72 rivets (4 brush-holder lines × ~18 @ 120mm) fastening the Al holder flanges to the rotating drum OD — grip ~4.5mm (1.27mm Al flange + 1/8" HDPE). $10.78/250 firm. | 1 pack-250 | McMaster-Carr | $11 |
+| #14 self-drilling TEK screws — rim-angle → frame beam | ~24× #14 (Ø6.3) self-drilling TEK screws fastening the rolled Al rim-angle flat legs to the steel frame top + bottom beams (2× 100° arcs each, ~150mm pitch) — REPLACES the Al→steel weld (Sheets 9/10; avoids welding aluminum to the steel frame). Short (~3/4", grip 3mm Al + 3mm steel wall); hex washer head. Est.; firm SKU at order. | 1 lot | McMaster-Carr | $8–$12 |
 | Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | ~16–22 hrs: roll + hot-air/extrusion-weld the 2 HDPE cylinders, roll the Al rim-angle rings, fit the metal caps + SKF 6215 bearings + stub shafts, rivet the lap joints, mount the drum brush holders + edge channels + pull-handle stile. | 1 lot | Local plastic + metal fab | $800–$1,150 |
-| **Lightlock total** | | | | **$2,937–$3,957** |
+| **Lightlock total** | | | | **$2,945–$3,969** |
 <!-- END parts:lightlock -->
 
 
@@ -501,10 +502,10 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,278<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,484<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,937<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,957<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,945<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,969<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,395<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,051<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,403<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,063<!-- END costing:hp-total-high -->** |
 
 ---
 

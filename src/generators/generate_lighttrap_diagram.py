@@ -840,9 +840,10 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
             wnz = 20 * SC * s                          # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="rivnut", wall=LT_FRAME_T * SC, csk=True, zb=9)
-            for zc in (13.5 * SC, -13.5 * SC):     # circlip grooves — snug each side of the bearing (below the beam)
-                ax.plot([cx + g * rs, cx + g * (rs - 5 * SC)], [zc, zc],
-                        color=C_OUT, lw=1.6, zorder=9)
+            for zc in (13.5 * SC, -13.5 * SC):     # DIN 471 EXTERNAL circlip — seated in the Ø72 shaft groove,
+                # projecting OUTWARD past the shaft OD to butt the bearing inner-race face (majority stands proud).
+                draw_rect(ax, min(cx + g * (rs - 1.5 * SC), cx + g * (rs + 3 * SC)), zc - 1.3 * SC,
+                          4.5 * SC, 2.6 * SC, fc="#707078", lw=0.8, zorder=9)
         # (Lower collar is BOLTED to the floor plate — 8× M10 into rivet-nuts, same as the upper
         #  ring; no weld. The ring→beam bolts above are the collar→plate connection.)
         draw_cl_v(ax, cx, -135 * SC, 135 * SC)
@@ -901,7 +902,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     lo_labels = [
         (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nbolt into TAPPED 4×M10 flange"),
         (-48 * SC, (100 * SC, -40 * SC),  "AXLE BEAM — 8×M10\ninto RIVET-NUTS"),
-        (12 * SC,  (ro + 20 * SC, 0),     "STEEL FLOOR COLLAR (BOLTED, not welded) —\nFLOATING bearing: plain Ø130 H7 bore, outer race free\nto slide axially (the upper bearing is the located one)"),
+        (12 * SC,  (ro + 20 * SC, 0),     "STEEL FLOOR COLLAR (BOLTED, not welded) — FLOATING bearing:\nthe outer race is deliberately NOT axially retained. The plain Ø130 H7\nbore locates it radially + it slides freely for thermal growth; the bearing\nis a captive unit held on the shaft by the circlips (upper bearing = located)"),
         (-18 * SC, (ro - 6 * SC, -18 * SC), "COLLAR → FLOOR PLATE:\n8×M10 BOLTED (rivet-nuts, no weld)"),
     ]
     for zt, (tx, tz), txt in lo_labels:
@@ -1041,10 +1042,8 @@ def draw_sheet6():
             for g in (-1, 1):
                 draw_rect(ax, min(cx + g * rsh, cx + g * rbore), sz, rbore - rsh, tz * 0.42, fc=fc, lw=1.0, zorder=6)      # shoulder lip
                 draw_rect(ax, min(cx + g * (rbore - 4), cx + g * (rbore + 5)), sz + tz * 0.74, 9, tz * 0.22, fc="#606068", lw=0.8, zorder=7)  # DIN 472 ring in groove
-            leader(ax, cx + (rsh + rbore) / 2, sz + tz * 0.2, cx + rod + 54, sz - 26,
-                   f"Ø{bore - 8} SHOULDER (drum end) —\nouter race seats here", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-            leader(ax, cx + rbore, sz + tz * 0.85, cx + rod + 54, sz + tz + 30,
-                   "Retaining-ring groove Ø134 × 4.15\n(beam end · McMaster 98455A170)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+            ax.text(cx + rod + 40, sz + tz / 2, "LOCATED seat:\nshoulder (drum end)\n+ ring groove (beam end)\n— spec in notes", ha="left",
+                    va="center", fontsize=6.2, color=C_OUT, **FONT, zorder=9)
         draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
@@ -1053,8 +1052,8 @@ def draw_sheet6():
             plate_tz = LT_FRAME_PLATE_T * s2
             plate_hw = rod + 100
             draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
-            for g in (-1, 1):                        # collar BOLTED down to the plate (was a fillet weld)
-                draw_bolt(ax, cx + g * (rod - 24), (sz + tz + sz - plate_tz) / 2, (tz + plate_tz),
+            for g in (-1, 1):                        # collar BOLTED down to the plate (on the bolt PCD — was a fillet weld)
+                draw_bolt(ax, cx + g * rpcd, (sz + tz + sz - plate_tz) / 2, (tz + plate_tz),
                           d=10 * s2, head=1, end="tapped", zb=8)
             draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
                        offset=30, fs=6.4, right=True, font=FONT)
@@ -1131,7 +1130,7 @@ def draw_sheet6():
 
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
-        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore, with DIN 471 circlip grooves each side (INNER-race retention). OUTER race: the UPPER ring is LOCATED — Ø122 shoulder (drum end) + a Ø134 × 4.15 retaining-ring groove (beam end, McMaster 98455A170); the LOWER collar is a plain Ø130 H7 bore (FLOATING).",
+        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD. Stub shaft Ø{SKF6215_ID} h6, with a circlip groove Ø72.0 × 2.65 each side of each bearing (INNER-race retention; McMaster 90154A895, ext, Ø75). OUTER race — UPPER ring LOCATED: the bore steps Ø130→Ø122 to form a ~4mm-high shoulder (drum end, outer-race abutment) + a retaining-ring groove Ø134.0 × 4.15 (beam end; McMaster 98455A170, int, Ø130). LOWER collar: plain Ø130 H7 bore, FLOATING (outer race free to slide — the upper bearing is the located one).",
         "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]

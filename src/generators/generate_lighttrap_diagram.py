@@ -1137,7 +1137,7 @@ def draw_sheet6():
         "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
@@ -1783,7 +1783,7 @@ def draw_sheet10():
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge
     cb0, cb1 = -LT_CAP_TOP_T, 10
     draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
-    leader(ax, rbx, wnz + 6, POST_R0 - 80, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
+    leader(ax, rbx, wnz + 6, POST_R0 - 250, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 COUNTERSUNK into RIVET-NUTS\n(blind inserts, beam bottom wall — 3mm RHS)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, cbx, -LT_CAP_TOP_T, -120, -LT_CAP_TOP_T - 45,
@@ -1844,7 +1844,7 @@ def draw_sheet10():
     # ── Zone tags ────────────────────────────────────────────────────────────
     ax.text(210, -40, "◄ ROTATES WITH DRUM", ha="center", va="center", fontsize=7,
             color="#407040", fontweight="bold", **FONT, zorder=9)
-    ax.text(300, Z_BEAM0 + 70, "FIXED (FRAME + HOUSING) ►", ha="center", va="center", fontsize=7,
+    ax.text(300, Z_BEAM0 + LT_AXLE_BEAM_H + 10, "FIXED (FRAME + HOUSING) ►", ha="center", va="center", fontsize=7,
             color="#5060A0", fontweight="bold", **FONT, zorder=9)
 
     # ── Leaders ──────────────────────────────────────────────────────────────

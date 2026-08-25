@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,959<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,983<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,955<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,979<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -151,7 +151,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Entry handle | Off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar, 2.06″ standoff), interior face only, at 900mm height — **bolted at both feet** (1/4″ screws tapped into the RHS wall) to a steel **stile that spans and bolts to the two Al caps**. The stile is a 40×40×5 SS RHS (an open tube), so each end is fitted with a **solid steel plug** (cross-bolted through the tube walls, 2× M8) that gives the open section a bolting face; a single **M12 tapped into the cap** (blind, ~8mm engagement — no pierce, no light leak) clamps each plug up to its cap, so the pull load lands in the structural caps (not the thin HDPE wall) via handle → tube → plug → cap. No welds, and no fastener pierces the drum wall. Mount + plug detail on §9 Sheet 1 |
+| Entry handle | Off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar, 2.06″ standoff), interior face only, at 900mm height — **bolted at both feet** (1/4″ screws tapped into the RHS wall) to a steel **stile that spans and bolts to the two Al caps**. The stile is a 40×40×5 SS RHS (an open tube), so each end is fitted with a **solid tapped steel plug**, locked in the tube by **2× grub (set) screws** through the wall (anti-rotation + retention); a single **M10 countersunk bolt** is then driven from the cap's outside face (wrench-accessible), through the cap into the tapped plug — sealed with DP8010 for light-tightness. The pull load lands in the structural caps (not the thin HDPE wall) via handle → tube → grub screws → plug → cap bolt → cap. No welds. Mount + plug detail on §9 Sheet 11 |
 | Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, into the beam-wall rivet-nuts |
 | Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
 
@@ -171,7 +171,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,959<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,983<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,955<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,979<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -207,7 +207,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,959<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,983<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,955<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,979<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -326,6 +326,6 @@ running gap between them — how the rotating and fixed halves coexist at one le
 
 ![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)
 
-**Sheet 11 — Pull-Handle Mount (to scale): stile → cap plug joint (View A, 3:1) + handle arrangement (View B, 1:2).** How the interior pull handle mounts without piercing the drum wall: the stile is a 40×40×5 SS RHS whose open ends are closed by solid steel plugs (cross-bolted 2× M8), each clamped up to its 8mm Al cap by a single M12 tapped into the cap — so the pull load lands in the structural caps, not the HDPE wall. The off-the-shelf McMaster 1871A65 pull handle bolts to the stile at its two feet. No welds.
+**Sheet 11 — Pull-Handle Mount (to scale): stile → cap plug joint (View A, 3:1) + handle arrangement (View B, 1:2).** How the interior pull handle mounts: the stile is a 40×40×5 SS RHS whose open ends are closed by solid **tapped** steel plugs, each locked in the tube by 2× grub (set) screws and secured to its 8mm Al cap by an **M10 countersunk bolt driven from the cap's outside face** (wrench-accessible), through the cap into the plug (sealed with DP8010) — so the pull load lands in the structural caps, not the HDPE wall. The off-the-shelf McMaster 1871A65 pull handle bolts to the stile at its two feet. No welds.
 
 ![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)

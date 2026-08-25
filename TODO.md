@@ -11,6 +11,18 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## 🔧 Fastener standardization — minimize distinct part types (2026-08-24, Alvin)
+
+- [ ] **Reconcile ALL fasteners (bolts, screws, nuts, rivets, rivet-nuts, washers) across the WHOLE camera to the minimum number of distinct types.** Goal: build the entire TBS-001 from the fewest different parts — fewer SKUs, fewer spares, simpler procurement/assembly (design-for-assembly). This will require **re-engineering blueprints** where a joint can move to a shared size/length/thread without hurting the design (e.g. converge M8/M10 families, standardize lengths, pick one rivet Ø, one washer). Method: (1) inventory every fastener across all systems from `parts.py` + the generators (thread × pitch × length × head × material × count); (2) cluster + pick a minimal standard set; (3) flag the joints that must change geometry to adopt it; (4) cascade the drawing/constants/parts/cost per system. Cross-cuts every subsystem, not just the light-trap — do it as its own pass after the light-trap BOM settles.
+
+## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
+
+- [x] **Fastener/hardware batch FIRMED 2026-08-24d** — DP8010 (7467A36 $76.29), fasteners lot → $97 firm (F1–F7 McMaster SS SKUs), NEW `ll-rivet-nuts` $53 (20× M10 twist-resist 95105A199 + setting tool 96349A866), NEW `ll-holder-rivets` $11 (97447A015 ×250). lightlock → $2,943–3,963; all gates green.
+- [ ] **Brush + holder** — Alvin researching an alternative to Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, but only sold in **10-packs** → $270+$259 for a 4-of-each need). When picked: firm `ll-wiper-brush` + `ll-wiper-holder`, and **re-spec the drawing/constants to the chosen backing** (18A417/18A320 = 1/8″ backing, 3/4″/19mm trim — vs the current #4 3/16″/17.5mm) → cascade Sheets 4/6/7/10.
+- [ ] **Edge channel** — Alvin researching an alternative to McMaster 9001K723 (6063 Al confirmed, 3/64″ wall, $18.18/8 ft). When picked: firm `ll-edge-channel` (+ the 8× L-clips still to source).
+
+---
+
 ## 🔩 Revolving light-trap — metal-cap + lap-joint cascade (2026-08-21)
 
 The 2D blueprint set (`generate_lighttrap_diagram.py`) now reflects the design change: **end caps

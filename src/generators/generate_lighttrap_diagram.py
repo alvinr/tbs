@@ -109,7 +109,7 @@ def tube_rect(ax, x, y, w, h, wall, *, fc=C_STEEL, lw=1.4, zorder=6):
 
 def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", csk=False, wall=None, zb=10):
     """Bolt in section — the project convention (cf. corner-gimbal bolt()): a filled shank
-    with a wider HEAD at the `head` end and, at the far end, a hex NUT / weld-nut / tapped
+    with a wider HEAD at the `head` end and, at the far end, a hex NUT / rivet-nut / tapped
     thread. cx,cz = shank mid; `length` = grip along the axis; d = nominal Ø (drawn).
     head = -1 → head at the −axis end (below/left); +1 → +axis end.
     csk = True → flush COUNTERSUNK head (tapered flat head recessed into the joined face),
@@ -234,7 +234,7 @@ def draw_sheet1():
            f"ROTATING DRUM\nØ{2 * LT_DRUM_OR} · {LT_DRUM_T:.2f}mm (1/8in) HDPE\nsingle {LT_OPENING_DEG}° opening",
            fs=7, color=C_OUT, ha="center", arrow_style="->", font=FONT)
 
-    # ── End caps — metal hub discs (top 6061-T6 Al, bottom A36 steel) ────────
+    # ── End caps — metal hub discs (both 8mm 6061-T6 Al, identical) ──────────
     cap_x0 = X_AX - LT_CAP_OD / 2
     draw_rect(ax, cap_x0, Z_CAP_T, LT_CAP_OD, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=7)
     draw_rect(ax, cap_x0, Z_CAP_B - LT_CAP_BOT_T, LT_CAP_OD, LT_CAP_BOT_T,
@@ -465,7 +465,7 @@ def draw_sheet2():
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 3 — Rotating drum shell cut sheet (flat pattern; caps → Sheet 6)
 # The 1/8in HDPE C-shell developed flat (single 80° opening → 280° of material),
-# plus the two 3/16in top/bottom caps with bolted steel stub-shaft hubs.
+# plus the two 8mm 6061-T6 Al top/bottom caps with bolted steel stub-shaft hubs.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet3():
     DRUM_OD   = 2 * LT_DRUM_OR                          # Ø864
@@ -1088,7 +1088,7 @@ def draw_sheet6():
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
-        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
+        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
@@ -1269,7 +1269,7 @@ def draw_sheet7():
     notes = [
         "SEALS & LIGHT-PATH",
         "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
-        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
+        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015) — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
         f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
         "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — see the TOP-END LIGHT PATH detail. The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
@@ -1770,13 +1770,13 @@ def draw_sheet10():
     # ── Key dimensions (to scale) ────────────────────────────────────────────
     draw_dim_v(ax, -95, -LT_CAP_TOP_T, -LT_CAP_TOP_T + SHAFT_L, f"{SHAFT_L} STUB (Ø{SKF6215_ID})",
                offset=48, fs=6.5, font=FONT)
-    draw_dim_h(ax, 0, CAPR, -LT_CAP_TOP_T - 60, f"Ø{LT_CAP_OD} CAP (radius)", offset=44,
+    draw_dim_h(ax, 0, CAPR, -LT_CAP_TOP_T - 60, f"Ø{LT_CAP_OD} CAP (radius)", offset=14,
                fs=6.5, above=False, font=FONT)
     # ── A/B rail positions — radial (dim_h) + vertical joint rise (dim_v) ────
     draw_dim_h(ax, 0, DOR_, -LT_CAP_TOP_T - 95, f"R{DOR_:.0f} — A: rotating drum rail (Ø{2 * LT_DRUM_OR})",
-               offset=40, fs=6.0, above=False, font=FONT)
+               offset=14, fs=6.0, above=False, font=FONT)
     draw_dim_h(ax, 0, HOR_, -LT_CAP_TOP_T - 135, f"R{HOR_:.0f} — B: fixed housing rail (Ø{DRUM_D})",
-               offset=40, fs=6.0, above=False, font=FONT)
+               offset=14, fs=6.0, above=False, font=FONT)
     draw_dim_v(ax, HOR_ + 55, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
                f"{Z_BEAM0 - LT_LAP_H:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
                offset=38, fs=6.0, right=True, font=FONT)

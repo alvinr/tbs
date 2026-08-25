@@ -179,7 +179,7 @@ costs more than a plywood build (§8.1).
 | Stub shafts | 75mm Ø × 150mm steel, bolted through an isolated steel hub to the aluminum drum caps (dissimilar-metal joint) |
 | Axial retention | Circlip on stub shaft each side |
 | Upper mount | Aluminum housing top ring bolted to panel top rail (6 × M10 SS, nylon-isolated) |
-| Lower mount | Welded steel floor collar bolted to panel bottom rail (8 × M10 SS) |
+| Lower mount | Steel floor collar bolted to panel bottom rail (8 × M10 SS) — no weld |
 | Bearing housing height | 45mm (each) |
 
 ### 3.3 Light Path Verification

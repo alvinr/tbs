@@ -1044,7 +1044,7 @@ def draw_sheet6():
             leader(ax, cx + (rsh + rbore) / 2, sz + tz * 0.2, cx + rod + 54, sz - 26,
                    f"Ø{bore - 8} SHOULDER (drum end) —\nouter race seats here", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
             leader(ax, cx + rbore, sz + tz * 0.85, cx + rod + 54, sz + tz + 30,
-                   "DIN 472 retaining-ring\ngroove (beam end)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+                   "Retaining-ring groove Ø134 × 4.15\n(beam end · McMaster 98455A170)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
         draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
@@ -1099,7 +1099,7 @@ def draw_sheet6():
     draw_cl_v(ax, cx, ez - fl_t - 16, ez + shaft_L + 16)
     draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"150 LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
     draw_dim_v(ax, cx + fl_r + 34, ez - fl_t, ez, "12mm THK", offset=32, fs=6.6, right=True, font=FONT)
-    ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove each end", ha="center", va="bottom",
+    ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove Ø72.0 × 2.65 each end (90154A895)", ha="center", va="bottom",
             fontsize=7, color=C_DIM, **FONT, zorder=9)
     ax.text(cx, ez - fl_t - 34, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
             va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
@@ -1131,7 +1131,7 @@ def draw_sheet6():
 
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
-        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore, with DIN 471 circlip grooves each side (INNER-race retention). OUTER race: the UPPER ring is LOCATED — Ø122 shoulder (drum end) + DIN 472 retaining-ring groove (beam end); the LOWER collar is a plain Ø130 H7 bore (FLOATING).",
+        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore, with DIN 471 circlip grooves each side (INNER-race retention). OUTER race: the UPPER ring is LOCATED — Ø122 shoulder (drum end) + a Ø134 × 4.15 retaining-ring groove (beam end, McMaster 98455A170); the LOWER collar is a plain Ø130 H7 bore (FLOATING).",
         "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]

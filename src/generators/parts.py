@@ -913,6 +913,9 @@ PARTS: list[Part] = [
     Part("ll-holder-rivets", "1/8\" blind rivets — brush-holder flange → drum OD (250-pack)", "fasteners-hardware",
          "lightlock", 1, "pack-250", 10.78, 10.78, "McMaster-Carr", part_no="97447A015", url="https://www.mcmaster.com/97447A015/",
          spec="~72 rivets (4 brush-holder lines × ~18 @ 120mm) fastening the Al holder flanges to the rotating drum OD — grip ~4.5mm (1.27mm Al flange + 1/8\" HDPE). $10.78/250 firm.", note="confirmed 2026-08-24 (SKU+URL+price)"),
+    Part("ll-rim-teks", "#14 self-drilling TEK screws — rim-angle → frame beam", "fasteners-hardware",
+         "lightlock", 1, "lot", 8, 12, "McMaster-Carr",
+         spec="~24× #14 (Ø6.3) self-drilling TEK screws fastening the rolled Al rim-angle flat legs to the steel frame top + bottom beams (2× 100° arcs each, ~150mm pitch) — REPLACES the Al→steel weld (Sheets 9/10; avoids welding aluminum to the steel frame). Short (~3/4\", grip 3mm Al + 3mm steel wall); hex washer head. Est.; firm SKU at order.", note="PRICE-VERIFY (est — new 2026-08-25 weld→TEK)"),
     Part("ll-fabrication", "Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings", "fabrication-labor",
          "lightlock", 1, "lot", 800, 1150, "Local plastic + metal fab", spec="~16–22 hrs: roll + hot-air/extrusion-weld the 2 HDPE cylinders, roll the Al rim-angle rings, fit the metal caps + SKF 6215 bearings + stub shafts, rivet the lap joints, mount the drum brush holders + edge channels + pull-handle stile."),
 

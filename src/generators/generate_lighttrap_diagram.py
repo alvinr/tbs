@@ -810,21 +810,24 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # both caps: 6061-T6 Al, bolted steel stub-shaft flange (4×M10)
         capd = LT_CAP_TOP_T * SC
         zc0, zc1 = -55 * SC * s, -55 * SC * s - capd * s
-        # stub shaft Ø75 — SHORT stub: it engages ONLY the bearing bore + circlips and TERMINATES
-        # just below the beam underside — it does NOT penetrate the beam (the bearing carries + locates
-        # the drum; the beam takes the load through the ring bolts, not the shaft). No clearance bore.
-        z_stub = 14 * SC * s                           # shaft top: 1mm below the beam bottom (15*SC) — no penetration
+        # stub shaft Ø75 — SHORT stub: it engages ONLY the bearing bore + is fixed axially by the two
+        # circlips (bearing captive between them). It terminates just above the upper circlip, with a
+        # designed 5mm AXIAL GAP to the beam — the rotating shaft never touches the fixed beam; the
+        # circlips maintain that clearance. The bearing carries + locates the drum; load → ring bolts.
+        z_stub = 15 * SC * s                           # shaft top: just above the upper circlip (13.5*SC)
         z_fl = -40 * SC * s
         draw_rect(ax, cx - rs, min(z_stub, z_fl), 2 * rs, abs(z_stub - z_fl),
                   fc=C_STEEL, lw=1.4, zorder=6)
-        # bearing mount: isolated Al top ring (upper) / welded steel floor collar (lower)
+        # bearing mount: isolated Al top ring (upper) / welded steel floor collar (lower). The ring
+        # extends 5mm PAST the shaft top toward the beam (its beam-side face is the bolting datum), so
+        # the shaft top is recessed inside the ring bore with a clear gap up to the beam.
         HRr = (100 if up else 105) * SC
-        band(cx, ro, HRr, -15 * SC, 15 * SC,
+        band(cx, ro, HRr, min(-15 * SC * s, 20 * SC * s), max(-15 * SC * s, 20 * SC * s),
              fc=(C_ALUM if up else C_STEEL), lw=1.4, zorder=5)
         # axle beam — HOLLOW 100×50×3 RHS shown in LONGITUDINAL section: solid near + far 3mm
-        # walls with the hollow bore VOID between them (white). The rotating stub shaft passes
-        # through a Ø80 clearance hole in the near wall and FLOATS in the bore — never touches it.
-        zr0, zr1 = 15 * SC * s, 63 * SC * s
+        # walls with the hollow bore VOID between them (white). It sits on the ring's beam-side face,
+        # 5mm clear above the shaft top — the shaft never touches it (see the GAP dimension).
+        zr0, zr1 = 20 * SC * s, 68 * SC * s
         _bz0, _bz1 = min(zr0, zr1), max(zr0, zr1)
         _bw = LT_FRAME_T * SC                                                # drawn wall thickness
         _bx0, _bwd = cx - 140 * SC, 280 * SC
@@ -848,7 +851,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
         for g in (-1, 1):
             ring_far = -15 * SC * s                    # ring face away from the beam (head bears here)
-            wnz = 15 * SC * s                          # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
+            wnz = 20 * SC * s                          # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="rivnut", wall=LT_FRAME_T * SC, csk=True, zb=9)
             for zc in (13.5 * SC, -13.5 * SC):     # circlip grooves — snug each side of the bearing (below the beam)
@@ -895,19 +898,21 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     # Vertical (height / thickness), stacked in the centre gap:
     draw_dim_v(ax, UX + 255, -bw, bw, f"{SKF6215_W}mm BRG W", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 330, -15 * SC, 15 * SC, "30mm RING H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 330, -15 * SC, 20 * SC, "35mm RING H", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 405, 15 * SC, 63 * SC, "48mm RAIL H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 405, 20 * SC, 68 * SC, "48mm RAIL H", offset=44, fs=6.0,
                right=True, font=FONT)
     draw_dim_v(ax, UX + 480, -55 * SC, -40 * SC, "15mm FLANGE T", offset=44,
                fs=6.0, right=True, font=FONT)
     draw_dim_v(ax, UX + 555, -55 * SC - CAPd, -55 * SC, f"{LT_CAP_TOP_T:.0f}mm Al CAP T",
                offset=44, fs=6.0, right=True, font=FONT)
-    draw_dim_v(ax, UX - 255, -40 * SC, 30 * SC, "70mm SHAFT L", offset=44,
+    draw_dim_v(ax, UX - 255, -40 * SC, 15 * SC, "55mm SHAFT L", offset=44,
                fs=6.0, font=FONT)
-    leader(ax, UX + rs, 18 * SC, UX + 150, 102 * SC,
-           "CIRCLIP each side\n(DIN 471)", fs=6.2, color=C_OUT, ha="left",
-           arrow_style="->", font=FONT)
+    leader(ax, UX + rs, 13.5 * SC, UX + 150, 102 * SC,
+           "CIRCLIPS (DIN 471) each side —\nfix the bearing axially on the shaft,\nso the shaft→beam GAP is held",
+           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    # designed 5mm axial gap: shaft top → beam underside (the shaft never touches the fixed beam)
+    draw_dim_v(ax, UX + 120, 15 * SC, 20 * SC, "5mm GAP\n(shaft→beam)", offset=14, fs=5.5, right=True, font=FONT)
 
     # ── Lower-hub callouts (right column) ────────────────────────────────────
     RxL = LX + HALF + 60
@@ -925,9 +930,9 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                offset=46, fs=6.2, above=False, font=FONT)
     draw_dim_h(ax, LX - 140 * SC, LX + 140 * SC, -372, "280mm FLOOR PLATE W",
                offset=46, fs=6.2, above=False, font=FONT)
-    draw_dim_v(ax, LX - HALF - 40, -15 * SC, 15 * SC, "30mm COLLAR H", offset=44,
+    draw_dim_v(ax, LX - HALF - 40, -20 * SC, 15 * SC, "35mm COLLAR H", offset=44,
                fs=6.0, font=FONT)
-    draw_dim_v(ax, LX - HALF - 120, -63 * SC, -15 * SC, "48mm PLATE H", offset=44,
+    draw_dim_v(ax, LX - HALF - 120, -68 * SC, -20 * SC, "48mm PLATE H", offset=44,
                fs=6.0, font=FONT)
     ax.text(LX, -235, "bearing · shaft · cap · flange  AS UPPER HUB", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
@@ -1561,7 +1566,7 @@ def draw_sheet8():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 9 — Housing → frame attachment (outer-skin fixing)
-# The fixed housing (5mm) laps a rolled rim-angle welded to the frame; SS rivets +
+# The fixed housing (5mm) laps a rolled rim-angle TEK-screwed to the frame; SS rivets +
 # DP8010. Section + Detail B (opening-edge Al U-channel) + plan (200° housing, two 100° arcs).
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet9():
@@ -1594,10 +1599,9 @@ def draw_sheet9():
     for xx in (-RIML - 20, -RIML + 20, -RIML + 60):                              # break line (hollow beam continues up)
         ax.plot([xx - 4, xx + 4], [BEAMH - 8, BEAMH + 8], color=C_OUT, lw=0.6, zorder=7)
     # rim-angle — ONE continuous 25×25×3 L-section (single extrusion, not two plates): the
-    # horizontal leg welds under the beam; the standing lip hangs down for the housing to lap.
+    # horizontal leg is TEK-SCREWED up under the beam; the standing lip hangs down for the housing to lap.
     l_angle(ax, 0, 0, -RIML, -LIP, LEGT, fc=C_ALUM, lw=1.4, zorder=5)             # rim-angle (L)
-    ax.add_patch(mpatches.Polygon([(-RIML, 0), (-RIML + 16, 0), (-RIML, -16)], closed=True,
-                                  fc="#CC4422", ec="#CC4422", zorder=6))          # weld to beam
+    draw_bolt(ax, -RIML * 0.5, (-LEGT + _fw) / 2, LEGT + _fw, d=8, head=-1, end="tapped", zb=7)  # TEK screw: flat leg → beam bottom wall
     draw_rect(ax, 0, -LIP, DPT, LIP, fc=C_GASKT, lw=0.8, zorder=5)                # DP8010 bead
     draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 90, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down, butts beam underside (broken below)
     for zz in (-LIP - 55, -LIP - 67, -LIP - 79):                                 # break line (housing continues down)
@@ -1606,7 +1610,7 @@ def draw_sheet9():
     draw_dim_v(ax, DPT + HOUT + 40, -LIP, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
     draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 40, f"{LT_HOUSING_T}mm HOUSING", offset=48, fs=6.2,
                above=True, font=FONT)
-    leader(ax, -LEGT, -LIP + 30, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al\nWELDED to the frame beam",
+    leader(ax, -RIML * 0.5, -LEGT, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al — flat leg\nTEK-SCREWED up into the beam bottom wall\n(#14 self-drilling, Al→3mm steel, @ ~150mm)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, DPT + HOUT, -LIP + 30, 125, -255, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1691,7 +1695,7 @@ def draw_sheet9():
 
     notes = [
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
-        "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, WELDED to the frame top + bottom beams (two 100° arcs — the openings have no rim).",
+        "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, TEK-SCREWED to the frame top + bottom beams (#14 self-drilling, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). No welds — avoids welding Al to the steel frame.",
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge (McMaster 97525A435, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
         f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
@@ -1869,7 +1873,7 @@ def draw_sheet10():
         "COMBINED TOP-END ASSEMBLY  (drawn to scale — see 100mm bar)",
         "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a brush-sealed running gap separates them (4× vertical #4 strip brushes on the drum OD, Sheets 4 & 7).",
         "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
-        "OUTER joint (fixed), DETAIL B: housing laps a rim-angle welded to the axle beam — SS blind rivets + DP8010; full detail on Sheet 9.",
+        "OUTER joint (fixed), DETAIL B: housing laps a rim-angle TEK-screwed to the axle beam — SS blind rivets + DP8010; full detail on Sheet 9.",
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
         "Drum + housing continue the full 2,200mm below the break lines. Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]

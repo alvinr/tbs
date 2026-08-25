@@ -798,8 +798,18 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # extends 5mm PAST the shaft top toward the beam (its beam-side face is the bolting datum), so
         # the shaft top is recessed inside the ring bore with a clear gap up to the beam.
         HRr = (100 if up else 105) * SC
-        band(cx, ro, HRr, min(-15 * SC * s, 20 * SC * s), max(-15 * SC * s, 20 * SC * s),
+        band(cx, ro, HRr, min(-18 * SC * s, 20 * SC * s), max(-18 * SC * s, 20 * SC * s),
              fc=(C_ALUM if up else C_STEEL), lw=1.4, zorder=5)
+        if up:
+            # UPPER = LOCATED bearing: the outer race is fixed BOTH ways. A machined SHOULDER on the
+            # drum side (bore steps Ø130→Ø122) carries the hanging load (the drum weight seats the
+            # outer race onto the ledge); a DIN 472 retaining ring in a groove on the beam side
+            # captures it for handling/transport. (LOWER bearing FLOATS — plain Ø130 H7 bore.)
+            for g in (-1, 1):
+                lx = min(cx + g * (ro - 8 * SC), cx + g * ro)
+                draw_rect(ax, lx, -18 * SC, 8 * SC, 18 * SC - bw, fc=C_ALUM, lw=1.0, zorder=6)   # shoulder lip
+                rx0 = min(cx + g * (ro - 2 * SC), cx + g * (ro + 3 * SC))
+                draw_rect(ax, rx0, bw, 5 * SC, 3.5 * SC, fc="#606068", lw=0.8, zorder=8)          # DIN 472 retaining ring
         # axle beam — HOLLOW 100×50×3 RHS shown in LONGITUDINAL section: solid near + far 3mm
         # walls with the hollow bore VOID between them (white). It sits on the ring's beam-side face,
         # 5mm clear above the shaft top — the shaft never touches it (see the GAP dimension).
@@ -826,7 +836,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # ring + the beam's near 3mm wall, into a RIVET-NUT (blind threaded insert) in that wall (the ring↔beam contact
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
         for g in (-1, 1):
-            ring_far = -15 * SC * s                    # ring face away from the beam (head bears here)
+            ring_far = -18 * SC * s                    # ring face away from the beam (head bears here)
             wnz = 20 * SC * s                          # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="rivnut", wall=LT_FRAME_T * SC, csk=True, zb=9)
@@ -849,7 +859,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     LxT = UX - HALF - 60
     up_labels = [
         (55 * SC,  (-100 * SC, 40 * SC),  "AXLE BEAM — 6×M10\ninto RIVET-NUTS (blind inserts, 3mm RHS)"),
-        (12 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING\n(seats bearing OD H7; nylon-isolated)"),
+        (18 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING (bearing seat Ø130 H7) — LOCATED:\nouter race on a SHOULDER (drum side, Ø122) + a DIN 472\nRETAINING RING (beam side); nylon-isolated"),
         (-52 * SC, (-70 * SC, -47 * SC),  "STEEL FLANGE — bolt from cap\ninto TAPPED 4×M10"),
         (-90 * SC, (-90 * SC, -62 * SC),  f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}\n(single-part blueprint — Sheet 6)"),
     ]
@@ -870,7 +880,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     # Vertical (height / thickness), stacked in the centre gap:
     draw_dim_v(ax, UX + 255, -bw, bw, f"{SKF6215_W}mm BRG W", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 330, -15 * SC, 20 * SC, "35mm RING H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 330, -18 * SC, 20 * SC, "38mm RING H", offset=44, fs=6.0,
                right=True, font=FONT)
     draw_dim_v(ax, UX + 405, 20 * SC, 68 * SC, "48mm RAIL H", offset=44, fs=6.0,
                right=True, font=FONT)
@@ -891,7 +901,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     lo_labels = [
         (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nbolt into TAPPED 4×M10 flange"),
         (-48 * SC, (100 * SC, -40 * SC),  "AXLE BEAM — 8×M10\ninto RIVET-NUTS"),
-        (12 * SC,  (ro + 20 * SC, 0),     "STEEL FLOOR COLLAR\n(seats bearing OD · BOLTED, not welded)"),
+        (12 * SC,  (ro + 20 * SC, 0),     "STEEL FLOOR COLLAR (BOLTED, not welded) —\nFLOATING bearing: plain Ø130 H7 bore, outer race free\nto slide axially (the upper bearing is the located one)"),
         (-18 * SC, (ro - 6 * SC, -18 * SC), "COLLAR → FLOOR PLATE:\n8×M10 BOLTED (rivet-nuts, no weld)"),
     ]
     for zt, (tx, tz), txt in lo_labels:
@@ -902,7 +912,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                offset=46, fs=6.2, above=False, font=FONT)
     draw_dim_h(ax, LX - 140 * SC, LX + 140 * SC, -372, "280mm FLOOR PLATE W",
                offset=46, fs=6.2, above=False, font=FONT)
-    draw_dim_v(ax, LX - HALF - 40, -20 * SC, 15 * SC, "35mm COLLAR H", offset=44,
+    draw_dim_v(ax, LX - HALF - 40, -20 * SC, 18 * SC, "38mm COLLAR H", offset=44,
                fs=6.0, font=FONT)
     draw_dim_v(ax, LX - HALF - 120, -68 * SC, -20 * SC, "48mm PLATE H", offset=44,
                fs=6.0, font=FONT)
@@ -944,7 +954,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         f"Bearing ×2: SKF 6215-2RS1 — Ø{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}mm, sealed 2RS, C3, 0–120°C, 52.7 kN dyn.",
         f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
         "Bearing mounts: upper in isolated aluminum top ring (6×M10 into rivet-nuts / blind threaded inserts set in the beam wall, nylon-isolated); lower in welded steel floor collar (8×M10). Cap→flange: bolt from the cap into the TAPPED steel flange. Full fastening on Sheet 6.",
-        "Axial retention: circlip on the stub shaft each side of each bearing (DIN 471).",
+        "Axial retention — INNER race: circlip on the stub shaft each side of each bearing (DIN 471). OUTER race: the UPPER bearing is LOCATED — the outer race seats on a machined shoulder (bore steps Ø130→Ø122, drum side) that carries the hanging load, captured by a DIN 472 retaining ring on the beam side; the LOWER bearing FLOATS (plain Ø130 H7 bore, outer race free to slide) so it can't fight thermal growth.",
         "Shaft seat: the stub shaft seats ONLY in the Ø75 h6 bearing bore — the SKF 6215 IS the 'socket' (off-the-shelf; shaft blueprint on Sheet 6). It TERMINATES just below the beam underside — it does NOT penetrate the beam and needs NO clearance bore; the bearing (in the ring below the beam) carries + locates the drum, and the load goes to the beam through the ring bolts.",
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
         "SECTIONS 2.2:1 (isotropic) · ALL DIMS IN mm",
@@ -1005,7 +1015,7 @@ def draw_sheet6():
             ax.plot([hx - 12, hx + 12], [hy, hy], color=C_OUT, lw=0.5, zorder=9)
             ax.plot([hx, hx], [hy - 12, hy + 12], color=C_OUT, lw=0.5, zorder=9)
 
-    def ring(pz, od, bore, pcd, n, thk, fc, title, mat, weldnote=None):
+    def ring(pz, od, bore, pcd, n, thk, fc, title, mat, weldnote=None, located=False):
         cx = CX
         rod, rbore, rpcd = od / 2 * s2, bore / 2 * s2, pcd / 2 * s2
         sz = pz - SEC_DZ
@@ -1024,6 +1034,17 @@ def draw_sheet6():
         tz = thk * s2                                                         # SECTION (annular)
         for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
             draw_rect(ax, xr0, sz, xr1 - xr0, tz, fc=fc, lw=1.4, zorder=5)
+        if located:
+            # LOCATED bearing seat: bore steps Ø{bore}→Ø{bore-8} to form a SHOULDER (drum-side end)
+            # the outer race seats on; a DIN 472 retaining-ring groove at the beam-side end captures it.
+            rsh = (bore - 8) / 2 * s2
+            for g in (-1, 1):
+                draw_rect(ax, min(cx + g * rsh, cx + g * rbore), sz, rbore - rsh, tz * 0.42, fc=fc, lw=1.0, zorder=6)      # shoulder lip
+                draw_rect(ax, min(cx + g * (rbore - 4), cx + g * (rbore + 5)), sz + tz * 0.74, 9, tz * 0.22, fc="#606068", lw=0.8, zorder=7)  # DIN 472 ring in groove
+            leader(ax, cx + (rsh + rbore) / 2, sz + tz * 0.2, cx + rod + 54, sz - 26,
+                   f"Ø{bore - 8} SHOULDER (drum end) —\nouter race seats here", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+            leader(ax, cx + rbore, sz + tz * 0.85, cx + rod + 54, sz + tz + 30,
+                   "DIN 472 retaining-ring\ngroove (beam end)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
         draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
@@ -1046,10 +1067,10 @@ def draw_sheet6():
         ax.text(cx, mat_z, mat + ("" if not weldnote else f"\n{weldnote}"),
                 ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
-    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
-         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
-    ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,
-         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · bore Ø130 (bearing seat)", weldnote="BOLTED to floor plate (8× M10) — no weld")
+    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 38, C_ALUM,
+         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · Ø130 H7 seat + Ø122 shoulder + DIN 472 groove — LOCATED · nylon-isolated", located=True)
+    ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 38, C_STEEL,
+         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · plain Ø130 H7 bore — FLOATING (outer race slides)", weldnote="BOLTED to floor plate (8× M10) — no weld")
 
     # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
     cx = CX
@@ -1110,7 +1131,7 @@ def draw_sheet6():
 
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
-        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
+        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore, with DIN 471 circlip grooves each side (INNER-race retention). OUTER race: the UPPER ring is LOCATED — Ø122 shoulder (drum end) + DIN 472 retaining-ring groove (beam end); the LOWER collar is a plain Ø130 H7 bore (FLOATING).",
         "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]

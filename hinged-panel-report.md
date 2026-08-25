@@ -448,6 +448,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Ø864 revolving drum shell (~65 ft²) — rolled + extrusion-welded 1/8" HDPE (106.9" circ needs 3× 48" widths). A light-tight cover over the steel/Al structure; its 1/8" is non-structural (lighter = easier revolve, less bearing load). The 2 end caps are now 8mm 6061-T6 ALUMINUM (ll-caps-al) — NOT HDPE — since they carry the stub-shaft hubs into the SKF 6215 bearings. US Plastics 46684 $123.34/sheet. | 3 sheet | US Plastics / TAP Plastics | $370 |
 | 8mm 6061-T6 aluminum plate — 2 drum caps (Ø855) | Both drum end caps (8mm 6061-T6, Ø855, identical) — waterjet 2 discs + the 4×M10 hub bolt circle (Ø120 PCD) + the 280° rim-angle rivet holes. STRUCTURAL: carry the bolted stub-shaft flanges into the SKF 6215 bearings. Est. material + waterjet (Online Metals); firm at order. | 1 lot | Online Metals / Industrial Metal Supply | $400–$700 |
 | 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427) | 2 rolled rim-angle rings (25×25×3 6061-T6, R427, ~5.4 m total) — the shell→cap lap-joint standing lip, riveted to both Al caps over the 280° arc. Material + roll. Est.; firm at order. | 1 lot | Online Metals / Industrial Metal Supply | $45–$90 |
+| Bearing retaining rings — DIN 471 (inner) + DIN 472 (outer, upper) | Axial retention for the 2× SKF 6215: 4× DIN 471 external circlips on the Ø75 stub shafts (2 per bearing — INNER-race capture) + 1× DIN 472 internal retaining ring in the Ø130 upper-ring bore (OUTER race of the LOCATED upper bearing, beam side; the LOWER bearing floats — plain H7 bore). Ø75 external + Ø130 internal spring-steel rings; buy a pack of each. Est.; firm SKU at order. | 1 lot | McMaster-Carr | $8–$15 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed (6215-2RS / 6215-2NSE; SKF designation 6215-2RS1). Buy the ABEC-1 grade: the drum is a hand-rotated, low-speed, low-load light-lock — the tighter ABEC-3 tolerance buys nothing here (SKF's standard 6215-2RS1 is Normal/P0 = ABEC 1). VERIFIED $60.59 ea at Bearings Direct 2026-07-18. ALT: McMaster 6138K125 @ $394.88 ea — a heavy commodity-bearing premium, prefer the distributor. | 2 ea | Bearings Direct / McMaster-Carr | $121 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | Shell→cap lap rivets (~35/cap ×2 ≈ 70 → 1 pack of 100). 1/8" (Ø3.18) 18-8 SS low-profile head, grip 0.188–0.25", drill #30 (Ø3.3). Wet in DP8010 for light-tightness. $13.83/100 firm. | 1 pack-100 | McMaster-Carr | $14 |
@@ -466,7 +467,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" blind rivets — brush-holder flange → drum OD (250-pack)](https://www.mcmaster.com/97447A015/) (97447A015) | ~72 rivets (4 brush-holder lines × ~18 @ 120mm) fastening the Al holder flanges to the rotating drum OD — grip ~4.5mm (1.27mm Al flange + 1/8" HDPE). $10.78/250 firm. | 1 pack-250 | McMaster-Carr | $11 |
 | #14 self-drilling TEK screws — rim-angle → frame beam | ~24× #14 (Ø6.3) self-drilling TEK screws fastening the rolled Al rim-angle flat legs to the steel frame top + bottom beams (2× 100° arcs each, ~150mm pitch) — REPLACES the Al→steel weld (Sheets 9/10; avoids welding aluminum to the steel frame). Short (~3/4", grip 3mm Al + 3mm steel wall); hex washer head. Est.; firm SKU at order. | 1 lot | McMaster-Carr | $8–$12 |
 | Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | ~16–22 hrs: roll + hot-air/extrusion-weld the 2 HDPE cylinders, roll the Al rim-angle rings, fit the metal caps + SKF 6215 bearings + stub shafts, rivet the lap joints, mount the drum brush holders + edge channels + pull-handle stile. | 1 lot | Local plastic + metal fab | $800–$1,150 |
-| **Lightlock total** | | | | **$2,945–$3,969** |
+| **Lightlock total** | | | | **$2,953–$3,984** |
 <!-- END parts:lightlock -->
 
 
@@ -502,10 +503,10 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,278<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,484<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,945<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,969<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,953<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,984<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,403<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,063<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,411<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,078<!-- END costing:hp-total-high -->** |
 
 ---
 

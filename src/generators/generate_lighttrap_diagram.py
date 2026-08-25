@@ -313,11 +313,11 @@ def draw_sheet1():
     STILE_W = 40
     stile_x = DI_R - STILE_W                                     # stile just off the interior wall
     draw_rect(ax, stile_x, Z_CAP_B, STILE_W, Z_CAP_T - Z_CAP_B, fc=C_STEEL, lw=1.2, zorder=6)   # handle stile (cap→cap)
-    for zc, hd_ in ((Z_CAP_T, -1), (Z_CAP_B, 1)):                                               # stile-end plug + M12 → each cap
-        draw_rect(ax, stile_x + 8, min(zc, zc + hd_ * 70), STILE_W - 16, 70, fc="#9AA0A8", lw=0.8, zorder=7)  # solid plug in tube end
-        draw_bolt(ax, stile_x + STILE_W / 2, zc + hd_ * 22, 40, d=11, head=hd_, end="tapped", zb=8)           # M12 tapped into cap
-    leader(ax, stile_x + STILE_W / 2, Z_CAP_T - 20, stile_x + 620, Z_CAP_T + 140,
-           "STILE → CAP: M12 tapped into each Al cap via a\nsolid plug in the RHS end (1 top + 1 bottom) — see Sheet 11", fs=6.0, color=C_DIM,
+    for zc, hd_ in ((Z_CAP_T, -1), (Z_CAP_B, 1)):                                               # stile-end tapped plug + CSK cap bolt
+        draw_rect(ax, stile_x + 8, min(zc, zc + hd_ * 70), STILE_W - 16, 70, fc="#9AA0A8", lw=0.8, zorder=7)  # solid tapped plug in tube end
+        draw_bolt(ax, stile_x + STILE_W / 2, zc + hd_ * 18, 44, d=11, head=int(-hd_), end="tapped", csk=True, zb=8)  # CSK bolt through cap → plug
+    leader(ax, stile_x + STILE_W / 2, Z_CAP_T + 4, stile_x + 620, Z_CAP_T + 140,
+           "STILE → CAP: M10 countersunk bolt through each cap into a\ntapped plug in the RHS end (+ grub screws, 1 top + 1 bottom) — see Sheet 11", fs=6.0, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
     GX = stile_x - GRAB_SO                                       # grip standoff, inboard of the stile
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2
@@ -1930,11 +1930,14 @@ def draw_sheet11():
     sbot = -110
     draw_rect(ax, AX(-STW / 2), AZ(sbot), A * STW, A * (0 - sbot), fc=C_STEEL, lw=1.6, zorder=6)  # stile RHS (section)
     draw_rect(ax, AX(-STW / 2 + 5), AZ(sbot + 5), A * (STW - 10), A * (0 - sbot - 5), fc=BG, lw=0.8, zorder=7)  # bore
-    draw_rect(ax, AX(-15), AZ(-40), A * 30, A * 40, fc="#9AA0A8", lw=1.4, zorder=8)             # solid steel plug
-    ax.add_patch(mpatches.Rectangle((AX(-6.5), AZ(-40)), A * 13, A * 40, fc=BG, ec="none", zorder=8))  # M12 clearance thru plug
-    draw_bolt(ax, ax0, (AZ(-40) + AZ(8)) / 2, AZ(8) - AZ(-40), d=A * 12, head=-1, end="tapped", zb=10)  # M12 → tapped cap
-    for zc in (-14, -30):                           # 2× M8 cross-bolts → plug (retention)
-        draw_bolt(ax, AX(-11), AZ(zc), A * 21, d=A * 8, vertical=False, head=-1, end="tapped", zb=11)
+    draw_rect(ax, AX(-15), AZ(-40), A * 30, A * 40, fc="#9AA0A8", lw=1.4, zorder=8)             # solid steel plug (TAPPED)
+    # cap bolt — COUNTERSUNK in the cap OUTSIDE face, DOWN through the cap, threading into the TAPPED
+    # plug (driven from outside the cap = wrench-accessible; sealed for light-tightness).
+    draw_bolt(ax, ax0, (AZ(LT_CAP_TOP_T) + AZ(-26)) / 2, AZ(LT_CAP_TOP_T) - AZ(-26),
+              d=A * 10, head=1, end="tapped", csk=True, zb=10)
+    for zc in (-16, -30):                           # 2× GRUB (set) screws through the 5mm wall, seating on the plug
+        draw_rect(ax, AX(-STW / 2), AZ(zc) - A * 2.2, A * 8, A * 4.4, fc="#606068", lw=0.7, zorder=9)
+        ax.plot([AX(-STW / 2), AX(-STW / 2)], [AZ(zc) - A * 1.6, AZ(zc) + A * 1.6], color=C_OUT, lw=1.4, zorder=10)  # socket end
     for zz in (sbot + 6, sbot + 12):                # break marks (stile continues down)
         ax.plot([AX(-STW / 2) + 5, AX(STW / 2) - 5], [AZ(zz) - 5, AZ(zz) + 5], color=C_OUT, lw=0.8, zorder=9)
     draw_dim_v(ax, AX(-43) - 34, AZ(0), AZ(LT_CAP_TOP_T), f"{LT_CAP_TOP_T:.0f}", offset=24, fs=6.0, font=FONT)
@@ -1942,11 +1945,11 @@ def draw_sheet11():
     draw_dim_v(ax, AX(STW / 2) + 38, AZ(-40), AZ(0), "40", offset=24, fs=6.0, right=True, font=FONT)
     draw_dim_h(ax, AX(-15), AX(15), AZ(-40) - 34, "30", offset=26, fs=6.0, above=False, font=FONT)
     leader(ax, AX(30), AZ(4), AX(66) + 46, AZ(4) + 60, "TOP CAP — 8mm 6061-T6 Al", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, ax0 + A * 6, AZ(-18), AX(43) + 46, AZ(-8),
-           "M12 TAPPED into the cap (blind, ~8mm engagement —\nno pierce / no light leak); clamps the plug up to the cap",
+    leader(ax, ax0, AZ(LT_CAP_TOP_T), AX(43) + 46, AZ(8),
+           "M10 COUNTERSUNK BOLT — driven from the cap's OUTSIDE\nface (wrench-accessible), THROUGH the cap into the TAPPED\nplug; sealed (DP8010) for light-tightness",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, AX(-11), AZ(-30), AX(43) + 46, AZ(-56),
-           f"SOLID STEEL PLUG (~30×30×40) fills the\nopen {STW}×{STW}×5 RHS end + 2× M8 cross-bolts\nthrough the 5mm wall, tapped into the plug —\ngives the open tube a bolting face (pull\nload → handle → tube → plug → cap)",
+    leader(ax, AX(-STW / 2), AZ(-30), AX(43) + 46, AZ(-54),
+           f"SOLID STEEL PLUG (TAPPED, ~30×30×40) fills the open\n{STW}×{STW}×5 RHS end; 2× GRUB SCREWS through the 5mm wall\nseat on it — lock the plug + prevent rotation. Pull load →\nhandle → tube → grub screws → plug → cap bolt → cap",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, AX(-STW / 2), AZ(sbot + 34), AX(-43) - 34, AZ(sbot + 78),
            f"STILE — {STW}×{STW}×5 SS RHS\n(spans cap → cap, ~2.1 m)", fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
@@ -1988,8 +1991,8 @@ def draw_sheet11():
     notes = [
         "PULL-HANDLE MOUNT  (interior face only — no fastener pierces the drum wall / no light leak)",
         f"1. Stile: {STW}×{STW}×5 SS RHS, spans + fastens between the two 8mm 6061-T6 Al caps (top + bottom ends identical).",
-        "2. Each open RHS end takes a SOLID STEEL PLUG (~30×30×40) cross-bolted 2× M8 through the tube walls (tapped into the plug) — this gives the open section a bolting face.",
-        "3. A single M12 TAPPED into the cap clamps each plug up to it (blind, ~8mm engagement — no pierce). Pull load path: handle → tube → plug → cap, landing in the structural cap (not the thin HDPE wall).",
+        "2. Each open RHS end takes a SOLID STEEL PLUG (~30×30×40), TAPPED, locked in the tube by 2× GRUB (set) screws through the wall — anti-rotation + retention; the open section gets a solid fastening body.",
+        "3. A single M10 COUNTERSUNK bolt is driven from the cap's OUTSIDE face (wrench-accessible), THROUGH the cap into the tapped plug — sealed with DP8010 for light-tightness. Pull load path: handle → tube → grub screws → plug → cap bolt → cap (lands in the structural cap, not the thin HDPE wall).",
         "4. Off-the-shelf pull handle McMaster 1871A65 (Ø0.5\" bar, 308mm long, 52mm standoff) bolts at its two feet with 1/4\" screws tapped into the RHS wall. No welds anywhere.",
         "VIEW A 3:1 · VIEW B 1:2 · ALL DIMS IN mm",
     ]

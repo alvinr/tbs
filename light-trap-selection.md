@@ -298,11 +298,12 @@ flange-riveted mount) and top/bottom seals, and the three-position proof (open-t
 open-to-interior, mid-rotation) that no straight-through light path exists at any rotation.
 The plans also carry the strip-count study — the 93°-spaced strips keep at least one wiper
 in each 100° housing material arc at every rotation, so the annular gap can never carry
-light between the openings **circumferentially**. A **top-end light-path detail** closes the
-other axis: the running gap is capped at its axial top/bottom by the **rotating-cap ↔ fixed-frame
-neoprene wiper seal + silicone bead**, so a ray travelling up the gap is stopped at the seal and
-cannot bypass the brushes over the top/bottom. The brushes seal the gap circumferentially; the
-neoprene seals it axially.
+light between the openings **circumferentially**. The two enlarged seal cross-sections — the
+running-gap brush section and the top-end light-path section — are drawn 1.5:1 on **Sheet 12**;
+the top-end detail closes the other axis: the running gap is capped at its axial top/bottom by the
+**rotating-cap ↔ fixed-frame neoprene wiper seal + silicone bead**, so a ray travelling up the gap
+is stopped at the seal and cannot bypass the brushes over the top/bottom. The brushes seal the gap
+circumferentially; the neoprene seals it axially.
 
 ![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 
@@ -329,3 +330,13 @@ running gap between them — how the rotating and fixed halves coexist at one le
 **Sheet 11 — Pull-Handle Mount (to scale): stile → cap plug joint (View A, 3:1) + handle arrangement (View B, 1:2).** How the interior pull handle mounts: the stile is a 40×40×5 SS RHS whose open ends are closed by solid **tapped** steel plugs, each locked in the tube by 2× grub (set) screws and secured to its 8mm Al cap by an **M10 countersunk bolt driven from the cap's outside face** (wrench-accessible), through the cap into the plug (sealed with DP8010) — so the pull load lands in the structural caps, not the HDPE wall. The off-the-shelf McMaster 1871A65 pull handle bolts to the stile at its two feet. No welds.
 
 ![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)
+
+**Sheet 12 — Seal details (enlarged from Sheet 7, 1.5:1).** The two seal cross-sections pulled
+off the light-path sheet and drawn large so the geometry is easy to read: **Detail 1** — the
+running-gap radial section (the #4 nylon strip brush snapped into its Al straight-flange holder,
+flange-riveted to the rotating drum OD, bristles wiping the fixed housing bore across the ≈13mm
+gap); **Detail 2** — the top-end axial section (the rotating drum cap ↔ fixed frame plate neoprene
+wiper capping the gap, killing a ray that tries to travel up and over the brushes). Together they
+show the gap is sealed both circumferentially (brushes) and axially (neoprene).
+
+![TBS-001 Light-Trap — Sheet 12: Seal Details (enlarged)](assets/lighttrap-sheet12.png)

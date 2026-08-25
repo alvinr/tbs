@@ -539,6 +539,189 @@ def draw_sheet3():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
+# SHEET 4 — Shell → cap lap-and-fasten joint
+# The HDPE shell edge laps over a rolled rim-angle lip on each metal cap and is
+# radially riveted (SS blind) + DP8010-bonded. Enlarged section + rivet pattern.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet4():                           # Sheet 4 — drum secure (shell→cap joint)
+    # ── Data window ──────────────────────────────────────────────────────────
+    X_LO, X_HI, Z_LO, Z_HI = -470, 1540, -650, 540
+    FIG_W = 18.0
+    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── SECTION A-A — radial section through the rim (SCALE 7:1, isotropic) ───
+    S = 7                                    # drawn = real mm × 7 (both axes)
+    CAPT = S * LT_CAP_TOP_T                   # cap thickness (8mm)
+    LEGT = S * LT_RIM_T                        # rim-angle leg thickness (3mm)
+    LIP  = S * LT_LAP_H                        # lap / standing-lip height (25mm)
+    SHT  = S * LT_DRUM_T                       # shell thickness (3.18mm)
+    DPT  = S * 1.0                             # DP8010 bead (~1mm)
+    RIML = S * LT_RIM_LEG                      # rim flat-leg length (25mm)
+    RVD  = S * LT_RIVET_D                      # rivet Ø (3.18mm, 1/8")
+    ax.text(-150, Z_HI - 40, "SECTION A–A  (shell → cap rim · SCALE 7:1)",
+            ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
+            **FONT, zorder=15)
+    draw_rect(ax, -340, -CAPT, 340, CAPT, fc=C_ALUM, lw=1.6, zorder=4)         # cap disc (Al)
+    draw_rect(ax, -RIML, 0, RIML, LEGT, fc=C_ALUM, lw=1.4, zorder=5)           # rim flat leg on cap
+    draw_rect(ax, -LEGT, 0, LEGT, LIP, fc=C_ALUM, lw=1.4, zorder=5)            # standing lip
+    draw_rect(ax, 0, -DPT, DPT, LIP + DPT, fc=C_GASKT, lw=0.8, zorder=5)       # DP8010 bead
+    draw_rect(ax, DPT, -125, SHT, LIP + 175, fc=C_LT_DRUM, lw=1.6, zorder=6)   # shell laps the lip + hangs down (drum body)
+    rz = LIP * 0.5
+    blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
+    blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
+    # ── Running-gap brush wiper on the drum OD — a #4 (3/16") strip brush snapped into a Tanis
+    # anodized-aluminum STRAIGHT-FLANGE holder. This is a LONGITUDINAL cut along the brush, so the
+    # holder flange + its blind rivets run PARALLEL to the brush, circumferentially offset (behind
+    # the cut plane) — the true mount + the rivet-clear-of-brush is the HOLDER PROFILE inset below.
+    # The run starts BELOW the cap lap so its flange rivets stagger clear of the shell→cap rivets.
+    odx  = DPT + SHT                              # drum OD (shell outer face)
+    HW   = S * LT_WIPER_HOLDER_W                   # holder flange wall (0.050")
+    CHAN = S * LT_WIPER_BACKING                    # #4 channel backing (3/16")
+    br_bot, br_top = -128, -18                     # brush run on the shell body (below the lap)
+    draw_rect(ax, odx, br_bot, HW, br_top - br_bot, fc=C_ALUM, lw=1.0, zorder=7)             # Al holder (on the OD)
+    draw_rect(ax, odx + HW, br_bot, CHAN, br_top - br_bot, fc="#8A8F98", lw=1.0, zorder=8)   # #4 channel backing
+    for zz in range(int(br_bot) + 8, int(br_top), 8):                                        # bristles lay over into the gap
+        ax.plot([odx + HW + CHAN, odx + HW + CHAN + S * 15], [zz, zz + 11], color="#333", lw=0.5, zorder=8)
+    for zz in (-134, -126):                                                                  # break (shell + brush continue down)
+        ax.plot([DPT - 3, odx + HW + CHAN + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=9)
+    leader(ax, odx + HW + CHAN + S * 6, br_top - 22, 250, -CAPT - 150,
+           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder\n({LT_WIPER_N} strips on the drum OD, Sheet 7): starts clear BELOW\nthe cap lap so its flange rivets stagger past the shell→cap rivets",
+           fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
+    # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
+    draw_dim_v(ax, DPT + SHT + 40, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, DPT, DPT + SHT, -55, f"{LT_DRUM_T:.2f}mm SHELL", offset=40, fs=6.2,
+               above=False, font=FONT)
+    draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP", offset=44, fs=6.2, font=FONT)
+    # rivet positions (dim_v: shell-rivet CL height on the lap; dim_h: leg-rivet in from the lip)
+    draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f}mm shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
+    draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f}mm leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
+    draw_dim_v(ax, -RIML / 2 - 30, -CAPT, LEGT, f"{LT_CAP_TOP_T + LT_RIM_T:.0f}mm leg-rivet grip\n(flat leg → cap)", offset=40, fs=6.0, font=FONT)
+    leader(ax, (DPT + SHT - LEGT) / 2, rz, 200, rz + 70,
+           f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, -LEGT, LIP - 20, -200, LIP + 55,
+           f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
+           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, DPT + SHT, LIP + 30, 250, LIP + 30,
+           f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
+           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, DPT / 2, 40, 250, -30,
+           "3M DP8010 bead\n(bond + light seal)", fs=6.5, color="#5A3020",
+           ha="left", arrow_style="->", font=FONT)
+    leader(ax, -RIML / 2, LEGT / 2, -300, -CAPT - 55,
+           f"FLAT LEG → CAP rivet\n(SS blind, @ {LT_RIM_RIVET_PITCH}mm circumferential)", fs=6.2, color=C_DIM,
+           ha="right", arrow_style="->", font=FONT)
+
+    # ── Section scale bar (20 mm, to the 7:1 geometry) ───────────────────────
+    sbx, sbz = 60, -CAPT - 60
+    ax.plot([sbx, sbx + S * 20], [sbz, sbz], color=C_OUT, lw=1.4, zorder=8)
+    for xt in (sbx, sbx + S * 10, sbx + S * 20):
+        ax.plot([xt, xt], [sbz - 6, sbz + 6], color=C_OUT, lw=1.0, zorder=8)
+    ax.text(sbx + S * 10, sbz - 13, "20 mm  (SECTION 7:1)", ha="center", va="top",
+            fontsize=6, color=C_OUT, **FONT, zorder=8)
+
+    # ── Rivet pattern — cap plan (280° C-shell arc; the 80° opening has no rim) ─
+    pcx, pcz, pr = 790, 300, LT_CAP_OD / 4                                  # cap outline at 1:2
+    draw_circle(ax, pcx, pcz, pr, lw=1.0, color=C_DIM, ls="--", zorder=5)   # cap disc (full Ø855)
+    oh = LT_OPENING_DEG / 2
+    aarc = [math.radians(oh + t) for t in range(0, LT_SHELL_ARC + 1, 4)]    # 280° rim-angle arc
+    ax.plot([pcx + pr * math.cos(a) for a in aarc], [pcz + pr * math.sin(a) for a in aarc],
+            color=C_OUT, lw=2.6, zorder=6)
+    for i in range(LT_RIVET_N):                                            # rivets over the 280° arc
+        a = math.radians(oh + (i + 0.5) / LT_RIVET_N * LT_SHELL_ARC)
+        draw_circle(ax, pcx + pr * math.cos(a), pcz + pr * math.sin(a), 5,
+                    lw=0.8, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
+    for t in (-oh, oh):                                                    # opening jambs
+        a = math.radians(t)
+        ax.plot([pcx, pcx + pr * math.cos(a)], [pcz, pcz + pr * math.sin(a)],
+                color="#B08020", lw=1.4, zorder=6)
+    ax.text(pcx + pr + 18, pcz, f"{LT_OPENING_DEG}° OPENING\n(no rim / shell)", ha="left",
+            va="center", fontsize=6.2, color="#B08020", **FONT, zorder=7)
+    ax.text(pcx, pcz, f"Ø{LT_CAP_OD}\ncap rim ({LT_SHELL_ARC}° arc)\nCAP PLAN — 1:2", ha="center",
+            va="center", fontsize=7, color=C_DIM, **FONT, zorder=7)
+    ax.text(pcx, pcz - pr - 40,
+            f"RIVET PATTERN — {LT_RIVET_N}× Ø{LT_RIVET_D} per cap @ ~{LT_RIVET_PITCH}mm pitch\n"
+            f"(BOTH caps · {2 * LT_RIVET_N} rivets total · rivet symbols schematic)", ha="center", va="top",
+            fontsize=6.8, color=C_OUT, **FONT, zorder=7)
+    # pitch detail strip
+    sx0, sz = 470, -40
+    ax.plot([sx0, sx0 + 300], [sz, sz], color=C_OUT, lw=1.4, zorder=5)
+    for i in range(6):
+        draw_circle(ax, sx0 + 30 + i * 48, sz, 6, lw=0.8, color="#CC4422",
+                    fill=True, fc="#CC4422", zorder=6)
+    draw_dim_h(ax, sx0 + 30, sx0 + 78, sz + 55, f"{LT_RIVET_PITCH}mm", offset=34,
+               fs=6.2, font=FONT)
+    ax.text(sx0 + 150, sz - 40, "developed rim — rivet pitch (schematic)", ha="center",
+            va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
+
+    # ── HOLDER PROFILE inset — TRUE cross-section ⊥ to the brush length (scale 7:1) ─
+    # Dedicated right column. Radial = UP, circumferential = across. Shows the flange riveted to
+    # the shell CLEAR of the brush, the #4 channel in the track, bristles laying over the fixed bore.
+    IS = 7                                                   # inset scale (real mm × 7)
+    ox, oz = 1300, 150                                       # drum OD baseline (circumferential center)
+    def ix(mm): return ox + IS * mm
+    def iz(mm): return oz + IS * mm
+    HWmm, CHmm, GAPmm, HTmm = LT_WIPER_HOLDER_W, LT_WIPER_BACKING, RUN_GAP, LT_HOUSING_T
+    ax.text(ox, iz(GAPmm + HTmm) + 44, "HOLDER PROFILE — section ⊥ brush  (7:1)",
+            ha="center", va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, ix(-32), iz(-LT_DRUM_T), IS * 64, IS * LT_DRUM_T, fc=C_LT_DRUM, lw=1.2, zorder=5)   # rotating drum shell
+    draw_rect(ax, ix(-32), iz(GAPmm), IS * 64, IS * HTmm, fc="#DDE4EC", lw=1.2, zorder=5)             # fixed housing wall (bore face)
+    # Al straight-flange holder: flat flange (left) riveted to the shell + track (right) gripping the channel
+    draw_rect(ax, ix(-28), iz(0), IS * 22, IS * HWmm, fc=C_ALUM, lw=1.0, zorder=6)                    # flange plate on the OD
+    draw_rect(ax, ix(0),   iz(0), IS * HWmm, IS * (CHmm + 1.6), fc=C_ALUM, lw=1.0, zorder=6)          # track inner wall
+    draw_rect(ax, ix(HWmm + CHmm), iz(0), IS * HWmm, IS * (CHmm + 1.6), fc=C_ALUM, lw=1.0, zorder=6)  # track outer wall
+    draw_rect(ax, ix(HWmm), iz(0), IS * CHmm, IS * CHmm, fc="#8A8F98", lw=0.9, zorder=7)              # #4 channel in the track
+    # bristles project radially up from the channel, lay over onto the fixed bore
+    for k in range(9):
+        bx = ix(HWmm + 0.4 + k * (CHmm - 0.8) / 8)
+        ax.plot([bx, bx], [iz(CHmm), iz(GAPmm)], color="#222", lw=0.6, zorder=7)
+        ax.plot([bx, bx + IS * 6], [iz(GAPmm), iz(GAPmm)], color="#222", lw=0.6, zorder=7)            # lay-over on the bore
+    # flange → shell blind rivet (radial = UP; factory head on the flange/outside, bulb inside the drum)
+    blind_rivet(ax, ix(-17), iz((HWmm - LT_DRUM_T) / 2), 90, IS * (LT_DRUM_T + HWmm), d=IS * LT_RIVET_D)
+    draw_dim_v(ax, ix(-36), iz(0), iz(GAPmm), f"{GAPmm}mm GAP", offset=30, fs=6.2, font=FONT)
+    leader(ax, ix(-17), iz(HWmm), ix(-20), iz(-LT_DRUM_T) - 44,
+           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall)\nBLIND-RIVETED to the shell — rivet in the flange,\noffset from the brush (head out, bulb inside the drum)",
+           fs=6.0, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+    leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(30), iz(GAPmm) + 60,
+           f"#4 STRIP BRUSH — 3/16\" channel,\n0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
+           ha="left", arrow_style="->", font=FONT)
+    ax.text(ox, iz(GAPmm + HTmm) + 8, "FIXED HOUSING (bore)", ha="center", va="bottom",
+            fontsize=6.2, color=C_DIM, **FONT, zorder=8)
+    ax.text(ox, iz(-LT_DRUM_T) - 70, "ROTATING DRUM OD", ha="center", va="top",
+            fontsize=6.2, color=C_DIM, **FONT, zorder=8)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    notes = [
+        "SHELL → CAP LAP-AND-FASTEN JOINT  (both caps)",
+        f"1. Rim: {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} angle ring rolled to R{LT_CAP_OD // 2} — 6061-T6 Al, riveted to both Al caps.",
+        f"2. Shell sleeves {LT_LAP_H}mm over the standing lip.",
+        "3. Apply 3M DP8010 bead to the lap (structural LSE bond + light seal); clamp.",
+        f"4. Drill Ø{LT_RIVET_HOLE:.1f} (#30), set {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per cap (McMaster 97525A425, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
+        "5. DP8010 (wet in the lap + the open mandrel bore) keeps the joint light-tight; supersedes the extrusion weld.",
+        "SECTION A–A 7:1 (isotropic) · CAP PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, X_LO + 60, -450, 15, fs=7, font=FONT, width=1780,
+               title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 4 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
+                scale_note="SECTION 7:1 · CAP PLAN 1:2 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet4.png saved")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
 # SHEET 5 — Bearing hub & stub-shaft detail
 # Two enlarged sections (drum axis vertical): UPPER hub (isolated Al top ring,
 # 6×M10) and LOWER hub (welded steel floor collar, 8×M10). SKF 6215-2RS1.
@@ -765,14 +948,178 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — Shell → cap lap-and-fasten joint
-# The HDPE shell edge laps over a rolled rim-angle lip on each metal cap and is
-# radially riveted (SS blind) + DP8010-bonded. Enlarged section + rivet pattern.
+# SHEET 6 — Machined components (single-part blueprints, 1:2)
+# The turned/machined metal parts that Sheet 5 assembles: upper Al bearing ring,
+# lower steel floor collar, and the stub-shaft + flange. Each: PLAN (end view with
+# OD / bore / PCD / bolt holes) + SECTION (thickness) + full dims + material.
 # ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet4():                           # Sheet 4 — drum secure (shell→cap joint)
-    # ── Data window ──────────────────────────────────────────────────────────
-    X_LO, X_HI, Z_LO, Z_HI = -470, 1540, -650, 540
-    FIG_W = 18.0
+def draw_sheet6():
+    # PORTRAIT single column — four machined parts stacked, drawn large (page width).
+    s2 = 2.2                                                                  # 2.2:1 (rings / collar / stub)
+    scc = 0.5                                                                 # 1:2 (the big Ø855 end cap)
+    CX = 560                                                                  # single-column center
+    SEC_DZ = 400                                                             # plan → section drop (rings)
+    R_RING, R_COLLAR, R_STUB, R_CAP = -150, -1060, -1990, -3110              # plan-z of each row
+    X_LO, X_HI = -260, 1380
+    Z_LO, Z_HI = R_CAP - 860, 360                                            # extra bottom margin: wrapped notes clear the title block
+    FIG_H = 26.0
+    FIG_W = FIG_H * (X_HI - X_LO) / (Z_HI - Z_LO)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal")                                                   # ISOTROPIC
+    ax.axis("off")
+    ax.text(CX, Z_HI - 8, "MACHINED COMPONENTS\nEND CAP + BEARING SEATS + STUB-SHAFT",
+            ha="center", va="top", fontsize=11, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+
+    def holes(cx, cz, rpcd, n):
+        for i in range(n):
+            a = math.radians(90 + i * 360.0 / n)
+            hx, hy = cx + rpcd * math.cos(a), cz + rpcd * math.sin(a)
+            draw_circle(ax, hx, hy, 7, lw=1.0, color=C_OUT, fill=True, fc="white", zorder=8)
+            ax.plot([hx - 12, hx + 12], [hy, hy], color=C_OUT, lw=0.5, zorder=9)
+            ax.plot([hx, hx], [hy - 12, hy + 12], color=C_OUT, lw=0.5, zorder=9)
+
+    def ring(pz, od, bore, pcd, n, thk, fc, title, mat, weldnote=None):
+        cx = CX
+        rod, rbore, rpcd = od / 2 * s2, bore / 2 * s2, pcd / 2 * s2
+        sz = pz - SEC_DZ
+        ax.text(cx, pz + rod + 82, title, ha="center", va="bottom", fontsize=9.5,
+                color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
+        draw_circle(ax, cx, pz, rod, lw=1.8, color=C_OUT, fill=True, fc=fc, zorder=5)
+        draw_circle(ax, cx, pz, rbore, lw=1.4, color=C_OUT, fill=True, fc="white", zorder=6)
+        draw_circle(ax, cx, pz, rpcd, lw=0.9, color=C_CL, ls="--", zorder=6)
+        holes(cx, pz, rpcd, n)
+        draw_cl_h(ax, cx - rod - 20, cx + rod + 20, pz)
+        draw_cl_v(ax, cx, pz - rod - 20, pz + rod + 20)
+        draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 6, f"Ø{od} OD", offset=34, fs=7, font=FONT)
+        ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=7, color=C_DIM, **FONT, zorder=9)
+        ax.text(cx, pz - rod - 14, f"{n}×M10 on Ø{pcd} PCD · Ø11 clearance → rivet-nut in the beam wall",
+                ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+        tz = thk * s2                                                         # SECTION (annular)
+        for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
+            draw_rect(ax, xr0, sz, xr1 - xr0, tz, fc=fc, lw=1.4, zorder=5)
+        draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
+        draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
+        draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
+        if weldnote:
+            # CAGE FLOOR / BOTTOM PLATE under the collar + fillet weld down to it
+            plate_tz = LT_FRAME_PLATE_T * s2
+            plate_hw = rod + 100
+            draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
+            for g in (-1, 1):                        # 6mm fillet weld: collar outer base → plate
+                ax.add_patch(mpatches.Polygon([(cx + g * rod, sz), (cx + g * (rod + 18), sz),
+                                               (cx + g * rod, sz + 18)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
+            draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
+                       offset=30, fs=6.4, right=True, font=FONT)
+            leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 46,
+                   "CAGE FLOOR / BOTTOM PLATE\n(collar 6mm fillet-welded down)", fs=6.4, color=C_OUT,
+                   ha="right", arrow_style="->", font=FONT)
+            mat_z = sz - plate_tz - 100
+        else:
+            mat_z = sz - 54
+        ax.text(cx, mat_z, mat + ("" if not weldnote else f"\n{weldnote}"),
+                ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+
+    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
+         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
+    ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,
+         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · bore Ø130 (bearing seat)", weldnote="6mm fillet weld to floor plate")
+
+    # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
+    cx = CX
+    sh_r, fl_r, fl_t = SKF6215_ID / 2 * s2, 160 / 2 * s2, 12 * s2
+    shaft_L = 150 * s2
+    fpz = R_STUB
+    ez = R_STUB - 690                                                        # elevation base (flange), shaft up
+    ax.text(cx, fpz + fl_r + 82, "STUB-SHAFT + FLANGE  (2.2:1)", ha="center", va="bottom", fontsize=9.5,
+            color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
+    draw_circle(ax, cx, fpz, fl_r, lw=1.8, color=C_OUT, fill=True, fc=C_STEEL, zorder=5)
+    draw_circle(ax, cx, fpz, sh_r, lw=1.4, color=C_OUT, fill=True, fc="#9BA0A8", zorder=6)
+    draw_circle(ax, cx, fpz, 120 / 2 * s2, lw=0.9, color=C_CL, ls="--", zorder=6)
+    holes(cx, fpz, 120 / 2 * s2, 4)
+    draw_cl_h(ax, cx - fl_r - 20, cx + fl_r + 20, fpz)
+    draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 6, "Ø160 FLANGE", offset=32, fs=7, font=FONT)
+    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolts in)", ha="center", va="top",
+            fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+    draw_rect(ax, cx - fl_r, ez - fl_t, 2 * fl_r, fl_t, fc=C_STEEL, lw=1.6, zorder=5)     # flange
+    draw_rect(ax, cx - sh_r, ez, 2 * sh_r, shaft_L, fc=C_STEEL, lw=1.6, zorder=5)         # shaft
+    for g in (-1, 1):
+        ax.add_patch(mpatches.Polygon([(cx + g * sh_r, ez), (cx + g * (sh_r + 14), ez),
+                                       (cx + g * sh_r, ez + 14)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
+    for zc in (ez + shaft_L - 12, ez + shaft_L - 26):
+        ax.plot([cx - sh_r, cx - sh_r + 8], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
+        ax.plot([cx + sh_r - 8, cx + sh_r], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
+    draw_cl_v(ax, cx, ez - fl_t - 16, ez + shaft_L + 16)
+    draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"150 LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
+    draw_dim_v(ax, cx + fl_r + 34, ez - fl_t, ez, "12mm THK", offset=32, fs=6.6, right=True, font=FONT)
+    ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove each end", ha="center", va="bottom",
+            fontsize=7, color=C_DIM, **FONT, zorder=9)
+    ax.text(cx, ez - fl_t - 34, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
+            va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+
+    # ── End cap (Ø855) — plan + thickness note (1:2) ─────────────────────────
+    ccx, ccz = CX, R_CAP
+    cr = LT_CAP_OD / 2 * scc
+    ax.text(ccx, ccz + cr + 82, "END CAP ×2 identical  (1:2)", ha="center", va="bottom",
+            fontsize=9.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
+    draw_circle(ax, ccx, ccz, cr, lw=1.8, color=C_OUT, fill=True, fc=C_ALUM, zorder=5)
+    draw_circle(ax, ccx, ccz, 78 * scc, lw=1.0, color=C_OUT, zorder=6)                   # hub boss
+    draw_circle(ax, ccx, ccz, SKF6215_ID / 2 * scc, lw=1.2, color="#CC4422", zorder=7)   # Ø75 bore
+    holes(ccx, ccz, 60 * scc, 4)                                                         # 4× flange clearance holes
+    oh2 = LT_OPENING_DEG / 2
+    n_rim = round((LT_SHELL_ARC / 360.0) * math.pi * LT_CAP_OD / LT_RIM_RIVET_PITCH)
+    rrc = (LT_CAP_OD / 2 - 14) * scc
+    for i in range(n_rim):
+        a = math.radians(oh2 + (i + 0.5) / n_rim * LT_SHELL_ARC)
+        draw_circle(ax, ccx + rrc * math.cos(a), ccz + rrc * math.sin(a), 4,
+                    lw=0.7, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
+    draw_circle(ax, ccx, ccz, rrc, lw=0.7, color=C_CL, ls="--", zorder=6)
+    draw_cl_h(ax, ccx - cr - 20, ccx + cr + 20, ccz)
+    draw_cl_v(ax, ccx, ccz - cr - 20, ccz + cr + 20)
+    draw_dim_h(ax, ccx - cr, ccx + cr, ccz + cr + 6, f"Ø{LT_CAP_OD} OD", offset=34, fs=7, font=FONT)
+    ax.text(ccx, ccz - cr - 14,
+            f"4× Ø11 clearance on Ø120 PCD (bolt → tapped flange) · Ø{SKF6215_ID} h6 bore · {LT_CAP_TOP_T:.0f}mm 6061-T6 Al plate\n"
+            f"{n_rim}× Ø{LT_RIVET_HOLE} rim-rivet holes @ {LT_RIM_RIVET_PITCH}mm on the 280° arc",
+            ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+
+    notes = [
+        "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
+        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
+        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
+        "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
+    ]
+    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
+
+    title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
+                scale_note="RINGS + STUB 2.2:1 · CAP 1:2 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap", height=0.02, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  → diagrams/lighttrap-sheet6.png saved")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 7 — Seals & light-path verification
+# Three drum rotations proving no straight-through EXT↔INT light path (the drum's
+# single 280° wall always blocks one side) + the running-gap / wiper seal details.
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet7():
+    HR, DR = LT_HOUSING_R, LT_DRUM_OR
+    oh = LT_OPENING_DEG / 2
+    C6_HOUSE = "#2E5E8C"          # FIXED housing (outer skin) — steel blue
+    C6_DRUM = "#B5732E"           # ROTATING drum (inner wall) — warm amber
+    dx = 2 * HR + 640
+    plans = [(0, 180, "A · DRUM OPEN TO EXTERIOR"),
+             (dx, 0, "B · DRUM OPEN TO INTERIOR"),
+             (2 * dx, 90, "C · DRUM MID-ROTATION")]
+    X_LO, X_HI = -HR - 320, 2 * dx + HR + 640       # extra right room for the top-end light-path section
+    Z_LO, Z_HI = -HR - 1720, HR + 360               # extra bottom room: wrapped seal notes clear the title block
+    FIG_W = 20.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor(BG)
@@ -782,169 +1129,162 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── SECTION A-A — radial section through the rim (SCALE 7:1, isotropic) ───
-    S = 7                                    # drawn = real mm × 7 (both axes)
-    CAPT = S * LT_CAP_TOP_T                   # cap thickness (8mm)
-    LEGT = S * LT_RIM_T                        # rim-angle leg thickness (3mm)
-    LIP  = S * LT_LAP_H                        # lap / standing-lip height (25mm)
-    SHT  = S * LT_DRUM_T                       # shell thickness (3.18mm)
-    DPT  = S * 1.0                             # DP8010 bead (~1mm)
-    RIML = S * LT_RIM_LEG                      # rim flat-leg length (25mm)
-    RVD  = S * LT_RIVET_D                      # rivet Ø (3.18mm, 1/8")
-    ax.text(-150, Z_HI - 40, "SECTION A–A  (shell → cap rim · SCALE 7:1)",
-            ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
-            **FONT, zorder=15)
-    draw_rect(ax, -340, -CAPT, 340, CAPT, fc=C_ALUM, lw=1.6, zorder=4)         # cap disc (Al)
-    draw_rect(ax, -RIML, 0, RIML, LEGT, fc=C_ALUM, lw=1.4, zorder=5)           # rim flat leg on cap
-    draw_rect(ax, -LEGT, 0, LEGT, LIP, fc=C_ALUM, lw=1.4, zorder=5)            # standing lip
-    draw_rect(ax, 0, -DPT, DPT, LIP + DPT, fc=C_GASKT, lw=0.8, zorder=5)       # DP8010 bead
-    draw_rect(ax, DPT, -125, SHT, LIP + 175, fc=C_LT_DRUM, lw=1.6, zorder=6)   # shell laps the lip + hangs down (drum body)
-    rz = LIP * 0.5
-    blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
-    blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
-    # ── Running-gap brush wiper on the drum OD — a #4 (3/16") strip brush snapped into a Tanis
-    # anodized-aluminum STRAIGHT-FLANGE holder. This is a LONGITUDINAL cut along the brush, so the
-    # holder flange + its blind rivets run PARALLEL to the brush, circumferentially offset (behind
-    # the cut plane) — the true mount + the rivet-clear-of-brush is the HOLDER PROFILE inset below.
-    # The run starts BELOW the cap lap so its flange rivets stagger clear of the shell→cap rivets.
-    odx  = DPT + SHT                              # drum OD (shell outer face)
-    HW   = S * LT_WIPER_HOLDER_W                   # holder flange wall (0.050")
-    CHAN = S * LT_WIPER_BACKING                    # #4 channel backing (3/16")
-    br_bot, br_top = -128, -18                     # brush run on the shell body (below the lap)
-    draw_rect(ax, odx, br_bot, HW, br_top - br_bot, fc=C_ALUM, lw=1.0, zorder=7)             # Al holder (on the OD)
-    draw_rect(ax, odx + HW, br_bot, CHAN, br_top - br_bot, fc="#8A8F98", lw=1.0, zorder=8)   # #4 channel backing
-    for zz in range(int(br_bot) + 8, int(br_top), 8):                                        # bristles lay over into the gap
-        ax.plot([odx + HW + CHAN, odx + HW + CHAN + S * 15], [zz, zz + 11], color="#333", lw=0.5, zorder=8)
-    for zz in (-134, -126):                                                                  # break (shell + brush continue down)
-        ax.plot([DPT - 3, odx + HW + CHAN + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=9)
-    leader(ax, odx + HW + CHAN + S * 6, br_top - 22, 250, -CAPT - 150,
-           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder\n({LT_WIPER_N} strips on the drum OD, Sheet 7): starts clear BELOW\nthe cap lap so its flange rivets stagger past the shell→cap rivets",
-           fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    def arc(cx, cz, r, gapc, gapd, color, lw):
+        a0, a1 = gapc + gapd / 2, gapc + 360 - gapd / 2
+        ts = [math.radians(a0 + (a1 - a0) * k / 72) for k in range(73)]
+        ax.plot([cx + r * math.cos(t) for t in ts], [cz + r * math.sin(t) for t in ts],
+                color=color, lw=lw, zorder=6)
 
-    # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
-    draw_dim_v(ax, DPT + SHT + 40, 0, LIP, f"{LT_LAP_H}mm LAP", offset=42, fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, DPT, DPT + SHT, -55, f"{LT_DRUM_T:.2f}mm SHELL", offset=40, fs=6.2,
-               above=False, font=FONT)
-    draw_dim_v(ax, -360, -CAPT, 0, f"{LT_CAP_TOP_T:.0f}mm CAP", offset=44, fs=6.2, font=FONT)
-    # rivet positions (dim_v: shell-rivet CL height on the lap; dim_h: leg-rivet in from the lip)
-    draw_dim_v(ax, DPT + SHT + 130, 0, rz, f"{LT_LAP_H / 2:.0f}mm shell-rivet CL", offset=40, fs=6.0, right=True, font=FONT)
-    draw_dim_h(ax, -RIML / 2, 0, -CAPT - 22, f"{LT_RIM_LEG / 2:.0f}mm leg-rivet from lip", offset=34, fs=6.0, above=False, font=FONT)
-    draw_dim_v(ax, -RIML / 2 - 30, -CAPT, LEGT, f"{LT_CAP_TOP_T + LT_RIM_T:.0f}mm leg-rivet grip\n(flat leg → cap)", offset=40, fs=6.0, font=FONT)
-    leader(ax, (DPT + SHT - LEGT) / 2, rz, 200, rz + 70,
-           f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough shell + lip · ~{LT_RIVET_PITCH}mm circumferential pitch",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, -LEGT, LIP - 20, -200, LIP + 55,
-           f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
-           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, DPT + SHT, LIP + 30, 250, LIP + 30,
-           f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, DPT / 2, 40, 250, -30,
-           "3M DP8010 bead\n(bond + light seal)", fs=6.5, color="#5A3020",
-           ha="left", arrow_style="->", font=FONT)
-    leader(ax, -RIML / 2, LEGT / 2, -300, -CAPT - 55,
-           f"FLAT LEG → CAP rivet\n(SS blind, @ {LT_RIM_RIVET_PITCH}mm circumferential)", fs=6.2, color=C_DIM,
-           ha="right", arrow_style="->", font=FONT)
+    def angdiff(a, b):
+        return abs((a - b + 180) % 360 - 180)
 
-    # ── Section scale bar (20 mm, to the 7:1 geometry) ───────────────────────
-    sbx, sbz = 60, -CAPT - 60
-    ax.plot([sbx, sbx + S * 20], [sbz, sbz], color=C_OUT, lw=1.4, zorder=8)
-    for xt in (sbx, sbx + S * 10, sbx + S * 20):
-        ax.plot([xt, xt], [sbz - 6, sbz + 6], color=C_OUT, lw=1.0, zorder=8)
-    ax.text(sbx + S * 10, sbz - 13, "20 mm  (SECTION 7:1)", ha="center", va="top",
-            fontsize=6, color=C_OUT, **FONT, zorder=8)
+    def ray(cx, x0, x1, yy):                                     # one light-path ray (arrow)
+        ax.annotate("", xy=(x1, yy), xytext=(x0, yy),
+                    arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.7), zorder=5)
 
-    # ── Rivet pattern — cap plan (280° C-shell arc; the 80° opening has no rim) ─
-    pcx, pcz, pr = 790, 300, LT_CAP_OD / 4                                  # cap outline at 1:2
-    draw_circle(ax, pcx, pcz, pr, lw=1.0, color=C_DIM, ls="--", zorder=5)   # cap disc (full Ø855)
-    oh = LT_OPENING_DEG / 2
-    aarc = [math.radians(oh + t) for t in range(0, LT_SHELL_ARC + 1, 4)]    # 280° rim-angle arc
-    ax.plot([pcx + pr * math.cos(a) for a in aarc], [pcz + pr * math.sin(a) for a in aarc],
-            color=C_OUT, lw=2.6, zorder=6)
-    for i in range(LT_RIVET_N):                                            # rivets over the 280° arc
-        a = math.radians(oh + (i + 0.5) / LT_RIVET_N * LT_SHELL_ARC)
-        draw_circle(ax, pcx + pr * math.cos(a), pcz + pr * math.sin(a), 5,
-                    lw=0.8, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
-    for t in (-oh, oh):                                                    # opening jambs
-        a = math.radians(t)
-        ax.plot([pcx, pcx + pr * math.cos(a)], [pcz, pcz + pr * math.sin(a)],
-                color="#B08020", lw=1.4, zorder=6)
-    ax.text(pcx + pr + 18, pcz, f"{LT_OPENING_DEG}° OPENING\n(no rim / shell)", ha="left",
-            va="center", fontsize=6.2, color="#B08020", **FONT, zorder=7)
-    ax.text(pcx, pcz, f"Ø{LT_CAP_OD}\ncap rim ({LT_SHELL_ARC}° arc)\nCAP PLAN — 1:2", ha="center",
-            va="center", fontsize=7, color=C_DIM, **FONT, zorder=7)
-    ax.text(pcx, pcz - pr - 40,
-            f"RIVET PATTERN — {LT_RIVET_N}× Ø{LT_RIVET_D} per cap @ ~{LT_RIVET_PITCH}mm pitch\n"
-            f"(BOTH caps · {2 * LT_RIVET_N} rivets total · rivet symbols schematic)", ha="center", va="top",
-            fontsize=6.8, color=C_OUT, **FONT, zorder=7)
-    # pitch detail strip
-    sx0, sz = 470, -40
-    ax.plot([sx0, sx0 + 300], [sz, sz], color=C_OUT, lw=1.4, zorder=5)
-    for i in range(6):
-        draw_circle(ax, sx0 + 30 + i * 48, sz, 6, lw=0.8, color="#CC4422",
-                    fill=True, fc="#CC4422", zorder=6)
-    draw_dim_h(ax, sx0 + 30, sx0 + 78, sz + 55, f"{LT_RIVET_PITCH}mm", offset=34,
-               fs=6.2, font=FONT)
-    ax.text(sx0 + 150, sz - 40, "developed rim — rivet pitch (schematic)", ha="center",
-            va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
+    for cx, dth, title in plans:
+        # running-gap ring (drum OD → housing bore) — thin, so the annulus reads
+        draw_circle(ax, cx, 0, HR - LT_HOUSING_T, lw=0.8, color="#B8BDC6", fill=False, zorder=2)
+        # fixed housing walls (OUTER) — TWO 100° material arcs (two 80° openings at 0° & 180°)
+        for a_lo, a_hi in ((oh, 180 - oh), (180 + oh, 360 - oh)):
+            ts = [math.radians(a_lo + (a_hi - a_lo) * k / 30) for k in range(31)]
+            ax.plot([cx + HR * math.cos(t) for t in ts], [HR * math.sin(t) for t in ts],
+                    color=C6_HOUSE, lw=5.0, zorder=6)
+        for gc in (0, 180):                                       # housing opening-edge ticks
+            for e in (gc - oh, gc + oh):
+                a = math.radians(e)
+                ax.plot([cx + (HR - 22) * math.cos(a), cx + (HR + 22) * math.cos(a)],
+                        [(HR - 22) * math.sin(a), (HR + 22) * math.sin(a)],
+                        color=C6_HOUSE, lw=1.2, zorder=7)
+        # rotating drum wall (INNER) — single 80° opening at dth (warm amber)
+        arc(cx, 0, DR, dth, LT_OPENING_DEG, C6_DRUM, 7.0)
+        for t in (dth - oh, dth + oh):                            # drum opening jamb ticks
+            a = math.radians(t)
+            ax.plot([cx + (DR - 24) * math.cos(a), cx + (DR + 24) * math.cos(a)],
+                    [(DR - 24) * math.sin(a), (DR + 24) * math.sin(a)],
+                    color="#B08020", lw=1.4, zorder=7)
+        # WIPER STRIPS on the drum wall (rotate WITH the drum) — bristles span the gap to
+        # the housing bore. N strips @ spacing° ≤ 100° keep ≥1 in each material arc always.
+        brz = HR - LT_HOUSING_T
+        for k in range(LT_WIPER_N):
+            sa = math.radians(dth + oh + k * LT_WIPER_SPACING)
+            cw, sw = math.cos(sa), math.sin(sa)
+            ax.plot([cx + DR * cw, cx + brz * cw], [DR * sw, brz * sw],
+                    color="#4A4A4A", lw=3.4, zorder=8)                          # strip + bristles across the gap
+            draw_circle(ax, cx + DR * cw, DR * sw, 7, lw=0.6, color="#222",
+                        fill=True, fc="#222", zorder=9)                          # holder on the drum OD
+        # LIGHT-PATH RAYS — daylight enters an aligned opening, stopped by the drum wall
+        any_aligned = any(angdiff(dth, o) < oh for o in (0, 180))
+        for oc in (0, 180):
+            es = -1 if oc == 180 else 1                           # side light comes from (EXT=left)
+            if angdiff(dth, oc) < oh:                             # aligned → ray crosses to far wall
+                for yy in (-150, -55, 55, 150):
+                    xh = cx - es * math.sqrt(max(DR * DR - yy * yy, 0.0))
+                    ray(cx, cx + es * (HR + 105), xh, yy)
+            elif not any_aligned:                                # mid-rotation → blocked at entry
+                for yy in (-45, 45):
+                    xh = cx + es * math.sqrt(max(DR * DR - yy * yy, 0.0))
+                    ray(cx, cx + es * (HR + 105), xh, yy)
+        ax.text(cx, HR + 60, title, ha="center", va="bottom", fontsize=7.5,
+                color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+        for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
+            aligned = angdiff(dth, oc) < oh
+            dirx = -1 if oc == 180 else 1
+            ax.text(cx + dirx * (HR + 125), 0, f"{tag}\n{'OPEN (entry)' if aligned else 'SEALED'}",
+                    ha=("right" if oc == 180 else "left"), va="center", fontsize=6.5,
+                    color=(col if aligned else "#D33"), **FONT, zorder=9)
 
-    # ── HOLDER PROFILE inset — TRUE cross-section ⊥ to the brush length (scale 7:1) ─
-    # Dedicated right column. Radial = UP, circumferential = across. Shows the flange riveted to
-    # the shell CLEAR of the brush, the #4 channel in the track, bristles laying over the fixed bore.
-    IS = 7                                                   # inset scale (real mm × 7)
-    ox, oz = 1300, 150                                       # drum OD baseline (circumferential center)
-    def ix(mm): return ox + IS * mm
-    def iz(mm): return oz + IS * mm
-    HWmm, CHmm, GAPmm, HTmm = LT_WIPER_HOLDER_W, LT_WIPER_BACKING, RUN_GAP, LT_HOUSING_T
-    ax.text(ox, iz(GAPmm + HTmm) + 44, "HOLDER PROFILE — section ⊥ brush  (7:1)",
-            ha="center", va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
-    draw_rect(ax, ix(-32), iz(-LT_DRUM_T), IS * 64, IS * LT_DRUM_T, fc=C_LT_DRUM, lw=1.2, zorder=5)   # rotating drum shell
-    draw_rect(ax, ix(-32), iz(GAPmm), IS * 64, IS * HTmm, fc="#DDE4EC", lw=1.2, zorder=5)             # fixed housing wall (bore face)
-    # Al straight-flange holder: flat flange (left) riveted to the shell + track (right) gripping the channel
-    draw_rect(ax, ix(-28), iz(0), IS * 22, IS * HWmm, fc=C_ALUM, lw=1.0, zorder=6)                    # flange plate on the OD
-    draw_rect(ax, ix(0),   iz(0), IS * HWmm, IS * (CHmm + 1.6), fc=C_ALUM, lw=1.0, zorder=6)          # track inner wall
-    draw_rect(ax, ix(HWmm + CHmm), iz(0), IS * HWmm, IS * (CHmm + 1.6), fc=C_ALUM, lw=1.0, zorder=6)  # track outer wall
-    draw_rect(ax, ix(HWmm), iz(0), IS * CHmm, IS * CHmm, fc="#8A8F98", lw=0.9, zorder=7)              # #4 channel in the track
-    # bristles project radially up from the channel, lay over onto the fixed bore
-    for k in range(9):
-        bx = ix(HWmm + 0.4 + k * (CHmm - 0.8) / 8)
-        ax.plot([bx, bx], [iz(CHmm), iz(GAPmm)], color="#222", lw=0.6, zorder=7)
-        ax.plot([bx, bx + IS * 6], [iz(GAPmm), iz(GAPmm)], color="#222", lw=0.6, zorder=7)            # lay-over on the bore
-    # flange → shell blind rivet (radial = UP; factory head on the flange/outside, bulb inside the drum)
-    blind_rivet(ax, ix(-17), iz((HWmm - LT_DRUM_T) / 2), 90, IS * (LT_DRUM_T + HWmm), d=IS * LT_RIVET_D)
-    draw_dim_v(ax, ix(-36), iz(0), iz(GAPmm), f"{GAPmm}mm GAP", offset=30, fs=6.2, font=FONT)
-    leader(ax, ix(-17), iz(HWmm), ix(-20), iz(-LT_DRUM_T) - 44,
-           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall)\nBLIND-RIVETED to the shell — rivet in the flange,\noffset from the brush (head out, bulb inside the drum)",
-           fs=6.0, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(30), iz(GAPmm) + 60,
-           f"#4 STRIP BRUSH — 3/16\" channel,\n0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
-           ha="left", arrow_style="->", font=FONT)
-    ax.text(ox, iz(GAPmm + HTmm) + 8, "FIXED HOUSING (bore)", ha="center", va="bottom",
-            fontsize=6.2, color=C_DIM, **FONT, zorder=8)
-    ax.text(ox, iz(-LT_DRUM_T) - 70, "ROTATING DRUM OD", ha="center", va="top",
-            fontsize=6.2, color=C_DIM, **FONT, zorder=8)
+    ax.text(dx, -HR - 120,
+            f"NO STRAIGHT-THROUGH LIGHT PATH: the drum's {LT_SHELL_ARC}° opaque wall always seals at least\n"
+            f"one side (openings {LT_OPENING_DEG}° < 90°, housing openings 180° apart, drum has one). Interior stays dark.",
+            ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold", **FONT, zorder=9)
 
-    # ── Notes ────────────────────────────────────────────────────────────────
+    # ── Legend — inner vs outer panel + light path ───────────────────────────
+    lz = -HR - 250
+    keys = [(C6_HOUSE, "FIXED HOUSING (outer)", 6.0),
+            (C6_DRUM, "ROTATING DRUM (inner)", 7.0),
+            ("#4A4A4A", f"WIPER STRIP ×{LT_WIPER_N} (on drum)", 3.4),
+            ("#E8A800", "LIGHT PATH (ray)", 2.0)]
+    lx = dx - 930
+    for col, lab, w in keys:
+        ax.plot([lx, lx + 70], [lz, lz], color=col, lw=w, zorder=9)
+        ax.text(lx + 85, lz, lab, ha="left", va="center", fontsize=7, color=C_OUT,
+                **FONT, zorder=9)
+        lx += 640
+
+    # ── Seal detail (radial section at the running gap) ──────────────────────
+    # Brush strip RIVETED to the ROTATING drum OD; bristles wipe the FIXED housing bore.
+    sx, sz = dx, -HR - 620
+    draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # FIXED housing wall (bore face at sx-140)
+    draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # ROTATING drum wall (OD face at sx+140)
+    draw_rect(ax, sx + 126, sz - 48, 14, 96, fc=C_ALUM, lw=1.0, zorder=6)       # Al straight-flange holder on the drum OD
+    draw_rect(ax, sx + 108, sz - 22, 18, 44, fc="#8A8F98", lw=1.0, zorder=7)    # #4 (3/16") channel in the track
+    for zz in range(-18, 20, 6):                                               # black-nylon bristles lay over onto the bore
+        ax.plot([sx + 108, sx - 138], [sz + zz, sz + zz + 10], color="#222", lw=0.6, zorder=6)
+    for zc in (sz - 38, sz + 38):                                              # flange blind rivets (offset from the channel)
+        ax.plot([sx + 126, sx + 176], [zc, zc], color=C_OUT, lw=1.8, zorder=8)
+    draw_dim_h(ax, sx - 140, sx + 140, sz - 120, f"≈{RUN_GAP}mm RUNNING GAP", offset=40,
+               fs=6.5, above=False, font=FONT)
+    leader(ax, sx + 100, sz + 30, sx + 250, sz + 120,
+           f"BRUSH STRIP ×{LT_WIPER_N} — #4 (3/16\") strip brush, 0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim,\n"
+           f"snapped into an Al straight-flange holder FLANGE-RIVETED to the ROTATING drum OD\n"
+           f"(rivets in the flange, offset from the brush — see Sheet 4); bristles wipe the FIXED\n"
+           f"housing bore across the {RUN_GAP}mm gap · one 96\" piece per line (no joint)",
+           fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, sx - 170, sz - 40, sx - 300, sz - 80, f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6,
+           color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, sx + 163, sz - 60, sx + 300, sz - 90, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
+           color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    ax.text(sx, sz + 190, "SEAL DETAIL — RUNNING GAP (enlarged)", ha="center", va="bottom",
+            fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+
+    # ── TOP-END LIGHT PATH — the running gap is CAPPED at its axial top by the cap↔frame neoprene
+    # wiper, so a ray up the gap can't circumnavigate OVER the brushes. Bottom end is identical. ──
+    tex, tez = 2 * dx + 320, -HR - 640
+    gx0, gw = tex - 10, 46                                                         # gap: drum OD (left) → housing bore (right)
+    gx1 = gx0 + gw
+    ax.text(tex, tez + 210, "TOP-END LIGHT PATH — gap CAPPED at top\n(cap ↔ frame neoprene seal · bottom identical)",
+            ha="center", va="bottom", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
+    draw_rect(ax, gx0 - 12, tez - 175, 12, 205, fc=C_LT_DRUM, lw=1.2, zorder=5)    # drum shell (rotating)
+    draw_rect(ax, gx1, tez - 175, 14, 235, fc="#DDE4EC", lw=1.2, zorder=5)         # housing wall (fixed)
+    draw_rect(ax, gx0 - 110, tez + 6, 110, 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
+    draw_rect(ax, gx0 - 110, tez + 48, gw + 150, 18, fc=C_STEEL, lw=1.4, zorder=6) # frame top plate (fixed)
+    draw_rect(ax, gx0 - 78, tez + 28, gw + 76, 18, fc=C_GASKT, lw=1.0, zorder=7)   # neoprene wiper — caps the gap
+    for zz in range(-120, -66, 8):                                                # brush (running-gap seal), lower
+        ax.plot([gx0, gx1 - 4], [tez + zz, tez + zz + 5], color="#222", lw=0.6, zorder=6)
+    draw_rect(ax, gx0 - 6, tez - 132, 6, 70, fc="#A8763A", lw=0.5, zorder=6)       # brush holder (bronze)
+    ax.annotate("", xy=(gx0 + gw / 2, tez + 24), xytext=(gx0 + gw / 2, tez - 165),  # daylight ray UP the gap …
+                arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
+    for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                  # … killed at the seal (red ✗)
+        ax.plot([gx0 + gw / 2 + s1[0], gx0 + gw / 2 + s2[0]], [tez + s1[1], tez + s2[1]], color="#D33", lw=2.2, zorder=9)
+    leader(ax, gx0 + 20, tez + 40, gx1 + 40, tez + 120, "NEOPRENE WIPER (cap↔frame)\ncaps the gap — light STOPS here",
+           fs=6, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    ax.text(gx1 + 46, tez + 57, "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6, color=C_DIM, **FONT, zorder=9)
+    leader(ax, gx0 - 60, tez + 17, gx0 - 118, tez + 40, "DRUM CAP (rotating)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, gx1 + 7, tez - 90, gx1 + 120, tez - 70, "HOUSING (fixed)", fs=6, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, gx0 + 3, tez - 95, gx0 - 118, tez - 150, f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    ax.text(gx0 + gw / 2, tez - 195, "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
+            fontsize=6, color=C_OUT, **FONT, zorder=9)
+
     notes = [
-        "SHELL → CAP LAP-AND-FASTEN JOINT  (both caps)",
-        f"1. Rim: {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T} angle ring rolled to R{LT_CAP_OD // 2} — 6061-T6 Al, riveted to both Al caps.",
-        f"2. Shell sleeves {LT_LAP_H}mm over the standing lip.",
-        "3. Apply 3M DP8010 bead to the lap (structural LSE bond + light seal); clamp.",
-        f"4. Drill Ø{LT_RIVET_HOLE:.1f} (#30), set {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per cap (McMaster 97525A425, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
-        "5. DP8010 (wet in the lap + the open mandrel bore) keeps the joint light-tight; supersedes the extrusion weld.",
-        "SECTION A–A 7:1 (isotropic) · CAP PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
+        "SEALS & LIGHT-PATH",
+        "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
+        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
+        f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
+        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — see the TOP-END LIGHT PATH detail. The brushes seal the gap circumferentially; the neoprene seals it axially.",
+        f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 60, -450, 15, fs=7, font=FONT, width=1780,
+    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=3600, wrap=190,
                title_color=TITLE_COL)
 
-    title_block(ax, "SHEET 4 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="ROTATING DRUM — SECURE (SHELL → CAP LAP-AND-FASTEN JOINT)",
-                scale_note="SECTION 7:1 · CAP PLAN 1:2 · ALL DIMS IN mm",
-                doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
+    title_block(ax, "SHEET 7 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
+                subtitle="SEALS & LIGHT-PATH VERIFICATION",
+                scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
+                height=0.045, scale=0.75)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet7.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet4.png saved")
+    print("  → diagrams/lighttrap-sheet7.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1165,190 +1505,6 @@ def draw_sheet8():
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet8.png saved")
-
-
-# ═════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Seals & light-path verification
-# Three drum rotations proving no straight-through EXT↔INT light path (the drum's
-# single 280° wall always blocks one side) + the running-gap / wiper seal details.
-# ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet7():
-    HR, DR = LT_HOUSING_R, LT_DRUM_OR
-    oh = LT_OPENING_DEG / 2
-    C6_HOUSE = "#2E5E8C"          # FIXED housing (outer skin) — steel blue
-    C6_DRUM = "#B5732E"           # ROTATING drum (inner wall) — warm amber
-    dx = 2 * HR + 640
-    plans = [(0, 180, "A · DRUM OPEN TO EXTERIOR"),
-             (dx, 0, "B · DRUM OPEN TO INTERIOR"),
-             (2 * dx, 90, "C · DRUM MID-ROTATION")]
-    X_LO, X_HI = -HR - 320, 2 * dx + HR + 640       # extra right room for the top-end light-path section
-    Z_LO, Z_HI = -HR - 1720, HR + 360               # extra bottom room: wrapped seal notes clear the title block
-    FIG_W = 20.0
-    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
-    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(X_LO, X_HI)
-    ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    def arc(cx, cz, r, gapc, gapd, color, lw):
-        a0, a1 = gapc + gapd / 2, gapc + 360 - gapd / 2
-        ts = [math.radians(a0 + (a1 - a0) * k / 72) for k in range(73)]
-        ax.plot([cx + r * math.cos(t) for t in ts], [cz + r * math.sin(t) for t in ts],
-                color=color, lw=lw, zorder=6)
-
-    def angdiff(a, b):
-        return abs((a - b + 180) % 360 - 180)
-
-    def ray(cx, x0, x1, yy):                                     # one light-path ray (arrow)
-        ax.annotate("", xy=(x1, yy), xytext=(x0, yy),
-                    arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.7), zorder=5)
-
-    for cx, dth, title in plans:
-        # running-gap ring (drum OD → housing bore) — thin, so the annulus reads
-        draw_circle(ax, cx, 0, HR - LT_HOUSING_T, lw=0.8, color="#B8BDC6", fill=False, zorder=2)
-        # fixed housing walls (OUTER) — TWO 100° material arcs (two 80° openings at 0° & 180°)
-        for a_lo, a_hi in ((oh, 180 - oh), (180 + oh, 360 - oh)):
-            ts = [math.radians(a_lo + (a_hi - a_lo) * k / 30) for k in range(31)]
-            ax.plot([cx + HR * math.cos(t) for t in ts], [HR * math.sin(t) for t in ts],
-                    color=C6_HOUSE, lw=5.0, zorder=6)
-        for gc in (0, 180):                                       # housing opening-edge ticks
-            for e in (gc - oh, gc + oh):
-                a = math.radians(e)
-                ax.plot([cx + (HR - 22) * math.cos(a), cx + (HR + 22) * math.cos(a)],
-                        [(HR - 22) * math.sin(a), (HR + 22) * math.sin(a)],
-                        color=C6_HOUSE, lw=1.2, zorder=7)
-        # rotating drum wall (INNER) — single 80° opening at dth (warm amber)
-        arc(cx, 0, DR, dth, LT_OPENING_DEG, C6_DRUM, 7.0)
-        for t in (dth - oh, dth + oh):                            # drum opening jamb ticks
-            a = math.radians(t)
-            ax.plot([cx + (DR - 24) * math.cos(a), cx + (DR + 24) * math.cos(a)],
-                    [(DR - 24) * math.sin(a), (DR + 24) * math.sin(a)],
-                    color="#B08020", lw=1.4, zorder=7)
-        # WIPER STRIPS on the drum wall (rotate WITH the drum) — bristles span the gap to
-        # the housing bore. N strips @ spacing° ≤ 100° keep ≥1 in each material arc always.
-        brz = HR - LT_HOUSING_T
-        for k in range(LT_WIPER_N):
-            sa = math.radians(dth + oh + k * LT_WIPER_SPACING)
-            cw, sw = math.cos(sa), math.sin(sa)
-            ax.plot([cx + DR * cw, cx + brz * cw], [DR * sw, brz * sw],
-                    color="#4A4A4A", lw=3.4, zorder=8)                          # strip + bristles across the gap
-            draw_circle(ax, cx + DR * cw, DR * sw, 7, lw=0.6, color="#222",
-                        fill=True, fc="#222", zorder=9)                          # holder on the drum OD
-        # LIGHT-PATH RAYS — daylight enters an aligned opening, stopped by the drum wall
-        any_aligned = any(angdiff(dth, o) < oh for o in (0, 180))
-        for oc in (0, 180):
-            es = -1 if oc == 180 else 1                           # side light comes from (EXT=left)
-            if angdiff(dth, oc) < oh:                             # aligned → ray crosses to far wall
-                for yy in (-150, -55, 55, 150):
-                    xh = cx - es * math.sqrt(max(DR * DR - yy * yy, 0.0))
-                    ray(cx, cx + es * (HR + 105), xh, yy)
-            elif not any_aligned:                                # mid-rotation → blocked at entry
-                for yy in (-45, 45):
-                    xh = cx + es * math.sqrt(max(DR * DR - yy * yy, 0.0))
-                    ray(cx, cx + es * (HR + 105), xh, yy)
-        ax.text(cx, HR + 60, title, ha="center", va="bottom", fontsize=7.5,
-                color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
-        for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
-            aligned = angdiff(dth, oc) < oh
-            dirx = -1 if oc == 180 else 1
-            ax.text(cx + dirx * (HR + 125), 0, f"{tag}\n{'OPEN (entry)' if aligned else 'SEALED'}",
-                    ha=("right" if oc == 180 else "left"), va="center", fontsize=6.5,
-                    color=(col if aligned else "#D33"), **FONT, zorder=9)
-
-    ax.text(dx, -HR - 120,
-            f"NO STRAIGHT-THROUGH LIGHT PATH: the drum's {LT_SHELL_ARC}° opaque wall always seals at least\n"
-            f"one side (openings {LT_OPENING_DEG}° < 90°, housing openings 180° apart, drum has one). Interior stays dark.",
-            ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold", **FONT, zorder=9)
-
-    # ── Legend — inner vs outer panel + light path ───────────────────────────
-    lz = -HR - 250
-    keys = [(C6_HOUSE, "FIXED HOUSING (outer)", 6.0),
-            (C6_DRUM, "ROTATING DRUM (inner)", 7.0),
-            ("#4A4A4A", f"WIPER STRIP ×{LT_WIPER_N} (on drum)", 3.4),
-            ("#E8A800", "LIGHT PATH (ray)", 2.0)]
-    lx = dx - 930
-    for col, lab, w in keys:
-        ax.plot([lx, lx + 70], [lz, lz], color=col, lw=w, zorder=9)
-        ax.text(lx + 85, lz, lab, ha="left", va="center", fontsize=7, color=C_OUT,
-                **FONT, zorder=9)
-        lx += 640
-
-    # ── Seal detail (radial section at the running gap) ──────────────────────
-    # Brush strip RIVETED to the ROTATING drum OD; bristles wipe the FIXED housing bore.
-    sx, sz = dx, -HR - 620
-    draw_rect(ax, sx - 200, sz - 90, 60, 180, fc="#DDE4EC", lw=1.4, zorder=5)   # FIXED housing wall (bore face at sx-140)
-    draw_rect(ax, sx + 140, sz - 90, 46, 180, fc=C_LT_DRUM, lw=1.4, zorder=5)   # ROTATING drum wall (OD face at sx+140)
-    draw_rect(ax, sx + 126, sz - 48, 14, 96, fc=C_ALUM, lw=1.0, zorder=6)       # Al straight-flange holder on the drum OD
-    draw_rect(ax, sx + 108, sz - 22, 18, 44, fc="#8A8F98", lw=1.0, zorder=7)    # #4 (3/16") channel in the track
-    for zz in range(-18, 20, 6):                                               # black-nylon bristles lay over onto the bore
-        ax.plot([sx + 108, sx - 138], [sz + zz, sz + zz + 10], color="#222", lw=0.6, zorder=6)
-    for zc in (sz - 38, sz + 38):                                              # flange blind rivets (offset from the channel)
-        ax.plot([sx + 126, sx + 176], [zc, zc], color=C_OUT, lw=1.8, zorder=8)
-    draw_dim_h(ax, sx - 140, sx + 140, sz - 120, f"≈{RUN_GAP}mm RUNNING GAP", offset=40,
-               fs=6.5, above=False, font=FONT)
-    leader(ax, sx + 100, sz + 30, sx + 250, sz + 120,
-           f"BRUSH STRIP ×{LT_WIPER_N} — #4 (3/16\") strip brush, 0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim,\n"
-           f"snapped into an Al straight-flange holder FLANGE-RIVETED to the ROTATING drum OD\n"
-           f"(rivets in the flange, offset from the brush — see Sheet 4); bristles wipe the FIXED\n"
-           f"housing bore across the {RUN_GAP}mm gap · one 96\" piece per line (no joint)",
-           fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, sx - 170, sz - 40, sx - 300, sz - 80, f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6,
-           color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, sx + 163, sz - 60, sx + 300, sz - 90, f"DRUM {LT_DRUM_T:.2f}mm", fs=6,
-           color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    ax.text(sx, sz + 190, "SEAL DETAIL — RUNNING GAP (enlarged)", ha="center", va="bottom",
-            fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
-
-    # ── TOP-END LIGHT PATH — the running gap is CAPPED at its axial top by the cap↔frame neoprene
-    # wiper, so a ray up the gap can't circumnavigate OVER the brushes. Bottom end is identical. ──
-    tex, tez = 2 * dx + 320, -HR - 640
-    gx0, gw = tex - 10, 46                                                         # gap: drum OD (left) → housing bore (right)
-    gx1 = gx0 + gw
-    ax.text(tex, tez + 210, "TOP-END LIGHT PATH — gap CAPPED at top\n(cap ↔ frame neoprene seal · bottom identical)",
-            ha="center", va="bottom", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
-    draw_rect(ax, gx0 - 12, tez - 175, 12, 205, fc=C_LT_DRUM, lw=1.2, zorder=5)    # drum shell (rotating)
-    draw_rect(ax, gx1, tez - 175, 14, 235, fc="#DDE4EC", lw=1.2, zorder=5)         # housing wall (fixed)
-    draw_rect(ax, gx0 - 110, tez + 6, 110, 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
-    draw_rect(ax, gx0 - 110, tez + 48, gw + 150, 18, fc=C_STEEL, lw=1.4, zorder=6) # frame top plate (fixed)
-    draw_rect(ax, gx0 - 78, tez + 28, gw + 76, 18, fc=C_GASKT, lw=1.0, zorder=7)   # neoprene wiper — caps the gap
-    for zz in range(-120, -66, 8):                                                # brush (running-gap seal), lower
-        ax.plot([gx0, gx1 - 4], [tez + zz, tez + zz + 5], color="#222", lw=0.6, zorder=6)
-    draw_rect(ax, gx0 - 6, tez - 132, 6, 70, fc="#A8763A", lw=0.5, zorder=6)       # brush holder (bronze)
-    ax.annotate("", xy=(gx0 + gw / 2, tez + 24), xytext=(gx0 + gw / 2, tez - 165),  # daylight ray UP the gap …
-                arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
-    for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                  # … killed at the seal (red ✗)
-        ax.plot([gx0 + gw / 2 + s1[0], gx0 + gw / 2 + s2[0]], [tez + s1[1], tez + s2[1]], color="#D33", lw=2.2, zorder=9)
-    leader(ax, gx0 + 20, tez + 40, gx1 + 40, tez + 120, "NEOPRENE WIPER (cap↔frame)\ncaps the gap — light STOPS here",
-           fs=6, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    ax.text(gx1 + 46, tez + 57, "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6, color=C_DIM, **FONT, zorder=9)
-    leader(ax, gx0 - 60, tez + 17, gx0 - 118, tez + 40, "DRUM CAP (rotating)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, gx1 + 7, tez - 90, gx1 + 120, tez - 70, "HOUSING (fixed)", fs=6, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, gx0 + 3, tez - 95, gx0 - 118, tez - 150, f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6, color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    ax.text(gx0 + gw / 2, tez - 195, "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
-            fontsize=6, color=C_OUT, **FONT, zorder=9)
-
-    notes = [
-        "SEALS & LIGHT-PATH",
-        "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
-        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
-        f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
-        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — see the TOP-END LIGHT PATH detail. The brushes seal the gap circumferentially; the neoprene seals it axially.",
-        f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
-    ]
-    draw_notes(ax, notes, X_LO + 60, -HR - 880, 60, fs=7, font=FONT, width=3600, wrap=190,
-               title_color=TITLE_COL)
-
-    title_block(ax, "SHEET 7 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="SEALS & LIGHT-PATH VERIFICATION",
-                scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
-                height=0.045, scale=0.75)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet7.png"),
-                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print("  → diagrams/lighttrap-sheet7.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1670,162 +1826,6 @@ def draw_sheet10():
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet10.png saved")
-
-
-# ═════════════════════════════════════════════════════════════════════════════
-# SHEET 6 — Machined components (single-part blueprints, 1:2)
-# The turned/machined metal parts that Sheet 5 assembles: upper Al bearing ring,
-# lower steel floor collar, and the stub-shaft + flange. Each: PLAN (end view with
-# OD / bore / PCD / bolt holes) + SECTION (thickness) + full dims + material.
-# ═════════════════════════════════════════════════════════════════════════════
-def draw_sheet6():
-    # PORTRAIT single column — four machined parts stacked, drawn large (page width).
-    s2 = 2.2                                                                  # 2.2:1 (rings / collar / stub)
-    scc = 0.5                                                                 # 1:2 (the big Ø855 end cap)
-    CX = 560                                                                  # single-column center
-    SEC_DZ = 400                                                             # plan → section drop (rings)
-    R_RING, R_COLLAR, R_STUB, R_CAP = -150, -1060, -1990, -3110              # plan-z of each row
-    X_LO, X_HI = -260, 1380
-    Z_LO, Z_HI = R_CAP - 860, 360                                            # extra bottom margin: wrapped notes clear the title block
-    FIG_H = 26.0
-    FIG_W = FIG_H * (X_HI - X_LO) / (Z_HI - Z_LO)
-    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(X_LO, X_HI)
-    ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")                                                   # ISOTROPIC
-    ax.axis("off")
-    ax.text(CX, Z_HI - 8, "MACHINED COMPONENTS\nEND CAP + BEARING SEATS + STUB-SHAFT",
-            ha="center", va="top", fontsize=11, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
-
-    def holes(cx, cz, rpcd, n):
-        for i in range(n):
-            a = math.radians(90 + i * 360.0 / n)
-            hx, hy = cx + rpcd * math.cos(a), cz + rpcd * math.sin(a)
-            draw_circle(ax, hx, hy, 7, lw=1.0, color=C_OUT, fill=True, fc="white", zorder=8)
-            ax.plot([hx - 12, hx + 12], [hy, hy], color=C_OUT, lw=0.5, zorder=9)
-            ax.plot([hx, hx], [hy - 12, hy + 12], color=C_OUT, lw=0.5, zorder=9)
-
-    def ring(pz, od, bore, pcd, n, thk, fc, title, mat, weldnote=None):
-        cx = CX
-        rod, rbore, rpcd = od / 2 * s2, bore / 2 * s2, pcd / 2 * s2
-        sz = pz - SEC_DZ
-        ax.text(cx, pz + rod + 82, title, ha="center", va="bottom", fontsize=9.5,
-                color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
-        draw_circle(ax, cx, pz, rod, lw=1.8, color=C_OUT, fill=True, fc=fc, zorder=5)
-        draw_circle(ax, cx, pz, rbore, lw=1.4, color=C_OUT, fill=True, fc="white", zorder=6)
-        draw_circle(ax, cx, pz, rpcd, lw=0.9, color=C_CL, ls="--", zorder=6)
-        holes(cx, pz, rpcd, n)
-        draw_cl_h(ax, cx - rod - 20, cx + rod + 20, pz)
-        draw_cl_v(ax, cx, pz - rod - 20, pz + rod + 20)
-        draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 6, f"Ø{od} OD", offset=34, fs=7, font=FONT)
-        ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=7, color=C_DIM, **FONT, zorder=9)
-        ax.text(cx, pz - rod - 14, f"{n}×M10 on Ø{pcd} PCD · Ø11 clearance → rivet-nut in the beam wall",
-                ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
-        tz = thk * s2                                                         # SECTION (annular)
-        for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
-            draw_rect(ax, xr0, sz, xr1 - xr0, tz, fc=fc, lw=1.4, zorder=5)
-        draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
-        draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
-        draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
-        if weldnote:
-            # CAGE FLOOR / BOTTOM PLATE under the collar + fillet weld down to it
-            plate_tz = LT_FRAME_PLATE_T * s2
-            plate_hw = rod + 100
-            draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
-            for g in (-1, 1):                        # 6mm fillet weld: collar outer base → plate
-                ax.add_patch(mpatches.Polygon([(cx + g * rod, sz), (cx + g * (rod + 18), sz),
-                                               (cx + g * rod, sz + 18)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
-            draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
-                       offset=30, fs=6.4, right=True, font=FONT)
-            leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 46,
-                   "CAGE FLOOR / BOTTOM PLATE\n(collar 6mm fillet-welded down)", fs=6.4, color=C_OUT,
-                   ha="right", arrow_style="->", font=FONT)
-            mat_z = sz - plate_tz - 100
-        else:
-            mat_z = sz - 54
-        ax.text(cx, mat_z, mat + ("" if not weldnote else f"\n{weldnote}"),
-                ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
-
-    ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 30, C_ALUM,
-         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · bore Ø130 H7 (bearing seat) · isolate w/ nylon shoulder")
-    ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 30, C_STEEL,
-         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · bore Ø130 (bearing seat)", weldnote="6mm fillet weld to floor plate")
-
-    # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
-    cx = CX
-    sh_r, fl_r, fl_t = SKF6215_ID / 2 * s2, 160 / 2 * s2, 12 * s2
-    shaft_L = 150 * s2
-    fpz = R_STUB
-    ez = R_STUB - 690                                                        # elevation base (flange), shaft up
-    ax.text(cx, fpz + fl_r + 82, "STUB-SHAFT + FLANGE  (2.2:1)", ha="center", va="bottom", fontsize=9.5,
-            color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
-    draw_circle(ax, cx, fpz, fl_r, lw=1.8, color=C_OUT, fill=True, fc=C_STEEL, zorder=5)
-    draw_circle(ax, cx, fpz, sh_r, lw=1.4, color=C_OUT, fill=True, fc="#9BA0A8", zorder=6)
-    draw_circle(ax, cx, fpz, 120 / 2 * s2, lw=0.9, color=C_CL, ls="--", zorder=6)
-    holes(cx, fpz, 120 / 2 * s2, 4)
-    draw_cl_h(ax, cx - fl_r - 20, cx + fl_r + 20, fpz)
-    draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 6, "Ø160 FLANGE", offset=32, fs=7, font=FONT)
-    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolts in)", ha="center", va="top",
-            fontsize=7.5, color=C_OUT, **FONT, zorder=9)
-    draw_rect(ax, cx - fl_r, ez - fl_t, 2 * fl_r, fl_t, fc=C_STEEL, lw=1.6, zorder=5)     # flange
-    draw_rect(ax, cx - sh_r, ez, 2 * sh_r, shaft_L, fc=C_STEEL, lw=1.6, zorder=5)         # shaft
-    for g in (-1, 1):
-        ax.add_patch(mpatches.Polygon([(cx + g * sh_r, ez), (cx + g * (sh_r + 14), ez),
-                                       (cx + g * sh_r, ez + 14)], closed=True, fc="#CC4422", ec="#CC4422", zorder=7))
-    for zc in (ez + shaft_L - 12, ez + shaft_L - 26):
-        ax.plot([cx - sh_r, cx - sh_r + 8], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
-        ax.plot([cx + sh_r - 8, cx + sh_r], [zc, zc], color=C_OUT, lw=1.2, zorder=8)
-    draw_cl_v(ax, cx, ez - fl_t - 16, ez + shaft_L + 16)
-    draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"150 LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
-    draw_dim_v(ax, cx + fl_r + 34, ez - fl_t, ez, "12mm THK", offset=32, fs=6.6, right=True, font=FONT)
-    ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove each end", ha="center", va="bottom",
-            fontsize=7, color=C_DIM, **FONT, zorder=9)
-    ax.text(cx, ez - fl_t - 34, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
-            va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
-
-    # ── End cap (Ø855) — plan + thickness note (1:2) ─────────────────────────
-    ccx, ccz = CX, R_CAP
-    cr = LT_CAP_OD / 2 * scc
-    ax.text(ccx, ccz + cr + 82, "END CAP ×2 identical  (1:2)", ha="center", va="bottom",
-            fontsize=9.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
-    draw_circle(ax, ccx, ccz, cr, lw=1.8, color=C_OUT, fill=True, fc=C_ALUM, zorder=5)
-    draw_circle(ax, ccx, ccz, 78 * scc, lw=1.0, color=C_OUT, zorder=6)                   # hub boss
-    draw_circle(ax, ccx, ccz, SKF6215_ID / 2 * scc, lw=1.2, color="#CC4422", zorder=7)   # Ø75 bore
-    holes(ccx, ccz, 60 * scc, 4)                                                         # 4× flange clearance holes
-    oh2 = LT_OPENING_DEG / 2
-    n_rim = round((LT_SHELL_ARC / 360.0) * math.pi * LT_CAP_OD / LT_RIM_RIVET_PITCH)
-    rrc = (LT_CAP_OD / 2 - 14) * scc
-    for i in range(n_rim):
-        a = math.radians(oh2 + (i + 0.5) / n_rim * LT_SHELL_ARC)
-        draw_circle(ax, ccx + rrc * math.cos(a), ccz + rrc * math.sin(a), 4,
-                    lw=0.7, color="#CC4422", fill=True, fc="#CC4422", zorder=7)
-    draw_circle(ax, ccx, ccz, rrc, lw=0.7, color=C_CL, ls="--", zorder=6)
-    draw_cl_h(ax, ccx - cr - 20, ccx + cr + 20, ccz)
-    draw_cl_v(ax, ccx, ccz - cr - 20, ccz + cr + 20)
-    draw_dim_h(ax, ccx - cr, ccx + cr, ccz + cr + 6, f"Ø{LT_CAP_OD} OD", offset=34, fs=7, font=FONT)
-    ax.text(ccx, ccz - cr - 14,
-            f"4× Ø11 clearance on Ø120 PCD (bolt → tapped flange) · Ø{SKF6215_ID} h6 bore · {LT_CAP_TOP_T:.0f}mm 6061-T6 Al plate\n"
-            f"{n_rim}× Ø{LT_RIVET_HOLE} rim-rivet holes @ {LT_RIM_RIVET_PITCH}mm on the 280° arc",
-            ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
-
-    notes = [
-        "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
-        f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD; the stub shaft Ø{SKF6215_ID} h6 for the bearing bore. Circlip grooves (DIN 471) each side.",
-        "FASTENING — cap bolts into the TAPPED stub-shaft flange (cap Ø11 clearance). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar fillet-welded to the floor plate.",
-        "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
-    ]
-    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 80, 46, fs=7.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
-
-    title_block(ax, "SHEET 6 OF 10", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
-                scale_note="RINGS + STUB 2.2:1 · CAP 1:2 · ALL DIMS IN mm",
-                doc_id="TBS-001 · Revolving Light-Trap", height=0.02, scale=0.75)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
-                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print("  → diagrams/lighttrap-sheet6.png saved")
 
 
 def main():

@@ -297,10 +297,11 @@ def draw_sheet1():
     STILE_W = 40
     stile_x = DI_R - STILE_W                                     # stile just off the interior wall
     draw_rect(ax, stile_x, Z_CAP_B, STILE_W, Z_CAP_T - Z_CAP_B, fc=C_STEEL, lw=1.2, zorder=6)   # handle stile (cap→cap)
-    draw_bolt(ax, stile_x + STILE_W / 2, Z_CAP_T - 8, 44, d=14, head=-1, end="tapped")          # stile → TOP cap
-    draw_bolt(ax, stile_x + STILE_W / 2, Z_CAP_B + 8, 44, d=14, head=1, end="tapped")           # stile → BOTTOM cap
-    leader(ax, stile_x + STILE_W / 2, Z_CAP_T - 8, stile_x + 620, Z_CAP_T + 140,
-           "STILE → CAP: M12 tapped into each Al cap\n(anchors the stile — 1 top + 1 bottom)", fs=6.0, color=C_DIM,
+    for zc, hd_ in ((Z_CAP_T, -1), (Z_CAP_B, 1)):                                               # stile-end plug + M12 → each cap
+        draw_rect(ax, stile_x + 8, min(zc, zc + hd_ * 70), STILE_W - 16, 70, fc="#9AA0A8", lw=0.8, zorder=7)  # solid plug in tube end
+        draw_bolt(ax, stile_x + STILE_W / 2, zc + hd_ * 22, 40, d=11, head=hd_, end="tapped", zb=8)           # M12 tapped into cap
+    leader(ax, stile_x + STILE_W / 2, Z_CAP_T - 20, stile_x + 620, Z_CAP_T + 140,
+           "STILE → CAP: M12 tapped into each Al cap via a\nsolid plug in the RHS end (1 top + 1 bottom) — see DETAIL", fs=6.0, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
     GX = stile_x - GRAB_SO                                       # grip standoff, inboard of the stile
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2
@@ -334,10 +335,17 @@ def draw_sheet1():
     ax.text(hdx + 10, hdz + 250, "DETAIL — PULL-HANDLE MOUNT\n(handle → stile → cap · top end)", ha="center",
             va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     cpy = hdz + 150                                                                     # top-cap underside plane
-    draw_rect(ax, hdx - 150, cpy, 260, 32, fc=C_ALUM, lw=1.4, zorder=6)                 # TOP CAP (Al)
-    draw_rect(ax, hdx - 20, hdz - 150, 40, cpy - (hdz - 150), fc=C_STEEL, lw=1.4, zorder=6)  # handle stile (40×40×5 SS RHS)
-    draw_rect(ax, hdx - 15, hdz - 145, 30, cpy - (hdz - 145) - 5, fc=BG, lw=0.7, zorder=7)   # RHS bore (hollow, 5mm wall)
-    draw_bolt(ax, hdx, cpy - 6, 40, d=12, head=-1, end="tapped")                        # stile → cap: SHORT M12 TAPPED into the cap
+    draw_rect(ax, hdx - 150, cpy, 260, 32, fc=C_ALUM, lw=1.4, zorder=6)                 # TOP CAP (8mm Al)
+    # handle stile — 40×40×5 SS RHS in section (two 5mm side walls + hollow bore)
+    draw_rect(ax, hdx - 20, hdz - 150, 40, cpy - (hdz - 150), fc=C_STEEL, lw=1.4, zorder=6)
+    draw_rect(ax, hdx - 15, hdz - 145, 30, cpy - (hdz - 145), fc=BG, lw=0.7, zorder=7)  # RHS bore (hollow, 5mm wall)
+    # SOLID STEEL PLUG fitted in the open RHS end — gives the tube a face to fasten; the M12
+    # clamps it up to the cap, and it is cross-bolted to the tube walls so the pull load transfers.
+    draw_rect(ax, hdx - 15, cpy - 96, 30, 96, fc="#9AA0A8", lw=1.2, zorder=8)           # solid plug (fills the bore)
+    ax.add_patch(mpatches.Rectangle((hdx - 7, cpy - 96), 14, 96, fc=BG, ec="none", zorder=8))  # M12 clearance thru plug
+    draw_bolt(ax, hdx, cpy - 43, 98, d=13, head=-1, end="tapped", zb=10)               # M12 up into the TAPPED cap
+    for cz in (cpy - 34, cpy - 66):                                                    # 2× M8 cross-bolts → plug (retention)
+        draw_bolt(ax, hdx - 14, cz, 12, d=8, vertical=False, head=-1, end="tapped", zb=11)
     # off-the-shelf pull-handle foot BOLTED to the stile (2× 1/4" through-screws, tapped into the RHS wall — NO welds)
     draw_rect(ax, hdx - 78, hdz - 30, 58, 60, fc="#C9CCD2", lw=1.2, zorder=5)           # pull-handle arm → foot
     draw_rect(ax, hdx - 26, hdz - 40, 7, 80, fc=C_STEEL, lw=1.0, zorder=6)              # flat foot pad (0.27") on the stile face
@@ -346,9 +354,11 @@ def draw_sheet1():
     draw_circle(ax, hdx - 116, hdz, 20, lw=1.4, color=C_OUT, fill=True, fc="#C9CCD2", zorder=8)  # pull-handle Ø0.5" bar
     for zz in (hdz - 144, hdz - 152):                                                   # break (stile continues to the bottom cap)
         ax.plot([hdx - 24, hdx + 24], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=9)
-    leader(ax, hdx + 70, cpy + 16, hdx + 170, cpy + 78, "TOP CAP (8mm 6061-T6 Al)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx + 6, cpy - 24, hdx + 170, cpy - 30, f"STILE → CAP: SHORT M12 TAPPED into the cap —\npull load lands in the Al cap. Stile ({STILE_W}×{STILE_W}×5\nSS RHS) spans both caps (bottom end identical).", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, hdx - 22, hdz - 40, hdx + 170, hdz - 150, "HANDLE FOOT → STILE: 2× 1/4\" TAPPED into the\nRHS wall (McMaster 1871A65 pull handle — NO welds)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx + 70, cpy + 16, hdx + 175, cpy + 80, "TOP CAP (8mm 6061-T6 Al)", fs=6.2, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx + 8, cpy - 48, hdx + 175, cpy - 30,
+           f"STILE → CAP: a SOLID STEEL PLUG fills the open {STILE_W}×{STILE_W}×5\nRHS end (cross-bolted 2× M8 through the 5mm wall, tapped\ninto the plug) and is clamped up to the cap by an M12\nTAPPED into it — blind, ~8mm engagement (no pierce / no\nlight leak). Pull load: handle → tube → plug → cap. No welds.",
+           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, hdx - 22, hdz - 40, hdx + 175, hdz - 150, "HANDLE FOOT → STILE: 2× 1/4\" TAPPED into the\nRHS wall (McMaster 1871A65 pull handle — NO welds)", fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",

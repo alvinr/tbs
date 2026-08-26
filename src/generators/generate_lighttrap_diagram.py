@@ -268,7 +268,7 @@ def draw_sheet1():
         draw_rect(ax, x0, Z_BOT, LT_HOUSING_T, Z_TOP - Z_BOT,
                   fc="#DDE4EC", lw=1.4, zorder=5)
     leader(ax, HO_L + LT_HOUSING_T / 2, 1780,
-           HO_L - 250, 1780,
+           HO_L - 350, 1780,
            f"FIXED HOUSING\nØ{DRUM_D} · {LT_HOUSING_T}mm UV-HDPE",
            fs=7, color=C_OUT, ha="center", arrow_style="->", font=FONT)
 
@@ -277,7 +277,7 @@ def draw_sheet1():
         draw_rect(ax, x0, Z_CAP_B, LT_DRUM_T, Z_CAP_T - Z_CAP_B,
                   fc=C_LT_DRUM, lw=1.4, zorder=6)
     leader(ax, DO_L + LT_DRUM_T / 2, 1330,
-           HO_L - 250, 1330,
+           HO_L - 325, 1330,
            f"ROTATING DRUM\nØ{2 * LT_DRUM_OR} · {LT_DRUM_T:.2f}mm (1/8in) HDPE\nsingle {LT_OPENING_DEG}° opening",
            fs=7, color=C_OUT, ha="center", arrow_style="->", font=FONT)
 
@@ -298,13 +298,13 @@ def draw_sheet1():
               fc=C_STEEL, lw=1.0, zorder=8)
     draw_rect(ax, X_AX - 18, Z_BOT + SKF6215_W, 36,
               (Z_CAP_B - LT_CAP_BOT_T) - (Z_BOT + SKF6215_W), fc=C_STEEL, lw=1.0, zorder=8)
-    leader(ax, X_AX + SKF6215_OD / 2, Z_TOP - SKF6215_W / 2,
-           HO_R + 40, Z_TOP + 220,
+    leader(ax, X_AX - SKF6215_OD / 2, Z_TOP - SKF6215_W / 2,
+           HO_L - 50, Z_TOP + 220,
            f"UPPER: {LT_CAP_TOP_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
            f"SKF 6215-2RS1 (Ø{SKF6215_ID} bore) · isolated Al top ring, 6×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, X_AX - SKF6215_OD / 2, Z_BOT + SKF6215_W / 2,
-           X_LO + 250, Z_BOT - 20,
+           X_LO + 475, Z_BOT - 60,
            f"LOWER: {LT_CAP_BOT_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
            f"SKF 6215-2RS1 · welded steel floor collar, 8×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
@@ -317,7 +317,7 @@ def draw_sheet1():
     for zc, hd_ in ((Z_CAP_T, -1), (Z_CAP_B, 1)):                                               # stile-end tapped plug + CSK cap bolt
         draw_rect(ax, stile_x + 8, min(zc, zc + hd_ * 70), STILE_W - 16, 70, fc="#9AA0A8", lw=0.8, zorder=7)  # solid tapped plug in tube end
         draw_bolt(ax, stile_x + STILE_W / 2, zc + hd_ * 18, 44, d=11, head=int(-hd_), end="tapped", csk=True, zb=8)  # CSK bolt through cap → plug
-    leader(ax, stile_x + STILE_W / 2, Z_CAP_T + 4, stile_x + 620, Z_CAP_T + 140,
+    leader(ax, stile_x + STILE_W / 2, Z_CAP_T + 4, stile_x + 640, Z_CAP_T + 160,
            "STILE → CAP: M10 countersunk bolt through each cap into a\ntapped plug in the RHS end (+ grub screws, 1 top + 1 bottom) — see Sheet 11", fs=6.0, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
     GX = stile_x - GRAB_SO                                       # grip standoff, inboard of the stile
@@ -339,8 +339,8 @@ def draw_sheet1():
     for gz in (GZ0, GZ1):                                        # two flat feet, BOLTED to the stile (no welds)
         draw_rect(ax, stile_x - 6, gz - 16, 6, 32, fc=C_STEEL, lw=1.0, zorder=8)                 # flat foot pad (0.27")
         draw_bolt(ax, stile_x - 3, gz, 26, d=6.35, vertical=False, head=-1, end="tapped")        # foot → stile: 1/4" tapped
-    leader(ax, GX - hd / 2, GRAB_Z + GRAB_L / 4, -110, GRAB_Z + 520,
-           f"PULL HANDLE — off-the-shelf 12\" round pull handle (McMaster 1871A65, Ø0.5\" bar),\n1/4\" through-holes BOLTED (tapped) at both feet to a steel STILE ({STILE_W}×{STILE_W}×5 SS RHS)\nthat spans + bolts to the two Al caps — pull load into the caps · see MOUNT DETAIL",
+    leader(ax, GX - hd / 2, GRAB_Z + GRAB_L * 0.1, 780, GRAB_Z - 320,
+           f"PULL HANDLE — off-the-shelf 12\" round pull handle (McMaster 1871A65,\nØ0.5\" bar),1/4\" through-holes BOLTED (tapped) at both feet to a \nsteel STILE ({STILE_W}×{STILE_W}×5 SS RHS) that spans + bolts to the two Al \ncaps — pull load into the caps · see MOUNT DETAIL",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     draw_dim_v(ax, GX - hd / 2 - 55, GZ0, GZ1, f"{GRAB_L}mm handle", offset=45, fs=6.5, font=FONT)
     draw_dim_h(ax, GX, stile_x, GZ1 + 75, f"{GRAB_SO}mm standoff", offset=45, fs=6.5, font=FONT)
@@ -349,18 +349,18 @@ def draw_sheet1():
 
     # (The pull-handle mount detail — handle → stile → cap plug joint — is drawn to scale on its
     #  own Sheet 11; the GA above shows only the assembled arrangement + a reference.)
-    ax.text(HO_R + 470, 900, "PULL-HANDLE MOUNT — see SHEET 11\n(handle → stile → cap · plug joint, to scale)",
+    ax.text(HO_R + 500, 950, "PULL-HANDLE MOUNT — see SHEET 11\n(handle → stile → cap · plug joint, to scale)",
             ha="center", va="center", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, HO_L, HO_R, Z_TOP + 300, f"Ø{DRUM_D} HOUSING OD",
                offset=90, fs=7, font=FONT)
-    draw_dim_v(ax, HO_L - 300, Z_BOT, Z_TOP,
+    draw_dim_v(ax, HO_L - 600, Z_BOT, Z_TOP,
                f"{DRUM_H_LT - PANEL_FLOOR_GAP}mm CLEAR", offset=95, fs=7, font=FONT)
     draw_dim_v(ax, X_HI - 160, 0, Z_TOP, f"{DRUM_H_LT}mm TOP AFF",
                offset=95, fs=7, right=True, font=FONT)
     leader(ax, HI_R - 2, 1300,
-           HO_R + 250, 1880,
+           HO_R + 250, 1180,
            f"≈{RUN_GAP}mm radial running gap\n(drum OD → housing bore; sealed — Sheet 7)",
            fs=6.5, color=C_DIM, ha="center", arrow_style="->", font=FONT)
 

@@ -364,7 +364,7 @@ LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running 
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness). Drum = single 80° opening → a 280° C-shell (not a full cylinder).
 LT_SHELL_ARC   = 360 - LT_OPENING_DEG   # 280 — drum shell / rim-angle / rivet arc (the 80° egress slot has no shell there)
-LT_CAP_T       = 4.76     # DEPRECATED (2026-08-21): superseded by the split metal caps below (LT_CAP_TOP_T / LT_CAP_BOT_T). Retained only until the 3D model + weight/parts consumers migrate off it. Do NOT reference in new code.
+# (LT_CAP_T retired 2026-08-26 — the deprecated pre-split alias; all consumers migrated to LT_CAP_TOP_T / LT_CAP_BOT_T.)
 # ── End caps — STRUCTURAL hub discs (carry the steel stub shafts into the SKF
 # 6215 bearings). rev (2026-08-21): HDPE → METAL; then both caps → ALUMINUM
 # (identical parts, lighter than the steel-bottom option). A steel stub shaft

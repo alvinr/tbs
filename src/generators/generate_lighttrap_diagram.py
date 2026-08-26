@@ -1671,7 +1671,7 @@ def draw_sheet9():
     blind_rivet(ax, dx - LEG2 * 0.5, dz, 90, S * (2 * LT_EDGE_CHAN_T + LT_HOUSING_T), d=RVD)  # thru legs + HDPE
     draw_dim_h(ax, dx - LEG2, dx, dz - HT2 / 2 - CT2 - 30, f"{LT_EDGE_CHAN_LEG}mm LEG",
                offset=26, fs=6.0, above=False, font=FONT)
-    leader(ax, dx - LEG2 * 0.35, dz - HT2 / 2 - CT2, dx + 70, dz - HT2 / 2 - CT2 - 64,
+    leader(ax, dx - LEG2 * 0.35, dz - HT2 / 2 - CT2, dx - 20, dz - HT2 / 2 - CT2 - 64,
            f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — bonded over the\n{LT_HOUSING_T}mm HDPE edge (DP8010); caps BOTH faces (jamb-post replacement)",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,

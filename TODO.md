@@ -50,9 +50,14 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
   embedded as **§9 Fabrication Blueprints** in `light-trap-selection.md`. Gallery + unused-import warnings clear.
 - [x] **Sheet 5 relabel to scale — DONE (commit `18c92770`).** Recast to true 2.2:1 isotropic (cap de-exaggerated to `LT_CAP_TOP_T * SC`), scale bar + "SECTIONS 2.2:1 (isotropic)" on the note/bar/title-block, no "NTS". Verified 2026-08-25. (Also fixed the stale "NTS" in the Sheet 10 banner *comment* — that sheet was already drawn to scale w/ a 100mm bar.)
 - [x] **Bolt/screw-hole detailing pass — DONE (commit `18c92770`).** Added the hole-pattern plans: **4×M10** cap→stub-hub flange (Ø120 PCD, on the Sheet 6 flange plan), **6×M10** upper ring→beam + **8×M10** lower collar→beam (Sheet 5), with "drill Ø11 ×N on Ø_ PCD" callouts, per `skills/skill_fastener_convention.md`. The subsequent feedback rounds firmed the mount detail (rivet-nut profile, countersunk cap bolts, Ø120 PCD).
-- [ ] **3D model** — `generate_lighttrap_model.py` (`DRUM_CAP_T`) + overview (reuses the drum builder):
-  split cap thickness + materials (both Al now), add the rim-angle/lap + cage frame if modeled. Regenerate;
-  **hold `--send` for a session with ALVIN at SketchUp** (focus-model-first: lighttrap, then overview). Then retire `LT_CAP_T`.
+- [x] **3D model — DONE (2026-08-26).** `generate_lighttrap_model.py` already models the split metal caps
+  (both 8mm Al via `LT_CAP_TOP_T`), the rim-angle lip, edge channels, the cage frame, brush seals, and the
+  stile/handle — the metal-cap cascade was completed + the `.skp` re-sent during the earlier batches.
+  **Audit 2026-08-26:** `manifest.py --check` = all 10 `.skp` in sync; `check_consistency.py` = no lighttrap
+  2D↔3D divergence; model regenerates clean. **No re-send needed.** The bearing-internal details (end-retainer
+  plate, DIN rings, circlips) are 2D-blueprint-only, appropriately NOT in the coarse 3D bearing.
+  **`LT_CAP_T` alias RETIRED** — removed from `tbs_constants.py` + the overview model's unused import; the
+  standing "unused import" advisory is cleared (models stay byte-identical → no re-send).
 
 ## 🛠 Tooling / infra
 

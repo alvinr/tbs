@@ -13,6 +13,8 @@ Use `place_label()` from `tbs_drawing.py` (not raw `ax.text()`) for component la
 
 **2026-07 re-audit (38 more "Tidy labels" commits):** the corrections that *still* recur — and are now hardened below — are, in frequency order: (a) **notes box laid over the drawing** (21 relocations — P8 placement); (b) **dim label on the wrong side / unit-less** (`right=`/`above=` flipped 22×, `mm` added 20× — P7); (c) **coordinate-range suffix appended to a dim/leader** (`(X=a–b)` stripped ~20× — P7, new); (d) **text over a hatch/ghost with no white backing** (`bbox=LBL_BG` added ~dozen× — P9); (e) **leaders carrying secondary specs** that belong in the notes block (~8 `\n(material…)` lines stripped — P1).
 
+**2026-08 re-audit (5 "Tidy labels" commits, ~20 edits — ALL on freshly-built sheets, one generator).** Nothing new in *kind* — every fix was an existing principle under-applied on brand-new detail sheets that were *reasoned about, not swept*. In frequency order: (a) **leader routed to a habitual side instead of the emptiest one** (~12 relocations, several outright **left↔right flips**: an upper-hub callout right→left, a pull-handle callout left→right+re-wrapped — P1/P2); (b) **detail-view leaders left too long** — ~150-data-unit reaches in a 1.5:1 view pulled back toward the 3–8-unit norm (P1); (c) **notes box shaped narrow when the only clear margin was a wide bottom band** (`wrap` 112→185, `fs` 6.5→6, ~full width — P8, refined below). **The lesson is process, not a new rule:** on a sheet you built *this session*, the crop-zoom gate is where the round-trip still leaks — for **every** leader, sweep BOTH sides of the tip and take the emptiest, and hold detail-view reaches to a few data-units. Reasoning "the right side looks clear" without looking is exactly what got flipped.
+
 ---
 
 ## Self-review FIRST — run this before you show or commit any diagram
@@ -96,7 +98,8 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 - First string = **ALL-CAPS title ending in `:`**; **no blank line** after it (`draw_notes` already spaces the bold title). *(r26, r21)*
 - Numbered `"1. "` (space after the period), never bullets. *(r22)*
 - `ha="left"` almost always. *(r25)*
-- **Width hugs the longest line** (≈30–50% of the panel range, never 60–70%); err narrow — a tight box looks intentional, an oversized one looks broken. *(r24, r40)*
+- **Shape the box to the MARGIN's aspect, not to a fixed "narrow" default.** A tall **side column** → narrow-and-tall (small `wrap=`, width ≈30–50% of the range). A shallow **wide bottom band** under a full **portrait** drawing carrying LONG dense notes (e.g. a machined-parts sheet) → **wide-and-short**: a large `wrap=` (~150–185 chars) spanning most of the sheet width, and `fs` may drop to ~6 to fit — because a narrow box there wraps into a tall column that collides with the drawing/title block. So the "err narrow / never 60–70% / `fs`≥7" defaults below hold *when there is vertical room*; when the only clear margin is a shallow wide band, wide-and-short is the correct read. *(2026-08)*
+- **Width hugs the longest line** (≈30–50% of the panel range, never 60–70%) *on sheets with vertical room*; err narrow there — a tight box looks intentional, an oversized one looks broken. *(r24, r40)*
 - Keep it narrow via a smaller **`wrap=` char count** (the helper adds the hanging indent), not by widening the box — but size `width` so the *wrapped* longest line still fits inside the border. *(r23, r68, updated 2026-07)*
 - Spacing compact (the minimum that avoids touching). *(r41)*
 - ≥50 data-units inward from the axes edge. *(r42)*

@@ -1549,7 +1549,7 @@ def draw_sheet8():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 9 — Housing → frame attachment (outer-skin fixing)
-# The fixed housing (5mm) laps a rolled rim-angle TEK-screwed to the frame; SS rivets +
+# The fixed housing (5mm) laps a rolled rim-angle blind-riveted to the frame; SS rivets +
 # DP8010. Section + Detail B (opening-edge Al U-channel) + plan (200° housing, two 100° arcs).
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet9():
@@ -1582,15 +1582,13 @@ def draw_sheet9():
     for xx in (-RIML - 20, -RIML + 20, -RIML + 60):                              # break line (hollow beam continues up)
         ax.plot([xx - 4, xx + 4], [BEAMH - 8, BEAMH + 8], color=C_OUT, lw=0.6, zorder=7)
     # rim-angle — ONE continuous 25×25×3 L-section (single extrusion, not two plates): the
-    # horizontal leg is TEK-SCREWED up under the beam; the standing lip hangs down for the housing to lap.
+    # horizontal leg is BLIND-RIVETED up into the beam bottom wall; the standing lip hangs down for the housing to lap.
     l_angle(ax, 0, 0, -RIML, -LIP, LEGT, fc=C_ALUM, lw=1.4, zorder=5)             # rim-angle (L)
-    # TEK self-drilling screw (same convention as the ibc-frame details): hex-washer head under the
-    # flat leg + shank UP through the leg, self-tapping into the beam bottom wall (thread ticks there).
+    # SS blind rivet (18-8, Ø1/8", McMaster 97525A425 — same family as the lap rivets): set from BELOW
+    # through the flat leg + the 3mm beam bottom wall; the set head forms INSIDE the closed RHS bore (no
+    # internal access, unlike a weld-nut; bears on the full wall, unlike a self-driller's ~2 threads).
     _tx = -RIML * 0.5
-    ax.add_patch(mpatches.Rectangle((_tx - 4, -LEGT), 8, LEGT + _fw, fc="#8A8F98", ec=C_OUT, lw=0.8, zorder=8))  # shank
-    ax.add_patch(mpatches.Rectangle((_tx - 12, -LEGT - 8), 24, 8, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=9))       # hex-washer head
-    for _tz in (3, 9, 15):                                                                                        # thread ticks — in the beam bottom wall
-        ax.plot([_tx - 4, _tx + 4], [_tz, _tz + 3], color=C_OUT, lw=0.6, zorder=10)
+    blind_rivet(ax, _tx, (-LEGT + _fw) / 2, -90, LEGT + _fw, d=RVD)
     draw_rect(ax, 0, -LIP, DPT, LIP, fc=C_GASKT, lw=0.8, zorder=5)                # DP8010 bead
     draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 90, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down, butts beam underside (broken below)
     for zz in (-LIP - 55, -LIP - 67, -LIP - 79):                                 # break line (housing continues down)
@@ -1599,7 +1597,7 @@ def draw_sheet9():
     draw_dim_v(ax, DPT + HOUT + 40, -LIP, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
     draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 40, f"{LT_HOUSING_T}mm HOUSING", offset=48, fs=6.2,
                above=True, font=FONT)
-    leader(ax, -RIML * 0.5, -LEGT, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al — flat leg\nTEK-SCREWED up into the beam bottom wall\n(#14 self-drilling, Al→3mm steel, @ ~150mm)",
+    leader(ax, -RIML * 0.5, -LEGT, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al — flat leg\nBLIND-RIVETED up into the beam bottom wall\n(Ø1/8\" 18-8 SS, 97525A425, Al→3mm steel, @ ~150mm)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, DPT + HOUT, -LIP + 30, 125, -255, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1684,7 +1682,7 @@ def draw_sheet9():
 
     notes = [
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
-        "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, TEK-SCREWED to the frame top + bottom beams (#14 self-drilling, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). No welds — avoids welding Al to the steel frame.",
+        "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, BLIND-RIVETED to the frame top + bottom beams (Ø1/8\" 18-8 SS blind rivets, McMaster 97525A425, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). Set from below; the set head forms inside the closed RHS. No welds, no self-drillers — avoids welding Al to steel and thread-stripping the thin wall.",
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge (McMaster 97525A435, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
         f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
@@ -1863,7 +1861,7 @@ def draw_sheet10():
         "COMBINED TOP-END ASSEMBLY  (drawn to scale — see 100mm bar)",
         "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a brush-sealed running gap separates them (4× vertical #4 strip brushes on the drum OD, Sheets 4 & 7).",
         "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
-        "OUTER joint (fixed), DETAIL B: housing laps a rim-angle TEK-screwed to the axle beam — SS blind rivets + DP8010; full detail on Sheet 9.",
+        "OUTER joint (fixed), DETAIL B: housing laps a rim-angle blind-riveted to the axle beam (SS blind rivets both the rim→beam + the housing→rim laps) + DP8010; full detail on Sheet 9.",
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
         "Drum + housing continue the full 2,200mm below the break lines. Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]

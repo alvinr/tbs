@@ -174,18 +174,19 @@ def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", cs
 
     def pmap(u, v):                                        # (along-axis u, across v) → point
         return (cx + v, cz + u) if vertical else (cx + u, cz + v)
-    rect(-g, g, -d / 2, d / 2, fc=SHK, ec=C_OUT, lw=0.8, zorder=zb)                        # shank
     hu = -g if head < 0 else g                                                             # head end (outer face)
-    if csk:                                               # flush countersunk flat head — tapers INTO the material
+    fu = g if head < 0 else -g                                                             # far (thread) end
+    if csk:                                               # flush countersunk bolt — ONE continuous shape + color
         into = 1 if head < 0 else -1                      # +axis into the joint for a head-below bolt
         cw = hw * 0.85
-        pts = [pmap(hu, -cw / 2), pmap(hu, cw / 2),
-               pmap(hu + into * hh * 1.4, d / 2), pmap(hu + into * hh * 1.4, -d / 2)]
-        ax.add_patch(mpatches.Polygon(pts, closed=True, fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1))
+        tu = hu + into * hh * 1.4                          # where the flared head meets the shank
+        pts = [pmap(hu, -cw / 2), pmap(hu, cw / 2), pmap(tu, d / 2),   # flared flat head → taper …
+               pmap(fu, d / 2), pmap(fu, -d / 2), pmap(tu, -d / 2)]    # … → shank to the far end
+        ax.add_patch(mpatches.Polygon(pts, closed=True, fc=SHK, ec=C_OUT, lw=0.9, zorder=zb))
     else:
+        rect(-g, g, -d / 2, d / 2, fc=SHK, ec=C_OUT, lw=0.8, zorder=zb)                    # shank
         rect(hu - (hh if head < 0 else 0), hu + (0 if head < 0 else hh), -hw / 2, hw / 2,
              fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                       # protruding hex head
-    fu = g if head < 0 else -g                                                             # far (thread) end
     if end == "nut":
         rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
              fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                       # hex nut
@@ -616,13 +617,16 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     CHAN = S * LT_WIPER_BACKING                    # #4 channel backing (3/16")
     br_bot, br_top = -128, -18                     # brush run on the shell body (below the lap)
     draw_rect(ax, odx, br_bot, HW, br_top - br_bot, fc=C_ALUM, lw=1.0, zorder=7)             # Al holder (on the OD)
+    ax.plot([odx, odx], [br_bot, br_top], color=C_GASKT, lw=2.6, zorder=8)                   # DP8010 bond: holder flange → HDPE shell
     draw_rect(ax, odx + HW, br_bot, CHAN, br_top - br_bot, fc="#8A8F98", lw=1.0, zorder=8)   # #4 channel backing
     for zz in range(int(br_bot) + 8, int(br_top), 8):                                        # bristles lay over into the gap
         ax.plot([odx + HW + CHAN, odx + HW + CHAN + S * 15], [zz, zz + 11], color="#333", lw=0.5, zorder=8)
+    for zc in (-100, -46):                                                                   # holder → shell blind rivets (radial), staggered clear of the brush
+        blind_rivet(ax, odx - S * 1.5, zc, 0, S * (LT_DRUM_T + LT_WIPER_HOLDER_W), d=S * LT_RIVET_D)
     for zz in (-134, -126):                                                                  # break (shell + brush continue down)
         ax.plot([DPT - 3, odx + HW + CHAN + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=9)
     leader(ax, odx + HW + CHAN + S * 6, br_top - 22, 250, -CAPT - 150,
-           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder\n({LT_WIPER_N} strips on the drum OD, Sheet 7): starts clear BELOW\nthe cap lap so its flange rivets stagger past the shell→cap rivets",
+           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder ({LT_WIPER_N} strips,\nSheet 7): the holder is DP8010-BONDED to the HDPE shell (brown) + blind-riveted\n(backup washer inside) — see HOLDER PROFILE inset →; starts clear BELOW the cap\nlap so its flange rivets stagger past the shell→cap rivets",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
@@ -720,11 +724,16 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
         bx = ix(w + 0.4 + k * (cav - 0.8) / 8)
         ax.plot([bx, bx], [iz(w + wH), iz(GAPmm)], color="#222", lw=0.6, zorder=7)
         ax.plot([bx, bx + IS * 6], [iz(GAPmm), iz(GAPmm)], color="#222", lw=0.6, zorder=7)            # lay-over on the bore
-    # flange → shell blind rivet (radial = UP; factory head on the flange/outside, bulb inside the drum)
+    # flange → shell securing: the flange is BONDED to the soft HDPE shell with DP8010 (spreads the load
+    # over the whole flange so nothing point-loads / pulls through the 3mm plastic) — this is the PRIMARY
+    # attachment; the blind rivet clamps during cure + is the mechanical backup, with a backup washer on
+    # the blind (inside) face so its bulb can't pull through the HDPE.
+    ax.plot([ix(fL), ix(2 * w + cav)], [iz(0), iz(0)], color=C_GASKT, lw=3.2, zorder=6)                    # DP8010 bond line (flange → shell)
     blind_rivet(ax, ix(-17), iz((HWmm - LT_DRUM_T) / 2), 90, IS * (LT_DRUM_T + HWmm), d=IS * LT_RIVET_D)
+    draw_rect(ax, ix(-17) - IS * 7, iz(-LT_DRUM_T) - IS * 1.4, IS * 14, IS * 1.4, fc=C_STEEL, lw=0.6, zorder=6)  # backup washer (blind side, spreads the bulb load in the HDPE)
     draw_dim_v(ax, ix(-36), iz(0), iz(GAPmm), f"{GAPmm}mm GAP", offset=30, fs=6.2, font=FONT)
     leader(ax, ix(-17), iz(HWmm), ix(-20), iz(-LT_DRUM_T) - 44,
-           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall —\nTanis/Gordon AH400436) BLIND-RIVETED to the shell —\nrivet in the flange, offset from the brush (head out, bulb in)",
+           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall — Tanis/Gordon AH400436):\nflange DP8010-BONDED to the HDPE shell (brown — spreads the load, no pull-through)\n+ Ø3.18 blind rivet w/ a backup washer (inside face); rivet clear of the brush",
            fs=6.0, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(30), iz(GAPmm) + 60,
            f"#4 STRIP BRUSH — 3/16\" channel,\n0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
@@ -1074,8 +1083,10 @@ def draw_sheet6():
             # the outer race seats on; a DIN 472 retaining-ring groove at the beam-side end captures it.
             rsh = (bore - 8) / 2 * s2
             for g in (-1, 1):
-                draw_rect(ax, min(cx + g * rsh, cx + g * rbore), sz, rbore - rsh, tz * 0.42, fc=fc, lw=1.0, zorder=6)      # shoulder lip
-                draw_rect(ax, min(cx + g * (rbore - 4), cx + g * (rbore + 5)), sz + tz * 0.74, 9, tz * 0.22, fc="#606068", lw=0.8, zorder=7)  # DIN 472 ring in groove
+                draw_rect(ax, min(cx + g * rsh, cx + g * rbore), sz, rbore - rsh, tz * 0.42, fc=fc, lw=1.0, zorder=6)      # shoulder lip (drum end, outer-race abutment)
+                gz = sz + tz * 0.70                                                                                       # DIN 472 groove/ring — beam-side end
+                draw_rect(ax, min(cx + g * rbore, cx + g * (rbore + 6)), gz, 6, tz * 0.30, fc=BG, lw=0.8, zorder=6)        # groove cut OUTWARD into the bore wall
+                draw_rect(ax, min(cx + g * (rbore - 6), cx + g * (rbore + 3)), gz + tz * 0.04, 9, tz * 0.22, fc="#606068", lw=0.8, zorder=7)  # DIN 472 internal ring — seated in the groove, MAJORITY projecting INWARD past the bore to retain the outer race
             ax.text(cx + rod + 40, sz + tz / 2, "LOCATED seat:\nshoulder (drum end)\n+ ring groove (beam end)\n— spec in notes", ha="left",
                     va="center", fontsize=6.2, color=C_OUT, **FONT, zorder=9)
         draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
@@ -1171,6 +1182,25 @@ def draw_sheet6():
             f"4× Ø11 clearance on Ø120 PCD (bolt → tapped flange) · Ø{SKF6215_ID} h6 bore · {LT_CAP_TOP_T:.0f}mm 6061-T6 Al plate\n"
             f"{n_rim}× Ø{LT_RIVET_HOLE} rim-rivet holes @ {LT_RIM_RIVET_PITCH}mm on the 280° arc",
             ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+
+    # ── CIRCLIP DETAIL — DIN 471 external ring seated in the Ø75 shaft groove (close-up · 5:1) ──
+    CD = 5.0
+    ccx2, ccz2 = 980, -2150
+    def CDX(mm): return ccx2 + CD * mm
+    def CDZ(mm): return ccz2 + CD * mm
+    ax.text(ccx2, CDZ(28), "CIRCLIP DETAIL (5:1)\nDIN 471 IN SHAFT GROOVE",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, CDX(-16), CDZ(-22), CD * 16, CD * 44, fc="#9BA0A8", lw=1.6, zorder=5)         # Ø75 shaft body (OD at local x=0)
+    draw_rect(ax, CDX(-1.5), CDZ(-1.325), CD * 1.5, CD * 2.65, fc=BG, lw=0.8, zorder=6)         # groove notch — Ø72.0 × 2.65 cut into the OD
+    draw_rect(ax, CDX(-1.5), CDZ(-1.25), CD * 3.3, CD * 2.5, fc="#565660", lw=1.1, zorder=8)    # DIN 471 ring — seated in the groove, MAJORITY projecting OUT past the OD
+    draw_rect(ax, CDX(0), CDZ(1.25), CD * 12, CD * 16, fc=C_STEEL, lw=1.2, zorder=6)            # bearing inner race — bore on the shaft, end face butts the circlip
+    ax.plot([CDX(0), CDX(0)], [CDZ(-22), CDZ(22)], color=C_CL, ls="--", lw=0.7, zorder=7)       # Ø75 OD reference line
+    draw_dim_v(ax, CDX(-20), CDZ(-1.325), CDZ(1.325), "2.65", offset=CD * 2.4, fs=6.0, font=FONT)   # groove width
+    leader(ax, CDX(1.8), CDZ(0.2), CDX(15), CDZ(-13),
+           "DIN 471 EXTERNAL CIRCLIP\n(McMaster 90154A895) — seated in\nthe Ø72.0 × 2.65 shaft groove,\nprojecting ~1.8mm past the Ø75 OD\nto retain the bearing inner race",
+           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, CDX(7), CDZ(9), CDX(15), CDZ(15), "BEARING INNER RACE\n(end face butts the circlip)", fs=6.0, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, CDX(-11), CDZ(-15), CDX(-20), CDZ(-19), "SHAFT Ø75 h6\n(groove Ø72.0)", fs=6.0, color=C_DIM, ha="right", arrow_style="->", font=FONT)
 
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
@@ -1769,11 +1799,11 @@ def draw_sheet10():
     rbx = bOD + 15
     wnz = Z_BEAM0                                                                     # beam bottom (near) wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
     draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="rivnut", wall=LT_AXLE_BEAM_T, csk=True)
-    # Cap → flange: countersunk flush in the cap face, THROUGH the cap, threading into the TAPPED
-    # steel flange (the flange is a machined part, so it is tapped directly — no nut; the bolt ends
-    # flush inside the flange).
+    # Cap → flange: countersunk flush in the cap face, THROUGH the cap and THROUGH the full 15mm
+    # flange (tapped all the way through — a through-drilled + tapped hole is simpler to make than a
+    # blind partial-depth one; no nut, the flange is the thread). Bolt ends flush at the flange far face.
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge
-    cb0, cb1 = -LT_CAP_TOP_T, 10
+    cb0, cb1 = -LT_CAP_TOP_T, 15                                                       # cap top (CSK head) → flange bottom face (z=15)
     draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
     leader(ax, rbx, wnz + 6, POST_R0 - 250, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 COUNTERSUNK into RIVET-NUTS\n(blind inserts, beam bottom wall — 3mm RHS)", fs=6.0, color=C_OUT,
@@ -1846,10 +1876,10 @@ def draw_sheet10():
     leader(ax, 30, 8, -20, -20, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 575, 55,
-           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× #4 strip brushes in Al flange holders\nFLANGE-RIVETED to the ROTATING drum OD, bristles wiping the fixed bore (Sheets 4/7)",
+           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× #4 strip brushes in Al flange holders\nFLANGE-RIVETED to the ROTATING drum OD, bristles\n wiping the fixed bore (Sheets 4/7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 575, Z_BEAM0 + 120,
-           f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing; swing-panel weldment (Sheet 8)",
+           f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing;\nswing-panel weldment (Sheet 8)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, POST_R0 + LT_FRAME_RHS / 2, -35, 575, -35,
            f"CAGE CORNER POST {LT_FRAME_RHS}×{LT_FRAME_RHS}×{LT_FRAME_T} RHS\nframes the beam end · welded to the panel rails (Sheet 8)",
@@ -1919,8 +1949,8 @@ def draw_sheet11():
     draw_dim_h(ax, AX(-STW / 2), AX(STW / 2), AZ(sbot) - 38, f"{STW}", offset=28, fs=6.5, above=False, font=FONT)
     draw_dim_v(ax, AX(STW / 2) + 38, AZ(-40), AZ(0), "40", offset=24, fs=6.0, right=True, font=FONT)
     draw_dim_h(ax, AX(-15), AX(15), AZ(-40) - 34, "30", offset=26, fs=6.0, above=False, font=FONT)
-    leader(ax, AX(30), AZ(4), AX(66) + 46, AZ(4) + 60, "TOP CAP — 8mm 6061-T6 Al", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, ax0, AZ(LT_CAP_TOP_T), AX(43) + 46, AZ(8),
+    leader(ax, AX(30), AZ(4), AX(66) + 46, AZ(4) - 20, "TOP CAP — 8mm 6061-T6 Al", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, ax0, AZ(LT_CAP_TOP_T), AX(43) + 46, AZ(18),
            "M10 COUNTERSUNK BOLT — driven from the cap's OUTSIDE\nface (wrench-accessible), THROUGH the cap into the TAPPED\nplug; sealed (DP8010) for light-tightness",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, AX(6), AZ(-18), AX(43) + 46, AZ(-54),
@@ -1934,7 +1964,7 @@ def draw_sheet11():
 
     # ══ VIEW B — HANDLE ARRANGEMENT (interior elevation · SCALE 1:2) ══════════
     B = 0.55
-    bx, bz = 780, -40                               # stile axis; grip midpoint
+    bx, bz = 980, 40                              # stile axis; grip midpoint
     def BX(mm): return bx + B * mm
     def BZ(mm): return bz + B * mm
     hd = GRAB_D
@@ -1956,13 +1986,13 @@ def draw_sheet11():
     cap_bar(gxo, -GRAB_L / 2 + hd, gxo, GRAB_L / 2 - hd)          # grip (parallel to stile)
     cap_bar(gxo, -GRAB_L / 2 + hd, -STW / 2 - 4, -GRAB_L / 2)     # bottom arm
     cap_bar(gxo, GRAB_L / 2 - hd, -STW / 2 - 4, GRAB_L / 2)       # top arm
-    for gz in (-GRAB_L / 2, GRAB_L / 2):                          # 2 feet, bolted to the stile
+    for gz in (-GRAB_L / 2, GRAB_L / 2):                          # 2 feet, bolted to the stile via rivet-nuts in the hollow wall
         draw_rect(ax, BX(-STW / 2 - 6), BZ(gz - 16), B * 6, B * 32, fc=C_STEEL, lw=0.9, zorder=7)
-        draw_bolt(ax, BX(-STW / 2 - 3), BZ(gz), B * 26, d=B * 6.35, vertical=False, head=-1, end="tapped", zb=9)
+        draw_bolt(ax, BX(-STW / 2 - 3), BZ(gz), B * 28, d=B * 6.35, vertical=False, head=-1, end="rivnut", wall=B * 5, zb=9)
     draw_dim_v(ax, BX(gxo) - B * hd - 46, BZ(-GRAB_L / 2), BZ(GRAB_L / 2), f"{GRAB_L} HANDLE", offset=28, fs=6.5, font=FONT)
     draw_dim_h(ax, BX(gxo), BX(-STW / 2), BZ(-GRAB_L / 2) - 40, f"{GRAB_SO} STANDOFF", offset=26, fs=6.5, above=False, font=FONT)
-    leader(ax, BX(gxo), BZ(GRAB_L / 4), BX(STW / 2) + 70, BZ(GRAB_L / 4 + 40),
-           f"McMaster 1871A65 — Ø{GRAB_D:.1f} (0.5\") round pull handle;\nbolted at both feet (2× 1/4\" tapped into the RHS wall) · NO welds",
+    leader(ax, BX(gxo), BZ(GRAB_L / 4), BX(STW * 0.9), BZ(GRAB_L / 4 + 40),
+           f"McMaster 1871A65 — Ø{GRAB_D:.1f} (0.5\") round pull handle; bolted at both\nfeet (2× 1/4\"-20 into RIVET-NUTS set in the hollow 5mm RHS wall — a\nblind insert gives full thread engagement + can't strip the thin wall)",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ══ Notes ═════════════════════════════════════════════════════════════════
@@ -1972,9 +2002,8 @@ def draw_sheet11():
         "2. Each open RHS end takes a SOLID STEEL PLUG (~30×30×40), TAPPED, locked in the tube by 2× GRUB (set) screws through the wall — anti-rotation + retention; the open section gets a solid fastening body.",
         "3. A single M10 COUNTERSUNK bolt is driven from the cap's OUTSIDE face (wrench-accessible), THROUGH the cap into the tapped plug — sealed with DP8010 for light-tightness. Pull load path: handle → tube → grub screws → plug → cap bolt → cap (lands in the structural cap, not the thin HDPE wall).",
         "4. Off-the-shelf pull handle McMaster 1871A65 (Ø0.5\" bar, 308mm long, 52mm standoff) bolts at its two feet with 1/4\" screws tapped into the RHS wall. No welds anywhere.",
-        "VIEW A 3:1 · VIEW B 1:2 · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 40, -320, 20, fs=7, font=FONT, width=1360, wrap=120, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, -320, 20, fs=7, font=FONT, width=1160, wrap=120, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 11 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="PULL-HANDLE MOUNT — STILE → CAP PLUG JOINT + HANDLE ARRANGEMENT",

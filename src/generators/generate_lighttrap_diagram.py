@@ -735,8 +735,8 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     leader(ax, ix(-17), iz(HWmm), ix(-20), iz(-LT_DRUM_T) - 44,
            "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall — Tanis/Gordon AH400436):\nflange DP8010-BONDED to the HDPE shell (brown — spreads the load, no pull-through)\n+ Ø3.18 blind rivet w/ a backup washer (inside face); rivet clear of the brush",
            fs=6.0, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(30), iz(GAPmm) + 60,
-           f"#4 STRIP BRUSH — 3/16\" channel,\n0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
+    leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(22), iz(GAPmm) + 60,
+           f"#4 (3/16\") STRIP BRUSH\n0.008\" black nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
            ha="left", arrow_style="->", font=FONT)
     ax.text(ox, iz(GAPmm + HTmm) + 8, "FIXED HOUSING (bore)", ha="center", va="bottom",
             fontsize=6.2, color=C_DIM, **FONT, zorder=8)
@@ -979,7 +979,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     draw_bolt(ax, ox, cz, rz(0) - rz(-15), d=58, head=-1, end="rivnut", wall=IS * T, csk=True)  # countersunk head + barrel spans the wall
     leader(ax, ox - 20, rz(-15), rx(-42), rz(-15) - 34, "COUNTERSUNK bolt head — flush in the\nring underside (driven from below)",
            fs=6.0, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, ox + 24, rz(T + 6), rx(48), rz(T + 30), "RIVET-NUT (blind threaded insert) set in the beam's\nBOTTOM wall from below — its barrel provides the\ncaptive thread; the bolt clamps the ring up to the wall",
+    leader(ax, ox + 24, rz(T + 6), rx(30), rz(T + 24), "RIVET-NUT (blind insert) in the beam\nbottom wall — barrel = captive thread",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, rx(-16), rz(BH * 0.62), rx(-48), rz(BH + 4), "BORE — EMPTY:\nNO nut inside the closed tube",
            fs=6.0, color=C_DIM, ha="right", arrow_style="->", font=FONT)
@@ -1112,7 +1112,7 @@ def draw_sheet6():
                 ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
     ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 45, C_ALUM,
-         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · Ø130 H7 seat + Ø122 shoulder + DIN 472 groove — LOCATED · nylon-isolated · 45mm tall (raised beam-side standoff → ≈10mm end-retainer-plate clearance)", located=True)
+         "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · Ø130 H7 seat + Ø122 shoulder + DIN 472 groove — LOCATED · nylon-isolated · 45mm tall", located=True)
     ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 38, C_STEEL,
          "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · plain Ø130 H7 bore — FLOATING (outer race slides)", weldnote="BOLTED to floor plate (8× M10) — no weld")
 
@@ -1208,7 +1208,7 @@ def draw_sheet6():
         "FASTENING — cap → flange: countersunk bolt in the cap (Ø11 clearance) threading into the TAPPED stub-shaft flange on the Ø120 PCD — the flange is a machined steel part, so it is tapped directly (no nut; bolt ends flush in the flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO - 40, R_CAP - cr - 100, 36, fs=6, font=FONT, width=2000, wrap=185, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 34, fs=6, font=FONT, width=1560, wrap=138, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
@@ -1992,7 +1992,7 @@ def draw_sheet11():
     draw_dim_v(ax, BX(gxo) - B * hd - 46, BZ(-GRAB_L / 2), BZ(GRAB_L / 2), f"{GRAB_L} HANDLE", offset=28, fs=6.5, font=FONT)
     draw_dim_h(ax, BX(gxo), BX(-STW / 2), BZ(-GRAB_L / 2) - 40, f"{GRAB_SO} STANDOFF", offset=26, fs=6.5, above=False, font=FONT)
     leader(ax, BX(gxo), BZ(GRAB_L / 4), BX(STW * 0.9), BZ(GRAB_L / 4 + 40),
-           f"McMaster 1871A65 — Ø{GRAB_D:.1f} (0.5\") round pull handle; bolted at both\nfeet (2× 1/4\"-20 into RIVET-NUTS set in the hollow 5mm RHS wall — a\nblind insert gives full thread engagement + can't strip the thin wall)",
+           f"McMaster 1871A65 — Ø{GRAB_D:.1f} (0.5\") round pull\nhandle; bolted at both feet (2× 1/4\"-20 into\nRIVET-NUTS set in the hollow 5mm RHS wall)",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ══ Notes ═════════════════════════════════════════════════════════════════
@@ -2081,8 +2081,8 @@ def draw_sheet12():
                 arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
     for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                       # … killed at the seal (red ✗)
         ax.plot([TX(13 + s1[0]), TX(13 + s2[0])], [TZ(s1[1]), TZ(s2[1])], color="#D33", lw=2.2, zorder=9)
-    leader(ax, TX(4), TZ(37), TX(76), TZ(150),
-           "NEOPRENE WIPER — 12mm closed-cell strip, PSA adhesive\nback (McMaster 93855K6) BONDED to the rotating drum cap\n(brown line) + a silicone bead at the seam; its free edge\nsweeps the fixed frame plate (red) — caps the gap, light STOPS",
+    leader(ax, TX(4), TZ(37), TX(44), TZ(150),
+           "NEOPRENE WIPER — PSA-backed strip BONDED to the\nrotating drum cap (brown) + silicone bead; its free\nedge sweeps the fixed frame plate — caps the gap",
            fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     ax.text(TX(82), TZ(57), "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6.5, color=C_DIM, **FONT, zorder=9)
     leader(ax, TX(-70), TZ(17), TX(-128), TZ(50), "DRUM CAP (rotating)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)

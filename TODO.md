@@ -56,6 +56,21 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
 
 ## 🛠 Tooling / infra
 
+- [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
+  `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
+  generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
+  are tight-bbox noise, ignore). **DEFERRED until after the light-trap blueprint is done** (light-trap's own
+  overflows are being fixed now, in-flight). Tackle the rest **one generator per tidy pass** (skill discipline —
+  render → crop-zoom → verify), priority by count/severity:
+  - **film_plane_mechanism** (10, worst +52%) — Sheet 9 section titles + U-joint/M6 leaders over-reaching left.
+  - **weight_analysis** (9, +35%) — Sheet 1 "Total / CG" stats boxes hang off the BOTTOM (P8 notes placement).
+  - **ibc_frame_drawing** (9, +19%) — Sheet 1 DATUMS + member-schedule table off left (P8).
+  - **shelf_diagram** (3, +33%), **joint_study** (4, +19%), then walkway/electrical/tray_redesign/corner_gimbal/
+    portrait_viz (1 ea, +15–26%).
+  - **spray_bar Sheet 7 `"38×38×1.6mm 304-SS square"` +192% off left** — ANOMALY: anchored at a main-view coord
+    (`CARRIAGE_YD_CENTER`) inside a section-panel axes with a different x-range, so it lands outside its panel.
+    Look directly — likely a real placement bug, not a wide label.
+  - Re-run `tidy_labels.py --overflow src/generators/generate_*.py` after each pass to confirm the list shrinks.
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking

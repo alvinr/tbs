@@ -39,9 +39,11 @@ IS caught by the render-based ``--overflow`` pass:
                        Figure.savefig, no files written) and measure each text artist's bbox
                        against the axes data limits (the intended frame — the sheets use
                        axis("off") + bbox_inches="tight") and against its neighbours. Reports
-                       OVERFLOW (off LEFT/RIGHT/TOP/BOTTOM by >``--tol``%, default 4) + CROWDED
-                       (two DIFFERENT labels overlapping ≥60% of the smaller; ``--no-collisions``
-                       to skip — bbox-based, so multi-line whitespace makes it advisory). Report
+                       OVERFLOW (off LEFT/RIGHT/TOP/BOTTOM by >``--tol``%, default 4 — skipped on
+                       small INSET axes <12%% of the figure, whose tiny frame isn't the visual
+                       boundary and balloons the %%) + CROWDED (two DIFFERENT labels overlapping
+                       ≥60%% of the smaller; ``--no-collisions`` to skip — bbox-based, so multi-line
+                       whitespace makes it advisory). Report
                        only; repositioning is a judgement (P1/P8). Needs matplotlib; the static
                        ``--check``/``--fix`` path stays dependency-free (mpl imported lazily).
 """
@@ -171,6 +173,11 @@ def apply_fixes(src, findings):
 def _scan_axes(ax, renderer, sheet, findings, tol_frac, collide):
     """Measure every non-empty Text artist in `ax`; record frame-overflow + label collisions."""
     import matplotlib.text as mtext
+    # A small INSET axes (section detail, legend) isn't the sheet's visual frame — a label leaving
+    # its tiny box into the surrounding sheet is cosmetic, and % overflow vs a tiny range balloons
+    # (a label 2× an inset's width reads "+192%"). Skip OVERFLOW on insets; still check collisions.
+    pos = ax.get_position()
+    is_inset = (pos.width * pos.height) < 0.12
     xl, yl = ax.get_xlim(), ax.get_ylim()
     x_lo, x_hi = min(xl), max(xl)
     y_lo, y_hi = min(yl), max(yl)
@@ -211,7 +218,7 @@ def _scan_axes(ax, renderer, sheet, findings, tol_frac, collide):
             sides.append(("off BOTTOM", (y_lo - by_lo) / yr))
         if by_hi - y_hi > tol_y:
             sides.append(("off TOP", (by_hi - y_hi) / yr))
-        if sides:
+        if sides and not is_inset:
             desc = ", ".join(f"{d} +{f * 100:.0f}%" for d, f in sides)
             findings.append((sheet, "OVERFLOW", _clip(s), desc))
 

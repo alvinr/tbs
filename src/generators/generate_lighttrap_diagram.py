@@ -1087,7 +1087,7 @@ def draw_sheet6():
                 gz = sz + tz * 0.70                                                                                       # DIN 472 groove/ring — beam-side end
                 draw_rect(ax, min(cx + g * rbore, cx + g * (rbore + 6)), gz, 6, tz * 0.30, fc=BG, lw=0.8, zorder=6)        # groove cut OUTWARD into the bore wall
                 draw_rect(ax, min(cx + g * (rbore - 6), cx + g * (rbore + 3)), gz + tz * 0.04, 9, tz * 0.22, fc="#606068", lw=0.8, zorder=7)  # DIN 472 internal ring — seated in the groove, MAJORITY projecting INWARD past the bore to retain the outer race
-            ax.text(cx + rod + 40, sz + tz / 2, "LOCATED seat:\nshoulder (drum end)\n+ ring groove (beam end)\n— spec in notes", ha="left",
+            ax.text(cx + rod + 100, sz + tz / 2, "LOCATED seat:\nshoulder (drum end)\n+ ring groove (beam end)\n— spec in notes", ha="left",
                     va="center", fontsize=6.2, color=C_OUT, **FONT, zorder=9)
         draw_cl_v(ax, cx, sz - 16, sz + tz + 16)
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
@@ -1208,7 +1208,7 @@ def draw_sheet6():
         "FASTENING — cap → flange: countersunk bolt in the cap (Ø11 clearance) threading into the TAPPED stub-shaft flange on the Ø120 PCD — the flange is a machined steel part, so it is tapped directly (no nut; bolt ends flush in the flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO - 40, R_CAP - cr - 100, 36, fs=6, font=FONT, width=2000, wrap=185, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",

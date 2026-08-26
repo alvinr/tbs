@@ -2056,9 +2056,9 @@ def draw_sheet12():
            f"bristles wipe the FIXED housing\n"
            f"bore across the {RUN_GAP}mm gap (see notes)",
            fs=6.8, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, SX(-170), SZ(-40), SX(-300), SZ(-90), f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6.5,
+    leader(ax, SX(-170), SZ(-40), SX(-225), SZ(-90), f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6.5,
            color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, SX(163), SZ(-60), SX(300), SZ(-100), f"DRUM {LT_DRUM_T:.2f}mm", fs=6.5,
+    leader(ax, SX(163), SZ(-60), SX(200), SZ(-100), f"DRUM {LT_DRUM_T:.2f}mm", fs=6.5,
            color=C_DIM, ha="left", arrow_style="->", font=FONT)
 
     # ══ DETAIL 2 — TOP-END LIGHT PATH (axial section · 1.5:1) ═════════════════
@@ -2086,8 +2086,8 @@ def draw_sheet12():
            fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     ax.text(TX(82), TZ(57), "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6.5, color=C_DIM, **FONT, zorder=9)
     leader(ax, TX(-70), TZ(17), TX(-128), TZ(50), "DRUM CAP (rotating)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, TX(43), TZ(-90), TX(156), TZ(-70), "HOUSING (fixed)", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
-    leader(ax, TX(-7), TZ(-95), TX(-128), TZ(-160), f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, TX(43), TZ(-90), TX(120), TZ(-70), "HOUSING (fixed)", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
+    leader(ax, TX(-7), TZ(-95), TX(-55), TZ(-160), f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
     ax.text(TX(13), TZ(-195), "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
             fontsize=6.5, color=C_OUT, **FONT, zorder=9)
 

@@ -288,7 +288,7 @@ The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 blueprints for the machined metal parts: the Ø855 6061-T6 Al end cap, the upper Al
 bearing ring, the lower A36 steel floor collar, and the stub-shaft + flange — each with
 OD, bore + fit, thickness, bolt pattern (PCD/count/Ø), material, and the fastening
-scheme (cap→flange bolted THROUGH on the Ø120 PCD — countersunk in the cap, Ø11 clearance through the flange, nut behind, not tapped; ring/collar→beam via M10 countersunk flat-head bolts — flush in the ring/collar underside — into rivet-nuts / blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; Al nylon-isolated).
+scheme (cap→flange countersunk in the cap, Ø11 clearance, threading into the TAPPED steel flange on the Ø120 PCD — the flange is a machined part, so it is tapped directly, no nut; ring/collar→beam via M10 countersunk flat-head bolts — flush in the ring/collar underside — into rivet-nuts / blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 

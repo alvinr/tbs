@@ -857,10 +857,10 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         zf0, zf1 = -40 * SC * s, -55 * SC * s
         draw_rect(ax, cx - 80 * SC, min(zf0, zf1), 160 * SC, abs(zf1 - zf0),
                   fc=C_STEEL, lw=1.4, zorder=6)
-        for g in (-1, 1):                          # cap → flange bolts (M10 countersunk in the cap, THROUGH the flange + nut, Ø120 PCD)
+        for g in (-1, 1):                          # cap → flange bolts (M10 countersunk in the cap, threading into the TAPPED steel flange — no nut, Ø120 PCD)
             fb0, fb1 = -40 * SC * s, zc1
             draw_bolt(ax, cx + g * 60 * SC, (fb0 + fb1) / 2, abs(fb1 - fb0),
-                      d=8 * SC, head=int(-s), end="nut", csk=True, zb=9)
+                      d=8 * SC, head=int(-s), end="tapped", csk=True, zb=9)
         # ring/collar → beam bolts: HEAD on the ring's outer face (accessible), up through the
         # ring + the beam's near 3mm wall, into a RIVET-NUT (blind threaded insert) in that wall (the ring↔beam contact
         # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
@@ -1064,7 +1064,7 @@ def draw_sheet6():
         draw_cl_v(ax, cx, pz - rod - 20, pz + rod + 20)
         draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 6, f"Ø{od} OD", offset=34, fs=7, font=FONT)
         ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=7, color=C_DIM, **FONT, zorder=9)
-        ax.text(cx, pz - rod - 14, f"{n}×M10 on Ø{pcd} PCD · Ø11 clearance → rivet-nut in the beam wall",
+        ax.text(cx, pz - rod - 14, f"{n}×M10 COUNTERSUNK on Ø{pcd} PCD (flush in the ring face) · Ø11 c'bore → rivet-nut in the beam wall",
                 ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
         tz = thk * s2                                                         # SECTION (annular)
         for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
@@ -1086,9 +1086,9 @@ def draw_sheet6():
             plate_tz = LT_FRAME_PLATE_T * s2
             plate_hw = rod + 100
             draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
-            for g in (-1, 1):                        # collar BOLTED down to the plate (on the bolt PCD — was a fillet weld)
+            for g in (-1, 1):                        # collar BOLTED down to the plate (on the bolt PCD — was a fillet weld); CSK flush in the collar face
                 draw_bolt(ax, cx + g * rpcd, (sz + tz + sz - plate_tz) / 2, (tz + plate_tz),
-                          d=10 * s2, head=1, end="tapped", zb=8)
+                          d=10 * s2, head=1, end="tapped", csk=True, zb=8)
             draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
                        offset=30, fs=6.4, right=True, font=FONT)
             leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 46,
@@ -1119,7 +1119,7 @@ def draw_sheet6():
     holes(cx, fpz, 120 / 2 * s2, 4)
     draw_cl_h(ax, cx - fl_r - 20, cx + fl_r + 20, fpz)
     draw_dim_h(ax, cx - fl_r, cx + fl_r, fpz + fl_r + 6, "Ø160 FLANGE", offset=32, fs=7, font=FONT)
-    ax.text(cx, fpz - fl_r - 14, "4×M10 Ø11 CLEARANCE on Ø120 PCD (cap bolt THROUGH + nut)", ha="center", va="top",
+    ax.text(cx, fpz - fl_r - 14, "4×M10 TAPPED on Ø120 PCD (cap bolt threads in — no nut)", ha="center", va="top",
             fontsize=7.5, color=C_OUT, **FONT, zorder=9)
     draw_rect(ax, cx - fl_r, ez - fl_t, 2 * fl_r, fl_t, fc=C_STEEL, lw=1.6, zorder=5)     # flange
     draw_rect(ax, cx - sh_r, ez, 2 * sh_r, shaft_L, fc=C_STEEL, lw=1.6, zorder=5)         # shaft
@@ -1175,7 +1175,7 @@ def draw_sheet6():
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD. Stub shaft Ø{SKF6215_ID} h6, circlip groove Ø72.0 × 2.65 (INNER-race retention; McMaster 90154A895, ext, Ø75). LOWER shaft: a groove each side of the bearing (2 clips). UPPER shaft (carries the hang): drum-side groove only — the beam-side clip is REPLACED by a bolted END-RETAINER PLATE (Ø90 × 4 mild steel, central Ø10.5 c'bore for an M10×25 flat-head CSK screw) into an M10 ×16 tapped hole in the beam-side shaft end; its rim clamps the inner-race face, so the hang is on a bolted member, not one circlip. OUTER race — UPPER ring LOCATED: the bore steps Ø130→Ø122 to form a ~4mm-high shoulder (drum end, outer-race abutment) + a retaining-ring groove Ø134.0 × 4.15 (beam end; McMaster 98455A170, int, Ø130). LOWER collar: plain Ø130 H7 bore, FLOATING (outer race free to slide — the upper bearing is the located one).",
-        "FASTENING — cap → flange: countersunk bolt in the cap, THROUGH the stub-shaft flange + a nut (Ø11 clearance both parts — drilled through, simpler fab than a blind-tapped flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
+        "FASTENING — cap → flange: countersunk bolt in the cap (Ø11 clearance) threading into the TAPPED stub-shaft flange on the Ø120 PCD — the flange is a machined steel part, so it is tapped directly (no nut; bolt ends flush in the flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 36, fs=6.5, font=FONT, width=1560, wrap=112, title_color=TITLE_COL)
@@ -1771,16 +1771,17 @@ def draw_sheet10():
     rbx = bOD + 15
     wnz = Z_BEAM0                                                                     # beam bottom (near) wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
     draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="rivnut", wall=LT_AXLE_BEAM_T, csk=True)
-    # Cap → flange: countersunk flush in the cap face, THROUGH the cap + a Ø11 clearance hole in the
-    # flange, secured by a nut on the far side (drilled through — simpler fab than a blind-tapped flange).
+    # Cap → flange: countersunk flush in the cap face, THROUGH the cap, threading into the TAPPED
+    # steel flange (the flange is a machined part, so it is tapped directly — no nut; the bolt ends
+    # flush inside the flange).
     cbx = 60                                                                          # Ø120 PCD — clear of the Ø75 shaft and the Ø160 flange edge
     cb0, cb1 = -LT_CAP_TOP_T, 10
-    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="nut", csk=True)
+    draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
     leader(ax, rbx, wnz + 6, POST_R0 - 250, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
            f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 COUNTERSUNK into RIVET-NUTS\n(blind inserts, beam bottom wall — 3mm RHS)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, cbx, -LT_CAP_TOP_T, -120, -LT_CAP_TOP_T - 45,
-           "CAP → FLANGE\n4×M10 COUNTERSUNK,\nTHROUGH flange + nut", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+           "CAP → FLANGE\n4×M10 COUNTERSUNK into\nTAPPED flange (no nut)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── INNER joint — drum shell → cap lap (to scale; detail on Sheet 4) ─────
     l_angle(ax, CAPR, 0, -LT_RIM_LEG, LT_LAP_H, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=6)       # rim-angle (L) — flat leg on cap + lip up
@@ -1924,9 +1925,12 @@ def draw_sheet11():
     leader(ax, ax0, AZ(LT_CAP_TOP_T), AX(43) + 46, AZ(8),
            "M10 COUNTERSUNK BOLT — driven from the cap's OUTSIDE\nface (wrench-accessible), THROUGH the cap into the TAPPED\nplug; sealed (DP8010) for light-tightness",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, AX(-STW / 2), AZ(-30), AX(43) + 46, AZ(-54),
-           f"SOLID STEEL PLUG (TAPPED, ~30×30×40) fills the open\n{STW}×{STW}×5 RHS end; 2× GRUB SCREWS through the 5mm wall\nseat on it — lock the plug + prevent rotation. Pull load →\nhandle → tube → grub screws → plug → cap bolt → cap",
+    leader(ax, AX(6), AZ(-18), AX(43) + 46, AZ(-54),
+           f"SOLID STEEL PLUG (TAPPED, ~30×30×40) fills the open\n{STW}×{STW}×5 RHS end + carries the cap-bolt thread.\nLoad path: handle → tube → grub screws → plug →\ncap bolt → cap",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, AX(-STW / 2), AZ(-16), AX(-43) - 34, AZ(-8),
+           "2× M8 GRUB SCREWS\nthru wall → seat on plug\n(lock + anti-rotation)",
+           fs=6.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, AX(-STW / 2), AZ(sbot + 34), AX(-43) - 34, AZ(sbot + 78),
            f"STILE — {STW}×{STW}×5 SS RHS\n(spans cap → cap, ~2.1 m)", fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
 
@@ -2015,8 +2019,8 @@ def draw_sheet12():
     draw_rect(ax, SX(112), SZ(-16), S * 20, S * 32, fc="#8A8F98", lw=1.0, zorder=7)     # #4 channel in the U-track
     for zz in range(-14, 16, 6):                                                        # bristles lay over onto the bore
         ax.plot([SX(112), SX(-138)], [SZ(zz), SZ(zz + 10)], color="#222", lw=0.6, zorder=6)
-    for zc in (-38, 38):                                                                # flange blind rivets
-        ax.plot([SX(132), SX(182)], [SZ(zc), SZ(zc)], color=C_OUT, lw=1.8, zorder=8)
+    for zc in (-34, 34):                                                                # flange blind rivets (thru the flange + drum wall) — factory head on the flange face, set head inside the drum
+        blind_rivet(ax, SX(159), SZ(zc), 180, S * 54, d=S * 5)
     draw_dim_h(ax, SX(-140), SX(140), SZ(-120), f"≈{RUN_GAP}mm RUNNING GAP", offset=44,
                fs=7.0, above=False, font=FONT)
     leader(ax, SX(100), SZ(30), SX(150), SZ(150),
@@ -2041,6 +2045,8 @@ def draw_sheet12():
     draw_rect(ax, TX(-120), TZ(6), S * 110, S * 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
     draw_rect(ax, TX(-120), TZ(48), S * 196, S * 18, fc=C_STEEL, lw=1.4, zorder=6)      # frame top plate (fixed)
     draw_rect(ax, TX(-88), TZ(28), S * 122, S * 18, fc=C_GASKT, lw=1.0, zorder=7)       # neoprene wiper — caps the gap
+    ax.plot([TX(-88), TX(34)], [TZ(28), TZ(28)], color="#8A5A2B", lw=2.6, zorder=8)     # PSA adhesive bond: neoprene → rotating drum cap
+    ax.plot([TX(-40), TX(34)], [TZ(46), TZ(46)], color="#B03030", lw=1.4, ls=(0, (2, 2)), zorder=8)  # wiping contact: free edge sweeps the fixed frame plate
     for zz in range(-120, -66, 8):                                                      # brush (running-gap seal), lower
         ax.plot([TX(-10), TX(32)], [TZ(zz), TZ(zz + 5)], color="#222", lw=0.6, zorder=6)
     draw_rect(ax, TX(-16), TZ(-132), S * 6, S * 70, fc="#A8763A", lw=0.5, zorder=6)     # brush holder (bronze)
@@ -2048,8 +2054,9 @@ def draw_sheet12():
                 arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
     for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                       # … killed at the seal (red ✗)
         ax.plot([TX(13 + s1[0]), TX(13 + s2[0])], [TZ(s1[1]), TZ(s2[1])], color="#D33", lw=2.2, zorder=9)
-    leader(ax, TX(10), TZ(40), TX(76), TZ(140), "NEOPRENE WIPER (cap↔frame)\ncaps the gap — light STOPS here",
-           fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, TX(4), TZ(37), TX(76), TZ(150),
+           "NEOPRENE WIPER — 12mm closed-cell strip, PSA adhesive\nback (McMaster 93855K6) BONDED to the rotating drum cap\n(brown line) + a silicone bead at the seam; its free edge\nsweeps the fixed frame plate (red) — caps the gap, light STOPS",
+           fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     ax.text(TX(82), TZ(57), "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6.5, color=C_DIM, **FONT, zorder=9)
     leader(ax, TX(-70), TZ(17), TX(-128), TZ(50), "DRUM CAP (rotating)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
     leader(ax, TX(43), TZ(-90), TX(156), TZ(-70), "HOUSING (fixed)", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
@@ -2060,7 +2067,7 @@ def draw_sheet12():
     notes = [
         "SEAL DETAILS  (enlarged from Sheet 7)",
         f"DETAIL 1 — running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015 — the rivets land in the aluminum flange, clear of the brush); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint). Seals the gap CIRCUMFERENTIALLY.",
-        "DETAIL 2 — top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes there is no straight-through or over-the-top light path.",
+        "DETAIL 2 — top + bottom axial ends: 12mm closed-cell neoprene wiper strips secured by their own PSA adhesive back (McMaster 93855K6) BONDED to the rotating drum cap face + a silicone bead along the seam; the strip's free edge sweeps the fixed frame plate. This CAPS the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes there is no straight-through or over-the-top light path.",
         "SCALE 1.5:1 · ALL DIMS IN mm · see Sheet 7 for the rotation/light-path plans A–C.",
     ]
     draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1740, wrap=150, title_color=TITLE_COL)

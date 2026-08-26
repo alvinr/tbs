@@ -1528,8 +1528,8 @@ def draw_sheet8():
            f"CORNER POST + PERIMETER RAILS\n{RHS}×{RHS}×{LT_FRAME_T} RHS welded box",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
-           fp(cx1, cyr)[0] + 70, fp(cx1, cyr)[1] + 55,
-           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — bonded over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to top/bottom beams — see Sheet 9",
+           fp(cx1, cyr)[0] + 20, fp(cx1, cyr)[1] + 55,
+           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — bonded over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to\ntop/bottom beams — see Sheet 9",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── RHS tube-section inset — the frame members are HOLLOW tube, not solid bar ──

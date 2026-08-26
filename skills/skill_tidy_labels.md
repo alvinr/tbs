@@ -32,6 +32,16 @@ It **flags** (does not touch) the ones that need judgement — carry these into 
 
 It deliberately does **not** judge dimension `offset` (scale-dependent — 3–8 data-units in detail views vs 25–80 mm-first) — that's a visual call.
 
+### 1b. Render-based half — `--overflow` (automates the "off-frame / collision" check)
+```
+/usr/bin/python3 src/generators/tidy_labels.py --overflow <generator.py>   # render + measure
+```
+This RENDERS every sheet (monkeypatched `Figure.savefig`, no files written) and measures each text bbox against the axes data limits and its neighbours — the one *visual* failure that is mechanical. It reports, in priority order:
+- **OVERFLOW** — a label off the frame **LEFT/RIGHT/TOP/BOTTOM** by >`--tol`% (default 4; `bbox_inches="tight"` absorbs a few %, so only real over-reach trips). This is the deterministic version of the "leaders over-reach — pull the end IN" work in step 3 — fix each by shortening/relocating the leader, wrapping the label narrower, or (for a notes line off the right edge) narrowing the notes `width`/`wrap`.
+- **CROWDED** — two DIFFERENT labels overlapping ≥60% of the smaller (`--no-collisions` to skip). bbox-based, so a multi-line label's whitespace can over-report — **advisory**, confirm on the crop-zoom.
+
+Run it before the manual crop-zoom: it hands you the exact labels to fix, so step 3 is spent on *judgement* (which clear pocket, which side) rather than *hunting*. Re-run after fixes until the OVERFLOW list is empty (or every remainder is a deliberate margin note). It needs matplotlib — drive with `/usr/bin/python3`.
+
 ### 2. Regenerate
 ```
 /usr/bin/python3 src/generators/<generator.py>
@@ -45,7 +55,7 @@ Open the PNG and **crop-zoom every label cluster at 2.5–3×** (PIL crop — ne
 3. **Leaders** each shortest into the *nearest clear pocket*, tip on the specific material edge, crossing the fewest bodies (P1/P3). Sweep the opposite side before keeping a long one. In practice the machine-placed targets **over-reach** — default long throws that sail past the nearby white space — so most of a tidy is **pulling label ends IN** to land just clear of the feature/neighbours (a real tidy trimmed leader throws `250→200`, `300→150`, `700→575`); occasionally push one **further OUT** to reach a genuinely clear pocket when the near side collides. "Shortest" means *shortest that clears*, not shortest possible.
 4. **Text on a hatch/ghost/fill** → white `bbox=LBL_BG`, not just high zorder (P9).
 5. **Dimensions** on the open side (`right=`/`above=` toward white space), sensible `offset` for *this* sheet's scale, no `<30mm` gap dimensioned between extension lines (P7).
-6. **Collisions / clipping** — labels overlapping each other or running off the axes.
+6. **Collisions / clipping** — labels overlapping each other or running off the axes (**auto-surfaced by `--overflow` in step 1b** — resolve every OVERFLOW; confirm each CROWDED on the crop).
 7. Resolve the **flags** from step 1 (spec-sheet leaders → notes; hand-wrapped notes → `wrap=`).
 
 ### 4. Re-render and verify

@@ -19,6 +19,50 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## 🛑 OUTSTANDING CASCADE — drum Ø900→Ø800 resize: construction + overview 3D still STALE (2026-08-26)
+
+The drum shrink (Ø900→Ø800, re-centered X=−420 to fit the FIXED cage — Option 2) **plus** the top-end hub
+reconciliation (interior **2120→1970**, `DRUM_H_LT` 2250→2100; stub shaft 150→75; bearings clear of the
+axle beams; housing spans beam-to-beam) cascaded through **constants + all 2D lighttrap/assembly/weight/ibc/
+walkway generators + parts/costing/weight/facts/dep-map + the report** (all drift/reconcile gates green), and
+the **`lighttrap` 3D model was re-sent + verified** (bearing 2130–2155 sits below the 2167 top beam — no
+overlap; cage top 2267, 121mm ceiling clearance). **DEFERRED by Alvin — do NOT complete until the light-trap
+review is finished:**
+- [ ] **`construction.skp` + `overview.skp` are STALE** vs the new drum (old Ø900 + old `DRUM_H_LT` 2250).
+  `manifest.py --check` flags both (+ `lighttrap`). When ready: ALVIN opens each in SketchUp (focus order:
+  construction, then overview) → I `--send` → verify → ALVIN saves + uploads to Sketchfab → `manifest.py --update`.
+- [ ] **`lighttrap.skp` re-sent to the live doc but not yet SAVED/UPLOADED** — needs ALVIN File>Save +
+  Sketchfab re-upload; then `manifest.py --update lighttrap` before the cascade commit.
+- [ ] **Commit gate:** the whole cascade is uncommitted; committing while construction/overview are stale
+  will trip the model-staleness/missing-cascade check — resolve the 3D (above) as part of the commit, or
+  Alvin decides to commit the 2D/constant change first and re-send the two models in a follow-up.
+- [x] **Cage-top Z / bearing-through-beam (2026-08-26) — DONE.** Reconciled to the 2D Sheet-10 scheme via
+  single-source constants (`LT_STUB_SHAFT_L / LT_BRG_STANDOFF / LT_BEAM_STANDOFF / LT_CAGE_TOP / LT_CAGE_BOT /
+  LT_HOUSING_Z_*`): axle beams clear the drum, upper bearing hangs below the top beam, lower floats above the
+  bottom beam. Sheet 8 GA + Sheet 10/11 + the 3D all agree.
+- [ ] **Hingepanel drum-height drift (pre-existing, found 2026-08-26):** `generate_hingepanel_diagram.py`
+  hardcodes its OWN `DRUM_H = 2200` (line 58) instead of importing `DRUM_H_LT` (now 2100) — so the hinged-panel
+  sheets draw the light-trap drum ~100mm too tall. Single-source it off `DRUM_H_LT` and re-gen the hingepanel
+  sheets (separate cascade; not part of the light-trap set).
+- [ ] **Minor label tidy:** a few light-trap 2D labels shifted with the resize + hub rework — a "52mm
+  standoff" overlap on Sheet 1, the Sheet 8 cut-section "wall 3mm / axle beams" text overlapping the
+  mount-plate label, and the **Sheet 5 MOUNT-PLATE DETAIL title colliding with the lower-hub labels**.
+  Run `tidy_labels.py --overflow` on `generate_lighttrap_diagram.py` before shipping. The Drum-revolve
+  scene camera is also a touch zoomed-out (tighten on the next lighttrap send).
+- [x] **Axle beam over-sizing + ring-bolt geometry (2026-08-26) — DONE.** Deflection check → beam
+  100×50→50×50; bearing ring/collar → tapped Ø230×12 steel MOUNT PLATE fillet-welded across the beam
+  (rivet-nuts retired). Constants/3D/Sheets 5/6/8/10/parts/costing/report reconciled, gates green.
+
+## 🔁 Light-trap ↔ hinged-panel sheet DUPLICATION (2026-08-26, Alvin) — resolve after the drum-sizing decision
+
+- [ ] **`hingepanel-sheet6` duplicates content now owned by the new light-trap sheets.** It shows the
+  interior handle fastening (and other drum detail) that the new light-trap set now covers in dedicated
+  sheets (Sheet 1 GA + **Sheet 11 pull-handle mount**, the bearing-hub/seal/machined-component sheets, etc.).
+  Audit `hingepanel-sheet6` (and the other hingepanel sheets) against the light-trap set; each detail should
+  have ONE owning blueprint — keep it on the light-trap sheet, cross-reference from the hingepanel report,
+  remove the duplicate from `hingepanel-sheet6`. Do this AFTER the drum-diameter change lands (that will
+  re-cut several of these sheets anyway).
+
 ## 🔩 Revolving light-trap — metal-cap + lap-joint cascade (2026-08-21)
 
 The 2D blueprint set (`generate_lighttrap_diagram.py`) now reflects the design change: **end caps

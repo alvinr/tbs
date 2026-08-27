@@ -28,22 +28,7 @@ import matplotlib.patches as mpatches
 import math
 import os
 
-from tbs_constants import (
-    C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM,
-    DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP,
-    LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
-    LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH,
-    LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC,
-    DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
-    LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD,
-    LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT,
-    LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN,
-    LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N,
-    LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT,
-    LT_HOUSING_ARC, LT_HOUSING_RIVET_N,
-    LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W,
-    DIAGRAM_DPI, DIAGRAMS_DIR,
-)
+from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N, LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v, draw_cl_h,
     leader, draw_notes,
@@ -227,7 +212,7 @@ def draw_sheet1():
     DI_R = DO_R - LT_DRUM_T
 
     Z_BOT = PANEL_FLOOR_GAP              # assembly bottom (= 130)
-    Z_TOP = DRUM_H_LT                    # assembly top (= 2250)
+    Z_TOP = DRUM_H_LT                    # drum cap top (= 2100; cage/beam top is above, Sheet 8)
     Z_CAP_B = Z_BOT + 40                 # bottom cap plane (bearing zone below)
     Z_CAP_T = Z_TOP - 40                 # top cap plane (bearing zone above)
 
@@ -399,7 +384,7 @@ def draw_sheet1():
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet2():
     L        = math.pi * DRUM_D                       # developed length
-    HOUSING_H = DRUM_H_LT - PANEL_FLOOR_GAP           # blank height = 2120
+    HOUSING_H = LT_HOUSING_Z_TOP - LT_HOUSING_Z_BOT   # blank height = 2062 (housing spans beam-to-beam)
     OW       = (LT_OPENING_DEG / 360.0) * L           # opening arc width
     SEAM_DEG = 90                                     # seam falls mid-solid-arc (near-Yd)
 
@@ -860,6 +845,14 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         for _bx in (_bx0, _bx0 + _bwd):                                      # break marks — beam continues past crop
             ax.plot([_bx - 4, _bx + 4, _bx - 4], [_bz0 + _bw, (_bz0 + _bz1) / 2, _bz1 - _bw],
                     color=C_OUT, lw=0.8, zorder=7, solid_capstyle="round")
+        # Ø230×12 SOLID steel MOUNT PLATE fillet-welded across the beam's ring-side face — the ring
+        # bolts tap into THIS (its Ø165 bolt circle is far wider than the 50mm beam). 12mm ≈ 4× the wall.
+        _pt = 4 * _bw
+        draw_rect(ax, _bx0 - 24 * SC, _bz0 - _pt, _bwd + 48 * SC, _pt, fc=C_STEEL, lw=1.4, zorder=5)
+        for _wx in (_bx0, _bx0 + _bwd):                                      # fillet welds plate↔beam (both sides)
+            ax.add_patch(mpatches.Polygon([(_wx, _bz0), (_wx - 7 * SC, _bz0), (_wx, _bz0 - 7 * SC)]
+                                          if _wx == _bx0 else [(_wx, _bz0), (_wx + 7 * SC, _bz0), (_wx, _bz0 - 7 * SC)],
+                                          closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
         # Al drum cap + bolted steel stub-shaft flange
         draw_rect(ax, cx - 110 * SC, min(zc0, zc1), 220 * SC, abs(zc1 - zc0),
                   fc=C_ALUM, lw=1.4, zorder=6)
@@ -870,22 +863,22 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
             fb0, fb1 = -40 * SC * s, zc1
             draw_bolt(ax, cx + g * 60 * SC, (fb0 + fb1) / 2, abs(fb1 - fb0),
                       d=8 * SC, head=int(-s), end="tapped", csk=True, zb=9)
-        # ring/collar → beam bolts: HEAD on the ring's outer face (accessible), up through the
-        # ring + the beam's near 3mm wall, into a RIVET-NUT (blind threaded insert) in that wall (the ring↔beam contact
-        # face carries no fastener — the bolt clamps it, the thread is in the beam wall).
+        # ring/collar → mount-plate bolts: CSK HEAD on the ring's outer face (accessible), up through
+        # the ring, TAPPED into the solid 12mm steel mount plate (no rivet-nut — the plate is thick
+        # enough to tap directly, and it, not the thin beam wall, carries the Ø165 bolt circle).
         for g in (-1, 1):
-            ring_far = -18 * SC * s                    # ring face away from the beam (head bears here)
-            wnz = rtop * s                             # beam near wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
+            ring_far = -18 * SC * s                    # ring face away from the plate (head bears here)
+            wnz = rtop * s                             # into the mount plate on the beam's ring-side face
             draw_bolt(ax, cx + g * 85 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
-                      d=8 * SC, head=int(-s), end="rivnut", wall=LT_FRAME_T * SC, csk=True, zb=9)
+                      d=8 * SC, head=int(-s), end="tapped", csk=True, zb=9)
             # DIN 471 EXTERNAL circlip(s) — seated in the Ø72 shaft groove, projecting OUTWARD past the
             # shaft OD to butt the bearing inner-race face. UPPER hub: drum-side circlip only (the beam-side
             # one is replaced by the end-retainer plate). LOWER hub: both sides.
             for zc in ((-13.5 * SC,) if up else (13.5 * SC, -13.5 * SC)):
                 draw_rect(ax, min(cx + g * (rs - 1.5 * SC), cx + g * (rs + 3 * SC)), zc - 1.3 * SC,
                           4.5 * SC, 2.6 * SC, fc="#707078", lw=0.8, zorder=9)
-        # (Lower collar is BOLTED to the floor plate — 8× M10 into rivet-nuts, same as the upper
-        #  ring; no weld. The ring→beam bolts above are the collar→plate connection.)
+        # (Lower collar taps into its own Ø230×12 mount plate on the bottom beam — 8× M10, same
+        #  scheme as the upper ring; the plate is welded to the beam, the collar bolts to the plate.)
         draw_cl_v(ax, cx, -135 * SC, 135 * SC)
         ax.text(cx, 115 * SC + CAPd + 60, "UPPER HUB — DRUM TOP" if up else
                 "LOWER HUB — DRUM BOTTOM", ha="center", va="bottom", fontsize=8.5,
@@ -899,7 +892,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     # ── Upper-hub callouts (left column) ─────────────────────────────────────
     LxT = UX - HALF - 60
     up_labels = [
-        (55 * SC,  (-100 * SC, 40 * SC),  "AXLE BEAM — 6×M10\ninto RIVET-NUTS (blind inserts, 3mm RHS)"),
+        (55 * SC,  (-100 * SC, 40 * SC),  "MOUNT PLATE — 6×M10 tapped\n(Ø230×12 steel, welded to the beam)"),
         (18 * SC,  (-(ro + 20 * SC), 0),  "ALUMINUM TOP RING (bearing seat Ø130 H7) — LOCATED:\nouter race on a SHOULDER (drum side, Ø122) + a DIN 472\nRETAINING RING (beam side); nylon-isolated"),
         (-52 * SC, (-70 * SC, -47 * SC),  "STEEL FLANGE — bolt from cap\ninto TAPPED 4×M10"),
         (-90 * SC, (-90 * SC, -62 * SC),  f"TOP CAP {LT_CAP_TOP_T:.0f}mm 6061-T6 Al, Ø{LT_CAP_OD}\n(single-part blueprint — Sheet 6)"),
@@ -944,9 +937,9 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     RxL = LX + HALF + 60
     lo_labels = [
         (58 * SC,  (0, 115 * SC),         f"BOTTOM CAP {LT_CAP_BOT_T:.0f}mm 6061-T6 Al\nbolt into TAPPED 4×M10 flange"),
-        (-48 * SC, (100 * SC, -40 * SC),  "AXLE BEAM — 8×M10\ninto RIVET-NUTS"),
+        (-48 * SC, (100 * SC, -40 * SC),  "MOUNT PLATE — 8×M10 tapped\n(Ø230×12 steel, welded to the beam)"),
         (12 * SC,  (ro + 20 * SC, 0),     "STEEL FLOOR COLLAR (BOLTED, not welded) — FLOATING bearing:\nthe outer race is deliberately NOT axially retained. The plain Ø130 H7\nbore locates it radially + it slides freely for thermal growth; the bearing\nis a captive unit held on the shaft by the circlips (upper bearing = located)"),
-        (-18 * SC, (ro - 6 * SC, -18 * SC), "COLLAR → FLOOR PLATE:\n8×M10 BOLTED (rivet-nuts, no weld)"),
+        (-18 * SC, (ro - 6 * SC, -18 * SC), "COLLAR → MOUNT PLATE:\n8×M10 tapped (plate welded to beam)"),
     ]
     for zt, (tx, tz), txt in lo_labels:
         leader(ax, LX + tx, tz, RxL, zt, txt, fs=6.5, color=C_OUT, ha="left",
@@ -963,26 +956,31 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     ax.text(LX, -235, "bearing · shaft · cap · flange  AS UPPER HUB", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
 
-    # ── RIVET-NUT DETAIL — how the ring/collar secures to the CLOSED axle beam (no inside nut) ──
+    # ── MOUNT-PLATE DETAIL — ring bolts UP into a tapped steel plate that is WELDED to the beam ──
     IS = 7
     ox, oz = 1830, -560
     def rx(mm): return ox + IS * mm
     def rz(mm): return oz + IS * mm
     T = LT_FRAME_T                                            # 3mm RHS wall
-    BH = 2 * T + 40                                           # beam box height shown (mm)
-    ax.text(ox, rz(BH + 10), "RIVET-NUT DETAIL — ring → CLOSED axle beam  (7:1)",
-            ha="center", va="bottom", fontsize=7.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
-    draw_rect(ax, rx(-30), rz(-15), IS * 60, IS * 15, fc=C_ALUM, lw=1.2, zorder=6)                 # Al top ring (below the beam)
-    draw_rect(ax, rx(-38), rz(0), IS * 76, IS * BH, fc=C_STEEL, lw=1.4, zorder=5)                  # closed RHS beam — outer
-    draw_rect(ax, rx(-38) + IS * T, rz(T), IS * (76 - 2 * T), IS * (BH - 2 * T), fc=BG, lw=0.8, zorder=5)  # hollow bore (empty)
-    cz = (rz(-15) + rz(0)) / 2                                # ring → beam bolt: head under the ring, up through the ring;
-    draw_bolt(ax, ox, cz, rz(0) - rz(-15), d=58, head=-1, end="rivnut", wall=IS * T, csk=True)  # countersunk head + barrel spans the wall
-    leader(ax, ox - 20, rz(-15), rx(-42), rz(-15) - 34, "COUNTERSUNK bolt head — flush in the\nring underside (driven from below)",
+    PT = LT_BRG_PLATE_T                                       # 12mm SOLID steel mount plate
+    RB = 50                                                   # 50×50 beam box shown (mm)
+    ax.text(ox, rz(PT + RB + 12), "MOUNT-PLATE DETAIL — ring → tapped plate → welded beam  (7:1)",
+            ha="center", va="bottom", fontsize=7.0, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, rx(-30), rz(-15), IS * 60, IS * 15, fc=C_ALUM, lw=1.2, zorder=6)                 # Al ring (below the plate)
+    draw_rect(ax, rx(-58), rz(0), IS * 116, IS * PT, fc=C_STEEL, lw=1.4, zorder=5)                 # SOLID mount plate (Ø230, overhangs the beam)
+    draw_rect(ax, rx(-25), rz(PT), IS * 50, IS * RB, fc=C_STEEL, lw=1.4, zorder=5)                 # 50×50 RHS beam — outer
+    draw_rect(ax, rx(-25) + IS * T, rz(PT + T), IS * (50 - 2 * T), IS * (RB - 2 * T), fc=BG, lw=0.8, zorder=5)  # beam hollow bore
+    for g in (-1, 1):                                         # fillet-weld triangles at the plate↔beam junction
+        ax.add_patch(mpatches.Polygon([(rx(g * 25), rz(PT)), (rx(g * 25) + g * IS * 7, rz(PT)),
+                                       (rx(g * 25), rz(PT) + IS * 7)], closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
+    cz = (rz(-15) + rz(0)) / 2                                # ring → plate bolt: CSK head under the ring, tapped into the plate
+    draw_bolt(ax, ox, cz, rz(PT - 2) - rz(-15), d=58, head=-1, csk=True)
+    leader(ax, ox - 20, rz(-15), rx(-46), rz(-15) - 34, "COUNTERSUNK bolt head — flush in the\nring underside (driven from below)",
            fs=6.0, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, ox + 24, rz(T + 6), rx(30), rz(T + 24), "RIVET-NUT (blind insert) in the beam\nbottom wall — barrel = captive thread",
+    leader(ax, ox + 24, rz(PT / 2), rx(64), rz(PT / 2 + 12), "M10 TAPPED into the Ø230×12 SOLID\nsteel plate (thick — taps directly)",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, rx(-16), rz(BH * 0.62), rx(-48), rz(BH + 4), "BORE — EMPTY:\nNO nut inside the closed tube",
-           fs=6.0, color=C_DIM, ha="right", arrow_style="->", font=FONT)
+    leader(ax, rx(28), rz(PT + 2), rx(60), rz(PT + 26), "PLATE fillet-WELDED to the beam\n(steel↔steel — cage weldment)",
+           fs=6.0, color=C_DIM, ha="left", arrow_style="->", font=FONT)
 
     # ── Component blueprints are on Sheet 6 (single-part drawings) ───────────
     ax.text((UX + LX) / 2, -640,
@@ -997,7 +995,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         "BEARING HUB — SPECIFICATION",
         f"Bearing ×2: SKF 6215-2RS1 — Ø{SKF6215_ID}×Ø{SKF6215_OD}×{SKF6215_W}mm, sealed 2RS, C3, 0–120°C, 52.7 kN dyn.",
         f"Caps ×2 (identical): {LT_CAP_TOP_T:.0f}mm 6061-T6 Al — drum → cap → 4×M10 steel flange → Ø75 stub shaft → bearing.",
-        "Bearing mounts: upper in isolated aluminum top ring (6×M10 into rivet-nuts / blind threaded inserts set in the beam wall, nylon-isolated); lower in a bolted steel floor collar (8×M10 into the floor plate, no weld). Cap→flange: countersunk bolt in the cap, THROUGH the steel flange + a nut (drilled through — not tapped). Full fastening on Sheet 6.",
+        "Bearing mounts: each SKF 6215 seats in an isolated ring/collar that bolts (M10 tapped) into a Ø230×12 steel MOUNT PLATE fillet-welded across the 50×50 beam — the ring's Ø165 bolt circle is far wider than the beam, and the 12mm plate taps directly (no rivet-nuts). Upper ring nylon-isolated; lower collar floats. Cap→flange: countersunk bolt in the cap, THROUGH the steel flange + a nut (drilled through — not tapped). Full fastening on Sheet 6.",
         "Axial retention — INNER race: circlip on the stub shaft each side of each bearing (DIN 471). OUTER race: the UPPER bearing is LOCATED — the outer race seats on a machined shoulder (bore steps Ø130→Ø122, drum side) that carries the hanging load, captured by a DIN 472 retaining ring on the beam side; the LOWER bearing FLOATS (plain Ø130 H7 bore, outer race free to slide) so it can't fight thermal growth.",
         "Shaft seat: the stub shaft seats ONLY in the Ø75 h6 bearing bore — the SKF 6215 IS the 'socket' (off-the-shelf; shaft blueprint on Sheet 6). It TERMINATES just below the beam underside — it does NOT penetrate the beam and needs NO clearance bore; the bearing (in the ring below the beam) carries + locates the drum, and the load goes to the beam through the ring bolts.",
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
@@ -1073,7 +1071,7 @@ def draw_sheet6():
         draw_cl_v(ax, cx, pz - rod - 20, pz + rod + 20)
         draw_dim_h(ax, cx - rod, cx + rod, pz + rod + 6, f"Ø{od} OD", offset=34, fs=7, font=FONT)
         ax.text(cx, pz, f"Ø{bore}\nH7", ha="center", va="center", fontsize=7, color=C_DIM, **FONT, zorder=9)
-        ax.text(cx, pz - rod - 14, f"{n}×M10 COUNTERSUNK on Ø{pcd} PCD (flush in the ring face) · Ø11 c'bore → rivet-nut in the beam wall",
+        ax.text(cx, pz - rod - 14, f"{n}×M10 COUNTERSUNK on Ø{pcd} PCD (flush in the ring face) · Ø11 c'bore → tapped M10 in the Ø230×12 mount plate",
                 ha="center", va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
         tz = thk * s2                                                         # SECTION (annular)
         for xr0, xr1 in ((cx - rod, cx - rbore), (cx + rbore, cx + rod)):
@@ -1119,7 +1117,7 @@ def draw_sheet6():
     # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
     cx = CX
     sh_r, fl_r, fl_t = SKF6215_ID / 2 * s2, 160 / 2 * s2, 12 * s2
-    shaft_L = 150 * s2
+    shaft_L = LT_STUB_SHAFT_L * s2
     fpz = R_STUB
     ez = R_STUB - 690                                                        # elevation base (flange), shaft up
     ax.text(cx, fpz + fl_r + 82, "STUB-SHAFT + FLANGE  (2.2:1)", ha="center", va="bottom", fontsize=9.5,
@@ -1151,7 +1149,7 @@ def draw_sheet6():
            "M10 ×16 TAPPED (beam end,\nUPPER shaft) — retainer-plate screw", fs=6.4,
            color=C_OUT, ha="left", arrow_style="->", font=FONT)
     draw_cl_v(ax, cx, ez - fl_t - 16, ez + shaft_L + 16)
-    draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"150 LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
+    draw_dim_v(ax, cx - fl_r - 34, ez, ez + shaft_L, f"{LT_STUB_SHAFT_L} LG (Ø{SKF6215_ID})", offset=34, fs=7, font=FONT)
     draw_dim_v(ax, cx + fl_r + 34, ez - fl_t, ez, "12mm THK", offset=32, fs=6.6, right=True, font=FONT)
     ax.text(cx, ez + shaft_L + 16, "Ø75 h6 stub · circlip groove Ø72.0 × 2.65 (90154A895) — LOWER shaft: each end (2 clips) · UPPER shaft: drum end only + M10 tapped beam end", ha="center", va="bottom",
             fontsize=7, color=C_DIM, **FONT, zorder=9)
@@ -1205,7 +1203,7 @@ def draw_sheet6():
     notes = [
         "MACHINED COMPONENTS  (end cap + bearing seats + stub-shaft — assembled on Sheet 5)",
         f"Bearing seat bores Ø{SKF6215_OD} H7 for the SKF 6215 OD. Stub shaft Ø{SKF6215_ID} h6, circlip groove Ø72.0 × 2.65 (INNER-race retention; McMaster 90154A895, ext, Ø75). LOWER shaft: a groove each side of the bearing (2 clips). UPPER shaft (carries the hang): drum-side groove only — the beam-side clip is REPLACED by a bolted END-RETAINER PLATE (Ø90 × 4 mild steel, central Ø10.5 c'bore for an M10×25 flat-head CSK screw) into an M10 ×16 tapped hole in the beam-side shaft end; its rim clamps the inner-race face, so the hang is on a bolted member, not one circlip. OUTER race — UPPER ring LOCATED: the bore steps Ø130→Ø122 to form a ~4mm-high shoulder (drum end, outer-race abutment) + a retaining-ring groove Ø134.0 × 4.15 (beam end; McMaster 98455A170, int, Ø130). LOWER collar: plain Ø130 H7 bore, FLOATING (outer race free to slide — the upper bearing is the located one).",
-        "FASTENING — cap → flange: countersunk bolt in the cap (Ø11 clearance) threading into the TAPPED stub-shaft flange on the Ø120 PCD — the flange is a machined steel part, so it is tapped directly (no nut; bolt ends flush in the flange). Ring + collar → axle beam: M10 into RIVET-NUTS / blind threaded inserts (McMaster 95105A199 — M10 twist-resistant, chromate-plated steel; 100×50×3 RHS — 3mm wall too thin to tap, and no internal access to weld a nut). Al ring nylon-isolated; collar BOLTED to the floor plate (8× M10, same as the ring — no weld).",
+        "FASTENING — cap → flange: countersunk bolt in the cap (Ø11 clearance) threading into the TAPPED stub-shaft flange on the Ø120 PCD — the flange is a machined steel part, so it is tapped directly (no nut; bolt ends flush in the flange). Ring + collar → MOUNT PLATE: M10 CSK tapped into the Ø230×12 steel plate that is fillet-welded across the 50×50 beam (steel↔steel — part of the cage weldment); the 12mm plate is thick enough to tap directly, so no rivet-nuts, and the wide plate catches the Ø165/Ø175 bolt circle the 50mm beam cannot. Al ring nylon-isolated.",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 34, fs=6, font=FONT, width=1560, wrap=138, title_color=TITLE_COL)
@@ -1364,10 +1362,12 @@ def draw_sheet7():
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet8():
     CX, CY, HR = DRUM_CX, DRUM_CY, LT_HOUSING_R
-    Z_BOT, Z_TOP = PANEL_FLOOR_GAP, DRUM_H_LT
+    Z_DBOT, Z_DTOP = PANEL_FLOOR_GAP, DRUM_H_LT            # drum extent (shell + caps)
+    Z_CBOT, Z_CTOP = LT_CAGE_BOT, LT_CAGE_TOP              # cage: posts + top/bottom axle beams
+    Z_HBOT, Z_HTOP = LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP    # fixed housing skin (spans beam-to-beam)
     RHS = LT_FRAME_RHS
     cx0, cx1, cyl, cyr = DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R
-    cW_x, cW_y, cH = cx1 - cx0, cyr - cyl, Z_TOP - Z_BOT
+    cW_x, cW_y, cH = cx1 - cx0, cyr - cyl, Z_CTOP - Z_CBOT
     PLd = LT_FRAME_PLATE_T * 3          # plate draw thickness (exaggerated)
 
     # View placements (generic fig units, mm-scaled)
@@ -1375,7 +1375,7 @@ def draw_sheet8():
     PX, PZ = cW_y + 780, cH - cW_y       # PLAN origin (X→x, Yd→z), top-right
 
     def fe(yd, z):   # elevation map
-        return (EX + (yd - cyl), EZ + (z - Z_BOT))
+        return (EX + (yd - cyl), EZ + (z - Z_CBOT))
 
     def fp(x, yd):   # plan map
         return (PX + (x - cx0), PZ + (yd - cyl))
@@ -1396,56 +1396,74 @@ def draw_sheet8():
         draw_rect(ax, p0[0], p0[1], w, h, **kw)
 
     # ══ ELEVATION (looking along −X: Yd horizontal, Z vertical) ═══════════════
-    ax.text(*fe(cyl + cW_y / 2, Z_TOP + 170), s="ELEVATION — LOOKING ALONG DRUM AXIS DEPTH",
+    ax.text(*fe(cyl + cW_y / 2, Z_CTOP + 170), s="ELEVATION — LOOKING ALONG DRUM AXIS DEPTH",
             ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=15)
-    # housing cylinder (outer skin) — walls at CY±HR
-    for yd in (CY - HR, CY + HR - LT_HOUSING_T):
-        rrect(fe(yd, Z_BOT), LT_HOUSING_T, cH, fc="#DDE4EC", lw=1.2, zorder=5)
-    # drum shell inside
-    for yd in (CY - LT_DRUM_OR, CY + LT_DRUM_OR - LT_DRUM_T):
-        rrect(fe(yd, Z_BOT + 40), LT_DRUM_T, cH - 80, fc=C_LT_DRUM, lw=1.0, zorder=5)
-    # top + bottom AXLE-SUPPORT BEAMS (100×50 RHS, span Yd, carry the central bearing)
     BH = LT_AXLE_BEAM_H
-    rrect(fe(cyl, Z_TOP - BH), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=6)
-    rrect(fe(cyl, Z_BOT), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=6)
+    # housing skin (outer light-seal) — spans BEAM-to-BEAM, past the drum caps
+    for yd in (CY - HR, CY + HR - LT_HOUSING_T):
+        rrect(fe(yd, Z_HBOT), LT_HOUSING_T, Z_HTOP - Z_HBOT, fc="#DDE4EC", lw=1.2, zorder=5)
+    # drum shell inside (shorter than the housing — caps at Z_DBOT / Z_DTOP)
+    for yd in (CY - LT_DRUM_OR, CY + LT_DRUM_OR - LT_DRUM_T):
+        rrect(fe(yd, Z_DBOT + 40), LT_DRUM_T, (Z_DTOP - Z_DBOT) - 80, fc=C_LT_DRUM, lw=1.0, zorder=5)
+    # drum caps (Al) — top + bottom
+    for zc in (Z_DTOP - LT_CAP_TOP_T, Z_DBOT):
+        rrect(fe(CY - LT_CAP_OD / 2, zc), LT_CAP_OD, LT_CAP_TOP_T, fc=C_ALUM, lw=1.0, zorder=6)
+    # top + bottom AXLE-SUPPORT BEAMS (50×50 RHS, span Yd) — CLEAR of the drum caps
+    rrect(fe(cyl, Z_CTOP - BH), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=7)
+    rrect(fe(cyl, Z_CBOT), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=7)
+    # bearing MOUNT PLATES (Ø230 steel) — the Ø200/Ø210 ring/collar bolt to THESE, welded across
+    # the 50mm beam (the Ø165/Ø175 bolt circle is far wider than the beam → only 2/6 would hit it).
+    for zp in (LT_TBEAM_Z0 - LT_BRG_PLATE_T, LT_BBEAM_Z1):
+        rrect(fe(CY - LT_BRG_PLATE_OD / 2, zp), LT_BRG_PLATE_OD, LT_BRG_PLATE_T, fc="#9AA0A8", lw=1.3, zorder=8)
     # 4 corner posts → in elevation the front/back pairs overlap: 2 vertical RHS
     for yd in (cyl, cyr - RHS):
-        rrect(fe(yd, Z_BOT), RHS, cH, fc=C_STEEL, lw=1.4, zorder=4)
+        rrect(fe(yd, Z_CBOT), RHS, cH, fc=C_STEEL, lw=1.4, zorder=4)
     # FILLET WELDS (typ.) at every post↔beam joint — red triangles in the re-entrant corners
     ws = 16
     for yd, s in ((cyl + RHS, 1), (cyr - RHS, -1)):
-        for zb, zdir in ((Z_TOP - BH, -1), (Z_BOT + BH, 1)):
-            px, pz = fe(yd, zb)
+        for zbw, zdir in ((Z_CTOP - BH, -1), (Z_CBOT + BH, 1)):
+            px, pz = fe(yd, zbw)
             ax.add_patch(mpatches.Polygon([(px, pz), (px + s * ws, pz), (px, pz + zdir * ws)],
                                           closed=True, fc="#CC4422", ec="#CC4422", zorder=10))
-    # bearings on the axis, seated in the beams (drum HANGS from the top beam)
-    for z_brg in (Z_TOP - BH - SKF6215_W, Z_BOT + BH):
+    # bearings on the axis: UPPER hangs BELOW the top beam (drum suspended), LOWER sits ABOVE
+    # the bottom beam (floating). Each is offset from its cap by the stub-shaft standoff.
+    z_ubrg = Z_DTOP + LT_BRG_STANDOFF        # upper bearing bottom — above the top cap, below the top beam
+    z_lbrg = Z_DBOT - SKF6215_W              # lower bearing bottom — below the bottom cap, above the bottom beam
+    for z_brg in (z_ubrg, z_lbrg):
         rrect(fe(CY - SKF6215_OD / 2, z_brg), SKF6215_OD, SKF6215_W, fc="#B0B0B8", lw=1.2, zorder=8)
         rrect(fe(CY - SKF6215_ID / 2, z_brg), SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=9)
-    draw_cl_v(ax, fe(CY, 0)[0], fe(CY, Z_BOT)[1] - 80, fe(CY, Z_TOP)[1] + 80)
-    # panel-rail tie context (ghost above/below the beams)
-    for z0 in (Z_TOP + 6, Z_BOT - 55):
+    # stub shafts on the axis (cap → into the beam / bearing)
+    rrect(fe(CY - SKF6215_ID / 2, Z_DTOP), SKF6215_ID, (Z_CTOP - BH) - Z_DTOP, fc="#9BA0A8", lw=0.8, zorder=7)
+    rrect(fe(CY - SKF6215_ID / 2, z_lbrg), SKF6215_ID, Z_DBOT - z_lbrg, fc="#9BA0A8", lw=0.8, zorder=7)
+    draw_cl_v(ax, fe(CY, 0)[0], fe(CY, Z_CBOT)[1] - 80, fe(CY, Z_CTOP)[1] + 80)
+    # panel-rail tie context (ghost above/below the cage)
+    for z0 in (Z_CTOP + 6, Z_CBOT - 55):
         rrect(fe(cyl - 90, z0), cW_y + 180, 50, fc="#EDEDED", lw=0.8, zorder=2)
     # elevation dims + labels
-    draw_dim_v(ax, fe(cyl, 0)[0] - 90, fe(cyl, Z_BOT)[1], fe(cyl, Z_TOP)[1],
+    draw_dim_v(ax, fe(cyl, 0)[0] - 90, fe(cyl, Z_CBOT)[1], fe(cyl, Z_CTOP)[1],
                f"{cH}mm POST H", offset=70, fs=7, font=FONT)
-    draw_dim_h(ax, fe(cyl, 0)[0], fe(cyr, 0)[0], fe(0, Z_TOP)[1] + 90,
+    draw_dim_v(ax, fe(cyr, 0)[0] + 70, fe(cyr, Z_DBOT)[1], fe(cyr, Z_DTOP)[1],
+               f"{Z_DTOP - Z_DBOT}mm DRUM", offset=44, fs=6.6, right=True, font=FONT)
+    draw_dim_h(ax, fe(cyl, 0)[0], fe(cyr, 0)[0], fe(0, Z_CTOP)[1] + 90,
                f"{LT_AXLE_BEAM_SPAN}mm BEAM SPAN (Yd)", offset=60, fs=7, font=FONT)
-    leader(ax, *fe(cyr - RHS / 2, Z_TOP * 0.62), *fe(cyr + 130, Z_TOP * 0.66),
+    leader(ax, *fe(cyr - RHS / 2, Z_CTOP * 0.62), *fe(cyr + 130, Z_CTOP * 0.66),
            f"CORNER POST\n{RHS}×{RHS}×{LT_FRAME_T} RHS (×4)\nwelded into panel rails",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, *fe(cyl + 150, Z_TOP - BH / 2), *fe(cyl - 80, Z_TOP + 110),
-           f"TOP AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\n(carries upper bearing — drum hangs from it)",
+    leader(ax, *fe(cyl + 150, Z_CTOP - BH / 2), *fe(cyl - 80, Z_CTOP + 110),
+           f"TOP AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\nCLEAR above the cap — bearing hangs below (drum hangs from it)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, *fe(cyl + 150, Z_BOT + BH / 2), *fe(cyl - 80, Z_BOT - 130),
-           f"BOTTOM AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\n+ floor anchor (locates lower bearing)",
+    leader(ax, *fe(cyl + 150, Z_CBOT + BH / 2), *fe(cyl - 80, Z_CBOT - 130),
+           f"BOTTOM AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\n+ floor anchor (lower bearing sits above it)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, *fe(CY + SKF6215_OD / 2, Z_BOT + BH + SKF6215_W / 2),
-           *fe(CY + 150, Z_BOT + 320), "SKF 6215 ×2\n(seated in the beams)", fs=6.5,
+    leader(ax, *fe(CY + SKF6215_OD / 2, z_ubrg + SKF6215_W / 2),
+           *fe(CY + 170, z_ubrg + 150), "SKF 6215 ×2\n(upper hangs below top beam;\nlower floats above bottom beam)", fs=6.5,
            color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, *fe(CY - HR + LT_HOUSING_T, Z_TOP * 0.4), *fe(cyl - 80, Z_TOP * 0.34),
-           f"FIXED HOUSING Ø{DRUM_D}\n(outer skin — Sheet 9)", fs=6.5, color=C_OUT,
+    leader(ax, *fe(CY - LT_BRG_PLATE_OD / 2, LT_TBEAM_Z0 - LT_BRG_PLATE_T / 2),
+           *fe(cyl - 80, Z_CTOP * 0.80), f"BEARING MOUNT PLATE Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T}\nwelded across the beam — ring bolts to THIS\n(Ø165 bolt circle » 50mm beam)", fs=6.3,
+           color=C_OUT, ha="right", arrow_style="->", font=FONT)
+    leader(ax, *fe(CY - HR + LT_HOUSING_T, Z_DTOP * 0.4), *fe(cyl - 80, Z_DTOP * 0.34),
+           f"FIXED HOUSING Ø{DRUM_D}\n(outer skin, beam-to-beam — Sheet 9)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
 
     # ══ PLAN (top-down: X horizontal, Yd vertical) ════════════════════════════
@@ -1535,30 +1553,31 @@ def draw_sheet8():
     # ── RHS tube-section inset — the frame members are HOLLOW tube, not solid bar ──
     sxi, szi, SCi = PX + 70, 470, 1.8
     ax.text(sxi + 210, szi + LT_AXLE_BEAM_H * SCi + 66,
-            "FRAME MEMBERS = RHS TUBE (HOLLOW) — cut sections:", ha="center", va="bottom",
+            "FRAME MEMBER (RHS) + BEARING MOUNT PLATE — cut sections:", ha="center", va="bottom",
             fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     tube_rect(ax, sxi, szi, RHS * SCi, RHS * SCi, LT_FRAME_T * SCi, fc="#9BA0A8", lw=1.4, zorder=6)
     draw_dim_h(ax, sxi, sxi + RHS * SCi, szi - 26, f"{RHS}mm", offset=26, fs=6.2, above=False, font=FONT)
     draw_dim_v(ax, sxi - 26, szi, szi + RHS * SCi, f"{RHS}mm", offset=26, fs=6.2, font=FONT)
     ax.text(sxi + RHS * SCi / 2, szi + RHS * SCi + 18, f"{RHS}×{RHS}×{LT_FRAME_T} RHS\nposts + rails",
             ha="center", va="bottom", fontsize=6.5, color=C_OUT, **FONT, zorder=9)
+    ax.text(sxi + RHS * SCi + 50, szi + RHS * SCi / 2,
+            f"wall {LT_FRAME_T}mm (typ.)\n(axle beams = same section)", ha="left", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
+    # BEARING MOUNT PLATE section (solid steel disc — the ring/collar bolt to it, not the beam)
     bxi = sxi + 360
-    tube_rect(ax, bxi, szi, LT_AXLE_BEAM_W * SCi, LT_AXLE_BEAM_H * SCi, LT_AXLE_BEAM_T * SCi,
-              fc="#9BA0A8", lw=1.4, zorder=6)
-    draw_dim_h(ax, bxi, bxi + LT_AXLE_BEAM_W * SCi, szi - 26, f"{LT_AXLE_BEAM_W}mm", offset=26, fs=6.2, above=False, font=FONT)
-    draw_dim_v(ax, bxi - 26, szi, szi + LT_AXLE_BEAM_H * SCi, f"{LT_AXLE_BEAM_H}mm", offset=26, fs=6.2, font=FONT)
-    ax.text(bxi + LT_AXLE_BEAM_W * SCi / 2, szi + LT_AXLE_BEAM_H * SCi + 18,
-            f"{LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\naxle beams", ha="center",
+    PSC = 0.9                                              # plate shown at a smaller scale (wide + thin)
+    draw_rect(ax, bxi, szi, LT_BRG_PLATE_OD * PSC, LT_BRG_PLATE_T * SCi, fc=C_STEEL, lw=1.4, zorder=6)
+    draw_dim_h(ax, bxi, bxi + LT_BRG_PLATE_OD * PSC, szi - 26, f"Ø{LT_BRG_PLATE_OD}", offset=26, fs=6.2, above=False, font=FONT)
+    draw_dim_v(ax, bxi - 26, szi, szi + LT_BRG_PLATE_T * SCi, f"{LT_BRG_PLATE_T}mm", offset=26, fs=6.2, font=FONT)
+    ax.text(bxi + LT_BRG_PLATE_OD * PSC / 2, szi + LT_BRG_PLATE_T * SCi + 18,
+            f"Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} STEEL bearing mount plate (×2)\nwelded across the beam · ring/collar bolt to it", ha="center",
             va="bottom", fontsize=6.5, color=C_OUT, **FONT, zorder=9)
-    ax.text(bxi + LT_AXLE_BEAM_W * SCi + 50, szi + LT_AXLE_BEAM_H * SCi / 2,
-            f"wall {LT_FRAME_T}mm (typ.)", ha="left", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SUPPORT FRAME — INTEGRATED STEEL WELDED BOX CAGE (part of the swing-panel weldment)",
         f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails (welded). No jamb posts: the free HDPE opening edges are stiffened by Al edge channels (below).",
-        f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS, span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
-        f"Bearing seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower welded steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
+        f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS (= the perimeter section — the 962mm span is barely stressed, δ≈0.3mm under the hung drum), span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
+        f"Bearing mount plate: Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} steel disc welded across each beam — the ring/collar bolt to THIS, not the beam wall (their Ø165/Ø175 bolt circle is far wider than the 50mm beam). Seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
         f"Fixed housing (outer skin) laps + rivets to rim-angle on the top/bottom beams; free opening edges capped by {LT_EDGE_CHAN_N}× Al U-channel (ends bolt to the beams) — see Sheet 9. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
         "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
@@ -1762,7 +1781,7 @@ def draw_sheet10():
     HIR_ = LT_HOUSING_R - LT_HOUSING_T       # 445    housing inner
     HOR_ = LT_HOUSING_R                      # 450    housing outer
     bID, bOD, bW = SKF6215_ID / 2, SKF6215_OD / 2, SKF6215_W   # 37.5 / 65 / 25
-    SHAFT_L = 150                            # 75Ø × 150 stub
+    SHAFT_L = LT_STUB_SHAFT_L                 # Ø75 × 75 stub (shortened from 150 for ceiling clearance)
     Z_BRG0 = SHAFT_L - 20 - bW               # bearing bottom (bW wide, 20 below shaft top)
     Z_BEAM0 = SHAFT_L - 8                     # beam underside just below shaft top
     Z_BRK = -150                             # break-line level (drum/housing continue down)
@@ -1781,8 +1800,12 @@ def draw_sheet10():
     hollow_beam_long(ax, POST_R0, Z_BRK, LT_FRAME_RHS, Z_BEAM0 + LT_AXLE_BEAM_H - Z_BRK,
                      LT_FRAME_T, "left", fc=C_STEEL, lw=1.4, zorder=3, breaks=False,
                      open_ends=("bottom",))             # OPEN at the bottom (post continues down full height)
-    # ── Upper SKF 6215 bearing (to scale) + isolated Al ring ─────────────────
-    draw_rect(ax, bOD, Z_BRG0, 30, Z_BEAM0 - Z_BRG0, fc=C_ALUM, lw=1.0, zorder=5)   # Al ring bolts up to beam
+    # ── Upper SKF 6215 bearing (to scale) + isolated Al ring + steel mount plate ─
+    Z_PLATE0 = Z_BEAM0 - LT_BRG_PLATE_T                                             # mount-plate underside (welded under the beam)
+    draw_rect(ax, bID, Z_PLATE0, LT_BRG_PLATE_OD / 2 - bID, LT_BRG_PLATE_T, fc=C_STEEL, lw=1.2, zorder=6)  # Ø230×12 steel mount plate (welded to beam)
+    for wx in (LT_BRG_PLATE_OD / 2,):                                               # fillet weld plate↔beam (outer edge)
+        ax.add_patch(mpatches.Polygon([(wx, Z_BEAM0), (wx - 6, Z_BEAM0), (wx, Z_BEAM0 - 6)], closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
+    draw_rect(ax, bOD, Z_BRG0, 30, Z_PLATE0 - Z_BRG0, fc=C_ALUM, lw=1.0, zorder=5)  # Al ring (bolts up to the plate)
     draw_rect(ax, bOD - 7.5, Z_BRG0, 7.5, bW, fc=C_STEEL, lw=0.8, zorder=6)         # outer race
     draw_rect(ax, bID, Z_BRG0, 7.5, bW, fc=C_STEEL, lw=0.8, zorder=6)               # inner race
     draw_circle(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 8, lw=0.7, color=C_OUT,
@@ -1794,11 +1817,11 @@ def draw_sheet10():
     draw_rect(ax, 0, -LT_CAP_TOP_T, CAPR, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=5)  # 8mm Al cap disc
     draw_rect(ax, 0, 0, 80, 15, fc=C_STEEL, lw=1.0, zorder=6)                         # Ø160 steel stub-shaft flange (4×M10 tapped, Ø120 PCD)
     # ── Securing bolts (project convention) — each butts the faces it joins ─────
-    # Ring → beam: head on the RING BOTTOM, up through the ring + the beam's 3mm bottom
-    # wall, into a RIVET-NUT (blind threaded insert) set in that wall from outside (does NOT float into the void).
+    # Ring → mount plate: CSK head on the RING BOTTOM, up through the ring, TAPPED into the solid
+    # 12mm steel mount plate (welded across the beam) — no rivet-nut; the plate taps directly.
     rbx = bOD + 15
-    wnz = Z_BEAM0                                                                     # beam bottom (near) wall face; the rivet-nut barrel spans the 3mm wall, head on the inner edge
-    draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="rivnut", wall=LT_AXLE_BEAM_T, csk=True)
+    wnz = Z_PLATE0 + LT_BRG_PLATE_T * 0.6                                             # tapped into the mount plate
+    draw_bolt(ax, rbx, (Z_BRG0 + wnz) / 2, wnz - Z_BRG0, d=10, head=-1, end="tapped", csk=True)
     # Cap → flange: countersunk flush in the cap face, THROUGH the cap and THROUGH the full 15mm
     # flange (tapped all the way through — a through-drilled + tapped hole is simpler to make than a
     # blind partial-depth one; no nut, the flange is the thread). Bolt ends flush at the flange far face.
@@ -1806,7 +1829,7 @@ def draw_sheet10():
     cb0, cb1 = -LT_CAP_TOP_T, 15                                                       # cap top (CSK head) → flange bottom face (z=15)
     draw_bolt(ax, cbx, (cb0 + cb1) / 2, cb1 - cb0, d=10, head=-1, end="tapped", csk=True)
     leader(ax, rbx, wnz + 6, POST_R0 - 250, Z_BEAM0 + LT_AXLE_BEAM_H + 30,
-           f"Al RING → BEAM\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 COUNTERSUNK into RIVET-NUTS\n(blind inserts, beam bottom wall — 3mm RHS)", fs=6.0, color=C_OUT,
+           f"Al RING → MOUNT PLATE\n{LT_FRAME_MOUNT_BOLT_TOP}×M10 CSK TAPPED\n(Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} steel, welded to the beam)", fs=6.0, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, cbx, -LT_CAP_TOP_T, -120, -LT_CAP_TOP_T - 45,
            "CAP → FLANGE\n4×M10 COUNTERSUNK into\nTAPPED flange (no nut)", fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1827,7 +1850,7 @@ def draw_sheet10():
     blind_rivet(ax, (HIR_ - LT_RIM_T + HOR_) / 2, Z_BEAM0 - LT_LAP_H / 2, 0,
                 HOR_ - (HIR_ - LT_RIM_T), d=LT_RIVET_D)                                       # RADIAL blind rivet (in-section, dome outboard)
 
-    # break lines (drum + housing continue down the full 2,200mm) ─────────────
+    # break lines (drum + housing continue down to the floor) ─────────────────
     for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):
         for dz in (0, 8, 16):
             ax.plot([r0, r1], [Z_BRK + 6 + dz, Z_BRK + 14 + dz], color=C_OUT, lw=0.6, zorder=9)
@@ -1893,7 +1916,7 @@ def draw_sheet10():
         "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
         "OUTER joint (fixed), DETAIL B: housing laps a rim-angle blind-riveted to the axle beam (SS blind rivets both the rim→beam + the housing→rim laps) + DP8010; full detail on Sheet 9.",
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
-        "Drum + housing continue the full 2,200mm below the break lines. Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
+        "Drum + housing continue below the break lines to the floor (drum interior ~1,970mm; housing skin ~2,060mm, beam-to-beam). Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]
     draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 14, fs=7, font=FONT, width=1000,
                title_color=TITLE_COL, wrap=200)

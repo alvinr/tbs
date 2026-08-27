@@ -181,7 +181,7 @@ against this frame with the Southco C2-33 cam latches and 20mm EPDM gaskets in t
 
 The swinging panel seals against the fixed door frame in its operational (closed)
 position via five light-tight paths — panel perimeter, the two swing-cut seals, the
-bottom and top frame seal lips, and the Ø900 housing-surround ring — all 20mm EPDM,
+bottom and top frame seal lips, and the Ø800 housing-surround ring — all 20mm EPDM,
 compressed by the four Southco C2-33 cam latches and released before the swing. See
 **[Hinged Panel Report §6 — Light Seal Design](hinged-panel-report.md)** for the full
 per-path seal table and the dark-adaptation verification check.

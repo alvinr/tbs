@@ -407,7 +407,7 @@ TBS-001 supplements the original cargo doors with a purpose-built stepped hinged
 - **Stepped profile:** 40mm thick at corner zones and 120mm thick at center zone where the light trap drum is mounted
 - Carried on a vertical **Ø89×8mm CHS pivot post** at the far-left edge (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — swings open about the pivot for access, and ~56° inboard for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing the 20mm EPDM perimeter + cut seals against a fixed welded door frame (2×2×0.120in steel SHS)
-- Ø900 housed revolving-door light lock (single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
+- Ø800 housed revolving-door light lock (single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
 - **Transport mode:** panel + drum swing ~56° about the pivot, carrying the bay inboard of the door plane (clear +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. Single-person operation (swing assisted), ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)

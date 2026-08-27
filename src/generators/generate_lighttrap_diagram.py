@@ -211,10 +211,18 @@ def draw_sheet1():
     DI_L = DO_L + LT_DRUM_T              # drum shell inner faces
     DI_R = DO_R - LT_DRUM_T
 
-    Z_BOT = PANEL_FLOOR_GAP              # assembly bottom (= 130)
-    Z_TOP = DRUM_H_LT                    # drum cap top (= 2100; cage/beam top is above, Sheet 8)
-    Z_CAP_B = Z_BOT + 40                 # bottom cap plane (bearing zone below)
-    Z_CAP_T = Z_TOP - 40                 # top cap plane (bearing zone above)
+    # Z scheme reconciled with Sheet 8: the drum HANGS from a bearing ABOVE its
+    # top cap (below the top axle beam); the fixed housing spans beam-to-beam; the
+    # lower bearing floats above the bottom beam.
+    Z_DBOT, Z_DTOP = PANEL_FLOOR_GAP, DRUM_H_LT   # drum caps: 130 (bottom) · 2100 (top)
+    Z_BOT, Z_TOP = Z_DBOT, Z_DTOP                 # aliases used by the dimensions below
+    Z_HBOT, Z_HTOP = LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP   # fixed housing skin: 93 → 2167
+    Z_TBM0, Z_TBM1 = LT_TBEAM_Z0, LT_CAGE_TOP     # top axle beam: 2167 → 2217
+    Z_BBM0, Z_BBM1 = LT_CAGE_BOT, LT_BBEAM_Z1     # bottom axle beam: 43 → 93
+    Z_CAP_B = Z_DBOT + LT_CAP_BOT_T               # bottom cap inner face (138)
+    Z_CAP_T = Z_DTOP - LT_CAP_TOP_T               # top cap inner face (2092)
+    z_ubrg = Z_DTOP + LT_BRG_STANDOFF             # upper bearing bottom — above the top cap (2130)
+    z_lbrg = Z_DBOT - SKF6215_W                   # lower bearing bottom — below the bottom cap (105)
 
     # ── Data window → figure size (aspect equal, mm units) ───────────────────
     PAD_L, PAD_R = 720, 1560
@@ -245,12 +253,12 @@ def draw_sheet1():
     ax.add_patch(plt.Rectangle((X_LO, -PAD_B), X_HI - X_LO, PAD_B,
                                fc="#D8D0C0", ec="none", zorder=1))
     ax.plot([X_LO, X_HI], [0, 0], color=C_OUT, lw=1.6, zorder=4)
-    ax.text(X_LO + 30, -150, "FLOOR LEVEL", ha="left", va="center",
+    ax.text(X_LO + 30, -430, "FLOOR LEVEL", ha="left", va="center",
             fontsize=7.5, color=C_DIM, **FONT, zorder=15)
 
-    # ── Fixed housing walls (Ø900, 5mm UV-HDPE) ──────────────────────────────
+    # ── Fixed housing walls (Ø800, 5mm UV-HDPE) — spans beam-to-beam ─────────
     for x0 in (HO_L, HI_R):
-        draw_rect(ax, x0, Z_BOT, LT_HOUSING_T, Z_TOP - Z_BOT,
+        draw_rect(ax, x0, Z_HBOT, LT_HOUSING_T, Z_HTOP - Z_HBOT,
                   fc="#DDE4EC", lw=1.4, zorder=5)
     leader(ax, HO_L + LT_HOUSING_T / 2, 1780,
            HO_L - 350, 1780,
@@ -268,31 +276,41 @@ def draw_sheet1():
 
     # ── End caps — metal hub discs (both 8mm 6061-T6 Al, identical) ──────────
     cap_x0 = X_AX - LT_CAP_OD / 2
-    draw_rect(ax, cap_x0, Z_CAP_T, LT_CAP_OD, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=7)
-    draw_rect(ax, cap_x0, Z_CAP_B - LT_CAP_BOT_T, LT_CAP_OD, LT_CAP_BOT_T,
-              fc=C_ALUM, lw=1.2, zorder=7)
+    draw_rect(ax, cap_x0, Z_DTOP - LT_CAP_TOP_T, LT_CAP_OD, LT_CAP_TOP_T, fc=C_ALUM, lw=1.2, zorder=7)  # top cap 2092..2100
+    draw_rect(ax, cap_x0, Z_DBOT, LT_CAP_OD, LT_CAP_BOT_T, fc=C_ALUM, lw=1.2, zorder=7)                 # bottom cap 130..138
 
-    # ── Rotation axis + stub shafts + SKF 6215 bearings ──────────────────────
+    # ── Rotation axis ─────────────────────────────────────────────────────────
     draw_cl_v(ax, X_AX, Z_LO + 120, Z_HI - 120)          # drum rotation axis
-    for z_brg in (Z_TOP - SKF6215_W, Z_BOT):
-        draw_rect(ax, X_AX - SKF6215_OD / 2, z_brg, SKF6215_OD, SKF6215_W,
-                  fc=C_STEEL, lw=1.2, zorder=8)
-        draw_rect(ax, X_AX - SKF6215_ID / 2, z_brg, SKF6215_ID, SKF6215_W,
-                  fc="white", lw=0.8, zorder=9)
-    draw_rect(ax, X_AX - 18, Z_CAP_T, 36, (Z_TOP - SKF6215_W) - Z_CAP_T,
-              fc=C_STEEL, lw=1.0, zorder=8)
-    draw_rect(ax, X_AX - 18, Z_BOT + SKF6215_W, 36,
-              (Z_CAP_B - LT_CAP_BOT_T) - (Z_BOT + SKF6215_W), fc=C_STEEL, lw=1.0, zorder=8)
-    leader(ax, X_AX - SKF6215_OD / 2, Z_TOP - SKF6215_W / 2,
-           HO_L - 50, Z_TOP + 220,
+
+    # ── Axle beams (top + bottom) + Ø240 mount plates + bearing ring/collar ──
+    #    (the drum HANGS from the upper bearing seated below the top beam — Sheet 8)
+    for zb0, zb1 in ((Z_TBM0, Z_TBM1), (Z_BBM0, Z_BBM1)):                            # 50×50 axle beams (span Yd)
+        draw_rect(ax, X_AX - LT_AXLE_BEAM_SPAN / 2, zb0, LT_AXLE_BEAM_SPAN, zb1 - zb0, fc=C_STEEL, lw=1.2, zorder=4)
+    draw_rect(ax, X_AX - LT_BRG_PLATE_OD / 2, z_ubrg + SKF6215_W, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, fc=C_STEEL, lw=1.0, zorder=5)  # top mount plate 2155..2167
+    draw_rect(ax, X_AX - LT_BRG_PLATE_OD / 2, LT_BBEAM_Z1, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, fc=C_STEEL, lw=1.0, zorder=5)          # bottom mount plate 93..105
+    draw_rect(ax, X_AX - LT_TOPRING_OD / 2, z_ubrg, LT_TOPRING_OD, SKF6215_W, fc=C_ALUM, lw=1.0, zorder=6)   # upper Al ring 2130..2155
+    draw_rect(ax, X_AX - LT_COLLAR_OD / 2, z_lbrg, LT_COLLAR_OD, SKF6215_W, fc=C_STEEL, lw=1.0, zorder=6)     # lower steel collar 105..130
+
+    # ── SKF 6215 bearings (upper ABOVE the cap · lower BELOW the cap) + stubs ──
+    for z_brg in (z_ubrg, z_lbrg):
+        draw_rect(ax, X_AX - SKF6215_OD / 2, z_brg, SKF6215_OD, SKF6215_W, fc="#9BA0A8", lw=1.0, zorder=7)
+        draw_rect(ax, X_AX - SKF6215_ID / 2, z_brg, SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=8)
+    draw_rect(ax, X_AX - 18, Z_DTOP, 36, (z_ubrg + SKF6215_W) - Z_DTOP, fc=C_STEEL, lw=1.0, zorder=9)   # upper stub 2100..2155
+    draw_rect(ax, X_AX - 18, z_lbrg, 36, Z_DBOT - z_lbrg, fc=C_STEEL, lw=1.0, zorder=9)                  # lower stub 105..130
+    leader(ax, X_AX - SKF6215_OD / 2, z_ubrg + SKF6215_W / 2,
+           HO_L - 50, Z_DTOP + 300,
            f"UPPER: {LT_CAP_TOP_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
-           f"SKF 6215-2RS1 (Ø{SKF6215_ID} bore) · isolated Al top ring, 6×M10",
+           f"SKF 6215-2RS1 (Ø{SKF6215_ID} bore) HANGS below the top beam · isolated Al ring, 6×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, X_AX - SKF6215_OD / 2, Z_BOT + SKF6215_W / 2,
-           X_LO + 475, Z_BOT - 60,
+    leader(ax, X_AX - SKF6215_OD / 2, z_lbrg + SKF6215_W / 2,
+           X_LO + 475, -135,
            f"LOWER: {LT_CAP_BOT_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
-           f"SKF 6215-2RS1 · welded steel floor collar, 8×M10",
+           f"SKF 6215-2RS1 FLOATS above the bottom beam · steel collar, 8×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+    leader(ax, X_AX - LT_AXLE_BEAM_SPAN / 2 + 40, (Z_TBM0 + Z_TBM1) / 2,
+           HO_L - 300, Z_TBM1 + 95,
+           "TOP AXLE BEAM 50×50 + Ø240 mount plate\n(drum hangs from the bearing — Sheet 8)",
+           fs=5.8, color=C_DIM, ha="center", arrow_style="->", font=FONT)
 
     # ── Grab rail on a STEEL STILE spanning the two caps — the pull load goes into the
     # structural Al caps, NOT the thin HDPE drum wall. (interior side of the bore) ───
@@ -983,8 +1001,10 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     for g in (-1, 1):                                         # fillet-weld triangles at the plate↔beam junction
         ax.add_patch(mpatches.Polygon([(rx(g * 25), rz(PT)), (rx(g * 25) + g * IS * 7, rz(PT)),
                                        (rx(g * 25), rz(PT) + IS * 7)], closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
-    cz = (rz(-15) + rz(0)) / 2                                # ring → plate bolt: CSK head flush in the ring, TAPPED into the plate (no nut)
-    draw_bolt(ax, ox, cz, rz(PT - 2) - rz(-15), d=58, head=-1, csk=True, end="tapped")
+    # ring → plate bolt: CSK head FLUSH in the ring underside, shank spanning the full
+    # 15mm ring + tapped into the 12mm plate (no nut) — i.e. the depth of BOTH plates
+    _bz0, _bz1 = rz(-15), rz(PT - 1)
+    draw_bolt(ax, ox, (_bz0 + _bz1) / 2, _bz1 - _bz0, d=58, head=-1, csk=True, end="tapped")
     leader(ax, ox - 20, rz(-8), rx(-52), rz(-8) + 20, "CSK bolt head — flush in the\nring underside (driven from below)",
            fs=6.0, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, ox + 24, rz(PT / 2), rx(64), rz(PT / 2 + 12), "M10 TAPPED into the Ø240×12 SOLID\nsteel plate (thick — taps directly)",
@@ -1343,7 +1363,7 @@ def draw_sheet7():
 
     # ── Seal cross-sections moved to Sheet 12 (enlarged for readability) ──────
     ax.text(dx + 160, -HR - 620,
-            "SEAL CROSS-SECTIONS\n\nrunning-gap brush (radial)\n+ top-end neoprene (axial)\n\nSEE SHEET 12 — drawn 1.5:1",
+            "SEAL CROSS-SECTIONS\n\nrunning-gap brush (radial)\n→ SHEET 4 HOLDER PROFILE\n\ntop-end neoprene (axial)\n→ SHEET 12 (drawn 1.5:1)",
             ha="center", va="center", fontsize=10, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=9,
             bbox=dict(boxstyle="round,pad=0.9", fc="#EEF3F8", ec=C_OUT, lw=1.4))
@@ -1353,7 +1373,7 @@ def draw_sheet7():
         "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
         f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015) — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
         f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
-        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged running-gap + top-end seal cross-sections. The brushes seal the gap circumferentially; the neoprene seals it axially.",
+        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged top-end seal cross-section (the running-gap brush section is the HOLDER PROFILE inset on Sheet 4). The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
     draw_notes(ax, notes, X_LO + 60, -HR - 880, 34, fs=7, font=FONT, width=3600, wrap=190,
@@ -2063,7 +2083,7 @@ def draw_sheet11():
 def draw_sheet12():
     # Two seal cross-sections pulled off Sheet 7 and drawn large (1.5:1) so the
     # brush/neoprene geometry is easy to read.
-    X_LO, X_HI, Z_LO, Z_HI = 120, 1900, -360, 1000
+    X_LO, X_HI, Z_LO, Z_HI = 120, 1500, -360, 1000
     FIG_W = 15.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -2075,42 +2095,13 @@ def draw_sheet12():
     ax.axis("off")
     S = 1.5
 
-    # ══ DETAIL 1 — RUNNING-GAP SEAL (radial section · 1.5:1) ══════════════════
-    osx, osz = 720, 560
-    def SX(mm): return osx + S * mm
-    def SZ(mm): return osz + S * mm
-    ax.text(SX(0), SZ(210), "DETAIL 1 — RUNNING-GAP SEAL  (radial section · 1.5:1)",
-            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
-    draw_rect(ax, SX(-200), SZ(-90), S * 60, S * 180, fc="#DDE4EC", lw=1.4, zorder=5)   # FIXED housing wall
-    draw_rect(ax, SX(140), SZ(-90), S * 46, S * 180, fc=C_LT_DRUM, lw=1.4, zorder=5)    # ROTATING drum wall
-    ax.add_patch(mpatches.Polygon([                                                     # flanged-U holder (one piece)
-        (SX(112), SZ(22)), (SX(132), SZ(22)), (SX(132), SZ(42)), (SX(140), SZ(42)),
-        (SX(140), SZ(-42)), (SX(132), SZ(-42)), (SX(132), SZ(-22)), (SX(112), SZ(-22)),
-        (SX(112), SZ(-16)), (SX(132), SZ(-16)), (SX(132), SZ(16)), (SX(112), SZ(16))],
-        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=6))
-    draw_rect(ax, SX(112), SZ(-16), S * 20, S * 32, fc="#8A8F98", lw=1.0, zorder=7)     # #4 channel in the U-track
-    for zz in range(-14, 16, 6):                                                        # bristles lay over onto the bore
-        ax.plot([SX(112), SX(-138)], [SZ(zz), SZ(zz + 10)], color="#222", lw=0.6, zorder=6)
-    for zc in (-34, 34):                                                                # flange blind rivets (thru the flange + drum wall) — factory head on the flange face, set head inside the drum
-        blind_rivet(ax, SX(159), SZ(zc), 180, S * 54, d=S * 5)
-    draw_dim_h(ax, SX(-140), SX(140), SZ(-120), f"≈{RUN_GAP}mm RUNNING GAP", offset=44,
-               fs=7.0, above=False, font=FONT)
-    leader(ax, SX(100), SZ(30), SX(150), SZ(150),
-           f"#4 (3/16\") STRIP BRUSH ×{LT_WIPER_N}\n"
-           f"FLANGE-RIVETED to the drum OD;\n"
-           f"bristles wipe the FIXED housing\n"
-           f"bore across the {RUN_GAP}mm gap (see notes)",
-           fs=6.8, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, SX(-170), SZ(-40), SX(-225), SZ(-90), f"HOUSING {LT_HOUSING_T}mm (bore)", fs=6.5,
-           color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    leader(ax, SX(163), SZ(-60), SX(200), SZ(-100), f"DRUM {LT_DRUM_T:.2f}mm", fs=6.5,
-           color=C_DIM, ha="left", arrow_style="->", font=FONT)
-
-    # ══ DETAIL 2 — TOP-END LIGHT PATH (axial section · 1.5:1) ═════════════════
-    otx, otz = 1520, 560
+    # ══ TOP-END LIGHT PATH (axial section · 1.5:1) ═══════════════════════════
+    # (the running-gap brush radial section lives on Sheet 4 — HOLDER PROFILE — so
+    #  it is not duplicated here; this sheet is the axial top/bottom seal only.)
+    otx, otz = 700, 560
     def TX(mm): return otx + S * mm
     def TZ(mm): return otz + S * mm
-    ax.text(TX(0), TZ(230), "DETAIL 2 — TOP-END LIGHT PATH  (axial section · 1.5:1)\ngap CAPPED at top · cap ↔ frame neoprene seal · bottom identical",
+    ax.text(TX(0), TZ(230), "TOP-END LIGHT PATH  (axial section · 1.5:1)\ngap CAPPED at top · cap ↔ frame neoprene seal · bottom identical",
             ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     draw_rect(ax, TX(-22), TZ(-175), S * 12, S * 205, fc=C_LT_DRUM, lw=1.2, zorder=5)   # drum shell (rotating)
     draw_rect(ax, TX(36), TZ(-175), S * 14, S * 235, fc="#DDE4EC", lw=1.2, zorder=5)    # housing wall (fixed)
@@ -2137,15 +2128,15 @@ def draw_sheet12():
             fontsize=6.5, color=C_OUT, **FONT, zorder=9)
 
     notes = [
-        "SEAL DETAILS  (enlarged from Sheet 7)",
-        f"DETAIL 1 — running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015 — the rivets land in the aluminum flange, clear of the brush); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint). Seals the gap CIRCUMFERENTIALLY.",
-        "DETAIL 2 — top + bottom axial ends: 12mm closed-cell neoprene wiper strips secured by their own PSA adhesive back (McMaster 93855K6) BONDED to the rotating drum cap face + a silicone bead along the seam; the strip's free edge sweeps the fixed frame plate. This CAPS the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes there is no straight-through or over-the-top light path.",
+        "TOP-END SEAL DETAIL  (enlarged from Sheet 7)",
+        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips secured by their own PSA adhesive back (McMaster 93855K6) BONDED to the rotating drum cap face + a silicone bead along the seam; the strip's free edge sweeps the fixed frame plate. This CAPS the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes (circumferential) there is no straight-through or over-the-top light path.",
+        f"The running-gap brush radial section (the {LT_WIPER_N}× #4 strip brushes flange-riveted to the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
         "SCALE 1.5:1 · ALL DIMS IN mm · see Sheet 7 for the rotation/light-path plans A–C.",
     ]
-    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1740, wrap=150, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1340, wrap=118, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 12 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="SEAL DETAILS — RUNNING-GAP BRUSH + TOP-END NEOPRENE (enlarged)",
+                subtitle="SEAL DETAIL — TOP-END NEOPRENE (enlarged)",
                 scale_note="1.5:1 · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet12.png"),

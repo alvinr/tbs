@@ -123,6 +123,16 @@ file** — a release must not ship without a changelog entry:
   (mount-plate detail replaces the rivet-nut detail), `parts.py` (new `ll-mount-plates` 2× $12–22 in,
   `ll-rivet-nuts` $53 retired, cage 40×40→50×50 reconciled), and the report; **lightlock −$29/−$9**
   (2948–3989), all registry/costing gates green. *(In progress.)*
+  **2D review round (hub + drum sheets).** Alvin review passes on the light-trap set: handle-foot bolts
+  drawn **countersunk flush** (Sheet 1/11); mount-plate **fillet-weld symbols** + drum **cap aligned to the
+  shell inner wall** (Sheet 8); collar plate reconciled to the **Ø230×12 mount plate + width dim** (Sheet 6);
+  brush holder → **single backup rivet** (the 2nd fouled the rim-angle; DP8010 bond is primary, Sheet 4);
+  hub **assembly-sequence** note (Sheet 5). Then a hub design change: the **bearing rings widened Ø200/210→Ø240
+  with the CSK bolt circle pushed Ø165/175→Ø200** so it clears the Ø160 stub-shaft flange — the drum flange
+  passes the bolt heads on assembly (ring bolted to the plate first, drum stub inserted after), and the **drum
+  caps are now drawn full-width with break lines** so the cap-over-bolt coverage is explicit. Constants
+  `LT_TOPRING_OD/LT_COLLAR_OD` 240, new `LT_RING_BOLT_PCD` 200; Sheets 5/6/8 + parts + report reconciled;
+  2D-only (3D doesn't carry the ring), gates green. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

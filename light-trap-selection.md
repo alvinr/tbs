@@ -6,7 +6,7 @@
 
 Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight — for example, between coating of the photosensitive material, or while the exposure is being made.
 
-The cargo door end of TBS-001 is sealed by a stepped hinged panel (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm wide × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm tall). Its thick center zone permanently houses the Ø900mm revolving-door light lock; the thinner corner zones sit flush with the container walls. When closed, the panel is light-sealed at its perimeter by an EPDM compression gasket against a fixed welded door frame. The panel's frame, skins, thickness zones, pivot, and latches are specified in the [Hinged Panel Report](hinged-panel-report.md).
+The cargo door end of TBS-001 is sealed by a stepped hinged panel (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm wide × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm tall). Its thick center zone permanently houses the Ø800mm revolving-door light lock; the thinner corner zones sit flush with the container walls. When closed, the panel is light-sealed at its perimeter by an EPDM compression gasket against a fixed welded door frame. The panel's frame, skins, thickness zones, pivot, and latches are specified in the [Hinged Panel Report](hinged-panel-report.md).
 
 In operation the housing sits in a punch-out bay that offsets the drum clear of the film-plane rail, which stays continuous. For transport the panel and drum swing ~56° about a vertical CHS pivot post, carrying the bay inboard of the door plane so the cargo doors close (clearing the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm). The two left film rails lift out first so the drum cage can cross the rail plane, then re-seat to the film datum; the housing and drum ride high enough with the panel to pass over the processing-tray rim and walkway brackets. Mode conversion is single-person and assisted (~5 minutes). See [Equipment Layout Report](equipment-layout-report.md) §6 for the swing-mechanism specification.
 
@@ -85,17 +85,17 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 
 | Parameter | Value |
 |-----------|-------|
-| Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
-| Height | 2,250mm (floor to upper bearing) |
+| Housing outer diameter | Ø800mm (fixed) + Ø764mm rotating drum, ~Ø758mm bore |
+| Height | 1,970mm clear interior (cap top 2,100mm AFF; cage/beam top 2,217mm, 171mm under the ceiling) |
 | Wall thickness | 5mm UV-HDPE housing + 1/8" HDPE drum, rolled and extrusion-welded |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
-| Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm steel stub shaft, bolted to the drum cap via a nylon-isolated hub |
-| Bottom bearing | SKF 6215 sealed, stub shaft into floor-mount collar, panel-bolted |
+| Top bearing | SKF 6215 sealed deep-groove ball bearing on a 75mm steel stub shaft from the drum cap; the nylon-isolated Al ring bolts (M10 tapped) to a Ø230×12 steel mount plate fillet-welded across the top axle beam (drum hangs from it) |
+| Bottom bearing | SKF 6215 sealed, short stub into a steel collar that bolts to the bottom mount plate (welded to the bottom axle beam); floating (radial locate) |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,977<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,998<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -104,7 +104,7 @@ Custom fabrication is the correct choice for a field-deployed, transport-rated c
 
 1. **Weight / center of gravity.** The plastic skin holds the drum/housing shell mass to ~60 kg (the steel shaft, bearings, and pull handle set a floor the shell cannot drop below). Because the whole assembly hangs off the swinging leaf and revolves ~56° about the pivot post for transport, low shell mass keeps the swing cantilever moment on the pivot — and the container CG shift — small.
 2. **No galvanic couple.** Plastic-to-steel has no galvanic couple, so isolation reduces to plain nylon washers at the shaft only — no full isolation kit, and no outdoor-corrosion risk at the panel-frame and bearing interfaces.
-3. **Cost and fabrication.** HDPE sheet is inexpensive, and hot-air / extrusion welding of a Ø900 cylinder is low-skill labor relative to metal seam welding.
+3. **Cost and fabrication.** HDPE sheet is inexpensive, and hot-air / extrusion welding of a Ø800 cylinder is low-skill labor relative to metal seam welding.
 
 A 3–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is plastic's higher thermal expansion, accommodated by the 13mm running gap between drum and housing.
 
@@ -120,14 +120,14 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded seam; laps a rolled rim-angle blind-riveted to the integrated support frame — SS blind rivets throughout (rim→beam + housing→rim laps) + DP8010 (see §9 Sheet 9), set in the punch-out bay |
+| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø800mm OD**, extrusion-welded seam; laps a rolled rim-angle blind-riveted to the integrated support frame — SS blind rivets throughout (rim→beam + housing→rim laps) + DP8010 (see §9 Sheet 9), set in the punch-out bay |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
-| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
+| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø764mm OD** (~Ø758mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
-| Drum/housing height | 2,200mm |
+| Drum/housing height | 1,970mm interior clear (2,100mm to cap top AFF; cage/beam top 2,267mm) |
 | Top cap | 8mm 6061-T6 aluminum disc (LT_CAP_TOP_T), bolted stub-shaft hub (4×M10 flange); the HDPE shell laps + SS-rivets + DP8010 to a rolled rim-angle on the cap (see §9 Sheet 4) |
 | Bottom cap | 8mm 6061-T6 aluminum disc (LT_CAP_BOT_T), matching the top — bolted stub-shaft hub, same lap-and-rivet shell joint |
-| Stub shafts (×2) | 75mm Ø × 150mm steel, bolted to the aluminum cap hubs (nylon-isolated); carry the drum in the upper + lower SKF 6215 bearings |
+| Stub shafts (×2) | 75mm Ø × 75mm steel, bolted to the aluminum cap hubs (nylon-isolated); carry the drum in the upper + lower SKF 6215 bearings. The upper stub carries the hang (bearing sits above the cap on it, below the top axle beam); the lower is a short locating stub |
 | Surface treatment | Interior: black-pigmented sheet + flat-black at welds; exterior: UV-stabilized sheet (no primer) |
 
 ### 4.2 Bearings and Mounting
@@ -152,7 +152,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Item | Specification |
 |------|--------------|
 | Entry handle | Off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar, 2.06″ standoff), interior face only, at 900mm height — **bolted at both feet** (1/4″ screws into **1/4″-20 rivet-nuts** set in the hollow RHS wall — a blind insert gives full thread engagement and can't strip the thin wall) to a steel **stile that spans and bolts to the two Al caps**. The stile is a 40×40×5 SS RHS (an open tube), so each end is fitted with a **solid tapped steel plug**, locked in the tube by **2× grub (set) screws** through the wall (anti-rotation + retention); a single **M10 countersunk bolt** is then driven from the cap's outside face (wrench-accessible), through the cap into the tapped plug — sealed with DP8010 for light-tightness. The pull load lands in the structural caps (not the thin HDPE wall) via handle → tube → grub screws → plug → cap bolt → cap. No welds. Mount + plug detail on §9 Sheet 11 |
-| Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, into the beam-wall rivet-nuts |
+| Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, tapped into the Ø230×12 steel mount plates (welded across the axle beams) |
 | Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
@@ -160,10 +160,10 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Item | Supplier | Part / Notes |
 |------|----------|-------------|
 | 5mm UV-HDPE sheet (housing, ~7 m²) + 1/8" HDPE sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | Rolled + extrusion-welded cylinders |
-| 8mm 6061-T6 aluminum plate (2 caps, Ø855) + 25×25×3 6061-T6 Al angle (2 rim rings) | [Online Metals](https://www.onlinemetals.com/) / Industrial Metal Supply (SoCal) | Water-jet the cap discs + hub bolt circle; roll the angle to R427 |
+| 8mm 6061-T6 aluminum plate (2 caps, Ø755) + 25×25×3 6061-T6 Al angle (2 rim rings) | [Online Metals](https://www.onlinemetals.com/) / Industrial Metal Supply (SoCal) | Water-jet the cap discs + hub bolt circle; roll the angle to R427 |
 | 1/8" 18-8 SS blind rivets — [97525A425](https://www.mcmaster.com/97525A425/) (shell→cap, $13.83/100) + [97525A435](https://www.mcmaster.com/97525A435/) (housing→frame, $14.59/100) — + 3M Scotch-Weld DP8010 adhesive | [McMaster-Carr](https://www.mcmaster.com/); [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | ~35/cap + ~26/edge @ ~60mm pitch, drill Ø3.3 (#30); DP8010 is the structural bond + light seal for HDPE (low surface energy) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
-| 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
+| 75mm × 75mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
 | Running-gap wiper — #4 (3/16″) nylon strip brush (4 lines × 8 ft) + anodized-Al straight-flange holders (4 × 8 ft) | [Gordon Brush](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) / [Tanis](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) | Metal channel backing, 0.008″ black nylon, 0.687″/17.5mm trim; brush snaps into the holder, holder DP8010-bonded + riveted (backup washers) to the drum OD (rivets clear of the brush); one 8 ft piece per line |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
@@ -171,7 +171,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,977<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,998<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -190,8 +190,8 @@ interior opening. **Enter:** exterior open, interior covered → light into the 
 no exit. **Transit:** both housing openings covered → fully sealed. **Exit:**
 exterior covered → no daylight enters.
 
-**Access.** The whole **~Ø850mm bore** is clear standing
-space and the 80° opening gives a **~555mm passage** (sideways entry). The Ø850 bore
+**Access.** The whole **~Ø758mm bore** is clear standing
+space and the 80° opening gives a **~487mm passage** (sideways entry). The Ø758 bore
 meets the §2 standing-space intent; the opening itself is tighter than the nominal
 ≥700mm and was accepted for occasional single-operator field use. Emergency egress remains the
 whole panel swinging open.
@@ -205,9 +205,9 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
-| Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
-| Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,977<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,998<!-- END costing:hp-housing-high -->** |
+| Clear bore / passage | 800mm | 750–900mm | **Ø758mm bore / ~487mm passage** |
+| Height | 2,000–2,200mm | 2,000mm | **1,970mm clear** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -285,10 +285,10 @@ The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 ![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)
 
 **Sheet 6 — Machined components (end cap + bearing seats + stub-shaft).** Single-part
-blueprints for the machined metal parts: the Ø855 6061-T6 Al end cap, the upper Al
+blueprints for the machined metal parts: the Ø755 6061-T6 Al end cap, the upper Al
 bearing ring, the lower A36 steel floor collar, and the stub-shaft + flange — each with
 OD, bore + fit, thickness, bolt pattern (PCD/count/Ø), material, and the fastening
-scheme (cap→flange countersunk in the cap, Ø11 clearance, threading into the TAPPED steel flange on the Ø120 PCD — the flange is a machined part, so it is tapped directly, no nut; ring/collar→beam via M10 countersunk flat-head bolts — flush in the ring/collar underside — into rivet-nuts / blind threaded inserts set in the 3mm RHS beam wall — too thin to tap, no internal access; Al nylon-isolated).
+scheme (cap→flange countersunk in the cap, Ø11 clearance, threading into the TAPPED steel flange on the Ø120 PCD — the flange is a machined part, so it is tapped directly, no nut; ring/collar→MOUNT PLATE via M10 countersunk flat-head bolts — flush in the ring/collar underside — tapped into a Ø230×12 steel mount plate fillet-welded across each 50×50 axle beam: the ring's Ø165 bolt circle is far wider than the 50mm beam, and the 12mm plate taps directly, so no rivet-nuts; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 

@@ -12,7 +12,7 @@ doesn't match.
 **Scope.** Purchased components with a fixed catalog size — fans, pumps, accumulator,
 filters, IBC totes, batteries, solar, evap cooler, bearings, linear guides, leadscrews,
 nozzles. **Excluded:** fasteners and standard small fittings (nuts/bolts/valves/elbows/
-camlocks/unions), and **fabricated-to-spec** items (RHS steel, ACM panels, the Ø900 drum,
+camlocks/unions), and **fabricated-to-spec** items (RHS steel, ACM panels, the Ø800 drum,
 the Ø89 pivot post, plywood) — those are cut to the drawing, so there is no
 "product ≠ drawing" risk.
 

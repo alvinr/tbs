@@ -94,6 +94,35 @@ file** — a release must not ship without a changelog entry:
   batches; the bearing-internal details are 2D-blueprint-only). Retired the deprecated **`LT_CAP_T`** pre-split
   cap-thickness alias — removed from `tbs_constants.py` and the overview model's unused import; the standing
   "unused import" advisory is cleared and the models stay byte-identical (no re-send). *(In progress.)*
+  **Drum shrink to fit the fixed cage + top-end hub reconciled 2D↔3D.** The 3D showed the drum
+  projecting through the cage (the Ø900 drum was wider than the walkway/transport-fixed cage opening):
+  the **drum shrank Ø900→Ø800** (rotating shell Ø864→Ø764, ~Ø758 bore, passage ~555→~487mm) and
+  **re-centered to X=−420** in the fixed cage — the cage/bay/fan envelope is now decoupled (hardcoded)
+  from the drum. Then, resolving a genuine 2D-internal contradiction (Sheet 8 drew the axle beam *at* the
+  drum cap; Sheet 10 put the bearing above it), the whole top end was reconciled: the **962mm axle beam
+  must clear the rotating drum, so the cage is taller than the drum**. **Interior 2120→1970mm**
+  (`DRUM_H_LT` 2250→2100, still 190mm over a standing operator); the **upper SKF 6215 hangs BELOW the top
+  beam** (drum suspended), the **lower floats ABOVE the bottom beam**, each on a **stub shaft shortened
+  150→75mm** (raising ceiling clearance to ~121mm at cage top 2267); and the **fixed housing now spans
+  beam-to-beam** (skirts the two hub gaps for light-tightness). New single-source constants
+  `LT_STUB_SHAFT_L / LT_BRG_STANDOFF / LT_BEAM_STANDOFF / LT_CAGE_TOP / LT_CAGE_BOT / LT_HOUSING_Z_*`
+  drive Sheets 1/8/10/11 + the `lighttrap` 3D (verified: bearing 2130–2155 below the 2167 beam, no
+  overlap). The old Ø120-journal / Ø220-slew-pad 3D bearing scheme was replaced by the twin-6215/axle-beam
+  scheme; `parts.py` shell areas + report stub-shaft dims reconciled. `lighttrap` 3D re-sent (overview +
+  construction models left stale pending the full `DRUM_H_LT` cascade). *(In progress.)*
+  **Axle beam 100×50→50×50 + bearing mount plates (deflection check + ring-bolt fix).** A deflection
+  number on the axle beam showed it was ~40–300× over-stiff (δ ≈ 0.06mm at 100×50, still ≈0.3mm at
+  50×50 under the ~69 kg hung drum, L/3200 — never the governing constraint), so the beam drops to
+  **50×50×3** (= the perimeter section; the whole cage is now one uniform member). The real constraint
+  was that the **bearing ring's Ø165 bolt circle is far wider than the 50mm beam** (only 2 of 6 bolts
+  would land on it), so each SKF 6215 ring/collar now bolts to a **Ø230×12 steel MOUNT PLATE
+  fillet-welded across the beam** (steel↔steel — part of the cage weldment); the **12mm plate taps M10
+  directly, retiring the ring/collar rivet-nuts** (the thin-beam-wall workaround). New constants
+  `LT_BRG_PLATE_OD/T`, explicit beam-Z (`LT_TBEAM_Z0`/`LT_BBEAM_Z1`) — cage top now 2217 (171mm ceiling
+  clearance). Cascaded across the 3D (re-sent + verified: plate Ø230 vs 50mm beam), Sheets 5/6/8/10
+  (mount-plate detail replaces the rivet-nut detail), `parts.py` (new `ll-mount-plates` 2× $12–22 in,
+  `ll-rivet-nuts` $53 retired, cage 40×40→50×50 reconciled), and the report; **lightlock −$29/−$9**
+  (2948–3989), all registry/costing gates green. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

@@ -163,6 +163,12 @@ file** — a release must not ship without a changelog entry:
   flange** that Sheet 5/6 (and the 3D) show bolted to the cap. Added the flange on each cap (top + bottom) so both
   sheets now read **cap → Ø160 flange → Ø75 shaft → bearing → ring/collar → Ø240 mount plate → beam**, and the
   Sheet 1 UPPER/LOWER callouts spell that stack out. 2D-only (the 3D already models the flanges). *(In progress.)*
+  **Sheet 1 axle beam drawn END-ON (section-correct).** Sheet 1 (GA) is a section looking *along* the drum depth
+  (Yd) while Sheet 8's elevation looks along X — they're orthogonal — so the axle beam, which spans Yd, must read
+  **end-on** in Sheet 1, not full-width. It was drawn as a 962mm-wide bar (making Sheet 1 look like a duplicate of
+  Sheet 8); now it's a small **50×50 hollow RHS square seated on the far-wider Ø240 mount plate**, which both
+  corrects the section geometry and visibly shows why the mount plate exists (bolt circle ≫ beam). Sheet 8 keeps the
+  full 962mm Yd span. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

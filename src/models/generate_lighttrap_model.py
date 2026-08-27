@@ -604,14 +604,14 @@ def drum_frame():
     p.append(ruby_box("Drum top axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_tbeam, BW, y1 - y0, BH, color=c))
     p.append(ruby_cylinder("Drum top bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, z_tbeam - LT_BRG_PLATE_T, PR, LT_BRG_PLATE_T, color=c, axis="z"))
     p.append(ov.ruby_arc_wall("Drum upper bearing ring (Ø240 Al, isolated)", DRUM_CX, DRUM_CY, LT_TOPRING_OD / 2, RTr,
-                              LT_TBEAM_Z0 - (DRUM_H + LT_BRG_STANDOFF), gap_center_deg=0, gap_deg=0, color=ca, z0=DRUM_H + LT_BRG_STANDOFF))
+                              (z_tbeam - LT_BRG_PLATE_T) - (DRUM_H + LT_BRG_STANDOFF), gap_center_deg=0, gap_deg=0, color=ca, z0=DRUM_H + LT_BRG_STANDOFF))
     p.append(ruby_cylinder("Drum upper bearing (SKF 6215)", DRUM_CX, DRUM_CY, DRUM_H + LT_BRG_STANDOFF, 65, 25, color=cb, axis="z"))
     # BOTTOM hub — mirror: the steel bearing COLLAR (Ø240) seats the SKF 6215 + bolts DOWN to a Ø240
     # mount plate on the bottom beam; locates/floats (radial only — no hang) (per 2D LOWER hub).
     p.append(ruby_box("Drum bottom axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_bbeam, BW, y1 - y0, BH, color=c))
     p.append(ruby_cylinder("Drum bottom bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, LT_BBEAM_Z1, PR, LT_BRG_PLATE_T, color=c, axis="z"))
     p.append(ov.ruby_arc_wall("Drum lower bearing collar (Ø240 steel)", DRUM_CX, DRUM_CY, LT_COLLAR_OD / 2, RCr,
-                              (LT_LBRG_Z0 + 25) - LT_BBEAM_Z1, gap_center_deg=0, gap_deg=0, color=c, z0=LT_BBEAM_Z1))
+                              (LT_LBRG_Z0 + 25) - LT_LBRG_Z0, gap_center_deg=0, gap_deg=0, color=c, z0=LT_LBRG_Z0))
     p.append(ruby_cylinder("Drum lower bearing (SKF 6215, floating)", DRUM_CX, DRUM_CY, LT_LBRG_Z0, 65, 25, color=cb, axis="z"))
     return '\n'.join(p)
 

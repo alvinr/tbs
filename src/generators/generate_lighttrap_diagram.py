@@ -291,20 +291,27 @@ def draw_sheet1():
     draw_rect(ax, X_AX - LT_TOPRING_OD / 2, z_ubrg, LT_TOPRING_OD, SKF6215_W, fc=C_ALUM, lw=1.0, zorder=6)   # upper Al ring 2130..2155
     draw_rect(ax, X_AX - LT_COLLAR_OD / 2, z_lbrg, LT_COLLAR_OD, SKF6215_W, fc=C_STEEL, lw=1.0, zorder=6)     # lower steel collar 105..130
 
-    # ── SKF 6215 bearings (upper ABOVE the cap · lower BELOW the cap) + stubs ──
+    # ── SKF 6215 bearings (upper ABOVE the cap · lower BELOW the cap) ──────────
     for z_brg in (z_ubrg, z_lbrg):
         draw_rect(ax, X_AX - SKF6215_OD / 2, z_brg, SKF6215_OD, SKF6215_W, fc="#9BA0A8", lw=1.0, zorder=7)
         draw_rect(ax, X_AX - SKF6215_ID / 2, z_brg, SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=8)
-    draw_rect(ax, X_AX - 18, Z_DTOP, 36, (z_ubrg + SKF6215_W) - Z_DTOP, fc=C_STEEL, lw=1.0, zorder=9)   # upper stub 2100..2155
-    draw_rect(ax, X_AX - 18, z_lbrg, 36, Z_DBOT - z_lbrg, fc=C_STEEL, lw=1.0, zorder=9)                  # lower stub 105..130
+    # Ø160 steel stub-shaft FLANGE on each cap (bolted 4×M10) → the Ø75 shaft rises FROM the flange
+    # through the bearing (matches the Sheet 5/6 hub — cap → flange → shaft, NOT cap → shaft).
+    _FL = 15
+    draw_rect(ax, X_AX - 80, Z_DTOP, 160, _FL, fc=C_STEEL, lw=1.1, zorder=9)                    # top flange 2100..2115
+    draw_rect(ax, X_AX - 80, Z_DBOT - _FL, 160, _FL, fc=C_STEEL, lw=1.1, zorder=9)              # bottom flange 115..130
+    draw_rect(ax, X_AX - SKF6215_ID / 2, Z_DTOP + _FL, SKF6215_ID,
+              (z_ubrg + SKF6215_W) - (Z_DTOP + _FL), fc=C_STEEL, lw=1.0, zorder=10)             # upper Ø75 shaft (flange → bearing top)
+    draw_rect(ax, X_AX - SKF6215_ID / 2, z_lbrg, SKF6215_ID,
+              (Z_DBOT - _FL) - z_lbrg, fc=C_STEEL, lw=1.0, zorder=10)                            # lower Ø75 shaft (bearing → flange)
     leader(ax, X_AX - SKF6215_OD / 2, z_ubrg + SKF6215_W / 2,
            HO_L - 50, Z_DTOP + 300,
-           f"UPPER: {LT_CAP_TOP_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
+           f"UPPER: {LT_CAP_TOP_T:.0f}mm Al cap → Ø160 steel flange → Ø{SKF6215_ID} stub shaft →\n"
            f"SKF 6215-2RS1 (Ø{SKF6215_ID} bore) HANGS below the top beam · isolated Al ring, 6×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, X_AX - SKF6215_OD / 2, z_lbrg + SKF6215_W / 2,
            X_LO + 475, -135,
-           f"LOWER: {LT_CAP_BOT_T:.0f}mm 6061-T6 Al cap + BOLTED stub shaft →\n"
+           f"LOWER: {LT_CAP_BOT_T:.0f}mm Al cap → Ø160 steel flange → Ø{SKF6215_ID} stub shaft →\n"
            f"SKF 6215-2RS1 FLOATS above the bottom beam · steel collar, 8×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, X_AX - LT_AXLE_BEAM_SPAN / 2 + 40, (Z_TBM0 + Z_TBM1) / 2,
@@ -1475,9 +1482,14 @@ def draw_sheet8():
     for z_brg in (z_ubrg, z_lbrg):
         rrect(fe(CY - SKF6215_OD / 2, z_brg), SKF6215_OD, SKF6215_W, fc="#B0B0B8", lw=1.2, zorder=8)
         rrect(fe(CY - SKF6215_ID / 2, z_brg), SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=9)
-    # stub shafts on the axis (cap → into the beam / bearing)
-    rrect(fe(CY - SKF6215_ID / 2, Z_DTOP), SKF6215_ID, (Z_CTOP - BH) - Z_DTOP, fc="#9BA0A8", lw=0.8, zorder=7)
-    rrect(fe(CY - SKF6215_ID / 2, z_lbrg), SKF6215_ID, Z_DBOT - z_lbrg, fc="#9BA0A8", lw=0.8, zorder=7)
+    # Ø160 steel stub-shaft FLANGE on each cap (bolted 4×M10) → the Ø75 shaft rises FROM the flange
+    # (matches the Sheet 5/6 hub — cap → flange → shaft, NOT cap → shaft).
+    _FL = 15
+    rrect(fe(CY - 80, Z_DTOP), 160, _FL, fc="#9AA0A8", lw=1.0, zorder=7)                   # top flange 2100..2115
+    rrect(fe(CY - 80, Z_DBOT - _FL), 160, _FL, fc="#9AA0A8", lw=1.0, zorder=7)             # bottom flange 115..130
+    # stub shafts on the axis (flange → bearing; the bearing decouples them from the fixed beam)
+    rrect(fe(CY - SKF6215_ID / 2, Z_DTOP + _FL), SKF6215_ID, (z_ubrg + SKF6215_W) - (Z_DTOP + _FL), fc="#9BA0A8", lw=0.8, zorder=7)
+    rrect(fe(CY - SKF6215_ID / 2, z_lbrg), SKF6215_ID, (Z_DBOT - _FL) - z_lbrg, fc="#9BA0A8", lw=0.8, zorder=7)
     draw_cl_v(ax, fe(CY, 0)[0], fe(CY, Z_CBOT)[1] - 80, fe(CY, Z_CTOP)[1] + 80)
     # panel-rail tie context (ghost above/below the cage)
     for z0 in (Z_CTOP + 6, Z_CBOT - 55):

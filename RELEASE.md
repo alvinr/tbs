@@ -158,6 +158,11 @@ file** — a release must not ship without a changelog entry:
   taps into the 12mm plate** (the depth of both plates). (3) **Sheet 12 de-duplicated** — its Detail 1 (running-gap
   radial seal) duplicated Sheet 4's HOLDER PROFILE, so it's removed; Sheet 12 is now the **top-end neoprene axial
   seal only**, and Sheet 7's pointer routes the running-gap section to Sheet 4. 2D-only (no 3D change). *(In progress.)*
+  **Sheet 1 + 8 hub: add the Ø160 stub-shaft flange (match Sheet 5).** Both the GA (Sheet 1) and the elevation
+  (Sheet 8) drew the Ø75 stub shaft rising *directly from the drum cap*, omitting the **Ø160 steel stub-shaft
+  flange** that Sheet 5/6 (and the 3D) show bolted to the cap. Added the flange on each cap (top + bottom) so both
+  sheets now read **cap → Ø160 flange → Ø75 shaft → bearing → ring/collar → Ø240 mount plate → beam**, and the
+  Sheet 1 UPPER/LOWER callouts spell that stack out. 2D-only (the 3D already models the flanges). *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

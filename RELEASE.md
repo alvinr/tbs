@@ -148,6 +148,16 @@ file** — a release must not ship without a changelog entry:
   collar (z93–130) were modeled **overlapping their Ø240 mount plates**, so from below the lower collar read as
   a doubled/leftover plate; both now seat the SKF 6215 and **meet the plate face without overlap** (ring 2130–2155
   under the plate 2155–2167; collar 105–130 on the plate 93–105). `lighttrap` 3D re-sent. *(In progress.)*
+  **Review fixes (Sheet 1 GA reconciled + mount-plate bolt + de-duplicated seal).** (1) **Sheet 1 GA reworked to
+  the hung-drum scheme** — it still drew the old arrangement (housing stopping at the drum cap, the upper bearing
+  *inside* the drum at the cap). Now matches Sheet 8/5/3D: the **fixed housing spans beam-to-beam (93→2167)**, the
+  drum **hangs from the upper SKF 6215 above its cap (2130–2155) below the top axle beam**, the lower bearing
+  **floats above the bottom beam**, and both **axle beams + Ø240 mount plates + ring/collar** are drawn.
+  (2) **Sheet 5 mount-plate detail bolt** — the CSK screw sat 5mm proud of the ring underside and only bit 5mm into
+  the plate; repositioned so the **head is flush in the ring underside** and the shank **spans the full 15mm ring +
+  taps into the 12mm plate** (the depth of both plates). (3) **Sheet 12 de-duplicated** — its Detail 1 (running-gap
+  radial seal) duplicated Sheet 4's HOLDER PROFILE, so it's removed; Sheet 12 is now the **top-end neoprene axial
+  seal only**, and Sheet 7's pointer routes the running-gap section to Sheet 4. 2D-only (no 3D change). *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

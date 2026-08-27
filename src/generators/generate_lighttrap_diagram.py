@@ -347,7 +347,7 @@ def draw_sheet1():
     leader(ax, HI_R - 2, 1300,
            HO_R + 250, 1180,
            f"≈{RUN_GAP}mm radial running gap\n(drum OD → housing bore; sealed — Sheet 7)",
-           fs=6.5, color=C_DIM, ha="center", arrow_style="->", font=FONT)
+           fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
 
     # ── Inset plan (schematic): opening orientation ──────────────────────────
     px, pz, pr = X_HI - 520, Z_TOP + 180, 300
@@ -958,14 +958,16 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
 
     # ── MOUNT-PLATE DETAIL — ring bolts UP into a tapped steel plate that is WELDED to the beam ──
     IS = 7
-    ox, oz = 1830, -560
+    ox, oz = 1830, -740
     def rx(mm): return ox + IS * mm
     def rz(mm): return oz + IS * mm
     T = LT_FRAME_T                                            # 3mm RHS wall
     PT = LT_BRG_PLATE_T                                       # 12mm SOLID steel mount plate
     RB = 50                                                   # 50×50 beam box shown (mm)
-    ax.text(ox, rz(PT + RB + 12), "MOUNT-PLATE DETAIL — ring → tapped plate → welded beam  (7:1)",
+    ax.text(ox, rz(PT + RB + 12), "MOUNT-PLATE DETAIL  (7:1)",
             ha="center", va="bottom", fontsize=7.0, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    ax.text(ox, rz(PT + RB + 2), "ring → tapped plate → welded beam", ha="center", va="bottom",
+            fontsize=6.0, color=C_DIM, **FONT, zorder=15)
     draw_rect(ax, rx(-30), rz(-15), IS * 60, IS * 15, fc=C_ALUM, lw=1.2, zorder=6)                 # Al ring (below the plate)
     draw_rect(ax, rx(-58), rz(0), IS * 116, IS * PT, fc=C_STEEL, lw=1.4, zorder=5)                 # SOLID mount plate (Ø230, overhangs the beam)
     draw_rect(ax, rx(-25), rz(PT), IS * 50, IS * RB, fc=C_STEEL, lw=1.4, zorder=5)                 # 50×50 RHS beam — outer
@@ -975,7 +977,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                                        (rx(g * 25), rz(PT) + IS * 7)], closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
     cz = (rz(-15) + rz(0)) / 2                                # ring → plate bolt: CSK head under the ring, tapped into the plate
     draw_bolt(ax, ox, cz, rz(PT - 2) - rz(-15), d=58, head=-1, csk=True)
-    leader(ax, ox - 20, rz(-15), rx(-46), rz(-15) - 34, "COUNTERSUNK bolt head — flush in the\nring underside (driven from below)",
+    leader(ax, ox - 20, rz(-8), rx(-52), rz(-8) + 20, "CSK bolt head — flush in the\nring underside (driven from below)",
            fs=6.0, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, ox + 24, rz(PT / 2), rx(64), rz(PT / 2 + 12), "M10 TAPPED into the Ø230×12 SOLID\nsteel plate (thick — taps directly)",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1558,12 +1560,12 @@ def draw_sheet8():
     tube_rect(ax, sxi, szi, RHS * SCi, RHS * SCi, LT_FRAME_T * SCi, fc="#9BA0A8", lw=1.4, zorder=6)
     draw_dim_h(ax, sxi, sxi + RHS * SCi, szi - 26, f"{RHS}mm", offset=26, fs=6.2, above=False, font=FONT)
     draw_dim_v(ax, sxi - 26, szi, szi + RHS * SCi, f"{RHS}mm", offset=26, fs=6.2, font=FONT)
-    ax.text(sxi + RHS * SCi / 2, szi + RHS * SCi + 18, f"{RHS}×{RHS}×{LT_FRAME_T} RHS\nposts + rails",
+    ax.text(sxi + RHS * SCi / 2, szi + RHS * SCi + 18, f"{RHS}×{RHS}×{LT_FRAME_T} RHS\nposts · rails · axle beams",
             ha="center", va="bottom", fontsize=6.5, color=C_OUT, **FONT, zorder=9)
-    ax.text(sxi + RHS * SCi + 50, szi + RHS * SCi / 2,
-            f"wall {LT_FRAME_T}mm (typ.)\n(axle beams = same section)", ha="left", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
+    ax.text(sxi + RHS * SCi + 26, szi + RHS * SCi / 2,
+            f"wall {LT_FRAME_T}mm", ha="left", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
     # BEARING MOUNT PLATE section (solid steel disc — the ring/collar bolt to it, not the beam)
-    bxi = sxi + 360
+    bxi = sxi + 540
     PSC = 0.9                                              # plate shown at a smaller scale (wide + thin)
     draw_rect(ax, bxi, szi, LT_BRG_PLATE_OD * PSC, LT_BRG_PLATE_T * SCi, fc=C_STEEL, lw=1.4, zorder=6)
     draw_dim_h(ax, bxi, bxi + LT_BRG_PLATE_OD * PSC, szi - 26, f"Ø{LT_BRG_PLATE_OD}", offset=26, fs=6.2, above=False, font=FONT)

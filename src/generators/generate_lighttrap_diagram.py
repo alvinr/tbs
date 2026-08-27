@@ -1483,6 +1483,10 @@ def draw_sheet8():
     # the bottom beam (floating). Each is offset from its cap by the stub-shaft standoff.
     z_ubrg = Z_DTOP + LT_BRG_STANDOFF        # upper bearing bottom — above the top cap, below the top beam
     z_lbrg = Z_DBOT - SKF6215_W              # lower bearing bottom — below the bottom cap, above the bottom beam
+    # bearing-seat RING (upper, isolated Al) / COLLAR (lower, steel) — Ø240, seats the SKF 6215 and
+    # bolts up/down to the mount plate (matches the Sheet 1/5 hub); drawn BEHIND the bearing.
+    rrect(fe(CY - LT_TOPRING_OD / 2, z_ubrg), LT_TOPRING_OD, SKF6215_W, fc=C_ALUM, lw=1.0, zorder=6)
+    rrect(fe(CY - LT_COLLAR_OD / 2, z_lbrg), LT_COLLAR_OD, SKF6215_W, fc=C_STEEL, lw=1.0, zorder=6)
     for z_brg in (z_ubrg, z_lbrg):
         rrect(fe(CY - SKF6215_OD / 2, z_brg), SKF6215_OD, SKF6215_W, fc="#B0B0B8", lw=1.2, zorder=8)
         rrect(fe(CY - SKF6215_ID / 2, z_brg), SKF6215_ID, SKF6215_W, fc="white", lw=0.8, zorder=9)

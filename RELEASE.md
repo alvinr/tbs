@@ -132,7 +132,13 @@ file** — a release must not ship without a changelog entry:
   passes the bolt heads on assembly (ring bolted to the plate first, drum stub inserted after), and the **drum
   caps are now drawn full-width with break lines** so the cap-over-bolt coverage is explicit. Constants
   `LT_TOPRING_OD/LT_COLLAR_OD` 240, new `LT_RING_BOLT_PCD` 200; Sheets 5/6/8 + parts + report reconciled;
-  2D-only (3D doesn't carry the ring), gates green. *(In progress.)*
+  gates green. *(In progress.)*
+  **3D synced to the 2D hub + further review fixes.** The 3D was missing the machined hub parts — added the
+  **bearing ring (Ø240 Al) + collar (Ø240 steel)**, the **stub-shaft flanges (Ø160)**, and the **end-retainer
+  plate (Ø90×4)** (verified positioned per the 2D). Review round: the **mount plate now matches the ring OD
+  (Ø230→Ø240)**; Sheet 6 collar-plate + Sheet 10 ring/bolt reconciled to the widened ring (Ø240 / Ø200 PCD);
+  the Sheet 5 mount-plate-detail bolt drawn as a **plain tapped CSK** (no nut/square); and the Sheet 8 drum
+  **inner skin extended to lap both caps** (the phantom gap resolved). `LT_BRG_PLATE_OD` 240; 3D re-sent. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

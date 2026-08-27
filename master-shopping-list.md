@@ -384,7 +384,7 @@ indicative low–high estimates — get quotes before ordering.
 | 75mm Ø × 150mm steel stub shaft | 2 ea | Steel service center | lightlock | $30–$50 |
 | Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
 | Baffle duct sheet metal (fans) | 1 lot | Local sheet metal | ventilation | $30 |
-| Bearing mount plates — 2× Ø230×12 steel disc | 2 ea | Online Metals | lightlock | $24–$44 |
+| Bearing mount plates — 2× Ø240×12 steel disc | 2 ea | Online Metals | lightlock | $24–$44 |
 | Cantilever bracket — standard (near/far) | 13 ea | Local fab | walkway | $390–$650 |
 | Cantilever bracket — widened (near) | 5 ea | Local fab | walkway | $200–$350 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |

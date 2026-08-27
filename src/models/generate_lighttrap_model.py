@@ -45,6 +45,7 @@ from tbs_constants import (LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T,
                            LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT,
                            LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP,
                            LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0,
+                           LT_TOPRING_OD, LT_COLLAR_OD, LT_TBEAM_Z0,
                            C_LT_DRUM)
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
@@ -450,6 +451,13 @@ def drum_rotor(cx=0, cy=0):
     # (ZB-25..ZB); it only locates, carries no hang (2D LOWER hub).
     parts.append(ruby_cylinder("LT Drum bottom stub", cx, cy, ZB - 25, 37.5, 33,
                                color=C_STEEL, axis="z"))
+    # Ø160 steel stub-shaft FLANGE at each cap — welded to the stub, bolted to the cap (4×M10 on Ø120
+    # PCD); carries the stub into the cap (2D Sheet 5/6). Top flange above the top cap; bottom below.
+    parts.append(ruby_cylinder("LT Drum top stub flange (Ø160)", cx, cy, H, 80, 15, color=C_STEEL, axis="z"))
+    parts.append(ruby_cylinder("LT Drum bottom stub flange (Ø160)", cx, cy, ZB - 15, 80, 15, color=C_STEEL, axis="z"))
+    # Ø90×4 END-RETAINER PLATE bolted to the UPPER stub-shaft end — its rim clamps the bearing inner
+    # race so the drum's hang runs through a bolted member, not a lone circlip (2D Sheet 5/6).
+    parts.append(ruby_cylinder("LT Drum end-retainer plate (Ø90×4)", cx, cy, H + LT_BEAM_STANDOFF - 7, 45, 4, color="#9AA0A8", axis="z"))
     # Interior pull handle on a steel STILE spanning the two caps — the operator's pull load lands
     # in the structural Al caps, NOT the thin HDPE wall. Stile bolted to each cap (2D Sheet 1).
     STILE_W = 40
@@ -562,7 +570,7 @@ def far_leaf():
 def drum_frame():
     """Steel support CAGE around the Ø800 drum: top+bottom perimeter rectangles + 4 posts,
     plus a central 50×50 RHS AXLE BEAM top and bottom spanning Yd at the drum axis. Each beam
-    carries an SKF 6215 (Ø130) via a Ø230 steel MOUNT PLATE welded across it (the bearing ring's
+    carries an SKF 6215 (Ø130) via a Ø240 steel MOUNT PLATE welded across it (the bearing ring's
     Ø165 bolt circle is far wider than the 50mm beam, so it bolts to the plate, not the beam wall):
     the UPPER bearing hangs BELOW the top beam so the drum is suspended; the LOWER floats ABOVE the
     bottom beam (radial locate). Per the 2D (Sheets 8/10). Fixed with the assembly."""
@@ -570,7 +578,7 @@ def drum_frame():
     x0, x1 = ov.DRUM_CAGE_X0, ov.DRUM_CAGE_X1
     y0, y1 = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
     BW, BH = LT_AXLE_BEAM_W, LT_AXLE_BEAM_H     # 50×50 RHS axle beams (carry the SKF 6215s via a mount plate)
-    PR = LT_BRG_PLATE_OD / 2                     # bearing mount-plate radius (Ø230) — the ring bolts to this, not the beam
+    PR = LT_BRG_PLATE_OD / 2                     # bearing mount-plate radius (Ø240) — the ring bolts to this, not the beam
     z_tbeam = DRUM_H + LT_BEAM_STANDOFF          # TOP axle-beam UNDERSIDE (2167): upper bearing hangs below it
     zt = LT_CAGE_TOP                             # cage/beam TOP (2267) — clears the 2388 ceiling by 121mm
     z_bbeam = LT_CAGE_BOT                        # BOTTOM axle-beam bottom: sits in the floor gap, below the Z130 sill
@@ -588,15 +596,22 @@ def drum_frame():
     for px in (x0, x1 - s):
         for py in (y0, y1 - s):
             p.append(ruby_box("Drum frame post", px, py, zb, s, s, zt - zb, color=c))
-    # TOP hub — the Ø200 bearing ring bolts UP to a Ø230 steel MOUNT PLATE welded under the beam
-    # (its Ø165 bolt circle is far wider than the 50mm beam); drum hangs from it (2D Sheet 10).
+    ca = C_ALUM   # isolated Al top ring
+    RTr = LT_TOPRING_OD / 2 - 65   # ring wall: Ø240 OD down to the Ø130 bearing seat
+    RCr = LT_COLLAR_OD / 2 - 65
+    # TOP hub — the isolated Al bearing RING (Ø240) seats the SKF 6215 + bolts UP (Ø200 CSK circle,
+    # clear of the Ø160 flange) to a Ø240 steel MOUNT PLATE welded under the beam; drum hangs (2D Sheet 5/10).
     p.append(ruby_box("Drum top axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_tbeam, BW, y1 - y0, BH, color=c))
-    p.append(ruby_cylinder("Drum top bearing mount plate (Ø230×12)", DRUM_CX, DRUM_CY, z_tbeam - LT_BRG_PLATE_T, PR, LT_BRG_PLATE_T, color=c, axis="z"))
+    p.append(ruby_cylinder("Drum top bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, z_tbeam - LT_BRG_PLATE_T, PR, LT_BRG_PLATE_T, color=c, axis="z"))
+    p.append(ov.ruby_arc_wall("Drum upper bearing ring (Ø240 Al, isolated)", DRUM_CX, DRUM_CY, LT_TOPRING_OD / 2, RTr,
+                              LT_TBEAM_Z0 - (DRUM_H + LT_BRG_STANDOFF), gap_center_deg=0, gap_deg=0, color=ca, z0=DRUM_H + LT_BRG_STANDOFF))
     p.append(ruby_cylinder("Drum upper bearing (SKF 6215)", DRUM_CX, DRUM_CY, DRUM_H + LT_BRG_STANDOFF, 65, 25, color=cb, axis="z"))
-    # BOTTOM hub — mirror: the bearing collar bolts DOWN to a Ø230 mount plate on the bottom beam;
-    # locates/floats (radial only — no hang) (per 2D LOWER hub).
+    # BOTTOM hub — mirror: the steel bearing COLLAR (Ø240) seats the SKF 6215 + bolts DOWN to a Ø240
+    # mount plate on the bottom beam; locates/floats (radial only — no hang) (per 2D LOWER hub).
     p.append(ruby_box("Drum bottom axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_bbeam, BW, y1 - y0, BH, color=c))
-    p.append(ruby_cylinder("Drum bottom bearing mount plate (Ø230×12)", DRUM_CX, DRUM_CY, LT_BBEAM_Z1, PR, LT_BRG_PLATE_T, color=c, axis="z"))
+    p.append(ruby_cylinder("Drum bottom bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, LT_BBEAM_Z1, PR, LT_BRG_PLATE_T, color=c, axis="z"))
+    p.append(ov.ruby_arc_wall("Drum lower bearing collar (Ø240 steel)", DRUM_CX, DRUM_CY, LT_COLLAR_OD / 2, RCr,
+                              (LT_LBRG_Z0 + 25) - LT_BBEAM_Z1, gap_center_deg=0, gap_deg=0, color=c, z0=LT_BBEAM_Z1))
     p.append(ruby_cylinder("Drum lower bearing (SKF 6215, floating)", DRUM_CX, DRUM_CY, LT_LBRG_Z0, 65, 25, color=cb, axis="z"))
     return '\n'.join(p)
 

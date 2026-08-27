@@ -90,7 +90,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Wall thickness | 5mm UV-HDPE housing + 1/8" HDPE drum, rolled and extrusion-welded |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
-| Top bearing | SKF 6215 sealed deep-groove ball bearing on a 75mm steel stub shaft from the drum cap; the nylon-isolated Al ring bolts (M10 tapped) to a Ø230×12 steel mount plate fillet-welded across the top axle beam (drum hangs from it) |
+| Top bearing | SKF 6215 sealed deep-groove ball bearing on a 75mm steel stub shaft from the drum cap; the nylon-isolated Al ring bolts (M10 tapped) to a Ø240×12 steel mount plate fillet-welded across the top axle beam (drum hangs from it) |
 | Bottom bearing | SKF 6215 sealed, short stub into a steel collar that bolts to the bottom mount plate (welded to the bottom axle beam); floating (radial locate) |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
@@ -152,7 +152,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Item | Specification |
 |------|--------------|
 | Entry handle | Off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar, 2.06″ standoff), interior face only, at 900mm height — **bolted at both feet** (1/4″ screws into **1/4″-20 rivet-nuts** set in the hollow RHS wall — a blind insert gives full thread engagement and can't strip the thin wall) to a steel **stile that spans and bolts to the two Al caps**. The stile is a 40×40×5 SS RHS (an open tube), so each end is fitted with a **solid tapped steel plug**, locked in the tube by **2× grub (set) screws** through the wall (anti-rotation + retention); a single **M10 countersunk bolt** is then driven from the cap's outside face (wrench-accessible), through the cap into the tapped plug — sealed with DP8010 for light-tightness. The pull load lands in the structural caps (not the thin HDPE wall) via handle → tube → grub screws → plug → cap bolt → cap. No welds. Mount + plug detail on §9 Sheet 11 |
-| Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, tapped into the Ø230×12 steel mount plates (welded across the axle beams) |
+| Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, tapped into the Ø240×12 steel mount plates (welded across the axle beams) |
 | Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
@@ -288,7 +288,7 @@ The individual machined parts are drawn on Sheet 6; the end cap on Sheet 3.
 blueprints for the machined metal parts: the Ø755 6061-T6 Al end cap, the upper Al
 bearing ring, the lower A36 steel floor collar, and the stub-shaft + flange — each with
 OD, bore + fit, thickness, bolt pattern (PCD/count/Ø), material, and the fastening
-scheme (cap→flange countersunk in the cap, Ø11 clearance, threading into the TAPPED steel flange on the Ø120 PCD — the flange is a machined part, so it is tapped directly, no nut; ring/collar→MOUNT PLATE via M10 countersunk flat-head bolts — flush in the ring/collar underside — tapped into a Ø230×12 steel mount plate fillet-welded across each 50×50 axle beam: the ring's Ø200 bolt circle (pushed clear of the Ø160 stub-shaft flange so the drum flange passes the bolt heads on assembly) is far wider than the 50mm beam, and the 12mm plate taps directly, so no rivet-nuts; Al nylon-isolated).
+scheme (cap→flange countersunk in the cap, Ø11 clearance, threading into the TAPPED steel flange on the Ø120 PCD — the flange is a machined part, so it is tapped directly, no nut; ring/collar→MOUNT PLATE via M10 countersunk flat-head bolts — flush in the ring/collar underside — tapped into a Ø240×12 steel mount plate fillet-welded across each 50×50 axle beam: the ring's Ø200 bolt circle (pushed clear of the Ø160 stub-shaft flange so the drum flange passes the bolt heads on assembly) is far wider than the 50mm beam, and the 12mm plate taps directly, so no rivet-nuts; Al nylon-isolated).
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 

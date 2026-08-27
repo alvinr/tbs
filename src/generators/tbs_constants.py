@@ -479,7 +479,7 @@ LT_AXLE_BEAM_H     = 50    # beam depth (mm) — 50×50×3 steel RHS
 LT_AXLE_BEAM_W     = 50    # beam width (mm)
 LT_AXLE_BEAM_T     = 3     # beam wall (mm)
 LT_AXLE_BEAM_SPAN  = DRUM_CAGE_YD_R - DRUM_CAGE_YD_L   # 962 — beam clear span (Yd)
-LT_BRG_PLATE_OD    = 230   # bearing mount-plate OD (mm) — carries the ring's Ø200 6×M10 circle across the 50mm beam
+LT_BRG_PLATE_OD    = 240   # bearing mount-plate OD (mm) — matches the ring/collar OD; carries the ring's Ø200 6×M10 circle across the 50mm beam
 LT_BRG_PLATE_T     = 12    # mount-plate thickness (mm) — steel, welded to the beam; ring/collar bolt into it
 # Upper hang STUB SHAFT + cage-Z derivation (2026-08-26). The drum HANGS from the top SKF 6215;
 # the bearing sits ABOVE the drum cap on this stub, the mount plate + axle beam above it — so the

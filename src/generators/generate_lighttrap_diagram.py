@@ -284,8 +284,12 @@ def draw_sheet1():
 
     # ── Axle beams (top + bottom) + Ø240 mount plates + bearing ring/collar ──
     #    (the drum HANGS from the upper bearing seated below the top beam — Sheet 8)
-    for zb0, zb1 in ((Z_TBM0, Z_TBM1), (Z_BBM0, Z_BBM1)):                            # 50×50 axle beams (span Yd)
-        draw_rect(ax, X_AX - LT_AXLE_BEAM_SPAN / 2, zb0, LT_AXLE_BEAM_SPAN, zb1 - zb0, fc=C_STEEL, lw=1.2, zorder=4)
+    # This section looks ALONG the beam axis (Yd), so each 50×50 RHS beam reads END-ON: a small
+    # hollow square on the far-wider Ø240 mount plate (Sheet 8 shows the full 962mm Yd span).
+    _BW, _BT = LT_AXLE_BEAM_W, LT_AXLE_BEAM_T
+    for zb0, zb1 in ((Z_TBM0, Z_TBM1), (Z_BBM0, Z_BBM1)):
+        draw_rect(ax, X_AX - _BW / 2, zb0, _BW, zb1 - zb0, fc=C_STEEL, lw=1.2, zorder=4)                       # RHS outer (cut end-on)
+        draw_rect(ax, X_AX - _BW / 2 + _BT, zb0 + _BT, _BW - 2 * _BT, (zb1 - zb0) - 2 * _BT, fc=BG, lw=0.8, zorder=4)  # hollow bore
     draw_rect(ax, X_AX - LT_BRG_PLATE_OD / 2, z_ubrg + SKF6215_W, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, fc=C_STEEL, lw=1.0, zorder=5)  # top mount plate 2155..2167
     draw_rect(ax, X_AX - LT_BRG_PLATE_OD / 2, LT_BBEAM_Z1, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, fc=C_STEEL, lw=1.0, zorder=5)          # bottom mount plate 93..105
     draw_rect(ax, X_AX - LT_TOPRING_OD / 2, z_ubrg, LT_TOPRING_OD, SKF6215_W, fc=C_ALUM, lw=1.0, zorder=6)   # upper Al ring 2130..2155
@@ -314,9 +318,9 @@ def draw_sheet1():
            f"LOWER: {LT_CAP_BOT_T:.0f}mm Al cap → Ø160 steel flange → Ø{SKF6215_ID} stub shaft →\n"
            f"SKF 6215-2RS1 FLOATS above the bottom beam · steel collar, 8×M10",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, X_AX - LT_AXLE_BEAM_SPAN / 2 + 40, (Z_TBM0 + Z_TBM1) / 2,
+    leader(ax, X_AX - LT_BRG_PLATE_OD / 2 + 20, z_ubrg + SKF6215_W + LT_BRG_PLATE_T / 2,
            HO_L - 300, Z_TBM1 + 95,
-           "TOP AXLE BEAM 50×50 + Ø240 mount plate\n(drum hangs from the bearing — Sheet 8)",
+           "TOP AXLE BEAM 50×50 (end-on) on the Ø240 mount plate\n(beam spans Yd — full span on Sheet 8)",
            fs=5.8, color=C_DIM, ha="center", arrow_style="->", font=FONT)
 
     # ── Grab rail on a STEEL STILE spanning the two caps — the pull load goes into the

@@ -323,7 +323,7 @@ def draw_sheet1():
     capsule(GX, GZ1 - hd, stile_x - 4, GZ1)                      # top arm (rounded corner)
     for gz in (GZ0, GZ1):                                        # two flat feet, BOLTED to the stile (no welds)
         draw_rect(ax, stile_x - 6, gz - 16, 6, 32, fc=C_STEEL, lw=1.0, zorder=8)                 # flat foot pad (0.27")
-        draw_bolt(ax, stile_x - 3, gz, 26, d=6.35, vertical=False, head=-1, end="tapped")        # foot → stile: 1/4" tapped
+        draw_bolt(ax, stile_x - 3, gz, 26, d=6.35, vertical=False, head=-1, end="rivnut", wall=5, csk=True)   # foot → stile: 1/4" CSK (flush) into rivet-nut
     leader(ax, GX - hd / 2, GRAB_Z + GRAB_L * 0.1, 780, GRAB_Z - 320,
            f"PULL HANDLE — off-the-shelf 12\" round pull handle (McMaster 1871A65,\nØ0.5\" bar),1/4\" through-holes BOLTED (tapped) at both feet to a \nsteel STILE ({STILE_W}×{STILE_W}×5 SS RHS) that spans + bolts to the two Al \ncaps — pull load into the caps · see MOUNT DETAIL",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
@@ -606,12 +606,12 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     draw_rect(ax, odx + HW, br_bot, CHAN, br_top - br_bot, fc="#8A8F98", lw=1.0, zorder=8)   # #4 channel backing
     for zz in range(int(br_bot) + 8, int(br_top), 8):                                        # bristles lay over into the gap
         ax.plot([odx + HW + CHAN, odx + HW + CHAN + S * 15], [zz, zz + 11], color="#333", lw=0.5, zorder=8)
-    for zc in (-100, -46):                                                                   # holder → shell blind rivets (radial), staggered clear of the brush
+    for zc in (-90,):                                                                        # holder → shell blind rivet — SINGLE (a 2nd upper rivet would foul the rim-angle L)
         blind_rivet(ax, odx - S * 1.5, zc, 0, S * (LT_DRUM_T + LT_WIPER_HOLDER_W), d=S * LT_RIVET_D)
     for zz in (-134, -126):                                                                  # break (shell + brush continue down)
         ax.plot([DPT - 3, odx + HW + CHAN + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=9)
     leader(ax, odx + HW + CHAN + S * 6, br_top - 22, 250, -CAPT - 150,
-           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder ({LT_WIPER_N} strips,\nSheet 7): the holder is DP8010-BONDED to the HDPE shell (brown) + blind-riveted\n(backup washer inside) — see HOLDER PROFILE inset →; starts clear BELOW the cap\nlap so its flange rivets stagger past the shell→cap rivets",
+           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder ({LT_WIPER_N} strips,\nSheet 7): the holder is DP8010-BONDED to the HDPE shell (brown, PRIMARY) + a SINGLE\nbackup blind rivet (washer inside) — a 2nd/upper rivet would foul the rim-angle L; see\nHOLDER PROFILE inset →; runs clear BELOW the cap lap",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
@@ -1000,6 +1000,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         "Bearing mounts: each SKF 6215 seats in an isolated ring/collar that bolts (M10 tapped) into a Ø230×12 steel MOUNT PLATE fillet-welded across the 50×50 beam — the ring's Ø165 bolt circle is far wider than the beam, and the 12mm plate taps directly (no rivet-nuts). Upper ring nylon-isolated; lower collar floats. Cap→flange: countersunk bolt in the cap, THROUGH the steel flange + a nut (drilled through — not tapped). Full fastening on Sheet 6.",
         "Axial retention — INNER race: circlip on the stub shaft each side of each bearing (DIN 471). OUTER race: the UPPER bearing is LOCATED — the outer race seats on a machined shoulder (bore steps Ø130→Ø122, drum side) that carries the hanging load, captured by a DIN 472 retaining ring on the beam side; the LOWER bearing FLOATS (plain Ø130 H7 bore, outer race free to slide) so it can't fight thermal growth.",
         "Shaft seat: the stub shaft seats ONLY in the Ø75 h6 bearing bore — the SKF 6215 IS the 'socket' (off-the-shelf; shaft blueprint on Sheet 6). It TERMINATES just below the beam underside — it does NOT penetrate the beam and needs NO clearance bore; the bearing (in the ring below the beam) carries + locates the drum, and the load goes to the beam through the ring bolts.",
+        "ASSEMBLY SEQUENCE: the ring/collar → mount-plate CSK bolts are torqued during HUB sub-assembly (mount plate + ring + bearing on the beam) BEFORE the drum stub shaft is inserted up into the bearing — so the Ø755 cap (which spans well past the Ø165/Ø175 bolt circle) never obstructs a driver. To service those bolts, un-hang the drum first. (Caps shown truncated here — see Sheet 1/6 for full Ø755.)",
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
         "SECTIONS 2.2:1 (isotropic) · ALL DIMS IN mm",
     ]
@@ -1093,19 +1094,21 @@ def draw_sheet6():
         draw_dim_v(ax, cx + rod + 36, sz, sz + tz, f"{thk}mm THK", offset=34, fs=7, right=True, font=FONT)
         draw_dim_h(ax, cx - rbore, cx + rbore, sz - 20, f"Ø{bore} BORE", offset=30, fs=6.6, above=False, font=FONT)
         if weldnote:
-            # CAGE FLOOR / BOTTOM PLATE under the collar + bolts down to it (was a fillet weld)
-            plate_tz = LT_FRAME_PLATE_T * s2
-            plate_hw = rod + 100
+            # Ø230×12 steel MOUNT PLATE (fillet-welded to the bottom beam) — the collar taps into it
+            plate_tz = LT_BRG_PLATE_T * s2
+            plate_hw = LT_BRG_PLATE_OD / 2 * s2
             draw_rect(ax, cx - plate_hw, sz - plate_tz, 2 * plate_hw, plate_tz, fc=C_STEEL, lw=1.4, zorder=4)
-            for g in (-1, 1):                        # collar BOLTED down to the plate (on the bolt PCD — was a fillet weld); CSK flush in the collar face
+            for g in (-1, 1):                        # collar bolts (M10 CSK tapped) down into the plate; CSK flush in the collar face
                 draw_bolt(ax, cx + g * rpcd, (sz + tz + sz - plate_tz) / 2, (tz + plate_tz),
                           d=10 * s2, head=1, end="tapped", csk=True, zb=8)
-            draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_FRAME_PLATE_T}mm PLATE",
+            draw_dim_h(ax, cx - plate_hw, cx + plate_hw, sz - plate_tz - 22, f"Ø{LT_BRG_PLATE_OD} MOUNT PLATE",
+                       offset=28, fs=6.4, above=False, font=FONT)
+            draw_dim_v(ax, cx + plate_hw + 34, sz - plate_tz, sz, f"{LT_BRG_PLATE_T}mm PLATE",
                        offset=30, fs=6.4, right=True, font=FONT)
-            leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 46,
-                   "CAGE FLOOR / BOTTOM PLATE\n(collar BOLTED down — 8× M10, no weld)", fs=6.4, color=C_OUT,
+            leader(ax, cx - plate_hw + 50, sz - plate_tz / 2, cx - plate_hw - 20, sz - plate_tz - 70,
+                   f"Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} STEEL MOUNT PLATE\n(fillet-welded to the bottom beam; collar taps in — 8× M10)", fs=6.4, color=C_OUT,
                    ha="right", arrow_style="->", font=FONT)
-            mat_z = sz - plate_tz - 100
+            mat_z = sz - plate_tz - 128
         else:
             mat_z = sz - 54
         ax.text(cx, mat_z, mat + ("" if not weldnote else f"\n{weldnote}"),
@@ -1114,7 +1117,7 @@ def draw_sheet6():
     ring(R_RING, LT_TOPRING_OD, SKF6215_OD, 165, LT_FRAME_MOUNT_BOLT_TOP, 45, C_ALUM,
          "UPPER BEARING RING  (2.2:1)", "6061-T6 Al · Ø130 H7 seat + Ø122 shoulder + DIN 472 groove — LOCATED · nylon-isolated · 45mm tall", located=True)
     ring(R_COLLAR, LT_COLLAR_OD, SKF6215_OD, 175, LT_FRAME_MOUNT_BOLT_BOT, 38, C_STEEL,
-         "LOWER FLOOR COLLAR  (2.2:1)", "A36 steel · plain Ø130 H7 bore — FLOATING (outer race slides)", weldnote="BOLTED to floor plate (8× M10) — no weld")
+         "LOWER BEARING COLLAR  (2.2:1)", "A36 steel · plain Ø130 H7 bore — FLOATING (outer race slides)", weldnote="8× M10 TAPPED into the Ø230×12 mount plate (welded to beam)")
 
     # ── Stub-shaft + flange: flange plan (top) + elevation (below) ───────────
     cx = CX
@@ -1408,9 +1411,11 @@ def draw_sheet8():
     # drum shell inside (shorter than the housing — caps at Z_DBOT / Z_DTOP)
     for yd in (CY - LT_DRUM_OR, CY + LT_DRUM_OR - LT_DRUM_T):
         rrect(fe(yd, Z_DBOT + 40), LT_DRUM_T, (Z_DTOP - Z_DBOT) - 80, fc=C_LT_DRUM, lw=1.0, zorder=5)
-    # drum caps (Al) — top + bottom
+    # drum caps (Al) — top + bottom. Drawn to the shell INNER face (the cap nests inside the shell
+    # + rim-angle lap) so the cap edge sits flush with the drum inner wall — no phantom gap in the GA.
+    cap_w = 2 * (LT_DRUM_OR - LT_DRUM_T)
     for zc in (Z_DTOP - LT_CAP_TOP_T, Z_DBOT):
-        rrect(fe(CY - LT_CAP_OD / 2, zc), LT_CAP_OD, LT_CAP_TOP_T, fc=C_ALUM, lw=1.0, zorder=6)
+        rrect(fe(CY - cap_w / 2, zc), cap_w, LT_CAP_TOP_T, fc=C_ALUM, lw=1.0, zorder=6)
     # top + bottom AXLE-SUPPORT BEAMS (50×50 RHS, span Yd) — CLEAR of the drum caps
     rrect(fe(cyl, Z_CTOP - BH), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=7)
     rrect(fe(cyl, Z_CBOT), cW_y, BH, fc=C_STEEL, lw=1.4, zorder=7)
@@ -1427,6 +1432,12 @@ def draw_sheet8():
         for zbw, zdir in ((Z_CTOP - BH, -1), (Z_CBOT + BH, 1)):
             px, pz = fe(yd, zbw)
             ax.add_patch(mpatches.Polygon([(px, pz), (px + s * ws, pz), (px, pz + zdir * ws)],
+                                          closed=True, fc="#CC4422", ec="#CC4422", zorder=10))
+    # fillet welds — each Ø230 mount plate to its beam (steel↔steel, at both Yd edges of the plate)
+    for yw, sw in ((CY - LT_BRG_PLATE_OD / 2, -1), (CY + LT_BRG_PLATE_OD / 2, 1)):
+        for zj, zdir in ((LT_TBEAM_Z0, -1), (LT_BBEAM_Z1, 1)):
+            px, pz = fe(yw, zj)
+            ax.add_patch(mpatches.Polygon([(px, pz), (px + sw * ws, pz), (px, pz + zdir * ws)],
                                           closed=True, fc="#CC4422", ec="#CC4422", zorder=10))
     # bearings on the axis: UPPER hangs BELOW the top beam (drum suspended), LOWER sits ABOVE
     # the bottom beam (floating). Each is offset from its cap by the stub-shaft standoff.
@@ -2013,7 +2024,7 @@ def draw_sheet11():
     cap_bar(gxo, GRAB_L / 2 - hd, -STW / 2 - 4, GRAB_L / 2)       # top arm
     for gz in (-GRAB_L / 2, GRAB_L / 2):                          # 2 feet, bolted to the stile via rivet-nuts in the hollow wall
         draw_rect(ax, BX(-STW / 2 - 6), BZ(gz - 16), B * 6, B * 32, fc=C_STEEL, lw=0.9, zorder=7)
-        draw_bolt(ax, BX(-STW / 2 - 3), BZ(gz), B * 28, d=B * 6.35, vertical=False, head=-1, end="rivnut", wall=B * 5, zb=9)
+        draw_bolt(ax, BX(-STW / 2 - 3), BZ(gz), B * 28, d=B * 6.35, vertical=False, head=-1, end="rivnut", wall=B * 5, csk=True, zb=9)
     draw_dim_v(ax, BX(gxo) - B * hd - 46, BZ(-GRAB_L / 2), BZ(GRAB_L / 2), f"{GRAB_L} HANDLE", offset=28, fs=6.5, font=FONT)
     draw_dim_h(ax, BX(gxo), BX(-STW / 2), BZ(-GRAB_L / 2) - 40, f"{GRAB_SO} STANDOFF", offset=26, fs=6.5, above=False, font=FONT)
     leader(ax, BX(gxo), BZ(GRAB_L / 4), BX(STW * 0.9), BZ(GRAB_L / 4 + 40),

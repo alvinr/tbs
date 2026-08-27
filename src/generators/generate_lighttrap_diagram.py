@@ -309,19 +309,19 @@ def draw_sheet1():
     draw_rect(ax, X_AX - SKF6215_ID / 2, z_lbrg, SKF6215_ID,
               (Z_DBOT - _FL) - z_lbrg, fc=C_STEEL, lw=1.0, zorder=10)                            # lower Ø75 shaft (bearing → flange)
     leader(ax, X_AX - SKF6215_OD / 2, z_ubrg + SKF6215_W / 2,
-           HO_L - 50, Z_DTOP + 300,
-           f"UPPER: {LT_CAP_TOP_T:.0f}mm Al cap → Ø160 steel flange → Ø{SKF6215_ID} stub shaft →\n"
-           f"SKF 6215-2RS1 (Ø{SKF6215_ID} bore) HANGS below the top beam · isolated Al ring, 6×M10",
-           fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+           HO_L - 350, Z_DTOP + 150,
+           f"UPPER: {LT_CAP_TOP_T:.0f}mm Al cap → Ø160 steel flange →\nØ{SKF6215_ID} stub shaft →"
+           f"SKF 6215-2RS1 (Ø{SKF6215_ID} bore)\nHANGS below the top beam · isolated\nAl ring, 6×M10",
+           fs=6, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, X_AX - SKF6215_OD / 2, z_lbrg + SKF6215_W / 2,
            X_LO + 475, -135,
            f"LOWER: {LT_CAP_BOT_T:.0f}mm Al cap → Ø160 steel flange → Ø{SKF6215_ID} stub shaft →\n"
            f"SKF 6215-2RS1 FLOATS above the bottom beam · steel collar, 8×M10",
-           fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, X_AX - LT_BRG_PLATE_OD / 2 + 20, z_ubrg + SKF6215_W + LT_BRG_PLATE_T / 2,
-           HO_L - 300, Z_TBM1 + 95,
+           fs=6, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+    leader(ax, X_AX, z_ubrg + SKF6215_W + LT_BRG_PLATE_T / 2 + 30,
+           HO_L - 275, Z_TBM1 + 135,
            "TOP AXLE BEAM 50×50 (end-on) on the Ø240 mount plate\n(beam spans Yd — full span on Sheet 8)",
-           fs=5.8, color=C_DIM, ha="center", arrow_style="->", font=FONT)
+           fs=6, color=C_DIM, ha="center", arrow_style="->", font=FONT)
 
     # ── Grab rail on a STEEL STILE spanning the two caps — the pull load goes into the
     # structural Al caps, NOT the thin HDPE drum wall. (interior side of the bore) ───
@@ -332,7 +332,7 @@ def draw_sheet1():
         draw_rect(ax, stile_x + 8, min(zc, zc + hd_ * 70), STILE_W - 16, 70, fc="#9AA0A8", lw=0.8, zorder=7)  # solid tapped plug in tube end
         draw_bolt(ax, stile_x + STILE_W / 2, zc + hd_ * 18, 44, d=11, head=int(-hd_), end="tapped", csk=True, zb=8)  # CSK bolt through cap → plug
     leader(ax, stile_x + STILE_W / 2, Z_CAP_T + 4, stile_x + 640, Z_CAP_T + 160,
-           "STILE → CAP: M10 countersunk bolt through each cap into a\ntapped plug in the RHS end (+ grub screws, 1 top + 1 bottom) — see Sheet 11", fs=6.0, color=C_DIM,
+           "STILE → CAP: M10 countersunk bolt through\neach cap into a tapped plug in the RHS end (+ grub\nscrews, 1 top + 1 bottom) — see Sheet 11", fs=6.0, color=C_DIM,
            ha="right", arrow_style="->", font=FONT)
     GX = stile_x - GRAB_SO                                       # grip standoff, inboard of the stile
     GZ0, GZ1 = GRAB_Z - GRAB_L / 2, GRAB_Z + GRAB_L / 2

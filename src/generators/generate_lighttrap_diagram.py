@@ -1515,7 +1515,7 @@ def draw_sheet8():
            f"BOTTOM AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\n+ floor anchor (lower bearing sits above it)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, *fe(CY + SKF6215_OD / 2, z_ubrg + SKF6215_W / 2),
-           *fe(CY + 170, z_ubrg + 150), "SKF 6215 ×2\n(upper hangs below top beam;\nlower floats above bottom beam)", fs=6.5,
+           *fe(CY + 370, z_ubrg + 220), "SKF 6215 ×2\n(upper hangs below top beam;\nlower floats above bottom beam)", fs=6.5,
            color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, *fe(CY - LT_BRG_PLATE_OD / 2, LT_TBEAM_Z0 - LT_BRG_PLATE_T / 2),
            *fe(cyl - 80, Z_CTOP * 0.80), f"BEARING MOUNT PLATE Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T}\nwelded across the beam — ring bolts to THIS\n(Ø200 bolt circle » 50mm beam)", fs=6.3,

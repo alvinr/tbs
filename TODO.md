@@ -63,6 +63,19 @@ review is finished:**
   remove the duplicate from `hingepanel-sheet6`. Do this AFTER the drum-diameter change lands (that will
   re-cut several of these sheets anyway).
 
+## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin)
+
+- [ ] **HDPE surround cut sheets + drum-join detail.** The hinged panel's HDPE surround (the skin around
+  the Ø800 light-trap housing) has no fabrication cut sheets yet. Draw them: the flat-pattern cut sheet(s)
+  for the surround HDPE, AND the joint detail for how the **upper and lower floor** (the panel's top/bottom
+  surfaces around the drum) **join to the outer drum housing** — the transition/seal where the surround
+  meets the Ø800 housing at the top and bottom. Add to the hinged-panel drawing set + report; coordinate
+  with the light-trap Sheet 2 (housing cut sheet) so the surround↔housing interface is single-sourced.
+- [ ] **Resolve why the HDPE surround is not connected to the frame.** In the current hinged-panel model
+  the HDPE surround reads as disconnected from the panel steel frame — establish the actual attachment
+  (fasteners / bond / U-channel retainer / rivets) and either add it to the model + a detail, or document
+  why it floats. Reconcile the 2D + 3D + report once resolved.
+
 ## 🔩 Revolving light-trap — metal-cap + lap-joint cascade (2026-08-21)
 
 The 2D blueprint set (`generate_lighttrap_diagram.py`) now reflects the design change: **end caps

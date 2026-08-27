@@ -169,6 +169,10 @@ file** — a release must not ship without a changelog entry:
   Sheet 8); now it's a small **50×50 hollow RHS square seated on the far-wider Ø240 mount plate**, which both
   corrects the section geometry and visibly shows why the mount plate exists (bolt circle ≫ beam). Sheet 8 keeps the
   full 962mm Yd span. *(In progress.)*
+  **Sheet 8 hub matched to Sheet 1/5.** Sheet 8's elevation drew the bearing + mount plate but was missing the
+  **Ø240 bearing-seat ring (upper, Al) / collar (lower, steel)** around each SKF 6215; added them so the elevation
+  now shows the same hub stack as Sheet 1/5 — **cap → Ø160 flange → Ø75 shaft → bearing → Ø240 ring/collar → mount
+  plate → beam** (beam full-span, the intended orthogonal-view difference from Sheet 1). *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

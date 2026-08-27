@@ -848,10 +848,13 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # Ø240×12 SOLID steel MOUNT PLATE fillet-welded across the beam's ring-side face — the ring
         # bolts tap into THIS (its Ø200 bolt circle is far wider than the 50mm beam). 12mm ≈ 4× the wall.
         _pt = 4 * _bw
-        draw_rect(ax, _bx0 - 24 * SC, _bz0 - _pt, _bwd + 48 * SC, _pt, fc=C_STEEL, lw=1.4, zorder=5)
+        _rf = _bz0 if up else _bz1                                           # beam face on the RING side (nearest the shaft)
+        _pz0 = _rf - _pt if up else _rf                                      # plate sits ON that face, extending toward the ring
+        draw_rect(ax, _bx0 - 24 * SC, _pz0, _bwd + 48 * SC, _pt, fc=C_STEEL, lw=1.4, zorder=5)
+        _wleg = -7 * SC if up else 7 * SC                                    # fillet leg points from the ring face into the plate
         for _wx in (_bx0, _bx0 + _bwd):                                      # fillet welds plate↔beam (both sides)
-            ax.add_patch(mpatches.Polygon([(_wx, _bz0), (_wx - 7 * SC, _bz0), (_wx, _bz0 - 7 * SC)]
-                                          if _wx == _bx0 else [(_wx, _bz0), (_wx + 7 * SC, _bz0), (_wx, _bz0 - 7 * SC)],
+            _wd = -1 if _wx == _bx0 else 1
+            ax.add_patch(mpatches.Polygon([(_wx, _rf), (_wx + _wd * 7 * SC, _rf), (_wx, _rf + _wleg)],
                                           closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
         # Al drum cap (full Ø755 — shown BROKEN; it spans well past the ring bolts) + stub-shaft flange
         CAPW = 155 * SC
@@ -1090,9 +1093,10 @@ def draw_sheet6():
             rsh = (bore - 8) / 2 * s2
             for g in (-1, 1):
                 draw_rect(ax, min(cx + g * rsh, cx + g * rbore), sz, rbore - rsh, tz * 0.42, fc=fc, lw=1.0, zorder=6)      # shoulder lip (drum end, outer-race abutment)
-                gz = sz + tz * 0.70                                                                                       # DIN 472 groove/ring — beam-side end
-                draw_rect(ax, min(cx + g * rbore, cx + g * (rbore + 6)), gz, 6, tz * 0.30, fc=BG, lw=0.8, zorder=6)        # groove cut OUTWARD into the bore wall
-                draw_rect(ax, min(cx + g * (rbore - 6), cx + g * (rbore + 3)), gz + tz * 0.04, 9, tz * 0.22, fc="#606068", lw=0.8, zorder=7)  # DIN 472 internal ring — seated in the groove, MAJORITY projecting INWARD past the bore to retain the outer race
+                gw = 4.15 * s2                                                                                             # DIN 472 for Ø130: NARROW 4.15mm axial groove/ring (McMaster 98455A170)
+                gz = sz + tz * 0.60 - gw / 2                                                                               # beam-side, set well IN from the edge
+                draw_rect(ax, min(cx + g * rbore, cx + g * (rbore + 2 * s2)), gz, 2 * s2, gw, fc=BG, lw=0.8, zorder=6)      # groove Ø134×4.15 (2mm deep) cut OUTWARD into the bore wall
+                draw_rect(ax, min(cx + g * (rbore - 2 * s2), cx + g * (rbore + 2 * s2)), gz + 0.3 * s2, 4 * s2, gw - 0.6 * s2, fc="#606068", lw=0.8, zorder=7)  # DIN 472 internal ring — narrow, projecting INWARD past the bore to retain the outer race
             ax.text(cx + rod + 100, sz + tz / 2, "LOCATED seat:\nshoulder (drum end)\n+ ring groove (beam end)\n— spec in notes", ha="left",
                     va="center", fontsize=6.2, color=C_OUT, **FONT, zorder=9)
         draw_cl_v(ax, cx, sz - 16, sz + tz + 16)

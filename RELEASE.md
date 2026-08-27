@@ -139,6 +139,15 @@ file** — a release must not ship without a changelog entry:
   (Ø230→Ø240)**; Sheet 6 collar-plate + Sheet 10 ring/bolt reconciled to the widened ring (Ø240 / Ø200 PCD);
   the Sheet 5 mount-plate-detail bolt drawn as a **plain tapped CSK** (no nut/square); and the Sheet 8 drum
   **inner skin extended to lap both caps** (the phantom gap resolved). `LT_BRG_PLATE_OD` 240; 3D re-sent. *(In progress.)*
+  **Review fixes (circlip + hub-plate seating, 2D + 3D).** (1) **Sheet 6 upper-ring DIN 472 circlip** redrawn
+  **narrow** (4.15mm axial groove/ring, McMaster 98455A170) and **set well in from the ring edge** — it was a
+  wide flat strip reaching the top face. (2) **Sheet 5 lower hub** — the Ø240×12 mount plate was drawn on the
+  beam's *far* face, so the collar bolt tapped into the bare beam, not the plate; moved onto the beam's
+  **ring-side face** (both hubs) so the 8× M10 collar bolts visibly tap into the plate, with the fillet welds
+  pointing into the beam corner. (3) **3D leftover-plate fix** — the upper bearing ring (z2130–2167) and lower
+  collar (z93–130) were modeled **overlapping their Ø240 mount plates**, so from below the lower collar read as
+  a doubled/leftover plate; both now seat the SKF 6215 and **meet the plate face without overlap** (ring 2130–2155
+  under the plate 2155–2167; collar 105–130 on the plate 93–105). `lighttrap` 3D re-sent. *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

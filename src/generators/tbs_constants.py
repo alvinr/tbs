@@ -460,21 +460,26 @@ DRUM_CAGE_YD_R = 1662   # cage far side — FIXED (see YD_L); clears the Ø800 h
 LT_FRAME_RHS       = 50    # cage post / rail RHS section (mm; ~2" SHS, matches the panel frame)
 LT_FRAME_T         = 3     # RHS wall (mm)
 LT_FRAME_PLATE_T   = 10    # top/bottom bearing-plate thickness (mm steel)
-LT_TOPRING_OD      = 200   # upper bearing seat: isolated 6061-T6 Al top ring OD (mm); ID = bearing OD
-LT_COLLAR_OD       = 210   # lower bearing seat: welded steel floor collar OD (mm)
-LT_FRAME_MOUNT_BOLT_TOP = 6   # top-ring → beam bolts (M10)
-LT_FRAME_MOUNT_BOLT_BOT = 8   # floor-collar → beam bolts (M10)
+LT_TOPRING_OD      = 240   # upper bearing seat: isolated 6061-T6 Al top ring OD (mm); ID = bearing OD.
+                           # Widened 200→240 (2026-08-27) so the ring→plate CSK bolt circle clears the
+                           # Ø160 welded stub-shaft flange — the drum flange can pass the bolt heads on
+                           # assembly (ring bolted to the plate FIRST, then the drum stub inserted up).
+LT_COLLAR_OD       = 240   # lower bearing seat: steel collar OD (mm) — widened 210→240 to match.
+LT_RING_BOLT_PCD   = 200   # ring/collar → mount-plate CSK bolt circle (mm). Was 165/175 — pushed out
+                           # clear of the Ø160 flange (head inner edge Ø180 > Ø160) so the flange passes.
+LT_FRAME_MOUNT_BOLT_TOP = 6   # top-ring → mount-plate bolts (M10)
+LT_FRAME_MOUNT_BOLT_BOT = 8   # collar → mount-plate bolts (M10)
 # Axle-support BEAM — the cross-beam spanning the cage (Yd, at the drum axis X) at each end,
 # carrying the SKF 6215 via a mount plate. 50×50×3 (= the perimeter RHS section): the 962mm
 # span is barely stressed — δ ≈ 0.3mm under the ~69 kg hung drum (L/3200), so the old deep
-# 100×50 was unnecessary. The bearing RING/collar (Ø200/Ø210, Ø165/Ø175 bolt circle) is far
+# 100×50 was unnecessary. The bearing RING/collar (Ø240 OD, Ø200 bolt circle) is far
 # wider than the 50mm beam, so it bolts to a BEARING MOUNT PLATE welded across the beam —
 # NOT the beam wall (only 2 of 6 bolts would land on a 50mm beam).
 LT_AXLE_BEAM_H     = 50    # beam depth (mm) — 50×50×3 steel RHS
 LT_AXLE_BEAM_W     = 50    # beam width (mm)
 LT_AXLE_BEAM_T     = 3     # beam wall (mm)
 LT_AXLE_BEAM_SPAN  = DRUM_CAGE_YD_R - DRUM_CAGE_YD_L   # 962 — beam clear span (Yd)
-LT_BRG_PLATE_OD    = 230   # bearing mount-plate OD (mm) — carries the ring's Ø165 6×M10 circle across the 50mm beam
+LT_BRG_PLATE_OD    = 230   # bearing mount-plate OD (mm) — carries the ring's Ø200 6×M10 circle across the 50mm beam
 LT_BRG_PLATE_T     = 12    # mount-plate thickness (mm) — steel, welded to the beam; ring/collar bolt into it
 # Upper hang STUB SHAFT + cage-Z derivation (2026-08-26). The drum HANGS from the top SKF 6215;
 # the bearing sits ABOVE the drum cap on this stub, the mount plate + axle beam above it — so the

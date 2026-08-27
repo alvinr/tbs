@@ -44,7 +44,8 @@ from tbs_constants import (LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T,
                            LT_AXLE_BEAM_W, LT_AXLE_BEAM_H,
                            LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT,
                            LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP,
-                           LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0)
+                           LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0,
+                           C_LT_DRUM)
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -430,7 +431,7 @@ def drum_rotor(cx=0, cy=0):
     parts = []
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
-                                  color=C_ALUM, alpha=0.5, z0=ZB))
+                                  color=C_LT_DRUM, alpha=0.6, z0=ZB))   # warm tan — distinct from the cool housing skin
     parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_CAP_R, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_CAP_R, DRUM_CAP_T,

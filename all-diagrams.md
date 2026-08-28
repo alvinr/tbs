@@ -128,11 +128,11 @@
 
 ---
 
-## 11. Light Trap Ventilation
+## 11. Ventilation
 
-![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
+![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/ventilation-sheet1.png)
 
-![TBS-001 Ventilation — Sheet 2: Fan and Baffle Duct Assembly](assets/lighttrap-sheet2.png)
+![TBS-001 Ventilation — Sheet 2: Fan and Baffle Duct Assembly](assets/ventilation-sheet2.png)
 
 ---
 
@@ -377,3 +377,31 @@
 ## 23. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
+
+---
+
+## 24. Revolving Light-Trap — Fabrication Blueprints
+
+![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
+
+![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
+
+![TBS-001 Light-Trap — Sheet 3: Drum Shell — Cut Sheet (flat pattern)](assets/lighttrap-sheet3.png)
+
+![TBS-001 Light-Trap — Sheet 4: Drum — Secure (lap-and-fasten joint)](assets/lighttrap-sheet4.png)
+
+![TBS-001 Light-Trap — Sheet 5: Bearing Hub & Stub-Shaft — Assembly](assets/lighttrap-sheet5.png)
+
+![TBS-001 Light-Trap — Sheet 6: Machined Components — End Cap + Bearing Seats + Stub-Shaft](assets/lighttrap-sheet6.png)
+
+![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
+
+![TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement](assets/lighttrap-sheet8.png)
+
+![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
+
+![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)
+
+![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)
+
+![TBS-001 Light-Trap — Sheet 12: Seal Details (enlarged)](assets/lighttrap-sheet12.png)

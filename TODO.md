@@ -11,8 +11,128 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
+
+- [x] **Fastener/hardware batch FIRMED 2026-08-24d** — DP8010 (7467A36 $76.29), fasteners lot → $97 firm (F1–F7 McMaster SS SKUs), NEW `ll-rivet-nuts` $53 (20× M10 twist-resist 95105A199 + setting tool 96349A866), NEW `ll-holder-rivets` $11 (97447A015 ×250). lightlock → $2,943–3,963; all gates green.
+- [~] **Brush + holder — KEEP AS-IS for now (2026-08-24, Alvin: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.
+- [~] **Edge channel — KEEP AS-IS for now** (same "optimize later" call). `ll-edge-channel` stays est; candidate = McMaster 9001K723 (6063 Al confirmed, 3/64″ wall, $18.18/8 ft) + 8× L-clips still to source.
+
+---
+
+## ✅ CLOSED CASCADE — drum Ø900→Ø800 resize: all 3D models re-sent (closed 2026-08-27)
+
+The drum shrink (Ø900→Ø800, re-centered X=−420 to fit the FIXED cage — Option 2) **plus** the top-end hub
+reconciliation (interior **2120→1970**, `DRUM_H_LT` 2250→2100; stub shaft 150→75; bearings clear of the
+axle beams; housing spans beam-to-beam) cascaded through **constants + all 2D lighttrap/assembly/weight/ibc/
+walkway generators + parts/costing/weight/facts/dep-map + the report** (all drift/reconcile gates green), and
+the **`lighttrap` 3D model was re-sent + verified** (bearing 2130–2155 sits below the 2167 top beam — no
+overlap; cage top 2267, 121mm ceiling clearance). **DEFERRED by Alvin — do NOT complete until the light-trap
+review is finished:**
+- [x] **`construction.skp` + `overview.skp` re-sent + uploaded (2026-08-27).** Both reuse `lt.drum()`, so they
+  picked up the current Ø800/2100 drum on regen; verified (C-shell z130–2100 · Ø764, Ø160 flanges, housing
+  z93–2167), Sketchfab-refreshed in place, `manifest.py --update` done, committed.
+- [x] **`lighttrap.skp` saved + uploaded + committed** (earlier this session).
+- [x] **Commit gate cleared** — `manifest.py --check`: all 10 model `source_hash` values current.
+- [x] **Cage-top Z / bearing-through-beam (2026-08-26) — DONE.** Reconciled to the 2D Sheet-10 scheme via
+  single-source constants (`LT_STUB_SHAFT_L / LT_BRG_STANDOFF / LT_BEAM_STANDOFF / LT_CAGE_TOP / LT_CAGE_BOT /
+  LT_HOUSING_Z_*`): axle beams clear the drum, upper bearing hangs below the top beam, lower floats above the
+  bottom beam. Sheet 8 GA + Sheet 10/11 + the 3D all agree.
+- [ ] **Hingepanel drum-height drift (pre-existing, found 2026-08-26):** `generate_hingepanel_diagram.py`
+  hardcodes its OWN `DRUM_H = 2200` (line 58) instead of importing `DRUM_H_LT` (now 2100) — so the hinged-panel
+  sheets draw the light-trap drum ~100mm too tall. Single-source it off `DRUM_H_LT` and re-gen the hingepanel
+  sheets (separate cascade; not part of the light-trap set).
+- [ ] **Minor label tidy:** a few light-trap 2D labels shifted with the resize + hub rework — a "52mm
+  standoff" overlap on Sheet 1, the Sheet 8 cut-section "wall 3mm / axle beams" text overlapping the
+  mount-plate label, and the **Sheet 5 MOUNT-PLATE DETAIL title colliding with the lower-hub labels**.
+  Run `tidy_labels.py --overflow` on `generate_lighttrap_diagram.py` before shipping. The Drum-revolve
+  scene camera is also a touch zoomed-out (tighten on the next lighttrap send).
+- [x] **Axle beam over-sizing + ring-bolt geometry (2026-08-26) — DONE.** Deflection check → beam
+  100×50→50×50; bearing ring/collar → tapped Ø230×12 steel MOUNT PLATE fillet-welded across the beam
+  (rivet-nuts retired). Constants/3D/Sheets 5/6/8/10/parts/costing/report reconciled, gates green.
+
+## 🔁 Light-trap ↔ hinged-panel sheet DUPLICATION (2026-08-26, Alvin) — resolve after the drum-sizing decision
+
+- [ ] **`hingepanel-sheet6` duplicates content now owned by the new light-trap sheets.** It shows the
+  interior handle fastening (and other drum detail) that the new light-trap set now covers in dedicated
+  sheets (Sheet 1 GA + **Sheet 11 pull-handle mount**, the bearing-hub/seal/machined-component sheets, etc.).
+  Audit `hingepanel-sheet6` (and the other hingepanel sheets) against the light-trap set; each detail should
+  have ONE owning blueprint — keep it on the light-trap sheet, cross-reference from the hingepanel report,
+  remove the duplicate from `hingepanel-sheet6`. Do this AFTER the drum-diameter change lands (that will
+  re-cut several of these sheets anyway).
+
+## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
+
+> Deferred out of the light-trap blueprint (merged/released). These are the starting scope for the **next**
+> blueprint round: the **hinged panel** (`hingepanel-*`). Pick up here when that round begins.
+
+- [ ] **HDPE surround cut sheets + drum-join detail.** The hinged panel's HDPE surround (the skin around
+  the Ø800 light-trap housing) has no fabrication cut sheets yet. Draw them: the flat-pattern cut sheet(s)
+  for the surround HDPE, AND the joint detail for how the **upper and lower floor** (the panel's top/bottom
+  surfaces around the drum) **join to the outer drum housing** — the transition/seal where the surround
+  meets the Ø800 housing at the top and bottom. Add to the hinged-panel drawing set + report; coordinate
+  with the light-trap Sheet 2 (housing cut sheet) so the surround↔housing interface is single-sourced.
+- [ ] **Resolve why the HDPE surround is not connected to the frame.** In the current hinged-panel model
+  the HDPE surround reads as disconnected from the panel steel frame — establish the actual attachment
+  (fasteners / bond / U-channel retainer / rivets) and either add it to the model + a detail, or document
+  why it floats. Reconcile the 2D + 3D + report once resolved.
+
+## 🔩 Revolving light-trap — metal-cap + lap-joint cascade (2026-08-21)
+
+The 2D blueprint set (`generate_lighttrap_diagram.py`) now reflects the design change: **end caps
+HDPE → metal (8mm 6061-T6 Al top, 6mm A36 steel bottom)**, **shell→cap joint = lap-and-fasten**
+(SS Ø4.8 blind rivets @ ~60mm + 3M DP8010), superseding the extrusion weld; **new Sheet 5** (joint),
+seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`LT_CAP_BOT_T`/`LT_CAP_OD`/
+`LT_LAP_H`/`LT_RIVET_*`). `LT_CAP_T` (4.76) is kept as a **deprecated alias** only. Remaining cascade
+(the numeric single-source layer + 3D) — do as one batch, then retire `LT_CAP_T`:
+
+- [x] **Weight/CG** — DONE 2026-08-21. Both weight generators switched to FULL Ø855 metal discs (both
+  8mm 6061-T6 Al after Alvin flipped the bottom steel→Al) + rolled rim-angle rings; drum ~40 → **58.6 kg**.
+  CG diagrams regenerated, weight blocks re-injected (gate green).
+  Set has since GROWN to **9 sheets** (1 GA, 2 housing-cut, 3 drum-cut, 4 drum-secure, 5 bearing-hub,
+  6 seals & light-path, 7 support-frame GA, 8 housing→frame, 9 combined top-end) + an **integrated steel
+  cage frame**, and the detail sheets are being recast **to stated scale** (4/8 at 7:1 + plans 1:2 + scale
+  bars DONE; **Sheet 5 relabel to scale DONE — commit `18c92770`**). Rivet now SPEC'D: **1/8" 18-8 SS blind (low-profile head),
+  McMaster 97525A425 (shell→cap) / 97525A435 (housing→frame)**, `LT_RIVET_D`=3.18, hole Ø3.3.
+
+- [x] **parts.py / cost — DONE 2026-08-24.** Light-trap joint/material batch imported into the `lightlock`
+  registry system + costing §6 reconciled ($2,046–$2,516 → **$2,761–$3,681**, all 3 gates green): caps HDPE→**8mm
+  6061-T6 Al** (est $400–700), **25×25×3 Al rim-angle** (est $45–90), **SS rivets** 97525A425 $13.83 + 97525A435
+  $14.59, **3M DP8010** (est $48–68), **4× Al U-channel edge stiffeners** (est $55–110), wiper felt→**4× brush
+  74715T2** ($108), **handle stile** (est $45–85). Al-plate / rim-angle / DP8010 / edge / stile prices are
+  ESTIMATES flagged PRICE-VERIFY (firm at the Aug-2026 re-price). *Still deferred:* itemize the §6b **swing cage**
+  frame steel (50×50×3 posts/rails + 100×50×3 axle beams + 10mm bearing plates) — currently the `sp-drum-cage` lump.
+- [x] **light-trap-selection.md §4** — DONE. §4.1 metal caps, §4.2 frame-mounted bearings, §4.3 felt/brush
+  running gap, §4.4/§4.5 lap-joint fasteners + real rivet SKUs + Al plate/angle suppliers.
+- [x] **Registration** — DONE. All 9 sheets in `dependencies.yml`/`all-diagrams.md`/`publish.sh`/`setup_docs.py`;
+  embedded as **§9 Fabrication Blueprints** in `light-trap-selection.md`. Gallery + unused-import warnings clear.
+- [x] **Sheet 5 relabel to scale — DONE (commit `18c92770`).** Recast to true 2.2:1 isotropic (cap de-exaggerated to `LT_CAP_TOP_T * SC`), scale bar + "SECTIONS 2.2:1 (isotropic)" on the note/bar/title-block, no "NTS". Verified 2026-08-25. (Also fixed the stale "NTS" in the Sheet 10 banner *comment* — that sheet was already drawn to scale w/ a 100mm bar.)
+- [x] **Bolt/screw-hole detailing pass — DONE (commit `18c92770`).** Added the hole-pattern plans: **4×M10** cap→stub-hub flange (Ø120 PCD, on the Sheet 6 flange plan), **6×M10** upper ring→beam + **8×M10** lower collar→beam (Sheet 5), with "drill Ø11 ×N on Ø_ PCD" callouts, per `skills/skill_fastener_convention.md`. The subsequent feedback rounds firmed the mount detail (rivet-nut profile, countersunk cap bolts, Ø120 PCD).
+- [x] **3D model — DONE (2026-08-26).** `generate_lighttrap_model.py` already models the split metal caps
+  (both 8mm Al via `LT_CAP_TOP_T`), the rim-angle lip, edge channels, the cage frame, brush seals, and the
+  stile/handle — the metal-cap cascade was completed + the `.skp` re-sent during the earlier batches.
+  **Audit 2026-08-26:** `manifest.py --check` = all 10 `.skp` in sync; `check_consistency.py` = no lighttrap
+  2D↔3D divergence; model regenerates clean. **No re-send needed.** The bearing-internal details (end-retainer
+  plate, DIN rings, circlips) are 2D-blueprint-only, appropriately NOT in the coarse 3D bearing.
+  **`LT_CAP_T` alias RETIRED** — removed from `tbs_constants.py` + the overview model's unused import; the
+  standing "unused import" advisory is cleared (models stay byte-identical → no re-send).
+
 ## 🛠 Tooling / infra
 
+- [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
+  `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
+  generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
+  are tight-bbox noise, ignore). **DEFERRED until after the light-trap blueprint is done** (light-trap's own
+  overflows are being fixed now, in-flight). Tackle the rest **one generator per tidy pass** (skill discipline —
+  render → crop-zoom → verify), priority by count/severity:
+  - **film_plane_mechanism** (10, worst +52%) — Sheet 9 section titles + U-joint/M6 leaders over-reaching left.
+  - **weight_analysis** (9, +35%) — Sheet 1 "Total / CG" stats boxes hang off the BOTTOM (P8 notes placement).
+  - **ibc_frame_drawing** (9, +19%) — Sheet 1 DATUMS + member-schedule table off left (P8).
+  - **shelf_diagram** (3, +33%), **joint_study** (4, +19%), then walkway/electrical/tray_redesign/corner_gimbal/
+    portrait_viz (1 ea, +15–26%).
+  - **spray_bar Sheet 7 `"38×38×1.6mm 304-SS square"` +192% off left** — ANOMALY: anchored at a main-view coord
+    (`CARRIAGE_YD_CENTER`) inside a section-panel axes with a different x-range, so it lands outside its panel.
+    Look directly — likely a real placement bug, not a wide label.
+  - Re-run `tidy_labels.py --overflow src/generators/generate_*.py` after each pass to confirm the list shrinks.
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking
@@ -279,6 +399,8 @@ precise hole positions, tolerances, fastener callouts, datums, section views, ma
 parametrically from `tbs_constants` so they can't drift. Do the **film-plane corner mechanism FIRST** (below)
 as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
 walkway, hinged panel, light lock, electrical, optics, …)._
+
+- [ ] **★ FINAL cross-cutting step — GATED on ALL blueprint sets complete (moved here 2026-08-24, Alvin): fastener standardization — reconcile ALL fasteners (bolts, screws, nuts, rivets, rivet-nuts, washers) across the WHOLE camera to the minimum number of distinct types.** Goal: build TBS-001 from the fewest different parts — fewer SKUs, fewer spares, simpler procurement/assembly (design-for-assembly). Requires **re-engineering blueprints** where a joint can move to a shared size/length/thread without hurting the design (converge M8/M10 families, standardize lengths, pick one rivet Ø, one washer). Method: (1) inventory every fastener across all systems from `parts.py` + the generators (thread × pitch × length × head × material × count); (2) cluster + pick a minimal standard set; (3) flag the joints that must change geometry to adopt it; (4) cascade drawing/constants/parts/cost per system. **Do NOT start until every subsystem blueprint above is done** — standardize against the final set, not a moving target.
 
 - [x] **Walkway blueprint pass (roll the IBC-frame standard onto the walkway set).** DONE (branch `walkway-bp`,
   Phases 0–E, 2026-08-19): definitive walkway drawings with hole positions / datums / fastener + weld callouts,

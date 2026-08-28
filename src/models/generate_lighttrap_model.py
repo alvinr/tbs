@@ -6,7 +6,7 @@ generate_lighttrap_model.py — Generate Ruby for the TBS-001 "Light Trap"
 focus model (models/lighttrap.skp).
 
 A detailed, report-accurate model of the cargo-door end assembly only:
-  - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, grab rail),
+  - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, pull handle),
   - the hinged stepped PANEL (3 zones + drum aperture + EPDM seal + latches),
   - the ROTATION transport system (rev10 — supersedes the slide): the panel+drum
     +drum-cage assembly SWINGS 56° about a vertical Ø89 CHS pivot post (the film
@@ -35,6 +35,10 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers, materials, constants
+# metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
+# model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
+# generate_sketchup_model.py (which would trip the interference-report gate).
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, C_LT_DRUM
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -72,13 +76,14 @@ PANEL_Z_TOP = 2300                            # panel top edge (swings about the
 # 180° apart) + a single-opening C-shell drum rotating inside. Openings <90° so
 # the drum opening can never bridge both at once → light-tight at all rotations.
 # All dimensions come from tbs_constants (via ov) — single source of truth.
-HOUSING_R = ov.LT_HOUSING_R           # 450 — fixed housing radius (Ø900 OD)
-HOUSING_T = ov.LT_HOUSING_T           # 3 — housing wall
-DRUM_OR = ov.LT_DRUM_OR               # 432 — drum outer radius (Ø864), 15mm gap
-DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø850 bore, ~555mm passage
-DRUM_CAP_T = ov.LT_CAP_T              # 4.76 — 3/16" HDPE end caps (structural: carry the stub shafts into the bearings)
+HOUSING_R = ov.LT_HOUSING_R           # 400 — fixed housing radius (Ø800 OD)
+HOUSING_T = ov.LT_HOUSING_T           # 5 — housing wall (UV-HDPE skin)
+DRUM_OR = ov.LT_DRUM_OR               # 382 — drum outer radius (Ø764), 13mm running gap
+DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø758 bore, ~487mm passage
+DRUM_CAP_T = LT_CAP_TOP_T          # 8mm 6061-T6 Al end caps (both identical; carry the bolted stub-shaft hubs into the bearings)
+DRUM_CAP_R = LT_CAP_OD / 2         # 377.5 — caps nest inside the shell (shell laps over the rim)
 OPENING_DEG = ov.LT_OPENING_DEG       # 80 — each opening arc (<90°)
-APERTURE_R = HOUSING_R + 18           # 468 — panel aperture radius around housing
+APERTURE_R = HOUSING_R + 18           # 418 — panel aperture radius around housing
 NEW_YD_L = YD_L                       # 653 — widened center-zone step lines
 NEW_YD_R = YD_R                       # 1709  (PANEL_CORNER_YD_L/R from constants)
 APER_L = DRUM_CY - APERTURE_R         # 713 — aperture edge (near)
@@ -117,6 +122,7 @@ TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Drum shell",         # Ø900 housing arcs + rotating C-shell — taggable for hiding
         "Cargo Doors",        # dynamic-component swing doors (click to close)
         "Fan B Cable",        # child DC: orange coil shown only when the door is closed
+        "Drum Revolve",       # standalone interactive drum+frame sub-assembly (its own scene); hidden elsewhere
         "Labels"]             # add_text callouts — shown only in the "Labeled" scene
 
 
@@ -204,7 +210,7 @@ def housing_surround_seal():
     housing rather than on the fixed frame."""
     gw_h, gt_h = 40, 20                    # gasket face width, X-thickness
     hx0 = -gt_h                            # exterior face (X=-20..0)
-    hz0, hz1 = PANEL_FLOOR_GAP, DRUM_H     # housing footprint Z (130..2250)
+    hz0, hz1 = PANEL_FLOOR_GAP, DRUM_H     # housing footprint Z (130..2100)
     parts = [
         ruby_box("Housing surround seal bottom", hx0, APER_L, hz0,
                  gt_h, APER_R - APER_L, gw_h, color=C_GASKT),
@@ -356,34 +362,59 @@ def hinge_panel():
 # ── Revolving light-trap drum (detailed) ─────────────────────────────────────
 
 def drum_housing(cx, cy):
-    """FIXED part of the housed revolving door: the Ø900 housing (two opposed
-    80° openings — exterior + interior/walkway, 180° apart) + SKF 6215 bearings
-    + lower bearing mount plate + top/bottom annular felt rings. Translates with
-    the panel but does NOT revolve, so it sits in the moving assembly OUTSIDE the
-    rotating Drum Rotor sub-component."""
+    """FIXED part of the housed revolving door: the Ø800 housing (two opposed
+    80° openings — exterior + interior/walkway, 180° apart) + the 4 opening-edge
+    U-channels. Translates with the panel but does NOT revolve, so it sits in the
+    moving assembly OUTSIDE the rotating Drum Rotor sub-component. The SKF 6215
+    bearings live with the axle beams in drum_frame() (they carry the drum, not the
+    housing skin)."""
     H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
+    HZB, HZT = LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP   # housing spans BEAM-to-BEAM (93..2167), past the drum
+    HH = HZT - HZB
     parts = []
     # Fixed HOUSING — two solid arcs leaving two od=80° openings (exterior 180° +
-    # interior 0°). Suspended: spans Z 130..2250 (bottom at the panel bottom rail).
+    # interior 0°). Spans Z HZB..HZT (bottom-beam top → top-beam under face) so it laps
+    # to rim-angle on both axle beams and skirts the two hub gaps (light seal).
     parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
-                                  HOUSING_T, H - ZB, gap_center_deg=270, gap_deg=180 + od,
-                                  color=C_ALUM, alpha=0.5, z0=ZB))
+                                  HOUSING_T, HH, gap_center_deg=270, gap_deg=180 + od,
+                                  color=C_ALUM, alpha=0.5, z0=HZB))
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
-                                  HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
-                                  color=C_ALUM, alpha=0.5, z0=ZB))
-    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 25,
-                               color=C_STEEL, axis="z"))   # Ø130 OD (r65) × 25mm B — SKF 6215 datasheet
-    # (Lower bearing collar + mount plate omitted in this model — the drum is
-    # top-suspended, and the bottom hardware read as a plate sitting on the floor
-    # as the panel slides. Below the drum is just floor.)
-    # (Top/bottom annular felt gap-seal rings omitted too — the bottom ring read
-    # as a grey bar cutting across the drum bottom.)
+                                  HOUSING_T, HH, gap_center_deg=90, gap_deg=180 + od,
+                                  color=C_ALUM, alpha=0.5, z0=HZB))
+    # SILL + HEADER solid bands — CLOSE the two openings in the skirt zones (below the bottom cap /
+    # above the top cap) so no light passes over or under the drum. Solid arc segments fill each
+    # opening angle at those Z bands; the drum-region opening stays open. Matches 2D Sheet-2
+    # sill/header (80 / 150mm). Without these the full-height opening leaks over/under the drum.
+    for zb_band, hb in ((HZB, 80), (HZT - 150, 150)):
+        for oc in (0, 180):                             # fill the INT (0°) + EXT (180°) opening angles solid
+            parts.append(ov.ruby_arc_wall("LT Housing sill/header band", cx, cy, HOUSING_R,
+                                          HOUSING_T, hb, gap_center_deg=(oc + 180) % 360,
+                                          gap_deg=360 - od, color=C_ALUM, alpha=0.5, z0=zb_band))
+    # Opening-edge stiffeners — a bonded Al U-channel caps each of the 4 free HDPE
+    # edges (2 openings × 2 edges), replacing the old steel jamb posts. Each is a
+    # vertical U prism wrapping the wall: base across the edge + two legs (length
+    # LEG) running tangentially into the material arc. Slot faces the material.
+    Ro, Ri = HOUSING_R, HOUSING_R - HOUSING_T          # wall outer / inner face radii
+    CT, LG = LT_EDGE_CHAN_T, LT_EDGE_CHAN_LEG
+    for oc in (0, 180):                                 # INT (0°) + EXT (180°) openings
+        for e, sgn in ((oc - od / 2, -1), (oc + od / 2, +1)):  # -oh / +oh edges (sgn = into material)
+            a = math.radians(e)
+            cr, sr = math.cos(a), math.sin(a)
+            # U cross-section in (radial R, tangential S) — S positive = into material
+            uv = [(Ri - CT, -CT), (Ro + CT, -CT), (Ro + CT, LG), (Ro, LG),
+                  (Ro, 0), (Ri, 0), (Ri, LG), (Ri - CT, LG)]
+            pts = [(cx + R * cr - sgn * Sc * sr, cy + R * sr + sgn * Sc * cr) for R, Sc in uv]
+            parts.append(ov.ruby_prism(f"LT Housing edge channel ({e:.0f}°)", pts, HZB, HH,
+                                       color=C_ALUM))
+    # (Bearings + axle beams are built in drum_frame(); the housing here is just the
+    # fixed outer skin + edge channels. Top/bottom annular felt gap-seal rings omitted —
+    # they read as a grey bar cutting across the drum bottom.)
     return '\n'.join(parts)
 
 
 def drum_rotor(cx=0, cy=0):
     """ROTATING part of the revolving door: the single-opening C-shell drum +
-    caps + top stub shaft + interior grab rail + opening brush seals. Built
+    caps + top stub shaft + interior pull handle + running-gap wiper brushes. Built
     relative to (cx, cy) so it can live in a NESTED Dynamic Component whose RotZ
     revolves it (the revolving-door action). Pass (0,0) for the DC sub-component
     (origin on the drum axis); drum() passes the absolute drum center for the
@@ -393,28 +424,65 @@ def drum_rotor(cx=0, cy=0):
     parts = []
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
-                                  color=C_ALUM, alpha=0.5, z0=ZB))
-    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_OR, DRUM_CAP_T,
+                                  color=C_LT_DRUM, alpha=0.6, z0=ZB))   # warm tan — distinct from the cool housing skin
+    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_CAP_R, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, DRUM_CAP_T,
+    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_CAP_R, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
-    parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
+    # Rolled 25×25×3 Al rim-angle lip at each cap rim (280° C-shell arc — NOT a full
+    # ring; the 80° opening has no shell/rim). The shell laps + rivets to it.
+    for zc in (ZB, H - LT_RIM_LEG):
+        parts.append(ov.ruby_arc_wall("LT Rim-angle lip", cx, cy, DRUM_CAP_R, LT_RIM_T,
+                                      LT_RIM_LEG, gap_center_deg=180, gap_deg=od,
+                                      color=C_ALUM, z0=zc))
+    # Top stub shaft — Ø75, rises from the cap up through the upper bearing (H+30..H+55) to just
+    # under the top axle beam; the drum HANGS from it (end-retainer at the top, 2D Sheet 10/11).
+    parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, LT_BEAM_STANDOFF - 3,
                                color=C_STEEL, axis="z"))
-    # Interior grab rail on the drum's solid +X wall (operator pulls the drum).
-    inner = cx + DRUM_OR - DRUM_T
-    gx = cx + DRUM_OR - 75
-    parts.append(ruby_cylinder("LT Grab rail", gx, cy, 700, 15, 400,
+    # Bottom stub shaft — SHORT (Ø75), drops from the bottom cap into the lower (floating) bearing
+    # (ZB-25..ZB); it only locates, carries no hang (2D LOWER hub).
+    parts.append(ruby_cylinder("LT Drum bottom stub", cx, cy, ZB - 25, 37.5, 33,
                                color=C_STEEL, axis="z"))
-    for bz in (720, 1080):
-        parts.append(ruby_box("LT Grab rail standoff", gx, cy - 6, bz,
-                              inner - gx, 12, 12, color=C_STEEL))
-    # Felt/brush wiper strips on the two vertical edges of the drum opening.
-    seal_r = (DRUM_OR + HOUSING_R - HOUSING_T) / 2
-    for edge in (180 - od / 2, 180 + od / 2):
-        bx = cx + seal_r * math.cos(math.radians(edge))
-        by = cy + seal_r * math.sin(math.radians(edge))
-        parts.append(ruby_cylinder("LT Drum opening brush seal", bx, by, ZB, 7, H - ZB,
-                                   color=felt, axis="z"))
+    # Ø160 steel stub-shaft FLANGE at each cap — welded to the stub, bolted to the cap (4×M10 on Ø120
+    # PCD); carries the stub into the cap (2D Sheet 5/6). Top flange above the top cap; bottom below.
+    parts.append(ruby_cylinder("LT Drum top stub flange (Ø160)", cx, cy, H, 80, 15, color=C_STEEL, axis="z"))
+    parts.append(ruby_cylinder("LT Drum bottom stub flange (Ø160)", cx, cy, ZB - 15, 80, 15, color=C_STEEL, axis="z"))
+    # Ø90×4 END-RETAINER PLATE bolted to the UPPER stub-shaft end — its rim clamps the bearing inner
+    # race so the drum's hang runs through a bolted member, not a lone circlip (2D Sheet 5/6).
+    parts.append(ruby_cylinder("LT Drum end-retainer plate (Ø90×4)", cx, cy, H + LT_BEAM_STANDOFF - 7, 45, 4, color="#9AA0A8", axis="z"))
+    # Interior pull handle on a steel STILE spanning the two caps — the operator's pull load lands
+    # in the structural Al caps, NOT the thin HDPE wall. Stile bolted to each cap (2D Sheet 1).
+    STILE_W = 40
+    stile_x = cx + DRUM_OR - DRUM_T - STILE_W                # against the interior wall, just inboard
+    z_stile0, z_stile1 = ZB + DRUM_CAP_T, H - DRUM_CAP_T     # between the two caps
+    parts.append(ruby_box("LT Handle stile", stile_x, cy - STILE_W / 2, z_stile0,
+                          STILE_W, STILE_W, z_stile1 - z_stile0, color=C_STEEL))
+    # Off-the-shelf 12" round pull handle (McMaster 1871A65, Ø0.5" bar), BOLTED at both feet to the stile.
+    gx = stile_x - 52                                        # grip standoff (2.06"), inboard of the stile
+    g0, g1 = 900 - 154, 900 + 154                            # 308mm (12") overall, centered at 900
+    parts.append(ruby_cylinder("LT Pull handle (McMaster 1871A65)", gx, cy, g0, 6.35, g1 - g0, color=C_STEEL, axis="z"))
+    for bz in (g0, g1):                                      # 2 feet → arm to the stile, BOLTED (1/4", no welds)
+        parts.append(ruby_box("LT Pull-handle arm", gx, cy - 6.35, bz - 6.35,
+                              stile_x - gx, 12.7, 12.7, color=C_STEEL))
+    # Running-gap light-seal WIPER — N vertical #4 (3/16") nylon strip brushes, each snapped into
+    # an anodized-Al straight-flange holder whose flange rivets to the drum OD (rivets clear of the
+    # brush). Bristles reach across the gap to the fixed housing bore. Spaced 93° on the 280° wall
+    # (from the opening edge) so ≥1 always sits in each 100° housing arc at every rotation → the
+    # annular gap can never carry light (see 2D Sheets 4 & 7).
+    brz = HOUSING_R - HOUSING_T                  # housing bore — bristle tips reach here
+    hw = 3.0                                     # tangential half-width of a strip
+    hold_d = 6.0                                 # Al holder radial depth at the drum OD
+    for k in range(LT_WIPER_N):
+        sa = math.radians(180 + od / 2 + k * LT_WIPER_SPACING)
+        cr, sr = math.cos(sa), math.sin(sa)
+        huv = [(DRUM_OR, -hw * 1.6), (DRUM_OR + hold_d, -hw * 1.6),
+               (DRUM_OR + hold_d, hw * 1.6), (DRUM_OR, hw * 1.6)]        # Al flange holder on the OD
+        hpts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in huv]
+        parts.append(ov.ruby_prism("LT Drum wiper holder (Al flange)", hpts, ZB, H - ZB, color="#C8D8E8"))
+        uv = [(DRUM_OR + hold_d, -hw), (brz, -hw), (brz, hw), (DRUM_OR + hold_d, hw)]  # nylon bristles → bore
+        pts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in uv]
+        parts.append(ov.ruby_prism(f"LT Drum wiper brush ({math.degrees(sa) % 360:.0f}°)",
+                                   pts, ZB, H - ZB, color=felt))
     return '\n'.join(parts)
 
 
@@ -492,16 +560,24 @@ def far_leaf():
 
 
 def drum_frame():
-    """Steel support CAGE around the Ø900 drum (top+bottom rectangles + 4 posts, full
-    depth Z130..DRUM_H) carrying the central drum REVOLVE bearings: bottom = Ø220 flush
-    thrust slew pad recessed to the Z130 sill (step-over, no trip); top = Ø120 radial
-    guide journal. Swings with the assembly."""
+    """Steel support CAGE around the Ø800 drum: top+bottom perimeter rectangles + 4 posts,
+    plus a central 50×50 RHS AXLE BEAM top and bottom spanning Yd at the drum axis. Each beam
+    carries an SKF 6215 (Ø130) via a Ø240 steel MOUNT PLATE welded across it (the bearing ring's
+    Ø165 bolt circle is far wider than the 50mm beam, so it bolts to the plate, not the beam wall):
+    the UPPER bearing hangs BELOW the top beam so the drum is suspended; the LOWER floats ABOVE the
+    bottom beam (radial locate). Per the 2D (Sheets 8/10). Fixed with the assembly."""
     s = 50
     x0, x1 = ov.DRUM_CAGE_X0, ov.DRUM_CAGE_X1
     y0, y1 = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
-    zb, zt = PANEL_FLOOR_GAP, DRUM_H
+    BW, BH = LT_AXLE_BEAM_W, LT_AXLE_BEAM_H     # 50×50 RHS axle beams (carry the SKF 6215s via a mount plate)
+    PR = LT_BRG_PLATE_OD / 2                     # bearing mount-plate radius (Ø240) — the ring bolts to this, not the beam
+    z_tbeam = DRUM_H + LT_BEAM_STANDOFF          # TOP axle-beam UNDERSIDE (2167): upper bearing hangs below it
+    zt = LT_CAGE_TOP                             # cage/beam TOP (2267) — clears the 2388 ceiling by 121mm
+    z_bbeam = LT_CAGE_BOT                        # BOTTOM axle-beam bottom: sits in the floor gap, below the Z130 sill
+    zb = z_bbeam
     c, cb = C_STEEL, "#5A5AA0"
     p = []
+    # perimeter rails: top flush with the top-beam top, bottom flush with the bottom-beam bottom
     for z in (zb, zt - s):
         p += [
             ruby_box("Drum frame rail (X near)", x0, y0, z, x1 - x0, s, s, color=c),
@@ -512,12 +588,23 @@ def drum_frame():
     for px in (x0, x1 - s):
         for py in (y0, y1 - s):
             p.append(ruby_box("Drum frame post", px, py, zb, s, s, zt - zb, color=c))
-    p.append(ruby_box("Drum bearing cross-beam (top)", DRUM_CX - s // 2, y0, zt - s, s, y1 - y0, s, color=c))
-    p.append(ruby_cylinder("Drum top radial journal (Ø120 guide)", DRUM_CX, DRUM_CY, zt - s, 60, s, color=cb, axis="z"))
-    p.append(ruby_cylinder("Drum top pivot pin", DRUM_CX, DRUM_CY, zt - s - 70, 22, 80, color=c, axis="z"))
-    p.append(ruby_box("Drum bearing cross-beam (bottom, recessed)", DRUM_CX - s // 2, y0, zb - s, s, y1 - y0, s, color=c))
-    p.append(ruby_cylinder("Drum bottom thrust bearing (Ø220 flush slew pad)", DRUM_CX, DRUM_CY, zb - 22, 110, 22, color=cb, axis="z"))
-    p.append(ruby_box("Drum threshold sill (flush, chamfered step-over)", DRUM_CX - 240, DRUM_CY - 320, zb - 8, 250, 640, 8, color="#7A7A82"))
+    ca = C_ALUM   # isolated Al top ring
+    RTr = LT_TOPRING_OD / 2 - 65   # ring wall: Ø240 OD down to the Ø130 bearing seat
+    RCr = LT_COLLAR_OD / 2 - 65
+    # TOP hub — the isolated Al bearing RING (Ø240) seats the SKF 6215 + bolts UP (Ø200 CSK circle,
+    # clear of the Ø160 flange) to a Ø240 steel MOUNT PLATE welded under the beam; drum hangs (2D Sheet 5/10).
+    p.append(ruby_box("Drum top axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_tbeam, BW, y1 - y0, BH, color=c))
+    p.append(ruby_cylinder("Drum top bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, z_tbeam - LT_BRG_PLATE_T, PR, LT_BRG_PLATE_T, color=c, axis="z"))
+    p.append(ov.ruby_arc_wall("Drum upper bearing ring (Ø240 Al, isolated)", DRUM_CX, DRUM_CY, LT_TOPRING_OD / 2, RTr,
+                              (z_tbeam - LT_BRG_PLATE_T) - (DRUM_H + LT_BRG_STANDOFF), gap_center_deg=0, gap_deg=0, color=ca, z0=DRUM_H + LT_BRG_STANDOFF))
+    p.append(ruby_cylinder("Drum upper bearing (SKF 6215)", DRUM_CX, DRUM_CY, DRUM_H + LT_BRG_STANDOFF, 65, 25, color=cb, axis="z"))
+    # BOTTOM hub — mirror: the steel bearing COLLAR (Ø240) seats the SKF 6215 + bolts DOWN to a Ø240
+    # mount plate on the bottom beam; locates/floats (radial only — no hang) (per 2D LOWER hub).
+    p.append(ruby_box("Drum bottom axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_bbeam, BW, y1 - y0, BH, color=c))
+    p.append(ruby_cylinder("Drum bottom bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, LT_BBEAM_Z1, PR, LT_BRG_PLATE_T, color=c, axis="z"))
+    p.append(ov.ruby_arc_wall("Drum lower bearing collar (Ø240 steel)", DRUM_CX, DRUM_CY, LT_COLLAR_OD / 2, RCr,
+                              (LT_LBRG_Z0 + 25) - LT_LBRG_Z0, gap_center_deg=0, gap_deg=0, color=c, z0=LT_LBRG_Z0))
+    p.append(ruby_cylinder("Drum lower bearing (SKF 6215, floating)", DRUM_CX, DRUM_CY, LT_LBRG_Z0, 65, 25, color=cb, axis="z"))
     return '\n'.join(p)
 
 
@@ -821,6 +908,15 @@ def generate_ruby():
         "— for example, between coating of the photosensitive material, or while the exposure is being made.",
         ov.model_uid("lighttrap"), "sketchup")
 
+    # ── Standalone interactive drum+frame sub-assembly (its own "Drum revolve" scene) ──
+    # The FIXED frame (housing + cage + upper bearing) is one static component; the ROTOR is a
+    # TOP-LEVEL Dynamic Component built at LOCAL origin (so its axis is the drum axis) + instanced
+    # at the drum center — click it to ANIMATE 90°/step through the revolving-door positions.
+    revolve_frame_comp = component("Drum Revolve — Frame (housing · cage · bearing)",
+                                   "Drum Revolve",
+                                   drum_housing(DRUM_CX, DRUM_CY) + "\n" + drum_frame())
+    revolve_rotor_body = drum_rotor(0, 0)          # local origin → the DC's RotZ revolves about the drum axis
+
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
 # Generated from src/models/ — do not edit this .rb directly.
@@ -988,6 +1084,32 @@ far_inst.set_attribute(dda, "_name", "LeafFar")
 far_inst.set_attribute(dda, "rotz", -180.0)
 far_inst.set_attribute(dda, "_rotz_formula", "-180*(1-CargoDoors!shut)")
 
+# ═══ Drum Revolve — standalone interactive sub-assembly (its own scene) ═══
+# A SEPARATE copy of the drum + fixed frame on the "Drum Revolve" tag (hidden in every other
+# scene). The FIXED frame is one static component; the DRUM is a TOP-LEVEL Dynamic Component —
+# NOT nested in the swing (that nesting reset the old drum-revolve DC on redraw). Click the drum
+# with the Interact tool → ANIMATE the drum 90°/step: opening↔EXTERIOR (enter) → solid wall
+# (sealed) → opening↔INTERIOR (exit) → sealed → back. The stile + pull handle revolve with it.
+{revolve_frame_comp}
+rev_defn = model.definitions.add("Drum Rotor (revolve)")
+ents = rev_defn.entities
+{revolve_rotor_body}
+revolve_inst = entities.add_instance(rev_defn, Geom::Transformation.translation([{DRUM_CX}.mm, {DRUM_CY}.mm, 0]))
+revolve_inst.name = "Drum Rotor (revolve)"
+revolve_inst.layer = model.layers["Drum Revolve"]
+rda = "dynamic_attributes"
+[rev_defn, revolve_inst].each do |e|
+  e.set_attribute(rda, "_name", "DrumRevolve")
+  e.set_attribute(rda, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(rda, "pos", 0.0)
+end
+revolve_inst.set_attribute(rda, "_pos_access", "VIEW")
+revolve_inst.set_attribute(rda, "_pos_label", "Revolve step")
+revolve_inst.set_attribute(rda, "rotz", 0.0)
+revolve_inst.set_attribute(rda, "_rotz_formula", "90*pos")
+revolve_inst.set_attribute(rda, "onclick", 'ANIMATE("pos", 0, 1, 2, 3)')
+revolve_inst.set_attribute(rda, "_onclick_access", "NONE")
+
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {lighttrap_labels()}
 
@@ -1027,6 +1149,7 @@ end
 # ── Camera + scenes (the swing is interactive; plus a "Labeled" callout scene) ──
 model.layers.each {{ |l| l.visible = true }}
 model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
+model.layers["Drum Revolve"].visible = false if model.layers["Drum Revolve"]  # interactive copy → its own scene only
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(-0.6, -0.72, 0.45); dir.normalize!
@@ -1061,6 +1184,27 @@ hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
 model.layers.each {{ |l| l.visible = true }}      # restore for the default state
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
+# ── "Drum revolve" scene — isolate the standalone drum + frame; click the drum
+#    to ANIMATE it 90°/step through the revolving-door positions. Only the "Drum Revolve" tag
+#    shows here; it is hidden in every other scene. ──
+model.layers.each {{ |l| l.visible = false }}
+model.layers["Drum Revolve"].visible = true if model.layers["Drum Revolve"]
+dr_focus = model.entities.grep(Sketchup::ComponentInstance).select {{ |i| i.layer.name == "Drum Revolve" }}
+unless dr_focus.empty?
+  fb = Geom::BoundingBox.new
+  dr_focus.each {{ |i| fb.add(i.bounds) }}
+  fctr = fb.center
+  dr_dir = Geom::Vector3d.new(0.6, -0.72, 0.45); dr_dir.normalize!
+  dr_eye = fctr.offset(dr_dir, fb.diagonal * 1.6)
+  model.active_view.camera = Sketchup::Camera.new(dr_eye, fctr, Z_AXIS)
+  model.active_view.zoom(dr_focus)
+  model.active_view.zoom(0.85)
+end
+drpage = model.pages.add("Drum revolve"); drpage.use_camera = true
+model.layers.each {{ |l| l.visible = true }}
+model.layers["Labels"].visible = false if model.layers["Labels"]
+model.layers["Drum Revolve"].visible = false if model.layers["Drum Revolve"]  # its own scene only
+
 # Labeled — Overview view + component callouts, listed LAST (project rule: every .skp gets a Labeled scene).
 model.active_view.zoom_extents
 model.active_view.zoom(0.62)
@@ -1076,7 +1220,7 @@ dc_ready = false
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   if cls
-    [dc_inst, doors_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
+    [dc_inst, doors_inst, revolve_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
     dc_ready = true
   end
 end

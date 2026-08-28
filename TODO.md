@@ -130,6 +130,13 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
   and `tbs_constants.py` describing-comments (~296/317/344 — change "Ø900 housing" → "Ø800"; **KEEP** the
   rev-history lines 354/355/419/447/453/1302 that intentionally record the "Ø900→Ø800" change). Do it as one
   batch (regen + weight re-inject + visual pass), separate from the surround work.
+- [ ] **Drum DEPTH-CENTER 2D↔3D drift (−450 vs −420, found 2026-08-28 on hingepanel-bp) — NEEDS A DECISION.**
+  The Ø900→Ø800 resize re-centered the drum to `DRUM_CX = −420` (the **3D** uses it), but the hingepanel 2D
+  still **derives** the drum depth center as `BAY_FRONT_X + DRUM_R + 40 = −450` (`generate_hingepanel_diagram.py`
+  lines ~396 sheet2 + ~770 D_CX_DEPTH; `generate_lighttrap_diagram.py:204` comment says "−400"). So the 2D
+  draws the drum ~30mm further out in the bay than the 3D. Decide the true depth center, then single-source the
+  2D off `DRUM_CX` (drop the `+DRUM_R+40` formula) so 2D + 3D agree; re-gen hingepanel sheets 2/3/4. (Surround
+  work is unaffected — the bay/frame lap is at the panel plane either way.)
 
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41

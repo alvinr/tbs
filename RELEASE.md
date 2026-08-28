@@ -24,7 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
+  **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
+  the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing
+  extrusion-weld join and the surround→steel-frame blind-rivet lap details). Resolved the surround's
+  **frame connection** as a blind-riveted lap (1/8" 18-8 SS @ 60mm + DP8010 sealant bead) and modeled it
+  in 3D so the surround reads as fastened, not floating (+$29 panel). Reconciled the stale **Ø900→Ø800 /
+  DRUM_H 2200→2100** drum geometry across the hingepanel generator, the lighttrap model, costing, and the
+  assembly generators; hinged-panel report §2.6 added, §3.1 drum-top Z corrected to the 2,100mm cap top.
 
 ## [0.9] — 2026-08-27
 

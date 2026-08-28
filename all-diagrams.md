@@ -156,6 +156,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 9: Steel Frame General Arrangement](assets/hingepanel-sheet9.png)
 
+![TBS-001 Hinged Panel — Sheet 10: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
+
 ---
 
 ## 13. Perimeter Walkway

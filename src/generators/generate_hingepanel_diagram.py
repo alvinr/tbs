@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, PANEL_FAN_BAND_Z, LT_CAGE_TOP, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, PANEL_FAN_BAND_Z, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
@@ -1976,6 +1976,101 @@ def sheet9():
     print("  diagrams/hingepanel-sheet9.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 10  —  Pivot-Post Assembly (documents the modeled swing pivot)
+#   LEFT: vertical section on the swing axis — fixed Ø89 CHS post floor→roof, floor
+#   + roof bolted Ø220 mount plates, 51118 thrust bearing at the base (carries the
+#   ~330 kg vertical), 2× iglide journal bushings (react the overturning couple),
+#   the MOVING hub tube, and 3 frame→hub hinge brackets. RIGHT: Detail A frame→hub
+#   bracket (bolt pattern) + Detail B floor anchor-plate plan.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet10():
+    R = PIVOT_POST_OD / 2                   # 44.5 — post radius
+    cx = 250                                # post-axis canvas X
+    HGT = C_HGT                             # 2388 — floor→roof
+    LX = -430                               # left-label column (text center X)
+
+    fig, ax = plt.subplots(figsize=(16, 13))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-720, 1250)
+    ax.set_ylim(-300, HGT + 250)
+
+    def llabel(tip, ytext, text, fw="normal"):     # leader to the LEFT label column
+        leader(ax, tip, (LX, ytext), text, col=C_OUT, fw=fw)
+
+    # ── pivot section (true scale) ────────────────────────────────────────────
+    ax.plot([cx, cx], [-40, HGT + 40], color=C_CL, lw=0.8, ls=(0, (8, 4)), zorder=2)   # axis
+    # fixed post (Ø89×8 CHS)
+    ax.add_patch(Rectangle((cx - R, 0), 2 * R, HGT, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=4))
+    ax.add_patch(Rectangle((cx - R + 8, 0), 2 * R - 16, HGT, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    llabel((cx - R, 1620), 1600, "FIXED Ø89×8 CHS POST (S355)\n3\" NPS Sch-80, floor→roof —\ncarries the 3.6 kN·m swing\ncantilever (SF 3.7)", fw="bold")
+    # floor + roof mount plates (Ø220 × 20)
+    ax.add_patch(Rectangle((cx - 110, 0), 220, 20, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
+    ax.add_patch(Rectangle((cx - 110, HGT - 20), 220, 20, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
+    llabel((cx - 100, 10), 130, "FLOOR MOUNT PLATE Ø220×20\n— bolted to the container floor\n(Detail B)")
+    llabel((cx - 100, HGT - 10), HGT - 120, "ROOF MOUNT PLATE Ø220×20\n— bolted to the roof rail")
+    # thrust bearing 51118 + collar
+    ax.add_patch(Rectangle((cx - 60, 130), 120, 22, fc="#5A5AA0", ec=C_OUT, lw=1.1, zorder=6))
+    ax.add_patch(Rectangle((cx - 75, 152), 150, 25, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=6))
+    llabel((cx - 60, 141), 500, "51118 THRUST BEARING (Ø90×120×22)\ncarries ~330 kg vertical\n— single-direction")
+    # moving hub tube (Ø116)
+    for sgn in (-1, 1):
+        ax.add_patch(Rectangle((cx + sgn * R, 180), sgn * 14, 2050 - 180, fc=C_ALUM, ec=C_OUT, lw=1.1, zorder=3))
+    llabel((cx - R - 14, 1150), 1120, "MOVING HUB TUBE (Ø116)\nswings with the frame")
+    # iglide journal bushings (radial) — react the overturning couple
+    for z in (220, 2000):
+        for sgn in (-1, 1):
+            ax.add_patch(Rectangle((cx + sgn * R, z), sgn * 14, 60, fc="#C08040", ec=C_OUT, lw=1.0, zorder=6))
+    llabel((cx - R - 14, 2030), 1980, "iglide J journal bushing (×2,\ntop + bottom) JFM-9095-100\n— radial + overturning couple")
+    # 3 frame→hub hinge brackets (on the +X side, toward the frame)
+    for z in (300, 1180, 2000):
+        ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
+    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → frame jamb)\n— DETAIL A", col=C_OUT, fw="bold")
+    draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT} floor→roof", offset=16, fs=6.6, font=FONT)
+
+    # ── RIGHT DETAIL A: frame→hub bracket (enlarged) ──────────────────────────
+    ax0x, ax0y, sA = 815, 1560, 3.1
+    def dA(x, y): return (ax0x + x * sA, ax0y + y * sA)
+    ax.text(ax0x + 60 * sA, ax0y + 190 * sA, "DETAIL A — FRAME → HUB BRACKET (enlarged)",
+            ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.add_patch(Rectangle(dA(-10, 0), 12 * sA, 150 * sA, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))   # hub wall
+    ax.add_patch(Rectangle(dA(2, 40), 90 * sA, 70 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))     # bracket
+    ax.add_patch(Rectangle(dA(92, -10), 50 * sA, 170 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))  # jamb
+    ax.add_patch(Rectangle(dA(95, -7), 44 * sA, 164 * sA, fc=BG, ec=C_OUT, lw=0.5, zorder=5))         # bore
+    for by in (58, 92):
+        ax.plot(*zip(dA(4, by), dA(140, by)), color="#101010", lw=2.2, zorder=8)
+        ax.add_patch(Circle(dA(138, by), 5 * sA, fc="#101010", ec="none", zorder=9))
+    ax.text(ax0x + 66 * sA, ax0y - 120, "bracket welded to hub; 2× M12 through the\nframe jamb into a backing plate",
+            ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
+    leader(ax, dA(-4, 75), (ax0x - 130, ax0y + 40 * sA), "hub tube", col=C_OUT, fs=6)
+    leader(ax, dA(117, 25), (ax0x + 150 * sA, ax0y - 60), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
+
+    # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
+    bx0, by0, sB = 890, 470, 1.9
+    ax.text(bx0, by0 + 165 * sB, "DETAIL B — FLOOR ANCHOR PLATE (plan)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.add_patch(Circle((bx0, by0), 110 * sB, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
+    ax.add_patch(Circle((bx0, by0), R * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))    # post bore
+    for k in range(6):
+        a = math.radians(30 + k * 60)
+        ax.add_patch(Circle((bx0 + 85 * sB * math.cos(a), by0 + 85 * sB * math.sin(a)), 7 * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))
+    ax.text(bx0, by0 - 155 * sB, "Ø220×20 plate · 6× M12 anchor bolts on Ø170 PCD\ninto the container floor cross-member",
+            ha="center", fontsize=6.4, color=C_OUT, **FONT)
+
+    ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
+            ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
+
+    title_block(ax, "SHEET 10 OF 12",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="PIVOT-POST ASSEMBLY — SECTION + FRAME→HUB BRACKET + ANCHOR PLATE",
+                scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet10.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet10.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -1988,4 +2083,5 @@ if __name__ == "__main__":
     sheet7()
     sheet8()
     sheet9()
+    sheet10()
     print("Done.")

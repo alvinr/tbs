@@ -405,6 +405,24 @@ Order of operations (single person, ~10 min) — see the [Operating Manual](oper
 
 Re-deployment reverses the sequence.
 
+### 5.5 Pivot-Post Assembly
+
+The whole movable assembly swings on a **fixed Ø89×8 CHS post** (3" NPS Sch-80, S355 —
+the reused film far-left upright, upgraded), running floor→roof and **bolted at both ends**
+to Ø220×20 mount plates: the floor plate takes the vertical + moment on a 6× M12 anchor-bolt
+circle into the container floor cross-member, the roof plate is bolted to the roof rail. The
+post is a **structural positioning member** carrying the ~3.6 kN·m swing cantilever (SF 3.7).
+
+The **moving hub** rides the post and swings with the frame: a **51118 single-direction
+thrust bearing** at the base carries the ~330 kg vertical load, and **two iglide J journal
+bushings** (JFM-9095-100, top + bottom) take the radial load and the overturning couple. The
+hub ties to the panel through **three welded hinge brackets** bolting to the steel center-zone
+jamb (2× M12 each, through the RHS into a backing plate — not the HDPE skin). The pivot post,
+its bearings, and the frame→hub bracket still require a **structural sign-off** before fab.
+
+**Sheet 10 — Pivot-Post Assembly (section + frame→hub bracket + floor anchor plate)**
+![TBS-001 Hinged Panel — Sheet 10: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
+
 ---
 
 ## 6. Light Seal Design
@@ -507,10 +525,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. PIPE sourced: 3" NPS Sch 80 (Ø88.9 OD × 7.6mm wall), 36" ≈ $135 (Speedy Metals). The machined hub / thrust collar + 2 journal bands (Ra ~0.4 µm, iglide runs on soft shafts) are FAB → pending blueprints. Band held est pending the fab quote. | 1 ea | Metal Supermarkets / Speedy Metals | $180–$300 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the iglide sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $80 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | Top + bottom radial location of the post. igus iglide J self-lubricating polymer, Ø90 ID × Ø95 OD × Ø103 flange × 100 mm long. The FLANGE gives axial location against the hub face; the OD is a light press into the hub bore. Axial load is on the 51118 thrust bearing. Maintenance-free, no oil; inert plastic — chemical-resistant (iglide J passed the igus chemical filter; iglide X isn't offered at Ø90). Service pressure ≈1.3 N/mm² vs ≈35 N/mm² allowable (>25× margin); runs on the unhardened S355 post. $130.53/ea, ships in days — replaces the made-to-order GGB DU (3-mo lead). | 2 ea | igus | $261 |
+| Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | Floor + roof Ø220×20 A36 steel mount plates (waterjet: Ø90 post bore + 6× M12 clearance on Ø170 PCD each) bolting the fixed Ø89 post to the container floor cross-member + roof rail; 12× M12 anchor bolts; 3× welded hinge brackets tying the moving hub to the steel center-zone jamb (2× M12 each, through the RHS into a backing plate — not the HDPE skin). Est. material + waterjet + fab; firm at the fab quote (the pivot needs a structural sign-off). Hingepanel Sheet 10. | 1 lot | Local fab / McMaster-Carr | $70–$120 |
 | Drum support cage, 2×2×0.120in steel SHS | Steel welded box cage carrying the Ø800 housing + drum on the swinging leaf — 4 corner posts + perimeter rails + a top & bottom axle beam at the drum axis, ALL 50×50×3 RHS (2×2×0.120in stock, the axle beams = the perimeter section: the 962mm span is barely stressed, δ≈0.3mm). The 2× Ø240×12 bearing mount plates (ll-mount-plates) are fillet-welded across the beams (steel↔steel) — the SKF 6215 ring/collar tap into them. Material inside the local-fab lot, so no separate per-ft line. | 1 lot | Local fab | $70–$120 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | Fasteners Plus | $90–$120 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
-| **Swing total** | | | | **$761–$1,011** |
+| **Swing total** | | | | **$831–$1,131** |
 <!-- END parts:swing -->
 
 
@@ -532,9 +551,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,307<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,513<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> |
-| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
+| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$831<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,131<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,435<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,112<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,505<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,232<!-- END costing:hp-total-high -->** |
 
 ---
 

@@ -17,7 +17,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,126 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,948 | $3,989 |
-| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
+| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,079 | $2,941 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,307 | $1,513 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,513** | **~$36,308** |
+| **TOTAL (base build + 50-print run)** | **~$27,583** | **~$36,428** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -399,6 +399,7 @@ indicative low–high estimates — get quotes before ordering.
 | Fabricated flanged wall-penetration box (front face + flange) | 1 lot | Local fab | electrical | $60–$100 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | MetalsDepot | walkway | $65–$105 |
 | L-cleat nut backing plate 40×50×8mm | 16 ea | Metal Supermarkets | ibc-frame | $10–$19 |
+| Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | 1 lot | Local fab | swing | $70–$120 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
 | Right walkway cantilever frame (long + end beams) | 1 lot | MetalsDepot | walkway | $125–$153 |
 | Right walkway center cantilever arms (solid bar) | 2 ea | Metal Supermarkets | ibc-frame | $91 |
@@ -416,7 +417,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $68 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $160 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,501–$5,025** |
+| **steel-structural subtotal** | | | | **$3,571–$5,145** |
 
 ### substrate-fabric
 
@@ -469,7 +470,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 21 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,175–$3,552 |
+| Local fab | 22 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,245–$3,672 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 17 | aluminum, fasteners-hardware, steel-structural | $2,178–$2,758 |
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |

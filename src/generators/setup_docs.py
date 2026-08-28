@@ -183,6 +183,7 @@ DIAG_IMAGE_FILES = [
     "hingepanel-sheet7.png",
     "hingepanel-sheet8.png",
     "hingepanel-sheet9.png",
+    "hingepanel-sheet10.png",
     "container-floorplan.png",
     "assembly-overview.png",
     "assembly-overview-fp.png",

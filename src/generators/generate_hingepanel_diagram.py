@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, PANEL_FAN_BAND_Z, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, PANEL_FAN_BAND_Z, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
@@ -2071,6 +2071,101 @@ def sheet10():
     print("  diagrams/hingepanel-sheet10.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 11  —  Fan-B Plywood: Cut Sheet + Attachments
+#   LEFT: the 4'×8' PT-ply cut sheet — the Fan-B mount band + the cooler stow base
+#   nested, with the Ø150 fan cutout, fan bolt holes, and the frame-tab T-nut edge
+#   pattern. RIGHT: Detail A Fan-B→ply through-bolt; Detail B ply→frame welded tab
+#   + captive tee-nut (the IBC-frame convention).
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet11():
+    SW, SH = 1220, 2440                     # 4'×8' PT-ply sheet
+    BW, BH = 610, 1220                      # Fan-B mount band
+    CW, CH = 600, 350                       # cooler stow base plate
+    PLY = 18
+    FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
+
+    fig, ax = plt.subplots(figsize=(17, 12.5))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-360, 2320)
+    ax.set_ylim(-320, SH + 230)
+
+    # ── LEFT: 4'×8' ply cut sheet ─────────────────────────────────────────────
+    ax.add_patch(Rectangle((0, 0), SW, SH, fc="#EFE6D2", ec=C_OUT, lw=1.4, zorder=3))
+    ax.text(SW / 2, SH + 90, "PLYWOOD CUT SHEET — 4'×8' ¾\" PT PINE (1220×2440)",
+            ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
+    # Fan-B band (top) — cut piece
+    bx, by = 0, SH - BH
+    ax.add_patch(Rectangle((bx, by), BW, BH, fc=C_WOOD, ec=C_OUT, lw=1.3, alpha=0.55, zorder=4))
+    ax.text(bx + BW / 2, by + BH - 90, "FAN-B MOUNT BAND\n610 × 1,220 · 18mm", ha="center", va="top",
+            fontsize=7.5, fontweight="bold", color="#6b4a1f", **FONT, zorder=6)
+    # Ø150 fan cutout + 4 bolt holes
+    fcx, fcy = bx + BW / 2, by + 360
+    ax.add_patch(Circle((fcx, fcy), FR, fc=BG, ec=C_OUT, lw=1.2, zorder=6))
+    ax.text(fcx, fcy, f"Ø{int(FAN_DIAM)}\nfan\ncutout", ha="center", va="center", fontsize=6.4, color=C_DIM, **FONT, zorder=7)
+    for k in range(4):
+        a = math.radians(45 + k * 90)
+        ax.add_patch(Circle((fcx + (FR + 24) * math.cos(a), fcy + (FR + 24) * math.sin(a)), 5, fc=BG, ec=C_OUT, lw=0.9, zorder=7))
+    ax.text(fcx, fcy - FR - 55, "4× fan-flange bolts", ha="center", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
+    # frame-tab T-nut holes along the two vertical edges (to the jamb + stile)
+    for ex in (bx + 30, bx + BW - 30):
+        for zz in [by + 120 + i * 320 for i in range(4)]:
+            ax.add_patch(Circle((ex, zz), 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=7))
+    ax.text(bx + BW + 8, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— Detail B", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
+    # cooler base (below the band)
+    cx0, cy0 = 0, by - 60 - CH
+    ax.add_patch(Rectangle((cx0, cy0), CW, CH, fc=C_WOOD, ec=C_OUT, lw=1.2, alpha=0.4, zorder=4))
+    ax.text(cx0 + CW / 2, cy0 + CH / 2, "COOLER STOW\nBASE 600×350", ha="center", va="center", fontsize=6.8, color="#6b4a1f", **FONT, zorder=6)
+    ax.text(SW / 2, cy0 / 2, "remainder — offcut stock", ha="center", va="center", fontsize=6.4, color=C_DIM, **FONT, zorder=5)
+    draw_dim_h(ax, 0, SW, -110, f"{SW}", offset=16, fs=6.6, font=FONT)
+    draw_dim_v(ax, -110, 0, SH, f"{SH}", offset=16, fs=6.6, font=FONT)
+
+    # ── RIGHT DETAIL A: Fan-B → ply through-bolt (enlarged) ───────────────────
+    ax_ = 1500
+    ay_ = 1650
+    sA = 2.6
+    def dA(x, y): return (ax_ + x * sA, ay_ + y * sA)
+    ax.text(ax_ + 100 * sA, ay_ + 175 * sA, "DETAIL A — FAN-B → PLYWOOD (through-bolt + backing)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.add_patch(Rectangle(dA(60, 0), 18 * sA, 150 * sA, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))       # 18mm ply
+    ax.add_patch(Rectangle(dA(0, 40), 60 * sA, 70 * sA, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))        # fan flange (exterior)
+    ax.add_patch(Rectangle(dA(78, 55), 24 * sA, 40 * sA, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))     # backing plate (interior)
+    for by2 in (58, 92):
+        ax.plot(*zip(dA(4, by2), dA(102, by2)), color="#101010", lw=2.2, zorder=8)                     # through-bolt
+        ax.add_patch(Rectangle(dA(-2, by2 - 6), 8, 12, fc="#101010", ec="none", zorder=9))
+        ax.add_patch(Rectangle(dA(98, by2 - 5), 6, 10, fc="#101010", ec="none", zorder=9))
+    ax.text(ax_ + 50 * sA, ay_ - 70, "Fan-B flange (exterior) → 2× bolts through the\n18mm ply into an interior backing plate", ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT)
+    leader(ax, dA(69, 10), (ax_ + 30 * sA, ay_ + 175 * sA - 40), "18mm PT ply band", col=C_OUT, fs=6)
+
+    # ── RIGHT DETAIL B: ply → frame welded tab + captive tee-nut ──────────────
+    bx_ = 1500
+    byy = 560
+    sB = 2.6
+    def dB(x, y): return (bx_ + x * sB, byy + y * sB)
+    ax.text(bx_ + 100 * sB, byy + 165 * sB, "DETAIL B — PLYWOOD → FRAME (welded tab + captive tee-nut)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.add_patch(Rectangle(dB(0, 0), 50 * sB, 130 * sB, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))     # frame RHS
+    ax.add_patch(Rectangle(dB(3, 3), 44 * sB, 124 * sB, fc=BG, ec=C_OUT, lw=0.5, zorder=5))              # RHS bore
+    ax.add_patch(Rectangle(dB(50, 50), 60 * sB, 8 * sB, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))          # welded tab (landing leg)
+    ax.add_patch(Polygon([dB(50, 58), dB(56, 58), dB(50, 68)], closed=True, fc=C_OUT, ec="none", zorder=7))       # weld fillet
+    ax.add_patch(Rectangle(dB(60, 58), 18 * sB, 70 * sB, fc=C_WOOD, ec=C_OUT, lw=1.2, zorder=5))          # 18mm ply
+    # bolt up through the tab into a captive tee-nut in the ply back face
+    ax.plot(*zip(dB(52, 54), dB(76, 54)), color="#101010", lw=2.2, zorder=8)                             # machine screw
+    ax.add_patch(Rectangle(dB(76, 50), 3 * sB, 8 * sB, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))         # tee-nut barrel (into ply)
+    ax.add_patch(Rectangle(dB(78, 46), 3 * sB, 16 * sB, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=9))        # tee-nut flange on ply back face
+    ax.text(bx_ + 95 * sB, byy - 40, "steel tab WELDED to the frame; machine screw\nthrough the tab into a pronged captive tee-nut\nset in the ply back face (IBC-frame convention)", ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT)
+    leader(ax, dB(25, 5), (bx_ + 20 * sB, byy + 150 * sB), "frame RHS member", col=C_OUT, fs=6)
+
+    title_block(ax, "SHEET 11 OF 12",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="FAN-B PLYWOOD — CUT SHEET + FAN & FRAME ATTACHMENTS",
+                scale_note="CUT SHEET 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet11.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -2084,4 +2179,5 @@ if __name__ == "__main__":
     sheet8()
     sheet9()
     sheet10()
+    sheet11()
     print("Done.")

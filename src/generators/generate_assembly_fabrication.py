@@ -17,7 +17,7 @@ Generates two-sheet assembly fabrication drawing for TBS-001
     (panel interior / mounting face). Pinhole wall at left (Yd=0), film-plane
     wall at right (Yd=2362).
     Horizontal = container width CW 0–2362mm,  vertical = height H 0–2388mm.
-    Drum Ø900mm appears as a rectangle centerd at CW/2.
+    Drum Ø800mm appears as a rectangle centered at CW/2.
 
 ASPECT RATIO RULE: figsize always derived from data limits.
                    ax.set_aspect("equal") always set.
@@ -38,7 +38,7 @@ os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 from tbs_constants import RAIL_OFF   # floor/ceiling offset for all equipment (mm)
 from tbs_constants import DIAGRAM_DPI
-DRUM_H_ELV = DRUM_H_LT  # 2000mm — drum height in elevation view
+DRUM_H_ELV = DRUM_H_LT  # 2100mm — drum height in elevation view
 DRUM_CY    = C_WID // 2  # drum center in Y direction = container width center = 1181mm
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -367,7 +367,7 @@ def sheet2():
       Vertical   = container height H = 2388mm
       Depth (into page) = container length X = 5893mm
 
-    Drum Ø900mm: vertical axis, centerd at CW/2=1181mm, appears as rectangle.
+    Drum Ø800mm: vertical axis, centered at CW/2=1181mm, appears as rectangle.
     Equipment at depth in background (dashed outlines).
     """
     X_LO2, X_HI2 = -500, 3100
@@ -415,9 +415,9 @@ def sheet2():
             f"HINGED PANEL (STEPPED)\n{C_WID}x{C_HGT}mm\nCorner: {PANEL_CORNER_T}mm  Center: {PANEL_CENTER_T}mm",
             ha="left", va="top", fontsize=FS_SM, color=C_DIM, zorder=6)
 
-    # ── Revolving drum (vertical axis, centerd at CW/2) ───────────────────────
+    # ── Revolving drum (vertical axis, centered at CW/2) ───────────────────────
     # In this end elevation: horizontal axis = Y (container width = optical depth).
-    # Drum centerd at CW/2=1181mm; vertical axis drum Ø900mm appears as rectangle.
+    # Drum centered at CW/2=1181mm; vertical axis drum Ø800mm appears as rectangle.
     DRUM_LEFT  = DRUM_CY - DRUM_R   # = 1181 - 450 = 731mm
     DRUM_RIGHT = DRUM_CY + DRUM_R   # = 1181 + 450 = 1631mm
 

@@ -117,6 +117,20 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
 
 ## 🛠 Tooling / infra
 
+- [ ] **Ø900→Ø800 stale-label sweep — ROUND 2 (found 2026-08-28 on hingepanel-bp).** The 2026-08-26 drum
+  resize left `Ø900` (and stale `2000mm` drum-height) references in **many** generators beyond the light-trap/
+  hingepanel set that this branch cleaned. Some are **visible labels/calc-notes** (not just comments), so they
+  are wrong on the published diagrams/reports right now. Cleaned so far: `costing.py`, the two assembly
+  generators, `generate_lighttrap_model.py`, and (on this branch) `generate_hingepanel_diagram.py`. **Still to
+  do — reference the constant (`f"Ø{DRUM_D}"`), regen, and re-inject weight blocks:**
+  `generate_weight_analysis.py` (lines ~130/164/195/312/318/381/436/446/903 — calc_notes 436/446 are visible),
+  `generate_movable_panel_weight.py` (~15/50/68/71/75/114 — calc_notes visible),
+  `generate_lighttrap_diagram.py` (~411/412/493 — **visible note "Roll to Ø900 (R450)"**),
+  `generate_film_plane_mechanism.py` (~357, comment), `generate_sketchup_model.py` (~1381, comment),
+  and `tbs_constants.py` describing-comments (~296/317/344 — change "Ø900 housing" → "Ø800"; **KEEP** the
+  rev-history lines 354/355/419/447/453/1302 that intentionally record the "Ø900→Ø800" change). Do it as one
+  batch (regen + weight re-inject + visual pass), separate from the surround work.
+
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%

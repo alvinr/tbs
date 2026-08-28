@@ -261,9 +261,10 @@ balance, max-fill, and top-up analysis, and the full water circuit design.
 
 ## 9. Egress Safety Assessment
 
-When the hinged panel is opened 180° from the inside, the light trap drum (mounted
-in the panel center zone) swings outward with the panel. With the
-waste drums eliminated, the entire left end zone floor is clear.
+When the hinged panel is opened from the inside, it swings **inward** about the Ø89
+pivot and the light trap drum (mounted in the panel center zone) swings into the
+container with it, clearing the door plane. With the waste drums eliminated, the
+entire left end zone floor is clear.
 
 ### 9.1 Egress Gap
 

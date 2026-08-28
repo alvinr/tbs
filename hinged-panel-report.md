@@ -18,7 +18,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
-- 180° outward swing for full-width loading access (IBC totes, equipment)
+- Inward swing (into the container, about the Ø89 pivot) for full-width loading access (IBC totes, equipment) — the panel opens inward only; a frame stop takes the outward direction
 - ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) + hardware
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
@@ -281,7 +281,7 @@ engineer's sign-off** before fabrication.
 
 | Parameter | Value |
 |-----------|-------|
-| Model | Southco C2-33 cam compression latch |
+| Model | McMaster 1619A74 lift-and-turn cam latch |
 | Quantity | 4 (one at each corner) |
 | Positions | 210mm and 2,152mm from side edges, 220mm and 2,168mm from floor |
 | Mounting face | **Interior** — deliberate safety design for emergency egress |
@@ -289,8 +289,9 @@ engineer's sign-off** before fabrication.
 
 **Emergency egress:** If the revolving drum jams and prevents normal egress, an
 operator inside the container can release all four interior-mounted cam latches
-independently and push the panel open outward. The panel swings 180° clear of all
-interior equipment.
+independently and push the panel open **inward** — it swings into the container about
+the Ø89 pivot, clearing the door plane so the operator can step out. (The panel opens
+**inward only**; a stop on the fixed frame takes the outward direction — §4.2 latches.)
 
 ### 4.3 Interior Pull Handle
 
@@ -397,7 +398,7 @@ Order of operations (single person, ~10 min) — see the [Operating Manual](oper
 3. Lift out the left walkway + door-end near-deck section.
 4. **Strike the two left film rails (TL + BL)** — release each clamp bar, lift the rail
    out of its saddles, and stow.
-5. Release the four Southco cam latches (releases the perimeter + cut seals).
+5. Release the four lift-and-turn cam latches (releases the perimeter + cut seals).
 6. **Swing the frame ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard** about the pivot, assisted (balanced about the
    vertical axis — no gravity torque; control momentum at the stop).
 7. Engage the top + bottom wall stays (the transport lock).
@@ -432,7 +433,7 @@ position. Five light ingress paths are sealed:
 
 | # | Light path | Seal method |
 |---|-----------|-------------|
-| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 4 × Southco C2-33 cam latches against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
+| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 4 × McMaster 1619A74 lift-and-turn cam latches against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
 | 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom brush seal** — a continuous nylon-filament strip brush in an aluminum holder on the threshold, its bristles rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the bristle wall closes it light-tight. The panel bottom edge **sweeps through the bristles** as the panel swings — so this edge is a **brush, not a compression seal** (a compression EPDM would drag and deform under the sideways sweep; a brush passes the edge through cleanly — the same principle as the drum-opening brush seals). The bristle density is the seal; no cam-latch compression on this edge. (Sheet 3, Detail B.) |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
@@ -569,7 +570,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Annually | Grease the 51118 pivot thrust bearing; the iglide journal bushings run dry — do **not** oil/grease them — wipe the post journal bands clean and check for free, smooth rotation |
 | Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
 | Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
-| Annually | Inspect Southco cam latches for compression force; adjust or replace striker |
+| Annually | Inspect the cam latches for clamp force; adjust the latching distance or replace the keeper |
 | Every 2 years | Re-seal drum top/bottom neoprene wiper strips and silicone bead |
 | As needed | Re-apply flat black interior paint where scuffed or worn |
 
@@ -580,7 +581,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Item | Source |
 |------|--------|
 | SKF 6215-2RS1 bearing specification | [SKF Product Catalog](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — radial load 52.7 kN basic dynamic (C), sealed, C3 clearance |
-| Southco C2-33 cam latch | [Southco catalog](https://southco.com/en_us_int/c2-33-11) — flush-mount cam compression latch |
+| Lift-and-turn cam latch | [McMaster 1619A74](https://www.mcmaster.com/1619A74/) — adjustable lift-and-turn tight-hold cam latch, 150 lbf |
 | Turnbuckle + eye/hook (wall stays) | [McMaster-Carr turnbuckles](https://www.mcmaster.com/turnbuckles/) — drop-forged jaw/eye turnbuckles for the transport lock |
 | Pivot thrust bearing (51118) | [Motion — SKF 51118](https://www.motion.com/products/sku/00132858) — single-direction thrust ball bearing, Ø90 × 120 × 22mm, static Cₒ ≈190 kN, for the pivot base |
 | Pivot journal bushings (JFM-9095-100) | [igus — iglide J JFM-9095-100](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) — iglide J self-lubricating flange bushing, Ø90 ID × 95 OD × Ø103 flange × 100L, top + bottom post radial location |

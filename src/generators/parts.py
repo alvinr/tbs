@@ -982,8 +982,9 @@ PARTS: list[Part] = [
          spec="Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8\" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375\", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 8. $14.59/100.", note="NEW 2026-08-28 (hingepanel-bp) — surround→frame connection resolved as a blind-riveted lap; SKU shared with ll-rivets-housing"),
     Part("panel-paint", "Flat black paint (RAL 9005)", "adhesives-finishes",
          "panel", 1, "qt", 10, 20, "local", spec="Bay/weld touch-in (HDPE skins are pre-pigmented black)"),
-    Part("panel-grab-handle", "304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black", "fasteners-hardware",
-         "panel", 1, "ea", 70, 90, "StrongAr Hardware", spec="Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location.", url="https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/"),
+    Part("panel-grab-handle", "12\" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4\" screws into rivnuts, matte-black", "fasteners-hardware",
+         "panel", 1, "ea", 6.43, 6.43, "McMaster-Carr", part_no="1871A65", url="https://www.mcmaster.com/1871A65/",
+         spec="Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13\" grip, 2.06\" standoff. Screws into 1/4\"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm.", note="2026-08-28 (Alvin): swap the D-grab → the same 1871A65 pull handle as the drum handle; mount = rivnuts not through-bolt+backing plate"),
 
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",

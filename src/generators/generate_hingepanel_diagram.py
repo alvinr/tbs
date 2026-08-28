@@ -293,8 +293,8 @@ def sheet1():
            "INTERIOR PULL HANDLE (§4.3)\nbolted to the drum-aperture jamb (frame) —\npull the panel open from inside",
            col="#204080", fw="bold")
     # the steel jamb beam the handle bolts to — shown so the mount beam is visible (cf. Sheet 6)
-    JX0 = PANEL_CORNER_YD_L + 6            # 659 — left center-zone jamb, behind the handle
-    ax.add_patch(Rectangle((JX0, HZD - HGL / 2 - 150), 40, HGL + 300, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=6))
+    JX0 = PANEL_CORNER_YD_L + 6            # 659 — left center-zone jamb (full-height frame member)
+    ax.add_patch(Rectangle((JX0, 0), 40, PH, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.7, zorder=2))
     leader(ax, (JX0 - 20, HZD - HGL / 2), (980, 640),
            "2×2 STEEL JAMB —\nhandle bolts to steel,\nnot the skin (Sheet 6/9)", col=C_OUT, fs=6)
 
@@ -1573,9 +1573,10 @@ def sheet4():
 
 def sheet6():
     """Sheet 6 — interior pull-handle mounting detail. Horizontal section through the
-    panel's left drum-aperture jamb: the matte-black 316 SS D-grab handle through-bolted
-    to the 2×2×0.120in steel frame stud (NOT the HDPE skin), reacting into an interior backing
-    plate. The two M8 bolts pass THROUGH both walls of the RHS, well inside its width."""
+    panel's left drum-aperture jamb: the matte-black McMaster 1871A65 round pull handle
+    (the SAME off-the-shelf part as the interior drum handle) screwed into RIVNUTS set in
+    the near wall of the 2×2×0.120in steel frame RHS — the load reacts into the STEEL, not
+    the HDPE skin (rivnuts because the 3mm tube wall can't be tapped)."""
     fig, ax = plt.subplots(figsize=(11, 8.0))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
@@ -1598,35 +1599,27 @@ def sheet6():
     leader(ax, (24, -25), (50, -50), "2×2×0.120in steel frame jamb\n(beside drum aperture)", col=C_OUT)
     # 1/8″ HDPE interior skin on the +X face
     ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
-    leader(ax, (52, 24), (72, 72), "1/8″ HDPE\ninterior skin", col=C_OUT)
-    # interior backing plate behind the exterior wall (spreads the load)
-    ax.add_patch(Rectangle((-7, -22), 7, 44, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=3))
-    leader(ax, (-2, -22), (-25, -50), "exterior backing\nplate", col=C_OUT)
-    # handle: foot plate on the skin, two standoff bosses, Ø25 grip bar (vertical → circle here).
-    # Drawn at 60% opacity (40% reduced) so the through-bolt detail reads clearly underneath.
-    HA = 0.6
-    ax.add_patch(Rectangle((54, -22), 6, 44, fc="#202020", ec=C_OUT, lw=1.0, alpha=HA, zorder=5))
+    leader(ax, (52, 20), (78, 95), "1/8″ HDPE\ninterior skin", col=C_OUT)
+    # 1871A65 round pull handle (SAME part as the interior drum handle): foot plate,
+    # two ~52mm standoff posts, Ø12.7 grip bar (vertical → a circle in this section).
+    HA = 0.65
+    ax.add_patch(Rectangle((54, -20), 5, 40, fc="#202020", ec=C_OUT, lw=1.0, alpha=HA, zorder=5))   # foot plate
     for fy in (-15, 15):
-        ax.add_patch(Rectangle((60, fy - 6), 34, 12, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))
-    ax.add_patch(Rectangle((94, -22), 6, 44, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))
-    ax.add_patch(Circle((100, 0), 12.5, fc="#202020", ec=C_OUT, lw=1.2, alpha=HA, zorder=6))
-    leader(ax, (100, 13), (148, 50),
-           "316 SS D-grab handle\n~300mm grip · 25mm bar\nMATTE-BLACK (optically dead)",
-           col=C_OUT, fw="bold")
-    # 2× M8 through-bolts at Yd ±15 — INSIDE the 50mm frame (±25), so each bolt passes
-    # cleanly through BOTH RHS walls: head boss at the handle foot → nut on the backing plate.
+        ax.add_patch(Rectangle((59, fy - 4), 52, 8, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))  # standoff post
+    ax.add_patch(Circle((117, 0), 6.35, fc="#202020", ec=C_OUT, lw=1.2, alpha=HA, zorder=6))         # Ø12.7 grip bar
+    leader(ax, (117, 7), (150, 58),
+           "12\" round pull handle — McMaster 1871A65\n(Ø12.7 bar) — SAME as the interior drum handle;\nmatte-black (optically dead)", col=C_OUT, fw="bold")
+    # 2× 1/4" screws through the feet into RIVNUTS set in the near RHS wall (load into steel, not the skin)
     for by in (-15, 15):
-        ax.plot([-7, 60], [by, by], color="#101010", lw=2.6, zorder=7)
-        ax.add_patch(Rectangle((57, by - 5), 5, 10, fc="#101010", ec="none", zorder=8))
-        ax.add_patch(Rectangle((-11, by - 6), 4, 12, fc="#101010", ec="none", zorder=8))
-    leader(ax, (15, 15), (5, 50),
-           "2× M8 SS through-bolt\nthrough BOTH frame walls (not the skin)", col=C_OUT, fw="bold")
+        _draw_bolt(ax, 54, by, 10, d=6, vertical=False, head=1, end="rivnut", wall=3, zb=7)
+    leader(ax, (49, 15), (8, 58),
+           "2× 1/4\" screws into RIVNUTS in the near\nRHS wall (can't tap the 3mm tube; load\nreacts into STEEL, not the HDPE skin)", col=C_OUT, fw="bold")
 
     # ── dimensions (prove the drawing is to scale) ──
     draw_dim_h(ax, 0, 50, -62, "50", offset=10, fs=6.5, font=FONT, above=False)          # frame width
-    draw_dim_v(ax, 122, -12.5, 12.5, "Ø25", offset=9, fs=6.2, font=FONT, right=True)      # grip bar Ø
-    draw_dim_h(ax, 54, 100, 40, "~46 standoff", offset=9, fs=6.0, font=FONT)              # handle projection
-    ax.text(100, -30, "grip bar runs VERTICAL, ~300mm\n(shown here in cross-section)", ha="center", va="top", fontsize=5.8, color=C_DIM, **FONT)
+    draw_dim_v(ax, 128, -6.35, 6.35, "Ø12.7", offset=9, fs=6.2, font=FONT, right=True)   # grip bar Ø
+    draw_dim_h(ax, 59, 111, 40, "~52 standoff", offset=9, fs=6.0, font=FONT)             # handle projection
+    ax.text(110, -30, "grip bar runs VERTICAL, ~308mm\n(shown here in cross-section)", ha="center", va="top", fontsize=5.8, color=C_DIM, **FONT)
     # ── scale bar (50mm) ──
     sbx0 = -88
     ax.plot([sbx0, sbx0 + 50], [-118, -118], color=C_OUT, lw=2.2, zorder=9)
@@ -1635,9 +1628,10 @@ def sheet6():
     ax.text(sbx0 + 25, -128, "0   25   50 mm", ha="center", fontsize=6.2, color=C_OUT, **FONT)
 
     ax.text(60, -103,
-            "The handle bolts to the STEEL FRAME with a backing plate — the swing load\n"
-            "reacts into the 50×50 RHS, never the HDPE skin. Matte-black keeps the container\n"
-            "interior optically dead (stray-light control for the pinhole).",
+            "The handle screws into RIVNUTS set in the 50×50 RHS wall — the swing load\n"
+            "reacts into the STEEL frame, never the HDPE skin. Same off-the-shelf pull handle\n"
+            "(McMaster 1871A65) as the interior drum handle. Matte-black keeps the interior\n"
+            "optically dead (stray-light control for the pinhole).",
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
@@ -1935,11 +1929,12 @@ def sheet8():
     _blind_rivet(ax, fx + 40, fy + ft, 90, ft + 10, d=RIV_D)
     leader(ax, (fx + 40, fy + ft + 16), (300, 165),
            f"1/8\" 18-8 SS blind rivet\nMcMaster 97525A435\ndrill Ø{LT_RIVET_HOLE} @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
-    # HDPE ALSO wraps DOWN the post SIDE face + rivets there — not just the front face
-    ax.add_patch(Rectangle((fx + fw, fy - 34), 10, ft + 44, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
-    _blind_rivet(ax, fx + fw + 5, fy - 6, 180, 22, d=RIV_D)
-    leader(ax, (fx + fw + 5, fy - 26), (250, -22),
-           "HDPE ALSO laps + rivets the SIDE face of the post\n(fasten FRONT + SIDE faces, not the front only)", col=C_OUT, fw="bold", fs=6)
+    # the post's SIDE face (steel) turns down from the flange — the HDPE wraps this corner
+    ax.add_patch(Rectangle((fx + fw - ft, fy - 44), ft, 44 + ft, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))  # post side wall (steel behind the HDPE)
+    ax.add_patch(Rectangle((fx + fw, fy - 44), 8, 44 + ft, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))                   # HDPE lap down the side face
+    _blind_rivet(ax, fx + fw + 4, fy - 12, 180, 16, d=RIV_D)                                                            # side rivet: HDPE → into the STEEL side wall
+    leader(ax, (fx + fw + 4, fy - 30), (250, -22),
+           "HDPE also laps + rivets into the STEEL SIDE face of the post\n(fasten FRONT + SIDE faces — not the front only)", col=C_OUT, fw="bold", fs=6)
 
     ax.text(170, 4,
             "The HDPE surround (bay walls, floor caps, face skins) laps the steel center-zone frame and is\n"
@@ -2251,23 +2246,29 @@ def sheet13():
     leader(ax, dA(40, 60), (ax0 + 20, 160), "Fan-B flange\n(exterior)", col=C_OUT, fs=6.5)
     leader(ax, dA(99, 66), (ax0 + 150, 160), "interior\nbacking plate", col=C_OUT, fs=6.5)
     ax.text(ax0 + 95, 8, "Fan-B flange → 2× M8 bolts through the 18mm ply\ninto an interior backing plate + nuts", ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
-    draw_dim_v(ax, dA(70, 0)[0] - 14, dA(0, 20)[1], dA(0, 150)[1], "18", offset=8, fs=6, font=FONT)
+    draw_dim_v(ax, dA(70, 0)[0] + 32, dA(0, 20)[1], dA(0, 150)[1], "18", offset=8, fs=6, font=FONT, right=True)
 
     # ── DETAIL B — plywood → frame (welded tab + captive tee-nut) ──
     bx0, byy, sB = 270, 40, 1.0
     def dB(x, y): return (bx0 + x * sB, byy + y * sB)
     ax.text(bx0 + 90, 200, "DETAIL B — PLYWOOD → FRAME", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
     ax.text(bx0 + 90, 188, "welded steel tab + pronged captive tee-nut (IBC convention)", ha="center", fontsize=7, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle(dB(0, 20), 50, 130, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))    # frame RHS
-    ax.add_patch(Rectangle(dB(3, 23), 44, 124, fc=BG, ec=C_OUT, lw=0.5, zorder=5))                       # RHS bore
-    ax.add_patch(Rectangle(dB(50, 78), 62, 8, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # welded landing tab
-    ax.add_patch(Polygon([dB(50, 86), dB(58, 86), dB(50, 98)], closed=True, fc=C_OUT, ec="none", zorder=7))   # weld fillet
-    ax.add_patch(Rectangle(dB(62, 86), 18, 72, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))                    # 18mm ply
-    _draw_bolt(ax, bx0 + 66 * sB, byy + 82 * sB, 20, d=6, vertical=True, head=-1, end="rivnut", wall=8, zb=8)  # screw up into captive tee-nut (drawn as bore-side insert)
-    leader(ax, dB(25, 20), (bx0 + 20, 165), "frame RHS member", col=C_OUT, fs=6.5)
-    leader(ax, dB(54, 82), (bx0 + 150, 150), "steel tab WELDED\nto the frame", col=C_OUT, fs=6.5)
-    leader(ax, dB(70, 150), (bx0 + 150, 175), "18mm ply band", col=C_OUT, fs=6.5)
-    ax.text(bx0 + 90, 8, "steel tab welded to the frame; #10 machine screw through the\ntab into a pronged captive tee-nut set in the ply back face", ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
+    # horizontal section: frame RHS (square tube) · welded L-bracket · ply edge-on
+    ax.add_patch(Rectangle(dB(0, 48), 48, 88, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))     # frame RHS
+    ax.add_patch(Rectangle(dB(3, 51), 42, 82, fc=BG, ec=C_OUT, lw=0.5, zorder=5))                        # RHS bore
+    ax.add_patch(Rectangle(dB(48, 85), 42, 7, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # L-bracket base leg (welded to the frame)
+    ax.add_patch(Polygon([dB(48, 85), dB(48, 77), dB(56, 85)], closed=True, fc=C_OUT, ec="none", zorder=7))   # weld fillet
+    ax.add_patch(Rectangle(dB(84, 62), 7, 52, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # L-bracket upstand (parallel to the ply)
+    ax.add_patch(Rectangle(dB(91, 58), 18, 60, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))                    # 18mm ply (edge-on)
+    # bolt THROUGH the upstand (the tab face) → into a captive TEE-NUT in the ply back face
+    ax.plot(*zip(dB(80, 88), dB(107, 88)), color="#101010", lw=2.4, zorder=8)                            # bolt shank (perpendicular to the ply)
+    ax.add_patch(Rectangle(dB(78, 83), 5, 10, fc="#101010", ec="none", zorder=9))                        # bolt head + washer on the upstand
+    ax.add_patch(Rectangle(dB(91, 85), 16, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                 # tee-nut barrel (into the ply, toward the bolt)
+    ax.add_patch(Rectangle(dB(107, 80), 3, 16, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=9))                # tee-nut flange on the ply FAR face
+    leader(ax, dB(24, 48), (bx0 + 20, 168), "frame RHS member", col=C_OUT, fs=6.5)
+    leader(ax, dB(70, 89), (bx0 + 44, 18), "L-bracket WELDED to the frame;\nbolt through the tab UPSTAND (its face)", col=C_OUT, fs=6.5)
+    leader(ax, dB(108, 88), (bx0 + 165, 150), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, dB(100, 116), (bx0 + 165, 175), "18mm ply band", col=C_OUT, fs=6.5)
 
     title_block(ax, "SHEET 13 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
@@ -2283,8 +2284,9 @@ def sheet13():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 14  —  Frame → Pivot-Post Connection (how the swinging frame is secured
 #   to the moving hub that rides the fixed Ø89 post). LEFT: elevation of the hub +
-#   3 welded hinge brackets. RIGHT: enlarged plan section of one bracket — bolts on
-#   the hub-tube surface, through the frame jamb into a backing plate + nuts.
+#   3 welded hinge brackets. RIGHT: enlarged plan section of one bracket — the plate
+#   is fillet-welded to BOTH the hub tube and the frame jamb (all-welded weldment;
+#   no bolts through the closed jamb, which can't be back-tightened).
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet14():
     HGT = C_HGT
@@ -2297,36 +2299,35 @@ def sheet14():
     # ── LEFT: elevation — hub tube + 3 hinge brackets welded on, tying to the jamb
     cx = 120
     ax.plot([cx, cx], [-30, HGT + 30], color=C_CL, lw=0.8, ls=(0, (8, 4)), zorder=2)
-    ax.add_patch(Rectangle((cx - 58, 180), 116, 2050 - 180, fc=C_ALUM, ec=C_OUT, lw=1.2, alpha=0.5, zorder=4))   # hub tube
-    ax.add_patch(Rectangle((cx - 58 + 12, 180), 116 - 24, 2050 - 180, fc=BG, ec=C_OUT, lw=0.4, zorder=4))         # bore (post)
+    ax.add_patch(Rectangle((cx - 58, 40), 116, HGT - 80, fc=C_ALUM, ec=C_OUT, lw=1.2, alpha=0.5, zorder=4))       # hub tube (full height for simplicity)
+    ax.add_patch(Rectangle((cx - 58 + 12, 40), 116 - 24, HGT - 80, fc=BG, ec=C_OUT, lw=0.4, zorder=4))            # bore (post)
     ax.add_patch(Rectangle((cx + 58 + 120, 0), 30, HGT, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=3))       # frame center jamb
     for z in (300, 1180, 2000):
-        ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket
-        for bz in (z - 8, z + 30):
-            ax.plot([cx + 58, cx + 58 + 150], [bz, bz], color="#101010", lw=1.6, zorder=7)                        # 2× M12 per bracket
+        ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket (welded hub↔jamb)
+        for jz in (z - 20, z + 42):                                                                               # weld ticks at the jamb
+            ax.add_patch(Polygon([(cx + 178, jz), (cx + 170, jz), (cx + 178, jz + (6 if jz < z else -6))], closed=True, fc=C_OUT, ec="none", zorder=7))
     leader(ax, (cx, 1400), (cx - 170, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 10)", col=C_OUT, fs=6.5)
-    leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to the hub", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to hub + jamb", col=C_OUT, fw="bold", fs=6.5)
     leader(ax, (cx + 178, 2000), (cx + 250, 2200), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6.5)
     ax.text(cx + 40, HGT + 130, "ELEVATION — 3 brackets up the hub", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
 
     # ── RIGHT: enlarged plan section of one bracket ──
     ox, oy, s = 660, 900, 4.2
     def d(x, y): return (ox + x * s, oy + y * s)
-    ax.text(ox + 70 * s, oy + 95 * s, "DETAIL — ONE HINGE BRACKET (plan section, enlarged)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(ox + 55 * s, oy + 95 * s, "DETAIL — HINGE BRACKET (plan section)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.add_patch(Rectangle(d(-14, -40), 14 * s, 80 * s, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))       # hub tube wall
     ax.add_patch(Rectangle(d(0, -22), 66 * s, 44 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))         # bracket plate (welded to hub)
     ax.add_patch(Rectangle(d(66, -42), 50 * s, 84 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))  # frame jamb
     ax.add_patch(Rectangle(d(69, -39), 44 * s, 78 * s, fc=BG, ec=C_OUT, lw=0.5, zorder=5))             # jamb bore
-    ax.add_patch(Rectangle(d(116, -30), 9 * s, 60 * s, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))      # backing plate + nuts
     for wy, sgn in ((-22, 1), (22, -1)):                                                               # fillet welds bracket→hub, AT the tube surface
         ax.add_patch(Polygon([d(0, wy), d(0, wy + sgn * 9), d(11, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
-    for by in (-13, 13):                                                                               # 2× M12: head ON the hub-tube face → nut on the backing plate
-        _draw_bolt(ax, d(62, by)[0], d(0, by)[1], 128 * s, d=9, vertical=False, head=-1, end="nut", zb=8)
+    for wy, sgn in ((-22, 1), (22, -1)):                                                               # fillet welds bracket→jamb (both faces)
+        ax.add_patch(Polygon([d(66, wy), d(66, wy + sgn * 9), d(56, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
     leader(ax, d(-7, 30), (ox - 60, oy + 40 * s), "hub tube\nwall", col=C_OUT, fs=6.5)
-    leader(ax, d(4, -18), (ox - 140, oy - 6 * s), "fillet weld\nbracket→hub\n(at the tube\nsurface)", col=C_OUT, fs=6.5)
+    leader(ax, d(4, -18), (ox - 150, oy - 6 * s), "fillet weld\nbracket→hub", col=C_OUT, fs=6.5)
     leader(ax, d(30, 20), (ox + 20 * s, oy + 80 * s), "bracket plate", col=C_OUT, fs=6.5)
-    leader(ax, d(120, 26), (ox + 150 * s, oy + 70 * s), "backing plate\n+ M12 nuts", col=C_OUT, fw="bold", fs=6.5)
-    ax.text(ox + 48 * s, oy - 64 * s, "The bolt heads bear on the HUB-TUBE FACE (bracket welded there);\n2× M12 pass through the bracket + the frame jamb into a backing\nplate — nuts on the far face SECURE the joint (not tapped into RHS).",
+    leader(ax, d(66, 20), (ox + 118 * s, oy + 78 * s), "fillet weld bracket→jamb\n(no bolts through the closed tube)", col=C_OUT, fw="bold", fs=6.5)
+    ax.text(ox + 50 * s, oy - 64 * s, "The bracket plate is FILLET-WELDED to BOTH the hub tube and the frame\njamb — the hub + frame + cage swing as ONE weldment. No bolts pass\nthrough the closed jamb (which can't be back-tightened); all-welded steel.",
             ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT, bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
     title_block(ax, "SHEET 14 OF 14",
@@ -2378,8 +2379,8 @@ def sheet12():
     leader(ax, (Ax + 128, 95), (Ax + 158, 184), "SWINGING panel-frame RHS\n(2×2×0.120) — latch through it", col=C_OUT, fs=6)
     # latch: barrel through the tube, nut inside, cam to the keeper, handle interior
     ax.plot([Ax + 40, Ax + 150], [62, 62], color="#8A8F98", lw=4.5, zorder=7)                       # barrel
-    ax.add_patch(Rectangle((Ax + 120, 55), 9, 14, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=8))          # nut INSIDE the tube
-    leader(ax, (Ax + 124, 55), (Ax + 136, 126), "nut inside the tube", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle((Ax + 128, 54), 9, 16, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=8))           # nut against the INNER face of the handle-side wall
+    leader(ax, (Ax + 132, 54), (Ax + 138, 128), "nut against the inside\nof the tube wall", col=C_OUT, fs=6)
     ax.add_patch(Polygon([(Ax + 40, 54), (Ax + 40, 70), (Ax + 30, 67), (Ax + 30, 57)], closed=True, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))  # cam behind keeper
     ax.add_patch(Rectangle((Ax + 150, 50), 9, 24, fc="#202020", ec=C_OUT, lw=1.0, zorder=8))         # handle hub
     ax.add_patch(Rectangle((Ax + 159, 56), 20, 12, fc="#202020", ec=C_OUT, lw=1.0, zorder=8))        # lift-and-turn lever
@@ -2412,13 +2413,14 @@ def sheet12():
     Cx = 400
     ax.text(Cx + 70, 205, "DETAIL C — TOP/BOTTOM BRUSH STRIP", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.text(Cx + 70, 192, "74405T12 brush in 8813T53 Al holder → door frame", ha="center", fontsize=6.6, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle((Cx + 30, 100), 80, 40, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))   # fixed door frame member
-    leader(ax, (Cx + 70, 140), (Cx + 60, 175), "FIXED door frame\n(50×50 RHS)", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle((Cx + 30, 100), 80, 40, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))   # fixed door frame RHS (outer)
+    ax.add_patch(Rectangle((Cx + 33, 103), 74, 34, fc=BG, ec=C_OUT, lw=0.6, zorder=4))                     # hollow bore
+    leader(ax, (Cx + 70, 140), (Cx + 60, 175), "FIXED door frame\n(50×50 RHS — hollow)", col=C_OUT, fs=6)
     # Al holder channel (U) screwed under the frame
     ax.add_patch(Rectangle((Cx + 48, 78), 44, 22, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((Cx + 52, 82), 36, 14, fc=BG, ec=C_OUT, lw=0.6, zorder=5))
     leader(ax, (Cx + 90, 89), (Cx + 120, 130), "8813T53 Al\nholder channel", col=C_OUT, fs=6)
-    _draw_bolt(ax, Cx + 70, 89, 22, d=5, vertical=True, head=-1, end="rivnut", wall=6, zb=8)   # #10 screw UP from holder into a RIVNUT in the hollow frame wall
+    _draw_bolt(ax, Cx + 70, 91, 18, d=5, vertical=True, head=-1, end="rivnut", wall=4, zb=8)   # #10 screw UP from holder into a RIVNUT in the hollow frame's bottom wall
     leader(ax, (Cx + 70, 78), (Cx + 34, 150), "#10 machine screw up through the\nholder into a RIVNUT set in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
     # brush bristles hanging down
     for bxk in range(Cx + 54, Cx + 88, 4):

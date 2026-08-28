@@ -117,11 +117,13 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
 
 ## 🛠 Tooling / infra
 
-- [ ] **Cam-latch part reselect (2026-08-28, Alvin).** The `panel-southco-latch` (Southco C2-33) is a
-  **recessed** cam latch — Alvin flagged it may not suit the interior-face flush mount. Find alternatives
-  (surface-mount cam/compression latch, interior-operable for emergency egress) and re-spec; then cascade
-  the SKU/price through `parts.py` + hingepanel Sheet 12 Detail A + report §4.2. (Deferred until the current
-  blueprint round is done.)
+- [x] **Cam-latch part reselect — DONE 2026-08-28 (Alvin).** Recessed Southco C2-33 → **McMaster 1619A74**
+  lift-and-turn tight-hold cam latch (adjustable 150 lbf, reversible offset, ¼" thk, $30.57 ea ×4). Registry
+  (`panel-cam-latch`) + costing (§6c +$47/$33/$19; grand → $27,680/$32,500/$39,387) done. **Remaining: redraw
+  Sheet 12 Detail A** as the cam latch — interior lift-and-turn → reversible cam → welded steel keeper on the
+  stub-wall steel frame + the outward stop; mount through the panel-frame RHS with the nut tightened via a
+  coaxial over-bore in the far tube wall + box spanner, then a light-tight plug (fab-detail choice: over-bore
+  +spanner vs welded tapped boss — Alvin to confirm). Both the panel edge AND the stub-wall edge are steel-framed.
 
 - [ ] **Ø900→Ø800 stale-label sweep — ROUND 2 (found 2026-08-28 on hingepanel-bp).** The 2026-08-26 drum
   resize left `Ø900` (and stale `2000mm` drum-height) references in **many** generators beyond the light-trap/

@@ -173,6 +173,16 @@ file** — a release must not ship without a changelog entry:
   **Ø240 bearing-seat ring (upper, Al) / collar (lower, steel)** around each SKF 6215; added them so the elevation
   now shows the same hub stack as Sheet 1/5 — **cap → Ø160 flange → Ø75 shaft → bearing → Ø240 ring/collar → mount
   plate → beam** (beam full-span, the intended orthogonal-view difference from Sheet 1). *(In progress.)*
+  **Review fixes (Sheet 5 hub plate seating + Sheet 12 brush/scale).** (1) **Sheet 5 hub** — the Ø240×12 mount
+  plate was drawn *overlapping* the bearing ring/collar (and the SKF 6215 sank into it), because when the plate
+  was added the beam/collar Z wasn't shifted to make room. Re-stacked as **ring/collar → PLATE → beam** so the
+  ring/collar (and bearing) sit SURFACE-mounted on the plate, with the beam moved beyond it (both hubs); the
+  ring→plate bolt now taps through into the plate, and the beam-height dims were repositioned. (2) **Sheet 12
+  brush** — the running-gap brush holder was embedded in the drum shell; moved it onto the drum's **outer
+  (gap-facing) surface, protruding into the gap** with bristles onto the fixed housing (matches Sheet 4).
+  (3) **Sheet 12 scale** — the radial gap is exaggerated for clarity, so the misleading "1.5:1" label was
+  changed to **SCHEMATIC (gap exaggerated)**; the to-scale running-gap section is Sheet 4's 7:1 holder profile.
+  *(In progress.)*
 - **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate

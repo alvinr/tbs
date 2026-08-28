@@ -1840,7 +1840,7 @@ def draw_sheet10():
     # ── Real dimensions (mm) from constants; z datum = cap top plane ─────────
     CAPR = LT_CAP_OD / 2                     # 427.5  cap radius
     DIR_ = LT_DRUM_OR - LT_DRUM_T            # 428.82 drum shell inner
-    DOR_ = LT_DRUM_OR                        # 432    drum shell outer
+    DOR_ = LT_DRUM_OR                        # 382    drum shell outer
     HIR_ = LT_HOUSING_R - LT_HOUSING_T       # 445    housing inner
     HOR_ = LT_HOUSING_R                      # 450    housing outer
     bID, bOD, bW = SKF6215_ID / 2, SKF6215_OD / 2, SKF6215_W   # 37.5 / 65 / 25

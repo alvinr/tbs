@@ -1323,7 +1323,7 @@ def sheet3():
 # ═════════════════════════════════════════════════════════════════════════════
 
 def sheet5():
-    R, OR = DRUM_R, LT_DRUM_OR             # housing 450, drum outer 432
+    R, OR = DRUM_R, LT_DRUM_OR             # housing 400, drum outer 382
     BORE = OR - 3                           # bore radius (~Ø850)
     OD = LT_OPENING_DEG                      # 80
     SHO, DEP = 520, 330                      # person plan footprint

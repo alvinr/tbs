@@ -124,7 +124,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
 | Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø764mm OD** (~Ø758mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
-| Drum/housing height | 1,970mm interior clear (2,100mm to cap top AFF; cage/beam top 2,267mm) |
+| Drum/housing height | 1,970mm interior clear (2,100mm to cap top AFF; cage/beam top 2,217mm) |
 | Top cap | 8mm 6061-T6 aluminum disc (LT_CAP_TOP_T), bolted stub-shaft hub (4×M10 flange); the HDPE shell laps + SS-rivets + DP8010 to a rolled rim-angle on the cap (see §9 Sheet 4) |
 | Bottom cap | 8mm 6061-T6 aluminum disc (LT_CAP_BOT_T), matching the top — bolted stub-shaft hub, same lap-and-rivet shell joint |
 | Stub shafts (×2) | 75mm Ø × 75mm steel, bolted to the aluminum cap hubs (nylon-isolated); carry the drum in the upper + lower SKF 6215 bearings. The upper stub carries the hang (bearing sits above the cap on it, below the top axle beam); the lower is a short locating stub |
@@ -135,8 +135,8 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Item | Specification |
 |------|--------------|
 | Bearings (×2) | SKF 6215-2RS1 (75mm ID, 130mm OD, 25mm wide, sealed, C3 clearance) |
-| Upper bearing mount | Isolated aluminum top ring, 6×M10 into the integrated frame top beam |
-| Lower bearing mount | Bolted steel floor collar, 8×M10 into the integrated frame bottom beam (no weld) |
+| Upper bearing mount | Isolated aluminum top ring, 6×M10 into the Ø240×12 steel mount plate welded across the frame top beam (the drum hangs from it) |
+| Lower bearing mount | Bolted steel floor collar, 8×M10 into the Ø240×12 steel mount plate welded across the frame bottom beam (collar bolted, not welded) |
 | Axial retention | INNER race: LOWER (floating) shaft — DIN 471 circlip each side. UPPER (located) shaft, which carries the drum's hanging weight — a drum-side DIN 471 circlip + a bolted END-RETAINER PLATE (Ø90×4 steel, central M10 CSK screw into the shaft end) whose rim clamps the inner-race face, so the hang runs through a positive bolted member rather than a single circlip. OUTER race: upper bearing LOCATED (seats on a Ø122 machined shoulder, drum side, + a DIN 472 retaining ring, beam side); lower bearing FLOATING (plain Ø130 H7 bore, outer race free to slide) |
 
 ### 4.3 Seals
@@ -267,8 +267,8 @@ pattern: developed length, height, weld-seam location, and the two 80° opening 
 ![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
 
 **Sheet 3 — Drum shell — cut sheet.** The HDPE C-shell as a true developed flat pattern
-(2,111 × 2,040 mm, single 80° opening) — the plastics shop's cutting/rolling template.
-The end caps are machined metal parts and are drawn on Sheet 6.
+(single 80° opening) — the plastics shop's cutting/rolling template; the sheet carries the
+exact developed length and height. The end caps are machined metal parts and are drawn on Sheet 6.
 
 ![TBS-001 Light-Trap — Sheet 3: Drum — Cut](assets/lighttrap-sheet3.png)
 
@@ -298,12 +298,12 @@ flange-riveted mount) and top/bottom seals, and the three-position proof (open-t
 open-to-interior, mid-rotation) that no straight-through light path exists at any rotation.
 The plans also carry the strip-count study — the 93°-spaced strips keep at least one wiper
 in each 100° housing material arc at every rotation, so the annular gap can never carry
-light between the openings **circumferentially**. The two enlarged seal cross-sections — the
-running-gap brush section and the top-end light-path section — are drawn 1.5:1 on **Sheet 12**;
-the top-end detail closes the other axis: the running gap is capped at its axial top/bottom by the
-**rotating-cap ↔ fixed-frame neoprene wiper seal + silicone bead**, so a ray travelling up the gap
-is stopped at the seal and cannot bypass the brushes over the top/bottom. The brushes seal the gap
-circumferentially; the neoprene seals it axially.
+light between the openings **circumferentially**. The top-end seal cross-section is drawn
+enlarged on **Sheet 12** (the running-gap brush section is the to-scale 7:1 holder-profile
+inset on Sheet 4); the top-end detail closes the other axis: the running gap is capped at its
+axial top/bottom by the **rotating-cap ↔ fixed-frame neoprene wiper seal + silicone bead**, so a
+ray travelling up the gap is stopped at the seal and cannot bypass the brushes over the top/bottom.
+The brushes seal the gap circumferentially; the neoprene seals it axially.
 
 ![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
 
@@ -322,7 +322,7 @@ with Detail B showing each free opening edge capped by a bonded aluminum U-chann
 
 **Sheet 10 — Combined top-end assembly.** A single half-section at the top end showing
 both lap joints nested concentrically: the rotating drum shell→cap joint (Sheet 4) and
-the fixed housing→frame joint (Sheet 9), with the upper bearing and the felt-sealed
+the fixed housing→frame joint (Sheet 9), with the upper bearing and the brush-sealed
 running gap between them — how the rotating and fixed halves coexist at one level.
 
 ![TBS-001 Light-Trap — Sheet 10: Combined Top-End Assembly](assets/lighttrap-sheet10.png)
@@ -331,12 +331,11 @@ running gap between them — how the rotating and fixed halves coexist at one le
 
 ![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)
 
-**Sheet 12 — Seal details (enlarged from Sheet 7, 1.5:1).** The two seal cross-sections pulled
-off the light-path sheet and drawn large so the geometry is easy to read: **Detail 1** — the
-running-gap radial section (the #4 nylon strip brush snapped into its Al straight-flange holder,
-flange-riveted to the rotating drum OD, bristles wiping the fixed housing bore across the ≈13mm
-gap); **Detail 2** — the top-end axial section (the rotating drum cap ↔ fixed frame plate neoprene
-wiper capping the gap, killing a ray that tries to travel up and over the brushes). Together they
-show the gap is sealed both circumferentially (brushes) and axially (neoprene).
+**Sheet 12 — Top-end seal detail (enlarged from Sheet 7).** The top-end axial seal cross-section
+pulled off the light-path sheet and drawn large — **schematic**, with the radial gap exaggerated so
+the seal path reads clearly (a true 13mm gap would be a hairline): the rotating drum cap ↔ fixed frame
+plate neoprene wiper caps the running gap, killing a ray that tries to travel up and over the brushes.
+This seals the gap axially; the running-gap brush section (the circumferential seal) is the to-scale
+7:1 holder-profile inset on Sheet 4, so it is not duplicated here.
 
-![TBS-001 Light-Trap — Sheet 12: Seal Details (enlarged)](assets/lighttrap-sheet12.png)
+![TBS-001 Light-Trap — Sheet 12: Top-End Seal Detail (enlarged)](assets/lighttrap-sheet12.png)

@@ -28,7 +28,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T, SWUNG_DOOR_CLEARANCE_MM
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
@@ -53,10 +53,10 @@ PH = 2388   # panel height (= container interior height)
 PT = 120    # panel overall thickness (2×2×0.120in steel frame + 18mm ply each face)
 
 # Light-trap housing (rev8: housed revolving door — see tbs_constants)
-DRUM_D  = LT_HOUSING_D  # = 900mm fixed housing outer diameter
-DRUM_R  = DRUM_D / 2   # = 450mm housing radius
-DRUM_H  = 2200          # housing/drum height (floor → top bearing, mm)
-DRUM_CX = PW / 2        # light-lock center X in panel (centerd horizontally)
+DRUM_D  = LT_HOUSING_D  # = 800mm fixed housing outer diameter (Ø900→Ø800 resize)
+DRUM_R  = DRUM_D / 2   # = 400mm housing radius
+DRUM_H  = DRUM_H_LT     # housing/drum height (floor → top bearing, mm) — single-sourced (was hardcoded 2200)
+DRUM_CX = PW / 2        # light-lock center X in panel (centered horizontally)
 DRUM_CY = DRUM_H / 2   # light-lock center Y
 
 # ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────

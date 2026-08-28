@@ -19,7 +19,7 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
-## 🛑 OUTSTANDING CASCADE — drum Ø900→Ø800 resize: construction + overview 3D still STALE (2026-08-26)
+## ✅ CLOSED CASCADE — drum Ø900→Ø800 resize: all 3D models re-sent (closed 2026-08-27)
 
 The drum shrink (Ø900→Ø800, re-centered X=−420 to fit the FIXED cage — Option 2) **plus** the top-end hub
 reconciliation (interior **2120→1970**, `DRUM_H_LT` 2250→2100; stub shaft 150→75; bearings clear of the
@@ -28,14 +28,11 @@ walkway generators + parts/costing/weight/facts/dep-map + the report** (all drif
 the **`lighttrap` 3D model was re-sent + verified** (bearing 2130–2155 sits below the 2167 top beam — no
 overlap; cage top 2267, 121mm ceiling clearance). **DEFERRED by Alvin — do NOT complete until the light-trap
 review is finished:**
-- [ ] **`construction.skp` + `overview.skp` are STALE** vs the new drum (old Ø900 + old `DRUM_H_LT` 2250).
-  `manifest.py --check` flags both (+ `lighttrap`). When ready: ALVIN opens each in SketchUp (focus order:
-  construction, then overview) → I `--send` → verify → ALVIN saves + uploads to Sketchfab → `manifest.py --update`.
-- [ ] **`lighttrap.skp` re-sent to the live doc but not yet SAVED/UPLOADED** — needs ALVIN File>Save +
-  Sketchfab re-upload; then `manifest.py --update lighttrap` before the cascade commit.
-- [ ] **Commit gate:** the whole cascade is uncommitted; committing while construction/overview are stale
-  will trip the model-staleness/missing-cascade check — resolve the 3D (above) as part of the commit, or
-  Alvin decides to commit the 2D/constant change first and re-send the two models in a follow-up.
+- [x] **`construction.skp` + `overview.skp` re-sent + uploaded (2026-08-27).** Both reuse `lt.drum()`, so they
+  picked up the current Ø800/2100 drum on regen; verified (C-shell z130–2100 · Ø764, Ø160 flanges, housing
+  z93–2167), Sketchfab-refreshed in place, `manifest.py --update` done, committed.
+- [x] **`lighttrap.skp` saved + uploaded + committed** (earlier this session).
+- [x] **Commit gate cleared** — `manifest.py --check`: all 10 model `source_hash` values current.
 - [x] **Cage-top Z / bearing-through-beam (2026-08-26) — DONE.** Reconciled to the 2D Sheet-10 scheme via
   single-source constants (`LT_STUB_SHAFT_L / LT_BRG_STANDOFF / LT_BEAM_STANDOFF / LT_CAGE_TOP / LT_CAGE_BOT /
   LT_HOUSING_Z_*`): axle beams clear the drum, upper bearing hangs below the top beam, lower floats above the

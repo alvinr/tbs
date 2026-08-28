@@ -24,11 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **`overview.skp` re-sent for the Ø900→Ø800 drum cascade.** The overview model was stale vs the drum resize
-  (Ø900→Ø800 / `DRUM_H_LT` 2250→2100); regenerated + re-sent + Sketchfab-refreshed. It reuses the `lighttrap`
-  builders (`lt.drum()`), so it picked up the current drum automatically — verified: C-shell z130–2100 · Ø764,
-  Ø160 stub flanges, housing arcs z93–2167 (beam-to-beam). `manifest.py` back in sync. **`construction.skp` is
-  the last model still stale from this cascade** (tracked in `TODO.md`).
+- **`overview.skp` + `construction.skp` re-sent for the Ø900→Ø800 drum cascade — cascade CLOSED.** Both models
+  were stale vs the drum resize (Ø900→Ø800 / `DRUM_H_LT` 2250→2100); regenerated + re-sent + Sketchfab-refreshed
+  (in-place, same URLs). Both reuse the `lighttrap` builders (`lt.drum()`), so they picked up the current drum
+  automatically — verified on each: C-shell z130–2100 · Ø764, Ø160 stub flanges, housing arcs z93–2167
+  (beam-to-beam). **All 10 model `source_hash` values are now current** (`manifest.py --check` clean) — the site
+  publish is no longer gated on stale 3D.
 
 - **Revolving light-trap fabrication blueprint set + metal-cap / lap-joint redesign + integrated frame
   (branch `lighttrap-bp`).** New dedicated 2D set `generate_lighttrap_diagram.py` → `lighttrap-sheet1..10`

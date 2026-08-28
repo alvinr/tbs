@@ -195,7 +195,7 @@ CONTAINER = [
 # §6 Housed revolving-door light lock (plastic-skin) — detail already = scenario.
 # §6 = hinged-panel-report.md §8.2 (housing + drum). Line items mirror that BOM.
 LIGHTLOCK = [
-    LineItem("3/16\" UV-stab HDPE — Ø900 housing shell (3× 4×8 ft, ~65 ft²)", 555, 555, 555, "rolled + extrusion-welded; US Plastics 46685 @ $184.99/sheet"),
+    LineItem("3/16\" UV-stab HDPE — Ø800 housing shell (3× 4×8 ft, ~65 ft²)", 555, 555, 555, "rolled + extrusion-welded; US Plastics 46685 @ $184.99/sheet"),
     LineItem("1/8\" HDPE — Ø864 drum shell (3× 4×8 ft)", 370, 370, 370, "US Plastics 46684 @ $123.34/sheet; caps are now Al (separate line)"),
     LineItem("8mm 6061-T6 Al plate — 2 drum caps (Ø855, waterjet)", 400, 550, 700, "est. material + waterjet, Online Metals; firm at the Aug-2026 re-price"),
     LineItem("25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427)", 45, 68, 90, "shell→cap lap lip; material + roll; est."),
@@ -364,7 +364,7 @@ def emit_funding_level1() -> str:
         ("Pinhole plate (precision laser-drilled, SS-302, interchangeable frame)", _sec("3").mid),
         ("Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint)", _sec("4").mid),
         ("Tilt-swing front board mechanism", FRONT_BOARD_MID),
-        ("Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication)", _sec("6").mid),
+        ("Housed revolving-door light trap (plastic-skin Ø800 housing + C-shell drum, bearings, seals, fabrication)", _sec("6").mid),
         ("Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame)", _sec("5").mid),
         ("Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting)", _sec("5a").mid),
         ("Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting)", _sec("5b").mid),

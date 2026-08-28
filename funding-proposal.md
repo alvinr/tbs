@@ -95,7 +95,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $155 |
 | Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint) | $4,309 |
 | Tilt-swing front board mechanism | $1,470 |
-| Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $3,470 |
+| Housed revolving-door light trap (plastic-skin Ø800 housing + C-shell drum, bearings, seals, fabrication) | $3,470 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $7,478 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $3,464 |
 | Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $808 |

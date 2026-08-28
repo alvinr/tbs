@@ -27,9 +27,9 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse
+from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
@@ -1760,6 +1760,117 @@ def sheet7():
     print("  diagrams/hingepanel-sheet7.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 8  —  HDPE Surround: Housing Join + Frame Rivet Details
+#   Two enlarged sections (thickness exaggerated for clarity):
+#     Detail A — upper/lower floor cap → Ø800 housing wall join (extrusion weld +
+#                20mm neoprene surround seal closing the housing↔panel gap, §3.4).
+#     Detail B — surround skin/wall → steel frame flange blind-rivet lap.
+#   Housing cut geometry single-sourced with light-trap Sheet 2 (LT_HOUSING_T).
+# ═══════════════════════════════════════════════════════════════════════════════
+def _blind_rivet(ax, cx, cz, ang, grip, d=12):
+    """SS blind rivet in section — low-profile factory head at +axis, set (upset) head
+    at −axis; `ang` = axis direction (deg), `grip` = joint stack. (Compact local glyph
+    matching the light-trap `blind_rivet` profile; see skill_fastener_convention.md.)"""
+    RSC = "#C9CCD2"
+    ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
+
+    def T(u, v):
+        return (cx + u * ca - v * sa, cz + u * sa + v * ca)
+    g = grip / 2
+    ax.add_patch(Polygon([T(-g, -d / 2), T(g, -d / 2), T(g, d / 2), T(-g, d / 2)],
+                         closed=True, fc=RSC, ec=C_OUT, lw=1.0, zorder=8))
+    HW, HH = d * 1.0, d * 0.35                      # factory head: Ø≈2d, low dome
+    head = [T(g, HW)] + [T(g + HH * math.cos(math.pi * (0.5 - k / 12.0)),
+                           HW * math.sin(math.pi * (0.5 - k / 12.0))) for k in range(13)] + [T(g, -HW)]
+    ax.add_patch(Polygon(head, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+    bb, br = -g - d * 0.22, d * 0.55                # set (blind) head at −axis
+    blind = [T(-g, d * 0.6)] + [T(bb - br * math.cos(math.pi * (0.5 - k / 12.0)),
+                                  d * 0.9 * math.sin(math.pi * (0.5 - k / 12.0))) for k in range(13)] + [T(-g, -d * 0.6)]
+    ax.add_patch(Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
+
+
+def sheet8():
+    T_SKIN = PANEL_SKIN_T          # 3.18 — 1/8" HDPE surround
+    T_HOUS = LT_HOUSING_T          # 5 — housing wall (UV-HDPE)
+    RIV_D  = 12                    # rivet glyph body Ø (exaggerated; true 1/8"/Ø3.18)
+
+    fig, ax = plt.subplots(figsize=(17, 9))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(0, 340)
+    ax.set_ylim(-40, 205)
+
+    # ═══ DETAIL A — floor cap → Ø800 housing join ═══════════════════════════════
+    ax.text(80, 190, "DETAIL A — FLOOR CAP → Ø800 HOUSING JOIN", ha="center",
+            fontsize=10, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(80, 178, "vertical section · thickness exaggerated", ha="center",
+            fontsize=7, color=C_DIM, **FONT)
+
+    # Housing wall (Ø800 UV-HDPE, locally flat/vertical) — rises through the joint
+    hx, hw = 96, 16                                 # housing wall at x=96, exaggerated width
+    ax.add_patch(Rectangle((hx, 30), hw, 130, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
+    leader(ax, (hx + hw, 150), (150, 168),
+           f"Ø{int(DRUM_D)} housing wall\n{T_HOUS}mm UV-HDPE (Sheet 2)", col=C_OUT)
+    # Floor cap (horizontal 1/8" HDPE) — butts the housing OD, extrusion-welded
+    cy, ch = 96, 14
+    ax.add_patch(Rectangle((hx - 78, cy), 78, ch, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
+    leader(ax, (hx - 60, cy), (36, 60),
+           f"floor cap\n{T_SKIN}mm HDPE", col=C_OUT)
+    # extrusion-weld fillet at the cap↔housing corner
+    ax.add_patch(Polygon([(hx, cy + ch), (hx, cy + ch + 12), (hx - 12, cy + ch)],
+                         closed=True, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=5))
+    ax.add_patch(Polygon([(hx, cy), (hx, cy - 12), (hx - 12, cy)],
+                         closed=True, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=5))
+    leader(ax, (hx - 8, cy + ch + 6), (150, 120), "extrusion-weld fillet\n(HDPE↔HDPE, both faces)", col=C_OUT)
+    # 20mm neoprene surround seal closing the housing↔panel radial gap (§3.4)
+    ax.add_patch(Rectangle((hx + hw, 44), 26, 18, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, (hx + hw + 13, 44), (200, 30),
+           "20mm neoprene surround seal\n(closes 15mm housing↔panel gap, §3.4)", col=C_OUT)
+    draw_dim_v(ax, hx - 90, cy, cy + ch, f"{T_SKIN}", offset=10, fs=6.2, font=FONT)
+    draw_dim_h(ax, hx, hx + hw, 24, f"{T_HOUS}", offset=8, fs=6.2, font=FONT)
+
+    # ═══ DETAIL B — surround → steel frame blind-rivet lap ══════════════════════
+    ax.text(258, 190, "DETAIL B — SURROUND → FRAME RIVET LAP", ha="center",
+            fontsize=10, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(258, 178, "section · thickness exaggerated", ha="center",
+            fontsize=7, color=C_DIM, **FONT)
+
+    # Steel frame flange (2×2×0.120 RHS wall, cut) — horizontal
+    fx, fy, fw, ft = 210, 96, 96, 12
+    ax.add_patch(Rectangle((fx, fy), fw, ft, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
+    leader(ax, (fx + 20, fy), (206, 52), "steel frame flange\n2×2×0.120in RHS", col=C_OUT)
+    # HDPE surround skin lapped OVER the flange
+    ax.add_patch(Rectangle((fx + 8, fy + ft), fw - 8, 10, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
+    leader(ax, (fx + 30, fy + ft + 10), (250, 150), f"HDPE surround lap\n{T_SKIN}mm 1/8\" skin/wall", col=C_OUT)
+    # sealant bead at the lap edge (light-tight)
+    ax.add_patch(Polygon([(fx + 8, fy + ft), (fx + 8, fy + ft + 10), (fx - 2, fy + ft)],
+                         closed=True, fc="#5A3020", ec=C_OUT, lw=0.7, zorder=6))
+    leader(ax, (fx + 6, fy + ft + 8), (282, 28), "DP8010 sealant bead\n(light-tight)", col=C_OUT)
+    # blind rivet through the lap (axis vertical, +Z head on the HDPE side)
+    _blind_rivet(ax, fx + 58, fy + ft, 90, ft + 10, d=RIV_D)
+    leader(ax, (fx + 58, fy + ft + 16), (300, 165),
+           f"1/8\" 18-8 SS blind rivet\nMcMaster 97525A435\ndrill Ø{LT_RIVET_HOLE} @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
+
+    ax.text(170, 4,
+            "The HDPE surround (bay walls, floor caps, face skins) laps the steel center-zone frame and is\n"
+            "blind-riveted @ {p}mm with a DP8010 sealant bead for light-tightness; the floor caps butt +\n"
+            "extrusion-weld to the Ø{d} housing. See SHEET 7 for the flat patterns.".format(
+                p=LT_RIVET_PITCH, d=int(DRUM_D)),
+            ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
+            bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
+
+    title_block(ax, "SHEET 8 OF 8",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="HDPE SURROUND — HOUSING JOIN & FRAME RIVET DETAILS",
+                scale_note="ENLARGED SECTIONS · THICKNESS EXAGGERATED · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet8.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet8.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -1770,4 +1881,5 @@ if __name__ == "__main__":
     sheet5()
     sheet6()
     sheet7()
+    sheet8()
     print("Done.")

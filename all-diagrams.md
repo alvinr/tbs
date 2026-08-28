@@ -150,6 +150,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 6: Interior Pull Handle Mounting Detail](assets/hingepanel-sheet6.png)
 
+![TBS-001 Hinged Panel — Sheet 7: HDPE Surround Flat-Pattern Cut Sheets](assets/hingepanel-sheet7.png)
+
 ---
 
 ## 13. Perimeter Walkway

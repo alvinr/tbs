@@ -349,7 +349,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 12",
+    title_block(ax, "SHEET 1 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -630,7 +630,11 @@ def sheet2():
         for cyp in (cage_yb, cage_yt - 50):
             ax.add_patch(Rectangle((cxp, cyp), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.8, zorder=11))
     leader(ax, (_CGR, cage_yt - 90), (D_XR + 260, cage_yt - 240),
-           "DRUM SUPPORT CAGE\n(4-wall 50×50 steel box +\ncorner posts — Light-Trap set)", col=C_STEEL, fs=6)
+           "DRUM SUPPORT CAGE (4-wall 50×50\nsteel box) — WELDED to the frame:\ncorner posts → center-zone jambs,\naxle beams → header + sill\n(cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
+    # cage → frame WELDED tie: interior corner posts weld to the center-zone jambs
+    for cxp in (_CGL + 25, _CGR - 25):
+        ax.add_patch(Rectangle((cxp - 7, cage_yt), 14, Y1_W - cage_yt, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=11))
+        ax.add_patch(Polygon([(cxp - 8, Y1_W), (cxp + 8, Y1_W), (cxp, Y1_W - 12)], closed=True, fc=C_OUT, ec="none", zorder=12))  # weld fillet
     cb_t = 50
     ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
                            fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))
@@ -747,7 +751,7 @@ def sheet2():
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 12",
+    title_block(ax, "SHEET 2 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1320,7 +1324,7 @@ def sheet3():
     ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 12",
+    title_block(ax, "SHEET 3 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1436,7 +1440,7 @@ def sheet5():
     ]):
         ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 12",
+    title_block(ax, "SHEET 5 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1557,7 +1561,7 @@ def sheet4():
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
     draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 12",
+    title_block(ax, "SHEET 4 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
@@ -1637,7 +1641,7 @@ def sheet6():
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 6 OF 12", drawing_title="HINGED LIGHT-TRAP PANEL",
+    title_block(ax, "SHEET 6 OF 14", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DRAWN TO SCALE (isotropic ~1:1) · 50mm BAR · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
@@ -1767,8 +1771,8 @@ def sheet7():
         "• Material: 1/8\" (3.18mm) black UV-HDPE sheet — US Plastics 46684; interior face flat-black.\n"
         "• 6 pieces: 2 center-zone face skins · 2 bay Yd side walls · upper + lower floor caps.\n"
         "• Bay = 4-wall corner-welded box (extrusion-welded seams); caps close the top + bottom.\n"
-        f"• Fasten each lap edge to the steel frame + adjacent piece with 1/8\" 18-8 SS blind rivets @ {RIV_P}mm\n"
-        f"  (drill Ø{LT_RIVET_HOLE} · bronze rivet line, typ). Ø800 housing seat + rivet lap detail → SHEET 8.\n"
+        f"• Rivet each lap to the steel frame — FRONT + SIDE faces of the posts (not the front only) — with\n"
+        f"  1/8\" 18-8 SS blind rivets @ {RIV_P}mm (drill Ø{LT_RIVET_HOLE}). Ø800 housing seat + rivet lap detail → SHEET 8.\n"
         "• Personnel opening trimmed to the housing at assembly — align to SHEET 2 (plan)."
     )
     ax.text(xC2, yB + BAY_D + 120, notes, ha="left", va="bottom", fontsize=7.0,
@@ -1782,7 +1786,7 @@ def sheet7():
     ax.set_xlim(-260, xW2 + BAY_D + 260)
     ax.set_ylim(yB - 320, yA + H_PANEL + 300)
 
-    title_block(ax, "SHEET 7 OF 12",
+    title_block(ax, "SHEET 7 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — FLAT-PATTERN CUT SHEETS (6 PIECES)",
                 scale_note="DRAWN TO SCALE (isotropic) · SCALE OFF THE 500mm BAR · ALL DIMS IN mm",
@@ -1928,9 +1932,14 @@ def sheet8():
                          closed=True, fc="#5A3020", ec=C_OUT, lw=0.7, zorder=6))
     leader(ax, (fx + 6, fy + ft + 8), (282, 28), "DP8010 sealant bead\n(light-tight)", col=C_OUT)
     # blind rivet through the lap (axis vertical, +Z head on the HDPE side)
-    _blind_rivet(ax, fx + 58, fy + ft, 90, ft + 10, d=RIV_D)
-    leader(ax, (fx + 58, fy + ft + 16), (300, 165),
+    _blind_rivet(ax, fx + 40, fy + ft, 90, ft + 10, d=RIV_D)
+    leader(ax, (fx + 40, fy + ft + 16), (300, 165),
            f"1/8\" 18-8 SS blind rivet\nMcMaster 97525A435\ndrill Ø{LT_RIVET_HOLE} @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
+    # HDPE ALSO wraps DOWN the post SIDE face + rivets there — not just the front face
+    ax.add_patch(Rectangle((fx + fw, fy - 34), 10, ft + 44, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
+    _blind_rivet(ax, fx + fw + 5, fy - 6, 180, 22, d=RIV_D)
+    leader(ax, (fx + fw + 5, fy - 26), (250, -22),
+           "HDPE ALSO laps + rivets the SIDE face of the post\n(fasten FRONT + SIDE faces, not the front only)", col=C_OUT, fw="bold", fs=6)
 
     ax.text(170, 4,
             "The HDPE surround (bay walls, floor caps, face skins) laps the steel center-zone frame and is\n"
@@ -1940,7 +1949,7 @@ def sheet8():
             ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 8 OF 12",
+    title_block(ax, "SHEET 8 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — HOUSING JOIN & FRAME RIVET DETAILS",
                 scale_note="ENLARGED SECTIONS · THICKNESS EXAGGERATED · ALL DIMS IN mm",
@@ -2046,7 +2055,7 @@ def sheet9():
     ax.text(PW / 2, PH + 190, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 9 OF 12",
+    title_block(ax, "SHEET 9 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
                 scale_note="FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm",
@@ -2107,31 +2116,14 @@ def sheet10():
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
-    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → frame jamb)\n— DETAIL A", col=C_OUT, fw="bold")
+    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → frame jamb)\n— Sheet 14", col=C_OUT, fw="bold")
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT} floor→roof", offset=16, fs=6.6, font=FONT)
 
-    # ── RIGHT DETAIL A: frame→hub bracket (enlarged) ──────────────────────────
-    ax0x, ax0y, sA = 815, 1560, 3.1
-    def dA(x, y): return (ax0x + x * sA, ax0y + y * sA)
-    ax.text(ax0x + 60 * sA, ax0y + 190 * sA, "DETAIL A — FRAME → HUB BRACKET (enlarged)",
-            ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.add_patch(Rectangle(dA(-10, 0), 12 * sA, 150 * sA, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))   # hub wall
-    ax.add_patch(Rectangle(dA(2, 40), 90 * sA, 70 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))     # bracket plate
-    ax.add_patch(Rectangle(dA(92, -10), 50 * sA, 170 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))  # jamb
-    ax.add_patch(Rectangle(dA(95, -7), 44 * sA, 164 * sA, fc=BG, ec=C_OUT, lw=0.5, zorder=5))         # jamb bore
-    ax.add_patch(Rectangle(dA(139, 30), 9 * sA, 90 * sA, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))   # backing plate (far face)
-    for wy, s in ((40, 1), (110, -1)):                                                                # fillet welds bracket→hub
-        ax.add_patch(Polygon([dA(2, wy), dA(2, wy + s * 12), dA(12, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
-    for by in (58, 92):                                                                               # 2× M12: head at bracket → nut on the backing plate
-        mid = dA(74, by)
-        _draw_bolt(ax, mid[0], mid[1], 150 * sA, d=10 * sA, vertical=False, head=-1, end="nut", zb=8)
-    ax.text(ax0x + 66 * sA, ax0y - 120,
-            "ASSEMBLY: the steel bracket plate is FILLET-WELDED to the hub tube; 2× M12 bolts pass\nthrough the bracket + the frame jamb into a backing plate (nuts on the far face)",
-            ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
-    leader(ax, dA(-4, 75), (ax0x - 120, ax0y + 40 * sA), "hub tube", col=C_OUT, fs=6)
-    leader(ax, dA(8, 44), (ax0x - 30, ax0y - 55), "fillet weld\nbracket→hub", col=C_OUT, fs=6)
-    leader(ax, dA(117, 20), (ax0x + 115 * sA, ax0y - 60), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
-    leader(ax, dA(143, 115), (ax0x + 175 * sA, ax0y + 150 * sA), "backing\nplate + nuts", col=C_OUT, fs=6)
+    # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
+    ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(1000, 1810, "How the swinging frame is secured to the moving\nhub — 3 welded hinge brackets, bolts on the hub-tube\nface into a backing plate — is drawn full-size on\n\nSHEET 14 (Frame → Pivot-Post Connection).",
+            ha="center", va="top", fontsize=7.2, color=C_OUT, **FONT,
+            bbox=dict(boxstyle="round,pad=0.6", fc="#F4F1E8", ec=C_DIM, lw=0.9))
 
     # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
     bx0, by0, sB = 890, 470, 1.9
@@ -2153,9 +2145,9 @@ def sheet10():
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 10 OF 12",
+    title_block(ax, "SHEET 10 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="PIVOT-POST ASSEMBLY — SECTION + FRAME→HUB BRACKET + ANCHOR PLATE",
+                subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 14)",
                 scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet10.png"), dpi=DIAGRAM_DPI,
@@ -2181,10 +2173,10 @@ def sheet11():
     fig, ax = plt.subplots(figsize=(17, 12.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-360, 2320)
+    ax.set_xlim(-520, SW + 520)
     ax.set_ylim(-320, SH + 230)
 
-    # ── LEFT: 4'×8' ply cut sheet ─────────────────────────────────────────────
+    # ── 4'×8' ply cut sheet (full sheet) ──────────────────────────────────────
     ax.add_patch(Rectangle((0, 0), SW, SH, fc="#EFE6D2", ec=C_OUT, lw=1.4, zorder=3))
     ax.text(SW / 2, SH + 90, "PLYWOOD CUT SHEET — 4'×8' ¾\" PT PINE (1220×2440)",
             ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
@@ -2205,7 +2197,7 @@ def sheet11():
     for ex in (bx + 30, bx + BW - 30):
         for zz in [by + 120 + i * 320 for i in range(4)]:
             ax.add_patch(Circle((ex, zz), 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=7))
-    ax.text(bx + BW + 8, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— Detail B", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
+    ax.text(bx + BW + 8, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— see Sheet 13", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
     # cooler base (below the band)
     cx0, cy0 = 0, by - 60 - CH
     ax.add_patch(Rectangle((cx0, cy0), CW, CH, fc=C_WOOD, ec=C_OUT, lw=1.2, alpha=0.4, zorder=4))
@@ -2221,49 +2213,131 @@ def sheet11():
     draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
     draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
 
-    # ── RIGHT DETAIL A: Fan-B → ply through-bolt (enlarged) ───────────────────
-    ax_ = 1500
-    ay_ = 1650
-    sA = 2.6
-    def dA(x, y): return (ax_ + x * sA, ay_ + y * sA)
-    ax.text(ax_ + 100 * sA, ay_ + 175 * sA, "DETAIL A — FAN-B → PLYWOOD (through-bolt + backing)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.add_patch(Rectangle(dA(60, 0), 18 * sA, 150 * sA, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))       # 18mm ply
-    ax.add_patch(Rectangle(dA(0, 40), 60 * sA, 70 * sA, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))        # fan flange (exterior)
-    ax.add_patch(Rectangle(dA(78, 55), 24 * sA, 40 * sA, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))     # backing plate (interior)
-    for by2 in (58, 92):
-        ax.plot(*zip(dA(4, by2), dA(102, by2)), color="#101010", lw=2.2, zorder=8)                     # through-bolt
-        ax.add_patch(Rectangle(dA(-2, by2 - 6), 8, 12, fc="#101010", ec="none", zorder=9))
-        ax.add_patch(Rectangle(dA(98, by2 - 5), 6, 10, fc="#101010", ec="none", zorder=9))
-    ax.text(ax_ + 50 * sA, ay_ - 70, "Fan-B flange (exterior) → 2× bolts through the\n18mm ply into an interior backing plate", ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT)
-    leader(ax, dA(69, 10), (ax_ + 30 * sA, ay_ + 175 * sA - 40), "18mm PT ply band", col=C_OUT, fs=6)
+    ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 13",
+            ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
-    # ── RIGHT DETAIL B: ply → frame welded tab + captive tee-nut ──────────────
-    bx_ = 1500
-    byy = 560
-    sB = 2.6
-    def dB(x, y): return (bx_ + x * sB, byy + y * sB)
-    ax.text(bx_ + 100 * sB, byy + 165 * sB, "DETAIL B — PLYWOOD → FRAME (welded tab + captive tee-nut)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.add_patch(Rectangle(dB(0, 0), 50 * sB, 130 * sB, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))     # frame RHS
-    ax.add_patch(Rectangle(dB(3, 3), 44 * sB, 124 * sB, fc=BG, ec=C_OUT, lw=0.5, zorder=5))              # RHS bore
-    ax.add_patch(Rectangle(dB(50, 50), 60 * sB, 8 * sB, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))          # welded tab (landing leg)
-    ax.add_patch(Polygon([dB(50, 58), dB(56, 58), dB(50, 68)], closed=True, fc=C_OUT, ec="none", zorder=7))       # weld fillet
-    ax.add_patch(Rectangle(dB(60, 58), 18 * sB, 70 * sB, fc=C_WOOD, ec=C_OUT, lw=1.2, zorder=5))          # 18mm ply
-    # bolt up through the tab into a captive tee-nut in the ply back face
-    ax.plot(*zip(dB(52, 54), dB(76, 54)), color="#101010", lw=2.2, zorder=8)                             # machine screw
-    ax.add_patch(Rectangle(dB(76, 50), 3 * sB, 8 * sB, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))         # tee-nut barrel (into ply)
-    ax.add_patch(Rectangle(dB(78, 46), 3 * sB, 16 * sB, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=9))        # tee-nut flange on ply back face
-    ax.text(bx_ + 95 * sB, byy - 40, "steel tab WELDED to the frame; machine screw\nthrough the tab into a pronged captive tee-nut\nset in the ply back face (IBC-frame convention)", ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT)
-    leader(ax, dB(25, 5), (bx_ + 20 * sB, byy + 150 * sB), "frame RHS member", col=C_OUT, fs=6)
-
-    title_block(ax, "SHEET 11 OF 12",
+    title_block(ax, "SHEET 11 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FAN-B PLYWOOD — CUT SHEET + FAN & FRAME ATTACHMENTS",
-                scale_note="CUT SHEET 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
+                subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 13)",
+                scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet11.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 13  —  Plywood Attachments (enlarged): Fan-B → ply + ply → frame tab/T-nut
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet13():
+    fig, ax = plt.subplots(figsize=(17, 9.5))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(0, 460)
+    ax.set_ylim(-40, 210)
+
+    # ── DETAIL A — Fan-B → plywood (through-bolt + backing) ──
+    ax0, ay0, sA = 20, 40, 1.0
+    def dA(x, y): return (ax0 + x * sA, ay0 + y * sA)
+    ax.text(ax0 + 95, 200, "DETAIL A — FAN-B → PLYWOOD", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(ax0 + 95, 188, "through-bolt + interior backing plate", ha="center", fontsize=7, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle(dA(70, 20), 18, 130, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))       # 18mm ply
+    ax.add_patch(Rectangle(dA(10, 55), 60, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))        # fan flange (exterior)
+    ax.add_patch(Rectangle(dA(88, 62), 22, 46, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))      # backing plate (interior)
+    for by2 in (72, 98):
+        _draw_bolt(ax, ax0 + 60 * sA, ay0 + by2 * sA, 100 * sA, d=8, vertical=False, head=-1, end="nut", zb=8)
+    leader(ax, dA(79, 30), (ax0 + 40, 175), "18mm PT ply band", col=C_OUT, fs=6.5)
+    leader(ax, dA(40, 60), (ax0 + 20, 160), "Fan-B flange\n(exterior)", col=C_OUT, fs=6.5)
+    leader(ax, dA(99, 66), (ax0 + 150, 160), "interior\nbacking plate", col=C_OUT, fs=6.5)
+    ax.text(ax0 + 95, 8, "Fan-B flange → 2× M8 bolts through the 18mm ply\ninto an interior backing plate + nuts", ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
+    draw_dim_v(ax, dA(70, 0)[0] - 14, dA(0, 20)[1], dA(0, 150)[1], "18", offset=8, fs=6, font=FONT)
+
+    # ── DETAIL B — plywood → frame (welded tab + captive tee-nut) ──
+    bx0, byy, sB = 270, 40, 1.0
+    def dB(x, y): return (bx0 + x * sB, byy + y * sB)
+    ax.text(bx0 + 90, 200, "DETAIL B — PLYWOOD → FRAME", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(bx0 + 90, 188, "welded steel tab + pronged captive tee-nut (IBC convention)", ha="center", fontsize=7, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle(dB(0, 20), 50, 130, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))    # frame RHS
+    ax.add_patch(Rectangle(dB(3, 23), 44, 124, fc=BG, ec=C_OUT, lw=0.5, zorder=5))                       # RHS bore
+    ax.add_patch(Rectangle(dB(50, 78), 62, 8, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # welded landing tab
+    ax.add_patch(Polygon([dB(50, 86), dB(58, 86), dB(50, 98)], closed=True, fc=C_OUT, ec="none", zorder=7))   # weld fillet
+    ax.add_patch(Rectangle(dB(62, 86), 18, 72, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))                    # 18mm ply
+    _draw_bolt(ax, bx0 + 66 * sB, byy + 82 * sB, 20, d=6, vertical=True, head=-1, end="rivnut", wall=8, zb=8)  # screw up into captive tee-nut (drawn as bore-side insert)
+    leader(ax, dB(25, 20), (bx0 + 20, 165), "frame RHS member", col=C_OUT, fs=6.5)
+    leader(ax, dB(54, 82), (bx0 + 150, 150), "steel tab WELDED\nto the frame", col=C_OUT, fs=6.5)
+    leader(ax, dB(70, 150), (bx0 + 150, 175), "18mm ply band", col=C_OUT, fs=6.5)
+    ax.text(bx0 + 90, 8, "steel tab welded to the frame; #10 machine screw through the\ntab into a pronged captive tee-nut set in the ply back face", ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
+
+    title_block(ax, "SHEET 13 OF 14",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
+                scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet13.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet13.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 14  —  Frame → Pivot-Post Connection (how the swinging frame is secured
+#   to the moving hub that rides the fixed Ø89 post). LEFT: elevation of the hub +
+#   3 welded hinge brackets. RIGHT: enlarged plan section of one bracket — bolts on
+#   the hub-tube surface, through the frame jamb into a backing plate + nuts.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet14():
+    HGT = C_HGT
+    fig, ax = plt.subplots(figsize=(16, 12))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-300, 1470)
+    ax.set_ylim(-320, HGT + 220)
+
+    # ── LEFT: elevation — hub tube + 3 hinge brackets welded on, tying to the jamb
+    cx = 120
+    ax.plot([cx, cx], [-30, HGT + 30], color=C_CL, lw=0.8, ls=(0, (8, 4)), zorder=2)
+    ax.add_patch(Rectangle((cx - 58, 180), 116, 2050 - 180, fc=C_ALUM, ec=C_OUT, lw=1.2, alpha=0.5, zorder=4))   # hub tube
+    ax.add_patch(Rectangle((cx - 58 + 12, 180), 116 - 24, 2050 - 180, fc=BG, ec=C_OUT, lw=0.4, zorder=4))         # bore (post)
+    ax.add_patch(Rectangle((cx + 58 + 120, 0), 30, HGT, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=3))       # frame center jamb
+    for z in (300, 1180, 2000):
+        ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket
+        for bz in (z - 8, z + 30):
+            ax.plot([cx + 58, cx + 58 + 150], [bz, bz], color="#101010", lw=1.6, zorder=7)                        # 2× M12 per bracket
+    leader(ax, (cx, 1400), (cx - 170, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 10)", col=C_OUT, fs=6.5)
+    leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to the hub", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, (cx + 178, 2000), (cx + 250, 2200), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6.5)
+    ax.text(cx + 40, HGT + 130, "ELEVATION — 3 brackets up the hub", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+
+    # ── RIGHT: enlarged plan section of one bracket ──
+    ox, oy, s = 660, 900, 4.2
+    def d(x, y): return (ox + x * s, oy + y * s)
+    ax.text(ox + 70 * s, oy + 95 * s, "DETAIL — ONE HINGE BRACKET (plan section, enlarged)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.add_patch(Rectangle(d(-14, -40), 14 * s, 80 * s, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))       # hub tube wall
+    ax.add_patch(Rectangle(d(0, -22), 66 * s, 44 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))         # bracket plate (welded to hub)
+    ax.add_patch(Rectangle(d(66, -42), 50 * s, 84 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))  # frame jamb
+    ax.add_patch(Rectangle(d(69, -39), 44 * s, 78 * s, fc=BG, ec=C_OUT, lw=0.5, zorder=5))             # jamb bore
+    ax.add_patch(Rectangle(d(116, -30), 9 * s, 60 * s, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))      # backing plate + nuts
+    for wy, sgn in ((-22, 1), (22, -1)):                                                               # fillet welds bracket→hub, AT the tube surface
+        ax.add_patch(Polygon([d(0, wy), d(0, wy + sgn * 9), d(11, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
+    for by in (-13, 13):                                                                               # 2× M12: head ON the hub-tube face → nut on the backing plate
+        _draw_bolt(ax, d(62, by)[0], d(0, by)[1], 128 * s, d=9, vertical=False, head=-1, end="nut", zb=8)
+    leader(ax, d(-7, 30), (ox - 60, oy + 40 * s), "hub tube\nwall", col=C_OUT, fs=6.5)
+    leader(ax, d(4, -18), (ox - 140, oy - 6 * s), "fillet weld\nbracket→hub\n(at the tube\nsurface)", col=C_OUT, fs=6.5)
+    leader(ax, d(30, 20), (ox + 20 * s, oy + 80 * s), "bracket plate", col=C_OUT, fs=6.5)
+    leader(ax, d(120, 26), (ox + 150 * s, oy + 70 * s), "backing plate\n+ M12 nuts", col=C_OUT, fw="bold", fs=6.5)
+    ax.text(ox + 48 * s, oy - 64 * s, "The bolt heads bear on the HUB-TUBE FACE (bracket welded there);\n2× M12 pass through the bracket + the frame jamb into a backing\nplate — nuts on the far face SECURE the joint (not tapped into RHS).",
+            ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT, bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
+
+    title_block(ax, "SHEET 14 OF 14",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
+                scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet14.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet14.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2334,7 +2408,7 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
-    title_block(ax, "SHEET 12 OF 12",
+    title_block(ax, "SHEET 12 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
@@ -2360,4 +2434,6 @@ if __name__ == "__main__":
     sheet10()
     sheet11()
     sheet12()
+    sheet13()
+    sheet14()
     print("Done.")

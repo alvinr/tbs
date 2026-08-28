@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.9] — 2026-08-27
+
 - **Lighttrap Revoloving Drum detaile design and blueprint**
 The lighttrap had a light-weight design that defined the major parameters. What was missing was a deatiled design down to the fabrication blueprints for the deatils of the mechanism.
   - **Design:** the drum end **caps are 8mm 6061-T6 aluminum** (bolted 4×M10 stub-shaft flanges), the **shell->cap and housing->frame joints are lap-and-fasten** (rolled 25×25×3 Al rim-angle + 1/8" 18-8 SS blind rivets @ ~60mm + 3M DP8010 bond/light-seal, superseding the extrusion weld), and a **steel welded box cage integrated with the swing-panel weldment** carries the bearings and the fixed outer skin (free HDPE opening edges stiffened by bonded Al U-channels in place of jamb posts). The **drum was resized Ø900->Ø800** (Ø764 drum, ~Ø758 bore) and re-centered to fit the transport-fixed cage; **interior 1,970mm clear** (`DRUM_H_LT` 2,100; cage top 2,217).

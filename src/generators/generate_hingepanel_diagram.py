@@ -264,7 +264,7 @@ def sheet1():
     # engineering convention for features on the far/hidden face.
     # Interior mounting enables emergency egress: if the revolving drum jams,
     # operators inside the container can release the latches and push the panel
-    # open outward without requiring access to the exterior face.
+    # open INWARD (into the container about the pivot), clearing the door plane.
     LATCH_XS = [210, PW - 210]
     LATCH_YS = [220, PH - 220]
     for lx in LATCH_XS:
@@ -298,18 +298,18 @@ def sheet1():
     leader(ax, (JX0 - 20, HZD - HGL / 2), (980, 640),
            "2×2 STEEL JAMB —\nhandle bolts to steel,\nnot the skin (Sheet 6/9)", col=C_OUT, fs=6)
 
-    # ── Outward-opening annotation ────────────────────────────────────────────
-    # Panel hinges on left (X=0); right edge is the free edge.
-    # Opens outward — away from interior camera equipment.
+    # ── Inward-opening annotation ─────────────────────────────────────────────
+    # The panel opens INWARD only (into the container about the Ø89 pivot); a stop on
+    # the fixed frame takes the outward direction — the cam latches hold it shut (Sheet 12).
     leader(ax, (PW, PH * 0.36),
            (PW + 275, PH * 0.25),
-           "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
+           "OPENS INWARD ONLY\n(swings into the container;\na frame stop takes the\noutward direction — Sheet 12)",
            col="#204080", fw="bold")
 
     # ── Emergency egress safety note ──────────────────────────────────────────
     ax.text(PW / 2, -280,
             "SAFETY: Interior-mounted cam latches (×4) allow emergency panel release from inside — "
-            "operate if revolving drum jams. Panel opens outward, clear of all equipment.",
+            "operate if revolving drum jams. Panel opens INWARD about the pivot, clearing the door plane.",
             color="#C04010", fontsize=6.5, ha="center", va="center",
             fontweight="bold", **FONT, zorder=15)
 
@@ -2354,23 +2354,40 @@ def sheet12():
     ax.set_xlim(0, 540)
     ax.set_ylim(-70, 220)
 
-    # ═══ DETAIL A — cam latch (through-bolt + backing) ═══════════════════════
-    Ax = 20
-    ax.text(Ax + 80, 205, "DETAIL A — SOUTHCO C2-33 CAM LATCH", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Ax + 80, 192, "horizontal section · through-bolt + backing plate", ha="center", fontsize=6.6, color=C_DIM, **FONT)
-    ax.text(Ax - 8, 150, "← EXT", ha="center", fontsize=6.5, color=C_DIM, **FONT)
-    ax.text(Ax + 168, 150, "INT →", ha="center", fontsize=6.5, color=C_DIM, **FONT)
-    # frame RHS (cut) + interior latch body + backing plate
-    ax.add_patch(Rectangle((Ax + 40, 40), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
-    ax.add_patch(Rectangle((Ax + 43, 43), 44, 44, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (Ax + 65, 40), (Ax + 30, 8), "frame RHS\n(2×2×0.120)", col=C_OUT, fs=6)
-    ax.add_patch(Rectangle((Ax + 90, 48), 34, 34, fc="#7A6A9A", ec=C_OUT, lw=1.3, zorder=5))   # latch body (interior)
-    leader(ax, (Ax + 107, 82), (Ax + 130, 150), "Southco C2-33\ncam latch\n(interior face)", col=C_OUT, fs=6)
-    ax.add_patch(Rectangle((Ax + 28, 46), 12, 38, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))     # backing plate (exterior)
-    leader(ax, (Ax + 34, 84), (Ax + 20, 150), "backing plate", col=C_OUT, fs=6)
-    for zy in (52, 78):                                                                 # 2 latch flange holes, spaced to the C2-33 body
-        _draw_bolt(ax, Ax + 76, zy, 96, d=7, vertical=False, head=1, end="nut", zb=8)   # M6 through-bolt: head at latch, nut on backing plate
-    ax.text(Ax + 80, 24, "latch flange → 2× M6 through the frame wall into an\nexterior backing plate; latch cams the seal shut", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
+    # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (horizontal section) ══════
+    Ax = 6
+    ax.text(Ax + 92, 206, "DETAIL A — LIFT-AND-TURN CAM LATCH (McMaster 1619A74)", ha="center", fontsize=8.3, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Ax + 92, 194, "horizontal section · cam hooks a welded keeper on the fixed stub wall", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    ax.text(Ax - 2, 120, "← EXT", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    ax.text(Ax + 190, 158, "INT →\n(handle)", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    # FIXED stub-wall steel frame (left) — keeper + outward stop weld to it
+    ax.add_patch(Rectangle((Ax + 6, 35), 26, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
+    ax.add_patch(Rectangle((Ax + 9, 38), 20, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 19, 35), (Ax + 24, 182), "FIXED stub-wall\nsteel frame", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle((Ax + 32, 86), 44, 8, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))          # outward STOP lip
+    leader(ax, (Ax + 54, 94), (Ax + 46, 184), "OUTWARD STOP\n(panel opens inward only)", col=C_OUT, fw="bold", fs=6)
+    ax.add_patch(Rectangle((Ax + 32, 44), 10, 26, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))          # welded keeper
+    ax.add_patch(Polygon([(Ax + 32, 44), (Ax + 32, 38), (Ax + 40, 44)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld
+    leader(ax, (Ax + 37, 46), (Ax + 14, 12), "WELDED KEEPER\n(cam hooks here)", col=C_OUT, fs=6)
+    # 20mm EPDM gasket
+    ax.add_patch(Rectangle((Ax + 76, 42), 14, 42, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, (Ax + 83, 42), (Ax + 106, 150), "20mm EPDM\n(cam draws it tight)", col=C_OUT, fs=6)
+    # SWINGING panel-frame RHS — the tube the latch mounts through
+    ax.add_patch(Rectangle((Ax + 90, 35), 50, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="\\\\", zorder=4))
+    ax.add_patch(Rectangle((Ax + 93, 38), 44, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 128, 95), (Ax + 158, 184), "SWINGING panel-frame RHS\n(2×2×0.120) — latch through it", col=C_OUT, fs=6)
+    # latch: barrel through the tube, nut inside, cam to the keeper, handle interior
+    ax.plot([Ax + 40, Ax + 150], [62, 62], color="#8A8F98", lw=4.5, zorder=7)                       # barrel
+    ax.add_patch(Rectangle((Ax + 120, 55), 9, 14, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=8))          # nut INSIDE the tube
+    leader(ax, (Ax + 124, 55), (Ax + 136, 126), "nut inside the tube", col=C_OUT, fs=6)
+    ax.add_patch(Polygon([(Ax + 40, 54), (Ax + 40, 70), (Ax + 30, 67), (Ax + 30, 57)], closed=True, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))  # cam behind keeper
+    ax.add_patch(Rectangle((Ax + 150, 50), 9, 24, fc="#202020", ec=C_OUT, lw=1.0, zorder=8))         # handle hub
+    ax.add_patch(Rectangle((Ax + 159, 56), 20, 12, fc="#202020", ec=C_OUT, lw=1.0, zorder=8))        # lift-and-turn lever
+    leader(ax, (Ax + 169, 62), (Ax + 190, 98), "LIFT-AND-TURN handle\n(interior — egress)", col=C_OUT, fw="bold", fs=6)
+    # over-bore + light-tight plug in the FAR (exterior) tube wall, coaxial with the nut
+    ax.add_patch(Rectangle((Ax + 90, 53), 3, 18, fc=BG, ec=C_OUT, lw=1.0, zorder=6))                 # over-bore (larger access hole)
+    ax.add_patch(Rectangle((Ax + 84, 55), 6, 14, fc="#3A3A3A", ec=C_OUT, lw=1.0, zorder=7))          # light-tight plug
+    leader(ax, (Ax + 86, 56), (Ax + 92, 8), "OVER-BORE (far wall) for the box spanner\nto reach the nut → LIGHT-TIGHT PLUG after", col=C_OUT, fw="bold", fs=6)
 
     # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
     Bx = 210

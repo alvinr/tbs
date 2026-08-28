@@ -117,6 +117,12 @@ seals→6, cage→7. New constants live in `tbs_constants.py` (`LT_CAP_TOP_T`/`L
 
 ## 🛠 Tooling / infra
 
+- [ ] **Cam-latch part reselect (2026-08-28, Alvin).** The `panel-southco-latch` (Southco C2-33) is a
+  **recessed** cam latch — Alvin flagged it may not suit the interior-face flush mount. Find alternatives
+  (surface-mount cam/compression latch, interior-operable for emergency egress) and re-spec; then cascade
+  the SKU/price through `parts.py` + hingepanel Sheet 12 Detail A + report §4.2. (Deferred until the current
+  blueprint round is done.)
+
 - [ ] **Ø900→Ø800 stale-label sweep — ROUND 2 (found 2026-08-28 on hingepanel-bp).** The 2026-08-26 drum
   resize left `Ø900` (and stale `2000mm` drum-height) references in **many** generators beyond the light-trap/
   hingepanel set that this branch cleaned. Some are **visible labels/calc-notes** (not just comments), so they

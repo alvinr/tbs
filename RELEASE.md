@@ -32,6 +32,23 @@ file** — a release must not ship without a changelog entry:
   in 3D so the surround reads as fastened, not floating (+$29 panel). Reconciled the stale **Ø900→Ø800 /
   DRUM_H 2200→2100** drum geometry across the hingepanel generator, the lighttrap model, costing, and the
   assembly generators; hinged-panel report §2.6 added, §3.1 drum-top Z corrected to the 2,100mm cap top.
+- **Hinged panel — steel-frame + hardware blueprint set (Sheets 9–14).** Added the frame general
+  arrangement (Sheet 9, noting the welded drum cage), the frame→pivot-post connection + full pivot-post
+  spec (Sheet 10 + report §5.5), the plywood cut sheet with Fan-B mount and IBC-style metal-tab/tee-nut
+  frame fixings (Sheet 11), the frame hardware attachments (Sheet 12: cam latch, transport lock, brush
+  strip), the frame→hub weldment detail (Sheet 13/14), and the pivot-jamb elevations (Sheet 1/14).
+- **Hinged panel — cam-latch reselection + inward-opening reconcile.** Swapped the recessed compression
+  latch for a **McMaster 1619A74 lift-and-turn cam latch** (adjustable 1¾–2⅛", 150 lbf) mounted through
+  the tubular steel jamb (over-bore + box-spanner + light-tight plug for the captive nut) latching a
+  **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
+  stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
+  panel cost **+$47/$33/$19** (cam latch).
+- **Hinged panel — 2D fastener/buildability refinements.** Reworked the detail drawings so every fastener
+  is buildable: nuts land against the inside tube wall, hollow beams show their bore, side rivets bite
+  steel backing (not the HDPE skin), tee-nuts pass through the tab face, full-height pivot beams, and the
+  frame→hub brackets are **fully welded** (no bolts through closed tube). Swapped the panel-swing pull
+  handle to the **same off-the-shelf McMaster 1871A65** as the interior drum handle (screwed into jamb
+  rivnuts), **−$64/$74/$84** panel.
 
 ## [0.9] — 2026-08-27
 

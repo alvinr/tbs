@@ -306,8 +306,8 @@ mechanisms and are drawn on their own blueprints.
 
 | Parameter | Value |
 |-----------|-------|
-| Type | 316 SS D-grab pull handle, ~300mm grip span, 25mm round bar |
-| Mounting | Through-bolted to the 50 × 50 × 3mm RHS frame jamb beside the drum aperture — **2 × M8 SS bolts** passing through **both** RHS walls into an interior backing plate/washers (not screwed to the HDPE skin) |
+| Type | McMaster 1871A65 round pull handle (Ø12.7 bar, ~308mm grip, 52mm standoff) — the **same off-the-shelf part as the interior drum handle** |
+| Mounting | Screwed into **1/4"-20 rivet-nuts** set in the near wall of the 50 × 50 × 3mm RHS frame jamb — the swing load reacts into the **steel** frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped and there is no back-access to a nut) |
 | Position | Interior face of the **swinging** panel, on the **left drum-aperture jamb**. The transport swing pivots on the **far** edge (§5), so this near-of-center jamb keeps the operator's leverage while landing the load on frame steel right beside the drum (rather than the unbacked HDPE skin) |
 | Finish | **Matte-black powder-coat** — the interior must stay optically dead (stray-light control for the pinhole), so the handle is not left bare/reflective |
 
@@ -479,8 +479,8 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 8. $14.59/100. | 2 pack | McMaster-Carr | $29 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
-| [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location. | 1 ea | StrongAr Hardware | $70–$90 |
-| **Panel total** | | | | **$1,354–$1,532** |
+| [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13" grip, 2.06" standoff. Screws into 1/4"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm. | 1 ea | McMaster-Carr | $6 |
+| **Panel total** | | | | **$1,290–$1,448** |
 <!-- END parts:panel -->
 
 
@@ -550,11 +550,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,354<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,532<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,290<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,448<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$831<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,131<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,552<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,251<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,488<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,167<!-- END costing:hp-total-high -->** |
 
 ---
 

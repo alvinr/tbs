@@ -50,15 +50,14 @@ review is finished:**
   100×50→50×50; bearing ring/collar → tapped Ø230×12 steel MOUNT PLATE fillet-welded across the beam
   (rivet-nuts retired). Constants/3D/Sheets 5/6/8/10/parts/costing/report reconciled, gates green.
 
-## 🔁 Light-trap ↔ hinged-panel sheet DUPLICATION (2026-08-26, Alvin) — resolve after the drum-sizing decision
+## 🔁 Light-trap ↔ hinged-panel sheet DUPLICATION (2026-08-26, Alvin) — RESOLVED 2026-08-28
 
-- [ ] **`hingepanel-sheet6` duplicates content now owned by the new light-trap sheets.** It shows the
-  interior handle fastening (and other drum detail) that the new light-trap set now covers in dedicated
-  sheets (Sheet 1 GA + **Sheet 11 pull-handle mount**, the bearing-hub/seal/machined-component sheets, etc.).
-  Audit `hingepanel-sheet6` (and the other hingepanel sheets) against the light-trap set; each detail should
-  have ONE owning blueprint — keep it on the light-trap sheet, cross-reference from the hingepanel report,
-  remove the duplicate from `hingepanel-sheet6`. Do this AFTER the drum-diameter change lands (that will
-  re-cut several of these sheets anyway).
+- [x] **`hingepanel-sheet6` is NOT a duplicate — distinct handle (Alvin 2026-08-28, hingepanel-bp).**
+  Audited on the hingepanel-bp branch: hingepanel-sheet6 is the **panel-swing D-grab handle** (report §4.3 —
+  bolted to the frame jamb, reacts the whole-panel swing load into the 50×50 RHS), a *separate* handle from
+  the light-trap **drum-rotation** pull handle. No shared detail, so both are retained; the hingepanel report
+  §4.3 carries a one-line cross-reference clarifying the two handles (folded into the surround report edit).
+  No sheet removed, no renumber — the set stays 6 + the new surround sheets 7/8.
 
 ## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
 

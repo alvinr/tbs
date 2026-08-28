@@ -862,28 +862,29 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                 draw_rect(ax, lx, -18 * SC, 8 * SC, 18 * SC - bw, fc=C_ALUM, lw=1.0, zorder=6)   # shoulder lip
                 rx0 = min(cx + g * (ro - 2 * SC), cx + g * (ro + 3 * SC))
                 draw_rect(ax, rx0, bw, 5 * SC, 3.5 * SC, fc="#606068", lw=0.8, zorder=8)          # DIN 472 retaining ring
-        # axle beam — HOLLOW 100×50×3 RHS shown in LONGITUDINAL section: solid near + far 3mm
-        # walls with the hollow bore VOID between them (white). It sits on the ring's beam-side face,
-        # 5mm clear above the shaft top — the shaft never touches it (see the GAP dimension).
-        zr0, zr1 = rtop * s, (rtop + 48 * SC) * s
-        _bz0, _bz1 = min(zr0, zr1), max(zr0, zr1)
+        # Ø240×12 SOLID steel MOUNT PLATE — the ring/collar bolts to THIS (its Ø200 bolt circle is far
+        # wider than the 50mm beam) and it is fillet-welded to the beam, so the stack is ring/collar →
+        # PLATE → beam: the ring/collar (and its bearing) sit SURFACE-mounted ON the plate, NOT sunk into
+        # it. The plate fills the gap between the ring's beam-side face and the beam. 12mm ≈ 4× the wall.
         _bw = LT_FRAME_T * SC                                                # drawn wall thickness
+        _pt = 4 * _bw                                                        # plate thickness (Ø240×12)
+        _rface = rtop * s                                                    # ring/collar beam-side face (bolting datum)
         _bx0, _bwd = cx - 140 * SC, 280 * SC
+        draw_rect(ax, _bx0 - 24 * SC, min(_rface, _rface + _pt * s), _bwd + 48 * SC, _pt,
+                  fc=C_STEEL, lw=1.4, zorder=5)                                                  # mount plate, ON the ring face
+        # axle beam — HOLLOW 50×50×3 RHS in LONGITUDINAL section (solid near+far walls + hollow void),
+        # placed BEYOND the plate so the plate separates it from the ring/collar (shaft never touches it).
+        zr0, zr1 = _rface + _pt * s, _rface + (_pt + 48 * SC) * s
+        _bz0, _bz1 = min(zr0, zr1), max(zr0, zr1)
         draw_rect(ax, _bx0, _bz0, _bwd, _bz1 - _bz0, fc=C_STEEL, lw=1.4, zorder=4)               # outer (walls)
         draw_rect(ax, _bx0, _bz0 + _bw, _bwd, (_bz1 - _bz0) - 2 * _bw, fc=BG, lw=1.0, zorder=5)  # HOLLOW bore (void)
         for _bx in (_bx0, _bx0 + _bwd):                                      # break marks — beam continues past crop
             ax.plot([_bx - 4, _bx + 4, _bx - 4], [_bz0 + _bw, (_bz0 + _bz1) / 2, _bz1 - _bw],
                     color=C_OUT, lw=0.8, zorder=7, solid_capstyle="round")
-        # Ø240×12 SOLID steel MOUNT PLATE fillet-welded across the beam's ring-side face — the ring
-        # bolts tap into THIS (its Ø200 bolt circle is far wider than the 50mm beam). 12mm ≈ 4× the wall.
-        _pt = 4 * _bw
-        _rf = _bz0 if up else _bz1                                           # beam face on the RING side (nearest the shaft)
-        _pz0 = _rf - _pt if up else _rf                                      # plate sits ON that face, extending toward the ring
-        draw_rect(ax, _bx0 - 24 * SC, _pz0, _bwd + 48 * SC, _pt, fc=C_STEEL, lw=1.4, zorder=5)
-        _wleg = -7 * SC if up else 7 * SC                                    # fillet leg points from the ring face into the plate
-        for _wx in (_bx0, _bx0 + _bwd):                                      # fillet welds plate↔beam (both sides)
+        _wj = _rface + _pt * s                                               # plate↔beam junction (weld)
+        for _wx in (_bx0, _bx0 + _bwd):                                      # fillet welds plate↔beam (both edges)
             _wd = -1 if _wx == _bx0 else 1
-            ax.add_patch(mpatches.Polygon([(_wx, _rf), (_wx + _wd * 7 * SC, _rf), (_wx, _rf + _wleg)],
+            ax.add_patch(mpatches.Polygon([(_wx, _wj), (_wx + _wd * 7 * SC, _wj), (_wx, _wj + 7 * SC * s)],
                                           closed=True, fc="#CC4422", ec="#CC4422", zorder=8))
         # Al drum cap (full Ø755 — shown BROKEN; it spans well past the ring bolts) + stub-shaft flange
         CAPW = 155 * SC
@@ -905,7 +906,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         # enough to tap directly, and it, not the thin beam wall, carries the Ø200 bolt circle).
         for g in (-1, 1):
             ring_far = -18 * SC * s                    # ring face away from the plate (head bears here)
-            wnz = rtop * s                             # into the mount plate on the beam's ring-side face
+            wnz = rtop * s + _pt * s                    # through the ring, TAPPED into the Ø240×12 mount plate
             draw_bolt(ax, cx + g * LT_RING_BOLT_PCD / 2 * SC, (ring_far + wnz) / 2, abs(wnz - ring_far),
                       d=8 * SC, head=int(-s), end="tapped", csk=True, zb=9)
             # DIN 471 EXTERNAL circlip(s) — seated in the Ø72 shaft groove, projecting OUTWARD past the
@@ -953,7 +954,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                right=True, font=FONT)
     draw_dim_v(ax, UX + 330, -18 * SC, 27 * SC, "45mm RING H", offset=44, fs=6.0,
                right=True, font=FONT)
-    draw_dim_v(ax, UX + 405, 27 * SC, 75 * SC, "48mm RAIL H", offset=44, fs=6.0,
+    draw_dim_v(ax, UX + 405, 39 * SC, 87 * SC, "48mm RAIL H", offset=44, fs=6.0,
                right=True, font=FONT)
     draw_dim_v(ax, UX + 480, -55 * SC, -40 * SC, "15mm FLANGE T", offset=44,
                fs=6.0, right=True, font=FONT)
@@ -988,7 +989,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                offset=46, fs=6.2, above=False, font=FONT)
     draw_dim_v(ax, LX - HALF - 40, -20 * SC, 18 * SC, "38mm COLLAR H", offset=44,
                fs=6.0, font=FONT)
-    draw_dim_v(ax, LX - HALF - 120, -68 * SC, -20 * SC, "48mm PLATE H", offset=44,
+    draw_dim_v(ax, LX - HALF - 120, -80 * SC, -32 * SC, "48mm BEAM H", offset=44,
                fs=6.0, font=FONT)
     ax.text(LX, -235, "bearing · shaft · cap · flange  AS UPPER HUB", ha="center",
             va="top", fontsize=6.2, color=C_DIM, **FONT, zorder=15)
@@ -1942,7 +1943,7 @@ def draw_sheet10():
                offset=14, fs=6.0, above=False, font=FONT)
     draw_dim_h(ax, 0, HOR_, -LT_CAP_TOP_T - 135, f"R{HOR_:.0f} — B: fixed housing rail (Ø{DRUM_D})",
                offset=14, fs=6.0, above=False, font=FONT)
-    draw_dim_v(ax, HOR_ + 55, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
+    draw_dim_v(ax, HOR_ + 65, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
                f"{Z_BEAM0 - LT_LAP_H:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
                offset=38, fs=6.0, right=True, font=FONT)
     draw_dim_h(ax, HOR_, POST_R0, -55, f"{POST_R0 - HOR_:.0f}mm — fixed housing outer skin → corner post",
@@ -2101,8 +2102,8 @@ def draw_sheet11():
 
 
 def draw_sheet12():
-    # Two seal cross-sections pulled off Sheet 7 and drawn large (1.5:1) so the
-    # brush/neoprene geometry is easy to read.
+    # Top-end seal cross-section pulled off Sheet 7 and drawn large + schematic (radial gap
+    # exaggerated) so the neoprene/brush seal path is easy to read; not a true single scale.
     X_LO, X_HI, Z_LO, Z_HI = 120, 1500, -360, 1000
     FIG_W = 15.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
@@ -2121,7 +2122,7 @@ def draw_sheet12():
     otx, otz = 700, 560
     def TX(mm): return otx + S * mm
     def TZ(mm): return otz + S * mm
-    ax.text(TX(0), TZ(230), "TOP-END LIGHT PATH  (axial section · 1.5:1)\ngap CAPPED at top · cap ↔ frame neoprene seal · bottom identical",
+    ax.text(TX(0), TZ(230), "TOP-END LIGHT PATH  (axial section · schematic — radial gap exaggerated)\ngap CAPPED at top · cap ↔ frame neoprene seal · bottom identical",
             ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     draw_rect(ax, TX(-22), TZ(-175), S * 12, S * 205, fc=C_LT_DRUM, lw=1.2, zorder=5)   # drum shell (rotating)
     draw_rect(ax, TX(36), TZ(-175), S * 14, S * 235, fc="#DDE4EC", lw=1.2, zorder=5)    # housing wall (fixed)
@@ -2130,9 +2131,11 @@ def draw_sheet12():
     draw_rect(ax, TX(-88), TZ(28), S * 122, S * 18, fc=C_GASKT, lw=1.0, zorder=7)       # neoprene wiper — caps the gap
     ax.plot([TX(-88), TX(34)], [TZ(28), TZ(28)], color="#8A5A2B", lw=2.6, zorder=8)     # PSA adhesive bond: neoprene → rotating drum cap
     ax.plot([TX(-40), TX(34)], [TZ(46), TZ(46)], color="#B03030", lw=1.4, ls=(0, (2, 2)), zorder=8)  # wiping contact: free edge sweeps the fixed frame plate
-    for zz in range(-120, -66, 8):                                                      # brush (running-gap seal), lower
-        ax.plot([TX(-10), TX(32)], [TZ(zz), TZ(zz + 5)], color="#222", lw=0.6, zorder=6)
-    draw_rect(ax, TX(-16), TZ(-132), S * 6, S * 70, fc="#A8763A", lw=0.5, zorder=6)     # brush holder (bronze)
+    # running-gap brush: holder BONDED to the drum's OUTER (gap-facing) surface and protruding INTO the
+    # gap; bristles lay across the gap onto the fixed housing bore (circumferential seal — see Sheet 4).
+    draw_rect(ax, TX(-10), TZ(-132), S * 6, S * 70, fc="#A8763A", lw=0.5, zorder=6)     # brush holder (bronze) on the drum OD
+    for zz in range(-120, -66, 8):                                                      # bristles → fixed housing
+        ax.plot([TX(-4), TX(32)], [TZ(zz), TZ(zz + 5)], color="#222", lw=0.6, zorder=6)
     ax.annotate("", xy=(TX(13), TZ(24)), xytext=(TX(13), TZ(-165)),                     # daylight ray UP the gap …
                 arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
     for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                       # … killed at the seal (red ✗)
@@ -2151,13 +2154,13 @@ def draw_sheet12():
         "TOP-END SEAL DETAIL  (enlarged from Sheet 7)",
         "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips secured by their own PSA adhesive back (McMaster 93855K6) BONDED to the rotating drum cap face + a silicone bead along the seam; the strip's free edge sweeps the fixed frame plate. This CAPS the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes (circumferential) there is no straight-through or over-the-top light path.",
         f"The running-gap brush radial section (the {LT_WIPER_N}× #4 strip brushes flange-riveted to the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
-        "SCALE 1.5:1 · ALL DIMS IN mm · see Sheet 7 for the rotation/light-path plans A–C.",
+        "NOT TO SCALE — the radial running gap is exaggerated so the seal path reads clearly (a true 13mm gap would be a hairline here); vertical members ≈ 1.5×. See Sheet 4 for the to-scale (7:1) holder profile and Sheet 7 for the rotation/light-path plans A–C.",
     ]
-    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1340, wrap=118, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1200, wrap=118, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 12 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SEAL DETAIL — TOP-END NEOPRENE (enlarged)",
-                scale_note="1.5:1 · ALL DIMS IN mm",
+                scale_note="SCHEMATIC (gap exaggerated) · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet12.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

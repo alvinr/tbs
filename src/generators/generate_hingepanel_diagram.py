@@ -127,7 +127,7 @@ def sheet1():
     ax.text(STEP_YD_L / 2, PH - 120,
             "40mm CORNER ZONE", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    ax.text((STEP_YD_L + STEP_YD_R) / 2, PH - 220,
+    ax.text(STEP_YD_L + 210, PH - 360,
             "120mm CENTER ZONE\n(DRUM HOUSING)", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     ax.text((STEP_YD_R + PW) / 2, PH - 120,
@@ -1618,6 +1618,18 @@ def sheet6():
     leader(ax, (15, 15), (5, 50),
            "2× M8 SS through-bolt\nthrough BOTH frame walls (not the skin)", col=C_OUT, fw="bold")
 
+    # ── dimensions (prove the drawing is to scale) ──
+    draw_dim_h(ax, 0, 50, -62, "50", offset=10, fs=6.5, font=FONT, above=False)          # frame width
+    draw_dim_v(ax, 122, -12.5, 12.5, "Ø25", offset=9, fs=6.2, font=FONT, right=True)      # grip bar Ø
+    draw_dim_h(ax, 54, 100, 40, "~46 standoff", offset=9, fs=6.0, font=FONT)              # handle projection
+    ax.text(100, -30, "grip bar runs VERTICAL, ~300mm\n(shown here in cross-section)", ha="center", va="top", fontsize=5.8, color=C_DIM, **FONT)
+    # ── scale bar (50mm) ──
+    sbx0 = -88
+    ax.plot([sbx0, sbx0 + 50], [-118, -118], color=C_OUT, lw=2.2, zorder=9)
+    for xt in (sbx0, sbx0 + 25, sbx0 + 50):
+        ax.plot([xt, xt], [-118, -111], color=C_OUT, lw=1.1, zorder=9)
+    ax.text(sbx0 + 25, -128, "0   25   50 mm", ha="center", fontsize=6.2, color=C_OUT, **FONT)
+
     ax.text(60, -103,
             "The handle bolts to the STEEL FRAME with a backing plate — the swing load\n"
             "reacts into the 50×50 RHS, never the HDPE skin. Matte-black keeps the container\n"
@@ -1627,7 +1639,7 @@ def sheet6():
 
     title_block(ax, "SHEET 6 OF 12", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
-                scale_note="DETAIL · NOT TO SCALE · ALL DIMS IN mm",
+                scale_note="DRAWN TO SCALE (isotropic ~1:1) · 50mm BAR · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
@@ -1845,6 +1857,17 @@ def _draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", c
     if end == "nut":
         rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
              fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)
+    elif end == "rivnut":                              # rivet-nut / blind threaded insert into a hollow wall
+        RN = "#A8763A"                                 # bronze — distinct from silver hardware
+        into = 1 if head < 0 else -1
+        wt = wall if wall is not None else hh
+        hp = fu + into * wt                            # inner (bore-side) edge of the wall
+        rect(fu, hp, -hw * 0.44, hw * 0.44, fc=RN, ec=C_OUT, lw=0.8, zorder=zb + 1)   # barrel spanning the wall
+        rect(fu, hp, -d * 0.48, d * 0.48, fc=SHK, ec="none", zorder=zb + 2)           # bolt threaded up inside
+        HWr, HHr = d * 0.95, d * 0.42                                                 # low pancake head on the bore-side edge
+        dome = [pmap(hp, HWr)] + [pmap(hp + into * HHr * math.cos(math.pi * (0.5 - kk / 12.0)),
+                                       HWr * math.sin(math.pi * (0.5 - kk / 12.0))) for kk in range(13)] + [pmap(hp, -HWr)]
+        ax.add_patch(Polygon(dome, closed=True, fc=RN, ec=C_OUT, lw=0.9, zorder=zb + 3))
 
 
 def sheet8():
@@ -1988,7 +2011,8 @@ def sheet9():
     hbar(z_sill - RHS, jL, jR)                                 # drum sill
 
     # ── pivot post (Yd = PIVOT_YD) → Sheet 10 ──
-    ax.add_patch(Circle((yR, PH / 2), 45, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
+    ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2, 0), PIVOT_POST_OD, PH, fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.9, zorder=7))   # vertical Ø89 post (front elevation → a vertical tube)
+    ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2 + 8, 0), PIVOT_POST_OD - 16, PH, fc=BG, ec=C_OUT, lw=0.5, zorder=7))          # tube bore
     ax.plot([yR, yR], [0, PH], color=C_CL, lw=1.0, ls=(0, (7, 4)), zorder=6)
     leader(ax, (yR, PH * 0.62), (yR + 300, PH * 0.72),
            "Ø89 CHS PIVOT POST\n(swing axis) — assembly\n+ frame→hub bracket: Sheet 10", col=C_OUT, fw="bold")
@@ -2270,9 +2294,9 @@ def sheet12():
     leader(ax, (Ax + 107, 82), (Ax + 130, 150), "Southco C2-33\ncam latch\n(interior face)", col=C_OUT, fs=6)
     ax.add_patch(Rectangle((Ax + 28, 46), 12, 38, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))     # backing plate (exterior)
     leader(ax, (Ax + 34, 84), (Ax + 20, 150), "backing plate", col=C_OUT, fs=6)
-    for zy in (58, 72):
+    for zy in (52, 78):                                                                 # 2 latch flange holes, spaced to the C2-33 body
         _draw_bolt(ax, Ax + 76, zy, 96, d=7, vertical=False, head=1, end="nut", zb=8)   # M6 through-bolt: head at latch, nut on backing plate
-    ax.text(Ax + 80, 24, "2× M6 bolts through the frame wall into an\nexterior backing plate; latch cams the seal shut", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
+    ax.text(Ax + 80, 24, "latch flange → 2× M6 through the frame wall into an\nexterior backing plate; latch cams the seal shut", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
 
     # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
     Bx = 210
@@ -2303,8 +2327,8 @@ def sheet12():
     ax.add_patch(Rectangle((Cx + 48, 78), 44, 22, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((Cx + 52, 82), 36, 14, fc=BG, ec=C_OUT, lw=0.6, zorder=5))
     leader(ax, (Cx + 90, 89), (Cx + 120, 130), "8813T53 Al\nholder channel", col=C_OUT, fs=6)
-    _draw_bolt(ax, Cx + 70, 104, 52, d=5, vertical=True, head=-1, end="tapped", zb=8)   # #10 screw UP from the holder into the frame
-    leader(ax, (Cx + 70, 80), (Cx + 40, 150), "#10 screw up\nthrough the holder\n→ frame", col=C_OUT, fs=6)
+    _draw_bolt(ax, Cx + 70, 89, 22, d=5, vertical=True, head=-1, end="rivnut", wall=6, zb=8)   # #10 screw UP from holder into a RIVNUT in the hollow frame wall
+    leader(ax, (Cx + 70, 78), (Cx + 34, 150), "#10 machine screw up through the\nholder into a RIVNUT set in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
     # brush bristles hanging down
     for bxk in range(Cx + 54, Cx + 88, 4):
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)

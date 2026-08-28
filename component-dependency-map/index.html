@@ -3009,12 +3009,12 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).</em></p>
 <tbody>
 <tr>
 <td>Light-lock center X (cargo door end wall)</td>
-<td><!-- BEGIN cdm:DRUM_CX -->-400<!-- END cdm:DRUM_CX -->mm</td>
+<td><!-- BEGIN cdm:DRUM_CX -->-420<!-- END cdm:DRUM_CX -->mm</td>
 <td><code>DRUM_CX</code></td>
 </tr>
 <tr>
 <td>Fixed housing outer diameter</td>
-<td><!-- BEGIN cdm:DRUM_D -->900<!-- END cdm:DRUM_D -->mm</td>
+<td><!-- BEGIN cdm:DRUM_D -->800<!-- END cdm:DRUM_D -->mm</td>
 <td><code>DRUM_D</code></td>
 </tr>
 <tr>
@@ -3024,7 +3024,7 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).</em></p>
 </tr>
 <tr>
 <td>Drum outer radius (rotating)</td>
-<td><!-- BEGIN cdm:LT_DRUM_OR -->432<!-- END cdm:LT_DRUM_OR -->mm</td>
+<td><!-- BEGIN cdm:LT_DRUM_OR -->382<!-- END cdm:LT_DRUM_OR -->mm</td>
 <td><code>LT_DRUM_OR</code></td>
 </tr>
 <tr>
@@ -3034,13 +3034,13 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).</em></p>
 </tr>
 <tr>
 <td>Top Z (walkway-lifted)</td>
-<td><!-- BEGIN cdm:DRUM_H_LT -->2,250<!-- END cdm:DRUM_H_LT -->mm</td>
+<td><!-- BEGIN cdm:DRUM_H_LT -->2,100<!-- END cdm:DRUM_H_LT -->mm</td>
 <td><code>DRUM_H_LT</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>Components: fixed Ø900 aluminum housing with two 80° openings (exterior + interior-onto-walkway,
-180° apart); single-opening C-shell rotating drum (Ø864, ~Ø850 bore, NO internal fins) — light-tight
+<p><em>Components: fixed Ø800 aluminum housing with two 80° openings (exterior + interior-onto-walkway,
+180° apart); single-opening C-shell rotating drum (Ø764, ~Ø850 bore, NO internal fins) — light-tight
 by geometry; 8mm Al top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed bearings, drum↔housing
 running-gap #4 strip brushes in Al flange holders + top/bottom neoprene cap seals, off-the-shelf 12″ round
 pull handle (McMaster 1871A65), housing-to-panel neoprene compression strip. Replaces the failed Ø750 4-fin drum.</em></p>
@@ -3077,7 +3077,7 @@ pull handle (McMaster 1871A65), housing-to-panel neoprene compression strip. Rep
 gasket in machined channel + 2× vertical cut seals (Yd180/2287), vertical </em><em>Ø89×8mm CHS pivot
 post</em><em> (rev10 — the reused film far-left upright, on a thrust collar + top/bottom hub bearings;
 structural sign-off) carrying the ~56° transport swing, 4× Southco C2-33 cam compression latches,
-top + bottom wall stays (transport lock), Ø900mm housed revolving-door light-lock aperture in the
+top + bottom wall stays (transport lock), Ø800mm housed revolving-door light-lock aperture in the
 B2 punch-out bay.</em></p>
 <p><em>Reports: <a href="../hinged-panel-report/">Hinged Light-Trap Panel</a> §2/§4/§5/§7/§8 (panel construction, hinges + Southco cam latches, rotating transport swing, fixed door frame, parts list).</em></p>
 <p><em>Diagrams: assembly overview (AO), assembly fabrication (AF), hinged panel (HP), lighttrap (LT).</em></p>
@@ -4157,7 +4157,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 <td><strong>lighttrap</strong></td>
 <td><code>src/models/generate_lighttrap_model.py</code></td>
 <td><code>models/lighttrap.skp</code> + <code>src/models/lighttrap.rb</code></td>
-<td><strong>Single interactive cargo-door-end model</strong> (rev10 — the cargo panel + drum SWING 56° about a vertical Ø89 CHS pivot post; consolidates the former separate operating + transport models into one .skp via Dynamic Components). <strong>Static parts:</strong> ghosted container stub (ends at the door plane X=0 so the bay/drum/doors read as protruding beyond it), fixed RHS <strong>door frame</strong> (<code>door_frame()</code> + housing-surround EPDM), the <strong>fixed pivot axle</strong> (<code>axle()</code> — Ø89 CHS post + thrust collar + Ø220 thrust / Ø120 journal bearings), the two <strong>FIXED panel strips</strong> (<code>near_leaf()</code> Yd0–180 + <code>far_leaf()</code> at the pivot, each with perimeter EPDM + the vertical cut seal), the <strong>removable left film-plane rails</strong> on drop-in <strong>saddles</strong> (<code>_rail_saddle()</code>), <strong>wall anchors</strong> + stay eyes (<code>wall_anchors()</code>), and partial <strong>processing tray</strong>. <strong>Two Dynamic Components</strong> (click with SketchUp's Interact tool): <strong>(1) Panel Swing</strong> — the swinging assembly (the swinging center+corner panel leaves + <code>pivot_link()</code> hub + 4 Southco latches, B2 <strong>punch-out bay</strong> <code>bay()</code> offsetting the drum to X=−400, the <strong>housed revolving-door light lock</strong> Ø900 housing + C-shell drum [the rotor is <strong>baked static</strong> as <code>drum_rotor()</code> so the nested DC doesn't reset] + seals + pull handle, <strong>Fan B</strong>, the <strong>drum support cage</strong> <code>drum_frame()</code>, the stay hooks <code>frame_hooks()</code>, <strong>plus a nested "Lift-out Walkways" child</strong> — <code>liftout_walkways()</code> builds the amber removable left walkway + drum-exit punch-out + near door-end band at world coords, carrying <code>_hidden_formula = "PanelSwing!swing&gt;0.5"</code> so the lift-out decks <strong>disappear once the panel swings past half-open</strong> (lifted out for transport) and reappear when closed; these were moved out of the static <code>context()</code>/<code>walkways_partial()</code> so they draw once) animates <strong>RotZ 0↔56°</strong> about the pivot (operating↔transport); <strong>(2) Cargo Doors</strong> — a parent DC whose <code>shut</code> attribute drives two leaf children's <code>RotZ</code> (<code>door_leaf_local()</code>), swinging both ISO leaves 0↔±180° (closed↔open). Fan B <strong>reuses the Overview's shared <code>fan_duct()</code></strong>, and its <strong>flexible connector</strong> is shown: a <strong>static</strong> wall box (<code>fan_b_box()</code>, Cct B termination — stays put when the panel swings) plus an orange <strong>curly coil cable</strong> (<code>fan_b_cable()</code> → <code>ov.ruby_coil_cord</code>) that lives in a <strong>third child DC ("Fan B Cable")</strong> carrying <code>_hidden_formula = "PanelSwing!swing&gt;0.5"</code>, so the coil is <strong>shown only when the door is closed</strong> (plugged box→fan) and <strong>hides when the panel swings open</strong> (unplugged for transport) — same soft-cord convention as the overview/electrical models. Reads <code>DRUM_*</code>, <code>PANEL_*</code>, <code>FAN_B_*</code>, <code>BAY_*</code>, <code>PIVOT_X</code>/<code>PIVOT_YD</code>, <code>SWING_LOCK_DEG</code>, <code>PANEL_CUT_YD</code>. <strong>Requires the Dynamic Components extension</strong> for the click behavior — it does <strong>not</strong> carry to Sketchfab web embeds (those render a static pose). Static parts + 2 DCs, <strong>2 scenes</strong>: the interactive swing scene + a <strong>Labeled</strong> scene (<code>lighttrap_labels()</code> / <code>LIGHTTRAP_LABELS</code> + <code>LIGHTTRAP_POINT_LABELS</code> — <code>add_text</code> callouts on a <code>Labels</code> tag, drum/Fan B point-anchored since they're nested in the Panel Swing DC; the camera pulls back <code>zoom(0.62)</code> so callouts have margin). Per the project rule, every new .skp gets a Labeled scene — see [[feedback-3d-model-labels]]. <strong>Rebuild whenever those constants or the shared builders change.</strong></td>
+<td><strong>Single interactive cargo-door-end model</strong> (rev10 — the cargo panel + drum SWING 56° about a vertical Ø89 CHS pivot post; consolidates the former separate operating + transport models into one .skp via Dynamic Components). <strong>Static parts:</strong> ghosted container stub (ends at the door plane X=0 so the bay/drum/doors read as protruding beyond it), fixed RHS <strong>door frame</strong> (<code>door_frame()</code> + housing-surround EPDM), the <strong>fixed pivot axle</strong> (<code>axle()</code> — Ø89 CHS post + thrust collar + Ø220 thrust / Ø120 journal bearings), the two <strong>FIXED panel strips</strong> (<code>near_leaf()</code> Yd0–180 + <code>far_leaf()</code> at the pivot, each with perimeter EPDM + the vertical cut seal), the <strong>removable left film-plane rails</strong> on drop-in <strong>saddles</strong> (<code>_rail_saddle()</code>), <strong>wall anchors</strong> + stay eyes (<code>wall_anchors()</code>), and partial <strong>processing tray</strong>. <strong>Two Dynamic Components</strong> (click with SketchUp's Interact tool): <strong>(1) Panel Swing</strong> — the swinging assembly (the swinging center+corner panel leaves + <code>pivot_link()</code> hub + 4 Southco latches, B2 <strong>punch-out bay</strong> <code>bay()</code> offsetting the drum to X=−400, the <strong>housed revolving-door light lock</strong> Ø800 housing + C-shell drum [the rotor is <strong>baked static</strong> as <code>drum_rotor()</code> so the nested DC doesn't reset] + seals + pull handle, <strong>Fan B</strong>, the <strong>drum support cage</strong> <code>drum_frame()</code>, the stay hooks <code>frame_hooks()</code>, <strong>plus a nested "Lift-out Walkways" child</strong> — <code>liftout_walkways()</code> builds the amber removable left walkway + drum-exit punch-out + near door-end band at world coords, carrying <code>_hidden_formula = "PanelSwing!swing&gt;0.5"</code> so the lift-out decks <strong>disappear once the panel swings past half-open</strong> (lifted out for transport) and reappear when closed; these were moved out of the static <code>context()</code>/<code>walkways_partial()</code> so they draw once) animates <strong>RotZ 0↔56°</strong> about the pivot (operating↔transport); <strong>(2) Cargo Doors</strong> — a parent DC whose <code>shut</code> attribute drives two leaf children's <code>RotZ</code> (<code>door_leaf_local()</code>), swinging both ISO leaves 0↔±180° (closed↔open). Fan B <strong>reuses the Overview's shared <code>fan_duct()</code></strong>, and its <strong>flexible connector</strong> is shown: a <strong>static</strong> wall box (<code>fan_b_box()</code>, Cct B termination — stays put when the panel swings) plus an orange <strong>curly coil cable</strong> (<code>fan_b_cable()</code> → <code>ov.ruby_coil_cord</code>) that lives in a <strong>third child DC ("Fan B Cable")</strong> carrying <code>_hidden_formula = "PanelSwing!swing&gt;0.5"</code>, so the coil is <strong>shown only when the door is closed</strong> (plugged box→fan) and <strong>hides when the panel swings open</strong> (unplugged for transport) — same soft-cord convention as the overview/electrical models. Reads <code>DRUM_*</code>, <code>PANEL_*</code>, <code>FAN_B_*</code>, <code>BAY_*</code>, <code>PIVOT_X</code>/<code>PIVOT_YD</code>, <code>SWING_LOCK_DEG</code>, <code>PANEL_CUT_YD</code>. <strong>Requires the Dynamic Components extension</strong> for the click behavior — it does <strong>not</strong> carry to Sketchfab web embeds (those render a static pose). Static parts + 2 DCs, <strong>2 scenes</strong>: the interactive swing scene + a <strong>Labeled</strong> scene (<code>lighttrap_labels()</code> / <code>LIGHTTRAP_LABELS</code> + <code>LIGHTTRAP_POINT_LABELS</code> — <code>add_text</code> callouts on a <code>Labels</code> tag, drum/Fan B point-anchored since they're nested in the Panel Swing DC; the camera pulls back <code>zoom(0.62)</code> so callouts have margin). Per the project rule, every new .skp gets a Labeled scene — see [[feedback-3d-model-labels]]. <strong>Rebuild whenever those constants or the shared builders change.</strong></td>
 </tr>
 </tbody>
 </table>
@@ -4228,7 +4228,7 @@ outputs and the <em>missing-cascade</em> check names the specific files you stil
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-  <div class="md-copyright__highlight">© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a>. Version v0.8</div>
+  <div class="md-copyright__highlight">© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a>. Version v0.9</div>
 </div>
       
         
@@ -4260,7 +4260,7 @@ outputs and the <em>missing-cascade</em> check names the specific files you stil
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.8"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.9"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

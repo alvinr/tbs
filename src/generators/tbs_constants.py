@@ -347,28 +347,76 @@ PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm). NOT ti
 # bearings. No internal fins — light-tight by geometry (openings <90°, 180° apart,
 # so the drum opening can never bridge both at once). Replaces the failed Ø750
 # 4-fin drum. See light-trap-selection.md / hinged-panel-report.md §3.
-DRUM_CX    = -400    # light-lock center X (mm) [rev9 B2: 0→-400 — offset out via the
-                     # hinge-panel punch-out bay so the housing interior edge (+50)
-                     # clears the X=150 film-plane left rail by ~100mm]
-DRUM_D     = 900     # fixed housing OUTER diameter (mm) [rev8: was Ø750 drum]
-                     # rev8: reviewed & KEPT — ~555mm passage (sideways entry), accepted
-                     # for occasional single-operator field use; larger Ø deferred
+DRUM_CX    = -420    # light-lock center X (mm) [rev9 B2: 0→-400; 2026-08-26: -400→-420 —
+                     # re-centered in the FIXED drum cage (which is pinned by the walkway /
+                     # swung-panel transport position / film-beam + cargo-door clearances).
+                     # Housing interior edge now -20, clears the X=150 film-plane rail by ~170mm]
+DRUM_D     = 800     # fixed housing OUTER diameter (mm) [rev8 Ø900; 2026-08-26: Ø900→Ø800 —
+                     # REDUCED to fit inside the fixed cage with 31mm clearance (the Ø900 drum
+                     # overhung the cage rails). Passage (80° sideways entry) ~555→~487mm — Alvin
+                     # accepts the interior loss; below the ≥700 aspiration, as before]
 DRUM_R     = DRUM_D // 2                      # 450 — housing radius (visible footprint)
-DRUM_H_LT  = 2250    # light-lock TOP Z (mm) — LIFTED +50 with the walkway (was 2200) so the
-                     # interior height (DRUM_H_LT − PANEL_FLOOR_GAP = 2120) is PRESERVED: 340mm
-                     # headroom over a 1780mm operator standing on the raised (Z130) walkway;
-                     # top clears the ceiling (2388) by 138mm.
+DRUM_H_LT  = 2100    # drum CAP-TOP Z (mm) — LOWERED (was 2250) so the top hub stack seats
+                     # correctly: the upper axle beam sits ABOVE the cap (drum hangs from the
+                     # bearing BELOW that beam, per 2D Sheets 8/10), beam top = DRUM_H_LT+242 =
+                     # 2342, clearing the 2388 ceiling by 46mm. Interior height
+                     # (DRUM_H_LT − PANEL_FLOOR_GAP = 1970) still clears a 1780mm operator on the
+                     # raised (Z130) walkway by 190mm (was 2120; the ~150mm loss buys the ceiling-
+                     # legal beam-above-bearing hub — see light-trap-selection §3.3).
 LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
-LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
+LT_DRUM_OR     = LT_HOUSING_R - LT_HOUSING_T - 13   # 382 — drum outer radius, 13mm running gap inside the housing bore (derived so it tracks the housing Ø)
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
-LT_CAP_T       = 4.76     # drum top/bottom cap thickness (mm) — 3/16" HDPE, THICKER than the 1/8" shell: the caps carry the steel stub shafts into the SKF 6215 bearings (structural hub load path). Cut from the housing 46685 offcut (no extra sheet).
-LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
+LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness). Drum = single 80° opening → a 280° C-shell (not a full cylinder).
+LT_SHELL_ARC   = 360 - LT_OPENING_DEG   # 280 — drum shell / rim-angle / rivet arc (the 80° egress slot has no shell there)
+# (LT_CAP_T retired 2026-08-26 — the deprecated pre-split alias; all consumers migrated to LT_CAP_TOP_T / LT_CAP_BOT_T.)
+# ── End caps — STRUCTURAL hub discs (carry the steel stub shafts into the SKF
+# 6215 bearings). rev (2026-08-21): HDPE → METAL; then both caps → ALUMINUM
+# (identical parts, lighter than the steel-bottom option). A steel stub shaft
+# can't weld to an Al cap, so BOTH stub shafts are BOLTED via a 4×M10 flange.
+# Full Ø discs (the opening is in the cylindrical shell only, not the caps).
+LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
+LT_CAP_BOT_T   = 8.0      # bottom cap: 8mm 6061-T6 aluminum plate (identical to top)
+LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
+# ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
+# The rim angle + shell lap + rivets follow the drum's 280° C-shell arc (LT_SHELL_ARC) —
+# NOT a full ring; the 80° operator opening has no shell/rim there.
+LT_RIM_LEG     = 25       # rim-angle leg (mm) — rolled 280° arc at each cap rim, provides the rivetable lip
+LT_RIM_T       = 3        # rim-angle thickness (mm); 25×25×3 6061-T6 Al, riveted to both caps over the 280° arc
+LT_LAP_H       = 25       # shell lap over each cap rim (mm)
+LT_RIVET_D     = 3.18     # 1/8" 18-8 SS blind rivet, low-profile head (McMaster 97525A425 shell→cap / 97525A435 housing→frame)
+LT_RIVET_HOLE  = 3.3      # drill hole Ø (mm) — #30 drill, 0.129–0.133" per the rivet datasheet
+LT_RIVET_PITCH = 60       # rivet pitch around the cap rim (mm)
+LT_RIVET_N     = round((LT_SHELL_ARC / 360) * math.pi * LT_CAP_OD / LT_RIVET_PITCH)   # ≈ 35 rivets per cap (280° shell arc)
+LT_RIM_RIVET_PITCH = 120  # rim-angle flat-leg → cap rivet pitch (mm; coarser than the shell rivets)
+# ── Housing (outer skin) → FRAME attachment (2026-08-21). The fixed housing laps a
+# rolled rim-angle welded to the frame top/bottom beams (opening edges stiffened by Al
+# edge channels, not jamb posts); SS rivets + DP8010.
+LT_HOUSING_ARC     = 360 - 2 * LT_OPENING_DEG   # 200 — housing material arc (two 100° arcs; two 80° openings)
+LT_HOUSING_RIVET_N = round((LT_HOUSING_ARC / 360) * math.pi * 2 * LT_HOUSING_R / LT_RIVET_PITCH)  # ≈ 26 per top/bottom edge
+# ── Running-gap light-seal WIPER (2026-08-24) — nylon strip brushes on the ROTATING drum.
+# Vertical brush strips on the drum OD, bristles wiping the FIXED housing bore.
+# Spaced ≤100° (the housing material-arc width) so a strip always sits in each 100° arc at
+# every drum rotation → guaranteed gap-light block (light-trap-selection §9 Sheet 7 study).
+# #4 staple-set strip brush — 3/16" (4.76mm) metal channel backing, 0.008" (0.20mm) BLACK
+# nylon, 0.687" (17.5mm) trim; black bristles absorb stray light, the fine dense fill blocks it.
+# Each strip snaps into a Tanis anodized-aluminum STRAIGHT-FLANGE holder whose offset flat
+# flange is blind-riveted to the drum OD — the rivets land in the aluminum flange, CLEAR of
+# the brush (a 3/16" channel is too small to rivet through). The holder body is low-profile
+# (< the 13mm gap); bristles lay over onto the bore, tolerant of HDPE out-of-roundness.
+# 96" (2.44m) stock → ONE continuous piece over the full drum height (no butt joint).
+# Anodized aluminum (not SS) suits the damp container. Gordon Brush / Tanis; sizes #2.5–#12.
+LT_WIPER_N         = 4      # brush strips around the drum (280° wall / 3 gaps = 93.3° spacing ≤ 100°)
+LT_WIPER_TRIM      = 17.5   # bristle trim / free length (mm) — 0.687" #4 strip brush (bridges the 13mm gap, lays over)
+LT_WIPER_BRISTLE_D = 0.20   # reserved — bristle Ø (mm); labels state the 0.008" catalog spec directly (dense = light block, black = absorb)
+LT_WIPER_BACKING   = 4.76   # brush channel backing (mm) — 3/16" #4 metal channel (snaps into the Al holder track)
+LT_WIPER_HOLDER_W  = 1.27   # holder flange wall (mm) — 0.050" anodized-Al Tanis straight-flange holder
+LT_WIPER_SPACING   = LT_SHELL_ARC / (LT_WIPER_N - 1)   # 93.3° between strips on the 280° drum wall
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,
 # enclosing the offset housing, so the film-plane rails stay internal.
 # See docs/superpowers/specs/2026-06-05-lighttrap-punchout-bay-design.md.
-BAY_FRONT_X = DRUM_CX - DRUM_R - 40   # -890 — bay outer (exterior) face
+BAY_FRONT_X = -890   # bay outer (exterior) face — FIXED (transport/swing envelope); decoupled from the drum Ø on the 2026-08-26 Ø900→Ø800 shrink so the swung-panel position + cargo-door clearance are unchanged (the smaller drum just has more room in the bay)
 BAY_BACK_X  = 0                        # bay meets the panel side-zone door plane
 BAY_WALL_T  = 3.18                     # bay box wall thickness (mm) — 1/8" HDPE, US Plastics 46684 (2026-07-22; was 6mm nom); 4-wall corner-welded box + EPDM lip gives the rigidity, not the skin gauge
 
@@ -402,8 +450,65 @@ FAR_STRIP_YD0  = PIVOT_YD                     # 2287 — fixed FAR strip spans P
 # in the lighttrap builder, cited from the design spec.
 DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
 DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
-DRUM_CAGE_YD_L = DRUM_CY - DRUM_R - 31  # 700 — cage side ~30mm clear of the Ø900 housing
-DRUM_CAGE_YD_R = DRUM_CY + DRUM_R + 31  # 1662
+DRUM_CAGE_YD_L = 700    # cage near side — FIXED (walkway/transport envelope); decoupled from the drum Ø on the Ø900→Ø800 shrink. Clears the Ø800 housing (near edge 781) by 31mm at the rail inner face (750).
+DRUM_CAGE_YD_R = 1662   # cage far side — FIXED (see YD_L); clears the Ø800 housing (far edge 1581) by 31mm.
+# ── Light-trap SUPPORT FRAME (2026-08-21) — steel welded box cage, INTEGRATED with the
+# swing-panel frame (one weldment). Carries both SKF 6215 bearings + the fixed housing
+# (outer skin). Members = steel RHS matching the panel; top/bottom bearing plates. The
+# two 80° openings' free HDPE edges are stiffened by bonded Al U-channels (below), NOT
+# steel jamb posts (dropped 2026-08-23 — lighter, and the housing is one rolled sheet).
+LT_FRAME_RHS       = 50    # cage post / rail RHS section (mm; ~2" SHS, matches the panel frame)
+LT_FRAME_T         = 3     # RHS wall (mm)
+LT_FRAME_PLATE_T   = 10    # top/bottom bearing-plate thickness (mm steel)
+LT_TOPRING_OD      = 240   # upper bearing seat: isolated 6061-T6 Al top ring OD (mm); ID = bearing OD.
+                           # Widened 200→240 (2026-08-27) so the ring→plate CSK bolt circle clears the
+                           # Ø160 welded stub-shaft flange — the drum flange can pass the bolt heads on
+                           # assembly (ring bolted to the plate FIRST, then the drum stub inserted up).
+LT_COLLAR_OD       = 240   # lower bearing seat: steel collar OD (mm) — widened 210→240 to match.
+LT_RING_BOLT_PCD   = 200   # ring/collar → mount-plate CSK bolt circle (mm). Was 165/175 — pushed out
+                           # clear of the Ø160 flange (head inner edge Ø180 > Ø160) so the flange passes.
+LT_FRAME_MOUNT_BOLT_TOP = 6   # top-ring → mount-plate bolts (M10)
+LT_FRAME_MOUNT_BOLT_BOT = 8   # collar → mount-plate bolts (M10)
+# Axle-support BEAM — the cross-beam spanning the cage (Yd, at the drum axis X) at each end,
+# carrying the SKF 6215 via a mount plate. 50×50×3 (= the perimeter RHS section): the 962mm
+# span is barely stressed — δ ≈ 0.3mm under the ~69 kg hung drum (L/3200), so the old deep
+# 100×50 was unnecessary. The bearing RING/collar (Ø240 OD, Ø200 bolt circle) is far
+# wider than the 50mm beam, so it bolts to a BEARING MOUNT PLATE welded across the beam —
+# NOT the beam wall (only 2 of 6 bolts would land on a 50mm beam).
+LT_AXLE_BEAM_H     = 50    # beam depth (mm) — 50×50×3 steel RHS
+LT_AXLE_BEAM_W     = 50    # beam width (mm)
+LT_AXLE_BEAM_T     = 3     # beam wall (mm)
+LT_AXLE_BEAM_SPAN  = DRUM_CAGE_YD_R - DRUM_CAGE_YD_L   # 962 — beam clear span (Yd)
+LT_BRG_PLATE_OD    = 240   # bearing mount-plate OD (mm) — matches the ring/collar OD; carries the ring's Ø200 6×M10 circle across the 50mm beam
+LT_BRG_PLATE_T     = 12    # mount-plate thickness (mm) — steel, welded to the beam; ring/collar bolt into it
+# Upper hang STUB SHAFT + cage-Z derivation (2026-08-26). The drum HANGS from the top SKF 6215;
+# the bearing sits ABOVE the drum cap on this stub, the mount plate + axle beam above it — so the
+# beam clears the rotating drum (a beam at the cap level would run through the drum). Stub 75 (was
+# 150) for ceiling clearance: cage top 2217, ~171mm under the 2388 lid. The bottom mirrors the top
+# (bearing → plate → beam), the lower bearing FLOATING (radial locate only).
+LT_STUB_SHAFT_L  = 75    # upper hang stub length (mm); Ø75 h6 into the SKF 6215 bore
+LT_BRG_STANDOFF  = LT_STUB_SHAFT_L - 20 - 25   # 30 — cap top → upper-bearing bottom (25 = SKF 6215 width B)
+LT_BEAM_STANDOFF = LT_STUB_SHAFT_L - 8         # 67 — cap top → top-axle-beam underside (mount plate fills the 12mm below it)
+LT_TBEAM_Z0      = DRUM_H_LT + LT_BEAM_STANDOFF          # 2167 — top-beam underside (= housing top)
+LT_CAGE_TOP      = LT_TBEAM_Z0 + LT_AXLE_BEAM_H          # 2217 — cage/beam TOP (clears 2388 by 171)
+LT_LBRG_Z0       = PANEL_FLOOR_GAP - 25                  # 105 — lower-bearing bottom (short stub below the Z130 cap)
+LT_BBEAM_Z1      = LT_LBRG_Z0 - LT_BRG_PLATE_T           # 93 — bottom-beam top (mount plate 93..105 sits above it)
+LT_CAGE_BOT      = LT_BBEAM_Z1 - LT_AXLE_BEAM_H          # 43 — bottom-beam bottom Z
+# Fixed housing (outer light-seal skin) spans BEAM-TO-BEAM (top-beam under face → bottom-beam top
+# face): it laps + rivets to rim-angle on the two beams (which cross it) and skirts the hub gaps.
+LT_HOUSING_Z_BOT = LT_BBEAM_Z1                  # 93 — bottom-beam top face (housing bottom)
+LT_HOUSING_Z_TOP = LT_TBEAM_Z0                  # 2167 — top-beam under face (housing top)
+# Housing OPENING-EDGE stiffener (2026-08-23) — replaces the steel jamb posts. Each of
+# the fixed housing's two openings (EXT+INT) leaves two free vertical HDPE edges; a
+# bonded 6063-T5 aluminum U-channel caps each edge (stiffener + rivet anchor) and its
+# two ends bolt to the fixed top/bottom frame beams. (Nominal section — confirm stocked
+# size at the parts pass.)
+LT_EDGE_CHAN_W        = 20   # U-channel outside width across the base (mm; 6063-T5 Al)
+LT_EDGE_CHAN_LEG      = 18   # leg height (mm) — bond + rivet land on the HDPE face
+LT_EDGE_CHAN_T        = 3    # channel wall (mm); inside slot = W − 2T = 14mm (5mm HDPE + DP8010)
+LT_EDGE_CHAN_N        = 4    # channels total (2 openings × 2 edges)
+LT_EDGE_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — same 1/8" SS domed-head as the rim joints
+LT_EDGE_CHAN_END_BOLT = 8    # M8 bolt each channel end → frame top/bottom beam (via L-clip)
 
 # Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
 # the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.
@@ -1194,7 +1299,7 @@ FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
 # wall — its conduit then runs along that wall; only a flex whip (with swing slack)
 # bridges to the swinging panel so it follows the ~56° transport rotation.
 FAN_A_YD    = EXT_FILL_YD  # = 1181mm — directly BELOW the X1 fill port, in the 270mm plumbing corridor (clear full-height of the 1000L stack; relocated from Yd1996, which the taller 1000L totes buried — see ibc-reconfig-v2)
-FAN_B_YD    = (C_WID // 2 - DRUM_R) // 2          # = 365mm — near the pinhole wall, in the near corner zone clear of the drum (near edge Yd≈731)
+FAN_B_YD    = 365          # mm — near the pinhole wall, in the near corner zone clear of the drum. FIXED (Fan A/IBC clash was resolved here); decoupled from the drum Ø on the Ø900→Ø800 shrink — the smaller drum (near edge 781) only gives it MORE clearance.
 
 # Baffle duct (one per fan, welded galvanized steel)
 # Fan A: duct extends into container interior from wall

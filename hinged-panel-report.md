@@ -137,6 +137,30 @@ skin + 1"×1"×⅛" Al stiffener grid + U-channel envelope is moisture/chemical-
 light-tight, and weld-sealed (same material and weld process as the drum/housing); it
 costs more than a plywood build (§8.1).
 
+### 2.6 HDPE Surround Fabrication
+
+The center-zone HDPE surround — the skin that wraps the Ø800 light-trap housing and the
+forward B2 punch-out bay — is a corner-welded 1/8" HDPE assembly of six pieces: the two
+center-zone panel-face skins (carrying the personnel light-lock opening), the two bay
+side walls, and the upper and lower floor caps. The caps close the top and bottom of the
+bay and **butt-and-extrusion-weld to the Ø800 housing wall**; the housing-to-panel radial
+gap is closed by the 20mm neoprene surround seal (§3.4). The surround is fastened to the
+steel center-zone frame by a **lapped, blind-riveted joint** — the HDPE laps the frame
+flange and is set with 1/8" 18-8 stainless blind rivets on a regular pitch, with a DP8010
+sealant bead along the lap for light-tightness. This is what ties the surround to the
+frame (it is not a floating skin); the same rivet family is used on the light-trap shell.
+
+The flat-pattern cut sheets for all six pieces are **Sheet 7**; the housing-join and
+frame-rivet lap sections are **Sheet 8**. The housing cut geometry is shared with the
+[Light Trap Selection](light-trap-selection.md) housing sheet so the surround↔housing
+interface stays single-sourced.
+
+**Sheet 7 — HDPE Surround Flat-Pattern Cut Sheets (6 pieces)**
+![TBS-001 Hinged Panel — Sheet 7: HDPE Surround Cut Sheets](assets/hingepanel-sheet7.png)
+
+**Sheet 8 — HDPE Surround: Housing Join & Frame Rivet Details**
+![TBS-001 Hinged Panel — Sheet 8: Surround Join & Rivet Details](assets/hingepanel-sheet8.png)
+
 ---
 
 ## 3. Housed Revolving-Door Light Lock
@@ -158,12 +182,12 @@ costs more than a plywood build (§8.1).
 | Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
 | Drum (rotating) | Ø764mm C-shell, single 80° opening, **~Ø758mm clear bore** |
 | Passage width | **~487mm** (the 80° opening) — single operator, sideways entry |
-| Height | Top at Z=2,250mm (upper bearing on panel top rail) |
+| Height | Cap top at Z=2,100mm AFF (cage/beam top 2,217mm); see [Light Trap Selection](light-trap-selection.md) §3 |
 | Mounting | **Carried with the panel** — rides at Z=130 on the panel bottom rail (130mm floor gap → clears the tray rim, and the swinging cage passes over the Z115 walkway brackets). Operator steps up ~130mm over the threshold to enter; exits level onto the walkway deck (also Z=130). |
 | Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 1/8" HDPE drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
-| Clear walking height | 1,910mm (between bearings) |
+| Clear walking height | 1,970mm clear interior |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
 | Weight | housing ~22 kg + rotating drum ~36 kg = **~58 kg** (plastic skin, ≈59% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
 
@@ -274,7 +298,10 @@ A grab/pull handle is **through-bolted to the panel's structural frame on the in
 face** — the **left jamb of the drum aperture**, at waist height — so a single operator
 can grip it and swing the heavy (~139 kg movable) panel open from **inside** the container,
 both for the emergency-egress swing (§4.2) and to initiate the transport rotation (§5). It
-bolts to the steel frame, not the HDPE skin.
+bolts to the steel frame, not the HDPE skin. This is the **panel-swing** handle — distinct
+from the drum-rotation pull handle inside the revolving light lock (owned by the
+[Light Trap Selection](light-trap-selection.md) set); the two handles serve different
+mechanisms and are drawn on their own blueprints.
 
 | Parameter | Value |
 |-----------|-------|
@@ -391,7 +418,7 @@ position. Five light ingress paths are sealed:
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
 | 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom brush seal** — a continuous nylon-filament strip brush in an aluminum holder on the threshold, its bristles rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the bristle wall closes it light-tight. The panel bottom edge **sweeps through the bristles** as the panel swings — so this edge is a **brush, not a compression seal** (a compression EPDM would drag and deform under the sideways sweep; a brush passes the edge through cleanly — the same principle as the drum-opening brush seals). The bristle density is the seal; no cam-latch compression on this edge. (Sheet 3, Detail B.) |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
-| 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2250), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
+| 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2,100), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
@@ -431,9 +458,10 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Aluminum U-channel, 1/8-panel (per meter) | Gasket retainer + 1/8" HDPE-skin retention (perimeter + housing-surround + stiffener grid). SECTION: aluminum '1/8-panel' U-channel — inner slot ~3.2mm (captures the 3.18mm/PANEL_SKIN_T HDPE skin), ~10–12mm legs, ~1.5mm wall. TOTAL LENGTH: 40m (pick a stock 1/8-panel profile; only the 3.18mm slot is fixed by the skin). | 40 m | Online Metals | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $76–$104 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
+| [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 8. $14.59/100. | 2 pack | McMaster-Carr | $29 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location. | 1 ea | StrongAr Hardware | $70–$90 |
-| **Panel total** | | | | **$1,278–$1,484** |
+| **Panel total** | | | | **$1,307–$1,513** |
 <!-- END parts:panel -->
 
 
@@ -502,11 +530,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,278<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,484<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,307<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,513<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,406<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,083<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,435<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,112<!-- END costing:hp-total-high -->** |
 
 ---
 

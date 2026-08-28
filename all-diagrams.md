@@ -160,6 +160,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 11: Fan-B Plywood Cut Sheet & Attachments](assets/hingepanel-sheet11.png)
 
+![TBS-001 Hinged Panel — Sheet 12: Frame Hardware — Cam Latch, Transport Stay, Brush Strip](assets/hingepanel-sheet12.png)
+
 ---
 
 ## 13. Perimeter Walkway

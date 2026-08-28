@@ -2166,6 +2166,87 @@ def sheet11():
     print("  diagrams/hingepanel-sheet11.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 12  —  Frame Hardware Attachments (three details)
+#   A — Southco C2-33 cam latch: through-bolt + backing plate to the frame.
+#   B — transport-stay hook: welded to the left perimeter RHS stile (§5.2).
+#   C — top/bottom brush strip: McMaster 74405T12 brush in an 8813T53 Al holder,
+#       screwed to the FIXED door frame.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet12():
+    fig, ax = plt.subplots(figsize=(19, 8.5))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(0, 540)
+    ax.set_ylim(-70, 220)
+
+    # ═══ DETAIL A — cam latch (through-bolt + backing) ═══════════════════════
+    Ax = 20
+    ax.text(Ax + 80, 205, "DETAIL A — SOUTHCO C2-33 CAM LATCH", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Ax + 80, 192, "horizontal section · through-bolt + backing plate", ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    ax.text(Ax - 8, 150, "← EXT", ha="center", fontsize=6.5, color=C_DIM, **FONT)
+    ax.text(Ax + 168, 150, "INT →", ha="center", fontsize=6.5, color=C_DIM, **FONT)
+    # frame RHS (cut) + interior latch body + backing plate
+    ax.add_patch(Rectangle((Ax + 40, 40), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
+    ax.add_patch(Rectangle((Ax + 43, 43), 44, 44, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 65, 40), (Ax + 30, 8), "frame RHS\n(2×2×0.120)", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle((Ax + 90, 48), 34, 34, fc="#7A6A9A", ec=C_OUT, lw=1.3, zorder=5))   # latch body (interior)
+    leader(ax, (Ax + 107, 82), (Ax + 130, 150), "Southco C2-33\ncam latch\n(interior face)", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle((Ax + 28, 46), 12, 38, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))     # backing plate (exterior)
+    leader(ax, (Ax + 34, 84), (Ax + 20, 150), "backing plate", col=C_OUT, fs=6)
+    for zy in (58, 72):
+        ax.plot([Ax + 30, Ax + 122], [zy, zy], color="#101010", lw=2.2, zorder=8)                # through-bolts
+        ax.add_patch(Rectangle((Ax + 26, zy - 3), 6, 6, fc="#101010", ec="none", zorder=9))
+    ax.text(Ax + 80, 24, "2× bolts through the frame wall into an\nexterior backing plate; latch cams the seal shut", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
+
+    # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
+    Bx = 210
+    ax.text(Bx + 80, 205, "DETAIL B — TRANSPORT-STAY HOOK", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Bx + 80, 192, "welded to the left perimeter RHS stile (§5.2)", ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((Bx + 20, 40), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
+    ax.add_patch(Rectangle((Bx + 23, 43), 44, 44, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Bx + 45, 40), (Bx + 25, 8), "left swing stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
+    # welded eye plate + hook + turnbuckle to wall eye
+    ax.add_patch(Rectangle((Bx + 70, 58), 22, 14, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))         # eye plate
+    ax.add_patch(Polygon([(Bx + 70, 72), (Bx + 78, 78), (Bx + 70, 78)], closed=True, fc=C_OUT, ec="none", zorder=6))  # weld
+    ax.add_patch(Circle((Bx + 88, 65), 7, fc=BG, ec=C_OUT, lw=1.3, zorder=6))                       # eye
+    ax.plot([Bx + 95, Bx + 150], [65, 65], color="#101010", lw=2.0, zorder=6)                       # turnbuckle rod
+    ax.add_patch(Rectangle((Bx + 118, 60), 16, 10, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=7))        # turnbuckle body
+    ax.add_patch(Circle((Bx + 156, 65), 7, fc=BG, ec=C_OUT, lw=1.3, zorder=6))                       # wall eye
+    ax.add_patch(Rectangle((Bx + 160, 45), 8, 40, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="\\\\", zorder=5))  # wall
+    leader(ax, (Bx + 88, 65), (Bx + 70, 155), "eye plate WELDED\nto the stile", col=C_OUT, fs=6)
+    leader(ax, (Bx + 126, 65), (Bx + 150, 120), "M16 turnbuckle →\nwall eye (near wall)", col=C_DIM, fs=6)
+    ax.text(Bx + 90, 24, "load reacts into steel, not the HDPE skin;\nengaged after the swing, released before swing-back", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
+
+    # ═══ DETAIL C — brush strip in Al holder (door frame) ════════════════════
+    Cx = 400
+    ax.text(Cx + 70, 205, "DETAIL C — TOP/BOTTOM BRUSH STRIP", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Cx + 70, 192, "74405T12 brush in 8813T53 Al holder → door frame", ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((Cx + 30, 100), 80, 40, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))   # fixed door frame member
+    leader(ax, (Cx + 70, 140), (Cx + 60, 175), "FIXED door frame\n(50×50 RHS)", col=C_OUT, fs=6)
+    # Al holder channel (U) screwed under the frame
+    ax.add_patch(Rectangle((Cx + 48, 78), 44, 22, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))
+    ax.add_patch(Rectangle((Cx + 52, 82), 36, 14, fc=BG, ec=C_OUT, lw=0.6, zorder=5))
+    leader(ax, (Cx + 90, 89), (Cx + 120, 130), "8813T53 Al\nholder channel", col=C_OUT, fs=6)
+    ax.plot([Cx + 70, Cx + 70], [140, 100], color="#101010", lw=1.8, zorder=8)                        # screw into frame
+    ax.add_patch(Circle((Cx + 70, 138), 3, fc="#101010", ec="none", zorder=9))
+    ax.text(Cx + 44, 150, "#10 screw\n→ frame", ha="center", fontsize=6, color=C_DIM, **FONT)
+    # brush bristles hanging down
+    for bxk in range(Cx + 54, Cx + 88, 4):
+        ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
+    leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
+
+    title_block(ax, "SHEET 12 OF 12",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
+                scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet12.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -2180,4 +2261,5 @@ if __name__ == "__main__":
     sheet9()
     sheet10()
     sheet11()
+    sheet12()
     print("Done.")

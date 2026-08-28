@@ -24,33 +24,21 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **`overview.skp` + `construction.skp` re-sent for the Ø900→Ø800 drum cascade — cascade CLOSED.** Both models
-  were stale vs the drum resize (Ø900→Ø800 / `DRUM_H_LT` 2250→2100); regenerated + re-sent + Sketchfab-refreshed
-  (in-place, same URLs). Both reuse the `lighttrap` builders (`lt.drum()`), so they picked up the current drum
-  automatically — verified on each: C-shell z130–2100 · Ø764, Ø160 stub flanges, housing arcs z93–2167
-  (beam-to-beam). **All 10 model `source_hash` values are now current** (`manifest.py --check` clean) — the site
-  publish is no longer gated on stale 3D.
+- **Lighttrap Revoloving Drum detaile design and blueprint**
+The lighttrap had a light-weight design that defined the major parameters. What was missing was a deatiled design down to the fabrication blueprints for the deatils of the mechanism.
+  - **Design:** the drum end **caps are 8mm 6061-T6 aluminum** (bolted 4×M10 stub-shaft flanges), the **shell->cap and housing->frame joints are lap-and-fasten** (rolled 25×25×3 Al rim-angle + 1/8" 18-8 SS blind rivets @ ~60mm + 3M DP8010 bond/light-seal, superseding the extrusion weld), and a **steel welded box cage integrated with the swing-panel weldment** carries the bearings and the fixed outer skin (free HDPE opening edges stiffened by bonded Al U-channels in place of jamb posts). The **drum was resized Ø900->Ø800** (Ø764 drum, ~Ø758 bore) and re-centered to fit the transport-fixed cage; **interior 1,970mm clear** (`DRUM_H_LT` 2,100; cage top 2,217).
+  - **Hub (both ends, Sheets 5/6):** cap -> **Ø160 steel stub-shaft flange** -> **Ø75 shaft** -> **SKF 6215-2RS1** -> **Ø240 bearing ring** (upper, isolated Al) / **collar** (lower, steel) -> **Ø240×12 steel mount plate** (ring/collar bolted 6/8×M10 CSK; plate welded to the beam) -> **50×50 axle beam**. The drum **hangs** from the upper bearing (above its cap, below the top beam); the lower bearing **floats** above the bottom beam. Axial retention: inner race by DIN 471 shaft circlips (+ a bolted Ø90×4 **end-retainer plate** on the upper load-bearing shaft); outer race **located** (upper - Ø122 shoulder + DIN 472 ring) / **floating** (lower - plain Ø130 H7 bore).
+  - **Seals:** the ≈13mm running gap is closed circumferentially by **4× #4 (3/16") nylon strip brushes** (anodized-Al straight-flange holders DP8010-bonded + riveted to the drum OD at 93° spacing) and axially by **cap<->frame neoprene wiper + silicone bead** top and bottom; a Sheet 7 light-path study proves no straight-through or over-the-top path at any rotation. - **Interior pull handle** (off-the-shelf McMaster 1871A65) bolts to a steel stile that plugs + M10-CSK-bolts to the two Al caps - the pull load lands in the caps, with no fastener through the HDPE wall.
 
-- **Revolving light-trap fabrication blueprint set + metal-cap / lap-joint / integrated-frame redesign (branch `lighttrap-bp`).** A dedicated **12-sheet** 2D set (`generate_lighttrap_diagram.py` -> `lighttrap-sheet1..12`) is the fabrication source-of-record, embedded as **[Light-Trap Selection §9](light-trap-selection.md)** and registered in the gallery / publish / setup lists; §3.3-§4 spec prose reconciled to the built design. **Sheets:** 1 General Arrangement · 2 housing cut sheet · 3 drum-shell cut sheet · 4 shell->cap lap joint · 5 bearing-hub assembly · 6 machined components (caps, bearing rings, stub-shaft) · 7 seals & light-path · 8 support-frame GA · 9 housing->frame · 10 combined top-end · 11 pull-handle mount · 12 top-end seal.
-  **Design:** the drum end **caps are 8mm 6061-T6 aluminum** (bolted 4×M10 stub-shaft flanges), the **shell->cap and housing->frame joints are lap-and-fasten** (rolled 25×25×3 Al rim-angle + 1/8" 18-8 SS blind rivets @ ~60mm + 3M DP8010 bond/light-seal, superseding the extrusion weld), and a **steel welded box cage integrated with the swing-panel weldment** carries the bearings and the fixed outer skin (free HDPE opening edges stiffened by bonded Al U-channels in place of jamb posts). The **drum was resized Ø900->Ø800** (Ø764 drum, ~Ø758 bore) and re-centered to fit the transport-fixed cage; **interior 1,970mm clear** (`DRUM_H_LT` 2,100; cage top 2,217).
-  **Hub (both ends, Sheets 5/6):** cap -> **Ø160 steel stub-shaft flange** -> **Ø75 shaft** -> **SKF 6215-2RS1** -> **Ø240 bearing ring** (upper, isolated Al) / **collar** (lower, steel) -> **Ø240×12 steel mount plate** (ring/collar bolted 6/8×M10 CSK; plate welded to the beam) -> **50×50 axle beam**. The drum **hangs** from the upper bearing (above its cap, below the top beam); the lower bearing **floats** above the bottom beam. Axial retention: inner race by DIN 471 shaft circlips (+ a bolted Ø90×4 **end-retainer plate** on the upper load-bearing shaft); outer race **located** (upper - Ø122 shoulder + DIN 472 ring) / **floating** (lower - plain Ø130 H7 bore).
-  **Seals:** the ≈13mm running gap is closed circumferentially by **4× #4 (3/16") nylon strip brushes** (anodized-Al straight-flange holders DP8010-bonded + riveted to the drum OD at 93° spacing) and axially by **cap<->frame neoprene wiper + silicone bead** top and bottom; a Sheet 7 light-path study proves no straight-through or over-the-top path at any rotation. **Interior pull handle** (off-the-shelf McMaster 1871A65) bolts to a steel stile that plugs + M10-CSK-bolts to the two Al caps - the pull load lands in the caps, with no fastener through the HDPE wall.
-  **BOM:** the `lightlock` `parts.py` registry + costing §6 carry the material / joint / fastener lines from real SKUs (Al caps, rim-angle, 18-8 SS blind rivets, DP8010, Al edge channels, strip brushes + holders, bearing rings + retention hardware, the SS bolt/nut/washer lot) - **lightlock ≈ $2,948-$3,989**, all registry / costing / drift gates green; the brush/holder + edge-channel material stay on estimate (Alvin sourcing).
-  **3D:** the `lighttrap` model + the `overview` and `construction` models are all re-sent and in sync with the built geometry (`manifest.py --check` clean).
-- **Film-plane corner wall-mounts + IBC foot ↔ tray clash (branch `film-plane-left-brackets`).** Resolved
+- **Film-plane corner wall-mounts + IBC foot ↔ tray clash.** Resolved
   the film-plane left-bracket + tray/IBC cluster. **Tray clash:** the two FRONT IBC floor feet were shifted
   outboard (derived from the tray edge) so their plate + anchors clear the processing-tray basin — the plate
   spec is unchanged, only the station moves. **Left film-rail wall mounts:** restored the budgeted wall-seat
   **saddles** the redesign had dropped — seat + gusset + **upstand** on the container-facing face (rail bears
   on the inside face, not the outer edge), back-plate lengthened so the gusset welds fully, and the rail ends
-  trimmed to butt the plate. Count firmed 6→4 (BL/TL-near + TR near+far); the two far-LEFT ends land on the
+  trimmed to butt the plate. The two far-LEFT ends land on the
   Ø89 **pivot post** (it carries their weight) so they get a lighter flange **tie** (interior flange + exterior
   plate + 4× M12) instead — sized to clear the post + roof-mount plate. All wall-bolt **heads sit outside**.
-  **Cascade:** parts/costing reconciled (−$161 film), 3D re-sent to all 7 models, and the 2D updated — IBC
-  foot-plan (front-offset), Plate 1 fab (BACK-centered vs FRONT-offset weld), the film-plane rail-end brackets
-  on Sheets 4/11 (exterior plates + bolts + nuts), new **Sheet 11** (far-left → pivot-post attachment detail),
-  Sheet 3 gib now adjustable through the bottom plate, and an `mm`-unit pass on the film-plane sheets. Fan A/B
-  ceiling feeds rerouted clear of the top saddle bolts.
 
 ## [0.8] — 2026-08-19
 

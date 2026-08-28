@@ -310,6 +310,33 @@ git commit -m "hingepanel: report §2.6 HDPE surround + frame-connection resolut
 
 ---
 
+## Round 2 — Frame completion (added 2026-08-28, Alvin feedback)
+
+Scope extension: complete the hinged-panel fabrication set with the frame GA, the pivot-post spec,
+and the missing connection details. **Decisions:** 4 grouped sheets (9-12); pivot post = document the
+already-modeled design; post anchored by **floor + roof bolted plates** (no welding to container);
+cam-latch + Fan-B = **through-bolt + backing plate**; plywood→frame = **IBC-style welded metal tabs +
+T-nuts**; transport-stay hooks = **welded to the left perimeter RHS stile**; brush strip = McMaster
+74405T12 in the 8813T53 Al holder. **All 3D changes batch into ONE send + one Sketchfab upload + one
+commit** (with the Task-5 surround rivets, still uncommitted) per "audit first, cascade once."
+
+- **Task 7 — Sheet 9: Steel Frame GA.** The whole frame (perimeter 2×2×0.120 RHS + center-zone
+  jambs/header + left swing stile), dimensioned; the drum cage shown but noted "detailed in Light-Trap
+  Sheet 7"; callouts pointing to Sheets 10-12 for each connection detail. Register + report §.
+- **Task 8 — Sheet 10 + report §: Pivot-post assembly.** Document the modeled pivot: fixed Ø89×8 CHS
+  post, floor + roof bolted Ø220 mount plates, SKF 51118 thrust bearing (~330 kg), 2 radial bearings,
+  moving hub, 3 frame→hub hinge brackets (detail the bracket bolt pattern). New report § (consolidated
+  spec). Parts: consolidate `sp-pivot-post` + add anchor bolts.
+- **Task 9 — Sheet 11: Plywood.** Fan-B ply band flat-pattern cut sheet (from the 4×8 PT sheet) +
+  Fan-B→plywood through-bolt + backing detail + plywood→frame welded-tab + T-nut pattern (IBC
+  convention). Parts: tabs, T-nuts, fan bolts.
+- **Task 10 — Sheet 12: Frame hardware.** Cam-latch (Southco C2-33) through-bolt + backing; transport-
+  stay hook welded to the stile; brush-strip Al holder screwed to the door frame. Report §4.2/§5.2/§6
+  detail updates.
+- **Task 11 — 3D + cascade.** Add the missing model geometry (plywood tabs/T-nuts, Fan-B mount, latch/
+  stay/brush representations; pivot anchors exist) → ONE send → Alvin save+upload → manifest → ONE commit
+  covering Round-2 3D + the Task-5 surround rivets. Then RELEASE.md bullet + final gates.
+
 ## Self-Review
 
 **Spec coverage:**

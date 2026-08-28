@@ -60,7 +60,10 @@ review is finished:**
   remove the duplicate from `hingepanel-sheet6`. Do this AFTER the drum-diameter change lands (that will
   re-cut several of these sheets anyway).
 
-## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin)
+## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
+
+> Deferred out of the light-trap blueprint (merged/released). These are the starting scope for the **next**
+> blueprint round: the **hinged panel** (`hingepanel-*`). Pick up here when that round begins.
 
 - [ ] **HDPE surround cut sheets + drum-join detail.** The hinged panel's HDPE surround (the skin around
   the Ø800 light-trap housing) has no fabrication cut sheets yet. Draw them: the flat-pattern cut sheet(s)

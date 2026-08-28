@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, PANEL_FAN_BAND_Z, LT_CAGE_TOP, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
@@ -1871,6 +1871,111 @@ def sheet8():
     print("  diagrams/hingepanel-sheet8.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 9  —  Steel Frame General Arrangement
+#   Front elevation of the swinging panel's 2×2×0.120in steel frame: perimeter
+#   (stile + pivot-side verticals, top/bottom rails), the two center-zone jambs +
+#   drum header/sill, and the drum cage ENVELOPE (shown, detailed in Light-Trap
+#   Sheet 7). Detail bubbles route to Sheets 10 (pivot), 11 (plywood/Fan-B), 12
+#   (frame hardware). Member schedule keyed to the frame.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet9():
+    RHS = BRACE_RHS                        # 50.8 — 2×2×0.120in section
+    yL, yR = PANEL_CUT_YD, PIVOT_YD         # 180, 2287 — swinging-frame left (stile) + right (pivot) edges
+    jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R   # 653, 1709 — center-zone jambs
+    z_hdr = LT_CAGE_TOP                     # 2217 — header over the drum cage
+    z_sill = 130                            # sill under the cage (floor gap)
+
+    fig, ax = plt.subplots(figsize=(16, 15))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-360, PW + 360)
+    ax.set_ylim(-360, PH + 320)
+
+    def vbar(x, z0, z1, label=None, lp=None):        # vertical RHS member
+        ax.add_patch(Rectangle((x, z0), RHS, z1 - z0, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
+        ax.add_patch(Rectangle((x + 1.6, z0 + 1.6), RHS - 3.2, z1 - z0 - 3.2, fc="none", ec=C_OUT, lw=0.4, zorder=5))
+        if label:
+            leader(ax, (x + RHS / 2, lp[0]), lp[1], label, col=C_OUT)
+
+    def hbar(z, x0, x1):                              # horizontal RHS member
+        ax.add_patch(Rectangle((x0, z), x1 - x0, RHS, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
+        ax.add_patch(Rectangle((x0 + 1.6, z + 1.6), x1 - x0 - 3.2, RHS - 3.2, fc="none", ec=C_OUT, lw=0.4, zorder=5))
+
+    # ── fixed side strips (do NOT swing) — ghosted ──
+    for x0, x1, tag in [(0, yL, "FIXED near strip"), (yR, PW, "FIXED far strip")]:
+        ax.add_patch(Rectangle((x0, 0), x1 - x0, PH, fc="#EEF0F2", ec=C_DIM, lw=0.6, ls=(0, (5, 3)), zorder=1))
+        ax.text((x0 + x1) / 2, PH / 2, tag + "\n(bolted to door\nframe — no swing)", ha="center",
+                va="center", fontsize=6.6, color=C_DIM, rotation=90, **FONT, zorder=2)
+
+    # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 11 ──
+    ax.add_patch(Rectangle((yL, 0), jL - yL, PANEL_FAN_BAND_Z, fc=C_WOOD, ec=C_OUT, lw=0.7, alpha=0.45, zorder=2))
+    ax.text((yL + jL) / 2, PANEL_FAN_BAND_Z / 2, "18mm PLY\nFan-B band", ha="center", va="center",
+            fontsize=7, color="#6b4a1f", **FONT, zorder=3)
+
+    # ── drum cage ENVELOPE (shown; detailed elsewhere) ──
+    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, z_sill), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, z_hdr - z_sill,
+                           fc="#E9E4D8", ec=C_OUT, lw=1.0, ls=(0, (6, 3)), hatch="\\\\", alpha=0.55, zorder=3))
+    ax.add_patch(Circle((PW / 2, (z_sill + DRUM_H_LT) / 2), DRUM_D / 2, fc="none", ec=C_CL, lw=1.0, ls="--", zorder=4))
+    ax.text(PW / 2, (z_sill + z_hdr) / 2, f"DRUM CAGE ENVELOPE\n(Ø{int(DRUM_D)} drum + swing cage)\n— detailed in\nLight-Trap Sheet 7",
+            ha="center", va="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT, zorder=6)
+
+    # ── swinging-frame perimeter + internal members ──
+    vbar(yL, 0, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 12)", (PH * 0.78, (-260, PH * 0.86)))
+    vbar(yR - RHS, 0, PH)                                     # pivot-side vertical
+    hbar(PH - RHS, yL, yR)                                    # top rail
+    hbar(0, yL, yR)                                           # bottom rail
+    vbar(jL, 0, PH, "CENTER-ZONE JAMB\n(both sides — surround\nrivets here, Sheet 8)", (1700, (400, 1900)))
+    vbar(jR, 0, PH)                                           # far center jamb
+    hbar(z_hdr, jL, jR)                                       # drum header
+    hbar(z_sill - RHS, jL, jR)                                 # drum sill
+
+    # ── pivot post (Yd = PIVOT_YD) → Sheet 10 ──
+    ax.add_patch(Circle((yR, PH / 2), 45, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
+    ax.plot([yR, yR], [0, PH], color=C_CL, lw=1.0, ls=(0, (7, 4)), zorder=6)
+    leader(ax, (yR, PH * 0.62), (yR + 300, PH * 0.72),
+           "Ø89 CHS PIVOT POST\n(swing axis) — assembly\n+ frame→hub bracket: Sheet 10", col=C_OUT, fw="bold")
+
+    # ── detail bubbles ──
+    def bubble(x, z, n, txt, tp):
+        ax.add_patch(Circle((x, z), 46, fc=BG, ec="#B00", lw=1.6, zorder=9))
+        ax.text(x, z, f"{n}", ha="center", va="center", fontsize=11, fontweight="bold", color="#B00", **FONT, zorder=10)
+        ax.annotate("", xy=(x, z), xytext=tp, arrowprops=dict(arrowstyle="-", color="#B00", lw=0.8), zorder=8)
+        ax.text(tp[0], tp[1], txt, ha="center", va="center", fontsize=6.6, color="#B00", **FONT, zorder=10)
+
+    bubble(yR - RHS / 2, 300, 12, "cam latch mount\n(corners, Sheet 12)", (yR + 250, 300))
+    bubble((yL + jL) / 2, PANEL_FAN_BAND_Z + 120, 11, "Fan-B + ply\ntabs (Sheet 11)", ((yL + jL) / 2 - 60, PANEL_FAN_BAND_Z + 360))
+
+    # ── member schedule (in the clear near-corner white space) ──
+    rows = [
+        "MEMBER SCHEDULE",
+        "(2×2×0.120in / 50.8mm A500 SHS)",
+        " Stile Yd180 ....... 1 × 2,388",
+        " Pivot vert Yd2287 . 1 × 2,388",
+        " Top/bottom rails .. 2 × 2,107",
+        " Center jambs ...... 2 × 2,388",
+        " Header + sill ..... 2 × 1,056",
+    ]
+    ax.text(205, 2360, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
+            bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
+
+    draw_dim_h(ax, yL, yR, -150, f"{yR - yL} SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
+    draw_dim_v(ax, PW + 230, 0, PH, f"{PH}", offset=20, fs=7, font=FONT, right=True)
+
+    ax.text(PW / 2, PH + 190, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
+            ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
+
+    title_block(ax, "SHEET 9 OF 12",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
+                scale_note="FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet9.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet9.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -1882,4 +1987,5 @@ if __name__ == "__main__":
     sheet6()
     sheet7()
     sheet8()
+    sheet9()
     print("Done.")

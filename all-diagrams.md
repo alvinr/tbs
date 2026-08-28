@@ -154,6 +154,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 8: HDPE Surround Housing-Join & Frame-Rivet Details](assets/hingepanel-sheet8.png)
 
+![TBS-001 Hinged Panel — Sheet 9: Steel Frame General Arrangement](assets/hingepanel-sheet9.png)
+
 ---
 
 ## 13. Perimeter Walkway

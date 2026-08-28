@@ -158,6 +158,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 10: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
 
+![TBS-001 Hinged Panel — Sheet 11: Fan-B Plywood Cut Sheet & Attachments](assets/hingepanel-sheet11.png)
+
 ---
 
 ## 13. Perimeter Walkway

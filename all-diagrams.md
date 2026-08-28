@@ -152,6 +152,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 7: HDPE Surround Flat-Pattern Cut Sheets](assets/hingepanel-sheet7.png)
 
+![TBS-001 Hinged Panel — Sheet 8: HDPE Surround Housing-Join & Frame-Rivet Details](assets/hingepanel-sheet8.png)
+
 ---
 
 ## 13. Perimeter Walkway

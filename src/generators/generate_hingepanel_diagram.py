@@ -292,6 +292,11 @@ def sheet1():
            (HXD - 380, HZD + 540),
            "INTERIOR PULL HANDLE (§4.3)\nbolted to the drum-aperture jamb (frame) —\npull the panel open from inside",
            col="#204080", fw="bold")
+    # the steel jamb beam the handle bolts to — shown so the mount beam is visible (cf. Sheet 6)
+    JX0 = PANEL_CORNER_YD_L + 6            # 659 — left center-zone jamb, behind the handle
+    ax.add_patch(Rectangle((JX0, HZD - HGL / 2 - 150), 40, HGL + 300, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=6))
+    leader(ax, (JX0 - 20, HZD - HGL / 2), (980, 640),
+           "2×2 STEEL JAMB —\nhandle bolts to steel,\nnot the skin (Sheet 6/9)", col=C_OUT, fs=6)
 
     # ── Outward-opening annotation ────────────────────────────────────────────
     # Panel hinges on left (X=0); right edge is the free edge.
@@ -455,14 +460,21 @@ def sheet2():
 
     # ── CENTER ZONE = B2 PUNCH-OUT BAY ───────────────────────────────────────
     # The center zone is a rigid box protruding forward (depth from the panel
-    # interior face Y_INT out to BAY_FRONT_X) that encloses the offset Ø800
-    # housing. Side walls run the bay depth; a front face closes the exterior end.
+    # interior face Y_INT out to BAY_FRONT_X) that encloses the offset Ø800 housing.
+    # The 128mm flank between the step line and the drum is the STEEL center-zone
+    # frame jamb (over the panel depth); the bay side walls are THIN 1/8″ HDPE at
+    # the step lines (drawn exaggerated for visibility — true wall = BAY_WALL_T 3.18mm).
     for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
-        ax.add_patch(Rectangle((x, BAY_FRONT_X), w, Y_INT - BAY_FRONT_X,
-                                fc=C_PLASTIC, ec=C_OUT, lw=1.0, hatch="\\\\",
-                                zorder=3, alpha=0.85))  # rev11: 1/8″ HDPE bay walls
-    ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=4))
+        ax.add_patch(Rectangle((x, Y1_W), w, Y_INT - Y1_W,                  # steel frame jamb (panel depth)
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3, alpha=0.75))
+    BWALL = 16                                                              # bay-wall drawn thickness (true 3.18mm)
+    for xw in (STEP_YD_L, STEP_YD_R - BWALL):                                # thin HDPE bay side walls (exterior bay)
+        ax.add_patch(Rectangle((xw, BAY_FRONT_X), BWALL, Y1_W - BAY_FRONT_X,
+                                fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
+    ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T * 4,  # bay front wall (exterior end)
+                            fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
+    ax.text(STEP_YD_L - 70, (BAY_FRONT_X + Y1_W) / 2, "1/8″ HDPE bay wall\n(3.18mm — drawn thick)",
+            ha="right", va="center", fontsize=5.8, color="#4a5a70", **FONT, zorder=15)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
@@ -608,9 +620,17 @@ def sheet2():
     _arc(D_CX, D_CY, DR, [(90, OD), (270, OD)], 4.0, C_ALUM, z=9)      # fixed Al housing
     _arc(D_CX, D_CY, LT_DRUM_OR, [(270, OD)], 3.0, "#9C7B4D", z=10)      # C-shell drum (ENTER)
 
-    # ── Drum support CAGE cross-beam (across the drum) carrying the central revolve
-    #    bearing — top + bottom (rev10). Shown as a bar spanning the cage width. ──
+    # ── Drum support CAGE — full 4-wall steel box around the drum (corner posts +
+    #    perimeter rails) + the cross-beam carrying the central revolve bearing. ──
     from tbs_constants import DRUM_CAGE_YD_L as _CGL, DRUM_CAGE_YD_R as _CGR
+    cage_yb, cage_yt = D_YB - 25, D_YT + 25                       # cage depth envelope (just outside the drum)
+    ax.add_patch(Rectangle((_CGL, cage_yb), _CGR - _CGL, cage_yt - cage_yb,
+                           fc="none", ec=C_STEEL, lw=1.4, ls=(0, (7, 4)), zorder=10))   # cage box outline
+    for cxp in (_CGL, _CGR - 50):                                 # 4 corner posts (50×50 RHS)
+        for cyp in (cage_yb, cage_yt - 50):
+            ax.add_patch(Rectangle((cxp, cyp), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.8, zorder=11))
+    leader(ax, (_CGR, cage_yt - 90), (D_XR + 260, cage_yt - 240),
+           "DRUM SUPPORT CAGE\n(4-wall 50×50 steel box +\ncorner posts — Light-Trap set)", col=C_STEEL, fs=6)
     cb_t = 50
     ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
                            fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))

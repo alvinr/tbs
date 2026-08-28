@@ -1790,6 +1790,42 @@ def _blind_rivet(ax, cx, cz, ang, grip, d=12):
     ax.add_patch(Polygon(blind, closed=True, fc=RSC, ec=C_OUT, lw=1.2, zorder=9))
 
 
+def _draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", csk=False, wall=None, zb=10):
+    """Bolt/screw in section — the project convention (light-trap draw_bolt): grey shank with a
+    wider HEAD at the `head` end and a hex NUT / tapped thread / rivet-nut at the far end.
+    cx,cz = shank mid; length = grip along the axis; d = nominal Ø drawn. head=-1 → head at the
+    −axis end (below/left); +1 → +axis end. csk=True → flush countersunk head. end: 'nut' |
+    'tapped' (no nut) | 'rivnut' (flanged insert spanning `wall`)."""
+    SHK, HN = "#8A8F98", C_STEEL
+    hh, hw = d * 0.6, d * 1.9
+    g = length / 2
+
+    def rect(u0, u1, v0, v1, **kw):
+        if vertical:
+            ax.add_patch(Rectangle((cx + v0, cz + u0), v1 - v0, u1 - u0, **kw))
+        else:
+            ax.add_patch(Rectangle((cx + u0, cz + v0), u1 - u0, v1 - v0, **kw))
+
+    def pmap(u, v):
+        return (cx + v, cz + u) if vertical else (cx + u, cz + v)
+    hu = -g if head < 0 else g
+    fu = g if head < 0 else -g
+    if csk:
+        into = 1 if head < 0 else -1
+        cw = hw * 0.85
+        tu = hu + into * hh * 1.4
+        pts = [pmap(hu, -cw / 2), pmap(hu, cw / 2), pmap(tu, d / 2),
+               pmap(fu, d / 2), pmap(fu, -d / 2), pmap(tu, -d / 2)]
+        ax.add_patch(Polygon(pts, closed=True, fc=SHK, ec=C_OUT, lw=0.9, zorder=zb))
+    else:
+        rect(-g, g, -d / 2, d / 2, fc=SHK, ec=C_OUT, lw=0.8, zorder=zb)
+        rect(hu - (hh if head < 0 else 0), hu + (0 if head < 0 else hh), -hw / 2, hw / 2,
+             fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)
+    if end == "nut":
+        rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
+             fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)
+
+
 def sheet8():
     T_SKIN = PANEL_SKIN_T          # 3.18 — 1/8" HDPE surround
     T_HOUS = LT_HOUSING_T          # 5 — housing wall (UV-HDPE)
@@ -1889,7 +1925,7 @@ def sheet9():
     fig, ax = plt.subplots(figsize=(16, 15))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-360, PW + 360)
+    ax.set_xlim(-430, PW + 360)
     ax.set_ylim(-360, PH + 320)
 
     def vbar(x, z0, z1, label=None, lp=None):        # vertical RHS member
@@ -1956,7 +1992,7 @@ def sheet9():
         " Center jambs ...... 2 × 2,388",
         " Header + sill ..... 2 × 1,056",
     ]
-    ax.text(205, 2360, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
+    ax.text(-350, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
 
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL} SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
@@ -2035,16 +2071,22 @@ def sheet10():
     ax.text(ax0x + 60 * sA, ax0y + 190 * sA, "DETAIL A — FRAME → HUB BRACKET (enlarged)",
             ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.add_patch(Rectangle(dA(-10, 0), 12 * sA, 150 * sA, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))   # hub wall
-    ax.add_patch(Rectangle(dA(2, 40), 90 * sA, 70 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))     # bracket
+    ax.add_patch(Rectangle(dA(2, 40), 90 * sA, 70 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))     # bracket plate
     ax.add_patch(Rectangle(dA(92, -10), 50 * sA, 170 * sA, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))  # jamb
-    ax.add_patch(Rectangle(dA(95, -7), 44 * sA, 164 * sA, fc=BG, ec=C_OUT, lw=0.5, zorder=5))         # bore
-    for by in (58, 92):
-        ax.plot(*zip(dA(4, by), dA(140, by)), color="#101010", lw=2.2, zorder=8)
-        ax.add_patch(Circle(dA(138, by), 5 * sA, fc="#101010", ec="none", zorder=9))
-    ax.text(ax0x + 66 * sA, ax0y - 120, "bracket welded to hub; 2× M12 through the\nframe jamb into a backing plate",
-            ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
-    leader(ax, dA(-4, 75), (ax0x - 130, ax0y + 40 * sA), "hub tube", col=C_OUT, fs=6)
-    leader(ax, dA(117, 25), (ax0x + 150 * sA, ax0y - 60), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle(dA(95, -7), 44 * sA, 164 * sA, fc=BG, ec=C_OUT, lw=0.5, zorder=5))         # jamb bore
+    ax.add_patch(Rectangle(dA(139, 30), 9 * sA, 90 * sA, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))   # backing plate (far face)
+    for wy, s in ((40, 1), (110, -1)):                                                                # fillet welds bracket→hub
+        ax.add_patch(Polygon([dA(2, wy), dA(2, wy + s * 12), dA(12, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
+    for by in (58, 92):                                                                               # 2× M12: head at bracket → nut on the backing plate
+        mid = dA(74, by)
+        _draw_bolt(ax, mid[0], mid[1], 150 * sA, d=10 * sA, vertical=False, head=-1, end="nut", zb=8)
+    ax.text(ax0x + 66 * sA, ax0y - 120,
+            "ASSEMBLY: the steel bracket plate is FILLET-WELDED to the hub tube; 2× M12 bolts pass\nthrough the bracket + the frame jamb into a backing plate (nuts on the far face)",
+            ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
+    leader(ax, dA(-4, 75), (ax0x - 120, ax0y + 40 * sA), "hub tube", col=C_OUT, fs=6)
+    leader(ax, dA(8, 44), (ax0x - 30, ax0y - 55), "fillet weld\nbracket→hub", col=C_OUT, fs=6)
+    leader(ax, dA(117, 20), (ax0x + 115 * sA, ax0y - 60), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
+    leader(ax, dA(143, 115), (ax0x + 175 * sA, ax0y + 150 * sA), "backing\nplate + nuts", col=C_OUT, fs=6)
 
     # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
     bx0, by0, sB = 890, 470, 1.9
@@ -2054,7 +2096,13 @@ def sheet10():
     for k in range(6):
         a = math.radians(30 + k * 60)
         ax.add_patch(Circle((bx0 + 85 * sB * math.cos(a), by0 + 85 * sB * math.sin(a)), 7 * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))
-    ax.text(bx0, by0 - 155 * sB, "Ø220×20 plate · 6× M12 anchor bolts on Ø170 PCD\ninto the container floor cross-member",
+    # dimensions: plate OD, bolt PCD, post bore, hole size
+    draw_dim_h(ax, bx0 - 110 * sB, bx0 + 110 * sB, by0 + 120 * sB, "Ø220 plate OD", offset=12, fs=6.2, font=FONT)
+    draw_dim_h(ax, bx0 - 85 * sB, bx0 + 85 * sB, by0 - 120 * sB, "Ø170 bolt PCD", offset=12, fs=6.2, font=FONT, above=False)
+    leader(ax, (bx0 - R * sB, by0), (bx0 - 155 * sB, by0 + 60 * sB), "Ø90 post bore", col=C_OUT, fs=6)
+    leader(ax, (bx0 + 85 * sB * math.cos(math.radians(30)), by0 + 85 * sB * math.sin(math.radians(30))),
+           (bx0 + 150 * sB, by0 + 85 * sB), "6× Ø14 (M12)", col=C_OUT, fs=6)
+    ax.text(bx0, by0 - 170 * sB, "Ø220×20 A36 plate · into the container floor cross-member",
             ha="center", fontsize=6.4, color=C_OUT, **FONT)
 
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
@@ -2120,6 +2168,13 @@ def sheet11():
     ax.text(SW / 2, cy0 / 2, "remainder — offcut stock", ha="center", va="center", fontsize=6.4, color=C_DIM, **FONT, zorder=5)
     draw_dim_h(ax, 0, SW, -110, f"{SW}", offset=16, fs=6.6, font=FONT)
     draw_dim_v(ax, -110, 0, SH, f"{SH}", offset=16, fs=6.6, font=FONT)
+    # per-piece + fan-cutout position dimensions
+    draw_dim_h(ax, bx, bx + BW, by + BH + 34, f"{BW}", offset=12, fs=6.0, font=FONT)               # band width
+    draw_dim_v(ax, bx + BW + 60, by, by + BH, f"{BH}", offset=12, fs=6.0, font=FONT, right=True)     # band height
+    draw_dim_v(ax, bx + BW + 190, by, fcy, "360 to fan CL", offset=12, fs=5.8, font=FONT, right=True)  # fan vert position
+    draw_dim_h(ax, bx, fcx, fcy + FR + 55, f"{int(BW / 2)} (fan CL, centered)", offset=10, fs=5.8, font=FONT)  # fan horiz position (above cutout)
+    draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
+    draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
 
     # ── RIGHT DETAIL A: Fan-B → ply through-bolt (enlarged) ───────────────────
     ax_ = 1500
@@ -2195,9 +2250,8 @@ def sheet12():
     ax.add_patch(Rectangle((Ax + 28, 46), 12, 38, fc="#9AA0A6", ec=C_OUT, lw=1.1, zorder=5))     # backing plate (exterior)
     leader(ax, (Ax + 34, 84), (Ax + 20, 150), "backing plate", col=C_OUT, fs=6)
     for zy in (58, 72):
-        ax.plot([Ax + 30, Ax + 122], [zy, zy], color="#101010", lw=2.2, zorder=8)                # through-bolts
-        ax.add_patch(Rectangle((Ax + 26, zy - 3), 6, 6, fc="#101010", ec="none", zorder=9))
-    ax.text(Ax + 80, 24, "2× bolts through the frame wall into an\nexterior backing plate; latch cams the seal shut", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
+        _draw_bolt(ax, Ax + 76, zy, 96, d=7, vertical=False, head=1, end="nut", zb=8)   # M6 through-bolt: head at latch, nut on backing plate
+    ax.text(Ax + 80, 24, "2× M6 bolts through the frame wall into an\nexterior backing plate; latch cams the seal shut", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
 
     # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
     Bx = 210
@@ -2228,9 +2282,8 @@ def sheet12():
     ax.add_patch(Rectangle((Cx + 48, 78), 44, 22, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((Cx + 52, 82), 36, 14, fc=BG, ec=C_OUT, lw=0.6, zorder=5))
     leader(ax, (Cx + 90, 89), (Cx + 120, 130), "8813T53 Al\nholder channel", col=C_OUT, fs=6)
-    ax.plot([Cx + 70, Cx + 70], [140, 100], color="#101010", lw=1.8, zorder=8)                        # screw into frame
-    ax.add_patch(Circle((Cx + 70, 138), 3, fc="#101010", ec="none", zorder=9))
-    ax.text(Cx + 44, 150, "#10 screw\n→ frame", ha="center", fontsize=6, color=C_DIM, **FONT)
+    _draw_bolt(ax, Cx + 70, 104, 52, d=5, vertical=True, head=-1, end="tapped", zb=8)   # #10 screw UP from the holder into the frame
+    leader(ax, (Cx + 70, 80), (Cx + 40, 150), "#10 screw up\nthrough the holder\n→ frame", col=C_OUT, fs=6)
     # brush bristles hanging down
     for bxk in range(Cx + 54, Cx + 88, 4):
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)

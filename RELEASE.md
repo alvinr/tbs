@@ -43,6 +43,14 @@ file** — a release must not ship without a changelog entry:
   **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
   stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
   panel cost **+$47/$33/$19** (cam latch).
+- **Hinged panel — Sheet 15: bottom clearance cross-section (new).** Added a Yd–Z clearance-envelope
+  section (walkway grate lifted out for transport) that reconciles the 2D set with the **stepped frame
+  bottom** in the 3D model. It shows the near/far **side-wall cantilever brackets** (vertical legs Z180
+  std / Z200 widened), the **left lift-out floor-leg cantilevers** (×5, top Z115), the tray, and the
+  **stepped panel bottom profile** derived from a 15 mm clearance rule: **Z130 across the center**
+  (clears the Z115 arms/posts) **stepping up to Z195 at both side corners** (clears the Z180 std bracket
+  legs), with the widened-Z200 case flagged for the swing-arc check. This is the hard-limit envelope for
+  the panel frame bottom. Registered in all four generator-index files + the gallery; sheet count 14→15.
 - **Hinged panel — Sheet 13 fastener details.** Fixed Detail A so the Fan-B mounting bolts **butt the
   flange plate + backing plate faces** (were floating clear of them), and reworked Detail B: the plywood→frame
   bolt now uses the standard section bolt glyph (hex head on the tab upstand, shank into the ply tee-nut),

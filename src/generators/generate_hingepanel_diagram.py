@@ -2302,8 +2302,10 @@ def sheet13():
     ax.add_patch(Rectangle(dA(4, 55), 50, 110, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))       # fan bore
     ax.add_patch(Rectangle(dA(19, 98), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))         # motor hub
     ax.add_patch(Rectangle(dA(78, 18), 6, 189, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))          # interior backing plate (spans the bolt gauge)
-    for by2 in (28, 192):                                                                          # bolts at the flange corners — clear of the round fan body
-        _draw_bolt(ax, dA(57, by2)[0], dA(57, by2)[1], 30 * sA, d=8, vertical=False, head=-1, end="nut", zb=8)
+    # bolts at the flange corners — clear of the round fan body. Grip spans the full stack:
+    # flange plate face (x=54) → ply → backing plate face (x=84), so head + nut BUTT the outer faces.
+    for by2 in (28, 192):
+        _draw_bolt(ax, dA(69, by2)[0], dA(69, by2)[1], 30 * sA, d=8, vertical=False, head=-1, end="nut", zb=8)
     leader(ax, dA(69, 190), (ax0 + 70, 235), "18mm PT ply band", col=C_OUT, fs=6.2)
     leader(ax, dA(57, 55), (ax0 - 12, 205), "fan MOUNTING FLANGE\nplate (butts the ply)", col=C_OUT, fw="bold", fs=6.2)
     leader(ax, dA(26, 110), (ax0 - 18, 60), "150mm axial fan body\n(Ø150 × 50 deep) —\nNOT bolted through", col=C_OUT, fs=6.2)
@@ -2320,26 +2322,47 @@ def sheet13():
     def dB(x, y): return (bx0 + x * sB, byy + y * sB)
     ax.text(bx0 + 90, 200, "DETAIL B — PLYWOOD → FRAME", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
     ax.text(bx0 + 90, 188, "welded steel tab + pronged captive tee-nut (IBC convention)", ha="center", fontsize=7, color=C_DIM, **FONT)
-    # horizontal section: frame RHS (square tube) · welded L-bracket · ply edge-on
+    ax.text(bx0 + 65, 180, "PLAN SECTION (horizontal cut)", ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    # frame RHS (vertical stile, cut) · welded L-tab · ply edge-on · bolt through the tab UPSTAND
     ax.add_patch(Rectangle(dB(0, 48), 48, 88, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))     # frame RHS
     ax.add_patch(Rectangle(dB(3, 51), 42, 82, fc=BG, ec=C_OUT, lw=0.5, zorder=5))                        # RHS bore
-    ax.add_patch(Rectangle(dB(48, 85), 42, 7, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # L-bracket base leg (welded to the frame)
-    ax.add_patch(Polygon([dB(48, 85), dB(48, 77), dB(56, 85)], closed=True, fc=C_OUT, ec="none", zorder=7))   # weld fillet
-    ax.add_patch(Rectangle(dB(84, 62), 7, 52, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # L-bracket upstand (parallel to the ply)
-    ax.add_patch(Rectangle(dB(91, 58), 18, 60, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))                    # 18mm ply (edge-on)
-    # bolt THROUGH the upstand (the tab face) → into a captive TEE-NUT in the ply back face
-    ax.plot(*zip(dB(80, 88), dB(107, 88)), color="#101010", lw=2.4, zorder=8)                            # bolt shank (perpendicular to the ply)
-    ax.add_patch(Rectangle(dB(78, 83), 5, 10, fc="#101010", ec="none", zorder=9))                        # bolt head + washer on the upstand
-    ax.add_patch(Rectangle(dB(91, 85), 16, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                 # tee-nut barrel (into the ply, toward the bolt)
-    ax.add_patch(Rectangle(dB(107, 80), 3, 16, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=9))                # tee-nut flange on the ply FAR face
-    leader(ax, dB(24, 48), (bx0 + 20, 168), "frame RHS member", col=C_OUT, fs=6.5)
-    leader(ax, dB(70, 89), (bx0 + 44, 18), "L-bracket WELDED to the frame;\nbolt through the tab UPSTAND (its face)", col=C_OUT, fs=6.5)
-    leader(ax, dB(108, 88), (bx0 + 165, 150), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.5)
-    leader(ax, dB(100, 116), (bx0 + 165, 175), "18mm ply band", col=C_OUT, fs=6.5)
+    ax.add_patch(Rectangle(dB(48, 66), 40, 7, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # L-tab base leg (welded to the frame) — LOW, clear of the bolt
+    ax.add_patch(Polygon([dB(48, 73), dB(48, 66), dB(56, 66)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld fillet
+    ax.add_patch(Rectangle(dB(84, 60), 7, 58, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))                   # L-tab upstand (parallel to the ply)
+    ax.add_patch(Rectangle(dB(91, 56), 18, 66, fc=C_WOOD, ec=C_OUT, lw=1.3, zorder=5))                    # 18mm ply (edge-on)
+    # bolt — standard section convention (_draw_bolt): hex head bearing on the tab-upstand face, shank
+    # through the upstand + into the captive TEE-NUT in the ply. Placed HIGH on the tab, well clear of
+    # the weld base leg, so it cannot read as passing through the frame.
+    _draw_bolt(ax, dB(95, 102)[0], dB(95, 102)[1], 22 * sB, d=6, vertical=False, head=-1, end="tapped", zb=9)
+    ax.add_patch(Rectangle(dB(91, 99), 15, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                 # tee-nut barrel (in the ply)
+    ax.add_patch(Rectangle(dB(106, 96), 3, 12, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                # tee-nut flange on the ply FAR face
+    leader(ax, dB(24, 48), (bx0 + 16, 165), "frame RHS member\n(no bolt enters it)", col=C_OUT, fs=6.2)
+    leader(ax, dB(66, 69), (bx0 + 18, 22), "L-tab base leg\nWELDED to the frame", col=C_OUT, fs=6.2)
+    leader(ax, dB(97, 102), (bx0 + 150, 126), "M8 bolt → the tab\nUPSTAND (hex head on its face)", col=C_OUT, fw="bold", fs=6.2)
+    leader(ax, dB(108, 102), (bx0 + 150, 158), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.2)
     # dims (to scale)
-    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 52)[1], "18", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18", offset=-7, fs=5.6, font=FONT)
     draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50 RHS", offset=-7, fs=5.6, font=FONT)
-    draw_dim_v(ax, dB(0, 0)[0] - 16, dB(0, 58)[1], dB(0, 118)[1], "tab", offset=8, fs=5.6, font=FONT, right=False)
+
+    # ── COMPANION: rotated 90° view (looking along the bolt axis) — the bolt seats in the tab plate;
+    #    the frame stile is off to the side, so the bolt does NOT pass through the frame. ──
+    def hexpts(cx0, cy0, r):
+        return [(cx0 + r * math.cos(math.radians(60 * k + 30)), cy0 + r * math.sin(math.radians(60 * k + 30))) for k in range(6)]
+    vby = -52
+    def vB(x, y): return (bx0 + x, vby + y)
+    ax.text(bx0 + 45, vby + 54, "ROTATED 90° — bolt seats in the TAB, not the frame", ha="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(bx0 + 45, vby + 45, "(view along the bolt axis)", ha="center", fontsize=6.2, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle(vB(66, 2), 20, 38, fc=C_WOOD, ec=C_OUT, lw=1.0, ls=(0, (4, 2)), zorder=3))     # ply behind (dashed)
+    ax.add_patch(Rectangle(vB(0, 0), 12, 42, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=4))         # frame stile (edge-on)
+    ax.add_patch(Rectangle(vB(12, 16), 9, 10, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))                     # welded base leg (edge)
+    ax.add_patch(Polygon([vB(12, 26), vB(12, 16), vB(18, 16)], closed=True, fc=C_OUT, ec="none", zorder=5))  # weld
+    ax.add_patch(Rectangle(vB(21, 4), 44, 34, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # tab upstand plate (face-on)
+    hx, hy = vB(44, 21)
+    ax.add_patch(Polygon(hexpts(hx, hy, 7), closed=True, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))         # bolt hex head on the tab face
+    ax.add_patch(Circle((hx, hy), 2.2, fc="#606568", ec="none", zorder=8))
+    leader(ax, (hx, hy), vB(92, 34), "M8 bolt seats in\nthe tab plate", col=C_OUT, fw="bold", fs=6.0)
+    leader(ax, vB(6, 38), vB(-14, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
+    leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
     title_block(ax, "SHEET 13 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

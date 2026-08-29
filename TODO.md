@@ -41,6 +41,13 @@ review is finished:**
   hardcodes its OWN `DRUM_H = 2200` (line 58) instead of importing `DRUM_H_LT` (now 2100) — so the hinged-panel
   sheets draw the light-trap drum ~100mm too tall. Single-source it off `DRUM_H_LT` and re-gen the hingepanel
   sheets (separate cascade; not part of the light-trap set).
+- [ ] **Hingepanel 2D↔3D cage/drum reconciliation (flagged by Alvin 2026-08-29, hingepanel-bp):** the 2D
+  hinged-panel sheets and the 3D light-trap model are "saying different things" on the drum cage / drum.
+  Known items to chase: (a) the drum depth-center (2D −450 vs 3D −420 noted earlier); (b) confirm the Sheet 9
+  drum-cylinder z-extent (now z_sill..z_hdr) matches the modeled cap-top `DRUM_H_LT`/`LT_CAGE_TOP`; (c) the
+  cage top/bottom beam positions. Cage HEIGHT stays as-is (Alvin 2026-08-29 — the separate header/sill beams
+  are dedicated short-span drum-hang supports; interior 1970 clears a 1780 operator by 190). Audit 2D vs the
+  live model, single-source off the constants, and re-gen. Do BEFORE the held hingepanel 3D batch send.
 - [ ] **Minor label tidy:** a few light-trap 2D labels shifted with the resize + hub rework — a "52mm
   standoff" overlap on Sheet 1, the Sheet 8 cut-section "wall 3mm / axle beams" text overlapping the
   mount-plate label, and the **Sheet 5 MOUNT-PLATE DETAIL title colliding with the lower-hub labels**.

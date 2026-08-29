@@ -43,6 +43,11 @@ file** — a release must not ship without a changelog entry:
   **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
   stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
   panel cost **+$47/$33/$19** (cam latch).
+- **Hinged panel — Sheet 13 fastener details.** Fixed Detail A so the Fan-B mounting bolts **butt the
+  flange plate + backing plate faces** (were floating clear of them), and reworked Detail B: the plywood→frame
+  bolt now uses the standard section bolt glyph (hex head on the tab upstand, shank into the ply tee-nut),
+  moved clear of the weld tab, plus a **rotated-90° companion view** that proves the bolt seats in the welded
+  tab — not through the frame RHS.
 - **Hinged panel — cam latches 4→2 + 2D dimension/detail round.** Reduced the cam latches from 4 corners
   to **2 on the opening edge** (the pivot edge is hinged; a frame stop takes the outward direction) — parts
   registry qty 4→2, **−$61** panel; reconciled the count across the report, the mass table, and

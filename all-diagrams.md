@@ -166,6 +166,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 14: Frame → Pivot-Post Connection](assets/hingepanel-sheet14.png)
 
+![TBS-001 Hinged Panel — Sheet 15: Bottom Clearance Cross-Section (walkway/cantilever envelope)](assets/hingepanel-sheet15.png)
+
 ---
 
 ## 13. Perimeter Walkway

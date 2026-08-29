@@ -350,7 +350,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 14",
+    title_block(ax, "SHEET 1 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -776,7 +776,7 @@ def sheet2():
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 14",
+    title_block(ax, "SHEET 2 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1349,7 +1349,7 @@ def sheet3():
     ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 14",
+    title_block(ax, "SHEET 3 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1465,7 +1465,7 @@ def sheet5():
     ]):
         ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 14",
+    title_block(ax, "SHEET 5 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1586,7 +1586,7 @@ def sheet4():
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
     draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 14",
+    title_block(ax, "SHEET 4 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
@@ -1660,7 +1660,7 @@ def sheet6():
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 6 OF 14", drawing_title="HINGED LIGHT-TRAP PANEL",
+    title_block(ax, "SHEET 6 OF 15", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DRAWN TO SCALE (isotropic ~1:1) · 50mm BAR · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
@@ -1811,7 +1811,7 @@ def sheet7():
     ax.set_xlim(-260, xW2 + BAY_D + 260)
     ax.set_ylim(yB - 320, yA + H_PANEL + 300)
 
-    title_block(ax, "SHEET 7 OF 14",
+    title_block(ax, "SHEET 7 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — FLAT-PATTERN CUT SHEETS (6 PIECES)",
                 scale_note="DRAWN TO SCALE (isotropic) · SCALE OFF THE 500mm BAR · ALL DIMS IN mm",
@@ -1977,7 +1977,7 @@ def sheet8():
             ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 8 OF 14",
+    title_block(ax, "SHEET 8 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — HOUSING JOIN & FRAME RIVET DETAILS",
                 scale_note="ENLARGED SECTIONS · THICKNESS EXAGGERATED · ALL DIMS IN mm",
@@ -2101,7 +2101,7 @@ def sheet9():
     ax.text(PW / 2, PH + 295, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 9 OF 14",
+    title_block(ax, "SHEET 9 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
                 scale_note="FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm",
@@ -2196,7 +2196,7 @@ def sheet10():
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 10 OF 14",
+    title_block(ax, "SHEET 10 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 14)",
                 scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
@@ -2267,7 +2267,7 @@ def sheet11():
     ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 13",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 11 OF 14",
+    title_block(ax, "SHEET 11 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 13)",
                 scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
@@ -2364,7 +2364,7 @@ def sheet13():
     leader(ax, vB(6, 38), vB(-14, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
     leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
-    title_block(ax, "SHEET 13 OF 14",
+    title_block(ax, "SHEET 13 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
                 scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
@@ -2424,7 +2424,7 @@ def sheet14():
     ax.text(ox + 50 * s, oy - 64 * s, "The bracket plate is FILLET-WELDED to BOTH the hub tube and the frame\njamb — the hub + frame + cage swing as ONE weldment. No bolts pass\nthrough the closed jamb (which can't be back-tightened); all-welded steel.",
             ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT, bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 14 OF 14",
+    title_block(ax, "SHEET 14 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
                 scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
@@ -2526,7 +2526,7 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
-    title_block(ax, "SHEET 12 OF 14",
+    title_block(ax, "SHEET 12 OF 15",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
@@ -2535,6 +2535,137 @@ def sheet12():
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet12.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 15  —  Bottom Clearance Cross-Section (Yd–Z), walkway grate lifted out.
+#   The HARD-LIMIT envelope for the swinging panel's bottom edge in transport: it must
+#   clear the BARE wall-cantilever bracket legs (Z180 std / Z200 widened) at the near+far
+#   side walls AND the left lift-out floor-leg cantilever posts (top Z115). Derived rule:
+#   15mm clearance over the tallest obstacle at each Yd → center bottom Z130, stepped side
+#   bottoms Z195. Reconciles the 2D set with the stepped-frame bottom seen in the 3D model.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet15():
+    from tbs_constants import (PANEL_FLOOR_GAP as P_CTR, PANEL_CORNER_YD_L as jL,
+                               PANEL_CORNER_YD_R as jR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
+                               WALKWAY_BRACKET_H as WALL_LEG, WALKWAY_WIDE_BRACKET_H as WALL_LEG_W,
+                               WALKWAY_BRACKET_ARM_Z0 as ARM_BOT, PROC_TRAY_YD_NEAR,
+                               PROC_TRAY_YD_FAR, PROC_TRAY_RIM, LEFT_WK_CANT_LEG_YDS,
+                               LEFT_WK_CANT_POST_W)
+    WID     = PW
+    ARM_TOP = WALKWAY_H - WALKWAY_GRATE_T      # 115 — grate seat / arm top
+    CLR     = P_CTR - ARM_TOP                  # 15 — clearance over the arm/post tops
+    P_SIDE  = WALL_LEG + CLR                   # 195 — derived stepped side bottom (Z180 std leg + 15)
+    BREAK_Z = 430
+
+    fig, ax = plt.subplots(figsize=(22, 8))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-370, WID + 520)
+    ax.set_ylim(-215, 605)
+
+    ax.text(WID / 2, 565, "BOTTOM CLEARANCE CROSS-SECTION  (Yd–Z · looking toward the cargo door)",
+            ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(WID / 2, 540, "walkway grate LIFTED OUT for transport — the swinging panel bottom must clear the BARE brackets",
+            ha="center", fontsize=7.5, color=C_DIM, **FONT)
+
+    # floor + side walls
+    ax.plot([-310, WID + 310], [0, 0], color=C_OUT, lw=1.6, zorder=2)
+    ax.text(WID + 305, -4, "FLOOR Z0", va="top", ha="right", fontsize=6.5, color=C_DIM, **FONT)
+    for wx, lbl, ha_ in ((0, "NEAR WALL", "right"), (WID, "FAR WALL", "left")):
+        ax.plot([wx, wx], [0, 505], color=C_OUT, lw=2.4, zorder=2)
+        ax.text(wx + (-8 if ha_ == "right" else 8), 500, f"{lbl} (Yd{wx})", rotation=90,
+                va="top", ha=ha_, fontsize=6.5, color=C_DIM, **FONT)
+
+    # processing tray (center pan, rim Z50)
+    ax.add_patch(Rectangle((PROC_TRAY_YD_NEAR, 0), PROC_TRAY_YD_FAR - PROC_TRAY_YD_NEAR, PROC_TRAY_RIM,
+                           fc="#DCEAF5", ec=C_OUT, lw=1.0, zorder=2))
+    ax.text(525, PROC_TRAY_RIM / 2,
+            "PROCESSING TRAY  (rim Z50)", ha="center", va="center", fontsize=6.0, color="#2A5A80", **FONT, zorder=10)
+
+    # ── wall-cantilever brackets (near + far) — vertical leg to Z180 std / Z200 widened; arm Z90–115 ──
+    def wall_bracket(x_wall, sign):
+        legw = 44
+        x0 = x_wall if sign > 0 else x_wall - legw
+        ax.add_patch(Rectangle((x0, 0), legw, WALL_LEG, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///", zorder=4))
+        ax.add_patch(Rectangle((x0, WALL_LEG), legw, WALL_LEG_W - WALL_LEG, fc="none", ec=C_STEEL,
+                               lw=1.0, ls=(0, (4, 2)), zorder=4))       # widened-leg extension to Z200 (dashed)
+        arm_x = x_wall if sign > 0 else x_wall - WALKWAY_W
+        ax.add_patch(Rectangle((arm_x, ARM_BOT), WALKWAY_W, ARM_TOP - ARM_BOT, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))
+    wall_bracket(0, +1)
+    wall_bracket(WID, -1)
+    leader(ax, (22, WALL_LEG), (250, 340),
+           "NEAR side-wall cantilever bracket:\nvertical leg → Z180 (std) / Z200 (widened, dashed);\narm Z90–115 (grate seat)", col=C_OUT, fs=6.4)
+    leader(ax, (WID - 22, WALL_LEG), (WID - 250, 340), "FAR side-wall cantilever bracket\n(mirror)", col=C_OUT, fs=6.4)
+
+    # ── left lift-out FLOOR-LEG cantilever posts (Yd 250..2110) — remain when the grate lifts out ──
+    for yd in LEFT_WK_CANT_LEG_YDS:
+        pw = LEFT_WK_CANT_POST_W
+        ax.add_patch(Rectangle((yd - pw / 2, 0), pw, ARM_BOT, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=3))
+        ax.add_patch(Rectangle((yd - pw / 2 - 8, 0), pw + 16, 8, fc=C_STEEL, ec=C_OUT, lw=0.7, zorder=3))     # foot plate
+        ax.add_patch(Rectangle((yd - pw / 2, ARM_BOT), pw, ARM_TOP - ARM_BOT, fc=C_STEEL, ec=C_OUT, lw=0.7, zorder=3))
+    leader(ax, (1180, ARM_TOP), (1180, -160),
+           "LEFT lift-out FLOOR-LEG cantilevers (×5 @ Yd 250/800/1180/1560/2110)\nposts REMAIN when the grate lifts out — top Z115", col=C_OUT, fs=6.4)
+
+    # ── walkway grate — LIFTED OUT (ghost dashed at Z115..140) ──
+    ax.add_patch(Rectangle((0, ARM_TOP), WID, WALKWAY_GRATE_T, fc="#EEEEEE", ec=C_DIM,
+                           lw=1.0, ls=(0, (5, 3)), alpha=0.45, zorder=2))
+    ax.text(WID * 0.30, ARM_TOP + WALKWAY_GRATE_T + 8, "WALKWAY GRATE — LIFTED OUT (ghosted, Z115–140)",
+            ha="center", va="bottom", fontsize=6.6, color=C_DIM, style="italic", **FONT, zorder=6)
+
+    # ── HINGE PANEL bottom profile (stepped): center Z130, sides Z195 ──
+    panel = [(0, P_SIDE), (jL, P_SIDE), (jL, P_CTR), (jR, P_CTR), (jR, P_SIDE),
+             (WID, P_SIDE), (WID, BREAK_Z), (0, BREAK_Z)]
+    ax.add_patch(Polygon(panel, closed=True, fc=C_PLASTIC, ec="none", alpha=0.5, zorder=7))
+    ax.plot([0, jL, jL, jR, jR, WID], [P_SIDE, P_SIDE, P_CTR, P_CTR, P_SIDE, P_SIDE],
+            color="#1763C8", lw=2.8, zorder=9)
+    ax.text(WID / 2, (P_CTR + BREAK_Z) / 2 + 45, "HINGE PANEL (swinging leaf) — BOTTOM PROFILE",
+            ha="center", va="center", fontsize=8.5, fontweight="bold", color="#1763C8", **FONT, zorder=9)
+    ax.text(WID / 2, BREAK_Z + 15, "↑ panel continues to Z2388 (top)", ha="center", va="bottom",
+            fontsize=6.5, color=C_DIM, **FONT, zorder=9)
+
+    # ── clearance callouts (derived hard limits) ──
+    leader(ax, (1000, (ARM_TOP + P_CTR) / 2), (1000, 300),
+           f"{CLR}mm CLR\n(center over the Z115 arms/posts)", col="#B00", fw="bold", fs=6.4)
+    leader(ax, (66, (WALL_LEG + P_SIDE) / 2), (330, 250),
+           f"{CLR}mm CLR\n(side over the Z180 leg)", col="#B00", fw="bold", fs=6.4)
+
+    # ── dimension ladders ──
+    draw_dim_v(ax, -150, 0, ARM_TOP, "115 arm/post", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -250, 0, P_CTR, "130 ctr", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -55, 0, PROC_TRAY_RIM, "50", offset=10, fs=5.6, font=FONT, right=False)
+    draw_dim_v(ax, WID + 160, 0, WALL_LEG, "180 leg", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, WID + 260, 0, P_SIDE, "195 side", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, jL - 75, P_CTR, P_SIDE, f"{int(P_SIDE - P_CTR)} step", offset=12, fs=6.0, font=FONT, right=False)
+
+    # ── Yd zone dims (bottom) ──
+    draw_dim_h(ax, 0, jL, -100, f"{jL} near corner — STEP UP", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, -100, f"{jR - jL} center (Z130)", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jR, WID, -100, f"{WID - jR} far corner — STEP UP", offset=-14, fs=6, font=FONT)
+
+    # ── notes block (right margin) ──
+    draw_notes(ax, [
+        "HARD LIMIT — panel bottom (walkway removed for transport)",
+        "Derived: 15mm clearance over the tallest obstacle at each Yd.",
+        "Center (Yd653–1709): Z130 — clears the Z115 arms + floor-leg",
+        "  posts + Z50 tray. (Z130 < grate deck Z140 ⇒ grate must lift out.)",
+        "Sides (Yd0–653 / 1709–2362): STEP UP to Z195 — clears the",
+        "  Z180 (std) side-wall bracket legs.",
+        "If the swing sweeps a WIDENED bracket (leg Z200) the side step",
+        "  becomes Z215 — verify vs the swing arc before freezing.",
+        "Step lines align with the panel zone lines (Yd653 / 1709).",
+    ], WID + 40, 480, spacing=23, fs=5.8, title_fs=6.4, color="#403000",
+       title_color="#806010", width=430, border_color="#806010", font=FONT)
+
+    title_block(ax, "SHEET 15 OF 15",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="BOTTOM CLEARANCE CROSS-SECTION — WALKWAY/CANTILEVER ENVELOPE (transport)",
+                scale_note="SECTION Yd–Z · EQUAL ASPECT · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet15.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet15.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2554,4 +2685,5 @@ if __name__ == "__main__":
     sheet12()
     sheet13()
     sheet14()
+    sheet15()
     print("Done.")

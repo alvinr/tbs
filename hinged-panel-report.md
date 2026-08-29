@@ -72,7 +72,7 @@ flush-faced panels that seal against the fixed door frame.
 
 A 20mm closed-cell EPDM compression gasket runs the two **vertical** edges of the panel,
 seated in an extruded aluminum channel, and compresses against the fixed welded door
-frame (50 × 50 × 3mm RHS) when the four cam latches engage. The **top and bottom** edges
+frame (50 × 50 × 3mm RHS) when the two opening-edge cam latches engage. The **top and bottom** edges
 are **nylon strip-brush** light seals instead (§6, paths #3/#4): because the panel edge
 **sweeps sideways** through the seal as it swings, a brush passes the edge through cleanly
 where a compression EPDM would drag and deform. Together they give a light-tight seal on
@@ -108,9 +108,9 @@ is slightly lower than the whole-panel figure carried in the
 | **D · Bay** | B2 punch-out bay walls | 1/8" HDPE, 4-wall tube 0.89m deep | 20.8 |
 | **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
 | **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
-| **G · Latches** | Cam latches (4) | ~0.5 kg each | 2.0 |
+| **G · Latches** | Cam latches (2) | ~0.5 kg each | 1.0 |
 | **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
-| | **MOVABLE TOTAL (carried-rotating)** | | **≈198** |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈197** |
 | | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
 
 **By material:** steel 103 kg (52%), HDPE 79 kg (40%), aluminum 3 kg (1.4%),
@@ -282,13 +282,13 @@ engineer's sign-off** before fabrication.
 | Parameter | Value |
 |-----------|-------|
 | Model | McMaster 1619A74 lift-and-turn cam latch |
-| Quantity | 4 (one at each corner) |
-| Positions | 210mm and 2,152mm from side edges, 220mm and 2,168mm from floor |
+| Quantity | 2 (both on the opening/free edge — top + bottom) |
+| Positions | 210mm from the opening edge; 220mm and 2,168mm from floor (the pivot edge is hinged and needs no latch — a frame stop takes the outward direction) |
 | Mounting face | **Interior** — deliberate safety design for emergency egress |
 | Seal compression | Compresses EPDM perimeter gasket against fixed door frame |
 
 **Emergency egress:** If the revolving drum jams and prevents normal egress, an
-operator inside the container can release all four interior-mounted cam latches
+operator inside the container can release both interior-mounted cam latches
 independently and push the panel open **inward** — it swings into the container about
 the Ø89 pivot, clearing the door plane so the operator can step out. (The panel opens
 **inward only**; a stop on the fixed frame takes the outward direction — §4.2 latches.)
@@ -349,7 +349,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 | State | Method |
 |-------|--------|
-| Operational (0°) | 4 × interior cam latches (§4) compress the EPDM **vertical** perimeter + cut seals against the door frame; the top + bottom **strip-brush** seals are passive (always engaged, no compression) |
+| Operational (0°) | 2 × interior cam latches (§4, opening edge) compress the EPDM **vertical** perimeter + cut seals against the door frame; the top + bottom **strip-brush** seals are passive (always engaged, no compression) |
 | Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 2×2×0.120in steel SHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
 > **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 1/8" HDPE plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the plywood band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
@@ -398,7 +398,7 @@ Order of operations (single person, ~10 min) — see the [Operating Manual](oper
 3. Lift out the left walkway + door-end near-deck section.
 4. **Strike the two left film rails (TL + BL)** — release each clamp bar, lift the rail
    out of its saddles, and stow.
-5. Release the four lift-and-turn cam latches (releases the perimeter + cut seals).
+5. Release the two lift-and-turn cam latches (releases the perimeter + cut seals).
 6. **Swing the frame ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard** about the pivot, assisted (balanced about the
    vertical axis — no gravity torque; control momentum at the stop).
 7. Engage the top + bottom wall stays (the transport lock).
@@ -433,7 +433,7 @@ position. Five light ingress paths are sealed:
 
 | # | Light path | Seal method |
 |---|-----------|-------------|
-| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 4 × McMaster 1619A74 lift-and-turn cam latches against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
+| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 2 × McMaster 1619A74 lift-and-turn cam latches (opening edge, top + bottom) against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
 | 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom brush seal** — a continuous nylon-filament strip brush in an aluminum holder on the threshold, its bristles rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the bristle wall closes it light-tight. The panel bottom edge **sweeps through the bristles** as the panel swings — so this edge is a **brush, not a compression seal** (a compression EPDM would drag and deform under the sideways sweep; a brush passes the edge through cleanly — the same principle as the drum-opening brush seals). The bristle density is the seal; no cam-latch compression on this edge. (Sheet 3, Detail B.) |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
@@ -475,12 +475,12 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1"×1"×1/8" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (2026-07-29). | 4 ea | Grainger | $49 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | Amazon (OKAYASU) | $24–$52 |
 | Aluminum U-channel, 1/8-panel (per meter) | Gasket retainer + 1/8" HDPE-skin retention (perimeter + housing-surround + stiffener grid). SECTION: aluminum '1/8-panel' U-channel — inner slot ~3.2mm (captures the 3.18mm/PANEL_SKIN_T HDPE skin), ~10–12mm legs, ~1.5mm wall. TOTAL LENGTH: 40m (pick a stock 1/8-panel profile; only the 3.18mm slot is fixed by the skin). | 40 m | Online Metals | $120–$200 |
-| [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | Interior-mounted corner latches clamping the swinging panel to the fixed door frame. Turns from the INTERIOR face; the reversible-offset cam hooks a welded steel keeper on the stub-wall steel frame outside, drawing the panel onto the 20mm EPDM seal (panel opens INWARD only; a frame stop takes the outward direction). 150 lbf max clamp; ADJUSTABLE latching distance 1-3/4 to 2-1/8in (44-54mm); 1/4in max panel thk; 11/16in through-hole; black-painted zinc; mounting fasteners incl. Lift-and-turn = vibration-resistant for transport + hand-releasable from inside for egress. Mounts through the panel-frame RHS; the latch nut is tightened via a coaxial over-bore in the far tube wall + box spanner, then a light-tight plug (or a welded tapped boss — fab detail on Sheet 12). $30.57 ea firm. | 4 ea | McMaster-Carr | $122 |
+| [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | TWO interior-mounted latches on the OPENING (free) edge of the swinging panel — top + bottom — clamping it to the fixed door frame (the pivot edge is hinged; a frame stop takes the outward direction, so only the free edge needs latching). Turns from the INTERIOR face; the reversible-offset cam hooks a welded steel keeper on the stub-wall steel frame outside, drawing the panel onto the 20mm EPDM seal (panel opens INWARD only). 150 lbf max clamp; ADJUSTABLE latching distance 1-3/4 to 2-1/8in (44-54mm); 1/4in max panel thk; 11/16in through-hole; black-painted zinc; mounting fasteners incl. Lift-and-turn = vibration-resistant for transport + hand-releasable from inside for egress. Mounts through the panel-frame RHS; the latch nut is tightened via a coaxial over-bore in the far tube wall + box spanner, then a light-tight plug (or a welded tapped boss — fab detail on Sheet 12). $30.57 ea firm. | 2 ea | McMaster-Carr | $61 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 8. $14.59/100. | 2 pack | McMaster-Carr | $29 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13" grip, 2.06" standoff. Screws into 1/4"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm. | 1 ea | McMaster-Carr | $6 |
-| **Panel total** | | | | **$1,290–$1,448** |
+| **Panel total** | | | | **$1,229–$1,387** |
 <!-- END parts:panel -->
 
 
@@ -550,11 +550,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,290<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,448<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,229<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,387<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$831<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,131<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,488<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,167<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,427<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,106<!-- END costing:hp-total-high -->** |
 
 ---
 

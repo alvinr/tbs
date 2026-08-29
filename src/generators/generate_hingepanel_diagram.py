@@ -468,13 +468,24 @@ def sheet2():
         ax.add_patch(Rectangle((x, Y1_W), w, Y_INT - Y1_W,                  # steel frame jamb (panel depth)
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3, alpha=0.75))
     BWALL = 16                                                              # bay-wall drawn thickness (true 3.18mm)
-    for xw in (STEP_YD_L, STEP_YD_R - BWALL):                                # thin HDPE bay side walls (exterior bay)
+    # HDPE bay SIDE skins LAP the outboard face of the cage corner posts (no floating
+    # gap) and are blind-riveted to them — same fixing as the front skin (Sheet 8). The
+    # left skin covers post face X=DRUM_CAGE_YD_L; the right skin covers X=DRUM_CAGE_YD_R.
+    side_faces = [(DRUM_CAGE_YD_L - BWALL, DRUM_CAGE_YD_L),                   # (skin x0, post face) — left
+                  (DRUM_CAGE_YD_R, DRUM_CAGE_YD_R + BWALL)]                   # right (post face = x0)
+    for xw, _pf in side_faces:
         ax.add_patch(Rectangle((xw, BAY_FRONT_X), BWALL, Y1_W - BAY_FRONT_X,
                                 fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
+    # rivet line: 2 rivets into each corner post (exterior + interior end of the side wall)
+    post_face_L, post_face_R = DRUM_CAGE_YD_L, DRUM_CAGE_YD_R
+    for pf in (post_face_L, post_face_R):
+        # exterior-post pair (near D_YB−25) + interior-post pair (near D_YT+25)
+        for ry in (D_YB - 10, D_YB + 20, D_YT + 10, D_YT + 40):
+            ax.add_patch(Circle((pf, ry), 13, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=12))
     ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T * 4,  # bay front wall (exterior end)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
-    ax.text(STEP_YD_L - 70, (BAY_FRONT_X + Y1_W) / 2, "1/8″ HDPE bay wall\n(3.18mm — drawn thick)",
-            ha="right", va="center", fontsize=5.8, color="#4a5a70", **FONT, zorder=15)
+    leader(ax, (post_face_L, D_YB - 20), (STEP_YD_L - 240, D_YB - 200),
+           "1/8″ HDPE bay SIDE skin —\nlaps + blind-riveted to the cage\ncorner posts (as the front skin,\nSheet 8); no free edge", col="#4a5a70", fs=5.8)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
@@ -624,13 +635,25 @@ def sheet2():
     #    perimeter rails) + the cross-beam carrying the central revolve bearing. ──
     from tbs_constants import DRUM_CAGE_YD_L as _CGL, DRUM_CAGE_YD_R as _CGR
     cage_yb, cage_yt = D_YB - 25, D_YT + 25                       # cage depth envelope (just outside the drum)
-    ax.add_patch(Rectangle((_CGL, cage_yb), _CGR - _CGL, cage_yt - cage_yb,
-                           fc="none", ec=C_STEEL, lw=1.4, ls=(0, (7, 4)), zorder=10))   # cage box outline
-    for cxp in (_CGL, _CGR - 50):                                 # 4 corner posts (50×50 RHS)
+    # CAGE TOP PERIMETER RAILS (50×50 RHS ring welded across the corner-post tops) — these
+    # sit ABOVE the H=1000 cut, so they read as HIDDEN (dashed) members, not an envelope line.
+    RAIL = 50
+    top_rails = [
+        (_CGL, cage_yb, _CGR - _CGL, RAIL),                      # exterior top rail
+        (_CGL, cage_yt - RAIL, _CGR - _CGL, RAIL),               # interior top rail
+        (_CGL, cage_yb, RAIL, cage_yt - cage_yb),                # left top rail
+        (_CGR - RAIL, cage_yb, RAIL, cage_yt - cage_yb),         # right top rail
+    ]
+    for rx, ry, rw, rh in top_rails:
+        ax.add_patch(Rectangle((rx, ry), rw, rh, fc=C_STEEL, ec=C_STEEL,
+                               lw=1.2, ls=(0, (6, 3)), alpha=0.30, zorder=9.5))
+    for cxp in (_CGL, _CGR - 50):                                 # 4 corner posts (50×50 RHS) — CUT at H=1000 (solid)
         for cyp in (cage_yb, cage_yt - 50):
             ax.add_patch(Rectangle((cxp, cyp), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.8, zorder=11))
     leader(ax, (_CGR, cage_yt - 90), (D_XR + 260, cage_yt - 240),
            "DRUM SUPPORT CAGE (4-wall 50×50\nsteel box) — WELDED to the frame:\ncorner posts → center-zone jambs,\naxle beams → header + sill\n(cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
+    leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL - 300, cage_yb - 120),
+           "CAGE TOP PERIMETER RAILS\n(50×50 RHS ring, above the\nH=1000 cut — shown hidden)", col=C_STEEL, fs=5.8)
     # cage → frame WELDED tie: interior corner posts weld to the center-zone jambs
     for cxp in (_CGL + 25, _CGR - 25):
         ax.add_patch(Rectangle((cxp - 7, cage_yt), 14, Y1_W - cage_yt, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=11))
@@ -737,7 +760,7 @@ def sheet2():
     # Small note below orientation box (latches are outside the drum-zone crop
     # in this view but their presence and position is relevant to egress design)
     ax.text(OB_X + OB_W / 2 + 450, OB_Y - 25,
-            "PANEL LATCHES (×4, SOUTHCO C2-33):\nMOUNTED ON INTERIOR FACE —\nEGRESS OPERABLE FROM INSIDE",
+            "CAM LATCH (McMaster 1619A74, lift-and-turn):\nINTERIOR handle → welded keeper on the stub wall.\nPANEL OPENS INWARD ONLY (frame stop takes outward).\nEgress operable from inside. See Sheet 12 Detail A.",
             ha="center", va="top", fontsize=6, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
 

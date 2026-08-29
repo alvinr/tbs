@@ -43,6 +43,12 @@ file** — a release must not ship without a changelog entry:
   **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
   stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
   panel cost **+$47/$33/$19** (cam latch).
+- **Hinged panel — stepped bottom propagated into the 2D set.** Single-sourced the derived bottom step
+  (`PANEL_FLOOR_GAP_SIDE` = 195, `PANEL_BOTTOM_STEP` = 65 in `tbs_constants.py`) and drew it on **Sheet 9**
+  (frame GA — the bottom rail is now three segments: center at Z0 over the tray, both corner rails stepped
+  up 65 mm, with the member schedule + step risers/dim updated) and **Sheet 1** (elevation — frame, skin,
+  fan-mount band, EPDM seal and fixed strips all follow the stepped bottom, with a callout). Sheet 15 now
+  reads the same constant. Next: push the step into the 3D `hinge_panel()`.
 - **Hinged panel — Sheet 15: bottom clearance cross-section (new).** Added a Yd–Z clearance-envelope
   section (walkway grate lifted out for transport) that reconciles the 2D set with the **stepped frame
   bottom** in the 3D model. It shows the near/far **side-wall cantilever brackets** (vertical legs Z180

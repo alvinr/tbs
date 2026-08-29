@@ -92,26 +92,38 @@ def sheet1():
             ha="center", va="bottom", fontsize=7, color=C_DIM, **FONT, style="italic", zorder=20)
 
     # ── Panel body ────────────────────────────────────────────────────────────
-    # Outer steel frame (50mm wide)
-    ax.add_patch(Rectangle((0, 0), PW, PH, fc=C_STEEL, ec=C_OUT, lw=2.5, zorder=2))
-    # Skin area (inset of frame): rev11 — 1/8″ HDPE plastic sheet (C_PLASTIC)
+    # The panel bottom is STEPPED: the two corner zones (Yd0..PANEL_CORNER_YD_L and
+    # PANEL_CORNER_YD_R..PW) step UP by PANEL_BOTTOM_STEP to clear the bare walkway
+    # cantilever bracket legs (walkway removed for transport — Sheet 15); the center
+    # (drum bay) keeps the low bottom over the tray.
+    from tbs_constants import PANEL_BOTTOM_STEP as STEP
+    _sjL, _sjR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
+
+    def sbot(x0, x1, ztop, base):
+        """Stepped-bottom band polygon: center bottom at `base`, corner bottoms at base+STEP."""
+        return [(x0, base + STEP), (_sjL, base + STEP), (_sjL, base), (_sjR, base),
+                (_sjR, base + STEP), (x1, base + STEP), (x1, ztop), (x0, ztop)]
+
+    # Outer steel frame (50mm wide) — stepped bottom
+    ax.add_patch(Polygon(sbot(0, PW, PH, 0), closed=True, fc=C_STEEL, ec=C_OUT, lw=2.5, zorder=2))
+    # Skin area (inset of frame): rev11 — 1/8″ HDPE plastic sheet (C_PLASTIC), stepped bottom
     FR = 55  # visible frame width at face
-    ax.add_patch(Rectangle((FR, FR), PW - 2 * FR, PH - 2 * FR,
-                            fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=3))
+    ax.add_patch(Polygon(sbot(FR, PW - FR, PH - FR, FR), closed=True,
+                         fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=3))
     ax.text(PW / 4 - 225, PH * 0.62,
             "1/8″ HDPE PLASTIC SKIN\n(U-channel set\nflat-black interior)",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15, alpha=0.8)
     # Fan B corner keeps an 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z)
     from tbs_constants import PANEL_FAN_BAND_Z as _PFBZ
-    ax.add_patch(Rectangle((FR, FR), PANEL_CORNER_YD_L - FR, _PFBZ - FR,
-                            fc=C_WOOD, ec=C_OUT, lw=0.8, zorder=3.2))
+    ax.add_patch(Rectangle((FR, STEP + FR), PANEL_CORNER_YD_L - FR, _PFBZ - STEP - FR,
+                            fc=C_WOOD, ec=C_OUT, lw=0.8, zorder=3.2))    # bottom raised with the corner step
     ax.text(PANEL_CORNER_YD_L / 2 + 50, (_PFBZ + FR) / 2 + 200,
             "18mm PLY\nFAN-MOUNT BAND", color="#6a4010", fontsize=6,
             ha="center", va="center", fontweight="bold", **FONT, zorder=15, alpha=0.85)
 
     # ── EPDM perimeter seal (dashed inner contour) ────────────────────────────
     S = 30  # seal inset
-    epdm = plt.Polygon([(S, S), (PW - S, S), (PW - S, PH - S), (S, PH - S)],
+    epdm = plt.Polygon(sbot(S, PW - S, PH - S, S),
                        closed=True, fill=False, ec=C_GASKT, lw=2.0, ls=(0, (4, 3)),
                        zorder=5)
     ax.add_patch(epdm)
@@ -140,8 +152,8 @@ def sheet1():
     # The fixed strips are bolted to the door FRAME (hatched); the swinging panel butts them
     # at the cut lines. Cut lines drawn bold and on top so they read at both panel edges.
     from tbs_constants import PANEL_CUT_YD as _CUT, FAR_STRIP_YD0 as _FAR
-    for (y0, y1) in [(0, _CUT), (_FAR, PW)]:
-        ax.add_patch(Rectangle((y0, FR), y1 - y0, PH - 2 * FR, fc="#C8A060",
+    for (y0, y1) in [(0, _CUT), (_FAR, PW)]:                  # both fixed strips sit in the stepped corner zones
+        ax.add_patch(Rectangle((y0, STEP + FR), y1 - y0, PH - 2 * FR - STEP, fc="#C8A060",
                                ec="none", alpha=0.45, hatch="\\\\\\", zorder=4))
     for cx in [_CUT, _FAR]:
         ax.plot([cx, cx], [0, PH], color="#A000A0", lw=2.6, ls=(0, (5, 2)), zorder=11)
@@ -153,6 +165,13 @@ def sheet1():
            "FIXED LEFT PANEL (Yd0–180)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
     ax.text(PW / 2, FR + 170, "SWINGING PANEL  (Yd180 → 2287, pivots 56°)", color="#1763C8",
             fontsize=7, ha="center", va="bottom", fontweight="bold", **FONT, zorder=15, alpha=0.8)
+    # ── bottom-step callout (corner zones raised to clear the walkway cantilever legs) ──
+    for _sx in (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R):
+        ax.plot([_sx, _sx], [0, STEP], color="#B00", lw=2.0, zorder=12)
+    draw_dim_v(ax, PANEL_CORNER_YD_L - 45, 0, STEP, f"{STEP}", offset=14, fs=6, font=FONT, right=False)
+    ax.text(PW / 2, -145,
+            f"BOTTOM STEPPED UP {STEP}mm AT BOTH CORNER ZONES — clears the bare walkway cantilever legs (walkway removed for transport, Sheet 15)",
+            ha="center", va="center", fontsize=6.4, color="#B00", fontweight="bold", **FONT, zorder=15)
 
     # ── Fan B intake — weatherproof louvre on the panel exterior (near corner) ──
     from tbs_constants import FAN_B_YD as _FBY, FAN_B_H as _FBH
@@ -2002,6 +2021,7 @@ def sheet9():
     jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R   # 653, 1709 — center-zone jambs
     z_hdr = LT_CAGE_TOP                     # 2217 — header over the drum cage
     z_sill = 130                            # sill under the cage (floor gap)
+    from tbs_constants import PANEL_BOTTOM_STEP as STEP   # 65 — corner-zone bottom step-up (Sheet 15)
 
     fig, ax = plt.subplots(figsize=(16, 15))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -2046,14 +2066,24 @@ def sheet9():
             ha="center", va="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT, zorder=6)
 
     # ── swinging-frame perimeter + internal members ──
-    vbar(yL, 0, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 12)", (PH * 0.78, (-260, PH * 0.86)))
-    vbar(yR - RHS, 0, PH)                                     # pivot-side vertical
+    vbar(yL, STEP, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 12)", (PH * 0.78, (-260, PH * 0.86)))  # bottom stepped up
+    vbar(yR - RHS, STEP, PH)                                  # pivot-side vertical (bottom stepped up)
     hbar(PH - RHS, yL, yR)                                    # top rail
-    hbar(0, yL, yR)                                           # bottom rail
+    # STEPPED bottom rail: center (jL..jR, drum bay) at Z0 — the corner zones step UP by STEP to clear
+    # the bare wall-cantilever bracket legs when the walkway is lifted out for transport (Sheet 15).
+    hbar(STEP, yL, jL)                                        # near-corner bottom rail (raised)
+    hbar(0, jL, jR)                                           # center bottom rail (lowest — over the tray)
+    hbar(STEP, jR, yR)                                        # far-corner bottom rail (raised)
     vbar(jL, 0, PH, "CENTER-ZONE JAMB\n(both sides — surround\nrivets here, Sheet 8)", (1700, (400, 1900)))
     vbar(jR, 0, PH)                                           # far center jamb
     hbar(z_hdr, jL, jR)                                       # drum header
     hbar(z_sill - RHS, jL, jR)                                 # drum sill
+    # ── bottom-step callout + dim (both corner zones raised by STEP) ──
+    for sxr in (jL, jR + RHS):                                # step risers at the outboard jamb faces
+        ax.plot([sxr, sxr], [0, STEP], color="#B00", lw=2.2, zorder=8)
+    draw_dim_v(ax, yL - 55, 0, STEP, f"{STEP} step", offset=12, fs=6, font=FONT, right=False)
+    leader(ax, ((yL + jL) / 2, STEP), ((yL + jL) / 2 + 80, -205),
+           f"CORNER BOTTOM STEPPED UP {STEP}mm at BOTH sides\n(clears the bare walkway cantilever legs;\nwalkway removed for transport — Sheet 15)", col="#B00", fw="bold", fs=6)
 
     # ── pivot post (Yd = PIVOT_YD) → Sheet 10 ──
     ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2, 0), PIVOT_POST_OD, PH, fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.9, zorder=7))   # vertical Ø89 post (front elevation → a vertical tube)
@@ -2076,9 +2106,10 @@ def sheet9():
     rows = [
         "MEMBER SCHEDULE",
         "(2×2×0.120in / 50.8mm A500 SHS)",
-        " Stile Yd180 ....... 1 × 2,388",
-        " Pivot vert Yd2287 . 1 × 2,388",
-        " Top/bottom rails .. 2 × 2,107",
+        " Stile Yd180 ....... 1 × 2,323",
+        " Pivot vert Yd2287 . 1 × 2,323",
+        " Top rail .......... 1 × 2,107",
+        " Btm rails (stepped) 473 + 1,056 + 578",
         " Center jambs ...... 2 × 2,388",
         " Header + sill ..... 2 × 1,056",
     ]
@@ -2546,16 +2577,15 @@ def sheet12():
 #   bottoms Z195. Reconciles the 2D set with the stepped-frame bottom seen in the 3D model.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet15():
-    from tbs_constants import (PANEL_FLOOR_GAP as P_CTR, PANEL_CORNER_YD_L as jL,
-                               PANEL_CORNER_YD_R as jR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
-                               WALKWAY_BRACKET_H as WALL_LEG, WALKWAY_WIDE_BRACKET_H as WALL_LEG_W,
-                               WALKWAY_BRACKET_ARM_Z0 as ARM_BOT, PROC_TRAY_YD_NEAR,
-                               PROC_TRAY_YD_FAR, PROC_TRAY_RIM, LEFT_WK_CANT_LEG_YDS,
-                               LEFT_WK_CANT_POST_W)
+    from tbs_constants import (PANEL_FLOOR_GAP as P_CTR, PANEL_FLOOR_GAP_SIDE as P_SIDE,
+                               PANEL_CORNER_YD_L as jL, PANEL_CORNER_YD_R as jR, WALKWAY_W,
+                               WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H as WALL_LEG,
+                               WALKWAY_WIDE_BRACKET_H as WALL_LEG_W, WALKWAY_BRACKET_ARM_Z0 as ARM_BOT,
+                               PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
+                               LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST_W)
     WID     = PW
     ARM_TOP = WALKWAY_H - WALKWAY_GRATE_T      # 115 — grate seat / arm top
-    CLR     = P_CTR - ARM_TOP                  # 15 — clearance over the arm/post tops
-    P_SIDE  = WALL_LEG + CLR                   # 195 — derived stepped side bottom (Z180 std leg + 15)
+    CLR     = P_CTR - ARM_TOP                  # 15 — clearance over the arm/post tops (= P_SIDE − WALL_LEG)
     BREAK_Z = 430
 
     fig, ax = plt.subplots(figsize=(22, 8))

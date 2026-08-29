@@ -1028,6 +1028,13 @@ WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 1
 WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + 15  # 155 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Sits 15mm above the grate top (WALKWAY_H) so the nut clears the deck. Both legs (std 180 / widened 200) hold it with ≥1.5·D top edge.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
+# Hinged-panel bottom STEP (derived) — at the near/far side CORNER zones the swinging panel bottom
+# must clear the BARE wall-cantilever bracket vertical legs (WALKWAY_BRACKET_H) when the walkway is
+# lifted out for transport, with the SAME 15mm margin the center bottom keeps over the Z115 arms
+# (PANEL_FLOOR_GAP − arm-top). So the two corner zones step UP from PANEL_FLOOR_GAP (130) to this.
+# The center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP. See hinged-panel Sheet 15.
+PANEL_FLOOR_GAP_SIDE = WALKWAY_BRACKET_H + (PANEL_FLOOR_GAP - (WALKWAY_H - WALKWAY_GRATE_T))  # 195
+PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                                  # 65 — corner step-up
 # Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,
 # IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
 # case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm

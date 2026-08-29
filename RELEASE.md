@@ -43,6 +43,16 @@ file** — a release must not ship without a changelog entry:
   **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
   stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
   panel cost **+$47/$33/$19** (cam latch).
+- **Hinged panel — cam latches 4→2 + 2D dimension/detail round.** Reduced the cam latches from 4 corners
+  to **2 on the opening edge** (the pivot edge is hinged; a frame stop takes the outward direction) — parts
+  registry qty 4→2, **−$61** panel; reconciled the count across the report, the mass table, and
+  light-trap-selection (which also still named the retired Southco C2-33 and the wrong pivot edge). Drawing
+  fixes: Sheet 1 (2 latches, opening edge); Sheet 2 (cage **top perimeter rails** shown; side HDPE laps +
+  rivets the corner posts; bottom skin width = frame; side rivets drawn as fasteners, not end-on circles);
+  Sheet 7 (personnel-cutout height + locating dims); Sheet 8 (side rivet butted to the surfaces); Sheet 9
+  (drum drawn as a **vertical cylinder**, not a face-on circle; full dimension set); Sheet 10 (pivot-post
+  Ø + length dims); Sheet 12 Detail C (brush screw head on the exposed holder face); Sheet 13 (Fan-B mount
+  redrawn **to scale** — the panel fan bolts through its **flange plate**, not the fan body — plus dims).
 - **Hinged panel — 2D fastener/buildability refinements.** Reworked the detail drawings so every fastener
   is buildable: nuts land against the inside tube wall, hollow beams show their bore, side rivets bite
   steel backing (not the HDPE skin), tee-nuts pass through the tab face, full-height pivot beams, and the

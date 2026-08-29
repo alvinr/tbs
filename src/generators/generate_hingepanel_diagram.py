@@ -258,14 +258,15 @@ def sheet1():
             "Panel + drum SWING 56°\nabout the far-edge pivot for\ntransport (no rails / no slide)\n— see Sheet 4",
             color=C_DIM, fontsize=6, ha="right", va="center", **FONT, zorder=15)
 
-    # ── Southco C2-33 cam latches (4 corners) — INTERIOR FACE ───────────────
-    # Latches are mounted on the INTERIOR face of the panel.
+    # ── Cam latches (×2, OPENING EDGE) — INTERIOR FACE ──────────────────────
+    # Only the free (latching) edge needs latching — the pivot edge is hinged and a
+    # frame stop takes the outward direction. So TWO lift-and-turn cam latches (top +
+    # bottom) on the OPENING edge (Yd≈180 cut, near side) hold the panel shut.
     # From this exterior view they are hidden features — shown dashed per
-    # engineering convention for features on the far/hidden face.
-    # Interior mounting enables emergency egress: if the revolving drum jams,
-    # operators inside the container can release the latches and push the panel
-    # open INWARD (into the container about the pivot), clearing the door plane.
-    LATCH_XS = [210, PW - 210]
+    # engineering convention for features on the far/hidden face. Interior mounting
+    # enables emergency egress: if the drum jams, operators release them and push the
+    # panel open INWARD (into the container about the pivot), clearing the door plane.
+    LATCH_XS = [210]                       # opening edge only (pivot is on the far edge)
     LATCH_YS = [220, PH - 220]
     for lx in LATCH_XS:
         for ly in LATCH_YS:
@@ -276,9 +277,9 @@ def sheet1():
                     color=C_DIM, lw=0.9, ls=(0, (4, 2)), zorder=7)
             ax.plot([lx - 22, lx + 22], [ly + 22, ly - 22],
                     color=C_DIM, lw=0.9, ls=(0, (4, 2)), zorder=7)
-    leader(ax, (LATCH_XS[1], LATCH_YS[0]),
-           (PW + 430, LATCH_YS[0]),
-           "SOUTHCO C2-33 CAM LATCH (×4)\nINTERIOR FACE — shown dashed\nEMERGENCY EGRESS:\noperate from inside if drum jams")
+    leader(ax, (LATCH_XS[0], LATCH_YS[0]),
+           (LATCH_XS[0] - 430, LATCH_YS[0] - 60),
+           "CAM LATCH (McMaster 1619A74, ×2)\nOPENING EDGE, INTERIOR FACE — shown dashed\nEMERGENCY EGRESS: operate from inside if drum jams")
 
     # ── Interior pull handle — bolted to the frame, interior face (§4.3) ──────
     # Interior feature on this exterior view → dashed (like the latches above).
@@ -308,7 +309,7 @@ def sheet1():
 
     # ── Emergency egress safety note ──────────────────────────────────────────
     ax.text(PW / 2, -280,
-            "SAFETY: Interior-mounted cam latches (×4) allow emergency panel release from inside — "
+            "SAFETY: Interior-mounted cam latches (×2, opening edge) allow emergency panel release from inside — "
             "operate if revolving drum jams. Panel opens INWARD about the pivot, clearing the door plane.",
             color="#C04010", fontsize=6.5, ha="center", va="center",
             fontweight="bold", **FONT, zorder=15)
@@ -476,16 +477,17 @@ def sheet2():
     for xw, _pf in side_faces:
         ax.add_patch(Rectangle((xw, BAY_FRONT_X), BWALL, Y1_W - BAY_FRONT_X,
                                 fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
-    # rivet line: 2 rivets into each corner post (exterior + interior end of the side wall)
+    # rivet line: horizontal-axis blind rivets (SIDE-VIEW glyph, not end-on circles) through
+    # the HDPE side skin into each corner post — one at the exterior post, one at the interior.
+    # Left skin is outboard of post face → factory head at −X (ang 180); right skin mirror (ang 0).
     post_face_L, post_face_R = DRUM_CAGE_YD_L, DRUM_CAGE_YD_R
-    for pf in (post_face_L, post_face_R):
-        # exterior-post pair (near D_YB−25) + interior-post pair (near D_YT+25)
-        for ry in (D_YB - 10, D_YB + 20, D_YT + 10, D_YT + 40):
-            ax.add_patch(Circle((pf, ry), 13, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=12))
-    ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T * 4,  # bay front wall (exterior end)
+    for pf, ang, cxr in ((post_face_L, 180, post_face_L - 8), (post_face_R, 0, post_face_R + 8)):
+        for ry in (D_YB, D_YT):                              # exterior post + interior post
+            _blind_rivet(ax, cxr, ry, ang, 22, d=16)
+    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, BAY_FRONT_X), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, (post_face_L, D_YB - 20), (STEP_YD_L - 240, D_YB - 200),
-           "1/8″ HDPE bay SIDE skin —\nlaps + blind-riveted to the cage\ncorner posts (as the front skin,\nSheet 8); no free edge", col="#4a5a70", fs=5.8)
+    leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
+           "1/8″ HDPE bay SIDE skin —\nlaps + blind-riveted to the cage\ncorner posts (@60mm typ., as the\nfront skin, Sheet 8); no free edge", col="#4a5a70", fs=5.8)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
@@ -1747,6 +1749,12 @@ def sheet7():
                 ha="center", va="center", fontsize=6.6, color=C_DIM, **FONT, zorder=5)
         draw_dim_h(ax, ox, ox + OPEN_W, oy1 + 70, f"{OPEN_W} personnel opening", offset=14, fs=6.2, font=FONT)
         ax.text(x0 + W_CTR / 2, oy1 + 150, "≥ drum 80° passage (~487mm, §3.1) — operator fits", ha="center", fontsize=5.8, color=C_DIM, **FONT, zorder=6)
+        # size + locate the cutout: height (dim_v) beside it, bottom margin, and left edge offset
+        opening_h = oy1 - oy0
+        left_margin = (W_CTR - OPEN_W) / 2
+        draw_dim_v(ax, ox + OPEN_W + 55, oy0, oy1, f"{int(opening_h)} opening ht", offset=14, fs=6.0, font=FONT, right=True)
+        draw_dim_v(ax, ox + OPEN_W + 150, yA, oy0, f"{int(oy0 - yA)} btm margin", offset=14, fs=6.0, font=FONT, right=True)
+        draw_dim_h(ax, x0, ox, oy0 - 70, f"{int(left_margin)}", offset=-12, fs=6.0, font=FONT)
         rivet_edge(x0, yA, W_CTR, H_PANEL, "L", holes=(i == 0))
         draw_dim_v(ax, x0 - 60, yA, yA + H_PANEL, f"{H_PANEL}", offset=16, fs=6.5, font=FONT)
         draw_dim_h(ax, x0, x0 + W_CTR, yA - 70, f"{W_CTR}", offset=14, fs=6.5, font=FONT)
@@ -1955,7 +1963,9 @@ def sheet8():
     # the post's SIDE face (steel) turns down from the flange — the HDPE wraps this corner
     ax.add_patch(Rectangle((fx + fw - ft, fy - 44), ft, 44 + ft, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))  # post side wall (steel behind the HDPE)
     ax.add_patch(Rectangle((fx + fw, fy - 44), 8, 44 + ft, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))                   # HDPE lap down the side face
-    _blind_rivet(ax, fx + fw + 4, fy - 12, 180, 16, d=RIV_D)                                                            # side rivet: HDPE → into the STEEL side wall
+    # side rivet: axis horizontal, grip = HDPE(8) + steel wall(12) = 20, centered on the stack so the
+    # factory head butts the HDPE outer face (x=fx+fw+8) and the set head forms in the tube bore (x=fx+fw-ft)
+    _blind_rivet(ax, fx + fw - ft / 2 + 4, fy - 12, 0, 20, d=RIV_D)                                                     # HDPE → into the STEEL side wall, butted
     leader(ax, (fx + fw + 4, fy - 30), (250, -22),
            "HDPE also laps + rivets into the STEEL SIDE face of the post\n(fasten FRONT + SIDE faces — not the front only)", col=C_OUT, fw="bold", fs=6)
 
@@ -2023,7 +2033,15 @@ def sheet9():
     # ── drum cage ENVELOPE (shown; detailed elsewhere) ──
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, z_sill), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, z_hdr - z_sill,
                            fc="#E9E4D8", ec=C_OUT, lw=1.0, ls=(0, (6, 3)), hatch="\\\\", alpha=0.55, zorder=3))
-    ax.add_patch(Circle((PW / 2, (z_sill + DRUM_H_LT) / 2), DRUM_D / 2, fc="none", ec=C_CL, lw=1.0, ls="--", zorder=4))
+    # drum — VERTICAL axis, so in this front elevation it is a CYLINDER (Ø800 wide × tall),
+    # NOT a face-on circle. Body rectangle + top/bottom ellipse arcs, centered in the cage.
+    dcx = PW / 2
+    ddz0, ddz1 = z_sill, z_hdr
+    ax.add_patch(Rectangle((dcx - DRUM_D / 2, ddz0), DRUM_D, ddz1 - ddz0, fc=C_LT_DRUM, ec=C_CL,
+                           lw=1.0, ls="--", alpha=0.30, zorder=4))
+    for az, t1, t2 in [(ddz0, 180, 360), (ddz1, 0, 180)]:
+        ax.add_patch(Arc((dcx, az), DRUM_D, 150, angle=0, theta1=t1, theta2=t2, color=C_CL, lw=1.0, ls="--", zorder=4))
+    ax.plot([dcx, dcx], [ddz0 - 40, ddz1 + 40], color=C_CL, lw=0.8, ls=(0, (7, 4)), zorder=4)   # drum vertical axis CL
     ax.text(PW / 2, (z_sill + z_hdr) / 2, f"DRUM CAGE ENVELOPE\n(Ø{int(DRUM_D)} drum + swing cage)\n— detailed in\nLight-Trap Sheet 7",
             ha="center", va="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT, zorder=6)
 
@@ -2068,9 +2086,19 @@ def sheet9():
             bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
 
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL} SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
-    draw_dim_v(ax, PW + 230, 0, PH, f"{PH}", offset=20, fs=7, font=FONT, right=True)
+    # horizontal component chain (near strip · center zone · far strip) — top row, above the cage dim
+    draw_dim_h(ax, 0, yL, PH + 215, f"{yL}", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, PH + 215, f"{jR - jL} center zone", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, yR, PW, PH + 215, f"{int(PW - yR)}", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, PH + 95, f"{DRUM_CAGE_YD_R - DRUM_CAGE_YD_L} drum cage", offset=16, fs=6, font=FONT)
+    # vertical component chain (sill · cage · header→top) on the right, overall PH outermost
+    draw_dim_v(ax, PW + 150, 0, z_sill, f"{z_sill}", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 150, z_sill, z_hdr, f"{z_hdr - z_sill} cage", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 150, z_hdr, PH, f"{PH - z_hdr}", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 300, 0, PH, f"{PH}", offset=20, fs=7, font=FONT, right=True)
+    draw_dim_v(ax, -300, 0, PANEL_FAN_BAND_Z, f"{PANEL_FAN_BAND_Z} fan band", offset=14, fs=6, font=FONT, right=False)
 
-    ax.text(PW / 2, PH + 190, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
+    ax.text(PW / 2, PH + 295, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
     title_block(ax, "SHEET 9 OF 14",
@@ -2136,6 +2164,11 @@ def sheet10():
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
     leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → frame jamb)\n— Sheet 14", col=C_OUT, fw="bold")
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT} floor→roof", offset=16, fs=6.6, font=FONT)
+    # diameters (dim_h) + component lengths (dim_v) on the pivot post
+    draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
+    draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116 hub tube", offset=14, fs=6.2, font=FONT)  # Ø220 plate OD is dimensioned in Detail B
+    draw_dim_v(ax, cx + 520, 180, 2050, f"{2050 - 180} hub tube", offset=16, fs=6.2, font=FONT, right=True)
+    draw_dim_v(ax, cx + 430, 220, 2000, f"{2000 - 220} bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
@@ -2252,24 +2285,35 @@ def sheet13():
     fig, ax = plt.subplots(figsize=(17, 9.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(0, 460)
-    ax.set_ylim(-40, 210)
+    ax.set_xlim(0, 470)
+    ax.set_ylim(-55, 250)
 
-    # ── DETAIL A — Fan-B → plywood (through-bolt + backing) ──
-    ax0, ay0, sA = 20, 40, 1.0
+    # ── DETAIL A — Fan-B → plywood (SECTION, to scale 1:1) ──
+    # A 150mm axial PANEL FAN bolts to the ply through its thin MOUNTING FLANGE PLATE (the
+    # panel that butts the ply) at the flange CORNERS — the bolts do NOT run through the
+    # 50mm fan body. Exterior (fan) at LEFT → interior (backing plate) at RIGHT.
+    ax0, ay0, sA = 24, 10, 1.0
     def dA(x, y): return (ax0 + x * sA, ay0 + y * sA)
-    ax.text(ax0 + 95, 200, "DETAIL A — FAN-B → PLYWOOD", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(ax0 + 95, 188, "through-bolt + interior backing plate", ha="center", fontsize=7, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle(dA(70, 20), 18, 130, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))       # 18mm ply
-    ax.add_patch(Rectangle(dA(10, 55), 60, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))        # fan flange (exterior)
-    ax.add_patch(Rectangle(dA(88, 62), 22, 46, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))      # backing plate (interior)
-    for by2 in (72, 98):
-        _draw_bolt(ax, ax0 + 60 * sA, ay0 + by2 * sA, 100 * sA, d=8, vertical=False, head=-1, end="nut", zb=8)
-    leader(ax, dA(79, 30), (ax0 + 40, 175), "18mm PT ply band", col=C_OUT, fs=6.5)
-    leader(ax, dA(40, 60), (ax0 + 20, 160), "Fan-B flange\n(exterior)", col=C_OUT, fs=6.5)
-    leader(ax, dA(99, 66), (ax0 + 150, 160), "interior\nbacking plate", col=C_OUT, fs=6.5)
-    ax.text(ax0 + 95, 8, "Fan-B flange → 2× M8 bolts through the 18mm ply\ninto an interior backing plate + nuts", ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT)
-    draw_dim_v(ax, dA(70, 0)[0] + 32, dA(0, 20)[1], dA(0, 150)[1], "18", offset=8, fs=6, font=FONT, right=True)
+    ax.text(ax0 + 60, 238, "DETAIL A — FAN-B → PLYWOOD (SECTION 1:1)", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(ax0 + 60, 226, "panel fan bolts through its flange plate, not the fan body", ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle(dA(60, 5), 18, 205, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))            # 18mm ply (vertical)
+    ax.add_patch(Rectangle(dA(54, 15), 6, 190, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))           # fan MOUNTING FLANGE PLATE (butts the ply)
+    ax.add_patch(Rectangle(dA(4, 40), 50, 140, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=4))            # fan body (Ø150 × 50 deep) — protrudes exterior
+    ax.add_patch(Rectangle(dA(4, 55), 50, 110, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))       # fan bore
+    ax.add_patch(Rectangle(dA(19, 98), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))         # motor hub
+    ax.add_patch(Rectangle(dA(78, 18), 6, 189, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))          # interior backing plate (spans the bolt gauge)
+    for by2 in (28, 192):                                                                          # bolts at the flange corners — clear of the round fan body
+        _draw_bolt(ax, dA(57, by2)[0], dA(57, by2)[1], 30 * sA, d=8, vertical=False, head=-1, end="nut", zb=8)
+    leader(ax, dA(69, 190), (ax0 + 70, 235), "18mm PT ply band", col=C_OUT, fs=6.2)
+    leader(ax, dA(57, 55), (ax0 - 12, 205), "fan MOUNTING FLANGE\nplate (butts the ply)", col=C_OUT, fw="bold", fs=6.2)
+    leader(ax, dA(26, 110), (ax0 - 18, 60), "150mm axial fan body\n(Ø150 × 50 deep) —\nNOT bolted through", col=C_OUT, fs=6.2)
+    leader(ax, dA(81, 110), (ax0 + 140, 205), "interior backing\nplate + nuts", col=C_OUT, fs=6.2)
+    ax.text(ax0 + 60, -22, "Fan-B flange → 2× M8 through the flange plate + 18mm ply into\nan interior backing plate + nuts (bolts clear the fan body)", ha="center", va="top", fontsize=6.2, color=C_OUT, **FONT)
+    # dims (to scale)
+    draw_dim_v(ax, dA(0, 0)[0] - 20, dA(0, 15)[1], dA(0, 205)[1], "190 flange", offset=8, fs=5.8, font=FONT, right=False)
+    draw_dim_v(ax, dA(57, 0)[0] + 42, dA(0, 28)[1], dA(0, 192)[1], "bolt gauge", offset=10, fs=5.6, font=FONT, right=True)
+    draw_dim_h(ax, dA(4, 0)[0], dA(54, 0)[0], dA(0, 34)[1], "50 fan", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dA(60, 0)[0], dA(78, 0)[0], dA(0, 216)[1], "18", offset=7, fs=5.6, font=FONT)
 
     # ── DETAIL B — plywood → frame (welded tab + captive tee-nut) ──
     bx0, byy, sB = 270, 40, 1.0
@@ -2292,11 +2336,15 @@ def sheet13():
     leader(ax, dB(70, 89), (bx0 + 44, 18), "L-bracket WELDED to the frame;\nbolt through the tab UPSTAND (its face)", col=C_OUT, fs=6.5)
     leader(ax, dB(108, 88), (bx0 + 165, 150), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.5)
     leader(ax, dB(100, 116), (bx0 + 165, 175), "18mm ply band", col=C_OUT, fs=6.5)
+    # dims (to scale)
+    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 52)[1], "18", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50 RHS", offset=-7, fs=5.6, font=FONT)
+    draw_dim_v(ax, dB(0, 0)[0] - 16, dB(0, 58)[1], dB(0, 118)[1], "tab", offset=8, fs=5.6, font=FONT, right=False)
 
     title_block(ax, "SHEET 13 OF 14",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
-                scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
+                scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet13.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
@@ -2443,10 +2491,15 @@ def sheet12():
     ax.add_patch(Rectangle((Cx + 48, 78), 44, 22, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((Cx + 52, 82), 36, 14, fc=BG, ec=C_OUT, lw=0.6, zorder=5))
     leader(ax, (Cx + 90, 89), (Cx + 120, 130), "8813T53 Al\nholder channel", col=C_OUT, fs=6)
-    _draw_bolt(ax, Cx + 70, 91, 18, d=5, vertical=True, head=-1, end="rivnut", wall=4, zb=8)   # #10 screw UP from holder into a RIVNUT in the hollow frame's bottom wall
-    leader(ax, (Cx + 70, 78), (Cx + 34, 150), "#10 machine screw up through the\nholder into a RIVNUT set in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
-    # brush bristles hanging down
+    # #10 screw head bears on the EXPOSED (bottom) FACE of the Al holder (z=78); shank runs UP
+    # through the holder into a RIVNUT set in the hollow frame's bottom wall (z 100–103).
+    _draw_bolt(ax, Cx + 70, 89, 22, d=5, vertical=True, head=-1, end="rivnut", wall=3, zb=9)
+    ax.plot([Cx + 63, Cx + 77], [78, 78], color=C_OUT, lw=1.0, zorder=10)                       # holder face line the head bears on
+    leader(ax, (Cx + 70, 75), (Cx + 30, 44), "#10 screw HEAD on the holder FACE;\nshank up into a RIVNUT in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
+    # brush bristles hanging down (clear column left for the mounting screw)
     for bxk in range(Cx + 54, Cx + 88, 4):
+        if Cx + 62 <= bxk <= Cx + 78:
+            continue
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 

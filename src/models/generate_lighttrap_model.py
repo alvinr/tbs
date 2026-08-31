@@ -536,20 +536,6 @@ def pivot_link():
     return '\n'.join(p)
 
 
-def pivot_connect():
-    """Connection beams tying the SWINGING panel frame's far edge to the pivot post/hub — without them the
-    panel frame reads as floating off the Ø89 post (2026-08-31 review). A top + bottom 50mm steel RHS runs
-    in the door plane from the panel far edge (Yd C_WID−APRON_FIX_W) across to the post; swings with the
-    panel, landing the cantilever couple into the hub brackets."""
-    s = 50                                   # 50mm steel RHS, matches the cage/panel frame
-    y0 = C_WID - APRON_FIX_W                 # 2162 — panel far edge
-    span = (PIVOT_YD + s) - y0               # reach across to just past the post center
-    return '\n'.join([
-        ruby_box("Panel→pivot connect beam (top, 50 RHS)",    0, y0, PANEL_Z_TOP - s, s, span, s, color=C_STEEL),
-        ruby_box("Panel→pivot connect beam (bottom, 50 RHS)", 0, y0, PANEL_FLOOR_GAP, s, span, s, color=C_STEEL),
-    ])
-
-
 def near_leaf():
     """FIXED LEFT panel (Yd0..CUT) — does NOT swing; covers the near-wall strip past the
     near upright. Own perimeter EPDM + the vertical cut seal the swinging panel butts."""
@@ -593,6 +579,10 @@ def pivot_corner_leaf():
     return '\n'.join([
         ruby_box("Pivot corner frame (travels)", 0, y0, z0, PLY_X0, y1 - y0, z1 - z0, color=C_STEEL, alpha=1.0),
         ov.ruby_prism("Pivot corner ply (travels)", ply, z0, z1 - z0, color="#C8A060", alpha=1.0),
+        # LEAF PIVOT-EDGE STILE (2×2/50 RHS) at the pivot edge, just inboard of the ply — the 3 hub hinge
+        # brackets (pivot_link, X55..195) LAND on this stile and are fillet-welded to it, so leaf+hub+cage
+        # swing as one weldment (hingepanel Sheet 14). Travels with the leaf.
+        ruby_box("Leaf pivot-edge stile (50 RHS)", PLY_X0, y1 - 50, z0, 50, 50, z1 - z0, color=C_STEEL, alpha=1.0),
     ])
 
 
@@ -1084,7 +1074,8 @@ def generate_ruby():
         drum_frame(),
         fan_b(),
         pivot_link(),
-        pivot_connect(),                  # top+bottom RHS tying the panel frame to the pivot post
+        # (door-plane pivot_connect beams removed — the frame→post connection is the inboard hub + 3 hinge
+        #  brackets landing on the leaf pivot-edge stile; see pivot_corner_leaf + pivot_link, Sheet 14.)
         frame_hooks(),
     ])
 

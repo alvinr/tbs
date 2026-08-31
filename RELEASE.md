@@ -90,6 +90,12 @@ file** — a release must not ship without a changelog entry:
   to the pivot LINE (not past it) with the inboard-pivot corner NOTCHED so the door-plane ply sweeps clear
   of the fixed post + thrust collar through the swing. Frame→post connection is the inboard pivot hub; no
   fixed jamb, no swept cutout. The former full-height fixed far strip is retired.
+- **Hinged panel — frame→post securing reconciled (2D + 3D).** The swinging leaf is tied to the fixed Ø89
+  post by the moving hub (thrust + journal bearings) and **3 hinge brackets fillet-welded to the leaf's
+  travelling PIVOT-EDGE STILE** (2×2 RHS) — hub + leaf frame + drum cage as one weldment. Sheets 10/14
+  relabelled from "center jamb" to the pivot-edge stile (travels + carries the pivot-corner plywood);
+  Sheet 16's obsolete "200 fixed stub" now reads as the travelling pivot-corner leaf. 3D: added the
+  pivot-edge stile so the hub brackets land on steel, and deleted the wrong door-plane connect beams.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

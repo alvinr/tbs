@@ -2193,7 +2193,7 @@ def sheet10():
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
-    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → frame jamb)\n— Sheet 14", col=C_OUT, fw="bold")
+    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 14", col=C_OUT, fw="bold")
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT} floor→roof", offset=16, fs=6.6, font=FONT)
     # diameters (dim_h) + component lengths (dim_v) on the pivot post
     draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
@@ -2203,7 +2203,7 @@ def sheet10():
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 1810, "How the swinging frame is secured to the moving\nhub — 3 welded hinge brackets, bolts on the hub-tube\nface into a backing plate — is drawn full-size on\n\nSHEET 14 (Frame → Pivot-Post Connection).",
+    ax.text(1000, 1810, "How the swinging leaf is secured to the moving hub —\n3 hinge brackets FILLET-WELDED to both the hub tube and\nthe leaf's pivot-edge stile (hub+leaf+cage = one weldment)\n— is drawn full-size on\nSHEET 14 (Frame → Pivot-Post Connection).",
             ha="center", va="top", fontsize=7.2, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.6", fc="#F4F1E8", ec=C_DIM, lw=0.9))
 
@@ -2426,14 +2426,14 @@ def sheet14():
     ax.plot([cx, cx], [-30, HGT + 30], color=C_CL, lw=0.8, ls=(0, (8, 4)), zorder=2)
     ax.add_patch(Rectangle((cx - 58, 40), 116, HGT - 80, fc=C_ALUM, ec=C_OUT, lw=1.2, alpha=0.5, zorder=4))       # hub tube (full height for simplicity)
     ax.add_patch(Rectangle((cx - 58 + 12, 40), 116 - 24, HGT - 80, fc=BG, ec=C_OUT, lw=0.4, zorder=4))            # bore (post)
-    ax.add_patch(Rectangle((cx + 58 + 120, 0), 30, HGT, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=3))       # frame center jamb
+    ax.add_patch(Rectangle((cx + 58 + 120, 0), 30, HGT, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=3))       # leaf pivot-edge stile
     for z in (300, 1180, 2000):
-        ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket (welded hub↔jamb)
-        for jz in (z - 20, z + 42):                                                                               # weld ticks at the jamb
+        ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket (welded hub↔leaf stile)
+        for jz in (z - 20, z + 42):                                                                               # weld ticks at the stile
             ax.add_patch(Polygon([(cx + 178, jz), (cx + 170, jz), (cx + 178, jz + (6 if jz < z else -6))], closed=True, fc=C_OUT, ec="none", zorder=7))
     leader(ax, (cx, 1400), (cx - 170, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 10)", col=C_OUT, fs=6.5)
-    leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to hub + jamb", col=C_OUT, fw="bold", fs=6.5)
-    leader(ax, (cx + 178, 2000), (cx + 250, 2200), "frame center jamb\n(2×2×0.120 RHS)", col=C_OUT, fs=6.5)
+    leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to hub + stile", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, (cx + 178, 2000), (cx + 250, 2200), "LEAF PIVOT-EDGE STILE\n(2×2 RHS — TRAVELS with\nthe leaf, carries its plywood)", col=C_OUT, fw="bold", fs=6.5)
     ax.text(cx + 40, HGT + 130, "ELEVATION — 3 brackets up the hub", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
 
     # ── RIGHT: enlarged plan section of one bracket ──
@@ -2442,8 +2442,8 @@ def sheet14():
     ax.text(ox + 55 * s, oy + 95 * s, "DETAIL — HINGE BRACKET (plan section)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.add_patch(Rectangle(d(-14, -40), 14 * s, 80 * s, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))       # hub tube wall
     ax.add_patch(Rectangle(d(0, -22), 66 * s, 44 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))         # bracket plate (welded to hub)
-    ax.add_patch(Rectangle(d(66, -42), 50 * s, 84 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))  # frame jamb
-    ax.add_patch(Rectangle(d(69, -39), 44 * s, 78 * s, fc=BG, ec=C_OUT, lw=0.5, zorder=5))             # jamb bore
+    ax.add_patch(Rectangle(d(66, -42), 50 * s, 84 * s, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))  # leaf pivot-edge stile
+    ax.add_patch(Rectangle(d(69, -39), 44 * s, 78 * s, fc=BG, ec=C_OUT, lw=0.5, zorder=5))             # stile bore
     for wy, sgn in ((-22, 1), (22, -1)):                                                               # fillet welds bracket→hub, AT the tube surface
         ax.add_patch(Polygon([d(0, wy), d(0, wy + sgn * 9), d(11, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
     for wy, sgn in ((-22, 1), (22, -1)):                                                               # fillet welds bracket→jamb (both faces)
@@ -2451,14 +2451,15 @@ def sheet14():
     leader(ax, d(-7, 30), (ox - 60, oy + 40 * s), "hub tube\nwall", col=C_OUT, fs=6.5)
     leader(ax, d(4, -18), (ox - 150, oy - 6 * s), "fillet weld\nbracket→hub", col=C_OUT, fs=6.5)
     leader(ax, d(30, 20), (ox + 20 * s, oy + 80 * s), "bracket plate", col=C_OUT, fs=6.5)
-    leader(ax, d(66, 20), (ox + 118 * s, oy + 78 * s), "fillet weld bracket→jamb\n(no bolts through the closed tube)", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, d(66, 20), (ox + 118 * s, oy + 78 * s), "fillet weld bracket→leaf stile\n(no bolts through the closed tube)", col=C_OUT, fw="bold", fs=6.5)
 
     draw_notes(ax, [
         "NOTES",
         "The bracket plate is FILLET-WELDED to BOTH the hub tube and the",
-        "frame jamb — the hub + frame + cage swing as ONE weldment. No",
-        "bolts pass through the closed jamb (which can't be",
-        "back-tightened); all-welded steel.",
+        "leaf's PIVOT-EDGE STILE — so the hub + leaf frame + drum cage swing",
+        "as ONE weldment about the fixed post. The stile TRAVELS with the leaf",
+        "and carries the pivot-corner plywood. No bolts pass through the closed",
+        "stile (which can't be back-tightened); all-welded steel.",
         ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1000, font=FONT)
 
     title_block(ax, "SHEET 14 OF 16",
@@ -2731,7 +2732,7 @@ def sheet16():
                                APRON_IN_L, APRON_IN_R, APRON_CAGE_GAP,
                                DRUM_CAGE_YD_L as cgL, DRUM_CAGE_YD_R as cgR, APRON_FIX_W)
     WID  = PW
-    STUB = WID - APRON_FIX_W     # 2162 — far fold-down apron ends here; the 200mm pivot stub is fixed
+    STUB = WID - APRON_FIX_W     # 2162 — far fold-down apron ends here; beyond it is the TRAVELLING pivot-corner leaf
     THR  = 51        # threshold sill top Z
     AT   = 40        # apron thickness (12mm exterior BC plywood, flat-black interior)
     BAYB = 217       # bay bottom cap Z
@@ -2760,9 +2761,11 @@ def sheet16():
         if lbl:
             ax.text((y0 + y1) / 2, ez + top * 0.5, f"{lbl}\n(UP = sealing)\nZ0–{int(top)}", ha="center", va="center",
                     fontsize=7, fontweight="bold", color="#204060", **FONT)
-    ax.add_patch(Rectangle((STUB, ez), WID - STUB, ATOP, fc="#B8B8C0", ec=C_OUT, lw=1.4, hatch="xx", alpha=0.7))  # fixed pivot stub
-    ax.text((STUB + WID) / 2, ez + ATOP * 0.5, f"FIXED\npivot stub\nZ0–{int(ATOP)}", ha="center", va="center",
-            fontsize=6.3, fontweight="bold", color="#303030", **FONT)
+    # pivot-corner leaf TRAVELS with the swinging panel up to the pivot line; tiny fixed past-pivot at the wall
+    ax.add_patch(Rectangle((STUB, ez), PIVOT_YD - STUB, ATOP, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.75))
+    ax.text((STUB + PIVOT_YD) / 2, ez + ATOP * 0.5, f"PIVOT-CORNER\nLEAF (travels)\nZ0–{int(ATOP)}", ha="center", va="center",
+            fontsize=5.8, fontweight="bold", color="#204060", **FONT)
+    ax.add_patch(Rectangle((PIVOT_YD, ez), WID - PIVOT_YD, ATOP, fc="#B8B8C0", ec=C_OUT, lw=1.0, hatch="xx", alpha=0.6))
     ax.add_patch(Rectangle((APRON_IN_L, ez), APRON_IN_R - APRON_IN_L, BAF_TOP, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///", alpha=0.6))
     ax.text((APRON_IN_L + APRON_IN_R) / 2, ez + 66, f"FIXED CENTER BAFFLE\n(trimmed to the apron edges — no moving part)\nZ51–{int(BAF_TOP)} (drum frame sweeps clear above)", ha="center", va="center",
             fontsize=7, fontweight="bold", color=C_OUT, **FONT)
@@ -2782,7 +2785,7 @@ def sheet16():
     draw_dim_h(ax, 0, APRON_IN_L, ez - 45, f"{int(APRON_IN_L)} near apron", offset=-12, fs=6, font=FONT)
     draw_dim_h(ax, APRON_IN_L, APRON_IN_R, ez - 45, f"{int(APRON_IN_R - APRON_IN_L)} center baffle", offset=-12, fs=6, font=FONT)
     draw_dim_h(ax, APRON_IN_R, STUB, ez - 45, f"{int(STUB - APRON_IN_R)} far apron", offset=-12, fs=6, font=FONT)
-    draw_dim_h(ax, STUB, WID, ez - 45, f"{int(WID - STUB)} stub", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, STUB, PIVOT_YD, ez - 45, f"{int(PIVOT_YD - STUB)} pivot leaf", offset=-12, fs=5.6, font=FONT)
 
     # ══ SECTION A (X–Z) — corner apron fold action (bottom-left) ══
     a0 = 130

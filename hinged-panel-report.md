@@ -25,7 +25,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - Single-person mode conversion (~5 minutes)
 
 <!-- brochure:skip -->
-**Interactive 3D model** — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame (with the bottom brush seal), and Fan B. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame, and Fan B. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -183,11 +183,11 @@ interface stays single-sourced.
 | Drum (rotating) | Ø764mm C-shell, single 80° opening, **~Ø758mm clear bore** |
 | Passage width | **~487mm** (the 80° opening) — single operator, sideways entry |
 | Height | Cap top at Z=2,100mm AFF (cage/beam top 2,217mm); see [Light Trap Selection](light-trap-selection.md) §3 |
-| Mounting | **Carried with the panel** — rides at Z=130 on the panel bottom rail (130mm floor gap → clears the tray rim, and the swinging cage passes over the Z115 walkway brackets). Operator steps up ~130mm over the threshold to enter; exits level onto the walkway deck (also Z=130). |
+| Mounting | **Carried with the panel** — panel bottom rides at Z=217 (217mm floor gap); the drum-cage underside hangs to Z130, clearing the fixed Z115 floor-leg walkway posts + Z70 tray rim as it swings. Operator steps up from the Z140 walkway deck into the drum. |
 | Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 1/8" HDPE drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
-| Clear walking height | 1,970mm clear interior |
+| Clear walking height | 1,883mm clear interior |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
 | Weight | housing ~22 kg + rotating drum ~36 kg = **~58 kg** (plastic skin, ≈59% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
 
@@ -356,24 +356,27 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 ### 5.3 Floor Gap
 
-The panel + drum cage ride at a **130mm floor gap** (the grate-top level set
-by the +50mm walkway raise), carried by the pivot post on its thrust collar + hub
-bearings. The gap clears the processing tray rim with margin; it is also the threshold
-the drum revolves over and the floor datum the swing arc sweeps at.
+The panel + drum cage ride at a **217mm floor gap**, carried by the pivot post on its
+thrust collar + hub bearings. The gap is set by the **transport-swing clearance**: as the
+panel + drum swing across the container, the drum-cage underside — which hangs to **Z130**,
+below the Z217 panel bottom — must clear the tallest fixed obstacle in the swept path. That
+is the **LEFT walkway's floor-leg cantilever posts (top Z115, they stay bolted during the
+swing)** — taller than the fixed processing-tray rim (Z70). Raising the floor gap **130 → 217**
+puts the cage underside at Z140, clearing the Z115 posts by **25mm** (and the Z70 tray rim by 70mm; the bottom axle beam is shallowed 50→40mm to buy 10mm of that from the lower hub without raising the drum) —
+60mm), at a cost of 87mm drum interior (1970 → 1883, still clearing a 1780mm operator by 103mm).
 
-**The housing + drum ride at the same Z=130**, so the swinging cage passes over the
-tray basin — and over the Z115 door-end walkway brackets — rather than colliding with
-them. The swing (about a vertical pivot, so the bottom edge stays at Z=130 throughout)
-is what makes the deep Ø800 housing transport-feasible without a slide; a floor-mounted
-housing would have fouled the tray. The 130mm floor gap is closed in the operational
-position by the continuous bottom brush seal (§6).
+The swing is about a **vertical** pivot, so the cage underside stays at Z130 throughout — this
+is what makes the deep Ø800 housing transport-feasible without a slide; a floor-mounted housing
+would have fouled the tray. The 217mm floor gap is closed in the operational position by the
+**fold-down light aprons** (§6, **Sheet 16**). The clearance is drawn on **Sheet 15**
+(transport-swing bottom-clearance section).
 
-The 130mm gap would otherwise be a straight light path, so it is light-sealed by the
-fixed-frame **bottom brush seal** described in §6 — a threshold-mounted nylon-filament
-strip brush whose bristles the panel bottom edge sweeps through. Because it is a brush
-(neither a floor-contact seal nor a compression EPDM), it never fouls the tray rim, seals
-continuously without cam-latch compression, and the panel edge passes through it cleanly
-on the swing.
+The 217mm gap would otherwise be a straight light path, so it is closed by **fold-down light
+aprons** (Sheet 16): two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one
+minus a 200mm fixed stub that clears the Ø220 pivot mount plate) plus a fixed center baffle under
+the drum bay. They stand up and seal in operation and fold flat into the container for the swing.
+The joint light-seal detail (foam strip + a lapping board off the hinge frame) is still to be
+finalized.
 
 ### 5.4 Transport Conversion Sequence
 
@@ -386,9 +389,9 @@ The swing carries the drum cage through **X=260**, where the film-plane mechanis
 left edge sits, so the **two left film rails (TL + BL) must be struck before the swing**
 and re-seated after (the tapered dowels return the film datum). The muslin screen must
 be struck regardless — the fragile screen cannot travel mounted. The swing **clears the
-door-end walkway brackets at Z**: the cage underside at Z=130 passes over the Z=115
-bracket tops, so **no walkway bracket is demounted** (superseding the old slide, which
-swept past them at floor level and required striking them).
+door-end floor-leg posts at Z**: the cage underside at Z=130 passes over the Z=115
+post tops (they stay bolted), so **no floor-leg post is demounted** (superseding the old
+slide, which swept past them at floor level and required striking them).
 
 Order of operations (single person, ~10 min) — see the [Operating Manual](operating-manual.md) §5.5:
 
@@ -435,7 +438,7 @@ position. Five light ingress paths are sealed:
 |---|-----------|-------------|
 | 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 2 × McMaster 1619A74 lift-and-turn cam latches (opening edge, top + bottom) against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
-| 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom brush seal** — a continuous nylon-filament strip brush in an aluminum holder on the threshold, its bristles rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the bristle wall closes it light-tight. The panel bottom edge **sweeps through the bristles** as the panel swings — so this edge is a **brush, not a compression seal** (a compression EPDM would drag and deform under the sideways sweep; a brush passes the edge through cleanly — the same principle as the drum-opening brush seals). The bristle density is the seal; no cam-latch compression on this edge. (Sheet 3, Detail B.) |
+| 3 | Panel bottom → 217mm floor gap | **Fold-down light aprons** (Sheet 16) — two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one minus a 200mm fixed pivot stub) + a fixed center baffle under the drum bay, closing the 217mm gap under the raised leaf. Foam-strip perimeter seal, flat-black interior. Stand up + seal in operation; release + fold flat into the container for the swing. Joint seal (foam + a lapping board off the hinge frame) TBD. |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
 | 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2,100), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
@@ -457,7 +460,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Function | Seal landing for the swinging-panel **vertical** perimeter + cut seals + housing-surround EPDM, plus the **top + bottom strip-brush** light seals |
 | Attachment | Welded to container end wall structural members |
 | Cut-seal landings | 2 × vertical EPDM landings (the swing cuts between the swinging panel and the fixed strips) |
-| Bottom brush seal | Continuous nylon-filament **strip brush** in an aluminum holder on the threshold, **full panel-bottom width (no notch — drum rides at Z=130)** — the panel bottom edge sweeps through the bristles (see §6 path #3) |
+| Bottom light seal | **Fold-down light aprons** — 2× bottom-hinged 12mm-ply flaps (corner zones) + fixed center baffle + 200mm pivot stub; foam-strip seal, fold flat for transport (see §6 path #3, Sheet 16) |
 | Top brush seal | Mirror of the bottom: continuous nylon-filament **strip brush** in a holder on the frame top rail, bristles reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the panel + drum-box top edge sweeps through the bristles (see §6 path #4) |
 
 ---
@@ -479,8 +482,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 8. $14.59/100. | 2 pack | McMaster-Carr | $29 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
+| Fold-down light aprons + fixed baffle/pivot stub (12mm ext ply) + piano hinges + foam seal + hold-up catches | Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 16). Two bottom-hinged fold-down aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. 12mm exterior BC plywood (~0.5 m² of a 4×8 sheet, flat-black interior), 2× continuous (piano) hinges to the threshold, closed-cell foam-strip perimeter seal, 2× over-centre hold-up catches; folds flat into the container for the transport swing. Est.; the joint light-seal detail (foam + a lapping board off the hinge frame) is still TBD. | 1 lot | Home Depot / McMaster | $95–$150 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13" grip, 2.06" standoff. Screws into 1/4"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm. | 1 ea | McMaster-Carr | $6 |
-| **Panel total** | | | | **$1,229–$1,387** |
+| **Panel total** | | | | **$1,324–$1,537** |
 <!-- END parts:panel -->
 
 
@@ -550,11 +554,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,229<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,387<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,324<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,537<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$831<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,131<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,427<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,106<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,522<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,256<!-- END costing:hp-total-high -->** |
 
 ---
 

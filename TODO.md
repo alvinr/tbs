@@ -48,6 +48,12 @@ review is finished:**
   cage top/bottom beam positions. Cage HEIGHT stays as-is (Alvin 2026-08-29 — the separate header/sill beams
   are dedicated short-span drum-hang supports; interior 1970 clears a 1780 operator by 190). Audit 2D vs the
   live model, single-source off the constants, and re-gen. Do BEFORE the held hingepanel 3D batch send.
+- [ ] **Fold-down apron joint light-seal (open, Alvin 2026-08-30):** the fold-down light aprons (Sheet 16) that
+  close the raised 217mm floor gap need their joint seal detailed — likely a closed-cell foam strip plus a
+  lapping board on the leaf, attached to the hinge frame, so the apron-top↔leaf and apron↔jamb joints are
+  light-tight without a compression drag on the swing. Detail on Sheet 16 + the report §6 path #3 once resolved.
+- [ ] **Report image embeds (deferred):** hingepanel Sheets 9/11/12/13/14/15/16 are referenced but not yet
+  embedded in `hinged-panel-report.md` (held with the 2D-lock batch). Add the `![...](assets/...)` embeds.
 - [ ] **Minor label tidy:** a few light-trap 2D labels shifted with the resize + hub rework — a "52mm
   standoff" overlap on Sheet 1, the Sheet 8 cut-section "wall 3mm / axle beams" text overlapping the
   mount-plate label, and the **Sheet 5 MOUNT-PLATE DETAIL title colliding with the lower-hub labels**.

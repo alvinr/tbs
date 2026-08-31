@@ -43,6 +43,28 @@ file** — a release must not ship without a changelog entry:
   **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
   stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
   panel cost **+$47/$33/$19** (cam latch).
+- **Hinged panel — fold-down light aprons close the raised floor gap (new Sheet 16).** The 217mm floor gap
+  is light-sealed by two **bottom-hinged fold-down plywood aprons** at the corner zones (the far one minus a
+  measured **200mm fixed stub** that clears the Ø220 pivot mount plate) + a **fixed center baffle** under the
+  drum bay. Stand up + seal in operation; fold flat into the container for the transport swing. New **Sheet 16**
+  (fold action + elevation + baffle detail); built into the lighttrap 3D as DC children that fold in transport
+  mode (visibility-swap on `PanelSwing!swing`), plywood (`C_PLY`); the obsolete full-width threshold brush is
+  retired. +$95/123/150 panel; report §5.3/§6 reconciled. Joint seal detail (foam + lapping board) still TBD.
+- **Hinged panel — drum-bay light seals + reduced side gap.** Closed the residual light paths around the
+  swinging drum cage: the fold-down aprons now **extend inboard** past the center-zone step line to a 12mm
+  brush gap off the cage sides (`APRON_CAGE_GAP`, `APRON_IN_L/R`) — cutting the old 47mm side slot to 12mm —
+  with a **vertical strip brush** on each apron inner edge, and a **horizontal strip brush** on the center
+  baffle top edge bridging the 10mm up to the swept cage bottom. Center baffle trimmed to the apron edges.
+  Built into the lighttrap 3D and Sheet 16 (elevation + Detail D). `APRON_FIX_W` single-sourced to constants.
+- **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
+  that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
+  tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —
+  taller than the tray rim (Z70). Raised `PANEL_FLOOR_GAP` 130→217 so the drum-cage underside (Z130) clears
+  the Z115 posts by 15 mm (and the Z70 tray by 60 mm); the lower hub, `PANEL_FLOOR_GAP_SIDE` (→282), and the
+  drum interior (1970→1883, still clears a 1780 operator by 103) all derive from it. **Sheet 15** reworked
+  into the transport-swing clearance section (drum cage vs fixed posts/tray + panel vs wall brackets);
+  light-trap-selection, hinged-panel §5.3, and walkway reports reconciled; weight/costing re-injected.
+  3D: lighttrap re-sent + verified (cage bottom Z130, panel corners Z282); overview + construction pending.
 - **Hinged panel — stepped bottom propagated into the 2D set.** Single-sourced the derived bottom step
   (`PANEL_FLOOR_GAP_SIDE` = 195, `PANEL_BOTTOM_STEP` = 65 in `tbs_constants.py`) and drew it on **Sheet 9**
   (frame GA — the bottom rail is now three segments: center at Z0 over the tray, both corner rails stepped

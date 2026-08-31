@@ -293,3 +293,22 @@ Standing permission to commit and redeploy on every request in this project.
 ## Tracking
 
 `TODO.md` is the **single record** of outstanding actions/TODOs (repo-only, not published). Add new items there rather than scattering `# TODO` comments through the code; review and tick them off as they're done. `editorial-review-todo.md` (complete) and `unused-imports-todo.md` are detailed sub-trackers linked from it.
+
+## Communication
+
+When done, explain what you changed and why in 2-3 sentences.
+If you found something unexpected, mention it.
+If you made a judgment call, explain your reasoning.
+Bullet out the decisions that are needed
+
+
+## Code Comments
+Default to writing no comments.
+Only add a comment when the WHY is non-obvious.
+Never comment WHAT the code does.
+Never reference the current task, ticket, or fix in a comment.
+
+## Code Style
+
+When modifying existing code, match the patterns already in the file.
+Match the existing style, even if you'd do it differently.

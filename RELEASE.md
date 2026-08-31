@@ -66,7 +66,9 @@ file** — a release must not ship without a changelog entry:
   **Fan B raised 100mm** (`FAN_B_H` 600→700, ply mount band top 1125→1225). Added **Sheet 16 Detail E** —
   the plywood↔plywood 45° chamfer (scarf) joint TYP of every moving plywood interface: EPDM bonded to the
   FIXED face, the moving panel sweeps off without binding, the diagonal lap blocks the straight light path
-  (apron top↔leaf, apron side↔stub/jamb, swing-panel↔leaves, apron↔baffle). (3D chamfer cuts to follow.)
+  (apron top↔leaf, apron side↔stub/jamb, swing-panel↔leaves, apron↔baffle). 3D: the far apron↔full-height
+  strip joint is cut for real (chamfered strip prism + matching apron wedge + EPDM scarf seal, `CHAM=40`)
+  as the pattern; the remaining three joints follow once the look is confirmed.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

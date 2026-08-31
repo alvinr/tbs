@@ -73,6 +73,7 @@ C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
+CHAM = 40   # plywood↔plywood joint chamfer: 45° across the 40mm panel thickness (hingepanel Sheet 16 Detail E)
 
 # ── Option A — housed revolving-door light lock (Ø800 balanced) ───────────────
 # Fixed housing with two opposed 80° openings (exterior + interior-onto-walkway,
@@ -557,14 +558,17 @@ def far_leaf():
     z0, z1 = 12, PANEL_Z_TOP                        # full height (threshold hinge line → panel top)
     w = C_WID - y0
     gw, gt = 40, 20
+    # The inboard edge is cut at 45° across the 40mm thickness (CHAM) — a scarf lap the moving panels
+    # (fold-down apron below, swing panel above) mate against; EPDM bonded to this fixed scarf face
+    # (hingepanel Sheet 16 Detail E). Built as a horizontal (X,Yd) prism so the bevel runs full height.
+    strip = [(0, y0), (40, y0 + CHAM), (40, C_WID), (0, C_WID)]
+    epdm  = [(0, y0 - 3), (40, y0 + CHAM - 3), (40, y0 + CHAM + 3), (0, y0 + 3)]   # 6mm band on the scarf
     return '\n'.join([
-        ruby_box(f"Fixed far panel strip (Yd{y0}-{C_WID})", 0, y0, z0, 40, w, z1 - z0, color="#C8A060"),
+        ov.ruby_prism(f"Fixed far panel strip (Yd{y0}-{C_WID})", strip, z0, z1 - z0, color="#C8A060"),
         ruby_box("EPDM fixed-far top", -gt, y0, z1 - gw, gt, w, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-far right (far wall)", -gt, C_WID - gw, z0, gt, gw, z1 - z0, color=C_GASKT),
-        # cut seal runs only where the swinging panel meets the strip (above the floor gap).
-        ruby_box("EPDM far cut seal (swing-fixed joint)", 0, y0 - 6, PANEL_FLOOR_GAP, 40, 12,
-                 PANEL_Z_TOP - PANEL_FLOOR_GAP, color=C_GASKT),
+        ov.ruby_prism("EPDM far scarf seal (chamfer joint)", epdm, z0, z1 - z0, color=C_GASKT),
     ])
 
 
@@ -907,8 +911,14 @@ def apron_up_geom():
     side (stepped top: corner→PANEL_FLOOR_GAP_SIDE, center ext→PANEL_FLOOR_GAP), bottom-hinged to the
     threshold, extended inboard to a brush gap off the cage. CHILD of the Panel Swing DC:
     SHOWN when closed / HIDDEN when swung."""
+    # Far edge is 45°-chamfered to mate the full-height far strip's scarf (Detail E): a plywood wedge
+    # adds material inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the
+    # corner-zone height. Extends the moving apron so its inner face laps the fixed strip.
+    yf = C_WID - APRON_FIX_W
+    far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
+                              [(0, yf), (APRON_T, yf), (APRON_T, yf + CHAM)], _AHZ, PANEL_FLOOR_GAP_SIDE - _AHZ, color=C_PLY, alpha=0.85)
     return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
-            _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85))
+            _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) + far_wedge)
 
 
 def apron_folded_geom():

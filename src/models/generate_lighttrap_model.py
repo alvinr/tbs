@@ -73,7 +73,9 @@ C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
-CHAM = 40   # plywood↔plywood joint chamfer: 45° across the 40mm panel thickness (hingepanel Sheet 16 Detail E)
+PLY_T  = 12   # real plywood thickness (12mm exterior BC). Inset on the INTERIOR face of the 40mm frame zone.
+PLY_X0 = 40 - PLY_T   # 28 — ply front face (X28..40 = interior 12mm; the 40mm frame zone stays around it)
+CHAM   = PLY_T   # plywood↔plywood joint chamfer: 45° across the 12mm ply (hingepanel Sheet 16 Detail E)
 
 # ── Option A — housed revolving-door light lock (Ø800 balanced) ───────────────
 # Fixed housing with two opposed 80° openings (exterior + interior-onto-walkway,
@@ -554,7 +556,9 @@ def near_leaf():
     z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
     gw, gt = 40, 20
     return '\n'.join([
-        ruby_box(f"Fixed left panel (Yd0-{CUT})", 0, 0, z0, 40, CUT, z1 - z0, color="#C8A060"),
+        # 40mm frame zone (steel) carrying a 12mm ply skin on the interior face (X28..40).
+        ruby_box(f"Fixed left frame (Yd0-{CUT})", 0, 0, z0, PLY_X0, CUT, z1 - z0, color=C_STEEL, alpha=0.6),
+        ruby_box(f"Fixed left ply (Yd0-{CUT})", PLY_X0, 0, z0, PLY_T, CUT, z1 - z0, color="#C8A060"),
         ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-panel left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT),
@@ -572,12 +576,13 @@ def far_leaf():
     z0, z1 = 12, PANEL_Z_TOP                        # full height (threshold hinge line → panel top)
     w = C_WID - y0
     gw, gt = 40, 20
-    # The inboard edge is cut at 45° across the 40mm thickness (CHAM) — a scarf lap the moving panels
-    # (fold-down apron below, swing panel above) mate against; EPDM bonded to this fixed scarf face
-    # (hingepanel Sheet 16 Detail E). Built as a horizontal (X,Yd) prism so the bevel runs full height.
-    strip = [(0, y0), (40, y0 + CHAM), (40, C_WID), (0, C_WID)]
-    epdm  = [(0, y0 - 3), (40, y0 + CHAM - 3), (40, y0 + CHAM + 3), (0, y0 + 3)]   # 6mm band on the scarf
+    # 40mm frame zone (steel, X0..28) carries a 12mm ply skin on the interior face (X28..40). The ply's
+    # inboard edge is cut at 45° across the 12mm (CHAM) — a scarf lap the moving panels (fold-down apron
+    # below, swing panel above) mate against; EPDM bonded to this fixed scarf face (Sheet 16 Detail E).
+    strip = [(PLY_X0, y0), (40, y0 + CHAM), (40, C_WID), (PLY_X0, C_WID)]                          # 12mm ply
+    epdm  = [(PLY_X0, y0 - 3), (40, y0 + CHAM - 3), (40, y0 + CHAM + 3), (PLY_X0, y0 + 3)]          # scarf seal
     return '\n'.join([
+        ruby_box(f"Fixed far frame (Yd{y0}-{C_WID})", 0, y0, z0, PLY_X0, w, z1 - z0, color=C_STEEL, alpha=0.6),
         ov.ruby_prism(f"Fixed far panel strip (Yd{y0}-{C_WID})", strip, z0, z1 - z0, color="#C8A060"),
         ruby_box("EPDM fixed-far top", -gt, y0, z1 - gw, gt, w, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
@@ -905,19 +910,19 @@ _APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, PANEL_FLOOR_GAP),
                   (YD_L, PANEL_FLOOR_GAP), (YD_L, PANEL_FLOOR_GAP_SIDE), (0, PANEL_FLOOR_GAP_SIDE)]
 _APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, PANEL_FLOOR_GAP_SIDE),
                   (YD_R, PANEL_FLOOR_GAP_SIDE), (YD_R, PANEL_FLOOR_GAP), (APRON_IN_R, PANEL_FLOOR_GAP)]
-APRON_T = 40   # panel X-depth (matches the pre-notch box thickness)
+APRON_T = PLY_T   # fold-down flap = 12mm plywood, on the interior face (X28..40)
 
 
 def _apron_vpanel(name, prof, color, alpha):
-    """One vertical plywood panel from a (Yd, Z) polygon in the door plane (X=0), pushpulled APRON_T in +X."""
-    pts = ", ".join(f"[0,{ov.mm(y)},{ov.mm(z)}]" for (y, z) in prof)
+    """One vertical 12mm-ply panel from a (Yd, Z) polygon on the interior face (X=PLY_X0), pushpulled PLY_T in +X."""
+    pts = ", ".join(f"[{ov.mm(PLY_X0)},{ov.mm(y)},{ov.mm(z)}]" for (y, z) in prof)
     r, g, b = ov.hex_to_rgb(color)
     mat = ov.shared_mat_name(name, color, alpha)
     return '\n'.join([
         f'  grp = ents.add_group', f'  grp.name = "{name}"',
         f'  face = grp.entities.add_face({pts})',
         f'  face.reverse! if face.normal.x < 0',
-        f'  face.pushpull({ov.mm(APRON_T)})',
+        f'  face.pushpull({ov.mm(PLY_T)})',
         f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
         f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
         f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
@@ -933,7 +938,7 @@ def apron_up_geom():
     # corner-zone height. Extends the moving apron so its inner face laps the fixed strip.
     yf = C_WID - APRON_FIX_W
     far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
-                              [(0, yf), (APRON_T, yf), (APRON_T, yf + CHAM)], _AHZ, PANEL_FLOOR_GAP_SIDE - _AHZ, color=C_PLY, alpha=0.85)
+                              [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, PANEL_FLOOR_GAP_SIDE - _AHZ, color=C_PLY, alpha=0.85)
     return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
             _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) + far_wedge)
 
@@ -976,7 +981,7 @@ def fixed_bottom_geom():
     baf_top = LT_CAGE_BOT - 10                           # 130
     cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R       # 700, 1662 — cage width the top brush spans
     parts = [
-        ruby_box("Center light baffle (fixed)", 0, APRON_IN_L, 51, 30, APRON_IN_R - APRON_IN_L,
+        ruby_box("Center light baffle (fixed)", PLY_X0, APRON_IN_L, 51, PLY_T, APRON_IN_R - APRON_IN_L,
                  baf_top - 51, color=C_PLY, alpha=0.85),
         # Horizontal strip brush on the baffle top edge — bristles reach the 10mm up to the swinging cage
         # bottom (Z140) over the cage width; the side corners are sealed by apron_edge_brushes().
@@ -1017,15 +1022,19 @@ def generate_ruby():
         hinge_panel(),
         # Fan B corner: 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z) for
         # rigid fan/duct mounting; 1/8″ HDPE skin above. (rev11 material differentiation.)
-        ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_Z_BOT, 40,
-                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_Z_BOT, color=C_PLY, alpha=0.5),
+        # Near corner is a STEPPED zone: its bottom rises to PANEL_FLOOR_GAP_SIDE (282) like the frame +
+        # aprons, so the fold-down flap top meets it flush (no overlap) and it clears the walkway cantilever.
+        ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_FLOOR_GAP_SIDE, 40,
+                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
                  NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
         # swing panel now ends at the widened full-height far strip (Yd C_WID−APRON_FIX_W = 2162), not the pivot.
         ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, (C_WID - APRON_FIX_W) - CUT, 40, color=C_GASKT, alpha=0.5),
         # panel bottom EPDM (L/R, trimmed) dropped — superseded by the fold-down apron + its top brush.
-        ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_Z_BOT, 40,
-                 (C_WID - APRON_FIX_W) - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLASTIC, alpha=0.5),
+        # Far corner is a STEPPED zone: bottom rises to PANEL_FLOOR_GAP_SIDE (282) so the fold-down flap top
+        # meets it flush (fixes the flap↔leaf overlap) and it clears the walkway cantilever in the swing.
+        ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_FLOOR_GAP_SIDE, 40,
+                 (C_WID - APRON_FIX_W) - NEW_YD_R, PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.5),
         bay(),
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing

@@ -63,7 +63,10 @@ file** — a release must not ship without a changelog entry:
   the old 75mm upper leaf + the fold-down-zone stub merged into a single panel covering the Ø89 pivot-post
   corner; the swinging panel's plywood ends at Yd2162 and hinges to the post behind it. EPDM (compression)
   and the brush seals now render in DISTINCT colors (brown EPDM vs green brush, previously two greens).
-  **Fan B raised 100mm** (`FAN_B_H` 600→700, ply mount band top 1125→1225).
+  **Fan B raised 100mm** (`FAN_B_H` 600→700, ply mount band top 1125→1225). Added **Sheet 16 Detail E** —
+  the plywood↔plywood 45° chamfer (scarf) joint TYP of every moving plywood interface: EPDM bonded to the
+  FIXED face, the moving panel sweeps off without binding, the diagonal lap blocks the straight light path
+  (apron top↔leaf, apron side↔stub/jamb, swing-panel↔leaves, apron↔baffle). (3D chamfer cuts to follow.)
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

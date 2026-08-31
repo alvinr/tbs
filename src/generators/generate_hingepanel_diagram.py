@@ -2831,6 +2831,30 @@ def sheet16():
     leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(230, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
     draw_dim_v(ax, d0 - 28, THR, BAF_TOP, f"{int(BAF_TOP - THR)}", offset=10, fs=6, font=FONT)
 
+    # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
+    e0, ebz, S = 690, 150, 5.0
+    def eE(x, z): return (e0 + x * S, ebz + z * S)
+    T, xc, BL = 12, 16, 30          # 12mm ply · scarf start · panel run each side
+    ax.text(e0 + 33 * S, 400, "DETAIL E — plywood↔plywood chamfer joint (TYP)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(e0 + 33 * S, 384, "45° scarf · EPDM bonded to the FIXED face · enlarged 5:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
+    A = [eE(0, 0), eE(xc, 0), eE(xc + T, T), eE(0, T)]                       # fixed panel (left)
+    B = [eE(xc, 0), eE(xc + T + BL, 0), eE(xc + T + BL, T), eE(xc + T, T)]   # moving panel (right)
+    ax.fill([p[0] for p in A], [p[1] for p in A], fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=3)
+    ax.fill([p[0] for p in B], [p[1] for p in B], fc="#C8A56A", ec=C_OUT, lw=1.4, zorder=3)
+    ax.plot([eE(xc, 0)[0], eE(xc + T, T)[0]], [eE(xc, 0)[1], eE(xc + T, T)[1]],
+            color="#5A3020", lw=4, solid_capstyle="butt", zorder=4)         # EPDM on the fixed scarf face
+    leader(ax, eE(xc + T / 2, T / 2), (e0 - 20, ebz + T * S + 66), "EPDM bonded to the\nFIXED chamfer face", col="#5A3020", fw="bold", fs=6)
+    ax.text(*eE(xc / 2, T + 3), "FIXED ply", ha="center", va="bottom", fontsize=6.4, fontweight="bold", color="#204060", **FONT)
+    ax.text(*eE(xc + T + BL * 0.6, T + 3), "MOVING ply", ha="center", va="bottom", fontsize=6.4, fontweight="bold", color="#204060", **FONT)
+    bx, bz = eE(xc + T + 6, T / 2)                                          # moving panel sweeps off along the 45° normal
+    ax.annotate("", xy=(bx + 72, bz + 72), xytext=(bx, bz), arrowprops=dict(arrowstyle="-|>", color="#B00", lw=1.6))
+    ax.text(bx + 78, bz + 80, "moving panel sweeps\noff the seal (no bind)", ha="left", fontsize=6, fontweight="bold", color="#B00", **FONT)
+    ax.annotate("", xy=(eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), xytext=(e0 - 46, ebz + T * S * 0.5),
+                arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.4))    # light ray blocked at the diagonal lap
+    ax.text(e0 - 46, ebz + T * S * 0.5 - 16, "light", ha="left", fontsize=5.6, color="#B07000", **FONT)
+    draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12", offset=10, fs=6, font=FONT)
+    ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)
+
     # ══ notes ══
     draw_notes(ax, [
         "FOLD-DOWN LIGHT APRON — operation",
@@ -2847,6 +2871,10 @@ def sheet16():
         "  edge fills the 10mm up to the swept Z140 cage bottom.",
         f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the",
         f"  {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
+        "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45°",
+        "  scarf with EPDM bonded to the FIXED face — a light-tight lap the moving",
+        "  panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom,",
+        "  apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
     ], WID + 30, 400, spacing=24, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=470, border_color="#806010", font=FONT)
 

@@ -369,7 +369,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 15",
+    title_block(ax, "SHEET 1 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -795,7 +795,7 @@ def sheet2():
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 15",
+    title_block(ax, "SHEET 2 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1368,7 +1368,7 @@ def sheet3():
     ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 15",
+    title_block(ax, "SHEET 3 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1484,7 +1484,7 @@ def sheet5():
     ]):
         ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 15",
+    title_block(ax, "SHEET 5 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1605,7 +1605,7 @@ def sheet4():
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
     draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 15",
+    title_block(ax, "SHEET 4 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
@@ -1679,7 +1679,7 @@ def sheet6():
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 6 OF 15", drawing_title="HINGED LIGHT-TRAP PANEL",
+    title_block(ax, "SHEET 6 OF 16", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DRAWN TO SCALE (isotropic ~1:1) · 50mm BAR · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
@@ -1830,7 +1830,7 @@ def sheet7():
     ax.set_xlim(-260, xW2 + BAY_D + 260)
     ax.set_ylim(yB - 320, yA + H_PANEL + 300)
 
-    title_block(ax, "SHEET 7 OF 15",
+    title_block(ax, "SHEET 7 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — FLAT-PATTERN CUT SHEETS (6 PIECES)",
                 scale_note="DRAWN TO SCALE (isotropic) · SCALE OFF THE 500mm BAR · ALL DIMS IN mm",
@@ -1996,7 +1996,7 @@ def sheet8():
             ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 8 OF 15",
+    title_block(ax, "SHEET 8 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — HOUSING JOIN & FRAME RIVET DETAILS",
                 scale_note="ENLARGED SECTIONS · THICKNESS EXAGGERATED · ALL DIMS IN mm",
@@ -2132,7 +2132,7 @@ def sheet9():
     ax.text(PW / 2, PH + 295, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 9 OF 15",
+    title_block(ax, "SHEET 9 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
                 scale_note="FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm",
@@ -2227,7 +2227,7 @@ def sheet10():
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 10 OF 15",
+    title_block(ax, "SHEET 10 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 14)",
                 scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
@@ -2298,7 +2298,7 @@ def sheet11():
     ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 13",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 11 OF 15",
+    title_block(ax, "SHEET 11 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 13)",
                 scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
@@ -2395,7 +2395,7 @@ def sheet13():
     leader(ax, vB(6, 38), vB(-14, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
     leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
-    title_block(ax, "SHEET 13 OF 15",
+    title_block(ax, "SHEET 13 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
                 scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
@@ -2452,10 +2452,16 @@ def sheet14():
     leader(ax, d(4, -18), (ox - 150, oy - 6 * s), "fillet weld\nbracket→hub", col=C_OUT, fs=6.5)
     leader(ax, d(30, 20), (ox + 20 * s, oy + 80 * s), "bracket plate", col=C_OUT, fs=6.5)
     leader(ax, d(66, 20), (ox + 118 * s, oy + 78 * s), "fillet weld bracket→jamb\n(no bolts through the closed tube)", col=C_OUT, fw="bold", fs=6.5)
-    ax.text(ox + 50 * s, oy - 64 * s, "The bracket plate is FILLET-WELDED to BOTH the hub tube and the frame\njamb — the hub + frame + cage swing as ONE weldment. No bolts pass\nthrough the closed jamb (which can't be back-tightened); all-welded steel.",
-            ha="center", va="top", fontsize=6.4, color=C_OUT, **FONT, bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 14 OF 15",
+    draw_notes(ax, [
+        "NOTES",
+        "The bracket plate is FILLET-WELDED to BOTH the hub tube and the",
+        "frame jamb — the hub + frame + cage swing as ONE weldment. No",
+        "bolts pass through the closed jamb (which can't be",
+        "back-tightened); all-welded steel.",
+        ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1000, font=FONT)
+
+    title_block(ax, "SHEET 14 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
                 scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
@@ -2557,7 +2563,7 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
-    title_block(ax, "SHEET 12 OF 15",
+    title_block(ax, "SHEET 12 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
@@ -2582,11 +2588,16 @@ def sheet15():
                                WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H as WALL_LEG,
                                WALKWAY_WIDE_BRACKET_H as WALL_LEG_W, WALKWAY_BRACKET_ARM_Z0 as ARM_BOT,
                                PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
-                               LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST_W)
-    WID     = PW
-    ARM_TOP = WALKWAY_H - WALKWAY_GRATE_T      # 115 — grate seat / arm top
-    CLR     = P_CTR - ARM_TOP                  # 15 — clearance over the arm/post tops (= P_SIDE − WALL_LEG)
-    BREAK_Z = 430
+                               PROC_TRAY_FLOOR_Z_LOW, LT_CAGE_BOT, LT_BBEAM_Z1,
+                               DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST_W)
+    WID       = PW
+    ARM_TOP   = WALKWAY_H - WALKWAY_GRATE_T      # 115 — grate seat / arm top
+    CLR       = P_CTR - ARM_TOP                  # 60 — clearance over the arm/post tops (= P_SIDE − WALL_LEG)
+    TRAY_FLR  = PROC_TRAY_FLOOR_Z_LOW            # 20 — tray floor
+    TRAY_RIM  = TRAY_FLR + PROC_TRAY_RIM         # 70 — fixed tray rim TOP
+    POST_CLR  = LT_CAGE_BOT - ARM_TOP            # 15 — drum-cage bottom over the floor-leg POSTS (Z115) — GOVERNS the floor gap
+    TRAY_CLR  = LT_CAGE_BOT - TRAY_RIM           # 60 — drum-cage bottom over the fixed tray rim (Z70)
+    BREAK_Z   = 480
 
     fig, ax = plt.subplots(figsize=(22, 8))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -2596,7 +2607,7 @@ def sheet15():
 
     ax.text(WID / 2, 565, "BOTTOM CLEARANCE CROSS-SECTION  (Yd–Z · looking toward the cargo door)",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(WID / 2, 540, "walkway grate LIFTED OUT for transport — the swinging panel bottom must clear the BARE brackets",
+    ax.text(WID / 2, 540, "transport: walkway grate LIFTED OUT; the FIXED tray stays — the swinging panel + drum-cage bottom must clear both",
             ha="center", fontsize=7.5, color=C_DIM, **FONT)
 
     # floor + side walls
@@ -2607,11 +2618,11 @@ def sheet15():
         ax.text(wx + (-8 if ha_ == "right" else 8), 500, f"{lbl} (Yd{wx})", rotation=90,
                 va="top", ha=ha_, fontsize=6.5, color=C_DIM, **FONT)
 
-    # processing tray (center pan, rim Z50)
-    ax.add_patch(Rectangle((PROC_TRAY_YD_NEAR, 0), PROC_TRAY_YD_FAR - PROC_TRAY_YD_NEAR, PROC_TRAY_RIM,
+    # processing tray (center pan) — FIXED/installed; floor Z20, rim TOP Z70 (the governing swing obstacle)
+    ax.add_patch(Rectangle((PROC_TRAY_YD_NEAR, TRAY_FLR), PROC_TRAY_YD_FAR - PROC_TRAY_YD_NEAR, PROC_TRAY_RIM,
                            fc="#DCEAF5", ec=C_OUT, lw=1.0, zorder=2))
-    ax.text(525, PROC_TRAY_RIM / 2,
-            "PROCESSING TRAY  (rim Z50)", ha="center", va="center", fontsize=6.0, color="#2A5A80", **FONT, zorder=10)
+    ax.text(560, TRAY_FLR + PROC_TRAY_RIM / 2,
+            "PROCESSING TRAY — FIXED  (rim top Z70)", ha="center", va="center", fontsize=6.0, color="#2A5A80", **FONT, zorder=10)
 
     # ── wall-cantilever brackets (near + far) — vertical leg to Z180 std / Z200 widened; arm Z90–115 ──
     def wall_bracket(x_wall, sign):
@@ -2624,9 +2635,9 @@ def sheet15():
         ax.add_patch(Rectangle((arm_x, ARM_BOT), WALKWAY_W, ARM_TOP - ARM_BOT, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))
     wall_bracket(0, +1)
     wall_bracket(WID, -1)
-    leader(ax, (22, WALL_LEG), (250, 340),
-           "NEAR side-wall cantilever bracket:\nvertical leg → Z180 (std) / Z200 (widened, dashed);\narm Z90–115 (grate seat)", col=C_OUT, fs=6.4)
-    leader(ax, (WID - 22, WALL_LEG), (WID - 250, 340), "FAR side-wall cantilever bracket\n(mirror)", col=C_OUT, fs=6.4)
+    leader(ax, (22, WALL_LEG), (230, 400),
+           "NEAR side-wall bracket\n(fixed): leg Z180/200,\narm Z90–115", col=C_OUT, fs=6.2)
+    leader(ax, (WID - 22, WALL_LEG), (WID - 230, 400), "FAR side-wall bracket\n(fixed, mirror)", col=C_OUT, fs=6.2)
 
     # ── left lift-out FLOOR-LEG cantilever posts (Yd 250..2110) — remain when the grate lifts out ──
     for yd in LEFT_WK_CANT_LEG_YDS:
@@ -2643,59 +2654,211 @@ def sheet15():
     ax.text(WID * 0.30, ARM_TOP + WALKWAY_GRATE_T + 8, "WALKWAY GRATE — LIFTED OUT (ghosted, Z115–140)",
             ha="center", va="bottom", fontsize=6.6, color=C_DIM, style="italic", **FONT, zorder=6)
 
-    # ── HINGE PANEL bottom profile (stepped): center Z130, sides Z195 ──
+    # ── DRUM-CAGE lower beam — SWEPT transport position (ghosted): the panel+drum swing across the
+    #    container, so the cage bottom (Z130) passes over the FIXED floor-leg posts (Z115) + tray (Z70).
+    #    The floor gap was raised to 217 so LT_CAGE_BOT clears the tallest (the posts) by POST_CLR. ──
+    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, LT_CAGE_BOT), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L,
+                           LT_BBEAM_Z1 - LT_CAGE_BOT, fc="#E0C8C8", ec="#803030", lw=1.4, ls=(0, (5, 3)), zorder=8))
+    ax.text((DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, (LT_CAGE_BOT + LT_BBEAM_Z1) / 2,
+            f"DRUM CAGE lower beam — SWEPT (Z{int(LT_CAGE_BOT)}–{int(LT_BBEAM_Z1)})", ha="center", va="center",
+            fontsize=6.2, fontweight="bold", color="#803030", **FONT, zorder=9)
+    leader(ax, (1450, LT_CAGE_BOT), (1780, 360),
+           f"{POST_CLR}mm CLR — cage bottom (Z{int(LT_CAGE_BOT)}) over the\nfloor-leg POSTS (Z115) — GOVERNS the floor gap\n(clears the fixed tray rim Z70 by {TRAY_CLR}mm)", col="#B00", fw="bold", fs=6.2)
+
+    # ── HINGE PANEL bottom profile (stepped): center Z217, sides Z282 ──
     panel = [(0, P_SIDE), (jL, P_SIDE), (jL, P_CTR), (jR, P_CTR), (jR, P_SIDE),
              (WID, P_SIDE), (WID, BREAK_Z), (0, BREAK_Z)]
     ax.add_patch(Polygon(panel, closed=True, fc=C_PLASTIC, ec="none", alpha=0.5, zorder=7))
     ax.plot([0, jL, jL, jR, jR, WID], [P_SIDE, P_SIDE, P_CTR, P_CTR, P_SIDE, P_SIDE],
             color="#1763C8", lw=2.8, zorder=9)
-    ax.text(WID / 2, (P_CTR + BREAK_Z) / 2 + 45, "HINGE PANEL (swinging leaf) — BOTTOM PROFILE",
+    ax.text(WID / 2, (P_CTR + BREAK_Z) / 2 + 55, "HINGE PANEL (swinging leaf) — BOTTOM PROFILE",
             ha="center", va="center", fontsize=8.5, fontweight="bold", color="#1763C8", **FONT, zorder=9)
     ax.text(WID / 2, BREAK_Z + 15, "↑ panel continues to Z2388 (top)", ha="center", va="bottom",
             fontsize=6.5, color=C_DIM, **FONT, zorder=9)
 
-    # ── clearance callouts (derived hard limits) ──
-    leader(ax, (1000, (ARM_TOP + P_CTR) / 2), (1000, 300),
-           f"{CLR}mm CLR\n(center over the Z115 arms/posts)", col="#B00", fw="bold", fs=6.4)
-    leader(ax, (66, (WALL_LEG + P_SIDE) / 2), (330, 250),
-           f"{CLR}mm CLR\n(side over the Z180 leg)", col="#B00", fw="bold", fs=6.4)
 
     # ── dimension ladders ──
-    draw_dim_v(ax, -150, 0, ARM_TOP, "115 arm/post", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -250, 0, P_CTR, "130 ctr", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -55, 0, PROC_TRAY_RIM, "50", offset=10, fs=5.6, font=FONT, right=False)
-    draw_dim_v(ax, WID + 160, 0, WALL_LEG, "180 leg", offset=14, fs=6.0, font=FONT, right=True)
-    draw_dim_v(ax, WID + 260, 0, P_SIDE, "195 side", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, -150, 0, ARM_TOP, "115 posts", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -250, 0, LT_CAGE_BOT, f"{int(LT_CAGE_BOT)} cage btm", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -350, 0, P_CTR, f"{int(P_CTR)} ctr", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -55, 0, TRAY_RIM, "70 tray", offset=10, fs=5.6, font=FONT, right=False)
+    draw_dim_v(ax, WID + 160, 0, WALL_LEG_W, "200 leg", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, WID + 260, 0, P_SIDE, f"{int(P_SIDE)} side", offset=14, fs=6.0, font=FONT, right=True)
     draw_dim_v(ax, jL - 75, P_CTR, P_SIDE, f"{int(P_SIDE - P_CTR)} step", offset=12, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, DRUM_CAGE_YD_R + 60, ARM_TOP, LT_CAGE_BOT, f"{POST_CLR}", offset=10, fs=5.6, font=FONT, right=True)  # governing clr
 
     # ── Yd zone dims (bottom) ──
     draw_dim_h(ax, 0, jL, -100, f"{jL} near corner — STEP UP", offset=-14, fs=6, font=FONT)
-    draw_dim_h(ax, jL, jR, -100, f"{jR - jL} center (Z130)", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, -100, f"{jR - jL} center (Z{int(P_CTR)})", offset=-14, fs=6, font=FONT)
     draw_dim_h(ax, jR, WID, -100, f"{WID - jR} far corner — STEP UP", offset=-14, fs=6, font=FONT)
 
     # ── notes block (right margin) ──
     draw_notes(ax, [
-        "HARD LIMIT — panel bottom (walkway removed for transport)",
-        "Derived: 15mm clearance over the tallest obstacle at each Yd.",
-        "Center (Yd653–1709): Z130 — clears the Z115 arms + floor-leg",
-        "  posts + Z50 tray. (Z130 < grate deck Z140 ⇒ grate must lift out.)",
-        "Sides (Yd0–653 / 1709–2362): STEP UP to Z195 — clears the",
-        "  Z180 (std) side-wall bracket legs.",
-        "If the swing sweeps a WIDENED bracket (leg Z200) the side step",
-        "  becomes Z215 — verify vs the swing arc before freezing.",
-        "Step lines align with the panel zone lines (Yd653 / 1709).",
-    ], WID + 40, 480, spacing=23, fs=5.8, title_fs=6.4, color="#403000",
-       title_color="#806010", width=430, border_color="#806010", font=FONT)
+        "HARD LIMIT — floor gap (transport swing, tray + posts FIXED)",
+        "The panel+drum swing across the container. Governing obstacle:",
+        "the LEFT walkway floor-leg POSTS (Z115, stay bolted) — taller",
+        "than the fixed tray rim (Z70). So the drum-cage bottom must",
+        "clear Z115.  Floor gap RAISED 130 → 217:",
+        f"  • cage bottom Z{int(LT_CAGE_BOT)} clears the Z115 posts by {POST_CLR}mm (and",
+        f"    the Z70 tray by {TRAY_CLR}mm).",
+        f"  • panel center bottom Z{int(P_CTR)}, corners step up to Z{int(P_SIDE)}",
+        f"    (step {int(P_SIDE - P_CTR)}mm) — now over-clears the Z180/200 wall legs.",
+        f"  • costs drum interior: 1970 → 1883 (clears a 1780 operator by 103).",
+        "Only the walkway GRATE lifts out; the floor-leg posts + tray stay.",
+    ], WID + 40, 500, spacing=22, fs=5.6, title_fs=6.3, color="#403000",
+       title_color="#806010", width=445, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 15 OF 15",
+    title_block(ax, "SHEET 15 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="BOTTOM CLEARANCE CROSS-SECTION — WALKWAY/CANTILEVER ENVELOPE (transport)",
+                subtitle="TRANSPORT-SWING BOTTOM CLEARANCE — DRUM CAGE vs FIXED POSTS/TRAY + PANEL vs WALL BRACKETS",
                 scale_note="SECTION Yd–Z · EQUAL ASPECT · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet15.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet15.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 16  —  Fold-Down Light Apron (closes the 217mm under-leaf gap that the
+#   floor-gap raise opened). TWO fold-down aprons at the corner zones (bottom-hinged
+#   to the threshold, fold INTO the container for the transport swing) + a FIXED
+#   center baffle under the drum bay (the drum sweeps through, so no moving part).
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet16():
+    from tbs_constants import (PANEL_FLOOR_GAP_SIDE as ATOP, PANEL_FLOOR_GAP as PBOT_CTR,
+                               PANEL_CORNER_YD_L as jL, PANEL_CORNER_YD_R as jR, LT_CAGE_BOT,
+                               APRON_IN_L, APRON_IN_R, APRON_CAGE_GAP,
+                               DRUM_CAGE_YD_L as cgL, DRUM_CAGE_YD_R as cgR, APRON_FIX_W)
+    WID  = PW
+    STUB = WID - APRON_FIX_W     # 2162 — far fold-down apron ends here; the 200mm pivot stub is fixed
+    THR  = 51        # threshold sill top Z
+    AT   = 40        # apron thickness (12mm exterior BC plywood, flat-black interior)
+    BAYB = 217       # bay bottom cap Z
+    BAF_TOP = LT_CAGE_BOT - 10   # 130 — baffle top, 10mm under the swept drum-cage bottom (Z140)
+    BRZ  = 51        # threshold top (baffle base)
+
+    fig, ax = plt.subplots(figsize=(20, 11))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-130, WID + 130)
+    ax.set_ylim(-170, 920)
+
+    ax.text(WID / 2, 878, "FOLD-DOWN LIGHT APRON — closes the under-leaf gap opened by the 217mm floor-gap raise",
+            ha="center", fontsize=12, fontweight="bold", color=C_OUT, **FONT)
+
+    # ══ ELEVATION (Yd–Z) — door-bottom layout, interior face (top band) ══
+    ez = 500
+    ax.text(WID / 2, ez + ATOP + 70, "ELEVATION — door bottom (interior face)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.plot([0, WID], [ez, ez], color=C_OUT, lw=1.6)
+    ax.text(WID + 20, ez, "FLOOR Z0", va="center", ha="left", fontsize=6.5, color=C_DIM, **FONT)
+    # Fold-down aprons — each extends INBOARD past the center-zone step line to a brush gap off the cage
+    # (Yd APRON_IN_L / APRON_IN_R); its top steps 282 (corner) → 217 (center ext) to follow the leaf bottom.
+    for y0, y1, top, lbl in [(0, jL, ATOP, "NEAR fold-down apron"), (jL, APRON_IN_L, PBOT_CTR, None),
+                             (APRON_IN_R, jR, PBOT_CTR, None), (jR, STUB, ATOP, "FAR fold-down apron")]:
+        ax.add_patch(Rectangle((y0, ez), y1 - y0, top, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.75))
+        if lbl:
+            ax.text((y0 + y1) / 2, ez + top * 0.5, f"{lbl}\n(UP = sealing)\nZ0–{int(top)}", ha="center", va="center",
+                    fontsize=7, fontweight="bold", color="#204060", **FONT)
+    ax.add_patch(Rectangle((STUB, ez), WID - STUB, ATOP, fc="#B8B8C0", ec=C_OUT, lw=1.4, hatch="xx", alpha=0.7))  # fixed pivot stub
+    ax.text((STUB + WID) / 2, ez + ATOP * 0.5, f"FIXED\npivot stub\nZ0–{int(ATOP)}", ha="center", va="center",
+            fontsize=6.3, fontweight="bold", color="#303030", **FONT)
+    ax.add_patch(Rectangle((APRON_IN_L, ez), APRON_IN_R - APRON_IN_L, BAF_TOP, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///", alpha=0.6))
+    ax.text((APRON_IN_L + APRON_IN_R) / 2, ez + 66, f"FIXED CENTER BAFFLE\n(trimmed to the apron edges — no moving part)\nZ51–{int(BAF_TOP)} (drum frame sweeps clear above)", ha="center", va="center",
+            fontsize=7, fontweight="bold", color=C_OUT, **FONT)
+    # Horizontal strip brush on the baffle top edge → bristles sweep the cage bottom (Z140), 10mm gap.
+    ax.add_patch(Rectangle((cgL, ez + BAF_TOP), cgR - cgL, 12, fc="#2FA84F", ec="#1c6b32", lw=0.8))
+    leader(ax, ((cgL + cgR) / 2 + 120, ez + BAF_TOP + 12), (WID * 0.60, ez + ATOP + 44),
+           "top BRUSH on the baffle edge — bristles sweep the cage bottom (Z140), 10mm gap", col="#1c6b32", fw="bold", fs=6)
+    # Vertical strip brushes on the two apron inner edges → reach APRON_CAGE_GAP to the cage sides.
+    for yb in (APRON_IN_L - 4, APRON_IN_R - 2):
+        ax.add_patch(Rectangle((yb, ez + BAF_TOP), 6, PBOT_CTR - BAF_TOP, fc="#2FA84F", ec="#1c6b32", lw=0.8))
+    leader(ax, (APRON_IN_L, ez + (BAF_TOP + PBOT_CTR) / 2), (jL - 330, ez + PBOT_CTR + 20),
+           f"vertical edge BRUSH on each apron inner\nedge → {APRON_CAGE_GAP}mm to the cage side", col="#1c6b32", fw="bold", fs=6)
+    ax.plot([0, jL, jL, jR, jR, WID], [ez + ATOP, ez + ATOP, ez + PBOT_CTR, ez + PBOT_CTR, ez + ATOP, ez + ATOP],
+            color="#1763C8", lw=1.6, ls=(0, (6, 3)))
+    ax.text(WID / 2, ez + ATOP + 14, "swinging leaf bottom (stepped Z217 ctr / Z282 corners) — the aprons seal up to it",
+            ha="center", fontsize=6.6, color="#1763C8", **FONT)
+    draw_dim_h(ax, 0, APRON_IN_L, ez - 45, f"{int(APRON_IN_L)} near apron", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, APRON_IN_L, APRON_IN_R, ez - 45, f"{int(APRON_IN_R - APRON_IN_L)} center baffle", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, APRON_IN_R, STUB, ez - 45, f"{int(STUB - APRON_IN_R)} far apron", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, STUB, WID, ez - 45, f"{int(WID - STUB)} stub", offset=-12, fs=6, font=FONT)
+
+    # ══ SECTION A (X–Z) — corner apron fold action (bottom-left) ══
+    a0 = 130
+    def aA(x, z): return (a0 + x, z)
+    ax.text(a0 + 130, 400, "SECTION A — corner apron (fold action)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(a0 + 130, 384, "vertical section · exterior LEFT → interior RIGHT", ha="center", fontsize=6.4, color=C_DIM, **FONT)
+    ax.plot([a0 - 95, a0 + 340], [0, 0], color=C_OUT, lw=1.6)
+    ax.add_patch(Rectangle(aA(-51, 0), 51, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))            # threshold sill
+    leader(ax, aA(-25, THR), aA(-85, 165), "threshold sill\n(fixed, Z0–51)", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle(aA(-20, ATOP), 62, 95, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.7))          # leaf bottom (corner)
+    leader(ax, aA(32, ATOP + 45), aA(150, 360), "swinging leaf bottom\n(corner zone, Z282)", col="#1763C8", fs=6)
+    hx, hz = 6, 10
+    ax.add_patch(Rectangle(aA(hx, hz), AT, ATOP - hz, fc=C_PLASTIC, ec=C_OUT, lw=1.7))                 # apron UP
+    ax.text(a0 + hx + AT / 2, (ATOP + hz) / 2, "FOLD-DOWN APRON  (UP = sealing)", ha="center", va="center",
+            fontsize=6.6, fontweight="bold", color="#204060", **FONT, rotation=90)
+    for bxx in range(int(a0 + hx + 4), int(a0 + hx + AT - 2), 5):                                      # top brush seal
+        ax.plot([bxx, bxx], [ATOP, ATOP + 17], color="#806040", lw=0.9)
+    leader(ax, aA(hx + AT / 2, ATOP + 9), aA(175, 320), "top BRUSH seal to the leaf\n(leaf sweeps sideways off it)", col=C_OUT, fw="bold", fs=6)
+    ax.add_patch(Circle(aA(hx, hz), 7, fc=C_STEEL, ec=C_OUT, lw=1.1))                                  # bottom hinge
+    leader(ax, aA(hx, hz), aA(-80, 70), "piano hinge to the sill\n+ baffle lip (light-tight)", col=C_OUT, fw="bold", fs=6)
+    R = ATOP - hz
+    th = np.linspace(np.pi / 2, 0, 40)                                                                 # fold arc (top edge)
+    ax.plot(a0 + hx + R * np.cos(th), hz + R * np.sin(th), color="#B00", lw=0.9, ls=(0, (4, 2)))
+    ax.annotate("", xy=aA(hx + R * 0.78, hz + R * 0.30), xytext=aA(hx + 26, ATOP * 0.62),
+                arrowprops=dict(arrowstyle="-|>", color="#B00", lw=1.5))
+    ax.add_patch(Rectangle(aA(hx, hz), R, AT, fc=C_PLASTIC, ec="#B00", lw=1.2, ls=(0, (4, 2)), alpha=0.30))  # folded (transport)
+    ax.text(a0 + hx + R * 0.55, hz + AT + 16, "FOLDED (transport) — flat INTO the container,\nclear of the swing path",
+            ha="center", fontsize=6.3, color="#B00", fontweight="bold", **FONT)
+    draw_dim_v(ax, a0 - 80, 0, ATOP, f"{int(ATOP)}", offset=12, fs=6, font=FONT)
+
+    # ══ DETAIL D (X–Z) — fixed center baffle under the bay (bottom-right) ══
+    d0 = 1560
+    def dD(x, z): return (d0 + x, z)
+    ax.text(d0 + 95, 400, "DETAIL D — fixed center baffle (drum bay)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.plot([d0 - 45, d0 + 245], [0, 0], color=C_OUT, lw=1.6)
+    ax.add_patch(Rectangle(dD(40, BAYB - 8), 155, 8, fc=C_PLASTIC, ec=C_OUT, lw=1.2))                  # bay bottom cap Z217
+    leader(ax, dD(118, BAYB - 4), dD(195, 350), "bay bottom cap (Z217) —\nbay closes Z130→217 in operation", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle(dD(58, LT_CAGE_BOT), 118, 40, fc="none", ec="#803030", lw=1.0, ls=(0, (4, 2))))   # drum cage ghost (bottom beam)
+    leader(ax, dD(117, LT_CAGE_BOT + 20), dD(210, 250), f"drum cage bottom (Z{int(LT_CAGE_BOT)})\nsweeps clear above the baffle", col="#803030", fs=6)
+    ax.add_patch(Rectangle(dD(70, THR), 90, BAF_TOP - THR, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///"))      # fixed plywood baffle Z51..130
+    leader(ax, dD(115, (THR + BAF_TOP) / 2), dD(-35, 120), f"fixed plywood baffle\n(Z{THR}–{int(BAF_TOP)}) — kills the\nsightline under the bay", col=C_OUT, fw="bold", fs=6)
+    # horizontal strip brush on the baffle top edge — fills the 10mm gap up to the swept cage bottom
+    ax.add_patch(Rectangle(dD(70, BAF_TOP), 90, LT_CAGE_BOT - BAF_TOP, fc="#2FA84F", ec="#1c6b32", lw=0.8))
+    for bx in range(int(dD(74, 0)[0]), int(dD(158, 0)[0]), 6):
+        ax.plot([bx, bx], [BAF_TOP, LT_CAGE_BOT], color="#141414", lw=0.7)
+    leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(230, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
+    draw_dim_v(ax, d0 - 28, THR, BAF_TOP, f"{int(BAF_TOP - THR)}", offset=10, fs=6, font=FONT)
+
+    # ══ notes ══
+    draw_notes(ax, [
+        "FOLD-DOWN LIGHT APRON — operation",
+        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container.",
+        f"  Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd",
+        f"  {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow",
+        "  the leaf. 12mm exterior BC plywood, flat-black interior (a light seal).",
+        "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs.",
+        "  Held vertical by an over-centre catch each side.",
+        "• TRANSPORT: release the catches, fold both aprons flat into the container,",
+        "  then swing the panel; the leaf clears the ~40mm folded panel.",
+        "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron",
+        "  edges, closes the strip under the cage; a horizontal strip BRUSH on its top",
+        "  edge fills the 10mm up to the swept Z140 cage bottom.",
+        f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the",
+        f"  {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
+    ], WID + 30, 400, spacing=24, fs=5.8, title_fs=6.6, color="#403000",
+       title_color="#806010", width=470, border_color="#806010", font=FONT)
+
+    title_block(ax, "SHEET 16 OF 16",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="FOLD-DOWN LIGHT APRON + FIXED CENTER BAFFLE — under-leaf gap closure",
+                scale_note="SECTION + ELEVATION · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet16.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet16.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2716,4 +2879,5 @@ if __name__ == "__main__":
     sheet13()
     sheet14()
     sheet15()
+    sheet16()
     print("Done.")

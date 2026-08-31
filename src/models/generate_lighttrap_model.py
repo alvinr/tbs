@@ -38,7 +38,7 @@ import generate_sketchup_model as ov   # helpers, materials, constants
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, C_LT_DRUM
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -48,6 +48,9 @@ DRUM_CX, DRUM_CY, DRUM_R, DRUM_H = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R, ov.DRUM_H_
 PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X)
 PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §2.1)
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
+from tbs_constants import PANEL_FLOOR_GAP_SIDE
+PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 195 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
+from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   # apron inner edges (12mm off the cage sides); vertical strip brushes bridge the gap; far-pivot fixed stub width
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
@@ -123,6 +126,7 @@ TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Cargo Doors",        # dynamic-component swing doors (click to close)
         "Fan B Cable",        # child DC: orange coil shown only when the door is closed
         "Drum Revolve",       # standalone interactive drum+frame sub-assembly (its own scene); hidden elsewhere
+        "Bottom Apron",       # fold-down light aprons (up/folded child DCs) + fixed center baffle
         "Labels"]             # add_text callouts — shown only in the "Labeled" scene
 
 
@@ -257,16 +261,11 @@ def door_frame(include_seal=True):
         ruby_box("Door Frame right stile", x0, C_WID - s, 0, s, s, C_HGT,
                  color=C_RAIL),
     ]
-    # Bottom BRUSH seal — a filament strip on the frame (X=-32..-20) rising from the
-    # threshold to just above the panel bottom edge (Z=110). It closes the 80mm floor gap
-    # as a light-tight bristle wall the panel bottom edge SWEEPS THROUGH as the panel swings
-    # (a compression EPDM would drag under the sideways sweep). Now that the drum is
-    # SUSPENDED (its bottom hangs at Z=80, not on the floor), the floor gap is uniform
-    # full-width, so this brush runs CONTINUOUS with no notch — like the top.
-    lt, lz = 12, 110
-    parts.append(ruby_box("Door Frame bottom brush seal", -20 - lt, 0, 0,
-                          lt, C_WID, lz, color=C_SEAL))
-    parts.extend(_brush_bristles(40, 70))          # bristles rise to the panel bottom edge
+    # Bottom seal — the OLD full-width bottom brush (which sealed the previous Z130 leaf bottom)
+    # is RETIRED. The 217mm floor gap is now closed by the FOLD-DOWN APRONS + fixed center baffle
+    # (bottom_apron(), hingepanel Sheet 16); the apron's own TOP brush is the leaf interface, so a
+    # threshold brush here would be redundant.
+    lt = 12
     # Top BRUSH seal — the mirror of the bottom: a filament strip on the frame top rail
     # reaching to just below the panel top edge (Z=2270). It closes the panel-top↔frame gap
     # as a light-tight bristle wall the panel + drum-box top edge SWEEPS THROUGH as the panel
@@ -291,16 +290,19 @@ def door_frame(include_seal=True):
 # ── Hinged stepped panel (3 zones, drum aperture, seal, hinges, latches) ─────
 
 def hinge_panel():
-    h = PANEL_Z_TOP - PANEL_Z_BOT                  # panel skin height
+    h = PANEL_Z_TOP - PANEL_Z_BOT                  # panel skin height (center zone, low bottom)
+    hs = PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE        # corner-zone height — bottom STEPPED UP
     tc, tk = PANEL_CORNER_T, PANEL_CENTER_T        # 40 corner, 120 center
     parts = []
 
-    # Near corner (hinge side) and far corner (Fan B side) — flush 40mm zones.
+    # Near corner (hinge side) and far corner (Fan B side) — flush 40mm zones. Their bottoms STEP UP
+    # to PANEL_FLOOR_GAP_SIDE to clear the bare walkway cantilever bracket legs when the walkway is
+    # lifted out for transport (hingepanel Sheet 15); the center zone keeps the low bottom over the tray.
     # The center zone is WIDENED (step lines at NEW_YD_L/R) to frame the Ø800 housing.
     parts.append(ruby_box("Panel near corner (40mm)",
-                          0, 0, PANEL_Z_BOT, tc, NEW_YD_L, h, color=C_PLASTIC, alpha=0.5))
+                          0, 0, PANEL_FLOOR_GAP_SIDE, tc, NEW_YD_L, hs, color=C_PLASTIC, alpha=0.5))
     parts.append(ruby_box("Panel far corner (40mm)",
-                          0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLASTIC, alpha=0.5))
+                          0, NEW_YD_R, PANEL_FLOOR_GAP_SIDE, tc, C_WID - NEW_YD_R, hs, color=C_PLASTIC, alpha=0.5))
 
     # Center zone (120mm) — the structural FRAME around the housing aperture: two jambs +
     # header. Colored STEEL (vs the blue HDPE skin) so the frame reads distinctly from the
@@ -327,8 +329,9 @@ def hinge_panel():
                           color=C_GASKT, alpha=0.5))
     # top strip runs continuously full-width (panel top edge is the solid header)
     parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT, alpha=0.5))
-    parts.append(ruby_box("EPDM seal left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT, alpha=0.5))
-    parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, z0, gt, gw, z1 - z0,
+    zs = PANEL_FLOOR_GAP_SIDE     # left/right side seals sit in the stepped corner zones (raised bottom)
+    parts.append(ruby_box("EPDM seal left", -gt, 0, zs, gt, gw, z1 - zs, color=C_GASKT, alpha=0.5))
+    parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, zs, gt, gw, z1 - zs,
                           color=C_GASKT, alpha=0.5))
 
     # 3 × 200mm SS piano hinges on the left edge (Yd=0), exterior, per report §4.1.
@@ -336,26 +339,27 @@ def hinge_panel():
     for hz in (220, 1190, 2158):
         parts.append(ruby_box("Piano hinge", -hd / 2, 0, hz, hd, hw, hh, color=C_STEEL))
 
-    # 4 × Southco cam latches — interior face, corners (report §4.2).
+    # 2 × lift-and-turn cam latches (McMaster 1619A74) — interior face, OPENING edge only
+    # (the pivot edge is hinged; a frame stop takes the outward direction — report §4.2).
     lw, ld, lh = 55, 70, 50
-    for ly in (210, C_WID - 210):
-        for lz in (220, 2168):
-            parts.append(ruby_box("Southco cam latch", tc, ly - ld / 2, lz - lh / 2,
-                                  lw, ld, lh, color=C_VALVE))
+    for lz in (220, 2168):
+        parts.append(ruby_box("Cam latch 1619A74", tc, 210 - ld / 2, lz - lh / 2,
+                              lw, ld, lh, color=C_VALVE))
 
-    # Interior pull handle (matte-black 316 SS D-grab) — through-bolted to the panel's
-    # structural FRAME: the left drum-aperture jamb (the 120mm center-zone stud just left
-    # of the Ø800 housing), NOT the 1/8″ HDPE skin. Mounted on the interior face. The transport
-    # swing pivots on the FAR edge, so this near-of-center jamb keeps good leverage while
-    # landing the load on steel right beside the drum (report §4.3).
+    # Interior pull handle — off-the-shelf McMaster 1871A65 round pull handle (the SAME part as the
+    # drum handle; ~308mm grip, 52mm standoff), screwed into 1/4"-20 rivet-nuts in the structural
+    # FRAME: the left drum-aperture jamb (the 120mm center-zone stud just left of the Ø800 housing),
+    # NOT the 1/8″ HDPE skin. Interior face. The swing pivots on the FAR edge, so this near-of-center
+    # jamb keeps good leverage while landing the load on steel right beside the drum (report §4.3).
     hy = (NEW_YD_L + APER_L) // 2                         # ≈683 — center of the left drum jamb
-    hz0, hz1 = 1150, 1450
+    hz0, hz1 = 1146, 1454                                 # ~308mm grip span (1871A65)
     xf = PANEL_CENTER_T                                   # 120 — interior face of the frame zone
+    ho = 52                                               # standoff (1871A65)
     for hz in (hz0 + 18, hz1 - 18):                       # two standoff posts off the frame face
-        parts.append(ruby_box("Pull-handle standoff", xf, hy - 10, hz - 8, 28, 20, 16,
+        parts.append(ruby_box("Pull-handle standoff", xf, hy - 7, hz - 8, ho, 14, 16,
                               color="#202020"))
-    parts.append(ruby_box("Pull-handle grip (matte black)", xf + 28, hy - 12, hz0,
-                          24, 24, hz1 - hz0, color="#202020"))
+    parts.append(ruby_box("Pull-handle grip (1871A65)", xf + ho, hy - 7, hz0,
+                          14, 14, hz1 - hz0, color="#202020"))
     return '\n'.join(parts)
 
 
@@ -600,7 +604,7 @@ def drum_frame():
     p.append(ruby_cylinder("Drum upper bearing (SKF 6215)", DRUM_CX, DRUM_CY, DRUM_H + LT_BRG_STANDOFF, 65, 25, color=cb, axis="z"))
     # BOTTOM hub — mirror: the steel bearing COLLAR (Ø240) seats the SKF 6215 + bolts DOWN to a Ø240
     # mount plate on the bottom beam; locates/floats (radial only — no hang) (per 2D LOWER hub).
-    p.append(ruby_box("Drum bottom axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_bbeam, BW, y1 - y0, BH, color=c))
+    p.append(ruby_box("Drum bottom axle beam (50×40 RHS)", DRUM_CX - BW // 2, y0, z_bbeam, BW, y1 - y0, LT_BBEAM_H, color=c))
     p.append(ruby_cylinder("Drum bottom bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, LT_BBEAM_Z1, PR, LT_BRG_PLATE_T, color=c, axis="z"))
     p.append(ov.ruby_arc_wall("Drum lower bearing collar (Ø240 steel)", DRUM_CX, DRUM_CY, LT_COLLAR_OD / 2, RCr,
                               (LT_LBRG_Z0 + 25) - LT_LBRG_Z0, gap_center_deg=0, gap_deg=0, color=c, z0=LT_LBRG_Z0))
@@ -830,9 +834,9 @@ def bay():
     rectangular tube (Yd = center-zone step lines, Z = floor-gap..panel-top), open
     at the exterior end (entrance) and the interior end (exit onto the walkway)."""
     yL, yR = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709
-    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP                 # 80, 2300
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP                 # 130, 2300
     xf = ov.BAY_FRONT_X                                    # -890
-    t = ov.BAY_WALL_T                                      # 6
+    t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
     depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
     h = z1 - z0
     return '\n'.join([
@@ -841,6 +845,97 @@ def bay():
         ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
     ])
+
+
+def surround_rivets():
+    """Blind-rivet line tying the HDPE bay surround to the steel center-zone frame at
+    the panel-plane lap (Yd = the two center-zone step lines). Rivet heads shown as small
+    steel discs @ LT_RIVET_PITCH so the surround reads as FASTENED to the frame, not
+    floating. Section detail: hingepanel Sheet 8; flat patterns: hingepanel Sheet 7."""
+    yL, yR = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
+    rr, xr = 6, -7                                        # head Ø exaggerated for visibility; just exterior of panel plane
+    n = int((z1 - z0 - 120) // LT_RIVET_PITCH) + 1
+    parts = []
+    for yd in (yL + 8, yR - 8):                            # the two bay-wall ↔ jamb lap lines
+        for i in range(n):
+            zc = z0 + 60 + i * LT_RIVET_PITCH
+            parts.append(ruby_cylinder("Surround rivet", xr, yd, zc, rr, 6,
+                                       axis="x", n=8, color="#C9CCD2"))
+    return '\n'.join(parts)
+
+
+# The FAR apron's last APRON_FIX_W (Yd C_WID−200 .. C_WID) is a FIXED stub, not a fold-down: the folding
+# flap would foul the Ø89 pivot post + its Ø220 floor mount plate (near edge PIVOT_YD−110 = Yd2177).
+# (APRON_FIX_W now single-sourced from tbs_constants.)
+
+# Each fold-down apron runs from the door corner INBOARD to a brush gap off the drum-cage side
+# (APRON_IN_L/R = cage ∓ APRON_CAGE_GAP), so it crosses the center-zone step line (YD_L/R). It is built
+# as two Yd rectangles at different tops: the corner zone reaches the raised corner leaf bottom
+# (PANEL_FLOOR_GAP_SIDE), the center-zone extension reaches the lower center leaf bottom
+# (PANEL_FLOOR_GAP) — a notched flat panel that folds as one about the threshold hinge.  (y0, dy, top_z)
+_APRON_NEAR = [(0,    YD_L,               PANEL_FLOOR_GAP_SIDE),   # corner zone: top 282
+               (YD_L, APRON_IN_L - YD_L,  PANEL_FLOOR_GAP)]         # center ext: top 217, reaches Yd688
+_APRON_FAR  = [(APRON_IN_R, YD_R - APRON_IN_R,           PANEL_FLOOR_GAP),        # center ext: Yd1674→1709, top 217
+               (YD_R,       (C_WID - APRON_FIX_W) - YD_R, PANEL_FLOOR_GAP_SIDE)]   # corner zone: top 282
+_APRONS = [("near", _APRON_NEAR), ("far", _APRON_FAR)]
+
+
+def apron_up_geom():
+    """The fold-down light aprons in the UP (operational, sealing) position — door plane, each reaching to
+    its leaf bottom (stepped: corner→PANEL_FLOOR_GAP_SIDE, center ext→PANEL_FLOOR_GAP). Bottom-hinged to
+    the threshold, extended inboard to a brush gap off the cage. CHILD of the Panel Swing DC:
+    SHOWN when closed / HIDDEN when swung."""
+    return '\n'.join(
+        ruby_box(f"Fold-down apron ({tag}, UP)", 0, y0, 12, 40, dy, top - 12, color=C_PLY, alpha=0.85)
+        for tag, rects in _APRONS for (y0, dy, top) in rects)
+
+
+def apron_folded_geom():
+    """The aprons FOLDED FLAT into the container for transport (hinged down 90° about the threshold).
+    Drawn in the folded-at-door-plane pose; the swing-DC child gets a −LOCK pre-rotation so the parent's
+    +LOCK lands it here at swing=1. SHOWN when swung / HIDDEN closed."""
+    return '\n'.join(
+        ruby_box(f"Fold-down apron ({tag}, FOLDED)", 12, y0, 12, top - 12, dy, 40, color=C_PLY, alpha=0.6)
+        for tag, rects in _APRONS for (y0, dy, top) in rects)
+
+
+def apron_edge_brushes():
+    """Vertical strip brushes on the two fold-down apron inner edges (Yd APRON_IN_L / APRON_IN_R), reaching
+    APRON_CAGE_GAP across to the cage sides — a light-tight bristle wall closing the residual side slot
+    (baffle top → center leaf bottom). CHILD of the swing DC (rides + hides with the aprons)."""
+    z0, z1 = LT_CAGE_BOT - 10, PANEL_FLOOR_GAP            # 130 → 217 (baffle top to center leaf bottom)
+    parts = [
+        ruby_box("Apron edge brush (near)", 0, APRON_IN_L,     z0, 30, 2, z1 - z0, color=C_SEAL),
+        ruby_box("Apron edge brush (far)",  0, APRON_IN_R - 2, z0, 30, 2, z1 - z0, color=C_SEAL),
+    ]
+    for i in range(int((z1 - z0) // 8)):
+        zc = z0 + 4 + i * 8
+        parts.append(ruby_box("Apron brush bristle", 8, APRON_IN_L + 2,                  zc, 2, APRON_CAGE_GAP, 2, color="#141414"))  # near → +Yd to cage
+        parts.append(ruby_box("Apron brush bristle", 8, APRON_IN_R - 2 - APRON_CAGE_GAP, zc, 2, APRON_CAGE_GAP, 2, color="#141414"))  # far → −Yd to cage
+    return '\n'.join(parts)
+
+
+def fixed_bottom_geom():
+    """FIXED bottom closures (do NOT fold): (a) the center light baffle under the drum bay — trimmed to the
+    apron inner edges (APRON_IN_L..APRON_IN_R) so it butts the extended aprons — capped 10mm below the cage
+    bottom, with a horizontal strip brush on its top edge sweeping the swinging cage bottom; and (b) the
+    far-pivot fixed panel — a 200mm stub next to the Ø89 pivot post that can't hinge."""
+    baf_top = LT_CAGE_BOT - 10                           # 130
+    cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R       # 700, 1662 — cage width the top brush spans
+    parts = [
+        ruby_box("Center light baffle (fixed)", 0, APRON_IN_L, 51, 30, APRON_IN_R - APRON_IN_L,
+                 baf_top - 51, color=C_PLY, alpha=0.85),
+        ruby_box("Far-pivot fixed panel", 0, C_WID - APRON_FIX_W, 12, 40, APRON_FIX_W,
+                 PANEL_FLOOR_GAP_SIDE - 12, color=C_PLY, alpha=0.85),
+        # Horizontal strip brush on the baffle top edge — bristles reach the 10mm up to the swinging cage
+        # bottom (Z140) over the cage width; the side corners are sealed by apron_edge_brushes().
+        ruby_box("Baffle top brush", -1, cgL, baf_top, 30, cgR - cgL, LT_CAGE_BOT - baf_top, color=C_SEAL),
+    ]
+    for i in range(int((cgR - cgL) // 12)):
+        yc = cgL + 6 + i * 12
+        parts.append(ruby_box("Baffle brush bristle", 8, yc, baf_top, 2, 2, LT_CAGE_BOT - baf_top, color="#141414"))
+    return '\n'.join(parts)
 
 
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
@@ -861,6 +956,7 @@ def generate_ruby():
         component("Film-Plane Rails (left, removable)", "Film Plane Rails", film_plane_left()),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
+        component("Fixed bottom closures (baffle + pivot stub)", "Bottom Apron", fixed_bottom_geom()),
     ]
     static_body = '\n'.join(static_comps)
 
@@ -883,6 +979,7 @@ def generate_ruby():
         ruby_box("EPDM seal bottom R (trimmed)", -20, DRUM_CY + HOUSING_R + 15, PANEL_Z_BOT, 20,
                  PIVOT_YD - (DRUM_CY + HOUSING_R + 15), 40, color=C_GASKT, alpha=0.5),
         bay(),
+        surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
         drum_frame(),
@@ -1023,6 +1120,34 @@ lfr_inst.layer = model.layers["Film Plane Rails"]
 lfr_inst.set_attribute("dynamic_attributes", "_name", "LiftoutFilmRail")
 lfr_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+# ── Fold-down light aprons — CHILD DC components inside the swing def. UP (sealing) is SHOWN when the
+#    door is CLOSED and HIDDEN once the panel swings; FOLDED (flat into the container) is the mirror,
+#    built in the folded-at-door-plane pose with a −LOCK pre-rotation so the parent's +LOCK lands it
+#    there at swing=1. Same visibility-swap pattern as the transport stay rods. ──
+au_defn = model.definitions.add("Fold-down Aprons (up)")
+ents = au_defn.entities
+{apron_up_geom()}
+{apron_edge_brushes()}
+ents = defn.entities
+au_inst = ents.add_instance(au_defn, Geom::Transformation.new)
+au_inst.name = "Fold-down Aprons (up)"
+au_inst.layer = model.layers["Bottom Apron"]
+au_inst.set_attribute("dynamic_attributes", "_name", "FoldApronsUp")
+au_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+au_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+af_defn = model.definitions.add("Fold-down Aprons (folded)")
+ents = af_defn.entities
+{apron_folded_geom()}
+ents = defn.entities
+af_tr = Geom::Transformation.rotation([{PIVOT_X}.mm, {PIVOT_YD}.mm, 0], Z_AXIS, (-{LOCK}).degrees)
+af_inst = ents.add_instance(af_defn, af_tr)
+af_inst.name = "Fold-down Aprons (folded)"
+af_inst.layer = model.layers["Bottom Apron"]
+af_inst.set_attribute("dynamic_attributes", "_name", "FoldApronsFolded")
+af_inst.set_attribute("dynamic_attributes", "hidden", 1.0)
+af_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing<0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

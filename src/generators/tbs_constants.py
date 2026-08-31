@@ -330,11 +330,15 @@ PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to
                         # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
-PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm). NOT tied to WALKWAY_H (deck is
-                          # now 140 with the 25mm grate): the swing sweeps the BARE Z115 brackets (walkway
-                          # lifted out for transport), so this stays 130. Drum-revolve threshold sill +
-                          # swing-arc datum. A ~10mm step to the Z140 deck at the drum exit is accepted
-                          # (add a 10mm drum-floor pad later if it matters).
+PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29,
+                          # Alvin) so the drum's lower hub/cage bottom (hangs 87mm below the cap, so
+                          # LT_CAGE_BOT = this−87 = 130) CLEARS the tallest FIXED obstacle in the swing
+                          # path — the LEFT walkway's floor-leg cantilever POSTS (top Z115, they stay
+                          # bolted during the transport swing) — by 15mm (and the fixed tray rim Z70 by
+                          # 60mm) as the panel+drum swing across the container. Costs 87mm drum interior
+                          # from the bottom (DRUM_H_LT top ceiling-limited, unchanged): interior 1970→1883,
+                          # still clears a 1780mm operator by 103mm. Also the swing-arc datum + drum sill.
+                          # (Derives PANEL_FLOOR_GAP_SIDE + the whole lower-hub stack + LT_CAGE_BOT.)
 # (Derived swing geometry — PIVOT_X/PIVOT_YD/FAR_STRIP_YD0/DRUM_CAGE_* — is defined just
 #  below, after the brace/drum/bay constants it reads from.)
 # PANEL_SLIDE (the old 880mm slide travel) is fully retired (rev10) — all generators and
@@ -360,9 +364,9 @@ DRUM_H_LT  = 2100    # drum CAP-TOP Z (mm) — LOWERED (was 2250) so the top hub
                      # correctly: the upper axle beam sits ABOVE the cap (drum hangs from the
                      # bearing BELOW that beam, per 2D Sheets 8/10), beam top = DRUM_H_LT+242 =
                      # 2342, clearing the 2388 ceiling by 46mm. Interior height
-                     # (DRUM_H_LT − PANEL_FLOOR_GAP = 1970) still clears a 1780mm operator on the
-                     # raised (Z130) walkway by 190mm (was 2120; the ~150mm loss buys the ceiling-
-                     # legal beam-above-bearing hub — see light-trap-selection §3.3).
+                     # (DRUM_H_LT − PANEL_FLOOR_GAP = 1883 after the 2026-08-29 floor-gap raise to 217)
+                     # still clears a 1780mm operator by 103mm (the floor-gap raise buys the drum-cage
+                     # bottom clearance over the fixed floor-leg posts + tray — see light-trap-selection §3.3).
 LT_HOUSING_R   = DRUM_R   # 400 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = LT_HOUSING_R - LT_HOUSING_T - 13   # 382 — drum outer radius, 13mm running gap inside the housing bore (derived so it tracks the housing Ø)
@@ -452,6 +456,10 @@ DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
 DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
 DRUM_CAGE_YD_L = 700    # cage near side — FIXED (walkway/transport envelope); decoupled from the drum Ø on the Ø900→Ø800 shrink. Clears the Ø800 housing (near edge 781) by 31mm at the rail inner face (750).
 DRUM_CAGE_YD_R = 1662   # cage far side — FIXED (see YD_L); clears the Ø800 housing (far edge 1581) by 31mm.
+APRON_FIX_W    = 200    # far-pivot FIXED apron stub width (Yd): the folding flap can't hinge here — it would foul the Ø89 pivot post + its Ø220 floor mount plate — so the last 200mm stays fixed.
+APRON_CAGE_GAP = 12     # brush clearance between the fold-down apron inner edge and the cage side (Yd). The apron extends inboard from the center-zone step line to cage∓this; a vertical strip brush bridges it.
+APRON_IN_L     = DRUM_CAGE_YD_L - APRON_CAGE_GAP   # 688 — near apron inner edge (12mm off the cage near side)
+APRON_IN_R     = DRUM_CAGE_YD_R + APRON_CAGE_GAP   # 1674 — far apron inner edge (12mm off the cage far side)
 # ── Light-trap SUPPORT FRAME (2026-08-21) — steel welded box cage, INTEGRATED with the
 # swing-panel frame (one weldment). Carries both SKF 6215 bearings + the fixed housing
 # (outer skin). Members = steel RHS matching the panel; top/bottom bearing plates. The
@@ -475,7 +483,10 @@ LT_FRAME_MOUNT_BOLT_BOT = 8   # collar → mount-plate bolts (M10)
 # 100×50 was unnecessary. The bearing RING/collar (Ø240 OD, Ø200 bolt circle) is far
 # wider than the 50mm beam, so it bolts to a BEARING MOUNT PLATE welded across the beam —
 # NOT the beam wall (only 2 of 6 bolts would land on a 50mm beam).
-LT_AXLE_BEAM_H     = 50    # beam depth (mm) — 50×50×3 steel RHS
+LT_AXLE_BEAM_H     = 50    # TOP beam depth (mm) — 50×50×3 steel RHS (carries the ~330kg drum hang)
+LT_BBEAM_H         = 40    # BOTTOM beam depth (mm) — 40mm-deep RHS, shallower than the top: the lower
+                          # bearing FLOATS (radial-only, low load), so a shallower beam is fine, and it
+                          # lifts the cage bottom 10mm to hold 25mm clearance over the Z115 floor-leg posts
 LT_AXLE_BEAM_W     = 50    # beam width (mm)
 LT_AXLE_BEAM_T     = 3     # beam wall (mm)
 LT_AXLE_BEAM_SPAN  = DRUM_CAGE_YD_R - DRUM_CAGE_YD_L   # 962 — beam clear span (Yd)
@@ -493,7 +504,7 @@ LT_TBEAM_Z0      = DRUM_H_LT + LT_BEAM_STANDOFF          # 2167 — top-beam und
 LT_CAGE_TOP      = LT_TBEAM_Z0 + LT_AXLE_BEAM_H          # 2217 — cage/beam TOP (clears 2388 by 171)
 LT_LBRG_Z0       = PANEL_FLOOR_GAP - 25                  # 105 — lower-bearing bottom (short stub below the Z130 cap)
 LT_BBEAM_Z1      = LT_LBRG_Z0 - LT_BRG_PLATE_T           # 93 — bottom-beam top (mount plate 93..105 sits above it)
-LT_CAGE_BOT      = LT_BBEAM_Z1 - LT_AXLE_BEAM_H          # 43 — bottom-beam bottom Z
+LT_CAGE_BOT      = LT_BBEAM_Z1 - LT_BBEAM_H              # bottom-beam bottom Z (40mm beam → 25mm post clr)
 # Fixed housing (outer light-seal skin) spans BEAM-TO-BEAM (top-beam under face → bottom-beam top
 # face): it laps + rivets to rim-angle on the two beams (which cross it) and skirts the hub gaps.
 LT_HOUSING_Z_BOT = LT_BBEAM_Z1                  # 93 — bottom-beam top face (housing bottom)

@@ -59,6 +59,11 @@ file** — a release must not ship without a changelog entry:
   3D review round: each fold-down apron is now ONE notched plywood panel (single stepped cut, not two
   abutting boxes); all four now-redundant bottom EPDM strips (both fixed leaves + the swing panel's trimmed
   L/R) were removed — the fold-down apron + its top brush seal that leaf-bottom interface now.
+  Further review round: the pivot-side plywood is now ONE full-height fixed 200mm strip (Yd2162–2362) —
+  the old 75mm upper leaf + the fold-down-zone stub merged into a single panel covering the Ø89 pivot-post
+  corner; the swinging panel's plywood ends at Yd2162 and hinges to the post behind it. EPDM (compression)
+  and the brush seals now render in DISTINCT colors (brown EPDM vs green brush, previously two greens).
+  **Fan B raised 100mm** (`FAN_B_H` 600→700, ply mount band top 1125→1225).
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

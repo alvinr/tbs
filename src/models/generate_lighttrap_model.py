@@ -57,18 +57,18 @@ FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY
 C_PLASTIC = ov.C_PLASTIC                       # 1/8″ HDPE panel skins + bay (rev11; C_PLY now = wood fan band only)
 C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
-# Seal geometry renders GREEN so it's never mistaken for the steel-grey structure — in TWO
-# shades so the two seal TYPES read distinctly from each other:
-#   C_SEAL  (medium green) = the top/bottom BRUSH seals — the panel edge SWEEPS THROUGH them.
-#   C_GASKT (dark green)   = the EPDM compression seals that STAY (panel perimeter left/right,
-#                            the vertical cut seals, and the housing-surround ring).
-# (The door-frame top/bottom seal LIPS were formerly C_RAIL steel-grey, which read as structure
-# and made a clash inspection ambiguous, 2026-07-18.)
+# The two seal TYPES render in DISTINCT colors (2026-08-31, Alvin) so they can never be confused
+# with each other — nor with the steel-grey structure:
+#   C_SEAL  (green)  = the BRUSH seals — the panel edge SWEEPS THROUGH them.
+#   C_GASKT (brown)  = the EPDM compression seals that STAY (panel perimeter left/right, the vertical
+#                      cut seals, and the housing-surround ring) — the project-standard gasket brown.
+# (Both were formerly two shades of GREEN, which read as one thing; brown EPDM + green brush is the
+# clear split. The door-frame seal LIPS are NOT C_RAIL steel-grey — that read as structure, 2026-07-18.)
 # DELIBERATE OVERLAP: the panel + drum-box top edge intentionally overlaps the top brush seal
 # ~30mm and sweeps THROUGH it as the panel swings — a brush, not a compression EPDM (which would
 # drag under the sideways sweep). The overlap is by design; do not "fix" it.
-C_SEAL  = "#2FA84F"   # top/bottom brush seals
-C_GASKT = "#14532D"   # EPDM compression seals (perimeter / cut / housing)
+C_SEAL  = "#2FA84F"   # BRUSH seals (green)
+C_GASKT = ov.C_GASKT  # EPDM compression seals — project-standard gasket brown (#5A3020), distinct from the green brush
 C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
@@ -548,18 +548,23 @@ def near_leaf():
 
 
 def far_leaf():
-    """FIXED FAR strip (Yd FAR0..C_WID, ~75mm) at the pivot side — ends the swinging panel
-    AT the pivot so nothing swings outboard of the door plane (#10). Own perimeter EPDM +
-    the vertical cut seal at the pivot line."""
-    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
-    w = C_WID - FAR0
+    """FIXED FAR strip (Yd C_WID−APRON_FIX_W..C_WID, 200mm) at the pivot side — now ONE FULL-HEIGHT strip
+    (2026-08-31): it merges the old ~75mm upper leaf with the fold-down-zone stub into a single plywood
+    panel covering the Ø89 pivot-post corner top-to-bottom. The swinging panel's plywood ends at this
+    strip's inboard edge and hinges to the post behind it (X131+, clear of the door-plane strip). Own
+    perimeter EPDM + the vertical cut seal at the swing-fixed joint."""
+    y0 = C_WID - APRON_FIX_W                       # 2162 — widened strip start (= the fold-down apron far edge)
+    z0, z1 = 12, PANEL_Z_TOP                        # full height (threshold hinge line → panel top)
+    w = C_WID - y0
     gw, gt = 40, 20
     return '\n'.join([
-        ruby_box(f"Fixed far panel strip (Yd{FAR0}-{C_WID})", 0, FAR0, z0, 40, w, z1 - z0, color="#C8A060"),
-        ruby_box("EPDM fixed-far top", -gt, FAR0, z1 - gw, gt, w, gw, color=C_GASKT),
+        ruby_box(f"Fixed far panel strip (Yd{y0}-{C_WID})", 0, y0, z0, 40, w, z1 - z0, color="#C8A060"),
+        ruby_box("EPDM fixed-far top", -gt, y0, z1 - gw, gt, w, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-far right (far wall)", -gt, C_WID - gw, z0, gt, gw, z1 - z0, color=C_GASKT),
-        ruby_box("EPDM far cut seal (swing-fixed joint)", 0, FAR0 - 6, z0, 40, 12, z1 - z0, color=C_GASKT),
+        # cut seal runs only where the swinging panel meets the strip (above the floor gap).
+        ruby_box("EPDM far cut seal (swing-fixed joint)", 0, y0 - 6, PANEL_FLOOR_GAP, 40, 12,
+                 PANEL_Z_TOP - PANEL_FLOOR_GAP, color=C_GASKT),
     ])
 
 
@@ -937,17 +942,15 @@ def apron_edge_brushes():
 
 
 def fixed_bottom_geom():
-    """FIXED bottom closures (do NOT fold): (a) the center light baffle under the drum bay — trimmed to the
+    """FIXED bottom closure (does NOT fold): the center light baffle under the drum bay — trimmed to the
     apron inner edges (APRON_IN_L..APRON_IN_R) so it butts the extended aprons — capped 10mm below the cage
-    bottom, with a horizontal strip brush on its top edge sweeping the swinging cage bottom; and (b) the
-    far-pivot fixed panel — a 200mm stub next to the Ø89 pivot post that can't hinge."""
+    bottom, with a horizontal strip brush on its top edge sweeping the swinging cage bottom. (The far-pivot
+    fixed panel is no longer a separate stub — it's the bottom of the now full-height far_leaf strip.)"""
     baf_top = LT_CAGE_BOT - 10                           # 130
     cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R       # 700, 1662 — cage width the top brush spans
     parts = [
         ruby_box("Center light baffle (fixed)", 0, APRON_IN_L, 51, 30, APRON_IN_R - APRON_IN_L,
                  baf_top - 51, color=C_PLY, alpha=0.85),
-        ruby_box("Far-pivot fixed panel", 0, C_WID - APRON_FIX_W, 12, 40, APRON_FIX_W,
-                 PANEL_FLOOR_GAP_SIDE - 12, color=C_PLY, alpha=0.85),
         # Horizontal strip brush on the baffle top edge — bristles reach the 10mm up to the swinging cage
         # bottom (Z140) over the cage width; the side corners are sealed by apron_edge_brushes().
         ruby_box("Baffle top brush", -1, cgL, baf_top, 30, cgR - cgL, LT_CAGE_BOT - baf_top, color=C_SEAL),
@@ -991,10 +994,11 @@ def generate_ruby():
                  NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_Z_BOT, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
                  NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
-        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT, alpha=0.5),
+        # swing panel now ends at the widened full-height far strip (Yd C_WID−APRON_FIX_W = 2162), not the pivot.
+        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, (C_WID - APRON_FIX_W) - CUT, 40, color=C_GASKT, alpha=0.5),
         # panel bottom EPDM (L/R, trimmed) dropped — superseded by the fold-down apron + its top brush.
         ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_Z_BOT, 40,
-                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLASTIC, alpha=0.5),
+                 (C_WID - APRON_FIX_W) - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLASTIC, alpha=0.5),
         bay(),
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing

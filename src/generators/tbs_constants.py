@@ -301,7 +301,7 @@ PANEL_CENTER_T    = 120   # center zone ENVELOPE thickness (mm) — HDPE skin + 
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
 PANEL_SKIN_T      = 3.18  # panel skin thickness (mm) — 1/8" black HDPE (US Plastics 46684; rev11 was 18mm ply, nom 1/8″ HDPE), U-channel set
 PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only — reserved (spec; band drawn with a literal)
-PANEL_FAN_BAND_Z  = 1125  # ply band top Z (AFF) = FAN_B_H(600) + FAN_DIAM/2(75) + 450; literal — fan consts defined below
+PANEL_FAN_BAND_Z  = 1225  # ply band top Z (AFF) = FAN_B_H(700) + FAN_DIAM/2(75) + 450; literal — fan consts defined below (rises with the 2026-08-31 Fan B +100mm raise)
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
 PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width
@@ -1309,7 +1309,7 @@ EXT_DRAIN_YD = EXT_PANEL_YD
 FAN_DIAM    = 150    # fan / duct diameter (mm)
 FAN_BODY_D  =  50    # panel fan body depth (mm)
 FAN_A_H     = 2000   # fan A center height AFF (mm) — below the X1 fill port (Z2250) on the sealed end wall, in the clear plumbing corridor (was 2200, which the taller 1000L stack would have buried)
-FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
+FAN_B_H     = 700    # fan B center height AFF (mm — LOW; intake near floor). Raised 600→700 (2026-08-31, +100mm).
 # Yd (width) positions — cross-ventilation diagonal: low intake (cargo-door
 # panel) to high exhaust (far end wall), diagonally across the volume.
 # rev 9 / B2: Fan A and Fan B SWAP sides (mirror about the centerline) so the

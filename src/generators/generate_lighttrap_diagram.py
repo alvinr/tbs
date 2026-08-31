@@ -218,7 +218,7 @@ def draw_sheet1():
     Z_BOT, Z_TOP = Z_DBOT, Z_DTOP                 # aliases used by the dimensions below
     Z_HBOT, Z_HTOP = LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP   # fixed housing skin: 93 → 2167
     Z_TBM0, Z_TBM1 = LT_TBEAM_Z0, LT_CAGE_TOP     # top axle beam: 2167 → 2217
-    Z_BBM0, Z_BBM1 = LT_CAGE_BOT, LT_BBEAM_Z1     # bottom axle beam: 43 → 93
+    Z_BBM0, Z_BBM1 = LT_CAGE_BOT, LT_BBEAM_Z1     # bottom axle beam (50×40 RHS)
     Z_CAP_B = Z_DBOT + LT_CAP_BOT_T               # bottom cap inner face (138)
     Z_CAP_T = Z_DTOP - LT_CAP_TOP_T               # top cap inner face (2092)
     z_ubrg = Z_DTOP + LT_BRG_STANDOFF             # upper bearing bottom — above the top cap (2130)

@@ -168,6 +168,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 15: Bottom Clearance Cross-Section (walkway/cantilever envelope)](assets/hingepanel-sheet15.png)
 
+![TBS-001 Hinged Panel — Sheet 16: Fold-Down Light Apron + Fixed Center Baffle](assets/hingepanel-sheet16.png)
+
 ---
 
 ## 13. Perimeter Walkway

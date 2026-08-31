@@ -78,7 +78,10 @@ file** — a release must not ship without a changelog entry:
   frame no longer reads through the ply; the bay HDPE walls moved onto the drum-cage faces (Yd700/1662,
   riveted flush, no gap) instead of the wider panel-zone lines. Explicit **45° top-edge chamfer** cut on
   each fold-down apron (moving-flap scarf that sweeps off the fixed leaf's EPDM — Detail E); the near leaf
-  bottom stepped up to Z282 to meet the flap top.
+  bottom stepped up to Z282 to meet the flap top. Remaining chamfer joints cut: the center **baffle ends**
+  (45° where the apron inner edges meet it) and the **near-leaf inboard edge** (swing-panel↔leaf joint) —
+  all four plywood↔plywood joints now carry the explicit 45° scarf. The floating **film-plane rail fixing
+  plates** (far-flange + EXT backing plate + bolts) now lift out WITH the removable rail in transport.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

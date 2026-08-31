@@ -559,7 +559,9 @@ def near_leaf():
         # 40mm frame zone (steel) carrying a 12mm ply skin on the interior face (X28..40). Both OPAQUE so
         # the frame does not read through the ply.
         ruby_box(f"Fixed left frame (Yd0-{CUT})", 0, 0, z0, PLY_X0, CUT, z1 - z0, color=C_STEEL, alpha=1.0),
-        ruby_box(f"Fixed left ply (Yd0-{CUT})", PLY_X0, 0, z0, PLY_T, CUT, z1 - z0, color="#C8A060", alpha=1.0),
+        # 12mm ply with a 45° chamfered inboard edge (Yd CUT) — the swing panel butts + the cut EPDM seals it.
+        ov.ruby_prism(f"Fixed left ply (Yd0-{CUT})", [(PLY_X0, 0), (PLY_X0, CUT), (40, CUT - CHAM), (40, 0)],
+                      z0, z1 - z0, color="#C8A060", alpha=1.0),
         ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-panel left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT),
@@ -1014,8 +1016,11 @@ def fixed_bottom_geom():
     baf_top = LT_CAGE_BOT - 10                           # 130
     cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R       # 700, 1662 — cage width the top brush spans
     parts = [
-        ruby_box("Center light baffle (fixed)", PLY_X0, APRON_IN_L, 51, PLY_T, APRON_IN_R - APRON_IN_L,
-                 baf_top - 51, color=C_PLY, alpha=0.85),
+        # 12mm ply baffle with 45° chamfered ENDS (Yd) where the fold-down apron inner edges meet it —
+        # the apron scarf laps the chamfer, the apron edge brush seals above (Detail E). X-Yd prism.
+        ov.ruby_prism("Center light baffle (fixed)",
+                      [(PLY_X0, APRON_IN_L), (40, APRON_IN_L + CHAM), (40, APRON_IN_R - CHAM), (PLY_X0, APRON_IN_R)],
+                      51, baf_top - 51, color=C_PLY, alpha=1.0),
         # Horizontal strip brush on the baffle top edge — bristles reach the 10mm up to the swinging cage
         # bottom (Z140) over the cage width; the side corners are sealed by apron_edge_brushes().
         ruby_box("Baffle top brush", -1, cgL, baf_top, 30, cgR - cgL, LT_CAGE_BOT - baf_top, color=C_SEAL),

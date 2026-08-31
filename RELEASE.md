@@ -71,7 +71,10 @@ file** — a release must not ship without a changelog entry:
   as the pattern; the remaining three joints follow once the look is confirmed.
   Review fixes: added top+bottom **connection beams** tying the swinging panel frame to the Ø89 pivot post
   (it read as floating); extended the **bay HDPE walls down to the cage bottom** (Z217→Z140) to close a
-  light gap at the housing openings.
+  light gap at the housing openings. **Plywood rebuilt at true 12mm** on the interior face of the 40mm frame
+  zone (`PLY_T`/`PLY_X0`), with the 45° chamfer now a full-thickness 12mm scarf (`CHAM=12`); the swing
+  panel's corner zones now step up to Z282 like the frame + aprons, which removes the fold-down-flap↔leaf
+  overlap and clears the walkway cantilever in the swing.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

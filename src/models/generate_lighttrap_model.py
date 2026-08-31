@@ -534,6 +534,20 @@ def pivot_link():
     return '\n'.join(p)
 
 
+def pivot_connect():
+    """Connection beams tying the SWINGING panel frame's far edge to the pivot post/hub — without them the
+    panel frame reads as floating off the Ø89 post (2026-08-31 review). A top + bottom 50mm steel RHS runs
+    in the door plane from the panel far edge (Yd C_WID−APRON_FIX_W) across to the post; swings with the
+    panel, landing the cantilever couple into the hub brackets."""
+    s = 50                                   # 50mm steel RHS, matches the cage/panel frame
+    y0 = C_WID - APRON_FIX_W                 # 2162 — panel far edge
+    span = (PIVOT_YD + s) - y0               # reach across to just past the post center
+    return '\n'.join([
+        ruby_box("Panel→pivot connect beam (top, 50 RHS)",    0, y0, PANEL_Z_TOP - s, s, span, s, color=C_STEEL),
+        ruby_box("Panel→pivot connect beam (bottom, 50 RHS)", 0, y0, PANEL_FLOOR_GAP, s, span, s, color=C_STEEL),
+    ])
+
+
 def near_leaf():
     """FIXED LEFT panel (Yd0..CUT) — does NOT swing; covers the near-wall strip past the
     near upright. Own perimeter EPDM + the vertical cut seal the swinging panel butts."""
@@ -843,7 +857,10 @@ def bay():
     rectangular tube (Yd = center-zone step lines, Z = floor-gap..panel-top), open
     at the exterior end (entrance) and the interior end (exit onto the walkway)."""
     yL, yR = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709
-    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP                 # 130, 2300
+    # The HDPE side/bottom walls run DOWN to the cage bottom beams (LT_CAGE_BOT), not just to the
+    # Z217 floor gap — otherwise a Z140–217 slot at the housing openings lets light under the drum
+    # (2026-08-31 review). The top wall stays at the panel top.
+    z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP                     # 140 → 2300
     xf = ov.BAY_FRONT_X                                    # -890
     t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
     depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
@@ -1016,6 +1033,7 @@ def generate_ruby():
         drum_frame(),
         fan_b(),
         pivot_link(),
+        pivot_connect(),                  # top+bottom RHS tying the panel frame to the pivot post
         frame_hooks(),
     ])
 

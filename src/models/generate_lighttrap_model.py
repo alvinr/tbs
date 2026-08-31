@@ -553,7 +553,7 @@ def pivot_connect():
 def near_leaf():
     """FIXED LEFT panel (Yd0..CUT) — does NOT swing; covers the near-wall strip past the
     near upright. Own perimeter EPDM + the vertical cut seal the swinging panel butts."""
-    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
+    z0, z1 = PANEL_FLOOR_GAP_SIDE, PANEL_Z_TOP   # near corner zone → bottom steps up to 282 (meets the flap top)
     gw, gt = 40, 20
     return '\n'.join([
         # 40mm frame zone (steel) carrying a 12mm ply skin on the interior face (X28..40). Both OPAQUE so
@@ -908,10 +908,15 @@ def surround_rivets():
 # bottom (PANEL_FLOOR_GAP) — a single stepped cut, hinged as one about the threshold. HZ = hinge Z (12).
 _AHZ = 12
 # UP profiles — (Yd, Z) polygon in the door plane, extruded APRON_T mm in +X.
-_APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, PANEL_FLOOR_GAP),
-                  (YD_L, PANEL_FLOOR_GAP), (YD_L, PANEL_FLOOR_GAP_SIDE), (0, PANEL_FLOOR_GAP_SIDE)]
-_APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, PANEL_FLOOR_GAP_SIDE),
-                  (YD_R, PANEL_FLOOR_GAP_SIDE), (YD_R, PANEL_FLOOR_GAP), (APRON_IN_R, PANEL_FLOOR_GAP)]
+# Profile TOPS are pulled down CHAM (12mm): the flap body stops 12mm short of the leaf bottom, and a 45°
+# top-edge chamfer prism (apron_top_chamfers) fills back to it — the moving flap's scarf sweeps off the
+# EPDM on the fixed leaf face (Sheet 16 Detail E). Corner top = 282, center-ext top = 217.
+_CT_N = PANEL_FLOOR_GAP_SIDE - CHAM   # near/far corner body top (270)
+_CC   = PANEL_FLOOR_GAP - CHAM        # center-ext body top (205)
+_APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
+                  (YD_L, _CC), (YD_L, _CT_N), (0, _CT_N)]
+_APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_N),
+                  (YD_R, _CT_N), (YD_R, _CC), (APRON_IN_R, _CC)]
 APRON_T = PLY_T   # fold-down flap = 12mm plywood, on the interior face (X28..40)
 
 
@@ -930,19 +935,45 @@ def _apron_vpanel(name, prof, color, alpha):
         f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
 
 
+def _prism_xz(name, xz, y0, ylen, color, alpha=1.0):
+    """Prism from an (X,Z) polygon in the plane Yd=y0, pushpulled ylen in +Yd. Used for top-edge chamfers."""
+    pts = ", ".join(f"[{ov.mm(x)},{ov.mm(y0)},{ov.mm(z)}]" for (x, z) in xz)
+    r, g, b = ov.hex_to_rgb(color)
+    mat = ov.shared_mat_name(name, color, alpha)
+    return '\n'.join([
+        '  grp = ents.add_group', f'  grp.name = "{name}"',
+        f'  face = grp.entities.add_face({pts})',
+        f'  face.reverse! if face.normal.y < 0',
+        f'  face.pushpull({ov.mm(ylen)})',
+        f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+        f'  mat.alpha = {alpha}', '  grp.material = mat', ''])
+
+
+def apron_top_chamfers():
+    """45° chamfer along each apron TOP edge (the moving-flap scarf that sweeps off the fixed leaf's EPDM,
+    Detail E): a triangular X-Z prism per top segment — outer face (X28) rises the full CHAM to the leaf
+    bottom, inner face (X40) stays CHAM lower. One segment per step (corner→282, center-ext→217)."""
+    segs = [(0, YD_L, PANEL_FLOOR_GAP_SIDE), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+            (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, PANEL_FLOOR_GAP_SIDE)]
+    return '\n'.join(_prism_xz("Fold-down apron top chamfer",
+                               [(PLY_X0, top - CHAM), (40, top - CHAM), (PLY_X0, top)], y0, y1 - y0, C_PLY, 0.85)
+                     for (y0, y1, top) in segs)
+
+
 def apron_up_geom():
     """The fold-down light aprons in the UP (operational, sealing) position — ONE notched plywood panel per
     side (stepped top: corner→PANEL_FLOOR_GAP_SIDE, center ext→PANEL_FLOOR_GAP), bottom-hinged to the
-    threshold, extended inboard to a brush gap off the cage. CHILD of the Panel Swing DC:
-    SHOWN when closed / HIDDEN when swung."""
-    # Far edge is 45°-chamfered to mate the full-height far strip's scarf (Detail E): a plywood wedge
-    # adds material inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the
-    # corner-zone height. Extends the moving apron so its inner face laps the fixed strip.
+    threshold, extended inboard to a brush gap off the cage. Top + far edges 45°-chamfered (moving-flap
+    scarf; Detail E). CHILD of the Panel Swing DC: SHOWN when closed / HIDDEN when swung."""
+    # Far edge is 45°-chamfered to mate the full-height far strip's scarf: a plywood wedge adds material
+    # inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the corner-zone height.
     yf = C_WID - APRON_FIX_W
     far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
-                              [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, PANEL_FLOOR_GAP_SIDE - _AHZ, color=C_PLY, alpha=0.85)
+                              [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, _CT_N - _AHZ, color=C_PLY, alpha=0.85)
     return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
-            _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) + far_wedge)
+            _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) +
+            far_wedge + apron_top_chamfers())
 
 
 def apron_folded_geom():

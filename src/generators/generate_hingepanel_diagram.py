@@ -437,7 +437,7 @@ def sheet2():
     STEP_YD_R = PANEL_CORNER_YD_R  # 1709
 
     PAD_X  = 450   # horizontal margin each side (room for rails + labels)
-    PAD_YB = 350   # bottom margin (exterior zone)
+    PAD_YB = 620   # bottom margin (exterior zone + room for the L-angle inset detail, clear of the title block)
     PAD_YT = 220   # top margin (interior zone)
 
     X_LO = -PAD_X                # left of panel
@@ -506,7 +506,26 @@ def sheet2():
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, BAY_FRONT_X), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
-           "1/8″ HDPE bay SIDE skin —\nlaps + blind-riveted to the cage\ncorner posts (@60mm typ., as the\nfront skin, Sheet 8); no free edge", col="#4a5a70", fs=5.8)
+           "1/8″ HDPE bay SIDE skin — riveted to an\nL-ANGLE on the cage post (NOT through the\nbeam); see the L-ANGLE DETAIL below", col="#4a5a70", fs=5.8)
+
+    # ── ENLARGED DETAIL — HDPE side skin → L-ANGLE → frame (the HDPE does NOT pass through the beam;
+    #    an Al L-angle rivets to the steel post, and the HDPE skin rivets to the angle's upstand leg) ──
+    Lx0, Ly0, Ls = 1560, D_YB - 300, 2.4
+    def dL(x, y): return (Lx0 + x * Ls, Ly0 + y * Ls)
+    def _riv(cx, cy):                                             # simple rivet glyph (head + shank dot)
+        ax.add_patch(Circle((cx, cy), 3.0, fc="#C9CCD2", ec=C_OUT, lw=0.8, zorder=11))
+    ax.add_patch(Rectangle(dL(-6, -6), 122 * Ls, 96 * Ls, fc="#FBFAF6", ec=C_DIM, lw=0.8, zorder=8))  # inset panel
+    ax.text(*dL(58, 88), "DETAIL — HDPE SIDE SKIN → L-ANGLE → FRAME", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, zorder=12, **FONT)
+    ax.text(*dL(58, 80), "HDPE does NOT pass through the beam", ha="center", fontsize=6.0, color=C_DIM, zorder=12, **FONT)
+    ax.add_patch(Rectangle(dL(0, 8), 34, 62, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=9))              # cage frame RHS (cut)
+    ax.add_patch(Rectangle(dL(3, 11), 28, 56, fc="#FBFAF6", ec=C_OUT, lw=0.5, zorder=9))
+    ax.text(*dL(17, 1), "cage frame RHS", ha="center", fontsize=5.6, color=C_OUT, zorder=12, **FONT)
+    ax.add_patch(Rectangle(dL(34, 32), 42, 6, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=10))                          # L-angle base leg (on the frame face)
+    ax.add_patch(Rectangle(dL(70, 32), 6, 44, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=10))                          # L-angle upstand leg
+    ax.add_patch(Rectangle(dL(76, 32), 8, 48, fc=C_PLASTIC, ec=C_OUT, lw=1.2, zorder=10))                       # HDPE side skin
+    _riv(*dL(52, 35)); _riv(*dL(79, 56))                                                                        # base→frame rivet · HDPE→upstand rivet
+    leader(ax, dL(52, 35), dL(30, -4), "Al L-ANGLE riveted\nto the steel post", col=C_OUT, fw="bold", fs=6.0)
+    leader(ax, dL(80, 56), dL(104, 40), "1/8″ HDPE skin\nriveted to the\nL-angle upstand", col=C_OUT, fw="bold", fs=6.0)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
@@ -1975,8 +1994,9 @@ def sheet8():
     ax.add_patch(Polygon([(fx + 8, fy + ft), (fx + 8, fy + ft + 10), (fx - 2, fy + ft)],
                          closed=True, fc="#5A3020", ec=C_OUT, lw=0.7, zorder=6))
     leader(ax, (fx + 6, fy + ft + 8), (282, 28), "DP8010 sealant bead\n(light-tight)", col=C_OUT)
-    # blind rivet through the lap (axis vertical, +Z head on the HDPE side)
-    _blind_rivet(ax, fx + 40, fy + ft, 90, ft + 10, d=RIV_D)
+    # blind rivet through the lap (axis vertical, +Z head on the HDPE side). CENTER on the full stack
+    # (flange ft + HDPE 10) so the factory head BUTTS the HDPE outer face and the blind head the flange back.
+    _blind_rivet(ax, fx + 40, fy + (ft + 10) / 2.0, 90, ft + 10, d=RIV_D)
     leader(ax, (fx + 40, fy + ft + 16), (300, 165),
            f"1/8\" 18-8 SS blind rivet\nMcMaster 97525A435\ndrill Ø{LT_RIVET_HOLE} @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
     # the post's SIDE face (steel) turns down from the flange — the HDPE wraps this corner
@@ -2313,11 +2333,11 @@ def sheet11():
 # SHEET 13  —  Plywood Attachments (enlarged): Fan-B → ply + ply → frame tab/T-nut
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet13():
-    fig, ax = plt.subplots(figsize=(17, 9.5))
+    fig, ax = plt.subplots(figsize=(17, 10.8))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
     ax.set_xlim(0, 470)
-    ax.set_ylim(-55, 250)
+    ax.set_ylim(-95, 250)     # extra bottom room so the rotated-90° companion clears the title block
 
     # ── DETAIL A — Fan-B → plywood (SECTION, to scale 1:1) ──
     # A 150mm axial PANEL FAN bolts to the ply through its thin MOUNTING FLANGE PLATE (the
@@ -2327,11 +2347,16 @@ def sheet13():
     def dA(x, y): return (ax0 + x * sA, ay0 + y * sA)
     ax.text(ax0 + 60, 238, "DETAIL A — FAN-B → PLYWOOD (SECTION 1:1)", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
     ax.text(ax0 + 60, 226, "panel fan bolts through its flange plate, not the fan body", ha="center", fontsize=6.6, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle(dA(60, 5), 18, 205, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))            # 18mm ply (vertical)
-    ax.add_patch(Rectangle(dA(54, 15), 6, 190, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))           # fan MOUNTING FLANGE PLATE (butts the ply)
-    ax.add_patch(Rectangle(dA(4, 40), 50, 140, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=4))            # fan body (Ø150 × 50 deep) — protrudes exterior
-    ax.add_patch(Rectangle(dA(4, 55), 50, 110, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))       # fan bore
-    ax.add_patch(Rectangle(dA(19, 98), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))         # motor hub
+    # ply + flange plate BOTH carry a Ø150 air CUTOUT (aligned with the fan bore) — shown at 1:1 as a
+    # 150 gap between the below/above solid pieces. Fan diameter 150 = the cutout; bolts land in the solid.
+    CUT0, CUT1 = 30, 180          # 150mm fan cutout, centered on the flange (y 30..180)
+    for py0, ph in [(5, CUT0 - 5), (CUT1, 210 - CUT1)]:                                            # 18mm ply, below + above the cutout
+        ax.add_patch(Rectangle(dA(60, py0), 18, ph, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))
+        ax.add_patch(Rectangle(dA(54, py0 + (10 if py0 < CUT0 else 0)), 6, ph - (10 if py0 < CUT0 else 5), fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))  # flange plate, same cutout
+    ax.add_patch(Rectangle(dA(4, CUT0), 50, CUT1 - CUT0, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=4))   # fan body (Ø150 × 50 deep) — protrudes exterior
+    ax.add_patch(Rectangle(dA(4, CUT0 + 12), 50, (CUT1 - CUT0) - 24, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))  # fan bore = the Ø150 air path
+    ax.add_patch(Rectangle(dA(19, 93), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))          # motor hub
+    draw_dim_v(ax, dA(69, 0)[0], dA(0, CUT0)[1], dA(0, CUT1)[1], "Ø150 fan bore = ply cutout", offset=10, fs=5.6, font=FONT, right=True)
     ax.add_patch(Rectangle(dA(78, 18), 6, 189, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))          # interior backing plate (spans the bolt gauge)
     # bolts at the flange corners — clear of the round fan body. Grip spans the full stack:
     # flange plate face (x=54) → ply → backing plate face (x=84), so head + nut BUTT the outer faces.

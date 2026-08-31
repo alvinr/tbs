@@ -531,8 +531,10 @@ def pivot_link():
         ruby_cylinder("Hub radial bearing (bottom)", PIVOT_X, PIVOT_YD, 220, 60, 55, color=cbear, axis="z"),
         ruby_cylinder("Hub radial bearing (top)", PIVOT_X, PIVOT_YD, 2050, 60, 55, color=cbear, axis="z"),
     ]
+    # brackets ALIGNED with the leaf pivot-edge stile (Yd PIVOT_YD−50..PIVOT_YD, 50 RHS) so they weld flush
+    # to it — matches Sheet 14 (was offset ±35 straddling the pivot).
     for z in (300, 1180, 2000):
-        p.append(ruby_box("Hinge bracket (panel→hub)", 55, PIVOT_YD - 35, z, 140, 70, 110, color=C_STEEL))
+        p.append(ruby_box("Hinge bracket (panel→hub)", 55, PIVOT_YD - 50, z, 140, 50, 110, color=C_STEEL))
     return '\n'.join(p)
 
 

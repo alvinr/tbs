@@ -1046,7 +1046,11 @@ def generate_ruby():
         component("Fixed far strip", "Far Leaf", far_leaf()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        component("Film-Plane Rails (left, removable)", "Film Plane Rails", film_plane_left()),
+        # The whole film-plane left rig (parked carriage + stub + saddles) HIDES in transport — it's the
+        # shared-pivot film-plane hardware, not the light-trap door, and reads as floating plates once the
+        # panel swings. Stays put (static root), just visibility-swaps on the swing DC.
+        component("Film-Plane Rails (left, removable)", "Film Plane Rails", film_plane_left(),
+                  hidden_formula="PanelSwing!swing>0.5"),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
         component("Fixed bottom closures (baffle + pivot stub)", "Bottom Apron", fixed_bottom_geom()),

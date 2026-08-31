@@ -570,27 +570,29 @@ def near_leaf():
 
 
 def far_leaf():
-    """FIXED FAR strip (Yd C_WID−APRON_FIX_W..C_WID, 200mm) at the pivot side — now ONE FULL-HEIGHT strip
-    (2026-08-31): it merges the old ~75mm upper leaf with the fold-down-zone stub into a single plywood
-    panel covering the Ø89 pivot-post corner top-to-bottom. The swinging panel's plywood ends at this
-    strip's inboard edge and hinges to the post behind it (X131+, clear of the door-plane strip). Own
-    perimeter EPDM + the vertical cut seal at the swing-fixed joint."""
-    y0 = C_WID - APRON_FIX_W                       # 2162 — widened strip start (= the fold-down apron far edge)
-    z0, z1 = 12, PANEL_Z_TOP                        # full height (threshold hinge line → panel top)
-    w = C_WID - y0
+    """NO fixed jamb at the pivot (2026-08-31, Alvin): the pivot-corner plywood TRAVELS with the swinging
+    leaf (built in the swing DC by pivot_corner_leaf()), wrapping to the Ø89 post with a clearance notch so
+    the leaf swings as one piece. This static part keeps only the container far-WALL vertical EPDM the
+    closed leaf edge seals against + a short fixed corner seal past the pivot line (Yd PIVOT_YD..C_WID)."""
     gw, gt = 40, 20
-    # 40mm frame zone (steel, X0..28) carries a 12mm ply skin on the interior face (X28..40). The ply's
-    # inboard edge is cut at 45° across the 12mm (CHAM) — a scarf lap the moving panels (fold-down apron
-    # below, swing panel above) mate against; EPDM bonded to this fixed scarf face (Sheet 16 Detail E).
-    strip = [(PLY_X0, y0), (40, y0 + CHAM), (40, C_WID), (PLY_X0, C_WID)]                          # 12mm ply
-    epdm  = [(PLY_X0, y0 - 3), (40, y0 + CHAM - 3), (40, y0 + CHAM + 3), (PLY_X0, y0 + 3)]          # scarf seal
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
     return '\n'.join([
-        ruby_box(f"Fixed far frame (Yd{y0}-{C_WID})", 0, y0, z0, PLY_X0, w, z1 - z0, color=C_STEEL, alpha=1.0),
-        ov.ruby_prism(f"Fixed far panel strip (Yd{y0}-{C_WID})", strip, z0, z1 - z0, color="#C8A060", alpha=1.0),
-        ruby_box("EPDM fixed-far top", -gt, y0, z1 - gw, gt, w, gw, color=C_GASKT),
-        # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-far right (far wall)", -gt, C_WID - gw, z0, gt, gw, z1 - z0, color=C_GASKT),
-        ov.ruby_prism("EPDM far scarf seal (chamfer joint)", epdm, z0, z1 - z0, color=C_GASKT),
+        ruby_box("EPDM pivot-corner seal (past pivot)", -gt, PIVOT_YD, z1 - gw, gt, C_WID - PIVOT_YD, gw, color=C_GASKT),
+    ])
+
+
+def pivot_corner_leaf():
+    """The pivot-corner leaf plywood — TRAVELS with the swinging panel (built in the swing DC), from the
+    panel far edge (Yd C_WID−APRON_FIX_W) to the pivot LINE (PIVOT_YD), wrapping toward the Ø89 post but
+    NOT past it (nothing swings outboard of the pivot). The inboard-pivot corner is NOTCHED so the door-
+    plane ply sweeps clear of the fixed post + thrust collar through the ~56° swing. 40mm frame + 12mm ply."""
+    y0, y1 = C_WID - APRON_FIX_W, PIVOT_YD             # 2162 → 2287 (to the pivot line)
+    z0, z1 = 12, PANEL_Z_TOP
+    ply = [(PLY_X0, y0), (40, y0), (40, y1 - 75), (PLY_X0, y1)]   # inboard-pivot corner notched back 75mm
+    return '\n'.join([
+        ruby_box("Pivot corner frame (travels)", 0, y0, z0, PLY_X0, y1 - y0, z1 - z0, color=C_STEEL, alpha=1.0),
+        ov.ruby_prism("Pivot corner ply (travels)", ply, z0, z1 - z0, color="#C8A060", alpha=1.0),
     ])
 
 
@@ -1067,13 +1069,14 @@ def generate_ruby():
                  NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
                  NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
-        # swing panel now ends at the widened full-height far strip (Yd C_WID−APRON_FIX_W = 2162), not the pivot.
-        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, (C_WID - APRON_FIX_W) - CUT, 40, color=C_GASKT, alpha=0.5),
+        # swing panel + its top seal now run to the PIVOT line (the pivot-corner plywood travels with it).
+        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT, alpha=0.5),
         # panel bottom EPDM (L/R, trimmed) dropped — superseded by the fold-down apron + its top brush.
         # Far corner is a STEPPED zone: bottom rises to PANEL_FLOOR_GAP_SIDE (282) so the fold-down flap top
         # meets it flush (fixes the flap↔leaf overlap) and it clears the walkway cantilever in the swing.
         ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_FLOOR_GAP_SIDE, 40,
                  (C_WID - APRON_FIX_W) - NEW_YD_R, PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.5),
+        pivot_corner_leaf(),   # pivot-corner plywood TRAVELS with the panel (notched to clear the post)
         bay(),
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing

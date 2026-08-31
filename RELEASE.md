@@ -85,6 +85,11 @@ file** — a release must not ship without a changelog entry:
   shared-pivot film-plane hardware, not the light-trap door, and was reading as floating plates once the
   panel swung. Wired as a **swing-DC child** (not a root component — a root `_hidden_formula` doesn't
   recompute when the parent DC animates; only children do) so it actually vanishes at `swing>0.5`.
+- **Hinged panel — pivot corner resolved as a travelling leaf.** Reversed the fixed-jamb approach at the
+  Ø89 pivot: the pivot-corner plywood now TRAVELS with the swinging leaf (built in the swing DC), wrapping
+  to the pivot LINE (not past it) with the inboard-pivot corner NOTCHED so the door-plane ply sweeps clear
+  of the fixed post + thrust collar through the swing. Frame→post connection is the inboard pivot hub; no
+  fixed jamb, no swept cutout. The former full-height fixed far strip is retired.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

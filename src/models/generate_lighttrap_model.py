@@ -556,9 +556,10 @@ def near_leaf():
     z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
     gw, gt = 40, 20
     return '\n'.join([
-        # 40mm frame zone (steel) carrying a 12mm ply skin on the interior face (X28..40).
-        ruby_box(f"Fixed left frame (Yd0-{CUT})", 0, 0, z0, PLY_X0, CUT, z1 - z0, color=C_STEEL, alpha=0.6),
-        ruby_box(f"Fixed left ply (Yd0-{CUT})", PLY_X0, 0, z0, PLY_T, CUT, z1 - z0, color="#C8A060"),
+        # 40mm frame zone (steel) carrying a 12mm ply skin on the interior face (X28..40). Both OPAQUE so
+        # the frame does not read through the ply.
+        ruby_box(f"Fixed left frame (Yd0-{CUT})", 0, 0, z0, PLY_X0, CUT, z1 - z0, color=C_STEEL, alpha=1.0),
+        ruby_box(f"Fixed left ply (Yd0-{CUT})", PLY_X0, 0, z0, PLY_T, CUT, z1 - z0, color="#C8A060", alpha=1.0),
         ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-panel left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT),
@@ -582,8 +583,8 @@ def far_leaf():
     strip = [(PLY_X0, y0), (40, y0 + CHAM), (40, C_WID), (PLY_X0, C_WID)]                          # 12mm ply
     epdm  = [(PLY_X0, y0 - 3), (40, y0 + CHAM - 3), (40, y0 + CHAM + 3), (PLY_X0, y0 + 3)]          # scarf seal
     return '\n'.join([
-        ruby_box(f"Fixed far frame (Yd{y0}-{C_WID})", 0, y0, z0, PLY_X0, w, z1 - z0, color=C_STEEL, alpha=0.6),
-        ov.ruby_prism(f"Fixed far panel strip (Yd{y0}-{C_WID})", strip, z0, z1 - z0, color="#C8A060"),
+        ruby_box(f"Fixed far frame (Yd{y0}-{C_WID})", 0, y0, z0, PLY_X0, w, z1 - z0, color=C_STEEL, alpha=1.0),
+        ov.ruby_prism(f"Fixed far panel strip (Yd{y0}-{C_WID})", strip, z0, z1 - z0, color="#C8A060", alpha=1.0),
         ruby_box("EPDM fixed-far top", -gt, y0, z1 - gw, gt, w, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-far right (far wall)", -gt, C_WID - gw, z0, gt, gw, z1 - z0, color=C_GASKT),
@@ -861,10 +862,11 @@ def bay():
     BAY_FRONT_X to the panel face) enclosing the offset Ø800 housing. A 4-wall
     rectangular tube (Yd = center-zone step lines, Z = floor-gap..panel-top), open
     at the exterior end (entrance) and the interior end (exit onto the walkway)."""
-    yL, yR = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709
-    # The HDPE side/bottom walls run DOWN to the cage bottom beams (LT_CAGE_BOT), not just to the
-    # Z217 floor gap — otherwise a Z140–217 slot at the housing openings lets light under the drum
-    # (2026-08-31 review). The top wall stays at the panel top.
+    # HDPE walls sit ON the drum-cage faces (Yd = cage sides), riveted flush with NO gap (2026-08-31 review)
+    # — not the wider panel-zone step lines, which left a 47mm slot to the cage.
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R        # 700, 1662 — cage near/far faces
+    # The side/bottom walls run DOWN to the cage bottom beams (LT_CAGE_BOT), not just the Z217 floor gap,
+    # so no light slot under the drum. The top wall stays at the panel top.
     z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP                     # 140 → 2300
     xf = ov.BAY_FRONT_X                                    # -890
     t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
@@ -883,12 +885,12 @@ def surround_rivets():
     the panel-plane lap (Yd = the two center-zone step lines). Rivet heads shown as small
     steel discs @ LT_RIVET_PITCH so the surround reads as FASTENED to the frame, not
     floating. Section detail: hingepanel Sheet 8; flat patterns: hingepanel Sheet 7."""
-    yL, yR = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R          # rivets follow the bay onto the cage faces
     z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
     rr, xr = 6, -7                                        # head Ø exaggerated for visibility; just exterior of panel plane
     n = int((z1 - z0 - 120) // LT_RIVET_PITCH) + 1
     parts = []
-    for yd in (yL + 8, yR - 8):                            # the two bay-wall ↔ jamb lap lines
+    for yd in (yL + 8, yR - 8):                            # the two bay-wall ↔ cage-face lap lines
         for i in range(n):
             zc = z0 + 60 + i * LT_RIVET_PITCH
             parts.append(ruby_cylinder("Surround rivet", xr, yd, zc, rr, 6,

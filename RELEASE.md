@@ -69,6 +69,9 @@ file** — a release must not ship without a changelog entry:
   (apron top↔leaf, apron side↔stub/jamb, swing-panel↔leaves, apron↔baffle). 3D: the far apron↔full-height
   strip joint is cut for real (chamfered strip prism + matching apron wedge + EPDM scarf seal, `CHAM=40`)
   as the pattern; the remaining three joints follow once the look is confirmed.
+  Review fixes: added top+bottom **connection beams** tying the swinging panel frame to the Ø89 pivot post
+  (it read as floating); extended the **bay HDPE walls down to the cage bottom** (Z217→Z140) to close a
+  light gap at the housing openings.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

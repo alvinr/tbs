@@ -541,7 +541,7 @@ def near_leaf():
     return '\n'.join([
         ruby_box(f"Fixed left panel (Yd0-{CUT})", 0, 0, z0, 40, CUT, z1 - z0, color="#C8A060"),
         ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=C_GASKT),
-        ruby_box("EPDM fixed-panel bottom", -gt, 0, z0, gt, CUT, gw, color=C_GASKT),
+        # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-panel left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT),
         ruby_box("EPDM cut seal (fixed-swing joint)", 0, CUT - 6, z0, 40, 12, z1 - z0, color=C_GASKT),
     ])
@@ -557,7 +557,7 @@ def far_leaf():
     return '\n'.join([
         ruby_box(f"Fixed far panel strip (Yd{FAR0}-{C_WID})", 0, FAR0, z0, 40, w, z1 - z0, color="#C8A060"),
         ruby_box("EPDM fixed-far top", -gt, FAR0, z1 - gw, gt, w, gw, color=C_GASKT),
-        ruby_box("EPDM fixed-far bottom", -gt, FAR0, z0, gt, w, gw, color=C_GASKT),
+        # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
         ruby_box("EPDM fixed-far right (far wall)", -gt, C_WID - gw, z0, gt, gw, z1 - z0, color=C_GASKT),
         ruby_box("EPDM far cut seal (swing-fixed joint)", 0, FAR0 - 6, z0, 40, 12, z1 - z0, color=C_GASKT),
     ])
@@ -869,35 +869,55 @@ def surround_rivets():
 # flap would foul the Ø89 pivot post + its Ø220 floor mount plate (near edge PIVOT_YD−110 = Yd2177).
 # (APRON_FIX_W now single-sourced from tbs_constants.)
 
-# Each fold-down apron runs from the door corner INBOARD to a brush gap off the drum-cage side
-# (APRON_IN_L/R = cage ∓ APRON_CAGE_GAP), so it crosses the center-zone step line (YD_L/R). It is built
-# as two Yd rectangles at different tops: the corner zone reaches the raised corner leaf bottom
-# (PANEL_FLOOR_GAP_SIDE), the center-zone extension reaches the lower center leaf bottom
-# (PANEL_FLOOR_GAP) — a notched flat panel that folds as one about the threshold hinge.  (y0, dy, top_z)
-_APRON_NEAR = [(0,    YD_L,               PANEL_FLOOR_GAP_SIDE),   # corner zone: top 282
-               (YD_L, APRON_IN_L - YD_L,  PANEL_FLOOR_GAP)]         # center ext: top 217, reaches Yd688
-_APRON_FAR  = [(APRON_IN_R, YD_R - APRON_IN_R,           PANEL_FLOOR_GAP),        # center ext: Yd1674→1709, top 217
-               (YD_R,       (C_WID - APRON_FIX_W) - YD_R, PANEL_FLOOR_GAP_SIDE)]   # corner zone: top 282
-_APRONS = [("near", _APRON_NEAR), ("far", _APRON_FAR)]
+# Each fold-down apron is ONE notched plywood panel spanning the door corner INBOARD to a brush gap off
+# the drum-cage side (APRON_IN_L/R = cage ∓ APRON_CAGE_GAP). It crosses the center-zone step line (YD_L/R),
+# so its TOP steps down from the raised corner leaf bottom (PANEL_FLOOR_GAP_SIDE) to the lower center leaf
+# bottom (PANEL_FLOOR_GAP) — a single stepped cut, hinged as one about the threshold. HZ = hinge Z (12).
+_AHZ = 12
+# UP profiles — (Yd, Z) polygon in the door plane, extruded APRON_T mm in +X.
+_APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, PANEL_FLOOR_GAP),
+                  (YD_L, PANEL_FLOOR_GAP), (YD_L, PANEL_FLOOR_GAP_SIDE), (0, PANEL_FLOOR_GAP_SIDE)]
+_APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, PANEL_FLOOR_GAP_SIDE),
+                  (YD_R, PANEL_FLOOR_GAP_SIDE), (YD_R, PANEL_FLOOR_GAP), (APRON_IN_R, PANEL_FLOOR_GAP)]
+APRON_T = 40   # panel X-depth (matches the pre-notch box thickness)
+
+
+def _apron_vpanel(name, prof, color, alpha):
+    """One vertical plywood panel from a (Yd, Z) polygon in the door plane (X=0), pushpulled APRON_T in +X."""
+    pts = ", ".join(f"[0,{ov.mm(y)},{ov.mm(z)}]" for (y, z) in prof)
+    r, g, b = ov.hex_to_rgb(color)
+    mat = ov.shared_mat_name(name, color, alpha)
+    return '\n'.join([
+        f'  grp = ents.add_group', f'  grp.name = "{name}"',
+        f'  face = grp.entities.add_face({pts})',
+        f'  face.reverse! if face.normal.x < 0',
+        f'  face.pushpull({ov.mm(APRON_T)})',
+        f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+        f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
 
 
 def apron_up_geom():
-    """The fold-down light aprons in the UP (operational, sealing) position — door plane, each reaching to
-    its leaf bottom (stepped: corner→PANEL_FLOOR_GAP_SIDE, center ext→PANEL_FLOOR_GAP). Bottom-hinged to
-    the threshold, extended inboard to a brush gap off the cage. CHILD of the Panel Swing DC:
+    """The fold-down light aprons in the UP (operational, sealing) position — ONE notched plywood panel per
+    side (stepped top: corner→PANEL_FLOOR_GAP_SIDE, center ext→PANEL_FLOOR_GAP), bottom-hinged to the
+    threshold, extended inboard to a brush gap off the cage. CHILD of the Panel Swing DC:
     SHOWN when closed / HIDDEN when swung."""
-    return '\n'.join(
-        ruby_box(f"Fold-down apron ({tag}, UP)", 0, y0, 12, 40, dy, top - 12, color=C_PLY, alpha=0.85)
-        for tag, rects in _APRONS for (y0, dy, top) in rects)
+    return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
+            _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85))
 
 
 def apron_folded_geom():
-    """The aprons FOLDED FLAT into the container for transport (hinged down 90° about the threshold).
-    Drawn in the folded-at-door-plane pose; the swing-DC child gets a −LOCK pre-rotation so the parent's
-    +LOCK lands it here at swing=1. SHOWN when swung / HIDDEN closed."""
-    return '\n'.join(
-        ruby_box(f"Fold-down apron ({tag}, FOLDED)", 12, y0, 12, top - 12, dy, 40, color=C_PLY, alpha=0.6)
-        for tag, rects in _APRONS for (y0, dy, top) in rects)
+    """The aprons FOLDED FLAT into the container for transport (hinged down 90° about the threshold) — ONE
+    notched panel per side, laid flat (the panel LENGTH steps 270/205 with the top). Drawn in the
+    folded-at-door-plane pose; the swing-DC child gets a −LOCK pre-rotation so the parent's +LOCK lands it
+    here at swing=1. SHOWN when swung / HIDDEN closed."""
+    # folded outline in (X, Yd) at Z=_AHZ, extruded APRON_T up in Z. X = _AHZ + (leaf_top − _AHZ) reach.
+    near = [(_AHZ, 0), (PANEL_FLOOR_GAP_SIDE, 0), (PANEL_FLOOR_GAP_SIDE, YD_L), (PANEL_FLOOR_GAP, YD_L),
+            (PANEL_FLOOR_GAP, APRON_IN_L), (_AHZ, APRON_IN_L)]
+    far  = [(_AHZ, APRON_IN_R), (PANEL_FLOOR_GAP, APRON_IN_R), (PANEL_FLOOR_GAP, YD_R),
+            (PANEL_FLOOR_GAP_SIDE, YD_R), (PANEL_FLOOR_GAP_SIDE, C_WID - APRON_FIX_W), (_AHZ, C_WID - APRON_FIX_W)]
+    return (ov.ruby_prism("Fold-down apron (near, FOLDED)", near, _AHZ, APRON_T, color=C_PLY, alpha=0.6) +
+            ov.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6))
 
 
 def apron_edge_brushes():

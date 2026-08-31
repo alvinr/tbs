@@ -56,6 +56,9 @@ file** — a release must not ship without a changelog entry:
   with a **vertical strip brush** on each apron inner edge, and a **horizontal strip brush** on the center
   baffle top edge bridging the 10mm up to the swept cage bottom. Center baffle trimmed to the apron edges.
   Built into the lighttrap 3D and Sheet 16 (elevation + Detail D). `APRON_FIX_W` single-sourced to constants.
+  3D review round: each fold-down apron is now ONE notched plywood panel (single stepped cut, not two
+  abutting boxes); the redundant fixed near/far leaf bottom EPDM strips were removed (the apron + its top
+  brush seal that interface now).
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

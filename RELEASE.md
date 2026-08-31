@@ -83,8 +83,8 @@ file** — a release must not ship without a changelog entry:
   all four plywood↔plywood joints now carry the explicit 45° scarf. The **entire film-plane left rig**
   (parked carriage + brackets + stub + saddles + plates + welds) now hides in transport — it's the
   shared-pivot film-plane hardware, not the light-trap door, and was reading as floating plates once the
-  panel swung (static-component visibility-swap on `PanelSwing!swing`; `component()` gained an optional
-  `hidden_formula`).
+  panel swung. Wired as a **swing-DC child** (not a root component — a root `_hidden_formula` doesn't
+  recompute when the parent DC animates; only children do) so it actually vanishes at `swing>0.5`.
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

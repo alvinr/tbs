@@ -1046,11 +1046,8 @@ def generate_ruby():
         component("Fixed far strip", "Far Leaf", far_leaf()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        # The whole film-plane left rig (parked carriage + stub + saddles) HIDES in transport — it's the
-        # shared-pivot film-plane hardware, not the light-trap door, and reads as floating plates once the
-        # panel swings. Stays put (static root), just visibility-swaps on the swing DC.
-        component("Film-Plane Rails (left, removable)", "Film Plane Rails", film_plane_left(),
-                  hidden_formula="PanelSwing!swing>0.5"),
+        # Film-plane left rig is wired as a SWING-DC CHILD below (fpl_inst) so it HIDES in transport — a
+        # root-level hidden_formula doesn't recompute when the parent DC animates (only children do).
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
         component("Fixed bottom closures (baffle + pivot stub)", "Bottom Apron", fixed_bottom_geom()),
@@ -1220,6 +1217,21 @@ lfr_inst.layer = model.layers["Film Plane Rails"]
 lfr_inst.set_attribute("dynamic_attributes", "_name", "LiftoutFilmRail")
 lfr_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+# ── Film-plane left FIXED rig — as a SWING-DC CHILD so it HIDES in transport (a root component's
+#    hidden_formula does not recompute when the parent DC animates; only children do). The shared-pivot
+#    film-plane hardware (parked carriage + stub + saddles + fixing plates) is not the light-trap door and
+#    read as floating plates once the panel swings. Built at world coords; visibility-swaps on the swing. ──
+fpl_defn = model.definitions.add("Film-Plane Rails (left, removable)")
+ents = fpl_defn.entities
+{film_plane_left()}
+ents = defn.entities
+fpl_inst = ents.add_instance(fpl_defn, Geom::Transformation.new)
+fpl_inst.name = "Film-Plane Rails (left, removable)"
+fpl_inst.layer = model.layers["Film Plane Rails"]
+fpl_inst.set_attribute("dynamic_attributes", "_name", "FilmPlaneLeftFixed")
+fpl_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+fpl_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
 # ── Fold-down light aprons — CHILD DC components inside the swing def. UP (sealing) is SHOWN when the
 #    door is CLOSED and HIDDEN once the panel swings; FOLDED (flat into the container) is the mirror,

@@ -432,22 +432,12 @@ def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None):
     return '\n'.join(lines)
 
 
-def component(defn_name, tag, body, hidden_formula=None):
+def component(defn_name, tag, body):
     """Wrap a body of ruby_box calls into a ComponentDefinition + instance.
 
     The body builds geometry into `ents`; we then place one instance and put
     it on `tag`.
-
-    hidden_formula: optional DC `_hidden_formula` (e.g. "PanelSwing!swing>0.5") so a STATIC
-    root component visibility-swaps with another DC without riding its transform (stays put,
-    just hides). Emits nothing extra when None → byte-identical for existing callers.
     """
-    dc = ""
-    if hidden_formula:
-        nm = ''.join(c for c in defn_name if c.isalnum())
-        dc = (f'  inst.set_attribute("dynamic_attributes", "_name", "{nm}")\n'
-              f'  inst.set_attribute("dynamic_attributes", "hidden", 0.0)\n'
-              f'  inst.set_attribute("dynamic_attributes", "_hidden_formula", "{hidden_formula}")\n')
     return f'''  # ═══ {defn_name} ═══
   defn = model.definitions.add("{defn_name}")
   ents = defn.entities
@@ -455,7 +445,7 @@ def component(defn_name, tag, body, hidden_formula=None):
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "{defn_name}"
   inst.layer = model.layers["{tag}"]
-{dc}'''
+'''
 
 
 def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup", force_name=False):

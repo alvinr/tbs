@@ -96,6 +96,11 @@ file** — a release must not ship without a changelog entry:
   relabelled from "center jamb" to the pivot-edge stile (travels + carries the pivot-corner plywood);
   Sheet 16's obsolete "200 fixed stub" now reads as the travelling pivot-corner leaf. 3D: added the
   pivot-edge stile so the hub brackets land on steel, and deleted the wrong door-plane connect beams.
+- **Hinged panel — 2D review fixes.** Sheet 13 Detail A: drew the Ø150 fan air CUTOUT through the ply +
+  flange (fan now 150 at 1:1); Sheet 13: taller page so the rotated-90° companion clears the title block;
+  Sheet 8 Detail B: centered the front rivet on the full stack so its head butts the HDPE; Sheet 2: added an
+  enlarged **HDPE side-skin → L-angle → frame** detail (the HDPE rivets to an L-angle on the post, not
+  through the beam). 3D: the hub hinge brackets now align with the leaf pivot-edge stile (per Sheet 14).
 - **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
   that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
   tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —

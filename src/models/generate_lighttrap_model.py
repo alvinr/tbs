@@ -559,10 +559,20 @@ def near_leaf():
     near upright. Own perimeter EPDM + the vertical cut seal the swinging panel butts."""
     z0, z1 = PANEL_FLOOR_GAP_SIDE, PANEL_Z_TOP   # near corner zone → bottom steps up to 282 (meets the flap top)
     gw, gt = 40, 20
-    return '\n'.join([
-        # 40mm frame zone (steel) carrying a 12mm ply skin on the interior face (X28..40). Both OPAQUE so
-        # the frame does not read through the ply.
-        ruby_box(f"Fixed left frame (Yd0-{CUT})", 0, 0, z0, PLY_X0, CUT, z1 - z0, color=C_STEEL, alpha=1.0),
+    # The fixed opening-edge member is a WELDED BOX SECTION (thin plate), not a solid block: an exterior +
+    # interior flange (the HDPE + plywood skins rivet to these) and a swing-facing WEB carrying the cam-latch
+    # STRIKE PLATES; the open (container-wall) side welds to the door frame stile. Runs parallel to the swing
+    # panel's opening-edge stile. FWT = wall thickness.
+    FWT = 4
+    box = [
+        ruby_box("Fixed left box exterior flange", 0, 0, z0, FWT, CUT, z1 - z0, color=C_STEEL, alpha=1.0),
+        ruby_box("Fixed left box interior flange", PLY_X0 - FWT, 0, z0, FWT, CUT, z1 - z0, color=C_STEEL, alpha=1.0),
+        ruby_box("Fixed left box web (strike face)", 0, CUT - FWT, z0, PLY_X0, FWT, z1 - z0, color=C_STEEL, alpha=1.0),
+    ]
+    # cam-latch STRIKE PLATES on the web, at the 2 latch heights (swing panel latches at Z500/1900)
+    for lz in (500, 1900):
+        box.append(ruby_box("Cam-latch strike plate", 0, CUT - 4, lz - 35, PLY_X0, 10, 70, color="#8890A0"))
+    return '\n'.join(box + [
         # 12mm ply with a 45° chamfered inboard edge (Yd CUT) — the swing panel butts + the cut EPDM seals it.
         ov.ruby_prism(f"Fixed left ply (Yd0-{CUT})", [(PLY_X0, 0), (PLY_X0, CUT), (40, CUT - CHAM), (40, 0)],
                       z0, z1 - z0, color="#C8A060", alpha=1.0),

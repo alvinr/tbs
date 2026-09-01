@@ -39,7 +39,10 @@ file** — a release must not ship without a changelog entry:
   carries a full-tunnel-depth drum-side L-angle at the mouth edge, plus **top + bottom 50×50 beams running
   in Yd from the drum cage across to the pivot frame** (the horizontal beams of Sheet 9), with rivet lines
   to the beams and the drum-side edge. Added a **"Steel · Pivot · Frame · Cage"** review scene that hides
-  the HDPE skins / EPDM / Fan-B / drum shell so the framing reads.
+  the HDPE skins / EPDM / Fan-B / drum shell so the framing reads. Dropped the **far-corner HDPE/apron
+  split** on the pivot side from the 282 step down to the bottom-beam top (`FAR_CORNER_BOT` = 190) so the
+  bottom-beam rivets land on HDPE rather than the fold-down apron plywood — the far apron (UP + folded +
+  chamfer) reduced to suit; near corner keeps its 282 step. (2D Sheet 16/9/15 apron reconcile deferred.)
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
   **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
   the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing

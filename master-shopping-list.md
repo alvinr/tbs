@@ -375,13 +375,13 @@ indicative low–high estimates — get quotes before ordering.
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
 | 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
-| 2×2×0.120in steel SHS (6 m bulk lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $316–$516 |
 | [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1 ea | Metals Depot | spray | $183 |
 | 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | 1 lot | Metal Supermarkets | lightlock | $50–$95 |
 | 4mm folded plate | 8 ea | Local fab | ibc-frame | $60–$100 |
+| 50×20×3 RHS (6 m bulk lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
 | 75mm Ø × 150mm steel stub shaft | 2 ea | Steel service center | lightlock | $30–$50 |
 | Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
 | Baffle duct sheet metal (fans) | 1 lot | Local sheet metal | ventilation | $30 |

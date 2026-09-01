@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Container cargo-door frame re-specced lighter + attachment specified.** Now that the pivot post carries
+  the hinge panel's weight, the door frame is no longer structural — only seal-compression + cam-latch load.
+  Dropped it from **2×2×0.120in SHS → 50×20×3 RHS** (`DOOR_FRAME_FACE`/`DOOR_FRAME_DEPTH`; 50mm face keeps the
+  seal landing, ~30% lighter), **reusing the IBC retaining-bar section** so it needs no bespoke order.
+  Specified the attachment: the frame **bolts M10 @ ~300** into the container's steel door opening
+  (reversible), and the opening-edge **U-channel welds to the door-frame left stile**. Cascaded through the
+  3D `door_frame()` (+ M10 anchors), **Sheet 9** (door-frame stile drawn ghosted with anchors + the U-frame
+  welding to it), `parts.py`/`costing.py`, and the container / equipment-layout / cost-breakdown reports
+  (also fixed the stale "4× Southco at corners" latch note → 2× cam latch on the opening edge).
+
 - **Hinged panel — 3D review round (pivot corner, cam latches, HDPE L-angle framing).** Stripped the
   redundant travelling **pivot-corner ply/frame** (it read as a plywood panel jammed between the leaf
   stile and the pivot post) down to just the structural **pivot-edge stile** the hub brackets weld to,

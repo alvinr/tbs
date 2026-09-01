@@ -349,7 +349,7 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying
 | Drum support cage, 1.5×1.5×0.120in steel SHS | $261 | $261 | $261 | Local fab |
 | Top + bottom wall stays + 4-bolt anchor plates | $70 | $95 | $120 | turnbuckles + rods + plates |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $90 | $105 | $120 | Local fab / McMaster |
-| Fixed door frame — 2×2×0.120in members (×3) | $80 | $105 | $130 | Metal Supermarkets |
+| Fixed door frame — 50×20×3 RHS members (×3) | $80 | $105 | $130 | Metal Supermarkets |
 | Fixed door frame — top/bottom seal lips (3mm steel ~110×4m) | $128.5 | $128.5 | $128.5 | seal paths #3–#4 |
 | Fixed door frame — welding/fabrication + wall attachment | $90 | $105 | $120 | Local fab |
 | **Panel swing pivot + door frame total** | **$938.5** | **$1,208.5** | **$1,478.5** | |

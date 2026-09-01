@@ -2070,6 +2070,11 @@ def sheet9():
     #    (Yd0, container-wall side) is WELDED to the container door frame. Secures the HDPE + plywood skins. ──
     uf_z0, uf_z1 = STEP, PH
     WEB, FL = 18, 24
+    # container CARGO-DOOR FRAME left stile (50×20×3 RHS) — the STRUCTURE the U-frame welds to. Shown ghosted
+    # BEHIND the U-frame (it sits just exterior of the panel plane); bolted M10 @ ~300 to the container.
+    ax.add_patch(Rectangle((0, 0), 30, PH, fc="#5A5E66", ec=C_DIM, lw=0.8, ls=(0, (4, 2)), alpha=0.55, zorder=4))
+    for az in range(300, int(PH) - 200, 300):                                                                # M10 anchor heads (to container)
+        ax.add_patch(Circle((15, az), 6, fc="#40444A", ec=C_OUT, lw=0.6, zorder=4.5))
     ax.add_patch(Rectangle((yL - WEB, uf_z0), WEB, uf_z1 - uf_z0, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))   # web (right/swing-facing)
     ax.add_patch(Rectangle((0, uf_z1 - FL), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                 # top flange → door frame
     ax.add_patch(Rectangle((0, uf_z0), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # bottom flange → door frame
@@ -2077,9 +2082,9 @@ def sheet9():
         ax.add_patch(Polygon([(0, wz), (11, wz), (0, wz + dz)], closed=True, fc=C_OUT, ec="none", zorder=6))
     for lz in (500, 1900):                                                                                   # cam-latch strike plates on the web
         ax.add_patch(Rectangle((yL - WEB, lz - 45), WEB + 7, 90, fc="#8890A0", ec=C_OUT, lw=1.0, zorder=7))
-    leader(ax, (yL - WEB / 2, 1120), (-350, 1120),
-           "U-FRAME — welded steel channel (Yd0–180)\nfixed to the container door frame (flanges\nWELDED; open side = container wall).\nThe HINGE PANEL BUTTS UP here.", col=C_OUT, fw="bold", fs=6.4)
-    leader(ax, (yL + 4, 500), (-350, 780), "web carries 2 cam-latch\nSTRIKE PLATES (engage the panel latches)", col=C_OUT, fs=6.2)
+    leader(ax, (yL - WEB / 2, 1120), (-350, 1130),
+           "U-FRAME — welded steel channel (Yd0–180); the HINGE\nPANEL BUTTS UP here. Flanges WELD to the container\nCARGO-DOOR FRAME (50×20×3 RHS, ghosted) — itself\nbolted M10 @ ~300 to the container (no longer\nweight-bearing — the pivot post carries the panel).", col=C_OUT, fw="bold", fs=6.3)
+    leader(ax, (yL + 4, 500), (-350, 720), "web carries 2 cam-latch\nSTRIKE PLATES (engage the panel latches)", col=C_OUT, fs=6.2)
 
     # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 11 ──
     ax.add_patch(Rectangle((yL, 0), jL - yL, PANEL_FAN_BAND_Z, fc=C_WOOD, ec=C_OUT, lw=0.7, alpha=0.45, zorder=2))

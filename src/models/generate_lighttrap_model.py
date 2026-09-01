@@ -49,6 +49,7 @@ PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X
 PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §2.1)
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
 from tbs_constants import PANEL_FLOOR_GAP_SIDE
+from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH
 PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 195 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
 from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   # apron inner edges (12mm off the cage sides); vertical strip brushes bridge the gap; far-pivot fixed stub width
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
@@ -256,17 +257,23 @@ def door_frame(include_seal=True):
     include_seal: append the interface-2 housing-surround EPDM ring (default True
     = operating; byte-identical). The transport model passes False and rebuilds
     that ring on the MOVING housing instead, so the seal retracts with it."""
-    s = 50.8
-    x0 = -s
+    FW, FD = DOOR_FRAME_FACE, DOOR_FRAME_DEPTH   # 50 seal-landing FACE (X0 plane) × 20 DEPTH into container
+    x0 = -FD
     # threshold rail runs full width — the suspended drum no longer reaches the
-    # floor, so the doorway sill needs no notch.
+    # floor, so the doorway sill needs no notch. 50×20×3 RHS (was 2×2×0.120): no longer weight-bearing
+    # (pivot post carries the panel) — only seal-compression + latch load. 50mm face keeps the seal landing.
     parts = [
-        ruby_box("Door Frame threshold", x0, 0, 0, s, C_WID, s, color=C_RAIL),
-        ruby_box("Door Frame top", x0, 0, C_HGT - s, s, C_WID, s, color=C_RAIL),
-        ruby_box("Door Frame left stile", x0, 0, 0, s, s, C_HGT, color=C_RAIL),
-        ruby_box("Door Frame right stile", x0, C_WID - s, 0, s, s, C_HGT,
-                 color=C_RAIL),
+        ruby_box("Door Frame threshold (50×20×3)", x0, 0, 0, FD, C_WID, FW, color=C_RAIL),
+        ruby_box("Door Frame top (50×20×3)", x0, 0, C_HGT - FW, FD, C_WID, FW, color=C_RAIL),
+        ruby_box("Door Frame left stile (50×20×3)", x0, 0, 0, FD, FW, C_HGT, color=C_RAIL),
+        ruby_box("Door Frame right stile (50×20×3)", x0, C_WID - FW, 0, FD, FW, C_HGT, color=C_RAIL),
     ]
+    # BOLTED to the container's steel cargo-door opening — M10 @ ~300mm, heads on the interior face (through
+    # the frame into the container). Reversible; no hot work on the container. (Left stile also carries the
+    # welded U-frame / opening-edge channel — see near_leaf.)
+    for zc in range(300, int(C_HGT) - 200, 300):
+        for yc in (FW / 2, C_WID - FW / 2):
+            parts.append(ruby_cylinder("Door frame anchor M10", x0, yc, zc, 6, FD + 6, axis="x", n=8, color="#40444A"))
     # Bottom seal — the OLD full-width bottom brush (which sealed the previous Z130 leaf bottom)
     # is RETIRED. The 217mm floor gap is now closed by the FOLD-DOWN APRONS + fixed center baffle
     # (bottom_apron(), hingepanel Sheet 16); the apron's own TOP brush is the leaf interface, so a

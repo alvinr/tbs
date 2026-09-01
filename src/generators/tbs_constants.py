@@ -427,6 +427,11 @@ BAY_WALL_T  = 3.18                     # bay box wall thickness (mm) — 1/8" HD
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50.8                   # brace member section 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
 BRACE_T     = 3                      # RHS wall thickness (mm) ≈ 0.120in
+# Container cargo-door frame section — 50×20×3 RHS (reuses the IBC retaining-bar section, ibcf-rhs),
+# lighter than the old 2×2×0.120 tube: the frame is NO LONGER weight-bearing (the pivot post carries the
+# hinge panel), it only takes seal-compression + cam-latch load. 50mm FACE = the seal landing; 20mm DEPTH.
+DOOR_FRAME_FACE  = 50                # seal-landing face width (mm)
+DOOR_FRAME_DEPTH = 20                # section depth into the container (mm)
 BRACE_Z_BOT = RAIL_OFF_BOT           # 150mm — bottom cross-beam Z (raised +50 to clear the Z130 walkway)
 BRACE_Z_TOP = C_HGT - RAIL_OFF_TOP   # 2244mm — top cross-beam Z (dropped 44mm with the film-plane top rail)
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.

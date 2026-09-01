@@ -543,9 +543,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <!-- BEGIN parts:door -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 2×2×0.120in steel SHS (6 m bulk lengths) | Frame members | 3 ea | Metal Supermarkets | $90–$120 |
+| 50×20×3 RHS (6 m bulk lengths) | Frame members — 50×20×3 RHS (50mm FACE = the seal landing, 20mm depth). REUSES the IBC retaining-bar section (ibcf-rhs, 50×20×3) so it needs no bespoke order. Dropped from the old 2×2×0.120in tube: the frame is no longer weight-bearing (the pivot post carries the hinge panel) — it only takes seal-compression + cam-latch load. | 3 ea | Metal Supermarkets | $90–$120 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals. | 1 lot | McMaster-Carr | $129 |
-| Welding / fabrication | Frame assembly + wall attachment | 1 lot | Local fab | $200–$350 |
+| Welding / fabrication | Frame assembly + BOLTED wall attachment (M10 @ ~300mm through the frame into the container's steel cargo-door opening — reversible, no hot work on the container) + the welded opening-edge U-channel (Yd0–180) that carries the 2 cam-latch strike plates and welds to the door-frame left stile. | 1 lot | Local fab | $200–$350 |
 | **Door total** | | | | **$419–$599** |
 <!-- END parts:door -->
 

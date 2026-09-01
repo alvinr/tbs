@@ -26,8 +26,10 @@ file** — a release must not ship without a changelog entry:
 
 - **Hinged panel — 3D review round (pivot corner, cam latches, HDPE L-angle framing).** Stripped the
   redundant travelling **pivot-corner ply/frame** (it read as a plywood panel jammed between the leaf
-  stile and the pivot post) down to just the structural **pivot-edge stile** the hub brackets weld to —
-  the door face there is already skinned by the panel far-corner HDPE. Redrew the two **cam latches**
+  stile and the pivot post) down to just the structural **pivot-edge stile** the hub brackets weld to,
+  and extended the swung leaf's **far-corner HDPE skin continuously to the pivot line** so the door face
+  is skinned by the same panel material (no separate ply panel) with the stile behind it — closing the
+  gap that had briefly left the stile/hub detached from the leaf. Redrew the two **cam latches**
   (1619A74) with the T-handle valve-body pattern (barrel-through + interior lift-and-turn lever, olive
   C_VALVE) and repositioned them for comfortable standing operation (top lowered 2168→1900, bottom
   raised 220→500). Added **L-angle framing** (30×30×3) securing the HDPE bay walls to the cage at the

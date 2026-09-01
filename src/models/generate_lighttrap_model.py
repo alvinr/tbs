@@ -1113,9 +1113,11 @@ def generate_ruby():
         # panel bottom EPDM (L/R, trimmed) dropped — superseded by the fold-down apron + its top brush.
         # Far corner is a STEPPED zone: bottom rises to PANEL_FLOOR_GAP_SIDE (282) so the fold-down flap top
         # meets it flush (fixes the flap↔leaf overlap) and it clears the walkway cantilever in the swing.
+        # The HDPE skin runs CONTINUOUSLY to the PIVOT LINE (2026-08-31) — no separate pivot ply panel; the
+        # pivot-edge stile (pivot_corner_leaf) sits behind it and ties the leaf to the hub brackets.
         ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_FLOOR_GAP_SIDE, 40,
-                 (C_WID - APRON_FIX_W) - NEW_YD_R, PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.5),
-        pivot_corner_leaf(),   # pivot-corner plywood TRAVELS with the panel (notched to clear the post)
+                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.5),
+        pivot_corner_leaf(),   # pivot-edge STILE (the hub brackets weld to it) — travels with the leaf
         bay(),
         bay_l_angles(),                   # L-angle framing securing the HDPE bay walls (Sheet 2 detail)
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)

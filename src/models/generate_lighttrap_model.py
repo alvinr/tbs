@@ -950,35 +950,37 @@ def far_bay_wall_frame():
       4+5 a TOP rail and a BOTTOM rail (50×50 RHS) run the tunnel depth on the cage line, extending the
           door-plane frame back to the drum cage so the wall's top/bottom edges land on steel and rivet."""
     yR = ov.DRUM_CAGE_YD_R                 # 1662 — far cage face / far-wall Yd
+    yf = PIVOT_YD                          # 2287 — pivot frame (the beams reach it)
     xf, xb = ov.BAY_FRONT_X, 0             # -890 .. 0 — tunnel depth (mouth → panel plane)
-    depth = xb - xf                        # 890
     z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
     t = ov.BAY_WALL_T
+    xb2 = PANEL_CORNER_T                   # 40 — beams sit just INBOARD of the 40mm HDPE skin
     RS, LEG, LT, rr = 50, 40, 3, 5
     c = C_STEEL
-    zt, zb = z1 - RS, z0                   # top/bottom rail Z (top of wall / floor gap)
+    zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (sits on the cage top)
+    zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
     p = [
-        # (4/5) top + bottom rails, full depth, on the cage line — tie the door-plane frame to the cage
-        ruby_box("Far wall top rail (50 RHS)", xf, yR - RS, zt, depth, RS, RS, color=c),
-        ruby_box("Far wall bottom rail (50 RHS)", xf, yR - RS, zb, depth, RS, RS, color=c),
-        # (3) drum-side L-angle at the free MOUTH edge — panel leg on the wall (+Yd face), stand-off laps
-        #     the front cage post; the HDPE rivets to the panel leg
+        # (4/5) TOP + BOTTOM beams running in Yd from the drum cage across to the pivot frame — the visible
+        #       horizontal beams of Sheet 9; the far HDPE top/bottom edges rivet to them. Just inboard of
+        #       the skin (xb2), lapping the far cage-post top/bottom so they tie the wall to the drum cage.
+        ruby_box("Far bay top beam (50 RHS)", xb2, yR, zt, RS, yf - yR, RS, color=c),
+        ruby_box("Far bay bottom beam (50 RHS)", xb2, yR, zb, RS, yf - yR, RS, color=c),
+        # (3) drum-side L-angle the full tunnel depth at the wall's MOUTH edge — panel leg on the wall
+        #     (+Yd face), stand-off laps the front cage post; the HDPE rivets to the panel leg
         ruby_box("Far wall L-angle panel-leg", xf, yR, z0, LEG, LT, z1 - z0, color=c),
         ruby_box("Far wall L-angle standoff", xf, yR - LEG, z0, LT, LEG, z1 - z0, color=c),
     ]
-    # rivet heads on the −Yd (tunnel) face: top + bottom rail lines (along X)
-    nx = int(depth // LT_RIVET_PITCH)
-    for i in range(nx + 1):
-        xc = xf + 40 + i * LT_RIVET_PITCH
-        if xc > xb - 20:
-            break
+    # rivet heads on the door skin (exterior face) along the top + bottom beams (in Yd) — point 5
+    ny = int((yf - yR - 80) // LT_RIVET_PITCH)
+    for i in range(ny + 1):
+        yc = yR + 40 + i * LT_RIVET_PITCH
         for zc in (zt + RS / 2, zb + RS / 2):
-            p.append(ov.ruby_cylinder("Far wall rivet", xc, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
-    # rivet line down the panel-plane edge (into the center jamb R frame) — point 1+2
+            p.append(ov.ruby_cylinder("Far bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
+    # rivet line down the drum-side edge into the L-angle — point 2/3
     nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
     for i in range(nz + 1):
         zc = z0 + 60 + i * LT_RIVET_PITCH
-        p.append(ov.ruby_cylinder("Far wall rivet", xb - 25, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+        p.append(ov.ruby_cylinder("Far wall rivet", xf + 20, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 
@@ -1508,6 +1510,24 @@ model.active_view.zoom(0.9)                               # small margin around 
 hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
 model.layers.each {{ |l| l.visible = true }}      # restore for the default state
 model.layers["Labels"].visible = false if model.layers["Labels"]
+
+# ── "Steel · Pivot · Frame · Cage" scene — isolate the STRUCTURAL STEEL (Ø89 pivot post, hinge-panel
+#    frame, drum cage + the new far-wall beams / L-angle) by HIDING the HDPE skins, EPDM, Fan-B and the
+#    drum shell, so the framing reads clearly for review. (Hide-specific, so Layer0 steel stays on.) ──
+model.layers.each {{ |l| l.visible = true }}
+["Panel skin", "Fan B", "Drum shell", "Labels", "Drum Revolve"].each {{ |n|
+  model.layers[n].visible = false if model.layers[n] }}
+sc_eye = Geom::Point3d.new(2600, 3300, 2000)     # 3/4 from the interior / far-Yd side
+sc_tgt = Geom::Point3d.new(-300, 1750, 1150)     # look at the far-wall / pivot region
+model.active_view.camera = Sketchup::Camera.new(sc_eye, sc_tgt, Z_AXIS)
+sc_focus = model.entities.grep(Sketchup::ComponentInstance).select {{ |i|
+  ["Door Frame", "Pivot Axle", "Panel Swing"].include?(i.layer.name) }}
+model.active_view.zoom(sc_focus) unless sc_focus.empty?
+model.active_view.zoom(0.85)
+scpage = model.pages.add("Steel · Pivot · Frame · Cage"); scpage.use_camera = true
+model.layers.each {{ |l| l.visible = true }}      # restore for the default state
+model.layers["Labels"].visible = false if model.layers["Labels"]
+model.layers["Drum Revolve"].visible = false if model.layers["Drum Revolve"]
 
 # ── "Drum revolve" scene — isolate the standalone drum + frame; click the drum
 #    to ANIMATE it 90°/step through the revolving-door positions. Only the "Drum Revolve" tag

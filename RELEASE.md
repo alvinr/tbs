@@ -51,7 +51,10 @@ file** — a release must not ship without a changelog entry:
   split as the left, and the Fan-B ply band extended down to it so the near beam's rivets land on fixed
   skin. Renamed the split constant `FAR_CORNER_BOT` → `CORNER_BOT` (now both sides, 190). Added the near
   side's missing **vertical opening-edge stile** (Sheet 9 "left swing stile") tying the top + bottom beams
-  at the frame edge — the far side's equivalent is the pivot post/stile. Moved all four bay beams + the
+  at the frame edge — the far side's equivalent is the pivot post/stile. Rebuilt the fixed opening-edge
+  member (`near_leaf`) from a solid block into a **welded box section** (thin exterior + interior flanges
+  for the HDPE + plywood skins, a swing-facing web) welded to the door frame on the container-wall side,
+  and located the two **cam-latch strike plates** on the web. Moved all four bay beams + the
   near stile to the **flush-front datum (X0–50)** — they were set back 40mm behind the skin, lapping the
   cage post only 10mm; now they sit on the door plane like the cage posts + jambs (full 50mm cage lap).
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:

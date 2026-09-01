@@ -957,7 +957,8 @@ def far_bay_wall_frame():
     xf, xb = ov.BAY_FRONT_X, 0             # -890 .. 0 — tunnel depth (mouth → panel plane)
     z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
     t = ov.BAY_WALL_T
-    xb2 = PANEL_CORNER_T                   # 40 — beams sit just INBOARD of the 40mm HDPE skin
+    xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0);
+    #                                        full 50mm lap onto the cage, skin laps the beam like the jambs
     RS, LEG, LT, rr = 50, 40, 3, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (sits on the cage top)
@@ -996,7 +997,7 @@ def near_bay_wall_frame():
     xf = ov.BAY_FRONT_X                    # -890 — bay mouth
     z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
     t = ov.BAY_WALL_T
-    xb2 = PANEL_CORNER_T                   # 40 — just inboard of the skin
+    xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0)
     RS, LEG, LT, rr = 50, 40, 3, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (cage top)

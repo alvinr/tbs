@@ -73,9 +73,9 @@ C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
-FAR_CORNER_BOT = LT_CAGE_BOT + 50             # 190 — FAR-corner HDPE/apron split (pivot side): dropped from
-#   the 282 stepped bottom down to the far-wall bottom-beam TOP so the beam's rivets land on HDPE, not the
-#   fold-down apron plywood (Alvin, 2026-08-31). Far side only; the near corner keeps the 282 step.
+CORNER_BOT = LT_CAGE_BOT + 50                 # 190 — corner-skin/apron split (BOTH sides): dropped from the
+#   282 stepped bottom down to the bottom-beam TOP so the beam's rivets land on the fixed corner skin, not
+#   the fold-down apron plywood flap (Alvin, 2026-08-31). Far side = HDPE corner; near side = Fan-B ply band.
 PLY_T  = 12   # real plywood thickness (12mm exterior BC). Inset on the INTERIOR face of the 40mm frame zone.
 PLY_X0 = 40 - PLY_T   # 28 — ply front face (X28..40 = interior 12mm; the 40mm frame zone stays around it)
 CHAM   = PLY_T   # plywood↔plywood joint chamfer: 45° across the 12mm ply (hingepanel Sheet 16 Detail E)
@@ -977,7 +977,7 @@ def far_bay_wall_frame():
     ny = int((yf - yR - 80) // LT_RIVET_PITCH)
     for i in range(ny + 1):
         yc = yR + 40 + i * LT_RIVET_PITCH
-        for zc in (zt + RS / 2, FAR_CORNER_BOT + 20):   # bottom row in the HDPE just above the beam top
+        for zc in (zt + RS / 2, CORNER_BOT + 20):   # bottom row in the HDPE just above the beam top
             p.append(ov.ruby_cylinder("Far bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
     # rivet line down the drum-side edge into the L-angle — point 2/3
     nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
@@ -988,20 +988,38 @@ def far_bay_wall_frame():
 
 
 def near_bay_wall_frame():
-    """NEAR bay wall (pinhole side / right) — reconcile the MISSING top + bottom beams: 50×50 RHS running in
-    Yd from the drum cage across to the near frame edge (left swing stile), mirroring the far wall (the
-    horizontal beams of Sheet 9). Beams only for now; L-angle + rivets follow once the beams read right."""
+    """NEAR bay wall (pinhole side / right) — mirror of the far wall: top + bottom 50×50 beams (cage → near
+    frame edge), a drum-side L-angle at the mouth, and rivet lines. The near corner's bottom section is the
+    Fan-B ply band (extended down to CORNER_BOT to match the left side); rivets land on it + the HDPE above."""
     yL = ov.DRUM_CAGE_YD_L                 # 700 — near cage face
     yn = CUT                               # 180 — near frame edge (left swing stile)
-    RS = 50
+    xf = ov.BAY_FRONT_X                    # -890 — bay mouth
+    z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
+    t = ov.BAY_WALL_T
     xb2 = PANEL_CORNER_T                   # 40 — just inboard of the skin
+    RS, LEG, LT, rr = 50, 40, 3, 5
+    c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (cage top)
     zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
-    c = C_STEEL
-    return '\n'.join([
+    p = [
         ruby_box("Near bay top beam (50 RHS)", xb2, yn, zt, RS, yL - yn, RS, color=c),
         ruby_box("Near bay bottom beam (50 RHS)", xb2, yn, zb, RS, yL - yn, RS, color=c),
-    ])
+        # drum-side L-angle at the mouth edge: panel leg on the −Yd back face, stand-off laps the near cage post
+        ruby_box("Near wall L-angle panel-leg", xf, yL - LT, z0, LEG, LT, z1 - z0, color=c),
+        ruby_box("Near wall L-angle standoff", xf, yL, z0, LT, LEG, z1 - z0, color=c),
+    ]
+    # rivet heads on the door skin (exterior face) along the top + bottom beams (in Yd)
+    ny = int((yL - yn - 80) // LT_RIVET_PITCH)
+    for i in range(ny + 1):
+        yc = yn + 40 + i * LT_RIVET_PITCH
+        for zc in (zt + RS / 2, CORNER_BOT + 20):   # bottom row on the Fan-B ply band just above the beam
+            p.append(ov.ruby_cylinder("Near bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
+    # rivet line down the drum-side edge into the L-angle
+    nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
+    for i in range(nz + 1):
+        zc = z0 + 60 + i * LT_RIVET_PITCH
+        p.append(ov.ruby_cylinder("Near wall rivet", xf + 20, yL + t + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+    return '\n'.join(p)
 
 
 # The FAR apron's last APRON_FIX_W (Yd C_WID−200 .. C_WID) is a FIXED stub, not a fold-down: the folding
@@ -1017,14 +1035,14 @@ _AHZ = 12
 # Profile TOPS are pulled down CHAM (12mm): the flap body stops 12mm short of the leaf bottom, and a 45°
 # top-edge chamfer prism (apron_top_chamfers) fills back to it — the moving flap's scarf sweeps off the
 # EPDM on the fixed leaf face (Sheet 16 Detail E). Corner top = 282, center-ext top = 217.
-_CT_N = PANEL_FLOOR_GAP_SIDE - CHAM   # NEAR corner body top (270)
-_CT_FAR = FAR_CORNER_BOT - CHAM       # FAR corner body top (178) — dropped to meet the lowered far-corner
-#                                       HDPE (FAR_CORNER_BOT) so the far apron reads shorter, HDPE below it
+_CT_LOW = CORNER_BOT - CHAM           # corner body top (178) — BOTH sides: dropped to meet the lowered
+#                                       corner-skin bottom (CORNER_BOT) so the apron reads shorter, fixed
+#                                       skin below it (far = HDPE, near = Fan-B ply band)
 _CC   = PANEL_FLOOR_GAP - CHAM        # center-ext body top (205)
 _APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
-                  (YD_L, _CC), (YD_L, _CT_N), (0, _CT_N)]
-_APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_FAR),
-                  (YD_R, _CT_FAR), (YD_R, _CC), (APRON_IN_R, _CC)]
+                  (YD_L, _CC), (YD_L, _CT_LOW), (0, _CT_LOW)]
+_APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_LOW),
+                  (YD_R, _CT_LOW), (YD_R, _CC), (APRON_IN_R, _CC)]
 APRON_T = PLY_T   # fold-down flap = 12mm plywood, on the interior face (X28..40)
 
 
@@ -1062,8 +1080,8 @@ def apron_top_chamfers():
     """45° chamfer along each apron TOP edge (the moving-flap scarf that sweeps off the fixed leaf's EPDM,
     Detail E): a triangular X-Z prism per top segment — outer face (X28) rises the full CHAM to the leaf
     bottom, inner face (X40) stays CHAM lower. One segment per step (corner→282, center-ext→217)."""
-    segs = [(0, YD_L, PANEL_FLOOR_GAP_SIDE), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
-            (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, FAR_CORNER_BOT)]
+    segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+            (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
     return '\n'.join(_prism_xz("Fold-down apron top chamfer",
                                [(PLY_X0, top - CHAM), (40, top - CHAM), (PLY_X0, top)], y0, y1 - y0, C_PLY, 0.85)
                      for (y0, y1, top) in segs)
@@ -1078,12 +1096,12 @@ def apron_up_geom():
     # inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the corner-zone height.
     yf = C_WID - APRON_FIX_W
     far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
-                              [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, _CT_FAR - _AHZ, color=C_PLY, alpha=0.85)
+                              [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
     # FIXED (non-folding) plywood stub closing the corner gap between the far apron's far edge
     # (C_WID−APRON_FIX_W) and the pivot post: a fold-down flap here would foul the Ø89 post + its Ø220 floor
     # plate, but this piece stays fixed and at X28..40 it clears both (post X131+, plate X65+).
     stub = ruby_box("Fold-down apron (far) fixed stub", PLY_X0, C_WID - APRON_FIX_W, _AHZ, PLY_T,
-                    PIVOT_YD - (C_WID - APRON_FIX_W), FAR_CORNER_BOT - _AHZ, color=C_PLY, alpha=0.85)
+                    PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - _AHZ, color=C_PLY, alpha=0.85)
     return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
             _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) +
             far_wedge + apron_top_chamfers() + stub)
@@ -1095,10 +1113,10 @@ def apron_folded_geom():
     folded-at-door-plane pose; the swing-DC child gets a −LOCK pre-rotation so the parent's +LOCK lands it
     here at swing=1. SHOWN when swung / HIDDEN closed."""
     # folded outline in (X, Yd) at Z=_AHZ, extruded APRON_T up in Z. X = _AHZ + (leaf_top − _AHZ) reach.
-    near = [(_AHZ, 0), (PANEL_FLOOR_GAP_SIDE, 0), (PANEL_FLOOR_GAP_SIDE, YD_L), (PANEL_FLOOR_GAP, YD_L),
+    near = [(_AHZ, 0), (CORNER_BOT, 0), (CORNER_BOT, YD_L), (PANEL_FLOOR_GAP, YD_L),
             (PANEL_FLOOR_GAP, APRON_IN_L), (_AHZ, APRON_IN_L)]
     far  = [(_AHZ, APRON_IN_R), (PANEL_FLOOR_GAP, APRON_IN_R), (PANEL_FLOOR_GAP, YD_R),
-            (FAR_CORNER_BOT, YD_R), (FAR_CORNER_BOT, C_WID - APRON_FIX_W), (_AHZ, C_WID - APRON_FIX_W)]
+            (CORNER_BOT, YD_R), (CORNER_BOT, C_WID - APRON_FIX_W), (_AHZ, C_WID - APRON_FIX_W)]
     return (ov.ruby_prism("Fold-down apron (near, FOLDED)", near, _AHZ, APRON_T, color=C_PLY, alpha=0.6) +
             ov.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6))
 
@@ -1174,8 +1192,8 @@ def generate_ruby():
         # rigid fan/duct mounting; 1/8″ HDPE skin above. (rev11 material differentiation.)
         # Near corner is a STEPPED zone: its bottom rises to PANEL_FLOOR_GAP_SIDE (282) like the frame +
         # aprons, so the fold-down flap top meets it flush (no overlap) and it clears the walkway cantilever.
-        ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_FLOOR_GAP_SIDE, 40,
-                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE, color=C_PLY, alpha=0.5),
+        ruby_box("Fan B mount band (18mm ply)", 0, CUT, CORNER_BOT, 40,
+                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - CORNER_BOT, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
                  NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
         # swing panel + its top seal now run to the PIVOT line (the pivot-corner plywood travels with it).
@@ -1185,8 +1203,8 @@ def generate_ruby():
         # meets it flush (fixes the flap↔leaf overlap) and it clears the walkway cantilever in the swing.
         # The HDPE skin runs CONTINUOUSLY to the PIVOT LINE (2026-08-31) — no separate pivot ply panel; the
         # pivot-edge stile (pivot_corner_leaf) sits behind it and ties the leaf to the hub brackets.
-        ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, FAR_CORNER_BOT, 40,
-                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - FAR_CORNER_BOT, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, CORNER_BOT, 40,
+                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - CORNER_BOT, color=C_PLASTIC, alpha=0.5),
         pivot_corner_leaf(),   # pivot-edge STILE (the hub brackets weld to it) — travels with the leaf
         bay(),
         bay_l_angles(),                   # L-angle framing securing the HDPE bay walls (Sheet 2 detail)

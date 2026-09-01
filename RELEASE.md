@@ -45,7 +45,8 @@ file** — a release must not ship without a changelog entry:
   chamfer) reduced to suit; near corner keeps its 282 step. (2D Sheet 16/9/15 apron reconcile deferred.)
   Added a **fixed (non-folding) plywood stub** closing the corner gap between the far apron's far edge and
   the pivot post (a fold-down flap there would foul the post + floor plate; the fixed stub at X28–40 clears
-  both).
+  both). Reconciled the **near wall** (pinhole side): added its missing top + bottom 50×50 beams running
+  in Yd from the drum cage to the near frame edge, symmetric to the far wall (beams only so far).
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
   **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
   the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing

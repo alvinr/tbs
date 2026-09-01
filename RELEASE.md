@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel — 3D review round (pivot corner, cam latches, HDPE L-angle framing).** Stripped the
+  redundant travelling **pivot-corner ply/frame** (it read as a plywood panel jammed between the leaf
+  stile and the pivot post) down to just the structural **pivot-edge stile** the hub brackets weld to —
+  the door face there is already skinned by the panel far-corner HDPE. Redrew the two **cam latches**
+  (1619A74) with the T-handle valve-body pattern (barrel-through + interior lift-and-turn lever, olive
+  C_VALVE) and repositioned them for comfortable standing operation (top lowered 2168→1900, bottom
+  raised 220→500). Added **L-angle framing** (30×30×3) securing the HDPE bay walls to the cage at the
+  panel-plane lap (2D Sheet 2 detail applied in 3D); flagged the design gaps — the bay's forward ~890mm
+  mouth has no steel to rivet to (needs a mouth frame ring), and the bottom angle crowds the tray rim.
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
   **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
   the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing

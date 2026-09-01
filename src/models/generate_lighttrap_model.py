@@ -292,6 +292,20 @@ def door_frame(include_seal=True):
 
 # ── Hinged stepped panel (3 zones, drum aperture, seal, hinges, latches) ─────
 
+def cam_latch(yl, zl):
+    """Lift-and-turn cam latch (McMaster 1619A74) drawn with the T-handle valve pattern (same shape as
+    the plumbing ball valves): a barrel THROUGH the panel edge (along X) + a handle stem out the interior
+    face with a lift-and-turn lever bar at the tip. Olive-yellow C_VALVE, like the taps."""
+    r, L = 20, 32                    # latch body barrel (Ø40) through the opening-edge zone, along X
+    HSr, HS, LV = 6, 44, 66          # handle stem length/radius + lift-and-turn lever-bar length
+    x0 = PANEL_CORNER_T              # 40 — interior face of the opening-edge zone
+    return '\n'.join([
+        ov.ruby_cylinder("Cam latch 1619A74", x0 - 10, yl, zl, r, L, axis="x", color=C_VALVE),
+        ov.ruby_cylinder("Cam latch stem", x0 + L - 10, yl, zl, HSr, HS, axis="x", color=C_VALVE),
+        ruby_box("Cam latch lever", x0 + L - 10 + HS, yl - LV / 2, zl - 7, 14, LV, 14, color=C_VALVE),
+    ])
+
+
 def hinge_panel():
     h = PANEL_Z_TOP - PANEL_Z_BOT                  # panel skin height (center zone, low bottom)
     hs = PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE        # corner-zone height — bottom STEPPED UP
@@ -344,10 +358,9 @@ def hinge_panel():
 
     # 2 × lift-and-turn cam latches (McMaster 1619A74) — interior face, OPENING edge only
     # (the pivot edge is hinged; a frame stop takes the outward direction — report §4.2).
-    lw, ld, lh = 55, 70, 50
-    for lz in (220, 2168):
-        parts.append(ruby_box("Cam latch 1619A74", tc, 210 - ld / 2, lz - lh / 2,
-                              lw, ld, lh, color=C_VALVE))
+    # Heights set for comfortable standing operation: top LOWERED, bottom RAISED (2026-08-31, Alvin).
+    for lz in (500, 1900):
+        parts.append(cam_latch(210, lz))
 
     # Interior pull handle — off-the-shelf McMaster 1871A65 round pull handle (the SAME part as the
     # drum handle; ~308mm grip, 52mm standoff), screwed into 1/4"-20 rivet-nuts in the structural
@@ -571,20 +584,18 @@ def far_leaf():
 
 
 def pivot_corner_leaf():
-    """The pivot-corner leaf plywood — TRAVELS with the swinging panel (built in the swing DC), from the
-    panel far edge (Yd C_WID−APRON_FIX_W) to the pivot LINE (PIVOT_YD), wrapping toward the Ø89 post but
-    NOT past it (nothing swings outboard of the pivot). A clean rectangular 12mm ply on a 40mm frame — the
-    door-plane ply is inboard-clear of the fixed post (X131+) so it needs no notch/wedge. 40mm frame + 12mm ply."""
-    y0, y1 = C_WID - APRON_FIX_W, PIVOT_YD             # 2162 → 2287 (to the pivot line)
+    """The pivot-corner LEAF EDGE — just the structural pivot-edge stile the hub brackets weld to. NO
+    separate ply/frame panel here (removed 2026-08-31, Alvin: it read as a redundant plywood panel jammed
+    between the stile and the post). The door FACE at the pivot corner is already skinned by the panel
+    FAR-corner HDPE (hinge_panel, X0..40, Yd NEW_YD_R..C_WID, which spans this Yd 2162..2287 zone), so the
+    joint is clean steel: leaf stile → hub brackets → post. TRAVELS with the swinging leaf."""
+    y1 = PIVOT_YD                                      # pivot line (2287)
     z0, z1 = 12, PANEL_Z_TOP
-    return '\n'.join([
-        ruby_box("Pivot corner frame (travels)", 0, y0, z0, PLY_X0, y1 - y0, z1 - z0, color=C_STEEL, alpha=1.0),
-        ruby_box("Pivot corner ply (travels)", PLY_X0, y0, z0, PLY_T, y1 - y0, z1 - z0, color="#C8A060", alpha=1.0),
-        # LEAF PIVOT-EDGE STILE (2×2/50 RHS) at the pivot edge, just inboard of the ply — the 3 hub hinge
-        # brackets (pivot_link, X55..195) LAND on this stile and are fillet-welded to it, so leaf+hub+cage
-        # swing as one weldment (hingepanel Sheet 14). Travels with the leaf.
-        ruby_box("Leaf pivot-edge stile (50 RHS)", PLY_X0, y1 - 50, z0, 50, 50, z1 - z0, color=C_STEEL, alpha=1.0),
-    ])
+    # LEAF PIVOT-EDGE STILE (2×2/50 RHS) at the pivot edge, just inboard of the HDPE skin — the 3 hub hinge
+    # brackets (pivot_link, X55..195) LAND on this stile and are fillet-welded to it, so leaf+hub+cage swing
+    # as one weldment (hingepanel Sheet 14). Travels with the leaf.
+    return ruby_box("Leaf pivot-edge stile (50 RHS)", PLY_X0, y1 - 50, z0, 50, 50, z1 - z0,
+                    color=C_STEEL, alpha=1.0)
 
 
 def drum_frame():
@@ -893,6 +904,43 @@ def surround_rivets():
     return '\n'.join(parts)
 
 
+def bay_l_angles():
+    """L-angle framing that SECURES the HDPE bay walls (2D Sheet 2 detail: HDPE rivets to an L-angle, the
+    L-angle rivets/welds to the steel). A 30×30×3 angle ring at the PANEL-PLANE lap where the drum cage
+    posts/beams back it up — the surround_rivets pass through the panel leg into the HDPE, the stand-off
+    leg laps the cage. Each angle: PANEL leg (flat on the HDPE, 30 wide in X) + STAND-OFF leg (perpendicular,
+    30 onto the cage).
+      WHERE IT DOESN'T WORK (reported to Alvin, deliberately NOT modeled forward of the cage):
+      • The bay projects ~890mm FORWARD of the cage to the open mouth with NO steel behind it, so the
+        forward two-thirds of every HDPE wall has nothing to rivet an L-angle to → a bay-MOUTH frame ring
+        (or a couple of intermediate steel hoops) must be added before the L-angle scheme is continuous.
+      • The BOTTOM angle sits in the floor gap (Z217) directly over the processing tray rim — its stand-off
+        leg turns up into the drum underside; clearance is tight and it may foul the tray.
+      • Near/far angles land on the 50mm cage posts, but the panel CENTER-zone jambs are at NEW_YD_L/R
+        (653/1709), 47mm off the cage faces (700/1662) — so the angle laps the CAGE, not the jamb; the two
+        are not co-planar."""
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
+    t = ov.BAY_WALL_T
+    LEG, LT = 30, 3
+    xa = -33                          # angle in the lap zone just exterior of the panel plane
+    c = C_STEEL
+    return '\n'.join([
+        # near vertical: panel leg on the HDPE inner face + stand-off leg onto the cage post
+        ruby_box("Bay L-angle near panel-leg", xa, yL + t, z0, LEG, LT, z1 - z0, color=c),
+        ruby_box("Bay L-angle near standoff", xa, yL + t, z0, LT, LEG, z1 - z0, color=c),
+        # far vertical (mirror toward −Yd)
+        ruby_box("Bay L-angle far panel-leg", xa, yR - t - LEG, z0, LEG, LT, z1 - z0, color=c),
+        ruby_box("Bay L-angle far standoff", xa, yR - t - LT, z0, LT, LEG, z1 - z0, color=c),
+        # top horizontal: panel leg under the top wall + stand-off leg down
+        ruby_box("Bay L-angle top panel-leg", xa, yL, z1 - t - LT, LEG, yR - yL, LT, color=c),
+        ruby_box("Bay L-angle top standoff", xa, yL, z1 - t - LEG, LT, yR - yL, LEG, color=c),
+        # bottom horizontal: panel leg over the bottom wall + stand-off leg up
+        ruby_box("Bay L-angle bottom panel-leg", xa, yL, z0 + t, LEG, yR - yL, LT, color=c),
+        ruby_box("Bay L-angle bottom standoff", xa, yL, z0 + t, LT, yR - yL, LEG, color=c),
+    ])
+
+
 # The FAR apron's last APRON_FIX_W (Yd C_WID−200 .. C_WID) is a FIXED stub, not a fold-down: the folding
 # flap would foul the Ø89 pivot post + its Ø220 floor mount plate (near edge PIVOT_YD−110 = Yd2177).
 # (APRON_FIX_W now single-sourced from tbs_constants.)
@@ -1069,6 +1117,7 @@ def generate_ruby():
                  (C_WID - APRON_FIX_W) - NEW_YD_R, PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.5),
         pivot_corner_leaf(),   # pivot-corner plywood TRAVELS with the panel (notched to clear the post)
         bay(),
+        bay_l_angles(),                   # L-angle framing securing the HDPE bay walls (Sheet 2 detail)
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position

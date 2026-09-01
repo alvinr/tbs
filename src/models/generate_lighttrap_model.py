@@ -958,7 +958,9 @@ def far_bay_wall_frame():
     RS, LEG, LT, rr = 50, 40, 3, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (sits on the cage top)
-    zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
+    zb = PANEL_FLOOR_GAP_SIDE              # bottom beam at the stepped FRAME/HDPE bottom (282) — the far
+    #                                        corner HDPE only starts here; below it is the fold-down apron
+    #                                        (plywood), so the bottom beam + its rivets must land on HDPE
     p = [
         # (4/5) TOP + BOTTOM beams running in Yd from the drum cage across to the pivot frame — the visible
         #       horizontal beams of Sheet 9; the far HDPE top/bottom edges rivet to them. Just inboard of

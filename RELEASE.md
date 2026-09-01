@@ -87,8 +87,8 @@ file** — a release must not ship without a changelog entry:
   recompute when the parent DC animates; only children do) so it actually vanishes at `swing>0.5`.
 - **Hinged panel — pivot corner resolved as a travelling leaf.** Reversed the fixed-jamb approach at the
   Ø89 pivot: the pivot-corner plywood now TRAVELS with the swinging leaf (built in the swing DC), wrapping
-  to the pivot LINE (not past it) with the inboard-pivot corner NOTCHED so the door-plane ply sweeps clear
-  of the fixed post + thrust collar through the swing. Frame→post connection is the inboard pivot hub; no
+  to the pivot LINE (not past it) — a CLEAN rectangular 12mm ply on a 40mm frame (no wedge/notch; the
+  door-plane ply is inboard-clear of the fixed post). Frame→post connection is the inboard pivot hub; no
   fixed jamb, no swept cutout. The former full-height fixed far strip is retired.
 - **Hinged panel — frame→post securing reconciled (2D + 3D).** The swinging leaf is tied to the fixed Ø89
   post by the moving hub (thrust + journal bearings) and **3 hinge brackets fillet-welded to the leaf's

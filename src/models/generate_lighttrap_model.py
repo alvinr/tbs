@@ -573,14 +573,13 @@ def far_leaf():
 def pivot_corner_leaf():
     """The pivot-corner leaf plywood — TRAVELS with the swinging panel (built in the swing DC), from the
     panel far edge (Yd C_WID−APRON_FIX_W) to the pivot LINE (PIVOT_YD), wrapping toward the Ø89 post but
-    NOT past it (nothing swings outboard of the pivot). The inboard-pivot corner is NOTCHED so the door-
-    plane ply sweeps clear of the fixed post + thrust collar through the ~56° swing. 40mm frame + 12mm ply."""
+    NOT past it (nothing swings outboard of the pivot). A clean rectangular 12mm ply on a 40mm frame — the
+    door-plane ply is inboard-clear of the fixed post (X131+) so it needs no notch/wedge. 40mm frame + 12mm ply."""
     y0, y1 = C_WID - APRON_FIX_W, PIVOT_YD             # 2162 → 2287 (to the pivot line)
     z0, z1 = 12, PANEL_Z_TOP
-    ply = [(PLY_X0, y0), (40, y0), (40, y1 - 75), (PLY_X0, y1)]   # inboard-pivot corner notched back 75mm
     return '\n'.join([
         ruby_box("Pivot corner frame (travels)", 0, y0, z0, PLY_X0, y1 - y0, z1 - z0, color=C_STEEL, alpha=1.0),
-        ov.ruby_prism("Pivot corner ply (travels)", ply, z0, z1 - z0, color="#C8A060", alpha=1.0),
+        ruby_box("Pivot corner ply (travels)", PLY_X0, y0, z0, PLY_T, y1 - y0, z1 - z0, color="#C8A060", alpha=1.0),
         # LEAF PIVOT-EDGE STILE (2×2/50 RHS) at the pivot edge, just inboard of the ply — the 3 hub hinge
         # brackets (pivot_link, X55..195) LAND on this stile and are fillet-welded to it, so leaf+hub+cage
         # swing as one weldment (hingepanel Sheet 14). Travels with the leaf.

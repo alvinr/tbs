@@ -173,8 +173,8 @@ door plane; the cargo doors close outboard of the fixed near strip.
 | Operational (0°) | Panel closed at the door plane; the B2 punch-out bay protrudes ~890mm outside | No — the doors stay open during camera operation |
 | Transport (swung 56°) | Panel + drum revolved about the pivot, swept inboard | Yes — true minimum clearance to the closed door is +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm |
 
-A fixed welded door frame (2×2×0.120in steel SHS) provides the EPDM seal landing. The panel seals
-against this frame with the Southco C2-33 cam latches and 20mm EPDM gaskets in the closed
+A fixed welded door frame (50×20×3 RHS) provides the EPDM seal landing. The panel seals
+against this frame with the 2× lift-and-turn cam latches and 20mm EPDM gaskets in the closed
 (latched) position; the latches release to free the seals before the swing.
 
 #### 6.1.1 Swinging Panel Light Seal Design

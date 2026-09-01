@@ -944,12 +944,12 @@ PARTS: list[Part] = [
     Part("sp-rail-saddles", "Drop-in rail saddles + tapered dowels", "steel-structural",
          "swing", 4, "ea", 20, 32.5, "local fab", "McMaster-Carr", spec="For the 2 removable left film rails (TL + BL); dowels set the film datum"),
     # ═══ door (hinged-panel §8.4) — fixed door frame; sums to the SWINGPIVOT door lines ($335–$550) ═══
-    Part("sp-door-frame-rhs", "2×2×0.120in steel SHS (6 m bulk lengths)", "steel-structural",
-         "door", 3, "ea", 30, 40, "Metal Supermarkets", spec="Frame members"),
+    Part("sp-door-frame-rhs", "50×20×3 RHS (6 m bulk lengths)", "steel-structural",
+         "door", 3, "ea", 30, 40, "Metal Supermarkets", spec="Frame members — 50×20×3 RHS (50mm FACE = the seal landing, 20mm depth). REUSES the IBC retaining-bar section (ibcf-rhs, 50×20×3) so it needs no bespoke order. Dropped from the old 2×2×0.120in tube: the frame is no longer weight-bearing (the pivot post carries the hinge panel) — it only takes seal-compression + cam-latch load."),
     Part("sp-door-seal-lips", "Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)", "seals-gaskets",
          "door", 1, "lot", 129, 129, "McMaster-Carr", part_no="74405T12", url="https://www.mcmaster.com/74405T12-74405T126/", spec="Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1\" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals.", note="Changed 2026-07-18 from 3mm steel seal lips + panel-edge EPDM compression to a strip brush: the top/bottom seal is swept through by the swinging panel, so a brush is the correct type. Brush 74405T12 ($28.88/8ft), holder 8813T53 ($35.37/8ft) — prices verified 2026-07-18."),
     Part("sp-door-fab", "Welding / fabrication", "fabrication-labor",
-         "door", 1, "lot", 200, 350, "local fab", spec="Frame assembly + wall attachment"),
+         "door", 1, "lot", 200, 350, "local fab", spec="Frame assembly + BOLTED wall attachment (M10 @ ~300mm through the frame into the container's steel cargo-door opening — reversible, no hot work on the container) + the welded opening-edge U-channel (Yd0–180) that carries the 2 cam-latch strike plates and welds to the door-frame left stile."),
 
     # ═══ panel (hinged-panel §8.1) — panel structure; sums to costing.PANEL ($1,124–$1,691) ═══
     Part("panel-rhs-frame", "2×2×0.120in steel SHS (6 m bulk lengths)", "steel-structural",

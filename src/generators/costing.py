@@ -231,9 +231,9 @@ SWINGPIVOT = [
     LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 105, 120, "5/8\" turnbuckle (JETBGV58X6) + eye rods + fab plates"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
     # §8.4 fixed door frame
-    LineItem("Fixed door frame — 2×2×0.120in steel members (×3)", 90, 105, 120, "Metal Supermarkets"),
+    LineItem("Fixed door frame — 50×20×3 RHS members (×3)", 90, 105, 120, "Metal Supermarkets — reuses the IBC retaining-bar section; lighter (frame no longer weight-bearing, only seal + latch load)"),
     LineItem("Fixed door frame — top/bottom strip-brush light seals (2× 74405T12 brush + 2× 8813T53 holder)", 129, 129, 129, "McMaster $28.88+$35.37/8ft ×2 = $128.50 firm; seal paths #3–#4 — panel sweeps through the bristles"),
-    LineItem("Fixed door frame — welding/fabrication + wall attachment", 200, 275, 350, "Local fab"),
+    LineItem("Fixed door frame — welding/fabrication + BOLTED wall attachment (M10 @ ~300 into the container door opening) + opening-edge U-channel", 200, 275, 350, "Local fab"),
 ]
 
 # §6c = hinged-panel-report.md §8.1 (panel structure). Line items mirror that BOM. This section was

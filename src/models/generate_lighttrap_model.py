@@ -1004,6 +1004,9 @@ def near_bay_wall_frame():
     p = [
         ruby_box("Near bay top beam (50 RHS)", xb2, yn, zt, RS, yL - yn, RS, color=c),
         ruby_box("Near bay bottom beam (50 RHS)", xb2, yn, zb, RS, yL - yn, RS, color=c),
+        # VERTICAL opening-edge stile (Sheet 9 "left swing stile") tying the top + bottom beams at the near
+        # frame edge — the far wall's equivalent is the pivot post/stile; the near side had none.
+        ruby_box("Near opening-edge stile (50 RHS)", xb2, yn, zb, RS, RS, (zt + RS) - zb, color=c),
         # drum-side L-angle at the mouth edge: panel leg on the −Yd back face, stand-off laps the near cage post
         ruby_box("Near wall L-angle panel-leg", xf, yL - LT, z0, LEG, LT, z1 - z0, color=c),
         ruby_box("Near wall L-angle standoff", xf, yL, z0, LT, LEG, z1 - z0, color=c),

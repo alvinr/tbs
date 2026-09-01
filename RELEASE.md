@@ -49,7 +49,9 @@ file** — a release must not ship without a changelog entry:
   in Yd from the drum cage to the near frame edge, symmetric to the far wall. Then completed the near wall
   to match: drum-side L-angle at the mouth + rivet lines, the fold-down near apron dropped to the same
   split as the left, and the Fan-B ply band extended down to it so the near beam's rivets land on fixed
-  skin. Renamed the split constant `FAR_CORNER_BOT` → `CORNER_BOT` (now both sides, 190).
+  skin. Renamed the split constant `FAR_CORNER_BOT` → `CORNER_BOT` (now both sides, 190). Added the near
+  side's missing **vertical opening-edge stile** (Sheet 9 "left swing stile") tying the top + bottom beams
+  at the frame edge — the far side's equivalent is the pivot post/stile.
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
   **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
   the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing

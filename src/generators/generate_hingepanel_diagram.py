@@ -2059,11 +2059,27 @@ def sheet9():
         ax.add_patch(Rectangle((x0, z), x1 - x0, RHS, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
         ax.add_patch(Rectangle((x0 + 1.6, z + 1.6), x1 - x0 - 3.2, RHS - 3.2, fc="none", ec=C_OUT, lw=0.4, zorder=5))
 
-    # ── fixed side strips (do NOT swing) — ghosted ──
-    for x0, x1, tag in [(0, yL, "FIXED near strip"), (yR, PW, "FIXED far strip")]:
-        ax.add_patch(Rectangle((x0, 0), x1 - x0, PH, fc="#EEF0F2", ec=C_DIM, lw=0.6, ls=(0, (5, 3)), zorder=1))
-        ax.text((x0 + x1) / 2, PH / 2, tag + "\n(bolted to door\nframe — no swing)", ha="center",
-                va="center", fontsize=6.6, color=C_DIM, rotation=90, **FONT, zorder=2)
+    # ── fixed FAR strip (pivot side) — ghosted context ──
+    ax.add_patch(Rectangle((yR, 0), PW - yR, PH, fc="#EEF0F2", ec=C_DIM, lw=0.6, ls=(0, (5, 3)), zorder=1))
+    ax.text((yR + PW) / 2, PH / 2, "FIXED far strip\n(bolted to door\nframe — no swing)", ha="center",
+            va="center", fontsize=6.6, color=C_DIM, rotation=90, **FONT, zorder=2)
+
+    # ── fixed NEAR opening-edge U-FRAME (welded steel channel, Yd0..180) — the STRUCTURE the hinge panel
+    #    BUTTS UP TO. Drawn as a C in this elevation: the web (right, at the Yd180 joint) faces the swing
+    #    panel and carries the cam-latch STRIKE PLATES; the top + bottom flanges wrap back and the OPEN side
+    #    (Yd0, container-wall side) is WELDED to the container door frame. Secures the HDPE + plywood skins. ──
+    uf_z0, uf_z1 = STEP, PH
+    WEB, FL = 18, 24
+    ax.add_patch(Rectangle((yL - WEB, uf_z0), WEB, uf_z1 - uf_z0, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))   # web (right/swing-facing)
+    ax.add_patch(Rectangle((0, uf_z1 - FL), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                 # top flange → door frame
+    ax.add_patch(Rectangle((0, uf_z0), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # bottom flange → door frame
+    for wz, dz in ((uf_z0 + FL, 14), (uf_z1 - FL, -14)):                                                     # weld ticks at the door-frame side
+        ax.add_patch(Polygon([(0, wz), (11, wz), (0, wz + dz)], closed=True, fc=C_OUT, ec="none", zorder=6))
+    for lz in (500, 1900):                                                                                   # cam-latch strike plates on the web
+        ax.add_patch(Rectangle((yL - WEB, lz - 45), WEB + 7, 90, fc="#8890A0", ec=C_OUT, lw=1.0, zorder=7))
+    leader(ax, (yL - WEB / 2, 1120), (-350, 1120),
+           "U-FRAME — welded steel channel (Yd0–180)\nfixed to the container door frame (flanges\nWELDED; open side = container wall).\nThe HINGE PANEL BUTTS UP here.", col=C_OUT, fw="bold", fs=6.4)
+    leader(ax, (yL + 4, 500), (-350, 780), "web carries 2 cam-latch\nSTRIKE PLATES (engage the panel latches)", col=C_OUT, fs=6.2)
 
     # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 11 ──
     ax.add_patch(Rectangle((yL, 0), jL - yL, PANEL_FAN_BAND_Z, fc=C_WOOD, ec=C_OUT, lw=0.7, alpha=0.45, zorder=2))

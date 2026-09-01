@@ -929,9 +929,7 @@ def bay_l_angles():
         # near vertical: panel leg on the HDPE inner face + stand-off leg onto the cage post
         ruby_box("Bay L-angle near panel-leg", xa, yL + t, z0, LEG, LT, z1 - z0, color=c),
         ruby_box("Bay L-angle near standoff", xa, yL + t, z0, LT, LEG, z1 - z0, color=c),
-        # far vertical (mirror toward −Yd)
-        ruby_box("Bay L-angle far panel-leg", xa, yR - t - LEG, z0, LEG, LT, z1 - z0, color=c),
-        ruby_box("Bay L-angle far standoff", xa, yR - t - LT, z0, LT, LEG, z1 - z0, color=c),
+        # (far vertical handled by far_bay_wall_frame() — this wall is being detailed frame-by-frame)
         # top horizontal: panel leg under the top wall + stand-off leg down
         ruby_box("Bay L-angle top panel-leg", xa, yL, z1 - t - LT, LEG, yR - yL, LT, color=c),
         ruby_box("Bay L-angle top standoff", xa, yL, z1 - t - LEG, LT, yR - yL, LEG, color=c),
@@ -939,6 +937,49 @@ def bay_l_angles():
         ruby_box("Bay L-angle bottom panel-leg", xa, yL, z0 + t, LEG, yR - yL, LT, color=c),
         ruby_box("Bay L-angle bottom standoff", xa, yL, z0 + t, LT, yR - yL, LEG, color=c),
     ])
+
+
+def far_bay_wall_frame():
+    """FAR bay HDPE wall (Yd yR = the drum-passage wall on the pivot / far-container-wall / film-plane side).
+    Detailed frame-by-frame per Alvin (2026-08-31):
+      1+2 the HDPE reaches out to the frame at the panel plane (the center jamb R) and rivets to it —
+          rivet line down the panel-plane edge (X0);
+      3   a full-tunnel-depth L-angle sits on the wall at the free MOUTH edge (drum side): its panel leg
+          takes the HDPE rivets, its stand-off leg laps the front cage post — the wall can't rivet to the
+          round cage or through the 3mm skin alone;
+      4+5 a TOP rail and a BOTTOM rail (50×50 RHS) run the tunnel depth on the cage line, extending the
+          door-plane frame back to the drum cage so the wall's top/bottom edges land on steel and rivet."""
+    yR = ov.DRUM_CAGE_YD_R                 # 1662 — far cage face / far-wall Yd
+    xf, xb = ov.BAY_FRONT_X, 0             # -890 .. 0 — tunnel depth (mouth → panel plane)
+    depth = xb - xf                        # 890
+    z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
+    t = ov.BAY_WALL_T
+    RS, LEG, LT, rr = 50, 40, 3, 5
+    c = C_STEEL
+    zt, zb = z1 - RS, z0                   # top/bottom rail Z (top of wall / floor gap)
+    p = [
+        # (4/5) top + bottom rails, full depth, on the cage line — tie the door-plane frame to the cage
+        ruby_box("Far wall top rail (50 RHS)", xf, yR - RS, zt, depth, RS, RS, color=c),
+        ruby_box("Far wall bottom rail (50 RHS)", xf, yR - RS, zb, depth, RS, RS, color=c),
+        # (3) drum-side L-angle at the free MOUTH edge — panel leg on the wall (+Yd face), stand-off laps
+        #     the front cage post; the HDPE rivets to the panel leg
+        ruby_box("Far wall L-angle panel-leg", xf, yR, z0, LEG, LT, z1 - z0, color=c),
+        ruby_box("Far wall L-angle standoff", xf, yR - LEG, z0, LT, LEG, z1 - z0, color=c),
+    ]
+    # rivet heads on the −Yd (tunnel) face: top + bottom rail lines (along X)
+    nx = int(depth // LT_RIVET_PITCH)
+    for i in range(nx + 1):
+        xc = xf + 40 + i * LT_RIVET_PITCH
+        if xc > xb - 20:
+            break
+        for zc in (zt + RS / 2, zb + RS / 2):
+            p.append(ov.ruby_cylinder("Far wall rivet", xc, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+    # rivet line down the panel-plane edge (into the center jamb R frame) — point 1+2
+    nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
+    for i in range(nz + 1):
+        zc = z0 + 60 + i * LT_RIVET_PITCH
+        p.append(ov.ruby_cylinder("Far wall rivet", xb - 25, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+    return '\n'.join(p)
 
 
 # The FAR apron's last APRON_FIX_W (Yd C_WID−200 .. C_WID) is a FIXED stub, not a fold-down: the folding
@@ -1120,6 +1161,7 @@ def generate_ruby():
         pivot_corner_leaf(),   # pivot-edge STILE (the hub brackets weld to it) — travels with the leaf
         bay(),
         bay_l_angles(),                   # L-angle framing securing the HDPE bay walls (Sheet 2 detail)
+        far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + drum-side L-angle + rivets
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position

@@ -35,6 +35,9 @@ file** — a release must not ship without a changelog entry:
   raised 220→500). Added **L-angle framing** (30×30×3) securing the HDPE bay walls to the cage at the
   panel-plane lap (2D Sheet 2 detail applied in 3D); flagged the design gaps — the bay's forward ~890mm
   mouth has no steel to rivet to (needs a mouth frame ring), and the bottom angle crowds the tray rim.
+  Began **frame-by-frame** detailing of each bay wall: the **far wall** (pivot / film-plane side) now
+  carries a full-tunnel-depth drum-side L-angle at the mouth edge, top + bottom 50×50 rails extending the
+  door-plane frame back to the drum cage, and rivet lines to the frame and rails.
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
   **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
   the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing

@@ -54,7 +54,9 @@ file** — a release must not ship without a changelog entry:
   at the frame edge — the far side's equivalent is the pivot post/stile. Rebuilt the fixed opening-edge
   member (`near_leaf`) from a solid block into a **welded box section** (thin exterior + interior flanges
   for the HDPE + plywood skins, a swing-facing web) welded to the door frame on the container-wall side,
-  and located the two **cam-latch strike plates** on the web. Moved all four bay beams + the
+  and located the two **cam-latch strike plates** on the web. **Sheet 9** now draws the fixed opening-edge
+  structure as that **welded U-channel** (web at the Yd180 joint facing the swing panel + carrying the
+  strike plates; flanges wrapping back and welded to the container door frame) instead of a ghosted strip. Moved all four bay beams + the
   near stile to the **flush-front datum (X0–50)** — they were set back 40mm behind the skin, lapping the
   cage post only 10mm; now they sit on the door plane like the cage posts + jambs (full 50mm cage lap).
 - **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:

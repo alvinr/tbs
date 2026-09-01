@@ -2512,40 +2512,38 @@ def sheet12():
     ax.set_xlim(0, 540)
     ax.set_ylim(-70, 220)
 
-    # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (horizontal section) ══════
+    # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (PLAN section at the latch) ══════
+    #   Two stiles SIDE BY SIDE: the latch mounts through the SWINGING panel stile; turned, the cam swings
+    #   across the gap and PICKS UP the strike plate welded to the ADJACENT (fixed jamb) stile.
     Ax = 6
     ax.text(Ax + 92, 206, "DETAIL A — LIFT-AND-TURN CAM LATCH (McMaster 1619A74)", ha="center", fontsize=8.3, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Ax + 92, 194, "horizontal section · cam hooks a welded keeper on the fixed stub wall", ha="center", fontsize=6.3, color=C_DIM, **FONT)
-    ax.text(Ax - 2, 120, "← EXT", ha="center", fontsize=6.0, color=C_DIM, **FONT)
-    ax.text(Ax + 190, 158, "INT →\n(handle)", ha="center", fontsize=6.0, color=C_DIM, **FONT)
-    # FIXED stub-wall steel frame (left) — keeper + outward stop weld to it
-    ax.add_patch(Rectangle((Ax + 6, 35), 26, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
-    ax.add_patch(Rectangle((Ax + 9, 38), 20, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (Ax + 19, 35), (Ax + 24, 182), "FIXED stub-wall\nsteel frame", col=C_OUT, fs=6)
-    ax.add_patch(Rectangle((Ax + 32, 86), 44, 8, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))          # outward STOP lip
-    leader(ax, (Ax + 54, 94), (Ax + 46, 184), "OUTWARD STOP\n(panel opens inward only)", col=C_OUT, fw="bold", fs=6)
-    ax.add_patch(Rectangle((Ax + 32, 44), 10, 26, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))          # welded keeper
-    ax.add_patch(Polygon([(Ax + 32, 44), (Ax + 32, 38), (Ax + 40, 44)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld
-    leader(ax, (Ax + 37, 46), (Ax + 14, 12), "WELDED KEEPER\n(cam hooks here)", col=C_OUT, fs=6)
-    # 20mm EPDM gasket
-    ax.add_patch(Rectangle((Ax + 76, 42), 14, 42, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, (Ax + 83, 42), (Ax + 106, 150), "20mm EPDM\n(cam draws it tight)", col=C_OUT, fs=6)
-    # SWINGING panel-frame RHS — the tube the latch mounts through
-    ax.add_patch(Rectangle((Ax + 90, 35), 50, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="\\\\", zorder=4))
-    ax.add_patch(Rectangle((Ax + 93, 38), 44, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (Ax + 128, 95), (Ax + 158, 184), "SWINGING panel-frame RHS\n(2×2×0.120) — latch through it", col=C_OUT, fs=6)
-    # latch: barrel through the tube, nut inside, cam to the keeper, handle interior
-    ax.plot([Ax + 40, Ax + 150], [62, 62], color="#8A8F98", lw=4.5, zorder=7)                       # barrel
-    ax.add_patch(Rectangle((Ax + 128, 54), 9, 16, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=8))           # nut against the INNER face of the handle-side wall
-    leader(ax, (Ax + 132, 54), (Ax + 138, 128), "nut against the inside\nof the tube wall", col=C_OUT, fs=6)
-    ax.add_patch(Polygon([(Ax + 40, 54), (Ax + 40, 70), (Ax + 30, 67), (Ax + 30, 57)], closed=True, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))  # cam behind keeper
-    ax.add_patch(Rectangle((Ax + 150, 50), 9, 24, fc="#202020", ec=C_OUT, lw=1.0, zorder=8))         # handle hub
-    ax.add_patch(Rectangle((Ax + 159, 56), 20, 12, fc="#202020", ec=C_OUT, lw=1.0, zorder=8))        # lift-and-turn lever
-    leader(ax, (Ax + 169, 62), (Ax + 190, 98), "LIFT-AND-TURN handle\n(interior — egress)", col=C_OUT, fw="bold", fs=6)
-    # over-bore + light-tight plug in the FAR (exterior) tube wall, coaxial with the nut
-    ax.add_patch(Rectangle((Ax + 90, 53), 3, 18, fc=BG, ec=C_OUT, lw=1.0, zorder=6))                 # over-bore (larger access hole)
-    ax.add_patch(Rectangle((Ax + 84, 55), 6, 14, fc="#3A3A3A", ec=C_OUT, lw=1.0, zorder=7))          # light-tight plug
-    leader(ax, (Ax + 86, 56), (Ax + 92, 8), "OVER-BORE (far wall) for the box spanner\nto reach the nut → LIGHT-TIGHT PLUG after", col=C_OUT, fw="bold", fs=6)
+    ax.text(Ax + 92, 194, "plan section · two stiles side by side — the cam picks up the strike plate on the jamb stile", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    # SWINGING panel-frame stile (LEFT) — the latch mounts through it
+    ax.add_patch(Rectangle((Ax + 8, 38), 52, 66, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="\\\\", zorder=4))
+    ax.add_patch(Rectangle((Ax + 11, 41), 46, 60, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 24, 38), (Ax + 8, 10), "SWINGING panel stile\n(2×2×0.120 RHS) — latch mounts here", col=C_OUT, fs=6)
+    # FIXED jamb stile (RIGHT) — SIDE BY SIDE; carries the strike plate + the outward stop
+    ax.add_patch(Rectangle((Ax + 84, 38), 52, 66, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
+    ax.add_patch(Rectangle((Ax + 87, 41), 46, 60, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 120, 38), (Ax + 150, 10), "FIXED jamb stile\n(welded to the stub wall)", col=C_OUT, fs=6)
+    # 20mm EPDM in the thin gap between the two stiles (the cam draws it tight)
+    ax.add_patch(Rectangle((Ax + 60, 42), 24, 58, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=3))
+    leader(ax, (Ax + 72, 100), (Ax + 58, 184), "20mm EPDM\n(cam draws it tight)", col=C_OUT, fs=6)
+    # STRIKE PLATE welded to the jamb stile, protruding into the gap toward the panel
+    ax.add_patch(Rectangle((Ax + 74, 54), 10, 32, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))            # plate on the jamb face
+    ax.add_patch(Polygon([(Ax + 84, 54), (Ax + 90, 54), (Ax + 84, 48)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld to jamb
+    leader(ax, (Ax + 79, 84), (Ax + 112, 168), "STRIKE PLATE welded to the\njamb stile (cam picks it up here)", col=C_OUT, fw="bold", fs=6)
+    # cam-latch barrel: end-on hub on the panel stile (axis into the page; lift-and-turn handle behind, interior)
+    ax.add_patch(Circle((Ax + 34, 71), 11, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))
+    ax.add_patch(Circle((Ax + 34, 71), 4, fc="#606568", ec="none", zorder=8))
+    leader(ax, (Ax + 34, 82), (Ax + 8, 168), "cam-latch barrel through the panel stile\n(LIFT-AND-TURN handle behind — interior, egress)", col=C_OUT, fs=6)
+    # CAM arm on the barrel — turned, it reaches RIGHT and hooks BEHIND the strike plate on the jamb
+    ax.add_patch(Rectangle((Ax + 34, 66), 40, 9, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=9))            # cam arm → the strike plate
+    ax.add_patch(Rectangle((Ax + 68, 52), 6, 23, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=9))            # cam hook wrapping the strike-plate edge
+    leader(ax, (Ax + 52, 70), (Ax + 40, 148), "CAM — lift + turn the handle and it swings across\nto PICK UP the strike plate on the ADJACENT jamb\nstile (draws the panel tight against the EPDM)", col=C_OUT, fw="bold", fs=6)
+    # outward stop on the jamb — the panel opens INWARD only
+    ax.add_patch(Rectangle((Ax + 62, 90), 22, 8, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
+    leader(ax, (Ax + 66, 94), (Ax + 36, 184), "OUTWARD STOP\n(panel opens inward only)", col=C_OUT, fw="bold", fs=6)
 
     # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
     Bx = 210

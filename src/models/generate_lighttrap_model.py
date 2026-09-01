@@ -987,6 +987,23 @@ def far_bay_wall_frame():
     return '\n'.join(p)
 
 
+def near_bay_wall_frame():
+    """NEAR bay wall (pinhole side / right) — reconcile the MISSING top + bottom beams: 50×50 RHS running in
+    Yd from the drum cage across to the near frame edge (left swing stile), mirroring the far wall (the
+    horizontal beams of Sheet 9). Beams only for now; L-angle + rivets follow once the beams read right."""
+    yL = ov.DRUM_CAGE_YD_L                 # 700 — near cage face
+    yn = CUT                               # 180 — near frame edge (left swing stile)
+    RS = 50
+    xb2 = PANEL_CORNER_T                   # 40 — just inboard of the skin
+    zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (cage top)
+    zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
+    c = C_STEEL
+    return '\n'.join([
+        ruby_box("Near bay top beam (50 RHS)", xb2, yn, zt, RS, yL - yn, RS, color=c),
+        ruby_box("Near bay bottom beam (50 RHS)", xb2, yn, zb, RS, yL - yn, RS, color=c),
+    ])
+
+
 # The FAR apron's last APRON_FIX_W (Yd C_WID−200 .. C_WID) is a FIXED stub, not a fold-down: the folding
 # flap would foul the Ø89 pivot post + its Ø220 floor mount plate (near edge PIVOT_YD−110 = Yd2177).
 # (APRON_FIX_W now single-sourced from tbs_constants.)
@@ -1174,6 +1191,7 @@ def generate_ruby():
         bay(),
         bay_l_angles(),                   # L-angle framing securing the HDPE bay walls (Sheet 2 detail)
         far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + drum-side L-angle + rivets
+        near_bay_wall_frame(),            # NEAR wall (pinhole side): top + bottom beams to the cage
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position

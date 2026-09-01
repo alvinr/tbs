@@ -1062,9 +1062,14 @@ def apron_up_geom():
     yf = C_WID - APRON_FIX_W
     far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
                               [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, _CT_FAR - _AHZ, color=C_PLY, alpha=0.85)
+    # FIXED (non-folding) plywood stub closing the corner gap between the far apron's far edge
+    # (C_WID−APRON_FIX_W) and the pivot post: a fold-down flap here would foul the Ø89 post + its Ø220 floor
+    # plate, but this piece stays fixed and at X28..40 it clears both (post X131+, plate X65+).
+    stub = ruby_box("Fold-down apron (far) fixed stub", PLY_X0, C_WID - APRON_FIX_W, _AHZ, PLY_T,
+                    PIVOT_YD - (C_WID - APRON_FIX_W), FAR_CORNER_BOT - _AHZ, color=C_PLY, alpha=0.85)
     return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
             _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) +
-            far_wedge + apron_top_chamfers())
+            far_wedge + apron_top_chamfers() + stub)
 
 
 def apron_folded_geom():

@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel Sheet 14 — removed Detail A (Fan-B → plywood).** That fan-flange → tee-nut mount is now
+  fully captured on the new **Ventilation Sheet 3** (Fan-B mount), so Sheet 14 is now just the **plywood →
+  frame** attachment (welded tab + captive tee-nut). Updated the cross-references accordingly (Sheet 12
+  note + subtitle now point the Fan-B mount to Ventilation Sheet 3; the ventilation sheet/report no longer
+  cite the retired "Sheet 14 Detail A"). Vent Sheet 3 was already registered (gallery/publish/setup/deps/report).
+
 - **Ventilation — new Sheet 3: Fan B mount (plywood panel, tee-nut fixing).** The fan schematic (Sheet 2)
   showed BOTH fans as identical wall-mounted units, but Fan B is on the SWINGING cargo-door panel and
   bolts to its 18mm PT plywood band via 2× M8 into captive tee-nuts (hingepanel Sheet 14), not the

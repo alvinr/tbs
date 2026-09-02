@@ -689,8 +689,8 @@ def draw_sheet2():
 # SHEET 3 — Fan B mount (on the hinge panel, NOT the container wall)
 # Fan A (sheet 2) fixes to the container end wall via an L-bracket + Tek self-drilling screws.
 # Fan B is on the SWINGING cargo-door panel and mounts to its 18mm PLYWOOD band
-# with 2× M8 through a flange plate into captive TEE-NUTS in the ply (hingepanel
-# Sheet 14 Detail A) — the SAME fan body + baffle duct, DIFFERENT fixing.
+# with 2× M8 through a flange plate into captive TEE-NUTS in the ply (detailed on
+# this sheet) — the SAME fan body + baffle duct, DIFFERENT fixing.
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet3():
@@ -756,7 +756,7 @@ def draw_sheet3():
     for bz in (wz0 + FL_OH * 0.5, wz1 - FL_OH * 0.5):
         draw_bolt(ax, PLY_X0 - (SKIN_T + FL_T) / 2, bz, SKIN_T + FL_T,
                   d=8, vertical=False, head=-1, end="rivnut", wall=PLY_T, zb=8)
-    ann(ax, "2× M8 → captive TEE-NUT in the ply\n(flange on the interior face — Sheet 14 Detail A)",
+    ann(ax, "2× M8 → captive TEE-NUT in the ply\n(flange on the interior face)",
         (PLY_X1 + 1, wz1 - FL_OH * 0.5), (PLY_X1 + 70, wz1 + 20))
 
     # ── Panel fan body (exterior of the flange) ──
@@ -808,7 +808,7 @@ def draw_sheet3():
         "FAN B — SAME FAN as Fan A, DIFFERENT FIXING",
         "Fan A (sheet 2) fixes to the container END WALL with an L-bracket + Tek screws (no through-bolt).",
         "Fan B is on the SWINGING cargo-door panel — it bolts to the panel's 18mm PT PLYWOOD band with",
-        "2× M8 through a flange plate into captive TEE-NUTS in the ply (hingepanel Sheet 14 Detail A).",
+        "2× M8 through a flange plate into captive TEE-NUTS in the ply (detailed on this sheet).",
         "Identical fan body + baffle duct; only the mounting substrate (steel wall vs plywood panel) differs.",
     ], x=350, y_top=80, spacing=15, fs=7.5, title_fs=8.5, title_color=C_CL, width=300,
        border_color=C_CL, border_lw=1.0)

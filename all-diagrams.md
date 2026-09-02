@@ -166,7 +166,7 @@
 
 ![TBS-001 Hinged Panel — Sheet 13: Frame Hardware — Cam Latch, Transport Stay, Brush Strip](assets/hingepanel-sheet13.png)
 
-![TBS-001 Hinged Panel — Sheet 14: Plywood Attachments — Fan-B Mount + Frame Tab/Tee-Nut](assets/hingepanel-sheet14.png)
+![TBS-001 Hinged Panel — Sheet 14: Plywood → Frame Attachment (Welded Tab + Captive Tee-Nut)](assets/hingepanel-sheet14.png)
 
 ![TBS-001 Hinged Panel — Sheet 15: Frame → Pivot-Post Connection](assets/hingepanel-sheet15.png)
 

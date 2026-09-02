@@ -2378,12 +2378,12 @@ def sheet12():
     draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}mm", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
     draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}mm", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
 
-    ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 14",
+    ax.text(SW / 2, cy0 - 230, "plywood→frame tab/T-nut detail → SHEET 14  ·  Fan-B mount → Ventilation Sheet 3",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
     title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 14)",
+                subtitle="FAN-B PLYWOOD — CUT SHEET (ply→frame on Sheet 14; Fan-B mount on Ventilation Sheet 3)",
                 scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,
@@ -2393,56 +2393,19 @@ def sheet12():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 14  —  Plywood Attachments (enlarged): Fan-B → ply + ply → frame tab/T-nut
+# SHEET 14  —  Plywood → Frame attachment (enlarged): welded tab + captive tee-nut
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet14():
-    fig, ax = plt.subplots(figsize=(17, 10.8))
+    fig, ax = plt.subplots(figsize=(12, 10.8))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(0, 470)
+    ax.set_xlim(0, 250)
     ax.set_ylim(-95, 250)     # extra bottom room so the rotated-90° companion clears the title block
 
-    # ── DETAIL A — Fan-B → plywood (SECTION, to scale 1:1) ──
-    # A 150mm axial PANEL FAN bolts to the ply through its thin MOUNTING FLANGE PLATE (the
-    # panel that butts the ply) at the flange CORNERS — the bolts do NOT run through the
-    # 50mm fan body. Exterior (fan) at LEFT → interior (ply + captive tee-nut) at RIGHT.
-    ax0, ay0, sA = 24, 10, 1.0
-    def dA(x, y): return (ax0 + x * sA, ay0 + y * sA)
-    ax.text(ax0 + 60, 238, "DETAIL A — FAN-B → PLYWOOD (SECTION 1:1)", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(ax0 + 60, 226, "panel fan bolts through its flange plate, not the fan body", ha="center", fontsize=6.6, color=C_DIM, **FONT)
-    # ply + flange plate BOTH carry a Ø150 air CUTOUT (aligned with the fan bore) — shown at 1:1 as a
-    # 150 gap between the below/above solid pieces. Fan diameter 150 = the cutout; bolts land in the solid.
-    CUT0, CUT1 = 30, 180          # 150mm fan cutout, centered on the flange (y 30..180)
-    for py0, ph in [(5, CUT0 - 5), (CUT1, 210 - CUT1)]:                                            # 18mm ply, below + above the cutout
-        ax.add_patch(Rectangle(dA(60, py0), 18, ph, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))
-        fy0 = py0 if py0 >= CUT0 else CUT0 - 25                                                    # flange butts the fan; SAME 25mm width top + bottom
-        ax.add_patch(Rectangle(dA(54, fy0), 6, 25, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))         # fan mounting flange plate
-    ax.add_patch(Rectangle(dA(4, CUT0), 50, CUT1 - CUT0, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=4))   # fan body (Ø150 × 50 deep) — protrudes exterior
-    ax.add_patch(Rectangle(dA(4, CUT0 + 12), 50, (CUT1 - CUT0) - 24, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))  # fan bore = the Ø150 air path
-    ax.add_patch(Rectangle(dA(19, 93), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))          # motor hub
-    draw_dim_v(ax, dA(69, 0)[0], dA(0, CUT0)[1], dA(0, CUT1)[1], "Ø150mm fan bore = ply cutout", offset=10, fs=5.6, font=FONT, right=True)
-    # bolts at the flange corners — clear of the round fan body. Head bears on the fan mounting flange
-    # plate (x=54); the shank runs through the flange + 18mm ply and threads into a captive TEE-NUT set
-    # in the ply's far/interior face (same IBC-convention fixing as Detail B) — no backing plate.
-    for by2 in (18, 192):   # symmetric about the fan (Ø150, y30–180): both bolts clear the housing by ~12mm
-        _draw_bolt(ax, dA(64, by2)[0], dA(64, by2)[1], 22 * sA, d=8, vertical=False, head=-1, end="tapped", zb=9)
-        ax.add_patch(Rectangle(dA(60, by2 - 3), 15, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))   # tee-nut barrel (in the ply)
-        ax.add_patch(Rectangle(dA(75, by2 - 6), 3, 12, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))   # tee-nut flange on the ply FAR face
-    leader(ax, dA(69, 190), (ax0 + 70, 235), "18mm PT ply band", col=C_OUT, fs=6.2)
-    leader(ax, dA(57, 55), (ax0 - 12, 205), "fan MOUNTING FLANGE\nplate (butts the ply)", col=C_OUT, fw="bold", fs=6.2)
-    leader(ax, dA(26, 110), (ax0 - 18, 60), "150mm axial fan body\n(Ø150 × 50 deep) —\nNOT bolted through", col=C_OUT, fs=6.2)
-    leader(ax, dA(77, 110), (ax0 + 140, 205), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.2)
-    ax.text(ax0 + 60, -22, "Fan-B flange → 2× M8 through the flange plate + 18mm ply into\na captive tee-nut in the ply (bolts clear the fan body)", ha="center", va="top", fontsize=6.2, color=C_OUT, **FONT)
-    # dims (to scale)
-    draw_dim_v(ax, dA(0, 0)[0] - 20, dA(0, 15)[1], dA(0, 205)[1], "190mm flange", offset=8, fs=5.8, font=FONT, right=False)
-    draw_dim_v(ax, dA(57, 0)[0] + 42, dA(0, 18)[1], dA(0, 192)[1], "bolt gauge", offset=10, fs=5.6, font=FONT, right=True)
-    draw_dim_h(ax, dA(4, 0)[0], dA(54, 0)[0], dA(0, 34)[1], "50mm fan", offset=-7, fs=5.6, font=FONT)
-    draw_dim_h(ax, dA(60, 0)[0], dA(78, 0)[0], dA(0, 216)[1], "18mm", offset=7, fs=5.6, font=FONT)
-
     # ── DETAIL B — plywood → frame (welded tab + captive tee-nut) ──
-    bx0, byy, sB = 270, 40, 1.0
+    bx0, byy, sB = 60, 40, 1.0
     def dB(x, y): return (bx0 + x * sB, byy + y * sB)
-    ax.text(bx0 + 90, 200, "DETAIL B — PLYWOOD → FRAME", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(bx0 + 90, 200, "PLYWOOD → FRAME ATTACHMENT", ha="center", fontsize=10, fontweight="bold", color=C_OUT, **FONT)
     ax.text(bx0 + 90, 188, "welded steel tab + pronged captive tee-nut (IBC convention)", ha="center", fontsize=7, color=C_DIM, **FONT)
     ax.text(bx0 + 65, 180, "PLAN SECTION (horizontal cut)", ha="center", fontsize=6.6, color=C_DIM, **FONT)
     # frame RHS (vertical stile, cut) · welded L-tab · ply edge-on · bolt through the tab UPSTAND
@@ -2488,7 +2451,7 @@ def sheet14():
 
     title_block(ax, "SHEET 14 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
+                subtitle="PLYWOOD → FRAME ATTACHMENT — WELDED TAB + CAPTIVE TEE-NUT",
                 scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet14.png"), dpi=DIAGRAM_DPI,

@@ -528,26 +528,25 @@ def sheet2():
     leader(ax, (DRUM_CAGE_YD_L + 170, CAGE_YB), (DRUM_CAGE_YD_L - 250, CAGE_YB + 150),
            "FRONT-face HDPE riveted\nto the front cage frame", col="#4a5a70", fs=5.8)
     leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
-           "1/8″ HDPE bay SIDE skin — riveted to an\nL-ANGLE on the cage post (NOT through the\nbeam); see the L-ANGLE DETAIL below", col="#4a5a70", fs=5.8)
+           "1/8″ HDPE bay SIDE skin — sits FLAT on the\nOUTSIDE face of the cage post; blind-riveted\nSTRAIGHT THROUGH into the post (see DETAIL below)", col="#4a5a70", fs=5.8)
 
-    # ── ENLARGED DETAIL — HDPE side skin → L-ANGLE → frame (the HDPE does NOT pass through the beam;
-    #    an Al L-angle rivets to the steel post, and the HDPE skin rivets to the angle's upstand leg) ──
+    # ── ENLARGED DETAIL — HDPE side skin → cage post (the skin lies FLAT on the post's OUTSIDE face and
+    #    is blind-riveted straight through the skin into the post's outer wall — no L-angle standoff) ──
     Lx0, Ly0, Ls = 1560, D_YB - 300, 2.4
     def dL(x, y): return (Lx0 + x * Ls, Ly0 + y * Ls)
-    def _riv(cx, cy):                                             # simple rivet glyph (head + shank dot)
-        ax.add_patch(Circle((cx, cy), 3.0, fc="#C9CCD2", ec=C_OUT, lw=0.8, zorder=11))
     ax.add_patch(Rectangle(dL(-6, -6), 122 * Ls, 96 * Ls, fc="#FBFAF6", ec=C_DIM, lw=0.8, zorder=8))  # inset panel
-    ax.text(*dL(58, 88), "DETAIL — HDPE SIDE SKIN → L-ANGLE → FRAME", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, zorder=12, **FONT)
-    ax.text(*dL(58, 80), "HDPE does NOT pass through the beam", ha="center", fontsize=6.0, color=C_DIM, zorder=12, **FONT)
-    ax.add_patch(Rectangle(dL(0, 8), 34, 62, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=9))              # cage frame RHS (cut)
-    ax.add_patch(Rectangle(dL(3, 11), 28, 56, fc="#FBFAF6", ec=C_OUT, lw=0.5, zorder=9))
-    ax.text(*dL(17, 1), "cage frame RHS", ha="center", fontsize=5.6, color=C_OUT, zorder=12, **FONT)
-    ax.add_patch(Rectangle(dL(34, 32), 42, 6, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=10))                          # L-angle base leg (on the frame face)
-    ax.add_patch(Rectangle(dL(70, 32), 6, 44, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=10))                          # L-angle upstand leg
-    ax.add_patch(Rectangle(dL(76, 32), 8, 48, fc=C_PLASTIC, ec=C_OUT, lw=1.2, zorder=10))                       # HDPE side skin
-    _riv(*dL(52, 35)); _riv(*dL(79, 56))                                                                        # base→frame rivet · HDPE→upstand rivet
-    leader(ax, dL(52, 35), dL(30, -4), "Al L-ANGLE riveted\nto the steel post", col=C_OUT, fw="bold", fs=6.0)
-    leader(ax, dL(80, 56), dL(104, 40), "1/8″ HDPE skin\nriveted to the\nL-angle upstand", col=C_OUT, fw="bold", fs=6.0)
+    ax.text(*dL(58, 88), "DETAIL — HDPE SIDE SKIN → CAGE POST", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, zorder=12, **FONT)
+    ax.text(*dL(58, 80), "skin flat on the post's outside face — riveted straight through", ha="center", fontsize=6.0, color=C_DIM, zorder=12, **FONT)
+    ax.add_patch(Rectangle(dL(40, 8), 40, 62, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=9))             # cage post RHS (cut)
+    ax.add_patch(Rectangle(dL(43, 11), 34, 56, fc="#FBFAF6", ec=C_OUT, lw=0.5, zorder=9))                       # RHS bore
+    ax.text(*dL(60, 1), "cage post RHS", ha="center", fontsize=5.6, color=C_OUT, zorder=12, **FONT)
+    ax.add_patch(Rectangle(dL(31, 8), 9, 62, fc=C_PLASTIC, ec=C_OUT, lw=1.2, zorder=10))                        # HDPE skin FLAT on the outboard face
+    # blind rivet driven straight through the skin + post outer wall (factory head on the outboard face)
+    ax.add_patch(Rectangle(dL(27, 34), 4, 10, fc="#C9CCD2", ec=C_OUT, lw=0.9, zorder=11))                       # factory head (outboard)
+    ax.add_patch(Rectangle(dL(31, 37), 16, 4, fc="#C9CCD2", ec=C_OUT, lw=0.9, zorder=11))                       # shank through skin + wall
+    ax.add_patch(Circle(dL(47, 39), 3.0, fc="#C9CCD2", ec=C_OUT, lw=0.9, zorder=11))                            # set (bulbed) tail inside the post
+    leader(ax, dL(35, 39), dL(12, 6), "1/8″ HDPE skin\nflat on the post\noutside face", col=C_OUT, fw="bold", fs=6.0)
+    leader(ax, dL(44, 39), dL(70, 58), "blind rivet — straight\nthrough the skin into\nthe post outer wall", col=C_OUT, fw="bold", fs=6.0)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, CAGE_YB - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)

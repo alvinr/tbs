@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel Sheet 2 — drum-entrance HDPE side skin now fixed directly to the post.** Dropped the
+  L-angle standoff: the 1/8″ HDPE bay side skin sits flat on the cage post’s outside face and is
+  blind-riveted straight through the skin into the post’s outer wall. Leader + enlarged detail redrawn
+  to match the mid-sheet rivets.
+
 - **Hinged panel Sheet 9/10 (steel-frame GA) — Ø89 pivot post removed.** The vertical pivot-post tube
   was a distraction from the frame general arrangement; it now reads as just the steel frame. The post
   assembly stays detailed on Sheet 11.

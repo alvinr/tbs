@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel — Sheet 2 zero-drift reconcile with the 3D (drum/cage/frame depth).** Sheet 2 was
+  recomputing the drum/cage depth locally (drum center −450, cage −875..−25) instead of using the shared
+  constants the 3D model uses. Re-based the plan depth on the PANEL exterior and single-sourced from
+  `DRUM_CX` + `DRUM_CAGE_X0/X1` (`+PANEL_EXT` offset), so the drum, cage extent, and cage→frame relation
+  now match the lighttrap model exactly. The cage back posts now **land inside the frame jambs** (welded
+  along the embedded overlap — weld ticks), replacing the earlier bracket-across-a-gap. Also drew the
+  opening as **two distinct members** — the 40mm container wall AND the 50×20×3 RHS door frame — per the
+  3D (was one 40mm block mislabeled as the frame). EXT overhang auto-updates to 760mm; the (now N/A)
+  interior-overhang dim removed. Per Alvin: "both the 2D and 3D represent the same factual world. Zero drift."
+
 - **Hinged panel — feedback round (Sheets 2/9/10/14 + global mm).** Sheet 9/10: removed the Fan-B
   plywood band and the drum/cage envelope so the steel-frame GA reads as frame only (drum detailed on
   Light-Trap Sheet 7, Fan-B ply on Sheet 12). Sheet 14 Detail A: the fan-flange bolts now thread into a

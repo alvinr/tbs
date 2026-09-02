@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
@@ -402,29 +402,39 @@ def sheet2():
     PT     = 120    # panel overall thickness (frame + 2 × ply)
     FRAME_T = PT - 2 * PLY_T   # = 84mm RHS frame depth
 
-    # Y positions (from exterior face of container wall)
-    Y0_W  = 0            # exterior face
-    Y1_W  = WALL_T       # = 40  (inner face of wall / outer face of panel)
-    Y0_PL = Y1_W         # outer ply starts
-    Y1_PL = Y1_W + PLY_T # = 58
-    Y0_FR = Y1_PL        # frame starts = 58
-    Y1_FR = Y0_FR + FRAME_T  # = 142
-    Y0_PL2 = Y1_FR       # inner ply = 142
-    Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel inner face)
+    # Y positions (depth) — TWO distinct members sit in front of the panel, matching the 3D:
+    # the 40mm CONTAINER WALL, then the 50×20×3 RHS DOOR FRAME bolted into the opening. The panel
+    # seals against the door frame's inner face (= the panel exterior).
+    Y0_W  = 0                          # container-wall exterior face
+    Y1_W  = WALL_T                     # = 40  wall inner face (= door-frame exterior)
+    Y0_DF = Y1_W                       # door frame front (bolted to the wall opening)
+    Y1_DF = Y0_DF + DOOR_FRAME_DEPTH   # = 60  door-frame inner face
+    PANEL_EXT = Y1_DF                  # = 60  panel exterior (seal landing) — origin for the shared drum/cage X
+    Y0_PL = PANEL_EXT    # outer ply starts at the panel exterior
+    Y1_PL = Y0_PL + PLY_T
+    Y0_FR = Y1_PL        # frame layer
+    Y1_FR = Y0_FR + FRAME_T
+    Y0_PL2 = Y1_FR       # inner ply
+    Y1_PL2 = Y0_PL2 + PLY_T  # panel inner face
 
     Y_EXT = Y0_W         # exterior face = 0
-    Y_INT = Y1_PL2       # interior face = 160
+    Y_INT = Y1_PL2       # interior face
 
-    # Drum geometry — axis is vertical; plan section shows horizontal circle
-    D_CX = PW / 2        # drum center X: centered in panel width = 1181mm
-    # B2: housing center offset out in DEPTH to the container DRUM_CX (= BAY_FRONT_X
-    # + DRUM_R + 40 = -450mm), carried past the door plane by the punch-out bay.
-    D_CY = BAY_FRONT_X + DRUM_R + 40   # = -450mm (container DRUM_CX)
-    DR   = DRUM_R        # = 400mm
+    # Drum geometry — axis is vertical; plan section shows horizontal circle.
+    # DEPTH single-sources from the SHARED 3D constants (DRUM_CX, DRUM_CAGE_X0/X1), which are
+    # referenced to the PANEL exterior face; this plan's depth origin is the wall exterior, PANEL_EXT
+    # in front — so a shared X maps to plan depth via `+ PANEL_EXT`. Zero drift with the 3D lighttrap
+    # model (2026-09-02, Alvin: "both represent the same factual world").
+    D_CX = PW / 2                    # drum center X: centered in panel width = 1181mm
+    D_CY = LT_DRUM_CX + PANEL_EXT    # shared drum-axis depth (LT_DRUM_CX = tbs DRUM_CX)
+    DR   = DRUM_R                    # = 400mm
 
     # Drum Y (depth) extents
-    D_YB = D_CY - DR     # exterior overhang = -450 - 400 = -850mm
-    D_YT = D_CY + DR     # interior overhang = -450 + 400 = -50mm
+    D_YB = D_CY - DR     # exterior overhang
+    D_YT = D_CY + DR     # interior overhang
+    # Cage depth envelope — the SHARED cage extent (embeds in the panel frame like the 3D)
+    CAGE_YB = DRUM_CAGE_X0 + PANEL_EXT   # cage exterior face
+    CAGE_YT = DRUM_CAGE_X1 + PANEL_EXT   # cage interior face (lands INSIDE the panel frame → welded)
 
     # Drum X extents
     D_XL = D_CX - DR    # = 731mm
@@ -478,6 +488,10 @@ def sheet2():
     # hatched panel steel). Drawn at the side zones; the drum opening is cut out.
     for _fx, _fw in [(0, D_XL), (D_XR, PW - D_XR)]:
         ax.add_patch(Rectangle((_fx, Y0_W), _fw, WALL_T, fc="#5A5E66", ec=C_OUT, lw=1.1, alpha=0.9, zorder=3.2))
+    # 50×20×3 RHS DOOR FRAME (Y0_DF..Y1_DF) bolted into the opening, in front of the panel — the
+    # panel EPDM seals against its inner face. Distinct lighter steel so it reads apart from the wall.
+    for _fx, _fw in [(0, D_XL), (D_XR, PW - D_XR)]:
+        ax.add_patch(Rectangle((_fx, Y0_DF), _fw, DOOR_FRAME_DEPTH, fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.9, zorder=3.3))
 
     # ── CENTER ZONE = B2 PUNCH-OUT BAY ───────────────────────────────────────
     # The center zone is a rigid box protruding forward (depth from the panel
@@ -486,7 +500,7 @@ def sheet2():
     # frame jamb (over the panel depth); the bay side walls are THIN 1/8″ HDPE at
     # the step lines (drawn exaggerated for visibility — true wall = BAY_WALL_T 3.18mm).
     for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
-        ax.add_patch(Rectangle((x, Y1_W), w, Y_INT - Y1_W,                  # steel frame jamb (panel depth)
+        ax.add_patch(Rectangle((x, PANEL_EXT), w, Y_INT - PANEL_EXT,                  # steel frame jamb (panel depth)
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3, alpha=0.75))
     BWALL = 16                                                              # bay-wall drawn thickness (true 3.18mm)
     # HDPE bay SIDE skins LAP the outboard face of the cage corner posts (no floating
@@ -495,7 +509,7 @@ def sheet2():
     side_faces = [(DRUM_CAGE_YD_L - BWALL, DRUM_CAGE_YD_L),                   # (skin x0, post face) — left
                   (DRUM_CAGE_YD_R, DRUM_CAGE_YD_R + BWALL)]                   # right (post face = x0)
     for xw, _pf in side_faces:
-        ax.add_patch(Rectangle((xw, BAY_FRONT_X), BWALL, Y1_W - BAY_FRONT_X,
+        ax.add_patch(Rectangle((xw, CAGE_YB), BWALL, PANEL_EXT - CAGE_YB,
                                 fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
     # rivet line: horizontal-axis blind rivets (SIDE-VIEW glyph, not end-on circles) through
     # the HDPE side skin into each corner post — one at the exterior post, one at the interior.
@@ -504,14 +518,14 @@ def sheet2():
     for pf, ang, cxr in ((post_face_L, 180, post_face_L - 8), (post_face_R, 0, post_face_R + 8)):
         for ry in (D_YB, D_YT):                              # exterior post + interior post
             _blind_rivet(ax, cxr, ry, ang, 16, d=6)
-    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, BAY_FRONT_X), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
+    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, CAGE_YB), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
     # FRONT-face HDPE blind-riveted to the front cage frame (was missing — the SIDE skins have theirs above).
     # Vertical-axis glyph, factory head FLUSH on the exterior (−Y) surface (cz = BAY_FRONT_X + grip/2); SPREAD
     # along the wall, clear of the side-skin corner rivets. Smaller d so they don't crowd the corners.
     for fx in (DRUM_CAGE_YD_L + 170, (DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, DRUM_CAGE_YD_R - 170):
-        _blind_rivet(ax, fx, BAY_FRONT_X + 6.5, 270, 13, d=6)
-    leader(ax, (DRUM_CAGE_YD_L + 170, BAY_FRONT_X), (DRUM_CAGE_YD_L - 250, BAY_FRONT_X + 150),
+        _blind_rivet(ax, fx, CAGE_YB + 6.5, 270, 13, d=6)
+    leader(ax, (DRUM_CAGE_YD_L + 170, CAGE_YB), (DRUM_CAGE_YD_L - 250, CAGE_YB + 150),
            "FRONT-face HDPE riveted\nto the front cage frame", col="#4a5a70", fs=5.8)
     leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
            "1/8″ HDPE bay SIDE skin — riveted to an\nL-ANGLE on the cage post (NOT through the\nbeam); see the L-ANGLE DETAIL below", col="#4a5a70", fs=5.8)
@@ -534,7 +548,7 @@ def sheet2():
     _riv(*dL(52, 35)); _riv(*dL(79, 56))                                                                        # base→frame rivet · HDPE→upstand rivet
     leader(ax, dL(52, 35), dL(30, -4), "Al L-ANGLE riveted\nto the steel post", col=C_OUT, fw="bold", fs=6.0)
     leader(ax, dL(80, 56), dL(104, 40), "1/8″ HDPE skin\nriveted to the\nL-angle upstand", col=C_OUT, fw="bold", fs=6.0)
-    ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
+    ax.text((STEP_YD_L + STEP_YD_R) / 2, CAGE_YB - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
 
@@ -545,8 +559,8 @@ def sheet2():
     # dropped) — one VERTICAL rib per corner shows in this horizontal cut as an angle section.
     CORN_SKIN  = PANEL_SKIN_T                     # 1/8″ HDPE skin each face
     RIB        = 25                              # 1"×1"×1/8" Al stiffener rib (angle leg)
-    CORN_Y_OUT = Y1_W                            # 40 — outer face (= wall inner face)
-    CORN_Y_IN  = Y1_W + CORNER_T                  # 80 — inner face (40mm envelope)
+    CORN_Y_OUT = PANEL_EXT                       # panel exterior (seal landing)
+    CORN_Y_IN  = PANEL_EXT + CORNER_T             # inner face (40mm envelope)
 
     # This section is cut at H=1000mm — BELOW the Fan B ply-band top (PANEL_FAN_BAND_Z), so the
     # NEAR corner (Yd 0→653, the fan side) is cut through the 18mm PLYWOOD band, while
@@ -579,7 +593,8 @@ def sheet2():
     LBL_OFF = 70
     lbl_x_r = D_XR + 60
     for ly, lbl, off in [
-        (Y0_W + WALL_T / 2,  "CONTAINER CARGO-DOOR FRAME (50×20×3 RHS)\npanel seals here · U-frame welds (opening edge) · M10 to container", 2 * LBL_OFF),
+        (Y0_W + WALL_T / 2,  f"{WALL_T}mm CONTAINER WALL\n(door opening · M10 anchors)", 2.7 * LBL_OFF),
+        (Y0_DF + DOOR_FRAME_DEPTH / 2,  "50×20×3 RHS DOOR FRAME\npanel seals here · U-frame welds (opening edge)", 1.6 * LBL_OFF),
         (Y0_PL + PLY_T / 2,  f"OUTER PLY ({PLY_T}mm)",                 1 * LBL_OFF),
     ]:
         ax.annotate(lbl, xy=(lbl_x_r, ly),
@@ -689,7 +704,7 @@ def sheet2():
     # ── Drum support CAGE — full 4-wall steel box around the drum (corner posts +
     #    perimeter rails) + the cross-beam carrying the central revolve bearing. ──
     from tbs_constants import DRUM_CAGE_YD_L as _CGL, DRUM_CAGE_YD_R as _CGR
-    cage_yb, cage_yt = D_YB - 25, D_YT + 25                       # cage depth envelope (just outside the drum)
+    cage_yb, cage_yt = CAGE_YB, CAGE_YT                           # SHARED cage depth envelope (DRUM_CAGE_X0/X1)
     # CAGE TOP PERIMETER RAILS (50×50 RHS ring welded across the corner-post tops) — these
     # sit ABOVE the H=1000 cut, so they read as HIDDEN (dashed) members, not an envelope line.
     RAIL = 50
@@ -705,22 +720,17 @@ def sheet2():
     for cxp in (_CGL, _CGR - 50):                                 # 4 corner posts (50×50 RHS) — CUT at H=1000 (solid)
         for cyp in (cage_yb, cage_yt - 50):
             ax.add_patch(Rectangle((cxp, cyp), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.8, zorder=11))
-    leader(ax, (_CGR, cage_yt - 90), (D_XR + 260, cage_yt - 240),
-           "DRUM SUPPORT CAGE (4-wall 50×50\nsteel box) — WELDED to the frame:\ncorner posts → center-zone jambs,\naxle beams → header + sill\n(cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
+    leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 200, cage_yb + 80),
+           "DRUM SUPPORT CAGE (4-wall 50×50 steel box) — WELDED\nto the frame: back corner posts LAND IN / weld along the\ncenter-zone jambs (cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
     leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL - 300, cage_yb - 120),
            "CAGE TOP PERIMETER RAILS\n(50×50 RHS ring, above the\nH=1000 cut — shown hidden)", col=C_STEEL, fs=5.8)
-    # cage → frame connection: each interior corner post is tied back to the frame by a WELDED
-    # BRACKET/GUSSET PLATE (full 50mm post width), fillet-welded to the post face AND to the frame,
-    # so the cage + frame act as one weldment — NOT the former thin bolt-like tie.
-    for cxp in (_CGL + 25, _CGR - 25):                                    # interior corner-post centers (725, 1637)
-        bx0 = cxp - 25                                                    # full post width
-        ax.add_patch(Rectangle((bx0, cage_yt), 50, Y1_W - cage_yt, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=11))  # bracket plate
-        ax.add_patch(Polygon([(bx0, cage_yt), (bx0 + 50, cage_yt), (bx0 + 50, cage_yt + 30)],
-                             closed=True, fc=C_STEEL, ec=C_OUT, lw=0.7, alpha=0.6, zorder=11.1))                          # triangular stiffener gusset
-        for wz, dz in ((cage_yt, 13), (Y1_W, -13)):                      # fillet welds at BOTH ends (post + frame)
-            ax.add_patch(Polygon([(cxp - 10, wz), (cxp + 10, wz), (cxp, wz + dz)], closed=True, fc=C_OUT, ec="none", zorder=12))
-    leader(ax, (_CGR - 25, (cage_yt + Y1_W) / 2), (D_XR + 250, Y1_W + 140),
-           "cage post → frame:\nWELDED BRACKET + GUSSET plate\n(fillet-welded both ends —\nno bolts; one weldment)", col=C_STEEL, fs=5.8)
+    # cage → frame connection: the cage's BACK corner posts LAND INSIDE the frame jambs — the cage
+    # interior face (CAGE_YT) sits at panel depth ~90mm, WITHIN the 40–160 frame depth — so cage +
+    # frame are ONE weldment, welded along the embedded overlap (matches the 3D lighttrap model, where
+    # the back posts are embedded in the jambs). Fillet-weld ticks mark where each post enters the frame.
+    for cxp in (_CGL, _CGR - 50):                                         # back corner posts (Yd), embedded in the jambs
+        for wy, dy in ((cxp + 6, 12), (cxp + 44, -12)):                  # weld fillets along the post↔jamb interface
+            ax.add_patch(Polygon([(wy, PANEL_EXT), (wy, PANEL_EXT + 16), (wy + dy, PANEL_EXT)], closed=True, fc=C_OUT, ec="none", zorder=12))
     cb_t = 50
     ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
                            fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))
@@ -773,7 +783,7 @@ def sheet2():
           f"  {WALL_T}mm", offset=15, fs=6.5, right=True, font=FONT)
 
     # Panel overall thickness — arrow + inline label
-    draw_dim_v(ax, DIM_X_R, Y1_W, Y1_PL2,
+    draw_dim_v(ax, DIM_X_R, PANEL_EXT, Y1_PL2,
           f"  {PT}mm", offset=15, fs=6.5, right=True, font=FONT)
 
     # Exterior drum overhang — 45° leader going south-left
@@ -781,7 +791,8 @@ def sheet2():
     draw_dim_v(ax, D_XL - 150, D_YB, Y0_W, f"{int(Y0_W - D_YB)}mm EXT. OVERHANG", offset=15, fs=6, right=True, font=FONT)
 
     # Interior drum overhang dimension
-    draw_dim_v(ax, D_XL - 150, Y1_PL2, D_YT, f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6, right=True, font=FONT)
+    # (No interior overhang: the drum sits in the exterior punch-out; its back edge is ~flush with the
+    #  panel exterior and the cage embeds into the panel frame — so an "INT. OVERHANG" dim is N/A.)
 
     # Full panel width dimension
     draw_dim_h(ax, 0, PW, Y_LO + 220, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-15, font=FONT)
@@ -796,7 +807,7 @@ def sheet2():
           f"{PW - STEP_YD_R}mm", fs=6, offset=-15, font=FONT)
 
     # Corner zone thickness dimension
-    draw_dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y_IN,
+    draw_dim_v(ax, STEP_YD_L / 2 - 100, PANEL_EXT, CORN_Y_IN,
           f"{CORNER_T}mm", offset=15, fs=6, right=True, font=FONT)
 
     # ── Scale and note ────────────────────────────────────────────────────────

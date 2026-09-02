@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D model — cam-latch handle redrawn as an L (matches Sheet 13 Detail A).** The straight
+  T-handle lever is replaced by an L-shaped lift-and-turn handle: a stem out the interior face with the
+  grip bent up 90°, so the model reads the same as the 2D latch detail.
+
 - **Hinged panel Sheet 13 Detail A — redrawn as a side section (per Alvin sketch).** Was a plan section with
   the clamp shaft end-on and the handle hidden "behind"; now a side section through the latch axis so the
   L-shaped **lift-and-turn handle** shows in profile (arm bending up 90°, with lift + turn arrows), the shaft

@@ -134,6 +134,8 @@
 
 ![TBS-001 Ventilation — Sheet 2: Fan and Baffle Duct Assembly](assets/ventilation-sheet2.png)
 
+![TBS-001 Ventilation — Sheet 3: Fan B Mount (plywood panel, tee-nut fixing)](assets/ventilation-sheet3.png)
+
 ---
 
 ## 12. Hinged Panel & Revolving Drum

@@ -113,7 +113,7 @@ STAY_Z = (500, 2050)                               # bottom + top transport-stay
 LOCK_BOLT = (20, CUT + 25)                         # stay hook on the swinging frame's LEFT
 # perimeter 50×50 RHS STILE (Yd≈205, centred on the stile at the swing cut) — STEEL load
 # path, not the 1/8″-HDPE skin. Relocated from the mid-corner (Yd350, which the rev11 plastic
-# skin left unbacked above the Z1125 ply band); the stile is also the farthest point from
+# skin left unbacked above the Z1225 ply band); the stile is also the farthest point from
 # the pivot (FAR0=2287) → best lever arm for the transport-stay couple.
 
 

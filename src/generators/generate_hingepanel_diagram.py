@@ -548,7 +548,7 @@ def sheet2():
     CORN_Y_OUT = Y1_W                            # 40 — outer face (= wall inner face)
     CORN_Y_IN  = Y1_W + CORNER_T                  # 80 — inner face (40mm envelope)
 
-    # This section is cut at H=1000mm — BELOW the Fan B ply-band top (1125mm), so the
+    # This section is cut at H=1000mm — BELOW the Fan B ply-band top (PANEL_FAN_BAND_Z), so the
     # NEAR corner (Yd 0→653, the fan side) is cut through the 18mm PLYWOOD band, while
     # the FAR corner is the 1/8″ HDPE skin. Both keep the 40mm envelope + Al stiffener rib.
     for x0, x1, skin_c, skin_t in [(0, STEP_YD_L, C_WOOD, 18),
@@ -869,11 +869,11 @@ def sheet3():
     Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel interior face)
 
     # Drum geometry in this view
-    D_CX_DEPTH = BAY_FRONT_X + DRUM_R + 40   # B2: housing depth center = -400mm (DRUM_CX)
-    D_HALF_W   = DRUM_R                 # drum/housing radius = 450mm (in depth axis)
+    D_CX_DEPTH = BAY_FRONT_X + DRUM_R + 40   # B2: housing depth center = -450mm
+    D_HALF_W   = DRUM_R                 # drum/housing radius = 400mm (in depth axis)
 
-    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = -400 - 450 = -850mm (exterior overhang)
-    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = -400 + 450 = +50mm  (interior overhang)
+    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = -450 - 400 = -850mm (exterior overhang)
+    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = -450 + 400 = -50mm  (interior overhang)
 
     # Height positions (vertical axis in this view)
     H_FLOOR    = 0
@@ -2063,7 +2063,7 @@ def _frame_ga(mirror=False):
     fig, ax = plt.subplots(figsize=(16, 15))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(*( (PW + 360, -430) if mirror else (-430, PW + 360) ))   # reversed x → mirror (exterior view)
+    ax.set_xlim(*( (PW + 360, -560) if mirror else (-560, PW + 360) ))   # reversed x → mirror (exterior view)
     ax.set_ylim(-360, PH + 320)
 
     def vbar(x, z0, z1, label=None, lp=None):        # vertical RHS member
@@ -2112,9 +2112,9 @@ def _frame_ga(mirror=False):
         ax.add_patch(Polygon([(0, wz), (11, wz), (0, wz + dz)], closed=True, fc=C_OUT, ec="none", zorder=6))
     for lz in (500, 1900):                                                                                   # cam-latch strike plates on the web
         ax.add_patch(Rectangle((yL - WEB, lz - 45), WEB + 7, 90, fc="#8890A0", ec=C_OUT, lw=1.0, zorder=7))
-    leader(ax, (yL - WEB / 2, 1120), (-350, 1130),
-           "U-FRAME — welded steel channel (Yd0–180); the HINGE\nPANEL BUTTS UP here. Flanges WELD to the container\nCARGO-DOOR FRAME (50×20×3 RHS) — itself bolted\nM10 @ ~300 to the container (no longer\nweight-bearing — the pivot post carries the panel).", col=C_OUT, fw="bold", fs=6.3)
-    leader(ax, (yL + 4, 500), (-350, 720), "web carries 2 cam-latch\nSTRIKE PLATES (engage the panel latches)", col=C_OUT, fs=6.2)
+    leader(ax, (yL - WEB / 2, 1120), (-370, 1130),
+           "U-FRAME — welded steel channel\n(Yd0–180); hinge panel BUTTS UP\nhere. Flanges WELD to the container\ncargo-door frame (50×20×3 RHS,\nbolted M10 @ 300) — not load-bearing.", col=C_OUT, fw="bold", fs=6.3)
+    leader(ax, (yL + 4, 500), (-370, 690), "web carries 2 cam-latch\nSTRIKE PLATES\n(engage the panel latches)", col=C_OUT, fs=6.2)
 
     # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 12 ──
     ax.add_patch(Rectangle((yL, 0), jL - yL, PANEL_FAN_BAND_Z, fc=C_WOOD, ec=C_OUT, lw=0.7, alpha=0.45, zorder=2))
@@ -2201,7 +2201,7 @@ def _frame_ga(mirror=False):
     draw_dim_v(ax, PW + 150, z_sill, z_hdr, f"{z_hdr - z_sill} cage", offset=14, fs=6, font=FONT, right=True)
     draw_dim_v(ax, PW + 150, z_hdr, PH, f"{PH - z_hdr}", offset=14, fs=6, font=FONT, right=True)
     draw_dim_v(ax, PW + 300, 0, PH, f"{PH}", offset=20, fs=7, font=FONT, right=True)
-    draw_dim_v(ax, -300, 0, PANEL_FAN_BAND_Z, f"{PANEL_FAN_BAND_Z} fan band", offset=14, fs=6, font=FONT, right=False)
+    draw_dim_v(ax, -140, 0, PANEL_FAN_BAND_Z, f"{PANEL_FAN_BAND_Z} fan band", offset=14, fs=6, font=FONT, right=True)
 
     _view = "EXTERIOR elevation — viewed from OUTSIDE the cargo door toward the drum (mirror of Sheet 9)" if mirror else "swinging panel · front elevation"
     ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
@@ -2285,7 +2285,7 @@ def sheet11():
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 1810, "How the swinging leaf is secured to the moving hub —\n3 hinge brackets FILLET-WELDED to both the hub tube and\nthe leaf's pivot-edge stile (hub+leaf+cage = one weldment)\n— is drawn full-size on\nSHEET 14 (Frame → Pivot-Post Connection).",
+    ax.text(1000, 1810, "How the swinging leaf is secured to the moving hub —\n3 hinge brackets FILLET-WELDED to both the hub tube and\nthe leaf's pivot-edge stile (hub+leaf+cage = one weldment)\n— is drawn full-size on\nSHEET 15 (Frame → Pivot-Post Connection).",
             ha="center", va="top", fontsize=7.2, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.6", fc="#F4F1E8", ec=C_DIM, lw=0.9))
 
@@ -2377,7 +2377,7 @@ def sheet12():
     draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
     draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
 
-    ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 13",
+    ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 14",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
     title_block(ax, "SHEET 12 OF 17",

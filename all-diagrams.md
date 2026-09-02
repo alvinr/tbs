@@ -156,21 +156,21 @@
 
 ![TBS-001 Hinged Panel — Sheet 9: Steel Frame General Arrangement](assets/hingepanel-sheet9.png)
 
-![TBS-001 Hinged Panel — Sheet 10: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
+![TBS-001 Hinged Panel — Sheet 10: Steel Frame GA — Exterior Elevation (mirror of Sheet 9)](assets/hingepanel-sheet10.png)
 
-![TBS-001 Hinged Panel — Sheet 11: Fan-B Plywood Cut Sheet & Attachments](assets/hingepanel-sheet11.png)
+![TBS-001 Hinged Panel — Sheet 11: Pivot-Post Assembly](assets/hingepanel-sheet11.png)
 
-![TBS-001 Hinged Panel — Sheet 12: Frame Hardware — Cam Latch, Transport Stay, Brush Strip](assets/hingepanel-sheet12.png)
+![TBS-001 Hinged Panel — Sheet 12: Fan-B Plywood Cut Sheet & Attachments](assets/hingepanel-sheet12.png)
 
-![TBS-001 Hinged Panel — Sheet 13: Plywood Attachments — Fan-B Mount + Frame Tab/Tee-Nut](assets/hingepanel-sheet13.png)
+![TBS-001 Hinged Panel — Sheet 13: Frame Hardware — Cam Latch, Transport Stay, Brush Strip](assets/hingepanel-sheet13.png)
 
-![TBS-001 Hinged Panel — Sheet 14: Frame → Pivot-Post Connection](assets/hingepanel-sheet14.png)
+![TBS-001 Hinged Panel — Sheet 14: Plywood Attachments — Fan-B Mount + Frame Tab/Tee-Nut](assets/hingepanel-sheet14.png)
 
-![TBS-001 Hinged Panel — Sheet 15: Bottom Clearance Cross-Section (walkway/cantilever envelope)](assets/hingepanel-sheet15.png)
+![TBS-001 Hinged Panel — Sheet 15: Frame → Pivot-Post Connection](assets/hingepanel-sheet15.png)
 
-![TBS-001 Hinged Panel — Sheet 16: Fold-Down Light Apron + Fixed Center Baffle](assets/hingepanel-sheet16.png)
+![TBS-001 Hinged Panel — Sheet 16: Bottom Clearance Cross-Section (walkway/cantilever envelope)](assets/hingepanel-sheet16.png)
 
-![TBS-001 Hinged Panel — Sheet 17: Steel Frame GA — Exterior Elevation (mirror of Sheet 9)](assets/hingepanel-sheet9ext.png)
+![TBS-001 Hinged Panel — Sheet 17: Fold-Down Light Apron + Fixed Center Baffle](assets/hingepanel-sheet17.png)
 
 ---
 

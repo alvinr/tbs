@@ -94,7 +94,7 @@ def sheet1():
     # ── Panel body ────────────────────────────────────────────────────────────
     # The panel bottom is STEPPED: the two corner zones (Yd0..PANEL_CORNER_YD_L and
     # PANEL_CORNER_YD_R..PW) step UP by PANEL_BOTTOM_STEP to clear the bare walkway
-    # cantilever bracket legs (walkway removed for transport — Sheet 15); the center
+    # cantilever bracket legs (walkway removed for transport — Sheet 16); the center
     # (drum bay) keeps the low bottom over the tray.
     from tbs_constants import PANEL_BOTTOM_STEP as STEP
     _sjL, _sjR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
@@ -170,7 +170,7 @@ def sheet1():
         ax.plot([_sx, _sx], [0, STEP], color="#B00", lw=2.0, zorder=12)
     draw_dim_v(ax, PANEL_CORNER_YD_L - 45, 0, STEP, f"{STEP}", offset=14, fs=6, font=FONT, right=False)
     ax.text(PW / 2, -145,
-            f"BOTTOM STEPPED UP {STEP}mm AT BOTH CORNER ZONES — clears the bare walkway cantilever legs (walkway removed for transport, Sheet 15)",
+            f"BOTTOM STEPPED UP {STEP}mm AT BOTH CORNER ZONES — clears the bare walkway cantilever legs (walkway removed for transport, Sheet 16)",
             ha="center", va="center", fontsize=6.4, color="#B00", fontweight="bold", **FONT, zorder=15)
 
     # ── Fan B intake — weatherproof louvre on the panel exterior (near corner) ──
@@ -320,10 +320,10 @@ def sheet1():
 
     # ── Inward-opening annotation ─────────────────────────────────────────────
     # The panel opens INWARD only (into the container about the Ø89 pivot); a stop on
-    # the fixed frame takes the outward direction — the cam latches hold it shut (Sheet 12).
+    # the fixed frame takes the outward direction — the cam latches hold it shut (Sheet 13).
     leader(ax, (PW, PH * 0.36),
            (PW + 275, PH * 0.25),
-           "OPENS INWARD ONLY\n(swings into the container;\na frame stop takes the\noutward direction — Sheet 12)",
+           "OPENS INWARD ONLY\n(swings into the container;\na frame stop takes the\noutward direction — Sheet 13)",
            col="#204080", fw="bold")
 
     # ── Emergency egress safety note ──────────────────────────────────────────
@@ -808,7 +808,7 @@ def sheet2():
     # Small note below orientation box (latches are outside the drum-zone crop
     # in this view but their presence and position is relevant to egress design)
     ax.text(OB_X + OB_W / 2 + 450, OB_Y - 25,
-            "CAM LATCH (McMaster 1619A74, lift-and-turn):\nINTERIOR handle → welded keeper on the stub wall.\nPANEL OPENS INWARD ONLY (frame stop takes outward).\nEgress operable from inside. See Sheet 12 Detail A.",
+            "CAM LATCH (McMaster 1619A74, lift-and-turn):\nINTERIOR handle → welded keeper on the stub wall.\nPANEL OPENS INWARD ONLY (frame stop takes outward).\nEgress operable from inside. See Sheet 13 Detail A.",
             ha="center", va="top", fontsize=6, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
 
@@ -2051,7 +2051,7 @@ def sheet9(mirror=False):
     jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R   # 653, 1709 — center-zone jambs
     z_hdr = LT_CAGE_TOP                     # 2217 — header over the drum cage
     z_sill = 130                            # sill under the cage (floor gap)
-    from tbs_constants import PANEL_BOTTOM_STEP as STEP   # 65 — corner-zone bottom step-up (Sheet 15)
+    from tbs_constants import PANEL_BOTTOM_STEP as STEP   # 65 — corner-zone bottom step-up (Sheet 16)
 
     fig, ax = plt.subplots(figsize=(16, 15))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -2080,18 +2080,21 @@ def sheet9(mirror=False):
     #    (Yd0, container-wall side) is WELDED to the container door frame. Secures the HDPE + plywood skins. ──
     uf_z0, uf_z1 = STEP, PH
     WEB, FL = 18, 24
-    # container CARGO-DOOR FRAME (50×20×3 RHS) — FULL perimeter, ghosted BEHIND everything (it sits just
-    # exterior of the panel plane). Bolted M10 @ ~300 to the container; the U-frame welds to its LEFT stile.
+    # container CARGO-DOOR FRAME (50×20×3 RHS) — FULL perimeter. It sits just exterior of the panel plane,
+    # so in the INTERIOR view (Sheet 9) it is the FAR structure → ghosted BEHIND; in the EXTERIOR mirror
+    # (Sheet 10) it is NEAREST the viewer → drawn solid, IN FRONT of the frame. Bolted M10 @ ~300 to the
+    # container; the U-frame welds to its LEFT stile.
     DFW = 30                                                                                   # drawn width (schematic; actual 50mm face)
+    df_z, df_a, df_ls = (8.5, 0.9, "-") if mirror else (1.5, 0.5, (0, (4, 2)))
     for fx, fy, fw, fh in [(0, 0, DFW, PH), (PW - DFW, 0, DFW, PH),                             # left + right stiles
                            (0, 0, PW, DFW), (0, PH - DFW, PW, DFW)]:                            # threshold + top rail
-        ax.add_patch(Rectangle((fx, fy), fw, fh, fc="#5A5E66", ec=C_DIM, lw=0.8, ls=(0, (4, 2)), alpha=0.5, zorder=1.5))
+        ax.add_patch(Rectangle((fx, fy), fw, fh, fc="#5A5E66", ec=C_DIM, lw=0.8, ls=df_ls, alpha=df_a, zorder=df_z))
     for az in range(300, int(PH) - 200, 300):                                                  # M10 anchor heads — the two stiles
-        ax.add_patch(Circle((DFW / 2, az), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
-        ax.add_patch(Circle((PW - DFW / 2, az), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
+        ax.add_patch(Circle((DFW / 2, az), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=df_z + 0.2))
+        ax.add_patch(Circle((PW - DFW / 2, az), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=df_z + 0.2))
     for ay in range(400, int(PW) - 300, 400):                                                  # M10 anchor heads — threshold + top
-        ax.add_patch(Circle((ay, DFW / 2), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
-        ax.add_patch(Circle((ay, PH - DFW / 2), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
+        ax.add_patch(Circle((ay, DFW / 2), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=df_z + 0.2))
+        ax.add_patch(Circle((ay, PH - DFW / 2), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=df_z + 0.2))
     ax.add_patch(Rectangle((yL - WEB, uf_z0), WEB, uf_z1 - uf_z0, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))   # web (right/swing-facing)
     ax.add_patch(Rectangle((0, uf_z1 - FL), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                 # top flange → door frame
     ax.add_patch(Rectangle((0, uf_z0), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # bottom flange → door frame
@@ -2103,7 +2106,7 @@ def sheet9(mirror=False):
            "U-FRAME — welded steel channel (Yd0–180); the HINGE\nPANEL BUTTS UP here. Flanges WELD to the container\nCARGO-DOOR FRAME (50×20×3 RHS, ghosted) — itself\nbolted M10 @ ~300 to the container (no longer\nweight-bearing — the pivot post carries the panel).", col=C_OUT, fw="bold", fs=6.3)
     leader(ax, (yL + 4, 500), (-350, 720), "web carries 2 cam-latch\nSTRIKE PLATES (engage the panel latches)", col=C_OUT, fs=6.2)
 
-    # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 11 ──
+    # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 12 ──
     ax.add_patch(Rectangle((yL, 0), jL - yL, PANEL_FAN_BAND_Z, fc=C_WOOD, ec=C_OUT, lw=0.7, alpha=0.45, zorder=2))
     ax.text((yL + jL) / 2, PANEL_FAN_BAND_Z / 2, "18mm PLY\nFan-B band", ha="center", va="center",
             fontsize=7, color="#6b4a1f", **FONT, zorder=3)
@@ -2124,11 +2127,11 @@ def sheet9(mirror=False):
             ha="center", va="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT, zorder=6)
 
     # ── swinging-frame perimeter + internal members ──
-    vbar(yL, STEP, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 12)", (PH * 0.78, (-260, PH * 0.86)))  # bottom stepped up
+    vbar(yL, STEP, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 13)", (PH * 0.78, (-260, PH * 0.86)))  # bottom stepped up
     vbar(yR - RHS, STEP, PH)                                  # pivot-side vertical (bottom stepped up)
     hbar(PH - RHS, yL, yR)                                    # top rail
     # STEPPED bottom rail: center (jL..jR, drum bay) at Z0 — the corner zones step UP by STEP to clear
-    # the bare wall-cantilever bracket legs when the walkway is lifted out for transport (Sheet 15).
+    # the bare wall-cantilever bracket legs when the walkway is lifted out for transport (Sheet 16).
     hbar(STEP, yL, jL)                                        # near-corner bottom rail (raised)
     hbar(0, jL, jR)                                           # center bottom rail (lowest — over the tray)
     hbar(STEP, jR, yR)                                        # far-corner bottom rail (raised)
@@ -2141,9 +2144,9 @@ def sheet9(mirror=False):
         ax.plot([sxr, sxr], [0, STEP], color="#B00", lw=2.2, zorder=8)
     draw_dim_v(ax, yL - 55, 0, STEP, f"{STEP} step", offset=12, fs=6, font=FONT, right=False)
     leader(ax, ((yL + jL) / 2, STEP), ((yL + jL) / 2 + 80, -205),
-           f"CORNER BOTTOM STEPPED UP {STEP}mm at BOTH sides\n(clears the bare walkway cantilever legs;\nwalkway removed for transport — Sheet 15)", col="#B00", fw="bold", fs=6)
+           f"CORNER BOTTOM STEPPED UP {STEP}mm at BOTH sides\n(clears the bare walkway cantilever legs;\nwalkway removed for transport — Sheet 16)", col="#B00", fw="bold", fs=6)
 
-    # ── pivot post (Yd = PIVOT_YD) → Sheet 10 ──
+    # ── pivot post (Yd = PIVOT_YD) → Sheet 11 ──
     # In the EXTERIOR mirror the post is on the FAR (interior) side → drawn BEHIND the frame; in the
     # interior front view it is nearest the viewer → foreground.
     pp_z = 1.6 if mirror else 7
@@ -2151,7 +2154,7 @@ def sheet9(mirror=False):
     ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2 + 8, 0), PIVOT_POST_OD - 16, PH, fc=BG, ec=C_OUT, lw=0.5, zorder=pp_z))          # tube bore
     ax.plot([yR, yR], [0, PH], color=C_CL, lw=1.0, ls=(0, (7, 4)), zorder=6)
     leader(ax, (yR, PH * 0.62), (yR + 300, PH * 0.72),
-           "Ø89 CHS PIVOT POST\n(swing axis) — assembly\n+ frame→hub bracket: Sheet 10", col=C_OUT, fw="bold")
+           "Ø89 CHS PIVOT POST\n(swing axis) — assembly\n+ frame→hub bracket: Sheet 11", col=C_OUT, fw="bold")
 
     # ── detail bubbles ──
     def bubble(x, z, n, txt, tp):
@@ -2160,8 +2163,8 @@ def sheet9(mirror=False):
         ax.annotate("", xy=(x, z), xytext=tp, arrowprops=dict(arrowstyle="-", color="#B00", lw=0.8), zorder=8)
         ax.text(tp[0], tp[1], txt, ha="center", va="center", fontsize=6.6, color="#B00", **FONT, zorder=10)
 
-    bubble(yR - RHS / 2, 300, 12, "cam latch mount\n(corners, Sheet 12)", (yR + 250, 300))
-    bubble((yL + jL) / 2, PANEL_FAN_BAND_Z + 120, 11, "Fan-B + ply\ntabs (Sheet 11)", ((yL + jL) / 2 - 60, PANEL_FAN_BAND_Z + 360))
+    bubble(yR - RHS / 2, 300, 12, "cam latch mount\n(corners, Sheet 13)", (yR + 250, 300))
+    bubble((yL + jL) / 2, PANEL_FAN_BAND_Z + 120, 11, "Fan-B + ply\ntabs (Sheet 12)", ((yL + jL) / 2 - 60, PANEL_FAN_BAND_Z + 360))
 
     # ── member schedule (in the clear near-corner white space) ──
     rows = [
@@ -2194,16 +2197,16 @@ def sheet9(mirror=False):
     ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 17 OF 17" if mirror else "SHEET 9 OF 17",
+    title_block(ax, "SHEET 10 OF 17" if mirror else "SHEET 9 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="STEEL FRAME — GA (EXTERIOR VIEW)" if mirror else "STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
                 scale_note=("EXTERIOR ELEVATION (mirror of Sheet 9) · SCALE 1:20 · ALL DIMS IN mm" if mirror
                             else "FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm"),
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet9ext.png" if mirror else "hingepanel-sheet9.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet10.png" if mirror else "hingepanel-sheet9.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet9ext.png saved" if mirror else "  diagrams/hingepanel-sheet9.png saved")
+    print("  diagrams/hingepanel-sheet10.png saved" if mirror else "  diagrams/hingepanel-sheet9.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2256,7 +2259,7 @@ def sheet10():
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
-    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 14", col=C_OUT, fw="bold")
+    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 15", col=C_OUT, fw="bold")
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT} floor→roof", offset=16, fs=6.6, font=FONT)
     # diameters (dim_h) + component lengths (dim_v) on the pivot post
     draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
@@ -2290,15 +2293,15 @@ def sheet10():
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 10 OF 17",
+    title_block(ax, "SHEET 11 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 14)",
+                subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 15)",
                 scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet10.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet10.png saved")
+    print("  diagrams/hingepanel-sheet11.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2342,7 +2345,7 @@ def sheet11():
     for ex in (bx + 30, bx + BW - 30):
         for zz in [by + 120 + i * 320 for i in range(4)]:
             ax.add_patch(Circle((ex, zz), 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=7))
-    ax.text(bx + BW + 8, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— see Sheet 13", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
+    ax.text(bx + BW + 8, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— see Sheet 14", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
     # cooler base (below the band)
     cx0, cy0 = 0, by - 60 - CH
     ax.add_patch(Rectangle((cx0, cy0), CW, CH, fc=C_WOOD, ec=C_OUT, lw=1.2, alpha=0.4, zorder=4))
@@ -2361,15 +2364,15 @@ def sheet11():
     ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 13",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 11 OF 17",
+    title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 13)",
+                subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 14)",
                 scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet11.png saved")
+    print("  diagrams/hingepanel-sheet12.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2463,15 +2466,15 @@ def sheet13():
     leader(ax, vB(6, 38), vB(-14, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
     leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
-    title_block(ax, "SHEET 13 OF 17",
+    title_block(ax, "SHEET 14 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
                 scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet13.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet14.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet13.png saved")
+    print("  diagrams/hingepanel-sheet14.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2499,7 +2502,7 @@ def sheet14():
         ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket (welded hub↔leaf stile)
         for jz in (z - 20, z + 42):                                                                               # weld ticks at the stile
             ax.add_patch(Polygon([(cx + 178, jz), (cx + 170, jz), (cx + 178, jz + (6 if jz < z else -6))], closed=True, fc=C_OUT, ec="none", zorder=7))
-    leader(ax, (cx, 1400), (cx - 170, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 10)", col=C_OUT, fs=6.5)
+    leader(ax, (cx, 1400), (cx - 170, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 11)", col=C_OUT, fs=6.5)
     leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to hub + stile", col=C_OUT, fw="bold", fs=6.5)
     leader(ax, (cx + 178, 2000), (cx + 250, 2200), "LEAF PIVOT-EDGE STILE\n(2×2 RHS — TRAVELS with\nthe leaf, carries its plywood)", col=C_OUT, fw="bold", fs=6.5)
     ax.text(cx + 40, HGT + 130, "ELEVATION — 3 brackets up the hub", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
@@ -2530,15 +2533,15 @@ def sheet14():
         "stile (which can't be back-tightened); all-welded steel.",
         ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1000, font=FONT)
 
-    title_block(ax, "SHEET 14 OF 17",
+    title_block(ax, "SHEET 15 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
                 scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet14.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet15.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet14.png saved")
+    print("  diagrams/hingepanel-sheet15.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2630,15 +2633,15 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
-    title_block(ax, "SHEET 12 OF 17",
+    title_block(ax, "SHEET 13 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet13.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet12.png saved")
+    print("  diagrams/hingepanel-sheet13.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2775,15 +2778,15 @@ def sheet15():
     ], WID + 40, 500, spacing=22, fs=5.6, title_fs=6.3, color="#403000",
        title_color="#806010", width=445, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 15 OF 17",
+    title_block(ax, "SHEET 16 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="TRANSPORT-SWING BOTTOM CLEARANCE — DRUM CAGE vs FIXED POSTS/TRAY + PANEL vs WALL BRACKETS",
                 scale_note="SECTION Yd–Z · EQUAL ASPECT · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet15.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet16.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet15.png saved")
+    print("  diagrams/hingepanel-sheet16.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2947,15 +2950,15 @@ def sheet16():
     ], WID + 30, 400, spacing=24, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=470, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 16 OF 17",
+    title_block(ax, "SHEET 17 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FOLD-DOWN LIGHT APRON + FIXED CENTER BAFFLE — under-leaf gap closure",
                 scale_note="SECTION + ELEVATION · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet16.png"), dpi=DIAGRAM_DPI,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet17.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet16.png saved")
+    print("  diagrams/hingepanel-sheet17.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2977,5 +2980,5 @@ if __name__ == "__main__":
     sheet14()
     sheet15()
     sheet16()
-    sheet9(mirror=True)   # Sheet 17 — exterior mirror of the frame GA
+    sheet9(mirror=True)   # Sheet 10 — exterior mirror of the frame GA (right after Sheet 9)
     print("Done.")

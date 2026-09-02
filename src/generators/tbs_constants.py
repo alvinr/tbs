@@ -1048,7 +1048,7 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # must clear the BARE wall-cantilever bracket vertical legs (WALKWAY_BRACKET_H) when the walkway is
 # lifted out for transport, with the SAME 15mm margin the center bottom keeps over the Z115 arms
 # (PANEL_FLOOR_GAP − arm-top). So the two corner zones step UP from PANEL_FLOOR_GAP (130) to this.
-# The center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP. See hinged-panel Sheet 15.
+# The center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP. See hinged-panel Sheet 16.
 PANEL_FLOOR_GAP_SIDE = WALKWAY_BRACKET_H + (PANEL_FLOOR_GAP - (WALKWAY_H - WALKWAY_GRATE_T))  # 195
 PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                                  # 65 — corner step-up
 # Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,

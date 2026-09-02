@@ -1124,7 +1124,7 @@ def panel_pivot():
     # Cargo-door panel, operational position (X=0). rev11: 1/8″ HDPE plastic skins
     # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner. The bottom is
     # STEPPED: the two corner zones step UP to PANEL_FLOOR_GAP_SIDE to clear the bare walkway
-    # cantilever bracket legs in transport (hingepanel Sheet 15); the center bay stays low.
+    # cantilever bracket legs in transport (hingepanel Sheet 16); the center bay stays low.
     parts.append(ruby_box("Cargo Door Panel (center)",
                           0, jL, PANEL_FLOOR_GAP,
                           PANEL_CENTER_T, jR - jL, 2300 - PANEL_FLOOR_GAP, color=C_PLASTIC, alpha=0.6))

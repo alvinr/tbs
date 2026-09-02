@@ -354,7 +354,7 @@ the butt joint into the vacated zone, its **cage underside (Z130) passing over t
 Z115 door-end floor-leg posts** — so no floor-leg post is struck (the swing clears).
 The relevant standing clearance is vertical: the drum-cage underside sits at Z130 —
 25mm over the Z115 posts and 70mm over the Z70 tray rim (the panel bottom rides higher
-still, at the 217mm floor gap). See hinged-panel Sheet 15.
+still, at the 217mm floor gap). See hinged-panel Sheet 16.
 
 ---
 

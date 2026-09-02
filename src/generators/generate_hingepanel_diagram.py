@@ -474,10 +474,10 @@ def sheet2():
     # ── Container CARGO-DOOR FRAME cross-section (Y=0→40) — the panel seals against it (no solid "end
     #    wall" at the opening: the opening is FRAMED, not walled — Alvin 2026-09-01). Drawn at the side
     #    zones; the drum opening is cut out. ──
-    ax.add_patch(Rectangle((0, Y0_W), D_XL, WALL_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
-    ax.add_patch(Rectangle((D_XR, Y0_W), PW - D_XR, WALL_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+    # solid "#5A5E66" — the SAME cargo-frame grey as Sheets 9/10, so it reads as the door frame (not the
+    # hatched panel steel). Drawn at the side zones; the drum opening is cut out.
+    for _fx, _fw in [(0, D_XL), (D_XR, PW - D_XR)]:
+        ax.add_patch(Rectangle((_fx, Y0_W), _fw, WALL_T, fc="#5A5E66", ec=C_OUT, lw=1.1, alpha=0.9, zorder=3.2))
 
     # ── CENTER ZONE = B2 PUNCH-OUT BAY ───────────────────────────────────────
     # The center zone is a rigid box protruding forward (depth from the panel
@@ -506,12 +506,13 @@ def sheet2():
             _blind_rivet(ax, cxr, ry, ang, 22, d=16)
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, BAY_FRONT_X), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
-    # FRONT-face HDPE blind-riveted to the two FRONT corner posts (was missing — the SIDE skins have theirs
-    # above). Vertical-axis glyph: factory head on the exterior (−Y) face, shank into the post behind.
-    for fx in (DRUM_CAGE_YD_L + 14, DRUM_CAGE_YD_R - 14):
-        _blind_rivet(ax, fx, BAY_FRONT_X + BAY_WALL_T * 2, 270, 22, d=16)
-    leader(ax, (DRUM_CAGE_YD_R - 14, BAY_FRONT_X), (DRUM_CAGE_YD_R + 120, BAY_FRONT_X - 120),
-           "FRONT-face HDPE riveted\nto the corner posts", col="#4a5a70", fs=5.8)
+    # FRONT-face HDPE blind-riveted to the front cage frame (was missing — the SIDE skins have theirs above).
+    # Vertical-axis glyph, factory head FLUSH on the exterior (−Y) surface (cz = BAY_FRONT_X + grip/2); SPREAD
+    # along the wall, clear of the side-skin corner rivets. Smaller d so they don't crowd the corners.
+    for fx in (DRUM_CAGE_YD_L + 170, (DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, DRUM_CAGE_YD_R - 170):
+        _blind_rivet(ax, fx, BAY_FRONT_X + 8, 270, 16, d=11)
+    leader(ax, (DRUM_CAGE_YD_L + 170, BAY_FRONT_X), (DRUM_CAGE_YD_L - 250, BAY_FRONT_X + 150),
+           "FRONT-face HDPE riveted\nto the front cage frame", col="#4a5a70", fs=5.8)
     leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
            "1/8″ HDPE bay SIDE skin — riveted to an\nL-ANGLE on the cage post (NOT through the\nbeam); see the L-ANGLE DETAIL below", col="#4a5a70", fs=5.8)
 
@@ -2091,7 +2092,10 @@ def _frame_ga(mirror=False):
     # (Sheet 10) it is NEAREST the viewer → drawn solid, IN FRONT of the frame. Bolted M10 @ ~300 to the
     # container; the U-frame welds to its LEFT stile.
     DFW = 30                                                                                   # drawn width (schematic; actual 50mm face)
-    df_z, df_a, df_ls = (8.5, 0.9, "-") if mirror else (1.5, 0.5, (0, (4, 2)))
+    # same SOLID fill/opacity on both views (so the cargo frame reads identically); only the DEPTH differs —
+    # in front in the exterior mirror (nearest the viewer), behind in the interior view.
+    df_z = 8.5 if mirror else 1.5
+    df_a, df_ls = 0.9, "-"
     for fx, fy, fw, fh in [(0, 0, DFW, PH), (PW - DFW, 0, DFW, PH),                             # left + right stiles
                            (0, 0, PW, DFW), (0, PH - DFW, PW, DFW)]:                            # threshold + top rail
         ax.add_patch(Rectangle((fx, fy), fw, fh, fc="#5A5E66", ec=C_DIM, lw=0.8, ls=df_ls, alpha=df_a, zorder=df_z))
@@ -2109,7 +2113,7 @@ def _frame_ga(mirror=False):
     for lz in (500, 1900):                                                                                   # cam-latch strike plates on the web
         ax.add_patch(Rectangle((yL - WEB, lz - 45), WEB + 7, 90, fc="#8890A0", ec=C_OUT, lw=1.0, zorder=7))
     leader(ax, (yL - WEB / 2, 1120), (-350, 1130),
-           "U-FRAME — welded steel channel (Yd0–180); the HINGE\nPANEL BUTTS UP here. Flanges WELD to the container\nCARGO-DOOR FRAME (50×20×3 RHS, ghosted) — itself\nbolted M10 @ ~300 to the container (no longer\nweight-bearing — the pivot post carries the panel).", col=C_OUT, fw="bold", fs=6.3)
+           "U-FRAME — welded steel channel (Yd0–180); the HINGE\nPANEL BUTTS UP here. Flanges WELD to the container\nCARGO-DOOR FRAME (50×20×3 RHS) — itself bolted\nM10 @ ~300 to the container (no longer\nweight-bearing — the pivot post carries the panel).", col=C_OUT, fw="bold", fs=6.3)
     leader(ax, (yL + 4, 500), (-350, 720), "web carries 2 cam-latch\nSTRIKE PLATES (engage the panel latches)", col=C_OUT, fs=6.2)
 
     # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 12 ──
@@ -2410,7 +2414,8 @@ def sheet14():
     CUT0, CUT1 = 30, 180          # 150mm fan cutout, centered on the flange (y 30..180)
     for py0, ph in [(5, CUT0 - 5), (CUT1, 210 - CUT1)]:                                            # 18mm ply, below + above the cutout
         ax.add_patch(Rectangle(dA(60, py0), 18, ph, fc=C_WOOD, ec=C_OUT, lw=1.4, zorder=5))
-        ax.add_patch(Rectangle(dA(54, py0 + (10 if py0 < CUT0 else 0)), 6, ph - (10 if py0 < CUT0 else 5), fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))  # flange plate, same cutout
+        fy0 = py0 if py0 >= CUT0 else CUT0 - 25                                                    # flange butts the fan; SAME 25mm width top + bottom
+        ax.add_patch(Rectangle(dA(54, fy0), 6, 25, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))         # fan mounting flange plate
     ax.add_patch(Rectangle(dA(4, CUT0), 50, CUT1 - CUT0, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=4))   # fan body (Ø150 × 50 deep) — protrudes exterior
     ax.add_patch(Rectangle(dA(4, CUT0 + 12), 50, (CUT1 - CUT0) - 24, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))  # fan bore = the Ø150 air path
     ax.add_patch(Rectangle(dA(19, 93), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))          # motor hub

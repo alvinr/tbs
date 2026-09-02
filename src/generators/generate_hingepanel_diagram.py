@@ -2070,11 +2070,18 @@ def sheet9():
     #    (Yd0, container-wall side) is WELDED to the container door frame. Secures the HDPE + plywood skins. ──
     uf_z0, uf_z1 = STEP, PH
     WEB, FL = 18, 24
-    # container CARGO-DOOR FRAME left stile (50×20×3 RHS) — the STRUCTURE the U-frame welds to. Shown ghosted
-    # BEHIND the U-frame (it sits just exterior of the panel plane); bolted M10 @ ~300 to the container.
-    ax.add_patch(Rectangle((0, 0), 30, PH, fc="#5A5E66", ec=C_DIM, lw=0.8, ls=(0, (4, 2)), alpha=0.55, zorder=4))
-    for az in range(300, int(PH) - 200, 300):                                                                # M10 anchor heads (to container)
-        ax.add_patch(Circle((15, az), 6, fc="#40444A", ec=C_OUT, lw=0.6, zorder=4.5))
+    # container CARGO-DOOR FRAME (50×20×3 RHS) — FULL perimeter, ghosted BEHIND everything (it sits just
+    # exterior of the panel plane). Bolted M10 @ ~300 to the container; the U-frame welds to its LEFT stile.
+    DFW = 30                                                                                   # drawn width (schematic; actual 50mm face)
+    for fx, fy, fw, fh in [(0, 0, DFW, PH), (PW - DFW, 0, DFW, PH),                             # left + right stiles
+                           (0, 0, PW, DFW), (0, PH - DFW, PW, DFW)]:                            # threshold + top rail
+        ax.add_patch(Rectangle((fx, fy), fw, fh, fc="#5A5E66", ec=C_DIM, lw=0.8, ls=(0, (4, 2)), alpha=0.5, zorder=1.5))
+    for az in range(300, int(PH) - 200, 300):                                                  # M10 anchor heads — the two stiles
+        ax.add_patch(Circle((DFW / 2, az), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
+        ax.add_patch(Circle((PW - DFW / 2, az), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
+    for ay in range(400, int(PW) - 300, 400):                                                  # M10 anchor heads — threshold + top
+        ax.add_patch(Circle((ay, DFW / 2), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
+        ax.add_patch(Circle((ay, PH - DFW / 2), 6, fc="#40444A", ec=C_OUT, lw=0.5, zorder=1.7))
     ax.add_patch(Rectangle((yL - WEB, uf_z0), WEB, uf_z1 - uf_z0, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))   # web (right/swing-facing)
     ax.add_patch(Rectangle((0, uf_z1 - FL), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                 # top flange → door frame
     ax.add_patch(Rectangle((0, uf_z0), yL, FL, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # bottom flange → door frame

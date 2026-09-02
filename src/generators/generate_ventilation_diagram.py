@@ -13,6 +13,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import math
 import os
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
@@ -38,6 +39,63 @@ def ann(ax, text, xy, xytext, size=7.5):
     leader(ax, xy[0], xy[1], xytext[0], xytext[1], text,
            fs=size, color=C_OUT, ha="center", va="center",
            arrow_style="->", lw=0.9, zorder=10)
+
+
+def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", csk=False, wall=None, zb=10):
+    """Bolt in section — the shared project convention (cf. lighttrap draw_bolt): a filled shank with a
+    wider HEAD at the `head` end and, at the far end, a hex NUT / rivet-nut / tapped thread. cx,cz = shank
+    mid; `length` = grip along the axis; d = nominal Ø (drawn TO SCALE in mm). head = -1 → head at the
+    −axis end; +1 → +axis end. end: 'nut' hex nut · 'rivnut' flanged threaded insert spanning `wall` ·
+    'tapped' into a tapped hole (no nut)."""
+    SHK, HN = "#8A8F98", C_STEEL
+    hh, hw = d * 0.6, d * 1.9                              # head/nut along-axis / across
+    g = length / 2
+
+    def rect(u0, u1, v0, v1, **kw):
+        if vertical:
+            ax.add_patch(mpatches.Rectangle((cx + v0, cz + u0), v1 - v0, u1 - u0, **kw))
+        else:
+            ax.add_patch(mpatches.Rectangle((cx + u0, cz + v0), u1 - u0, v1 - v0, **kw))
+
+    def pmap(u, v):
+        return (cx + v, cz + u) if vertical else (cx + u, cz + v)
+    hu = -g if head < 0 else g
+    fu = g if head < 0 else -g
+    rect(-g, g, -d / 2, d / 2, fc=SHK, ec=C_OUT, lw=0.8, zorder=zb)                        # shank
+    rect(hu - (hh if head < 0 else 0), hu + (0 if head < 0 else hh), -hw / 2, hw / 2,
+         fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                           # protruding hex head
+    if end == "nut":
+        rect(fu - (0 if head < 0 else hh), fu + (hh if head < 0 else 0), -hw / 2, hw / 2,
+             fc=HN, ec=C_OUT, lw=0.9, zorder=zb + 1)                                       # hex nut
+    elif end == "rivnut":
+        RN = "#A8763A"
+        into = 1 if head < 0 else -1
+        wt = wall if wall is not None else hh
+        hp = fu + into * wt
+        rect(fu, hp, -hw * 0.44, hw * 0.44, fc=RN, ec=C_OUT, lw=0.8, zorder=zb + 1)        # barrel (spans the wall)
+        rect(fu, hp, -d * 0.48, d * 0.48, fc=SHK, ec="none", zorder=zb + 2)                # bolt threaded into it
+        HWr, HHr = d * 0.95, d * 0.42
+        dome = [pmap(hp, HWr)]
+        for kk in range(13):
+            a = math.pi * (0.5 - kk / 12.0)
+            dome.append(pmap(hp + into * HHr * math.cos(a), HWr * math.sin(a)))
+        dome.append(pmap(hp, -HWr))
+        ax.add_patch(mpatches.Polygon(dome, closed=True, fc=RN, ec=C_OUT, lw=0.9, zorder=zb + 3))
+
+
+def tek_screw(ax, cx, cz, length, *, d=5, head=-1, zb=11):
+    """Self-drilling TEK screw in section (horizontal): small hex/washer head at the `head` end + a
+    tapered self-drill point at the far end. d = nominal Ø (M5 ~ to scale)."""
+    SHK = "#8A8F98"
+    g = length / 2
+    hu = -g if head < 0 else g
+    ftip = g if head < 0 else -g
+    into = 1 if head < 0 else -1
+    ax.add_patch(mpatches.Rectangle((cx - g, cz - d / 2), length, d, fc=SHK, ec=C_OUT, lw=0.6, zorder=zb))  # shank
+    ax.add_patch(mpatches.Rectangle((cx + hu - (d * 1.7 if head < 0 else 0), cz - d * 0.9),                 # washer/hex head
+                                    d * 1.7, d * 1.8, fc=C_STEEL, ec=C_OUT, lw=0.7, zorder=zb + 1))
+    ax.add_patch(mpatches.Polygon([(cx + ftip, cz - d / 2), (cx + ftip, cz + d / 2),                        # drill point
+                                   (cx + ftip + into * d * 1.2, cz)], closed=True, fc=SHK, ec=C_OUT, lw=0.5, zorder=zb))
 
 
 
@@ -420,27 +478,36 @@ def draw_sheet2():
             "Baffles full-height (welded top+bottom), air gap on alternating sides  ·  Dimensions in mm",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
-    # ── Container wall ────────────────────────────────────────────────────────
-    draw_rect(ax, WALL_X, wz0, WALL_T, wz1 - wz0, fc=C_STEEL, lw=2.0, zorder=4)
-    for zi in range(wz0, wz1, 8):
-        ax.plot([WALL_X, WALL_X + WALL_T], [zi, zi + 10],
-                color=C_OUT, lw=0.4, alpha=0.4, zorder=5)
-    draw_rect(ax, WALL_X, DZ + SK, WALL_T, int_h, fc="#F2F2EE", color="none", lw=0, zorder=5)
+    # ── Container wall — with the Ø150 airflow HOLE (the duct passes through; the hole is SMALLER
+    #    than the louvre panel so its flange overlaps the wall for the Tek screws) ──
+    HB, HT = FCZ - PF_R, FCZ + PF_R                          # Ø150 airflow hole (bottom / top)
+    for z0, z1 in [(wz0, HB), (HT, wz1)]:                    # wall drawn ABOVE + BELOW the hole
+        draw_rect(ax, WALL_X, z0, WALL_T, z1 - z0, fc=C_STEEL, lw=2.0, zorder=4)
+        for zi in range(int(z0), int(z1), 8):
+            ax.plot([WALL_X, WALL_X + WALL_T], [zi, zi + 10],
+                    color=C_OUT, lw=0.4, alpha=0.4, zorder=5)
     ann(ax, "CONTAINER WALL\ncorrugated steel\n(wall thickness exaggerated)",
         (WALL_X + WALL_T / 2, wz1 - 5), (WALL_X - 40, wz1 + 25))
+    draw_dim_v(ax, WALL_X + WALL_T + 18, HB, HT, f"Ø{FAN_DIAM}\nwall hole", offset=8, fs=6.5, zorder=10, color=C_DIM)
 
-    # ── Weatherproof louvre grille ─────────────────────────────────────────────
-    GL_Z = DZ + DH / 2 - GL_H / 2
+    # ── Weatherproof louvre grille — LARGER than the Ø150 hole so its flange overlaps the wall; fixed
+    #    with self-drilling TEK screws through the flange margins into the wall (passive, no fan) ──
+    GL_MARG = 30                                             # flange margin beyond the hole (for the Tek screws)
+    GL_Z = HB - GL_MARG                                      # louvre bottom (below the hole)
+    GL_H = (HT + GL_MARG) - GL_Z                             # louvre height > hole → flange overlaps the wall
     draw_rect(ax, WALL_X - GL_W, GL_Z, GL_W, GL_H, fc="#D0D8C8", lw=1.2, zorder=6)
-    slat_h  = 4
-    slat_gap = GL_H / 6
-    for i in range(5):
-        slat_z = GL_Z + slat_gap * (i + 0.5)
+    slat_h = 4
+    for i in range(5):                                       # slats across the OPENING (hole) region
+        slat_z = HB + (HT - HB) / 6 * (i + 0.5)
         ax.add_patch(mpatches.FancyBboxPatch(
             (WALL_X - GL_W + 3, slat_z - slat_h / 2), GL_W - 6, slat_h,
             boxstyle="round,pad=0.3", fc=C_DIM, ec="none", zorder=7, alpha=0.75))
-    ann(ax, "Weatherproof louvre grille\n(no fan — passive inlet/outlet)\n150mm dia. round → rect adapter",
-        (WALL_X - GL_W / 2, GL_Z - 5), (WALL_X - GL_W / 2 - 50, GL_Z - 50))
+    for tz in (GL_Z + GL_MARG / 2, GL_Z + GL_H - GL_MARG / 2):   # TEK screws through the flange → wall
+        tek_screw(ax, WALL_X - 2, tz, 22, d=5, head=-1)
+    ann(ax, "Weatherproof louvre grille (passive)\nLARGER than the Ø150 wall hole →\nflange overlaps the wall",
+        (WALL_X - GL_W / 2, HT + 4), (WALL_X - GL_W / 2 - 55, HT + 55))
+    ann(ax, "TEK self-drilling screws\n(louvre flange → wall)",
+        (WALL_X - 2, GL_Z + GL_MARG / 2), (WALL_X - 95, GL_Z - 20))
 
     # ── Baffle duct housing ───────────────────────────────────────────────────
     draw_rect(ax, DX, DZ, DD, DH, fc="#F5F5F5", lw=2.0, zorder=3)
@@ -452,20 +519,16 @@ def draw_sheet2():
     ax.add_patch(mpatches.Rectangle((DX, DZ + SK), DD, int_h,
                  fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
 
-    # ── Wall mounting flange + 4×M10 through-bolts ─────────────────────────────
-    draw_rect(ax, DX, wz0, FL_T, wz1 - wz0, fc=C_ALUM, lw=1.2, zorder=6)
-    for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:
-        # M10 THROUGH-bolt: head bears on the interior flange; shank runs THROUGH the flange + the
-        # container wall; washer + hex nut clamp on the EXTERIOR (weather) face.
-        ax.plot([WALL_X - 8, DX + FL_T + 7], [bz, bz],
-                color="#8A8F98", lw=3.2, solid_capstyle="butt", zorder=7)          # shank
-        draw_rect(ax, DX + FL_T, bz - 5, 7, 10, fc=C_OUT, lw=0.6, zorder=8)         # hex head (interior, on the flange)
-        draw_rect(ax, WALL_X - 3, bz - 6, 3, 12, fc=C_STEEL, lw=0.5, zorder=8)      # washer (exterior wall face)
-        draw_rect(ax, WALL_X - 8, bz - 4.5, 5, 9, fc=C_STEEL, lw=0.6, zorder=8)     # hex nut (exterior)
+    # ── Wall mounting flange (Ø150 airflow cutout) + 4×M10 through-bolts (to scale, project convention) ──
+    for z0, z1 in [(wz0, HB), (HT, wz1)]:
+        draw_rect(ax, DX, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
+    nut_x, head_x = WALL_X - 6, DX + FL_T                    # nut on the EXTERIOR face · head on the interior flange
+    for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:      # M10 through-bolt: head +X (interior), hex nut −X (exterior)
+        draw_bolt(ax, (nut_x + head_x) / 2, bz, head_x - nut_x, d=10, vertical=False, head=1, end="nut", zb=7)
     ann(ax, "Wall mounting flange\n5mm plate · 4×M10 through-bolts\n(head on the interior flange)",
         (DX + FL_T / 2, wz0 - 5), (DX + 20, wz0 - 45))
-    ann(ax, "M10 washer + nut on the\nEXTERIOR wall face\n(bolts pass through the wall)",
-        (WALL_X - 6, wz0 + FL_OH * 0.45), (WALL_X - 140, wz0 - 30))
+    ann(ax, "M10 hex nut on the\nEXTERIOR wall face\n(bolts pass through the wall)",
+        (nut_x - 8, wz0 + FL_OH * 0.45), (WALL_X - 140, wz0 - 30))
 
     # ── Baffles ───────────────────────────────────────────────────────────────
     AIR_GAP = 75                            # airflow gap left by each baffle (S-path)
@@ -494,10 +557,11 @@ def draw_sheet2():
             "plates take opposite sides (75mm air gap each) — air winds left↔right (horizontal S-path) while the line of sight stays blocked.",
             ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
 
-    # ── Fan mounting flange (duct right face) ─────────────────────────────────
-    draw_rect(ax, FX - FL_T, wz0, FL_T, wz1 - wz0, fc=C_ALUM, lw=1.2, zorder=6)
-    for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:
-        ax.plot(FX - FL_T / 2, bz, "o", color=C_OUT, ms=4, zorder=7)
+    # ── Fan mounting flange (Ø150 airflow cutout, duct right face) + 4×M10 bolts into the fan (to scale) ──
+    for z0, z1 in [(wz0, HB), (HT, wz1)]:
+        draw_rect(ax, FX - FL_T, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
+    for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:      # head on the duct-flange face (−X); threads into the fan (tapped)
+        draw_bolt(ax, FX + 5, bz, 34, d=10, vertical=False, head=-1, end="tapped", zb=7)
     ann(ax, "Fan mounting flange\n5mm plate · 4×M10 bolts\n(same both fans)",
         (FX - FL_T / 2, wz1 + 5), (FX - FL_T / 2, wz1 + 45))
 
@@ -630,7 +694,7 @@ def draw_sheet2():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet3():
-    C_WOOD, C_HDPE, C_TNUT = "#C9A66B", "#7FA8C9", "#A8763A"
+    C_WOOD, C_HDPE = "#C9A66B", "#7FA8C9"
 
     DD    = DUCT_DEPTH               # 300 baffle duct
     DH    = DUCT_HEIGHT             # 200
@@ -681,18 +745,17 @@ def draw_sheet3():
     ann(ax, "1/8\" HDPE skin\n(each face)",
         (PLY_X1 + SKIN_T / 2, bore0 - 12), (PLY_X1 + 60, bore0 - 55))
 
-    # ── Fan mounting flange plate — butts the ply EXTERIOR face; the fan body is exterior of it ──
-    draw_rect(ax, PLY_X0 - SKIN_T - FL_T, wz0, FL_T, wz1 - wz0, fc=C_ALUM, lw=1.2, zorder=6)
+    # ── Fan mounting flange plate (Ø150 bore cutout) — butts the ply/skin; the fan body is exterior of it ──
+    for z0, z1 in [(wz0, bore0), (bore1, wz1)]:
+        draw_rect(ax, PLY_X0 - SKIN_T - FL_T, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
     ann(ax, "fan MOUNTING FLANGE plate\n(butts the ply / skin)",
         (PLY_X0 - SKIN_T - FL_T / 2, wz0 - 5), (PLY_X0 - SKIN_T - FL_T - 10, wz0 - 45))
 
-    # ── 2× M8 through the flange + skin + ply into a captive TEE-NUT (flange on the ply interior face) ──
+    # ── 2× M8 (to scale, project convention) through the flange + skin into a captive TEE-NUT — drawn with
+    #    the rivnut convention: bronze barrel spanning the 18mm ply, flange/head on the far (interior) face ──
     for bz in (wz0 + FL_OH * 0.5, wz1 - FL_OH * 0.5):
-        # bolt shank: flange exterior face → into the tee-nut in the ply
-        ax.plot([PLY_X0 - SKIN_T - FL_T, PLY_X1 - 3], [bz, bz], color="#8A8F98", lw=3.2, solid_capstyle="butt", zorder=8)
-        ax.plot([PLY_X0 - SKIN_T - FL_T - 4, PLY_X0 - SKIN_T - FL_T], [bz, bz], color=C_OUT, lw=6, solid_capstyle="butt", zorder=8)  # hex head
-        draw_rect(ax, PLY_X1 - 8, bz - 4, 8, 8, fc=C_TNUT, color=C_OUT, lw=0.8, zorder=9)     # tee-nut barrel (in the ply)
-        draw_rect(ax, PLY_X1, bz - 7, 3, 14, fc=C_TNUT, color=C_OUT, lw=0.8, zorder=9)        # tee-nut flange (ply interior face)
+        draw_bolt(ax, PLY_X0 - (SKIN_T + FL_T) / 2, bz, SKIN_T + FL_T,
+                  d=8, vertical=False, head=-1, end="rivnut", wall=PLY_T, zb=8)
     ann(ax, "2× M8 → captive TEE-NUT in the ply\n(flange on the interior face — Sheet 14 Detail A)",
         (PLY_X1 + 1, wz1 - FL_OH * 0.5), (PLY_X1 + 70, wz1 + 20))
 

@@ -30,6 +30,10 @@ file** — a release must not ship without a changelog entry:
   container wall. Added a dedicated **Fan B mount plan** (same fan body + baffle duct, plywood/tee-nut
   fixing) and corrected Sheet 2 + the report so the "identical" claim now scopes to the fan body only
   (Fan A = wall/M10, Fan B = plywood/tee-nut). Registered across deps/publish/setup/gallery/report.
+  Follow-up: cut the Ø150 airflow bore through every mounting flange/skin so the section reads the air
+  path; redrew all fasteners with the shared `draw_bolt` convention TO SCALE (M10 wall through-bolts →
+  hex nut on the exterior; M8 → captive tee-nut via the rivnut convention); and on Sheet 2 sized the wall
+  hole SMALLER than the louvre so its flange overlaps the wall, fixed with self-drilling Tek screws.
 
 - **Hinged panel — Sheet 2 zero-drift reconcile with the 3D (drum/cage/frame depth).** Sheet 2 was
   recomputing the drum/cage depth locally (drum center −450, cage −875..−25) instead of using the shared

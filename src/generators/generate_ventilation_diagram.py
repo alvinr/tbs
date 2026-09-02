@@ -557,12 +557,12 @@ def draw_sheet2():
             "plates take opposite sides (75mm air gap each) — air winds left↔right (horizontal S-path) while the line of sight stays blocked.",
             ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
 
-    # ── Fan mounting flange (Ø150 airflow cutout, duct right face) + 4×M10 bolts into the fan (to scale) ──
+    # ── Fan mounting flange (Ø150 airflow cutout, duct right face) + the fan's own 4× M5 corner screws ──
     for z0, z1 in [(wz0, HB), (HT, wz1)]:
         draw_rect(ax, FX - FL_T, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
-    for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:      # head on the duct-flange face (−X); threads into the fan (tapped)
-        draw_bolt(ax, FX + 5, bz, 34, d=10, vertical=False, head=-1, end="tapped", zb=7)
-    ann(ax, "Fan mounting flange\n5mm plate · 4×M10 bolts\n(same both fans)",
+    for bz in [HB - 12, HT + 12]:                            # 2 of the 4 corner screws — head on the flange, tapped into the fan lug
+        draw_bolt(ax, FX + 1.5, bz, 13, d=5, vertical=False, head=-1, end="tapped", zb=7)
+    ann(ax, "Fan mounting flange (5mm plate) +\nthe fan's own 4× M5 corner screws\n(fan housing → duct flange · same both fans)",
         (FX - FL_T / 2, wz1 + 5), (FX - FL_T / 2, wz1 + 45))
 
     # ── Panel fan body ────────────────────────────────────────────────────────

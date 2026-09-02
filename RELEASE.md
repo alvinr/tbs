@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel Sheet 13 Detail A — redrawn as a side section (per Alvin sketch).** Was a plan section with
+  the clamp shaft end-on and the handle hidden "behind"; now a side section through the latch axis so the
+  L-shaped **lift-and-turn handle** shows in profile (arm bending up 90°, with lift + turn arrows), the shaft
+  runs horizontally through the panel stile, and the cam behind hooks the strike welded to the fixed jamb.
+
 - **Hinged panel Sheet 14 — removed Detail A (Fan-B → plywood).** That fan-flange → tee-nut mount is now
   fully captured on the new **Ventilation Sheet 3** (Fan-B mount), so Sheet 14 is now just the **plywood →
   frame** attachment (welded tab + captive tee-nut). Updated the cross-references accordingly (Sheet 12

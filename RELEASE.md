@@ -24,11 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Hinged panel — Sheet 17: exterior mirror of the frame GA.** Added a mirror of Sheet 9 viewed from
+- **Hinged panel — Sheet 10: exterior mirror of the frame GA.** Added a mirror of Sheet 9 viewed from
   OUTSIDE the cargo door toward the drum (x-axis reversed, so the geometry flips left↔right while the text
-  stays upright — pivot post now on the left, opening/U-frame/Fan-B on the right). Renumbered the set to
-  "OF 17". Also added the container cargo-door frame to Sheets 9 (full ghosted perimeter + M10 anchors) and
-  2 (left/right stiles in the plan cut).
+  stays upright — pivot post now on the left + drawn behind the frame, opening/U-frame/Fan-B on the right).
+  **Inserted as Sheet 10** (right after Sheet 9); the former Sheets 10–16 shift to 11–17 (set is now "OF 17")
+  — cascaded the renumber through the generator, gallery, registrations, the hinged-panel report, and the
+  hingepanel sheet cross-references in the models/constants/parts. Also added the container cargo-door frame
+  to Sheet 9 (full ghosted perimeter + M10 anchors) and Sheet 2 (merged with the former "end wall").
 
 - **Container cargo-door frame re-specced lighter + attachment specified.** Now that the pivot post carries
   the hinge panel's weight, the door frame is no longer structural — only seal-compression + cam-latch load.

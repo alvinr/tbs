@@ -452,12 +452,20 @@ def draw_sheet2():
     ax.add_patch(mpatches.Rectangle((DX, DZ + SK), DD, int_h,
                  fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
 
-    # ── Wall mounting flange ──────────────────────────────────────────────────
+    # ── Wall mounting flange + 4×M10 through-bolts ─────────────────────────────
     draw_rect(ax, DX, wz0, FL_T, wz1 - wz0, fc=C_ALUM, lw=1.2, zorder=6)
     for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:
-        ax.plot(DX + FL_T / 2, bz, "o", color=C_OUT, ms=4, zorder=7)
-    ann(ax, "Wall mounting flange\n5mm plate · 4×M10 bolts\n(interior face of wall)",
+        # M10 THROUGH-bolt: head bears on the interior flange; shank runs THROUGH the flange + the
+        # container wall; washer + hex nut clamp on the EXTERIOR (weather) face.
+        ax.plot([WALL_X - 8, DX + FL_T + 7], [bz, bz],
+                color="#8A8F98", lw=3.2, solid_capstyle="butt", zorder=7)          # shank
+        draw_rect(ax, DX + FL_T, bz - 5, 7, 10, fc=C_OUT, lw=0.6, zorder=8)         # hex head (interior, on the flange)
+        draw_rect(ax, WALL_X - 3, bz - 6, 3, 12, fc=C_STEEL, lw=0.5, zorder=8)      # washer (exterior wall face)
+        draw_rect(ax, WALL_X - 8, bz - 4.5, 5, 9, fc=C_STEEL, lw=0.6, zorder=8)     # hex nut (exterior)
+    ann(ax, "Wall mounting flange\n5mm plate · 4×M10 through-bolts\n(head on the interior flange)",
         (DX + FL_T / 2, wz0 - 5), (DX + 20, wz0 - 45))
+    ann(ax, "M10 washer + nut on the\nEXTERIOR wall face\n(bolts pass through the wall)",
+        (WALL_X - 6, wz0 + FL_OH * 0.45), (WALL_X - 140, wz0 - 30))
 
     # ── Baffles ───────────────────────────────────────────────────────────────
     AIR_GAP = 75                            # airflow gap left by each baffle (S-path)

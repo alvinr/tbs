@@ -170,6 +170,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 16: Fold-Down Light Apron + Fixed Center Baffle](assets/hingepanel-sheet16.png)
 
+![TBS-001 Hinged Panel — Sheet 17: Steel Frame GA — Exterior Elevation (mirror of Sheet 9)](assets/hingepanel-sheet9ext.png)
+
 ---
 
 ## 13. Perimeter Walkway

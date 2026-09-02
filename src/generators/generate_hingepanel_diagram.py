@@ -369,7 +369,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 16",
+    title_block(ax, "SHEET 1 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -826,7 +826,7 @@ def sheet2():
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 16",
+    title_block(ax, "SHEET 2 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1399,7 +1399,7 @@ def sheet3():
     ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 16",
+    title_block(ax, "SHEET 3 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1515,7 +1515,7 @@ def sheet5():
     ]):
         ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 16",
+    title_block(ax, "SHEET 5 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1636,7 +1636,7 @@ def sheet4():
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
     draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 16",
+    title_block(ax, "SHEET 4 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
@@ -1710,7 +1710,7 @@ def sheet6():
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 6 OF 16", drawing_title="HINGED LIGHT-TRAP PANEL",
+    title_block(ax, "SHEET 6 OF 17", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DRAWN TO SCALE (isotropic ~1:1) · 50mm BAR · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
@@ -1861,7 +1861,7 @@ def sheet7():
     ax.set_xlim(-260, xW2 + BAY_D + 260)
     ax.set_ylim(yB - 320, yA + H_PANEL + 300)
 
-    title_block(ax, "SHEET 7 OF 16",
+    title_block(ax, "SHEET 7 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — FLAT-PATTERN CUT SHEETS (6 PIECES)",
                 scale_note="DRAWN TO SCALE (isotropic) · SCALE OFF THE 500mm BAR · ALL DIMS IN mm",
@@ -2028,7 +2028,7 @@ def sheet8():
             ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 8 OF 16",
+    title_block(ax, "SHEET 8 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — HOUSING JOIN & FRAME RIVET DETAILS",
                 scale_note="ENLARGED SECTIONS · THICKNESS EXAGGERATED · ALL DIMS IN mm",
@@ -2047,7 +2047,9 @@ def sheet8():
 #   Sheet 7). Detail bubbles route to Sheets 10 (pivot), 11 (plywood/Fan-B), 12
 #   (frame hardware). Member schedule keyed to the frame.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet9():
+def sheet9(mirror=False):
+    # mirror=True → the EXTERIOR view (looking from outside the cargo door toward the drum): the same
+    # frame GA with the X-axis reversed, so left↔right flip while the text stays upright.
     RHS = BRACE_RHS                        # 50.8 — 2×2×0.120in section
     yL, yR = PANEL_CUT_YD, PIVOT_YD         # 180, 2287 — swinging-frame left (stile) + right (pivot) edges
     jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R   # 653, 1709 — center-zone jambs
@@ -2058,7 +2060,7 @@ def sheet9():
     fig, ax = plt.subplots(figsize=(16, 15))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-430, PW + 360)
+    ax.set_xlim(*( (PW + 360, -430) if mirror else (-430, PW + 360) ))   # reversed x → mirror (exterior view)
     ax.set_ylim(-360, PH + 320)
 
     def vbar(x, z0, z1, label=None, lp=None):        # vertical RHS member
@@ -2189,18 +2191,20 @@ def sheet9():
     draw_dim_v(ax, PW + 300, 0, PH, f"{PH}", offset=20, fs=7, font=FONT, right=True)
     draw_dim_v(ax, -300, 0, PANEL_FAN_BAND_Z, f"{PANEL_FAN_BAND_Z} fan band", offset=14, fs=6, font=FONT, right=False)
 
-    ax.text(PW / 2, PH + 295, "STEEL FRAME — GENERAL ARRANGEMENT (swinging panel · front elevation)",
+    _view = "EXTERIOR elevation — viewed from OUTSIDE the cargo door toward the drum (mirror of Sheet 9)" if mirror else "swinging panel · front elevation"
+    ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 9 OF 16",
+    title_block(ax, "SHEET 17 OF 17" if mirror else "SHEET 9 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
-                scale_note="FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm",
+                subtitle="STEEL FRAME — GA (EXTERIOR VIEW)" if mirror else "STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
+                scale_note=("EXTERIOR ELEVATION (mirror of Sheet 9) · SCALE 1:20 · ALL DIMS IN mm" if mirror
+                            else "FRONT ELEVATION · SCALE 1:20 · ALL DIMS IN mm"),
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet9.png"), dpi=DIAGRAM_DPI,
-                bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet9ext.png" if mirror else "hingepanel-sheet9.png"),
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet9.png saved")
+    print("  diagrams/hingepanel-sheet9ext.png saved" if mirror else "  diagrams/hingepanel-sheet9.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2287,7 +2291,7 @@ def sheet10():
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 10 OF 16",
+    title_block(ax, "SHEET 10 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 14)",
                 scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
@@ -2358,7 +2362,7 @@ def sheet11():
     ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 13",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 11 OF 16",
+    title_block(ax, "SHEET 11 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FAN-B PLYWOOD — CUT SHEET (attachments on Sheet 13)",
                 scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
@@ -2460,7 +2464,7 @@ def sheet13():
     leader(ax, vB(6, 38), vB(-14, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
     leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
-    title_block(ax, "SHEET 13 OF 16",
+    title_block(ax, "SHEET 13 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLYWOOD ATTACHMENTS — FAN-B MOUNT + PLYWOOD→FRAME TAB/TEE-NUT",
                 scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
@@ -2527,7 +2531,7 @@ def sheet14():
         "stile (which can't be back-tightened); all-welded steel.",
         ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1000, font=FONT)
 
-    title_block(ax, "SHEET 14 OF 16",
+    title_block(ax, "SHEET 14 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
                 scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
@@ -2627,7 +2631,7 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
-    title_block(ax, "SHEET 12 OF 16",
+    title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
@@ -2772,7 +2776,7 @@ def sheet15():
     ], WID + 40, 500, spacing=22, fs=5.6, title_fs=6.3, color="#403000",
        title_color="#806010", width=445, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 15 OF 16",
+    title_block(ax, "SHEET 15 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="TRANSPORT-SWING BOTTOM CLEARANCE — DRUM CAGE vs FIXED POSTS/TRAY + PANEL vs WALL BRACKETS",
                 scale_note="SECTION Yd–Z · EQUAL ASPECT · ALL DIMS IN mm",
@@ -2944,7 +2948,7 @@ def sheet16():
     ], WID + 30, 400, spacing=24, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=470, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 16 OF 16",
+    title_block(ax, "SHEET 16 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FOLD-DOWN LIGHT APRON + FIXED CENTER BAFFLE — under-leaf gap closure",
                 scale_note="SECTION + ELEVATION · ALL DIMS IN mm",
@@ -2974,4 +2978,5 @@ if __name__ == "__main__":
     sheet14()
     sheet15()
     sheet16()
+    sheet9(mirror=True)   # Sheet 17 — exterior mirror of the frame GA
     print("Done.")

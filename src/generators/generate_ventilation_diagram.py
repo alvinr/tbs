@@ -524,10 +524,10 @@ def draw_sheet2():
     #    cleanly bolted through and the exterior nut interfered with the wall. ──
     for z0, z1 in [(wz0, HB), (HT, wz1)]:                    # interior-face leg (the duct flange), split at the hole
         draw_rect(ax, DX, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
-    for zc, tz in ((HB, HB - 30), (HT, HT + 30)):           # wrap lip at each hole edge + Tek screw in the flange margin
+    for zc, tz in ((HB, DZ - 14), (HT, DZ + DH + 14)):      # wrap lip at each hole edge + Tek in the overhang, CLEAR of the duct walls
         lip_z = zc - FL_T if zc == HB else zc               # lip sits just OUTSIDE the airflow hole
         draw_rect(ax, WALL_X, lip_z, DX + FL_T - WALL_X, FL_T, fc=C_ALUM, lw=1.2, zorder=6)   # wrap lip: over the wall at the hole edge
-        tek_screw(ax, DX + FL_T - 10, tz, 20, d=5, head=1)                                    # TEK self-drills into the wall face
+        tek_screw(ax, DX + FL_T - 10, tz, 20, d=5, head=1)                                    # TEK self-drills into the wall face (clears the duct walls)
     ann(ax, "Wall mounting BRACKET (L-angle) — wraps\naround the hole edge; TEK self-drilling screws\ninto the wall (NO through-bolt)",
         (DX + FL_T, wz0 + FL_OH * 0.45), (DX + 55, wz0 - 55))
 
@@ -558,12 +558,15 @@ def draw_sheet2():
             "plates take opposite sides (75mm air gap each) — air winds left↔right (horizontal S-path) while the line of sight stays blocked.",
             ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
 
-    # ── Fan mounting flange (Ø150 airflow cutout, duct right face) + the fan's own 4× M5 corner screws ──
-    for z0, z1 in [(wz0, HB), (HT, wz1)]:
+    # ── Fan mounting flange — the duct-end sheet BENT 90° (blue) into a face the fan bolts to; the fan's
+    #    4× M5 corner screws pass THROUGH this flange (through the assembly wall) into the fan housing ──
+    for z0, z1 in [(wz0, HB), (HT, wz1)]:                    # the bent flange FACE (picture frame around the opening)
         draw_rect(ax, FX - FL_T, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
-    for bz in [HB - 12, HT + 12]:                            # 2 of the 4 corner screws — head on the flange, tapped into the fan lug
-        draw_bolt(ax, FX + 1.5, bz, 13, d=5, vertical=False, head=-1, end="tapped", zb=7)
-    ann(ax, "Fan mounting flange (5mm plate) +\nthe fan's own 4× M5 corner screws\n(fan housing → duct flange · same both fans)",
+    for zc0 in (DZ, DZ + DH - SK):                           # short return along each duct wall → the 90° BEND at the duct end
+        draw_rect(ax, FX - FL_T - 18, zc0, 18, SK, fc=C_ALUM, color=C_OUT, lw=1.0, zorder=6.1)
+    for bz in [HB - 14, HT + 14]:                            # M5 corner screw THROUGH the flange (head duct-side, nut on the fan face)
+        draw_bolt(ax, FX + 4, bz, 18, d=5, vertical=False, head=-1, end="nut", zb=7)
+    ann(ax, "Fan flange — the duct-end sheet BENT 90°; the fan's\n4× M5 corner screws pass THROUGH the flange (through the\nassembly wall) into the fan · same both fans",
         (FX - FL_T / 2, wz1 + 5), (FX - FL_T / 2, wz1 + 45))
 
     # ── Panel fan body ────────────────────────────────────────────────────────

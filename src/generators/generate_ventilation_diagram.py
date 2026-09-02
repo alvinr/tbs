@@ -509,19 +509,13 @@ def draw_sheet2():
     ann(ax, "TEK self-drilling screws\n(louvre flange → wall)",
         (WALL_X - 2, GL_Z + GL_MARG / 2), (WALL_X - 95, GL_Z - 20))
 
-    # ── Baffle duct housing — NECKS DOWN to the fan (172mm) at the far end so the flange lands on the
-    #    fan lugs (option A). ──
-    NECK = 45                                               # duct → fan neck length
-    fan_b0, fan_b1 = FCZ - PF_R - 5, FCZ + PF_R + 5          # fan housing edges (≈170 / 330)
-    ns = FX - NECK                                           # neck start
-    draw_rect(ax, DX, DZ, DD - NECK, DH, fc="#F5F5F5", lw=2.0, zorder=3)    # duct body (full 200mm, before the neck)
+    # ── Baffle duct housing — the top & bottom walls TURN OUT 90° at the fan end to form the duct flange ──
+    draw_rect(ax, DX, DZ, DD, DH, fc="#F5F5F5", lw=2.0, zorder=3)
     for ry in (DZ, DZ + DH - SK):
-        draw_rect(ax, DX, ry, DD - NECK, SK, fc=C_STEEL, lw=0.8, zorder=4)   # top + bottom walls
-    ax.add_patch(mpatches.Rectangle((DX, DZ + SK), DD - NECK, int_h, fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
-    # neck: each wall tapers in from the duct opening to the fan edge
-    ax.add_patch(mpatches.Polygon([(ns, DZ), (FX, fan_b0 - SK), (FX, fan_b0), (ns, DZ + SK)], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4))          # bottom neck wall
-    ax.add_patch(mpatches.Polygon([(ns, DZ + DH), (FX, fan_b1 + SK), (FX, fan_b1), (ns, DZ + DH - SK)], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4))  # top neck wall
-    ax.add_patch(mpatches.Polygon([(ns, DZ + SK), (FX, fan_b0), (FX, fan_b1), (ns, DZ + DH - SK)], closed=True, fc="#F5F5F5", ec="none", zorder=3))            # neck interior
+        draw_rect(ax, DX, ry, DD, SK, fc=C_STEEL, lw=0.8, zorder=4)          # top + bottom walls (full length)
+    ax.add_patch(mpatches.Rectangle((DX, DZ + SK), DD, int_h, fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
+    draw_rect(ax, FX - SK, DZ + DH, SK, FL_OH, fc=C_STEEL, lw=0.9, zorder=4)     # top wall turned OUT 90° (up) → duct flange
+    draw_rect(ax, FX - SK, DZ - FL_OH, SK, FL_OH, fc=C_STEEL, lw=0.9, zorder=4)  # bottom wall turned OUT 90° (down) → duct flange
 
     # ── Wall mounting BRACKET — an L-angle that WRAPS around the Ø150 hole edge to grip the wall, fixed
     #    with self-drilling TEK screws into the wall face. No through-bolt: a corrugated wall can't be
@@ -562,14 +556,14 @@ def draw_sheet2():
             "plates take opposite sides (75mm air gap each) — air winds left↔right (horizontal S-path) while the line of sight stays blocked.",
             ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
 
-    # ── Fan flange: the NECKED duct sheet BENDS 90° at the fan edge; the fan's 4× M5 corner screws pass
-    #    THROUGH the flange into the fan lugs (the duct now matches the fan, so they land on the lugs) ──
-    for zf, out in ((fan_b0, -1), (fan_b1, 1)):
-        lip_z0 = zf - (FL_OH - 6) if out < 0 else zf
-        draw_rect(ax, FX - FL_T, lip_z0, FL_T, FL_OH - 6, fc=C_ALUM, lw=1.2, zorder=6)          # 90° bent flange lip at the fan edge
-        draw_bolt(ax, FX + 4, zf + out * 4, 18, d=5, vertical=False, head=-1, end="nut", zb=7)  # M5 THROUGH the flange into the fan lug
-    ann(ax, "Duct NECKS DOWN to the 172mm fan, then BENDS 90° into the\nflange; the fan's 4× M5 corner screws pass THROUGH the flange\ninto the fan lugs · same both fans",
-        (FX - FL_T / 2, fan_b1 + 12), (FX + 20, wz1 + 20))
+    # ── Fan flange (blue) simply BUTTS UP against the turned-out duct flange; the fan's 4× M5 corner
+    #    screws pass through both flanges ──
+    for z0, z1 in [(wz0, HB), (HT, wz1)]:                    # fan flange face — butts the grey duct flange at FX
+        draw_rect(ax, FX, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
+    for bz in (DZ - FL_OH / 2, DZ + DH + FL_OH / 2):        # M5 through the butted flanges (grey duct flange + blue fan flange)
+        draw_bolt(ax, FX, bz, SK + FL_T + 6, d=5, vertical=False, head=-1, end="nut", zb=7)
+    ann(ax, "Duct walls TURN OUT 90° into the duct flange; the fan\nflange simply BUTTS UP — the fan's 4× M5 corner screws\npass through both flanges · same both fans",
+        (FX + FL_T / 2, DZ + DH + FL_OH / 2), (FX + 30, wz1 + 20))
 
     # ── Panel fan body ────────────────────────────────────────────────────────
     draw_rect(ax, FX, FCZ - PF_R - 5, PF_BD, (PF_R + 5) * 2,

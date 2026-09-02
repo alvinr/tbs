@@ -519,16 +519,17 @@ def draw_sheet2():
     ax.add_patch(mpatches.Rectangle((DX, DZ + SK), DD, int_h,
                  fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
 
-    # ── Wall mounting flange (Ø150 airflow cutout) + 4×M10 through-bolts (to scale, project convention) ──
-    for z0, z1 in [(wz0, HB), (HT, wz1)]:
+    # ── Wall mounting BRACKET — an L-angle that WRAPS around the Ø150 hole edge to grip the wall, fixed
+    #    with self-drilling TEK screws into the wall face. No through-bolt: a corrugated wall can't be
+    #    cleanly bolted through and the exterior nut interfered with the wall. ──
+    for z0, z1 in [(wz0, HB), (HT, wz1)]:                    # interior-face leg (the duct flange), split at the hole
         draw_rect(ax, DX, z0, FL_T, z1 - z0, fc=C_ALUM, lw=1.2, zorder=6)
-    nut_x, head_x = WALL_X - 6, DX + FL_T                    # nut on the EXTERIOR face · head on the interior flange
-    for bz in [wz0 + FL_OH * 0.45, wz1 - FL_OH * 0.45]:      # M10 through-bolt: head +X (interior), hex nut −X (exterior)
-        draw_bolt(ax, (nut_x + head_x) / 2, bz, head_x - nut_x, d=10, vertical=False, head=1, end="nut", zb=7)
-    ann(ax, "Wall mounting flange\n5mm plate · 4×M10 through-bolts\n(head on the interior flange)",
-        (DX + FL_T / 2, wz0 - 5), (DX + 20, wz0 - 45))
-    ann(ax, "M10 hex nut on the\nEXTERIOR wall face\n(bolts pass through the wall)",
-        (nut_x - 8, wz0 + FL_OH * 0.45), (WALL_X - 140, wz0 - 30))
+    for zc, tz in ((HB, HB - 30), (HT, HT + 30)):           # wrap lip at each hole edge + Tek screw in the flange margin
+        lip_z = zc - FL_T if zc == HB else zc               # lip sits just OUTSIDE the airflow hole
+        draw_rect(ax, WALL_X, lip_z, DX + FL_T - WALL_X, FL_T, fc=C_ALUM, lw=1.2, zorder=6)   # wrap lip: over the wall at the hole edge
+        tek_screw(ax, DX + FL_T - 10, tz, 20, d=5, head=1)                                    # TEK self-drills into the wall face
+    ann(ax, "Wall mounting BRACKET (L-angle) — wraps\naround the hole edge; TEK self-drilling screws\ninto the wall (NO through-bolt)",
+        (DX + FL_T, wz0 + FL_OH * 0.45), (DX + 55, wz0 - 55))
 
     # ── Baffles ───────────────────────────────────────────────────────────────
     AIR_GAP = 75                            # airflow gap left by each baffle (S-path)
@@ -600,7 +601,7 @@ def draw_sheet2():
             ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
     ax.text(520, FCZ + PF_R - 20,
-            f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (exhaust, this sheet) — wall-mounted (5mm flange + M10)\n"
+            f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (exhaust, this sheet) — wall-mounted (L-bracket wraps the hole edge + Tek screws)\n"
             "SAME fan body as Fan B; Fan B mounts to the plywood panel via tee-nuts — see SHEET 3  ·  Cct A/B · 60W · 150+ CFM",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
 
@@ -664,7 +665,7 @@ def draw_sheet2():
     # ── Notes ─────────────────────────────────────────────────────────────────
     draw_notes(ax, [
         "FAN A — 150mm COMPACT AXIAL PANEL FAN  ·  wall-mounted (this sheet)",
-        "Fan A (exhaust, far end wall) bolts to the steel wall: 5mm flange + 4×M10.",
+        "Fan A (exhaust, far end wall) fixes to the steel wall with an L-bracket wrapping the hole edge + Tek self-drilling screws.",
         "Fan B (intake, cargo-door panel) uses the SAME fan body + baffle duct but a DIFFERENT fixing — see SHEET 3.",
         f"Total depth from wall (each):  {DUCT_DEPTH}mm baffle duct + {PF_BD}mm fan = {DUCT_DEPTH + PF_BD}mm",
         "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
@@ -687,7 +688,7 @@ def draw_sheet2():
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SHEET 3 — Fan B mount (on the hinge panel, NOT the container wall)
-# Fan A (sheet 2) bolts to the container end wall via a 5mm flange + 4×M10.
+# Fan A (sheet 2) fixes to the container end wall via an L-bracket + Tek self-drilling screws.
 # Fan B is on the SWINGING cargo-door panel and mounts to its 18mm PLYWOOD band
 # with 2× M8 through a flange plate into captive TEE-NUTS in the ply (hingepanel
 # Sheet 14 Detail A) — the SAME fan body + baffle duct, DIFFERENT fixing.
@@ -806,7 +807,7 @@ def draw_sheet3():
 
     draw_notes(ax, [
         "FAN B — SAME FAN as Fan A, DIFFERENT FIXING",
-        "Fan A (sheet 2) bolts to the container END WALL: 5mm flange + 4×M10 into the steel wall.",
+        "Fan A (sheet 2) fixes to the container END WALL with an L-bracket + Tek screws (no through-bolt).",
         "Fan B is on the SWINGING cargo-door panel — it bolts to the panel's 18mm PT PLYWOOD band with",
         "2× M8 through a flange plate into captive TEE-NUTS in the ply (hingepanel Sheet 14 Detail A).",
         "Identical fan body + baffle duct; only the mounting substrate (steel wall vs plywood panel) differs.",

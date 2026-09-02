@@ -201,7 +201,7 @@ def draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", cs
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet1():
     # ── Key positions in mm (all from constants) ─────────────────────────────
-    X_AX = DRUM_CX                       # drum axis X (= -400)
+    X_AX = DRUM_CX                       # drum axis X (= -420)
     HO_L = X_AX - LT_HOUSING_R           # housing outer, exterior side
     HO_R = X_AX + LT_HOUSING_R           # housing outer, interior side
     HI_L = HO_L + LT_HOUSING_T           # housing inner (bore) faces

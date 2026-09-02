@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel — tidy-label pass (Sheet 9/10) + stale cross-ref fixes.** Sheet 9/10 left margin
+  de-crowded: tightened the U-FRAME and cam-latch STRIKE-PLATE notes, widened the margin, and moved the
+  "1225 fan band" dimension clear of them (fix applies symmetrically to the exterior mirror). Fixed two
+  sheet cross-references the Sheet-10 renumber had missed: Sheet 11's frame→hub note now points to
+  **SHEET 15** (Frame → Pivot-Post Connection, was 14) and Sheet 12's attachment note to **SHEET 14**
+  (was 13, and it contradicted the same sheet's own subtitle). Corrected stale value-comments surfaced by
+  `check_consistency.py` (Fan-B ply-band top 1125→**1225**/`PANEL_FAN_BAND_Z`; drum-axis −400→**−420**;
+  Sheet-2 depth-center derivation −400→**−450** for DRUM_R 450→400). Re-saved `lighttrap.skp` (Alvin).
+
 - **Hinged panel — 2D fixes + generator function rename.** Sheet 14 Detail A: moved the fan bottom bolt so
   it clears the Ø150 housing symmetrically with the top. Sheet 13 Detail A: re-drew the cam latch as a
   proper plan section — the clamp shaft is vertical through the RIGHT (panel) stile (end-on = a circle) and

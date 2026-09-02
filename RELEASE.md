@@ -34,6 +34,9 @@ file** — a release must not ship without a changelog entry:
   path; redrew all fasteners with the shared `draw_bolt` convention TO SCALE (M10 wall through-bolts →
   hex nut on the exterior; M8 → captive tee-nut via the rivnut convention); and on Sheet 2 sized the wall
   hole SMALLER than the louvre so its flange overlaps the wall, fixed with self-drilling Tek screws.
+  Then reworked the Fan A wall mount itself: replaced the M10 through-bolts (they interfered with the
+  corrugated wall) with an **L-bracket that wraps around the hole edge + Tek self-drilling screws** into
+  the wall; right-sized the fan-to-duct fixing to the fan's own **4× M5 corner screws** (was oversized M10).
 
 - **Hinged panel — Sheet 2 zero-drift reconcile with the 3D (drum/cage/frame depth).** Sheet 2 was
   recomputing the drum/cage depth locally (drum center −450, cage −875..−25) instead of using the shared

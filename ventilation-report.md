@@ -95,7 +95,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 The fan body and baffle duct are identical for both fans, but the **mounting substrate differs** — Fan A bolts to the steel container end wall, while Fan B bolts to the swinging cargo-door panel's plywood band (see Sheet 3). Both fans and ducts are fully interior-mounted — only the weatherproof louvre grille is on the exterior face.
 
 **Sheet 3 — Fan B Mount (plywood panel, tee-nut fixing)**
-Fan B is on the swinging cargo-door (hinge) panel, so it cannot use Fan A's 5mm steel flange + M10-into-wall fixing. Instead the fan flange plate bolts to the panel's **18mm PT plywood band** with **2× M8 through captive tee-nuts** set in the ply (the same fixing detailed on hingepanel Sheet 14 Detail A). The fan body and light-tight baffle duct are otherwise identical to Fan A.
+Fan B is on the swinging cargo-door (hinge) panel, so it cannot use Fan A's steel-wall fixing (an L-bracket wrapping the hole edge + Tek self-drilling screws). Instead the fan flange plate bolts to the panel's **18mm PT plywood band** with **2× M8 through captive tee-nuts** set in the ply (the same fixing detailed on hingepanel Sheet 14 Detail A). The fan body and light-tight baffle duct are otherwise identical to Fan A.
 
 ![TBS-001 Ventilation — Sheet 3: Fan B Mount (plywood panel, tee-nut fixing)](assets/ventilation-sheet3.png)
 

@@ -2541,39 +2541,40 @@ def sheet13():
     ax.set_xlim(0, 540)
     ax.set_ylim(-70, 220)
 
-    # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (PLAN section at the latch) ══════
-    #   Two stiles SIDE BY SIDE. The clamp SHAFT is VERTICAL through the RIGHT (swinging panel) stile — so in
-    #   this plan section it is cut END-ON = a circle; its RIGHT-ANGLE latch arm spans LEFT across the gap and
-    #   PICKS UP the strike plate welded to the ADJACENT (fixed jamb) stile.
+    # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (SIDE SECTION through the latch axis) ══════
+    #   The shaft runs HORIZONTALLY through the panel stile, so the L-shaped LIFT-AND-TURN handle shows in
+    #   profile on the interior face; the cam behind hooks the strike welded to the adjacent (fixed) jamb.
+    #   EXTERIOR at LEFT (cam + jamb) → INTERIOR at RIGHT (handle).
     Ax = 6
     ax.text(Ax + 92, 206, "DETAIL A — LIFT-AND-TURN CAM LATCH (McMaster 1619A74)", ha="center", fontsize=8.3, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Ax + 92, 194, "plan section · clamp shaft VERTICAL through the RIGHT (panel) stile → right-angle latch spans LEFT to the strike", ha="center", fontsize=6.0, color=C_DIM, **FONT)
-    # SWINGING panel-frame stile (RIGHT) — the clamp shaft goes vertically through it
-    ax.add_patch(Rectangle((Ax + 84, 38), 52, 66, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="\\\\", zorder=4))
-    ax.add_patch(Rectangle((Ax + 87, 41), 46, 60, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (Ax + 120, 38), (Ax + 150, 10), "SWINGING panel stile\n(2×2×0.120 RHS) — clamp shaft here", col=C_OUT, fs=6)
-    # FIXED jamb stile (LEFT) — SIDE BY SIDE; carries the strike plate + the outward stop
-    ax.add_patch(Rectangle((Ax + 8, 38), 52, 66, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
-    ax.add_patch(Rectangle((Ax + 11, 41), 46, 60, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (Ax + 24, 38), (Ax + 8, 10), "FIXED jamb stile\n(welded to the stub wall)", col=C_OUT, fs=6)
-    # 20mm EPDM in the thin gap between the two stiles (the cam draws it tight)
-    ax.add_patch(Rectangle((Ax + 60, 42), 24, 58, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=3))
-    leader(ax, (Ax + 72, 100), (Ax + 96, 184), "20mm EPDM\n(cam draws it tight)", col=C_OUT, fs=6)
-    # STRIKE PLATE welded to the jamb (LEFT) stile, protruding into the gap toward the panel
-    ax.add_patch(Rectangle((Ax + 60, 54), 10, 32, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))            # plate on the jamb face
-    ax.add_patch(Polygon([(Ax + 60, 54), (Ax + 54, 54), (Ax + 60, 48)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld to jamb
-    leader(ax, (Ax + 65, 84), (Ax + 30, 168), "STRIKE PLATE welded to the\njamb stile (cam picks it up here)", col=C_OUT, fw="bold", fs=6)
-    # clamp SHAFT: vertical spindle through the panel stile → shown END-ON as a hub (lift-and-turn handle behind)
-    ax.add_patch(Circle((Ax + 110, 71), 11, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))
-    ax.add_patch(Circle((Ax + 110, 71), 4, fc="#606568", ec="none", zorder=8))
-    leader(ax, (Ax + 110, 82), (Ax + 150, 168), "clamp SHAFT (vertical) through the panel stile\n(LIFT-AND-TURN handle behind — interior, egress)", col=C_OUT, fs=6)
-    # RIGHT-ANGLE latch arm on the shaft — turned, it reaches LEFT and hooks BEHIND the strike on the jamb
-    ax.add_patch(Rectangle((Ax + 68, 66), 42, 9, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=9))            # latch arm → the strike plate
-    ax.add_patch(Rectangle((Ax + 62, 52), 6, 23, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=9))            # hook wrapping the strike-plate edge
-    leader(ax, (Ax + 90, 70), (Ax + 104, 148), "RIGHT-ANGLE LATCH — lift + turn and it swings across\nto PICK UP the strike plate on the ADJACENT jamb\nstile (draws the panel tight against the EPDM)", col=C_OUT, fw="bold", fs=6)
-    # outward stop on the jamb — the panel opens INWARD only
-    ax.add_patch(Rectangle((Ax + 60, 90), 22, 8, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
-    leader(ax, (Ax + 70, 94), (Ax + 46, 184), "OUTWARD STOP\n(panel opens inward only)", col=C_OUT, fw="bold", fs=6)
+    ax.text(Ax + 92, 194, "side section · the L-handle lifts + turns on the interior; the cam behind draws the panel tight to the EPDM", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    # SWINGING panel-frame stile (RHS) — the latch shaft runs horizontally through it
+    ax.add_patch(Rectangle((Ax + 70, 34), 40, 96, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="\\\\", zorder=4))
+    ax.add_patch(Rectangle((Ax + 73, 37), 34, 90, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 90, 34), (Ax + 96, 6), "SWINGING panel stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
+    # FIXED jamb stile (LEFT / exterior) — carries the strike the cam picks up
+    ax.add_patch(Rectangle((Ax + 6, 34), 34, 96, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
+    ax.add_patch(Rectangle((Ax + 9, 37), 28, 90, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 18, 34), (Ax + 2, 6), "FIXED jamb stile\n(welded to the stub wall)", col=C_OUT, fs=6)
+    # 20mm EPDM seal in the gap between the stiles (the cam draws it tight)
+    ax.add_patch(Rectangle((Ax + 40, 40), 30, 84, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=3))
+    leader(ax, (Ax + 55, 124), (Ax + 64, 182), "20mm EPDM\n(cam draws it tight)", col=C_OUT, fs=6)
+    # clamp SHAFT — horizontal, through the panel stile at mid-height
+    ax.add_patch(Rectangle((Ax + 40, 78), 78, 8, fc="#8A8F98", ec=C_OUT, lw=1.0, zorder=7))
+    # cam BEHIND (exterior end of the shaft) — hooks the strike welded to the jamb
+    ax.add_patch(Rectangle((Ax + 36, 66), 10, 32, fc="#7A6A9A", ec=C_OUT, lw=1.1, zorder=8))           # cam body
+    ax.add_patch(Rectangle((Ax + 28, 74), 12, 10, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))           # cam hook over the strike
+    ax.add_patch(Rectangle((Ax + 30, 60), 12, 28, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))             # STRIKE plate on the jamb
+    ax.add_patch(Polygon([(Ax + 30, 88), (Ax + 24, 88), (Ax + 30, 94)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld to jamb
+    leader(ax, (Ax + 33, 72), (Ax + 2, 152), "cam hooks the STRIKE PLATE\n(welded to the jamb) — draws\nthe panel tight", col=C_OUT, fw="bold", fs=6)
+    # escutcheon / body on the INTERIOR face of the panel stile
+    ax.add_patch(Rectangle((Ax + 110, 68), 12, 28, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))
+    # L-SHAPED lift-and-turn HANDLE on the interior — horizontal arm bending UP 90°
+    ax.add_patch(Rectangle((Ax + 122, 78), 44, 8, fc="#6E5E90", ec=C_OUT, lw=1.1, zorder=9))           # handle arm (out)
+    ax.add_patch(Rectangle((Ax + 158, 78), 8, 46, fc="#6E5E90", ec=C_OUT, lw=1.1, zorder=9))           # handle grip (bent UP 90°)
+    ax.annotate("", xy=(Ax + 162, 138), xytext=(Ax + 162, 126), arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=1.6), zorder=10)  # LIFT
+    ax.annotate("", xy=(Ax + 150, 70), xytext=(Ax + 168, 70), arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=1.3, connectionstyle="arc3,rad=0.4"), zorder=10)  # TURN
+    leader(ax, (Ax + 150, 82), (Ax + 150, 168), "LIFT-AND-TURN HANDLE (interior face,\negress) — L-arm bends up 90°; lift + turn\nto engage/release the cam", col=C_OUT, fw="bold", fs=6)
 
     # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
     Bx = 210

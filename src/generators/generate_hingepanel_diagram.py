@@ -2148,8 +2148,11 @@ def sheet9(mirror=False):
            f"CORNER BOTTOM STEPPED UP {STEP}mm at BOTH sides\n(clears the bare walkway cantilever legs;\nwalkway removed for transport — Sheet 15)", col="#B00", fw="bold", fs=6)
 
     # ── pivot post (Yd = PIVOT_YD) → Sheet 10 ──
-    ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2, 0), PIVOT_POST_OD, PH, fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.9, zorder=7))   # vertical Ø89 post (front elevation → a vertical tube)
-    ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2 + 8, 0), PIVOT_POST_OD - 16, PH, fc=BG, ec=C_OUT, lw=0.5, zorder=7))          # tube bore
+    # In the EXTERIOR mirror the post is on the FAR (interior) side → drawn BEHIND the frame; in the
+    # interior front view it is nearest the viewer → foreground.
+    pp_z = 1.6 if mirror else 7
+    ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2, 0), PIVOT_POST_OD, PH, fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.9, zorder=pp_z))   # vertical Ø89 post (front elevation → a vertical tube)
+    ax.add_patch(Rectangle((yR - PIVOT_POST_OD / 2 + 8, 0), PIVOT_POST_OD - 16, PH, fc=BG, ec=C_OUT, lw=0.5, zorder=pp_z))          # tube bore
     ax.plot([yR, yR], [0, PH], color=C_CL, lw=1.0, ls=(0, (7, 4)), zorder=6)
     leader(ax, (yR, PH * 0.62), (yR + 300, PH * 0.72),
            "Ø89 CHS PIVOT POST\n(swing axis) — assembly\n+ frame→hub bracket: Sheet 10", col=C_OUT, fw="bold")

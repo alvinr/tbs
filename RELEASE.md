@@ -30,6 +30,11 @@ file** — a release must not ship without a changelog entry:
   its right-angle latch spans LEFT to the strike on the jamb stile. Sheet 2: added the missing front-face
   HDPE→corner-post rivets (the side skins already had them). Renamed the generator's `sheetN()` functions
   to match the sheet numbers they draw (Sheet 9/10 share `_frame_ga(mirror)` via thin wrappers).
+  Follow-up pass: Sheet 14 Detail A bottom flange plate widened to match the top (symmetric); Sheet 2
+  front-face rivets set flush to the HDPE surface + drawn to scale (d=11) and spread clear of the corner
+  rivets, with the leader routed clear of the "PUNCH-OUT BAY" and side-skin labels; the container
+  cargo-door frame drawn on Sheet 2 (solid, matching Sheet 9/10) and Sheet 9's cargo frame recolored to
+  the same solid `#5A5E66` used on the Sheet 10 mirror.
 
 - **Hinged panel — Sheet 10: exterior mirror of the frame GA.** Added a mirror of Sheet 9 viewed from
   OUTSIDE the cargo door toward the drum (x-axis reversed, so the geometry flips left↔right while the text

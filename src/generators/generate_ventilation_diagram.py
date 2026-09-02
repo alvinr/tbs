@@ -354,7 +354,7 @@ def draw_sheet1():
     # Mirror so drum/door end is on the left (consistent with other elevations)
     ax.invert_xaxis()
 
-    title_block(ax, "SHEET 1 OF 2",
+    title_block(ax, "SHEET 1 OF 3",
                 drawing_title="VENTILATION SYSTEM",
                 subtitle="Cross-ventilation layout  ·  Fan positions  ·  Evap cooler  ·  Cable trunking",
                 scale_note="Schematic — not to scale",
@@ -528,8 +528,8 @@ def draw_sheet2():
             ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
     ax.text(520, FCZ + PF_R - 20,
-            f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (exhaust) and Fan B (intake) — identical\n"
-            "Cct A/B  ·  60W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
+            f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (exhaust, this sheet) — wall-mounted (5mm flange + M10)\n"
+            "SAME fan body as Fan B; Fan B mounts to the plywood panel via tee-nuts — see SHEET 3  ·  Cct A/B · 60W · 150+ CFM",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
 
     # ── Airflow arrows ────────────────────────────────────────────────────────
@@ -591,16 +591,16 @@ def draw_sheet2():
 
     # ── Notes ─────────────────────────────────────────────────────────────────
     draw_notes(ax, [
-        "BOTH FANS — 150mm COMPACT AXIAL PANEL FAN  ·  ONE PART NUMBER",
-        "Fan A (exhaust, far end wall) and Fan B (intake, cargo door panel) are identical.",
-        "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
+        "FAN A — 150mm COMPACT AXIAL PANEL FAN  ·  wall-mounted (this sheet)",
+        "Fan A (exhaust, far end wall) bolts to the steel wall: 5mm flange + 4×M10.",
+        "Fan B (intake, cargo-door panel) uses the SAME fan body + baffle duct but a DIFFERENT fixing — see SHEET 3.",
         f"Total depth from wall (each):  {DUCT_DEPTH}mm baffle duct + {PF_BD}mm fan = {DUCT_DEPTH + PF_BD}mm",
         "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
     ], x=350, y_top=80, spacing=15,
        fs=7.5, title_fs=8.5, title_color=C_CL, width=300,
        border_color=C_CL, border_lw=1.0)
 
-    title_block(ax, "SHEET 2 OF 2",
+    title_block(ax, "SHEET 2 OF 3",
                 drawing_title="FAN & BAFFLE DUCT — ASSEMBLY SECTION",
                 subtitle="Interior-mounted fan  ·  Passive louvre grille (exterior only)  ·  "
                 "Baffle duct interior-mounted  ·  All wiring inside container",
@@ -614,9 +614,143 @@ def draw_sheet2():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# SHEET 3 — Fan B mount (on the hinge panel, NOT the container wall)
+# Fan A (sheet 2) bolts to the container end wall via a 5mm flange + 4×M10.
+# Fan B is on the SWINGING cargo-door panel and mounts to its 18mm PLYWOOD band
+# with 2× M8 through a flange plate into captive TEE-NUTS in the ply (hingepanel
+# Sheet 14 Detail A) — the SAME fan body + baffle duct, DIFFERENT fixing.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def draw_sheet3():
+    C_WOOD, C_HDPE, C_TNUT = "#C9A66B", "#7FA8C9", "#A8763A"
+
+    DD    = DUCT_DEPTH               # 300 baffle duct
+    DH    = DUCT_HEIGHT             # 200
+    SK    = 10                      # duct housing wall
+    BF_T  = 6                       # baffle plate (exaggerated)
+    PF_BD = 50                      # fan body depth
+    PF_R  = FAN_DIAM / 2            # 75
+    FL_OH = 30                      # flange overhang past the bore
+    FL_T  = 5                       # fan flange plate thickness
+    PLY_T = 18                      # plywood band
+    SKIN_T = 6                      # 1/8" HDPE skin (exaggerated for legibility)
+
+    # X = 0 at the plywood band's EXTERIOR face. Exterior (air in) on −X, interior on +X.
+    PLY_X0 = 0
+    PLY_X1 = PLY_T                   # 18 — ply interior face (tee-nut flange sits here)
+    DX     = PLY_X1                  # baffle duct starts at the ply interior face
+    FX     = DX + DD                 # duct right / fan inlet region
+    DZ     = 150                     # duct bottom
+    FCZ    = DZ + DH / 2             # fan / duct center
+    int_h  = DH - 2 * SK
+    int_d  = DD - SK
+    wz0    = DZ - FL_OH
+    wz1    = DZ + DH + FL_OH
+
+    fig, ax = plt.subplots(figsize=(24, 14), dpi=DIAGRAM_DPI)
+    fig.patch.set_facecolor("white"); ax.set_facecolor("white")
+    ax.set_xlim(-330, 850); ax.set_ylim(-100, 500)
+    ax.set_aspect("equal"); ax.axis("off")
+    fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
+
+    ax.text(300, 488, "FAN B MOUNT — PLAN (LOOKING DOWN)",
+            ha="center", va="center", fontsize=13, fontweight="bold", color=TITLE_COL)
+    ax.text(300, 475,
+            "TBS-001  ·  Fan B (intake) on the SWINGING cargo-door panel — bolts to the 18mm PLYWOOD band via "
+            "captive tee-nuts (hingepanel Sheet 14), NOT the container wall  ·  Exterior left → Interior right  ·  Dimensions in mm",
+            ha="center", va="center", fontsize=8.0, color=C_DIM)
+
+    # ── Hinge PANEL at the Fan-B corner: 1/8" HDPE skin · 18mm PT plywood band · 1/8" HDPE skin ──
+    #    (the fan bolts to the ply band; the Ø150 bore passes air through all three layers)
+    bore0, bore1 = FCZ - PF_R, FCZ + PF_R
+    for x0, w, fc, lbl in [(PLY_X0 - SKIN_T, SKIN_T, C_HDPE, None),   # exterior HDPE skin
+                           (PLY_X0, PLY_T, C_WOOD, None),             # 18mm plywood band
+                           (PLY_X1, SKIN_T, C_HDPE, None)]:           # interior HDPE skin
+        draw_rect(ax, x0, wz0, w, bore0 - wz0, fc=fc, lw=1.3, zorder=5)      # below the bore
+        draw_rect(ax, x0, bore1, w, wz1 - bore1, fc=fc, lw=1.3, zorder=5)    # above the bore
+    ann(ax, "18mm PT PLYWOOD band\n(Fan-B mount — hingepanel Sheet 12)",
+        (PLY_X0 + PLY_T / 2, wz1 - 5), (PLY_X0 - 30, wz1 + 30))
+    ann(ax, "1/8\" HDPE skin\n(each face)",
+        (PLY_X1 + SKIN_T / 2, bore0 - 12), (PLY_X1 + 60, bore0 - 55))
+
+    # ── Fan mounting flange plate — butts the ply EXTERIOR face; the fan body is exterior of it ──
+    draw_rect(ax, PLY_X0 - SKIN_T - FL_T, wz0, FL_T, wz1 - wz0, fc=C_ALUM, lw=1.2, zorder=6)
+    ann(ax, "fan MOUNTING FLANGE plate\n(butts the ply / skin)",
+        (PLY_X0 - SKIN_T - FL_T / 2, wz0 - 5), (PLY_X0 - SKIN_T - FL_T - 10, wz0 - 45))
+
+    # ── 2× M8 through the flange + skin + ply into a captive TEE-NUT (flange on the ply interior face) ──
+    for bz in (wz0 + FL_OH * 0.5, wz1 - FL_OH * 0.5):
+        # bolt shank: flange exterior face → into the tee-nut in the ply
+        ax.plot([PLY_X0 - SKIN_T - FL_T, PLY_X1 - 3], [bz, bz], color="#8A8F98", lw=3.2, solid_capstyle="butt", zorder=8)
+        ax.plot([PLY_X0 - SKIN_T - FL_T - 4, PLY_X0 - SKIN_T - FL_T], [bz, bz], color=C_OUT, lw=6, solid_capstyle="butt", zorder=8)  # hex head
+        draw_rect(ax, PLY_X1 - 8, bz - 4, 8, 8, fc=C_TNUT, color=C_OUT, lw=0.8, zorder=9)     # tee-nut barrel (in the ply)
+        draw_rect(ax, PLY_X1, bz - 7, 3, 14, fc=C_TNUT, color=C_OUT, lw=0.8, zorder=9)        # tee-nut flange (ply interior face)
+    ann(ax, "2× M8 → captive TEE-NUT in the ply\n(flange on the interior face — Sheet 14 Detail A)",
+        (PLY_X1 + 1, wz1 - FL_OH * 0.5), (PLY_X1 + 70, wz1 + 20))
+
+    # ── Panel fan body (exterior of the flange) ──
+    fanx0 = PLY_X0 - SKIN_T - FL_T - PF_BD
+    draw_rect(ax, fanx0, FCZ - PF_R - 5, PF_BD, (PF_R + 5) * 2, fc=C_ALUM, lw=1.8, zorder=5)
+    draw_rect(ax, fanx0, FCZ - PF_R, PF_BD, 2 * PF_R, fc="#E8EEF4", lw=0.8, zorder=5.5)     # bore
+    hub_d, hub_l = PF_R * 0.40, PF_BD * 0.58
+    draw_rect(ax, fanx0 + (PF_BD - hub_l) / 2, FCZ - hub_d / 2, hub_l, hub_d, fc=C_STEEL, lw=1.0, zorder=8)
+    ann(ax, f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN — Fan B (intake)\nSAME fan body as Fan A · Cct B · 60W · 150+ CFM",
+        (fanx0 + PF_BD / 2, FCZ - PF_R - 8), (fanx0 + PF_BD / 2 - 20, FCZ - PF_R - 60))
+
+    # ── Baffle duct (interior of the ply) — light-trap, same as Fan A ──
+    draw_rect(ax, DX, DZ, DD, DH, fc="#F5F5F5", lw=2.0, zorder=3)
+    for ry in (DZ, DZ + DH - SK):
+        draw_rect(ax, DX, ry, DD, SK, fc=C_STEEL, lw=0.8, zorder=4)
+    ax.add_patch(mpatches.Rectangle((DX, DZ + SK), DD, int_h, fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
+    AIR_GAP = 75
+    B1_X = DX + int_d * 0.30; B1_H = int_h - AIR_GAP; B1_Z = DZ + SK + int_h - B1_H
+    B2_X = DX + int_d * 0.70; B2_H = int_h - AIR_GAP; B2_Z = DZ + SK
+    draw_rect(ax, B1_X, B1_Z, BF_T, B1_H, fc=C_OUT, lw=0.5, zorder=5)
+    draw_rect(ax, B2_X, B2_Z, BF_T, B2_H, fc=C_OUT, lw=0.5, zorder=5)
+    ax.text(DX + DD / 2, DZ + SK + int_h * 0.5, "BAFFLE DUCT\nFLAT BLACK\n(light-tight S-path)",
+            ha="center", va="center", fontsize=7.0, color="#808080", style="italic", alpha=0.85, zorder=9)
+
+    # ── Airflow (intake): outside → fan → through the ply bore → baffle S-path → into container ──
+    pc = C_CL
+    ax.annotate("", xy=(fanx0 - 5, FCZ), xytext=(fanx0 - 70, FCZ),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
+    ax.text(fanx0 - 75, FCZ, "OUTSIDE\nAIR IN", ha="right", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
+    ax.annotate("", xy=(FX + PF_BD + 10, FCZ), xytext=(FX + PF_BD - 40, FCZ),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
+    ax.text(FX + PF_BD + 15, FCZ, "INTO\nCONTAINER", ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
+
+    ax.text(-160, wz0 - 10, "EXTERIOR", ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold", zorder=10)
+    ax.text(DX + DD / 2, wz0 + 15, "INTERIOR (container)", ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold", zorder=10)
+
+    draw_dim_h(ax, DX, DX + DD, DZ - 35, f"{DUCT_DEPTH}mm  (baffle duct)", offset=10, fs=7.5, zorder=10, color=C_DIM)
+    draw_dim_h(ax, PLY_X0, PLY_X1, DZ + DH + 25, f"{PLY_T}mm ply", offset=10, fs=7, zorder=10, color=C_DIM)
+    draw_dim_h(ax, fanx0, fanx0 + PF_BD, DZ - 30, "~50mm\n(fan body)", offset=10, fs=7.5, zorder=10, color=C_DIM)
+
+    draw_notes(ax, [
+        "FAN B — SAME FAN as Fan A, DIFFERENT FIXING",
+        "Fan A (sheet 2) bolts to the container END WALL: 5mm flange + 4×M10 into the steel wall.",
+        "Fan B is on the SWINGING cargo-door panel — it bolts to the panel's 18mm PT PLYWOOD band with",
+        "2× M8 through a flange plate into captive TEE-NUTS in the ply (hingepanel Sheet 14 Detail A).",
+        "Identical fan body + baffle duct; only the mounting substrate (steel wall vs plywood panel) differs.",
+    ], x=350, y_top=80, spacing=15, fs=7.5, title_fs=8.5, title_color=C_CL, width=300,
+       border_color=C_CL, border_lw=1.0)
+
+    title_block(ax, "SHEET 3 OF 3",
+                drawing_title="FAN B MOUNT — PLYWOOD PANEL (TEE-NUT FIXING)",
+                subtitle="Fan B on the swinging cargo-door panel  ·  M8 into captive tee-nuts in the 18mm ply  ·  same fan + baffle as Fan A",
+                scale_note="Dimensions in mm — skin/ply thickness exaggerated",
+                doc_id="TBS-LT · Light Trap & Ventilation")
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
+                pad_inches=0.10, facecolor="white")
+    plt.close(fig)
+    print("  → diagrams/ventilation-sheet3.png  Done.")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     print("Generating TBS-001 Light Trap & Ventilation diagrams...")
     draw_sheet1()
     draw_sheet2()
+    draw_sheet3()
     print("Done.")

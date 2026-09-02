@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Ventilation — new Sheet 3: Fan B mount (plywood panel, tee-nut fixing).** The fan schematic (Sheet 2)
+  showed BOTH fans as identical wall-mounted units, but Fan B is on the SWINGING cargo-door panel and
+  bolts to its 18mm PT plywood band via 2× M8 into captive tee-nuts (hingepanel Sheet 14), not the
+  container wall. Added a dedicated **Fan B mount plan** (same fan body + baffle duct, plywood/tee-nut
+  fixing) and corrected Sheet 2 + the report so the "identical" claim now scopes to the fan body only
+  (Fan A = wall/M10, Fan B = plywood/tee-nut). Registered across deps/publish/setup/gallery/report.
+
 - **Hinged panel — Sheet 2 zero-drift reconcile with the 3D (drum/cage/frame depth).** Sheet 2 was
   recomputing the drum/cage depth locally (drum center −450, cage −875..−25) instead of using the shared
   constants the 3D model uses. Re-based the plan depth on the PANEL exterior and single-sourced from

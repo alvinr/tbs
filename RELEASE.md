@@ -37,6 +37,9 @@ file** — a release must not ship without a changelog entry:
   Then reworked the Fan A wall mount itself: replaced the M10 through-bolts (they interfered with the
   corrugated wall) with an **L-bracket that wraps around the hole edge + Tek self-drilling screws** into
   the wall; right-sized the fan-to-duct fixing to the fan's own **4× M5 corner screws** (was oversized M10).
+  Fan-side follow-up (option A): the baffle duct now **necks down** from 200mm to the 172mm fan at the
+  end, then the sheet **bends 90°** into the flange so the 4× M5 corner screws land on the fan lugs and pass
+  THROUGH the flange; moved the container-side Tek screws clear of the duct walls.
 
 - **Hinged panel — Sheet 2 zero-drift reconcile with the 3D (drum/cage/frame depth).** Sheet 2 was
   recomputing the drum/cage depth locally (drum center −450, cage −875..−25) instead of using the shared

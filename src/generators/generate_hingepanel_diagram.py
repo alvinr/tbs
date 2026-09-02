@@ -2557,14 +2557,14 @@ def sheet13():
     leader(ax, (Ax + 72, 40), (Ax + 40, 4), "FIXED jamb stile (lower)\n(welded to the stub wall)", col=C_OUT, fs=6)
     leader(ax, (Ax + 78, 104), (Ax + 92, 132), "SWINGING panel stile (upper)\n(2\u00d72\u00d70.120 RHS)", col=C_OUT, fs=6)
     leader(ax, (Ax + 100, 70), (Ax + 150, 44), "20mm EPDM\n(cam draws it tight)", col=C_OUT, fs=6)
-    # clamp SHAFT \u2014 horizontal, through the UPPER stile then out to the handle
-    ax.add_patch(Rectangle((Ax + 20, 90), 104, 8, fc="#8A8F98", ec=C_OUT, lw=1.0, zorder=7))
-    # cam reaches DOWN from the shaft to hook the strike on the LOWER stile (draws the two tight)
-    ax.add_patch(Rectangle((Ax + 22, 58), 8, 36, fc="#7A6A9A", ec=C_OUT, lw=1.1, zorder=8))                # cam arm (down)
-    ax.add_patch(Rectangle((Ax + 22, 58), 20, 8, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))                # cam hook under the strike
-    ax.add_patch(Rectangle((Ax + 34, 62), 22, 8, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))                  # STRIKE plate on the lower stile
-    ax.add_patch(Polygon([(Ax + 56, 62), (Ax + 56, 70), (Ax + 62, 66)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld to lower stile
-    leader(ax, (Ax + 26, 62), (Ax + 4, 150), "cam hooks the STRIKE PLATE\n(welded to the lower stile) \u2014\ndraws the two tight", col=C_OUT, fw="bold", fs=6)
+    # clamp SHAFT \u2014 horizontal, through the UPPER stile and extended LEFT past the stiles to carry the cam
+    ax.add_patch(Rectangle((Ax + 4, 90), 120, 8, fc="#8A8F98", ec=C_OUT, lw=1.0, zorder=7))
+    # cam arm drops from the shaft's left end; the catch hooks the STRIKE on the lower stile's VERTICAL short-end face
+    ax.add_patch(Rectangle((Ax + 8, 48), 8, 46, fc="#7A6A9A", ec=C_OUT, lw=1.1, zorder=8))                 # cam arm (down)
+    ax.add_patch(Rectangle((Ax + 8, 48), 16, 8, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))                 # catch hooking the strike
+    ax.add_patch(Rectangle((Ax + 20, 30), 6, 30, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))                  # STRIKE plate on the vertical short-end face
+    ax.add_patch(Polygon([(Ax + 26, 34), (Ax + 26, 42), (Ax + 32, 38)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld to the vertical face
+    leader(ax, (Ax + 15, 52), (Ax + 2, 150), "catch hooks the STRIKE PLATE\n(welded to the lower stile's\nvertical short-end face) \u2014\ndraws the two tight", col=C_OUT, fw="bold", fs=6)
     # escutcheon on the interior face of the UPPER stile
     ax.add_patch(Rectangle((Ax + 118, 80), 12, 28, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))
     # L-SHAPED lift-and-turn HANDLE \u2014 arm out (right) + grip bent UP 90\u00b0

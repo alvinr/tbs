@@ -709,10 +709,18 @@ def sheet2():
            "DRUM SUPPORT CAGE (4-wall 50×50\nsteel box) — WELDED to the frame:\ncorner posts → center-zone jambs,\naxle beams → header + sill\n(cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
     leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL - 300, cage_yb - 120),
            "CAGE TOP PERIMETER RAILS\n(50×50 RHS ring, above the\nH=1000 cut — shown hidden)", col=C_STEEL, fs=5.8)
-    # cage → frame WELDED tie: interior corner posts weld to the center-zone jambs
-    for cxp in (_CGL + 25, _CGR - 25):
-        ax.add_patch(Rectangle((cxp - 7, cage_yt), 14, Y1_W - cage_yt, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=11))
-        ax.add_patch(Polygon([(cxp - 8, Y1_W), (cxp + 8, Y1_W), (cxp, Y1_W - 12)], closed=True, fc=C_OUT, ec="none", zorder=12))  # weld fillet
+    # cage → frame connection: each interior corner post is tied back to the frame by a WELDED
+    # BRACKET/GUSSET PLATE (full 50mm post width), fillet-welded to the post face AND to the frame,
+    # so the cage + frame act as one weldment — NOT the former thin bolt-like tie.
+    for cxp in (_CGL + 25, _CGR - 25):                                    # interior corner-post centers (725, 1637)
+        bx0 = cxp - 25                                                    # full post width
+        ax.add_patch(Rectangle((bx0, cage_yt), 50, Y1_W - cage_yt, fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.85, zorder=11))  # bracket plate
+        ax.add_patch(Polygon([(bx0, cage_yt), (bx0 + 50, cage_yt), (bx0 + 50, cage_yt + 30)],
+                             closed=True, fc=C_STEEL, ec=C_OUT, lw=0.7, alpha=0.6, zorder=11.1))                          # triangular stiffener gusset
+        for wz, dz in ((cage_yt, 13), (Y1_W, -13)):                      # fillet welds at BOTH ends (post + frame)
+            ax.add_patch(Polygon([(cxp - 10, wz), (cxp + 10, wz), (cxp, wz + dz)], closed=True, fc=C_OUT, ec="none", zorder=12))
+    leader(ax, (_CGR - 25, (cage_yt + Y1_W) / 2), (D_XR + 250, Y1_W + 140),
+           "cage post → frame:\nWELDED BRACKET + GUSSET plate\n(fillet-welded both ends —\nno bolts; one weldment)", col=C_STEEL, fs=5.8)
     cb_t = 50
     ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
                            fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))

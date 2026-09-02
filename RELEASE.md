@@ -31,6 +31,9 @@ file** — a release must not ship without a changelog entry:
   re-scaled the blind-rivet glyphs — the front + side rivets were 3–5× oversized (read as bolts); now a
   realistic Ø6mm-body / ~12mm-head consistent across both. **Standing rule:** every dimension label now
   carries an explicit `mm` suffix (f-string + literal), applied across all 17 sheets.
+  Sheet 2 cage→frame: replaced the thin 14mm weld-tie (read as a bolt) with a full-width **welded
+  bracket + gusset plate** at each interior cage corner post, fillet-welded both ends, with a callout.
+  Sheet 3 "RHS" confirmed = Rectangular Hollow Section (not a side designation) — left as-is per Alvin.
 
 - **Hinged panel — tidy-label pass (Sheet 9/10) + stale cross-ref fixes.** Sheet 9/10 left margin
   de-crowded: tightened the U-FRAME and cam-latch STRIKE-PLATE notes, widened the margin, and moved the

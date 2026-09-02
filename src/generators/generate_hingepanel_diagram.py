@@ -168,7 +168,7 @@ def sheet1():
     # ── bottom-step callout (corner zones raised to clear the walkway cantilever legs) ──
     for _sx in (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R):
         ax.plot([_sx, _sx], [0, STEP], color="#B00", lw=2.0, zorder=12)
-    draw_dim_v(ax, PANEL_CORNER_YD_L - 45, 0, STEP, f"{STEP}", offset=14, fs=6, font=FONT, right=False)
+    draw_dim_v(ax, PANEL_CORNER_YD_L - 45, 0, STEP, f"{STEP}mm", offset=14, fs=6, font=FONT, right=False)
     ax.text(PW / 2, -145,
             f"BOTTOM STEPPED UP {STEP}mm AT BOTH CORNER ZONES — clears the bare walkway cantilever legs (walkway removed for transport, Sheet 16)",
             ha="center", va="center", fontsize=6.4, color="#B00", fontweight="bold", **FONT, zorder=15)
@@ -503,14 +503,14 @@ def sheet2():
     post_face_L, post_face_R = DRUM_CAGE_YD_L, DRUM_CAGE_YD_R
     for pf, ang, cxr in ((post_face_L, 180, post_face_L - 8), (post_face_R, 0, post_face_R + 8)):
         for ry in (D_YB, D_YT):                              # exterior post + interior post
-            _blind_rivet(ax, cxr, ry, ang, 22, d=16)
+            _blind_rivet(ax, cxr, ry, ang, 16, d=6)
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, BAY_FRONT_X), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
     # FRONT-face HDPE blind-riveted to the front cage frame (was missing — the SIDE skins have theirs above).
     # Vertical-axis glyph, factory head FLUSH on the exterior (−Y) surface (cz = BAY_FRONT_X + grip/2); SPREAD
     # along the wall, clear of the side-skin corner rivets. Smaller d so they don't crowd the corners.
     for fx in (DRUM_CAGE_YD_L + 170, (DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, DRUM_CAGE_YD_R - 170):
-        _blind_rivet(ax, fx, BAY_FRONT_X + 8, 270, 16, d=11)
+        _blind_rivet(ax, fx, BAY_FRONT_X + 6.5, 270, 13, d=6)
     leader(ax, (DRUM_CAGE_YD_L + 170, BAY_FRONT_X), (DRUM_CAGE_YD_L - 250, BAY_FRONT_X + 150),
            "FRONT-face HDPE riveted\nto the front cage frame", col="#4a5a70", fs=5.8)
     leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
@@ -1694,9 +1694,9 @@ def sheet6():
            "2× 1/4\" screws into RIVNUTS in the near\nRHS wall (can't tap the 3mm tube; load\nreacts into STEEL, not the HDPE skin)", col=C_OUT, fw="bold")
 
     # ── dimensions (prove the drawing is to scale) ──
-    draw_dim_h(ax, 0, 50, -62, "50", offset=10, fs=6.5, font=FONT, above=False)          # frame width
-    draw_dim_v(ax, 128, -6.35, 6.35, "Ø12.7", offset=9, fs=6.2, font=FONT, right=True)   # grip bar Ø
-    draw_dim_h(ax, 59, 111, 40, "~52 standoff", offset=9, fs=6.0, font=FONT)             # handle projection
+    draw_dim_h(ax, 0, 50, -62, "50mm", offset=10, fs=6.5, font=FONT, above=False)          # frame width
+    draw_dim_v(ax, 128, -6.35, 6.35, "Ø12.7mm", offset=9, fs=6.2, font=FONT, right=True)   # grip bar Ø
+    draw_dim_h(ax, 59, 111, 40, "~52mm standoff", offset=9, fs=6.0, font=FONT)             # handle projection
     ax.text(110, -30, "grip bar runs VERTICAL, ~308mm\n(shown here in cross-section)", ha="center", va="top", fontsize=5.8, color=C_DIM, **FONT)
     # ── scale bar (50mm) ──
     sbx0 = -88
@@ -1800,25 +1800,25 @@ def sheet7():
         ax.text(x0 + W_CTR / 2, (oy0 + oy1) / 2,
                 "PERSONNEL OPENING\n(trim to housing\n— Sheet 2 / 8)",
                 ha="center", va="center", fontsize=6.6, color=C_DIM, **FONT, zorder=5)
-        draw_dim_h(ax, ox, ox + OPEN_W, oy1 + 70, f"{OPEN_W} personnel opening", offset=14, fs=6.2, font=FONT)
+        draw_dim_h(ax, ox, ox + OPEN_W, oy1 + 70, f"{OPEN_W}mm personnel opening", offset=14, fs=6.2, font=FONT)
         ax.text(x0 + W_CTR / 2, oy1 + 150, "≥ drum 80° passage (~487mm, §3.1) — operator fits", ha="center", fontsize=5.8, color=C_DIM, **FONT, zorder=6)
         # size + locate the cutout: height (dim_v) beside it, bottom margin, and left edge offset
         opening_h = oy1 - oy0
         left_margin = (W_CTR - OPEN_W) / 2
-        draw_dim_v(ax, ox + OPEN_W + 55, oy0, oy1, f"{int(opening_h)} opening ht", offset=14, fs=6.0, font=FONT, right=True)
-        draw_dim_v(ax, ox + OPEN_W + 150, yA, oy0, f"{int(oy0 - yA)} btm margin", offset=14, fs=6.0, font=FONT, right=True)
-        draw_dim_h(ax, x0, ox, oy0 - 70, f"{int(left_margin)}", offset=-12, fs=6.0, font=FONT)
+        draw_dim_v(ax, ox + OPEN_W + 55, oy0, oy1, f"{int(opening_h)}mm opening ht", offset=14, fs=6.0, font=FONT, right=True)
+        draw_dim_v(ax, ox + OPEN_W + 150, yA, oy0, f"{int(oy0 - yA)}mm btm margin", offset=14, fs=6.0, font=FONT, right=True)
+        draw_dim_h(ax, x0, ox, oy0 - 70, f"{int(left_margin)}mm", offset=-12, fs=6.0, font=FONT)
         rivet_edge(x0, yA, W_CTR, H_PANEL, "L", holes=(i == 0))
-        draw_dim_v(ax, x0 - 60, yA, yA + H_PANEL, f"{H_PANEL}", offset=16, fs=6.5, font=FONT)
-        draw_dim_h(ax, x0, x0 + W_CTR, yA - 70, f"{W_CTR}", offset=14, fs=6.5, font=FONT)
+        draw_dim_v(ax, x0 - 60, yA, yA + H_PANEL, f"{H_PANEL}mm", offset=16, fs=6.5, font=FONT)
+        draw_dim_h(ax, x0, x0 + W_CTR, yA - 70, f"{W_CTR}mm", offset=14, fs=6.5, font=FONT)
 
     # 3-4 · bay Yd side walls (near + far) — flat rectangles, lap to frame + caps
     for x0, side in [(xW1, "NEAR"), (xW2, "FAR")]:
         blank(x0, yA, BAY_D, H_PANEL)
         piece_title(x0, yA, BAY_D, yA + H_PANEL / 2, f"BAY {side}\nYd WALL", "1/8\" HDPE · punch-out bay")
         rivet_edge(x0, yA, BAY_D, H_PANEL, "L", holes=False)
-        draw_dim_h(ax, x0, x0 + BAY_D, yA - 70, f"{BAY_D} (bay depth)", offset=14, fs=6.5, font=FONT)
-        draw_dim_v(ax, x0 - 60, yA, yA + H_PANEL, f"{H_PANEL}", offset=16, fs=6.5, font=FONT)
+        draw_dim_h(ax, x0, x0 + BAY_D, yA - 70, f"{BAY_D}mm (bay depth)", offset=14, fs=6.5, font=FONT)
+        draw_dim_v(ax, x0 - 60, yA, yA + H_PANEL, f"{H_PANEL}mm", offset=16, fs=6.5, font=FONT)
 
     # 5-6 · upper + lower floor caps — with the Ø800 housing seat (join → Sheet 8)
     for x0, cap in [(xC1, "UPPER"), (xC2, "LOWER")]:
@@ -1833,8 +1833,8 @@ def sheet7():
         ax.text(ccx, ccy - 60, f"Ø{int(2 * R_HOUS)} housing seat", ha="center", va="center",
                 fontsize=6.6, color=C_DIM, **FONT, zorder=6)
         rivet_edge(x0, yB, W_CTR, BAY_D, "B", holes=False)
-        draw_dim_h(ax, x0, x0 + W_CTR, yB - 60, f"{W_CTR}", offset=14, fs=6.5, font=FONT)
-        draw_dim_v(ax, x0 - 55, yB, yB + BAY_D, f"{BAY_D}", offset=16, fs=6.5, font=FONT, right=False)
+        draw_dim_h(ax, x0, x0 + W_CTR, yB - 60, f"{W_CTR}mm", offset=14, fs=6.5, font=FONT)
+        draw_dim_v(ax, x0 - 55, yB, yB + BAY_D, f"{BAY_D}mm", offset=16, fs=6.5, font=FONT, right=False)
 
     # ── scale bar (500mm) ────────────────────────────────────────────────────
     sbx, sby = xW2 + BAY_D - 500, yB + 40
@@ -1989,8 +1989,8 @@ def sheet8():
     ax.add_patch(Rectangle((hx + hw, 44), 26, 18, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, (hx + hw + 13, 44), (200, 30),
            "20mm neoprene surround seal\n(closes 15mm housing↔panel gap, §3.4)", col=C_OUT)
-    draw_dim_v(ax, hx - 90, cy, cy + ch, f"{T_SKIN}", offset=10, fs=6.2, font=FONT)
-    draw_dim_h(ax, hx, hx + hw, 24, f"{T_HOUS}", offset=8, fs=6.2, font=FONT)
+    draw_dim_v(ax, hx - 90, cy, cy + ch, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
+    draw_dim_h(ax, hx, hx + hw, 24, f"{T_HOUS}mm", offset=8, fs=6.2, font=FONT)
 
     # ═══ DETAIL B — surround → steel frame blind-rivet lap ══════════════════════
     ax.text(258, 190, "DETAIL B — SURROUND → FRAME RIVET LAP", ha="center",
@@ -2116,25 +2116,9 @@ def _frame_ga(mirror=False):
            "U-FRAME — welded steel channel\n(Yd0–180); hinge panel BUTTS UP\nhere. Flanges WELD to the container\ncargo-door frame (50×20×3 RHS,\nbolted M10 @ 300) — not load-bearing.", col=C_OUT, fw="bold", fs=6.3)
     leader(ax, (yL + 4, 500), (-370, 690), "web carries 2 cam-latch\nSTRIKE PLATES\n(engage the panel latches)", col=C_OUT, fs=6.2)
 
-    # ── Fan-B plywood band (near corner, ghosted wood) → Sheet 12 ──
-    ax.add_patch(Rectangle((yL, 0), jL - yL, PANEL_FAN_BAND_Z, fc=C_WOOD, ec=C_OUT, lw=0.7, alpha=0.45, zorder=2))
-    ax.text((yL + jL) / 2, PANEL_FAN_BAND_Z / 2, "18mm PLY\nFan-B band", ha="center", va="center",
-            fontsize=7, color="#6b4a1f", **FONT, zorder=3)
-
-    # ── drum cage ENVELOPE (shown; detailed elsewhere) ──
-    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, z_sill), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, z_hdr - z_sill,
-                           fc="#E9E4D8", ec=C_OUT, lw=1.0, ls=(0, (6, 3)), hatch="\\\\", alpha=0.55, zorder=3))
-    # drum — VERTICAL axis, so in this front elevation it is a CYLINDER (Ø800 wide × tall),
-    # NOT a face-on circle. Body rectangle + top/bottom ellipse arcs, centered in the cage.
-    dcx = PW / 2
-    ddz0, ddz1 = z_sill, z_hdr
-    ax.add_patch(Rectangle((dcx - DRUM_D / 2, ddz0), DRUM_D, ddz1 - ddz0, fc=C_LT_DRUM, ec=C_CL,
-                           lw=1.0, ls="--", alpha=0.30, zorder=4))
-    for az, t1, t2 in [(ddz0, 180, 360), (ddz1, 0, 180)]:
-        ax.add_patch(Arc((dcx, az), DRUM_D, 150, angle=0, theta1=t1, theta2=t2, color=C_CL, lw=1.0, ls="--", zorder=4))
-    ax.plot([dcx, dcx], [ddz0 - 40, ddz1 + 40], color=C_CL, lw=0.8, ls=(0, (7, 4)), zorder=4)   # drum vertical axis CL
-    ax.text(PW / 2, (z_sill + z_hdr) / 2, f"DRUM CAGE ENVELOPE\n(Ø{int(DRUM_D)} drum + swing cage)\n— detailed in\nLight-Trap Sheet 7",
-            ha="center", va="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT, zorder=6)
+    # NOTE: the Fan-B plywood band and the drum/cage envelope are intentionally NOT drawn here —
+    # this sheet is the STEEL FRAME general arrangement only. The drum + cage are detailed on
+    # Light-Trap Sheet 7; the Fan-B ply on Sheet 12. The center zone is left open to read as frame.
 
     # ── swinging-frame perimeter + internal members ──
     vbar(yL, STEP, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 13)", (PH * 0.78, (-260, PH * 0.86)))  # bottom stepped up
@@ -2152,7 +2136,7 @@ def _frame_ga(mirror=False):
     # ── bottom-step callout + dim (both corner zones raised by STEP) ──
     for sxr in (jL, jR + RHS):                                # step risers at the outboard jamb faces
         ax.plot([sxr, sxr], [0, STEP], color="#B00", lw=2.2, zorder=8)
-    draw_dim_v(ax, yL - 55, 0, STEP, f"{STEP} step", offset=12, fs=6, font=FONT, right=False)
+    draw_dim_v(ax, yL - 55, 0, STEP, f"{STEP}mm step", offset=12, fs=6, font=FONT, right=False)
     leader(ax, ((yL + jL) / 2, STEP), ((yL + jL) / 2 + 80, -205),
            f"CORNER BOTTOM STEPPED UP {STEP}mm at BOTH sides\n(clears the bare walkway cantilever legs;\nwalkway removed for transport — Sheet 16)", col="#B00", fw="bold", fs=6)
 
@@ -2174,7 +2158,6 @@ def _frame_ga(mirror=False):
         ax.text(tp[0], tp[1], txt, ha="center", va="center", fontsize=6.6, color="#B00", **FONT, zorder=10)
 
     bubble(yR - RHS / 2, 300, 12, "cam latch mount\n(corners, Sheet 13)", (yR + 250, 300))
-    bubble((yL + jL) / 2, PANEL_FAN_BAND_Z + 120, 11, "Fan-B + ply\ntabs (Sheet 12)", ((yL + jL) / 2 - 60, PANEL_FAN_BAND_Z + 360))
 
     # ── member schedule (in the clear near-corner white space) ──
     rows = [
@@ -2190,18 +2173,17 @@ def _frame_ga(mirror=False):
     ax.text(-350, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
 
-    draw_dim_h(ax, yL, yR, -150, f"{yR - yL} SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
+    draw_dim_h(ax, yL, yR, -150, f"{yR - yL}mm SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
     # horizontal component chain (near strip · center zone · far strip) — top row, above the cage dim
-    draw_dim_h(ax, 0, yL, PH + 215, f"{yL}", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, jL, jR, PH + 215, f"{jR - jL} center zone", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, yR, PW, PH + 215, f"{int(PW - yR)}", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, PH + 95, f"{DRUM_CAGE_YD_R - DRUM_CAGE_YD_L} drum cage", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, 0, yL, PH + 215, f"{yL}mm", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, PH + 215, f"{jR - jL}mm center zone", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, yR, PW, PH + 215, f"{int(PW - yR)}mm", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, PH + 95, f"{DRUM_CAGE_YD_R - DRUM_CAGE_YD_L}mm drum cage", offset=16, fs=6, font=FONT)
     # vertical component chain (sill · cage · header→top) on the right, overall PH outermost
-    draw_dim_v(ax, PW + 150, 0, z_sill, f"{z_sill}", offset=14, fs=6, font=FONT, right=True)
-    draw_dim_v(ax, PW + 150, z_sill, z_hdr, f"{z_hdr - z_sill} cage", offset=14, fs=6, font=FONT, right=True)
-    draw_dim_v(ax, PW + 150, z_hdr, PH, f"{PH - z_hdr}", offset=14, fs=6, font=FONT, right=True)
-    draw_dim_v(ax, PW + 300, 0, PH, f"{PH}", offset=20, fs=7, font=FONT, right=True)
-    draw_dim_v(ax, -140, 0, PANEL_FAN_BAND_Z, f"{PANEL_FAN_BAND_Z} fan band", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 150, 0, z_sill, f"{z_sill}mm", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 150, z_sill, z_hdr, f"{z_hdr - z_sill}mm cage", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 150, z_hdr, PH, f"{PH - z_hdr}mm", offset=14, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 300, 0, PH, f"{PH}mm", offset=20, fs=7, font=FONT, right=True)
 
     _view = "EXTERIOR elevation — viewed from OUTSIDE the cargo door toward the drum (mirror of Sheet 9)" if mirror else "swinging panel · front elevation"
     ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
@@ -2276,12 +2258,12 @@ def sheet11():
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
     leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 15", col=C_OUT, fw="bold")
-    draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT} floor→roof", offset=16, fs=6.6, font=FONT)
+    draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT}mm floor→roof", offset=16, fs=6.6, font=FONT)
     # diameters (dim_h) + component lengths (dim_v) on the pivot post
     draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
-    draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116 hub tube", offset=14, fs=6.2, font=FONT)  # Ø220 plate OD is dimensioned in Detail B
-    draw_dim_v(ax, cx + 520, 180, 2050, f"{2050 - 180} hub tube", offset=16, fs=6.2, font=FONT, right=True)
-    draw_dim_v(ax, cx + 430, 220, 2000, f"{2000 - 220} bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
+    draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116mm hub tube", offset=14, fs=6.2, font=FONT)  # Ø220 plate OD is dimensioned in Detail B
+    draw_dim_v(ax, cx + 520, 180, 2050, f"{2050 - 180}mm hub tube", offset=16, fs=6.2, font=FONT, right=True)
+    draw_dim_v(ax, cx + 430, 220, 2000, f"{2000 - 220}mm bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
@@ -2298,8 +2280,8 @@ def sheet11():
         a = math.radians(30 + k * 60)
         ax.add_patch(Circle((bx0 + 85 * sB * math.cos(a), by0 + 85 * sB * math.sin(a)), 7 * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))
     # dimensions: plate OD, bolt PCD, post bore, hole size
-    draw_dim_h(ax, bx0 - 110 * sB, bx0 + 110 * sB, by0 + 120 * sB, "Ø220 plate OD", offset=12, fs=6.2, font=FONT)
-    draw_dim_h(ax, bx0 - 85 * sB, bx0 + 85 * sB, by0 - 120 * sB, "Ø170 bolt PCD", offset=12, fs=6.2, font=FONT, above=False)
+    draw_dim_h(ax, bx0 - 110 * sB, bx0 + 110 * sB, by0 + 120 * sB, "Ø220mm plate OD", offset=12, fs=6.2, font=FONT)
+    draw_dim_h(ax, bx0 - 85 * sB, bx0 + 85 * sB, by0 - 120 * sB, "Ø170mm bolt PCD", offset=12, fs=6.2, font=FONT, above=False)
     leader(ax, (bx0 - R * sB, by0), (bx0 - 155 * sB, by0 + 60 * sB), "Ø90 post bore", col=C_OUT, fs=6)
     leader(ax, (bx0 + 85 * sB * math.cos(math.radians(30)), by0 + 85 * sB * math.sin(math.radians(30))),
            (bx0 + 150 * sB, by0 + 85 * sB), "6× Ø14 (M12)", col=C_OUT, fs=6)
@@ -2367,15 +2349,15 @@ def sheet12():
     ax.add_patch(Rectangle((cx0, cy0), CW, CH, fc=C_WOOD, ec=C_OUT, lw=1.2, alpha=0.4, zorder=4))
     ax.text(cx0 + CW / 2, cy0 + CH / 2, "COOLER STOW\nBASE 600×350", ha="center", va="center", fontsize=6.8, color="#6b4a1f", **FONT, zorder=6)
     ax.text(SW / 2, cy0 / 2, "remainder — offcut stock", ha="center", va="center", fontsize=6.4, color=C_DIM, **FONT, zorder=5)
-    draw_dim_h(ax, 0, SW, -110, f"{SW}", offset=16, fs=6.6, font=FONT)
-    draw_dim_v(ax, -110, 0, SH, f"{SH}", offset=16, fs=6.6, font=FONT)
+    draw_dim_h(ax, 0, SW, -110, f"{SW}mm", offset=16, fs=6.6, font=FONT)
+    draw_dim_v(ax, -110, 0, SH, f"{SH}mm", offset=16, fs=6.6, font=FONT)
     # per-piece + fan-cutout position dimensions
-    draw_dim_h(ax, bx, bx + BW, by + BH + 34, f"{BW}", offset=12, fs=6.0, font=FONT)               # band width
-    draw_dim_v(ax, bx + BW + 60, by, by + BH, f"{BH}", offset=12, fs=6.0, font=FONT, right=True)     # band height
-    draw_dim_v(ax, bx + BW + 190, by, fcy, "360 to fan CL", offset=12, fs=5.8, font=FONT, right=True)  # fan vert position
-    draw_dim_h(ax, bx, fcx, fcy + FR + 55, f"{int(BW / 2)} (fan CL, centered)", offset=10, fs=5.8, font=FONT)  # fan horiz position (above cutout)
-    draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
-    draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
+    draw_dim_h(ax, bx, bx + BW, by + BH + 34, f"{BW}mm", offset=12, fs=6.0, font=FONT)               # band width
+    draw_dim_v(ax, bx + BW + 60, by, by + BH, f"{BH}mm", offset=12, fs=6.0, font=FONT, right=True)     # band height
+    draw_dim_v(ax, bx + BW + 190, by, fcy, "360mm to fan CL", offset=12, fs=5.8, font=FONT, right=True)  # fan vert position
+    draw_dim_h(ax, bx, fcx, fcy + FR + 55, f"{int(BW / 2)}mm (fan CL, centered)", offset=10, fs=5.8, font=FONT)  # fan horiz position (above cutout)
+    draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}mm", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
+    draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}mm", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
 
     ax.text(SW / 2, cy0 - 230, "Fan-B mounting + plywood→frame tab/T-nut details → SHEET 14",
             ha="center", fontsize=7.5, color=C_OUT, **FONT)
@@ -2404,7 +2386,7 @@ def sheet14():
     # ── DETAIL A — Fan-B → plywood (SECTION, to scale 1:1) ──
     # A 150mm axial PANEL FAN bolts to the ply through its thin MOUNTING FLANGE PLATE (the
     # panel that butts the ply) at the flange CORNERS — the bolts do NOT run through the
-    # 50mm fan body. Exterior (fan) at LEFT → interior (backing plate) at RIGHT.
+    # 50mm fan body. Exterior (fan) at LEFT → interior (ply + captive tee-nut) at RIGHT.
     ax0, ay0, sA = 24, 10, 1.0
     def dA(x, y): return (ax0 + x * sA, ay0 + y * sA)
     ax.text(ax0 + 60, 238, "DETAIL A — FAN-B → PLYWOOD (SECTION 1:1)", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
@@ -2419,22 +2401,24 @@ def sheet14():
     ax.add_patch(Rectangle(dA(4, CUT0), 50, CUT1 - CUT0, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=4))   # fan body (Ø150 × 50 deep) — protrudes exterior
     ax.add_patch(Rectangle(dA(4, CUT0 + 12), 50, (CUT1 - CUT0) - 24, fc="#E8EEF4", ec=C_OUT, lw=0.6, zorder=4.2))  # fan bore = the Ø150 air path
     ax.add_patch(Rectangle(dA(19, 93), 20, 24, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4.4))          # motor hub
-    draw_dim_v(ax, dA(69, 0)[0], dA(0, CUT0)[1], dA(0, CUT1)[1], "Ø150 fan bore = ply cutout", offset=10, fs=5.6, font=FONT, right=True)
-    ax.add_patch(Rectangle(dA(78, 14), 6, 193, fc="#9AA0A6", ec=C_OUT, lw=1.2, zorder=5))          # interior backing plate (spans the bolt gauge)
-    # bolts at the flange corners — clear of the round fan body. Grip spans the full stack:
-    # flange plate face (x=54) → ply → backing plate face (x=84), so head + nut BUTT the outer faces.
+    draw_dim_v(ax, dA(69, 0)[0], dA(0, CUT0)[1], dA(0, CUT1)[1], "Ø150mm fan bore = ply cutout", offset=10, fs=5.6, font=FONT, right=True)
+    # bolts at the flange corners — clear of the round fan body. Head bears on the fan mounting flange
+    # plate (x=54); the shank runs through the flange + 18mm ply and threads into a captive TEE-NUT set
+    # in the ply's far/interior face (same IBC-convention fixing as Detail B) — no backing plate.
     for by2 in (18, 192):   # symmetric about the fan (Ø150, y30–180): both bolts clear the housing by ~12mm
-        _draw_bolt(ax, dA(69, by2)[0], dA(69, by2)[1], 30 * sA, d=8, vertical=False, head=-1, end="nut", zb=8)
+        _draw_bolt(ax, dA(64, by2)[0], dA(64, by2)[1], 22 * sA, d=8, vertical=False, head=-1, end="tapped", zb=9)
+        ax.add_patch(Rectangle(dA(60, by2 - 3), 15, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))   # tee-nut barrel (in the ply)
+        ax.add_patch(Rectangle(dA(75, by2 - 6), 3, 12, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))   # tee-nut flange on the ply FAR face
     leader(ax, dA(69, 190), (ax0 + 70, 235), "18mm PT ply band", col=C_OUT, fs=6.2)
     leader(ax, dA(57, 55), (ax0 - 12, 205), "fan MOUNTING FLANGE\nplate (butts the ply)", col=C_OUT, fw="bold", fs=6.2)
     leader(ax, dA(26, 110), (ax0 - 18, 60), "150mm axial fan body\n(Ø150 × 50 deep) —\nNOT bolted through", col=C_OUT, fs=6.2)
-    leader(ax, dA(81, 110), (ax0 + 140, 205), "interior backing\nplate + nuts", col=C_OUT, fs=6.2)
-    ax.text(ax0 + 60, -22, "Fan-B flange → 2× M8 through the flange plate + 18mm ply into\nan interior backing plate + nuts (bolts clear the fan body)", ha="center", va="top", fontsize=6.2, color=C_OUT, **FONT)
+    leader(ax, dA(77, 110), (ax0 + 140, 205), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.2)
+    ax.text(ax0 + 60, -22, "Fan-B flange → 2× M8 through the flange plate + 18mm ply into\na captive tee-nut in the ply (bolts clear the fan body)", ha="center", va="top", fontsize=6.2, color=C_OUT, **FONT)
     # dims (to scale)
-    draw_dim_v(ax, dA(0, 0)[0] - 20, dA(0, 15)[1], dA(0, 205)[1], "190 flange", offset=8, fs=5.8, font=FONT, right=False)
+    draw_dim_v(ax, dA(0, 0)[0] - 20, dA(0, 15)[1], dA(0, 205)[1], "190mm flange", offset=8, fs=5.8, font=FONT, right=False)
     draw_dim_v(ax, dA(57, 0)[0] + 42, dA(0, 18)[1], dA(0, 192)[1], "bolt gauge", offset=10, fs=5.6, font=FONT, right=True)
-    draw_dim_h(ax, dA(4, 0)[0], dA(54, 0)[0], dA(0, 34)[1], "50 fan", offset=-7, fs=5.6, font=FONT)
-    draw_dim_h(ax, dA(60, 0)[0], dA(78, 0)[0], dA(0, 216)[1], "18", offset=7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dA(4, 0)[0], dA(54, 0)[0], dA(0, 34)[1], "50mm fan", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dA(60, 0)[0], dA(78, 0)[0], dA(0, 216)[1], "18mm", offset=7, fs=5.6, font=FONT)
 
     # ── DETAIL B — plywood → frame (welded tab + captive tee-nut) ──
     bx0, byy, sB = 270, 40, 1.0
@@ -2460,8 +2444,8 @@ def sheet14():
     leader(ax, dB(97, 102), (bx0 + 150, 126), "M8 bolt → the tab\nUPSTAND (hex head on its face)", col=C_OUT, fw="bold", fs=6.2)
     leader(ax, dB(108, 102), (bx0 + 150, 158), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.2)
     # dims (to scale)
-    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18", offset=-7, fs=5.6, font=FONT)
-    draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50 RHS", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18mm", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50mm RHS", offset=-7, fs=5.6, font=FONT)
 
     # ── COMPANION: rotated 90° view (looking along the bolt axis) — the bolt seats in the tab plate;
     #    the frame stile is off to the side, so the bolt does NOT pass through the frame. ──
@@ -2766,19 +2750,19 @@ def sheet16():
 
 
     # ── dimension ladders ──
-    draw_dim_v(ax, -150, 0, ARM_TOP, "115 posts", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -250, 0, LT_CAGE_BOT, f"{int(LT_CAGE_BOT)} cage btm", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -350, 0, P_CTR, f"{int(P_CTR)} ctr", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -55, 0, TRAY_RIM, "70 tray", offset=10, fs=5.6, font=FONT, right=False)
-    draw_dim_v(ax, WID + 160, 0, WALL_LEG_W, "200 leg", offset=14, fs=6.0, font=FONT, right=True)
-    draw_dim_v(ax, WID + 260, 0, P_SIDE, f"{int(P_SIDE)} side", offset=14, fs=6.0, font=FONT, right=True)
-    draw_dim_v(ax, jL - 75, P_CTR, P_SIDE, f"{int(P_SIDE - P_CTR)} step", offset=12, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, DRUM_CAGE_YD_R + 60, ARM_TOP, LT_CAGE_BOT, f"{POST_CLR}", offset=10, fs=5.6, font=FONT, right=True)  # governing clr
+    draw_dim_v(ax, -150, 0, ARM_TOP, "115mm posts", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -250, 0, LT_CAGE_BOT, f"{int(LT_CAGE_BOT)}mm cage btm", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -350, 0, P_CTR, f"{int(P_CTR)}mm ctr", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -55, 0, TRAY_RIM, "70mm tray", offset=10, fs=5.6, font=FONT, right=False)
+    draw_dim_v(ax, WID + 160, 0, WALL_LEG_W, "200mm leg", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, WID + 260, 0, P_SIDE, f"{int(P_SIDE)}mm side", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, jL - 75, P_CTR, P_SIDE, f"{int(P_SIDE - P_CTR)}mm step", offset=12, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, DRUM_CAGE_YD_R + 60, ARM_TOP, LT_CAGE_BOT, f"{POST_CLR}mm", offset=10, fs=5.6, font=FONT, right=True)  # governing clr
 
     # ── Yd zone dims (bottom) ──
-    draw_dim_h(ax, 0, jL, -100, f"{jL} near corner — STEP UP", offset=-14, fs=6, font=FONT)
-    draw_dim_h(ax, jL, jR, -100, f"{jR - jL} center (Z{int(P_CTR)})", offset=-14, fs=6, font=FONT)
-    draw_dim_h(ax, jR, WID, -100, f"{WID - jR} far corner — STEP UP", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, 0, jL, -100, f"{jL}mm near corner — STEP UP", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, -100, f"{jR - jL}mm center (Z{int(P_CTR)})", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jR, WID, -100, f"{WID - jR}mm far corner — STEP UP", offset=-14, fs=6, font=FONT)
 
     # ── notes block (right margin) ──
     draw_notes(ax, [
@@ -2869,10 +2853,10 @@ def sheet17():
             color="#1763C8", lw=1.6, ls=(0, (6, 3)))
     ax.text(WID / 2, ez + ATOP + 14, "swinging leaf bottom (stepped Z217 ctr / Z282 corners) — the aprons seal up to it",
             ha="center", fontsize=6.6, color="#1763C8", **FONT)
-    draw_dim_h(ax, 0, APRON_IN_L, ez - 45, f"{int(APRON_IN_L)} near apron", offset=-12, fs=6, font=FONT)
-    draw_dim_h(ax, APRON_IN_L, APRON_IN_R, ez - 45, f"{int(APRON_IN_R - APRON_IN_L)} center baffle", offset=-12, fs=6, font=FONT)
-    draw_dim_h(ax, APRON_IN_R, STUB, ez - 45, f"{int(STUB - APRON_IN_R)} far apron", offset=-12, fs=6, font=FONT)
-    draw_dim_h(ax, STUB, PIVOT_YD, ez - 45, f"{int(PIVOT_YD - STUB)} pivot leaf", offset=-12, fs=5.6, font=FONT)
+    draw_dim_h(ax, 0, APRON_IN_L, ez - 45, f"{int(APRON_IN_L)}mm near apron", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, APRON_IN_L, APRON_IN_R, ez - 45, f"{int(APRON_IN_R - APRON_IN_L)}mm center baffle", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, APRON_IN_R, STUB, ez - 45, f"{int(STUB - APRON_IN_R)}mm far apron", offset=-12, fs=6, font=FONT)
+    draw_dim_h(ax, STUB, PIVOT_YD, ez - 45, f"{int(PIVOT_YD - STUB)}mm pivot leaf", offset=-12, fs=5.6, font=FONT)
 
     # ══ SECTION A (X–Z) — corner apron fold action (bottom-left) ══
     a0 = 130
@@ -2901,7 +2885,7 @@ def sheet17():
     ax.add_patch(Rectangle(aA(hx, hz), R, AT, fc=C_PLASTIC, ec="#B00", lw=1.2, ls=(0, (4, 2)), alpha=0.30))  # folded (transport)
     ax.text(a0 + hx + R * 0.55, hz + AT + 16, "FOLDED (transport) — flat INTO the container,\nclear of the swing path",
             ha="center", fontsize=6.3, color="#B00", fontweight="bold", **FONT)
-    draw_dim_v(ax, a0 - 80, 0, ATOP, f"{int(ATOP)}", offset=12, fs=6, font=FONT)
+    draw_dim_v(ax, a0 - 80, 0, ATOP, f"{int(ATOP)}mm", offset=12, fs=6, font=FONT)
 
     # ══ DETAIL D (X–Z) — fixed center baffle under the bay (bottom-right) ══
     d0 = 1560
@@ -2919,7 +2903,7 @@ def sheet17():
     for bx in range(int(dD(74, 0)[0]), int(dD(158, 0)[0]), 6):
         ax.plot([bx, bx], [BAF_TOP, LT_CAGE_BOT], color="#141414", lw=0.7)
     leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(230, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
-    draw_dim_v(ax, d0 - 28, THR, BAF_TOP, f"{int(BAF_TOP - THR)}", offset=10, fs=6, font=FONT)
+    draw_dim_v(ax, d0 - 28, THR, BAF_TOP, f"{int(BAF_TOP - THR)}mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
     e0, ebz, S = 690, 150, 5.0
@@ -2942,7 +2926,7 @@ def sheet17():
     ax.annotate("", xy=(eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), xytext=(e0 - 46, ebz + T * S * 0.5),
                 arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.4))    # light ray blocked at the diagonal lap
     ax.text(e0 - 46, ebz + T * S * 0.5 - 16, "light", ha="left", fontsize=5.6, color="#B07000", **FONT)
-    draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12", offset=10, fs=6, font=FONT)
+    draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12mm", offset=10, fs=6, font=FONT)
     ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)
 
     # ══ notes ══

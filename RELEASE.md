@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel — feedback round (Sheets 2/9/10/14 + global mm).** Sheet 9/10: removed the Fan-B
+  plywood band and the drum/cage envelope so the steel-frame GA reads as frame only (drum detailed on
+  Light-Trap Sheet 7, Fan-B ply on Sheet 12). Sheet 14 Detail A: the fan-flange bolts now thread into a
+  captive **tee-nut** set in the ply (matching Detail B), not a separate backing plate + nuts. Sheet 2:
+  re-scaled the blind-rivet glyphs — the front + side rivets were 3–5× oversized (read as bolts); now a
+  realistic Ø6mm-body / ~12mm-head consistent across both. **Standing rule:** every dimension label now
+  carries an explicit `mm` suffix (f-string + literal), applied across all 17 sheets.
+
 - **Hinged panel — tidy-label pass (Sheet 9/10) + stale cross-ref fixes.** Sheet 9/10 left margin
   de-crowded: tightened the U-FRAME and cam-latch STRIKE-PLATE notes, widened the margin, and moved the
   "1225 fan band" dimension clear of them (fix applies symmetrically to the exterior mirror). Fixed two

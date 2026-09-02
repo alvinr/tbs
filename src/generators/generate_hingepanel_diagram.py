@@ -602,6 +602,18 @@ def sheet2():
            (-180, Y0_PL + PT / 2 + 100),
            "20mm EPDM GASKET\n(PERIMETER SEAL)", fs=6.5)
 
+    # ── Container cargo-door FRAME (50×20×3 RHS) — the STRUCTURE the panel seals against. Sits just
+    #    exterior of the panel outer face (Y1_W); in this H=1000 plan cut the LEFT + RIGHT stiles are
+    #    sectioned. Bolted M10 to the container; the opening-edge U-frame welds to the LEFT stile. ──
+    DF_F, DF_D = 50, 20                    # 50mm seal FACE (Yd) × 20mm depth
+    df_y0 = Y1_W - DF_D                    # exterior of the panel outer face (Y1_W = 40)
+    for df_x in (0, PW - DF_F):
+        ax.add_patch(Rectangle((df_x, df_y0), DF_F, DF_D, fc="#6E7A88", ec="#1A1A1A", lw=1.8, zorder=6.2))          # solid — distinct from the hatched wall
+        ax.add_patch(Rectangle((df_x + 3, df_y0 + 3), DF_F - 6, DF_D - 6, fc="none", ec="#1A1A1A", lw=0.5, zorder=6.3))  # RHS bore outline
+        ax.add_patch(Circle((df_x + DF_F / 2, df_y0 + DF_D / 2), 5, fc="#2A2E34", ec=C_OUT, lw=0.6, zorder=6.4))  # M10 anchor → container
+    leader(ax, (DF_F / 2, df_y0 + DF_D / 2), (-180, df_y0 - 120),
+           "CONTAINER CARGO-DOOR FRAME (50×20×3 RHS)\npanel seals against it · bolted M10 to the container ·\nopening-edge U-frame welds to this (LEFT) stile", col=C_OUT, fw="bold", fs=6.2)
+
     # ── HGR20 rails and carriage system (both panel edges) ───────────────────
     C_RAIL = "#CC4422"
     C_CARR = "#C04010"

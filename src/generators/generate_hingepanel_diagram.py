@@ -471,8 +471,9 @@ def sheet2():
             "INTERIOR", color="#407040", fontsize=9, ha="center", va="center",
             **FONT, fontweight="bold", alpha=0.55, zorder=15)
 
-    # ── Container end-wall cross-section (Y=0→40) — full width ────────────────
-    # Continuous wall except for the drum opening
+    # ── Container CARGO-DOOR FRAME cross-section (Y=0→40) — the panel seals against it (no solid "end
+    #    wall" at the opening: the opening is FRAMED, not walled — Alvin 2026-09-01). Drawn at the side
+    #    zones; the drum opening is cut out. ──
     ax.add_patch(Rectangle((0, Y0_W), D_XL, WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
     ax.add_patch(Rectangle((D_XR, Y0_W), PW - D_XR, WALL_T,
@@ -571,7 +572,7 @@ def sheet2():
     LBL_OFF = 70
     lbl_x_r = D_XR + 60
     for ly, lbl, off in [
-        (Y0_W + WALL_T / 2,  f"CONTAINER END WALL ({WALL_T}mm STEEL)", 2 * LBL_OFF),
+        (Y0_W + WALL_T / 2,  "CONTAINER CARGO-DOOR FRAME (50×20×3 RHS)\npanel seals here · U-frame welds (opening edge) · M10 to container", 2 * LBL_OFF),
         (Y0_PL + PLY_T / 2,  f"OUTER PLY ({PLY_T}mm)",                 1 * LBL_OFF),
     ]:
         ax.annotate(lbl, xy=(lbl_x_r, ly),
@@ -602,17 +603,12 @@ def sheet2():
            (-180, Y0_PL + PT / 2 + 100),
            "20mm EPDM GASKET\n(PERIMETER SEAL)", fs=6.5)
 
-    # ── Container cargo-door FRAME (50×20×3 RHS) — the STRUCTURE the panel seals against. Sits just
-    #    exterior of the panel outer face (Y1_W); in this H=1000 plan cut the LEFT + RIGHT stiles are
-    #    sectioned. Bolted M10 to the container; the opening-edge U-frame welds to the LEFT stile. ──
-    DF_F, DF_D = 50, 20                    # 50mm seal FACE (Yd) × 20mm depth
-    df_y0 = Y1_W - DF_D                    # exterior of the panel outer face (Y1_W = 40)
-    for df_x in (0, PW - DF_F):
-        ax.add_patch(Rectangle((df_x, df_y0), DF_F, DF_D, fc="#6E7A88", ec="#1A1A1A", lw=1.8, zorder=6.2))          # solid — distinct from the hatched wall
-        ax.add_patch(Rectangle((df_x + 3, df_y0 + 3), DF_F - 6, DF_D - 6, fc="none", ec="#1A1A1A", lw=0.5, zorder=6.3))  # RHS bore outline
-        ax.add_patch(Circle((df_x + DF_F / 2, df_y0 + DF_D / 2), 5, fc="#2A2E34", ec=C_OUT, lw=0.6, zorder=6.4))  # M10 anchor → container
-    leader(ax, (DF_F / 2, df_y0 + DF_D / 2), (-180, df_y0 - 120),
-           "CONTAINER CARGO-DOOR FRAME (50×20×3 RHS)\npanel seals against it · bolted M10 to the container ·\nopening-edge U-frame welds to this (LEFT) stile", col=C_OUT, fw="bold", fs=6.2)
+    # (The exterior band along Y0..Y1_W is the container CARGO-DOOR FRAME the panel seals against — labeled
+    #  below; per Option 1 there is no separate solid "end wall" at the opening, so no duplicate stile here.
+    #  M10 anchor heads mark the frame→container bolts.)
+    for df_x, df_wid in ((0, D_XL), (D_XR, PW - D_XR)):
+        for ay in range(int(df_x) + 120, int(df_x + df_wid) - 60, 300):
+            ax.add_patch(Circle((ay, Y0_W + WALL_T / 2), 5, fc="#2A2E34", ec=C_OUT, lw=0.5, zorder=6.2))  # M10 → container
 
     # ── HGR20 rails and carriage system (both panel edges) ───────────────────
     C_RAIL = "#CC4422"

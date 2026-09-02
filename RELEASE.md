@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged panel Sheet 9/10 (steel-frame GA) — Ø89 pivot post removed.** The vertical pivot-post tube
+  was a distraction from the frame general arrangement; it now reads as just the steel frame. The post
+  assembly stays detailed on Sheet 11.
+
 - **Lighttrap 3D model — cam-latch handle redrawn as an L (matches Sheet 13 Detail A).** The straight
   T-handle lever is replaced by an L-shaped lift-and-turn handle: a stem out the interior face with the
   grip bent up 90°, so the model reads the same as the 2D latch detail.

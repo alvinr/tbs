@@ -2043,7 +2043,7 @@ def sheet8():
 #   Sheet 7). Detail bubbles route to Sheets 10 (pivot), 11 (plywood/Fan-B), 12
 #   (frame hardware). Member schedule keyed to the frame.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet9(mirror=False):
+def _frame_ga(mirror=False):
     # mirror=True → the EXTERIOR view (looking from outside the cargo door toward the drum): the same
     # frame GA with the X-axis reversed, so left↔right flip while the text stays upright.
     RHS = BRACE_RHS                        # 50.8 — 2×2×0.120in section
@@ -2209,15 +2209,21 @@ def sheet9(mirror=False):
     print("  diagrams/hingepanel-sheet10.png saved" if mirror else "  diagrams/hingepanel-sheet9.png saved")
 
 
+# RULE: function names match sheet numbers. Sheet 9 (interior) + Sheet 10 (exterior mirror) share the
+# _frame_ga() drawing; every other sheetN() draws Sheet N.
+def sheet9():  _frame_ga(mirror=False)   # Sheet 9  — steel frame GA, interior front elevation
+def sheet10(): _frame_ga(mirror=True)    # Sheet 10 — steel frame GA, exterior mirror
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 10  —  Pivot-Post Assembly (documents the modeled swing pivot)
+# SHEET 11  —  Pivot-Post Assembly (documents the modeled swing pivot)
 #   LEFT: vertical section on the swing axis — fixed Ø89 CHS post floor→roof, floor
 #   + roof bolted Ø220 mount plates, 51118 thrust bearing at the base (carries the
 #   ~330 kg vertical), 2× iglide journal bushings (react the overturning couple),
 #   the MOVING hub tube, and 3 frame→hub hinge brackets. RIGHT: Detail A frame→hub
 #   bracket (bolt pattern) + Detail B floor anchor-plate plan.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet10():
+def sheet11():
     R = PIVOT_POST_OD / 2                   # 44.5 — post radius
     cx = 250                                # post-axis canvas X
     HGT = C_HGT                             # 2388 — floor→roof
@@ -2305,13 +2311,13 @@ def sheet10():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 11  —  Fan-B Plywood: Cut Sheet + Attachments
+# SHEET 12  —  Fan-B Plywood: Cut Sheet + Attachments
 #   LEFT: the 4'×8' PT-ply cut sheet — the Fan-B mount band + the cooler stow base
 #   nested, with the Ø150 fan cutout, fan bolt holes, and the frame-tab T-nut edge
 #   pattern. RIGHT: Detail A Fan-B→ply through-bolt; Detail B ply→frame welded tab
 #   + captive tee-nut (the IBC-frame convention).
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet11():
+def sheet12():
     SW, SH = 1220, 2440                     # 4'×8' PT-ply sheet
     BW, BH = 610, 1220                      # Fan-B mount band
     CW, CH = 600, 350                       # cooler stow base plate
@@ -2376,9 +2382,9 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 13  —  Plywood Attachments (enlarged): Fan-B → ply + ply → frame tab/T-nut
+# SHEET 14  —  Plywood Attachments (enlarged): Fan-B → ply + ply → frame tab/T-nut
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet13():
+def sheet14():
     fig, ax = plt.subplots(figsize=(17, 10.8))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
@@ -2478,13 +2484,13 @@ def sheet13():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 14  —  Frame → Pivot-Post Connection (how the swinging frame is secured
+# SHEET 15  —  Frame → Pivot-Post Connection (how the swinging frame is secured
 #   to the moving hub that rides the fixed Ø89 post). LEFT: elevation of the hub +
 #   3 welded hinge brackets. RIGHT: enlarged plan section of one bracket — the plate
 #   is fillet-welded to BOTH the hub tube and the frame jamb (all-welded weldment;
 #   no bolts through the closed jamb, which can't be back-tightened).
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet14():
+def sheet15():
     HGT = C_HGT
     fig, ax = plt.subplots(figsize=(16, 12))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -2545,13 +2551,13 @@ def sheet14():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 12  —  Frame Hardware Attachments (three details)
+# SHEET 13  —  Frame Hardware Attachments (three details)
 #   A — Southco C2-33 cam latch: through-bolt + backing plate to the frame.
 #   B — transport-stay hook: welded to the left perimeter RHS stile (§5.2).
 #   C — top/bottom brush strip: McMaster 74405T12 brush in an 8813T53 Al holder,
 #       screwed to the FIXED door frame.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet12():
+def sheet13():
     fig, ax = plt.subplots(figsize=(19, 8.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
@@ -2645,14 +2651,14 @@ def sheet12():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 15  —  Bottom Clearance Cross-Section (Yd–Z), walkway grate lifted out.
+# SHEET 16  —  Bottom Clearance Cross-Section (Yd–Z), walkway grate lifted out.
 #   The HARD-LIMIT envelope for the swinging panel's bottom edge in transport: it must
 #   clear the BARE wall-cantilever bracket legs (Z180 std / Z200 widened) at the near+far
 #   side walls AND the left lift-out floor-leg cantilever posts (top Z115). Derived rule:
 #   15mm clearance over the tallest obstacle at each Yd → center bottom Z130, stepped side
 #   bottoms Z195. Reconciles the 2D set with the stepped-frame bottom seen in the 3D model.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet15():
+def sheet16():
     from tbs_constants import (PANEL_FLOOR_GAP as P_CTR, PANEL_FLOOR_GAP_SIDE as P_SIDE,
                                PANEL_CORNER_YD_L as jL, PANEL_CORNER_YD_R as jR, WALKWAY_W,
                                WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H as WALL_LEG,
@@ -2790,12 +2796,12 @@ def sheet15():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 16  —  Fold-Down Light Apron (closes the 217mm under-leaf gap that the
+# SHEET 17  —  Fold-Down Light Apron (closes the 217mm under-leaf gap that the
 #   floor-gap raise opened). TWO fold-down aprons at the corner zones (bottom-hinged
 #   to the threshold, fold INTO the container for the transport swing) + a FIXED
 #   center baffle under the drum bay (the drum sweeps through, so no moving part).
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet16():
+def sheet17():
     from tbs_constants import (PANEL_FLOOR_GAP_SIDE as ATOP, PANEL_FLOOR_GAP as PBOT_CTR,
                                PANEL_CORNER_YD_L as jL, PANEL_CORNER_YD_R as jR, LT_CAGE_BOT,
                                APRON_IN_L, APRON_IN_R, APRON_CAGE_GAP,
@@ -2973,12 +2979,12 @@ if __name__ == "__main__":
     sheet7()
     sheet8()
     sheet9()
-    sheet10()
     sheet11()
     sheet12()
     sheet13()
     sheet14()
     sheet15()
     sheet16()
-    sheet9(mirror=True)   # Sheet 10 — exterior mirror of the frame GA (right after Sheet 9)
+    sheet17()
+    sheet10()   # Sheet 10 — exterior mirror of the frame GA (right after Sheet 9)
     print("Done.")

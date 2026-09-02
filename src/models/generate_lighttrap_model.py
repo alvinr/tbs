@@ -303,16 +303,18 @@ def door_frame(include_seal=True):
 # ── Hinged stepped panel (3 zones, drum aperture, seal, hinges, latches) ─────
 
 def cam_latch(yl, zl):
-    """Lift-and-turn cam latch (McMaster 1619A74) drawn with the T-handle valve pattern (same shape as
-    the plumbing ball valves): a barrel THROUGH the panel edge (along X) + a handle stem out the interior
-    face with a lift-and-turn lever bar at the tip. Olive-yellow C_VALVE, like the taps."""
+    """Lift-and-turn cam latch (McMaster 1619A74): a barrel THROUGH the panel edge (along X) + an
+    L-SHAPED handle on the interior face — a stem out along X with the grip BENT UP 90° (along Z),
+    so the operator lifts + turns it to swing the cam behind the fixed jamb and hook the strike plate
+    on the jamb's vertical short-end face (hingepanel Sheet 13 Detail A). Olive-yellow C_VALVE."""
     r, L = 20, 32                    # latch body barrel (Ø40) through the opening-edge zone, along X
-    HSr, HS, LV = 6, 44, 66          # handle stem length/radius + lift-and-turn lever-bar length
+    HSr, HS, GRIP = 6, 44, 60        # handle-arm radius + arm length (out interior) + grip length (bent up)
     x0 = PANEL_CORNER_T              # 40 — interior face of the opening-edge zone
+    xarm = x0 + L - 10 + HS          # tip of the handle arm, where the grip bends up
     return '\n'.join([
         ov.ruby_cylinder("Cam latch 1619A74", x0 - 10, yl, zl, r, L, axis="x", color=C_VALVE),
-        ov.ruby_cylinder("Cam latch stem", x0 + L - 10, yl, zl, HSr, HS, axis="x", color=C_VALVE),
-        ruby_box("Cam latch lever", x0 + L - 10 + HS, yl - LV / 2, zl - 7, 14, LV, 14, color=C_VALVE),
+        ov.ruby_cylinder("Cam latch handle arm", x0 + L - 10, yl, zl, HSr, HS, axis="x", color=C_VALVE),
+        ov.ruby_cylinder("Cam latch grip (bent up)", xarm, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
     ])
 
 

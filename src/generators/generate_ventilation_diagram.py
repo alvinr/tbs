@@ -692,8 +692,15 @@ def draw_sheet3():
     fanx0 = PLY_X0 - SKIN_T - FL_T - PF_BD
     draw_rect(ax, fanx0, FCZ - PF_R - 5, PF_BD, (PF_R + 5) * 2, fc=C_ALUM, lw=1.8, zorder=5)
     draw_rect(ax, fanx0, FCZ - PF_R, PF_BD, 2 * PF_R, fc="#E8EEF4", lw=0.8, zorder=5.5)     # bore
-    hub_d, hub_l = PF_R * 0.40, PF_BD * 0.58
+    ax.plot([fanx0 - 10, fanx0 + PF_BD + 10], [FCZ, FCZ],                                   # axis CL
+            color=C_CL, lw=0.9, ls=(0, (6, 3)), zorder=7)
+    hub_d, hub_l = PF_R * 0.40, PF_BD * 0.58                                                # motor hub
     draw_rect(ax, fanx0 + (PF_BD - hub_l) / 2, FCZ - hub_d / 2, hub_l, hub_d, fc=C_STEEL, lw=1.0, zorder=8)
+    for sgn in (-1, 1):                                                                     # impeller blades (pitched, in profile) — same convention as Sheet 2
+        for bxo in (0.32, 0.50, 0.68):
+            xb = fanx0 + PF_BD * bxo
+            ax.plot([xb - 5, xb + 5], [FCZ + sgn * hub_d / 2, FCZ + sgn * (PF_R - 6)],
+                    color=C_DIM, lw=1.3, alpha=0.55, zorder=7)
     ann(ax, f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN — Fan B (intake)\nSAME fan body as Fan A · Cct B · 60W · 150+ CFM",
         (fanx0 + PF_BD / 2, FCZ - PF_R - 8), (fanx0 + PF_BD / 2 - 20, FCZ - PF_R - 60))
 

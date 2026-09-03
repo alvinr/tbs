@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — near opening-edge stile extended to the floor.** Its bottom was 128mm above the apron
+  threshold, leaving a gap to the plywood; it now runs down to Z12 (like the far pivot stile) so it meets
+  the floor with no gap.
+
 - **Lighttrap 3D — drum side light seal trimmed between the cage beams.** The side-gap baffle now spans
   only the clear opening (Z 190–2167) between the top and bottom cage beams instead of running full height
   through them; the beams seal the ends, the baffle seals the middle.

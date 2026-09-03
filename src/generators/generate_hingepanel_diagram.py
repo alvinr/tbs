@@ -727,6 +727,18 @@ def sheet2():
         ax.add_patch(Rectangle((bx0, D_CY - 10), bx1 - bx0, 20, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=11.5))
     leader(ax, ((_CGL + D_XL) / 2, D_CY + 10), (D_XL - 300, D_CY + 300),
            "DRUM SIDE LIGHT SEAL (both sides)\nEPDM baffle: housing → cage side wall\n— blocks the down-the-side light leak", col=C_GASKT, fw="bold", fs=6)
+    # ── EDGE L-ANGLES on the side-skin VERTICAL edges (both ends of each side wall): the post leg rivets to
+    #    the cage corner post, the upstand backs the HDPE edge + the HDPE rivets to it (matches the 3D). ──
+    LEG_A, LT_A = 40, 3
+    def _edge_l(ux, uy, px, py):     # upstand (LT_A × LEG_A) + post leg (LEG_A+LT_A × LT_A)
+        ax.add_patch(Rectangle((ux, uy), LT_A, LEG_A, fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=11.7))
+        ax.add_patch(Rectangle((px, py), LEG_A + LT_A, LT_A, fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=11.7))
+    _edge_l(_CGL - LT_A, cage_yb, _CGL - LT_A, cage_yb - LT_A)                       # near-front
+    _edge_l(_CGL - LT_A, cage_yt - LEG_A, _CGL - LT_A, cage_yt)                      # near-back
+    _edge_l(_CGR, cage_yb, _CGR - LEG_A, cage_yb - LT_A)                             # far-front
+    _edge_l(_CGR, cage_yt - LEG_A, _CGR - LEG_A, cage_yt)                            # far-back
+    leader(ax, (_CGL - LT_A, cage_yt - LEG_A / 2), (STEP_YD_L - 220, cage_yt + 120),
+           "EDGE L-ANGLE (Al, 4× — each side-skin vertical edge)\npost leg riveted to the cage post · HDPE riveted to the upstand", col=C_OUT, fw="bold", fs=5.8)
     leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 200, cage_yb + 80),
            "DRUM SUPPORT CAGE (4-wall 50×50 steel box) — WELDED\nto the frame: back corner posts LAND IN / weld along the\ncenter-zone jambs (cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
     leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL - 300, cage_yb - 120),

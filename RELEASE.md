@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — L-angle fixing rails on the drum-cage HDPE side-wall vertical edges.** Each near/far bay
+  side wall now has an Al L-angle down both vertical edges: the post leg rivets to the cage corner post,
+  the upstand backs the HDPE edge (HDPE rivets to it) — a dedicated edge rail instead of riveting the thin
+  HDPE straight into the RHS wall.
+
 - **Lighttrap 3D — fixed left jamb bottom aligned to the plywood.** The fixed opening-edge jamb (web +
   flanges + ply) was stepped up to PANEL_FLOOR_GAP_SIDE (282), floating 92mm above the adjacent swing-corner
   plywood + apron flap top; it now bottoms at CORNER_BOT (190) to meet them — no gap.

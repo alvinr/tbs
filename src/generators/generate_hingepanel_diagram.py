@@ -739,8 +739,10 @@ def sheet2():
         for wy, dy in ((cxp + 6, 12), (cxp + 44, -12)):                  # weld fillets along the post↔jamb interface
             ax.add_patch(Polygon([(wy, PANEL_EXT), (wy, PANEL_EXT + 16), (wy + dy, PANEL_EXT)], closed=True, fc=C_OUT, ec="none", zorder=12))
     cb_t = 50
+    # cross-beam is ABOVE + BELOW the H=1000 cut → drawn HIDDEN (dashed outline, no fill), like the top
+    # perimeter rails, so the side light-seal baffles read as the SOLID cut element, not "through" it.
     ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
-                           fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))
+                           fc="none", ec=C_STEEL, lw=1.0, ls=(0, (6, 3)), alpha=0.6, zorder=11))
     # revolve bearing — CENTERED on the drum axis (the bore label is offset below it instead)
     ax.add_patch(Circle((D_CX, D_CY), 60, fc="#5A5AA0", ec=C_OUT, lw=1.3, zorder=12))
     leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 320, D_CY - DR * 0.4),

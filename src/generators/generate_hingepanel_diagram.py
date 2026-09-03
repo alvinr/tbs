@@ -2291,17 +2291,17 @@ def sheet11():
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
-    leader(ax, (cx + R + 164, 1160), (cx + 330, 1090), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 15", col=C_OUT, fw="bold")
+    leader(ax, (cx + R + 164, 1160), (cx + 630, 1000), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 15", col=C_OUT, fw="bold")
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT}mm floor→roof", offset=16, fs=6.6, font=FONT)
     # diameters (dim_h) + component lengths (dim_v) on the pivot post
     draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
     draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116mm hub tube", offset=14, fs=6.2, font=FONT)  # Ø220 plate OD is dimensioned in Detail B
-    draw_dim_v(ax, cx + 520, 180, 2050, f"{2050 - 180}mm hub tube", offset=16, fs=6.2, font=FONT, right=True)
-    draw_dim_v(ax, cx + 430, 220, 2000, f"{2000 - 220}mm bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, cx + 300, 180, 2050, f"{2050 - 180}mm hub tube", offset=16, fs=6.2, font=FONT, right=True)
+    draw_dim_v(ax, cx + 240, 220, 2000, f"{2000 - 220}mm bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 1810, "3 hinge brackets FILLET-WELDED to both the hub\ntube and the leaf's pivot-edge stile\n(hub + leaf + cage = one weldment).\nDrawn full-size on SHEET 15\n(Frame → Pivot-Post Connection).",
+    ax.text(1000, 2200, "3 hinge brackets FILLET-WELDED to both the hub\ntube and the leaf's pivot-edge stile\n(hub + leaf + cage = one weldment).\nDrawn full-size on SHEET 15\n(Frame → Pivot-Post Connection).",
             ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.6", fc="#F4F1E8", ec=C_DIM, lw=0.9))
 
@@ -2316,7 +2316,7 @@ def sheet11():
     # dimensions: plate OD, bolt PCD, post bore, hole size
     draw_dim_h(ax, bx0 - 110 * sB, bx0 + 110 * sB, by0 + 120 * sB, "Ø220mm plate OD", offset=12, fs=6.2, font=FONT)
     draw_dim_h(ax, bx0 - 85 * sB, bx0 + 85 * sB, by0 - 120 * sB, "Ø170mm bolt PCD", offset=12, fs=6.2, font=FONT, above=False)
-    leader(ax, (bx0 - R * sB, by0), (bx0 - 155 * sB, by0 + 60 * sB), "Ø90 post bore", col=C_OUT, fs=6)
+    leader(ax, (bx0 + R * sB, by0), (bx0 + 165 * sB, by0 + 40 * sB), "Ø90 post bore", col=C_OUT, fs=6)
     leader(ax, (bx0 + 85 * sB * math.cos(math.radians(30)), by0 + 85 * sB * math.sin(math.radians(30))),
            (bx0 + 150 * sB, by0 + 85 * sB), "6× Ø14 (M12)", col=C_OUT, fs=6)
     ax.text(bx0, by0 - 170 * sB, "Ø220×20 A36 plate · into the container floor cross-member",

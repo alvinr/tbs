@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — bay HDPE side walls are now the OUTER skin (lap the posts from outside).** They sat
+  inboard of the cage-post face, so the frame/L-angle read as the exposed outer surface and the rivets
+  landed on the frame; the near/far skins now lap the post outboard faces (yL-t / yR+t) so the HDPE is the
+  visible outer skin and the rivets pass through it. Edge L-angles moved inboard (behind the skin); light
+  seals re-referenced to the new inboard faces.
+
 - **Lighttrap 3D — film-plane wall hangers stay put on swing.** The left film-plane corner’s permanent
   container-wall fixtures (wall-seat saddles + far-left EXT plate/M12 bolts) were hiding with the parked
   cradle when the panel swings; they’re now split out (new `keep="wall"`/`"fixed_stay"` in fpm.corner) and

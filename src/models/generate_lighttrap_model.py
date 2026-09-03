@@ -915,11 +915,15 @@ def bay():
     t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
     depth = ov.DRUM_CAGE_X1 - xf                           # 940 — stretched to the BACK cage beams (was BAY_BACK_X)
     hs = zc - z0                                           # side-wall height — capped at the top beams
+    # The side skins LAP the cage-post OUTBOARD faces from OUTSIDE (near = yL-t..yL, far = yR..yR+t) so the
+    # HDPE is the visible OUTER skin covering the frame + posts, and the rivets pass through the HDPE into
+    # the post (Alvin 2026-09-03 — was inboard of the post face, leaving the frame exposed). Roof/floor widen
+    # by t each side so they cap the skins' outer faces.
     return '\n'.join([
-        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall top (roof, riveted to the top beams)", xf, yL, zc - t, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall near (Yd)", xf, yL - t, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall far (Yd)", xf, yR, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall top (roof, riveted to the top beams)", xf, yL - t, zc - t, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall bottom", xf, yL - t, z0, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5),
     ])
 
 
@@ -983,16 +987,16 @@ def bay_wall_edge_l_strips():
     x0, x1 = ov.BAY_FRONT_X, ov.DRUM_CAGE_X1                 # -890 front edge, 50 back edge
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R            # 700 near-wall face, 1662 far-wall face
     return '\n'.join([
-        # NEAR wall (Yd700, inboard +Yd): upstand just outboard of the HDPE + post leg on the post end face
-        ruby_box("Bay edge L upstand (near-front)", x0, yL - LT, z0, LEG, LT, h, color=c),
-        ruby_box("Bay edge L post-leg (near-front)", x0 - LT, yL - LT, z0, LT, LEG + LT, h, color=c),
-        ruby_box("Bay edge L upstand (near-back)", x1 - LEG, yL - LT, z0, LEG, LT, h, color=c),
-        ruby_box("Bay edge L post-leg (near-back)", x1, yL - LT, z0, LT, LEG + LT, h, color=c),
-        # FAR wall (Yd1662, inboard -Yd): mirror — upstand just outboard (+Yd) + post leg on the post end face
-        ruby_box("Bay edge L upstand (far-front)", x0, yR, z0, LEG, LT, h, color=c),
-        ruby_box("Bay edge L post-leg (far-front)", x0 - LT, yR - LEG, z0, LT, LEG + LT, h, color=c),
-        ruby_box("Bay edge L upstand (far-back)", x1 - LEG, yR, z0, LEG, LT, h, color=c),
-        ruby_box("Bay edge L post-leg (far-back)", x1, yR - LEG, z0, LT, LEG + LT, h, color=c),
+        # NEAR wall (HDPE now the OUTER skin at yL-t..yL): upstand INBOARD of the skin (behind it) + post leg
+        ruby_box("Bay edge L upstand (near-front)", x0, yL, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (near-front)", x0 - LT, yL, z0, LT, LEG, h, color=c),
+        ruby_box("Bay edge L upstand (near-back)", x1 - LEG, yL, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (near-back)", x1, yL, z0, LT, LEG, h, color=c),
+        # FAR wall (HDPE at yR..yR+t): mirror — upstand just INBOARD (yR-LT..yR) + post leg on the post
+        ruby_box("Bay edge L upstand (far-front)", x0, yR - LT, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (far-front)", x0 - LT, yR - LEG, z0, LT, LEG, h, color=c),
+        ruby_box("Bay edge L upstand (far-back)", x1 - LEG, yR - LT, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (far-back)", x1, yR - LEG, z0, LT, LEG, h, color=c),
     ])
 
 
@@ -1029,8 +1033,8 @@ def drum_side_light_seals():
     x0 = DRUM_CX - xw / 2
     c = C_GASKT
     return '\n'.join([
-        ruby_box("Drum side light seal (near)", x0, yL + t, z0, xw, yhn - (yL + t), z1 - z0, color=c),
-        ruby_box("Drum side light seal (far)", x0, yhf, z0, xw, (yR - t) - yhf, z1 - z0, color=c),
+        ruby_box("Drum side light seal (near)", x0, yL, z0, xw, yhn - yL, z1 - z0, color=c),
+        ruby_box("Drum side light seal (far)", x0, yhf, z0, xw, yR - yhf, z1 - z0, color=c),
     ])
 
 

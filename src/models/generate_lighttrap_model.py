@@ -978,6 +978,24 @@ def slot_l_strips():
     ])
 
 
+def drum_side_light_seals():
+    """Vertical LIGHT-SEAL baffles at the drum-center plane (X=DRUM_CX) closing the open gap between the
+    fixed housing OUTER skin and the inner face of each cage/bay side wall. At X=DRUM_CX the round housing
+    spans the full Yd width (DRUM_CY±HOUSING_R = 781..1581), so these two strips complete a light-tight
+    cross-section and block the straight-down-the-side light leak past the drum (Alvin 2026-09-03)."""
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
+    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP
+    t = ov.BAY_WALL_T
+    yhn, yhf = DRUM_CY - HOUSING_R, DRUM_CY + HOUSING_R    # 781 / 1581 — housing outer surface, near / far
+    xw = 20
+    x0 = DRUM_CX - xw / 2
+    c = C_GASKT
+    return '\n'.join([
+        ruby_box("Drum side light seal (near)", x0, yL + t, z0, xw, yhn - (yL + t), z1 - z0, color=c),
+        ruby_box("Drum side light seal (far)", x0, yhf, z0, xw, (yR - t) - yhf, z1 - z0, color=c),
+    ])
+
+
 def surround_rivets():
     """Blind-rivet line tying the HDPE bay surround to the steel center-zone frame at
     the panel-plane lap (Yd = the two center-zone step lines). Rivet heads shown as small
@@ -1274,6 +1292,7 @@ def generate_ruby():
         cage_face_rivets(),               # roof + floor HDPE riveted to the cage rails (like the side panels)
         bay_wall_cage_rivets(),           # near/far side-wall HDPE riveted to the front+back cage posts (item 1)
         slot_l_strips(),                  # L-angle on the jambs securing the extended panel HDPE (item 3)
+        drum_side_light_seals(),          # baffles closing the housing↔side-wall side gap (light seal)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
         drum_frame(),

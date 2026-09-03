@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — drum side-gap light seals.** Added vertical EPDM baffles at the drum-center plane on
+  each side, closing the open gap between the fixed housing outer skin and the inner face of the cage/bay
+  side walls (where the round housing spans the full width) — blocks the straight-down-the-side light leak.
+
 - **Lighttrap 3D — top/bottom horizontal rivet rows on the bay side walls.** Each near/far HDPE side wall
   now carries horizontal rivet rows along its top + bottom edges (into the top/bottom cage rails), in
   addition to the vertical rows at the front/back posts — a full riveted perimeter per side.

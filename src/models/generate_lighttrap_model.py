@@ -949,6 +949,13 @@ def bay_wall_cage_rivets():
         for xc in (x_front, x_back):
             p.append(ov.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
             p.append(ov.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+    # horizontal rows along the TOP + BOTTOM edge of each side wall (into the top/bottom cage rails)
+    nx = int((ov.DRUM_CAGE_X1 - ov.DRUM_CAGE_X0 - 80) // LT_RIVET_PITCH)
+    for i in range(nx + 1):
+        xc = ov.DRUM_CAGE_X0 + 40 + i * LT_RIVET_PITCH
+        for zc in (z0 + 30, z1 - 30):
+            p.append(ov.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+            p.append(ov.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 

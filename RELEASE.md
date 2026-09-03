@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Drum side light seal shown in the "Drum Revolve" scene + on the 2D.** The side-gap EPDM baffle is now
+  built into the lighttrap Drum Revolve sub-assembly (so it appears in that scene), and drawn on hinged-panel
+  Sheet 2 (plan cross-section) as EPDM strips bridging each housing-to-cage-side-wall gap at the drum equator.
+
 - **Lighttrap 3D — drum side-gap light seals.** Added vertical EPDM baffles at the drum-center plane on
   each side, closing the open gap between the fixed housing outer skin and the inner face of the cage/bay
   side walls (where the round housing spans the full width) — blocks the straight-down-the-side light leak.

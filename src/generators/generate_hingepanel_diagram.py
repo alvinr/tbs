@@ -719,6 +719,14 @@ def sheet2():
     for cxp in (_CGL, _CGR - 50):                                 # 4 corner posts (50×50 RHS) — CUT at H=1000 (solid)
         for cyp in (cage_yb, cage_yt - 50):
             ax.add_patch(Rectangle((cxp, cyp), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.8, zorder=11))
+    # ── DRUM SIDE LIGHT SEALS — vertical EPDM baffles at the drum-center plane (D_CY) closing the open
+    #    gap between the fixed housing outer skin (D_XL/D_XR) and the cage/bay SIDE walls (_CGL/_CGR).
+    #    At the drum equator the round housing spans the full width, so these two strips make the
+    #    cross-section light-tight — blocks the straight-down-the-side leak (matches the 3D lighttrap). ──
+    for bx0, bx1 in ((_CGL, D_XL), (D_XR, _CGR)):
+        ax.add_patch(Rectangle((bx0, D_CY - 10), bx1 - bx0, 20, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=11.5))
+    leader(ax, ((_CGL + D_XL) / 2, D_CY + 10), (D_XL - 300, D_CY + 300),
+           "DRUM SIDE LIGHT SEAL (both sides)\nEPDM baffle: housing → cage side wall\n— blocks the down-the-side light leak", col=C_GASKT, fw="bold", fs=6)
     leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 200, cage_yb + 80),
            "DRUM SUPPORT CAGE (4-wall 50×50 steel box) — WELDED\nto the frame: back corner posts LAND IN / weld along the\ncenter-zone jambs (cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
     leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL - 300, cage_yb - 120),

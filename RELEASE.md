@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — panel corner HDPE butts the bay walls; side-wall + L-strip fixings added.** The near/far
+  panel corner skins now extend inboard to the drum-cage faces (Yd 700 / 1662) so the panel HDPE butts the
+  bay side walls (47mm slot closed); vertical rivet rows fix the near/far bay walls to the front+back cage
+  posts; and an L-angle strip on each center-zone jamb secures the extended HDPE.
+
 - **Lighttrap 3D — bay HDPE box stretched to the back cage beams + roof/floor rivets added.** The left/right
   (near/far) HDPE side walls now run the full cage depth (to DRUM_CAGE_X1) so they cover the back cage
   posts, and a full-perimeter blind-rivet row was added to the roof + floor HDPE tying them to the cage

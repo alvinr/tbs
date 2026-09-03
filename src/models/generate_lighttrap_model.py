@@ -935,6 +935,42 @@ def cage_face_rivets():
     return '\n'.join(p)
 
 
+def bay_wall_cage_rivets():
+    """Vertical rivet rows fixing the NEAR + FAR bay HDPE side walls to the FRONT + BACK cage posts
+    (Sheet 2: HDPE riveted straight to the cage posts). Item 1, 2026-09-02."""
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
+    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP
+    x_front, x_back = ov.DRUM_CAGE_X0 + 25, ov.DRUM_CAGE_X1 - 25   # centered on the front + back cage posts
+    rr = 5
+    p = []
+    nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
+    for i in range(nz + 1):
+        zc = z0 + 60 + i * LT_RIVET_PITCH
+        for xc in (x_front, x_back):
+            p.append(ov.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+            p.append(ov.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+    return '\n'.join(p)
+
+
+def slot_l_strips():
+    """L-angle strips fixed on the center-zone frame jambs (Yd NEW_YD_L/R) that secure the panel corner
+    HDPE where it now BUTTS the bay walls (Alvin 2026-09-02, item 3). Base leg flat on the interior face
+    over the closed slot + an upstand at the jamb the HDPE rivets to."""
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
+    jL, jR = NEW_YD_L, NEW_YD_R
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
+    LT, UP, xf = 3, 40, 40                      # angle wall / upstand leg / interior face of the 40mm panel zone
+    c = C_ALUM
+    return '\n'.join([
+        # NEAR: base leg on the interior face over the closed slot (jL..yL), upstand rising at the jamb
+        ruby_box("Slot L-strip near base", xf, jL, z0, LT, yL - jL, z1 - z0, color=c),
+        ruby_box("Slot L-strip near upstand", xf, jL, z0, UP, LT, z1 - z0, color=c),
+        # FAR: mirror (yR..jR), upstand at the far jamb
+        ruby_box("Slot L-strip far base", xf, yR, z0, LT, jR - yR, z1 - z0, color=c),
+        ruby_box("Slot L-strip far upstand", xf, jR - LT, z0, UP, LT, z1 - z0, color=c),
+    ])
+
+
 def surround_rivets():
     """Blind-rivet line tying the HDPE bay surround to the steel center-zone frame at
     the panel-plane lap (Yd = the two center-zone step lines). Rivet heads shown as small
@@ -1206,10 +1242,12 @@ def generate_ruby():
         # rigid fan/duct mounting; 1/8″ HDPE skin above. (rev11 material differentiation.)
         # Near corner is a STEPPED zone: its bottom rises to PANEL_FLOOR_GAP_SIDE (282) like the frame +
         # aprons, so the fold-down flap top meets it flush (no overlap) and it clears the walkway cantilever.
+        # near corner skins EXTENDED inboard from NEW_YD_L (653) to the near bay wall / cage face
+        # (DRUM_CAGE_YD_L 700) so the panel HDPE BUTTS the bay wall — no 47mm slot (Alvin 2026-09-02, item 2).
         ruby_box("Fan B mount band (18mm ply)", 0, CUT, CORNER_BOT, 40,
-                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - CORNER_BOT, color=C_PLY, alpha=0.5),
-        ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
-                 NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
+                 ov.DRUM_CAGE_YD_L - CUT, ov.PANEL_FAN_BAND_Z - CORNER_BOT, color=C_PLY, alpha=0.5),
+        ruby_box(f"Panel near (swing, Yd{CUT}-{ov.DRUM_CAGE_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
+                 ov.DRUM_CAGE_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
         # swing panel + its top seal now run to the PIVOT line (the pivot-corner plywood travels with it).
         ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT, alpha=0.5),
         # panel bottom EPDM (L/R, trimmed) dropped — superseded by the fold-down apron + its top brush.
@@ -1217,14 +1255,18 @@ def generate_ruby():
         # meets it flush (fixes the flap↔leaf overlap) and it clears the walkway cantilever in the swing.
         # The HDPE skin runs CONTINUOUSLY to the PIVOT LINE (2026-08-31) — no separate pivot ply panel; the
         # pivot-edge stile (pivot_corner_leaf) sits behind it and ties the leaf to the hub brackets.
-        ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, CORNER_BOT, 40,
-                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - CORNER_BOT, color=C_PLASTIC, alpha=0.5),
+        # far corner skin EXTENDED inboard from NEW_YD_R (1709) to the far bay wall / cage face
+        # (DRUM_CAGE_YD_R 1662) so the panel HDPE BUTTS the bay wall — no 47mm slot (Alvin 2026-09-02, item 2).
+        ruby_box("Panel far corner (trimmed)", 0, ov.DRUM_CAGE_YD_R, CORNER_BOT, 40,
+                 PIVOT_YD - ov.DRUM_CAGE_YD_R, PANEL_Z_TOP - CORNER_BOT, color=C_PLASTIC, alpha=0.5),
         pivot_corner_leaf(),   # pivot-edge STILE (the hub brackets weld to it) — travels with the leaf
         bay(),
         far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + rivets STRAIGHT to the post
         near_bay_wall_frame(),            # NEAR wall (pinhole side): top + bottom beams + rivets to the post
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         cage_face_rivets(),               # roof + floor HDPE riveted to the cage rails (like the side panels)
+        bay_wall_cage_rivets(),           # near/far side-wall HDPE riveted to the front+back cage posts (item 1)
+        slot_l_strips(),                  # L-angle on the jambs securing the extended panel HDPE (item 3)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
         drum_frame(),

@@ -869,20 +869,9 @@ def film_plane_left():
     HIDES when swung, so the swinging drum surround can transition the X=150 rail plane in transport.
     One source with overview (fpm.corner emits ov.ruby_* at the shared coords; late import breaks the cycle)."""
     import generate_film_plane_mechanism_model as fpm
-    return '\n'.join([                       # keep='fixed_stay' — the parked cradle WITHOUT the wall hangers
-        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="fixed_stay"),
-        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="fixed_stay"),
-    ])
-
-
-def film_plane_wall_hangers():
-    """The permanent CONTAINER-WALL fixtures of the left film-plane corner — the wall-seat saddles +
-    far-left EXT plate/M12 bolts. These stay BOLTED to the wall in transport (they do NOT lift out with
-    the rail or park with the cradle), so they are placed STATIC — not under the swing-hide (Alvin 2026-09-03)."""
-    import generate_film_plane_mechanism_model as fpm
-    return '\n'.join([
-        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="wall"),
-        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="wall"),
+    return '\n'.join([                       # keep='fixed' — the whole fixed rig (stub + cradle + wall hangers)
+        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="fixed"),
+        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="fixed"),
     ])
 
 
@@ -1292,11 +1281,10 @@ def generate_ruby():
         component("Fixed far strip", "Far Leaf", far_leaf()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        # Film-plane left rig is wired as a SWING-DC CHILD below (fpl_inst) so it HIDES in transport — a
-        # root-level hidden_formula doesn't recompute when the parent DC animates (only children do). But the
-        # WALL HANGERS (wall-bolted saddles / far-left EXT plate) are permanent — placed STATIC here so they
-        # REMAIN when the panel swings (Alvin 2026-09-03).
-        component("Film-plane left wall hangers (fixed)", "Film Plane Rails", film_plane_wall_hangers()),
+        # Film-plane left FIXED rig (parked carriage/skate/U-joint + parking STUB + wall-seat saddles/hangers)
+        # is STATIC — it STAYS in place through the swing; only the REMOVABLE lift-out rail (lfr_inst, a swing
+        # child) is removed for transport (Alvin 2026-09-03). So it is a root component here, not a swing child.
+        component("Film-plane left (fixed rig: stub + cradle + hangers)", "Film Plane Rails", film_plane_left()),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
         component("Fixed bottom closures (baffle + pivot stub)", "Bottom Apron", fixed_bottom_geom()),
@@ -1483,20 +1471,8 @@ lfr_inst.set_attribute("dynamic_attributes", "_name", "LiftoutFilmRail")
 lfr_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
-# ── Film-plane left FIXED rig — as a SWING-DC CHILD so it HIDES in transport (a root component's
-#    hidden_formula does not recompute when the parent DC animates; only children do). The shared-pivot
-#    film-plane hardware (parked carriage + stub + saddles + fixing plates) is not the light-trap door and
-#    read as floating plates once the panel swings. Built at world coords; visibility-swaps on the swing. ──
-fpl_defn = model.definitions.add("Film-Plane Rails (left, removable)")
-ents = fpl_defn.entities
-{film_plane_left()}
-ents = defn.entities
-fpl_inst = ents.add_instance(fpl_defn, Geom::Transformation.new)
-fpl_inst.name = "Film-Plane Rails (left, removable)"
-fpl_inst.layer = model.layers["Film Plane Rails"]
-fpl_inst.set_attribute("dynamic_attributes", "_name", "FilmPlaneLeftFixed")
-fpl_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
-fpl_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+# (Film-plane left FIXED rig is now a STATIC root component — see static_comps above — so it STAYS through
+#  the swing; only the REMOVABLE lift-out rail (lfr_inst) hides. It is no longer a swing-DC child.)
 
 # ── Fold-down light aprons — CHILD DC components inside the swing def. UP (sealing) is SHOWN when the
 #    door is CLOSED and HIDDEN once the panel swings; FOLDED (flat into the container) is the mirror,

@@ -984,7 +984,8 @@ def drum_side_light_seals():
     spans the full Yd width (DRUM_CY±HOUSING_R = 781..1581), so these two strips complete a light-tight
     cross-section and block the straight-down-the-side light leak past the drum (Alvin 2026-09-03)."""
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
-    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP
+    z0, z1 = LT_CAGE_BOT + 50, LT_CAGE_TOP - 50           # BETWEEN the top/bottom cage beams (190..2167) — the
+    #                                                       beams seal the ends; the baffle must not run through them
     t = ov.BAY_WALL_T
     yhn, yhf = DRUM_CY - HOUSING_R, DRUM_CY + HOUSING_R    # 781 / 1581 — housing outer surface, near / far
     xw = 20

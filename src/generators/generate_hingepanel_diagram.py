@@ -2152,9 +2152,9 @@ def _frame_ga(mirror=False):
         ax.add_patch(Polygon([(0, wz), (11, wz), (0, wz + dz)], closed=True, fc=C_OUT, ec="none", zorder=6))
     for lz in (500, 1900):                                                                                   # cam-latch strike plates on the web
         ax.add_patch(Rectangle((yL - WEB, lz - 45), WEB + 7, 90, fc="#8890A0", ec=C_OUT, lw=1.0, zorder=7))
-    leader(ax, (yL - WEB / 2, 1120), (-370, 1130),
-           "U-FRAME — welded steel channel\n(Yd0–180); hinge panel BUTTS UP\nhere. Flanges WELD to the container\ncargo-door frame (50×20×3 RHS,\nbolted M10 @ 300) — not load-bearing.", col=C_OUT, fw="bold", fs=6.3)
-    leader(ax, (yL + 4, 500), (-370, 690), "web carries 2 cam-latch\nSTRIKE PLATES\n(engage the panel latches)", col=C_OUT, fs=6.2)
+    leader(ax, (yL - WEB / 2, 1120), (-325, 1130),
+           "U-FRAME — welded steel channel\n(Yd0–180); hinge panel BUTTS UP\nhere. Flanges WELD to the container\ncargo-door frame (50×20×3 RHS,\nbolted M10 @ 300) — not load-bearing.", col=C_OUT, fw="bold", fs=6)
+    leader(ax, (yL + 4, 500), (-275, 690), "web carries 2 cam-latch\nSTRIKE PLATES\n(engage the panel latches)", col=C_OUT, fs=6)
 
     # NOTE: the Fan-B plywood band and the drum/cage envelope are intentionally NOT drawn here —
     # this sheet is the STEEL FRAME general arrangement only. The drum + cage are detailed on
@@ -2176,8 +2176,8 @@ def _frame_ga(mirror=False):
     # ── bottom-step callout + dim (both corner zones raised by STEP) ──
     for sxr in (jL, jR + RHS):                                # step risers at the outboard jamb faces
         ax.plot([sxr, sxr], [0, STEP], color="#B00", lw=2.2, zorder=8)
-    draw_dim_v(ax, yL - 55, 0, STEP, f"{STEP}mm step", offset=12, fs=6, font=FONT, right=False)
-    leader(ax, ((yL + jL) / 2, STEP), ((yL + jL) / 2 + 80, -205),
+    draw_dim_v(ax, yL - 55, 0, STEP, f"{STEP}mm step", offset=50, fs=6, font=FONT, right=False)
+    leader(ax, ((yL + jL) / 2, STEP), ((yL + jL) / 2 + 80, -75),
            f"CORNER BOTTOM STEPPED UP {STEP}mm at BOTH sides\n(clears the bare walkway cantilever legs;\nwalkway removed for transport — Sheet 16)", col="#B00", fw="bold", fs=6)
 
     # NOTE: the Ø89 CHS pivot post (swing axis) is intentionally NOT drawn on this sheet — it is a
@@ -2190,7 +2190,7 @@ def _frame_ga(mirror=False):
         ax.annotate("", xy=(x, z), xytext=tp, arrowprops=dict(arrowstyle="-", color="#B00", lw=0.8), zorder=8)
         ax.text(tp[0], tp[1], txt, ha="center", va="center", fontsize=6.6, color="#B00", **FONT, zorder=10)
 
-    bubble(yR - RHS / 2, 300, 12, "cam latch mount\n(corners, Sheet 13)", (yR + 250, 300))
+    bubble(yR - RHS / 2, 300, 12, "cam latch mount\n(corners, Sheet 13)", (yR - 250, 300))
 
     # ── member schedule (in the clear near-corner white space) ──
     rows = [
@@ -2204,20 +2204,20 @@ def _frame_ga(mirror=False):
         " Header + sill ..... 2 × 1,056",
     ]
     if not mirror:   # the schedule lives on Sheet 9; the exterior mirror (Sheet 10) omits it (avoids the reversed-axis overflow)
-        ax.text(-350, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
+        ax.text(-650, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
                 bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
 
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL}mm SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
     # horizontal component chain (near strip · center zone · far strip) — top row, above the cage dim
-    draw_dim_h(ax, 0, yL, PH + 215, f"{yL}mm", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, jL, jR, PH + 215, f"{jR - jL}mm center zone", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, yR, PW, PH + 215, f"{int(PW - yR)}mm", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, PH + 95, f"{DRUM_CAGE_YD_R - DRUM_CAGE_YD_L}mm drum cage", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, 0, yL, PH + 135, f"{yL}mm", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, PH + 135, f"{jR - jL}mm center zone", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, yR, PW, PH + 135, f"{int(PW - yR)}mm", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, PH + 45, f"{DRUM_CAGE_YD_R - DRUM_CAGE_YD_L}mm drum cage", offset=16, fs=6, font=FONT)
     # vertical component chain (sill · cage · header→top) on the right, overall PH outermost
-    draw_dim_v(ax, PW + 150, 0, z_sill, f"{z_sill}mm", offset=14, fs=6, font=FONT, right=True)
-    draw_dim_v(ax, PW + 150, z_sill, z_hdr, f"{z_hdr - z_sill}mm cage", offset=14, fs=6, font=FONT, right=True)
-    draw_dim_v(ax, PW + 150, z_hdr, PH, f"{PH - z_hdr}mm", offset=14, fs=6, font=FONT, right=True)
-    draw_dim_v(ax, PW + 300, 0, PH, f"{PH}mm", offset=20, fs=7, font=FONT, right=True)
+    draw_dim_v(ax, PW + 100, 0, z_sill, f"{z_sill}mm", offset=50, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 100, z_sill, z_hdr, f"{z_hdr - z_sill}mm cage", offset=50, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 100, z_hdr, PH, f"{PH - z_hdr}mm", offset=50, fs=6, font=FONT, right=True)
+    draw_dim_v(ax, PW + 200, 0, PH, f"{PH}mm", offset=50, fs=7, font=FONT, right=True)
 
     _view = "EXTERIOR elevation — viewed from OUTSIDE the cargo door toward the drum (mirror of Sheet 9)" if mirror else "swinging panel · front elevation"
     ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
@@ -2960,6 +2960,7 @@ if __name__ == "__main__":
     sheet7()
     sheet8()
     sheet9()
+    sheet10()
     sheet11()
     sheet12()
     sheet13()
@@ -2967,5 +2968,4 @@ if __name__ == "__main__":
     sheet15()
     sheet16()
     sheet17()
-    sheet10()   # Sheet 10 — exterior mirror of the frame GA (right after Sheet 9)
     print("Done.")

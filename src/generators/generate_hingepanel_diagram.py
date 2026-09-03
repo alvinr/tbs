@@ -2253,7 +2253,7 @@ def sheet11():
     R = PIVOT_POST_OD / 2                   # 44.5 — post radius
     cx = 250                                # post-axis canvas X
     HGT = C_HGT                             # 2388 — floor→roof
-    LX = -430                               # left-label column (text center X)
+    LX = -250                               # left-label column (text center X)
 
     fig, ax = plt.subplots(figsize=(16, 13))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -2266,11 +2266,11 @@ def sheet11():
     # fixed post (Ø89×8 CHS)
     ax.add_patch(Rectangle((cx - R, 0), 2 * R, HGT, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=4))
     ax.add_patch(Rectangle((cx - R + 8, 0), 2 * R - 16, HGT, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (cx - R, 1620), (LX, 1600), "FIXED Ø89×8 CHS POST (S355)\n3\" NPS Sch-80, floor→roof —\ncarries the 3.6 kN·m swing\ncantilever (SF 3.7)", col=C_OUT, fw="bold")
+    leader(ax, (cx - R, 1620), (LX, 1620), "FIXED Ø89×8 CHS POST (S355)\n3\" NPS Sch-80, floor→roof —\ncarries the 3.6 kN·m swing\ncantilever (SF 3.7)", col=C_OUT, fw="bold")
     # floor + roof mount plates (Ø220 × 20)
     ax.add_patch(Rectangle((cx - 110, 0), 220, 20, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((cx - 110, HGT - 20), 220, 20, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
-    leader(ax, (cx - 100, 10), (LX, 130), "FLOOR MOUNT PLATE Ø220×20\n— bolted to the container floor\n(Detail B)", col=C_OUT)
+    leader(ax, (cx - 100, 10), (LX, 180), "FLOOR MOUNT PLATE Ø220×20\n— bolted to the container floor\n(Detail B)", col=C_OUT)
     leader(ax, (cx - 100, HGT - 10), (LX, HGT - 120), "ROOF MOUNT PLATE Ø220×20\n— bolted to the roof rail", col=C_OUT)
     # thrust bearing 51118 + collar
     ax.add_patch(Rectangle((cx - 60, 130), 120, 22, fc="#5A5AA0", ec=C_OUT, lw=1.1, zorder=6))
@@ -2279,12 +2279,12 @@ def sheet11():
     # moving hub tube (Ø116)
     for sgn in (-1, 1):
         ax.add_patch(Rectangle((cx + sgn * R, 180), sgn * 14, 2050 - 180, fc=C_ALUM, ec=C_OUT, lw=1.1, zorder=3))
-    leader(ax, (cx - R - 14, 1150), (LX, 1120), "MOVING HUB TUBE (Ø116)\nswings with the frame", col=C_OUT)
+    leader(ax, (cx - R - 14, 1150), (LX, 1150), "MOVING HUB TUBE (Ø116)\nswings with the frame", col=C_OUT)
     # iglide journal bushings (radial) — react the overturning couple
     for z in (220, 2000):
         for sgn in (-1, 1):
             ax.add_patch(Rectangle((cx + sgn * R, z), sgn * 14, 60, fc="#C08040", ec=C_OUT, lw=1.0, zorder=6))
-    leader(ax, (cx - R - 14, 2030), (LX, 1980), "iglide J journal bushing (×2,\ntop + bottom) JFM-9095-100\n— radial + overturning couple", col=C_OUT)
+    leader(ax, (cx - R - 14, 2030), (LX, 2020), "iglide J journal bushing (×2,\ntop + bottom) JFM-9095-100\n— radial + overturning couple", col=C_OUT)
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))

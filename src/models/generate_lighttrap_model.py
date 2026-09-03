@@ -1081,7 +1081,7 @@ def near_bay_wall_frame():
         ruby_box("Near bay bottom beam (50 RHS)", xb2, yn, zb, RS, yL - yn, RS, color=c),
         # VERTICAL opening-edge stile (Sheet 9 "left swing stile") tying the top + bottom beams at the near
         # frame edge — the far wall's equivalent is the pivot post/stile; the near side had none.
-        ruby_box("Near opening-edge stile (50 RHS)", xb2, yn, zb, RS, RS, (zt + RS) - zb, color=c),
+        ruby_box("Near opening-edge stile (50 RHS)", xb2, yn, 12, RS, RS, (zt + RS) - 12, color=c),   # bottom EXTENDED to the threshold floor (Z12, like the far pivot stile) — closes the gap to the plywood (Alvin 2026-09-03)
         # at the MOUTH edge the HDPE blind-rivets STRAIGHT into the near cage post — no L-angle (Sheet 2)
     ]
     # rivet heads on the door skin (exterior face) along the top + bottom beams (in Yd)

@@ -2713,7 +2713,7 @@ def sheet16():
         ax.add_patch(Rectangle((yd - pw / 2, 0), pw, ARM_BOT, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=3))
         ax.add_patch(Rectangle((yd - pw / 2 - 8, 0), pw + 16, 8, fc=C_STEEL, ec=C_OUT, lw=0.7, zorder=3))     # foot plate
         ax.add_patch(Rectangle((yd - pw / 2, ARM_BOT), pw, ARM_TOP - ARM_BOT, fc=C_STEEL, ec=C_OUT, lw=0.7, zorder=3))
-    leader(ax, (1180, ARM_TOP), (1180, -160),
+    leader(ax, (1180, ARM_TOP), (1180, -100),
            "LEFT lift-out FLOOR-LEG cantilevers (×5 @ Yd 250/800/1180/1560/2110)\nposts REMAIN when the grate lifts out — top Z115", col=C_OUT, fs=6.4)
 
     # ── walkway grate — LIFTED OUT (ghost dashed at Z115..140) ──
@@ -2746,19 +2746,19 @@ def sheet16():
 
 
     # ── dimension ladders ──
-    draw_dim_v(ax, -150, 0, ARM_TOP, "115mm posts", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -250, 0, LT_CAGE_BOT, f"{int(LT_CAGE_BOT)}mm cage btm", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -350, 0, P_CTR, f"{int(P_CTR)}mm ctr", offset=14, fs=6.0, font=FONT, right=False)
-    draw_dim_v(ax, -55, 0, TRAY_RIM, "70mm tray", offset=10, fs=5.6, font=FONT, right=False)
-    draw_dim_v(ax, WID + 160, 0, WALL_LEG_W, "200mm leg", offset=14, fs=6.0, font=FONT, right=True)
-    draw_dim_v(ax, WID + 260, 0, P_SIDE, f"{int(P_SIDE)}mm side", offset=14, fs=6.0, font=FONT, right=True)
-    draw_dim_v(ax, jL - 75, P_CTR, P_SIDE, f"{int(P_SIDE - P_CTR)}mm step", offset=12, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -100, 0, ARM_TOP, "115mm posts", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -150, 0, LT_CAGE_BOT, f"{int(LT_CAGE_BOT)}mm cage btm", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -200, 0, P_CTR, f"{int(P_CTR)}mm ctr", offset=14, fs=6.0, font=FONT, right=False)
+    draw_dim_v(ax, -50, 0, TRAY_RIM, "70mm tray", offset=10, fs=5.6, font=FONT, right=False)
+    draw_dim_v(ax, WID + 50, 0, WALL_LEG_W, "200mm leg", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, WID + 100, 0, P_SIDE, f"{int(P_SIDE)}mm side", offset=14, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, jL - 35, P_CTR, P_SIDE, f"{int(P_SIDE - P_CTR)}mm step", offset=12, fs=6.0, font=FONT, right=False)
     draw_dim_v(ax, DRUM_CAGE_YD_R + 60, ARM_TOP, LT_CAGE_BOT, f"{POST_CLR}mm", offset=10, fs=5.6, font=FONT, right=True)  # governing clr
 
     # ── Yd zone dims (bottom) ──
-    draw_dim_h(ax, 0, jL, -100, f"{jL}mm near corner — STEP UP", offset=-14, fs=6, font=FONT)
-    draw_dim_h(ax, jL, jR, -100, f"{jR - jL}mm center (Z{int(P_CTR)})", offset=-14, fs=6, font=FONT)
-    draw_dim_h(ax, jR, WID, -100, f"{WID - jR}mm far corner — STEP UP", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, 0, jL, -50, f"{jL}mm near corner — STEP UP", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jL, jR, -50, f"{jR - jL}mm center (Z{int(P_CTR)})", offset=-14, fs=6, font=FONT)
+    draw_dim_h(ax, jR, WID, -50, f"{WID - jR}mm far corner — STEP UP", offset=-14, fs=6, font=FONT)
 
     # ── notes block (right margin) ──
     draw_notes(ax, [
@@ -2773,14 +2773,14 @@ def sheet16():
         f"    (step {int(P_SIDE - P_CTR)}mm) — now over-clears the Z180/200 wall legs.",
         f"  • costs drum interior: 1970 → 1883 (clears a 1780 operator by 103).",
         "Only the walkway GRATE lifts out; the floor-leg posts + tray stay.",
-    ], WID + 40, 500, spacing=22, fs=5.6, title_fs=6.3, color="#403000",
-       title_color="#806010", width=445, border_color="#806010", font=FONT)
+    ], WID + 45, 575, spacing=22, fs=5, title_fs=6, color="#403000",
+       title_color="#806010", width=575, border_color="#806010", font=FONT)
 
     title_block(ax, "SHEET 16 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="TRANSPORT-SWING BOTTOM CLEARANCE — DRUM CAGE vs FIXED POSTS/TRAY + PANEL vs WALL BRACKETS",
                 scale_note="SECTION Yd–Z · EQUAL ASPECT · ALL DIMS IN mm",
-                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet16.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)

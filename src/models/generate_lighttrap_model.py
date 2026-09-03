@@ -961,6 +961,30 @@ def bay_wall_cage_rivets():
     return '\n'.join(p)
 
 
+def bay_wall_edge_l_strips():
+    """L-angle fixing rails on the VERTICAL EDGES of the near/far drum-cage HDPE side walls: the POST leg
+    rivets to the cage corner post (the beam), the UPSTAND leg backs the HDPE edge and the HDPE rivets to
+    it — instead of riveting the thin HDPE straight into the RHS wall (Alvin 2026-09-03)."""
+    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP
+    h = z1 - z0
+    LEG, LT = 40, 3
+    c = C_ALUM
+    x0, x1 = ov.BAY_FRONT_X, ov.DRUM_CAGE_X1                 # -890 front edge, 50 back edge
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R            # 700 near-wall face, 1662 far-wall face
+    return '\n'.join([
+        # NEAR wall (Yd700, inboard +Yd): upstand just outboard of the HDPE + post leg on the post end face
+        ruby_box("Bay edge L upstand (near-front)", x0, yL - LT, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (near-front)", x0 - LT, yL - LT, z0, LT, LEG + LT, h, color=c),
+        ruby_box("Bay edge L upstand (near-back)", x1 - LEG, yL - LT, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (near-back)", x1, yL - LT, z0, LT, LEG + LT, h, color=c),
+        # FAR wall (Yd1662, inboard -Yd): mirror — upstand just outboard (+Yd) + post leg on the post end face
+        ruby_box("Bay edge L upstand (far-front)", x0, yR, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (far-front)", x0 - LT, yR - LEG, z0, LT, LEG + LT, h, color=c),
+        ruby_box("Bay edge L upstand (far-back)", x1 - LEG, yR, z0, LEG, LT, h, color=c),
+        ruby_box("Bay edge L post-leg (far-back)", x1, yR - LEG, z0, LT, LEG + LT, h, color=c),
+    ])
+
+
 def slot_l_strips():
     """L-angle strips fixed on the center-zone frame jambs (Yd NEW_YD_L/R) that secure the panel corner
     HDPE where it now BUTTS the bay walls (Alvin 2026-09-02, item 3). Base leg flat on the interior face
@@ -1294,6 +1318,7 @@ def generate_ruby():
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         cage_face_rivets(),               # roof + floor HDPE riveted to the cage rails (like the side panels)
         bay_wall_cage_rivets(),           # near/far side-wall HDPE riveted to the front+back cage posts (item 1)
+        bay_wall_edge_l_strips(),          # L-angle fixing rails on the side-wall vertical edges (post leg + HDPE upstand)
         slot_l_strips(),                  # L-angle on the jambs securing the extended panel HDPE (item 3)
         drum_side_light_seals(),          # baffles closing the housing↔side-wall side gap (light seal)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing

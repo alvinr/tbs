@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — top/bottom horizontal rivet rows on the bay side walls.** Each near/far HDPE side wall
+  now carries horizontal rivet rows along its top + bottom edges (into the top/bottom cage rails), in
+  addition to the vertical rows at the front/back posts — a full riveted perimeter per side.
+
 - **Lighttrap 3D — panel corner HDPE butts the bay walls; side-wall + L-strip fixings added.** The near/far
   panel corner skins now extend inboard to the drum-cage faces (Yd 700 / 1662) so the panel HDPE butts the
   bay side walls (47mm slot closed); vertical rivet rows fix the near/far bay walls to the front+back cage

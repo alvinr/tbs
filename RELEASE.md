@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged-panel Sheet 12 — cross-reference note is now a bordered note block.** The plain centered
+  "plywood→frame tab/T-nut → SHEET 14 · Fan-B mount → Ventilation Sheet 3" text is now a titled
+  CROSS-REFERENCES box (two bullets) matching the other sheets' note style.
+
 - **Hinged-panel sheets — label tidy pass.** Fixed the off-frame labels: Sheet 17 apron-operation notes
   converted to auto-wrapped logical lines and reseated (was overflowing the frame + title block); Sheet 13
   subtitle shortened; Sheet 11 hub-bracket note condensed; Sheet 10 (exterior mirror) drops the redundant

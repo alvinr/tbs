@@ -11,6 +11,12 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## 📋 Blueprint-run wrap-up sequence (Alvin 2026-09-03) — AFTER his 2D sheet review
+1. Apply Alvin's 2D review feedback on the hinged-panel sheets.
+2. Cascade the remaining 3D models (the overview/electrical/construction catch-up below) — Alvin opens each `.skp`.
+3. Review the report for this section (hinged-panel / light-trap) — reconcile prose to the current design.
+4. Add any new diagrams that fall out of the review.
+
 ## 🚧 Publish BLOCKED — 3D catch-up needed (held 2026-09-02, Alvin: "b — hold")
 
 `bash publish.sh` fails the `lint.py --verify-all` gate: 3 models report `source_hash` != dependencies.yml.

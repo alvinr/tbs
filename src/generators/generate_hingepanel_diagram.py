@@ -2393,8 +2393,12 @@ def sheet12():
     draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}mm", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
     draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}mm", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
 
-    ax.text(SW / 2, cy0 - 230, "plywood→frame tab/T-nut detail → SHEET 14  ·  Fan-B mount → Ventilation Sheet 3",
-            ha="center", fontsize=7.5, color=C_OUT, **FONT)
+    draw_notes(ax, [
+        "CROSS-REFERENCES",
+        "• plywood → frame tab / captive T-nut detail — SHEET 14",
+        "• Fan-B mount — Ventilation Sheet 3",
+    ], SW / 2 - 470, cy0 - 120, spacing=48, fs=6.5, title_fs=7.0,
+       color=C_OUT, title_color=C_OUT, width=950, border_color=C_DIM, font=FONT)
 
     title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

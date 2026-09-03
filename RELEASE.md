@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — film-plane fixed rig stays through the swing; only the lift-out is removed.** The whole
+  fixed left film-plane corner (parking stub + carriage/cradle + wall-seat saddles/hangers) was wired as a
+  swing-DC child that hid in transport; it is now a STATIC root component that remains, while only the
+  removable lift-out rail hides on swing (reverts the earlier hanger-only split — the whole fixed rig stays).
+
 - **Lighttrap 3D — bay HDPE side walls are now the OUTER skin (lap the posts from outside).** They sat
   inboard of the cage-post face, so the frame/L-angle read as the exposed outer surface and the rivets
   landed on the frame; the near/far skins now lap the post outboard faces (yL-t / yR+t) so the HDPE is the

@@ -1326,7 +1326,8 @@ def generate_ruby():
     # at the drum center — click it to ANIMATE 90°/step through the revolving-door positions.
     revolve_frame_comp = component("Drum Revolve — Frame (housing · cage · bearing)",
                                    "Drum Revolve",
-                                   drum_housing(DRUM_CX, DRUM_CY) + "\n" + drum_frame())
+                                   drum_housing(DRUM_CX, DRUM_CY) + "\n" + drum_frame()
+                                   + "\n" + drum_side_light_seals())
     revolve_rotor_body = drum_rotor(0, 0)          # local origin → the DC's RotZ revolves about the drum axis
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only

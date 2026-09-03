@@ -11,6 +11,14 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## 🚧 Publish BLOCKED — 3D catch-up needed (held 2026-09-02, Alvin: "b — hold")
+
+`bash publish.sh` fails the `lint.py --verify-all` gate: 3 models report `source_hash` != dependencies.yml.
+Not caused by the 2026-09-02 lighttrap work (lighttrap is current). Resolve, then publish.
+- [ ] **overview** — generator changed (41ac672c, 2026-09-01) *after* the `.skp` was last sent (95b34863, 2026-08-27) → check whether that commit touched geometry; if so **re-send** (Alvin opens overview), else re-hash.
+- [ ] **electrical** — generator changed (ffdeaba1, 2026-08-18) *after* the `.skp` (e7f5d684, 2026-08-05) → same check → likely **re-send** (Alvin opens electrical).
+- [ ] **construction** — generator (a10bc2ea, 2026-08-12) *predates* the `.skp` (8211eb1b, 2026-08-27) → environmental hash mismatch only; safe to `manifest.py --update` + commit (no re-send).
+
 ## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
 
 - [x] **Fastener/hardware batch FIRMED 2026-08-24d** — DP8010 (7467A36 $76.29), fasteners lot → $97 firm (F1–F7 McMaster SS SKUs), NEW `ll-rivet-nuts` $53 (20× M10 twist-resist 95105A199 + setting tool 96349A866), NEW `ll-holder-rivets` $11 (97447A015 ×250). lightlock → $2,943–3,963; all gates green.

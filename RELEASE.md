@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — film-plane wall hangers stay put on swing.** The left film-plane corner’s permanent
+  container-wall fixtures (wall-seat saddles + far-left EXT plate/M12 bolts) were hiding with the parked
+  cradle when the panel swings; they’re now split out (new `keep="wall"`/`"fixed_stay"` in fpm.corner) and
+  placed static, so they REMAIN while the film-plane beam + cradle park/lift out.
+
 - **Lighttrap 3D — L-angle fixing rails on the drum-cage HDPE side-wall vertical edges.** Each near/far bay
   side wall now has an Al L-angle down both vertical edges: the post leg rivets to the cage corner post,
   the upstand backs the HDPE edge (HDPE rivets to it) — a dedicated edge rail instead of riveting the thin

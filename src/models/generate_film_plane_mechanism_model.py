@@ -281,9 +281,21 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # in the part NAME); everything else (stub, carriage/skate/U-joint, support brackets, gussets,
         # splices) is FIXED and STAYS in the transport position. Match the grp.name ONLY — matching the
         # whole ruby drags in any part that references a shared MATERIAL named after a removable part.
+        # WALL HANGERS (the permanent container-wall fixtures — saddles + far-left EXT plate/bolts) are
+        # split out via keep='wall' / keep='fixed_stay' so a swing-hide can drop the parked cradle while
+        # the wall-bolted hangers REMAIN (Alvin 2026-09-03).
         name_rx = re.compile(r'grp\.name = "([^"]*)"')
         is_rem = lambda s: any("REMOVABLE" in n for n in name_rx.findall(s))
-        P = [p for p in P if (is_rem(p) if keep == "removable" else not is_rem(p))]
+        is_wall = lambda s: any(("Saddle" in n or "FP far-left EXT" in n or "FP far-left bolt" in n)
+                                 for n in name_rx.findall(s))
+        if keep == "removable":
+            P = [p for p in P if is_rem(p)]
+        elif keep == "wall":                 # ONLY the permanent wall-mounted hangers/saddles
+            P = [p for p in P if is_wall(p)]
+        elif keep == "fixed_stay":           # FIXED cradle MINUS the wall hangers (placed static separately)
+            P = [p for p in P if not is_rem(p) and not is_wall(p)]
+        else:                                # keep == "fixed" (legacy — fixed cradle INCLUDING wall hangers)
+            P = [p for p in P if not is_rem(p)]
     return "\n".join(P)
 
 

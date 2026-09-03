@@ -926,39 +926,8 @@ def surround_rivets():
     return '\n'.join(parts)
 
 
-def bay_l_angles():
-    """L-angle framing that SECURES the HDPE bay walls (2D Sheet 2 detail: HDPE rivets to an L-angle, the
-    L-angle rivets/welds to the steel). A 30×30×3 angle ring at the PANEL-PLANE lap where the drum cage
-    posts/beams back it up — the surround_rivets pass through the panel leg into the HDPE, the stand-off
-    leg laps the cage. Each angle: PANEL leg (flat on the HDPE, 30 wide in X) + STAND-OFF leg (perpendicular,
-    30 onto the cage).
-      WHERE IT DOESN'T WORK (reported to Alvin, deliberately NOT modeled forward of the cage):
-      • The bay projects ~890mm FORWARD of the cage to the open mouth with NO steel behind it, so the
-        forward two-thirds of every HDPE wall has nothing to rivet an L-angle to → a bay-MOUTH frame ring
-        (or a couple of intermediate steel hoops) must be added before the L-angle scheme is continuous.
-      • The BOTTOM angle sits in the floor gap (Z217) directly over the processing tray rim — its stand-off
-        leg turns up into the drum underside; clearance is tight and it may foul the tray.
-      • Near/far angles land on the 50mm cage posts, but the panel CENTER-zone jambs are at NEW_YD_L/R
-        (653/1709), 47mm off the cage faces (700/1662) — so the angle laps the CAGE, not the jamb; the two
-        are not co-planar."""
-    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
-    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
-    t = ov.BAY_WALL_T
-    LEG, LT = 30, 3
-    xa = -33                          # angle in the lap zone just exterior of the panel plane
-    c = C_STEEL
-    return '\n'.join([
-        # near vertical: panel leg on the HDPE inner face + stand-off leg onto the cage post
-        ruby_box("Bay L-angle near panel-leg", xa, yL + t, z0, LEG, LT, z1 - z0, color=c),
-        ruby_box("Bay L-angle near standoff", xa, yL + t, z0, LT, LEG, z1 - z0, color=c),
-        # (far vertical handled by far_bay_wall_frame() — this wall is being detailed frame-by-frame)
-        # top horizontal: panel leg under the top wall + stand-off leg down
-        ruby_box("Bay L-angle top panel-leg", xa, yL, z1 - t - LT, LEG, yR - yL, LT, color=c),
-        ruby_box("Bay L-angle top standoff", xa, yL, z1 - t - LEG, LT, yR - yL, LEG, color=c),
-        # bottom horizontal: panel leg over the bottom wall + stand-off leg up
-        ruby_box("Bay L-angle bottom panel-leg", xa, yL, z0 + t, LEG, yR - yL, LT, color=c),
-        ruby_box("Bay L-angle bottom standoff", xa, yL, z0 + t, LT, yR - yL, LEG, color=c),
-    ])
+# (bay_l_angles removed 2026-09-02 — the HDPE bay walls now blind-rivet STRAIGHT to the cage posts,
+#  matching hingepanel Sheet 2; the L-angle standoff scheme is retired.)
 
 
 def far_bay_wall_frame():
@@ -966,9 +935,8 @@ def far_bay_wall_frame():
     Detailed frame-by-frame per Alvin (2026-08-31):
       1+2 the HDPE reaches out to the frame at the panel plane (the center jamb R) and rivets to it —
           rivet line down the panel-plane edge (X0);
-      3   a full-tunnel-depth L-angle sits on the wall at the free MOUTH edge (drum side): its panel leg
-          takes the HDPE rivets, its stand-off leg laps the front cage post — the wall can't rivet to the
-          round cage or through the 3mm skin alone;
+      3   at the MOUTH edge the HDPE blind-rivets STRAIGHT into the front cage post (50 RHS) — no L-angle
+          standoff (aligns with hingepanel Sheet 2: skin flat on the post, riveted through);
       4+5 a TOP rail and a BOTTOM rail (50×50 RHS) run the tunnel depth on the cage line, extending the
           door-plane frame back to the drum cage so the wall's top/bottom edges land on steel and rivet."""
     yR = ov.DRUM_CAGE_YD_R                 # 1662 — far cage face / far-wall Yd
@@ -978,7 +946,7 @@ def far_bay_wall_frame():
     t = ov.BAY_WALL_T
     xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0);
     #                                        full 50mm lap onto the cage, skin laps the beam like the jambs
-    RS, LEG, LT, rr = 50, 40, 3, 5
+    RS, rr = 50, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (sits on the cage top)
     zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
@@ -988,10 +956,7 @@ def far_bay_wall_frame():
         #       the skin (xb2), lapping the far cage-post top/bottom so they tie the wall to the drum cage.
         ruby_box("Far bay top beam (50 RHS)", xb2, yR, zt, RS, yf - yR, RS, color=c),
         ruby_box("Far bay bottom beam (50 RHS)", xb2, yR, zb, RS, yf - yR, RS, color=c),
-        # (3) drum-side L-angle the full tunnel depth at the wall's MOUTH edge — panel leg on the wall
-        #     (+Yd face), stand-off laps the front cage post; the HDPE rivets to the panel leg
-        ruby_box("Far wall L-angle panel-leg", xf, yR, z0, LEG, LT, z1 - z0, color=c),
-        ruby_box("Far wall L-angle standoff", xf, yR - LEG, z0, LT, LEG, z1 - z0, color=c),
+        # (3) at the MOUTH edge the HDPE blind-rivets STRAIGHT into the front cage post — no L-angle (Sheet 2)
     ]
     # rivet heads on the door skin (exterior face) along the top + bottom beams (in Yd) — point 5
     ny = int((yf - yR - 80) // LT_RIVET_PITCH)
@@ -999,7 +964,7 @@ def far_bay_wall_frame():
         yc = yR + 40 + i * LT_RIVET_PITCH
         for zc in (zt + RS / 2, CORNER_BOT + 20):   # bottom row in the HDPE just above the beam top
             p.append(ov.ruby_cylinder("Far bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
-    # rivet line down the drum-side edge into the L-angle — point 2/3
+    # rivet line down the drum-side edge STRAIGHT into the front cage post — point 2/3
     nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
     for i in range(nz + 1):
         zc = z0 + 60 + i * LT_RIVET_PITCH
@@ -1009,15 +974,16 @@ def far_bay_wall_frame():
 
 def near_bay_wall_frame():
     """NEAR bay wall (pinhole side / right) — mirror of the far wall: top + bottom 50×50 beams (cage → near
-    frame edge), a drum-side L-angle at the mouth, and rivet lines. The near corner's bottom section is the
-    Fan-B ply band (extended down to CORNER_BOT to match the left side); rivets land on it + the HDPE above."""
+    frame edge), and rivet lines. At the mouth edge the HDPE blind-rivets STRAIGHT into the near cage post
+    (no L-angle — aligns with hingepanel Sheet 2). The near corner's bottom section is the Fan-B ply band
+    (extended down to CORNER_BOT to match the left side); rivets land on it + the HDPE above."""
     yL = ov.DRUM_CAGE_YD_L                 # 700 — near cage face
     yn = CUT                               # 180 — near frame edge (left swing stile)
     xf = ov.BAY_FRONT_X                    # -890 — bay mouth
     z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
     t = ov.BAY_WALL_T
     xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0)
-    RS, LEG, LT, rr = 50, 40, 3, 5
+    RS, rr = 50, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (cage top)
     zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
@@ -1027,9 +993,7 @@ def near_bay_wall_frame():
         # VERTICAL opening-edge stile (Sheet 9 "left swing stile") tying the top + bottom beams at the near
         # frame edge — the far wall's equivalent is the pivot post/stile; the near side had none.
         ruby_box("Near opening-edge stile (50 RHS)", xb2, yn, zb, RS, RS, (zt + RS) - zb, color=c),
-        # drum-side L-angle at the mouth edge: panel leg on the −Yd back face, stand-off laps the near cage post
-        ruby_box("Near wall L-angle panel-leg", xf, yL - LT, z0, LEG, LT, z1 - z0, color=c),
-        ruby_box("Near wall L-angle standoff", xf, yL, z0, LT, LEG, z1 - z0, color=c),
+        # at the MOUTH edge the HDPE blind-rivets STRAIGHT into the near cage post — no L-angle (Sheet 2)
     ]
     # rivet heads on the door skin (exterior face) along the top + bottom beams (in Yd)
     ny = int((yL - yn - 80) // LT_RIVET_PITCH)
@@ -1037,7 +1001,7 @@ def near_bay_wall_frame():
         yc = yn + 40 + i * LT_RIVET_PITCH
         for zc in (zt + RS / 2, CORNER_BOT + 20):   # bottom row on the Fan-B ply band just above the beam
             p.append(ov.ruby_cylinder("Near bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
-    # rivet line down the drum-side edge into the L-angle
+    # rivet line down the drum-side edge STRAIGHT into the near cage post
     nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
     for i in range(nz + 1):
         zc = z0 + 60 + i * LT_RIVET_PITCH
@@ -1230,9 +1194,8 @@ def generate_ruby():
                  PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - CORNER_BOT, color=C_PLASTIC, alpha=0.5),
         pivot_corner_leaf(),   # pivot-edge STILE (the hub brackets weld to it) — travels with the leaf
         bay(),
-        bay_l_angles(),                   # L-angle framing securing the HDPE bay walls (Sheet 2 detail)
-        far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + drum-side L-angle + rivets
-        near_bay_wall_frame(),            # NEAR wall (pinhole side): top + bottom beams to the cage
+        far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + rivets STRAIGHT to the post
+        near_bay_wall_frame(),            # NEAR wall (pinhole side): top + bottom beams + rivets to the post
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
@@ -1581,7 +1544,7 @@ model.layers.each {{ |l| l.visible = true }}      # restore for the default stat
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # ── "Steel · Pivot · Frame · Cage" scene — isolate the STRUCTURAL STEEL (Ø89 pivot post, hinge-panel
-#    frame, drum cage + the new far-wall beams / L-angle) by HIDING the HDPE skins, EPDM, Fan-B and the
+#    frame, drum cage + the far-wall/near-wall beams) by HIDING the HDPE skins, EPDM, Fan-B and the
 #    drum shell, so the framing reads clearly for review. (Hide-specific, so Layer0 steel stays on.) ──
 model.layers.each {{ |l| l.visible = true }}
 ["Panel skin", "Fan B", "Drum shell", "Labels", "Drum Revolve"].each {{ |n|

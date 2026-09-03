@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D model — HDPE bay walls now rivet straight to the cage posts (matches Sheet 2).** Retired
+  the L-angle standoff scheme (`bay_l_angles` removed; the far/near wall mouth L-angles dropped). The bay
+  walls blind-rivet straight into the cage posts; the structural top/bottom bay beams and near opening-edge
+  stile are unchanged.
+
 - **Hinged panel Sheet 2 — drum-entrance HDPE side skin now fixed directly to the post.** Dropped the
   L-angle standoff: the 1/8″ HDPE bay side skin sits flat on the cage post’s outside face and is
   blind-riveted straight through the skin into the post’s outer wall. Leader + enlarged detail redrawn

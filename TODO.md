@@ -16,6 +16,8 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 `bash publish.sh` fails the `lint.py --verify-all` gate: 3 models report `source_hash` != dependencies.yml.
 Not caused by the 2026-09-02 lighttrap work (lighttrap is current). Resolve, then publish.
 - [ ] **overview** — generator changed (41ac672c, 2026-09-01) *after* the `.skp` was last sent (95b34863, 2026-08-27) → check whether that commit touched geometry; if so **re-send** (Alvin opens overview), else re-hash. **Also drop the now-unused `BAY_BACK_X` import (line 41)** — lighttrap stopped reaching `ov.BAY_BACK_X` (2026-09-02); deferred here because editing this file trips the interference-report gate, which needs the overview model live.
+  - [ ] **Door-frame swings with the cargo door (Alvin 2026-09-03)** — the brown door frame animates with the door-open DC; it should be FIXED. Keep the door frame OUT of the swing DC group. Fix + re-send with the overview catch-up.
+  - [ ] **Film-plane wall hangers on swing** — verify the overview has the SAME fix as lighttrap (wall hangers static, not hiding with the parked cradle); overview draws its film plane via `fpm.corner(keep="all")` so it may not split them — check when re-sending.
 - [ ] **electrical** — generator changed (ffdeaba1, 2026-08-18) *after* the `.skp` (e7f5d684, 2026-08-05) → same check → likely **re-send** (Alvin opens electrical).
 - [ ] **construction** — generator (a10bc2ea, 2026-08-12) *predates* the `.skp` (8211eb1b, 2026-08-27) → environmental hash mismatch only; safe to `manifest.py --update` + commit (no re-send).
 

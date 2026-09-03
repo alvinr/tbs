@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — bay HDPE side walls capped at the top beams; steel scene decluttered.** The near/far
+  bay walls now stop at the cage-top beams (LT_CAGE_TOP) instead of running up to the panel top; the roof
+  HDPE sits on the top beams and rivets to them. The "Steel · Pivot · Frame · Cage" scene now also hides
+  the walkways and fold-down aprons so only structural steel shows.
+
 - **Lighttrap 3D model — HDPE bay walls now rivet straight to the cage posts (matches Sheet 2).** Retired
   the L-angle standoff scheme (`bay_l_angles` removed; the far/near wall mouth L-angles dropped). The bay
   walls blind-rivet straight into the cage posts; the structural top/bottom bay beams and near opening-edge

@@ -894,16 +894,17 @@ def bay():
     # — not the wider panel-zone step lines, which left a 47mm slot to the cage.
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R        # 700, 1662 — cage near/far faces
     # The side/bottom walls run DOWN to the cage bottom beams (LT_CAGE_BOT), not just the Z217 floor gap,
-    # so no light slot under the drum. The top wall stays at the panel top.
-    z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP                     # 140 → 2300
+    # so no light slot under the drum. The side walls STOP at the top beams (LT_CAGE_TOP) — no HDPE above
+    # them — and the ROOF HDPE lies on the top beams and rivets down to them (2026-09-02, Alvin).
+    z0, zc = LT_CAGE_BOT, LT_CAGE_TOP                     # 140 → 2217 (cage/beam top)
     xf = ov.BAY_FRONT_X                                    # -890
     t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
     depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
-    h = z1 - z0
+    hs = zc - z0                                           # side-wall height — capped at the top beams
     return '\n'.join([
-        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, h, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, h, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall top (roof, riveted to the top beams)", xf, yL, zc - t, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
     ])
 
@@ -942,7 +943,7 @@ def far_bay_wall_frame():
     yR = ov.DRUM_CAGE_YD_R                 # 1662 — far cage face / far-wall Yd
     yf = PIVOT_YD                          # 2287 — pivot frame (the beams reach it)
     xf, xb = ov.BAY_FRONT_X, 0             # -890 .. 0 — tunnel depth (mouth → panel plane)
-    z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
+    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP      # 140 .. 2217 — the HDPE wall stops at the top beams
     t = ov.BAY_WALL_T
     xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0);
     #                                        full 50mm lap onto the cage, skin laps the beam like the jambs
@@ -980,7 +981,7 @@ def near_bay_wall_frame():
     yL = ov.DRUM_CAGE_YD_L                 # 700 — near cage face
     yn = CUT                               # 180 — near frame edge (left swing stile)
     xf = ov.BAY_FRONT_X                    # -890 — bay mouth
-    z0, z1 = LT_CAGE_BOT, PANEL_Z_TOP      # 140 .. 2300
+    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP      # 140 .. 2217 — the HDPE wall stops at the top beams
     t = ov.BAY_WALL_T
     xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0)
     RS, rr = 50, 5
@@ -1547,7 +1548,7 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 #    frame, drum cage + the far-wall/near-wall beams) by HIDING the HDPE skins, EPDM, Fan-B and the
 #    drum shell, so the framing reads clearly for review. (Hide-specific, so Layer0 steel stays on.) ──
 model.layers.each {{ |l| l.visible = true }}
-["Panel skin", "Fan B", "Drum shell", "Labels", "Drum Revolve"].each {{ |n|
+["Panel skin", "Fan B", "Drum shell", "Labels", "Drum Revolve", "Walkways", "Bottom Apron"].each {{ |n|
   model.layers[n].visible = false if model.layers[n] }}
 sc_eye = Geom::Point3d.new(2600, 3300, 2000)     # 3/4 from the interior / far-Yd side
 sc_tgt = Geom::Point3d.new(-300, 1750, 1150)     # look at the far-wall / pivot region

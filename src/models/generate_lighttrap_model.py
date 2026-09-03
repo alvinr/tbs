@@ -869,9 +869,20 @@ def film_plane_left():
     HIDES when swung, so the swinging drum surround can transition the X=150 rail plane in transport.
     One source with overview (fpm.corner emits ov.ruby_* at the shared coords; late import breaks the cycle)."""
     import generate_film_plane_mechanism_model as fpm
+    return '\n'.join([                       # keep='fixed_stay' — the parked cradle WITHOUT the wall hangers
+        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="fixed_stay"),
+        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="fixed_stay"),
+    ])
+
+
+def film_plane_wall_hangers():
+    """The permanent CONTAINER-WALL fixtures of the left film-plane corner — the wall-seat saddles +
+    far-left EXT plate/M12 bolts. These stay BOLTED to the wall in transport (they do NOT lift out with
+    the rail or park with the cradle), so they are placed STATIC — not under the swing-hide (Alvin 2026-09-03)."""
+    import generate_film_plane_mechanism_model as fpm
     return '\n'.join([
-        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="fixed"),
-        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="fixed"),
+        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="wall"),
+        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="wall"),
     ])
 
 
@@ -1278,7 +1289,10 @@ def generate_ruby():
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
         # Film-plane left rig is wired as a SWING-DC CHILD below (fpl_inst) so it HIDES in transport — a
-        # root-level hidden_formula doesn't recompute when the parent DC animates (only children do).
+        # root-level hidden_formula doesn't recompute when the parent DC animates (only children do). But the
+        # WALL HANGERS (wall-bolted saddles / far-left EXT plate) are permanent — placed STATIC here so they
+        # REMAIN when the panel swings (Alvin 2026-09-03).
+        component("Film-plane left wall hangers (fixed)", "Film Plane Rails", film_plane_wall_hangers()),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
         component("Fixed bottom closures (baffle + pivot stub)", "Bottom Apron", fixed_bottom_geom()),

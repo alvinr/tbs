@@ -312,3 +312,9 @@ Never reference the current task, ticket, or fix in a comment.
 
 When modifying existing code, match the patterns already in the file.
 Match the existing style, even if you'd do it differently.
+
+**No pass-through wrappers.** Don't add a function/helper that only forwards its arguments to
+another call with no added logic, defaulting, or transformation — it's pure indirection that hides
+the real call. Call the underlying function directly. (A wrapper that sets defaults, reshapes
+arguments, or adds behavior is fine — the rule is against the *no-value* forwarder, e.g. a local
+`llabel(tip, y, text)` whose whole body is `leader(ax, tip, (LX, y), text, ...)`.)

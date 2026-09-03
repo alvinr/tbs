@@ -866,6 +866,7 @@ _Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is s
   (Editorial "done" mark + this checkbox left for Alvin per skill §H.4.)
 
 ## Code hygiene
+- [ ] **Sweep for pass-through wrappers (2026-09-03, Alvin).** A no-value forwarder — a local helper whose whole body just calls another function with the same args (e.g. Sheet 11's `llabel(tip, y, text)` → `leader(ax, tip, (LX, y), text, …)`, now removed) — is pure indirection that hides the real call. Grep the generators/models for one-line `def`s that only forward to another call with no defaulting/reshaping/added behavior, and inline them to direct calls. Rule now codified in `CLAUDE.md` → **Code Style** ("No pass-through wrappers") so new ones don't creep back.
 - [x] **Unused imports — DONE.** Removed **181** unused imports across 31 files (verified every generator + model runs clean, gates green, no output change). New stdlib checker `src/generators/check_unused_imports.py` (re-export-aware, `--fix`) is a **release gate** in `release.sh` so it can't drift back.
 - [x] **`generate_pinhole_water_panel.py:511` refactor — DONE.** Water-panel context is now built muted **at source** via a `muted()` context manager (`ruby_box/cylinder/tri` resolve mute/alpha against it); the fragile post-build `mute_groups` re-coloring pass + its allow-list are retired. Verified visually-identical (same round(c*(1-f)+n*f) formula; 261 muted + 17 full steel, same split) and byte-transparent for other models.
 

@@ -900,7 +900,7 @@ def bay():
     z0, zc = LT_CAGE_BOT, LT_CAGE_TOP                     # 140 → 2217 (cage/beam top)
     xf = ov.BAY_FRONT_X                                    # -890
     t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
-    depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
+    depth = ov.DRUM_CAGE_X1 - xf                           # 940 — stretched to the BACK cage beams (was BAY_BACK_X)
     hs = zc - z0                                           # side-wall height — capped at the top beams
     return '\n'.join([
         ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
@@ -908,6 +908,31 @@ def bay():
         ruby_box("Bay wall top (roof, riveted to the top beams)", xf, yL, zc - t, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
     ])
+
+
+def cage_face_rivets():
+    """Blind-rivet rows tying the ROOF + FLOOR HDPE to the drum-cage top/bottom perimeter rails — the same
+    fixing the side panels show (Sheet 2: HDPE riveted straight to the cage). Full perimeter on each face."""
+    yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
+    x0, x1 = ov.BAY_FRONT_X, ov.DRUM_CAGE_X1
+    zc, z0 = LT_CAGE_TOP, LT_CAGE_BOT
+    rr = 5
+    p = []
+    # near/far edges — rivet rows running in X (along the near/far cage rails)
+    nx = int((x1 - x0 - 80) // LT_RIVET_PITCH)
+    for i in range(nx + 1):
+        xc = x0 + 40 + i * LT_RIVET_PITCH
+        for yd in (yL + 8, yR - 8):
+            p.append(ov.ruby_cylinder("Cage roof rivet", xc, yd, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(ov.ruby_cylinder("Cage floor rivet", xc, yd, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
+    # front/back edges — rivet rows running in Yd (along the front/back cage rails)
+    ny = int((yR - yL - 80) // LT_RIVET_PITCH)
+    for i in range(ny + 1):
+        yc = yL + 40 + i * LT_RIVET_PITCH
+        for xd in (x0 + 8, x1 - 8):
+            p.append(ov.ruby_cylinder("Cage roof rivet", xd, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(ov.ruby_cylinder("Cage floor rivet", xd, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
+    return '\n'.join(p)
 
 
 def surround_rivets():
@@ -1199,6 +1224,7 @@ def generate_ruby():
         far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + rivets STRAIGHT to the post
         near_bay_wall_frame(),            # NEAR wall (pinhole side): top + bottom beams + rivets to the post
         surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
+        cage_face_rivets(),               # roof + floor HDPE riveted to the cage rails (like the side panels)
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
         drum_frame(),

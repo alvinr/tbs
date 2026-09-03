@@ -2436,13 +2436,13 @@ def sheet14():
     _draw_bolt(ax, dB(95, 102)[0], dB(95, 102)[1], 22 * sB, d=6, vertical=False, head=-1, end="tapped", zb=9)
     ax.add_patch(Rectangle(dB(91, 99), 15, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                 # tee-nut barrel (in the ply)
     ax.add_patch(Rectangle(dB(106, 96), 3, 12, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                # tee-nut flange on the ply FAR face
-    leader(ax, dB(24, 48), (bx0 + 16, 165), "frame RHS member\n(no bolt enters it)", col=C_OUT, fs=6.2)
-    leader(ax, dB(66, 69), (bx0 + 18, 22), "L-tab base leg\nWELDED to the frame", col=C_OUT, fs=6.2)
+    leader(ax, dB(24, 48), (bx0 - 24, 65), "frame RHS member\n(no bolt enters it)", col=C_OUT, fs=6.2)
+    leader(ax, dB(66, 71), (bx0 + 55, 65), "L-tab base leg\nWELDED to the frame", col=C_OUT, fs=6.2)
     leader(ax, dB(97, 102), (bx0 + 150, 126), "M8 bolt → the tab\nUPSTAND (hex head on its face)", col=C_OUT, fw="bold", fs=6.2)
     leader(ax, dB(108, 102), (bx0 + 150, 158), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.2)
     # dims (to scale)
-    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18mm", offset=-7, fs=5.6, font=FONT)
-    draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50mm RHS", offset=-7, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18mm", offset=-7, above=False, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50mm RHS", offset=-7, above=False, fs=5.6, font=FONT)
 
     # ── COMPANION: rotated 90° view (looking along the bolt axis) — the bolt seats in the tab plate;
     #    the frame stile is off to the side, so the bolt does NOT pass through the frame. ──
@@ -2460,8 +2460,8 @@ def sheet14():
     hx, hy = vB(44, 21)
     ax.add_patch(Polygon(hexpts(hx, hy, 7), closed=True, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))         # bolt hex head on the tab face
     ax.add_patch(Circle((hx, hy), 2.2, fc="#606568", ec="none", zorder=8))
-    leader(ax, (hx, hy), vB(92, 34), "M8 bolt seats in\nthe tab plate", col=C_OUT, fw="bold", fs=6.0)
-    leader(ax, vB(6, 38), vB(-14, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
+    leader(ax, (hx, hy), vB(110, 34), "M8 bolt seats in\nthe tab plate", col=C_OUT, fw="bold", fs=6.0)
+    leader(ax, vB(6, 38), vB(-20, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
     leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
     title_block(ax, "SHEET 14 OF 17",

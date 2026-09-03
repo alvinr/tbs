@@ -2377,7 +2377,7 @@ def sheet12():
     for ex in (bx + 30, bx + BW - 30):
         for zz in [by + 120 + i * 320 for i in range(4)]:
             ax.add_patch(Circle((ex, zz), 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=7))
-    ax.text(bx + BW + 8, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— see Sheet 14", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
+    ax.text(bx + BW + 150, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— see Sheet 14", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
     # cooler base (below the band)
     cx0, cy0 = 0, by - 60 - CH
     ax.add_patch(Rectangle((cx0, cy0), CW, CH, fc=C_WOOD, ec=C_OUT, lw=1.2, alpha=0.4, zorder=4))
@@ -2388,7 +2388,7 @@ def sheet12():
     # per-piece + fan-cutout position dimensions
     draw_dim_h(ax, bx, bx + BW, by + BH + 34, f"{BW}mm", offset=12, fs=6.0, font=FONT)               # band width
     draw_dim_v(ax, bx + BW + 60, by, by + BH, f"{BH}mm", offset=12, fs=6.0, font=FONT, right=True)     # band height
-    draw_dim_v(ax, bx + BW + 190, by, fcy, "360mm to fan CL", offset=12, fs=5.8, font=FONT, right=True)  # fan vert position
+    draw_dim_v(ax, bx + BW - 100, by, fcy, "360mm to fan CL", offset=12, fs=5.8, font=FONT, right=True)  # fan vert position
     draw_dim_h(ax, bx, fcx, fcy + FR + 55, f"{int(BW / 2)}mm (fan CL, centered)", offset=10, fs=5.8, font=FONT)  # fan horiz position (above cutout)
     draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}mm", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
     draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}mm", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height

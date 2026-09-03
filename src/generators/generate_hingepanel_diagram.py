@@ -477,7 +477,7 @@ def sheet2():
     # Interior zone (Y > Y_INT)
     ax.add_patch(Rectangle((X_LO, Y_INT), X_HI - X_LO, Y_HI - Y_INT,
                             fc="#EEF6EE", ec="none", zorder=1))
-    ax.text(D_CX - PAD_X / 2 - 450, (Y_INT + Y_HI) / 2 + 125,
+    ax.text(D_CX - PAD_X / 2 - 450, (Y_INT + Y_HI) / 2 + 40,
             "INTERIOR", color="#407040", fontsize=9, ha="center", va="center",
             **FONT, fontweight="bold", alpha=0.55, zorder=15)
 
@@ -2203,8 +2203,9 @@ def _frame_ga(mirror=False):
         " Center jambs ...... 2 × 2,388",
         " Header + sill ..... 2 × 1,056",
     ]
-    ax.text(-350, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
-            bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
+    if not mirror:   # the schedule lives on Sheet 9; the exterior mirror (Sheet 10) omits it (avoids the reversed-axis overflow)
+        ax.text(-350, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
+                bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
 
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL}mm SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
     # horizontal component chain (near strip · center zone · far strip) — top row, above the cage dim
@@ -2300,8 +2301,8 @@ def sheet11():
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 1810, "How the swinging leaf is secured to the moving hub —\n3 hinge brackets FILLET-WELDED to both the hub tube and\nthe leaf's pivot-edge stile (hub+leaf+cage = one weldment)\n— is drawn full-size on\nSHEET 15 (Frame → Pivot-Post Connection).",
-            ha="center", va="top", fontsize=7.2, color=C_OUT, **FONT,
+    ax.text(1000, 1810, "3 hinge brackets FILLET-WELDED to both the hub\ntube and the leaf's pivot-edge stile\n(hub + leaf + cage = one weldment).\nDrawn full-size on SHEET 15\n(Frame → Pivot-Post Connection).",
+            ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.6", fc="#F4F1E8", ec=C_DIM, lw=0.9))
 
     # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
@@ -2561,7 +2562,7 @@ def sheet13():
     #   EXTERIOR at LEFT (cam + jamb) → INTERIOR at RIGHT (handle).
     Ax = 6
     ax.text(Ax + 92, 206, "DETAIL A — LIFT-AND-TURN CAM LATCH (McMaster 1619A74)", ha="center", fontsize=8.3, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Ax + 92, 194, "side section · the two stiles are STACKED (short ends aligned); the latch crosses both — cam draws the panel tight, L-handle lifts + turns", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    ax.text(Ax + 92, 194, "side section · the two stiles are STACKED (short ends aligned); the latch crosses both", ha="center", fontsize=6.0, color=C_DIM, **FONT)
     # Two stiles STACKED vertically (short ends aligned): FIXED jamb (lower) + SWINGING panel (upper).
     ax.add_patch(Rectangle((Ax + 26, 24), 92, 42, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))    # FIXED jamb stile (LOWER)
     ax.add_patch(Rectangle((Ax + 29, 27), 86, 36, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
@@ -2578,7 +2579,7 @@ def sheet13():
     ax.add_patch(Rectangle((Ax + 8, 48), 16, 8, fc="#7A6A9A", ec=C_OUT, lw=1.0, zorder=8))                 # catch hooking the strike
     ax.add_patch(Rectangle((Ax + 20, 30), 6, 30, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))                  # STRIKE plate on the vertical short-end face
     ax.add_patch(Polygon([(Ax + 26, 34), (Ax + 26, 42), (Ax + 32, 38)], closed=True, fc=C_OUT, ec="none", zorder=7))  # weld to the vertical face
-    leader(ax, (Ax + 15, 52), (Ax + 2, 150), "catch hooks the STRIKE PLATE\n(welded to the lower stile's\nvertical short-end face) \u2014\ndraws the two tight", col=C_OUT, fw="bold", fs=6)
+    leader(ax, (Ax + 15, 52), (Ax + 16, 150), "catch hooks the STRIKE PLATE\n(welded to the lower stile's\nvertical short-end face) \u2014\ndraws the two tight", col=C_OUT, fw="bold", fs=6)
     # escutcheon on the interior face of the UPPER stile
     ax.add_patch(Rectangle((Ax + 118, 80), 12, 28, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))
     # L-SHAPED lift-and-turn HANDLE \u2014 arm out (right) + grip bent UP 90\u00b0
@@ -2808,7 +2809,7 @@ def sheet17():
     fig, ax = plt.subplots(figsize=(20, 11))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-130, WID + 130)
+    ax.set_xlim(-130, WID + 500)
     ax.set_ylim(-170, 920)
 
     ax.text(WID / 2, 878, "FOLD-DOWN LIGHT APRON — closes the under-leaf gap opened by the 217mm floor-gap raise",
@@ -2927,25 +2928,14 @@ def sheet17():
     # ══ notes ══
     draw_notes(ax, [
         "FOLD-DOWN LIGHT APRON — operation",
-        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container.",
-        f"  Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd",
-        f"  {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow",
-        "  the leaf. 12mm exterior BC plywood, flat-black interior (a light seal).",
-        "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs.",
-        "  Held vertical by an over-centre catch each side.",
-        "• TRANSPORT: release the catches, fold both aprons flat into the container,",
-        "  then swing the panel; the leaf clears the ~40mm folded panel.",
-        "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron",
-        "  edges, closes the strip under the cage; a horizontal strip BRUSH on its top",
-        "  edge fills the 10mm up to the swept Z140 cage bottom.",
-        f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the",
-        f"  {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
-        "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45°",
-        "  scarf with EPDM bonded to the FIXED face — a light-tight lap the moving",
-        "  panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom,",
-        "  apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
-    ], WID + 30, 400, spacing=24, fs=5.8, title_fs=6.6, color="#403000",
-       title_color="#806010", width=470, border_color="#806010", font=FONT)
+        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 12mm exterior BC plywood, flat-black interior (a light seal).",
+        "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-centre catch each side.",
+        "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",
+        "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
+        f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
+        "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45° scarf with EPDM bonded to the FIXED face — a light-tight lap the moving panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom, apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
+    ], WID + 30, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
+       title_color="#806010", width=450, wrap=49, border_color="#806010", font=FONT)
 
     title_block(ax, "SHEET 17 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

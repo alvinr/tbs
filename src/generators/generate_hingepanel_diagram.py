@@ -2484,7 +2484,7 @@ def sheet14():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet15():
     HGT = C_HGT
-    fig, ax = plt.subplots(figsize=(16, 12))
+    fig, ax = plt.subplots(figsize=(16, 16))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
     ax.set_xlim(-300, 1470)
@@ -2500,9 +2500,9 @@ def sheet15():
         ax.add_patch(Rectangle((cx + 58, z - 22), 120, 66, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))               # hinge bracket (welded hub↔leaf stile)
         for jz in (z - 20, z + 42):                                                                               # weld ticks at the stile
             ax.add_patch(Polygon([(cx + 178, jz), (cx + 170, jz), (cx + 178, jz + (6 if jz < z else -6))], closed=True, fc=C_OUT, ec="none", zorder=7))
-    leader(ax, (cx, 1400), (cx - 170, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 11)", col=C_OUT, fs=6.5)
-    leader(ax, (cx + 118, 300), (cx - 150, 500), "3× HINGE BRACKET\nwelded to hub + stile", col=C_OUT, fw="bold", fs=6.5)
-    leader(ax, (cx + 178, 2000), (cx + 250, 2200), "LEAF PIVOT-EDGE STILE\n(2×2 RHS — TRAVELS with\nthe leaf, carries its plywood)", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, (cx, 1400), (cx - 275, 1500), "MOVING HUB TUBE (Ø116)\nrides the fixed Ø89 post\n(Sheet 11)", col=C_OUT, fs=6.5)
+    leader(ax, (cx + 118, 300), (cx - 250, 500), "3× HINGE BRACKET\nwelded to hub + stile", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, (cx + 178, 2000), (cx + 550, 2200), "LEAF PIVOT-EDGE STILE\n(2×2 RHS — TRAVELS with\nthe leaf, carries its plywood)", col=C_OUT, fw="bold", fs=6.5)
     ax.text(cx + 40, HGT + 130, "ELEVATION — 3 brackets up the hub", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
 
     # ── RIGHT: enlarged plan section of one bracket ──
@@ -2517,8 +2517,8 @@ def sheet15():
         ax.add_patch(Polygon([d(0, wy), d(0, wy + sgn * 9), d(11, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
     for wy, sgn in ((-22, 1), (22, -1)):                                                               # fillet welds bracket→jamb (both faces)
         ax.add_patch(Polygon([d(66, wy), d(66, wy + sgn * 9), d(56, wy)], closed=True, fc=C_OUT, ec="none", zorder=7))
-    leader(ax, d(-7, 30), (ox - 60, oy + 40 * s), "hub tube\nwall", col=C_OUT, fs=6.5)
-    leader(ax, d(4, -18), (ox - 150, oy - 6 * s), "fillet weld\nbracket→hub", col=C_OUT, fs=6.5)
+    leader(ax, d(-7, 30), (ox - 200, oy + 40 * s), "hub tube\nwall", col=C_OUT, fs=6.5)
+    leader(ax, d(4, -18), (ox - 200, oy - 6 * s), "fillet weld\nbracket→hub", col=C_OUT, fs=6.5)
     leader(ax, d(30, 20), (ox + 20 * s, oy + 80 * s), "bracket plate", col=C_OUT, fs=6.5)
     leader(ax, d(66, 20), (ox + 118 * s, oy + 78 * s), "fillet weld bracket→leaf stile\n(no bolts through the closed tube)", col=C_OUT, fw="bold", fs=6.5)
 
@@ -2529,13 +2529,13 @@ def sheet15():
         "as ONE weldment about the fixed post. The stile TRAVELS with the leaf",
         "and carries the pivot-corner plywood. No bolts pass through the closed",
         "stile (which can't be back-tightened); all-welded steel.",
-        ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1000, font=FONT)
+        ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1100, font=FONT)
 
     title_block(ax, "SHEET 15 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
                 scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
-                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.055)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet15.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)

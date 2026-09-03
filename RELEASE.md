@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — bay HDPE box stretched to the back cage beams + roof/floor rivets added.** The left/right
+  (near/far) HDPE side walls now run the full cage depth (to DRUM_CAGE_X1) so they cover the back cage
+  posts, and a full-perimeter blind-rivet row was added to the roof + floor HDPE tying them to the cage
+  rails — matching the side-panel fixing (Sheet 2).
+
 - **Lighttrap 3D — fixed leaf plywood split onto its own "Plywood" layer.** The Near-Leaf "Fixed left ply"
   was retagged off the steel Near-Leaf component onto a dedicated Plywood layer, so the "Steel · Pivot ·
   Frame · Cage" scene now drops the leaf ply while keeping the leaf U-frame + cam-latch strike plates.

@@ -127,6 +127,7 @@ SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)  # transport position of the 
 TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Processing Tray", "Walkways", "Film Plane Rails",
         "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin",
+        "Plywood",            # fixed leaf plywood — split off the leaf steel so scenes can drop it
         "Panel Swing",        # dynamic-component moving group (the swinging assembly)
         "Fan B",              # Fan B body/duct/ply band — taggable so scenes can hide it
         "Drum shell",         # Ø800 housing arcs + rotating C-shell — taggable for hiding
@@ -1506,6 +1507,18 @@ if ps_defn
   end
 end
 
+# ── Tag the FIXED leaf PLYWOOD ("Fixed left ply", inside the Near-Leaf steel component) onto its own
+#    "Plywood" layer, so the steel scene can drop the ply while keeping the leaf's U-frame + strikes. ──
+ply_l = model.layers["Plywood"]
+if ply_l
+  model.definitions.each do |d|
+    d.entities.grep(Sketchup::Group).each do |g|
+      nm = g.name.to_s
+      g.layer = ply_l if nm.include?("ply") && !nm.include?("mount band") && !nm.downcase.include?("apron")
+    end
+  end
+end
+
 # ── Camera + scenes (the swing is interactive; plus a "Labeled" callout scene) ──
 model.layers.each {{ |l| l.visible = true }}
 model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
@@ -1548,7 +1561,7 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 #    frame, drum cage + the far-wall/near-wall beams) by HIDING the HDPE skins, EPDM, Fan-B and the
 #    drum shell, so the framing reads clearly for review. (Hide-specific, so Layer0 steel stays on.) ──
 model.layers.each {{ |l| l.visible = true }}
-["Panel skin", "Fan B", "Drum shell", "Labels", "Drum Revolve", "Walkways", "Bottom Apron"].each {{ |n|
+["Panel skin", "Fan B", "Drum shell", "Labels", "Drum Revolve", "Walkways", "Bottom Apron", "Plywood"].each {{ |n|
   model.layers[n].visible = false if model.layers[n] }}
 sc_eye = Geom::Point3d.new(2600, 3300, 2000)     # 3/4 from the interior / far-Yd side
 sc_tgt = Geom::Point3d.new(-300, 1750, 1150)     # look at the far-wall / pivot region

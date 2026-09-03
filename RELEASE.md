@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lighttrap 3D — fixed leaf plywood split onto its own "Plywood" layer.** The Near-Leaf "Fixed left ply"
+  was retagged off the steel Near-Leaf component onto a dedicated Plywood layer, so the "Steel · Pivot ·
+  Frame · Cage" scene now drops the leaf ply while keeping the leaf U-frame + cam-latch strike plates.
+
 - **Lighttrap 3D — bay HDPE side walls capped at the top beams; steel scene decluttered.** The near/far
   bay walls now stop at the cage-top beams (LT_CAGE_TOP) instead of running up to the panel top; the roof
   HDPE sits on the top beams and rivets to them. The "Steel · Pivot · Frame · Cage" scene now also hides

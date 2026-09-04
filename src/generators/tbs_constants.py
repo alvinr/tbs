@@ -293,7 +293,7 @@ def cone_right(y):
 # EXCEPTION: an 18mm plywood band stays on the Fan B corner (bottom up to
 # PANEL_FAN_BAND_Z) for rigid fan/duct mounting + screw retention.
 # Corner zones (Yd=0–653 and Yd=1709–2362): thin framed panel, HDPE skins.
-# Center zone (Yd=653–1709): full RHS frame housing the Ø900 light-trap housing.
+# Center zone (Yd=653–1709): full RHS frame housing the Ø800 light-trap housing.
 # rev (2026-07-22): skin firmed to 1/8" (3.18mm) black HDPE — US Plastics 46684
 # (nearest imperial stock; all light-lock plastic now one weld-compatible material).
 PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — HDPE skin + 1"×1"×1/8" 6061 Al stiffener grid + HDPE skin on a 40mm frame (was a solid 3mm Al core; SS/weight audit 2026-07-29)
@@ -314,7 +314,7 @@ CONTAINER_CORRUGATION_DEPTH = 30   # mm — side-wall corrugation, conservative 
 
 # ── Rotating cargo-door panel — transport mode (rev 10: supersedes the B2 slide) ──
 # The panel + drum + drum-cage assembly ROTATES ~56° about a VERTICAL pivot — the
-# film-plane far-left upright, reused as a Ø89 CHS post — swinging the protruding Ø900
+# film-plane far-left upright, reused as a Ø89 CHS post — swinging the protruding Ø800
 # light-trap bay inboard of the door plane so the ISO cargo doors can close. The panel
 # is split into THREE zones: a FIXED LEFT strip (Yd0–PANEL_CUT_YD) + the SWINGING part
 # (PANEL_CUT_YD→PIVOT_YD) + a FIXED FAR strip (PIVOT_YD→C_WID). The two LEFT film rails
@@ -345,7 +345,7 @@ PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED
 # models have migrated to the swing; no consumer remains.
 
 # ── Left end zone — housed revolving-door light lock (rev 8) ─────────────────
-# Personnel light lock in the hinge-panel center zone: a FIXED Ø900 housing with
+# Personnel light lock in the hinge-panel center zone: a FIXED Ø800 housing with
 # two opposed 80° openings (exterior face + interior face onto the walkway) and a
 # single-opening C-shell drum (Ø864, ~Ø850 bore) rotating inside on SKF 6215
 # bearings. No internal fins — light-tight by geometry (openings <90°, 180° apart,
@@ -453,7 +453,7 @@ PIVOT_YD       = FP_Y + BRACE_RHS // 2       # 2287 — swing axis Yd
 FAR_STRIP_YD0  = PIVOT_YD                     # 2287 — fixed FAR strip spans PIVOT_YD..C_WID (~75mm);
                                              # ends the swinging panel AT the pivot so nothing swings
                                              # outboard of the door plane (#10)
-# Drum support CAGE — steel box around the Ø900 drum; swings with the assembly and carries
+# Drum support CAGE — steel box around the Ø800 drum; swings with the assembly and carries
 # the drum revolve bearings. Full depth (Z PANEL_FLOOR_GAP..DRUM_H_LT) to react the drum
 # overturning moment. Fine hardware (bearing Ø, stay plates/bolts, saddle/dowel dims) lives
 # in the lighttrap builder, cited from the design spec.

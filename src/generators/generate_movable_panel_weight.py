@@ -12,7 +12,7 @@ separately because it is engaged only when the leaf is swung in.
 
 This is the companion analysis to generate_weight_analysis.py (which carries the
 whole-camera inventory). The two reconcile: this file isolates the swing zone and
-deducts the Ø900 housing aperture from the center skins, so its sandwich figure is
+deducts the Ø800 housing aperture from the center skins, so its sandwich figure is
 lower than the whole-panel _panel_weight() there.
 
 Run:
@@ -47,7 +47,7 @@ def _rows():
     w_near = (k.PANEL_CORNER_YD_L - k.PANEL_CUT_YD) / 1000.0   # 180→653
     w_ctr  = k.PANEL_CENTER_W / 1000.0                          # 653→1709
     w_far  = (k.PIVOT_YD - k.PANEL_CORNER_YD_R) / 1000.0        # 1709→2287
-    aperture = math.pi * (k.LT_HOUSING_R / 1000.0) ** 2         # Ø900 opening
+    aperture = math.pi * (k.LT_HOUSING_R / 1000.0) ** 2         # Ø800 opening
 
     # ── A. Stepped framed panel (swing zone only) — rev11: 1/8" HDPE skins + Fan ply band ──
     ts = k.PANEL_SKIN_T / 1000.0                                # 0.00318 m HDPE skin
@@ -65,14 +65,14 @@ def _rows():
     frame_len = 2 * (w_ctr + H) + 4 * w_ctr
     add("A Sandwich", "Center RHS frame", f"2×2×0.120in SHS, {frame_len:.1f}m total",
         frame_len * RHS_KG_PER_M)
-    add("A Sandwich", "HDPE center skins (1/8\")", "2×1/8\" HDPE, Ø900 aperture deducted",
+    add("A Sandwich", "HDPE center skins (1/8\")", f"2×1/8\" HDPE, Ø{k.DRUM_D} aperture deducted",
         2 * (w_ctr * H - aperture) * ts * RHO_HDPE)
 
-    # ── B. Fixed Ø900 housing (bolts into panel, swings with it) ──
+    # ── B. Fixed Ø800 housing (bolts into panel, swings with it) ──
     open_frac = k.LT_OPENING_DEG / 360.0
     Hd = (k.DRUM_H_LT - k.PANEL_FLOOR_GAP) / 1000.0            # suspended height ≈ 2.12 m
     house_circ = math.pi * (2 * k.LT_HOUSING_R / 1000.0)
-    add("B Housing", "HDPE housing shell", f"Ø900×3/16\", two {k.LT_OPENING_DEG}° openings",
+    add("B Housing", "HDPE housing shell", f"Ø{k.DRUM_D}×3/16\", two {k.LT_OPENING_DEG}° openings",
         house_circ * (1 - 2 * open_frac) * Hd * (k.LT_HOUSING_T / 1000.0) * RHO_HDPE)
     add("B Housing", "Steel flange/hub + bearing mounts", "bolt inserts, isolation", 6.0)
 
@@ -111,7 +111,7 @@ def _rows():
     xsec = 0.020 * 0.020
     perim = 2 * H + 2 * (w_near + w_ctr + w_far)
     add("F Seals", "Perimeter EPDM gasket", f"20mm, {perim:.1f}m", perim * xsec * RHO_EPDM)
-    add("F Seals", "Housing-surround EPDM ring", "20mm, Ø900", house_circ * xsec * RHO_EPDM)
+    add("F Seals", "Housing-surround EPDM ring", f"20mm, Ø{k.DRUM_D}", house_circ * xsec * RHO_EPDM)
     add("F Seals", "Drum wipers + felt/brush", "top/bottom + opening edges", 2.0)
 
     # ── G. Latches ──

@@ -33,6 +33,13 @@ file** — a release must not ship without a changelog entry:
   sheets (8, 9, 11, 12, 13, 14, 15, 16) in the report, so all 16 sheets are now shown. Fixed stale
   drum-height arithmetic in two Sheet 3 comments.
 
+- **Ø900→Ø800 stale-label sweep (round 2).** Cleared the last Ø900/R450 references left by the 2026-08-26
+  drum resize across the weight, movable-panel-weight, light-trap, and film-plane generators plus the
+  `tbs_constants` design comments — the visible ones (the light-trap housing cut-sheet note "Roll to Ø800
+  (R400)" and rim-angle radius, the movable-panel weight-row descriptions) now reference `DRUM_D`/`LT_HOUSING_R`
+  so they can't drift again; the rev-history lines that record the Ø900→Ø800 change are kept. Weight figures
+  unchanged (label text only).
+
 ## [0.10] — 2026-09-04
 
 - **New blueprint set — the hinged light-trap panel (cargo-door end).** A 16-sheet fabrication set for the

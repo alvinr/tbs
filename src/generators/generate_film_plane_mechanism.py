@@ -353,8 +353,8 @@ def sheet1():
         ax.plot([L+50, L+180], [ly, ly], color=col, lw=2.0, ls=ls, zorder=10)
 
     # ── DRUM FOOTPRINT — ghost circle for light-trap drum ─────────────────────
-    # Drum is a vertical cylinder at X=DRUM_CX=0, Yd=DRUM_CY=1181, radius=DRUM_R=450
-    # (rev8: Ø900 housed door). In this plan view it appears as a circle at (DRUM_CX, DRUM_CY).
+    # Drum is a vertical cylinder at X=DRUM_CX (=-420), Yd=DRUM_CY (=1181), radius=DRUM_R (=400).
+    # In this plan view it appears as a circle at (DRUM_CX, DRUM_CY).
     C_DRUM = "#C8A860"   # amber-gold ghost for drum footprint
     ax.add_patch(Circle((DRUM_CX, DRUM_CY), DRUM_R,
                         fc=C_DRUM, ec=C_DRUM, lw=1.2, alpha=0.18, zorder=4,

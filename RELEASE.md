@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Light-lock verification moved from the hinged-panel set to the light-trap set.** The
+  revolving-drum light-lock proof (person-fit + light-tight-at-every-rotation + verdict) now lives on
+  **Light-Trap Sheet 7**, which adopted the hinged-panel Sheet 5 design and merged its own
+  seal-fabrication notes / legend / cross-section refs. The hinged-panel set dropped its Sheet 5 and
+  **renumbered 6→5 … 17→16 (now 16 sheets, "OF 16")** — functions, PNGs, all internal cross-references,
+  the gallery, `hinged-panel-report.md`, and `publish.sh`/`setup_docs.py` registrations updated to match;
+  the report's §3.6 verification now embeds `lighttrap-sheet7.png`.
+
 - **Hinged-panel generator — retired-HGR20-slide archaeology removed.** Sheet 1 dropped the dead
   `C_RAIL`/`C_CARR`/`RAIL_H`/`RAIL_LEN`/`HINGE_YS`/`HINGE_L` vars + "RETIRED" history comments (no
   visual change); Sheet 3 dropped the faint "drawn for reference" retired floor/ceiling slide rails +
@@ -137,7 +145,7 @@ file** — a release must not ship without a changelog entry:
 
 - **Ventilation — new Sheet 3: Fan B mount (plywood panel, tee-nut fixing).** The fan schematic (Sheet 2)
   showed BOTH fans as identical wall-mounted units, but Fan B is on the SWINGING cargo-door panel and
-  bolts to its 18mm PT plywood band via 2× M8 into captive tee-nuts (hingepanel Sheet 14), not the
+  bolts to its 18mm PT plywood band via 2× M8 into captive tee-nuts (hingepanel Sheet 13), not the
   container wall. Added a dedicated **Fan B mount plan** (same fan body + baffle duct, plywood/tee-nut
   fixing) and corrected Sheet 2 + the report so the "identical" claim now scopes to the fan body only
   (Fan A = wall/M10, Fan B = plywood/tee-nut). Registered across deps/publish/setup/gallery/report.

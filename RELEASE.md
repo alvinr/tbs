@@ -30,8 +30,12 @@ file** — a release must not ship without a changelog entry:
   carriage blocks + the "(former HGR20 slide rails — RETIRED)" label; Sheet 2 (plan) dropped the red
   HGR20 rail + 60×60 carriage beam and the "no slide rail" negation labels, keeping the current brush
   seals + pivot post (house style: no drawn design archaeology — the panel swings about the Ø89 pivot).
-  Also removed the `leader as _leader_shared` import alias and inlined Sheet 3's `dlbl`/`clbl`/`ddlbl`
-  label helpers to direct `leader()` calls.
+  Also swept the rest of the generator of design-history archaeology — `revN` tags and old-vs-new
+  prose ("the former solid core is replaced by…", "was 18mm ply", "Ø750/4-fin drum was replaced")
+  stripped from comments and visible titles (Sheet 2 "PUNCH-OUT BAY", Sheet 4 "ROTATION TRANSPORT",
+  Sheet 5 light-lock title) so they describe the current design only. Removed the
+  `leader as _leader_shared` import alias and inlined Sheet 3's `dlbl`/`clbl`/`ddlbl` label helpers to
+  direct `leader()` calls.
 
 - **Hinged-panel Sheet 12 — cross-reference note is now a bordered note block.** The plain centered
   "plywood→frame tab/T-nut → SHEET 14 · Fan-B mount → Ventilation Sheet 3" text is now a titled

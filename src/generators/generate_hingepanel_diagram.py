@@ -1319,16 +1319,12 @@ def sheet3():
                offset=22, fs=5.8, right=False, perpendicular=True, color=C_DIM, font=FONT)
 
     # callout labels (right side, leaders pointing into the detail)
-    def dlbl(target, ty, text):
-        _leader_shared(ax, target[0], target[1], DX(92), ty, text,
-                       fs=6.0, color=C_DIM, ha="left", va="center",
-                       arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    dlbl((DX(20), DY(165)), DY(155), "Cam latch compresses panel\nonto seal (release to swing)")
-    dlbl((DX(20), DY(120)), DY(128), "Panel bottom edge\n(40 mm corner zone)")
-    dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
-    dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
-    dlbl((DX(-40), DY(22)), DY(45), "Fixed door-frame\nthreshold (50×50 RHS)")
-    dlbl((DX(74), DY(28)), DY(12), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance")
+    _leader_shared(ax, DX(20), DY(165), DX(92), DY(155), "Cam latch compresses panel\nonto seal (release to swing)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DX(20), DY(120), DX(92), DY(128), "Panel bottom edge\n(40 mm corner zone)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DX(-10), DY(100), DX(92), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DX(-26), DY(64), DX(92), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DX(-40), DY(22), DX(92), DY(45), "Fixed door-frame\nthreshold (50×50 RHS)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DX(74), DY(28), DX(92), DY(12), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL C — Panel top light seal (enlarged), the mirror of Detail B.
@@ -1382,16 +1378,12 @@ def sheet3():
     ax.annotate("", xy=(CX(2), CY(-58)), xytext=(CX(34), CY(-58)),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
 
-    def clbl(target, ty, text):
-        _leader_shared(ax, target[0], target[1], CX(92), ty, text,
-                       fs=6.0, color=C_DIM, ha="left", va="center",
-                       arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    clbl((CX(-40), CY(64)), CY(82), "Frame top rail (50×50 RHS)")
-    clbl((CX(30), CY(55)), CY(68), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)")
-    clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")
-    clbl((CX(-10), CY(-20)), CY(-10), "20 mm EPDM — panel top\nedge seals on lip")
-    clbl((CX(20), CY(-70)), CY(-58), "Upper cam latch compresses\npanel onto seal")
-    clbl((CX(20), CY(-95)), CY(-85), "Panel top edge")
+    _leader_shared(ax, CX(-40), CY(64), CX(92), CY(82), "Frame top rail (50×50 RHS)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, CX(30), CY(55), CX(92), CY(68), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, CX(-26), CY(30), CX(92), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, CX(-10), CY(-20), CX(92), CY(-10), "20 mm EPDM — panel top\nedge seals on lip", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, CX(20), CY(-70), CX(92), CY(-58), "Upper cam latch compresses\npanel onto seal", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, CX(20), CY(-95), CX(92), CY(-85), "Panel top edge", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL D — Vertical CUT seal (plan section at the fixed↔swinging joint, Yd180
@@ -1428,13 +1420,9 @@ def sheet3():
     ax.add_patch(Rectangle((DDX(-3), DDY(-7)), k * 43, k * 14, fc=C_GASKT, ec=C_OUT,
                            lw=1.0, zorder=24))                                  # EPDM cut seal
     ax.plot([DDX(0), DDX(0)], [DDY(-52), DDY(52)], color=C_CL, lw=0.8, ls=(0, (6, 4)), zorder=20)
-    def ddlbl(target, ty, text):
-        _leader_shared(ax, target[0], target[1], DDX(70), ty, text,
-                       fs=6.0, color=C_DIM, ha="left", va="center",
-                       arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    ddlbl((DDX(20), DDY(-30)), DDY(-40), "FIXED strip edge\n(bolted to the door frame)")
-    ddlbl((DDX(8), DDY(0)), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut")
-    ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")
+    _leader_shared(ax, DDX(20), DDY(-30), DDX(70), DDY(-40), "FIXED strip edge\n(bolted to the door frame)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DDX(8), DDY(0), DDX(70), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    _leader_shared(ax, DDX(20), DDY(30), DDX(70), DDY(35), "SWINGING panel edge\n(joint opens as it swings)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 17",

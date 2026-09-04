@@ -16,7 +16,7 @@ Sheet 2 — Plan cross-section (1:20 equal aspect):
 Sheet 3 — Drum vertical section:
   Drum elevation showing walking height, bearings, person silhouette.
 
-Sheet 4 — Rotating transport system (rev10, supersedes the slide):
+Sheet 4 — Rotating transport system:
   the split panel + drum swing 56° about the vertical pivot post (the film
   far-left upright); camera (shut) vs swung (transport) positions, removable
   left film rails, top+bottom wall stays.
@@ -43,21 +43,21 @@ C_DIM   = "#404040"   # dimensions / annotation text
 C_ALUM  = "#C8D8E8"   # aluminum (corner stiffener rib)
 C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # EPDM gasket fill
-C_WOOD    = "#C9A36B"  # plywood — Fan B mount band (rev11 material legend)
-C_PLASTIC = "#6E8CA0"  # 1/8″ HDPE plastic sheet — panel skins + B2 bay (rev11)
-C_HOLLOW  = "#EEEEE8"  # framed hollow core between the HDPE skins (rev11)
+C_WOOD    = "#C9A36B"  # plywood — Fan B mount band
+C_PLASTIC = "#6E8CA0"  # 1/8″ HDPE plastic sheet — panel skins + B2 bay
+C_HOLLOW  = "#EEEEE8"  # framed hollow core between the HDPE skins
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
 FONT    = {"fontfamily": "monospace"}
 
 # ── Panel dimensions (mm) ─────────────────────────────────────────────────────
 PW = 2362   # panel width  (= container interior short-axis width)
 PH = 2388   # panel height (= container interior height)
-PT = 120    # panel overall thickness (2×2×0.120in steel frame + 18mm ply each face)
+PT = 120    # panel overall thickness (2×2×0.120in steel frame + 1/8″ HDPE skin each face)
 
-# Light-trap housing (rev8: housed revolving door — see tbs_constants)
-DRUM_D  = LT_HOUSING_D  # = 800mm fixed housing outer diameter (Ø900→Ø800 resize)
+# Light-trap housing (housed revolving door — see tbs_constants)
+DRUM_D  = LT_HOUSING_D  # = 800mm fixed housing outer diameter
 DRUM_R  = DRUM_D / 2   # = 400mm housing radius
-DRUM_H  = DRUM_H_LT     # housing/drum height (floor → top bearing, mm) — single-sourced (was hardcoded 2200)
+DRUM_H  = DRUM_H_LT     # housing/drum height (floor → top bearing, mm) — single-sourced
 DRUM_CX = PW / 2        # light-lock center X in panel (centered horizontally)
 DRUM_CY = DRUM_H / 2   # light-lock center Y
 
@@ -108,7 +108,7 @@ def sheet1():
 
     # Outer steel frame (50mm wide) — stepped bottom
     ax.add_patch(Polygon(sbot(0, PW, PH, 0), closed=True, fc=C_STEEL, ec=C_OUT, lw=2.5, zorder=2))
-    # Skin area (inset of frame): rev11 — 1/8″ HDPE plastic sheet (C_PLASTIC), stepped bottom
+    # Skin area (inset of frame): 1/8″ HDPE plastic sheet (C_PLASTIC), stepped bottom
     FR = 55  # visible frame width at face
     ax.add_patch(Polygon(sbot(FR, PW - FR, PH - FR, FR), closed=True,
                          fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=3))
@@ -130,9 +130,9 @@ def sheet1():
                        zorder=5)
     ax.add_patch(epdm)
 
-    # ── Stepped profile zone transitions (rev 4) ────────────────────────────
+    # ── Stepped profile zone transitions ────────────────────────────────────
     # Corner zones: 40mm thick.  Center zone: 120mm thick (drum housing).
-    STEP_YD_L = PANEL_CORNER_YD_L   # 653 (rev8 widened)
+    STEP_YD_L = PANEL_CORNER_YD_L   # 653
     STEP_YD_R = PANEL_CORNER_YD_R  # 1709
     for sx in [STEP_YD_L, STEP_YD_R]:
         ax.plot([sx, sx], [0, PH], color="#C04010", lw=1.2,
@@ -150,7 +150,7 @@ def sheet1():
     # Step dimension
     draw_dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
           f"{STEP_YD_R - STEP_YD_L}mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20, fs=7, font=FONT)
-    # ── Swing split (rev10): fixed-left / swinging / fixed-far + the vertical CUT lines ──
+    # ── Swing split: fixed-left / swinging / fixed-far + the vertical CUT lines ──
     # The fixed strips are bolted to the door FRAME (hatched); the swinging panel butts them
     # at the cut lines. Cut lines drawn bold and on top so they read at both panel edges.
     from tbs_constants import PANEL_CUT_YD as _CUT, FAR_STRIP_YD0 as _FAR
@@ -426,7 +426,7 @@ def sheet2():
     # ── View window — full panel width + margins ────────────────────────────
     # Corner zone thicknesses
     CORNER_T = 40   # corner zone panel thickness
-    STEP_YD_L = PANEL_CORNER_YD_L   # 653 (rev8 widened)
+    STEP_YD_L = PANEL_CORNER_YD_L   # 653
     STEP_YD_R = PANEL_CORNER_YD_R  # 1709
 
     PAD_X  = 450   # horizontal margin each side (room for rails + labels)
@@ -503,7 +503,7 @@ def sheet2():
             _blind_rivet(ax, cxr, ry, ang, 16, d=6)
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, CAGE_YB), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
-    # FRONT-face HDPE blind-riveted to the front cage frame (was missing — the SIDE skins have theirs above).
+    # FRONT-face HDPE blind-riveted to the front cage frame.
     # Vertical-axis glyph, factory head FLUSH on the exterior (−Y) surface (cz = BAY_FRONT_X + grip/2); SPREAD
     # along the wall, clear of the side-skin corner rivets. Smaller d so they don't crowd the corners.
     for fx in (DRUM_CAGE_YD_L + 170, (DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, DRUM_CAGE_YD_R - 170):
@@ -530,15 +530,14 @@ def sheet2():
     ax.add_patch(Circle(dL(47, 39), 3.0, fc="#C9CCD2", ec=C_OUT, lw=0.9, zorder=11))                            # set (bulbed) tail inside the post
     leader(ax, dL(35, 39), dL(12, 6), "1/8″ HDPE skin\nflat on the post\noutside face", col=C_OUT, fw="bold", fs=6.0)
     leader(ax, dL(44, 39), dL(70, 58), "blind rivet — straight\nthrough the skin into\nthe post outer wall", col=C_OUT, fw="bold", fs=6.0)
-    ax.text((STEP_YD_L + STEP_YD_R) / 2, CAGE_YB - 110, "PUNCH-OUT BAY (rev9)",
+    ax.text((STEP_YD_L + STEP_YD_R) / 2, CAGE_YB - 110, "PUNCH-OUT BAY",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
 
     # ── CORNER ZONES (40mm envelope, Yd=0→653 and Yd=1709→2362) ──────────────
-    # rev11: 1/8″ HDPE skin + framed HOLLOW core (Al stiffener rib grid) + 1/8″ HDPE skin.
-    # The 40mm envelope is unchanged (frame depth). SS/weight audit 2026-07-29: the former
-    # solid 3mm Al core is replaced by a 1"×1"×1/8" 6061 Al angle rib grid (redundant plate
-    # dropped) — one VERTICAL rib per corner shows in this horizontal cut as an angle section.
+    # 1/8″ HDPE skin + framed HOLLOW core + 1/8″ HDPE skin, in a 40mm envelope (frame depth).
+    # The core is a 1"×1"×1/8" 6061 Al angle rib grid — one VERTICAL rib per corner shows in
+    # this horizontal cut as an angle section.
     CORN_SKIN  = PANEL_SKIN_T                     # 1/8″ HDPE skin each face
     RIB        = 25                              # 1"×1"×1/8" Al stiffener rib (angle leg)
     CORN_Y_OUT = PANEL_EXT                       # panel exterior (seal landing)
@@ -649,7 +648,7 @@ def sheet2():
     drum_bg = Circle((D_CX, D_CY), DR, fc=BG, ec="none", zorder=7)
     ax.add_patch(drum_bg)
 
-    # ── Housed revolving-door light lock (rev8) ──────────────────────────────
+    # ── Housed revolving-door light lock ─────────────────────────────────────
     # Fixed Ø800 housing (two 80° openings: exterior=down / interior=up) + a
     # single-opening C-shell drum (~Ø850 bore) rotating inside it. No fins.
     def _arc(cx, cy, r, gaps, lw, color, z=9):
@@ -825,7 +824,7 @@ def sheet2():
             ha="center", va="top", fontsize=6, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Material legend (rev11 wood/plastic differentiation) ──────────────────
+    # ── Material legend ───────────────────────────────────────────────────────
     draw_legend(ax, [
         (C_PLASTIC, "1/8″ HDPE skin + B2 bay"),
         (C_WOOD, "18mm ply — Fan B mount band"),
@@ -860,7 +859,7 @@ def sheet2():
 def sheet3():
     # ── Key dimensions (re-use Sheet 2 depth constants) ──────────────────────
     from tbs_constants import WALL_T    # container end-wall steel thickness
-    PLY_T   = PANEL_SKIN_T   # rev11: 1/8″ HDPE skin each face (was 18mm ply); envelope kept via FRAME_T
+    PLY_T   = PANEL_SKIN_T   # 1/8″ HDPE skin each face; envelope set via FRAME_T
     PT      = 120   # panel overall thickness (envelope unchanged)
     FRAME_T = PT - 2 * PLY_T   # = 112mm framed core
 
@@ -994,7 +993,7 @@ def sheet3():
     # In this Section A-A view (looking along Yd), the near and far walkways
     # project to the same position. They cantilever from the container side
     # walls, running along X. Show as cross-section on the interior side.
-    # rev10: at the door end the walkway is REMOVABLE (left walkway + door-end near-deck
+    # At the door end the walkway is REMOVABLE (left walkway + door-end near-deck
     # section lift out for the swing) — shown in AMBER to flag it carries no swing interference.
     C_WALKWAY = "#C8902A"          # amber — removable
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (top of bracket arm)
@@ -1060,11 +1059,10 @@ def sheet3():
     ax.plot([D_DEPTH_R - DRUM_WALL_T, D_DEPTH_R - DRUM_WALL_T],
             [H_DRUM_BOT, H_DRUM_TOP], color=C_DIM, lw=0.6, ls="--", zorder=6)
 
-    # ── rev8: NO internal fins — single-opening C-shell + fixed housing ──────
-    # The Ø750 / 4-baffle drum was replaced (rev8) by a fixed Ø800 housing with a
-    # single-opening C-shell drum (no fins); the whole ~Ø850 bore is clear. In
-    # this elevation the bore reads as open space (light-tightness is by the
-    # housing geometry — see Sheet 2 plan and Sheet 5).
+    # ── NO internal fins — single-opening C-shell + fixed housing ────────────
+    # A fixed Ø800 housing with a single-opening C-shell drum (no fins); the whole
+    # ~Ø850 bore is clear. In this elevation the bore reads as open space
+    # (light-tightness is by the housing geometry — see Sheet 2 plan and Sheet 5).
     ax.text(D_CX_DEPTH / 2 - 150, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
             "Single-opening C-shell\n~Ø850 clear bore\nFlat black interior",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
@@ -1366,11 +1364,9 @@ def sheet3():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 5  —  Drum access & light-tightness analysis (design review)
-# Shows why the rev8 housed door PASSES the two questions the old
-# Ø750 / 4-fin drum failed:
+# Shows how the housed door PASSES the two questions:
 #   A. Can a person fit through the opening?
 #   B. As the drum rotates, can daylight enter the container?
-# (The 4-fin drum failed both; the housed door passes both.)
 # ═════════════════════════════════════════════════════════════════════════════
 
 def sheet5():
@@ -1407,7 +1403,7 @@ def sheet5():
             ax.plot([x + s * 1.2 * np.cos(r), x + s * 1.7 * np.cos(r)],
                     [y + s * 1.2 * np.sin(r), y + s * 1.7 * np.sin(r)], color=AMBER, lw=1.3, zorder=8)
 
-    ax.text(1000, 1415, "REVOLVING-DOOR LIGHT LOCK (rev 8) — PASSES BOTH TESTS",
+    ax.text(1000, 1415, "REVOLVING-DOOR LIGHT LOCK — PASSES BOTH TESTS",
             ha="center", fontsize=15, fontweight="bold", color=C_OUT, **FONT)
     ax.text(1000, 1378, "Fixed Ø800 housing (two 80° openings, 180° apart) + single-opening C-shell drum",
             ha="center", fontsize=9, color=GREEN, **FONT)
@@ -1461,14 +1457,14 @@ def sheet5():
     for i, line in enumerate([
         "The two housing openings are 80° wide and 180° apart, so the 80° drum opening can never reach both at once.",
         "The housing's solid wall always covers the opening the drum isn't aligned with — light enters the bore but",
-        "never exits to the interior. A fixed housing (the panel aperture is no longer relied on as the seal)",
+        "never exits to the interior. A fixed housing (the seal is the housing geometry, not the panel aperture)",
         "does the work.",
     ]):
         ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
     title_block(ax, "SHEET 5 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
+                subtitle="REVOLVING-DOOR LIGHT LOCK — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
 
@@ -1559,7 +1555,7 @@ def sheet4():
     ax.text(-280, 2640, "SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
             fontsize=13, fontweight="bold", color=C_OUT, **FONT)
     notes = [
-        "ROTATION TRANSPORT (rev10):",
+        "ROTATION TRANSPORT:",
         "The panel + drum SWING ~56° about the vertical",
         "pivot (the film far-left post), pulling the punch-",
         "out bay inboard of the door plane so the cargo",
@@ -2631,7 +2627,7 @@ def sheet16():
 
     # ── DRUM-CAGE lower beam — SWEPT transport position (ghosted): the panel+drum swing across the
     #    container, so the cage bottom (Z130) passes over the FIXED floor-leg posts (Z115) + tray (Z70).
-    #    The floor gap was raised to 217 so LT_CAGE_BOT clears the tallest (the posts) by POST_CLR. ──
+    #    The floor gap is 217 so LT_CAGE_BOT clears the tallest (the posts) by POST_CLR. ──
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, LT_CAGE_BOT), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L,
                            LT_BBEAM_Z1 - LT_CAGE_BOT, fc="#E0C8C8", ec="#803030", lw=1.4, ls=(0, (5, 3)), zorder=8))
     ax.text((DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, (LT_CAGE_BOT + LT_BBEAM_Z1) / 2,
@@ -2719,7 +2715,7 @@ def sheet17():
     ax.set_xlim(-130, WID + 500)
     ax.set_ylim(-170, 920)
 
-    ax.text(WID / 2, 878, "FOLD-DOWN LIGHT APRON — closes the under-leaf gap opened by the 217mm floor-gap raise",
+    ax.text(WID / 2, 878, "FOLD-DOWN LIGHT APRON — closes the under-leaf gap at the 217mm floor gap",
             ha="center", fontsize=12, fontweight="bold", color=C_OUT, **FONT)
 
     # ══ ELEVATION (Yd–Z) — door-bottom layout, interior face (top band) ══

@@ -1320,11 +1320,9 @@ def sheet3():
 
     # callout labels (right side, leaders pointing into the detail)
     def dlbl(target, ty, text):
-        tx = DX(92)
-        ax.annotate("", xy=target, xytext=(tx - 6, ty),
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
-                                    shrinkA=1, shrinkB=1), zorder=24)
-        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
+        _leader_shared(ax, target[0], target[1], DX(92), ty, text,
+                       fs=6.0, color=C_DIM, ha="left", va="center",
+                       arrow_style="-", lw=0.8, zorder=24, font=FONT)
     dlbl((DX(20), DY(165)), DY(155), "Cam latch compresses panel\nonto seal (release to swing)")
     dlbl((DX(20), DY(120)), DY(128), "Panel bottom edge\n(40 mm corner zone)")
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
@@ -1431,10 +1429,9 @@ def sheet3():
                            lw=1.0, zorder=24))                                  # EPDM cut seal
     ax.plot([DDX(0), DDX(0)], [DDY(-52), DDY(52)], color=C_CL, lw=0.8, ls=(0, (6, 4)), zorder=20)
     def ddlbl(target, ty, text):
-        tx = DDX(70)
-        ax.annotate("", xy=target, xytext=(tx - 6, ty),
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8, shrinkA=1, shrinkB=1), zorder=24)
-        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
+        _leader_shared(ax, target[0], target[1], DDX(70), ty, text,
+                       fs=6.0, color=C_DIM, ha="left", va="center",
+                       arrow_style="-", lw=0.8, zorder=24, font=FONT)
     ddlbl((DDX(20), DDY(-30)), DDY(-40), "FIXED strip edge\n(bolted to the door frame)")
     ddlbl((DDX(8), DDY(0)), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut")
     ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")

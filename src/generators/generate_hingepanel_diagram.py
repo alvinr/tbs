@@ -1877,7 +1877,7 @@ def sheet7():
 #   Front elevation of the swinging panel's 2×2×0.120in steel frame: perimeter
 #   (stile + pivot-side verticals, top/bottom rails), the two center-zone jambs +
 #   drum header/sill, and the drum cage ENVELOPE (shown, detailed in Light-Trap
-#   Sheet 7). Detail bubbles route to Sheets 10 (pivot), 11 (plywood/Fan-B), 12
+#   Sheet 8). Detail bubbles route to Sheets 10 (pivot), 11 (plywood/Fan-B), 12
 #   (frame hardware). Member schedule keyed to the frame.
 # ═══════════════════════════════════════════════════════════════════════════════
 def _frame_ga(mirror=False):
@@ -1948,7 +1948,7 @@ def _frame_ga(mirror=False):
 
     # NOTE: the Fan-B plywood band and the drum/cage envelope are intentionally NOT drawn here —
     # this sheet is the STEEL FRAME general arrangement only. The drum + cage are detailed on
-    # Light-Trap Sheet 7; the Fan-B ply on Sheet 11. The center zone is left open to read as frame.
+    # Light-Trap Sheet 8; the Fan-B ply on Sheet 11. The center zone is left open to read as frame.
 
     # ── swinging-frame perimeter + internal members ──
     vbar(yL, STEP, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 12)", (PH * 0.78, (-260, PH * 0.86)))  # bottom stepped up

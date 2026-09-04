@@ -1263,6 +1263,12 @@ def fixed_bottom_geom():
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12
         parts.append(ruby_box("Baffle brush bristle", 8, yc, baf_top, 2, 2, LT_CAGE_BOT - baf_top, color="#141414"))
+    # FIXED hinge-line light seal per fold-down apron (Sheet 16 Detail F): a 3mm steel LAPPING BOARD off the
+    # sill standing over the piano hinge on the EXTERIOR side (X15..18, outboard of the apron's X28 face) +
+    # a 10mm closed-cell FOAM strip the apron compresses when UP. Fixed to the threshold — does NOT fold.
+    for _y0, _y1 in ((0, APRON_IN_L), (APRON_IN_R, C_WID - APRON_FIX_W)):   # near + far apron Yd spans
+        parts.append(ruby_box("Apron hinge lapping board (fixed steel baffle)", 15, _y0, 0, 3, _y1 - _y0, 62, color=C_RAIL))
+        parts.append(ruby_box("Apron hinge foam seal (compressed when UP)", 18, _y0, 14, 10, _y1 - _y0, 44, color="#6E7478"))
     return '\n'.join(parts)
 
 

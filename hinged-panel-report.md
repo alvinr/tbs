@@ -182,8 +182,8 @@ interface stays single-sourced.
 | Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
 | Drum (rotating) | Ø764mm C-shell, single 80° opening, **~Ø758mm clear bore** |
 | Passage width | **~487mm** (the 80° opening) — single operator, sideways entry |
-| Height | Cap top at Z=2,100mm AFF (cage/beam top 2,217mm); see [Light Trap Selection](light-trap-selection.md) §3 |
-| Mounting | **Carried with the panel** — panel bottom rides at Z=217 (217mm floor gap); the drum-cage underside hangs to Z130, clearing the fixed Z115 floor-leg walkway posts + Z70 tray rim as it swings. Operator steps up from the Z140 walkway deck into the drum. |
+| Height | Cap top at 2,100mm AFF (cage/beam top 2,217mm); see [Light Trap Selection](light-trap-selection.md) §3 |
+| Mounting | **Carried with the panel** — panel bottom rides at the 217mm floor gap; the drum-cage underside hangs clear of the fixed floor-leg walkway posts + tray rim as it swings. Operator steps up from the walkway deck into the drum. |
 | Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 1/8" HDPE drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin; opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
@@ -330,7 +330,7 @@ Two narrow strips stay fixed at the door plane and do **not** swing: the near st
 and the far strip. The cargo doors close outboard of the
 fixed near strip.
 
-To let the swinging cage cross the X=260mm film-plane rail line, the **two left film rails
+To let the swinging cage cross the film-plane rail line, the **two left film rails
 (top-left + bottom-left) lift out of their drop-in saddles** and the **left walkway + door-end
 near-deck section lift out** before the swing; all are re-seated to datum afterward.
 
@@ -357,14 +357,14 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 The panel + drum cage ride at a **217mm floor gap**, carried by the pivot post on its
 thrust collar + hub bearings. The gap is set by the **transport-swing clearance**: as the
-panel + drum swing across the container, the drum-cage underside — which hangs to **Z130**,
-below the Z217 panel bottom — must clear the tallest fixed obstacle in the swept path. That
-is the **LEFT walkway's floor-leg cantilever posts (top Z115, they stay bolted during the
-swing)** — taller than the fixed processing-tray rim (Z70). Raising the floor gap **130 → 217**
-puts the cage underside at Z140, clearing the Z115 posts by **25mm** (and the Z70 tray rim by 70mm; the bottom axle beam is shallowed 50→40mm to buy 10mm of that from the lower hub without raising the drum) —
-60mm), at a cost of 87mm drum interior (1970 → 1883, still clearing a 1,780mm operator by 103mm).
+panel + drum swing across the container, the drum-cage underside must clear the tallest fixed
+obstacle in the swept path — the **LEFT walkway's floor-leg cantilever posts**, which stay bolted
+during the swing and stand taller than the fixed processing-tray rim. The 217mm floor gap clears
+the posts by **25mm** (and the tray rim by 70mm; the bottom axle beam uses a shallower section to
+win 10mm of that from the lower hub without raising the drum), at a cost of 87mm of drum interior —
+still clearing a 1,780mm operator by 103mm.
 
-The swing is about a **vertical** pivot, so the cage underside stays at Z130 throughout — this
+The swing is about a **vertical** pivot, so the cage underside stays at the same height throughout — this
 is what makes the deep Ø800 housing transport-feasible without a slide; a floor-mounted housing
 would have fouled the tray. The 217mm floor gap is closed in the operational position by the
 **fold-down light aprons** (§6, **Sheet 16**). The clearance is drawn on **Sheet 15**
@@ -382,15 +382,14 @@ finalized.
 The rotation transport + swing clearance vs the film-plane left mechanism is shown in
 **Sheet 4** (above): the panel + drum swing ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about the pivot, pulling the bay inboard of
 the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm); the two left film rails are struck (removable) so the
-swinging cage transitions the X=260 rail plane, then re-seat to the film datum.
+swinging cage transitions the film-plane rail plane, then re-seat to the film datum.
 
-The swing carries the drum cage through **X=260**, where the film-plane mechanism's
+The swing carries the drum cage through the **film-plane rail line**, where the film-plane mechanism's
 left edge sits, so the **two left film rails (TL + BL) must be struck before the swing**
 and re-seated after (the tapered dowels return the film datum). The muslin screen must
 be struck regardless — the fragile screen cannot travel mounted. The swing **clears the
-door-end floor-leg posts at Z**: the cage underside at Z=130 passes over the Z=115
-post tops (they stay bolted), so **no floor-leg post is demounted** (superseding the old
-slide, which swept past them at floor level and required striking them).
+door-end floor-leg posts**: the cage underside passes over the post tops (they stay bolted),
+so **no floor-leg post is demounted**.
 
 Order of operations (single person, ~10 min) — see the [Operating Manual](operating-manual.md) §5.5:
 
@@ -435,11 +434,11 @@ position. Five light ingress paths are sealed:
 
 | # | Light path | Seal method |
 |---|-----------|-------------|
-| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 2 × McMaster 1619A74 lift-and-turn cam latches (opening edge, top + bottom) against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
+| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 2 × McMaster 1619A74 lift-and-turn cam latches (opening edge, top + bottom) against the fixed door frame. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
 | 3 | Panel bottom → 217mm floor gap | **Fold-down light aprons** (Sheet 16) — two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one minus a 200mm fixed pivot stub) + a fixed center baffle under the drum bay, closing the 217mm gap under the raised leaf. Foam-strip perimeter seal, flat-black interior. Stand up + seal in operation; release + fold flat into the container for the swing. Joint seal (foam + a lapping board off the hinge frame) TBD. |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
-| 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2,100), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
+| 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light

@@ -2666,7 +2666,7 @@ def sheet16():
     draw_dim_v(ax, d0 - 28, THR, BAF_TOP, f"{int(BAF_TOP - THR)}mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
-    e0, ebz, S = 690, 150, 5.0
+    e0, ebz, S = 775, 150, 5.0
     def eE(x, z): return (e0 + x * S, ebz + z * S)
     T, xc, BL = 12, 16, 30          # 12mm ply · scarf start · panel run each side
     ax.text(e0 + 33 * S, 400, "DETAIL E — plywood↔plywood chamfer joint (TYP)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)

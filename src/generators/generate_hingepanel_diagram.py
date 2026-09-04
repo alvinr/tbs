@@ -849,19 +849,19 @@ def sheet3():
     Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel interior face)
 
     # Drum geometry in this view
-    D_CX_DEPTH = BAY_FRONT_X + DRUM_R + 40   # B2: housing depth center = -450mm
+    D_CX_DEPTH = LT_DRUM_CX             # shared drum depth-center (tbs DRUM_CX = -420) — single-sourced with the 3D
     D_HALF_W   = DRUM_R                 # drum/housing radius = 400mm (in depth axis)
 
-    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = -450 - 400 = -850mm (exterior overhang)
-    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = -450 + 400 = -50mm  (interior overhang)
+    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = -420 - 400 = -820mm (exterior overhang)
+    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = -420 + 400 = -20mm  (interior overhang)
 
     # Height positions (vertical axis in this view)
     H_FLOOR    = 0
     H_BRG_BOT  = 100          # lower bearing base
     H_BRG_HT   = 45           # bearing housing height
     H_DRUM_BOT = H_BRG_BOT + H_BRG_HT   # = 145mm (drum body starts)
-    H_DRUM_TOP = H_DRUM_BOT + (DRUM_H - 2 * H_BRG_HT)  # = 145 + 1910 = 2055mm
-    H_BRG_TOP  = H_DRUM_TOP + H_BRG_HT  # = 2100mm
+    H_DRUM_TOP = H_DRUM_BOT + (DRUM_H - 2 * H_BRG_HT)  # = 145 + 2010 = 2155mm
+    H_BRG_TOP  = H_DRUM_TOP + H_BRG_HT  # = 2200mm (100 base + 2100 drum)
     H_HANDLE   = H_BRG_BOT + DRUM_H * 0.45  # handle height = ~1000mm
 
     # ── Data range → figure size ──────────────────────────────────────────────
@@ -1631,7 +1631,7 @@ def sheet6():
         piece_title(x0, yB, W_CTR, yB + BAY_D - 70, f"{cap} FLOOR CAP", "1/8\" HDPE")
         # Ø800 housing seat (centered on the drum footprint in the cap)
         ccx = x0 + (PW / 2 - PANEL_CORNER_YD_L)         # drum Yd center within the cap width (1181-653=528)
-        ccy = yB + (DRUM_R + 40)                        # drum depth center from the bay front edge (~440)
+        ccy = yB + (LT_DRUM_CX - BAY_FRONT_X)           # drum depth center from the bay-front edge (=470mm) — single-sourced off DRUM_CX
         ax.add_patch(Circle((ccx, ccy), R_HOUS, fc=BG, ec=C_OUT, lw=1.2, ls=(0, (6, 3)), zorder=4))
         ax.plot([ccx - R_HOUS - 40, ccx + R_HOUS + 40], [ccy, ccy], color=C_CL, lw=0.7, ls="--", zorder=5)
         ax.plot([ccx, ccx], [ccy - R_HOUS - 40, ccy + R_HOUS + 40], color=C_CL, lw=0.7, ls="--", zorder=5)

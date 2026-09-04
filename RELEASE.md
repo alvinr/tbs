@@ -24,7 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Hinged-panel cleanup — drum depth-center single-sourced + report completed.** The 2D hinged-panel
+  drum sat 30mm off the 3D: Sheet 3 (drum vertical section) and Sheet 6 (HDPE floor-cap cut sheet) still
+  derived the drum depth-center from the pre-resize `BAY_FRONT_X + DRUM_R + 40` (−450) instead of the shared
+  `DRUM_CX` (−420) that the 3D, Sheet 2, and light-trap already use — now single-sourced off the constant, so
+  2D and 3D agree. The container floor plan's swung-drum ghost was likewise hardcoded at the old −400 center
+  (contradicting its own −420 label) — wired to `DRUM_CX`. Embedded the eight missing hinged-panel fabrication
+  sheets (8, 9, 11, 12, 13, 14, 15, 16) in the report, so all 16 sheets are now shown. Fixed stale
+  drum-height arithmetic in two Sheet 3 comments.
 
 ## [0.10] — 2026-09-04
 

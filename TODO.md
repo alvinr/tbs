@@ -16,24 +16,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## Hingepanel ↔ light-trap drum/cage reconciliation (residual from the Ø900→Ø800 resize)
-- [ ] **Hingepanel drum-height drift (pre-existing, found 2026-08-26):** `generate_hingepanel_diagram.py`
-  hardcodes its OWN `DRUM_H = 2200` (line 58) instead of importing `DRUM_H_LT` (now 2100) — so the hinged-panel
-  sheets draw the light-trap drum ~100mm too tall. Single-source it off `DRUM_H_LT` and re-gen the hingepanel
-  sheets (separate cascade; not part of the light-trap set).
-- [ ] **Hingepanel 2D↔3D cage/drum reconciliation (flagged by Alvin 2026-08-29, hingepanel-bp):** the 2D
-  hinged-panel sheets and the 3D light-trap model are "saying different things" on the drum cage / drum.
-  Known items to chase: (a) the drum depth-center (2D −450 vs 3D −420 noted earlier); (b) confirm the Sheet 9
-  drum-cylinder z-extent (now z_sill..z_hdr) matches the modeled cap-top `DRUM_H_LT`/`LT_CAGE_TOP`; (c) the
-  cage top/bottom beam positions. Cage HEIGHT stays as-is (Alvin 2026-08-29 — the separate header/sill beams
-  are dedicated short-span drum-hang supports; interior 1970 clears a 1780 operator by 190). Audit 2D vs the
-  live model, single-source off the constants, and re-gen. Do BEFORE the held hingepanel 3D batch send.
-- [ ] **Fold-down apron joint light-seal (open, Alvin 2026-08-30):** the fold-down light aprons (Sheet 16) that
-  close the raised 217mm floor gap need their joint seal detailed — likely a closed-cell foam strip plus a
-  lapping board on the leaf, attached to the hinge frame, so the apron-top↔leaf and apron↔jamb joints are
-  light-tight without a compression drag on the swing. Detail on Sheet 16 + the report §6 path #3 once resolved.
-- [ ] **Report image embeds (deferred):** hingepanel Sheets 9/11/12/13/14/15/16 are referenced but not yet
-  embedded in `hinged-panel-report.md` (held with the 2D-lock batch). Add the `![...](assets/...)` embeds.
+## Light-trap 2D label tidy (residual)
 - [ ] **Minor label tidy:** a few light-trap 2D labels shifted with the resize + hub rework — a "52mm
   standoff" overlap on Sheet 1, the Sheet 8 cut-section "wall 3mm / axle beams" text overlapping the
   mount-plate label, and the **Sheet 5 MOUNT-PLATE DETAIL title colliding with the lower-hub labels**.

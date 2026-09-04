@@ -68,6 +68,15 @@ flush-faced panels that seal against the fixed door frame.
 | Frame perimeter | Welded corners, mitered joints |
 | Panel weight (full panel: skins + Ø800 housing + B2 bay, excl. drum) | ~139 kg (first-principles: 96 kg framed skins + 22 kg housing + 21 kg B2 bay). See §2.4–2.5 for the movable breakdown + trade study |
 
+**Sheet 8 — Steel Frame General Arrangement (interior front elevation): member sizes, weld schedule, corner detail**
+![TBS-001 Hinged Panel — Sheet 8: Steel Frame GA (interior)](assets/hingepanel-sheet8.png)
+
+**Sheet 9 — Steel Frame General Arrangement (exterior mirror): fastener/hardware face**
+![TBS-001 Hinged Panel — Sheet 9: Steel Frame GA (exterior mirror)](assets/hingepanel-sheet9.png)
+
+**Sheet 13 — Plywood → Frame Attachment (enlarged): welded tab + captive tee-nut**
+![TBS-001 Hinged Panel — Sheet 13: Plywood → Frame Attachment](assets/hingepanel-sheet13.png)
+
 ### 2.3 Perimeter Seals
 
 A 20mm closed-cell EPDM compression gasket runs the two **vertical** edges of the panel,
@@ -136,6 +145,9 @@ line. **One exception:** the Fan B corner keeps an **18mm plywood band** (bottom
 skin + 1"×1"×⅛" Al stiffener grid + U-channel envelope is moisture/chemical-proof,
 light-tight, and weld-sealed (same material and weld process as the drum/housing); it
 costs more than a plywood build (§8.1).
+
+**Sheet 11 — Fan-B Plywood: Cut Sheet + Attachments (the 18mm ply band, captive tee-nuts, fan/duct bolt pattern)**
+![TBS-001 Hinged Panel — Sheet 11: Fan-B Plywood Cut Sheet](assets/hingepanel-sheet11.png)
 
 ### 2.6 HDPE Surround Fabrication
 
@@ -316,6 +328,9 @@ See [§8.1](#81-panel-structure) for the part; the handle is also shown on the i
 **Sheet 5 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)**
 ![TBS-001 Hinged Panel — Sheet 5: Pull Handle Mounting Detail](assets/hingepanel-sheet5.png)
 
+**Sheet 12 — Frame Hardware Attachments: cam-latch keeper, brush-strip holder, transport-stay plate (three details)**
+![TBS-001 Hinged Panel — Sheet 12: Frame Hardware Attachments](assets/hingepanel-sheet12.png)
+
 ---
 
 ## 5. Rotating Transport System
@@ -369,6 +384,9 @@ is what makes the deep Ø800 housing transport-feasible without a slide; a floor
 would have fouled the tray. The 217mm floor gap is closed in the operational position by the
 **fold-down light aprons** (§6, **Sheet 16**). The clearance is drawn on **Sheet 15**
 (transport-swing bottom-clearance section).
+
+**Sheet 15 — Transport-Swing Bottom-Clearance Section (Yd–Z): drum-cage underside vs the fixed floor-leg posts + tray rim, walkway grate lifted out**
+![TBS-001 Hinged Panel — Sheet 15: Bottom-Clearance Section](assets/hingepanel-sheet15.png)
 
 The 217mm gap would otherwise be a straight light path, so it is closed by **fold-down light
 aprons** (Sheet 16): two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one
@@ -426,6 +444,9 @@ its bearings, and the frame→hub bracket still require a **structural sign-off*
 **Sheet 10 — Pivot-Post Assembly (section + frame→hub bracket + floor anchor plate)**
 ![TBS-001 Hinged Panel — Sheet 10: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
 
+**Sheet 14 — Frame → Pivot-Post Connection: the 3 welded hinge brackets tying the moving hub to the center-zone jamb**
+![TBS-001 Hinged Panel — Sheet 14: Frame → Pivot-Post Connection](assets/hingepanel-sheet14.png)
+
 ---
 
 ## 6. Light Seal Design
@@ -444,6 +465,9 @@ position. Five light ingress paths are sealed:
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
 points are marked with gaffer tape for re-sealing.
+
+**Sheet 16 — Fold-Down Light Aprons: closing the 217mm floor gap (Details A–F incl. the hinge-line lapping-board/foam seal)**
+![TBS-001 Hinged Panel — Sheet 16: Fold-Down Light Aprons](assets/hingepanel-sheet16.png)
 
 ---
 

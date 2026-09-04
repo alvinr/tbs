@@ -263,12 +263,12 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 **Source document:** `light-trap-selection.md`
 
-Personnel access during operation is via a **Ø800 fixed housing + single-opening C-shell drum** built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. The drum and housing from a all-HDPE plastic skin — 5mm UV-HDPE housing + 1/8" HDPE drum. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
+Personnel access during operation is via a **Ø800 fixed housing + single-opening C-shell drum** built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. The drum and housing from a all-HDPE plastic skin — 5mm (3/16in) UV-HDPE housing + 1/8" HDPE drum. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
 
 <!-- BEGIN costing:lightlock -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| 5mm UV-stabilized HDPE — Ø800 housing shell (~7 m²) | $555 | $555 | $555 | rolled + extrusion-welded; TAP / Online Metals |
+| 5mm (3/16in) UV-stabilized HDPE — Ø800 housing shell (~7 m²) | $555 | $555 | $555 | rolled + extrusion-welded; TAP / Online Metals |
 | 1/8" HDPE — Ø764 drum shell (~7 m²) | $370 | $370 | $370 | TAP / Curbell; caps are now Al (separate line) |
 | 8mm 6061-T6 Al plate — 2 drum caps (Ø755, waterjet) | $400 | $550 | $700 | est. material + waterjet, Online Metals (Aug-2026 re-price) |
 | 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427) | $45 | $68 | $90 | shell→cap lap lip; material + roll; est. |

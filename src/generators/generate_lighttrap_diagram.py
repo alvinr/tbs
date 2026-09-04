@@ -256,13 +256,13 @@ def draw_sheet1():
     ax.text(X_LO + 30, -430, "FLOOR LEVEL", ha="left", va="center",
             fontsize=7.5, color=C_DIM, **FONT, zorder=15)
 
-    # ── Fixed housing walls (Ø800, 5mm UV-HDPE) — spans beam-to-beam ─────────
+    # ── Fixed housing walls (Ø800, 5mm (3/16in) UV-HDPE) — spans beam-to-beam ─────────
     for x0 in (HO_L, HI_R):
         draw_rect(ax, x0, Z_HBOT, LT_HOUSING_T, Z_HTOP - Z_HBOT,
                   fc="#DDE4EC", lw=1.4, zorder=5)
     leader(ax, HO_L + LT_HOUSING_T / 2, 1780,
            HO_L - 350, 1780,
-           f"FIXED HOUSING\nØ{DRUM_D} · {LT_HOUSING_T}mm UV-HDPE",
+           f"FIXED HOUSING\nØ{DRUM_D} · {LT_HOUSING_T}mm (3/16in) UV-HDPE",
            fs=7, color=C_OUT, ha="center", arrow_style="->", font=FONT)
 
     # ── Rotating drum shell (Ø864, 1/8in HDPE) ───────────────────────────────
@@ -408,7 +408,7 @@ def draw_sheet1():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — Housing cylinder cut sheet (flat pattern)
-# The 5mm UV-HDPE skin developed flat: roll to Ø800 and extrusion-weld the seam,
+# The 5mm (3/16in) UV-HDPE skin developed flat: roll to Ø800 and extrusion-weld the seam,
 # then cut the two 80° openings. Developed length = π·Ø800.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet2():
@@ -488,7 +488,7 @@ def draw_sheet2():
     # ── Fabrication notes ────────────────────────────────────────────────────
     notes = [
         "HOUSING SKIN — FABRICATION",
-        f"Material: {LT_HOUSING_T}mm UV-stabilized HDPE sheet (~7 m²).",
+        f"Material: {LT_HOUSING_T}mm (3/16in) UV-stabilized HDPE sheet (~7 m²).",
         f"1. Cut blank {L:.0f} × {HOUSING_H}mm; cut the two {LT_OPENING_DEG}° openings.",
         f"2. Roll to Ø{DRUM_D} (R{LT_HOUSING_R:.0f}); extrusion-weld the seam (mid-arc, 90°).",
         "3. Interior face black-pigmented + flat-black touch-in at welds.",
@@ -1673,7 +1673,7 @@ def draw_sheet8():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 9 — Housing → frame attachment (outer-skin fixing)
-# The fixed housing (5mm) laps a rolled rim-angle blind-riveted to the frame; SS rivets +
+# The fixed housing (5mm / 3/16in) laps a rolled rim-angle blind-riveted to the frame; SS rivets +
 # DP8010. Section + Detail B (opening-edge Al U-channel) + plan (200° housing, two 100° arcs).
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet9():
@@ -1693,7 +1693,7 @@ def draw_sheet9():
     LEGT = S * LT_RIM_T                        # rim-angle leg thickness (3mm)
     LIP  = S * LT_LAP_H                        # lap / lip height (25mm)
     DPT  = S * 1.0                             # DP8010 bead (~1mm)
-    HOUT = S * LT_HOUSING_T                    # housing thickness (5mm)
+    HOUT = S * LT_HOUSING_T                    # housing thickness (5mm / 3/16in)
     RIML = S * LT_RIM_LEG                      # rim flat-leg length (25mm)
     RVD  = S * LT_RIVET_D                      # rivet Ø (3.18mm, 1/8")
     BEAMH = S * 16                             # 16mm of the frame beam shown (broken)
@@ -1719,11 +1719,11 @@ def draw_sheet9():
         ax.plot([DPT - 3, DPT + HOUT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
     blind_rivet(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 0, S * (LT_HOUSING_T + 1 + LT_RIM_T), d=RVD)  # radial housing → lip rivet
     draw_dim_v(ax, DPT + HOUT + 40, -LIP, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 40, f"{LT_HOUSING_T}mm HOUSING", offset=48, fs=6.2,
+    draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 40, f"{LT_HOUSING_T}mm (3/16in) HOUSING", offset=48, fs=6.2,
                above=True, font=FONT)
     leader(ax, -RIML * 0.5, -LEGT, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al — flat leg\nBLIND-RIVETED up into the beam bottom wall\n(Ø1/8\" 18-8 SS, 97525A425, Al→3mm steel, @ ~150mm)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, DPT + HOUT, -LIP + 30, 125, -255, f"FIXED HOUSING {LT_HOUSING_T}mm UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
+    leader(ax, DPT + HOUT, -LIP + 30, 125, -255, f"FIXED HOUSING {LT_HOUSING_T}mm (3/16in) UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 125, -135, f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough housing + lip · + DP8010 (light seal)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
@@ -1766,7 +1766,7 @@ def draw_sheet9():
     draw_dim_h(ax, dx - LEG2, dx, dz - HT2 / 2 - CT2 - 30, f"{LT_EDGE_CHAN_LEG}mm LEG",
                offset=26, fs=6.0, above=False, font=FONT)
     leader(ax, dx - LEG2 * 0.35, dz - HT2 / 2 - CT2, dx - 20, dz - HT2 / 2 - CT2 - 64,
-           f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — bonded over the\n{LT_HOUSING_T}mm HDPE edge (DP8010); caps BOTH faces (jamb-post replacement)",
+           f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — bonded over the\n{LT_HOUSING_T}mm (3/16in) HDPE edge (DP8010); caps BOTH faces (jamb-post replacement)",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
            f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru both legs + HDPE",

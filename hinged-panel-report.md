@@ -196,7 +196,7 @@ interface stays single-sourced.
 | Passage width | **~487mm** (the 80° opening) — single operator, sideways entry |
 | Height | Cap top at 2,100mm AFF (cage/beam top 2,217mm); see [Light Trap Selection](light-trap-selection.md) §3 |
 | Mounting | **Carried with the panel** — panel bottom rides at the 217mm floor gap; the drum-cage underside hangs clear of the fixed floor-leg walkway posts + tray rim as it swings. Operator steps up from the walkway deck into the drum. |
-| Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 1/8" HDPE drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin; opening edge-stiffened |
+| Wall thickness | 5mm (3/16in) UV-HDPE housing (LT_HOUSING_T) + 1/8" HDPE drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin; opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
 | Clear walking height | 1,883mm clear interior |
@@ -283,7 +283,7 @@ the exterior opening is covered. There is no straight-line path at any angle.
 | Swing | ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access |
 
 The plastic-skinned drum/housing (LT_DRUM_T = 1/8" HDPE,
-LT_HOUSING_T = 5mm UV-HDPE) keeps the added mass modest. Because the pivot axis is
+LT_HOUSING_T = 5mm (3/16in) UV-HDPE) keeps the added mass modest. Because the pivot axis is
 **vertical**, the assembly is balanced at any swing angle — no gravity torque and no
 free-edge sag, so no swing-support caster is needed. The **pivot post and its bearing + weld pattern require a structural
 engineer's sign-off** before fabrication.

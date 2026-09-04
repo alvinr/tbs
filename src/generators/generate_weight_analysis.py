@@ -162,7 +162,7 @@ def _panel_weight():
 
 def _lighttrap_weight():
     """Housed revolving-door light lock (rev 9 / B2): a fixed Ø800 housing plus a
-    single-opening C-shell drum, now an ALL-HDPE PLASTIC SKIN — 5mm UV-HDPE housing
+    single-opening C-shell drum, now an ALL-HDPE PLASTIC SKIN — 5mm (3/16in) UV-HDPE housing
     + 1/8" HDPE drum (was 3mm 5052-H32 aluminum), NO internal baffles. Suspended at
     Z=PANEL_FLOOR_GAP so its effective height is shorter. Steel is retained only
     where it must be: the stub shafts (bearing fit). The plastic skin roughly
@@ -433,7 +433,7 @@ def build_components():
                   *swing_bbox(0, 80, 0, C_WID), 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note=f"Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø{DRUM_D} housing + 1/8\"-HDPE B2 bay. Transport: swung 56° about the pivot"),
+                  calc_note=f"Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm (3/16in) HDPE Ø{DRUM_D} housing + 1/8\"-HDPE B2 bay. Transport: swung 56° about the pivot"),
         Component("Light trap drum", "structure", drum_kg,
                   *swing_bbox(0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R),
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
@@ -443,7 +443,7 @@ def build_components():
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
                   states=("ready",),
-                  calc_note=f"Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø{DRUM_D} housing + 1/8\"-HDPE B2 bay"),
+                  calc_note=f"Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm (3/16in) HDPE Ø{DRUM_D} housing + 1/8\"-HDPE B2 bay"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,

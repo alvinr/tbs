@@ -1759,7 +1759,7 @@ def _draw_bolt(ax, cx, cz, length, *, d=10, vertical=True, head=-1, end="nut", c
 
 def sheet7():
     T_SKIN = PANEL_SKIN_T          # 3.18 — 1/8" HDPE surround
-    T_HOUS = LT_HOUSING_T          # 5 — housing wall (UV-HDPE)
+    T_HOUS = LT_HOUSING_T          # 5 — housing wall (3/16in UV-HDPE)
     RIV_D  = 12                    # rivet glyph body Ø (exaggerated; true 1/8"/Ø3.18)
 
     fig, ax = plt.subplots(figsize=(17, 9))

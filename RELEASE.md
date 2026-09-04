@@ -40,6 +40,12 @@ file** — a release must not ship without a changelog entry:
   so they can't drift again; the rev-history lines that record the Ø900→Ø800 change are kept. Weight figures
   unchanged (label text only).
 
+- **Housing wall-thickness label unified.** The Ø800 light-trap housing is one material (US Plastics 46685,
+  3/16″ ≈ 5mm UV-HDPE) that some places labeled "5mm" and others "3/16″" — every reader-visible reference
+  (light-trap Sheet 2/9 fab notes, the light-trap-selection / hinged-panel / cost-breakdown / weight reports)
+  now reads **"5mm (3/16in)"**, matching the drum's "3.18mm (1/8in)" convention. Modeled thickness (`LT_HOUSING_T`)
+  is unchanged at 5; the constant now documents the 3/16″ source.
+
 ## [0.10] — 2026-09-04
 
 - **New blueprint set — the hinged light-trap panel (cargo-door end).** A 16-sheet fabrication set for the

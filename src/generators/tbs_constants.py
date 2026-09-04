@@ -368,7 +368,7 @@ DRUM_H_LT  = 2100    # drum CAP-TOP Z (mm) — LOWERED (was 2250) so the top hub
                      # still clears a 1780mm operator by 103mm (the floor-gap raise buys the drum-cage
                      # bottom clearance over the fixed floor-leg posts + tray — see light-trap-selection §3.3).
 LT_HOUSING_R   = DRUM_R   # 400 — fixed housing radius
-LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
+LT_HOUSING_T   = 5        # housing wall (mm) — 3/16" UV-HDPE (US Plastics 46685, ≈5mm; modeled as 5) [rev9 B2: 3mm Al → 3/16" UV-HDPE plastic skin]
 LT_DRUM_OR     = LT_HOUSING_R - LT_HOUSING_T - 13   # 382 — drum outer radius, 13mm running gap inside the housing bore (derived so it tracks the housing Ø)
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness). Drum = single 80° opening → a 280° C-shell (not a full cylinder).

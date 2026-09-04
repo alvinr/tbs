@@ -1265,135 +1265,147 @@ def draw_sheet6():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Seals & light-path verification
-# Three drum rotations proving no straight-through EXT↔INT light path (the drum's
-# single 280° wall always blocks one side) + the running-gap / wiper seal details.
+# SHEET 7 — Light-lock verification (access + light-path + seals)
+# Panel A: an operator fits the open drum bore. Panel B: three drum rotations prove
+# no straight-through EXT↔INT light path (the drum's opaque wall always blocks one
+# side). Panel C: the running-gap brush + axial-end neoprene seal details.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet7():
     HR, DR = LT_HOUSING_R, LT_DRUM_OR
-    oh = LT_OPENING_DEG / 2
-    C6_HOUSE = "#2E5E8C"          # FIXED housing (outer skin) — steel blue
-    C6_DRUM = "#B5732E"           # ROTATING drum (inner wall) — warm amber
-    dx = 2 * HR + 640
-    plans = [(0, 180, "A · DRUM OPEN TO EXTERIOR"),
-             (dx, 0, "B · DRUM OPEN TO INTERIOR"),
-             (2 * dx, 90, "C · DRUM MID-ROTATION")]
-    X_LO, X_HI = -HR - 320, 2 * dx + HR + 640       # extra right room for the top-end light-path section
-    Z_LO, Z_HI = -HR - 1720, HR + 360               # extra bottom room: wrapped seal notes clear the title block
-    FIG_W = 20.0
-    FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
-    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(X_LO, X_HI)
-    ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
+    OD = LT_OPENING_DEG
+    SHO, DEP = 520, 330                     # operator plan footprint (mm)
+    GREEN, AMBER = "#2E8B57", "#D08000"
+    HOUS, DRUMC = "#2E5E8C", "#B5732E"      # fixed housing / rotating drum
 
-    def arc(cx, cz, r, gapc, gapd, color, lw):
-        a0, a1 = gapc + gapd / 2, gapc + 360 - gapd / 2
-        ts = [math.radians(a0 + (a1 - a0) * k / 72) for k in range(73)]
-        ax.plot([cx + r * math.cos(t) for t in ts], [cz + r * math.sin(t) for t in ts],
-                color=color, lw=lw, zorder=6)
+    fig, ax = plt.subplots(figsize=(20, 21.5))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-130, 2130); ax.set_ylim(-1260, 1460)
+    ax.set_aspect("equal"); ax.axis("off")
 
-    def angdiff(a, b):
-        return abs((a - b + 180) % 360 - 180)
+    def arc(cx, cy, r, gaps, lw, color, z=5):
+        step = 0.4
+        n = int(360 / step) + 1
+        xs, ys = [], []
+        for i in range(n):
+            deg = i * step
+            openm = any(abs((deg - gc + 180) % 360 - 180) <= gw / 2 for gc, gw in gaps)
+            if openm:
+                xs.append(float("nan")); ys.append(float("nan"))
+            else:
+                t = math.radians(deg)
+                xs.append(cx + r * math.cos(t)); ys.append(cy + r * math.sin(t))
+        ax.plot(xs, ys, color=color, lw=lw, solid_capstyle="butt", zorder=z)
 
-    def ray(cx, x0, x1, yy):                                     # one light-path ray (arrow)
-        ax.annotate("", xy=(x1, yy), xytext=(x0, yy),
-                    arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.7), zorder=5)
+    def zones(cx, cy, w):
+        ax.add_patch(mpatches.Rectangle((cx - w, cy - w), 2 * w, w, fc="#EEF2F8", ec="none", zorder=1))
+        ax.add_patch(mpatches.Rectangle((cx - w, cy), 2 * w, w, fc="#EEF6EE", ec="none", zorder=1))
+        ax.plot([cx - w, cx + w], [cy, cy], color=C_DIM, lw=0.8, ls=(0, (5, 3)), zorder=2)
 
-    for cx, dth, title in plans:
-        # running-gap ring (drum OD → housing bore) — thin, so the annulus reads
-        draw_circle(ax, cx, 0, HR - LT_HOUSING_T, lw=0.8, color="#B8BDC6", fill=False, zorder=2)
-        # fixed housing walls (OUTER) — TWO 100° material arcs (two 80° openings at 0° & 180°)
-        for a_lo, a_hi in ((oh, 180 - oh), (180 + oh, 360 - oh)):
-            ts = [math.radians(a_lo + (a_hi - a_lo) * k / 30) for k in range(31)]
-            ax.plot([cx + HR * math.cos(t) for t in ts], [HR * math.sin(t) for t in ts],
-                    color=C6_HOUSE, lw=5.0, zorder=6)
-        for gc in (0, 180):                                       # housing opening-edge ticks
-            for e in (gc - oh, gc + oh):
-                a = math.radians(e)
-                ax.plot([cx + (HR - 22) * math.cos(a), cx + (HR + 22) * math.cos(a)],
-                        [(HR - 22) * math.sin(a), (HR + 22) * math.sin(a)],
-                        color=C6_HOUSE, lw=1.2, zorder=7)
-        # rotating drum wall (INNER) — single 80° opening at dth (warm amber)
-        arc(cx, 0, DR, dth, LT_OPENING_DEG, C6_DRUM, 7.0)
-        for t in (dth - oh, dth + oh):                            # drum opening jamb ticks
-            a = math.radians(t)
-            ax.plot([cx + (DR - 24) * math.cos(a), cx + (DR + 24) * math.cos(a)],
-                    [(DR - 24) * math.sin(a), (DR + 24) * math.sin(a)],
-                    color="#B08020", lw=1.4, zorder=7)
-        # WIPER STRIPS on the drum wall (rotate WITH the drum) — bristles span the gap to
-        # the housing bore. N strips @ spacing° ≤ 100° keep ≥1 in each material arc always.
-        brz = HR - LT_HOUSING_T
-        for k in range(LT_WIPER_N):
-            sa = math.radians(dth + oh + k * LT_WIPER_SPACING)
-            cw, sw = math.cos(sa), math.sin(sa)
-            ax.plot([cx + DR * cw, cx + brz * cw], [DR * sw, brz * sw],
-                    color="#4A4A4A", lw=3.4, zorder=8)                          # strip + bristles across the gap
-            draw_circle(ax, cx + DR * cw, DR * sw, 7, lw=0.6, color="#222",
-                        fill=True, fc="#222", zorder=9)                          # holder on the drum OD
-        # LIGHT-PATH RAYS — daylight enters an aligned opening, stopped by the drum wall
-        any_aligned = any(angdiff(dth, o) < oh for o in (0, 180))
-        for oc in (0, 180):
-            es = -1 if oc == 180 else 1                           # side light comes from (EXT=left)
-            if angdiff(dth, oc) < oh:                             # aligned → ray crosses to far wall
-                for yy in (-150, -55, 55, 150):
-                    xh = cx - es * math.sqrt(max(DR * DR - yy * yy, 0.0))
-                    ray(cx, cx + es * (HR + 105), xh, yy)
-            elif not any_aligned:                                # mid-rotation → blocked at entry
-                for yy in (-45, 45):
-                    xh = cx + es * math.sqrt(max(DR * DR - yy * yy, 0.0))
-                    ray(cx, cx + es * (HR + 105), xh, yy)
-        ax.text(cx, HR + 60, title, ha="center", va="bottom", fontsize=7.5,
-                color=TITLE_COL, fontweight="bold", **FONT, zorder=9)
-        for oc, tag, col in ((180, "EXT", "#5060A0"), (0, "INT", "#407040")):
-            aligned = angdiff(dth, oc) < oh
-            dirx = -1 if oc == 180 else 1
-            ax.text(cx + dirx * (HR + 125), 0, f"{tag}\n{'OPEN (entry)' if aligned else 'SEALED'}",
-                    ha=("right" if oc == 180 else "left"), va="center", fontsize=6.5,
-                    color=(col if aligned else "#D33"), **FONT, zorder=9)
+    def sun(x, y, s=28):
+        ax.add_patch(mpatches.Circle((x, y), s, fc="#FFD24D", ec=AMBER, lw=1.2, zorder=8))
+        for a in range(0, 360, 45):
+            r = math.radians(a)
+            ax.plot([x + s * 1.2 * math.cos(r), x + s * 1.7 * math.cos(r)],
+                    [y + s * 1.2 * math.sin(r), y + s * 1.7 * math.sin(r)], color=AMBER, lw=1.3, zorder=8)
 
-    ax.text(dx, -HR - 120,
-            f"NO STRAIGHT-THROUGH LIGHT PATH: the drum's {LT_SHELL_ARC}° opaque wall always seals at least\n"
-            f"one side (openings {LT_OPENING_DEG}° < 90°, housing openings 180° apart, drum has one). Interior stays dark.",
-            ha="center", va="top", fontsize=8, color=C_OUT, fontweight="bold", **FONT, zorder=9)
+    ax.text(1000, 1415, "REVOLVING LIGHT-TRAP — PASSES BOTH TESTS",
+            ha="center", fontsize=15, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(1000, 1378, f"Fixed Ø{int(round(2 * HR))} housing (two {OD}° openings, 180° apart) + single-opening C-shell drum",
+            ha="center", fontsize=9, color=GREEN, **FONT)
+    ax.plot([-130, 2130], [660, 660], color=C_DIM, lw=1.0, ls=(0, (6, 4)), zorder=3)
 
-    # ── Legend — inner vs outer panel + light path ───────────────────────────
-    lz = -HR - 250
-    keys = [(C6_HOUSE, "FIXED HOUSING (outer)", 6.0),
-            (C6_DRUM, "ROTATING DRUM (inner)", 7.0),
+    # ── PANEL A — person fit ──
+    ax.text(-110, 1352, "A.  PERSON FIT  —  open drum bore, no fins", ha="left",
+            fontsize=12, fontweight="bold", color=C_OUT, **FONT)
+    Acx, Acy, s = 470, 940, 0.78
+    Rd, ORd = HR * s, DR * s
+    zones(Acx, Acy, Rd + 64)
+    arc(Acx, Acy, Rd, [(90, OD), (270, OD)], 6, HOUS, 5)
+    arc(Acx, Acy, ORd, [(270, OD)], 4, DRUMC, 6)
+    ax.add_patch(mpatches.Ellipse((Acx, Acy), SHO * s, DEP * s, fc=GREEN, ec="#16613a",
+                                  lw=1.3, alpha=0.40, zorder=7))
+    ax.text(Acx, Acy, f"operator\n~{SHO}×{DEP}\nfits the bore", fontsize=6.8, color="#16613a",
+            **FONT, ha="center", va="center", zorder=8)
+    ax.text(Acx, Acy + Rd + 22, "INTERIOR / walkway (exit)", fontsize=7.5, color=GREEN,
+            **FONT, fontweight="bold", ha="center")
+
+    # ── VERDICT box (top-right) ──
+    v_x, v_y, v_w, v_h = 900, 900, 1200, 300
+    ax.add_patch(mpatches.FancyBboxPatch((v_x, v_y), v_w, v_h,
+                                         boxstyle="round,pad=6,rounding_size=12",
+                                         fc="#EAF6EE", ec=GREEN, lw=1.6, zorder=2))
+    ax.text(v_x + 20, v_y + v_h - 22, "VERDICT  ✓  PASS — no daylight path at any rotation", ha="left",
+            va="center", fontsize=12.5, fontweight="bold", color=GREEN, **FONT)
+    for i, line in enumerate([
+        "The two housing openings are 80° wide and 180° apart, so the 80° drum opening can",
+        "never reach both at once. The housing's solid wall always covers the opening the drum",
+        "isn't aligned with — light enters the bore but never exits to the interior. A fixed",
+        "housing (the seal is the housing geometry, not the panel aperture) does the work.",
+    ]):
+        ax.text(v_x + 20, v_y + v_h - 72 - i * 44, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
+
+    # ── PANEL B — light-tight at every rotation ──
+    ax.text(-110, 588, "B.  LIGHT-TIGHT AT EVERY ROTATION", ha="left", fontsize=12,
+            fontweight="bold", color=C_OUT, **FONT)
+    Bcy, bs = 340, 0.52
+    Rd, ORd = HR * bs, DR * bs
+    for bx, (da, ttl, desc) in zip(
+            [370, 1090, 1810],
+            [(270, "1 · ENTER", "exterior open; interior\ncovered by drum →\nlight enters bore, no exit"),
+             (0,   "2 · TRANSIT", "drum opening at the side;\nboth openings covered →\nfully sealed"),
+             (90,  "3 · EXIT", "interior open to walkway;\nexterior covered by drum →\nno daylight enters")]):
+        zones(bx, Bcy, Rd + 58)
+        arc(bx, Bcy, Rd, [(90, OD), (270, OD)], 5, HOUS, 5)
+        arc(bx, Bcy, ORd, [(da, OD)], 4, DRUMC, 6)
+        sun(bx - Rd - 30, Bcy - Rd * 0.5)
+        ax.text(bx, Bcy + Rd + 60, ttl, ha="center", fontsize=9.5, fontweight="bold", color=GREEN, **FONT)
+        ax.text(bx, Bcy - Rd - 48, desc, ha="center", va="top", fontsize=7, color=C_DIM, **FONT)
+        if da == 270:
+            ax.annotate("", xy=(bx, Bcy + ORd * 0.92), xytext=(bx, Bcy - Rd - 24),
+                        arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=2.0), zorder=9)
+            ax.plot([bx], [Bcy + ORd], marker="x", ms=9, mew=2.4, color=GREEN, zorder=10)
+        else:
+            ax.annotate("", xy=(bx, Bcy - ORd * 0.92), xytext=(bx, Bcy - Rd - 24),
+                        arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=2.0), zorder=9)
+            ax.plot([bx], [Bcy - ORd], marker="x", ms=9, mew=2.4, color=GREEN, zorder=10)
+
+    # ── PANEL C — running-gap + axial-end seals (detail carried from the seal study) ──
+    ax.plot([-130, 2130], [-30, -30], color=C_DIM, lw=1.0, ls=(0, (6, 4)), zorder=3)
+    ax.text(-110, -100, "C.  RUNNING-GAP + AXIAL-END SEALS", ha="left", fontsize=12,
+            fontweight="bold", color=C_OUT, **FONT)
+
+    lz = -180
+    keys = [(HOUS, "FIXED HOUSING (outer)", 6.0),
+            (DRUMC, "ROTATING DRUM (inner)", 5.0),
             ("#4A4A4A", f"WIPER STRIP ×{LT_WIPER_N} (on drum)", 3.4),
-            ("#E8A800", "LIGHT PATH (ray)", 2.0)]
-    lx = dx - 930
+            (AMBER, "LIGHT PATH (ray)", 2.0)]
+    lx = -80
     for col, lab, w in keys:
         ax.plot([lx, lx + 70], [lz, lz], color=col, lw=w, zorder=9)
-        ax.text(lx + 85, lz, lab, ha="left", va="center", fontsize=7, color=C_OUT,
-                **FONT, zorder=9)
-        lx += 640
+        ax.text(lx + 85, lz, lab, ha="left", va="center", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
+        lx += 560
 
-    # ── Seal cross-sections moved to Sheet 12 (enlarged for readability) ──────
-    ax.text(dx + 160, -HR - 620,
+    ax.text(1815, -640,
             "SEAL CROSS-SECTIONS\n\nrunning-gap brush (radial)\n→ SHEET 4 HOLDER PROFILE\n\ntop-end neoprene (axial)\n→ SHEET 12 (drawn 1.5:1)",
-            ha="center", va="center", fontsize=10, color=TITLE_COL, fontweight="bold",
+            ha="center", va="center", fontsize=9, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=9,
             bbox=dict(boxstyle="round,pad=0.9", fc="#EEF3F8", ec=C_OUT, lw=1.4))
 
     notes = [
         "SEALS & LIGHT-PATH",
-        "Plans A–C: yellow rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
-        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015) — the rivets land in the aluminum flange, clear of the brush (a 3/16\" channel is too small to rivet through); bristles lay over onto the fixed housing bore across the {RUN_GAP}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
-        f"Strip count (this study): {LT_WIPER_SPACING:.0f}° spacing ≤ the 100° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT (dark-gray marks in plans A–C).",
-        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged top-end seal cross-section (the running-gap brush section is the HOLDER PROFILE inset on Sheet 4). The brushes seal the gap circumferentially; the neoprene seals it axially.",
+        "Amber rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
+        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015) — the rivets land in the aluminum flange, clear of the brush; bristles lay over onto the fixed housing bore across the {RUN_GAP:.0f}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
+        f"Strip count: {LT_WIPER_SPACING:.0f}° spacing ≤ the {int(round(180 - LT_OPENING_DEG))}° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT.",
+        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged top-end seal cross-section. The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 60, -HR - 880, 34, fs=7, font=FONT, width=3600, wrap=190,
+    draw_notes(ax, notes, -80, -280, 34, fs=7, font=FONT, width=1470, wrap=80,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 7 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="SEALS & LIGHT-PATH VERIFICATION",
-                scale_note="ALL DIMS IN mm", doc_id="TBS-001 · Revolving Light-Trap",
+                subtitle="LIGHT-LOCK VERIFICATION — ACCESS · LIGHT-PATH · SEALS",
+                scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
+                doc_id="TBS-001 · Revolving Light-Trap",
                 height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet7.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

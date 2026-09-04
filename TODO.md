@@ -24,7 +24,7 @@ Front-loaded audit (no `tbs_constants` change this session; no 3D in-scene text 
 - [x] **overview** — re-sent (stepped-bottom cargo-door split + door-frame 50×20×3); dropped unused `BAY_BACK_X`; fixed stale Ø900/2×2×0.120/Sheet-16 docstrings; verified door frame FIXED (yaw 0°, no swing) + refreshed interference report; saved + Sketchfab-pushed + committed.
 - [x] **electrical** — re-sent to sync `.skp` with the single-owner builder refactor (geometry unchanged); saved + pushed + committed.
 - [x] **construction** — env-only hash noise (generator predates `.skp`) → re-hash only, no re-send.
-- [ ] **Construction door-frame-swing DC (Alvin 2026-09-03/04)** — the reported "brown door frame swings with the door" is NOT in overview (verified: no DC there). It only appears in the **construction** model's click-to-build DC animation. Open `construction.skp`, inspect the door-frame's DC grouping, keep it OUT of the animating swing/door-open group, re-send. STILL OPEN — deferred to a construction session.
+- [x] **Door-frame-swing DC — NOT A BUG (Alvin 2026-09-04).** Verified overview has no swing DC (door frame static); Alvin confirmed the construction model is fine too — it has no swing and its click-to-build DCs work as expected. The 2026-09-03 report was a transient observation; nothing to fix. CLOSED.
 - [ ] **Film-plane wall hangers (overview)** — overview draws its film plane statically via `fpm.corner(keep="all")` with NO hide-on-swing DC, so the lighttrap hanger-hide issue does not apply here. Closed as N/A.
 
 ## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)

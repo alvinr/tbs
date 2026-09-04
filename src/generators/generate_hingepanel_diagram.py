@@ -614,52 +614,35 @@ def sheet2():
         for ay in range(int(df_x) + 120, int(df_x + df_wid) - 60, 300):
             ax.add_patch(Circle((ay, Y0_W + WALL_T / 2), 5, fc="#2A2E34", ec=C_OUT, lw=0.5, zorder=6.2))  # M10 → container
 
-    # ── HGR20 rails and carriage system (both panel edges) ───────────────────
-    C_RAIL = "#CC4422"
-    C_CARR = "#C04010"
-    RAIL_W = 20     # HGR20 rail width (cross-section in plan)
-    RAIL_D = 500    # rail length in depth direction (extends behind panel into page)
-    CBEAM  = 60     # carriage beam SHS section
-
-    # LEFT SIDE — carriage beam + HGR20 rail
-    # Rail is at Yd≈30mm, running in depth (Y) direction — shown as a small rectangle
-    rail_left_x = -80   # left of panel edge
-    ax.add_patch(Rectangle((rail_left_x, -20), RAIL_W, WALL_T + PT + 40,
-                            fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.6, zorder=5))
-    # Carriage beam cross-section (60×60mm SHS)
-    ax.add_patch(Rectangle((rail_left_x - 10, Y0_PL - 5), CBEAM + 30, CORNER_T + 10,
-                            fc="none", ec=C_CARR, lw=1.5,
-                            ls=(0, (5, 3)), zorder=5, alpha=0.7))
-    # Brush seal strip (doubled, both sides of slot)
+    # ── Edge light seals + pivot post (plan) ─────────────────────────────────
+    C_BRUSH = "#806040"
+    POST_W  = 20    # pivot-post marker width in this plan cut
     brush_w = 8
+
+    # LEFT (opening) edge — swings free; a doubled brush seal closes the light gap
     ax.add_patch(Rectangle((-brush_w, Y0_W), brush_w, Y1_PL2 - Y0_W,
-                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+                            fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
     ax.add_patch(Rectangle((0, Y0_W), brush_w, Y1_PL2 - Y0_W,
-                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+                            fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+    leader(ax, (0, Y0_W + WALL_T / 2),
+           (-260, Y_HI - 380),
+           "OPENING EDGE — swings free\n(doubled brush seal\ncloses the light gap)", col=C_BRUSH, fs=6)
 
-    leader(ax, (rail_left_x + RAIL_W / 2, Y0_W + WALL_T / 2),
-           (rail_left_x - 200, Y_HI - 460),
-           "NEAR EDGE — swings free\n(rev10: no slide rail;\npanel pivots at the far edge)", col=C_DIM, fs=6)
-    leader(ax, (rail_left_x + CBEAM / 2, Y0_PL + CORNER_T / 2),
-           (rail_left_x - 200, Y_HI - 180),
-           "CARRIAGE BEAM\n60×60mm SHS\n+ BRUSH SEAL", col=C_CARR, fs=6)
-
-    # RIGHT (far) edge — the vertical PIVOT POST (rev10: replaces the slide guide rail)
+    # RIGHT (far) edge — the vertical PIVOT POST (Ø89 CHS swing axis) + brush seal
     rail_right_x = PW + 60
-    ax.add_patch(Rectangle((rail_right_x, -20), RAIL_W, WALL_T + PT + 40,
+    ax.add_patch(Rectangle((rail_right_x, -20), POST_W, WALL_T + PT + 40,
                             fc="#5A5AA0", ec=C_OUT, lw=0.8, alpha=0.85, zorder=5))
-    # Brush seal strip (right slot)
     ax.add_patch(Rectangle((PW - brush_w, Y0_W), brush_w, Y1_PL2 - Y0_W,
-                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+                            fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
     ax.add_patch(Rectangle((PW, Y0_W), brush_w, Y1_PL2 - Y0_W,
-                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+                            fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
 
-    leader(ax, (rail_right_x + RAIL_W / 2, Y0_W + WALL_T / 2),
+    leader(ax, (rail_right_x + POST_W / 2, Y0_W + WALL_T / 2),
            (rail_right_x + 200, Y_HI - 460),
-           "PIVOT POST Ø89 CHS\n(vertical swing axis —\nno slide rail)", col="#5A5AA0", fs=6)
+           "PIVOT POST Ø89 CHS\n(vertical swing axis)", col="#5A5AA0", fs=6)
     leader(ax, (PW + brush_w / 2, Y0_PL + PT / 2),
            (rail_right_x + 200, Y_HI - 80),
-           "GUIDE SLOT\n+ BRUSH SEAL\n(DOUBLED NYLON)", col=C_CARR, fs=6)
+           "BRUSH SEAL\n(DOUBLED NYLON)\n— light-tight gap seal", col=C_BRUSH, fs=6)
 
     # ── Drum: draw filled circle on top to cut out the drum hole ─────────────
     # First stamp BG color over wall/panel where drum sits, then draw drum ring

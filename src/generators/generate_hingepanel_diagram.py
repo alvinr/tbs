@@ -615,7 +615,8 @@ def sheet2():
 
     # ── Edge light seals + pivot post (plan) ─────────────────────────────────
     C_BRUSH = "#806040"
-    POST_W  = 20    # pivot-post marker width in this plan cut
+    R_post    = PIVOT_POST_OD / 2   # Ø89 CHS pivot post — a round section in this plan cut
+    POST_WALL = 8                   # Ø89×8 CHS wall thickness
     brush_w = 8
 
     # LEFT (opening) edge — swings free; a doubled brush seal closes the light gap
@@ -628,15 +629,23 @@ def sheet2():
            "OPENING EDGE — swings free\n(doubled brush seal\ncloses the light gap)", col=C_BRUSH, fs=6)
 
     # RIGHT (far) edge — the vertical PIVOT POST (Ø89 CHS swing axis) + brush seal
+    # The post is a round pipe running floor→roof; in this plan cut it reads as a full
+    # Ø89 annulus (outer wall + bore), not a bar. Centered in the panel depth, just outboard.
     rail_right_x = PW + 60
-    ax.add_patch(Rectangle((rail_right_x, -20), POST_W, WALL_T + PT + 40,
-                            fc="#5A5AA0", ec=C_OUT, lw=0.8, alpha=0.85, zorder=5))
+    post_cx = rail_right_x + R_post
+    post_cy = (Y0_PL + Y1_PL2) / 2
+    ax.plot([post_cx - R_post - 12, post_cx + R_post + 12], [post_cy, post_cy],
+            color=C_CL, lw=0.6, ls=(0, (7, 3)), zorder=4)
+    ax.plot([post_cx, post_cx], [post_cy - R_post - 12, post_cy + R_post + 12],
+            color=C_CL, lw=0.6, ls=(0, (7, 3)), zorder=4)
+    ax.add_patch(Circle((post_cx, post_cy), R_post, fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=5))
+    ax.add_patch(Circle((post_cx, post_cy), R_post - POST_WALL, fc=BG, ec=C_OUT, lw=0.8, zorder=5))
     ax.add_patch(Rectangle((PW - brush_w, Y0_W), brush_w, Y1_PL2 - Y0_W,
                             fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
     ax.add_patch(Rectangle((PW, Y0_W), brush_w, Y1_PL2 - Y0_W,
                             fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
 
-    leader(ax, (rail_right_x + POST_W / 2, Y0_W + WALL_T / 2),
+    leader(ax, (post_cx + R_post * 0.71, post_cy + R_post * 0.71),
            (rail_right_x + 200, Y_HI - 460),
            "PIVOT POST Ø89 CHS\n(vertical swing axis)", col="#5A5AA0", fs=6)
     leader(ax, (PW + brush_w / 2, Y0_PL + PT / 2),

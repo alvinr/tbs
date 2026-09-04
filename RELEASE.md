@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.10] — 2026-09-04
+
 - **New blueprint set — the hinged light-trap panel (cargo-door end).** A 16-sheet fabrication set for the
   swinging cargo-door panel and its revolving-drum light lock: panel elevation, plan cross-section, drum
   vertical section, rotating-transport / swing-clearance plan, interior pull-handle mount, HDPE-surround

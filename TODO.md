@@ -15,7 +15,7 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 1. [x] Apply Alvin's 2D review feedback on the hinged-panel sheets. — DONE.
 2. [x] Cascade the remaining 3D models — DONE 2026-09-04 (see below).
 3. [x] Report reconcile (hinged-panel) — DONE 2026-09-04. Stripped rev-tags/old-vs-new archaeology from prose + parts.py specs (rev11, "replaces 18mm ply", "REPLACES TEK screw", "dropped from old tube", barrel-hinge-caster-retired, stay-hook relocation), American spelling, thousands-separators; single-source blocks current; design specs verified current (Ø800 housing, 50×20×3 door frame vs 2×2×0.120 panel/cage frame, light-lock now on Light-Trap Sheet 7). **Optional follow-up:** a full §A coordinate-strip pass (X=/Yd=/Z= still in some prose/table cells — e.g. §5 pivot line, §6 seal table) was NOT done — that's general editorial polish, not design drift.
-4. [ ] Add any new diagrams that fall out of the review.
+4. [x] New diagrams from the review — DONE 2026-09-04. The one undrawn detail (the apron hinge-line light seal, previously TBD) is now designed + drawn: **Sheet 16 Detail F** (exterior 3mm-steel lapping board + 10mm compressed foam over the piano hinge); sheet widened so A/E/D/F sit in a row with the notes moved right. Cascaded to parts.py + report §5.3/§6 + the lighttrap 3D (`fixed_bottom_geom`, re-sent + Sketchfab-pushed). **Blueprint-run wrap-up COMPLETE.**
 
 ## ✅ 3D catch-up cascade — DONE 2026-09-04 (all 10 models in sync; publish UNBLOCKED)
 

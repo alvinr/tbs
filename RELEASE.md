@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Apron hinge-line light seal designed + drawn (was TBD).** The fold-down aprons' piano-hinge line — the
+  last residual light path — is sealed by a fixed 3mm-steel **lapping board** off the sill (an exterior
+  daylight baffle standing over the hinge) plus a 10mm closed-cell **foam** strip the apron compresses
+  when up, hinge knuckle inboard of the lap. Added as **Sheet 16 Detail F** (the sheet widened so all four
+  details sit in a row with the notes moved right), cascaded to `parts.py` + the report §5.3/§6, and modeled
+  in lighttrap `fixed_bottom_geom()` (re-sent + Sketchfab-pushed). Hinged-panel blueprint-run wrap-up complete.
+
 - **Hinged-panel report reconciled to the current design.** Stripped rev-tags and old-vs-new
   archaeology from the prose and the injected parts specs ("replaces 18mm ply", "REPLACES the TEK
   screw", "dropped from the old 2×2×0.120 tube", the retired barrel-hinge/caster note, the stay-hook

@@ -63,13 +63,13 @@ DRUM_CY = DRUM_H / 2   # light-lock center Y
 
 # ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────
 def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal",
-           ha="center", va="center", arrow_style="-|>", lw=0.7, zorder=15):
+           ha="center", va="center", arrow_style="-|>", lw=0.7, zorder=15, bbox=None):
     font = dict(FONT)
     if fw != "normal":
         font["fontweight"] = fw
     tbs_drawing.leader(ax, xy[0], xy[1], xytext[0], xytext[1], text,
                        fs=fs, color=col, ha=ha, va=va,
-                       arrow_style=arrow_style, lw=lw, zorder=zorder, font=font)
+                       arrow_style=arrow_style, lw=lw, zorder=zorder, font=font, bbox=bbox)
 
 
 
@@ -578,21 +578,16 @@ def sheet2():
         (Y0_DF + DOOR_FRAME_DEPTH / 2,  "50×20×3 RHS DOOR FRAME\npanel seals here · U-frame welds (opening edge)", 1.6 * LBL_OFF),
         (Y0_PL + PLY_T / 2,  f"OUTER PLY ({PLY_T}mm)",                 1 * LBL_OFF),
     ]:
-        ax.annotate(lbl, xy=(lbl_x_r, ly),
-                    xytext=(lbl_x_r + off, ly - off),
-                    fontsize=6.5, color=C_OUT, ha="left", va="top", **FONT,
-                    arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
-                    bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
+        leader(ax, (lbl_x_r, ly), (lbl_x_r + off, ly - off), lbl,
+               col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8,
+               bbox=dict(fc="#EEF2F8", ec="none", pad=1.5))
     lbl_x_l = D_XL - 50
     for ly, lbl, off in [
         (Y0_FR - FRAME_T / 2, f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
         (Y0_PL2 - PLY_T / 2,  f"INNER PLY — FLAT BLACK ({PLY_T}mm)",    2 * LBL_OFF),
     ]:
-        ax.annotate(lbl, xy=(lbl_x_l, ly),
-                    xytext=(lbl_x_l - off, ly + off),
-                    fontsize=6.5, color=C_OUT, ha="right", va="bottom", **FONT,
-                    arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
-                    zorder=15)
+        leader(ax, (lbl_x_l, ly), (lbl_x_l - off, ly + off), lbl,
+               col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
 
     # ── EPDM perimeter seal strips at panel edges ─────────────────────────────
     SEAL_W = 20
@@ -711,7 +706,7 @@ def sheet2():
     _edge_l(_CGL - LT_A, cage_yt - LEG_A, _CGL - LT_A, cage_yt)                      # near-back
     _edge_l(_CGR, cage_yb, _CGR - LEG_A, cage_yb - LT_A)                             # far-front
     _edge_l(_CGR, cage_yt - LEG_A, _CGR - LEG_A, cage_yt)                            # far-back
-    leader(ax, (_CGL - LT_A, cage_yt - LEG_A / 2), (STEP_YD_L - 220, cage_yt + 120),
+    leader(ax, (_CGL - LT_A, cage_yt - LEG_A / 2), (STEP_YD_L - 460, cage_yt + 140),
            "EDGE L-ANGLE (Al, 4× — each side-skin vertical edge)\npost leg riveted to the cage post · HDPE riveted to the upstand", col=C_OUT, fw="bold", fs=5.8)
     leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 400, cage_yb + 40),
            "DRUM SUPPORT CAGE (4-wall 50×50 steel box) — WELDED\nto the frame: back corner posts LAND IN / weld along the\ncenter-zone jambs (cage + frame = one swinging weldment)", col=C_STEEL, fs=6)

@@ -50,7 +50,7 @@ PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
 from tbs_constants import PANEL_FLOOR_GAP_SIDE
 from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH
-PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 195 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 16)
+PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 195 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
 from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   # apron inner edges (12mm off the cage sides); vertical strip brushes bridge the gap; far-pivot fixed stub width
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
@@ -79,7 +79,7 @@ CORNER_BOT = LT_CAGE_BOT + 50                 # 190 — corner-skin/apron split 
 #   the fold-down apron plywood flap (Alvin, 2026-08-31). Far side = HDPE corner; near side = Fan-B ply band.
 PLY_T  = 12   # real plywood thickness (12mm exterior BC). Inset on the INTERIOR face of the 40mm frame zone.
 PLY_X0 = 40 - PLY_T   # 28 — ply front face (X28..40 = interior 12mm; the 40mm frame zone stays around it)
-CHAM   = PLY_T   # plywood↔plywood joint chamfer: 45° across the 12mm ply (hingepanel Sheet 17 Detail E)
+CHAM   = PLY_T   # plywood↔plywood joint chamfer: 45° across the 12mm ply (hingepanel Sheet 16 Detail E)
 
 # ── Option A — housed revolving-door light lock (Ø800 balanced) ───────────────
 # Fixed housing with two opposed 80° openings (exterior + interior-onto-walkway,
@@ -277,7 +277,7 @@ def door_frame(include_seal=True):
             parts.append(ruby_cylinder("Door frame anchor M10", x0, yc, zc, 6, FD + 6, axis="x", n=8, color="#40444A"))
     # Bottom seal — the OLD full-width bottom brush (which sealed the previous Z130 leaf bottom)
     # is RETIRED. The 217mm floor gap is now closed by the FOLD-DOWN APRONS + fixed center baffle
-    # (bottom_apron(), hingepanel Sheet 17); the apron's own TOP brush is the leaf interface, so a
+    # (bottom_apron(), hingepanel Sheet 16); the apron's own TOP brush is the leaf interface, so a
     # threshold brush here would be redundant.
     lt = 12
     # Top BRUSH seal — the mirror of the bottom: a filament strip on the frame top rail
@@ -307,7 +307,7 @@ def cam_latch(yl, zl):
     """Lift-and-turn cam latch (McMaster 1619A74): a barrel THROUGH the panel edge (along X) + an
     L-SHAPED handle on the interior face — a stem out along X with the grip BENT UP 90° (along Z),
     so the operator lifts + turns it to swing the cam behind the fixed jamb and hook the strike plate
-    on the jamb's vertical short-end face (hingepanel Sheet 13 Detail A). Olive-yellow C_VALVE."""
+    on the jamb's vertical short-end face (hingepanel Sheet 12 Detail A). Olive-yellow C_VALVE."""
     r, L = 20, 32                    # latch body barrel (Ø40) through the opening-edge zone, along X
     HSr, HS, GRIP = 6, 44, 60        # handle-arm radius + arm length (out interior) + grip length (bent up)
     x0 = PANEL_CORNER_T              # 40 — interior face of the opening-edge zone
@@ -327,7 +327,7 @@ def hinge_panel():
 
     # Near corner (hinge side) and far corner (Fan B side) — flush 40mm zones. Their bottoms STEP UP
     # to PANEL_FLOOR_GAP_SIDE to clear the bare walkway cantilever bracket legs when the walkway is
-    # lifted out for transport (hingepanel Sheet 16); the center zone keeps the low bottom over the tray.
+    # lifted out for transport (hingepanel Sheet 15); the center zone keeps the low bottom over the tray.
     # The center zone is WIDENED (step lines at NEW_YD_L/R) to frame the Ø800 housing.
     parts.append(ruby_box("Panel near corner (40mm)",
                           0, 0, PANEL_FLOOR_GAP_SIDE, tc, NEW_YD_L, hs, color=C_PLASTIC, alpha=0.5))
@@ -558,7 +558,7 @@ def pivot_link():
         ruby_cylinder("Hub radial bearing (top)", PIVOT_X, PIVOT_YD, 2050, 60, 55, color=cbear, axis="z"),
     ]
     # brackets ALIGNED with the leaf pivot-edge stile (Yd PIVOT_YD−50..PIVOT_YD, 50 RHS) so they weld flush
-    # to it — matches Sheet 15 (was offset ±35 straddling the pivot).
+    # to it — matches Sheet 14 (was offset ±35 straddling the pivot).
     for z in (300, 1180, 2000):
         p.append(ruby_box("Hinge bracket (panel→hub)", 55, PIVOT_YD - 50, z, 140, 50, 110, color=C_STEEL))
     return '\n'.join(p)
@@ -618,7 +618,7 @@ def pivot_corner_leaf():
     z0, z1 = 12, PANEL_Z_TOP
     # LEAF PIVOT-EDGE STILE (2×2/50 RHS) at the pivot edge, just inboard of the HDPE skin — the 3 hub hinge
     # brackets (pivot_link, X55..195) LAND on this stile and are fillet-welded to it, so leaf+hub+cage swing
-    # as one weldment (hingepanel Sheet 15). Travels with the leaf.
+    # as one weldment (hingepanel Sheet 14). Travels with the leaf.
     return ruby_box("Leaf pivot-edge stile (50 RHS)", PLY_X0, y1 - 50, z0, 50, 50, z1 - z0,
                     color=C_STEEL, alpha=1.0)
 
@@ -1031,7 +1031,7 @@ def surround_rivets():
     """Blind-rivet line tying the HDPE bay surround to the steel center-zone frame at
     the panel-plane lap (Yd = the two center-zone step lines). Rivet heads shown as small
     steel discs @ LT_RIVET_PITCH so the surround reads as FASTENED to the frame, not
-    floating. Section detail: hingepanel Sheet 8; flat patterns: hingepanel Sheet 7."""
+    floating. Section detail: hingepanel Sheet 7; flat patterns: hingepanel Sheet 6."""
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R          # rivets follow the bay onto the cage faces
     z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
     rr, xr = 6, -7                                        # head Ø exaggerated for visibility; just exterior of panel plane
@@ -1071,7 +1071,7 @@ def far_bay_wall_frame():
     zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
     p = [
         # (4/5) TOP + BOTTOM beams running in Yd from the drum cage across to the pivot frame — the visible
-        #       horizontal beams of Sheet 9; the far HDPE top/bottom edges rivet to them. Just inboard of
+        #       horizontal beams of Sheet 8; the far HDPE top/bottom edges rivet to them. Just inboard of
         #       the skin (xb2), lapping the far cage-post top/bottom so they tie the wall to the drum cage.
         ruby_box("Far bay top beam (50 RHS)", xb2, yR, zt, RS, yf - yR, RS, color=c),
         ruby_box("Far bay bottom beam (50 RHS)", xb2, yR, zb, RS, yf - yR, RS, color=c),
@@ -1109,7 +1109,7 @@ def near_bay_wall_frame():
     p = [
         ruby_box("Near bay top beam (50 RHS)", xb2, yn, zt, RS, yL - yn, RS, color=c),
         ruby_box("Near bay bottom beam (50 RHS)", xb2, yn, zb, RS, yL - yn, RS, color=c),
-        # VERTICAL opening-edge stile (Sheet 9 "left swing stile") tying the top + bottom beams at the near
+        # VERTICAL opening-edge stile (Sheet 8 "left swing stile") tying the top + bottom beams at the near
         # frame edge — the far wall's equivalent is the pivot post/stile; the near side had none.
         ruby_box("Near opening-edge stile (50 RHS)", xb2, yn, zb, RS, RS, (zt + RS) - zb, color=c),
         # at the MOUTH edge the HDPE blind-rivets STRAIGHT into the near cage post — no L-angle (Sheet 2)
@@ -1140,7 +1140,7 @@ _AHZ = 12
 # UP profiles — (Yd, Z) polygon in the door plane, extruded APRON_T mm in +X.
 # Profile TOPS are pulled down CHAM (12mm): the flap body stops 12mm short of the leaf bottom, and a 45°
 # top-edge chamfer prism (apron_top_chamfers) fills back to it — the moving flap's scarf sweeps off the
-# EPDM on the fixed leaf face (Sheet 17 Detail E). Corner top = 282, center-ext top = 217.
+# EPDM on the fixed leaf face (Sheet 16 Detail E). Corner top = 282, center-ext top = 217.
 _CT_LOW = CORNER_BOT - CHAM           # corner body top (178) — BOTH sides: dropped to meet the lowered
 #                                       corner-skin bottom (CORNER_BOT) so the apron reads shorter, fixed
 #                                       skin below it (far = HDPE, near = Fan-B ply band)
@@ -1321,7 +1321,7 @@ def generate_ruby():
         bay(),
         far_bay_wall_frame(),             # FAR wall (pivot side): rails to cage + rivets STRAIGHT to the post
         near_bay_wall_frame(),            # NEAR wall (pinhole side): top + bottom beams + rivets to the post
-        surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 8)
+        surround_rivets(),                # blind rivets tying the bay surround to the frame (Sheet 7)
         cage_face_rivets(),               # roof + floor HDPE riveted to the cage rails (like the side panels)
         bay_wall_cage_rivets(),           # near/far side-wall HDPE riveted to the front+back cage posts (item 1)
         bay_wall_edge_l_strips(),          # L-angle fixing rails on the side-wall vertical edges (post leg + HDPE upstand)
@@ -1333,7 +1333,7 @@ def generate_ruby():
         fan_b(),
         pivot_link(),
         # (door-plane pivot_connect beams removed — the frame→post connection is the inboard hub + 3 hinge
-        #  brackets landing on the leaf pivot-edge stile; see pivot_corner_leaf + pivot_link, Sheet 15.)
+        #  brackets landing on the leaf pivot-edge stile; see pivot_corner_leaf + pivot_link, Sheet 14.)
         frame_hooks(),
     ])
 

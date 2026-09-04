@@ -255,7 +255,7 @@ def sheet1():
            "PIVOT POST\nØ89 CHS\n(vertical swing axis)",
            col="#5A5AA0", fs=6, fw="bold")
     # swing direction arc on the near (left) side
-    arr_y = -80
+    arr_y = -150
     ax.annotate("", xy=(-SWING_NOTE_X - 40, arr_y + 80), xytext=(-SWING_NOTE_X - 40, arr_y),
                 arrowprops=dict(arrowstyle="-|>", color="#1763C8", lw=1.6,
                                 connectionstyle="arc3,rad=0.4", mutation_scale=11), zorder=15)

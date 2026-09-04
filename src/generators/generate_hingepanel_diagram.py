@@ -283,7 +283,7 @@ def sheet1():
             ax.plot([lx - 22, lx + 22], [ly + 22, ly - 22],
                     color=C_DIM, lw=0.9, ls=(0, (4, 2)), zorder=7)
     leader(ax, (LATCH_XS[0], LATCH_YS[0]),
-           (LATCH_XS[0] - 430, LATCH_YS[0] - 60),
+           (LATCH_XS[0] - 430, LATCH_YS[0] - 220),
            "CAM LATCH (McMaster 1619A74, ×2)\nOPENING EDGE, INTERIOR FACE — shown dashed\nEMERGENCY EGRESS: operate from inside if drum jams")
 
     # ── Interior pull handle — bolted to the frame, interior face (§4.3) ──────

@@ -31,7 +31,8 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse, 
 import os
 from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
+import tbs_drawing
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes, draw_legend
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
@@ -61,13 +62,14 @@ DRUM_CX = PW / 2        # light-lock center X in panel (centered horizontally)
 DRUM_CY = DRUM_H / 2   # light-lock center Y
 
 # ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────
-def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal"):
+def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal",
+           ha="center", va="center", arrow_style="-|>", lw=0.7, zorder=15):
     font = dict(FONT)
     if fw != "normal":
         font["fontweight"] = fw
-    _leader_shared(ax, xy[0], xy[1], xytext[0], xytext[1], text,
-                   fs=fs, color=col, ha="center", va="center",
-                   arrow_style="-|>", font=font)
+    tbs_drawing.leader(ax, xy[0], xy[1], xytext[0], xytext[1], text,
+                       fs=fs, color=col, ha=ha, va=va,
+                       arrow_style=arrow_style, lw=lw, zorder=zorder, font=font)
 
 
 
@@ -1319,12 +1321,12 @@ def sheet3():
                offset=22, fs=5.8, right=False, perpendicular=True, color=C_DIM, font=FONT)
 
     # callout labels (right side, leaders pointing into the detail)
-    _leader_shared(ax, DX(20), DY(165), DX(92), DY(155), "Cam latch compresses panel\nonto seal (release to swing)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DX(20), DY(120), DX(92), DY(128), "Panel bottom edge\n(40 mm corner zone)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DX(-10), DY(100), DX(92), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DX(-26), DY(64), DX(92), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DX(-40), DY(22), DX(92), DY(45), "Fixed door-frame\nthreshold (50×50 RHS)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DX(74), DY(28), DX(92), DY(12), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    leader(ax, (DX(20), DY(165)), (DX(92), DY(155)), "Cam latch compresses panel\nonto seal (release to swing)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DX(20), DY(120)), (DX(92), DY(128)), "Panel bottom edge\n(40 mm corner zone)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DX(-10), DY(100)), (DX(92), DY(108)), "20 mm EPDM — panel\nrecedes into / seals on lip", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DX(-26), DY(64)), (DX(92), DY(74)), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DX(-40), DY(22)), (DX(92), DY(45)), "Fixed door-frame\nthreshold (50×50 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DX(74), DY(28)), (DX(92), DY(12)), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL C — Panel top light seal (enlarged), the mirror of Detail B.
@@ -1378,12 +1380,12 @@ def sheet3():
     ax.annotate("", xy=(CX(2), CY(-58)), xytext=(CX(34), CY(-58)),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
 
-    _leader_shared(ax, CX(-40), CY(64), CX(92), CY(82), "Frame top rail (50×50 RHS)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, CX(30), CY(55), CX(92), CY(68), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, CX(-26), CY(30), CX(92), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, CX(-10), CY(-20), CX(92), CY(-10), "20 mm EPDM — panel top\nedge seals on lip", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, CX(20), CY(-70), CX(92), CY(-58), "Upper cam latch compresses\npanel onto seal", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, CX(20), CY(-95), CX(92), CY(-85), "Panel top edge", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    leader(ax, (CX(-40), CY(64)), (CX(92), CY(82)), "Frame top rail (50×50 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(30), CY(55)), (CX(92), CY(68)), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(-26), CY(30)), (CX(92), CY(28)), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(-10), CY(-20)), (CX(92), CY(-10)), "20 mm EPDM — panel top\nedge seals on lip", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(20), CY(-70)), (CX(92), CY(-58)), "Upper cam latch compresses\npanel onto seal", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(20), CY(-95)), (CX(92), CY(-85)), "Panel top edge", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL D — Vertical CUT seal (plan section at the fixed↔swinging joint, Yd180
@@ -1420,9 +1422,9 @@ def sheet3():
     ax.add_patch(Rectangle((DDX(-3), DDY(-7)), k * 43, k * 14, fc=C_GASKT, ec=C_OUT,
                            lw=1.0, zorder=24))                                  # EPDM cut seal
     ax.plot([DDX(0), DDX(0)], [DDY(-52), DDY(52)], color=C_CL, lw=0.8, ls=(0, (6, 4)), zorder=20)
-    _leader_shared(ax, DDX(20), DDY(-30), DDX(70), DDY(-40), "FIXED strip edge\n(bolted to the door frame)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DDX(8), DDY(0), DDX(70), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
-    _leader_shared(ax, DDX(20), DDY(30), DDX(70), DDY(35), "SWINGING panel edge\n(joint opens as it swings)", fs=6.0, color=C_DIM, ha="left", va="center", arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
+    leader(ax, (DDX(20), DDY(-30)), (DDX(70), DDY(-40)), "FIXED strip edge\n(bolted to the door frame)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DDX(8), DDY(0)), (DDX(70), DDY(2)), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DDX(20), DDY(30)), (DDX(70), DDY(35)), "SWINGING panel edge\n(joint opens as it swings)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 17",

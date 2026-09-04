@@ -244,26 +244,10 @@ def sheet1():
     leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D - 230, HY + 200),
            "100mm PULL HANDLE\n(interior face — hidden;\nwelded, no through-hole)")
 
-    # ── (rev10: the left-edge barrel hinges are RETIRED — the panel pivots on the
-    #    Ø89 post at the FAR edge, not on left-edge hinges. The HINGE_* values are kept
-    #    only as left-edge layout references for the swing note + dimension positions.) ──
-    HINGE_YS = [220, 1190, PH - 230]
-    HINGE_W = 85; HINGE_L = 220
-
-    # ── Former HGR20 slide rails (rev10: RETIRED) ────────────────────────────
-    # The old transport scheme slid the panel on HGR20 linear rails along the
-    # container walls. rev10 supersedes it: the panel + drum SWING ~56° about the
-    # Ø89 pivot post. The rail profiles below are drawn faint, labeled as the
-    # retired route (see Sheet 4 for the rotation plan).
-    C_RAIL = "#CC4422"   # red, matching assembly overview
-    C_CARR = "#C04010"   # carriage beam color
-    RAIL_H = 20          # rail cross-section height (visible in elevation)
-    RAIL_LEN = 350       # visible rail length (extends behind panel, into page)
-
     # ── Transport: the panel + drum SWING about the vertical PIVOT POST ──────
-    # rev10 — supersedes the HGR20 ceiling-rail slide. The pivot is the film
-    # far-left upright at the FAR (Yd) edge; the old left-edge barrel hinges +
-    # ceiling-rail carriage are retired (see Sheet 4 for the plan).
+    # The pivot is the film far-left upright at the FAR (Yd) edge (see Sheet 4
+    # for the rotation plan).
+    SWING_NOTE_X = 85     # left-margin base for the swing-direction arrow + note
     PIVOT_PX = PW + 35    # far-edge pivot post (just past the panel right edge)
     ax.add_patch(Rectangle((PIVOT_PX - 20, 0), 40, PH,
                             fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=3, alpha=0.85))
@@ -272,10 +256,10 @@ def sheet1():
            col="#5A5AA0", fs=6, fw="bold")
     # swing direction arc on the near (left) side
     arr_y = -80
-    ax.annotate("", xy=(-HINGE_W - 40, arr_y + 80), xytext=(-HINGE_W - 40, arr_y),
+    ax.annotate("", xy=(-SWING_NOTE_X - 40, arr_y + 80), xytext=(-SWING_NOTE_X - 40, arr_y),
                 arrowprops=dict(arrowstyle="-|>", color="#1763C8", lw=1.6,
                                 connectionstyle="arc3,rad=0.4", mutation_scale=11), zorder=15)
-    ax.text(-HINGE_W - 425, PH / 2,
+    ax.text(-SWING_NOTE_X - 425, PH / 2,
             "Panel + drum SWING 56°\nabout the far-edge pivot for\ntransport (no rails / no slide)\n— see Sheet 4",
             color=C_DIM, fontsize=6, ha="right", va="center", **FONT, zorder=15)
 
@@ -349,10 +333,7 @@ def sheet1():
     draw_dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=30, fs=7, font=FONT)    # Drum clear height
     draw_dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm CLEAR HEIGHT", offset=45, fs=7, right=True, font=FONT)
     # Drum center from left
-    draw_dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50, fs=7, font=FONT)   # (hinge-position dims retired with the barrel hinges — the panel pivots on the post.)
-
-#     ax.text(-HINGE_W - 80, 90, "HINGE CL HEIGHT\nFROM FLOOR (mm)",
-#             color=C_DIM, fontsize=6, ha="right", va="top", **FONT, zorder=15)
+    draw_dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50, fs=7, font=FONT)
 
     # ── Section A-A cut indicator (at H=1000mm — corresponds to Sheet 2 plan cut)
     AA_H = 1000   # height of plan section cut

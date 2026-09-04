@@ -583,10 +583,9 @@ def sheet2():
     leader(ax, (lbl_x_r, Y0_PL + PLY_T / 2), (lbl_x_r + 1 * LBL_OFF, Y0_PL + PLY_T / 2 - 1 * LBL_OFF),
            f"OUTER PLY ({PLY_T}mm)",
            col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
-    lbl_x_l = D_XL - 50
-    leader(ax, (lbl_x_l, Y0_FR - FRAME_T / 2), (lbl_x_l - 1.5 * LBL_OFF, Y0_FR - FRAME_T / 2 + 1.5 * LBL_OFF),
+    leader(ax, (731, 36), (626, 141),
            f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
-    leader(ax, (lbl_x_l, Y0_PL2 - PLY_T / 2), (lbl_x_l - 2 * LBL_OFF, Y0_PL2 - PLY_T / 2 + 2 * LBL_OFF),
+    leader(ax, (731, 153), (591, 293),
            f"INNER PLY — FLAT BLACK ({PLY_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
 
     # ── EPDM perimeter seal strips at panel edges ─────────────────────────────

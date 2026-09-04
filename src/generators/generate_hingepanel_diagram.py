@@ -1322,7 +1322,7 @@ def sheet3():
     def dlbl(target, ty, text):
         _leader_shared(ax, target[0], target[1], DX(92), ty, text,
                        fs=6.0, color=C_DIM, ha="left", va="center",
-                       arrow_style="-", lw=0.8, zorder=24, font=FONT)
+                       arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
     dlbl((DX(20), DY(165)), DY(155), "Cam latch compresses panel\nonto seal (release to swing)")
     dlbl((DX(20), DY(120)), DY(128), "Panel bottom edge\n(40 mm corner zone)")
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
@@ -1385,7 +1385,7 @@ def sheet3():
     def clbl(target, ty, text):
         _leader_shared(ax, target[0], target[1], CX(92), ty, text,
                        fs=6.0, color=C_DIM, ha="left", va="center",
-                       arrow_style="-", lw=0.8, zorder=24, font=FONT)
+                       arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
     clbl((CX(-40), CY(64)), CY(82), "Frame top rail (50×50 RHS)")
     clbl((CX(30), CY(55)), CY(68), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)")
     clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")
@@ -1431,7 +1431,7 @@ def sheet3():
     def ddlbl(target, ty, text):
         _leader_shared(ax, target[0], target[1], DDX(70), ty, text,
                        fs=6.0, color=C_DIM, ha="left", va="center",
-                       arrow_style="-", lw=0.8, zorder=24, font=FONT)
+                       arrow_style="-|>", lw=0.8, zorder=24, font=FONT)
     ddlbl((DDX(20), DDY(-30)), DDY(-40), "FIXED strip edge\n(bolted to the door frame)")
     ddlbl((DDX(8), DDY(0)), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut")
     ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")

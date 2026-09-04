@@ -515,10 +515,10 @@ def sheet2():
 
     # ── ENLARGED DETAIL — HDPE side skin → cage post (the skin lies FLAT on the post's OUTSIDE face and
     #    is blind-riveted straight through the skin into the post's outer wall — no L-angle standoff) ──
-    Lx0, Ly0, Ls = 1560, D_YB - 300, 2.4
+    Lx0, Ly0, Ls = 1560, D_YB - 375, 2.4
     def dL(x, y): return (Lx0 + x * Ls, Ly0 + y * Ls)
     ax.add_patch(Rectangle(dL(-6, -6), 122 * Ls, 96 * Ls, fc="#FBFAF6", ec=C_DIM, lw=0.8, zorder=8))  # inset panel
-    ax.text(*dL(58, 88), "DETAIL — HDPE SIDE SKIN → CAGE POST", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, zorder=12, **FONT)
+    ax.text(*dL(58, 92), "DETAIL — HDPE SIDE SKIN → CAGE POST", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, zorder=12, **FONT)
     ax.text(*dL(58, 80), "skin flat on the post's outside face — riveted straight through", ha="center", fontsize=6.0, color=C_DIM, zorder=12, **FONT)
     ax.add_patch(Rectangle(dL(40, 8), 40, 62, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=9))             # cage post RHS (cut)
     ax.add_patch(Rectangle(dL(43, 11), 34, 56, fc="#FBFAF6", ec=C_OUT, lw=0.5, zorder=9))                       # RHS bore
@@ -704,9 +704,9 @@ def sheet2():
     _edge_l(_CGR, cage_yt - LEG_A, _CGR - LEG_A, cage_yt)                            # far-back
     leader(ax, (_CGL - LT_A, cage_yt - LEG_A / 2), (STEP_YD_L - 220, cage_yt + 120),
            "EDGE L-ANGLE (Al, 4× — each side-skin vertical edge)\npost leg riveted to the cage post · HDPE riveted to the upstand", col=C_OUT, fw="bold", fs=5.8)
-    leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 200, cage_yb + 80),
+    leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 400, cage_yb + 40),
            "DRUM SUPPORT CAGE (4-wall 50×50 steel box) — WELDED\nto the frame: back corner posts LAND IN / weld along the\ncenter-zone jambs (cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
-    leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL - 300, cage_yb - 120),
+    leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL, cage_yb - 120),
            "CAGE TOP PERIMETER RAILS\n(50×50 RHS ring, above the\nH=1000 cut — shown hidden)", col=C_STEEL, fs=5.8)
     # cage → frame connection: the cage's BACK corner posts LAND INSIDE the frame jambs — the cage
     # interior face (CAGE_YT) sits at panel depth ~90mm, WITHIN the 40–160 frame depth — so cage +
@@ -752,7 +752,7 @@ def sheet2():
             color=C_CL, fontsize=7, ha="left", va="center", **FONT, zorder=15)
 
     # ── Light-tightness note ──────────────────────────────────────────────────
-    ax.text(D_XR + 95, D_CY - DR * 0.78,
+    ax.text(D_XR + 125, D_CY - DR * 0.78,
             f"Two {OD}° openings, 180° apart;\nthe housing's solid wall always\ncovers the opening the drum\n"
             "isn't aligned with → NO straight-\nline sight at any rotation.\nSee Light-Trap Sheet 7 (enter / transit / exit).",
             color="#2E8B57", fontsize=6.4, ha="left", va="center", **FONT, zorder=15)
@@ -806,15 +806,6 @@ def sheet2():
     OB_X = D_XR + 330
     OB_Y = D_YT - 600
     OB_W = 450   # retained: the latch note below positions itself off the note width
-    draw_notes(ax, [
-        "ORIENTATION NOTE",
-        "Drum axis is vertical.",
-        "Personnel walk through in",
-        "an upright position.",
-        "See Sheet 3 for the elevation view.",
-    ], OB_X + 32, OB_Y + 174, spacing=32, fs=6, title_fs=6.5,
-       color="#403000", title_color="#806010", width=400,
-       border_color="#806010", font=FONT)
 
     # ── Interior latch safety note ─────────────────────────────────────────────
     # Small note below orientation box (latches are outside the drum-zone crop

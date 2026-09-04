@@ -16,12 +16,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## Light-trap 2D label tidy (residual)
-- [ ] **Minor label tidy:** a few light-trap 2D labels shifted with the resize + hub rework — a "52mm
-  standoff" overlap on Sheet 1, the Sheet 8 cut-section "wall 3mm / axle beams" text overlapping the
-  mount-plate label, and the **Sheet 5 MOUNT-PLATE DETAIL title colliding with the lower-hub labels**.
-  Run `tidy_labels.py --overflow` on `generate_lighttrap_diagram.py` before shipping. The Drum-revolve
-  scene camera is also a touch zoomed-out (tighten on the next lighttrap send).
 ## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
 
 > Deferred out of the light-trap blueprint (merged/released). These are the starting scope for the **next**

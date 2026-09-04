@@ -648,8 +648,8 @@ def sheet2():
     leader(ax, (post_cx + R_post * 0.71, post_cy + R_post * 0.71),
            (rail_right_x + 200, Y_HI - 460),
            "PIVOT POST Ø89 CHS\n(vertical swing axis)", col="#5A5AA0", fs=6)
-    leader(ax, (PW + brush_w / 2, Y0_PL + PT / 2),
-           (rail_right_x + 200, Y_HI - 80),
+    leader(ax, (PW - brush_w / 2, Y_INT - 25),
+           (PW - 300, Y_INT + 155),
            "BRUSH SEAL\n(DOUBLED NYLON)\n— light-tight gap seal", col=C_BRUSH, fs=6)
 
     # ── Drum: draw filled circle on top to cut out the drum hole ─────────────

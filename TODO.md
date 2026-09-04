@@ -245,6 +245,3 @@ bath is available. Both are cheap; nothing downstream is finalized until they pa
 - [ ] **Muslin soak test** — validate the muslin (cyanotype substrate) in the wash: dimensional
   stability when wet, adhesion to the ACM backing sheet, and whether it holds under the perimeter
   cam clamps. (Paired with the UHMW test — same bath, same session.)
-
-## Code hygiene
-- [ ] **Sweep for pass-through wrappers (2026-09-03, Alvin).** A no-value forwarder — a local helper whose whole body just calls another function with the same args (e.g. Sheet 11's `llabel(tip, y, text)` → `leader(ax, tip, (LX, y), text, …)`, now removed) — is pure indirection that hides the real call. Grep the generators/models for one-line `def`s that only forward to another call with no defaulting/reshaping/added behavior, and inline them to direct calls. Rule now codified in `CLAUDE.md` → **Code Style** ("No pass-through wrappers") so new ones don't creep back.

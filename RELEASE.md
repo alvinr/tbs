@@ -24,382 +24,44 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Apron hinge-line light seal designed + drawn (was TBD).** The fold-down aprons' piano-hinge line — the
-  last residual light path — is sealed by a fixed 3mm-steel **lapping board** off the sill (an exterior
-  daylight baffle standing over the hinge) plus a 10mm closed-cell **foam** strip the apron compresses
-  when up, hinge knuckle inboard of the lap. Added as **Sheet 16 Detail F** (the sheet widened so all four
-  details sit in a row with the notes moved right), cascaded to `parts.py` + the report §5.3/§6, and modeled
-  in lighttrap `fixed_bottom_geom()` (re-sent + Sketchfab-pushed). Hinged-panel blueprint-run wrap-up complete.
+- **New blueprint set — the hinged light-trap panel (cargo-door end).** A 16-sheet fabrication set for the
+  swinging cargo-door panel and its revolving-drum light lock: panel elevation, plan cross-section, drum
+  vertical section, rotating-transport / swing-clearance plan, interior pull-handle mount, HDPE-surround
+  flat-pattern cut sheets + housing-join details, steel-frame general arrangement (interior + exterior
+  mirror), pivot-post assembly, Fan-B plywood cut sheet, frame hardware (2× lift-and-turn cam latches +
+  transport stay + brush strips), plywood→frame captive-tee-nut attachment, frame→pivot-post connection,
+  transport bottom-clearance section, and the fold-down light aprons (incl. the Detail F hinge-line seal).
+  The revolving-drum light-lock verification (person-fit + light-tight-at-every-rotation) lives on
+  **Light-Trap Sheet 7**. Registered across the gallery / publish / setup / deps / report, drawn to the
+  house label + fastener conventions with every dimension carrying an explicit `mm`.
 
-- **Hinged-panel report reconciled to the current design.** Stripped rev-tags and old-vs-new
-  archaeology from the prose and the injected parts specs ("replaces 18mm ply", "REPLACES the TEK
-  screw", "dropped from the old 2×2×0.120 tube", the retired barrel-hinge/caster note, the stay-hook
-  relocation history), fixed American spelling (over-center) and thousands separators, and verified the
-  live single-source blocks + design specs (Ø800 housing, 50×20×3 door frame distinct from the
-  2×2×0.120 panel/cage frame, light-lock verification now on Light-Trap Sheet 7).
+- **Panel design — swing pivot, lighter door frame, fold-down floor-gap seal.** The panel + drum swing
+  ~56° about a fixed Ø89 CHS pivot post that carries the panel, so the container cargo-door frame is a
+  non-structural **50×20×3 RHS** section (reuses the IBC retaining-bar stock), bolted M10 into the door
+  opening with the opening-edge U-channel welded to it. The **217mm** under-leaf floor gap — raised to clear
+  the bare walkway cantilever legs through the swing — is closed by two bottom-hinged plywood fold-down
+  aprons + a fixed center baffle, sealed by top/edge brushes, 45° chamfer lap joints, and an exterior
+  lapping-board + compressed-foam labyrinth over the piano hinge. Two interior lift-and-turn cam latches on
+  the opening edge give inward egress.
 
-- **3D model cascade after the hinged-panel 2D review.** Audit-first (no geometry constant changed this
-  session; the renumber cascades to 3D as comment-accuracy only — no in-scene 3D label cites a sheet
-  number), then one focus-first send round: **overview** re-sent (stepped-bottom cargo-door split +
-  50×20×3 door frame, unused `BAY_BACK_X` dropped, stale Ø900/2×2×0.120/Sheet-16 docstrings fixed,
-  interference report refreshed); **electrical** re-sent to sync the single-owner-builder refactor
-  (geometry unchanged); **construction** re-hashed (env-only); **lighttrap** doc-comment renumber
-  cascade. All 10 models back in sync; overview + electrical pushed to Sketchfab in place. The reported
-  "door frame swings with the door" was confirmed **not** an overview issue (no DC there) — it's the
-  construction click-to-build animation, tracked separately.
+- **Ventilation Sheet 3 — Fan-B mount.** Fan B rides the swinging panel and bolts to its 18mm ply band via
+  captive tee-nuts (distinct from wall-mounted Fan A on M10); added the dedicated mount plan and scoped the
+  "identical fans" claim to the fan body. Fan mounts specced to real hardware (Fan-A L-bracket + Tek screws
+  around the wall hole; fan-to-duct M5 corner screws; turned-out duct flanges).
 
-- **Light-lock verification moved from the hinged-panel set to the light-trap set.** The
-  revolving-drum light-lock proof (person-fit + light-tight-at-every-rotation + verdict) now lives on
-  **Light-Trap Sheet 7**, which adopted the hinged-panel Sheet 5 design and merged its own
-  seal-fabrication notes / legend / cross-section refs. The hinged-panel set dropped its Sheet 5 and
-  **renumbered 6→5 … 17→16 (now 16 sheets, "OF 16")** — functions, PNGs, all internal cross-references,
-  the gallery, `hinged-panel-report.md`, and `publish.sh`/`setup_docs.py` registrations updated to match;
-  the report's §3.6 verification now embeds `lighttrap-sheet7.png`.
+- **Light-trap 3D model — full fabrication detail, zero-drift with the 2D.** Bay HDPE side/roof/floor walls
+  are the outer skin, blind-riveted on a full perimeter straight to the integrated steel cage posts (Al
+  L-angle rails backing the vertical HDPE edges); vertical EPDM baffles close the drum housing↔cage
+  side-wall gaps; top/bottom 50×50 cage beams tie the drum cage to the frame; the film-plane fixed left rig
+  stays put through the swing (only the lift-out rail removes); the cam latch is an L-shaped lift-and-turn
+  handle; and the fold-down apron carries the hinge-line lapping-board/foam seal. Sheet 2 re-based on the
+  shared drum/cage constants so the plan matches the model exactly.
 
-- **Hinged-panel generator — retired-HGR20-slide archaeology removed.** Sheet 1 dropped the dead
-  `C_RAIL`/`C_CARR`/`RAIL_H`/`RAIL_LEN`/`HINGE_YS`/`HINGE_L` vars + "RETIRED" history comments (no
-  visual change); Sheet 3 dropped the faint "drawn for reference" retired floor/ceiling slide rails +
-  carriage blocks + the "(former HGR20 slide rails — RETIRED)" label; Sheet 2 (plan) dropped the red
-  HGR20 rail + 60×60 carriage beam and the "no slide rail" negation labels, keeping the current brush
-  seals + pivot post (house style: no drawn design archaeology — the panel swings about the Ø89 pivot).
-  Also swept the rest of the generator of design-history archaeology — `revN` tags and old-vs-new
-  prose ("the former solid core is replaced by…", "was 18mm ply", "Ø750/4-fin drum was replaced")
-  stripped from comments and visible titles (Sheet 2 "PUNCH-OUT BAY", Sheet 4 "ROTATION TRANSPORT",
-  Sheet 5 light-lock title) so they describe the current design only. Removed the
-  `leader as _leader_shared` import alias and inlined Sheet 3's `dlbl`/`clbl`/`ddlbl` label helpers to
-  direct `leader()` calls.
-
-- **Hinged-panel Sheet 12 — cross-reference note is now a bordered note block.** The plain centered
-  "plywood→frame tab/T-nut → SHEET 14 · Fan-B mount → Ventilation Sheet 3" text is now a titled
-  CROSS-REFERENCES box (two bullets) matching the other sheets' note style.
-
-- **Hinged-panel sheets — label tidy pass.** Fixed the off-frame labels: Sheet 17 apron-operation notes
-  converted to auto-wrapped logical lines and reseated (was overflowing the frame + title block); Sheet 13
-  subtitle shortened; Sheet 11 hub-bracket note condensed; Sheet 10 (exterior mirror) drops the redundant
-  member schedule; Sheet 2 INTERIOR label nudged in. Remaining off-frame labels are ≤6% margin notes.
-
-- **Lighttrap 3D — film-plane fixed rig stays through the swing; only the lift-out is removed.** The whole
-  fixed left film-plane corner (parking stub + carriage/cradle + wall-seat saddles/hangers) was wired as a
-  swing-DC child that hid in transport; it is now a STATIC root component that remains, while only the
-  removable lift-out rail hides on swing (reverts the earlier hanger-only split — the whole fixed rig stays).
-
-- **Lighttrap 3D — bay HDPE side walls are now the OUTER skin (lap the posts from outside).** They sat
-  inboard of the cage-post face, so the frame/L-angle read as the exposed outer surface and the rivets
-  landed on the frame; the near/far skins now lap the post outboard faces (yL-t / yR+t) so the HDPE is the
-  visible outer skin and the rivets pass through it. Edge L-angles moved inboard (behind the skin); light
-  seals re-referenced to the new inboard faces.
-
-- **Lighttrap 3D — film-plane wall hangers stay put on swing.** The left film-plane corner’s permanent
-  container-wall fixtures (wall-seat saddles + far-left EXT plate/M12 bolts) were hiding with the parked
-  cradle when the panel swings; they’re now split out (new `keep="wall"`/`"fixed_stay"` in fpm.corner) and
-  placed static, so they REMAIN while the film-plane beam + cradle park/lift out.
-
-- **Lighttrap 3D — L-angle fixing rails on the drum-cage HDPE side-wall vertical edges.** Each near/far bay
-  side wall now has an Al L-angle down both vertical edges: the post leg rivets to the cage corner post,
-  the upstand backs the HDPE edge (HDPE rivets to it) — a dedicated edge rail instead of riveting the thin
-  HDPE straight into the RHS wall.
-
-- **Lighttrap 3D — fixed left jamb bottom aligned to the plywood.** The fixed opening-edge jamb (web +
-  flanges + ply) was stepped up to PANEL_FLOOR_GAP_SIDE (282), floating 92mm above the adjacent swing-corner
-  plywood + apron flap top; it now bottoms at CORNER_BOT (190) to meet them — no gap.
-
-- **Lighttrap 3D — drum side light seal trimmed between the cage beams.** The side-gap baffle now spans
-  only the clear opening (Z 190–2167) between the top and bottom cage beams instead of running full height
-  through them; the beams seal the ends, the baffle seals the middle.
-
-- **Drum side light seal shown in the "Drum Revolve" scene + on the 2D.** The side-gap EPDM baffle is now
-  built into the lighttrap Drum Revolve sub-assembly (so it appears in that scene), and drawn on hinged-panel
-  Sheet 2 (plan cross-section) as EPDM strips bridging each housing-to-cage-side-wall gap at the drum equator.
-
-- **Lighttrap 3D — drum side-gap light seals.** Added vertical EPDM baffles at the drum-center plane on
-  each side, closing the open gap between the fixed housing outer skin and the inner face of the cage/bay
-  side walls (where the round housing spans the full width) — blocks the straight-down-the-side light leak.
-
-- **Lighttrap 3D — top/bottom horizontal rivet rows on the bay side walls.** Each near/far HDPE side wall
-  now carries horizontal rivet rows along its top + bottom edges (into the top/bottom cage rails), in
-  addition to the vertical rows at the front/back posts — a full riveted perimeter per side.
-
-- **Lighttrap 3D — panel corner HDPE butts the bay walls; side-wall + L-strip fixings added.** The near/far
-  panel corner skins now extend inboard to the drum-cage faces (Yd 700 / 1662) so the panel HDPE butts the
-  bay side walls (47mm slot closed); vertical rivet rows fix the near/far bay walls to the front+back cage
-  posts; and an L-angle strip on each center-zone jamb secures the extended HDPE.
-
-- **Lighttrap 3D — bay HDPE box stretched to the back cage beams + roof/floor rivets added.** The left/right
-  (near/far) HDPE side walls now run the full cage depth (to DRUM_CAGE_X1) so they cover the back cage
-  posts, and a full-perimeter blind-rivet row was added to the roof + floor HDPE tying them to the cage
-  rails — matching the side-panel fixing (Sheet 2).
-
-- **Lighttrap 3D — fixed leaf plywood split onto its own "Plywood" layer.** The Near-Leaf "Fixed left ply"
-  was retagged off the steel Near-Leaf component onto a dedicated Plywood layer, so the "Steel · Pivot ·
-  Frame · Cage" scene now drops the leaf ply while keeping the leaf U-frame + cam-latch strike plates.
-
-- **Lighttrap 3D — bay HDPE side walls capped at the top beams; steel scene decluttered.** The near/far
-  bay walls now stop at the cage-top beams (LT_CAGE_TOP) instead of running up to the panel top; the roof
-  HDPE sits on the top beams and rivets to them. The "Steel · Pivot · Frame · Cage" scene now also hides
-  the walkways and fold-down aprons so only structural steel shows.
-
-- **Lighttrap 3D model — HDPE bay walls now rivet straight to the cage posts (matches Sheet 2).** Retired
-  the L-angle standoff scheme (`bay_l_angles` removed; the far/near wall mouth L-angles dropped). The bay
-  walls blind-rivet straight into the cage posts; the structural top/bottom bay beams and near opening-edge
-  stile are unchanged.
-
-- **Hinged panel Sheet 2 — drum-entrance HDPE side skin now fixed directly to the post.** Dropped the
-  L-angle standoff: the 1/8″ HDPE bay side skin sits flat on the cage post’s outside face and is
-  blind-riveted straight through the skin into the post’s outer wall. Leader + enlarged detail redrawn
-  to match the mid-sheet rivets.
-
-- **Hinged panel Sheet 9/10 (steel-frame GA) — Ø89 pivot post removed.** The vertical pivot-post tube
-  was a distraction from the frame general arrangement; it now reads as just the steel frame. The post
-  assembly stays detailed on Sheet 11.
-
-- **Lighttrap 3D model — cam-latch handle redrawn as an L (matches Sheet 13 Detail A).** The straight
-  T-handle lever is replaced by an L-shaped lift-and-turn handle: a stem out the interior face with the
-  grip bent up 90°, so the model reads the same as the 2D latch detail.
-
-- **Hinged panel Sheet 13 Detail A — redrawn as a side section (per Alvin sketch).** Was a plan section with
-  the clamp shaft end-on and the handle hidden "behind"; now a side section through the latch axis so the
-  L-shaped **lift-and-turn handle** shows in profile (arm bending up 90°, with lift + turn arrows), the shaft
-  runs horizontally through the panel stile, and the cam behind hooks the strike welded to the fixed jamb.
-
-- **Hinged panel Sheet 14 — removed Detail A (Fan-B → plywood).** That fan-flange → tee-nut mount is now
-  fully captured on the new **Ventilation Sheet 3** (Fan-B mount), so Sheet 14 is now just the **plywood →
-  frame** attachment (welded tab + captive tee-nut). Updated the cross-references accordingly (Sheet 12
-  note + subtitle now point the Fan-B mount to Ventilation Sheet 3; the ventilation sheet/report no longer
-  cite the retired "Sheet 14 Detail A"). Vent Sheet 3 was already registered (gallery/publish/setup/deps/report).
-
-- **Ventilation — new Sheet 3: Fan B mount (plywood panel, tee-nut fixing).** The fan schematic (Sheet 2)
-  showed BOTH fans as identical wall-mounted units, but Fan B is on the SWINGING cargo-door panel and
-  bolts to its 18mm PT plywood band via 2× M8 into captive tee-nuts (hingepanel Sheet 13), not the
-  container wall. Added a dedicated **Fan B mount plan** (same fan body + baffle duct, plywood/tee-nut
-  fixing) and corrected Sheet 2 + the report so the "identical" claim now scopes to the fan body only
-  (Fan A = wall/M10, Fan B = plywood/tee-nut). Registered across deps/publish/setup/gallery/report.
-  Follow-up: cut the Ø150 airflow bore through every mounting flange/skin so the section reads the air
-  path; redrew all fasteners with the shared `draw_bolt` convention TO SCALE (M10 wall through-bolts →
-  hex nut on the exterior; M8 → captive tee-nut via the rivnut convention); and on Sheet 2 sized the wall
-  hole SMALLER than the louvre so its flange overlaps the wall, fixed with self-drilling Tek screws.
-  Then reworked the Fan A wall mount itself: replaced the M10 through-bolts (they interfered with the
-  corrugated wall) with an **L-bracket that wraps around the hole edge + Tek self-drilling screws** into
-  the wall; right-sized the fan-to-duct fixing to the fan's own **4× M5 corner screws** (was oversized M10).
-  Fan-side follow-up: the baffle duct's top & bottom walls **turn out 90°** at the fan end to form the duct
-  flange; the fan flange simply **butts up** against it and the 4× M5 corner screws pass through both flanges.
-  Moved the container-side Tek screws clear of the duct walls.
-
-- **Hinged panel — Sheet 2 zero-drift reconcile with the 3D (drum/cage/frame depth).** Sheet 2 was
-  recomputing the drum/cage depth locally (drum center −450, cage −875..−25) instead of using the shared
-  constants the 3D model uses. Re-based the plan depth on the PANEL exterior and single-sourced from
-  `DRUM_CX` + `DRUM_CAGE_X0/X1` (`+PANEL_EXT` offset), so the drum, cage extent, and cage→frame relation
-  now match the lighttrap model exactly. The cage back posts now **land inside the frame jambs** (welded
-  along the embedded overlap — weld ticks), replacing the earlier bracket-across-a-gap. Also drew the
-  opening as **two distinct members** — the 40mm container wall AND the 50×20×3 RHS door frame — per the
-  3D (was one 40mm block mislabeled as the frame). EXT overhang auto-updates to 760mm; the (now N/A)
-  interior-overhang dim removed. Per Alvin: "both the 2D and 3D represent the same factual world. Zero drift."
-
-- **Hinged panel — feedback round (Sheets 2/9/10/14 + global mm).** Sheet 9/10: removed the Fan-B
-  plywood band and the drum/cage envelope so the steel-frame GA reads as frame only (drum detailed on
-  Light-Trap Sheet 7, Fan-B ply on Sheet 12). Sheet 14 Detail A: the fan-flange bolts now thread into a
-  captive **tee-nut** set in the ply (matching Detail B), not a separate backing plate + nuts. Sheet 2:
-  re-scaled the blind-rivet glyphs — the front + side rivets were 3–5× oversized (read as bolts); now a
-  realistic Ø6mm-body / ~12mm-head consistent across both. **Standing rule:** every dimension label now
-  carries an explicit `mm` suffix (f-string + literal), applied across all 17 sheets.
-  Sheet 2 cage→frame: replaced the thin 14mm weld-tie (read as a bolt) with a full-width **welded
-  bracket + gusset plate** at each interior cage corner post, fillet-welded both ends, with a callout.
-  Sheet 3 "RHS" confirmed = Rectangular Hollow Section (not a side designation) — left as-is per Alvin.
-
-- **Hinged panel — tidy-label pass (Sheet 9/10) + stale cross-ref fixes.** Sheet 9/10 left margin
-  de-crowded: tightened the U-FRAME and cam-latch STRIKE-PLATE notes, widened the margin, and moved the
-  "1225 fan band" dimension clear of them (fix applies symmetrically to the exterior mirror). Fixed two
-  sheet cross-references the Sheet-10 renumber had missed: Sheet 11's frame→hub note now points to
-  **SHEET 15** (Frame → Pivot-Post Connection, was 14) and Sheet 12's attachment note to **SHEET 14**
-  (was 13, and it contradicted the same sheet's own subtitle). Corrected stale value-comments surfaced by
-  `check_consistency.py` (Fan-B ply-band top 1125→**1225**/`PANEL_FAN_BAND_Z`; drum-axis −400→**−420**;
-  Sheet-2 depth-center derivation −400→**−450** for DRUM_R 450→400). Re-saved `lighttrap.skp` (Alvin).
-
-- **Hinged panel — 2D fixes + generator function rename.** Sheet 14 Detail A: moved the fan bottom bolt so
-  it clears the Ø150 housing symmetrically with the top. Sheet 13 Detail A: re-drew the cam latch as a
-  proper plan section — the clamp shaft is vertical through the RIGHT (panel) stile (end-on = a circle) and
-  its right-angle latch spans LEFT to the strike on the jamb stile. Sheet 2: added the missing front-face
-  HDPE→corner-post rivets (the side skins already had them). Renamed the generator's `sheetN()` functions
-  to match the sheet numbers they draw (Sheet 9/10 share `_frame_ga(mirror)` via thin wrappers).
-  Follow-up pass: Sheet 14 Detail A bottom flange plate widened to match the top (symmetric); Sheet 2
-  front-face rivets set flush to the HDPE surface + drawn to scale (d=11) and spread clear of the corner
-  rivets, with the leader routed clear of the "PUNCH-OUT BAY" and side-skin labels; the container
-  cargo-door frame drawn on Sheet 2 (solid, matching Sheet 9/10) and Sheet 9's cargo frame recolored to
-  the same solid `#5A5E66` used on the Sheet 10 mirror.
-
-- **Hinged panel — Sheet 10: exterior mirror of the frame GA.** Added a mirror of Sheet 9 viewed from
-  OUTSIDE the cargo door toward the drum (x-axis reversed, so the geometry flips left↔right while the text
-  stays upright — pivot post now on the left + drawn behind the frame, opening/U-frame/Fan-B on the right).
-  **Inserted as Sheet 10** (right after Sheet 9); the former Sheets 10–16 shift to 11–17 (set is now "OF 17")
-  — cascaded the renumber through the generator, gallery, registrations, the hinged-panel report, and the
-  hingepanel sheet cross-references in the models/constants/parts. Also added the container cargo-door frame
-  to Sheet 9 (full ghosted perimeter + M10 anchors) and Sheet 2 (merged with the former "end wall").
-
-- **Container cargo-door frame re-specced lighter + attachment specified.** Now that the pivot post carries
-  the hinge panel's weight, the door frame is no longer structural — only seal-compression + cam-latch load.
-  Dropped it from **2×2×0.120in SHS → 50×20×3 RHS** (`DOOR_FRAME_FACE`/`DOOR_FRAME_DEPTH`; 50mm face keeps the
-  seal landing, ~30% lighter), **reusing the IBC retaining-bar section** so it needs no bespoke order.
-  Specified the attachment: the frame **bolts M10 @ ~300** into the container's steel door opening
-  (reversible), and the opening-edge **U-channel welds to the door-frame left stile**. Cascaded through the
-  3D `door_frame()` (+ M10 anchors), **Sheet 9** (door-frame stile drawn ghosted with anchors + the U-frame
-  welding to it), `parts.py`/`costing.py`, and the container / equipment-layout / cost-breakdown reports
-  (also fixed the stale "4× Southco at corners" latch note → 2× cam latch on the opening edge).
-
-- **Hinged panel — 3D review round (pivot corner, cam latches, HDPE L-angle framing).** Stripped the
-  redundant travelling **pivot-corner ply/frame** (it read as a plywood panel jammed between the leaf
-  stile and the pivot post) down to just the structural **pivot-edge stile** the hub brackets weld to,
-  and extended the swung leaf's **far-corner HDPE skin continuously to the pivot line** so the door face
-  is skinned by the same panel material (no separate ply panel) with the stile behind it — closing the
-  gap that had briefly left the stile/hub detached from the leaf. Redrew the two **cam latches**
-  (1619A74) with the T-handle valve-body pattern (barrel-through + interior lift-and-turn lever, olive
-  C_VALVE) and repositioned them for comfortable standing operation (top lowered 2168→1900, bottom
-  raised 220→500). Added **L-angle framing** (30×30×3) securing the HDPE bay walls to the cage at the
-  panel-plane lap (2D Sheet 2 detail applied in 3D); flagged the design gaps — the bay's forward ~890mm
-  mouth has no steel to rivet to (needs a mouth frame ring), and the bottom angle crowds the tray rim.
-  Began **frame-by-frame** detailing of each bay wall: the **far wall** (pivot / film-plane side) now
-  carries a full-tunnel-depth drum-side L-angle at the mouth edge, plus **top + bottom 50×50 beams running
-  in Yd from the drum cage across to the pivot frame** (the horizontal beams of Sheet 9), with rivet lines
-  to the beams and the drum-side edge. Added a **"Steel · Pivot · Frame · Cage"** review scene that hides
-  the HDPE skins / EPDM / Fan-B / drum shell so the framing reads. Dropped the **far-corner HDPE/apron
-  split** on the pivot side from the 282 step down to the bottom-beam top (`FAR_CORNER_BOT` = 190) so the
-  bottom-beam rivets land on HDPE rather than the fold-down apron plywood — the far apron (UP + folded +
-  chamfer) reduced to suit; near corner keeps its 282 step. (2D Sheet 16/9/15 apron reconcile deferred.)
-  Added a **fixed (non-folding) plywood stub** closing the corner gap between the far apron's far edge and
-  the pivot post (a fold-down flap there would foul the post + floor plate; the fixed stub at X28–40 clears
-  both). Reconciled the **near wall** (pinhole side): added its missing top + bottom 50×50 beams running
-  in Yd from the drum cage to the near frame edge, symmetric to the far wall. Then completed the near wall
-  to match: drum-side L-angle at the mouth + rivet lines, the fold-down near apron dropped to the same
-  split as the left, and the Fan-B ply band extended down to it so the near beam's rivets land on fixed
-  skin. Renamed the split constant `FAR_CORNER_BOT` → `CORNER_BOT` (now both sides, 190). Added the near
-  side's missing **vertical opening-edge stile** (Sheet 9 "left swing stile") tying the top + bottom beams
-  at the frame edge — the far side's equivalent is the pivot post/stile. Rebuilt the fixed opening-edge
-  member (`near_leaf`) from a solid block into a **welded box section** (thin exterior + interior flanges
-  for the HDPE + plywood skins, a swing-facing web) welded to the door frame on the container-wall side,
-  and located the two **cam-latch strike plates** on the web. **Sheet 9** now draws the fixed opening-edge
-  structure as that **welded U-channel** (web at the Yd180 joint facing the swing panel + carrying the
-  strike plates; flanges wrapping back and welded to the container door frame) instead of a ghosted strip. Moved all four bay beams + the
-  near stile to the **flush-front datum (X0–50)** — they were set back 40mm behind the skin, lapping the
-  cage post only 10mm; now they sit on the door plane like the cage posts + jambs (full 50mm cage lap).
-- **Hinged panel — HDPE surround fabrication set.** Added the two missing surround blueprints:
-  **Sheet 7** (flat-pattern cut sheets for all six 1/8" HDPE pieces — the two center-zone face skins,
-  the two B2-bay side walls, and the upper/lower floor caps) and **Sheet 8** (the floor-cap→Ø800-housing
-  extrusion-weld join and the surround→steel-frame blind-rivet lap details). Resolved the surround's
-  **frame connection** as a blind-riveted lap (1/8" 18-8 SS @ 60mm + DP8010 sealant bead) and modeled it
-  in 3D so the surround reads as fastened, not floating (+$29 panel). Reconciled the stale **Ø900→Ø800 /
-  DRUM_H 2200→2100** drum geometry across the hingepanel generator, the lighttrap model, costing, and the
-  assembly generators; hinged-panel report §2.6 added, §3.1 drum-top Z corrected to the 2,100mm cap top.
-- **Hinged panel — steel-frame + hardware blueprint set (Sheets 9–14).** Added the frame general
-  arrangement (Sheet 9, noting the welded drum cage), the frame→pivot-post connection + full pivot-post
-  spec (Sheet 10 + report §5.5), the plywood cut sheet with Fan-B mount and IBC-style metal-tab/tee-nut
-  frame fixings (Sheet 11), the frame hardware attachments (Sheet 12: cam latch, transport lock, brush
-  strip), the frame→hub weldment detail (Sheet 13/14), and the pivot-jamb elevations (Sheet 1/14).
-- **Hinged panel — cam-latch reselection + inward-opening reconcile.** Swapped the recessed compression
-  latch for a **McMaster 1619A74 lift-and-turn cam latch** (adjustable 1¾–2⅛", 150 lbf) mounted through
-  the tubular steel jamb (over-bore + box-spanner + light-tight plug for the captive nut) latching a
-  **welded keeper on the steel-framed stub wall**; the panel now **opens INWARD only** against a frame
-  stop (aged-out 180° outward swing removed across Sheet 1, the report, and equipment-layout §9). Net
-  panel cost **+$47/$33/$19** (cam latch).
-- **Hinged panel — fold-down light aprons close the raised floor gap (new Sheet 16).** The 217mm floor gap
-  is light-sealed by two **bottom-hinged fold-down plywood aprons** at the corner zones (the far one minus a
-  measured **200mm fixed stub** that clears the Ø220 pivot mount plate) + a **fixed center baffle** under the
-  drum bay. Stand up + seal in operation; fold flat into the container for the transport swing. New **Sheet 16**
-  (fold action + elevation + baffle detail); built into the lighttrap 3D as DC children that fold in transport
-  mode (visibility-swap on `PanelSwing!swing`), plywood (`C_PLY`); the obsolete full-width threshold brush is
-  retired. +$95/123/150 panel; report §5.3/§6 reconciled. Joint seal detail (foam + lapping board) still TBD.
-- **Hinged panel — drum-bay light seals + reduced side gap.** Closed the residual light paths around the
-  swinging drum cage: the fold-down aprons now **extend inboard** past the center-zone step line to a 12mm
-  brush gap off the cage sides (`APRON_CAGE_GAP`, `APRON_IN_L/R`) — cutting the old 47mm side slot to 12mm —
-  with a **vertical strip brush** on each apron inner edge, and a **horizontal strip brush** on the center
-  baffle top edge bridging the 10mm up to the swept cage bottom. Center baffle trimmed to the apron edges.
-  Built into the lighttrap 3D and Sheet 16 (elevation + Detail D). `APRON_FIX_W` single-sourced to constants.
-  3D review round: each fold-down apron is now ONE notched plywood panel (single stepped cut, not two
-  abutting boxes); all four now-redundant bottom EPDM strips (both fixed leaves + the swing panel's trimmed
-  L/R) were removed — the fold-down apron + its top brush seal that leaf-bottom interface now.
-  Further review round: the pivot-side plywood is now ONE full-height fixed 200mm strip (Yd2162–2362) —
-  the old 75mm upper leaf + the fold-down-zone stub merged into a single panel covering the Ø89 pivot-post
-  corner; the swinging panel's plywood ends at Yd2162 and hinges to the post behind it. EPDM (compression)
-  and the brush seals now render in DISTINCT colors (brown EPDM vs green brush, previously two greens).
-  **Fan B raised 100mm** (`FAN_B_H` 600→700, ply mount band top 1125→1225). Added **Sheet 16 Detail E** —
-  the plywood↔plywood 45° chamfer (scarf) joint TYP of every moving plywood interface: EPDM bonded to the
-  FIXED face, the moving panel sweeps off without binding, the diagonal lap blocks the straight light path
-  (apron top↔leaf, apron side↔stub/jamb, swing-panel↔leaves, apron↔baffle). 3D: the far apron↔full-height
-  strip joint is cut for real (chamfered strip prism + matching apron wedge + EPDM scarf seal, `CHAM=40`)
-  as the pattern; the remaining three joints follow once the look is confirmed.
-  Review fixes: added top+bottom **connection beams** tying the swinging panel frame to the Ø89 pivot post
-  (it read as floating); extended the **bay HDPE walls down to the cage bottom** (Z217→Z140) to close a
-  light gap at the housing openings. **Plywood rebuilt at true 12mm** on the interior face of the 40mm frame
-  zone (`PLY_T`/`PLY_X0`), with the 45° chamfer now a full-thickness 12mm scarf (`CHAM=12`); the swing
-  panel's corner zones now step up to Z282 like the frame + aprons, which removes the fold-down-flap↔leaf
-  overlap and clears the walkway cantilever in the swing. Review follow-ups: frame + ply set OPAQUE so the
-  frame no longer reads through the ply; the bay HDPE walls moved onto the drum-cage faces (Yd700/1662,
-  riveted flush, no gap) instead of the wider panel-zone lines. Explicit **45° top-edge chamfer** cut on
-  each fold-down apron (moving-flap scarf that sweeps off the fixed leaf's EPDM — Detail E); the near leaf
-  bottom stepped up to Z282 to meet the flap top. Remaining chamfer joints cut: the center **baffle ends**
-  (45° where the apron inner edges meet it) and the **near-leaf inboard edge** (swing-panel↔leaf joint) —
-  all four plywood↔plywood joints now carry the explicit 45° scarf. The **entire film-plane left rig**
-  (parked carriage + brackets + stub + saddles + plates + welds) now hides in transport — it's the
-  shared-pivot film-plane hardware, not the light-trap door, and was reading as floating plates once the
-  panel swung. Wired as a **swing-DC child** (not a root component — a root `_hidden_formula` doesn't
-  recompute when the parent DC animates; only children do) so it actually vanishes at `swing>0.5`.
-- **Hinged panel — pivot corner resolved as a travelling leaf.** Reversed the fixed-jamb approach at the
-  Ø89 pivot: the pivot-corner plywood now TRAVELS with the swinging leaf (built in the swing DC), wrapping
-  to the pivot LINE (not past it) — a CLEAN rectangular 12mm ply on a 40mm frame (no wedge/notch; the
-  door-plane ply is inboard-clear of the fixed post). Frame→post connection is the inboard pivot hub; no
-  fixed jamb, no swept cutout. The former full-height fixed far strip is retired.
-- **Hinged panel — frame→post securing reconciled (2D + 3D).** The swinging leaf is tied to the fixed Ø89
-  post by the moving hub (thrust + journal bearings) and **3 hinge brackets fillet-welded to the leaf's
-  travelling PIVOT-EDGE STILE** (2×2 RHS) — hub + leaf frame + drum cage as one weldment. Sheets 10/14
-  relabelled from "center jamb" to the pivot-edge stile (travels + carries the pivot-corner plywood);
-  Sheet 16's obsolete "200 fixed stub" now reads as the travelling pivot-corner leaf. 3D: added the
-  pivot-edge stile so the hub brackets land on steel, and deleted the wrong door-plane connect beams.
-- **Hinged panel — 2D review fixes.** Sheet 13 Detail A: drew the Ø150 fan air CUTOUT through the ply +
-  flange (fan now 150 at 1:1); Sheet 13: taller page so the rotated-90° companion clears the title block;
-  Sheet 8 Detail B: centered the front rivet on the full stack so its head butts the HDPE; Sheet 2: added an
-  enlarged **HDPE side-skin → L-angle → frame** detail (the HDPE rivets to an L-angle on the post, not
-  through the beam). 3D: the hub hinge brackets now align with the leaf pivot-edge stile (per Sheet 14).
-- **Hinged panel — floor gap raised 130→217 for the transport-swing clearance.** Confirmed (2D + live 3D)
-  that in the transport swing the drum's lower cage sweeps across the container over the FIXED processing
-  tray and the LEFT walkway's floor-leg cantilever posts. The posts (top Z115, they stay bolted) govern —
-  taller than the tray rim (Z70). Raised `PANEL_FLOOR_GAP` 130→217 so the drum-cage underside (Z130) clears
-  the Z115 posts by 15 mm (and the Z70 tray by 60 mm); the lower hub, `PANEL_FLOOR_GAP_SIDE` (→282), and the
-  drum interior (1970→1883, still clears a 1780 operator by 103) all derive from it. **Sheet 15** reworked
-  into the transport-swing clearance section (drum cage vs fixed posts/tray + panel vs wall brackets);
-  light-trap-selection, hinged-panel §5.3, and walkway reports reconciled; weight/costing re-injected.
-  3D: lighttrap re-sent + verified (cage bottom Z130, panel corners Z282); overview + construction pending.
-- **Hinged panel — stepped bottom propagated into the 2D set.** Single-sourced the derived bottom step
-  (`PANEL_FLOOR_GAP_SIDE` = 195, `PANEL_BOTTOM_STEP` = 65 in `tbs_constants.py`) and drew it on **Sheet 9**
-  (frame GA — the bottom rail is now three segments: center at Z0 over the tray, both corner rails stepped
-  up 65 mm, with the member schedule + step risers/dim updated) and **Sheet 1** (elevation — frame, skin,
-  fan-mount band, EPDM seal and fixed strips all follow the stepped bottom, with a callout). Sheet 15 now
-  reads the same constant. Next: push the step into the 3D `hinge_panel()`.
-- **Hinged panel — Sheet 15: bottom clearance cross-section (new).** Added a Yd–Z clearance-envelope
-  section (walkway grate lifted out for transport) that reconciles the 2D set with the **stepped frame
-  bottom** in the 3D model. It shows the near/far **side-wall cantilever brackets** (vertical legs Z180
-  std / Z200 widened), the **left lift-out floor-leg cantilevers** (×5, top Z115), the tray, and the
-  **stepped panel bottom profile** derived from a 15 mm clearance rule: **Z130 across the center**
-  (clears the Z115 arms/posts) **stepping up to Z195 at both side corners** (clears the Z180 std bracket
-  legs), with the widened-Z200 case flagged for the swing-arc check. This is the hard-limit envelope for
-  the panel frame bottom. Registered in all four generator-index files + the gallery; sheet count 14→15.
-- **Hinged panel — Sheet 13 fastener details.** Fixed Detail A so the Fan-B mounting bolts **butt the
-  flange plate + backing plate faces** (were floating clear of them), and reworked Detail B: the plywood→frame
-  bolt now uses the standard section bolt glyph (hex head on the tab upstand, shank into the ply tee-nut),
-  moved clear of the weld tab, plus a **rotated-90° companion view** that proves the bolt seats in the welded
-  tab — not through the frame RHS.
-- **Hinged panel — cam latches 4→2 + 2D dimension/detail round.** Reduced the cam latches from 4 corners
-  to **2 on the opening edge** (the pivot edge is hinged; a frame stop takes the outward direction) — parts
-  registry qty 4→2, **−$61** panel; reconciled the count across the report, the mass table, and
-  light-trap-selection (which also still named the retired Southco C2-33 and the wrong pivot edge). Drawing
-  fixes: Sheet 1 (2 latches, opening edge); Sheet 2 (cage **top perimeter rails** shown; side HDPE laps +
-  rivets the corner posts; bottom skin width = frame; side rivets drawn as fasteners, not end-on circles);
-  Sheet 7 (personnel-cutout height + locating dims); Sheet 8 (side rivet butted to the surfaces); Sheet 9
-  (drum drawn as a **vertical cylinder**, not a face-on circle; full dimension set); Sheet 10 (pivot-post
-  Ø + length dims); Sheet 12 Detail C (brush screw head on the exposed holder face); Sheet 13 (Fan-B mount
-  redrawn **to scale** — the panel fan bolts through its **flange plate**, not the fan body — plus dims).
-- **Hinged panel — 2D fastener/buildability refinements.** Reworked the detail drawings so every fastener
-  is buildable: nuts land against the inside tube wall, hollow beams show their bore, side rivets bite
-  steel backing (not the HDPE skin), tee-nuts pass through the tab face, full-height pivot beams, and the
-  frame→hub brackets are **fully welded** (no bolts through closed tube). Swapped the panel-swing pull
-  handle to the **same off-the-shelf McMaster 1871A65** as the interior drum handle (screwed into jamb
-  rivnuts), **−$64/$74/$84** panel.
+- **Reports + single-source reconcile.** The hinged-panel report describes the current design only —
+  rev-tags, old-vs-new archaeology, and raw location coordinates stripped from the prose and the injected
+  parts specs; American spelling + thousands separators fixed; specs verified (Ø800 housing, the 50×20×3
+  door frame vs the 2×2×0.120 panel/cage frame). Every spec change cascaded through `parts.py` / `costing.py`
+  and the container / equipment-layout / cost-breakdown reports.
 
 ## [0.9] — 2026-08-27
 

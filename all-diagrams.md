@@ -418,7 +418,7 @@
 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — End Cap + Bearing Seats + Stub-Shaft](assets/lighttrap-sheet6.png)
 
-![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)
+![TBS-001 Light-Trap — Sheet 7: Light-Lock Verification (Access · Light-Path · Seals)](assets/lighttrap-sheet7.png)
 
 ![TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement](assets/lighttrap-sheet8.png)
 

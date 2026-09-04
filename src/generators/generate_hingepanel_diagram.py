@@ -2627,25 +2627,23 @@ def sheet16():
     ax.add_patch(Rectangle(aA(-51, 0), 51, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))            # threshold sill
     leader(ax, aA(-25, THR), aA(-85, 165), "threshold sill\n(fixed, Z0–51)", col=C_OUT, fs=6)
     ax.add_patch(Rectangle(aA(-20, ATOP), 62, 95, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.7))          # leaf bottom (corner)
-    leader(ax, aA(32, ATOP + 45), aA(150, 360), "swinging leaf bottom\n(corner zone, Z282)", col="#1763C8", fs=6)
+    leader(ax, aA(32, ATOP + 45), aA(175, 360), "swinging leaf bottom\n(corner zone, Z282)", col="#1763C8", fs=6)
     hx, hz = 6, 10
     ax.add_patch(Rectangle(aA(hx, hz), AT, ATOP - hz, fc=C_PLASTIC, ec=C_OUT, lw=1.7))                 # apron UP
-    ax.text(a0 + hx + AT / 2, (ATOP + hz) / 2, "FOLD-DOWN APRON  (UP = sealing)", ha="center", va="center",
-            fontsize=6.6, fontweight="bold", color="#204060", **FONT, rotation=90)
     for bxx in range(int(a0 + hx + 4), int(a0 + hx + AT - 2), 5):                                      # top brush seal
         ax.plot([bxx, bxx], [ATOP, ATOP + 17], color="#806040", lw=0.9)
-    leader(ax, aA(hx + AT / 2, ATOP + 9), aA(175, 320), "top BRUSH seal to the leaf\n(leaf sweeps sideways off it)", col=C_OUT, fw="bold", fs=6)
+    leader(ax, aA(hx + AT / 2, ATOP + 9), aA(250, 320), "top BRUSH seal to the leaf\n(leaf sweeps sideways off it)", col=C_OUT, fw="bold", fs=6)
     ax.add_patch(Circle(aA(hx, hz), 7, fc=C_STEEL, ec=C_OUT, lw=1.1))                                  # bottom hinge
-    leader(ax, aA(hx, hz), aA(-80, 70), "piano hinge to the sill\n+ baffle lip (light-tight)", col=C_OUT, fw="bold", fs=6)
+    leader(ax, aA(hx, hz), aA(-80, -50), "piano hinge to the sill\n+ baffle lip (light-tight)", col=C_OUT, fw="bold", fs=6)
     R = ATOP - hz
     th = np.linspace(np.pi / 2, 0, 40)                                                                 # fold arc (top edge)
     ax.plot(a0 + hx + R * np.cos(th), hz + R * np.sin(th), color="#B00", lw=0.9, ls=(0, (4, 2)))
     ax.annotate("", xy=aA(hx + R * 0.78, hz + R * 0.30), xytext=aA(hx + 26, ATOP * 0.62),
                 arrowprops=dict(arrowstyle="-|>", color="#B00", lw=1.5))
     ax.add_patch(Rectangle(aA(hx, hz), R, AT, fc=C_PLASTIC, ec="#B00", lw=1.2, ls=(0, (4, 2)), alpha=0.30))  # folded (transport)
-    ax.text(a0 + hx + R * 0.55, hz + AT + 16, "FOLDED (transport) — flat INTO the container,\nclear of the swing path",
+    ax.text(a0 + hx + R * 0.55 + 200, hz - AT - 25, "FOLDED (transport) — flat INTO the container,\nclear of the swing path",
             ha="center", fontsize=6.3, color="#B00", fontweight="bold", **FONT)
-    draw_dim_v(ax, a0 - 80, 0, ATOP, f"{int(ATOP)}mm", offset=12, fs=6, font=FONT)
+    draw_dim_v(ax, a0 - 175, 0, ATOP, f"{int(ATOP)}mm", offset=12, fs=6, font=FONT)
 
     # ══ DETAIL D (X–Z) — fixed center baffle under the bay (bottom-right) ══
     d0 = 1560
@@ -2653,17 +2651,17 @@ def sheet16():
     ax.text(d0 + 95, 400, "DETAIL D — fixed center baffle (drum bay)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.plot([d0 - 45, d0 + 245], [0, 0], color=C_OUT, lw=1.6)
     ax.add_patch(Rectangle(dD(40, BAYB - 8), 155, 8, fc=C_PLASTIC, ec=C_OUT, lw=1.2))                  # bay bottom cap Z217
-    leader(ax, dD(118, BAYB - 4), dD(195, 350), "bay bottom cap (Z217) —\nbay closes Z130→217 in operation", col=C_OUT, fs=6)
+    leader(ax, dD(118, BAYB - 4), dD(55, 300), "bay bottom cap (Z217) —\nbay closes Z130→217 in operation", col=C_OUT, fs=6)
     ax.add_patch(Rectangle(dD(58, LT_CAGE_BOT), 118, 40, fc="none", ec="#803030", lw=1.0, ls=(0, (4, 2))))   # drum cage ghost (bottom beam)
-    leader(ax, dD(117, LT_CAGE_BOT + 20), dD(210, 250), f"drum cage bottom (Z{int(LT_CAGE_BOT)})\nsweeps clear above the baffle", col="#803030", fs=6)
+    leader(ax, dD(117, LT_CAGE_BOT + 20), dD(300, 250), f"drum cage bottom (Z{int(LT_CAGE_BOT)})\nsweeps clear above the baffle", col="#803030", fs=6)
     ax.add_patch(Rectangle(dD(70, THR), 90, BAF_TOP - THR, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///"))      # fixed plywood baffle Z51..130
-    leader(ax, dD(115, (THR + BAF_TOP) / 2), dD(-35, 120), f"fixed plywood baffle\n(Z{THR}–{int(BAF_TOP)}) — kills the\nsightline under the bay", col=C_OUT, fw="bold", fs=6)
+    leader(ax, dD(115, (THR + BAF_TOP) / 2), dD(-75, 120), f"fixed plywood baffle\n(Z{THR}–{int(BAF_TOP)}) — kills the\nsightline under the bay", col=C_OUT, fw="bold", fs=6)
     # horizontal strip brush on the baffle top edge — fills the 10mm gap up to the swept cage bottom
     ax.add_patch(Rectangle(dD(70, BAF_TOP), 90, LT_CAGE_BOT - BAF_TOP, fc="#2FA84F", ec="#1c6b32", lw=0.8))
     for bx in range(int(dD(74, 0)[0]), int(dD(158, 0)[0]), 6):
         ax.plot([bx, bx], [BAF_TOP, LT_CAGE_BOT], color="#141414", lw=0.7)
-    leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(230, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
-    draw_dim_v(ax, d0 - 28, THR, BAF_TOP, f"{int(BAF_TOP - THR)}mm", offset=10, fs=6, font=FONT)
+    leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(375, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
+    draw_dim_v(ax, d0 + 225, THR, BAF_TOP, f"{int(BAF_TOP - THR)}mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
     e0, ebz, S = 775, 150, 5.0
@@ -2681,9 +2679,9 @@ def sheet16():
     ax.text(*eE(xc / 2, T + 3), "FIXED ply", ha="center", va="bottom", fontsize=6.4, fontweight="bold", color="#204060", **FONT)
     ax.text(*eE(xc + T + BL * 0.6, T + 3), "MOVING ply", ha="center", va="bottom", fontsize=6.4, fontweight="bold", color="#204060", **FONT)
     bx, bz = eE(xc + T + 6, T / 2)                                          # moving panel sweeps off along the 45° normal
-    leader(ax, (bx, bz), (bx + 78, bz + 80), "moving panel sweeps\noff the seal (no bind)",
+    leader(ax, (bx, bz), (bx + 95, bz - 80), "moving panel sweeps\noff the seal (no bind)",
            col="#B00", fw="bold", fs=6, ha="left", arrow_style="-|>", lw=1.6)
-    leader(ax, (eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), (e0 - 46, ebz + T * S * 0.5 - 16),
+    leader(ax, (eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), (e0 - 46, ebz + T * S * 0.5 - 55),
            "light", col="#B07000", fs=5.6, ha="left", va="top", arrow_style="-|>", lw=1.4)   # light ray blocked at the diagonal lap
     draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12mm", offset=10, fs=6, font=FONT)
     ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)

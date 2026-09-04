@@ -2024,10 +2024,10 @@ def sheet8():
                          closed=True, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=5))
     ax.add_patch(Polygon([(hx, cy), (hx, cy - 12), (hx - 12, cy)],
                          closed=True, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=5))
-    leader(ax, (hx - 8, cy + ch + 6), (150, 120), "extrusion-weld fillet\n(HDPE↔HDPE, both faces)", col=C_OUT)
+    leader(ax, (hx - 8, cy + ch + 6), (50, 120), "extrusion-weld fillet\n(HDPE↔HDPE, both faces)", col=C_OUT)
     # 20mm neoprene surround seal closing the housing↔panel radial gap (§3.4)
     ax.add_patch(Rectangle((hx + hw, 44), 26, 18, fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, (hx + hw + 13, 44), (200, 30),
+    leader(ax, (hx + hw + 13, 44), (160, 30),
            "20mm neoprene surround seal\n(closes 15mm housing↔panel gap, §3.4)", col=C_OUT)
     draw_dim_v(ax, hx - 90, cy, cy + ch, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
     draw_dim_h(ax, hx, hx + hw, 24, f"{T_HOUS}mm", offset=8, fs=6.2, font=FONT)
@@ -2044,11 +2044,11 @@ def sheet8():
     leader(ax, (fx + 20, fy), (206, 52), "steel frame flange\n2×2×0.120in RHS", col=C_OUT)
     # HDPE surround skin lapped OVER the flange
     ax.add_patch(Rectangle((fx + 8, fy + ft), fw - 8, 10, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
-    leader(ax, (fx + 30, fy + ft + 10), (250, 150), f"HDPE surround lap\n{T_SKIN}mm 1/8\" skin/wall", col=C_OUT)
+    leader(ax, (fx + 30, fy + ft + 5), (220, 160), f"HDPE surround lap\n{T_SKIN}mm 1/8\" skin/wall", col=C_OUT)
     # sealant bead at the lap edge (light-tight)
     ax.add_patch(Polygon([(fx + 8, fy + ft), (fx + 8, fy + ft + 10), (fx - 2, fy + ft)],
                          closed=True, fc="#5A3020", ec=C_OUT, lw=0.7, zorder=6))
-    leader(ax, (fx + 6, fy + ft + 8), (282, 28), "DP8010 sealant bead\n(light-tight)", col=C_OUT)
+    leader(ax, (fx + 6, fy + ft + 8), (200, 150), "DP8010 sealant bead\n(light-tight)", col=C_OUT)
     # blind rivet through the lap (axis vertical, +Z head on the HDPE side). CENTER on the full stack
     # (flange ft + HDPE 10) so the factory head BUTTS the HDPE outer face and the blind head the flange back.
     _blind_rivet(ax, fx + 40, fy + (ft + 10) / 2.0, 90, ft + 10, d=RIV_D)
@@ -2060,7 +2060,7 @@ def sheet8():
     # side rivet: axis horizontal, grip = HDPE(8) + steel wall(12) = 20, centered on the stack so the
     # factory head butts the HDPE outer face (x=fx+fw+8) and the set head forms in the tube bore (x=fx+fw-ft)
     _blind_rivet(ax, fx + fw - ft / 2 + 4, fy - 12, 0, 20, d=RIV_D)                                                     # HDPE → into the STEEL side wall, butted
-    leader(ax, (fx + fw + 4, fy - 30), (250, -22),
+    leader(ax, (fx + fw + 4, fy - 30), (270, 30),
            "HDPE also laps + rivets into the STEEL SIDE face of the post\n(fasten FRONT + SIDE faces — not the front only)", col=C_OUT, fw="bold", fs=6)
 
     ax.text(170, 4,

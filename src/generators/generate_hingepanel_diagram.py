@@ -1042,49 +1042,8 @@ def sheet3():
     draw_dim_v(ax, WK_END + 30, H_FLOOR, WALKWAY_H,
           f"{WALKWAY_H}mm\nDECK", offset=30, fs=6, right=True, font=FONT)
 
-    # ── Former HGR20 rails (rev10 RETIRED — drawn faint for reference) ───────
-    # The old slide rails ran in the X (depth) direction on both side walls.
-    # In this Section A-A view (looking along Yd), the rails on both walls
-    # project to the same position. Shown faint as side-profile rectangles,
-    # labeled retired below (the panel now SWINGS about the Ø89 pivot).
-    C_RAIL_S3 = "#CC4422"     # red, consistent with Sheet 1
-    RAIL_PROF_H = 20          # rail profile height (mm)
-    RAIL_PROF_L = 500         # rail length (mm) — 500mm HGR20 rail
-    RAIL_BLOCK_H = 30         # carriage block height above rail
-    RAIL_BLOCK_L = 44         # carriage block length (mm)
-    SLIDE_TRAVEL = 300        # panel slide travel (mm)
-
-    # Floor rail — sits on floor surface, runs from just behind wall to 500mm inward
-    RAIL_FLOOR_Y = H_FLOOR                  # bottom of rail at floor level
-    RAIL_FLOOR_X = Y0_W - 50                # start slightly exterior of wall
-    ax.add_patch(plt.Rectangle((RAIL_FLOOR_X, RAIL_FLOOR_Y),
-                                RAIL_PROF_L, RAIL_PROF_H,
-                                fc=C_RAIL_S3, ec=C_OUT, lw=0.7, alpha=0.5, zorder=4))
-    # Carriage block on floor rail (at panel position)
-    BLOCK_FLOOR_X = Y0_PL - 10             # block near panel outer face
-    ax.add_patch(plt.Rectangle((BLOCK_FLOOR_X, RAIL_FLOOR_Y + RAIL_PROF_H),
-                                RAIL_BLOCK_L, RAIL_BLOCK_H,
-                                fc=C_RAIL_S3, ec=C_OUT, lw=0.6, alpha=0.4, zorder=4))
-
-    # Ceiling rail — at top of panel/container opening
-    H_CEILING = H_BRG_TOP + 100            # ceiling height (above upper bearing)
-    ax.add_patch(plt.Rectangle((RAIL_FLOOR_X, H_CEILING - RAIL_PROF_H),
-                                RAIL_PROF_L, RAIL_PROF_H,
-                                fc=C_RAIL_S3, ec=C_OUT, lw=0.7, alpha=0.5, zorder=4))
-    # Carriage block on ceiling rail
-    ax.add_patch(plt.Rectangle((BLOCK_FLOOR_X, H_CEILING - RAIL_PROF_H - RAIL_BLOCK_H),
-                                RAIL_BLOCK_L, RAIL_BLOCK_H,
-                                fc=C_RAIL_S3, ec=C_OUT, lw=0.6, alpha=0.4, zorder=4))
-
-    # Rail labels (rev10: the floor/ceiling HGR20 slide rails are RETIRED — the panel
-    # pivots on the Ø89 post; the rail profiles above are shown faint as the old route).
-    leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, RAIL_FLOOR_Y + RAIL_PROF_H / 2),
-           (RAIL_FLOOR_X + RAIL_PROF_L + 200, RAIL_FLOOR_Y - 130),
-           "(former HGR20 slide rails —\nRETIRED; panel now SWINGS\nabout the Ø89 pivot post)",
-           col=C_DIM, fs=5.5)
-
-    # Swing note (replaces the old slide-travel arrow)
-    ARROW_Y = RAIL_FLOOR_Y - 160
+    # ── Panel-swing transport note ───────────────────────────────────────────
+    ARROW_Y = H_FLOOR - 160
     ax.text(Y0_W + 300, ARROW_Y - 15, "PANEL SWINGS 56° ABOUT THE PIVOT (no slide) — see Sheet 4",
             ha="center", va="top", fontsize=5.5, color="#1763C8",
             fontweight="bold", **FONT, zorder=15)

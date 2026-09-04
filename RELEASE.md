@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **3D model cascade after the hinged-panel 2D review.** Audit-first (no geometry constant changed this
+  session; the renumber cascades to 3D as comment-accuracy only — no in-scene 3D label cites a sheet
+  number), then one focus-first send round: **overview** re-sent (stepped-bottom cargo-door split +
+  50×20×3 door frame, unused `BAY_BACK_X` dropped, stale Ø900/2×2×0.120/Sheet-16 docstrings fixed,
+  interference report refreshed); **electrical** re-sent to sync the single-owner-builder refactor
+  (geometry unchanged); **construction** re-hashed (env-only); **lighttrap** doc-comment renumber
+  cascade. All 10 models back in sync; overview + electrical pushed to Sketchfab in place. The reported
+  "door frame swings with the door" was confirmed **not** an overview issue (no DC there) — it's the
+  construction click-to-build animation, tracked separately.
+
 - **Light-lock verification moved from the hinged-panel set to the light-trap set.** The
   revolving-drum light-lock proof (person-fit + light-tight-at-every-rotation + verdict) now lives on
   **Light-Trap Sheet 7**, which adopted the hinged-panel Sheet 5 design and merged its own

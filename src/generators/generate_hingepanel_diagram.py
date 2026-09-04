@@ -582,12 +582,10 @@ def sheet2():
                col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8,
                bbox=dict(fc="#EEF2F8", ec="none", pad=1.5))
     lbl_x_l = D_XL - 50
-    for ly, lbl, off in [
-        (Y0_FR - FRAME_T / 2, f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
-        (Y0_PL2 - PLY_T / 2,  f"INNER PLY — FLAT BLACK ({PLY_T}mm)",    2 * LBL_OFF),
-    ]:
-        leader(ax, (lbl_x_l, ly), (lbl_x_l - off, ly + off), lbl,
-               col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
+    leader(ax, (lbl_x_l, Y0_FR - FRAME_T / 2), (lbl_x_l - 2 * LBL_OFF, Y0_FR - FRAME_T / 2 + 2 * LBL_OFF),
+           f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
+    leader(ax, (lbl_x_l, Y0_PL2 - PLY_T / 2), (lbl_x_l - 2 * LBL_OFF, Y0_PL2 - PLY_T / 2 + 2 * LBL_OFF),
+           f"INNER PLY — FLAT BLACK ({PLY_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
 
     # ── EPDM perimeter seal strips at panel edges ─────────────────────────────
     SEAL_W = 20

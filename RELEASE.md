@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged-panel report reconciled to the current design.** Stripped rev-tags and old-vs-new
+  archaeology from the prose and the injected parts specs ("replaces 18mm ply", "REPLACES the TEK
+  screw", "dropped from the old 2×2×0.120 tube", the retired barrel-hinge/caster note, the stay-hook
+  relocation history), fixed American spelling (over-center) and thousands separators, and verified the
+  live single-source blocks + design specs (Ø800 housing, 50×20×3 door frame distinct from the
+  2×2×0.120 panel/cage frame, light-lock verification now on Light-Trap Sheet 7).
+
 - **3D model cascade after the hinged-panel 2D review.** Audit-first (no geometry constant changed this
   session; the renumber cascades to 3D as comment-accuracy only — no in-scene 3D label cites a sheet
   number), then one focus-first send round: **overview** re-sent (stepped-bottom cargo-door split +

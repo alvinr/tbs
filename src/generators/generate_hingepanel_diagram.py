@@ -506,11 +506,11 @@ def sheet2():
     # FRONT-face HDPE blind-riveted to the front cage frame.
     # Vertical-axis glyph, factory head FLUSH on the exterior (−Y) surface (cz = BAY_FRONT_X + grip/2); SPREAD
     # along the wall, clear of the side-skin corner rivets. Smaller d so they don't crowd the corners.
-    for fx in (DRUM_CAGE_YD_L + 170, (DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2, DRUM_CAGE_YD_R - 170):
+    for fx in (DRUM_CAGE_YD_L + 170, (DRUM_CAGE_YD_L + DRUM_CAGE_YD_R) / 2 + 120, DRUM_CAGE_YD_R - 120):
         _blind_rivet(ax, fx, CAGE_YB + 6.5, 270, 13, d=6)
-    leader(ax, (DRUM_CAGE_YD_L + 170, CAGE_YB), (DRUM_CAGE_YD_L - 250, CAGE_YB + 150),
+    leader(ax, (DRUM_CAGE_YD_L + 170, CAGE_YB), (DRUM_CAGE_YD_L - 230, CAGE_YB - 200),
            "FRONT-face HDPE riveted\nto the front cage frame", col="#4a5a70", fs=5.8)
-    leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 200),
+    leader(ax, (post_face_L, D_YB), (STEP_YD_L - 240, D_YB - 150),
            "1/8″ HDPE bay SIDE skin — sits FLAT on the\nOUTSIDE face of the cage post; blind-riveted\nSTRAIGHT THROUGH into the post (see DETAIL below)", col="#4a5a70", fs=5.8)
 
     # ── ENLARGED DETAIL — HDPE side skin → cage post (the skin lies FLAT on the post's OUTSIDE face and
@@ -583,9 +583,9 @@ def sheet2():
     leader(ax, (lbl_x_r, Y0_PL + PLY_T / 2), (lbl_x_r + 1 * LBL_OFF, Y0_PL + PLY_T / 2 - 1 * LBL_OFF),
            f"OUTER PLY ({PLY_T}mm)",
            col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
-    leader(ax, (731, 36), (626, 141),
+    leader(ax, (731, 36), (475, 141),
            f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
-    leader(ax, (731, 153), (591, 293),
+    leader(ax, (731, 153), (950, 220),
            f"INNER PLY — FLAT BLACK ({PLY_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)
 
     # ── EPDM perimeter seal strips at panel edges ─────────────────────────────
@@ -597,7 +597,7 @@ def sheet2():
     ax.add_patch(Rectangle((PW - SEAL_W, Y0_PL), SEAL_W, PT,
                             fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
     leader(ax, (SEAL_W / 2, Y0_PL + PT / 2),
-           (-180, Y0_PL + PT / 2 + 100),
+           (-200, Y0_PL + PT / 2 + 100),
            "20mm EPDM GASKET\n(PERIMETER SEAL)", fs=6.5)
 
     # (The exterior band along Y0..Y1_W is the container CARGO-DOOR FRAME the panel seals against — labeled
@@ -640,10 +640,10 @@ def sheet2():
                             fc=C_BRUSH, ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
 
     leader(ax, (post_cx + R_post * 0.71, post_cy + R_post * 0.71),
-           (rail_right_x + 200, Y_HI - 460),
+           (rail_right_x + 200, Y_HI - 230),
            "PIVOT POST Ø89 CHS\n(vertical swing axis)", col="#5A5AA0", fs=6)
     leader(ax, (PW - brush_w / 2, Y_INT - 25),
-           (PW - 300, Y_INT + 155),
+           (PW - 180, Y_INT + 45),
            "BRUSH SEAL\n(DOUBLED NYLON)\n— light-tight gap seal", col=C_BRUSH, fs=6)
 
     # ── Drum: draw filled circle on top to cut out the drum hole ─────────────
@@ -709,7 +709,7 @@ def sheet2():
            "EDGE L-ANGLE (Al, 4× — each side-skin vertical edge)\npost leg riveted to the cage post · HDPE riveted to the upstand", col=C_OUT, fw="bold", fs=5.8)
     leader(ax, (_CGR - 25, cage_yb + 25), (D_XR + 400, cage_yb + 40),
            "DRUM SUPPORT CAGE (4-wall 50×50 steel box) — WELDED\nto the frame: back corner posts LAND IN / weld along the\ncenter-zone jambs (cage + frame = one swinging weldment)", col=C_STEEL, fs=6)
-    leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL, cage_yb - 120),
+    leader(ax, (_CGL + (_CGR - _CGL) * 0.32, cage_yb + RAIL / 2), (D_XL + 50, cage_yb - 120),
            "CAGE TOP PERIMETER RAILS\n(50×50 RHS ring, above the\nH=1000 cut — shown hidden)", col=C_STEEL, fs=5.8)
     # cage → frame connection: the cage's BACK corner posts LAND INSIDE the frame jambs — the cage
     # interior face (CAGE_YT) sits at panel depth ~90mm, WITHIN the 40–160 frame depth — so cage +
@@ -798,25 +798,6 @@ def sheet2():
     # Corner zone thickness dimension
     draw_dim_v(ax, STEP_YD_L / 2 - 100, PANEL_EXT, CORN_Y_IN,
           f"{CORNER_T}mm", offset=15, fs=6, right=True, font=FONT)
-
-    # ── Scale and note ────────────────────────────────────────────────────────
-    ax.text(PW / 2, Y_HI - 20,
-            "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  FULL PANEL WIDTH  ·  "
-            "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
-            color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT, zorder=15)
-
-    # ── Orientation clarification note (standard draw_notes block, top-right) ──
-    OB_X = D_XR + 330
-    OB_Y = D_YT - 600
-    OB_W = 450   # retained: the latch note below positions itself off the note width
-
-    # ── Interior latch safety note ─────────────────────────────────────────────
-    # Small note below orientation box (latches are outside the drum-zone crop
-    # in this view but their presence and position is relevant to egress design)
-    ax.text(OB_X + OB_W / 2 + 450, OB_Y - 25,
-            "CAM LATCH (McMaster 1619A74, lift-and-turn):\nINTERIOR handle → welded keeper on the stub wall.\nPANEL OPENS INWARD ONLY (frame stop takes outward).\nEgress operable from inside. See Sheet 12 Detail A.",
-            ha="center", va="top", fontsize=6, color="#C04010",
-            fontweight="bold", **FONT, zorder=15)
 
     # ── Material legend ───────────────────────────────────────────────────────
     draw_legend(ax, [

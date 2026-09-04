@@ -276,8 +276,8 @@ def floor_plan():
             _rot(0, PANEL_CORNER_YD_R, _L), _rot(BAY_FRONT_X, PANEL_CORNER_YD_R, _L)]
     ax.add_patch(matplotlib.patches.Polygon(_bay, closed=True, fc="none",
                  ec=C_DIM, lw=1.0, ls=GHOST_LS, zorder=4, alpha=GHOST_A))
-    # swung drum (center in the bay, ~X=-400)
-    _dctr = _rot(-400, C_WID / 2, _L)
+    # swung drum (center in the bay at DRUM_CX)
+    _dctr = _rot(DRUM_CX, C_WID / 2, _L)
     ax.add_patch(Circle(_dctr, DRUM_R, fc="none", ec=C_DIM, lw=1.0,
                         ls=GHOST_LS, zorder=4, alpha=GHOST_A))
     ax.text(_dctr[0], _dctr[1], "PANEL + DRUM\n(SWUNG 56°,\nTRANSPORT)",

@@ -40,27 +40,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
-- [ ] **Ø900→Ø800 stale-label sweep — ROUND 2 (found 2026-08-28 on hingepanel-bp).** The 2026-08-26 drum
-  resize left `Ø900` (and stale `2000mm` drum-height) references in **many** generators beyond the light-trap/
-  hingepanel set that this branch cleaned. Some are **visible labels/calc-notes** (not just comments), so they
-  are wrong on the published diagrams/reports right now. Cleaned so far: `costing.py`, the two assembly
-  generators, `generate_lighttrap_model.py`, and (on this branch) `generate_hingepanel_diagram.py`. **Still to
-  do — reference the constant (`f"Ø{DRUM_D}"`), regen, and re-inject weight blocks:**
-  `generate_weight_analysis.py` (lines ~130/164/195/312/318/381/436/446/903 — calc_notes 436/446 are visible),
-  `generate_movable_panel_weight.py` (~15/50/68/71/75/114 — calc_notes visible),
-  `generate_lighttrap_diagram.py` (~411/412/493 — **visible note "Roll to Ø900 (R450)"**),
-  `generate_film_plane_mechanism.py` (~357, comment), `generate_sketchup_model.py` (~1381, comment),
-  and `tbs_constants.py` describing-comments (~296/317/344 — change "Ø900 housing" → "Ø800"; **KEEP** the
-  rev-history lines 354/355/419/447/453/1302 that intentionally record the "Ø900→Ø800" change). Do it as one
-  batch (regen + weight re-inject + visual pass), separate from the surround work.
-- [ ] **Drum DEPTH-CENTER 2D↔3D drift (−450 vs −420, found 2026-08-28 on hingepanel-bp) — NEEDS A DECISION.**
-  The Ø900→Ø800 resize re-centered the drum to `DRUM_CX = −420` (the **3D** uses it), but the hingepanel 2D
-  still **derives** the drum depth center as `BAY_FRONT_X + DRUM_R + 40 = −450` (`generate_hingepanel_diagram.py`
-  lines ~396 sheet2 + ~770 D_CX_DEPTH; `generate_lighttrap_diagram.py:204` comment says "−400"). So the 2D
-  draws the drum ~30mm further out in the bay than the 3D. Decide the true depth center, then single-source the
-  2D off `DRUM_CX` (drop the `+DRUM_R+40` formula) so 2D + 3D agree; re-gen hingepanel sheets 2/3/4. (Surround
-  work is unaffected — the bay/frame lap is at the panel plane either way.)
-
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
@@ -148,19 +127,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   (DV merges, X-port drains, suction), **drain-riser backing spine**, **processing tray floor** (sump→P-04
   drain). **REMAINING — fix each:** either (a) draw a short collar/grommet ring at the face, or (b) split the
   pipe so each side butts it. Each fix = generator edit + re-send (single-writer). (Alvin 2026-08-15.)
-
-- [~] **Automate Sketchfab re-upload via `PUT /v3/models/{uid}` — BUILT + VALIDATED 2026-08-18.**
-  `push_sketchfab.py` rewritten: the DEFAULT path is now an in-place `PUT {uid}` (export live → `.dae` → PUT),
-  keeping the same UID/URL and preserving viewer settings/materials/name — no embed rewrite, no `dependencies.yml`
-  uid-swap, no old-model delete, no settings reset. A single-writer GUARD refuses to push unless the live doc is
-  the saved `<name>.skp`. Legacy POST-new kept behind `--new`. Validated end-to-end twice: a scratch box→box+cylinder
-  lifecycle (same UID, name survived a PUT that never resent it, stayed public) AND a real **overview** push to its
-  existing uid `e624e210…` (HTTP 204, URL + settings unchanged, ALVIN confirmed). Note: overview.dae exports at
-  ~31 MB — under the 50 MB free-tier cap but the biggest model; if it grows further, Pro tier is 200 MB.
-  **DONE:** `src/models/send_model.py <name> --send --push` wraps the send + an in-place push in one command —
-  delegates the build to the model's generator, then (token-gated) OFFERS to push after you validate. It PROMPTS
-  in a terminal and SKIPS safely in a non-interactive shell (so an agent can't push unvalidated geometry); `-y`
-  skips the prompt, `--new` does the legacy POST. [Data API v3](https://sketchfab.com/developers/data-api/v3/python)
 
 ## ⚡ Parts firm-up tracker — buckets by when they're actionable
 

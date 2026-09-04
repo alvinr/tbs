@@ -408,8 +408,8 @@ def draw_sheet1():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — Housing cylinder cut sheet (flat pattern)
-# The 5mm UV-HDPE skin developed flat: roll to Ø900 and extrusion-weld the seam,
-# then cut the two 80° openings. Developed length = π·Ø900.
+# The 5mm UV-HDPE skin developed flat: roll to Ø800 and extrusion-weld the seam,
+# then cut the two 80° openings. Developed length = π·Ø800.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet2():
     L        = math.pi * DRUM_D                       # developed length
@@ -490,7 +490,7 @@ def draw_sheet2():
         "HOUSING SKIN — FABRICATION",
         f"Material: {LT_HOUSING_T}mm UV-stabilized HDPE sheet (~7 m²).",
         f"1. Cut blank {L:.0f} × {HOUSING_H}mm; cut the two {LT_OPENING_DEG}° openings.",
-        "2. Roll to Ø900 (R450); extrusion-weld the seam (mid-arc, 90°).",
+        f"2. Roll to Ø{DRUM_D} (R{LT_HOUSING_R:.0f}); extrusion-weld the seam (mid-arc, 90°).",
         "3. Interior face black-pigmented + flat-black touch-in at welds.",
         "   Exterior face UV-stabilized — no primer.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
@@ -1806,7 +1806,7 @@ def draw_sheet9():
 
     notes = [
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
-        "1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R450, BLIND-RIVETED to the frame top + bottom beams (Ø1/8\" 18-8 SS blind rivets, McMaster 97525A425, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). Set from below; the set head forms inside the closed RHS. No welds, no self-drillers — avoids welding Al to steel and thread-stripping the thin wall.",
+        f"1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R{LT_HOUSING_R:.0f}, BLIND-RIVETED to the frame top + bottom beams (Ø1/8\" 18-8 SS blind rivets, McMaster 97525A425, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). Set from below; the set head forms inside the closed RHS. No welds, no self-drillers — avoids welding Al to steel and thread-stripping the thin wall.",
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge (McMaster 97525A435, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
         f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",

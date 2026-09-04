@@ -38,7 +38,7 @@ try:                                    # drawing helper (imports numpy) — opt
     from tbs_drawing import leader
 except ImportError:
     leader = None
-from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_W, FP_Y, FP_H, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_N_TOTAL, PH_X, PH_H, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, IBC_PALLET_H, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_SPACING, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_YD_NEAR, SHELF_STOW_TOP_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SKIN_T, PANEL_FAN_BAND_Z, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_SHELL_ARC, LT_OPENING_DEG, BAY_FRONT_X, BAY_BACK_X, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, FAN_A_YD, FAN_B_YD, C_OUT, C_DIM, C_STEEL, C_ALUM, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_LT_DRUM, C_PROC_ZONE, C_WALL, C_FAN, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_W, FP_Y, FP_H, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_N_TOTAL, PH_X, PH_H, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, IBC_PALLET_H, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_SPACING, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_YD_NEAR, SHELF_STOW_TOP_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SKIN_T, PANEL_FAN_BAND_Z, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, DRUM_D, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_SHELL_ARC, LT_OPENING_DEG, BAY_FRONT_X, BAY_BACK_X, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, FAN_A_YD, FAN_B_YD, C_OUT, C_DIM, C_STEEL, C_ALUM, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_LT_DRUM, C_PROC_ZONE, C_WALL, C_FAN, DIAGRAMS_DIR
 try:                                    # drawing helper (imports matplotlib) — optional, see above
     from tbs_title_block import title_block
 except ImportError:
@@ -127,7 +127,7 @@ def _panel_weight():
     HDPE skin (40mm framed envelope). The Fan B corner keeps an 18mm PLYWOOD band (panel bottom
     up to PANEL_FAN_BAND_Z) for rigid fan/duct mounting; the rest is HDPE.
     Center zone: 50×50mm steel RHS frame + 1/8" HDPE skins, PANEL_CENTER_W wide.
-    First-principles only — no scaling pin (the fixed Ø900 housing is added
+    First-principles only — no scaling pin (the fixed Ø800 housing is added
     separately in build_components, since it bolts into the panel center).
     """
     panel_h = C_HGT  # 2388mm
@@ -161,7 +161,7 @@ def _panel_weight():
 
 
 def _lighttrap_weight():
-    """Housed revolving-door light lock (rev 9 / B2): a fixed Ø900 housing plus a
+    """Housed revolving-door light lock (rev 9 / B2): a fixed Ø800 housing plus a
     single-opening C-shell drum, now an ALL-HDPE PLASTIC SKIN — 5mm UV-HDPE housing
     + 1/8" HDPE drum (was 3mm 5052-H32 aluminum), NO internal baffles. Suspended at
     Z=PANEL_FLOOR_GAP so its effective height is shorter. Steel is retained only
@@ -192,7 +192,7 @@ def _lighttrap_weight():
     misc_kg = 2.0                                                    # 4× brush strip + Al holders + SS lap rivets
     drum_hw_kg = shaft_kg + bearings_kg + edge_stiff_kg + stile_kg + stile_hw_kg + misc_kg
     drum_kg = drum_shell_kg + drum_cap_kg + rim_kg + drum_hw_kg
-    # Fixed UV-HDPE housing: Ø900 cylinder minus two 80° openings
+    # Fixed UV-HDPE housing: Ø800 cylinder minus two 80° openings
     t_h = LT_HOUSING_T / 1000.0
     house_circ = math.pi * (2 * LT_HOUSING_R / 1000.0)
     housing_kg = house_circ * (1 - 2 * open_frac) * H * t_h * RHO_HDPE
@@ -309,13 +309,13 @@ def _film_plane_carriage_weight():
 
 def _bay_weight():
     """B2 punch-out bay carried on the swinging leaf: a 6mm marine-ply 4-wall
-    tube (2 sides + top + bottom) plus the exterior front face (Ø900 housing
+    tube (2 sides + top + bottom) plus the exterior front face (Ø800 housing
     opening deducted), enclosing the offset light-trap housing. First-principles
     from the bay/cage footprint constants — supersedes the old 12 kg placeholder."""
     depth = (BAY_BACK_X - BAY_FRONT_X) / 1000.0          # ≈ 0.890 m (X protrusion)
     width = (DRUM_CAGE_YD_R - DRUM_CAGE_YD_L) / 1000.0   # ≈ 0.962 m (Yd)
     height = (DRUM_H_LT - PANEL_FLOOR_GAP) / 1000.0      # ≈ 2.12 m
-    aperture = math.pi * (LT_HOUSING_R / 1000.0) ** 2      # Ø900 opening in front face
+    aperture = math.pi * (LT_HOUSING_R / 1000.0) ** 2      # Ø800 opening in front face
     area = 2 * (depth * height) + 2 * (depth * width) + max(width * height - aperture, 0)
     return area * (PANEL_SKIN_T / 1000.0) * RHO_HDPE      # rev11: 1/8" HDPE (was 6mm ply); ~21 kg
 
@@ -378,7 +378,7 @@ def _ibc_stacking_frame_weight():
 def build_components():
     """Build the complete component list with calculated weights."""
 
-    # First-principles weights (no scaling pin). The fixed Ø900 housing is
+    # First-principles weights (no scaling pin). The fixed Ø800 housing is
     # welded into the panel center zone, so its mass is carried by the panel;
     # only the C-shell drum rotates.
     drum_kg, housing_kg = _lighttrap_weight()
@@ -433,7 +433,7 @@ def build_components():
                   *swing_bbox(0, 80, 0, C_WID), 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note="Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø900 housing + 1/8\"-HDPE B2 bay. Transport: swung 56° about the pivot"),
+                  calc_note=f"Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø{DRUM_D} housing + 1/8\"-HDPE B2 bay. Transport: swung 56° about the pivot"),
         Component("Light trap drum", "structure", drum_kg,
                   *swing_bbox(0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R),
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
@@ -443,7 +443,7 @@ def build_components():
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
                   states=("ready",),
-                  calc_note="Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø900 housing + 1/8\"-HDPE B2 bay"),
+                  calc_note=f"Framed panel: 1/8\"-HDPE skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø{DRUM_D} housing + 1/8\"-HDPE B2 bay"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,
@@ -900,7 +900,7 @@ def _draw_state_diagram(ax, components, state, state_label):
         else:
             _draw_component(ax, c, alpha=0.5, show_label=False)
     for c in drum:
-        # Draw drum as circle (plan view of Ø900 housing)
+        # Draw drum as circle (plan view of Ø800 housing)
         # Position: panel face + half center-zone thickness (swung for transport)
         if state in ("dry", "exhausted"):
             t = np.radians(SWING_LOCK_DEG); cs, sn = np.cos(t), np.sin(t)

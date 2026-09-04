@@ -1385,11 +1385,9 @@ def sheet3():
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
 
     def clbl(target, ty, text):
-        tx = CX(92)
-        ax.annotate("", xy=target, xytext=(tx - 6, ty),
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
-                                    shrinkA=1, shrinkB=1), zorder=24)
-        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", zorder=24, **FONT)
+        _leader_shared(ax, target[0], target[1], CX(92), ty, text,
+                       fs=6.0, color=C_DIM, ha="left", va="center",
+                       arrow_style="-", lw=0.8, zorder=24, font=FONT)
     clbl((CX(-40), CY(64)), CY(82), "Frame top rail (50×50 RHS)")
     clbl((CX(30), CY(55)), CY(68), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)")
     clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")

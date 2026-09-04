@@ -2570,10 +2570,10 @@ def sheet16():
     BAF_TOP = LT_CAGE_BOT - 10   # 130 — baffle top, 10mm under the swept drum-cage bottom (Z140)
     BRZ  = 51        # threshold top (baffle base)
 
-    fig, ax = plt.subplots(figsize=(20, 11))
+    fig, ax = plt.subplots(figsize=(23, 11))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-130, WID + 500)
+    ax.set_xlim(-130, WID + 950)
     ax.set_ylim(-170, 920)
 
     ax.text(WID / 2, 878, "FOLD-DOWN LIGHT APRON — closes the under-leaf gap at the 217mm floor gap",
@@ -2686,16 +2686,47 @@ def sheet16():
     draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12mm", offset=10, fs=6, font=FONT)
     ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)
 
+    # ══ DETAIL F (enlarged ~3.5:1) — apron hinge-line light seal (exterior lapping board) ══
+    f0, fbz, SF = 2230, 30, 3.5
+    def fF(x, z): return (f0 + x * SF, fbz + z * SF)
+    C_FOAM = "#6E7478"
+    ax.text(f0 + 95, 400, "DETAIL F — apron hinge-line seal", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(f0 + 95, 384, "vertical section · exterior LEFT → interior RIGHT · enlarged 3.5:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
+    # threshold sill (fixed, Z0–51)
+    ax.add_patch(Rectangle(fF(-34, 0), 48 * SF, THR * SF, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))
+    # fixed EXTERIOR lapping board — 3mm steel off the sill, standing up as the daylight baffle (z 51..101)
+    ax.add_patch(Rectangle(fF(-13, THR), 3 * SF, 44 * SF, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="\\\\\\"))
+    # 10mm closed-cell foam, compressed between the lap and the apron exterior face
+    ax.add_patch(Rectangle(fF(-10, THR + 4), 10 * SF, 36 * SF, fc=C_FOAM, ec=C_OUT, lw=0.8))
+    # apron (12mm ply, UP = sealing) — interior side of the hinge, with a break at the top
+    ax.add_patch(Rectangle(fF(0, THR), 12 * SF, 44 * SF, fc=C_WOOD, ec=C_OUT, lw=1.4))
+    _bx0, _bx1, _bzt = fF(0, 95)[0], fF(12, 95)[0], fF(0, 95)[1]
+    ax.plot([_bx0, (_bx0 + _bx1) / 2 - 6, (_bx0 + _bx1) / 2 + 6, _bx1], [_bzt, _bzt + 9, _bzt - 9, _bzt], color=C_OUT, lw=1.0)
+    # piano hinge knuckle (inboard of the lap), at the apron bottom on the sill
+    ax.add_patch(Circle(fF(3, THR), 4.0 * SF, fc="#B0B0B8", ec=C_OUT, lw=1.0))
+    # ext. light ray blocked at the lapping board
+    ax.annotate("", xy=fF(-13, 84), xytext=fF(-40, 84), arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.4))
+    ax.plot(*fF(-13, 84), marker="x", ms=8, mew=2.2, color="#C0202A")
+    ax.text(*fF(-46, 78), "ext. light\nblocked", ha="right", va="center", fontsize=5.6, color="#B07000", **FONT)
+    # labels (left-aligned leader column to the right — interior side)
+    _lx = f0 + 165
+    leader(ax, fF(6, 88), (_lx, fbz + 315), "12mm apron ply\n(UP = sealing)", col="#204060", fw="bold", fs=6, ha="left")
+    leader(ax, fF(-5, 80), (_lx, fbz + 245), "10mm closed-cell foam\n(compressed when UP)", col=C_FOAM, fw="bold", fs=6, ha="left")
+    leader(ax, fF(-11.5, 70), (_lx, fbz + 170), "3mm steel LAPPING BOARD\n— fixed to the sill, exterior\ndaylight baffle over the hinge", col=C_OUT, fw="bold", fs=6, ha="left")
+    leader(ax, fF(3, THR), (_lx, fbz + 90), "piano hinge to the sill\n(knuckle inboard of the lap)", col=C_OUT, fs=6, ha="left")
+    leader(ax, fF(-24, 25), (_lx, fbz + 20), "threshold sill (Z0–51)", col=C_OUT, fs=6, ha="left")
+
     # ══ notes ══
     draw_notes(ax, [
         "FOLD-DOWN LIGHT APRON — operation",
         f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 12mm exterior BC plywood, flat-black interior (a light seal).",
-        "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-centre catch each side.",
+        "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-center catch each side.",
+        "• HINGE LINE (Detail F): the apron-bottom piano hinge is light-sealed by a fixed 3mm-steel LAPPING BOARD off the sill — an exterior daylight baffle standing over the hinge — plus a 10mm closed-cell foam strip the apron compresses when UP; the hinge knuckle sits inboard of the lap.",
         "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",
         "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
         f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
         "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45° scarf with EPDM bonded to the FIXED face — a light-tight lap the moving panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom, apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
-    ], WID + 30, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
+    ], WID + 320, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=450, wrap=49, border_color="#806010", font=FONT)
 
     title_block(ax, "SHEET 16 OF 16",

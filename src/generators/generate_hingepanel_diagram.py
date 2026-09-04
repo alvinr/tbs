@@ -573,14 +573,16 @@ def sheet2():
     # ── Layer labels (leaders from center zone) ───────────────────────────────
     LBL_OFF = 70
     lbl_x_r = D_XR + 60
-    for ly, lbl, off in [
-        (Y0_W + WALL_T / 2,  f"{WALL_T}mm CONTAINER WALL\n(door opening · M10 anchors)", 2.7 * LBL_OFF),
-        (Y0_DF + DOOR_FRAME_DEPTH / 2,  "50×20×3 RHS DOOR FRAME\npanel seals here · U-frame welds (opening edge)", 1.6 * LBL_OFF),
-        (Y0_PL + PLY_T / 2,  f"OUTER PLY ({PLY_T}mm)",                 1 * LBL_OFF),
-    ]:
-        leader(ax, (lbl_x_r, ly), (lbl_x_r + off, ly - off), lbl,
-               col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8,
-               bbox=dict(fc="#EEF2F8", ec="none", pad=1.5))
+    _bb = dict(fc="#EEF2F8", ec="none", pad=1.5)
+    leader(ax, (lbl_x_r, Y0_W + WALL_T / 2), (lbl_x_r + 2.7 * LBL_OFF, Y0_W + WALL_T / 2 - 2.7 * LBL_OFF),
+           f"{WALL_T}mm CONTAINER WALL\n(door opening · M10 anchors)",
+           col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
+    leader(ax, (lbl_x_r, Y0_DF + DOOR_FRAME_DEPTH / 2), (lbl_x_r + 1.6 * LBL_OFF, Y0_DF + DOOR_FRAME_DEPTH / 2 - 1.6 * LBL_OFF),
+           "50×20×3 RHS DOOR FRAME\npanel seals here · U-frame welds (opening edge)",
+           col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
+    leader(ax, (lbl_x_r, Y0_PL + PLY_T / 2), (lbl_x_r + 1 * LBL_OFF, Y0_PL + PLY_T / 2 - 1 * LBL_OFF),
+           f"OUTER PLY ({PLY_T}mm)",
+           col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
     lbl_x_l = D_XL - 50
     leader(ax, (lbl_x_l, Y0_FR - FRAME_T / 2), (lbl_x_l - 1.5 * LBL_OFF, Y0_FR - FRAME_T / 2 + 1.5 * LBL_OFF),
            f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", col=C_OUT, fs=6.5, ha="right", va="bottom", arrow_style="->", lw=0.8)

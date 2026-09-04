@@ -1381,7 +1381,7 @@ def sheet3():
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
 
     leader(ax, (CX(-40), CY(64)), (CX(92), CY(82)), "Frame top rail (50×50 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
-    leader(ax, (CX(30), CY(55)), (CX(92), CY(68)), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(30), CY(55)), (CX(92), CY(64)), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (CX(-26), CY(30)), (CX(92), CY(28)), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (CX(-10), CY(-20)), (CX(92), CY(-10)), "20 mm EPDM — panel top\nedge seals on lip", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (CX(20), CY(-70)), (CX(92), CY(-58)), "Upper cam latch compresses\npanel onto seal", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)

@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged-panel generator — retired-HGR20-slide archaeology removed.** Sheet 1 dropped the dead
+  `C_RAIL`/`C_CARR`/`RAIL_H`/`RAIL_LEN`/`HINGE_YS`/`HINGE_L` vars + "RETIRED" history comments (no
+  visual change); Sheet 3 dropped the faint "drawn for reference" retired floor/ceiling slide rails +
+  carriage blocks + the "(former HGR20 slide rails — RETIRED)" label (house style: no drawn design
+  archaeology — the panel swings about the Ø89 pivot). Also removed the `leader as _leader_shared`
+  import alias and inlined Sheet 3's `dlbl`/`clbl`/`ddlbl` label helpers to direct `leader()` calls.
+
 - **Hinged-panel Sheet 12 — cross-reference note is now a bordered note block.** The plain centered
   "plywood→frame tab/T-nut → SHEET 14 · Fan-B mount → Ventilation Sheet 3" text is now a titled
   CROSS-REFERENCES box (two bullets) matching the other sheets' note style.

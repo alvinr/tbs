@@ -150,16 +150,16 @@ flange and is set with 1/8" 18-8 stainless blind rivets on a regular pitch, with
 sealant bead along the lap for light-tightness. This is what ties the surround to the
 frame (it is not a floating skin); the same rivet family is used on the light-trap shell.
 
-The flat-pattern cut sheets for all six pieces are **Sheet 7**; the housing-join and
-frame-rivet lap sections are **Sheet 8**. The housing cut geometry is shared with the
+The flat-pattern cut sheets for all six pieces are **Sheet 6**; the housing-join and
+frame-rivet lap sections are **Sheet 7**. The housing cut geometry is shared with the
 [Light Trap Selection](light-trap-selection.md) housing sheet so the surround↔housing
 interface stays single-sourced.
 
-**Sheet 7 — HDPE Surround Flat-Pattern Cut Sheets (6 pieces)**
-![TBS-001 Hinged Panel — Sheet 7: HDPE Surround Cut Sheets](assets/hingepanel-sheet7.png)
+**Sheet 6 — HDPE Surround Flat-Pattern Cut Sheets (6 pieces)**
+![TBS-001 Hinged Panel — Sheet 6: HDPE Surround Cut Sheets](assets/hingepanel-sheet6.png)
 
-**Sheet 8 — HDPE Surround: Housing Join & Frame Rivet Details**
-![TBS-001 Hinged Panel — Sheet 8: Surround Join & Rivet Details](assets/hingepanel-sheet8.png)
+**Sheet 7 — HDPE Surround: Housing Join & Frame Rivet Details**
+![TBS-001 Hinged Panel — Sheet 7: Surround Join & Rivet Details](assets/hingepanel-sheet7.png)
 
 ---
 
@@ -218,7 +218,7 @@ facing. So at **no rotation angle** is there a straight-line path from exterior 
 interior: daylight entering the bore through the exterior opening is stopped by the
 drum's solid wall before it can reach the interior opening.
 
-See [Light Trap Selection](light-trap-selection.md) §5 and **Sheet 5**
+See [Light Trap Selection](light-trap-selection.md) §5 and **Light-Trap Sheet 7**
 (enter / transit / exit verification).
 
 ### 3.4 Drum Seals
@@ -242,8 +242,8 @@ exterior drum wall, then uses the interior pull handle to pull the drum closed a
 
 ### 3.6 Access & Light-Tightness Verification (both tests pass)
 
-**Sheet 5 — Light-lock access & light-tightness verification**
-![TBS-001 Hinged Panel — Sheet 5: Light-Lock Verification](assets/hingepanel-sheet5.png)
+**Light-lock access & light-tightness verification** (see Light-Trap Sheet 7)
+![TBS-001 Light-Trap — Sheet 7: Light-Lock Verification](assets/lighttrap-sheet7.png)
 
 **1. Does a person fit? — Yes.** The drum is a
 single-opening C-shell, so the whole **~Ø758mm bore** is clear standing space. The
@@ -314,8 +314,8 @@ mechanisms and are drawn on their own blueprints.
 See [§8.1](#81-panel-structure) for the part; the handle is also shown on the interior-face
 **Sheet 1** front elevation.
 
-**Sheet 6 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)**
-![TBS-001 Hinged Panel — Sheet 6: Pull Handle Mounting Detail](assets/hingepanel-sheet6.png)
+**Sheet 5 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)**
+![TBS-001 Hinged Panel — Sheet 5: Pull Handle Mounting Detail](assets/hingepanel-sheet5.png)
 
 ---
 
@@ -368,11 +368,11 @@ puts the cage underside at Z140, clearing the Z115 posts by **25mm** (and the Z7
 The swing is about a **vertical** pivot, so the cage underside stays at Z130 throughout — this
 is what makes the deep Ø800 housing transport-feasible without a slide; a floor-mounted housing
 would have fouled the tray. The 217mm floor gap is closed in the operational position by the
-**fold-down light aprons** (§6, **Sheet 17**). The clearance is drawn on **Sheet 16**
+**fold-down light aprons** (§6, **Sheet 16**). The clearance is drawn on **Sheet 15**
 (transport-swing bottom-clearance section).
 
 The 217mm gap would otherwise be a straight light path, so it is closed by **fold-down light
-aprons** (Sheet 17): two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one
+aprons** (Sheet 16): two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one
 minus a 200mm fixed stub that clears the Ø220 pivot mount plate) plus a fixed center baffle under
 the drum bay. They stand up and seal in operation and fold flat into the container for the swing.
 The joint light-seal detail (foam strip + a lapping board off the hinge frame) is still to be
@@ -424,8 +424,8 @@ hub ties to the panel through **three welded hinge brackets** bolting to the ste
 jamb (2× M12 each, through the RHS into a backing plate — not the HDPE skin). The pivot post,
 its bearings, and the frame→hub bracket still require a **structural sign-off** before fab.
 
-**Sheet 11 — Pivot-Post Assembly (section + frame→hub bracket + floor anchor plate)**
-![TBS-001 Hinged Panel — Sheet 11: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
+**Sheet 10 — Pivot-Post Assembly (section + frame→hub bracket + floor anchor plate)**
+![TBS-001 Hinged Panel — Sheet 10: Pivot-Post Assembly](assets/hingepanel-sheet10.png)
 
 ---
 
@@ -438,7 +438,7 @@ position. Five light ingress paths are sealed:
 |---|-----------|-------------|
 | 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 2 × McMaster 1619A74 lift-and-turn cam latches (opening edge, top + bottom) against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
-| 3 | Panel bottom → 217mm floor gap | **Fold-down light aprons** (Sheet 17) — two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one minus a 200mm fixed pivot stub) + a fixed center baffle under the drum bay, closing the 217mm gap under the raised leaf. Foam-strip perimeter seal, flat-black interior. Stand up + seal in operation; release + fold flat into the container for the swing. Joint seal (foam + a lapping board off the hinge frame) TBD. |
+| 3 | Panel bottom → 217mm floor gap | **Fold-down light aprons** (Sheet 16) — two bottom-hinged 12mm exterior-ply flaps at the corner zones (the far one minus a 200mm fixed pivot stub) + a fixed center baffle under the drum bay, closing the 217mm gap under the raised leaf. Foam-strip perimeter seal, flat-black interior. Stand up + seal in operation; release + fold flat into the container for the swing. Joint seal (foam + a lapping board off the hinge frame) TBD. |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
 | 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2,100), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
@@ -460,7 +460,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Function | Seal landing for the swinging-panel **vertical** perimeter + cut seals + housing-surround EPDM, plus the **top + bottom strip-brush** light seals |
 | Attachment | Welded to container end wall structural members |
 | Cut-seal landings | 2 × vertical EPDM landings (the swing cuts between the swinging panel and the fixed strips) |
-| Bottom light seal | **Fold-down light aprons** — 2× bottom-hinged 12mm-ply flaps (corner zones) + fixed center baffle + 200mm pivot stub; foam-strip seal, fold flat for transport (see §6 path #3, Sheet 17) |
+| Bottom light seal | **Fold-down light aprons** — 2× bottom-hinged 12mm-ply flaps (corner zones) + fixed center baffle + 200mm pivot stub; foam-strip seal, fold flat for transport (see §6 path #3, Sheet 16) |
 | Top brush seal | Mirror of the bottom: continuous nylon-filament **strip brush** in a holder on the frame top rail, bristles reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the panel + drum-box top edge sweeps through the bristles (see §6 path #4) |
 
 ---
@@ -480,9 +480,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Aluminum U-channel, 1/8-panel (per meter) | Gasket retainer + 1/8" HDPE-skin retention (perimeter + housing-surround + stiffener grid). SECTION: aluminum '1/8-panel' U-channel — inner slot ~3.2mm (captures the 3.18mm/PANEL_SKIN_T HDPE skin), ~10–12mm legs, ~1.5mm wall. TOTAL LENGTH: 40m (pick a stock 1/8-panel profile; only the 3.18mm slot is fixed by the skin). | 40 m | Online Metals | $120–$200 |
 | [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | TWO interior-mounted latches on the OPENING (free) edge of the swinging panel — top + bottom — clamping it to the fixed door frame (the pivot edge is hinged; a frame stop takes the outward direction, so only the free edge needs latching). Turns from the INTERIOR face; the reversible-offset cam hooks a welded steel keeper on the stub-wall steel frame outside, drawing the panel onto the 20mm EPDM seal (panel opens INWARD only). 150 lbf max clamp; ADJUSTABLE latching distance 1-3/4 to 2-1/8in (44-54mm); 1/4in max panel thk; 11/16in through-hole; black-painted zinc; mounting fasteners incl. Lift-and-turn = vibration-resistant for transport + hand-releasable from inside for egress. Mounts through the panel-frame RHS; the latch nut is tightened via a coaxial over-bore in the far tube wall + box spanner, then a light-tight plug (or a welded tapped boss — fab detail on Sheet 12). $30.57 ea firm. | 2 ea | McMaster-Carr | $61 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
-| [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 8. $14.59/100. | 2 pack | McMaster-Carr | $29 |
+| [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 7. $14.59/100. | 2 pack | McMaster-Carr | $29 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
-| Fold-down light aprons + fixed baffle/pivot stub (12mm ext ply) + piano hinges + foam seal + hold-up catches | Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 17). Two bottom-hinged fold-down aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. 12mm exterior BC plywood (~0.5 m² of a 4×8 sheet, flat-black interior), 2× continuous (piano) hinges to the threshold, closed-cell foam-strip perimeter seal, 2× over-centre hold-up catches; folds flat into the container for the transport swing. Est.; the joint light-seal detail (foam + a lapping board off the hinge frame) is still TBD. | 1 lot | Home Depot / McMaster | $95–$150 |
+| Fold-down light aprons + fixed baffle/pivot stub (12mm ext ply) + piano hinges + foam seal + hold-up catches | Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 16). Two bottom-hinged fold-down aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. 12mm exterior BC plywood (~0.5 m² of a 4×8 sheet, flat-black interior), 2× continuous (piano) hinges to the threshold, closed-cell foam-strip perimeter seal, 2× over-centre hold-up catches; folds flat into the container for the transport swing. Est.; the joint light-seal detail (foam + a lapping board off the hinge frame) is still TBD. | 1 lot | Home Depot / McMaster | $95–$150 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13" grip, 2.06" standoff. Screws into 1/4"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm. | 1 ea | McMaster-Carr | $6 |
 | **Panel total** | | | | **$1,324–$1,537** |
 <!-- END parts:panel -->
@@ -530,7 +530,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. PIPE sourced: 3" NPS Sch 80 (Ø88.9 OD × 7.6mm wall), 36" ≈ $135 (Speedy Metals). The machined hub / thrust collar + 2 journal bands (Ra ~0.4 µm, iglide runs on soft shafts) are FAB → pending blueprints. Band held est pending the fab quote. | 1 ea | Metal Supermarkets / Speedy Metals | $180–$300 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the iglide sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $80 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | Top + bottom radial location of the post. igus iglide J self-lubricating polymer, Ø90 ID × Ø95 OD × Ø103 flange × 100 mm long. The FLANGE gives axial location against the hub face; the OD is a light press into the hub bore. Axial load is on the 51118 thrust bearing. Maintenance-free, no oil; inert plastic — chemical-resistant (iglide J passed the igus chemical filter; iglide X isn't offered at Ø90). Service pressure ≈1.3 N/mm² vs ≈35 N/mm² allowable (>25× margin); runs on the unhardened S355 post. $130.53/ea, ships in days — replaces the made-to-order GGB DU (3-mo lead). | 2 ea | igus | $261 |
-| Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | Floor + roof Ø220×20 A36 steel mount plates (waterjet: Ø90 post bore + 6× M12 clearance on Ø170 PCD each) bolting the fixed Ø89 post to the container floor cross-member + roof rail; 12× M12 anchor bolts; 3× welded hinge brackets tying the moving hub to the steel center-zone jamb (2× M12 each, through the RHS into a backing plate — not the HDPE skin). Est. material + waterjet + fab; firm at the fab quote (the pivot needs a structural sign-off). Hingepanel Sheet 11. | 1 lot | Local fab / McMaster-Carr | $70–$120 |
+| Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | Floor + roof Ø220×20 A36 steel mount plates (waterjet: Ø90 post bore + 6× M12 clearance on Ø170 PCD each) bolting the fixed Ø89 post to the container floor cross-member + roof rail; 12× M12 anchor bolts; 3× welded hinge brackets tying the moving hub to the steel center-zone jamb (2× M12 each, through the RHS into a backing plate — not the HDPE skin). Est. material + waterjet + fab; firm at the fab quote (the pivot needs a structural sign-off). Hingepanel Sheet 10. | 1 lot | Local fab / McMaster-Carr | $70–$120 |
 | Drum support cage, 2×2×0.120in steel SHS | Steel welded box cage carrying the Ø800 housing + drum on the swinging leaf — 4 corner posts + perimeter rails + a top & bottom axle beam at the drum axis, ALL 50×50×3 RHS (2×2×0.120in stock, the axle beams = the perimeter section: the 962mm span is barely stressed, δ≈0.3mm). The 2× Ø240×12 bearing mount plates (ll-mount-plates) are fillet-welded across the beams (steel↔steel) — the SKF 6215 ring/collar tap into them. Material inside the local-fab lot, so no separate per-ft line. | 1 lot | Local fab | $70–$120 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | Fasteners Plus | $90–$120 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |

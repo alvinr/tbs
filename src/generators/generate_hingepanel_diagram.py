@@ -2681,11 +2681,10 @@ def sheet16():
     ax.text(*eE(xc / 2, T + 3), "FIXED ply", ha="center", va="bottom", fontsize=6.4, fontweight="bold", color="#204060", **FONT)
     ax.text(*eE(xc + T + BL * 0.6, T + 3), "MOVING ply", ha="center", va="bottom", fontsize=6.4, fontweight="bold", color="#204060", **FONT)
     bx, bz = eE(xc + T + 6, T / 2)                                          # moving panel sweeps off along the 45° normal
-    ax.annotate("", xy=(bx + 72, bz + 72), xytext=(bx, bz), arrowprops=dict(arrowstyle="-|>", color="#B00", lw=1.6))
-    ax.text(bx + 78, bz + 80, "moving panel sweeps\noff the seal (no bind)", ha="left", fontsize=6, fontweight="bold", color="#B00", **FONT)
-    ax.annotate("", xy=(eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), xytext=(e0 - 46, ebz + T * S * 0.5),
-                arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.4))    # light ray blocked at the diagonal lap
-    ax.text(e0 - 46, ebz + T * S * 0.5 - 16, "light", ha="left", fontsize=5.6, color="#B07000", **FONT)
+    leader(ax, (bx, bz), (bx + 78, bz + 80), "moving panel sweeps\noff the seal (no bind)",
+           col="#B00", fw="bold", fs=6, ha="left", arrow_style="-|>", lw=1.6)
+    leader(ax, (eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), (e0 - 46, ebz + T * S * 0.5 - 16),
+           "light", col="#B07000", fs=5.6, ha="left", va="top", arrow_style="-|>", lw=1.4)   # light ray blocked at the diagonal lap
     draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12mm", offset=10, fs=6, font=FONT)
     ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)
 

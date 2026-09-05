@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane fabrication blueprint — 9 new per-part detail sheets (12–20).** Elevated the film-plane
+  drawing set from mechanism-design level to a shop-buildable fabrication blueprint (now 20 sheets, matching
+  the hinged-panel/light-trap standard): depth rail (12), acetal skate (13), cam rail-brake (14), cross-slide
+  stack (15), U-joint install (16), 304 corner plate (17), frame weldment (18), wall-seat saddle (19), and the
+  exploded corner assembly + fastener schedule (20) — each drawn from `tbs_constants`, verified against the live
+  3D model, with cut lengths, hole tables, weld schedules, and part SKUs. Wired the 4 previously-dead constants
+  (`SKATE_ROLLER_W`, `SKATE_AXLE_LEN`, `XSLIDE_STROKE`, `UJOINT_YOKE_L`), added `FP_RAIL_WALL_T`/`FP_RAIL_STOCK_LEN`,
+  and swept 5 stale constant/report values (`FP_W`/`PH_X`/`RAIL_SPAN` comments, X-travel 263→257mm). Phase-0
+  interference/bolt triage found no structural defects (the "7<9" flag is a catalog-fixed McMaster 4040N12 fit).
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

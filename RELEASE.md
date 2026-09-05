@@ -33,11 +33,16 @@ file** — a release must not ship without a changelog entry:
   `XSLIDE_STROKE`, `UJOINT_YOKE_L`), added `FP_RAIL_WALL_T`/`FP_RAIL_STOCK_LEN`, and swept stale constant/report
   values (`FP_W`/`PH_X`/`RAIL_SPAN` comments, X-travel 263→257mm, angle 3/16→1/8in on Sheet 7). Phase-0
   interference/bolt triage found no structural defects (the "7<9" flag is a catalog-fixed McMaster 4040N12 fit).
-  Review pass (Alvin): dropped the cam-brake + U-joint sheets as redundant with Sheets 3/9 (both purchased parts);
+  Review pass 1: dropped the cam-brake + U-joint sheets as redundant with Sheets 3/9 (both purchased parts);
   **re-spec'd the corner plate from a press-brake-formed ¼ 6×8 plate to stock 4×4×¼in 304 angle** (cheaper, no
   forming; −$76 to −$135); fixed the skate roller drawn through the channel; added hole coordinates to the skate,
   cross-slide, and corner-angle sheets; and added a vertical section to Sheet 11 confirming the M12 wall bolts
   clear the rail channel (~13mm) and the Ø89 post (~4mm), verified against the 3D.
+  Review pass 2: rail + frame member sections redrawn as single continuous extrusions/angles (were multi-part);
+  reseated the ghosted rollers clear of the web; closed the welded drop-in bottom-bridge gap; drew the wall-seat
+  saddle M12 bolts per the head-outside/nut-inside convention + un-clipped the cut-piece nesting; full per-hole
+  X/Y coordinates on the corner-angle drilling layout (its section view dropped — stock part); gib adjuster
+  redrawn as a headless grub/set screw (was a bolt).
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

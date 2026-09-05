@@ -25,7 +25,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, Arc
+from matplotlib.patches import Rectangle, Circle, Arc, Ellipse
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL,
@@ -41,7 +41,8 @@ from tbs_constants import (FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RA
                           FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N,
                           SKATE_ROLLER_W, SKATE_AXLE_LEN,
                           CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D, CAM_CLAMP_HOLE_SP, CAM_CLAMP_N,
-                          XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE)
+                          XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE,
+                          UJOINT_YOKE_L, UJOINT_HUB_L, UJOINT_BOOT_OD, UJOINT_BOOT_LEN, UJOINT_STUB_OD)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -2227,6 +2228,79 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 16 — U-JOINT INSTALL (Belden SSNBUJ750x3/8KB) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet16():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    R, Rb = UJOINT_OD / 2, UJOINT_BOOT_OD / 2
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — U-joint elevation (straight), fully dimensioned ────────────────
+    axA = fig.add_axes([0.05, 0.50, 0.52, 0.40]); axA.set_aspect("equal"); axA.axis("off")
+    L = UJOINT_LEN
+    axA.set_xlim(-40, L + 40); axA.set_ylim(-Rb - 42, Rb + 48)
+    # two hubs + center boot bulge
+    axA.add_patch(Rectangle((0, -R), UJOINT_HUB_L, 2 * R, fc=C_UJ, ec=OUT, lw=1.3, zorder=4))            # input hub
+    axA.add_patch(Rectangle((L - UJOINT_HUB_L, -R), UJOINT_HUB_L, 2 * R, fc=C_UJ, ec=OUT, lw=1.3, zorder=4))  # output hub
+    axA.add_patch(Ellipse((L / 2, 0), UJOINT_BOOT_LEN, UJOINT_BOOT_OD, fc="#6B4A38", ec=OUT, lw=1.1, zorder=5))  # boot bulge
+    axA.add_patch(Rectangle((UJOINT_HUB_L - 2, -R + 2), L - 2 * UJOINT_HUB_L + 4, 2 * R - 4, fc="#9FB8C8", ec=OUT, lw=0.8, zorder=3))  # yoke/cross core
+    draw_dim_h(axA, 0, L, -Rb - 14, f"overall {UJOINT_LEN}mm", fs=6.0, font=FONT, above=False, offset=10)
+    draw_dim_h(axA, 0, UJOINT_HUB_L, R + 8, f"hub {UJOINT_HUB_L}mm", fs=5.6, font=FONT, offset=7)
+    draw_dim_h(axA, 0, L / 2, R + 20, f"single yoke {UJOINT_YOKE_L}mm", fs=5.6, font=FONT, offset=7)
+    draw_dim_v(axA, -18, -R, R, f"OD {UJOINT_OD}mm", fs=5.6, font=FONT, offset=8)
+    leader(axA, L / 2, Rb - 2, L / 2 + 34, Rb + 20, f"factory boot Ø{UJOINT_BOOT_OD} × {UJOINT_BOOT_LEN}mm (integral)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    # operating-angle arc at output end
+    axA.add_patch(Arc((L, 0), 46, 46, angle=0, theta1=-UJOINT_ANGLE, theta2=0, color=C_CAR, lw=1.2))
+    axA.plot([L, L + 23 * np.cos(np.radians(-UJOINT_ANGLE))], [0, 23 * np.sin(np.radians(-UJOINT_ANGLE))], color=C_CAR, lw=1.0, ls=(0, (4, 3)))
+    axA.text(L + 24, -20, f"±{UJOINT_ANGLE}° / axis", fontsize=5.8, ha="left", color=C_CAR, **FONT)
+    axA.text(-38, Rb + 40, "A — U-JOINT ELEVATION  (1:1)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — stub-shaft install: keyed 3/8 stub + 4040N12 clamp ────────────
+    axB = fig.add_axes([0.62, 0.50, 0.34, 0.40]); axB.set_aspect("equal"); axB.axis("off")
+    axB.set_xlim(-20, 120); axB.set_ylim(-40, 44)
+    s = UJOINT_STUB_OD
+    axB.add_patch(Rectangle((0, -R), UJOINT_HUB_L, 2 * R, fc=C_UJ, ec=OUT, lw=1.2, zorder=4))       # joint hub (bore)
+    axB.add_patch(Rectangle((UJOINT_HUB_L, -s / 2, ), 70, s, fc=C_PIN, ec=OUT, lw=1.1, zorder=5))   # 3/8 stub
+    axB.add_patch(Rectangle((UJOINT_HUB_L + 2, s / 2 - 1.2, ), 12, 2.4, fc=C_STEEL, ec=OUT, lw=0.5, zorder=6))  # key in keyseat
+    axB.add_patch(Rectangle((UJOINT_HUB_L / 2 - 1.2, R - 1, ), 2.4, 6, fc=C_PIN, ec=OUT, lw=0.5, zorder=6))     # set screw
+    # 4040N12 two-piece clamp on the stub
+    axB.add_patch(Rectangle((UJOINT_HUB_L + 34, -s / 2 - 12), 26, 12, fc=C_SWING, ec=OUT, lw=1.0, zorder=4))    # lower clamp half → X-slide
+    axB.add_patch(Rectangle((UJOINT_HUB_L + 34, s / 2), 26, 12, fc=C_SWING, ec=OUT, lw=1.0, zorder=4))          # upper clamp half
+    for cxb in (UJOINT_HUB_L + 40, UJOINT_HUB_L + 54):
+        axB.add_patch(Rectangle((cxb - 1, -s / 2 - 12), 2, s + 24, fc=C_BOLT, ec="none", zorder=6))             # clamp bolts
+    leader(axB, UJOINT_HUB_L + 8, s / 2, 60, 34, "keyed 3/8in stub (3/32×3/64 key)\n+ set screw locks it axially", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axB, UJOINT_HUB_L + 47, -s / 2 - 12, 74, -30, "McMaster 4040N12\ntwo-piece clamp → X-slide", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(axB, UJOINT_HUB_L / 2, -R, 4, -30, f"Ø{UJOINT_BORE} keyway bore", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    axB.text(-20, 38, "B — STUB INSTALL  (input side)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View C — corner assembly chain ─────────────────────────────────────────
+    axC = fig.add_axes([0.05, 0.10, 0.90, 0.32]); axC.set_xlim(0, 100); axC.set_ylim(0, 100); axC.axis("off")
+    chain = [("6061 frame\ncorner", C_FRAME, 8), ("304 corner\nplate (Sh 17)", C_STEEL, 26),
+             ("U-JOINT\n(this sheet)", C_UJ, 46), ("X-slide\ncarriage (Sh 15)", C_SWING, 66), ("skate\n(Sh 13)", C_CAR, 86)]
+    for i, (lbl, col, cx) in enumerate(chain):
+        axC.add_patch(Rectangle((cx - 7, 50), 14, 20, fc=col, ec=OUT, lw=1.1, zorder=3))
+        axC.text(cx, 60, lbl, fontsize=5.8, ha="center", va="center", color=OUT, **FONT, zorder=5)
+        if i < len(chain) - 1:
+            axC.annotate("", xy=(chain[i + 1][2] - 8, 60), xytext=(cx + 8, 60), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.0))
+    axC.text(50, 84, "CORNER LOAD PATH — the frame is CARRIED BY the X-slide THROUGH the U-joint (never bolted to it directly)",
+             fontsize=6.6, ha="center", color=OUT, **FONT)
+    axC.text(0, 30, "C — CORNER ASSEMBLY CHAIN  (see Sheet 9 for the square-on connection)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.05, 0.075, 0.90, 0.02]); ax_n.axis("off")   # spacer (notes folded into leaders + View C)
+    ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 16 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="U-joint install (Belden SSNBUJ750x3/8KB, ×4) — elevation, keyed-stub + 4040N12 clamp, corner chain",
+                scale_note="A/B 1:1 (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet16.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet16.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 15 — CROSS-SLIDE STACK (Z + X) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet15():
@@ -2597,4 +2671,5 @@ if __name__ == "__main__":
     sheet13()
     sheet14()
     sheet15()
+    sheet16()
     print("Done.")

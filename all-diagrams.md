@@ -80,6 +80,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 15: Cross-Slide Stack (Z + X) Fabrication Detail](assets/film-plane-sheet15.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 16: U-Joint Install (Belden SSNBUJ750x3/8KB) Fabrication Detail](assets/film-plane-sheet16.png)
+
 ### Corner Joint — Design Study
 
 ![TBS-001 Film-Plane Corner Joint — Concept Options (2 axes, ±45°, carries the plane)](assets/film-joint-options.png)

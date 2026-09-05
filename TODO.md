@@ -9,6 +9,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## Cleanup
+
+- [ ] **Scrub "Alvin" name attributions from code/text (2026-09-05).** CLAUDE.md now bans naming "Alvin" in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Forward rule is in effect; a back-scrub of the **pre-existing** `(Alvin …)` / `(… , Alvin …)` occurrences remains — mostly in `parts.py` + `costing.py` spec/cost-history comments (e.g. "firm (Alvin 2026-08-13)"), and any in `TODO.md` / reports. Sweep: `grep -rn "Alvin" src/ *.md | grep -viE "© 2026 Alvin Richards|SPDX"` → replace each `(Alvin <date>)`→`(<date>)`, `(… Alvin)`→drop the name; keep the license/copyright headers.
+
 ## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
 
 - [~] **Brush + holder — KEEP AS-IS for now (2026-08-24, Alvin: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.

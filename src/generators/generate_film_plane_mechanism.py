@@ -983,19 +983,19 @@ def view_c(ax):
     # adjustable gib + brass-tip screw
     _rect(ax, 14, 8.5, 44, 4, C_STEEL, z=6)
     hatch_rect(ax, 14, 8.5, 44, 4, color="#8A93A0", hatch="///", lw=0.0)
-    # brass-tip ADJUSTER SCREW — passes THROUGH the whole bottom plate (threaded in it) so it turns from
-    # OUTSIDE; the tip bears UP on the gib, the drive head sits below the carriage.
+    # brass-tip GRUB (SET) SCREW — headless, fully threaded THROUGH the bottom plate so it turns from
+    # OUTSIDE via a hex-socket at the outer end (no protruding head); the brass tip bears UP on the gib.
     _rect(ax, 34, -5, 4, 14, C_PIN, z=8)
-    for yy in (-3.2, -1.6, 0.0, 1.6, 3.2):
-        ax.plot([33.2, 38.8], [yy, yy], color=OUT, lw=0.4, zorder=9)
-    ax.add_patch(plt.Rectangle((32.3, -6.8), 7.4, 2, fc=C_PIN, ec=OUT, lw=0.5, zorder=9))   # drive head — OUTSIDE, accessible
+    for yy in (-3.5, -1.75, 0.0, 1.75, 3.5, 5.25):
+        ax.plot([33.2, 38.8], [yy, yy], color=OUT, lw=0.4, zorder=9)                        # thread crests full length — NO head
+    ax.add_patch(Circle((36, -4), 1.5, fc="#2A2A2E", ec=OUT, lw=0.5, zorder=10))            # hex-socket drive recess (outer end, flush)
     leader(ax, 44, 20, 68, 48, "304 flat-bar WAY (Z tilt / X swing)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, 25.5, 68, 36, "UHMW pad — self-lube, DRY (both faces)",
            ha="left", fs=5.8, color="#8A6A2A", font=FONT, bbox=LBL_BG)
     leader(ax, 12, 32, 68, 24, "304 carriage — the MOVING part",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 36, -6, 46, -18, "adjustable GIB + brass-tip screw THROUGH the bottom plate (turns from OUTSIDE) —\nsets the drag that HOLDS the gravity-loaded Z axis, yet still hand-slides (re-tune after break-in)",
+    leader(ax, 36, -5, 46, -18, "adjustable GIB + brass-tip GRUB (SET) screw — headless, hex-socket, threaded THROUGH the\nbottom plate (turns from OUTSIDE); sets the drag that HOLDS the gravity Z axis, yet still hand-slides",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-40, 64, "C — CROSS-SLIDE SECTION  (Z tilt / X swing): UHMW pad on 304 flat bar; the gib holds the vertical axis",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -2337,31 +2337,39 @@ def sheet17():
     axA.add_patch(plt.Polygon([(-bt, seat_z), (-bt, seat_z - gh), (-proj, seat_z)], closed=True, fc=C_STEEL, ec=OUT, lw=1.1, zorder=3))  # gusset
     axA.add_patch(Rectangle((-proj + 6, seat_z + st), 60, 40, fc=STRUCT2, ec=OUT, lw=1.1, zorder=5))    # rail sits on seat
     axA.text(-proj + 36, seat_z + st + 20, "RAIL", fontsize=5.6, ha="center", va="center", color=OUT, **FONT, zorder=6)
-    axA.add_patch(Rectangle((WALL_T, seat_z - 8), 8, 30, fc=C_STEEL, ec=OUT, lw=1.0, zorder=4))     # exterior spreader plate
+    axA.add_patch(Rectangle((WALL_T, seat_z - 40, ), 8, 62, fc=C_STEEL, ec=OUT, lw=1.0, zorder=4))  # exterior spreader plate — spans both bolt rows
+    # M12 through-bolts drawn per convention: HEX HEAD outside (right), NUT inside the container (left),
+    # shank gripping back-plate + corrugated wall + exterior spreader plate
+    def _wall_bolt(bz):
+        axA.add_patch(Rectangle((-bt, bz - 2), WALL_T + 8 + bt, 4, fc=C_BOLT, ec="none", zorder=6))   # shank (grip)
+        axA.add_patch(Rectangle((-bt - 7, bz - 4), 7, 8, fc="#6A6A72", ec=OUT, lw=0.6, zorder=7))      # NUT — inside (container)
+        axA.add_patch(Rectangle((WALL_T + 8, bz - 4.5), 6, 9, fc=C_BOLT, ec=OUT, lw=0.6, zorder=7))    # HEX HEAD — outside
     for bz in (seat_z + 6, seat_z - 26):
-        axA.add_patch(Rectangle((-bt - 2, bz - 2.5), WALL_T + bt + 12, 5, fc=C_BOLT, ec="none", zorder=6))  # M12 through-bolts
+        _wall_bolt(bz)
     draw_dim_v(axA, -proj - 20, 0, bph, f"{bph}mm", fs=5.6, font=FONT, offset=8)
     draw_dim_h(axA, -proj, 0, -24, f"seat proj {proj}mm", fs=5.6, font=FONT, above=False, offset=8)
     leader(axA, -proj / 2, seat_z, -proj - 30, seat_z + 30, f"seat plate {st}mm A36 — the rail bears here", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axA, -bt / 2, gh, -proj - 30, gh - 10, f"gusset (8mm) braces\nseat → back-plate", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axA, WALL_T + 4, seat_z + 6, 40, seat_z - 30, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} → wall +\nexterior spreader plate", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
+    leader(axA, -bt - 6, seat_z + 6, -proj - 30, seat_z - 26, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} — NUT inside (container)", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
+    leader(axA, WALL_T + 11, seat_z - 26, 30, seat_z - 44, "HEX HEAD outside, on the\nexterior spreader plate", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
     axA.text(-proj - 68, bph + 24, "A — SADDLE ELEVATION  (load-bearing seat; wall at right)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── View B — flat-pattern cut pieces (nesting) ─────────────────────────────
-    axB = fig.add_axes([0.53, 0.44, 0.43, 0.46]); axB.set_aspect("equal"); axB.axis("off")
-    axB.set_xlim(-20, 430); axB.set_ylim(-30, 300)
+    axB = fig.add_axes([0.53, 0.42, 0.44, 0.50]); axB.set_aspect("equal"); axB.axis("off")
+    axB.set_xlim(-24, 482); axB.set_ylim(-40, bph + 70)
     def _piece(x, y, w, h, lbl, tri=False):
         if tri:
             axB.add_patch(plt.Polygon([(x, y), (x, y + h), (x + w, y)], closed=True, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+            axB.text(x + w * 0.32, y + h * 0.32, lbl, fontsize=5.0, ha="center", va="center", color=OUT, **FONT, zorder=5)
         else:
             axB.add_patch(Rectangle((x, y), w, h, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
-        axB.text(x + w / 2, y + h / 2, lbl, fontsize=5.2, ha="center", va="center", color=OUT, **FONT, zorder=5)
-    _piece(0, 40, pw, bph, f"back-plate\n{pw:.0f}×{bph}\n8mm")
-    _piece(pw + 20, 40, pw, pw, f"exterior\n{pw:.0f}×{pw:.0f}\n8mm")
-    _piece(2 * pw + 40, 40, proj, gh, f"gusset\n{proj}×{gh}\n8mm", tri=True)
-    _piece(2 * pw + 40, 220, pw, proj, f"seat\n{pw:.0f}×{proj}\n10mm")
-    axB.text(-20, 288, "B — CUT PIECES  (A36; nest per parts.py — 8mm + 10mm sheets)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
-    axB.text(2 * pw + 40, 20, "weld: seat + gusset + exterior → back-plate (owner)", fontsize=5.6, ha="left", color=C_CAR, **FONT)
+            axB.text(x + w / 2, y + h / 2, lbl, fontsize=5.2, ha="center", va="center", color=OUT, **FONT, zorder=5)
+    _piece(0, 20, pw, bph, f"back-plate\n{pw:.0f}×{bph}\n8mm")                       # x 0-150,   y 20-263
+    _piece(pw + 24, 153, pw, pw, f"exterior\n{pw:.0f}×{pw:.0f}\n8mm")               # x 174-324, y 153-303
+    _piece(pw + 24, 20, pw, proj, f"seat\n{pw:.0f}×{proj}\n10mm")                   # x 174-324, y 20-130
+    _piece(2 * pw + 48, 20, proj, gh, f"gusset\n{proj}×{gh}\n8mm", tri=True)        # x 348-458, y 20-140
+    axB.text(-24, bph + 66, "B — CUT PIECES  (A36; nest per parts.py — 8mm + 10mm sheets)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+    axB.text(0, -30, "weld: seat + gusset + exterior → back-plate (owner)", fontsize=5.6, ha="left", color=C_CAR, **FONT)
 
     # ── notes ──────────────────────────────────────────────────────────────────
     ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
@@ -2436,10 +2444,13 @@ def sheet16():
     # ── View C — member section (angle + ACM + muslin capture) ─────────────────
     axC = fig.add_axes([0.52, 0.10, 0.42, 0.34]); axC.set_aspect("equal"); axC.axis("off")
     axC.set_xlim(-18, leg + 40); axC.set_ylim(-18, leg + 34)
-    hatch_rect(axC, 0, 0, leg, at)                          # angle base leg (inboard, horizontal)
-    hatch_rect(axC, 0, 0, at, leg)                          # angle vertical leg (perimeter)
-    axC.add_patch(Rectangle((at, at), DIBOND_T, leg - at - 4, fc=C_ACM, ec=OUT, lw=0.8, zorder=4))       # ACM backing in the L
-    axC.add_patch(Rectangle((at + DIBOND_T, at), 0.8, leg - at - 4, fc=C_MUSLIN, ec="none", zorder=5))   # muslin on ACM face
+    # ONE continuous L-angle section (single rolled/extruded piece with an inside fillet — not two parts)
+    fr = at
+    fill_arc = [(at + fr + fr * np.cos(np.radians(a)), at + fr + fr * np.sin(np.radians(a))) for a in np.linspace(270, 180, 8)]
+    l_pts = [(0, 0), (leg, 0), (leg, at)] + fill_arc + [(at, leg), (0, leg)]
+    axC.add_patch(plt.Polygon(l_pts, closed=True, facecolor="#DCE4EC", edgecolor=OUT, lw=1.3, hatch="///", zorder=3))
+    axC.add_patch(Rectangle((at + fr, at), DIBOND_T, leg - at - fr - 4, fc=C_ACM, ec=OUT, lw=0.8, zorder=4))   # ACM backing in the L
+    axC.add_patch(Rectangle((at + fr + DIBOND_T, at), 0.8, leg - at - fr - 4, fc=C_MUSLIN, ec="none", zorder=5))   # muslin on ACM face
     draw_dim_v(axC, -10, 0, leg, f"{leg:.1f}mm", fs=5.6, font=FONT, offset=7)
     draw_dim_h(axC, 0, at, leg + 8, f"{at}mm", fs=5.4, font=FONT, offset=6)
     leader(axC, at + DIBOND_T / 2, leg * 0.6, leg + 6, leg * 0.7, f"ACM (Dibond) backing {DIBOND_T}mm\n— carries flatness", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
@@ -2469,8 +2480,8 @@ def sheet15():
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
 
     # ── View A — drilling layout (both legs developed) with hole coordinates ────
-    axA = fig.add_axes([0.06, 0.40, 0.56, 0.50]); axA.set_aspect("equal"); axA.axis("off")
-    axA.set_xlim(-56, 2 * leg + 60); axA.set_ylim(-52, L + 44)
+    axA = fig.add_axes([0.08, 0.40, 0.74, 0.52]); axA.set_aspect("equal"); axA.axis("off")
+    axA.set_xlim(-72, 2 * leg + 150); axA.set_ylim(-70, L + 40)
     axA.add_patch(Rectangle((0, 0), 2 * leg, L, fc=C_STEEL, ec=OUT, lw=1.4, zorder=3))
     axA.plot([leg, leg], [0, L], color=OUT, lw=1.0, ls=(0, (6, 3)), zorder=5)     # angle corner (fold line, not a bend)
     # J5 frame-bolt holes (frame leg = left), on the leg centerline
@@ -2484,31 +2495,17 @@ def sheet15():
     for dx in (-24, 24):
         draw_circle(axA, ujx + dx, L / 2, 3.0, lw=1.0, color=C_SWING, zorder=6)                # 4040N12 mount bolts
     # overall
-    draw_dim_h(axA, 0, 2 * leg, -18, f"2 legs × {leg:.1f}mm (4in)", fs=5.8, font=FONT, above=False, offset=9)
-    draw_dim_v(axA, -20, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
-    # J5 hole coordinates (dim_h from left edge, dim_v from bottom)
-    draw_dim_h(axA, 0, j5x, -34, f"{j5x:.1f}", fs=5.0, font=FONT, above=False, offset=6)
-    draw_dim_v(axA, -38, 0, j5[0][1], f"{j5[0][1]:.1f}", fs=5.0, font=FONT, offset=6)
-    draw_dim_v(axA, j5x + 12, j5[0][1], j5[1][1], f"{sp}mm", fs=5.0, font=FONT, offset=6, right=True)
-    # J4 hole coordinates
-    draw_dim_h(axA, leg, ujx, L + 12, f"{leg/2:.1f}", fs=5.0, font=FONT, offset=6)
-    draw_dim_h(axA, ujx - 24, ujx + 24, L / 2 - 22, "48", fs=5.0, font=FONT, above=False, offset=6)
-    draw_dim_v(axA, 2 * leg + 16, 0, L / 2, f"{L/2:.1f}", fs=5.0, font=FONT, offset=6, right=True)
-    leader(axA, j5[1][0], j5[1][1], -50, L - 16, "J5: 2× M6 → 6061 frame\n(frame leg)", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axA, ujx, L / 2, ujx + 8, -32, f"J4: U-joint stub Ø{UJOINT_STUB_OD} +\n4040N12 mount (U-joint leg, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
-    axA.text(-56, L + 26, "A — DRILLING LAYOUT  (both legs developed; datum = bottom-left)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
-
-    # ── View B — end section: the STOCK 4×4×¼ angle profile ────────────────────
-    axB = fig.add_axes([0.66, 0.44, 0.30, 0.42]); axB.set_aspect("equal"); axB.axis("off")
-    axB.set_xlim(-24, leg + 40); axB.set_ylim(-24, leg + 34)
-    hatch_rect(axB, 0, 0, leg, t)                          # horizontal leg (U-joint)
-    hatch_rect(axB, 0, 0, t, leg)                          # vertical leg (frame)
-    axB.add_patch(Arc((t + CORNER_PLATE_BEND_R, t + CORNER_PLATE_BEND_R), 2 * CORNER_PLATE_BEND_R, 2 * CORNER_PLATE_BEND_R, angle=0, theta1=180, theta2=270, color=OUT, lw=0.9))
-    draw_dim_v(axB, -14, 0, leg, f"{leg:.1f}mm", fs=5.6, font=FONT, offset=7)
-    draw_dim_h(axB, 0, leg, leg + 8, f"{leg:.1f}mm", fs=5.6, font=FONT, offset=7)
-    draw_dim_h(axB, 0, t, -12, f"{t}mm", fs=5.2, font=FONT, above=False, offset=5)
-    leader(axB, t + CORNER_PLATE_BEND_R, t + CORNER_PLATE_BEND_R, leg * 0.6, leg * 0.6, f"stock angle inside fillet R{CORNER_PLATE_BEND_R}", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    axB.text(-24, leg + 22, "B — END SECTION  (stock 4×4×¼in 304 angle)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+    draw_dim_h(axA, 0, 2 * leg, -74, f"2 legs × {leg:.1f}mm (4in)", fs=5.8, font=FONT, above=False, offset=9)
+    draw_dim_v(axA, -78, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
+    # EVERY hole located by an X (dim_h from the left datum) + Y (dim_v from the bottom datum)
+    j5lo, j5hi = j5[0][1], j5[1][1]
+    for i, hx in enumerate((j5x, ujx - 24, ujx, ujx + 24)):          # X of each hole, stacked below
+        draw_dim_h(axA, 0, hx, -18 - i * 13, f"{hx:.1f}", fs=5.0, font=FONT, above=False, offset=6)
+    for i, hy in enumerate((j5lo, L / 2, j5hi)):                     # Y of each hole row, stacked at left
+        draw_dim_v(axA, -20 - i * 13, 0, hy, f"{hy:.1f}", fs=5.0, font=FONT, offset=6)
+    leader(axA, j5[1][0], j5hi, 2 * leg + 6, j5hi + 8, "J5: 2× M6 → 6061 frame (frame leg)", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, ujx, L / 2, 2 * leg + 6, L / 2 - 20, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(U-joint leg, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
+    axA.text(-56, L + 26, "A — DRILLING LAYOUT  (both legs developed; datum = bottom-left, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── notes ──────────────────────────────────────────────────────────────────
     ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
@@ -2527,7 +2524,7 @@ def sheet15():
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 15 OF 18", drawing_title="MOVEABLE FILM PLANE",
-                subtitle="304 corner angle (stock 4×4×¼in, ×4) — fabrication detail: drilling layout + hole coordinates, end section",
+                subtitle="304 corner angle (stock 4×4×¼in, ×4) — fabrication detail: drilling layout + hole coordinates",
                 scale_note="A/B 1:1 (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
@@ -2743,18 +2740,18 @@ def sheet12():
     # ── View B — end section (true channel profile, 1:1) ───────────────────────
     axB = fig.add_axes([0.06, 0.335, 0.38, 0.30]); axB.set_aspect("equal"); axB.axis("off")
     axB.set_xlim(-34, W + 92); axB.set_ylim(-30, D + 46)
-    hatch_rect(axB, 0, 0, t, D)                    # web (X=0, vertical)
-    hatch_rect(axB, 0, D - t, W, t)                # top flange
-    hatch_rect(axB, 0, 0, W, t)                    # bottom flange
-    # skate rollers ghosted (detailed on Sheet 13)
-    rl = SKATE_ROLLER_OD / 2
-    draw_circle(axB, W - rl - 2, t + rl, rl, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=5)      # load roller on bottom flange
-    kl = SKATE_KEEPER_OD / 2
-    draw_circle(axB, W - kl - 2, D - t - kl, kl, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=5)  # keeper roller under top flange
+    # ONE continuous U-channel section (single extrusion — not 3 parts), opening toward +X
+    u_pts = [(0, 0), (W, 0), (W, t), (t, t), (t, D - t), (W, D - t), (W, D), (0, D)]
+    axB.add_patch(plt.Polygon(u_pts, closed=True, facecolor="#DCE4EC", edgecolor=OUT, lw=1.4, hatch="///", zorder=3))
+    # skate rollers ghosted (detailed on Sheet 13) — seated in the throat, clear of the web
+    rl, kl = SKATE_ROLLER_OD / 2, SKATE_KEEPER_OD / 2
+    rx = t + rl + 1
+    draw_circle(axB, rx, t + rl, rl, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=5)          # load roller on bottom flange
+    draw_circle(axB, rx, D - t - kl, kl, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=5)      # keeper roller under top flange
     draw_dim_v(axB, -22, 0, D, f"{D}mm", fs=6.0, font=FONT, offset=8)
     draw_dim_h(axB, 0, W, -20, f"{W}mm", fs=6.0, font=FONT, above=False, offset=10)
-    leader(axB, t, D * 0.62, W + 30, D * 0.72, f"wall {FP_RAIL_WALL_T}mm (0.2in)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axB, W - rl - 2, t + rl, W + 34, t + rl - 4, "acetal skate rollers\n(Sheet 13)", ha="left", fs=5.6, color=C_FLAT, font=FONT, bbox=LBL_BG)
+    leader(axB, t, D * 0.5, W + 30, D * 0.6, f"wall {FP_RAIL_WALL_T}mm (0.2in) — one extrusion", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axB, rx, t + rl, W + 34, t + rl - 4, "acetal skate rollers\n(Sheet 13)", ha="left", fs=5.6, color=C_FLAT, font=FONT, bbox=LBL_BG)
     axB.text(0, D + 30, "B — END SECTION  (opening → film, 1:1)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── View C — end conditions: fixed-R vs drop-in-L ──────────────────────────
@@ -2775,11 +2772,14 @@ def sheet12():
     axC.add_patch(Rectangle((20, 20), 30, 14, fc=STRUCT2, ec=OUT, lw=1.1, zorder=3))     # removable
     axC.add_patch(Rectangle((54, 20), 24, 14, fc="#B8C6D6", ec=OUT, lw=1.1, zorder=3))   # fixed stub
     axC.add_patch(Rectangle((44, 34), 20, 4, fc=C_STEEL, ec=OUT, lw=0.9, zorder=5))      # top bridge (fishplate)
-    axC.add_patch(Rectangle((52, 15.5), 8, 3, fc=C_STEEL, ec=OUT, lw=0.8, zorder=5))     # bottom support bridge
+    axC.add_patch(Rectangle((44, 16), 26, 4, fc=C_STEEL, ec=OUT, lw=0.9, zorder=5))      # bottom support bridge — laps under, welded to the stub (no gap)
+    for wx in (58, 66):                                                                  # weld ticks bridge → stub
+        axC.plot([wx - 1.5, wx + 1.5], [20, 20], color=C_CAR, lw=1.4, zorder=7)
     axC.plot([52, 52], [20, 34], color=OUT, lw=0.8, ls=(0, (2, 2)), zorder=6)            # cut line
-    leader(axC, 54, 36, 30, 47, "bridge (gravity-borne) + locating pin — Sheet 4", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, 54, 36, 30, 47, "top bridge (gravity-borne) + locating pin — Sheet 4", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, 60, 16, 30, 8, "bottom support bridge — WELDED to the stub (laps under, no gap)", ha="left", fs=5.6, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(axC, 66, 27, 82, 34, "fixed stub\n(pivot post)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    axC.text(0, 6, "C — END CONDITIONS  (schematic; mounting on Sheets 4 & 19)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+    axC.text(0, 2, "C — END CONDITIONS  (schematic; mounting on Sheets 4 & 17)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── notes ──────────────────────────────────────────────────────────────────
     ax_n = fig.add_axes([0.06, 0.085, 0.88, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")

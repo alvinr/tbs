@@ -2229,6 +2229,81 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 20 — CORNER ASSEMBLY (EXPLODED) + FASTENER SCHEDULE
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet20():
+    reset_label_registry()
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — exploded corner stack (balloons keyed to Sheets 12–19) ─────────
+    axA = fig.add_axes([0.05, 0.30, 0.44, 0.60]); axA.set_xlim(0, 100); axA.set_ylim(0, 100); axA.axis("off")
+    stack = [
+        ("1", "Depth rail (3×1½ U-channel)", "Sheet 12", STRUCT2, 92),
+        ("2", "Acetal skate + carriage plate", "Sheet 13", C_CAR, 79),
+        ("3", "Cam rail-brake ×3", "Sheet 14", C_CLAMP, 66),
+        ("4", "Z (tilt) slide", "Sheet 15", C_TILT, 53),
+        ("5", "X (swing) slide", "Sheet 15", C_SWING, 40),
+        ("6", "U-joint (Belden)", "Sheet 16", C_UJ, 27),
+        ("7", "304 corner plate", "Sheet 17", C_STEEL, 16),
+        ("8", "6061 frame corner", "Sheet 18", C_FRAME, 6),
+    ]
+    for num, name, sh, col, y in stack:
+        axA.add_patch(Rectangle((30, y - 4), 26, 8, fc=col, ec=OUT, lw=1.1, zorder=4))
+        axA.add_patch(Circle((22, y), 3.4, fc="white", ec=OUT, lw=1.0, zorder=5))
+        axA.text(22, y, num, fontsize=6.0, ha="center", va="center", color=OUT, **FONT, zorder=6)
+        axA.text(60, y, f"{name}", fontsize=6.2, ha="left", va="center", color=OUT, **FONT, zorder=5)
+        axA.text(60, y - 3.4, sh, fontsize=5.0, ha="left", va="center", color="#777", **FONT, zorder=5)
+    for i in range(len(stack) - 1):
+        axA.plot([43, 43], [stack[i][4] - 4, stack[i + 1][4] + 4], color=OUT, lw=0.7, ls=(0, (2, 2)), zorder=3)
+    axA.text(0, 99, "A — CORNER ASSEMBLY  (exploded; wall-seat saddle = Sheet 19)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+    axA.text(18, 0, "Positioning: roll skate to depth → set Z/X slides → throw cam clamp → U-joint twist-lock",
+             fontsize=5.8, ha="left", color=DIM, **FONT)
+
+    # ── View B — fastener schedule ─────────────────────────────────────────────
+    axB = fig.add_axes([0.52, 0.20, 0.45, 0.70]); axB.set_xlim(0, 100); axB.set_ylim(0, 100); axB.axis("off")
+    axB.text(0, 99, "B — CORNER FASTENER SCHEDULE", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+    cols = [(0, "FASTENER"), (20, "JOINT"), (56, "QTY"), (68, "GRADE"), (84, "EDGE / SHEET")]
+    hdr_y = 92
+    for cx, t in cols:
+        axB.text(cx, hdr_y, t, fontsize=5.8, fontweight="bold", color=OUT, ha="left", **FONT)
+    axB.plot([0, 100], [hdr_y - 2, hdr_y - 2], color=OUT, lw=0.8)
+    rows = [
+        ("M4×0.7", "cam-clamp base → mount tab", "6", "304", "Sheet 14"),
+        ("M5", "axle-saddle retention", "4", "304", "Sheet 13"),
+        ("M6", "J5 corner plate → 6061 frame", "2", "304", "25.4mm · Sh 17"),
+        ("M8", "J1 carriage → Z-slide", "4", "304", "Sheet 13/15"),
+        ("3/8 key + set screw", "U-joint stub → bore", "2+1", "304", "Sheet 16"),
+        ("M6 (4040N12)", "U-joint input → X-slide", "2", "304", "Sheet 16"),
+        ("M12", "wall-seat saddle → wall", "4/seat", "galv", "Sheet 19"),
+    ]
+    ry = hdr_y - 8
+    for fastener, joint, qty, grade, ref in rows:
+        axB.text(0, ry, fastener, fontsize=5.6, color=OUT, ha="left", **FONT)
+        axB.text(20, ry, joint, fontsize=5.6, color=DIM, ha="left", **FONT)
+        axB.text(56, ry, qty, fontsize=5.6, color=OUT, ha="left", **FONT)
+        axB.text(68, ry, grade, fontsize=5.6, color=OUT, ha="left", **FONT)
+        axB.text(84, ry, ref, fontsize=5.4, color="#777", ha="left", **FONT)
+        ry -= 7
+    axB.plot([0, 100], [ry + 3, ry + 3], color=OUT, lw=0.6)
+    axB.text(0, ry - 3, "QTY = per corner unless noted. GRADE: 304 SS is the wet-zone default (no chloride → 316",
+             fontsize=5.2, color=DIM, ha="left", **FONT)
+    axB.text(0, ry - 8, "unneeded); the M12 wall seats are structural steel behind the wall. All edge distances",
+             fontsize=5.2, color=DIM, ha="left", **FONT)
+    axB.text(0, ry - 13, "confirmed against check_interference.py --bolts (precision/catalog fits exempt from 1.5×D).",
+             fontsize=5.2, color=DIM, ha="left", **FONT)
+
+    ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 20 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Corner assembly (exploded) + fastener schedule — the build sequence + every corner fastener",
+                scale_note="Schematic",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet20.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet20.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 19 — WALL-SEAT SADDLE (ICP-11) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet19():
@@ -2891,4 +2966,5 @@ if __name__ == "__main__":
     sheet17()
     sheet18()
     sheet19()
+    sheet20()
     print("Done.")

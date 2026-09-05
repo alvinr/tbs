@@ -163,6 +163,8 @@ RAIL_OFF_BOT = 160    # floor (BOTTOM) offset (mm) = WALKWAY_H 140 + 20mm so the
 # a bare RAIL_OFF_BOT for the bottom) in the 3D models.  (2D sheets still use BRACE_Z_* — see TODO.)
 FP_RAIL_WEB       = 76   # U-channel web depth, stood vertical (Z) — 3×1.5 section
 FP_RAIL_FLANGE    = 38   # U-channel flange (X), opens toward the film
+FP_RAIL_WALL_T    = 5.08 # U-channel wall thickness (mm) = 0.2" — Grainger 795M51 3×1.5×0.2" 6061-T6 (parts.py fp-u-channel)
+FP_RAIL_STOCK_LEN = 2438 # purchased rail stock length (mm) = 8 ft — one uncut stick spans the C_WID(2362) wall-to-wall rail; RAIL_LEN(2200) = skate TRAVEL, not the cut
 FP_RAIL_BUILD_BOT = 110  # film BOTTOM edge → bottom-rail web-centre (weight-carriage stack)
 FP_RAIL_GUIDE_GAP = 10   # film TOP edge → just under the top guide-rail web (follower gap)
 FP_RAIL_CEIL_CLR  = 50   # top-rail web-top → ceiling clearance

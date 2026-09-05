@@ -72,6 +72,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 11: Far-Left (Rear) Rail Bracket → Pivot-Post + Far-Wall Attachment](assets/film-plane-sheet11.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 12: Depth Rail (3×1½ 6061 U-Channel) Fabrication Detail](assets/film-plane-sheet12.png)
+
 ### Corner Joint — Design Study
 
 ![TBS-001 Film-Plane Corner Joint — Concept Options (2 axes, ±45°, carries the plane)](assets/film-joint-options.png)

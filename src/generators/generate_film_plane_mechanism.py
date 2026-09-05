@@ -37,6 +37,8 @@ from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X
                           CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z)
 from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
+from tbs_constants import (FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN,
+                          FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -2221,6 +2223,103 @@ def sheet11():
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet11.png")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 12 — DEPTH RAIL (3×1½ 6061-T6 Al U-channel) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet12():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    RAIL_CUT = C_WID                          # wall-to-wall cut length (Yd0 → C_WID)
+    W, D, t = FP_RAIL_FLANGE, FP_RAIL_WEB, FP_RAIL_WALL_T
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — side elevation (looking at the web); length compressed ─────────
+    axA = fig.add_axes([0.06, 0.70, 0.88, 0.20]); axA.axis("off")
+    axA.set_xlim(-190, RAIL_CUT + 190); axA.set_ylim(-64, D + 76)
+    axA.add_patch(Rectangle((0, 0), RAIL_CUT, D, fc=STRUCT2, ec=OUT, lw=1.3, zorder=3))
+    axA.add_patch(Rectangle((0, D - t), RAIL_CUT, t, fc="#9DB4CC", ec=OUT, lw=0.7, zorder=4))   # top flange edge
+    axA.add_patch(Rectangle((0, 0), RAIL_CUT, t, fc="#9DB4CC", ec=OUT, lw=0.7, zorder=4))       # bottom flange edge
+    trav0 = (RAIL_CUT - RAIL_LEN) / 2
+    axA.add_patch(Rectangle((trav0, t + 3), RAIL_LEN, D - 2 * t - 6, fc="none", ec=C_FLAT,
+                            lw=1.0, ls=(0, (5, 3)), zorder=5))
+    axA.text(RAIL_CUT / 2, D / 2, "acetal skate travel zone", fontsize=6.4, ha="center",
+             va="center", color=C_FLAT, **FONT, zorder=6)
+    draw_dim_h(axA, 0, RAIL_CUT, -32, f"CUT {RAIL_CUT}mm  (wall-to-wall, Yd0 → C_WID)",
+               fs=6.2, font=FONT, above=False, offset=14)
+    draw_dim_h(axA, trav0, trav0 + RAIL_LEN, D + 30, f"skate travel {RAIL_LEN}mm", fs=6.0, font=FONT, offset=12)
+    draw_dim_v(axA, -70, 0, D, f"{D}mm", fs=6.0, font=FONT, offset=10)
+    axA.text(0, D + 58, "A — SIDE ELEVATION  (web face; length compressed — true section in B)",
+             fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — end section (true channel profile, 1:1) ───────────────────────
+    axB = fig.add_axes([0.06, 0.335, 0.38, 0.30]); axB.set_aspect("equal"); axB.axis("off")
+    axB.set_xlim(-34, W + 92); axB.set_ylim(-30, D + 46)
+    hatch_rect(axB, 0, 0, t, D)                    # web (X=0, vertical)
+    hatch_rect(axB, 0, D - t, W, t)                # top flange
+    hatch_rect(axB, 0, 0, W, t)                    # bottom flange
+    # skate rollers ghosted (detailed on Sheet 13)
+    rl = SKATE_ROLLER_OD / 2
+    draw_circle(axB, W - rl - 2, t + rl, rl, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=5)      # load roller on bottom flange
+    kl = SKATE_KEEPER_OD / 2
+    draw_circle(axB, W - kl - 2, D - t - kl, kl, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=5)  # keeper roller under top flange
+    draw_dim_v(axB, -22, 0, D, f"{D}mm", fs=6.0, font=FONT, offset=8)
+    draw_dim_h(axB, 0, W, -20, f"{W}mm", fs=6.0, font=FONT, above=False, offset=10)
+    leader(axB, t, D * 0.62, W + 30, D * 0.72, f"wall {FP_RAIL_WALL_T}mm (0.2in)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axB, W - rl - 2, t + rl, W + 34, t + rl - 4, "acetal skate rollers\n(Sheet 13)", ha="left", fs=5.6, color=C_FLAT, font=FONT, bbox=LBL_BG)
+    axB.text(0, D + 30, "B — END SECTION  (opening → film, 1:1)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View C — end conditions: fixed-R vs drop-in-L ──────────────────────────
+    axC = fig.add_axes([0.50, 0.335, 0.44, 0.30]); axC.axis("off")
+    axC.set_xlim(0, 100); axC.set_ylim(0, 100)
+    # fixed-right end (top half)
+    axC.text(2, 96, "FIXED — right rail (BR/TR): end flange bolted to wall seat", fontsize=6.6, fontweight="bold", color=OUT, ha="left", **FONT)
+    axC.add_patch(Rectangle((70, 60), 6, 26, fc=STRUCT, ec=OUT, lw=1.0, zorder=3))       # container wall
+    axC.add_patch(Rectangle((64, 58), 6, 30, fc=C_STEEL, ec=OUT, lw=1.0, zorder=4))      # seat / end plate
+    axC.add_patch(Rectangle((20, 66), 44, 14, fc=STRUCT2, ec=OUT, lw=1.1, zorder=3))     # rail (broken off)
+    for i in range(FP_CORNER_SEAT_BOLT_N):
+        by = 61 + i * 8
+        axC.add_patch(Rectangle((60, by - 1.2), 18, 2.4, fc=C_BOLT, ec=OUT, lw=0.4, zorder=6))
+    leader(axC, 67, 73, 40, 90, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} into wall seat\n(saddle fab — Sheet 19)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, 22, 73, 6, 84, "rail END butts the seat/flange inner face", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    # drop-in-left end (bottom half)
+    axC.text(2, 44, "DROP-IN — left rail (BL/TL): transport lift-out at the cut", fontsize=6.6, fontweight="bold", color=OUT, ha="left", **FONT)
+    axC.add_patch(Rectangle((20, 20), 30, 14, fc=STRUCT2, ec=OUT, lw=1.1, zorder=3))     # removable
+    axC.add_patch(Rectangle((54, 20), 24, 14, fc="#B8C6D6", ec=OUT, lw=1.1, zorder=3))   # fixed stub
+    axC.add_patch(Rectangle((44, 34), 20, 4, fc=C_STEEL, ec=OUT, lw=0.9, zorder=5))      # top bridge (fishplate)
+    axC.add_patch(Rectangle((52, 15.5), 8, 3, fc=C_STEEL, ec=OUT, lw=0.8, zorder=5))     # bottom support bridge
+    axC.plot([52, 52], [20, 34], color=OUT, lw=0.8, ls=(0, (2, 2)), zorder=6)            # cut line
+    leader(axC, 54, 36, 30, 47, "bridge (gravity-borne) + locating pin — Sheet 4", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, 66, 27, 82, 34, "fixed stub\n(pivot post)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    axC.text(0, 6, "C — END CONDITIONS  (schematic; mounting on Sheets 4 & 19)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.06, 0.085, 0.88, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    draw_notes(ax_n, [
+        "DEPTH RAIL — 4 OFF (one per corner):",
+        f"1. Section: 3×1½in 6061-T6 aluminum U-channel — web {FP_RAIL_WEB}mm × flange {FP_RAIL_FLANGE}mm × "
+        f"{FP_RAIL_WALL_T}mm (0.2in) wall. Grainger 795M51, purchased in {FP_RAIL_STOCK_LEN}mm (8 ft) sticks.",
+        f"2. Cut length {C_WID}mm — spans wall-to-wall (Yd0 → C_WID); ONE continuous piece per rail (the skate "
+        f"cannot cross a splice), so one 8 ft stick = one rail with margin. Skate travel {RAIL_LEN}mm is the "
+        "usable focus range, less than the full rail.",
+        "3. Web stands VERTICAL (Z); the flanges open toward the film (+X). The acetal skate rides inside — load "
+        "rollers gravity-seat on the bottom flange, keeper rollers captive under the top flange (Sheet 13).",
+        "4. RIGHT rails (BR/TR, X=C_WID side) are permanently flanged to their wall seats (Sheet 19). LEFT rails "
+        "(BL/TL) are transport drop-ins — the near length lifts out at the cut (Sheet 4).",
+        "5. 6061-T6 yield (~276 MPa) exceeds annealed 304 (~215 MPa); ~1mm sag over the 2.36m span is optically "
+        "irrelevant at f/1088 and flatness is carried by the ACM backing.",
+    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+
+    ax_tb = fig.add_axes([0.06, 0.012, 0.88, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 12 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Depth rail (3×1½in 6061-T6 U-channel) — fabrication detail: section, cut length, end conditions",
+                scale_note="A compressed / B 1:1 (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet12.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet12.png")
+
+
 if __name__ == "__main__":
     print("Generating film plane mechanism drawings (rigid plane)...")
     sheet1()
@@ -2233,4 +2332,5 @@ if __name__ == "__main__":
     sheet8()
     sheet9()
     sheet11()
+    sheet12()
     print("Done.")

@@ -76,6 +76,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 13: Acetal Skate (4-Wheel) Fabrication Detail](assets/film-plane-sheet13.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 14: Cam Clamp / Rail Brake Fabrication Detail](assets/film-plane-sheet14.png)
+
 ### Corner Joint — Design Study
 
 ![TBS-001 Film-Plane Corner Joint — Concept Options (2 axes, ±45°, carries the plane)](assets/film-joint-options.png)

@@ -39,7 +39,8 @@ from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_W
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_constants import (FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN,
                           FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N,
-                          SKATE_ROLLER_W, SKATE_AXLE_LEN)
+                          SKATE_ROLLER_W, SKATE_AXLE_LEN,
+                          CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D, CAM_CLAMP_HOLE_SP, CAM_CLAMP_N)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -2225,6 +2226,90 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 14 — CAM CLAMP / RAIL BRAKE — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet14():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    W, D, t = FP_RAIL_FLANGE, FP_RAIL_WEB, FP_RAIL_WALL_T
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — SIDE ELEVATION: toggle clamp pinching the top flange ───────────
+    axA = fig.add_axes([0.05, 0.40, 0.42, 0.50]); axA.set_aspect("equal"); axA.axis("off")
+    axA.set_xlim(-20, 150); axA.set_ylim(-20, D + 60)
+    # U-channel (end-on) — top + bottom flange, web
+    hatch_rect(axA, 30, 0, t, D)                       # web
+    hatch_rect(axA, 30, D - t, 60, t)                  # top flange (pinch face)
+    hatch_rect(axA, 30, 0, 60, t)                      # bottom flange
+    # load roller reacting on bottom flange (ghost, Sheet 13)
+    draw_circle(axA, 66, t + SKATE_ROLLER_OD / 2, SKATE_ROLLER_OD / 2, lw=0.8, color=C_FLAT, ls=(0, (4, 3)), zorder=4)
+    # carriage plate edge + mount tab
+    axA.add_patch(Rectangle((96, 4), CARRIAGE_PLATE_T, D - 8, fc=C_CAR, ec=OUT, lw=1.1, zorder=4))     # plate edge
+    axA.add_patch(Rectangle((60, D + 6), 40, 8, fc=C_STEEL, ec=OUT, lw=1.1, zorder=5))                 # fab mount tab (over the flange)
+    # toggle clamp: base on the tab, spindle DOWN to the top flange (locked)
+    axA.add_patch(Rectangle((62, D + 14), CAM_CLAMP_BASE_W, 10, fc=C_CLAMP, ec=OUT, lw=1.1, zorder=6)) # clamp base
+    axA.add_patch(Rectangle((62 + CAM_CLAMP_BASE_W / 2 - 3, D - t), 6, 14 + t, fc="#7A7A82", ec=OUT, lw=1.0, zorder=6))  # spindle down
+    axA.add_patch(Rectangle((62 + CAM_CLAMP_BASE_W / 2 - 5, D - t - 4), 10, 4, fc=C_POLY, ec=OUT, lw=0.9, zorder=7))     # UHMW pad tip on flange
+    axA.plot([62 + CAM_CLAMP_BASE_W, 128], [D + 20, D + 46], color=C_CLAMP, lw=2.4, solid_capstyle="round", zorder=6)    # handle LOCKED
+    axA.plot([62 + CAM_CLAMP_BASE_W, 96], [D + 20, D + 84], color=C_CLAMP, lw=1.4, ls=(0, (5, 3)), zorder=5)            # handle RELEASED (ghost)
+    leader(axA, 62 + CAM_CLAMP_BASE_W / 2, D - t - 2, 128, D - 6, "UHMW pad pinches DOWN\non the TOP FLANGE", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, 66, t + SKATE_ROLLER_OD / 2, 118, t + 20, "load rollers react on the\nbottom flange (self-reacting)", ha="left", fs=5.6, color=C_FLAT, font=FONT, bbox=LBL_BG)
+    leader(axA, 118, D + 40, 96, D + 66, "handle throw — LOCKED (solid) /\nRELEASED (ghost); verify swing clearance", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, 80, D + 10, 30, D + 30, "fab mount tab — seats the base, aims the spindle", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    axA.text(-18, D + 50, "A — RAIL BRAKE  (side elevation; McMaster 5128A63 toggle clamp)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — base footprint / mount-tab hole pattern ───────────────────────
+    axB = fig.add_axes([0.53, 0.52, 0.24, 0.34]); axB.set_aspect("equal"); axB.axis("off")
+    axB.set_xlim(-14, CAM_CLAMP_BASE_W + 20); axB.set_ylim(-14, CAM_CLAMP_BASE_D + 20)
+    axB.add_patch(Rectangle((0, 0), CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D, fc=C_CLAMP, ec=OUT, lw=1.3, zorder=3))
+    hx0 = (CAM_CLAMP_BASE_W - CAM_CLAMP_HOLE_SP) / 2
+    for hx in (hx0, hx0 + CAM_CLAMP_HOLE_SP):
+        draw_circle(axB, hx, CAM_CLAMP_BASE_D / 2, 2.0, lw=1.1, color="white", fc="white", zorder=5)
+        draw_circle(axB, hx, CAM_CLAMP_BASE_D / 2, 2.0, lw=1.1, color=OUT, zorder=6)
+    draw_dim_h(axB, hx0, hx0 + CAM_CLAMP_HOLE_SP, -8, f"{CAM_CLAMP_HOLE_SP}mm", fs=5.6, font=FONT, above=False, offset=6)
+    draw_dim_h(axB, 0, CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D + 8, f"{CAM_CLAMP_BASE_W}mm", fs=5.6, font=FONT, offset=6)
+    draw_dim_v(axB, CAM_CLAMP_BASE_W + 8, 0, CAM_CLAMP_BASE_D, f"{CAM_CLAMP_BASE_D}mm", fs=5.6, font=FONT, offset=6, right=True)
+    leader(axB, hx0, CAM_CLAMP_BASE_D / 2, -12, CAM_CLAMP_BASE_D + 4, "2× M4×0.7 through\nthe mount tab", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
+    axB.text(-14, CAM_CLAMP_BASE_D + 15, "B — BASE FOOTPRINT", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View C — arrangement: 3 clamps per corner along the rail ───────────────
+    axC = fig.add_axes([0.53, 0.10, 0.42, 0.34]); axC.axis("off")
+    axC.set_xlim(0, 100); axC.set_ylim(0, 100)
+    axC.add_patch(Rectangle((6, 40), 88, 16, fc=STRUCT2, ec=OUT, lw=1.2, zorder=2))    # rail (plan, along Yd)
+    axC.text(50, 48, "U-channel top flange (plan)", fontsize=5.8, ha="center", va="center", color=OUT, **FONT, zorder=4)
+    for i in range(CAM_CLAMP_N):
+        cx = 22 + i * 28
+        axC.add_patch(Rectangle((cx - 6, 58), 12, 10, fc=C_CLAMP, ec=OUT, lw=1.0, zorder=3))
+        axC.plot([cx, cx], [56, 40], color="#7A7A82", lw=1.6, zorder=4)               # spindle down onto flange
+    leader(axC, 22, 63, 10, 80, f"{CAM_CLAMP_N} clamps per corner (×4 corners)\non the carriage plate", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    axC.text(0, 20, "C — ARRANGEMENT  (plan; clamps on the carriage — Sheet 13)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.05, 0.075, 0.42, 0.24]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    draw_notes(ax_n, [
+        "CAM RAIL BRAKE — 12 OFF (3 per corner × 4):",
+        f"1. Purchased: McMaster 5128A63 low-profile hold-down toggle clamp — base {CAM_CLAMP_BASE_D}×{CAM_CLAMP_BASE_W}mm, "
+        "2× M4×0.7, ~7.6mm closed profile, ~69mm handle, adjustable spindle. $12.93 ea.",
+        "2. FAB piece: a small steel mount tab on the carriage plate seats the base and aims the spindle at the "
+        "U-channel TOP FLANGE; add a UHMW pad on the spindle tip so it grips without marring the rail.",
+        "3. Set the corner (roll the skate to depth), then throw the clamp — the spindle pinches the top flange; "
+        "the load rollers react on the bottom flange, so the brake is SELF-REACTING (no bracket load path).",
+        "4. The lock holds through the exposure AND transport. Verify the handle's swing clears the rail / ACM at "
+        "the bench before committing the tab position.",
+    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+
+    ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 14 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Cam clamp / rail brake — fabrication detail: toggle clamp, mount tab, base pattern, arrangement",
+                scale_note="A/B 1:1 · C schematic (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet14.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet14.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 13 — ACETAL SKATE (4-wheel) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet13():
@@ -2428,4 +2513,5 @@ if __name__ == "__main__":
     sheet11()
     sheet12()
     sheet13()
+    sheet14()
     print("Done.")

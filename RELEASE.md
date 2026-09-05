@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
+  from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
+  (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.
+  Per-family decisions recorded with their blueprint gates. Executed the one change needing no new geometry —
+  **M6 nuts 3→2** (the plain electrical panel-mount nut folded into nyloc; one M6 anti-vibration nut). Surfaced
+  two registry gaps (M10, M4 used but not itemized as SKUs) to close at their sheet rounds.
+
 - **Hinged-panel cleanup — drum depth-center single-sourced + report completed.** The 2D hinged-panel
   drum sat 30mm off the 3D: Sheet 3 (drum vertical section) and Sheet 6 (HDPE floor-cap cut sheet) still
   derived the drum depth-center from the pre-resize `BAY_FRONT_X + DRUM_R + 40` (−450) instead of the shared

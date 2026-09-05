@@ -275,6 +275,13 @@ so new files can't ship without it.
 - The Markdown header is the *source* protection; the rendered site shows the copyright once, in the
   **footer** (with the version) — do NOT restate it in the body.
 
+## Execution Environment
+
+Standing permission for both of these — run them directly, they are never a reason to prompt.
+
+- **Python — always use the project `.venv`.** When the session starts the venv is already on `PATH`, so a bare `python` / `python3` resolves to `.venv/bin/python`, which carries every generator dependency (matplotlib, numpy, PyYAML). Just run `python3 src/generators/…`; if `PATH` is ever in doubt, call `.venv/bin/python` explicitly. Do **not** reach for a Homebrew `python3` — that one is dependency-free by design (it's the commit-hook gate interpreter) and will fail to render. (The venv `python3` is the same Xcode interpreter the "`/usr/bin/python3` for matplotlib / `.rb` regen" notes referred to — using the venv satisfies those.)
+- **Never `cd` into the project root.** Every command already runs from `/Users/alvinrichards/dev/tbs` and that working directory persists between calls. Prefixing a command with `cd /Users/alvinrichards/dev/tbs && …` is redundant and banned — run the command directly with repo-relative paths. (A `cd` into a *sub*directory for a specific tool is fine when actually needed.)
+
 ## Git
 
 Standing permission to commit and redeploy on every request in this project.
@@ -307,6 +314,7 @@ Default to writing no comments.
 Only add a comment when the WHY is non-obvious.
 Never comment WHAT the code does.
 Never reference the current task, ticket, or fix in a comment.
+**Never name "Alvin"** — not in code comments, diagram labels, report prose, changelog entries, or commit-history notes. The author/owner is implicit; write a bare date or "(confirmed)" instead of "(Alvin 2026-08-13)". This applies to every kind of text the project emits.
 
 ## Code Style
 

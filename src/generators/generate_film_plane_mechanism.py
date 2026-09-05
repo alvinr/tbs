@@ -2228,6 +2228,77 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 17 — 304 CORNER PLATE (L-bracket) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet17():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    PW, PH, PT = CORNER_PLATE_W, CORNER_PLATE_H, CORNER_PLATE_T
+    edge, sp = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP
+    bend_x = PW / 2
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — FLAT PATTERN with hole table ──────────────────────────────────
+    axA = fig.add_axes([0.06, 0.42, 0.56, 0.48]); axA.set_aspect("equal"); axA.axis("off")
+    axA.set_xlim(-40, PW + 46); axA.set_ylim(-40, PH + 44)
+    axA.add_patch(Rectangle((0, 0), PW, PH, fc=C_STEEL, ec=OUT, lw=1.4, zorder=3))
+    axA.plot([bend_x, bend_x], [0, PH], color=C_CAR, lw=1.1, ls=(0, (6, 3)), zorder=5)     # bend line
+    # J5 frame-bolt holes (frame leg = left)
+    j5 = [(edge + 6, PH / 2 - sp / 2), (edge + 6, PH / 2 + sp / 2)]
+    for hx, hy in j5:
+        draw_circle(axA, hx, hy, 3.4, lw=1.1, color=C_FRAME, zorder=6)
+    # J4 U-joint stub / 4040N12 mount holes (U-joint leg = right)
+    ujx = bend_x + (PW - bend_x) / 2
+    draw_circle(axA, ujx, PH / 2, UJOINT_STUB_OD / 2 + 1, lw=1.2, color=C_SWING, zorder=6)     # stub clearance
+    for dx in (-24, 24):
+        draw_circle(axA, ujx + dx, PH / 2, 3.0, lw=1.0, color=C_SWING, zorder=6)                # 4040N12 mount bolts
+    draw_dim_h(axA, 0, PW, -16, f"{PW}mm (8in) blank", fs=6.0, font=FONT, above=False, offset=10)
+    draw_dim_v(axA, -18, 0, PH, f"{PH}mm (6in)", fs=6.0, font=FONT, offset=9)
+    draw_dim_v(axA, edge + 6 + 14, j5[0][1], j5[1][1], f"{sp}mm", fs=5.4, font=FONT, offset=6, right=True)
+    draw_dim_h(axA, 0, edge, PH / 2 - sp / 2 - 16, f"edge {edge}mm", fs=5.2, font=FONT, above=False, offset=6)
+    leader(axA, bend_x, PH - 6, bend_x + 26, PH + 20, f"BEND 90°  R{CORNER_PLATE_BEND_R}mm (1T) · plate {PT}mm ¼in", ha="left", fs=5.6, color=C_CAR, font=FONT, bbox=LBL_BG)
+    leader(axA, j5[1][0], j5[1][1], -36, PH - 20, "J5: 2× M6 → 6061 frame\nangle (frame leg)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, ujx, PH / 2, ujx + 10, -22, f"J4: U-joint stub Ø{UJOINT_STUB_OD} +\n4040N12 mount (U-joint leg, Sheet 16)", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    axA.text(-38, PH + 26, "A — FLAT PATTERN  (¼in 304 SS blank + hole table)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — formed L-bracket elevation ────────────────────────────────────
+    axB = fig.add_axes([0.66, 0.46, 0.30, 0.40]); axB.set_aspect("equal"); axB.axis("off")
+    legA, legB = bend_x, PW - bend_x
+    axB.set_xlim(-30, legB + 40); axB.set_ylim(-legA - 40, 40)
+    hatch_rect(axB, 0, -PT, legB, PT)                          # horizontal leg (U-joint)
+    hatch_rect(axB, 0, -legA, PT, legA)                        # vertical leg (frame)
+    axB.add_patch(Arc((PT, -PT), 2 * CORNER_PLATE_BEND_R, 2 * CORNER_PLATE_BEND_R, angle=0, theta1=180, theta2=270, color=OUT, lw=1.0))
+    leader(axB, legB * 0.6, -PT, legB * 0.5, -30, "U-joint leg (carries the corner load)", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(axB, PT, -legA * 0.6, 28, -legA * 0.7, "frame leg\n(bolts to 6061 angle)", ha="left", fs=5.6, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    axB.text(-28, 30, "B — FORMED L-BRACKET", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    draw_notes(ax_n, [
+        "304 SS CORNER PLATE — 4 OFF (L/R mirror pair: BL/TL handed opposite BR/TR):",
+        f"1. ¼in (6.35mm) 304 stainless, {PH:.0f}×{PW:.0f}mm (6×8in) blank, press-brake bent 90° into an L "
+        f"(inside radius R{CORNER_PLATE_BEND_R}mm = 1T). Metal Supermarkets $58.90 ea.",
+        "2. STAINLESS + NOT expendable (the 6061 perimeter angle stays the expendable part): the U-joint funnels the "
+        "whole corner load into a few bolts, so this plate carries it in steel; 304 matches the SS U-joint galvanically "
+        "in the cyanotype splash zone.",
+        f"3. FRAME leg — J5: 2× M6 into the 6061 angle at {sp}mm spacing, {edge}mm edge distance (>2×M6 dia). "
+        f"U-JOINT leg — J4: the keyed 3/8in stub bore + the McMaster 4040N12 clamp mount (Sheet 16).",
+        "4. The corner is CARRIED BY the X-slide THROUGH the U-joint — the plate is never bolted straight to the joint "
+        "(Sheet 9 shows the square-on connection).",
+    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+
+    ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 17 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="304 corner plate (L-bracket, ×4) — fabrication detail: flat pattern, hole table, formed elevation",
+                scale_note="A/B 1:1 (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet17.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet17.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 16 — U-JOINT INSTALL (Belden SSNBUJ750x3/8KB) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet16():
@@ -2672,4 +2743,5 @@ if __name__ == "__main__":
     sheet14()
     sheet15()
     sheet16()
+    sheet17()
     print("Done.")

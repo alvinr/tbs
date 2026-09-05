@@ -242,8 +242,6 @@ DIAG_FILES=(
     "film-plane-sheet16.png"
     "film-plane-sheet17.png"
     "film-plane-sheet18.png"
-    "film-plane-sheet19.png"
-    "film-plane-sheet20.png"
     "film-joint-options.png"
     "film-joint-study-gimbal.png"
     "film-joint-study-ujoint.png"

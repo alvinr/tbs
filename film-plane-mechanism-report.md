@@ -141,19 +141,17 @@ The EPDM foam tape and Duvetyne curtains are itemized in the §7 parts list.
 
 ### Fabrication Detail Sheets
 
-Sheets 12–20 take each corner-mechanism part to shop-buildable detail — cut lengths, section profiles, hole tables, weld schedules, and the corner fastener schedule:
+Sheets 12–18 take each corner-mechanism part to shop-buildable detail — cut lengths, section profiles, hole coordinates, weld schedules, and the corner fastener schedule. (The cam rail-brake and the U-joint are purchased parts already detailed in-assembly on Sheets 3 and 9, so they get no standalone sheet.)
 
 - **Sheet 12 — Depth rail:** 3×1½" 6061-T6 U-channel (Grainger 795M51), cut wall-to-wall from 8 ft stock, section + fixed/drop-in end conditions.
-- **Sheet 13 — Acetal skate:** the 4-wheel load/keeper roller and axle layout + the 6061 carriage-plate hole table.
-- **Sheet 14 — Cam rail-brake:** the McMaster 5128A63 low-profile toggle clamp + its fab mount tab, pinching the U-channel top flange (self-reacting).
-- **Sheet 15 — Cross-slide stack:** the Z (tilt) and X (swing) 304 flat bars, the deep-mount section (SF≈10 vs 1.7 flat), gib, and stroke.
-- **Sheet 16 — U-joint install:** the Belden SSNBUJ750x3/8KB elevation + the keyed 3/8" stub and 4040N12 clamp.
-- **Sheet 17 — 304 corner plate:** the ¼" L-bracket flat pattern, hole table, and formed elevation.
-- **Sheet 18 — Frame weldment:** the 2×2×⅛" 6061 angle frame to scale, the 4 corner welds (the only joints), and the member section with ACM backing.
-- **Sheet 19 — Wall-seat saddle (ICP-11):** the A36 8/10mm plate saddle assembly, cut pieces, and M12 wall mount.
-- **Sheet 20 — Corner assembly:** the exploded build sequence and the full corner fastener schedule.
+- **Sheet 13 — Acetal skate:** the 4-wheel load/keeper roller and axle layout + the 6061 carriage-plate hole coordinates.
+- **Sheet 14 — Cross-slide stack:** the Z (tilt) and X (swing) 304 flat bars, the deep-mount section (SF≈10 vs 1.7 flat), gib, and stroke.
+- **Sheet 15 — Corner angle:** the stock 4×4×¼" 304 angle drilling layout with hole coordinates, and the L-section — the U-joint mount.
+- **Sheet 16 — Frame weldment:** the 2×2×⅛" 6061 angle frame to scale, the 4 corner welds (the only joints), and the member section with ACM backing.
+- **Sheet 17 — Wall-seat saddle (ICP-11):** the A36 8/10mm plate saddle assembly, cut pieces, and M12 wall mount.
+- **Sheet 18 — Corner assembly:** the exploded build sequence and the full corner fastener schedule.
 
-![Sheet 20 — Corner assembly (exploded) + fastener schedule](assets/film-plane-sheet20.png)
+![Sheet 18 — Corner assembly (exploded) + fastener schedule](assets/film-plane-sheet18.png)
 
 ---
 
@@ -205,7 +203,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Skate carriage plate (×4) — fab | One carriage plate per corner — carries the 4 rollers on their axles + the inboard lip; the U-joint/cross-slide stack bolts to it. The only fab piece of the skate. FIRM DESIGN (Sheet 3 View A): 80×181×6mm 6061-T6 (aluminum; grown to 181 tall so the top keeper-axle row clears its ≥2×Ø10 edge distance). Hole pattern: 4× Ø10 stub-axle holes on a 40(Yd)×38(Z) grid + 4× M8 (J1) to the Z-slide (28×44) + 2× M4 for the cam-clamp base; all holes ≥2×Ø from the edges. Est. cost — firm at fab quote. | 4 ea | Local fab | $136–$236 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | One 2-axis cross-slide stack per corner — 304 flat-bar Z (tilt) + X (swing) slides on UHMW pads with an adjustable gib. MOUNT DEEP: the 38.1mm bar dimension runs in the gravity/load direction, NOT flat (Sheet 10 load case — deep SF≈10 vs flat 1.7; flat fails a 2× factor). FLAT-BAR STOCK: 304 SS ¼"×1½" (6.35×38.1mm); 8 pieces (4× ~345mm Z-tilt + 4× ~365mm X-swing) ≈ 2.84m cut length → order 2× 8ft lengths (bars grown from the ~250mm est to hold ±40°/±28°: the cross-slide stroke needs travel + carriage — corner blueprint 2026-08-10). 304 (not 316) — the cyanotype wash has no chloride, so 316's pitting resistance is unused; 304 is adequate in the splash zone. FLAT BAR FIRM: Metal Supermarkets ¼×1½×8ft 304 $134.73 (2026-08-01); 2× 8ft = $269.46 = ~$67/set of bar. UHMW pad + brass-tip gib + cut/assemble fab still est — the $316–516 range brackets bar + those adds; get a fab quote to firm the balance. | 4 set | Metal Supermarkets / McMaster-Carr | $316–$516 |
 | [McMaster 5128A63 low-profile hold-down toggle clamp (rail brake)](https://www.mcmaster.com/5128A63/) (5128A63) | Cam rail-brake — 3 per corner × 4. Low-profile hold-down toggle clamp: base ~19×22mm (2× M4×0.7, ~15.7mm hole spacing), ~7.6mm profile closed, ~69mm handle, hold-down reach ~22mm, adjustable spindle. Mounts on the carriage plate (small mount tab/bracket to seat the base + aim the spindle); the UHMW-padded spindle pinches DOWN on the U-channel TOP FLANGE to lock the skate at depth for the shot + transport (self-reacting — load rollers react on the bottom flange, Section A-A / Sheet 3). $12.93 ea firm (2026-07-30). Handle needs swing clearance vs the rail/ACM — verify at the bench. | 12 ea | McMaster-Carr | $155 |
-| Corner plate 304 SS (U-joint mount) | ¼" 304 SS plate, 6"×8" blank bent into an L-bracket — the frame-corner ↔ U-joint mount. Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061). Metal Supermarkets $58.90 ea firm (2026-08-01) — confirm the press-brake bend is included or added. | 4 ea | Metal Supermarkets / Online Metals | $236 |
+| Corner angle 304 SS (U-joint mount) — 4×4×¼in stock | OFF-THE-SHELF 4"×4"×¼" 304 SS equal-leg ANGLE cut to ~152mm (6") + drilled — the frame-corner ↔ U-joint mount (was a press-brake-formed 6×8 plate 2026-09-05; stock angle gives the same ~4in legs with no forming, cheaper). Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061). Drill J5 (2× M6 to frame) + J4 (U-joint stub bore + 4040N12 mount). MATERIAL est $25–40/pc (a 6in cut of 304 4×4×¼ angle ≈ 0.5 ft; MetalsDepot ~$13.85/ft + cut) — re-quote at purchase; cheaper than the retired $58.90 formed plate. | 4 ea | Metal Supermarkets / Online Metals | $100–$160 |
 | [Aluminum angle 2"×2"×1/8" (6061-T6, plain) — 16 ft lengths](https://www.onlinemetals.com/en/buy/aluminum/2-x-2-x-0-125-aluminum-angle-6061-t6/pid/987) | 6061-T6 angle (NOT 2024/7075 — corrosion + weldability). PLAIN mill finish (NOT anodized) — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting; bare 6061 pits sooner than anodized in the splash zone, so a shorter interval — anodizing is an option for longer life). 1/8in wall — frame sag is optically irrelevant at f/1088 and the ACM backing carries flatness, so only the wall is thinned; the 2in leg (the capture channel) is kept. WELD-FREE cut plan from 3× 16 ft (192") lengths: 2 lengths → the two horizontal edges (4,389mm each, one per length, 488mm offcut); 1 length → both vertical edges (2,094mm ×2 from one 16 ft). No mid-span splices — only the 4 corner joints are welded/bolted. Metal Supermarkets 192" @ $176.06 (2026-07-31). One frame — re-order to replace. | 3 16 ft length | Metal Supermarkets / Online Metals | $528 |
 | Dibond ACM panel 3mm (black), 4×8 sheet | 4× 48×96" black 3mm ACM sheets as full-height VERTICAL STRIPS (Option A) — 3 vertical butt seams, splice-battened behind; no horizontal seam (2094mm plane height fits one 2438mm sheet). Covers the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm rigid backing (4389 ÷ 1219 = 4 strips). 3mm (the black-stocked thickness) is slightly less stiff but flatness is carried by the 6061 frame + clamps and is optically irrelevant at f/1088. SUPPLIER: Curbell Plastics does NOT stock black ACM/Dibond (confirmed 2026-08-03 — cannot supply; do not re-source there); black via Central Coast Plastics / TAP Plastics. Price TBC ($95/sheet placeholder, qty 4). | 4 sheet | Central Coast Plastics / TAP Plastics | $380 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 25 ft rolls — 2 (50 ft) cover the ~43 ft film-plane perimeter primary seal | 2 roll | McMaster-Carr / Grainger | $45 |
@@ -221,7 +219,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×2 left (BL-near, TL-near) + 2 spare | 6 ea | McMaster-Carr / Maedler | $71 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91310A535/) (91310A535) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (Alvin 2026-08-13). | 8 ea | McMaster-Carr | $2 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$3,965–$4,269** |
+| **Film total** | | | | **$3,830–$4,194** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -248,7 +246,7 @@ The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_widt
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,110<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,975<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

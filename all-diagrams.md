@@ -76,19 +76,15 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 13: Acetal Skate (4-Wheel) Fabrication Detail](assets/film-plane-sheet13.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 14: Cam Clamp / Rail Brake Fabrication Detail](assets/film-plane-sheet14.png)
+![TBS-001 Film Plane Mechanism — Sheet 14: Cross-Slide Stack (Z + X) Fabrication Detail](assets/film-plane-sheet14.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 15: Cross-Slide Stack (Z + X) Fabrication Detail](assets/film-plane-sheet15.png)
+![TBS-001 Film Plane Mechanism — Sheet 15: 304 Corner Angle (Stock 4×4×¼) Fabrication Detail](assets/film-plane-sheet15.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 16: U-Joint Install (Belden SSNBUJ750x3/8KB) Fabrication Detail](assets/film-plane-sheet16.png)
+![TBS-001 Film Plane Mechanism — Sheet 16: Film-Plane Frame Weldment (2×2×⅛ 6061 Angle) Fabrication Detail](assets/film-plane-sheet16.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 17: 304 Corner Plate (L-Bracket) Fabrication Detail](assets/film-plane-sheet17.png)
+![TBS-001 Film Plane Mechanism — Sheet 17: Wall-Seat Saddle (ICP-11) Fabrication Detail](assets/film-plane-sheet17.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 18: Film-Plane Frame Weldment (2×2×⅛ 6061 Angle) Fabrication Detail](assets/film-plane-sheet18.png)
-
-![TBS-001 Film Plane Mechanism — Sheet 19: Wall-Seat Saddle (ICP-11) Fabrication Detail](assets/film-plane-sheet19.png)
-
-![TBS-001 Film Plane Mechanism — Sheet 20: Corner Assembly (Exploded) + Fastener Schedule](assets/film-plane-sheet20.png)
+![TBS-001 Film Plane Mechanism — Sheet 18: Corner Assembly (Exploded) + Fastener Schedule](assets/film-plane-sheet18.png)
 
 ### Corner Joint — Design Study
 

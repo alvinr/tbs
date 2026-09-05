@@ -209,7 +209,7 @@ XSLIDE_CARR_WALL = 8   # cross-slide carriage wall thickness (mm) around the bar
 UJOINT_BORE   = 9.53   # bore (mm) = 0.375" (3/8") keyway bore
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)
 UJOINT_LEN    = 68.3   # overall length (mm) = 2.690"
-UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345"
+UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345" — reserved (catalog spec; the U-joint is shown in-assembly on Sheets 3/9, not as a standalone dimensioned part)
 UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)

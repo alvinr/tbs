@@ -98,7 +98,7 @@ C_HGT  = 2388   # interior height Z (mm)
 FP_H     = 2094   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile acetal-skate corner (BUILD 140→110); 2138→2094 — top edge lowered 44mm for +25mm ceiling clearance (top rail dropped via RAIL_OFF_TOP); ~C_HGT − RAIL_OFF_TOP(144) − RAIL_OFF_BOT(walkway)]
 FP_X_L   = 260    # film plane left edge X (mm)     [2026-08-11: 150→260 — left corner pulled inboard clear of the FIXED pivot HUB (r60 bearing reaches X235, not just the Ø89 post); PIVOT_X pinned so the post no longer follows. crops ~110mm image, re-centers PH_X. rev6: was 625]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
-FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]
+FP_W     = FP_X_R - FP_X_L   # = 4389mm          [rev6: was 4024]
 FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
 FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
@@ -129,7 +129,7 @@ CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # clamps per vertical edge
 CLAMP_N_TOTAL = CLAMP_N_HORIZ + 2 * CLAMP_N_VERT   # top edge + 2 sides; bottom (walkway) edge omitted
 
 # ── Pinhole (recenterd on new film plane) ─────────────────────────────────────
-PH_X   = FP_X_L + FP_W // 2   # = 2399mm  [rev6: was 2637]
+PH_X   = FP_X_L + FP_W // 2   # = 2454mm  [rev6: was 2637]
 PH_H   = 1194                  # height (mm) [unchanged]
 PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [unchanged]
 PH_F   = C_WID                 # focal length = container width [unchanged]
@@ -145,7 +145,7 @@ PINHOLE_DISC_T = 0.1   # pinhole disc thickness (mm, SS-302)
 # ── Film plane rails ──────────────────────────────────────────────────────────
 RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]
 RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4019 → now 4649]
-RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
+RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4389mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
 RAIL_OFF  = 100       # generic ceiling/floor offset (mm) — floor-standing equipment, drum, schematic rails  [unchanged]
 RAIL_OFF_TOP = 144    # film-plane TOP rail ceiling offset (mm) — dropped 44mm from RAIL_OFF(100) to win +25mm ceiling clearance for the top carriage/fittings; drives BRACE_Z_TOP + every film-plane top-rail model site

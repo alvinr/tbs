@@ -95,6 +95,21 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   mechanisms — mostly intentional one-piece/bolted/bearing overlaps that just aren't classified yet. To
   make `--solids` report globally clean: walk each mechanism, butt/notch the genuine fused-seam defects,
   and extend `_SANCTIONED_SOLID` with the rest (each with a reason). Larger effort; do per-mechanism.
+  - **Film-plane blueprint Phase-0 triage (2026-09-05, `filmplane-bp`).** Ran `check_interference.py`
+    against the live `film-plane-mechanism` model. **Pipe/solid OPEN = 0.** `--solids` = **165 OPEN**,
+    dominated by U-channel **web↔flange self-overlap** (one-piece extrusion modeled as boxes — intentional),
+    seated **rail↔frame** contacts, and **stub↔bore** fits — no fused-seam defect in the sample; matches the
+    "mostly intentional, just unclassified" characterization above. The detail sheets (12–20) draw these as
+    designed. Full `_SANCTIONED_SOLID` classification stays THIS separate task, not the blueprint.
+    `--bolts` = **21 flags, none a genuine structural defect:** the frame-corner **7mm<9mm** (×8) is M6 into
+    the purchased **McMaster 4040N12 shaft-support clamp** (catalog-fixed hole pattern, precision fit — NOT a
+    1.5×D-in-steel structural grip; can't widen/move a bought part's hole), frame-corner "in Input stub 3/8"
+    (4.8<9) is a worst-edge artifact (can't get 9mm edge in a 9.53mm stub), thumb-screw/rail-fixing PROJECT
+    33mm is by-design (graspable), IBC wall bolt 18<21 is nominal-OK. **These precision/catalog bolts should
+    be added to the `--bolts` `_MECH_KEYS` filter** (deferred — lint hygiene, not blueprint).
+  - **Two bolt flags for ALVIN, outside the corner-mechanism sheet scope:** `Foot anchor M12 edge 5mm in
+    Frame rail (Yd)` and `FP combined beam TEK screw 55mm past grip` (far-left combined beam, Sheet 11 area) —
+    the TEK projection looks like a real drawn-length issue; worth a separate look, not part of Sheets 12–20.
   (Scoped out of the 2026-08-16 named-category pass.)
 
 - [~] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid

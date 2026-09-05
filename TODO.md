@@ -40,7 +40,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   are tight-bbox noise, ignore). **DEFERRED until after the light-trap blueprint is done** (light-trap's own
   overflows are being fixed now, in-flight). Tackle the rest **one generator per tidy pass** (skill discipline —
   render → crop-zoom → verify), priority by count/severity:
-  - **film_plane_mechanism** (10, worst +52%) — Sheet 9 section titles + U-joint/M6 leaders over-reaching left.
+  - **film_plane_mechanism** (10, worst +52%) — pre-existing overflow/crowding on Sheets **1–11** only (Sheet 2 section
+    titles ±19–20%, Sheet 1 "LEFT RAIL" +17%, Sheet 3/4 crowding, Sheet 6 +8%; `CARRIAGE_YD_CENTER` panel overflow).
+    The fab-blueprint round (2026-09-05, `filmplane-bp`) renumbered the set to **20 sheets** and left these untouched
+    (out of blueprint scope); the NEW Sheets **12–20 are already tidy-clean**. One tidy pass over 1–11 remains.
   - **weight_analysis** (9, +35%) — Sheet 1 "Total / CG" stats boxes hang off the BOTTOM (P8 notes placement).
   - **ibc_frame_drawing** (9, +19%) — Sheet 1 DATUMS + member-schedule table off left (P8).
   - **shelf_diagram** (3, +33%), **joint_study** (4, +19%), then walkway/electrical/tray_redesign/corner_gimbal/

@@ -38,7 +38,8 @@ from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X
 from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_constants import (FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN,
-                          FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N)
+                          FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N,
+                          SKATE_ROLLER_W, SKATE_AXLE_LEN)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -2224,6 +2225,99 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 13 — ACETAL SKATE (4-wheel) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet13():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    rL, rK = SKATE_ROLLER_OD / 2, SKATE_KEEPER_OD / 2
+    W, D, t = FP_RAIL_FLANGE, FP_RAIL_WEB, FP_RAIL_WALL_T
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — END SECTION: skate seated in the U-channel ─────────────────────
+    axA = fig.add_axes([0.05, 0.40, 0.34, 0.50]); axA.set_aspect("equal"); axA.axis("off")
+    axA.set_xlim(-30, W + 70); axA.set_ylim(-14, D + 26)
+    hatch_rect(axA, 0, 0, t, D)                    # web
+    hatch_rect(axA, 0, D - t, W, t)                # top flange
+    hatch_rect(axA, 0, 0, W, t)                    # bottom flange
+    px = 22                                        # carriage-plate face X (edge-on)
+    axA.add_patch(Rectangle((px, 2), CARRIAGE_PLATE_T, D - 4, fc=C_CAR, ec=OUT, lw=1.1, zorder=4))  # plate edge-on
+    zL, zK = t + rL, D - t - rK                     # load-axle Z / keeper-axle Z
+    axA.add_patch(Circle((px - 6, zL), rL, fc=C_ACET, ec=OUT, lw=1.2, zorder=6))   # load roller
+    axA.add_patch(Circle((px - 6, zK), rK, fc=C_ACET, ec=OUT, lw=1.2, zorder=6))   # keeper roller
+    for zc in (zL, zK):
+        axA.add_patch(Circle((px - 6, zc), SKATE_AXLE_OD / 2, fc=C_PIN, ec=OUT, lw=0.6, zorder=7))  # axle end
+        axA.add_patch(Rectangle((px - 6, zc - SKATE_AXLE_OD / 2), CARRIAGE_PLATE_T + 8, SKATE_AXLE_OD, fc=C_PIN, ec="none", alpha=0.35, zorder=5))
+    draw_dim_v(axA, W + 30, zL, zK, f"row gap {CARRIAGE_AXLE_ROW_SP}mm", fs=5.6, font=FONT, offset=8, right=True)
+    leader(axA, px - 6, zL, W + 22, zL - 6, f"LOAD roller Ø{SKATE_ROLLER_OD:.2f} — gravity-seats on\nthe bottom flange", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, px - 6, zK, W + 22, zK + 8, f"KEEPER roller Ø{SKATE_KEEPER_OD:.2f} — captive\nunder the top flange", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, px + CARRIAGE_PLATE_T, D * 0.42, W + 22, D * 0.40, f"carriage plate {CARRIAGE_PLATE_T}mm (View B)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    axA.text(-28, D + 16, "A — SKATE IN CHANNEL  (end section, 1:1)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — carriage plate, flat (Yd × Z) with hole table ─────────────────
+    axB = fig.add_axes([0.42, 0.34, 0.30, 0.56]); axB.set_aspect("equal"); axB.axis("off")
+    PW, PH = CARRIAGE_PLATE_W, CARRIAGE_PLATE_H
+    axB.set_xlim(-40, PW + 58); axB.set_ylim(-22, PH + 26)
+    axB.add_patch(Rectangle((0, 0), PW, PH, fc=STRUCT2, ec=OUT, lw=1.4, zorder=3))
+    cxp = PW / 2
+    zK2, zL2 = PH - 24, PH - 24 - CARRIAGE_AXLE_ROW_SP     # keeper row / load row (upper)
+    for dx in (-SKATE_ROLLER_SP / 2, SKATE_ROLLER_SP / 2):
+        for zc in (zK2, zL2):
+            draw_circle(axB, cxp + dx, zc, SKATE_AXLE_OD / 2, lw=1.1, color=OUT, zorder=5)
+    zJ = 40
+    for dx in (-CARRIAGE_J1_SP_YD / 2, CARRIAGE_J1_SP_YD / 2):
+        for dz in (-CARRIAGE_J1_SP_Z / 2, CARRIAGE_J1_SP_Z / 2):
+            draw_circle(axB, cxp + dx, zJ + dz, 4, lw=1.1, color=C_SWING, zorder=5)
+    draw_dim_h(axB, 0, PW, -14, f"{PW}mm", fs=5.8, font=FONT, above=False, offset=8)
+    draw_dim_v(axB, -14, 0, PH, f"{PH}mm", fs=5.8, font=FONT, offset=8)
+    draw_dim_h(axB, cxp - SKATE_ROLLER_SP / 2, cxp + SKATE_ROLLER_SP / 2, zL2 - 12, f"pitch {SKATE_ROLLER_SP}mm", fs=5.4, font=FONT, above=False, offset=6)
+    draw_dim_v(axB, PW + 16, zL2, zK2, f"{CARRIAGE_AXLE_ROW_SP}mm", fs=5.4, font=FONT, offset=6, right=True)
+    leader(axB, cxp + SKATE_ROLLER_SP / 2, zK2, PW + 22, zK2 + 10, f"4× Ø{SKATE_AXLE_OD} axle bores\n(2 load + 2 keeper)", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axB, cxp + CARRIAGE_J1_SP_YD / 2, zJ, PW + 22, zJ - 6, f"J1: 4× M8 → Z-slide\n{CARRIAGE_J1_SP_YD}×{CARRIAGE_J1_SP_Z}mm (Sheet 15)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
+    axB.text(-40, PH + 14, "B — CARRIAGE PLATE  (6061-T6, flat)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View C — roller detail (load + keeper), sectioned on the bore ──────────
+    axC = fig.add_axes([0.76, 0.46, 0.22, 0.40]); axC.set_aspect("equal"); axC.axis("off")
+    axC.set_xlim(-rL - 20, rL + 30); axC.set_ylim(-SKATE_ROLLER_W - 34, SKATE_ROLLER_W + 20)
+    # load roller — front view + width section stacked
+    draw_circle(axC, 0, 6, rL, lw=1.3, color=OUT, fc=C_ACET)
+    draw_circle(axC, 0, 6, SKATE_AXLE_OD / 2, lw=1.0, color=OUT)
+    axC.text(0, 6 + rL + 6, f"LOAD Ø{SKATE_ROLLER_OD:.2f} Delrin", fontsize=5.6, ha="center", color=OUT, **FONT)
+    # keeper roller
+    draw_circle(axC, 0, 6 - rL - rK - 6, rK, lw=1.3, color=OUT, fc=C_ACET)
+    draw_circle(axC, 0, 6 - rL - rK - 6, SKATE_AXLE_OD / 2, lw=1.0, color=OUT)
+    leader(axC, 0, 6, rL + 8, 18, f"Ø{SKATE_AXLE_OD} bore", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, 0, 6 - rL - rK - 6, rK + 8, 6 - rL - rK - 16, f"KEEPER Ø{SKATE_KEEPER_OD:.2f}\ncut {SKATE_ROLLER_W}mm wide", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    axC.text(0, SKATE_ROLLER_W + 12, "C — ROLLERS", fontsize=7.4, fontweight="bold", color=OUT, ha="center", **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.05, 0.075, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    draw_notes(ax_n, [
+        "ACETAL SKATE — 4 OFF (one per corner), each a 4-wheel skate on a fab carriage plate:",
+        f"1. LOAD rollers — 2/skate, Ø{SKATE_ROLLER_OD:.2f} ({SKATE_ROLLER_W}mm wide) cut from Delrin rod (McMaster 8576K23), "
+        f"Ø{SKATE_AXLE_OD} bore. Gravity-seated on the U-channel bottom flange — they carry the corner weight.",
+        f"2. KEEPER rollers — 2/skate, Ø{SKATE_KEEPER_OD:.2f} ({SKATE_ROLLER_W}mm wide) Delrin (McMaster 8497K276), Ø{SKATE_AXLE_OD} bore. "
+        "Captive under the top flange — they take uplift / tilt reaction only, not gravity.",
+        f"3. Axles — Ø{SKATE_AXLE_OD}×{SKATE_AXLE_LEN}mm 304 clevis pins (uxcell B0816MQ5T6). Retained by a 1/8×3/4in 304 "
+        "flat-bar saddle wrapped over each axle, 2× M5 up through the plate (McMaster 8992K794).",
+        f"4. CARRIAGE PLATE — {CARRIAGE_PLATE_W}×{CARRIAGE_PLATE_H}×{CARRIAGE_PLATE_T}mm 6061-T6, cut from the 12×20×3/16in sheet. Axle "
+        f"bores in 2 rows (load / keeper) at {SKATE_ROLLER_SP}mm pitch, {CARRIAGE_AXLE_ROW_SP}mm row gap; the J1 4×M8 pattern "
+        f"({CARRIAGE_J1_SP_YD}×{CARRIAGE_J1_SP_Z}mm) hangs it on the Z (tilt) slide — Sheet 15.",
+        "5. The cam-lever rail brake (Sheet 14) locks the skate to the rail once the corner is set.",
+    ], 2, 98, 3.4, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+
+    ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 13 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Acetal skate (4-wheel) — fabrication detail: rollers, axles, carriage plate hole table",
+                scale_note="1:1 (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet13.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet13.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 12 — DEPTH RAIL (3×1½ 6061-T6 Al U-channel) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet12():
@@ -2333,4 +2427,5 @@ if __name__ == "__main__":
     sheet9()
     sheet11()
     sheet12()
+    sheet13()
     print("Done.")

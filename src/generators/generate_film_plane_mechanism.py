@@ -40,7 +40,8 @@ from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_W
 from tbs_constants import (FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN,
                           FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N,
                           SKATE_ROLLER_W, SKATE_AXLE_LEN,
-                          CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D, CAM_CLAMP_HOLE_SP, CAM_CLAMP_N)
+                          CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D, CAM_CLAMP_HOLE_SP, CAM_CLAMP_N,
+                          XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -2226,6 +2227,87 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 15 — CROSS-SLIDE STACK (Z + X) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet15():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    bw, bt = XSLIDE_BAR_W, XSLIDE_BAR_T
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — Z (tilt) bar, flat elevation ──────────────────────────────────
+    def _bar(ax, length, color, title, endholes=True):
+        ax.set_xlim(-40, length + 60); ax.set_ylim(-30, bw + 34); ax.axis("off")
+        ax.add_patch(Rectangle((0, 0), length, bw, fc=color, ec=OUT, lw=1.3, zorder=3))
+        if endholes:
+            for hx in (18, length - 18):
+                draw_circle(ax, hx, bw / 2, 4, lw=1.1, color=OUT, zorder=5)
+        draw_dim_h(ax, 0, length, -16, f"{length}mm", fs=6.0, font=FONT, above=False, offset=9)
+        draw_dim_v(ax, -22, 0, bw, f"{bw}mm", fs=5.8, font=FONT, offset=8)
+        ax.text(0, bw + 16, title, fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    axA = fig.add_axes([0.06, 0.74, 0.60, 0.17])
+    _bar(axA, XSLIDE_Z_BAR_LEN, C_TILT, f"A — Z (TILT) SLIDE BAR  ·  304 flat ¼×1½in, {XSLIDE_Z_BAR_LEN}mm ×4")
+    axB = fig.add_axes([0.06, 0.545, 0.60, 0.17])
+    _bar(axB, XSLIDE_X_BAR_LEN, C_SWING, f"B — X (SWING) SLIDE BAR  ·  304 flat ¼×1½in, {XSLIDE_X_BAR_LEN}mm ×4")
+
+    # ── View C — DEEP-MOUNT section (the load-case decision) ───────────────────
+    axC = fig.add_axes([0.06, 0.10, 0.42, 0.34]); axC.set_aspect("equal"); axC.axis("off")
+    axC.set_xlim(-50, 52); axC.set_ylim(-16, XSLIDE_BAR_W + 20)
+    wall, pad, gw, gt = XSLIDE_CARR_WALL, XSLIDE_UHMW_T, XSLIDE_GIB_W, XSLIDE_GIB_T
+    # bar section: bt (X, horizontal) × bw (Z, vertical) — DEEP = bw vertical in the load direction
+    x0 = 0
+    hatch_rect(axC, x0, 0, bt, bw)                                  # bar (deep: 38.1 vertical)
+    axC.add_patch(Rectangle((x0 - pad, 0), pad, bw, fc=C_POLY, ec=OUT, lw=0.8, zorder=4))       # UHMW pad L
+    axC.add_patch(Rectangle((x0 + bt, 0), pad, bw, fc=C_POLY, ec=OUT, lw=0.8, zorder=4))        # UHMW pad R
+    axC.add_patch(Rectangle((x0 - pad - wall, -wall), bt + 2 * pad + 2 * wall, wall, fc=C_STEEL, ec=OUT, lw=1.0, zorder=3))  # carriage base
+    axC.add_patch(Rectangle((x0 - pad - wall, -wall), wall, bw + wall, fc=C_STEEL, ec=OUT, lw=1.0, zorder=3))                # carriage wall L
+    axC.add_patch(Rectangle((x0 + bt + pad, -wall), gt, bw, fc="#C9A24A", ec=OUT, lw=1.0, zorder=5))    # brass-tip gib (adjustable) R
+    axC.add_patch(Rectangle((x0 + bt + pad + gt, -wall), wall, bw + wall, fc=C_STEEL, ec=OUT, lw=1.0, zorder=3))            # carriage wall R (holds gib)
+    draw_dim_v(axC, -pad - wall - 10, 0, bw, f"{bw}mm DEEP\n(load direction)", fs=5.6, font=FONT, offset=8)
+    draw_dim_h(axC, x0, x0 + bt, bw + 7, f"{bt}mm", fs=5.4, font=FONT, offset=5)
+    leader(axC, x0 + bt + pad / 2, bw * 0.72, 27, bw * 0.74, f"UHMW self-lube pad {pad}mm", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, x0 + bt + pad + gt / 2, bw * 0.40, 27, bw * 0.40, f"brass-tip GIB {gw}×{gt}mm\n(adjustable clearance)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, x0 - pad - wall / 2, bw * 0.4, -48, bw * 0.42, f"carriage wall {wall}mm", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    axC.text(-48, bw + 14, "C — DEEP-MOUNT SECTION", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── stroke callout box ─────────────────────────────────────────────────────
+    axS = fig.add_axes([0.53, 0.30, 0.42, 0.16]); axS.set_xlim(0, 100); axS.set_ylim(0, 100); axS.axis("off")
+    axS.text(2, 92, "STROKE", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
+    axS.annotate("", xy=(78, 62), xytext=(10, 62), arrowprops=dict(arrowstyle="<->", color=DIM, lw=1.0))
+    axS.text(44, 70, f"specified stroke {XSLIDE_STROKE}mm / axis", fontsize=6.4, ha="center", color=OUT, **FONT)
+    axS.annotate("", xy=(64, 44), xytext=(10, 44), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=0.9))
+    axS.text(37, 36, f"Z tilt foreshortening {XSLIDE_Z_TRAVEL}mm", fontsize=5.8, ha="center", color=C_TILT, **FONT)
+    axS.annotate("", xy=(68, 22), xytext=(10, 22), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=0.9))
+    axS.text(39, 14, f"X swing foreshortening {XSLIDE_X_TRAVEL}mm", fontsize=5.8, ha="center", color=C_SWING, **FONT)
+    axS.text(2, 2, f"→ the {XSLIDE_STROKE}mm stroke covers both with margin", fontsize=5.8, ha="left", color=DIM, **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.53, 0.075, 0.42, 0.20]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    draw_notes(ax_n, [
+        "CROSS-SLIDE STACK — 1 per corner (8 bars total):",
+        f"1. 304 SS flat bar ¼×1½in ({XSLIDE_BAR_T}×{XSLIDE_BAR_W}mm): 4× {XSLIDE_Z_BAR_LEN}mm Z (tilt) + 4× {XSLIDE_X_BAR_LEN}mm X "
+        "(swing). ≈2.84m cut → 2× 8 ft lengths (Metal Supermarkets $134.73/8ft).",
+        "2. MOUNT DEEP — the 38.1mm bar face runs in the gravity/load direction (Sheet 10 load case: SF≈10 deep vs "
+        "≈1.7 flat, which fails a 2× dynamic factor).",
+        "3. Each bar rides on UHMW self-lube pads with a brass-tip adjustable GIB taking up the clearance; the gib "
+        "drag also holds the gravity (Z) axis while the cam clamp is thrown.",
+        "4. Z carries X (stacked orthogonally): the Z-slide carriage bolts to the skate (J1, Sheet 13), the X-slide "
+        "carries the U-joint corner plate (Sheet 16/17).",
+    ], 2, 98, 3.4, fs=6.0, title_fs=6.6, color=DIM, width=52, wrap=150, font=FONT)
+
+    ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 15 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Cross-slide stack (Z + X, 304 flat bar) — fabrication detail: bars, deep-mount section, gib, stroke",
+                scale_note="A/B compressed · C 1:1 (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet15.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet15.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 14 — CAM CLAMP / RAIL BRAKE — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet14():
@@ -2514,4 +2596,5 @@ if __name__ == "__main__":
     sheet12()
     sheet13()
     sheet14()
+    sheet15()
     print("Done.")

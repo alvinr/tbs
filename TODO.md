@@ -182,7 +182,14 @@ parametrically from `tbs_constants` so they can't drift. Do the **film-plane cor
 as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
 walkway, hinged panel, light lock, electrical, optics, …)._
 
-- [ ] **★ FINAL cross-cutting step — GATED on ALL blueprint sets complete (moved here 2026-08-24, Alvin): fastener standardization — reconcile ALL fasteners (bolts, screws, nuts, rivets, rivet-nuts, washers) across the WHOLE camera to the minimum number of distinct types.** Goal: build TBS-001 from the fewest different parts — fewer SKUs, fewer spares, simpler procurement/assembly (design-for-assembly). Requires **re-engineering blueprints** where a joint can move to a shared size/length/thread without hurting the design (converge M8/M10 families, standardize lengths, pick one rivet Ø, one washer). Method: (1) inventory every fastener across all systems from `parts.py` + the generators (thread × pitch × length × head × material × count); (2) cluster + pick a minimal standard set; (3) flag the joints that must change geometry to adopt it; (4) cascade drawing/constants/parts/cost per system. **Do NOT start until every subsystem blueprint above is done** — standardize against the final set, not a moving target.
+- [~] **★ FINAL cross-cutting step — fastener standardization (INVENTORIED + DECIDED 2026-09-04; branch `fastener-rework`).** Full inventory + the 6-family decisions are captured in **`fastener-standardization.md`** (target: metric families 6→4 — M5 + M10 eliminated; lengths ~12→~7). **Done now:** M6 nuts 3→2 (plain→nyloc merge). **Gated on the owning blueprint (do at each sheet round, standardize against the final set):**
+  - **M12** — force wall joints to one length (grip-stack standardization, Lever B) + keep ×100 for J6 + unify ×65 zinc/SS → *IBC-frame + walkway*.
+  - **M10 → M12** — eliminate the family (cap-hub / ring-collar / door-frame bolts bump to M12); verify M12 edge-distance on the 8mm cap at Ø120 PCD → *light-trap + hinged-panel*.
+  - **M8** — zinc ×25 standard, SS exception = wet film-plane (carriage + ICP-14 rail-fixing); confirm edge-channel/carriage land on ×25 → *film-plane*.
+  - **M5 → M6×16 CSK** — retire the family (new CSK SKU); verify clamp-clip head clearance → *film-plane* (next round).
+  - **M4** — itemize + keep (cam-clamp base vendor-fixed M4; pinhole grubs precision).
+  - **Related:** ⁵⁄₁₆″→¼″ ply-mount (filter housings), #14 self-drillers 4→2, ⅛″ rivets 2 grips→1.
+  - **BOM-gap itemization** (M4 grubs, M4 cam-mounts, M12 pivot anchors/hinge brackets) — each blocked on a length dim; itemize per the owning sheet, don't assume.
 
 - [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
   (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum

@@ -86,6 +86,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 18: Film-Plane Frame Weldment (2×2×⅛ 6061 Angle) Fabrication Detail](assets/film-plane-sheet18.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 19: Wall-Seat Saddle (ICP-11) Fabrication Detail](assets/film-plane-sheet19.png)
+
 ### Corner Joint — Design Study
 
 ![TBS-001 Film-Plane Corner Joint — Concept Options (2 axes, ±45°, carries the plane)](assets/film-joint-options.png)

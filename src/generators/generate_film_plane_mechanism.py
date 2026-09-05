@@ -2229,6 +2229,79 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 19 — WALL-SEAT SADDLE (ICP-11) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet19():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    pw, proj = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ
+    bt, st = FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_T     # back-plate 8mm / seat 10mm
+    bph, gh = 243, 120                                    # back-plate height / gusset height (parts.py cut sheet)
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — saddle side elevation (wall on the right) ─────────────────────
+    axA = fig.add_axes([0.06, 0.44, 0.42, 0.46]); axA.set_aspect("equal"); axA.axis("off")
+    axA.set_xlim(-proj - 74, 96); axA.set_ylim(-18, bph + 30)
+    axA.add_patch(Rectangle((0, -12), WALL_T, bph + 30, fc="#E6E6EA", ec=OUT, lw=1.0, zorder=2))     # container wall (light)
+    axA.text(WALL_T / 2, 30, "WALL", fontsize=5.2, ha="center", va="center", color="#888", rotation=90, **FONT, zorder=3)
+    axA.add_patch(Rectangle((-bt, 0), bt, bph, fc=C_STEEL, ec=OUT, lw=1.3, zorder=4))               # back-plate (8mm)
+    seat_z = bph - 40
+    axA.add_patch(Rectangle((-proj, seat_z), proj, st, fc="#8C8C94", ec=OUT, lw=1.3, zorder=4))     # seat plate (10mm)
+    axA.add_patch(plt.Polygon([(-bt, seat_z), (-bt, seat_z - gh), (-proj, seat_z)], closed=True, fc=C_STEEL, ec=OUT, lw=1.1, zorder=3))  # gusset
+    axA.add_patch(Rectangle((-proj + 6, seat_z + st), 60, 40, fc=STRUCT2, ec=OUT, lw=1.1, zorder=5))    # rail sits on seat
+    axA.text(-proj + 36, seat_z + st + 20, "RAIL", fontsize=5.6, ha="center", va="center", color=OUT, **FONT, zorder=6)
+    axA.add_patch(Rectangle((WALL_T, seat_z - 8), 8, 30, fc=C_STEEL, ec=OUT, lw=1.0, zorder=4))     # exterior spreader plate
+    for bz in (seat_z + 6, seat_z - 26):
+        axA.add_patch(Rectangle((-bt - 2, bz - 2.5), WALL_T + bt + 12, 5, fc=C_BOLT, ec="none", zorder=6))  # M12 through-bolts
+    draw_dim_v(axA, -proj - 20, 0, bph, f"{bph}mm", fs=5.6, font=FONT, offset=8)
+    draw_dim_h(axA, -proj, 0, -24, f"seat proj {proj}mm", fs=5.6, font=FONT, above=False, offset=8)
+    leader(axA, -proj / 2, seat_z, -proj - 30, seat_z + 30, f"seat plate {st}mm A36 — the rail bears here", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, -bt / 2, gh, -proj - 30, gh - 10, f"gusset (8mm) braces\nseat → back-plate", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, WALL_T + 4, seat_z + 6, 40, seat_z - 30, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} → wall +\nexterior spreader plate", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
+    axA.text(-proj - 68, bph + 24, "A — SADDLE ELEVATION  (load-bearing seat; wall at right)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — flat-pattern cut pieces (nesting) ─────────────────────────────
+    axB = fig.add_axes([0.53, 0.44, 0.43, 0.46]); axB.set_aspect("equal"); axB.axis("off")
+    axB.set_xlim(-20, 430); axB.set_ylim(-30, 300)
+    def _piece(x, y, w, h, lbl, tri=False):
+        if tri:
+            axB.add_patch(plt.Polygon([(x, y), (x, y + h), (x + w, y)], closed=True, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+        else:
+            axB.add_patch(Rectangle((x, y), w, h, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+        axB.text(x + w / 2, y + h / 2, lbl, fontsize=5.2, ha="center", va="center", color=OUT, **FONT, zorder=5)
+    _piece(0, 40, pw, bph, f"back-plate\n{pw:.0f}×{bph}\n8mm")
+    _piece(pw + 20, 40, pw, pw, f"exterior\n{pw:.0f}×{pw:.0f}\n8mm")
+    _piece(2 * pw + 40, 40, proj, gh, f"gusset\n{proj}×{gh}\n8mm", tri=True)
+    _piece(2 * pw + 40, 220, pw, proj, f"seat\n{pw:.0f}×{proj}\n10mm")
+    axB.text(-20, 288, "B — CUT PIECES  (A36; nest per parts.py — 8mm + 10mm sheets)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+    axB.text(2 * pw + 40, 20, "weld: seat + gusset + exterior → back-plate (owner)", fontsize=5.6, ha="left", color=C_CAR, **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    draw_notes(ax_n, [
+        "WALL-SEAT SADDLE (ICP-11) — 4 OFF (TR-near + TR-far right seats; BL-near + TL-near left drop-in seats):",
+        f"1. A36 MILD STEEL (structural, behind the wall — not the wet-zone stainless). Back-plate {pw:.0f}×{bph}mm + "
+        f"exterior spreader {pw:.0f}×{pw:.0f}mm + gusset {proj}×{gh}mm all in 8mm; seat {pw:.0f}×{proj}mm in 10mm.",
+        "2. Laser/plasma cut to the piece dims (all 4 saddles + the 2 far-left flange-brackets nest in one 8mm sheet; "
+        "the 4 seats in one 10mm sheet — see parts.py). Welded by owner ($0 labor).",
+        f"3. The seat CARRIES the rail weight (contrast the far-left bracket on Sheet 11, which is a lateral tie only). "
+        f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} through the back-plate into the wall, backed by the exterior spreader plate (corrugated wall pulls through under load).",
+        "4. The RIGHT seats (TR) are permanent; the LEFT seats (BL/TL) take the transport drop-in rails and are released "
+        "for lift-out (Sheet 4).",
+    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+
+    ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 19 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Wall-seat saddle (ICP-11, ×4, A36) — fabrication detail: assembly, 8/10mm cut pieces, weld + M12 mount",
+                scale_note="A/B 1:1 (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet19.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet19.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 18 — FILM-PLANE FRAME WELDMENT (2×2×⅛ 6061 angle) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet18():
@@ -2817,4 +2890,5 @@ if __name__ == "__main__":
     sheet16()
     sheet17()
     sheet18()
+    sheet19()
     print("Done.")

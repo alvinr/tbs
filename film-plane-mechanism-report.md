@@ -75,7 +75,7 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 - **4 depth rails** — 3×1½" (76×38mm) **6061-T6 aluminum U-channel** — its yield exceeds annealed 304 so strength holds, the ~1mm sag over 2.36m is optically irrelevant at f/1088, and flatness is carried by the ACM backing — one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=260mm) are transport drop-ins that lift out.
 - **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 304 axles**, carrying the corner's carriage plate.
 - **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
-- **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **304 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~345mm) and X slide (~365mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈263mm in X at max swing — the bar length = that travel + the carriage, so it can reach the full ±40°/±28°), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
+- **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **304 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~345mm) and X slide (~365mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈257mm in X at max swing — the bar length = that travel + the carriage, so it can reach the full ±40°/±28°), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
 - **Film plane frame** — welded 2"×2"×1/8" plain-6061 aluminum angle, kept as an **expendable part** (bare 6061 corrodes slowly in the splash-not-immersed cyanotype zone — inspect annually, replace on pitting; the ACM backing carries the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm** (rail span × film-plane height). Each corner connects to its cross-slide stack through a **single universal joint** (Belden SSNBUJ750x3/8KB, stainless, factory-booted (integral)): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through a **304 stainless corner plate** (detailed below) and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
@@ -126,7 +126,7 @@ All four corners lock independently on their own cam clamps, so a set position h
 
 ### Fixed-Size Plane — No Variable Geometry
 
-Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2,094mm at every tilt angle**. The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈245mm Z at max tilt, ≈263mm X at max swing), not by the frame.
+Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2,094mm at every tilt angle**. The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈245mm Z at max tilt, ≈257mm X at max swing), not by the frame.
 
 **Single rigid backing panel:** the backing is **one flat ACM (aluminum composite) sheet, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm**, bonded to the rear of the angle frame — the panel simply rotates with the rigid plane.
 
@@ -138,6 +138,22 @@ A tilted or swung plane opens gaps at its edges where the frame no longer sits f
 - **Secondary seal** — Impact 9oz Duvetyne blackout curtains hung from the frame perimeter and weighted, draping to seal at the larger tilt/swing angles where the foam no longer reaches.
 
 The EPDM foam tape and Duvetyne curtains are itemized in the §7 parts list.
+
+### Fabrication Detail Sheets
+
+Sheets 12–20 take each corner-mechanism part to shop-buildable detail — cut lengths, section profiles, hole tables, weld schedules, and the corner fastener schedule:
+
+- **Sheet 12 — Depth rail:** 3×1½" 6061-T6 U-channel (Grainger 795M51), cut wall-to-wall from 8 ft stock, section + fixed/drop-in end conditions.
+- **Sheet 13 — Acetal skate:** the 4-wheel load/keeper roller and axle layout + the 6061 carriage-plate hole table.
+- **Sheet 14 — Cam rail-brake:** the McMaster 5128A63 low-profile toggle clamp + its fab mount tab, pinching the U-channel top flange (self-reacting).
+- **Sheet 15 — Cross-slide stack:** the Z (tilt) and X (swing) 304 flat bars, the deep-mount section (SF≈10 vs 1.7 flat), gib, and stroke.
+- **Sheet 16 — U-joint install:** the Belden SSNBUJ750x3/8KB elevation + the keyed 3/8" stub and 4040N12 clamp.
+- **Sheet 17 — 304 corner plate:** the ¼" L-bracket flat pattern, hole table, and formed elevation.
+- **Sheet 18 — Frame weldment:** the 2×2×⅛" 6061 angle frame to scale, the 4 corner welds (the only joints), and the member section with ACM backing.
+- **Sheet 19 — Wall-seat saddle (ICP-11):** the A36 8/10mm plate saddle assembly, cut pieces, and M12 wall mount.
+- **Sheet 20 — Corner assembly:** the exploded build sequence and the full corner fastener schedule.
+
+![Sheet 20 — Corner assembly (exploded) + fastener schedule](assets/film-plane-sheet20.png)
 
 ---
 

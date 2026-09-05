@@ -42,7 +42,8 @@ from tbs_constants import (FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RA
                           SKATE_ROLLER_W, SKATE_AXLE_LEN,
                           CAM_CLAMP_BASE_W, CAM_CLAMP_BASE_D, CAM_CLAMP_HOLE_SP, CAM_CLAMP_N,
                           XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE,
-                          UJOINT_YOKE_L, UJOINT_HUB_L, UJOINT_BOOT_OD, UJOINT_BOOT_LEN, UJOINT_STUB_OD)
+                          UJOINT_YOKE_L, UJOINT_HUB_L, UJOINT_BOOT_OD, UJOINT_BOOT_LEN, UJOINT_STUB_OD,
+                          DIBOND_T)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -2228,6 +2229,77 @@ def sheet11():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 18 — FILM-PLANE FRAME WELDMENT (2×2×⅛ 6061 angle) — FABRICATION DETAIL
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet18():
+    reset_label_registry()
+    C_BOLT = "#3A3A42"
+    leg, at = FP_ANGLE_LEG, FP_ANGLE_T
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+
+    # ── View A — full frame front elevation, to scale ──────────────────────────
+    axA = fig.add_axes([0.06, 0.50, 0.88, 0.40]); axA.set_aspect("equal"); axA.axis("off")
+    m = 300
+    axA.set_xlim(-m, FP_W + m); axA.set_ylim(-m, FP_H + m + 120)
+    # ACM backing ghost
+    axA.add_patch(Rectangle((leg, leg), FP_W - 2 * leg, FP_H - 2 * leg, fc=C_ACM, ec="none", alpha=0.5, zorder=1))
+    # perimeter angle band (outer − inner)
+    axA.add_patch(Rectangle((0, 0), FP_W, FP_H, fc="none", ec=OUT, lw=1.6, zorder=3))
+    axA.add_patch(Rectangle((leg, leg), FP_W - 2 * leg, FP_H - 2 * leg, fc="none", ec=OUT, lw=1.0, ls=(0, (4, 3)), zorder=3))
+    for corner in [(0, 0), (FP_W, 0), (0, FP_H), (FP_W, FP_H)]:
+        axA.add_patch(Circle(corner, 70, fc="none", ec=C_CAR, lw=1.6, zorder=5))          # weld ring
+    draw_dim_h(axA, 0, FP_W, -150, f"{FP_W}mm  (rail span)", fs=6.6, font=FONT, above=False, offset=70)
+    draw_dim_v(axA, -150, 0, FP_H, f"{FP_H}mm", fs=6.6, font=FONT, offset=70)
+    leader(axA, 70, FP_H - 70, 620, FP_H + 150, "4 CORNER welds (fillet, all-round) —\nthe ONLY joints; edges are single 16 ft lengths", ha="left", fs=6.0, color=C_CAR, font=FONT, bbox=LBL_BG)
+    axA.text(FP_W / 2, FP_H * 0.5,
+             "2×2×⅛in 6061-T6 PLAIN angle — leg opens INBOARD (muslin capture channel).\n"
+             "EXPENDABLE part: inspect annually, replace on pitting (the ACM carries flatness).\n"
+             "Weld-free cut plan from 3× 16 ft lengths: 2 → horizontal edges (4,389mm each),\n"
+             "1 → both verticals (2,094mm ×2). No mid-span splices — only the 4 corners join.",
+             fontsize=6.4, ha="center", va="center", color=DIM, **FONT, zorder=6,
+             bbox=dict(fc="white", ec=OUT, lw=0.6, alpha=0.9, pad=6))
+    axA.text(-m, FP_H + m + 20, "A — FRAME FRONT ELEVATION  (to scale; fixed-size rigid rectangle)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View B — welded corner detail ──────────────────────────────────────────
+    axB = fig.add_axes([0.08, 0.10, 0.36, 0.34]); axB.set_aspect("equal"); axB.axis("off")
+    axB.set_xlim(-30, 230); axB.set_ylim(-30, 230)
+    axB.add_patch(Rectangle((0, 0), 200, leg, fc=STRUCT2, ec=OUT, lw=1.2, zorder=3))       # horizontal member leg
+    axB.add_patch(Rectangle((0, 0), leg, 200, fc=STRUCT2, ec=OUT, lw=1.2, zorder=3))       # vertical member leg
+    axB.plot([leg, 0, leg], [leg, 0, leg], color="none")
+    axB.plot([0, leg], [leg, 0], color=C_CAR, lw=2.2, zorder=6)                            # miter/weld line
+    for tx, ty in [(10, leg + 4), (leg + 4, 10)]:
+        axB.plot([tx, tx + 6], [ty, ty + 6], color=C_CAR, lw=1.0, zorder=6)
+    leader(axB, leg / 2, leg / 2, 120, 150, "MITER + fillet weld all-round\n(4 corners identical)", ha="left", fs=6.0, color=C_CAR, font=FONT, bbox=LBL_BG)
+    draw_dim_h(axB, 0, leg, -14, f"{leg:.1f}mm leg", fs=5.6, font=FONT, above=False, offset=8)
+    axB.text(-30, 218, "B — WELDED CORNER", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── View C — member section (angle + ACM + muslin capture) ─────────────────
+    axC = fig.add_axes([0.52, 0.10, 0.42, 0.34]); axC.set_aspect("equal"); axC.axis("off")
+    axC.set_xlim(-18, leg + 40); axC.set_ylim(-18, leg + 34)
+    hatch_rect(axC, 0, 0, leg, at)                          # angle base leg (inboard, horizontal)
+    hatch_rect(axC, 0, 0, at, leg)                          # angle vertical leg (perimeter)
+    axC.add_patch(Rectangle((at, at), DIBOND_T, leg - at - 4, fc=C_ACM, ec=OUT, lw=0.8, zorder=4))       # ACM backing in the L
+    axC.add_patch(Rectangle((at + DIBOND_T, at), 0.8, leg - at - 4, fc=C_MUSLIN, ec="none", zorder=5))   # muslin on ACM face
+    draw_dim_v(axC, -10, 0, leg, f"{leg:.1f}mm", fs=5.6, font=FONT, offset=7)
+    draw_dim_h(axC, 0, at, leg + 8, f"{at}mm", fs=5.4, font=FONT, offset=6)
+    leader(axC, at + DIBOND_T / 2, leg * 0.6, leg + 6, leg * 0.7, f"ACM (Dibond) backing {DIBOND_T}mm\n— carries flatness", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, at + DIBOND_T, leg * 0.4, leg + 6, leg * 0.3, "muslin — clamped on the ACM face\n(clamp: Sheet 6)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    axC.text(-18, leg + 22, "C — MEMBER SECTION  (angle + ACM backing)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+
+    # ── notes ──────────────────────────────────────────────────────────────────
+    ax_n = fig.add_axes([0.06, 0.075, 0.90, 0.015]); ax_n.axis("off")   # spacer
+    ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 18 OF 20", drawing_title="MOVEABLE FILM PLANE",
+                subtitle=f"Film-plane frame weldment ({FP_W}×{FP_H}mm, 2×2×⅛in 6061 angle) — elevation, corner weld, member section",
+                scale_note="A to scale · B/C enlarged (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet18.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet18.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 17 — 304 CORNER PLATE (L-bracket) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet17():
@@ -2744,4 +2816,5 @@ if __name__ == "__main__":
     sheet15()
     sheet16()
     sheet17()
+    sheet18()
     print("Done.")

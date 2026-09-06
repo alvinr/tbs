@@ -152,10 +152,10 @@ def render_png(path=None):
     section(350, -300, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "✗ FLAT — not used", False)
 
     tbl = [("orientation", "σ (MPa)", "SF", "δ (mm)", "SF ×2 dyn"),
-           ("DEEP  (strong)", f"{sig_s:.0f}", f"{SY_304/sig_s:.1f}", f"{d_s:.2f}", f"{SY_304/(2*sig_s):.1f}"),
-           ("FLAT  (weak)", f"{sig_w:.0f}", f"{SY_304/sig_w:.1f}", f"{d_w:.1f}", f"{SY_304/(2*sig_w):.1f}")]
-    col_x = [300, 520, 630, 730, 840]     # orientation · σ · SF · δ · SF×2
-    ty, dy = -420, -66
+           ("DEEP (strong)", f"{sig_s:.0f}", f"{SY_304/sig_s:.1f}", f"{d_s:.2f}", f"{SY_304/(2*sig_s):.1f}"),
+           ("FLAT (weak)", f"{sig_w:.0f}", f"{SY_304/sig_w:.1f}", f"{d_w:.1f}", f"{SY_304/(2*sig_w):.1f}")]
+    col_x = [0, 270, 420, 520, 650]     # orientation · σ · SF · δ · SF×2
+    ty, dy = -520, -66
     for r, row in enumerate(tbl):
         for col_i, cell in enumerate(row):
             cc = C_OUT if r == 0 else (C_OK if "DEEP" in row[0] else C_BAD)
@@ -174,7 +174,7 @@ def render_png(path=None):
         f"3. C1 BENDING — the ¼×1½in 304 flat bar as a worst-case cantilever at full extension (L = {c.XSLIDE_X_TRAVEL}mm) carrying P. DEEP (38.1mm ⟂ load): σ≈{sig_s:.0f} MPa, SF≈{SY_304/sig_s:.0f}, δ≈{d_s:.2f}mm. FLAT: SF≈{SY_304/sig_w:.1f} — fails a 2× dynamic factor.",
         "4. DECISION: mount the cross-slide bars DEEP (strong axis). Deflection is not optically critical (flatness is carried by the ACM backing) but position error is not free.",
     ]
-    draw_notes(axN, notes, 3, 96, 7.0, fs=8, title_fs=8.6, color=C_DIM, title_color=C_OUT, font=FT, width=96, wrap=74)
+    draw_notes(axN, notes, 3, 96, 7.0, fs=8, title_fs=8.6, color=C_DIM, title_color=C_OUT, font=FT, width=80, wrap=72)
 
     fig.suptitle("FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
                  fontsize=12.5, fontweight="bold", color=C_OUT, y=0.955, **FT)

@@ -2458,14 +2458,14 @@ def sheet16():
     for dx in (-24, 24):
         draw_circle(axA, ujx + dx, L / 2, 3.0, lw=1.0, color=C_SWING, zorder=6)                # 4040N12 mount bolts
     # overall
-    draw_dim_h(axA, 0, 2 * leg, -74, f"2 legs × {leg:.1f}mm (4in)", fs=5.8, font=FONT, above=False, offset=9)
-    draw_dim_v(axA, -78, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
+    draw_dim_h(axA, 0, 2 * leg, -10, f"2 legs × {leg:.1f}mm (4in)", fs=5.8, font=FONT, above=False, offset=9)
+    draw_dim_v(axA, -10, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
     # EVERY hole located by an X (dim_h) + Y (dim_v), placed INSIDE the panel near the holes (white plate → readable)
     j5lo, j5hi = j5[0][1], j5[1][1]
     for i, hx in enumerate((j5x, ujx - 24, ujx, ujx + 24)):          # X of each hole, stacked inside near the bottom edge
-        draw_dim_h(axA, 0, hx, 9 + i * 11, f"{hx:.1f}", fs=5.0, font=FONT, offset=5)
+        draw_dim_h(axA, 0, hx, 9 + i * 11, f"{hx:.1f}mm", fs=5.0, font=FONT, offset=5)
     for i, hy in enumerate((j5lo, L / 2, j5hi)):                     # Y of each hole row, stacked inside near the left edge
-        draw_dim_v(axA, 9 + i * 11, 0, hy, f"{hy:.1f}", fs=5.0, font=FONT, offset=5)
+        draw_dim_v(axA, 9 + i * 11, 0, hy, f"{hy:.1f}mm", fs=5.0, font=FONT, offset=5)
     # extension guides — tie EACH hole to its inside dims (↓ to the X band, ← to the Y band) so the hole↔dim link is unambiguous
     for hx, hy in [(j5x, j5lo), (j5x, j5hi), (ujx - 24, L / 2), (ujx, L / 2), (ujx + 24, L / 2)]:
         axA.plot([hx, hx], [hy, 6], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)   # above the white plate (zorder 3)
@@ -2487,7 +2487,7 @@ def sheet16():
         f"U-JOINT leg — J4: the keyed 3/8in stub bore + the McMaster 4040N12 clamp mount (Sheet 9). Hole coordinates in View A.",
         "4. The corner is CARRIED BY the X-slide THROUGH the U-joint — the angle is never bolted straight to the joint "
         "(Sheet 9 shows the square-on connection).",
-    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+    ], 20, 98, 4.6, fs=6.2, title_fs=6.8, color=DIM, width=58, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 16 OF 18", drawing_title="MOVEABLE FILM PLANE",

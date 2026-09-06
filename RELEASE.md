@@ -43,6 +43,14 @@ file** — a release must not ship without a changelog entry:
   saddle M12 bolts per the head-outside/nut-inside convention + un-clipped the cut-piece nesting; full per-hole
   X/Y coordinates on the corner-angle drilling layout (its section view dropped — stock part); gib adjuster
   redrawn as a headless grub/set screw (was a bolt).
+  Review pass 3: lengthened the wall-seat back-plate (243→250mm, seat flush at the top) so both M12 rows clear
+  the seat; added a stainless self-drilling (TEK) screw securing the ACM to the frame above the fillet ridge
+  (wet-zone SS); tied the corner-angle drilling dims to their holes with extension guides; fixed the cross-slide
+  end holes to render circular and reframed its stroke callout as a bar-length justification; replaced the skate
+  sheet's redundant skate-in-channel view (dup of Sheet 3) with the axle-saddle retention detail; removed the
+  depth-rail's duplicate end-section (catalog profile); made the 4040N12 → X-carriage bolted foot explicit on
+  Sheet 9; and **retired the M5 axle-saddle screw → M6×20**, consolidated onto the existing firm-priced
+  `bolt-m6x20` (McMaster 91287A137) — no new SKU (closes the M5-elimination roadmap item for the film section).
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

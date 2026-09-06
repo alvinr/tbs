@@ -762,6 +762,9 @@ def view_a(ax):
     ax.plot([176,186,176,186,176],[455,461,467,473,479], color=OUT, lw=0.6, zorder=6)  # break on the ACM
 
     # ── dimensions ──
+    draw_dim_h(ax, 130, 130 + CARRIAGE_PLATE_W, 126, f"{CARRIAGE_PLATE_W:.0f}mm", offset=5, fs=5.0, color=C_CAR, above=False, font=FONT)   # carriage plate width
+    draw_dim_v(ax, 219, 134, 134 + CARRIAGE_PLATE_H, f"{CARRIAGE_PLATE_H:.0f}mm", offset=5, fs=5.0, color=C_CAR, right=True, font=FONT)     # carriage plate height
+    draw_dim_v(ax, -46, 232, 308, f"{FP_RAIL_WEB:.0f}mm\nweb", offset=5, fs=5.0, color=DIM, font=FONT)                                       # depth-rail web
     draw_dim_v(ax, 108, 160, 270, "≈110mm\nfilm corner\nBELOW\nthe rail\n(BUILD_BOT)", offset=14, fs=5.4, color=DIM, font=FONT)
     ax.annotate("", xy=(224, 300), xytext=(224, 156), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=0.6))
     ax.text(228, 228, "Z-slide TILT travel ~250mm (way runs up behind the rail)", fontsize=5.2, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
@@ -983,9 +986,9 @@ def view_c(ax):
     for yy in (-3.5, -1.75, 0.0, 1.75, 3.5, 5.25):
         ax.plot([33.2, 38.8], [yy, yy], color=OUT, lw=0.4, zorder=9)                        # thread crests full length — NO head
     ax.add_patch(Circle((36, -4), 1.5, fc="#2A2A2E", ec=OUT, lw=0.5, zorder=10))            # hex-socket drive recess (outer end, flush)
-    leader(ax, 44, 20, 68, 48, "304 flat-bar WAY (Z tilt / X swing)",
+    leader(ax, 44, 20, 68, 48, f"304 flat-bar WAY ¼×1½in ({XSLIDE_BAR_T:.2f}×{XSLIDE_BAR_W:.1f}mm)\n— Z tilt / X swing (true section + dims: Sheet 14)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 30, 25.5, 68, 36, "UHMW pad — self-lube, DRY (both faces)",
+    leader(ax, 30, 25.5, 68, 36, f"UHMW pad {XSLIDE_UHMW_T:.1f}mm — self-lube, DRY (both faces)",
            ha="left", fs=5.8, color="#8A6A2A", font=FONT, bbox=LBL_BG)
     leader(ax, 12, 32, 68, 24, "304 carriage — the MOVING part",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
@@ -2171,11 +2174,16 @@ def sheet11():
         ax.add_patch(Rectangle((2168, botf), (C_WID - fl_t) - 2168, web, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))   # rail (broken off left)
         ax.add_patch(Rectangle((C_WID - fl_t, fz0), fl_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))                 # flange (interior)
         ax.add_patch(Rectangle((C_WID + WALL_T, fz0), ext_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))             # exterior plate
+        # The M12 bolts run in Yd through the flange plate + wall; at X222/X298 they STRADDLE the channel
+        # (clear in X — View C). In this Yd–Z side view they project onto the web, so the run past the web is
+        # drawn as a HIDDEN line (fore/aft of it), solid only through the wall + exterior plate.
         for bz in (botf + 8, botf + web - 8):
-            ax.add_patch(Rectangle((C_WID - fl_t - 6, bz - 2.5), WALL_T + fl_t + ext_t + 12, 5, fc=C_BOLT, ec="none", zorder=7))   # shank
-            ax.add_patch(Rectangle((C_WID + WALL_T + ext_t, bz - 5.5), 5.5, 11, fc=C_BOLT, ec=OUT, lw=0.5, zorder=8))             # HEX HEAD — OUTSIDE
-            ax.add_patch(Rectangle((C_WID - fl_t - 5.5, bz - 5), 5.5, 10, fc="#6A6A72", ec=OUT, lw=0.6, zorder=8))                # NUT — INSIDE
+            ax.plot([C_WID - fl_t - 6, C_WID], [bz, bz], color=C_BOLT, lw=1.1, ls=(0, (3, 2)), zorder=7)                  # hidden — fore/aft of the web
+            ax.add_patch(Rectangle((C_WID, bz - 2.5), WALL_T + ext_t + 6, 5, fc=C_BOLT, ec="none", zorder=7))            # shank through the wall (solid)
+            ax.add_patch(Rectangle((C_WID + WALL_T + ext_t, bz - 5.5), 5.5, 11, fc=C_BOLT, ec=OUT, lw=0.5, zorder=8))     # HEX HEAD — OUTSIDE
+            ax.add_patch(Rectangle((C_WID - fl_t - 5.5, bz - 5), 5.5, 10, fc="#6A6A72", ec=OUT, lw=0.6, zorder=8))        # NUT — INSIDE
         ax.text(2172, botf + web + 22, f"{tag} rail", fontsize=5.6, ha="left", color=OUT, **FONT, zorder=8)
+        ax.text(2300, botf + web / 2, "M12 bolts straddle the\nchannel in X (clear · View C)", fontsize=4.4, ha="center", va="center", color=DIM, style="italic", **FONT, zorder=9)
         draw_dim_v(ax, 2424, clr_a, clr_b, f"{int(round(clr_b - clr_a))}mm clr", fs=5.0, font=FONT)
     axBt = fig.add_axes([0.52, 0.685, 0.46, 0.27])
     _sec(axBt, 2175, 2405, botf_top, "TL", C_HGT - 20, C_HGT, "roof mount plate", C_HGT, "CEILING", botf_top + web + 5, C_HGT - 20)
@@ -2448,14 +2456,16 @@ def sheet16():
     fill_arc = [(at + fr + fr * np.cos(np.radians(a)), at + fr + fr * np.sin(np.radians(a))) for a in np.linspace(270, 180, 8)]
     l_pts = [(0, 0), (leg, 0), (leg, at)] + fill_arc + [(at, leg), (0, leg)]
     axC.add_patch(plt.Polygon(l_pts, closed=True, facecolor="#DCE4EC", edgecolor=OUT, lw=1.3, hatch="///", zorder=3))
-    axC.add_patch(Rectangle((at + fr, at), DIBOND_T, leg - at - fr - 4, fc=C_ACM, ec=OUT, lw=0.8, zorder=4))   # ACM backing in the L
-    axC.add_patch(Rectangle((at + fr + DIBOND_T, at), 0.8, leg - at - fr - 4, fc=C_MUSLIN, ec="none", zorder=5))   # muslin on ACM face
-    # stainless self-drilling (TEK) screw — secures the ACM to the frame leg, driven ABOVE the fillet ridge
+    acm_x, acm_z0 = at, at + fr                           # ACM BUTTS the vertical leg (back face on the leg's inner face), raised ABOVE the fillet ridge
+    acm_h = leg - acm_z0 - 4
+    axC.add_patch(Rectangle((acm_x, acm_z0), DIBOND_T, acm_h, fc=C_ACM, ec=OUT, lw=0.8, zorder=4))          # ACM backing, flush to the vertical leg
+    axC.add_patch(Rectangle((acm_x + DIBOND_T, acm_z0), 0.8, acm_h, fc=C_MUSLIN, ec="none", zorder=5))      # muslin on the ACM face
+    # stainless self-drilling (TEK) screw — through the vertical leg straight into the ACM back face, above the fillet ridge
     sc = "#8A8A92"                                        # stainless fastener
-    sy = at + (leg - at - fr - 4) * 0.5                   # mid-height of the ACM, clear above the curved fillet ridge
-    axC.add_patch(Rectangle((0, sy - 0.7), at + fr + DIBOND_T * 0.8, 1.4, fc=sc, ec="none", zorder=8))  # shank: through leg → into ACM back face
-    axC.add_patch(Rectangle((-4.5, sy - 2.1), 4.5, 4.2, fc=sc, ec=OUT, lw=0.5, zorder=9))               # pan head, outboard of the leg
-    leader(axC, at + fr + DIBOND_T * 0.5, sy, leg + 6, 25.5, "stainless self-drilling (TEK) screw — ACM → 6061 frame,\nABOVE the fillet ridge (SS: wet cyanotype zone; ~300mm pitch)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    sy = acm_z0 + acm_h * 0.5                             # mid-height of the ACM, clear above the curved fillet ridge
+    axC.add_patch(Rectangle((0, sy - 0.7), acm_x + DIBOND_T * 0.8, 1.4, fc=sc, ec="none", zorder=8))        # shank: through leg → into ACM back face
+    axC.add_patch(Rectangle((-4.5, sy - 2.1), 4.5, 4.2, fc=sc, ec=OUT, lw=0.5, zorder=9))                   # pan head, outboard of the leg
+    leader(axC, acm_x + DIBOND_T * 0.5, sy, leg + 6, 25.5, "stainless self-drilling (TEK) screw — ACM → 6061 frame,\nABOVE the fillet ridge (SS: wet cyanotype zone; ~300mm pitch)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     draw_dim_v(axC, -10, 0, leg, f"{leg:.1f}mm", fs=5.6, font=FONT, offset=7)
     draw_dim_h(axC, 0, at, leg + 8, f"{at}mm", fs=5.4, font=FONT, offset=6)
     leader(axC, at + DIBOND_T / 2, leg * 0.6, leg + 6, leg * 0.7, f"ACM (Dibond) backing {DIBOND_T}mm\n— carries flatness", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
@@ -2487,7 +2497,7 @@ def sheet15():
     # ── View A — drilling layout (both legs developed) with hole coordinates ────
     axA = fig.add_axes([0.08, 0.40, 0.74, 0.52]); axA.set_aspect("equal"); axA.axis("off")
     axA.set_xlim(-72, 2 * leg + 150); axA.set_ylim(-70, L + 40)
-    axA.add_patch(Rectangle((0, 0), 2 * leg, L, fc=C_STEEL, ec=OUT, lw=1.4, zorder=3))
+    axA.add_patch(Rectangle((0, 0), 2 * leg, L, fc="white", ec=OUT, lw=1.4, zorder=3))   # blueprint — no fill color
     axA.plot([leg, leg], [0, L], color=OUT, lw=1.0, ls=(0, (6, 3)), zorder=5)     # angle corner (fold line, not a bend)
     # J5 frame-bolt holes (frame leg = left), on the leg centerline
     j5x = leg / 2
@@ -2502,16 +2512,12 @@ def sheet15():
     # overall
     draw_dim_h(axA, 0, 2 * leg, -74, f"2 legs × {leg:.1f}mm (4in)", fs=5.8, font=FONT, above=False, offset=9)
     draw_dim_v(axA, -78, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
-    # EVERY hole located by an X (dim_h from the left datum) + Y (dim_v from the bottom datum)
+    # EVERY hole located by an X (dim_h) + Y (dim_v), placed INSIDE the panel near the holes (white plate → readable)
     j5lo, j5hi = j5[0][1], j5[1][1]
-    for i, hx in enumerate((j5x, ujx - 24, ujx, ujx + 24)):          # X of each hole, stacked below
-        draw_dim_h(axA, 0, hx, -18 - i * 13, f"{hx:.1f}", fs=5.0, font=FONT, above=False, offset=6)
-    for i, hy in enumerate((j5lo, L / 2, j5hi)):                     # Y of each hole row, stacked at left
-        draw_dim_v(axA, -20 - i * 13, 0, hy, f"{hy:.1f}", fs=5.0, font=FONT, offset=6)
-    # extension guides — tie EACH hole to its ordinate dims (down to the X band, left to the Y band)
-    for hx, hy in [(j5x, j5lo), (j5x, j5hi), (ujx - 24, L / 2), (ujx, L / 2), (ujx + 24, L / 2)]:
-        axA.plot([hx, hx], [hy, -16], color=DIM, lw=0.35, ls=(0, (2, 2)), zorder=2)   # ↓ to the X-dim band
-        axA.plot([hx, -18], [hy, hy], color=DIM, lw=0.35, ls=(0, (2, 2)), zorder=2)   # ← to the Y-dim band
+    for i, hx in enumerate((j5x, ujx - 24, ujx, ujx + 24)):          # X of each hole, stacked inside near the bottom edge
+        draw_dim_h(axA, 0, hx, 9 + i * 11, f"{hx:.1f}", fs=5.0, font=FONT, offset=5)
+    for i, hy in enumerate((j5lo, L / 2, j5hi)):                     # Y of each hole row, stacked inside near the left edge
+        draw_dim_v(axA, 9 + i * 11, 0, hy, f"{hy:.1f}", fs=5.0, font=FONT, offset=5)
     leader(axA, j5[1][0], j5hi, 2 * leg + 6, j5hi + 8, "J5: 2× M6 → 6061 frame (frame leg)", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axA, ujx, L / 2, 2 * leg + 6, L / 2 - 20, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(U-joint leg, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
     axA.text(-56, L + 26, "A — DRILLING LAYOUT  (both legs developed; datum = bottom-left, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
@@ -2666,21 +2672,21 @@ def sheet13():
     axA.add_patch(Rectangle((-9.5, CARRIAGE_PLATE_T + 3.18), 3.2, 8.3, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))  # left leg
     axA.add_patch(Rectangle((6.3, CARRIAGE_PLATE_T + 3.18), 3.2, 8.3, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))   # right leg
     axA.add_patch(Rectangle((-9.5, az + r_ax + 1), 19, 3.2, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))    # cap over the axle
-    for sx in (-11, 11):                                             # 2× M6 through each foot + the plate
+    for sx in (-13, 13):                                             # 2× M6 through each foot (OUTBOARD of the saddle leg) + the plate
         axA.add_patch(Rectangle((sx - 0.9, -4), 1.8, CARRIAGE_PLATE_T + 3.18 + 5, fc=C_PIN, ec="none", zorder=7))   # shank
         axA.add_patch(Rectangle((sx - 2.2, CARRIAGE_PLATE_T + 3.18), 4.4, 2.6, fc=C_PIN, ec=OUT, lw=0.4, zorder=8)) # head on the foot
         axA.add_patch(Rectangle((sx - 2.6, -4), 5.2, 4, fc="#6A6A72", ec=OUT, lw=0.5, zorder=8))                    # M6 nyloc under the plate
     draw_dim_v(axA, 30, 0, CARRIAGE_PLATE_T + 3.18, f"grip {CARRIAGE_PLATE_T + 3.18:.1f}mm\n(plate {CARRIAGE_PLATE_T} + saddle 3.18)", fs=5.0, font=FONT, offset=6, right=True)
     leader(axA, 0, az, -34, az + 4, f"Ø{SKATE_AXLE_OD:.0f} clevis-pin axle (B0816MQ5T6) —\nthe Delrin rollers spin on it", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axA, 7, az + r_ax + 2.6, -34, 24, "1/8×3/4in 304 flat-bar saddle (8992K794)\nwrapped over the axle END", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axA, 11, -2, 20, -9, "2× M6×20 hex 304 + M6 nyloc through the plate\n(retires M5 → shared bolt-m6x20, 91287A137)", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
-    axA.text(-34, 28, "A — AXLE-SADDLE RETENTION  (each Ø10 axle → carriage plate; 1:1)", fontsize=7.0, fontweight="bold", color=OUT, ha="left", **FONT)
+    leader(axA, 13, -2, 20, -9, "2× M6×20 hex 304 + M6 nyloc through the FEET\n(clear of the saddle legs; retires M5 → bolt-m6x20, 91287A137)", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
+    axA.text(-34, 28, "A — AXLE-SADDLE RETENTION  (end elevation; plate in section, 1:1)", fontsize=7.0, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── View B — carriage plate, flat (Yd × Z) with FULL hole coordinates ───────
     axB = fig.add_axes([0.45, 0.30, 0.42, 0.62]); axB.set_aspect("equal"); axB.axis("off")
     PW, PH = CARRIAGE_PLATE_W, CARRIAGE_PLATE_H
     axB.set_xlim(-58, PW + 74); axB.set_ylim(-44, PH + 26)
-    axB.add_patch(Rectangle((0, 0), PW, PH, fc=STRUCT2, ec=OUT, lw=1.4, zorder=3))
+    axB.add_patch(Rectangle((0, 0), PW, PH, fc="white", ec=OUT, lw=1.4, zorder=3))   # single-part dimensional view — monochrome
     cxp = PW / 2
     zK2, zL2 = PH - 24, PH - 24 - CARRIAGE_AXLE_ROW_SP     # keeper row / load row (upper)
     ax_cols = (cxp - SKATE_ROLLER_SP / 2, cxp + SKATE_ROLLER_SP / 2)

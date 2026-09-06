@@ -58,6 +58,11 @@ file** — a release must not ship without a changelog entry:
   92314A711 + nut 90591A161 + flat 98689A673 + split 91111A132, ×32), and the ACM→frame stainless TEK screw
   (90599A716, ×30) — all firm-sourced, +$51 to FILM. J1/J2 moved from tapped to through-bolt + nut, which forced
   the bolt M8×20→M8×25 for full nut engagement through the 14mm grip.
+  Review pass 4: ACM now butts the frame's vertical leg (raised above the fillet ridge); moved the axle-saddle
+  bolts clear of the saddle legs (Sheet 13); hidden-lined the far-left bracket bolts with a straddle-in-X note
+  (Sheet 11, they clear the channel in X per View C); added carriage-plate + rail-web dims and the cross-slide
+  bar section to Sheet 3. Adopted a **drawing-color convention** — multi-component cross-sections may use color
+  to distinguish parts, but single-component dimensional views are monochrome (applied to Sheets 15 + 13 View B).
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

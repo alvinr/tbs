@@ -805,7 +805,7 @@ PARTS: list[Part] = [
          "film", 6, "roll", 9.94, 9.94, "Home Depot", "Amazon", part_no="106718", url="https://www.homedepot.com/p/316372144", spec='Gorilla 30 yd × 1.88" black tape'),
     # — Wall-Seat Saddles (ICP-11; ×4 = BL-near + TL-near [left, thumb-screw drop-in] + TR-near + TR-far
     #   [right, permanent bolt]. The 2 BR ends are the walkway COMBINED plates; the 2 far-LEFT ends land on
-    #   the pivot-post floor/roof mount plates → NO saddle. Count firmed 6→4, Alvin 2026-08-19.) —
+    #   the pivot-post floor/roof mount plates → NO saddle. Count firmed 6→4 (2026-08-19).) —
     Part("wall-seat-saddle-8mm", "Wall-seat saddle 8mm A36 plate (ICP-11)", "steel-structural",
          "film", 1, "sheet", 160, 160, "Metal Supermarkets",
          dims="610×560×8mm (24×22in)",
@@ -830,7 +830,7 @@ PARTS: list[Part] = [
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
          "film", 6, "ea", 11.8, 11.8, "McMaster-Carr", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×2 left (BL-near, TL-near) + 2 spare", part_no="92581A540", url="https://www.mcmaster.com/92581A540/"),
     Part("bolt-m8-fixing", "M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)", "fasteners-hardware",
-         "film", 8, "ea", 13.91 / 50, 13.91 / 50, "McMaster-Carr", part_no="91310A535", url="https://www.mcmaster.com/91310A535/", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2\" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (Alvin 2026-08-13)."),
+         "film", 8, "ea", 13.91 / 50, 13.91 / 50, "McMaster-Carr", part_no="91310A535", url="https://www.mcmaster.com/91310A535/", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2\" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (2026-08-13)."),
     Part("nut-m8-plain", "M8×1.25 hex nut, plain SS", "fasteners-hardware",
          "film", 8, "ea", 7.53 / 100, 7.53 / 100, "McMaster-Carr", part_no="90591A161", url="https://www.mcmaster.com/90591A161/", spec="Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100."),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM

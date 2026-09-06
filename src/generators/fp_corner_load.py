@@ -159,7 +159,7 @@ def render_png(path=None):
             cc = C_OUT if r == 0 else (C_OK if "DEEP" in row[0] else C_BAD)
             axB.text(col_x[col_i], ty + r * dy, cell, color=cc,
                      fontsize=8.5, ha="left", fontweight="bold" if r == 0 else "normal", **FT)
-    axB.text(col_x[0], ty + 3.5 * dy, "✔ DECISION (Alvin 2026-08-13): bars mounted DEEP — 38.1 mm ⟂ load.\n"
+    axB.text(col_x[0], ty + 3.5 * dy, "✔ DECISION (2026-08-13): bars mounted DEEP — 38.1 mm ⟂ load.\n"
              "   SF ≈ 10, δ ≈ 0.1 mm.  FLAT (SF 1.7, fails ×2) is NOT used.",
              color=C_OK, fontsize=8.8, ha="left", va="top", fontweight="bold", **FT)
     axB.set_xlim(-70, 980); axB.set_ylim(-560, 180)

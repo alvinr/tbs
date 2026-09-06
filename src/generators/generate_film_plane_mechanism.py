@@ -1961,7 +1961,7 @@ def _corner_section(ax):
     304 SS corner plate (¼") → 6061 angle L (2") with the ACM (4mm) + muslin nested inside → muslin."""
     AL, AW = 50.8, 4.8
     ax.set_xlim(-52, 252); ax.set_ylim(-96, 108); ax.set_aspect("equal"); ax.axis("off")
-    ax.invert_xaxis(); ax.invert_yaxis()   # turn the whole section 180° (pinhole to the left, per Alvin)
+    ax.invert_xaxis(); ax.invert_yaxis()   # turn the whole section 180° (pinhole to the left)
     # X (swing) slide — 304 flat bar ¼(6) way + carriage, along X (vertical), BROKEN
     ax.add_patch(plt.Rectangle((18, -70), 6, 140, fc=C_SWING, ec=OUT, lw=1.0, zorder=5)); _hatch_xs(ax, 18, -70, 6, 140)
     for yb in (70, -70):

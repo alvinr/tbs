@@ -2416,16 +2416,14 @@ def sheet16():
     axA = fig.add_axes([0.06, 0.50, 0.88, 0.40]); axA.set_aspect("equal"); axA.axis("off")
     m = 300
     axA.set_xlim(-m, FP_W + m); axA.set_ylim(-m, FP_H + m + 120)
-    # ACM backing ghost
-    axA.add_patch(Rectangle((leg, leg), FP_W - 2 * leg, FP_H - 2 * leg, fc=C_ACM, ec="none", alpha=0.5, zorder=1))
-    # perimeter angle band (outer − inner)
+    # perimeter angle band (outer − inner)   (ACM ghost dropped — single-part view is monochrome)
     axA.add_patch(Rectangle((0, 0), FP_W, FP_H, fc="none", ec=OUT, lw=1.6, zorder=3))
     axA.add_patch(Rectangle((leg, leg), FP_W - 2 * leg, FP_H - 2 * leg, fc="none", ec=OUT, lw=1.0, ls=(0, (4, 3)), zorder=3))
     for corner in [(0, 0), (FP_W, 0), (0, FP_H), (FP_W, FP_H)]:
-        axA.add_patch(Circle(corner, 70, fc="none", ec=C_CAR, lw=1.6, zorder=5))          # weld ring
+        axA.add_patch(Circle(corner, 70, fc="none", ec=DIM, lw=1.6, zorder=5))          # weld ring (mono)
     draw_dim_h(axA, 0, FP_W, -150, f"{FP_W}mm  (rail span)", fs=6.6, font=FONT, above=False, offset=70)
     draw_dim_v(axA, -150, 0, FP_H, f"{FP_H}mm", fs=6.6, font=FONT, offset=70)
-    leader(axA, 70, FP_H - 70, 620, FP_H + 150, "4 CORNER welds (fillet, all-round) —\nthe ONLY joints; edges are single 16 ft lengths", ha="left", fs=6.0, color=C_CAR, font=FONT, bbox=LBL_BG)
+    leader(axA, 70, FP_H - 70, 620, FP_H + 150, "4 CORNER welds (fillet, all-round) —\nthe ONLY joints; edges are single 16 ft lengths", ha="left", fs=6.0, color=DIM, font=FONT, bbox=LBL_BG)
     axA.text(FP_W / 2, FP_H * 0.5,
              "2×2×⅛in 6061-T6 PLAIN angle — leg opens INBOARD (muslin capture channel).\n"
              "EXPENDABLE part: inspect annually, replace on pitting (the ACM carries flatness).\n"
@@ -2438,13 +2436,13 @@ def sheet16():
     # ── View B — welded corner detail ──────────────────────────────────────────
     axB = fig.add_axes([0.08, 0.10, 0.36, 0.34]); axB.set_aspect("equal"); axB.axis("off")
     axB.set_xlim(-30, 230); axB.set_ylim(-30, 230)
-    axB.add_patch(Rectangle((0, 0), 200, leg, fc=STRUCT2, ec=OUT, lw=1.2, zorder=3))       # horizontal member leg
-    axB.add_patch(Rectangle((0, 0), leg, 200, fc=STRUCT2, ec=OUT, lw=1.2, zorder=3))       # vertical member leg
+    axB.add_patch(Rectangle((0, 0), 200, leg, fc="white", ec=OUT, lw=1.2, zorder=3))       # horizontal member leg — single-part → monochrome
+    axB.add_patch(Rectangle((0, 0), leg, 200, fc="white", ec=OUT, lw=1.2, zorder=3))       # vertical member leg
     axB.plot([leg, 0, leg], [leg, 0, leg], color="none")
-    axB.plot([0, leg], [leg, 0], color=C_CAR, lw=2.2, zorder=6)                            # miter/weld line
+    axB.plot([0, leg], [leg, 0], color=OUT, lw=2.2, zorder=6)                              # miter/weld line
     for tx, ty in [(10, leg + 4), (leg + 4, 10)]:
-        axB.plot([tx, tx + 6], [ty, ty + 6], color=C_CAR, lw=1.0, zorder=6)
-    leader(axB, leg / 2, leg / 2, 120, 150, "MITER + fillet weld all-round\n(4 corners identical)", ha="left", fs=6.0, color=C_CAR, font=FONT, bbox=LBL_BG)
+        axB.plot([tx, tx + 6], [ty, ty + 6], color=OUT, lw=1.0, zorder=6)
+    leader(axB, leg / 2, leg / 2, 120, 150, "MITER + fillet weld all-round\n(4 corners identical)", ha="left", fs=6.0, color=DIM, font=FONT, bbox=LBL_BG)
     draw_dim_h(axB, 0, leg, -14, f"{leg:.1f}mm leg", fs=5.6, font=FONT, above=False, offset=8)
     axB.text(-30, 218, "B — WELDED CORNER", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
 

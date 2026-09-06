@@ -69,6 +69,7 @@ def render_png(path=None):
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
         from matplotlib.patches import Rectangle, Arc
+        from tbs_drawing import draw_notes
     except ImportError:
         print("  (matplotlib unavailable — skipped PNG)")
         return None
@@ -146,25 +147,33 @@ def render_png(path=None):
         axB.annotate("", xy=(x0 + w / 2, y0 - 26), xytext=(x0 + w / 2, y0 + h + 26),
                      arrowprops=dict(arrowstyle="->", color=col, lw=1.4))
         axB.text(x0 + w / 2, y0 - 46, tag, color=col, fontsize=8.5, ha="center", va="top", **FT)
-    section(20, -430, c.XSLIDE_BAR_T * 2.2, c.XSLIDE_BAR_W * 2.2, "✔ DEEP — SELECTED\n(38.1 ⟂ load)", True)
-    section(350, -430, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "✗ FLAT — not used", False)
+    section(20, -300, c.XSLIDE_BAR_T * 2.2, c.XSLIDE_BAR_W * 2.2, "✔ DEEP — SELECTED\n(38.1 ⟂ load)", True)
+    section(350, -300, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "✗ FLAT — not used", False)
 
     tbl = [("orientation", "σ (MPa)", "SF", "δ (mm)", "SF ×2 dyn"),
            ("DEEP  (strong)", f"{sig_s:.0f}", f"{SY_304/sig_s:.1f}", f"{d_s:.2f}", f"{SY_304/(2*sig_s):.1f}"),
            ("FLAT  (weak)", f"{sig_w:.0f}", f"{SY_304/sig_w:.1f}", f"{d_w:.1f}", f"{SY_304/(2*sig_w):.1f}")]
     col_x = [300, 520, 630, 730, 840]     # orientation · σ · SF · δ · SF×2
-    ty, dy = -555, -66
+    ty, dy = -420, -66
     for r, row in enumerate(tbl):
         for col_i, cell in enumerate(row):
             cc = C_OUT if r == 0 else (C_OK if "DEEP" in row[0] else C_BAD)
             axB.text(col_x[col_i], ty + r * dy, cell, color=cc,
                      fontsize=8.5, ha="left", fontweight="bold" if r == 0 else "normal", **FT)
-    axB.text(col_x[0], ty + 3.5 * dy, "✔ DECISION: bars mounted DEEP — 38.1 mm ⟂ load.\n"
-             "   SF ≈ 10, δ ≈ 0.1 mm.  FLAT (SF 1.7, fails ×2) is NOT used.",
-             color=C_OK, fontsize=8.8, ha="left", va="top", fontweight="bold", **FT)
     axB.set_xlim(-70, 980); axB.set_ylim(-560, 180)
     axB.set_title(f"C1 — per-corner load {P:.0f} N → X-slide bending (worst case)",
                   fontsize=10, color=C_OUT, **FT)
+
+    # ── standard note block (bottom-right quadrant) ──
+    axN = fig.add_subplot(gs[1, 1]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    notes = [
+        "CORNER LOAD CASE — NOTES (all values from tbs_constants; cannot drift):",
+        f"1. Moving mass {m:.1f} kg (frame + ACM + clamps + skates, weight model). Per-corner static gravity share P = W/4 = {P:.0f} N.",
+        f"2. C2 TRAVEL — the cross-slide stroke that absorbs the rigid-plane rotation arc about the plane center: Z = (FP_H/2)(1−cos {c.MAX_TILT_DEG:g}°) = {zr:.0f}mm, X = (FP_W/2)(1−cos {c.MAX_SWING_DEG:g}°) = {xr:.0f}mm — both matched by XSLIDE_Z/X_TRAVEL. Bars grown to {c.XSLIDE_Z_BAR_LEN}/{c.XSLIDE_X_BAR_LEN}mm (travel + carriage engagement).",
+        f"3. C1 BENDING — the ¼×1½in 304 flat bar as a worst-case cantilever at full extension (L = {c.XSLIDE_X_TRAVEL}mm) carrying P. DEEP (38.1mm ⟂ load): σ≈{sig_s:.0f} MPa, SF≈{SY_304/sig_s:.0f}, δ≈{d_s:.2f}mm. FLAT: SF≈{SY_304/sig_w:.1f} — fails a 2× dynamic factor.",
+        "4. DECISION: mount the cross-slide bars DEEP (strong axis). Deflection is not optically critical (flatness is carried by the ACM backing) but position error is not free.",
+    ]
+    draw_notes(axN, notes, 3, 96, 7.0, fs=8, title_fs=8.6, color=C_DIM, title_color=C_OUT, font=FT, width=96, wrap=74)
 
     fig.suptitle("SHEET 10 — FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
                  fontsize=12.5, fontweight="bold", color=C_OUT, y=0.955, **FT)

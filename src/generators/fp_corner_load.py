@@ -70,6 +70,7 @@ def render_png(path=None):
         import matplotlib.pyplot as plt
         from matplotlib.patches import Rectangle, Arc
         from tbs_drawing import draw_notes
+        from tbs_title_block import title_block
     except ImportError:
         print("  (matplotlib unavailable — skipped PNG)")
         return None
@@ -85,7 +86,7 @@ def render_png(path=None):
 
     fig = plt.figure(figsize=(15, 9)); fig.patch.set_facecolor("white")
     gs = fig.add_gridspec(2, 2, width_ratios=[1, 1.12], height_ratios=[1, 1],
-                          left=0.05, right=0.97, top=0.88, bottom=0.06, hspace=0.32, wspace=0.20)
+                          left=0.05, right=0.97, top=0.88, bottom=0.13, hspace=0.32, wspace=0.20)
     axT, axS = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[1, 0])
     axB = fig.add_subplot(gs[0, 1])
     for a in (axT, axS, axB):
@@ -175,12 +176,15 @@ def render_png(path=None):
     ]
     draw_notes(axN, notes, 3, 96, 7.0, fs=8, title_fs=8.6, color=C_DIM, title_color=C_OUT, font=FT, width=96, wrap=74)
 
-    fig.suptitle("SHEET 10 — FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
+    fig.suptitle("FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
                  fontsize=12.5, fontweight="bold", color=C_OUT, y=0.955, **FT)
     fig.text(0.5, 0.915, f"moving mass {m:.1f} kg (weight model)  ·  304 SS ¼\"×1½\" bar  ·  driven from tbs_constants  ·  "
              "DECISION: bars mounted DEEP (strong axis)", fontsize=9, color=C_DIM, ha="center", **FT)
-    fig.text(0.5, 0.02, "SHEET 10 OF 18  ·  MOVEABLE FILM PLANE  ·  TBS-FM01  ·  © 2026 Alvin Richards",
-             fontsize=8.5, color=C_DIM, ha="center", **FT)
+    # ── standard title block (bottom) — consistent with the other film sheets ──
+    ax_tb = fig.add_axes([0.03, 0.012, 0.94, 0.062]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 10 OF 18", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Corner load case (Phase 1c) — cross-slide travel verification + bending safety factor",
+                scale_note="Analysis (mm)", doc_id="TBS-FM01 · Film Plane Mechanism", height=0.75)
     fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
     plt.close(fig)
     print(f"  → {path}")

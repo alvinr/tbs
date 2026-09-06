@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,058 | $4,520 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,060 | $4,522 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,126 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,948 | $3,989 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,548** | **~$36,460** |
+| **TOTAL (base build + 50-print run)** | **~$27,550** | **~$36,462** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -234,7 +234,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M4×0.7 hex nut, 304 SS](https://www.mcmaster.com/91828A231/) (91828A231) | 24 ea | McMaster-Carr | film | $2 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 52 ea | McMaster-Carr | electrical, film, spray | $2 |
-| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 20 ea | McMaster-Carr | film, shelf | $2 |
+| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 52 ea | McMaster-Carr | film, shelf | $4 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
 | 36× #14 self-drilling TEK screws (bracket → post, J8/J9) | 36 ea | Home Depot | water | $11–$20 |
@@ -288,7 +288,7 @@ indicative low–high estimates — get quotes before ordering.
 | Half-lap hold-down screws (#14 TEK + washer) | 4 ea | Bridge Fasteners | ibc-frame | $2–$4 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,843–$2,115** |
+| **fasteners-hardware subtotal** | | | | **$1,845–$2,118** |
 
 ### plastics-sheet
 
@@ -482,7 +482,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,024 |
 | Home Depot | 58 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,817–$1,963 |
-| McMaster-Carr | 68 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,706–$1,713 |
+| McMaster-Carr | 68 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,708–$1,715 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |

@@ -789,7 +789,7 @@ PARTS: list[Part] = [
     Part("bolt-m8x20", "M8×1.25 × 20 hex bolt, 304 SS (A2-70) — cross-slide joints J1/J2", "fasteners-hardware",
          "film", 32, "ea", 11.38 / 25, 11.38 / 25, "McMaster-Carr", part_no="92314A698",
          url="https://www.mcmaster.com/92314A698/",
-         spec="J1 (skate carriage → Z-slide) + J2 (X-way → Z-carriage) — 4× M8×20 each, 2 joints/corner ×4 = 32. Threads into the tapped 304 flat-bar slide; flat + split washer, 24 N·m, Loctite 243 (Sheet 8). 304 SS A2-70 (wet cyanotype zone; no chloride → 316 unneeded). McMaster 92314A698 $11.38/pack of 25 (sourced 2026-09-06)."),
+         spec="J1 (skate carriage → Z-slide) + J2 (X-way → Z-carriage) — 4× M8×20 each, 2 joints/corner ×4 = 32. THROUGH-BOLT + M8 nut (flat washer under head, split under nut), 24 N·m, Loctite 243 (Sheet 8). 304 SS A2-70 (wet cyanotype zone; no chloride → 316 unneeded). McMaster 92314A698 $11.38/pack of 25 (sourced 2026-09-06).", note="LENGTH REVIEW — the J1 grip = 6mm carriage plate + 8mm Z-carriage wall = 14mm; a through-bolt + 2 washers + nut wants ~M8×25. The sourced 92314A698 is M8×20 (sized for the earlier tapped design) → ~4mm short. Confirm M8×25 + re-source, or verify a thinner grip."),
     Part("washer-m8-flat", "M8 flat washer, 304 SS", "fasteners-hardware",
          "film", 32, "ea", 13.59 / 50, 13.59 / 50, "McMaster-Carr", part_no="98689A673",
          url="https://www.mcmaster.com/98689A673/",
@@ -866,7 +866,7 @@ PARTS: list[Part] = [
     Part("bolt-m8-fixing", "M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)", "fasteners-hardware",
          "film", 8, "ea", 13.91 / 50, 13.91 / 50, "McMaster-Carr", part_no="91310A535", url="https://www.mcmaster.com/91310A535/", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2\" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (2026-08-13)."),
     Part("nut-m8-plain", "M8×1.25 hex nut, plain SS", "fasteners-hardware",
-         "film", 8, "ea", 7.53 / 100, 7.53 / 100, "McMaster-Carr", part_no="90591A161", url="https://www.mcmaster.com/90591A161/", spec="Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100."),
+         "film", 40, "ea", 7.53 / 100, 7.53 / 100, "McMaster-Carr", part_no="90591A161", url="https://www.mcmaster.com/90591A161/", spec="Plain hex nut — M8 right-rail fixing (×8) + J1/J2 cross-slide through-bolts (×32, 2026-09-06). Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF (matches the bolt). $7.53/pack of 100."),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
     # clamp lines (off-the-shelf nylon clamps + HDPE filler) ═══
     Part("muslin-clamp", "Nylon spring clamp, 3½″ (Pittsburgh 69289)", "fasteners-hardware",

@@ -707,7 +707,7 @@ def view_a(ax):
     ax.set_xlim(-60, 470); ax.set_ylim(110, 560); ax.set_aspect("equal"); ax.axis("off")
 
     # depth RAIL at the TOP — 3×1.5 6061 Al U-CHANNEL, web-vertical, runs in Yd (BEHIND the carriage plate)
-    ax.add_patch(plt.Rectangle((-30, 232), 420, 76, fc=C_STEEL, ec=OUT, lw=1.0, zorder=3))
+    ax.add_patch(plt.Rectangle((-30, 232), 420, 76, fc=STRUCT2, ec=OUT, lw=1.0, zorder=3))   # 6061 Al depth rail — aluminum tint
     ax.plot([-30, 390], [237, 237], color=OUT, lw=0.8, zorder=4)                     # bottom flange (running surface)
     ax.plot([-30, 390], [303, 303], color=OUT, lw=0.8, zorder=4)                     # top flange
     for bx in (-20, 380):                                                            # zigzag break symbols (rail continues in Yd)
@@ -834,8 +834,8 @@ def view_b(ax):
 
 
 def _uchan_hatch(ax, x, y, w, h, z=6):
-    _rect(ax, x, y, w, h, C_STEEL, z=z)
-    hatch_rect(ax, x, y, w, h, color="#8A93A0", hatch="///", lw=0.0)
+    _rect(ax, x, y, w, h, STRUCT2, z=z)                                  # 6061 Al U-channel — aluminum tint (not steel grey)
+    hatch_rect(ax, x, y, w, h, color="#9DB4CC", hatch="///", lw=0.0)
 
 
 def section_aa(ax):
@@ -2093,7 +2093,7 @@ def sheet11():
     axA.text(370, C_WID + WALL_T / 2, "FAR WALL", fontsize=6, ha="right", va="center", color=DIM, **FONT, zorder=7)
     axA.add_patch(Circle((PIVOT_X, PIVOT_YD), PIVOT_POST_OD / 2, fc=C_POST, ec=OUT, lw=1.2, zorder=3))
     axA.text(PIVOT_X, PIVOT_YD, f"Ø{PIVOT_POST_OD:.0f}\nPIVOT\nPOST", fontsize=5, ha="center", va="center", color=OUT, **FONT, zorder=6)
-    axA.add_patch(Rectangle((cx - web / 2, 2228), web, (C_WID - fl_t) - 2228, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+    axA.add_patch(Rectangle((cx - web / 2, 2228), web, (C_WID - fl_t) - 2228, fc=STRUCT2, ec=OUT, lw=1.2, zorder=3))   # 6061 Al film rail — aluminum tint
     axA.text(cx, 2244, "FILM\nRAIL", fontsize=5, ha="center", va="center", color=OUT, **FONT, zorder=6)
     axA.add_patch(Rectangle((cx - bw / 2, C_WID - fl_t), bw, fl_t, fc=C_PL, ec=OUT, lw=1.2, zorder=4))       # flange (interior)
     axA.add_patch(Rectangle((cx - bw / 2, C_WID + WALL_T), bw, ext_t, fc=C_PL, ec=OUT, lw=1.2, zorder=4))    # exterior plate
@@ -2121,7 +2121,7 @@ def sheet11():
         ax.plot([2150, 2436], [edge_z, edge_z], color=OUT, lw=1.2, ls=(0, (6, 3)) if edge_lbl == "CEILING" else "-")
         ax.text(2185, edge_z + (-18 if edge_lbl == "CEILING" else 14), edge_lbl, fontsize=5.2, ha="left", color=DIM, **FONT)
         fz0, fh = botf - 10, web + 20
-        ax.add_patch(Rectangle((2168, botf), (C_WID - fl_t) - 2168, web, fc=C_STEEL, ec=OUT, lw=1.0, zorder=5))   # rail (broken off left)
+        ax.add_patch(Rectangle((2168, botf), (C_WID - fl_t) - 2168, web, fc=STRUCT2, ec=OUT, lw=1.0, zorder=5))   # 6061 Al rail — aluminum tint (broken off left)
         ax.add_patch(Rectangle((C_WID - fl_t, fz0), fl_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))                 # flange (interior)
         ax.add_patch(Rectangle((C_WID + WALL_T, fz0), ext_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))             # exterior plate
         # The M12 bolts run in Yd through the flange plate + wall; at X222/X298 they STRADDLE the channel
@@ -2151,9 +2151,9 @@ def sheet11():
     axC.add_patch(Rectangle((120, rz0 - 40), 202, (rz1 + 40) - (rz0 - 40), fc="#EFEFF3", ec="none", zorder=1))  # flange plate behind (ghost band)
     axC.text(315, rz1 + 14, "flange plate (behind)", fontsize=4.6, ha="right", color=DIM, **FONT, zorder=2)
     # rail U-channel cross-section (web at back, flanges open +X toward film)
-    hatch_rect(axC, wx0, rz0, wx1 - wx0, rz1 - rz0)              # web
-    hatch_rect(axC, wx0, rz1 - 5, fx1 - wx0, 5)                  # top flange
-    hatch_rect(axC, wx0, rz0, fx1 - wx0, 5)                      # bottom flange
+    hatch_rect(axC, wx0, rz0, wx1 - wx0, rz1 - rz0, color="#9DB4CC")   # web — 6061 Al aluminum tint
+    hatch_rect(axC, wx0, rz1 - 5, fx1 - wx0, 5, color="#9DB4CC")       # top flange
+    hatch_rect(axC, wx0, rz0, fx1 - wx0, 5, color="#9DB4CC")           # bottom flange
     axC.text(fx1 + 3, (rz0 + rz1) / 2, "RAIL\nU-channel\n(butts plate)", fontsize=4.8, ha="left", va="center", color=OUT, **FONT, zorder=6)
     # Ø89 pivot post (ghost, to the −X side)
     axC.add_patch(Circle((PIVOT_X, (rz0 + rz1) / 2), PIVOT_POST_OD / 2, fc=C_POST, ec=OUT, lw=0.8, ls=(0, (3, 2)), zorder=2))

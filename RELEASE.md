@@ -73,6 +73,9 @@ file** — a release must not ship without a changelog entry:
   hidden behind the now-white plate, which read as holes "moving"); and stripped the muslin-clamp sheet to its
   spec notes — dropped the redundant section panel and **relocated the perimeter clamp-layout to a standalone
   image in the Operating Manual §2.4** (new `film-plane-muslin-clamp-layout.png`).
+  Aluminum-color standardization: the 6061 Al U-channel depth rail was drawn steel-grey on the mechanism
+  cross-sections (Sheets 3 + 11) — now the aluminum tint (STRUCT2) everywhere it appears, so the Al rail reads
+  distinct from the grey steel parts (post, seat, flange, corner plate), consistent with Sheets 13/18.
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

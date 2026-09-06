@@ -68,6 +68,11 @@ file** — a release must not ship without a changelog entry:
   fastener schedule moved to Sheet 12, and the fab sheets shifted to 13–18 (depth rail, skate, cross-slide bars,
   corner angle, frame, wall-seat saddle). Renumbered every function, title block, cross-reference, report bullet,
   and gallery caption to match.
+  Review pass 5: fixed the drilled-hole aspect compensation (was stretching the wrong way — cross-slide bar
+  holes now render circular); restored the hole→dim extension guides on the corner-angle sheet (they'd been
+  hidden behind the now-white plate, which read as holes "moving"); and stripped the muslin-clamp sheet to its
+  spec notes — dropped the redundant section panel and **relocated the perimeter clamp-layout to a standalone
+  image in the Operating Manual §2.4** (new `film-plane-muslin-clamp-layout.png`).
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

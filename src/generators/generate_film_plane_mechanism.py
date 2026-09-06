@@ -1440,90 +1440,53 @@ def sheet6():
         FP_ANGLE_LEG, FP_ANGLE_T, DIBOND_T, MUSLIN_T,
         CLAMP_SPACING, CLAMP_FILLER_D, CLAMP_N_TOTAL, CLAMP_N_HORIZ, CLAMP_N_VERT,
     )
-
-    C_CLAMP  = "#D4522A"   # nylon spring clamp (burnt orange)
-    C_MUSLIN = "#D4B896"   # muslin fabric
-    C_ACM    = "#E4E0D6"   # ACM backing board
-    C_FILL   = "#7FBF8A"   # inert HDPE filler (green)
-    C_PAD    = "#333333"   # clamp swivel pad
-
-    fig = plt.figure(figsize=(16, 12))
+    fig = plt.figure(figsize=(16, 9))
     fig.patch.set_facecolor(BG)
 
-    # ── PANEL A: section through a clamped edge — the sandwich the clamp bites ──
-    ax = fig.add_axes([0.05, 0.42, 0.44, 0.50])
-    ax.set_facecolor(BG); ax.axis("off"); ax.set_aspect("equal")
-    ax.set_xlim(-40, 96); ax.set_ylim(-42, 74)
-
-    T, FILL, ACM = FP_ANGLE_T, CLAMP_FILLER_D, DIBOND_T
-    H = 54                         # section height shown (mm)
-    # 3 solid layers across the edge (outboard → inboard/pinhole): ALU | HDPE | ACM,
-    # + a thin muslin skin on the inboard face. Widths sum to the 2" leg (50.8mm).
-    xs = 0.0
-    for label, w, fc in (("ALU", T, C_FRAME), ("HDPE FILLER", FILL, C_FILL), ("ACM", ACM, C_ACM)):
-        ax.add_patch(Rectangle((xs, 0), w, H, fc=fc, ec=ANNO, lw=1.3, zorder=4))
-        if w > 20:
-            ax.text(xs + w / 2, H / 2, label, ha="center", va="center",
-                    fontsize=6, color=ANNO, **FONT, zorder=6)
-        xs += w
-    x_leg = xs                     # ≈ 50.8 (= frame leg)
-    ax.add_patch(Rectangle((x_leg, 0), 1.6, H, fc=C_MUSLIN, ec=ANNO, lw=1.0, zorder=5))
-    leader(ax, x_leg + 1.6, H * 0.72, x_leg + 18, H + 4, "MUSLIN\n(pinhole face)",
-           color="#8a6d3b", fs=5.2, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, T / 2, 6, -14, -20, "2×2 ALU\nupstand leg",
-           color=C_FRAME, fs=5.2, ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, x_leg - ACM / 2, 6, x_leg + 8, -20, "ACM\nbacking",
-           color=DIM, fs=5.2, ha="left", va="center", arrow_style="-|>", font=FONT)
-
-    # nylon spring clamp — an inverted-U over the edge: swivel pads on the two faces
-    jy = H + 5                     # spine height
-    ax.add_patch(Rectangle((-7, jy), x_leg + 7 + 9, 5, fc=C_CLAMP, ec=ANNO, lw=1.2, zorder=7))   # spine
-    for jx in (-7, x_leg + 2):
-        ax.add_patch(Rectangle((jx, 6), 5, jy - 6, fc=C_CLAMP, ec=ANNO, lw=1.2, zorder=7))       # jaw arm
-        ax.add_patch(Rectangle((jx - 1, 4), 7, 3.5, fc=C_PAD, ec=ANNO, lw=0.8, zorder=8))         # swivel pad
-    ax.plot([-4.5, -4.5], [jy + 5, jy + 20], color=C_CLAMP, lw=2.4, solid_capstyle="round", zorder=7)
-    ax.plot([x_leg + 4.5, x_leg + 4.5], [jy + 5, jy + 20], color=C_CLAMP, lw=2.4, solid_capstyle="round", zorder=7)
-    leader(ax, x_leg / 2, jy + 2.5, x_leg / 2 + 4, jy + 22,
-           "3½″ NYLON SPRING CLAMP\n(fiberglass + swivel pads — inert)",
-           color=C_CLAMP, fs=5.4, ha="center", va="bottom", arrow_style="-|>", font=FONT)
-
-    # dimensions
-    draw_dim_h(ax, T, T + FILL, -8, f"{FILL:g}mm HDPE FILLER", offset=3, fs=6, font=FONT)
-    draw_dim_h(ax, 0, x_leg, -26, f"{FP_ANGLE_LEG:g}mm FRAME LEG", offset=3, fs=6, font=FONT)
-    ax.text(x_leg / 2, -37, "clamp opens ≥ ~55mm (leg + ACM + muslin)",
-            ha="center", va="center", fontsize=5.6, color=DIM, **FONT)
-    ax.annotate("", xy=(x_leg + 30, H / 2), xytext=(x_leg + 16, H / 2),
-                arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.3))
-    ax.text(x_leg + 23, H / 2 + 4, "TO PINHOLE", ha="center", va="bottom", fontsize=6, color=DIM, **FONT)
-
-    ax.text(x_leg / 2, 68, "PANEL A — SECTION: THE CLAMP BITES A SOLID FULL-DEPTH SANDWICH",
-            ha="center", va="top", fontsize=6.4, color=ANNO, fontweight="bold", **FONT)
-    ax.text(x_leg / 2, 63.5, "AXES IN mm · inert HDPE filler packs the L channel so the clamp grips solid",
-            ha="center", va="top", fontsize=5.0, color=DIM, **FONT)
-
-    # ── PANEL B: clamp notes (top-right) ──
-    ax_b = fig.add_axes([0.55, 0.48, 0.42, 0.44])
+    # ── Muslin-clamp SPEC (the clamp is an off-the-shelf part; the section is covered by
+    #    the frame member-section on Sheet 17, and the perimeter clamp LAYOUT — an assembly
+    #    step — lives in the Operating Manual, not this design sheet) ──
+    ax_b = fig.add_axes([0.07, 0.16, 0.86, 0.74])
     ax_b.set_facecolor(BG); ax_b.set_xlim(0, 100); ax_b.set_ylim(0, 100); ax_b.axis("off")
     notes = [
-        "MUSLIN CLAMP NOTES:",
+        "MUSLIN CLAMP — OFF-THE-SHELF SPEC:",
         f"1. {CLAMP_N_TOTAL} off-the-shelf NYLON spring clamps (Pittsburgh 69289 — fiberglass + swivel pads) at {CLAMP_SPACING}mm centers. Inert: no corrosion in the cyanotype splash zone.",
         "2. An inert HDPE FILLER STRIP packs the open 2×2 ALU-angle L channel so the clamp bites a solid full-depth edge instead of collapsing into the void.",
-        f"3. Filler depth = {CLAMP_FILLER_D:g}mm  (frame leg {FP_ANGLE_LEG:g} − ACM {DIBOND_T} − muslin {MUSLIN_T} − angle {FP_ANGLE_T}).",
-        "4. The clamp opens over the frame leg + ACM + muslin (~55mm), so a ≥3″ clamp — the #2 (2″) is too tight.",
-        f"5. TOP edge + 2 SIDE edges clamped ({CLAMP_N_HORIZ} + 2×{CLAMP_N_VERT}). The BOTTOM (walkway-facing) edge is UNCLAMPED — no clearance to the raised walkway deck (also keeps the swing/tilt envelope clear); the muslin is secured on the other three edges.",
-        "6. Replaces the custom through-bolted bracket + torsion-spring + neoprene jaw (2026-07-22): no fabrication, hand clip on/off, chemistry-safe.",
+        f"3. Filler depth = {CLAMP_FILLER_D:g}mm  (frame leg {FP_ANGLE_LEG:g} − ACM {DIBOND_T} − muslin {MUSLIN_T} − angle {FP_ANGLE_T}). The clamp opens over the frame leg + ACM + muslin (~55mm), so a ≥3″ clamp — the #2 (2″) is too tight.",
+        f"4. TOP edge + 2 SIDE edges clamped ({CLAMP_N_HORIZ} + 2×{CLAMP_N_VERT}). The BOTTOM (walkway-facing) edge is UNCLAMPED — no clearance to the raised walkway deck (also keeps the swing/tilt envelope clear); the muslin is secured on the other three edges.",
+        "5. Replaces the custom through-bolted bracket + torsion-spring + neoprene jaw (2026-07-22): no fabrication, hand clip on/off, chemistry-safe.",
+        "6. The captured-edge SECTION (angle + ACM + muslin) is on Sheet 17 View C; the perimeter CLAMP LAYOUT (where each clamp goes) is an assembly step — see the Operating Manual.",
     ]
-    draw_notes(ax_b, notes, 2, 96, spacing=4.6, fs=7, title_fs=7.5,
-               color=DIM, title_color=ANNO, font=FONT, width=90, wrap=95)
+    draw_notes(ax_b, notes, 2, 96, spacing=5.4, fs=8, title_fs=8.5,
+               color=DIM, title_color=ANNO, font=FONT, width=92, wrap=112)
 
-    # ── PANEL C: edge layout — 3 clamped edges (bottom omitted) ──
-    ax_c = fig.add_axes([0.05, 0.06, 0.90, 0.30])
+    ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.06])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 6 OF 18",
+                drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Muslin clamp — off-the-shelf nylon spring clamp + HDPE filler (spec; layout in the Operating Manual)",
+                scale_note="SPEC NOTES",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
+
+
+def muslin_clamp_layout():
+    """Standalone perimeter clamp-layout schematic for the OPERATING MANUAL — where each of
+    the muslin clamps goes (top + 2 sides at 150mm centers; bottom edge unclamped). Relocated
+    off film-plane Sheet 6 (it's an assembly step, not a design detail)."""
+    from tbs_constants import CLAMP_SPACING, CLAMP_N_TOTAL, CLAMP_N_HORIZ, CLAMP_N_VERT
+    C_CLAMP = "#D4522A"
+    fig = plt.figure(figsize=(11, 6)); fig.patch.set_facecolor(BG)
+    ax_c = fig.add_axes([0.04, 0.10, 0.92, 0.74])
     ax_c.set_facecolor(BG); ax_c.axis("off"); ax_c.set_aspect("equal")
-    W, Hh = 120.0, 56.0            # schematic plane (not to scale)
-    ax_c.set_xlim(-16, W + 16); ax_c.set_ylim(-22, Hh + 18)
+    W, Hh = 120.0, 56.0
+    ax_c.set_xlim(-16, W + 16); ax_c.set_ylim(-24, Hh + 22)
     ax_c.add_patch(Rectangle((0, 0), W, Hh, fc="#EEF2F6", ec=ANNO, lw=1.4, zorder=3))
     ax_c.text(W / 2, Hh / 2, "MUSLIN / IMAGE PLANE\n(ACM backing behind)", ha="center", va="center",
-              fontsize=6, color=DIM, **FONT, zorder=4)
+              fontsize=7, color=DIM, **FONT, zorder=4)
 
     def _clamps(x0, y0, x1, y1, n):
         for i in range(n):
@@ -1532,29 +1495,16 @@ def sheet6():
             ax_c.add_patch(Rectangle((cx - 1.5, cy - 1.5), 3, 3, fc=C_CLAMP, ec=ANNO, lw=0.6, zorder=6))
 
     nH = min(CLAMP_N_HORIZ, 16); nV = min(CLAMP_N_VERT, 8)
-    _clamps(0, Hh, W, Hh, nH)      # top
-    _clamps(0, 0, 0, Hh, nV)       # left
-    _clamps(W, 0, W, Hh, nV)       # right
+    _clamps(0, Hh, W, Hh, nH); _clamps(0, 0, 0, Hh, nV); _clamps(W, 0, W, Hh, nV)
     ax_c.plot([0, W], [0, 0], color="#B03030", lw=2.4, ls=(0, (5, 3)), zorder=5)
-    ax_c.text(W / 2, -11, "BOTTOM EDGE — UNCLAMPED  (walkway clearance / swing-tilt envelope)",
-              ha="center", va="center", fontsize=6, color="#B03030", fontweight="bold", **FONT)
-    ax_c.text(W / 2, Hh + 10,
-              f"PANEL C — CLAMP LAYOUT: TOP + 2 SIDES AT {CLAMP_SPACING}mm CENTERS ({CLAMP_N_TOTAL} CLAMPS)",
-              ha="center", va="center", fontsize=7, color=ANNO, fontweight="bold", **FONT)
-
-    # ── Title block ──
-    ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.05])
-    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 18",
-                drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Muslin clamp detail — nylon spring clamp + HDPE filler at the ALU frame edge",
-                scale_note="SCHEMATIC — SEE INDIVIDUAL PANELS",
-                doc_id="TBS-FM01 · Film Plane Mechanism",
-                height=0.75)
-
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    ax_c.text(W / 2, -12, "BOTTOM EDGE — UNCLAMPED  (walkway clearance / swing-tilt envelope)",
+              ha="center", va="center", fontsize=7, color="#B03030", fontweight="bold", **FONT)
+    ax_c.text(W / 2, Hh + 12,
+              f"MUSLIN CLAMP LAYOUT — TOP + 2 SIDES AT {CLAMP_SPACING}mm CENTERS ({CLAMP_N_TOTAL} CLAMPS)",
+              ha="center", va="center", fontsize=8, color=ANNO, fontweight="bold", **FONT)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-muslin-clamp-layout.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-muslin-clamp-layout.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2516,6 +2466,10 @@ def sheet16():
         draw_dim_h(axA, 0, hx, 9 + i * 11, f"{hx:.1f}", fs=5.0, font=FONT, offset=5)
     for i, hy in enumerate((j5lo, L / 2, j5hi)):                     # Y of each hole row, stacked inside near the left edge
         draw_dim_v(axA, 9 + i * 11, 0, hy, f"{hy:.1f}", fs=5.0, font=FONT, offset=5)
+    # extension guides — tie EACH hole to its inside dims (↓ to the X band, ← to the Y band) so the hole↔dim link is unambiguous
+    for hx, hy in [(j5x, j5lo), (j5x, j5hi), (ujx - 24, L / 2), (ujx, L / 2), (ujx + 24, L / 2)]:
+        axA.plot([hx, hx], [hy, 6], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)   # above the white plate (zorder 3)
+        axA.plot([hx, 6], [hy, hy], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
     leader(axA, j5[1][0], j5hi, 2 * leg + 6, j5hi + 8, "J5: 2× M6 → 6061 frame (frame leg)", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axA, ujx, L / 2, 2 * leg + 6, L / 2 - 20, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(U-joint leg, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
     axA.text(-56, L + 26, "A — DRILLING LAYOUT  (both legs developed; datum = bottom-left, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
@@ -2556,9 +2510,9 @@ def _round_hole(ax, cx, cy, r, color=None):
     x0, x1 = ax.get_xlim(); y0, y1 = ax.get_ylim()
     xpi = (x1 - x0) / (bb.width * fig.get_figwidth())
     ypi = (y1 - y0) / (bb.height * fig.get_figheight())
-    k = ypi / xpi                                   # >1 ⇒ x is compressed, widen the marker in x
-    ax.add_patch(Ellipse((cx, cy), 2 * r * k, 2 * r, fill=False, ec=color, lw=1.1, zorder=5))
-    ax.plot([cx - r * k * 1.4, cx + r * k * 1.4], [cy, cy], color=color, lw=0.5, zorder=6)
+    k = ypi / xpi                                   # >1 ⇒ x LESS compressed → narrow the x marker to render circular
+    ax.add_patch(Ellipse((cx, cy), 2 * r / k, 2 * r, fill=False, ec=color, lw=1.1, zorder=5))
+    ax.plot([cx - r / k * 1.4, cx + r / k * 1.4], [cy, cy], color=color, lw=0.5, zorder=6)
     ax.plot([cx, cx], [cy - r * 1.4, cy + r * 1.4], color=color, lw=0.5, zorder=6)
 
 
@@ -2836,6 +2790,7 @@ if __name__ == "__main__":
     sheet4()
     sheet5()
     sheet6()
+    muslin_clamp_layout()
     sheet7()
     sheet8()
     sheet9()

@@ -2340,7 +2340,7 @@ def sheet18():
         f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} through the back-plate into the wall, backed by the exterior spreader plate (corrugated wall pulls through under load).",
         "4. The RIGHT seats (TR) are permanent; the LEFT seats (BL/TL) take the transport drop-in rails and are released "
         "for lift-out (Sheet 4).",
-    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+    ], 20, 98, 4.6, fs=6.2, title_fs=6.8, color=DIM, width=60, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 18 OF 18", drawing_title="MOVEABLE FILM PLANE",

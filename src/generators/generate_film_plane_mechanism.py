@@ -2099,8 +2099,8 @@ def sheet8():
         "arc-travel of a swing (~260mm). Both are 304 flat bar on UHMW pads with a gib; the gib drag "
         "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
         "FIVE JOINTS make the chain (rail→frame, top-down — the full stack is on Sheet 3, View A):",
-        "  J1  Z-way → carriage-plate face ...... 4x M8x20 A2-70 SS THROUGH-BOLT + nut · 24 N·m · flat+split washer · Loctite 243",
-        "  J2  X-way → Z-carriage ............... 4x M8x20 A2-70 SS THROUGH-BOLT + nut · 24 N·m · flat+split washer · Loctite 243",
+        "  J1  Z-way → carriage-plate face ...... 4x M8x25 A2-70 SS THROUGH-BOLT + nut · 24 N·m · flat+split washer · Loctite 243",
+        "  J2  X-way → Z-carriage ............... 4x M8x25 A2-70 SS THROUGH-BOLT + nut · 24 N·m · flat+split washer · Loctite 243",
         f"  J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint KEYWAY bore .. 3/32×3/64 KEY + set screw ~2.5 N·m",
         "  J4  U-joint 2nd bore → keyed 3/8\" stub → 304 corner plate .. 3/32×3/64 KEY + set screw ~2.5 N·m (both stubs)",
         "  J5  6061 frame angle → 304 corner plate .. 4x M6x16 A2-70 SS (2/leg) · 10 N·m · flat washer · tapped in the angle · Loctite 243",

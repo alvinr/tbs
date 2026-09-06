@@ -2462,10 +2462,14 @@ def sheet16():
     draw_dim_v(axA, -10, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
     # EVERY hole located by an X (dim_h) + Y (dim_v), placed INSIDE the panel near the holes (white plate → readable)
     j5lo, j5hi = j5[0][1], j5[1][1]
-    for i, hx in enumerate((j5x, ujx - 24, ujx, ujx + 24)):          # X of each hole, stacked inside near the bottom edge
-        draw_dim_h(axA, 0, hx, 9 + i * 11, f"{hx:.1f}mm", fs=5.0, font=FONT, offset=5)
-    for i, hy in enumerate((j5lo, L / 2, j5hi)):                     # Y of each hole row, stacked inside near the left edge
-        draw_dim_v(axA, 9 + i * 11, 0, hy, f"{hy:.1f}mm", fs=5.0, font=FONT, offset=5)
+    # One explicit call per hole so each dim can be nudged independently (3rd arg = stack offset from the bottom/left edge).
+    draw_dim_h(axA, 0, j5x,      9,  f"{j5x:.1f}mm",      fs=5.0, font=FONT, offset=5)   # J5 X (frame leg)
+    draw_dim_h(axA, 0, ujx - 24, 20, f"{ujx - 24:.1f}mm", fs=5.0, font=FONT, offset=5)   # J4 left-mount X
+    draw_dim_h(axA, 0, ujx,      31, f"{ujx:.1f}mm",      fs=5.0, font=FONT, offset=5)   # J4 stub X
+    draw_dim_h(axA, 0, ujx + 24, 42, f"{ujx + 24:.1f}mm", fs=5.0, font=FONT, offset=5)   # J4 right-mount X
+    draw_dim_v(axA, 9,  0, j5lo,  f"{j5lo:.1f}mm",  fs=5.0, font=FONT, offset=5)          # J5 low Y
+    draw_dim_v(axA, 20, 0, L / 2, f"{L / 2:.1f}mm", fs=5.0, font=FONT, offset=5)          # J4 centerline Y
+    draw_dim_v(axA, 31, 0, j5hi,  f"{j5hi:.1f}mm",  fs=5.0, font=FONT, offset=5)          # J5 high Y
     # extension guides — tie EACH hole to its inside dims (↓ to the X band, ← to the Y band) so the hole↔dim link is unambiguous
     for hx, hy in [(j5x, j5lo), (j5x, j5hi), (ujx - 24, L / 2), (ujx, L / 2), (ujx + 24, L / 2)]:
         axA.plot([hx, hx], [hy, 6], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)   # above the white plate (zorder 3)

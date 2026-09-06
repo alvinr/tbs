@@ -986,7 +986,7 @@ def view_c(ax):
     for yy in (-3.5, -1.75, 0.0, 1.75, 3.5, 5.25):
         ax.plot([33.2, 38.8], [yy, yy], color=OUT, lw=0.4, zorder=9)                        # thread crests full length — NO head
     ax.add_patch(Circle((36, -4), 1.5, fc="#2A2A2E", ec=OUT, lw=0.5, zorder=10))            # hex-socket drive recess (outer end, flush)
-    leader(ax, 44, 20, 68, 48, f"304 flat-bar WAY ¼×1½in ({XSLIDE_BAR_T:.2f}×{XSLIDE_BAR_W:.1f}mm)\n— Z tilt / X swing (true section + dims: Sheet 14)",
+    leader(ax, 44, 20, 68, 48, f"304 flat-bar WAY ¼×1½in ({XSLIDE_BAR_T:.2f}×{XSLIDE_BAR_W:.1f}mm)\n— Z tilt / X swing (true section + dims: Sheet 15)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, 25.5, 68, 36, f"UHMW pad {XSLIDE_UHMW_T:.1f}mm — self-lube, DRY (both faces)",
            ha="left", fs=5.8, color="#8A6A2A", font=FONT, bbox=LBL_BG)
@@ -1759,9 +1759,9 @@ def sheet7():
             f"(none on bottom: walkway / swing clearance)",
             color=C_T3, fontsize=5.5, ha="center", va="center", **FONT, zorder=9)
 
-    # ── Corner-joint note (full fabrication detail on Sheet 16) ─────────────────
+    # ── Corner-joint note (full fabrication detail on Sheet 17) ─────────────────
     ax.text(fp_right - 1520, fp_bot + 520,
-            "CORNER JOINT (typ. 4): 45° miter, TIG fillet both legs\n— fabrication detail on Sheet 16 (frame weldment)",
+            "CORNER JOINT (typ. 4): 45° miter, TIG fillet both legs\n— fabrication detail on Sheet 17 (frame weldment)",
             color=C_FLAT, fontsize=6, ha="left", va="top", fontweight="bold", **FONT, zorder=12)
 
     # ── Leaders ───────────────────────────────────────────────────────────────
@@ -1947,7 +1947,7 @@ def _corner_elevation(ax):
     draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}mm", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8mm)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 75, 120, 175, 150, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_W/2:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_H:.0f}mm + drilled; U-joint mount (Sheet 15)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 75, 120, 175, 150, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_W/2:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_H:.0f}mm + drilled; U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden SSNBUJ750x3/8KB", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, 40, 150, 15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per leg (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the plate back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
@@ -2249,21 +2249,21 @@ def sheet11():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 18 — CORNER ASSEMBLY (EXPLODED) + FASTENER SCHEDULE
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet18():
+def sheet12():
     reset_label_registry()
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
 
     # ── View A — exploded corner stack (balloons keyed to Sheets 3, 9, 12–16) ───
     axA = fig.add_axes([0.05, 0.30, 0.44, 0.60]); axA.set_xlim(0, 100); axA.set_ylim(0, 100); axA.axis("off")
     stack = [
-        ("1", "Depth rail (3×1½ U-channel)", "Sheet 12", STRUCT2, 92),
-        ("2", "Acetal skate + carriage plate", "Sheet 13", C_CAR, 79),
+        ("1", "Depth rail (3×1½ U-channel)", "Sheet 13", STRUCT2, 92),
+        ("2", "Acetal skate + carriage plate", "Sheet 14", C_CAR, 79),
         ("3", "Cam rail-brake ×3", "Sheet 3", C_CLAMP, 66),
-        ("4", "Z (tilt) slide", "Sheet 14", C_TILT, 53),
-        ("5", "X (swing) slide", "Sheet 14", C_SWING, 40),
+        ("4", "Z (tilt) slide", "Sheet 15", C_TILT, 53),
+        ("5", "X (swing) slide", "Sheet 15", C_SWING, 40),
         ("6", "U-joint (Belden)", "Sheet 9", C_UJ, 27),
-        ("7", "304 corner plate", "Sheet 15", C_STEEL, 16),
-        ("8", "6061 frame corner", "Sheet 16", C_FRAME, 6),
+        ("7", "304 corner plate", "Sheet 16", C_STEEL, 16),
+        ("8", "6061 frame corner", "Sheet 17", C_FRAME, 6),
     ]
     for num, name, sh, col, y in stack:
         axA.add_patch(Rectangle((30, y - 4), 26, 8, fc=col, ec=OUT, lw=1.1, zorder=4))
@@ -2273,7 +2273,7 @@ def sheet18():
         axA.text(60, y - 3.4, sh, fontsize=5.0, ha="left", va="center", color="#777", **FONT, zorder=5)
     for i in range(len(stack) - 1):
         axA.plot([43, 43], [stack[i][4] - 4, stack[i + 1][4] + 4], color=OUT, lw=0.7, ls=(0, (2, 2)), zorder=3)
-    axA.text(0, 99, "A — CORNER ASSEMBLY  (exploded; wall-seat saddle = Sheet 17)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
+    axA.text(0, 99, "A — CORNER ASSEMBLY  (exploded; wall-seat saddle = Sheet 18)", fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
     axA.text(18, 0, "Positioning: roll skate to depth → set Z/X slides → throw cam clamp → U-joint twist-lock",
              fontsize=5.8, ha="left", color=DIM, **FONT)
 
@@ -2287,12 +2287,12 @@ def sheet18():
     axB.plot([0, 100], [hdr_y - 2, hdr_y - 2], color=OUT, lw=0.8)
     rows = [
         ("M4×0.7", "cam-clamp base → mount tab", "6", "304", "Sheet 3"),
-        ("M6×20", "axle-saddle retention", "8", "304", "Sheet 13"),
+        ("M6×20", "axle-saddle retention", "8", "304", "Sheet 14"),
         ("M6", "J5 corner plate → 6061 frame", "2", "304", "25.4mm · Sh 15"),
-        ("M8", "J1 carriage → Z-slide", "4", "304", "Sheet 13/15"),
+        ("M8", "J1 carriage → Z-slide", "4", "304", "Sheet 14/15"),
         ("3/8 key + set screw", "U-joint stub → bore", "2+1", "304", "Sheet 9"),
         ("M6 (4040N12)", "U-joint input → X-slide", "2", "304", "Sheet 9"),
-        ("M12", "wall-seat saddle → wall", "4/seat", "galv", "Sheet 17"),
+        ("M12", "wall-seat saddle → wall", "4/seat", "galv", "Sheet 18"),
     ]
     ry = hdr_y - 8
     for fastener, joint, qty, grade, ref in rows:
@@ -2311,20 +2311,20 @@ def sheet18():
              fontsize=5.2, color=DIM, ha="left", **FONT)
 
     ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 18 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 12 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner assembly (exploded) + fastener schedule — the build sequence + every corner fastener",
                 scale_note="Schematic",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet18.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet12.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet18.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet12.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 17 — WALL-SEAT SADDLE (ICP-11) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet17():
+def sheet18():
     reset_label_registry()
     C_BOLT = "#3A3A42"
     pw, proj = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ
@@ -2393,20 +2393,20 @@ def sheet17():
     ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 17 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 18 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Wall-seat saddle (ICP-11, ×4, A36) — fabrication detail: assembly, 8/10mm cut pieces, weld + M12 mount",
                 scale_note="A/B 1:1 (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet17.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet18.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet17.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet18.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 16 — FILM-PLANE FRAME WELDMENT (2×2×⅛ 6061 angle) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet16():
+def sheet17():
     reset_label_registry()
     C_BOLT = "#3A3A42"
     leg, at = FP_ANGLE_LEG, FP_ANGLE_T
@@ -2473,20 +2473,20 @@ def sheet16():
     # ── notes ──────────────────────────────────────────────────────────────────
     ax_n = fig.add_axes([0.06, 0.075, 0.90, 0.015]); ax_n.axis("off")   # spacer
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 16 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 17 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle=f"Film-plane frame weldment ({FP_W}×{FP_H}mm, 2×2×⅛in 6061 angle) — elevation, corner weld, member section",
                 scale_note="A to scale · B/C enlarged (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet16.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet17.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet16.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet17.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 15 — 304 CORNER PLATE (L-bracket) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet15():
+def sheet16():
     reset_label_registry()
     leg, L, t = CORNER_PLATE_W / 2, CORNER_PLATE_H, CORNER_PLATE_T   # 4in leg · 6in length · 1/4in
     edge, sp = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP
@@ -2536,14 +2536,14 @@ def sheet15():
     ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 15 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 16 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="304 corner angle (stock 4×4×¼in, ×4) — fabrication detail: drilling layout + hole coordinates",
                 scale_note="A/B 1:1 (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet15.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet16.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet15.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet16.png")
 
 
 def _round_hole(ax, cx, cy, r, color=None):
@@ -2565,7 +2565,7 @@ def _round_hole(ax, cx, cy, r, color=None):
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 14 — CROSS-SLIDE STACK (Z + X) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet14():
+def sheet15():
     reset_label_registry()
     C_BOLT = "#3A3A42"
     bw, bt = XSLIDE_BAR_W, XSLIDE_BAR_T
@@ -2634,25 +2634,25 @@ def sheet14():
         "≈1.7 flat, which fails a 2× dynamic factor).",
         "3. Each bar rides on UHMW self-lube pads with a brass-tip adjustable GIB taking up the clearance; the gib "
         "drag also holds the gravity (Z) axis while the cam clamp is thrown.",
-        "4. Z carries X (stacked orthogonally): the Z-slide carriage bolts to the skate (J1, Sheet 13), the X-slide "
-        "carries the U-joint + corner plate (Sheet 15).",
+        "4. Z carries X (stacked orthogonally): the Z-slide carriage bolts to the skate (J1, Sheet 14), the X-slide "
+        "carries the U-joint + corner plate (Sheet 16).",
     ], 2, 98, 3.4, fs=6.0, title_fs=6.6, color=DIM, width=52, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 14 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 15 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Cross-slide stack (Z + X, 304 flat bar) — fabrication detail: bars, deep-mount section, gib, stroke",
                 scale_note="A/B compressed · C 1:1 (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet14.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet15.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet14.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet15.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 13 — ACETAL SKATE (4-wheel) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet13():
+def sheet14():
     reset_label_registry()
     C_BOLT = "#3A3A42"
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
@@ -2711,7 +2711,7 @@ def sheet13():
     draw_dim_v(axB, -30, 0, j1_rows[0], f"{j1_rows[0]:.0f}", fs=5.0, font=FONT, offset=6)
     draw_dim_v(axB, -46, j1_rows[0], j1_rows[1], f"{CARRIAGE_J1_SP_Z}", fs=5.0, font=FONT, offset=6)
     leader(axB, ax_cols[1], zK2, PW + 30, zK2 + 6, f"4× Ø{SKATE_AXLE_OD} axle bores (2 load + 2 keeper)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axB, j1_cols[1], j1_rows[1], PW + 30, zJ, "J1: 4× M8 → Z-slide (Sheet 14)", ha="left", fs=5.4, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(axB, j1_cols[1], j1_rows[1], PW + 30, zJ, "J1: 4× M8 → Z-slide (Sheet 15)", ha="left", fs=5.4, color=C_SWING, font=FONT, bbox=LBL_BG)
     axB.text(-58, PH + 14, "B — CARRIAGE PLATE  (6061-T6; datum = bottom-left, all dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── notes ──────────────────────────────────────────────────────────────────
@@ -2727,25 +2727,25 @@ def sheet13():
         "bolt-m6x20, McMaster 91287A137; saddle bar McMaster 8992K794). Detail: View A.",
         f"4. CARRIAGE PLATE — {CARRIAGE_PLATE_W}×{CARRIAGE_PLATE_H}×{CARRIAGE_PLATE_T}mm 6061-T6, cut from the 12×20×3/16in sheet. Axle "
         f"bores in 2 rows (load / keeper) at {SKATE_ROLLER_SP}mm pitch, {CARRIAGE_AXLE_ROW_SP}mm row gap; the J1 4×M8 pattern "
-        f"({CARRIAGE_J1_SP_YD}×{CARRIAGE_J1_SP_Z}mm) hangs it on the Z (tilt) slide — Sheet 14.",
+        f"({CARRIAGE_J1_SP_YD}×{CARRIAGE_J1_SP_Z}mm) hangs it on the Z (tilt) slide — Sheet 15.",
         "5. The cam-lever rail brake (Sheet 3, Sections A-A/B-B) locks the skate to the rail once the corner is set.",
     ], 2, 98, 3.4, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 13 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 14 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Acetal skate (4-wheel) — fabrication detail: skate-in-channel, carriage plate hole coordinates",
                 scale_note="1:1 (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet13.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet14.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet13.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet14.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 12 — DEPTH RAIL (3×1½ 6061-T6 Al U-channel) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet12():
+def sheet13():
     reset_label_registry()
     C_BOLT = "#3A3A42"
     RAIL_CUT = C_WID                          # wall-to-wall cut length (Yd0 → C_WID)
@@ -2767,11 +2767,11 @@ def sheet12():
                fs=6.2, font=FONT, above=False, offset=14)
     draw_dim_h(axA, trav0, trav0 + RAIL_LEN, D + 30, f"skate travel {RAIL_LEN}mm", fs=6.0, font=FONT, offset=12)
     draw_dim_v(axA, -70, 0, D, f"{D}mm", fs=6.0, font=FONT, offset=10)
-    axA.text(0, D + 58, "A — SIDE ELEVATION  (web face; length compressed — section = 795M51 catalog profile, skate on Sheet 13)",
+    axA.text(0, D + 58, "A — SIDE ELEVATION  (web face; length compressed — section = 795M51 catalog profile, skate on Sheet 14)",
              fontsize=7.6, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # (End-section removed — the 76×38×5.08 profile is the 795M51 catalog extrusion, not a fab feature;
-    #  the skate riding inside it is detailed on Sheet 13. Section dims stay in the notes below.)
+    #  the skate riding inside it is detailed on Sheet 14. Section dims stay in the notes below.)
 
     # ── View C — end conditions: fixed-R vs drop-in-L ──────────────────────────
     axC = fig.add_axes([0.28, 0.335, 0.46, 0.30]); axC.axis("off")
@@ -2784,7 +2784,7 @@ def sheet12():
     for i in range(FP_CORNER_SEAT_BOLT_N):
         by = 61 + i * 8
         axC.add_patch(Rectangle((60, by - 1.2), 18, 2.4, fc=C_BOLT, ec=OUT, lw=0.4, zorder=6))
-    leader(axC, 67, 73, 40, 90, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} into wall seat\n(saddle fab — Sheet 17)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, 67, 73, 40, 90, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} into wall seat\n(saddle fab — Sheet 18)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axC, 22, 73, 6, 84, "rail END butts the seat/flange inner face", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     # drop-in-left end (bottom half)
     axC.text(2, 44, "DROP-IN — left rail (BL/TL): transport lift-out at the cut", fontsize=6.6, fontweight="bold", color=OUT, ha="left", **FONT)
@@ -2810,22 +2810,22 @@ def sheet12():
         f"cannot cross a splice), so one 8 ft stick = one rail with margin. Skate travel {RAIL_LEN}mm is the "
         "usable focus range, less than the full rail.",
         "3. Web stands VERTICAL (Z); the flanges open toward the film (+X). The acetal skate rides inside — load "
-        "rollers gravity-seat on the bottom flange, keeper rollers captive under the top flange (Sheet 13).",
-        "4. RIGHT rails (BR/TR, X=C_WID side) are permanently flanged to their wall seats (Sheet 17). LEFT rails "
+        "rollers gravity-seat on the bottom flange, keeper rollers captive under the top flange (Sheet 14).",
+        "4. RIGHT rails (BR/TR, X=C_WID side) are permanently flanged to their wall seats (Sheet 18). LEFT rails "
         "(BL/TL) are transport drop-ins — the near length lifts out at the cut (Sheet 4).",
         "5. 6061-T6 yield (~276 MPa) exceeds annealed 304 (~215 MPa); ~1mm sag over the 2.36m span is optically "
         "irrelevant at f/1088 and flatness is carried by the ACM backing.",
     ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.88, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 12 OF 18", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 13 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Depth rail (3×1½in 6061-T6 U-channel) — fabrication detail: cut length + end conditions",
                 scale_note="A compressed (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet12.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet13.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet12.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet13.png")
 
 
 if __name__ == "__main__":

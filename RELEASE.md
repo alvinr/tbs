@@ -63,6 +63,11 @@ file** — a release must not ship without a changelog entry:
   (Sheet 11, they clear the channel in X per View C); added carriage-plate + rail-web dims and the cross-slide
   bar section to Sheet 3. Adopted a **drawing-color convention** — multi-component cross-sections may use color
   to distinguish parts, but single-component dimensional views are monochrome (applied to Sheets 15 + 13 View B).
+  Then swept the remaining single-part views to monochrome (Sheets 12, 13B, 14 A/B, 16 A/B, 17B) and **re-ordered
+  the sheet sequence** so the monochrome per-part fab layouts close the set: the exploded corner assembly +
+  fastener schedule moved to Sheet 12, and the fab sheets shifted to 13–18 (depth rail, skate, cross-slide bars,
+  corner angle, frame, wall-seat saddle). Renumbered every function, title block, cross-reference, report bullet,
+  and gallery caption to match.
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

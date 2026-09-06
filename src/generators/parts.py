@@ -824,7 +824,7 @@ PARTS: list[Part] = [
     Part("fp-acm-tek-screw", "Stainless self-drilling (TEK) screw — ACM → 6061 frame", "fasteners-hardware",
          "film", 30, "ea", 6.46 / 10, 6.46 / 10, "McMaster-Carr", part_no="90599A716",
          url="https://www.mcmaster.com/90599A716/",
-         spec="Secures the ACM backing to the 6061 perimeter frame leg, driven ABOVE the frame's inside fillet ridge (Sheet 16 View C). Stainless self-drilling — drills the 3.2mm 6061 leg + the 3mm Dibond, no pilot. ~300mm pitch along the top + 2 side edges (~8.6 m; bottom edge = walkway/swing clearance) → ~29 + spares. Stainless for the wet cyanotype splash zone; the head sits on the frame BACK (not the image face). McMaster 90599A716 $6.46/pack of 10 (sourced 2026-09-06) → 3 packs = 30."),
+         spec="Secures the ACM backing to the 6061 perimeter frame leg, driven ABOVE the frame's inside fillet ridge (Sheet 17 View C). Stainless self-drilling — drills the 3.2mm 6061 leg + the 3mm Dibond, no pilot. ~300mm pitch along the top + 2 side edges (~8.6 m; bottom edge = walkway/swing clearance) → ~29 + spares. Stainless for the wet cyanotype splash zone; the head sits on the frame BACK (not the image face). McMaster 90599A716 $6.46/pack of 10 (sourced 2026-09-06) → 3 packs = 30."),
     Part("epdm-foam-tape", 'Black EPDM foam tape 1"×½"', "seals-gaskets",
          "film", 2, "roll", 22.37, 22.37, "McMaster-Carr", "Grainger", part_no="8694K88",
          url="https://www.mcmaster.com/8694K88/",

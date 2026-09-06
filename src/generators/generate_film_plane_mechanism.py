@@ -2334,7 +2334,7 @@ def sheet17():
 
     # ── View A — saddle side elevation (wall on the right) ─────────────────────
     axA = fig.add_axes([0.06, 0.44, 0.42, 0.46]); axA.set_aspect("equal"); axA.axis("off")
-    axA.set_xlim(-proj - 74, 96); axA.set_ylim(-18, bph + 30)
+    axA.set_xlim(-proj - 74, 96); axA.set_ylim(-18, bph + 58)
     axA.add_patch(Rectangle((0, -12), WALL_T, bph + 30, fc="#E6E6EA", ec=OUT, lw=1.0, zorder=2))     # container wall (light)
     axA.text(WALL_T / 2, 30, "WALL", fontsize=5.2, ha="center", va="center", color="#888", rotation=90, **FONT, zorder=3)
     axA.add_patch(Rectangle((-bt, 0), bt, bph, fc=C_STEEL, ec=OUT, lw=1.3, zorder=4))               # back-plate (8mm)
@@ -2355,21 +2355,21 @@ def sheet17():
         _wall_bolt(bz)
     draw_dim_v(axA, -proj - 20, 0, bph, f"{bph}mm", fs=5.6, font=FONT, offset=8)
     draw_dim_h(axA, -proj, 0, -24, f"seat proj {proj}mm", fs=5.6, font=FONT, above=False, offset=8)
-    leader(axA, -proj / 2, seat_z, -proj - 30, seat_z - 16, f"seat plate {st}mm A36 — the rail bears here\n(flush with the back-plate top)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axA, -proj / 2, seat_z, -proj - 30, seat_z + 8, f"seat plate {st}mm A36 — the rail bears here\n(flush with the back-plate top)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axA, -bt / 2, gh, -proj - 30, gh - 10, f"gusset (8mm) braces\nseat → back-plate", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axA, -bt - 6, bz_hi, -proj - 30, bz_hi + 16, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} — NUT inside (container);\nboth rows clear BELOW the seat", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
+    leader(axA, -bt - 6, bz_hi, -proj - 30, bz_hi - 4, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} — NUT inside (container);\nboth rows clear BELOW the seat", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
     leader(axA, WALL_T + 11, bz_lo, 30, bz_lo - 18, "HEX HEAD outside, on the\nexterior spreader plate", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
-    axA.text(-proj - 68, bph + 24, "A — SADDLE ELEVATION  (load-bearing seat; wall at right)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
+    axA.text(-proj - 68, bph + 50, "A — SADDLE ELEVATION  (load-bearing seat; wall at right)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── View B — flat-pattern cut pieces (nesting) ─────────────────────────────
     axB = fig.add_axes([0.53, 0.42, 0.44, 0.50]); axB.set_aspect("equal"); axB.axis("off")
     axB.set_xlim(-24, 482); axB.set_ylim(-40, bph + 70)
     def _piece(x, y, w, h, lbl, tri=False):
         if tri:
-            axB.add_patch(plt.Polygon([(x, y), (x, y + h), (x + w, y)], closed=True, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+            axB.add_patch(plt.Polygon([(x, y), (x, y + h), (x + w, y)], closed=True, fc="white", ec=OUT, lw=1.2, zorder=3))
             axB.text(x + w * 0.32, y + h * 0.32, lbl, fontsize=5.0, ha="center", va="center", color=OUT, **FONT, zorder=5)
         else:
-            axB.add_patch(Rectangle((x, y), w, h, fc=C_STEEL, ec=OUT, lw=1.2, zorder=3))
+            axB.add_patch(Rectangle((x, y), w, h, fc="white", ec=OUT, lw=1.2, zorder=3))
             axB.text(x + w / 2, y + h / 2, lbl, fontsize=5.2, ha="center", va="center", color=OUT, **FONT, zorder=5)
     _piece(0, 20, pw, bph, f"back-plate\n{pw:.0f}×{bph}\n8mm")                       # x 0-150,   y 20-263
     _piece(pw + 24, 153, pw, pw, f"exterior\n{pw:.0f}×{pw:.0f}\n8mm")               # x 174-324, y 153-303
@@ -2589,9 +2589,9 @@ def sheet14():
         ax.text(0, bw + 22, title, fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
 
     axA = fig.add_axes([0.06, 0.74, 0.60, 0.17])
-    _bar(axA, XSLIDE_Z_BAR_LEN, C_TILT, f"A — Z (TILT) SLIDE BAR  ·  304 flat ¼×1½in, {XSLIDE_Z_BAR_LEN}mm ×4")
+    _bar(axA, XSLIDE_Z_BAR_LEN, "white", f"A — Z (TILT) SLIDE BAR  ·  304 flat ¼×1½in, {XSLIDE_Z_BAR_LEN}mm ×4")   # single-part → monochrome
     axB = fig.add_axes([0.06, 0.545, 0.60, 0.17])
-    _bar(axB, XSLIDE_X_BAR_LEN, C_SWING, f"B — X (SWING) SLIDE BAR  ·  304 flat ¼×1½in, {XSLIDE_X_BAR_LEN}mm ×4")
+    _bar(axB, XSLIDE_X_BAR_LEN, "white", f"B — X (SWING) SLIDE BAR  ·  304 flat ¼×1½in, {XSLIDE_X_BAR_LEN}mm ×4")   # single-part → monochrome
 
     # ── View C — DEEP-MOUNT section (the load-case decision) ───────────────────
     axC = fig.add_axes([0.06, 0.10, 0.42, 0.34]); axC.set_aspect("equal"); axC.axis("off")
@@ -2757,14 +2757,14 @@ def sheet12():
     # ── View A — side elevation (looking at the web); length compressed ─────────
     axA = fig.add_axes([0.06, 0.70, 0.88, 0.20]); axA.axis("off")
     axA.set_xlim(-190, RAIL_CUT + 190); axA.set_ylim(-64, D + 76)
-    axA.add_patch(Rectangle((0, 0), RAIL_CUT, D, fc=STRUCT2, ec=OUT, lw=1.3, zorder=3))
-    axA.add_patch(Rectangle((0, D - t), RAIL_CUT, t, fc="#9DB4CC", ec=OUT, lw=0.7, zorder=4))   # top flange edge
-    axA.add_patch(Rectangle((0, 0), RAIL_CUT, t, fc="#9DB4CC", ec=OUT, lw=0.7, zorder=4))       # bottom flange edge
+    axA.add_patch(Rectangle((0, 0), RAIL_CUT, D, fc="white", ec=OUT, lw=1.3, zorder=3))          # single-part → monochrome
+    axA.add_patch(Rectangle((0, D - t), RAIL_CUT, t, fc="white", ec=OUT, lw=0.7, zorder=4))      # top flange edge
+    axA.add_patch(Rectangle((0, 0), RAIL_CUT, t, fc="white", ec=OUT, lw=0.7, zorder=4))          # bottom flange edge
     trav0 = (RAIL_CUT - RAIL_LEN) / 2
-    axA.add_patch(Rectangle((trav0, t + 3), RAIL_LEN, D - 2 * t - 6, fc="none", ec=C_FLAT,
+    axA.add_patch(Rectangle((trav0, t + 3), RAIL_LEN, D - 2 * t - 6, fc="none", ec=DIM,
                             lw=1.0, ls=(0, (5, 3)), zorder=5))
     axA.text(RAIL_CUT / 2, D / 2, "acetal skate travel zone", fontsize=6.4, ha="center",
-             va="center", color=C_FLAT, **FONT, zorder=6)
+             va="center", color=DIM, **FONT, zorder=6)
     draw_dim_h(axA, 0, RAIL_CUT, -32, f"CUT {RAIL_CUT}mm  (wall-to-wall, Yd0 → C_WID)",
                fs=6.2, font=FONT, above=False, offset=14)
     draw_dim_h(axA, trav0, trav0 + RAIL_LEN, D + 30, f"skate travel {RAIL_LEN}mm", fs=6.0, font=FONT, offset=12)

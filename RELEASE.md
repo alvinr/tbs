@@ -51,6 +51,9 @@ file** — a release must not ship without a changelog entry:
   depth-rail's duplicate end-section (catalog profile); made the 4040N12 → X-carriage bolted foot explicit on
   Sheet 9; and **retired the M5 axle-saddle screw → M6×20**, consolidated onto the existing firm-priced
   `bolt-m6x20` (McMaster 91287A137) — no new SKU (closes the M5-elimination roadmap item for the film section).
+  Then **itemized the previously-unregistered skate axle-saddle retention** onto that SKU: 16× 1/8×3/4in 304
+  flat-bar saddles (8992K794) + 32× M6×20 + 32× M6 nyloc, +$32 to the FILM section (schedule qty reconciled to
+  8/corner — one saddle per axle, 2 screws each).
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

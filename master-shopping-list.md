@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,975 | $4,437 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,007 | $4,469 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,126 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,948 | $3,989 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,465** | **~$36,377** |
+| **TOTAL (base build + 50-print run)** | **~$27,497** | **~$36,409** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -217,7 +217,7 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | 8 ea | McMaster-Carr | shelf | $1 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | 12 ea | McMaster-Carr | tray | $8 |
-| [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/91287A137/) (91287A137) | 20 ea | McMaster-Carr | electrical, spray | $7 |
+| [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/91287A137/) (91287A137) | 52 ea | McMaster-Carr | electrical, film, spray | $18 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91310A535/) (91310A535) | 8 ea | McMaster-Carr | film | $2 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf cleat + stay mount](https://www.mcmaster.com/91280A534/) (91280A534) | 12 ea | McMaster-Carr | shelf | $4 |
 | M12×100 hex through-bolt, Grade 8.8 zinc | 4 ea | McMaster-Carr | ibc-frame | $8–$10 |
@@ -229,7 +229,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 508 ea | McMaster-Carr | film, ibc-frame, walkway | $49 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $15 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
-| [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 20 ea | McMaster-Carr | electrical, spray | $1 |
+| [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 52 ea | McMaster-Carr | electrical, film, spray | $2 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 20 ea | McMaster-Carr | film, shelf | $2 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
@@ -242,6 +242,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Zinc machine screws — filter housings to ply tee-nuts](https://www.homedepot.com/p/Everbilt-5-16-in-18-x-2-1-2-in-Phillips-Slotted-Round-Head-Machine-Screw-831121/317478933) (831121) | 8 ea | Home Depot | water | $13 |
 | [McMaster 5128A63 low-profile hold-down toggle clamp (rail brake)](https://www.mcmaster.com/5128A63/) (5128A63) | 12 ea | McMaster-Carr | film | $155 |
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
+| [1/8×3/4in 304 flat-bar axle saddles (skate) — 2 ft bar](https://www.mcmaster.com/8992K794/) (8992K794) | 2 2 ft bar | McMaster-Carr | film | $20 |
 | 3/32" sq × 3/64 SS machine keys (×8) — U-joint keyway | 1 lot | McMaster-Carr | film | $6–$10 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 2 10-pack | Home Depot | water | $37 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
@@ -282,7 +283,7 @@ indicative low–high estimates — get quotes before ordering.
 | Half-lap hold-down screws (#14 TEK + washer) | 4 ea | Bridge Fasteners | ibc-frame | $2–$4 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,760–$2,032** |
+| **fasteners-hardware subtotal** | | | | **$1,792–$2,065** |
 
 ### plastics-sheet
 
@@ -477,7 +478,7 @@ indicative low–high estimates — get quotes before ordering.
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,024 |
 | Home Depot | 58 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,817–$1,963 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| McMaster-Carr | 59 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,622–$1,629 |
+| McMaster-Carr | 62 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,655–$1,662 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |

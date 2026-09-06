@@ -2279,7 +2279,7 @@ def sheet18():
     axB.plot([0, 100], [hdr_y - 2, hdr_y - 2], color=OUT, lw=0.8)
     rows = [
         ("M4×0.7", "cam-clamp base → mount tab", "6", "304", "Sheet 3"),
-        ("M6×20", "axle-saddle retention", "4", "304", "Sheet 13"),
+        ("M6×20", "axle-saddle retention", "8", "304", "Sheet 13"),
         ("M6", "J5 corner plate → 6061 frame", "2", "304", "25.4mm · Sh 15"),
         ("M8", "J1 carriage → Z-slide", "4", "304", "Sheet 13/15"),
         ("3/8 key + set screw", "U-joint stub → bore", "2+1", "304", "Sheet 9"),

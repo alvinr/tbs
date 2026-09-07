@@ -59,7 +59,7 @@ WALL_T     = 1.6      # container corrugated side-wall sheet thickness (mm)
 # M12 fasteners (coarse 1.75): tensile stress area
 AS_M12   = 84.3       # mm^2
 N_HANGER_BOLTS = 2    # M12x65 Gr.8.8 per wall hanger (one identical hanger per bar)
-N_CLEAT_BOLTS  = 2    # M12x40 A2-70 per bar-end cleat
+N_CLEAT_BOLTS  = 1    # M12x65 A2-70 per bar-end L-cleat (1 horizontal bolt through the L leg + bar web)
 FUB_88   = 800.0      # Gr.8.8 ultimate (MPa)
 FUB_A2   = 700.0      # A2-70 (18-8 SS) ultimate (MPa)
 
@@ -114,7 +114,7 @@ def compute(m, label, mu=MU, bar=(BAR_H_LOAD, BAR_W, BAR_T), n_bars_per_tote=1, 
     bear_cap = N_HANGER_BOLTS * FU_MILD * 12.0 * WALL_T
     sf_wall_bear = bear_cap / r_wall
 
-    # 3. Front-bar -> upright cleat, 2x M12x40 A2-70 in shear (per-bar upright-end reaction)
+    # 3. Front-bar -> upright cleat, 1x M12x65 A2-70 in shear (per-bar upright-end reaction)
     r_upr = bc_fwd / (2.0 * n_bars_per_tote)
     sf_cleat = bolt_shear_cap(FUB_A2, N_CLEAT_BOLTS) / r_upr
 
@@ -149,7 +149,7 @@ def _fmt(r):
     row(f"front bar bending (Z={z:.0f}mm3, wk)", r["bar"], "Nm")
     row("wall-hanger bolts (2x M12x65 8.8)", r["hanger_bolt"], "N")
     row("wall bearing (1.6mm, 2 holes)", r["wall_bear"], "N")
-    row("bar->upright cleat (2x M12x40 A2)", r["cleat"], "N")
+    row("bar->upright cleat (1x M12x65 A2)", r["cleat"], "N")
     row("lashing strap (vert tie-down)", r["strap"], "N")
     return "\n".join(lines)
 
@@ -416,7 +416,7 @@ def render_png(path=None):
         ("   … same bars + anti-slip mat (μ0.60)",       f"{rLm['bar'][0]:,.0f} N·m", f"{rLm['bar'][1]:,.0f} N·m", rLm['bar'][2], ""),
         ("Wall-hanger bolts J3 (2× M12×65, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
         ("Corrugated-wall bearing (backing plate)",      f"{rL['wall_bear'][0]:,.0f} N", f"{rL['wall_bear'][1]:,.0f} N", rL['wall_bear'][2], ""),
-        ("Corridor cleat bolts J2 (2× M12×40, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
+        ("Corridor cleat bolts J2 (1× M12×65, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
         ("Lash ring + 2\" strap (vertical, per stack)",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),
         ("Walkway-arm end-plate J6 (service, +1 kN)",    f"{m_conn:,.0f} N·m", f"{endplate_cap:,.0f} N", sf_endplate, "svc"),
         ("Front upright bending (service)",              f"{m_conn:,.0f} N·m", "—", sf_upr, "svc"),

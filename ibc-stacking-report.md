@@ -148,7 +148,7 @@ The forward thrust is blocked by the **front retaining bars**, seated in the 25m
 | Front retaining bar — bending (2 × 50×20×3, weak-axis) | 464 N·m | 738 N·m | **1.59** | **4.77** |
 | Wall-hanger bolts (2 × M12×65 Gr.8.8 per bar) | 1,775 N | 80,900 N | 46 | — |
 | Wall bearing (60×205×8 plate, 1.6mm wall, 2 holes) | 1,775 N | 15,400 N | 8.7 | — |
-| Bar → upright cleat (2 × M12×65 A2, shear) | 1,775 N | 70,800 N | 40 | — |
+| Bar → upright cleat (1 × M12×65 A2, shear) | 1,775 N | 35,400 N | 20 | — |
 | Lashing strap — vertical tie-down (2 straps/stack) | 9,467 N | 29,650 N | 3.1 | — |
 
 The two bars give **defense in depth**: as positive blocking they pass on their own (**SF 1.59**, mat degraded or absent); with the anti-slip mat the friction credit lifts the margin to **SF 4.77**. Everything downstream of the bars is comfortably strong — the wall-hanger bolts, the corrugated-wall bearing (backing-plate-spread), the cleat bolts, and the tie-down straps all clear SF ≥ 8. In the **drained** transport state (site-filled water, totes empty) every element clears SF ≥ 12.

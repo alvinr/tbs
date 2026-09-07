@@ -64,9 +64,9 @@ load case). Follows [`fp-corner-blueprint-spec.md`](fp-corner-blueprint-spec.md)
 | Floor feet | 4 × **150×150×12** steel flange plate, **4× M12 anchor** each (front feet reach ~25 mm under the tray) |
 | Front retaining bars | **8 × 50×20×3 RHS — 2 per tote face** (R5), wall→upright per column, span ~1,046 mm |
 | Anti-slip matting | 4 × certified anti-slip mat (**μ ≥ 0.6**) under the tote interfaces |
-| Front-bar → upright cleats | **M12×40** 18-8 SS (92314A744), 2/bar × 4 = 8 |
-| Wall joist hangers | 4 × Simpson-style **4 mm folded U-pocket**, each **through-bolted 4× M12×65 Gr.8.8** (91280A728) to an exterior backing plate |
-| Exterior backing plates | 4 × **100×135×8** steel, OUTSIDE the corrugated side wall (hex heads out), 4× M12 holes — spreads tote thrust so bolts can't pull through the thin wall |
+| Front-bar → upright L-cleats | **M12×65** 18-8 SS (92800A481), **1 horizontal bolt per cleat** through the L's vertical leg + the bar's 50 mm web — corridor end (J2) + wall end (J7), 8 + 8 = 16 |
+| Wall joist hangers | 8 × Simpson-style **4 mm folded U-pocket** (one per bar), each **through-bolted 2× M12×65 Gr.8.8** (91280A728) to an exterior backing plate (16 wall penetrations) |
+| Exterior backing plates | 8 × **60×205×8** steel, OUTSIDE the corrugated side wall (hex heads out), 2× M12 holes each — spreads tote thrust so bolts can't pull through the thin wall |
 | Weld-on lashing rings | 8 × 1½" weld-on (3028T31), 6,600 lb ring WLL; on the front bars (4/tier × 2 tiers) |
 | Ratchet straps | 4 × 2" (50 mm), 3,333 lb (~1,512 kg) assembly WLL |
 | Joints | fillet weld throughout (sizes to be scheduled — Phase B) |
@@ -100,7 +100,7 @@ sheet. Elements to check, each with an EN 12195-1 design force → capacity → 
 
 - [x] **Front retaining bar** (50×20×3 RHS, ~1,046 mm span) — bending + shear under the top-tote forward thrust (0.8 g, friction-credited).
 - [x] **Wall-hanger bolt group** — 4× M12×65 Gr.8.8 in shear + **backing-plate bearing / corrugated-wall pull-through** (100×135×8 plate). The corrugation-depth (30 mm) is the pull-through assumption — ties to the parked procurement gate.
-- [x] **Front-bar → upright cleat** — M12×40 18-8 SS shear.
+- [x] **Front-bar → upright cleat** — M12×65 18-8 SS shear (1 horizontal bolt through the L leg + the bar's 50 mm web).
 - [x] **Floor-foot anchors** — 4× M12 per foot, shear + uplift into the slab.
 - [x] **Lashing ring + strap** — 6,600 lb ring / 3,333 lb strap WLL vs the EN 12195-1 vertical + lateral tie-down demand.
 - [ ] **Weld throats** — ring→bar, upright↔ring, foot↔upright fillet throat vs demand → **moved to Phase B** (weld schedule).
@@ -110,7 +110,7 @@ text), authoritative voice, each capacity/coefficient cited.
 
 ## Phase B — Fastener + weld schedule — DONE 2026-08-14
 
-- [x] **Fastener schedule J1–J3** (report §3.5): J1 floor foot-plate → #14×3¼″ 410 SS self-driller ×16 (driven to seat); J2 bar→upright cleat → M12×40 A2-70 ×16 (~50 N·m + anti-seize, nyloc); J3 wall-hanger through-bolt → M12×65 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex). **Caught a Phase-A miss:** the cleat bolts (M12×40) were still qty 8 — doubled to **16** with the 8 bars (+$12 ibc-frame).
+- [x] **Fastener schedule J1–J3** (report §3.5): J1 floor foot-plate → #14×3¼″ 410 SS self-driller ×16 (driven to seat); J2/J7 bar→upright L-cleat → M12×65 18-8 SS ×16 (8 corridor-end J2 + 8 wall-end J7, 1 horizontal bolt per cleat through the L leg + the bar's 50 mm web, ~50 N·m + anti-seize, nyloc); J3 wall-hanger through-bolt → M12×65 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex).
 - [x] **Weld schedule W1–W5** (report §3.5, sized in `ibc_frame_load.py`): W4 lashing-ring→bar 6 mm fillet (SF 9.1 vs strap WLL) + W3 cleat→upright 4 mm (SF 37) are load-checked; W1 upright↔ring 5 mm, W2 foot↔upright 6 mm, W5 hanger-seat↔pocket 4 mm are AWS D1.1 minimum practical fillets (frame load << capacity). Hangers are folded (not welded); backing plates loose (bolted).
 - [x] Added as tables in `ibc-stacking-report.md` §3.5. (A dedicated fastening/weld detail SHEET is deferred to Phase D.)
 

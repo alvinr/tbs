@@ -24,7 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Fastener standardization (part-reconcile) — IBC J2/J7 cleat spec reconciled to the design of record.**
+  The `ibc-frame-blueprint-spec.md` body tables and `ibc_frame_load.py` still carried the **superseded
+  2× M12×40 vertical** cleat (the ~3 mm-edge design the 2026-08-18 redesign fixed); brought them up to the
+  current **single horizontal M12×65 18-8 SS L-cleat** (J2 corridor + J7 wall end, 8 + 8 = 16) already
+  live in the registry, report §3.5, plate schedule and all SketchUp models. Load calc now models **1×
+  M12×65/cleat** (LOADED SF ≈ 20); load-case sheet + report §3.4 table updated; the phantom M12×40
+  (92314A744) reference removed from `equipment-layout-report.md`.
 
 ## [0.11] — 2026-09-06
 

@@ -31,6 +31,9 @@ file** — a release must not ship without a changelog entry:
   live in the registry, report §3.5, plate schedule and all SketchUp models. Load calc now models **1×
   M12×65/cleat** (LOADED SF ≈ 20); load-case sheet + report §3.4 table updated; the phantom M12×40
   (92314A744) reference removed from `equipment-layout-report.md`.
+- **Film-plane M8 washer specs corrected M8×20 → M8×25.** The J1/J2 bolt was firmed to M8×25
+  (`bolt-m8x25`); the flat- and split-washer descriptions still read "M8×20 head" — updated in `parts.py`
+  and re-injected into the film-plane report parts list.
 
 ## [0.11] — 2026-09-06
 

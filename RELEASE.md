@@ -71,6 +71,14 @@ file** — a release must not ship without a changelog entry:
 - **Tilt-swing board: central M16×55 downsized to M8×1.0×50.** The central bolt is retention/preload, not
   structural — dropped the one-off M16 thread family and reused the board's existing M8×1.0 fine-pitch thread
   (its adjustment screws), keeping the finest practical pitch. TSB Sheet 2 + §12.1 BOM updated.
+- **Chemistry prep shelf — ply-primary blueprint redesign (2D cascade; 3D re-send deferred).** Removed the
+  welded 25×25×3 steel perimeter frame + folding-bracket stays + M5 CSK + gussets; the 18mm plywood is now the
+  primary structure with all attachments in pronged tee-nuts (1/4-20 ply-mount standard). 2 SS chain stays
+  (McMaster 3392T51 + 1/4-20 eye bolts 3014T45 + M8 wall eye bolts 4843T13 + quick-links 8947T25), a bolt-on
+  SS piano hinge (1582A457, cheaper than the weld-on), and a cam-latch (reuse 1619A74). Validated by
+  `chem_shelf_load.py` (board SF 44, chain 5.4, tee-nut 20). `SHELF_T` 22→18; parts + costing + report + the
+  shelf/pinhole/weight diagrams all cascaded; the M5 family is now fully retired. The overview/construction 3D
+  re-send is deferred (needs the live model — pairs with the corridor-water comment cleanup).
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

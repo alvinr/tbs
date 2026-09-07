@@ -20,12 +20,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,088 | $2,950 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,324 | $1,537 |
-| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
+| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $237 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,577** | **~$36,477** |
+| **TOTAL (base build + 50-print run)** | **~$27,577** | **~$36,479** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -53,16 +53,16 @@ indicative low–high estimates — get quotes before ordering.
 | [3M Scotch-Weld DP8010 structural adhesive (green, 45 mL)](https://www.mcmaster.com/7467A36/) (7467A36) | 1 ea | McMaster-Carr | lightlock | $76 |
 | [Dielectric grease, marine-grade (terminal protection)](https://www.amazon.com/dp/B0D6R543V2) (B0D6R543V2) | 1 ea | Amazon | electrical | $9 |
 | Door perimeter weatherstrip + threshold | 1 lot | Home Depot | interior | $10–$22 |
-| Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Flat black paint (RAL 9005) | 1 qt | Local fab | panel | $10–$20 |
 | GRP grating edge-seal kit | 1 kit | Fibergrate | walkway | $40–$60 |
 | [Interior matte-black paint](https://www.homedepot.com/p/316173659) (PR31301) | 5 gal | Home Depot | interior | $125 |
 | [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | 2 tube | Home Depot | tray | $12 |
 | Matte-black interior finish | 1 ea | Local fab | lightlock | $40–$70 |
+| Ply edge sealer + lip fixings | 1 lot | Hardware store | shelf | $10 |
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
 | [Silicone bead sealant (black, UV-stable)](https://www.homedepot.com/p/331895623) (RDX1001bl) | 1 ea | Home Depot | lightlock | $20 |
 | Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
-| **adhesives-finishes subtotal** | | | | **$452–$544** |
+| **adhesives-finishes subtotal** | | | | **$450–$542** |
 
 ### aluminum
 
@@ -216,25 +216,24 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [M4×0.7 × 12 hex bolt, 304 SS — cam-clamp base mount](https://www.mcmaster.com/91280A134/) (91280A134) | 24 ea | McMaster-Carr | film | $3 |
-| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | 8 ea | McMaster-Carr | shelf | $1 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | 12 ea | McMaster-Carr | tray | $8 |
 | [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/91287A137/) (91287A137) | 52 ea | McMaster-Carr | electrical, film, spray | $18 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91310A535/) (91310A535) | 8 ea | McMaster-Carr | film | $2 |
-| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf cleat + stay mount](https://www.mcmaster.com/91280A534/) (91280A534) | 12 ea | McMaster-Carr | shelf | $4 |
+| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf hinge cleat](https://www.mcmaster.com/91280A534/) (91280A534) | 6 ea | McMaster-Carr | shelf | $2 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — cross-slide joints J1/J2](https://www.mcmaster.com/92314A711/) (92314A711) | 32 ea | McMaster-Carr | film | $14 |
 | M12×100 hex through-bolt, Grade 8.8 zinc | 4 ea | McMaster-Carr | ibc-frame | $8–$10 |
 | [M12×65 hex bolt, 18-8 SS (partial thread)](https://www.mcmaster.com/92800A481/) (92800A481) | 16 ea | McMaster-Carr | ibc-frame | $32 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 123 ea | McMaster-Carr | film, ibc-frame, walkway | $214 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
 | [M8 flat washer, 304 SS](https://www.mcmaster.com/98689A673/) (98689A673) | 32 ea | McMaster-Carr | film | $9 |
-| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 12 ea | McMaster-Carr | shelf | $0 |
+| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 6 ea | McMaster-Carr | shelf | $0 |
 | [M8 split lock washer, 304 SS](https://www.mcmaster.com/91111A132/) (91111A132) | 32 ea | McMaster-Carr | film | $4 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 508 ea | McMaster-Carr | film, ibc-frame, walkway | $49 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $15 |
 | [M4×0.7 hex nut, 304 SS](https://www.mcmaster.com/91828A231/) (91828A231) | 24 ea | McMaster-Carr | film | $2 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 52 ea | McMaster-Carr | electrical, film, spray | $2 |
-| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 52 ea | McMaster-Carr | film, shelf | $4 |
+| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 46 ea | McMaster-Carr | film, shelf | $3 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
 | [36× #14 self-drilling TEK screws (bracket → post, J8/J9)](https://www.mcmaster.com/90822A620/) (90822A620) | 36 ea | McMaster-Carr | water | $19 |
@@ -274,9 +273,14 @@ indicative low–high estimates — get quotes before ordering.
 | 12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
-| Folding shelf stays/brackets, zinc | 2 ea | Amazon | shelf | $24 |
-| [Continuous (piano) hinge, 600 mm](https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600) (LSN8-32-600) | 1 ea | Wurth Baer Supply | shelf | $24 |
-| Transport latch (over-center/barrel), zinc | 1 ea | Amazon | shelf | $8 |
+| [304 SS chain — 2 tension stays](https://www.mcmaster.com/3392T51-3392T512/) (3392T51) | 1 3ft | McMaster-Carr | shelf | $24 |
+| [1/4"-20 SS eye bolt — shelf front-corner chain anchor](https://www.mcmaster.com/3014T45/) (3014T45) | 2 ea | McMaster-Carr | shelf | $8 |
+| 1/4"-20 SS machine screws — hinge → tee-nuts | 8 ea | McMaster-Carr | shelf | $3–$5 |
+| [Bolt-on continuous (piano) hinge, 600 mm, SS](https://www.mcmaster.com/1582A457-1582A452/) (1582A457) | 1 ea | McMaster-Carr | shelf | $6 |
+| [304 SS quick-links](https://www.mcmaster.com/8947T25/) (8947T25) | 4 ea | McMaster-Carr | shelf | $12 |
+| [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 3 4-pack | Home Depot | shelf | $5 |
+| [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 1 ea | McMaster-Carr | shelf | $31 |
+| [M8 SS eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 2 ea | McMaster-Carr | shelf | $16 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |
@@ -290,7 +294,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,872–$2,133** |
+| **fasteners-hardware subtotal** | | | | **$1,917–$2,180** |
 
 ### plastics-sheet
 
@@ -380,7 +384,6 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [1.5" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | 6 stick | Home Depot | ventilation | $131 |
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
-| 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
@@ -397,7 +400,6 @@ indicative low–high estimates — get quotes before ordering.
 | Cantilever bracket — widened (near) | 5 ea | Local fab | walkway | $200–$350 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
 | Corner angle 304 SS (U-joint mount) — 4×4×¼in stock | 4 ea | Metal Supermarkets | film | $100–$160 |
-| Corner gusset plate, 3 mm | 4 ea | Steel offcut | shelf | $5 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 2×2×0.120in steel SHS | 1 lot | Local fab | swing | $70–$120 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |
@@ -405,6 +407,7 @@ indicative low–high estimates — get quotes before ordering.
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Home Depot | ventilation | $12 |
 | Fabricated flanged wall-penetration box (front face + flange) | 1 lot | Local fab | electrical | $60–$100 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | MetalsDepot | walkway | $65–$105 |
+| Hinge wall cleat, 6mm steel | 1 lot | Local fab | shelf | $10 |
 | L-cleat nut backing plate 40×50×8mm | 16 ea | Metal Supermarkets | ibc-frame | $10–$19 |
 | Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | 1 lot | Local fab | swing | $70–$120 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
@@ -420,11 +423,10 @@ indicative low–high estimates — get quotes before ordering.
 | Walkway-arm end + backing plates (J6) | 4 ea | Local fab | ibc-frame | $12–$24 |
 | Walkway-arm J6 crush sleeves | 4 ea | Local fab | ibc-frame | $3–$6 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
-| Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $68 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $160 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,436–$5,069** |
+| **steel-structural subtotal** | | | | **$3,393–$5,026** |
 
 ### substrate-fabric
 
@@ -478,13 +480,13 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 22 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,245–$3,672 |
+| Local fab | 22 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,237–$3,664 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 17 | aluminum, fasteners-hardware, steel-structural | $2,042–$2,683 |
-| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
-| Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,024 |
-| Home Depot | 55 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,794–$1,930 |
-| McMaster-Carr | 74 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,760–$1,767 |
+| Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
+| Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,254–$1,994 |
+| Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,798–$1,935 |
+| McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,855–$1,864 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -516,7 +518,7 @@ indicative low–high estimates — get quotes before ordering.
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
-| Hardware store | 3 | adhesives-finishes, seals-gaskets | $57–$92 |
+| Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
 | Uline / cargo-securing supplier | 1 | seals-gaskets | $40–$80 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
@@ -535,11 +537,9 @@ indicative low–high estimates — get quotes before ordering.
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
-| Wurth Baer Supply | 1 | fasteners-hardware | $24 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | misterworker | 1 | plumbing-fittings | $14 |
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
-| Steel offcut | 1 | steel-structural | $5 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
 | offcuts | 1 | water-equipment | $0 |
 <!-- END parts:master -->

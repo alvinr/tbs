@@ -30,7 +30,7 @@ on the ¾" branch gives shut-off control from the prep position.
 
 The shelf is in the **widened near walkway** (<!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep), hinged on the
 pinhole wall **left of the battery bank**. Deployed, it
-projects 300 mm into the walkway. The operator stands on the widened walkway and works
+projects 225 mm into the walkway. The operator stands on the widened walkway and works
 facing the wall. When folded up, the full walkway is clear.
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
@@ -43,25 +43,25 @@ folded flat against the wall whenever the plane tilts/swings during exposure. No
 restriction is imposed.
 
 **Optical cone.** Even deployed, the shelf is clear of the optical cone. Its right edge
-sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
+sits left of the cone's left boundary at the shelf's deepest point (Yd=225):
 
     cone_left(300) = PH_X + (FP_X_L − PH_X) × 300 / FP_Y
-                   = 2,454 + (260 − 2,454) × 300 / 2,262
-                   = 2,454 − 291 = 2,163 mm
+                   = 2,454 + (260 − 2,454) × 225 / 2,262
+                   = 2,454 − 218 = 2,236 mm
 
-→ the shelf right edge is ~**321 mm** outside (left of) the cone. No vignetting at any
+→ the shelf right edge (X=1,780) is ~**456 mm** outside (left of) the cone. No vignetting at any
 film-plane position.
 
 ### 2.2 Spatial Constraints
 
 | Constraint | Value |
 |-----------|-------|
-| Deployed footprint | Hinged on the pinhole wall, projects 300 mm |
+| Deployed footprint | Hinged on the pinhole wall, projects 225 mm |
 | Stowed (transport) | Vertical against the wall, ~25 mm proud |
 | Work surface height | 945 mm above the 130 mm walkway deck |
-| Walkway (widened) | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep — ~200 mm pass when deployed, full clear when stowed |
+| Walkway (widened) | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep — ~275 mm pass when deployed, full clear when stowed |
 | Evap cooler (stow) | Slides under the deployed shelf |
-| Optical cone | ~321 mm clear |
+| Optical cone | ~456 mm clear |
 
 ---
 
@@ -72,54 +72,65 @@ film-plane position.
 | Parameter | Value |
 |-----------|-------|
 | Width (X) | 600 mm |
-| Depth (Yd, deployed) | 300 mm |
+| Depth (Yd, deployed) | 225 mm |
 | Work surface height | 945 mm above the walkway deck |
-| Thickness | 22 mm (18 mm phenolic ply + 4 mm perimeter frame) |
-| Work surface area | 600 × 300 = 0.18 m² |
+| Thickness | 18 mm phenolic ply — **ply-primary (no steel frame)** |
+| Work surface area | 600 × 225 = 0.135 m² |
 
-**Work surface:** 18 mm phenolic-faced plywood (concrete form ply) — chemical-resistant
-to cyanotype solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean.
+**Work surface:** 18 mm phenolic-faced / UV-coated plywood — chemical-resistant to cyanotype
+solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean. The plywood is the **primary
+structure** — the earlier welded 25×25×3 steel perimeter frame is removed (see
+[`chem-shelf-blueprint-spec.md`](chem-shelf-blueprint-spec.md)); all attachments land in **pronged
+tee-nuts in the ply underside** (the 1/4-20 ply-mount standard), which is why the M5 CSK ply screws
+are gone.
 
-**Perimeter frame:** 25×25×3 mm mild steel SHS welded into a 600×300 mm rectangle with
-corner gussets; the ply sits flush inside it. A 15 mm spill-guard lip on the three free
-edges retains bottles/items. Flat black powder coat.
+**Spill lip:** a 15 mm chemical-resistant lip (ply or HDPE offcut) on the three free edges retains
+bottles/items; cut edges sealed.
 
 ### 3.2 Fold-down mechanism
 
 ![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
-**Piano hinge:** a continuous steel piano hinge runs the full 600 mm back edge,
-bolted to a 6 mm mounting cleat on the pinhole wall. Because the pinhole wall is
-corrugated, the cleat and each stay anchor bolt to **flat 8 mm steel backing plates
-welded to the wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) — flat, solid load
-anchors rather than bridging the corrugation. The shelf swings between
-horizontal (deployed) and vertical-up (stowed) about this hinge.
+**Piano hinge:** a **bolt-on** 304 SS continuous piano hinge runs the full 600 mm back edge —
+its shelf leaf machine-screwed (1/4-20 SS) into a row of ply tee-nuts, its wall leaf to a 6 mm
+mounting cleat. Because the pinhole wall is corrugated, the cleat and each chain wall anchor bolt to
+**flat 8 mm steel backing plates welded to the wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) —
+flat, solid load anchors rather than bridging the corrugation. The shelf swings between horizontal
+(deployed) and vertical-up (stowed) about this hinge; the chains slacken as it folds up.
 
-**Stays:** two stays run from wall anchors ~230 mm above the hinge to the shelf's front
-corners. Deployed, they hold the board level and carry the shelf + chemistry load; when
-the shelf folds up they fold flat against the wall. Either a pair of folding fold-flat
-shelf brackets or diagonal struts/chains may be used — both lock the board level.
+**Stays:** two **304 SS chains** run from wall anchors (M8 eye bolts) ~230 mm above the hinge down to
+a **1/4-20 SS eye bolt** in each shelf front corner. Deployed, they carry the front-edge load in
+tension and hold the board level; the length is set by the chosen link (quick-links at the ends) —
+simple and adjustable.
 
-**Transport latch:** a simple over-center latch (or barrel bolt) at the top secures the
-folded-up board against the wall.
+**Transport latch:** the folded-up board is secured for transport by a **cam latch** (the same
+1619A74 as the hinged panel — a standard-part reuse) at the top against the wall.
 
 ![Chemistry Prep Shelf — Sheet 3: Hinge + stay detail](assets/shelf-sheet3.png)
 
 ### 3.3 Load Rating
 
-| Parameter | Value |
-|-----------|-------|
-| Design load | 25 kg (full bottle, cylinders, roller tray, scale, staging) |
-| Carried by | 2 stays + the piano hinge (hinge reacts the back edge) |
-| Load per stay | ~12.5 kg + shelf self-weight share — well within a folding bracket's rating (typ. 30–50 kg each) |
-| Hinge | Continuous piano hinge along 600 mm — distributes the back-edge reaction |
+Design load **25 kg** (bottles, cylinders, roller tray, scale, staging), deployed horizontal —
+carried by the **2 chain stays** (front-edge tension) + the **piano hinge** (back-edge reaction).
+Validated in [`chem_shelf_load.py`](https://github.com/alvinr/tbs/blob/main/src/generators/chem_shelf_load.py):
 
-The fold-down hardware is comfortably rated for the light mixing load.
+<!-- BEGIN chem-shelf-load -->
+| Element | Demand | Capacity | SF |
+|---|---|---|---|
+| Board bending (18mm ply, 600 wide, 225mm span, 25kg UDL) | 7.3 N·m | 324 N·m | **44** |
+| Board midspan deflection | 0.02 mm (L/11930) | — | — |
+| Chain stay tension (per chain, 46° from horizontal) | 91 N | 490 N (WLL) | **5** |
+| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | 65 N | 1300 N | **20** |
+<!-- END chem-shelf-load -->
+
+Every element clears with a large margin — the 18 mm ply board and the 2 SS chain stays carry the
+mixing load comfortably, confirming the steel perimeter frame is not structurally required.
 
 ### 3.4 Leveling
 
-Slotted holes in the stay wall anchors (or adjustable folding brackets) give ±5 mm at
-each front corner; level the board with a spirit level on first install, then lock.
+The chain length sets the deployed level — pick the link (via the end quick-links) that lands the
+board level on a spirit level at first install; the two chains give independent ±adjust at each front
+corner.
 
 ---
 
@@ -144,7 +155,7 @@ midpoint, facing the wall. The deployed surface (945 mm above the deck) is
 ergonomic counter height; the full depth is reachable. The tap (left of the shelf)
 fills containers staged on the board.
 
-When deployed, the 300 mm board leaves ~200 mm of the 500 mm walkway behind it — enough
+When deployed, the 225 mm board leaves ~275 mm of the 500 mm walkway behind it — enough
 for the operator to work but not for through-traffic; this is acceptable because the
 shelf is only down while mixing. Folded up, the walkway is fully clear in both directions.
 
@@ -152,16 +163,15 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 
 ## 6. Assembly Sequence
 
-1. Fabricate the shelf frame: weld a 25×25×3 mm SHS 600×300 mm rectangle with corner gussets.
-2. Weld the 15 mm spill-guard lip to the three free edges; weld the transport-latch keeper.
-3. Insert the 18 mm phenolic ply panel; secure with M5 CSK screws from the frame underside.
-4. Bolt the wall mounting cleat to the pinhole wall at Z=1075 (X=1180–1780), into the ribs/backing.
-5. Bolt the continuous piano hinge to the cleat and to the shelf back edge.
-6. Fit the two stay wall anchors ~230 mm above the hinge (slotted for leveling).
-7. Fit the two stays (folding brackets or struts) to the anchors and the shelf front corners.
-8. Deploy, level with a spirit level, lock the stay adjustment.
-9. Fit the transport latch; verify the board folds up flat and latches clear of the wall equipment.
-10. Verify: deployed level + rigid under load; folded-up clear of the evap stow and walkway.
+1. Cut the 18 mm ply board to 600 × 225; seal the cut edges; fit the 15 mm spill lip (ply/HDPE) to the three free edges.
+2. Set the pronged tee-nuts into the ply underside — the hinge screw row along the back edge + one at each front corner.
+3. Weld the 8 mm backing plates to the pinhole-wall crests (behind the hinge cleat + one per chain anchor); bolt the 6 mm hinge cleat on (M8×25 into the weld-nuts).
+4. Bolt on the piano hinge: wall leaf to the cleat, shelf leaf into the back-edge tee-nut row (1/4-20 SS screws).
+5. Thread a 1/4-20 SS eye bolt into each front-corner tee-nut; cap/grind the ~7 mm protruding tip.
+6. Fit an M8 eye bolt into each chain wall anchor ~230 mm above the hinge; hang a chain (quick-links) from each wall eye to the shelf eye.
+7. Deploy; set each chain link so the board sits level on a spirit level, then lock.
+8. Fit the cam latch (1619A74) + keeper; verify the board folds up flat and latches clear of the wall equipment.
+9. Verify: deployed level + rigid under load; folded-up clear of the evap stow and walkway.
 
 ---
 
@@ -171,20 +181,22 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | Swaner 18mm × 4'×8' UV-coated white hardwood ply (1220×2440mm), cut to 300×600. UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). | 1 4'×8' 18mm sheet | Home Depot | $73 |
-| 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 lot | Online Metals / Metal Supermarkets | $30 |
-| [Continuous (piano) hinge, 600 mm](https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600) (LSN8-32-600) | Weld-on continuous piano hinge, 1-1/4" open width (32 mm) × 23-5/8" (600 mm) long, stainless/steel | 1 ea | Wurth Baer Supply | $24 |
-| Folding shelf stays/brackets, zinc | Zinc-plated steel folding shelf bracket (fold-flat, ~30–50 kg rating); qty 2 = 1 pair. Zinc chosen over stainless — mounting is dry/hidden, not splash-facing (Alvin 2026-08-01). ~$12 ea est; firm SKU + price at purchase. | 2 ea | Amazon / McMaster-Carr | $24 |
-| Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 lot | Local fab | $18 |
-| Shelf mount backing plates, 8mm steel (welded, ×3) | Flat 8mm steel backing plates welded to the pinhole-wall interior crests — one behind the hinge cleat + one per stay anchor — giving flat, solid load anchors with M8 weld-nuts. | 3 ea | Local fab | $18–$30 |
-| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf cleat + stay mount](https://www.mcmaster.com/91280A534/) (91280A534) | Clamps the shelf hinge cleat (6mm) + 2 stay anchors to their welded 8mm backing plates (M8 weld-nut). Grip ≈ 14mm → M8×25. Pitch M8×1.25 coarse. $18.51/pack of 50 (same 91280A534 as the film ICP-14 fixing). | 12 ea | McMaster-Carr | $4 |
-| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — shelf wall bolts. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 12 ea | McMaster-Carr | $1 |
-| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | Flat washer (1/bolt) — shelf wall bolts (dry). Distinct SKU from the film-plane wet-zone washer-m8-flat (98689A673): separate keys so the by-type BOM doesn't blend the two M8 flat washers. $3.32/pack of 100. | 12 ea | McMaster-Carr | $0 |
-| Transport latch (over-center/barrel), zinc | Zinc over-center draw/toggle latch — secures the folded board for transport. Zinc (dry/hidden, not splash-facing — Alvin 2026-08-01). ~$8 est; firm SKU + price at purchase. | 1 ea | Amazon | $8 |
-| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | Chem-shelf ply-panel attachment — 8× M5×16 CSK, countersunk from the shelf frame underside (the film-clamp clips that once shared this screw were retired to nylon spring clamps, so this is now the only M5 in the camera). M5→M6 conversion DEFERRED to the chem-shelf design round: no shelf blueprint yet, and the intended direction is a flange bolt + nyloc nut under the shelf (through-bolt, no tight frame countersink), not an M6 CSK. 91420A326. | 8 ea | McMaster-Carr | $1 |
-| Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
-| Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
+| [Bolt-on continuous (piano) hinge, 600 mm, SS](https://www.mcmaster.com/1582A457-1582A452/) (1582A457) | 304 SS drilled-leaf (BOLT-ON) continuous hinge, ~32mm open × 600mm. Shelf leaf 1/4-20 SS machine-screwed into the ply tee-nut row; wall leaf to the 6mm cleat/backing plate. $6.23/2ft (1582A457) — replaces the retired weld-on LSN8-32-600 ($23.56), cheaper. | 1 ea | McMaster-Carr | $6 |
+| [304 SS chain — 2 tension stays](https://www.mcmaster.com/3392T51-3392T512/) (3392T51) | 304 SS ~4mm chain, 2 tension stays (front corner → wall anchor ~230mm above the hinge), ~1m used of the 3ft; trimmed to set the deployed level. WLL >> the ~91N tension demand (chem_shelf_load.py SF 5.4). $23.79/3ft. | 1 3ft | McMaster-Carr | $24 |
+| [1/4"-20 SS eye bolt — shelf front-corner chain anchor](https://www.mcmaster.com/3014T45/) (3014T45) | 304 SS 1/4-20 eye bolt into a ply tee-nut at each front corner (~1in shank; tip protrudes ~7mm through the 18mm top — cap/grind at the corner). Chain hooks to the eye. $4.16 ea. | 2 ea | McMaster-Carr | $8 |
+| [M8 SS eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 304 SS M8 eye bolt into the backing-plate M8 weld-nut ~230mm above the hinge (reuses the M8 wall standard) — the chain's top anchor. $7.80 ea. | 2 ea | McMaster-Carr | $16 |
+| [304 SS quick-links](https://www.mcmaster.com/8947T25/) (8947T25) | 304 SS ~4mm quick-links — chain ends + length adjustment (2 per stay). $2.90 ea. | 4 ea | McMaster-Carr | $12 |
+| [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 1/4-20 4-prong tee-nut (the ply-mount standard SKU 825001) seated in the ply underside — the hinge screw row (~6-8) + 2 front-corner eye bolts ≈ 10 → 3× 4-pack. Reuses the project ply-mount tee-nut; replaces the retired M5 CSK ply attach. | 3 4-pack | Home Depot | $5 |
+| 1/4"-20 SS machine screws — hinge → tee-nuts | 1/4-20 × ~3/4in SS machine screw — hinge leaf into the ply tee-nut row. SS is the splash-zone exception to the zinc ply-mount screw (panel-machine-screws). ~8 off. SKU pending — source a 1/4-20 × 3/4 SS machine screw. | 8 ea | McMaster-Carr | $3–$5 |
+| Hinge wall cleat, 6mm steel | 6mm steel cleat behind the piano-hinge wall leaf (bolts to the backing plate via M8). The 2 chain wall anchors are M8 eye bolts into the backing plates, not slotted stay anchors. | 1 lot | Local fab | $10 |
+| Shelf mount backing plates, 8mm steel (welded, ×3) | Flat 8mm steel backing plates welded to the pinhole-wall interior crests — one behind the hinge cleat + one per chain wall-anchor (M8 eye bolt) — flat, solid load anchors with M8 weld-nuts. | 3 ea | Local fab | $18–$30 |
+| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf hinge cleat](https://www.mcmaster.com/91280A534/) (91280A534) | Clamps the shelf hinge cleat (6mm) to its welded 8mm backing plate (M8 weld-nut). Grip ≈ 14mm → M8×25. Pitch M8×1.25 coarse. $18.51/pack of 50 (same 91280A534 as the film ICP-14 fixing). | 6 ea | McMaster-Carr | $2 |
+| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — shelf hinge-cleat bolts. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 6 ea | McMaster-Carr | $0 |
+| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | Flat washer (1/bolt) — shelf hinge-cleat bolts (dry). Distinct SKU from the film-plane wet-zone washer-m8-flat (98689A673): separate keys so the by-type BOM doesn't blend the two M8 flat washers. $3.32/pack of 100. | 6 ea | McMaster-Carr | $0 |
+| [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | Secures the folded board for transport — reuses the hinged-panel cam latch (1619A74), a standard-part reuse that retires the est zinc toggle. $30.57 ea. | 1 ea | McMaster-Carr | $31 |
+| Ply edge sealer + lip fixings | Seal the ply cut edges (chemical-resistant) + fix the spill lip (ply/HDPE offcut, 3 free edges). No steel frame to powder-coat (frame removed). | 1 lot | Hardware store | $10 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | Extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention). IPEX ½" × 10 ft — same stick as pvc-half; one covers the run. | 1 stick | Home Depot | $5 |
-| **Shelf total** | | | | **$223–$235** |
+| **Shelf total** | | | | **$223–$237** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

@@ -182,7 +182,7 @@ def sheet2():
     notes = [
         "FOLD-DOWN MECHANISM (SECTION):",
         f"1. Piano hinge (back edge, Z{SHELF_H}) on the pinhole wall.",
-        f"2. In use: folds DOWN to horizontal, held level by {SHELF_STAY_N} stays from the wall above.",
+        f"2. In use: folds DOWN to horizontal, held level by {SHELF_STAY_N} SS chain stays from the wall above.",
         f"3. Transport: folds UP flat against the wall (top Z{SHELF_STOW_TOP_Z}).",
         f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the shelf underside (Z1050).",
     ]
@@ -213,7 +213,7 @@ def sheet3():
     for (bz, bh) in [(SHELF_H - 8, 68), (STAY_Z - 14, 28)]:
         ax.add_patch(Rectangle((-6, bz), 8, bh, fc="#9AA0A8", ec=C_OUT, lw=1.0, hatch="///", zorder=3))
     leader(ax, -6, SHELF_H + 30, -34, SHELF_H + 60,
-           "8mm WELDED BACKING PLATE\n(flat load anchor — behind the\nhinge cleat + each stay anchor;\nM8×25 weld-nuts)",
+           "8mm WELDED BACKING PLATE\n(flat load anchor — behind the\nhinge cleat + each chain\nwall anchor; M8 weld-nuts)",
            color=C_OUT, fs=6, ha="right", font=FONT)
 
     # hinge: wall leaf + knuckle + shelf leaf
@@ -224,16 +224,16 @@ def sheet3():
     leader(ax, 10, SHELF_H, 35, SHELF_H + 50, "PIANO HINGE\n(continuous, along the back edge)",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
     leader(ax, 65, SHELF_H - SHELF_T, 120, SHELF_H + SHELF_T - 60,
-           f"SHELF BOARD\n18mm ply + frame ({SHELF_T}mm)", color="#5a4a18", fs=6.5, ha="left", font=FONT)
+           f"SHELF BOARD\n18mm ply, ply-primary ({SHELF_T}mm)\n(no steel frame; tee-nut attach)", color="#5a4a18", fs=6.5, ha="left", font=FONT)
 
     # stay anchor + stay to the front
     ax.add_patch(Rectangle((0, STAY_Z - 10), 16, 20, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))
     ax.plot([8, SHELF_DEPTH - 10], [STAY_Z, SHELF_H], color=C_HINGE, lw=3.0, zorder=5)
     ax.add_patch(Circle((SHELF_DEPTH - 10, SHELF_H), 6, fc="#9098A0", ec=C_OUT, lw=0.8, zorder=6))
-    leader(ax, 8, STAY_Z, 70, STAY_Z + 40, "STAY WALL ANCHOR\n(above the hinge)", color=C_HINGE, fs=6.5,
+    leader(ax, 8, STAY_Z, 70, STAY_Z + 40, "CHAIN WALL ANCHOR\n(M8 eye bolt, above the hinge)", color=C_HINGE, fs=6.5,
            ha="left", font=FONT)
     leader(ax, (8 + SHELF_DEPTH - 10) / 2, (STAY_Z + SHELF_H) / 2, SHELF_DEPTH - 60, (STAY_Z + SHELF_H) / 2 + 60,
-           "STAY (chain or folding strut)\ncarries the deployed load;\nfolds flat when shelf folds up",
+           "SS CHAIN STAY (tension)\ncarries the deployed load;\nslackens when shelf folds up",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
 
     title_block(ax, "SHEET 3 OF 3", drawing_title="CHEMISTRY PREP SHELF",

@@ -704,7 +704,7 @@ SHELF_YD_NEAR  = 0       # back edge — hinged on the pinhole wall (Yd0)
 SHELF_DEPTH    = 225     # shelf depth in Yd (deployed projection) — reduced 300→225 for more walk-around clearance at the chem shelf (275mm past the shelf back to the widened deck edge)
 SHELF_YD_FAR   = SHELF_YD_NEAR + SHELF_DEPTH   # front edge when deployed (= 225; derived so it can't drift from SHELF_DEPTH)
 SHELF_H        = 1075    # deployed work-surface height AFF (mm) — 945mm above the walkway deck
-SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
+SHELF_T        = 18      # shelf board thickness (mm) — 18mm ply, ply-primary (steel frame removed 2026-09-07, chem-shelf-blueprint-spec.md)
 SHELF_STAY_N   = 2       # support stays (wall-above to front corners; carry the load)
 SHELF_STOW_TOP_Z = SHELF_H + SHELF_DEPTH  # 1375 — folded-up (transport) top; the tap top aligns here
 

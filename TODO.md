@@ -217,6 +217,16 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   - **BOM-gap itemization** (M4 grubs, M4 cam-mounts, M12 pivot anchors/hinge brackets) — each blocked on a length dim; itemize per the owning sheet, don't assume.
   - **#14 TEK washer + M8×1.0×50 central SKUs** — SKU-pending items to firm at order.
 
+- [~] **Chemistry prep shelf — blueprint round IN PROGRESS (2026-09-07).** Spec `chem-shelf-blueprint-spec.md`
+  (ply-primary redesign: no steel frame; tee-nut attachments; 2 SS chain stays; M5 eliminated) + `chem_shelf_load.py`
+  (Phase A — validated: board-bending SF 44, chain SF 5.4, tee-nut SF 20) DONE; all hardware sourced (hinge
+  1582A457, eye bolts 3014T45/4843T13, chain 3392T51, links 8947T25, latch = reuse 1619A74). **Remaining = one
+  coherent cascade** (pair the 3D re-send with the `overview`-model session): (1) `SHELF_T` 22→18 + new tee-nut/
+  chain/stay constants; (2) fab-detail drawings (`generate_shelf_diagram.py` → board+tee-nut hole positions,
+  bolt-on-hinge detail, chain/eye/wall-anchor detail, 8mm backing-plate 1:1 schedule; regenerate); (3) `parts.py`
+  shelf rebuild (drop 25×25×3 SHS + M5 CSK + folding bracket + gussets; add tee-nuts/1-4-20 SS screw/eye bolts/
+  chain/links/bolt-on hinge; latch→1619A74) + costing; (4) report `chemistry-prep-shelves.md` §3.1/3.2/3.3(load
+  block)/6/7 to the new design; (5) 3D `chem_shelf()` builder (remove frame, add chain stays) → overview re-send.
 - [ ] **Tilt-swing board (TSB) — needs a blueprint review round + registry merge (2026-09-07).** The TSB
   (`tilt-swing-board-report.md`) is an OPTIONAL front board that **replaces** the flat pinhole plate, and it
   has NOT been through the manufacturing-blueprint standard (dimensioned details / fastener + weld schedule /

@@ -2617,7 +2617,7 @@ def sheet14():
 
     # ── View A — AXLE-SADDLE RETENTION (the fab detail Sheet 3 omits; carries the M6) ─
     axA = fig.add_axes([0.04, 0.36, 0.36, 0.54]); axA.set_aspect("equal"); axA.axis("off")
-    axA.set_xlim(-34, 46); axA.set_ylim(-11, 30)
+    axA.set_xlim(-44, 36); axA.set_ylim(-11, 30)
     r_ax = SKATE_AXLE_OD / 2                                          # Ø10 clevis-pin axle
     axA.add_patch(Rectangle((-24, 0), 48, CARRIAGE_PLATE_T, fc=C_CAR, ec=OUT, lw=1.2, zorder=3))     # carriage plate, edge-on
     az = CARRIAGE_PLATE_T + r_ax                                      # axle sits on the plate top
@@ -2656,18 +2656,18 @@ def sheet14():
         for dz in j1_rows:
             draw_circle(axB, dx, dz, 4, lw=1.1, color=C_SWING, zorder=5)
     # overall
-    draw_dim_h(axB, 0, PW, -14, f"{PW}mm", fs=5.6, font=FONT, above=False, offset=8)
+    draw_dim_h(axB, 0, PW, -8, f"{PW}mm", fs=5.6, font=FONT, above=False, offset=8)
     draw_dim_v(axB, -16, 0, PH, f"{PH}mm", fs=5.6, font=FONT, offset=8)
     # axle-bore hole coordinates — X (from left) + Y (from bottom) + row gap
-    draw_dim_h(axB, 0, ax_cols[0], zK2 + 12, f"{ax_cols[0]:.0f}", fs=5.0, font=FONT, offset=6)
-    draw_dim_h(axB, ax_cols[0], ax_cols[1], zK2 + 22, f"{SKATE_ROLLER_SP}", fs=5.0, font=FONT, offset=6)
-    draw_dim_v(axB, PW + 16, 0, zL2, f"{zL2:.0f}", fs=5.0, font=FONT, offset=6, right=True)
-    draw_dim_v(axB, PW + 34, zL2, zK2, f"{CARRIAGE_AXLE_ROW_SP}", fs=5.0, font=FONT, offset=6, right=True)
+    draw_dim_h(axB, 0, ax_cols[0], zK2 + 30, f"{ax_cols[0]:.0f}mm", fs=5.0, font=FONT, offset=6)
+    draw_dim_h(axB, ax_cols[0], ax_cols[1], zK2 + 30, f"{SKATE_ROLLER_SP}mm", fs=5.0, font=FONT, offset=6)
+    draw_dim_v(axB, PW + 10, 0, zL2, f"{zL2:.0f}mm", fs=5.0, font=FONT, offset=6, right=True)
+    draw_dim_v(axB, PW + 10, zL2, zK2, f"{CARRIAGE_AXLE_ROW_SP}mm", fs=5.0, font=FONT, offset=6, right=True)
     # J1 hole coordinates
-    draw_dim_h(axB, 0, j1_cols[0], -26, f"{j1_cols[0]:.0f}", fs=5.0, font=FONT, above=False, offset=6)
-    draw_dim_h(axB, j1_cols[0], j1_cols[1], -36, f"{CARRIAGE_J1_SP_YD}", fs=5.0, font=FONT, above=False, offset=6)
-    draw_dim_v(axB, -30, 0, j1_rows[0], f"{j1_rows[0]:.0f}", fs=5.0, font=FONT, offset=6)
-    draw_dim_v(axB, -46, j1_rows[0], j1_rows[1], f"{CARRIAGE_J1_SP_Z}", fs=5.0, font=FONT, offset=6)
+    draw_dim_h(axB, 0, j1_cols[0], -16, f"{j1_cols[0]:.0f}mm", fs=5.0, font=FONT, above=False, offset=6)
+    draw_dim_h(axB, j1_cols[0], j1_cols[1], -16, f"{CARRIAGE_J1_SP_YD}mm", fs=5.0, font=FONT, above=False, offset=6)
+    draw_dim_v(axB, -8, 0, j1_rows[0], f"{j1_rows[0]:.0f}mm", fs=5.0, font=FONT, offset=6)
+    draw_dim_v(axB, -8, j1_rows[0], j1_rows[1], f"{CARRIAGE_J1_SP_Z}mm", fs=5.0, font=FONT, offset=6)
     leader(axB, ax_cols[1], zK2, PW + 30, zK2 + 6, f"4× Ø{SKATE_AXLE_OD} axle bores (2 load + 2 keeper)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axB, j1_cols[1], j1_rows[1], PW + 30, zJ, "J1: 4× M8 → Z-slide (Sheet 15)", ha="left", fs=5.4, color=C_SWING, font=FONT, bbox=LBL_BG)
     axB.text(-58, PH + 14, "B — CARRIAGE PLATE  (6061-T6; datum = bottom-left, all dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
@@ -2687,7 +2687,7 @@ def sheet14():
         f"bores in 2 rows (load / keeper) at {SKATE_ROLLER_SP}mm pitch, {CARRIAGE_AXLE_ROW_SP}mm row gap; the J1 4×M8 pattern "
         f"({CARRIAGE_J1_SP_YD}×{CARRIAGE_J1_SP_Z}mm) hangs it on the Z (tilt) slide — Sheet 15.",
         "5. The cam-lever rail brake (Sheet 3, Sections A-A/B-B) locks the skate to the rail once the corner is set.",
-    ], 2, 98, 3.4, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+    ], 10, 98, 3.4, fs=6.2, title_fs=6.8, color=DIM, width=50, wrap=135, font=FONT)
 
     ax_tb = fig.add_axes([0.05, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 14 OF 18", drawing_title="MOVEABLE FILM PLANE",

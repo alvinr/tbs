@@ -1897,14 +1897,14 @@ def _corner_elevation(ax):
     draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}mm", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8mm)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 75, 120, 175, 150, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_W/2:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_H:.0f}mm + drilled; U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 75, 120, 225, 175, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_W/2:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_H:.0f}mm + drilled; U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden SSNBUJ750x3/8KB", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 90, 40, 150, 15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 90, 40, 150, -15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per leg (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the plate back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 200, 25.4, 210, -34, "2x2 6061 Al angle L (FRAME)\n— behind the plate now (ACM behind it)", ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    ax.text(-70, 256, "A — FROM THE X-SLIDE / RAIL SIDE  (X × Z)",
+    ax.text(240, 256, "A — FROM THE X-SLIDE / RAIL SIDE  (X × Z)",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-70, 247, "180° flip of the pinhole view — mechanism forward,\nACM + frame hidden behind (to scale)",
+    ax.text(240, 247, "180° flip of the pinhole view — mechanism forward,\nACM + frame hidden behind (to scale)",
             fontsize=5.6, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -1970,15 +1970,15 @@ def _corner_section(ax):
     ax.annotate("", xy=(244, 0), xytext=(220, 0), arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.4))
     ax.text(232, 5, "TO PINHOLE", ha="center", va="bottom", fontsize=6, color=DIM, **FONT)
     # labels
-    leader(ax, 26, -18, 6, -74, "X carriage — 304 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 60, -6, 40, -78, f"J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 5, 11, 12, 58, "4040N12 304 shaft support — clamps the U-joint INPUT stub;\nits foot BOLTS (2× M6) to the X-carriage, so the corner load\nis positively secured to the purple X-slide", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 84, 11.9, 56, 86, f"U-joint (tilt+swing, ±{UJOINT_ANGLE}° max) — Belden SSNBUJ750x3/8KB\nkeyed 3/8in stub + set screw locks it", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 169, -40, 170, -74, "304 SS corner plate — J4 U-joint stub (keyed + set screw)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 167, 24, 150, 66, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
-    leader(ax, 174, 10, 202, 38, "ACM secured FROM the frame INTO the ACM\n(countersunk in the frame back; front face clean)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
-    leader(ax, 170, -1.2, 128, -46, "countersunk cap screw:\ncorner plate → output stub (secures the shaft)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
-    leader(ax, 178, 40, 208, 90, "6061 angle L cradles the ACM (4mm) + muslin;\nACM on the pinhole face — Sheet 6", ha="left", fs=5.2, color=DIM, font=FONT, bbox=LBL_BG)
+    leader(ax, 26, -18, 6, -64, "X carriage — 304 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 60, -6, 110, -48, f"J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 5, 11, 47, 85, "4040N12 304 shaft support — clamps the U-joint INPUT stub;\nits foot BOLTS (2× M6) to the X-carriage, so the corner load\nis positively secured to the purple X-slide", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 84, 11.9, 86, 46, f"U-joint (tilt+swing, ±{UJOINT_ANGLE}° max)\nkeyed 3/8in stub + set screw locks it", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 169, -40, 160, -64, "304 SS corner plate — J4 U-joint stub (keyed + set screw)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 167, 24, 160, 56, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 174, 10, 252, 38, "ACM secured FROM the frame INTO the ACM\n(countersunk in the frame back; front face clean)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 170, -1.2, 148, -36, "countersunk cap screw:\ncorner plate → output stub (secures the shaft)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 178, 40, 252, 60, "6061 angle L cradles the ACM (4mm) + muslin;\nACM on the pinhole face — Sheet 6", ha="left", fs=5.2, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(170, -92, "B — CROSS-SECTION  (Yd × X, to scale)",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
     ax.text(170, -85, "pinhole at left · X-slide at right (90° to it)",

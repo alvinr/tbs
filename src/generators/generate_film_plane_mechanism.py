@@ -2773,7 +2773,7 @@ def sheet13():
         "(BL/TL) are transport drop-ins — the near length lifts out at the cut (Sheet 4).",
         "5. 6061-T6 yield (~276 MPa) exceeds annealed 304 (~215 MPa); ~1mm sag over the 2.36m span is optically "
         "irrelevant at f/1088 and flatness is carried by the ACM backing.",
-    ], 2, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=52, wrap=150, font=FONT)
+    ], 10, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=55, wrap=140, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.88, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 13 OF 18", drawing_title="MOVEABLE FILM PLANE",

@@ -68,6 +68,9 @@ file** — a release must not ship without a changelog entry:
   re-send** (Lever A shim).
 - **Filter bracket switched to the bracket-only Pentair 244718** (was the 150061 kit) — we supply our own
   1/4-20 machine screws + tee-nuts, so the kit's hardware was redundant (price/URL to confirm at order).
+- **Tilt-swing board: central M16×55 downsized to M8×1.0×50.** The central bolt is retention/preload, not
+  structural — dropped the one-off M16 thread family and reused the board's existing M8×1.0 fine-pitch thread
+  (its adjustment screws), keeping the finest practical pitch. TSB Sheet 2 + §12.1 BOM updated.
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

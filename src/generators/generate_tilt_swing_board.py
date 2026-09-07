@@ -625,8 +625,8 @@ shank_p = mpatches.Circle((cx2b, cy2b), s2(BRG_SHANK_D/2),
                            lw=LW_THICK, edgecolor=C_OUT, facecolor=C_BEAR, zorder=4)
 ax2.add_patch(shank_p)
 
-# M16 tapped central hole
-draw_circle(ax2, cx2b, cy2b, s2(8), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=5)
+# M8×1.0 tapped central hole (retention bolt — non-structural; downsized from M16, fine pitch)
+draw_circle(ax2, cx2b, cy2b, s2(4), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=5)
 
 # 4 × socket insert bores (Ø16 H7) — same PCD
 for angle_deg in [90, 0, 270, 180]:
@@ -651,7 +651,7 @@ leader(ax2, cx2b + s2(SOCK_PCD/2)*np.cos(np.radians(-45)),
        '4×Ø16 H7\nINSERT BORES\n(REAR SIDE)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2b - s2(8) * 0.7, cy2b - s2(8) * 0.7,
        cx2b - 110, cy2b - 50,
-       'M16 TAPPED\nCENTRAL HOLE', fs=5, color=C_DIM, arrow_style='->')
+       'M8×1.0 TAPPED\nCENTRAL HOLE', fs=5, color=C_DIM, arrow_style='->')
 
 ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 56, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')

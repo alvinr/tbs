@@ -2566,7 +2566,7 @@ def sheet15():
     draw_dim_h(axC, x0, x0 + bt, bw + 7, f"{bt}mm", fs=5.4, font=FONT, offset=5)
     leader(axC, x0 + bt + pad / 2, bw * 0.72, 27, bw * 0.74, f"UHMW self-lube pad {pad}mm", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axC, x0 + bt + pad + gt / 2, bw * 0.40, 27, bw * 0.40, f"brass-tip GIB {gw}×{gt}mm\n(adjustable clearance)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axC, x0 - pad - wall / 2, bw * 0.4, -48, bw * 0.42, f"carriage wall {wall}mm", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(axC, x0 - pad - wall / 2, bw * 0.4, -48, bw * 0.2, f"carriage wall {wall}mm", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     axC.text(-48, bw + 14, "C — DEEP-MOUNT SECTION", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── stroke callout box ─────────────────────────────────────────────────────
@@ -2594,7 +2594,7 @@ def sheet15():
         "drag also holds the gravity (Z) axis while the cam clamp is thrown.",
         "4. Z carries X (stacked orthogonally): the Z-slide carriage bolts to the skate (J1, Sheet 14), the X-slide "
         "carries the U-joint + corner plate (Sheet 16).",
-    ], 2, 98, 3.4, fs=6.0, title_fs=6.6, color=DIM, width=52, wrap=150, font=FONT)
+    ], -10, 98, 4.6, fs=6.0, title_fs=6.6, color=DIM, width=100, wrap=120, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 15 OF 18", drawing_title="MOVEABLE FILM PLANE",

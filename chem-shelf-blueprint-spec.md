@@ -79,13 +79,15 @@ tee-nut decision. Only the chain stays + the bolt-on hinge variant are genuinely
 - **Spill lip** → a sealed strip of the **same 18 mm ply** (offcut) or an **HDPE offcut** (46684/46685) — no new material.
 - **Board** (`BPI6WUV2I`), **8 mm backing plates** (local fab) — existing.
 
-**New to source (full spec):**
-1. **Bolt-on piano hinge, 600 mm** — 304 SS, **drilled leaves** (bolt-on), ~32 mm open width. *(Re-spec of the existing hinge line.)*
-2. **1/4″-20 SS eye bolt ×2** — 304 SS, ~1″ shank — front-corner chain anchors, threaded into the ply tee-nuts (tip protrudes ~7 mm through the top; cap/grind at the corner).
-3. **M8 eye bolt ×2** — 304 SS, M8 × ~1″ shank — chain wall anchors into the backing-plate weld-nuts.
-4. **304 SS chain** — ~4 mm / 1/8″, WLL ≥ 25 kg, ~1 m total.
-5. **304 SS quick-links ×4** — ~4 mm, chain ends + length adjust.
-6. **Transport latch ×1** — 304 SS over-center toggle latch + keeper (or borrow the panel cam-latch family, McMaster 1619A74).
+**New — SOURCED (2026-09-07):**
+1. **Bolt-on piano hinge, 600 mm** — McMaster **1582A457** ($6.23/2 ft), 304 SS drilled-leaf (bolt-on). *(Cheaper than the retired weld-on LSN8-32-600 $23.56.)*
+2. **1/4″-20 SS eye bolt ×2** — McMaster **3014T45** ($4.16 ea) — front-corner chain anchors, into the ply tee-nuts.
+3. **M8 eye bolt ×2** — McMaster **4843T13** ($7.80 ea) — chain wall anchors into the backing-plate weld-nuts.
+4. **304 SS chain** — McMaster **3392T51** ($23.79/3 ft) — ~1 m used.
+5. **304 SS quick-links ×4** — McMaster **8947T25** ($2.90 ea).
+6. **Transport latch ×1** — reuse the hinged-panel **cam latch 1619A74** (standard-part reuse — retires the est zinc toggle).
+
+*Still pending:* a 1/4″-20 **SS** machine-screw SKU (~3/4″) for the hinge leaf, or accept the zinc `panel-machine-screws`.
 
 **Remaining opens (confirm at review):** lip material (ply vs HDPE offcut); tee-nut count (from the hinge screw
 pitch); board face (keep UV-ply vs phenolic); latch — dedicated toggle vs the cam-latch family.

@@ -725,7 +725,7 @@ def view_a(ax):
             ax.plot([_hx - 8, _hx + 8], [_hz, _hz], color=C_PIN, lw=0.4, zorder=6)
             ax.plot([_hx, _hx], [_hz - 8, _hz + 8], color=C_PIN, lw=0.4, zorder=6)
     draw_dim_v(ax, 122, 253, 253 + CARRIAGE_AXLE_ROW_SP, f"{CARRIAGE_AXLE_ROW_SP:.0f}mm", offset=6, fs=4.8, color=C_PIN, font=FONT)
-    leader(ax, 190, 291, 300, 360,
+    leader(ax, 190, 291, 300, 340,
            f"CARRIAGE PLATE {CARRIAGE_PLATE_W:.0f}×{CARRIAGE_PLATE_H:.0f}×{CARRIAGE_PLATE_T:.0f}mm 6061-T6\n"
            f"· 4× Ø{SKATE_AXLE_OD:.0f} STUB-AXLE holes, {SKATE_ROLLER_SP:.0f}(Yd)×{CARRIAGE_AXLE_ROW_SP:.0f}(Z) pattern\n"
            f"· J1: 4× M8 to Z-slide ({CARRIAGE_J1_SP_YD:.0f}×{CARRIAGE_J1_SP_Z:.0f}) · 2× M4 cam base\n"
@@ -770,20 +770,20 @@ def view_a(ax):
     ax.text(228, 228, "Z-slide TILT travel ~250mm (way runs up behind the rail)", fontsize=5.2, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
 
     # ── leaders ──
-    leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical,\nruns in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 60, 270, -30, 350, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical,\nruns in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 190, 253, 232, 262, f"4-wheel acetal skate — Ø{SKATE_ROLLER_OD:.1f} LOAD rollers on the bottom flange\n+ Ø{SKATE_KEEPER_OD:.1f} KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 304 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 176, 162, 232, 160, "X (SWING) slide — 304 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 182, 158, 232, 138, "single U-joint (Belden SSNBUJ750x3/8KB) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 181, 300, 232, 118, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 182, 158, 232, 125, "single U-joint (Belden SSNBUJ750x3/8KB) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 181, 300, 232, 375, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
 
-    ax.text(-55, 522, "GUIDE (TOP) CORNER — the mirror: the SAME web-vertical rail + captured skate. The\n"
+    ax.text(-25, 522, "GUIDE (TOP) CORNER — the mirror: the SAME web-vertical rail + captured skate. The\n"
             "KEEPER (capture) rollers react the plane's tip-force at the top instead of the load\n"
             "rollers taking gravity here — no separate mechanism; same cross-slides, U-joint, and\n"
             "plate. Only the load direction differs (all four corners share the part set).",
             fontsize=5.6, color=OUT, ha="left", va="top", **FONT, bbox=LBL_BG)
-    ax.text(-60, 558, "A — CORNER ASSEMBLY ELEVATION  (BOTTOM / weight corner; Yd × Z — film hangs below the rail, matches the 3D)",
+    ax.text(-40, 558, "A — CORNER ASSEMBLY ELEVATION  (BOTTOM / weight corner; Yd × Z — film hangs below the rail, matches the 3D)",
             fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
@@ -826,7 +826,7 @@ def view_b(ax):
     # callouts
     leader(ax, 70, cy + 30, 30, cy + 46, "SWING axis (vertical pin)", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, cy, 120, cy + 30, "TILT axis (perpendicular pin, into page)", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 23, cy - 9, 20, cy - 30, "to carrier / cross-slide", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 23, cy - 9, 10, cy - 40, "to carrier / cross-slide", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 141, cy + 9, 120, cy - 30, "to film-frame corner", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
 
     ax.text(0, 146, "B — U-JOINT DETAIL  (Belden SSNBUJ750x3/8KB, enlarged)",
@@ -893,10 +893,10 @@ def section_aa(ax):
     draw_dim_h(ax, 5, 43, -10, "38mm flange", offset=7, fs=5.4, color=DIM, above=False, font=FONT)
     # leaders
     leader(ax, 2, 38, -25, 28, "WEB (outboard,\nsplice face)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 11, 6, -26, -1, f"Ø{SKATE_ROLLER_OD:.1f} LOAD roller on Ø{SKATE_AXLE_OD:.0f} axle —\nwide face, ~4mm\nto web + lip", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 11, 6, -26, -10, f"Ø{SKATE_ROLLER_OD:.1f} LOAD roller on Ø{SKATE_AXLE_OD:.0f} axle —\nwide face, ~4mm\nto web + lip", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 17, 68, -26, 84, f"KEEPER roller Ø{SKATE_KEEPER_OD:.1f} — runs under\nthe top flange = anti-lift\n(shock / reversal)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 41, 12, 52, -2, "LIP on the bottom flange —\nstops X walk-off on swing", ha="left", fs=5.0, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 57, 2, 84, -12, "retainer bolt DOWN through the plate\n(saddle clamp — not through the rail)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 41, 12, 72, 5, "LIP on the bottom flange —\nstops X walk-off on swing", ha="left", fs=5.0, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, 57, 2, 80, -12, "retainer bolt DOWN through the plate\n(saddle clamp — not through the rail)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 104, 33, 96, 50, "→ cross-slide stack (Z/X)\n→ U-joint → film corner", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(-26, 107, "SECTION A-A — BOTTOM (weight) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -988,11 +988,11 @@ def view_c(ax):
     ax.add_patch(Circle((36, -4), 1.5, fc="#2A2A2E", ec=OUT, lw=0.5, zorder=10))            # hex-socket drive recess (outer end, flush)
     leader(ax, 44, 20, 68, 48, f"304 flat-bar WAY ¼×1½in ({XSLIDE_BAR_T:.2f}×{XSLIDE_BAR_W:.1f}mm)\n— Z tilt / X swing (true section + dims: Sheet 15)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 30, 25.5, 68, 36, f"UHMW pad {XSLIDE_UHMW_T:.1f}mm — self-lube, DRY (both faces)",
+    leader(ax, 30, 25.5, 22, 38, f"UHMW pad {XSLIDE_UHMW_T:.1f}mm — self-lube, DRY (both faces)",
            ha="left", fs=5.8, color="#8A6A2A", font=FONT, bbox=LBL_BG)
-    leader(ax, 12, 32, 68, 24, "304 carriage — the MOVING part",
+    leader(ax, 12, 32, 0, 45, "304 carriage — the MOVING part",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 36, -5, 46, -18, "adjustable GIB + brass-tip GRUB (SET) screw — headless, hex-socket, threaded THROUGH the\nbottom plate (turns from OUTSIDE); sets the drag that HOLDS the gravity Z axis, yet still hand-slides",
+    leader(ax, 36, -5, 0, -18, "adjustable GIB + brass-tip GRUB (SET) screw — headless, hex-socket, threaded THROUGH the\nbottom plate (turns from OUTSIDE); sets the drag that HOLDS the gravity Z axis, yet still hand-slides",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-40, 64, "C — CROSS-SLIDE SECTION  (Z tilt / X swing): UHMW pad on 304 flat bar; the gib holds the vertical axis",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1100,15 +1100,15 @@ def _stub_carrier(ax):
         ax.add_patch(plt.Rectangle((bx - 3, 0), 6, 3.4, fc=C_SS, ec=OUT, lw=0.7, zorder=9))  # head on the flange
     draw_dim_v(ax, 56, -6, 6, "9.5mm\n(3/8)", offset=9, fs=5.0, color=DIM, right=True,
                perpendicular=True, font=FONT)
-    leader(ax, cx + 4, 4, cx + 26, 24, "STUB (end-on) →\nU-joint hub (view B)",
+    leader(ax, cx, 4, cx - 26, 24, "STUB (end-on) →\nU-joint hub (view B)",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, cx + 9, 10, cx + 4, 30, "clamp screws pull the\nCAP onto the shaft",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, -27, 34, -39, "base-mount clamp (4040N12, 304 SS)\nbolts to the X-slide carrier",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-42, 32, "STUB → CARRIER CLAMP", fontsize=6.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-42, 25, "section across the shaft; frame end identical", fontsize=4.9, color=DIM, ha="left", va="top", **FONT)
-    ax.text(-42, 27, "section ACROSS the shaft; the film-frame end is identical", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
+    ax.text(-42, 60, "STUB → CARRIER CLAMP", fontsize=6.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-42, 53, "section across the shaft; frame end identical", fontsize=4.9, color=DIM, ha="left", va="top", **FONT)
+    ax.text(-42, 55, "section ACROSS the shaft; the film-frame end is identical", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
 
 
 def _rail_band(ax, y0, ylen, z0, z1, fc, z=4):

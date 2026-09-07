@@ -1831,7 +1831,7 @@ def attach_plan(ax):
     leader(ax, 320, cyy - 12, 250, -50, "X carriage — 304 on UHMW; cam-clamp locks swing", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 379, cyy + 18, 300, 58, "U-joint SWING pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 421, cyy - 16, 405, -52, "frame angle + ACM\n(runs along X)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-20, 88, "B — PLAN  (Yd × X; looking down Z) — the SWING slide + U-joint swing pin", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(40, 75, "B — PLAN  (Yd × X; looking down Z) — the SWING slide + U-joint swing pin", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def attach_tilt(ax):
@@ -1862,10 +1862,10 @@ def attach_tilt(ax):
     _rect(ax, cx - 12, -32, 34, 6, C_FRAME, z=7)                                            # frame angle
     ax.add_patch(plt.Rectangle((cx - 12, -40), 34, 8, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
     _joint(ax, cx, 37); _joint(ax, cx, -8)
-    leader(ax, cx - 15, 68, -94, 128, "Z carriage — 304 on UHMW + gib; cam-clamp locks tilt", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, cx - 24, 13, -94, 44, "U-joint TILT pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, cx + 20, -30, 44, -38, "frame angle + ACM", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-96, 330, "A — SECTION  (Yd × Z; looking along X) — the TILT slide + U-joint tilt pin", fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    leader(ax, cx - 15, 68, -64, 128, "Z carriage — 304 on UHMW + gib\ncam-clamp locks tilt", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx - 24, 13, -64, 44, "U-joint TILT pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx + 20, -30, 64, -38, "frame angle + ACM", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-56, 340, "A — SECTION  (Yd × Z; looking along X) — the TILT slide + U-joint tilt pin", fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def _corner_elevation(ax):
@@ -2061,7 +2061,7 @@ def sheet8():
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",
-    ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=65, wrap=128, font=FONT)
+    ], 20, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=65, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 8 OF 18",

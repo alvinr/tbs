@@ -40,6 +40,12 @@ file** — a release must not ship without a changelog entry:
 - **M12×65 zinc/SS split annotated as intentional.** The 18-8 SS (J2/J7 wet-corridor cleats) vs Gr.8.8
   zinc (dry structural through-bolts) split is a deliberate duty choice, not a duplicate SKU — documented
   in the registry so it doesn't read as accidental drift.
+- **M10 → M12 elimination reversed — M10 kept as a justified single-CSK family.** A host-by-host
+  countersink-depth check showed the light-trap's M10 CSK screws seat in thin hosts (8mm 6061 cap, 5mm
+  UV-HDPE housing, 4mm bearing disc) that can't take an M12 flat head; only F2/F3 (14×, into 12mm steel)
+  could, and bumping just those would leave M10 in place while mixing two CSK sizes in one subsystem.
+  Kept M10 uniform (like M4); `fastener-standardization.md` M10 section + family target (6→5) updated,
+  rationale annotated in `parts.py`.
 
 ## [0.11] — 2026-09-06
 

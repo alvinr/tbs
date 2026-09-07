@@ -21,7 +21,8 @@ confirm, not assume).
 
 ## Target end state
 
-Metric thread families **6 → 4**: **M6 · M8 · M12 · M4** (M5 and M10 both eliminated).
+Metric thread families **6 → 5**: **M4 · M6 · M8 · M10 · M12** (M5 eliminated → M6×16 CSK; **M10 KEPT** as a
+justified single-CSK family — the light-trap's thin hosts preclude M12, see below).
 Metric bolt lengths **~12 → ~7** as the grip-stack standardizations land.
 
 ## Per-family decisions
@@ -36,15 +37,22 @@ Itemize the pivot anchors + hinge brackets (see gaps).
 - **Verify:** the single wall length falls out of the standardized grip (likely ×70 + small shim allowance);
   the J2/J7 bar joint (~58 mm) either shares it or gets the crush-sleeve short-grip redesign.
 
-### M10 — eliminate entirely → M12
-Every M10 here is *our* choice, not bearing-dictated (the ring/collar taps into our own Ø240 mount plate).
-**Decision:** bump the cap-hub (4×, Ø120 PCD), the ring/collar (14×) and the door-frame through-bolt all to
-**M12**; delete the M10 family.
-- **Nuance:** those M10 joints are *countersunk machine screws*, so M12 gains short CSK variants alongside its
-  structural hex bolts — the win is removing a whole thread size (no M10 tap/drill/stock), not a length cut.
-- **Gate:** light-trap + hinged-panel (door frame) blueprints.
-- **Verify (tight one):** M12 edge-distance on the **8 mm 6061-T6 cap** at the Ø120 hub PCD; re-tap the
-  mount plate + hub flange to M12.
+### M10 — KEEP as a justified single-CSK family (2026-09-07 host check reversed the earlier "eliminate → M12")
+The earlier plan was to bump every M10 → M12. A host-by-host countersink-depth check (2026-09-07) reversed it:
+the light-trap's M10 CSK screws seat in **thin hosts that can't take an M12 flat head** —
+- **F1 cap→flange (8×) + F4 stile→cap (2×):** flush CSK in the **8 mm 6061-T6 cap** — an M12 CSK (~6.8 mm sink)
+  leaves only ~1 mm of aluminum under the cone (M10 leaves ~2.5 mm). Heads MUST be flush — the shell laps over the rim.
+- **F7 housing→panel (8×):** CSK in the **5 mm UV-HDPE housing** (M12 CSK sink > host).
+- **Bearing end-retainer (1×):** **Ø90 × 4 mm disc**.
+
+Only **F2/F3 (14× ring/collar → 12 mm steel plate)** could take M12 — but bumping just those would NOT remove M10
+(F1/F4/F7/bearing all stay) AND would put **two CSK sizes in one bearing-mount subsystem**, which is *worse* than
+the current uniform M10. (TBS-001's premise that M10 was "our free choice" holds for the ring/collar, but the
+cap/housing/disc hosts are physically sized for M10.)
+
+**Decision (2026-09-07):** **KEEP M10** as the light-trap's single CSK size — a justified family (like M4),
+forced by the thin hosts, not a free size to delete. One CSK driver/tap across F1–F7. The metric-family target
+is therefore **5, not 4** (M5 still retires into M6×16 CSK).
 
 ### M8 — one hex length, zinc standard with a wet-zone SS exception
 The hex M8 is already **×25** everywhere; the only split is material.
@@ -102,10 +110,10 @@ the count/cost gap is tracked, not fabricated.
 | M4×0.7 ×24 | cam-clamp bases → carriage | the carriage mount detail (film-plane) |
 | M12 anchors ×12 | pivot floor/roof mount plates | the floor cross-member / roof-rail engagement (Sheet 10) |
 | M12 ×6 | pivot hinge brackets → jamb | likely an existing M12 length — confirm at blueprint |
-| M10 (all) | light-trap + door | **moot** — being eliminated → M12 |
+| M10 (all) | light-trap + door | **KEPT** (2026-09-07) — the light-trap's single CSK size; already itemized in the `ll-fasteners` lot |
 
 ## The model to copy
 The M12 *fasteners* are already single-SKU across the whole camera — one plain nut (127 off), one flat washer
 (508), one lock washer (127) — because the grips were made to match. Apply that discipline to the lengths and
-the end state is ~7 metric bolt lengths (from ~12), ≈ −7 SKUs, M5 + M10 families gone — every change a
-grip/load check away, none of it touching a load path it shouldn't.
+the end state is ~7 metric bolt lengths (from ~12), ≈ −7 SKUs, the **M5** family gone (M10 stays — its thin
+light-trap hosts justify it) — every change a grip/load check away, none of it touching a load path it shouldn't.

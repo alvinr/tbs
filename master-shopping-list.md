@@ -14,18 +14,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,059 | $4,521 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,126 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,839 | $8,112 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,944 | $3,985 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,948 | $3,989 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,079 | $2,941 |
-| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,320 | $1,533 |
+| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,324 | $1,537 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,541** | **~$36,453** |
+| **TOTAL (base build + 50-print run)** | **~$27,547** | **~$36,447** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -238,13 +238,14 @@ indicative low–high estimates — get quotes before ordering.
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 52 ea | McMaster-Carr | film, shelf | $4 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
-| 36× #14 self-drilling TEK screws (bracket → post, J8/J9) | 36 ea | Home Depot | water | $11–$20 |
+| [36× #14 self-drilling TEK screws (bracket → post, J8/J9)](https://www.mcmaster.com/90822A620/) (90822A620) | 36 ea | McMaster-Carr | water | $19 |
 | 6× steel angle brackets (corridor panel → IBC uprights) | 6 ea | Home Depot | water | $15–$39 |
 | Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | 1 lot | Home Depot | water | $10–$11 |
 | [Door pull handle + misc mounting hardware](https://www.mcmaster.com/3570N12/) (3570N12) | 1 ea | McMaster-Carr | interior | $39 |
 | Personnel-door hinges (heavy-duty, ×3) | 3 ea | Home Depot | interior | $15–$24 |
 | Weatherproof door latch/lock set | 1 ea | Home Depot | interior | $20–$45 |
-| Zinc machine screws — filter housings to ply tee-nuts (1/4-20) | 8 ea | Home Depot | water | $13 |
+| [Machine screws — filter housings to ply tee-nuts (1/4-20)](https://www.mcmaster.com/90272A552/) (90272A552) | 8 ea | McMaster-Carr | water | $1 |
+| [1/4" flat washer — filter-housing machine screws](https://www.mcmaster.com/90850A100/) (90850A100) | 8 ea | McMaster-Carr | water | $1 |
 | [Stainless self-drilling (TEK) screw — ACM → 6061 frame](https://www.mcmaster.com/90599A716/) (90599A716) | 30 ea | McMaster-Carr | film | $19 |
 | [McMaster 5128A63 low-profile hold-down toggle clamp (rail brake)](https://www.mcmaster.com/5128A63/) (5128A63) | 12 ea | McMaster-Carr | film | $155 |
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
@@ -258,15 +259,15 @@ indicative low–high estimates — get quotes before ordering.
 | [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91294A328/) (91294A328) | 1 lot | McMaster-Carr | lightlock | $95 |
 | [12" round pull handle — McMaster 1871A65](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | lightlock | $6 |
 | [1/8" blind rivets + backup washers — brush-holder flange → drum OD](https://www.mcmaster.com/97447A015/) (97447A015) | 1 lot | McMaster-Carr | lightlock | $16 |
-| [1/8" 18-8 SS multigrip blind rivets — rim-angle → frame beam (100-pack)](https://www.mcmaster.com/97525A420/) (97525A420) | 1 pack-100 | McMaster-Carr | lightlock | $13 |
-| [1/8" 18-8 SS multigrip blind rivets — housing→frame lap (100-pack)](https://www.mcmaster.com/97525A420/) (97525A420) | 1 pack-100 | McMaster-Carr | lightlock | $13 |
-| [1/8" 18-8 SS multigrip blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A420/) (97525A420) | 1 pack-100 | McMaster-Carr | lightlock | $13 |
+| [1/8" 18-8 SS blind rivets — rim-angle → frame beam (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
+| [1/8" 18-8 SS blind rivets — housing→frame lap (100-pack)](https://www.mcmaster.com/97525A435/) (97525A435) | 1 pack-100 | McMaster-Carr | lightlock | $15 |
+| [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
 | [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | 58 ea | Harbor Freight | clamp | $115–$173 |
 | [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 2 ea | McMaster-Carr | panel | $61 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | panel | $6 |
 | [1/4"-20 zinc machine screws (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-x-1-in-Combo-Truss-Head-Zinc-Plated-Machine-Screw-4-Pack-826771/317479749) (826771) | 10 4-pack | Home Depot | water | $16 |
-| [1/8" 18-8 SS multigrip blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A420/) (97525A420) | 2 pack | McMaster-Carr | panel | $25 |
+| [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | 2 pack | McMaster-Carr | panel | $29 |
 | 39× cushioned pipe P-clips (3/4" pipe) | 39 ea | Home Depot | water | $21–$37 |
 | [1/2"–1 1/4" SS hose clamp (pump flex jumpers)](https://www.homedepot.com/p/Everbilt-1-2-1-1-4-in-Stainless-Steel-Hose-Clamp-10-Pack-671255E/202262870) (202262870) | 2 10-pack | Home Depot | water | $36 |
 | 12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
@@ -285,10 +286,10 @@ indicative low–high estimates — get quotes before ordering.
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Home Depot | water | $19 |
-| Half-lap hold-down screws (#14 TEK + washer) | 4 ea | Bridge Fasteners | ibc-frame | $2–$4 |
+| [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,836–$2,108** |
+| **fasteners-hardware subtotal** | | | | **$1,842–$2,104** |
 
 ### plastics-sheet
 
@@ -481,8 +482,8 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 17 | aluminum, fasteners-hardware, steel-structural | $2,042–$2,683 |
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,024 |
-| Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,817–$1,963 |
-| McMaster-Carr | 68 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,699–$1,706 |
+| Home Depot | 55 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,794–$1,930 |
+| McMaster-Carr | 72 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,730–$1,737 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -535,8 +536,8 @@ indicative low–high estimates — get quotes before ordering.
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Wurth Baer Supply | 1 | fasteners-hardware | $24 |
 | Local machine shop | 1 | aluminum | $12–$18 |
-| Bridge Fasteners | 2 | fasteners-hardware | $9–$15 |
 | misterworker | 1 | plumbing-fittings | $14 |
+| Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
 | Steel offcut | 1 | steel-structural | $5 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
 | offcuts | 1 | water-equipment | $0 |

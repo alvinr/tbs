@@ -105,11 +105,12 @@ screw can share one.
   screw SKU pending). *(−1 SKU; the 5/16 thread family gone.)*
 - **#14 self-drillers — the two 410-SS *structural* anchors are grip-justified, NOT merged** (the IBC foot
   needs 3¼″ through 6mm plate + 28mm ply + steel; the walkway leg needs 2″ — different stacks, like the M12
-  wall lengths). The two plain **TEKs** (`bracket-tek-screws` + `walkway-arm-holddown`, same #14×1″ 410-SS
-  family) unify to one SKU when sourced (both unpriced ests today).
-- **⅛″ blind rivets — DONE (2026-09-07).** One multigrip SKU **97525A420** replaces the 97525A425 (0.188–0.25″)
-  + 97525A435 (0.313–0.375″) grip pair across all four rivet lines (shell / housing / rim / panel surround).
-  *(−1 SKU.)*
+  wall lengths). The two plain **TEKs** (`bracket-tek-screws` + `walkway-arm-holddown`) — **DONE (2026-09-07):**
+  unified to one SKU, McMaster **90822A620** (#14×1″ HWH 410-SS), the hold-down adding a 1/4″ SS washer (92141A223).
+- **⅛″ blind rivets — consolidation EVALUATED, INFEASIBLE (2026-09-07).** No single 1/8″ grip spans both laps:
+  the shell/rim laps are 0.188–0.25″ (97525A425) and the housing/surround laps are 0.313–0.375″ (97525A435),
+  and the candidate multigrip 97525A420 is only 0.126–0.187″ (too thin for either). **Both SKUs stay** — the
+  two grips are duty-separated, like the M12 wall lengths.
 
 ## Itemization — BOM gaps (fasteners used but not discrete SKUs)
 Every gap is blocked on the same thing: the **length is a blueprint dim** we should confirm, not assume

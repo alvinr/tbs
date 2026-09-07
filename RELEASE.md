@@ -46,12 +46,16 @@ file** — a release must not ship without a changelog entry:
   could, and bumping just those would leave M10 in place while mixing two CSK sizes in one subsystem.
   Kept M10 uniform (like M4); `fastener-standardization.md` M10 section + family target (6→5) updated,
   rationale annotated in `parts.py`.
-- **⅛″ blind rivets consolidated to one multigrip SKU (97525A420).** The two grip SKUs (97525A425
-  0.188–0.25″ / 97525A435 0.313–0.375″) collapse to a single multigrip rivet across all four rivet lines
-  (light-trap shell/housing/rim + hinged-panel surround). −1 SKU, cheaper ($12.59/100).
+- **⅛″ blind rivets kept as two grip SKUs (consolidation evaluated, infeasible).** No 1/8″ rivet grip spans
+  both the shell/rim laps (0.188–0.25″) and the housing/surround laps (0.313–0.375″), so 97525A425 +
+  97525A435 both stay. (Recorded in TBS-001.)
 - **Filter-housing ply-mount 5/16″-18 → 1/4″-20.** The 5/16″ tee-nut + machine screw existed only for the 3
-  Big Blue filter housings; folded into the 1/4″-20 ply-mount standard (1/4-20 × 2½″ + a washer spanning the
-  bracket ear bore). Retired the 5/16″-18 thread family; 1/4″ tee-nut qty absorbed the 6 housings.
+  Big Blue filter housings; folded into the 1/4″-20 ply-mount standard (1/4-20 × 2½″ McMaster 90272A552 + a
+  1/4″ washer 90850A100 spanning the bracket ear bore). Retired the 5/16″-18 thread family; 1/4″ tee-nut qty
+  absorbed the 6 housings.
+- **#14 self-drilling TEK unified to one SKU (McMaster 90822A620).** The corridor-bracket TEKs and the walkway
+  half-lap hold-down (same #14×1″ HWH 410-SS family) now share one firm SKU (were separate unpriced ests); the
+  hold-down adds a 1/4″ SS washer (92141A223).
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

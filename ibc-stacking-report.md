@@ -496,8 +496,8 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | M12×100 hex through-bolt, Grade 8.8 zinc | J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate: BEARING-TYPE, both bolts ABOVE the arm (30mm apart) as a tension group with the plate bearing compression at its base — clears the welded arm + the corridor bottom rail; the central column keeps max edge distance on both the plate and the post. Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab. | 4 ea | McMaster-Carr | $8–$10 |
 | Walkway-arm end + backing plates (J6) | 65×155×8mm mild-steel plate (arm 50.8 wide + weld toe; 155 tall so the upper bolt keeps ≥1.5·D edge to the plate top), 2× Ø13 for M12 in a central column, both above the arm at 30mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate. | 4 ea | Local fab | $12–$24 |
 | Walkway-arm J6 crush sleeves | Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per J6 through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut. | 4 ea | Local fab | $3–$6 |
-| Half-lap hold-down screws (#14 TEK + washer) | 1× #14 self-drilling TEK screw + washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). 410 SS self-driller, same family as the J8/J9 bracket screws. | 4 ea | Bridge Fasteners | $2–$4 |
-| **Ibc-Frame total** | | | | **$1,309–$1,872** |
+| [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 1× #14 self-drilling TEK screw + SS flat washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). The SAME #14×1 HWH 410-SS TEK as the J8/J9 bracket screws (McMaster 90822A620 $12.88/25) + a 1/4 SS flat washer (McMaster 92141A223 $13.48/100) under each head. Firm 2026-09-07. | 4 ea | McMaster-Carr | $3 |
+| **Ibc-Frame total** | | | | **$1,310–$1,870** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -517,7 +517,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,309<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,872<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,310<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,871<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

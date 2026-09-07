@@ -58,7 +58,7 @@ WALL_T     = 1.6      # container corrugated side-wall sheet thickness (mm)
 
 # M12 fasteners (coarse 1.75): tensile stress area
 AS_M12   = 84.3       # mm^2
-N_HANGER_BOLTS = 2    # M12x65 Gr.8.8 per wall hanger (one identical hanger per bar)
+N_HANGER_BOLTS = 2    # M12x70 Gr.8.8 per wall hanger (one identical hanger per bar)
 N_CLEAT_BOLTS  = 1    # M12x65 A2-70 per bar-end L-cleat (1 horizontal bolt through the L leg + bar web)
 FUB_88   = 800.0      # Gr.8.8 ultimate (MPa)
 FUB_A2   = 700.0      # A2-70 (18-8 SS) ultimate (MPa)
@@ -147,7 +147,7 @@ def _fmt(r):
         flag = "  <-- GOVERNS / FAIL" if sf < 1.0 else ("  <-- marginal" if sf < 1.5 else "")
         lines.append(f"  {name:<34}{d:>9.0f}{unit:<3}{c:>9.0f}{unit:<3}{sf:>7.2f}{flag}")
     row(f"front bar bending (Z={z:.0f}mm3, wk)", r["bar"], "Nm")
-    row("wall-hanger bolts (2x M12x65 8.8)", r["hanger_bolt"], "N")
+    row("wall-hanger bolts (2x M12x70 8.8)", r["hanger_bolt"], "N")
     row("wall bearing (1.6mm, 2 holes)", r["wall_bear"], "N")
     row("bar->upright cleat (1x M12x65 A2)", r["cleat"], "N")
     row("lashing strap (vert tie-down)", r["strap"], "N")
@@ -414,7 +414,7 @@ def render_png(path=None):
     rows = [
         ("Front retaining bars ×2/face (μ0.20, no mat)", f"{rL['bar'][0]:,.0f} N·m", f"{rL['bar'][1]:,.0f} N·m", rL['bar'][2], "gov"),
         ("   … same bars + anti-slip mat (μ0.60)",       f"{rLm['bar'][0]:,.0f} N·m", f"{rLm['bar'][1]:,.0f} N·m", rLm['bar'][2], ""),
-        ("Wall-hanger bolts J3 (2× M12×65, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
+        ("Wall-hanger bolts J3 (2× M12×70, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
         ("Corrugated-wall bearing (backing plate)",      f"{rL['wall_bear'][0]:,.0f} N", f"{rL['wall_bear'][1]:,.0f} N", rL['wall_bear'][2], ""),
         ("Corridor cleat bolts J2 (1× M12×65, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
         ("Lash ring + 2\" strap (vertical, per stack)",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),

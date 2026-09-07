@@ -207,9 +207,9 @@ def cross_refs():
 # Walkway-scoped marks (WF/WW) so they can't collide with the IBC-frame J1–J9 / W1–W5.
 # Torque for M12 Gr.8.8 through the (dry) corrugated wall ~90 N·m (matches the IBC J3/J6 wall bolts).
 FASTENERS = [
-    ("WF1", "Standard bracket → wall rib", "M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/)",
+    ("WF1", "Standard bracket → wall rib", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "3/brkt × 13 = 39", "~90 N·m", "flat both ends", "plain nut + split-lock"),
-    ("WF2", "Widened bracket → wall rib", "M12×65 hex, [91280A728](https://www.mcmaster.com/91280A728/)",
+    ("WF2", "Widened bracket → wall rib", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),

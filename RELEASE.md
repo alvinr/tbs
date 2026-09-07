@@ -60,6 +60,14 @@ file** — a release must not ship without a changelog entry:
   (Item 8) were only a drawing label — never in the registry. Itemized (McMaster 92314A744 + M12 washers
   93475A290, +$15 optics) and switched from socket head to **hex** to match the structural standard; the pinhole
   plate drawing was regenerated.
+- **M12 wall through-bolts unified to one zinc length (M12×70).** The zinc wall bolts split ×65/×70; the deepest
+  joint (walkway corner plates, ~54 mm) needs ×70, so all 123 zinc wall through-bolts (IBC J3 + film wall-sandwich
+  + walkway brackets/cleats/corners) → **M12×70** (`91280A732`), padding the shorter grips with a washer. Retired
+  the zinc M12×65 (`91280A728`); J2/J7 cleats stay M12×65 18-8 SS (different member/material). Cascaded through
+  parts.py, costing (+$15), the ibc-frame/load-case/film sheets, and every affected report; **no geometry, no 3D
+  re-send** (Lever A shim).
+- **Filter bracket switched to the bracket-only Pentair 244718** (was the 150061 kit) — we supply our own
+  1/4-20 machine screws + tee-nuts, so the kit's hardware was redundant (price/URL to confirm at order).
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

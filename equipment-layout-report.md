@@ -127,7 +127,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Panel mount | the deep box carries the (forward) Corridor Plumbing Panel + drain-riser spine on its back uprights, and the right-walkway cantilever arms on its front uprights |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~90kg (4 uprights + rings + 4 feet + front bars + hangers + exterior wall plates + rear-panel brackets) |
-| Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$1,310–$1,871<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
+| Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$1,312–$1,873<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
 
 **Why 1,000L caged composite (all four totes):**
 
@@ -149,7 +149,7 @@ Z=1,341mm (static sideways tip threshold ≈41°, ≈21% of the ISO gross limit)
 |------|----------|-------|
 | 2×2×0.120in steel (A500) | Pacific Coast Steel, Santa Fe Springs CA | A500 Grade B; ~$4/linear foot |
 | Weld-on lashing rings (×8) | McMaster-Carr #3028T31 | 6,600 lb/ring; 3,333 lb assembly (2" strap-limited) |
-| M12 bolts (wall-hanger through-bolts ×16 + front-bar L-cleats ×16) | McMaster-Carr or local hardware | M12×65 Gr.8.8 zinc through-bolts (span 8mm plate + corrugation + 4mm hanger) for the exterior plates; M12×65 18-8 SS for the front-bar L-cleats (J2 corridor + J7 wall end, 1 horizontal bolt each) |
+| M12 bolts (wall-hanger through-bolts ×16 + front-bar L-cleats ×16) | McMaster-Carr or local hardware | M12×70 Gr.8.8 zinc through-bolts (span 8mm plate + corrugation + 4mm hanger) for the exterior plates — the single standardized zinc wall length; M12×65 18-8 SS for the front-bar L-cleats (J2 corridor + J7 wall end, 1 horizontal bolt each) |
 | Simpson-style wall joist hangers (×4) | Simpson Strong-Tie or local | folded 4mm plate, through-bolted to exterior backing plate |
 | Exterior wall backing plates (×4) | Metal Supermarkets / local | 100×135×8mm steel, hex heads outside |
 

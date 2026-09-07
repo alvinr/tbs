@@ -223,14 +223,14 @@ All items ship within the United States. Local Southern California pickup noted 
 | [2" black Gorilla Tape](https://www.homedepot.com/p/316372144) (106718) | Gorilla 30 yd × 1.88" black tape | 6 roll | Home Depot / Amazon | $60 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×250, seat flush at the top so both M12 wall-bolt rows sit clear below it) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (120×96, sized for ≥18mm M12 edge). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate 250mm for seat-flush-top + full gusset weld) pending quote. | 1 sheet | Metal Supermarkets | $160 |
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 10mm A36 mild-steel plate, 610×170mm (24×7in) — nests the 4 saddle seats (150×110). Cut to size; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $68 placeholder (scaled from the 6-saddle $102 line at 4/6) pending quote. | 1 sheet | Metal Supermarkets | $68 |
-| [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | ICP-12: wall-sandwich through-bolt (4/saddle ×4 + 4/far-left flange bracket ×2 + 4 spare = 28), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 28 ea | McMaster-Carr | $45 |
-| [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×65 wall-sandwich bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 28 ea | McMaster-Carr | $7 |
-| [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 112 ea | McMaster-Carr | $11 |
-| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100. | 28 ea | McMaster-Carr | $3 |
+| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | ICP-12: wall-sandwich through-bolt (4/saddle ×4 + 4/far-left flange bracket ×2 + 4 spare = 28), sized for the ~50mm 30mm-corrugation grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10 → 3 packs for 28. Pad with M12 flat washers to the grip. | 28 ea | McMaster-Carr | $49 |
+| [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 wall-sandwich bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 28 ea | McMaster-Carr | $7 |
+| [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 112 ea | McMaster-Carr | $11 |
+| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100. | 28 ea | McMaster-Carr | $3 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×2 left (BL-near, TL-near) + 2 spare | 6 ea | McMaster-Carr / Maedler | $71 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91310A535/) (91310A535) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 0.2" (5.08mm) 795M51 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the film plane wets during development; 304 is adequate, no chloride). McMaster 91310A535 $13.91/pack of 50 firm (2026-08-13). | 8 ea | McMaster-Carr | $2 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing (×8) + J1/J2 cross-slide through-bolts (×32, 2026-09-06). Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF (matches the bolt). $7.53/pack of 100. | 40 ea | McMaster-Carr | $3 |
-| **Film total** | | | | **$3,914–$4,278** |
+| **Film total** | | | | **$3,918–$4,282** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -257,7 +257,7 @@ The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_widt
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,059<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,063<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

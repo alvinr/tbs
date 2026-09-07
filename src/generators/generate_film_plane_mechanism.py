@@ -2180,7 +2180,7 @@ def sheet11():
         "floor-to-ceiling and CARRIES the rail's vertical weight (the ~272mm stub is anchored to it). So the bracket "
         "here is a LATERAL WALL TIE, not a load-bearing seat — no seat/gusset (unlike the pinhole-wall saddles).",
         "ATTACHMENT:  the rail END butts the INNER face of a 12mm flange plate; the flange + an 8mm EXTERIOR backing "
-        "plate sandwich the corrugated far wall, drawn up by 4× M12×65 through-bolts (hex heads outside). The bolt "
+        "plate sandwich the corrugated far wall, drawn up by 4× M12×70 through-bolts (hex heads outside). The bolt "
         "gauge is narrowed to 76mm (X222 / X298) so the bolts CLEAR the Ø89 post (X131–220).",
         "CLEARANCES:  the TL (top) bracket sits just BELOW the Z2368 roof-mount plate; the BL (bottom) bracket sits "
         "ABOVE the Z0–20 floor-mount plate. A full 150-tall saddle would foul the roof-mount plate — which is why "

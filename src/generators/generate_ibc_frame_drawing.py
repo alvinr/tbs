@@ -633,7 +633,7 @@ def sheet1():
 
     leader(ax, (30), (1500 + FRAME_RHS / 2),
            (330), (1700),
-           "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 J7\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×65 (J3), head out / nut in",
+           "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 J7\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×70 (J3), head out / nut in",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -675,7 +675,7 @@ def sheet1():
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
         f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into",
          "   a Simpson-style wall joist",
-        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×65) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
+        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
@@ -1192,7 +1192,7 @@ def sheet4():
     for dz in (75, -75):
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # 2 wall through-bolts: fix HANGER to wall — NOT the bar
     draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150mm")
-    leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×65 (J3)\nHANGER→wall", fs=6, font=FONT, ha="left")
+    leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×70 (J3)\nHANGER→wall", fs=6, font=FONT, ha="left")
     leader(ax, jbx, zc + 28, wy + 60, zc + 85, "M12 (J7)\nbar→seat, centered", fs=6, font=FONT, ha="left")
     leader(ax, wy + 14, zc - 25, wy - 100, zc - 40, "seat↔plate\nweld (W5)", fs=6, font=FONT, ha="left")
     leader(ax, wy - 22, zc - 100, wy - 40, zc - 128, "60×205×8 A36\n(hex heads out)", fs=6, font=FONT, ha="right")

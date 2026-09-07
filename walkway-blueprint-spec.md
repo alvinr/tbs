@@ -154,7 +154,7 @@ they can't drift.
 ## Phase B — Fastener + weld schedule
 
 - [x] **Fastener schedule J1…Jn** (size/grade/torque/washer/locker, cited): std bracket wall bolt
-  (M12×65 91280A728); widened bracket wall bolt (M12×65); right cleat / combined-corner bolt (M12×70
+  (M12×70 91280A732); widened bracket wall bolt (M12×70); right cleat / combined-corner bolt (M12×70
   91280A732); floor-leg foot screw (#14×2 410 SS self-driller); grating clips. (The center-arm end-plate
   bolt M12×100 + the half-lap hold-down screws that fix the two arms belong to the **IBC-frame** J6
   schedule — cross-ref, not scheduled here.)

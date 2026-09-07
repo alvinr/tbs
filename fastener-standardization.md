@@ -28,15 +28,18 @@ Metric bolt lengths **~12 → ~7** as the grip-stack standardizations land.
 
 ## Per-family decisions
 
-### M12 — force the wall joints to one length (Lever B)
-The 65/70 split is *grip-justified today* (hanger ~40 mm vs cleat ~54 mm), so it is not a free merge.
-**Decision:** standardize the wall-joint grip stacks — uniform backing-plate + flange thicknesses,
-designed to the 30 mm-corrugation max — so the hanger / cleat / corner-plate joints share **one grip →
-one wall length**; keep **M12×100** for the deep J6 arm joint. Unify the **×65 zinc/SS** material.
-Itemize the pivot anchors + hinge brackets (see gaps).
-- **Gate:** IBC-frame + walkway blueprints (grip stack + backing-plate thicknesses).
-- **Verify:** the single wall length falls out of the standardized grip (likely ×70 + small shim allowance);
-  the J2/J7 bar joint (~58 mm) either shares it or gets the crush-sleeve short-grip redesign.
+### M12 — wall joints unified to one zinc length: M12×70 — DONE (2026-09-07, via Lever A)
+The zinc wall through-bolts split ×65 / ×70. The deepest joint (walkway cleats/corner plates, ~54 mm through
+the 10 mm corner plate) genuinely needs ×70 — at ~54 mm an M12×65 leaves ~0 thread past the nut. So rather than
+the Lever-B geometry route (thin the load-bearing 10 mm corner plate, which carries the walkway right beam +
+the bottom film rail — not worth a re-check + 3D re-send for 5 mm), **Lever A**: buy the longer ×70 everywhere
+and pad the shorter 48–50 mm grips (IBC J3, film wall-sandwich, walkway brackets) with a washer.
+**Decision (2026-09-07):** all **123 zinc wall through-bolts → M12×70** (`91280A732`); retired the zinc M12×65
+(`91280A728`). Keep **M12×100** for the deep J6 arm joint. The **×65/×70 material "unify"** was resolved
+separately — the split is duty-based (18-8 SS wet-corridor J2/J7 vs Gr.8.8 zinc dry wall), kept + annotated,
+NOT merged. The **J2/J7 cleat stays M12×65 18-8 SS** — a different member (cleat-leg grip ~36–58 mm), material,
+and thread line from the wall-through bolts; the crush-through of the horizontal bolt through the hollow bar is
+a fab-review item (TODO.md), not a length change. Free (Lever A), no geometry, no 3D re-send. *(−1 zinc SKU.)*
 
 ### M10 — KEEP as a justified single-CSK family (2026-09-07 host check reversed the earlier "eliminate → M12")
 The earlier plan was to bump every M10 → M12. A host-by-host countersink-depth check (2026-09-07) reversed it:

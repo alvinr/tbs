@@ -99,7 +99,7 @@ TYPES = [
 #     belt-and-suspenders call). Do NOT spec new 316 for corrosion alone — 304 covers it.
 #   • 410 (martensitic) — self-drilling screws ONLY (`*-floor-anchor`, `walkway-floor-anchors`); needed to
 #     self-drill steel (304 can't). Functional, not corrosion.
-#   • Grade 8.8 ZINC — kept ONLY for the M12 structural through-bolts (`bolt-m12x65`/`x70`): strength
+#   • Grade 8.8 ZINC — kept ONLY for the M12 structural through-bolts (`bolt-m12x70` wall + `bolt-m12x100` J6): strength
 #     (800 MPa) is the driver and the heads sit OUTSIDE the container (inspectable/replaceable), shank in
 #     the wall (not immersed). Going stainless without a strength loss would need A4-80 (=316) — not worth
 #     it here (Alvin 2026-08-13). Small M6/M8 wet-zone fasteners went zinc→304 (modest load, A2-70 fine).
@@ -231,7 +231,7 @@ PARTS: list[Part] = [
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
          audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
     Part("filter-skid-frame", "Big Blue housing mounting brackets (×3)", "water-equipment",
-         "water", 3, "ea", 10.50, 10.50, "Fresh Water Systems", part_no="150061", url="https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings", spec="Pentair single-housing mounting bracket, one per 4.5×20 Big Blue (×3), machine-screwed to the 18mm ply backing via back-face pronged tee-nuts (#30, re-torqueable). Purpose-built — replaces the welded slotted-angle frame (2026-07-27). Pentair P/N (clarified 2026-09-07): the zinc BRACKET ALONE is 244718; 150061 is the KIT (bracket + hardware). We supply our own 1/4-20 machine screws + tee-nuts, so the bracket-only 244718 avoids paying for the kit's redundant hardware — confirm the 244718 price at order (Fresh Water Systems 150061 $10.50 held as the firm placeholder).", panel="Pinhole Wall"),
+         "water", 3, "ea", 10.50, 10.50, "Pentair", part_no="244718", spec="Pentair 244718 zinc single-housing mounting bracket (BRACKET ONLY), one per 4.5×20 Big Blue (×3), machine-screwed to the 18mm ply backing via back-face pronged tee-nuts (#30, re-torqueable). Purpose-built — replaces the welded slotted-angle frame (2026-07-27). Switched 2026-09-07 from the 150061 KIT (bracket + hardware) to the bracket-only 244718 — we supply our own 1/4-20 machine screws + tee-nuts, so the kit's hardware was redundant. Price/URL pending for 244718 ($10.50 held as a conservative placeholder — bracket-only ≤ the kit).", panel="Pinhole Wall"),
     # filter-ubracket RETIRED 2026-07-22 — Big Blue housings have mounting-hole ears; lag-screw straight to the ply backing
     # ── #30 captive-tee-nut conversion (2026-08-07): every REMOVABLE ply-mount joint moves from a
     #    wood/lag screw to a machine screw into a back-face 4-prong tee-nut (re-torqueable, no thread-strip).
@@ -368,7 +368,7 @@ PARTS: list[Part] = [
     Part("ibcf-feet", "12mm steel plate, 150 × 150 cut", "steel-structural",
          "ibc-frame", 4, "ea", 5, 10, "Metal Supermarkets", spec="Deep-box upright floor flange feet (one per leg; front feet reach under the tray)"),
     Part("ibcf-hangers", "4mm folded plate", "steel-structural",
-         "ibc-frame", 8, "ea", 7.5, 12.5, "local fab", spec="Simpson-style U-pocket wall joist hangers — 8 IDENTICAL 2-bolt hangers, one per front retaining bar (the pair uses identical hangers for fab simplicity — Alvin 2026-08-14). Each through-bolted (2× M12×65) to its own exterior 60×205×8 backing plate on the outside of the container side wall. Wall penetrations unchanged at 16 (8 hangers × 2 = old 4 × 4)."),
+         "ibc-frame", 8, "ea", 7.5, 12.5, "local fab", spec="Simpson-style U-pocket wall joist hangers — 8 IDENTICAL 2-bolt hangers, one per front retaining bar (the pair uses identical hangers for fab simplicity — Alvin 2026-08-14). Each through-bolted (2× M12×70) to its own exterior 60×205×8 backing plate on the outside of the container side wall. Wall penetrations unchanged at 16 (8 hangers × 2 = old 4 × 4)."),
     Part("ibcf-dring", "Weld-on lashing ring, 1½\" ID", "fasteners-hardware",
          "ibc-frame", 8, "ea", 4.95, 4.95, "McMaster-Carr", part_no="3028T31",
          url="https://www.mcmaster.com/3028t31/",
@@ -387,17 +387,17 @@ PARTS: list[Part] = [
     Part("bolt-m12x65-ss", "M12×65 hex bolt, 18-8 SS (partial thread)", "fasteners-hardware",
          "ibc-frame", 16, "ea", 9.95 / 5, 9.95 / 5, "McMaster-Carr", part_no="92800A481",
          url="https://www.mcmaster.com/92800A481/",
-         spec="Front-bar fasteners: 8 = corridor-end L-cleats (J2, 1 HORIZONTAL bolt per cleat × 8 bars — through the L's vertical leg + the bar's TALL 50mm web, so the Ø14 hole gets ~18mm edge; the L-corner carries the load, the bolt secures the unsupported direction — redesigned from 2 vertical bolts, Alvin 2026-08-18) + 8 = wall-end vertical retention bolts (J7, 1 CENTERED per bar, down through the bar into the pocket seat, ~58mm stack). M12×65 reused for BOTH (>40mm needed; partial-thread smooth shank spans the grip; the 65 length is long for J2's ~36mm grip but avoids a second SKU — pad/trim at fab). McMaster 92800A481: M12×1.75 × 65mm 18-8 SS partial-thread hex — firm $9.95/pack of 5 (2026-08-17, Alvin; 16 used → 4 packs). Full-thread alternative: 92314A595 $11.92/5. 18-8 SS here (vs the Gr.8.8 zinc M12×65 91280A728 used for the dry structural through-bolts) is a deliberate DUTY choice, not a duplicate SKU: the J2/J7 cleats sit in the wet plumbing corridor, so stainless resists the damp; the zinc M12×65 stays on the dry wall-hanger/walkway/film joints."),
-    Part("bolt-m12x65", "M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
-         "ibc-frame", 16, "ea", 15.95 / 10, 15.95 / 10, "McMaster-Carr", part_no="91280A728",
-         url="https://www.mcmaster.com/91280A728/",
-         spec="IBC wall-hanger through-bolts (2 each × 8 hangers = 16) — through the corrugated side wall to the exterior 60×205×8 backing plate (hex heads outside). Grip = 8mm plate + ~30mm corrugation + 4mm hanger flange ≈ 42–54mm → M12×65 partial-thread (the fully-threaded M12×40 could not span it). $15.95/pack of 10 → 2 packs for 16. Pad with 1–2 M12 flat washers if the actual corrugation is <30mm."),
+         spec="Front-bar fasteners: 8 = corridor-end L-cleats (J2, 1 HORIZONTAL bolt per cleat × 8 bars — through the L's vertical leg + the bar's TALL 50mm web, so the Ø14 hole gets ~18mm edge; the L-corner carries the load, the bolt secures the unsupported direction — redesigned from 2 vertical bolts, Alvin 2026-08-18) + 8 = wall-end vertical retention bolts (J7, 1 CENTERED per bar, down through the bar into the pocket seat, ~58mm stack). M12×65 reused for BOTH (>40mm needed; partial-thread smooth shank spans the grip; the 65 length is long for J2's ~36mm grip but avoids a second SKU — pad/trim at fab). McMaster 92800A481: M12×1.75 × 65mm 18-8 SS partial-thread hex — firm $9.95/pack of 5 (2026-08-17, Alvin; 16 used → 4 packs). Full-thread alternative: 92314A595 $11.92/5. 18-8 SS here (vs the Gr.8.8 zinc M12×70 91280A732 used for the dry structural wall through-bolts) is a deliberate DUTY choice, not a duplicate SKU: the J2/J7 cleats sit in the wet plumbing corridor, so stainless resists the damp; the zinc M12×70 stays on the dry wall-hanger/walkway/film joints. (The J2/J7 cleat stays ×65 — its ~36–58mm cleat-leg grip differs from the ~42–54mm wall-through grip, and it's a different material line.)"),
+    Part("bolt-m12x70", "M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
+         "ibc-frame", 16, "ea", 17.36 / 10, 17.36 / 10, "McMaster-Carr", part_no="91280A732",
+         url="https://www.mcmaster.com/91280A732/",
+         spec="IBC wall-hanger through-bolts (2 each × 8 hangers = 16) — through the corrugated side wall to the exterior 60×205×8 backing plate (hex heads outside). Grip = 8mm plate + ~30mm corrugation + 4mm hanger flange ≈ 42–54mm → M12×70, the single standardized zinc wall length (2026-09-07 — covers all 42–54mm wall grips with proper nut engagement; the fully-threaded M12×40 could not span it). $17.36/pack of 10 → 2 packs for 16. Pad with M12 flat washers to the grip."),
     Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
-         "ibc-frame", 16, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut (inside the container) — M12×65 wall-hanger through-bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
+         "ibc-frame", 16, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut (inside the container) — M12×70 wall-hanger through-bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
     Part("washer-m12-flat", "M12 flat washer, zinc", "fasteners-hardware",
-         "ibc-frame", 64, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×65 wall-hanger bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100."),
+         "ibc-frame", 64, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×70 wall-hanger bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100."),
     Part("washer-m12-split", "M12 split lock washer, zinc", "fasteners-hardware",
-         "ibc-frame", 16, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×65 wall-hanger bolts (plain nut + split = locked). $11.97/pack of 100."),
+         "ibc-frame", 16, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×70 wall-hanger bolts (plain nut + split = locked). $11.97/pack of 100."),
     Part("ibcf-wall-backing", "Steel backing plate 60×205×8mm", "steel-structural",
          "ibc-frame", 8, "ea", 4, 7, "Metal Supermarkets", spec="Exterior wall backing plates — 8 identical, one per 2-bolt hanger — flat 60×205×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 2× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through."),
     Part("ibcf-cleat-backing", "L-cleat nut backing plate 40×50×8mm", "steel-structural",
@@ -852,16 +852,16 @@ PARTS: list[Part] = [
          "film", 1, "sheet", 68, 68, "Metal Supermarkets",
          dims="610×170×10mm (24×7in)",
          spec="10mm A36 mild-steel plate, 610×170mm (24×7in) — nests the 4 saddle seats (150×110). Cut to size; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $68 placeholder (scaled from the 6-saddle $102 line at 4/6) pending quote."),
-    Part("bolt-m12x65", "M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
-         "film", 28, "ea", 15.95 / 10, 15.95 / 10, "McMaster-Carr", part_no="91280A728",
-         url="https://www.mcmaster.com/91280A728/",
-         spec="ICP-12: wall-sandwich through-bolt (4/saddle ×4 + 4/far-left flange bracket ×2 + 4 spare = 28), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm."),
+    Part("bolt-m12x70", "M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
+         "film", 28, "ea", 17.36 / 10, 17.36 / 10, "McMaster-Carr", part_no="91280A732",
+         url="https://www.mcmaster.com/91280A732/",
+         spec="ICP-12: wall-sandwich through-bolt (4/saddle ×4 + 4/far-left flange bracket ×2 + 4 spare = 28), sized for the ~50mm 30mm-corrugation grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10 → 3 packs for 28. Pad with M12 flat washers to the grip."),
     Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
-         "film", 28, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut — M12×65 wall-sandwich bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
+         "film", 28, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut — M12×70 wall-sandwich bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
     Part("washer-m12-flat", "M12 flat washer, zinc", "fasteners-hardware",
-         "film", 112, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×65 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100."),
+         "film", 112, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×70 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100."),
     Part("washer-m12-split", "M12 split lock washer, zinc", "fasteners-hardware",
-         "film", 28, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×65 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100."),
+         "film", 28, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×70 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100."),
     # M12 nyloc nut — verified ALTERNATIVE locking (Option B), NOT USED (chose plain nut + split washer):
     # McMaster 94645A230, $10.08/pack of 10 = $1.008 ea. Swap in (and drop the split washers) if
     # adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
@@ -1074,16 +1074,16 @@ PARTS: list[Part] = [
     Part("walkway-wide-brackets", "Cantilever bracket — widened (near)", "steel-structural",
          "walkway", 5, "ea", 40, 70, "Local fab",
          spec="10mm steel plate (200mm vert leg + 70mm gusset) + a 500mm 3×1×0.120in steel tube arm, welded — US IBC/OSHA redesign: the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point; arm depth is spray-bar-capped at 25.4mm so the widened bracket takes a WIDER 3×1 section, not deeper). EP/battery/slit zone, X1055–3083 = 5 bays. ~0.5 m of 3×1 tube/bracket."),
-    Part("bolt-m12x65", "M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
-         "walkway", 59, "ea", 15.95 / 10, 15.95 / 10, "McMaster-Carr", part_no="91280A728",
-         url="https://www.mcmaster.com/91280A728/",
-         spec="Cantilever-bracket wall bolts (3 per std + 4 per widened), sized for the 30mm-corrugation grip (~48–50mm), partial thread. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm."),
+    Part("bolt-m12x70", "M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread", "fasteners-hardware",
+         "walkway", 59, "ea", 17.36 / 10, 17.36 / 10, "McMaster-Carr", part_no="91280A732",
+         url="https://www.mcmaster.com/91280A732/",
+         spec="Cantilever-bracket wall bolts (3 per std + 4 per widened), ~48–50mm grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10. Pad with M12 flat washers to the grip."),
     Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
-         "walkway", 59, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut — M12×65 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
+         "walkway", 59, "ea", 12.78 / 50, 12.78 / 50, "McMaster-Carr", part_no="90591A181", url="https://www.mcmaster.com/90591A181/", spec="Plain hex nut — M12×70 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29."),
     Part("washer-m12-flat", "M12 flat washer, zinc", "fasteners-hardware",
-         "walkway", 236, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×65 cantilever bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm)."),
+         "walkway", 236, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×70 cantilever bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm)."),
     Part("washer-m12-split", "M12 split lock washer, zinc", "fasteners-hardware",
-         "walkway", 59, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×65 cantilever bolts (plain nut + split = locked)."),
+         "walkway", 59, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×70 cantilever bolts (plain nut + split = locked)."),
     Part("walkway-reinf-plates", "Reinforcing plate (exterior)", "steel-structural",
          "walkway", 18, "ea", 4.1667, 7.2222, "Local fab", spec="6mm steel: 100×180mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint"),
     Part("walkway-transition-plates", "Transition bearing plate", "steel-structural",

@@ -28,9 +28,9 @@ the shelf on the same 1/4″-20 tee-nut family used everywhere else.
 | **Board** | 18 mm UV-coated / phenolic plywood, **600 × 300 mm** — chemical-resistant (cyanotype + pH 3–4 citric), wipe-clean. **Primary structure** (no steel frame). |
 | **Perimeter frame** | **REMOVED.** The ply carries the load; the frame's only jobs were the lip + the M5 attach, both re-solved below. |
 | **Spill lip** | Light chemical-resistant lip on the **3 free edges** (not the hinge edge). *Default: HDPE/PVC angle, ~15 mm, screwed to the ply edge — inert in the splash zone; confirm material at review.* |
-| **Ply attachment** | **Pronged tee-nuts in the ply underside** (1/4″-20, `tnut-quarter` family). No M5 CSK. |
-| **Piano hinge** | 600 mm weld-on/steel piano hinge — **shelf leaf** machine-screwed into a **row of ply tee-nuts** along the back-edge underside; **wall leaf** to the 8 mm wall backing plate (below). |
-| **Stays** | **2 × SS chain** — a threaded **eye bolt in a ply tee-nut** at each front corner ↔ an **eye/hook on a wall anchor** ~230 mm above the hinge. Length-adjustable by link (sets the deployed level). Tension-only (holds the front edge up). |
+| **Ply attachment** | **Pronged tee-nuts in the ply underside** (1/4″-20, `tnut-quarter` standard). No M5 CSK. Wet-zone → 1/4″-20 hardware in **SS** (a documented splash-zone exception, like the M8 film-plane SS exception). |
+| **Piano hinge** | 600 mm **bolt-on** (drilled-leaf) SS piano hinge — **shelf leaf** machine-screwed (1/4″-20 SS into the ply tee-nut row); **wall leaf** to the 8 mm wall backing plate. *(Was weld-on; bolt-on because the ply attaches by tee-nut, not weld.)* |
+| **Stays** | **2 × 304 SS chain** — a **flat SS pad-eye (D-ring)** bolted flush to each front-corner underside (2× 1/4″-20 SS machine screws into tee-nuts — a pad-eye, NOT a threaded eye bolt, because the shortest eye-bolt shank (1″/25 mm) would pierce the 18 mm board) ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. Length-adjustable by link + quick-link. Tension-only. |
 | **Wall side** | Piano-hinge cleat + 2 chain-anchor points bolt to **flat 8 mm steel backing plates welded to the corrugated-wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) — unchanged from the schematic. |
 | **Transport latch** | Over-center / barrel latch at the top secures the folded-up board. |
 | **M5×16 CSK** | **ELIMINATED** — the M5 family retires with this round (`fastener-standardization.md`). |
@@ -65,14 +65,30 @@ crest welds. Elements to check (each demand → capacity → SF), in a driftproo
    frame, add the chain stays + lip; re-send overview + construction if it reuses the builder), and
    `all-diagrams.md` / `dependencies.yml`.
 
-## Open detail decisions (proposed defaults — confirm at review)
+## Parts — standard-part reuse vs new to source
 
-- **Lip material** — HDPE or PVC angle (chemical-inert, light, screwed) vs. a sealed hardwood/ply rim vs.
-  anodized aluminum angle. *Default: HDPE/PVC angle.*
-- **Tee-nut count** — hinge row (~6–8 along 600 mm) + 2 stay-eye points; firm from the hinge screw pitch.
-- **Chain spec** — 304 SS chain (splash-zone corrosion), ~3–4 mm, WLL ≫ 205 N; SS eye bolts (1/4″-20 into
-  the tee-nuts) + SS eye/hook wall anchors + a quick-link for length adjust.
-- **Board face** — keep the existing UV-coated ply (`BPI6WUV2I`) or switch to phenolic form-ply.
+The whole **ply-side and wall-side** collapses onto hardware already in the registry — the payoff of the
+tee-nut decision. Only the chain stays + the bolt-on hinge variant are genuinely new.
+
+**Reuse (no new SKU — bump qty / material-exception only):**
+- **Tee-nuts** → `tnut-quarter` (825001), 1/4″-20 pronged, ~10 off (hinge row + 2 pad-eyes).
+- **Ply-attach machine screws** → the 1/4″-20 ply-mount screw pattern (`panel-machine-screws` 826771), **~3/4″,
+  in SS** for the splash zone (wet-zone exception) — hinge leaf + pad-eyes.
+- **Wall side** → the M8 group: M8×25 (91280A534) + nut (90591A161) + washer (91166A270) into the 8 mm backing
+  plates (hinge cleat + 2 chain wall anchors).
+- **Spill lip** → a sealed strip of the **same 18 mm ply** (offcut) or an **HDPE offcut** (46684/46685) — no new material.
+- **Board** (`BPI6WUV2I`), **8 mm backing plates** (local fab) — existing.
+
+**New to source (full spec):**
+1. **Bolt-on piano hinge, 600 mm** — 304 SS, **drilled leaves** (bolt-on), ~32 mm open width. *(Re-spec of the existing hinge line.)*
+2. **Flat SS pad-eye / D-ring anchor plate ×2** — 304 SS, 2× 1/4″-20 bolt holes, WLL ≥ 25 kg — front-corner chain anchors (bolt flush to the underside; replaces threaded eye bolts, which the 1″ min shank rules out on an 18 mm board).
+3. **M8 eye bolt ×2** — 304 SS, M8 × ~1″ shank — chain wall anchors into the backing-plate weld-nuts.
+4. **304 SS chain** — ~4 mm / 1/8″, WLL ≥ 25 kg, ~1 m total.
+5. **304 SS quick-links ×4** — ~4 mm, chain ends + length adjust.
+6. **Transport latch ×1** — 304 SS over-center toggle latch + keeper (or borrow the panel cam-latch family, McMaster 1619A74).
+
+**Remaining opens (confirm at review):** lip material (ply vs HDPE offcut); tee-nut count (from the hinge screw
+pitch); board face (keep UV-ply vs phenolic); latch — dedicated toggle vs the cam-latch family.
 
 ## Not in scope
 The wall backing plates + M8 weld-nut group + the pinhole-wall crest welding are the existing wall interface

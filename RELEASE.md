@@ -24,58 +24,33 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Film-plane fabrication blueprint — 7 new per-part detail sheets (12–18).** Elevated the film-plane
-  drawing set from mechanism-design level to a shop-buildable fabrication blueprint (now 18 sheets, matching
-  the hinged-panel/light-trap standard): depth rail (12), acetal skate (13), cross-slide stack (14), 304 corner
-  angle (15), frame weldment (16), wall-seat saddle (17), and the exploded corner assembly + fastener schedule
-  (18) — each drawn from `tbs_constants`, verified against the live 3D model, with cut lengths, hole coordinates,
-  weld schedules, and part SKUs. Wired the 4 previously-dead constants (`SKATE_ROLLER_W`, `SKATE_AXLE_LEN`,
-  `XSLIDE_STROKE`, `UJOINT_YOKE_L`), added `FP_RAIL_WALL_T`/`FP_RAIL_STOCK_LEN`, and swept stale constant/report
-  values (`FP_W`/`PH_X`/`RAIL_SPAN` comments, X-travel 263→257mm, angle 3/16→1/8in on Sheet 7). Phase-0
-  interference/bolt triage found no structural defects (the "7<9" flag is a catalog-fixed McMaster 4040N12 fit).
-  Review pass 1: dropped the cam-brake + U-joint sheets as redundant with Sheets 3/9 (both purchased parts);
-  **re-spec'd the corner plate from a press-brake-formed ¼ 6×8 plate to stock 4×4×¼in 304 angle** (cheaper, no
-  forming; −$76 to −$135); fixed the skate roller drawn through the channel; added hole coordinates to the skate,
-  cross-slide, and corner-angle sheets; and added a vertical section to Sheet 11 confirming the M12 wall bolts
-  clear the rail channel (~13mm) and the Ø89 post (~4mm), verified against the 3D.
-  Review pass 2: rail + frame member sections redrawn as single continuous extrusions/angles (were multi-part);
-  reseated the ghosted rollers clear of the web; closed the welded drop-in bottom-bridge gap; drew the wall-seat
-  saddle M12 bolts per the head-outside/nut-inside convention + un-clipped the cut-piece nesting; full per-hole
-  X/Y coordinates on the corner-angle drilling layout (its section view dropped — stock part); gib adjuster
-  redrawn as a headless grub/set screw (was a bolt).
-  Review pass 3: lengthened the wall-seat back-plate (243→250mm, seat flush at the top) so both M12 rows clear
-  the seat; added a stainless self-drilling (TEK) screw securing the ACM to the frame above the fillet ridge
-  (wet-zone SS); tied the corner-angle drilling dims to their holes with extension guides; fixed the cross-slide
-  end holes to render circular and reframed its stroke callout as a bar-length justification; replaced the skate
-  sheet's redundant skate-in-channel view (dup of Sheet 3) with the axle-saddle retention detail; removed the
-  depth-rail's duplicate end-section (catalog profile); made the 4040N12 → X-carriage bolted foot explicit on
-  Sheet 9; and **retired the M5 axle-saddle screw → M6×20**, consolidated onto the existing firm-priced
-  `bolt-m6x20` (McMaster 91287A137) — no new SKU (closes the M5-elimination roadmap item for the film section).
-  Then **itemized the previously-unregistered skate axle-saddle retention** onto that SKU: 16× 1/8×3/4in 304
-  flat-bar saddles (8992K794) + 32× M6×20 + 32× M6 nyloc, +$32 to the FILM section (schedule qty reconciled to
-  8/corner — one saddle per axle, 2 screws each). Closed the remaining film-fab fastener gaps the same way —
-  M4 cam-clamp bolt-through (91280A134 + nut 91828A231, ×24), M8 J1/J2 cross-slide (through-bolt + nut: M8×25
-  92314A711 + nut 90591A161 + flat 98689A673 + split 91111A132, ×32), and the ACM→frame stainless TEK screw
-  (90599A716, ×30) — all firm-sourced, +$51 to FILM. J1/J2 moved from tapped to through-bolt + nut, which forced
-  the bolt M8×20→M8×25 for full nut engagement through the 14mm grip.
-  Review pass 4: ACM now butts the frame's vertical leg (raised above the fillet ridge); moved the axle-saddle
-  bolts clear of the saddle legs (Sheet 13); hidden-lined the far-left bracket bolts with a straddle-in-X note
-  (Sheet 11, they clear the channel in X per View C); added carriage-plate + rail-web dims and the cross-slide
-  bar section to Sheet 3. Adopted a **drawing-color convention** — multi-component cross-sections may use color
-  to distinguish parts, but single-component dimensional views are monochrome (applied to Sheets 15 + 13 View B).
-  Then swept the remaining single-part views to monochrome (Sheets 12, 13B, 14 A/B, 16 A/B, 17B) and **re-ordered
-  the sheet sequence** so the monochrome per-part fab layouts close the set: the exploded corner assembly +
-  fastener schedule moved to Sheet 12, and the fab sheets shifted to 13–18 (depth rail, skate, cross-slide bars,
-  corner angle, frame, wall-seat saddle). Renumbered every function, title block, cross-reference, report bullet,
-  and gallery caption to match.
-  Review pass 5: fixed the drilled-hole aspect compensation (was stretching the wrong way — cross-slide bar
-  holes now render circular); restored the hole→dim extension guides on the corner-angle sheet (they'd been
-  hidden behind the now-white plate, which read as holes "moving"); and stripped the muslin-clamp sheet to its
-  spec notes — dropped the redundant section panel and **relocated the perimeter clamp-layout to a standalone
-  image in the Operating Manual §2.4** (new `film-plane-muslin-clamp-layout.png`).
-  Aluminum-color standardization: the 6061 Al U-channel depth rail was drawn steel-grey on the mechanism
-  cross-sections (Sheets 3 + 11) — now the aluminum tint (STRUCT2) everywhere it appears, so the Al rail reads
-  distinct from the grey steel parts (post, seat, flange, corner plate), consistent with Sheets 13/18.
+- **Film-plane fabrication blueprint — mechanism-design → shop-buildable (Sheets 1–18).** Elevated the
+  film-plane drawing set to a full fabrication blueprint matching the hinged-panel/light-trap standard — seven
+  new per-part detail sheets, each drawn from `tbs_constants`, verified against the live 3D model, with cut
+  lengths, hole coordinates, weld schedules, and firm part SKUs.
+  - *Sequence & house style:* the set runs color assembly/mechanism → per-part fabrication, closing on the
+    monochrome single-part dimensional layouts — Sheet 12 = exploded corner assembly + fastener schedule,
+    13–18 = depth rail / acetal skate / cross-slide bars / 304 corner angle / frame weldment / wall-seat saddle.
+    Adopted a drawing-color convention (multi-component sections may use color to distinguish parts;
+    single-part dimensional views are monochrome), standardized the 6061 Al depth rail to the aluminum tint
+    across the mechanism sections (was steel-grey), and gave every sheet — including the Sheet 10 load-case
+    analysis — the standard title block + note block. Tidied labels across the pre-existing Sheets 1–11.
+  - *Design corrections (five review passes):* re-spec'd the corner plate from a press-brake ¼ 6×8 plate to
+    stock 4×4×¼in 304 angle (−$76…−$135, no forming); lengthened the wall-seat back-plate so both M12 rows
+    clear the seat; ACM now butts the frame's vertical leg above the fillet ridge; member sections redrawn as
+    single continuous extrusions/angles; wall-seat + far-left-bracket bolts drawn per the head-outside/nut-inside
+    convention (with hidden-line X-clearance on Sheet 11); dropped two views redundant with Sheets 3/9; fixed
+    the aspect-squashed drill holes; and relocated the perimeter muslin clamp-layout to Operating Manual §2.4.
+  - *Fasteners — sourced & fully itemized:* retired the M5 axle-saddle screw → M6×20 (consolidated onto the
+    shared `bolt-m6x20`) and itemized every previously-unregistered film-fab fastener with firm McMaster SKUs —
+    16× 1/8×3/4in 304 flat-bar saddles, M4 cam-clamp bolt-through, M8 J1/J2 through-bolt + nut (M8×25 for the
+    14mm grip), and the ACM→frame stainless self-drilling TEK screw. **+$72 to the FILM section**; costing
+    self-check, report parts list, and the diagram gallery all cascaded.
+  - *Constants & drift:* wired 4 previously-dead constants (`SKATE_ROLLER_W`, `SKATE_AXLE_LEN`, `XSLIDE_STROKE`,
+    `UJOINT_YOKE_L`) + added `FP_RAIL_WALL_T`/`FP_RAIL_STOCK_LEN`, and swept stale constant/report values
+    (X-travel 263→257mm, angle 3/16→1/8in, `FP_W`/`PH_X`/`RAIL_SPAN` comments). Phase-0 interference/bolt triage
+    found no structural defects (the "7<9" flag is the catalog-fixed McMaster 4040N12 fit).
+
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.

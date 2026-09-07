@@ -30,7 +30,7 @@ the shelf on the same 1/4″-20 tee-nut family used everywhere else.
 | **Spill lip** | Light chemical-resistant lip on the **3 free edges** (not the hinge edge). *Default: HDPE/PVC angle, ~15 mm, screwed to the ply edge — inert in the splash zone; confirm material at review.* |
 | **Ply attachment** | **Pronged tee-nuts in the ply underside** (1/4″-20, `tnut-quarter` standard). No M5 CSK. Wet-zone → 1/4″-20 hardware in **SS** (a documented splash-zone exception, like the M8 film-plane SS exception). |
 | **Piano hinge** | 600 mm **bolt-on** (drilled-leaf) SS piano hinge — **shelf leaf** machine-screwed (1/4″-20 SS into the ply tee-nut row); **wall leaf** to the 8 mm wall backing plate. *(Was weld-on; bolt-on because the ply attaches by tee-nut, not weld.)* |
-| **Stays** | **2 × 304 SS chain** — a **flat SS pad-eye (D-ring)** bolted flush to each front-corner underside (2× 1/4″-20 SS machine screws into tee-nuts — a pad-eye, NOT a threaded eye bolt, because the shortest eye-bolt shank (1″/25 mm) would pierce the 18 mm board) ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. Length-adjustable by link + quick-link. Tension-only. |
+| **Stays** | **2 × 304 SS chain** — a **1/4″-20 SS eye bolt** threaded into a ply tee-nut at each front corner ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. The shortest eye-bolt shank (1″/25 mm) threads through the tee-nut and **protrudes ~7 mm past the 18 mm top** — acceptable (the tee-nut carries the thread); cap/grind the tip flush at the corner for a clean work surface. Length-adjustable by link + quick-link. Tension-only. |
 | **Wall side** | Piano-hinge cleat + 2 chain-anchor points bolt to **flat 8 mm steel backing plates welded to the corrugated-wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) — unchanged from the schematic. |
 | **Transport latch** | Over-center / barrel latch at the top secures the folded-up board. |
 | **M5×16 CSK** | **ELIMINATED** — the M5 family retires with this round (`fastener-standardization.md`). |
@@ -81,7 +81,7 @@ tee-nut decision. Only the chain stays + the bolt-on hinge variant are genuinely
 
 **New to source (full spec):**
 1. **Bolt-on piano hinge, 600 mm** — 304 SS, **drilled leaves** (bolt-on), ~32 mm open width. *(Re-spec of the existing hinge line.)*
-2. **Flat SS pad-eye / D-ring anchor plate ×2** — 304 SS, 2× 1/4″-20 bolt holes, WLL ≥ 25 kg — front-corner chain anchors (bolt flush to the underside; replaces threaded eye bolts, which the 1″ min shank rules out on an 18 mm board).
+2. **1/4″-20 SS eye bolt ×2** — 304 SS, ~1″ shank — front-corner chain anchors, threaded into the ply tee-nuts (tip protrudes ~7 mm through the top; cap/grind at the corner).
 3. **M8 eye bolt ×2** — 304 SS, M8 × ~1″ shank — chain wall anchors into the backing-plate weld-nuts.
 4. **304 SS chain** — ~4 mm / 1/8″, WLL ≥ 25 kg, ~1 m total.
 5. **304 SS quick-links ×4** — ~4 mm, chain ends + length adjust.

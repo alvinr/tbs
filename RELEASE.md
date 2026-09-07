@@ -34,6 +34,12 @@ file** — a release must not ship without a changelog entry:
 - **Film-plane M8 washer specs corrected M8×20 → M8×25.** The J1/J2 bolt was firmed to M8×25
   (`bolt-m8x25`); the flat- and split-washer descriptions still read "M8×20 head" — updated in `parts.py`
   and re-injected into the film-plane report parts list.
+- **M8 flat-washer registry key de-duplicated.** One key `washer-m8-flat` mapped to two different SKUs
+  (film 98689A673 wet-zone vs shelf 91166A270); split the shelf one to `washer-m8-flat-shelf` so the
+  by-type BOM stops blending two distinct M8 washers.
+- **M12×65 zinc/SS split annotated as intentional.** The 18-8 SS (J2/J7 wet-corridor cleats) vs Gr.8.8
+  zinc (dry structural through-bolts) split is a deliberate duty choice, not a duplicate SKU — documented
+  in the registry so it doesn't read as accidental drift.
 
 ## [0.11] — 2026-09-06
 

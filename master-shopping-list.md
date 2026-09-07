@@ -227,7 +227,8 @@ indicative low–high estimates — get quotes before ordering.
 | [M12×65 hex bolt, 18-8 SS (partial thread)](https://www.mcmaster.com/92800A481/) (92800A481) | 16 ea | McMaster-Carr | ibc-frame | $32 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 20 ea | McMaster-Carr | walkway | $35 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
-| [M8 flat washer, 304 SS](https://www.mcmaster.com/98689A673/) (98689A673) | 44 ea | McMaster-Carr | film, shelf | $9 |
+| [M8 flat washer, 304 SS](https://www.mcmaster.com/98689A673/) (98689A673) | 32 ea | McMaster-Carr | film | $9 |
+| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 12 ea | McMaster-Carr | shelf | $0 |
 | [M8 split lock washer, 304 SS](https://www.mcmaster.com/91111A132/) (91111A132) | 32 ea | McMaster-Carr | film | $4 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 508 ea | McMaster-Carr | film, ibc-frame, walkway | $49 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $15 |

@@ -28,13 +28,6 @@ file** — a release must not ship without a changelog entry:
   film-plane drawing set to a full fabrication blueprint matching the hinged-panel/light-trap standard — seven
   new per-part detail sheets, each drawn from `tbs_constants`, verified against the live 3D model, with cut
   lengths, hole coordinates, weld schedules, and firm part SKUs.
-  - *Sequence & house style:* the set runs color assembly/mechanism → per-part fabrication, closing on the
-    monochrome single-part dimensional layouts — Sheet 12 = exploded corner assembly + fastener schedule,
-    13–18 = depth rail / acetal skate / cross-slide bars / 304 corner angle / frame weldment / wall-seat saddle.
-    Adopted a drawing-color convention (multi-component sections may use color to distinguish parts;
-    single-part dimensional views are monochrome), standardized the 6061 Al depth rail to the aluminum tint
-    across the mechanism sections (was steel-grey), and gave every sheet — including the Sheet 10 load-case
-    analysis — the standard title block + note block. Tidied labels across the pre-existing Sheets 1–11.
   - *Design corrections (five review passes):* re-spec'd the corner plate from a press-brake ¼ 6×8 plate to
     stock 4×4×¼in 304 angle (−$76…−$135, no forming); lengthened the wall-seat back-plate so both M12 rows
     clear the seat; ACM now butts the frame's vertical leg above the fillet ridge; member sections redrawn as
@@ -66,19 +59,6 @@ file** — a release must not ship without a changelog entry:
   (contradicting its own −420 label) — wired to `DRUM_CX`. Embedded the eight missing hinged-panel fabrication
   sheets (8, 9, 11, 12, 13, 14, 15, 16) in the report, so all 16 sheets are now shown. Fixed stale
   drum-height arithmetic in two Sheet 3 comments.
-
-- **Ø900→Ø800 stale-label sweep (round 2).** Cleared the last Ø900/R450 references left by the 2026-08-26
-  drum resize across the weight, movable-panel-weight, light-trap, and film-plane generators plus the
-  `tbs_constants` design comments — the visible ones (the light-trap housing cut-sheet note "Roll to Ø800
-  (R400)" and rim-angle radius, the movable-panel weight-row descriptions) now reference `DRUM_D`/`LT_HOUSING_R`
-  so they can't drift again; the rev-history lines that record the Ø900→Ø800 change are kept. Weight figures
-  unchanged (label text only).
-
-- **Housing wall-thickness label unified.** The Ø800 light-trap housing is one material (US Plastics 46685,
-  3/16″ ≈ 5mm UV-HDPE) that some places labeled "5mm" and others "3/16″" — every reader-visible reference
-  (light-trap Sheet 2/9 fab notes, the light-trap-selection / hinged-panel / cost-breakdown / weight reports)
-  now reads **"5mm (3/16in)"**, matching the drum's "3.18mm (1/8in)" convention. Modeled thickness (`LT_HOUSING_T`)
-  is unchanged at 5; the constant now documents the 3/16″ source.
 
 ## [0.10] — 2026-09-04
 

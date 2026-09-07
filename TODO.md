@@ -210,15 +210,25 @@ parametrically from `tbs_constants` so they can't drift. Do the **film-plane cor
 as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
 walkway, hinged panel, light lock, electrical, optics, …)._
 
-- [~] **★ FINAL cross-cutting step — fastener standardization (INVENTORIED + DECIDED 2026-09-04; branch `fastener-rework`).** Full inventory + the 6-family decisions are captured in **`fastener-standardization.md`** (target: metric families 6→4 — M5 + M10 eliminated; lengths ~12→~7). **Done now:** M6 nuts 3→2 (plain→nyloc merge). **Gated on the owning blueprint (do at each sheet round, standardize against the final set):**
-  - **M12** — force wall joints to one length (grip-stack standardization, Lever B) + keep ×100 for J6 + unify ×65 zinc/SS → *IBC-frame + walkway*.
-  - **M10 → M12** — eliminate the family (cap-hub / ring-collar / door-frame bolts bump to M12); verify M12 edge-distance on the 8mm cap at Ø120 PCD → *light-trap + hinged-panel*.
-  - **M8** — zinc ×25 standard, SS exception = wet film-plane (carriage + ICP-14 rail-fixing); confirm edge-channel/carriage land on ×25 → *film-plane*.
-  - **M5 → M6×16 CSK** — retire the family (new CSK SKU); verify clamp-clip head clearance → *film-plane* (next round).
-  - **M4** — itemize + keep (cam-clamp base vendor-fixed M4; pinhole grubs precision).
-  - **Related:** ⁵⁄₁₆″→¼″ ply-mount (filter housings), #14 self-drillers 4→2, ⅛″ rivets 2 grips→1.
+- [~] **★ FINAL cross-cutting step — fastener standardization (LARGELY EXECUTED 2026-09-07, branch `part-reconcile`).** Full status + rationale live in **`fastener-standardization.md`** (target revised to metric families **6→5** — M5 retires, M10 KEPT). **Done this pass:** IBC J2/J7 spec reconciled to M12×65; M8 washer text/key/duty; **M12 wall bolts unified to one zinc length (×70)**; **5/16→1/4 ply-mount** (5/16 family retired); **#14 TEK unified** (90822A620); **optical-plate M12×40 itemized + socket→hex**; **TSB central M16→M8×1.0**. **Reversed on evidence:** M10 KEPT (thin light-trap hosts preclude M12 CSK); ⅛″ rivet consolidation INFEASIBLE (no grip spans both laps). **Remaining:**
+  - **M5 → flange bolt + nyloc** — deferred to the chem-shelf design (no blueprint yet).
+  - **TSB registry merge** — deferred to the TSB blueprint review (see the TSB item above).
+  - **Tilt-swing A4/316→304 material downgrades** on non-structural fasteners — confirm at the TSB review.
   - **BOM-gap itemization** (M4 grubs, M4 cam-mounts, M12 pivot anchors/hinge brackets) — each blocked on a length dim; itemize per the owning sheet, don't assume.
+  - **#14 TEK washer + M8×1.0×50 central SKUs** — SKU-pending items to firm at order.
 
+- [ ] **Tilt-swing board (TSB) — needs a blueprint review round + registry merge (2026-09-07).** The TSB
+  (`tilt-swing-board-report.md`) is an OPTIONAL front board that **replaces** the flat pinhole plate, and it
+  has NOT been through the manufacturing-blueprint standard (dimensioned details / fastener + weld schedule /
+  datums / load case / cascade) that the film-plane, IBC-frame and walkway sets have. Bring it up to that
+  standard. **In the SAME round, merge its BOM into the `parts.py` registry** — retire the standalone
+  `FRONT_BOARD_MID`/`FRONT_BOARD_HIGH` and add the TSB as a registry system that is **EXCLUDED from the baseline
+  scenario sum**: it is mutually exclusive with the flat pinhole plate (in the `optics` system), so a naive
+  merge would double-count it into the baseline. That option-exclusion is why it is standalone-costed today —
+  preserve it. Fastener standardization within the TSB is DONE (§12.1 — mount M12×45 SHCS A4 kept, M8×1.0
+  adjustment + M8×1.0 central retention (down from M16), M6 set screws, Ø8 dowels); residual soft item = the
+  A4/316→304 material downgrades on the non-structural TSB fasteners (confirm at the review). See
+  `fastener-standardization.md`.
 - [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
   (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.

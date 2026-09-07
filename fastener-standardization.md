@@ -118,7 +118,16 @@ screw can share one.
   System Item 8 (8× M12×40 on a Ø540 circle) lived only as a drawing label — never in the registry (the survey
   missed it because it wasn't in `parts.py`). Itemized as `optical-plate-bolt` (92314A744) + `optical-plate-washer`
   (93475A290), and its **socket head → hex** to match the structural standard (resolves the optical-plate half of
-  the socket-vs-hex question; the tilt-swing board's socket heads are still open for its design chat).
+  the socket-vs-hex question; the tilt-swing board's socket heads are covered below).
+- **Tilt-swing board (TSB) — design chat resolved (2026-09-07).** The TSB is a standalone OPTIONAL front board
+  (replaces the flat pinhole plate), so its fasteners live in its own §12.1 BOM, not the registry. Decisions:
+  **mount bolt** M12×45 kept SHCS A4 (counterbore/flush precision mount — accepts the head/material mismatch
+  with the standard plate's M12×40 hex, a different plate); **M8×1.0 fine-pitch** adjustment screws kept (the
+  fine pitch IS the mechanism); **central retention bolt M16×55 → M8×1.0×50** (non-structural preload — dropped
+  the one-off M16 family, reused the M8×1.0 fine thread); M6 nylon-tip set screws + Ø8 dowels kept. SHCS kept
+  where functional; **A4/316→304 material downgrades** on the non-structural TSB fasteners = a soft residual for
+  the TSB blueprint review. The **registry merge** (retire `FRONT_BOARD_MID`, add the TSB as a baseline-EXCLUDED
+  registry system so it can't double-count against the flat plate) is deferred to that review (TODO.md).
 
 ## Itemization — BOM gaps (fasteners used but not discrete SKUs)
 Every gap is blocked on the same thing: the **length is a blueprint dim** we should confirm, not assume

@@ -2102,7 +2102,7 @@ def sheet11():
         axA.add_patch(Rectangle((bx - 5.5, C_WID + WALL_T + ext_t), 11, 5.5, fc=C_BOLT, ec=OUT, lw=0.5, zorder=6))            # HEX HEAD — OUTSIDE
         axA.add_patch(Rectangle((bx - 5, C_WID - fl_t - 5.5), 10, 5.5, fc="#6A6A72", ec=OUT, lw=0.6, zorder=6))               # NUT — INSIDE
     leader(axA, cx + 38, C_WID - fl_t - 5.5, cx + 78, C_WID - fl_t - 30, "M12 NUTS inside (container)", ha="left", fs=5.0, color=OUT, font=FONT)
-    draw_dim_h(axA, cx - bw / 2, cx + bw / 2, C_WID - fl_t - 40, f"{bw}mm", fs=5.5, font=FONT, above=False)
+    draw_dim_h(axA, cx - bw / 2, cx + bw / 2, C_WID + fl_t + 44, f"{bw}mm", offset=7, fs=5.5, font=FONT, above=False)
     draw_dim_h(axA, cx - 38, cx + 38, 2250, "76mm gauge", fs=5, font=FONT)
     leader(axA, cx + 18, C_WID - fl_t, cx + 82, C_WID - fl_t - 7, "rail END butts the flange INNER face", ha="left", fs=5.2, color=OUT, font=FONT)
     leader(axA, cx + bw / 2, C_WID + WALL_T + ext_t, cx + 78, C_WID + WALL_T + 7, "exterior plate — hex heads OUTSIDE", ha="left", fs=5.2, color=OUT, font=FONT)
@@ -2185,7 +2185,7 @@ def sheet11():
         "CLEARANCES:  the TL (top) bracket sits just BELOW the Z2368 roof-mount plate; the BL (bottom) bracket sits "
         "ABOVE the Z0–20 floor-mount plate. A full 150-tall saddle would foul the roof-mount plate — which is why "
         "the rear ends carry the shallower flange bracket, not a saddle.",
-    ], 1, 97, spacing=4.6, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=94, wrap=152)
+    ], 10, 97, spacing=4.6, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=60, wrap=125)
 
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 11 OF 18", drawing_title="MOVEABLE FILM PLANE",

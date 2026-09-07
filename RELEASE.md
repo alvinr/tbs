@@ -67,7 +67,7 @@ file** — a release must not ship without a changelog entry:
   parts.py, costing (+$15), the ibc-frame/load-case/film sheets, and every affected report; **no geometry, no 3D
   re-send** (Lever A shim).
 - **Filter bracket switched to the bracket-only Pentair 244718** (was the 150061 kit) — we supply our own
-  1/4-20 machine screws + tee-nuts, so the kit's hardware was redundant (price/URL to confirm at order).
+  1/4-20 machine screws + tee-nuts, so the kit's hardware was redundant. Firm at Fresh Water Systems $10.50.
 - **Tilt-swing board: central M16×55 downsized to M8×1.0×50.** The central bolt is retention/preload, not
   structural — dropped the one-off M16 thread family and reused the board's existing M8×1.0 fine-pitch thread
   (its adjustment screws), keeping the finest practical pitch. TSB Sheet 2 + §12.1 BOM updated.

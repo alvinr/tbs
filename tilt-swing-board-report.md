@@ -227,7 +227,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | M6×1.0 nylon-tip set screws | SS316, M6×20mm | McMaster-Carr (#91375A187) | Fastenal (SoCal branches) | ~$14/pack-10 |
 | 440C SS round bar (socket inserts) | Ø20mm×100mm | McMaster-Carr (#1765T17) | Metal Supermarkets | ~$28 |
 | M12×45 SHCS SS A4 | 8 off | McMaster-Carr (#92290A198) | Bolt Depot | ~$20/pack-5 |
-| M8×1.0×50 SHCS 18-8 SS (central retention) | 1 off — downsized from M16 (non-structural retention/preload), reuses the M8×1.0 fine-pitch thread of the adjustment screws | Bolt Depot (boltdepot.com) | Pacific Coast Bolt, Anaheim CA | ~$3 |
+| M8×1.0×50 SHCS 18-8 SS (central retention) | 1 off — downsized from M16 (non-structural retention/preload), reuses the M8×1.0 fine-pitch thread of the adjustment screws; partially threaded | McMaster-Carr (#91180A407) | Bolt Depot | ~$1.87 ($18.73/10) |
 | Ø8 m6 SS303 dowel pins | Ø8×40mm | McMaster-Carr (#97395A437) | Fastenal | ~$9 ea |
 | Loctite 638 retaining compound | 10mL | McMaster-Carr (#1832A1) | Home Depot (local) | ~$22 |
 

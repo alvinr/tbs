@@ -221,13 +221,13 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | GE50-DO-2RS bearing | SKF, 50mm bore | Bearing Headquarters, Buena Park CA (bearingheadquarters.com) | Applied Industrial, Los Angeles | ~$90 |
 | Al 6061-T651 plate (ICP-01) | 620×620×45mm (24"×24"×1.75") | Online Metals (onlinemetals.com) | Metal Supermarkets, Chatsworth CA | ~$125 |
 | Al 6061-T6 round bar (ICP-02) | Ø340mm×35mm (13.5"OD×1.5") | Metal Supermarkets, Chatsworth CA | Online Metals | ~$100 |
-| M8×1.0 SS A4 SHCS | M8×1.0×80mm | Bolt Depot (boltdepot.com) | Pacific Coast Bolt, Anaheim CA | ~$3 ea |
+| M8×1.0×80 SHCS 18-8 SS (adjustment screws) | 4 off — fine-pitch adjustment, ball-end seats in the 440C insert; partially threaded | McMaster-Carr (#91180A407) | Bolt Depot | ~$1.87 ($18.73/10) |
 | Delrin/POM rod (bushings) | Ø30mm×200mm | McMaster-Carr, Santa Fe Springs CA (#8573K75) | Amazon Industrial | ~$20 |
 | Ø8mm Grade 25 chrome steel balls | 52100 bearing steel, 10-pack | McMaster-Carr (#9528K22) | Precision Balls Inc. | ~$14/pack |
 | M6×1.0 nylon-tip set screws | SS316, M6×20mm | McMaster-Carr (#91375A187) | Fastenal (SoCal branches) | ~$14/pack-10 |
 | 440C SS round bar (socket inserts) | Ø20mm×100mm | McMaster-Carr (#1765T17) | Metal Supermarkets | ~$28 |
 | M12×45 SHCS SS A4 | 8 off | McMaster-Carr (#92290A198) | Bolt Depot | ~$20/pack-5 |
-| M8×1.0×50 SHCS 18-8 SS (central retention) | 1 off — downsized from M16 (non-structural retention/preload), reuses the M8×1.0 fine-pitch thread of the adjustment screws; partially threaded | McMaster-Carr (#91180A407) | Bolt Depot | ~$1.87 ($18.73/10) |
+| M8×1.0×50 SHCS 18-8 SS (central retention) | 1 off — downsized from M16 (non-structural retention/preload), reuses the M8×1.0 fine-pitch thread of the adjustment screws | McMaster-Carr (#91180A352) | Bolt Depot | ~$0.64 ($6.42/10) |
 | Ø8 m6 SS303 dowel pins | Ø8×40mm | McMaster-Carr (#97395A437) | Fastenal | ~$9 ea |
 | Loctite 638 retaining compound | 10mL | McMaster-Carr (#1832A1) | Home Depot (local) | ~$22 |
 

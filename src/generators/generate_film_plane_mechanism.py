@@ -1180,21 +1180,21 @@ def transport_elev(ax):
     draw_dim_h(ax, 0, LEFT_CUT_YD, -70, f"REMOVABLE = {LEFT_CUT_YD}mm (lifts out)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     draw_dim_h(ax, LEFT_CUT_YD, C_WID, -130, f"STUB = {C_WID - LEFT_CUT_YD}mm\n(parks corner)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     # ── leaders (spread above / below the rail to keep the crowded cut region legible) ──
-    leader(ax, SPLICE_YD, (rz0 + rz1) / 2, 470, -55, "length SPLICE (web-back, GHOST — far side) — 6 ft stock + reach",
+    leader(ax, SPLICE_YD, (rz0 + rz1) / 2, 270, -55, "length SPLICE (web-back, GHOST — far side) — 6 ft stock + reach",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, -20, rz0 + 6, 30, -108, "pinhole-wall SADDLE — seat + gusset + EXTERIOR plate + 4× M12\n(hex heads OUTSIDE, nuts inside)",
+    leader(ax, -20, rz0 + 6, -30, -108, "pinhole-wall SADDLE — seat + gusset + EXTERIOR plate + 4× M12\n(hex heads OUTSIDE, nuts inside)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, LEFT_CUT_YD + 44, rz1 + 12, 1380, 150, "welded BRIDGE (ON TOP) — welded to the REMOVABLE; GRAVITY bears it on the STUB;\na locating PIN (flush to the inner-rail top) stops it lifting (weight on the bridge, not the pin)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, LEFT_CUT_YD, rz0 - 12, LEFT_CUT_YD - 330, -205, "bottom support BRIDGE — welded to the STUB;\nlaps under + carries the removable beam (~64mm)",
+    leader(ax, LEFT_CUT_YD, rz0 - 12, LEFT_CUT_YD - 330, -20, "bottom support BRIDGE — welded to the STUB;\nlaps under + carries the removable beam (~64mm)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, PIVOT_YD, 30, PIVOT_YD + 30, -150, f"swing PIVOT POST (Ø{PIVOT_POST_OD} CHS)\nanchors the stub — no floor post at the cut",
+    leader(ax, PIVOT_YD, 30, PIVOT_YD - 150, -50, f"swing PIVOT POST (Ø{PIVOT_POST_OD} CHS)\nanchors the stub — no floor post at the cut",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, C_WID + 20, rz0 + 6, C_WID + 40, 62, "far-wall FLANGE BRACKET — flange + EXTERIOR plate\n+ 4× M12 (hex heads OUTSIDE); post carries the weight",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-320, 182, "LEFT RAIL — TRANSPORT DROP-IN  (bottom rail shown; the top rail splits the same way)",
+    ax.text(-320, 252, "LEFT RAIL — TRANSPORT DROP-IN  (bottom rail shown; the top rail splits the same way)",
             fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-320, 166, "REMOVABLE (light) lifts out so the panel can fold; STUB (solid) stays",
+    ax.text(-320, 236, "REMOVABLE (light) lifts out so the panel can fold; STUB (solid) stays",
             fontsize=6.0, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -1224,10 +1224,10 @@ def right_flanged(ax):
     ax.add_patch(plt.Rectangle((sx - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
     leader(ax, sx, rz1, sx + 40, 132, "length SPLICE (web-back, GHOST) — rail > 6 ft stock",
            ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
-    leader(ax, -20, rz1, 430, 138, "end bracket → wall — EXTERIOR plate + 4× M12 (hex heads OUTSIDE);\nBR = IBC combined corner plate · TR = wall-seat saddle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, -20, rz1, 180, 138, "end bracket → wall — EXTERIOR plate + 4× M12 (hex heads OUTSIDE);\nBR = IBC combined corner plate · TR = wall-seat saddle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, C_WID - 20, rz0 - 4, C_WID - 260, -44, "outboard end plate trimmed 35mm (IBC clearance);\nshares the IBC combined corner plate",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-260, 146, "RIGHT RAIL — FLANGED WALL-TO-WALL  (permanent; no transport split)",
+    ax.text(-260, 190, "RIGHT RAIL — FLANGED WALL-TO-WALL  (permanent; no transport split)",
             fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 

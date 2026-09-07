@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.11] — 2026-09-06
+
 - **Film-plane fabrication blueprint — mechanism-design → shop-buildable (Sheets 1–18).** Elevated the
   film-plane drawing set to a full fabrication blueprint matching the hinged-panel/light-trap standard — seven
   new per-part detail sheets, each drawn from `tbs_constants`, verified against the live 3D model, with cut

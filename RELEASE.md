@@ -56,6 +56,10 @@ file** — a release must not ship without a changelog entry:
 - **#14 self-drilling TEK unified to one SKU (McMaster 90822A620).** The corridor-bracket TEKs and the walkway
   half-lap hold-down (same #14×1″ HWH 410-SS family) now share one firm SKU (were separate unpriced ests); the
   hold-down adds a 1/4″ SS washer (92141A223).
+- **Optical-plate mounting bolt itemized + standardized to hex.** The Optical Plate System's 8× M12×40 bolts
+  (Item 8) were only a drawing label — never in the registry. Itemized (McMaster 92314A744 + M12 washers
+  93475A290, +$15 optics) and switched from socket head to **hex** to match the structural standard; the pinhole
+  plate drawing was regenerated.
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

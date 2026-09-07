@@ -111,6 +111,11 @@ screw can share one.
   the shell/rim laps are 0.188–0.25″ (97525A425) and the housing/surround laps are 0.313–0.375″ (97525A435),
   and the candidate multigrip 97525A420 is only 0.126–0.187″ (too thin for either). **Both SKUs stay** — the
   two grips are duty-separated, like the M12 wall lengths.
+- **Optical-plate mounting bolt — BOM gap CLOSED + head standardized to hex (2026-09-07).** The Optical Plate
+  System Item 8 (8× M12×40 on a Ø540 circle) lived only as a drawing label — never in the registry (the survey
+  missed it because it wasn't in `parts.py`). Itemized as `optical-plate-bolt` (92314A744) + `optical-plate-washer`
+  (93475A290), and its **socket head → hex** to match the structural standard (resolves the optical-plate half of
+  the socket-vs-hex question; the tilt-swing board's socket heads are still open for its design chat).
 
 ## Itemization — BOM gaps (fasteners used but not discrete SKUs)
 Every gap is blocked on the same thing: the **length is a blueprint dim** we should confirm, not assume

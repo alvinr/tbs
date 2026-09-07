@@ -736,6 +736,10 @@ PARTS: list[Part] = [
          "optics", 1, "ea", 25, 50, "local fab"),
     Part("pinhole-retaining-ring", "Disc retaining ring (Al 6061-T6, M52×0.75)", "aluminum",
          "optics", 1, "ea", 15, 25, "local fab", spec="Ø52 bore × M52×0.75 external thread, 3× M4 grub screws — screws into the plate counterbore to clamp the Ø50 pinhole disc flat; removable for swap/clean"),
+    Part("optical-plate-bolt", "M12×40 hex bolt, 18-8 SS", "fasteners-hardware",
+         "optics", 8, "ea", 14.73 / 10, 14.73 / 10, "McMaster-Carr", part_no="92314A744", url="https://www.mcmaster.com/92314A744/", spec="Optical Plate System Item 8 — mounts the optical plate/backing frame to the pinhole wall frame, 8× on a Ø540 bolt circle, + an M12 flat washer each (optical-plate-washer), torque ~43 N·m. HEX head (standardized to the structural hex convention 2026-09-07 — was drawn socket-head). M12×40 18-8 SS, McMaster 92314A744 $14.73/pack of 10 firm."),
+    Part("optical-plate-washer", "M12 flat washer, 18-8 SS", "fasteners-hardware",
+         "optics", 8, "ea", 10.93 / 25, 10.93 / 25, "McMaster-Carr", part_no="93475A290", url="https://www.mcmaster.com/93475A290/", spec="M12 flat washer under each optical-plate-bolt head (8, Item 8). 18-8 SS, McMaster 93475A290 $10.93/pack of 25 firm (2026-09-07)."),
 
     # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══

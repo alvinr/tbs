@@ -69,6 +69,8 @@ def render_png(path=None):
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
         from matplotlib.patches import Rectangle, Arc
+        from tbs_drawing import draw_notes
+        from tbs_title_block import title_block
     except ImportError:
         print("  (matplotlib unavailable — skipped PNG)")
         return None
@@ -84,9 +86,9 @@ def render_png(path=None):
 
     fig = plt.figure(figsize=(15, 9)); fig.patch.set_facecolor("white")
     gs = fig.add_gridspec(2, 2, width_ratios=[1, 1.12], height_ratios=[1, 1],
-                          left=0.05, right=0.97, top=0.88, bottom=0.06, hspace=0.32, wspace=0.20)
+                          left=0.05, right=0.97, top=0.88, bottom=0.13, hspace=0.32, wspace=0.20)
     axT, axS = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[1, 0])
-    axB = fig.add_subplot(gs[:, 1])
+    axB = fig.add_subplot(gs[0, 1])
     for a in (axT, axS, axB):
         a.set_aspect("equal"); a.axis("off")
 
@@ -122,7 +124,7 @@ def render_png(path=None):
     axS.annotate("", xy=(rp[0], rp[1]), xytext=(hw, rp[1]), arrowprops=dict(arrowstyle="<->", color=C_OK, lw=1.8))
     axS.text((rp[0] + hw) / 2, rp[1] + 130, f"X travel\n{xr:.0f} mm", color=C_OK, fontsize=9, ha="center", va="bottom", **FT)
     axS.plot(0, 0, "+", color=C_CL, ms=12, mew=2)
-    axS.text(0, -560, f"SWING  ±{c.MAX_SWING_DEG:g}°  →  X = (FP_W/2)(1−cos) = {xr:.0f} mm  =  "
+    axS.text(0, -800, f"SWING  ±{c.MAX_SWING_DEG:g}°  →  X = (FP_W/2)(1−cos) = {xr:.0f} mm  =  "
              f"XSLIDE_X_TRAVEL {c.XSLIDE_X_TRAVEL}  ✓", color=C_DIM, fontsize=9.5, ha="center", **FT)
     axS.set_xlim(-hw * 1.05, hw * 1.05); axS.set_ylim(-720, rp[1] + 320)
     axS.set_title("C2b — SWING (plan): corner arc → X stroke", fontsize=10, color=C_OUT, **FT)
@@ -136,7 +138,7 @@ def render_png(path=None):
     axB.plot([0, L], [95, 95], color=C_DIM, lw=0.8)
     axB.annotate("", xy=(0, 95), xytext=(L, 95), arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2))
     axB.text(L / 2, 120, f"cantilever L = max travel {L} mm", color=C_DIM, fontsize=9, ha="center", **FT)
-    axB.text(L / 2, -19 - 42, f"304 flat bar {c.XSLIDE_BAR_T:g}×{c.XSLIDE_BAR_W:g} mm  ·  Sy {SY_304:.0f} MPa",
+    axB.text(L / 2 -30 , -19 -60, f"304 flat bar {c.XSLIDE_BAR_T:g}×{c.XSLIDE_BAR_W:g} mm\nSy {SY_304:.0f} MPa",
              color=C_OUT, fontsize=8.5, ha="center", va="top", **FT)
 
     # section insets
@@ -146,32 +148,43 @@ def render_png(path=None):
         axB.annotate("", xy=(x0 + w / 2, y0 - 26), xytext=(x0 + w / 2, y0 + h + 26),
                      arrowprops=dict(arrowstyle="->", color=col, lw=1.4))
         axB.text(x0 + w / 2, y0 - 46, tag, color=col, fontsize=8.5, ha="center", va="top", **FT)
-    section(20, -430, c.XSLIDE_BAR_T * 2.2, c.XSLIDE_BAR_W * 2.2, "✔ DEEP — SELECTED\n(38.1 ⟂ load)", True)
-    section(190, -430, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "✗ FLAT — not used", False)
+    section(20, -300, c.XSLIDE_BAR_T * 2.2, c.XSLIDE_BAR_W * 2.2, "✔ DEEP — SELECTED\n(38.1 ⟂ load)", True)
+    section(350, -300, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "✗ FLAT — not used", False)
 
     tbl = [("orientation", "σ (MPa)", "SF", "δ (mm)", "SF ×2 dyn"),
-           ("DEEP  (strong)", f"{sig_s:.0f}", f"{SY_304/sig_s:.1f}", f"{d_s:.2f}", f"{SY_304/(2*sig_s):.1f}"),
-           ("FLAT  (weak)", f"{sig_w:.0f}", f"{SY_304/sig_w:.1f}", f"{d_w:.1f}", f"{SY_304/(2*sig_w):.1f}")]
-    col_x = [300, 520, 630, 730, 840]     # orientation · σ · SF · δ · SF×2
-    ty, dy = -255, -66
+           ("DEEP (strong)", f"{sig_s:.0f}", f"{SY_304/sig_s:.1f}", f"{d_s:.2f}", f"{SY_304/(2*sig_s):.1f}"),
+           ("FLAT (weak)", f"{sig_w:.0f}", f"{SY_304/sig_w:.1f}", f"{d_w:.1f}", f"{SY_304/(2*sig_w):.1f}")]
+    col_x = [0, 270, 420, 520, 650]     # orientation · σ · SF · δ · SF×2
+    ty, dy = -520, -66
     for r, row in enumerate(tbl):
         for col_i, cell in enumerate(row):
             cc = C_OUT if r == 0 else (C_OK if "DEEP" in row[0] else C_BAD)
             axB.text(col_x[col_i], ty + r * dy, cell, color=cc,
                      fontsize=8.5, ha="left", fontweight="bold" if r == 0 else "normal", **FT)
-    axB.text(col_x[0], ty + 3.5 * dy, "✔ DECISION (Alvin 2026-08-13): bars mounted DEEP — 38.1 mm ⟂ load.\n"
-             "   SF ≈ 10, δ ≈ 0.1 mm.  FLAT (SF 1.7, fails ×2) is NOT used.",
-             color=C_OK, fontsize=8.8, ha="left", va="top", fontweight="bold", **FT)
     axB.set_xlim(-70, 980); axB.set_ylim(-560, 180)
     axB.set_title(f"C1 — per-corner load {P:.0f} N → X-slide bending (worst case)",
                   fontsize=10, color=C_OUT, **FT)
 
-    fig.suptitle("SHEET 10 — FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
+    # ── standard note block (bottom-right quadrant) ──
+    axN = fig.add_subplot(gs[1, 1]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    notes = [
+        "CORNER LOAD CASE — NOTES (all values from tbs_constants; cannot drift):",
+        f"1. Moving mass {m:.1f} kg (frame + ACM + clamps + skates, weight model). Per-corner static gravity share P = W/4 = {P:.0f} N.",
+        f"2. C2 TRAVEL — the cross-slide stroke that absorbs the rigid-plane rotation arc about the plane center: Z = (FP_H/2)(1−cos {c.MAX_TILT_DEG:g}°) = {zr:.0f}mm, X = (FP_W/2)(1−cos {c.MAX_SWING_DEG:g}°) = {xr:.0f}mm — both matched by XSLIDE_Z/X_TRAVEL. Bars grown to {c.XSLIDE_Z_BAR_LEN}/{c.XSLIDE_X_BAR_LEN}mm (travel + carriage engagement).",
+        f"3. C1 BENDING — the ¼×1½in 304 flat bar as a worst-case cantilever at full extension (L = {c.XSLIDE_X_TRAVEL}mm) carrying P. DEEP (38.1mm ⟂ load): σ≈{sig_s:.0f} MPa, SF≈{SY_304/sig_s:.0f}, δ≈{d_s:.2f}mm. FLAT: SF≈{SY_304/sig_w:.1f} — fails a 2× dynamic factor.",
+        "4. DECISION: mount the cross-slide bars DEEP (strong axis). Deflection is not optically critical (flatness is carried by the ACM backing) but position error is not free.",
+    ]
+    draw_notes(axN, notes, 3, 96, 7.0, fs=8, title_fs=8.6, color=C_DIM, title_color=C_OUT, font=FT, width=80, wrap=72)
+
+    fig.suptitle("FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
                  fontsize=12.5, fontweight="bold", color=C_OUT, y=0.955, **FT)
     fig.text(0.5, 0.915, f"moving mass {m:.1f} kg (weight model)  ·  304 SS ¼\"×1½\" bar  ·  driven from tbs_constants  ·  "
              "DECISION: bars mounted DEEP (strong axis)", fontsize=9, color=C_DIM, ha="center", **FT)
-    fig.text(0.5, 0.02, "SHEET 10 OF 11  ·  MOVEABLE FILM PLANE  ·  TBS-FM01  ·  © 2026 Alvin Richards",
-             fontsize=8.5, color=C_DIM, ha="center", **FT)
+    # ── standard title block (bottom) — consistent with the other film sheets ──
+    ax_tb = fig.add_axes([0.03, 0.012, 0.94, 0.062]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 10 OF 18", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Corner load case (Phase 1c) — cross-slide travel verification + bending safety factor",
+                scale_note="Analysis (mm)", doc_id="TBS-FM01 · Film Plane Mechanism", height=0.75)
     fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
     plt.close(fig)
     print(f"  → {path}")

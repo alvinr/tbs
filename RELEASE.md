@@ -24,6 +24,26 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane fabrication blueprint — mechanism-design → shop-buildable (Sheets 1–18).** Elevated the
+  film-plane drawing set to a full fabrication blueprint matching the hinged-panel/light-trap standard — seven
+  new per-part detail sheets, each drawn from `tbs_constants`, verified against the live 3D model, with cut
+  lengths, hole coordinates, weld schedules, and firm part SKUs.
+  - *Design corrections (five review passes):* re-spec'd the corner plate from a press-brake ¼ 6×8 plate to
+    stock 4×4×¼in 304 angle (−$76…−$135, no forming); lengthened the wall-seat back-plate so both M12 rows
+    clear the seat; ACM now butts the frame's vertical leg above the fillet ridge; member sections redrawn as
+    single continuous extrusions/angles; wall-seat + far-left-bracket bolts drawn per the head-outside/nut-inside
+    convention (with hidden-line X-clearance on Sheet 11); dropped two views redundant with Sheets 3/9; fixed
+    the aspect-squashed drill holes; and relocated the perimeter muslin clamp-layout to Operating Manual §2.4.
+  - *Fasteners — sourced & fully itemized:* retired the M5 axle-saddle screw → M6×20 (consolidated onto the
+    shared `bolt-m6x20`) and itemized every previously-unregistered film-fab fastener with firm McMaster SKUs —
+    16× 1/8×3/4in 304 flat-bar saddles, M4 cam-clamp bolt-through, M8 J1/J2 through-bolt + nut (M8×25 for the
+    14mm grip), and the ACM→frame stainless self-drilling TEK screw. **+$72 to the FILM section**; costing
+    self-check, report parts list, and the diagram gallery all cascaded.
+  - *Constants & drift:* wired 4 previously-dead constants (`SKATE_ROLLER_W`, `SKATE_AXLE_LEN`, `XSLIDE_STROKE`,
+    `UJOINT_YOKE_L`) + added `FP_RAIL_WALL_T`/`FP_RAIL_STOCK_LEN`, and swept stale constant/report values
+    (X-travel 263→257mm, angle 3/16→1/8in, `FP_W`/`PH_X`/`RAIL_SPAN` comments). Phase-0 interference/bolt triage
+    found no structural defects (the "7<9" flag is the catalog-fixed McMaster 4040N12 fit).
+
 - **Fastener standardization — inventoried, decided, first cut.** Compiled every bolt/screw/nut/washer/rivet
   from `parts.py` (incl. threads bundled in structural/labor lots) into a design-for-assembly review
   (`fastener-standardization.md`): metric families targeted 6→4 (M5 + M10 to be eliminated), lengths ~12→~7.
@@ -39,19 +59,6 @@ file** — a release must not ship without a changelog entry:
   (contradicting its own −420 label) — wired to `DRUM_CX`. Embedded the eight missing hinged-panel fabrication
   sheets (8, 9, 11, 12, 13, 14, 15, 16) in the report, so all 16 sheets are now shown. Fixed stale
   drum-height arithmetic in two Sheet 3 comments.
-
-- **Ø900→Ø800 stale-label sweep (round 2).** Cleared the last Ø900/R450 references left by the 2026-08-26
-  drum resize across the weight, movable-panel-weight, light-trap, and film-plane generators plus the
-  `tbs_constants` design comments — the visible ones (the light-trap housing cut-sheet note "Roll to Ø800
-  (R400)" and rim-angle radius, the movable-panel weight-row descriptions) now reference `DRUM_D`/`LT_HOUSING_R`
-  so they can't drift again; the rev-history lines that record the Ø900→Ø800 change are kept. Weight figures
-  unchanged (label text only).
-
-- **Housing wall-thickness label unified.** The Ø800 light-trap housing is one material (US Plastics 46685,
-  3/16″ ≈ 5mm UV-HDPE) that some places labeled "5mm" and others "3/16″" — every reader-visible reference
-  (light-trap Sheet 2/9 fab notes, the light-trap-selection / hinged-panel / cost-breakdown / weight reports)
-  now reads **"5mm (3/16in)"**, matching the drum's "3.18mm (1/8in)" convention. Modeled thickness (`LT_HOUSING_T`)
-  is unchanged at 5; the constant now documents the 3/16″ source.
 
 ## [0.10] — 2026-09-04
 

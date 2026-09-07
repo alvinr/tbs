@@ -98,7 +98,7 @@ C_HGT  = 2388   # interior height Z (mm)
 FP_H     = 2094   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile acetal-skate corner (BUILD 140→110); 2138→2094 — top edge lowered 44mm for +25mm ceiling clearance (top rail dropped via RAIL_OFF_TOP); ~C_HGT − RAIL_OFF_TOP(144) − RAIL_OFF_BOT(walkway)]
 FP_X_L   = 260    # film plane left edge X (mm)     [2026-08-11: 150→260 — left corner pulled inboard clear of the FIXED pivot HUB (r60 bearing reaches X235, not just the Ø89 post); PIVOT_X pinned so the post no longer follows. crops ~110mm image, re-centers PH_X. rev6: was 625]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
-FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]
+FP_W     = FP_X_R - FP_X_L   # = 4389mm          [rev6: was 4024]
 FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
 FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
@@ -129,7 +129,7 @@ CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # clamps per vertical edge
 CLAMP_N_TOTAL = CLAMP_N_HORIZ + 2 * CLAMP_N_VERT   # top edge + 2 sides; bottom (walkway) edge omitted
 
 # ── Pinhole (recenterd on new film plane) ─────────────────────────────────────
-PH_X   = FP_X_L + FP_W // 2   # = 2399mm  [rev6: was 2637]
+PH_X   = FP_X_L + FP_W // 2   # = 2454mm  [rev6: was 2637]
 PH_H   = 1194                  # height (mm) [unchanged]
 PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [unchanged]
 PH_F   = C_WID                 # focal length = container width [unchanged]
@@ -145,7 +145,7 @@ PINHOLE_DISC_T = 0.1   # pinhole disc thickness (mm, SS-302)
 # ── Film plane rails ──────────────────────────────────────────────────────────
 RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]
 RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4019 → now 4649]
-RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
+RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4389mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
 RAIL_OFF  = 100       # generic ceiling/floor offset (mm) — floor-standing equipment, drum, schematic rails  [unchanged]
 RAIL_OFF_TOP = 144    # film-plane TOP rail ceiling offset (mm) — dropped 44mm from RAIL_OFF(100) to win +25mm ceiling clearance for the top carriage/fittings; drives BRACE_Z_TOP + every film-plane top-rail model site
@@ -163,6 +163,8 @@ RAIL_OFF_BOT = 160    # floor (BOTTOM) offset (mm) = WALKWAY_H 140 + 20mm so the
 # a bare RAIL_OFF_BOT for the bottom) in the 3D models.  (2D sheets still use BRACE_Z_* — see TODO.)
 FP_RAIL_WEB       = 76   # U-channel web depth, stood vertical (Z) — 3×1.5 section
 FP_RAIL_FLANGE    = 38   # U-channel flange (X), opens toward the film
+FP_RAIL_WALL_T    = 5.08 # U-channel wall thickness (mm) = 0.2" — Grainger 795M51 3×1.5×0.2" 6061-T6 (parts.py fp-u-channel)
+FP_RAIL_STOCK_LEN = 2438 # purchased rail stock length (mm) = 8 ft — one uncut stick spans the C_WID(2362) wall-to-wall rail; RAIL_LEN(2200) = skate TRAVEL, not the cut
 FP_RAIL_BUILD_BOT = 110  # film BOTTOM edge → bottom-rail web-centre (weight-carriage stack)
 FP_RAIL_GUIDE_GAP = 10   # film TOP edge → just under the top guide-rail web (follower gap)
 FP_RAIL_CEIL_CLR  = 50   # top-rail web-top → ceiling clearance
@@ -187,7 +189,7 @@ MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7
 # Cross-slide strokes that absorb the rigid-rotation arc travel at the corners (Option A).
 # The Z-slide travel SETS the max tilt (see MAX_TILT_DEG) — dimensioned in FPM sheets 3/8/9.
 XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 245mm (tilt foreshortening at MAX_TILT, FP_H 2094)
-XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing foreshortening at MAX_SWING)
+XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 257mm (swing foreshortening at MAX_SWING, FP_W 4389)
 XSLIDE_STROKE   = 300   # specified linear cross-slide travel per axis (mm) — covers both Z/X foreshortening with margin
 
 # ── Film-plane CORNER mechanism — bolt-level firm dims (dimensioned in FPM sheets 3/4/8/9/10) ──
@@ -207,7 +209,7 @@ XSLIDE_CARR_WALL = 8   # cross-slide carriage wall thickness (mm) around the bar
 UJOINT_BORE   = 9.53   # bore (mm) = 0.375" (3/8") keyway bore
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)
 UJOINT_LEN    = 68.3   # overall length (mm) = 2.690"
-UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345"
+UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345" — reserved (catalog spec; the U-joint is shown in-assembly on Sheets 3/9, not as a standalone dimensioned part)
 UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)

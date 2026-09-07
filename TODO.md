@@ -9,6 +9,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## Cleanup
+
+- [ ] **Scrub "Alvin" name attributions from code/text (2026-09-05).** CLAUDE.md now bans naming "Alvin" in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Forward rule is in effect; a back-scrub of the **pre-existing** `(Alvin …)` / `(… , Alvin …)` occurrences remains — mostly in `parts.py` + `costing.py` spec/cost-history comments (e.g. "firm (Alvin 2026-08-13)"), and any in `TODO.md` / reports. Sweep: `grep -rn "Alvin" src/ *.md | grep -viE "© 2026 Alvin Richards|SPDX"` → replace each `(Alvin <date>)`→`(<date>)`, `(… Alvin)`→drop the name; keep the license/copyright headers.
+
 ## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
 
 - [~] **Brush + holder — KEEP AS-IS for now (2026-08-24, Alvin: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.
@@ -40,7 +44,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   are tight-bbox noise, ignore). **DEFERRED until after the light-trap blueprint is done** (light-trap's own
   overflows are being fixed now, in-flight). Tackle the rest **one generator per tidy pass** (skill discipline —
   render → crop-zoom → verify), priority by count/severity:
-  - **film_plane_mechanism** (10, worst +52%) — Sheet 9 section titles + U-joint/M6 leaders over-reaching left.
+  - **film_plane_mechanism** (10, worst +52%) — pre-existing overflow/crowding on Sheets **1–11** only (Sheet 2 section
+    titles ±19–20%, Sheet 1 "LEFT RAIL" +17%, Sheet 3/4 crowding, Sheet 6 +8%; `CARRIAGE_YD_CENTER` panel overflow).
+    The fab-blueprint round (2026-09-05, `filmplane-bp`) renumbered the set to **20 sheets** and left these untouched
+    (out of blueprint scope); the NEW Sheets **12–20 are already tidy-clean**. One tidy pass over 1–11 remains.
   - **weight_analysis** (9, +35%) — Sheet 1 "Total / CG" stats boxes hang off the BOTTOM (P8 notes placement).
   - **ibc_frame_drawing** (9, +19%) — Sheet 1 DATUMS + member-schedule table off left (P8).
   - **shelf_diagram** (3, +33%), **joint_study** (4, +19%), then walkway/electrical/tray_redesign/corner_gimbal/
@@ -95,6 +102,21 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   mechanisms — mostly intentional one-piece/bolted/bearing overlaps that just aren't classified yet. To
   make `--solids` report globally clean: walk each mechanism, butt/notch the genuine fused-seam defects,
   and extend `_SANCTIONED_SOLID` with the rest (each with a reason). Larger effort; do per-mechanism.
+  - **Film-plane blueprint Phase-0 triage (2026-09-05, `filmplane-bp`).** Ran `check_interference.py`
+    against the live `film-plane-mechanism` model. **Pipe/solid OPEN = 0.** `--solids` = **165 OPEN**,
+    dominated by U-channel **web↔flange self-overlap** (one-piece extrusion modeled as boxes — intentional),
+    seated **rail↔frame** contacts, and **stub↔bore** fits — no fused-seam defect in the sample; matches the
+    "mostly intentional, just unclassified" characterization above. The detail sheets (12–20) draw these as
+    designed. Full `_SANCTIONED_SOLID` classification stays THIS separate task, not the blueprint.
+    `--bolts` = **21 flags, none a genuine structural defect:** the frame-corner **7mm<9mm** (×8) is M6 into
+    the purchased **McMaster 4040N12 shaft-support clamp** (catalog-fixed hole pattern, precision fit — NOT a
+    1.5×D-in-steel structural grip; can't widen/move a bought part's hole), frame-corner "in Input stub 3/8"
+    (4.8<9) is a worst-edge artifact (can't get 9mm edge in a 9.53mm stub), thumb-screw/rail-fixing PROJECT
+    33mm is by-design (graspable), IBC wall bolt 18<21 is nominal-OK. **These precision/catalog bolts should
+    be added to the `--bolts` `_MECH_KEYS` filter** (deferred — lint hygiene, not blueprint).
+  - **Two bolt flags for ALVIN, outside the corner-mechanism sheet scope:** `Foot anchor M12 edge 5mm in
+    Frame rail (Yd)` and `FP combined beam TEK screw 55mm past grip` (far-left combined beam, Sheet 11 area) —
+    the TEK projection looks like a real drawn-length issue; worth a separate look, not part of Sheets 12–20.
   (Scoped out of the 2026-08-16 named-category pass.)
 
 - [~] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid

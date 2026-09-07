@@ -175,12 +175,19 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
   sourcing pass (also `ferri-rich` potassium ferricyanide $582).
 
 ### Bucket 2 — ACTIONABLE WHEN BLUEPRINTS FINALIZED (v1.0)
-- [ ] **Front-bar J2/J7 joint — crush through the hollow bar (design review at quote time, Alvin 2026-08-17).**
-  The J2 corridor cleat + J7 wall-end bolts run VERTICALLY through the 50mm HOLLOW 50×20×3 RHS bar (M12×65).
-  Torquing a bolt through a hollow section pinches its two walls — resolve before fab: add an internal
-  spacer/crush-sleeve at each bolt, OR grip only the cleat leg + the bar's bottom flange (short grip, which
-  would restore M12×40). Decide with the fabricator when getting quotes; then reconcile the bolt length +
-  spacer part back through Detail B / parts.py / the 3D. (SKU re-source is the separate Bucket-1 item.)
+- [ ] **Front-bar J2/J7 joint — crush through the hollow bar (design review at quote time, 2026-08-17).**
+  Each L-cleat runs 1 HORIZONTAL M12×65 through the L's vertical leg + the bar's 50mm web (both 3mm web walls),
+  with a 40×50×8 backing plate on the far web. The backing plate stops the far wall dishing under the nut, but
+  torquing a bolt through both walls can still draw the 50mm web together (crush) — resolve before fab: add an
+  internal spacer/crush-sleeve at each bolt. Decide with the fabricator at quote; then reconcile the spacer part
+  through Detail B / parts.py / the 3D. **Do NOT "restore M12×40"** — the single horizontal M12×65 through the
+  tall web is the confirmed design of record (the 2× M12×40 vertical joint left only ~3mm edge; reverting
+  reintroduces that defect — see fastener-standardization.md).
+- [ ] **Fastener standardization (part-reconcile branch) — remaining open items** (decisions/details in `fastener-standardization.md`):
+  - **Tilt-swing board** — design chat: socket-vs-hex heads, M8×1.0 fine vs M8×1.25 coarse pitch, A4/316 vs 304/zinc, and itemize its off-registry fasteners (M8×1.0×80 / M12×45 / M16×55 SHCS / M6 set screws / dowel pins) into `parts.py`.
+  - **M12 wall grip-stack → one length** (Lever B) — standardize backing-plate/flange thicknesses so the ×65/×70 wall joints land on one length; geometry redesign, gated on the IBC-frame + walkway blueprints.
+  - **M5 → flange bolt + nyloc** — deferred to the chem-shelf design (no blueprint yet).
+  - **Bracket P/N** — decide `filter-skid-frame`: keep 150061 (kit) or switch to 244718 (bracket-only, since we supply our own screws) + confirm its price.
 - [ ] **`pinhole-shim`** — Lenox SS-3/8-DISC laser-drilled pinhole; firm via RFQ once the optics drawing set is design-complete.
 
 ### Bucket 3 — ACTIONABLE ON BUILD

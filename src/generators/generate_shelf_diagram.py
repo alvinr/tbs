@@ -393,7 +393,7 @@ def sheet5():
         "Hinge-cleat wall bolts         M8×25 zinc (91280A534)+nut/wash                     ×6",
         "Transport latch                cam latch (reuse 1619A74)     McMaster              ×1",
     ]
-    draw_notes(ax, rows, 60, 360, spacing=30, fs=6.4, width=1080, font=FONT)
+    draw_notes(ax, rows, 60, 360, spacing=24, fs=6.4, width=1080, font=FONT)
 
     title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + FASTENER SCHEDULE",

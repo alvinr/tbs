@@ -80,10 +80,12 @@ file** — a release must not ship without a changelog entry:
   shelf/pinhole/weight diagrams all cascaded; the M5 family is now fully retired. The overview/construction 3D
   re-send is deferred (needs the live model — pairs with the corridor-water comment cleanup).
 - **Chem-shelf engineering blueprints (Sheets 4–5).** Added dimensioned fab-detail sheets to the shelf set:
-  Sheet 4 (board cut + tee-nut drill positions — hinge row at 100mm pitch + front-corner eye tee-nuts, 15mm
-  lip) and Sheet 5 (hinge cleat + 8mm backing plates 1:1 with hole positions + a full fastener/hardware
-  schedule). The piano hinge is supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat
-  align. Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
+  Sheet 4 (board cut + tee-nut drill positions — 4-bolt hinge row at 150mm pitch/75mm margin + front-corner
+  eye tee-nuts, 15mm lip) and Sheet 5 (hinge cleat + 8mm backing plates 1:1 + a full fastener/hardware
+  schedule). Every hole on both sheets is dimensioned per-hole (chained X + row Y). The piano hinge is
+  supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat align. The 4-bolt hinge (down
+  from 6) cascaded to the schedule, parts registry (hinge screws ×4, ply tee-nuts ×2 4-pack) and costing
+  (shelf −$3/$3/$4). Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

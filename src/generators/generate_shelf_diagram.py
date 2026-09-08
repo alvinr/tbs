@@ -245,9 +245,9 @@ def sheet3():
 
 
 # ── Fab-detail layout (diagram-of-record — exact hole positions belong in the drawing) ──
-TNUT_HINGE_N  = 6                                  # hinge-screw tee-nuts along the back edge
-TNUT_MARGIN_X = 50                                 # first/last hinge tee-nut inset from the board sides
-TNUT_HINGE_PITCH = (SHELF_W - 2 * TNUT_MARGIN_X) / (TNUT_HINGE_N - 1)   # = 100mm
+TNUT_HINGE_N  = 4                                  # hinge bolts (into tee-nuts) along the back edge
+TNUT_MARGIN_X = 75                                 # first/last hinge tee-nut inset from the board sides
+TNUT_HINGE_PITCH = (SHELF_W - 2 * TNUT_MARGIN_X) / (TNUT_HINGE_N - 1)   # = 150mm
 TNUT_HINGE_YD = 15                                 # hinge tee-nut row inset from the back (hinge) edge
 TNUT_EYE_X    = 30                                 # front-corner eye-bolt tee-nut inset from each side
 TNUT_EYE_YD   = SHELF_DEPTH - 20                   # eye-bolt tee-nut inset from the front edge
@@ -263,7 +263,7 @@ EYE_XS        = [TNUT_EYE_X, SHELF_W - TNUT_EYE_X]
 def sheet4():
     fig, ax = plt.subplots(figsize=(11, 6))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-95, SHELF_W + 150); ax.set_ylim(-95, SHELF_DEPTH + 255)
+    ax.set_xlim(-95, SHELF_W + 150); ax.set_ylim(-150, SHELF_DEPTH + 255)
     ax.set_aspect("equal"); ax.axis("off")
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
@@ -280,14 +280,20 @@ def sheet4():
     for x in EYE_XS:
         ax.add_patch(Circle((x, TNUT_EYE_YD), TNUT_HOLE_D / 2, fc="white", ec=C_OUT, lw=1.2, zorder=5))
 
-    # dimensions
-    draw_dim_h(ax, 0, SHELF_W, -34, f"{SHELF_W}mm", fs=6, font=FONT, above=False)
+    # dimensions — overall + per-hole (chained X for the hinge row, X-from-each-side for eyes; row Y)
+    draw_dim_h(ax, 0, SHELF_W, -106, f"{SHELF_W}mm", fs=6, font=FONT, above=False)
     draw_dim_v(ax, SHELF_W + 34, 0, SHELF_DEPTH, f"{SHELF_DEPTH}mm", fs=6, font=FONT)
-    draw_dim_h(ax, HINGE_XS[0], HINGE_XS[1], SHELF_DEPTH + 22, f"{int(TNUT_HINGE_PITCH)}mm", fs=5.5, font=FONT)
-    draw_dim_h(ax, 0, TNUT_MARGIN_X, SHELF_DEPTH + 46, f"{TNUT_MARGIN_X}mm", fs=5.5, font=FONT)
+
+    # hinge row (4 holes): chained X so every hole is dimensioned; row Y from the back/hinge edge
+    hx = [0] + HINGE_XS + [SHELF_W]
+    for a, b in zip(hx[:-1], hx[1:]):
+        draw_dim_h(ax, a, b, -34, f"{int(round(b - a))}mm", fs=5.2, font=FONT, above=False)
     draw_dim_v(ax, -34, 0, TNUT_HINGE_YD, f"{TNUT_HINGE_YD}mm", fs=5.5, font=FONT)
+
+    # eye holes (2): X inset from each side; row Y from the back edge
+    draw_dim_h(ax, 0, EYE_XS[0], -70, f"{TNUT_EYE_X}mm", fs=5.2, font=FONT, above=False)
+    draw_dim_h(ax, EYE_XS[1], SHELF_W, -70, f"{TNUT_EYE_X}mm", fs=5.2, font=FONT, above=False)
     draw_dim_v(ax, -62, 0, int(TNUT_EYE_YD), f"{int(TNUT_EYE_YD)}mm", fs=5.5, font=FONT)
-    draw_dim_h(ax, 0, TNUT_EYE_X, -60, f"{TNUT_EYE_X}mm", fs=5.5, font=FONT, above=False)
 
     # callouts (right side — front-corner eye tee-nut + lip; hinge row is dimensioned + noted)
     leader(ax, EYE_XS[1], TNUT_EYE_YD, SHELF_W + 44, TNUT_EYE_YD,
@@ -329,6 +335,13 @@ def sheet5():
     for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):   # M8 cleat→backing bolts
         ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.30), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, cx0, cx0 + CL_W, cy0 - 18, f"{CL_W}mm", fs=6, font=FONT, above=False)
+    # per-hole X (hinge-screw row, chained — the M8 cleat bolts share these node positions)
+    cx = [0] + HINGE_XS + [SHELF_W]
+    for a, b in zip(cx[:-1], cx[1:]):
+        draw_dim_h(ax, cx0 + a, cx0 + b, cy0 - 40, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
+    # per-hole Y (both rows, from the bottom edge)
+    draw_dim_v(ax, cx0 - 16, cy0, cy0 + CL_H * 0.68, f"{int(round(CL_H * 0.68))}mm", fs=5.0, font=FONT)
+    draw_dim_v(ax, cx0 - 40, cy0, cy0 + CL_H * 0.30, f"{int(round(CL_H * 0.30))}mm", fs=5.0, font=FONT)
     leader(ax, cx0 + HINGE_XS[1], cy0 + CL_H * 0.68, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
            f"hinge-screw holes — {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm (match the board row)", fs=5.6, font=FONT, ha="center")
     leader(ax, cx0 + HINGE_XS[-1], cy0 + CL_H * 0.30, cx0 + CL_W + 20, cy0 + 4,
@@ -344,6 +357,11 @@ def sheet5():
         ax.add_patch(Circle((hbx + x, hby + HB_H / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, hbx, hbx + HB_W, hby - 18, f"{HB_W}mm", fs=6, font=FONT, above=False)
     draw_dim_v(ax, hbx - 18, hby, hby + HB_H, f"{HB_H}mm", fs=5.5, font=FONT)
+    # per-hole X (3× M8, chained) + Y (row centered in the plate)
+    bx = [0, HINGE_XS[0], HINGE_XS[len(HINGE_XS) // 2], HINGE_XS[-1], HB_W]
+    for a, b in zip(bx[:-1], bx[1:]):
+        draw_dim_h(ax, hbx + a, hbx + b, hby - 40, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
+    draw_dim_v(ax, hbx - 40, hby, hby + HB_H / 2, f"{int(HB_H / 2)}mm", fs=5.0, font=FONT)
     ax.text(hbx, hby + HB_H + 14, "HINGE-BACKING PLATE — 8mm steel (welded to wall crests; 3× M8 weld-nut)",
             fontsize=6.2, color=C_OUT, ha="left", **FONT)
 
@@ -353,6 +371,9 @@ def sheet5():
     ax.add_patch(Circle((abx + AB / 2, aby + AB / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, abx, abx + AB, aby - 18, f"{AB}mm", fs=5.5, font=FONT, above=False)
     draw_dim_v(ax, abx + AB + 16, aby, aby + AB, f"{AB}mm", fs=5.5, font=FONT)
+    # centered hole
+    draw_dim_h(ax, abx, abx + AB / 2, aby - 40, f"{int(AB / 2)}mm", fs=5.0, font=FONT, above=False)
+    draw_dim_v(ax, abx - 16, aby, aby + AB / 2, f"{int(AB / 2)}mm", fs=5.0, font=FONT)
     leader(ax, abx + AB / 2, aby + AB / 2, abx + AB + 30, aby + AB + 20,
            "Ø9 (M8) weld-nut —\nchain wall-anchor eye bolt", fs=5.6, font=FONT, ha="left")
     ax.text(abx, aby + AB + 44, "CHAIN-ANCHOR PLATE ×2 — 8mm steel", fontsize=6.2, color=C_OUT, ha="left", **FONT)
@@ -361,8 +382,8 @@ def sheet5():
     rows = [
         "FASTENER / HARDWARE SCHEDULE",
         "Piano hinge (bolt-on, BLANK)   304 SS, ~32mm open × 600mm   McMaster 1582A457   ×1",
-        "Hinge screws                   1/4-20 SS × ~3/4in            (SKU pending)         ×6",
-        "Ply tee-nuts                   1/4-20 pronged (825001)       Home Depot            ×8 (+spares)",
+        "Hinge screws                   1/4-20 SS × ~3/4in            (SKU pending)         ×4",
+        "Ply tee-nuts                   1/4-20 pronged (825001)       Home Depot            ×6 (+spares)",
         "Front-corner eye bolts         1/4-20 SS × 1in               McMaster 3014T45      ×2",
         "Chain wall eye bolts           M8 SS × 1in                   McMaster 4843T13      ×2",
         "Chain                          304 SS ~4mm                   McMaster 3392T51      ~1m",

@@ -333,7 +333,7 @@ def sheet4():
 def sheet5():
     fig, ax = plt.subplots(figsize=(11, 7.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(0, 1180); ax.set_ylim(0, 820)
+    ax.set_xlim(-70, 1180); ax.set_ylim(0, 820)
     ax.set_aspect("equal"); ax.axis("off")
 
     # ── Hinge cleat + its 8mm hinge-backing plate (drawn 1:1-ish, top zone) ──
@@ -388,7 +388,7 @@ def sheet5():
     ax.text(abx, aby + AB + 44, "CHAIN-ANCHOR PLATE ×2 — 8mm steel", fontsize=6.2, color=C_OUT, ha="left", **FONT)
 
     # ── piano hinge drilling (blank 1582A452, opened flat — bottom zone) ──
-    HX0, HY0 = 120, 310                              # strip left x, pin-line y
+    HX0, HY0 = 60, 310                               # strip left x (aligned with the cleat + backing plate), pin-line y
     ax.text(HX0, HY0 + 74, "PIANO HINGE DRILLING — blank 1582A452, opened flat (drill BOTH leaves)",
             fontsize=6.5, color=C_OUT, ha="left", **FONT)
     ax.add_patch(Rectangle((HX0, HY0 - HINGE_LEAF), SHELF_W, HINGE_OPEN, fc="white", ec=C_OUT, lw=1.4, zorder=3))

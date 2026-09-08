@@ -113,7 +113,7 @@ def sheet1():
         "4. TAP-01 relocated LEFT of the shelf (battery bank is to the right).",
     ]
     draw_notes(ax, notes, X_LO + 20, Y_HI - 20, spacing=26, fs=6.5, width=820, font=FONT)
-    title_block(ax, "SHEET 1 OF 3", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 1 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="PLAN — FOLD-DOWN, WIDENED WALKWAY (LEFT OF BATTERIES)",
                 scale_note="Axes in mm · PLAN VIEW", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -187,7 +187,7 @@ def sheet2():
         f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the shelf underside (Z1050).",
     ]
     draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
-    title_block(ax, "SHEET 2 OF 3", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 2 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + STOWED)",
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -236,7 +236,7 @@ def sheet3():
            "SS CHAIN STAY (tension)\ncarries the deployed load;\nslackens when shelf folds up",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
 
-    title_block(ax, "SHEET 3 OF 3", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 3 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="DETAIL — PIANO HINGE + STAY",
                 scale_note="Axes in mm · DETAIL", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -244,7 +244,143 @@ def sheet3():
     print("  diagrams/shelf-sheet3.png saved")
 
 
+# ── Fab-detail layout (diagram-of-record — exact hole positions belong in the drawing) ──
+TNUT_HINGE_N  = 6                                  # hinge-screw tee-nuts along the back edge
+TNUT_MARGIN_X = 50                                 # first/last hinge tee-nut inset from the board sides
+TNUT_HINGE_PITCH = (SHELF_W - 2 * TNUT_MARGIN_X) / (TNUT_HINGE_N - 1)   # = 100mm
+TNUT_HINGE_YD = 15                                 # hinge tee-nut row inset from the back (hinge) edge
+TNUT_EYE_X    = 30                                 # front-corner eye-bolt tee-nut inset from each side
+TNUT_EYE_YD   = SHELF_DEPTH - 20                   # eye-bolt tee-nut inset from the front edge
+TNUT_HOLE_D   = 8                                  # tee-nut barrel hole (5/16") — Ø8
+LIP_W         = 15                                 # spill-lip width (3 free edges)
+HINGE_XS      = [TNUT_MARGIN_X + i * TNUT_HINGE_PITCH for i in range(TNUT_HINGE_N)]
+EYE_XS        = [TNUT_EYE_X, SHELF_W - TNUT_EYE_X]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 4 — BOARD FABRICATION (top view: cut + tee-nut drill positions)
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet4():
+    fig, ax = plt.subplots(figsize=(11, 6))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-95, SHELF_W + 150); ax.set_ylim(-95, SHELF_DEPTH + 255)
+    ax.set_aspect("equal"); ax.axis("off")
+
+    # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
+    ax.add_patch(Rectangle((0, 0), SHELF_W, SHELF_DEPTH, fc=C_SHELF, ec=C_OUT, lw=1.4, zorder=2))
+    # spill lip inner lines on the 3 free edges (front + 2 sides); back edge = hinge, no lip
+    for (x0, y0, x1, y1) in [(0, SHELF_DEPTH - LIP_W, SHELF_W, SHELF_DEPTH - LIP_W),
+                             (LIP_W, 0, LIP_W, SHELF_DEPTH),
+                             (SHELF_W - LIP_W, 0, SHELF_W - LIP_W, SHELF_DEPTH)]:
+        ax.plot([x0, x1], [y0, y1], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
+
+    # hinge tee-nut row + front-corner eye-bolt tee-nuts
+    for x in HINGE_XS:
+        ax.add_patch(Circle((x, TNUT_HINGE_YD), TNUT_HOLE_D / 2, fc="white", ec=C_OUT, lw=1.0, zorder=5))
+    for x in EYE_XS:
+        ax.add_patch(Circle((x, TNUT_EYE_YD), TNUT_HOLE_D / 2, fc="white", ec=C_OUT, lw=1.2, zorder=5))
+
+    # dimensions
+    draw_dim_h(ax, 0, SHELF_W, -34, f"{SHELF_W}mm", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, SHELF_W + 34, 0, SHELF_DEPTH, f"{SHELF_DEPTH}mm", fs=6, font=FONT)
+    draw_dim_h(ax, HINGE_XS[0], HINGE_XS[1], SHELF_DEPTH + 22, f"{int(TNUT_HINGE_PITCH)}mm", fs=5.5, font=FONT)
+    draw_dim_h(ax, 0, TNUT_MARGIN_X, SHELF_DEPTH + 46, f"{TNUT_MARGIN_X}mm", fs=5.5, font=FONT)
+    draw_dim_v(ax, -34, 0, TNUT_HINGE_YD, f"{TNUT_HINGE_YD}mm", fs=5.5, font=FONT)
+    draw_dim_v(ax, -62, 0, int(TNUT_EYE_YD), f"{int(TNUT_EYE_YD)}mm", fs=5.5, font=FONT)
+    draw_dim_h(ax, 0, TNUT_EYE_X, -60, f"{TNUT_EYE_X}mm", fs=5.5, font=FONT, above=False)
+
+    # callouts (right side — front-corner eye tee-nut + lip; hinge row is dimensioned + noted)
+    leader(ax, EYE_XS[1], TNUT_EYE_YD, SHELF_W + 44, TNUT_EYE_YD,
+           "2× Ø8 tee-nut — front corner\n(1/4-20 eye bolt → chain)", fs=6, font=FONT, ha="left")
+    leader(ax, SHELF_W - LIP_W, LIP_W * 2, SHELF_W + 44, LIP_W * 2 - 26,
+           f"{LIP_W}mm spill lip\n(ply/HDPE, 3 free edges)", fs=6, font=FONT, ha="left")
+
+    # notes (top — clear of the board + dims)
+    draw_notes(ax, [
+        "BOARD FAB — 18mm phenolic / UV-coated ply; ply-primary (NO steel frame). Seal all cut edges.",
+        f"HINGE ROW (back/bottom edge): {TNUT_HINGE_N}× Ø{TNUT_HOLE_D} pronged tee-nut (825001) at "
+        f"{int(TNUT_HINGE_PITCH)}mm pitch, {TNUT_MARGIN_X}mm side margin — seat from the BACK face.",
+        "The piano hinge is supplied BLANK — drill both leaves to this pitch so hinge ↔ tee-nuts align.",
+        "Back (bottom) edge = piano hinge (no lip). Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
+    ], 0, SHELF_DEPTH + 245, spacing=18, fs=6, width=680, font=FONT)
+
+    title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+                subtitle="BOARD FABRICATION — 18mm PLY (cut + tee-nut drill)",
+                scale_note="Axes in mm", height=0.08)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/shelf-sheet4.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 5 — WALL PLATES + HINGE CLEAT + FASTENER SCHEDULE
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet5():
+    fig, ax = plt.subplots(figsize=(11, 7.5))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(0, 1180); ax.set_ylim(0, 820)
+    ax.set_aspect("equal"); ax.axis("off")
+
+    # ── Hinge cleat + its 8mm hinge-backing plate (drawn 1:1-ish, top zone) ──
+    cx0, cy0, CL_W, CL_H = 60, 660, 600, 40
+    ax.add_patch(Rectangle((cx0, cy0), CL_W, CL_H, fc="#B8BDC4", ec=C_OUT, lw=1.2, zorder=3))
+    for x in HINGE_XS:                                        # hinge-screw holes (align to the board tee-nut row)
+        ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.68), 3.2, fc="white", ec=C_OUT, lw=0.9, zorder=5))
+    for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):   # M8 cleat→backing bolts
+        ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.30), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
+    draw_dim_h(ax, cx0, cx0 + CL_W, cy0 - 18, f"{CL_W}mm", fs=6, font=FONT, above=False)
+    leader(ax, cx0 + HINGE_XS[1], cy0 + CL_H * 0.68, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
+           f"hinge-screw holes — {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm (match the board row)", fs=5.6, font=FONT, ha="center")
+    leader(ax, cx0 + HINGE_XS[-1], cy0 + CL_H * 0.30, cx0 + CL_W + 20, cy0 + 4,
+           "3× Ø9 (M8) → backing weld-nut", fs=5.6, font=FONT, ha="left")
+    ax.text(cx0, cy0 + CL_H + 60, "HINGE CLEAT — 6mm steel, 600 long (piano-hinge wall leaf bolts to it)",
+            fontsize=6.5, color=C_OUT, ha="left", **FONT)
+
+    # ── 8mm backing plates (mid zone) ──
+    # hinge-backing plate (long)
+    hbx, hby, HB_W, HB_H = 60, 470, 600, 60
+    ax.add_patch(Rectangle((hbx, hby), HB_W, HB_H, fc="#9AA0A8", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
+    for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):
+        ax.add_patch(Circle((hbx + x, hby + HB_H / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
+    draw_dim_h(ax, hbx, hbx + HB_W, hby - 18, f"{HB_W}mm", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, hbx - 18, hby, hby + HB_H, f"{HB_H}mm", fs=5.5, font=FONT)
+    ax.text(hbx, hby + HB_H + 14, "HINGE-BACKING PLATE — 8mm steel (welded to wall crests; 3× M8 weld-nut)",
+            fontsize=6.2, color=C_OUT, ha="left", **FONT)
+
+    # chain-anchor backing plate (small, ×2)
+    abx, aby, AB = 720, 470, 80
+    ax.add_patch(Rectangle((abx, aby), AB, AB, fc="#9AA0A8", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
+    ax.add_patch(Circle((abx + AB / 2, aby + AB / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
+    draw_dim_h(ax, abx, abx + AB, aby - 18, f"{AB}mm", fs=5.5, font=FONT, above=False)
+    draw_dim_v(ax, abx + AB + 16, aby, aby + AB, f"{AB}mm", fs=5.5, font=FONT)
+    leader(ax, abx + AB / 2, aby + AB / 2, abx + AB + 30, aby + AB + 20,
+           "Ø9 (M8) weld-nut —\nchain wall-anchor eye bolt", fs=5.6, font=FONT, ha="left")
+    ax.text(abx, aby + AB + 44, "CHAIN-ANCHOR PLATE ×2 — 8mm steel", fontsize=6.2, color=C_OUT, ha="left", **FONT)
+
+    # ── fastener + hardware schedule (bottom zone) ──
+    rows = [
+        "FASTENER / HARDWARE SCHEDULE",
+        "Piano hinge (bolt-on, BLANK)   304 SS, ~32mm open × 600mm   McMaster 1582A457   ×1",
+        "Hinge screws                   1/4-20 SS × ~3/4in            (SKU pending)         ×6",
+        "Ply tee-nuts                   1/4-20 pronged (825001)       Home Depot            ×8 (+spares)",
+        "Front-corner eye bolts         1/4-20 SS × 1in               McMaster 3014T45      ×2",
+        "Chain wall eye bolts           M8 SS × 1in                   McMaster 4843T13      ×2",
+        "Chain                          304 SS ~4mm                   McMaster 3392T51      ~1m",
+        "Quick-links                    304 SS ~4mm                   McMaster 8947T25      ×4",
+        "Hinge-cleat wall bolts         M8×25 zinc (91280A534)+nut/wash                     ×6",
+        "Transport latch                cam latch (reuse 1619A74)     McMaster              ×1",
+    ]
+    draw_notes(ax, rows, 60, 360, spacing=30, fs=6.4, width=1080, font=FONT)
+
+    title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+                subtitle="WALL PLATES + HINGE CLEAT + FASTENER SCHEDULE",
+                scale_note="Axes in mm · plates ~1:1", height=0.07)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/shelf-sheet5.png saved")
+
+
 if __name__ == "__main__":
     print("Generating chemistry prep shelf diagrams (fold-down)...")
-    sheet1(); sheet2(); sheet3()
+    sheet1(); sheet2(); sheet3(); sheet4(); sheet5()
     print("Done.")

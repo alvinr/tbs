@@ -242,6 +242,8 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet1.png",
     "shelf-sheet2.png",
     "shelf-sheet3.png",
+    "shelf-sheet4.png",
+    "shelf-sheet5.png",
     "pinhole-wall-elevation.png",
     "panel-layout.png",
     "support-detail-sheet1.png",

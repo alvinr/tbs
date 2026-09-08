@@ -45,7 +45,7 @@ restriction is imposed.
 **Optical cone.** Even deployed, the shelf is clear of the optical cone. Its right edge
 sits left of the cone's left boundary at the shelf's deepest point (Yd=225):
 
-    cone_left(300) = PH_X + (FP_X_L − PH_X) × 300 / FP_Y
+    cone_left(225) = PH_X + (FP_X_L − PH_X) × 225 / FP_Y
                    = 2,454 + (260 − 2,454) × 225 / 2,262
                    = 2,454 − 218 = 2,236 mm
 
@@ -132,6 +132,16 @@ The chain length sets the deployed level — pick the link (via the end quick-li
 board level on a spirit level at first install; the two chains give independent ±adjust at each front
 corner.
 
+### 3.5 Fabrication detail
+
+Dimensioned fabrication sheets: the board cut + tee-nut drill positions, and the wall plates + hinge
+cleat + fastener schedule. The piano hinge is supplied **blank** — its leaves are drilled to the same
+100 mm tee-nut pitch so the hinge, the ply tee-nuts, and the cleat all align.
+
+![Chemistry Prep Shelf — Sheet 4: Board fabrication (cut + tee-nut drill)](assets/shelf-sheet4.png)
+
+![Chemistry Prep Shelf — Sheet 5: Wall plates + hinge cleat + fastener schedule](assets/shelf-sheet5.png)
+
 ---
 
 ## 4. Transport Mode
@@ -181,7 +191,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | Swaner 18mm × 4'×8' UV-coated white hardwood ply (1220×2440mm), cut to 300×600. UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). | 1 4'×8' 18mm sheet | Home Depot | $73 |
-| [Bolt-on continuous (piano) hinge, 600 mm, SS](https://www.mcmaster.com/1582A457-1582A452/) (1582A457) | 304 SS drilled-leaf (BOLT-ON) continuous hinge, ~32mm open × 600mm. Shelf leaf 1/4-20 SS machine-screwed into the ply tee-nut row; wall leaf to the 6mm cleat/backing plate. $6.23/2ft (1582A457) — replaces the retired weld-on LSN8-32-600 ($23.56), cheaper. | 1 ea | McMaster-Carr | $6 |
+| [Bolt-on continuous (piano) hinge, 600 mm, SS](https://www.mcmaster.com/1582A457-1582A452/) (1582A457) | 304 SS BOLT-ON continuous hinge, ~32mm open × 600mm, supplied BLANK (undrilled) — drill both leaves to the 100mm tee-nut pitch so the hinge, the ply tee-nuts and the cleat all align. Shelf leaf 1/4-20 SS machine-screwed into the ply tee-nut row; wall leaf to the 6mm cleat/backing plate. $6.23/2ft (1582A457) — replaces the retired weld-on LSN8-32-600 ($23.56), cheaper. | 1 ea | McMaster-Carr | $6 |
 | [304 SS chain — 2 tension stays](https://www.mcmaster.com/3392T51-3392T512/) (3392T51) | 304 SS ~4mm chain, 2 tension stays (front corner → wall anchor ~230mm above the hinge), ~1m used of the 3ft; trimmed to set the deployed level. WLL >> the ~91N tension demand (chem_shelf_load.py SF 5.4). $23.79/3ft. | 1 3ft | McMaster-Carr | $24 |
 | [1/4"-20 SS eye bolt — shelf front-corner chain anchor](https://www.mcmaster.com/3014T45/) (3014T45) | 304 SS 1/4-20 eye bolt into a ply tee-nut at each front corner (~1in shank; tip protrudes ~7mm through the 18mm top — cap/grind at the corner). Chain hooks to the eye. $4.16 ea. | 2 ea | McMaster-Carr | $8 |
 | [M8 SS eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 304 SS M8 eye bolt into the backing-plate M8 weld-nut ~230mm above the hinge (reuses the M8 wall standard) — the chain's top anchor. $7.80 ea. | 2 ea | McMaster-Carr | $16 |

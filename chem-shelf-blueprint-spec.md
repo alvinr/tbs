@@ -4,8 +4,9 @@
 
 # Chemistry Prep Shelf — Definitive Blueprint Spec
 
-**Status:** **SCOPING (2026-09-07)** — design decisions locked below; blueprint (dimensioned fab sheets +
-fastener schedule + load case + datums + cascade) to be drawn. Follows the
+**Status:** **EXECUTED — 2D (2026-09-07).** Design locked; load case + dimensioned fab sheets (shelf-sheet4/5) +
+fastener schedule + the full 2D cascade (constants/parts/costing/report) DONE. **Deferred:** the 3D `chem_shelf()`
+re-send (overview/construction — needs the live model) + datum/tolerance polish. Current record = `chemistry-prep-shelves.md`. Follows the
 [`ibc-frame-blueprint-spec.md`](ibc-frame-blueprint-spec.md) / `fp-corner-blueprint-spec.md` template:
 promote the current arrangement-schematic shelf (`chemistry-prep-shelves.md` + `shelf-sheet1–3`) to a
 dimensionally-exact, fabricator-ready package.
@@ -25,11 +26,11 @@ the shelf on the same 1/4″-20 tee-nut family used everywhere else.
 
 | Element | Decision |
 |---|---|
-| **Board** | 18 mm UV-coated / phenolic plywood, **600 × 300 mm** — chemical-resistant (cyanotype + pH 3–4 citric), wipe-clean. **Primary structure** (no steel frame). |
+| **Board** | 18 mm UV-coated / phenolic plywood, **600 × 225 mm** — chemical-resistant (cyanotype + pH 3–4 citric), wipe-clean. **Primary structure** (no steel frame). |
 | **Perimeter frame** | **REMOVED.** The ply carries the load; the frame's only jobs were the lip + the M5 attach, both re-solved below. |
 | **Spill lip** | Light chemical-resistant lip on the **3 free edges** (not the hinge edge). *Default: HDPE/PVC angle, ~15 mm, screwed to the ply edge — inert in the splash zone; confirm material at review.* |
 | **Ply attachment** | **Pronged tee-nuts in the ply underside** (1/4″-20, `tnut-quarter` standard). No M5 CSK. Wet-zone → 1/4″-20 hardware in **SS** (a documented splash-zone exception, like the M8 film-plane SS exception). |
-| **Piano hinge** | 600 mm **bolt-on** (drilled-leaf) SS piano hinge — **shelf leaf** machine-screwed (1/4″-20 SS into the ply tee-nut row); **wall leaf** to the 8 mm wall backing plate. *(Was weld-on; bolt-on because the ply attaches by tee-nut, not weld.)* |
+| **Piano hinge** | 600 mm **bolt-on** SS piano hinge, supplied **blank** (drill leaves to the tee-nut pitch) — **shelf leaf** machine-screwed (1/4″-20 SS into the ply tee-nut row); **wall leaf** to the 8 mm wall backing plate. *(Was weld-on; bolt-on because the ply attaches by tee-nut, not weld.)* |
 | **Stays** | **2 × 304 SS chain** — a **1/4″-20 SS eye bolt** threaded into a ply tee-nut at each front corner ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. The shortest eye-bolt shank (1″/25 mm) threads through the tee-nut and **protrudes ~7 mm past the 18 mm top** — acceptable (the tee-nut carries the thread); cap/grind the tip flush at the corner for a clean work surface. Length-adjustable by link + quick-link. Tension-only. |
 | **Wall side** | Piano-hinge cleat + 2 chain-anchor points bolt to **flat 8 mm steel backing plates welded to the corrugated-wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) — unchanged from the schematic. |
 | **Transport latch** | Over-center / barrel latch at the top secures the folded-up board. |
@@ -38,14 +39,13 @@ the shelf on the same 1/4″-20 tee-nut family used everywhere else.
 ## Load basis
 
 Design load **25 kg** (bottles, cylinders, roller tray, scale, staging), deployed horizontal. Load path:
-**18 mm ply in bending** (simply supported: piano-hinge back edge + chain-held front edge, ~300 mm span) →
+**18 mm ply in bending** (simply supported: piano-hinge back edge + chain-held front edge, ~225 mm span) →
 back edge to the **piano hinge** → front corners to the **2 chains** (tension) → **wall backing plates** →
 crest welds. Elements to check (each demand → capacity → SF), in a driftproof `chem_shelf_load.py`:
 
-- **Board bending / deflection** — 18 mm ply, 600 × 300, 25 kg UDL over the ~300 mm hinge-to-front span.
-- **Chain + shelf-corner tee-nut** — chain angle ≈ 37° (front corner → anchor 230 mm up over 300 mm) →
-  tension ≈ 12.5 kg / sin θ ≈ **~205 N/chain**; check the chain WLL and the **1/4″-20 pronged tee-nut
-  pull-out in 18 mm ply**.
+- **Board bending / deflection** — 18 mm ply, 600 × 225, 25 kg UDL over the ~225 mm hinge-to-front span (SF 44).
+- **Chain + shelf-corner tee-nut** — chain angle ≈ 46° (front corner → anchor 230 mm up over 225 mm) →
+  tension **~91 N/chain** (chem_shelf_load.py, chain SF 5.4; tee-nut pull-out SF 20).
 - **Piano-hinge back-edge reaction** — ~12.5 kg spread over 600 mm; per-tee-nut screw shear/pull-out.
 - **Wall backing-plate group** — M8×25 into weld-nuts + crest-weld throat vs the hinge + chain reactions.
 
@@ -71,16 +71,16 @@ The whole **ply-side and wall-side** collapses onto hardware already in the regi
 tee-nut decision. Only the chain stays + the bolt-on hinge variant are genuinely new.
 
 **Reuse (no new SKU — bump qty / material-exception only):**
-- **Tee-nuts** → `tnut-quarter` (825001), 1/4″-20 pronged, ~10 off (hinge row + 2 pad-eyes).
+- **Tee-nuts** → `tnut-quarter` (825001), 1/4″-20 pronged, ~10 off (hinge row + 2 front-corner eye bolts).
 - **Ply-attach machine screws** → the 1/4″-20 ply-mount screw pattern (`panel-machine-screws` 826771), **~3/4″,
-  in SS** for the splash zone (wet-zone exception) — hinge leaf + pad-eyes.
+  in SS** for the splash zone (wet-zone exception) — hinge leaf screws.
 - **Wall side** → the M8 group: M8×25 (91280A534) + nut (90591A161) + washer (91166A270) into the 8 mm backing
   plates (hinge cleat + 2 chain wall anchors).
 - **Spill lip** → a sealed strip of the **same 18 mm ply** (offcut) or an **HDPE offcut** (46684/46685) — no new material.
 - **Board** (`BPI6WUV2I`), **8 mm backing plates** (local fab) — existing.
 
 **New — SOURCED (2026-09-07):**
-1. **Bolt-on piano hinge, 600 mm** — McMaster **1582A457** ($6.23/2 ft), 304 SS drilled-leaf (bolt-on). *(Cheaper than the retired weld-on LSN8-32-600 $23.56.)*
+1. **Bolt-on piano hinge, 600 mm** — McMaster **1582A457** ($6.23/2 ft), 304 SS bolt-on, supplied BLANK (drill leaves to the tee-nut pitch). *(Cheaper than the retired weld-on LSN8-32-600 $23.56.)*
 2. **1/4″-20 SS eye bolt ×2** — McMaster **3014T45** ($4.16 ea) — front-corner chain anchors, into the ply tee-nuts.
 3. **M8 eye bolt ×2** — McMaster **4843T13** ($7.80 ea) — chain wall anchors into the backing-plate weld-nuts.
 4. **304 SS chain** — McMaster **3392T51** ($23.79/3 ft) — ~1 m used.

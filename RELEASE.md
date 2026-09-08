@@ -79,6 +79,11 @@ file** — a release must not ship without a changelog entry:
   `chem_shelf_load.py` (board SF 44, chain 5.4, tee-nut 20). `SHELF_T` 22→18; parts + costing + report + the
   shelf/pinhole/weight diagrams all cascaded; the M5 family is now fully retired. The overview/construction 3D
   re-send is deferred (needs the live model — pairs with the corridor-water comment cleanup).
+- **Chem-shelf engineering blueprints (Sheets 4–5).** Added dimensioned fab-detail sheets to the shelf set:
+  Sheet 4 (board cut + tee-nut drill positions — hinge row at 100mm pitch + front-corner eye tee-nuts, 15mm
+  lip) and Sheet 5 (hinge cleat + 8mm backing plates 1:1 with hole positions + a full fastener/hardware
+  schedule). The piano hinge is supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat
+  align. Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

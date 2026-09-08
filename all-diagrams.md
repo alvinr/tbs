@@ -288,6 +288,10 @@
 
 ![Chemistry Prep Shelf — Sheet 3: Hinge + stay detail](assets/shelf-sheet3.png)
 
+![Chemistry Prep Shelf — Sheet 4: Board fabrication (cut + tee-nut drill)](assets/shelf-sheet4.png)
+
+![Chemistry Prep Shelf — Sheet 5: Wall plates + hinge cleat + fastener schedule](assets/shelf-sheet5.png)
+
 ---
 
 ## 18. Processing Tray & Spray Bar

@@ -186,7 +186,7 @@ def sheet2():
         f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the deployed shelf "
         f"(underside Z{SHELF_H - SHELF_T}) — {(SHELF_H - SHELF_T) - (EVAP_STOW_Z + EVAP_H)}mm clearance.",
     ]
-    draw_notes(ax, notes, 560, 1480, spacing=32, fs=6, width=700, wrap=55, font=FONT)
+    draw_notes(ax, notes, 560, 1480, spacing=24, fs=5, width=700, wrap=50, font=FONT)
     title_block(ax, "SHEET 2 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + EVAP CLEARANCE)",
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
@@ -313,9 +313,9 @@ def sheet4():
     # callouts (right side — front-corner eye tee-nut + lip; hinge row is dimensioned + noted)
     leader(ax, EYE_XS[1], TNUT_EYE_YD, SHELF_W + 44, TNUT_EYE_YD,
            "2× Ø8 tee-nut — front corner\n(1/4-20 eye bolt → chain)", fs=6, font=FONT, ha="left")
-    leader(ax, SHELF_W - LIP_W, 110, SHELF_W + 44, 110,
+    leader(ax, SHELF_W - LIP_W, 110, SHELF_W + 44, 150,
            f"{LIP_W}mm spill lip\n(ply/HDPE, front + 2 sides)", fs=6, font=FONT, ha="left")
-    leader(ax, SHELF_W - LIP_W, LIP_BACK + LIP_W / 2, SHELF_W + 44, LIP_BACK - 4,
+    leader(ax, SHELF_W - LIP_W, LIP_BACK + LIP_W / 2, SHELF_W + 44, LIP_BACK - 40,
            f"{LIP_W}mm spill lip — butts the\nhinge leaf (back edge)", fs=6, font=FONT, ha="left")
 
     # notes (top — clear of the board + dims)

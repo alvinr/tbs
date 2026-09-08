@@ -336,11 +336,11 @@ def sheet5():
         ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.68), 3.2, fc="white", ec=C_OUT, lw=0.9, zorder=5))
     for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):   # M8 cleat→backing bolts
         ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.30), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
-    draw_dim_h(ax, cx0, cx0 + CL_W, cy0 - 18, f"{CL_W}mm", fs=6, font=FONT, above=False)
+    draw_dim_h(ax, cx0, cx0 + CL_W, cy0 - 40, f"{CL_W}mm", fs=6, font=FONT, above=False)
     # per-hole X (hinge-screw row, chained — the M8 cleat bolts share these node positions)
     cx = [0] + HINGE_XS + [SHELF_W]
     for a, b in zip(cx[:-1], cx[1:]):
-        draw_dim_h(ax, cx0 + a, cx0 + b, cy0 - 40, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
+        draw_dim_h(ax, cx0 + a, cx0 + b, cy0 - 18, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
     # per-hole Y (both rows, from the bottom edge)
     draw_dim_v(ax, cx0 - 16, cy0, cy0 + CL_H * 0.68, f"{int(round(CL_H * 0.68))}mm", fs=5.0, font=FONT)
     draw_dim_v(ax, cx0 - 40, cy0, cy0 + CL_H * 0.30, f"{int(round(CL_H * 0.30))}mm", fs=5.0, font=FONT)
@@ -357,12 +357,12 @@ def sheet5():
     ax.add_patch(Rectangle((hbx, hby), HB_W, HB_H, fc="white", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
     for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):
         ax.add_patch(Circle((hbx + x, hby + HB_H / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
-    draw_dim_h(ax, hbx, hbx + HB_W, hby - 18, f"{HB_W}mm", fs=6, font=FONT, above=False)
-    draw_dim_v(ax, hbx - 18, hby, hby + HB_H, f"{HB_H}mm", fs=5.5, font=FONT)
+    draw_dim_h(ax, hbx, hbx + HB_W, hby - 40, f"{HB_W}mm", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, hbx - 14, hby, hby + HB_H, f"{HB_H}mm", fs=5.5, font=FONT)
     # per-hole X (3× M8, chained) + Y (row centered in the plate)
     bx = [0, HINGE_XS[0], HINGE_XS[len(HINGE_XS) // 2], HINGE_XS[-1], HB_W]
     for a, b in zip(bx[:-1], bx[1:]):
-        draw_dim_h(ax, hbx + a, hbx + b, hby - 40, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
+        draw_dim_h(ax, hbx + a, hbx + b, hby - 18, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
     draw_dim_v(ax, hbx - 40, hby, hby + HB_H / 2, f"{int(HB_H / 2)}mm", fs=5.0, font=FONT)
     ax.text(hbx, hby + HB_H + 14, "HINGE-BACKING PLATE — 8mm steel (welded to wall crests; 3× M8 weld-nut)",
             fontsize=6.2, color=C_OUT, ha="left", **FONT)
@@ -371,10 +371,10 @@ def sheet5():
     abx, aby, AB = 720, 470, 80
     ax.add_patch(Rectangle((abx, aby), AB, AB, fc="white", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
     ax.add_patch(Circle((abx + AB / 2, aby + AB / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
-    draw_dim_h(ax, abx, abx + AB, aby - 18, f"{AB}mm", fs=5.5, font=FONT, above=False)
-    draw_dim_v(ax, abx + AB + 16, aby, aby + AB, f"{AB}mm", fs=5.5, font=FONT)
+    draw_dim_h(ax, abx, abx + AB, aby - 40, f"{AB}mm", fs=5.5, font=FONT, above=False)
+    draw_dim_v(ax, abx + AB + 22, aby, aby + AB, f"{AB}mm", fs=5.5, font=FONT)
     # centered hole
-    draw_dim_h(ax, abx, abx + AB / 2, aby - 40, f"{int(AB / 2)}mm", fs=5.0, font=FONT, above=False)
+    draw_dim_h(ax, abx, abx + AB / 2, aby - 18, f"{int(AB / 2)}mm", fs=5.0, font=FONT, above=False)
     draw_dim_v(ax, abx - 16, aby, aby + AB / 2, f"{int(AB / 2)}mm", fs=5.0, font=FONT)
     leader(ax, abx + AB / 2, aby + AB / 2, abx + AB + 30, aby + AB + 20,
            "Ø9 (M8) weld-nut —\nchain wall-anchor eye bolt", fs=5.6, font=FONT, ha="left")

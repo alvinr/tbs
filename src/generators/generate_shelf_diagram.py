@@ -298,8 +298,8 @@ def sheet4():
     draw_dim_v(ax, -34, 0, TNUT_HINGE_YD, f"{TNUT_HINGE_YD}mm", fs=5.5, font=FONT)
 
     # eye holes (2): X inset from each side; row Y from the back edge
-    draw_dim_h(ax, 0, EYE_XS[0], -70, f"{TNUT_EYE_X}mm", fs=5.2, font=FONT, above=False)
-    draw_dim_h(ax, EYE_XS[1], SHELF_W, -70, f"{TNUT_EYE_X}mm", fs=5.2, font=FONT, above=False)
+    draw_dim_h(ax, 0, EYE_XS[0], int(TNUT_EYE_YD) + 50, f"{TNUT_EYE_X}mm", fs=5.2, font=FONT, above=False)
+    draw_dim_h(ax, EYE_XS[1], SHELF_W, int(TNUT_EYE_YD) + 50, f"{TNUT_EYE_X}mm", fs=5.2, font=FONT, above=False)
     draw_dim_v(ax, -62, 0, int(TNUT_EYE_YD), f"{int(TNUT_EYE_YD)}mm", fs=5.5, font=FONT)
 
     # callouts (right side — front-corner eye tee-nut + lip; hinge row is dimensioned + noted)
@@ -317,7 +317,7 @@ def sheet4():
         "back edge (mid-leaf, clear of the barrel); drill both leaves to this pitch. Use pan/truss-head "
         "screws — a CSK head overhangs the narrow leaf.",
         "Back (bottom) edge = piano hinge (no lip). Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
-    ], 0, SHELF_DEPTH + 285, spacing=18, fs=6, width=680, wrap=112, font=FONT)
+    ], 0, SHELF_DEPTH + 285, spacing=18, fs=6, width=750, wrap=100, font=FONT)
 
     title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="BOARD FABRICATION — 18mm PLY (cut + tee-nut drill)",
@@ -416,7 +416,7 @@ def sheet5():
         "tee-nuts (Sheet 4); wall leaf → the tapped cleat above.",
         "Pan/truss-head 1/4-20 — a CSK head overhangs the 12.7mm leaf. Open 25.4 / leaf 12.7 / barrel Ø2.9. "
         "Deburr; keep the knuckle clear.",
-    ], 60, HY0 - HINGE_LEAF - 66, spacing=17, fs=6, width=1080, wrap=142, font=FONT)
+    ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1080, wrap=138, font=FONT)
 
     title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + PIANO HINGE DRILLING",

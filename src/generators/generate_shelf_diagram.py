@@ -174,17 +174,28 @@ def sheet2():
     ax.plot([12, 100, 100], [SHELF_STOW_TOP_Z, SHELF_STOW_TOP_Z, TAP_Z], color=C_BLUE, lw=2.0, zorder=5)
     ax.text(110, TAP_Z, "TAP-01 spout", fontsize=5.5, color=C_BLUE, ha="left", va="center", **FONT)
 
+    # ghost of the shelf underside in the DOWN (deployed) position, projected over the evap to read the clearance
+    shelf_under = SHELF_H - SHELF_T
+    evap_top = EVAP_STOW_Z + EVAP_H
+    ax.add_patch(Rectangle((0, shelf_under), EVAP_D, SHELF_T, fc="none", ec=C_SHELF, lw=0.9,
+                           ls=(0, (5, 3)), alpha=0.6, zorder=5))
+    ax.text(EVAP_D + 14, shelf_under + SHELF_T / 2, "shelf (down\nposition — ghost)", fontsize=5,
+            color="#8a7a3a", ha="left", va="center", style="italic", **FONT)
+
     # dimensions
     draw_dim_v(ax, -70, 0, SHELF_H, f"{SHELF_H}mm AFF", offset=6, fs=6, right=False, font=FONT)
     draw_dim_v(ax, 430, DECK_Z, SHELF_H, f"{SHELF_H - DECK_Z}mm\nabove deck", offset=6, fs=6, right=True, font=FONT)
     draw_dim_h(ax, 0, SHELF_DEPTH, SHELF_H - SHELF_T - 70, f"{SHELF_DEPTH}mm deep", offset=6, fs=6, font=FONT)
+    # clearance between the deployed shelf underside and the evap top
+    draw_dim_v(ax, 70, evap_top, shelf_under, f"{shelf_under - evap_top}mm\nclearance", offset=6, fs=6, right=False, font=FONT)
 
     notes = [
         "FOLD-DOWN MECHANISM (SECTION):",
         f"1. Piano hinge (back edge, Z{SHELF_H}) on the pinhole wall.",
         f"2. In use: folds DOWN to horizontal, held level by {SHELF_STAY_N} SS chain stays from the wall above.",
         f"3. Transport: folds UP flat against the wall (top Z{SHELF_STOW_TOP_Z}).",
-        f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the shelf underside (Z1050).",
+        f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the deployed shelf "
+        f"(underside Z{SHELF_H - SHELF_T}) — {(SHELF_H - SHELF_T) - (EVAP_STOW_Z + EVAP_H)}mm clearance.",
     ]
     draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
     title_block(ax, "SHEET 2 OF 5", drawing_title="CHEMISTRY PREP SHELF",

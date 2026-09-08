@@ -402,8 +402,10 @@ def drum_housing(cx, cy):
     bearings live with the axle beams in drum_frame() (they carry the drum, not the
     housing skin)."""
     H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
-    HZB, HZT = LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP   # housing spans BEAM-to-BEAM (93..2167), past the drum
+    HZB, HZT = LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP   # skin main span (180..2167 — the beam INNER faces)
     HH = HZT - HZB
+    BEAM_TOP, BEAM_BOT = LT_CAGE_TOP, LT_CAGE_BOT   # 2217, 140 — beam OUTER faces; skin + channels + strips extend to here
+    CY0, CY1 = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R  # cage rail Yd span (700..1662) — the strips reach these rails
     parts = []
     # Fixed HOUSING — two solid arcs leaving two od=80° openings (exterior 180° +
     # interior 0°). Spans Z HZB..HZT (bottom-beam top → top-beam under face) so it laps
@@ -437,11 +439,42 @@ def drum_housing(cx, cy):
             uv = [(Ri - CT, -CT), (Ro + CT, -CT), (Ro + CT, LG), (Ro, LG),
                   (Ro, 0), (Ri, 0), (Ri, LG), (Ri - CT, LG)]
             pts = [(cx + R * cr - sgn * Sc * sr, cy + R * sr + sgn * Sc * cr) for R, Sc in uv]
-            parts.append(ov.ruby_prism(f"LT Housing edge channel ({e:.0f}°)", pts, HZB, HH,
-                                       color=C_ALUM))
-    # (Bearings + axle beams are built in drum_frame(); the housing here is just the
-    # fixed outer skin + edge channels. Top/bottom annular felt gap-seal rings omitted —
-    # they read as a grey bar cutting across the drum bottom.)
+            parts.append(ov.ruby_prism(f"LT Housing edge channel ({e:.0f}°)", pts, BEAM_BOT,
+                                       BEAM_TOP - BEAM_BOT, color=C_ALUM))   # full extent → ends land on the support strips
+    # SKIN EXTENSION (2026-09-08) — extend the fixed skin from the beam INNER faces out to
+    # their OUTER faces to close the top/bottom gap: top HZT(2167)→top-beam-top(2217),
+    # bottom HZB(180)→bottom-beam-bottom(140). The skin fixes directly to the beams here (no
+    # rim-angle). The two central axle beams pass through the skin at 90° + 270° (mid-arc) so
+    # the extension is NOTCHED there (~4° half-angle) — the notch shows on the 2D cut sheet.
+    NOTCH = 4.0
+
+    def arc_seg(a1, a2, z0, h):                          # a solid arc segment a1→a2° (extrude h from z0)
+        parts.append(ov.ruby_arc_wall("LT Housing skin extension", cx, cy, HOUSING_R, HOUSING_T, h,
+                                      gap_center_deg=((a1 + a2) / 2 + 180) % 360, gap_deg=360 - (a2 - a1),
+                                      color=C_ALUM, alpha=0.5, z0=z0))
+    for z0, h in ((HZT, BEAM_TOP - HZT), (BEAM_BOT, HZB - BEAM_BOT)):
+        for ac in (90, 270):                             # the two 100° solid arcs, each split by the beam notch
+            arc_seg(ac - 50, ac - NOTCH, z0, h)
+            arc_seg(ac + NOTCH, ac + 50, z0, h)
+        for oc in (0, 180):                              # close the openings across the extension too
+            parts.append(ov.ruby_arc_wall("LT Housing extension band", cx, cy, HOUSING_R, HOUSING_T, h,
+                                          gap_center_deg=(oc + 180) % 360, gap_deg=360 - od,
+                                          color=C_ALUM, alpha=0.5, z0=z0))
+
+    # CHANNEL SUPPORT STRIPS — 4 formed-Al strips (smallest section; SKU pending, Alvin to
+    # source), one across each opening at TOP + BOTTOM, riveted to the frame; each opening's
+    # two U-channel ends bolt to it (replaces the floating channel ends; no rim-angle).
+    STRIP = 20                                           # nominal Al section (mm) — placeholder, smallest available
+    for oc in (0, 180):
+        # both channel edges of an opening share this X; run the strip along Yd at that X the
+        # FULL cage span (CY0..CY1) so its two ends land on the X-near/far frame rails, and the
+        # opening's two U-channels bolt to it where it passes them.
+        ex = cx + HOUSING_R * math.cos(math.radians(oc - od / 2))
+        poly = [(ex - STRIP / 2, CY0), (ex + STRIP / 2, CY0), (ex + STRIP / 2, CY1), (ex - STRIP / 2, CY1)]
+        for zc in (BEAM_BOT, BEAM_TOP - STRIP):          # bottom-rail level + top-rail level (channels reach here)
+            parts.append(ov.ruby_prism(f"LT Channel support strip ({oc}deg)", poly, zc, STRIP, color=C_STEEL))
+    # (Bearings + axle beams are built in drum_frame(); the housing here is the fixed outer
+    # skin + edge channels + skin extension + channel-support strips.)
     return '\n'.join(parts)
 
 

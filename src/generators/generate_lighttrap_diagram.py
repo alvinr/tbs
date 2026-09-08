@@ -426,11 +426,18 @@ def draw_sheet2():
     # Sill + header bands keep the welded cylinder continuous (chosen cut heights).
     SILL_H, HEADER_H = 80, 150
     op_z0, op_z1 = SILL_H, HOUSING_H - HEADER_H
+    # Skin extends past the inner beam faces to the beam OUTER faces — it fixes DIRECTLY to
+    # the top + bottom beams here (no rim-angle). The two central axle beams cross the skin at
+    # the seam (90°) + 270°, so each extension band is NOTCHED there (beam width developed).
+    EXT_BOT = LT_HOUSING_Z_BOT - LT_CAGE_BOT      # 40 — down to the bottom-beam outer face
+    EXT_TOP = LT_CAGE_TOP - LT_HOUSING_Z_TOP      # 50 — up to the top-beam outer face
+    NOTCH_DEG = 4                                 # notch half-angle (matches the 3D)
+    ntw       = (2 * NOTCH_DEG / 360.0) * L       # notch full width, developed (≈56mm)
 
     # ── Data window → figure size ────────────────────────────────────────────
     PAD_L, PAD_R, PAD_B, PAD_T = 520, 520, 1180, 470
     X_LO, X_HI = -PAD_L, L + PAD_R
-    Z_LO, Z_HI = -PAD_B, HOUSING_H + PAD_T
+    Z_LO, Z_HI = -EXT_BOT - PAD_B, HOUSING_H + EXT_TOP + PAD_T
     FIG_W = 18.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
@@ -441,8 +448,18 @@ def draw_sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── Developed blank ──────────────────────────────────────────────────────
-    draw_rect(ax, 0, 0, L, HOUSING_H, fc="#DDE4EC", lw=2.0, zorder=3)
+    # ── Developed blank (full skin height incl. the top/bottom beam-face extensions) ──
+    draw_rect(ax, 0, -EXT_BOT, L, HOUSING_H + EXT_BOT + EXT_TOP, fc="#DDE4EC", lw=2.0, zorder=3)
+    # Inner beam-face fix lines — the skin rivets DIRECTLY to the top + bottom beams here
+    # (rim-angle dropped 2026-09-08); the band beyond each line laps onto the beam outer face.
+    for zf in (0, HOUSING_H):
+        ax.plot([0, L], [zf, zf], color="#8A6A20", lw=1.0, ls=(0, (6, 4)), zorder=6)
+    # ── Axle-beam notches — the 2 central axle beams pass through the skin at the seam (90°)
+    #    and 270°, so each extension band is cut away there (beam ≈56mm developed). ──
+    for xc in (0, dev(270), L):                       # seam at x=0 & x=L (split across the seam), far-Yd @270°
+        for zb, hb in ((-EXT_BOT, EXT_BOT), (HOUSING_H, EXT_TOP)):
+            nx0, nx1 = max(0, xc - ntw / 2), min(L, xc + ntw / 2)
+            draw_rect(ax, nx0, zb, nx1 - nx0, hb, fc="white", lw=1.2, zorder=7)
     # ── Two 80° opening cutouts ──────────────────────────────────────────────
     for x0, x1, tag, col in ((ext_x0, ext_x1, "EXTERIOR OPENING", "#5060A0"),
                              (int_x0, int_x1, "INTERIOR OPENING\n(onto walkway)", "#407040")):
@@ -455,24 +472,28 @@ def draw_sheet2():
 
     # ── Weld seam (blank edges join here; mid-solid-arc at θ=90°) ─────────────
     for xs in (0, L):
-        ax.plot([xs, xs], [0, HOUSING_H], color="#CC4422", lw=2.4, zorder=6)
-    leader(ax, 0, HOUSING_H * 0.62, -300, HOUSING_H * 0.62,
+        ax.plot([xs, xs], [-EXT_BOT, HOUSING_H + EXT_TOP], color="#CC4422", lw=2.4, zorder=6)
+    leader(ax, 0, HOUSING_H * 0.30, -320, HOUSING_H * 0.20,
            "ROLL + EXTRUSION\nWELD SEAM\n(edges joined; seam\nmid-arc at 90°)",
            fs=6.5, color="#CC4422", ha="center", arrow_style="->", font=FONT)
 
     # ── Angular registration ticks along the top edge ────────────────────────
+    z_top_edge = HOUSING_H + EXT_TOP
     for theta, lab in ((90, "90° SEAM"), (180, "180° EXT"), (270, "270°"),
                        (360, "0/360° INT")):
         xd = dev(theta) if theta != 90 else 0
-        ax.plot([xd, xd], [HOUSING_H, HOUSING_H + 55], color=C_CL, lw=0.7, zorder=6)
-        ax.text(xd, HOUSING_H + 70, lab, ha="center", va="bottom", fontsize=6,
+        ax.plot([xd, xd], [z_top_edge, z_top_edge + 55], color=C_CL, lw=0.7, zorder=6)
+        ax.text(xd, z_top_edge + 70, lab, ha="center", va="bottom", fontsize=6,
                 color=C_CL, **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, 0, L, HOUSING_H + 230,
+    draw_dim_h(ax, 0, L, z_top_edge + 230,
                f"DEVELOPED LENGTH = π·Ø{DRUM_D} = {L:.0f}mm", offset=80, fs=8, font=FONT)
-    draw_dim_v(ax, -150, 0, HOUSING_H, f"{HOUSING_H}mm BLANK HEIGHT",
+    draw_dim_v(ax, -300, -EXT_BOT, z_top_edge,
+               f"{HOUSING_H + EXT_BOT + EXT_TOP:.0f}mm BLANK HEIGHT\n(beam outer face → outer face)",
                offset=90, fs=7.5, font=FONT)
+    draw_dim_v(ax, -150, 0, HOUSING_H, f"{HOUSING_H:.0f}mm\n(beam inner faces)",
+               offset=70, fs=6.5, font=FONT)
     draw_dim_h(ax, ext_x0, ext_x1, op_z1 + 90,
                f"{OW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=55, fs=6.5, font=FONT)
     draw_dim_h(ax, int_x0, int_x1, op_z1 + 90,
@@ -484,15 +505,26 @@ def draw_sheet2():
     draw_dim_v(ax, L + 130, 0, SILL_H, f"{SILL_H}mm\nSILL", offset=70, fs=6, right=True, font=FONT)
     draw_dim_v(ax, L + 130, HOUSING_H - HEADER_H, HOUSING_H, f"{HEADER_H}mm\nHEADER",
                offset=70, fs=6, right=True, font=FONT)
+    # extension bands (skin → beam outer face) + one axle-beam notch called out
+    draw_dim_v(ax, L + 340, HOUSING_H, z_top_edge, f"{EXT_TOP}mm\nTOP EXT", offset=70, fs=6, right=True, font=FONT)
+    draw_dim_v(ax, L + 340, -EXT_BOT, 0, f"{EXT_BOT}mm\nBOT EXT", offset=70, fs=6, right=True, font=FONT)
+    xn = dev(270)
+    draw_dim_h(ax, xn - ntw / 2, xn + ntw / 2, z_top_edge + 60, f"{ntw:.0f}mm", offset=40, fs=6, font=FONT)
+    leader(ax, xn, z_top_edge - EXT_TOP / 2, xn + 430, z_top_edge + 210,
+           "AXLE-BEAM NOTCH (×4)\nbeam passes through the\nskin at 90° (seam) + 270°,\ntop + bottom bands",
+           fs=6, color="#8A6A20", ha="left", arrow_style="->", font=FONT)
 
     # ── Fabrication notes ────────────────────────────────────────────────────
     notes = [
         "HOUSING SKIN — FABRICATION",
         f"Material: {LT_HOUSING_T}mm (3/16in) UV-stabilized HDPE sheet (~7 m²).",
-        f"1. Cut blank {L:.0f} × {HOUSING_H}mm; cut the two {LT_OPENING_DEG}° openings.",
-        f"2. Roll to Ø{DRUM_D} (R{LT_HOUSING_R:.0f}); extrusion-weld the seam (mid-arc, 90°).",
-        "3. Interior face black-pigmented + flat-black touch-in at welds.",
+        f"1. Cut blank {L:.0f} × {HOUSING_H + EXT_BOT + EXT_TOP:.0f}mm; cut the two {LT_OPENING_DEG}° openings.",
+        f"2. Cut the 4 axle-beam notches ({ntw:.0f}mm wide) at 90°+270°, top ({EXT_TOP}mm) + bottom ({EXT_BOT}mm) bands.",
+        f"3. Roll to Ø{DRUM_D} (R{LT_HOUSING_R:.0f}); extrusion-weld the seam (mid-arc, 90°).",
+        "4. Interior face black-pigmented + flat-black touch-in at welds.",
         "   Exterior face UV-stabilized — no primer.",
+        f"Skin spans the beam OUTER faces (+{EXT_TOP} top / +{EXT_BOT} bottom past the inner faces) and",
+        "rivets DIRECTLY to the top + bottom beams (no rim-angle) — SS blind @150mm, SHEET 9.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, 40, -240, 34, fs=7, font=FONT, width=1650,
@@ -1649,6 +1681,18 @@ def draw_sheet8():
         ax.text(hc[0] + (HR + 86) * math.cos(math.radians(oc)),
                 hc[1] + (HR + 86) * math.sin(math.radians(oc)), f"{tag}\nOPENING\n({LT_OPENING_DEG}°)",
                 ha="center", va="center", fontsize=6.5, color=col, **FONT, zorder=9)
+    # 4 formed-Al SUPPORT STRIPS (one across each opening, top + bottom) — in plan the top +
+    # bottom strips of an opening project to the same Yd-running bar at the opening X. Each spans
+    # rail-to-rail (cyl..cyr) so its ends land on the near/far rails; the opening's two U-channels
+    # rivet to it. (Strips blind-rivet to the frame beams — Sheet 9 note 5.)
+    STRIP_W = 20
+    for oc in (180, 0):
+        ex = CX + HR * math.cos(math.radians(oc - LT_OPENING_DEG / 2))
+        rrect(fp(ex - STRIP_W / 2, cyl), STRIP_W, cW_y, fc="#C9A24A", color=C_OUT, lw=1.2, zorder=6)
+    leader(ax, *fp(CX + HR * math.cos(math.radians(-LT_OPENING_DEG / 2)), cyr - 140),
+           fp(cx1, cyr)[0] + 40, fp(cx1, cyr)[1] + 250,
+           "FORMED-Al SUPPORT STRIP (×4: each opening,\ntop + bottom) — rail-to-rail across the\nopening; the U-channel ends bolt to it",
+           fs=6.3, color="#8A6A20", ha="left", arrow_style="->", font=FONT)
     # plan dims + labels
     draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 80,
                f"{cW_x}mm CAGE (X)", offset=55, fs=7, above=False, font=FONT)
@@ -1662,7 +1706,7 @@ def draw_sheet8():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
            fp(cx1, cyr)[0] + 20, fp(cx1, cyr)[1] + 55,
-           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — riveted over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to\ntop/bottom beams — see Sheet 9",
+           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — riveted over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to\nthe support strips — see Sheet 9",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── RHS tube-section inset — the frame members are HOLLOW tube, not solid bar ──
@@ -1693,7 +1737,7 @@ def draw_sheet8():
         f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails (welded). No jamb posts: the free HDPE opening edges are stiffened by Al edge channels (below).",
         f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS (= the perimeter section — the 962mm span is barely stressed, δ≈0.3mm under the hung drum), span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
         f"Bearing mount plate: Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} steel disc welded across each beam — the ring/collar bolt to THIS, not the beam wall (their Ø200 bolt circle is far wider than the 50mm beam). Seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
-        f"Fixed housing (outer skin) laps + rivets to rim-angle on the top/bottom beams; free opening edges capped by {LT_EDGE_CHAN_N}× Al U-channel (ends bolt to the beams) — see Sheet 9. Drum rotates free inside.",
+        f"Fixed housing (outer skin) extends to the beam OUTER faces + blind-rivets DIRECTLY to the top/bottom beams (no rim-angle); {LT_EDGE_CHAN_N}× Al U-channel cap the free opening edges, their ends riveted to 4 formed-Al SUPPORT STRIPS (gold, plan — one across each opening top+bottom, rail-to-rail) that rivet to the beams — see Sheet 9. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
         "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
@@ -1728,50 +1772,42 @@ def draw_sheet9():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── SECTION A-A — housing edge → frame (SCALE 7:1, isotropic) ─────────────
-    S = 7                                    # drawn = real mm × 7 (both axes)
-    LEGT = S * LT_RIM_T                        # rim-angle leg thickness (3mm)
-    LIP  = S * LT_LAP_H                        # lap / lip height (25mm)
-    DPT  = S * 1.0                             # DP8010 bead (~1mm)
-    HOUT = S * LT_HOUSING_T                    # housing thickness (5mm / 3/16in)
-    RIML = S * LT_RIM_LEG                      # rim flat-leg length (25mm)
-    RVD  = S * LT_RIVET_D                      # rivet Ø (3.18mm, 1/8")
-    BEAMH = S * 16                             # 16mm of the frame beam shown (broken)
-    ax.text(-150, Z_HI - 40, "SECTION A–A  (housing → frame rim · SCALE 7:1)",
+    # ── SECTION A-A — housing skin → frame beam (DIRECT fix · SCALE 7:1) ───────
+    # Taken at an axle-beam crossing (90°/270°): the skin extension laps the beam OUTER
+    # face and blind-rivets straight to it. Rim-angle DROPPED 2026-09-08. z=0 is the beam
+    # OUTER (top) face; the beam runs down to z=-EXT (inner face); the skin laps up to z=0.
+    S = 7                                     # drawn = real mm × 7 (both axes)
+    HOUT = S * LT_HOUSING_T                    # housing skin thickness (5mm / 3/16in)
+    EXT  = S * (LT_CAGE_TOP - LT_HOUSING_Z_TOP)  # skin extension past the inner face = 50mm
+    BW   = 170                                  # beam chunk shown (broken interior — not the full 50mm width)
+    _fw  = S * LT_FRAME_T                       # frame-beam wall (3mm RHS)
+    RVD  = S * LT_RIVET_D                       # rivet Ø (3.18mm, 1/8")
+    ax.text(-120, Z_HI - 40, "SECTION A–A  (housing skin → beam · direct fix · SCALE 7:1)",
             ha="center", va="top", fontsize=8.5, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=15)
-    _fw = S * LT_FRAME_T                                                           # frame-beam wall (3mm RHS)
-    draw_rect(ax, -RIML - 40, 0, RIML + 100, BEAMH, fc=C_STEEL, lw=1.6, zorder=4)  # frame beam — bottom wall (rim welds here)
-    draw_rect(ax, -RIML - 40, _fw, RIML + 100, BEAMH - _fw, fc=BG, lw=0.9, zorder=5)  # HOLLOW bore (void) above the wall
-    for xx in (-RIML - 20, -RIML + 20, -RIML + 60):                              # break line (hollow beam continues up)
-        ax.plot([xx - 4, xx + 4], [BEAMH - 8, BEAMH + 8], color=C_OUT, lw=0.6, zorder=7)
-    # rim-angle — ONE continuous 25×25×3 L-section (single extrusion, not two plates): the
-    # horizontal leg is BLIND-RIVETED up into the beam bottom wall; the standing lip hangs down for the housing to lap.
-    l_angle(ax, 0, 0, -RIML, -LIP, LEGT, fc=C_ALUM, lw=1.4, zorder=5)             # rim-angle (L)
-    # SS blind rivet (18-8, Ø1/8", McMaster 97525A425 — same family as the lap rivets): set from BELOW
-    # through the flat leg + the 3mm beam bottom wall; the set head forms INSIDE the closed RHS bore (no
-    # internal access, unlike a weld-nut; bears on the full wall, unlike a self-driller's ~2 threads).
-    _tx = -RIML * 0.5
-    blind_rivet(ax, _tx, (-LEGT + _fw) / 2, -90, LEGT + _fw, d=RVD)
-    draw_rect(ax, 0, -LIP, DPT, LIP, fc=C_GASKT, lw=0.8, zorder=5)                # DP8010 bead
-    draw_rect(ax, DPT, -LIP - 90, HOUT, LIP + 90, fc="#DDE4EC", lw=1.6, zorder=6)  # housing laps down, butts beam underside (broken below)
-    for zz in (-LIP - 55, -LIP - 67, -LIP - 79):                                 # break line (housing continues down)
-        ax.plot([DPT - 3, DPT + HOUT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
-    blind_rivet(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 0, S * (LT_HOUSING_T + 1 + LT_RIM_T), d=RVD)  # radial housing → lip rivet
-    draw_dim_v(ax, DPT + HOUT + 40, -LIP, 0, f"{LT_LAP_H}mm LAP", offset=40, fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, DPT, DPT + HOUT, -LIP - 40, f"{LT_HOUSING_T}mm (3/16in) HOUSING", offset=48, fs=6.2,
-               above=True, font=FONT)
-    leader(ax, -RIML * 0.5, -LEGT, -150, -LIP + 90, "RIM ANGLE 25×25×3 6061-T6 Al — flat leg\nBLIND-RIVETED up into the beam bottom wall\n(Ø1/8\" 18-8 SS, 97525A425, Al→3mm steel, @ ~150mm)",
+    # frame beam — 50mm-tall RHS; its outer wall (x=-_fw..0) is the wall the skin rivets to,
+    # the bore + rest of the beam broken to the left.
+    draw_rect(ax, -BW, -EXT, BW, EXT, fc=C_STEEL, lw=1.6, zorder=4)                   # beam near-wall region
+    draw_rect(ax, -BW, -EXT, BW - _fw, EXT, fc=BG, lw=0.9, zorder=5)                  # HOLLOW bore behind the outer wall
+    for zz in (-0.7 * EXT, -0.5 * EXT, -0.3 * EXT):                                   # break line (beam continues left)
+        ax.plot([-BW - 4, -BW + 4], [zz - 8, zz + 8], color=C_OUT, lw=0.6, zorder=7)
+    # housing skin — laps the beam outer wall over the 50mm extension; top edge flush with the
+    # beam OUTER face (z=0); the main skin continues down (broken below the inner face).
+    draw_rect(ax, 0, -EXT - 130, HOUT, EXT + 130, fc="#DDE4EC", lw=1.6, zorder=6)
+    for zz in (-EXT - 70, -EXT - 85, -EXT - 100):                                    # break line (main skin continues down)
+        ax.plot([-3, HOUT + 3], [zz - 4, zz + 4], color=C_OUT, lw=0.6, zorder=7)
+    blind_rivet(ax, (HOUT - _fw) / 2, -EXT * 0.5, 0, HOUT + _fw, d=RVD)              # horizontal — set from the skin side
+    draw_dim_v(ax, HOUT + 40, -EXT, 0, f"{LT_CAGE_TOP - LT_HOUSING_Z_TOP}mm LAP\n(→ beam outer face)", offset=40, fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, 0, HOUT, -EXT - 44, f"{LT_HOUSING_T}mm (3/16in) SKIN", offset=44, fs=6.2, above=False, font=FONT)
+    leader(ax, -_fw / 2, -EXT * 0.18, -150, 70, "FRAME BEAM (steel RHS · Sheet 8)\nskin rivets into the 3mm outer wall\n(set head inside the closed bore)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, DPT + HOUT, -LIP + 30, 125, -255, f"FIXED HOUSING {LT_HOUSING_T}mm (3/16in) UV-HDPE\nlaps {LT_LAP_H}mm over the lip",
+    leader(ax, HOUT, -EXT * 0.72, 150, -EXT - 90, f"FIXED HOUSING SKIN {LT_HOUSING_T}mm (3/16in) UV-HDPE\nextends to the beam OUTER face — NO rim-angle",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, (DPT + HOUT - LEGT) / 2, -LIP / 2, 125, -135, f"SS Ø{LT_RIVET_D} BLIND RIVET (radial, low-profile head)\nthrough housing + lip · + DP8010 (light seal)",
+    leader(ax, (HOUT - _fw) / 2, -EXT * 0.5, 150, -EXT * 0.5 + 20, f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru skin + beam wall @ ~150mm",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, -RIML + 40, BEAMH / 2, -150, BEAMH + 40, "FRAME TOP BEAM / RAIL (steel · Sheet 8)",
-           fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    ax.text(150, -LIP - 130, "(bottom edge identical, mirrored, to the bottom beam)",
+    ax.text(150, -EXT - 175, "(bottom edge identical, mirrored, to the bottom beam)",
             ha="center", va="center", fontsize=6.2, color=C_DIM, **FONT, zorder=9)
-    sbx, sbz = -300, -LIP - 60                                                   # section scale bar (20mm)
+    sbx, sbz = -300, -EXT - 175                                                      # section scale bar (20mm)
     ax.plot([sbx, sbx + S * 20], [sbz, sbz], color=C_OUT, lw=1.4, zorder=8)
     for xt in (sbx, sbx + S * 10, sbx + S * 20):
         ax.plot([xt, xt], [sbz - 6, sbz + 6], color=C_OUT, lw=1.0, zorder=8)
@@ -1809,7 +1845,7 @@ def draw_sheet9():
            f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — riveted over the\n{LT_HOUSING_T}mm (3/16in) HDPE edge (rivet-only, no bond); caps BOTH faces (jamb-post replacement)",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
-           f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru both legs + HDPE",
+           f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru both legs + HDPE · ends → SUPPORT STRIP",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── PLAN — housing footprint (200° material, two 100° arcs) + rivets ──────
@@ -1846,11 +1882,12 @@ def draw_sheet9():
 
     notes = [
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
-        f"1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R{LT_HOUSING_R:.0f}, BLIND-RIVETED to the frame top + bottom beams (Ø1/8\" 18-8 SS blind rivets, McMaster 97525A425, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). Set from below; the set head forms inside the closed RHS. No welds, no self-drillers — avoids welding Al to steel and thread-stripping the thin wall.",
-        f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
-        f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge (McMaster 97525A435, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
-        f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a RIVETED Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), rivet-only (no bond — the opaque channel wraps the edge; light-tightness is carried by the drum + wipers); channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
-        "SECTION A–A 7:1 (isotropic) · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
+        f"1. The housing skin extends to the beam OUTER faces (+{LT_CAGE_TOP - LT_HOUSING_Z_TOP} top / +{LT_HOUSING_Z_BOT - LT_CAGE_BOT} bottom past the inner faces) and BLIND-RIVETS DIRECTLY to the frame top + bottom beams (SECTION A-A; Ø1/8\" 18-8 SS, McMaster 97525A425, {LT_HOUSING_T}mm HDPE → 3mm steel wall, ~{LT_RIVET_PITCH}mm pitch; two 100° arcs — the openings carry no fixing). Set from outside; the set head forms inside the closed RHS. NO rim-angle (dropped 2026-09-08), no welds, no self-drillers.",
+        f"2. The two central axle beams cross the skin at 90° + 270°, so the skin is NOTCHED there in both extension bands (≈56mm wide — see Sheet 2).",
+        f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge; light-tightness is carried by the drum + running-gap wipers (the skin edge is a structural fix, not a light seal).",
+        f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a RIVETED Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), rivet-only (opaque channel wraps the edge).",
+        f"5. The 4 U-channel ends bolt (1× M{LT_EDGE_CHAN_END_BOLT}/end) to 4 formed-Al SUPPORT STRIPS — one across each opening (top + bottom), spanning rail-to-rail so the channels have a member to fix to; each strip blind-rivets to the frame beams (Sheet 8). Replaces the old L-clip-to-beam.",
+        "SECTION A–A 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -360, 24, fs=7, font=FONT, width=1450,
                title_color=TITLE_COL, wrap=180)
@@ -1959,11 +1996,9 @@ def draw_sheet10():
     # BELOW the cap lap (not at this level); shown + detailed on Sheets 4 & 7, called out by the
     # leader below. (No horizontal seal element here — that was a stale felt-seal artifact.)
 
-    # ── FIXED outer skin — housing + housing → frame lap (detail on Sheet 9) ─
-    draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, Z_BEAM0 - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing wall
-    l_angle(ax, HIR_, Z_BEAM0, -LT_RIM_LEG, -LT_LAP_H, LT_RIM_T, fc=C_ALUM, lw=0.8, zorder=7)  # rim-angle (L) — flat leg under beam + lip down
-    blind_rivet(ax, (HIR_ - LT_RIM_T + HOR_) / 2, Z_BEAM0 - LT_LAP_H / 2, 0,
-                HOR_ - (HIR_ - LT_RIM_T), d=LT_RIVET_D)                                       # RADIAL blind rivet (in-section, dome outboard)
+    # ── FIXED outer skin — housing extends to the beam OUTER face + rivets DIRECTLY (Sheet 9) ─
+    draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, (Z_BEAM0 + LT_AXLE_BEAM_H) - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing skin — up to the beam OUTER face (no rim-angle)
+    blind_rivet(ax, HIR_ - 8, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 0, LT_HOUSING_T + 16, d=LT_RIVET_D)  # skin → beam wall (radial, into the beam behind)
 
     # break lines (drum + housing continue down to the floor) ─────────────────
     for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):
@@ -1971,7 +2006,7 @@ def draw_sheet10():
             ax.plot([r0, r1], [Z_BRK + 6 + dz, Z_BRK + 14 + dz], color=C_OUT, lw=0.6, zorder=9)
 
     # ── Detail bubbles → the enlarged joint sheets (A→4, B→8; see notes) ─────
-    for (rc, zc, tag) in ((CAPR, LT_LAP_H / 2, "A"), (HIR_, Z_BEAM0 - LT_LAP_H / 2, "B")):
+    for (rc, zc, tag) in ((CAPR, LT_LAP_H / 2, "A"), (HIR_, Z_BEAM0 + LT_AXLE_BEAM_H / 2, "B")):
         draw_circle(ax, rc, zc, 40, lw=1.0, color=C_DIM, ls="--", zorder=8)
         ax.annotate(tag, xy=(rc - 34, zc), xytext=(rc - 95, zc),
                     ha="center", va="center", fontsize=11, fontweight="bold", color=C_DIM,
@@ -1995,8 +2030,8 @@ def draw_sheet10():
                offset=14, fs=6.0, above=False, font=FONT)
     draw_dim_h(ax, 0, HOR_, -LT_CAP_TOP_T - 135, f"R{HOR_:.0f} — B: fixed housing rail (Ø{DRUM_D})",
                offset=14, fs=6.0, above=False, font=FONT)
-    draw_dim_v(ax, HOR_ + 65, LT_LAP_H / 2, Z_BEAM0 - LT_LAP_H / 2,
-               f"{Z_BEAM0 - LT_LAP_H:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
+    draw_dim_v(ax, HOR_ + 65, LT_LAP_H / 2, Z_BEAM0 + LT_AXLE_BEAM_H / 2,
+               f"{Z_BEAM0 + LT_AXLE_BEAM_H / 2 - LT_LAP_H / 2:.0f}mm — A→B joint rise\n(drum joint at cap · housing joint at beam)",
                offset=38, fs=6.0, right=True, font=FONT)
     draw_dim_h(ax, HOR_, POST_R0, -55, f"{POST_R0 - HOR_:.0f}mm — fixed housing outer skin → corner post",
                offset=32, fs=6.0, above=False, font=FONT)
@@ -2029,7 +2064,7 @@ def draw_sheet10():
         "COMBINED TOP-END ASSEMBLY  (drawn to scale — see 100mm bar)",
         "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a brush-sealed running gap separates them (4× vertical #4 strip brushes on the drum OD, Sheets 4 & 7).",
         "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
-        "OUTER joint (fixed), DETAIL B: housing laps a rim-angle blind-riveted to the axle beam (SS blind rivets both the rim→beam + the housing→rim laps) + DP8010; full detail on Sheet 9.",
+        "OUTER joint (fixed), DETAIL B: the housing skin extends to the beam OUTER face and blind-rivets DIRECTLY to the axle beam (no rim-angle — dropped 2026-09-08); full detail on Sheet 9.",
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
         "Drum + housing continue below the break lines to the floor (drum interior ~1,970mm; housing skin ~2,060mm, beam-to-beam). Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]

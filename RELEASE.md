@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Light-trap housing skin extended to the beam outer faces — rim-angle dropped, 4 support strips added.**
+  The fixed housing skin now extends past the beam inner faces to the beam **outer** faces (+50 top / +40
+  bottom) and **blind-rivets directly** to the top/bottom frame beams — the rolled rim-angle lap is dropped.
+  The two central axle beams pass through the skin at 90°/270°, so it is **notched** there (4 notches, top +
+  bottom bands). 2D: Sheet 2 (full-height blank + notches + extension bands), Sheet 9 (Section A-A redrawn as
+  a direct skin→beam joint, notes + Detail-B channel-end callout), Sheet 8 (the 4 support strips drawn in
+  plan), Sheet 10 (outer joint → direct fix). Added **4 formed-Al channel-support strips** — one across each
+  opening top+bottom, rail-to-rail so the U-channel ends bolt to a member (new `ll-channel-strip`,
+  +$20/$32/$45); the housing `ll-rim-rivets` repurposed to the direct skin→beam fixing. 3D model already
+  carries the extension/notches/strips; lighttrap/construction/overview .skp save + re-send pending.
 - **Light-trap drum/housing edge channels — drum opening framed + housing openings rivet-only.** The
   rotating drum's own 80° opening jambs were bare free edges; added a **riveted 6063-T5 Al U-channel**
   (`LT_DRUM_CHAN_*`, ~10×15×2, rivet-only) on both jambs — a rivet line + a "DRUM-OPENING EDGE" detail on

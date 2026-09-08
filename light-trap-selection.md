@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,978<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,044<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,998<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,089<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -120,7 +120,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Fixed housing shell | 5mm (3/16in) UV-HDPE (LT_HOUSING_T), rolled to **Ø800mm OD**, extrusion-welded seam; laps a rolled rim-angle blind-riveted to the integrated support frame — SS blind rivets throughout (rim→beam + housing→rim laps) + DP8010 (see §9 Sheet 9), set in the punch-out bay |
+| Fixed housing shell | 5mm (3/16in) UV-HDPE (LT_HOUSING_T), rolled to **Ø800mm OD**, extrusion-welded seam; the skin extends to the beam OUTER faces and **blind-rivets directly to the integrated support frame** (SS blind rivets @ ~150mm — no rim-angle, no bond; see §9 Sheet 9), set in the punch-out bay. The two central axle beams cross the skin at 90°/270°, so it is notched there (Sheet 2) |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
 | Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø764mm OD** (~Ø758mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
@@ -153,7 +153,8 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Entry handle | Off-the-shelf 12″ (308mm) round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar, 2.06″ standoff), interior face only, at 900mm height — **bolted at both feet** (1/4″ screws into **1/4″-20 rivet-nuts** set in the hollow RHS wall — a blind insert gives full thread engagement and can't strip the thin wall) to a steel **stile that spans and bolts to the two Al caps**. The stile is a 40×40×5 SS RHS (an open tube), so each end is fitted with a **solid tapped steel plug**, locked in the tube by **2× grub (set) screws** through the wall (anti-rotation + retention); a single **M10 countersunk bolt** is then driven from the cap's outside face (wrench-accessible), through the cap into the tapped plug — sealed with DP8010 for light-tightness. The pull load lands in the structural caps (not the thin HDPE wall) via handle → tube → grub screws → plug → cap bolt → cap. No welds. Mount + plug detail on §9 Sheet 11 |
 | Panel bolts | 8 × M10 countersunk flat-head bolts (lower collar) + 6 × M10 (upper ring), stainless — flush in the ring/collar underside, tapped into the Ø240×12 steel mount plates (welded across the axle beams) |
-| Lap-joint fasteners | Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/); housing→frame grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/). DP8010 wets the mandrel hole for light-tightness. |
+| Lap-joint fasteners | **Shell→cap** (rotating drum): rolled 25×25×3 6061-T6 Al rim-angle + **1/8" (Ø3.18mm) 18-8 SS blind rivets** @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap), grip 6.2mm → [McMaster 97525A425](https://www.mcmaster.com/97525A425/). **Housing→frame**: the skin fixes DIRECTLY to the outer beam faces — SS blind rivets @ ~150mm (no rim-angle, no bond), grip 8.0mm → [McMaster 97525A435](https://www.mcmaster.com/97525A435/); light-tightness is carried by the drum + running-gap wipers, so the skin edge is a structural fix, not a light seal. |
+| Opening-edge stiffeners + support strips | Each free HDPE opening edge is capped by a riveted 6063-T5 Al U-channel (rivet-only): 4 on the housing (2 openings × 2 edges) + 2 on the drum. The 4 housing channels' ends bolt (1× M8/end via L-clip) to **4 formed-Al support strips** — one across each opening (top + bottom), spanning rail-to-rail so the channels have a member to fix to; each strip blind-rivets to the frame beams (§9 Sheets 8/9). |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
 
@@ -171,7 +172,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,978<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,044<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,998<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,089<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -207,7 +208,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø758mm bore / ~487mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **1,883mm clear** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,978<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,044<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,998<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,089<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -262,7 +263,9 @@ and the support-cage envelope, keyed to the assembly BOM.
 ![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
 
 **Sheet 2 — Housing cylinder cut sheet.** The fixed UV-HDPE outer skin as a flat
-pattern: developed length, height, weld-seam location, and the two 80° opening cutouts.
+pattern: developed length, full blank height (to the beam outer faces), weld-seam location,
+the two 80° opening cutouts, and the 4 axle-beam notches (90°/270°, top + bottom bands) where
+the central axle beams pass through the skin.
 
 ![TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet](assets/lighttrap-sheet2.png)
 
@@ -312,14 +315,16 @@ The brushes seal the gap circumferentially; the neoprene seals it axially.
 
 **Sheet 8 — Support frame general arrangement.** The integrated steel welded box cage
 that carries the bearing loads and the fixed housing, in plan and elevation, with the
-axle-support beam at the drum axis and the members dimensioned.
+axle-support beam at the drum axis, the 4 formed-Al channel-support strips across the two
+openings, and the members dimensioned.
 
 ![TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement](assets/lighttrap-sheet8.png)
 
 **Sheet 9 — Housing → frame attachment.** The section showing the fixed outer skin
-lapped and riveted to the rolled rim-angle blind-riveted on the top and bottom frame beams,
-with Detail B showing each free opening edge capped by a **riveted** aluminum U-channel
-(rivet-only, no bond — the opaque channel wraps the edge; the stiffener replaces the jamb posts) — the drum rotating free inside.
+extended to the beam OUTER faces and **blind-riveted directly** to the top and bottom frame
+beams (no rim-angle), with Detail B showing each free opening edge capped by a **riveted**
+aluminum U-channel (rivet-only, no bond — the opaque channel wraps the edge; the stiffener
+replaces the jamb posts), the channel ends secured to the 4 formed-Al support strips — the drum rotating free inside.
 
 ![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
 

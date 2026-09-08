@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,063 | $4,525 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,114 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,978 | $4,044 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,998 | $4,089 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,088 | $2,950 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,324 | $1,537 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,654** | **~$36,580** |
+| **TOTAL (base build + 50-print run)** | **~$27,674** | **~$36,625** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -81,8 +81,9 @@ indicative low–high estimates — get quotes before ordering.
 | [Anodized-Al straight-flange holder for the #4 wiper brush (×4 lines)](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) (AH400436) | 4 8ft | Tanis Brush | lightlock | $72–$160 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
+| Formed-Al strip channel-support beams (×4) + rivets | 1 lot | Online Metals | lightlock | $20–$45 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,858–$2,467** |
+| **aluminum subtotal** | | | | **$1,878–$2,512** |
 
 ### bearings-motion
 
@@ -258,7 +259,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91294A328/) (91294A328) | 1 lot | McMaster-Carr | lightlock | $95 |
 | [12" round pull handle — McMaster 1871A65](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | lightlock | $6 |
 | [1/8" blind rivets + backup washers — brush-holder flange → drum OD](https://www.mcmaster.com/97447A015/) (97447A015) | 1 lot | McMaster-Carr | lightlock | $16 |
-| [1/8" 18-8 SS blind rivets — rim-angle → frame beam (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
+| [1/8" 18-8 SS blind rivets — housing skin → outer beam face (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | [1/8" 18-8 SS blind rivets — housing→frame lap (100-pack)](https://www.mcmaster.com/97525A435/) (97525A435) | 1 pack-100 | McMaster-Carr | lightlock | $15 |
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
@@ -485,7 +486,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 17 | aluminum, fasteners-hardware, steel-structural | $2,042–$2,683 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
-| Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,049 |
+| Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $1,304–$2,094 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,797–$1,933 |
 | McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,904–$1,912 |
 | US Plastics | 4 | plastics-sheet | $1,665 |

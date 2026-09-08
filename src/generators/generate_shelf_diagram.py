@@ -275,15 +275,13 @@ def sheet4():
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
     ax.add_patch(Rectangle((0, 0), SHELF_W, SHELF_DEPTH, fc="white", ec=C_OUT, lw=1.4, zorder=2))
-    # spill lip inner lines on the 3 free edges (front + 2 sides)
-    for (x0, y0, x1, y1) in [(0, SHELF_DEPTH - LIP_W, SHELF_W, SHELF_DEPTH - LIP_W),
-                             (LIP_W, HINGE_LEAF, LIP_W, SHELF_DEPTH),
-                             (SHELF_W - LIP_W, HINGE_LEAF, SHELF_W - LIP_W, SHELF_DEPTH)]:
-        ax.plot([x0, x1], [y0, y1], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
-    # back-edge spill lip — set inboard of the 38.1mm hinge leaf so it butts the hinge (contains spills off the back)
-    LIP_BACK = HINGE_LEAF                                    # lip back face butts the hinge leaf edge (Yd 38.1)
-    for yb in (LIP_BACK, LIP_BACK + LIP_W):
-        ax.plot([LIP_W, SHELF_W - LIP_W], [yb, yb], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
+    # spill lip — the two horizontal lips (front + back) run the FULL WIDTH; the side lips butt into them.
+    # The back lip is set inboard of the 38.1mm hinge leaf so it butts the hinge (contains spills off the back).
+    LIP_BACK = HINGE_LEAF                                    # back lip outer face butts the hinge leaf edge (Yd 38.1)
+    for yb in (SHELF_DEPTH - LIP_W, LIP_BACK, LIP_BACK + LIP_W):   # front inner line + back-lip band
+        ax.plot([0, SHELF_W], [yb, yb], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
+    for xs in (LIP_W, SHELF_W - LIP_W):                     # side lips run between the two horizontal lips
+        ax.plot([xs, xs], [LIP_BACK + LIP_W, SHELF_DEPTH - LIP_W], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
 
     # hinge tee-nut row + front-corner eye-bolt tee-nuts
     for x in HINGE_XS:

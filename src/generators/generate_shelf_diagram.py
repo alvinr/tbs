@@ -211,7 +211,7 @@ def sheet3():
 
     # welded 8mm steel backing plates on the wall face (behind the hinge cleat + each stay anchor)
     for (bz, bh) in [(SHELF_H - 8, 68), (STAY_Z - 14, 28)]:
-        ax.add_patch(Rectangle((-6, bz), 8, bh, fc="#9AA0A8", ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+        ax.add_patch(Rectangle((-6, bz), 8, bh, fc="white", ec=C_OUT, lw=1.0, hatch="///", zorder=3))
     leader(ax, -6, SHELF_H + 30, -34, SHELF_H + 60,
            "8mm WELDED BACKING PLATE\n(flat load anchor — behind the\nhinge cleat + each chain\nwall anchor; M8 weld-nuts)",
            color=C_OUT, fs=6, ha="right", font=FONT)
@@ -267,7 +267,7 @@ def sheet4():
     ax.set_aspect("equal"); ax.axis("off")
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
-    ax.add_patch(Rectangle((0, 0), SHELF_W, SHELF_DEPTH, fc=C_SHELF, ec=C_OUT, lw=1.4, zorder=2))
+    ax.add_patch(Rectangle((0, 0), SHELF_W, SHELF_DEPTH, fc="white", ec=C_OUT, lw=1.4, zorder=2))
     # spill lip inner lines on the 3 free edges (front + 2 sides); back edge = hinge, no lip
     for (x0, y0, x1, y1) in [(0, SHELF_DEPTH - LIP_W, SHELF_W, SHELF_DEPTH - LIP_W),
                              (LIP_W, 0, LIP_W, SHELF_DEPTH),
@@ -323,7 +323,7 @@ def sheet5():
 
     # ── Hinge cleat + its 8mm hinge-backing plate (drawn 1:1-ish, top zone) ──
     cx0, cy0, CL_W, CL_H = 60, 660, 600, 40
-    ax.add_patch(Rectangle((cx0, cy0), CL_W, CL_H, fc="#B8BDC4", ec=C_OUT, lw=1.2, zorder=3))
+    ax.add_patch(Rectangle((cx0, cy0), CL_W, CL_H, fc="white", ec=C_OUT, lw=1.2, zorder=3))
     for x in HINGE_XS:                                        # hinge-screw holes (align to the board tee-nut row)
         ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.68), 3.2, fc="white", ec=C_OUT, lw=0.9, zorder=5))
     for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):   # M8 cleat→backing bolts
@@ -339,7 +339,7 @@ def sheet5():
     # ── 8mm backing plates (mid zone) ──
     # hinge-backing plate (long)
     hbx, hby, HB_W, HB_H = 60, 470, 600, 60
-    ax.add_patch(Rectangle((hbx, hby), HB_W, HB_H, fc="#9AA0A8", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
+    ax.add_patch(Rectangle((hbx, hby), HB_W, HB_H, fc="white", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
     for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):
         ax.add_patch(Circle((hbx + x, hby + HB_H / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, hbx, hbx + HB_W, hby - 18, f"{HB_W}mm", fs=6, font=FONT, above=False)
@@ -349,7 +349,7 @@ def sheet5():
 
     # chain-anchor backing plate (small, ×2)
     abx, aby, AB = 720, 470, 80
-    ax.add_patch(Rectangle((abx, aby), AB, AB, fc="#9AA0A8", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
+    ax.add_patch(Rectangle((abx, aby), AB, AB, fc="white", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
     ax.add_patch(Circle((abx + AB / 2, aby + AB / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, abx, abx + AB, aby - 18, f"{AB}mm", fs=5.5, font=FONT, above=False)
     draw_dim_v(ax, abx + AB + 16, aby, aby + AB, f"{AB}mm", fs=5.5, font=FONT)

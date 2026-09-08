@@ -248,7 +248,7 @@ def sheet3():
 TNUT_HINGE_N  = 4                                  # hinge bolts (into tee-nuts) along the back edge
 TNUT_MARGIN_X = 75                                 # first/last hinge tee-nut inset from the board sides
 TNUT_HINGE_PITCH = (SHELF_W - 2 * TNUT_MARGIN_X) / (TNUT_HINGE_N - 1)   # = 150mm
-TNUT_HINGE_YD = 15                                 # hinge tee-nut row inset from the back (hinge) edge
+TNUT_HINGE_YD = 7                                  # hinge tee-nut row inset — mid-leaf of the 12.7mm hinge leaf (1582A452 datasheet), clear of the ~2.9mm barrel
 TNUT_EYE_X    = 30                                 # front-corner eye-bolt tee-nut inset from each side
 TNUT_EYE_YD   = SHELF_DEPTH - 20                   # eye-bolt tee-nut inset from the front edge
 TNUT_HOLE_D   = 8                                  # tee-nut barrel hole (5/16") — Ø8
@@ -263,7 +263,7 @@ EYE_XS        = [TNUT_EYE_X, SHELF_W - TNUT_EYE_X]
 def sheet4():
     fig, ax = plt.subplots(figsize=(11, 6))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-95, SHELF_W + 150); ax.set_ylim(-150, SHELF_DEPTH + 255)
+    ax.set_xlim(-95, SHELF_W + 150); ax.set_ylim(-150, SHELF_DEPTH + 330)
     ax.set_aspect("equal"); ax.axis("off")
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
@@ -306,9 +306,11 @@ def sheet4():
         "BOARD FAB — 18mm phenolic / UV-coated ply; ply-primary (NO steel frame). Seal all cut edges.",
         f"HINGE ROW (back/bottom edge): {TNUT_HINGE_N}× Ø{TNUT_HOLE_D} pronged tee-nut (825001) at "
         f"{int(TNUT_HINGE_PITCH)}mm pitch, {TNUT_MARGIN_X}mm side margin — seat from the BACK face.",
-        "The piano hinge is supplied BLANK — drill both leaves to this pitch so hinge ↔ tee-nuts align.",
+        "Piano hinge 1582A452 supplied BLANK — 25.4mm open / 12.7mm leaf. Hinge row sits 7mm off the "
+        "back edge (mid-leaf, clear of the barrel); drill both leaves to this pitch. Use pan/truss-head "
+        "screws — a CSK head overhangs the narrow leaf.",
         "Back (bottom) edge = piano hinge (no lip). Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
-    ], 0, SHELF_DEPTH + 245, spacing=18, fs=6, width=680, font=FONT)
+    ], 0, SHELF_DEPTH + 285, spacing=18, fs=6, width=680, wrap=112, font=FONT)
 
     title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="BOARD FABRICATION — 18mm PLY (cut + tee-nut drill)",
@@ -381,7 +383,7 @@ def sheet5():
     # ── fastener + hardware schedule (bottom zone) ──
     rows = [
         "FASTENER / HARDWARE SCHEDULE",
-        "Piano hinge (bolt-on, BLANK)   304 SS, ~32mm open × 600mm   McMaster 1582A457   ×1",
+        "Piano hinge (bolt-on, BLANK)   304 SS, 25.4mm open / 12.7mm leaf, 2ft stock  1582A457  ×1",
         "Hinge screws                   1/4-20 SS × ~3/4in            (SKU pending)         ×4",
         "Ply tee-nuts                   1/4-20 pronged (825001)       Home Depot            ×6 (+spares)",
         "Front-corner eye bolts         1/4-20 SS × 1in               McMaster 3014T45      ×2",

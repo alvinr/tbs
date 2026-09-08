@@ -86,6 +86,11 @@ file** — a release must not ship without a changelog entry:
   supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat align. The 4-bolt hinge (down
   from 6) cascaded to the schedule, parts registry (hinge screws ×4, ply tee-nuts ×2 4-pack) and costing
   (shelf −$3/$3/$4). Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
+- **Chem-shelf hinge reconciled to the 1582A452 datasheet.** The blank piano hinge is **25.4mm open /
+  12.7mm leaf** (not the assumed ~32mm) — so the hinge tee-nut row inset was moved from 15mm (off the
+  leaf) to **7mm** (mid-leaf, clear of the ~2.9mm barrel). Fab Sheet 4 note, `parts.py` and the report
+  now carry the true open/leaf width, the 2ft stock length, and the pan/truss-head requirement (a CSK
+  head overhangs the narrow leaf). Cost-neutral.
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.

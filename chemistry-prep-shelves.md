@@ -134,13 +134,17 @@ corner.
 
 ### 3.5 Fabrication detail
 
-Dimensioned fabrication sheets: the board cut + tee-nut drill positions, and the wall plates + hinge
-cleat + fastener schedule. The piano hinge is supplied **blank** — its leaves are drilled to the same
-150 mm tee-nut pitch (4 bolts) so the hinge, the ply tee-nuts, and the cleat all align.
+Dimensioned fabrication sheets: the board cut + tee-nut drill positions (Sheet 4), the wall plates +
+hinge cleat + fastener schedule (Sheet 5), and the piano-hinge drilling (Sheet 6). The hinge is supplied
+**blank**; both its leaves are drilled 4× at the same 150 mm pitch (7 mm gauge off the pin line, mid-leaf
+of the 12.7 mm leaf) — the **shelf leaf** into the board tee-nut row, the **wall leaf** into the tapped
+6 mm cleat — so hinge, tee-nuts, and cleat all align. That is 8 hinge screws in all (4 per leaf).
 
 ![Chemistry Prep Shelf — Sheet 4: Board fabrication (cut + tee-nut drill)](assets/shelf-sheet4.png)
 
 ![Chemistry Prep Shelf — Sheet 5: Wall plates + hinge cleat + fastener schedule](assets/shelf-sheet5.png)
+
+![Chemistry Prep Shelf — Sheet 6: Piano hinge drilling (blank 1582A452)](assets/shelf-sheet6.png)
 
 ---
 
@@ -197,7 +201,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | [M8 SS eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 304 SS M8 eye bolt into the tapped M8 backing plate ~230mm above the hinge (reuses the M8 wall standard) — the chain's top anchor. $7.80 ea. | 2 ea | McMaster-Carr | $16 |
 | [304 SS quick-links](https://www.mcmaster.com/8947T25/) (8947T25) | 304 SS ~4mm quick-links — chain ends + length adjustment (2 per stay). $2.90 ea. | 4 ea | McMaster-Carr | $12 |
 | [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 1/4-20 4-prong tee-nut (the ply-mount standard SKU 825001) seated in the ply underside — the 4-bolt hinge row + 2 front-corner eye bolts = 6 → 2× 4-pack (8, with spares). Reuses the project ply-mount tee-nut; replaces the retired M5 CSK ply attach. | 2 4-pack | Home Depot | $3 |
-| 1/4"-20 SS machine screws — hinge → tee-nuts | 1/4-20 × ~3/4in SS machine screw — hinge leaf into the ply tee-nut row (4 bolts). SS is the splash-zone exception to the zinc ply-mount screw (panel-machine-screws). ~4 off. SKU pending — source a 1/4-20 × 3/4 SS machine screw. | 4 ea | McMaster-Carr | $2 |
+| 1/4"-20 SS machine screws — hinge leaves (both) | 1/4-20 SS machine screws — BOTH hinge leaves at 4 each (Sheet 6 drilling): 4× ~3/4in shelf leaf → the ply tee-nut row (board); 4× ~5/16in wall leaf → the TAPPED 6mm cleat (short, no protrusion past the cleat back onto the backing plate). SS is the splash-zone exception to the zinc ply-mount screw (panel-machine-screws). ~8 off. SKU pending — source 1/4-20 SS pan/truss-head (a CSK head overhangs the 12.7mm leaf). | 8 ea | McMaster-Carr | $3–$5 |
 | Hinge wall cleat, 6mm steel | 6mm steel cleat behind the piano-hinge wall leaf (bolts to the backing plate via M8). The 2 chain wall anchors are M8 eye bolts into the backing plates, not slotted stay anchors. | 1 lot | Local fab | $10 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | Flat 8mm steel backing plates welded to the pinhole-wall interior crests — one behind the hinge cleat + one per chain wall-anchor (M8 eye bolt) — flat, solid load anchors, TAPPED M8 (8mm plate taps directly — no weld-nut, no loose nut behind the wall-welded plate). | 3 ea | Local fab | $18–$30 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf hinge cleat](https://www.mcmaster.com/91280A534/) (91280A534) | Clamps the shelf hinge cleat (6mm) to its welded, TAPPED 8mm backing plate — 1 per hinge bolt (4 at the 150mm hinge pitch). The 8mm plate taps M8 directly (no weld-nut, no loose nut — the plate is wall-welded, no access behind). Grip = 6mm cleat, thread engages the plate. M8×25, pitch M8×1.25 coarse. $18.51/pack of 50 (same 91280A534 as the film ICP-14 fixing). | 4 ea | McMaster-Carr | $1 |
@@ -205,7 +209,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | Secures the folded board for transport — reuses the hinged-panel cam latch (1619A74), a standard-part reuse that retires the est zinc toggle. $30.57 ea. | 1 ea | McMaster-Carr | $31 |
 | Ply edge sealer + lip fixings | Seal the ply cut edges (chemical-resistant) + fix the spill lip (ply/HDPE offcut, 3 free edges). No steel frame to powder-coat (frame removed). | 1 lot | Hardware store | $10 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | Extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention). IPEX ½" × 10 ft — same stick as pvc-half; one covers the run. | 1 stick | Home Depot | $5 |
-| **Shelf total** | | | | **$219–$231** |
+| **Shelf total** | | | | **$220–$234** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

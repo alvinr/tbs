@@ -113,7 +113,7 @@ def sheet1():
         "4. TAP-01 relocated LEFT of the shelf (battery bank is to the right).",
     ]
     draw_notes(ax, notes, X_LO + 20, Y_HI - 20, spacing=26, fs=6.5, width=820, font=FONT)
-    title_block(ax, "SHEET 1 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 1 OF 6", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="PLAN — FOLD-DOWN, WIDENED WALKWAY (LEFT OF BATTERIES)",
                 scale_note="Axes in mm · PLAN VIEW", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -187,7 +187,7 @@ def sheet2():
         f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the shelf underside (Z1050).",
     ]
     draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
-    title_block(ax, "SHEET 2 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 2 OF 6", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + STOWED)",
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -236,7 +236,7 @@ def sheet3():
            "SS CHAIN STAY (tension)\ncarries the deployed load;\nslackens when shelf folds up",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
 
-    title_block(ax, "SHEET 3 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 3 OF 6", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="DETAIL — PIANO HINGE + STAY",
                 scale_note="Axes in mm · DETAIL", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -255,6 +255,13 @@ TNUT_HOLE_D   = 8                                  # tee-nut barrel hole (5/16")
 LIP_W         = 15                                 # spill-lip width (3 free edges)
 HINGE_XS      = [TNUT_MARGIN_X + i * TNUT_HINGE_PITCH for i in range(TNUT_HINGE_N)]
 EYE_XS        = [TNUT_EYE_X, SHELF_W - TNUT_EYE_X]
+
+# ── Piano hinge 1582A452 (blank) geometry — from the McMaster datasheet ──
+HINGE_OPEN    = 25.4     # open width (1in) — both leaves flat
+HINGE_LEAF    = 12.7     # each leaf, pin-line to edge (0.5in)
+HINGE_BARREL  = 2.9      # knuckle barrel Ø (0.113in)
+HINGE_GAUGE   = TNUT_HINGE_YD   # hole gauge from the pin line = the 7mm board row (mid-leaf)
+HINGE_DRILL_D = 7        # 1/4-20 clearance in each leaf (Ø~7)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -312,7 +319,7 @@ def sheet4():
         "Back (bottom) edge = piano hinge (no lip). Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
     ], 0, SHELF_DEPTH + 285, spacing=18, fs=6, width=680, wrap=112, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 4 OF 6", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="BOARD FABRICATION — 18mm PLY (cut + tee-nut drill)",
                 scale_note="Axes in mm", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -345,7 +352,7 @@ def sheet5():
     draw_dim_v(ax, cx0 - 16, cy0, cy0 + CL_H * 0.68, f"{int(round(CL_H * 0.68))}mm", fs=5.0, font=FONT)
     draw_dim_v(ax, cx0 - 40, cy0, cy0 + CL_H * 0.30, f"{int(round(CL_H * 0.30))}mm", fs=5.0, font=FONT)
     leader(ax, cx0 + HINGE_XS[1], cy0 + CL_H * 0.68, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
-           f"hinge-screw holes — {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm (match the board row)", fs=5.6, font=FONT, ha="center")
+           f"hinge-screw holes — {TNUT_HINGE_N}× TAPPED 1/4-20 at {int(TNUT_HINGE_PITCH)}mm (wall leaf → cleat)", fs=5.6, font=FONT, ha="center")
     leader(ax, cx0 + HINGE_XS[-1], cy0 + CL_H * 0.30, cx0 + CL_W + 20, cy0 + 4,
            f"{TNUT_HINGE_N}× Ø9 clear → TAPPED M8 backing plate", fs=5.6, font=FONT, ha="left")
     ax.text(cx0, cy0 + CL_H + 60, "HINGE CLEAT — 6mm steel, 600 long (piano-hinge wall leaf bolts to it)",
@@ -384,7 +391,7 @@ def sheet5():
     rows = [
         "FASTENER / HARDWARE SCHEDULE",
         "Piano hinge (bolt-on, BLANK)   304 SS, 25.4mm open / 12.7mm leaf, 2ft stock  1582A457  ×1",
-        "Hinge screws                   1/4-20 SS × ~3/4in            (SKU pending)         ×4",
+        "Hinge screws (both leaves)     1/4-20 SS: 4× 3/4in→tee-nut + 4× 5/16in→tapped cleat  ×8",
         "Ply tee-nuts                   1/4-20 pronged (825001)       Home Depot            ×6 (+spares)",
         "Front-corner eye bolts         1/4-20 SS × 1in               McMaster 3014T45      ×2",
         "Chain wall eye bolts           M8 SS × 1in                   McMaster 4843T13      ×2",
@@ -395,7 +402,7 @@ def sheet5():
     ]
     draw_notes(ax, rows, 60, 360, spacing=24, fs=6.4, width=1080, font=FONT)
 
-    title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
+    title_block(ax, "SHEET 5 OF 6", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + FASTENER SCHEDULE",
                 scale_note="Axes in mm · plates ~1:1", height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
@@ -403,7 +410,65 @@ def sheet5():
     print("  diagrams/shelf-sheet5.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 6 — PIANO HINGE DRILLING (blank 1582A452, opened flat)
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet6():
+    fig, ax = plt.subplots(figsize=(13, 6))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-95, 770); ax.set_ylim(-115, 170)
+    ax.set_aspect("equal"); ax.axis("off")
+
+    # opened hinge outline (plan; pin line at y0, both leaves flat = HINGE_OPEN tall)
+    ax.add_patch(Rectangle((0, -HINGE_LEAF), SHELF_W, HINGE_OPEN, fc="white", ec=C_OUT, lw=1.4, zorder=2))
+    # pin / knuckle fold line + barrel band
+    ax.add_patch(Rectangle((0, -HINGE_BARREL / 2), SHELF_W, HINGE_BARREL, fc="#EDEDED", ec="none", zorder=3))
+    ax.plot([0, SHELF_W], [0, 0], color=C_OUT, lw=0.8, ls=(0, (5, 3)), zorder=4)
+
+    # drilled holes — both leaves, at the hinge pitch, gauge 7mm off the pin line
+    for x in HINGE_XS:
+        ax.add_patch(Circle((x, HINGE_GAUGE), HINGE_DRILL_D / 2, fc="white", ec=C_OUT, lw=1.1, zorder=5))   # shelf leaf
+        ax.add_patch(Circle((x, -HINGE_GAUGE), HINGE_DRILL_D / 2, fc="white", ec=C_OUT, lw=1.1, zorder=5))  # wall leaf
+
+    # leaf identification (right side)
+    leader(ax, HINGE_XS[-1], HINGE_GAUGE, SHELF_W + 24, HINGE_LEAF + 6,
+           "SHELF LEAF → board tee-nut row (Sheet 4)", fs=6, font=FONT, ha="left")
+    leader(ax, HINGE_XS[-1], -HINGE_GAUGE, SHELF_W + 24, -HINGE_LEAF - 6,
+           "WALL LEAF → cleat hinge-screw holes (Sheet 5)", fs=6, font=FONT, ha="left")
+    leader(ax, 0, 0, SHELF_W + 24, 0,
+           "PIN / KNUCKLE fold line — barrel Ø2.9", fs=6, font=FONT, ha="left")
+    leader(ax, HINGE_XS[1], HINGE_GAUGE, HINGE_XS[1], 55,
+           f"Ø{HINGE_DRILL_D} clear (1/4-20), both leaves", fs=6, font=FONT, ha="center")
+
+    # length dims — chained pitch + overall
+    hx = [0] + HINGE_XS + [SHELF_W]
+    for a, b in zip(hx[:-1], hx[1:]):
+        draw_dim_h(ax, a, b, -HINGE_LEAF - 16, f"{int(round(b - a))}mm", fs=5.4, font=FONT, above=False)
+    draw_dim_h(ax, 0, SHELF_W, -HINGE_LEAF - 42, f"{SHELF_W}mm (2ft stock, cut)", fs=6, font=FONT, above=False)
+
+    # cross-leaf dims (left) — open, each leaf, gauge both sides
+    draw_dim_v(ax, -34, -HINGE_LEAF, HINGE_LEAF, f"{HINGE_OPEN}mm open", fs=5.4, font=FONT)
+    draw_dim_v(ax, -14, 0, HINGE_LEAF, f"{HINGE_LEAF}mm", fs=5.0, font=FONT)
+    draw_dim_v(ax, -62, 0, HINGE_GAUGE, f"{HINGE_GAUGE}mm", fs=5.0, font=FONT)
+    draw_dim_v(ax, -62, -HINGE_GAUGE, 0, f"{HINGE_GAUGE}mm", fs=5.0, font=FONT)
+
+    draw_notes(ax, [
+        "PIANO HINGE DRILLING — 1582A452 supplied BLANK, shown opened flat (both leaves).",
+        f"Drill BOTH leaves {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm pitch, {TNUT_MARGIN_X}mm end "
+        f"margin, gauge {HINGE_GAUGE}mm off the pin line (mid-leaf, clear of the barrel).",
+        "Shelf leaf → the board tee-nut row (Sheet 4); wall leaf → the cleat holes (Sheet 5) — match exactly.",
+        "Pan/truss-head 1/4-20 screws — a CSK head overhangs the 12.7mm leaf. Deburr; keep the knuckle clear.",
+    ], 0, HINGE_LEAF + 148, spacing=17, fs=6, width=620, wrap=104, font=FONT)
+
+    title_block(ax, "SHEET 6 OF 6", drawing_title="CHEMISTRY PREP SHELF",
+                subtitle="PIANO HINGE DRILLING — BLANK 1582A452 (opened flat)",
+                scale_note="Axes in mm · 1:1", height=0.08)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet6.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/shelf-sheet6.png saved")
+
+
 if __name__ == "__main__":
     print("Generating chemistry prep shelf diagrams (fold-down)...")
-    sheet1(); sheet2(); sheet3(); sheet4(); sheet5()
+    sheet1(); sheet2(); sheet3(); sheet4(); sheet5(); sheet6()
     print("Done.")

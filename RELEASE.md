@@ -86,6 +86,13 @@ file** — a release must not ship without a changelog entry:
   supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat align. The 4-bolt hinge (down
   from 6) cascaded to the schedule, parts registry (hinge screws ×4, ply tee-nuts ×2 4-pack) and costing
   (shelf −$3/$3/$4). Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
+- **Chem-shelf piano-hinge drilling sheet added (Sheet 6) + hinge screws 4→8.** The blank 1582A452 hinge
+  had no drilling sheet. Added **Sheet 6** — the hinge opened flat, both leaves drilled 4× at 150mm pitch,
+  7mm gauge off the pin line (mid-leaf of the 12.7mm leaf), with the open/leaf/barrel dims. Drawing it made
+  explicit that **both** leaves are drilled (shelf leaf → board tee-nuts, wall leaf → the tapped 6mm cleat),
+  i.e. **8 hinge screws**, not 4 — reconciled in `parts.py`, costing, the Sheet 5 schedule (+4 wall-leaf
+  1/4-20 into a tapped cleat, +$1/$2/$3 shelf). Registered (gallery, dependencies.yml, publish, setup) +
+  embedded in report §3.5. The shelf set is now 6 sheets.
 - **Chem-shelf cleat→backing M8 bolts reconciled to 4 (were 3 drawn / 6 in the BOM).** The hinge-cleat →
   backing-plate M8 clamp bolts disagreed across sources — Sheet 5 drew 3, the registry/schedule said 6, and
   the hinge itself is 4. Set to **4, one per hinge bolt at the 150mm pitch** (cleanest load path): Sheet 5

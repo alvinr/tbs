@@ -248,7 +248,7 @@ def sheet3():
 TNUT_HINGE_N  = 4                                  # hinge bolts (into tee-nuts) along the back edge
 TNUT_MARGIN_X = 75                                 # first/last hinge tee-nut inset from the board sides
 TNUT_HINGE_PITCH = (SHELF_W - 2 * TNUT_MARGIN_X) / (TNUT_HINGE_N - 1)   # = 150mm
-TNUT_HINGE_YD = 7                                  # hinge tee-nut row inset — mid-leaf of the 12.7mm hinge leaf (1582A452 datasheet), clear of the ~2.9mm barrel
+TNUT_HINGE_YD = 25                                 # hinge tee-nut row inset — 25mm ply edge distance (tee-nut flange fully on-board); mid-leaf of the 38.1mm extra-clearance hinge leaf (14835A77)
 TNUT_EYE_X    = 30                                 # front-corner eye-bolt tee-nut inset from each side
 TNUT_EYE_YD   = SHELF_DEPTH - 20                   # eye-bolt tee-nut inset from the front edge
 TNUT_HOLE_D   = 8                                  # tee-nut barrel hole (5/16") — Ø8
@@ -256,11 +256,11 @@ LIP_W         = 15                                 # spill-lip width (3 free edg
 HINGE_XS      = [TNUT_MARGIN_X + i * TNUT_HINGE_PITCH for i in range(TNUT_HINGE_N)]
 EYE_XS        = [TNUT_EYE_X, SHELF_W - TNUT_EYE_X]
 
-# ── Piano hinge 1582A452 (blank) geometry — from the McMaster datasheet ──
-HINGE_OPEN    = 25.4     # open width (1in) — both leaves flat
-HINGE_LEAF    = 12.7     # each leaf, pin-line to edge (0.5in)
-HINGE_BARREL  = 2.9      # knuckle barrel Ø (0.113in)
-HINGE_GAUGE   = TNUT_HINGE_YD   # hole gauge from the pin line = the 7mm board row (mid-leaf)
+# ── Piano hinge 14835A77 extra-clearance (blank) geometry — from the McMaster 14835A33 datasheet ──
+HINGE_OPEN    = 76.2     # open width (3in) — both leaves flat
+HINGE_LEAF    = 38.1     # each leaf, pin-line to edge (1.5in)
+HINGE_BARREL  = 10.16    # knuckle barrel Ø (0.400in — extra-clearance)
+HINGE_GAUGE   = TNUT_HINGE_YD   # hole gauge from the pin line = the 25mm board row (mid-leaf)
 HINGE_DRILL_D = 7        # 1/4-20 clearance in each leaf (Ø~7)
 
 
@@ -313,9 +313,9 @@ def sheet4():
         "BOARD FAB — 18mm phenolic / UV-coated ply; ply-primary (NO steel frame). Seal all cut edges.",
         f"HINGE ROW (back/bottom edge): {TNUT_HINGE_N}× Ø{TNUT_HOLE_D} pronged tee-nut (825001) at "
         f"{int(TNUT_HINGE_PITCH)}mm pitch, {TNUT_MARGIN_X}mm side margin — seat from the BACK face.",
-        "Piano hinge 1582A452 supplied BLANK — 25.4mm open / 12.7mm leaf. Hinge row sits 7mm off the "
-        "back edge (mid-leaf, clear of the barrel); drill both leaves to this pitch. Use pan/truss-head "
-        "screws — a CSK head overhangs the narrow leaf.",
+        "Piano hinge 14835A77 (extra-clearance) supplied BLANK — 76.2mm open / 38.1mm leaf. Hinge row sits "
+        "25mm off the back edge (full ply edge distance; the tee-nut flange seats clear of the edge); drill "
+        "both leaves to this pitch. Pan/truss-head 1/4-20 machine screws into the tee-nuts.",
         "Back (bottom) edge = piano hinge (no lip). Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
     ], 0, SHELF_DEPTH + 285, spacing=18, fs=6, width=750, wrap=100, font=FONT)
 
@@ -337,25 +337,27 @@ def sheet5():
     ax.set_aspect("equal"); ax.axis("off")
 
     # ── Hinge cleat + its 8mm hinge-backing plate (drawn 1:1-ish, top zone) ──
-    cx0, cy0, CL_W, CL_H = 60, 660, 600, 40
+    cx0, cy0, CL_W, CL_H = 60, 640, 600, 60
+    HS_Y = cy0 + CL_H - TNUT_HINGE_YD                        # wall-leaf hinge-screw row: 25mm below the fold (top) edge
+    M8_Y = cy0 + 14                                          # M8 cleat→backing row: near the bottom, clear of the leaf
     ax.add_patch(Rectangle((cx0, cy0), CL_W, CL_H, fc="white", ec=C_OUT, lw=1.2, zorder=3))
-    for x in HINGE_XS:                                        # hinge-screw holes (align to the board tee-nut row)
-        ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.68), 3.2, fc="white", ec=C_OUT, lw=0.9, zorder=5))
+    for x in HINGE_XS:                                        # wall-leaf hinge-screw holes (tapped 1/4-20)
+        ax.add_patch(Circle((cx0 + x, HS_Y), 3.6, fc="white", ec=C_OUT, lw=0.9, zorder=5))
     for x in HINGE_XS:                                        # M8 cleat→backing bolts (1 per hinge bolt)
-        ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.30), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
+        ax.add_patch(Circle((cx0 + x, M8_Y), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, cx0, cx0 + CL_W, cy0 - 40, f"{CL_W}mm", fs=6, font=FONT, above=False)
     # per-hole X (hinge-screw row, chained — the M8 cleat bolts share these node positions)
     cx = [0] + HINGE_XS + [SHELF_W]
     for a, b in zip(cx[:-1], cx[1:]):
         draw_dim_h(ax, cx0 + a, cx0 + b, cy0 - 18, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
-    # per-hole Y (both rows, from the bottom edge)
-    draw_dim_v(ax, cx0 - 16, cy0, cy0 + CL_H * 0.68, f"{int(round(CL_H * 0.68))}mm", fs=5.0, font=FONT)
-    draw_dim_v(ax, cx0 - 40, cy0, cy0 + CL_H * 0.30, f"{int(round(CL_H * 0.30))}mm", fs=5.0, font=FONT)
-    leader(ax, cx0 + HINGE_XS[1], cy0 + CL_H * 0.68, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
+    # per-hole Y — hinge-screw row 25mm off the fold (top) edge; M8 row off the bottom
+    draw_dim_v(ax, cx0 - 16, HS_Y, cy0 + CL_H, f"{TNUT_HINGE_YD}mm", fs=5.0, font=FONT)
+    draw_dim_v(ax, cx0 - 40, cy0, M8_Y, f"{int(M8_Y - cy0)}mm", fs=5.0, font=FONT)
+    leader(ax, cx0 + HINGE_XS[1], HS_Y, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
            f"hinge-screw holes — {TNUT_HINGE_N}× TAPPED 1/4-20 at {int(TNUT_HINGE_PITCH)}mm (wall leaf → cleat)", fs=5.6, font=FONT, ha="center")
-    leader(ax, cx0 + HINGE_XS[-1], cy0 + CL_H * 0.30, cx0 + CL_W + 20, cy0 + 4,
+    leader(ax, cx0 + HINGE_XS[-1], M8_Y, cx0 + CL_W + 20, cy0 + 4,
            f"{TNUT_HINGE_N}× Ø9 clear → TAPPED M8 backing plate", fs=5.6, font=FONT, ha="left")
-    ax.text(cx0, cy0 + CL_H + 60, "HINGE CLEAT — 6mm steel, 600 long (piano-hinge wall leaf bolts to it)",
+    ax.text(cx0, cy0 + CL_H + 60, "HINGE CLEAT — 6mm steel, 600 long (the 38.1mm wall leaf bolts to it)",
             fontsize=6.5, color=C_OUT, ha="left", **FONT)
 
     # ── 8mm backing plates (mid zone) ──
@@ -387,9 +389,9 @@ def sheet5():
            "TAPPED M8 —\nchain wall-anchor eye bolt", fs=5.6, font=FONT, ha="left")
     ax.text(abx, aby + AB + 44, "CHAIN-ANCHOR PLATE ×2 — 8mm steel", fontsize=6.2, color=C_OUT, ha="left", **FONT)
 
-    # ── piano hinge drilling (blank 1582A452, opened flat — bottom zone) ──
-    HX0, HY0 = 60, 310                               # strip left x (aligned with the cleat + backing plate), pin-line y
-    ax.text(HX0, HY0 + 74, "PIANO HINGE DRILLING — blank 1582A452, opened flat (drill BOTH leaves)",
+    # ── piano hinge drilling (blank 14835A77 extra-clearance, opened flat — bottom zone) ──
+    HX0, HY0 = 60, 285                               # strip left x (aligned with the cleat + backing plate), pin-line y
+    ax.text(HX0, HY0 + 74, "PIANO HINGE DRILLING — blank 14835A77 extra-clearance, opened flat (drill BOTH leaves)",
             fontsize=6.5, color=C_OUT, ha="left", **FONT)
     ax.add_patch(Rectangle((HX0, HY0 - HINGE_LEAF), SHELF_W, HINGE_OPEN, fc="white", ec=C_OUT, lw=1.4, zorder=3))
     ax.add_patch(Rectangle((HX0, HY0 - HINGE_BARREL / 2), SHELF_W, HINGE_BARREL, fc="#EDEDED", ec="none", zorder=4))
@@ -401,7 +403,7 @@ def sheet5():
            "SHELF LEAF → board tee-nut row (Sheet 4)", fs=5.8, font=FONT, ha="left")
     leader(ax, HX0 + HINGE_XS[-1], HY0 - HINGE_GAUGE, HX0 + SHELF_W + 24, HY0 - HINGE_LEAF - 8,
            "WALL LEAF → the cleat holes (above)", fs=5.8, font=FONT, ha="left")
-    leader(ax, HX0 + HINGE_XS[1], HY0 + HINGE_GAUGE, HX0 + HINGE_XS[1], HY0 + 44,
+    leader(ax, HX0 + HINGE_XS[1], HY0 + HINGE_GAUGE, HX0 + HINGE_XS[1], HY0 + HINGE_LEAF + 14,
            f"Ø{HINGE_DRILL_D} clear (1/4-20), both leaves", fs=5.8, font=FONT, ha="center")
     hx = [0] + HINGE_XS + [SHELF_W]
     for a, b in zip(hx[:-1], hx[1:]):
@@ -414,7 +416,7 @@ def sheet5():
         f"HINGE DRILLING — drill BOTH leaves {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm pitch, "
         f"{TNUT_MARGIN_X}mm margin, gauge {HINGE_GAUGE}mm off the pin line (mid-leaf). Shelf leaf → board "
         "tee-nuts (Sheet 4); wall leaf → the tapped cleat above.",
-        "Pan/truss-head 1/4-20 — a CSK head overhangs the 12.7mm leaf. Open 25.4 / leaf 12.7 / barrel Ø2.9. "
+        "Pan/truss-head 1/4-20 machine screws. Open 76.2 / leaf 38.1 / barrel Ø10.16 (extra-clearance). "
         "Deburr; keep the knuckle clear.",
     ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1080, wrap=138, font=FONT)
 

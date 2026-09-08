@@ -86,6 +86,13 @@ file** — a release must not ship without a changelog entry:
   supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat align. The 4-bolt hinge (down
   from 6) cascaded to the schedule, parts registry (hinge screws ×4, ply tee-nuts ×2 4-pack) and costing
   (shelf −$3/$3/$4). Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
+- **Chem-shelf hinge upsized to a 3″ extra-clearance hinge for real plywood edge distance.** The board
+  tee-nut row was 7 mm off the back edge — forced by the old 1 in hinge's 12.7 mm leaf — which is too
+  shallow for plywood: a 1/4-20 tee-nut flange there overhangs the edge. Moved the row to **25 mm** (flange
+  fully on-board, strong edge distance), which required a wider leaf: swapped `1582A457` → **`14835A77`**
+  (McMaster extra-clearance, 3 in / 76.2 mm open, 38.1 mm leaf, Ø10.16 mm barrel, 3 ft stock, 304 SS,
+  $55.58). Cascaded to Sheets 4 & 5 (board row, hinge drilling gauge 25 mm, taller cleat), `parts.py`,
+  costing (**+$50** shelf, $6→$56), and the report. Verified against the 14835A33 datasheet.
 - **Chem-shelf piano-hinge drilling detail + hinge screws 4→8.** The blank 1582A452 hinge had no drilling
   detail. Added one — the hinge opened flat, both leaves drilled 4× at 150mm pitch, 7mm gauge off the pin
   line (mid-leaf of the 12.7mm leaf), with open/leaf/barrel dims — folded onto **Sheet 5** alongside the

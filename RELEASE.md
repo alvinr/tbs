@@ -86,6 +86,11 @@ file** — a release must not ship without a changelog entry:
   supplied BLANK — leaves drilled to the tee-nut pitch so hinge/tee-nuts/cleat align. The 4-bolt hinge (down
   from 6) cascaded to the schedule, parts registry (hinge screws ×4, ply tee-nuts ×2 4-pack) and costing
   (shelf −$3/$3/$4). Registered (gallery, dependencies.yml, publish) + embedded in the report §3.5.
+- **Chem-shelf cleat→backing M8 bolts reconciled to 4 (were 3 drawn / 6 in the BOM).** The hinge-cleat →
+  backing-plate M8 clamp bolts disagreed across sources — Sheet 5 drew 3, the registry/schedule said 6, and
+  the hinge itself is 4. Set to **4, one per hinge bolt at the 150mm pitch** (cleanest load path): Sheet 5
+  cleat + backing plate now show 4 aligned holes, and `bolt-m8-wall` / `nut-m8-plain` / `washer-m8-flat-shelf`
+  + costing + schedule all reconciled ×6→×4 (−$1 shelf).
 - **Chem-shelf hinge reconciled to the 1582A452 datasheet.** The blank piano hinge is **25.4mm open /
   12.7mm leaf** (not the assumed ~32mm) — so the hinge tee-nut row inset was moved from 15mm (off the
   leaf) to **7mm** (mid-leaf, clear of the ~2.9mm barrel). Fab Sheet 4 note, `parts.py` and the report

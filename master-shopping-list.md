@@ -20,12 +20,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,088 | $2,950 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,324 | $1,537 |
-| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $220 | $233 |
+| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $219 | $232 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,574** | **~$36,475** |
+| **TOTAL (base build + 50-print run)** | **~$27,573** | **~$36,474** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -219,21 +219,21 @@ indicative low–high estimates — get quotes before ordering.
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | 12 ea | McMaster-Carr | tray | $8 |
 | [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/91287A137/) (91287A137) | 52 ea | McMaster-Carr | electrical, film, spray | $18 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91310A535/) (91310A535) | 8 ea | McMaster-Carr | film | $2 |
-| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf hinge cleat](https://www.mcmaster.com/91280A534/) (91280A534) | 6 ea | McMaster-Carr | shelf | $2 |
+| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf hinge cleat](https://www.mcmaster.com/91280A534/) (91280A534) | 4 ea | McMaster-Carr | shelf | $1 |
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — cross-slide joints J1/J2](https://www.mcmaster.com/92314A711/) (92314A711) | 32 ea | McMaster-Carr | film | $14 |
 | M12×100 hex through-bolt, Grade 8.8 zinc | 4 ea | McMaster-Carr | ibc-frame | $8–$10 |
 | [M12×65 hex bolt, 18-8 SS (partial thread)](https://www.mcmaster.com/92800A481/) (92800A481) | 16 ea | McMaster-Carr | ibc-frame | $32 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 123 ea | McMaster-Carr | film, ibc-frame, walkway | $214 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
 | [M8 flat washer, 304 SS](https://www.mcmaster.com/98689A673/) (98689A673) | 32 ea | McMaster-Carr | film | $9 |
-| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 6 ea | McMaster-Carr | shelf | $0 |
+| [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 4 ea | McMaster-Carr | shelf | $0 |
 | [M8 split lock washer, 304 SS](https://www.mcmaster.com/91111A132/) (91111A132) | 32 ea | McMaster-Carr | film | $4 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 508 ea | McMaster-Carr | film, ibc-frame, walkway | $49 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $15 |
 | [M4×0.7 hex nut, 304 SS](https://www.mcmaster.com/91828A231/) (91828A231) | 24 ea | McMaster-Carr | film | $2 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 52 ea | McMaster-Carr | electrical, film, spray | $2 |
-| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 46 ea | McMaster-Carr | film, shelf | $3 |
+| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 44 ea | McMaster-Carr | film, shelf | $3 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
 | [36× #14 self-drilling TEK screws (bracket → post, J8/J9)](https://www.mcmaster.com/90822A620/) (90822A620) | 36 ea | McMaster-Carr | water | $19 |
@@ -294,7 +294,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,914–$2,176** |
+| **fasteners-hardware subtotal** | | | | **$1,913–$2,175** |
 
 ### plastics-sheet
 
@@ -486,7 +486,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,254–$1,994 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,797–$1,933 |
-| McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,854–$1,862 |
+| McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,853–$1,861 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |

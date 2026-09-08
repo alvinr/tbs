@@ -334,7 +334,7 @@ def sheet5():
     ax.add_patch(Rectangle((cx0, cy0), CL_W, CL_H, fc="white", ec=C_OUT, lw=1.2, zorder=3))
     for x in HINGE_XS:                                        # hinge-screw holes (align to the board tee-nut row)
         ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.68), 3.2, fc="white", ec=C_OUT, lw=0.9, zorder=5))
-    for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):   # M8 cleat→backing bolts
+    for x in HINGE_XS:                                        # M8 cleat→backing bolts (1 per hinge bolt)
         ax.add_patch(Circle((cx0 + x, cy0 + CL_H * 0.30), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, cx0, cx0 + CL_W, cy0 - 40, f"{CL_W}mm", fs=6, font=FONT, above=False)
     # per-hole X (hinge-screw row, chained — the M8 cleat bolts share these node positions)
@@ -347,7 +347,7 @@ def sheet5():
     leader(ax, cx0 + HINGE_XS[1], cy0 + CL_H * 0.68, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
            f"hinge-screw holes — {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm (match the board row)", fs=5.6, font=FONT, ha="center")
     leader(ax, cx0 + HINGE_XS[-1], cy0 + CL_H * 0.30, cx0 + CL_W + 20, cy0 + 4,
-           "3× Ø9 (M8) → backing weld-nut", fs=5.6, font=FONT, ha="left")
+           f"{TNUT_HINGE_N}× Ø9 (M8) → backing weld-nut", fs=5.6, font=FONT, ha="left")
     ax.text(cx0, cy0 + CL_H + 60, "HINGE CLEAT — 6mm steel, 600 long (piano-hinge wall leaf bolts to it)",
             fontsize=6.5, color=C_OUT, ha="left", **FONT)
 
@@ -355,16 +355,16 @@ def sheet5():
     # hinge-backing plate (long)
     hbx, hby, HB_W, HB_H = 60, 470, 600, 60
     ax.add_patch(Rectangle((hbx, hby), HB_W, HB_H, fc="white", ec=C_OUT, lw=1.2, hatch="///", zorder=3))
-    for x in (HINGE_XS[0], HINGE_XS[len(HINGE_XS)//2], HINGE_XS[-1]):
+    for x in HINGE_XS:
         ax.add_patch(Circle((hbx + x, hby + HB_H / 2), 5, fc="white", ec=C_OUT, lw=1.1, zorder=5))
     draw_dim_h(ax, hbx, hbx + HB_W, hby - 40, f"{HB_W}mm", fs=6, font=FONT, above=False)
     draw_dim_v(ax, hbx - 14, hby, hby + HB_H, f"{HB_H}mm", fs=5.5, font=FONT)
-    # per-hole X (3× M8, chained) + Y (row centered in the plate)
-    bx = [0, HINGE_XS[0], HINGE_XS[len(HINGE_XS) // 2], HINGE_XS[-1], HB_W]
+    # per-hole X (M8 row, chained — 1 per hinge bolt) + Y (row centered in the plate)
+    bx = [0] + HINGE_XS + [HB_W]
     for a, b in zip(bx[:-1], bx[1:]):
         draw_dim_h(ax, hbx + a, hbx + b, hby - 18, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
     draw_dim_v(ax, hbx - 40, hby, hby + HB_H / 2, f"{int(HB_H / 2)}mm", fs=5.0, font=FONT)
-    ax.text(hbx, hby + HB_H + 14, "HINGE-BACKING PLATE — 8mm steel (welded to wall crests; 3× M8 weld-nut)",
+    ax.text(hbx, hby + HB_H + 14, f"HINGE-BACKING PLATE — 8mm steel (welded to wall crests; {TNUT_HINGE_N}× M8 weld-nut)",
             fontsize=6.2, color=C_OUT, ha="left", **FONT)
 
     # chain-anchor backing plate (small, ×2)
@@ -390,7 +390,7 @@ def sheet5():
         "Chain wall eye bolts           M8 SS × 1in                   McMaster 4843T13      ×2",
         "Chain                          304 SS ~4mm                   McMaster 3392T51      ~1m",
         "Quick-links                    304 SS ~4mm                   McMaster 8947T25      ×4",
-        "Hinge-cleat wall bolts         M8×25 zinc (91280A534)+nut/wash                     ×6",
+        "Hinge-cleat wall bolts         M8×25 zinc (91280A534)+nut/wash                     ×4",
         "Transport latch                cam latch (reuse 1619A74)     McMaster              ×1",
     ]
     draw_notes(ax, rows, 60, 360, spacing=24, fs=6.4, width=1080, font=FONT)

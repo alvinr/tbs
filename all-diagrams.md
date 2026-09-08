@@ -290,9 +290,7 @@
 
 ![Chemistry Prep Shelf — Sheet 4: Board fabrication (cut + tee-nut drill)](assets/shelf-sheet4.png)
 
-![Chemistry Prep Shelf — Sheet 5: Wall plates + hinge cleat + fastener schedule](assets/shelf-sheet5.png)
-
-![Chemistry Prep Shelf — Sheet 6: Piano hinge drilling (blank 1582A452)](assets/shelf-sheet6.png)
+![Chemistry Prep Shelf — Sheet 5: Wall plates + hinge cleat + piano hinge drilling](assets/shelf-sheet5.png)
 
 ---
 

@@ -229,9 +229,9 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   block)/6/7 to the new design; (5) 3D `chem_shelf()` builder (remove frame, add chain stays) → overview re-send.
   **2D CASCADE DONE 2026-09-07** — items (1)–(4) landed (SHELF_T 22→18, parts+costing reconciled, report + shelf/
   pinhole/weight diagrams regenerated, hardware firm-sourced). **Remaining:** (5) the 3D `chem_shelf()` rebuild →
-  overview/construction re-send (deferred, needs the live model — pairs with the corridor-water comment cleanup);
-  and the fab-detail drawing polish (dimensioned tee-nut hole positions + an 8mm backing-plate 1:1 plate schedule
-  — the sheets currently show the new design but not full 1:1 fab detail).
+  overview/construction re-send (deferred, needs the live model — pairs with the corridor-water comment cleanup).
+  **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual: datum/tolerance
+  callouts (Phase C) if the shelf goes to a fabricator, and the 3D re-send.
 - [ ] **Tilt-swing board (TSB) — needs a blueprint review round + registry merge (2026-09-07).** The TSB
   (`tilt-swing-board-report.md`) is an OPTIONAL front board that **replaces** the flat pinhole plate, and it
   has NOT been through the manufacturing-blueprint standard (dimensioned details / fastener + weld schedule /

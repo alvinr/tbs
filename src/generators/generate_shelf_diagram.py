@@ -163,12 +163,6 @@ def sheet2():
            f"STAY (×{SHELF_STAY_N})\ncarries the load,\nfolds flat when stowed", color=C_HINGE, fs=6,
            ha="left", font=FONT)
 
-    # STOWED shelf ghost (folded up, vertical, Z SHELF_H..STOW_TOP)
-    ax.add_patch(Rectangle((0, SHELF_H), SHELF_T, SHELF_STOW_TOP_Z - SHELF_H,
-                           fc=C_SHELF, ec=C_OUT, lw=1.0, ls="--", alpha=0.35, zorder=4))
-    ax.text(SHELF_T + 12, SHELF_STOW_TOP_Z - 20, "SHELF (folded up\nfor transport)",
-            fontsize=5.5, color="#8a7a3a", ha="left", va="top", style="italic", **FONT)
-
     # tap spout over the shelf
     ax.plot([12, 12], [SHELF_H + 20, SHELF_STOW_TOP_Z], color=C_BLUE, lw=2.0, zorder=5)
     ax.plot([12, 100, 100], [SHELF_STOW_TOP_Z, SHELF_STOW_TOP_Z, TAP_Z], color=C_BLUE, lw=2.0, zorder=5)
@@ -194,7 +188,7 @@ def sheet2():
     ]
     draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
     title_block(ax, "SHEET 2 OF 5", drawing_title="CHEMISTRY PREP SHELF",
-                subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + STOWED)",
+                subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + EVAP CLEARANCE)",
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -207,11 +201,11 @@ def sheet2():
 def sheet3():
     fig, ax = plt.subplots(figsize=(10, 7))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-60, SHELF_DEPTH + 40); ax.set_ylim(SHELF_H - 80, STAY_Z + 80)
+    ax.set_xlim(-60, SHELF_DEPTH + 40); ax.set_ylim(SHELF_H - 170, STAY_Z + 80)
     ax.set_aspect("equal"); ax.axis("off")
 
     # wall
-    ax.add_patch(Rectangle((-50, SHELF_H - 80), 50, (STAY_Z + 80) - (SHELF_H - 80),
+    ax.add_patch(Rectangle((-50, SHELF_H - 170), 50, (STAY_Z + 80) - (SHELF_H - 170),
                            fc="#E8E6DD", ec=C_OUT, lw=1.0, zorder=2))
     ax.text(-25, STAY_Z + 40, "PINHOLE WALL", fontsize=5.5, color=C_DIM, ha="center", rotation=90, **FONT)
 
@@ -231,6 +225,12 @@ def sheet3():
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
     leader(ax, 65, SHELF_H - SHELF_T, 120, SHELF_H + SHELF_T - 60,
            f"SHELF BOARD\n18mm ply, ply-primary ({SHELF_T}mm)\n(no steel frame; tee-nut attach)", color="#5a4a18", fs=6.5, ha="left", font=FONT)
+
+    # ghost: shelf folded UP (vertical, pivots at the hinge knuckle) for transport
+    ax.add_patch(Rectangle((10, SHELF_H), SHELF_T, SHELF_DEPTH, fc=C_SHELF, ec=C_OUT, lw=1.0,
+                           ls="--", alpha=0.3, zorder=3))
+    leader(ax, 10 + SHELF_T, SHELF_H + SHELF_DEPTH - 24, 60, SHELF_H + SHELF_DEPTH - 24,
+           "SHELF folded UP\n(transport — ghost;\npivots at the hinge)", color="#8a7a3a", fs=6, ha="left", font=FONT)
 
     # stay anchor + stay to the front
     ax.add_patch(Rectangle((0, STAY_Z - 10), 16, 20, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))

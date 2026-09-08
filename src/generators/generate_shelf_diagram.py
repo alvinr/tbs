@@ -213,7 +213,7 @@ def sheet3():
     for (bz, bh) in [(SHELF_H - 8, 68), (STAY_Z - 14, 28)]:
         ax.add_patch(Rectangle((-6, bz), 8, bh, fc="white", ec=C_OUT, lw=1.0, hatch="///", zorder=3))
     leader(ax, -6, SHELF_H + 30, -34, SHELF_H + 60,
-           "8mm WELDED BACKING PLATE\n(flat load anchor — behind the\nhinge cleat + each chain\nwall anchor; M8 weld-nuts)",
+           "8mm BACKING PLATE (welded to wall)\n(flat load anchor — behind the\nhinge cleat + each chain\nwall anchor; TAPPED M8)",
            color=C_OUT, fs=6, ha="right", font=FONT)
 
     # hinge: wall leaf + knuckle + shelf leaf
@@ -347,7 +347,7 @@ def sheet5():
     leader(ax, cx0 + HINGE_XS[1], cy0 + CL_H * 0.68, cx0 + HINGE_XS[1], cy0 + CL_H + 42,
            f"hinge-screw holes — {TNUT_HINGE_N}× at {int(TNUT_HINGE_PITCH)}mm (match the board row)", fs=5.6, font=FONT, ha="center")
     leader(ax, cx0 + HINGE_XS[-1], cy0 + CL_H * 0.30, cx0 + CL_W + 20, cy0 + 4,
-           f"{TNUT_HINGE_N}× Ø9 (M8) → backing weld-nut", fs=5.6, font=FONT, ha="left")
+           f"{TNUT_HINGE_N}× Ø9 clear → TAPPED M8 backing plate", fs=5.6, font=FONT, ha="left")
     ax.text(cx0, cy0 + CL_H + 60, "HINGE CLEAT — 6mm steel, 600 long (piano-hinge wall leaf bolts to it)",
             fontsize=6.5, color=C_OUT, ha="left", **FONT)
 
@@ -364,7 +364,7 @@ def sheet5():
     for a, b in zip(bx[:-1], bx[1:]):
         draw_dim_h(ax, hbx + a, hbx + b, hby - 18, f"{int(round(b - a))}mm", fs=5.0, font=FONT, above=False)
     draw_dim_v(ax, hbx - 40, hby, hby + HB_H / 2, f"{int(HB_H / 2)}mm", fs=5.0, font=FONT)
-    ax.text(hbx, hby + HB_H + 14, f"HINGE-BACKING PLATE — 8mm steel (welded to wall crests; {TNUT_HINGE_N}× M8 weld-nut)",
+    ax.text(hbx, hby + HB_H + 14, f"HINGE-BACKING PLATE — 8mm steel (welded to wall crests; {TNUT_HINGE_N}× TAPPED M8)",
             fontsize=6.2, color=C_OUT, ha="left", **FONT)
 
     # chain-anchor backing plate (small, ×2)
@@ -377,7 +377,7 @@ def sheet5():
     draw_dim_h(ax, abx, abx + AB / 2, aby - 18, f"{int(AB / 2)}mm", fs=5.0, font=FONT, above=False)
     draw_dim_v(ax, abx - 16, aby, aby + AB / 2, f"{int(AB / 2)}mm", fs=5.0, font=FONT)
     leader(ax, abx + AB / 2, aby + AB / 2, abx + AB + 30, aby + AB + 20,
-           "Ø9 (M8) weld-nut —\nchain wall-anchor eye bolt", fs=5.6, font=FONT, ha="left")
+           "TAPPED M8 —\nchain wall-anchor eye bolt", fs=5.6, font=FONT, ha="left")
     ax.text(abx, aby + AB + 44, "CHAIN-ANCHOR PLATE ×2 — 8mm steel", fontsize=6.2, color=C_OUT, ha="left", **FONT)
 
     # ── fastener + hardware schedule (bottom zone) ──

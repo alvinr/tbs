@@ -91,6 +91,11 @@ file** — a release must not ship without a changelog entry:
   the hinge itself is 4. Set to **4, one per hinge bolt at the 150mm pitch** (cleanest load path): Sheet 5
   cleat + backing plate now show 4 aligned holes, and `bolt-m8-wall` / `nut-m8-plain` / `washer-m8-flat-shelf`
   + costing + schedule all reconciled ×6→×4 (−$1 shelf).
+- **Chem-shelf backing plates → tapped M8 (weld-nut/loose-nut dropped).** The 8mm backing plates are welded
+  to the wall crests, so there's no access behind for a nut; they now **tap M8 directly** (the plate is thick
+  enough). Dropped the spurious loose `nut-m8-plain` (×4) shelf line and the weld-nut language across the
+  drawing (Sheets 3/5), `parts.py` (backing plate, cleat bolt, chain eye bolt), the report, and costing
+  (−$1 shelf high). The chain-anchor plates tap M8 for their eye bolts the same way.
 - **Chem-shelf hinge reconciled to the 1582A452 datasheet.** The blank piano hinge is **25.4mm open /
   12.7mm leaf** (not the assumed ~32mm) — so the hinge tee-nut row inset was moved from 15mm (off the
   leaf) to **7mm** (mid-leaf, clear of the ~2.9mm barrel). Fab Sheet 4 note, `parts.py` and the report

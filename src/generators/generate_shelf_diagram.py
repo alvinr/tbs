@@ -128,7 +128,7 @@ def sheet2():
     fig, ax = plt.subplots(figsize=(12, 8))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     Y_LO, Y_HI = -120, 1300
-    Z_LO, Z_HI = -80, 1520
+    Z_LO, Z_HI = -190, 1520
     ax.set_xlim(Y_LO, Y_HI); ax.set_ylim(Z_LO, Z_HI)
     ax.set_aspect("equal"); ax.axis("off")
 

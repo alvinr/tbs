@@ -98,7 +98,7 @@ def sheet1():
     # relocated TAP-01 (left of the shelf)
     ax.add_patch(Circle((TAP_X, 12), 14, fc=C_BLUE, ec=C_OUT, lw=0.8, zorder=8))
     leader(ax, TAP_X, 12, TAP_X - 30, 180,
-           "TAP-01 (relocated)\nleft of the shelf", color=C_BLUE, fs=6, ha="center", font=FONT)
+           "TAP-01", color=C_BLUE, fs=6, ha="center", font=FONT)
 
     # navigation clearance behind the deployed shelf
     draw_dim_v(ax, SHELF_X_R + 60, SHELF_DEPTH, WALKWAY_NEAR_WIDE_W,
@@ -159,14 +159,14 @@ def sheet2():
     # stay (wall above -> front edge)
     ax.plot([0, SHELF_DEPTH - 10], [STAY_Z, SHELF_H], color=C_HINGE, lw=2.4, zorder=7)
     ax.add_patch(Rectangle((-6, STAY_Z - 8), 12, 16, fc=C_HINGE, ec=C_OUT, lw=0.6, zorder=7))
-    leader(ax, (SHELF_DEPTH - 10) / 2, (STAY_Z + SHELF_H) / 2, SHELF_DEPTH + 30, 1000,
+    leader(ax, (SHELF_DEPTH - 10) / 2, (STAY_Z + SHELF_H) / 2, SHELF_DEPTH + 30, 1150,
            f"STAY (×{SHELF_STAY_N})\ncarries the load,\nfolds flat when stowed", color=C_HINGE, fs=6,
            ha="left", font=FONT)
 
     # tap spout over the shelf
     ax.plot([12, 12], [SHELF_H + 20, SHELF_STOW_TOP_Z], color=C_BLUE, lw=2.0, zorder=5)
     ax.plot([12, 100, 100], [SHELF_STOW_TOP_Z, SHELF_STOW_TOP_Z, TAP_Z], color=C_BLUE, lw=2.0, zorder=5)
-    ax.text(110, TAP_Z, "TAP-01 spout", fontsize=5.5, color=C_BLUE, ha="left", va="center", **FONT)
+    ax.text(110, TAP_Z + 100, "TAP-01 spout", fontsize=5.5, color=C_BLUE, ha="left", va="center", **FONT)
 
     shelf_under = SHELF_H - SHELF_T
     evap_top = EVAP_STOW_Z + EVAP_H
@@ -186,7 +186,7 @@ def sheet2():
         f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the deployed shelf "
         f"(underside Z{SHELF_H - SHELF_T}) — {(SHELF_H - SHELF_T) - (EVAP_STOW_Z + EVAP_H)}mm clearance.",
     ]
-    draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
+    draw_notes(ax, notes, 560, 1480, spacing=32, fs=6, width=700, wrap=55, font=FONT)
     title_block(ax, "SHEET 2 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + EVAP CLEARANCE)",
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)

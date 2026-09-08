@@ -84,8 +84,9 @@ structure** — the earlier welded 25×25×3 steel perimeter frame is removed (s
 tee-nuts in the ply underside** (the 1/4-20 ply-mount standard), which is why the M5 CSK ply screws
 are gone.
 
-**Spill lip:** a 15 mm chemical-resistant lip (ply or HDPE offcut) on the three free edges retains
-bottles/items; cut edges sealed.
+**Spill lip:** a 15 mm chemical-resistant lip (ply or HDPE offcut) on all four edges retains
+bottles/items — front and two sides at the board edge, plus a fourth lip on the back that butts up to the
+hinge leaf (~38 mm in), so the tray is closed on every side. Cut edges sealed.
 
 ### 3.2 Fold-down mechanism
 

@@ -275,11 +275,15 @@ def sheet4():
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
     ax.add_patch(Rectangle((0, 0), SHELF_W, SHELF_DEPTH, fc="white", ec=C_OUT, lw=1.4, zorder=2))
-    # spill lip inner lines on the 3 free edges (front + 2 sides); back edge = hinge, no lip
+    # spill lip inner lines on the 3 free edges (front + 2 sides)
     for (x0, y0, x1, y1) in [(0, SHELF_DEPTH - LIP_W, SHELF_W, SHELF_DEPTH - LIP_W),
-                             (LIP_W, 0, LIP_W, SHELF_DEPTH),
-                             (SHELF_W - LIP_W, 0, SHELF_W - LIP_W, SHELF_DEPTH)]:
+                             (LIP_W, HINGE_LEAF, LIP_W, SHELF_DEPTH),
+                             (SHELF_W - LIP_W, HINGE_LEAF, SHELF_W - LIP_W, SHELF_DEPTH)]:
         ax.plot([x0, x1], [y0, y1], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
+    # back-edge spill lip — set inboard of the 38.1mm hinge leaf so it butts the hinge (contains spills off the back)
+    LIP_BACK = HINGE_LEAF                                    # lip back face butts the hinge leaf edge (Yd 38.1)
+    for yb in (LIP_BACK, LIP_BACK + LIP_W):
+        ax.plot([LIP_W, SHELF_W - LIP_W], [yb, yb], color=C_DIM, lw=0.8, ls=(0, (4, 3)), zorder=3)
 
     # hinge tee-nut row + front-corner eye-bolt tee-nuts
     for x in HINGE_XS:
@@ -305,8 +309,10 @@ def sheet4():
     # callouts (right side — front-corner eye tee-nut + lip; hinge row is dimensioned + noted)
     leader(ax, EYE_XS[1], TNUT_EYE_YD, SHELF_W + 44, TNUT_EYE_YD,
            "2× Ø8 tee-nut — front corner\n(1/4-20 eye bolt → chain)", fs=6, font=FONT, ha="left")
-    leader(ax, SHELF_W - LIP_W, LIP_W * 2, SHELF_W + 44, LIP_W * 2 - 26,
-           f"{LIP_W}mm spill lip\n(ply/HDPE, 3 free edges)", fs=6, font=FONT, ha="left")
+    leader(ax, SHELF_W - LIP_W, 110, SHELF_W + 44, 110,
+           f"{LIP_W}mm spill lip\n(ply/HDPE, front + 2 sides)", fs=6, font=FONT, ha="left")
+    leader(ax, SHELF_W - LIP_W, LIP_BACK + LIP_W / 2, SHELF_W + 44, LIP_BACK - 4,
+           f"{LIP_W}mm spill lip — butts the\nhinge leaf (back edge)", fs=6, font=FONT, ha="left")
 
     # notes (top — clear of the board + dims)
     draw_notes(ax, [
@@ -316,8 +322,9 @@ def sheet4():
         "Piano hinge 14835A77 (extra-clearance) supplied BLANK — 76.2mm open / 38.1mm leaf. Hinge row sits "
         "25mm off the back edge (full ply edge distance; the tee-nut flange seats clear of the edge); drill "
         "both leaves to this pitch. Pan/truss-head 1/4-20 machine screws into the tee-nuts.",
-        "Back (bottom) edge = piano hinge (no lip). Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
-    ], 0, SHELF_DEPTH + 285, spacing=18, fs=6, width=750, wrap=100, font=FONT)
+        "Back-edge spill lip butts the hinge leaf (Yd 38mm) — a 4th lip so the tray is closed on all sides; "
+        "the outer 38mm strip is the hinge-leaf zone. Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
+    ], 0, SHELF_DEPTH + 300, spacing=18, fs=6, width=750, wrap=100, font=FONT)
 
     title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="BOARD FABRICATION — 18mm PLY (cut + tee-nut drill)",

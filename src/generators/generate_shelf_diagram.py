@@ -174,13 +174,8 @@ def sheet2():
     ax.plot([12, 100, 100], [SHELF_STOW_TOP_Z, SHELF_STOW_TOP_Z, TAP_Z], color=C_BLUE, lw=2.0, zorder=5)
     ax.text(110, TAP_Z, "TAP-01 spout", fontsize=5.5, color=C_BLUE, ha="left", va="center", **FONT)
 
-    # ghost of the shelf underside in the DOWN (deployed) position, projected over the evap to read the clearance
     shelf_under = SHELF_H - SHELF_T
     evap_top = EVAP_STOW_Z + EVAP_H
-    ax.add_patch(Rectangle((0, shelf_under), EVAP_D, SHELF_T, fc="none", ec=C_SHELF, lw=0.9,
-                           ls=(0, (5, 3)), alpha=0.6, zorder=5))
-    ax.text(EVAP_D + 14, shelf_under + SHELF_T / 2, "shelf (down\nposition — ghost)", fontsize=5,
-            color="#8a7a3a", ha="left", va="center", style="italic", **FONT)
 
     # dimensions
     draw_dim_v(ax, -70, 0, SHELF_H, f"{SHELF_H}mm AFF", offset=6, fs=6, right=False, font=FONT)

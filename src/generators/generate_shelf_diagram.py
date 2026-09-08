@@ -205,8 +205,8 @@ def sheet3():
     ax.set_xlim(-310, 430); ax.set_ylim(SHELF_H - 170, STAY_Z + 80)
     ax.set_aspect("equal"); ax.axis("off")
 
-    # wall
-    ax.add_patch(Rectangle((-50, SHELF_H - 170), 50, (STAY_Z + 80) - (SHELF_H - 170),
+    # wall (stops above the title-block band; the view extends lower so the block sits in clear space)
+    ax.add_patch(Rectangle((-50, SHELF_H - 120), 50, (STAY_Z + 80) - (SHELF_H - 120),
                            fc="#E8E6DD", ec=C_OUT, lw=1.0, zorder=2))
     ax.text(-25, STAY_Z + 40, "PINHOLE WALL", fontsize=5.5, color=C_DIM, ha="center", rotation=90, **FONT)
 

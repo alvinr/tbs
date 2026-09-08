@@ -541,18 +541,21 @@ def draw_sheet3():
         ax.plot([xe, xe], [0, SHELL_H], color="#B08020", lw=3.0, zorder=6)
     # riveted Al U-channel over each drum-opening jamb (2026-09-08) — rivet line inboard of the edge
     RVIN = 34                                                    # rivet line inset from the jamb (≈ channel leg)
-    R_EDGE = 40                                                  # rivet edge distance (top + bottom)
-    nrv = max(2, int((SHELL_H - 2 * R_EDGE) / LT_DRUM_CHAN_RIVET_PITCH))
-    R_PITCH = (SHELL_H - 2 * R_EDGE) / nrv                       # drawn rivet pitch (≈ nominal LT_DRUM_CHAN_RIVET_PITCH)
+    R_EDGE = 40                                                  # TOP rivet edge distance
+    R_PITCH = LT_DRUM_CHAN_RIVET_PITCH                           # 120 — round, easy to set out
+    z_top = SHELL_H - R_EDGE                                     # first (top) rivet hole
+    nrv = max(2, int((z_top - R_EDGE) / R_PITCH))               # whole 120mm pitches that fit above a ≥R_EDGE bottom margin
+    z_bot = z_top - nrv * R_PITCH                                # last (bottom) hole; bottom edge distance = z_bot
     for xe, sgn in ((0, +1), (W_SHELL, -1)):
-        ax.plot([xe + sgn * RVIN, xe + sgn * RVIN], [R_EDGE, SHELL_H - R_EDGE],
+        ax.plot([xe + sgn * RVIN, xe + sgn * RVIN], [z_bot, z_top],
                 color="#8A6A20", lw=0.8, ls=(0, (6, 4)), zorder=6)
         for i in range(nrv + 1):
-            zz = R_EDGE + i * R_PITCH
+            zz = z_top - i * R_PITCH
             ax.add_patch(mpatches.Circle((xe + sgn * RVIN, zz), 11, fc="white", ec="#8A6A20", lw=1.0, zorder=7))
-    # top-left rivet dims — edge → first hole, and hole-to-hole pitch
-    draw_dim_v(ax, RVIN - 90, SHELL_H - R_EDGE, SHELL_H, f"{R_EDGE}mm", offset=26, fs=6.5, font=FONT)
-    draw_dim_v(ax, RVIN - 90, SHELL_H - R_EDGE - R_PITCH, SHELL_H - R_EDGE, f"{R_PITCH:.0f}mm", offset=26, fs=6.5, font=FONT)
+    # rivet dims — top edge → first hole (top-left), hole-to-hole pitch, last hole → bottom edge (bottom-left)
+    draw_dim_v(ax, RVIN - 90, z_top, SHELL_H, f"{R_EDGE}mm", offset=26, fs=6.5, font=FONT)
+    draw_dim_v(ax, RVIN - 90, z_top - R_PITCH, z_top, f"{R_PITCH}mm", offset=26, fs=6.5, font=FONT)
+    draw_dim_v(ax, RVIN - 90, 0, z_bot, f"{z_bot:.0f}mm", offset=26, fs=6.5, font=FONT)
     ax.text(W_SHELL / 2, SHELL_H / 2,
             f"ROTATING DRUM C-SHELL\n{LT_DRUM_T:.2f}mm (1/8in) HDPE\n"
             f"280° of Ø{DRUM_OD} — roll to R{LT_DRUM_OR}",
@@ -602,7 +605,7 @@ def draw_sheet3():
         "ROTATING DRUM SHELL — CUT SHEET (flat pattern)",
         f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm — this developed blank is the shop's cutting/rolling template.",
         f"1. Cut the blank, roll to R{LT_DRUM_OR}; the two free edges are the {LT_OPENING_DEG}° opening jambs.",
-        f"2. Cap each opening jamb with a riveted Al U-channel {LT_DRUM_CHAN_W}×{LT_DRUM_CHAN_LEG}×{LT_DRUM_CHAN_T} 6063-T5 ({LT_DRUM_CHAN_N} edges) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_DRUM_CHAN_RIVET_PITCH}mm nominal (evenly divided → see the top-left dims), rivet-only (see DETAIL). Drill the rivet line before rolling.",
+        f"2. Cap each opening jamb with a riveted Al U-channel {LT_DRUM_CHAN_W}×{LT_DRUM_CHAN_LEG}×{LT_DRUM_CHAN_T} 6063-T5 ({LT_DRUM_CHAN_N} edges) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ {LT_DRUM_CHAN_RIVET_PITCH}mm (40mm top edge, remainder at the bottom — see dims), rivet-only (see DETAIL). Drill the rivet line before rolling.",
         f"3. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 4).",
         "The end caps (Ø855 6061-T6 Al, hub bore + 4×M10 flange + rim-rivet holes) are drawn on Sheet 6 with the other machined metal parts.",
         f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 7.",

@@ -201,7 +201,8 @@ def sheet2():
 def sheet3():
     fig, ax = plt.subplots(figsize=(10, 7))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-60, SHELF_DEPTH + 40); ax.set_ylim(SHELF_H - 170, STAY_Z + 80)
+    # xlim widened to contain the outboard callout text (both sides) so the title block spans the full page width
+    ax.set_xlim(-310, 430); ax.set_ylim(SHELF_H - 170, STAY_Z + 80)
     ax.set_aspect("equal"); ax.axis("off")
 
     # wall

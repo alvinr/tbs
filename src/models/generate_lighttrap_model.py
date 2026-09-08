@@ -38,7 +38,7 @@ import generate_sketchup_model as ov   # helpers, materials, constants
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -423,7 +423,7 @@ def drum_housing(cx, cy):
             parts.append(ov.ruby_arc_wall("LT Housing sill/header band", cx, cy, HOUSING_R,
                                           HOUSING_T, hb, gap_center_deg=(oc + 180) % 360,
                                           gap_deg=360 - od, color=C_ALUM, alpha=0.5, z0=zb_band))
-    # Opening-edge stiffeners — a bonded Al U-channel caps each of the 4 free HDPE
+    # Opening-edge stiffeners — a riveted Al U-channel caps each of the 4 free HDPE
     # edges (2 openings × 2 edges), replacing the old steel jamb posts. Each is a
     # vertical U prism wrapping the wall: base across the edge + two legs (length
     # LEG) running tangentially into the material arc. Slot faces the material.
@@ -468,6 +468,18 @@ def drum_rotor(cx=0, cy=0):
         parts.append(ov.ruby_arc_wall("LT Rim-angle lip", cx, cy, DRUM_CAP_R, LT_RIM_T,
                                       LT_RIM_LEG, gap_center_deg=180, gap_deg=od,
                                       color=C_ALUM, z0=zc))
+    # Drum OPENING-edge stiffeners — a riveted Al U-channel caps each of the 2 free HDPE
+    # jamb edges of the rotor's single 80° opening (rivet-only; mirrors the housing edge
+    # channels but on the 3.18mm shell). U cross-section wraps the wall; slot faces the material.
+    dRo, dRi = DRUM_OR, DRUM_OR - DRUM_T
+    dCT, dLG = LT_DRUM_CHAN_T, LT_DRUM_CHAN_LEG
+    for e, sgn in ((180 - od / 2, -1), (180 + od / 2, +1)):
+        a = math.radians(e)
+        cr, sr = math.cos(a), math.sin(a)
+        uv = [(dRi - dCT, -dCT), (dRo + dCT, -dCT), (dRo + dCT, dLG), (dRo, dLG),
+              (dRo, 0), (dRi, 0), (dRi, dLG), (dRi - dCT, dLG)]
+        pts = [(cx + R * cr - sgn * Sc * sr, cy + R * sr + sgn * Sc * cr) for R, Sc in uv]
+        parts.append(ov.ruby_prism(f"LT Drum edge channel ({e:.0f}deg)", pts, ZB, H - ZB, color=C_ALUM))
     # Top stub shaft — Ø75, rises from the cap up through the upper bearing (H+30..H+55) to just
     # under the top axle beam; the drum HANGS from it (end-retainer at the top, 2D Sheet 10/11).
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, LT_BEAM_STANDOFF - 3,

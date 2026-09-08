@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$2,978<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,044<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -171,7 +171,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,978<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,044<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -207,7 +207,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø758mm bore / ~487mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **1,883mm clear** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$2,978<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,044<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -268,7 +268,10 @@ pattern: developed length, height, weld-seam location, and the two 80° opening 
 
 **Sheet 3 — Drum shell — cut sheet.** The HDPE C-shell as a true developed flat pattern
 (single 80° opening) — the plastics shop's cutting/rolling template; the sheet carries the
-exact developed length and height. The end caps are machined metal parts and are drawn on Sheet 6.
+exact developed length and height, plus the rivet line for the opening-jamb edge channels. Each of the
+two free jamb edges is capped by a riveted 6063-T5 Al U-channel (rivet-only, Ø3.18 SS blind @120mm — a
+Detail on the sheet), mirroring the housing openings but on the 3.18mm shell; the legs lie flat so the
+channel clears the 13mm drum↔housing running gap. The end caps are machined metal parts and are drawn on Sheet 6.
 
 ![TBS-001 Light-Trap — Sheet 3: Drum — Cut](assets/lighttrap-sheet3.png)
 
@@ -315,8 +318,8 @@ axle-support beam at the drum axis and the members dimensioned.
 
 **Sheet 9 — Housing → frame attachment.** The section showing the fixed outer skin
 lapped and riveted to the rolled rim-angle blind-riveted on the top and bottom frame beams,
-with Detail B showing each free opening edge capped by a bonded aluminum U-channel
-(the stiffener that replaces the jamb posts) — the drum rotating free inside.
+with Detail B showing each free opening edge capped by a **riveted** aluminum U-channel
+(rivet-only, no bond — the opaque channel wraps the edge; the stiffener replaces the jamb posts) — the drum rotating free inside.
 
 ![TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment](assets/lighttrap-sheet9.png)
 

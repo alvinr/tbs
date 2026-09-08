@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 import math
 import os
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N, LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N, LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v, draw_cl_h,
     leader, draw_notes,
@@ -537,18 +537,27 @@ def draw_sheet3():
 
     # ── Drum C-shell developed blank ─────────────────────────────────────────
     draw_rect(ax, 0, 0, W_SHELL, SHELL_H, fc=C_LT_DRUM, lw=2.0, zorder=3)
-    for xe in (0, W_SHELL):                    # the two opening jambs (free edges)
+    for xe in (0, W_SHELL):                    # the two opening jambs — now capped by a riveted U-channel
         ax.plot([xe, xe], [0, SHELL_H], color="#B08020", lw=3.0, zorder=6)
+    # riveted Al U-channel over each drum-opening jamb (2026-09-08) — rivet line inboard of the edge
+    RVIN = 34                                                    # rivet line inset from the jamb (≈ channel leg)
+    nrv = max(2, int((SHELL_H - 80) / LT_DRUM_CHAN_RIVET_PITCH))
+    for xe, sgn in ((0, +1), (W_SHELL, -1)):
+        ax.plot([xe + sgn * RVIN, xe + sgn * RVIN], [40, SHELL_H - 40],
+                color="#8A6A20", lw=0.8, ls=(0, (6, 4)), zorder=6)
+        for i in range(nrv + 1):
+            zz = 40 + i * (SHELL_H - 80) / nrv
+            ax.add_patch(mpatches.Circle((xe + sgn * RVIN, zz), 11, fc="white", ec="#8A6A20", lw=1.0, zorder=7))
     ax.text(W_SHELL / 2, SHELL_H / 2,
             f"ROTATING DRUM C-SHELL\n{LT_DRUM_T:.2f}mm (1/8in) HDPE\n"
             f"280° of Ø{DRUM_OD} — roll to R{LT_DRUM_OR}",
             ha="center", va="center", fontsize=9, color=C_OUT, fontweight="bold",
             **FONT, zorder=15)
-    leader(ax, 0, SHELL_H * 0.28, -300, SHELL_H * 0.28,
-           f"OPENING JAMB\n(free edge)", fs=6.5, color="#B08020", ha="center",
-           arrow_style="->", font=FONT)
+    leader(ax, 0, SHELL_H * 0.30, -300, SHELL_H * 0.30,
+           f"OPENING JAMB → riveted Al U-channel\n{LT_DRUM_CHAN_W}×{LT_DRUM_CHAN_LEG}×{LT_DRUM_CHAN_T} (rivet-only) — see DETAIL",
+           fs=6.5, color="#B08020", ha="center", arrow_style="->", font=FONT)
     leader(ax, W_SHELL, SHELL_H * 0.72, W_SHELL + 250, SHELL_H * 0.80,
-           f"OPENING JAMB\n(free edge)", fs=6.5, color="#B08020", ha="center",
+           f"OPENING JAMB → riveted Al\nU-channel (both edges)", fs=6.5, color="#B08020", ha="center",
            arrow_style="->", font=FONT)
 
     # ── Dimensions (shell) ───────────────────────────────────────────────────
@@ -561,17 +570,40 @@ def draw_sheet3():
             f"single {LT_OPENING_DEG}° opening removed  ·  arc = {OW:.0f}mm",
             ha="center", va="bottom", fontsize=7, color=C_DIM, **FONT, zorder=15)
 
+    # ── DETAIL — drum-opening edge channel (enlarged section, rivet-only) ─────
+    ddx, ddz, SC = 1180, -250, 12.0
+    dht, dleg, dct = SC * LT_DRUM_T, SC * LT_DRUM_CHAN_LEG, SC * LT_DRUM_CHAN_T
+    dwl = SC * 26
+    ax.text(ddx - dleg / 2, ddz + dht / 2 + dct + 96, "DETAIL — DRUM-OPENING EDGE  (section · 12:1)",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    draw_rect(ax, ddx - dwl, ddz - dht / 2, dwl, dht, fc=C_LT_DRUM, lw=1.4, zorder=5)   # 3.18mm drum HDPE edge
+    ax.add_patch(mpatches.Polygon([
+        (ddx - dleg, ddz + dht / 2 + dct), (ddx + dct, ddz + dht / 2 + dct),
+        (ddx + dct, ddz - dht / 2 - dct), (ddx - dleg, ddz - dht / 2 - dct),
+        (ddx - dleg, ddz - dht / 2), (ddx, ddz - dht / 2),
+        (ddx, ddz + dht / 2), (ddx - dleg, ddz + dht / 2)],
+        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.4, zorder=6))                            # U-channel
+    blind_rivet(ax, ddx - dleg * 0.5, ddz, 90, SC * (2 * LT_DRUM_CHAN_T + LT_DRUM_T), d=16)
+    draw_dim_h(ax, ddx - dleg, ddx, ddz - dht / 2 - dct - 34, f"{LT_DRUM_CHAN_LEG}mm LEG",
+               offset=26, fs=6.2, above=False, font=FONT)
+    leader(ax, ddx - dwl * 0.5, ddz, ddx - dwl - 40, ddz + 70, f"{LT_DRUM_T:.2f}mm drum HDPE",
+           fs=6.2, color=C_OUT, ha="center", arrow_style="->", font=FONT)
+    leader(ax, ddx + dct, ddz + dht * 0.2, ddx + dct + 60, ddz + 70,
+           f"Al U-CHANNEL {LT_DRUM_CHAN_W}×{LT_DRUM_CHAN_LEG}×{LT_DRUM_CHAN_T} 6063-T5\nRIVET-ONLY — Ø{LT_RIVET_D} SS blind\nthru both legs + HDPE (spec in note 2)",
+           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+
     # ── Fabrication notes ────────────────────────────────────────────────────
     notes = [
         "ROTATING DRUM SHELL — CUT SHEET (flat pattern)",
         f"Shell: {LT_DRUM_T:.2f}mm (1/8in) HDPE, blank {W_SHELL:.0f} × {SHELL_H}mm — this developed blank is the shop's cutting/rolling template.",
         f"1. Cut the blank, roll to R{LT_DRUM_OR}; the two free edges are the {LT_OPENING_DEG}° opening jambs.",
-        f"2. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 4).",
+        f"2. Cap each opening jamb with a riveted Al U-channel {LT_DRUM_CHAN_W}×{LT_DRUM_CHAN_LEG}×{LT_DRUM_CHAN_T} 6063-T5 ({LT_DRUM_CHAN_N} edges) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ {LT_DRUM_CHAN_RIVET_PITCH}mm, rivet-only (see DETAIL). Drill the rivet line before rolling.",
+        f"3. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 4).",
         "The end caps (Ø855 6061-T6 Al, hub bore + 4×M10 flange + rim-rivet holes) are drawn on Sheet 6 with the other machined metal parts.",
         f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 7.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, 40, -560, 92, fs=7, font=FONT, width=1850,
+    draw_notes(ax, notes, 40, -560, 34, fs=7, font=FONT, width=1500, wrap=140,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 3 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
@@ -767,7 +799,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
         "5. DP8010 (wet in the lap + the open mandrel bore) keeps the joint light-tight; supersedes the extrusion weld.",
         "SECTION A–A 7:1 (isotropic) · CAP PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -450, 15, fs=7, font=FONT, width=1780,
+    draw_notes(ax, notes, X_LO + 60, -350, 24, fs=7, font=FONT, width=1200,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 4 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
@@ -1044,8 +1076,8 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
         "This sheet is the hub ASSEMBLY (how the parts stack). Single-part blueprints + bolt patterns: bearing seats + stub-shaft + end cap on SHEET 6; frame members on SHEET 8.",
         "SECTIONS 2.2:1 (isotropic) · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -830, 46, fs=7, font=FONT,
-               width=2350, wrap=140, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 60, -830, 36, fs=7, font=FONT,
+               width=1900, wrap=150, title_color=TITLE_COL)
 
     # ── Section scale bar (50 mm, to the 2.2:1 section geometry) ─────────────
     sbx, sbz = UX - HALF - 40, -560
@@ -1252,7 +1284,7 @@ def draw_sheet6():
         "FASTENING — cap → flange: countersunk bolt in the cap (Ø11 clearance) threading into the TAPPED stub-shaft flange on the Ø120 PCD — the flange is a machined steel part, so it is tapped directly (no nut; bolt ends flush in the flange). Ring + collar → MOUNT PLATE: M10 CSK tapped into the Ø240×12 steel plate that is fillet-welded across the 50×50 beam (steel↔steel — part of the cage weldment); the 12mm plate is thick enough to tap directly, so no rivet-nuts, and the wide plate catches the Ø200 bolt circle the 50mm beam cannot. Al ring nylon-isolated.",
         "RINGS + STUB 2.2:1 · CAP 1:2 (isotropic) · bolt holes shown enlarged · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 34, fs=6, font=FONT, width=1560, wrap=138, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, R_CAP - cr - 100, 24, fs=6, font=FONT, width=1560, wrap=138, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 6 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="MACHINED COMPONENTS — END CAP + BEARING SEATS + STUB-SHAFT",
@@ -1399,7 +1431,7 @@ def draw_sheet7():
         "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged top-end seal cross-section. The brushes seal the gap circumferentially; the neoprene seals it axially.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, -80, -280, 34, fs=7, font=FONT, width=1470, wrap=80,
+    draw_notes(ax, notes, -80, -280, 34, fs=7, font=FONT, width=1200, wrap=120,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 7 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
@@ -1585,7 +1617,7 @@ def draw_sheet8():
                 fc="#B0B0B8", zorder=8)
     draw_circle(ax, hc[0], hc[1], SKF6215_ID / 2, lw=1.0, color="#CC4422", zorder=9)
     # aperture edges + opening labels. The 80° housing opening is drawn as a colored arc;
-    # each free HDPE edge is capped by a bonded Al U-channel (slot grips the 5mm wall,
+    # each free HDPE edge is capped by a riveted Al U-channel (slot grips the 5mm wall,
     # legs run into the material arc) — the stiffener that replaced the steel jamb posts.
     oh = LT_OPENING_DEG / 2
     AL_CH = "#5B6E8C"
@@ -1622,7 +1654,7 @@ def draw_sheet8():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
            fp(cx1, cyr)[0] + 20, fp(cx1, cyr)[1] + 55,
-           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — bonded over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to\ntop/bottom beams — see Sheet 9",
+           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — riveted over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to\ntop/bottom beams — see Sheet 9",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── RHS tube-section inset — the frame members are HOLLOW tube, not solid bar ──
@@ -1658,7 +1690,7 @@ def draw_sheet8():
         "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
     ]
-    draw_notes(ax, notes, X_LO + 60, -300, 58, fs=7, font=FONT, width=2500, wrap=138,
+    draw_notes(ax, notes, X_LO + 60, -300, 34, fs=6, font=FONT, width=1700, wrap=138,
                title_color=TITLE_COL)
 
     title_block(ax, "SHEET 8 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
@@ -1740,7 +1772,7 @@ def draw_sheet9():
 
     # ── DETAIL B — free opening EDGE: Al U-channel over the HDPE (plan · 7:1) ──
     # Horizontal cut through a vertical opening edge: the shell runs in from the left
-    # and is capped at the cut edge (right) by the bonded Al U-channel that replaced the
+    # and is capped at the cut edge (right) by the riveted Al U-channel that replaced the
     # jamb post. Legs run back along the inner + outer faces; rivet through both + HDPE.
     dx, dz = 400, 55
     HT2 = S * LT_HOUSING_T                 # HDPE wall thickness in section
@@ -1753,7 +1785,7 @@ def draw_sheet9():
     draw_rect(ax, dx - WL, dz - HT2 / 2, WL, HT2, fc="#DDE4EC", lw=1.6, zorder=5)   # HDPE shell wall
     for xb in (dx - WL, dx - WL + 12, dx - WL + 24):                                # break (shell continues)
         ax.plot([xb - 4, xb + 4], [dz - HT2 / 2 - 4, dz + HT2 / 2 + 4], color=C_OUT, lw=0.6, zorder=7)
-    draw_rect(ax, dx - 6, dz - HT2 / 2, 6, HT2, fc=C_GASKT, lw=0.6, zorder=6)       # DP8010 in the slot
+    # (rivet-only 2026-09-08 — no DP8010 bead in the slot; the rivets clamp the legs onto the HDPE)
     # U-channel — ONE continuous 20×18×3 U-section (single extrusion, not three plates): the
     # base caps the HDPE edge, the two legs run back over the inner + outer faces.
     ax.add_patch(mpatches.Polygon([
@@ -1766,7 +1798,7 @@ def draw_sheet9():
     draw_dim_h(ax, dx - LEG2, dx, dz - HT2 / 2 - CT2 - 30, f"{LT_EDGE_CHAN_LEG}mm LEG",
                offset=26, fs=6.0, above=False, font=FONT)
     leader(ax, dx - LEG2 * 0.35, dz - HT2 / 2 - CT2, dx - 20, dz - HT2 / 2 - CT2 - 64,
-           f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — bonded over the\n{LT_HOUSING_T}mm (3/16in) HDPE edge (DP8010); caps BOTH faces (jamb-post replacement)",
+           f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — riveted over the\n{LT_HOUSING_T}mm (3/16in) HDPE edge (rivet-only, no bond); caps BOTH faces (jamb-post replacement)",
            fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
            f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru both legs + HDPE",
@@ -1809,7 +1841,7 @@ def draw_sheet9():
         f"1. Rolled 25×25×3 6061-T6 Al rim-angle, radius R{LT_HOUSING_R:.0f}, BLIND-RIVETED to the frame top + bottom beams (Ø1/8\" 18-8 SS blind rivets, McMaster 97525A425, Al flat leg → 3mm steel wall, ~150mm pitch; two 100° arcs — the openings have no rim). Set from below; the set head forms inside the closed RHS. No welds, no self-drillers — avoids welding Al to steel and thread-stripping the thin wall.",
         f"2. Housing laps {LT_LAP_H}mm over the standing lip; DP8010 bead in the lap (bond + light seal).",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge (McMaster 97525A435, low-profile head, ~{LT_RIVET_PITCH}mm pitch), wet in DP8010.",
-        f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a bonded Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), + DP8010; channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
+        f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a RIVETED Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), rivet-only (no bond — the opaque channel wraps the edge; light-tightness is carried by the drum + wipers); channel ends bolt to the top + bottom beams (1× M{LT_EDGE_CHAN_END_BOLT}/end via L-clip).",
         "SECTION A–A 7:1 (isotropic) · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 60, -360, 24, fs=7, font=FONT, width=1450,
@@ -1993,8 +2025,8 @@ def draw_sheet10():
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
         "Drum + housing continue below the break lines to the floor (drum interior ~1,970mm; housing skin ~2,060mm, beam-to-beam). Bottom end mirrors this, with the lower bearing in a welded steel floor collar (Sheet 5). ALL DIMS IN mm.",
     ]
-    draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 14, fs=7, font=FONT, width=1000,
-               title_color=TITLE_COL, wrap=200)
+    draw_notes(ax, notes, X_LO + 40, Z_BRK - 170, 14, fs=7, font=FONT, width=650,
+               title_color=TITLE_COL, wrap=125)
 
     title_block(ax, "SHEET 10 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="COMBINED TOP-END ASSEMBLY (INNER + OUTER LAP JOINTS)",
@@ -2101,7 +2133,7 @@ def draw_sheet11():
         "3. A single M10 COUNTERSUNK bolt is driven from the cap's OUTSIDE face (wrench-accessible), THROUGH the cap into the tapped plug — sealed with DP8010 for light-tightness. Pull load path: handle → tube → grub screws → plug → cap bolt → cap (lands in the structural cap, not the thin HDPE wall).",
         "4. Off-the-shelf pull handle McMaster 1871A65 (Ø0.5\" bar, 308mm long, 52mm standoff) bolts at its two feet with 1/4\" screws tapped into the RHS wall. No welds anywhere.",
     ]
-    draw_notes(ax, notes, X_LO + 40, -320, 20, fs=7, font=FONT, width=1160, wrap=120, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, -320, 20, fs=7, font=FONT, width=900, wrap=120, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 11 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="PULL-HANDLE MOUNT — STILE → CAP PLUG JOINT + HANDLE ARRANGEMENT",
@@ -2168,7 +2200,7 @@ def draw_sheet12():
         f"The running-gap brush radial section (the {LT_WIPER_N}× #4 strip brushes flange-riveted to the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
         "NOT TO SCALE — the radial running gap is exaggerated so the seal path reads clearly (a true 13mm gap would be a hairline here); vertical members ≈ 1.5×. See Sheet 4 for the to-scale (7:1) holder profile and Sheet 7 for the rotation/light-path plans A–C.",
     ]
-    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1200, wrap=118, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=850, wrap=118, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 12 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SEAL DETAIL — TOP-END NEOPRENE (enlarged)",

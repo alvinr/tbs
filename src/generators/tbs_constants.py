@@ -516,17 +516,28 @@ LT_CAGE_BOT      = LT_BBEAM_Z1 - LT_BBEAM_H              # bottom-beam bottom Z 
 # face): it laps + rivets to rim-angle on the two beams (which cross it) and skirts the hub gaps.
 LT_HOUSING_Z_BOT = LT_BBEAM_Z1                  # 93 — bottom-beam top face (housing bottom)
 LT_HOUSING_Z_TOP = LT_TBEAM_Z0                  # 2167 — top-beam under face (housing top)
-# Housing OPENING-EDGE stiffener (2026-08-23) — replaces the steel jamb posts. Each of
-# the fixed housing's two openings (EXT+INT) leaves two free vertical HDPE edges; a
-# bonded 6063-T5 aluminum U-channel caps each edge (stiffener + rivet anchor) and its
-# two ends bolt to the fixed top/bottom frame beams. (Nominal section — confirm stocked
-# size at the parts pass.)
+# Housing OPENING-EDGE stiffener (2026-08-23; RIVET-ONLY 2026-09-08) — replaces the steel
+# jamb posts. Each of the fixed housing's two openings (EXT+INT) leaves two free vertical
+# HDPE edges; a 6063-T5 aluminum U-channel caps each edge (stiffener + rivet anchor) and
+# its two ends bolt to the fixed top/bottom frame beams. RIVETED, no bond (the metal
+# channel wraps the edge for light). (Nominal section — confirm stocked size at parts pass.)
 LT_EDGE_CHAN_W        = 20   # U-channel outside width across the base (mm; 6063-T5 Al)
-LT_EDGE_CHAN_LEG      = 18   # leg height (mm) — bond + rivet land on the HDPE face
-LT_EDGE_CHAN_T        = 3    # channel wall (mm); inside slot = W − 2T = 14mm (5mm HDPE + DP8010)
+LT_EDGE_CHAN_LEG      = 18   # leg height (mm) — the rivets land on the HDPE face
+LT_EDGE_CHAN_T        = 3    # channel wall (mm); inside slot = W − 2T = 14mm (5mm HDPE)
 LT_EDGE_CHAN_N        = 4    # channels total (2 openings × 2 edges)
 LT_EDGE_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — same 1/8" SS domed-head as the rim joints
 LT_EDGE_CHAN_END_BOLT = 8    # M8 bolt each channel end → frame top/bottom beam (via L-clip)
+
+# Rotating DRUM OPENING-EDGE stiffener (2026-09-08) — the inner drum's own 80° egress slot
+# leaves two free vertical HDPE edges (bare on the shell cut sheet until now). A smaller
+# 6063-T5 Al U-channel caps each, RIVETED through both legs + the 3.18mm shell HDPE. Legs
+# lie flat along the shell faces (base wraps the edge), so the radial proud is only the
+# channel wall (~2mm) — clears the 13mm drum↔housing gap; the compliant wipers deflect past.
+LT_DRUM_CHAN_W        = 10   # U-channel outside width (mm; 6063-T5 Al) — inside slot 6mm (3.18mm HDPE + clearance)
+LT_DRUM_CHAN_LEG      = 15   # leg height (mm) — rivet land on the shell face
+LT_DRUM_CHAN_T        = 2    # channel wall (mm)
+LT_DRUM_CHAN_N        = 2    # channels total (1 drum opening × 2 edges)
+LT_DRUM_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — Ø3.18 SS blind, same family as the rim/housing joints
 
 # Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
 # the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.

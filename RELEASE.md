@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Light-trap drum/housing edge channels — drum opening framed + housing openings rivet-only.** The
+  rotating drum's own 80° opening jambs were bare free edges; added a **riveted 6063-T5 Al U-channel**
+  (`LT_DRUM_CHAN_*`, ~10×15×2, rivet-only) on both jambs — a rivet line + a "DRUM-OPENING EDGE" detail on
+  light-trap Sheet 3, the channel added to the 3D rotor, a new `ll-drum-channel` part (+$30/$43/$55), and a
+  report note. Separately, the **housing** opening-edge channels moved **bonded → rivet-only** (Sheet 9
+  Detail B + note, constant/model/parts) — stripping DP8010 from *only* that joint (the shell→cap,
+  brush-holder, and housing→frame-lap seals are untouched). Verified against the existing light-trap sheets
+  that the drum skin→cap rim (Sheet 4) and the handle stile→cap (Sheet 11) were already fully detailed — no
+  new work there. lighttrap/construction/overview .skp re-send pending.
 - **Fastener standardization (part-reconcile) — IBC J2/J7 cleat spec reconciled to the design of record.**
   The `ibc-frame-blueprint-spec.md` body tables and `ibc_frame_load.py` still carried the **superseded
   2× M12×40 vertical** cleat (the ~3 mm-edge design the 2026-08-18 redesign fixed); brought them up to the

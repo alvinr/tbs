@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,063 | $4,525 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,114 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,948 | $3,989 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,978 | $4,044 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,088 | $2,950 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,324 | $1,537 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,624** | **~$36,525** |
+| **TOTAL (base build + 50-print run)** | **~$27,654** | **~$36,580** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -74,6 +74,7 @@ indicative low–high estimates — get quotes before ordering.
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 ea | Grainger | film | $328 |
 | 6063-T5 Al U-channel opening-edge stiffeners (×4) + L-clips | 1 lot | Online Metals | lightlock | $55–$110 |
+| 6063-T5 Al U-channel — rotating-drum opening-edge stiffeners (×2) + rivets | 1 lot | Online Metals | lightlock | $30–$55 |
 | 8mm 6061-T6 aluminum plate — 2 drum caps (Ø755) | 1 lot | Online Metals | lightlock | $400–$700 |
 | [Aluminum angle 2"×2"×1/8" (6061-T6, plain) — 16 ft lengths](https://www.onlinemetals.com/en/buy/aluminum/2-x-2-x-0-125-aluminum-angle-6061-t6/pid/987) | 3 16 ft length | Metal Supermarkets | film | $528 |
 | Aluminum U-channel, 1/8-panel (per meter) | 40 m | Online Metals | panel | $120–$200 |
@@ -81,7 +82,7 @@ indicative low–high estimates — get quotes before ordering.
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,828–$2,412** |
+| **aluminum subtotal** | | | | **$1,858–$2,467** |
 
 ### bearings-motion
 
@@ -484,7 +485,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 17 | aluminum, fasteners-hardware, steel-structural | $2,042–$2,683 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
-| Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,254–$1,994 |
+| Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,049 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,797–$1,933 |
 | McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,904–$1,912 |
 | US Plastics | 4 | plastics-sheet | $1,665 |

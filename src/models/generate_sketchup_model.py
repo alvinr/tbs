@@ -1507,13 +1507,14 @@ def ep_external_wiring():
 # ── Chemistry prep shelf (ceiling-hung) ──────────────────────────────────────
 
 def shelf():
-    """Chemistry prep shelf — WALL-HINGED FOLD-DOWN, shown DEPLOYED (rev13).
+    """Chemistry prep shelf — WALL-HINGED FOLD-DOWN, shown DEPLOYED (ply-primary redesign 2026-09-07).
 
-    A 600×300mm board hinged on the pinhole wall (Yd0) at work height Z=SHELF_H, in
-    the widened walkway LEFT of the batteries. A piano hinge along the back edge + 2
-    stays from the wall above hold it level (the stays carry the load). It folds UP
-    flat against the wall for transport (top Z=SHELF_STOW_TOP_Z); only deployed while
-    mixing (film plane parked), so it never meets the film-plane swing.
+    An 18mm plywood board (600×225mm) hinged on the pinhole wall (Yd0) at work height
+    Z=SHELF_H, in the widened walkway LEFT of the batteries. PLY-PRIMARY: no steel frame;
+    a bolt-on piano hinge along the back edge (into ply tee-nuts) + 2 SS chain stays from
+    wall eye bolts above the hinge down to eye bolts at the front corners hold it level in
+    tension. It folds UP flat against the wall for transport (top Z=SHELF_STOW_TOP_Z);
+    only deployed while mixing (film plane parked), so it never meets the film-plane swing.
     """
     parts = []
     z0 = SHELF_H - SHELF_T
@@ -1531,14 +1532,14 @@ def shelf():
     parts.append(ruby_cylinder("Chem Shelf piano hinge",
                                SHELF_X_L, SHELF_YD_NEAR, SHELF_H - 6, 6, SHELF_W,
                                color=C_STEEL, axis="x"))
-    # two stays from the wall above the hinge to the front corners — carry the load
+    # two SS chain stays — wall eye bolt (above the hinge) down to a front-corner eye bolt (tension)
     stay_z = SHELF_H + 230
-    for sx in (SHELF_X_L + 25, SHELF_X_R - 25):
-        parts.append(ruby_pipe("Chem Shelf stay",
+    for sx in (SHELF_X_L + 30, SHELF_X_R - 30):
+        parts.append(ruby_pipe("Chem Shelf chain stay (SS)",
                                (sx, SHELF_YD_NEAR, stay_z), (sx, SHELF_YD_FAR - 10, SHELF_H),
-                               6, color=C_STEEL))
-        parts.append(ruby_box("Chem Shelf stay anchor",
-                              sx - 12, SHELF_YD_NEAR, stay_z - 12, 24, 8, 24, color=C_STEEL))
+                               2.5, color=C_STEEL))
+        parts.append(ruby_box("Chem Shelf chain wall anchor (M8 eye bolt)",
+                              sx - 10, SHELF_YD_NEAR, stay_z - 10, 20, 8, 20, color=C_STEEL))
     return '\n'.join(parts)
 
 

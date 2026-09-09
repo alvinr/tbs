@@ -31,9 +31,12 @@ file** — a release must not ship without a changelog entry:
   bottom bands). 2D: Sheet 2 (full-height blank + notches + extension bands), Sheet 9 (Section A-A redrawn as
   a direct skin→beam joint, notes + Detail-B channel-end callout), Sheet 8 (the 4 support strips drawn in
   plan), Sheet 10 (outer joint → direct fix). Added **4 formed-Al channel-support strips** — one across each
-  opening top+bottom, rail-to-rail so the U-channel ends bolt to a member (new `ll-channel-strip`,
-  +$20/$32/$45); the housing `ll-rim-rivets` repurposed to the direct skin→beam fixing. 3D model already
-  carries the extension/notches/strips; lighttrap/construction/overview .skp save + re-send pending.
+  opening top+bottom, rail-to-rail so the U-channel ends bolt to a member (new `ll-channel-strip`);
+  the housing `ll-rim-rivets` repurposed to the direct skin→beam fixing. Strips then **sourced + firmed**:
+  Metals Depot **1"×1"×1/8" 6061-T6 Al equal-leg angle**, $17.20/4 ft ×4 = $68.80 (+$49/$37/$24 over the
+  estimate), and the 3D model updated to draw the real **angle profile** (flat leg on the beam + up-leg
+  carrying the U-channel bolts, `LT_STRIP_LEG`/`LT_STRIP_T`) instead of a schematic bar.
+  lighttrap/overview/construction .skp all re-sent + Sketchfab-pushed + committed.
 - **Light-trap drum/housing edge channels — drum opening framed + housing openings rivet-only.** The
   rotating drum's own 80° opening jambs were bare free edges; added a **riveted 6063-T5 Al U-channel**
   (`LT_DRUM_CHAN_*`, ~10×15×2, rivet-only) on both jambs — a rivet line + a "DRUM-OPENING EDGE" detail on

@@ -38,7 +38,7 @@ import generate_sketchup_model as ov   # helpers, materials, constants
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -461,18 +461,23 @@ def drum_housing(cx, cy):
                                           gap_center_deg=(oc + 180) % 360, gap_deg=360 - od,
                                           color=C_ALUM, alpha=0.5, z0=z0))
 
-    # CHANNEL SUPPORT STRIPS — 4 formed-Al strips (smallest section; SKU pending, Alvin to
-    # source), one across each opening at TOP + BOTTOM, riveted to the frame; each opening's
-    # two U-channel ends bolt to it (replaces the floating channel ends; no rim-angle).
-    STRIP = 20                                           # nominal Al section (mm) — placeholder, smallest available
+    # CHANNEL SUPPORT STRIPS — 4 formed-Al angles (Metals Depot 1"×1"×1/8" 6061-T6 Al equal-leg
+    # angle), one across each opening at TOP + BOTTOM, riveted to the frame; each opening's two
+    # U-channel ends bolt to the up-leg (replaces the floating channel ends; no rim-angle). Each
+    # angle = a flat leg on the beam face + an up-leg standing off it (drawn as two thin boxes).
+    LEG, T = LT_STRIP_LEG, LT_STRIP_T
+    DY = CY1 - CY0
     for oc in (0, 180):
-        # both channel edges of an opening share this X; run the strip along Yd at that X the
-        # FULL cage span (CY0..CY1) so its two ends land on the X-near/far frame rails, and the
-        # opening's two U-channels bolt to it where it passes them.
+        # both channel edges of an opening share this X; run the angle along Yd at that X the FULL
+        # cage span (CY0..CY1) so its ends land on the X-near/far frame rails; the flat leg lies on
+        # the beam face, the up-leg (toward the drum center) carries the U-channel end bolts.
         ex = cx + HOUSING_R * math.cos(math.radians(oc - od / 2))
-        poly = [(ex - STRIP / 2, CY0), (ex + STRIP / 2, CY0), (ex + STRIP / 2, CY1), (ex - STRIP / 2, CY1)]
-        for zc in (BEAM_BOT, BEAM_TOP - STRIP):          # bottom-rail level + top-rail level (channels reach here)
-            parts.append(ov.ruby_prism(f"LT Channel support strip ({oc}deg)", poly, zc, STRIP, color=C_STEEL))
+        xl = ex - LEG / 2
+        x_up = ex + LEG / 2 - T if ex < cx else xl        # up-leg on the edge toward the drum center
+        # (flat-leg z-base, up-leg z-base): bottom angle sits ON the bottom beam, top angle hangs UNDER the top beam
+        for tag, zf, zu in (("bot", BEAM_BOT, BEAM_BOT), ("top", BEAM_TOP - T, BEAM_TOP - LEG)):
+            parts.append(ruby_box(f"LT Channel support strip ({oc}deg {tag} flat)", xl, CY0, zf, LEG, DY, T, color=C_STEEL))
+            parts.append(ruby_box(f"LT Channel support strip ({oc}deg {tag} up)", x_up, CY0, zu, T, DY, LEG, color=C_STEEL))
     # (Bearings + axle beams are built in drum_frame(); the housing here is the fixed outer
     # skin + edge channels + skin extension + channel-support strips.)
     return '\n'.join(parts)

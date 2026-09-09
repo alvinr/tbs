@@ -526,7 +526,13 @@ LT_EDGE_CHAN_LEG      = 18   # leg height (mm) — the rivets land on the HDPE f
 LT_EDGE_CHAN_T        = 3    # channel wall (mm); inside slot = W − 2T = 14mm (5mm HDPE)
 LT_EDGE_CHAN_N        = 4    # channels total (2 openings × 2 edges)
 LT_EDGE_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — same 1/8" SS domed-head as the rim joints
-LT_EDGE_CHAN_END_BOLT = 8    # M8 bolt each channel end → frame top/bottom beam (via L-clip)
+LT_EDGE_CHAN_END_BOLT = 8    # M8 bolt each channel end → the support strip (via L-clip)
+
+# Channel-support strip (2026-09-08) — 4 formed-Al angles, one across each housing opening
+# (top + bottom), spanning the cage Yd rail-to-rail so the opening's two U-channel ends bolt to
+# a member (they'd otherwise float). Sourced: Metals Depot 1"×1"×1/8" 6061-T6 Al equal-leg angle.
+LT_STRIP_LEG = 25.4  # angle leg (mm) — 1" (Metals Depot 1×1×1/8 6061-T6 Al equal-leg angle)
+LT_STRIP_T   = 3.2   # angle thickness (mm) — 1/8"
 
 # Rotating DRUM OPENING-EDGE stiffener (2026-09-08) — the inner drum's own 80° egress slot
 # leaves two free vertical HDPE edges (bare on the shell cut sheet until now). A smaller

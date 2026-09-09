@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 import math
 import os
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N, LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N, LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT, LT_STRIP_LEG, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v, draw_cl_h,
     leader, draw_notes,
@@ -1685,13 +1685,13 @@ def draw_sheet8():
     # bottom strips of an opening project to the same Yd-running bar at the opening X. Each spans
     # rail-to-rail (cyl..cyr) so its ends land on the near/far rails; the opening's two U-channels
     # rivet to it. (Strips blind-rivet to the frame beams — Sheet 9 note 5.)
-    STRIP_W = 20
+    STRIP_W = LT_STRIP_LEG
     for oc in (180, 0):
         ex = CX + HR * math.cos(math.radians(oc - LT_OPENING_DEG / 2))
         rrect(fp(ex - STRIP_W / 2, cyl), STRIP_W, cW_y, fc="#C9A24A", color=C_OUT, lw=1.2, zorder=6)
     leader(ax, *fp(CX + HR * math.cos(math.radians(-LT_OPENING_DEG / 2)), cyr - 140),
            fp(cx1, cyr)[0] + 40, fp(cx1, cyr)[1] + 250,
-           "FORMED-Al SUPPORT STRIP (×4: each opening,\ntop + bottom) — rail-to-rail across the\nopening; the U-channel ends bolt to it",
+           "1×1×1/8 Al ANGLE SUPPORT STRIP (×4: each\nopening, top + bottom) — rail-to-rail across\nthe opening; the U-channel ends bolt to the up-leg",
            fs=6.3, color="#8A6A20", ha="left", arrow_style="->", font=FONT)
     # plan dims + labels
     draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 80,
@@ -1737,7 +1737,7 @@ def draw_sheet8():
         f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails (welded). No jamb posts: the free HDPE opening edges are stiffened by Al edge channels (below).",
         f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS (= the perimeter section — the 962mm span is barely stressed, δ≈0.3mm under the hung drum), span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
         f"Bearing mount plate: Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} steel disc welded across each beam — the ring/collar bolt to THIS, not the beam wall (their Ø200 bolt circle is far wider than the 50mm beam). Seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
-        f"Fixed housing (outer skin) extends to the beam OUTER faces + blind-rivets DIRECTLY to the top/bottom beams (no rim-angle); {LT_EDGE_CHAN_N}× Al U-channel cap the free opening edges, their ends riveted to 4 formed-Al SUPPORT STRIPS (gold, plan — one across each opening top+bottom, rail-to-rail) that rivet to the beams — see Sheet 9. Drum rotates free inside.",
+        f"Fixed housing (outer skin) extends to the beam OUTER faces + blind-rivets DIRECTLY to the top/bottom beams (no rim-angle); {LT_EDGE_CHAN_N}× Al U-channel cap the free opening edges, their ends bolted (M{LT_EDGE_CHAN_END_BOLT} via L-clip) to 4× 1×1×1/8 Al angle SUPPORT STRIPS (gold, plan — one across each opening top+bottom, rail-to-rail) that blind-rivet to the beams — see Sheet 9. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
         "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",

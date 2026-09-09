@@ -474,10 +474,11 @@ def draw_sheet2():
         draw_rect(ax, bx, byz, BW, bh, fc="#DDE4EC", lw=1.4, zorder=4)
         for xe in (bx, bx + BW):                                    # band edges slide into the H opening-side slot
             ax.plot([xe, xe], [byz, byz + bh], color="#5B6E8C", lw=2.2, zorder=6)
-        ax.text(bx + BW / 2, byz + bh / 2, f"{tag} BAND\n{BW:.0f} × {bh}mm", ha="center", va="center",
-                fontsize=7, color=C_OUT, **FONT, zorder=9)
+        ax.text(bx + BW / 2, byz + bh / 2, f"{tag} BAND", ha="center", va="center",
+                fontsize=7.5, color=C_OUT, fontweight="bold", **FONT, zorder=9)
+        draw_dim_h(ax, bx, bx + BW, byz - 55, f"{BW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=36, fs=6.2, above=False, font=FONT)
+        draw_dim_v(ax, bx - 55, byz, byz + bh, f"{bh}mm", offset=40, fs=6.2, font=FONT)
         bx += BW + 240
-    draw_dim_h(ax, pAx, pAx + BW, byz - 55, f"{BW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=36, fs=6.2, above=False, font=FONT)
 
     # H-mullion callout
     leader(ax, pBx + PW, zt1 * 0.62, pBx + PW + 190, zt1 * 0.78,

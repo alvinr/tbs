@@ -1889,8 +1889,8 @@ def draw_sheet9():
         f"5. The 4 U-channel ends bolt (1× M{LT_EDGE_CHAN_END_BOLT}/end) to 4 formed-Al SUPPORT STRIPS — one across each opening (top + bottom), spanning rail-to-rail so the channels have a member to fix to; each strip blind-rivets to the frame beams (Sheet 8). Replaces the old L-clip-to-beam.",
         "SECTION A–A 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, X_LO + 60, -360, 24, fs=7, font=FONT, width=1450,
-               title_color=TITLE_COL, wrap=180)
+    draw_notes(ax, notes, X_LO + 930, -320, 14, fs=5, font=FONT, width=650,
+               title_color=TITLE_COL, wrap=130)
 
     title_block(ax, "SHEET 9 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="HOUSING → FRAME ATTACHMENT (OUTER-SKIN FIXING)",

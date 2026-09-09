@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,063 | $4,525 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,841 | $8,114 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,998 | $4,089 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,047 | $4,113 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,088 | $2,950 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,324 | $1,537 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,674** | **~$36,625** |
+| **TOTAL (base build + 50-print run)** | **~$27,723** | **~$36,649** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -69,6 +69,7 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | 4 ea | Grainger | panel | $49 |
+| 1×1×1/8in 6061-T6 Al angle — channel-support beams (×4) + rivets | 4 4ft | Metals Depot | lightlock | $69 |
 | 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427) | 1 lot | Online Metals | lightlock | $45–$90 |
 | [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | 1 ea | Metal Supermarkets | spray | $125 |
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
@@ -81,9 +82,8 @@ indicative low–high estimates — get quotes before ordering.
 | [Anodized-Al straight-flange holder for the #4 wiper brush (×4 lines)](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) (AH400436) | 4 8ft | Tanis Brush | lightlock | $72–$160 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
-| Formed-Al strip channel-support beams (×4) + rivets | 1 lot | Online Metals | lightlock | $20–$45 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,878–$2,512** |
+| **aluminum subtotal** | | | | **$1,927–$2,536** |
 
 ### bearings-motion
 
@@ -486,7 +486,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 17 | aluminum, fasteners-hardware, steel-structural | $2,042–$2,683 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
-| Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $1,304–$2,094 |
+| Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,284–$2,049 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,797–$1,933 |
 | McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,904–$1,912 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
@@ -505,10 +505,10 @@ indicative low–high estimates — get quotes before ordering.
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
 | MetalsDepot | 2 | steel-structural | $190–$258 |
+| Metals Depot | 2 | aluminum, steel-structural | $252 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Waytek Wire | 15 | electrical-distribution, electrical-power | $229 |
 | Bearings Direct | 2 | bearings-motion | $201 |
-| Metals Depot | 1 | steel-structural | $183 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |
 | LED Profiles | 1 | electrical-distribution | $162 |

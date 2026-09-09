@@ -958,11 +958,14 @@ def bay():
     # HDPE is the visible OUTER skin covering the frame + posts, and the rivets pass through the HDPE into
     # the post (Alvin 2026-09-03 — was inboard of the post face, leaving the frame exposed). Roof/floor widen
     # by t each side so they cap the skins' outer faces.
+    # Roof + floor caps carry a Ø800 CUT-OUT (housing OUTER skin extends to the beam outer faces,
+    # i.e. through the cap plane); the annular gap is caulked + the caps rivet to the Al strips (2D Sheet 7).
+    cap_hole = [(ov.DRUM_CX, ov.DRUM_CY, ov.LT_HOUSING_R + 5)]     # Ø810 (Ø800 skin + 5mm caulk clearance)
     return '\n'.join([
         ruby_box("Bay wall near (Yd)", xf, yL - t, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall far (Yd)", xf, yR, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall top (roof, riveted to the top beams)", xf, yL - t, zc - t, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall bottom", xf, yL - t, z0, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall top (roof cap, skin cut-out, riveted to the top beams)", xf, yL - t, zc - t, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5, holes=cap_hole, hole_axis="z"),
+        ruby_box("Bay wall bottom (floor cap, skin cut-out)", xf, yL - t, z0, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5, holes=cap_hole, hole_axis="z"),
     ])
 
 
@@ -988,6 +991,13 @@ def cage_face_rivets():
         for xd in (x0 + 8, x1 - 8):
             p.append(ov.ruby_cylinder("Cage roof rivet", xd, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
             p.append(ov.ruby_cylinder("Cage floor rivet", xd, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
+    # cap → 1x1x1/8 Al support-strip rivets: the roof/floor caps ALSO rivet to the 2 opening support
+    # strips, at their cage-rail ends (clear of the Ø800 skin cut-out), top + bottom (2D Sheet 7 Detail A).
+    for oc in (0, 180):
+        ex = ov.DRUM_CX + ov.LT_HOUSING_R * math.cos(math.radians(oc - OPENING_DEG / 2))
+        for yc in (yL + 40, yR - 40):
+            p.append(ov.ruby_cylinder("Cap->strip rivet", ex, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(ov.ruby_cylinder("Cap->strip rivet", ex, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 

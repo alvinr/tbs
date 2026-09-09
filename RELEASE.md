@@ -24,6 +24,17 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Hinged-panel HDPE surround — reconciled to the current design (attachment + floor-cap join).** Resolved the
+  2D/report ↔ 3D divergence flagged in TODO. The surround was documented as riveting to the steel center-zone
+  panel-frame jamb but the 3D rivets it to the **drum cage** (which physically wraps it, and is welded into the
+  panel top/bottom rails — one weldment). Reconciled the docs to the cage: hingepanel **Sheet 7 Detail B**,
+  **Sheet 8** jamb note, and report **§2.6** now say the surround laps + blind-rivets the cage (welded into the
+  panel frame → not floating). Separately, the **floor/roof cap → housing join was redesigned**: now that the
+  housing **outer skin extends to the beam outer faces** (coplanar with the caps), each cap has a **Ø800 skin
+  cut-out** the skin passes through, the annular gap is **caulked** (silicone — no extrusion-weld, no 20 mm
+  neoprene), and the caps **blind-rivet to the 1×1×1/8 Al support strips**. Updated Sheet 6 (cut-out + notes),
+  Sheet 7 Detail A, report §2.6 + §3.4, and the 3D `bay()` (Ø800 cut-out in the roof/floor caps + cap→strip
+  rivets). lighttrap/overview/construction .skp re-send pending.
 - **Light-trap housing skin extended to the beam outer faces — rim-angle dropped, 4 support strips added.**
   The fixed housing skin now extends past the beam inner faces to the beam **outer** faces (+50 top / +40
   bottom) and **blind-rivets directly** to the top/bottom frame beams — the rolled rim-angle lap is dropped.

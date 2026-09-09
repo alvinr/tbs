@@ -154,13 +154,18 @@ costs more than a plywood build (§8.1).
 The center-zone HDPE surround — the skin that wraps the Ø800 light-trap housing and the
 forward B2 punch-out bay — is a corner-welded 1/8" HDPE assembly of six pieces: the two
 center-zone panel-face skins (carrying the personnel light-lock opening), the two bay
-side walls, and the upper and lower floor caps. The caps close the top and bottom of the
-bay and **butt-and-extrusion-weld to the Ø800 housing wall**; the housing-to-panel radial
-gap is closed by the 20mm neoprene surround seal (§3.4). The surround is fastened to the
-steel center-zone frame by a **lapped, blind-riveted joint** — the HDPE laps the frame
-flange and is set with 1/8" 18-8 stainless blind rivets on a regular pitch, with a DP8010
-sealant bead along the lap for light-tightness. This is what ties the surround to the
-frame (it is not a floating skin); the same rivet family is used on the light-trap shell.
+side walls, and the upper and lower floor/roof caps. The caps close the top and bottom of
+the bay; each carries a **circular cut-out** through which the Ø800 housing **outer skin**
+passes (the skin now extends to the beam outer faces, coplanar with the caps — see the
+[Light Trap Selection](light-trap-selection.md) Sheet 9). The annular cap↔skin gap is
+**caulked** with a silicone bead (no weld, no neoprene), and each cap **blind-rivets to the
+1×1×1/8 aluminum support strips** at top and bottom (the light-trap opening bars). The
+surround is fastened to the **drum cage** (50×50×3 RHS) by a **lapped, blind-riveted joint**
+— the HDPE laps the cage posts/rails (front + side faces) and is set with 1/8" 18-8
+stainless blind rivets on a regular pitch, with a DP8010 sealant bead along the lap for
+light-tightness. Because the **cage is welded into the panel top/bottom rails** (one
+weldment), riveting to the cage ties the surround to the panel structure — it is not a
+floating skin. The same rivet family is used on the light-trap shell.
 
 The flat-pattern cut sheets for all six pieces are **Sheet 6**; the housing-join and
 frame-rivet lap sections are **Sheet 7**. The housing cut geometry is shared with the
@@ -240,7 +245,7 @@ See [Light Trap Selection](light-trap-selection.md) §5 and **Light-Trap Sheet 7
 | Top | 12mm closed-cell neoprene wiper ring bonded to drum top cap + silicone bead against ceiling mount plate |
 | Bottom | 12mm closed-cell neoprene wiper ring bonded to drum bottom cap + silicone bead against floor mount plate |
 | **Drum↔housing rotating seal** | Felt/brush wiper strips on the two vertical edges of the drum opening sweep against the housing inner wall as the drum turns, blocking light leaking around the opening; top + bottom felt wiper rings close the ~15mm annular running gap |
-| Housing-to-panel gap | 15mm radial clearance, closed by 20mm neoprene compression strip bonded to the panel aperture |
+| Housing-to-panel gap (top/bottom caps) | The floor/roof caps carry a Ø800 cut-out through which the housing **outer skin** passes (the skin extends to the beam outer faces, coplanar with the caps); the annular cap↔skin gap is closed by a **silicone caulk bead** — no weld, no neoprene. The caps blind-rivet to the 1×1×1/8 Al support strips (Sheet 7 Detail A) |
 | Weather rating | IP44 (splash and rain protection) |
 
 ### 3.5 Handle

@@ -521,12 +521,23 @@ LT_HOUSING_Z_TOP = LT_TBEAM_Z0                  # 2167 — top-beam under face (
 # HDPE edges; a 6063-T5 aluminum U-channel caps each edge (stiffener + rivet anchor) and
 # its two ends bolt to the fixed top/bottom frame beams. RIVETED, no bond (the metal
 # channel wraps the edge for light). (Nominal section — confirm stocked size at parts pass.)
-LT_EDGE_CHAN_W        = 20   # U-channel outside width across the base (mm; 6063-T5 Al)
-LT_EDGE_CHAN_LEG      = 18   # leg height (mm) — the rivets land on the HDPE face
-LT_EDGE_CHAN_T        = 3    # channel wall (mm); inside slot = W − 2T = 14mm (5mm HDPE)
-LT_EDGE_CHAN_N        = 4    # channels total (2 openings × 2 edges)
-LT_EDGE_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — same 1/8" SS domed-head as the rim joints
-LT_EDGE_CHAN_END_BOLT = 8    # M8 bolt each channel end → the support strip (via L-clip)
+# Opening-edge H-mullions (2026-09-09) — the four opening edges are vertical Al H-bars (double
+# channel): the housing is built as TWO arc panels that SLIDE INTO the H-bar slots (no welded seam),
+# and each H's second slot receives the sill/header band edge at top+bottom. One symmetric part per
+# edge; the mullions carry the panels and anchor top+bottom to the support strips. SKU pending (Alvin).
+LT_HBAR_SLOT     = 6    # each slot width (mm) — accepts the 5mm HDPE panel edge with a slide-fit
+LT_HBAR_LEG      = 18   # slot depth (mm) — rivets land on the HDPE face through the flange
+LT_HBAR_T        = 3    # web + flange wall (mm; 6063-T5 Al)
+LT_HBAR_N        = 4    # H-mullions total (2 openings × 2 edges)
+LT_HBAR_RIVET_PITCH = 120  # rivets up the flange (mm) — same 1/8" SS domed-head as the other joints
+LT_HBAR_END_BOLT = 8    # M8 bolt each mullion end → the support strip (via L-clip)
+# Back-compat aliases (edge stiffener renamed U-channel → H-mullion 2026-09-09):
+LT_EDGE_CHAN_N = LT_HBAR_N
+LT_EDGE_CHAN_RIVET_PITCH = LT_HBAR_RIVET_PITCH
+LT_EDGE_CHAN_END_BOLT = LT_HBAR_END_BOLT
+LT_EDGE_CHAN_LEG = LT_HBAR_LEG
+LT_EDGE_CHAN_T = LT_HBAR_T
+LT_EDGE_CHAN_W = 2 * LT_HBAR_LEG + LT_HBAR_T   # H overall width across both slots (~39mm)
 
 # Channel-support strip (2026-09-08) — 4 formed-Al angles, one across each housing opening
 # (top + bottom), spanning the cage Yd rail-to-rail so the opening's two U-channel ends bolt to

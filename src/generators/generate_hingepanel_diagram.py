@@ -1625,18 +1625,17 @@ def sheet6():
         draw_dim_h(ax, x0, x0 + BAY_D, yA - 70, f"{BAY_D}mm (bay depth)", offset=14, fs=6.5, font=FONT)
         draw_dim_v(ax, x0 - 60, yA, yA + H_PANEL, f"{H_PANEL}mm", offset=16, fs=6.5, font=FONT)
 
-    # 5-6 · upper + lower floor/roof caps — with the Ø800 housing-skin CUT-OUT (join → Sheet 7)
+    # 5-6 · upper + lower floor/roof caps — PLAIN plates (no cut-out); rivet to the frame perimeter,
+    # skin edge butts + caulk (join → Sheet 7 Detail A)
     for x0, cap in [(xC1, "UPPER (ROOF)"), (xC2, "LOWER (FLOOR)")]:
         blank(x0, yB, W_CTR, BAY_D)
-        piece_title(x0, yB, W_CTR, yB + BAY_D - 70, f"{cap} CAP", "1/8\" HDPE")
-        # Ø800 housing-skin cut-out (the outer skin passes through; caulked) — centered on the drum footprint
+        piece_title(x0, yB, W_CTR, yB + BAY_D - 70, f"{cap} CAP", "1/8\" HDPE · plain plate")
+        # drum footprint shown as a light reference only (NOT a cut — the skin butts the cap underside)
         ccx = x0 + (PW / 2 - PANEL_CORNER_YD_L)         # drum Yd center within the cap width (1181-653=528)
         ccy = yB + (LT_DRUM_CX - BAY_FRONT_X)           # drum depth center from the bay-front edge (=470mm) — single-sourced off DRUM_CX
-        ax.add_patch(Circle((ccx, ccy), R_HOUS, fc=BG, ec=C_OUT, lw=1.2, ls=(0, (6, 3)), zorder=4))
-        ax.plot([ccx - R_HOUS - 40, ccx + R_HOUS + 40], [ccy, ccy], color=C_CL, lw=0.7, ls="--", zorder=5)
-        ax.plot([ccx, ccx], [ccy - R_HOUS - 40, ccy + R_HOUS + 40], color=C_CL, lw=0.7, ls="--", zorder=5)
-        ax.text(ccx, ccy - 60, f"Ø{int(2 * R_HOUS)} skin cut-out\n(+caulk clearance)", ha="center", va="center",
-                fontsize=6.6, color=C_DIM, **FONT, zorder=6)
+        ax.add_patch(Circle((ccx, ccy), R_HOUS, fc="none", ec=C_DIM, lw=0.7, ls=(0, (2, 4)), zorder=4))
+        ax.text(ccx, ccy, "NO CUT-OUT\nhousing skin butts\nthe cap underside\n(caulk seal)", ha="center", va="center",
+                fontsize=6.4, color=C_DIM, **FONT, zorder=6)
         rivet_edge(x0, yB, W_CTR, BAY_D, "B", holes=False)
         draw_dim_h(ax, x0, x0 + W_CTR, yB - 60, f"{W_CTR}mm", offset=14, fs=6.5, font=FONT)
         draw_dim_v(ax, x0 - 55, yB, yB + BAY_D, f"{BAY_D}mm", offset=16, fs=6.5, font=FONT, right=False)
@@ -1656,8 +1655,9 @@ def sheet6():
         "• Bay = 4-wall corner-welded box (extrusion-welded seams); caps close the top + bottom.\n"
         f"• Rivet each wall/skin lap to the drum CAGE posts/rails (welded into the panel frame) — FRONT + SIDE\n"
         f"  faces — with 1/8\" 18-8 SS blind rivets @ {RIV_P}mm (drill Ø{LT_RIVET_HOLE}). Cage/rivet lap detail → SHEET 7.\n"
-        "• Each cap's Ø800 cut-out passes the housing outer skin (caulked, not welded); the caps blind-rivet\n"
-        "  to the 1×1×1/8 Al support strips at top + bottom (Detail A, SHEET 7).\n"
+        "• Caps are PLAIN plates (no cut-out): they sit on the OUTSIDE of the top/bottom frame beams and\n"
+        "  blind-rivet to them; the housing outer skin's top/bottom edge butts the cap underside + a caulk\n"
+        "  bead seals it (Detail A, SHEET 7). No extrusion-weld, no neoprene.\n"
         "• Personnel opening trimmed to the housing at assembly — align to SHEET 2 (plan)."
     )
     ax.text(xC2, yB + BAY_D + 120, notes, ha="left", va="bottom", fontsize=7.0,
@@ -1685,9 +1685,9 @@ def sheet6():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 7  —  HDPE Surround: Housing Join + Frame Rivet Details
 #   Two enlarged sections (thickness exaggerated for clarity):
-#     Detail A — upper/lower cap → Ø800 housing OUTER SKIN join: the skin extends to the
-#                beam outer face + passes through a circular cut-out in the cap; the annular
-#                gap is caulked (no weld/neoprene) and the cap blind-rivets to the Al strip.
+#     Detail A — upper/lower cap → frame + housing OUTER SKIN join: the caps are PLAIN plates
+#                riveted to the OUTSIDE of the top/bottom frame beams; the housing skin extends
+#                to the beam outer face and its edge BUTTS the cap underside (caulk seal, no weld).
 #     Detail B — surround skin/wall → drum-CAGE post (welded into the panel frame) blind-rivet lap.
 #   Housing cut geometry single-sourced with light-trap Sheet 2 (LT_HOUSING_T).
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1771,38 +1771,31 @@ def sheet7():
     ax.set_xlim(0, 340)
     ax.set_ylim(-40, 205)
 
-    # ═══ DETAIL A — floor cap → Ø800 housing join ═══════════════════════════════
-    ax.text(80, 190, "DETAIL A — FLOOR CAP → Ø800 HOUSING JOIN", ha="center",
+    # ═══ DETAIL A — cap → frame + housing-skin join (plain cap, riveted to the frame) ══════════
+    ax.text(90, 190, "DETAIL A — CAP → FRAME + SKIN JOIN", ha="center",
             fontsize=10, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(80, 178, "vertical section · thickness exaggerated", ha="center",
+    ax.text(90, 178, "vertical section (roof shown) · thickness exaggerated", ha="center",
             fontsize=7, color=C_DIM, **FONT)
 
-    # Housing OUTER SKIN (Ø800 UV-HDPE) — vertical; now EXTENDS to the beam outer face,
-    # i.e. rises THROUGH the cap plane (no longer butted below it).
-    hx, hw = 92, 14                                 # skin at x=92, exaggerated width
-    ax.add_patch(Rectangle((hx, 20), hw, 150, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
-    leader(ax, (hx, 158), (150, 170),
-           f"Ø{int(DRUM_D)} housing OUTER SKIN {T_HOUS}mm UV-HDPE\nextends to the beam outer face (Sheet 2/9)", col=C_OUT)
-    # Floor / roof cap (horizontal 1/8" HDPE) with a CIRCULAR CUT-OUT — the skin passes through it;
-    # the cap extends OUTBOARD (away from the drum axis).
-    cy, ch = 96, 14
-    cap_x0 = hx + hw + 6                             # inner edge sits off the skin (caulk gap)
-    ax.add_patch(Rectangle((cap_x0, cy), 78, ch, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
-    leader(ax, (cap_x0 + 46, cy + ch), (100, 150),
-           f"floor / roof cap {T_SKIN}mm HDPE\n(circular cut-out for the skin)", col=C_OUT)
-    # SILICONE CAULK bead sealing the annular skin↔cap gap (no weld, no neoprene)
-    ax.add_patch(Rectangle((hx + hw, cy), 6, ch, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=6))
-    leader(ax, (hx + hw + 3, cy), (26, 44), "silicone CAULK bead\n(annular seal, cap ↔ skin)", col=C_OUT)
-    # 1×1×1/8 Al support strip UNDER the cap — flat leg (cap rivets to it) + up-leg
-    ax.add_patch(Rectangle((cap_x0, cy - 16), 44, 6, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=4))   # flat leg (on the beam)
-    ax.add_patch(Rectangle((cap_x0 + 38, cy - 16), 6, 30, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=3))  # up-leg
-    leader(ax, (cap_x0 + 30, cy - 13), (150, 34),
-           "1×1×1/8 Al support strip\n(the light-trap opening bars, Sheet 9)", col=C_OUT)
-    # blind rivet: vertical, through the cap + the Al flat leg
-    _blind_rivet(ax, cap_x0 + 16, (cy - 10 + cy + ch) / 2.0, 90, (cy + ch) - (cy - 16), d=RIV_D)
-    leader(ax, (cap_x0 + 16, cy + ch + 4), (120, 118),
-           f"1/8\" 18-8 SS blind rivet\ncap → Al strip @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
-    draw_dim_v(ax, cap_x0 + 82, cy, cy + ch, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
+    # Frame top/bottom beam — the cap rivets to its OUTER face
+    bx, by, bw, bh = 104, 92, 78, 58
+    ax.add_patch(Rectangle((bx, by), bw, bh, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=3))
+    leader(ax, (bx + 34, by + 12), (150, 44), "frame top/bottom BEAM\n(cap rivets to its outer face)", col=C_OUT)
+    # Plain HDPE cap ON the outside (top) of the beam — NO cut-out
+    capz = by + bh                                  # cap underside = beam outer face
+    ax.add_patch(Rectangle((30, capz), 150, 14, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
+    leader(ax, (150, capz + 14), (108, 172), f"plain floor/roof CAP {T_SKIN}mm HDPE\n(no cut-out — sits on the frame)", col=C_OUT)
+    # Housing outer skin (vertical) rising to BUTT the cap underside
+    hx, hw = 60, 14
+    ax.add_patch(Rectangle((hx, 20), hw, capz - 20, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
+    leader(ax, (hx, 62), (16, 96), f"Ø{int(DRUM_D)} housing OUTER SKIN {T_HOUS}mm\nextends to the beam outer face (Sheet 2/9)\n— top/bottom edge BUTTS the cap", col=C_OUT)
+    # caulk bead at the skin-edge ↔ cap-underside butt
+    ax.add_patch(Rectangle((hx - 3, capz - 8), hw + 6, 8, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=6))
+    leader(ax, (hx - 2, capz - 5), (14, 132), "silicone CAULK bead\n(skin edge ↔ cap seal)", col=C_OUT)
+    # blind rivet: vertical, through the cap + the beam wall
+    _blind_rivet(ax, 150, capz - 3, 90, 34, d=RIV_D)
+    leader(ax, (150, capz + 16), (150, 118), f"1/8\" 18-8 SS blind rivet\ncap → beam @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
+    draw_dim_v(ax, 22, capz, capz + 14, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
 
     # ═══ DETAIL B — surround → steel frame blind-rivet lap ══════════════════════
     ax.text(258, 190, "DETAIL B — SURROUND → FRAME RIVET LAP", ha="center",
@@ -1838,9 +1831,9 @@ def sheet7():
 
     ax.text(170, 4,
             "The HDPE surround (bay walls, floor/roof caps, face skins) laps the drum CAGE (50×50×3 RHS,\n"
-            "welded into the panel frame) and is blind-riveted @ {p}mm + DP8010 bead. The floor/roof caps\n"
-            "have a circular cut-out for the housing skin (caulked, Detail A) and rivet to the Al strips. Flat\n"
-            "patterns → SHEET 6.".format(p=LT_RIVET_PITCH),
+            "welded into the panel frame) and is blind-riveted @ {p}mm + DP8010 bead. The floor/roof caps are\n"
+            "PLAIN plates riveted to the frame outside; the housing skin's top/bottom edge butts the cap +\n"
+            "a caulk bead (Detail A). Flat patterns → SHEET 6.".format(p=LT_RIVET_PITCH),
             ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 

@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 import math
 import os
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_W, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_EDGE_CHAN_N, LT_EDGE_CHAN_RIVET_PITCH, LT_EDGE_CHAN_END_BOLT, LT_STRIP_LEG, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_LEG, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_HBAR_N, LT_HBAR_RIVET_PITCH, LT_HBAR_END_BOLT, LT_STRIP_LEG, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v, draw_cl_h,
     leader, draw_notes,
@@ -407,131 +407,99 @@ def draw_sheet1():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 2 — Housing cylinder cut sheet (flat pattern)
-# The 5mm (3/16in) UV-HDPE skin developed flat: roll to Ø800 and extrusion-weld the seam,
-# then cut the two 80° openings. Developed length = π·Ø800.
+# SHEET 2 — Housing cut sheet (flat pattern) — TWO ARC PANELS + band pieces
+# The housing is NOT a welded tube: it is two 100° UV-HDPE arc panels that slide into the four
+# opening-edge H-mullions (SHEET 9), with the sill/header band pieces glued/riveted across each
+# opening. No seam. Each panel developed flat = arc length × height.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet2():
-    L        = math.pi * DRUM_D                       # developed length
-    HOUSING_H = LT_HOUSING_Z_TOP - LT_HOUSING_Z_BOT   # blank height = 2062 (housing spans beam-to-beam)
-    OW       = (LT_OPENING_DEG / 360.0) * L           # opening arc width
-    SEAM_DEG = 90                                     # seam falls mid-solid-arc (near-Yd)
-
-    def dev(theta):                                   # angle → developed x from seam
-        return ((theta - SEAM_DEG) % 360) / 360.0 * L
-
-    # Opening cut positions along the developed width (EXT @180°, INT @0°) ──────
-    ext_x0, ext_x1 = dev(180 - LT_OPENING_DEG / 2), dev(180 + LT_OPENING_DEG / 2)
-    int_x0, int_x1 = dev(360 - LT_OPENING_DEG / 2), dev(360 + LT_OPENING_DEG / 2)
-    # Sill + header bands keep the welded cylinder continuous (chosen cut heights).
+    R = LT_HOUSING_R
+    PANEL_DEG = 180 - LT_OPENING_DEG                      # 100 — each solid-arc panel
+    PW = (PANEL_DEG / 360.0) * 2 * math.pi * R            # 698 — panel developed width
+    BW = (LT_OPENING_DEG / 360.0) * 2 * math.pi * R       # 559 — opening / band developed width
+    HOUSING_H = LT_HOUSING_Z_TOP - LT_HOUSING_Z_BOT       # 1987 (beam inner faces)
+    EXT_BOT = LT_HOUSING_Z_BOT - LT_CAGE_BOT              # 40 — down to the bottom-beam outer face
+    EXT_TOP = LT_CAGE_TOP - LT_HOUSING_Z_TOP              # 50 — up to the top-beam outer face
+    FULL_H = HOUSING_H + EXT_BOT + EXT_TOP                # 2077 — beam outer face → outer face
     SILL_H, HEADER_H = 80, 150
-    op_z0, op_z1 = SILL_H, HOUSING_H - HEADER_H
-    # Skin extends past the inner beam faces to the beam OUTER faces — it fixes DIRECTLY to
-    # the top + bottom beams here (no rim-angle). The two central axle beams cross the skin at
-    # the seam (90°) + 270°, so each extension band is NOTCHED there (beam width developed).
-    EXT_BOT = LT_HOUSING_Z_BOT - LT_CAGE_BOT      # 40 — down to the bottom-beam outer face
-    EXT_TOP = LT_CAGE_TOP - LT_HOUSING_Z_TOP      # 50 — up to the top-beam outer face
-    NOTCH_DEG = 4                                 # notch half-angle (matches the 3D)
-    ntw       = (2 * NOTCH_DEG / 360.0) * L       # notch full width, developed (≈56mm)
+    NOTCH_DEG = 4
+    ntw = (2 * NOTCH_DEG / 360.0) * 2 * math.pi * R       # ~56 — axle-beam notch (developed)
+    zb0, zt1 = -EXT_BOT, HOUSING_H + EXT_TOP              # blank bottom / top
 
-    # ── Data window → figure size ────────────────────────────────────────────
-    PAD_L, PAD_R, PAD_B, PAD_T = 520, 520, 1180, 470
-    X_LO, X_HI = -PAD_L, L + PAD_R
-    Z_LO, Z_HI = -EXT_BOT - PAD_B, HOUSING_H + EXT_TOP + PAD_T
+    GAP = 520
+    pAx, pBx = 0.0, PW + GAP                              # panel A / panel B left x
+
+    # ── figure window ────────────────────────────────────────────────────────
+    PAD_L, PAD_R, PAD_B, PAD_T = 470, 300, 1560, 430
+    X_LO, X_HI = -PAD_L, pBx + PW + PAD_R
+    Z_LO, Z_HI = zb0 - PAD_B, zt1 + PAD_T
     FIG_W = 18.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(X_LO, X_HI)
-    ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal"); ax.axis("off")
 
-    # ── Developed blank (full skin height incl. the top/bottom beam-face extensions) ──
-    draw_rect(ax, 0, -EXT_BOT, L, HOUSING_H + EXT_BOT + EXT_TOP, fc="#DDE4EC", lw=2.0, zorder=3)
-    # Inner beam-face fix lines — the skin rivets DIRECTLY to the top + bottom beams here
-    # (rim-angle dropped 2026-09-08); the band beyond each line laps onto the beam outer face.
-    for zf in (0, HOUSING_H):
-        ax.plot([0, L], [zf, zf], color="#8A6A20", lw=1.0, ls=(0, (6, 4)), zorder=6)
-    # ── Axle-beam notches — the 2 central axle beams pass through the skin at the seam (90°)
-    #    and 270°, so each extension band is cut away there (beam ≈56mm developed). ──
-    for xc in (0, dev(270), L):                       # seam at x=0 & x=L (split across the seam), far-Yd @270°
-        for zb, hb in ((-EXT_BOT, EXT_BOT), (HOUSING_H, EXT_TOP)):
-            nx0, nx1 = max(0, xc - ntw / 2), min(L, xc + ntw / 2)
-            draw_rect(ax, nx0, zb, nx1 - nx0, hb, fc="white", lw=1.2, zorder=7)
-    # ── Two 80° opening cutouts ──────────────────────────────────────────────
-    for x0, x1, tag, col in ((ext_x0, ext_x1, "EXTERIOR OPENING", "#5060A0"),
-                             (int_x0, int_x1, "INTERIOR OPENING\n(onto walkway)", "#407040")):
-        draw_rect(ax, x0, op_z0, x1 - x0, op_z1 - op_z0, fc="white", lw=1.6, zorder=5)
-        ax.plot([x0, x1], [op_z0, op_z1], color=C_DIM, lw=0.5, ls=":", zorder=5)
-        ax.plot([x0, x1], [op_z1, op_z0], color=C_DIM, lw=0.5, ls=":", zorder=5)
-        ax.text((x0 + x1) / 2, (op_z0 + op_z1) / 2, f"{tag}\n{LT_OPENING_DEG}° · CUT OUT",
-                ha="center", va="center", fontsize=8, color=col, fontweight="bold",
-                **FONT, zorder=15)
+    def panel(px, label, center_deg, edges):
+        draw_rect(ax, px, zb0, PW, FULL_H, fc="#DDE4EC", lw=2.0, zorder=3)
+        for zf in (0, HOUSING_H):                                    # inner beam-face fix lines
+            ax.plot([px, px + PW], [zf, zf], color="#8A6A20", lw=1.0, ls=(0, (6, 4)), zorder=6)
+        xc = px + PW / 2                                             # axle-beam notch at the panel center
+        for zb, hb in ((zb0, EXT_BOT), (HOUSING_H, EXT_TOP)):
+            draw_rect(ax, xc - ntw / 2, zb, ntw, hb, fc="white", lw=1.2, zorder=7)
+        ax.text(xc, HOUSING_H * 0.5, f"{label}\nARC PANEL\n{PANEL_DEG}° · center {center_deg}°",
+                ha="center", va="center", fontsize=8.5, color=C_OUT, fontweight="bold", **FONT, zorder=15)
+        for xe, ed in ((px, edges[0]), (px + PW, edges[1])):        # vertical edges → H-mullions
+            ax.plot([xe, xe], [zb0, zt1], color="#5B6E8C", lw=3.2, zorder=6)
+            ax.text(xe, zb0 - 70, f"{ed:.0f}°\n→ H-bar", ha="center", va="top", fontsize=6.2,
+                    color="#5B6E8C", fontweight="bold", **FONT, zorder=9)
+        draw_dim_h(ax, px, px + PW, zt1 + 110, f"{PW:.0f}mm ({PANEL_DEG}° arc)", offset=55, fs=7, font=FONT)
+        draw_dim_h(ax, xc - ntw / 2, xc + ntw / 2, zt1 + 40, f"{ntw:.0f}mm", offset=24, fs=5.6, font=FONT)
 
-    # ── Weld seam (blank edges join here; mid-solid-arc at θ=90°) ─────────────
-    for xs in (0, L):
-        ax.plot([xs, xs], [-EXT_BOT, HOUSING_H + EXT_TOP], color="#CC4422", lw=2.4, zorder=6)
-    leader(ax, 0, HOUSING_H * 0.30, -320, HOUSING_H * 0.20,
-           "ROLL + EXTRUSION\nWELD SEAM\n(edges joined; seam\nmid-arc at 90°)",
-           fs=6.5, color="#CC4422", ha="center", arrow_style="->", font=FONT)
+    panel(pAx, "NEAR-Yd (A)", 90, (40, 140))
+    panel(pBx, "FAR-Yd (B)", 270, (220, 320))
 
-    # ── Angular registration ticks along the top edge ────────────────────────
-    z_top_edge = HOUSING_H + EXT_TOP
-    for theta, lab in ((90, "90° SEAM"), (180, "180° EXT"), (270, "270°"),
-                       (360, "0/360° INT")):
-        xd = dev(theta) if theta != 90 else 0
-        ax.plot([xd, xd], [z_top_edge, z_top_edge + 55], color=C_CL, lw=0.7, zorder=6)
-        ax.text(xd, z_top_edge + 70, lab, ha="center", va="bottom", fontsize=6,
-                color=C_CL, **FONT, zorder=15)
+    # full-height + extension dims on panel A's left
+    draw_dim_v(ax, pAx - 150, zb0, zt1, f"{FULL_H:.0f}mm BLANK HT\n(beam outer→outer)", offset=90, fs=7, font=FONT)
+    draw_dim_v(ax, pAx - 330, 0, HOUSING_H, f"{HOUSING_H:.0f}mm\n(inner faces)", offset=70, fs=6, font=FONT)
+    ax.text(pAx + PW / 2, zb0 - 150, "(the mid-panel notch clears the axle beam; the panel edges slide into the opening H-mullions)",
+            ha="center", va="top", fontsize=6, color=C_DIM, **FONT, zorder=9)
 
-    # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, 0, L, z_top_edge + 230,
-               f"DEVELOPED LENGTH = π·Ø{DRUM_D} = {L:.0f}mm", offset=80, fs=8, font=FONT)
-    draw_dim_v(ax, -300, -EXT_BOT, z_top_edge,
-               f"{HOUSING_H + EXT_BOT + EXT_TOP:.0f}mm BLANK HEIGHT\n(beam outer face → outer face)",
-               offset=90, fs=7.5, font=FONT)
-    draw_dim_v(ax, -150, 0, HOUSING_H, f"{HOUSING_H:.0f}mm\n(beam inner faces)",
-               offset=70, fs=6.5, font=FONT)
-    draw_dim_h(ax, ext_x0, ext_x1, op_z1 + 90,
-               f"{OW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=55, fs=6.5, font=FONT)
-    draw_dim_h(ax, int_x0, int_x1, op_z1 + 90,
-               f"{OW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=55, fs=6.5, font=FONT)
-    draw_dim_h(ax, 0, ext_x0, op_z0 - 120, f"{ext_x0:.0f}mm", offset=50, fs=6.5,
-               above=False, font=FONT)
-    draw_dim_v(ax, int_x1 + 130, op_z0, op_z1, f"{op_z1 - op_z0:.0f}mm\nOPENING",
-               offset=80, fs=6.5, right=True, font=FONT)
-    draw_dim_v(ax, L + 130, 0, SILL_H, f"{SILL_H}mm\nSILL", offset=70, fs=6, right=True, font=FONT)
-    draw_dim_v(ax, L + 130, HOUSING_H - HEADER_H, HOUSING_H, f"{HEADER_H}mm\nHEADER",
-               offset=70, fs=6, right=True, font=FONT)
-    # extension bands (skin → beam outer face) + one axle-beam notch called out
-    draw_dim_v(ax, L + 340, HOUSING_H, z_top_edge, f"{EXT_TOP}mm\nTOP EXT", offset=70, fs=6, right=True, font=FONT)
-    draw_dim_v(ax, L + 340, -EXT_BOT, 0, f"{EXT_BOT}mm\nBOT EXT", offset=70, fs=6, right=True, font=FONT)
-    xn = dev(270)
-    draw_dim_h(ax, xn - ntw / 2, xn + ntw / 2, z_top_edge + 60, f"{ntw:.0f}mm", offset=40, fs=6, font=FONT)
-    leader(ax, xn, z_top_edge - EXT_TOP / 2, xn + 430, z_top_edge + 210,
-           "AXLE-BEAM NOTCH (×4)\nbeam passes through the\nskin at 90° (seam) + 270°,\ntop + bottom bands",
-           fs=6, color="#8A6A20", ha="left", arrow_style="->", font=FONT)
+    # ── band pieces (sill + header, glued/riveted, ×2 openings) ──────────────
+    byz = zb0 - 720
+    ax.text(pAx, byz + HEADER_H + 60, "SILL + HEADER BAND PIECES  (glued/riveted across each opening · ×2 openings)",
+            ha="left", va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=10)
+    bx = pAx
+    for tag, bh in (("SILL", SILL_H), ("HEADER", HEADER_H)):
+        draw_rect(ax, bx, byz, BW, bh, fc="#DDE4EC", lw=1.4, zorder=4)
+        for xe in (bx, bx + BW):                                    # band edges slide into the H opening-side slot
+            ax.plot([xe, xe], [byz, byz + bh], color="#5B6E8C", lw=2.2, zorder=6)
+        ax.text(bx + BW / 2, byz + bh / 2, f"{tag} BAND\n{BW:.0f} × {bh}mm", ha="center", va="center",
+                fontsize=7, color=C_OUT, **FONT, zorder=9)
+        bx += BW + 240
+    draw_dim_h(ax, pAx, pAx + BW, byz - 55, f"{BW:.0f}mm ({LT_OPENING_DEG}° arc)", offset=36, fs=6.2, above=False, font=FONT)
+
+    # H-mullion callout
+    leader(ax, pBx + PW, zt1 * 0.62, pBx + PW + 190, zt1 * 0.78,
+           f"4 EDGES → Al H-MULLION\n(Eagle H-divider; panel slides in\none slot, band in the other · SHEET 9)",
+           fs=6.3, color="#5B6E8C", ha="left", arrow_style="->", font=FONT)
 
     # ── Fabrication notes ────────────────────────────────────────────────────
     notes = [
-        "HOUSING SKIN — FABRICATION",
+        "HOUSING SKIN — FABRICATION  (no welded seam — a slide-together kit)",
         f"Material: {LT_HOUSING_T}mm (3/16in) UV-stabilized HDPE sheet (~7 m²).",
-        f"1. Cut blank {L:.0f} × {HOUSING_H + EXT_BOT + EXT_TOP:.0f}mm; cut the two {LT_OPENING_DEG}° openings.",
-        f"2. Cut the 4 axle-beam notches ({ntw:.0f}mm wide) at 90°+270°, top ({EXT_TOP}mm) + bottom ({EXT_BOT}mm) bands.",
-        f"3. Roll to Ø{DRUM_D} (R{LT_HOUSING_R:.0f}); extrusion-weld the seam (mid-arc, 90°).",
-        "4. Interior face black-pigmented + flat-black touch-in at welds.",
-        "   Exterior face UV-stabilized — no primer.",
-        f"Skin spans the beam OUTER faces (+{EXT_TOP} top / +{EXT_BOT} bottom past the inner faces) and",
-        "rivets DIRECTLY to the top + bottom beams (no rim-angle) — SS blind @150mm, SHEET 9.",
+        f"1. Cut 2 arc panels {PW:.0f} × {FULL_H:.0f}mm ({PANEL_DEG}° each); roll to R{R:.0f}. Cut the center axle-beam",
+        f"   notch ({ntw:.0f}mm) in each, top ({EXT_TOP}mm) + bottom ({EXT_BOT}mm) extension band.",
+        f"2. Cut 4 band pieces {BW:.0f} × {SILL_H}/{HEADER_H}mm (sill + header, ×2 openings).",
+        "3. Slide each panel edge into an opening H-mullion (4 total); glue/rivet the sill + header bands",
+        "   into the H's opposite slot + across the opening. Rivet the panels' top/bottom edges to the beams.",
+        "4. Interior face black-pigmented; exterior UV-stabilized — no primer.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
-    draw_notes(ax, notes, 40, -240, 34, fs=7, font=FONT, width=1650,
-               title_color=TITLE_COL)
+    draw_notes(ax, notes, pAx, byz - 340, 34, fs=7, font=FONT, width=1900, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 2 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="HOUSING CYLINDER — CUT SHEET (FLAT PATTERN)",
+                subtitle="HOUSING — CUT SHEET (2 ARC PANELS + BAND PIECES)",
                 scale_note="FLAT PATTERN · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"),
@@ -1021,7 +989,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
                offset=46, fs=6.2, above=False, font=FONT)
     draw_dim_h(ax, UX - 140 * SC, UX + 140 * SC, -455, "280mm PANEL RAIL W",
                offset=46, fs=6.2, above=False, font=FONT)
-    # Vertical (height / thickness), stacked in the centre gap:
+    # Vertical (height / thickness), stacked in the center gap:
     draw_dim_v(ax, UX + 255, -bw, bw, f"{SKF6215_W}mm BRG W", offset=44, fs=6.0,
                right=True, font=FONT)
     draw_dim_v(ax, UX + 330, -18 * SC, 27 * SC, "45mm RING H", offset=44, fs=6.0,
@@ -1691,7 +1659,7 @@ def draw_sheet8():
         rrect(fp(ex - STRIP_W / 2, cyl), STRIP_W, cW_y, fc="#C9A24A", color=C_OUT, lw=1.2, zorder=6)
     leader(ax, *fp(CX + HR * math.cos(math.radians(-LT_OPENING_DEG / 2)), cyr - 140),
            fp(cx1, cyr)[0] + 40, fp(cx1, cyr)[1] + 250,
-           "1×1×1/8 Al ANGLE SUPPORT STRIP (×4: each\nopening, top + bottom) — rail-to-rail across\nthe opening; the U-channel ends bolt to the up-leg",
+           "1×1×1/8 Al ANGLE SUPPORT STRIP (×4: each\nopening, top + bottom) — rail-to-rail across\nthe opening; the H-mullion ends bolt to the up-leg",
            fs=6.3, color="#8A6A20", ha="left", arrow_style="->", font=FONT)
     # plan dims + labels
     draw_dim_h(ax, fp(cx0, cyl)[0], fp(cx1, cyl)[0], fp(0, cyl)[1] - 80,
@@ -1706,7 +1674,7 @@ def draw_sheet8():
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, hc[0] + HR * math.cos(math.radians(40)), hc[1] + HR * math.sin(math.radians(40)),
            fp(cx1, cyr)[0] + 20, fp(cx1, cyr)[1] + 55,
-           f"Al EDGE CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} U — riveted over each\nfree HDPE edge ({LT_EDGE_CHAN_N} total); ends bolt to\nthe support strips — see Sheet 9",
+           f"Al H-MULLION ({LT_HBAR_N} total, Eagle SGN-113 H-divider)\n— the arc panels slide into the H slots (no welded seam);\nends bolt to the support strips — see Sheet 9",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── RHS tube-section inset — the frame members are HOLLOW tube, not solid bar ──
@@ -1734,10 +1702,10 @@ def draw_sheet8():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "SUPPORT FRAME — INTEGRATED STEEL WELDED BOX CAGE (part of the swing-panel weldment)",
-        f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails (welded). No jamb posts: the free HDPE opening edges are stiffened by Al edge channels (below).",
+        f"Box: {RHS}×{RHS}×{LT_FRAME_T} steel RHS — 4 corner posts + perimeter rails (welded). No jamb posts: the two HDPE arc panels slide into 4 Al H-mullions at the opening edges (below).",
         f"Axle beams: {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} steel RHS (= the perimeter section — the 962mm span is barely stressed, δ≈0.3mm under the hung drum), span Yd ({LT_AXLE_BEAM_SPAN}mm) at the drum axis; carry the SKF 6215 at midspan (drum hangs from the top beam).",
         f"Bearing mount plate: Ø{LT_BRG_PLATE_OD}×{LT_BRG_PLATE_T} steel disc welded across each beam — the ring/collar bolt to THIS, not the beam wall (their Ø200 bolt circle is far wider than the 50mm beam). Seats: upper isolated 6061-T6 Al ring (Ø{LT_TOPRING_OD}, {LT_FRAME_MOUNT_BOLT_TOP}×M10); lower steel collar (Ø{LT_COLLAR_OD}, {LT_FRAME_MOUNT_BOLT_BOT}×M10).",
-        f"Fixed housing (outer skin) extends to the beam OUTER faces + blind-rivets DIRECTLY to the top/bottom beams (no rim-angle); {LT_EDGE_CHAN_N}× Al U-channel cap the free opening edges, their ends bolted (M{LT_EDGE_CHAN_END_BOLT} via L-clip) to 4× 1×1×1/8 Al angle SUPPORT STRIPS (gold, plan — one across each opening top+bottom, rail-to-rail) that blind-rivet to the beams — see Sheet 9. Drum rotates free inside.",
+        f"Housing = TWO 100° HDPE arc panels (no welded seam) that slide into {LT_HBAR_N}× Al H-mullions (Eagle SGN-113 H-divider) at the opening edges + sill/header band pieces; the panels' top/bottom edges blind-rivet DIRECTLY to the beams (no rim-angle). The H-mullion ends bolt (M{LT_HBAR_END_BOLT} via L-clip) to 4× 1×1×1/8 Al angle SUPPORT STRIPS (gold, plan — one across each opening top+bottom, rail-to-rail) that blind-rivet to the beams — see Sheet 9. Drum rotates free inside.",
         "The cage is welded into the panel top/bottom rails → one structure, swings together. Panel frame owned by the hinged-panel report.",
         "WELDS (red triangles): 6mm fillet weld all-round at every member junction — each corner post to the top/bottom axle beams + perimeter rails, and the axle beam ends to the rails (typ., both views).",
         "ALL DIMS IN mm · plate thickness exaggerated for clarity",
@@ -1819,34 +1787,32 @@ def draw_sheet9():
     # and is capped at the cut edge (right) by the riveted Al U-channel that replaced the
     # jamb post. Legs run back along the inner + outer faces; rivet through both + HDPE.
     dx, dz = 400, 55
-    HT2 = S * LT_HOUSING_T                 # HDPE wall thickness in section
-    LEG2 = S * LT_EDGE_CHAN_LEG            # channel leg length (over the faces)
-    CT2 = S * LT_EDGE_CHAN_T               # channel wall
-    WL = S * 30                            # length of shell shown (broken on the left)
-    ax.text(dx - LEG2 / 2, dz + HT2 / 2 + CT2 + 48, "DETAIL B — OPENING EDGE  (plan · SCALE 7:1)",
-            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold",
-            **FONT, zorder=15)
-    draw_rect(ax, dx - WL, dz - HT2 / 2, WL, HT2, fc="#DDE4EC", lw=1.6, zorder=5)   # HDPE shell wall
-    for xb in (dx - WL, dx - WL + 12, dx - WL + 24):                                # break (shell continues)
+    HT2 = S * LT_HOUSING_T                 # HDPE panel wall thickness in section
+    SLOT2 = S * LT_HBAR_SLOT               # H slot width
+    LG2 = S * LT_HBAR_LEG                  # H leg / slot depth
+    WT2 = S * LT_HBAR_T                    # H web / flange wall
+    WL = S * 24                            # length of panel shown (broken on the left)
+    ax.text(dx, dz + SLOT2 / 2 + WT2 + 54, "DETAIL B — OPENING-EDGE H-MULLION  (plan · SCALE 7:1)",
+            ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
+    sh, ww = SLOT2 / 2, WT2 / 2
+    xL, xR = dx - LG2, dx + LG2
+    zt_o, zt_i, zb_i, zb_o = dz + sh + WT2, dz + sh, dz - sh, dz - sh - WT2
+    # arc PANEL edge slides into the LEFT slot (material side); the panel stops at the web
+    draw_rect(ax, dx - LG2 - WL, dz - HT2 / 2, LG2 + WL - ww, HT2, fc="#DDE4EC", lw=1.6, zorder=5)
+    for xb in (dx - LG2 - WL, dx - LG2 - WL + 12):                                  # break (panel continues)
         ax.plot([xb - 4, xb + 4], [dz - HT2 / 2 - 4, dz + HT2 / 2 + 4], color=C_OUT, lw=0.6, zorder=7)
-    # (rivet-only 2026-09-08 — no DP8010 bead in the slot; the rivets clamp the legs onto the HDPE)
-    # U-channel — ONE continuous 20×18×3 U-section (single extrusion, not three plates): the
-    # base caps the HDPE edge, the two legs run back over the inner + outer faces.
-    ax.add_patch(mpatches.Polygon([
-        (dx - LEG2, dz + HT2 / 2 + CT2), (dx + CT2, dz + HT2 / 2 + CT2),
-        (dx + CT2, dz - HT2 / 2 - CT2), (dx - LEG2, dz - HT2 / 2 - CT2),
-        (dx - LEG2, dz - HT2 / 2), (dx, dz - HT2 / 2),
-        (dx, dz + HT2 / 2), (dx - LEG2, dz + HT2 / 2)],
-        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.4, zorder=6))                        # U-channel
-    blind_rivet(ax, dx - LEG2 * 0.5, dz, 90, S * (2 * LT_EDGE_CHAN_T + LT_HOUSING_T), d=RVD)  # thru legs + HDPE
-    draw_dim_h(ax, dx - LEG2, dx, dz - HT2 / 2 - CT2 - 30, f"{LT_EDGE_CHAN_LEG}mm LEG",
-               offset=26, fs=6.0, above=False, font=FONT)
-    leader(ax, dx - LEG2 * 0.35, dz - HT2 / 2 - CT2, dx - 20, dz - HT2 / 2 - CT2 - 64,
-           f"Al U-CHANNEL {LT_EDGE_CHAN_W}×{LT_EDGE_CHAN_LEG}×{LT_EDGE_CHAN_T} 6063-T5 — riveted over the\n{LT_HOUSING_T}mm (3/16in) HDPE edge (rivet-only, no bond); caps BOTH faces (jamb-post replacement)",
-           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    leader(ax, dx + CT2, dz + HT2 * 0.3, dx + CT2 + 64, dz + 40,
-           f"Ø{LT_RIVET_D} SS BLIND RIVET (low-profile head)\nthru both legs + HDPE · ends → SUPPORT STRIP",
-           fs=6.2, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    # H-section (I-beam outline) — two back-to-back slots sharing a central web
+    Hpts = [(xL, zt_o), (xR, zt_o), (xR, zt_i), (dx + ww, zt_i), (dx + ww, zb_i), (xR, zb_i), (xR, zb_o),
+            (xL, zb_o), (xL, zb_i), (dx - ww, zb_i), (dx - ww, zt_i), (xL, zt_i)]
+    ax.add_patch(mpatches.Polygon(Hpts, closed=True, fc=C_ALUM, ec=C_OUT, lw=1.4, zorder=6))
+    blind_rivet(ax, dx - LG2 * 0.5, dz + sh + WT2 / 2, 90, WT2 + HT2, d=RVD)        # thru the outer flange + panel
+    draw_dim_h(ax, xL, xR, zb_o - 28, f"1-3/8in ({2 * LT_HBAR_LEG + LT_HBAR_T}mm) H-BAR", offset=22, fs=5.6, above=False, font=FONT)
+    leader(ax, dx - LG2 * 0.7, zt_i, dx - LG2 - 250, zt_o + 24,
+           f"Al H-MULLION (Eagle SGN-113 H-divider) — the arc PANEL\nedge slides into this slot; riveted thru the flange + {LT_HOUSING_T}mm\nHDPE @ {LT_HBAR_RIVET_PITCH}mm (ends → support strip)",
+           fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
+    leader(ax, dx + LG2 * 0.5, zb_o, dx + 30, zb_o - 74,
+           "opposite slot = the OPENING lip; the sill / header\nBAND edge slides in here at top + bottom",
+           fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── PLAN — housing footprint (200° material, two 100° arcs) + rivets ──────
     pcx, pcz, pr = 820, 10, LT_HOUSING_R / 2
@@ -1883,10 +1849,10 @@ def draw_sheet9():
     notes = [
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
         f"1. The housing skin extends to the beam OUTER faces (+{LT_CAGE_TOP - LT_HOUSING_Z_TOP} top / +{LT_HOUSING_Z_BOT - LT_CAGE_BOT} bottom past the inner faces) and BLIND-RIVETS DIRECTLY to the frame top + bottom beams (SECTION A-A; Ø1/8\" 18-8 SS, McMaster 97525A425, {LT_HOUSING_T}mm HDPE → 3mm steel wall, ~{LT_RIVET_PITCH}mm pitch; two 100° arcs — the openings carry no fixing). Set from outside; the set head forms inside the closed RHS. NO rim-angle (dropped 2026-09-08), no welds, no self-drillers.",
-        f"2. The two central axle beams cross the skin at 90° + 270°, so the skin is NOTCHED there in both extension bands (≈56mm wide — see Sheet 2).",
+        f"2. The two central axle beams cross the housing at 90° + 270°, so each arc panel is NOTCHED at its center in both extension bands (≈56mm wide — see Sheet 2).",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge; light-tightness is carried by the drum + running-gap wipers (the skin edge is a structural fix, not a light seal).",
-        f"4. Free opening edges (no jamb posts): each of the {LT_EDGE_CHAN_N} vertical HDPE edges is capped by a RIVETED Al U-channel (DETAIL B) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ ~{LT_EDGE_CHAN_RIVET_PITCH}mm (grip ~{2 * LT_EDGE_CHAN_T + LT_HOUSING_T}mm), rivet-only (opaque channel wraps the edge).",
-        f"5. The 4 U-channel ends bolt (1× M{LT_EDGE_CHAN_END_BOLT}/end) to 4 formed-Al SUPPORT STRIPS — one across each opening (top + bottom), spanning rail-to-rail so the channels have a member to fix to; each strip blind-rivets to the frame beams (Sheet 8). Replaces the old L-clip-to-beam.",
+        f"4. NO WELDED SEAM — the housing is TWO 100° arc panels that SLIDE into {LT_HBAR_N} opening-edge Al H-MULLIONS (DETAIL B; Eagle SGN-113 H-divider). One slot takes the arc-panel edge (full height); the sill/header BAND pieces (glued/riveted) take the opposite slot at top + bottom. Riveted thru the flange + HDPE @ ~{LT_HBAR_RIVET_PITCH}mm.",
+        f"5. The 4 H-mullions run full height and their ends bolt (1× M{LT_HBAR_END_BOLT}/end via L-clip) to 4 formed-Al SUPPORT STRIPS — one across each opening (top + bottom), rail-to-rail; each strip blind-rivets to the frame beams (Sheet 8).",
         "SECTION A–A 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 930, -320, 14, fs=5, font=FONT, width=650,

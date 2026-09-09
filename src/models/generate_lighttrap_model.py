@@ -38,7 +38,7 @@ import generate_sketchup_model as ov   # helpers, materials, constants
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_EDGE_CHAN_LEG, LT_EDGE_CHAN_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
@@ -425,22 +425,25 @@ def drum_housing(cx, cy):
             parts.append(ov.ruby_arc_wall("LT Housing sill/header band", cx, cy, HOUSING_R,
                                           HOUSING_T, hb, gap_center_deg=(oc + 180) % 360,
                                           gap_deg=360 - od, color=C_ALUM, alpha=0.5, z0=zb_band))
-    # Opening-edge stiffeners — a riveted Al U-channel caps each of the 4 free HDPE
-    # edges (2 openings × 2 edges), replacing the old steel jamb posts. Each is a
-    # vertical U prism wrapping the wall: base across the edge + two legs (length
-    # LEG) running tangentially into the material arc. Slot faces the material.
-    Ro, Ri = HOUSING_R, HOUSING_R - HOUSING_T          # wall outer / inner face radii
-    CT, LG = LT_EDGE_CHAN_T, LT_EDGE_CHAN_LEG
+    # Opening-edge H-MULLIONS — the housing is TWO arc panels that SLIDE INTO vertical Al H-bars
+    # (double channel) at the 4 opening edges (no welded seam). One slot takes the arc-panel edge
+    # (full height), the other takes the sill/header band edge (top+bottom). Symmetric H cross-
+    # section, centered on the wall centerline, both slots opening ±S (tangential); mullions run the
+    # full extent so their ends land on the support strips.
+    SLOT, LG, WT = LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T
+    Rc = HOUSING_R - HOUSING_T / 2.0                    # wall centerline radius
+    ri, ro = Rc - SLOT / 2, Rc + SLOT / 2               # slot inner/outer walls (accept the 5mm panel edge)
+    fi, fo = ri - WT, ro + WT                           # inner/outer flange outer faces
+    ww = WT / 2.0                                       # half web thickness (tangential)
+    hv = [(fo, -LG), (fo, LG), (ro, LG), (ro, ww), (ri, ww), (ri, LG), (fi, LG),
+          (fi, -LG), (ri, -LG), (ri, -ww), (ro, -ww), (ro, -LG)]   # H/I outline in (R, S)
     for oc in (0, 180):                                 # INT (0°) + EXT (180°) openings
-        for e, sgn in ((oc - od / 2, -1), (oc + od / 2, +1)):  # -oh / +oh edges (sgn = into material)
+        for e in (oc - od / 2, oc + od / 2):            # the two edges of each opening
             a = math.radians(e)
             cr, sr = math.cos(a), math.sin(a)
-            # U cross-section in (radial R, tangential S) — S positive = into material
-            uv = [(Ri - CT, -CT), (Ro + CT, -CT), (Ro + CT, LG), (Ro, LG),
-                  (Ro, 0), (Ri, 0), (Ri, LG), (Ri - CT, LG)]
-            pts = [(cx + R * cr - sgn * Sc * sr, cy + R * sr + sgn * Sc * cr) for R, Sc in uv]
-            parts.append(ov.ruby_prism(f"LT Housing edge channel ({e:.0f}°)", pts, BEAM_BOT,
-                                       BEAM_TOP - BEAM_BOT, color=C_ALUM))   # full extent → ends land on the support strips
+            pts = [(cx + R * cr - Sc * sr, cy + R * sr + Sc * cr) for R, Sc in hv]
+            parts.append(ov.ruby_prism(f"LT Housing H-mullion ({e:.0f}deg)", pts, BEAM_BOT,
+                                       BEAM_TOP - BEAM_BOT, color=C_ALUM))
     # SKIN EXTENSION (2026-09-08) — extend the fixed skin from the beam INNER faces out to
     # their OUTER faces to close the top/bottom gap: top HZT(2167)→top-beam-top(2217),
     # bottom HZB(180)→bottom-beam-bottom(140). The skin fixes directly to the beams here (no
@@ -958,14 +961,15 @@ def bay():
     # HDPE is the visible OUTER skin covering the frame + posts, and the rivets pass through the HDPE into
     # the post (Alvin 2026-09-03 — was inboard of the post face, leaving the frame exposed). Roof/floor widen
     # by t each side so they cap the skins' outer faces.
-    # Roof + floor caps carry a Ø800 CUT-OUT (housing OUTER skin extends to the beam outer faces,
-    # i.e. through the cap plane); the annular gap is caulked + the caps rivet to the Al strips (2D Sheet 7).
-    cap_hole = [(ov.DRUM_CX, ov.DRUM_CY, ov.LT_HOUSING_R + 5)]     # Ø810 (Ø800 skin + 5mm caulk clearance)
+    # Roof + floor caps are PLAIN HDPE plates (NO cut-out) riveted to the OUTSIDE of the top/bottom
+    # frame beams: the roof sits ON the beam top face (zc), the floor UNDER the beam bottom face (z0-t).
+    # The housing skin's top/bottom edge butts the cap + a caulk bead seals it (2D Sheet 7 Detail A).
+    cap_w = (yR + t) - (yL - t)
     return '\n'.join([
         ruby_box("Bay wall near (Yd)", xf, yL - t, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall far (Yd)", xf, yR, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall top (roof cap, skin cut-out, riveted to the top beams)", xf, yL - t, zc - t, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5, holes=cap_hole, hole_axis="z"),
-        ruby_box("Bay wall bottom (floor cap, skin cut-out)", xf, yL - t, z0, depth, (yR + t) - (yL - t), t, color=C_PLASTIC, alpha=0.5, holes=cap_hole, hole_axis="z"),
+        ruby_box("Bay wall top (roof cap, riveted to the outside of the top beams)", xf, yL - t, zc, depth, cap_w, t, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall bottom (floor cap, riveted to the outside of the bottom beams)", xf, yL - t, z0 - t, depth, cap_w, t, color=C_PLASTIC, alpha=0.5),
     ])
 
 
@@ -991,13 +995,6 @@ def cage_face_rivets():
         for xd in (x0 + 8, x1 - 8):
             p.append(ov.ruby_cylinder("Cage roof rivet", xd, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
             p.append(ov.ruby_cylinder("Cage floor rivet", xd, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
-    # cap → 1x1x1/8 Al support-strip rivets: the roof/floor caps ALSO rivet to the 2 opening support
-    # strips, at their cage-rail ends (clear of the Ø800 skin cut-out), top + bottom (2D Sheet 7 Detail A).
-    for oc in (0, 180):
-        ex = ov.DRUM_CX + ov.LT_HOUSING_R * math.cos(math.radians(oc - OPENING_DEG / 2))
-        for yc in (yL + 40, yR - 40):
-            p.append(ov.ruby_cylinder("Cap->strip rivet", ex, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
-            p.append(ov.ruby_cylinder("Cap->strip rivet", ex, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 

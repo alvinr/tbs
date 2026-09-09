@@ -154,12 +154,11 @@ costs more than a plywood build (§8.1).
 The center-zone HDPE surround — the skin that wraps the Ø800 light-trap housing and the
 forward B2 punch-out bay — is a corner-welded 1/8" HDPE assembly of six pieces: the two
 center-zone panel-face skins (carrying the personnel light-lock opening), the two bay
-side walls, and the upper and lower floor/roof caps. The caps close the top and bottom of
-the bay; each carries a **circular cut-out** through which the Ø800 housing **outer skin**
-passes (the skin now extends to the beam outer faces, coplanar with the caps — see the
-[Light Trap Selection](light-trap-selection.md) Sheet 9). The annular cap↔skin gap is
-**caulked** with a silicone bead (no weld, no neoprene), and each cap **blind-rivets to the
-1×1×1/8 aluminum support strips** at top and bottom (the light-trap opening bars). The
+side walls, and the upper and lower floor/roof caps. The caps are **plain plates (no
+cut-out)**: each sits on the **outside** of the top/bottom frame beams and **blind-rivets to
+them**. The Ø800 housing **outer skin** extends to the beam outer faces (see the
+[Light Trap Selection](light-trap-selection.md) Sheet 9), and its top/bottom edge **butts the
+cap underside**, sealed by a **silicone caulk bead** (no weld, no neoprene). The
 surround is fastened to the **drum cage** (50×50×3 RHS) by a **lapped, blind-riveted joint**
 — the HDPE laps the cage posts/rails (front + side faces) and is set with 1/8" 18-8
 stainless blind rivets on a regular pitch, with a DP8010 sealant bead along the lap for
@@ -245,7 +244,7 @@ See [Light Trap Selection](light-trap-selection.md) §5 and **Light-Trap Sheet 7
 | Top | 12mm closed-cell neoprene wiper ring bonded to drum top cap + silicone bead against ceiling mount plate |
 | Bottom | 12mm closed-cell neoprene wiper ring bonded to drum bottom cap + silicone bead against floor mount plate |
 | **Drum↔housing rotating seal** | Felt/brush wiper strips on the two vertical edges of the drum opening sweep against the housing inner wall as the drum turns, blocking light leaking around the opening; top + bottom felt wiper rings close the ~15mm annular running gap |
-| Housing-to-panel gap (top/bottom caps) | The floor/roof caps carry a Ø800 cut-out through which the housing **outer skin** passes (the skin extends to the beam outer faces, coplanar with the caps); the annular cap↔skin gap is closed by a **silicone caulk bead** — no weld, no neoprene. The caps blind-rivet to the 1×1×1/8 Al support strips (Sheet 7 Detail A) |
+| Housing-to-panel gap (top/bottom caps) | The floor/roof caps are **plain plates** riveted to the **outside** of the top/bottom frame beams; the housing **outer skin** extends to the beam outer faces and its top/bottom edge **butts the cap underside**, closed by a **silicone caulk bead** — no weld, no neoprene (Sheet 7 Detail A) |
 | Weather rating | IP44 (splash and rain protection) |
 
 ### 3.5 Handle
@@ -533,7 +532,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | Shell→cap lap rivets (~35/cap ×2 ≈ 70 → 1 pack of 100). 1/8" (Ø3.18) 18-8 SS low-profile head, grip 0.188–0.25", drill #30 (Ø3.3). Wet in DP8010 for light-tightness. $13.83/100 firm. | 1 pack-100 | McMaster-Carr | $14 |
 | [1/8" 18-8 SS blind rivets — housing→frame lap (100-pack)](https://www.mcmaster.com/97525A435/) (97525A435) | Housing→frame lap rivets (~26/edge ×2 ≈ 52 → 1 pack of 100). 1/8" (Ø3.18) 18-8 SS, grip 0.313–0.375", drill #30. $14.59/100. | 1 pack-100 | McMaster-Carr | $15 |
 | [3M Scotch-Weld DP8010 structural adhesive (green, 45 mL)](https://www.mcmaster.com/7467A36/) (7467A36) | Structural LSE acrylic — bonds + light-seals the HDPE lap joints (shell→cap, housing→frame) and wets the open rivet mandrel bore for light-tightness. (The opening-edge channels are rivet-only as of 2026-09-08 — no DP8010.) 45 mL cartridge + mixing nozzle. $76.29 firm. | 1 ea | McMaster-Carr / 3M | $76 |
-| 6063-T5 Al U-channel opening-edge stiffeners (×4) + L-clips | 4× RIVETED Al U-channel (~20×18×3, ~2.1 m each ≈ 8.5 m) stiffening the housing's two free HDPE opening edges — replaces the steel jamb posts — + 8× L-clip + 8× M8 end bolts (channel ends bolt via L-clip to the 4 formed-Al support strips, ll-channel-strip). RIVET-ONLY as of 2026-09-08 (Ø3.18 SS blind @120mm thru both legs + HDPE; no DP8010 — the opaque channel wraps the edge). Est.; confirm stocked section. | 1 lot | Online Metals / McMaster-Carr | $55–$110 |
+| [Eagle Al H-divider — opening-edge H-mullions (×4)](https://eagle-aluminum.com/product/aluminum-h-divider-1-38-for-316-material/) (SGN-113) | 4× Al H-mullion (Eagle Aluminum SGN-113 'H-divider 1-3/8" for 3/16" material', mill finish, 12 ft) — one at each of the 4 housing opening edges. The housing is built as TWO arc panels that SLIDE into the H slots (no welded seam): one slot takes the arc-panel edge (full height), the other the sill/header band edge (top+bottom). Riveted thru the flange + HDPE @120mm (Ø3.18 SS blind); mullion ends bolt via L-clip to the 4 support strips (ll-channel-strip; L-clips + M8 in the fasteners lot). One 12 ft stick per mullion (~82" each). $38/12 ft. Confirm the alloy (likely 6063) + slot/leg depth on order. | 4 12ft | Eagle Aluminum / Orange Aluminum | $152 |
 | 6063-T5 Al U-channel — rotating-drum opening-edge stiffeners (×2) + rivets | 2× RIVETED Al U-channel (~10×15×2, ~2.1 m each ≈ 4.2 m) capping the ROTATING DRUM's two free HDPE opening-jamb edges (mirrors the housing opening channels but for the 3.18mm shell — rivet-only, no bond; legs lie flat so ~2mm radial proud clears the 13mm drum↔housing gap). Ø3.18 18-8 SS blind rivets @120mm thru both legs + shell (from the SS blind-rivet packs). Est.; confirm stocked section (2026-09-08). | 1 lot | Online Metals / McMaster-Carr | $30–$55 |
 | 1×1×1/8in 6061-T6 Al angle — channel-support beams (×4) + rivets | 4× 1"×1"×1/8" (25×25×3.2) 6061-T6 aluminum equal-leg angle, ~1.2 m (4 ft) each (one strip per 4 ft piece) — one across each housing opening (top + bottom), spanning the full cage width (~962mm, rail-to-rail) so the ends land on the X-near/far frame rails, NOT floating. They give the two housing opening-edge U-channels (ll-edge-channel) a member to bolt to (1× M8/end via L-clip on the up-leg) at top and bottom, and are themselves Ø3.18 18-8 SS blind-riveted to the frame beams (flat leg on the beam; from the SS blind-rivet packs). Metals Depot 1×1×1/8 Al angle $17.20/4ft. | 4 4ft | Metals Depot / Online Metals | $69 |
 | [#4 (3/16") black-nylon strip brush — running-gap light-seal wiper (×4 lines)](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) | 4 vertical #4 (3/16") staple-set strip brushes — the running-gap light seal (drum↔housing). Metal channel backing, 0.008" BLACK nylon, 0.687" (17.5mm) trim; each snaps into an Al flange holder (ll-wiper-holder) that is flange-riveted to the rotating drum OD (rivets in the flange, clear of the brush — a 3/16" channel is too small to rivet through). One 8 ft (2.44 m ≥ 1.97 m drum ht) piece per line → 4× 8ft. Est.; firm at order. | 4 8ft | Gordon Brush / Tanis Brush | $88–$160 |
@@ -548,7 +547,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" blind rivets + backup washers — brush-holder flange → drum OD](https://www.mcmaster.com/97447A015/) (97447A015) | ~72 rivets (4 brush-holder lines × ~18 @ 120mm) fastening the Al holder flanges to the rotating drum OD — grip ~4.5mm (1.27mm Al flange + 1/8" HDPE). Blind rivets (97447A015, $10.78/250) with Ø1/8" BACKUP WASHERS on the blind (inside) face (~$5/pack) so the bulb can't pull through the soft HDPE. The rivets are the mechanical backup — the flange is PRIMARY-BONDED to the shell with DP8010 (existing ll-dp8010 adhesive), which spreads the load over the whole flange. ≈$16 firm. | 1 lot | McMaster-Carr | $16 |
 | [1/8" 18-8 SS blind rivets — housing skin → outer beam face (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | ~24× 1/8" (Ø3.18) 18-8 SS blind rivets fastening the housing skin's top + bottom edges DIRECTLY to the steel frame top + bottom beams (2× 100° arcs each, ~150mm pitch). The skin now extends to the OUTER beam face and fixes straight to the beam — the rolled rim-angle is dropped (2026-09-08). A blind rivet suits the CLOSED 3mm RHS beam: the set head forms inside the bore (no internal access) and bears on the full wall, vs only ~2 threads for a self-driller; 18-8 SS bites the 3mm steel far better than an aluminum rivet. Grip 0.188–0.25" (4.8–6.35mm) fits the 5mm HDPE skin + 3mm steel wall; drill #30 (Ø3.3). Same SS rivet as the shell→cap lap (97525A425). $13.83/100 firm. | 1 pack-100 | McMaster-Carr | $14 |
 | Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | ~16–22 hrs: roll + hot-air/extrusion-weld the 2 HDPE cylinders, roll the Al rim-angle rings, fit the metal caps + SKF 6215 bearings + stub shafts, rivet the lap joints, rivet the 4 channel-support strips to the frame beams, mount the drum brush holders + edge channels + pull-handle stile. | 1 lot | Local plastic + metal fab | $800–$1,150 |
-| **Lightlock total** | | | | **$3,047–$4,113** |
+| **Lightlock total** | | | | **$3,144–$4,155** |
 <!-- END parts:lightlock -->
 
 
@@ -585,10 +584,10 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,324<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,537<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,047<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,113<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,144<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,155<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$831<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,131<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,621<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,380<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,718<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,422<!-- END costing:hp-total-high -->** |
 
 ---
 

@@ -24,6 +24,20 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Light-trap housing → weld-free "slide-together" kit (H-mullions + 2 arc panels).** Replaced the
+  extrusion-welded HDPE tube with a mechanical assembly: the housing is now **two 100° arc panels** that
+  slide into **four opening-edge Al H-mullions** (sourced: **Eagle Aluminum SGN-113** H-divider "1-3/8″ for
+  3/16″ material", $38/12 ft ×4 = $152), with the **sill/header band pieces glued/riveted** into the H's
+  opposite slot — **no welded seam**. One H-slot takes the arc-panel edge, the other the band edge; the four
+  mullions run full height and bolt to the support strips. Opening clear width drops ~514→~490 mm but the
+  drum opening (~491 mm) already governs, so the personnel passage is effectively unchanged. Cascaded across
+  `tbs_constants` (LT_HBAR_*), the 3D (`drum_housing` H cross-section), 2D Sheet 2 (rebuilt as 2 arc-panel
+  cut sheets + band pieces), Sheet 8 + Sheet 9 (H-mullion detail/labels), parts (`ll-edge-channel` → the
+  Eagle H-bar, +$97/$69/$42), and the report. lighttrap/overview/construction .skp re-send pending.
+- **Hinged-panel floor/roof caps simplified — plain plates, no cut-out.** Superseded the Ø800-cut-out caps:
+  the top/bottom caps are plain HDPE plates riveted to the outside of the frame beams, and the housing skin's
+  edge butts the cap underside + a caulk bead (Sheet 6/7 Detail A, report §2.6/§3.4, 3D `bay()`). The Al
+  support strips stay as-is.
 - **Hinged-panel HDPE surround — reconciled to the current design (attachment + floor-cap join).** Resolved the
   2D/report ↔ 3D divergence flagged in TODO. The surround was documented as riveting to the steel center-zone
   panel-frame jamb but the 3D rivets it to the **drum cage** (which physically wraps it, and is welded into the

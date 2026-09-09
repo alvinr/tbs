@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Overview/construction light-trap were missing the drum cage.** The reused `light_trap_drum()` /
+  `light_trap_bay()` wrappers only exposed `drum()` (housing + rotor) + `bay()` (surround) — they never
+  called `drum_frame()`, so overview and construction (phase 5) had **no cage, axle beams, SKF 6215
+  bearings, or mount plates**, leaving the support strips / H-mullions / drum floating. Added
+  `drum_frame()` to `light_trap_drum()` and the two cage-rivet builders to `light_trap_bay()`; both models
+  now carry the full drum support structure. Pre-existing gap surfaced by this branch's cage-anchored
+  strips/H-mullions. lighttrap unaffected (focus model already had it); overview/construction re-send pending.
+
 - **Light-trap housing → weld-free "slide-together" kit (H-mullions + 2 arc panels).** Replaced the
   extrusion-welded HDPE tube with a mechanical assembly: the housing is now **two 100° arc panels** that
   slide into **four opening-edge Al H-mullions** (sourced: **Eagle Aluminum SGN-113** H-divider "1-3/8″ for

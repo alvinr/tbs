@@ -1391,9 +1391,13 @@ def light_trap_drum():
     two opposed 80° openings (exterior + interior-onto-walkway, 180° apart) and a
     single-opening C-shell drum (~Ø850 bore) rotating inside on SKF 6215 bearings.
     No internal fins — light-tight by geometry. Centered at (DRUM_CX=0, DRUM_CY).
-    Replaces the failed Ø750 4-fin drum (see light-trap-selection.md §3)."""
+    Replaces the failed Ø750 4-fin drum (see light-trap-selection.md §3).
+
+    Includes drum_frame() — the steel cage (posts + perimeter rails), top/bottom
+    axle beams, SKF 6215 bearings + Ø240 mount plates + ring/collar — so the drum's
+    support structure travels with it (else the strips/H-mullions/drum would float)."""
     import generate_lighttrap_model as lt
-    return lt.drum()
+    return lt.drum() + "\n" + lt.drum_frame()
 
 
 def light_trap_frame():
@@ -1408,9 +1412,10 @@ def light_trap_frame():
 
 
 def light_trap_bay():
-    """B2 punch-out bay — reused from the Light-Trap model so it stays in sync."""
+    """B2 punch-out bay — reused from the Light-Trap model so it stays in sync.
+    Includes the cage rivets (roof/floor caps + side walls → cage) that fix the bay."""
     import generate_lighttrap_model as lt
-    return lt.bay()
+    return lt.bay() + "\n" + lt.cage_face_rivets() + "\n" + lt.bay_wall_cage_rivets()
 
 
 # ── Solar array (ground tilt frame, exterior) ────────────────────────────────

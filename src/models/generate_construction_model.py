@@ -297,14 +297,6 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-# ── Cumulative phase scenes ──
-{scenes_ruby}.each {{ |name, tags|
-  model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
-  page = model.pages.add(name)
-  page.use_camera = true
-}}
-model.layers.each {{ |l| l.visible = true }}
-
 model.commit_operation
 
 # Register the phase click-to-build DCs with the Dynamic Components engine so the Interact tool
@@ -315,8 +307,19 @@ if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
 {dc_redraw}  end
 end
 
-# Re-assert the fully-built default (the ANIMATE redraw above resets the first DC's step).
+# Re-assert the fully-built default: rest EVERY phase DC at step 1 (only its first sub-step drawn).
+# The ANIMATE redraw can leave a DC — especially the LAST one redrawn — at its end step.
 {dc_fixup}
+
+# ── Cumulative phase scenes — created AFTER the fixup so each scene captures the step-1 RESTING
+#    state (else a phase's scene restores every sub-step visible — e.g. the drum showing at Phase-5
+#    open instead of on the 5.3 click). ──
+{scenes_ruby}.each {{ |name, tags|
+  model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
+  page = model.pages.add(name)
+  page.use_camera = true
+}}
+model.layers.each {{ |l| l.visible = true }}
 {{ success: true, model: "Construction Sequence",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }}.to_json

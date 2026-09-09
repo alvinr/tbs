@@ -1806,7 +1806,7 @@ def draw_sheet9():
     Hpts = [(xL, zt_o), (xR, zt_o), (xR, zt_i), (dx + ww, zt_i), (dx + ww, zb_i), (xR, zb_i), (xR, zb_o),
             (xL, zb_o), (xL, zb_i), (dx - ww, zb_i), (dx - ww, zt_i), (xL, zt_i)]
     ax.add_patch(mpatches.Polygon(Hpts, closed=True, fc=C_ALUM, ec=C_OUT, lw=1.4, zorder=6))
-    blind_rivet(ax, dx - LG2 * 0.5, dz + sh + WT2 / 2, 90, WT2 + HT2, d=RVD)        # thru the outer flange + panel
+    blind_rivet(ax, dx - LG2 * 0.5, dz, 90, SLOT2 + 2 * WT2, d=RVD)                 # radial thru the full H (flange + panel + flange) — heads butt both flange faces
     draw_dim_h(ax, xL, xR, zb_o - 28, f"1-3/8in ({2 * LT_HBAR_LEG + LT_HBAR_T}mm) H-BAR", offset=22, fs=5.6, above=False, font=FONT)
     leader(ax, dx - LG2 * 0.7, zt_i, dx - LG2 - 250, zt_o + 24,
            f"Al H-MULLION (Eagle SGN-113 H-divider) — the arc PANEL\nedge slides into this slot; riveted thru the flange + {LT_HOUSING_T}mm\nHDPE @ {LT_HBAR_RIVET_PITCH}mm (ends → support strip)",

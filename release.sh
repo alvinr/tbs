@@ -8,6 +8,10 @@
 #
 # Steps: verify [Unreleased] has content -> promote it to "## [X.Y] — <date>" (leaving a
 # fresh empty [Unreleased]) -> commit RELEASE.md -> tag X.Y -> push -> gh release create X.Y.
+#
+# The confirmation prompt is shown ONLY for an interactive terminal. A non-interactive
+# invocation (a pipe, CI, or a tool shell with no TTY) proceeds automatically, as does
+# RELEASE_ASSUME_YES=1. The [Unreleased]/tag/unused-import gates are the real guardrails.
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
@@ -43,8 +47,12 @@ fi
 
 echo "Changes queued for release $VERSION:"
 echo "$unreleased" | sed 's/^/    /'
-read -r -p "Promote, tag, and publish GitHub release $VERSION? [y/N] " ans
-[[ "$ans" == [yY] ]] || { echo "aborted."; exit 1; }
+if [[ "${RELEASE_ASSUME_YES:-}" == 1 || ! -t 0 ]]; then
+    echo "Non-interactive (or RELEASE_ASSUME_YES=1) — proceeding with release $VERSION."
+else
+    read -r -p "Promote, tag, and publish GitHub release $VERSION? [y/N] " ans
+    [[ "$ans" == [yY] ]] || { echo "aborted."; exit 1; }
+fi
 
 DATE="$(date +%Y-%m-%d)"
 # ── Promote [Unreleased] -> [VERSION] — DATE, leaving a fresh empty [Unreleased] ──

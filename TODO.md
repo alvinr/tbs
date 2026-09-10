@@ -272,14 +272,17 @@ The remaining §7 parts BOM is gated on confirmed prices._
   mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
   mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
   to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
-- [ ] **Hinge-panel blueprint — swing-panel transport-lock STAY plate detail (2026-08-17).** The top +
-  bottom wall stays that lock the swung panel at 56° attach to a **plate paired with an exterior plate on the
-  OUTSIDE of the container wall** (same interior+exterior backing-plate pattern as the container-wall
-  cantilevers / the IBC wall hangers). Design it in the hinge-panel blueprint pass: plate sizes, through-bolt
-  pattern, and add the geometry to the 3D (currently the stays/plates are NOT modeled — a 2D↔3D gap like the
-  bar cleat was). Reference the existing paired-plate detail. (also flagged some square-bolt heads in the
-  overview near here — confirm which and hex them if they're fasteners.)
-- [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (2026-07-19.)
+- [x] **Hinge-panel blueprint — swing-panel transport-lock STAY plate detail (2026-08-17).** DONE 2026-09-10:
+  the wall anchor was already modeled (3D `wall_anchors()` builds the interior + exterior 200×200×12 plate pair
+  + 4× M16 through-bolts, and `stay_rods()` the turnbuckles), but the 2D lacked a dimensioned detail. Promoted
+  the plate/bolt sizes to `tbs_constants` (`LT_STAY_*`, single-sourced 2D↔3D) and added **hingepanel Sheet 12
+  Detail D** (plate front view + bolt gauge + plate-pair section); report §5.2 + parts `sp-wall-stays` updated.
+  (Square-bolt-head side-ask: the stay through-bolts render as simplified square prisms — the model's through-
+  bolt convention, not square-headed fasteners; a hex-head pass would be a model-wide cosmetic refinement.)
+- [x] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** DONE 2026-09-10 (verify):
+  report §2.3 already specifies the split — 20mm EPDM on the two **vertical** edges, **nylon strip-brush**
+  top/bottom, + a second EPDM **housing-surround ring**; the 3D (brown EPDM `C_GASKT` + green brush `C_SEAL`)
+  and parts (20mm EPDM B089GJQ96Z + strip brush) agree. Consistent — no change needed. (2026-07-19.)
 - [ ] **Revisit film-plane EPDM foam-tape coverage.** Qty set **provisionally to 2× 25 ft rolls** (McMaster 8694K88, 50 ft) — right-sized to the ~43 ft film-plane perimeter (the old 3×50 ft = 150 ft was ~3.5× over). When reviewing the EPDM seals, confirm a single perimeter run + corner/overlap allowance is covered by 50 ft, else bump to 3 rolls. `parts.py` `epdm-foam-tape` carries a "provisional qty" note. (2026-07-21.)
 
 ## Scheduled

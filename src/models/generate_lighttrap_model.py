@@ -736,7 +736,8 @@ def frame_hooks():
 # Permanent bolted wall anchors for the transport stays (top+bottom): the near wall can't
 # be welded to, so the stay eye reacts into an inside + outside plate pair bolted through
 # the wall (4× M16). Stays put even when the rod is removed.
-PLATE_HW, PLATE_T, BOLT_OFF, BOLT_D = 100, 12, 70, 16
+from tbs_constants import (LT_STAY_PLATE_HW as PLATE_HW, LT_STAY_PLATE_T as PLATE_T,
+                           LT_STAY_BOLT_OFF as BOLT_OFF, LT_STAY_BOLT_D as BOLT_D)
 # Wall-anchor X: inboard of the hook's transport X, but CLAMPED so the plate right edge
 # clears the electrical panel (EP) on the same pinhole wall — the relocated top stay
 # (hooks on the perimeter stile) would otherwise overlap the EP left edge by a few mm.

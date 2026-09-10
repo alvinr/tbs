@@ -985,7 +985,7 @@ PARTS: list[Part] = [
     Part("sp-drum-cage", "Drum support cage, 2×2×0.120in steel SHS", "steel-structural",
          "swing", 1, "lot", 70, 120, "local fab", spec="Steel welded box cage carrying the Ø800 housing + drum on the swinging leaf — 4 corner posts + perimeter rails + a top & bottom axle beam at the drum axis, ALL 50×50×3 RHS (2×2×0.120in stock, the axle beams = the perimeter section: the 962mm span is barely stressed, δ≈0.3mm). The 2× Ø240×12 bearing mount plates (ll-mount-plates) are fillet-welded across the beams (steel↔steel) — the SKF 6215 ring/collar tap into them. Material inside the local-fab lot, so no separate per-ft line."),
     Part("sp-wall-stays", "Top + bottom wall stays + 4-bolt anchor plates", "fasteners-hardware",
-         "swing", 2, "set", 45, 60, "Fasteners Plus", spec="Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates", part_no="JETBGV58X6", url="https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle"),
+         "swing", 2, "set", 45, 60, "Fasteners Plus", spec="Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates (200×200×12 A36 pair, 4× M16 through-bolts per anchor; hingepanel Sheet 12 Detail D)", part_no="JETBGV58X6", url="https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle"),
     Part("sp-rail-saddles", "Drop-in rail saddles + tapered dowels", "steel-structural",
          "swing", 4, "ea", 20, 32.5, "local fab", "McMaster-Carr", spec="For the 2 removable left film rails (TL + BL); dowels set the film datum"),
     # ═══ door (hinged-panel §8.4) — fixed door frame; sums to the SWINGPIVOT door lines ($335–$550) ═══

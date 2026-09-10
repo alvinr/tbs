@@ -2181,10 +2181,12 @@ def sheet11():
 #       screwed to the FIXED door frame.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet12():
-    fig, ax = plt.subplots(figsize=(19, 8.5))
+    from tbs_constants import (LT_STAY_PLATE_HW, LT_STAY_PLATE_T, LT_STAY_BOLT_OFF,
+                               LT_STAY_BOLT_D)
+    fig, ax = plt.subplots(figsize=(25, 8.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(0, 540)
+    ax.set_xlim(0, 760)
     ax.set_ylim(-70, 220)
 
     # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (SIDE SECTION through the latch axis) ══════
@@ -2262,9 +2264,46 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
+    # ═══ DETAIL D — wall-end transport-stay anchor (bolted inside+outside plate pair) ═══
+    #   The near wall can't be welded to, so each stay eye reacts into a plate pair bolted
+    #   THROUGH the wall (4× M16) — the same interior+exterior backing-plate pattern as the
+    #   wall-hanger / cantilever joints. FRONT VIEW (plate + bolt gauge) + a plate-pair SECTION.
+    Dx = 560
+    PW = 2 * LT_STAY_PLATE_HW           # 200 — plate side
+    BGAUGE = 2 * LT_STAY_BOLT_OFF       # 140 — M16 square gauge
+    sf = 0.42                           # front-view scale (mm → data units)
+    cx, cy = Dx + 90, 140
+    hpw, hbg, br = LT_STAY_PLATE_HW * sf, LT_STAY_BOLT_OFF * sf, (LT_STAY_BOLT_D / 2) * sf
+    ax.text(Dx + 90, 205, "DETAIL D — WALL-END STAY ANCHOR", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Dx + 90, 192, "inside + outside plate pair, 4× M16 through the near wall (§5.2)", ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((cx - hpw, cy - hpw), 2 * hpw, 2 * hpw, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=4))
+    for ddx in (-hbg, hbg):
+        for ddz in (-hbg, hbg):
+            ax.add_patch(Circle((cx + ddx, cy + ddz), br, fc=BG, ec=C_OUT, lw=1.1, zorder=6))
+    ax.add_patch(Circle((cx, cy), 8, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))   # welded stay eye
+    ax.add_patch(Circle((cx, cy), 4, fc=BG, ec=C_OUT, lw=1.0, zorder=7))
+    draw_dim_h(ax, cx - hpw, cx + hpw, cy - hpw - 8, f"{PW}mm", fs=6, offset=8, above=False)
+    draw_dim_v(ax, cx - hpw - 8, cy - hpw, cy + hpw, f"{PW}mm", fs=6, offset=8, right=False)
+    draw_dim_v(ax, cx + hpw + 8, cy - hbg, cy + hbg, f"{BGAUGE}mm", fs=6, offset=8, right=True)
+    leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 14, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
+    leader(ax, (cx, cy), (cx - hpw - 14, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
+    # plate-pair SECTION (thickness exaggerated): exterior plate | wall | interior plate
+    px, sy = Dx + 52, -42
+    ax.text(Dx + 90, 10, "SECTION — plate pair sandwiches the wall (thickness exaggerated)", ha="center", fontsize=6.4, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((px, sy), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # exterior plate
+    ax.add_patch(Rectangle((px + 9, sy + 6), 8, 28, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))  # container wall
+    ax.add_patch(Rectangle((px + 17, sy), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                 # interior plate
+    ax.add_patch(Rectangle((px - 6, sy + 17), 38, 6, fc="#8A8F98", ec=C_OUT, lw=1.0, zorder=7))            # M16 through-bolt
+    ax.add_patch(Rectangle((px - 9, sy + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))              # hex head
+    ax.add_patch(Rectangle((px + 31, sy + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))             # nut
+    ax.add_patch(Circle((px + 42, sy + 10), 6, fc=BG, ec=C_OUT, lw=1.2, zorder=6))                         # stay eye (interior)
+    ax.plot([px + 48, px + 82], [sy + 10, sy + 10], color="#101010", lw=2.0, zorder=6)                     # rod → turnbuckle
+    leader(ax, (px + 22, sy + 40), (px + 34, sy + 62), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
+    leader(ax, (px + 66, sy + 10), (px + 78, sy - 16), "M16 turnbuckle rod →\nstile hook (Detail B)", col=C_DIM, fs=6, ha="left")
+
     title_block(ax, "SHEET 12 OF 16",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP",
+                subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP · WALL ANCHOR",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,

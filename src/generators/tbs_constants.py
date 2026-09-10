@@ -330,6 +330,13 @@ SWING_LOCK_DEG = 56     # transport swing angle, locked (clears the door plane; 
                         # clearance is computed as SWUNG_DOOR_CLEARANCE_MM, below)
 PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to clear the near
                         # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
+# Transport-stay wall anchor (top + bottom): the near wall can't be welded to, so each stay eye
+# reacts into an inside + outside plate pair bolted through the wall (4× M16). Shared by the 3D
+# wall_anchors() and hingepanel Sheet 12 Detail D so the plate size + bolt pattern single-source.
+LT_STAY_PLATE_HW = 100  # anchor plate half-width (mm) → 200×200 A36 plate
+LT_STAY_PLATE_T  = 12   # anchor plate thickness (mm)
+LT_STAY_BOLT_OFF = 70   # M16 through-bolt offset from plate center (mm) → 140 square pattern
+LT_STAY_BOLT_D   = 16   # M16 through-bolt (mm)
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
 PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29)

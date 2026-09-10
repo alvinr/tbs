@@ -39,6 +39,12 @@ file** — a release must not ship without a changelog entry:
 - **Chem-shelf 3D re-send completed.** The 0.12 chem-shelf redesign (steel frame → 18mm ply-primary,
   1/4-20 tee-nuts, chain stays) had its overview/construction `.skp` re-send deferred; both are now
   re-sent, re-uploaded to Sketchfab, and committed, so the 3D matches the shipped 2D/parts design.
+- **Hinged-panel transport-stay wall anchor — 2D detail added; round closed.** The wall anchor was modeled
+  in 3D (interior + exterior 200×200×12 plate pair + 4× M16 through-bolts) but had no dimensioned 2D detail.
+  Single-sourced the plate/bolt sizes to `tbs_constants` (`LT_STAY_*`) and added hingepanel **Sheet 12
+  Detail D** (plate front view + bolt gauge + plate-pair section); report §5.2 + parts `sp-wall-stays` updated.
+  Also verified the cargo-door-wall EPDM/strip-brush split is consistent across report/3D/parts. Model geometry
+  unchanged (constants promoted, values identical) — no 3D re-send.
 
 ## [0.12] — 2026-09-10
 

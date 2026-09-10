@@ -39,6 +39,12 @@ file** — a release must not ship without a changelog entry:
 - **Chem-shelf 3D re-send completed.** The 0.12 chem-shelf redesign (steel frame → 18mm ply-primary,
   1/4-20 tee-nuts, chain stays) had its overview/construction `.skp` re-send deferred; both are now
   re-sent, re-uploaded to Sketchfab, and committed, so the 3D matches the shipped 2D/parts design.
+- **Hinged-panel transport lock pulled onto its own Sheet 17.** Sheet 12 was a grab-bag; the transport
+  lock now has a focused sheet — general arrangement, the **panel-side receiver lug** (a new fab detail: a
+  12mm steel eye lug, Ø17 pin hole dimensioned with edge-distance + centered chain, 6mm fillet-welded to
+  the stile), and the near-wall anchor — plus a full spec block. Sheet 12 slimmed to cam-latch + brush
+  strip. Lug/plate sizes single-sourced (`LT_STAY_*`); parts `sp-wall-stays` lists the lug. *(The 3D
+  receiver lug reshape is still pending — the free-edge stile geometry needs pinning down first.)*
 - **Hinged-panel transport-stay wall anchor — 2D detail added; round closed.** The wall anchor was modeled
   in 3D (interior + exterior 200×200×12 plate pair + 4× M16 through-bolts) but had no dimensioned 2D detail.
   Single-sourced the plate/bolt sizes to `tbs_constants` (`LT_STAY_*`) and added hingepanel **Sheet 12

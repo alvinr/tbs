@@ -183,6 +183,10 @@ file** — a release must not ship without a changelog entry:
 - **M5 retirement deferred to the chem-shelf design.** M5×16 CSK is now only the chem-shelf ply attachment
   (the film-clamp clips it shared were retired to nylon spring clamps); its retirement now targets a flange
   bolt + nyloc under the shelf (not an M6 CSK into the thin frame) and waits on the chem-shelf blueprint.
+- **Author-name attributions scrubbed (housekeeping).** Removed the pre-existing dated "(name …)" author
+  attributions from code comments, docstrings, report prose, and parts/costing cost-history notes across 26
+  files, per the CLAUDE.md name ban (a bare date or "(confirmed)" replaces them). License/copyright headers,
+  the rule text, and the functional brochure-footer regex are untouched; comment/prose-only, no geometry.
 
 ## [0.11] — 2026-09-06
 

@@ -20,21 +20,20 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
+## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27) — ✅ CLOSED (shipped in 0.12)
 
-> Deferred out of the light-trap blueprint (merged/released). These are the starting scope for the **next**
-> blueprint round: the **hinged panel** (`hingepanel-*`). Pick up here when that round begins.
+> The surround was fully blueprinted in the 0.12 hinged-panel round; these items predate it and were
+> never ticked. Verified 2026-09-10 against the shipped sheets/report/parts/3D.
 
-- [ ] **HDPE surround cut sheets + drum-join detail.** The hinged panel's HDPE surround (the skin around
-  the Ø800 light-trap housing) has no fabrication cut sheets yet. Draw them: the flat-pattern cut sheet(s)
-  for the surround HDPE, AND the joint detail for how the **upper and lower floor** (the panel's top/bottom
-  surfaces around the drum) **join to the outer drum housing** — the transition/seal where the surround
-  meets the Ø800 housing at the top and bottom. Add to the hinged-panel drawing set + report; coordinate
-  with the light-trap Sheet 2 (housing cut sheet) so the surround↔housing interface is single-sourced.
-- [ ] **Resolve why the HDPE surround is not connected to the frame.** In the current hinged-panel model
-  the HDPE surround reads as disconnected from the panel steel frame — establish the actual attachment
-  (fasteners / bond / U-channel retainer / rivets) and either add it to the model + a detail, or document
-  why it floats. Reconcile the 2D + 3D + report once resolved.
+- [x] **HDPE surround cut sheets + drum-join detail.** DONE (shipped in 0.12): hingepanel **Sheet 6** =
+  6-piece flat-pattern cut sheets (2 face skins, 2 bay Yd walls, upper/lower plain caps — dimensioned +
+  fab notes); **Sheet 7 Detail A** = the Ø800 housing↔cap join (5mm outer skin butts the plain cap + a
+  silicone caulk bead). Report §2.6; HDPE/rivet/U-channel parts registered. Cross-referenced to light-trap
+  Sheet 2 for the personnel-opening alignment.
+- [x] **Resolve why the HDPE surround is not connected to the frame.** DONE (shipped in 0.12): it is NOT
+  floating — the surround laps + blind-rivets the **drum cage** (50×50×3 RHS, welded into the panel frame),
+  front **and** side faces, @60mm + DP8010 bead (**Sheet 7 Detail B**, report §2.6, 3D cage rivets). 2D/3D/
+  report reconciled.
 
 ## 🛠 Tooling / infra
 

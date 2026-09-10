@@ -2824,7 +2824,7 @@
 </tr>
 <tr>
 <td>Wall thickness</td>
-<td>5mm (3/16in) UV-HDPE housing + 1/8" HDPE drum, rolled and extrusion-welded</td>
+<td>5mm (3/16in) UV-HDPE housing (two arc panels + Al H-mullions, no welded seam) + 1/8" HDPE drum (rolled, extrusion-welded C-shell)</td>
 </tr>
 <tr>
 <td>Surface finish</td>
@@ -2856,7 +2856,7 @@
 </tr>
 <tr>
 <td>Approximate cost</td>
-<td>USD <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --> (local plastic fabrication shop)</td>
+<td>USD <!-- BEGIN costing:hp-housing-low -->$3,144<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,155<!-- END costing:hp-housing-high --> (local plastic fabrication shop)</td>
 </tr>
 <tr>
 <td>Lead time</td>
@@ -2887,7 +2887,7 @@
 <tbody>
 <tr>
 <td>Fixed housing shell</td>
-<td>5mm (3/16in) UV-HDPE (LT_HOUSING_T), rolled to <strong>Ø800mm OD</strong>, extrusion-welded seam; laps a rolled rim-angle blind-riveted to the integrated support frame — SS blind rivets throughout (rim→beam + housing→rim laps) + DP8010 (see §9 Sheet 9), set in the punch-out bay</td>
+<td>5mm (3/16in) UV-HDPE (LT_HOUSING_T), Ø800mm OD, built as <strong>two 100° arc panels that slide into 4 opening-edge Al H-mullions</strong> (<a href="https://eagle-aluminum.com/product/aluminum-h-divider-1-38-for-316-material/">Eagle SGN-113 H-divider</a>) + glued/riveted sill/header band pieces — <strong>no welded seam</strong>. The panels extend to the beam OUTER faces and <strong>blind-rivet directly to the integrated support frame</strong> (SS blind rivets @ ~150mm — no rim-angle, no bond; see §9 Sheet 9), set in the punch-out bay. The two axle beams cross at 90°/270°, so each panel is notched at its center (Sheet 2)</td>
 </tr>
 <tr>
 <td>Housing openings</td>
@@ -2992,7 +2992,11 @@
 </tr>
 <tr>
 <td>Lap-joint fasteners</td>
-<td>Shell→cap and housing→frame joints: rolled 25×25×3 6061-T6 Al rim-angle + <strong>1/8" (Ø3.18mm) 18-8 SS blind rivets</strong> @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap). Shell→cap grip 6.2mm → <a href="https://www.mcmaster.com/97525A425/">McMaster 97525A425</a>; housing→frame grip 8.0mm → <a href="https://www.mcmaster.com/97525A435/">McMaster 97525A435</a>. DP8010 wets the mandrel hole for light-tightness.</td>
+<td><strong>Shell→cap</strong> (rotating drum): rolled 25×25×3 6061-T6 Al rim-angle + <strong>1/8" (Ø3.18mm) 18-8 SS blind rivets</strong> @ ~60mm (drill Ø3.3 / #30) + 3M DP8010 structural bond (light-tight lap), grip 6.2mm → <a href="https://www.mcmaster.com/97525A425/">McMaster 97525A425</a>. <strong>Housing→frame</strong>: the skin fixes DIRECTLY to the outer beam faces — SS blind rivets @ ~150mm (no rim-angle, no bond), grip 8.0mm → <a href="https://www.mcmaster.com/97525A435/">McMaster 97525A435</a>; light-tightness is carried by the drum + running-gap wipers, so the skin edge is a structural fix, not a light seal.</td>
+</tr>
+<tr>
+<td>Opening-edge H-mullions + support strips</td>
+<td>The housing's 4 opening edges are <strong>Al H-mullions</strong> (<a href="https://eagle-aluminum.com/product/aluminum-h-divider-1-38-for-316-material/">Eagle SGN-113 H-divider</a>, ~$38/12 ft) — the two arc panels slide into one slot, the sill/header bands into the other (no welded seam); riveted thru the flange + HDPE. (The <strong>drum</strong>'s 2 opening edges keep a riveted 6063-T5 Al U-channel.) The 4 H-mullion ends bolt (1× M8/end via L-clip) to <strong>4 formed-Al support strips</strong> — one across each opening (top + bottom), rail-to-rail; each strip blind-rivets to the frame beams (§9 Sheets 8/9).</td>
 </tr>
 </tbody>
 </table>
@@ -3009,7 +3013,7 @@
 <tr>
 <td>5mm (3/16in) UV-HDPE sheet (housing, ~7 m²) + 1/8" HDPE sheet (drum, ~7 m²)</td>
 <td><a href="https://www.tapplastics.com/">TAP Plastics</a> / Curbell Plastics (SoCal); or Online Metals plastics</td>
-<td>Rolled + extrusion-welded cylinders</td>
+<td>Housing = 2 rolled arc panels (H-mullion joints, no weld); drum = rolled + extrusion-welded C-shell</td>
 </tr>
 <tr>
 <td>8mm 6061-T6 aluminum plate (2 caps, Ø755) + 25×25×3 6061-T6 Al angle (2 rim rings)</td>
@@ -3063,7 +3067,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --></strong> — priced line-item BOM in the <a href="../project-cost-breakdown/">Project Cost Breakdown</a> §6 and <a href="../hinged-panel-report/">Hinged Panel Report</a> §8.2.</p>
+<p><strong>Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$3,144<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,155<!-- END costing:hp-housing-high --></strong> — priced line-item BOM in the <a href="../project-cost-breakdown/">Project Cost Breakdown</a> §6 and <a href="../hinged-panel-report/">Hinged Panel Report</a> §8.2.</p>
 <hr />
 <h2 id="5-light-path-verification">5. Light Path Verification<a class="headerlink" href="#5-light-path-verification" title="Permanent link">&para;</a></h2>
 <p>The fixed-housing geometry eliminates any straight-line path from exterior to
@@ -3112,7 +3116,7 @@ and <a href="../hinged-panel-report/">Hinged Panel Report</a> §3.3 / §3.6.</p>
 <td>Price (USD)</td>
 <td>$2,500–$3,500</td>
 <td>$3,000–$4,500</td>
-<td><strong><!-- BEGIN costing:hp-housing-low -->$2,948<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$3,989<!-- END costing:hp-housing-high --></strong></td>
+<td><strong><!-- BEGIN costing:hp-housing-low -->$3,144<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,155<!-- END costing:hp-housing-high --></strong></td>
 </tr>
 <tr>
 <td>Weatherproofing</td>
@@ -3189,12 +3193,17 @@ weldment that carries the bearings and the fixed outer skin.</p>
 housing, rotating C-shell drum, both SKF 6215 bearings, stub shafts, caps, pull handle,
 and the support-cage envelope, keyed to the assembly BOM.</p>
 <p><img alt="TBS-001 Light-Trap — Sheet 1: General Arrangement" src="../assets/lighttrap-sheet1.png" /></p>
-<p><strong>Sheet 2 — Housing cylinder cut sheet.</strong> The fixed UV-HDPE outer skin as a flat
-pattern: developed length, height, weld-seam location, and the two 80° opening cutouts.</p>
+<p><strong>Sheet 2 — Housing cut sheet (2 arc panels + band pieces).</strong> The fixed UV-HDPE housing
+developed flat as <strong>two 100° arc panels</strong> (no welded seam) plus the sill/header <strong>band pieces</strong>:
+panel arc length + full blank height (to the beam outer faces), the center axle-beam notch in each
+panel, the opening-edge angles where the panels slide into the H-mullions, and the band-piece sizes.</p>
 <p><img alt="TBS-001 Light-Trap — Sheet 2: Housing Cylinder Cut Sheet" src="../assets/lighttrap-sheet2.png" /></p>
 <p><strong>Sheet 3 — Drum shell — cut sheet.</strong> The HDPE C-shell as a true developed flat pattern
 (single 80° opening) — the plastics shop's cutting/rolling template; the sheet carries the
-exact developed length and height. The end caps are machined metal parts and are drawn on Sheet 6.</p>
+exact developed length and height, plus the rivet line for the opening-jamb edge channels. Each of the
+two free jamb edges is capped by a riveted 6063-T5 Al U-channel (rivet-only, Ø3.18 SS blind @120mm — a
+Detail on the sheet), mirroring the housing openings but on the 3.18mm shell; the legs lie flat so the
+channel clears the 13mm drum↔housing running gap. The end caps are machined metal parts and are drawn on Sheet 6.</p>
 <p><img alt="TBS-001 Light-Trap — Sheet 3: Drum — Cut" src="../assets/lighttrap-sheet3.png" /></p>
 <p><strong>Sheet 4 — Drum — Secure.</strong> The shell-to-cap lap-and-fasten joint: the rolled
 rim-angle lip, the 1/8" stainless blind-rivet pattern, and the DP8010 structural
@@ -3225,12 +3234,14 @@ The brushes seal the gap circumferentially; the neoprene seals it axially.</p>
 <p><img alt="TBS-001 Light-Trap — Sheet 7: Seals &amp; Light-Path Verification" src="../assets/lighttrap-sheet7.png" /></p>
 <p><strong>Sheet 8 — Support frame general arrangement.</strong> The integrated steel welded box cage
 that carries the bearing loads and the fixed housing, in plan and elevation, with the
-axle-support beam at the drum axis and the members dimensioned.</p>
+axle-support beam at the drum axis, the 4 formed-Al channel-support strips across the two
+openings, and the members dimensioned.</p>
 <p><img alt="TBS-001 Light-Trap — Sheet 8: Support Frame General Arrangement" src="../assets/lighttrap-sheet8.png" /></p>
 <p><strong>Sheet 9 — Housing → frame attachment.</strong> The section showing the fixed outer skin
-lapped and riveted to the rolled rim-angle blind-riveted on the top and bottom frame beams,
-with Detail B showing each free opening edge capped by a bonded aluminum U-channel
-(the stiffener that replaces the jamb posts) — the drum rotating free inside.</p>
+extended to the beam OUTER faces and <strong>blind-riveted directly</strong> to the top and bottom frame
+beams (no rim-angle), with Detail B showing each free opening edge capped by a <strong>riveted</strong>
+aluminum <strong>H-mullion</strong> (Eagle SGN-113 H-divider) — the two arc panels slide into one slot and the
+sill/header band into the other (no welded seam) — the mullion ends secured to the 4 formed-Al support strips — the drum rotating free inside.</p>
 <p><img alt="TBS-001 Light-Trap — Sheet 9: Housing → Frame Attachment" src="../assets/lighttrap-sheet9.png" /></p>
 <p><strong>Sheet 10 — Combined top-end assembly.</strong> A single half-section at the top end showing
 both lap joints nested concentrically: the rotating drum shell→cap joint (Sheet 4) and

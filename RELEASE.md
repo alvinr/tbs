@@ -24,7 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
+  prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still
+  prompts an interactive terminal, and honors `RELEASE_ASSUME_YES=1`. The 10-day "Tidy labels" run
+  was mined for gaps the drawing skills didn't cover: `skill_diagram_structure.md` gained "write
+  label code to be hand-editable" (explicit per-label calls, no placement loops or wrapper
+  forwarders) and "current-design-only / single-part-monochrome" content rules, and `tidy_labels.py
+  --check` gained two flag-only rules — a dimension baked into a label string that equals a constant
+  (the string-embedded hardcode `lint.py` can't see) and a `RETIRED`/"for reference" archaeology
+  label.
+- **Hardcoded-dimension labels f-expr'd.** Converted the seven genuine `--check` hits (container
+  length, IBC width/pallet height, film-plane rail web + pivot-post Ø) from baked numbers to
+  constant f-exprs so the label can't go stale; rendered output byte-identical.
 
 ## [0.12] — 2026-09-10
 

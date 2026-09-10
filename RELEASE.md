@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.12] — 2026-09-10
+
 The light-trap / hinged-panel blueprint round, a build-wide fastener-standardization
 pass, the chemistry-prep-shelf blueprint, and housekeeping.
 

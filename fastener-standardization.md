@@ -21,9 +21,8 @@ confirm, not assume).
 
 ## Target end state
 
-Metric thread families **6 today; target 5**: **M4 · M6 · M8 · M10 · M12** once M5 retires — **M5 retirement is
-DEFERRED** to the chem-shelf design (now via a flange nut, not an M6×16 CSK); **M10 KEPT** as a justified
-single-CSK family (the light-trap's thin hosts preclude M12, see below).
+Metric thread families **now 5** — **M4 · M6 · M8 · M10 · M12** — **M5 retired** via the chem-shelf design
+(2026-09-07); **M10 KEPT** as a justified single-CSK family (the light-trap's thin hosts preclude M12, see below).
 Metric bolt lengths **~12 → ~7** as the grip-stack standardizations land.
 
 ## Per-family decisions
@@ -56,7 +55,7 @@ cap/housing/disc hosts are physically sized for M10.)
 
 **Decision (2026-09-07):** **KEEP M10** as the light-trap's single CSK size — a justified family (like M4),
 forced by the thin hosts, not a free size to delete. One CSK driver/tap across F1–F7. The metric-family target
-is therefore **5, not 4** (M5 still retires into M6×16 CSK).
+is therefore **5, not 4** (with M5 now retired, the five kept families are M4·M6·M8·M10·M12).
 
 ### M8 — one hex length, zinc standard with a wet-zone SS exception
 The hex M8 is already **×25** everywhere; the only split is material.
@@ -70,19 +69,19 @@ set-screws** are different head classes — they stay.
 **Decision:** nuts **3 → 2** — the 4× plain (electrical panel mount) → **nyloc**; keep the serrated **flange**
 nut on the tray (it spreads clamp load on the thin 1.5 mm panel). Keep **both lengths** (×16 tray 4 mm lap /
 ×20 carriage-clamp) and the **316/304 material split** (tray 316 was a deliberate keep — the wash is
-chloride-free). (The earlier plan to absorb the retired M5 at ×16 is moot — M5 retirement is deferred to the
-chem-shelf design and now targets a flange nut, not a fold into M6 CSK; see M5 below.)
+chloride-free). (The earlier plan to absorb the retired M5 at ×16 was moot — the chem-shelf redesign retired M5
+by moving the ply attachment to 1/4-20 tee-nuts, not a fold into M6 CSK; see M5 below.)
 - **Now:** the nut merge is a registry change (no geometry) — executed on `fastener-rework`.
 
-### M5 — retire the family → DEFERRED to the chem-shelf design (2026-09-07)
-The film-clamp "clips" that once shared this screw were retired to off-the-shelf nylon spring clamps, so
-M5×16 CSK is now ONLY the **chem-shelf ply-panel attachment** (8 off, countersunk from the shelf frame
-underside). There is no shelf blueprint yet, and the diagram's "4 mm frame" reads as unverified/over-spec —
-an M6 CSK head (~3.3 mm sink) may not seat in a thin frame leg.
-**Decision (2026-09-07):** DEFER the M5 retirement to the **chem-shelf design round**. The intended direction
-is NOT an M6×16 CSK but a **flange bolt + nyloc nut under the shelf** (through-bolt — spreads load on the ply,
-no tight frame countersink). M5 stays until then; it is the only item still blocking "M5 family gone."
-- **Gate:** chem-shelf design (frame section + fastening method).
+### M5 — family RETIRED via the chem-shelf design (2026-09-07)
+The film-clamp "clips" that once shared this screw were retired to off-the-shelf nylon spring clamps, leaving
+M5×16 CSK on only the **chem-shelf ply-panel attachment** (8 off, countersunk from the old steel shelf frame).
+The chem-shelf blueprint then removed that frame entirely — the redesign is **plywood-primary**, so the panel
+attachments land in **1/4-20 pronged tee-nuts** (the ply-mount standard), not a countersunk screw into a thin
+frame leg. The predicted flange-bolt direction was overtaken by the tee-nut standard.
+**Decision (2026-09-07):** **M5 retired.** With its last use gone, the metric families are **M4 · M6 · M8 · M10 ·
+M12 (5)**. No M5 SKU remains in `parts.py`.
+- **Gate:** none — landed with the chem-shelf blueprint.
 
 ### M4 — itemize and keep — *itemizing now (clean parts only)*
 M4 is not a free choice: the cam-clamp base holes are **vendor-fixed** at M4×0.7 (McMaster 5128A63) and the
@@ -98,10 +97,11 @@ screw can share one.
 - **A · Shim up** *(free)* — buy the longer length, pad thinner joints with washers to a common grip. Already
   the M12 wall-bolt plan ("pad 1–2 washers").
 - **B · Standardize the stack** — make clamped members a common thickness so a family lands on one grip.
-- **C · Fold a lone size into a neighbor** *(no new part)* — M5×16 → M6×16, ⁵⁄₁₆″ → ¼″.
+- **C · Fold a lone size into a neighbor** *(no new part)* — e.g. ⁵⁄₁₆″ → ¼″ (done). (M5 instead retired by a
+  member redesign — lever D — when the chem-shelf lost its steel frame.)
 - **D · Resize a member** — thicken a plate / add a boss / shorten a tube so its bolt hits the standard.
 
-## Related (from the opportunity list, outside the 6 metric families)
+## Related (from the opportunity list, outside the metric thread families)
 - **Ply-mount ⁵⁄₁₆″ → ¼″-20 — DONE (2026-09-07).** The ⁵⁄₁₆″ tee-nut + machine screw existed only for the 3
   filter housings. The bracket ear already passes ⁵⁄₁₆″, so a ¼″ screw + a ¼″ flat washer (spanning the ear
   bore) clamps fine — retired the ⁵⁄₁₆″-18 family into the ¼″-20 ply-mount standard (¼-20 × 2½″ + washer,
@@ -145,6 +145,6 @@ the count/cost gap is tracked, not fabricated.
 ## The model to copy
 The M12 *fasteners* are already single-SKU across the whole camera — one plain nut (127 off), one flat washer
 (508), one lock washer (127) — because the grips were made to match. Apply that discipline to the lengths and
-the end state is ~7 metric bolt lengths (from ~12), ≈ −7 SKUs, the **M5** family gone once the chem-shelf
-design lands (M10 stays — its thin light-trap hosts justify it) — every change a grip/load check away, none of
-it touching a load path it shouldn't.
+the end state is ~7 metric bolt lengths (from ~12), ≈ −7 SKUs, with the **M5** family already gone (the
+chem-shelf blueprint retired it) and **M10** kept (its thin light-trap hosts justify it) — every change a
+grip/load check away, none of it touching a load path it shouldn't.

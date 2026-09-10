@@ -11,7 +11,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## Cleanup
 
-- [ ] **Push electrical.skp to Sketchfab.** electrical is re-sent + saved + committed with the chem-shelf context (`d74606b2`); `manifest.py --check` clean. ONLY the Sketchfab render lags (push skipped because a different doc was live at commit time). Next time electrical is the active doc: `push_sketchfab.py electrical` (no commit needed — uid/manifest unchanged). Not urgent. (construction's deferred push was cleared 2026-09-10.)
 - [ ] **Scrub "Alvin" name attributions from code/text (2026-09-05).** CLAUDE.md now bans naming "Alvin" in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Forward rule is in effect; a back-scrub of the **pre-existing** `(Alvin …)` / `(… , Alvin …)` occurrences remains — mostly in `parts.py` + `costing.py` spec/cost-history comments (e.g. "firm (Alvin 2026-08-13)"), and any in `TODO.md` / reports. Sweep: `grep -rn "Alvin" src/ *.md | grep -viE "© 2026 Alvin Richards|SPDX"` → replace each `(Alvin <date>)`→`(<date>)`, `(… Alvin)`→drop the name; keep the license/copyright headers.
 
 ## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)

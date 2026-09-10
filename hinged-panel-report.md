@@ -332,9 +332,7 @@ See [§8.1](#81-panel-structure) for the part; the handle is also shown on the i
 **Sheet 5 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)**
 ![TBS-001 Hinged Panel — Sheet 5: Pull Handle Mounting Detail](assets/hingepanel-sheet5.png)
 
-**Sheet 12 — Frame Hardware Attachments: cam-latch keeper, transport-stay hook, brush-strip holder, wall-end stay anchor (four details)**
-
-Detail D dimensions the **wall-end anchor**: each transport-stay eye reacts into a **200 × 200 × 12mm A36 plate pair** bolted through the near container wall with **4 × M16** (the same interior + exterior backing-plate pattern as the wall-hanger / cantilever joints — the wall can't be welded to). Plate size and bolt gauge are single-sourced from `tbs_constants` (`LT_STAY_*`), shared with the 3D `wall_anchors()`.
+**Sheet 12 — Door-Frame Hardware: cam-latch keeper + brush-strip holder (two details)** — the transport lock formerly here is now on its own focused sheet (Sheet 17).
 ![TBS-001 Hinged Panel — Sheet 12: Frame Hardware Attachments](assets/hingepanel-sheet12.png)
 
 ---
@@ -373,6 +371,11 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 | Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 2×2×0.120in steel SHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
 > **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 1/8" HDPE plastic skin. The perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
+
+The complete transport lock is detailed on **Sheet 17** — the general arrangement, the **panel-side receiver lug** (a 12mm steel eye plate with a Ø17 clevis-pin hole, 6mm fillet-welded all round to the stile — the turnbuckle jaw clevis-pins here), and the **near-wall anchor** (a 200 × 200 × 12mm A36 plate pair bolted through the near wall with 4 × M16 — the interior + exterior backing-plate pattern of the wall-hanger / cantilever joints, since the wall can't be welded to). The turnbuckle is a 5/8in jaw-eye galvanized unit (JETBGV58X6); lug/plate/bolt sizes single-source from `tbs_constants` (`LT_STAY_*`). Both ends are modeled in 3D — the panel receiver (`frame_hooks()`) and the wall anchor (`wall_anchors()`).
+
+**Sheet 17 — Transport Lock: general arrangement + panel-side receiver lug + near-wall anchor**
+![TBS-001 Hinged Panel — Sheet 17: Transport Lock](assets/hingepanel-sheet17.png)
 
 ### 5.3 Floor Gap
 
@@ -563,7 +566,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | Top + bottom radial location of the post. igus iglide J self-lubricating polymer, Ø90 ID × Ø95 OD × Ø103 flange × 100 mm long. The FLANGE gives axial location against the hub face; the OD is a light press into the hub bore. Axial load is on the 51118 thrust bearing. Maintenance-free, no oil; inert plastic — chemical-resistant (iglide J passed the igus chemical filter; iglide X isn't offered at Ø90). Service pressure ≈1.3 N/mm² vs ≈35 N/mm² allowable (>25× margin); runs on the unhardened S355 post. $130.53/ea, ships in days. | 2 ea | igus | $261 |
 | Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | Floor + roof Ø220×20 A36 steel mount plates (waterjet: Ø90 post bore + 6× M12 clearance on Ø170 PCD each) bolting the fixed Ø89 post to the container floor cross-member + roof rail; 12× M12 anchor bolts; 3× welded hinge brackets tying the moving hub to the steel center-zone jamb (2× M12 each, through the RHS into a backing plate — not the HDPE skin). Est. material + waterjet + fab; firm at the fab quote (the pivot needs a structural sign-off). Hingepanel Sheet 10. | 1 lot | Local fab / McMaster-Carr | $70–$120 |
 | Drum support cage, 2×2×0.120in steel SHS | Steel welded box cage carrying the Ø800 housing + drum on the swinging leaf — 4 corner posts + perimeter rails + a top & bottom axle beam at the drum axis, ALL 50×50×3 RHS (2×2×0.120in stock, the axle beams = the perimeter section: the 962mm span is barely stressed, δ≈0.3mm). The 2× Ø240×12 bearing mount plates (ll-mount-plates) are fillet-welded across the beams (steel↔steel) — the SKF 6215 ring/collar tap into them. Material inside the local-fab lot, so no separate per-ft line. | 1 lot | Local fab | $70–$120 |
-| [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates (200×200×12 A36 pair, 4× M16 through-bolts per anchor; hingepanel Sheet 12 Detail D) | 2 set | Fasteners Plus | $90–$120 |
+| [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | Transport lock — 2× M16 jaw-eye turnbuckle + 2 panel-side welded eye lugs (12mm steel, Ø17 clevis-pin hole, fillet-welded to the stile) + inside/outside wall anchor plates (200×200×12 A36 pair, 4× M16 through-bolts per anchor); hingepanel Sheet 17 | 2 set | Fasteners Plus | $90–$120 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
 | **Swing total** | | | | **$831–$1,131** |
 <!-- END parts:swing -->

@@ -188,6 +188,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 16: Fold-Down Light Apron + Fixed Center Baffle](assets/hingepanel-sheet16.png)
 
+![TBS-001 Hinged Panel — Sheet 17: Transport Lock](assets/hingepanel-sheet17.png)
+
 ---
 
 ## 13. Perimeter Walkway

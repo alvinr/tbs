@@ -352,7 +352,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 16",
+    title_block(ax, "SHEET 1 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -809,7 +809,7 @@ def sheet2():
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 16",
+    title_block(ax, "SHEET 2 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1323,7 +1323,7 @@ def sheet3():
     leader(ax, (DDX(20), DDY(30)), (DDX(70), DDY(35)), "SWINGING panel edge\n(joint opens as it swings)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 16",
+    title_block(ax, "SHEET 3 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1444,7 +1444,7 @@ def sheet4():
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
     draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 16",
+    title_block(ax, "SHEET 4 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
@@ -1518,7 +1518,7 @@ def sheet5():
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 5 OF 16", drawing_title="HINGED LIGHT-TRAP PANEL",
+    title_block(ax, "SHEET 5 OF 17", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DRAWN TO SCALE (isotropic ~1:1) · 50mm BAR · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
@@ -1671,7 +1671,7 @@ def sheet6():
     ax.set_xlim(-260, xW2 + BAY_D + 260)
     ax.set_ylim(yB - 320, yA + H_PANEL + 300)
 
-    title_block(ax, "SHEET 6 OF 16",
+    title_block(ax, "SHEET 6 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — FLAT-PATTERN CUT SHEETS (6 PIECES)",
                 scale_note="DRAWN TO SCALE (isotropic) · SCALE OFF THE 500mm BAR · ALL DIMS IN mm",
@@ -1837,7 +1837,7 @@ def sheet7():
             ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
 
-    title_block(ax, "SHEET 7 OF 16",
+    title_block(ax, "SHEET 7 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="HDPE SURROUND — HOUSING JOIN & FRAME RIVET DETAILS",
                 scale_note="ENLARGED SECTIONS · THICKNESS EXAGGERATED · ALL DIMS IN mm",
@@ -1989,7 +1989,7 @@ def _frame_ga(mirror=False):
     ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 9 OF 16" if mirror else "SHEET 8 OF 16",
+    title_block(ax, "SHEET 9 OF 17" if mirror else "SHEET 8 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="STEEL FRAME — GA (EXTERIOR VIEW)" if mirror else "STEEL FRAME — GENERAL ARRANGEMENT + MEMBER SCHEDULE",
                 scale_note=("EXTERIOR ELEVATION (mirror of Sheet 8) · SCALE 1:20 · ALL DIMS IN mm" if mirror
@@ -2088,7 +2088,7 @@ def sheet10():
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
 
-    title_block(ax, "SHEET 10 OF 16",
+    title_block(ax, "SHEET 10 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PIVOT-POST ASSEMBLY — SECTION + ANCHOR PLATE (frame→hub: Sheet 14)",
                 scale_note="SECTION 1:20 · DETAILS ENLARGED · ALL DIMS IN mm",
@@ -2163,7 +2163,7 @@ def sheet11():
     ], SW / 2 - 470, cy0 - 120, spacing=48, fs=6.5, title_fs=7.0,
        color=C_OUT, title_color=C_OUT, width=950, border_color=C_DIM, font=FONT)
 
-    title_block(ax, "SHEET 11 OF 16",
+    title_block(ax, "SHEET 11 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FAN-B PLYWOOD — CUT SHEET (ply→frame on Sheet 13; Fan-B mount on Ventilation Sheet 3)",
                 scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
@@ -2181,12 +2181,10 @@ def sheet11():
 #       screwed to the FIXED door frame.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet12():
-    from tbs_constants import (LT_STAY_PLATE_HW, LT_STAY_PLATE_T, LT_STAY_BOLT_OFF,
-                               LT_STAY_BOLT_D)
-    fig, ax = plt.subplots(figsize=(25, 8.5))
+    fig, ax = plt.subplots(figsize=(15, 8.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(0, 760)
+    ax.set_xlim(0, 470)
     ax.set_ylim(-70, 220)
 
     # ═══ DETAIL A — 1619A74 lift-and-turn cam latch (SIDE SECTION through the latch axis) ══════
@@ -2222,28 +2220,9 @@ def sheet12():
     ax.annotate("", xy=(Ax + 154, 82), xytext=(Ax + 174, 82), arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=1.3, connectionstyle="arc3,rad=0.4"), zorder=10)  # TURN
     leader(ax, (Ax + 150, 92), (Ax + 150, 165), "LIFT-AND-TURN HANDLE (interior face,\negress) \u2014 L-arm bends up 90\u00b0; lift + turn\nto engage/release the cam", col=C_OUT, fw="bold", fs=6)
 
-    # ═══ DETAIL B — transport-stay hook (welded to the stile) ════════════════
-    Bx = 210
-    ax.text(Bx + 80, 205, "DETAIL B — TRANSPORT-STAY HOOK", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Bx + 80, 192, "welded to the left perimeter RHS stile (§5.2)", ha="center", fontsize=6.6, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle((Bx + 20, 40), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))
-    ax.add_patch(Rectangle((Bx + 23, 43), 44, 44, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (Bx + 45, 40), (Bx + 25, 8), "left swing stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6)
-    # welded eye plate + hook + turnbuckle to wall eye
-    ax.add_patch(Rectangle((Bx + 70, 58), 22, 14, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))         # eye plate
-    ax.add_patch(Polygon([(Bx + 70, 72), (Bx + 78, 78), (Bx + 70, 78)], closed=True, fc=C_OUT, ec="none", zorder=6))  # weld
-    ax.add_patch(Circle((Bx + 88, 65), 7, fc=BG, ec=C_OUT, lw=1.3, zorder=6))                       # eye
-    ax.plot([Bx + 95, Bx + 150], [65, 65], color="#101010", lw=2.0, zorder=6)                       # turnbuckle rod
-    ax.add_patch(Rectangle((Bx + 118, 60), 16, 10, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=7))        # turnbuckle body
-    ax.add_patch(Circle((Bx + 156, 65), 7, fc=BG, ec=C_OUT, lw=1.3, zorder=6))                       # wall eye
-    ax.add_patch(Rectangle((Bx + 160, 45), 8, 40, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="\\\\", zorder=5))  # wall
-    leader(ax, (Bx + 88, 65), (Bx + 70, 120), "eye plate WELDED\nto the stile", col=C_OUT, fs=6)
-    leader(ax, (Bx + 126, 65), (Bx + 150, 120), "M16 turnbuckle →\nwall eye (near wall)", col=C_DIM, fs=6)
-    ax.text(Bx + 100, 24, "load reacts into steel, not the HDPE skin;\nengaged after the swing, released before swing-back", ha="center", va="top", fontsize=6.3, color=C_OUT, **FONT)
-
-    # ═══ DETAIL C — brush strip in Al holder (door frame) ════════════════════
-    Cx = 400
-    ax.text(Cx + 70, 205, "DETAIL C — TOP/BOTTOM BRUSH STRIP", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    # ═══ DETAIL B — brush strip in Al holder (door frame) ════════════════════
+    Cx = 250
+    ax.text(Cx + 70, 205, "DETAIL B — TOP/BOTTOM BRUSH STRIP", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.text(Cx + 70, 192, "74405T12 brush in 8813T53 Al holder → door frame", ha="center", fontsize=6.6, color=C_DIM, **FONT)
     ax.add_patch(Rectangle((Cx + 30, 100), 80, 40, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))   # fixed door frame RHS (outer)
     ax.add_patch(Rectangle((Cx + 33, 103), 74, 34, fc=BG, ec=C_OUT, lw=0.6, zorder=4))                     # hollow bore
@@ -2264,46 +2243,9 @@ def sheet12():
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
 
-    # ═══ DETAIL D — wall-end transport-stay anchor (bolted inside+outside plate pair) ═══
-    #   The near wall can't be welded to, so each stay eye reacts into a plate pair bolted
-    #   THROUGH the wall (4× M16) — the same interior+exterior backing-plate pattern as the
-    #   wall-hanger / cantilever joints. FRONT VIEW (plate + bolt gauge) + a plate-pair SECTION.
-    Dx = 560
-    PW = 2 * LT_STAY_PLATE_HW           # 200 — plate side
-    BGAUGE = 2 * LT_STAY_BOLT_OFF       # 140 — M16 square gauge
-    sf = 0.42                           # front-view scale (mm → data units)
-    cx, cy = Dx + 90, 140
-    hpw, hbg, br = LT_STAY_PLATE_HW * sf, LT_STAY_BOLT_OFF * sf, (LT_STAY_BOLT_D / 2) * sf
-    ax.text(Dx + 90, 205, "DETAIL D — WALL-END STAY ANCHOR", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Dx + 90, 192, "inside + outside plate pair, 4× M16 through the near wall (§5.2)", ha="center", fontsize=6.6, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle((cx - hpw, cy - hpw), 2 * hpw, 2 * hpw, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=4))
-    for ddx in (-hbg, hbg):
-        for ddz in (-hbg, hbg):
-            ax.add_patch(Circle((cx + ddx, cy + ddz), br, fc=BG, ec=C_OUT, lw=1.1, zorder=6))
-    ax.add_patch(Circle((cx, cy), 8, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))   # welded stay eye
-    ax.add_patch(Circle((cx, cy), 4, fc=BG, ec=C_OUT, lw=1.0, zorder=7))
-    draw_dim_h(ax, cx - hpw, cx + hpw, cy - hpw - 8, f"{PW}mm", fs=6, offset=8, above=False)
-    draw_dim_v(ax, cx - hpw - 8, cy - hpw, cy + hpw, f"{PW}mm", fs=6, offset=8, right=False)
-    draw_dim_v(ax, cx + hpw + 8, cy - hbg, cy + hbg, f"{BGAUGE}mm", fs=6, offset=8, right=True)
-    leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 14, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
-    leader(ax, (cx, cy), (cx - hpw - 14, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
-    # plate-pair SECTION (thickness exaggerated): exterior plate | wall | interior plate
-    px, sy = Dx + 52, -42
-    ax.text(Dx + 90, 10, "SECTION — plate pair sandwiches the wall (thickness exaggerated)", ha="center", fontsize=6.4, color=C_DIM, **FONT)
-    ax.add_patch(Rectangle((px, sy), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                      # exterior plate
-    ax.add_patch(Rectangle((px + 9, sy + 6), 8, 28, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))  # container wall
-    ax.add_patch(Rectangle((px + 17, sy), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))                 # interior plate
-    ax.add_patch(Rectangle((px - 6, sy + 17), 38, 6, fc="#8A8F98", ec=C_OUT, lw=1.0, zorder=7))            # M16 through-bolt
-    ax.add_patch(Rectangle((px - 9, sy + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))              # hex head
-    ax.add_patch(Rectangle((px + 31, sy + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))             # nut
-    ax.add_patch(Circle((px + 42, sy + 10), 6, fc=BG, ec=C_OUT, lw=1.2, zorder=6))                         # stay eye (interior)
-    ax.plot([px + 48, px + 82], [sy + 10, sy + 10], color="#101010", lw=2.0, zorder=6)                     # rod → turnbuckle
-    leader(ax, (px + 22, sy + 40), (px + 34, sy + 62), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
-    leader(ax, (px + 66, sy + 10), (px + 78, sy - 16), "M16 turnbuckle rod →\nstile hook (Detail B)", col=C_DIM, fs=6, ha="left")
-
-    title_block(ax, "SHEET 12 OF 16",
+    title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FRAME HARDWARE — CAM LATCH · TRANSPORT STAY · BRUSH STRIP · WALL ANCHOR",
+                subtitle="DOOR-FRAME HARDWARE — CAM LATCH · BRUSH STRIP",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,
@@ -2369,7 +2311,7 @@ def sheet13():
     leader(ax, vB(6, 38), vB(-20, 46), "frame stile\n(to the side)", col=C_OUT, fs=6.0)
     leader(ax, vB(78, 8), vB(96, 6), "18mm ply\n(behind)", col=C_OUT, fs=6.0)
 
-    title_block(ax, "SHEET 13 OF 16",
+    title_block(ax, "SHEET 13 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLYWOOD → FRAME ATTACHMENT — WELDED TAB + CAPTIVE TEE-NUT",
                 scale_note="SECTIONS TO SCALE (≈1:1) · ALL DIMS IN mm",
@@ -2436,7 +2378,7 @@ def sheet14():
         "stile (which can't be back-tightened); all-welded steel.",
         ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1100, font=FONT)
 
-    title_block(ax, "SHEET 14 OF 16",
+    title_block(ax, "SHEET 14 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRAME → PIVOT-POST CONNECTION (hub hinge bracket)",
                 scale_note="ELEVATION + ENLARGED DETAIL · ALL DIMS IN mm",
@@ -2580,7 +2522,7 @@ def sheet15():
     ], WID + 45, 575, spacing=22, fs=5, title_fs=6, color="#403000",
        title_color="#806010", width=575, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 15 OF 16",
+    title_block(ax, "SHEET 15 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="TRANSPORT-SWING BOTTOM CLEARANCE — DRUM CAGE vs FIXED POSTS/TRAY + PANEL vs WALL BRACKETS",
                 scale_note="SECTION Yd–Z · EQUAL ASPECT · ALL DIMS IN mm",
@@ -2769,7 +2711,7 @@ def sheet16():
     ], WID + 320, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=450, wrap=49, border_color="#806010", font=FONT)
 
-    title_block(ax, "SHEET 16 OF 16",
+    title_block(ax, "SHEET 16 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FOLD-DOWN LIGHT APRON + FIXED CENTER BAFFLE — under-leaf gap closure",
                 scale_note="SECTION + ELEVATION · ALL DIMS IN mm",
@@ -2778,6 +2720,111 @@ def sheet16():
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet16.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 17  —  Transport lock (pulled off Sheet 12): the whole swung-panel stay on
+#   one focused sheet — general arrangement + the panel-side receiver lug (new fab
+#   detail) + the near-wall anchor (moved from the old Sheet 12 Detail D).
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet17():
+    from tbs_constants import (LT_STAY_PLATE_HW, LT_STAY_PLATE_T, LT_STAY_BOLT_OFF,
+                               LT_STAY_BOLT_D, LT_STAY_LUG_T, LT_STAY_LUG_PROJ,
+                               LT_STAY_LUG_H, LT_STAY_LUG_HOLE)
+    fig, ax = plt.subplots(figsize=(22, 8.5))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(0, 660)
+    ax.set_ylim(-180, 220)
+
+    # ═══ DETAIL A — transport-lock general arrangement (one stay, swung pose) ═══
+    Ax = 6
+    ax.text(Ax + 100, 205, "DETAIL A — TRANSPORT-LOCK GENERAL ARRANGEMENT", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Ax + 100, 192, "swing-panel stile lug ↔ M16 turnbuckle ↔ near-wall anchor", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((Ax + 6, 55), 40, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))   # swing stile
+    ax.add_patch(Rectangle((Ax + 9, 58), 34, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (Ax + 20, 112), (Ax + 6, 152), "swing-panel LEFT stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6, ha="left")
+    ax.add_patch(Rectangle((Ax + 46, 78), 42, 14, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))               # panel lug
+    ax.add_patch(Circle((Ax + 80, 85), 6, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
+    leader(ax, (Ax + 70, 85), (Ax + 58, 134), "panel-side lug\n(Detail B)", col=C_OUT, fs=6)
+    ax.add_patch(Rectangle((Ax + 94, 81), 20, 8, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=6))              # jaw + rod
+    ax.add_patch(Rectangle((Ax + 114, 78), 26, 14, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))            # barrel
+    ax.add_patch(Rectangle((Ax + 140, 81), 26, 8, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=6))             # rod + eye
+    leader(ax, (Ax + 127, 92), (Ax + 122, 134), "M16 jaw-eye turnbuckle\n(JETBGV58X6)", col=C_DIM, fs=6)
+    ax.add_patch(Circle((Ax + 172, 85), 6, fc=BG, ec=C_OUT, lw=1.3, zorder=6))                           # wall eye
+    ax.add_patch(Rectangle((Ax + 176, 55), 8, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))               # interior plate
+    ax.add_patch(Rectangle((Ax + 184, 58), 6, 54, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))  # wall
+    ax.add_patch(Rectangle((Ax + 190, 55), 8, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))               # exterior plate
+    leader(ax, (Ax + 182, 85), (Ax + 190, 134), "near-wall anchor\n(Detail C)", col=C_OUT, fs=6)
+
+    # ═══ DETAIL B — panel-side receiver lug (welded eye lug on the stile) ═══
+    Bx, s = 250, 0.62
+    ax.text(Bx + 66, 205, "DETAIL B — PANEL-SIDE RECEIVER LUG", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Bx + 66, 192, "welded steel eye lug — the turnbuckle jaw clevis-pins here (NEW)", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    sx0, sz0 = Bx + 18, 70
+    ax.add_patch(Rectangle((sx0, sz0), 40, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))     # stile (side)
+    ax.add_patch(Rectangle((sx0 + 3, sz0 + 3), 34, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (sx0 + 20, sz0), (sx0 + 6, sz0 - 34), "2×2×0.120 RHS stile", col=C_OUT, fs=6)
+    lug_x, lug_z, lp, lh = sx0 + 40, sz0 + (60 - LT_STAY_LUG_H * s) / 2, LT_STAY_LUG_PROJ * s, LT_STAY_LUG_H * s
+    ax.add_patch(Rectangle((lug_x, lug_z), lp, lh, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))              # lug plate
+    hcx = lug_x + lp - 13
+    ax.add_patch(Circle((hcx, lug_z + lh / 2), LT_STAY_LUG_HOLE * s / 2, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
+    ax.add_patch(Polygon([(lug_x, lug_z), (lug_x + 8, lug_z), (lug_x, lug_z + 8)], closed=True, fc=C_OUT, ec="none", zorder=7))        # fillet weld
+    ax.add_patch(Polygon([(lug_x, lug_z + lh), (lug_x + 8, lug_z + lh), (lug_x, lug_z + lh - 8)], closed=True, fc=C_OUT, ec="none", zorder=7))
+    draw_dim_h(ax, lug_x, lug_x + lp, lug_z - 8, f"{LT_STAY_LUG_PROJ}mm", fs=6, offset=7, above=False)
+    draw_dim_v(ax, lug_x + lp + 8, lug_z, lug_z + lh, f"{LT_STAY_LUG_H}mm", fs=6, offset=7, right=True)
+    leader(ax, (hcx, lug_z + lh / 2), (hcx + 18, lug_z + lh + 22), f"Ø{LT_STAY_LUG_HOLE} clevis-pin hole\n(M16 jaw pin)", col=C_OUT, fs=6, ha="left")
+    leader(ax, (lug_x + 6, lug_z + lh / 2), (lug_x - 8, lug_z - 30), f"{LT_STAY_LUG_T}mm steel eye lug", col=C_OUT, fs=6, ha="right")
+    leader(ax, (lug_x + 4, lug_z + lh - 4), (lug_x - 16, lug_z + lh + 24), "6mm fillet weld\nall round to the stile", col=C_OUT, fs=6, ha="right")
+
+    # ═══ DETAIL C — near-wall anchor (front view + plate-pair section) ═══  [moved off Sheet 12]
+    Cx = 452
+    PW, BGAUGE, sf = 2 * LT_STAY_PLATE_HW, 2 * LT_STAY_BOLT_OFF, 0.42
+    cx, cy = Cx + 92, 140
+    hpw, hbg, br = LT_STAY_PLATE_HW * sf, LT_STAY_BOLT_OFF * sf, (LT_STAY_BOLT_D / 2) * sf
+    ax.text(Cx + 92, 205, "DETAIL C — NEAR-WALL ANCHOR", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Cx + 92, 192, "inside + outside plate pair, 4× M16 through the near wall", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((cx - hpw, cy - hpw), 2 * hpw, 2 * hpw, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=4))
+    for ddx in (-hbg, hbg):
+        for ddz in (-hbg, hbg):
+            ax.add_patch(Circle((cx + ddx, cy + ddz), br, fc=BG, ec=C_OUT, lw=1.1, zorder=6))
+    ax.add_patch(Circle((cx, cy), 8, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))
+    ax.add_patch(Circle((cx, cy), 4, fc=BG, ec=C_OUT, lw=1.0, zorder=7))
+    draw_dim_h(ax, cx - hpw, cx + hpw, cy - hpw - 8, f"{PW}mm", fs=6, offset=8, above=False)
+    draw_dim_v(ax, cx - hpw - 8, cy - hpw, cy + hpw, f"{PW}mm", fs=6, offset=8, right=False)
+    draw_dim_v(ax, cx + hpw + 8, cy - hbg, cy + hbg, f"{BGAUGE}mm", fs=6, offset=8, right=True)
+    leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 14, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
+    leader(ax, (cx, cy), (cx - hpw - 14, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
+    px, syd = Cx + 44, -46
+    ax.text(Cx + 92, -8, "SECTION — plate pair sandwiches the wall (thickness exaggerated)", ha="center", fontsize=6.2, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((px, syd), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
+    ax.add_patch(Rectangle((px + 9, syd + 6), 8, 28, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))
+    ax.add_patch(Rectangle((px + 17, syd), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
+    ax.add_patch(Rectangle((px - 6, syd + 17), 38, 6, fc="#8A8F98", ec=C_OUT, lw=1.0, zorder=7))
+    ax.add_patch(Rectangle((px - 9, syd + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
+    ax.add_patch(Rectangle((px + 31, syd + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
+    ax.add_patch(Circle((px + 42, syd + 10), 6, fc=BG, ec=C_OUT, lw=1.2, zorder=6))
+    ax.plot([px + 48, px + 80], [syd + 10, syd + 10], color="#101010", lw=2.0, zorder=6)
+    leader(ax, (px + 22, syd + 40), (px + 34, syd + 60), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
+
+    draw_notes(ax, [
+        "TRANSPORT LOCK — SPEC:",
+        f"1. Two stays (top Z2050, bottom Z500), each a couple: swing-stile lug ↔ M16 turnbuckle ↔ near-wall anchor.",
+        f"2. Turnbuckle: 5/8in jaw-eye galvanized (JETBGV58X6), 2 sets — the jaw pins to the panel lug, the eye to the wall anchor.",
+        f"3. Panel lug (Detail B): {LT_STAY_LUG_T}mm steel eye plate, Ø{LT_STAY_LUG_HOLE} pin hole, 6mm fillet-welded all-round to the left 2×2×0.120in RHS stile.",
+        f"4. Wall anchor (Detail C): 2× {2*LT_STAY_PLATE_HW}×{2*LT_STAY_PLATE_HW}×{LT_STAY_PLATE_T}mm A36 plate pair, 4× M16 through the near wall @ {2*LT_STAY_BOLT_OFF}mm gauge, welded eye.",
+        "5. ENGAGE the stays only after the panel is swung + latched at the transport angle; RELEASE both before swinging back.",
+    ], 8, -56, spacing=14, fs=6.4, title_fs=7.0, color=C_OUT, title_color=C_OUT, width=640, wrap=150, border_color=C_DIM, font=FONT)
+
+    title_block(ax, "SHEET 17 OF 17",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="TRANSPORT LOCK — GA · PANEL RECEIVER LUG · NEAR-WALL ANCHOR",
+                scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet17.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet17.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2799,4 +2846,5 @@ if __name__ == "__main__":
     sheet14()
     sheet15()
     sheet16()
+    sheet17()
     print("Done.")

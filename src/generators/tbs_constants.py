@@ -337,6 +337,13 @@ LT_STAY_PLATE_HW = 100  # anchor plate half-width (mm) → 200×200 A36 plate
 LT_STAY_PLATE_T  = 12   # anchor plate thickness (mm)
 LT_STAY_BOLT_OFF = 70   # M16 through-bolt offset from plate center (mm) → 140 square pattern
 LT_STAY_BOLT_D   = 16   # M16 through-bolt (mm)
+# Panel-side receiver: a welded steel eye lug on the swinging frame's left 2×2×0.120 RHS stile
+# — the turnbuckle jaw clevis-pins to it (the mate of the wall anchor above). Shared by the 3D
+# frame_hooks() and hingepanel Sheet 17.
+LT_STAY_LUG_T    = 12   # lug plate thickness (mm)
+LT_STAY_LUG_PROJ = 70   # lug projection from the stile face (mm)
+LT_STAY_LUG_H    = 60   # lug height along the stile (mm)
+LT_STAY_LUG_HOLE = 17   # clevis-pin hole Ø (mm) — clears the M16 turnbuckle jaw pin
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
 PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29)

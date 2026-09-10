@@ -36,6 +36,9 @@ file** — a release must not ship without a changelog entry:
 - **Hardcoded-dimension labels f-expr'd.** Converted the seven genuine `--check` hits (container
   length, IBC width/pallet height, film-plane rail web + pivot-post Ø) from baked numbers to
   constant f-exprs so the label can't go stale; rendered output byte-identical.
+- **Chem-shelf 3D re-send completed.** The 0.12 chem-shelf redesign (steel frame → 18mm ply-primary,
+  1/4-20 tee-nuts, chain stays) had its overview/construction `.skp` re-send deferred; both are now
+  re-sent, re-uploaded to Sketchfab, and committed, so the 3D matches the shipped 2D/parts design.
 
 ## [0.12] — 2026-09-10
 

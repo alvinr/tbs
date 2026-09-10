@@ -31,29 +31,18 @@ pass, the chemistry-prep-shelf blueprint, and housekeeping.
 
 - **Fixed housing redesigned to a weld-free "slide-together" kit.** The extrusion-welded HDPE tube is
   replaced by a mechanical assembly: two 100° arc panels slide into four full-height opening-edge aluminum
-  H-mullions (Eagle Aluminum **SGN-113** H-divider, $38/12 ft ×4), with the sill/header band pieces glued +
+  H-mullions, with the sill/header band pieces glued +
   riveted into the mullions' opposite slots — **no welded seam**. The housing skin now extends to the frame
   beams' **outer** faces and blind-rivets directly to them (the rolled rim-angle lap is dropped), notched
   where the two axle beams pass through. Four formed **1"×1"×1/8" 6061-T6 aluminum equal-leg angle** support
-  strips (Metals Depot, $17.20/4 ft ×4) run rail-to-rail across each opening so the mullions and caps bolt to
-  a member. Opening clear width nets ~514→~490 mm, but the drum opening (~491 mm) already governs, so the
-  personnel passage is unchanged. Cascaded through constants, parts (`ll-edge-channel`, `ll-channel-strip`),
-  costing, the 2D set (Sheets 2/8/9/10), the report, and the 3D models.
+  strips run rail-to-rail across each opening so the mullions and caps bolt to
+  a member.
 - **Floor/roof caps simplified to plain plates; HDPE surround attachment reconciled.** The caps are plain HDPE
   plates riveted to the frame-beam outer faces and to the support strips, with the housing skin butting the cap
   underside on a caulk bead (no cut-out, no neoprene). The HDPE surround is documented as lapping +
-  blind-riveting the **drum cage** (which wraps it and is welded into the panel frame), resolving the
-  2D/report ↔ 3D divergence; hingepanel Sheets 6/7/8 and report §2.6/§3.4 updated to match.
+  blind-riveting the **drum cage** (which wraps it and is welded into the panel frame).
 - **Drum & housing opening edges framed; housing channels moved bonded → rivet-only.** The rotating drum's 80°
-  opening jambs gain a riveted 6063-T5 aluminum U-channel (new `ll-drum-channel`); the housing opening-edge
-  channels drop DP8010 for a rivet-only joint (the shell→cap, brush-holder, and housing→frame-lap seals are
-  untouched). Light-trap Sheet 3 + Sheet 9 Detail B and the 3D rotor updated.
-- **Construction sequence — phase 5 light-trap split, and the missing drum cage fixed.** The single "drum +
-  bay" step became four ordered steps (5.3 drum cage + floor HDPE → 5.4 drum skins → 5.5 surround → 5.6 spray
-  bar). Fixed the overview/construction models, which were missing the drum cage entirely — the reused wrappers
-  never called `drum_frame()`, so there was no cage, axle beams, SKF 6215 bearings, or mount plates — plus two
-  click-to-build sequencing bugs (a phase opened with all sub-steps shown; the last phase drew a static ghost
-  overlapping its own build). Overview gains a standalone Light-Trap Cage component.
+  opening jambs gain a riveted 6063-T5 aluminum U-channel (new `ll-drum-channel`).
 
 ### Fastener standardization
 
@@ -66,21 +55,13 @@ pass, the chemistry-prep-shelf blueprint, and housekeeping.
   (thin light-trap hosts can't take an M12 flat head), and ⅛" blind rivets stay two grip SKUs (no single grip
   spans both lap ranges). The **M5 family is fully retired** (its last use, the chem-shelf ply attachment, moved
   to 1/4-20 tee-nuts).
-- **IBC J2/J7 cleat spec + registry hygiene reconciled to the design of record.** The IBC front-bar cleat spec
-  (still carrying the superseded 2× M12×40 vertical design in the spec body + load calc) was brought up to the
-  current **single horizontal M12×65 18-8 SS L-cleat** already live everywhere else, and the phantom M12×40
-  reference removed. Also: film-plane washers corrected M8×20 → **M8×25**; a shared M8 flat-washer key split into
-  wet-zone vs shelf SKUs; the intentional M12×65 SS (wet) vs M12×70 zinc (dry) duty split annotated; and the
-  filter bracket switched to the bracket-only **Pentair 244718** (we supply our own hardware).
 
 ### Chemistry-prep-shelf blueprint
 
 - **Prep shelf redesigned as a plywood-primary structure.** Removed the welded 25×25×3 steel perimeter frame,
   folding-bracket stays, gussets, and M5 CSK; **18 mm plywood** is now the primary structure with all
   attachments in pronged **1/4-20 tee-nuts**. Added 2 SS chain stays, a bolt-on SS piano hinge, and a reused
-  cam-latch; validated by `chem_shelf_load.py` (board SF 44, chain 5.4, tee-nut 20). `SHELF_T` 22→18. Parts,
-  costing, report, and the shelf/pinhole/weight diagrams all cascaded. *(The overview/construction 3D re-send is
-  still deferred — it needs the live model.)*
+  cam-latch; validated by `chem_shelf_load.py` (board SF 44, chain 5.4, tee-nut 20). `SHELF_T` 22→18.
 - **Fabrication sheets (Sheets 4–5) added + firmed.** Dimensioned fab-detail sheets: board cut + per-hole
   tee-nut drill positions, hinge cleat + 8 mm backing plates (1:1), and a full fastener schedule. The detail
   firmed along the way: the piano hinge upsized to a **3″ extra-clearance hinge** (14835A77, **+$50**) to give
@@ -88,13 +69,6 @@ pass, the chemistry-prep-shelf blueprint, and housekeeping.
   leaves drilled); the cleat→backing M8 bolts set to **4** (one per hinge bolt); and the backing plates **tap M8
   directly** (no rear access — the loose-nut/weld-nut was dropped). Registered for publish + embedded in the
   report §3.5.
-
-### Housekeeping
-
-- **Author-name attributions scrubbed.** Removed the pre-existing dated "(name …)" author attributions from
-  code comments, docstrings, report prose, and parts/costing cost-history notes across 26 files, per the
-  CLAUDE.md name ban (a bare date or "(confirmed)" replaces them). License/copyright headers, the rule text,
-  and the functional brochure-footer regex are untouched; comment/prose-only, no geometry.
 
 ## [0.11] — 2026-09-06
 

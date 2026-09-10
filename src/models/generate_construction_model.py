@@ -113,9 +113,13 @@ STEPS = [
         lambda: ov.pinhole_assembly()),
     (5, "5.2", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # beams already in 3.6
         lambda: ov.film_plane_mechanism(part="plane")),
-    (5, "5.3", "P5 Light Trap",        "Light-trap drum + bay",                   # [5.3]
-        lambda: _join(ov.light_trap_drum(), ov.light_trap_bay())),
-    (5, "5.4", "P5 Spray Bar",         "Spray bar (over the processing tray)",    # [5.4] moved from Phase 3
+    (5, "5.3", "P5 Drum Cage",         "Light-trap drum support cage + axle beams + SKF 6215 bearings + mount plates + floor HDPE",  # [5.3] the steel structure + its floor base
+        lambda: _join(ov.light_trap_cage(), ov.light_trap_bay(part="floor"))),
+    (5, "5.4", "P5 Drum Skins",        "Light-trap HDPE skins — rotating drum shell + fixed Ø800 housing panels + H-mullions",  # [5.4] the two HDPE cylinders hang on the cage
+        lambda: ov.light_trap_drum()),
+    (5, "5.5", "P5 Surround",          "Light-trap outer HDPE surround/bay (walls + roof) + cage rivets",   # [5.5] the outer bay HDPE around the cage
+        lambda: ov.light_trap_bay(part="rest")),
+    (5, "5.6", "P5 Spray Bar",         "Spray bar (over the processing tray)",    # [5.6] moved from Phase 3
         lambda: ov.spray_bar()),
 ]
 

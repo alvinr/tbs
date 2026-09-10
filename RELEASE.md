@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Construction phase 5 — light-trap split into cage / skins / surround, with sequencing fixes.** The
+  single "drum + bay" step (5.3) became four ordered steps: **5.3 drum cage + floor HDPE** (steel cage +
+  axle beams + SKF 6215 bearings + mount plates, landing on its floor cap), **5.4 drum skins** (rotating
+  drum shell + fixed Ø800 housing panels + H-mullions), **5.5 surround** (bay walls + roof + cage rivets),
+  **5.6 spray bar**. Also fixed two DC bugs surfaced along the way: phase scenes were built **before** the
+  step-1 fixup (so phase 5 opened with every sub-step shown — the drum visible before its click), and the
+  **last phase still got a static ghost copy** that overlapped its own build (a ghost cage/drum under
+  Phase 5). Split the overview `light_trap_drum`/`_cage`/`_bay(part=...)` wrappers accordingly; overview
+  gains a standalone Light-Trap Cage component. construction/overview .skp re-sent.
+
 - **Overview/construction light-trap were missing the drum cage.** The reused `light_trap_drum()` /
   `light_trap_bay()` wrappers only exposed `drum()` (housing + rotor) + `bay()` (surround) — they never
   called `drum_frame()`, so overview and construction (phase 5) had **no cage, axle beams, SKF 6215

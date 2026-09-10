@@ -941,11 +941,14 @@ def liftout_film_rail():
     ])
 
 
-def bay():
+def bay(part="all"):
     """B2 punch-out bay — the hinge-panel center zone as a forward box (X from
     BAY_FRONT_X to the panel face) enclosing the offset Ø800 housing. A 4-wall
     rectangular tube (Yd = center-zone step lines, Z = floor-gap..panel-top), open
-    at the exterior end (entrance) and the interior end (exit onto the walkway)."""
+    at the exterior end (entrance) and the interior end (exit onto the walkway).
+
+    part: 'all' (default) · 'floor' (just the bottom floor cap — installed with the
+    cage as its base) · 'rest' (near/far side walls + roof cap, minus the floor)."""
     # HDPE walls sit ON the drum-cage faces (Yd = cage sides), riveted flush with NO gap (2026-08-31 review)
     # — not the wider panel-zone step lines, which left a 47mm slot to the cage.
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R        # 700, 1662 — cage near/far faces
@@ -965,12 +968,17 @@ def bay():
     # frame beams: the roof sits ON the beam top face (zc), the floor UNDER the beam bottom face (z0-t).
     # The housing skin's top/bottom edge butts the cap + a caulk bead seals it (2D Sheet 7 Detail A).
     cap_w = (yR + t) - (yL - t)
-    return '\n'.join([
+    floor = ruby_box("Bay wall bottom (floor cap, riveted to the outside of the bottom beams)", xf, yL - t, z0 - t, depth, cap_w, t, color=C_PLASTIC, alpha=0.5)
+    if part == "floor":
+        return floor
+    rest = [
         ruby_box("Bay wall near (Yd)", xf, yL - t, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall far (Yd)", xf, yR, z0, depth, t, hs, color=C_PLASTIC, alpha=0.5),
         ruby_box("Bay wall top (roof cap, riveted to the outside of the top beams)", xf, yL - t, zc, depth, cap_w, t, color=C_PLASTIC, alpha=0.5),
-        ruby_box("Bay wall bottom (floor cap, riveted to the outside of the bottom beams)", xf, yL - t, z0 - t, depth, cap_w, t, color=C_PLASTIC, alpha=0.5),
-    ])
+    ]
+    if part == "rest":
+        return '\n'.join(rest)
+    return '\n'.join(rest + [floor])
 
 
 def cage_face_rivets():

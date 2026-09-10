@@ -434,7 +434,7 @@ The lighttrap had a light-weight design that defined the major parameters. What 
   the 2nd was redundancy not strength, and at the wall the pocket + the fixed 2-bolt corridor cleat already
   stop the bar rotating — one centered bolt also clears the seat edges cleanly. Detail A + report §3.5 + costing updated.
 
-- **IBC frame Sheet 4 — detail-correction sweep (B/D/F + tone).** DETAIL D redrawn per Alvin's sketch as a
+- **IBC frame Sheet 4 — detail-correction sweep (B/D/F + tone).** DETAIL D redrawn per the sketch as a
   welded **L-bracket** off the post with the rear panel bolted to its upstand via an **M8 hex + washer into a
   pronged tee-nut** — and the tee-nut moved to the ply **back face** (bolt tension pulls the flange against the
   wood, the correct orientation). DETAIL B cleat bolts now span the bar+cleat stack exactly so head/nut seat

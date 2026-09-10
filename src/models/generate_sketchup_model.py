@@ -749,7 +749,7 @@ def _rwk_wall_cleat(tag, x, wall_yd, din):
     """Plate 2 — the tray-facing walkway long-beam bracket. The beam RESTS on a horizontal SHELF and is
     locked down by a TEK screw; the plate is through-bolted to the wall by 2 HORIZONTAL bolts placed
     CLEAR of the beam (one below the shelf, one above the beam) so the wall anchors don't foul the beam
-    edge (Alvin 2026-08-18). Interior + exterior plate sandwich the wall."""
+    edge (2026-08-18). Interior + exterior plate sandwich the wall."""
     bt = 8                                                   # plate thickness (Yd)
     shelf_top = RWK_ARM_BOT                                  # beam bottom = shelf top (89.6)
     bolt_lo = shelf_top - 10 - 30                            # 30mm below the shelf underside
@@ -792,7 +792,7 @@ def fp_combined_corner_plate(wall_yd, din, cx=None):
     # by F1 — is BACKED by the plate. The beam rests on the WELDED SHELF (right-beam seat) and is locked
     # by 2 TEK screws (not bolted through). The plate's 4 wall through-bolts sit at the plate CORNERS, the
     # LOW pair dropped BELOW the beam so they don't foul it; the outboard region carries the BR film rail
-    # (seated + end-flanged). (F2 rework per Alvin, 2026-08-18.)
+    # (seated + end-flanged). (F2 rework, 2026-08-18.)
     x_in = cx - pw / 2 - RWK_BEARER_W                      # 4523.2 — plate inboard edge (= walkway beam inboard edge)
     x_out = cx + pw / 2                                    # 4724 — plate outboard edge
     plate_w = pw + RWK_BEARER_W                            # 200.8 — widened plate width
@@ -937,7 +937,7 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
         # corners — the closed rectangle is welded, but the weld is not modeled, so a clean butt reads
         # as two distinct members meeting rather than one fused corner (check_interference.py --solids).
         # NEAR end beam kept at Yd0 (NOT inset to the plate face) so it clears the SV-01/DV-02 near-corner
-        # ribbon risers (the Yd10 inset speared them — water F1 fix #2 / option A, Alvin 2026-08-18).
+        # ribbon risers (the Yd10 inset speared them — water F1 fix #2 / option A, 2026-08-18).
         parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx + RWK_BEARER_W, ey, RWK_BEARER_Z0, rx - (lx + RWK_BEARER_W), RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
     parts += ibc_cantilever_arms()
     for wall_yd, din, tag in ((0, 1, "near"), (C_WID, -1, "far")):
@@ -1037,7 +1037,7 @@ def walkway_brackets(which="both"):
     cantilever-rectangle and the LEFT walkway is a removable lift-out, so neither is
     wall-cantilevered — they get no brackets here.
 
-    SINGLE-SOURCED (Alvin 2026-08-18): this delegates to the walkway model's full-fab bracket
+    SINGLE-SOURCED (2026-08-18): this delegates to the walkway model's full-fab bracket
     builder (`generate_walkway_model.cantilevers()`) — plate + arm + gusset + EXTERIOR reinforcing
     plate + full-length M12 through-bolts — so the overview and the dedicated walkway model can NEVER
     diverge (was a simplified duplicate that had to be hand-kept-in-sync). Late import breaks the
@@ -1273,7 +1273,7 @@ def film_plane_saddles(corners, skip=(), walls=(0, C_WID)):
             yt = face_in + din * proj
             seat_top = z - FP_RAIL_WEB / 2                 # web-vertical rail: seat sits UNDER the rail bottom (not at the web-centre z)
             gusset_bot = seat_top - st - gh                # bottom of the triangular gusset's back (weld) edge
-            plate_z0 = min(z - pw / 2, gusset_bot)         # LENGTHEN the interior back-plate DOWN so the gusset welds FULLY to it (Alvin 2026-08-19)
+            plate_z0 = min(z - pw / 2, gusset_bot)         # LENGTHEN the interior back-plate DOWN so the gusset welds FULLY to it (2026-08-19)
             plate_h = (z + pw / 2) - plate_z0
             parts.append(ruby_box(f"Saddle back-plate {tag}",
                          x - pw / 2, by_in, plate_z0, pw, pt, plate_h, color=C_STEEL))
@@ -1766,7 +1766,7 @@ def fan_wiring(which="both", a_to_ep=False):
         parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
                                    [(ep_x, 20, EP_H_HI), (ep_x, 20, czr)], fcr, color=C_TRUNK))
         # The feeds jog OFF the near wall to Yd=ffy across the ceiling run so they clear the top film-plane
-        # saddle bolt nuts (TL/TR near) protruding from the wall, then return to the fan taps (Alvin 2026-08-19).
+        # saddle bolt nuts (TL/TR near) protruding from the wall, then return to the fan taps (2026-08-19).
         ffy = 35
         parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
                                    [(ep_x, 20, czr), (ep_x, ffy, czr), (fa_x, ffy, czr), (fa_x, 20, czr)], fcr, color=C_TRUNK))

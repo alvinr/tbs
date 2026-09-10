@@ -120,7 +120,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 `overview.skp` re-saved 2026-06-15; the evap-box re-dimension (Hessaire MC18M) + Circuit-E
 inverter box followed (overview re-saved in `1872583b`, inverter leader label in `99ec629c`).
 `generate_sketchup_model.py` builds the evap at `EVAP_W×EVAP_D×EVAP_H` + the inverter. Only the
-manual Sketchfab re-uploads (Alvin's step, same model IDs) may remain.
+manual Sketchfab re-uploads (a manual step, same model IDs) may remain.
 
 **Cost re-sum CLOSED (2026-06-15):** the held bundle (fan −~$70, filter, evap cooler + inverter)
 is now re-summed. Cooler subsystem (cooler $130 + inverter $210 + DC protection $40 + AC outlet $25)

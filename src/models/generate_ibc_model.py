@@ -87,7 +87,7 @@ def context():
     floor + both side walls only — so the stack, frame and plumbing read in place
     without modeling the whole container (mirrors the lighttrap ghost context).
     The CEILING (roof) and the sealed END WALL are omitted: they boxed the model in
-    and blocked a smooth Sketchfab orbit (Alvin 2026-08-17); the fill/drain ports
+    and blocked a smooth Sketchfab orbit (2026-08-17); the fill/drain ports
     (X1/X3/X4) are their own geometry and still read at X=C_LEN."""
     x0 = 4300
     xlen = ov.C_LEN - x0

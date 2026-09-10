@@ -124,7 +124,7 @@ MUTE_DESAT, MUTE_ALPHA = 0.65, 0.18
 # in place keeping a faint tint.  Everything that is enclosure/structure rather than a water
 # component is muted, so in EVERY scene only the plumbing reads boldly (easier to validate).
 # NB: "Corridor Panel" is NOT muted — the equipment panel (shirt + backing) is drawn SOLID in every
-# scene (a solid backdrop behind the pumps reads better than the faint ghost; Alvin 2026-08-14).
+# scene (a solid backdrop behind the pumps reads better than the faint ghost; 2026-08-14).
 MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Frame",
              "Walkway", "Film Plane", "Pinhole", "Backing"]
 
@@ -232,7 +232,7 @@ def kit(part="all", p02_on_corridor=False):
     # split for the construction model: the under-grate RIBBON portion lays with the other ribbons
     # (Phase 3, step 3.2, before the grate); the short RISE to P-02 stays with the skid (3.5).
     brown_pre = ([(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]               # tap → −X → down to the corridor pickup (past the tray edge)
-                 + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN))  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest at the SHARED line-1 Yd (uniform crests, Alvin 2026-07-24)
+                 + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN))  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest at the SHARED line-1 Yd (uniform crests, 2026-07-24)
     brown_rise_wps = [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in]         # rise to P-02 IN
     brown_full_pipe = ov.ruby_pipe_run("IBC-3 (Brown) tap -> P-02 inlet", brown_pre + brown_rise_wps, rp, color=ov.C_IBC_BROWN)
     if not p02_on_corridor:                                      # this wall suction is replaced by a corridor IBC-3→P-02 run
@@ -353,7 +353,7 @@ def tap01_supply():
     # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
     # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (2026-07-24)
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off

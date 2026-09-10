@@ -50,7 +50,7 @@ _(The TODO's "Ruland US12-6-6-SS" is stale — the U-joint was changed to Belden
 
 **1c. Firm the load — DONE (2026-08-13; `fp_corner_load.py` → Sheet 10).** Per-corner load = W/4 = **124 N**
 (moving mass ~51 kg, weight model). Governing case = the horizontal X (swing) slide in bending at full
-257 mm extension (the Z slide takes gravity axially, so it doesn't bend). **DECISION (Alvin): the
+257 mm extension (the Z slide takes gravity axially, so it doesn't bend). **DECISION: the
 cross-slide bars are mounted DEEP** — the 38.1 mm dimension in the load direction — giving σ ≈ 21 MPa,
 **SF ≈ 10**, δ ≈ 0.1 mm. Flat mounting is marginal (SF ≈ 1.7, fails under a 2× dynamic/asymmetry factor)
 and is NOT used. See Sheet 10 (`film-plane-sheet10.png`).
@@ -104,7 +104,7 @@ from `tbs_constants` with **zero** `reserved`/prose-only corner dimensions remai
 
 ## Guide (top) corner — web-vertical decision + FP_H reconciliation (VERIFIED 2026-08-10)
 
-**Decision (Alvin):** the top (guide) corner uses the **same web-vertical rail + captured skate** as
+**Decision:** the top (guide) corner uses the **same web-vertical rail + captured skate** as
 the bottom (weight) corner — NOT the flat "inverted-U, wheels-under-web" build the 3D model currently
 has. Rationale: the wheels-under-web build is unsound (gravity drops the hanging carriage away from the
 rollers); a captured skate on a web-vertical rail holds the corner regardless of load direction (it

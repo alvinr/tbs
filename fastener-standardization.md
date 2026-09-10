@@ -11,7 +11,7 @@ Source of record: `parts.py`. Compiled 2026-09-04 from the `fasteners-hardware` 
 plus threads bundled in structural / labor lots. Companion analysis (length ladders +
 redesign levers): the [Fastener Standardization artifact](https://claude.ai/code/artifact/3819bc01-d4d8-42a7-8d58-4e90a25fb3d2).
 
-**Status:** decisions made (Alvin, 2026-09-04). Most require blueprint-level re-engineering and are
+**Status:** decisions made (2026-09-04). Most require blueprint-level re-engineering and are
 **gated on the owning drawing set** — see the per-family gate. Executed now on branch `fastener-rework`:
 the **M6 nut consolidation** (3 → 2 — the one change needing no new geometry). Every other decision, and the
 itemization of the BOM gaps, is captured here for its blueprint round (each blocked on a length dim we should

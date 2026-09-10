@@ -1285,7 +1285,7 @@ def sheet4():
 
     # (DETAIL F removed — the walkway arm → upright J6 connection is fully drawn on Sheet 5: the VIEW A
     #  side elevation of the joint + the END-PLATE detail + the PLAN VIEW now showing the through-bolts.
-    #  Keeping it here duplicated Sheet 5's plan view — Alvin 2026-08-17.)
+    #  Keeping it here duplicated Sheet 5's plan view — 2026-08-17.)
 
     # ── Full-width NOTES band ──
     _dcell(ax, 20, -300, 1340, 268, "NOTES")

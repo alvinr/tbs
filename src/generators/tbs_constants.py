@@ -214,7 +214,7 @@ UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)
 # RETENTION (J3/J4): 3/8" KEYWAY bore (3/32×3/64 key) + set screw — the stub is keyed (anti-rotation)
-# and the joint's set screw locks it axially. Needle-bearing, stainless, 45° confirmed (Alvin 2026-08-13).
+# and the joint's set screw locks it axially. Needle-bearing, stainless, 45° confirmed (2026-08-13).
 # Boot: FACTORY-INTEGRAL (no separate part) — bulges the joint CENTER to UJOINT_BOOT_OD; the yoke OD
 # stays UJOINT_OD and the overall length stays UJOINT_LEN.
 UJOINT_BOOT_OD  = 32.54  # integral-boot center OD (mm) = 1-9/32"
@@ -332,8 +332,8 @@ PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to
                         # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
-PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29,
-                          # Alvin) so the drum's lower hub/cage bottom (hangs 87mm below the cap, so
+PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29)
+                          # so the drum's lower hub/cage bottom (hangs 87mm below the cap, so
                           # LT_CAGE_BOT = this−87 = 130) CLEARS the tallest FIXED obstacle in the swing
                           # path — the LEFT walkway's floor-leg cantilever POSTS (top Z115, they stay
                           # bolted during the transport swing) — by 15mm (and the fixed tray rim Z70 by
@@ -359,8 +359,8 @@ DRUM_CX    = -420    # light-lock center X (mm) [rev9 B2: 0→-400; 2026-08-26: 
                      # Housing interior edge now -20, clears the X=150 film-plane rail by ~170mm]
 DRUM_D     = 800     # fixed housing OUTER diameter (mm) [rev8 Ø900; 2026-08-26: Ø900→Ø800 —
                      # REDUCED to fit inside the fixed cage with 31mm clearance (the Ø900 drum
-                     # overhung the cage rails). Passage (80° sideways entry) ~555→~487mm — Alvin
-                     # accepts the interior loss; below the ≥700 aspiration, as before]
+                     # overhung the cage rails). Passage (80° sideways entry) ~555→~487mm; the
+                     # interior loss is accepted; below the ≥700 aspiration, as before]
 DRUM_R     = DRUM_D // 2                      # 400 — housing radius (visible footprint)
 DRUM_H_LT  = 2100    # drum CAP-TOP Z (mm) — LOWERED (was 2250) so the top hub stack seats
                      # correctly: the upper axle beam sits ABOVE the cap (drum hangs from the
@@ -524,7 +524,7 @@ LT_HOUSING_Z_TOP = LT_TBEAM_Z0                  # 2167 — top-beam under face (
 # Opening-edge H-mullions (2026-09-09) — the four opening edges are vertical Al H-bars (double
 # channel): the housing is built as TWO arc panels that SLIDE INTO the H-bar slots (no welded seam),
 # and each H's second slot receives the sill/header band edge at top+bottom. One symmetric part per
-# edge; the mullions carry the panels and anchor top+bottom to the support strips. SKU pending (Alvin).
+# edge; the mullions carry the panels and anchor top+bottom to the support strips. SKU pending.
 LT_HBAR_SLOT     = 6    # each slot width (mm) — accepts the 5mm HDPE panel edge with a slide-fit
 LT_HBAR_LEG      = 18   # slot depth (mm) — rivets land on the HDPE face through the flange
 LT_HBAR_T        = 3    # web + flange wall (mm; 6063-T5 Al)
@@ -1059,7 +1059,7 @@ WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 +
 #       and spray bar do NOT rise. Panel swing sweeps the bare Z115 brackets (walkway lifted out for
 #       transport) → PANEL_FLOOR_GAP is NOT tied to this. Costs ~60mm film-plane bottom (was 130/15mm).
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — 1" McNichols MS-S-100 molded FRP (real product min; 15mm molded FRP doesn't exist, 2.60 lb/sf). Sits on the SAME Z115 arm → deck top 140.
-WALKWAY_GRATE_CLIP_PITCH = 610  # FRP hold-down clip spacing (mm) — 24" along the supported (bearing) edges + one at each panel corner; standard McNichols/Fibergrate molded-grating clip guidance for a pedestrian deck (Alvin 2026-08-19)
+WALKWAY_GRATE_CLIP_PITCH = 610  # FRP hold-down clip spacing (mm) — 24" along the supported (bearing) edges + one at each panel corner; standard McNichols/Fibergrate molded-grating clip guidance for a pedestrian deck (2026-08-19)
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
 WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, Yd0–300) is a
                          # REMOVABLE lift-out for transport — the swing sweeps this band to X≈896
@@ -1070,7 +1070,7 @@ WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, 
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
-WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 150→170→180 so the upper wall-bolt clears the grate DECK (not just the arm); holds the shared WALKWAY_BRACKET_UPPER_BOLT_Z with ≥1.5·D top edge (Alvin 2026-08-18)
+WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 150→170→180 so the upper wall-bolt clears the grate DECK (not just the arm); holds the shared WALKWAY_BRACKET_UPPER_BOLT_Z with ≥1.5·D top edge (2026-08-18)
 WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + 15  # 155 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Sits 15mm above the grate top (WALKWAY_H) so the nut clears the deck. Both legs (std 180 / widened 200) hold it with ≥1.5·D top edge.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
@@ -1085,7 +1085,7 @@ PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                   
 # IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
 # case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm
 # by the traveling spray bar (top Z67; arm underside Z89.6 clears it 22mm), so the widened bracket takes
-# a WIDER section, not a deeper one (Alvin 2026-08-19).
+# a WIDER section, not a deeper one (2026-08-19).
 WALKWAY_BRACKET_ARM_W      = 50.8   # standard arm width in X (mm) — 2×1×0.120in steel tube (2in face); SF 2.10 on the 300mm cantilever. Same stock as the left floor-leg + right RWK arms.
 WALKWAY_BRACKET_ARM_W_WIDE = 76.2   # widened arm width in X (mm) — 3×1×0.120in tube (3in face); the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point).
 WALKWAY_BRACKET_ARM_H      = 25.4   # arm depth in Z (mm) — 1in; spray-bar-capped (can't go deeper over the tray).
@@ -1099,7 +1099,7 @@ WALKWAY_REINF_W = 100    # exterior reinforcing-plate width  (mm) — covers the
 WALKWAY_REINF_H = 180    # exterior reinforcing-plate height (mm) — standard bracket
 WALKWAY_REINF_T = 6      # exterior reinforcing-plate thickness (mm)
 WALKWAY_REINF_W_WIDE = 120   # widened-bracket reinforcing-plate width  (mm) — larger blank for the 4-bolt rectangular pattern
-WALKWAY_REINF_H_WIDE = 200   # widened-bracket reinforcing-plate height (mm) — = the widened vertical leg (WALKWAY_WIDE_BRACKET_H) so the interior mounting plate + exterior reinforcing plate are the SAME footprint (Alvin 2026-08-19); covers the upper bolt Z155 with 45mm edge
+WALKWAY_REINF_H_WIDE = 200   # widened-bracket reinforcing-plate height (mm) — = the widened vertical leg (WALKWAY_WIDE_BRACKET_H) so the interior mounting plate + exterior reinforcing plate are the SAME footprint (2026-08-19); covers the upper bolt Z155 with 45mm edge
 WALKWAY_GUSSET_REACH = 70    # gusset triangle reach from the wall face (mm) — < the 80mm tray-rim standoff so the gusset clears the rim
 WALKWAY_BRACKET_BOLT_DX = 27        # STANDARD-bracket wall-bolt X offset from CL (mm) — flanks the 8mm gusset; ±27 keeps 23mm edge to the 100mm reinforcing-plate edge (vs only 18mm = 1.5·D at ±32). Drawn on Sheet 2 View B.
 WALKWAY_BRACKET_BOLT_DX_WIDE = 32   # WIDENED-bracket wall-bolt X offset from CL (mm) — the wider 120mm reinforcing plate carries ±32 at 28mm edge. Drawn on Sheet 7 View B.
@@ -1159,11 +1159,11 @@ LEFT_WK_CANT_FOOT     = (165, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the p
 # Was hardcoded 38 (correct only while LEG_X=140); it got stranded when FP_X_L moved 150→260 (2026-08-11) cascaded LEG_X→250. (2026-08-16)
 LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈147; foot right edge ≈ post right edge, ~5mm clear of the tray L
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
-LEFT_WK_CANT_FOOT_BOLT_DX = (20, 60)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+20/+60 (=130/170), OUTBOARD in the clear land: ~55mm clear of the post (X224.6) for driver access AND best-placed to react the cantilever's uplift (Alvin 2026-08-18) [F3]
+LEFT_WK_CANT_FOOT_BOLT_DX = (20, 60)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+20/+60 (=130/170), OUTBOARD in the clear land: ~55mm clear of the post (X224.6) for driver access AND best-placed to react the cantilever's uplift (2026-08-18) [F3]
 LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline (within the 60mm foot width) [F3, 2026-08-18]
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)
-LEFT_WK_CANT_ARM_W_WIDE = 101.6  # widened (drum-exit punch-out) arm — 4×1×0.120in tube (4in face in Yd × 25.4 Z). REDESIGNED to US IBC/OSHA: the 605mm punch-out cantilever at 2×1 was only SF 1.04 under the 300 lbf tip load; 4×1 → SF 1.99 (walkway_load.py). Depth spray-bar-capped, so wider not deeper (Alvin 2026-08-19).
+LEFT_WK_CANT_ARM_W_WIDE = 101.6  # widened (drum-exit punch-out) arm — 4×1×0.120in tube (4in face in Yd × 25.4 Z). REDESIGNED to US IBC/OSHA: the 605mm punch-out cantilever at 2×1 was only SF 1.04 under the 300 lbf tip load; 4×1 → SF 1.99 (walkway_load.py). Depth spray-bar-capped, so wider not deeper (2026-08-19).
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): the deck's INNER (tray-facing) edge is anchored to the tray module
@@ -1235,7 +1235,7 @@ RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 # plate bears compression at the bottom against the upright.  This clears the 3-way corner congestion — the
 # corridor bottom frame X-rail (Z12–63) runs below with NO bolt near it, and neither bolt fouls the welded
 # arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is
-# appropriate (Alvin 2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
+# appropriate (2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
 RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
 RWK_J6_EP_H    = 155.0                                       # end-plate height: top (Z192) clears the upper bolt (Z170) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
 # Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses

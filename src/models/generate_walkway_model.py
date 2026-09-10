@@ -151,7 +151,7 @@ def walkway_labels():
 def container_ghost():
     """Low-alpha floor + the FAR (film-plane) side wall only. The roof (ceiling) and the NEAR
     (pinhole) side wall are omitted so the model orbits freely without the view boxing in
-    (Alvin 2026-08-18); the far cantilever reinforcing plates + bolt-throughs still read against
+    (2026-08-18); the far cantilever reinforcing plates + bolt-throughs still read against
     the far wall. End walls were already omitted."""
     return '\n'.join([
         ruby_box("Floor (ghost)", 0, 0, -WALL_T, C_LEN, C_WID, WALL_T,
@@ -233,7 +233,7 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     bt, vh = BRK_T, BRK_H                                   # standard 8mm / 180mm
     btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
     # interior mounting plate width = the exterior reinforcing-plate width per type, so the two
-    # plates that sandwich the wall are the SAME footprint (100 std / 120 widened; Alvin 2026-08-19).
+    # plates that sandwich the wall are the SAME footprint (100 std / 120 widened; 2026-08-19).
     plate_w = k.WALKWAY_REINF_W_WIDE if wide else REINF_W
     gusset_reach = k.WALKWAY_GUSSET_REACH
     # Bolt patterns (X offset, Z): standard 3 (triangular, ±WALKWAY_BRACKET_BOLT_DX = 27 — Sheet 2 View B);
@@ -274,7 +274,7 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     # gusset→plate joint reads as a clean edge (not passing through the plate)
     # xg is sign-aware so the gusset lands CENTERED under the arm on BOTH walls: ruby_tri pushpulls along
     # the (winding-dependent) face normal, which flips near↔far, so a fixed xg would offset the far gusset
-    # by one plate thickness. x − sign·b/2 cancels that → gusset spans [x−b/2, x+b/2] both sides (Alvin 2026-08-18).
+    # by one plate thickness. x − sign·b/2 cancels that → gusset spans [x−b/2, x+b/2] both sides (2026-08-18).
     xg = x - sign * b / 2
     y_back = wall_yd + sign * b           # plate's container-facing face
     y_far = wall_yd + sign * gusset_reach

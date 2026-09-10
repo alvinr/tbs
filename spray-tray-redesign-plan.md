@@ -56,7 +56,7 @@ the file-by-file cascade map, and the staging. Delete once the cascade is merged
 
 Shave alone is too bouncy at the current span; **shave + one added arm** is the fix.
 
-## 4. Cascade map (Alvin's 9 items → work)
+## 4. Cascade map (the 9 items → work)
 
 1. **Slope → all 2D/3D** — `tray_floor_z()` dual-axis→Yd-only; regen tray/spray/walkway 2D + overview/spraybar/water/walkway 3D.
 2. **Drain pickup → all 2D/3D** — `PROC_TRAY_DRAIN_X` 4550→2399 + gutter constants; regen the same set + water.skp.
@@ -74,7 +74,7 @@ Shave alone is too bouncy at the current span; **shave + one added arm** is the 
 - **Commit B — tray slope + gutter + drain relocation** (`tray_floor_z` → tray/spray/walkway 2D → new section diagrams → reports → parts → cost → water geometry).
 - **Commit C — walkway shave + added arm** (RWK/left constants → walkway 2D → report → parts → cost).
 - **Commit D — report "why" section + BoM/price rollup + stale-ref sweep.**
-- **`.skp` re-sends** (overview / spraybar / water / walkway) handed to Alvin after each affected commit: I `--save` the `.rb` and verify the live doc matches before any `--send`; **Alvin saves + re-uploads to Sketchfab**, then I commit the `.skp`.
+- **`.skp` re-sends** (overview / spraybar / water / walkway) handed off after each affected commit: I `--save` the `.rb` and verify the live doc matches before any `--send`; **the owner saves + re-uploads to Sketchfab**, then I commit the `.skp`.
 
 ## 6. Geometry still to finalize during the cascade
 

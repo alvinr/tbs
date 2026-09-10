@@ -407,7 +407,7 @@ def sheet2():
     # DEPTH single-sources from the SHARED 3D constants (DRUM_CX, DRUM_CAGE_X0/X1), which are
     # referenced to the PANEL exterior face; this plan's depth origin is the wall exterior, PANEL_EXT
     # in front — so a shared X maps to plan depth via `+ PANEL_EXT`. Zero drift with the 3D lighttrap
-    # model (2026-09-02, Alvin: "both represent the same factual world").
+    # model (2026-09-02: "both represent the same factual world").
     D_CX = PW / 2                    # drum center X: centered in panel width = 1181mm
     D_CY = LT_DRUM_CX + PANEL_EXT    # shared drum-axis depth (LT_DRUM_CX = tbs DRUM_CX)
     DR   = DRUM_R                    # = 400mm
@@ -465,7 +465,7 @@ def sheet2():
             **FONT, fontweight="bold", alpha=0.55, zorder=15)
 
     # ── Container CARGO-DOOR FRAME cross-section (Y=0→40) — the panel seals against it (no solid "end
-    #    wall" at the opening: the opening is FRAMED, not walled — Alvin 2026-09-01). Drawn at the side
+    #    wall" at the opening: the opening is FRAMED, not walled — 2026-09-01). Drawn at the side
     #    zones; the drum opening is cut out. ──
     # solid "#5A5E66" — the SAME cargo-frame grey as Sheets 8/10, so it reads as the door frame (not the
     # hatched panel steel). Drawn at the side zones; the drum opening is cut out.

@@ -20,10 +20,10 @@ model *before* dimensioning, because you cannot blueprint geometry that is about
 
 1. **Fix first, then dimension.** Resolve all four geometry fixes in the generators, regenerate,
    `--send`, verify with `check_interference.py --solids`, ALVIN saves + uploads the corrected models —
-   **then** dimension the corrected geometry. (Alvin 2026-08-18.)
+   **then** dimension the corrected geometry. (2026-08-18.)
 2. **Structural load basis = US IBC/OSHA.** IBC 2021 Table 1607.1 "walkways and elevated platforms" =
    **60 psf (2.87 kPa) uniform** + a **300 lbf (1.33 kN) concentrated** footfall on a small area
-   (ASCE 7 / OSHA 1910.22). US codes for a US build; cited in the validation table. (Alvin 2026-08-18.)
+   (ASCE 7 / OSHA 1910.22). US codes for a US build; cited in the validation table. (2026-08-18.)
 3. **One branch, single phased pass** (`walkway-bp`): Phase 0 → 1 → A → B → C → D → E, mirroring the
    IBC-frame blueprint one-to-one.
 4. **Scope boundary — the walkway owns every cantilever EXCEPT the two IBC-post arms.** The walkway
@@ -32,7 +32,7 @@ model *before* dimensioning, because you cannot blueprint geometry that is about
    cut-plans, and the walkway side of the combined corner plate. **The two center cantilever arms that
    mount on the IBC front uprights — and their J6 connection — are owned by the IBC-frame component**
    ([`ibc-frame-blueprint-spec.md`](ibc-frame-blueprint-spec.md) §3.4–3.6); the walkway blueprint
-   cross-references them and does NOT dimension, validate, or cost them. (Alvin 2026-08-18.) **BOM
+   cross-references them and does NOT dimension, validate, or cost them. (2026-08-18.) **BOM
    consequence (Phase E):** the `walkway-cantilever-arms`, J6 end/backing-plate, and crush-sleeve lines
    currently sit in the *walkway* parts list — reconcile their placement to the IBC frame (touches the
    IBC-frame total, so do it deliberately, not silently). The **combined corner plate** (shared with the
@@ -78,11 +78,11 @@ ALVIN saves + uploads. Re-send order **focus-model-first** (walkway before overv
 - [x] **F1 — Shorten the right walkway.** It currently overruns into the film-plane bottom-rail
   support brackets. Pull the right deck / cantilever-rectangle right edge back so it stops clear of
   those brackets. Derive the new right edge from the film-plane bracket X; check IBC-valve/filter/pump
-  reach-in access is preserved. (Alvin 2026-08-17.)
+  reach-in access is preserved. (2026-08-17.)
 - [x] **F2 — One shared right-corner bracket.** At each near/far RIGHT corner the film-plane beam
   bracket and the walkway right-beam bracket read as two separate brackets — make the geometry read as
   **one** (the `fp_combined_corner_plate` already shares the seat). Cross-ref the film-plane blueprint.
-  (Alvin 2026-08-17.)
+  (2026-08-17.)
 - [x] **F3 — Relocate floor-leg foot anchors.** On `walkway-sheet6` View B the post is drawn welded
   **over** the 4 foot-plate anchor holes, so the screws can't be driven. Move the 4 anchors into the
   foot's outboard **outrigger** (X≈147–225, clear of the 50.8 post at X225–275 after the 2026-08-16

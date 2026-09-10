@@ -184,7 +184,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
             P += rail("U-rail (FLANGED)", sp, ov.C_WID - 2 * sp)
             P.append(ov.film_plane_saddles({tag: (cx, zc)}))
     else:                                              # LEFT: parking stub + removable + welded bridge + support + gusset
-        P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, (ov.C_WID - 12) - LEFT_CUT_YD)   # far end BUTTS the INNER face of the pivot-post flange plate (12mm), not through it (Alvin 2026-08-19)
+        P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, (ov.C_WID - 12) - LEFT_CUT_YD)   # far end BUTTS the INNER face of the pivot-post flange plate (12mm), not through it (2026-08-19)
         P += rail("U-rail REMOVABLE (out for transport)", ov.FP_CORNER_SEAT_PLATE_T, LEFT_CUT_YD - ov.FP_CORNER_SEAT_PLATE_T, 0.30)   # near end ALIGNED to the saddle plate INNER face (butts the upstand)
         # the bridge is WELDED to the REMOVABLE beam and LAPS + BEARS on the stub (weight rides the bridge,
         # not the screw); a retaining SCREW into the STUB just holds it — drops straight in, then lock
@@ -198,8 +198,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # welded bridge BEARS on the stub, whose pivot-post anchor carries the reaction, so a floor post
         # (which would foul the sliding carriage) is unnecessary.
         P.append(ov.ruby_box(f"Rail far flange (pivot post) {tag}", cx - 60, ov.C_WID - 12, botf - 10, 120, 12, sec_h + 20, color=C_CROSS))
-        # FAR-LEFT (rear) bracket WALL FIXING — exterior backing plate + 4× M12 through the far wall (Alvin
-        # 2026-08-19). The flange (above) is the interior plate the rail butts; this adds the exterior plate +
+        # FAR-LEFT (rear) bracket WALL FIXING — exterior backing plate + 4× M12 through the far wall (# 2026-08-19). The flange (above) is the interior plate the rail butts; this adds the exterior plate +
         # bolts. 120×96 (Z-extent botf-10 .. botf+86) — sized so the 4× M12 get ≥18mm edge distance (1.5·D, edge
         # lint) AND the TL flange top (2348) still clears the pivot ROOF-mount plate at Z2368 (a full 150-tall
         # saddle would foul it, which is why the far-left carries a flange bracket).

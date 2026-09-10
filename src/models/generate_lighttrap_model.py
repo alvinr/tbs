@@ -58,7 +58,7 @@ FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY
 C_PLASTIC = ov.C_PLASTIC                       # 1/8″ HDPE panel skins + bay (rev11; C_PLY now = wood fan band only)
 C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
-# The two seal TYPES render in DISTINCT colors (2026-08-31, Alvin) so they can never be confused
+# The two seal TYPES render in DISTINCT colors (2026-08-31) so they can never be confused
 # with each other — nor with the steel-grey structure:
 #   C_SEAL  (green)  = the BRUSH seals — the panel edge SWEEPS THROUGH them.
 #   C_GASKT (brown)  = the EPDM compression seals that STAY (panel perimeter left/right, the vertical
@@ -76,7 +76,7 @@ PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
 CORNER_BOT = LT_CAGE_BOT + 50                 # 190 — corner-skin/apron split (BOTH sides): dropped from the
 #   282 stepped bottom down to the bottom-beam TOP so the beam's rivets land on the fixed corner skin, not
-#   the fold-down apron plywood flap (Alvin, 2026-08-31). Far side = HDPE corner; near side = Fan-B ply band.
+#   the fold-down apron plywood flap (2026-08-31). Far side = HDPE corner; near side = Fan-B ply band.
 PLY_T  = 12   # real plywood thickness (12mm exterior BC). Inset on the INTERIOR face of the 40mm frame zone.
 PLY_X0 = 40 - PLY_T   # 28 — ply front face (X28..40 = interior 12mm; the 40mm frame zone stays around it)
 CHAM   = PLY_T   # plywood↔plywood joint chamfer: 45° across the 12mm ply (hingepanel Sheet 16 Detail E)
@@ -371,7 +371,7 @@ def hinge_panel():
 
     # 2 × lift-and-turn cam latches (McMaster 1619A74) — interior face, OPENING edge only
     # (the pivot edge is hinged; a frame stop takes the outward direction — report §4.2).
-    # Heights set for comfortable standing operation: top LOWERED, bottom RAISED (2026-08-31, Alvin).
+    # Heights set for comfortable standing operation: top LOWERED, bottom RAISED (2026-08-31).
     for lz in (500, 1900):
         parts.append(cam_latch(210, lz))
 
@@ -622,7 +622,7 @@ def near_leaf():
     near upright. Own perimeter EPDM + the vertical cut seal the swinging panel butts."""
     z0, z1 = CORNER_BOT, PANEL_Z_TOP   # bottom aligned to the adjacent swing corner + apron flap top (CORNER_BOT
     #                                    190), NOT the higher PANEL_FLOOR_GAP_SIDE — else the jamb floats above the
-    #                                    plywood (Alvin 2026-09-03: grey jamb left a gap to the plywood)
+    #                                    plywood (2026-09-03: grey jamb left a gap to the plywood)
     gw, gt = 40, 20
     # The fixed opening-edge member is a WELDED BOX SECTION (thin plate), not a solid block: an exterior +
     # interior flange (the HDPE + plywood skins rivet to these) and a swing-facing WEB carrying the cam-latch
@@ -649,7 +649,7 @@ def near_leaf():
 
 
 def far_leaf():
-    """NO fixed jamb at the pivot (2026-08-31, Alvin): the pivot-corner plywood TRAVELS with the swinging
+    """NO fixed jamb at the pivot (2026-08-31): the pivot-corner plywood TRAVELS with the swinging
     leaf (built in the swing DC by pivot_corner_leaf()), wrapping to the Ø89 post with a clearance notch so
     the leaf swings as one piece. This static part keeps only the container far-WALL vertical EPDM the
     closed leaf edge seals against + a short fixed corner seal past the pivot line (Yd PIVOT_YD..C_WID)."""
@@ -663,7 +663,7 @@ def far_leaf():
 
 def pivot_corner_leaf():
     """The pivot-corner LEAF EDGE — just the structural pivot-edge stile the hub brackets weld to. NO
-    separate ply/frame panel here (removed 2026-08-31, Alvin: it read as a redundant plywood panel jammed
+    separate ply/frame panel here (removed 2026-08-31: it read as a redundant plywood panel jammed
     between the stile and the post). The door FACE at the pivot corner is already skinned by the panel
     FAR-corner HDPE (hinge_panel, X0..40, Yd NEW_YD_R..C_WID, which spans this Yd 2162..2287 zone), so the
     joint is clean steel: leaf stile → hub brackets → post. TRAVELS with the swinging leaf."""
@@ -954,7 +954,7 @@ def bay(part="all"):
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R        # 700, 1662 — cage near/far faces
     # The side/bottom walls run DOWN to the cage bottom beams (LT_CAGE_BOT), not just the Z217 floor gap,
     # so no light slot under the drum. The side walls STOP at the top beams (LT_CAGE_TOP) — no HDPE above
-    # them — and the ROOF HDPE lies on the top beams and rivets down to them (2026-09-02, Alvin).
+    # them — and the ROOF HDPE lies on the top beams and rivets down to them (2026-09-02).
     z0, zc = LT_CAGE_BOT, LT_CAGE_TOP                     # 140 → 2217 (cage/beam top)
     xf = ov.BAY_FRONT_X                                    # -890
     t = ov.BAY_WALL_T                                      # 3.18 (1/8" HDPE)
@@ -962,7 +962,7 @@ def bay(part="all"):
     hs = zc - z0                                           # side-wall height — capped at the top beams
     # The side skins LAP the cage-post OUTBOARD faces from OUTSIDE (near = yL-t..yL, far = yR..yR+t) so the
     # HDPE is the visible OUTER skin covering the frame + posts, and the rivets pass through the HDPE into
-    # the post (Alvin 2026-09-03 — was inboard of the post face, leaving the frame exposed). Roof/floor widen
+    # the post (2026-09-03 — was inboard of the post face, leaving the frame exposed). Roof/floor widen
     # by t each side so they cap the skins' outer faces.
     # Roof + floor caps are PLAIN HDPE plates (NO cut-out) riveted to the OUTSIDE of the top/bottom
     # frame beams: the roof sits ON the beam top face (zc), the floor UNDER the beam bottom face (z0-t).
@@ -1033,7 +1033,7 @@ def bay_wall_cage_rivets():
 def bay_wall_edge_l_strips():
     """L-angle fixing rails on the VERTICAL EDGES of the near/far drum-cage HDPE side walls: the POST leg
     rivets to the cage corner post (the beam), the UPSTAND leg backs the HDPE edge and the HDPE rivets to
-    it — instead of riveting the thin HDPE straight into the RHS wall (Alvin 2026-09-03)."""
+    it — instead of riveting the thin HDPE straight into the RHS wall (2026-09-03)."""
     z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP
     h = z1 - z0
     LEG, LT = 40, 3
@@ -1056,7 +1056,7 @@ def bay_wall_edge_l_strips():
 
 def slot_l_strips():
     """L-angle strips fixed on the center-zone frame jambs (Yd NEW_YD_L/R) that secure the panel corner
-    HDPE where it now BUTTS the bay walls (Alvin 2026-09-02, item 3). Base leg flat on the interior face
+    HDPE where it now BUTTS the bay walls (2026-09-02, item 3). Base leg flat on the interior face
     over the closed slot + an upstand at the jamb the HDPE rivets to."""
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
     jL, jR = NEW_YD_L, NEW_YD_R
@@ -1077,7 +1077,7 @@ def drum_side_light_seals():
     """Vertical LIGHT-SEAL baffles at the drum-center plane (X=DRUM_CX) closing the open gap between the
     fixed housing OUTER skin and the inner face of each cage/bay side wall. At X=DRUM_CX the round housing
     spans the full Yd width (DRUM_CY±HOUSING_R = 781..1581), so these two strips complete a light-tight
-    cross-section and block the straight-down-the-side light leak past the drum (Alvin 2026-09-03)."""
+    cross-section and block the straight-down-the-side light leak past the drum (2026-09-03)."""
     yL, yR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
     z0, z1 = LT_CAGE_BOT + 50, LT_CAGE_TOP - 50           # BETWEEN the top/bottom cage beams (190..2167) — the
     #                                                       beams seal the ends; the baffle must not run through them
@@ -1116,7 +1116,7 @@ def surround_rivets():
 
 def far_bay_wall_frame():
     """FAR bay HDPE wall (Yd yR = the drum-passage wall on the pivot / far-container-wall / film-plane side).
-    Detailed frame-by-frame per Alvin (2026-08-31):
+    Detailed frame-by-frame (2026-08-31):
       1+2 the HDPE reaches out to the frame at the panel plane (the center jamb R) and rivets to it —
           rivet line down the panel-plane edge (X0);
       3   at the MOUTH edge the HDPE blind-rivets STRAIGHT into the front cage post (50 RHS) — no L-angle
@@ -1354,7 +1354,7 @@ def generate_ruby():
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
         # Film-plane left FIXED rig (parked carriage/skate/U-joint + parking STUB + wall-seat saddles/hangers)
         # is STATIC — it STAYS in place through the swing; only the REMOVABLE lift-out rail (lfr_inst, a swing
-        # child) is removed for transport (Alvin 2026-09-03). So it is a root component here, not a swing child.
+        # child) is removed for transport (2026-09-03). So it is a root component here, not a swing child.
         component("Film-plane left (fixed rig: stub + cradle + hangers)", "Film Plane Rails", film_plane_left()),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
@@ -1372,7 +1372,7 @@ def generate_ruby():
         # Near corner is a STEPPED zone: its bottom rises to PANEL_FLOOR_GAP_SIDE (282) like the frame +
         # aprons, so the fold-down flap top meets it flush (no overlap) and it clears the walkway cantilever.
         # near corner skins EXTENDED inboard from NEW_YD_L (653) to the near bay wall / cage face
-        # (DRUM_CAGE_YD_L 700) so the panel HDPE BUTTS the bay wall — no 47mm slot (Alvin 2026-09-02, item 2).
+        # (DRUM_CAGE_YD_L 700) so the panel HDPE BUTTS the bay wall — no 47mm slot (2026-09-02, item 2).
         ruby_box("Fan B mount band (18mm ply)", 0, CUT, CORNER_BOT, 40,
                  ov.DRUM_CAGE_YD_L - CUT, ov.PANEL_FAN_BAND_Z - CORNER_BOT, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{ov.DRUM_CAGE_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
@@ -1385,7 +1385,7 @@ def generate_ruby():
         # The HDPE skin runs CONTINUOUSLY to the PIVOT LINE (2026-08-31) — no separate pivot ply panel; the
         # pivot-edge stile (pivot_corner_leaf) sits behind it and ties the leaf to the hub brackets.
         # far corner skin EXTENDED inboard from NEW_YD_R (1709) to the far bay wall / cage face
-        # (DRUM_CAGE_YD_R 1662) so the panel HDPE BUTTS the bay wall — no 47mm slot (Alvin 2026-09-02, item 2).
+        # (DRUM_CAGE_YD_R 1662) so the panel HDPE BUTTS the bay wall — no 47mm slot (2026-09-02, item 2).
         ruby_box("Panel far corner (trimmed)", 0, ov.DRUM_CAGE_YD_R, CORNER_BOT, 40,
                  PIVOT_YD - ov.DRUM_CAGE_YD_R, PANEL_Z_TOP - CORNER_BOT, color=C_PLASTIC, alpha=0.5),
         pivot_corner_leaf(),   # pivot-edge STILE (the hub brackets weld to it) — travels with the leaf

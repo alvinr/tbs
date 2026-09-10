@@ -46,13 +46,13 @@ RIBBON_Z       = ov.WALKWAY_H - ov.WALKWAY_GRATE_T - ov.PUMP_PIPE_OD / 2   # 104
 # 4 flat ribbon lanes, DERIVED to sit evenly in the clear channel BETWEEN the walkway long beams (inner
 # outboard face .. outer inboard face). Was hardcoded [4556,4530,4504,4478] for the OLD wider channel;
 # F1 shortened the right walkway (outer beam 4629→4574), narrowing the channel to ~143mm, so lanes 0/1
-# clashed the moved beam — deriving keeps all 4 clear of BOTH beams for good (Alvin 2026-08-18).
+# clashed the moved beam — deriving keeps all 4 clear of BOTH beams for good (2026-08-18).
 _LANE_R, _LANE_CLR = 10.5, 10                                   # OD21 ribbon radius / min gap from each beam face
 _ch_out = ov.RWK_X_R - ov.RWK_BEARER_W - _LANE_CLR - _LANE_R    # outermost lane centre (off the outer-beam inboard face)
 _ch_in  = ov.RWK_X_L + ov.RWK_BEARER_W + _LANE_CLR + _LANE_R    # innermost lane centre (off the inner-beam outboard face)
 RIBBON_LANE_X  = [round(_ch_out - i * (_ch_out - _ch_in) / 3) for i in range(4)]   # ~[4503,4469,4434,4400], index-matched to RWK_RIBBON_NOTCH_YDS
 RIBBON_YD_UP   = 1000                           # up-through-grate Yd — just BEFORE the first cantilever (Yd1046-1086)
-RIBBON_YD_DOWN = 1110                           # down-through-grate Yd — just PAST the cantilever (Yd1086); = lane-0 crest far-end (RWK_RIBBON_NOTCH_YDS[0]) so the sump over-crest length matches pipe 1 (Alvin 2026-07-24)
+RIBBON_YD_DOWN = 1110                           # down-through-grate Yd — just PAST the cantilever (Yd1086); = lane-0 crest far-end (RWK_RIBBON_NOTCH_YDS[0]) so the sump over-crest length matches pipe 1 (2026-07-24)
 RIBBON_OVER_Z  = ov.WALKWAY_H + 12              # 142 — loop crest, just above the grate (130) / cantilever top (115) — kept low
 RIBBON_SUP_YD  = [200, 450, 700, 950]           # welded cross-beam supports along the under-grate ribbon span
 # Corridor exit: the flush ribbon crosses the OUTER long beam (X4589-4629, Z80-115) through an OPEN-TOP NOTCH at
@@ -230,7 +230,7 @@ def tote_restraint():
             # J2/W3 corridor-end connection (Detail B): an L-ANGLE fillet-welded to the upright — a horizontal
             # leg the bar sits on + a vertical leg on the bar's FRONT (−X) face — the bar drops into the corner
             # and a SINGLE horizontal M12 (J2) runs through the vertical leg + the bar's tall (50mm) web, so the
-            # hole gets full edge distance and the bolt secures the unsupported direction (Alvin 2026-08-18).
+            # hole gets full edge distance and the bolt secures the unsupported direction (2026-08-18).
             lt, llen = 8, 90                                                     # leg thickness / reach along the bar (Yd)
             leg_y0 = cor_yd - llen if wdir < 0 else cor_yd
             p.append(ov.ruby_box("Bar cleat leg (J2)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=ov.C_STEEL))          # horizontal leg UNDER the bar

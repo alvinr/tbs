@@ -11,16 +11,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## Cleanup
 
-- [ ] **Scrub "Alvin" name attributions from code/text (2026-09-05).** CLAUDE.md now bans naming "Alvin" in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Forward rule is in effect; a back-scrub of the **pre-existing** `(Alvin …)` / `(… , Alvin …)` occurrences remains — mostly in `parts.py` + `costing.py` spec/cost-history comments (e.g. "firm (Alvin 2026-08-13)"), and any in `TODO.md` / reports. Sweep: `grep -rn "Alvin" src/ *.md | grep -viE "© 2026 Alvin Richards|SPDX"` → replace each `(Alvin <date>)`→`(<date>)`, `(… Alvin)`→drop the name; keep the license/copyright headers.
+- [x] **Scrub author-name attributions from code/text (2026-09-05 → done 2026-09-10).** CLAUDE.md bans naming the author in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Back-scrubbed every pre-existing dated attribution across `src/`, the reports, `RELEASE.md`, and this tracker; kept the license/copyright headers, the CLAUDE.md rule text, and the functional brochure-footer regex.
 
-## ⏳ Light-trap parts-quote — pending Alvin research (2026-08-24)
+## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 
-- [~] **Brush + holder — KEEP AS-IS for now (2026-08-24, Alvin: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.
+- [~] **Brush + holder — KEEP AS-IS for now (2026-08-24: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.
 - [~] **Edge channel — KEEP AS-IS for now** (same "optimize later" call). `ll-edge-channel` stays est; candidate = McMaster 9001K723 (6063 Al confirmed, 3/64″ wall, $18.18/8 ft) + 8× L-clips still to source.
 
 ---
 
-## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27, Alvin) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
+## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27) — SEEDS THE NEXT BLUEPRINT ROUND (hinged panel)
 
 > Deferred out of the light-trap blueprint (merged/released). These are the starting scope for the **next**
 > blueprint round: the **hinged panel** (`hingepanel-*`). Pick up here when that round begins.
@@ -82,8 +82,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   there); IBC wall-bolt 18<21 is nominal-OK (drawn D14 vs M12). **Next:** wire it into the pre-send routine +
   a lint advisory; consider a `bolted_joint()` emitter so orientation is correct-by-construction (retro item A).
 
-- [ ] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (Alvin
-  2026-08-17, HARD PRINCIPLE).** A design change must reflect in **every** model when they regenerate; the
+- [ ] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (2026-08-17, HARD PRINCIPLE).** A design change must reflect in **every** model when they regenerate; the
   model must not drift. The GOOD pattern already exists — the IBC front bars are one shared builder
   (`generate_corridor_water_panel.py` `tote_restraint()`) that overview/ibc-stack/water all call, so the
   4-bar + cleat + M12×65 + hex-bolt changes flow to every model on regen. The DRIFT RISK is **dead/divergent
@@ -133,7 +132,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   so it butts. Readability only (not a real clash); do it when **overview/walkway** is open (can't verify against
   the live ibc-stack). Also on ibc-stack `--solids`: **9 OPEN are by-design** (filter cap↔port ×6 molded, bar↔
   D-ring holder, the two-leg welded L-cleats) — pending a **sanction list** in check_interference so they stop
-  flagging. Run against the **overview** model (has all structural members) for the full list. (Alvin 2026-08-14.)
+  flagging. Run against the **overview** model (has all structural members) for the full list. (2026-08-14.)
 
 - [~] **Pipe-through-surface seam audit (3D readability) — same class as the beam fix above.** A pipe
   passing *through* a surface (plywood panel, wall, plate) shows NO seam/butt line — reads as fused into the
@@ -142,7 +141,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   penetrations: **pump-mount ply shirt** (suction entries + Cct-C power branches), **rear panel (18mm ply)**
   (DV merges, X-port drains, suction), **drain-riser backing spine**, **processing tray floor** (sump→P-04
   drain). **REMAINING — fix each:** either (a) draw a short collar/grommet ring at the face, or (b) split the
-  pipe so each side butts it. Each fix = generator edit + re-send (single-writer). (Alvin 2026-08-15.)
+  pipe so each side butts it. Each fix = generator edit + re-send (single-writer). (2026-08-15.)
 
 ## ⚡ Parts firm-up tracker — buckets by when they're actionable
 
@@ -151,7 +150,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - **Fab quotes (post-blueprint):** film cross-slide assembly (¼in bar firm $134.73, + UHMW/gib/fab), the 2 wall-seat-saddle plate cuts + weld.
   - **Steel-yard bulk quotes:** `ibcf-rhs`/`ibcf-feet`/`ibcf-wall-backing` (2×2×⅛ A500 + A36 plate), `shelf-steel-shs` (1×1×⅛ A500 6 m). Estimates are realistic bulk figures.
   - **At-purchase confirms:** `shelf-folding-stays` + `shelf-transport-latch` (zinc chosen, estimates hold).
-- [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.
+- [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — the supplier paste-check; each SKU auto-appears in the master on the next `--inject`.
 ### Cost-reduction opportunities (grounding — analysis 2026-07-31)
 Ranked by saving potential, analogous to the SS→ALU depth-rail switch (`fp-u-channel` $2,173→$328). Each
 needs a dedicated follow-up to model + cascade before committing. Cost by system for context: chemistry
@@ -195,14 +194,14 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
 - [ ] **Container** — `container-20ft` (±$1,500) + `container-delivery` (±$500), firm at purchase.
 - [ ] **Fab estimates.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet`, the film-plane fab (skate carriage, 304 cross-slides, cam clamp), and the `sp-pivot-post` collar — quote to shops once the drawing set ships. ≈±$1,500.
 - [ ] **Buy the film-plane U-joints (`fp-ujoint`).** Belden **SSNBUJ750x3/8KB** (Grainger **41D816**) — needle-bearing, 3/8" keyway + set screw, stainless, 45°, factory-booted. **$252.13 ea × 4 = $1,008.52**, + 8× 3/32×3/64 SS machine keys (`fp-ujoint-key`, ~$6–10 lot) + keyseat the 3/8" stubs. Firm-priced (2026-08-13); purchase at build. **Confirm the set-screw torque spec with Belden/Grainger** (datasheet gives static breaking 95 in-lb only). Supersedes the retired plain UJ-SS750x375 + separate 806VF1 boot.
-- [ ] **IBC flex-connection `s60-reducer` interface (bench).** The sourced reducer (Charlotte `PVC021071300HD`, 2"×1" Sch-40) is **spigot×slip (solvent-weld)**, but the tote adapter (Granatan S60→2") outputs **2" MALE NPT** — a spigot×slip bushing is glue-only, so it needs a **2" MPT×socket transition** to mate (or swap to a **2"FNPT×1" reducer**). Verify/resolve the tote-adapter interface at the bench. (Alvin 2026-07-29.)
-- [ ] **IBC flex-connection clamp size (bench).** `ibc-flex-clamp` is an Apollo **#12** (½"–1¼", `IDL0410PK`). The flex hose is cut from the 1"-ID / **1¼"-OD** tray-suction coil, so over a barb the OD approaches/*exceeds* the #12's 1¼" max — **verify the #12 closes and seals; step up to #16 if it bottoms out.** (Alvin 2026-07-29.)
+- [ ] **IBC flex-connection `s60-reducer` interface (bench).** The sourced reducer (Charlotte `PVC021071300HD`, 2"×1" Sch-40) is **spigot×slip (solvent-weld)**, but the tote adapter (Granatan S60→2") outputs **2" MALE NPT** — a spigot×slip bushing is glue-only, so it needs a **2" MPT×socket transition** to mate (or swap to a **2"FNPT×1" reducer**). Verify/resolve the tote-adapter interface at the bench. (2026-07-29.)
+- [ ] **IBC flex-connection clamp size (bench).** `ibc-flex-clamp` is an Apollo **#12** (½"–1¼", `IDL0410PK`). The flex hose is cut from the 1"-ID / **1¼"-OD** tray-suction coil, so over a barb the OD approaches/*exceeds* the #12's 1¼" max — **verify the #12 closes and seals; step up to #16 if it bottoms out.** (2026-07-29.)
 
 ---
 
 ## ★ MAJOR MILESTONE — manufacturing-ready blueprints (ALL drawing sets) — OPEN
 
-_Alvin's call (2026-07-16): the current 2D sets are arrangement-faithful schematics (true-proportion +
+_the call (2026-07-16): the current 2D sets are arrangement-faithful schematics (true-proportion +
 topologically correct, reconciled to the 3D) but NOT manufacturing blueprints. The milestone is a
 **definitive, dimensionally-correct, shippable-to-a-fabricator drawing package for EVERY subsystem** —
 precise hole positions, tolerances, fastener callouts, datums, section views, material/finish, driven
@@ -245,20 +244,19 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   A4/316→304 material downgrades on the non-structural TSB fasteners (confirm at the review). See
   `fastener-standardization.md`.
 - [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
-  (Alvin 2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
+  (2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
   (Surfaced during the egress review that retired the swing-out floorplan sheet.)
 - [ ] **Walkway — RIGHT-walkway wall-cleat blank promotion (minor residual from Phase 1.2).** The wall-cleat
   blank (`_rwk_wall_cleat`: plate 90×8, shelf 90×55×10) is still a model-local literal; promote to
   `WALKWAY_CLEAT_*` constants if/when the cleat gets its own 1:1 cut sheet (the §10.5 plate schedule already
   lists it). *(The grate-clip pitch was resolved in Phase D — `WALKWAY_GRATE_CLIP_PITCH` = 610mm/24".)*
-- [ ] **IBC frame — joint-mark naming (J1–J9) revisit (Alvin 2026-08-18).** Alvin finds the bare `J#` joint
-  marks opaque / doesn't identify with them. Consider human-descriptive marks for the IBC connection
+- [ ] **IBC frame — joint-mark naming (J1–J9) revisit (2026-08-18).** The bare `J#` joint
+  marks read as opaque / hard to identify with. Consider human-descriptive marks for the IBC connection
   schedule — but it's cross-cutting (IBC report + drawings + parts + costing + master-shopping-list), so do
   it as its OWN IBC-blueprint task, keeping the schedule internally consistent. See
   [[feedback_joint_mark_must_label_diagram]].
-- [ ] **Water — PRE-EXISTING under-corridor plumbing clashes (surfaced during the walkway F1 water re-route,
-  Alvin 2026-08-18; NOT caused by the walkway work).** Two clash groups that predate F1 — the J6 plate (IBC
+- [ ] **Water — PRE-EXISTING under-corridor plumbing clashes (surfaced during the walkway F1 water re-route, 2026-08-18; NOT caused by the walkway work).** Two clash groups that predate F1 — the J6 plate (IBC
   upright X4654), the IBC frame rail, and the corridor routing didn't move at F1: (1) **P-02→ACC-02 recycle ×
   RWk J6 arm end-plate** — the recycle's corridor turn at Yd1110 (`RWK_RIBBON_NOTCH_YDS[0]`) clips the arm plate
   at X4646-4654; (2) **several lines (blue trunk · DV-02 waste · P-02 recycle · SV-01) × the IBC corridor frame
@@ -275,14 +273,14 @@ The remaining §7 parts BOM is gated on confirmed prices._
   mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
   mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
   to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
-- [ ] **Hinge-panel blueprint — swing-panel transport-lock STAY plate detail (Alvin 2026-08-17).** The top +
+- [ ] **Hinge-panel blueprint — swing-panel transport-lock STAY plate detail (2026-08-17).** The top +
   bottom wall stays that lock the swung panel at 56° attach to a **plate paired with an exterior plate on the
   OUTSIDE of the container wall** (same interior+exterior backing-plate pattern as the container-wall
   cantilevers / the IBC wall hangers). Design it in the hinge-panel blueprint pass: plate sizes, through-bolt
   pattern, and add the geometry to the 3D (currently the stays/plates are NOT modeled — a 2D↔3D gap like the
-  bar cleat was). Reference the existing paired-plate detail. (Alvin also flagged some square-bolt heads in the
+  bar cleat was). Reference the existing paired-plate detail. (also flagged some square-bolt heads in the
   overview near here — confirm which and hex them if they're fasteners.)
-- [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (Alvin 2026-07-19.)
+- [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (2026-07-19.)
 - [ ] **Revisit film-plane EPDM foam-tape coverage.** Qty set **provisionally to 2× 25 ft rolls** (McMaster 8694K88, 50 ft) — right-sized to the ~43 ft film-plane perimeter (the old 3×50 ft = 150 ft was ~3.5× over). When reviewing the EPDM seals, confirm a single perimeter run + corner/overlap allowance is covered by 50 ft, else bump to 3 rolls. `parts.py` `epdm-foam-tape` carries a "provisional qty" note. (2026-07-21.)
 
 ## Scheduled
@@ -292,7 +290,7 @@ The remaining §7 parts BOM is gated on confirmed prices._
   4 SKU↔supplier mismatches + 12 SKUs missing a URL (surfaced by the `parts identity` lint advisory).
   Workflow: `build_parts_worklist.py` → fill `parts-worklist.csv` (new_* cols, merges on re-run) →
   `apply_parts_csv.py parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
-  Alvin fills at his own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
+  filled at the owner's own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
 
 ## Material validation — soak tests (deferred)
 Physical coupon soaks in the actual potassium-ferricyanide / citric-acid wash, deferred until the

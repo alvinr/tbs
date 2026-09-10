@@ -12,7 +12,7 @@ walkway-arm connection, folded into §3.4–3.6 + the cut list).
 **Delivered beyond the original plan (review sweep, Aug 15):**
 - **Sheet 4 — Fabrication Details A–F** (added F = walkway-arm→upright clamp) + ~7 review passes correcting the
   actual joints: bar bolted (not welded) to the hanger, vertical J7 retention, flush cleat bolts, tee-nut on
-  the ply BACK face, Detail D as a proper welded-L per Alvin's sketch, lighter steel tone.
+  the ply BACK face, Detail D as a proper welded-L per the sketch, lighter steel tone.
 - **NEW — Plate Fabrication Schedule (2 sheets)**: every plate 1:1 with hole Ø/positions/PCD (foot, hanger
   backing, hanger pocket as back-plate + seat faces, cleat, rear-panel tab, pipe-run L).
 - **Design refinements:** wall-hanger back-plate + seat standardized to 60 mm (reuse the backing stock);
@@ -51,7 +51,7 @@ load case). Follows [`fp-corner-blueprint-spec.md`](fp-corner-blueprint-spec.md)
    restraint + wall-anchoring (Phase A–D) **PLUS** the plumbing-corridor metal that shares it — the
    rear-panel/corridor-panel brackets (×6), the pump-support L-brackets (×12), the ribbon cross-beams, and
    the **walkway cantilever-arm CONNECTION into the front uprights** (arm's own detailing stays with the
-   walkway blueprint — Alvin's boundary). The purchased totes, the ply panels, and the water plumbing/pumps
+   walkway blueprint — the scope boundary). The purchased totes, the ply panels, and the water plumbing/pumps
    are interfaces, not in scope.
 3. **Do Phase A (structural validation) + Phase B (fastener/weld schedule) first.** Phases C (datums/
    tolerances) and D (fab-detail sheets) + E (cascade) follow as a second pass.
@@ -88,7 +88,7 @@ Sources: [EN 12195-1:2010 (SIST preview — Table 2, §5, Annex B)](https://cdn.
 [MariTerm HVTT13 (coefficients + blocking equation + f_s)](https://hvttforum.org/wp-content/uploads/2019/11/Johansson-International-guidelines-on-safe-load-securing-for-road-transport.pdf),
 [BG Verkehr KB 029-2 (μ table)](https://res.jedermann.de/data/downloads/KB029-2_Gesamtdokument.pdf).
 
-**Design mass — RESOLVED (Alvin: "design for both").** Both states carried: **drained** (nominal — totes
+**Design mass — RESOLVED ("design for both").** Both states carried: **drained** (nominal — totes
 site-filled, 65 kg tare) and **loaded** (self-contained transport, a full top-tier Blue tote ≈ **965 kg**,
 900 L + tare, high CG). The restraint is sized so the loaded case passes; the drained case then clears
 ≥ 12× everywhere.
@@ -132,7 +132,7 @@ text), authoritative voice, each capacity/coefficient cited.
 
 ## Open decisions
 
-1. **Transport fill state — RESOLVED (Alvin 2026-08-14): design for BOTH** (drained nominal + loaded
+1. **Transport fill state — RESOLVED (2026-08-14): design for BOTH** (drained nominal + loaded
    over-spec). Restraint sized for loaded → R5. Done.
 2. **Load-case sheet — deferred to Phase D.** Phase A landed as the §3.4 report table (SF matrix); a
    rendered `ibc-frame` load-case sheet (like fp Sheet 10) can be added with the fab-detail sheets if wanted.

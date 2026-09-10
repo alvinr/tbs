@@ -62,7 +62,7 @@ POCK_BP_HOLE_EDGE = 18           # J3 holes on the back-plate: 18 from each end 
 # tote_restraint: lt=8 plate, llen=90 legs, vertical leg on the bar FRONT −X, IBC_FRAME_RHS+8 tall).
 # The 50×20 bar DROPS INTO the L corner; a SINGLE horizontal M12×65 (J2) runs through the vertical leg +
 # the bar's TALL 50mm web (so the Ø14 hole gets ~18mm edge, not the 3mm a 20mm-wide face gave). W3 welds
-# the L to the upright. (Redesigned to an L + single horizontal bolt — Alvin 2026-08-18.)
+# the L to the upright. (Redesigned to an L + single horizontal bolt — 2026-08-18.)
 CLEAT_LEG   = 90                       # leg length ALONG the bar (Yd)
 CLEAT_T     = 8                        # angle thickness
 CLEAT_UP    = IBC_FRAME_RHS + CLEAT_T  # vertical-leg height (covers the bar front) = 58

@@ -74,7 +74,7 @@ C_FRAME = "#808890"
 C_TRAY  = "#A0B0A0"
 C_FLOOR = "#E0DDD8"
 C_WALL  = "#C0C0C8"
-C_BRKT  = C_STEEL     # bracket fill — unified to the project-standard steel tone (lighter, matches sheet6 + the IBC/film-plane/hingepanel sheets; the darker #707888 was a readability outlier, Alvin 2026-08-18)
+C_BRKT  = C_STEEL     # bracket fill — unified to the project-standard steel tone (lighter, matches sheet6 + the IBC/film-plane/hingepanel sheets; the darker #707888 was a readability outlier, 2026-08-18)
 FONT    = {"fontfamily": "monospace"}
 
 bbox = dict(fc="white", ec="none", pad=1.5, alpha=0.85)
@@ -2774,7 +2774,7 @@ def sheet10():
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
     draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
     # cutout dims — bump-out (width above, 500 depth on the right) + position chain (incl. the 30 slit);
-    # the position chain replaces the overall length line on the long near/far sections (Alvin 2026-08-19)
+    # the position chain replaces the overall length line on the long near/far sections (2026-08-19)
     draw_dim_h(ax, xoff_nw_l, xoff_nw_r, y + WW + 12, f"{xoff_nw_r - xoff_nw_l:.0f}", offset=4, fs=5.5, font=FONT)
     draw_dim_v(ax, xoff_nw_r + 58, y, y + WW, f"{WW}mm", offset=5, fs=5.5, right=True, font=FONT)
     chain([0, xoff_nw_l, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, xoff_nw_r, GRP_MAX, nf_len], y - 92)

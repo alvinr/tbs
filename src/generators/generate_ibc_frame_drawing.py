@@ -640,7 +640,7 @@ def sheet1():
     # ── IBC anatomy labels ──────────────────────────────────────────────────
     leader(ax, (BLUE_IBC_Y + IBC_D / 2), (IBC_PALLET_H / 2),
            (BLUE_IBC_Y + IBC_D / 2 - 70), (IBC_PALLET_H + 60),
-           "PALLET BASE\n168mm (STEEL/PLASTIC)\nFORK POCKETS",
+           f"PALLET BASE\n{IBC_PALLET_H}mm (STEEL/PLASTIC)\nFORK POCKETS",
            color=C_PALLET, fs=5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 

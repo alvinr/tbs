@@ -889,7 +889,7 @@ def section_aa(ax):
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
     # dims
-    draw_dim_v(ax, -14, 0, 76, "76mm\n(3\")", offset=9, fs=5.4, color=DIM, font=FONT)
+    draw_dim_v(ax, -14, 0, FP_RAIL_WEB, f"{FP_RAIL_WEB}mm\n(3\")", offset=9, fs=5.4, color=DIM, font=FONT)
     draw_dim_h(ax, 5, 43, -10, "38mm flange", offset=7, fs=5.4, color=DIM, above=False, font=FONT)
     # leaders
     leader(ax, 2, 38, -25, 28, "WEB (outboard,\nsplice face)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
@@ -2103,10 +2103,10 @@ def sheet11():
         axA.add_patch(Rectangle((bx - 5, C_WID - fl_t - 5.5), 10, 5.5, fc="#6A6A72", ec=OUT, lw=0.6, zorder=6))               # NUT — INSIDE
     leader(axA, cx + 38, C_WID - fl_t - 5.5, cx + 78, C_WID - fl_t - 30, "M12 NUTS inside (container)", ha="left", fs=5.0, color=OUT, font=FONT)
     draw_dim_h(axA, cx - bw / 2, cx + bw / 2, C_WID + fl_t + 44, f"{bw}mm", offset=7, fs=5.5, font=FONT, above=False)
-    draw_dim_h(axA, cx - 38, cx + 38, 2250, "76mm gauge", fs=5, font=FONT)
+    draw_dim_h(axA, cx - 38, cx + 38, 2250, f"{FP_RAIL_WEB}mm gauge", fs=5, font=FONT)
     leader(axA, cx + 18, C_WID - fl_t, cx + 82, C_WID - fl_t - 7, "rail END butts the flange INNER face", ha="left", fs=5.2, color=OUT, font=FONT)
     leader(axA, cx + bw / 2, C_WID + WALL_T + ext_t, cx + 78, C_WID + WALL_T + 7, "exterior plate — hex heads OUTSIDE", ha="left", fs=5.2, color=OUT, font=FONT)
-    leader(axA, cx - 38, C_WID - fl_t + 2, PIVOT_X + PIVOT_POST_OD / 2 + 4, 2316, "M12 bolts CLEAR\nthe Ø89 post", ha="left", fs=5, color=OUT, font=FONT)
+    leader(axA, cx - 38, C_WID - fl_t + 2, PIVOT_X + PIVOT_POST_OD / 2 + 4, 2316, f"M12 bolts CLEAR\nthe Ø{PIVOT_POST_OD} post", ha="left", fs=5, color=OUT, font=FONT)
     axA.text(230, 2426, "VIEW A — PLAN (looking down, rear-left corner)", fontsize=7, ha="center", fontweight="bold", color=ANNO, **FONT)
 
     # ── VIEW B — SECTION (Yd–Z at the rail plane) — BROKEN: TOP (TL↔roof mount) + BOTTOM (BL↔floor mount) ──
@@ -2166,7 +2166,7 @@ def sheet11():
     draw_dim_h(axC, 228, wx0, rz1 + 22, "13mm", fs=5.0, font=FONT, offset=8)                                   # left bolt edge → web
     draw_dim_h(axC, fx1, 292, rz1 + 22, "13mm", fs=5.0, font=FONT, offset=8)                                   # flange tip → right bolt edge
     draw_dim_h(axC, PIVOT_X + PIVOT_POST_OD / 2, 216, rz0 - 22, "4mm", fs=5.0, font=FONT, above=False, offset=8)  # post → left bolt
-    draw_dim_h(axC, 222, 298, rz0 - 34, "76mm gauge", fs=5.2, font=FONT, above=False, offset=8)
+    draw_dim_h(axC, 222, 298, rz0 - 34, f"{FP_RAIL_WEB}mm gauge", fs=5.2, font=FONT, above=False, offset=8)
     axC.text(120, rz1 + 34, "VIEW C — VERTICAL SECTION (X–Z at the bolt plane)",
              fontsize=6.6, ha="left", fontweight="bold", color=ANNO, **FONT)
     axC.text(120, rz0 - 48, "bolts CLEAR the rail channel ~13mm each side + the Ø89 post ~4mm",

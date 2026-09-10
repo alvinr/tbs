@@ -653,9 +653,9 @@ def draw_sheet2():
              ha="center", va="center", fontsize=6, color="#333", zorder=6)
 
     # Dimensions — using shared helpers from tbs_drawing.
-    draw_dim_h(ax2, 0, CW, -0.30, "5893mm (CONTAINER INTERIOR)", offset=0.21, fs=6.5, above=False)
+    draw_dim_h(ax2, 0, CW, -0.30, f"{C_LEN}mm (CONTAINER INTERIOR)", offset=0.21, fs=6.5, above=False)
     draw_dim_v(ax2, -0.2 - 0.1, 0, CH, "2362mm", offset=0.27, fs=6.5, right=False)
-    draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, "IBC col: 1219mm", offset=0.27, fs=6.5, above=False)
+    draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, f"IBC col: {IBC_W}mm", offset=0.27, fs=6.5, above=False)
     draw_dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END}mm", offset=0.27, fs=6.5, color="#805000", above=False)
     draw_dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {C_LEN - ZONE_R_START}mm", offset=0.27, fs=6.5, color="#004080", above=False)
 

@@ -187,10 +187,13 @@ GHOST_MUTE, GHOST_ALPHA = 0.65, 0.15   # prior-phase static context: collapses t
 
 def generate_ruby():
     step_tags = [tag for (_p, _s, tag, _l, _b) in STEPS]
-    # Each DC phase also gets a STATIC (flat, non-clickable) copy on its own tag, shown as built
+    # Each DC phase gets a STATIC (flat, non-clickable) GHOST copy on its own tag, shown as built
     # context in LATER scenes — so clicking a later phase can only ever hit that later phase's DC.
-    static_tag = {pn: f"P{pn}-static" for pn in DC_PHASES}
-    TAGS = ["Context"] + step_tags + [static_tag[pn] for pn in DC_PHASES]
+    # The LAST scene phase gets no static copy: it's never a "prior" phase, so its ghost would only
+    # overlap its own clickable DC (e.g. a ghost drum cage sitting under the Phase-5 build).
+    last_scene_phase = max(SCENE_PHASES)
+    static_tag = {pn: f"P{pn}-static" for pn in DC_PHASES if pn < last_scene_phase}
+    TAGS = ["Context"] + step_tags + list(static_tag.values())
 
     comps = [ov.component("Container (ghost)", "Context", context())]
     dc_blocks, dc_vars, dc_info = [], [], []
@@ -203,11 +206,12 @@ def generate_ruby():
             dc_info.append((var, len(p_steps)))
             # static built copy (non-clickable) for use as prior context in later scenes —
             # GHOSTED (desaturated + translucent) so the CURRENT phase's new geometry reads clearly
-            # against the already-installed context.
-            for (sid, tag, label, body) in p_steps:
-                with ov.muted(GHOST_MUTE, GHOST_ALPHA, force=True):
-                    static_body = body()
-                comps.append(ov.component(f"[built] Step {sid} — {label}", static_tag[pn], static_body))
+            # against the already-installed context. Skipped for the last phase (no later scene).
+            if pn in static_tag:
+                for (sid, tag, label, body) in p_steps:
+                    with ov.muted(GHOST_MUTE, GHOST_ALPHA, force=True):
+                        static_body = body()
+                    comps.append(ov.component(f"[built] Step {sid} — {label}", static_tag[pn], static_body))
         else:
             for (sid, tag, label, body) in p_steps:
                 comps.append(ov.component(f"Step {sid} — {label}", tag, body()))

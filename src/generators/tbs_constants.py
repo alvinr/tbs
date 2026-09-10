@@ -344,6 +344,8 @@ LT_STAY_LUG_T    = 12   # lug plate thickness (mm)
 LT_STAY_LUG_PROJ = 70   # lug projection from the stile face (mm)
 LT_STAY_LUG_H    = 60   # lug height along the stile (mm)
 LT_STAY_LUG_HOLE = 17   # clevis-pin hole Ø (mm) — clears the M16 turnbuckle jaw pin
+LT_STAY_LUG_EDGE = 25   # pin-hole center inset from the projecting tip (mm) — ~1× hole-Ø of
+                        # material past the bore, so the loaded eye can't tear out; centered in LT_STAY_LUG_H
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
 PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29)

@@ -2730,7 +2730,7 @@ def sheet16():
 def sheet17():
     from tbs_constants import (LT_STAY_PLATE_HW, LT_STAY_PLATE_T, LT_STAY_BOLT_OFF,
                                LT_STAY_BOLT_D, LT_STAY_LUG_T, LT_STAY_LUG_PROJ,
-                               LT_STAY_LUG_H, LT_STAY_LUG_HOLE)
+                               LT_STAY_LUG_H, LT_STAY_LUG_HOLE, LT_STAY_LUG_EDGE)
     fig, ax = plt.subplots(figsize=(22, 8.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
@@ -2755,27 +2755,31 @@ def sheet17():
     ax.add_patch(Rectangle((Ax + 176, 55), 8, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))               # interior plate
     ax.add_patch(Rectangle((Ax + 184, 58), 6, 54, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))  # wall
     ax.add_patch(Rectangle((Ax + 190, 55), 8, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))               # exterior plate
-    leader(ax, (Ax + 182, 85), (Ax + 190, 134), "near-wall anchor\n(Detail C)", col=C_OUT, fs=6)
+    leader(ax, (Ax + 180, 85), (Ax + 190, 134), "near-wall anchor\n(Detail C)", col=C_OUT, fs=6)
 
     # ═══ DETAIL B — panel-side receiver lug (welded eye lug on the stile) ═══
-    Bx, s = 250, 0.62
-    ax.text(Bx + 66, 205, "DETAIL B — PANEL-SIDE RECEIVER LUG", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Bx + 66, 192, "welded steel eye lug — the turnbuckle jaw clevis-pins here (NEW)", ha="center", fontsize=6.3, color=C_DIM, **FONT)
-    sx0, sz0 = Bx + 18, 70
-    ax.add_patch(Rectangle((sx0, sz0), 40, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))     # stile (side)
-    ax.add_patch(Rectangle((sx0 + 3, sz0 + 3), 34, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
-    leader(ax, (sx0 + 20, sz0), (sx0 + 6, sz0 - 34), "2×2×0.120 RHS stile", col=C_OUT, fs=6)
-    lug_x, lug_z, lp, lh = sx0 + 40, sz0 + (60 - LT_STAY_LUG_H * s) / 2, LT_STAY_LUG_PROJ * s, LT_STAY_LUG_H * s
+    Bx, s = 270, 0.8
+    ax.text(Bx + 78, 205, "DETAIL B — PANEL-SIDE RECEIVER LUG", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Bx + 78, 192, "welded steel eye lug — the turnbuckle jaw clevis-pins here (NEW)", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    sx0, sz0 = Bx + 6, 62
+    ax.add_patch(Rectangle((sx0, sz0), 40, 68, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))     # stile (side)
+    ax.add_patch(Rectangle((sx0 + 3, sz0 + 3), 34, 62, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    leader(ax, (sx0 + 20, sz0), (sx0 + 2, sz0 - 28), "2×2×0.120 RHS stile", col=C_OUT, fs=6, ha="left")
+    lp, lh = LT_STAY_LUG_PROJ * s, LT_STAY_LUG_H * s
+    lug_x, lug_z = sx0 + 40, sz0 + (68 - lh) / 2
     ax.add_patch(Rectangle((lug_x, lug_z), lp, lh, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))              # lug plate
-    hcx = lug_x + lp - 13
-    ax.add_patch(Circle((hcx, lug_z + lh / 2), LT_STAY_LUG_HOLE * s / 2, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
+    hcx, hcz = lug_x + lp - LT_STAY_LUG_EDGE * s, lug_z + lh / 2
+    ax.add_patch(Circle((hcx, hcz), LT_STAY_LUG_HOLE * s / 2, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
     ax.add_patch(Polygon([(lug_x, lug_z), (lug_x + 8, lug_z), (lug_x, lug_z + 8)], closed=True, fc=C_OUT, ec="none", zorder=7))        # fillet weld
     ax.add_patch(Polygon([(lug_x, lug_z + lh), (lug_x + 8, lug_z + lh), (lug_x, lug_z + lh - 8)], closed=True, fc=C_OUT, ec="none", zorder=7))
+    # proj (below) · hole edge-distance from the tip (dim_h, above) · hole centered (dim_v 30/30 chain, right)
     draw_dim_h(ax, lug_x, lug_x + lp, lug_z - 8, f"{LT_STAY_LUG_PROJ}mm", fs=6, offset=7, above=False)
-    draw_dim_v(ax, lug_x + lp + 8, lug_z, lug_z + lh, f"{LT_STAY_LUG_H}mm", fs=6, offset=7, right=True)
-    leader(ax, (hcx, lug_z + lh / 2), (hcx + 18, lug_z + lh + 22), f"Ø{LT_STAY_LUG_HOLE} clevis-pin hole\n(M16 jaw pin)", col=C_OUT, fs=6, ha="left")
-    leader(ax, (lug_x + 6, lug_z + lh / 2), (lug_x - 8, lug_z - 30), f"{LT_STAY_LUG_T}mm steel eye lug", col=C_OUT, fs=6, ha="right")
-    leader(ax, (lug_x + 4, lug_z + lh - 4), (lug_x - 16, lug_z + lh + 24), "6mm fillet weld\nall round to the stile", col=C_OUT, fs=6, ha="right")
+    draw_dim_h(ax, hcx, lug_x + lp, lug_z + lh + 8, f"{LT_STAY_LUG_EDGE}mm", fs=6, offset=6)
+    draw_dim_v(ax, lug_x + lp + 8, lug_z, hcz, f"{LT_STAY_LUG_H // 2}mm", fs=6, offset=7, right=True)
+    draw_dim_v(ax, lug_x + lp + 8, hcz, lug_z + lh, f"{LT_STAY_LUG_H // 2}mm", fs=6, offset=7, right=True)
+    leader(ax, (hcx, hcz), (hcx - 4, lug_z + lh + 30), f"Ø{LT_STAY_LUG_HOLE} pin hole\n(M16 jaw)", col=C_OUT, fs=6, ha="right")
+    leader(ax, (lug_x + 6, hcz), (lug_x + 50, lug_z - 28), f"{LT_STAY_LUG_T}mm steel eye lug", col=C_OUT, fs=6, ha="right")
+    leader(ax, (lug_x + 4, lug_z + lh - 4), (lug_x - 18, lug_z + lh + 20), "6mm fillet weld\nall round to the stile", col=C_OUT, fs=6, ha="right")
 
     # ═══ DETAIL C — near-wall anchor (front view + plate-pair section) ═══  [moved off Sheet 12]
     Cx = 452

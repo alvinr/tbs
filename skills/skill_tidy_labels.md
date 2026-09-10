@@ -29,6 +29,8 @@ It **flags** (does not touch) the ones that need judgement — carry these into 
 - **LEADER range-suffix** — a `(X=…)` on a leader may be a legit part id; decide per case.
 - **LEADER spec-sheet** — a ≥3-line leader; move secondary specs (material, size, profile) to the notes block (P1).
 - **NOTES hand-wrapped** — a notes list with `"   "` continuation items → pass logical one-string notes + `wrap=` (P8).
+- **DIM label-literal** — a dimension baked into a label string (`Ø900`) whose value == a `tbs_constants` value → rewrite as an f-expr (`f"Ø{DRUM_D}"`) so it can't go stale. This is the string-embedded hardcode `lint.py`'s numeric-token scan can't see (they complement). Advisory — same distinctive-value filter as lint, so a coincidental match (a Ø matching an unrelated coord) is on you to dismiss.
+- **ARCHAEOLOGY label** — a `RETIRED`/`for reference`/`superseded` callout on retired geometry → delete the label **and** the ghost geometry it names (current design only; history → changelog).
 
 It deliberately does **not** judge dimension `offset` (scale-dependent — 3–8 data-units in detail views vs 25–80 mm-first) — that's a visual call.
 
@@ -57,6 +59,7 @@ Open the PNG and **crop-zoom every label cluster at 2.5–3×** (PIL crop — ne
 5. **Dimensions** on the open side (`right=`/`above=` toward white space), sensible `offset` for *this* sheet's scale, no `<30mm` gap dimensioned between extension lines (P7).
 6. **Collisions / clipping** — labels overlapping each other or running off the axes (**auto-surfaced by `--overflow` in step 1b** — resolve every OVERFLOW; confirm each CROWDED on the crop).
 7. Resolve the **flags** from step 1 (spec-sheet leaders → notes; hand-wrapped notes → `wrap=`).
+8. **Content riding along** (a tidy is where these surface). Not placement, but caught in the same crop-zoom: a **hardcoded dimension** in label text that should be an f-expr (`--check` flags the ones matching a constant — the `Ø900`→`f"Ø{DRUM_D}"` class); a stale **`SHEET N` cross-ref** after a renumber; **drawn archaeology** — retired/ghost geometry + its `RETIRED`/"for reference" label — to delete (current design only). See `skill_diagram_structure.md` "Drawing content"; cross-ref `check_consistency.py` for constant-drift.
 
 ### 4. Re-render and verify
 Regenerate, crop-zoom the same clusters again. Fix-then-eyeball — never ship the "final" unlooked-at.

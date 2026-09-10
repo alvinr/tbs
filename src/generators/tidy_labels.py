@@ -30,6 +30,12 @@ Deliberately NOT auto-fixed / not flagged:
 Reported only (need judgement or a rendered look — the /tidy-labels skill, P1/P8/P9):
   * LEADER range-suffix — a ``(X=…)`` on a leader may be a legit part id; a human/vision decides.
   * NOTES hand-wrapped  — a notes list with leading-space continuation items → use ``wrap=``.
+  * DIM label-literal   — a dimension baked into a label string (``Ø900``) whose value == a
+                          tbs_constants value → make it an f-expr so it can't go stale. This is the
+                          string-embedded case lint.py's numeric-token scan can't see (complement).
+  * ARCHAEOLOGY label   — a ``RETIRED`` / ``for reference`` / ``superseded`` callout on retired
+                          geometry → delete it and the ghost it names (current design only; the
+                          drawing shows the as-built, history goes in the changelog).
 
 The VISUAL rules (notes over geometry, leader in the nearest clear pocket, bbox on hatch,
 title-block overlap) are NOT detectable from source — render + crop-zoom in the skill. But
@@ -65,6 +71,43 @@ NOUNIT_SKIP_RE = re.compile(r"Ø|×|\bX=|\bYd=|\bZ=")
 # a label whose FIRST token is a measured value — a bare number (opt. ~ / decimals) or a single
 # f-expr — captured so we can insert "mm" right after it: f?  quote  value  rest…quote
 LEADING_VAL_RE = re.compile(r"""^(f?)(["'])(~?\d[\d.]*|\{[^{}]*\})(.*)\2$""", re.S)
+# Gap B/E: a hardcoded DIMENSION baked into a label string (Ø900 / R450 / 800mm / 45°). lint's
+# tokenizer flags bare numeric CODE literals but can't see a number inside a string literal — so a
+# stale "Ø900" slips its net; this catches it here. Anchored to a dim sigil (Ø/R…/mm/°) to skip
+# part-nos / grades. An f-expr ("{DRUM_D}mm") has no digit before the unit, so it never matches.
+DIM_IN_LABEL_RE = re.compile(r"Ø\s*(\d+(?:\.\d+)?)|(?<![\w.])R(\d+(?:\.\d+)?)\b|(\d+(?:\.\d+)?)\s*(?:mm|cm|°)")
+# Gap C/E: a drawn-archaeology callout string (retired/superseded/for-reference geometry label).
+ARCH_RE = re.compile(r"RETIRED|SUPERSEDED|for reference|no longer|\(old\)", re.I)
+
+_CONST_BY_VAL = None
+
+
+def _const_by_val():
+    """value → constant NAME, for DISTINCTIVE constants only — uniquely-owned, |v| >= 50, and NOT a
+    round multiple of 10. This is lint.py's precision filter: coincidental matches cluster on round
+    values (50, 300, 600) and shared values, while a genuine should-be-a-constant dimension is oddly
+    specific (76, 89, 114). Without it a label "50mm" false-matches a dozen 50-valued coords. Matched
+    against numbers embedded in LABEL STRINGS, which lint's numeric-token scan can't see. Guarded +
+    cached so the static --check stays robust where tbs_constants can't import."""
+    global _CONST_BY_VAL
+    if _CONST_BY_VAL is None:
+        _CONST_BY_VAL = {}
+        try:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import tbs_constants as K
+            by_val = {}
+            for n in dir(K):
+                if n.startswith("_") or not n.isupper():
+                    continue
+                v = getattr(K, n)
+                if isinstance(v, bool) or not isinstance(v, (int, float)):
+                    continue
+                by_val.setdefault(round(float(v), 5), []).append(n)
+            _CONST_BY_VAL = {v: names[0] for v, names in by_val.items()
+                             if len(names) == 1 and abs(v) >= 50 and v % 10 != 0}
+        except Exception:
+            _CONST_BY_VAL = {}
+    return _CONST_BY_VAL
 
 
 class Finding:
@@ -126,6 +169,17 @@ def analyze(src, path):
                                    f"add 'mm' after leading value ({val})", True, seg, new))
             # non-numeric-leading dims are named/station labels — deliberately not flagged.
 
+        # ── hardcoded dimension in the label TEXT that equals a constant (Gap B) ─
+        cbv = _const_by_val()
+        if cbv:
+            for dm in DIM_IN_LABEL_RE.finditer(seg):
+                tok = next(g for g in dm.groups() if g)
+                nm = cbv.get(round(float(tok), 5))
+                if nm and nm not in seg:
+                    out.append(Finding("DIM label-literal", label.lineno,
+                                       f"label hardcodes {dm.group().strip()!r} (== tbs_constants.{nm}) "
+                                       f"— use an f-expr so it can't go stale"))
+
     # NOTE: no LEADER "spec-sheet" (≥3-line) rule. On this project the 2D set is a set of
     # manufacturing blueprints where completeness is the point, so detailed multi-line callouts
     # (bearing part no., plate spec, valve DN) are usually WANTED. Whether a secondary line is
@@ -144,6 +198,17 @@ def analyze(src, path):
                         out.append(Finding("NOTES hand-wrapped", a.lineno,
                                            f"{len(cont)} hand-wrapped continuation line(s) → pass logical "
                                            f"one-string notes + wrap= (P8)"))
+
+    # ── drawn-archaeology labels (Gap C) — a "RETIRED"/"for reference"/"superseded" callout on
+    # retired geometry. House style is current-design-only (history → changelog), so the label AND
+    # the ghost it names should go. Short strings only, to skip a docstring/note that uses the word.
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str) and len(node.value) <= 60:
+            am = ARCH_RE.search(node.value)
+            if am:
+                out.append(Finding("ARCHAEOLOGY label", node.lineno,
+                                   f"{am.group()!r} in {node.value.strip()[:40]!r} — remove the retired "
+                                   f"geometry + its label (current design only)"))
     return out
 
 
@@ -330,8 +395,8 @@ def main():
     if args.overflow:
         return run_overflow(files, tol_frac=args.tol / 100.0, collide=not args.no_collisions)
     total_fix = total_flag = 0
-    RANK = {"DIM range-suffix": 0, "DIM unit-less": 1,
-            "LEADER range-suffix": 2, "NOTES hand-wrapped": 3}
+    RANK = {"DIM range-suffix": 0, "DIM unit-less": 1, "DIM label-literal": 2,
+            "ARCHAEOLOGY label": 3, "LEADER range-suffix": 4, "NOTES hand-wrapped": 5}
     for path in sorted(set(files)):
         try:
             src = open(path).read()

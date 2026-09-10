@@ -28,6 +28,7 @@ The dominant cost on this project is the round-trip: I draw → the user "Tidy l
 5. **Notes:** the box sits in a **clear margin — never over geometry/ghost**; if the frame is full, EXTEND the axis to open a band rather than cram it (P8 placement). Then formatting: ALL-CAPS title + `:`, `ha="left"`, logical one-string notes with `wrap=` (not hand-`\n`), width sized to the wrapped result, `fs≥7`, trailing comma on every string.
 6. **Legibility:** any text sitting on a hatch / ghost / patterned fill gets a **white `bbox` (LBL_BG)**, not merely a high zorder (P9). And each **leader carries one identifier**, not a spec sheet — push material/size to the notes block (P1).
 7. **3D model labels:** does each leader tip land **on the part**, not the bounds-centre / mid-air above an outrigger? (P3 — `overview_labels()` now auto-snaps egregious floats, but still eyeball it.)
+8. **Code structure & content** (author-time, so a later tidy has nothing to unpick): each callout is an **explicit `leader()`/`draw_dim_*` call with literal coords** — no placement `for`-loop, no local label wrapper (`llabel`/`dlbl`); both block a per-label nudge (see `skill_diagram_structure.md` "Labels & callouts"). No **hardcoded dimension** in a label string (f-expr it against the constant), no **`RETIRED`/ghost archaeology** left on the sheet. `tidy_labels.py --check` flags the last two.
 
 If a check fails, fix it *before* rendering the "final" — don't ship it expecting a tidy pass.
 

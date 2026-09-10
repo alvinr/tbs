@@ -103,6 +103,23 @@ title_block(ax_tb, "SHEET 1 OF 3",
             scale_note="SCALE 1:10 — ALL DIMS IN mm")
 ```
 
+## Labels & callouts — write the code to be hand-editable
+
+Every callout gets **hand-nudged** after generation — that's the "Tidy labels" round-trip. Structure the label code so a human can move ONE label without disturbing a formula or the others (unrolling label loops was the single biggest category of hand-work in the last label sweep):
+
+- **One explicit call per callout.** Emit each label as its own `leader()` / `draw_dim_*` call with **literal, independently-editable text coords** — never a `for`/`enumerate` placement loop or an `ax.annotate` loop over a list. A loop couples every label's position to one expression, so nudging one shifts the rest; the fix repeatedly applied by hand is to unroll the loop into explicit calls. If a batch shares structure, still emit them as separate calls (copy-paste, then tune each).
+- **No local label wrappers.** Don't wrap `leader()`/`draw_dim_*` in a per-generator forwarder (`llabel`, `dlbl`, `clbl`) — a pass-through that only reshapes args hides the real coords and blocks a direct nudge (CLAUDE.md "No pass-through wrappers"). Call the shared helper directly; put any default at the call site.
+- **Always `leader()` for a callout line — never raw `ax.annotate()`/`ax.text()`+arrow.** Consistent dotted style, and `tidy_labels.py --overflow` can only measure a real `leader()`/`Text` artist. (See `skill_label_placement.md`.)
+- **Anchor the tip to geometry, keep the text end a literal.** Prefer a geometry-anchored tip (a component-name list tracking `bb.center`/`bb.max.z`) so it tracks a moved part; the text END stays an explicit literal — that's the coordinate you tidy. (P3.)
+
+## Drawing content — current design only, single-part monochrome
+
+What the sheet shows follows the same house style as report prose:
+
+- **No drawn archaeology.** Draw the as-built only. Never leave retired/superseded geometry on the sheet — no faint "for reference" ghost rails, no `RETIRED`/`(old)` label. Design history belongs in the changelog, exactly as for reports (CLAUDE.md house style). `tidy_labels.py --check` flags a `RETIRED`/`for reference`/`superseded` label string; delete that label **and** the ghost geometry it names.
+- **Color: multi-part MAY use color; a single part is MONOCHROME.** A multi-component cross-section or assembly may use the material-fill palette to distinguish parts, but a **single-component dimensional sheet** (one part's fab/dims) is monochrome — white / no-fill + black line art, no ghost fills. (`feedback_color_sections_mono_single_part`.)
+- **No hardcoded dimension in a label string.** A number baked into label text (`f"Ø900"`, `"R450"`) silently goes stale when its constant changes — write it as an f-expr against the constant (`f"Ø{DRUM_D}"`). `tidy_labels.py --check` flags a label literal that equals a `tbs_constants` value — the string-embedded case `lint.py`'s numeric-token scan can't see. Sweep label text for stale `SHEET N` cross-refs the same way after any renumber.
+
 ## Multi-Sheet Generator Pattern
 
 Every diagram generator follows this structure:

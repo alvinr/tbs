@@ -2797,6 +2797,9 @@ def sheet17():
     draw_dim_h(ax, cx - hpw, cx + hpw, cy - hpw - 8, f"{PW}mm", fs=6, offset=8, above=False)
     draw_dim_v(ax, cx - hpw - 8, cy - hpw, cy + hpw, f"{PW}mm", fs=6, offset=8, right=False)
     draw_dim_v(ax, cx + hpw + 8, cy - hbg, cy + hbg, f"{BGAUGE}mm", fs=6, offset=8, right=True)
+    _edge = LT_STAY_PLATE_HW - LT_STAY_BOLT_OFF   # bolt edge distance — completes the 30/140/30 chain = plate height
+    draw_dim_v(ax, cx + hpw + 8, cy + hbg, cy + hpw, f"{_edge}mm", fs=6, offset=8, right=True)
+    draw_dim_v(ax, cx + hpw + 8, cy - hpw, cy - hbg, f"{_edge}mm", fs=6, offset=8, right=True)
     leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 14, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
     leader(ax, (cx, cy), (cx - hpw - 14, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
     px, syd = Cx + 44, -46

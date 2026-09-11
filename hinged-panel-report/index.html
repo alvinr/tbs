@@ -3457,7 +3457,7 @@ mechanisms and are drawn on their own blueprints.</p>
 <strong>Sheet 1</strong> front elevation.</p>
 <p><strong>Sheet 5 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)</strong>
 <img alt="TBS-001 Hinged Panel — Sheet 5: Pull Handle Mounting Detail" src="../assets/hingepanel-sheet5.png" /></p>
-<p><strong>Sheet 12 — Frame Hardware Attachments: cam-latch keeper, brush-strip holder, transport-stay plate (three details)</strong>
+<p><strong>Sheet 12 — Door-Frame Hardware: cam-latch keeper + brush-strip holder (two details)</strong> — the transport lock formerly here is now on its own focused sheet (Sheet 17).
 <img alt="TBS-001 Hinged Panel — Sheet 12: Frame Hardware Attachments" src="../assets/hingepanel-sheet12.png" /></p>
 <hr />
 <h2 id="5-rotating-transport-system">5. Rotating Transport System<a class="headerlink" href="#5-rotating-transport-system" title="Permanent link">&para;</a></h2>
@@ -3518,6 +3518,9 @@ near-deck section lift out</strong> before the swing; all are re-seated to datum
 <blockquote>
 <p><strong>Stay hooks land on steel, not the skin.</strong> The transport-stay couple carries real tension, so both hooks weld to the <strong>left perimeter RHS stile</strong> of the swinging frame — <em>not</em> the 1/8" HDPE plastic skin. The perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.</p>
 </blockquote>
+<p>The complete transport lock is detailed on <strong>Sheet 17</strong> — the general arrangement, the <strong>panel-side receiver lug</strong> (a 12mm steel eye plate with a Ø17 clevis-pin hole, 6mm fillet-welded all round to the stile — the turnbuckle jaw clevis-pins here), and the <strong>near-wall anchor</strong> (a 200 × 200 × 12mm A36 plate pair bolted through the near wall with 4 × M16 — the interior + exterior backing-plate pattern of the wall-hanger / cantilever joints, since the wall can't be welded to). The turnbuckle is a 5/8in jaw-eye galvanized unit (JETBGV58X6); lug/plate/bolt sizes single-source from <code>tbs_constants</code> (<code>LT_STAY_*</code>). Both ends are modeled in 3D — the panel receiver (<code>frame_hooks()</code>) and the wall anchor (<code>wall_anchors()</code>).</p>
+<p><strong>Sheet 17 — Transport Lock: general arrangement + panel-side receiver lug + near-wall anchor</strong>
+<img alt="TBS-001 Hinged Panel — Sheet 17: Transport Lock" src="../assets/hingepanel-sheet17.png" /></p>
 <h3 id="53-floor-gap">5.3 Floor Gap<a class="headerlink" href="#53-floor-gap" title="Permanent link">&para;</a></h3>
 <p>The panel + drum cage ride at a <strong>217mm floor gap</strong>, carried by the pivot post on its
 thrust collar + hub bearings. The gap is set by the <strong>transport-swing clearance</strong>: as the
@@ -4030,7 +4033,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 </tr>
 <tr>
 <td><a href="https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle">Top + bottom wall stays + 4-bolt anchor plates</a> (JETBGV58X6)</td>
-<td>Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates</td>
+<td>Transport lock — 2× M16 jaw-eye turnbuckle + 2 panel-side welded eye lugs (12mm steel, Ø17 clevis-pin hole, fillet-welded to the stile) + inside/outside wall anchor plates (200×200×12 A36 pair, 4× M16 through-bolts per anchor); hingepanel Sheet 17</td>
 <td>2 set</td>
 <td>Fasteners Plus</td>
 <td>$90–$120</td>

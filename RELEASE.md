@@ -43,8 +43,20 @@ file** — a release must not ship without a changelog entry:
   lock now has a focused sheet — general arrangement, the **panel-side receiver lug** (a new fab detail: a
   12mm steel eye lug, Ø17 pin hole dimensioned with edge-distance + centered chain, 6mm fillet-welded to
   the stile), and the near-wall anchor — plus a full spec block. Sheet 12 slimmed to cam-latch + brush
-  strip. Lug/plate sizes single-sourced (`LT_STAY_*`); parts `sp-wall-stays` lists the lug. *(The 3D
-  receiver lug reshape is still pending — the free-edge stile geometry needs pinning down first.)*
+  strip. Lug/plate sizes single-sourced (`LT_STAY_*`); parts `sp-wall-stays` lists the lug.
+- **Transport-lock 3D built to match Sheet 17.** The lighttrap model now draws the leaf free-edge
+  steel stile (2×2×0.120 RHS, previously only referenced by `LOCK_BOLT`) and two **receiver lugs** as
+  plates at right angles to the vertical frame, welded on the **outboard face** (toward the container
+  opening) so the panel still clears them when it swings — visible in both DCs. The transport stay now
+  runs from the wall eye to the lug pin hole as an angled rod (eye clevis + barrel + hook clevis),
+  connecting in the transport position. Lug/stile geometry cascades into `overview`/`construction`
+  (both re-sent).
+- **Film-plane lift-out: pinhole-end length splice now hides on swing.** In transport the removable
+  film-plane beam lifts out and hides, but its pinhole-end **length splice** (the plate joining the beam,
+  top and bottom) stayed visible — it was classified into the root-sibling *fixed* rig, which a swing
+  `_hidden_formula` never recomputes. Added `"Length splice"` to `corner()`'s `_REM` classifier so the
+  splice lifts out with the beam (a swing-DC child). `keep="all"` (overview / standalone film-plane
+  model) is byte-identical.
 - **Hinged-panel transport-stay wall anchor — 2D detail added; round closed.** The wall anchor was modeled
   in 3D (interior + exterior 200×200×12 plate pair + 4× M16 through-bolts) but had no dimensioned 2D detail.
   Single-sourced the plate/bolt sizes to `tbs_constants` (`LT_STAY_*`) and added hingepanel **Sheet 12

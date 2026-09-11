@@ -725,12 +725,29 @@ def drum_frame():
     return '\n'.join(p)
 
 
+from tbs_constants import (LT_STAY_LUG_T as LUG_T, LT_STAY_LUG_PROJ as LUG_PROJ,
+                           LT_STAY_LUG_H as LUG_H, LT_STAY_LUG_HOLE as LUG_HOLE,
+                           LT_STAY_LUG_EDGE as LUG_EDGE)
+STILE_RHS = 50.8                                    # 2×2×0.120in free-edge stile (report §5.2)
+
+
 def frame_hooks():
-    """Hook brackets on the swinging frame (top + bottom) that the wall stays engage."""
-    bx, by = LOCK_BOLT
-    return '\n'.join(
-        ruby_box("Stay hook (frame)", bx - 30, by - 30, z - 35, 60, 60, 70, color=C_STEEL)
-        for z in STAY_Z)
+    """The swinging leaf's free-edge (swing-cut) vertical STILE — a 2×2×0.120in steel RHS the
+    transport-stay lugs weld to (report §5.2, previously only referenced by LOCK_BOLT, not drawn)
+    — plus the two welded EYE LUGS (top + bottom). Each lug is a flat plate on the stile's
+    OUTBOARD (−X, door-opening) face, projecting at right angles toward the opening; the turnbuckle
+    jaw clevis-pins to the Ø17 hole. Swing DC child → moves with the leaf, visible in both states.
+    Detailed on hingepanel Sheet 17."""
+    _, by = LOCK_BOLT                                # by = stile centre Yd (at the swing cut)
+    p = [ruby_box("Leaf free-edge stile (2×2×0.120 RHS)", 0, by - STILE_RHS / 2, PANEL_FLOOR_GAP_SIDE,
+                  STILE_RHS, STILE_RHS, PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE, color=C_STEEL)]
+    for z in STAY_Z:
+        # eye lug: welded to the X=0 outboard face, projecting −X toward the door opening; the
+        # plate stands in the X-Z plane (thin in Yd), Ø17 pin hole set LUG_EDGE off the outboard tip.
+        p.append(ruby_box("Stay lug (frame)", -LUG_PROJ, by - LUG_T / 2, z - LUG_H / 2,
+                          LUG_PROJ, LUG_T, LUG_H, color=C_STEEL,
+                          holes=[(-LUG_PROJ + LUG_EDGE, z, LUG_HOLE / 2)], hole_axis="y"))
+    return '\n'.join(p)
 
 
 # Permanent bolted wall anchors for the transport stays (top+bottom): the near wall can't
@@ -771,21 +788,43 @@ def wall_anchors():
 ROD_R, TURN_R = 8, 14                                 # Ø16 M16 rod, Ø28 turnbuckle barrel
 
 
+def _ruby_rod(name, p0, p1, radius, color, alpha=1.0, n=16):
+    """Cylinder between two arbitrary points (mm world coords) — the transport stay runs at a
+    slight angle (wall anchor clamped in X to clear the EP; the lug swings to a different X)."""
+    (x0, y0, z0), (x1, y1, z1) = p0, p1
+    dx, dy, dz = x1 - x0, y1 - y0, z1 - z0
+    length = math.sqrt(dx * dx + dy * dy + dz * dz)
+    r, g, b = ov.hex_to_rgb(color)
+    mat = ov.shared_mat_name(name, color, alpha)
+    return '\n'.join([
+        '  grp = ents.add_group', f'  grp.name = "{name}"',
+        f'  nrm = Geom::Vector3d.new({dx}, {dy}, {dz})',
+        f'  circle = grp.entities.add_circle([{ov.mm(x0)},{ov.mm(y0)},{ov.mm(z0)}], nrm, {ov.mm(radius)}, {n})',
+        f'  cface = grp.entities.add_face(circle)',
+        f'  cface.reverse! if cface.normal.dot(nrm) < 0',
+        f'  cface.pushpull({ov.mm(length)})',
+        f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+        f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
+
+
 def stay_rods():
-    sx = ANCHOR_X                                     # rod X — hook (SOCKET[0]) & eye share this X
-    y_eye = PLATE_T + 48                              # pin just past the wall eye (Yd≈60)
-    y_hook = SOCKET[1] - 30                           # pin at the hook's inner face (Yd≈1045)
+    ex, ey = ANCHOR_X, PLATE_T + 48                   # wall-eye pin (Yd≈60), clamped X to clear the EP
+    LHx, LHy = _rot_pt(-LUG_PROJ + LUG_EDGE, LOCK_BOLT[1], LOCK)   # LUG pin hole in the TRANSPORT pose
     cR, cT = "#8A8A92", "#6A6A72"                     # rod / turnbuckle barrel
     TURN_L = 120
     p = []
     for z in STAY_Z:
-        y_barrel0 = y_eye + (y_hook - y_eye) * 0.45
+        L = math.hypot(LHx - ex, LHy - ey)
+        ux, uy = (LHx - ex) / L, (LHy - ey) / L
+        pt = lambda t: (ex + ux * t, ey + uy * t, z)  # point t mm along the wall→lug line
+        b0 = 0.45 * L                                  # turnbuckle barrel start
         p += [
-            ruby_box("Stay clevis (eye end)", sx - 12, y_eye - 18, z - 12, 24, 24, 24, color=C_STEEL),
-            ruby_cylinder("Stay rod (eye side)", sx, y_eye, z, ROD_R, y_barrel0 - y_eye, color=cR, axis="y"),
-            ruby_cylinder("Turnbuckle barrel", sx, y_barrel0, z, TURN_R, TURN_L, color=cT, axis="y"),
-            ruby_cylinder("Stay rod (hook side)", sx, y_barrel0 + TURN_L, z, ROD_R, y_hook - (y_barrel0 + TURN_L), color=cR, axis="y"),
-            ruby_box("Stay clevis (hook end)", sx - 12, y_hook, z - 12, 24, 24, 24, color=C_STEEL),
+            ruby_box("Stay clevis (eye end)", ex - 12, ey - 12, z - 12, 24, 24, 24, color=C_STEEL),
+            _ruby_rod("Stay rod (eye side)", pt(0), pt(b0), ROD_R, cR),
+            _ruby_rod("Turnbuckle barrel", pt(b0), pt(b0 + TURN_L), TURN_R, cT),
+            _ruby_rod("Stay rod (hook side)", pt(b0 + TURN_L), pt(L), ROD_R, cR),
+            ruby_box("Stay clevis (hook end)", LHx - 12, LHy - 12, z - 12, 24, 24, 24, color=C_STEEL),
         ]
     return '\n'.join(p)
 
@@ -918,8 +957,9 @@ def film_plane_left():
     """LEFT (cargo-door) end of the film-plane corner mechanism — the STATIC parts that STAY, reused
     verbatim from the dedicated model (fpm.corner(..., keep='fixed')): the fixed parking STUB + the
     detailed skate/rollers + carriage plate + cam-brake + green-Z/purple-X cross-slides + U-joint + 304
-    corner plate + pinhole-wall gusset + length splice. The REMOVABLE rail section + its welded bridge
-    are the LIFT-OUT — built by liftout_film_rail() (keep='removable') as a Panel-Swing DC child that
+    corner plate + pinhole-wall gusset. The REMOVABLE rail section + its welded bridge + the pinhole-end
+    length splice (bolted to the removable beam) are the LIFT-OUT — built by liftout_film_rail()
+    (keep='removable') as a Panel-Swing DC child that
     HIDES when swung, so the swinging drum surround can transition the X=150 rail plane in transport.
     One source with overview (fpm.corner emits ov.ruby_* at the shared coords; late import breaks the cycle)."""
     import generate_film_plane_mechanism_model as fpm

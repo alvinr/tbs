@@ -281,7 +281,17 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # splices, wall hangers) is FIXED and STAYS in the transport position. Match the grp.name ONLY —
         # matching the whole ruby drags in any part that references a shared MATERIAL named after a removable.
         name_rx = re.compile(r'grp\.name = "([^"]*)"')
-        is_rem = lambda s: any("REMOVABLE" in n for n in name_rx.findall(s))
+        # The far-left rail FIXING plates (far-flange register + EXT backing plate + through-bolts) are
+        # dedicated to the REMOVABLE beam and come out WITH it for transport (2026-08-31: the
+        # "film-plane weld plates" that otherwise float on the bare pivot post once the rail lifts out).
+        # Matched by NAME here (not "REMOVABLE" in the name) so it's split-only — keep="all" (overview /
+        # the standalone fpm model) is untouched + byte-identical. (Regressed once to just "REMOVABLE"
+        # — see commit 24754abd; restored.)
+        _REM = ("REMOVABLE", "EXT plate", "far-left bolt", "far flange",
+                "Locating pin", "Bottom support bridge",
+                "Length splice")   # drop-in cut-joint hardware — out with the beam; the pinhole-end
+                                   # length splice is bolted to the REMOVABLE section and lifts out with it
+        is_rem = lambda s: any(any(k in n for k in _REM) for n in name_rx.findall(s))
         P = [p for p in P if (is_rem(p) if keep == "removable" else not is_rem(p))]
     return "\n".join(P)
 

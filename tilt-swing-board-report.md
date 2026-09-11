@@ -10,19 +10,27 @@ The front board is the interchangeable plate that carries the pinhole disc at th
 
 ## 2. Mechanism Overview
 
-### 2.1 Pinhole mechanism
+The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate. The drawing set (TBS-TSB, 5 sheets) runs from the overall arrangement through the sectional master to a component blueprint per part.
 
-The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:
+**Sheet 1 — Overall design, front view** (1:2, scene side). ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and the A-A cut line.
 
-**Sheet 1 — Front View** (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.
+![TSB Sheet 1 — Overall Design](assets/tilt-swing-sheet1.png)
 
-![TSB Sheet 1 — Front View](assets/tilt-swing-sheet1.png)
-
-### 2.2 Tilt Mechanism
-
-**Sheet 2 — Section A-A** (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.
+**Sheet 2 — Section A-A (sectional master)** (1:2). Vertical section through center: bearing pocket, carrier shank, bellows, adjustment-screw mechanism, and pinhole disc.
 
 ![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
+
+**Sheet 3 — ICP-01 Outer Adapter Frame** (1:8). Exterior (scene-side) and interior (container-side) faces: the bolt/dowel/seal interface, adjustment bushings, bearing seat, 3-step labyrinth, and bellows flange.
+
+![TSB Sheet 3 — ICP-01 Outer Adapter Frame](assets/tilt-swing-sheet3.png)
+
+**Sheet 4 — ICP-02 Carrier, bearing & adjustment** (1:8). The inner carrier plate, the GE50-DO-2RS bearing fit, and the ball-socket adjustment detail.
+
+![TSB Sheet 4 — ICP-02 Carrier & Adjustment](assets/tilt-swing-sheet4.png)
+
+**Sheet 5 — Light seal, locking, calibration & swap** (1:8). Bellows geometry, the M6 locking set screws, the angular calibration scale, and the plate-swap sequence.
+
+![TSB Sheet 5 — Light Seal, Locking & Calibration](assets/tilt-swing-sheet5.png)
 
 ```
 WALL FRAME (fixed, welded to container)
@@ -166,8 +174,6 @@ The board's ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_boar
 | C4 | 0° | +2° | Subtle horizontal steering |
 | C5 | 0° | +5.3° | Max horizontal shift |
 | C6 | +3° | +3° | Compound diagonal steering |
-
-![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
 
 A detailed analysis of the optical distortions can be found [here](distortion-renders.md#2-tilt-swing-board-distortion-renders).
 

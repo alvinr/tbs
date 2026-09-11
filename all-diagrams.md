@@ -102,15 +102,15 @@
 
 ## 8. Tilt-Swing Front Board
 
-![TBS-001 Tilt-Swing Board — Sheet 1: Assembly and Body](assets/tilt-swing-board-sheet1.png)
+![TBS-001 Tilt-Swing Board — Sheet 1: Overall Design (Front View)](assets/tilt-swing-sheet1.png)
 
-![TBS-001 Tilt-Swing Board — Sheet 2: Pivot and Adjustment Detail](assets/tilt-swing-board-sheet2.png)
+![TBS-001 Tilt-Swing Board — Sheet 2: Section A-A (Sectional Master)](assets/tilt-swing-sheet2.png)
 
-![TBS-001 Tilt-Swing Board — Sheet 3: Mounting Interface and Stop Geometry](assets/tilt-swing-board-sheet3.png)
+![TBS-001 Tilt-Swing Board — Sheet 3: ICP-01 Outer Adapter Frame (exterior + interior faces)](assets/tilt-swing-sheet3.png)
 
-![TBS-001 Tilt-Swing — Sheet 1: Front View](assets/tilt-swing-sheet1.png)
+![TBS-001 Tilt-Swing Board — Sheet 4: ICP-02 Carrier, Bearing & Adjustment](assets/tilt-swing-sheet4.png)
 
-![TBS-001 Tilt-Swing — Sheet 2: Section A-A](assets/tilt-swing-sheet2.png)
+![TBS-001 Tilt-Swing Board — Sheet 5: Light Seal, Locking, Calibration & Swap](assets/tilt-swing-sheet5.png)
 
 ---
 

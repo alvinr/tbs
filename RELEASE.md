@@ -24,6 +24,21 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Tilt-swing board (TSB) blueprint review — round 1.** Two competing engineering-sheet generators
+  had drifted (the report embedded an older 2-sheet set while the current M8 design lived in an
+  unreferenced, unregistered 3-sheet set). Merged them into a **single registered generator** emitting
+  one clean `tilt-swing-sheet1..5` series — overall design, Section A-A master, ICP-01 frame
+  (exterior+interior), ICP-02 carrier/bearing/adjustment, and light-seal/locking/calibration/swap —
+  dropping the duplicate assembly + section panels. Registered all three tilt-swing generators (board +
+  both distortion sets) in `dependencies.yml`, which were previously untracked.
+- **TSB parts list migrated to the registry.** The hand-typed §12 BOM (internally inconsistent — the
+  category subtotals didn't sum from the line items) is now single-sourced from `parts.py` (new
+  `front-board` system, 19 parts) and injected as a `parts:front-board` block; the module total is a
+  true registry sum (**$1,604–$2,459**, up from the hand figure of $1,470–$2,440) reconciled through the
+  costing gate. Raw material (6061 plate + round bar) and the fab/finishing services (CNC, anodize,
+  scale engraving, custom bellows) are flagged **SKU pending — source**; the fasteners/bearing/seals
+  carry firm McMaster SKUs.
+
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still
   prompts an interactive terminal, and honors `RELEASE_ASSUME_YES=1`. The 10-day "Tidy labels" run

@@ -220,49 +220,34 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 
 ## 12. Parts List
 
-### 12.1 Structural
+The BOM is single-sourced from the parts registry (`parts.py`) and generated below. The fasteners, bearing, chrome balls, bushing/insert stock, seals, and Loctite carry firm McMaster SKUs; the raw plate + round bar and the fab/finishing **services** (CNC machining, hard/black anodize, scale engraving, custom bellows) carry **SKU pending — source**: get a supplier or shop quote before purchase.
 
-| Item | Spec | Source A | Source B | Est. cost |
-|------|------|---------|---------|----------|
-| GE50-DO-2RS bearing | SKF, 50mm bore | Bearing Headquarters, Buena Park CA (bearingheadquarters.com) | Applied Industrial, Los Angeles | ~$90 |
-| Al 6061-T651 plate (ICP-01) | 620×620×45mm (24"×24"×1.75") | Online Metals (onlinemetals.com) | Metal Supermarkets, Chatsworth CA | ~$125 |
-| Al 6061-T6 round bar (ICP-02) | Ø340mm×35mm (13.5"OD×1.5") | Metal Supermarkets, Chatsworth CA | Online Metals | ~$100 |
-| M8×1.0×80 SHCS 18-8 SS (adjustment screws) | 4 off — fine-pitch adjustment, ball-end seats in the 440C insert; partially threaded | McMaster-Carr (#91180A407) | Bolt Depot | ~$1.87 ($18.73/10) |
-| Delrin/POM rod (bushings) | Ø30mm×200mm | McMaster-Carr, Santa Fe Springs CA (#8573K75) | Amazon Industrial | ~$20 |
-| Ø8mm Grade 25 chrome steel balls | 52100 bearing steel, 10-pack | McMaster-Carr (#9528K22) | Precision Balls Inc. | ~$14/pack |
-| M6×1.0 nylon-tip set screws | SS316, M6×20mm | McMaster-Carr (#91375A187) | Fastenal (SoCal branches) | ~$14/pack-10 |
-| 440C SS round bar (socket inserts) | Ø20mm×100mm | McMaster-Carr (#1765T17) | Metal Supermarkets | ~$28 |
-| M12×45 SHCS SS A4 | 8 off | McMaster-Carr (#92290A198) | Bolt Depot | ~$20/pack-5 |
-| M8×1.0×50 SHCS 18-8 SS (central retention) | 1 off — downsized from M16 (non-structural retention/preload), reuses the M8×1.0 fine-pitch thread of the adjustment screws | McMaster-Carr (#91180A352) | Bolt Depot | ~$0.64 ($6.42/10) |
-| Ø8 m6 SS303 dowel pins | Ø8×40mm | McMaster-Carr (#97395A437) | Fastenal | ~$9 ea |
-| Loctite 638 retaining compound | 10mL | McMaster-Carr (#1832A1) | Home Depot (local) | ~$22 |
+<!-- BEGIN parts:front-board -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| GE50-DO-2RS spherical plain bearing | ICP-03 pivot: Ø50 bore × Ø80 OD × 46mm W, ±15° misalignment, PTFE-lined self-lubricating (chemistry-safe). Same bearing family as the film plane. SKU pending — source (Bearing Headquarters, Buena Park / Applied Industrial, LA). | 1 ea | Bearing Headquarters / Applied Industrial | $90 |
+| ICP-01 outer adapter frame stock (6061-T651 plate) | 6061-T651 plate 620×620×45mm (24×24×1.75in) — machined to the 600×600×40 outer frame. SKU pending — source (Online Metals / Metal Supermarkets, Chatsworth). | 1 ea | Online Metals / Metal Supermarkets | $125 |
+| ICP-02 inner carrier stock (6061-T6 round bar) | 6061-T6 round bar Ø340×35mm (13.5in OD × 1.5in) — machined to the Ø320×25 carrier. SKU pending — source (Metal Supermarkets, Chatsworth / Online Metals). | 1 ea | Metal Supermarkets / Online Metals | $100 |
+| [M8×1.0×80 SHCS 18-8 SS (adjustment screws)](https://www.mcmaster.com/91180A407/) (91180A407) | Fine-pitch adjustment screw, ball-end seats in the 440C insert; partially threaded. 4 off. McMaster 91180A407 $18.73/10. | 4 ea | McMaster-Carr / Bolt Depot | $7 |
+| [Delrin/POM guide bushing rod](https://www.mcmaster.com/8573K75/) (8573K75) | Ø30×200mm Delrin/POM rod — machine the 4 adjustment-screw guide bushings. McMaster 8573K75. | 1 ea | McMaster-Carr / Amazon Industrial | $20 |
+| [Ø8mm Grade-25 chrome steel balls (10-pack)](https://www.mcmaster.com/9528K22/) (9528K22) | 52100 bearing steel, Ø8mm Grade 25, 10-pack — the ball-end contact at each adjustment screw. McMaster 9528K22. | 1 pack | McMaster-Carr / Precision Balls Inc. | $14 |
+| [M6×1.0 nylon-tip set screw (10-pack)](https://www.mcmaster.com/91375A187/) (91375A187) | SS316, M6×20mm nylon-tip — cross-locks each adjustment screw for long exposures. Pack of 10. McMaster 91375A187. | 1 pack | McMaster-Carr / Fastenal | $14 |
+| [440C SS round bar (ball-socket inserts)](https://www.mcmaster.com/1765T17/) (1765T17) | Ø20×100mm 440C SS bar — machine the 4 hardened hemispherical ball-socket inserts (ICP-08), Ra 0.4 ground. McMaster 1765T17. | 1 ea | McMaster-Carr / Metal Supermarkets | $28 |
+| [M12×45 SHCS SS A4 (plate-to-frame)](https://www.mcmaster.com/92290A198/) (92290A198) | 8 off — mounts the TSB into the same wall frame as the standard plate (torque 65 Nm). McMaster 92290A198 $20/pack of 5. | 8 ea | McMaster-Carr / Bolt Depot | $32 |
+| [M8×1.0×50 SHCS 18-8 SS (central retention)](https://www.mcmaster.com/91180A352/) (91180A352) | 1 off — non-structural central retention/preload, downsized from M16 (reuses the M8×1.0 fine thread of the adjustment screws). McMaster 91180A352 $6.42/10. | 1 ea | McMaster-Carr / Bolt Depot | $1 |
+| [Ø8 m6 SS303 dowel pin](https://www.mcmaster.com/97395A437/) (97395A437) | Ø8×40mm — plate registration repeatability (light-pull release). 2 off. McMaster 97395A437. | 2 ea | McMaster-Carr / Fastenal | $18 |
+| [Loctite 638 retaining compound (10mL)](https://www.mcmaster.com/1832A1/) (1832A1) | Bearing outer-ring + ball-socket insert retention. McMaster 1832A1. | 1 ea | McMaster-Carr / Home Depot | $22 |
+| Custom photographic bellows (ICP-10) | Ø290 ID × Ø360 OD × 60mm free length, 4-pleat, matte-black neoprene — the primary zero-friction light seal. Custom order — SKU pending (Micro-Tools / Ames Camera Repair). | 1 ea | Micro-Tools / Ames Camera Repair | $80–$150 |
+| [Neoprene cord seal Ø3mm](https://www.mcmaster.com/1834K22/) (1834K22) | 70 Shore, 1.5m — bellows flange gaskets + Ø420 loop (same spec as the wall-frame seal). McMaster 1834K22. | 1 ea | McMaster-Carr / Grainger | $18 |
+| Hard anodize — ICP-01 exterior (service) | MIL-A-8625 Type III, 0.025mm, ICP-01 exterior. SKU pending — get a shop quote (Pac-Nor, Chatsworth). | 1 job | Pac-Nor Anodizing | $80–$120 |
+| Black anodize — ICP-02 + knobs (service) | Type II, ICP-02 carrier + the 4 knobs. SKU pending — get a shop quote (Aero Finishing, Burbank). | 1 job | Aero Finishing | $60–$90 |
+| CNC machining — ICP-01 + ICP-02 (service) | All-aluminum machining of both plates (bores, H7 seat, k5 shank, PCDs, labyrinth, counterbore). SKU pending — get a fab quote (Fictiv / ProtoLabs). | 1 job | Fictiv / ProtoLabs | $800–$1,500 |
+| Knurled knob stock Ø40mm Al (4 off) | Ø40mm Al knurled knob — 4 off (2 black TILT, 2 silver SWING), engraved. Jergens 49525 (SKU pending — verify) or machine from bar. | 4 ea | Jergens / local machine shop | $60 |
+| Angular calibration scale engraving (service) | Al 80×15×2mm, 2 off — laser-engraved angular scales (tilt + swing). SKU pending — quote (LaserPros, Chatsworth). | 1 set | LaserPros | $35–$50 |
+| **Front-Board total** | | | | **$1,604–$2,459** |
+<!-- END parts:front-board -->
 
-### 12.2 Light Seal
-
-| Item | Spec | Source A | Source B | Est. cost |
-|------|------|---------|---------|----------|
-| Photographic bellows (custom) | Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene | Micro-Tools (microtools.com) — custom order | Ames Camera Repair (custom bellows) | ~$80–150 |
-| Neoprene cord seal Ø3mm | 70 Shore, 1.5m (for Ø420 loop + flange gaskets) | McMaster-Carr (#1834K22) | Grainger (LA branches) | ~$18 |
-
-### 12.3 Finishing & Fabrication
-
-| Item | Spec | Source | Est. cost |
-|------|------|--------|----------|
-| Hard anodise (ICP-01 exterior) | MIL-A-8625 Type III, 0.025mm | Pac-Nor Anodizing, Chatsworth CA | ~$80–120 |
-| Black anodise (ICP-02, knobs) | Type II | Aero Finishing, Burbank CA | ~$60–90 |
-| CNC machining (ICP-01 + ICP-02) | All Al parts | Fictiv (fictiv.com) / ProtoLabs | ~$800–1,500 |
-| Knurled knob stock Ø40mm | Al, 4 off | Jergens (#49525) or machine from bar | ~$15 ea |
-| Angular scale engraving | Al 80×15×2mm, 2 off | LaserPros, Chatsworth CA | ~$35–50 |
-
-### 12.4 Cost Summary
-
-| Category | Low estimate | High estimate |
-|----------|-------------|--------------|
-| Hardware + bearings + seals | $420 | $580 |
-| CNC machining | $800 | $1,500 |
-| Anodising | $140 | $210 |
-| Knobs + scales | $110 | $150 |
-| **Total** | **~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total -->** | **~<!-- BEGIN costing:front-board-total-high -->$2,440<!-- END costing:front-board-total-high -->** |
+**Estimated module total: ~<!-- BEGIN costing:front-board-total -->$1,604<!-- END costing:front-board-total --> – ~<!-- BEGIN costing:front-board-total-high -->$2,459<!-- END costing:front-board-total-high -->.** CNC machining and the custom bellows dominate the upper band.
 
 
 ---

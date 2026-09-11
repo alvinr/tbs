@@ -358,8 +358,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID = 1470 # tilt-swing front board §12.4 LOW total — source: tilt-swing-board-report.md
-FRONT_BOARD_HIGH = 2440 # §12.4 HIGH total (CNC + anodise + custom bellows upper band)
+FRONT_BOARD_MID = 1604 # tilt-swing front board §12 BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
+FRONT_BOARD_HIGH = 2459 # §12 BOM high = parts.system_total('front-board')[1] (CNC + anodise + custom bellows upper band)
 
 
 def _sec(sid: str) -> Section:
@@ -1062,6 +1062,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "interior": (526, 605, 693), # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (115, 170, 230), # 2026-09-07: +$15 — optical-plate mounting bolts itemized (8× M12×40 hex 92314A744 + M12 washers 93475A290, was a BOM gap). 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (4063, 4291, 4525), # 2026-09-07: +$4 — wall-sandwich bolts ×65→×70 (single zinc wall length). 2026-09-06: −$1 — M8 J1/J2 bolt firmed M8×20→M8×25 (92314A711, cheaper pack). 2026-09-06: +$2 — M8 J1/J2 → through-bolt + nut (32 M8 nuts added). 2026-09-06: +$11 — M4 nut/M8 bolt/M8 flat washer SKUs firmed (up from est). 2026-09-06: +$40 — corner mechanism fasteners itemized (M4 cam-clamp ×24 + M8 J1/J2 ×32 + ACM→frame TEK ×30; several SKUs est pending). 2026-09-05: +$32 — skate axle-saddle retention itemized (16× 8992K794 saddles + 32× M6×20 91287A137 + 32× M6 nyloc; retires the M5 onto the shared M6 family). 2026-09-05: −$76 to −$135 — corner L-plate re-spec'd from a formed ¼ 6×8 plate ($58.90 ea firm ×4=$236) to stock 4×4×¼ 304 angle cut to length ($25–40/pc, re-quote); cheaper, no press-brake. 2026-08-20: −$161 — film-plane wall-seat saddles reconciled 6→4 (far-LEFT ends land on the pivot post; back-plate lengthened for the gusset; +2 far-left flange brackets w/ 8 M12). 2026-08-13: −1 — the M8 wall-fixing (bolt-m8-fixing) moved to the firm 304 A2 SKU 91310A535 $13.91/50, below the retired zinc placeholder. 2026-08-13: Belden SSNBUJ750x3/8KB needle-bearing keyed+booted U-joint (Grainger 41D816 $252.13 ea) replaces the plain UJ-SS750x375 + separate 806VF1 boot -> +~$403. # 2026-08-10 (corner blueprint): +$135 — cross-slide bars grown ~250→~345/365mm to hold ±40°/±28° (2× 8ft 304 bar, was 1×). 2026-08-01: corner L-plates firm Metal Supermarkets $58.90 ea ×4 = $236 (was $152-208 est). 2026-07-31: Ruland->Belden U-joint -$653 # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
+    "front-board": (FRONT_BOARD_MID, FRONT_BOARD_MID, FRONT_BOARD_HIGH), # tilt-swing board §12 BOM — reconciles to parts.system_total('front-board'); standalone module (not a numbered SECTION), so not in _SECTION_SYSTEMS.
     "ventilation": (748, 748, 748), # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
     "power": (3431, 3464, 3496), # 2026-07-31: mppt-charge-fuse itemized (Powerwerx 5005 block + ANL60), dielectric-grease $8.99, powerpole housings $0.55. 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
 }

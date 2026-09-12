@@ -595,7 +595,7 @@ draw_sheet2()
 # ═══════════════════════════════════════════════════════════════════════════════
 
 FW, FH = 700, 500
-FW1, FH1 = 3000, 1520
+FW1, FH1 = 3400, 2320
 fig1, ax1 = plt.subplots(figsize=(FW*0.9/25.4, FH*0.9/25.4))
 fig1.patch.set_facecolor('white')
 ax1.set_facecolor('white')
@@ -606,17 +606,24 @@ ax1.set_ylim(0, FH1)
 
 title_block(ax1, "SHEET 3 OF 5",
             drawing_title="TILT-SWING FRONT BOARD",
-            subtitle="ICP-01 Outer Adapter Frame — exterior + interior faces",
+            subtitle="ICP-01 Outer Adapter Frame — exterior + interior faces · fully dimensioned",
             scale_note="AXES IN mm",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
 # ── Section header lines ──────────────────────────────────────────────────────
 def section_label(ax, x, y, text):
     ax.text(x, y, text, fontsize=7.5, fontweight='bold', color='black')
-    ax.plot([x, x+1000], [y-24, y-24], color='black', lw=0.7)
+    ax.plot([x, x+1100], [y-24, y-24], color='black', lw=0.7)
 
-section_label(ax1, 500, 1200, 'PANEL A — ICP-01 EXTERIOR FACE (1:8)')
-section_label(ax1, 1800, 1200, 'PANEL B — ICP-01 INTERIOR FACE (1:8)')
+# ── Stacked concentric-diameter dimensions (formal): one dim_h per Ø, progressively
+# offset away from the plate so nothing overlaps. dirn=-1 stacks BELOW, +1 ABOVE. ──
+def dia_stack(ax, cx, edge_y, dias_labels, dirn, step=52, fs=5, off=16):
+    for i, (d, lbl) in enumerate(dias_labels):
+        y = edge_y + dirn * (30 + i * step)
+        draw_dim_h(ax, cx - d/2, cx + d/2, y, lbl, above=(dirn > 0), fs=fs, offset=off)
+
+section_label(ax1, 560, 1930, 'PANEL A — ICP-01 EXTERIOR FACE (1:8)')
+section_label(ax1, 2010, 1930, 'PANEL B — ICP-01 INTERIOR FACE (1:8)')
 
 SC = 1
 def s1(mm): return mm * SC
@@ -625,7 +632,7 @@ hw = s1(PL_OD/2)
 # ───────────────────────────────────────────────
 # PANEL A: ICP-01 Exterior (container-wall-facing) face
 # ───────────────────────────────────────────────
-cx_b, cy_b = 800, 760
+cx_b, cy_b = 900, 1280
 
 p2 = mpatches.Rectangle((cx_b - hw, cy_b - hw), s1(PL_OD), s1(PL_OD),
                          lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
@@ -659,27 +666,30 @@ for angle_deg in [90, 0, 270, 180]:
 
 draw_cl(ax1, cx_b, cy_b, hw*1.15)
 
-# Leaders
-leader(ax1, cx_b + s1(TSB01_BORE/2)*0.7, cy_b + s1(TSB01_BORE/2)*0.7,
-       cx_b + 240, cy_b + 360,
-       'Ø380 BORE\n(PANEL B VIEW)', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax1, cx_b + s1(SEAL_D/2)*0.65, cy_b - s1(SEAL_D/2)*0.65,
-       cx_b + 176, cy_b - 384,
-       'Ø420 SEAL\nGROOVE\n3×3 DEEP', fs=4.5, color=C_DIM, arrow_style='->')
-leader(ax1, cx_b + s1(ADJ_PCD/2) + s1(BUSH_OD/2), cy_b,
-       cx_b + s1(ADJ_PCD/2) + 112, cy_b + 32,
-       'M22×1.0\nBUSHING\n(4 OFF)', fs=4.5, color=C_DIM, arrow_style='->')
-leader(ax1, cx_b + s1(BOLT_BC/2)*0.65, cy_b + s1(BOLT_BC/2)*0.65,
-       cx_b + 128, cy_b + 224,
-       'Ø540 B.C.\n8×M12\nCLR', fs=4.5, color=C_DIM, arrow_style='->')
+# ── Formal dimensions — every feature (Ø + count folded onto the dim line, no leaders) ──
+dia_stack(ax1, cx_b, cy_b - hw, [
+    (s1(TSB01_BORE), 'Ø380 BORE (THRU)'),
+    (s1(SEAL_D),     'Ø420 SEAL GROOVE · 3 WIDE × 3 DEEP'),
+    (s1(BOLT_BC),    'Ø540 B.C. · 8× Ø13 CLR (M12) EQUISPACED'),
+    (s1(PL_OD),      '600'),
+], dirn=-1)
+dia_stack(ax1, cx_b, cy_b + hw, [
+    (s1(ADJ_PCD), 'Ø270 PCD · 4× M22×1.0 BUSHING (Ø8 SCREW BORE) · 90° APART'),
+], dirn=+1)
+draw_dim_v(ax1, cx_b - hw - 30, cy_b - hw, cy_b + hw, '600', right=False, fs=5.5, offset=20)
+ax1.text(cx_b - hw + 12, cy_b + hw - 14, '6061-T6 · 40 THK', ha='left', va='top',
+         fontsize=5, color=C_DIM, style='italic', zorder=10)
+# Dowel location — ±200 on the horizontal C/L (Ø8 folded onto the +200 dim)
+draw_dim_h(ax1, cx_b - s1(DWL_OFF), cx_b, cy_b, '200', above=True, fs=4.5, offset=13)
+draw_dim_h(ax1, cx_b, cx_b + s1(DWL_OFF), cy_b, '200 · 2× Ø8 H7 DOWEL', above=True, fs=4.5, offset=13)
 
-ax1.text(cx_b, cy_b - hw - 200, 'PANEL A — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
+ax1.text(cx_b, cy_b - hw - 250, 'PANEL A — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface as standard pinhole plate)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
 # PANEL B: ICP-01 Interior (container-facing) face
 # ───────────────────────────────────────────────
-cx_c, cy_c = 2100, 760
+cx_c, cy_c = 2350, 1280
 
 p3 = mpatches.Rectangle((cx_c - hw, cy_c - hw), s1(PL_OD), s1(PL_OD),
                          lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
@@ -710,17 +720,23 @@ for i in range(6):
 
 draw_cl(ax1, cx_c, cy_c, hw*1.15)
 
-leader(ax1, cx_c - s1(BRG_SEAT_D/2)*0.7, cy_c + s1(BRG_SEAT_D/2)*0.7,
-       cx_c - 144, cy_c + 96,
-       'Ø80 H7 BEARING\nSEAT × 50 DEEP', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax1, cx_c + s1(BELL_OUT_PCD/2)*0.6, cy_c + s1(BELL_OUT_PCD/2)*0.6,
-       cx_c + 200, cy_c + 224,
-       '6×M6 ON\nØ375 PCD\n(BELLOWS)', fs=4.5, color=C_DIM, arrow_style='->')
-leader(ax1, cx_c + s1(LAB_D3/2)*0.65, cy_c - s1(LAB_D3/2)*0.65,
-       cx_c + 160, cy_c - 360,
-       '3-STEP\nLABYRINTH\nØ382/390/400\n5 DEEP EACH', fs=4.3, color=C_DIM, arrow_style='->')
+# ── Formal dimensions — every feature ──
+dia_stack(ax1, cx_c, cy_c - hw, [
+    (s1(BRG_SEAT_D),   'Ø80 H7 BEARING SEAT · 50 DEEP'),
+    (s1(BELL_OUT_PCD), 'Ø375 PCD · 6× M6 (BELLOWS) · 60° APART'),
+    (s1(PL_OD),        '600'),
+], dirn=-1)
+dia_stack(ax1, cx_c, cy_c + hw, [
+    (s1(ADJ_PCD), 'Ø270 PCD · 4× M22 BUSHING BORE · 90° APART'),
+    (s1(LAB_D3),  'Ø382 / Ø390 / Ø400 — 3-STEP LABYRINTH · 5 DEEP EACH'),
+], dirn=+1)
+draw_dim_v(ax1, cx_c + hw + 30, cy_c - hw, cy_c + hw, '600', right=True, fs=5.5, offset=20)
+ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40 THK', ha='left', va='top',
+         fontsize=5, color=C_DIM, style='italic', zorder=10)
+draw_dim_h(ax1, cx_c - s1(BRG_ID/2), cx_c + s1(BRG_ID/2), cy_c - s1(BRG_ID/2) - 22,
+           'Ø50 BORE', above=False, fs=4.3, offset=11)
 
-ax1.text(cx_c, cy_c - hw - 200, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
+ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 out1 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet3.png')

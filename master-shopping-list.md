@@ -382,7 +382,7 @@ indicative low–high estimates — get quotes before ordering.
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 21 m | Amazon (OKAYASU) | panel | $24–$52 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | Certified anti-slip cargo matting (μ≥0.6) | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
-| Custom photographic bellows (ICP-10) | 1 ea | Micro-Tools | front-board | $80–$150 |
+| Custom photographic bellows (ICP-04) | 1 ea | Micro-Tools | front-board | $80–$150 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | [Neoprene cord seal Ø3mm](https://www.mcmaster.com/1834K22/) (1834K22) | 1 ea | McMaster-Carr | front-board | $18 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |

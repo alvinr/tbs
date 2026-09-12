@@ -48,7 +48,7 @@ WALL FRAME (fixed, welded to container)
 │    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser)
 │    ├── Ø52×3mm counterbore — identical to standard plate
 │    ├── Spherical pivot: Ø50 k5 shank into GE50-DO-2RS bearing
-│    ├── 4× 440C SS hemispherical ball-socket inserts on Ø260mm PCD
+│    ├── 4× 440C SS hemispherical ball-socket inserts (ICP-05) on Ø260mm PCD
 │    └── 6× M6 bellows inner flange attachment on Ø310mm PCD
 │
 ├── ICP-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
@@ -56,7 +56,7 @@ WALL FRAME (fixed, welded to container)
 │    ├── Bore Ø50mm | OD Ø80mm | Width 46mm | Misalignment ±15°
 │    └── PTFE-lined self-lubricating — maintenance-free, chemistry-safe
 │
-└── ICP-10  BELLOWS (matte black neoprene/nylon)
+└── ICP-04  BELLOWS (matte black neoprene/nylon)
      ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
@@ -120,7 +120,7 @@ Mechanical hard stop:                 ±12mm travel = ±5.3°
 
 ## 6. Light Sealing
 
-The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
+The bellows (ICP-04) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
 
 - 4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)
 - Inner and outer attachment flanges are sealed with Ø3mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates
@@ -211,7 +211,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | ICP-02 bearing shank Ø50 | Ø50.000 | k5: +0.013/+0.002 | Bearing inner ring fit |
 | ICP-02 counterbore Ø52 | Ø52.000 | H7: +0.030/0.000 | Concentric with shank to 0.05mm |
 | ICP-02 shank perpendicularity | — | 0.05mm/100mm | Sets optical zero |
-| ICP-08 hemispherical socket Ra | — | Ra 0.4 (ground) | Ball articulation smoothness |
+| ICP-05 hemispherical socket Ra | — | Ra 0.4 (ground) | Ball articulation smoothness |
 | ICP-01 bolt holes M12 PCD | Ø540.000 | ±0.1mm positional | Must match wall frame exactly |
 | ICP-01 dowel holes Ø8 | Ø8.000 | H7: +0.015/0.000 | Plate registration repeatability |
 | Adj screw arm radius | 130.000 | ±0.25mm | Calibration scale accuracy |
@@ -232,12 +232,12 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | [Delrin/POM guide bushing rod](https://www.mcmaster.com/8573K75/) (8573K75) | Ø30×200mm Delrin/POM rod — machine the 4 adjustment-screw guide bushings. McMaster 8573K75. | 1 ea | McMaster-Carr / Amazon Industrial | $20 |
 | [Ø8mm Grade-25 chrome steel balls (10-pack)](https://www.mcmaster.com/9528K22/) (9528K22) | 52100 bearing steel, Ø8mm Grade 25, 10-pack — the ball-end contact at each adjustment screw. McMaster 9528K22. | 1 pack | McMaster-Carr / Precision Balls Inc. | $14 |
 | [M6×1.0 nylon-tip set screw (10-pack)](https://www.mcmaster.com/91375A187/) (91375A187) | SS316, M6×20mm nylon-tip — cross-locks each adjustment screw for long exposures. Pack of 10. McMaster 91375A187. | 1 pack | McMaster-Carr / Fastenal | $14 |
-| [440C SS round bar (ball-socket inserts)](https://www.mcmaster.com/1765T17/) (1765T17) | Ø20×100mm 440C SS bar — machine the 4 hardened hemispherical ball-socket inserts (ICP-08), Ra 0.4 ground. McMaster 1765T17. | 1 ea | McMaster-Carr / Metal Supermarkets | $28 |
+| [440C SS round bar (ball-socket inserts)](https://www.mcmaster.com/1765T17/) (1765T17) | Ø20×100mm 440C SS bar — machine the 4 hardened hemispherical ball-socket inserts (ICP-05), Ra 0.4 ground. McMaster 1765T17. | 1 ea | McMaster-Carr / Metal Supermarkets | $28 |
 | [M12×45 SHCS SS A4 (plate-to-frame)](https://www.mcmaster.com/92290A198/) (92290A198) | 8 off — mounts the TSB into the same wall frame as the standard plate (torque 65 Nm). McMaster 92290A198 $20/pack of 5. | 8 ea | McMaster-Carr / Bolt Depot | $32 |
 | [M8×1.0×50 SHCS 18-8 SS (central retention)](https://www.mcmaster.com/91180A352/) (91180A352) | 1 off — non-structural central retention/preload, downsized from M16 (reuses the M8×1.0 fine thread of the adjustment screws). McMaster 91180A352 $6.42/10. | 1 ea | McMaster-Carr / Bolt Depot | $1 |
 | [Ø8 m6 SS303 dowel pin](https://www.mcmaster.com/97395A437/) (97395A437) | Ø8×40mm — plate registration repeatability (light-pull release). 2 off. McMaster 97395A437. | 2 ea | McMaster-Carr / Fastenal | $18 |
 | [Loctite 638 retaining compound (10mL)](https://www.mcmaster.com/1832A1/) (1832A1) | Bearing outer-ring + ball-socket insert retention. McMaster 1832A1. | 1 ea | McMaster-Carr / Home Depot | $22 |
-| Custom photographic bellows (ICP-10) | Ø290 ID × Ø360 OD × 60mm free length, 4-pleat, matte-black neoprene — the primary zero-friction light seal. Custom order — SKU pending (Micro-Tools / Ames Camera Repair). | 1 ea | Micro-Tools / Ames Camera Repair | $80–$150 |
+| Custom photographic bellows (ICP-04) | Ø290 ID × Ø360 OD × 60mm free length, 4-pleat, matte-black neoprene — the primary zero-friction light seal. Custom order — SKU pending (Micro-Tools / Ames Camera Repair). | 1 ea | Micro-Tools / Ames Camera Repair | $80–$150 |
 | [Neoprene cord seal Ø3mm](https://www.mcmaster.com/1834K22/) (1834K22) | 70 Shore, 1.5m — bellows flange gaskets + Ø420 loop (same spec as the wall-frame seal). McMaster 1834K22. | 1 ea | McMaster-Carr / Grainger | $18 |
 | Hard anodize — ICP-01 exterior (service) | MIL-A-8625 Type III, 0.025mm, ICP-01 exterior. SKU pending — get a shop quote (Pac-Nor, Chatsworth). | 1 job | Pac-Nor Anodizing | $80–$120 |
 | Black anodize — ICP-02 + knobs (service) | Type II, ICP-02 carrier + the 4 knobs. SKU pending — get a shop quote (Aero Finishing, Burbank). | 1 job | Aero Finishing | $60–$90 |
@@ -257,7 +257,7 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | Interval | Task |
 |----------|------|
 | Before each session | Check all four M6 locking set screws are released before adjustment |
-| Before each session | Verify bellows (ICP-10) is intact — no tears, flange gaskets seated |
+| Before each session | Verify bellows (ICP-04) is intact — no tears, flange gaskets seated |
 | Before each session | Zero-check calibration scales against spirit level |
 | Monthly | Inspect M8 adjustment screw ball-socket contacts for wear |
 | Monthly | Check Delrin guide bushings for cracking or swelling |

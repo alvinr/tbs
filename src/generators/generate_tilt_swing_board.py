@@ -295,7 +295,7 @@ def draw_sheet1():
         'ICP-03: GE50-DO-2RS SPHERICAL PLAIN BEARING (SKF). Ø50 BORE × Ø80 OD × 46mm. ±15° MISALIGNMENT.',
         f'ADJUSTMENT: 4× M8×1.0 FINE-PITCH SCREWS. BLACK KNOBS = TILT, SILVER = SWING. {FRONT_BOARD_CLICK_DEG}°/CLICK.',
         'LOCKING: 4× M6 NYLON-TIP SET SCREWS (3mm HEX KEY FROM EXTERIOR FACE).',
-        'BELLOWS (ICP-10): Ø290 ID × Ø360 OD, 4-PLEAT NEOPRENE, ZERO-FRICTION LIGHT SEAL.',
+        'BELLOWS (ICP-04): Ø290 ID × Ø360 OD, 4-PLEAT NEOPRENE, ZERO-FRICTION LIGHT SEAL.',
     ]
     draw_notes(ax, notes1, 35, cy - half - 70, spacing=10,
                fs=6, width=pw - 70)
@@ -452,7 +452,7 @@ def draw_sheet2():
         (cr_right - cb_dep, cy - cb_half), cb_dep, s(CR_CB_D),
         fc='white', ec=C_OUT, lw=0.5, zorder=7))
 
-    # ── Bellows (ICP-10) ─────────────────────────────────────────────────────
+    # ── Bellows (ICP-04) ─────────────────────────────────────────────────────
     bel_inner_half = s(BEL_ID / 2)
     bel_outer_half = s(BEL_OD / 2)
     bel_left = cx
@@ -537,7 +537,7 @@ def draw_sheet2():
 
     leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5,
            lx_r + 20, cy - bel_outer_half - 20,
-           'ICP-10 BELLOWS Ø290–Ø360', fs=5)
+           'ICP-04 BELLOWS Ø290–Ø360', fs=5)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, fr_left, fr_right, cy + fr_half + 10, '40mm',
@@ -1190,7 +1190,7 @@ ax3.text(cx3a + s2(BELL_OD/2) + 104, cy3a - s2(BELL_FREE*0.5),
          fontsize=5, va='center', color='#333333', zorder=10)
 
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 60,
-         'BELLOWS ICP-10: Matte black neoprene/nylon  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nInner+outer flanges sealed with Ø4mm neoprene cord gaskets (same spec as wall-frame seal)',
+         'BELLOWS ICP-04: Matte black neoprene/nylon  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nInner+outer flanges sealed with Ø4mm neoprene cord gaskets (same spec as wall-frame seal)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────

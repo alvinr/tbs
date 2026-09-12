@@ -749,7 +749,7 @@ print(f'  → {out1}  Done.')
 # SHEET 2 — Carrier Plate, Bearing & Adjustment Mechanism
 # ═══════════════════════════════════════════════════════════════════════════════
 
-FW2, FH2 = 1400, 1000
+FW2, FH2 = 1500, 1560
 fig2, ax2 = plt.subplots(figsize=(FW*0.9/25.4, FH*0.9/25.4))
 fig2.patch.set_facecolor('white')
 ax2.set_facecolor('white')
@@ -768,10 +768,10 @@ SC2 = 1
 def s2(mm): return mm * SC2
 
 # ── PANEL A: ICP-02 front (exterior) face at 1:2 ──────────────────────────────
-ax2.text(30, 980, 'PANEL A — ICP-02 FRONT FACE (1:2)', fontsize=7.5, fontweight='bold')
-ax2.plot([30, 660], [974, 974], color='black', lw=0.7)
+ax2.text(30, 1540, 'PANEL A — ICP-02 FRONT FACE (1:2)', fontsize=7.5, fontweight='bold')
+ax2.plot([30, 660], [1534, 1534], color='black', lw=0.7)
 
-cx2a, cy2a = 240, 710
+cx2a, cy2a = 330, 1230
 
 # Circular carrier plate
 carr_p = mpatches.Circle((cx2a, cy2a), s2(CARR_OD/2),
@@ -808,35 +808,29 @@ draw_circle(ax2, cx2a, cy2a, s2(BELL_IN_PCD/2), lw=0.4, color='#999999', ls=':')
 
 draw_cl(ax2, cx2a, cy2a, s2(CARR_OD/2)*1.2)
 
-# Dims
-draw_dim_h(ax2, cx2a - s2(CARR_OD/2), cx2a + s2(CARR_OD/2),
-           cy2a - s2(CARR_OD/2) - 28, 'Ø320', above=False, fs=5.5, offset=9)
-draw_dim_h(ax2, cx2a - s2(PH_BORE/2), cx2a + s2(PH_BORE/2),
-           cy2a + s2(CARR_OD/2) + 20, 'Ø90 CONE', above=True, fs=5, offset=9)
+# ── Formal dimensions — every feature ──
+dia_stack(ax2, cx2a, cy2a - s2(CARR_OD/2), [
+    (s2(PH_BORE),     'Ø90 CONE BORE (SCENE TAPER)'),
+    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 SOCKET INSERT · 90° APART'),
+    (s2(BELL_IN_PCD), 'Ø310 PCD · 6× M6 (BELLOWS) · 60° APART'),
+    (s2(CARR_OD),     'Ø320 CARRIER OD'),
+], dirn=-1, step=42, fs=4.6, off=13)
+dia_stack(ax2, cx2a, cy2a + s2(CARR_OD/2), [
+    (s2(PH_CB_D), 'Ø52 × 3 DEEP COUNTERBORE (DISC SEAT)'),
+], dirn=+1, step=42, fs=4.6, off=13)
+draw_dim_v(ax2, cx2a - s2(CARR_OD/2) - 26, cy2a - s2(CARR_OD/2), cy2a + s2(CARR_OD/2), 'Ø320', right=False, fs=5, offset=16)
+ax2.text(cx2a - s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
+draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DISC_D/2) - 12,
+           'Ø50 DISC (SS-302 · Ø2.17 APERTURE)', above=False, fs=4.0, offset=8)
 
-leader(ax2, cx2a + s2(PH_CB_D/2) * 0.7, cy2a + s2(PH_CB_D/2) * 0.7,
-       cx2a + 70, cy2a + 60,
-       'Ø52 × 3 DEEP\nCOUNTERBORE\n(DISC SEAT)', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2a + s2(SOCK_PCD/2) * np.cos(np.radians(-30)),
-       cy2a + s2(SOCK_PCD/2) * np.sin(np.radians(-30)),
-       cx2a + 120, cy2a - 44,
-       '4×Ø16 H7\nSOCKET INSERT\nON Ø260 PCD', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2a + s2(BELL_IN_PCD/2) * np.cos(np.radians(130)),
-       cy2a + s2(BELL_IN_PCD/2) * np.sin(np.radians(130)),
-       cx2a - 130, cy2a + 70,
-       '6×M6 ON\nØ310 PCD\n(BELLOWS)', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2a - s2(PH_DISC_D/2) * 0.7, cy2a - s2(PH_DISC_D/2) * 0.7,
-       cx2a - 110, cy2a - 60,
-       'Ø50 PINHOLE DISC\nSS-302 SHIM\nØ2.17 APERTURE', fs=5, color=C_DIM, arrow_style='->')
-
-ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 56, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
+ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 250, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL B: ICP-02 rear face at 1:2 ─────────────────────────────────────────
-ax2.text(680, 980, 'PANEL B — ICP-02 REAR FACE (1:2)', fontsize=7.5, fontweight='bold')
-ax2.plot([680, 1280], [974, 974], color='black', lw=0.7)
+ax2.text(770, 1540, 'PANEL B — ICP-02 REAR FACE (1:2)', fontsize=7.5, fontweight='bold')
+ax2.plot([770, 1370], [1534, 1534], color='black', lw=0.7)
 
-cx2b, cy2b = 980, 710
+cx2b, cy2b = 1080, 1230
 
 carr_p2 = mpatches.Circle((cx2b, cy2b), s2(CARR_OD/2),
                            lw=LW_THICK, edgecolor=C_OUT, facecolor='#C0C0C0', zorder=3)
@@ -861,21 +855,19 @@ draw_circle(ax2, cx2b, cy2b, s2(BELL_ID/2), lw=LW_MED, color=C_GASKT, ls='--')
 
 draw_cl(ax2, cx2b, cy2b, s2(CARR_OD/2)*1.2)
 
-leader(ax2, cx2b + s2(BRG_SHANK_D/2)*0.7, cy2b + s2(BRG_SHANK_D/2)*0.7,
-       cx2b + 60, cy2b + 60,
-       'Ø50 k5 SHANK\n× 35 LONG\n(BEARING INNER)', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2b - s2(BELL_ID/2)*0.7, cy2b,
-       cx2b - 116, cy2b + 10,
-       'Ø290 BELLOWS\nGROOVE\n4 WIDE × 3 DEEP', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2b + s2(SOCK_PCD/2)*np.cos(np.radians(-45)),
-       cy2b + s2(SOCK_PCD/2)*np.sin(np.radians(-45)),
-       cx2b + 100, cy2b - 40,
-       '4×Ø16 H7\nINSERT BORES\n(REAR SIDE)', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2b - s2(8) * 0.7, cy2b - s2(8) * 0.7,
-       cx2b - 110, cy2b - 50,
-       'M8×1.0 TAPPED\nCENTRAL HOLE', fs=5, color=C_DIM, arrow_style='->')
+# ── Formal dimensions — every feature ──
+dia_stack(ax2, cx2b, cy2b - s2(CARR_OD/2), [
+    (s2(BRG_SHANK_D), 'Ø50 k5 SHANK BOSS · 35 LONG (BEARING INNER)'),
+    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 INSERT BORE · 90° APART'),
+    (s2(BELL_ID),     'Ø290 BELLOWS GROOVE · 4 WIDE × 3 DEEP'),
+    (s2(CARR_OD),     'Ø320 CARRIER OD'),
+], dirn=-1, step=42, fs=4.6, off=13)
+draw_dim_v(ax2, cx2b + s2(CARR_OD/2) + 26, cy2b - s2(CARR_OD/2), cy2b + s2(CARR_OD/2), 'Ø320', right=True, fs=5, offset=16)
+ax2.text(cx2b - s2(CARR_OD/2) + 8, cy2b + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
+draw_dim_h(ax2, cx2b - s2(4), cx2b + s2(4), cy2b + s2(BRG_SHANK_D/2) + 16,
+           'M8×1.0 TAPPED (CENTRAL RETENTION)', above=True, fs=4.2, offset=10)
 
-ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 56, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
+ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL C: Bearing section detail (1:1) ─────────────────────────────────────
@@ -1206,7 +1198,7 @@ ax3.text(cx3a + s2(BELL_OD/2) + 104, cy3a - s2(BELL_FREE*0.5),
          fontsize=5, va='center', color='#333333', zorder=10)
 
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 60,
-         'BELLOWS ICP-04: Matte black neoprene/nylon  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nInner+outer flanges sealed with Ø4mm neoprene cord gaskets (same spec as wall-frame seal)',
+         'BELLOWS ICP-04: Matte black neoprene/nylon  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nInner+outer flanges sealed with Ø3mm neoprene cord gaskets (same spec as wall-frame seal)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
@@ -1345,6 +1337,8 @@ ax3.plot([cx3d, cx3d], [cy3d - scale_strip_h/2, cy3d + scale_strip_h/2],
 
 draw_dim_h(ax3, cx3d - scale_strip_w/2, cx3d + scale_strip_w/2,
            cy3d + scale_strip_h/2 + 20, '80mm TOTAL', above=True, fs=5, offset=6)
+draw_dim_v(ax3, cx3d + scale_strip_w/2 + 24, cy3d - scale_strip_h/2, cy3d + scale_strip_h/2,
+           '15 (× 2 THK)', right=True, fs=5, offset=6)
 ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)

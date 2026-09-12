@@ -1213,34 +1213,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Mechanism Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-pinhole-mechanism" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 Pinhole mechanism
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-tilt-mechanism" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 Tilt Mechanism
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1350,56 +1322,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="12. Parts List">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#121-structural" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.1 Structural
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#122-light-seal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.2 Light Seal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#123-finishing-fabrication" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.3 Finishing &amp; Fabrication
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#124-cost-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.4 Cost Summary
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2726,13 +2648,17 @@
 <p>The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report specifies a new plate — the <strong>Tilt-Swing Board (TSB)</strong> — that replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.</p>
 <hr />
 <h2 id="2-mechanism-overview">2. Mechanism Overview<a class="headerlink" href="#2-mechanism-overview" title="Permanent link">&para;</a></h2>
-<h3 id="21-pinhole-mechanism">2.1 Pinhole mechanism<a class="headerlink" href="#21-pinhole-mechanism" title="Permanent link">&para;</a></h3>
-<p>The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:</p>
-<p><strong>Sheet 1 — Front View</strong> (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.</p>
-<p><img alt="TSB Sheet 1 — Front View" src="../assets/tilt-swing-sheet1.png" /></p>
-<h3 id="22-tilt-mechanism">2.2 Tilt Mechanism<a class="headerlink" href="#22-tilt-mechanism" title="Permanent link">&para;</a></h3>
-<p><strong>Sheet 2 — Section A-A</strong> (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.</p>
+<p>The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate. The drawing set (TBS-TSB, 5 sheets) runs from the overall arrangement through the sectional master to a component blueprint per part.</p>
+<p><strong>Sheet 1 — Overall design, front view</strong> (1:2, scene side). ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and the A-A cut line.</p>
+<p><img alt="TSB Sheet 1 — Overall Design" src="../assets/tilt-swing-sheet1.png" /></p>
+<p><strong>Sheet 2 — Section A-A (sectional master)</strong> (1:2). Vertical section through center: bearing pocket, carrier shank, bellows, adjustment-screw mechanism, and pinhole disc.</p>
 <p><img alt="TSB Sheet 2 — Section A-A" src="../assets/tilt-swing-sheet2.png" /></p>
+<p><strong>Sheet 3 — ICP-01 Outer Adapter Frame</strong> (1:8). Exterior (scene-side) and interior (container-side) faces: the bolt/dowel/seal interface, adjustment bushings, bearing seat, 3-step labyrinth, and bellows flange.</p>
+<p><img alt="TSB Sheet 3 — ICP-01 Outer Adapter Frame" src="../assets/tilt-swing-sheet3.png" /></p>
+<p><strong>Sheet 4 — ICP-02 Carrier, bearing &amp; adjustment</strong> (1:8). The inner carrier plate, the GE50-DO-2RS bearing fit, and the ball-socket adjustment detail.</p>
+<p><img alt="TSB Sheet 4 — ICP-02 Carrier &amp; Adjustment" src="../assets/tilt-swing-sheet4.png" /></p>
+<p><strong>Sheet 5 — Light seal, locking, calibration &amp; swap</strong> (1:8). Bellows geometry, the M6 locking set screws, the angular calibration scale, and the plate-swap sequence.</p>
+<p><img alt="TSB Sheet 5 — Light Seal, Locking &amp; Calibration" src="../assets/tilt-swing-sheet5.png" /></p>
 <div class="highlight"><pre><span></span><code>WALL FRAME (fixed, welded to container)
 │
 ├── ICP-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
@@ -2748,7 +2674,7 @@
 │    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser)
 │    ├── Ø52×3mm counterbore — identical to standard plate
 │    ├── Spherical pivot: Ø50 k5 shank into GE50-DO-2RS bearing
-│    ├── 4× 440C SS hemispherical ball-socket inserts on Ø260mm PCD
+│    ├── 4× 440C SS hemispherical ball-socket inserts (ICP-05) on Ø260mm PCD
 │    └── 6× M6 bellows inner flange attachment on Ø310mm PCD
 │
 ├── ICP-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
@@ -2756,7 +2682,7 @@
 │    ├── Bore Ø50mm | OD Ø80mm | Width 46mm | Misalignment ±15°
 │    └── PTFE-lined self-lubricating — maintenance-free, chemistry-safe
 │
-└── ICP-10  BELLOWS (matte black neoprene/nylon)
+└── ICP-04  BELLOWS (matte black neoprene/nylon)
      ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 </code></pre></div>
@@ -2860,7 +2786,7 @@ Mechanical hard stop:                 ±12mm travel = ±5.3°
 <p><strong>Operation:</strong> To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centered on the bearing at all times.</p>
 <hr />
 <h2 id="6-light-sealing">6. Light Sealing<a class="headerlink" href="#6-light-sealing" title="Permanent link">&para;</a></h2>
-<p>The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:</p>
+<p>The bellows (ICP-04) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:</p>
 <ul>
 <li>4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)</li>
 <li>Inner and outer attachment flanges are sealed with Ø3mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates</li>
@@ -2945,7 +2871,6 @@ Mechanical hard stop:                 ±12mm travel = ±5.3°
 </tr>
 </tbody>
 </table>
-<p><img alt="All board-only configurations" src="../assets/tilt-swing-board-distortion-summary.png" /></p>
 <p>A detailed analysis of the optical distortions can be found <a href="../distortion-renders/#2-tilt-swing-board-distortion-renders">here</a>.</p>
 <p>The red cross (+) marks the projected image center; gray cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).</p>
 <hr />
@@ -2998,7 +2923,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 <td>Sets optical zero</td>
 </tr>
 <tr>
-<td>ICP-08 hemispherical socket Ra</td>
+<td>ICP-05 hemispherical socket Ra</td>
 <td>—</td>
 <td>Ra 0.4 (ground)</td>
 <td>Ball articulation smoothness</td>
@@ -3025,212 +2950,164 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </table>
 <hr />
 <h2 id="12-parts-list">12. Parts List<a class="headerlink" href="#12-parts-list" title="Permanent link">&para;</a></h2>
-<h3 id="121-structural">12.1 Structural<a class="headerlink" href="#121-structural" title="Permanent link">&para;</a></h3>
+<p>The BOM is single-sourced from the parts registry (<code>parts.py</code>) and generated below. The fasteners, bearing, chrome balls, bushing/insert stock, seals, and Loctite carry firm McMaster SKUs; the raw plate + round bar and the fab/finishing <strong>services</strong> (CNC machining, hard/black anodize, scale engraving, custom bellows) carry <strong>SKU pending — source</strong>: get a supplier or shop quote before purchase.</p>
+<!-- BEGIN parts:front-board -->
 <table>
 <thead>
 <tr>
 <th>Item</th>
 <th>Spec</th>
-<th>Source A</th>
-<th>Source B</th>
+<th>Qty</th>
+<th>Supplier</th>
 <th>Est. cost</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GE50-DO-2RS bearing</td>
-<td>SKF, 50mm bore</td>
-<td>Bearing Headquarters, Buena Park CA (bearingheadquarters.com)</td>
-<td>Applied Industrial, Los Angeles</td>
-<td>~$90</td>
+<td>GE50-DO-2RS spherical plain bearing</td>
+<td>ICP-03 pivot: Ø50 bore × Ø80 OD × 46mm W, ±15° misalignment, PTFE-lined self-lubricating (chemistry-safe). Same bearing family as the film plane. SKU pending — source (Bearing Headquarters, Buena Park / Applied Industrial, LA).</td>
+<td>1 ea</td>
+<td>Bearing Headquarters / Applied Industrial</td>
+<td>$90</td>
 </tr>
 <tr>
-<td>Al 6061-T651 plate (ICP-01)</td>
-<td>620×620×45mm (24"×24"×1.75")</td>
-<td>Online Metals (onlinemetals.com)</td>
-<td>Metal Supermarkets, Chatsworth CA</td>
-<td>~$125</td>
+<td>ICP-01 outer adapter frame stock (6061-T651 plate)</td>
+<td>6061-T651 plate 620×620×45mm (24×24×1.75in) — machined to the 600×600×40 outer frame. SKU pending — source (Online Metals / Metal Supermarkets, Chatsworth).</td>
+<td>1 ea</td>
+<td>Online Metals / Metal Supermarkets</td>
+<td>$125</td>
 </tr>
 <tr>
-<td>Al 6061-T6 round bar (ICP-02)</td>
-<td>Ø340mm×35mm (13.5"OD×1.5")</td>
-<td>Metal Supermarkets, Chatsworth CA</td>
-<td>Online Metals</td>
-<td>~$100</td>
+<td>ICP-02 inner carrier stock (6061-T6 round bar)</td>
+<td>6061-T6 round bar Ø340×35mm (13.5in OD × 1.5in) — machined to the Ø320×25 carrier. SKU pending — source (Metal Supermarkets, Chatsworth / Online Metals).</td>
+<td>1 ea</td>
+<td>Metal Supermarkets / Online Metals</td>
+<td>$100</td>
 </tr>
 <tr>
-<td>M8×1.0×80 SHCS 18-8 SS (adjustment screws)</td>
-<td>4 off — fine-pitch adjustment, ball-end seats in the 440C insert; partially threaded</td>
-<td>McMaster-Carr (#91180A407)</td>
-<td>Bolt Depot</td>
-<td>~$1.87 ($18.73/10)</td>
+<td><a href="https://www.mcmaster.com/91180A407/">M8×1.0×80 SHCS 18-8 SS (adjustment screws)</a> (91180A407)</td>
+<td>Fine-pitch adjustment screw, ball-end seats in the 440C insert; partially threaded. 4 off. McMaster 91180A407 $18.73/10.</td>
+<td>4 ea</td>
+<td>McMaster-Carr / Bolt Depot</td>
+<td>$7</td>
 </tr>
 <tr>
-<td>Delrin/POM rod (bushings)</td>
-<td>Ø30mm×200mm</td>
-<td>McMaster-Carr, Santa Fe Springs CA (#8573K75)</td>
-<td>Amazon Industrial</td>
-<td>~$20</td>
+<td><a href="https://www.mcmaster.com/8573K75/">Delrin/POM guide bushing rod</a> (8573K75)</td>
+<td>Ø30×200mm Delrin/POM rod — machine the 4 adjustment-screw guide bushings. McMaster 8573K75.</td>
+<td>1 ea</td>
+<td>McMaster-Carr / Amazon Industrial</td>
+<td>$20</td>
 </tr>
 <tr>
-<td>Ø8mm Grade 25 chrome steel balls</td>
-<td>52100 bearing steel, 10-pack</td>
-<td>McMaster-Carr (#9528K22)</td>
-<td>Precision Balls Inc.</td>
-<td>~$14/pack</td>
+<td><a href="https://www.mcmaster.com/9528K22/">Ø8mm Grade-25 chrome steel balls (10-pack)</a> (9528K22)</td>
+<td>52100 bearing steel, Ø8mm Grade 25, 10-pack — the ball-end contact at each adjustment screw. McMaster 9528K22.</td>
+<td>1 pack</td>
+<td>McMaster-Carr / Precision Balls Inc.</td>
+<td>$14</td>
 </tr>
 <tr>
-<td>M6×1.0 nylon-tip set screws</td>
-<td>SS316, M6×20mm</td>
-<td>McMaster-Carr (#91375A187)</td>
-<td>Fastenal (SoCal branches)</td>
-<td>~$14/pack-10</td>
+<td><a href="https://www.mcmaster.com/91375A187/">M6×1.0 nylon-tip set screw (10-pack)</a> (91375A187)</td>
+<td>SS316, M6×20mm nylon-tip — cross-locks each adjustment screw for long exposures. Pack of 10. McMaster 91375A187.</td>
+<td>1 pack</td>
+<td>McMaster-Carr / Fastenal</td>
+<td>$14</td>
 </tr>
 <tr>
-<td>440C SS round bar (socket inserts)</td>
-<td>Ø20mm×100mm</td>
-<td>McMaster-Carr (#1765T17)</td>
-<td>Metal Supermarkets</td>
-<td>~$28</td>
+<td><a href="https://www.mcmaster.com/1765T17/">440C SS round bar (ball-socket inserts)</a> (1765T17)</td>
+<td>Ø20×100mm 440C SS bar — machine the 4 hardened hemispherical ball-socket inserts (ICP-05), Ra 0.4 ground. McMaster 1765T17.</td>
+<td>1 ea</td>
+<td>McMaster-Carr / Metal Supermarkets</td>
+<td>$28</td>
 </tr>
 <tr>
-<td>M12×45 SHCS SS A4</td>
-<td>8 off</td>
-<td>McMaster-Carr (#92290A198)</td>
-<td>Bolt Depot</td>
-<td>~$20/pack-5</td>
+<td><a href="https://www.mcmaster.com/92290A198/">M12×45 SHCS SS A4 (plate-to-frame)</a> (92290A198)</td>
+<td>8 off — mounts the TSB into the same wall frame as the standard plate (torque 65 Nm). McMaster 92290A198 $20/pack of 5.</td>
+<td>8 ea</td>
+<td>McMaster-Carr / Bolt Depot</td>
+<td>$32</td>
 </tr>
 <tr>
-<td>M8×1.0×50 SHCS 18-8 SS (central retention)</td>
-<td>1 off — downsized from M16 (non-structural retention/preload), reuses the M8×1.0 fine-pitch thread of the adjustment screws</td>
-<td>McMaster-Carr (#91180A352)</td>
-<td>Bolt Depot</td>
-<td>~$0.64 ($6.42/10)</td>
+<td><a href="https://www.mcmaster.com/91180A352/">M8×1.0×50 SHCS 18-8 SS (central retention)</a> (91180A352)</td>
+<td>1 off — non-structural central retention/preload, downsized from M16 (reuses the M8×1.0 fine thread of the adjustment screws). McMaster 91180A352 $6.42/10.</td>
+<td>1 ea</td>
+<td>McMaster-Carr / Bolt Depot</td>
+<td>$1</td>
 </tr>
 <tr>
-<td>Ø8 m6 SS303 dowel pins</td>
-<td>Ø8×40mm</td>
-<td>McMaster-Carr (#97395A437)</td>
-<td>Fastenal</td>
-<td>~$9 ea</td>
+<td><a href="https://www.mcmaster.com/97395A437/">Ø8 m6 SS303 dowel pin</a> (97395A437)</td>
+<td>Ø8×40mm — plate registration repeatability (light-pull release). 2 off. McMaster 97395A437.</td>
+<td>2 ea</td>
+<td>McMaster-Carr / Fastenal</td>
+<td>$18</td>
 </tr>
 <tr>
-<td>Loctite 638 retaining compound</td>
-<td>10mL</td>
-<td>McMaster-Carr (#1832A1)</td>
-<td>Home Depot (local)</td>
-<td>~$22</td>
+<td><a href="https://www.mcmaster.com/1832A1/">Loctite 638 retaining compound (10mL)</a> (1832A1)</td>
+<td>Bearing outer-ring + ball-socket insert retention. McMaster 1832A1.</td>
+<td>1 ea</td>
+<td>McMaster-Carr / Home Depot</td>
+<td>$22</td>
+</tr>
+<tr>
+<td>Custom photographic bellows (ICP-04)</td>
+<td>Ø290 ID × Ø360 OD × 60mm free length, 4-pleat, matte-black neoprene — the primary zero-friction light seal. Custom order — SKU pending (Micro-Tools / Ames Camera Repair).</td>
+<td>1 ea</td>
+<td>Micro-Tools / Ames Camera Repair</td>
+<td>$80–$150</td>
+</tr>
+<tr>
+<td><a href="https://www.mcmaster.com/1834K22/">Neoprene cord seal Ø3mm</a> (1834K22)</td>
+<td>70 Shore, 1.5m — bellows flange gaskets + Ø420 loop (same spec as the wall-frame seal). McMaster 1834K22.</td>
+<td>1 ea</td>
+<td>McMaster-Carr / Grainger</td>
+<td>$18</td>
+</tr>
+<tr>
+<td>Hard anodize — ICP-01 exterior (service)</td>
+<td>MIL-A-8625 Type III, 0.025mm, ICP-01 exterior. SKU pending — get a shop quote (Pac-Nor, Chatsworth).</td>
+<td>1 job</td>
+<td>Pac-Nor Anodizing</td>
+<td>$80–$120</td>
+</tr>
+<tr>
+<td>Black anodize — ICP-02 + knobs (service)</td>
+<td>Type II, ICP-02 carrier + the 4 knobs. SKU pending — get a shop quote (Aero Finishing, Burbank).</td>
+<td>1 job</td>
+<td>Aero Finishing</td>
+<td>$60–$90</td>
+</tr>
+<tr>
+<td>CNC machining — ICP-01 + ICP-02 (service)</td>
+<td>All-aluminum machining of both plates (bores, H7 seat, k5 shank, PCDs, labyrinth, counterbore). SKU pending — get a fab quote (Fictiv / ProtoLabs).</td>
+<td>1 job</td>
+<td>Fictiv / ProtoLabs</td>
+<td>$800–$1,500</td>
+</tr>
+<tr>
+<td>Knurled knob stock Ø40mm Al (4 off)</td>
+<td>Ø40mm Al knurled knob — 4 off (2 black TILT, 2 silver SWING), engraved. Jergens 49525 (SKU pending — verify) or machine from bar.</td>
+<td>4 ea</td>
+<td>Jergens / local machine shop</td>
+<td>$60</td>
+</tr>
+<tr>
+<td>Angular calibration scale engraving (service)</td>
+<td>Al 80×15×2mm, 2 off — laser-engraved angular scales (tilt + swing). SKU pending — quote (LaserPros, Chatsworth).</td>
+<td>1 set</td>
+<td>LaserPros</td>
+<td>$35–$50</td>
+</tr>
+<tr>
+<td><strong>Front-Board total</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$1,604–$2,459</strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="122-light-seal">12.2 Light Seal<a class="headerlink" href="#122-light-seal" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Spec</th>
-<th>Source A</th>
-<th>Source B</th>
-<th>Est. cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Photographic bellows (custom)</td>
-<td>Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene</td>
-<td>Micro-Tools (microtools.com) — custom order</td>
-<td>Ames Camera Repair (custom bellows)</td>
-<td>~$80–150</td>
-</tr>
-<tr>
-<td>Neoprene cord seal Ø3mm</td>
-<td>70 Shore, 1.5m (for Ø420 loop + flange gaskets)</td>
-<td>McMaster-Carr (#1834K22)</td>
-<td>Grainger (LA branches)</td>
-<td>~$18</td>
-</tr>
-</tbody>
-</table>
-<h3 id="123-finishing-fabrication">12.3 Finishing &amp; Fabrication<a class="headerlink" href="#123-finishing-fabrication" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Spec</th>
-<th>Source</th>
-<th>Est. cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hard anodise (ICP-01 exterior)</td>
-<td>MIL-A-8625 Type III, 0.025mm</td>
-<td>Pac-Nor Anodizing, Chatsworth CA</td>
-<td>~$80–120</td>
-</tr>
-<tr>
-<td>Black anodise (ICP-02, knobs)</td>
-<td>Type II</td>
-<td>Aero Finishing, Burbank CA</td>
-<td>~$60–90</td>
-</tr>
-<tr>
-<td>CNC machining (ICP-01 + ICP-02)</td>
-<td>All Al parts</td>
-<td>Fictiv (fictiv.com) / ProtoLabs</td>
-<td>~$800–1,500</td>
-</tr>
-<tr>
-<td>Knurled knob stock Ø40mm</td>
-<td>Al, 4 off</td>
-<td>Jergens (#49525) or machine from bar</td>
-<td>~$15 ea</td>
-</tr>
-<tr>
-<td>Angular scale engraving</td>
-<td>Al 80×15×2mm, 2 off</td>
-<td>LaserPros, Chatsworth CA</td>
-<td>~$35–50</td>
-</tr>
-</tbody>
-</table>
-<h3 id="124-cost-summary">12.4 Cost Summary<a class="headerlink" href="#124-cost-summary" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Category</th>
-<th>Low estimate</th>
-<th>High estimate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hardware + bearings + seals</td>
-<td>$420</td>
-<td>$580</td>
-</tr>
-<tr>
-<td>CNC machining</td>
-<td>$800</td>
-<td>$1,500</td>
-</tr>
-<tr>
-<td>Anodising</td>
-<td>$140</td>
-<td>$210</td>
-</tr>
-<tr>
-<td>Knobs + scales</td>
-<td>$110</td>
-<td>$150</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total --></strong></td>
-<td><strong>~<!-- BEGIN costing:front-board-total-high -->$2,440<!-- END costing:front-board-total-high --></strong></td>
-</tr>
-</tbody>
-</table>
+<!-- END parts:front-board -->
+
+<p><strong>Estimated module total: ~<!-- BEGIN costing:front-board-total -->$1,604<!-- END costing:front-board-total --> – ~<!-- BEGIN costing:front-board-total-high -->$2,459<!-- END costing:front-board-total-high -->.</strong> CNC machining and the custom bellows dominate the upper band.</p>
 <hr />
 <h2 id="13-maintenance">13. Maintenance<a class="headerlink" href="#13-maintenance" title="Permanent link">&para;</a></h2>
 <table>
@@ -3247,7 +3124,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tr>
 <tr>
 <td>Before each session</td>
-<td>Verify bellows (ICP-10) is intact — no tears, flange gaskets seated</td>
+<td>Verify bellows (ICP-04) is intact — no tears, flange gaskets seated</td>
 </tr>
 <tr>
 <td>Before each session</td>

@@ -683,6 +683,7 @@ ax1.text(cx_b - hw + 12, cy_b + hw - 14, '6061-T6 · 40 THK', ha='left', va='top
 draw_dim_h(ax1, cx_b - s1(DWL_OFF), cx_b, cy_b, '200', above=True, fs=4.5, offset=13)
 draw_dim_h(ax1, cx_b, cx_b + s1(DWL_OFF), cy_b, '200 · 2× Ø8 H7 DOWEL', above=True, fs=4.5, offset=13)
 
+draw_dim_v(ax1, cx_b + hw + 30, cy_b - s1(BOLT_BC/2), cy_b + s1(BOLT_BC/2), 'Ø540 B.C. (8× M12)', right=True, fs=5, offset=16)
 ax1.text(cx_b, cy_b - hw - 250, 'PANEL A — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface as standard pinhole plate)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
@@ -695,10 +696,10 @@ p3 = mpatches.Rectangle((cx_c - hw, cy_c - hw), s1(PL_OD), s1(PL_OD),
                          lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
 ax1.add_patch(p3)
 
-# Central bearing pocket (Ø80 H7)
-draw_circle(ax1, cx_c, cy_c, s1(BRG_SEAT_D/2), lw=LW_THICK, color=C_OUT, fill=True, fc=C_BEAR, zorder=4)
-# Bearing bore (Ø50)
-draw_circle(ax1, cx_c, cy_c, s1(BRG_ID/2), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=5)
+# Central bearing seat (Ø80 H7) — recessed pocket, drawn OPEN (outline, not a filled disc) to match the exterior face
+draw_circle(ax1, cx_c, cy_c, s1(BRG_SEAT_D/2), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=4)
+# Bearing bore (Ø50) — recessed behind the seat (hidden line)
+draw_circle(ax1, cx_c, cy_c, s1(BRG_ID/2), lw=LW_THIN, color=C_HID, ls='--', zorder=5)
 
 # Labyrinth steps (3 concentric dashed circles)
 for d, ls_str in [(LAB_D1,'--'),(LAB_D2,'-.'),(LAB_D3,':')]:
@@ -736,6 +737,7 @@ ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40 THK', ha='left', va='top
 draw_dim_h(ax1, cx_c - s1(BRG_ID/2), cx_c + s1(BRG_ID/2), cy_c - s1(BRG_ID/2) - 22,
            'Ø50 BORE', above=False, fs=4.3, offset=11)
 
+draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø375 B.C. (6× M6)', right=False, fs=5, offset=16)
 ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
@@ -823,6 +825,7 @@ ax2.text(cx2a - s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 
 draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DISC_D/2) - 12,
            'Ø50 DISC (SS-302 · Ø2.17 APERTURE)', above=False, fs=4.0, offset=8)
 
+draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø310 B.C. (6× M6)', right=True, fs=5, offset=14)
 ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 250, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
 
@@ -867,6 +870,7 @@ ax2.text(cx2b - s2(CARR_OD/2) + 8, cy2b + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 
 draw_dim_h(ax2, cx2b - s2(4), cx2b + s2(4), cy2b + s2(BRG_SHANK_D/2) + 16,
            'M8×1.0 TAPPED (CENTRAL RETENTION)', above=True, fs=4.2, offset=10)
 
+draw_dim_v(ax2, cx2b - s2(CARR_OD/2) - 26, cy2b - s2(SOCK_PCD/2), cy2b + s2(SOCK_PCD/2), 'Ø260 B.C. (4× Ø16 INSERT)', right=False, fs=5, offset=14)
 ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')
 
@@ -1102,7 +1106,7 @@ print(f'  → {out2}  Done.')
 # ═══════════════════════════════════════════════════════════════════════════════
 
 FH3_FIG = int(FH * 1.3)
-FW3, FH3 = 1400, 1300
+FW3, FH3 = 1400, 880
 fig3, ax3 = plt.subplots(figsize=(FW/25.4*0.9, FH3_FIG/25.4*0.9))
 fig3.patch.set_facecolor('white')
 ax3.set_facecolor('white')
@@ -1110,7 +1114,7 @@ ax3.set_aspect('equal')
 ax3.axis('off')
 ax3.set_xlim(0, FW3)
 ax3.set_ylim(0, FH3)
-S3_UP = FH3 - FH2  # vertical shift = 300
+S3_UP = 40  # panels fill from the top; fixed (was FH3-FH2, which broke when Sheet 4's FH2 changed)
 
 title_block(ax3, "SHEET 5 OF 5",
             drawing_title="TILT-SWING FRONT BOARD",
@@ -1119,10 +1123,10 @@ title_block(ax3, "SHEET 5 OF 5",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
 # ── PANEL A: Bellows section at 0° and 5° tilt ────────────────────────────────
-ax3.text(30, 980 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([30, 960], [974 + S3_UP, 974 + S3_UP], color='black', lw=0.7)
+ax3.text(30, 760 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([30, 960], [754 + S3_UP, 754 + S3_UP], color='black', lw=0.7)
 
-cx3a, cy3a = 400, 860 + S3_UP
+cx3a, cy3a = 400, 640 + S3_UP
 
 def draw_bellows_section(ax, cx, cy, tilt_deg, lw_style='-', alpha=1.0):
     """Draw bellows accordion cross-section for given tilt angle."""
@@ -1343,7 +1347,7 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
-S3_E_DN = int(FH3 * 0.10)
+S3_E_DN = 0
 
 # ── Separator line between panels B/C/D and panel E ──────────────────────────
 ax3.plot([30, 1370], [270 + S3_UP - S3_E_DN, 270 + S3_UP - S3_E_DN], color='#999999', lw=0.5, linestyle='--', zorder=5)

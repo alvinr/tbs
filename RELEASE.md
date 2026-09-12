@@ -31,6 +31,12 @@ file** — a release must not ship without a changelog entry:
   (exterior+interior), ICP-02 carrier/bearing/adjustment, and light-seal/locking/calibration/swap —
   dropping the duplicate assembly + section panels. Registered all three tilt-swing generators (board +
   both distortion sets) in `dependencies.yml`, which were previously untracked.
+- **TSB component sheets fully dimensioned for fabrication.** Sheets 3–5 were reworked so a fabricator
+  can build each part without questions: every material blank, hole diameter + count, PCD (horizontal
+  *and* vertical), depth, and thickness is a formal dimension rather than a leader callout. Also tidied
+  the ICP part numbering to a contiguous set (ICP-01 frame · 02 carrier · 03 bearing · 04 bellows · 05
+  ball-socket insert), fixed the Sheet 5 layout (panels to the top, title block restored), and corrected
+  a stray Ø4→Ø3 bellows cord-gasket callout.
 - **TSB parts list migrated to the registry.** The hand-typed §12 BOM (internally inconsistent — the
   category subtotals didn't sum from the line items) is now single-sourced from `parts.py` (new
   `front-board` system, 19 parts) and injected as a `parts:front-board` block; the module total is a

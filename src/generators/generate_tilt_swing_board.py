@@ -118,8 +118,8 @@ FR_LAB_1, FR_LAB_2, FR_LAB_3, FR_LAB_STEP = 382, 390, 400, 5
 CR_OD, CR_THICK, CR_SHANK, CR_SHANK_L = 320, 25, 50, 46
 CR_CB_D, CR_CB_DEP = 52, 3
 BRG_BORE = 50
-BEL_ID, BEL_OD, BEL_FREE, BEL_PLEATS = 290, 360, 60, 4
-BEL_INNER_PCD, BEL_OUTER_PCD = 310, 375
+BEL_ID, BEL_OD, BEL_FREE, BEL_PLEATS = 290, 430, 60, 4   # truncated cone: Ø290 carrier end → Ø430 frame end
+BEL_INNER_PCD, BEL_OUTER_PCD = 306, 420   # bellows clamp-ring screw PCDs (carrier / frame)
 ADJ_PCD_CARRIER, ADJ_SCREW, ADJ_BALL, ADJ_BUSHING = 260, 8, 8, 30
 PH_APT = 2.17
 C_BRG, C_DELRIN, C_BELLOWS, C_BALL = '#A0A0B0', '#C8D8C0', '#2A2A2A', '#E0E0E0'
@@ -239,13 +239,15 @@ def draw_sheet1():
         ax.plot([lx - sz_lock, lx + sz_lock], [ly, ly], color=C_OUT, lw=0.5, zorder=12)
         ax.plot([lx, lx], [ly - sz_lock, ly + sz_lock], color=C_OUT, lw=0.5, zorder=12)
 
-    # Bellows inner flange bolts (6× M6 on Ø310 PCD)
+    # Bellows inner clamp ring (Al) + 4× M4 screws on Ø306 — retains the bellows small end on the carrier
     bel_in_r = s(BEL_INNER_PCD / 2)
-    for i in range(6):
-        angle = i * 60 + 30
+    draw_circle(ax, cx, cy, s((BEL_INNER_PCD + 8) / 2), lw=0.5, color=C_HID, ls='--')
+    draw_circle(ax, cx, cy, s((BEL_INNER_PCD - 8) / 2), lw=0.5, color=C_HID, ls='--')
+    for i in range(4):
+        angle = 45 + i * 90
         bx = cx + bel_in_r * np.cos(np.radians(angle))
         by = cy + bel_in_r * np.sin(np.radians(angle))
-        draw_circle(ax, bx, by, s(3), lw=0.5, color=C_HID, fc='white', fill=True)
+        draw_circle(ax, bx, by, s(2), lw=0.5, color=C_HID, fc='white', fill=True)
 
     # Section cut line A-A (vertical through center)
     cut_ext = half + 50
@@ -297,7 +299,7 @@ def draw_sheet1():
         'ICP-03: GE50-DO-2RS SPHERICAL PLAIN BEARING (SKF). Ø50 BORE × Ø80 OD × 46mm. ±15° MISALIGNMENT.',
         f'ADJUSTMENT: 4× M8×1.0 FINE-PITCH SCREWS. BLACK KNOBS = TILT, SILVER = SWING. {FRONT_BOARD_CLICK_DEG}°/CLICK.',
         'LOCKING: 4× M6 NYLON-TIP SET SCREWS (3mm HEX KEY FROM EXTERIOR FACE).',
-        'BELLOWS (ICP-04): Ø290 ID × Ø360 OD, 4-PLEAT NEOPRENE, ZERO-FRICTION LIGHT SEAL.',
+        'BELLOWS (ICP-04): TRUNCATED CONE Ø290→Ø430, 4-PLEAT NEOPRENE, CLAMP-RING RETAINED, ZERO-FRICTION LIGHT SEAL.',
     ]
     draw_notes(ax, notes1, 35, cy - half - 70, spacing=10,
                fs=6, width=pw - 70)
@@ -569,7 +571,7 @@ def draw_sheet2():
 
     leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5,
            lx_r + 20, cy - bel_outer_half - 20,
-           'ICP-04 BELLOWS Ø290–Ø360', fs=5)
+           'ICP-04 BELLOWS\nØ290→Ø430 CONE\nCLAMP-RING BOTH ENDS', fs=5)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, fr_left, fr_right, cy + fr_half + 10, '40mm',
@@ -772,6 +774,12 @@ draw_dim_h(ax1, cx_c - s1(BRG_ID/2), cx_c + s1(BRG_ID/2), cy_c - s1(BRG_ID/2) - 
            'Ø50 BORE', above=False, fs=4.3, offset=11)
 
 draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø420 (CLAMP-RING SCREWS)', right=False, fs=5, offset=16)
+# ── identifying leaders ──
+leader(ax1, cx_c, cy_c + s1(ADJ_PCD/2), cx_c - 120, cy_c + hw - 30,
+       '4× M22 ADJ BUSHING', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax1, cx_c + s1(BELL_OUT_PCD/2)*np.cos(np.radians(30)), cy_c + s1(BELL_OUT_PCD/2)*np.sin(np.radians(30)),
+       cx_c + 120, cy_c + hw - 20, '6× M4 BELLOWS\nCLAMP-RING SCREW', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+
 ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
@@ -861,6 +869,12 @@ draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DIS
            'Ø50 DISC (SS-302 · Ø2.17 APERTURE)', above=False, fs=4.0, offset=8)
 
 draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø306 (CLAMP-RING SCREWS)', right=True, fs=5, offset=14)
+# ── identifying leaders ──
+leader(ax2, cx2a, cy2a + s2(SOCK_PCD/2), cx2a - s2(CARR_OD/2) - 8, cy2a + s2(CARR_OD/2) + 34,
+       '4× Ø16 SOCKET INSERT', fs=4.2, color=C_DIM, arrow_style='->', ha='right')
+leader(ax2, cx2a + s2(BELL_IN_PCD/2)*0.71, cy2a + s2(BELL_IN_PCD/2)*0.71, cx2a + s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) + 34,
+       'BELLOWS INNER CLAMP RING (4× M4)', fs=4.2, color=C_DIM, arrow_style='->', ha='left')
+
 ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 250, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
 
@@ -906,6 +920,10 @@ draw_dim_h(ax2, cx2b - s2(4), cx2b + s2(4), cy2b + s2(BRG_SHANK_D/2) + 16,
            'M8×1.0 TAPPED (CENTRAL RETENTION)', above=True, fs=4.2, offset=10)
 
 draw_dim_v(ax2, cx2b - s2(CARR_OD/2) - 26, cy2b - s2(SOCK_PCD/2), cy2b + s2(SOCK_PCD/2), 'Ø260 B.C. (4× Ø16 INSERT)', right=False, fs=5, offset=14)
+# ── identifying leader ──
+leader(ax2, cx2b, cy2b + s2(SOCK_PCD/2), cx2b, cy2b + s2(CARR_OD/2) + 34,
+       '4× Ø16 INSERT BORE (H7)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
+
 ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')
 

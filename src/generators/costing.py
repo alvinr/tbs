@@ -358,8 +358,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID = 1604 # tilt-swing front board §12 BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
-FRONT_BOARD_HIGH = 2459 # §12 BOM high = parts.system_total('front-board')[1] (CNC + anodise + custom bellows upper band)
+FRONT_BOARD_MID = 1634 # tilt-swing front board §12 BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
+FRONT_BOARD_HIGH = 2505 # §12 BOM high = parts.system_total('front-board')[1] (CNC + anodise + custom bellows + bellows clamp rings)
 
 
 def _sec(sid: str) -> Section:

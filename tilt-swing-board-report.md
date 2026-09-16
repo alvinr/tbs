@@ -20,7 +20,7 @@ The TSB assembly is a two-part drop-in replacement for the standard flat pinhole
 
 ![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
 
-**Sheet 3 — ICP-01 Outer Adapter Frame** (1:8). Exterior (scene-side) and interior (container-side) faces: the bolt/dowel/seal interface, adjustment bushings, bearing seat, 3-step labyrinth, and bellows flange.
+**Sheet 3 — ICP-01 Outer Adapter Frame** (1:8). Exterior (scene-side) and interior (container-side) faces: the bolt/dowel/seal interface, adjustment bushings, bearing seat, 3-step labyrinth, and the bellows outer clamp ring.
 
 ![TSB Sheet 3 — ICP-01 Outer Adapter Frame](assets/tilt-swing-sheet3.png)
 
@@ -33,7 +33,7 @@ The TSB assembly is a two-part drop-in replacement for the standard flat pinhole
 ![TSB Sheet 5 — Light Seal, Locking & Calibration](assets/tilt-swing-sheet5.png)
 
 ```
-WALL FRAME (fixed, welded to container)
+WALL FRAME (flat adapter plate welded/bolted over the corrugated end wall; enlarged aperture cut through the corrugation)
 │
 ├── ICP-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
 │    ├── Identical M12/540PCD/Ø8 dowel interface as all other plates
@@ -41,7 +41,7 @@ WALL FRAME (fixed, welded to container)
 │    ├── Ø80 H7 × 50mm deep bearing seat pocket (interior face)
 │    ├── 4× M8×1.0 fine-pitch adjustment screws with Delrin guide bushings
 │    ├── 4× M6 nylon-tip locking set screws (cross-lock each adj screw)
-│    ├── 6× M6 bellows outer flange attachment on Ø375mm PCD
+│    ├── Bellows outer clamp ring on Ø420mm PCD (6× M4, outside the labyrinth)
 │    └── 3-step labyrinth bore (Ø382/390/400mm) — secondary light seal
 │
 ├── ICP-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
@@ -49,7 +49,7 @@ WALL FRAME (fixed, welded to container)
 │    ├── Ø52×3mm counterbore — identical to standard plate
 │    ├── Spherical pivot: Ø50 k5 shank into GE50-DO-2RS bearing
 │    ├── 4× 440C SS hemispherical ball-socket inserts (ICP-05) on Ø260mm PCD
-│    └── 6× M6 bellows inner flange attachment on Ø310mm PCD
+│    └── Bellows inner clamp ring on Ø306mm PCD (4× M4)
 │
 ├── ICP-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
 │    ├── SKF/INA/Kaydon GE50-DO-2RS (same bearing family as film plane)
@@ -57,9 +57,11 @@ WALL FRAME (fixed, welded to container)
 │    └── PTFE-lined self-lubricating — maintenance-free, chemistry-safe
 │
 └── ICP-04  BELLOWS (matte black neoprene/nylon)
-     ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
+     ├── Truncated cone Ø290mm (carrier) → Ø430mm (frame), free length 60mm, 4 pleats — clamp-ring retained both ends
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
+
+**Wall mounting.** The pinhole (nose) end wall of the container is corrugated steel, so ICP-01 cannot seat on it directly. A flat steel **wall-frame adapter plate** is welded/bolted over the corrugation to present a flat datum, with an aperture cut through the corrugation larger than the Ø380 bore; ICP-01 (and the standard flat plate it interchanges with) bolts to that adapter via the 8× M12 / Ø540 interface. Section A-A (Sheet 2) shows the corrugated wall, the adapter plate, and the enlarged aperture.
 
 ## 3. Movement Specification
 
@@ -123,8 +125,8 @@ Mechanical hard stop:                 ±12mm travel = ±5.3°
 The bellows (ICP-04) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
 
 - 4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)
-- Inner and outer attachment flanges are sealed with Ø3mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates
-- The ICP-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles
+- Both flanges are clamp-ring retained (an aluminum retaining ring + M4 screws) onto Ø3mm neoprene cord gaskets — same gasket spec as the wall-frame seal. The carrier ring lands at Ø306 (7mm edge to the Ø320 rim); the frame ring lands at Ø420, outside the Ø400 labyrinth on solid frame face — so each flange seats on real material
+- The ICP-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows clamp ring lifts at extreme angles
 
 **Why bellows over EPDM wiper seal:** A wiper seal pressed against the tilting disc edge creates variable friction at different angles, giving inconsistent feel. Bellows are zero-friction, standard photographic practice, and self-certify light-tightness by construction.
 
@@ -237,17 +239,19 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | [M8×1.0×50 SHCS 18-8 SS (central retention)](https://www.mcmaster.com/91180A352/) (91180A352) | 1 off — non-structural central retention/preload, downsized from M16 (reuses the M8×1.0 fine thread of the adjustment screws). McMaster 91180A352 $6.42/10. | 1 ea | McMaster-Carr / Bolt Depot | $1 |
 | [Ø8 m6 SS303 dowel pin](https://www.mcmaster.com/97395A437/) (97395A437) | Ø8×40mm — plate registration repeatability (light-pull release). 2 off. McMaster 97395A437. | 2 ea | McMaster-Carr / Fastenal | $18 |
 | [Loctite 638 retaining compound (10mL)](https://www.mcmaster.com/1832A1/) (1832A1) | Bearing outer-ring + ball-socket insert retention. McMaster 1832A1. | 1 ea | McMaster-Carr / Home Depot | $22 |
-| Custom photographic bellows (ICP-04) | Ø290 ID × Ø360 OD × 60mm free length, 4-pleat, matte-black neoprene — the primary zero-friction light seal. Custom order — SKU pending (Micro-Tools / Ames Camera Repair). | 1 ea | Micro-Tools / Ames Camera Repair | $80–$150 |
-| [Neoprene cord seal Ø3mm](https://www.mcmaster.com/1834K22/) (1834K22) | 70 Shore, 1.5m — bellows flange gaskets + Ø420 loop (same spec as the wall-frame seal). McMaster 1834K22. | 1 ea | McMaster-Carr / Grainger | $18 |
+| Custom photographic bellows (ICP-04) | Truncated cone Ø290 (carrier) → Ø430 (frame) × 60mm free length, 4-pleat, matte-black neoprene — the primary zero-friction light seal; clamp-ring retained both ends. Custom order — SKU pending (Micro-Tools / Ames Camera Repair). | 1 ea | Micro-Tools / Ames Camera Repair | $80–$150 |
+| [Neoprene cord seal Ø3mm](https://www.mcmaster.com/1834K22/) (1834K22) | 70 Shore, 1.5m — bellows clamp-ring gaskets (carrier + frame flange) + Ø420 loop (same spec as the wall-frame seal). McMaster 1834K22. | 1 ea | McMaster-Carr / Grainger | $18 |
+| Bellows clamp rings — Al retaining (inner + outer) | 2× Al retaining ring clamping the bellows flanges onto the cord gasket — inner ring ~Ø296 (carrier), outer ring ~Ø434 (frame, outside the labyrinth). Waterjet blank + light machining. SKU pending — fab quote. | 2 ea | local machine shop | $24–$40 |
+| M4×12 SHCS 18-8 SS (bellows clamp-ring) | Retains the 2 bellows clamp rings — 4× on the carrier ring + 6× on the frame ring = 10 off, pack of 25. M4×12 SHCS 18-8 SS — SKU pending (source). | 1 pack | McMaster-Carr / Bolt Depot | $6 |
 | Hard anodize — ICP-01 exterior (service) | MIL-A-8625 Type III, 0.025mm, ICP-01 exterior. SKU pending — get a shop quote (Pac-Nor, Chatsworth). | 1 job | Pac-Nor Anodizing | $80–$120 |
 | Black anodize — ICP-02 + knobs (service) | Type II, ICP-02 carrier + the 4 knobs. SKU pending — get a shop quote (Aero Finishing, Burbank). | 1 job | Aero Finishing | $60–$90 |
 | CNC machining — ICP-01 + ICP-02 (service) | All-aluminum machining of both plates (bores, H7 seat, k5 shank, PCDs, labyrinth, counterbore). SKU pending — get a fab quote (Fictiv / ProtoLabs). | 1 job | Fictiv / ProtoLabs | $800–$1,500 |
 | Knurled knob stock Ø40mm Al (4 off) | Ø40mm Al knurled knob — 4 off (2 black TILT, 2 silver SWING), engraved. Jergens 49525 (SKU pending — verify) or machine from bar. | 4 ea | Jergens / local machine shop | $60 |
 | Angular calibration scale engraving (service) | Al 80×15×2mm, 2 off — laser-engraved angular scales (tilt + swing). SKU pending — quote (LaserPros, Chatsworth). | 1 set | LaserPros | $35–$50 |
-| **Front-Board total** | | | | **$1,604–$2,459** |
+| **Front-Board total** | | | | **$1,634–$2,505** |
 <!-- END parts:front-board -->
 
-**Estimated module total: ~<!-- BEGIN costing:front-board-total -->$1,604<!-- END costing:front-board-total --> – ~<!-- BEGIN costing:front-board-total-high -->$2,459<!-- END costing:front-board-total-high -->.** CNC machining and the custom bellows dominate the upper band.
+**Estimated module total: ~<!-- BEGIN costing:front-board-total -->$1,634<!-- END costing:front-board-total --> – ~<!-- BEGIN costing:front-board-total-high -->$2,505<!-- END costing:front-board-total-high -->.** CNC machining and the custom bellows dominate the upper band.
 
 
 ---

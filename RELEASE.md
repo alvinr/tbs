@@ -37,6 +37,14 @@ file** — a release must not ship without a changelog entry:
   the ICP part numbering to a contiguous set (ICP-01 frame · 02 carrier · 03 bearing · 04 bellows · 05
   ball-socket insert), fixed the Sheet 5 layout (panels to the top, title block restored), and corrected
   a stray Ø4→Ø3 bellows cord-gasket callout.
+- **TSB bellows + wall mounting reworked to close the geometry.** Review caught that the bellows
+  bolt-through flanges didn't fit — 5mm edge on the Ø320 carrier, and the Ø360 bellows sat *inside*
+  the Ø380 frame bore with no face to bolt to. Switched both flanges to **clamp rings** (4× M4 at
+  Ø306 on the carrier, 6× M4 at Ø420 on the frame outside the labyrinth) and made the bellows a
+  **truncated cone Ø290→Ø430** so each flange lands on real material; added the clamp rings + M4
+  screws to `parts.py` (front-board total $1,634–$2,505). Also fixed Sheet 2 to show the container's
+  **corrugated end wall** with a flat wall-frame adapter plate and an enlarged aperture cut through it
+  — a precision mount can't seat on corrugation directly.
 - **TSB parts list migrated to the registry.** The hand-typed §12 BOM (internally inconsistent — the
   category subtotals didn't sum from the line items) is now single-sourced from `parts.py` (new
   `front-board` system, 19 parts) and injected as a `parts:front-board` block; the module total is a

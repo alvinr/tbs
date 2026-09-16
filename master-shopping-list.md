@@ -83,13 +83,14 @@ indicative low–high estimates — get quotes before ordering.
 | Aluminum U-channel, 1/8-panel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | [Anodized-Al straight-flange holder for the #4 wiper brush (×4 lines)](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) (AH400436) | 4 8ft | Tanis Brush | lightlock | $72–$160 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
+| Bellows clamp rings — Al retaining (inner + outer) | 2 ea | local machine shop | front-board | $24–$40 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | [Eagle Al H-divider — opening-edge H-mullions (×4)](https://eagle-aluminum.com/product/aluminum-h-divider-1-38-for-316-material/) (SGN-113) | 4 12ft | Eagle Aluminum | lightlock | $152 |
 | ICP-01 outer adapter frame stock (6061-T651 plate) | 1 ea | Online Metals | front-board | $125 |
 | ICP-02 inner carrier stock (6061-T6 round bar) | 1 ea | Metal Supermarkets | front-board | $100 |
 | Knurled knob stock Ø40mm Al (4 off) | 4 ea | Jergens | front-board | $60 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$2,309–$2,863** |
+| **aluminum subtotal** | | | | **$2,333–$2,903** |
 
 ### bearings-motion
 
@@ -306,12 +307,13 @@ indicative low–high estimates — get quotes before ordering.
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Home Depot | water | $19 |
 | [M8×1.0×80 SHCS 18-8 SS (adjustment screws)](https://www.mcmaster.com/91180A407/) (91180A407) | 4 ea | McMaster-Carr | front-board | $7 |
 | [M8×1.0×50 SHCS 18-8 SS (central retention)](https://www.mcmaster.com/91180A352/) (91180A352) | 1 ea | McMaster-Carr | front-board | $1 |
+| M4×12 SHCS 18-8 SS (bellows clamp-ring) | 1 pack | McMaster-Carr | front-board | $6 |
 | [Ø8 m6 SS303 dowel pin](https://www.mcmaster.com/97395A437/) (97395A437) | 2 ea | McMaster-Carr | front-board | $18 |
 | [M6×1.0 nylon-tip set screw (10-pack)](https://www.mcmaster.com/91375A187/) (91375A187) | 1 pack | McMaster-Carr | front-board | $14 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$2,035–$2,298** |
+| **fasteners-hardware subtotal** | | | | **$2,041–$2,304** |
 
 ### plastics-sheet
 
@@ -505,7 +507,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 18 | aluminum, fasteners-hardware, steel-structural | $2,142–$2,783 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
-| McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, plastics-sheet, seals-gaskets, stainless-sheet, steel-structural | $2,078–$2,086 |
+| McMaster-Carr | 90 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, plastics-sheet, seals-gaskets, stainless-sheet, steel-structural | $2,084–$2,092 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,354–$2,064 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,797–$1,933 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
@@ -559,6 +561,7 @@ indicative low–high estimates — get quotes before ordering.
 | LaserPros | 1 | fabrication-labor | $35–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | Canal Rubber | 1 | seals-gaskets | $25–$40 |
+| local machine shop | 1 | aluminum | $24–$40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Fresh Water Systems | 1 | water-equipment | $32 |

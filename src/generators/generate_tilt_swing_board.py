@@ -52,7 +52,7 @@ BRG_SEAT_DEP = 50     # depth of bearing pocket
 ADJ_PCD      = 270    # adjustment screw PCD (in frame)
 ADJ_N        = 4      # 4 screws
 LAB_D1, LAB_D2, LAB_D3 = 382, 390, 400  # labyrinth step diameters
-BELL_OUT_PCD = 375    # bellows outer flange bolt PCD
+BELL_OUT_PCD = 420    # bellows outer clamp-ring screw PCD — OUTSIDE the Ø400 labyrinth, on solid frame face
 
 # --- ICP-02 Inner Carrier Plate ---
 CARR_OD      = 320    # carrier plate OD
@@ -60,7 +60,7 @@ CARR_THICK   = 25     # thickness
 BRG_SHANK_D  = 50     # bearing shank diameter (k5)
 BRG_SHANK_L  = 35     # shank length
 SOCK_PCD     = 260    # ball socket insert PCD
-BELL_IN_PCD  = 310    # bellows inner flange bolt PCD
+BELL_IN_PCD  = 306    # bellows inner clamp-ring screw PCD — 7mm edge to the Ø320 rim, 8mm to the Ø290 ID
 
 # --- Bearing ICP-03 ---
 BRG_OD       = 80
@@ -76,12 +76,14 @@ KNOB_H       = 15
 BUSH_OD      = 22
 BUSH_L       = 35
 
-# --- Bellows ---
-BELL_ID      = 290
-BELL_OD      = 360
+# --- Bellows (truncated cone: small end on the carrier, large end on the frame) ---
+BELL_ID      = 290    # small end (carrier / scene side)
+BELL_OD      = 430    # large end (frame / container side) — clears the Ø400 labyrinth to land on frame face
 BELL_FREE    = 60     # free length
 BELL_PLEATS  = 4
 BELL_PLEAT_D = 15     # pleat depth
+CLAMP_SCR_D  = 4      # M4 clamp-ring retaining screws (both flanges)
+CLAMP_RING_W = 14     # clamp-ring radial band width
 
 SEAL_W   = 3          # neoprene seal groove width
 SEAL_DEP = 3          # seal groove depth
@@ -338,19 +340,49 @@ def draw_sheet2():
     cx = pw * 0.45
     cy = ph / 2 + 20
 
-    # ── Container wall ───────────────────────────────────────────────────────
-    wall_t = s(2.0)
-    wall_x = cx - s(FR_THICK) - wall_t - s(6)  # wall frame sits against wall
-    wall_half = s(FR_OD / 2) + 30
-    ax.add_patch(mpatches.Rectangle(
-        (wall_x, cy - wall_half), wall_t, 2 * wall_half,
-        fc=C_STEEL, ec=C_OUT, lw=LW_THICK, zorder=3,
-        hatch='///'))
-    ax.text(wall_x - 15, cy, 'CONTAINER\nWALL', ha='right', va='center',
-            fontsize=5, color=C_DIM, style='italic', rotation=90)
-
     # ── ICP-01 Outer adapter frame (cross-section) ───────────────────────────
     fr_left = cx - s(FR_THICK)
+
+    # ── Corrugated container END wall + flat wall-frame adapter plate + enlarged aperture ──
+    # The pinhole (nose) end wall is corrugated steel — a precision mount can't seat on it directly.
+    # A flat wall-frame ADAPTER PLATE is welded/bolted over the corrugation to give ICP-01 a flat
+    # datum, and the aperture is cut LARGER than the Ø380 bore straight through the corrugation.
+    wall_half = s(FR_OD / 2) + 30
+    apt_half  = s(FR_BORE / 2 + 20)          # enlarged aperture (~Ø420) cut through the wall + plate
+    adap_r    = fr_left - s(4)                # adapter-plate interior face — ICP-01 bolts to it
+    adap_l    = adap_r - s(10)               # 10mm flat steel adapter plate
+    corr_r    = adap_l                        # corrugation crests bear on the adapter
+    corr_amp  = s(28)                         # container-wall corrugation depth
+    corr_l    = corr_r - corr_amp
+    wall_x    = corr_l                        # exterior-most face (centerline / label refs below)
+    pitch     = s(80)
+    for y0, y1 in [(cy + apt_half, cy + wall_half), (cy - wall_half, cy - apt_half)]:
+        # flat adapter plate segment
+        ax.add_patch(mpatches.Rectangle((adap_l, y0), adap_r - adap_l, y1 - y0,
+                     fc=C_STEEL, ec=C_OUT, lw=LW_MED, zorder=5, hatch='...'))
+        # corrugated wall segment — trapezoidal square-wave outer profile, filled band
+        edge_x, edge_y = [], []
+        yc = y0
+        crest = True
+        while yc < y1:
+            yn = min(yc + pitch / 2, y1)
+            x = corr_r if crest else corr_l
+            edge_x += [x, x]; edge_y += [yc, yn]
+            yc = yn; crest = not crest
+        poly = list(zip(edge_x, edge_y)) + [(corr_r, y1), (corr_r, y0)]
+        ax.add_patch(mpatches.Polygon(poly, closed=True, fc=C_STEEL, ec=C_OUT,
+                     lw=LW_MED, zorder=3, hatch='///'))
+        # one wall-frame through-bolt (adapter → corrugation crest) per segment
+        by = (y0 + y1) / 2
+        ax.plot([corr_r - s(20), adap_r + s(3)], [by, by], color=C_OUT, lw=1.3, zorder=6)
+    ax.text(corr_l - s(4), cy + wall_half - s(20), 'CORRUGATED\nCONTAINER\nEND WALL',
+            ha='right', va='top', fontsize=4.4, color=C_DIM, style='italic')
+    ax.text(corr_l - s(4), cy - wall_half + s(20), 'FLAT WALL-FRAME\nADAPTER PLATE\n(over corrugation)',
+            ha='right', va='bottom', fontsize=4.4, color=C_DIM, style='italic')
+    ax.annotate('ENLARGED APERTURE\n(cut through wall, > Ø380 bore)',
+                xy=(corr_r, cy + apt_half), xytext=(corr_l - s(6), cy + apt_half + s(28)),
+                fontsize=4.2, color=C_DIM, style='italic', ha='right', va='bottom',
+                arrowprops=dict(arrowstyle='->', color='#999', lw=0.5))
     fr_right = cx
     fr_half = s(FR_OD / 2)
     bore_half = s(FR_BORE / 2)
@@ -712,19 +744,21 @@ for angle_deg in [90, 0, 270, 180]:
     draw_circle(ax1, ax_x, ax_y, s1(BUSH_OD/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_DELR, zorder=5)
     draw_circle(ax1, ax_x, ax_y, s1(ADJ_D/2), lw=0.7, color=C_OUT, fill=True, fc='white', zorder=6)
 
-# 6 × M6 bellows flange bolts on Ø375
+# Bellows outer clamp ring (Al) + 6× M4 retaining screws on Ø420 — OUTSIDE the Ø400 labyrinth, on solid frame face
+draw_circle(ax1, cx_c, cy_c, s1((BELL_OUT_PCD+14)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring OD
+draw_circle(ax1, cx_c, cy_c, s1((BELL_OUT_PCD-14)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring ID (bellows large end seats here)
 for i in range(6):
     ang = np.radians(i*60)
     bx = cx_c + s1(BELL_OUT_PCD/2) * np.cos(ang)
     by = cy_c + s1(BELL_OUT_PCD/2) * np.sin(ang)
-    draw_circle(ax1, bx, by, s1(3.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=5)
+    draw_circle(ax1, bx, by, s1(CLAMP_SCR_D/2 + 0.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=6)
 
 draw_cl(ax1, cx_c, cy_c, hw*1.15)
 
 # ── Formal dimensions — every feature ──
 dia_stack(ax1, cx_c, cy_c - hw, [
     (s1(BRG_SEAT_D),   'Ø80 H7 BEARING SEAT · 50 DEEP'),
-    (s1(BELL_OUT_PCD), 'Ø375 PCD · 6× M6 (BELLOWS) · 60° APART'),
+    (s1(BELL_OUT_PCD), 'Ø420 PCD · 6× M4 BELLOWS CLAMP-RING SCREW (OUTSIDE LABYRINTH) · 60° APART'),
     (s1(PL_OD),        '600'),
 ], dirn=-1)
 dia_stack(ax1, cx_c, cy_c + hw, [
@@ -737,7 +771,7 @@ ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40 THK', ha='left', va='top
 draw_dim_h(ax1, cx_c - s1(BRG_ID/2), cx_c + s1(BRG_ID/2), cy_c - s1(BRG_ID/2) - 22,
            'Ø50 BORE', above=False, fs=4.3, offset=11)
 
-draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø375 B.C. (6× M6)', right=False, fs=5, offset=16)
+draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø420 (CLAMP-RING SCREWS)', right=False, fs=5, offset=16)
 ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
@@ -797,16 +831,17 @@ for angle_deg in [90, 0, 270, 180]:
     draw_circle(ax2, sx, sy, s2(16/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_BEAR, zorder=5)
     draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#D0D0D0', zorder=6)
 
-# 6 × M6 bellows bolts on Ø310
-for i in range(6):
-    ang = np.radians(30 + i*60)
+# Bellows inner clamp ring (Al) + 4× M4 retaining screws on Ø306 — clamps the bellows small end to the carrier
+draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD+8)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring OD
+draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD-8)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring ID (bellows small end seats here)
+for i in range(4):
+    ang = np.radians(45 + i*90)
     bx = cx2a + s2(BELL_IN_PCD/2) * np.cos(ang)
     by = cy2a + s2(BELL_IN_PCD/2) * np.sin(ang)
-    draw_circle(ax2, bx, by, s2(3.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=5)
+    draw_circle(ax2, bx, by, s2(CLAMP_SCR_D/2 + 0.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=6)
 
 # Bolt circle ref
 draw_circle(ax2, cx2a, cy2a, s2(SOCK_PCD/2), lw=0.4, color=C_HID, ls=':')
-draw_circle(ax2, cx2a, cy2a, s2(BELL_IN_PCD/2), lw=0.4, color='#999999', ls=':')
 
 draw_cl(ax2, cx2a, cy2a, s2(CARR_OD/2)*1.2)
 
@@ -814,7 +849,7 @@ draw_cl(ax2, cx2a, cy2a, s2(CARR_OD/2)*1.2)
 dia_stack(ax2, cx2a, cy2a - s2(CARR_OD/2), [
     (s2(PH_BORE),     'Ø90 CONE BORE (SCENE TAPER)'),
     (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 SOCKET INSERT · 90° APART'),
-    (s2(BELL_IN_PCD), 'Ø310 PCD · 6× M6 (BELLOWS) · 60° APART'),
+    (s2(BELL_IN_PCD), 'Ø306 PCD · 4× M4 BELLOWS CLAMP-RING SCREW · 90° APART'),
     (s2(CARR_OD),     'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
 dia_stack(ax2, cx2a, cy2a + s2(CARR_OD/2), [
@@ -825,7 +860,7 @@ ax2.text(cx2a - s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 
 draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DISC_D/2) - 12,
            'Ø50 DISC (SS-302 · Ø2.17 APERTURE)', above=False, fs=4.0, offset=8)
 
-draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø310 B.C. (6× M6)', right=True, fs=5, offset=14)
+draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø306 (CLAMP-RING SCREWS)', right=True, fs=5, offset=14)
 ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 250, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
 
@@ -1193,16 +1228,16 @@ ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h/2,
 draw_dim_v(ax3, cx3a + s2(BELL_OD/2) + 30, cy3a - s2(BELL_FREE), cy3a,
            f'{BELL_FREE}mm FREE LEN', right=True, fs=5, offset=9)
 draw_dim_h(ax3, cx3a - s2(BELL_OD/2), cx3a + s2(BELL_OD/2), cy3a + frame_bar_h + 28,
-           f'OD Ø{BELL_OD}', above=True, fs=5, offset=9)
+           f'Ø{BELL_OD} FRAME END (clamps outside labyrinth)', above=True, fs=5, offset=9)
 draw_dim_h(ax3, cx3a - s2(BELL_ID/2), cx3a + s2(BELL_ID/2),
-           cy3a - s2(BELL_FREE) - carr_bar_h - 28, f'ID Ø{BELL_ID}', above=False, fs=5, offset=9)
+           cy3a - s2(BELL_FREE) - carr_bar_h - 28, f'Ø{BELL_ID} CARRIER END', above=False, fs=5, offset=9)
 
 ax3.text(cx3a + s2(BELL_OD/2) + 104, cy3a - s2(BELL_FREE*0.5),
          '——— NEUTRAL (0°)\n- - - - 5° TILT\n(asymmetric compression\nleft side: −13.9mm\nright side: +13.9mm)',
          fontsize=5, va='center', color='#333333', zorder=10)
 
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 60,
-         'BELLOWS ICP-04: Matte black neoprene/nylon  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nInner+outer flanges sealed with Ø3mm neoprene cord gaskets (same spec as wall-frame seal)',
+         'BELLOWS ICP-04: Matte black neoprene/nylon  •  truncated cone Ø290→Ø430  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nBoth ends CLAMP-RING retained (Al ring + M4 screws) onto a Ø3mm neoprene cord gasket — carrier @ Ø306, frame @ Ø420 (outside the labyrinth)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────

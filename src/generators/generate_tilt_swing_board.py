@@ -276,8 +276,8 @@ def draw_sheet1():
     leader(ax, cx + s(DWL_OFF) + s(DWL_D / 2), cy + 5,
            cx + 180, cy + 10, '2× Ø8 DOWEL', fs=5.5)
 
-    leader(ax, cx + s(FR_BRG_SEAT / 2) * 0.707, cy - s(FR_BRG_SEAT / 2) * 0.707,
-           cx + 180, cy - half + 50, 'Ø80 H7 BRG SEAT', fs=5.5)
+    leader(ax, cx - s(FR_BRG_SEAT / 2) * 0.707, cy + s(FR_BRG_SEAT / 2) * 0.707,
+           cx - half - 80, cy + 55, 'Ø80 H7 BRG SEAT', fs=5.5, ha='right')
 
     # Left-side leaders
     leader(ax, cx - s(SEAL_D / 2) * 0.707, cy - s(SEAL_D / 2) * 0.707,
@@ -558,16 +558,16 @@ def draw_sheet2():
            'ICP-01 OUTER FRAME\n600×600×40 AL', fs=5)
 
     leader(ax, (cr_left + cr_right) / 2, cy + cr_half - 5,
-           lx_r + 20, cy + 110,
+           lx_r + 20, cy + 130,
            'ICP-02 CARRIER Ø320×25 AL', fs=5)
 
     leader(ax, brg_left + s(BRG_W / 2), cy + brg_outer_half,
-           lx_r + 20, cy + brg_outer_half + 60,
+           lx_r + 20, cy + brg_outer_half + 62,
            'ICP-03 GE50-DO-2RS\nØ50×Ø80×46', fs=5)
 
     leader(ax, cr_right + disc_t / 2, cy + disc_half + 3,
-           lx_r + 20, cy + disc_half + 40,
-           'PINHOLE DISC\nØ50×0.1 SS-302\nØ2.17mm APT', fs=5)
+           lx_r + 20, cy + disc_half + 8,
+           'PINHOLE DISC Ø50×0.1\nØ2.17mm APT SS-302', fs=5)
 
     leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5,
            lx_r + 20, cy - bel_outer_half - 20,
@@ -584,10 +584,8 @@ def draw_sheet2():
                right=False, fs=6, offset=8)
     draw_dim_v(ax, fr_left - 50, cy - fr_half, cy, '300mm',
                right=False, fs=6, offset=8)
-    draw_dim_v(ax, fr_right + 30, cy, cy + bore_half, f'{int(FR_BORE/2)}mm',
-               right=True, fs=5.5, offset=6)
-    draw_dim_v(ax, cr_right + 30, cy, cy + cr_half, f'{int(CR_OD/2)}mm',
-               right=True, fs=5.5, offset=6)
+    # (bore Ø380 / carrier Ø320 radii are fully dimensioned on Sheets 3 & 4 — omitted here to keep the
+    #  component leaders clear on the sectional master)
 
     # Section title — at top of drawing
     ax.text(cx, cy + fr_half + 100, 'SECTION A-A', ha='center', fontsize=8,
@@ -870,8 +868,8 @@ draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DIS
 
 draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø306 (CLAMP-RING SCREWS)', right=True, fs=5, offset=14)
 # ── identifying leaders ──
-leader(ax2, cx2a, cy2a + s2(SOCK_PCD/2), cx2a - s2(CARR_OD/2) - 8, cy2a + s2(CARR_OD/2) + 34,
-       '4× Ø16 SOCKET INSERT', fs=4.2, color=C_DIM, arrow_style='->', ha='right')
+leader(ax2, cx2a - s2(SOCK_PCD/2), cy2a, cx2a - s2(CARR_OD/2) - 12, cy2a + s2(CARR_OD/2) + 60,
+       '4× Ø16 SOCKET INSERT', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
 leader(ax2, cx2a + s2(BELL_IN_PCD/2)*0.71, cy2a + s2(BELL_IN_PCD/2)*0.71, cx2a + s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) + 34,
        'BELLOWS INNER CLAMP RING (4× M4)', fs=4.2, color=C_DIM, arrow_style='->', ha='left')
 
@@ -1012,10 +1010,10 @@ leader(ax2, ptfe_right_x, cy2c,
        cx2c + 170, cy2c + 50,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, or_left - frame_ctx_w/2, cy2c,
-       cx2c - 150, cy2c - 70,
+       cx2c - 172, cy2c - 36,
        'ICP-01\nFRAME\nAl 6061', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, cx2c - 30, or_bot - s1b(8),
-       cx2c - 110, cy2c - 80,
+       cx2c - 118, cy2c - 122,
        'ICP-02\nSHANK\nØ50 k5', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, cx2c + ir_outer_r, or_bot + s1b(1.5),
        cx2c + 150, cy2c - 90,
@@ -1024,7 +1022,7 @@ leader(ax2, or_right - out_ring_wall/2, or_top,
        cx2c + 170, cy2c + 84,
        'OUTER RING\n(PRESS-FIT H7/r6)', fs=4.8, color=C_DIM, arrow_style='->')
 
-ax2.text(cx2c, or_bot - 56, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',
+ax2.text(cx2c, or_bot - 92, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL D: Adjustment screw detail (1:1) ────────────────────────────────────
@@ -1113,7 +1111,7 @@ leader(ax2, cx2d + screw_len + s1b(KNOB_H)/2, cy2d + s1b(KNOB_D/2),
        cx2d + screw_len + s1b(KNOB_H) + 24, cy2d + 20,
        f'Ø40 KNURLED KNOB\n{FRONT_BOARD_DETENTS}-DETENT\n{FRONT_BOARD_CLICK_DEG}°/CLICK', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
-       cx2d - frame_wall_w - 50, cy2d + 28,
+       cx2d - frame_wall_w - 58, cy2d - 2,
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2 - s1b(8), cy2d - s1b(BALL_D/2),
        ball_x2 - s1b(8) - 110, cy2d - 36,
@@ -1122,7 +1120,7 @@ leader(ax2, ball_x2, cy2d + s1b(BALL_D/2),
        ball_x2 + 28, cy2d + 24,
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2 - carrier_rim_w/2, cy2d + s1b(CARR_THICK/2),
-       ball_x2 - carrier_rim_w - 70, cy2d + 50,
+       ball_x2 - carrier_rim_w - 100, cy2d + 100,
        'ICP-02\nCARRIER RIM', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30),
        cx2d - frame_wall_w/2, cy2d + s1b(30) + 20,
@@ -1352,7 +1350,7 @@ leader(ax3, det_x, cy3c + sk(KNOB_D/2) - sk(2),
        cx3c + 110, cy3c + 24,
        '36-DETENT\nSPRING BALL\n(5° PER CLICK)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax3, cx3c + sk(3), cy3c + sk(ADJ_D/2 - 1.5),
-       cx3c + 110, cy3c - 20,
+       cx3c + 120, cy3c - 46,
        'FLAT/KEYWAY\n(ANTI-SPIN)', fs=5, color=C_DIM, arrow_style='->')
 
 ax3.text(cx3c, cy3c - sk(KNOB_D/2) - 56,

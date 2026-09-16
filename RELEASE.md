@@ -52,6 +52,13 @@ file** — a release must not ship without a changelog entry:
   costing gate. Raw material (6061 plate + round bar) and the fab/finishing services (CNC, anodize,
   scale engraving, custom bellows) are flagged **SKU pending — source**; the fasteners/bearing/seals
   carry firm McMaster SKUs.
+- **TSB identifying leaders + label tidy.** Added the missing part-identifying leaders (Sheet 3 inner
+  4 / outer 6 hole circles, Sheet 4 Panel A center-4 + edge-6 and Panel B 4-hole patterns) and audited
+  every leader in the set so each attaches to the point it names — corrected a Sheet 2 socket leader
+  that pointed 45° off the actual socket and refreshed the stale bellows content the ported Sheet 1/2
+  functions still carried. Ran the tidy-labels pass to clear label crowding across the set (Sheet 2's
+  right-side component stack redistributed to even spacing; the one remaining overlap flag is a
+  confirmed rotated-dimension bbox false positive, visually clear).
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

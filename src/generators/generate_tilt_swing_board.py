@@ -1163,7 +1163,7 @@ print(f'  → {out2}  Done.')
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — Bellows, Locking, Scale & Swap Procedure
+# SHEET 5 — Bellows seal, Locking & Calibration scale
 # ═══════════════════════════════════════════════════════════════════════════════
 
 FH3_FIG = int(FH * 1.3)
@@ -1174,12 +1174,15 @@ ax3.set_facecolor('white')
 ax3.set_aspect('equal')
 ax3.axis('off')
 ax3.set_xlim(0, FW3)
-ax3.set_ylim(0, FH3)
+# Lower bound raised to ~190 (was 0) so the title block — anchored in axes-fraction at the
+# bottom — re-seats just under Panels B/C/D now that Panel E (the swap procedure) is gone;
+# tight-bbox then crops the former Panel E band.
+ax3.set_ylim(190, FH3)
 S3_UP = 40  # panels fill from the top; fixed (was FH3-FH2, which broke when Sheet 4's FH2 changed)
 
 title_block(ax3, "SHEET 5 OF 6",
             drawing_title="TILT-SWING FRONT BOARD",
-            subtitle="Bellows seal, Locking, Calibration scale & Swap procedure",
+            subtitle="Bellows seal, Locking & Calibration scale",
             scale_note="AXES IN mm",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
@@ -1408,41 +1411,12 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
-S3_E_DN = 0
+# The plate-swap procedure is an operating step, not a fabrication feature — it lives as
+# the numbered §8 "Plate Swap Procedure" in tilt-swing-board-report.md, not on this sheet.
 
-# ── Separator line between panels B/C/D and panel E ──────────────────────────
-ax3.plot([30, 1370], [270 + S3_UP - S3_E_DN, 270 + S3_UP - S3_E_DN], color='#999999', lw=0.5, linestyle='--', zorder=5)
-
-# ── PANEL E: Swap sequence ────────────────────────────────────────────────────
-ax3.text(30, 250 + S3_UP - S3_E_DN, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([30, 1390], [244 + S3_UP - S3_E_DN, 244 + S3_UP - S3_E_DN], color='black', lw=0.7)
-
-steps = [
-    ('①', 'LOOSEN 4×\nLOCK SCREWS', '3mm hex key\nM6 set screws'),
-    ('②', 'ZERO ALL\n4 ADJ KNOBS', 'Return to 0°\nusing scale marks'),
-    ('③', 'REMOVE 8×\nM12 BOLTS', 'M12 socket\n65 Nm torque'),
-    ('④', 'PULL TSB\nASSEMBLY', 'Dowel pins\nretain alignment'),
-    ('⑤', 'FIT STANDARD\nPINHOLE PLATE', 'Locate on same\ndowels — re-bolt'),
-]
-
-step_w = 240
-step_gap = 30
-for i, (num, title, note) in enumerate(steps):
-    sx = 40 + i * (step_w + step_gap)
-    sy = 120 + S3_UP - S3_E_DN
-    draw_rect(ax3, sx, sy, step_w, 110, lw=1.0, color='black', fc='#F0F0F0')
-    ax3.text(sx + step_w/2, sy + 96, num, ha='center', fontsize=14,
-             fontweight='bold', color='black', zorder=10)
-    ax3.text(sx + step_w/2, sy + 64, title, ha='center', fontsize=6.5,
-             fontweight='bold', color='black', zorder=10)
-    ax3.text(sx + step_w/2, sy + 24, note, ha='center', fontsize=5.5,
-             color='#555555', style='italic', zorder=10)
-    if i < 4:
-        ax3.annotate('', xy=(sx + step_w + 26, sy + 54), xytext=(sx + step_w + 4, sy + 54),
-                     arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
-
-ax3.text(1390/2, 90 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 socket and 3mm hex key  •  Swap time: approx. 10 minutes',
-         ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
+# ── Pointer to the operating procedure (keeps the swap discoverable from the drawing set) ──
+ax3.text(30, 250 + S3_UP, 'PLATE SWAP: see §8 "Plate Swap Procedure" in the Tilt-Swing Front Board report',
+         fontsize=6, style='italic', color='#555555', zorder=10)
 
 out3 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet5.png')
 fig3.savefig(out3, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')

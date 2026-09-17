@@ -67,6 +67,11 @@ file** — a release must not ship without a changelog entry:
   plus an exploded assembly stack and attachment notes (2.5 N·m, compression seal, blind holes). The
   set is renumbered to 6 sheets. Also added identifying leaders to Sheet 3 Panel A (light-trap rebate,
   Delrin adjustment bushings, container-plate bolts).
+- **TSB Sheet 5: plate-swap procedure moved off the drawing into the manual.** The swap sequence was a
+  five-box flow diagram (Panel E) duplicating what §8 "Plate Swap Procedure" of the report already
+  carries as a numbered list (with more detail — M12×45 SHCS, 65 N·m). A swap is an operating step, not
+  a fabrication feature, so Panel E is removed; the sheet now carries a one-line pointer to §8 and
+  re-seats its title block to close the freed band. Report Sheet 5 caption updated to match.
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

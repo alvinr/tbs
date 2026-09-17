@@ -28,7 +28,7 @@ The TSB assembly is a two-part drop-in replacement for the standard flat pinhole
 
 ![TSB Sheet 4 — ICP-02 Carrier & Adjustment](assets/tilt-swing-sheet4.png)
 
-**Sheet 5 — Light seal, locking, calibration & swap** (1:8). Bellows geometry, the M6 locking set screws, the angular calibration scale, and the plate-swap sequence.
+**Sheet 5 — Light seal, locking & calibration** (1:8). Bellows geometry, the M6 locking set screws, and the angular calibration scale. The plate-swap sequence is an operating step, not a fabrication feature — it lives as the numbered procedure in §8 below.
 
 ![TSB Sheet 5 — Light Seal, Locking & Calibration](assets/tilt-swing-sheet5.png)
 

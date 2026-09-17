@@ -37,7 +37,7 @@ generators:
   schematic: {script: src/generators/generate_schematic.py, outputs: [diagrams/portrait-camera-schematic.png]}
   shelf_diagram: {script: src/generators/generate_shelf_diagram.py, outputs: [diagrams/shelf-sheet1.png, diagrams/shelf-sheet2.png, diagrams/shelf-sheet3.png, diagrams/shelf-sheet4.png, diagrams/shelf-sheet5.png]}
   spray_bar_diagram: {script: src/generators/generate_spray_bar_diagram.py, outputs: [diagrams/spray-bar-sheet1.png]}
-  tilt_swing_board: {script: src/generators/generate_tilt_swing_board.py, outputs: [diagrams/tilt-swing-sheet1.png, diagrams/tilt-swing-sheet2.png, diagrams/tilt-swing-sheet3.png, diagrams/tilt-swing-sheet4.png, diagrams/tilt-swing-sheet5.png]}
+  tilt_swing_board: {script: src/generators/generate_tilt_swing_board.py, outputs: [diagrams/tilt-swing-sheet1.png, diagrams/tilt-swing-sheet2.png, diagrams/tilt-swing-sheet3.png, diagrams/tilt-swing-sheet4.png, diagrams/tilt-swing-sheet5.png, diagrams/tilt-swing-sheet6.png]}
   # per-config c0..cN frames are emitted in a loop (f-string), so only the literal summary is declared (matches film_plane_distortion)
   tilt_swing_board_distortion: {script: src/generators/generate_tilt_swing_board_distortion.py, outputs: [diagrams/tilt-swing-board-distortion-c0.png, diagrams/tilt-swing-board-distortion-summary.png]}
   tilt_swing_combined_distortion: {script: src/generators/generate_combined_distortion.py, outputs: [diagrams/tilt-swing-combined-c0.png, diagrams/tilt-swing-combined-summary.png]}

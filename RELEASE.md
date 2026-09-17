@@ -59,6 +59,14 @@ file** — a release must not ship without a changelog entry:
   functions still carried. Ran the tidy-labels pass to clear label crowding across the set (Sheet 2's
   right-side component stack redistributed to even spacing; the one remaining overlap flag is a
   confirmed rotated-dimension bbox false positive, visually clear).
+- **TSB Sheet 6 added — bellows attachment.** The old set described the clamp-ring joint only in
+  caption text; Sheet 5 Panel A drew the accordion but never the joint. New Sheet 6 gives it a proper
+  home: two enlarged (4:1) broken-out sections through the clamp joints — frame end (6× M4 @ Ø420,
+  outside the labyrinth) and carrier end (4× M4 @ Ø306) — each showing the neoprene lip, Ø3 cord gasket
+  in its groove inboard of the screws, the 6061 clamp ring, and the M4 SHCS into an 8-deep tapped hole,
+  plus an exploded assembly stack and attachment notes (2.5 N·m, compression seal, blind holes). The
+  set is renumbered to 6 sheets. Also added identifying leaders to Sheet 3 Panel A (light-trap rebate,
+  Delrin adjustment bushings, container-plate bolts).
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

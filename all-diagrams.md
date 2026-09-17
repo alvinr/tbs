@@ -112,6 +112,8 @@
 
 ![TBS-001 Tilt-Swing Board — Sheet 5: Light Seal, Locking, Calibration & Swap](assets/tilt-swing-sheet5.png)
 
+![TBS-001 Tilt-Swing Board — Sheet 6: Bellows Attachment (clamp-ring joint details)](assets/tilt-swing-sheet6.png)
+
 ---
 
 ## 9. Processing (Water) System

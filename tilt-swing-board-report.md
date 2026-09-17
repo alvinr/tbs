@@ -32,6 +32,10 @@ The TSB assembly is a two-part drop-in replacement for the standard flat pinhole
 
 ![TSB Sheet 5 — Light Seal, Locking & Calibration](assets/tilt-swing-sheet5.png)
 
+**Sheet 6 — Bellows attachment** (4:1). Enlarged sections through both clamp-ring joints (frame end at Ø420, carrier end at Ø306) — the neoprene lip, Ø3 cord gasket, aluminum clamp ring, and M4 screw into a tapped hole — with the exploded assembly stack and attachment notes.
+
+![TSB Sheet 6 — Bellows Attachment](assets/tilt-swing-sheet6.png)
+
 ```
 WALL FRAME (flat adapter plate welded/bolted over the corrugated end wall; enlarged aperture cut through the corrugation)
 │

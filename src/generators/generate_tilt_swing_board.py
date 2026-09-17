@@ -304,7 +304,7 @@ def draw_sheet1():
     draw_notes(ax, notes1, 35, cy - half - 70, spacing=10,
                fs=6, width=pw - 70)
 
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="TILT-SWING FRONT BOARD",
                 subtitle="OVERALL DESIGN — FRONT VIEW (SCENE SIDE) — ICP-01 + ICP-02",
                 scale_note="SCALE 1:2 · AXES IN mm",
@@ -604,7 +604,7 @@ def draw_sheet2():
     ]
     draw_notes(ax, notes2, 25, ph * 0.20, spacing=12, fs=5, width=pw - 50)
 
-    title_block(ax, "SHEET 2 OF 5",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="TILT-SWING FRONT BOARD",
                 subtitle="SECTION A-A (SECTIONAL MASTER)",
                 scale_note="1:2 · mm",
@@ -636,7 +636,7 @@ ax1.axis('off')
 ax1.set_xlim(0, FW1)
 ax1.set_ylim(0, FH1)
 
-title_block(ax1, "SHEET 3 OF 5",
+title_block(ax1, "SHEET 3 OF 6",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="ICP-01 Outer Adapter Frame — exterior + interior faces · fully dimensioned",
             scale_note="AXES IN mm",
@@ -716,6 +716,16 @@ draw_dim_h(ax1, cx_b - s1(DWL_OFF), cx_b, cy_b, '200', above=True, fs=4.5, offse
 draw_dim_h(ax1, cx_b, cx_b + s1(DWL_OFF), cy_b, '200 · 2× Ø8 H7 DOWEL', above=True, fs=4.5, offset=13)
 
 draw_dim_v(ax1, cx_b + hw + 30, cy_b - s1(BOLT_BC/2), cy_b + s1(BOLT_BC/2), 'Ø540 B.C. (8× M12)', right=True, fs=5, offset=16)
+
+# ── identifying leaders for the non-obvious features (the seal groove + bolt/dowel are
+#    already named on their dimension lines; the top-left corner is left for the material note) ──
+leader(ax1, cx_b + s1(TRAP_SQ/2), cy_b + s1(TRAP_SQ/2),
+       cx_b + hw + 10, cy_b + hw + 120, 'Ø490 SQ\nLIGHT-TRAP REBATE', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+leader(ax1, cx_b - s1(ADJ_PCD/2), cy_b,
+       cx_b - hw + 6, cy_b - hw - 30, '4× M22 ADJ\nBUSHING (DELRIN)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax1, cx_b + s1(BOLT_BC/2)*np.cos(np.radians(-45)), cy_b + s1(BOLT_BC/2)*np.sin(np.radians(-45)),
+       cx_b + hw - 6, cy_b - hw - 30, '8× Ø13 CLR (M12)\nCONTAINER-PLATE BOLTS', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+
 ax1.text(cx_b, cy_b - hw - 250, 'PANEL A — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface as standard pinhole plate)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
@@ -800,7 +810,7 @@ ax2.axis('off')
 ax2.set_xlim(0, FW2)
 ax2.set_ylim(0, FH2)
 
-title_block(ax2, "SHEET 4 OF 5",
+title_block(ax2, "SHEET 4 OF 6",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Inner Carrier, Bearing & Adjustment mechanism",
             scale_note="AXES IN mm",
@@ -1167,7 +1177,7 @@ ax3.set_xlim(0, FW3)
 ax3.set_ylim(0, FH3)
 S3_UP = 40  # panels fill from the top; fixed (was FH3-FH2, which broke when Sheet 4's FH2 changed)
 
-title_block(ax3, "SHEET 5 OF 5",
+title_block(ax3, "SHEET 5 OF 6",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Bellows seal, Locking, Calibration scale & Swap procedure",
             scale_note="AXES IN mm",
@@ -1438,3 +1448,169 @@ out3 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet5.png')
 fig3.savefig(out3, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig3)
 print(f'  → {out3}  Done.')
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 6 — Bellows Attachment (clamp-ring joint details)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+FW6, FH6 = 3400, 2320
+fig4, ax4 = plt.subplots(figsize=(FW*0.9/25.4, FH*0.9/25.4))
+fig4.patch.set_facecolor('white')
+ax4.set_facecolor('white')
+ax4.set_aspect('equal')
+ax4.axis('off')
+ax4.set_xlim(0, FW6)
+ax4.set_ylim(0, FH6)
+
+title_block(ax4, "SHEET 6 OF 6",
+            drawing_title="TILT-SWING FRONT BOARD",
+            subtitle="Bellows attachment — clamp-ring joint details (enlarged sections)",
+            scale_note="AXES IN mm",
+            doc_id="TBS-TSB · Tilt-Swing Board")
+
+section_label(ax4, 560, 2050, 'DETAIL A — FRAME-END CLAMP JOINT (4:1)')
+section_label(ax4, 2010, 2050, 'DETAIL B — CARRIER-END CLAMP JOINT (4:1)')
+
+
+def draw_clamp_joint(ax, ox, oy, sc, plate_ident, tap_deep,
+                     show_labyrinth, pcd_note, inboard_note):
+    """Enlarged radial section through one bellows clamp-ring joint.
+
+    ox,oy = M4 screw axis × plate interior (bellows-side) face. The plate is drawn
+    broken-off below (partial section) so the clamp sandwich is the visual focus.
+    Left = inboard (toward the optical aperture); right = outboard (toward the rim).
+    Order across the face: [aperture side] · cord gasket · M4 screw · lip edge · [rim].
+    """
+    def u(mm): return mm * sc  # mm → axis units at this detail's scale
+
+    face = oy
+    show = 15  # mm of plate shown before the break line
+    x_in, x_out = ox - u(30), ox + u(16)
+    # ── plate body, broken off below (partial section, hatched aluminum) ──
+    zig = []
+    nz = 10
+    for k in range(nz + 1):
+        zig.append((x_out - (x_out - x_in) * k / nz, face - u(show) + (6 if k % 2 else -6)))
+    ax.add_patch(mpatches.Polygon([(x_in, face), (x_out, face)] + zig, closed=True,
+                 lw=LW_THICK, edgecolor=C_OUT, facecolor='white', hatch='///', zorder=3))
+
+    # ── labyrinth teeth (frame) or nothing (carrier), inboard of the lip ──
+    if show_labyrinth:
+        for k in range(3):
+            gx = ox - u(15) - k * u(5)
+            ax.add_patch(mpatches.Rectangle((gx - u(3), face - u(5)), u(3), u(5),
+                         lw=LW_THIN, edgecolor=C_OUT, facecolor='white', zorder=4))
+    # bellows accordion continues inboard (first pleat rising away from the flat lip)
+    px = ox - u(12)
+    ax.plot([px, px - u(4), px - u(1), px - u(5)],
+            [face + u(2), face + u(7), face + u(12), face + u(17)],
+            color=C_BELL, lw=1.6, zorder=6)
+
+    # ── Ø3 neoprene cord gasket, in a groove in the plate face, inboard of the screw ──
+    gx = ox - u(7)
+    ax.add_patch(mpatches.Rectangle((gx - u(1.6), face - u(1.6)), u(3.2), u(1.6),
+                 lw=LW_THIN, edgecolor=C_OUT, facecolor='white', zorder=4))
+    ax.add_patch(mpatches.Circle((gx, face + u(0.2)), u(1.5),
+                 lw=LW_THIN, edgecolor=C_OUT, facecolor=C_GASKT, zorder=7))
+
+    # ── bellows flat lip (neoprene), draped over the gasket onto the face ──
+    lip_l, lip_r = ox - u(12), ox + u(11)
+    ax.add_patch(mpatches.Rectangle((lip_l, face), lip_r - lip_l, u(2),
+                 lw=LW_MED, edgecolor=C_OUT, facecolor=C_BELL, zorder=5))
+
+    # ── aluminum clamp ring on top of the lip ──
+    ring_l, ring_r = ox - u(7), ox + u(7)
+    ax.add_patch(mpatches.Rectangle((ring_l, face + u(2)), ring_r - ring_l, u(8),
+                 lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, hatch='\\\\\\', zorder=6))
+
+    # ── M4 SHCS: shank through ring+lip into the tapped hole, socket head on top ──
+    sh = u(2)
+    ax.add_patch(mpatches.Rectangle((ox - sh, face - u(tap_deep)), 2 * sh, u(tap_deep + 10),
+                 lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL, zorder=8))
+    for t in range(tap_deep):                       # female-thread ticks in the tapped hole
+        yy = face - u(t + 0.5)
+        ax.plot([ox - sh - u(0.9), ox - sh], [yy, yy - u(0.5)], color=C_OUT, lw=0.4, zorder=8)
+        ax.plot([ox + sh, ox + sh + u(0.9)], [yy, yy - u(0.5)], color=C_OUT, lw=0.4, zorder=8)
+    ax.add_patch(mpatches.Rectangle((ox - u(3.5), face + u(10)), u(7), u(3.5),
+                 lw=LW_THICK, edgecolor=C_OUT, facecolor=C_STEEL, zorder=9))
+    ax.add_patch(mpatches.Rectangle((ox - u(1.6), face + u(10)), u(3.2), u(1.6),
+                 lw=LW_THIN, edgecolor=C_OUT, facecolor='#606060', zorder=10))  # hex socket
+
+    # ── leaders (spread so leader lines don't cross) ──
+    leader(ax, ox, face + u(13.5), ox + u(30), face + u(42),
+           'M4×0.7 SHCS\n(SS A2-70)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(ax, ox + u(9), face + u(1), ox + u(26), face + u(9),
+           'ICP-04 BELLOWS LIP\n(neoprene · clamped flat)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(ax, ox - u(5), face + u(6), ox - u(26), face + u(28),
+           '6061 CLAMP RING\n14 WIDE × 8 THK', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
+    leader(ax, gx, face + u(0.2), ox - u(31), face + u(7),
+           'Ø3 NEOPRENE CORD\nGASKET — LIGHT SEAL', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
+    leader(ax, ox + u(2), face - u(tap_deep), ox + u(24), face - u(tap_deep) - u(4),
+           f'M4×0.7 TAPPED\n{tap_deep} DEEP', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    lbox = dict(boxstyle='square,pad=0.15', facecolor='white', edgecolor='none')
+    if show_labyrinth:
+        leader(ax, ox - u(19), face - u(2), ox - u(33), face - u(16),
+               '3-STEP LABYRINTH\nØ382/390/400 · 5 DEEP\n(secondary light seal)', fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
+    else:
+        leader(ax, px, face - u(1), ox - u(33), face - u(16),
+               inboard_note, fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
+
+    # ── identity + PCD notes under the broken plate ──
+    ax.text(ox - u(7), face - u(show) - 24, plate_ident, ha='center', va='top',
+            fontsize=5.2, color='black', fontweight='bold', zorder=11)
+    ax.text(ox - u(7), face - u(show) - 78, pcd_note, ha='center', va='top',
+            fontsize=4.8, color='#333333', style='italic', zorder=11)
+
+
+SC6 = 15  # units per mm (4:1 enlarged joint)
+draw_clamp_joint(ax4, 820, 1300, SC6,
+                 'ICP-01 FRAME — 6061-T6 · 40 THK', 8, True,
+                 '6× M4 @ Ø420 PCD · 60° APART\n(on solid face, outside the Ø400 labyrinth)', '')
+draw_clamp_joint(ax4, 2280, 1300, SC6,
+                 'ICP-02 CARRIER — 6061-T6 · 25 THK', 8, False,
+                 '4× M4 @ Ø306 PCD · 90° APART\n(8 to Ø290 bellows ID · 7 to Ø320 rim)',
+                 'Ø290 BELLOWS ID\n(aperture side)')
+
+# ── Exploded assembly stack (bottom-left) ─────────────────────────────────────
+section_label(ax4, 560, 830, 'ASSEMBLY STACK (exploded, frame end)')
+esx = 760
+layers = [
+    (150, C_STEEL, '////', 'M4×0.7 SHCS (SS A2-70) — 2.5 N·m'),
+    (110, C_ALUM,  '\\\\\\\\', '6061 clamp ring · 14 wide × 8 thk'),
+    (70,  C_BELL,  '',      'ICP-04 bellows neoprene lip'),
+    (34,  C_GASKT, '',      'Ø3 neoprene cord gasket (light seal)'),
+    (-40, C_ALUM,  '////', 'ICP-01 frame face — M4×0.7 tapped 8 deep'),
+]
+bar_w = 240
+for ly, fc, ht, lbl in layers:
+    yb = 620 + ly
+    h = 34 if ly >= 0 else 60
+    ax4.add_patch(mpatches.Rectangle((esx - bar_w/2, yb), bar_w, h,
+                  lw=LW_MED, edgecolor=C_OUT, facecolor=fc, hatch=ht, zorder=5))
+    ax4.text(esx + bar_w/2 + 24, yb + h/2, lbl, ha='left', va='center',
+             fontsize=5, color='#222222', zorder=10)
+ax4.annotate('', xy=(esx, 600), xytext=(esx, 800),
+             arrowprops=dict(arrowstyle='-|>', color=C_HID, lw=1.4, ls=(0, (4, 3))))
+
+# ── Assembly notes (bottom-right) ─────────────────────────────────────────────
+section_label(ax4, 2010, 830, 'ATTACHMENT NOTES')
+notes = [
+    '1.  Both bellows ends land on a FLAT face — the frame lip sits outside the',
+    '     Ø400 labyrinth, the carrier lip between the Ø290 ID and the Ø320 rim.',
+    '2.  Ø3 neoprene cord gasket seats in a 3-wide × 1.5-deep groove INBOARD of',
+    '     the screw ring, so the light seal is unbroken by the fasteners.',
+    '3.  Clamp ring compresses the neoprene lip ~30% onto the cord — do not over-',
+    '     torque (2.5 N·m); the seal is compression, not thread, sealed.',
+    '4.  Screws: frame 6× M4 @ Ø420 (60° apart) · carrier 4× M4 @ Ø306 (90° apart),',
+    '     SS A2-70 SHCS into M4×0.7 tapped holes, 8 deep, blind (no through-holes).',
+    '5.  Clamp rings 6061-T6, laser/water-jet from 8mm plate; deburr bore edge that',
+    '     contacts the neoprene lip.',
+]
+for i, ln in enumerate(notes):
+    ax4.text(2030, 760 - i * 58, ln, ha='left', va='top', fontsize=5.2, color='#222222', zorder=10)
+
+out4 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet6.png')
+fig4.savefig(out4, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
+plt.close(fig4)
+print(f'  → {out4}  Done.')

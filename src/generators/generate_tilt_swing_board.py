@@ -1269,48 +1269,65 @@ ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 60,
          'BELLOWS ICP-04: Matte black neoprene/nylon  •  truncated cone Ø290→Ø430  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nBoth ends CLAMP-RING retained (Al ring + M4 screws) onto a Ø3mm neoprene cord gasket — carrier @ Ø306, frame @ Ø420 (outside the labyrinth)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
-# ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
-ax3.text(30, 490 + S3_UP, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
+# ── PANEL B: Adjustment-screw lock detail (2:1) ──────────────────────────────
+# The M6 nylon-tip set screw jams the M8 ADJUSTMENT screw's thread so a set angle can't
+# back off. It locks the SCREW, not the plates — the carrier is held by the central bearing.
+ax3.text(30, 490 + S3_UP, 'PANEL B — ADJUSTMENT-SCREW LOCK (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([30, 400], [484 + S3_UP, 484 + S3_UP], color='black', lw=0.7)
 
-cx3b, cy3b = 160, 350 + S3_UP
+cx3b, cy3b = 175, 375 + S3_UP
+def sb(mm): return mm * 2.0
 
-# M8 screw shaft (horizontal)
-m8_sh = mpatches.Rectangle((cx3b - 80, cy3b - 8), 160, 16,
-                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL)
-ax3.add_patch(m8_sh)
-# M6 set screw (vertical, crossing M8)
-m6_sh = mpatches.Rectangle((cx3b - 8, cy3b + 8), 16, 50,
-                              lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL, zorder=5)
-ax3.add_patch(m6_sh)
-# Nylon tip at bottom
-ny_p = mpatches.Rectangle((cx3b - 6, cy3b + 8), 12, 10,
-                            lw=0.5, edgecolor=C_OUT, facecolor='#F0E080', zorder=6)
-ax3.add_patch(ny_p)
-# Hex key socket (top of M6)
-ax3.plot([cx3b - 5, cx3b + 5], [cy3b + 58, cy3b + 58], color=C_OUT, lw=2.0)
-ax3.plot([cx3b - 3, cx3b - 3], [cy3b + 54, cy3b + 58], color=C_OUT, lw=1.0)
-ax3.plot([cx3b + 3, cx3b + 3], [cy3b + 54, cy3b + 58], color=C_OUT, lw=1.0)
-# Boss context (frame)
-fr3b = mpatches.Rectangle((cx3b - 80, cy3b - 24), 160, 16,
-                            lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
-ax3.add_patch(fr3b)
-fr3bt = mpatches.Rectangle((cx3b - 16, cy3b + 58), 32, 20,
-                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
-ax3.add_patch(fr3bt)
+# ICP-01 frame boss (aluminum, sectioned) — the M8 threads through it via the Delrin bushing
+boss_l, boss_r = cx3b - sb(20), cx3b + sb(18)
+boss_b, boss_t = cy3b - sb(20), cy3b + sb(22)
+ax3.add_patch(mpatches.Rectangle((boss_l, boss_b), boss_r - boss_l, boss_t - boss_b,
+              lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, hatch='///', zorder=3))
 
-leader(ax3, cx3b + 8, cy3b + 36,
-       cx3b + 60, cy3b + 40,
-       'M6×1.0\nNYLON-TIP\nSET SCREW', fs=5, color=C_DIM, arrow_style='->')
-leader(ax3, cx3b + 80, cy3b - 4,
-       cx3b + 60, cy3b - 4,
-       'M8×1.0\nADJ SCREW\nSHANK', fs=5, color=C_DIM, arrow_style='->')
-leader(ax3, cx3b - 8, cy3b + 12,
-       cx3b - 80, cy3b + 20,
-       'NYLON\nTIP', fs=5, color=C_DIM, arrow_style='->')
-ax3.text(cx3b + 6, cy3b + 62, '3mm HEX', fontsize=4.5, color='#333333', zorder=10)
-ax3.text(cx3b, cy3b - 56, 'Tighten set screw onto adj screw shank\nafter desired angle is set. 4 off (one per axis)',
-         ha='center', fontsize=4.8, style='italic', color='#333333', zorder=10)
+# Delrin bushing (M22 OD, internally M8×1.0) carrying the adjustment screw thread
+ax3.add_patch(mpatches.Rectangle((boss_l, cy3b - sb(11)), (cx3b + sb(4)) - boss_l, sb(22),
+              lw=LW_MED, edgecolor=C_OUT, facecolor=C_DELRIN, zorder=4))
+
+# M8 adjustment screw — horizontal shank, steel, with thread crests (dashed, set convention)
+m8_l, m8_r = cx3b - sb(46), cx3b + sb(36)
+ax3.add_patch(mpatches.Rectangle((m8_l, cy3b - sb(4)), m8_r - m8_l, sb(8),
+              lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL, zorder=6))
+for tx in np.arange(m8_l + sb(3), m8_r, sb(3)):     # thread crests ⟂ to the screw axis
+    ax3.plot([tx, tx], [cy3b - sb(4) - 1.5, cy3b + sb(4) + 1.5], color=C_HID, lw=0.4, ls='--', zorder=6)
+# knob stub (exterior end) + carrier ball (interior end)
+ax3.add_patch(mpatches.Rectangle((m8_l - sb(9), cy3b - sb(9)), sb(9), sb(18),
+              lw=LW_MED, edgecolor=C_OUT, facecolor='#797979', zorder=6))
+draw_circle(ax3, m8_r + sb(3), cy3b, sb(4), fill=True, fc=C_BEAR, lw=LW_MED, color=C_OUT, zorder=7)
+
+# M6 nylon-tip set screw — vertical, in a tapped cross-hole in the boss, tip jamming the M8 thread
+m6_x = cx3b - sb(2)
+ax3.add_patch(mpatches.Rectangle((m6_x - sb(3), cy3b + sb(4)), sb(6), sb(24),
+              lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL, zorder=8))
+for ty in np.arange(cy3b + sb(7), cy3b + sb(22), sb(3)):   # set-screw thread crests
+    ax3.plot([m6_x - sb(3) - 1.5, m6_x + sb(3) + 1.5], [ty, ty], color=C_HID, lw=0.4, ls='--', zorder=8)
+ax3.add_patch(mpatches.Rectangle((m6_x - sb(2.5), cy3b + sb(4)), sb(5), sb(4),
+              lw=0.5, edgecolor=C_OUT, facecolor='#F0E080', zorder=9))   # nylon tip on the M8 thread
+# 3mm hex socket in the set-screw top
+ax3.add_patch(mpatches.Rectangle((m6_x - sb(1.6), cy3b + sb(24) - sb(3)), sb(3.2), sb(3),
+              lw=0.4, edgecolor=C_OUT, facecolor='white', zorder=10))
+
+# ── leaders — right-stacked, ordered by feature height so the leader lines don't cross ──
+LBX = m8_r + sb(20)                                 # common label column, clear of the ball
+leader(ax3, m6_x + sb(2), cy3b + sb(22), LBX, cy3b + sb(30),
+       'M6×1.0 NYLON-TIP\nSET SCREW (3mm hex)', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
+leader(ax3, m6_x, cy3b + sb(6), LBX, cy3b + sb(10),
+       'NYLON TIP —\njams the M8 thread', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
+leader(ax3, m8_r + sb(3), cy3b, LBX, cy3b - sb(10),
+       'M8×1.0 ADJUSTMENT SCREW\n→ carrier ball contact', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
+leader(ax3, boss_r - sb(3), boss_b + sb(4), LBX, cy3b - sb(30),
+       'ICP-01 FRAME BOSS\n(Delrin M8 bushing, green)', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
+
+ax3.text(cx3b, cy3b - sb(42),
+         'Set the angle with the knob, then tighten the M6 set screw — its nylon tip grips the M8 thread\n'
+         '(threaded through the Delrin bushing) and locks the screw against back-off; nylon does not mar the\n'
+         'thread. 4 off, one per axis. This locks the SET ANGLE only — the carrier is held to the frame by the\n'
+         'central bearing (Panel A / Sheet 2), not by these screws.',
+         ha='center', va='top', fontsize=4.6, style='italic', color='#333333', zorder=10)
 
 # ── PANEL C: Knob detail (2:1) ────────────────────────────────────────────────
 ax3.text(430, 490 + S3_UP, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
@@ -1498,21 +1515,27 @@ def draw_clamp_joint(ax, ox, oy, sc, plate_ident, tap_deep,
     ax.add_patch(mpatches.Rectangle((ring_l, face + u(2)), ring_r - ring_l, u(8),
                  lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, hatch='\\\\\\', zorder=6))
 
-    # ── M4 SHCS: shank through ring+lip into the tapped hole, socket head on top ──
-    sh = u(2)
-    ax.add_patch(mpatches.Rectangle((ox - sh, face - u(tap_deep)), 2 * sh, u(tap_deep + 10),
+    # ── M4 SHCS in section — filled shank + dashed thread lines across the engaged length
+    #    (same convention as the M8 screw on Sheet 4 Panel D), socket-head cap with a hex-socket
+    #    recess. The tapped hole is drilled ~2mm deeper than the thread (standard blind-tap). ──
+    sh = u(2)                                         # M4 shank half-width
+    shank_top = face + u(10)                          # underside of the cap head (proud of the ring)
+    ax.add_patch(mpatches.Rectangle((ox - sh, face - u(tap_deep)), 2 * sh, u(tap_deep) + (shank_top - face),
                  lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL, zorder=8))
-    for t in range(tap_deep):                       # female-thread ticks in the tapped hole
-        yy = face - u(t + 0.5)
-        ax.plot([ox - sh - u(0.9), ox - sh], [yy, yy - u(0.5)], color=C_OUT, lw=0.4, zorder=8)
-        ax.plot([ox + sh, ox + sh + u(0.9)], [yy, yy - u(0.5)], color=C_OUT, lw=0.4, zorder=8)
-    ax.add_patch(mpatches.Rectangle((ox - u(3.5), face + u(10)), u(7), u(3.5),
+    for t in range(1, tap_deep + 1):                  # thread crests — dashed, ⟂ to the screw axis
+        yy = face - u(t)
+        ax.plot([ox - sh - u(0.5), ox + sh + u(0.5)], [yy, yy], color=C_HID, lw=0.4, ls='--', zorder=8)
+    # drilled-deeper relief below the last thread
+    ax.add_patch(mpatches.Rectangle((ox - sh, face - u(tap_deep) - u(2)), 2 * sh, u(2),
+                 lw=LW_THIN, edgecolor=C_OUT, facecolor='white', zorder=7))
+    # socket-head cap (1.75·D wide × D tall) with the hex-socket recess shown
+    ax.add_patch(mpatches.Rectangle((ox - u(3.5), shank_top), u(7), u(4),
                  lw=LW_THICK, edgecolor=C_OUT, facecolor=C_STEEL, zorder=9))
-    ax.add_patch(mpatches.Rectangle((ox - u(1.6), face + u(10)), u(3.2), u(1.6),
-                 lw=LW_THIN, edgecolor=C_OUT, facecolor='#606060', zorder=10))  # hex socket
+    ax.add_patch(mpatches.Rectangle((ox - u(1.6), shank_top + u(1.2)), u(3.2), u(2.8),
+                 lw=LW_THIN, edgecolor=C_OUT, facecolor='white', zorder=10))  # hex socket recess
 
     # ── leaders (spread so leader lines don't cross) ──
-    leader(ax, ox, face + u(13.5), ox + u(30), face + u(42),
+    leader(ax, ox + u(3.5), face + u(12), ox + u(30), face + u(42),
            'M4×0.7 SHCS\n(SS A2-70)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(ax, ox + u(9), face + u(1), ox + u(26), face + u(9),
            'ICP-04 BELLOWS LIP\n(neoprene · clamped flat)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')

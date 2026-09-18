@@ -72,6 +72,14 @@ file** — a release must not ship without a changelog entry:
   carries as a numbered list (with more detail — M12×45 SHCS, 65 N·m). A swap is an operating step, not
   a fabrication feature, so Panel E is removed; the sheet now carries a one-line pointer to §8 and
   re-seats its title block to close the freed band. Report Sheet 5 caption updated to match.
+- **TSB review fixes: Sheet 6 bolt convention + Sheet 5 lock detail.** Review feedback: (1) the Sheet 6
+  clamp-screw section didn't match the set's convention — redrawn as a proper socket-head cap screw in
+  section (filled shank + dashed thread crests ⟂ to the axis + blind-tap relief + hex-socket recess),
+  same style as the M8 on Sheet 4 Panel D, replacing the ad-hoc angled thread ticks. (2) Sheet 5 Panel B
+  ("locking set screw") read as two stacked plates and didn't explain the mechanism — redrawn as an
+  "Adjustment-Screw Lock" detail showing the M8 adjustment screw threaded through the Delrin bushing in
+  the frame boss and the M6 nylon-tip set screw jamming its thread, with a note that it locks the SET
+  ANGLE only (the carrier is held by the central bearing, not these screws).
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

@@ -111,6 +111,15 @@ file** — a release must not ship without a changelog entry:
   Panels C/D reflect the bracket-ring mounting. Parts: `tsb-retaining-ring` → `tsb-adjuster-ring`
   (carries the adjusters), Delrin bushings relocate (front-board $1,611–$2,542, reconciled). Report
   §2/§4/§5 + tolerances updated; adjust-from-inside stated throughout.
+- **TSB Sheet 7 added — fabricated-parts blueprint reconciliation.** Audited the front-board registry
+  against drawing coverage: every machined part now has a 2D fabrication blueprint. Two were missing
+  (both introduced by the interior-adjust design) and are added on new **Sheet 7**: the ICP-03 aluminum
+  **adjuster bracket ring** (face view — Ø470 OD, Ø240 bore, 4× M22 bushing bores @ Ø260, 4× M6 lock
+  holes, 6× M5 standoff clearance @ Ø450, 8 thk) and the four ICP-05 440C **kinematic-seat inserts**
+  (the cone / V-groove / flat seat forms, side-section + plan + Ø16 h6 × 12 dims). Set renumbered to 7
+  sheets and registered (gallery, publish.sh, setup_docs, dependencies.yml). Report §2 sheet list +
+  §12 gain a fabrication-drawing coverage map. Also added a boxed **ASSEMBLY KEY** to each component
+  sheet (3–7) cross-referencing where the part sits on the Sheet 2 section.
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

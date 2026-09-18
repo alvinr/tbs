@@ -114,6 +114,8 @@
 
 ![TBS-001 Tilt-Swing Board — Sheet 6: Bellows Attachment (clamp-ring joint details)](assets/tilt-swing-sheet6.png)
 
+![TBS-001 Tilt-Swing Board — Sheet 7: Adjuster Bracket Ring & Kinematic-Seat Inserts (fabrication)](assets/tilt-swing-sheet7.png)
+
 ---
 
 ## 9. Processing (Water) System

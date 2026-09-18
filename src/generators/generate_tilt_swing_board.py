@@ -84,7 +84,7 @@ SEAL_DEP = 3          # seal groove depth
 # is accepted: the pivot lies ~one carrier-thickness behind the pinhole, so the pinhole shifts
 # only ~2.3mm at ±5.3° (<1.5% of the intended tilt shift).
 SPR_PCD      = 300    # annular wave-spring mean diameter (bears on the carrier interior rim)
-RET_RING_ID  = 286    # retaining-ring bore (clears the carrier interior rim + travel)
+RET_RING_ID  = 240    # adjuster bracket-ring bore (clears the pinhole/center; adjusters sit at Ø260 in the band)
 RET_RING_OD  = 470    # retaining-ring OD
 RET_RING_T   = 8      # retaining-ring thickness (6061-T6)
 RET_BOLT_PCD = 450    # retaining-ring → frame bolt circle (solid frame face, outside the Ø400 labyrinth)
@@ -305,7 +305,7 @@ def draw_sheet1():
     draw_notes(ax, notes1, 35, cy - half - 70, spacing=10,
                fs=6, width=pw - 70)
 
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 7",
                 drawing_title="TILT-SWING FRONT BOARD",
                 subtitle="OVERALL DESIGN — FRONT VIEW (SCENE SIDE) — ICP-01 + ICP-02",
                 scale_note="SCALE 1:2 · AXES IN mm",
@@ -618,7 +618,7 @@ def draw_sheet2():
             'carrier CLAMPED between the wave spring (push →) and the\nadjuster ball (← push-back); knobs set from the interior',
             ha='center', va='bottom', fontsize=4.0, style='italic', color='#444', zorder=13)
 
-    title_block(ax, "SHEET 2 OF 6",
+    title_block(ax, "SHEET 2 OF 7",
                 drawing_title="TILT-SWING FRONT BOARD",
                 subtitle="SECTION A-A (SECTIONAL MASTER)",
                 scale_note="1:2 · mm",
@@ -650,7 +650,7 @@ ax1.axis('off')
 ax1.set_xlim(0, FW1)
 ax1.set_ylim(0, FH1)
 
-title_block(ax1, "SHEET 3 OF 6",
+title_block(ax1, "SHEET 3 OF 7",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="ICP-01 Outer Adapter Frame — exterior + interior faces · fully dimensioned",
             scale_note="AXES IN mm",
@@ -825,7 +825,7 @@ ax2.axis('off')
 ax2.set_xlim(0, FW2)
 ax2.set_ylim(0, FH2)
 
-title_block(ax2, "SHEET 4 OF 6",
+title_block(ax2, "SHEET 4 OF 7",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Inner Carrier, Preload & Adjustment mechanism",
             scale_note="AXES IN mm",
@@ -1148,7 +1148,7 @@ ax3.set_xlim(0, FW3)
 ax3.set_ylim(190, FH3)
 S3_UP = 40  # panels fill from the top; fixed (was FH3-FH2, which broke when Sheet 4's FH2 changed)
 
-title_block(ax3, "SHEET 5 OF 6",
+title_block(ax3, "SHEET 5 OF 7",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Bellows seal, Locking & Calibration scale",
             scale_note="AXES IN mm",
@@ -1429,7 +1429,7 @@ ax4.axis('off')
 ax4.set_xlim(0, FW6)
 ax4.set_ylim(0, FH6)
 
-title_block(ax4, "SHEET 6 OF 6",
+title_block(ax4, "SHEET 6 OF 7",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Bellows attachment — clamp-ring joint details (enlarged sections)",
             scale_note="AXES IN mm",
@@ -1592,3 +1592,111 @@ out4 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet6.png')
 fig4.savefig(out4, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig4)
 print(f'  → {out4}  Done.')
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 7 — Adjuster Bracket Ring (ICP-03) + Kinematic-Seat Inserts (ICP-05)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+FW7, FH7 = 3400, 2320
+fig5, ax5 = plt.subplots(figsize=(FW*0.9/25.4, FH*0.9/25.4))
+fig5.patch.set_facecolor('white')
+ax5.set_facecolor('white')
+ax5.set_aspect('equal')
+ax5.axis('off')
+ax5.set_xlim(0, FW7)
+ax5.set_ylim(0, FH7)
+
+title_block(ax5, "SHEET 7 OF 7",
+            drawing_title="TILT-SWING FRONT BOARD",
+            subtitle="Adjuster bracket ring (ICP-03) + kinematic-seat inserts (ICP-05) — fabrication",
+            scale_note="AXES IN mm",
+            doc_id="TBS-TSB · Tilt-Swing Board")
+
+section_label(ax5, 560, 2050, 'PANEL A — ADJUSTER BRACKET RING (ICP-03) (1:3)')
+section_label(ax5, 2210, 2050, 'PANEL B — KINEMATIC-SEAT INSERTS (ICP-05) (4:1)')
+
+# ── PANEL A: adjuster bracket ring — face view (fabrication) ──
+rcx, rcy = 900, 1180
+def s7(mm): return mm * 1.15
+r_od = s7(RET_RING_OD / 2)
+r_id = s7(RET_RING_ID / 2)
+draw_circle(ax5, rcx, rcy, r_od, lw=LW_THICK, color=C_OUT)
+draw_circle(ax5, rcx, rcy, r_id, lw=LW_THICK, color=C_OUT, fill=True, fc='white')
+for i, lbl in enumerate(['SWING+', 'TILT+', 'SWING−', 'TILT−']):
+    a = np.radians(i * 90)
+    bx = rcx + s7(SOCK_PCD / 2) * np.cos(a); by = rcy + s7(SOCK_PCD / 2) * np.sin(a)
+    draw_circle(ax5, bx, by, s7(BUSH_OD / 2), lw=LW_MED, color=C_OUT, fill=True, fc=C_DELR)   # M22 Delrin bushing bore
+    draw_circle(ax5, bx, by, s7(ADJ_D / 2), lw=0.7, color=C_OUT, fill=True, fc='white')       # M8 adjuster thread
+    la = a + np.radians(15)                                                                   # M6 lock hole, offset
+    lx = rcx + s7(SOCK_PCD / 2) * np.cos(la); ly = rcy + s7(SOCK_PCD / 2) * np.sin(la)
+    draw_circle(ax5, lx, ly, s7(3), lw=0.6, color=C_OUT, fill=True, fc='#888888')
+    ax5.text(bx, by - s7(19), lbl, ha='center', va='top', fontsize=5, color=C_DIM, fontweight='bold', zorder=10)
+for i in range(RET_BOLT_N):                                                                  # 6× M5 standoff clearance
+    a = np.radians(30 + i * 60)
+    sx = rcx + s7(RET_BOLT_PCD / 2) * np.cos(a); sy = rcy + s7(RET_BOLT_PCD / 2) * np.sin(a)
+    draw_circle(ax5, sx, sy, s7(RET_BOLT_D / 2 + 0.5), lw=0.7, color=C_OUT, fill=True, fc='white')
+draw_cl(ax5, rcx, rcy, r_od * 1.12)
+dia_stack(ax5, rcx, rcy - r_od, [
+    (2 * r_id,                    'Ø240 BORE (clears the pinhole / center)'),
+    (2 * s7(SOCK_PCD / 2),        'Ø260 PCD · 4× M22×1.0 BUSHING BORE (Ø8 adjuster thread) · 90° APART'),
+    (2 * s7(RET_BOLT_PCD / 2),    'Ø450 PCD · 6× Ø5.5 CLR (M5 STANDOFF) · 60° APART'),
+    (2 * r_od,                    'Ø470 OD'),
+], dirn=-1, step=50, fs=5, off=16)
+ax5.text(rcx - r_od + 12, rcy + r_od - 14, '6061-T6 · 8 THK\n(black anodize)', ha='left', va='top', fontsize=5, color=C_DIM, style='italic', zorder=10)
+leader(ax5, rcx + s7(SOCK_PCD / 2) * np.cos(np.radians(60)), rcy + s7(SOCK_PCD / 2) * np.sin(np.radians(60)),
+       rcx + r_od + 40, rcy + r_od - 60, '4× M6 NYLON-TIP\nLOCK, TANGENTIAL', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
+leader(ax5, rcx + s7(RET_BOLT_PCD / 2) * np.cos(np.radians(-30)), rcy + s7(RET_BOLT_PCD / 2) * np.sin(np.radians(-30)),
+       rcx + r_od + 40, rcy - r_od + 60, '6× M5 STANDOFF\nTO ICP-01', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
+ax5.text(rcx, rcy - r_od - 300, 'PANEL A — ADJUSTER BRACKET RING (ICP-03) — face view\nMounts on ICP-01 interior face; carries the 4 adjuster knobs (set from inside) + reacts the wave-spring preload',
+         ha='center', fontsize=5, style='italic', color='#333333')
+
+# ── PANEL B: kinematic-seat inserts (ICP-05) — the 3 seat forms, side section + plan ──
+def si(mm): return mm * 7.0
+forms = [('CONE  (×1 · N)', 'cone', 'ball located in 2 axes'),
+         ('V-GROOVE  (×1 · E)', 'vee', 'ball located in 1 axis — groove RADIAL'),
+         ('FLAT  (×2 · S/W)', 'flat', 'axial contact only')]
+icx = 2450
+for j, (title, form, note) in enumerate(forms):
+    iy = 1620 - j * 440
+    bw, bh = si(16), si(12)
+    ax5.add_patch(mpatches.Rectangle((icx - bw / 2, iy - bh / 2), bw, bh, fc=C_BEAR, ec=C_OUT, lw=LW_THICK, hatch='///', zorder=4))
+    top = iy + bh / 2
+    if form == 'cone':
+        ax5.add_patch(mpatches.Polygon([(icx - si(4), top), (icx, top - si(4)), (icx + si(4), top)],
+                      closed=True, fc='white', ec=C_OUT, lw=LW_MED, zorder=5))
+    elif form == 'vee':
+        ax5.add_patch(mpatches.Polygon([(icx - si(5), top), (icx, top - si(3.5)), (icx + si(5), top)],
+                      closed=True, fc='white', ec=C_OUT, lw=LW_MED, zorder=5))
+    # flat: nothing cut
+    ax5.add_patch(plt.Circle((icx, top + si(4)), si(4), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=6))   # Ø8 ball resting
+    # plan symbol (top-view) to the right
+    px = icx + si(16)
+    draw_circle(ax5, px, iy, si(8), lw=LW_MED, color=C_OUT)
+    if form == 'cone':
+        draw_circle(ax5, px, iy, si(3), lw=0.7, color=C_OUT)
+    elif form == 'vee':
+        ax5.add_patch(mpatches.Rectangle((px - si(8), iy - si(2)), si(16), si(4), fc='#EEEEEE', ec=C_OUT, lw=0.7, zorder=5))
+    ax5.text(icx - bw / 2 - 24, iy + si(6), title, ha='right', va='center', fontsize=5.6, fontweight='bold', color=C_DIM, zorder=10)
+    ax5.text(icx - bw / 2 - 24, iy - si(4), note, ha='right', va='center', fontsize=4.2, style='italic', color='#555555', zorder=10)
+    ax5.text(px + si(11), iy, 'PLAN', ha='left', va='center', fontsize=4.0, color='#888888', zorder=10)
+# common insert dims (on the FLAT, bottom one)
+fy = 1620 - 2 * 440
+draw_dim_h(ax5, icx - si(8), icx + si(8), fy - si(9), 'Ø16 h6', above=False, fs=5, offset=8)
+draw_dim_v(ax5, icx + si(20), fy - si(6), fy + si(6), '12', right=True, fs=5, offset=8)
+ax5.text(icx, 1720, '4 off · 440C SS · Ra 0.4 ground · press-fit into the carrier Ø16 H7 rear-face bores (Loctite 638)',
+         ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
+ax5.text(icx, 300, 'PANEL B — KINEMATIC-SEAT INSERTS (ICP-05)\nThe 3 forms make an exact-constraint coupling: 1 cone + 1 V-groove + 2 flat → carrier in-plane position + spin fixed',
+         ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
+
+ax5.text(FW7 / 2, FH7 - 60,
+         'ASSEMBLY KEY — Sheet 2 (Section A-A):  the bracket ring is the interior (camera-side) plate carrying the knobs; '
+         'the seat inserts press into the\ncarrier REAR face at Ø260 and receive the adjuster balls.  Fabrication blueprints '
+         'for the two machined ICP-03 / ICP-05 parts.',
+         ha='center', va='top', fontsize=6, style='italic', color='#444',
+         bbox=dict(boxstyle='round,pad=0.5', fc='#F4F4F4', ec='#BBBBBB', lw=0.6), zorder=12)
+
+out5 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet7.png')
+fig5.savefig(out5, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
+plt.close(fig5)
+print(f'  → {out5}  Done.')

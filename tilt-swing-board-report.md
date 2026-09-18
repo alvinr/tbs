@@ -10,7 +10,7 @@ The front board is the interchangeable plate that carries the pinhole disc at th
 
 ## 2. Mechanism Overview
 
-The TSB assembly is a drop-in replacement for the standard flat pinhole plate. The drawing set (TBS-TSB, 6 sheets) runs from the overall arrangement through the sectional master to a component blueprint per fabricated part. The tilt/swing knobs are adjusted from **inside the container** (the camera side).
+The TSB assembly is a drop-in replacement for the standard flat pinhole plate. The drawing set (TBS-TSB, 7 sheets) runs from the overall arrangement through the sectional master to a fabrication blueprint for every machined part. The tilt/swing knobs are adjusted from **inside the container** (the camera side).
 
 **Sheet 1 — Overall design, front view** (1:2, scene side). ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and the A-A cut line.
 
@@ -35,6 +35,10 @@ The TSB assembly is a drop-in replacement for the standard flat pinhole plate. T
 **Sheet 6 — Bellows attachment** (4:1). Enlarged sections through both clamp-ring joints (frame end at Ø420, carrier end at Ø306) — the neoprene lip, Ø3 cord gasket, aluminum clamp ring, and M4 screw into a tapped hole — with the exploded assembly stack and attachment notes.
 
 ![TSB Sheet 6 — Bellows Attachment](assets/tilt-swing-sheet6.png)
+
+**Sheet 7 — Adjuster bracket ring & kinematic-seat inserts** (1:3 / 4:1). Fabrication blueprints for the two machined parts introduced by the interior-adjust design: the ICP-03 aluminum bracket ring (face view — bore, bushing/lock/standoff hole patterns, thickness) and the four ICP-05 440C kinematic-seat inserts (the cone / V-groove / flat seat forms).
+
+![TSB Sheet 7 — Adjuster Bracket Ring & Kinematic-Seat Inserts](assets/tilt-swing-sheet7.png)
 
 ```
 WALL FRAME (flat adapter plate welded/bolted over the corrugated end wall; enlarged aperture cut through the corrugation)
@@ -232,6 +236,8 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 ## 12. Parts List
 
 The BOM is single-sourced from the parts registry (`parts.py`) and generated below. The fasteners, chrome balls, bushing/insert stock, seals, and Loctite carry firm McMaster SKUs; the raw plate + round bar, the preload wave spring + adjuster bracket ring, and the fab/finishing **services** (CNC machining, hard/black anodize, scale engraving, custom bellows) carry **SKU pending — source**: get a supplier or shop quote before purchase.
+
+**Fabrication drawings — every machined part is blueprinted:** ICP-01 outer frame → Sheet 3; ICP-02 carrier → Sheet 4 (Panels A/B); ICP-03 adjuster bracket ring → **Sheet 7 Panel A**; ICP-05 kinematic-seat inserts → **Sheet 7 Panel B**; the adjuster knobs → Sheet 5 Panel C; the calibration scales → Sheet 5 Panel D; the Delrin guide bushings → Sheet 4 Panel D; the bellows clamp rings → Sheet 6 + Sheets 3/4 (hole PCDs). The wave spring and photographic bellows are made-to-spec vendor parts (specified in the BOM, no shop drawing). Purchased hardware (screws, balls, dowels) is catalog.
 
 <!-- BEGIN parts:front-board -->
 | Item | Spec | Qty | Supplier | Est. cost |

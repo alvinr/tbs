@@ -728,8 +728,6 @@ draw_dim_v(ax1, cx_b + hw + 30, cy_b - s1(BOLT_BC/2), cy_b + s1(BOLT_BC/2), 'Ø5
 #    already named on their dimension lines; the top-left corner is left for the material note) ──
 leader(ax1, cx_b + s1(TRAP_SQ/2), cy_b + s1(TRAP_SQ/2),
        cx_b + hw + 10, cy_b + hw + 120, 'Ø490 SQ\nLIGHT-TRAP REBATE', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-leader(ax1, cx_b - s1(BOLT_BC/2)*np.cos(np.radians(45)), cy_b + s1(BOLT_BC/2)*np.sin(np.radians(45)),
-       cx_b - hw + 6, cy_b - hw - 30, '8× Ø13 CLR (M12)\nPLATE BOLTS + 2× Ø8 DOWEL', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
 leader(ax1, cx_b + s1(BOLT_BC/2)*np.cos(np.radians(-45)), cy_b + s1(BOLT_BC/2)*np.sin(np.radians(-45)),
        cx_b + hw - 6, cy_b - hw - 30, '8× Ø13 CLR (M12)\nCONTAINER-PLATE BOLTS', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
 
@@ -800,6 +798,13 @@ leader(ax1, cx_c + s1(RET_BOLT_PCD/2)*np.cos(np.radians(-30)), cy_c + s1(RET_BOL
 
 ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Clear bore + labyrinth + bellows + spring c\'bore + adjuster-ring mounts)',
          ha='center', fontsize=5, color='#333333', style='italic')
+
+ax1.text(FW1/2, FH1 - 60,
+         'ASSEMBLY KEY — Sheet 2 (Section A-A):  ICP-01 is the OUTER FRAME — the exterior / scene-side plate.\n'
+         'The Ø380 bore passes the carrier; the interior face carries the wave-spring counterbore, the 6× bracket-ring\n'
+         'standoffs (ICP-03), the bellows outer clamp ring, and the 3-step labyrinth.',
+         ha='center', va='top', fontsize=6, style='italic', color='#444',
+         bbox=dict(boxstyle='round,pad=0.5', fc='#F4F4F4', ec='#BBBBBB', lw=0.6))
 
 out1 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet3.png')
 fig1.savefig(out1, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
@@ -1112,6 +1117,13 @@ for i, (k, v) in enumerate(rows):
     ax2.text(tbl_x, ry, k, fontsize=4.5, color='black', zorder=10)
     ax2.text(tbl_x + 136, ry, v, fontsize=4.5, color='black', fontweight='bold', zorder=10)
 
+ax2.text(FW2/2, 640,
+         'ASSEMBLY KEY — Sheet 2 (Section A-A):  the ICP-02 carrier sits in the Ø380 bore.  FRONT / scene face (Panel A) =\n'
+         'wave-spring land + bellows;  REAR / camera face (Panel B) = pinhole disc + the 4 kinematic seats.  ICP-03 = the wave\n'
+         'spring in the frame counterbore (scene side) + the interior adjuster bracket ring that carries the knobs (Panels C / D).',
+         ha='center', va='center', fontsize=5.6, style='italic', color='#444',
+         bbox=dict(boxstyle='round,pad=0.5', fc='#F4F4F4', ec='#BBBBBB', lw=0.6))
+
 out2 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet4.png')
 fig2.savefig(out2, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig2)
@@ -1391,6 +1403,13 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
 ax3.text(30, 250 + S3_UP, 'PLATE SWAP: see §8 "Plate Swap Procedure" in the Tilt-Swing Front Board report',
          fontsize=6, style='italic', color='#555555', zorder=10)
 
+ax3.text(FW3/2, 855,
+         'ASSEMBLY KEY — Sheet 2 (Section A-A):  the ICP-04 bellows spans the frame↔carrier rim gap on the scene side; the M6 '
+         'locking set screws sit on the interior\nadjuster bracket ring (ICP-03); the laser-engraved calibration scales mount on '
+         'the ICP-01 interior face beside each knob pair.',
+         ha='center', va='top', fontsize=5.6, style='italic', color='#444',
+         bbox=dict(boxstyle='round,pad=0.5', fc='#F4F4F4', ec='#BBBBBB', lw=0.6), zorder=12)
+
 out3 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet5.png')
 fig3.savefig(out3, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig3)
@@ -1562,6 +1581,12 @@ notes = [
 ]
 for i, ln in enumerate(notes):
     ax4.text(2030, 760 - i * 58, ln, ha='left', va='top', fontsize=5.2, color='#222222', zorder=10)
+
+ax4.text(FW6/2, FH6 - 60,
+         'ASSEMBLY KEY — Sheet 2 (Section A-A):  these are the two ICP-04 bellows clamp joints — the FRAME end (Ø420,\n'
+         'outside the labyrinth) and the CARRIER end (Ø306) — both in the frame↔carrier gap on the scene side.',
+         ha='center', va='top', fontsize=6, style='italic', color='#444',
+         bbox=dict(boxstyle='round,pad=0.5', fc='#F4F4F4', ec='#BBBBBB', lw=0.6), zorder=12)
 
 out4 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet6.png')
 fig4.savefig(out4, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')

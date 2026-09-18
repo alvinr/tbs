@@ -79,6 +79,7 @@ indicative low–high estimates — get quotes before ordering.
 | [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 ea | Grainger | film | $328 |
 | 6063-T5 Al U-channel — rotating-drum opening-edge stiffeners (×2) + rivets | 1 lot | Online Metals | lightlock | $30–$55 |
 | 8mm 6061-T6 aluminum plate — 2 drum caps (Ø755) | 1 lot | Online Metals | lightlock | $400–$700 |
+| Adjuster bracket ring — Al (ICP-03) | 1 ea | local machine shop | front-board | $35–$70 |
 | [Aluminum angle 2"×2"×1/8" (6061-T6, plain) — 16 ft lengths](https://www.onlinemetals.com/en/buy/aluminum/2-x-2-x-0-125-aluminum-angle-6061-t6/pid/987) | 3 16 ft length | Metal Supermarkets | film | $528 |
 | Aluminum U-channel, 1/8-panel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | [Anodized-Al straight-flange holder for the #4 wiper brush (×4 lines)](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) (AH400436) | 4 8ft | Tanis Brush | lightlock | $72–$160 |
@@ -89,9 +90,8 @@ indicative low–high estimates — get quotes before ordering.
 | ICP-01 outer adapter frame stock (6061-T651 plate) | 1 ea | Online Metals | front-board | $125 |
 | ICP-02 inner carrier stock (6061-T6 round bar) | 1 ea | Metal Supermarkets | front-board | $100 |
 | Knurled knob stock Ø40mm Al (4 off) | 4 ea | Jergens | front-board | $60 |
-| Preload retaining ring — Al (ICP-03) | 1 ea | local machine shop | front-board | $30–$60 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$2,363–$2,963** |
+| **aluminum subtotal** | | | | **$2,368–$2,973** |
 
 ### bearings-motion
 
@@ -310,7 +310,7 @@ indicative low–high estimates — get quotes before ordering.
 | M4×12 SHCS 18-8 SS (bellows clamp-ring) | 1 pack | McMaster-Carr | front-board | $6 |
 | [Ø8 m6 SS303 dowel pin](https://www.mcmaster.com/97395A437/) (97395A437) | 2 ea | McMaster-Carr | front-board | $18 |
 | [M6×1.0 nylon-tip set screw (10-pack)](https://www.mcmaster.com/91375A187/) (91375A187) | 1 pack | McMaster-Carr | front-board | $14 |
-| M5×30 SHCS 18-8 SS (retaining-ring standoff) | 1 pack | McMaster-Carr | front-board | $8 |
+| M5×30 SHCS 18-8 SS (bracket-ring standoff) | 1 pack | McMaster-Carr | front-board | $8 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
@@ -545,8 +545,8 @@ indicative low–high estimates — get quotes before ordering.
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
 | Pac-Nor Anodizing | 1 | adhesives-finishes | $80–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
+| local machine shop | 2 | aluminum | $59–$110 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
-| local machine shop | 2 | aluminum | $54–$100 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
 | Aero Finishing | 1 | adhesives-finishes | $60–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |

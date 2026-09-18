@@ -97,6 +97,20 @@ file** — a release must not ship without a changelog entry:
   wave spring + retaining ring + M5 standoff screws (front-board total $1,606–$2,532, reconciled).
   Report §2/§4/§5/§11/§13/§14 rewritten to the rim mount; ICP-03 reassigned to the preload subsystem.
   The bellows now shows its **clamp rings on Sheet 2** (also a review item). No 3D model involved.
+- **TSB adjuster knobs moved to the interior (set from inside the container).** The knobs were on the
+  exterior (scene) side — unreachable once the board is mounted. Flipped the mechanism: the 4 M8
+  adjusters now mount on an **interior aluminum bracket ring** (standoff-mounted to the frame at Ø450)
+  with the knobs facing into the container, and the wave spring moved into a **counterbore in the
+  frame's interior face** (which becomes the spring reaction — so the separate retaining ring is now
+  the adjuster bracket ring). The kinematic seats moved to the carrier's rear (camera) face where the
+  balls now contact; the pinhole disc + counterbore are on that same rear face, and the wave-spring
+  land + bellows are on the front (scene) face. Cascade: Sheet 2 reworked (adjusters/knobs to the
+  interior, spring to the frame, DETAIL Z flipped); Sheet 1 knobs shown dashed (rear-mounted); Sheet 3
+  frame loses the 4× M22 adjuster bushings, gains the spring counterbore + bracket-ring standoffs;
+  Sheet 4 carrier faces swapped (Panel A = scene/spring land, Panel B = camera/pinhole + seats),
+  Panels C/D reflect the bracket-ring mounting. Parts: `tsb-retaining-ring` → `tsb-adjuster-ring`
+  (carries the adjusters), Delrin bushings relocate (front-board $1,611–$2,542, reconciled). Report
+  §2/§4/§5 + tolerances updated; adjust-from-inside stated throughout.
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

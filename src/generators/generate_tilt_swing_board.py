@@ -207,7 +207,8 @@ def draw_sheet1():
     # Seal groove (Ø420 centerline, hidden)
     draw_circle(ax, cx, cy, s(SEAL_D / 2), lw=0.5, color=C_GASKT, ls='--')
 
-    # 4× Adjustment screws on carrier rim (on PCD Ø260, at 0°/90°/180°/270°)
+    # 4× Adjuster positions on carrier rim (Ø260 PCD). The knobs + bracket ring are on the REAR
+    # (interior/camera) face — HIDDEN in this scene-side view — so draw them dashed, no fill.
     adj_r = s(ADJ_PCD_CARRIER / 2)
     adj_labels = ['SWING+', 'TILT+', 'SWING−', 'TILT−']
     adj_colors = ['#A0A0A0', '#333333', '#A0A0A0', '#333333']
@@ -215,13 +216,9 @@ def draw_sheet1():
         angle = i * 90
         ax_pos = cx + adj_r * np.cos(np.radians(angle))
         ay_pos = cy + adj_r * np.sin(np.radians(angle))
-        # Knob circle
         knob_r = s(ADJ_BUSHING / 2)
-        ax.add_patch(plt.Circle((ax_pos, ay_pos), knob_r,
-                     fc=kc, ec=C_OUT, lw=LW_MED, zorder=12))
-        # Ball center
-        ax.add_patch(plt.Circle((ax_pos, ay_pos), s(ADJ_BALL / 2),
-                     fc=C_BALL, ec=C_OUT, lw=0.5, zorder=13))
+        draw_circle(ax, ax_pos, ay_pos, knob_r, lw=0.7, color=kc, ls='--')       # knob (rear — hidden)
+        draw_circle(ax, ax_pos, ay_pos, s(ADJ_BALL / 2), lw=0.5, color=C_HID, ls=':')  # ball/seat behind
         # Label
         lx = cx + (adj_r + 40) * np.cos(np.radians(angle))
         ly = cy + (adj_r + 40) * np.sin(np.radians(angle))
@@ -299,10 +296,10 @@ def draw_sheet1():
         'VIEW FROM EXTERIOR (SCENE SIDE). CARRIER (ICP-02) VISIBLE THROUGH Ø380 BORE.',
         'ICP-01: 600×600×40mm AL 6061-T6 OUTER FRAME. SAME M12/540PCD/Ø8 DOWEL INTERFACE AS ALL PLATES.',
         'ICP-02: Ø320×25mm AL 6061-T6 CARRIER. CARRIES Ø50mm PINHOLE DISC (LENOX LASER SS-302).',
-        'ICP-03 PRELOAD: PERIPHERAL WAVE SPRING + Al RETAINING RING seat the carrier on the 4 adjuster balls (rim',
-        'kinematic mount — 1 cone / 1 vee / 2 flat seats). NO central bearing: the optical axis is completely clear.',
-        f'ADJUSTMENT: 4× M8×1.0 FINE-PITCH SCREWS. BLACK KNOBS = TILT, SILVER = SWING. {FRONT_BOARD_CLICK_DEG}°/CLICK.',
-        'LOCKING: 4× M6 NYLON-TIP SET SCREWS (3mm HEX KEY FROM EXTERIOR FACE).',
+        'ICP-03: WAVE SPRING (in the frame counterbore) seats the carrier on the 4 adjuster balls (rim kinematic',
+        'mount — 1 cone / 1 vee / 2 flat seats). NO central bearing: the optical axis is completely clear.',
+        f'ADJUSTMENT: 4× M8×1.0 SCREWS on an INTERIOR BRACKET RING — KNOBS ON THE REAR (dashed), SET FROM INSIDE.',
+        f'BLACK KNOBS = TILT, SILVER = SWING · {FRONT_BOARD_CLICK_DEG}°/CLICK. LOCKING: 4× M6 NYLON-TIP SET SCREWS (3mm HEX, INTERIOR SIDE).',
         'BELLOWS (ICP-04): TRUNCATED CONE Ø290→Ø430, 4-PLEAT NEOPRENE, CLAMP-RING RETAINED, ZERO-FRICTION LIGHT SEAL.',
     ]
     draw_notes(ax, notes1, 35, cy - half - 70, spacing=10,
@@ -414,16 +411,16 @@ def draw_sheet2():
                         [y0, y1], color='#AAAAAA', lw=0.3, zorder=6,
                         clip_on=True)
 
-    # ── ICP-02 Carrier plate (cross-section) — RIM-SUPPORTED, no central shank/bearing ──
-    # The former central GE50 bearing + Ø50 shank are removed: they blocked the pinhole axis and
-    # could not be mounted across the Ø380 bore. The carrier is now located entirely at its rim
-    # (kinematic adjuster seats + peripheral wave-spring preload, drawn below). The optical axis
-    # is clear — only the Ø2.17 pinhole passes through the center.
+    # ── ICP-02 Carrier plate (cross-section) — RIM-SUPPORTED; adjust from the INTERIOR ──
+    # Rim kinematic mount: the carrier is pushed toward the frame (−A) by 4 adjuster balls seating in
+    # kinematic seats on its REAR (camera-side) face, and pushed back (+A) by a peripheral WAVE SPRING
+    # in a counterbore in the frame's interior face. The adjusters mount on an interior BRACKET RING so
+    # the knobs face into the container (accessible). Optical axis clear — only the Ø2.17 pinhole.
+    sp_gap = s(30)                          # wave-spring working gap (frame face ↔ carrier exterior face)
     cr_half = s(CR_OD / 2)
-    cr_left = cx
-    cr_right = cx + s(CR_THICK)
+    cr_left = cx + sp_gap                   # carrier exterior (scene) face — the spring bears here
+    cr_right = cr_left + s(CR_THICK)        # carrier interior (camera) face — the adjuster balls contact here
 
-    # Solid carrier disc (Ø320×25) — no central shank; the optical axis is a clear Ø2.17 bore only
     ax.add_patch(mpatches.Rectangle((cr_left, cy - cr_half), s(CR_THICK), 2 * cr_half,
                  fc='#E0E0E0', ec=C_OUT, lw=LW_THICK, zorder=5))
     for i in range(90):        # cross-hatching, full height
@@ -434,41 +431,29 @@ def draw_sheet2():
                     [y0, y1], color='#AAAAAA', lw=0.3, zorder=6)
     ax.plot([cr_left, cr_right], [cy, cy], color='white', lw=1.3, zorder=7)  # Ø2.17 pinhole bore
 
-    # ── Pinhole disc (on carrier interior face) ──────────────────────────────
+    # ── Pinhole disc (on carrier interior/camera face) ──
     disc_half = s(PH_DISC_D / 2)
-    disc_t = s(0.1) * 20  # exaggerated for visibility
-    ax.add_patch(mpatches.Rectangle(
-        (cr_right, cy - disc_half), disc_t, s(PH_DISC_D),
-        fc='#666666', ec=C_OUT, lw=LW_MED, zorder=8))
+    disc_t = s(0.1) * 20
+    ax.add_patch(mpatches.Rectangle((cr_right, cy - disc_half), disc_t, s(PH_DISC_D),
+                 fc='#666666', ec=C_OUT, lw=LW_MED, zorder=8))
+    cb_half = s(CR_CB_D / 2); cb_dep = s(CR_CB_DEP)
+    ax.add_patch(mpatches.Rectangle((cr_right - cb_dep, cy - cb_half), cb_dep, s(CR_CB_D),
+                 fc='white', ec=C_OUT, lw=0.5, zorder=7))
 
-    # Counterbore
-    cb_half = s(CR_CB_D / 2)
-    cb_dep = s(CR_CB_DEP)
-    ax.add_patch(mpatches.Rectangle(
-        (cr_right - cb_dep, cy - cb_half), cb_dep, s(CR_CB_D),
-        fc='white', ec=C_OUT, lw=0.5, zorder=7))
-
-    # ── Bellows (ICP-04) ─────────────────────────────────────────────────────
+    # ── Bellows (ICP-04) — in the frame↔carrier gap (exterior side), clamp-ring both ends ──
     bel_inner_half = s(BEL_ID / 2)
     bel_outer_half = s(BEL_OD / 2)
     bel_left = cx
-    bel_right = cx + s(BEL_FREE * 0.7)
-
-    # Draw pleated bellows as zigzag connecting frame to carrier
+    bel_right = cr_left
     for sign in [-1, 1]:
         y_inner = cy + sign * bel_inner_half
         y_outer = cy + sign * bel_outer_half
         y_mid = (y_inner + y_outer) / 2
         pleat_xs = np.linspace(bel_left, bel_right, BEL_PLEATS * 2 + 1)
-        pleat_ys = []
-        for j, px in enumerate(pleat_xs):
-            if j % 2 == 0:
-                pleat_ys.append(y_mid + sign * (y_outer - y_mid) * 0.3)
-            else:
-                pleat_ys.append(y_mid - sign * (y_outer - y_mid) * 0.3)
+        pleat_ys = [(y_mid + (sign if j % 2 == 0 else -sign) * (y_outer - y_mid) * 0.3)
+                    for j in range(len(pleat_xs))]
         ax.plot(pleat_xs, pleat_ys, color=C_BELLOWS, lw=1.2, zorder=4)
 
-    # ── Bellows clamp rings (review item 3): Al ring + M4 screw at BOTH ends ──
     def _clamp_ring(cxr, cyr):
         ax.add_patch(mpatches.Rectangle((cxr - s(3), cyr - s(7)), s(6), s(14),
                      fc=C_ALUM, ec=C_OUT, lw=LW_MED, zorder=8))
@@ -477,58 +462,40 @@ def draw_sheet2():
         _clamp_ring(bel_left + s(4),  cy + sgn * bel_outer_half)   # frame end (outer, Ø420 clamp)
         _clamp_ring(bel_right - s(4), cy + sgn * bel_inner_half)   # carrier end (inner, Ø306 clamp)
 
-    # ── Preload subsystem (ICP-03): peripheral wave spring + Al retaining ring ──
-    # Replaces the central bearing. Reaches in from the frame (standoffs at Ø450, outside the
-    # bellows) to press a wave spring on the carrier interior rim, seating it on the adjuster balls.
-    ring_x0 = cr_right + s(20)
-    ring_x1 = ring_x0 + s(RET_RING_T)
+    # ── Preload wave spring (ICP-03): in a frame-face counterbore, pushes the carrier +A ──
     for sgn in [-1, 1]:
-        ax.add_patch(mpatches.Rectangle(
-            (ring_x0, cy + s(RET_RING_ID / 2)) if sgn > 0 else (ring_x0, cy - s(RET_RING_OD / 2)),
-            ring_x1 - ring_x0, sgn * s((RET_RING_OD - RET_RING_ID) / 2),
-            fc=C_ALUM, ec=C_OUT, lw=LW_MED, hatch='\\\\\\', zorder=6))
-        # wave spring (compressed) between the carrier interior face and the ring
         sy = cy + sgn * s(SPR_PCD / 2)
-        wx = np.linspace(cr_right, ring_x0, 13)
+        wx = np.linspace(cx, cr_left, 9)
         wy = [sy + (s(3) if k % 2 else -s(3)) for k in range(len(wx))]
         wy[0] = wy[-1] = sy
         ax.plot(wx, wy, color=C_STEEL, lw=1.3, zorder=7)
-        # standoff screw: frame interior face → ring (radius outside the bellows)
-        by = cy + sgn * s(RET_BOLT_PCD / 2)
-        ax.plot([fr_right, ring_x1], [by, by], color=C_OUT, lw=1.4, zorder=7)
-        ax.add_patch(mpatches.Rectangle((ring_x1, by - s(4)), s(6), s(8),
-                     fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=8))
+        ax.add_patch(mpatches.Rectangle((cx - s(4), sy - s(6)), s(4), s(12),   # counterbore recess
+                     fc='white', ec=C_OUT, lw=0.5, zorder=6))
 
-    # ── Adjustment screws (top and bottom in this section) ───────────────────
+    # ── Adjuster bracket ring (interior) + 4 adjusters — knobs face INTO the container ──
     adj_arm = s(ADJ_PCD_CARRIER / 2)
+    ring_x0 = cr_right + s(26)
+    ring_x1 = ring_x0 + s(RET_RING_T)
+    r_in = adj_arm - s(8)                   # ring reaches in to the adjusters
+    r_out = s(RET_BOLT_PCD / 2) + s(8)      # …out to the standoffs
+    for sgn in [-1, 1]:
+        ax.add_patch(mpatches.Rectangle((ring_x0, cy + sgn * r_in), ring_x1 - ring_x0, sgn * (r_out - r_in),
+                     fc=C_ALUM, ec=C_OUT, lw=LW_MED, hatch='\\\\\\', zorder=6))
+        by = cy + sgn * s(RET_BOLT_PCD / 2)                      # standoff: frame → bracket ring
+        ax.plot([fr_right, ring_x0], [by, by], color=C_OUT, lw=1.4, zorder=6)
     for sign in [-1, 1]:
         screw_y = cy + sign * adj_arm
-        # Delrin bushing in frame
-        ax.add_patch(mpatches.Rectangle(
-            (fr_left - s(5), screw_y - s(ADJ_SCREW / 2) - 2),
-            s(FR_THICK + 5), s(ADJ_SCREW) + 4,
-            fc=C_DELRIN, ec=C_OUT, lw=0.5, zorder=9))
-        # Screw shaft
-        ax.plot([fr_left - s(15), cr_left + 3], [screw_y, screw_y],
-                color=C_OUT, lw=1.5, zorder=10)
-        # Ball at tip
+        ax.add_patch(mpatches.Rectangle((ring_x0, screw_y - s(ADJ_SCREW/2) - 2),   # Delrin bushing in ring
+                     ring_x1 - ring_x0, s(ADJ_SCREW) + 4, fc=C_DELRIN, ec=C_OUT, lw=0.5, zorder=9))
+        ax.plot([cr_right - 3, ring_x1 + s(16)], [screw_y, screw_y], color=C_OUT, lw=1.5, zorder=10)  # screw
         ball_r = s(ADJ_BALL / 2)
-        ax.add_patch(plt.Circle((cr_left + 3, screw_y), ball_r,
-                     fc=C_BALL, ec=C_OUT, lw=0.5, zorder=11))
-        # Hemispherical socket in carrier
-        ax.add_patch(plt.Circle((cr_left, screw_y), ball_r + 1,
-                     fc='#D0D0D0', ec=C_OUT, lw=0.5, zorder=10))
-        # Knob (exterior)
-        knob_w = s(15)
-        knob_half = s(10)
-        ax.add_patch(mpatches.Rectangle(
-            (fr_left - s(15) - knob_w, screw_y - knob_half),
-            knob_w, 2 * knob_half,
-            fc='#333333' if sign != 0 else '#A0A0A0', ec=C_OUT, lw=LW_MED, zorder=10))
-        # Label
-        label = 'TILT+' if sign > 0 else 'TILT−'
-        ax.text(fr_left - s(15) - knob_w - 8, screw_y, label,
-                ha='right', va='center', fontsize=5, fontweight='bold', color='#333333')
+        ax.add_patch(plt.Circle((cr_right - 3, screw_y), ball_r, fc=C_BALL, ec=C_OUT, lw=0.5, zorder=11))  # ball
+        ax.add_patch(plt.Circle((cr_right, screw_y), ball_r + 1, fc='#D0D0D0', ec=C_OUT, lw=0.5, zorder=10))  # seat
+        knob_w = s(15); knob_half = s(10)                       # knob — interior (into the container)
+        ax.add_patch(mpatches.Rectangle((ring_x1 + s(16), screw_y - knob_half), knob_w, 2*knob_half,
+                     fc='#333333' if sign != 0 else '#A0A0A0', ec=C_OUT, lw=LW_MED, zorder=10))
+        ax.text(ring_x1 + s(16) + knob_w + 8, screw_y, 'TILT+' if sign > 0 else 'TILT−',
+                ha='left', va='center', fontsize=5, fontweight='bold', color='#333333')
 
     # ── Centerline ───────────────────────────────────────────────────────────
     cl_left = wall_x - 20
@@ -537,39 +504,31 @@ def draw_sheet2():
             color=C_CL, lw=LW_THIN, ls=(0, (8, 3, 1, 3)), zorder=2)
 
     # ── Labels ───────────────────────────────────────────────────────────────
+    knob_far = ring_x1 + s(16) + s(15)      # interior-most point (knob outer face)
     arr_y = cy + fr_half + 15
     ax.annotate('EXTERIOR\n(SCENE)', xy=(wall_x, arr_y), xytext=(wall_x - 30, arr_y + 35),
                 fontsize=5, color='#333', style='italic', ha='center', va='bottom',
                 arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
-    ax.annotate('INTERIOR\n(CAMERA)', xy=(cr_right + disc_t, arr_y), xytext=(cr_right + disc_t + 10, arr_y + 35),
+    ax.annotate('INTERIOR (CAMERA)\n— adjust from here', xy=(knob_far, arr_y), xytext=(knob_far - 10, arr_y + 35),
                 fontsize=5, color='#333', style='italic', ha='center', va='bottom',
                 arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
 
-    lx_r = cr_right + 40
-    leader(ax, (fr_left + fr_right) / 2, cy + fr_half - 10,
-           lx_r + 20, cy + fr_half + 20,
+    lx_r = knob_far + s(40)                  # component-label column, clear of the interior knobs
+    leader(ax, (fr_left + fr_right) / 2, cy + fr_half - 10, lx_r + 20, cy + fr_half + 20,
            'ICP-01 OUTER FRAME\n600×600×40 AL', fs=5)
-
-    leader(ax, (cr_left + cr_right) / 2, cy + cr_half - 5,
-           lx_r + 20, cy + 138,
+    leader(ax, (cr_left + cr_right) / 2, cy + cr_half - 5, lx_r + 20, cy + 130,
            'ICP-02 CARRIER Ø320×25 AL', fs=5)
-
-    leader(ax, ring_x1, cy + s(RET_RING_ID / 2) + s(18),
-           lx_r + 20, cy + 70,
-           'ICP-03 PRELOAD —\nWAVE SPRING + Al\nRETAINING RING', fs=5)
-
-    # kinematic-seat callout on the adjuster side (left), clear of the right-hand leader stack
-    leader(ax, cr_left + 3, cy + adj_arm,
-           cr_left - s(30), cy + adj_arm + 44,
-           'KINEMATIC SEAT\n(cone/vee/flat)', fs=4.4, ha='right')
-
-    leader(ax, cr_right + disc_t / 2, cy + disc_half + 3,
-           lx_r + 20, cy + disc_half + 8,
+    leader(ax, ring_x1 + s(23), cy + adj_arm, lx_r + 20, cy + 75,
+           'M8 ADJUSTER + KNOB on an INTERIOR\nBRACKET RING — set from inside', fs=5)
+    leader(ax, cr_right + disc_t / 2, cy + disc_half + 3, lx_r + 20, cy + 30,
            'PINHOLE DISC Ø50×0.1\nØ2.17mm APT SS-302', fs=5)
-
-    leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5,
-           lx_r + 20, cy - bel_outer_half - 20,
+    leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5, lx_r + 20, cy - 110,
            'ICP-04 BELLOWS\nØ290→Ø430 CONE\nCLAMP-RING BOTH ENDS', fs=5)
+
+    # left-side callout: wave spring (frame counterbore). The kinematic seats are shown in DETAIL Z
+    # + the notes + Sheet 4, so they are not re-called-out here to keep the interior side readable.
+    leader(ax, cx - s(2), cy - s(SPR_PCD / 2), fr_left - 34, cy - s(SPR_PCD / 2) - 70,
+           'ICP-03 WAVE SPRING —\nin a frame counterbore,\npushes the carrier onto\nthe adjuster balls', fs=4.6, ha='right')
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, fr_left, fr_right, cy + fr_half + 10, '40mm',
@@ -592,8 +551,9 @@ def draw_sheet2():
     notes2 = [
         'SECTION A-A — TILT-SWING BOARD ASSEMBLY:',
         'RIM KINEMATIC MOUNT — the carrier is located ONLY at its rim; the optical axis is fully clear (no central',
-        'shank/bearing). Support: 4 adjuster balls in kinematic seats (1 cone / 1 V-groove / 2 flat → in-plane + spin',
-        'fixed) + a peripheral WAVE SPRING on an Al RETAINING RING (standoffs Ø450, outside the bellows) → zero backlash.',
+        'shank/bearing). The 4 adjuster balls seat in kinematic seats on the carrier REAR face (1 cone / 1 V-groove /',
+        '2 flat → in-plane + spin fixed) and push it toward the frame; a peripheral WAVE SPRING in a frame counterbore',
+        'pushes it back → zero backlash. Adjusters mount on an interior BRACKET RING so the KNOBS are set from INSIDE.',
         f'ADJUSTMENT: M8×1.0 pairs set TILT (N/S) & SWING (E/W) via Gr-25 Ø8mm balls. RANGE ±{FRONT_BOARD_MAX_DEG}°, {FRONT_BOARD_CLICK_DEG}°/click ({FRONT_BOARD_DETENTS}-detent).',
         'PIVOT ~one carrier-thickness behind the pinhole → pinhole shifts ~2.3mm at ±5.3° (<1.5% parallax).',
         'BELLOWS (non-structural light seal): clamp-ring both ends. LABYRINTH bore Ø382/390/400, 5 deep — secondary seal.',
@@ -616,43 +576,46 @@ def draw_sheet2():
             ha='center', fontsize=4.2, style='italic', color='#555', zorder=13)
 
     def zi(mm): return mm * 1.6                      # inset local scale
-    xi, yi = bx0 + 74, by0 + bh / 2 - 12             # carrier center-x, joint center-y
-    exf = xi - zi(6)                                 # carrier exterior (left) face
-    inx = xi + zi(6)                                 # carrier interior (right) face
-    # carrier rim (vertical hatched bar)
+    xi, yi = bx0 + 78, by0 + bh / 2 - 12             # carrier center-x, joint center-y
+    exf = xi - zi(6)                                 # carrier exterior (left) face — spring bears here
+    inx = xi + zi(6)                                 # carrier interior (right) face — ball contacts here
     ax.add_patch(mpatches.Rectangle((exf, yi - zi(52)), zi(12), zi(104),
-                 fc='#E0E0E0', ec=C_OUT, lw=1.0, hatch='///', zorder=12))
-    # frame boss (far left) the adjuster passes through
-    ax.add_patch(mpatches.Rectangle((bx0 + 8, yi - zi(11)), zi(9), zi(22),
+                 fc='#E0E0E0', ec=C_OUT, lw=1.0, hatch='///', zorder=12))                # carrier rim
+    # frame (far left) with a counterbore holding the wave spring
+    fbx = bx0 + 8
+    ax.add_patch(mpatches.Rectangle((fbx, yi - zi(34)), zi(11), zi(68),
                  fc=C_ALUM, ec=C_OUT, lw=0.7, hatch='\\\\\\', zorder=11))
-    # adjuster shank + Ø8 ball seated in a CONE notch in the carrier left face
-    ax.plot([bx0 + 8 + zi(9), exf - zi(5)], [yi, yi], color=C_OUT, lw=1.6, zorder=12)
-    ax.add_patch(plt.Circle((exf - zi(4.5), yi), zi(4.5), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=13))
-    ax.plot([exf, exf + zi(4), exf], [yi - zi(5), yi, yi + zi(5)], color=C_OUT, lw=0.9, zorder=13)  # cone
-    # wave spring: carrier interior face → retaining ring
-    sx = np.linspace(inx, inx + zi(24), 11)
+    ax.add_patch(mpatches.Rectangle((fbx + zi(11) - zi(3), yi - zi(6)), zi(3), zi(12),
+                 fc='white', ec=C_OUT, lw=0.5, zorder=12))                               # spring counterbore
+    sx = np.linspace(fbx + zi(11), exf, 11)                                              # wave spring
     sy = [yi + (zi(4) if k % 2 else -zi(4)) for k in range(len(sx))]
     sy[0] = sy[-1] = yi
     ax.plot(sx, sy, color=C_STEEL, lw=1.3, zorder=12)
-    # retaining ring + standoff to frame
-    rx = inx + zi(24)
-    ax.add_patch(mpatches.Rectangle((rx, yi - zi(42)), zi(7), zi(84),
-                 fc=C_ALUM, ec=C_OUT, lw=1.0, hatch='\\\\\\', zorder=12))
-    ax.plot([rx + zi(7), rx + zi(20)], [yi + zi(34), yi + zi(34)], color=C_OUT, lw=1.4, zorder=12)
-    # bellows lip + clamp ring on the carrier rim (top end)
+    # Ø8 ball in kinematic seat on the carrier interior (right) face
+    ax.add_patch(plt.Circle((inx + zi(4.5), yi), zi(4.5), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=13))
+    ax.plot([inx, inx - zi(4), inx], [yi - zi(5), yi, yi + zi(5)], color=C_OUT, lw=0.9, zorder=13)  # cone (opens right)
+    # adjuster shank → bracket ring → knob (interior)
+    rx = inx + zi(22)
+    ax.plot([inx + zi(9), rx], [yi, yi], color=C_OUT, lw=1.6, zorder=12)                 # shank
+    ax.add_patch(mpatches.Rectangle((rx, yi - zi(44)), zi(7), zi(88),
+                 fc=C_ALUM, ec=C_OUT, lw=1.0, hatch='\\\\\\', zorder=12))                # bracket ring
+    ax.add_patch(mpatches.Rectangle((rx + zi(7), yi - zi(5.5)), zi(11), zi(11),
+                 fc='#333333', ec=C_OUT, lw=0.8, zorder=13))                             # knob (interior)
+    ax.plot([fbx + zi(11), rx], [yi + zi(38), yi + zi(38)], color=C_HID, lw=0.6, ls='--', zorder=10)  # standoff frame→ring
+    # bellows lip + clamp ring on the carrier exterior rim (top, in the frame gap)
     ax.add_patch(mpatches.Rectangle((exf, yi + zi(52)), zi(12), zi(4),
                  fc=C_BELL, ec=C_OUT, lw=0.5, zorder=13))
     ax.add_patch(mpatches.Rectangle((exf + zi(1), yi + zi(56)), zi(10), zi(7),
                  fc=C_ALUM, ec=C_OUT, lw=0.8, hatch='\\\\\\', zorder=13))
     ax.plot([exf - zi(2), exf - zi(8)], [yi + zi(54), yi + zi(64)], color=C_BELL, lw=1.2, zorder=12)
     # ── inset labels ──
-    ax.text(exf - zi(11), yi - zi(12), 'Ø8 BALL\nIN CONE SEAT', ha='right', va='top', fontsize=4.0, color=C_DIM, zorder=13)
-    ax.text(xi - zi(9), yi - zi(55), 'CARRIER\nRIM', ha='center', va='top', fontsize=4.0, color=C_DIM, zorder=13)
-    ax.text(inx + zi(11), yi - zi(9), 'WAVE\nSPRING', ha='center', va='bottom', fontsize=4.0, color=C_DIM, zorder=13)
-    ax.text(rx + zi(10), yi - zi(12), 'Al RETAINING\nRING → frame', ha='left', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(fbx - zi(2), yi + zi(20), 'WAVE SPRING\n(frame c\'bore)', ha='left', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(xi, yi - zi(56), 'CARRIER RIM', ha='center', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(inx + zi(3), yi + zi(16), 'Ø8 BALL\nIN SEAT', ha='center', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(rx + zi(4), yi - zi(14), 'M8 ADJUSTER\n+ KNOB (interior)', ha='center', va='bottom', fontsize=4.0, color=C_DIM, zorder=13)
     ax.text(exf - zi(6), yi + zi(66), 'BELLOWS LIP\n+ CLAMP RING', ha='right', va='bottom', fontsize=4.0, color=C_DIM, zorder=13)
     ax.text(bx0 + bw / 2, by0 + 10,
-            'carrier CLAMPED between the ball (push →) and the\nwave spring (← push-back): zero backlash, axis clear',
+            'carrier CLAMPED between the wave spring (push →) and the\nadjuster ball (← push-back); knobs set from the interior',
             ha='center', va='bottom', fontsize=4.0, style='italic', color='#444', zorder=13)
 
     title_block(ax, "SHEET 2 OF 6",
@@ -740,12 +703,8 @@ bolt_holes(ax1, cx_b, cy_b, s1(BOLT_BC/2), BOLT_N, s1(BOLT_D/2))
 for sign in [-1, 1]:
     draw_circle(ax1, cx_b + sign*s1(DWL_OFF), cy_b, s1(DWL_D/2), lw=LW_MED, color=C_OUT)
 
-# 4 adjustment screw positions (seen as circles on face)
-for angle_deg in [90, 0, 270, 180]:
-    ax_x = cx_b + s1(ADJ_PCD/2) * np.cos(np.radians(angle_deg))
-    ax_y = cy_b + s1(ADJ_PCD/2) * np.sin(np.radians(angle_deg))
-    draw_circle(ax1, ax_x, ax_y, s1(BUSH_OD/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_DELR, zorder=5)
-    draw_circle(ax1, ax_x, ax_y, s1(ADJ_D/2), lw=0.7, color=C_OUT, fill=True, fc='white', zorder=6)
+# (The adjusters are NOT in the frame — they mount on the interior bracket ring. The exterior
+#  face is the clean plate interface, identical to the standard pinhole plate.)
 
 draw_cl(ax1, cx_b, cy_b, hw*1.15)
 
@@ -756,9 +715,6 @@ dia_stack(ax1, cx_b, cy_b - hw, [
     (s1(BOLT_BC),    'Ø540 B.C. · 8× Ø13 CLR (M12) EQUISPACED'),
     (s1(PL_OD),      '600'),
 ], dirn=-1)
-dia_stack(ax1, cx_b, cy_b + hw, [
-    (s1(ADJ_PCD), 'Ø270 PCD · 4× M22×1.0 BUSHING (Ø8 SCREW BORE) · 90° APART'),
-], dirn=+1)
 draw_dim_v(ax1, cx_b - hw - 30, cy_b - hw, cy_b + hw, '600', right=False, fs=5.5, offset=20)
 ax1.text(cx_b - hw + 12, cy_b + hw - 14, '6061-T6 · 40 THK', ha='left', va='top',
          fontsize=5, color=C_DIM, style='italic', zorder=10)
@@ -772,8 +728,8 @@ draw_dim_v(ax1, cx_b + hw + 30, cy_b - s1(BOLT_BC/2), cy_b + s1(BOLT_BC/2), 'Ø5
 #    already named on their dimension lines; the top-left corner is left for the material note) ──
 leader(ax1, cx_b + s1(TRAP_SQ/2), cy_b + s1(TRAP_SQ/2),
        cx_b + hw + 10, cy_b + hw + 120, 'Ø490 SQ\nLIGHT-TRAP REBATE', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-leader(ax1, cx_b - s1(ADJ_PCD/2), cy_b,
-       cx_b - hw + 6, cy_b - hw - 30, '4× M22 ADJ\nBUSHING (DELRIN)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax1, cx_b - s1(BOLT_BC/2)*np.cos(np.radians(45)), cy_b + s1(BOLT_BC/2)*np.sin(np.radians(45)),
+       cx_b - hw + 6, cy_b - hw - 30, '8× Ø13 CLR (M12)\nPLATE BOLTS + 2× Ø8 DOWEL', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
 leader(ax1, cx_b + s1(BOLT_BC/2)*np.cos(np.radians(-45)), cy_b + s1(BOLT_BC/2)*np.sin(np.radians(-45)),
        cx_b + hw - 6, cy_b - hw - 30, '8× Ø13 CLR (M12)\nCONTAINER-PLATE BOLTS', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
 
@@ -796,12 +752,9 @@ draw_circle(ax1, cx_c, cy_c, s1(TSB01_BORE/2), lw=LW_MED, color=C_OUT, fill=True
 for d, ls_str in [(LAB_D1,'--'),(LAB_D2,'-.'),(LAB_D3,':')]:
     draw_circle(ax1, cx_c, cy_c, s1(d/2), lw=LW_THIN, color='#555555', ls=ls_str)
 
-# 4 × M22 adjustment bushing holes (interior side — seen from behind)
-for angle_deg in [90, 0, 270, 180]:
-    ax_x = cx_c + s1(ADJ_PCD/2) * np.cos(np.radians(angle_deg))
-    ax_y = cy_c + s1(ADJ_PCD/2) * np.sin(np.radians(angle_deg))
-    draw_circle(ax1, ax_x, ax_y, s1(BUSH_OD/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_DELR, zorder=5)
-    draw_circle(ax1, ax_x, ax_y, s1(ADJ_D/2), lw=0.7, color=C_OUT, fill=True, fc='white', zorder=6)
+# Wave-spring counterbore (Ø300 annular groove) — the ICP-03 preload spring seats here
+draw_circle(ax1, cx_c, cy_c, s1((SPR_PCD + 14)/2), lw=LW_MED, color='#777777', ls='--', zorder=5)
+draw_circle(ax1, cx_c, cy_c, s1((SPR_PCD - 14)/2), lw=LW_MED, color='#777777', ls='--', zorder=5)
 
 # Bellows outer clamp ring (Al) + 6× M4 retaining screws on Ø420 — OUTSIDE the Ø400 labyrinth, on solid frame face
 draw_circle(ax1, cx_c, cy_c, s1((BELL_OUT_PCD+14)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring OD
@@ -812,7 +765,7 @@ for i in range(6):
     by = cy_c + s1(BELL_OUT_PCD/2) * np.sin(ang)
     draw_circle(ax1, bx, by, s1(CLAMP_SCR_D/2 + 0.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=6)
 
-# Retaining-ring standoff holes (6× M5 tapped) on Ø450 — carry the preload retaining ring (ICP-03)
+# Adjuster-bracket-ring standoff holes (6× M5 tapped) on Ø450 — carry the ICP-03 bracket ring
 for i in range(RET_BOLT_N):
     ang = np.radians(30 + i * 60)
     rx = cx_c + s1(RET_BOLT_PCD/2) * np.cos(ang)
@@ -825,11 +778,11 @@ draw_cl(ax1, cx_c, cy_c, hw*1.15)
 dia_stack(ax1, cx_c, cy_c - hw, [
     (s1(TSB01_BORE),   'Ø380 BORE (THRU) — CLEAR, no central bearing'),
     (s1(BELL_OUT_PCD), 'Ø420 PCD · 6× M4 BELLOWS CLAMP-RING SCREW (OUTSIDE LABYRINTH) · 60° APART'),
-    (s1(RET_BOLT_PCD), 'Ø450 PCD · 6× M5 RETAINING-RING STANDOFF (TAPPED) · 60° APART'),
+    (s1(RET_BOLT_PCD), 'Ø450 PCD · 6× M5 ADJUSTER-BRACKET-RING STANDOFF (TAPPED) · 60° APART'),
     (s1(PL_OD),        '600'),
 ], dirn=-1)
 dia_stack(ax1, cx_c, cy_c + hw, [
-    (s1(ADJ_PCD), 'Ø270 PCD · 4× M22 BUSHING BORE · 90° APART'),
+    (s1(SPR_PCD), 'Ø300 WAVE-SPRING COUNTERBORE (14 WIDE × 4 DEEP)'),
     (s1(LAB_D3),  'Ø382 / Ø390 / Ø400 — 3-STEP LABYRINTH · 5 DEEP EACH'),
 ], dirn=+1)
 draw_dim_v(ax1, cx_c + hw + 30, cy_c - hw, cy_c + hw, '600', right=True, fs=5.5, offset=20)
@@ -838,14 +791,14 @@ ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40 THK', ha='left', va='top
 
 draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø420 (CLAMP-RING SCREWS)', right=False, fs=5, offset=16)
 # ── identifying leaders ──
-leader(ax1, cx_c, cy_c + s1(ADJ_PCD/2), cx_c - 120, cy_c + hw - 30,
-       '4× M22 ADJ BUSHING', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax1, cx_c, cy_c + s1(SPR_PCD/2), cx_c - 120, cy_c + hw - 30,
+       'Ø300 WAVE-SPRING\nCOUNTERBORE', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
 leader(ax1, cx_c + s1(BELL_OUT_PCD/2)*np.cos(np.radians(30)), cy_c + s1(BELL_OUT_PCD/2)*np.sin(np.radians(30)),
        cx_c + 120, cy_c + hw - 20, '6× M4 BELLOWS\nCLAMP-RING SCREW', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
 leader(ax1, cx_c + s1(RET_BOLT_PCD/2)*np.cos(np.radians(-30)), cy_c + s1(RET_BOLT_PCD/2)*np.sin(np.radians(-30)),
-       cx_c + 120, cy_c - hw + 30, '6× M5 RETAINING-RING\nSTANDOFF (ICP-03 preload)', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+       cx_c + 120, cy_c - hw + 30, '6× M5 ADJUSTER-RING\nSTANDOFF (ICP-03)', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
 
-ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Clear bore + labyrinth + bellows & retaining-ring attach)',
+ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Clear bore + labyrinth + bellows + spring c\'bore + adjuster-ring mounts)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 out1 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet3.png')
@@ -887,71 +840,42 @@ carr_p = mpatches.Circle((cx2a, cy2a), s2(CARR_OD/2),
                           lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
 ax2.add_patch(carr_p)
 
-# Taper bore (Ø90)
+# Taper bore (Ø90 scene taper) — scene light converges through here to the pinhole
 draw_circle(ax2, cx2a, cy2a, s2(PH_BORE/2), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=4)
 
-# Counterbore Ø52
-draw_circle(ax2, cx2a, cy2a, s2(PH_CB_D/2), lw=LW_MED, color=C_HID, ls='--', zorder=5)
-# Pinhole disc Ø50
-draw_circle(ax2, cx2a, cy2a, s2(PH_DISC_D/2), lw=LW_THICK, color=C_OUT, fill=True, fc='#707070', zorder=6)
-# Pinhole (tiny)
-draw_circle(ax2, cx2a, cy2a, 2.0, lw=0.5, color='white', fill=True, fc='white', zorder=7)
+# Wave-spring bearing land (Ø300 annular) — the ICP-03 preload spring bears on THIS (scene) face
+draw_circle(ax2, cx2a, cy2a, s2((SPR_PCD + 14)/2), lw=0.7, color='#777777', ls='--', zorder=4)
+draw_circle(ax2, cx2a, cy2a, s2((SPR_PCD - 14)/2), lw=0.7, color='#777777', ls='--', zorder=4)
 
-# 4 × kinematic-seat inserts on Ø260: N=cone, E=V-groove, S/W=flat (constrains in-plane + spin)
-_seat = {90: 'CONE', 0: 'VEE', 270: 'FLAT', 180: 'FLAT'}
-for angle_deg in [90, 0, 270, 180]:
-    sx = cx2a + s2(SOCK_PCD/2) * np.cos(np.radians(angle_deg))
-    sy = cy2a + s2(SOCK_PCD/2) * np.sin(np.radians(angle_deg))
-    draw_circle(ax2, sx, sy, s2(16/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_BEAR, zorder=5)
-    t = _seat[angle_deg]
-    if t == 'CONE':                                   # concentric cone seat
-        draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#D0D0D0', zorder=6)
-        draw_circle(ax2, sx, sy, s2(BALL_D/2)*0.45, lw=0.5, color=C_OUT, zorder=7)
-    elif t == 'VEE':                                  # V-groove — radial slot
-        ca, sa = np.cos(np.radians(angle_deg)), np.sin(np.radians(angle_deg))
-        ax2.add_patch(mpatches.Rectangle((sx - s2(8), sy - s2(1.6)), s2(16), s2(3.2),
-                      angle=angle_deg, rotation_point=(sx, sy), fc='#D0D0D0', ec=C_OUT, lw=0.6, zorder=6))
-    else:                                             # flat pad
-        draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#E8E8E8', zorder=6)
-    ax2.text(sx, sy - s2(11), t, ha='center', va='top', fontsize=3.6, color=C_DIM, zorder=8)
-
-# Bellows inner clamp ring (Al) + 4× M4 retaining screws on Ø306 — clamps the bellows small end to the carrier
-draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD+8)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring OD
-draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD-8)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring ID (bellows small end seats here)
+# Bellows inner clamp ring (Al) + 4× M4 on Ø306 — clamps the bellows small end (bellows on this face)
+draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD+8)/2), lw=LW_MED, color=C_OUT, zorder=5)
+draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD-8)/2), lw=LW_MED, color=C_OUT, zorder=5)
 for i in range(4):
     ang = np.radians(45 + i*90)
     bx = cx2a + s2(BELL_IN_PCD/2) * np.cos(ang)
     by = cy2a + s2(BELL_IN_PCD/2) * np.sin(ang)
     draw_circle(ax2, bx, by, s2(CLAMP_SCR_D/2 + 0.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=6)
 
-# Bolt circle ref
-draw_circle(ax2, cx2a, cy2a, s2(SOCK_PCD/2), lw=0.4, color=C_HID, ls=':')
-
 draw_cl(ax2, cx2a, cy2a, s2(CARR_OD/2)*1.2)
 
 # ── Formal dimensions — every feature ──
 dia_stack(ax2, cx2a, cy2a - s2(CARR_OD/2), [
     (s2(PH_BORE),     'Ø90 CONE BORE (SCENE TAPER)'),
-    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 KINEMATIC SEAT (1 cone/1 vee/2 flat) · 90° APART'),
+    (s2(SPR_PCD),     'Ø300 WAVE-SPRING BEARING LAND'),
     (s2(BELL_IN_PCD), 'Ø306 PCD · 4× M4 BELLOWS CLAMP-RING SCREW · 90° APART'),
     (s2(CARR_OD),     'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
-dia_stack(ax2, cx2a, cy2a + s2(CARR_OD/2), [
-    (s2(PH_CB_D), 'Ø52 × 3 DEEP COUNTERBORE (DISC SEAT)'),
-], dirn=+1, step=42, fs=4.6, off=13)
 draw_dim_v(ax2, cx2a - s2(CARR_OD/2) - 26, cy2a - s2(CARR_OD/2), cy2a + s2(CARR_OD/2), 'Ø320', right=False, fs=5, offset=16)
 ax2.text(cx2a - s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
-draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DISC_D/2) - 12,
-           'Ø50 DISC (SS-302 · Ø2.17 APERTURE)', above=False, fs=4.0, offset=8)
 
 draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø306 (CLAMP-RING SCREWS)', right=True, fs=5, offset=14)
 # ── identifying leaders ──
-leader(ax2, cx2a - s2(SOCK_PCD/2), cy2a, cx2a - s2(CARR_OD/2) - 12, cy2a + s2(CARR_OD/2) + 60,
-       '4× Ø16 KINEMATIC SEAT\n(cone/vee/flat + Ø8 ball)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
+leader(ax2, cx2a - s2(SPR_PCD/2), cy2a, cx2a - s2(CARR_OD/2) - 12, cy2a + s2(CARR_OD/2) + 60,
+       'Ø300 WAVE-SPRING\nBEARING LAND', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
 leader(ax2, cx2a + s2(BELL_IN_PCD/2)*0.71, cy2a + s2(BELL_IN_PCD/2)*0.71, cx2a + s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) + 34,
        'BELLOWS INNER CLAMP RING (4× M4)', fs=4.2, color=C_DIM, arrow_style='->', ha='left')
 
-ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 250, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
+ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 250, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene side — spring land + bellows',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL B: ICP-02 rear face at 1:2 ─────────────────────────────────────────
@@ -964,41 +888,50 @@ carr_p2 = mpatches.Circle((cx2b, cy2b), s2(CARR_OD/2),
                            lw=LW_THICK, edgecolor=C_OUT, facecolor='#C0C0C0', zorder=3)
 ax2.add_patch(carr_p2)
 
-# CLEAR CENTER — no shank/bearing; only the Ø2.17 pinhole passes through
-draw_circle(ax2, cx2b, cy2b, s2(PH_APT/2)*3, lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=5)
+# Counterbore Ø52 + pinhole disc Ø50 + pinhole — the disc mounts on THIS (camera) face
+draw_circle(ax2, cx2b, cy2b, s2(PH_CB_D/2), lw=LW_MED, color=C_HID, ls='--', zorder=4)
+draw_circle(ax2, cx2b, cy2b, s2(PH_DISC_D/2), lw=LW_THICK, color=C_OUT, fill=True, fc='#707070', zorder=5)
+draw_circle(ax2, cx2b, cy2b, 2.0, lw=0.5, color='white', fill=True, fc='white', zorder=6)
 
-# Wave-spring bearing land (Ø300) — the peripheral preload spring presses here
-draw_circle(ax2, cx2b, cy2b, s2(SPR_PCD/2), lw=0.6, color=C_HID, ls=(0, (2, 3)), zorder=4)
-
-# 4 × socket insert bores (Ø16 H7) — receive the ICP-05 kinematic seats (cone/vee/flat)
+# 4 × kinematic-seat inserts on Ø260 (cone/vee/flat) — the adjuster balls contact THIS (camera) face
+_seat = {90: 'CONE', 0: 'VEE', 270: 'FLAT', 180: 'FLAT'}
 for angle_deg in [90, 0, 270, 180]:
     sx = cx2b + s2(SOCK_PCD/2) * np.cos(np.radians(angle_deg))
     sy = cy2b + s2(SOCK_PCD/2) * np.sin(np.radians(angle_deg))
     draw_circle(ax2, sx, sy, s2(16/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_BEAR, zorder=5)
-
-# Bellows groove Ø290
-draw_circle(ax2, cx2b, cy2b, s2(BELL_ID/2), lw=LW_MED, color=C_GASKT, ls='--')
+    t = _seat[angle_deg]
+    if t == 'CONE':
+        draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#D0D0D0', zorder=6)
+        draw_circle(ax2, sx, sy, s2(BALL_D/2)*0.45, lw=0.5, color=C_OUT, zorder=7)
+    elif t == 'VEE':
+        ax2.add_patch(mpatches.Rectangle((sx - s2(8), sy - s2(1.6)), s2(16), s2(3.2),
+                      angle=angle_deg, rotation_point=(sx, sy), fc='#D0D0D0', ec=C_OUT, lw=0.6, zorder=6))
+    else:
+        draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#E8E8E8', zorder=6)
+    ax2.text(sx, sy - s2(11), t, ha='center', va='top', fontsize=3.6, color=C_DIM, zorder=8)
 
 draw_cl(ax2, cx2b, cy2b, s2(CARR_OD/2)*1.2)
 
 # ── Formal dimensions — every feature ──
 dia_stack(ax2, cx2b, cy2b - s2(CARR_OD/2), [
-    (s2(SPR_PCD),     'Ø300 WAVE-SPRING BEARING LAND'),
-    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 KINEMATIC-SEAT INSERT · 90° APART'),
-    (s2(BELL_ID),     'Ø290 BELLOWS GROOVE · 4 WIDE × 3 DEEP'),
-    (s2(CARR_OD),     'Ø320 CARRIER OD'),
+    (s2(PH_DISC_D),  'Ø50 PINHOLE DISC (SS-302 · Ø2.17 APT)'),
+    (s2(SOCK_PCD),   'Ø260 PCD · 4× Ø16 H7 KINEMATIC SEAT (1 cone/1 vee/2 flat) · 90° APART'),
+    (s2(CARR_OD),    'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
+dia_stack(ax2, cx2b, cy2b + s2(CARR_OD/2), [
+    (s2(PH_CB_D), 'Ø52 × 3 DEEP COUNTERBORE (DISC SEAT)'),
+], dirn=+1, step=42, fs=4.6, off=13)
 draw_dim_v(ax2, cx2b + s2(CARR_OD/2) + 26, cy2b - s2(CARR_OD/2), cy2b + s2(CARR_OD/2), 'Ø320', right=True, fs=5, offset=16)
 ax2.text(cx2b - s2(CARR_OD/2) + 8, cy2b + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
 
 draw_dim_v(ax2, cx2b - s2(CARR_OD/2) - 26, cy2b - s2(SOCK_PCD/2), cy2b + s2(SOCK_PCD/2), 'Ø260 B.C. (4× Ø16 INSERT)', right=False, fs=5, offset=14)
 # ── identifying leaders ──
 leader(ax2, cx2b, cy2b + s2(SOCK_PCD/2), cx2b, cy2b + s2(CARR_OD/2) + 34,
-       '4× KINEMATIC SEAT\n(1 cone / 1 vee / 2 flat)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
-leader(ax2, cx2b - s2(SPR_PCD/2)*0.707, cy2b - s2(SPR_PCD/2)*0.707, cx2b - s2(CARR_OD/2) - 30, cy2b - 60,
-       'Ø300 WAVE-SPRING\nBEARING LAND', fs=4.2, color=C_DIM, arrow_style='->', ha='right')
+       '4× KINEMATIC SEAT (ball contact)\n(1 cone / 1 vee / 2 flat)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
+leader(ax2, cx2b + s2(PH_DISC_D/2)*0.7, cy2b - s2(PH_DISC_D/2)*0.7, cx2b + s2(CARR_OD/2) + 8, cy2b - 60,
+       'Ø50 PINHOLE DISC\n(Ø2.17 aperture)', fs=4.2, color=C_DIM, arrow_style='->', ha='left')
 
-ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nInterior side — clear center, no shank',
+ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nInterior / camera side — pinhole disc + kinematic seats',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL C: Preload & kinematic-seat section (2:1) ───────────────────────────
@@ -1008,54 +941,52 @@ ax2.plot([30, 690], [424, 424], color='black', lw=0.7)
 cxc, cyc = 300, 215
 def sc(mm): return mm * 1.5                          # panel-C local scale
 
-# carrier rim (vertical, sectioned) — exterior face left, interior face right
+# carrier rim (vertical, sectioned) — exterior (scene) face left, interior (camera) face right
 cf_l = cxc - sc(6)
 cf_r = cxc + sc(6)
 ax2.add_patch(mpatches.Rectangle((cf_l, cyc - sc(58)), sc(12), sc(116),
               fc='#E0E0E0', ec=C_OUT, lw=LW_THICK, hatch='///', zorder=5))
-# frame boss (exterior) with the M8 adjuster through a Delrin bushing
-fb_l = cf_l - sc(46)
-ax2.add_patch(mpatches.Rectangle((fb_l, cyc - sc(20)), sc(30), sc(40),
+# frame (far left) with a counterbore holding the wave spring
+fr_x = cf_l - sc(42)
+ax2.add_patch(mpatches.Rectangle((fr_x, cyc - sc(34)), sc(30), sc(68),
               fc=C_ALUM, ec=C_OUT, lw=LW_MED, hatch='\\\\\\', zorder=4))
-ax2.add_patch(mpatches.Rectangle((fb_l, cyc - sc(6)), sc(30), sc(12),
-              fc=C_DELR, ec=C_OUT, lw=0.6, zorder=5))                       # Delrin bushing
-ax2.add_patch(mpatches.Rectangle((fb_l, cyc - sc(2.5)), sc(30) + sc(12), sc(5),
-              fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=6))                      # M8 adjuster shank
-ax2.add_patch(plt.Circle((cf_l - sc(4), cyc), sc(4), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=8))  # Ø8 ball
-ax2.plot([cf_l, cf_l + sc(4), cf_l], [cyc - sc(4.5), cyc, cyc + sc(4.5)], color=C_OUT, lw=0.9, zorder=8)  # cone seat
-# wave spring (compressed) on the carrier interior rim → retaining ring
-wx = np.linspace(cf_r, cf_r + sc(24), 11)
+ax2.add_patch(mpatches.Rectangle((fr_x + sc(30) - sc(6), cyc - sc(6)), sc(6), sc(12),
+              fc='white', ec=C_OUT, lw=0.5, zorder=5))                      # spring counterbore
+wx = np.linspace(fr_x + sc(30), cf_l, 11)                                   # wave spring
 wy = [cyc + (sc(4) if k % 2 else -sc(4)) for k in range(len(wx))]
 wy[0] = wy[-1] = cyc
 ax2.plot(wx, wy, color=C_STEEL, lw=1.4, zorder=6)
-rr_l = cf_r + sc(24)
+# Ø8 ball in kinematic seat on the carrier interior (right) face
+ax2.add_patch(plt.Circle((cf_r + sc(4), cyc), sc(4), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=8))
+ax2.plot([cf_r, cf_r - sc(4), cf_r], [cyc - sc(4.5), cyc, cyc + sc(4.5)], color=C_OUT, lw=0.9, zorder=8)  # cone (opens right)
+# adjuster shank → Delrin bushing in the bracket ring → knob (interior)
+rr_l = cf_r + sc(22)
+ax2.add_patch(mpatches.Rectangle((cf_r + sc(8), cyc - sc(2.5)), (rr_l + sc(8)) - (cf_r + sc(8)), sc(5),
+              fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=7))                      # M8 adjuster shank
 ax2.add_patch(mpatches.Rectangle((rr_l, cyc - sc(46)), sc(8), sc(92),
-              fc=C_ALUM, ec=C_OUT, lw=LW_THICK, hatch='\\\\\\', zorder=6))  # retaining ring
-# M5 standoff: retaining ring → frame (spans back to the frame interior face)
-ax2.add_patch(mpatches.Rectangle((cf_r, cyc + sc(40)), (rr_l + sc(8)) - cf_r, sc(5),
-              fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=5))
-ax2.plot([fb_l, cf_r], [cyc + sc(42), cyc + sc(42)], color=C_HID, lw=0.6, ls='--', zorder=4)  # to frame
-# bellows lip + clamp ring at the carrier rim (top)
+              fc=C_ALUM, ec=C_OUT, lw=LW_THICK, hatch='\\\\\\', zorder=6))  # adjuster bracket ring
+ax2.add_patch(mpatches.Rectangle((rr_l, cyc - sc(6)), sc(8), sc(12),
+              fc=C_DELR, ec=C_OUT, lw=0.6, zorder=8))                       # Delrin bushing in ring
+ax2.add_patch(mpatches.Rectangle((rr_l + sc(8), cyc - sc(7)), sc(14), sc(14),
+              fc='#333333', ec=C_OUT, lw=0.8, zorder=9))                    # knob (interior)
+ax2.plot([fr_x + sc(30), rr_l], [cyc + sc(40), cyc + sc(40)], color=C_HID, lw=0.6, ls='--', zorder=4)  # standoff frame→ring
+# bellows lip + clamp ring at the carrier exterior rim (top)
 ax2.add_patch(mpatches.Rectangle((cf_l, cyc + sc(58)), sc(12), sc(4), fc=C_BELL, ec=C_OUT, lw=0.5, zorder=7))
 ax2.add_patch(mpatches.Rectangle((cf_l + sc(1), cyc + sc(62)), sc(10), sc(7), fc=C_ALUM, ec=C_OUT, lw=0.8, hatch='\\\\\\', zorder=7))
 
-# centerline (optical axis) through the carrier center — far to the left of this rim joint
-ax2.plot([fb_l - sc(6), fb_l + sc(8)], [cyc - sc(84), cyc - sc(84)], color=C_CL, lw=LW_THIN, ls=(0, (6, 2, 1, 2)), zorder=2)
-ax2.text(fb_l - sc(6), cyc - sc(82), '← optical axis (Ø130 arm away)', fontsize=3.8, color='#777', style='italic', zorder=8)
-
-# ── dimensions ──
-draw_dim_v(ax2, rr_l + sc(8) + 26, cyc - sc(46), cyc + sc(46), 'Ø92 RING BAND', right=True, fs=4.4, offset=8)
-draw_dim_h(ax2, rr_l, rr_l + sc(8), cyc + sc(50), '8 THK', above=True, fs=4.2, offset=6)
+# centerline (optical axis) — the carrier center is far below this rim joint
+ax2.plot([fr_x - sc(6), fr_x + sc(8)], [cyc - sc(84), cyc - sc(84)], color=C_CL, lw=LW_THIN, ls=(0, (6, 2, 1, 2)), zorder=2)
+ax2.text(fr_x - sc(6), cyc - sc(82), '↓ optical axis (Ø130 arm away)', fontsize=3.8, color='#777', style='italic', zorder=8)
 
 # ── leaders (spread clear of the geometry) ──
-leader(ax2, cf_l - sc(4), cyc - sc(4), fb_l - 8, cyc - sc(44), 'Ø8 Gr-25 BALL\nIN 60° CONE SEAT', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
-leader(ax2, fb_l + sc(15), cyc + sc(6), fb_l - 8, cyc + sc(38), 'M8×1.0 ADJUSTER\n(Delrin bushing)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
-leader(ax2, cf_r + sc(12), cyc - sc(2), cf_r + sc(8), cyc - sc(70), 'WAVE SPRING\n(preload)', fs=4.4, color=C_DIM, arrow_style='->', ha='center')
-leader(ax2, rr_l + sc(4), cyc - sc(22), rr_l + sc(22), cyc - sc(46), 'Al RETAINING RING\n@ Ø450 · 6× M5', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+leader(ax2, fr_x + sc(20), cyc + sc(4), fr_x - 8, cyc + sc(40), 'WAVE SPRING\n(frame counterbore)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax2, cf_r + sc(4), cyc - sc(4), fr_x - 8, cyc - sc(44), 'Ø8 Gr-25 BALL\nIN 60° CONE SEAT (rear face)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax2, rr_l + sc(15), cyc + sc(3), rr_l + sc(22), cyc - sc(70), 'M8 ADJUSTER + KNOB\n(interior — set from inside)', fs=4.4, color=C_DIM, arrow_style='->', ha='center')
+leader(ax2, rr_l + sc(4), cyc - sc(30), rr_l + sc(20), cyc + sc(54), 'Al ADJUSTER BRACKET\nRING @ Ø450 · 6× M5', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
 leader(ax2, cf_l + sc(6), cyc + sc(64), cf_l - sc(10), cyc + sc(74), 'BELLOWS LIP\n+ CLAMP RING', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
 
-ax2.text(cxc, cyc - sc(88), 'RIM MOUNT — carrier clamped between the Ø8 ball (kinematic seat) and the wave\n'
-         'spring on the Al retaining ring. No central bearing; optical axis clear. Seats: 1 cone / 1 vee / 2 flat.',
+ax2.text(cxc + sc(6), cyc - sc(88), 'RIM MOUNT — carrier clamped between the frame WAVE SPRING (left) and the Ø8\n'
+         'adjuster BALL on the interior bracket ring (right). No central bearing; axis clear; knobs set from inside.',
          ha='center', fontsize=4.4, style='italic', color='#333333')
 
 # ── PANEL D: Adjustment screw detail (1:1) ────────────────────────────────────
@@ -1144,7 +1075,7 @@ draw_dim_h(ax2, cx2d - frame_wall_w, cx2d - frame_wall_w + bush_w,
 
 leader(ax2, cx2d + screw_len + s1b(KNOB_H)/2, cy2d + s1b(KNOB_D/2),
        cx2d + screw_len + s1b(KNOB_H) + 24, cy2d + 20,
-       f'Ø40 KNURLED KNOB\n{FRONT_BOARD_DETENTS}-DETENT\n{FRONT_BOARD_CLICK_DEG}°/CLICK', fs=5, color=C_DIM, arrow_style='->')
+       f'Ø40 KNURLED KNOB (INTERIOR)\n{FRONT_BOARD_DETENTS}-DETENT\n{FRONT_BOARD_CLICK_DEG}°/CLICK', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
        cx2d - frame_wall_w - 58, cy2d - 2,
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fs=5, color=C_DIM, arrow_style='->')
@@ -1157,9 +1088,9 @@ leader(ax2, ball_x2, cy2d + s1b(BALL_D/2),
 leader(ax2, ball_x2 - carrier_rim_w/2, cy2d + s1b(CARR_THICK/2),
        ball_x2 - carrier_rim_w - 100, cy2d + 100,
        'ICP-02\nCARRIER RIM', fs=5, color=C_DIM, arrow_style='->')
-leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30),
-       cx2d - frame_wall_w/2, cy2d + s1b(30) + 20,
-       'ICP-01\nFRAME WALL', fs=5, color=C_DIM, arrow_style='->')
+leader(ax2, cx2d - frame_wall_w/2, cy2d - s1b(30),
+       cx2d - frame_wall_w - 40, cy2d - s1b(30) - 30,
+       'ICP-03 ADJUSTER\nBRACKET RING', fs=5, color=C_DIM, arrow_style='->', ha='right')
 
 # Angular resolution table — top right of Panel D
 tbl_x, tbl_y = 1160, 414

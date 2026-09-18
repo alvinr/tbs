@@ -10,17 +10,17 @@ The front board is the interchangeable plate that carries the pinhole disc at th
 
 ## 2. Mechanism Overview
 
-The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate. The drawing set (TBS-TSB, 5 sheets) runs from the overall arrangement through the sectional master to a component blueprint per part.
+The TSB assembly is a drop-in replacement for the standard flat pinhole plate. The drawing set (TBS-TSB, 6 sheets) runs from the overall arrangement through the sectional master to a component blueprint per fabricated part. The tilt/swing knobs are adjusted from **inside the container** (the camera side).
 
 **Sheet 1 — Overall design, front view** (1:2, scene side). ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and the A-A cut line.
 
 ![TSB Sheet 1 — Overall Design](assets/tilt-swing-sheet1.png)
 
-**Sheet 2 — Section A-A (sectional master)** (1:2). Vertical section through center: the rim kinematic mount (adjuster balls + wave-spring/retaining-ring preload), bellows, adjustment-screw mechanism, and pinhole disc — with an enlarged DETAIL Z of the rim joint. The cutting plane is referenced by the A-A line on Sheet 1.
+**Sheet 2 — Section A-A (sectional master)** (1:2). Vertical section through center: the rim kinematic mount (adjuster balls on the carrier rear face + wave spring in the frame counterbore + the interior adjuster bracket ring), bellows, and pinhole disc — with an enlarged DETAIL Z of the rim joint. The cutting plane is referenced by the A-A line on Sheet 1. **The knobs are on the interior (camera) side — set from inside.**
 
 ![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
 
-**Sheet 3 — ICP-01 Outer Adapter Frame** (1:8). Exterior (scene-side) and interior (container-side) faces: the bolt/dowel/seal interface, adjustment bushings, the clear Ø380 bore, 3-step labyrinth, the bellows outer clamp ring, and the retaining-ring standoff pattern.
+**Sheet 3 — ICP-01 Outer Adapter Frame** (1:8). Exterior (scene-side) and interior (container-side) faces: the bolt/dowel/seal interface, the clear Ø380 bore, 3-step labyrinth, the bellows outer clamp ring, the wave-spring counterbore, and the adjuster-bracket-ring standoff pattern.
 
 ![TSB Sheet 3 — ICP-01 Outer Adapter Frame](assets/tilt-swing-sheet3.png)
 
@@ -42,24 +42,24 @@ WALL FRAME (flat adapter plate welded/bolted over the corrugated end wall; enlar
 ├── ICP-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
 │    ├── Identical M12/540PCD/Ø8 dowel interface as all other plates
 │    ├── Ø380mm central bore — CLEAR (carrier is rim-supported; no central bearing)
-│    ├── 4× M8×1.0 fine-pitch adjustment screws with Delrin guide bushings
-│    ├── 4× M6 nylon-tip locking set screws (cross-lock each adj screw)
+│    ├── Ø300mm wave-spring counterbore (interior face) — the spring reaction
+│    ├── 6× M5 adjuster-bracket-ring standoffs on Ø450mm PCD (carry the ICP-03 ring)
 │    ├── Bellows outer clamp ring on Ø420mm PCD (6× M4, outside the labyrinth)
-│    ├── 6× M5 retaining-ring standoffs on Ø450mm PCD (carry the ICP-03 preload ring)
 │    └── 3-step labyrinth bore (Ø382/390/400mm) — secondary light seal
 │
 ├── ICP-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
-│    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser)
+│    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser) — camera-side face
 │    ├── Ø52×3mm counterbore — identical to standard plate
-│    ├── Rim-located: 4× 440C SS kinematic-seat inserts (ICP-05) on Ø260mm PCD
+│    ├── 4× 440C SS kinematic-seat inserts (ICP-05) on Ø260mm PCD — REAR (camera) face
 │    │     (1 cone / 1 V-groove / 2 flat → in-plane position + spin exactly constrained)
-│    ├── Ø300mm wave-spring bearing land (interior rim); no central shank
+│    ├── Ø300mm wave-spring bearing land — FRONT (scene) rim; no central shank
 │    └── Bellows inner clamp ring on Ø306mm PCD (4× M4)
 │
-├── ICP-03  RIM PRELOAD SUBSYSTEM (replaces the central bearing)
-│    ├── Annular wave spring (~Ø300 mean dia) — seats the carrier on the 4 adjuster balls
-│    ├── Al retaining ring Ø470 × Ø286 × 8mm, 6× M5 standoffs @ Ø450 (outside the bellows)
-│    └── Zero backlash; optical axis completely clear
+├── ICP-03  RIM PRELOAD + ADJUSTER SUBSYSTEM (replaces the central bearing)
+│    ├── Annular wave spring (~Ø300) in the frame counterbore — pushes the carrier onto the balls
+│    ├── Al adjuster bracket ring ~Ø470 × Ø250 × 8mm, 6× M5 standoffs @ Ø450 (outside the bellows)
+│    ├── Carries the 4× M8×1.0 adjusters + Delrin bushings + 4× M6 locks — KNOBS FACE THE INTERIOR
+│    └── Zero backlash; optical axis completely clear; adjust from inside the container
 │
 └── ICP-04  BELLOWS (matte black neoprene/nylon)
      ├── Truncated cone Ø290mm (carrier) → Ø430mm (frame), free length 60mm, 4 pleats — clamp-ring retained both ends
@@ -98,7 +98,7 @@ The carrier is located **entirely at its rim**, leaving the pinhole's optical ax
 - **Cross-flexure**: two stacked stages for tilt + swing; combined depth ~60mm exceeds the 40mm plate budget; parasitic translation at compound angles.
 - **Cardan joint**: cross-spider projects across the aperture (obstruction + gimbal-lock risk near cross-axis).
 
-**Rim kinematic mount (chosen).** The carrier rests on the four adjuster balls, which seat in four hardened 440C inserts arranged as a kinematic coupling — **1 cone, 1 V-groove, 2 flats** — so in-plane position and rotation about the axis (spin) are exactly constrained while the four axial contacts set tilt and swing. A peripheral **wave spring** (~Ø300) reacting on an aluminum **retaining ring** (standoff-mounted to the frame at Ø450, outside the bellows) holds the carrier against the balls for zero backlash. The bellows carries no load — it is only the light seal.
+**Rim kinematic mount (chosen).** The carrier rests on the four adjuster balls, which seat in four hardened 440C inserts on the carrier's **rear (camera-side) face**, arranged as a kinematic coupling — **1 cone, 1 V-groove, 2 flats** — so in-plane position and rotation about the axis (spin) are exactly constrained while the four axial contacts set tilt and swing. The four M8 adjusters mount on an aluminum **adjuster bracket ring** standoff-mounted to the frame's interior face (6× M5 @ Ø450, outside the bellows), so their **knobs face into the container and are set from inside**. A peripheral **wave spring** (~Ø300) seated in a counterbore in the frame's interior face bears on the carrier's front rim and pushes it back onto the balls for zero backlash. The bellows carries no load — it is only the light seal.
 
 **Parallax.** With the pivot at the rim-contact plane (~one carrier thickness, ~25mm, behind the pinhole) rather than exactly at the pinhole, a full tilt swings the pinhole ~2.3mm — under 1.5% of the intended ±<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm image shift, and optically negligible. This small, bounded parallax is the deliberate trade for keeping the optical axis clear.
 
@@ -106,7 +106,7 @@ The carrier is located **entirely at its rim**, leaving the pinhole's optical ax
 
 ## 5. Adjustment Mechanism
 
-Four M8 × 1.0 fine-pitch stainless screws, each terminating in a Grade-25 Ø8mm chrome steel ball seated in a hardened 440C SS kinematic-seat insert (1 cone / 1 V-groove / 2 flat, §4) pressed into the carrier plate rim. A peripheral wave spring holds the carrier against all four balls, so each screw pair works against a constant preload (zero backlash).
+Four M8 × 1.0 fine-pitch stainless screws mounted on the **interior adjuster bracket ring** (§4), each terminating in a Grade-25 Ø8mm chrome steel ball seated in a hardened 440C SS kinematic-seat insert (1 cone / 1 V-groove / 2 flat) on the carrier's rear face. The knobs face into the container, so tilt/swing is set from inside. A peripheral wave spring in the frame holds the carrier against all four balls, so each screw pair works against a constant preload (zero backlash).
 
 **Angular resolution:**
 
@@ -143,7 +143,7 @@ The bellows (ICP-04) is the primary seal — zero friction, zero wear, accommoda
 
 ## 7. Locking for Long Exposures
 
-After setting the desired angle, tighten the 4 × M6 nylon-tip set screws (one per adjustment screw, accessed with a 3mm hex key from the exterior face). The nylon tip binds against the M8 shank without marring the threads.
+After setting the desired angle, tighten the 4 × M6 nylon-tip set screws (one per adjustment screw, accessed with a 3mm hex key from the interior/camera side, on the adjuster bracket ring). The nylon tip binds against the M8 shank without marring the threads.
 
 The combined stiction of:
 1. M6 lock screws binding M8 adjustment screws
@@ -222,7 +222,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | ICP-05 seat form (cone/vee) Ra | — | Ra 0.4 (ground) | Ball location + articulation smoothness |
 | Kinematic-seat PCD Ø260 | Ø260.000 | ±0.05mm positional | Sets tilt/swing zero + even preload |
 | ICP-02 counterbore Ø52 | Ø52.000 | H7: +0.030/0.000 | Concentric with the pinhole axis to 0.05mm |
-| ICP-01 retaining-ring standoff PCD Ø450 | Ø450.000 | ±0.1mm positional | Even wave-spring seating |
+| ICP-01 bracket-ring standoff PCD Ø450 | Ø450.000 | ±0.1mm positional | Even adjuster-ring + spring seating |
 | ICP-01 bolt holes M12 PCD | Ø540.000 | ±0.1mm positional | Must match wall frame exactly |
 | ICP-01 dowel holes Ø8 | Ø8.000 | H7: +0.015/0.000 | Plate registration repeatability |
 | Adj screw arm radius | 130.000 | ±0.25mm | Calibration scale accuracy |
@@ -231,18 +231,18 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 
 ## 12. Parts List
 
-The BOM is single-sourced from the parts registry (`parts.py`) and generated below. The fasteners, chrome balls, bushing/insert stock, seals, and Loctite carry firm McMaster SKUs; the raw plate + round bar, the preload wave spring + retaining ring, and the fab/finishing **services** (CNC machining, hard/black anodize, scale engraving, custom bellows) carry **SKU pending — source**: get a supplier or shop quote before purchase.
+The BOM is single-sourced from the parts registry (`parts.py`) and generated below. The fasteners, chrome balls, bushing/insert stock, seals, and Loctite carry firm McMaster SKUs; the raw plate + round bar, the preload wave spring + adjuster bracket ring, and the fab/finishing **services** (CNC machining, hard/black anodize, scale engraving, custom bellows) carry **SKU pending — source**: get a supplier or shop quote before purchase.
 
 <!-- BEGIN parts:front-board -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Annular wave spring — carrier preload (ICP-03) | ICP-03 preload: ~Ø300 mean-dia crest-to-crest wave spring (17-7 PH SS), bears on the carrier interior rim to seat it on the 4 adjuster balls (zero backlash). Replaces the former central GE50 bearing — the carrier is now rim-supported and the optical axis is clear. Large-dia custom coil — SKU pending (Smalley / Associated Spring). | 1 ea | Smalley / Associated Spring | $25–$50 |
-| Preload retaining ring — Al (ICP-03) | ICP-03 preload: 6061-T6 annular ring Ø470 OD × Ø286 ID × 8mm, standoff-mounted to ICP-01's interior face (6× M5 @ Ø450, outside the bellows) to react the wave-spring preload. Waterjet blank + light machining. SKU pending — fab quote. | 1 ea | local machine shop | $30–$60 |
-| M5×30 SHCS 18-8 SS (retaining-ring standoff) | 6 off — standoff screws mounting the preload retaining ring to ICP-01 at Ø450 (tapped). M5×30 SHCS 18-8 SS, pack of 25 — SKU pending (source). | 1 pack | McMaster-Carr / Bolt Depot | $8 |
+| Annular wave spring — carrier preload (ICP-03) | ICP-03 preload: ~Ø300 mean-dia crest-to-crest wave spring (17-7 PH SS), seated in a counterbore in ICP-01's interior face; bears on the carrier's exterior rim to push it onto the 4 adjuster balls (zero backlash). Replaces the former central GE50 bearing — the carrier is rim-supported and the optical axis is clear. Large-dia custom coil — SKU pending (Smalley / Associated Spring). | 1 ea | Smalley / Associated Spring | $25–$50 |
+| Adjuster bracket ring — Al (ICP-03) | ICP-03: 6061-T6 annular bracket ring ~Ø470 OD × Ø250 ID × 8mm, standoff-mounted to ICP-01's interior face (6× M5 @ Ø450, outside the bellows). Carries the 4 M8 adjuster bushings at Ø270 with the KNOBS facing into the container (adjust from inside) and reacts the wave-spring preload. Waterjet blank + machined (bushing bores + tapped mounts). SKU pending — fab quote. | 1 ea | local machine shop | $35–$70 |
+| M5×30 SHCS 18-8 SS (bracket-ring standoff) | 6 off — standoff screws mounting the adjuster bracket ring to ICP-01 at Ø450 (tapped). M5×30 SHCS 18-8 SS, pack of 25 — SKU pending (source). | 1 pack | McMaster-Carr / Bolt Depot | $8 |
 | ICP-01 outer adapter frame stock (6061-T651 plate) | 6061-T651 plate 620×620×45mm (24×24×1.75in) — machined to the 600×600×40 outer frame. SKU pending — source (Online Metals / Metal Supermarkets, Chatsworth). | 1 ea | Online Metals / Metal Supermarkets | $125 |
 | ICP-02 inner carrier stock (6061-T6 round bar) | 6061-T6 round bar Ø340×30mm (13.5in OD × 1.2in) — machined to the Ø320×25 carrier (no central shank — rim-supported). SKU pending — source (Metal Supermarkets, Chatsworth / Online Metals). | 1 ea | Metal Supermarkets / Online Metals | $100 |
 | [M8×1.0×80 SHCS 18-8 SS (adjustment screws)](https://www.mcmaster.com/91180A407/) (91180A407) | Fine-pitch adjustment screw, ball-end seats in the 440C insert; partially threaded. 4 off. McMaster 91180A407 $18.73/10. | 4 ea | McMaster-Carr / Bolt Depot | $7 |
-| [Delrin/POM guide bushing rod](https://www.mcmaster.com/8573K75/) (8573K75) | Ø30×200mm Delrin/POM rod — machine the 4 adjustment-screw guide bushings. McMaster 8573K75. | 1 ea | McMaster-Carr / Amazon Industrial | $20 |
+| [Delrin/POM guide bushing rod](https://www.mcmaster.com/8573K75/) (8573K75) | Ø30×200mm Delrin/POM rod — machine the 4 adjustment-screw guide bushings (pressed into the adjuster bracket ring, not the frame). McMaster 8573K75. | 1 ea | McMaster-Carr / Amazon Industrial | $20 |
 | [Ø8mm Grade-25 chrome steel balls (10-pack)](https://www.mcmaster.com/9528K22/) (9528K22) | 52100 bearing steel, Ø8mm Grade 25, 10-pack — the ball-end contact at each adjustment screw. McMaster 9528K22. | 1 pack | McMaster-Carr / Precision Balls Inc. | $14 |
 | [M6×1.0 nylon-tip set screw (10-pack)](https://www.mcmaster.com/91375A187/) (91375A187) | SS316, M6×20mm nylon-tip — cross-locks each adjustment screw for long exposures. Pack of 10. McMaster 91375A187. | 1 pack | McMaster-Carr / Fastenal | $14 |
 | [440C SS round bar (ball-socket inserts)](https://www.mcmaster.com/1765T17/) (1765T17) | Ø20×100mm 440C SS bar — machine the 4 hardened kinematic-seat inserts (ICP-05): 1 cone / 1 V-groove / 2 flat, Ra 0.4 ground (locate the carrier in-plane + anti-spin). McMaster 1765T17. | 1 ea | McMaster-Carr / Metal Supermarkets | $28 |
@@ -255,13 +255,13 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | M4×12 SHCS 18-8 SS (bellows clamp-ring) | Retains the 2 bellows clamp rings — 4× on the carrier ring + 6× on the frame ring = 10 off, pack of 25. M4×12 SHCS 18-8 SS — SKU pending (source). | 1 pack | McMaster-Carr / Bolt Depot | $6 |
 | Hard anodize — ICP-01 exterior (service) | MIL-A-8625 Type III, 0.025mm, ICP-01 exterior. SKU pending — get a shop quote (Pac-Nor, Chatsworth). | 1 job | Pac-Nor Anodizing | $80–$120 |
 | Black anodize — ICP-02 + knobs (service) | Type II, ICP-02 carrier + the 4 knobs. SKU pending — get a shop quote (Aero Finishing, Burbank). | 1 job | Aero Finishing | $60–$90 |
-| CNC machining — ICP-01 + ICP-02 (service) | All-aluminum machining of both plates (Ø380 bore, kinematic-seat + insert bores, wave-spring land, retaining-ring standoff tap pattern, PCDs, labyrinth, counterbore). SKU pending — get a fab quote (Fictiv / ProtoLabs). | 1 job | Fictiv / ProtoLabs | $800–$1,500 |
+| CNC machining — ICP-01 + ICP-02 (service) | All-aluminum machining of both plates + the adjuster bracket ring (Ø380 bore, wave-spring counterbore + bracket-ring standoff taps on the frame, kinematic-seat insert bores on the carrier rear face, PCDs, labyrinth, counterbore). SKU pending — get a fab quote (Fictiv / ProtoLabs). | 1 job | Fictiv / ProtoLabs | $800–$1,500 |
 | Knurled knob stock Ø40mm Al (4 off) | Ø40mm Al knurled knob — 4 off (2 black TILT, 2 silver SWING), engraved. Jergens 49525 (SKU pending — verify) or machine from bar. | 4 ea | Jergens / local machine shop | $60 |
 | Angular calibration scale engraving (service) | Al 80×15×2mm, 2 off — laser-engraved angular scales (tilt + swing). SKU pending — quote (LaserPros, Chatsworth). | 1 set | LaserPros | $35–$50 |
-| **Front-Board total** | | | | **$1,606–$2,532** |
+| **Front-Board total** | | | | **$1,611–$2,542** |
 <!-- END parts:front-board -->
 
-**Estimated module total: ~<!-- BEGIN costing:front-board-total -->$1,606<!-- END costing:front-board-total --> – ~<!-- BEGIN costing:front-board-total-high -->$2,532<!-- END costing:front-board-total-high -->.** CNC machining and the custom bellows dominate the upper band.
+**Estimated module total: ~<!-- BEGIN costing:front-board-total -->$1,611<!-- END costing:front-board-total --> – ~<!-- BEGIN costing:front-board-total-high -->$2,542<!-- END costing:front-board-total-high -->.** CNC machining and the custom bellows dominate the upper band.
 
 
 ---

@@ -9,6 +9,18 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## 🎯 Tilt-swing carrier support — rim kinematic mount (2026-09-18) — ✅ DONE (awaiting review/publish)
+
+> Replaced the unbuildable central GE50 pivot (floated in the Ø380 bore + blocked the optical axis)
+> with a **rim kinematic mount**: carrier located at its rim by 4 adjuster balls in kinematic seats
+> (1 cone / 1 vee / 2 flat) + peripheral wave-spring/retaining-ring preload; axis fully clear; ~2.3mm
+> parallax accepted. All 7 phases shipped across Sheets 1–4, parts/costing, and report §2/§4/§5/§11/§13/§14.
+> Committed (not published) — user reviews the set first. No 3D model (front board is 2D-only).
+
+- [ ] **OPEN — adjuster knob side.** Knobs are drawn on the **exterior (scene) side** (as before). If they
+  should be adjustable from **inside** the container (interior/camera side), flip them — cascades Sheet 2
+  (knob position), Sheet 4 Panel D, and report §5 "from the exterior face" wording. Awaiting decision.
+
 ## Cleanup
 
 - [x] **Scrub author-name attributions from code/text (2026-09-05 → done 2026-09-10).** CLAUDE.md bans naming the author in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Back-scrubbed every pre-existing dated attribution across `src/`, the reports, `RELEASE.md`, and this tracker; kept the license/copyright headers, the CLAUDE.md rule text, and the functional brochure-footer regex.

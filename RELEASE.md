@@ -80,6 +80,23 @@ file** — a release must not ship without a changelog entry:
   "Adjustment-Screw Lock" detail showing the M8 adjustment screw threaded through the Delrin bushing in
   the frame boss and the M6 nylon-tip set screw jamming its thread, with a note that it locks the SET
   ANGLE only (the carrier is held by the central bearing, not these screws).
+- **TSB carrier support redesigned — central bearing → rim kinematic mount.** Review found the central
+  GE50 pivot was unbuildable: it floated at the center of the Ø380 bore (no way to carry it across the
+  aperture) and sat on the pinhole's optical axis (a solid Ø50 shank blocks the image; a spider would
+  obstruct the aperture — the same reason §4 rejected the Cardan joint). Replaced it with a **rim
+  kinematic mount**: the carrier is located only at its rim by the 4 adjuster balls in kinematic seats
+  (1 cone / 1 V-groove / 2 flat) and held against them by a peripheral **wave spring** reacting on an
+  aluminum **retaining ring** (6× M5 standoffs @ Ø450, outside the bellows). The optical axis is now
+  completely clear; small bounded parallax is accepted (pivot ~one carrier-thickness behind the pinhole
+  → pinhole shifts ~2.3mm at ±5.3°, <1.5%). Cascade: Sheet 2 rebuilt (bearing/shank gone; wave-spring +
+  retaining-ring + clamp rings added) with an enlarged **DETAIL Z** rim-mount inset and the widened
+  sheet; Sheet 1's A-A cutting-plane arrows fixed (were anti-parallel — the section reference was
+  floating) + stale bearing content removed; Sheet 3 Panel B (clear bore + retaining-ring standoffs);
+  Sheet 4 (kinematic seats on both carrier faces + Panel C "GE50 bearing section" repurposed as the
+  preload & kinematic-seat section). Parts: dropped `fb-ge50-bearing` + `tsb-central-screw`, added the
+  wave spring + retaining ring + M5 standoff screws (front-board total $1,606–$2,532, reconciled).
+  Report §2/§4/§5/§11/§13/§14 rewritten to the rim mount; ICP-03 reassigned to the preload subsystem.
+  The bellows now shows its **clamp rings on Sheet 2** (also a review item). No 3D model involved.
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

@@ -19,9 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
-from tbs_constants import (DIAGRAMS_DIR, FRONT_BOARD_MAX_DEG, FRONT_BOARD_CLICK_DEG,
-                           FRONT_BOARD_DETENTS, FRONT_BOARD_TRAVEL_MM, FRONT_BOARD_SCREW_PITCH,
-                           FRONT_BOARD_ARM_MM)
+from tbs_constants import DIAGRAMS_DIR, FRONT_BOARD_MAX_DEG, FRONT_BOARD_CLICK_DEG, FRONT_BOARD_DETENTS, FRONT_BOARD_TRAVEL_MM, FRONT_BOARD_SCREW_PITCH
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
                          draw_rect, leader, bolt_holes, draw_notes)
@@ -46,9 +44,7 @@ PH_BORE    = 90       # exterior taper bore
 
 # --- ICP-01 Outer Adapter Frame ---
 TSB01_THICK  = 40     # plate thickness
-TSB01_BORE   = 380    # central bore diameter
-BRG_SEAT_D   = 80     # bearing outer ring OD / seat bore diameter
-BRG_SEAT_DEP = 50     # depth of bearing pocket
+TSB01_BORE   = 380    # central bore diameter (clear — no central bearing)
 ADJ_PCD      = 270    # adjustment screw PCD (in frame)
 ADJ_N        = 4      # 4 screws
 LAB_D1, LAB_D2, LAB_D3 = 382, 390, 400  # labyrinth step diameters
@@ -57,19 +53,11 @@ BELL_OUT_PCD = 420    # bellows outer clamp-ring screw PCD — OUTSIDE the Ø400
 # --- ICP-02 Inner Carrier Plate ---
 CARR_OD      = 320    # carrier plate OD
 CARR_THICK   = 25     # thickness
-BRG_SHANK_D  = 50     # bearing shank diameter (k5)
-BRG_SHANK_L  = 35     # shank length
-SOCK_PCD     = 260    # ball socket insert PCD
+SOCK_PCD     = 260    # kinematic-seat insert PCD (cone/vee/flat)
 BELL_IN_PCD  = 306    # bellows inner clamp-ring screw PCD — 7mm edge to the Ø320 rim, 8mm to the Ø290 ID
-
-# --- Bearing ICP-03 ---
-BRG_OD       = 80
-BRG_ID       = 50
-BRG_W        = 46     # total width
 
 # --- Adjustment screw ---
 ADJ_D        = 8      # M8 screw
-ADJ_ARM      = 130    # arm radius (frame ADJ_PCD/2 - a few mm for geometry)
 BALL_D       = 8      # chrome steel ball
 KNOB_D       = 40
 KNOB_H       = 15
@@ -87,6 +75,21 @@ CLAMP_RING_W = 14     # clamp-ring radial band width
 
 SEAL_W   = 3          # neoprene seal groove width
 SEAL_DEP = 3          # seal groove depth
+
+# --- Preload subsystem (ICP-03: replaces the former central GE50 bearing) ---
+# The carrier is a RIM KINEMATIC MOUNT: located at its rim by the 4 adjuster balls seated in
+# kinematic sockets (1 cone / 1 V-groove / 2 flats → in-plane position + spin exactly constrained)
+# and held against them by a peripheral WAVE SPRING reacting on an aluminum RETAINING RING bolted
+# to the frame. The optical axis is left completely clear — no central structure. Small parallax
+# is accepted: the pivot lies ~one carrier-thickness behind the pinhole, so the pinhole shifts
+# only ~2.3mm at ±5.3° (<1.5% of the intended tilt shift).
+SPR_PCD      = 300    # annular wave-spring mean diameter (bears on the carrier interior rim)
+RET_RING_ID  = 286    # retaining-ring bore (clears the carrier interior rim + travel)
+RET_RING_OD  = 470    # retaining-ring OD
+RET_RING_T   = 8      # retaining-ring thickness (6061-T6)
+RET_BOLT_PCD = 450    # retaining-ring → frame bolt circle (solid frame face, outside the Ø400 labyrinth)
+RET_BOLT_N   = 6      # 6× M5 standoff screws
+RET_BOLT_D   = 5
 
 # ── Drawing helpers (same as generate_plate_drawing.py) ───────────────────────
 
@@ -113,16 +116,14 @@ C_BELL  = '#303030'   # bellows black
 # constants live here (module-level); ADJ_PCD is the CARRIER ball-contact PCD (260),
 # distinct from the frame screw PCD (270) used by Sheets 3-5 above — hence the suffix.
 FR_OD, FR_THICK, FR_BORE = 600, 40, 380
-FR_BRG_SEAT, FR_BRG_DEPTH = 80, 50
 FR_LAB_1, FR_LAB_2, FR_LAB_3, FR_LAB_STEP = 382, 390, 400, 5
-CR_OD, CR_THICK, CR_SHANK, CR_SHANK_L = 320, 25, 50, 46
+CR_OD, CR_THICK = 320, 25
 CR_CB_D, CR_CB_DEP = 52, 3
-BRG_BORE = 50
 BEL_ID, BEL_OD, BEL_FREE, BEL_PLEATS = 290, 430, 60, 4   # truncated cone: Ø290 carrier end → Ø430 frame end
 BEL_INNER_PCD, BEL_OUTER_PCD = 306, 420   # bellows clamp-ring screw PCDs (carrier / frame)
 ADJ_PCD_CARRIER, ADJ_SCREW, ADJ_BALL, ADJ_BUSHING = 260, 8, 8, 30
 PH_APT = 2.17
-C_BRG, C_DELRIN, C_BELLOWS, C_BALL = '#A0A0B0', '#C8D8C0', '#2A2A2A', '#E0E0E0'
+C_DELRIN, C_BELLOWS, C_BALL = '#C8D8C0', '#2A2A2A', '#E0E0E0'
 
 
 def draw_sheet1():
@@ -161,8 +162,7 @@ def draw_sheet1():
     for lab_d in [FR_LAB_1, FR_LAB_2, FR_LAB_3]:
         draw_circle(ax, cx, cy, s(lab_d / 2), lw=LW_THIN, color=C_HID, ls='--')
 
-    # Bearing seat (Ø80 H7, hidden — on interior face)
-    draw_circle(ax, cx, cy, s(FR_BRG_SEAT / 2), lw=LW_THIN, color=C_HID, ls=':')
+    # (No central bearing seat — the carrier is rim-supported; the optical axis is clear.)
 
     # ICP-02 carrier plate (Ø320, visible through bore)
     cr_r = s(CR_OD / 2)
@@ -249,15 +249,18 @@ def draw_sheet1():
         by = cy + bel_in_r * np.sin(np.radians(angle))
         draw_circle(ax, bx, by, s(2), lw=0.5, color=C_HID, fc='white', fill=True)
 
-    # Section cut line A-A (vertical through center)
+    # Section cut line A-A — vertical cutting plane through the center. The two end-arrows point
+    # the SAME way (the direction of sight for SECTION A-A on Sheet 2: looking toward the interior/
+    # camera side, so the section reads exterior-left / interior-right). Both ends labeled 'A'.
     cut_ext = half + 50
-    for yy, arrow_dir in [(cy + cut_ext, -1), (cy - cut_ext, 1)]:
-        ax.plot([cx - 8, cx + 8], [yy, yy], color=C_RED, lw=LW_CUT, zorder=20)
-        ax.annotate('', xy=(cx + 20 * arrow_dir, yy),
-                    xytext=(cx, yy),
-                    arrowprops=dict(arrowstyle='->', color=C_RED, lw=1.5))
-        ax.text(cx - 15, yy, 'A', fontsize=9, fontweight='bold', color=C_RED,
-                ha='center', va='center', zorder=21)
+    ax.plot([cx, cx], [cy - cut_ext, cy + cut_ext], color=C_RED, lw=LW_THIN,
+            ls=(0, (10, 4, 2, 4)), zorder=19)                         # cutting-plane trace
+    for yy in [cy + cut_ext, cy - cut_ext]:
+        ax.plot([cx - 11, cx + 11], [yy, yy], color=C_RED, lw=LW_CUT, zorder=20)   # end mark
+        ax.annotate('', xy=(cx + 40, yy), xytext=(cx + 11, yy),
+                    arrowprops=dict(arrowstyle='-|>', color=C_RED, lw=1.7), zorder=20)  # sight direction
+        ax.text(cx + 52, yy, 'A', fontsize=9, fontweight='bold', color=C_RED,
+                ha='left', va='center', zorder=21)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     # Frame outer dimension
@@ -276,8 +279,8 @@ def draw_sheet1():
     leader(ax, cx + s(DWL_OFF) + s(DWL_D / 2), cy + 5,
            cx + 180, cy + 10, '2× Ø8 DOWEL', fs=5.5)
 
-    leader(ax, cx - s(FR_BRG_SEAT / 2) * 0.707, cy + s(FR_BRG_SEAT / 2) * 0.707,
-           cx - half - 80, cy + 55, 'Ø80 H7 BRG SEAT', fs=5.5, ha='right')
+    leader(ax, cx - s(30), cy + s(30),
+           cx - half - 80, cy + 55, 'CLEAR CENTER\n(no bearing — rim mount)', fs=5.5, ha='right')
 
     # Left-side leaders
     leader(ax, cx - s(SEAL_D / 2) * 0.707, cy - s(SEAL_D / 2) * 0.707,
@@ -296,7 +299,8 @@ def draw_sheet1():
         'VIEW FROM EXTERIOR (SCENE SIDE). CARRIER (ICP-02) VISIBLE THROUGH Ø380 BORE.',
         'ICP-01: 600×600×40mm AL 6061-T6 OUTER FRAME. SAME M12/540PCD/Ø8 DOWEL INTERFACE AS ALL PLATES.',
         'ICP-02: Ø320×25mm AL 6061-T6 CARRIER. CARRIES Ø50mm PINHOLE DISC (LENOX LASER SS-302).',
-        'ICP-03: GE50-DO-2RS SPHERICAL PLAIN BEARING (SKF). Ø50 BORE × Ø80 OD × 46mm. ±15° MISALIGNMENT.',
+        'ICP-03 PRELOAD: PERIPHERAL WAVE SPRING + Al RETAINING RING seat the carrier on the 4 adjuster balls (rim',
+        'kinematic mount — 1 cone / 1 vee / 2 flat seats). NO central bearing: the optical axis is completely clear.',
         f'ADJUSTMENT: 4× M8×1.0 FINE-PITCH SCREWS. BLACK KNOBS = TILT, SILVER = SWING. {FRONT_BOARD_CLICK_DEG}°/CLICK.',
         'LOCKING: 4× M6 NYLON-TIP SET SCREWS (3mm HEX KEY FROM EXTERIOR FACE).',
         'BELLOWS (ICP-04): TRUNCATED CONE Ø290→Ø430, 4-PLEAT NEOPRENE, CLAMP-RING RETAINED, ZERO-FRICTION LIGHT SEAL.',
@@ -321,7 +325,7 @@ def draw_sheet1():
 def draw_sheet2():
     """Sheet 2: Cross-section A-A through TSB assembly (sectional master) at 1:2 scale."""
     SC = 2.0
-    fig_w, fig_h = 5, 8
+    fig_w, fig_h = 8, 8   # widened from 5 → 8 to open a right-hand column for DETAIL Z
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')
@@ -338,8 +342,9 @@ def draw_sheet2():
     def s(mm):
         return mm / SC
 
-    # Section center: carrier center / pinhole plane
-    cx = pw * 0.45
+    # Section center: carrier center / pinhole plane. cx pinned toward the left third so the
+    # widened sheet leaves a clear right-hand column (x > ~410) for the DETAIL Z inset.
+    cx = pw * 0.28
     cy = ph / 2 + 20
 
     # ── ICP-01 Outer adapter frame (cross-section) ───────────────────────────
@@ -409,68 +414,25 @@ def draw_sheet2():
                         [y0, y1], color='#AAAAAA', lw=0.3, zorder=6,
                         clip_on=True)
 
-    # ── Bearing seat pocket (interior face of ICP-01) ────────────────────────
-    brg_seat_half = s(BRG_OD / 2)
-    brg_seat_x = cx - s(FR_BRG_DEPTH)
-    # Upper seat cutout
-    ax.add_patch(mpatches.Rectangle(
-        (brg_seat_x, cy + brg_seat_half - s(BRG_W / 2)),
-        s(FR_BRG_DEPTH), s(BRG_W / 2) - (bore_half - brg_seat_half),
-        fc='white', ec=C_OUT, lw=LW_MED, zorder=6))
-    # Lower seat cutout
-    ax.add_patch(mpatches.Rectangle(
-        (brg_seat_x, cy - brg_seat_half),
-        s(FR_BRG_DEPTH), s(BRG_W / 2) - (bore_half - brg_seat_half),
-        fc='white', ec=C_OUT, lw=LW_MED, zorder=6))
-
-    # ── ICP-03 Bearing (GE50-DO-2RS) ────────────────────────────────────────
-    brg_left = cx - s(BRG_W)
-    brg_outer_half = s(BRG_OD / 2)
-    brg_inner_half = s(BRG_BORE / 2)
-
-    # Outer ring
-    for sign in [-1, 1]:
-        ax.add_patch(mpatches.Rectangle(
-            (brg_left, cy + sign * brg_inner_half),
-            s(BRG_W), sign * (brg_outer_half - brg_inner_half),
-            fc=C_BRG, ec=C_OUT, lw=LW_MED, zorder=7))
-
-    # Inner ring (on carrier shank)
-    for sign in [-1, 1]:
-        ax.add_patch(mpatches.Rectangle(
-            (brg_left + s(3), cy + sign * brg_inner_half),
-            s(BRG_W - 6), sign * 5,
-            fc='#8888A0', ec=C_OUT, lw=0.5, zorder=8))
-
-    # ── ICP-02 Carrier plate (cross-section) ─────────────────────────────────
+    # ── ICP-02 Carrier plate (cross-section) — RIM-SUPPORTED, no central shank/bearing ──
+    # The former central GE50 bearing + Ø50 shank are removed: they blocked the pinhole axis and
+    # could not be mounted across the Ø380 bore. The carrier is now located entirely at its rim
+    # (kinematic adjuster seats + peripheral wave-spring preload, drawn below). The optical axis
+    # is clear — only the Ø2.17 pinhole passes through the center.
     cr_half = s(CR_OD / 2)
     cr_left = cx
     cr_right = cx + s(CR_THICK)
 
-    # Upper carrier section (above shank)
-    shank_half = s(CR_SHANK / 2)
-    ax.add_patch(mpatches.Rectangle(
-        (cr_left, cy + shank_half), s(CR_THICK), cr_half - shank_half,
-        fc='#E0E0E0', ec=C_OUT, lw=LW_THICK, zorder=5))
-    # Lower carrier section
-    ax.add_patch(mpatches.Rectangle(
-        (cr_left, cy - cr_half), s(CR_THICK), cr_half - shank_half,
-        fc='#E0E0E0', ec=C_OUT, lw=LW_THICK, zorder=5))
-
-    # Cross-hatching
-    for section_bot, section_top in [(cy + shank_half, cy + cr_half),
-                                     (cy - cr_half, cy - shank_half)]:
-        for i in range(60):
-            y0 = section_bot + i * 4
-            if y0 < section_top:
-                y1 = min(y0 + 4, section_top)
-                ax.plot([cr_left, cr_left + min(s(CR_THICK), y1 - y0)],
-                        [y0, y1], color='#AAAAAA', lw=0.3, zorder=6)
-
-    # Carrier shank into bearing
-    ax.add_patch(mpatches.Rectangle(
-        (brg_left + s(3), cy - shank_half), s(CR_SHANK_L - 3) + s(CR_THICK), s(CR_SHANK),
-        fc='#E0E0E0', ec=C_OUT, lw=LW_MED, zorder=6))
+    # Solid carrier disc (Ø320×25) — no central shank; the optical axis is a clear Ø2.17 bore only
+    ax.add_patch(mpatches.Rectangle((cr_left, cy - cr_half), s(CR_THICK), 2 * cr_half,
+                 fc='#E0E0E0', ec=C_OUT, lw=LW_THICK, zorder=5))
+    for i in range(90):        # cross-hatching, full height
+        y0 = cy - cr_half + i * 4
+        if y0 < cy + cr_half:
+            y1 = min(y0 + 4, cy + cr_half)
+            ax.plot([cr_left, cr_left + min(s(CR_THICK), y1 - y0)],
+                    [y0, y1], color='#AAAAAA', lw=0.3, zorder=6)
+    ax.plot([cr_left, cr_right], [cy, cy], color='white', lw=1.3, zorder=7)  # Ø2.17 pinhole bore
 
     # ── Pinhole disc (on carrier interior face) ──────────────────────────────
     disc_half = s(PH_DISC_D / 2)
@@ -505,6 +467,37 @@ def draw_sheet2():
             else:
                 pleat_ys.append(y_mid - sign * (y_outer - y_mid) * 0.3)
         ax.plot(pleat_xs, pleat_ys, color=C_BELLOWS, lw=1.2, zorder=4)
+
+    # ── Bellows clamp rings (review item 3): Al ring + M4 screw at BOTH ends ──
+    def _clamp_ring(cxr, cyr):
+        ax.add_patch(mpatches.Rectangle((cxr - s(3), cyr - s(7)), s(6), s(14),
+                     fc=C_ALUM, ec=C_OUT, lw=LW_MED, zorder=8))
+        ax.add_patch(plt.Circle((cxr, cyr), s(2), fc='#888888', ec=C_OUT, lw=0.4, zorder=9))
+    for sgn in [-1, 1]:
+        _clamp_ring(bel_left + s(4),  cy + sgn * bel_outer_half)   # frame end (outer, Ø420 clamp)
+        _clamp_ring(bel_right - s(4), cy + sgn * bel_inner_half)   # carrier end (inner, Ø306 clamp)
+
+    # ── Preload subsystem (ICP-03): peripheral wave spring + Al retaining ring ──
+    # Replaces the central bearing. Reaches in from the frame (standoffs at Ø450, outside the
+    # bellows) to press a wave spring on the carrier interior rim, seating it on the adjuster balls.
+    ring_x0 = cr_right + s(20)
+    ring_x1 = ring_x0 + s(RET_RING_T)
+    for sgn in [-1, 1]:
+        ax.add_patch(mpatches.Rectangle(
+            (ring_x0, cy + s(RET_RING_ID / 2)) if sgn > 0 else (ring_x0, cy - s(RET_RING_OD / 2)),
+            ring_x1 - ring_x0, sgn * s((RET_RING_OD - RET_RING_ID) / 2),
+            fc=C_ALUM, ec=C_OUT, lw=LW_MED, hatch='\\\\\\', zorder=6))
+        # wave spring (compressed) between the carrier interior face and the ring
+        sy = cy + sgn * s(SPR_PCD / 2)
+        wx = np.linspace(cr_right, ring_x0, 13)
+        wy = [sy + (s(3) if k % 2 else -s(3)) for k in range(len(wx))]
+        wy[0] = wy[-1] = sy
+        ax.plot(wx, wy, color=C_STEEL, lw=1.3, zorder=7)
+        # standoff screw: frame interior face → ring (radius outside the bellows)
+        by = cy + sgn * s(RET_BOLT_PCD / 2)
+        ax.plot([fr_right, ring_x1], [by, by], color=C_OUT, lw=1.4, zorder=7)
+        ax.add_patch(mpatches.Rectangle((ring_x1, by - s(4)), s(6), s(8),
+                     fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=8))
 
     # ── Adjustment screws (top and bottom in this section) ───────────────────
     adj_arm = s(ADJ_PCD_CARRIER / 2)
@@ -558,12 +551,17 @@ def draw_sheet2():
            'ICP-01 OUTER FRAME\n600×600×40 AL', fs=5)
 
     leader(ax, (cr_left + cr_right) / 2, cy + cr_half - 5,
-           lx_r + 20, cy + 130,
+           lx_r + 20, cy + 138,
            'ICP-02 CARRIER Ø320×25 AL', fs=5)
 
-    leader(ax, brg_left + s(BRG_W / 2), cy + brg_outer_half,
-           lx_r + 20, cy + brg_outer_half + 62,
-           'ICP-03 GE50-DO-2RS\nØ50×Ø80×46', fs=5)
+    leader(ax, ring_x1, cy + s(RET_RING_ID / 2) + s(18),
+           lx_r + 20, cy + 70,
+           'ICP-03 PRELOAD —\nWAVE SPRING + Al\nRETAINING RING', fs=5)
+
+    # kinematic-seat callout on the adjuster side (left), clear of the right-hand leader stack
+    leader(ax, cr_left + 3, cy + adj_arm,
+           cr_left - s(30), cy + adj_arm + 44,
+           'KINEMATIC SEAT\n(cone/vee/flat)', fs=4.4, ha='right')
 
     leader(ax, cr_right + disc_t / 2, cy + disc_half + 3,
            lx_r + 20, cy + disc_half + 8,
@@ -578,8 +576,6 @@ def draw_sheet2():
                above=True, fs=6, offset=8)
     draw_dim_h(ax, cr_left, cr_right, cy - cr_half - 80, '25mm',
                above=False, fs=6, offset=8)
-    draw_dim_h(ax, brg_left, brg_left + s(BRG_W), cy - brg_outer_half - 20, '46mm',
-               above=False, fs=5.5, offset=6)
     draw_dim_v(ax, fr_left - 50, cy, cy + fr_half, '300mm',
                right=False, fs=6, offset=8)
     draw_dim_v(ax, fr_left - 50, cy - fr_half, cy, '300mm',
@@ -595,14 +591,69 @@ def draw_sheet2():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes2 = [
         'SECTION A-A — TILT-SWING BOARD ASSEMBLY:',
-        'VERTICAL SECTION THROUGH CENTER. BEARING SHANK (ICP-02) PASSES THROUGH GE50-DO-2RS INTO FRAME',
-        'POCKET. PIVOT POINT AT PINHOLE DISC FACE — TILT ROTATES IMAGE CONE ABOUT PINHOLE, NO PARALLAX.',
-        'ADJUSTMENT: OPPOSING M8×1.0 SCREW PAIRS PUSH/PULL CARRIER RIM VIA GRADE-25 Ø8mm BALL CONTACTS.',
-        f'ANGULAR RANGE: ±{FRONT_BOARD_MAX_DEG}° (±{FRONT_BOARD_TRAVEL_MM}mm TRAVEL AT {FRONT_BOARD_ARM_MM}mm ARM). RESOLUTION: {FRONT_BOARD_CLICK_DEG}°/CLICK ({FRONT_BOARD_DETENTS}-DETENT KNOBS).',
-        'BELLOWS: ZERO-FRICTION LIGHT SEAL. ±13.9mm ASYMMETRIC COMPRESSION AT ±5° TILT.',
-        'LABYRINTH BORE: 3-STEP (Ø382/390/400mm, 5mm DEEP EACH) — SECONDARY LIGHT SEAL.',
+        'RIM KINEMATIC MOUNT — the carrier is located ONLY at its rim; the optical axis is fully clear (no central',
+        'shank/bearing). Support: 4 adjuster balls in kinematic seats (1 cone / 1 V-groove / 2 flat → in-plane + spin',
+        'fixed) + a peripheral WAVE SPRING on an Al RETAINING RING (standoffs Ø450, outside the bellows) → zero backlash.',
+        f'ADJUSTMENT: M8×1.0 pairs set TILT (N/S) & SWING (E/W) via Gr-25 Ø8mm balls. RANGE ±{FRONT_BOARD_MAX_DEG}°, {FRONT_BOARD_CLICK_DEG}°/click ({FRONT_BOARD_DETENTS}-detent).',
+        'PIVOT ~one carrier-thickness behind the pinhole → pinhole shifts ~2.3mm at ±5.3° (<1.5% parallax).',
+        'BELLOWS (non-structural light seal): clamp-ring both ends. LABYRINTH bore Ø382/390/400, 5 deep — secondary seal.',
     ]
-    draw_notes(ax, notes2, 25, ph * 0.20, spacing=12, fs=5, width=pw - 50)
+    draw_notes(ax, notes2, 25, ph * 0.185, spacing=12, fs=4.6, width=430)
+
+    # ── DETAIL Z — enlarged rim-mount inset (how the carrier is HELD, not floating) ──
+    # Circle a rim joint on the section, draw the enlargement in the right-hand column.
+    zc_x, zc_y = cr_right + s(10), cy - s(150)
+    ax.add_patch(plt.Circle((zc_x, zc_y), 34, fill=False, ec=C_RED, lw=0.9, zorder=13))
+    ax.text(zc_x - 44, zc_y, 'Z', fontsize=7, color=C_RED, fontweight='bold', ha='center', va='center', zorder=13)
+    ax.annotate('', xy=(zc_x + 34, zc_y), xytext=(430, 300),
+                arrowprops=dict(arrowstyle='-', color=C_RED, lw=0.6, ls=':'), zorder=12)
+
+    bx0, by0, bw, bh = 430, 150, 190, 310
+    ax.add_patch(mpatches.Rectangle((bx0, by0), bw, bh, fill=False, ec=C_OUT, lw=0.9, zorder=11))
+    ax.text(bx0 + bw / 2, by0 + bh - 16, 'DETAIL Z — RIM MOUNT (4:1)', ha='center', fontsize=5.6,
+            fontweight='bold', color=C_RED, zorder=13)
+    ax.text(bx0 + bw / 2, by0 + bh - 30, 'how the carrier is held — no central bearing',
+            ha='center', fontsize=4.2, style='italic', color='#555', zorder=13)
+
+    def zi(mm): return mm * 1.6                      # inset local scale
+    xi, yi = bx0 + 74, by0 + bh / 2 - 12             # carrier center-x, joint center-y
+    exf = xi - zi(6)                                 # carrier exterior (left) face
+    inx = xi + zi(6)                                 # carrier interior (right) face
+    # carrier rim (vertical hatched bar)
+    ax.add_patch(mpatches.Rectangle((exf, yi - zi(52)), zi(12), zi(104),
+                 fc='#E0E0E0', ec=C_OUT, lw=1.0, hatch='///', zorder=12))
+    # frame boss (far left) the adjuster passes through
+    ax.add_patch(mpatches.Rectangle((bx0 + 8, yi - zi(11)), zi(9), zi(22),
+                 fc=C_ALUM, ec=C_OUT, lw=0.7, hatch='\\\\\\', zorder=11))
+    # adjuster shank + Ø8 ball seated in a CONE notch in the carrier left face
+    ax.plot([bx0 + 8 + zi(9), exf - zi(5)], [yi, yi], color=C_OUT, lw=1.6, zorder=12)
+    ax.add_patch(plt.Circle((exf - zi(4.5), yi), zi(4.5), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=13))
+    ax.plot([exf, exf + zi(4), exf], [yi - zi(5), yi, yi + zi(5)], color=C_OUT, lw=0.9, zorder=13)  # cone
+    # wave spring: carrier interior face → retaining ring
+    sx = np.linspace(inx, inx + zi(24), 11)
+    sy = [yi + (zi(4) if k % 2 else -zi(4)) for k in range(len(sx))]
+    sy[0] = sy[-1] = yi
+    ax.plot(sx, sy, color=C_STEEL, lw=1.3, zorder=12)
+    # retaining ring + standoff to frame
+    rx = inx + zi(24)
+    ax.add_patch(mpatches.Rectangle((rx, yi - zi(42)), zi(7), zi(84),
+                 fc=C_ALUM, ec=C_OUT, lw=1.0, hatch='\\\\\\', zorder=12))
+    ax.plot([rx + zi(7), rx + zi(20)], [yi + zi(34), yi + zi(34)], color=C_OUT, lw=1.4, zorder=12)
+    # bellows lip + clamp ring on the carrier rim (top end)
+    ax.add_patch(mpatches.Rectangle((exf, yi + zi(52)), zi(12), zi(4),
+                 fc=C_BELL, ec=C_OUT, lw=0.5, zorder=13))
+    ax.add_patch(mpatches.Rectangle((exf + zi(1), yi + zi(56)), zi(10), zi(7),
+                 fc=C_ALUM, ec=C_OUT, lw=0.8, hatch='\\\\\\', zorder=13))
+    ax.plot([exf - zi(2), exf - zi(8)], [yi + zi(54), yi + zi(64)], color=C_BELL, lw=1.2, zorder=12)
+    # ── inset labels ──
+    ax.text(exf - zi(11), yi - zi(12), 'Ø8 BALL\nIN CONE SEAT', ha='right', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(xi - zi(9), yi - zi(55), 'CARRIER\nRIM', ha='center', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(inx + zi(11), yi - zi(9), 'WAVE\nSPRING', ha='center', va='bottom', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(rx + zi(10), yi - zi(12), 'Al RETAINING\nRING → frame', ha='left', va='top', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(exf - zi(6), yi + zi(66), 'BELLOWS LIP\n+ CLAMP RING', ha='right', va='bottom', fontsize=4.0, color=C_DIM, zorder=13)
+    ax.text(bx0 + bw / 2, by0 + 10,
+            'carrier CLAMPED between the ball (push →) and the\nwave spring (← push-back): zero backlash, axis clear',
+            ha='center', va='bottom', fontsize=4.0, style='italic', color='#444', zorder=13)
 
     title_block(ax, "SHEET 2 OF 6",
                 drawing_title="TILT-SWING FRONT BOARD",
@@ -738,10 +789,8 @@ p3 = mpatches.Rectangle((cx_c - hw, cy_c - hw), s1(PL_OD), s1(PL_OD),
                          lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
 ax1.add_patch(p3)
 
-# Central bearing seat (Ø80 H7) — recessed pocket, drawn OPEN (outline, not a filled disc) to match the exterior face
-draw_circle(ax1, cx_c, cy_c, s1(BRG_SEAT_D/2), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=4)
-# Bearing bore (Ø50) — recessed behind the seat (hidden line)
-draw_circle(ax1, cx_c, cy_c, s1(BRG_ID/2), lw=LW_THIN, color=C_HID, ls='--', zorder=5)
+# Ø380 through-bore — CLEAR (no central bearing seat; the carrier is rim-supported)
+draw_circle(ax1, cx_c, cy_c, s1(TSB01_BORE/2), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=4)
 
 # Labyrinth steps (3 concentric dashed circles)
 for d, ls_str in [(LAB_D1,'--'),(LAB_D2,'-.'),(LAB_D3,':')]:
@@ -763,12 +812,20 @@ for i in range(6):
     by = cy_c + s1(BELL_OUT_PCD/2) * np.sin(ang)
     draw_circle(ax1, bx, by, s1(CLAMP_SCR_D/2 + 0.5), lw=LW_THIN, color=C_OUT, fill=True, fc='#888888', zorder=6)
 
+# Retaining-ring standoff holes (6× M5 tapped) on Ø450 — carry the preload retaining ring (ICP-03)
+for i in range(RET_BOLT_N):
+    ang = np.radians(30 + i * 60)
+    rx = cx_c + s1(RET_BOLT_PCD/2) * np.cos(ang)
+    ry = cy_c + s1(RET_BOLT_PCD/2) * np.sin(ang)
+    draw_circle(ax1, rx, ry, s1(RET_BOLT_D/2), lw=0.7, color=C_OUT, fill=True, fc='white', zorder=6)
+
 draw_cl(ax1, cx_c, cy_c, hw*1.15)
 
 # ── Formal dimensions — every feature ──
 dia_stack(ax1, cx_c, cy_c - hw, [
-    (s1(BRG_SEAT_D),   'Ø80 H7 BEARING SEAT · 50 DEEP'),
+    (s1(TSB01_BORE),   'Ø380 BORE (THRU) — CLEAR, no central bearing'),
     (s1(BELL_OUT_PCD), 'Ø420 PCD · 6× M4 BELLOWS CLAMP-RING SCREW (OUTSIDE LABYRINTH) · 60° APART'),
+    (s1(RET_BOLT_PCD), 'Ø450 PCD · 6× M5 RETAINING-RING STANDOFF (TAPPED) · 60° APART'),
     (s1(PL_OD),        '600'),
 ], dirn=-1)
 dia_stack(ax1, cx_c, cy_c + hw, [
@@ -778,8 +835,6 @@ dia_stack(ax1, cx_c, cy_c + hw, [
 draw_dim_v(ax1, cx_c + hw + 30, cy_c - hw, cy_c + hw, '600', right=True, fs=5.5, offset=20)
 ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40 THK', ha='left', va='top',
          fontsize=5, color=C_DIM, style='italic', zorder=10)
-draw_dim_h(ax1, cx_c - s1(BRG_ID/2), cx_c + s1(BRG_ID/2), cy_c - s1(BRG_ID/2) - 22,
-           'Ø50 BORE', above=False, fs=4.3, offset=11)
 
 draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø420 (CLAMP-RING SCREWS)', right=False, fs=5, offset=16)
 # ── identifying leaders ──
@@ -787,8 +842,10 @@ leader(ax1, cx_c, cy_c + s1(ADJ_PCD/2), cx_c - 120, cy_c + hw - 30,
        '4× M22 ADJ BUSHING', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
 leader(ax1, cx_c + s1(BELL_OUT_PCD/2)*np.cos(np.radians(30)), cy_c + s1(BELL_OUT_PCD/2)*np.sin(np.radians(30)),
        cx_c + 120, cy_c + hw - 20, '6× M4 BELLOWS\nCLAMP-RING SCREW', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+leader(ax1, cx_c + s1(RET_BOLT_PCD/2)*np.cos(np.radians(-30)), cy_c + s1(RET_BOLT_PCD/2)*np.sin(np.radians(-30)),
+       cx_c + 120, cy_c - hw + 30, '6× M5 RETAINING-RING\nSTANDOFF (ICP-03 preload)', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
 
-ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
+ax1.text(cx_c, cy_c - hw - 250, 'PANEL B — ICP-01 INTERIOR (1:8)\n(Clear bore + labyrinth + bellows & retaining-ring attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 out1 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-sheet3.png')
@@ -812,7 +869,7 @@ ax2.set_ylim(0, FH2)
 
 title_block(ax2, "SHEET 4 OF 6",
             drawing_title="TILT-SWING FRONT BOARD",
-            subtitle="Inner Carrier, Bearing & Adjustment mechanism",
+            subtitle="Inner Carrier, Preload & Adjustment mechanism",
             scale_note="AXES IN mm",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
@@ -840,12 +897,23 @@ draw_circle(ax2, cx2a, cy2a, s2(PH_DISC_D/2), lw=LW_THICK, color=C_OUT, fill=Tru
 # Pinhole (tiny)
 draw_circle(ax2, cx2a, cy2a, 2.0, lw=0.5, color='white', fill=True, fc='white', zorder=7)
 
-# 4 × Ball socket inserts on Ø260
+# 4 × kinematic-seat inserts on Ø260: N=cone, E=V-groove, S/W=flat (constrains in-plane + spin)
+_seat = {90: 'CONE', 0: 'VEE', 270: 'FLAT', 180: 'FLAT'}
 for angle_deg in [90, 0, 270, 180]:
     sx = cx2a + s2(SOCK_PCD/2) * np.cos(np.radians(angle_deg))
     sy = cy2a + s2(SOCK_PCD/2) * np.sin(np.radians(angle_deg))
     draw_circle(ax2, sx, sy, s2(16/2), lw=LW_MED, color=C_OUT, fill=True, fc=C_BEAR, zorder=5)
-    draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#D0D0D0', zorder=6)
+    t = _seat[angle_deg]
+    if t == 'CONE':                                   # concentric cone seat
+        draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#D0D0D0', zorder=6)
+        draw_circle(ax2, sx, sy, s2(BALL_D/2)*0.45, lw=0.5, color=C_OUT, zorder=7)
+    elif t == 'VEE':                                  # V-groove — radial slot
+        ca, sa = np.cos(np.radians(angle_deg)), np.sin(np.radians(angle_deg))
+        ax2.add_patch(mpatches.Rectangle((sx - s2(8), sy - s2(1.6)), s2(16), s2(3.2),
+                      angle=angle_deg, rotation_point=(sx, sy), fc='#D0D0D0', ec=C_OUT, lw=0.6, zorder=6))
+    else:                                             # flat pad
+        draw_circle(ax2, sx, sy, s2(BALL_D/2), lw=0.7, color=C_OUT, fill=True, fc='#E8E8E8', zorder=6)
+    ax2.text(sx, sy - s2(11), t, ha='center', va='top', fontsize=3.6, color=C_DIM, zorder=8)
 
 # Bellows inner clamp ring (Al) + 4× M4 retaining screws on Ø306 — clamps the bellows small end to the carrier
 draw_circle(ax2, cx2a, cy2a, s2((BELL_IN_PCD+8)/2), lw=LW_MED, color=C_OUT, zorder=5)   # ring OD
@@ -864,7 +932,7 @@ draw_cl(ax2, cx2a, cy2a, s2(CARR_OD/2)*1.2)
 # ── Formal dimensions — every feature ──
 dia_stack(ax2, cx2a, cy2a - s2(CARR_OD/2), [
     (s2(PH_BORE),     'Ø90 CONE BORE (SCENE TAPER)'),
-    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 SOCKET INSERT · 90° APART'),
+    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 KINEMATIC SEAT (1 cone/1 vee/2 flat) · 90° APART'),
     (s2(BELL_IN_PCD), 'Ø306 PCD · 4× M4 BELLOWS CLAMP-RING SCREW · 90° APART'),
     (s2(CARR_OD),     'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
@@ -879,7 +947,7 @@ draw_dim_h(ax2, cx2a - s2(PH_DISC_D/2), cx2a + s2(PH_DISC_D/2), cy2a - s2(PH_DIS
 draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø306 (CLAMP-RING SCREWS)', right=True, fs=5, offset=14)
 # ── identifying leaders ──
 leader(ax2, cx2a - s2(SOCK_PCD/2), cy2a, cx2a - s2(CARR_OD/2) - 12, cy2a + s2(CARR_OD/2) + 60,
-       '4× Ø16 SOCKET INSERT', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
+       '4× Ø16 KINEMATIC SEAT\n(cone/vee/flat + Ø8 ball)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
 leader(ax2, cx2a + s2(BELL_IN_PCD/2)*0.71, cy2a + s2(BELL_IN_PCD/2)*0.71, cx2a + s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) + 34,
        'BELLOWS INNER CLAMP RING (4× M4)', fs=4.2, color=C_DIM, arrow_style='->', ha='left')
 
@@ -896,15 +964,13 @@ carr_p2 = mpatches.Circle((cx2b, cy2b), s2(CARR_OD/2),
                            lw=LW_THICK, edgecolor=C_OUT, facecolor='#C0C0C0', zorder=3)
 ax2.add_patch(carr_p2)
 
-# Bearing shank boss (Ø50 k5) — raised circular boss on rear face
-shank_p = mpatches.Circle((cx2b, cy2b), s2(BRG_SHANK_D/2),
-                           lw=LW_THICK, edgecolor=C_OUT, facecolor=C_BEAR, zorder=4)
-ax2.add_patch(shank_p)
+# CLEAR CENTER — no shank/bearing; only the Ø2.17 pinhole passes through
+draw_circle(ax2, cx2b, cy2b, s2(PH_APT/2)*3, lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=5)
 
-# M8×1.0 tapped central hole (retention bolt — non-structural; downsized from M16, fine pitch)
-draw_circle(ax2, cx2b, cy2b, s2(4), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=5)
+# Wave-spring bearing land (Ø300) — the peripheral preload spring presses here
+draw_circle(ax2, cx2b, cy2b, s2(SPR_PCD/2), lw=0.6, color=C_HID, ls=(0, (2, 3)), zorder=4)
 
-# 4 × socket insert bores (Ø16 H7) — same PCD
+# 4 × socket insert bores (Ø16 H7) — receive the ICP-05 kinematic seats (cone/vee/flat)
 for angle_deg in [90, 0, 270, 180]:
     sx = cx2b + s2(SOCK_PCD/2) * np.cos(np.radians(angle_deg))
     sy = cy2b + s2(SOCK_PCD/2) * np.sin(np.radians(angle_deg))
@@ -917,129 +983,88 @@ draw_cl(ax2, cx2b, cy2b, s2(CARR_OD/2)*1.2)
 
 # ── Formal dimensions — every feature ──
 dia_stack(ax2, cx2b, cy2b - s2(CARR_OD/2), [
-    (s2(BRG_SHANK_D), 'Ø50 k5 SHANK BOSS · 35 LONG (BEARING INNER)'),
-    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 INSERT BORE · 90° APART'),
+    (s2(SPR_PCD),     'Ø300 WAVE-SPRING BEARING LAND'),
+    (s2(SOCK_PCD),    'Ø260 PCD · 4× Ø16 H7 KINEMATIC-SEAT INSERT · 90° APART'),
     (s2(BELL_ID),     'Ø290 BELLOWS GROOVE · 4 WIDE × 3 DEEP'),
     (s2(CARR_OD),     'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
 draw_dim_v(ax2, cx2b + s2(CARR_OD/2) + 26, cy2b - s2(CARR_OD/2), cy2b + s2(CARR_OD/2), 'Ø320', right=True, fs=5, offset=16)
 ax2.text(cx2b - s2(CARR_OD/2) + 8, cy2b + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
-draw_dim_h(ax2, cx2b - s2(4), cx2b + s2(4), cy2b + s2(BRG_SHANK_D/2) + 16,
-           'M8×1.0 TAPPED (CENTRAL RETENTION)', above=True, fs=4.2, offset=10)
 
 draw_dim_v(ax2, cx2b - s2(CARR_OD/2) - 26, cy2b - s2(SOCK_PCD/2), cy2b + s2(SOCK_PCD/2), 'Ø260 B.C. (4× Ø16 INSERT)', right=False, fs=5, offset=14)
-# ── identifying leader ──
+# ── identifying leaders ──
 leader(ax2, cx2b, cy2b + s2(SOCK_PCD/2), cx2b, cy2b + s2(CARR_OD/2) + 34,
-       '4× Ø16 INSERT BORE (H7)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
+       '4× KINEMATIC SEAT\n(1 cone / 1 vee / 2 flat)', fs=4.2, color=C_DIM, arrow_style='->', ha='center')
+leader(ax2, cx2b - s2(SPR_PCD/2)*0.707, cy2b - s2(SPR_PCD/2)*0.707, cx2b - s2(CARR_OD/2) - 30, cy2b - 60,
+       'Ø300 WAVE-SPRING\nBEARING LAND', fs=4.2, color=C_DIM, arrow_style='->', ha='right')
 
-ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
+ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 250, 'PANEL B — ICP-02 REAR FACE (1:2)\nInterior side — clear center, no shank',
          ha='center', fontsize=5, style='italic', color='#333333')
 
-# ── PANEL C: Bearing section detail (1:1) ─────────────────────────────────────
-ax2.text(30, 430, 'PANEL C — GE50-DO-2RS BEARING SECTION (1:1)', fontsize=7.5, fontweight='bold')
+# ── PANEL C: Preload & kinematic-seat section (2:1) ───────────────────────────
+ax2.text(30, 430, 'PANEL C — PRELOAD & KINEMATIC-SEAT SECTION (2:1)', fontsize=7.5, fontweight='bold')
 ax2.plot([30, 690], [424, 424], color='black', lw=0.7)
 
-cx2c, cy2c = 290, 250
+cxc, cyc = 300, 215
+def sc(mm): return mm * 1.5                          # panel-C local scale
 
-SC1 = 1.0
-def s1b(mm): return mm * SC1
+# carrier rim (vertical, sectioned) — exterior face left, interior face right
+cf_l = cxc - sc(6)
+cf_r = cxc + sc(6)
+ax2.add_patch(mpatches.Rectangle((cf_l, cyc - sc(58)), sc(12), sc(116),
+              fc='#E0E0E0', ec=C_OUT, lw=LW_THICK, hatch='///', zorder=5))
+# frame boss (exterior) with the M8 adjuster through a Delrin bushing
+fb_l = cf_l - sc(46)
+ax2.add_patch(mpatches.Rectangle((fb_l, cyc - sc(20)), sc(30), sc(40),
+              fc=C_ALUM, ec=C_OUT, lw=LW_MED, hatch='\\\\\\', zorder=4))
+ax2.add_patch(mpatches.Rectangle((fb_l, cyc - sc(6)), sc(30), sc(12),
+              fc=C_DELR, ec=C_OUT, lw=0.6, zorder=5))                       # Delrin bushing
+ax2.add_patch(mpatches.Rectangle((fb_l, cyc - sc(2.5)), sc(30) + sc(12), sc(5),
+              fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=6))                      # M8 adjuster shank
+ax2.add_patch(plt.Circle((cf_l - sc(4), cyc), sc(4), fc=C_BALL, ec=C_OUT, lw=0.7, zorder=8))  # Ø8 ball
+ax2.plot([cf_l, cf_l + sc(4), cf_l], [cyc - sc(4.5), cyc, cyc + sc(4.5)], color=C_OUT, lw=0.9, zorder=8)  # cone seat
+# wave spring (compressed) on the carrier interior rim → retaining ring
+wx = np.linspace(cf_r, cf_r + sc(24), 11)
+wy = [cyc + (sc(4) if k % 2 else -sc(4)) for k in range(len(wx))]
+wy[0] = wy[-1] = cyc
+ax2.plot(wx, wy, color=C_STEEL, lw=1.4, zorder=6)
+rr_l = cf_r + sc(24)
+ax2.add_patch(mpatches.Rectangle((rr_l, cyc - sc(46)), sc(8), sc(92),
+              fc=C_ALUM, ec=C_OUT, lw=LW_THICK, hatch='\\\\\\', zorder=6))  # retaining ring
+# M5 standoff: retaining ring → frame (spans back to the frame interior face)
+ax2.add_patch(mpatches.Rectangle((cf_r, cyc + sc(40)), (rr_l + sc(8)) - cf_r, sc(5),
+              fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=5))
+ax2.plot([fb_l, cf_r], [cyc + sc(42), cyc + sc(42)], color=C_HID, lw=0.6, ls='--', zorder=4)  # to frame
+# bellows lip + clamp ring at the carrier rim (top)
+ax2.add_patch(mpatches.Rectangle((cf_l, cyc + sc(58)), sc(12), sc(4), fc=C_BELL, ec=C_OUT, lw=0.5, zorder=7))
+ax2.add_patch(mpatches.Rectangle((cf_l + sc(1), cyc + sc(62)), sc(10), sc(7), fc=C_ALUM, ec=C_OUT, lw=0.8, hatch='\\\\\\', zorder=7))
 
-# Outer ring (in ICP-01 pocket)
-or_left = cx2c - s1b(BRG_OD/2)
-or_right = cx2c + s1b(BRG_OD/2)
-or_bot = cy2c - s1b(BRG_W/2)
-or_top = cy2c + s1b(BRG_W/2)
-# Outer ring walls (left portion)
-out_ring_wall = s1b(6)   # outer ring wall thickness
-or_p_l = mpatches.Rectangle((or_left, or_bot), out_ring_wall, s1b(BRG_W),
-                              lw=LW_THICK, edgecolor=C_OUT, facecolor=C_BEAR)
-or_p_r = mpatches.Rectangle((or_right - out_ring_wall, or_bot), out_ring_wall, s1b(BRG_W),
-                              lw=LW_THICK, edgecolor=C_OUT, facecolor=C_BEAR)
-ax2.add_patch(or_p_l); ax2.add_patch(or_p_r)
+# centerline (optical axis) through the carrier center — far to the left of this rim joint
+ax2.plot([fb_l - sc(6), fb_l + sc(8)], [cyc - sc(84), cyc - sc(84)], color=C_CL, lw=LW_THIN, ls=(0, (6, 2, 1, 2)), zorder=2)
+ax2.text(fb_l - sc(6), cyc - sc(82), '← optical axis (Ø130 arm away)', fontsize=3.8, color='#777', style='italic', zorder=8)
 
-# Outer ring top/bottom
-or_cap_h = s1b(4)
-or_cap_t = mpatches.Rectangle((or_left, or_top - or_cap_h), s1b(BRG_OD), or_cap_h,
-                                lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR)
-or_cap_b = mpatches.Rectangle((or_left, or_bot), s1b(BRG_OD), or_cap_h,
-                                lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR)
-ax2.add_patch(or_cap_t); ax2.add_patch(or_cap_b)
+# ── dimensions ──
+draw_dim_v(ax2, rr_l + sc(8) + 26, cyc - sc(46), cyc + sc(46), 'Ø92 RING BAND', right=True, fs=4.4, offset=8)
+draw_dim_h(ax2, rr_l, rr_l + sc(8), cyc + sc(50), '8 THK', above=True, fs=4.2, offset=6)
 
-# Inner ring
-ir_wall = s1b(5)
-ir_outer_r = s1b(BRG_OD/2) - out_ring_wall - s1b(2)
-ir_inner_r = s1b(BRG_ID/2)
-ir_h = s1b(BRG_W) - 2*or_cap_h
-ir_y = or_bot + or_cap_h
-ir_l = mpatches.Rectangle((cx2c - ir_outer_r, ir_y), ir_wall, ir_h,
-                            lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR)
-ir_r = mpatches.Rectangle((cx2c + ir_outer_r - ir_wall, ir_y), ir_wall, ir_h,
-                            lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR)
-ax2.add_patch(ir_l); ax2.add_patch(ir_r)
+# ── leaders (spread clear of the geometry) ──
+leader(ax2, cf_l - sc(4), cyc - sc(4), fb_l - 8, cyc - sc(44), 'Ø8 Gr-25 BALL\nIN 60° CONE SEAT', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax2, fb_l + sc(15), cyc + sc(6), fb_l - 8, cyc + sc(38), 'M8×1.0 ADJUSTER\n(Delrin bushing)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+leader(ax2, cf_r + sc(12), cyc - sc(2), cf_r + sc(8), cyc - sc(70), 'WAVE SPRING\n(preload)', fs=4.4, color=C_DIM, arrow_style='->', ha='center')
+leader(ax2, rr_l + sc(4), cyc - sc(22), rr_l + sc(22), cyc - sc(46), 'Al RETAINING RING\n@ Ø450 · 6× M5', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+leader(ax2, cf_l + sc(6), cyc + sc(64), cf_l - sc(10), cyc + sc(74), 'BELLOWS LIP\n+ CLAMP RING', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
 
-# PTFE liner gap (vertical lines between inner and outer rings)
-ptfe_left_x = cx2c - ir_outer_r + ir_wall + s1b(1)
-ptfe_right_x = cx2c + ir_outer_r - ir_wall - s1b(1)
-ax2.plot([ptfe_left_x, ptfe_left_x], [ir_y, ir_y + ir_h],
-         color=C_GASKT, lw=2.0)
-ax2.plot([ptfe_right_x, ptfe_right_x], [ir_y, ir_y + ir_h],
-         color=C_GASKT, lw=2.0)
-
-# ICP-01 bore context (frame material either side of bearing)
-frame_ctx_w = s1b(20)
-fc_l = mpatches.Rectangle((or_left - frame_ctx_w, or_bot), frame_ctx_w, s1b(BRG_W),
-                            lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
-fc_r = mpatches.Rectangle((or_right, or_bot), frame_ctx_w, s1b(BRG_W),
-                            lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
-ax2.add_patch(fc_l); ax2.add_patch(fc_r)
-
-# ICP-02 shank through bearing
-shank_p2 = mpatches.Rectangle((cx2c - s1b(BRG_SHANK_D/2), or_bot - s1b(15)),
-                               s1b(BRG_SHANK_D), s1b(BRG_W) + s1b(15),
-                               lw=LW_MED, edgecolor=C_OUT, facecolor='#C0C0C0')
-ax2.add_patch(shank_p2)
-
-# Seals (EPDM lips each end)
-for sy in [or_bot, or_top - s1b(3)]:
-    seal_p = mpatches.Rectangle((cx2c - ir_outer_r - s1b(1), sy), s1b(2*ir_outer_r + 2), s1b(3),
-                                  lw=0.5, edgecolor=C_OUT, facecolor=C_GASKT)
-    ax2.add_patch(seal_p)
-
-# Centerline
-ax2.plot([cx2c, cx2c], [or_bot - 40, or_top + 40],
-         color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
-
-# Dimensions
-draw_dim_h(ax2, or_left - frame_ctx_w, or_right + frame_ctx_w, or_top + 24,
-           f'Ø{BRG_OD} OD', above=True, fs=5, offset=7.2)
-draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 36,
-           f'Ø{BRG_ID} BORE', above=False, fs=5, offset=7.2)
-draw_dim_v(ax2, or_right + frame_ctx_w + 20, or_bot, or_top, f'{BRG_W}mm WIDE', right=True, fs=5, offset=7.2)
-
-leader(ax2, ptfe_right_x, cy2c,
-       cx2c + 170, cy2c + 50,
-       'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax2, or_left - frame_ctx_w/2, cy2c,
-       cx2c - 172, cy2c - 36,
-       'ICP-01\nFRAME\nAl 6061', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax2, cx2c - 30, or_bot - s1b(8),
-       cx2c - 118, cy2c - 122,
-       'ICP-02\nSHANK\nØ50 k5', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax2, cx2c + ir_outer_r, or_bot + s1b(1.5),
-       cx2c + 150, cy2c - 90,
-       'RUBBER\nSEAL (2RS)', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax2, or_right - out_ring_wall/2, or_top,
-       cx2c + 170, cy2c + 84,
-       'OUTER RING\n(PRESS-FIT H7/r6)', fs=4.8, color=C_DIM, arrow_style='->')
-
-ax2.text(cx2c, or_bot - 92, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',
-         ha='center', fontsize=5, style='italic', color='#333333')
+ax2.text(cxc, cyc - sc(88), 'RIM MOUNT — carrier clamped between the Ø8 ball (kinematic seat) and the wave\n'
+         'spring on the Al retaining ring. No central bearing; optical axis clear. Seats: 1 cone / 1 vee / 2 flat.',
+         ha='center', fontsize=4.4, style='italic', color='#333333')
 
 # ── PANEL D: Adjustment screw detail (1:1) ────────────────────────────────────
 ax2.text(720, 430, 'PANEL D — ADJUSTMENT SCREW DETAIL (1:1)', fontsize=7.5, fontweight='bold')
 ax2.plot([720, 1390], [424, 424], color='black', lw=0.7)
 
 cx2d, cy2d = 848, 260
+
+def s1b(mm): return mm            # Panel D local scale (1:1)
 
 # Frame boss (outer adapter frame wall in section)
 frame_wall_w = s1b(35)
@@ -1125,7 +1150,7 @@ leader(ax2, cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2 - s1b(8), cy2d - s1b(BALL_D/2),
        ball_x2 - s1b(8) - 110, cy2d - 36,
-       '440C SS INSERT\nHEMI SOCKET\nRa 0.4 GROUND', fs=5, color=C_DIM, arrow_style='->')
+       '440C SS KINEMATIC SEAT\n(cone / vee / flat)\nRa 0.4 GROUND', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2, cy2d + s1b(BALL_D/2),
        ball_x2 + 28, cy2d + 24,
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fs=5, color=C_DIM, arrow_style='->')

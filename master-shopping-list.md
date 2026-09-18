@@ -89,8 +89,9 @@ indicative low–high estimates — get quotes before ordering.
 | ICP-01 outer adapter frame stock (6061-T651 plate) | 1 ea | Online Metals | front-board | $125 |
 | ICP-02 inner carrier stock (6061-T6 round bar) | 1 ea | Metal Supermarkets | front-board | $100 |
 | Knurled knob stock Ø40mm Al (4 off) | 4 ea | Jergens | front-board | $60 |
+| Preload retaining ring — Al (ICP-03) | 1 ea | local machine shop | front-board | $30–$60 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$2,333–$2,903** |
+| **aluminum subtotal** | | | | **$2,363–$2,963** |
 
 ### bearings-motion
 
@@ -99,15 +100,15 @@ indicative low–high estimates — get quotes before ordering.
 | [1-1/4" OD acetal load rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8576K23-8576K232/) (8576K23) | 1 1 ft rod | McMaster-Carr | film | $11 |
 | [3/4" OD acetal keeper rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8497K276-8497K273/) (8497K276) | 1 4 ft rod | McMaster-Carr | film | $15 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | spray | $11 |
+| Annular wave spring — carrier preload (ICP-03) | 1 ea | Smalley | front-board | $25–$50 |
 | [Belden SSNBUJ750x3/8KB needle-bearing U-joint (3/8" keyway bore, 45deg, SS, booted)](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816) (41D816) | 4 ea | Grainger | film | $1,009 |
-| GE50-DO-2RS spherical plain bearing | 1 ea | Bearing Headquarters | front-board | $90 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | 2 ea | igus | swing | $261 |
 | [M12 rod-end bearing (uxcell SA12TK, 4-pack)](https://www.amazon.com/uxcell-SA12TK-Bearing-M12x1-75-Self-Lubricating/dp/B0C7N16RQ9) (B0C7N16RQ9) | 1 4-pack | Amazon | spray | $20 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $80 |
 | [Ø8mm Grade-25 chrome steel balls (10-pack)](https://www.mcmaster.com/9528K22/) (9528K22) | 1 pack | McMaster-Carr | front-board | $14 |
-| **bearings-motion subtotal** | | | | **$1,863** |
+| **bearings-motion subtotal** | | | | **$1,798–$1,823** |
 
 ### chemistry-reagents
 
@@ -306,14 +307,14 @@ indicative low–high estimates — get quotes before ordering.
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Home Depot | water | $19 |
 | [M8×1.0×80 SHCS 18-8 SS (adjustment screws)](https://www.mcmaster.com/91180A407/) (91180A407) | 4 ea | McMaster-Carr | front-board | $7 |
-| [M8×1.0×50 SHCS 18-8 SS (central retention)](https://www.mcmaster.com/91180A352/) (91180A352) | 1 ea | McMaster-Carr | front-board | $1 |
 | M4×12 SHCS 18-8 SS (bellows clamp-ring) | 1 pack | McMaster-Carr | front-board | $6 |
 | [Ø8 m6 SS303 dowel pin](https://www.mcmaster.com/97395A437/) (97395A437) | 2 ea | McMaster-Carr | front-board | $18 |
 | [M6×1.0 nylon-tip set screw (10-pack)](https://www.mcmaster.com/91375A187/) (91375A187) | 1 pack | McMaster-Carr | front-board | $14 |
+| M5×30 SHCS 18-8 SS (retaining-ring standoff) | 1 pack | McMaster-Carr | front-board | $8 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$2,041–$2,304** |
+| **fasteners-hardware subtotal** | | | | **$2,049–$2,312** |
 
 ### plastics-sheet
 
@@ -507,7 +508,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 18 | aluminum, fasteners-hardware, steel-structural | $2,142–$2,783 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
-| McMaster-Carr | 90 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, plastics-sheet, seals-gaskets, stainless-sheet, steel-structural | $2,084–$2,092 |
+| McMaster-Carr | 90 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, plastics-sheet, seals-gaskets, stainless-sheet, steel-structural | $2,091–$2,100 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,354–$2,064 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,797–$1,933 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
@@ -545,8 +546,8 @@ indicative low–high estimates — get quotes before ordering.
 | Pac-Nor Anodizing | 1 | adhesives-finishes | $80–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
+| local machine shop | 2 | aluminum | $54–$100 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
-| Bearing Headquarters | 1 | bearings-motion | $90 |
 | Aero Finishing | 1 | adhesives-finishes | $60–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
 | Uline / cargo-securing supplier | 1 | seals-gaskets | $40–$80 |
@@ -558,10 +559,10 @@ indicative low–high estimates — get quotes before ordering.
 | AutomationDirect | 1 | electrical-distribution | $52 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Steel service center | 1 | steel-structural | $30–$50 |
+| Smalley | 1 | bearings-motion | $25–$50 |
 | LaserPros | 1 | fabrication-labor | $35–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | Canal Rubber | 1 | seals-gaskets | $25–$40 |
-| local machine shop | 1 | aluminum | $24–$40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Fresh Water Systems | 1 | water-equipment | $32 |

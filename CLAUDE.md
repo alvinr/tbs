@@ -86,6 +86,15 @@ C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # gasket/neoprene fill
 ```
 
+**Dimension units — HARD RULE: every dimension label carries an explicit unit; NO bare length numbers.**
+Each length value gets `mm` (`600mm`, `50mm DEEP`, `3mm WIDE × 3mm DEEP`, `BUSH L=35mm`) — including
+secondary values inside a compound label. Diameters keep the `Ø` symbol, which already denotes mm
+(`Ø380`, `Ø540 B.C. · 8× Ø13 CLR` — **not** `Ø380mm`); angles use `°`; threads/fastener callouts stay as
+their standard designation (`M8×1.0`, `M22×1.0`, `M8×1.0×80`). Do **not** rely on the title block's
+"ALL DIMS IN mm" note to excuse a bare number — that note is a backstop, not a substitute. Enforced by
+`tidy_labels.py --check` (DIM unit-less): `--fix` inserts `mm` after a leading bare value; sweep the
+secondary WIDE/DEEP/THK/LONG values by hand (`perl -pi -e 's/(\d+(?:\.\d+)?) (WIDE|DEEP|THK|LONG|TALL)\b/$1mm $2/g'`).
+
 **Title block:** series `TBS-XXX`. Reference `generate_film_plane_mechanism.py` for multi-sheet layout and `title_block()` helper.
 
 **Thin cross-sections:** for plates that are much wider than they are thick, use separate scale functions to avoid unreadable flat sections:

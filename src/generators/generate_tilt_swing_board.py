@@ -711,15 +711,15 @@ draw_cl(ax1, cx_b, cy_b, hw*1.15)
 # ── Formal dimensions — every feature (Ø + count folded onto the dim line, no leaders) ──
 dia_stack(ax1, cx_b, cy_b - hw, [
     (s1(TSB01_BORE), 'Ø380 BORE (THRU)'),
-    (s1(SEAL_D),     'Ø420 SEAL GROOVE · 3 WIDE × 3 DEEP'),
+    (s1(SEAL_D),     'Ø420 SEAL GROOVE · 3mm WIDE × 3mm DEEP'),
     (s1(BOLT_BC),    'Ø540 B.C. · 8× Ø13 CLR (M12) EQUISPACED'),
-    (s1(PL_OD),      '600'),
+    (s1(PL_OD),      '600mm'),
 ], dirn=-1)
-draw_dim_v(ax1, cx_b - hw - 30, cy_b - hw, cy_b + hw, '600', right=False, fs=5.5, offset=20)
-ax1.text(cx_b - hw + 12, cy_b + hw - 14, '6061-T6 · 40 THK', ha='left', va='top',
+draw_dim_v(ax1, cx_b - hw - 30, cy_b - hw, cy_b + hw, '600mm', right=False, fs=5.5, offset=20)
+ax1.text(cx_b - hw + 12, cy_b + hw - 14, '6061-T6 · 40mm THK', ha='left', va='top',
          fontsize=5, color=C_DIM, style='italic', zorder=10)
 # Dowel location — ±200 on the horizontal C/L (Ø8 folded onto the +200 dim)
-draw_dim_h(ax1, cx_b - s1(DWL_OFF), cx_b, cy_b, '200', above=True, fs=4.5, offset=13)
+draw_dim_h(ax1, cx_b - s1(DWL_OFF), cx_b, cy_b, '200mm', above=True, fs=4.5, offset=13)
 draw_dim_h(ax1, cx_b, cx_b + s1(DWL_OFF), cy_b, '200 · 2× Ø8 H7 DOWEL', above=True, fs=4.5, offset=13)
 
 draw_dim_v(ax1, cx_b + hw + 30, cy_b - s1(BOLT_BC/2), cy_b + s1(BOLT_BC/2), 'Ø540 B.C. (8× M12)', right=True, fs=5, offset=16)
@@ -777,14 +777,14 @@ dia_stack(ax1, cx_c, cy_c - hw, [
     (s1(TSB01_BORE),   'Ø380 BORE (THRU) — CLEAR, no central bearing'),
     (s1(BELL_OUT_PCD), 'Ø420 PCD · 6× M4 BELLOWS CLAMP-RING SCREW (OUTSIDE LABYRINTH) · 60° APART'),
     (s1(RET_BOLT_PCD), 'Ø450 PCD · 6× M5 ADJUSTER-BRACKET-RING STANDOFF (TAPPED) · 60° APART'),
-    (s1(PL_OD),        '600'),
+    (s1(PL_OD),        '600mm'),
 ], dirn=-1)
 dia_stack(ax1, cx_c, cy_c + hw, [
-    (s1(SPR_PCD), 'Ø300 WAVE-SPRING COUNTERBORE (14 WIDE × 4 DEEP)'),
-    (s1(LAB_D3),  'Ø382 / Ø390 / Ø400 — 3-STEP LABYRINTH · 5 DEEP EACH'),
+    (s1(SPR_PCD), 'Ø300 WAVE-SPRING COUNTERBORE (14mm WIDE × 4mm DEEP)'),
+    (s1(LAB_D3),  'Ø382 / Ø390 / Ø400 — 3-STEP LABYRINTH · 5mm DEEP EACH'),
 ], dirn=+1)
-draw_dim_v(ax1, cx_c + hw + 30, cy_c - hw, cy_c + hw, '600', right=True, fs=5.5, offset=20)
-ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40 THK', ha='left', va='top',
+draw_dim_v(ax1, cx_c + hw + 30, cy_c - hw, cy_c + hw, '600mm', right=True, fs=5.5, offset=20)
+ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40mm THK', ha='left', va='top',
          fontsize=5, color=C_DIM, style='italic', zorder=10)
 
 draw_dim_v(ax1, cx_c - hw - 30, cy_c - s1(BELL_OUT_PCD/2), cy_c + s1(BELL_OUT_PCD/2), 'Ø420 (CLAMP-RING SCREWS)', right=False, fs=5, offset=16)
@@ -871,7 +871,7 @@ dia_stack(ax2, cx2a, cy2a - s2(CARR_OD/2), [
     (s2(CARR_OD),     'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
 draw_dim_v(ax2, cx2a - s2(CARR_OD/2) - 26, cy2a - s2(CARR_OD/2), cy2a + s2(CARR_OD/2), 'Ø320', right=False, fs=5, offset=16)
-ax2.text(cx2a - s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
+ax2.text(cx2a - s2(CARR_OD/2) + 8, cy2a + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25mm THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
 
 draw_dim_v(ax2, cx2a + s2(CARR_OD/2) + 26, cy2a - s2(BELL_IN_PCD/2), cy2a + s2(BELL_IN_PCD/2), 'Ø306 (CLAMP-RING SCREWS)', right=True, fs=5, offset=14)
 # ── identifying leaders ──
@@ -924,10 +924,10 @@ dia_stack(ax2, cx2b, cy2b - s2(CARR_OD/2), [
     (s2(CARR_OD),    'Ø320 CARRIER OD'),
 ], dirn=-1, step=42, fs=4.6, off=13)
 dia_stack(ax2, cx2b, cy2b + s2(CARR_OD/2), [
-    (s2(PH_CB_D), 'Ø52 × 3 DEEP COUNTERBORE (DISC SEAT)'),
+    (s2(PH_CB_D), 'Ø52 × 3mm DEEP COUNTERBORE (DISC SEAT)'),
 ], dirn=+1, step=42, fs=4.6, off=13)
 draw_dim_v(ax2, cx2b + s2(CARR_OD/2) + 26, cy2b - s2(CARR_OD/2), cy2b + s2(CARR_OD/2), 'Ø320', right=True, fs=5, offset=16)
-ax2.text(cx2b - s2(CARR_OD/2) + 8, cy2b + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25 THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
+ax2.text(cx2b - s2(CARR_OD/2) + 8, cy2b + s2(CARR_OD/2) - 10, '6061-T6 · Ø320 × 25mm THK', ha='left', va='top', fontsize=4.6, color=C_DIM, style='italic', zorder=10)
 
 draw_dim_v(ax2, cx2b - s2(CARR_OD/2) - 26, cy2b - s2(SOCK_PCD/2), cy2b + s2(SOCK_PCD/2), 'Ø260 B.C. (4× Ø16 INSERT)', right=False, fs=5, offset=14)
 # ── identifying leaders ──
@@ -1076,7 +1076,7 @@ ax2.plot([cx2d - frame_wall_w - 10, cx2d + screw_len + s1b(KNOB_H) + 10],
 draw_dim_h(ax2, cx2d, cx2d + screw_len, cy2d + s1b(KNOB_D/2) + 24,
            'M8 × 1.0 × 80 SCREW', above=True, fs=5, offset=7.2)
 draw_dim_h(ax2, cx2d - frame_wall_w, cx2d - frame_wall_w + bush_w,
-           cy2d - s1b(KNOB_D/2) - 24, f'BUSH L={BUSH_L}', above=False, fs=5, offset=7.2)
+           cy2d - s1b(KNOB_D/2) - 24, f'BUSH L={BUSH_L}mm', above=False, fs=5, offset=7.2)
 
 leader(ax2, cx2d + screw_len + s1b(KNOB_H)/2, cy2d + s1b(KNOB_D/2),
        cx2d + screw_len + s1b(KNOB_H) + 24, cy2d + 20,
@@ -1391,7 +1391,7 @@ ax3.plot([cx3d, cx3d], [cy3d - scale_strip_h/2, cy3d + scale_strip_h/2],
 draw_dim_h(ax3, cx3d - scale_strip_w/2, cx3d + scale_strip_w/2,
            cy3d + scale_strip_h/2 + 20, '80mm TOTAL', above=True, fs=5, offset=6)
 draw_dim_v(ax3, cx3d + scale_strip_w/2 + 24, cy3d - scale_strip_h/2, cy3d + scale_strip_h/2,
-           '15 (× 2 THK)', right=True, fs=5, offset=6)
+           '15mm (× 2mm THK)', right=True, fs=5, offset=6)
 ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
@@ -1515,7 +1515,7 @@ def draw_clamp_joint(ax, ox, oy, sc, plate_ident, tap_deep,
     leader(ax, ox + u(9), face + u(1), ox + u(26), face + u(9),
            'ICP-04 BELLOWS LIP\n(neoprene · clamped flat)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(ax, ox - u(5), face + u(6), ox - u(26), face + u(28),
-           '6061 CLAMP RING\n14 WIDE × 8 THK', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
+           '6061 CLAMP RING\n14mm WIDE × 8mm THK', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
     leader(ax, gx, face + u(0.2), ox - u(31), face + u(7),
            'Ø3 NEOPRENE CORD\nGASKET — LIGHT SEAL', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
     leader(ax, ox + u(2), face - u(tap_deep), ox + u(24), face - u(tap_deep) - u(4),
@@ -1523,7 +1523,7 @@ def draw_clamp_joint(ax, ox, oy, sc, plate_ident, tap_deep,
     lbox = dict(boxstyle='square,pad=0.15', facecolor='white', edgecolor='none')
     if show_labyrinth:
         leader(ax, ox - u(19), face - u(2), ox - u(33), face - u(16),
-               '3-STEP LABYRINTH\nØ382/390/400 · 5 DEEP\n(secondary light seal)', fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
+               '3-STEP LABYRINTH\nØ382/390/400 · 5mm DEEP\n(secondary light seal)', fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
     else:
         leader(ax, px, face - u(1), ox - u(33), face - u(16),
                inboard_note, fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
@@ -1537,10 +1537,10 @@ def draw_clamp_joint(ax, ox, oy, sc, plate_ident, tap_deep,
 
 SC6 = 15  # units per mm (4:1 enlarged joint)
 draw_clamp_joint(ax4, 820, 1300, SC6,
-                 'ICP-01 FRAME — 6061-T6 · 40 THK', 8, True,
+                 'ICP-01 FRAME — 6061-T6 · 40mm THK', 8, True,
                  '6× M4 @ Ø420 PCD · 60° APART\n(on solid face, outside the Ø400 labyrinth)', '')
 draw_clamp_joint(ax4, 2280, 1300, SC6,
-                 'ICP-02 CARRIER — 6061-T6 · 25 THK', 8, False,
+                 'ICP-02 CARRIER — 6061-T6 · 25mm THK', 8, False,
                  '4× M4 @ Ø306 PCD · 90° APART\n(8 to Ø290 bellows ID · 7 to Ø320 rim)',
                  'Ø290 BELLOWS ID\n(aperture side)')
 
@@ -1643,7 +1643,7 @@ dia_stack(ax5, rcx, rcy - r_od, [
     (2 * s7(RET_BOLT_PCD / 2),    'Ø450 PCD · 6× Ø5.5 CLR (M5 STANDOFF) · 60° APART'),
     (2 * r_od,                    'Ø470 OD'),
 ], dirn=-1, step=50, fs=5, off=16)
-ax5.text(rcx - r_od + 12, rcy + r_od - 14, '6061-T6 · 8 THK\n(black anodize)', ha='left', va='top', fontsize=5, color=C_DIM, style='italic', zorder=10)
+ax5.text(rcx - r_od + 12, rcy + r_od - 14, '6061-T6 · 8mm THK\n(black anodize)', ha='left', va='top', fontsize=5, color=C_DIM, style='italic', zorder=10)
 leader(ax5, rcx + s7(SOCK_PCD / 2) * np.cos(np.radians(60)), rcy + s7(SOCK_PCD / 2) * np.sin(np.radians(60)),
        rcx + r_od + 40, rcy + r_od - 60, '4× M6 NYLON-TIP\nLOCK, TANGENTIAL', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
 leader(ax5, rcx + s7(RET_BOLT_PCD / 2) * np.cos(np.radians(-30)), rcy + s7(RET_BOLT_PCD / 2) * np.sin(np.radians(-30)),
@@ -1683,7 +1683,7 @@ for j, (title, form, note) in enumerate(forms):
 # common insert dims (on the FLAT, bottom one)
 fy = 1620 - 2 * 440
 draw_dim_h(ax5, icx - si(8), icx + si(8), fy - si(9), 'Ø16 h6', above=False, fs=5, offset=8)
-draw_dim_v(ax5, icx + si(20), fy - si(6), fy + si(6), '12', right=True, fs=5, offset=8)
+draw_dim_v(ax5, icx + si(20), fy - si(6), fy + si(6), '12mm', right=True, fs=5, offset=8)
 ax5.text(icx, 1720, '4 off · 440C SS · Ra 0.4 ground · press-fit into the carrier Ø16 H7 rear-face bores (Loctite 638)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 ax5.text(icx, 300, 'PANEL B — KINEMATIC-SEAT INSERTS (ICP-05)\nThe 3 forms make an exact-constraint coupling: 1 cone + 1 V-groove + 2 flat → carrier in-plane position + spin fixed',

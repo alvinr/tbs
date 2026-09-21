@@ -120,6 +120,13 @@ file** — a release must not ship without a changelog entry:
   sheets and registered (gallery, publish.sh, setup_docs, dependencies.yml). Report §2 sheet list +
   §12 gain a fabrication-drawing coverage map. Also added a boxed **ASSEMBLY KEY** to each component
   sheet (3–7) cross-referencing where the part sits on the Sheet 2 section.
+- **Dimension-label units standardized — every length carries `mm`.** Promoted the ad-hoc mm
+  convention to a **HARD RULE** in CLAUDE.md (Drawing Style Conventions): every length dimension label
+  carries an explicit `mm` (including secondary values in a compound label, e.g. `3mm WIDE × 3mm
+  DEEP`, `BUSH L=35mm`), diameters keep `Ø` (which already denotes mm — not `Ø380mm`), angles use `°`,
+  and thread/fastener callouts stay standard. Applied across the full TSB 7-sheet set (the last bare
+  numbers — plate-OD `600` dims in the Sheet 3 diameter stacks and a handful of compound WIDE/DEEP/THK
+  values — now carry `mm`); `tidy_labels.py --check` reports 0 unit-less dims.
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still

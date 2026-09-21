@@ -262,6 +262,65 @@ FRONT_BOARD_DETENTS     = 36     # knurled-knob detents per turn
 FRONT_BOARD_MAX_DEG   = round(math.degrees(math.atan(FRONT_BOARD_TRAVEL_MM / FRONT_BOARD_ARM_MM)), 1)            # = 5.3
 FRONT_BOARD_CLICK_DEG = round(math.degrees(math.atan((FRONT_BOARD_SCREW_PITCH / FRONT_BOARD_DETENTS) / FRONT_BOARD_ARM_MM)), 3)  # = 0.012
 
+# ── Tilt-swing front board — GEOMETRY (single source: 2D sheets + tilt-swing 3D model) ────────
+# Rim kinematic mount: the ICP-02 carrier is located at its rim by 4 adjuster balls in kinematic
+# seats (1 cone / 1 vee / 2 flat) and held by a peripheral wave spring reacting on the ICP-03
+# adjuster bracket ring — the optical axis is clear (no central pivot), and the knobs adjust from
+# inside the container. Promoted from generate_tilt_swing_board.py so the sheets and
+# generate_tilt_swing_model.py read one source (both import these; the 2D generator aliases them
+# back to its short local names).
+# existing plate interface (unchanged pinhole-plate footprint)
+TSB_PL_OD       = 600    # plate outer dimension (square)
+TSB_BOLT_BC     = 540    # container-plate bolt circle diameter
+TSB_BOLT_D      = 13     # bolt hole clearance diameter (M12)
+TSB_BOLT_N      = 8
+TSB_DWL_D       = 8      # dowel pin diameter
+TSB_DWL_OFF     = 200    # ± horizontal from center
+TSB_SEAL_D      = 420    # neoprene groove PCD
+TSB_TRAP_SQ     = 490    # light-trap rebate PCD (square)
+TSB_FR_APT_D    = 350    # wall frame aperture diameter
+TSB_PH_CB_D     = 52     # pinhole disc counterbore diameter
+TSB_PH_CB_DEP   = 3
+TSB_PH_DISC_D   = 50     # pinhole disc diameter
+TSB_PH_BORE     = 90     # exterior taper bore
+# ICP-01 Outer Adapter Frame
+TSB_FRAME_THICK = 40     # frame plate thickness
+TSB_BORE        = 380    # central bore diameter (clear — no central bearing)
+TSB_ADJ_PCD     = 270    # adjustment-screw PCD (in frame)
+TSB_ADJ_N       = 4      # 4 screws
+TSB_LAB_D1, TSB_LAB_D2, TSB_LAB_D3 = 382, 390, 400  # labyrinth step diameters
+TSB_BELL_OUT_PCD = 420   # bellows outer clamp-ring screw PCD — outside the Ø400 labyrinth
+# ICP-02 Inner Carrier Plate
+TSB_CARR_OD     = 320    # carrier plate OD
+TSB_CARR_THICK  = 25     # carrier thickness
+TSB_SOCK_PCD    = 260    # kinematic-seat insert PCD (cone/vee/flat)
+TSB_BELL_IN_PCD = 306    # bellows inner clamp-ring screw PCD
+# Adjustment screw
+TSB_ADJ_D       = 8      # M8 screw
+TSB_BALL_D      = 8      # chrome-steel ball
+TSB_KNOB_D      = 40
+TSB_KNOB_H      = 15
+TSB_BUSH_OD     = 22
+TSB_BUSH_L      = 35
+# Bellows (truncated cone: small end on carrier, large end on frame)
+TSB_BELL_ID     = 290    # small end (carrier / scene side)
+TSB_BELL_OD     = 430    # large end (frame / container side)
+TSB_BELL_FREE   = 60     # free length
+TSB_BELL_PLEATS = 4
+TSB_BELL_PLEAT_D = 15    # pleat depth
+TSB_CLAMP_SCR_D = 4      # M4 clamp-ring retaining screws (both flanges)
+TSB_CLAMP_RING_W = 14    # clamp-ring radial band width
+TSB_SEAL_W      = 3      # neoprene seal groove width
+TSB_SEAL_DEP    = 3      # seal groove depth
+# Preload subsystem (ICP-03 — replaces the former central GE50 bearing)
+TSB_SPR_PCD     = 300    # annular wave-spring mean diameter
+TSB_RET_RING_ID = 240    # adjuster bracket-ring bore
+TSB_RET_RING_OD = 470    # adjuster/retaining-ring OD
+TSB_RET_RING_T  = 8      # ring thickness (6061-T6)
+TSB_RET_BOLT_PCD = 450   # ring → frame bolt circle (outside the Ø400 labyrinth)
+TSB_RET_BOLT_N  = 6      # 6× M5 standoff screws
+TSB_RET_BOLT_D  = 5
+
 # ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────
 # These appear hand-computed across many reports; deriving them here (and registering as facts)
 # means a focal-length or film-size change ripples to every doc that restates them.

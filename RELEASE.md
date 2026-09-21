@@ -128,6 +128,13 @@ file** — a release must not ship without a changelog entry:
   numbers — plate-OD `600` dims in the Sheet 3 diameter stacks and a handful of compound WIDE/DEEP/THK
   values — now carry `mm`); `tidy_labels.py --check` reports 0 unit-less dims.
 
+- **Tilt-swing front-board geometry promoted to `tbs_constants.py`.** The ~40 TSB dimensions
+  (bore, carrier, bellows, wave spring, adjuster ring, PCDs…) lived as local constants inside the 2D
+  generator, unreachable by a 3D model and not `--cascade`-tracked. Moved them into the geometry store
+  under a `TSB_*` namespace (single source for the 2D sheets **and** the new tilt-swing 3D model),
+  aliased back to the sheets' short local names so the drawings render byte-identical. Groundwork for a
+  dedicated tilt-swing mechanism model.
+
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still
   prompts an interactive terminal, and honors `RELEASE_ASSUME_YES=1`. The 10-day "Tidy labels" run

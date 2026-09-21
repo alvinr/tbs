@@ -26,70 +26,27 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
 from tbs_constants import DIAGRAM_DPI
 
 # ── Dimensions (mm) ──────────────────────────────────────────────────────────
-
-# --- existing plate interface (unchanged) ---
-PL_OD      = 600      # plate outer dimension (square)
-BOLT_BC    = 540      # bolt circle diameter
-BOLT_D     = 13       # bolt hole clearance diameter
-BOLT_N     = 8
-DWL_D      = 8        # dowel pin diameter
-DWL_OFF    = 200      # ± horizontal from center
-SEAL_D     = 420      # neoprene groove PCD
-TRAP_SQ    = 490      # light-trap rebate PCD (square)
-FR_APT_D   = 350      # wall frame aperture diameter
-PH_CB_D    = 52       # pinhole disc counterbore
-PH_CB_DEP  = 3
-PH_DISC_D  = 50
-PH_BORE    = 90       # exterior taper bore
-
-# --- ICP-01 Outer Adapter Frame ---
-TSB01_THICK  = 40     # plate thickness
-TSB01_BORE   = 380    # central bore diameter (clear — no central bearing)
-ADJ_PCD      = 270    # adjustment screw PCD (in frame)
-ADJ_N        = 4      # 4 screws
-LAB_D1, LAB_D2, LAB_D3 = 382, 390, 400  # labyrinth step diameters
-BELL_OUT_PCD = 420    # bellows outer clamp-ring screw PCD — OUTSIDE the Ø400 labyrinth, on solid frame face
-
-# --- ICP-02 Inner Carrier Plate ---
-CARR_OD      = 320    # carrier plate OD
-CARR_THICK   = 25     # thickness
-SOCK_PCD     = 260    # kinematic-seat insert PCD (cone/vee/flat)
-BELL_IN_PCD  = 306    # bellows inner clamp-ring screw PCD — 7mm edge to the Ø320 rim, 8mm to the Ø290 ID
-
-# --- Adjustment screw ---
-ADJ_D        = 8      # M8 screw
-BALL_D       = 8      # chrome steel ball
-KNOB_D       = 40
-KNOB_H       = 15
-BUSH_OD      = 22
-BUSH_L       = 35
-
-# --- Bellows (truncated cone: small end on the carrier, large end on the frame) ---
-BELL_ID      = 290    # small end (carrier / scene side)
-BELL_OD      = 430    # large end (frame / container side) — clears the Ø400 labyrinth to land on frame face
-BELL_FREE    = 60     # free length
-BELL_PLEATS  = 4
-BELL_PLEAT_D = 15     # pleat depth
-CLAMP_SCR_D  = 4      # M4 clamp-ring retaining screws (both flanges)
-CLAMP_RING_W = 14     # clamp-ring radial band width
-
-SEAL_W   = 3          # neoprene seal groove width
-SEAL_DEP = 3          # seal groove depth
-
-# --- Preload subsystem (ICP-03: replaces the former central GE50 bearing) ---
-# The carrier is a RIM KINEMATIC MOUNT: located at its rim by the 4 adjuster balls seated in
-# kinematic sockets (1 cone / 1 V-groove / 2 flats → in-plane position + spin exactly constrained)
-# and held against them by a peripheral WAVE SPRING reacting on an aluminum RETAINING RING bolted
-# to the frame. The optical axis is left completely clear — no central structure. Small parallax
-# is accepted: the pivot lies ~one carrier-thickness behind the pinhole, so the pinhole shifts
-# only ~2.3mm at ±5.3° (<1.5% of the intended tilt shift).
-SPR_PCD      = 300    # annular wave-spring mean diameter (bears on the carrier interior rim)
-RET_RING_ID  = 240    # adjuster bracket-ring bore (clears the pinhole/center; adjusters sit at Ø260 in the band)
-RET_RING_OD  = 470    # retaining-ring OD
-RET_RING_T   = 8      # retaining-ring thickness (6061-T6)
-RET_BOLT_PCD = 450    # retaining-ring → frame bolt circle (solid frame face, outside the Ø400 labyrinth)
-RET_BOLT_N   = 6      # 6× M5 standoff screws
-RET_BOLT_D   = 5
+# The tilt-swing geometry is single-sourced in tbs_constants.py (TSB_* — shared with the
+# tilt-swing 3D model) and aliased here to the short local names the drawing code uses. The
+# rim-kinematic-mount rationale lives with the constants; see tbs_constants.py.
+from tbs_constants import (
+    TSB_PL_OD as PL_OD, TSB_BOLT_BC as BOLT_BC, TSB_BOLT_D as BOLT_D, TSB_BOLT_N as BOLT_N,
+    TSB_DWL_D as DWL_D, TSB_DWL_OFF as DWL_OFF, TSB_SEAL_D as SEAL_D, TSB_TRAP_SQ as TRAP_SQ,
+    TSB_PH_CB_D as PH_CB_D, TSB_PH_DISC_D as PH_DISC_D, TSB_PH_BORE as PH_BORE,
+    TSB_BORE as TSB01_BORE,
+    TSB_LAB_D1 as LAB_D1, TSB_LAB_D2 as LAB_D2, TSB_LAB_D3 as LAB_D3,
+    TSB_BELL_OUT_PCD as BELL_OUT_PCD,
+    TSB_CARR_OD as CARR_OD, TSB_CARR_THICK as CARR_THICK, TSB_SOCK_PCD as SOCK_PCD,
+    TSB_BELL_IN_PCD as BELL_IN_PCD,
+    TSB_ADJ_D as ADJ_D, TSB_BALL_D as BALL_D, TSB_KNOB_D as KNOB_D, TSB_KNOB_H as KNOB_H,
+    TSB_BUSH_OD as BUSH_OD, TSB_BUSH_L as BUSH_L,
+    TSB_BELL_ID as BELL_ID, TSB_BELL_OD as BELL_OD, TSB_BELL_FREE as BELL_FREE,
+    TSB_BELL_PLEATS as BELL_PLEATS, TSB_BELL_PLEAT_D as BELL_PLEAT_D,
+    TSB_CLAMP_SCR_D as CLAMP_SCR_D,
+    TSB_SPR_PCD as SPR_PCD, TSB_RET_RING_ID as RET_RING_ID, TSB_RET_RING_OD as RET_RING_OD,
+    TSB_RET_RING_T as RET_RING_T, TSB_RET_BOLT_PCD as RET_BOLT_PCD,
+    TSB_RET_BOLT_N as RET_BOLT_N, TSB_RET_BOLT_D as RET_BOLT_D,
+)
 
 # ── Drawing helpers (same as generate_plate_drawing.py) ───────────────────────
 

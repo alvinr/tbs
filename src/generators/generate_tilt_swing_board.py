@@ -556,7 +556,7 @@ def draw_sheet2():
         'pushes it back → zero backlash. Adjusters mount on an interior BRACKET RING so the KNOBS are set from INSIDE.',
         f'ADJUSTMENT: M8×1.0 pairs set TILT (N/S) & SWING (E/W) via Gr-25 Ø8mm balls. RANGE ±{FRONT_BOARD_MAX_DEG}°, {FRONT_BOARD_CLICK_DEG}°/click ({FRONT_BOARD_DETENTS}-detent).',
         'PIVOT ~one carrier-thickness behind the pinhole → pinhole shifts ~2.3mm at ±5.3° (<1.5% parallax).',
-        'BELLOWS (non-structural light seal): clamp-ring both ends. LABYRINTH bore Ø382/390/400, 5 deep — secondary seal.',
+        f'BELLOWS (non-structural light seal): clamp-ring both ends. LABYRINTH bore Ø{LAB_D1}/{LAB_D2}/{LAB_D3}, 5 deep — secondary seal.',
     ]
     draw_notes(ax, notes2, 25, ph * 0.185, spacing=12, fs=4.6, width=430)
 
@@ -781,7 +781,7 @@ dia_stack(ax1, cx_c, cy_c - hw, [
 ], dirn=-1)
 dia_stack(ax1, cx_c, cy_c + hw, [
     (s1(SPR_PCD), 'Ø300 WAVE-SPRING COUNTERBORE (14mm WIDE × 4mm DEEP)'),
-    (s1(LAB_D3),  'Ø382 / Ø390 / Ø400 — 3-STEP LABYRINTH · 5mm DEEP EACH'),
+    (s1(LAB_D3),  f'Ø{LAB_D1} / Ø{LAB_D2} / Ø{LAB_D3} — 3-STEP LABYRINTH · 5mm DEEP EACH'),
 ], dirn=+1)
 draw_dim_v(ax1, cx_c + hw + 30, cy_c - hw, cy_c + hw, '600mm', right=True, fs=5.5, offset=20)
 ax1.text(cx_c - hw + 12, cy_c + hw - 14, '6061-T6 · 40mm THK', ha='left', va='top',
@@ -1523,7 +1523,7 @@ def draw_clamp_joint(ax, ox, oy, sc, plate_ident, tap_deep,
     lbox = dict(boxstyle='square,pad=0.15', facecolor='white', edgecolor='none')
     if show_labyrinth:
         leader(ax, ox - u(19), face - u(2), ox - u(33), face - u(16),
-               '3-STEP LABYRINTH\nØ382/390/400 · 5mm DEEP\n(secondary light seal)', fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
+               f'3-STEP LABYRINTH\nØ{LAB_D1}/{LAB_D2}/{LAB_D3} · 5mm DEEP\n(secondary light seal)', fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)
     else:
         leader(ax, px, face - u(1), ox - u(33), face - u(16),
                inboard_note, fs=4.6, color=C_DIM, arrow_style='->', ha='right', bbox=lbox)

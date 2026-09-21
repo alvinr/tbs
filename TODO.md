@@ -9,17 +9,35 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## 🎯 Tilt-swing carrier support — rim kinematic mount (2026-09-18) — ✅ DONE (awaiting review/publish)
+## 🎯 Tilt-swing front board — redesign COMPLETE (2026-09-20) — ✅ DONE, pushed + published
 
-> Replaced the unbuildable central GE50 pivot (floated in the Ø380 bore + blocked the optical axis)
-> with a **rim kinematic mount**: carrier located at its rim by 4 adjuster balls in kinematic seats
-> (1 cone / 1 vee / 2 flat) + peripheral wave-spring/retaining-ring preload; axis fully clear; ~2.3mm
-> parallax accepted. All 7 phases shipped across Sheets 1–4, parts/costing, and report §2/§4/§5/§11/§13/§14.
-> Committed (not published) — user reviews the set first. No 3D model (front board is 2D-only).
+> **RESUME POINT (new machine): `git pull` origin/main — everything is committed there.** The whole
+> TSB tilt-swing board redesign is finished, pushed to origin/main, and published to the site. The set
+> is now **7 sheets** (`generate_tilt_swing_board.py` → `tilt-swing-sheet1..7.png`).
+>
+> What was done, in order (all committed):
+> 1. **Rim kinematic mount** replaces the unbuildable central GE50 pivot (it floated in the Ø380 bore +
+>    blocked the optical axis). Carrier located only at its rim by 4 adjuster balls in kinematic seats
+>    (1 cone / 1 V-groove / 2 flat); optical axis fully clear; ~2.3mm parallax accepted (<1.5%).
+> 2. **Knobs flipped to the INTERIOR** (set from inside the container): the 4 M8 adjusters mount on an
+>    aluminum **adjuster bracket ring** (ICP-03, was the "retaining ring") standoff-mounted to the frame
+>    at Ø450; the **wave spring** sits in a **counterbore in the frame's interior face** (the spring
+>    reaction). Kinematic seats + pinhole disc are on the carrier REAR (camera) face; spring land +
+>    bellows on the FRONT (scene) face.
+> 3. **Sheet 7** added — fabrication blueprints for the two machined parts that lacked them: the ICP-03
+>    bracket ring (face view) + the ICP-05 kinematic-seat inserts (cone/vee/flat).
+> 4. **ASSEMBLY KEY** boxes on Sheets 3–7 cross-reference each part's location on the Sheet 2 section.
+> 5. Parts: `tsb-adjuster-ring` (was `tsb-retaining-ring`), `tsb-wave-spring`, `tsb-ring-screws`; dropped
+>    `fb-ge50-bearing` + `tsb-central-screw`. Front-board total **$1,611–$2,542** (reconciled through
+>    costing; master-shopping-list + funding cascade). Report §2/§4/§5/§11/§12/§13/§14 rewritten.
+>
+> No 3D model involved (the front board is 2D-only). Gates all pass; the only overflow flag is the known
+> Sheet 5 "Ø40" rotated-dimension bbox FALSE POSITIVE (visually clear — do not chase it).
 
-- [ ] **OPEN — adjuster knob side.** Knobs are drawn on the **exterior (scene) side** (as before). If they
-  should be adjustable from **inside** the container (interior/camera side), flip them — cascades Sheet 2
-  (knob position), Sheet 4 Panel D, and report §5 "from the exterior face" wording. Awaiting decision.
+- [ ] **Optional follow-up (offered, user has not asked):** the bellows **clamp rings** (covered by
+  Sheet 6 section + Sheets 3/4 PCDs) and the **Delrin guide bushings** (covered by Sheet 4 Panel D) were
+  judged adequately blueprinted rather than each getting a dedicated panel. Add dedicated details only if
+  the user wants them.
 
 ## Cleanup
 

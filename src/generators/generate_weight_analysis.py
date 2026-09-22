@@ -526,10 +526,10 @@ def build_components():
                   1746, 2340, color=C_PUMP,      # high horizontal bank (heads at ceiling, 4.5×20 sumps to Z1746)
                   calc_note="P-02 pump + 3-stage Big Blue 4.5×20 filter (dry housings + cartridges) on the "
                             "pinhole wall; ~8 kg dry est. (filled adds ~15 kg transient wash water)"),
-        Component("Tilt-swing board", "equipment", 30.0,
-                  PH_X - 310, PH_X + 310, 0, 100,
-                  PH_H - 310, PH_H + 310, color="#CC6600",
-                  calc_note="620×620×45mm Al plate + spherical pivot + screws"),
+        Component("Pinhole disc holder", "equipment", 1.5,
+                  PH_X - 90, PH_X + 90, 0, 30,
+                  PH_H - 90, PH_H + 90, color="#CC6600",
+                  calc_note="Ø180×18mm Al front plate + retaining ring + disc + thumb screws"),
         Component("Fan A (exhaust)", "equipment", 2.0,
                   C_LEN - 50, C_LEN, FAN_A_YD - 75, FAN_A_YD + 75,
                   2125, 2275, color=C_FAN,

@@ -234,7 +234,6 @@ ripple into both.
 | Board tilt 5° → image shift | 207mm | 2362 × tan(5°) |
 | Film plane max tilt | ±40° | Option A rigid-plane, single-axis (`MAX_TILT_DEG`, cross-slide-Z limit) |
 | Film plane max swing | ±28° | Option A rigid-plane, single-axis (`MAX_SWING_DEG`, rail-depth limit ~28.7°) |
-| Tilt-swing board max | ±5.3° | Screw shoulder hard stop |
 
 ---
 

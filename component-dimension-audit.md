@@ -98,7 +98,6 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | ~~Acme leadscrew ¾"-6~~ (retired) | — | — | RETIRED — no leadscrews in the current design |
 | Rod-end bearing | GIR25-DO / McMaster 60645K73 | 25 mm bore | confirm |
 | Drum bearing | SKF 6215-2RS1 | 75×130×25 | confirm |
-| Tilt-swing bearing | GE50-DO-2RS | Ø50 bore | confirm |
 | Solar panel | Renogy 200 W | ~1491×699×35 (external) | no clash |
 | MPPT | Victron 100/50 | ~100×113×40 (in enclosure) | no clash |
 

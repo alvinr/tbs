@@ -119,15 +119,11 @@ screw can share one.
   missed it because it wasn't in `parts.py`). Itemized as `optical-plate-bolt` (92314A744) + `optical-plate-washer`
   (93475A290), and its **socket head → hex** to match the structural standard (resolves the optical-plate half of
   the socket-vs-hex question; the tilt-swing board's socket heads are covered below).
-- **Tilt-swing board (TSB) — design chat resolved (2026-09-07).** The TSB is a standalone OPTIONAL front board
-  (replaces the flat pinhole plate), so its fasteners live in its own §12.1 BOM, not the registry. Decisions:
-  **mount bolt** M12×45 kept SHCS A4 (counterbore/flush precision mount — accepts the head/material mismatch
-  with the standard plate's M12×40 hex, a different plate); **M8×1.0 fine-pitch** adjustment screws kept (the
-  fine pitch IS the mechanism); **central retention bolt M16×55 → M8×1.0×50** (non-structural preload — dropped
-  the one-off M16 family, reused the M8×1.0 fine thread); M6 nylon-tip set screws + Ø8 dowels kept. SHCS kept
-  where functional; **A4/316→304 material downgrades** on the non-structural TSB fasteners = a soft residual for
-  the TSB blueprint review. The **registry merge** (retire `FRONT_BOARD_MID`, add the TSB as a baseline-EXCLUDED
-  registry system so it can't double-count against the flat plate) is deferred to that review (TODO.md).
+- **Front board — tilt-swing RETIRED, now the pinhole disc holder (2026-09-22).** The tilt-swing board was
+  eliminated (a pinhole board is optically inert). Its front-board fasteners are now the disc holder's: **4× M6
+  mount bolts** (Ø150, plate → wall-frame adapter) + **4× M5 knurled thumb screws** (retaining ring). Firm-costed
+  in the `parts.py` `front-board` registry system (no standalone BOM). The former M12×45 mount / M8×1.0 adjustment
+  / M16 retention / dowels are gone with the mechanism.
 
 ## Itemization — BOM gaps (fasteners used but not discrete SKUs)
 Every gap is blocked on the same thing: the **length is a blueprint dim** we should confirm, not assume

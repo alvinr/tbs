@@ -358,8 +358,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID = 1611 # tilt-swing front board §12 BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
-FRONT_BOARD_HIGH = 2542 # §12 BOM high = parts.system_total('front-board')[1] (CNC + anodise + custom bellows + preload wave spring/adjuster bracket ring)
+FRONT_BOARD_MID = 343  # pinhole disc holder BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
+FRONT_BOARD_HIGH = 734 # BOM high = parts.system_total('front-board')[1] (Ø180 plate + retaining ring CNC + anodize + pinhole disc set + lens option + hardware)
 
 
 def _sec(sid: str) -> Section:
@@ -543,7 +543,6 @@ _ELEC = "electrical-report.md"
 _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
 _FC = "film-clamp-mechanism-report.md"
-_TSB = "tilt-swing-board-report.md"
 _HP = "hinged-panel-report.md"
 _LTS = "light-trap-selection.md"
 
@@ -865,10 +864,8 @@ def _inline_blocks() -> dict:
         # film-clamp-mechanism-report.md §4 — clamp-system band (generic spring clip → quality).
         "clamp-system-low": (_FC, lambda: f"${_clamp_system('low'):,}"),
         "clamp-system-high": (_FC, lambda: f"${_clamp_system('high'):,}"),
-        # tilt-swing-board-report.md §12.4 — the board's own BOM low (= FRONT_BOARD_MID, which the
-        # rest of the model reads); the §12.4 note's film-plane comparison uses film-total above.
-        "front-board-total": (_TSB, lambda: f"${FRONT_BOARD_MID:,}"),
-        "front-board-total-high": (_TSB, lambda: f"${FRONT_BOARD_HIGH:,}"),
+        # (The front-board total is single-sourced in pinhole-disc-holder-report.md §9 via the
+        # parts:front-board block; FRONT_BOARD_MID/HIGH remain the scenario model's EXPECTED['front-board'].)
         # hinged-panel-report.md §8.1–8.5 — the panel's four assemblies (§6c / §6 / §6b-split) + total.
         "hp-panel-low": (_HP, lambda: f"${total(PANEL)[0]:,}"),
         "hp-panel-high": (_HP, lambda: f"${total(PANEL)[2]:,}"),

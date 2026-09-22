@@ -63,7 +63,7 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 
 *Reports: [Pinhole Report](pinhole-report.md) §3/§4/§5/§7 (wall frame, pinhole plate, lens plate, light sealing); [Optics Report](pinhole-optics-report.md) Part 3/11 (optimal-diameter formulas, as-built f/1088 numbers).*
 
-*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), tilt-swing board (TSB), plate drawing (PD), schematic (SC).*
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), pinhole disc holder (PDH), plate drawing (PD), schematic (SC).*
 
 ### 1.3 Film Plane Mechanism
 
@@ -98,24 +98,24 @@ stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 
 *Reports: [Film Plane Mechanism](film-plane-mechanism-report.md) §4/§5/§7 (mechanism design, tilt/swing configurations, parts list); [Muslin Clamp System](film-clamp-mechanism-report.md) §2/§3 (spring-clip layout + jaw mechanism).*
 
-*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), film plane distortion (FPD), tilt-swing distortion (TSD).*
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), film plane distortion (FPD).*
 
-### 1.4 Tilt-Swing Front Board
+### 1.4 Pinhole Disc Holder (Front Board)
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X (board centers here) | <!-- BEGIN cdm:PH_X -->2,454<!-- END cdm:PH_X -->mm | `PH_X` |
-| Max tilt/swing | ±<!-- BEGIN cdm:FRONT_BOARD_MAX_DEG -->5.3<!-- END cdm:FRONT_BOARD_MAX_DEG -->° | `FRONT_BOARD_MAX_DEG` (computed from arm + travel) |
-| Resolution | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | `FRONT_BOARD_CLICK_DEG` (computed from screw + detents) |
+| Pinhole X (holder centers here) | <!-- BEGIN cdm:PH_X -->2,454<!-- END cdm:PH_X -->mm | `PH_X` |
+| Front plate Ø | Ø<!-- BEGIN cdm:PDH_PLATE_OD -->180<!-- END cdm:PDH_PLATE_OD --> | `PDH_PLATE_OD` |
+| Standard pinhole Ø | Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D --> | `PH_D` (Rayleigh optimum) |
 
-*Components: ICP-01 outer adapter frame (600×600×40mm Al 6061-T6), ICP-02 inner carrier plate
-(Ø320×25mm Al 6061-T6), GE50-DO-2RS spherical plain bearing (SKF, PTFE-lined), 4× M8×1.0
-adjustment screws, hemispherical ball-socket inserts (ICP-05), 36-detent knurled knobs, ICP-04 neoprene
-bellows (4-pleat, Ø290 ID → Ø360 OD).*
+*Components: ICP-01 Ø180×18mm 6061-T6 front plate (4× M6 mount @ Ø150 + 2 dowels; Ø90 scene taper
+→ Ø40 aperture; Ø52 disc counterbore; 4× M5 taps @ Ø74), neoprene light-seal washer (Ø56×Ø40×1.5),
+interchangeable ICP-02 disc (Ø50 SS-302 pinhole shim or lens cell), ICP-03 circular retaining ring
+(Ø90 OD × Ø44 bore × 5), 4× M5 knurled thumb screws. No tilt/swing — the board is fixed.*
 
-*Reports: [Tilt-Swing Front Board](tilt-swing-board-report.md) §2/§4/§5/§6/§12 (mechanism overview, pivot bearing, adjustment, light sealing/bellows, parts list).*
+*Reports: [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) §2/§3/§5/§6/§9 (mechanism overview, interchangeable discs, light sealing, wall mounting, parts list).*
 
-*Diagrams: tilt-swing board (TSB), tilt-swing distortion (TSD).*
+*Diagrams: pinhole disc holder (PDH).*
 
 ### 1.5 Housed Revolving-Door Light Lock (rev 8)
 
@@ -429,8 +429,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png`<br>`diagrams/water-system-sheet3.png`<br>`diagrams/water-system-sheet4.png` | 1, 10, 11, 12, 13, 16 |
 | **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6, 17 |
 | **LT** | `generate_ventilation_diagram.py` | `diagrams/ventilation-sheet1.png`<br>`diagrams/ventilation-sheet2.png` | 1, 5, 6, 7, 8 |
-| **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
-| **TSD** | `generate_tilt_swing_distortion.py` | `diagrams/tilt-swing-combined-c0.png` – `c8.png`<br>`diagrams/tilt-swing-combined-summary.png` | 3, 4 (optical simulation) |
+| **PDH** | `generate_pinhole_disc_holder.py` | `diagrams/pinhole-disc-holder-sheet1.png`<br>`diagrams/pinhole-disc-holder-sheet2.png` | 2, 4 |
 | **PD** | `generate_plate_drawing.py` | `diagrams/plate-drawing-sheet1.png`<br>`diagrams/plate-drawing-sheet2.png` | 1, 2 |
 | **WK** | `generate_walkway_diagram.py` | `diagrams/walkway-sheet1.png`<br>`diagrams/walkway-sheet2.png`<br>`diagrams/walkway-sheet3.png`<br>`diagrams/walkway-sheet4.png`<br>`diagrams/walkway-sheet5.png`<br>`diagrams/walkway-sheet6.png` | 1, 16, 17 |
 | **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
@@ -443,25 +442,25 @@ Every generator script, its output PNGs, and the subsystems it renders.
 
 ✓ = this subsystem is drawn in this diagram group. Re-run all ✓ scripts when the subsystem changes.
 
-| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | TSB | TSD | PD | SC | WK |
-|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|
-| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | ✓ |
-| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | ✓ | ✓ | |
-| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | | |
-| **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | | |
-| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | | |
-| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | | |
-| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | | |
-| **8** Evap Cooler | ✓ | | ✓ | ✓ | | | ✓ | | | ✓ | | | | | |
-| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | | |
-| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | | |
-| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
-| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
-| **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
-| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | | |
-| **15** Panel Swing Pivot | ✓ | | ✓ | | | | | | ✓ | | | | | | |
-| **16** Processing Tray | ✓ | | ✓ | | | | | ✓ | | | | | | | ✓ |
-| **17** Perimeter Walkway | ✓ | | | | | | | | ✓ | | | | | | ✓ |
+| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | PDH | PD | SC | WK |
+|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:--:|:--:|:--:|
+| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ |
+| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | ✓ | ✓ | |
+| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | | | |
+| **4** Pinhole Disc Holder | | | | | | | | | | | ✓ | | | |
+| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
+| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
+| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | |
+| **8** Evap Cooler | ✓ | | ✓ | ✓ | | | ✓ | | | ✓ | | | | |
+| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | |
+| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | |
+| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
+| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
+| **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
+| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | |
+| **15** Panel Swing Pivot | ✓ | | ✓ | | | | | | ✓ | | | | | |
+| **16** Processing Tray | ✓ | | ✓ | | | | | ✓ | | | | | | ✓ |
+| **17** Perimeter Walkway | ✓ | | | | | | | | ✓ | | | | | ✓ |
 
 ---
 

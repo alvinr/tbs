@@ -33,24 +33,21 @@ The camera is transportable by commercial hire truck (no Commercial Drivers Lice
 The history of large-format photography is a history of increasing precision in decreasing size. The view camera shrank from room to studio to field. The Big Shoebox inverts that trajectory: it scales a camera back up to architectural dimensions, not as spectacle, but as instrument. The container is not incidental to the work — it is the camera body. The constraint of the container's interior geometry is the optical specification. Site, transport, and access become compositional decisions.
 
 ## 3. Technical Innovation
-The project incorporates two independent movement systems — equivalent to the front and rear standards of a view camera — operating at pinhole focal lengths. No camera of this type is known to exist.
+The project pairs a fixed, quick-change pinhole front board with a fully articulated film plane — the rear standard of a view camera, operating at pinhole focal lengths. No camera of this type is known to exist.
 
-### Front Board: Tilt and Swing (±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°)
-A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A spherical plain bearing allows the pinhole to pivot up to ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->° per click resolution.
+### Front Board: Quick-Change Pinhole Disc Holder
+The interchangeable pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring on four knurled thumb screws, so a disc swaps in about 30 seconds with no tools — a different pinhole diameter (from the Rayleigh optimum Ø2.17mm to sharper or brighter apertures), or a lens cell of the same Ø50 outer diameter to run the instrument as a lens optic.
 
-**Effect:** every 5° of board tilt steers the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm across the film plane. Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
+**Why the board is fixed:** a pinhole is a point aperture. The image is a central projection *through the pinhole point*, determined only by the pinhole's position and the film plane — it is completely independent of the orientation of the plate that holds it. Tilting a pinhole board therefore does nothing to the image. All perspective and geometric control is provided by the film plane.
 
 ### Film Plane: 4-Corner Independent Actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)
 Four independently-set corners allow the fixed-size rigid image plane to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner rides an acetal skate inside a 6061 aluminum U-channel depth rail (slid by hand and cam-clamped to set focus); a 2-axis 304 cross-slide plus a single Belden universal joint at each corner absorb the rigid-rotation arc travel and supply the angular change, so the plane rotates without stretching or twisting.
 
-**Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.
+**Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection. Because the front board contributes nothing optically, the film plane alone produces the full range of projections, from an undistorted reference frame to compound twisted-plane geometries where no lines remain parallel.
 
-### Combined Operation
-The two systems interact non-linearly. When both are engaged simultaneously, the resulting optical projection cannot be predicted by either system alone and cannot be produced by any other camera type. A front board tilt combined with an opposing film plane tilt partially cancels the image shift while introducing a subtle S-curve geometric distortion. Full compound operation — both axes of both systems simultaneously — produces images where no lines remain parallel in any axis.
+![Film-plane distortion renders — all configurations](assets/film-plane-distortion-summary.png)
 
-![Combined tilt-swing distortion renders — all configurations](assets/tilt-swing-combined-summary.png)
-
-These interactions are modeled and documented in the [combined distortion renders](tilt-swing-board-report.md), produced from a two-step ray-tracing projection model derived from first principles.
+These projections are modeled and documented in the [distortion renders](distortion-renders.md), produced from a ray-tracing projection model derived from first principles.
 
 ### Design Rigor
 All specifications are citable. Optical derivations reference Rayleigh (1891), Smith's *Modern Optical Engineering*, and the Schwarzschild reciprocity failure model. Mechanical specifications reference SKF bearing datasheets, McMaster-Carr part numbers, and manufacturer tolerance standards. The full documentation — technical reports, 2d & 3d engineering drawings for each mechanism, Python source for all optical simulations — is open and free to reuse.
@@ -58,7 +55,7 @@ All specifications are citable. Optical derivations reference Rayleigh (1891), S
 ## 4. Artistic Vision
 The pinhole camera's defining property is infinite depth of field: near and far are equally sharp. Every element of a scene — a blade of grass at three feet, a mountain at thirty miles — records at the same clarity. This is not a limitation to work around. It is the medium's fundamental statement about attention: everything matters equally.
 
-The movement systems add a second layer. The front board and film plane allow the photographer to place the image precisely on the print surface, to compress or expand perspective, to make the geometry of the scene converge or diverge. But unlike a view camera's Scheimpflug movements, which are used to adjust focus, these movements have no focus to adjust. They are purely compositional.
+The film-plane movements add a second layer. They allow the photographer to place the image precisely on the print surface, to compress or expand perspective, to make the geometry of the scene converge or diverge. But unlike a view camera's Scheimpflug movements, which are used to adjust focus, these movements have no focus to adjust. They are purely compositional.
 
 **The result:** a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A nearly 15-foot-wide cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and the viewer.
 
@@ -84,7 +81,7 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$36,071<!-- END costing:fund-l1-total -->, Standard scenario)
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,673<!-- END costing:fund-l1-total -->, Standard scenario)
 Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$28,000–$40,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
@@ -94,7 +91,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Interior conversion (light-seal, paint, ventilation, door) | $605 |
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $170 |
 | Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint) | $4,291 |
-| Tilt-swing front board mechanism | $1,611 |
+| Tilt-swing front board mechanism | $343 |
 | Housed revolving-door light trap (plastic-skin Ø800 housing + C-shell drum, bearings, seals, fabrication) | $3,651 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $7,474 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $3,464 |
@@ -104,8 +101,8 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,432 |
 | Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $278 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,710 |
-| Contingency (10%) | ~$3,280 |
-| **Level 1 total** | **~$36,071** |
+| Contingency (10%) | ~$3,150 |
+| **Level 1 total** | **~$34,673** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,025–2,750)
@@ -128,7 +125,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–5,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$39,096–43,821<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,698–42,423<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:
@@ -137,7 +134,7 @@ A 12-month build and deployment program:
 |-------|-----------|
 | 1–2 | Container acquisition, delivery, initial light-sealing |
 | 2–4 | Interior conversion: paint, backing panels, ventilation, door seals |
-| 4–5 | Mechanism fabrication: film plane, tilt-swing front board, water system |
+| 4–5 | Mechanism fabrication: film plane, pinhole disc holder, water system |
 | 5–6 | Fit-out, calibration, test exposures (dark frame verification) |
 | 6 | First public deployment — test shoot, process documentation |
 | 7–9 | Second and third deployments (target: distinct landscape/urban/architectural) |
@@ -185,7 +182,7 @@ My practice since has moved between classical portraiture and abstract color in 
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Film plane movement | ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing, 4-corner independent (Option A rigid plane) |
-| Front board movement | ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° tilt and swing, <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click resolution |
+| Front board | Fixed quick-change pinhole disc holder — interchangeable Ø50 discs / lens cell |
 | Process | Cyanotype (Ware formula) on cotton muslin |
 | Water system | Self-contained, ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply, off-grid capable |
 | Transport | Commercial hire tilt-bed, no CDL required |
@@ -195,4 +192,4 @@ All technical reports, fabrication drawings, optical simulations, and shopping l
 **[alvinr.github.io/tbs](https://alvinr.github.io/tbs/)**
 
 ### Sample Optical Renders
-The combined distortion renders (see [Tilt-Swing Front Board report](tilt-swing-board-report.md)) demonstrate the range of optical projections available from the combined movement systems — from an undistorted reference frame to compound diagonal projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's movement systems, modeled from first principles and replicable in the physical instrument.
+The [distortion renders](distortion-renders.md) demonstrate the range of optical projections available from the film-plane movement system — from an undistorted reference frame to compound twisted-plane projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's film-plane movements, modeled from first principles and replicable in the physical instrument.

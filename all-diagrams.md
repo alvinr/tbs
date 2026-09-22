@@ -100,21 +100,11 @@
 
 ---
 
-## 8. Tilt-Swing Front Board
+## 8. Pinhole Disc Holder (Front Board)
 
-![TBS-001 Tilt-Swing Board — Sheet 1: Overall Design (Front View)](assets/tilt-swing-sheet1.png)
+![TBS-001 Pinhole Disc Holder — Sheet 1: Assembly + Section A-A](assets/pinhole-disc-holder-sheet1.png)
 
-![TBS-001 Tilt-Swing Board — Sheet 2: Section A-A (Sectional Master)](assets/tilt-swing-sheet2.png)
-
-![TBS-001 Tilt-Swing Board — Sheet 3: ICP-01 Outer Adapter Frame (exterior + interior faces)](assets/tilt-swing-sheet3.png)
-
-![TBS-001 Tilt-Swing Board — Sheet 4: ICP-02 Carrier, Bearing & Adjustment](assets/tilt-swing-sheet4.png)
-
-![TBS-001 Tilt-Swing Board — Sheet 5: Light Seal, Locking, Calibration & Swap](assets/tilt-swing-sheet5.png)
-
-![TBS-001 Tilt-Swing Board — Sheet 6: Bellows Attachment (clamp-ring joint details)](assets/tilt-swing-sheet6.png)
-
-![TBS-001 Tilt-Swing Board — Sheet 7: Adjuster Bracket Ring & Kinematic-Seat Inserts (fabrication)](assets/tilt-swing-sheet7.png)
+![TBS-001 Pinhole Disc Holder — Sheet 2: Fabrication (front plate · retaining ring · disc)](assets/pinhole-disc-holder-sheet2.png)
 
 ---
 
@@ -368,51 +358,7 @@
 
 ---
 
-## 21. Tilt-Swing Combined Distortion Renders
-
-![Tilt-Swing Combined — Configuration 0](assets/tilt-swing-combined-c0.png)
-
-![Tilt-Swing Combined — Configuration 1](assets/tilt-swing-combined-c1.png)
-
-![Tilt-Swing Combined — Configuration 2](assets/tilt-swing-combined-c2.png)
-
-![Tilt-Swing Combined — Configuration 3](assets/tilt-swing-combined-c3.png)
-
-![Tilt-Swing Combined — Configuration 4](assets/tilt-swing-combined-c4.png)
-
-![Tilt-Swing Combined — Configuration 5](assets/tilt-swing-combined-c5.png)
-
-![Tilt-Swing Combined — Configuration 6](assets/tilt-swing-combined-c6.png)
-
-![Tilt-Swing Combined — Configuration 7](assets/tilt-swing-combined-c7.png)
-
-![Tilt-Swing Combined — Configuration 8](assets/tilt-swing-combined-c8.png)
-
-![Tilt-Swing Combined — Summary Grid](assets/tilt-swing-combined-summary.png)
-
----
-
-## Tilt-Swing Board Distortion Renders (Board Only)
-
-![Tilt-Swing Board — C0: Reference](assets/tilt-swing-board-distortion-c0.png)
-
-![Tilt-Swing Board — C1: Mild Tilt +2°](assets/tilt-swing-board-distortion-c1.png)
-
-![Tilt-Swing Board — C2: Max Tilt +5.3°](assets/tilt-swing-board-distortion-c2.png)
-
-![Tilt-Swing Board — C3: Max Tilt -5.3°](assets/tilt-swing-board-distortion-c3.png)
-
-![Tilt-Swing Board — C4: Mild Swing +2°](assets/tilt-swing-board-distortion-c4.png)
-
-![Tilt-Swing Board — C5: Max Swing +5.3°](assets/tilt-swing-board-distortion-c5.png)
-
-![Tilt-Swing Board — C6: Compound +3° Tilt, +3° Swing](assets/tilt-swing-board-distortion-c6.png)
-
-![Tilt-Swing Board — Summary Grid](assets/tilt-swing-board-distortion-summary.png)
-
----
-
-## 22. Optics Visualization
+## 21. Optics Visualization
 
 ![TBS-001 — Portrait Camera Schematic](assets/portrait-camera-schematic.png)
 
@@ -422,13 +368,13 @@
 
 ---
 
-## 23. TBS-002 Proof of Concept
+## 22. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
 
 ---
 
-## 24. Revolving Light-Trap — Fabrication Blueprints
+## 23. Revolving Light-Trap — Fabrication Blueprints
 
 ![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
 

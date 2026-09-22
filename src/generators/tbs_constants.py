@@ -248,85 +248,41 @@ CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the plate edge (mm, 
 CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each leg (mm)
 CORNER_PLATE_BEND_R    = 6.35   # L-plate press-brake inside bend radius (mm) = 1T
 
-# ── Tilt-swing front board (spherical-pivot adapter on the pinhole frame) ─────
-# The board pivots up to FRONT_BOARD_MAX_DEG in tilt AND swing, set by the screw-shoulder
-# hard stop: FRONT_BOARD_TRAVEL_MM of linear travel each way at the FRONT_BOARD_ARM_MM pivot
-# arm. Resolution is one knurled-knob detent — FRONT_BOARD_CLICK_DEG/click — from the M8×1.0
-# fine-pitch screw (FRONT_BOARD_SCREW_PITCH mm/turn) over FRONT_BOARD_DETENTS detents, via the
-# same arm. Both ANGLES are COMPUTED from those physical inputs (was hardcoded ±5.3° / 0.012°
-# in the tilt-swing generators — component-dependency-map.md §1.4).
-FRONT_BOARD_ARM_MM      = 130    # pivot arm — adjustment screw to pivot centre (mm)
-FRONT_BOARD_TRAVEL_MM   = 12     # screw-shoulder hard-stop travel each way (mm)
-FRONT_BOARD_SCREW_PITCH = 1.0    # M8×1.0 fine-pitch adjustment screw (mm per turn)
-FRONT_BOARD_DETENTS     = 36     # knurled-knob detents per turn
-FRONT_BOARD_MAX_DEG   = round(math.degrees(math.atan(FRONT_BOARD_TRAVEL_MM / FRONT_BOARD_ARM_MM)), 1)            # = 5.3
-FRONT_BOARD_CLICK_DEG = round(math.degrees(math.atan((FRONT_BOARD_SCREW_PITCH / FRONT_BOARD_DETENTS) / FRONT_BOARD_ARM_MM)), 3)  # = 0.012
-
-# ── Tilt-swing front board — GEOMETRY (single source: 2D sheets + tilt-swing 3D model) ────────
-# Rim kinematic mount: the ICP-02 carrier is located at its rim by 4 adjuster balls in kinematic
-# seats (1 cone / 1 vee / 2 flat) and held by a peripheral wave spring reacting on the ICP-03
-# adjuster bracket ring — the optical axis is clear (no central pivot), and the knobs adjust from
-# inside the container. Promoted from generate_tilt_swing_board.py so the sheets and
-# generate_tilt_swing_model.py read one source (both import these; the 2D generator aliases them
-# back to its short local names).
-# existing plate interface (unchanged pinhole-plate footprint)
-TSB_PL_OD       = 600    # plate outer dimension (square)
-TSB_BOLT_BC     = 540    # container-plate bolt circle diameter
-TSB_BOLT_D      = 13     # bolt hole clearance diameter (M12)
-TSB_BOLT_N      = 8
-TSB_DWL_D       = 8      # dowel pin diameter
-TSB_DWL_OFF     = 200    # ± horizontal from center
-TSB_SEAL_D      = 420    # neoprene groove PCD
-TSB_TRAP_SQ     = 490    # light-trap rebate PCD (square)
-TSB_FR_APT_D    = 350    # wall frame aperture diameter
-TSB_PH_CB_D     = 52     # pinhole disc counterbore diameter
-TSB_PH_CB_DEP   = 3
-TSB_PH_DISC_D   = 50     # pinhole disc diameter
-TSB_PH_BORE     = 90     # exterior taper bore
-# ICP-01 Outer Adapter Frame
-TSB_FRAME_THICK = 40     # frame plate thickness
-TSB_BORE        = 380    # central bore diameter (clear — no central bearing)
-TSB_ADJ_PCD     = 270    # adjustment-screw PCD (in frame)
-TSB_ADJ_N       = 4      # 4 screws
-TSB_LAB_D1, TSB_LAB_D2, TSB_LAB_D3 = 382, 390, 400  # labyrinth step diameters
-TSB_BELL_OUT_PCD = 420   # bellows outer clamp-ring screw PCD — outside the Ø400 labyrinth
-# ICP-02 Inner Carrier Plate
-TSB_CARR_OD     = 320    # carrier plate OD
-TSB_CARR_THICK  = 25     # carrier thickness
-TSB_SOCK_PCD    = 260    # kinematic-seat insert PCD (cone/vee/flat)
-TSB_BELL_IN_PCD = 306    # bellows inner clamp-ring screw PCD
-# Adjustment screw
-TSB_ADJ_D       = 8      # M8 screw
-TSB_BALL_D      = 8      # chrome-steel ball
-TSB_KNOB_D      = 40
-TSB_KNOB_H      = 15
-TSB_BUSH_OD     = 22
-TSB_BUSH_L      = 35
-# Bellows (truncated cone: small end on carrier, large end on frame)
-TSB_BELL_ID     = 290    # small end (carrier / scene side)
-TSB_BELL_OD     = 430    # large end (frame / container side)
-TSB_BELL_FREE   = 60     # free length
-TSB_BELL_PLEATS = 4
-TSB_BELL_PLEAT_D = 15    # pleat depth
-TSB_CLAMP_SCR_D = 4      # M4 clamp-ring retaining screws (both flanges)
-TSB_CLAMP_RING_W = 14    # clamp-ring radial band width
-TSB_SEAL_W      = 3      # neoprene seal groove width
-TSB_SEAL_DEP    = 3      # seal groove depth
-# Preload subsystem (ICP-03 — replaces the former central GE50 bearing)
-TSB_SPR_PCD     = 300    # annular wave-spring mean diameter
-TSB_RET_RING_ID = 240    # adjuster bracket-ring bore
-TSB_RET_RING_OD = 470    # adjuster/retaining-ring OD
-TSB_RET_RING_T  = 8      # ring thickness (6061-T6)
-TSB_RET_BOLT_PCD = 450   # ring → frame bolt circle (outside the Ø400 labyrinth)
-TSB_RET_BOLT_N  = 6      # 6× M5 standoff screws
-TSB_RET_BOLT_D  = 5
+# ── Pinhole disc holder (front board) — replaces the retired tilt-swing mechanism ─────────────
+# The pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring
+# held with 4 thumb screws. Discs are interchangeable in seconds (different pinhole Ø, or a lens
+# cell of the same outer Ø). No tilt/swing — tilting a pinhole board is optically inert (the image
+# is a central projection through the pinhole POINT); all perspective control lives in the
+# film-plane mechanism. The former FRONT_BOARD_* envelope and TSB_* geometry are retired with it.
+PDH_PLATE_OD      = 180   # ROUND front plate Ø — a compact dedicated retainer (its own small mount,
+                          # NOT the Ø540 standard-plate interface — the wall-frame adapter carries the
+                          # matching small bolt pattern)
+PDH_PLATE_T       = 18    # front plate thickness
+PDH_MOUNT_BC      = 150   # mount bolt circle to the wall-frame adapter
+PDH_MOUNT_N       = 4     # 4× M6 mount bolts
+PDH_MOUNT_D       = 7     # M6 clearance hole
+PDH_DWL_D         = 6     # dowel pin Ø (registration)
+PDH_DWL_OFF       = 60    # ± dowel offset (Ø120 spacing)
+PDH_SEAL_D        = 160   # perimeter seal groove to the adapter
+PDH_APERTURE      = 40    # Ø light-aperture clearance bore through the plate (behind the disc)
+PDH_TAPER_BORE    = 90    # Ø exterior scene-side taper bore (light converges toward the pinhole)
+PDH_DISC_OD       = 50    # interchangeable disc outer Ø (SS-302 pinhole shim, or a lens cell carrier)
+PDH_DISC_SEAT_D   = 52    # Ø counterbore seat the disc drops into
+PDH_DISC_SEAT_DEP = 3     # seat depth
+PDH_WASHER_OD     = 56    # neoprene light-seal washer OD — the disc presses against it
+PDH_WASHER_ID     = 40    # washer bore (clears the Ø40 aperture)
+PDH_WASHER_T      = 1.5   # washer thickness (compresses to seal)
+PDH_RING_OD       = 90    # circular retaining ring OD (6061-T6)
+PDH_RING_ID       = 44    # ring bore — smaller than the disc OD so it clamps the disc rim; clears the light path
+PDH_RING_T        = 5     # ring thickness
+PDH_TS_N          = 4     # 4 thumb screws hold the ring down
+PDH_TS_PCD        = 74    # thumb-screw bolt circle
+PDH_TS_D          = 5     # M5 knurled thumb screws
+PDH_PINHOLE_D     = 2.17  # standard pinhole Ø (Rayleigh optimum at the 2362mm focal length, f/1088)
 
 # ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────
 # These appear hand-computed across many reports; deriving them here (and registering as facts)
 # means a focal-length or film-size change ripples to every doc that restates them.
-BOARD_TILT_REF_DEG   = 5     # round reference tilt for the image-shift unit-rate illustration
-IMAGE_SHIFT_PER_5DEG = round(C_WID * math.tan(math.radians(BOARD_TILT_REF_DEG)))   # = 207mm (focal × tan 5°)
-FRONT_BOARD_MAX_SHIFT_MM = round(C_WID * math.tan(math.radians(FRONT_BOARD_MAX_DEG)))   # = 219mm — image shift at the ±5.3° hard stop
 IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 101 sq ft (active film plane)
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners
 

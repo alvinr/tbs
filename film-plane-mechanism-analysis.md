@@ -153,5 +153,5 @@ The six achievable flat configurations on a checker grid (D = 8,000mm):
 
 1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — the current four-corner mechanism, hardware, and bill of materials.
 2. [Muslin Clamp System](film-clamp-mechanism-report.md) — the muslin spring-clip mechanism and its parts list.
-3. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — front board mechanism for combined distortion analysis.
+3. [Pinhole Disc Holder (Front Board) Report](pinhole-disc-holder-report.md) — quick-change pinhole disc holder at the scene end (fixed board; all movement is in the film plane).
 4. [Equipment Layout Report](equipment-layout-report.md) — rail positions and shadow-free zone verification.

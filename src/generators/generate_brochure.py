@@ -71,7 +71,6 @@ BROCHURE_EXCLUDE = {
     "film-plane-mechanism-analysis.md",                                       # superseded by film-plane-mechanism-report
     "lens-options.md", "lens-vs-pinhole-exposure.md", "pinhole-option-b-optics.md",  # optics options not chosen
     "container-transport-options.md", "process-comparison.md",                # alternatives not chosen
-    "tilt-swing-board-analysis.md",                                           # tilt-swing distortion renders
     "right-walkway-cantilever-study.md",                                      # decision record
     "component-dimension-audit.md",                                           # internal QA audit
     "cost-analysis-report.md",                                                # overlaps project-cost-breakdown

@@ -465,6 +465,6 @@ Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-tran
 ## See Also
 - [Electrical & Systems Report](electrical-report.md) — power system, light trap construction, cooling specification
 - [Film Plane Mechanism](film-plane-mechanism-report.md) — image plane adjustment and setup
-- [Tilt-Swing Front Board](tilt-swing-board-report.md) — pinhole steering and angular calibration
+- [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) — quick-change pinhole disc / lens swap procedure
 - [Chem Shopping List](chemistry-shopping-list.md) — chemistry suppliers and quantities
 - [Processing System](water-system-report.md) — water system circuit operation

@@ -56,8 +56,7 @@ MD_FILES = [
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
     ("film-plane-mechanism-analysis.md", (".",           "Film Plane Distortion Analysis (superseded)")),
     ("film-clamp-mechanism-report.md",   (".",           "Film Clamp Mechanism")),
-    ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
-    ("tilt-swing-board-analysis.md",     (".",           "Tilt & Swing Distortion Renders")),
+    ("pinhole-disc-holder-report.md",    (".",           "Pinhole Disc Holder")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
     ("sensitizer-trials.md",             (".",           "Sensitizer Trials")),
     ("operating-manual.md",             (".",           "Operating Manual")),
@@ -138,31 +137,8 @@ DIAG_IMAGE_FILES = [
     "film-plane-distortion-c4.png",
     "film-plane-distortion-c5.png",
     "film-plane-distortion-summary.png",
-    "tilt-swing-combined-c0.png",
-    "tilt-swing-combined-c1.png",
-    "tilt-swing-combined-c2.png",
-    "tilt-swing-combined-c3.png",
-    "tilt-swing-combined-c4.png",
-    "tilt-swing-combined-c5.png",
-    "tilt-swing-combined-c6.png",
-    "tilt-swing-combined-c7.png",
-    "tilt-swing-combined-c8.png",
-    "tilt-swing-combined-summary.png",
-    "tilt-swing-board-distortion-c0.png",
-    "tilt-swing-board-distortion-c1.png",
-    "tilt-swing-board-distortion-c2.png",
-    "tilt-swing-board-distortion-c3.png",
-    "tilt-swing-board-distortion-c4.png",
-    "tilt-swing-board-distortion-c5.png",
-    "tilt-swing-board-distortion-c6.png",
-    "tilt-swing-board-distortion-summary.png",
-    "tilt-swing-sheet1.png",
-    "tilt-swing-sheet2.png",
-    "tilt-swing-sheet3.png",
-    "tilt-swing-sheet4.png",
-    "tilt-swing-sheet5.png",
-    "tilt-swing-sheet6.png",
-    "tilt-swing-sheet7.png",
+    "pinhole-disc-holder-sheet1.png",
+    "pinhole-disc-holder-sheet2.png",
     "electrical-sheet1.png",
     "electrical-sheet2.png",
     "electrical-sheet3.png",
@@ -354,7 +330,7 @@ nav:
       - "Pinhole Report": pinhole-report.md
       - "Film Plane Mechanism": film-plane-mechanism-report.md
       - "Film Clamp Mechanism": film-clamp-mechanism-report.md
-      - "Tilt-Swing Front Board": tilt-swing-board-report.md
+      - "Pinhole Disc Holder": pinhole-disc-holder-report.md
     - Misc:
       - "Walkway": walkway-report.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
@@ -378,7 +354,6 @@ nav:
     - "Photosensitive Materials": photosensitive-plane-options.md
     - "Sensitizer Trials": sensitizer-trials.md
     - "Distortion Renders": distortion-renders.md
-    - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
     - "Film Plane Distortion Analysis (superseded)": film-plane-mechanism-analysis.md
     - "Light Trap Selection": light-trap-selection.md
     - "Cost Analysis": cost-analysis-report.md
@@ -477,8 +452,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
 | [Film Plane Distortion Analysis (superseded)](film-plane-mechanism-analysis.md) | Decision record + optical-distortion physics for the abandoned stretching four-corner design; the current mechanism is the [Film Plane Mechanism](film-plane-mechanism-report.md) |
 | [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Muslin spring-clip system — 90 clips at 150mm spacing, parts list |
-| [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
-| [Tilt & Swing Distortion Renders](tilt-swing-board-analysis.md) | Ray-traced projection renders for all combined board + film plane configurations |
+| [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) | Quick-change pinhole disc holder — retaining ring, thumb screws, interchangeable discs/lens, drawings |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Container Selection & Construction](container-report.md) | Container options, US transport compliance, interior conversion, light-sealing |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |

@@ -24,102 +24,8 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Tilt-swing board (TSB) blueprint review — round 1.** Two competing engineering-sheet generators
-  had drifted (the report embedded an older 2-sheet set while the current M8 design lived in an
-  unreferenced, unregistered 3-sheet set). Merged them into a **single registered generator** emitting
-  one clean `tilt-swing-sheet1..5` series — overall design, Section A-A master, ICP-01 frame
-  (exterior+interior), ICP-02 carrier/bearing/adjustment, and light-seal/locking/calibration/swap —
-  dropping the duplicate assembly + section panels. Registered all three tilt-swing generators (board +
-  both distortion sets) in `dependencies.yml`, which were previously untracked.
-- **TSB component sheets fully dimensioned for fabrication.** Sheets 3–5 were reworked so a fabricator
-  can build each part without questions: every material blank, hole diameter + count, PCD (horizontal
-  *and* vertical), depth, and thickness is a formal dimension rather than a leader callout. Also tidied
-  the ICP part numbering to a contiguous set (ICP-01 frame · 02 carrier · 03 bearing · 04 bellows · 05
-  ball-socket insert), fixed the Sheet 5 layout (panels to the top, title block restored), and corrected
-  a stray Ø4→Ø3 bellows cord-gasket callout.
-- **TSB bellows + wall mounting reworked to close the geometry.** Review caught that the bellows
-  bolt-through flanges didn't fit — 5mm edge on the Ø320 carrier, and the Ø360 bellows sat *inside*
-  the Ø380 frame bore with no face to bolt to. Switched both flanges to **clamp rings** (4× M4 at
-  Ø306 on the carrier, 6× M4 at Ø420 on the frame outside the labyrinth) and made the bellows a
-  **truncated cone Ø290→Ø430** so each flange lands on real material; added the clamp rings + M4
-  screws to `parts.py` (front-board total $1,634–$2,505). Also fixed Sheet 2 to show the container's
-  **corrugated end wall** with a flat wall-frame adapter plate and an enlarged aperture cut through it
-  — a precision mount can't seat on corrugation directly.
-- **TSB parts list migrated to the registry.** The hand-typed §12 BOM (internally inconsistent — the
-  category subtotals didn't sum from the line items) is now single-sourced from `parts.py` (new
-  `front-board` system, 19 parts) and injected as a `parts:front-board` block; the module total is a
-  true registry sum (**$1,604–$2,459**, up from the hand figure of $1,470–$2,440) reconciled through the
-  costing gate. Raw material (6061 plate + round bar) and the fab/finishing services (CNC, anodize,
-  scale engraving, custom bellows) are flagged **SKU pending — source**; the fasteners/bearing/seals
-  carry firm McMaster SKUs.
-- **TSB identifying leaders + label tidy.** Added the missing part-identifying leaders (Sheet 3 inner
-  4 / outer 6 hole circles, Sheet 4 Panel A center-4 + edge-6 and Panel B 4-hole patterns) and audited
-  every leader in the set so each attaches to the point it names — corrected a Sheet 2 socket leader
-  that pointed 45° off the actual socket and refreshed the stale bellows content the ported Sheet 1/2
-  functions still carried. Ran the tidy-labels pass to clear label crowding across the set (Sheet 2's
-  right-side component stack redistributed to even spacing; the one remaining overlap flag is a
-  confirmed rotated-dimension bbox false positive, visually clear).
-- **TSB Sheet 6 added — bellows attachment.** The old set described the clamp-ring joint only in
-  caption text; Sheet 5 Panel A drew the accordion but never the joint. New Sheet 6 gives it a proper
-  home: two enlarged (4:1) broken-out sections through the clamp joints — frame end (6× M4 @ Ø420,
-  outside the labyrinth) and carrier end (4× M4 @ Ø306) — each showing the neoprene lip, Ø3 cord gasket
-  in its groove inboard of the screws, the 6061 clamp ring, and the M4 SHCS into an 8-deep tapped hole,
-  plus an exploded assembly stack and attachment notes (2.5 N·m, compression seal, blind holes). The
-  set is renumbered to 6 sheets. Also added identifying leaders to Sheet 3 Panel A (light-trap rebate,
-  Delrin adjustment bushings, container-plate bolts).
-- **TSB Sheet 5: plate-swap procedure moved off the drawing into the manual.** The swap sequence was a
-  five-box flow diagram (Panel E) duplicating what §8 "Plate Swap Procedure" of the report already
-  carries as a numbered list (with more detail — M12×45 SHCS, 65 N·m). A swap is an operating step, not
-  a fabrication feature, so Panel E is removed; the sheet now carries a one-line pointer to §8 and
-  re-seats its title block to close the freed band. Report Sheet 5 caption updated to match.
-- **TSB review fixes: Sheet 6 bolt convention + Sheet 5 lock detail.** Review feedback: (1) the Sheet 6
-  clamp-screw section didn't match the set's convention — redrawn as a proper socket-head cap screw in
-  section (filled shank + dashed thread crests ⟂ to the axis + blind-tap relief + hex-socket recess),
-  same style as the M8 on Sheet 4 Panel D, replacing the ad-hoc angled thread ticks. (2) Sheet 5 Panel B
-  ("locking set screw") read as two stacked plates and didn't explain the mechanism — redrawn as an
-  "Adjustment-Screw Lock" detail showing the M8 adjustment screw threaded through the Delrin bushing in
-  the frame boss and the M6 nylon-tip set screw jamming its thread, with a note that it locks the SET
-  ANGLE only (the carrier is held by the central bearing, not these screws).
-- **TSB carrier support redesigned — central bearing → rim kinematic mount.** Review found the central
-  GE50 pivot was unbuildable: it floated at the center of the Ø380 bore (no way to carry it across the
-  aperture) and sat on the pinhole's optical axis (a solid Ø50 shank blocks the image; a spider would
-  obstruct the aperture — the same reason §4 rejected the Cardan joint). Replaced it with a **rim
-  kinematic mount**: the carrier is located only at its rim by the 4 adjuster balls in kinematic seats
-  (1 cone / 1 V-groove / 2 flat) and held against them by a peripheral **wave spring** reacting on an
-  aluminum **retaining ring** (6× M5 standoffs @ Ø450, outside the bellows). The optical axis is now
-  completely clear; small bounded parallax is accepted (pivot ~one carrier-thickness behind the pinhole
-  → pinhole shifts ~2.3mm at ±5.3°, <1.5%). Cascade: Sheet 2 rebuilt (bearing/shank gone; wave-spring +
-  retaining-ring + clamp rings added) with an enlarged **DETAIL Z** rim-mount inset and the widened
-  sheet; Sheet 1's A-A cutting-plane arrows fixed (were anti-parallel — the section reference was
-  floating) + stale bearing content removed; Sheet 3 Panel B (clear bore + retaining-ring standoffs);
-  Sheet 4 (kinematic seats on both carrier faces + Panel C "GE50 bearing section" repurposed as the
-  preload & kinematic-seat section). Parts: dropped `fb-ge50-bearing` + `tsb-central-screw`, added the
-  wave spring + retaining ring + M5 standoff screws (front-board total $1,606–$2,532, reconciled).
-  Report §2/§4/§5/§11/§13/§14 rewritten to the rim mount; ICP-03 reassigned to the preload subsystem.
-  The bellows now shows its **clamp rings on Sheet 2** (also a review item). No 3D model involved.
-- **TSB adjuster knobs moved to the interior (set from inside the container).** The knobs were on the
-  exterior (scene) side — unreachable once the board is mounted. Flipped the mechanism: the 4 M8
-  adjusters now mount on an **interior aluminum bracket ring** (standoff-mounted to the frame at Ø450)
-  with the knobs facing into the container, and the wave spring moved into a **counterbore in the
-  frame's interior face** (which becomes the spring reaction — so the separate retaining ring is now
-  the adjuster bracket ring). The kinematic seats moved to the carrier's rear (camera) face where the
-  balls now contact; the pinhole disc + counterbore are on that same rear face, and the wave-spring
-  land + bellows are on the front (scene) face. Cascade: Sheet 2 reworked (adjusters/knobs to the
-  interior, spring to the frame, DETAIL Z flipped); Sheet 1 knobs shown dashed (rear-mounted); Sheet 3
-  frame loses the 4× M22 adjuster bushings, gains the spring counterbore + bracket-ring standoffs;
-  Sheet 4 carrier faces swapped (Panel A = scene/spring land, Panel B = camera/pinhole + seats),
-  Panels C/D reflect the bracket-ring mounting. Parts: `tsb-retaining-ring` → `tsb-adjuster-ring`
-  (carries the adjusters), Delrin bushings relocate (front-board $1,611–$2,542, reconciled). Report
-  §2/§4/§5 + tolerances updated; adjust-from-inside stated throughout.
-- **TSB Sheet 7 added — fabricated-parts blueprint reconciliation.** Audited the front-board registry
-  against drawing coverage: every machined part now has a 2D fabrication blueprint. Two were missing
-  (both introduced by the interior-adjust design) and are added on new **Sheet 7**: the ICP-03 aluminum
-  **adjuster bracket ring** (face view — Ø470 OD, Ø240 bore, 4× M22 bushing bores @ Ø260, 4× M6 lock
-  holes, 6× M5 standoff clearance @ Ø450, 8 thk) and the four ICP-05 440C **kinematic-seat inserts**
-  (the cone / V-groove / flat seat forms, side-section + plan + Ø16 h6 × 12 dims). Set renumbered to 7
-  sheets and registered (gallery, publish.sh, setup_docs, dependencies.yml). Report §2 sheet list +
-  §12 gain a fabrication-drawing coverage map. Also added a boxed **ASSEMBLY KEY** to each component
-  sheet (3–7) cross-referencing where the part sits on the Sheet 2 section.
+- **Front board: tilt-swing mechanism eliminated, replaced by a quick-change pinhole disc holder.** A pinhole is a point aperture — the image is a central projection *through the pinhole point*, independent of the plate's orientation — so tilting a pinhole board is optically inert (only ~2.3mm parallax). All perspective control already lives in the film plane. The front board is now a fixed **pinhole disc holder**: a Ø180 plate + neoprene light-seal washer + interchangeable Ø50 disc (pinhole or lens cell) + a Ø90 retaining ring on four thumb screws (30-second, tool-free disc swap). Cascade: retired the `FRONT_BOARD_*` / `TSB_*` constants and the front-board facts; rewrote the 2D generator to a 2-sheet set and rebuilt the 3D model; reconciled `parts.py`/`costing.py` (front-board **$343–$734**, down from the tilt-swing $1,604–$2,459); rewrote the report and corrected the optical claims in the funding proposal and project summary; retired the wrong-physics distortion generators + `tilt-swing-board-analysis.md` and trimmed `distortion-renders.md` to the film-plane renders. Renamed all files `tilt-swing*` → `pinhole-disc-holder*`.
+
 - **Dimension-label units standardized — every length carries `mm`.** Promoted the ad-hoc mm
   convention to a **HARD RULE** in CLAUDE.md (Drawing Style Conventions): every length dimension label
   carries an explicit `mm` (including secondary values in a compound label, e.g. `3mm WIDE × 3mm
@@ -127,13 +33,6 @@ file** — a release must not ship without a changelog entry:
   and thread/fastener callouts stay standard. Applied across the full TSB 7-sheet set (the last bare
   numbers — plate-OD `600` dims in the Sheet 3 diameter stacks and a handful of compound WIDE/DEEP/THK
   values — now carry `mm`); `tidy_labels.py --check` reports 0 unit-less dims.
-
-- **Tilt-swing front-board geometry promoted to `tbs_constants.py`.** The ~40 TSB dimensions
-  (bore, carrier, bellows, wave spring, adjuster ring, PCDs…) lived as local constants inside the 2D
-  generator, unreachable by a 3D model and not `--cascade`-tracked. Moved them into the geometry store
-  under a `TSB_*` namespace (single source for the 2D sheets **and** the new tilt-swing 3D model),
-  aliased back to the sheets' short local names so the drawings render byte-identical. Groundwork for a
-  dedicated tilt-swing mechanism model.
 
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still
@@ -859,8 +758,6 @@ The lighttrap had a light-weight design that defined the major parameters. What 
   molded FRP made is 1"/25mm. Corrected to 25mm; the extra 10mm is absorbed **upward**, verified against the full 56° hinge-panel swing arc (arc only crosses the removable lift-out decks + open tray). Cascaded: film-plane
   bottom rail `RAIL_OFF_BOT` 150→160
   (−10mm image, FP wall anchors move), battery + evap-stow +10mm, grate weight 11→12.7 kg/m²
-
-
 
 ## [0.1] — 2026-07-03
 

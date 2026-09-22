@@ -291,5 +291,5 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 1. [McMaster-Carr Aluminum U-Channel](https://www.mcmaster.com/aluminum-u-channels) — 3×1½" (76×38mm) 6061-T6 Al U-channel, the depth rail the acetal skate runs in.
 2. [Belden SSNBUJ750x3/8KB Universal Joint](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816) — single universal joint, 3/8" bore, stainless needle-bearing, 45° per axis — the per-corner tilt+swing joint (factory-booted, integral bellows).
-3. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.
+3. [Pinhole Disc Holder (Front Board) Report](pinhole-disc-holder-report.md) — Quick-change pinhole disc holder at the scene end (fixed board; all movement is in the film plane).
 4. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.

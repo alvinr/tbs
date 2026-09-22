@@ -75,7 +75,7 @@ nav:
       - "Pinhole Report": pinhole-report.md
       - "Film Plane Mechanism": film-plane-mechanism-report.md
       - "Film Clamp Mechanism": film-clamp-mechanism-report.md
-      - "Tilt-Swing Front Board": tilt-swing-board-report.md
+      - "Pinhole Disc Holder": pinhole-disc-holder-report.md
     - Misc:
       - "Walkway": walkway-report.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
@@ -99,7 +99,6 @@ nav:
     - "Photosensitive Materials": photosensitive-plane-options.md
     - "Sensitizer Trials": sensitizer-trials.md
     - "Distortion Renders": distortion-renders.md
-    - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
     - "Film Plane Distortion Analysis (superseded)": film-plane-mechanism-analysis.md
     - "Light Trap Selection": light-trap-selection.md
     - "Cost Analysis": cost-analysis-report.md

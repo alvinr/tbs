@@ -43,15 +43,11 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 ## The Technology
 
-Two independent movement systems work in series, stacking their effects non-linearly:
-
-**Front board — tilt and swing (±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°)**
-The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
+**Front board — quick-change pinhole disc holder**
+The pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring on four thumb screws, so discs swap in seconds — a different pinhole diameter, or a lens cell of the same outer diameter. The board is fixed: a pinhole is a point aperture, and the image is a central projection *through the pinhole point*, so tilting the board that holds it does not steer or distort the image. All perspective control lives in the film plane.
 
 **Film plane — 4-corner independent actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)**
-Four corners of the image plane are set independently — each an acetal skate hand-slid in a 6061 Al U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
-
-**Combined:** the two systems interact non-linearly. Their compound optical projections — modeled and documented in the [distortion renders](tilt-swing-board-report.md) — produce images that no other camera type can make.
+Four corners of the image plane are set independently — each an acetal skate hand-slid in a 6061 Al U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole. The [distortion renders](distortion-renders.md) document the range of projections this produces — images that no other camera type can make.
 
 Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.
 
@@ -81,7 +77,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
 | [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Nylon spring-clamp muslin system — 58 clamps at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm spacing, parts list |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
-| [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
+| [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) | Quick-change pinhole disc holder — retaining ring, thumb screws, interchangeable discs/lens, drawings |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
@@ -93,5 +89,5 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every engineering diagram on a single page |
-| [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
+| [Distortion Renders](distortion-renders.md) | Ray-traced projections for the film-plane movement configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |

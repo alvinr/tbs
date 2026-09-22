@@ -37,10 +37,8 @@ generators:
   schematic: {script: src/generators/generate_schematic.py, outputs: [diagrams/portrait-camera-schematic.png]}
   shelf_diagram: {script: src/generators/generate_shelf_diagram.py, outputs: [diagrams/shelf-sheet1.png, diagrams/shelf-sheet2.png, diagrams/shelf-sheet3.png, diagrams/shelf-sheet4.png, diagrams/shelf-sheet5.png]}
   spray_bar_diagram: {script: src/generators/generate_spray_bar_diagram.py, outputs: [diagrams/spray-bar-sheet1.png]}
-  tilt_swing_board: {script: src/generators/generate_tilt_swing_board.py, outputs: [diagrams/tilt-swing-sheet1.png, diagrams/tilt-swing-sheet2.png, diagrams/tilt-swing-sheet3.png, diagrams/tilt-swing-sheet4.png, diagrams/tilt-swing-sheet5.png, diagrams/tilt-swing-sheet6.png, diagrams/tilt-swing-sheet7.png]}
+  pinhole_disc_holder: {script: src/generators/generate_pinhole_disc_holder.py, outputs: [diagrams/pinhole-disc-holder-sheet1.png, diagrams/pinhole-disc-holder-sheet2.png]}
   # per-config c0..cN frames are emitted in a loop (f-string), so only the literal summary is declared (matches film_plane_distortion)
-  tilt_swing_board_distortion: {script: src/generators/generate_tilt_swing_board_distortion.py, outputs: [diagrams/tilt-swing-board-distortion-c0.png, diagrams/tilt-swing-board-distortion-summary.png]}
-  tilt_swing_combined_distortion: {script: src/generators/generate_combined_distortion.py, outputs: [diagrams/tilt-swing-combined-c0.png, diagrams/tilt-swing-combined-summary.png]}
   tray_redesign: {script: src/generators/generate_tray_redesign.py, outputs: [diagrams/tray-redesign-sheet1.png, diagrams/tray-redesign-sheet2.png]}
   tray_slope_diagram: {script: src/generators/generate_tray_slope_diagram.py, outputs: [diagrams/tray-slope-sheet1.png, diagrams/tray-slope-sheet2.png, diagrams/tray-slope-sheet3.png, diagrams/tray-slope-sheet4.png]}
   walkway_diagram: {script: src/generators/generate_walkway_diagram.py, outputs: [diagrams/walkway-sheet1.png, diagrams/walkway-sheet2.png, diagrams/walkway-sheet3.png, diagrams/walkway-sheet4.png, diagrams/walkway-sheet5.png, diagrams/walkway-sheet6.png, diagrams/walkway-sheet7.png, diagrams/walkway-sheet8.png, diagrams/walkway-sheet9.png, diagrams/walkway-sheet10.png]}
@@ -70,3 +68,6 @@ models:
   # imports generate_corridor_water_panel.py; --save writes water.rb (byte-verifiable) + saves water.skp via --send.
   # corridor-panel.skp is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
   water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [plumbing-report.md], source_hash: "sha256:03351a0d108b3dfcc7b775a47e6a3602875718aaddc9eddd96c7810089acbae1"}
+  # pinhole-disc-holder = the pinhole-end quick-change front-board disc holder. uid is a PLACEHOLDER
+  # until the first Sketchfab upload assigns the real one; source_hash is PENDING until the first --send + save.
+  pinhole-disc-holder: {script: src/models/generate_pinhole_disc_holder_model.py, outputs: [models/pinhole-disc-holder.skp, src/models/pinhole-disc-holder.rb], uid: "00000000000000000000000000000000", embed_files: [pinhole-disc-holder-report.md], source_hash: "sha256:PENDING"}

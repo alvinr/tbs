@@ -9,17 +9,18 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## 🎯 Tilt-swing carrier support — rim kinematic mount (2026-09-18) — ✅ DONE (awaiting review/publish)
+## 🎯 Front board — tilt-swing RETIRED, replaced by pinhole disc holder (2026-09-21) — ✅ DONE
 
-> Replaced the unbuildable central GE50 pivot (floated in the Ø380 bore + blocked the optical axis)
-> with a **rim kinematic mount**: carrier located at its rim by 4 adjuster balls in kinematic seats
-> (1 cone / 1 vee / 2 flat) + peripheral wave-spring/retaining-ring preload; axis fully clear; ~2.3mm
-> parallax accepted. All 7 phases shipped across Sheets 1–4, parts/costing, and report §2/§4/§5/§11/§13/§14.
-> Committed (not published) — user reviews the set first. No 3D model (front board is 2D-only).
-
-- [ ] **OPEN — adjuster knob side.** Knobs are drawn on the **exterior (scene) side** (as before). If they
-  should be adjustable from **inside** the container (interior/camera side), flip them — cascades Sheet 2
-  (knob position), Sheet 4 Panel D, and report §5 "from the exterior face" wording. Awaiting decision.
+> The tilt-swing front board was **eliminated**: a pinhole is a point aperture, so the image is a central
+> projection *through the pinhole point* and is independent of the plate's orientation — tilting the board
+> does nothing to the image (only ~2.3mm parallax). All perspective control already lives in the film plane.
+> The board was replaced by a **quick-change pinhole disc holder** (Ø180 plate + neoprene washer +
+> interchangeable Ø50 disc/lens + Ø90 retaining ring on 4 thumb screws). Cascade: retired the FRONT_BOARD_*
+> / TSB_* constants + the front-board facts; rewrote the 2D generator to a 2-sheet set; rebuilt the 3D model
+> (`pinhole-disc-holder`); reconciled parts/costing; rewrote the report + the funding-proposal / project-summary
+> optical claims; retired the wrong-physics distortion generators + `tilt-swing-board-analysis.md` and trimmed
+> `distortion-renders.md` to the film-plane renders. Renamed all files tilt-swing* → pinhole-disc-holder*.
+> Open: **3D model first `--send` + Sketchfab upload** (uid + source_hash still PENDING in `dependencies.yml`).
 
 ## Cleanup
 
@@ -242,18 +243,11 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   overview/construction re-send (deferred, needs the live model — pairs with the corridor-water comment cleanup).
   **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual: datum/tolerance
   callouts (Phase C) if the shelf goes to a fabricator, and the 3D re-send.
-- [ ] **Tilt-swing board (TSB) — needs a blueprint review round + registry merge (2026-09-07).** The TSB
-  (`tilt-swing-board-report.md`) is an OPTIONAL front board that **replaces** the flat pinhole plate, and it
-  has NOT been through the manufacturing-blueprint standard (dimensioned details / fastener + weld schedule /
-  datums / load case / cascade) that the film-plane, IBC-frame and walkway sets have. Bring it up to that
-  standard. **In the SAME round, merge its BOM into the `parts.py` registry** — retire the standalone
-  `FRONT_BOARD_MID`/`FRONT_BOARD_HIGH` and add the TSB as a registry system that is **EXCLUDED from the baseline
-  scenario sum**: it is mutually exclusive with the flat pinhole plate (in the `optics` system), so a naive
-  merge would double-count it into the baseline. That option-exclusion is why it is standalone-costed today —
-  preserve it. Fastener standardization within the TSB is DONE (§12.1 — mount M12×45 SHCS A4 kept, M8×1.0
-  adjustment + M8×1.0 central retention (down from M16), M6 set screws, Ø8 dowels); residual soft item = the
-  A4/316→304 material downgrades on the non-structural TSB fasteners (confirm at the review). See
-  `fastener-standardization.md`.
+- [x] **Front board registry merge — DONE (2026-09-21, superseded by the disc-holder conversion).** The
+  tilt-swing board was retired; the front board is now the **pinhole disc holder** (`pinhole-disc-holder-report.md`),
+  a registry system (`pdh-*` in `parts.py`) whose low/high reconcile to `costing.py` (`parts.py --check` +
+  `costing.py --check-registry` green). Open follow-up: confirm the disc holder is not double-counted against the
+  flat pinhole plate in the baseline scenario (it replaces the plate) at the next costing review.
 - [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
   (2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.

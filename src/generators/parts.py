@@ -1148,7 +1148,7 @@ PARTS: list[Part] = [
     # custom items carry "SKU pending — source" (raw material + fab/finishing services still to be quoted). ═══
     Part("pdh-plate-stock", "ICP-01 front-plate stock — 6061-T6 round bar Ø190×22", "aluminum",
          "front-board", 1, "ea", 22, 22, "Metal Supermarkets", "Online Metals",
-         spec="6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø40 aperture, Ø90 scene taper, Ø52 disc seat, 4× M6 mount + 2 dowel + 4× M5 tap). SKU pending — source."),
+         spec="6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø40 aperture, Ø90 scene taper, Ø52 disc seat, 4× M6 mount @ Ø150 + 4× M5 tap). SKU pending — source."),
     Part("pdh-ring-stock", "ICP-03 retaining-ring stock — 6061-T6", "aluminum",
          "front-board", 1, "ea", 8, 8, "Metal Supermarkets", "Online Metals",
          spec="6061-T6 stock — machined to the Ø90 OD × Ø44 bore × 5 retaining ring (4× M5 clearance @ Ø74). Can be cut from the plate offcut. SKU pending — source."),
@@ -1167,12 +1167,9 @@ PARTS: list[Part] = [
     Part("pdh-mount-bolts", "M6×20 SHCS 18-8 SS, 4× (plate → adapter)", "fasteners-hardware",
          "front-board", 4, "ea", 1, 1, "McMaster-Carr", "Bolt Depot",
          spec="4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source."),
-    Part("pdh-dowel-pin", "Ø6 m6 SS303 dowel pin, 2×", "fasteners-hardware",
-         "front-board", 2, "ea", 4, 4, "McMaster-Carr", "Fastenal",
-         spec="Ø6×24mm dowel — plate registration to the wall-frame adapter. 2 off. SKU pending — source."),
     Part("pdh-cnc", "CNC machining — front plate + retaining ring (service)", "fabrication-labor",
          "front-board", 1, "job", 150, 350, "Fictiv", "ProtoLabs",
-         spec="Machine the Ø180 front plate (Ø40 aperture, Ø90 scene taper, Ø52 counterbore, 4× M6 mount + 2 dowel + 4× M5 tap) and the Ø90 retaining ring from 6061-T6. SKU pending — fab quote."),
+         spec="Machine the Ø180 front plate (Ø40 aperture, Ø90 scene taper, Ø52 counterbore, 4× M6 mount @ Ø150 + 4× M5 tap) and the Ø90 retaining ring from 6061-T6. SKU pending — fab quote."),
     Part("pdh-anodise", "Anodize — front plate + ring (service)", "adhesives-finishes",
          "front-board", 1, "job", 40, 80, "Pac-Nor Anodizing",
          spec="Black anodize the front plate + retaining ring (matte, non-reflective at the aperture). SKU pending — shop quote."),]

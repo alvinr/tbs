@@ -108,7 +108,7 @@ stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 | Front plate Ø | Ø<!-- BEGIN cdm:PDH_PLATE_OD -->180<!-- END cdm:PDH_PLATE_OD --> | `PDH_PLATE_OD` |
 | Standard pinhole Ø | Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D --> | `PH_D` (Rayleigh optimum) |
 
-*Components: ICP-01 Ø180×18mm 6061-T6 front plate (4× M6 mount @ Ø150 + 2 dowels; Ø90 scene taper
+*Components: ICP-01 Ø180×18mm 6061-T6 front plate (4× M6 mount @ Ø150; Ø90 scene taper
 → Ø40 aperture; Ø52 disc counterbore; 4× M5 taps @ Ø74), neoprene light-seal washer (Ø56×Ø40×1.5),
 interchangeable ICP-02 disc (Ø50 SS-302 pinhole shim or lens cell), ICP-03 circular retaining ring
 (Ø90 OD × Ø44 bore × 5), 4× M5 knurled thumb screws. No tilt/swing — the board is fixed.*

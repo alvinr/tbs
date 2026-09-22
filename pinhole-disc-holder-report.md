@@ -14,7 +14,7 @@ There is **no tilt or swing**. A pinhole is a point aperture: the image is a cen
 
 The holder is a compact front board that mounts to the wall-frame adapter with its own small bolt pattern (the adapter is part of this design, so it carries the matching pattern — no need for the big standard-plate interface). Four elements:
 
-- **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. A small dedicated mount to the wall-frame adapter (**4× M6 @ Ø150** + 2× Ø6 dowels); a Ø90 scene-side taper bore converging to a Ø40 light-aperture clearance bore; a Ø52 × 3mm counterbore that seats the disc; four M5 taps on a Ø74 circle for the thumb screws.
+- **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. A small dedicated mount to the wall-frame adapter (**4× M6 @ Ø150**); a Ø90 scene-side taper bore converging to a Ø40 light-aperture clearance bore; a Ø52 × 3mm counterbore that seats the disc; four M5 taps on a Ø74 circle for the thumb screws.
 - **Light-seal washer** — Ø56 OD × Ø40 ID × 1.5mm neoprene. The disc presses against it, sealing the aperture under the clamp.
 - **Interchangeable disc (ICP-02)** — Ø50 outer diameter: either a Ø50 × 0.1mm SS-302 pinhole shim (pinhole Ø per selection) or a lens cell in a Ø50 carrier.
 - **Circular retaining ring (ICP-03)** — Ø90 OD × Ø44 bore × 5mm 6061-T6. The Ø44 bore is smaller than the disc so the ring clamps the disc rim; it clears the light path.
@@ -65,7 +65,7 @@ The neoprene washer seals the disc-to-plate joint when the retaining ring is cla
 
 ## 6. Wall Mounting
 
-The pinhole (nose) end wall of the container is corrugated steel, so the front plate cannot seat on it directly. A flat steel **wall-frame adapter plate** is welded/bolted over the corrugation to present a flat datum, with an aperture cut through the corrugation larger than the Ø90 taper bore. The Ø180 front plate bolts to that adapter via its **4× M6 / Ø150** pattern and locates on the two Ø6 dowels.
+The pinhole (nose) end wall of the container is corrugated steel, so the front plate cannot seat on it directly. A flat steel **wall-frame adapter plate** is welded/bolted over the corrugation to present a flat datum, with an aperture cut through the corrugation larger than the Ø90 taper bore. The Ø180 front plate bolts to that adapter via its **4× M6 / Ø150** pattern.
 
 ---
 
@@ -92,28 +92,26 @@ Swap time: about 30 seconds. The whole front board can also be unbolted from the
 | Thumb-screw PCD Ø74 | Ø74.000 | ±0.2mm positional | Even clamp of the retaining ring |
 | Retaining-ring bore Ø44 | Ø44.000 | ±0.1mm | Clamps the disc rim without fouling the light path |
 | Mount bolts M6 PCD | Ø150.000 | ±0.15mm positional | Must match the wall-frame adapter |
-| Dowel holes Ø6 | Ø6.000 | H7: +0.012/0.000 | Plate registration repeatability |
 
 ---
 
 ## 9. Parts List
 
-The BOM is single-sourced from the parts registry (`parts.py`) and generated below. Purchased hardware (thumb screws, mount bolts, dowels, washer) is catalog; the raw 6061 stock, the pinhole disc set / lens cell, and the fab/finishing **services** (CNC, anodize) carry **SKU pending — source**.
+The BOM is single-sourced from the parts registry (`parts.py`) and generated below. Purchased hardware (thumb screws, mount bolts, washer) is catalog; the raw 6061 stock, the pinhole disc set / lens cell, and the fab/finishing **services** (CNC, anodize) carry **SKU pending — source**.
 
 <!-- BEGIN parts:front-board -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø40 aperture, Ø90 scene taper, Ø52 disc seat, 4× M6 mount + 2 dowel + 4× M5 tap). SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $22 |
+| ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø40 aperture, Ø90 scene taper, Ø52 disc seat, 4× M6 mount @ Ø150 + 4× M5 tap). SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $22 |
 | ICP-03 retaining-ring stock — 6061-T6 | 6061-T6 stock — machined to the Ø90 OD × Ø44 bore × 5 retaining ring (4× M5 clearance @ Ø74). Can be cut from the plate offcut. SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $8 |
 | Neoprene light-seal washer (Ø56×Ø40×1.5) | Neoprene washer Ø56 OD × Ø40 ID × 1.5mm — the disc presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source. | 1 ea | McMaster-Carr / Grainger | $3–$6 |
 | [Pinhole disc set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | Ø50 × 0.1mm SS-302 laser-drilled pinhole discs — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). 3 off (the interchangeable set). SKU pending — quote (Lenox Laser). | 3 ea | Lenox Laser / Edmund Optics | $60–$120 |
 | Lens cell in Ø50 carrier (optional) | A small lens cell in a Ø50 carrier — drops into the holder in place of a pinhole disc to run the camera as a lens optic. Optional. SKU pending — spec + source. | 1 ea | Edmund Optics / Thorlabs | $40–$120 |
 | [M5 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | M5 knurled-head thumb screws — clamp the retaining ring, finger-tightened for quick disc change. 4 off. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $8–$16 |
 | M6×20 SHCS 18-8 SS, 4× (plate → adapter) | 4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $4 |
-| Ø6 m6 SS303 dowel pin, 2× | Ø6×24mm dowel — plate registration to the wall-frame adapter. 2 off. SKU pending — source. | 2 ea | McMaster-Carr / Fastenal | $8 |
-| CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø40 aperture, Ø90 scene taper, Ø52 counterbore, 4× M6 mount + 2 dowel + 4× M5 tap) and the Ø90 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
+| CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø40 aperture, Ø90 scene taper, Ø52 counterbore, 4× M6 mount @ Ø150 + 4× M5 tap) and the Ø90 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
 | Anodize — front plate + ring (service) | Black anodize the front plate + retaining ring (matte, non-reflective at the aperture). SKU pending — shop quote. | 1 job | Pac-Nor Anodizing | $40–$80 |
-| **Front-Board total** | | | | **$343–$734** |
+| **Front-Board total** | | | | **$335–$726** |
 <!-- END parts:front-board -->
 
 ---

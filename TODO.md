@@ -24,6 +24,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## Cleanup
 
+- [ ] **First-upload Sketchfab papercut — `sketchfab_meta_ruby` stamps the all-zeros placeholder uid (2026-09-22).** A brand-new model whose `dependencies.yml` uid is still `0000…0000` gets that placeholder written into its `sketchfab/model_id` attribute, so the Sketchfab plugin tries to UPDATE (fails "already uploaded") instead of creating a new model. Workaround that worked: choose **"upload as new model"** in the plugin (it then writes the real uid back). Fix: in `generate_sketchup_model.sketchfab_meta_ruby`, clear/omit `model_id` when the uid is empty or all-zeros, and overwrite an existing all-zeros with a real uid — **and** extend `manifest.py` `_IDENTITY` so the new lines are still stripped (else every model's `source_hash` churns).
 - [x] **Scrub author-name attributions from code/text (2026-09-05 → done 2026-09-10).** CLAUDE.md bans naming the author in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Back-scrubbed every pre-existing dated attribution across `src/`, the reports, `RELEASE.md`, and this tracker; kept the license/copyright headers, the CLAUDE.md rule text, and the functional brochure-footer regex.
 
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)

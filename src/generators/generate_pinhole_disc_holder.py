@@ -25,7 +25,7 @@ from tbs_constants import (
     PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T,
     PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D,
     PDH_MOUNT_BC as BOLT_BC, PDH_MOUNT_D as BOLT_D, PDH_MOUNT_N as BOLT_N,
-    PDH_DWL_D as DWL_D, PDH_DWL_OFF as DWL_OFF, PDH_SEAL_D as SEAL_D,
+    PDH_SEAL_D as SEAL_D,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl, draw_circle, leader
@@ -80,8 +80,6 @@ def draw_sheet1():
         a = np.radians(45 + i * 360.0 / BOLT_N)
         draw_circle(axf, cx + s(BOLT_BC / 2) * np.cos(a), cy + s(BOLT_BC / 2) * np.sin(a),
                     s(BOLT_D / 2), lw=LW_MED, color=C_OUT, fill=True, fc='white')
-    for sgn in (-1, 1):                                                                  # 2 dowels (vertical)
-        draw_circle(axf, cx, cy + sgn * s(DWL_OFF), s(DWL_D / 2), lw=LW_MED, color=C_OUT, fill=True, fc='#B0B0B0')
     # taper bore (hidden, behind the ring) + retaining ring + disc + pinhole + thumb screws
     draw_circle(axf, cx, cy, s(PDH_TAPER_BORE / 2), lw=LW_THIN, color=C_HID, ls='--')
     draw_circle(axf, cx, cy, s(PDH_RING_OD / 2), lw=LW_THICK, color=C_OUT, fill=True, fc=C_ALUM)   # ring OD
@@ -207,8 +205,6 @@ def draw_sheet2():
     for i in range(BOLT_N):
         a = np.radians(45 + i * 360.0 / BOLT_N)
         draw_circle(axp, cx + s(BOLT_BC / 2) * np.cos(a), cy + s(BOLT_BC / 2) * np.sin(a), s(BOLT_D / 2), lw=0.7, color=C_OUT)
-    for sgn in (-1, 1):
-        draw_circle(axp, cx, cy + sgn * s(DWL_OFF), s(DWL_D / 2), lw=0.7, color=C_OUT)
     draw_circle(axp, cx, cy, s(PDH_DISC_SEAT_D / 2), lw=LW_MED, color=C_OUT)          # disc seat
     draw_circle(axp, cx, cy, s(PDH_TAPER_BORE / 2), lw=LW_THIN, color=C_HID, ls='--')  # taper bore (scene face)
     draw_circle(axp, cx, cy, s(PDH_APERTURE / 2), lw=LW_MED, color=C_OUT)             # Ø40 aperture

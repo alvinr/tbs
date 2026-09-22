@@ -358,8 +358,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID = 343  # pinhole disc holder BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
-FRONT_BOARD_HIGH = 734 # BOM high = parts.system_total('front-board')[1] (Ø180 plate + retaining ring CNC + anodize + pinhole disc set + lens option + hardware)
+FRONT_BOARD_MID = 335  # pinhole disc holder BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
+FRONT_BOARD_HIGH = 726 # BOM high = parts.system_total('front-board')[1] (Ø180 plate + retaining ring CNC + anodize + pinhole disc set + lens option + hardware)
 
 
 def _sec(sid: str) -> Section:
@@ -374,7 +374,7 @@ def emit_funding_level1() -> str:
         ("Interior conversion (light-seal, paint, ventilation, door)", _sec("2").mid),
         ("Pinhole plate (precision laser-drilled, SS-302, interchangeable frame)", _sec("3").mid),
         ("Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint)", _sec("4").mid),
-        ("Tilt-swing front board mechanism", FRONT_BOARD_MID),
+        ("Pinhole disc holder (front board)", FRONT_BOARD_MID),
         ("Housed revolving-door light trap (plastic-skin Ø800 housing + C-shell drum, bearings, seals, fabrication)", _sec("6").mid),
         ("Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame)", _sec("5").mid),
         ("Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting)", _sec("5a").mid),

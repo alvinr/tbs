@@ -22,6 +22,17 @@ The holder is a compact front board that mounts to the wall-frame adapter with i
 
 **Quick-change:** loosen the four thumb screws → lift the retaining ring → swap the disc → replace the ring → finger-tighten the thumb screws. About 30 seconds, no tools.
 
+**Interactive 3D model** — the Ø180 front plate, neoprene washer, interchangeable disc, retaining ring and thumb screws. Drag to orbit, scroll to zoom; **click the ring** to pull the retaining ring + thumb screws out along the optical axis and reveal the interchangeable disc and the plate's four tapped holes (click again to re-seat).
+
+<!-- brochure:skip -->
+<div class="sketchfab-embed-wrapper">
+  <div style="position:relative;width:100%;padding-bottom:56.25%;">
+    <iframe title="TBS-001 Pinhole Disc Holder" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/4ce663d3fe3e4a2e99c0643dad5bfffe/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+  </div>
+  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-pinhole-disc-holder-4ce663d3fe3e4a2e99c0643dad5bfffe?utm_medium=embed&utm_campaign=share-popup&utm_content=4ce663d3fe3e4a2e99c0643dad5bfffe" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Pinhole Disc Holder</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=4ce663d3fe3e4a2e99c0643dad5bfffe" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=4ce663d3fe3e4a2e99c0643dad5bfffe" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
+</div>
+<!-- brochure:endskip -->
+
 The drawing set (TBS-PDH, 2 sheets): **Sheet 1** — assembly + Section A-A (plate, washer, disc, ring, thumb screws, and the light path); **Sheet 2** — fabrication blueprints (front plate + retaining ring + disc).
 
 ![Pinhole Disc Holder — Sheet 1: Assembly + Section A-A](assets/pinhole-disc-holder-sheet1.png)

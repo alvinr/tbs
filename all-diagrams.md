@@ -40,15 +40,7 @@
 
 ---
 
-## 6. Pinhole Aperture Plate
-
-![TBS-001 Pinhole Plate — Sheet 1: Assembly Overview](assets/plate-drawing-sheet1.png)
-
-![TBS-001 Pinhole Plate — Sheet 2: Detail Section and Geometry](assets/plate-drawing-sheet2.png)
-
----
-
-## 7. Film Plane Mechanism
+## 6. Film Plane Mechanism
 
 ![TBS-001 Film Plane Mechanism — Sheet 1: Plan View, 4-Corner Rail Layout](assets/film-plane-sheet1.png)
 
@@ -100,7 +92,7 @@
 
 ---
 
-## 8. Pinhole Disc Holder (Front Board)
+## 7. Pinhole Disc Holder (Front Board)
 
 ![TBS-001 Pinhole Disc Holder — Sheet 1: Assembly + Section A-A](assets/pinhole-disc-holder-sheet1.png)
 
@@ -108,7 +100,7 @@
 
 ---
 
-## 9. Processing (Water) System
+## 8. Processing (Water) System
 
 ![TBS-001 Water System — Sheet 1: System Overview and Flow Diagram](assets/water-system-sheet1.png)
 
@@ -120,7 +112,7 @@
 
 ---
 
-## 10. Electrical & Power
+## 9. Electrical & Power
 
 ![TBS-001 Electrical — Sheet 1: Power Distribution and Circuit Diagram](assets/electrical-sheet1.png)
 
@@ -138,7 +130,7 @@
 
 ---
 
-## 11. Ventilation
+## 10. Ventilation
 
 ![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/ventilation-sheet1.png)
 
@@ -148,7 +140,7 @@
 
 ---
 
-## 12. Hinged Panel & Revolving Drum
+## 11. Hinged Panel & Revolving Drum
 
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
 
@@ -186,7 +178,7 @@
 
 ---
 
-## 13. Perimeter Walkway
+## 12. Perimeter Walkway
 
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
@@ -212,7 +204,7 @@
 
 ---
 
-## 14. Plumbing Panel & Plumbing
+## 13. Plumbing Panel & Plumbing
 
 ![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
 
@@ -240,7 +232,7 @@
 
 ---
 
-## 15. IBC Stacking & Securing
+## 14. IBC Stacking & Securing
 
 ![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
 
@@ -254,7 +246,7 @@
 
 ---
 
-## 16. IBC Support Frame Fabrication
+## 15. IBC Support Frame Fabrication
 
 ![TBS-001 IBC Frame — Sheet 1: Front Elevation](assets/ibc-frame-sheet1.png)
 
@@ -276,7 +268,7 @@
 
 ---
 
-## 17. Chemistry Prep Shelves
+## 16. Chemistry Prep Shelves
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
@@ -290,7 +282,7 @@
 
 ---
 
-## 18. Processing Tray & Spray Bar
+## 17. Processing Tray & Spray Bar
 
 ![TBS-001 — Spray Bar Gantry Elevation](assets/spray-bar-sheet1.png)
 
@@ -326,7 +318,7 @@
 
 ---
 
-## 19. Weight Distribution Analysis
+## 18. Weight Distribution Analysis
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
@@ -340,7 +332,7 @@
 
 ---
 
-## 20. Film Plane Distortion Renders
+## 19. Film Plane Distortion Renders
 
 ![Film Plane Distortion — Configuration 0](assets/film-plane-distortion-c0.png)
 
@@ -358,7 +350,7 @@
 
 ---
 
-## 21. Optics Visualization
+## 20. Optics Visualization
 
 ![TBS-001 — Portrait Camera Schematic](assets/portrait-camera-schematic.png)
 
@@ -368,13 +360,13 @@
 
 ---
 
-## 22. TBS-002 Proof of Concept
+## 21. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
 
 ---
 
-## 23. Revolving Light-Trap — Fabrication Blueprints
+## 22. Revolving Light-Trap — Fabrication Blueprints
 
 ![TBS-001 Light-Trap — Sheet 1: General Arrangement](assets/lighttrap-sheet1.png)
 

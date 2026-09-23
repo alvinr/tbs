@@ -185,8 +185,6 @@ DIAG_IMAGE_FILES = [
     "assembly-fab-sheet1.png",
     "assembly-fab-sheet2.png",
     "line-of-sight.png",
-    "plate-drawing-sheet1.png",
-    "plate-drawing-sheet2.png",
     "walkway-sheet1.png",
     "grp-cutplan.png",
     "walkway-sheet2.png",

@@ -135,12 +135,9 @@ PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [u
 PH_F   = C_WID                 # focal length = container width [unchanged]
 PH_FNO = round(PH_F / PH_D)   # f/1088 [unchanged]
 
-# ── Pinhole wall frame + interchangeable plate (owned here; generate_plate_drawing.py reads them) ──
-PLATE_OD       = 600   # wall frame / plate outer dimension (mm, square)
-PLATE_THK      = 15    # aluminum plate thickness (mm)  [PLATE_THK not PLATE_T — avoids the local-var collision in electrical/lighttrap generators]
-WALL_FRAME_T   = 6     # wall frame steel thickness (mm, S275)
-PINHOLE_DISC_D = 50    # pinhole disc OD (mm, Lenox Laser supply)
-PINHOLE_DISC_T = 0.1   # pinhole disc thickness (mm, SS-302)
+# (The standard Ø600 pinhole wall frame + interchangeable pinhole/lens plate — PLATE_OD/PLATE_THK/
+# WALL_FRAME_T/PINHOLE_DISC_* — is retired: the Ø80-carrier PINHOLE DISC HOLDER (PDH_* above) now
+# does both the pinhole and the large-format lens, mounting to its own wall-frame adapter.)
 
 # ── Film plane rails ──────────────────────────────────────────────────────────
 RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]

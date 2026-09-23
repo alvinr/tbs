@@ -249,7 +249,7 @@ def draw_sheet2():
     draw_cl(axd, dx, dy, s3(PDH_DISC_OD / 2) * 1.15)
     draw_dim_v(axd, dx + s3(PDH_DISC_OD / 2) + 14, dy - s3(PDH_DISC_OD / 2), dy + s3(PDH_DISC_OD / 2),
                f'Ø{PDH_DISC_OD}', right=True, fs=5, offset=12)
-    leader(axd, dx, dy, dx + s3(PDH_DISC_OD / 2) + 6, dy - 60, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 · 0.1 thk)', fs=5, color=C_DIM, arrow_style='->', ha='left')
+    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 · 0.1 thk)', fs=5, color=C_DIM, arrow_style='->', ha='left')
     axd.text(dx, dy - s3(PDH_DISC_OD / 2) - 70,
              'PANEL C — ICP-02 DISC (2:1)\nInterchangeable: Ø2.17 (std) · Ø1.5 (sharper) · Ø3.0 (brighter) · or a lens cell',
              ha='center', fontsize=5, style='italic', color='#333')

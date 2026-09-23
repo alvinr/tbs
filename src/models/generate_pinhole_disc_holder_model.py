@@ -37,7 +37,7 @@ DISC_Y0  = SEAT_Y + PDH_WASHER_T + 0.1   # disc underside — 0.1 gap above the 
 DISC_T   = PLATE_Y1 - DISC_Y0 - 0.1      # disc thickness — stops 0.1 short of the camera face
 RING_Y0  = PLATE_Y1 + 0.15               # ring lifted 0.15 off the plate face (no coincident annulus → no z-fight)
 RING_Y1  = RING_Y0 + PDH_RING_T
-RING_BORE_R1 = 32.0                      # ring bore flares to Ø64 at the interior — the diverging light cone's exit
+RING_BORE_R1 = PDH_RING_ID / 2 + 8       # ring bore flares open toward the interior — the diverging light cone's exit
 PULL_MM  = 250.0                         # DC pull-out travel (+Y, camera side) to reveal the disc
 
 C_PLATE  = ov.C_ALUM

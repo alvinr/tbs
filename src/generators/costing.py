@@ -358,8 +358,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID = 335  # pinhole disc holder BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
-FRONT_BOARD_HIGH = 726 # BOM high = parts.system_total('front-board')[1] (Ø180 plate + retaining ring CNC + anodize + pinhole disc set + lens option + hardware)
+FRONT_BOARD_MID = 305  # pinhole disc holder BOM low — DERIVED: = parts.system_total('front-board')[0] (reconciled by parts.self_check → EXPECTED['front-board'])
+FRONT_BOARD_HIGH = 636 # BOM high = parts.system_total('front-board')[1] (Ø180 plate + Ø100 ring CNC + anodize + pinhole board set + Copal lens board + hardware)
 
 
 def _sec(sid: str) -> Section:

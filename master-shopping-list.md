@@ -275,7 +275,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/4"-20 zinc machine screws (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-x-1-in-Combo-Truss-Head-Zinc-Plated-Machine-Screw-4-Pack-826771/317479749) (826771) | 10 4-pack | Home Depot | water | $16 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | 2 pack | McMaster-Carr | panel | $29 |
 | M6×20 SHCS 18-8 SS, 4× (plate → adapter) | 4 ea | McMaster-Carr | front-board | $4 |
-| [M5 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | 4 ea | McMaster-Carr | front-board | $8–$16 |
+| [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | 4 ea | McMaster-Carr | front-board | $8–$16 |
 | 39× cushioned pipe P-clips (3/4" pipe) | 39 ea | Home Depot | water | $21–$37 |
 | [1/2"–1 1/4" SS hose clamp (pump flex jumpers)](https://www.homedepot.com/p/Everbilt-1-2-1-1-4-in-Stainless-Steel-Hose-Clamp-10-Pack-671255E/202262870) (202262870) | 2 10-pack | Home Depot | water | $36 |
 | 12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
@@ -308,9 +308,9 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Lens cell in Ø50 carrier (optional) | 1 ea | Edmund Optics | front-board | $40–$120 |
-| [Pinhole disc set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | 3 ea | Lenox Laser | front-board | $60–$120 |
-| **optics subtotal** | | | | **$100–$240** |
+| [Pinhole board set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | 3 ea | Lenox Laser | front-board | $60–$120 |
+| Ø80 lens board — Copal/Compur 0/1/3 (optional) | 1 ea | SK Grimes | front-board | $10–$30 |
+| **optics subtotal** | | | | **$70–$150** |
 
 ### plastics-sheet
 
@@ -381,7 +381,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | Certified anti-slip cargo matting (μ≥0.6) | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
-| Neoprene light-seal washer (Ø56×Ø40×1.5) | 1 ea | McMaster-Carr | front-board | $3–$6 |
+| Neoprene light-seal washer (Ø82×Ø65×1.5) | 1 ea | McMaster-Carr | front-board | $3–$6 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
@@ -536,7 +536,6 @@ indicative low–high estimates — get quotes before ordering.
 | Home Depot / McMaster | 1 | timber-ply | $95–$150 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
-| Edmund Optics | 1 | optics | $40–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
@@ -555,6 +554,7 @@ indicative low–high estimates — get quotes before ordering.
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Fresh Water Systems | 1 | water-equipment | $32 |
 | Signature Solar | 1 | electrical-distribution | $30 |
+| SK Grimes | 1 | optics | $10–$30 |
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |

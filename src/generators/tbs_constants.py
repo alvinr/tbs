@@ -249,33 +249,34 @@ CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each leg (mm)
 CORNER_PLATE_BEND_R    = 6.35   # L-plate press-brake inside bend radius (mm) = 1T
 
 # ── Pinhole disc holder (front board) — replaces the retired tilt-swing mechanism ─────────────
-# The pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring
-# held with 4 thumb screws. Discs are interchangeable in seconds (different pinhole Ø, or a lens
-# cell of the same outer Ø). No tilt/swing — tilting a pinhole board is optically inert (the image
-# is a central projection through the pinhole POINT); all perspective control lives in the
-# film-plane mechanism. The former FRONT_BOARD_* envelope and TSB_* geometry are retired with it.
-PDH_PLATE_OD      = 180   # ROUND front plate Ø — a compact dedicated retainer (its own small mount,
-                          # NOT the Ø540 standard-plate interface — the wall-frame adapter carries the
-                          # matching small bolt pattern)
+# The interchangeable Ø80 carrier is clamped against a neoprene light-seal washer by a circular
+# retaining ring held with 4 thumb screws. The SAME holder takes a pinhole board OR a large-format
+# LENS BOARD: the Ø80 carrier + Ø65 aperture accept a Copal/Compur 0 (34.6mm), 1 (41.6mm) or 3
+# (61.5mm) shutter board hole. Boards swap in seconds. No tilt/swing — tilting a pinhole board is
+# optically inert (the image is a central projection through the pinhole POINT); all perspective
+# control lives in the film-plane mechanism. The former FRONT_BOARD_*/TSB_* geometry are retired
+# with it, and this holder supersedes the standard Ø600 interchangeable pinhole/lens plate.
+PDH_PLATE_OD      = 180   # ROUND front plate Ø — a compact dedicated mount to the wall-frame adapter
 PDH_PLATE_T       = 18    # front plate thickness
 PDH_MOUNT_BC      = 150   # mount bolt circle to the wall-frame adapter
 PDH_MOUNT_N       = 4     # 4× M6 mount bolts
 PDH_MOUNT_D       = 7     # M6 clearance hole
 PDH_SEAL_D        = 160   # perimeter seal groove to the adapter
-PDH_APERTURE      = 40    # Ø light-aperture clearance bore through the plate (behind the disc)
-PDH_TAPER_BORE    = 90    # Ø exterior scene-side taper bore (light converges toward the pinhole)
-PDH_DISC_OD       = 50    # interchangeable disc outer Ø (SS-302 pinhole shim, or a lens cell carrier)
-PDH_DISC_SEAT_D   = 52    # Ø counterbore seat the disc drops into
-PDH_DISC_SEAT_DEP = 3     # seat depth
-PDH_WASHER_OD     = 56    # neoprene light-seal washer OD — the disc presses against it
-PDH_WASHER_ID     = 40    # washer bore (clears the Ø40 aperture)
+PDH_APERTURE      = 65    # Ø light-aperture clearance bore — clears a Copal 3 (61.5mm) lens-board hole
+PDH_TAPER_BORE    = 110   # Ø exterior scene-side taper bore (light relief, > the aperture)
+PDH_DISC_OD       = 80    # interchangeable carrier Ø — a pinhole board OR a Copal 0/1/3 lens board
+PDH_DISC_SEAT_D   = 82    # Ø counterbore seat the carrier drops into
+PDH_DISC_SEAT_DEP = 6     # seat depth — deep enough to positively locate the carrier and REACT the
+                          # cantilevered weight/moment of a large-format lens (the ring only clamps axially)
+PDH_WASHER_OD     = 82    # neoprene light-seal washer OD — the carrier presses against it
+PDH_WASHER_ID     = 65    # washer bore (clears the Ø65 aperture)
 PDH_WASHER_T      = 1.5   # washer thickness (compresses to seal)
-PDH_RING_OD       = 90    # circular retaining ring OD (6061-T6)
-PDH_RING_ID       = 44    # ring bore — smaller than the disc OD so it clamps the disc rim; clears the light path
-PDH_RING_T        = 5     # ring thickness
+PDH_RING_OD       = 100   # circular retaining ring OD (6061-T6)
+PDH_RING_ID       = 70    # ring bore — smaller than the carrier OD so it clamps the rim; clears the light path
+PDH_RING_T        = 6     # ring thickness (stiffened for the lens clamp)
 PDH_TS_N          = 4     # 4 thumb screws hold the ring down
-PDH_TS_PCD        = 74    # thumb-screw bolt circle
-PDH_TS_D          = 5     # M5 knurled thumb screws
+PDH_TS_PCD        = 85    # thumb-screw bolt circle (in the ring band, clear of the Ø70 bore)
+PDH_TS_D          = 6     # M6 knurled thumb screws (clamp force for a lens board)
 PDH_PINHOLE_D     = 2.17  # standard pinhole Ø (Rayleigh optimum at the 2362mm focal length, f/1088)
 
 # ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────

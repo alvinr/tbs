@@ -182,7 +182,7 @@ My practice since has moved between classical portraiture and abstract color in 
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Film plane movement | ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing, 4-corner independent (Option A rigid plane) |
-| Front board | Fixed quick-change pinhole disc holder — interchangeable Ø50 discs / lens cell |
+| Front board | Fixed quick-change disc holder — interchangeable Ø80 carrier (pinhole board or Copal/Compur lens board) |
 | Process | Cyanotype (Ware formula) on cotton muslin |
 | Water system | Self-contained, ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply, off-grid capable |
 | Transport | Commercial hire tilt-bed, no CDL required |

@@ -105,7 +105,7 @@ stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 
 *Components: ICP-01 Ø180×18mm 6061-T6 front plate (4× M6 mount @ Ø150; Ø90 scene taper
 → Ø40 aperture; Ø52 disc counterbore; 4× M5 taps @ Ø74), neoprene light-seal washer (Ø56×Ø40×1.5),
-interchangeable ICP-02 disc (Ø50 SS-302 pinhole shim or lens cell), ICP-03 circular retaining ring
+interchangeable ICP-02 Ø80 carrier (SS-302 pinhole board or a Copal/Compur 0/1/3 lens board), ICP-03 circular retaining ring
 (Ø90 OD × Ø44 bore × 5), 4× M5 knurled thumb screws. No tilt/swing — the board is fixed.*
 
 *Reports: [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) §2/§3/§5/§6/§9 (mechanism overview, interchangeable discs, light sealing, wall mounting, parts list).*

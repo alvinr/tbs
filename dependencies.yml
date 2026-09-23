@@ -54,7 +54,7 @@ generators:
 #                  replaced the committed .rb. `lint.py --verify-all` recomputes + compares; a mismatch
 #                  means the .skp is stale vs source (regenerate + re-send). `manifest.py --update` refreshes.
 models:
-  overview: {script: src/models/generate_sketchup_model.py, outputs: [models/overview.skp, src/models/overview.rb], uid: e624e210bf3d4de08b1a7b7261a66c45, embed_files: [project-summary.md], source_hash: "sha256:68534c9988f852b6f56f966f2c5f005f4e81563259e9f337742462d308f64441"}
+  overview: {script: src/models/generate_sketchup_model.py, outputs: [models/overview.skp, src/models/overview.rb], uid: e624e210bf3d4de08b1a7b7261a66c45, embed_files: [project-summary.md], source_hash: "sha256:8263f3e24626f6863827c403f9cd62bca9b0e9aaba883485d33e05ac8c1ba5ee"}
   spraybar: {script: src/models/generate_spraybar_model.py, outputs: [models/spraybar.skp, src/models/spraybar.rb], uid: 18fb381fbf48459cac25dcaa23958387, embed_files: [processing-tray-and-spray-bar.md], source_hash: "sha256:5a56265b1fdfd549bc0170eb7062c7d5bf2b86206991f2e2a704e4367f8e81fa"}
   ibc-stack: {script: src/models/generate_ibc_model.py, outputs: [models/ibc-stack.skp, src/models/ibc-stack.rb], uid: 8d091c60e93848f38e26c9c89a08cbc8, embed_files: [ibc-stacking-report.md], source_hash: "sha256:1c05704b20ad9cbf5b89b48ad6ceefaa1a003810edc001e3375c8a3e7bdb6ad5"}
   construction: {script: src/models/generate_construction_model.py, outputs: [models/construction.skp, src/models/construction.rb], uid: dcc54fb3d02e46c3ab070dd49adc5d1e, embed_files: [construction-report.md], source_hash: "sha256:a7d9cd9ec6877674edebd361f427d26184fd1960a2bd139132bc047eda071288"}
@@ -66,6 +66,6 @@ models:
   # water = the combined wet-end + IBC plumbing corridor (both plumbing panels). generate_pinhole_water_panel.py
   # imports generate_corridor_water_panel.py; --save writes water.rb (byte-verifiable) + saves water.skp via --send.
   # corridor-panel.skp is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
-  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [plumbing-report.md], source_hash: "sha256:03351a0d108b3dfcc7b775a47e6a3602875718aaddc9eddd96c7810089acbae1"}
+  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [plumbing-report.md], source_hash: "sha256:b4e27bf01fc2e10ed2dea3bb9765698a804c4a9d0eb95e28760d5580d1b5118b"}
   # pinhole-disc-holder = the pinhole-end quick-change front-board disc holder.
   pinhole-disc-holder: {script: src/models/generate_pinhole_disc_holder_model.py, outputs: [models/pinhole-disc-holder.skp, src/models/pinhole-disc-holder.rb], uid: "4ce663d3fe3e4a2e99c0643dad5bfffe", embed_files: [pinhole-disc-holder-report.md], source_hash: "sha256:ab7c38bcc3a07bee323beac446536c348e5caedb57dca851875650dab63035e1"}

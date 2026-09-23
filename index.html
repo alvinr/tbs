@@ -1218,14 +1218,14 @@
   
   
     <li class="md-nav__item">
-      <a href="tilt-swing-board-report/" class="md-nav__link">
+      <a href="pinhole-disc-holder-report/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tilt-Swing Front Board
+    Pinhole Disc Holder
   
 
     
@@ -2022,34 +2022,6 @@
   
   
     <li class="md-nav__item">
-      <a href="tilt-swing-board-analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tilt & Swing Distortion Renders
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="film-plane-mechanism-analysis/" class="md-nav__link">
         
   
@@ -2598,12 +2570,10 @@
 </table>
 <hr />
 <h2 id="the-technology">The Technology<a class="headerlink" href="#the-technology" title="Permanent link">&para;</a></h2>
-<p>Two independent movement systems work in series, stacking their effects non-linearly:</p>
-<p><strong>Front board — tilt and swing (±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°)</strong>
-The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.</p>
+<p><strong>Front board — quick-change pinhole disc holder</strong>
+The pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring on four thumb screws, so carriers swap in seconds — a different pinhole diameter, or a large-format lens board (Copal/Compur) on the same Ø80 carrier. The board is fixed: a pinhole is a point aperture, and the image is a central projection <em>through the pinhole point</em>, so tilting the board that holds it does not steer or distort the image. All perspective control lives in the film plane.</p>
 <p><strong>Film plane — 4-corner independent actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)</strong>
-Four corners of the image plane are set independently — each an acetal skate hand-slid in a 6061 Al U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.</p>
-<p><strong>Combined:</strong> the two systems interact non-linearly. Their compound optical projections — modeled and documented in the <a href="tilt-swing-board-report/">distortion renders</a> — produce images that no other camera type can make.</p>
+Four corners of the image plane are set independently — each an acetal skate hand-slid in a 6061 Al U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole. The <a href="distortion-renders/">distortion renders</a> document the range of projections this produces — images that no other camera type can make.</p>
 <p>Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.</p>
 <p><strong>Off-grid capable:</strong> a self-contained three-circuit water system supports ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.</p>
 <hr />
@@ -2661,8 +2631,8 @@ Four corners of the image plane are set independently — each an acetal skate h
 <td>Interchangeable plate system — wall frame, pinhole plate, lens plate</td>
 </tr>
 <tr>
-<td><a href="tilt-swing-board-report/">Tilt-Swing Front Board</a></td>
-<td>Spherical-pivot mechanism — design, drawings, combined distortion renders</td>
+<td><a href="pinhole-disc-holder-report/">Pinhole Disc Holder (Front Board)</a></td>
+<td>Quick-change pinhole disc holder — retaining ring, thumb screws, interchangeable discs/lens, drawings</td>
 </tr>
 <tr>
 <td><a href="project-cost-breakdown/">Cost Breakdown</a></td>
@@ -2710,7 +2680,7 @@ Four corners of the image plane are set independently — each an acetal skate h
 </tr>
 <tr>
 <td><a href="distortion-renders/">Distortion Renders</a></td>
-<td>Ray-traced projections for all film-plane and tilt-swing configurations</td>
+<td>Ray-traced projections for the film-plane movement configurations</td>
 </tr>
 <tr>
 <td><a href="equipment-layout-report/">Equipment Layout</a></td>

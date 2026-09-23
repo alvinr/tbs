@@ -268,11 +268,11 @@ PDH_DISC_SEAT_DEP = 6     # seat depth — deep enough to positively locate the 
 PDH_WASHER_OD     = 82    # neoprene light-seal washer OD — the carrier presses against it
 PDH_WASHER_ID     = 65    # washer bore (clears the Ø65 aperture)
 PDH_WASHER_T      = 1.5   # washer thickness (compresses to seal)
-PDH_RING_OD       = 100   # circular retaining ring OD (6061-T6)
+PDH_RING_OD       = 110   # circular retaining ring OD (6061-T6) — houses the Ø94 thumb screws with edge margin
 PDH_RING_ID       = 70    # ring bore — smaller than the carrier OD so it clamps the rim; clears the light path
 PDH_RING_T        = 6     # ring thickness (stiffened for the lens clamp)
 PDH_TS_N          = 4     # 4 thumb screws hold the ring down
-PDH_TS_PCD        = 85    # thumb-screw bolt circle (in the ring band, clear of the Ø70 bore)
+PDH_TS_PCD        = 94    # thumb-screw bolt circle — OUTSIDE the Ø82 carrier counterbore so the taps get full engagement
 PDH_TS_D          = 6     # M6 knurled thumb screws (clamp force for a lens board)
 PDH_PINHOLE_D     = 2.17  # standard pinhole Ø (Rayleigh optimum at the 2362mm focal length, f/1088)
 

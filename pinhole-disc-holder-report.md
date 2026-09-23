@@ -14,11 +14,11 @@ There is **no tilt or swing**. A pinhole is a point aperture: the image is a cen
 
 The holder is a compact front board mounted to the wall-frame adapter with a small bolt pattern (the adapter is part of this design, so it carries the matching pattern). Four elements:
 
-- **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. Mounts to the wall-frame adapter (**4× M6 @ Ø150**); a Ø110 scene-side taper bore converging to a Ø65 light-aperture clearance bore; a Ø82 × 6mm counterbore that seats the carrier and reacts the weight of a lens; four M6 taps on a Ø85 circle for the thumb screws.
+- **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. Mounts to the wall-frame adapter (**4× M6 @ Ø150**); a Ø110 scene-side taper bore converging to a Ø65 light-aperture clearance bore; a Ø82 × 6mm counterbore that seats the carrier and reacts the weight of a lens; four M6 taps on a Ø94 circle (outboard of the counterbore) for the thumb screws.
 - **Light-seal washer** — Ø82 OD × Ø65 ID × 1.5mm neoprene. The carrier presses against it, sealing the aperture under the clamp.
 - **Interchangeable carrier (ICP-02)** — **Ø80** outer diameter: either a pinhole board (SS-302 shim, pinhole Ø per selection) or a **large-format lens board** carrying a Copal/Compur 0, 1 or 3 shutter (see §3).
-- **Circular retaining ring (ICP-03)** — Ø100 OD × Ø70 bore × 6mm 6061-T6. The Ø70 bore is smaller than the carrier so the ring clamps its rim; it clears the light path.
-- **Four thumb screws** — M6 knurled, on the Ø85 circle, into the plate.
+- **Circular retaining ring (ICP-03)** — Ø110 OD × Ø70 bore × 6mm 6061-T6. The Ø70 bore is smaller than the carrier so the ring clamps its rim; it clears the light path.
+- **Four thumb screws** — M6 knurled, on the Ø94 circle, into the plate.
 
 **Quick-change:** loosen the four thumb screws → lift the retaining ring → swap the carrier → replace the ring → finger-tighten the thumb screws. About 30 seconds, no tools.
 
@@ -67,7 +67,7 @@ The same Ø80 carrier accepts a lens board drilled for a standard large-format s
 
 Board-hole diameters per the [Intrepid Camera Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) (§11).
 
-**Carrying a lens's weight.** A large-format lens is cantilevered forward of the board, so the retention is designed to react its weight and tipping moment: the board seats **6mm deep** in the Ø82 counterbore (which takes the shear and the moment against its wall — not the clamp), and the Ø100 × 6mm ring is drawn down by **four M6 knurled thumb screws** (up from M5) for axial clamp force. For a heavy, permanently-mounted Copal 3 lens the thumb screws are simply run down firm; the seat, not the screws, carries the load.
+**Carrying a lens's weight.** A large-format lens is cantilevered forward of the board, so the retention is designed to react its weight and tipping moment: the board seats **6mm deep** in the Ø82 counterbore (which takes the shear and the moment against its wall — not the clamp), and the Ø110 × 6mm ring is drawn down by **four M6 knurled thumb screws** (up from M5) for axial clamp force. For a heavy, permanently-mounted Copal 3 lens the thumb screws are simply run down firm; the seat, not the screws, carries the load.
 
 ---
 
@@ -116,7 +116,7 @@ Swap time: about 30 seconds. The whole front board can also be unbolted from the
 | Front-plate carrier counterbore Ø82 | Ø82.000 | H7: +0.035/0.000 | Carrier seats concentric with the optical axis; reacts a lens's weight/moment |
 | Carrier seat depth | 6.000mm | +0.1/0.0 | Positive location + moment reaction for a lens board |
 | Light-aperture bore Ø65 | Ø65.000 | +0.2/0.0 | Clearance only — clears a Copal 3 hole, must not vignette |
-| Thumb-screw PCD Ø85 | Ø85.000 | ±0.2mm positional | Even clamp of the retaining ring |
+| Thumb-screw PCD Ø94 | Ø94.000 | ±0.2mm positional | Even clamp of the retaining ring; outboard of the Ø82 counterbore |
 | Retaining-ring bore Ø70 | Ø70.000 | ±0.1mm | Clamps the carrier rim without fouling the light path |
 | Mount bolts M6 PCD | Ø150.000 | ±0.15mm positional | Must match the wall-frame adapter |
 
@@ -130,13 +130,13 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø65 aperture, Ø110 scene taper, Ø82 carrier seat 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap). SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $22 |
-| ICP-03 retaining-ring stock — 6061-T6 | 6061-T6 stock — machined to the Ø100 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø85). Can be cut from the plate offcut. SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $8 |
+| ICP-03 retaining-ring stock — 6061-T6 | 6061-T6 stock — machined to the Ø110 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø94). Can be cut from the plate offcut. SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $8 |
 | Neoprene light-seal washer (Ø82×Ø65×1.5) | Neoprene washer Ø82 OD × Ø65 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source. | 1 ea | McMaster-Carr / Grainger | $3–$6 |
 | [Pinhole board set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | Ø80 × 0.1mm SS-302 laser-drilled pinhole boards — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). 3 off (the interchangeable set). SKU pending — quote (Lenox Laser). | 3 ea | Lenox Laser / Edmund Optics | $60–$120 |
 | Ø80 lens board — Copal/Compur 0/1/3 (optional) | Ø80 × ~4mm 6061 lens board drilled for a Copal/Compur 0 (34.6), 1 (41.6) or 3 (61.5) shutter — drops into the holder to run the camera as a lens optic. The large-format LENS itself is user-supplied (out of BOM). Optional. SKU pending — source. | 1 ea | SK Grimes / Local fab | $10–$30 |
 | [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | M6 knurled-head thumb screws — clamp the retaining ring (lens-board clamp force), finger-tightened for quick carrier change. 4 off. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $8–$16 |
 | M6×20 SHCS 18-8 SS, 4× (plate → adapter) | 4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $4 |
-| CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø65 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap) and the Ø100 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
+| CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø65 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø94) and the Ø110 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
 | Anodize — front plate + ring (service) | Black anodize the front plate + retaining ring (matte, non-reflective at the aperture). SKU pending — shop quote. | 1 job | Pac-Nor Anodizing | $40–$80 |
 | **Front-Board total** | | | | **$305–$636** |
 <!-- END parts:front-board -->

@@ -467,6 +467,7 @@ The pinhole gives the whole image, slowly. The lens gives a sharp central circle
 | Hecht, E., *Optics*, 5th ed., Pearson, 2017, §6.3–6.6. [Catalog](https://openlibrary.org/search?q=Hecht+Optics) | Thin lens equation, aberration theory, DoF formulas |
 | Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6. [Catalog](https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics) | Airy disk, diffraction limits, cos⁴ law derivation |
 | Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999. [Catalog](https://openlibrary.org/search?q=Stroebel+View+Camera+Technique) | Bellows extension factor, large-format lens practice |
+| Intrepid Camera — Large-Format Lens Explorer. [intrepidcamera.co.uk](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) | Large-format lens data; Copal/Compur 0/1/3 lens-board hole diameters (34.6 / 41.6 / 61.5mm) — the front-board carrier spec |
 | Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009. [Catalog](https://openlibrary.org/search?q=Renner+Pinhole+Photography) | Pinhole-to-lens comparison; practical exposure guidance |
 | Rodenstock Apo-Ronar product data. [rodenstock-photo.com](https://www.rodenstock-photo.com/) | Apo-Ronar focal length / image circle specifications |
 | Nikon / Nikkor large-format lens specifications. [nikon.com](https://www.nikon.com/) | T-ED series 1,200mm data |

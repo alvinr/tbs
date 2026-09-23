@@ -726,20 +726,16 @@ PARTS: list[Part] = [
     Part("misc-conversion-hw", "Misc. conversion hardware (contingency buffer)", "fasteners-hardware",
          "interior", 1, "lot", 80, 130, "Home Depot", spec="Deliberate contingency allowance for unforeseen conversion hardware — NOT itemized by design. Draw down as real needs surface during build."),
 
-    # ═══ optics (§3) — mirrors costing.OPTICS → exact $95–$240 ═══
-    Part("pinhole-shim", "Custom laser-drilled pinhole — SS-302/304 shim, 3×3", "stainless-sheet",
-         "optics", 1, "ea", 40, 100, "Lenox Laser", part_no="SS-3/8-DISC", url="https://lenoxlaser.com/shop/optical-apertures/standard-apertures/standard-aperture/",
-         note="Ø2.17mm optical element — Lenox SS-3/8-DISC standard aperture (302 SS, 3/8\" mounted disc). ⏳ DEFERRED to v1.0: config-dependent $22-100, firm via RFQ (1-800-49-HOLES) at design-complete."),
-    Part("pinhole-backing-plate", "Steel backing plate 6×6×⅛ + welded frame", "steel-structural",
-         "optics", 1, "ea", 20, 40, "Metal Supermarkets", "local fab"),
-    Part("shutter-plate", "Shutter plate (⅛ steel 10×8) + slide channel", "steel-structural",
-         "optics", 1, "ea", 25, 50, "local fab"),
-    Part("pinhole-retaining-ring", "Disc retaining ring (Al 6061-T6, M52×0.75)", "aluminum",
-         "optics", 1, "ea", 15, 25, "local fab", spec="Ø52 bore × M52×0.75 external thread, 3× M4 grub screws — screws into the plate counterbore to clamp the Ø50 pinhole disc flat; removable for swap/clean"),
-    Part("optical-plate-bolt", "M12×40 hex bolt, 18-8 SS", "fasteners-hardware",
-         "optics", 8, "ea", 14.73 / 10, 14.73 / 10, "McMaster-Carr", part_no="92314A744", url="https://www.mcmaster.com/92314A744/", spec="Optical Plate System Item 8 — mounts the optical plate/backing frame to the pinhole wall frame, 8× on a Ø540 bolt circle, + an M12 flat washer each (optical-plate-washer), torque ~43 N·m. HEX head (standardized to the structural hex convention 2026-09-07 — was drawn socket-head). M12×40 18-8 SS, McMaster 92314A744 $14.73/pack of 10 firm."),
-    Part("optical-plate-washer", "M12 flat washer, 18-8 SS", "fasteners-hardware",
-         "optics", 8, "ea", 10.93 / 25, 10.93 / 25, "McMaster-Carr", part_no="93475A290", url="https://www.mcmaster.com/93475A290/", spec="M12 flat washer under each optical-plate-bolt head (8, Item 8). 18-8 SS, McMaster 93475A290 $10.93/pack of 25 firm (2026-09-07)."),
+    # ═══ optics (§3) — the pinhole-WALL interface (mirrors costing.OPTICS). The pinhole ELEMENT,
+    # retaining ring and mount bolts moved to the "front-board" disc-holder system; the standard Ø600
+    # pinhole/lens plate + its 8× M12 hardware is retired. What remains is the container-wall interface:
+    # the flat wall-frame adapter the disc holder bolts to, and a dark slide over the aperture. ═══
+    Part("wall-frame-adapter", "Wall-frame adapter plate + weld", "steel-structural",
+         "optics", 1, "ea", 20, 40, "Metal Supermarkets", "local fab",
+         spec="Flat steel adapter welded over the corrugated end wall to present a machined flat datum concentric with the aperture; 4× M6 tapped @ Ø150 (matches the disc holder) + an opening larger than the Ø110 taper bore. SKU pending — fab."),
+    Part("aperture-dark-slide", "Aperture dark slide / cap", "steel-structural",
+         "optics", 1, "ea", 15, 30, "local fab",
+         spec="A light-tight slide/cap over the front-board aperture to cover the pinhole (or lens) between exposures and during loading. SKU pending — fab."),
 
     # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══

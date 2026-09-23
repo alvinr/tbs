@@ -16,7 +16,7 @@
 |----------|-----|-----|------|
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $526 | $605 | $693 |
-| **3. Optics — pinhole plate** | $115 | $170 | $230 |
+| **3. Optics — pinhole wall interface** | $35 | $52 | $70 |
 | **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $4,063 | $4,291 | $4,525 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,841 | $7,474 | $8,114 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $3,431 | $3,464 | $3,496 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,250 | $1,710 | $3,100 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$27,870** | **$32,720** | **$39,631** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$27,790** | **$32,602** | **$39,471** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware New Cyanotype** chemistry (ferric ammonium oxalate) + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,250), Mid = Standard ½-Ware ($1,710), High = Rich full-Ware ($3,100)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -141,29 +141,27 @@ The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is c
 
 ---
 
-## 3. Optics — Pinhole Plate
+## 3. Optics — Pinhole Wall Interface
 
-**Source document:** `container-report.md`, `pinhole-optics-report.md`
+**Source document:** `pinhole-report.md`, `pinhole-disc-holder-report.md`
 
-The precision aperture is the optical heart of the camera. Optimal diameter for this focal length: **2.17mm** (Rayleigh formula, λ = 550 nm).
+The pinhole/lens **mount** is the [pinhole disc holder](pinhole-disc-holder-report.md) (in the front-board system); this section is the **wall interface** it bolts to. The standard Ø600 interchangeable pinhole/lens plate was retired — the Ø80-carrier disc holder does both jobs, so the pinhole element + retaining ring + mount bolts now live once, in the front board.
 
-### 3.1 Pinhole plate
+### 3.1 Pinhole wall interface
 
 <!-- BEGIN costing:optics -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Custom laser-drilled pinhole, SS-302/304 shim, 3"×3" | $40 | $70 | $100 | Lenox Laser, lenoxlaser.com — ±0.025mm tolerance, SEM-verified |
-| Steel backing plate 6"×6"×⅛", welded frame | $20 | $30 | $40 | Houses the precision insert |
-| Shutter plate (⅛" steel, 10"×8") + slide channel | $25 | $35 | $50 | Simple sliding shutter, operated from outside |
-| Disc retaining ring (Al 6061-T6, M52×0.75 thread) | $15 | $20 | $25 | Screws into the plate counterbore; clamps the disc flat; unscrews for swap/clean |
-| **Pinhole plate total** | **$115** | **$170** | **$230** | |
+| Wall-frame adapter plate + weld | $20 | $30 | $40 | Flat steel adapter welded over the corrugation; 4× M6 @ Ø150 datum |
+| Aperture dark slide / cap | $15 | $22 | $30 | Light-tight cover over the aperture between exposures |
+| **Wall-interface total** | **$35** | **$52** | **$70** | |
 <!-- END costing:optics -->
 
-### 3.2 Optional lens (alternative to or supplement with pinhole)
+### 3.2 Optional large-format lens
 
 **Source document:** `lens-options.md`
 
-The pinhole plate is interchangeable. A lens plate can be swapped in for portrait or shorter-exposure work.
+The disc holder takes a Copal/Compur **lens board** (0/1/3) in place of a pinhole board — for portrait or shorter-exposure work. Focus is set at the film plane (depth rail).
 
 | Lens | f | Image circle | Used price | Notes |
 |------|---|-------------|-----------|-------|
@@ -534,7 +532,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 |------|------|
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $526 |
-| Pinhole plate | $115 |
+| Pinhole plate | $35 |
 | Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $4,063 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,841 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,431 |
@@ -547,7 +545,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,250 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$27,300** |
+| **Scenario A total** | **~$27,220** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -557,7 +555,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 |------|------|
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $605 |
-| Pinhole plate | $170 |
+| Pinhole plate | $52 |
 | Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $4,291 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,474 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,464 |
@@ -571,7 +569,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$33,030** |
+| **Scenario B total (excl. CDL)** | **~$32,912** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -579,11 +577,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,130 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,012 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$121,630–$151,630** |
+| **Scenario C total** | **~$121,512–$151,512** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

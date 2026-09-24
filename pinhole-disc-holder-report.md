@@ -33,11 +33,15 @@ The holder is a compact front board mounted to the wall-frame adapter with a sma
 </div>
 <!-- brochure:endskip -->
 
-The drawing set (TBS-PDH, 2 sheets): **Sheet 1** — assembly + Section A-A (plate, washer, carrier, ring, thumb screws, and the light path); **Sheet 2** — fabrication blueprints (front plate + retaining ring + carrier).
+The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — assembly + Section A-A (plate, washer, carrier, ring, thumb screws, and the light path); **Sheet 2** — fabrication blueprints (front plate + retaining ring + carrier); **Sheet 3** — wall-frame adapter + a section through the container wall (the mount interface, weld and bolts); **Sheet 4** — the Copal/Compur lens board (the three shutter‑hole options and how the shutter mounts). Sheets 2–4 carry the CNC‑shop tolerance block (§8).
 
 ![Pinhole Disc Holder — Sheet 1: Assembly + Section A-A](assets/pinhole-disc-holder-sheet1.png)
 
 ![Pinhole Disc Holder — Sheet 2: Fabrication](assets/pinhole-disc-holder-sheet2.png)
+
+![Pinhole Disc Holder — Sheet 3: Wall-Frame Adapter & Container-Wall Section](assets/pinhole-disc-holder-sheet3.png)
+
+![Pinhole Disc Holder — Sheet 4: Copal/Compur Lens Board](assets/pinhole-disc-holder-sheet4.png)
 
 ---
 
@@ -65,7 +69,7 @@ The same Ø80 carrier accepts a lens board drilled for a standard large-format s
 | Copal / Compur **1** | 41.6mm | ✅ |
 | Copal / Compur **3** | 61.5mm | ✅ (61.5 < Ø65 aperture; ~9mm rim on the Ø80 board) |
 
-Board-hole diameters per the [Intrepid Camera Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) (§11).
+Board-hole diameters per the [Intrepid Camera Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) (§11). The lens board (drill one hole to suit) and how a Copal/Compur shutter mounts in it are drawn on **Sheet 4**.
 
 **Carrying a lens's weight.** A large-format lens is cantilevered forward of the board, so the retention is designed to react its weight and tipping moment: the board seats **6mm deep** in the Ø82 counterbore (which takes the shear and the moment against its wall — not the clamp), and the Ø110 × 6mm ring is drawn down by **four M6 knurled thumb screws** (up from M5) for axial clamp force. For a heavy, permanently-mounted Copal 3 lens the thumb screws are simply run down firm; the seat, not the screws, carries the load.
 
@@ -91,7 +95,7 @@ The neoprene washer seals the carrier-to-plate joint when the retaining ring is 
 
 ## 6. Wall Mounting
 
-The pinhole (nose) end wall of the container is corrugated steel, so the front plate cannot seat on it directly. A flat steel **wall-frame adapter plate** is welded/bolted over the corrugation to present a flat datum, with an aperture cut through the corrugation larger than the Ø110 taper bore. The Ø180 front plate bolts to that adapter via its **4× M6 / Ø150** pattern.
+The pinhole (nose) end wall of the container is corrugated steel, so the front plate cannot seat on it directly. A flat steel **wall-frame adapter** — **Ø240 × 6mm S275**, welded over the corrugation — presents the machined flat datum; every alignment reference starts from its face. It carries **4× M6 tapped holes on the Ø150 circle** (matching the plate), a **Ø120 aperture** (clearing the Ø110 taper bore), and sits over a **Ø150 aperture** cut through the corrugation. The Ø180 front plate bolts to it with **4× M6×24 SHCS** at Ø150. Fabrication and the full through-wall stack (weld, bolts, apertures, light path) are on **Sheet 3**.
 
 ---
 
@@ -119,6 +123,8 @@ Swap time: about 30 seconds. The whole front board can also be unbolted from the
 | Thumb-screw PCD Ø94 | Ø94.000 | ±0.2mm positional | Even clamp of the retaining ring; outboard of the Ø82 counterbore |
 | Retaining-ring bore Ø70 | Ø70.000 | ±0.1mm | Clamps the carrier rim without fouling the light path |
 | Mount bolts M6 PCD | Ø150.000 | ±0.15mm positional | Must match the wall-frame adapter |
+
+These are carried as a **CNC-shop tolerance block on Sheets 2–4**: general linear (±0.1 to ±0.3 by size) and angular (±0.5°) tolerances, the bore fits above, PCD positional tolerances (mount + tap), surface finish (mating/seal Ra 1.6, bores Ra 3.2), datum scheme (A = plate camera face, B = Ø82 seat axis), and black hard-anodize after machining.
 
 ---
 

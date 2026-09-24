@@ -275,6 +275,16 @@ PDH_TS_N          = 4     # 4 thumb screws hold the ring down
 PDH_TS_PCD        = 94    # thumb-screw bolt circle — OUTSIDE the Ø82 carrier counterbore so the taps get full engagement
 PDH_TS_D          = 6     # M6 knurled thumb screws (clamp force for a lens board)
 PDH_PINHOLE_D     = 2.17  # standard pinhole Ø (Rayleigh optimum at the 2362mm focal length, f/1088)
+# Wall-frame adapter — the flat steel plate welded over the corrugated end wall; the Ø180 front plate
+# bolts to it (4× M6 @ PDH_MOUNT_BC). It presents the machined flat datum; every alignment starts here.
+PDH_ADAPT_OD      = 240   # adapter plate Ø (S275 steel, welded to the wall crests)
+PDH_ADAPT_T       = 6     # adapter steel thickness
+PDH_ADAPT_APT     = 120   # adapter aperture Ø — clears the Ø110 taper bore
+PDH_WALL_APT      = 150   # aperture cut through the corrugated container wall (> the adapter aperture)
+# Copal/Compur lens-board hole diameters (drilled in the Ø80 carrier for a large-format shutter)
+PDH_LENS_COPAL0   = 34.6  # Copal / Compur 0 board hole
+PDH_LENS_COPAL1   = 41.6  # Copal / Compur 1 board hole
+PDH_LENS_COPAL3   = 61.5  # Copal / Compur 3 board hole
 
 # ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────
 # These appear hand-computed across many reports; deriving them here (and registering as facts)

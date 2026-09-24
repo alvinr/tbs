@@ -98,6 +98,10 @@
 
 ![TBS-001 Pinhole Disc Holder — Sheet 2: Fabrication (front plate · retaining ring · disc)](assets/pinhole-disc-holder-sheet2.png)
 
+![TBS-001 Pinhole Disc Holder — Sheet 3: Wall-Frame Adapter & Container-Wall Section](assets/pinhole-disc-holder-sheet3.png)
+
+![TBS-001 Pinhole Disc Holder — Sheet 4: Copal/Compur Lens Board](assets/pinhole-disc-holder-sheet4.png)
+
 ---
 
 ## 8. Processing (Water) System

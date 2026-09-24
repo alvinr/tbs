@@ -14,8 +14,8 @@ There is **no tilt or swing**. A pinhole is a point aperture: the image is a cen
 
 The holder is a compact front board mounted to the wall-frame adapter with a small bolt pattern (the adapter is part of this design, so it carries the matching pattern). Four elements:
 
-- **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. Mounts to the wall-frame adapter (**4× M6 @ Ø150**); a Ø110 scene-side taper bore converging to a Ø65 light-aperture clearance bore; a Ø82 × 6mm counterbore that seats the carrier and reacts the weight of a lens; four M6 taps on a Ø94 circle (outboard of the counterbore) for the thumb screws.
-- **Light-seal washer** — Ø82 OD × Ø65 ID × 1.5mm neoprene. The carrier presses against it, sealing the aperture under the clamp.
+- **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. Mounts to the wall-frame adapter (**4× M6 @ Ø150**); a Ø110 scene-side taper bore converging to a Ø72 light-aperture clearance bore; a Ø82 × 6mm counterbore that seats the carrier and reacts the weight of a lens; four M6 taps on a Ø94 circle (outboard of the counterbore) for the thumb screws.
+- **Light-seal washer** — Ø82 OD × Ø72 ID × 1.5mm neoprene. The carrier presses against it, sealing the aperture under the clamp.
 - **Interchangeable carrier (ICP-02)** — **Ø80** outer diameter: either a pinhole board (SS-302 shim, pinhole Ø per selection) or a **large-format lens board** carrying a Copal/Compur 0, 1 or 3 shutter (see §3).
 - **Circular retaining ring (ICP-03)** — Ø110 OD × Ø70 bore × 6mm 6061-T6. The Ø70 bore is smaller than the carrier so the ring clamps its rim; it clears the light path.
 - **Four thumb screws** — M6 knurled, on the Ø94 circle, into the plate.
@@ -61,15 +61,15 @@ The Rayleigh-optimum pinhole diameter is d = 1.9·√(f·λ) = **Ø2.17mm** at �
 
 ### Large-format lens boards
 
-The same Ø80 carrier accepts a lens board drilled for a standard large-format shutter, converting the camera to a lens optic (sharp, fast, controllable aperture). The Ø65 light aperture clears the whole Copal/Compur range:
+The same Ø80 carrier accepts a lens board drilled for a standard large-format shutter, converting the camera to a lens optic (sharp, fast, controllable aperture). The Ø72 light aperture clears the shutter barrel of the whole Copal/Compur range:
 
-| Shutter | Lens-board hole | Fits (Ø80 carrier / Ø65 aperture)? |
+| Shutter | Lens-board hole | Fits (Ø80 carrier / Ø72 aperture)? |
 |---------|-----------------|-------------------------------------|
 | Copal / Compur **0** | 34.6mm | ✅ |
 | Copal / Compur **1** | 41.6mm | ✅ |
-| Copal / Compur **3** | 61.5mm | ✅ (61.5 < Ø65 aperture; ~9mm rim on the Ø80 board) |
+| Copal / Compur **3** | 65.0mm | ✅ (Ø65 barrel < Ø72 aperture; ~7.5mm rim on the Ø80 board) |
 
-Board-hole diameters per the [Intrepid Camera Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) (§11). The lens board (drill one hole to suit) and how a Copal/Compur shutter mounts in it are drawn on **Sheet 4**.
+Board-hole diameters per [lensnotes.com](https://lensnotes.com/photography/lens-board/) (Copal 3 = 65.0mm, matching Compur 3) and the [Intrepid Camera Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) for 0/1 (§11). The lens board (drill one hole to suit) and how a Copal/Compur shutter mounts in it are drawn on **Sheet 4**.
 
 **Carrying a lens's weight.** A large-format lens is cantilevered forward of the board, so the retention is designed to react its weight and tipping moment: the board seats **6mm deep** in the Ø82 counterbore (which takes the shear and the moment against its wall — not the clamp), and the Ø110 × 6mm ring is drawn down by **four M6 knurled thumb screws** (up from M5) for axial clamp force. For a heavy, permanently-mounted Copal 3 lens the thumb screws are simply run down firm; the seat, not the screws, carries the load.
 
@@ -89,7 +89,7 @@ The image is a central projection through the pinhole point. Tilt, swing, rise/f
 
 ## 5. Light Sealing
 
-The neoprene washer seals the carrier-to-plate joint when the retaining ring is clamped down — a single static compression seal, no moving parts and no bellows. The Ø110 taper bore on the scene side and the Ø65 clearance bore behind the carrier form the light path; the carrier (pinhole or lens) is the only opening. The plate-to-adapter joint is light-sealed by a thin gasket at the mount interface (or an O-ring in the adapter).
+The neoprene washer seals the carrier-to-plate joint when the retaining ring is clamped down — a single static compression seal, no moving parts and no bellows. The Ø110 taper bore on the scene side and the Ø72 clearance bore behind the carrier form the light path; the carrier (pinhole or lens) is the only opening. The plate-to-adapter joint is light-sealed by a thin gasket at the mount interface (or an O-ring in the adapter).
 
 ---
 
@@ -119,7 +119,7 @@ Swap time: about 30 seconds. The whole front board can also be unbolted from the
 |---------|---------|-----------|------------|
 | Front-plate carrier counterbore Ø82 | Ø82.000 | H7: +0.035/0.000 | Carrier seats concentric with the optical axis; reacts a lens's weight/moment |
 | Carrier seat depth | 6.000mm | +0.1/0.0 | Positive location + moment reaction for a lens board |
-| Light-aperture bore Ø65 | Ø65.000 | +0.2/0.0 | Clearance only — clears a Copal 3 hole, must not vignette |
+| Light-aperture bore Ø72 | Ø72.000 | +0.2/0.0 | Clearance only — clears a Copal 3 shutter barrel (Ø65), must not vignette |
 | Thumb-screw PCD Ø94 | Ø94.000 | ±0.2mm positional | Even clamp of the retaining ring; outboard of the Ø82 counterbore |
 | Retaining-ring bore Ø70 | Ø70.000 | ±0.1mm | Clamps the carrier rim without fouling the light path |
 | Mount bolts M6 PCD | Ø150.000 | ±0.15mm positional | Must match the wall-frame adapter |
@@ -135,14 +135,14 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 <!-- BEGIN parts:front-board -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø65 aperture, Ø110 scene taper, Ø82 carrier seat 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap). SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $22 |
+| ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø72 aperture, Ø110 scene taper, Ø82 carrier seat 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap). SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $22 |
 | ICP-03 retaining-ring stock — 6061-T6 | 6061-T6 stock — machined to the Ø110 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø94). Can be cut from the plate offcut. SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $8 |
-| Neoprene light-seal washer (Ø82×Ø65×1.5) | Neoprene washer Ø82 OD × Ø65 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source. | 1 ea | McMaster-Carr / Grainger | $3–$6 |
+| Neoprene light-seal washer (Ø82×Ø72×1.5) | Neoprene washer Ø82 OD × Ø72 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source. | 1 ea | McMaster-Carr / Grainger | $3–$6 |
 | [Pinhole board set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | Ø80 × 0.1mm SS-302 laser-drilled pinhole boards — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). 3 off (the interchangeable set). SKU pending — quote (Lenox Laser). | 3 ea | Lenox Laser / Edmund Optics | $60–$120 |
-| Ø80 lens board — Copal/Compur 0/1/3 (optional) | Ø80 × ~4mm 6061 lens board drilled for a Copal/Compur 0 (34.6), 1 (41.6) or 3 (61.5) shutter — drops into the holder to run the camera as a lens optic. The large-format LENS itself is user-supplied (out of BOM). Optional. SKU pending — source. | 1 ea | SK Grimes / Local fab | $10–$30 |
+| Ø80 lens board — Copal/Compur 0/1/3 (optional) | Ø80 × ~4mm 6061 lens board drilled for a Copal/Compur 0 (34.6), 1 (41.6) or 3 (65.0) shutter — drops into the holder to run the camera as a lens optic. The large-format LENS itself is user-supplied (out of BOM). Optional. SKU pending — source. | 1 ea | SK Grimes / Local fab | $10–$30 |
 | [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | M6 knurled-head thumb screws — clamp the retaining ring (lens-board clamp force), finger-tightened for quick carrier change. 4 off. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $8–$16 |
 | M6×20 SHCS 18-8 SS, 4× (plate → adapter) | 4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $4 |
-| CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø65 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø94) and the Ø110 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
+| CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø72 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø94) and the Ø110 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
 | Anodize — front plate + ring (service) | Black anodize the front plate + retaining ring (matte, non-reflective at the aperture). SKU pending — shop quote. | 1 job | Pac-Nor Anodizing | $40–$80 |
 | **Front-Board total** | | | | **$305–$636** |
 <!-- END parts:front-board -->
@@ -162,9 +162,10 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 ## 11. Source References
 
 1. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole board fabrication (Ø2.17mm and alternates, SS-302 shim).
-2. [Intrepid Camera — Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) — Large-format lens data and the Copal/Compur 0/1/3 lens-board hole diameters (34.6 / 41.6 / 61.5mm).
-3. [S.K. Grimes — Lens Board Mountings](https://skgrimes.com/lens-board-mountings/) — how a Copal/Compur shutter mounts to a lens board (front flange + rear retaining ring); the Sheet 4 mount.
-3. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard (film-plane) tilt/swing and the correct distortion renders.
-4. [Pinhole Report](pinhole-report.md) — Pinhole optics and the wall-frame interface.
-5. [McMaster-Carr — Knurled Thumb Screws](https://www.mcmaster.com/products/thumb-screws/) — M6 knurled thumb screws for the retaining ring.
-6. [McMaster-Carr — Neoprene Washers / Rubber Sheet](https://www.mcmaster.com/products/rubber/) — Light-seal washer stock.
+2. [Intrepid Camera — Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) — Large-format lens data and the Copal/Compur 0/1 lens-board hole diameters (34.6 / 41.6mm).
+3. [lensnotes.com — Lens Boards](https://lensnotes.com/photography/lens-board/) — Standard board sizes + the full Copal/Compur shutter-hole set; Copal 3 = 65.0mm (matching Compur 3), the value adopted here over Intrepid's 61.5.
+4. [S.K. Grimes — Lens Board Mountings](https://skgrimes.com/lens-board-mountings/) — how a Copal/Compur shutter mounts to a lens board (front flange + rear retaining ring); the Sheet 4 mount.
+5. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard (film-plane) tilt/swing and the correct distortion renders.
+6. [Pinhole Report](pinhole-report.md) — Pinhole optics and the wall-frame interface.
+7. [McMaster-Carr — Knurled Thumb Screws](https://www.mcmaster.com/products/thumb-screws/) — M6 knurled thumb screws for the retaining ring.
+8. [McMaster-Carr — Neoprene Washers / Rubber Sheet](https://www.mcmaster.com/products/rubber/) — Light-seal washer stock.

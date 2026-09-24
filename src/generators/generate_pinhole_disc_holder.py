@@ -274,8 +274,8 @@ def _tol_block(fig, rect, title="GENERAL TOLERANCES (unless noted)"):
     rows = [
         f"{title}",
         "Linear ≤6mm ±0.1 · ≤30 ±0.2 · >30 ±0.3    Angular ±0.5°",
-        "Bores: Ø82 disc seat H7 (+0.035/0) · Ø65 aperture +0.2/0 · Ø70 ring bore ±0.1",
-        "PCDs (Ø150 mount · Ø94 tap) ±0.15 positional · tapped holes ⊥ to face 0.1",
+        f"Bores: Ø{PDH_DISC_SEAT_D} disc seat H7 (+0.035/0) · Ø{PDH_APERTURE} aperture +0.2/0 · Ø{PDH_RING_ID} ring bore ±0.1",
+        f"PCDs (Ø{BOLT_BC} mount · Ø{PDH_TS_PCD} tap) ±0.15 positional · tapped holes ⊥ to face 0.1",
         "Surfaces: mating/seal faces Ra 1.6 · bores Ra 3.2 · others Ra 6.3 · break sharp edges 0.3×45°",
         "Datum A = plate camera face · B = Ø82 seat axis · finish: black hard-anodize (Al) after machining",
     ]
@@ -339,7 +339,7 @@ def draw_sheet3():
         axsec.add_patch(mpatches.Rectangle((xa0, min(y0, y1)), at, abs(y1 - y0), fc=C_STEEL, ec=C_OUT, lw=1.2, hatch='///', zorder=3))
         axsec.add_patch(mpatches.Polygon([(xa0, ry + sgn * sy(PDH_ADAPT_OD / 2)), (xa0 + sx(3), ry + sgn * sy(PDH_ADAPT_OD / 2)),
                         (xa0, ry + sgn * (sy(PDH_ADAPT_OD / 2) - sy(10)))], closed=True, fc=C_OUT, ec=C_OUT, zorder=5))
-        # disc-holder plate (Ø65 aperture; Ø110 scene taper on the wall side)
+        # disc-holder plate (Ø72 aperture; Ø110 scene taper on the wall side)
         y0, y1 = (ry + sgn * apt, ry + sgn * sy(PDH_PLATE_OD / 2))
         axsec.add_patch(mpatches.Rectangle((xp0, min(y0, y1)), pt, abs(y1 - y0), fc=C_ALUM, ec=C_OUT, lw=1.4, hatch='\\\\', zorder=3))
         axsec.plot([xp0, xp0 + sx(8)], [ry + sgn * sy(PDH_TAPER_BORE / 2), ry + sgn * apt], color=C_OUT, lw=0.9, zorder=4)

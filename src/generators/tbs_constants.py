@@ -259,14 +259,14 @@ PDH_MOUNT_BC      = 150   # mount bolt circle to the wall-frame adapter
 PDH_MOUNT_N       = 4     # 4× M6 mount bolts
 PDH_MOUNT_D       = 7     # M6 clearance hole
 PDH_SEAL_D        = 160   # perimeter seal groove to the adapter
-PDH_APERTURE      = 65    # Ø light-aperture clearance bore — clears a Copal 3 (61.5mm) lens-board hole
+PDH_APERTURE      = 72    # Ø light-aperture clearance bore — clears a Copal 3 (65mm) shutter barrel with margin
 PDH_TAPER_BORE    = 110   # Ø exterior scene-side taper bore (light relief, > the aperture)
 PDH_DISC_OD       = 80    # interchangeable carrier Ø — a pinhole board OR a Copal 0/1/3 lens board
 PDH_DISC_SEAT_D   = 82    # Ø counterbore seat the carrier drops into
 PDH_DISC_SEAT_DEP = 6     # seat depth — deep enough to positively locate the carrier and REACT the
                           # cantilevered weight/moment of a large-format lens (the ring only clamps axially)
 PDH_WASHER_OD     = 82    # neoprene light-seal washer OD — the carrier presses against it
-PDH_WASHER_ID     = 65    # washer bore (clears the Ø65 aperture)
+PDH_WASHER_ID     = PDH_APERTURE  # washer bore = aperture — clears the shutter barrel; can't drift
 PDH_WASHER_T      = 1.5   # washer thickness (compresses to seal)
 PDH_RING_OD       = 110   # circular retaining ring OD (6061-T6) — houses the Ø94 thumb screws with edge margin
 PDH_RING_ID       = 70    # ring bore — smaller than the carrier OD so it clamps the rim; clears the light path
@@ -284,7 +284,7 @@ PDH_WALL_APT      = 150   # aperture cut through the corrugated container wall (
 # Copal/Compur lens-board hole diameters (drilled in the Ø80 carrier for a large-format shutter)
 PDH_LENS_COPAL0   = 34.6  # Copal / Compur 0 board hole
 PDH_LENS_COPAL1   = 41.6  # Copal / Compur 1 board hole
-PDH_LENS_COPAL3   = 61.5  # Copal / Compur 3 board hole
+PDH_LENS_COPAL3   = 65.0  # Copal / Compur 3 board hole (standard; Compur 3 = 65.0 too)
 
 # ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────
 # These appear hand-computed across many reports; deriving them here (and registering as facts)

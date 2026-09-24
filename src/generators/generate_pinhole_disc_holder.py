@@ -354,6 +354,12 @@ def draw_sheet3():
         axsec.add_patch(mpatches.Rectangle((seat0 + sx(PDH_WASHER_T), min(ycar)), sx(4), abs(ycar[1] - ycar[0]), fc=C_DISC, ec=C_OUT, lw=0.6, zorder=7))
         yrg = (ry + sgn * sy(PDH_RING_ID / 2), ry + sgn * sy(PDH_RING_OD / 2))
         axsec.add_patch(mpatches.Rectangle((xp0 + pt, min(yrg)), sx(PDH_RING_T), abs(yrg[1] - yrg[0]), fc=C_ALUM, ec=C_OUT, lw=0.9, hatch='\\\\', zorder=6))
+        # M6 thumb screw holding the ring to the plate (Ø_TS_PCD) — to scale, as Sheet 1
+        yts = ry + sgn * sy(PDH_TS_PCD / 2)
+        axsec.add_patch(mpatches.Rectangle((xp0 + pt - sx(10), yts - sy(PDH_TS_D / 2)), sx(10) + sx(PDH_RING_T), sy(PDH_TS_D),
+                        fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=8))                     # Ø6 shaft (plate tap → through ring)
+        axsec.add_patch(mpatches.Rectangle((xp0 + pt + sx(PDH_RING_T), yts - sy(6)), sx(8), sy(12),
+                        fc='#404040', ec=C_OUT, lw=0.4, zorder=8))                   # Ø12 knurled head
         # M6 mount bolt through plate into adapter (at Ø150)
         yb0 = ry + sgn * sy(BOLT_BC / 2)
         axsec.add_patch(mpatches.Rectangle((xp0 + pt, yb0 - sy(5)), sx(3), sy(10), fc='#3B3B42', ec=C_OUT, lw=0.4, zorder=8))
@@ -365,6 +371,7 @@ def draw_sheet3():
     leader(axsec, xa0 + at / 2, ry + sy(PDH_ADAPT_OD / 2) - 8, xa0 + 46, ry + rad + 22, f'WALL-FRAME ADAPTER (welded)\nØ{PDH_ADAPT_APT} apt · 4× M6 TAP @ Ø{BOLT_BC}', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, xp0 + pt, ry - sy(BOLT_BC / 2), xp0 + pt + 120, ry - rad - 6, f'{BOLT_N}× M6×{PDH_PLATE_T + 6} SHCS\n(plate → adapter)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, xp0 + pt + sx(PDH_RING_T), ry + sy(PDH_RING_ID / 2), xp0 + pt + 140, ry + rad + 8, 'RETAINING RING + CARRIER\n(pinhole / lens · swapped from inside)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, xp0 + pt + sx(PDH_RING_T) + sx(4), ry - sy(PDH_TS_PCD / 2), xp0 + pt + 150, ry - rad + 34, f'{PDH_TS_N}× M{PDH_TS_D} THUMB SCREW\n(ring → plate tap @ Ø{PDH_TS_PCD})', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     axsec.text((xw0 + xp0) / 2 + 30, ry - rad - 46, 'PANEL B — SECTION THROUGH THE PINHOLE WALL\n(axial scale exaggerated · scene left → interior right)', ha='center', fontsize=5.5, style='italic', color='#333')
 
     _tol_block(fig, [0.05, 0.035, 0.90, 0.135])
@@ -436,7 +443,8 @@ def draw_sheet4():
     leader(axsec, bx + bt / 2, ry + hole - sy(1), bx - 55, ry - sy(PDH_DISC_OD / 2) - 34, f'Ø{PDH_LENS_COPAL1} board hole\n(threaded barrel through)', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
     leader(axsec, bx + bt + sx(2.5), ry + flange, bx + 160, ry + sy(PDH_DISC_OD / 2) + 40, 'RETAINING RING — screws on\nfrom the BACK, clamps the board', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, bx + bt / 2, ry - sy(PDH_DISC_OD / 2), bx + 110, ry - sy(PDH_DISC_OD / 2) - 52, "board (Ø80) then seats + clamps in the\nholder's Ø82 counterbore (Sheets 1/2)", fs=5.2, color=C_DIM, arrow_style='->', ha='left')
-    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 88, 'PANEL B — SHUTTER MOUNT (Copal 1 shown · front flange + rear retaining ring)', ha='center', fontsize=6.2, style='italic', color='#333')
+    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 84, 'PANEL B — SHUTTER MOUNT (Copal 1 shown · front flange + rear retaining ring)', ha='center', fontsize=6.2, style='italic', color='#333')
+    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 108, 'FRONT / REAR CELL = the lens element (glass) groups that thread onto the front and back of the shutter', ha='center', fontsize=5.2, color='#555')
 
     tb = fig.add_axes([0.05, 0.03, 0.90, 0.11]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 4 OF 4", drawing_title="PINHOLE DISC HOLDER — COPAL/COMPUR LENS BOARD",

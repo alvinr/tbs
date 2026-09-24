@@ -1147,7 +1147,7 @@ PARTS: list[Part] = [
          spec="6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø72 aperture, Ø110 scene taper, Ø82 carrier seat 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap). SKU pending — source."),
     Part("pdh-ring-stock", "ICP-03 retaining-ring stock — 6061-T6", "aluminum",
          "front-board", 1, "ea", 8, 8, "Metal Supermarkets", "Online Metals",
-         spec="6061-T6 stock — machined to the Ø110 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø94). Can be cut from the plate offcut. SKU pending — source."),
+         spec="6061-T6 stock — machined to the Ø120 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø100). Can be cut from the plate offcut. SKU pending — source."),
     Part("pdh-washer", "Neoprene light-seal washer (Ø82×Ø72×1.5)", "seals-gaskets",
          "front-board", 1, "ea", 3, 6, "McMaster-Carr", "Grainger",
          spec="Neoprene washer Ø82 OD × Ø72 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source."),
@@ -1165,7 +1165,7 @@ PARTS: list[Part] = [
          spec="4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source."),
     Part("pdh-cnc", "CNC machining — front plate + retaining ring (service)", "fabrication-labor",
          "front-board", 1, "job", 150, 350, "Fictiv", "ProtoLabs",
-         spec="Machine the Ø180 front plate (Ø72 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø94) and the Ø110 retaining ring from 6061-T6. SKU pending — fab quote."),
+         spec="Machine the Ø180 front plate (Ø72 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø100) and the Ø120 retaining ring from 6061-T6. SKU pending — fab quote."),
     Part("pdh-anodise", "Anodize — front plate + ring (service)", "adhesives-finishes",
          "front-board", 1, "job", 40, 80, "Pac-Nor Anodizing",
          spec="Black anodize the front plate + retaining ring (matte, non-reflective at the aperture). SKU pending — shop quote."),]

@@ -343,32 +343,44 @@ def draw_sheet4():
     def sy(mm): return mm / 1.0
     axsec.set_xlim(90, 790); axsec.set_ylim(60, 410)
     ry = 235; bx = 430; bt = sx(4)
-    hole = sy(PDH_LENS_COPAL1 / 2)
-    flange = sy(PDH_LENS_COPAL1 / 2 + 15)         # shutter front flange / retaining-ring OD (> the hole)
-    for sgn in (-1, 1):
-        # lens board (hole → OD)
-        y0, y1 = ry + sgn * hole, ry + sgn * sy(PDH_DISC_OD / 2)
-        axsec.add_patch(mpatches.Rectangle((bx, min(y0, y1)), bt, abs(y1 - y0), fc='#EDEDED', ec=C_OUT, lw=1.3, hatch='\\\\', zorder=4))
-        # shutter FRONT flange — shoulder seating on the SUBJECT (left) face of the board
-        axsec.add_patch(mpatches.Rectangle((bx - sx(3.5), ry + sgn * hole), sx(3.5), sgn * (flange - hole), fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=5))
-        # threaded barrel through the hole (shutter body → through board → into the retaining ring)
-        axsec.add_patch(mpatches.Rectangle((bx - sx(3.5), ry + sgn * (hole - sy(2))), bt + sx(3.5) + sx(5), sy(2), fc='#9AA0A8', ec=C_OUT, lw=0.4, zorder=5))
-        # RETAINING RING on the FILM (right) face — screws on from the back, clamps the board
-        axsec.add_patch(mpatches.Rectangle((bx + bt, ry + sgn * hole), sx(5), sgn * (flange - hole), fc='#7A8088', ec=C_OUT, lw=0.6, zorder=6))
-    # front lens cell (subject) + rear lens cell (film) — schematic, smaller than the mount detail
-    axsec.add_patch(mpatches.Ellipse((bx - sx(13), ry), width=sx(2), height=sy(40), fc='#BFE0FF', ec=C_OUT, lw=0.9, alpha=0.6, zorder=3))
-    axsec.add_patch(mpatches.Ellipse((bx + bt + sx(14), ry), width=sx(1.75), height=sy(30), fc='#BFE0FF', ec=C_OUT, lw=0.9, alpha=0.6, zorder=3))
-    axsec.text(bx - sx(13), ry - sy(30), 'FRONT\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
-    axsec.text(bx + bt + sx(14), ry - sy(24), 'REAR\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
+    hr = sy(PDH_LENS_COPAL1 / 2)                   # board-hole radius (the threaded barrel passes through)
+    fr = sy(PDH_LENS_COPAL1 / 2 + 13)              # flange / retaining-ring OD (wider than the hole)
+    od = sy(PDH_DISC_OD / 2)
+    fe_x = bx - sx(30)                             # front element (subject side)
+    re_x = bx + bt + sx(12)                        # rear element (film side) — just past the rear ring
+    for s1 in (-1, 1):
+        # lens board (hole → OD) — hatched
+        axsec.add_patch(mpatches.Rectangle((bx, min(ry + s1 * hr, ry + s1 * od)), bt, abs(od - hr),
+                        fc='#EDEDED', ec=C_OUT, lw=1.3, hatch='\\\\', zorder=4))
+        # front-cell FUNNEL — converging barrel tapering from the front element down into the hole
+        axsec.add_patch(mpatches.Polygon([(fe_x, ry + s1 * sy(30)), (bx - sx(3), ry + s1 * fr),
+                        (bx - sx(3), ry + s1 * hr), (fe_x, ry + s1 * sy(7))],
+                        closed=True, fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=5))
+        # threaded barrel through the hole → into the retaining ring
+        axsec.add_patch(mpatches.Rectangle((bx - sx(3), ry + s1 * (hr - sy(2.5))), bt + sx(3) + sx(4.5), s1 * sy(2.5),
+                        fc='#9AA0A8', ec=C_OUT, lw=0.4, zorder=6))
+        # REAR RETAINING RING on the FILM face — screws onto the barrel, clamps the board
+        axsec.add_patch(mpatches.Rectangle((bx + bt, ry + s1 * hr), sx(4.5), s1 * (fr - hr),
+                        fc='#7A8088', ec=C_OUT, lw=0.6, zorder=6))
+    # front + rear lens ELEMENTS (biconvex glass — narrow ellipses; rear protrudes past the opening)
+    axsec.add_patch(mpatches.Ellipse((fe_x, ry), width=sx(2.4), height=sy(60), fc='#BFE0FF', ec=C_OUT, lw=1.0, alpha=0.7, zorder=3))
+    axsec.add_patch(mpatches.Ellipse((re_x, ry), width=sx(2.0), height=sy(40), fc='#BFE0FF', ec=C_OUT, lw=1.0, alpha=0.7, zorder=7))
+    axsec.text(fe_x, ry - sy(30) - 8, 'FRONT\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
+    axsec.text(re_x, ry - sy(20) - 8, 'REAR\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
+    # clamp-force indication — front flange (subject) + rear ring (film) squeeze the board
+    axsec.annotate('', xy=(bx + bt / 2, ry + od + sy(8)), xytext=(bx - sx(7), ry + od + sy(8)), arrowprops=dict(arrowstyle='-|>', color='#B03030', lw=1.2))
+    axsec.annotate('', xy=(bx + bt / 2, ry + od + sy(8)), xytext=(bx + bt + sx(7), ry + od + sy(8)), arrowprops=dict(arrowstyle='-|>', color='#B03030', lw=1.2))
+    axsec.text(bx + bt / 2, ry + od + sy(15), 'CLAMP', fontsize=5.0, color='#B03030', ha='center')
+    # optical axis (light) — subject → film
     axsec.annotate('', xy=(bx + sx(40), ry), xytext=(bx - sx(40), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.6))
-    axsec.text(bx - sx(40), ry + 40, 'SUBJECT', fontsize=6.0, color='#8a5a00', ha='left')
-    axsec.text(bx + sx(34), ry + 40, 'FILM', fontsize=6.0, color='#8a5a00', ha='right')
-    leader(axsec, bx - sx(1.7), ry + flange, bx - 150, ry + sy(PDH_DISC_OD / 2) + 40, 'SHUTTER BODY — front flange\nseats on the SUBJECT face', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
-    leader(axsec, bx + bt / 2, ry + hole - sy(1), bx - 55, ry - sy(PDH_DISC_OD / 2) - 34, f'Ø{PDH_LENS_COPAL1} board hole\n(threaded barrel through)', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
-    leader(axsec, bx + bt + sx(2.5), ry + flange, bx + 160, ry + sy(PDH_DISC_OD / 2) + 40, 'RETAINING RING — screws on\nfrom the BACK, clamps the board', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, bx + bt / 2, ry - sy(PDH_DISC_OD / 2), bx + 110, ry - sy(PDH_DISC_OD / 2) - 52, "board (Ø80) then seats + clamps in the\nholder's Ø82 counterbore (Sheets 1/2)", fs=5.2, color=C_DIM, arrow_style='->', ha='left')
-    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 84, 'PANEL B — SHUTTER MOUNT (Copal 1 shown · front flange + rear retaining ring)', ha='center', fontsize=6.2, style='italic', color='#333')
-    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 108, 'FRONT / REAR ELEMENT = the glass lens elements that thread onto the front and back of the shutter body', ha='center', fontsize=5.2, color='#555')
+    axsec.text(bx - sx(40), ry + 44, 'SUBJECT', fontsize=6.0, color='#8a5a00', ha='left')
+    axsec.text(bx + sx(34), ry + 44, 'FILM', fontsize=6.0, color='#8a5a00', ha='right')
+    leader(axsec, bx - sx(3), ry + fr, bx - 150, ry + od + 46, 'SHUTTER BODY — front flange\nseats on the SUBJECT face', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, bx + bt / 2, ry - hr + sy(1), bx - 55, ry - od - 34, f'Ø{PDH_LENS_COPAL1} board hole\n(threaded barrel through)', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, bx + bt + sx(2), ry + fr, bx + 160, ry + od + 46, 'RETAINING RING — screws on\nfrom the BACK, clamps the board', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, bx + bt / 2, ry - od, bx + 110, ry - od - 52, "board (Ø80) then seats + clamps in the\nholder's Ø82 counterbore (Sheets 1/2)", fs=5.2, color=C_DIM, arrow_style='->', ha='left')
+    axsec.text(bx, ry - od - 84, 'PANEL B — LENS CROSS-SECTION (Copal 1 shown · front flange + rear retaining ring clamp the board)', ha='center', fontsize=6.2, style='italic', color='#333')
+    axsec.text(bx, ry - od - 108, 'FRONT / REAR ELEMENT = the glass lens elements that thread onto the front and back of the shutter body', ha='center', fontsize=5.2, color='#555')
 
     tb = fig.add_axes([0.05, 0.03, 0.90, 0.11]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 4 OF 4", drawing_title="PINHOLE DISC HOLDER — COPAL/COMPUR LENS BOARD",

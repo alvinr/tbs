@@ -62,7 +62,7 @@ def _thumb_screw_positions(cx, cy, pcd, s):
 # SHEET 1 — Assembly: front view + Section A-A
 # ══════════════════════════════════════════════════════════════════════════════
 def draw_sheet1():
-    fig, (axf, axs) = plt.subplots(1, 2, figsize=(11, 6.4))
+    fig, (axf, axs) = plt.subplots(1, 2, figsize=(13, 6.6), gridspec_kw={'width_ratios': [1, 1.35]})
     for ax in (axf, axs):
         ax.set_aspect('equal'); ax.axis('off')
     fig.patch.set_facecolor('white')
@@ -111,11 +111,11 @@ def draw_sheet1():
 
     # ── Section A-A (broken-out central stack) — optical axis horizontal ──
     # Thin plate: axial (thickness) scale EXAGGERATED vs radial so the disc stack reads.
-    def sx(mm): return mm * 1.7          # horizontal / axial (thickness) — exaggerated
-    def sy(mm): return mm / 2.2          # vertical / radial — compressed
-    sw, sh = 720, 720
+    def sx(mm): return mm * 2.7          # horizontal / axial (thickness) — exaggerated
+    def sy(mm): return mm / 1.7          # vertical / radial — compressed
+    sw, sh = 520, 440
     axs.set_xlim(0, sw); axs.set_ylim(0, sh)
-    ax0 = 210                            # scene face x
+    ax0 = 170                            # scene face x
     axc = ax0 + sx(PDH_PLATE_T)          # camera face x
     ry = sh / 2 + 10                     # optical-axis line y
     rad = sy(80)                         # show ±80mm of radius (broken-out; plate is Ø180)
@@ -154,25 +154,25 @@ def draw_sheet1():
     # optical-axis centre line + light-path arrow
     axs.plot([ax0 - sx(45), axc + sx(PDH_RING_T) + sx(45)], [ry, ry], color=C_CUT_BLUE, lw=LW_THIN, ls=(0, (8, 3, 1, 3)), zorder=2)
     axs.annotate('', xy=(disc_x + sx(30), ry), xytext=(ax0 - sx(38), ry), arrowprops=dict(arrowstyle='-|>', color='#CC7722', lw=1.4))
-    axs.text(ax0 - sx(38), ry + 12, 'LIGHT →', fontsize=5, color='#CC7722', ha='left')
+    axs.text(ax0 - sx(38), ry + 12, 'LIGHT →', fontsize=6, color='#CC7722', ha='left')
 
     axs.annotate('SCENE\n(exterior)', xy=(ax0, ry + rad + 14), xytext=(ax0 - 34, ry + rad + 78),
-                 fontsize=5, color='#333', ha='center', va='bottom', arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
+                 fontsize=5.5, color='#333', ha='center', va='bottom', arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
     axs.annotate('CAMERA\n(interior)', xy=(axc + sx(PDH_RING_T) + sx(10), ry + rad + 14),
-                 xytext=(axc + 30, ry + rad + 78), fontsize=5, color='#333', ha='center', va='bottom',
+                 xytext=(axc + 30, ry + rad + 78), fontsize=5.5, color='#333', ha='center', va='bottom',
                  arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
 
     # short part-name callouts on the assembly section — full fab dims are on Sheet 2
     lx = axc + sx(PDH_RING_T) + 70
     leader(axs, disc_x + sx(0.6), ry + sy(PDH_DISC_OD / 2) * 0.6, lx, ry + 150,
-           'ICP-02 DISC\n(pinhole / lens)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+           'ICP-02 DISC\n(pinhole / lens)', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
     leader(axs, seat_x + sx(PDH_WASHER_T / 2), ry + sy(PDH_WASHER_OD / 2) * 0.85, lx, ry + 58,
-           'NEOPRENE WASHER\n(light seal)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+           'NEOPRENE WASHER\n(light seal)', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
     leader(axs, axc + sx(PDH_RING_T / 2), ry - sy(PDH_RING_OD / 2) * 0.9, lx, ry - 58,
-           'ICP-03 RETAINING\nRING', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+           'ICP-03 RETAINING\nRING', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
     leader(axs, ax0 + sx(PDH_PLATE_T / 2), ry - sy(60), lx, ry - 150,
-           'ICP-01 FRONT PLATE', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
-    axs.text((ax0 + axc) / 2, ry - rad - 60, 'SECTION A-A — axial ×1.7 / radial 1:2.2 (thickness exaggerated)', ha='center', fontsize=5.5, style='italic', color='#333')
+           'ICP-01 FRONT PLATE', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
+    axs.text((ax0 + axc) / 2, ry - rad - 60, 'SECTION A-A — axial ×2.7 / radial 1:1.7 (thickness exaggerated)', ha='center', fontsize=6.5, style='italic', color='#333')
 
     tb = fig.add_axes([0.03, 0.02, 0.94, 0.115]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 1 OF 4", drawing_title="PINHOLE DISC HOLDER — ASSEMBLY",

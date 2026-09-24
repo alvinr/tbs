@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D
+from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_T, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D
 
 mm = ov.mm
 TAGS = ["Plate", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]
@@ -32,10 +32,10 @@ TAGS = ["Plate", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]
 #    camera/interior toward +Y. ────────────────────────────────────────────────────────────────
 PLATE_Y0 = 0.0                          # scene face
 PLATE_Y1 = float(PDH_PLATE_T)           # camera face (18)
-SEAT_Y   = PLATE_Y1 - PDH_DISC_SEAT_DEP  # disc-seat counterbore floor (15)
+SEAT_Y   = PLATE_Y1 - PDH_DISC_SEAT_DEP  # disc-seat counterbore floor
 DISC_Y0  = SEAT_Y + PDH_WASHER_T + 0.1   # disc underside — 0.1 gap above the washer (no coincident faces)
-DISC_T   = PLATE_Y1 - DISC_Y0 - 0.1      # disc thickness — stops 0.1 short of the camera face
-RING_Y0  = PLATE_Y1 + 0.15               # ring lifted 0.15 off the plate face (no coincident annulus → no z-fight)
+DISC_T   = float(PDH_DISC_T)             # carrier thickness — fills the seat + ~0.5 proud (single-sourced)
+RING_Y0  = DISC_Y0 + DISC_T + 0.1        # ring sits just above the proud carrier rim it clamps (no z-fight)
 RING_Y1  = RING_Y0 + PDH_RING_T
 RING_BORE_R1 = PDH_RING_ID / 2 + 8       # ring bore flares open toward the interior — the diverging light cone's exit
 PULL_MM  = 250.0                         # DC pull-out travel (+Y, camera side) to reveal the disc

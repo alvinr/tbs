@@ -305,7 +305,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [Pinhole board set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | 3 ea | Lenox Laser | front-board | $60–$120 |
+| [Pinhole carrier set — SS-302 shim on Ø80×5 6061 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | 3 ea | Lenox Laser | front-board | $60–$120 |
 | Ø80 lens board — Copal/Compur 0/1/3 (optional) | 1 ea | SK Grimes | front-board | $10–$30 |
 | **optics subtotal** | | | | **$70–$150** |
 

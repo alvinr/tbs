@@ -21,7 +21,7 @@ import numpy as np
 import os
 from tbs_constants import (
     DIAGRAMS_DIR, DIAGRAM_DPI,
-    PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_TAPER_BORE, PDH_DISC_OD,
+    PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_TAPER_BORE, PDH_DISC_OD, PDH_DISC_T,
     PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T,
     PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D,
     PDH_MOUNT_BC as BOLT_BC, PDH_MOUNT_D as BOLT_D, PDH_MOUNT_N as BOLT_N,
@@ -178,9 +178,9 @@ def draw_sheet2():
     draw_cl(axd, dx, dy, s3(PDH_DISC_OD / 2) * 1.15)
     draw_dim_v(axd, dx + s3(PDH_DISC_OD / 2) + 14, dy - s3(PDH_DISC_OD / 2), dy + s3(PDH_DISC_OD / 2),
                f'Ø{PDH_DISC_OD}', right=True, fs=5, offset=12)
-    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 · 0.1 thk)', fs=5, color=C_DIM, arrow_style='->', ha='left')
+    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 shim over a central bore)', fs=5, color=C_DIM, arrow_style='->', ha='left')
     axd.text(dx, dy - s3(PDH_DISC_OD / 2) - 70,
-             'PANEL C — ICP-02 DISC (2:1)\nInterchangeable: Ø2.17 (std) · Ø1.5 (sharper) · Ø3.0 (brighter) · or a Copal/Compur lens board (Sheet 4)',
+             f'PANEL C — ICP-02 CARRIER (2:1) · 6061-T6 Ø{PDH_DISC_OD} × {PDH_DISC_T:.0f}mm\nInterchangeable: Ø2.17 (std) · Ø1.5 (sharper) · Ø3.0 (brighter) · or a Copal/Compur lens board (Sheet 4)',
              ha='center', fontsize=5, style='italic', color='#333')
 
     tb = fig.add_axes([0.03, 0.02, 0.94, 0.13]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
@@ -275,7 +275,7 @@ def draw_sheet3():
         yws = (ry + sgn * sy(PDH_WASHER_ID / 2), ry + sgn * sy(PDH_WASHER_OD / 2))
         axsec.add_patch(mpatches.Rectangle((seat0, min(yws)), sx(PDH_WASHER_T), abs(yws[1] - yws[0]), fc=C_GASKT, ec=C_OUT, lw=0.5, zorder=6))
         ycar = (ry + sgn * sy(2), ry + sgn * sy(PDH_DISC_OD / 2))
-        axsec.add_patch(mpatches.Rectangle((seat0 + sx(PDH_WASHER_T), min(ycar)), sx(4), abs(ycar[1] - ycar[0]), fc=C_DISC, ec=C_OUT, lw=0.6, zorder=7))
+        axsec.add_patch(mpatches.Rectangle((seat0 + sx(PDH_WASHER_T), min(ycar)), sx(PDH_DISC_T), abs(ycar[1] - ycar[0]), fc=C_DISC, ec=C_OUT, lw=0.6, zorder=7))
         yrg = (ry + sgn * sy(PDH_RING_ID / 2), ry + sgn * sy(PDH_RING_OD / 2))
         axsec.add_patch(mpatches.Rectangle((xp0 + pt, min(yrg)), sx(PDH_RING_T), abs(yrg[1] - yrg[0]), fc=C_ALUM, ec=C_OUT, lw=0.9, hatch='\\\\', zorder=6))
         # M6 thumb screw holding the ring to the plate (Ø_TS_PCD) — to scale, as Sheet 1
@@ -333,7 +333,7 @@ def draw_sheet4():
         (s(PDH_LENS_COPAL1), f'Ø{PDH_LENS_COPAL1} COPAL 1 (shown)'),
         (s(PDH_LENS_COPAL3), f'Ø{PDH_LENS_COPAL3} COPAL 3'),
     ], dirn=-1, step=s(19), fs=4.4)
-    axb.text(cx, cy - s(PDH_DISC_OD / 2) - 122, 'PANEL A — LENS BOARD · drill ONE hole to suit the shutter\n6061-T6 Ø80 × ~4mm — same carrier envelope as a pinhole board',
+    axb.text(cx, cy - s(PDH_DISC_OD / 2) - 122, f'PANEL A — LENS BOARD · drill ONE hole to suit the shutter\n6061-T6 Ø{PDH_DISC_OD} × {PDH_DISC_T:.0f}mm — same carrier envelope as a pinhole board (fills the seat)',
              ha='center', fontsize=5, style='italic', color='#333')
 
     # ── Panel B: SECTION — how the Copal/Compur shutter is FIXED to the board ──

@@ -16,7 +16,7 @@ The holder is a compact front board mounted to the wall-frame adapter with a sma
 
 - **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. Mounts to the wall-frame adapter (**4× M6 @ Ø150**); a Ø110 scene-side taper bore converging to a Ø72 light-aperture clearance bore; a Ø82 × 6mm counterbore that seats the carrier and reacts the weight of a lens; four M6 taps on a Ø100 circle (9mm clear of the counterbore wall) for the thumb screws.
 - **Light-seal washer** — Ø82 OD × Ø72 ID × 1.5mm neoprene. The carrier presses against it, sealing the aperture under the clamp.
-- **Interchangeable carrier (ICP-02)** — **Ø80** outer diameter: either a pinhole board (SS-302 shim, pinhole Ø per selection) or a **large-format lens board** carrying a Copal/Compur 0, 1 or 3 shutter (see §3).
+- **Interchangeable carrier (ICP-02)** — **Ø80 × 5mm** 6061 disc (fills the seat): either a pinhole carrier (SS-302 shim over a central bore, pinhole Ø per selection) or a **large-format lens board** drilled for a Copal/Compur 0, 1 or 3 shutter (see §3). Every carrier shares this one envelope, so the retaining ring seats them all identically.
 - **Circular retaining ring (ICP-03)** — Ø120 OD × Ø70 bore × 6mm 6061-T6. The Ø70 bore is smaller than the carrier so the ring clamps its rim; it clears the light path.
 - **Four thumb screws** — M6 knurled, on the Ø100 circle, into the plate.
 
@@ -33,9 +33,9 @@ The holder is a compact front board mounted to the wall-frame adapter with a sma
 </div>
 <!-- brochure:endskip -->
 
-The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — assembly + Section A-A (plate, washer, carrier, ring, thumb screws, and the light path); **Sheet 2** — fabrication blueprints (front plate + retaining ring + carrier); **Sheet 3** — wall-frame adapter + a section through the container wall (the mount interface, weld and bolts); **Sheet 4** — the Copal/Compur lens board (the three shutter‑hole options and how the shutter mounts). Sheets 2–4 carry the CNC‑shop tolerance block (§8).
+The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — general arrangement (front view: plate, retaining ring, thumb-screw + mount circles; the section through the mount is on Sheet 3); **Sheet 2** — fabrication blueprints (front plate + retaining ring + carrier); **Sheet 3** — wall-frame adapter + a section through the container wall (the mount interface, weld, bolts and the carrier/ring/seal stack); **Sheet 4** — the Copal/Compur lens board (the three shutter‑hole options and how the shutter mounts). Sheets 2–4 carry the CNC‑shop tolerance block (§8).
 
-![Pinhole Disc Holder — Sheet 1: Assembly + Section A-A](assets/pinhole-disc-holder-sheet1.png)
+![Pinhole Disc Holder — Sheet 1: General Arrangement](assets/pinhole-disc-holder-sheet1.png)
 
 ![Pinhole Disc Holder — Sheet 2: Fabrication](assets/pinhole-disc-holder-sheet2.png)
 
@@ -47,7 +47,7 @@ The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — assembly + Section A-A (pla
 
 ## 3. Interchangeable Carriers — Pinhole & Large-Format Lens
 
-Every carrier is **Ø80 OD**, clamped by the retaining ring, so the camera's front optic changes in seconds.
+Every carrier is a **Ø80 × 5mm** disc (fills the seat), clamped by the retaining ring, so the camera's front optic changes in seconds.
 
 ### Pinhole boards
 
@@ -89,7 +89,7 @@ The image is a central projection through the pinhole point. Tilt, swing, rise/f
 
 ## 5. Light Sealing
 
-The neoprene washer seals the carrier-to-plate joint when the retaining ring is clamped down — a single static compression seal, no moving parts and no bellows. The Ø110 taper bore on the scene side and the Ø72 clearance bore behind the carrier form the light path; the carrier (pinhole or lens) is the only opening. The plate-to-adapter joint is light-sealed by a thin gasket at the mount interface (or an O-ring in the adapter).
+The neoprene washer, seated on the floor of the Ø82 counterbore, seals the carrier-to-plate joint. Without it, light through the aperture could leak around the carrier's perimeter — the Ø80 carrier sits in the Ø82 seat with a ~1mm radial gap all round — into the camera. Every carrier is a **Ø80 × 5mm** disc (§3), so it fills the 6mm seat and stands ~0.5mm proud on the 1.5mm washer; tightening the thumb screws draws the retaining ring flat, pressing the carrier rim and compressing the washer against the seat floor to block the perimeter path. It is a single static compression seal — no moving parts, no bellows. The Ø110 taper bore on the scene side and the Ø72 clearance bore behind the carrier form the light path; the carrier (pinhole or lens) is the only opening. The plate-to-adapter joint is light-sealed by a thin gasket at the mount interface (or an O-ring in the adapter).
 
 ---
 
@@ -138,8 +138,8 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 6061-T6 round bar Ø190×22mm — machined to the Ø180×18 front plate (Ø72 aperture, Ø110 scene taper, Ø82 carrier seat 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap). SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $22 |
 | ICP-03 retaining-ring stock — 6061-T6 | 6061-T6 stock — machined to the Ø120 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø100). Can be cut from the plate offcut. SKU pending — source. | 1 ea | Metal Supermarkets / Online Metals | $8 |
 | Neoprene light-seal washer (Ø82×Ø72×1.5) | Neoprene washer Ø82 OD × Ø72 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source. | 1 ea | McMaster-Carr / Grainger | $3–$6 |
-| [Pinhole board set — SS-302 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | Ø80 × 0.1mm SS-302 laser-drilled pinhole boards — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). 3 off (the interchangeable set). SKU pending — quote (Lenox Laser). | 3 ea | Lenox Laser / Edmund Optics | $60–$120 |
-| Ø80 lens board — Copal/Compur 0/1/3 (optional) | Ø80 × ~4mm 6061 lens board drilled for a Copal/Compur 0 (34.6), 1 (41.6) or 3 (65.0) shutter — drops into the holder to run the camera as a lens optic. The large-format LENS itself is user-supplied (out of BOM). Optional. SKU pending — source. | 1 ea | SK Grimes / Local fab | $10–$30 |
+| [Pinhole carrier set — SS-302 shim on Ø80×5 6061 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | Ø80 × 5mm 6061 carrier discs, each with an SS-302 laser-drilled pinhole shim bonded over a central bore — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). The 5mm carrier fills the seat (same envelope as the lens board) so the retaining ring clamps + seals it. 3 off (the interchangeable set). SKU pending — quote (Lenox Laser + disc blanks). | 3 ea | Lenox Laser / Edmund Optics | $60–$120 |
+| Ø80 lens board — Copal/Compur 0/1/3 (optional) | Ø80 × 5mm 6061 lens board (fills the seat) drilled for a Copal/Compur 0 (34.6), 1 (41.6) or 3 (65.0) shutter — drops into the holder to run the camera as a lens optic. The large-format LENS itself is user-supplied (out of BOM). Optional. SKU pending — source. | 1 ea | SK Grimes / Local fab | $10–$30 |
 | [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | M6 knurled-head thumb screws — clamp the retaining ring (lens-board clamp force), finger-tightened for quick carrier change. 4 off. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $8–$16 |
 | M6×20 SHCS 18-8 SS, 4× (plate → adapter) | 4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $4 |
 | CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø72 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø100) and the Ø120 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |

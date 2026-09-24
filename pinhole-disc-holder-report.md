@@ -163,6 +163,7 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 
 1. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole board fabrication (Ø2.17mm and alternates, SS-302 shim).
 2. [Intrepid Camera — Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) — Large-format lens data and the Copal/Compur 0/1/3 lens-board hole diameters (34.6 / 41.6 / 61.5mm).
+3. [S.K. Grimes — Lens Board Mountings](https://skgrimes.com/lens-board-mountings/) — how a Copal/Compur shutter mounts to a lens board (front flange + rear retaining ring); the Sheet 4 mount.
 3. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard (film-plane) tilt/swing and the correct distortion renders.
 4. [Pinhole Report](pinhole-report.md) — Pinhole optics and the wall-frame interface.
 5. [McMaster-Carr — Knurled Thumb Screws](https://www.mcmaster.com/products/thumb-screws/) — M6 knurled thumb screws for the retaining ring.

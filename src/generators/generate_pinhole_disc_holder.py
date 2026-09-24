@@ -290,7 +290,7 @@ def _tol_block(fig, rect, title="GENERAL TOLERANCES (unless noted)"):
 # SHEET 3 — Wall-frame adapter + section through the container wall
 # ══════════════════════════════════════════════════════════════════════════════
 def draw_sheet3():
-    fig, (axa, axsec) = plt.subplots(1, 2, figsize=(12, 6.4))
+    fig, (axa, axsec) = plt.subplots(1, 2, figsize=(14, 6.6), gridspec_kw={'width_ratios': [1, 2.0]})
     for ax in (axa, axsec):
         ax.set_aspect('equal'); ax.axis('off')
     fig.patch.set_facecolor('white')
@@ -321,53 +321,48 @@ def draw_sheet3():
              ha='center', fontsize=5, style='italic', color='#333')
 
     # ── Panel B: SECTION through the container wall (scene ← left, interior → right) ──
-    def sx(mm): return mm * 1.5      # through-wall (axial) — exaggerated
-    def sy(mm): return mm / 2.5      # radial — compressed
-    axsec.set_xlim(0, 780); axsec.set_ylim(0, 560)
-    ry = 300
+    def sx(mm): return mm * 3.0      # through-wall (axial) — exaggerated
+    def sy(mm): return mm / 1.35     # radial — compressed
+    axsec.set_xlim(0, 760); axsec.set_ylim(0, 400)
+    ry = 200
     rad = sy(130)
-    # x-stations (scene at left): wall -> adapter -> plate -> ring
-    xw0 = 150; wt = sx(2)                       # corrugated wall
+    xw0 = 190; wt = sx(2)                       # corrugated wall
     xa0 = xw0 + wt; at = sx(PDH_ADAPT_T)        # adapter (welded on the interior face)
     xp0 = xa0 + at; pt = sx(PDH_PLATE_T)        # disc-holder plate, bolted to the adapter
     apt = sy(PDH_APERTURE / 2)
     for sgn in (-1, 1):
-        yb = (lambda a, b: (ry + sgn * a, ry + sgn * b))
-        # corrugated wall (thin, with the Ø150 aperture)
+        # corrugated wall (Ø150 aperture)
         y0, y1 = (ry + sgn * sy(PDH_WALL_APT / 2), ry + sgn * rad)
         axsec.add_patch(mpatches.Rectangle((xw0, min(y0, y1)), wt, abs(y1 - y0), fc='#C9C9C9', ec=C_OUT, lw=1.0, hatch='xx', zorder=3))
         # adapter (Ø120 aperture) — steel, welded
         y0, y1 = (ry + sgn * sy(PDH_ADAPT_APT / 2), ry + sgn * sy(PDH_ADAPT_OD / 2))
         axsec.add_patch(mpatches.Rectangle((xa0, min(y0, y1)), at, abs(y1 - y0), fc=C_STEEL, ec=C_OUT, lw=1.2, hatch='///', zorder=3))
-        # weld triangle at the wall/adapter joint
-        axsec.add_patch(mpatches.Polygon([(xa0, ry + sgn * sy(PDH_ADAPT_OD / 2)), (xa0 + sx(4), ry + sgn * sy(PDH_ADAPT_OD / 2)),
-                        (xa0, ry + sgn * (sy(PDH_ADAPT_OD / 2) - sx(4)))], closed=True, fc=C_OUT, ec=C_OUT, zorder=5))
+        axsec.add_patch(mpatches.Polygon([(xa0, ry + sgn * sy(PDH_ADAPT_OD / 2)), (xa0 + sx(3), ry + sgn * sy(PDH_ADAPT_OD / 2)),
+                        (xa0, ry + sgn * (sy(PDH_ADAPT_OD / 2) - sy(10)))], closed=True, fc=C_OUT, ec=C_OUT, zorder=5))
         # disc-holder plate (Ø65 aperture; Ø110 scene taper on the wall side)
         y0, y1 = (ry + sgn * apt, ry + sgn * sy(PDH_PLATE_OD / 2))
         axsec.add_patch(mpatches.Rectangle((xp0, min(y0, y1)), pt, abs(y1 - y0), fc=C_ALUM, ec=C_OUT, lw=1.4, hatch='\\\\', zorder=3))
-        axsec.plot([xp0, xp0 + sx(6)], [ry + sgn * sy(PDH_TAPER_BORE / 2), ry + sgn * apt], color=C_OUT, lw=0.8, zorder=4)
+        axsec.plot([xp0, xp0 + sx(8)], [ry + sgn * sy(PDH_TAPER_BORE / 2), ry + sgn * apt], color=C_OUT, lw=0.9, zorder=4)
         # carrier + washer + ring on the interior face
         seat0 = xp0 + pt - sx(PDH_DISC_SEAT_DEP)
         yws = (ry + sgn * sy(PDH_WASHER_ID / 2), ry + sgn * sy(PDH_WASHER_OD / 2))
-        axsec.add_patch(mpatches.Rectangle((seat0, min(yws)), sx(PDH_WASHER_T), abs(yws[1] - yws[0]), fc=C_GASKT, ec=C_OUT, lw=0.4, zorder=6))
+        axsec.add_patch(mpatches.Rectangle((seat0, min(yws)), sx(PDH_WASHER_T), abs(yws[1] - yws[0]), fc=C_GASKT, ec=C_OUT, lw=0.5, zorder=6))
         ycar = (ry + sgn * sy(2), ry + sgn * sy(PDH_DISC_OD / 2))
-        axsec.add_patch(mpatches.Rectangle((seat0 + sx(PDH_WASHER_T), min(ycar)), sx(4), abs(ycar[1] - ycar[0]), fc=C_DISC, ec=C_OUT, lw=0.5, zorder=7))
+        axsec.add_patch(mpatches.Rectangle((seat0 + sx(PDH_WASHER_T), min(ycar)), sx(4), abs(ycar[1] - ycar[0]), fc=C_DISC, ec=C_OUT, lw=0.6, zorder=7))
         yrg = (ry + sgn * sy(PDH_RING_ID / 2), ry + sgn * sy(PDH_RING_OD / 2))
-        axsec.add_patch(mpatches.Rectangle((xp0 + pt, min(yrg)), sx(PDH_RING_T), abs(yrg[1] - yrg[0]), fc=C_ALUM, ec=C_OUT, lw=0.8, hatch='\\\\', zorder=6))
+        axsec.add_patch(mpatches.Rectangle((xp0 + pt, min(yrg)), sx(PDH_RING_T), abs(yrg[1] - yrg[0]), fc=C_ALUM, ec=C_OUT, lw=0.9, hatch='\\\\', zorder=6))
         # M6 mount bolt through plate into adapter (at Ø150)
         yb0 = ry + sgn * sy(BOLT_BC / 2)
-        axsec.add_patch(mpatches.Rectangle((xp0 + pt, yb0 - sx(1.5)), sx(3), sx(3), fc='#3B3B42', ec=C_OUT, lw=0.4, zorder=8))  # head
-        axsec.add_patch(mpatches.Rectangle((xa0, yb0 - sx(1)), (xp0 + pt) - xa0, sx(2), fc='#3B3B42', ec=C_OUT, lw=0.3, zorder=8))  # shank
-    # optical axis + light path
-    axsec.plot([xw0 - 40, xp0 + pt + 120], [ry, ry], color=C_CUT_BLUE, lw=0.6, ls=(0, (10, 4, 2, 4)), zorder=1)
-    axsec.annotate('', xy=(xw0 - 10, ry), xytext=(xw0 - 60, ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.4))
-    axsec.text(xw0 - 62, ry + 16, 'LIGHT\n(scene)', fontsize=4.6, color='#8a5a00', ha='left')
-    # callouts
-    leader(axsec, xw0 + wt / 2, ry + sy(PDH_WALL_APT / 2) + 6, xw0 - 20, ry + rad - 20, f'CORRUGATED\nWALL · Ø{PDH_WALL_APT} CUT', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
-    leader(axsec, xa0 + at / 2, ry + sy(PDH_ADAPT_OD / 2) - 6, xa0 + 30, ry + rad - 4, f'ADAPTER (welded)\nØ{PDH_ADAPT_APT} apt · 4× M6 TAP @ Ø{BOLT_BC}', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, xp0 + pt, ry - sy(BOLT_BC / 2), xp0 + pt + 90, ry - rad + 30, f'{BOLT_N}× M6×{PDH_PLATE_T + 6} SHCS\n(plate → adapter)', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, xp0 + pt + sx(PDH_RING_T), ry + sy(PDH_RING_ID / 2), xp0 + pt + 110, ry + rad - 20, 'RING + CARRIER\n(pinhole / lens · from inside)', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-    axsec.text((xw0 + xp0) / 2, ry - rad - 40, 'PANEL B — SECTION THROUGH THE PINHOLE WALL\n(axial scale exaggerated · scene left → interior right)', ha='center', fontsize=5, style='italic', color='#333')
+        axsec.add_patch(mpatches.Rectangle((xp0 + pt, yb0 - sy(5)), sx(3), sy(10), fc='#3B3B42', ec=C_OUT, lw=0.4, zorder=8))
+        axsec.add_patch(mpatches.Rectangle((xa0, yb0 - sy(3)), (xp0 + pt) - xa0, sy(6), fc='#3B3B42', ec=C_OUT, lw=0.3, zorder=8))
+    axsec.plot([xw0 - 80, xp0 + pt + 170], [ry, ry], color=C_CUT_BLUE, lw=0.7, ls=(0, (10, 4, 2, 4)), zorder=1)
+    axsec.annotate('', xy=(xw0 - 14, ry), xytext=(xw0 - 84, ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.7))
+    axsec.text(xw0 - 86, ry + 24, 'LIGHT\n(scene)', fontsize=5, color='#8a5a00', ha='left')
+    leader(axsec, xw0 + wt / 2, ry + sy(PDH_WALL_APT / 2) + 8, xw0 - 30, ry + rad + 8, f'CORRUGATED WALL\nØ{PDH_WALL_APT} CUT', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, xa0 + at / 2, ry + sy(PDH_ADAPT_OD / 2) - 8, xa0 + 46, ry + rad + 22, f'WALL-FRAME ADAPTER (welded)\nØ{PDH_ADAPT_APT} apt · 4× M6 TAP @ Ø{BOLT_BC}', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, xp0 + pt, ry - sy(BOLT_BC / 2), xp0 + pt + 120, ry - rad - 6, f'{BOLT_N}× M6×{PDH_PLATE_T + 6} SHCS\n(plate → adapter)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, xp0 + pt + sx(PDH_RING_T), ry + sy(PDH_RING_ID / 2), xp0 + pt + 140, ry + rad + 8, 'RETAINING RING + CARRIER\n(pinhole / lens · swapped from inside)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    axsec.text((xw0 + xp0) / 2 + 30, ry - rad - 46, 'PANEL B — SECTION THROUGH THE PINHOLE WALL\n(axial scale exaggerated · scene left → interior right)', ha='center', fontsize=5.5, style='italic', color='#333')
 
     _tol_block(fig, [0.05, 0.035, 0.90, 0.135])
     tb = fig.add_axes([0.05, 0.175, 0.90, 0.055]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
@@ -388,46 +383,57 @@ def draw_sheet4():
     fig.patch.set_facecolor('white')
     fig.subplots_adjust(bottom=0.20, wspace=0.05, left=0.02, right=0.98, top=0.98)
 
-    # ── Panel A: lens board front view (Ø80) with the 3 Copal hole options ──
+    # ── Panel A: lens board front view (Ø80) — ONE real drilled hole (Copal 1 shown) + alternates ──
     S = 0.9
     def s(mm): return mm / S
-    axb.set_xlim(0, 220); axb.set_ylim(0, 300)
-    cx, cy = 110, 175
-    draw_circle(axb, cx, cy, s(PDH_DISC_OD / 2), lw=LW_THICK, color=C_OUT, fill=True, fc='#EDEDED')  # Ø80 board
-    for hole, lbl, col in [(PDH_LENS_COPAL3, 'COPAL 3', '#B0B0B0'), (PDH_LENS_COPAL1, 'COPAL 1', '#D0D0D0'), (PDH_LENS_COPAL0, 'COPAL 0', '#EAEAEA')]:
-        draw_circle(axb, cx, cy, s(hole / 2), lw=LW_MED, color=C_OUT, ls='--')
-    draw_circle(axb, cx, cy, s(PDH_LENS_COPAL0 / 2), lw=LW_MED, color=C_OUT)   # the chosen bore solid
+    axb.set_xlim(0, 240); axb.set_ylim(0, 320)
+    cx, cy = 120, 200
+    draw_circle(axb, cx, cy, s(PDH_DISC_OD / 2), lw=LW_THICK, color=C_OUT, fill=True, fc='#EDEDED')          # Ø80 board
+    draw_circle(axb, cx, cy, s(PDH_LENS_COPAL1 / 2), lw=LW_MED, color=C_OUT, fill=True, fc='white')          # the actual drilled hole (open bore)
+    draw_circle(axb, cx, cy, s(PDH_LENS_COPAL0 / 2), lw=LW_THIN, color=C_HID, ls='--')                       # alt: Copal 0
+    draw_circle(axb, cx, cy, s(PDH_LENS_COPAL3 / 2), lw=LW_THIN, color=C_HID, ls='--')                       # alt: Copal 3
     draw_cl(axb, cx, cy, s(PDH_DISC_OD / 2) * 1.15)
-    draw_dim_v(axb, cx + s(PDH_DISC_OD / 2) + 14, cy - s(PDH_DISC_OD / 2), cy + s(PDH_DISC_OD / 2), f'Ø{PDH_DISC_OD} CARRIER', right=True, fs=5, offset=12)
+    draw_dim_v(axb, cx + s(PDH_DISC_OD / 2) + 16, cy - s(PDH_DISC_OD / 2), cy + s(PDH_DISC_OD / 2), f'Ø{PDH_DISC_OD} CARRIER', right=True, fs=5, offset=12)
     dia_stack(axb, cx, cy - s(PDH_DISC_OD / 2), [
         (s(PDH_LENS_COPAL0), f'Ø{PDH_LENS_COPAL0} COPAL 0'),
-        (s(PDH_LENS_COPAL1), f'Ø{PDH_LENS_COPAL1} COPAL 1'),
+        (s(PDH_LENS_COPAL1), f'Ø{PDH_LENS_COPAL1} COPAL 1 (shown)'),
         (s(PDH_LENS_COPAL3), f'Ø{PDH_LENS_COPAL3} COPAL 3'),
     ], dirn=-1, step=s(19), fs=4.4)
-    axb.text(cx, cy - s(PDH_DISC_OD / 2) - 118, 'PANEL A — LENS BOARD (drill ONE hole to suit)\n6061-T6 Ø80 × ~4mm — same carrier as a pinhole board',
+    axb.text(cx, cy - s(PDH_DISC_OD / 2) - 122, 'PANEL A — LENS BOARD · drill ONE hole to suit the shutter\n6061-T6 Ø80 × ~4mm — same carrier envelope as a pinhole board',
              ha='center', fontsize=5, style='italic', color='#333')
 
-    # ── Panel B: section — Copal shutter mounted in the board ──
-    def sx(mm): return mm * 1.3
+    # ── Panel B: SECTION — how the Copal/Compur shutter is FIXED to the board ──
+    # (front lens cell + shutter body flange on the SUBJECT face; threaded barrel through the hole;
+    #  the retaining ring screws on from the FILM side and clamps the board — per S.K. Grimes.)
+    def sx(mm): return mm * 3.4
     def sy(mm): return mm / 1.5
-    axsec.set_xlim(0, 560); axsec.set_ylim(0, 480)
-    ry = 250; bx = 230; bt = sx(4)
+    axsec.set_xlim(0, 720); axsec.set_ylim(0, 470)
+    ry = 245; bx = 330; bt = sx(4)
     hole = sy(PDH_LENS_COPAL1 / 2)
+    flange = sy(PDH_LENS_COPAL1 / 2 + 15)         # shutter front flange / retaining-ring OD (> the hole)
     for sgn in (-1, 1):
+        # lens board (hole → OD)
         y0, y1 = ry + sgn * hole, ry + sgn * sy(PDH_DISC_OD / 2)
-        axsec.add_patch(mpatches.Rectangle((bx, min(y0, y1)), bt, abs(y1 - y0), fc='#EDEDED', ec=C_OUT, lw=1.3, hatch='\\\\', zorder=3))
-        # shutter barrel (threaded tube) through the hole
-        axsec.add_patch(mpatches.Rectangle((bx - sx(10), ry + sgn * (hole - sy(1.5))), sx(24), sy(1.5), fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=4))
-        # retaining ring (nut) on the interior side
-        axsec.add_patch(mpatches.Rectangle((bx + bt, ry + sgn * hole), sx(4), sy(6), fc='#9AA0A8', ec=C_OUT, lw=0.5, zorder=5))
-    # front cell / rear cell blobs
-    axsec.add_patch(mpatches.Circle((bx - sx(14), ry), sy(26), fc='#BFE0FF', ec=C_OUT, lw=0.8, alpha=0.5, zorder=2))
-    axsec.text(bx - sx(14), ry, 'LENS', fontsize=5, ha='center', va='center', color='#2060A0')
-    axsec.annotate('', xy=(bx + sx(30), ry), xytext=(bx - sx(40), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.2))
-    leader(axsec, bx + bt, ry + hole, bx + 120, ry + sy(PDH_DISC_OD / 2) + 30, 'SHUTTER RETAINING\nRING (front nut)', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, bx, ry - hole, bx - 90, ry - sy(PDH_DISC_OD / 2) - 20, 'COPAL/COMPUR SHUTTER\n(threaded barrel thru the board)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
-    leader(axsec, bx + bt / 2, ry + sy(PDH_DISC_OD / 2), bx + 70, ry - sy(PDH_DISC_OD / 2) - 46, 'board seats in the Ø82 counterbore\n+ is clamped by the retaining ring (Sheet 1)', fs=4.2, color=C_DIM, arrow_style='->', ha='left')
-    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 78, 'PANEL B — SHUTTER MOUNT (indicative · Copal 1 shown)', ha='center', fontsize=5, style='italic', color='#333')
+        axsec.add_patch(mpatches.Rectangle((bx, min(y0, y1)), bt, abs(y1 - y0), fc='#EDEDED', ec=C_OUT, lw=1.3, hatch='\\\\', zorder=4))
+        # shutter FRONT flange — shoulder seating on the SUBJECT (left) face of the board
+        axsec.add_patch(mpatches.Rectangle((bx - sx(3.5), ry + sgn * hole), sx(3.5), sgn * (flange - hole), fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=5))
+        # threaded barrel through the hole (shutter body → through board → into the retaining ring)
+        axsec.add_patch(mpatches.Rectangle((bx - sx(3.5), ry + sgn * (hole - sy(2))), bt + sx(3.5) + sx(5), sy(2), fc='#9AA0A8', ec=C_OUT, lw=0.4, zorder=5))
+        # RETAINING RING on the FILM (right) face — screws on from the back, clamps the board
+        axsec.add_patch(mpatches.Rectangle((bx + bt, ry + sgn * hole), sx(5), sgn * (flange - hole), fc='#7A8088', ec=C_OUT, lw=0.6, zorder=6))
+    # front lens cell (subject) + rear lens cell (film) — schematic, smaller than the mount detail
+    axsec.add_patch(mpatches.Circle((bx - sx(13), ry), sy(19), fc='#BFE0FF', ec=C_OUT, lw=0.8, alpha=0.55, zorder=3))
+    axsec.add_patch(mpatches.Circle((bx + bt + sx(14), ry), sy(14), fc='#BFE0FF', ec=C_OUT, lw=0.8, alpha=0.55, zorder=3))
+    axsec.text(bx - sx(13), ry, 'FRONT\nCELL', fontsize=4.4, ha='center', va='center', color='#2060A0')
+    axsec.text(bx + bt + sx(14), ry, 'REAR\nCELL', fontsize=4.4, ha='center', va='center', color='#2060A0')
+    axsec.annotate('', xy=(bx + sx(40), ry), xytext=(bx - sx(40), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.4))
+    axsec.text(bx - sx(40), ry + 30, 'SUBJECT', fontsize=4.8, color='#8a5a00', ha='left')
+    axsec.text(bx + sx(34), ry + 30, 'FILM', fontsize=4.8, color='#8a5a00', ha='right')
+    leader(axsec, bx - sx(1.7), ry + flange, bx - 130, ry + sy(PDH_DISC_OD / 2) + 36, 'SHUTTER BODY — front flange\nseats on the SUBJECT face', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, bx + bt / 2, ry + hole - sy(1), bx - 40, ry - sy(PDH_DISC_OD / 2) - 22, f'Ø{PDH_LENS_COPAL1} board hole\n(threaded barrel through)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, bx + bt + sx(2.5), ry + flange, bx + 140, ry + sy(PDH_DISC_OD / 2) + 36, 'RETAINING RING — screws on\nfrom the BACK, clamps the board', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, bx + bt / 2, ry - sy(PDH_DISC_OD / 2), bx + 96, ry - sy(PDH_DISC_OD / 2) - 46, "board (Ø80) then seats + clamps in the\nholder's Ø82 counterbore (Sheets 1/2)", fs=4.2, color=C_DIM, arrow_style='->', ha='left')
+    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 78, 'PANEL B — SHUTTER MOUNT (Copal 1 shown · front flange + rear retaining ring)', ha='center', fontsize=5, style='italic', color='#333')
 
     tb = fig.add_axes([0.05, 0.03, 0.90, 0.11]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 4 OF 4", drawing_title="PINHOLE DISC HOLDER — COPAL/COMPUR LENS BOARD",

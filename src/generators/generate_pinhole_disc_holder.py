@@ -113,7 +113,7 @@ def draw_sheet1():
     # Thin plate: axial (thickness) scale EXAGGERATED vs radial so the disc stack reads.
     def sx(mm): return mm * 2.7          # horizontal / axial (thickness) — exaggerated
     def sy(mm): return mm / 1.7          # vertical / radial — compressed
-    sw, sh = 520, 440
+    sw, sh = 520, 470
     axs.set_xlim(0, sw); axs.set_ylim(0, sh)
     ax0 = 170                            # scene face x
     axc = ax0 + sx(PDH_PLATE_T)          # camera face x
@@ -139,11 +139,12 @@ def draw_sheet1():
         y_lo, y_hi = ry + sgn * sy(PDH_RING_ID / 2), ry + sgn * sy(PDH_RING_OD / 2)
         axs.add_patch(mpatches.Rectangle((axc, min(y_lo, y_hi)), sx(PDH_RING_T), abs(y_hi - y_lo),
                       fc=C_ALUM, ec=C_OUT, lw=LW_MED, hatch='\\\\', zorder=7))
-        # thumb screw through ring into plate + knurled head
+        # thumb screw (M6) to scale: Ø6 shaft through the ring into a ~10mm plate tap + Ø12 knurled head
         ty = ry + sgn * sy(PDH_TS_PCD / 2)
-        axs.plot([axc + sx(PDH_RING_T) + sx(10), ax0 + sx(6)], [ty, ty], color=C_OUT, lw=1.8, zorder=9)
-        axs.add_patch(mpatches.Rectangle((axc + sx(PDH_RING_T), ty - sy(9)), sx(10), sy(18),
-                      fc='#404040', ec=C_OUT, lw=0.5, zorder=9))
+        axs.add_patch(mpatches.Rectangle((axc - sx(10), ty - sy(PDH_TS_D / 2)), sx(10) + sx(PDH_RING_T), sy(PDH_TS_D),
+                      fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=9))                       # Ø6 shaft (tap + through ring)
+        axs.add_patch(mpatches.Rectangle((axc + sx(PDH_RING_T), ty - sy(6)), sx(9), sy(12),
+                      fc='#404040', ec=C_OUT, lw=0.5, zorder=9))                     # Ø12 knurled head
 
     # disc (thin — exaggerated) seated on the washer
     disc_x = seat_x + sx(PDH_WASHER_T)
@@ -172,6 +173,8 @@ def draw_sheet1():
            'ICP-03 RETAINING\nRING', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
     leader(axs, ax0 + sx(PDH_PLATE_T / 2), ry - sy(60), lx, ry - 150,
            'ICP-01 FRONT PLATE', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
+    leader(axs, axc + sx(PDH_RING_T) + sx(4.5), ry + sy(PDH_TS_PCD / 2), lx, ry + 200,
+           f'{PDH_TS_N}× M{PDH_TS_D} KNURLED THUMB SCREW\n@ Ø{PDH_TS_PCD} (through ring → plate tap)', fs=5.0, color=C_DIM, arrow_style='->', ha='left')
     axs.text((ax0 + axc) / 2, ry - rad - 60, 'SECTION A-A — axial ×2.7 / radial 1:1.7 (thickness exaggerated)', ha='center', fontsize=6.5, style='italic', color='#333')
 
     tb = fig.add_axes([0.03, 0.02, 0.94, 0.115]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
@@ -377,7 +380,7 @@ def draw_sheet3():
 # SHEET 4 — Copal / Compur lens board (interchangeable carrier)
 # ══════════════════════════════════════════════════════════════════════════════
 def draw_sheet4():
-    fig, (axb, axsec) = plt.subplots(1, 2, figsize=(12, 6.0))
+    fig, (axb, axsec) = plt.subplots(1, 2, figsize=(13.5, 6.2), gridspec_kw={'width_ratios': [1, 1.55]})
     for ax in (axb, axsec):
         ax.set_aspect('equal'); ax.axis('off')
     fig.patch.set_facecolor('white')
@@ -405,10 +408,10 @@ def draw_sheet4():
     # ── Panel B: SECTION — how the Copal/Compur shutter is FIXED to the board ──
     # (front lens cell + shutter body flange on the SUBJECT face; threaded barrel through the hole;
     #  the retaining ring screws on from the FILM side and clamps the board — per S.K. Grimes.)
-    def sx(mm): return mm * 3.4
-    def sy(mm): return mm / 1.5
-    axsec.set_xlim(0, 720); axsec.set_ylim(0, 470)
-    ry = 245; bx = 330; bt = sx(4)
+    def sx(mm): return mm * 5.1
+    def sy(mm): return mm / 1.0
+    axsec.set_xlim(90, 790); axsec.set_ylim(60, 410)
+    ry = 235; bx = 430; bt = sx(4)
     hole = sy(PDH_LENS_COPAL1 / 2)
     flange = sy(PDH_LENS_COPAL1 / 2 + 15)         # shutter front flange / retaining-ring OD (> the hole)
     for sgn in (-1, 1):
@@ -424,16 +427,16 @@ def draw_sheet4():
     # front lens cell (subject) + rear lens cell (film) — schematic, smaller than the mount detail
     axsec.add_patch(mpatches.Circle((bx - sx(13), ry), sy(19), fc='#BFE0FF', ec=C_OUT, lw=0.8, alpha=0.55, zorder=3))
     axsec.add_patch(mpatches.Circle((bx + bt + sx(14), ry), sy(14), fc='#BFE0FF', ec=C_OUT, lw=0.8, alpha=0.55, zorder=3))
-    axsec.text(bx - sx(13), ry, 'FRONT\nCELL', fontsize=4.4, ha='center', va='center', color='#2060A0')
-    axsec.text(bx + bt + sx(14), ry, 'REAR\nCELL', fontsize=4.4, ha='center', va='center', color='#2060A0')
-    axsec.annotate('', xy=(bx + sx(40), ry), xytext=(bx - sx(40), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.4))
-    axsec.text(bx - sx(40), ry + 30, 'SUBJECT', fontsize=4.8, color='#8a5a00', ha='left')
-    axsec.text(bx + sx(34), ry + 30, 'FILM', fontsize=4.8, color='#8a5a00', ha='right')
-    leader(axsec, bx - sx(1.7), ry + flange, bx - 130, ry + sy(PDH_DISC_OD / 2) + 36, 'SHUTTER BODY — front flange\nseats on the SUBJECT face', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
-    leader(axsec, bx + bt / 2, ry + hole - sy(1), bx - 40, ry - sy(PDH_DISC_OD / 2) - 22, f'Ø{PDH_LENS_COPAL1} board hole\n(threaded barrel through)', fs=4.4, color=C_DIM, arrow_style='->', ha='right')
-    leader(axsec, bx + bt + sx(2.5), ry + flange, bx + 140, ry + sy(PDH_DISC_OD / 2) + 36, 'RETAINING RING — screws on\nfrom the BACK, clamps the board', fs=4.4, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, bx + bt / 2, ry - sy(PDH_DISC_OD / 2), bx + 96, ry - sy(PDH_DISC_OD / 2) - 46, "board (Ø80) then seats + clamps in the\nholder's Ø82 counterbore (Sheets 1/2)", fs=4.2, color=C_DIM, arrow_style='->', ha='left')
-    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 78, 'PANEL B — SHUTTER MOUNT (Copal 1 shown · front flange + rear retaining ring)', ha='center', fontsize=5, style='italic', color='#333')
+    axsec.text(bx - sx(13), ry, 'FRONT\nCELL', fontsize=5.4, ha='center', va='center', color='#2060A0')
+    axsec.text(bx + bt + sx(14), ry, 'REAR\nCELL', fontsize=5.4, ha='center', va='center', color='#2060A0')
+    axsec.annotate('', xy=(bx + sx(40), ry), xytext=(bx - sx(40), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.6))
+    axsec.text(bx - sx(40), ry + 40, 'SUBJECT', fontsize=6.0, color='#8a5a00', ha='left')
+    axsec.text(bx + sx(34), ry + 40, 'FILM', fontsize=6.0, color='#8a5a00', ha='right')
+    leader(axsec, bx - sx(1.7), ry + flange, bx - 150, ry + sy(PDH_DISC_OD / 2) + 40, 'SHUTTER BODY — front flange\nseats on the SUBJECT face', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, bx + bt / 2, ry + hole - sy(1), bx - 55, ry - sy(PDH_DISC_OD / 2) - 34, f'Ø{PDH_LENS_COPAL1} board hole\n(threaded barrel through)', fs=5.4, color=C_DIM, arrow_style='->', ha='right')
+    leader(axsec, bx + bt + sx(2.5), ry + flange, bx + 160, ry + sy(PDH_DISC_OD / 2) + 40, 'RETAINING RING — screws on\nfrom the BACK, clamps the board', fs=5.4, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, bx + bt / 2, ry - sy(PDH_DISC_OD / 2), bx + 110, ry - sy(PDH_DISC_OD / 2) - 52, "board (Ø80) then seats + clamps in the\nholder's Ø82 counterbore (Sheets 1/2)", fs=5.2, color=C_DIM, arrow_style='->', ha='left')
+    axsec.text(bx, ry - sy(PDH_DISC_OD / 2) - 88, 'PANEL B — SHUTTER MOUNT (Copal 1 shown · front flange + rear retaining ring)', ha='center', fontsize=6.2, style='italic', color='#333')
 
     tb = fig.add_axes([0.05, 0.03, 0.90, 0.11]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 4 OF 4", drawing_title="PINHOLE DISC HOLDER — COPAL/COMPUR LENS BOARD",

@@ -356,8 +356,8 @@ def draw_sheet4():
         # RETAINING RING on the FILM (right) face — screws on from the back, clamps the board
         axsec.add_patch(mpatches.Rectangle((bx + bt, ry + sgn * hole), sx(5), sgn * (flange - hole), fc='#7A8088', ec=C_OUT, lw=0.6, zorder=6))
     # front lens cell (subject) + rear lens cell (film) — schematic, smaller than the mount detail
-    axsec.add_patch(mpatches.Ellipse((bx - sx(13), ry), width=sx(7), height=sy(40), fc='#BFE0FF', ec=C_OUT, lw=0.9, alpha=0.6, zorder=3))
-    axsec.add_patch(mpatches.Ellipse((bx + bt + sx(14), ry), width=sx(6), height=sy(30), fc='#BFE0FF', ec=C_OUT, lw=0.9, alpha=0.6, zorder=3))
+    axsec.add_patch(mpatches.Ellipse((bx - sx(13), ry), width=sx(4), height=sy(40), fc='#BFE0FF', ec=C_OUT, lw=0.9, alpha=0.6, zorder=3))
+    axsec.add_patch(mpatches.Ellipse((bx + bt + sx(14), ry), width=sx(3.5), height=sy(30), fc='#BFE0FF', ec=C_OUT, lw=0.9, alpha=0.6, zorder=3))
     axsec.text(bx - sx(13), ry - sy(30), 'FRONT\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
     axsec.text(bx + bt + sx(14), ry - sy(24), 'REAR\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
     axsec.annotate('', xy=(bx + sx(40), ry), xytext=(bx - sx(40), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.6))

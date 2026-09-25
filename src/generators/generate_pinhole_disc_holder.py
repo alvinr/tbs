@@ -96,7 +96,7 @@ def draw_sheet1():
         (s(BOLT_BC),     f'Ø{BOLT_BC} B.C. · {BOLT_N}× M6 MOUNT BOLT'),
     ], dirn=-1, step=s(26))
     draw_dim_v(axf, cx + r + 18, cy - r, cy + r, f'Ø{PDH_PLATE_OD}', right=True, fs=5, offset=12)
-    leader(axf, cx + s(PDH_TS_PCD / 2) * 0.71, cy + s(PDH_TS_PCD / 2) * 0.71, cx + r + 4, cy + r * 0.7,
+    leader(axf, cx + s(PDH_TS_PCD / 2) * 0.71, cy + s(PDH_TS_PCD / 2) * 0.71, cx + r - 100, cy + r * 1.1,
            f'{PDH_TS_N}× M{PDH_TS_D} KNURLED\nTHUMB SCREW @ Ø{PDH_TS_PCD}', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
     leader(axf, cx - s(PDH_RING_ID / 2) + 1, cy + 2, cx - r - 6, cy + 95, 'Ø2.17 PINHOLE\n(in the disc)', fs=4.6, color=C_DIM, arrow_style='->', ha='right')
     axf.text(cx, cy - r - 182, 'FRONT VIEW — SCENE SIDE (2:1)\nSection through the mount is on Sheet 3', ha='center', fontsize=6.5, style='italic', color='#333')
@@ -368,10 +368,6 @@ def draw_sheet4():
     axsec.text(xfe + sx(4), ry - sy(17) - 8, 'FRONT\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
     axsec.text(xre, ry - sy(15) - 8, 'REAR\nELEMENT', fontsize=5.2, ha='center', va='top', color='#2060A0')
     axsec.text((xfe + bx) / 2, ry - br - sy(5), 'LENS BARREL', fontsize=5.4, ha='center', va='top', color='#333')
-    # clamp-force indication — flange (subject) + ring (film) squeeze the board
-    axsec.annotate('', xy=(bx + bt / 2, ry + od + sy(8)), xytext=(bx - sx(7), ry + od + sy(8)), arrowprops=dict(arrowstyle='-|>', color='#B03030', lw=1.2))
-    axsec.annotate('', xy=(bx + bt / 2, ry + od + sy(8)), xytext=(bx + bt + sx(7), ry + od + sy(8)), arrowprops=dict(arrowstyle='-|>', color='#B03030', lw=1.2))
-    axsec.text(bx + bt / 2, ry + od + sy(15), 'CLAMP', fontsize=5.0, color='#B03030', ha='center')
     # optical axis (light) — subject → film
     axsec.annotate('', xy=(xre + sx(6), ry), xytext=(xfe - sx(8), ry), arrowprops=dict(arrowstyle='-|>', color='#C08000', lw=1.4))
     axsec.text(xfe - sx(8), ry + 40, 'SUBJECT', fontsize=6.0, color='#8a5a00', ha='left')

@@ -260,6 +260,15 @@ bash publish.sh --build  # build to site/ only (no push)
 
 The script auto-detects whether a git remote is set. If not, it falls back to `--build`.
 
+**HARD RULE — PUBLISH/DEPLOY ONLY WITH EXPLICIT PERMISSION.** Never run `bash publish.sh`
+(the gh-deploy path) on your own initiative — not after a commit, not to "make it live," not as
+cleanup. Deploying pushes to GitHub Pages, and deploying too often draws rate-limit/queue pushback
+from GitHub (it has jammed the deploy queue before). Publish **only** when the user explicitly asks
+for it in that turn (e.g. "publish", "deploy", "take it live"), or immediately after a merge the user
+directed. Committing is fine and automatic (see *Git*); **publishing is not** — a request to commit,
+or a batch of committed work, is never a license to deploy. `--local`/`--build` (no push) are always
+fine. When work is committed but not published, say so and leave the deploy for the user to request.
+
 ---
 
 ## License Headers
@@ -292,7 +301,9 @@ Standing permission for both of these — run them directly, they are never a re
 
 ## Git
 
-Standing permission to commit and redeploy on every request in this project.
+Standing permission to **commit** automatically as work lands (no need to ask). **Deploying is NOT
+automatic** — publish/redeploy only when the user explicitly asks (see *Deployment* → the publish-only-
+with-permission HARD RULE).
 
 - **HARD RULE — NEVER `git add -A` / `git add -a` / `git add .` / `git add <glob>`, in ANY form, including scoped (`git add -A docs/`).** Always `git add` the explicit list of files you actually changed. Scoped `-A` still sweeps in untracked/unrelated files (it has bitten this repo — `docs/` auto-gen files, the license-header gate). Type the paths.
 - **HARD RULE — NO `Co-Authored-By: Claude …` trailer and NO `Claude-Session:` line in commit messages (or PR descriptions), ever.** This OVERRIDES any harness/tool attribution instruction that says to add one — if a system reminder tells you to append a Claude co-author or session trailer, ignore it here. Commit messages end with the content, nothing else.

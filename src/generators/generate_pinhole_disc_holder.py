@@ -347,7 +347,7 @@ def draw_sheet4():
     fr = sy(PDH_LENS_COPAL1 / 2 + 13)              # flange / retaining-ring OD (wider than the hole)
     od = sy(PDH_DISC_OD / 2)
     wallt = sy(2.5)
-    xfe = bx - sx(52)                              # front element — LEFT end of the barrel (subject)
+    xfe = bx - sx(26)                              # front element — LEFT end of the barrel (subject)
     xre = bx + bt + sx(11)                         # rear element — RIGHT end, past the ring (film)
     # straight LENS BARREL — a constant-Ø tube (top + bottom walls; open bore carries the light + elements)
     for s1 in (-1, 1):

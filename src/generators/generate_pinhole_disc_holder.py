@@ -298,8 +298,8 @@ def draw_sheet3():
     leader(axsec, xp0 + pt + sx(PDH_RING_T) + sx(4), ry - sy(PDH_TS_PCD / 2), xp0 + pt + 150, ry - rad + 34, f'{PDH_TS_N}× M{PDH_TS_D} THUMB SCREW\n(ring → plate tap @ Ø{PDH_TS_PCD})', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     axsec.text((xw0 + xp0) / 2 + 30, ry - rad - 46, 'PANEL B — SECTION THROUGH THE PINHOLE WALL\n(axial scale exaggerated · scene left → interior right)', ha='center', fontsize=5.5, style='italic', color='#333')
 
-    _tol_block(fig, [0.05, 0.035, 0.90, 0.135])
-    tb = fig.add_axes([0.05, 0.175, 0.90, 0.055]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
+    _tol_block(fig, [0.05, 0.09, 0.90, 0.135])
+    tb = fig.add_axes([0.05, 0.025, 0.90, 0.055]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 3 OF 4", drawing_title="PINHOLE DISC HOLDER — WALL-FRAME ADAPTER & WALL SECTION",
                 subtitle="Adapter fab · container-wall interface · mount + weld", scale_note="A 1:2 · B exagg.", doc_id="TBS-PDH-03", height=0.9)
     out = os.path.join(DIAGRAMS_DIR, 'pinhole-disc-holder-sheet3.png')

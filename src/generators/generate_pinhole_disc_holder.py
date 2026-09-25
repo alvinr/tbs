@@ -349,15 +349,17 @@ def draw_sheet4():
     wallt = sy(2.5)
     xfe = bx - sx(26)                              # front element — LEFT end of the barrel (subject)
     xre = bx + bt + sx(11)                         # rear element — RIGHT end, past the ring (film)
-    # straight LENS BARREL — a constant-Ø tube (top + bottom walls; open bore carries the light + elements)
-    for s1 in (-1, 1):
-        axsec.add_patch(mpatches.Rectangle((xfe, ry + s1 * (br - wallt)), (xre - xfe), s1 * wallt, fc='#C7CCD2', ec=C_OUT, lw=0.8, zorder=3))
     for s1 in (-1, 1):
         # lens board (hole → OD) — hatched
         axsec.add_patch(mpatches.Rectangle((bx, min(ry + s1 * br, ry + s1 * od)), bt, abs(od - br),
                         fc='#EDEDED', ec=C_OUT, lw=1.3, hatch='\\\\', zorder=4))
-        # barrel FLANGE — shoulder seating on the SUBJECT face of the board
-        axsec.add_patch(mpatches.Rectangle((bx - sx(3), ry + s1 * br), sx(3), s1 * (fr - br), fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=5))
+        # LENS BARREL with an INTEGRAL FLANGE (one piece): the straight tube wall + the subject-side
+        # shoulder that seats on the board front face
+        axsec.add_patch(mpatches.Polygon([
+            (xfe, ry + s1 * (br - wallt)), (xfe, ry + s1 * br), (bx - sx(3), ry + s1 * br),
+            (bx - sx(3), ry + s1 * fr), (bx, ry + s1 * fr), (bx, ry + s1 * br),
+            (xre, ry + s1 * br), (xre, ry + s1 * (br - wallt))],
+            closed=True, fc='#C7CCD2', ec=C_OUT, lw=0.9, zorder=5))
         # RETAINING RING on the FILM face — threads onto the barrel, clamps the board
         axsec.add_patch(mpatches.Rectangle((bx + bt, ry + s1 * br), sx(4.5), s1 * (fr - br), fc='#7A8088', ec=C_OUT, lw=0.6, zorder=5))
     # front + rear lens ELEMENTS (biconvex glass at the barrel ends; rear protrudes past the opening)

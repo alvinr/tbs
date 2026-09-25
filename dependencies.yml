@@ -68,4 +68,4 @@ models:
   # corridor-panel.skp is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
   water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [plumbing-report.md], source_hash: "sha256:ae6c00c5f3da90de14b935518ba992daf0f33f0f56fe35c59f3558a9f31966fc"}
   # pinhole-disc-holder = the pinhole-end quick-change front-board disc holder.
-  pinhole-disc-holder: {script: src/models/generate_pinhole_disc_holder_model.py, outputs: [models/pinhole-disc-holder.skp, src/models/pinhole-disc-holder.rb], uid: "4ce663d3fe3e4a2e99c0643dad5bfffe", embed_files: [pinhole-disc-holder-report.md], source_hash: "sha256:d5862a25f23229619ba0cc8074aef1144a29d1d735f6b0e1bd2d014980a82c3e"}
+  pinhole-disc-holder: {script: src/models/generate_pinhole_disc_holder_model.py, outputs: [models/pinhole-disc-holder.skp, src/models/pinhole-disc-holder.rb], uid: "4ce663d3fe3e4a2e99c0643dad5bfffe", embed_files: [pinhole-disc-holder-report.md], source_hash: "sha256:9d1578002edd419274038fad3450b1b192dee2812dd1d8834691f123b542ad48"}

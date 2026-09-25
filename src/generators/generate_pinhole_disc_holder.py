@@ -360,8 +360,8 @@ def draw_sheet4():
             (bx - sx(3), ry + s1 * fr), (bx, ry + s1 * fr), (bx, ry + s1 * br),
             (xre, ry + s1 * br), (xre, ry + s1 * (br - wallt))],
             closed=True, fc='#C7CCD2', ec=C_OUT, lw=0.9, zorder=5))
-        # RETAINING RING on the FILM face — threads onto the barrel, clamps the board
-        axsec.add_patch(mpatches.Rectangle((bx + bt, ry + s1 * br), sx(4.5), s1 * (fr - br), fc='#7A8088', ec=C_OUT, lw=0.6, zorder=5))
+        # RETAINING RING on the FILM face (half the flange thickness) — threads onto the barrel, clamps the board
+        axsec.add_patch(mpatches.Rectangle((bx + bt, ry + s1 * br), sx(1.5), s1 * (fr - br), fc='#7A8088', ec=C_OUT, lw=0.6, zorder=5))
     # front + rear lens ELEMENTS (biconvex glass at the barrel ends; rear protrudes past the opening)
     axsec.add_patch(mpatches.Ellipse((xfe + sx(4), ry), width=sx(3.2), height=sy(34), fc='#BFE0FF', ec=C_OUT, lw=1.0, alpha=0.75, zorder=6))
     axsec.add_patch(mpatches.Ellipse((xre, ry), width=sx(2.6), height=sy(30), fc='#BFE0FF', ec=C_OUT, lw=1.0, alpha=0.75, zorder=6))

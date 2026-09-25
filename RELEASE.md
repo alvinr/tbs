@@ -24,7 +24,7 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Sketchfab first-upload papercut fixed.** A brand-new model whose `dependencies.yml` uid was still the all-zeros placeholder used to stamp that placeholder into the model's `sketchfab/model_id`, so the plugin tried to *update* a nonexistent id and the upload failed. `sketchfab_meta_ruby` now writes `model_id` only when a real uid is held and the slot is blank or all-zeros — a new model uploads as new, a leftover placeholder is replaced on the next send, and a real / UI-set id is never clobbered. It also re-syncs the Sketchfab `model_title`/`model_description` to the generator's identity unless they were edited in the Sketchfab UI (tracked via `_gen_*` shadow attributes), so a repurposed doc no longer carries a stale title. Every emitted line stays within `manifest.py`'s identity filter, so no model `source_hash` churns.
 
 ## [0.13] — 2026-09-25
 

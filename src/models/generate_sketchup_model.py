@@ -460,22 +460,37 @@ def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup", force
     `force_name=True` sets model.name/description UNCONDITIONALLY (the generator is the
     source of truth for the model's identity). Use it for models whose on-disk .skp keeps
     coming back with a blank/filename name so fill-if-blank never re-stamps it (water.skp).
-    The sketchfab attribute dict below stays fill-if-blank regardless, so the stable
-    model_id and any Sketchfab-UI edits to the dict are never clobbered.
+
+    In the sketchfab dict: `model_id` is stamped only when we hold a REAL uid and the slot is
+    blank or an all-zeros placeholder (never clobbering a real / UI-set id); `model_title` /
+    `model_description` re-sync to the generator's current identity unless the value has been
+    edited in the Sketchfab UI (tracked via the `_gen_*` shadow attributes). Every line this
+    emits is stripped by `manifest.py`'s identity filter, so it never churns a `source_hash`.
     """
     import json
     t, d, mid, tg = (json.dumps(x) for x in (title, description, model_id, tags))
-    # NON-DESTRUCTIVE by default: fill each field ONLY if blank, so a regen / re-send (or even a
-    # mis-directed send) NEVER overwrites metadata you've edited. A fresh blank doc still gets the full
-    # identity + the stable model_id for the manual re-upload; an existing doc keeps whatever it has.
     name_guard = "" if force_name else " if model.name.to_s.strip.empty?"
     desc_guard = "" if force_name else " if model.description.to_s.strip.empty?"
-    return ("# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──\n"
+    # model_id: only ever stamp a REAL uid, and only into a slot that is blank or an all-zeros
+    # PLACEHOLDER. So a brand-new model (dependencies.yml uid still 0000…) uploads as a NEW model
+    # instead of trying to UPDATE a nonexistent 0000… id, and a leftover all-zeros placeholder gets
+    # replaced once a real uid exists — while a real / Sketchfab-UI-set model_id is never clobbered.
+    id_line = ""
+    if str(model_id).strip().strip("0"):   # non-empty and not all-zeros ⇒ a real uid
+        id_line = (f'model.set_attribute("sketchfab", "model_id", {mid}) '
+                   f'if model.get_attribute("sketchfab", "model_id").to_s.strip =~ /\\A0*\\z/\n')
+    # sketchfab dict title/description: (re)stamp when blank OR still equal to what the generator last
+    # stamped (`_gen_*`). This repairs a REPURPOSED doc's stale title/description (the generator's
+    # identity changed — e.g. the old tilt-swing doc rebuilt as pinhole-disc-holder) WITHOUT clobbering
+    # a genuine Sketchfab-UI edit, which makes the field diverge from the remembered `_gen_*` value.
+    return ("# ── Sketchfab metadata — name/desc forced when asked; dict title/desc re-synced unless UI-edited; real model_id only ──\n"
             f"model.name = {t}{name_guard}\n"
             f"model.description = {d}{desc_guard}\n"
-            f'model.set_attribute("sketchfab", "model_title", {t}) if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?\n'
-            f'model.set_attribute("sketchfab", "model_description", {d}) if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?\n'
-            f'model.set_attribute("sketchfab", "model_id", {mid}) if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?\n'
+            f'model.set_attribute("sketchfab", "model_title", {t}) if model.get_attribute("sketchfab", "model_title").to_s.strip.empty? || model.get_attribute("sketchfab", "model_title") == model.get_attribute("sketchfab", "_gen_title")\n'
+            f'model.set_attribute("sketchfab", "model_description", {d}) if model.get_attribute("sketchfab", "model_description").to_s.strip.empty? || model.get_attribute("sketchfab", "model_description") == model.get_attribute("sketchfab", "_gen_description")\n'
+            f'model.set_attribute("sketchfab", "_gen_title", {t})\n'
+            f'model.set_attribute("sketchfab", "_gen_description", {d})\n'
+            + id_line +
             f'model.set_attribute("sketchfab", "model_tags", {tg}) if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?\n')
 
 

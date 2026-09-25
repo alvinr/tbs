@@ -45,7 +45,7 @@ C_PIN   = '#101010'   # pinhole aperture
 C_CUT_BLUE = '#2060A0' # section cutting-plane / centre line
 
 
-def dia_stack(ax, cx, edge_y, dias_labels, dirn, step=48, fs=5, off=14):
+def dia_stack(ax, cx, edge_y, dias_labels, dirn, step=48, fs=5, off=5):
     """Stacked concentric-Ø dimensions, progressively offset so nothing overlaps."""
     for i, (d, lbl) in enumerate(dias_labels):
         y = edge_y + dirn * (30 + i * step)
@@ -91,8 +91,8 @@ def draw_sheet1():
     draw_cl(axf, cx, cy, r * 1.1)
 
     dia_stack(axf, cx, cy - r, [
-        (s(PDH_RING_OD), f'Ø{PDH_RING_OD} RETAINING RING'),
         (s(PDH_TS_PCD),  f'Ø{PDH_TS_PCD} B.C. · {PDH_TS_N}× M{PDH_TS_D} THUMB SCREW'),
+        (s(PDH_RING_OD), f'Ø{PDH_RING_OD} RETAINING RING'),
         (s(BOLT_BC),     f'Ø{BOLT_BC} B.C. · {BOLT_N}× M6 MOUNT BOLT'),
     ], dirn=-1, step=s(26))
     draw_dim_v(axf, cx + r + 18, cy - r, cy + r, f'Ø{PDH_PLATE_OD}', right=True, fs=5, offset=12)
@@ -294,7 +294,7 @@ def draw_sheet3():
     leader(axsec, xw0 + wt / 2, ry + sy(PDH_WALL_APT / 2) + 8, xw0 - 30, ry + rad + 8, f'CORRUGATED WALL\nØ{PDH_WALL_APT} CUT', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
     leader(axsec, xa0 + at / 2, ry + sy(PDH_ADAPT_OD / 2) - 8, xa0 + 46, ry + rad + 22, f'WALL-FRAME ADAPTER (welded)\nØ{PDH_ADAPT_APT} apt · 4× M6 TAP @ Ø{BOLT_BC}', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, xp0 + pt, ry - sy(BOLT_BC / 2), xp0 + pt + 120, ry - rad - 6, f'{BOLT_N}× M6×{PDH_PLATE_T + 6} SHCS\n(plate → adapter)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, xp0 + pt + sx(PDH_RING_T), ry + sy(PDH_RING_ID / 2), xp0 + pt + 140, ry + rad + 8, 'RETAINING RING + CARRIER\n(pinhole / lens · swapped from inside)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, xp0 + pt + sx(PDH_RING_T), ry + sy(PDH_RING_ID / 2), xp0 + pt + 140, ry + rad - 80, 'RETAINING RING + CARRIER\n(pinhole / lens · swapped from inside)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, xp0 + pt + sx(PDH_RING_T) + sx(4), ry - sy(PDH_TS_PCD / 2), xp0 + pt + 150, ry - rad + 34, f'{PDH_TS_N}× M{PDH_TS_D} THUMB SCREW\n(ring → plate tap @ Ø{PDH_TS_PCD})', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     axsec.text((xw0 + xp0) / 2 + 30, ry - rad - 46, 'PANEL B — SECTION THROUGH THE PINHOLE WALL\n(axial scale exaggerated · scene left → interior right)', ha='center', fontsize=5.5, style='italic', color='#333')
 

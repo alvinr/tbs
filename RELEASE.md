@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.13] — 2026-09-25
+
 - **Disc holder — buildable 4-sheet drawing set + interactive 3D model.** TBS-PDH: **Sheet 1** general arrangement, **Sheet 2** fabrication blueprints (plate / retaining ring / carrier, fully dimensioned), **Sheet 3** the wall-frame adapter + a section through the container wall (the mount, weld, bolts and the carrier/ring/seal stack), **Sheet 4** the Copal/Compur lens board with a lens cross-section (a straight barrel + integral flange through the board hole, a rear retaining ring clamping the board, glass elements at the barrel ends). CNC-shop tolerance block on the fab sheets.
 - **Front board: a fixed pinhole disc holder that also takes large-format lenses** (replaces the tilt-swing front standard and the separate Ø600 pinhole/lens plate). A pinhole is a point aperture — turning or tilting the board only moves where the image lands, it gives no perspective control (that lives in the film plane) — so a movable front standard buys nothing. The front board is a simple **Ø180 × 18mm** plate: a Ø110 scene-side taper narrows to a **Ø72** aperture, and a **Ø82 × 6mm** seat holds an interchangeable **Ø80 × 5mm carrier** — a pinhole board (SS-302 shim, Ø2.17 / 1.5 / 3.0) or, when a sharp controllable optic is wanted, a **Copal/Compur 0/1/3 lens board** (34.6 / 41.6 / 65.0mm holes). A neoprene washer light-seals the carrier; a **Ø120** retaining ring on **4× M6 knurled thumb screws @ Ø100** clamps it for a tool-free 30-second swap; the plate bolts (4× M6 @ Ø150) to a **Ø240 × 6mm** steel wall-frame adapter welded over the corrugation. Front-board cost **$305–$636**.
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation

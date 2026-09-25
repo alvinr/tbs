@@ -9,18 +9,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## 🎯 Front board — tilt-swing RETIRED, replaced by pinhole disc holder (2026-09-21) — ✅ DONE
-
-> The tilt-swing front board was **eliminated**: a pinhole is a point aperture, so the image is a central
-> projection *through the pinhole point* and is independent of the plate's orientation — tilting the board
-> does nothing to the image (only ~2.3mm parallax). All perspective control already lives in the film plane.
-> The board was replaced by a **quick-change pinhole disc holder** (Ø180 plate + neoprene washer +
-> interchangeable Ø50 disc/lens + Ø90 retaining ring on 4 thumb screws). Cascade: retired the FRONT_BOARD_*
-> / TSB_* constants + the front-board facts; rewrote the 2D generator to a 2-sheet set; rebuilt the 3D model
-> (`pinhole-disc-holder`); reconciled parts/costing; rewrote the report + the funding-proposal / project-summary
-> optical claims; retired the wrong-physics distortion generators + `tilt-swing-board-analysis.md` and trimmed
-> `distortion-renders.md` to the film-plane renders. Renamed all files tilt-swing* → pinhole-disc-holder*.
-> Open: **3D model first `--send` + Sketchfab upload** (uid + source_hash still PENDING in `dependencies.yml`).
+## 🎯 Front board — tilt-swing eliminated → pinhole disc holder — ✅ DONE (released 0.13)
 
 ## Cleanup
 

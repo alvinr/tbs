@@ -24,18 +24,8 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Disc holder — buildable 4-sheet drawing set + interactive 3D model.** TBS-PDH: **Sheet 1** general arrangement, **Sheet 2** fabrication blueprints (plate / retaining ring / carrier, fully dimensioned), **Sheet 3** the wall-frame adapter + a section through the container wall (the mount, weld, bolts and the carrier/ring/seal stack), **Sheet 4** the Copal/Compur lens board with a lens cross-section (a straight barrel + integral flange through the board hole, a rear retaining ring clamping the board, glass elements at the barrel ends). CNC-shop tolerance block on the fab sheets.
 - **Front board: a fixed pinhole disc holder that also takes large-format lenses** (replaces the tilt-swing front standard and the separate Ø600 pinhole/lens plate). A pinhole is a point aperture — turning or tilting the board only moves where the image lands, it gives no perspective control (that lives in the film plane) — so a movable front standard buys nothing. The front board is a simple **Ø180 × 18mm** plate: a Ø110 scene-side taper narrows to a **Ø72** aperture, and a **Ø82 × 6mm** seat holds an interchangeable **Ø80 × 5mm carrier** — a pinhole board (SS-302 shim, Ø2.17 / 1.5 / 3.0) or, when a sharp controllable optic is wanted, a **Copal/Compur 0/1/3 lens board** (34.6 / 41.6 / 65.0mm holes). A neoprene washer light-seals the carrier; a **Ø120** retaining ring on **4× M6 knurled thumb screws @ Ø100** clamps it for a tool-free 30-second swap; the plate bolts (4× M6 @ Ø150) to a **Ø240 × 6mm** steel wall-frame adapter welded over the corrugation. Front-board cost **$305–$636**.
-- **Disc holder — buildable 4-sheet drawing set + interactive 3D model.** TBS-PDH: **Sheet 1** general arrangement, **Sheet 2** fabrication blueprints (plate / retaining ring / carrier, fully dimensioned), **Sheet 3** the wall-frame adapter + a section through the container wall (the mount, weld, bolts and the carrier/ring/seal stack), **Sheet 4** the Copal/Compur lens board with a lens cross-section (a straight barrel + integral flange through the board hole, a rear retaining ring clamping the board, glass elements at the barrel ends). CNC-shop tolerance block on the fab sheets. Interactive Sketchfab model (uid `4ce663d3…`): click the ring to pull it and the thumb screws out and reveal the carrier and the plate's four tapped holes. Models **overview, pinhole-disc-holder, construction** and **water** are on Sketchfab.
-- **Publish/deploy gated on explicit permission (CLAUDE.md HARD RULE).** Deploying pushes to GitHub Pages and, done too often, draws rate-limit/queue pushback — so `bash publish.sh` (the gh-deploy path) now runs **only** when the user asks for it or right after a directed merge. Committing stays automatic; publishing does not. `--local`/`--build` (no push) remain free.
-
-- **Dimension-label units standardized — every length carries `mm`.** Promoted the ad-hoc mm
-  convention to a **HARD RULE** in CLAUDE.md (Drawing Style Conventions): every length dimension label
-  carries an explicit `mm` (including secondary values in a compound label, e.g. `3mm WIDE × 3mm
-  DEEP`, `BUSH L=35mm`), diameters keep `Ø` (which already denotes mm — not `Ø380mm`), angles use `°`,
-  and thread/fastener callouts stay standard. Applied across the full TSB 7-sheet set (the last bare
-  numbers — plate-OD `600` dims in the Sheet 3 diameter stacks and a handful of compound WIDE/DEEP/THK
-  values — now carry `mm`); `tidy_labels.py --check` reports 0 unit-less dims.
-
 - **Release + drawing-skill tooling hardened.** `release.sh` no longer aborts at its confirmation
   prompt when run without a TTY (tool shell / CI / pipe) — it proceeds automatically there, still
   prompts an interactive terminal, and honors `RELEASE_ASSUME_YES=1`. The 10-day "Tidy labels" run
@@ -45,9 +35,6 @@ file** — a release must not ship without a changelog entry:
   --check` gained two flag-only rules — a dimension baked into a label string that equals a constant
   (the string-embedded hardcode `lint.py` can't see) and a `RETIRED`/"for reference" archaeology
   label.
-- **Hardcoded-dimension labels f-expr'd.** Converted the seven genuine `--check` hits (container
-  length, IBC width/pallet height, film-plane rail web + pivot-post Ø) from baked numbers to
-  constant f-exprs so the label can't go stale; rendered output byte-identical.
 - **Chem-shelf 3D re-send completed.** The 0.12 chem-shelf redesign (steel frame → 18mm ply-primary,
   1/4-20 tee-nuts, chain stays) had its overview/construction `.skp` re-send deferred; both are now
   re-sent, re-uploaded to Sketchfab, and committed, so the 3D matches the shipped 2D/parts design.
@@ -69,7 +56,7 @@ file** — a release must not ship without a changelog entry:
   `_hidden_formula` never recomputes. Added `"Length splice"` to `corner()`'s `_REM` classifier so the
   splice lifts out with the beam (a swing-DC child). `keep="all"` (overview / standalone film-plane
   model) is byte-identical.
-- **Hinged-panel transport-stay wall anchor — 2D detail added; round closed.** The wall anchor was modeled
+- **Hinged-panel transport-stay wall anchor — 2D detail added.** The wall anchor was modeled
   in 3D (interior + exterior 200×200×12 plate pair + 4× M16 through-bolts) but had no dimensioned 2D detail.
   Single-sourced the plate/bolt sizes to `tbs_constants` (`LT_STAY_*`) and added hingepanel **Sheet 12
   Detail D** (plate front view + bolt gauge + plate-pair section); report §5.2 + parts `sp-wall-stays` updated.

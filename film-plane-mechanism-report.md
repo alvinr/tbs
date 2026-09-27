@@ -60,6 +60,8 @@ Swing is the binding limit because the plane is <!-- BEGIN fact:film_plane_width
 
 Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,094mm at every angle** — it does not grow. Corner **cross-slides** absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.
 
+![Sheet 5 — Movement specification table + bill of materials (Option A rigid plane)](assets/film-plane-sheet5.png)
+
 ---
 
 ## 4. Mechanism Design
@@ -98,6 +100,10 @@ The film plane is a **fixed-size rigid rectangle**; tilt and swing are a true **
 Each corner connects to that mechanism through a **304 stainless corner plate**: the 6061 angle frame bolts to the plate, the plate carries the U-joint, and the U-joint's other yoke mounts on the **X (swing) slide** — so the corner is *carried by* the slide **through** the U-joint, never bolted to it directly. The plate is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. Sheet 9 details this connection square-on and in section.
 
 ![Sheet 9 — Frame + ACM ↔ U-joint ↔ X-slide connection detail](assets/film-plane-sheet9.png)
+
+Sheet 8 shows the same corner from the mechanism side — how the film frame hangs off the two cross-slides through the U-joint.
+
+![Sheet 8 — Frame-corner ↔ cross-slide attachment: the frame hangs off the two slides through the U-joint](assets/film-plane-sheet8.png)
 
 ### Cross-Slide Load Case
 
@@ -154,6 +160,18 @@ The color assembly/mechanism views come first; the monochrome single-part dimens
 - **Sheet 18 — Wall-seat saddle (ICP-11):** the A36 8/10mm plate saddle assembly, cut pieces, and M12 wall mount.
 
 ![Sheet 12 — Corner assembly (exploded) + fastener schedule](assets/film-plane-sheet12.png)
+
+![Sheet 13 — Depth rail: 3×1½" 6061-T6 U-channel, cut wall-to-wall, section + end conditions](assets/film-plane-sheet13.png)
+
+![Sheet 14 — Acetal skate: axle-saddle retention + 6061 carriage-plate hole coordinates](assets/film-plane-sheet14.png)
+
+![Sheet 15 — Cross-slide stack: Z + X 304 flat bars, deep-mount section, gib, stroke](assets/film-plane-sheet15.png)
+
+![Sheet 16 — Corner angle: 4×4×¼" 304 L-bracket drilling layout — the U-joint mount](assets/film-plane-sheet16.png)
+
+![Sheet 17 — Frame weldment: 2×2×⅛" 6061 angle frame, the 4 corner welds, member section + ACM backing](assets/film-plane-sheet17.png)
+
+![Sheet 18 — Wall-seat saddle (ICP-11): A36 8/10mm plate saddle, cut pieces, M12 wall mount](assets/film-plane-sheet18.png)
 
 ---
 

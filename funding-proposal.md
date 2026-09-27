@@ -159,6 +159,10 @@ This is intentional. The project is as much a contribution to the field as it is
 - Open submission to alternative process photography publications (*Photovision*, *VIEW Camera*, *Pictorial*)
 - Public lecture/presentation at host institution or adjacent MFA program
 
+A **bench-scale proof-of-concept** (TBS-002 "Mini-TBS", ~1:4) doubles as a teaching model — it demonstrates the pinhole → film-plane geometry at desktop scale for workshops and public sessions:
+
+![TBS-002 Mini-TBS — bench-scale proof-of-concept / teaching model (~1:4)](assets/mini-tbs-sheet1.png)
+
 ## 9. Artist Statement / Bio
 Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had imagined, had indeed materialized. That interval, between exposure and knowledge, was the first version of what this project is. Like the slow food movement today, this was slow photography.
 

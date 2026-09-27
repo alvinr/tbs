@@ -97,6 +97,14 @@ cone angle**, not the mechanism. Plain spherical/rod-end bearings simply don't c
   [AMiBA hexapod (±52° U-joints)](https://arxiv.org/pdf/0902.2335) ·
   [NHBB — rod-end misalignment](https://www.nhbb.com/knowledge-center/engineering-reference/rod-end-spherical-bearings/misalignment).
 
+The concept options weighed for the corner joint, and the two ±45°-capable candidates studied in detail (the two-pin gimbal and the universal joint that was ultimately selected — §8):
+
+![Film-plane corner joint — concept options (2 axes · ±45° · carries the plane)](assets/film-joint-options.png)
+
+![Joint study — two-pin gimbal: the ±45° two-axis path](assets/film-joint-study-gimbal.png)
+
+![Joint study — universal (U-)joint: the selected corner joint (Belden SSNBUJ750x3/8KB)](assets/film-joint-study-ujoint.png)
+
 ## 5. Precedents that do exactly this (rigid panel positioned at 3 driven points)
 
 1. **Keck segmented primary mirror** — each **rigid** hexagonal segment is piston/tip/tilt-controlled

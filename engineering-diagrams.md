@@ -42,4 +42,8 @@ Second view is from the film plane wall, looking toward the pinhole. The X axis
 is mirrored (far end at left, cargo door at right). The orientation of the optical cone, film plane rails,
 and carriage can be seen, along with the ventilation path between the two ends of the container.
 
+A front elevation of the whole pinhole (nose) wall — the equipment mounted on it and its position relative to the pinhole and the optical cone:
+
+![TBS-001 — Pinhole Wall Elevation (whole-wall overview)](assets/pinhole-wall-elevation.png)
+
 There are detailed construction reports for each of the major systems and their sub-systems.

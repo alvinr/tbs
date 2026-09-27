@@ -2819,6 +2819,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 <p><strong>Maximum swing angle</strong> (single-axis): <strong><!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°</strong> — rail-depth limited ≈ 28.7°.</p>
 <p>Swing is the binding limit because the plane is <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm wide — the same depth travel over a wider span sweeps the corner further along the rail. Combined tilt+swing is further limited — see §5.</p>
 <p>Because the plane is a <strong>fixed-size rigid rectangle</strong>, its physical height stays <strong>2,094mm at every angle</strong> — it does not grow. Corner <strong>cross-slides</strong> absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.</p>
+<p><img alt="Sheet 5 — Movement specification table + bill of materials (Option A rigid plane)" src="../assets/film-plane-sheet5.png" /></p>
 <hr />
 <h2 id="4-mechanism-design">4. Mechanism Design<a class="headerlink" href="#4-mechanism-design" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -2845,6 +2846,8 @@ The floor plan below shows the film plane rail positions in the context of the c
 <p>The film plane is a <strong>fixed-size rigid rectangle</strong>; tilt and swing are a true <strong>rigid-body rotation</strong> of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the acetal skate) and partly <em>across</em> it (in X and Z). The <strong>2-axis cross-slide</strong> absorbs that across-rail travel, and the <strong>single universal joint</strong> (Belden SSNBUJ750x3/8KB, 45° per axis) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt and swing <strong>without stretching</strong>, and keeps the plane a single flat rectangle at every angle.</p>
 <p>Each corner connects to that mechanism through a <strong>304 stainless corner plate</strong>: the 6061 angle frame bolts to the plate, the plate carries the U-joint, and the U-joint's other yoke mounts on the <strong>X (swing) slide</strong> — so the corner is <em>carried by</em> the slide <strong>through</strong> the U-joint, never bolted to it directly. The plate is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. Sheet 9 details this connection square-on and in section.</p>
 <p><img alt="Sheet 9 — Frame + ACM ↔ U-joint ↔ X-slide connection detail" src="../assets/film-plane-sheet9.png" /></p>
+<p>Sheet 8 shows the same corner from the mechanism side — how the film frame hangs off the two cross-slides through the U-joint.</p>
+<p><img alt="Sheet 8 — Frame-corner ↔ cross-slide attachment: the frame hangs off the two slides through the U-joint" src="../assets/film-plane-sheet8.png" /></p>
 <h3 id="cross-slide-load-case">Cross-Slide Load Case<a class="headerlink" href="#cross-slide-load-case" title="Permanent link">&para;</a></h3>
 <p>The cross-slide travel and load were firmed against the rotation geometry and the moving mass (Sheet 10):</p>
 <ul>
@@ -2887,6 +2890,12 @@ The floor plan below shows the film plane rail positions in the context of the c
 <li><strong>Sheet 18 — Wall-seat saddle (ICP-11):</strong> the A36 8/10mm plate saddle assembly, cut pieces, and M12 wall mount.</li>
 </ul>
 <p><img alt="Sheet 12 — Corner assembly (exploded) + fastener schedule" src="../assets/film-plane-sheet12.png" /></p>
+<p><img alt="Sheet 13 — Depth rail: 3×1½&quot; 6061-T6 U-channel, cut wall-to-wall, section + end conditions" src="../assets/film-plane-sheet13.png" /></p>
+<p><img alt="Sheet 14 — Acetal skate: axle-saddle retention + 6061 carriage-plate hole coordinates" src="../assets/film-plane-sheet14.png" /></p>
+<p><img alt="Sheet 15 — Cross-slide stack: Z + X 304 flat bars, deep-mount section, gib, stroke" src="../assets/film-plane-sheet15.png" /></p>
+<p><img alt="Sheet 16 — Corner angle: 4×4×¼&quot; 304 L-bracket drilling layout — the U-joint mount" src="../assets/film-plane-sheet16.png" /></p>
+<p><img alt="Sheet 17 — Frame weldment: 2×2×⅛&quot; 6061 angle frame, the 4 corner welds, member section + ACM backing" src="../assets/film-plane-sheet17.png" /></p>
+<p><img alt="Sheet 18 — Wall-seat saddle (ICP-11): A36 8/10mm plate saddle, cut pieces, M12 wall mount" src="../assets/film-plane-sheet18.png" /></p>
 <hr />
 <h2 id="5-tilt-swing-configurations">5. Tilt / Swing Configurations<a class="headerlink" href="#5-tilt-swing-configurations" title="Permanent link">&para;</a></h2>
 <p>The plane stays flat at all times, so it is always a single tilt <strong>or</strong> swing (or a limited combination). Corner depths below are about the <strong>mid-rail center (1,181mm)</strong> — add the focus offset to reposition the whole plane. Film height is <strong>constant</strong>.</p>

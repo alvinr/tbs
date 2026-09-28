@@ -24,8 +24,8 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   misalignment** — the class of the Sheet-9 nut fix. The fastener-in-section sweep came back **clean
   (2026-09-28)**, but *dimension-on-wrong-axis* (`draw_dim_h` where the feature spans vertically, & vice-versa)
   and *cross-view orientation drift* were only spot-checked — verify these systematically; (c) general
-  legibility/crowding. **Start point:** the **spray_bar Sheet 7 `+192%` off-frame anomaly** (a real placement
-  bug, not a wide label — see the backlog item ↓). Feeds ⇒ the label-overflow backlog below.
+  legibility/crowding. (The spray_bar Sheet 7 `+192%` anomaly was fixed 2026-09-28 as a standalone bug.)
+  **Suggested start:** `film_plane_mechanism` Sheets 1–11 (worst count, +52%). Feeds ⇒ the backlog below.
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
@@ -40,10 +40,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - **ibc_frame_drawing** (9, +19%) — Sheet 1 DATUMS + member-schedule table off left (P8).
   - **shelf_diagram** (3, +33%), **joint_study** (4, +19%), then walkway/electrical/tray_redesign/corner_gimbal/
     portrait_viz (1 ea, +15–26%).
-  - **spray_bar Sheet 7 `"38×38×1.6mm 304-SS square"` +192% off left** — ANOMALY: anchored at a main-view coord
-    (`CARRIAGE_YD_CENTER`) inside a section-panel axes with a different x-range, so it lands outside its panel.
-    Look directly — likely a real placement bug, not a wide label.
   - Re-run `tidy_labels.py --overflow src/generators/generate_*.py` after each pass to confirm the list shrinks.
+  - ✅ **spray_bar Sheet 7 `+192%` off-left FIXED (2026-09-28)** — it was a hidden DUPLICATE beam-section label
+    on the nozzle panel (not the `CARRIAGE_YD_CENTER` hypothesis); dropped it (beam is called out on ax_cf +
+    dimensioned on ax_nz). This bullet stays only as the note that the anomaly is resolved; delete on next prune.
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking
@@ -77,9 +77,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   re-implementations left lying around**. **PROGRESS 2026-08-17:** `ibc_rack()` (the OLD single-portal 2-bar+stub
   front-bar frame, X4734) was RELOCATED out of the live `generate_sketchup_model.py` into its sole consumer, the
   archived right-cantilever study — so the live module can no longer accidentally re-wire it (overview can't
-  silently revert). **REMAINING:** audit every component drawn in >1 model and confirm each is ONE shared builder
-  each model *selects* (its view), never a copy; wire a `check_consistency.py` gate that flags a second geometry
-  emitter for the same named part.
+  silently revert). **AUDIT DONE (2026-09-28):** swept every model builder — **no new/untracked duplicate
+  emitters**; every multi-model component resolves to ONE shared builder the other models *call*, except the 5
+  already-tracked clusters (2 live BLOCKED drifts = Fan-B band + tray sump foot [see the dedup item ↑], 2
+  accepted = pinhole-wall representation + walkway-bracket LOD, 2 permanent Floor ghosts). The existing detection
+  is two-tier in `lint.py`: the static `_cross_file_emitter_dups()` ratchet (name + `ruby_*` literal) **plus** a
+  runtime geometry-equality harness (`_DUP_PAIRS`/`_record()`) for same-part-different-label copies (EP core,
+  walkway bracket). **REMAINING (the only open piece):** a `check_consistency.py` gate — but rather than reinvent,
+  have it *call* `lint._cross_file_emitter_dups()` + run the `_DUP_PAIRS` equality checks, and add a name-alias
+  layer so a same-part / different-label copy can't slip past the pure name-match. Lower priority than resolving
+  the 2 live drifts.
 
 - [ ] **`--solids` larger sanctioning pass (model-wide, beyond the named categories).** The
   `check_interference.py --solids` sanctioned list currently covers only the categories triaged in the
@@ -221,9 +228,6 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   hashes are current (the rebuild rode along in a later overview re-send).
   **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual (only): datum/tolerance
   callouts (Phase C) if the shelf goes to a fabricator.
-- [ ] **Disc-holder cost double-count check (costing review).** Confirm the pinhole disc holder (`pdh-*`)
-  is not double-counted against the flat pinhole plate in the baseline scenario — it *replaces* the plate.
-  Verify at the next costing review.
 - [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
   (2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.

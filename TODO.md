@@ -18,11 +18,19 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
+- [ ] **★ FULL DIAGRAM REVIEW PASS — OWNER-LED (review pass for you).** One sweep across *every* generated
+  diagram, driven by your visual review; I execute the fixes one generator per tidy pass. Covers: (a) **label
+  overflow** — the `--overflow` backlog below (49 off-frame labels); (b) **part-orientation / axis
+  misalignment** — the class of the Sheet-9 nut fix. The fastener-in-section sweep came back **clean
+  (2026-09-28)**, but *dimension-on-wrong-axis* (`draw_dim_h` where the feature spans vertically, & vice-versa)
+  and *cross-view orientation drift* were only spot-checked — verify these systematically; (c) general
+  legibility/crowding. **Start point:** the **spray_bar Sheet 7 `+192%` off-frame anomaly** (a real placement
+  bug, not a wide label — see the backlog item ↓). Feeds ⇒ the label-overflow backlog below.
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
-  are tight-bbox noise, ignore). **DEFERRED until after the light-trap blueprint is done** (light-trap's own
-  overflows are being fixed now, in-flight). Tackle the rest **one generator per tidy pass** (skill discipline —
+  are tight-bbox noise, ignore). **UNBLOCKED** (light-trap blueprint shipped) — now driven by the owner-led
+  FULL DIAGRAM REVIEW PASS above. Tackle **one generator per tidy pass** (skill discipline —
   render → crop-zoom → verify), priority by count/severity:
   - **film_plane_mechanism** (10, worst +52%) — pre-existing overflow/crowding on Sheets **1–11** only (Sheet 2 section
     titles ±19–20%, Sheet 1 "LEFT RAIL" +17%, Sheet 3/4 crowding, Sheet 6 +8%; `CARRIAGE_YD_CENTER` panel overflow).
@@ -236,11 +244,6 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   rail** (X4663-4900, Yd1132-1279). Reroute/notch in a focused plumbing pass (plumbing skill). The F1-CAUSED
   clashes are already fixed: #1 ribbon-lane×outer-beam (RIBBON_LANE_X derived from the channel), #2 end-beam×
   near-corner-risers (near RWk end beam un-inset to Yd0).
-
-## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — PROSE DONE, BOM GATED
-
-_Surfaced 2026-07-16 during the frame material fix. Prose reconciled 2026-07-17 (commit 47d87d10).
-The remaining §7 parts BOM is gated on confirmed prices._
 
 ## Scheduled
 - [ ] **Verify spec-driven parts (identity + price)** — 55 rows from JS-/account-gated suppliers

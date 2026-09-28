@@ -99,7 +99,7 @@ nav:
     - "Photosensitive Materials": photosensitive-plane-options.md
     - "Sensitizer Trials": sensitizer-trials.md
     - "Distortion Renders": distortion-renders.md
-    - "Film Plane Distortion Analysis (superseded)": film-plane-mechanism-analysis.md
+    - "Film Plane Distortion Analysis": film-plane-mechanism-analysis.md
     - "Light Trap Selection": light-trap-selection.md
     - "Cost Analysis": cost-analysis-report.md
     - "Tray Material Research (decision record)": tray-research.md

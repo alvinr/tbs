@@ -9,34 +9,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
-## 🎯 Front board — tilt-swing eliminated → pinhole disc holder — ✅ DONE (released 0.13)
-
-## Cleanup
-
-- [x] **Sketchfab first-upload papercut — FIXED in `sketchfab_meta_ruby` (2026-09-25).** New models no longer stamp the all-zeros placeholder uid: `model_id` is written only when a REAL uid is held and the slot is blank/all-zeros, so a brand-new model uploads as NEW and a leftover all-zeros gets replaced on the next send (a real / UI-set id is never clobbered). Dict `model_title`/`model_description` now re-sync to the generator's identity unless edited in the Sketchfab UI (tracked via `_gen_*` shadow attrs, so a repurposed doc no longer keeps a stale title). Every emitted line is stripped by `manifest.py` `_IDENTITY`, so no `source_hash` churn (verified — no `_IDENTITY` change needed). **Residual — RESOLVED (2026-09-25):** the disc-holder's stale Sketchfab title ("TBS-001 Tilt-Swing Front Board") was corrected to **"TBS-001 Pinhole Disc Holder"** via a REST PATCH on the model uid (a `--send`/`push` preserves the name, so REST is the right tool). Its SketchUp `sketchfab/model_title` attribute is still the old string, but that's harmless under the REST push workflow (in-place PUT keeps the name); it would only matter for a manual plugin re-upload.
-- [x] **Scrub author-name attributions from code/text (2026-09-05 → done 2026-09-10).** CLAUDE.md bans naming the author in code comments, diagram labels, report prose, changelog, and cost-history notes (write a bare date or "(confirmed)" instead). Back-scrubbed every pre-existing dated attribution across `src/`, the reports, `RELEASE.md`, and this tracker; kept the license/copyright headers, the CLAUDE.md rule text, and the functional brochure-footer regex.
-
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 
 - [~] **Brush + holder — KEEP AS-IS for now (2026-08-24: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.
 - [~] **Edge channel — KEEP AS-IS for now** (same "optimize later" call). `ll-edge-channel` stays est; candidate = McMaster 9001K723 (6063 Al confirmed, 3/64″ wall, $18.18/8 ft) + 8× L-clips still to source.
 
 ---
-
-## 🧩 Hinged panel — HDPE surround: cut sheets + drum join + frame connection (2026-08-27) — ✅ CLOSED (shipped in 0.12)
-
-> The surround was fully blueprinted in the 0.12 hinged-panel round; these items predate it and were
-> never ticked. Verified 2026-09-10 against the shipped sheets/report/parts/3D.
-
-- [x] **HDPE surround cut sheets + drum-join detail.** DONE (shipped in 0.12): hingepanel **Sheet 6** =
-  6-piece flat-pattern cut sheets (2 face skins, 2 bay Yd walls, upper/lower plain caps — dimensioned +
-  fab notes); **Sheet 7 Detail A** = the Ø800 housing↔cap join (5mm outer skin butts the plain cap + a
-  silicone caulk bead). Report §2.6; HDPE/rivet/U-channel parts registered. Cross-referenced to light-trap
-  Sheet 2 for the personnel-opening alignment.
-- [x] **Resolve why the HDPE surround is not connected to the frame.** DONE (shipped in 0.12): it is NOT
-  floating — the surround laps + blind-rivets the **drum cage** (50×50×3 RHS, welded into the panel frame),
-  front **and** side faces, @60mm + DP8010 bead (**Sheet 7 Detail B**, report §2.6, 3D cage rivets). 2D/3D/
-  report reconciled.
 
 ## 🛠 Tooling / infra
 
@@ -233,11 +211,9 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   overview/construction re-send (deferred, needs the live model — pairs with the corridor-water comment cleanup).
   **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual: datum/tolerance
   callouts (Phase C) if the shelf goes to a fabricator, and the 3D re-send.
-- [x] **Front board registry merge — DONE (2026-09-21, superseded by the disc-holder conversion).** The
-  tilt-swing board was retired; the front board is now the **pinhole disc holder** (`pinhole-disc-holder-report.md`),
-  a registry system (`pdh-*` in `parts.py`) whose low/high reconcile to `costing.py` (`parts.py --check` +
-  `costing.py --check-registry` green). Open follow-up: confirm the disc holder is not double-counted against the
-  flat pinhole plate in the baseline scenario (it replaces the plate) at the next costing review.
+- [ ] **Disc-holder cost double-count check (costing review).** Confirm the pinhole disc holder (`pdh-*`)
+  is not double-counted against the flat pinhole plate in the baseline scenario — it *replaces* the plate.
+  Verify at the next costing review.
 - [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
   (2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
   lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
@@ -263,23 +239,6 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 
 _Surfaced 2026-07-16 during the frame material fix. Prose reconciled 2026-07-17 (commit 47d87d10).
 The remaining §7 parts BOM is gated on confirmed prices._
-
-- [~] `film-plane-mechanism-analysis.md` — scope note fixed (stops claiming it describes the built
-  mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
-  mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
-  to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
-- [x] **Hinge-panel blueprint — swing-panel transport-lock STAY plate detail (2026-08-17).** DONE 2026-09-10:
-  the wall anchor was already modeled (3D `wall_anchors()` builds the interior + exterior 200×200×12 plate pair
-  + 4× M16 through-bolts, and `stay_rods()` the turnbuckles), but the 2D lacked a dimensioned detail. Promoted
-  the plate/bolt sizes to `tbs_constants` (`LT_STAY_*`, single-sourced 2D↔3D) and added **hingepanel Sheet 12
-  Detail D** (plate front view + bolt gauge + plate-pair section); report §5.2 + parts `sp-wall-stays` updated.
-  (Square-bolt-head side-ask: the stay through-bolts render as simplified square prisms — the model's through-
-  bolt convention, not square-headed fasteners; a hex-head pass would be a model-wide cosmetic refinement.)
-- [x] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** DONE 2026-09-10 (verify):
-  report §2.3 already specifies the split — 20mm EPDM on the two **vertical** edges, **nylon strip-brush**
-  top/bottom, + a second EPDM **housing-surround ring**; the 3D (brown EPDM `C_GASKT` + green brush `C_SEAL`)
-  and parts (20mm EPDM B089GJQ96Z + strip brush) agree. Consistent — no change needed. (2026-07-19.)
-- [ ] **Revisit film-plane EPDM foam-tape coverage.** Qty set **provisionally to 2× 25 ft rolls** (McMaster 8694K88, 50 ft) — right-sized to the ~43 ft film-plane perimeter (the old 3×50 ft = 150 ft was ~3.5× over). When reviewing the EPDM seals, confirm a single perimeter run + corner/overlap allowance is covered by 50 ft, else bump to 3 rolls. `parts.py` `epdm-foam-tape` carries a "provisional qty" note. (2026-07-21.)
 
 ## Scheduled
 - [ ] **Verify spec-driven parts (identity + price)** — 55 rows from JS-/account-gated suppliers

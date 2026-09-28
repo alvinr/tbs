@@ -829,7 +829,7 @@ PARTS: list[Part] = [
          "film", 2, "roll", 22.37, 22.37, "McMaster-Carr", "Grainger", part_no="8694K88",
          url="https://www.mcmaster.com/8694K88/",
          spec="25 ft rolls — 2 (50 ft) cover the ~43 ft film-plane perimeter primary seal",
-         note="Provisional qty: right-sized to the ~43 ft perimeter. Revisit with the EPDM-seal review."),
+         note="Qty confirmed: 50 ft covers the 42.5 ft perimeter (2·(4389+2094)mm) with ~16% margin for corner butts — a single perimeter run (confirmed 2026-09-28)."),
     Part("rosco-duvetyne", "Impact 9oz Duvetyne 57\" × 10yd (B&H)", "fabric-textile",
          "film", 1, "ea", 69, 69, "B&H Photo", part_no="1775270", url="https://www.bhphotovideo.com/c/product/1775270-REG/impact_dr9_10_9_oz_duvetyne_10.html",
          spec='Impact DR9-10 (B&H #1775270) 9oz black light-absorbing duvetyne, 57"×10yd, $69 (research 2026-07-30). B&H does not stock Rosco brand; the Impact house brand is equivalent. 57" vs the 60" spec — fine (cut/hung). 16oz = DR16-10 if heavier wanted.'),

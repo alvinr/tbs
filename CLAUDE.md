@@ -105,6 +105,19 @@ def sy(mm): return mm * 1.0   # vertical 1:1 — thickness exaggerated
 ```
 Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exaggerated for clarity`.
 
+**Witness (projection) lines — connect every dimension to its feature.** On a busy fab sheet
+(many `dim_h`/`dim_v` stacked off to one side, e.g. baseline/ordinate dimensioning), each dimension's
+extent must be traced back to the feature it measures with a faint dotted witness line, so the reader
+can follow a stacked dim to the exact hole/cutout/edge it belongs to. Use a light gray, thin, dotted
+style — `dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)` — and draw the line from the dim's
+position out to the feature's coordinate (a hole center; a rectangular cutout's located corner). Keep
+it subtle: it should read as a guide, never compete with the outline or the dimension text.
+
+**Locating cutouts vs holes.** A round hole is located by its **center** (X + Y). A rectangular
+cutout is located by an **edge / corner** (edge-distance from the datum) plus its own **internal
+`dim_h` × `dim_v`** drawn on the cutout — not by its center. Trace the witness line to that located
+corner, matching the edge-distance dims.
+
 ---
 
 ## Report Style Conventions

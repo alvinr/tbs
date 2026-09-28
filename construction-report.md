@@ -9,7 +9,7 @@ is assembled inside the container, why that order is forced, and the gate that m
 before each phase begins. The install is **geometry-first**: the large fixed masses (the IBC
 totes and their frame) go in first and set the datum everything else is measured from; the
 precision optical system goes in last, once the real, as-built space is known. Fabrication and
-ordering for subsequent phases of the install can only be performed one the **geometry is established**.
+ordering for subsequent phases of the install can only be performed once the **geometry is established**.
 
 The sequence is validated by a **phased 3D construction model** (§8) — one scene per phase,
 with a click-through that reveals each step in order — so the order can be walked before any
@@ -22,7 +22,7 @@ components, steel is cut, etc.
 | Phase | Name | Goal | To Be Completed               |
 |-------|------|------|-------------------------------|
 | **1** | Geometry set-out | Install the fixed masses that fix the datum | IBC frame + totes plumbed and square; hinge panel hung |
-| **2** | Re-measure | Capture the **as-built** space before committing hard structure | Measured clearances reconciled against the mode; refactor the design based on availbale space |
+| **2** | Re-measure | Capture the **as-built** space before committing hard structure | Measured clearances reconciled against the model; refactor the design based on available space |
 | **3** | Framing | Fit the tray, cantilevers, plumbing, film-plane beams, walkway | Walkway + tray in; perimeter structure loaded |
 | **4** | Electrical | Panels, lights, and all wiring runs | Circuits terminated + tested (Blue / Brown / Black) |
 | **5** | Photo system | Film plane, pinhole mechanism, light trap | Camera light-tight and operable |
@@ -99,11 +99,11 @@ plumbing, the film-plane support, and the walkway.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 4.1 | Mount the **external power panel** (PV + E-stop) | Phase 3 | ☐ |
-| 4.2 | Install the **interior electrical panel** + batteries | 4.1 | ☐ |
+| 4.1 | Mount the **external power panel box** (the flanged wall-penetration box — its **E-stop** device + **PV disconnect** are fitted in 4.2) | Phase 3 | ☐ |
+| 4.2 | Install the **interior electrical panel** (EP core + external links) + **E-stop** + **PV disconnect** + cabling + **batteries** | 4.1 | ☐ |
 | 4.3 | **Connect the Cct-C corridor wiring to the EP** (the corridor run was pre-installed to the pinhole wall in 1.3 — this closes the EP drop) | 4.2 | ☐ |
 | 4.4 | **Hang the lights** | Phase 3 | ☐ |
-| 4.5 | **Run / wire the electrical paths** — IBC pumps, filter, lights, fans, etc. (circuits Blue / Brown / Black) | 4.2, 4.3, 4.4 | ☐ |
+| 4.5 | Install **Fan B** + its **Cct-B wiring** + the **chem-prep shelf**; terminate the remaining circuit runs (Blue / Brown / Black — Fan A + Cct-A were 1.4, pump Cct-C 1.3 + 4.3, lights 4.4) | 4.2, 4.3, 4.4 | ☐ |
 
 **Exit gate:** every circuit terminated, continuity + insulation tested, E-stops verified.
 
@@ -116,11 +116,13 @@ plumbing, the film-plane support, and the walkway.
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 5.1 | Install the **pinhole mechanism** (plate + aperture) | Phase 3 | ☐ |
-| 5.2 | Install the **film plane + carriages** | Phase 3 (beams), 5.1 | ☐ |
-| 5.3 | Install the **light trap** (drum into the hinge panel) | Phase 1 (panel), 5.2 | ☐ |
-| 5.4 | Install the **spray bar** (over the processing tray) | Phase 3 (tray) | ☐ |
+| 5.2 | Install the **film plane + carriages** (screen + frame; the beams were 3.7) | Phase 3 (beams), 5.1 | ☐ |
+| 5.3 | Install the **light-trap drum support cage** + axle beams + SKF 6215 bearings + mount plates + floor HDPE | Phase 1 (panel), 5.2 | ☐ |
+| 5.4 | Hang the **light-trap HDPE skins** — rotating drum shell + fixed Ø800 housing panels + H-mullions | 5.3 | ☐ |
+| 5.5 | Fit the **light-trap outer HDPE surround / bay** (walls + roof) + cage rivets | 5.4 | ☐ |
+| 5.6 | Install the **spray bar** (over the processing tray) | Phase 3 (tray) | ☐ |
 
-**Exit gate:** plane travels through its full tilt/swing envelope; spray bar moveemnt is free; camera confirmed light-tight.
+**Exit gate:** plane travels through its full tilt/swing envelope; spray bar movement is free; camera confirmed light-tight.
 
 ---
 
@@ -129,7 +131,8 @@ plumbing, the film-plane support, and the walkway.
 The build order is verified by a dedicated **phased 3D model** — the same component builders
 as the Overview 3D model, staged by install order:
 
-- **One scene per phase** (Phase 1 … Phase 5) — the model shown at the end of that phase.
+- **One scene per built phase** (Phases 1, 3, 4, 5) — the model shown at the end of that phase. Phase 2
+  (re-measure) adds no geometry, so it has no scene; its state is the Phase-1 scene (what you measure).
 - **Click-to-build within a scene** — a Dynamic Component reveals each step's geometry in
   order on click, so the assembly can be watched building up and the sequence checked for
   trapped work / access conflicts before the real build.

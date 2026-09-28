@@ -2338,7 +2338,7 @@ _BOX_MI, _BOX_MD = 15, 6                                   # 4× M6 mounting hol
 _MC4_X, _MC4_GAP, _MC4_PITCH, _MC4_D = 70, 25, 55, 17
 _MC4_Y0 = PWR_PANEL_H / 2 - _MC4_PITCH                     # 65 (bottom row)
 _NEMA_X, _NEMA_Y, _NEMA_W, _NEMA_H = 195, 153, 55, 45
-_DUP_X, _DUP_Y, _DUP_W, _DUP_H = 230, 90, 46, 84
+_DUP_X, _DUP_Y, _DUP_W, _DUP_H = 227, 90, 46, 84   # X set so the duplex right edge (250) aligns with the shore-inlet right edge
 _EST_X, _EST_Y, _EST_D = 150, 100, 22.5
 
 

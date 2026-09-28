@@ -2423,7 +2423,7 @@ def draw_sheet9():
     """External Power Panel — BOX ASSEMBLY & WALL MOUNT (monochrome fab sheet).
     Panel A: the box as separate pieces, each dimensioned (face/flange plate + shroud walls).
     Panel B: a section through a mounting bolt showing how the box is secured through the wall."""
-    from tbs_constants import PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T
+    from tbs_constants import PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, CONTAINER_CORRUGATION_DEPTH
     C_OUT = "#1A1A1A"; C_DIM = "#404040"; C_HID = "#8A8A8A"
     C_STEEL = "#B0B0B8"; C_GASKT = "#5A3020"
     FONT = {"fontfamily": "monospace"}
@@ -2462,34 +2462,44 @@ def draw_sheet9():
     ax.text(15, 40, f"Shroud = a {CW}×{CH} collar, {BD}mm deep, from {ST}mm steel — welded to the\nface-plate back around the wall opening; OPEN at the interior end.\nFace/flange plate {FT}mm. All welds continuous + light-tight.", ha="left", va="top", fontsize=6.2, color=C_DIM, **FONT)
     ax.text(235, 455, "PANEL A — BOX PIECES (CUT LIST)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
 
-    # ══ PANEL B — securing through the wall (section at a mounting bolt) ══
+    # ══ PANEL B — securing through the wall (horizontal section at a mounting bolt) ══
+    # The container side wall is corrugated, so a flat flange can't seat flat: per the
+    # established project detail (disc-holder wall adapter, IBC wall-hangers), the flange
+    # seats on the corrugation CRESTS, the seal beds the flange↔wall interface, and the
+    # through-bolt grip spans the ~30mm corrugation depth to an interior backing plate + nut.
     axb = fig.add_subplot(gs[0, 1]); axb.set_aspect("equal"); axb.axis("off")
-    ex = 4.0
     axb.set_xlim(-95, 150); axb.set_ylim(-70, 80)
-    wt = 3 * ex                              # corrugated wall thickness (exaggerated)
-    # corrugated wall band (zigzag) at x=0
-    for k in range(4):
-        y0 = -48 + k * 24
-        axb.add_patch(mpatches.Polygon([(0, y0), (-8, y0 + 12), (0, y0 + 24)], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=3))
-    axb.add_patch(mpatches.Rectangle((0, -48), wt, 96, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="xx", zorder=3))
-    # flange / face plate on the exterior face of the wall
-    axb.add_patch(mpatches.Rectangle((-FT * ex, -48), FT * ex, 96, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))
-    # flashing + silicone at the flange↔wall seal
-    axb.add_patch(mpatches.Rectangle((-FT * ex, 40), FT * ex + wt, 5, fc=C_GASKT, ec=C_OUT, lw=0.4, zorder=6))
-    axb.add_patch(mpatches.Rectangle((-FT * ex, -45), FT * ex + wt, 5, fc=C_GASKT, ec=C_OUT, lw=0.4, zorder=6))
-    # interior backing washer/plate + nut
-    axb.add_patch(mpatches.Rectangle((wt, -14), 6, 28, fc=C_STEEL, ec=C_OUT, lw=0.7, zorder=5))
-    # M6 through-bolt (head exterior, nut interior), horizontal at y=0
-    axb.add_patch(mpatches.Rectangle((-FT * ex - 12, -3.2), 12, 6.4, fc="#404040", ec=C_OUT, lw=0.5, zorder=7))   # hex head
-    axb.add_patch(mpatches.Rectangle((-FT * ex, -1.7), wt + 6 + 14, 3.4, fc="#606068", ec=C_OUT, lw=0.4, zorder=6))  # shank
-    axb.add_patch(mpatches.Rectangle((wt + 6, -4), 5, 8, fc="#404040", ec=C_OUT, lw=0.5, zorder=7))                  # nut
-    axb.text(-90, 60, "EXTERIOR", ha="left", fontsize=6.5, color=C_DIM, **FONT)
-    axb.text(120, 60, "INTERIOR", ha="right", fontsize=6.5, color=C_DIM, **FONT)
-    leader(axb, -FT * ex - 6, 0, -70, 26, f"M{MD} THROUGH-BOLT\n(head + sealing washer)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
-    leader(axb, wt + 8, 0, 60, -34, f"M{MD} NUT + backing washer\n(interior — spreads the load)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    leader(axb, wt / 2, 44, 40, 62, "FLASHING + SILICONE\n(water- + light-tight seal)", fs=5.8, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
-    leader(axb, -FT * ex / 2, -30, -70, -50, f"{FT}mm FLANGE PLATE", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
-    leader(axb, wt / 2, -30, 46, -52, "CORRUGATED WALL", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    fex = 4.0                                     # flange/fastener scale (thin metal exaggerated)
+    dsc = 1.4                                      # corrugation-depth scale
+    CD = CONTAINER_CORRUGATION_DEPTH * dsc         # drawn corrugation depth (crest → trough)
+    ts = 4.0                                        # wall sheet thickness (exaggerated)
+    CDi = CD + ts                                   # interior face of the troughs
+    FTs = FT * fex                                  # flange thickness drawn
+    # corrugated wall sheet — exterior crests at x=0 (flange side), interior troughs at x=CD
+    ys = [-48, -36, -24, -12, 0, 12, 24, 36, 48]
+    outer = [(0.0 if i % 2 == 0 else CD, y) for i, y in enumerate(ys)]
+    axb.add_patch(mpatches.Polygon(outer + [(x + ts, y) for (x, y) in outer][::-1],
+                                   closed=True, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="xx", zorder=3))
+    # flashing + silicone — beds the flange to the corrugation (fills the exterior valleys)
+    for i in (0, 2, 4, 6):
+        axb.add_patch(mpatches.Polygon([(0, ys[i]), (CD, ys[i + 1]), (0, ys[i + 2])],
+                                       closed=True, fc=C_GASKT, ec=C_OUT, lw=0.4, zorder=2))
+    # flange / face plate — flat, seats on the exterior crests
+    axb.add_patch(mpatches.Rectangle((-FTs, -48), FTs, 96, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))
+    # interior backing plate — bridges the troughs, spreads the nut load
+    axb.add_patch(mpatches.Rectangle((CDi, -20), 10, 40, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=5))
+    # M6 through-bolt (head exterior, nut interior) — matched hex pair, thin axial × tall across-flats
+    HEX_AF, HEAD_THK, NUT_THK, SHANK_D = 12, 6, 7, 6
+    axb.add_patch(mpatches.Rectangle((-FTs - HEAD_THK, -HEX_AF / 2), HEAD_THK, HEX_AF, fc="#404040", ec=C_OUT, lw=0.5, zorder=7))   # hex head
+    axb.add_patch(mpatches.Rectangle((-FTs, -SHANK_D / 2), (CDi + 10 + NUT_THK + 2) + FTs, SHANK_D, fc="#606068", ec=C_OUT, lw=0.4, zorder=6))  # shank
+    axb.add_patch(mpatches.Rectangle((CDi + 10, -HEX_AF / 2), NUT_THK, HEX_AF, fc="#404040", ec=C_OUT, lw=0.5, zorder=7))            # hex nut
+    axb.text(-90, 44, "EXTERIOR", ha="left", fontsize=6.5, color=C_DIM, **FONT)
+    axb.text(145, 44, "INTERIOR", ha="right", fontsize=6.5, color=C_DIM, **FONT)
+    leader(axb, -FTs - HEAD_THK / 2, 0, -70, 26, f"M{MD} THROUGH-BOLT\n(head + sealing washer)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(axb, CDi + 10 + NUT_THK, 0, 70, -34, f"M{MD} NUT + backing plate\n(interior · grip spans the corrugation)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(axb, CD * 0.5, 36, 22, 64, "FLASHING + SILICONE\n(beds flange · water- + light-tight)", fs=5.8, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
+    leader(axb, -FTs / 2, -30, -70, -50, f"{FT}mm FLANGE PLATE\n(seats on crests)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(axb, CD, 12, 60, -52, f"CORRUGATED WALL\n({CONTAINER_CORRUGATION_DEPTH}mm deep)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     axb.text(30, 74, "PANEL B — WALL-SECURING DETAIL (section at a mounting bolt · 4 places, flange corners)", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, **FONT)
 
     # ══ notes ══
@@ -2498,7 +2508,7 @@ def draw_sheet9():
         "Linear ±0.5mm · hole positions ±0.4mm · deburr all cut edges",
         f"Material: fabricated steel — {FT}mm face/flange plate, {ST}mm shroud, {BD}mm deep · welds continuous",
         "Finish: matte-black, LIGHT-TIGHT inside and out (pinhole camera — any leak fogs the print)",
-        "Mount: 4× M6 through-bolts at the flange corners (15mm inset), through the corrugation into interior nuts + backing washers",
+        "Mount: 4× M6 through-bolts at the flange corners (15mm inset), through the corrugation into interior nuts + backing plates",
         "Wall seal: flange bedded on silicone + flashing over the corrugation crests — water- AND light-tight",
         "Box OPENS to the interior; every device gasketed to the face with an opaque light-baffle behind its cavity.",
     ]

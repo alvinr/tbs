@@ -2371,33 +2371,41 @@ def draw_sheet8():
     ax.plot(0, 0, marker="s", ms=6, mfc="white", mec=C_OUT, zorder=6)
     ax.text(7, -7, "DATUM (0,0)", ha="left", va="top", fontsize=5.5, color=C_OUT, **FONT)
 
-    # ── baseline dim_h (X) stacked below · one per unique feature X ──
-    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, _NEMA_X, _DUP_X, W - MI]):
+    # cutout near-edge (datum-side) coords — a rectangle is located by an EDGE, not a centre
+    nema_xL, nema_yB = _NEMA_X, _NEMA_Y
+    dup_xL, dup_yB = _DUP_X - _DUP_W / 2, _DUP_Y - _DUP_H / 2
+    # ── baseline dim_h (X) stacked below · circles by centre, cutouts by their LEFT edge ──
+    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, W - MI]):
         draw_dim_h(ax, 0, xv, -30 - k * 23, f"{xv:g}mm", offset=4, fs=5.2, above=False, font=FONT)
     draw_dim_h(ax, 0, W, -30 - 7 * 23, f"{W}mm OVERALL", offset=6, fs=6.4, above=False, font=FONT)
-    # ── baseline dim_v (Y) stacked left · one per unique feature Y ──
-    for k, yv in enumerate([MI, _MC4_Y0, _DUP_Y, _EST_Y, 120, _NEMA_Y, 175, H - MI]):
+    # ── baseline dim_v (Y) stacked left · circles by centre, cutouts by their BOTTOM edge ──
+    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, 175, H - MI]):
         draw_dim_v(ax, -30 - k * 23, 0, yv, f"{yv:g}mm", offset=4, fs=5.2, font=FONT)
     draw_dim_v(ax, -30 - 8 * 23, 0, H, f"{H}mm OVERALL", offset=6, fs=6.4, font=FONT)
+    # ── internal cutout dimensions: width (dim_h, below the cutout) + height (dim_v, left of it) ──
+    draw_dim_h(ax, nema_xL, nema_xL + _NEMA_W, nema_yB - 11, f"{_NEMA_W}mm", offset=4, fs=5.2, above=False, font=FONT)
+    draw_dim_v(ax, nema_xL - 11, nema_yB, nema_yB + _NEMA_H, f"{_NEMA_H}mm", offset=4, fs=5.2, font=FONT)
+    draw_dim_h(ax, dup_xL, dup_xL + _DUP_W, dup_yB - 11, f"{_DUP_W}mm", offset=4, fs=5.2, above=False, font=FONT)
+    draw_dim_v(ax, dup_xL - 11, dup_yB, dup_yB + _DUP_H, f"{_DUP_H}mm", offset=4, fs=5.2, font=FONT)
     # wall-cutout size (top)
     draw_dim_h(ax, FL, W - FL, H + 20, f"{CW}mm WALL CUTOUT (⌀ opening) · {CH}mm tall", offset=6, fs=6, above=True, font=FONT)
 
     # ── faint dotted projection (witness) lines — trace each baseline dim to its feature ──
     proj = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)
     x_feat = {MI: MI, mc4L: _MC4_Y0, mc4R: _MC4_Y0, _EST_X: _EST_Y,
-              _NEMA_X: _NEMA_Y, _DUP_X: _DUP_Y - _DUP_H / 2, W - MI: MI}
-    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, _NEMA_X, _DUP_X, W - MI]):
+              nema_xL: nema_yB, dup_xL: dup_yB, W - MI: MI}
+    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, W - MI]):
         ax.plot([xv, xv], [-30 - k * 23, x_feat[xv]], **proj)
-    y_feat = {MI: MI, _MC4_Y0: mc4L, _DUP_Y: _DUP_X - _DUP_W / 2, _EST_Y: _EST_X - _EST_D / 2,
-              120: mc4L, _NEMA_Y: _NEMA_X, 175: mc4L, H - MI: MI}
-    for k, yv in enumerate([MI, _MC4_Y0, _DUP_Y, _EST_Y, 120, _NEMA_Y, 175, H - MI]):
+    y_feat = {MI: MI, _MC4_Y0: mc4L, dup_yB: dup_xL, _EST_Y: _EST_X - _EST_D / 2,
+              120: mc4L, nema_yB: nema_xL, 175: mc4L, H - MI: MI}
+    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, 175, H - MI]):
         ax.plot([-30 - k * 23, y_feat[yv]], [yv, yv], **proj)
 
     # ── size leaders (right) ──
     leader(ax, mc4R + _MC4_D / 2, _MC4_Y0 + 2 * _MC4_PITCH, W + 22, H - 14, f"6× ⌀{_MC4_D} MC4 PANEL HOLE ({_MC4_GAP}mm gap)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     leader(ax, _EST_X + _EST_D / 2, _EST_Y, W + 22, H - 62, f"⌀{_EST_D} E-STOP (22mm mount)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    leader(ax, _NEMA_X + _NEMA_W, _NEMA_Y + _NEMA_H / 2, W + 22, _NEMA_Y - 4, f"{_NEMA_W}×{_NEMA_H} SHORE-INLET\nCUTOUT (per inlet template)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    leader(ax, _DUP_X + _DUP_W / 2, _DUP_Y, W + 22, _DUP_Y - 44, f"{_DUP_W}×{_DUP_H} 1-GANG\nDUPLEX CUTOUT", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, _NEMA_X + _NEMA_W, _NEMA_Y + _NEMA_H / 2, W + 22, _NEMA_Y - 4, "SHORE-INLET CUTOUT\n(per inlet template)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, _DUP_X + _DUP_W / 2, _DUP_Y, W + 22, _DUP_Y - 44, "1-GANG DUPLEX CUTOUT", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     leader(ax, W - MI, MI, W + 22, 6, f"4× ⌀{MD} (M{MD}) MOUNT · {MI}mm inset TYP", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     ax.text(W / 2, H + 50, "FACE PLATE — FRONT (EXTERIOR) · every hole/cutout/bolt located X + Y from the datum", ha="center", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
 

@@ -2382,6 +2382,17 @@ def draw_sheet8():
     # wall-cutout size (top)
     draw_dim_h(ax, FL, W - FL, H + 20, f"{CW}mm WALL CUTOUT (⌀ opening) · {CH}mm tall", offset=6, fs=6, above=True, font=FONT)
 
+    # ── faint dotted projection (witness) lines — trace each baseline dim to its feature ──
+    proj = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)
+    x_feat = {MI: MI, mc4L: _MC4_Y0, mc4R: _MC4_Y0, _EST_X: _EST_Y,
+              _NEMA_X: _NEMA_Y, _DUP_X: _DUP_Y - _DUP_H / 2, W - MI: MI}
+    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, _NEMA_X, _DUP_X, W - MI]):
+        ax.plot([xv, xv], [-30 - k * 23, x_feat[xv]], **proj)
+    y_feat = {MI: MI, _MC4_Y0: mc4L, _DUP_Y: _DUP_X - _DUP_W / 2, _EST_Y: _EST_X - _EST_D / 2,
+              120: mc4L, _NEMA_Y: _NEMA_X, 175: mc4L, H - MI: MI}
+    for k, yv in enumerate([MI, _MC4_Y0, _DUP_Y, _EST_Y, 120, _NEMA_Y, 175, H - MI]):
+        ax.plot([-30 - k * 23, y_feat[yv]], [yv, yv], **proj)
+
     # ── size leaders (right) ──
     leader(ax, mc4R + _MC4_D / 2, _MC4_Y0 + 2 * _MC4_PITCH, W + 22, H - 14, f"6× ⌀{_MC4_D} MC4 PANEL HOLE ({_MC4_GAP}mm gap)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     leader(ax, _EST_X + _EST_D / 2, _EST_Y, W + 22, H - 62, f"⌀{_EST_D} E-STOP (22mm mount)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)

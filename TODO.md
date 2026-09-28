@@ -51,10 +51,17 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   (lighttrap), **processing tray** (overview `processing_tray(alpha=)` — spraybar now shows the real sloped pan
   ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **REMAINING 3 real
   findings to resolve, then consolidate + remove from `_EMITTER_DUP_ALLOW`:**
-  - **Fan B mount band / cargo-door panel thickness** — overview draws the door + band at `PANEL_CENTER_T=120`mm,
-    lighttrap at **40**mm. Which door thickness is right? Unify the PANEL representation, then the band → lighttrap.
-  - **Tray sump strainer foot position** — cp puts it at **Yd155** (center pickup), pw at **Yd104** (under the
-    riser), 51mm apart + different color. Resolve the real sump-pickup Yd (+ pw riser routing), then → cp.
+  - **Fan B mount band / cargo-door panel thickness — RESOLVED 2026-09-28; fix in the 3D pass.** Not a real
+    conflict: the hinge panel is STEPPED and both constants are correct — corner zones `PANEL_CORNER_T=40`mm
+    (HDPE/Al-grid/HDPE), center zone `PANEL_CENTER_T=120`mm (HDPE + 84mm RHS drum spine). The Fan-B mount band
+    sits on the near-CORNER (40mm) zone (hinged-panel-report §2), so **overview's 120mm is the drift → the band
+    is 40mm (lighttrap is right)**. Fix: draw overview's cargo-door panel as the stepped 40/120 envelope, set the
+    Fan-B band to `PANEL_CORNER_T`, then consolidate the band to the shared lighttrap builder. Reference: the
+    original container cargo door per ISO 668/ISO 1496-1 is ~2.0mm corrugated steel, ~36–40mm corrugation depth —
+    confirms the 40mm corner envelope is a faithful match to the door it replaces.
+  - **Tray sump strainer foot position — RESOLVED 2026-09-28; fix in the 3D pass.** Correct pickup is **UNDER THE
+    RISER = pw's Yd104** (clears the blue trunk at Yd69). Fix: move cp's `sump_foot` from Yd155 → Yd104 (+ unify
+    color), then consolidate to one shared builder. Cascade: cp is called by overview/water/ibc-stack → re-send those.
   - **Pinhole wall (mini_tbs)** — ACCEPTED as-is: mini_tbs is a scale toy (BOX_W×BOX_H), pw a real wall section;
     different representations (like the context floors). No action unless mini_tbs is retired.
   (The 2 `Floor`/`Floor (context)` ghosts are permanent allowlist — featureless per-model context.)

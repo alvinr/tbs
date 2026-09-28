@@ -51,14 +51,15 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   (lighttrap), **processing tray** (overview `processing_tray(alpha=)` — spraybar now shows the real sloped pan
   ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **REMAINING 3 real
   findings to resolve, then consolidate + remove from `_EMITTER_DUP_ALLOW`:**
-  - **Fan B mount band / cargo-door panel thickness — RESOLVED 2026-09-28; fix in the 3D pass.** Not a real
-    conflict: the hinge panel is STEPPED and both constants are correct — corner zones `PANEL_CORNER_T=40`mm
-    (HDPE/Al-grid/HDPE), center zone `PANEL_CENTER_T=120`mm (HDPE + 84mm RHS drum spine). The Fan-B mount band
-    sits on the near-CORNER (40mm) zone (hinged-panel-report §2), so **overview's 120mm is the drift → the band
-    is 40mm (lighttrap is right)**. Fix: draw overview's cargo-door panel as the stepped 40/120 envelope, set the
-    Fan-B band to `PANEL_CORNER_T`, then consolidate the band to the shared lighttrap builder. Reference: the
-    original container cargo door per ISO 668/ISO 1496-1 is ~2.0mm corrugated steel, ~36–40mm corrugation depth —
-    confirms the 40mm corner envelope is a faithful match to the door it replaces.
+  - **Fan B mount band thickness (hinged-panel model-consistency, MINOR) — RESOLVED 2026-09-28; fix in the 3D pass.**
+    This is the HINGED PANEL's own envelope drawn inconsistently across two models, NOT the container door. The
+    panel is STEPPED and both constants are correct — corner zones `PANEL_CORNER_T=40`mm, center zone
+    `PANEL_CENTER_T=120`mm (84mm RHS drum spine). The Fan-B band is on the near-CORNER (40mm) zone
+    (hinged-panel-report §2), so overview's 120mm is the drift → **band = 40mm (lighttrap is right)**. Fix: set
+    overview's Fan-B band to `PANEL_CORNER_T` (draw the panel as the stepped 40/120 envelope) + consolidate to the
+    shared lighttrap builder. NB: the ONLY real cargo-door requirement — doors close + no panel interference — is
+    already met and single-sourced as `fact:swung_door_clearance_mm` (+59mm swept-assembly min X in transport);
+    this band nit does not affect it.
   - **Tray sump strainer foot position — RESOLVED 2026-09-28; fix in the 3D pass.** Correct pickup is **UNDER THE
     RISER = pw's Yd104** (clears the blue trunk at Yd69). Fix: move cp's `sump_foot` from Yd155 → Yd104 (+ unify
     color), then consolidate to one shared builder. Cascade: cp is called by overview/water/ibc-stack → re-send those.

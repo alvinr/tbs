@@ -171,9 +171,11 @@ The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC o
 
 **All four exterior interfaces are already weatherproof** (MC4 IP67, weatherproof shore inlet, WR duplex under an in-use cover, IP65 E-stop), so they mount **exposed** — each surface-mounted and gasket-sealed to the box's front face, with the electrical **attached from the container-interior side** (the box opens inward). No secondary IP enclosure is needed. The container wall is **corrugated**, so the box's exterior flange can't seat flat: it is sealed to the wall with **flashing over the corrugation crests plus a silicone bead** — a seal that must be **light-tight as well as water-tight** (this is a pinhole camera; any perimeter gap or connector cavity fogs the print). Opaque front face + gasketed opaque devices + flashed flange give the light seal; the inlet/outlet socket cavities get a light-baffle behind them. Each device's wiring runs **inside the container** to the EP — the PV pairs to the **Blue Sea 6006 disconnect** on the EP backboard, the shore inlet to the charger, the cooler outlet from the inverter (Circuit E), the E-stop loop to the contactor. The cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.
 
-![External Power Panel Detail](assets/electrical-sheet6.png)
+![External Power Panel — Sheet 6: arrangement, wall section, wiring](assets/electrical-sheet6.png)
 
-*Detail drawing update to the penetration-box layout is pending (tracked in TODO) — it currently shows the superseded flush-plate geometry.*
+Sheet 6 gives the box arrangement, the cross-section through the corrugated wall, and the wiring. The dimensioned **fabrication detail** — the front-face cut layout (every hole position + size), the broken-out wall/flange/shroud section, and the material / finish / tolerance notes — is on **Sheet 8**:
+
+![External Power Panel — Sheet 8: box fabrication detail](assets/electrical-sheet8.png)
 
 ## 6. Interior Lighting
 

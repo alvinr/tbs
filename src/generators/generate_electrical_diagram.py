@@ -411,7 +411,7 @@ def draw_sheet1():
                 linespacing=1.25, zorder=4)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 7",
+    title_block(ax, "SHEET 1 OF 8",
                 drawing_title="SYSTEM ONE-LINE DIAGRAM",
                 subtitle="Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
                 scale_note="Not to scale",
@@ -960,7 +960,7 @@ def draw_sheet2():
                fs=7, width=4250, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 7",
+    title_block(ax, "SHEET 2 OF 8",
                 drawing_title="CONTAINER FLOOR PLAN & WIRING LAYOUT",
                 subtitle="Top-down plan  ·  End-zone layout  ·  Optical cone clear",
                 scale_note="Axes in mm  (approx 1:500)",
@@ -1387,7 +1387,7 @@ def draw_sheet3():
                fs=7, width=3400, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 7",
+    title_block(ax, "SHEET 3 OF 8",
                 drawing_title="PINHOLE WALL INTERIOR ELEVATION",
                 subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED panels",
                 scale_note="Axes in mm  (approx 1:40)",
@@ -1502,7 +1502,7 @@ def draw_sheet4():
         "See Plumbing Panel report §3.2 / Electrical §7.3.",
     ], -280, -80, spacing=44, fs=6.6, width=1600)
 
-    title_block(ax, "SHEET 4 OF 7",
+    title_block(ax, "SHEET 4 OF 8",
                 drawing_title="PUMP POWER",
                 subtitle="Circuit C · scale elevation",
                 scale_note="1:8 · mm",
@@ -1658,7 +1658,7 @@ def draw_sheet5():
     ax.set_xlim(-70, 1230)
     ax.set_ylim(80, 1720)
 
-    title_block(ax, "SHEET 5 OF 7",
+    title_block(ax, "SHEET 5 OF 8",
                 drawing_title="MAIN PANEL — LAYOUT",
                 subtitle="True-scale front elevation · feed one-line · fuse schedule",
                 scale_note="True scale · mm (equal aspect)",
@@ -2140,7 +2140,7 @@ def draw_sheet6():
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 7",
+    title_block(ax_tb, "SHEET 6 OF 8",
                 drawing_title="EXTERNAL POWER PANEL — PENETRATION BOX",
                 subtitle="SOLAR + SHORE INPUT · COOLER DC OUTPUT · WIRING SCHEMATIC",
                 scale_note="AXES IN mm",
@@ -2321,13 +2321,138 @@ def draw_sheet7():
     # title block
     ax_tb = fig.add_axes([0.05, -0.02, 0.9, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 7 OF 7", drawing_title="SYSTEM SCHEMATIC (SYMBOL DIAGRAM)",
+    title_block(ax_tb, "SHEET 7 OF 8", drawing_title="SYSTEM SCHEMATIC (SYMBOL DIAGRAM)",
                 subtitle="Full-system EE schematic · protection · E-stop loop · 7 load circuits",
                 scale_note="Not to scale", height=0.85)
     fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet7.png", dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.12, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet7.png  Done.")
+
+
+def draw_sheet8():
+    """External Power Panel — BOX FABRICATION DETAIL (monochrome single-part fab sheet).
+    Dimensioned cut layout for the fabricated flanged penetration box + a broken-out
+    wall/flange/shroud section. The face cut layout MIRRORS draw_sheet6 View A — keep in sync."""
+    from tbs_constants import PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T
+    C_OUT = "#1A1A1A"; C_DIM = "#404040"; C_HID = "#8A8A8A"
+    C_STEEL = "#B0B0B8"; C_GASKT = "#5A3020"
+    FONT = {"fontfamily": "monospace"}
+    W, H = PWR_PANEL_W, PWR_PANEL_H            # 340 × 240 face
+    CW, CH = PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H   # 280 × 180 wall cutout
+    FT = PWR_PANEL_D                            # 3mm face / flange plate
+    BD = PWR_PANEL_BOX_D                        # 90mm box (shroud) depth
+    ST = PWR_PANEL_SHROUD_T                     # 8mm shroud wall
+    FL = (W - CW) // 2                          # 30mm flange overlap per side
+
+    # face cut layout (mirrors draw_sheet6 View A) — keep in sync
+    M_INSET, M_D = 15, 6                        # 4× M6 mounting holes, corner inset
+    MC4_X, MC4_GAP, MC4_PITCH, MC4_D = 70, 25, 55, 17
+    mc4_y0 = H / 2 - MC4_PITCH                  # 65
+    NEMA_X, NEMA_Y, NEMA_W, NEMA_H = 195, 153, 55, 45
+    DUP_X, DUP_Y, DUP_W, DUP_H = 230, 90, 46, 84
+    EST_X, EST_Y, EST_D = 150, 100, 22.5
+
+    fig = plt.figure(figsize=(17.5, 8.8)); fig.patch.set_facecolor("white")
+    gs = fig.add_gridspec(1, 2, width_ratios=[1.5, 1], wspace=0.10,
+                          left=0.055, right=0.965, top=0.9, bottom=0.30)
+
+    # ══ PANEL A — FRONT FACE, fully dimensioned (monochrome) ══
+    ax = fig.add_subplot(gs[0, 0]); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-118, W + 118); ax.set_ylim(-126, H + 110)
+    draw_rect(ax, 0, 0, W, H, fc="white", color=C_OUT, lw=2.0, zorder=3)
+    ax.add_patch(mpatches.Rectangle((FL, FL), CW, CH, fc="none", ec=C_HID, lw=1.0, ls=(0, (6, 4)), zorder=3))
+    ax.text(W - FL - 4, FL + 4, "WALL CUTOUT (HIDDEN)", ha="right", va="bottom", fontsize=5.5, color=C_HID, style="italic", **FONT)
+    for mx, my in [(M_INSET, M_INSET), (W - M_INSET, M_INSET), (M_INSET, H - M_INSET), (W - M_INSET, H - M_INSET)]:
+        draw_circle(ax, mx, my, M_D / 2, lw=1.0, color=C_OUT, zorder=5)
+    for i in range(3):
+        cy = mc4_y0 + i * MC4_PITCH
+        draw_circle(ax, MC4_X - MC4_GAP / 2, cy, MC4_D / 2, lw=1.2, color=C_OUT, zorder=5)
+        draw_circle(ax, MC4_X + MC4_GAP / 2, cy, MC4_D / 2, lw=1.2, color=C_OUT, zorder=5)
+    draw_circle(ax, EST_X, EST_Y, EST_D / 2, lw=1.4, color=C_OUT, zorder=5)
+    draw_rect(ax, NEMA_X, NEMA_Y, NEMA_W, NEMA_H, fc="white", color=C_OUT, lw=1.2, zorder=5)
+    draw_rect(ax, DUP_X - DUP_W / 2, DUP_Y - DUP_H / 2, DUP_W, DUP_H, fc="white", color=C_OUT, lw=1.2, zorder=5)
+
+    draw_dim_h(ax, 0, W, -36, f"{W}mm", offset=8, fs=7, above=False, font=FONT)
+    draw_dim_v(ax, -36, 0, H, f"{H}mm", offset=8, fs=7, font=FONT)
+    draw_dim_h(ax, 0, FL, -70, f"{FL}mm", offset=6, fs=5.5, above=False, font=FONT)
+    draw_dim_h(ax, FL, W - FL, -70, f"{CW}mm WALL CUTOUT", offset=6, fs=5.5, above=False, font=FONT)
+    draw_dim_v(ax, W + 40, FL, H - FL, f"{CH}mm", offset=8, fs=6, font=FONT)
+    draw_dim_h(ax, 0, MC4_X, mc4_y0 - 42, f"{MC4_X}mm", offset=6, fs=5.5, above=False, font=FONT)
+    draw_dim_v(ax, MC4_X + 42, mc4_y0, mc4_y0 + MC4_PITCH, f"{MC4_PITCH}mm PITCH", offset=6, fs=5.5, font=FONT)
+    draw_dim_h(ax, 0, EST_X, -104, f"{EST_X}mm E-STOP X", offset=6, fs=5.5, above=False, font=FONT)
+    draw_dim_v(ax, -72, 0, EST_Y, f"{EST_Y}mm", offset=6, fs=5.5, font=FONT)
+
+    leader(ax, MC4_X - MC4_GAP / 2, mc4_y0 + 2 * MC4_PITCH + MC4_D / 2, MC4_X - 20, H + 52,
+           f"6× ⌀{MC4_D} MC4 PANEL HOLE\n(3 PV pairs · {MC4_GAP}mm gap)", fs=6, color=C_DIM, ha="center", arrow_style="-|>", font=FONT)
+    leader(ax, EST_X - EST_D / 2, EST_Y, EST_X - 62, EST_Y - 52,
+           f"⌀{EST_D} E-STOP\n(22mm mount)", fs=6, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(ax, NEMA_X + NEMA_W, NEMA_Y + NEMA_H / 2, W + 30, NEMA_Y + NEMA_H + 6,
+           f"{NEMA_W}×{NEMA_H} SHORE-INLET\nCUTOUT (per inlet template)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, DUP_X + DUP_W / 2, DUP_Y, W + 30, DUP_Y - 46,
+           f"{DUP_W}×{DUP_H} 1-GANG\nDUPLEX CUTOUT", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, W - M_INSET, M_INSET, W + 30, -22, f"4× ⌀{M_D} (M{M_D}) MOUNT", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    ax.text(W / 2, H + 82, "PANEL A — FRONT FACE (EXTERIOR) · FAB CUT LAYOUT", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+
+    # ══ PANEL B — broken-out section: wall · flange · seal · shroud depth ══
+    axs = fig.add_subplot(gs[0, 1]); axs.set_aspect("equal"); axs.axis("off")
+    def sx(v): return v * 1.0          # depth axis (mm)
+    def sy(v): return v * 1.0          # height axis (mm)
+    ex = 4.0                           # thickness exaggeration for thin plate/walls
+    axs.set_xlim(-70, sx(BD) + 90); axs.set_ylim(-40, sy(FL + 70) + 30)
+    ytop = sy(FL)                      # flange overlap band height (broken out at the cutout top edge)
+    # corrugated wall (exterior of the flange), present only over the flange overlap
+    wx = -FT * ex - 10
+    for k in range(3):
+        y0 = k * (ytop / 3)
+        axs.add_patch(mpatches.Polygon([(wx, y0), (wx - 8, y0 + ytop / 6), (wx, y0 + ytop / 3)], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=3))
+    axs.plot([wx, wx], [0, ytop], color=C_OUT, lw=1.0, zorder=3)
+    # flange + face plate (exterior), thickness exaggerated — spans the overlap + continues down past the cutout edge
+    axs.add_patch(mpatches.Rectangle((-FT * ex, -20), FT * ex, ytop + 20, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=5))
+    # flashing + silicone bead at the flange-to-wall seal
+    axs.add_patch(mpatches.Rectangle((wx, ytop - 3), (-FT * ex) - wx, 6, fc=C_GASKT, ec=C_OUT, lw=0.5, zorder=6))
+    # shroud wall — extends interior by the box depth, thickness ST exaggerated, at the cutout edge
+    axs.add_patch(mpatches.Rectangle((0, 0), sx(BD), ST * ex, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="\\\\", zorder=5))
+    # zone labels
+    axs.text(wx - 6, ytop + 16, "EXTERIOR", ha="left", fontsize=6.5, color=C_DIM, **FONT)
+    axs.text(sx(BD) + 6, ytop + 16, "INTERIOR\n(open — wired\nfrom inside)", ha="left", va="top", fontsize=6, color=C_DIM, **FONT)
+    # dims
+    draw_dim_h(axs, 0, sx(BD), -30, f"{BD}mm BOX DEPTH", offset=6, fs=6, above=False, font=FONT)
+    draw_dim_v(axs, sx(BD) + 30, 0, ytop, f"{FL}mm FLANGE", offset=6, fs=5.5, font=FONT)
+    leader(axs, -FT * ex / 2, ytop - 26, -52, ytop - 40, f"{FT}mm FACE/FLANGE PLATE", fs=5.5, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(axs, sx(BD) / 2, ST * ex, sx(BD) / 2, ST * ex + 44, f"{ST}mm SHROUD WALL", fs=5.5, color=C_DIM, ha="center", arrow_style="-|>", font=FONT)
+    leader(axs, wx - 4, ytop / 2, -58, ytop / 2 - 6, "CORRUGATED WALL", fs=5.5, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(axs, (-FT * ex) / 2, ytop, -50, ytop + 44, "FLASHING + SILICONE\n(water- + light-tight)", fs=5.5, color=C_GASKT, ha="right", arrow_style="-|>", font=FONT)
+    axs.text(sx(BD) / 2, sy(FL + 62), "PANEL B — BROKEN-OUT SECTION AT THE FLANGE\n(thickness exaggerated)", ha="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT)
+
+    # ══ Notes / tolerance block ══
+    notes = [
+        "GENERAL TOLERANCES (unless noted)",
+        "Linear ±0.5mm · hole positions ±0.4mm · deburr all cut edges",
+        f"Material: fabricated steel box — {FT}mm face/flange, {ST}mm folded/welded shroud, {BD}mm deep",
+        "Finish: matte-black, LIGHT-TIGHT inside and out (pinhole camera — any leak fogs the print)",
+        "Wall seal: flange bedded on silicone + flashing over the corrugation crests — water- AND light-tight",
+        "Sockets: opaque light-baffle behind each socket cavity; every device gasketed to the face",
+        "Datum: lower-left face corner. Box OPENS to the interior; all devices wired from inside.",
+    ]
+    axn = fig.add_axes([0.055, 0.10, 0.91, 0.17]); axn.axis("off"); axn.set_xlim(0, 1); axn.set_ylim(0, 1)
+    axn.add_patch(mpatches.Rectangle((0, 0), 1, 1, fc="#F7F7F7", ec=C_OUT, lw=0.8))
+    yy = 0.86
+    for i, ln in enumerate(notes):
+        axn.text(0.012, yy, ln, ha="left", va="top",
+                 fontsize=(7.6 if i == 0 else 6.8), fontweight=("bold" if i == 0 else "normal"),
+                 color=(C_OUT if i == 0 else C_DIM), **FONT)
+        yy -= 0.132
+
+    ax_tb = fig.add_axes([0.055, 0.0, 0.91, 0.085]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 8 OF 8",
+                drawing_title="EXTERNAL POWER PANEL — BOX FABRICATION DETAIL",
+                subtitle="Flanged penetration box · cut layout · wall/flange/shroud section · monochrome",
+                scale_note="PANEL A 1:1 · PANEL B thickness exaggerated · mm",
+                height=0.85)
+    fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet8.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print("  → electrical-sheet8.png  Done.")
 
 
 if __name__ == "__main__":
@@ -2339,4 +2464,5 @@ if __name__ == "__main__":
     draw_sheet5()
     draw_sheet6()
     draw_sheet7()
+    draw_sheet8()
     print("Done.")

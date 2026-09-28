@@ -1968,11 +1968,8 @@ def draw_sheet7():
                    xytext=(0, poly_inner_bot - 1),
                    arrowprops=arrow_props, zorder=8)
 
-    # Labels
-    leader(ax_nz, 0, beam_bot_z + BEAMH - 2,
-           n_xl + 20, beam_bot_z + BEAMH / 2 + 3,
-           BEAM_SECT_LABEL,
-           fs=5, color=C_FRAME, font=FONT, zorder=20)
+    # Labels — the beam section is called out once on the center-feed panel (ax_cf)
+    # and dimensioned here via draw_dim_v; no duplicate material label on the beam.
     leader(ax_nz, n_xr - 10, poly_top - poly_wall / 2,
            n_xr - 2, poly_ctr + 2,
            f"3/4\" LDPE POLY\nMANIFOLD OD {POLY_OD:.0f}",

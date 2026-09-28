@@ -2402,8 +2402,8 @@ def draw_sheet8():
         ax.plot([-30 - k * 23, y_feat[yv]], [yv, yv], **proj)
 
     # ── size leaders (right) ──
-    leader(ax, mc4R + _MC4_D / 2, _MC4_Y0 + 2 * _MC4_PITCH, W + 22, H - 14, f"6× ⌀{_MC4_D} MC4 PANEL HOLE ({_MC4_GAP}mm gap)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    leader(ax, _EST_X + _EST_D / 2, _EST_Y, W + 22, H - 62, f"⌀{_EST_D} E-STOP (22mm mount)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, mc4R + _MC4_D / 2, _MC4_Y0 + 2 * _MC4_PITCH, W + 22, H + 10, f"6× ⌀{_MC4_D} MC4 PANEL HOLE ({_MC4_GAP}mm gap)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, _EST_X + _EST_D / 2, _EST_Y, W + 22, H * 0.4, f"⌀{_EST_D} E-STOP (22mm mount)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     leader(ax, _NEMA_X + _NEMA_W, _NEMA_Y + _NEMA_H / 2, W + 22, _NEMA_Y - 4, "SHORE-INLET CUTOUT\n(per inlet template)", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     leader(ax, _DUP_X + _DUP_W / 2, _DUP_Y, W + 22, _DUP_Y - 44, "1-GANG DUPLEX CUTOUT", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     leader(ax, W - MI, MI, W + 22, 6, f"4× ⌀{MD} (M{MD}) MOUNT · {MI}mm inset TYP", fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)

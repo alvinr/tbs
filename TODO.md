@@ -58,7 +58,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     (hinged-panel-report §2), so overview's 120mm is the drift → **band = 40mm (lighttrap is right)**. Fix: set
     overview's Fan-B band to `PANEL_CORNER_T` (draw the panel as the stepped 40/120 envelope) + consolidate to the
     shared lighttrap builder. NB: the ONLY real cargo-door requirement — doors close + no panel interference — is
-    already met and single-sourced as `fact:swung_door_clearance_mm` (+59mm swept-assembly min X in transport);
+    already met and single-sourced as `fact:swung_door_clearance_mm` (+29mm to the closed-door inner face in transport);
     this band nit does not affect it.
   - **Tray sump strainer foot position — RESOLVED 2026-09-28; fix in the 3D pass.** Correct pickup is **UNDER THE
     RISER = pw's Yd104** (clears the blue trunk at Yd69). Fix: move cp's `sump_foot` from Yd155 → Yd104 (+ unify

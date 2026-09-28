@@ -474,6 +474,11 @@ BRACE_T     = 3                      # RHS wall thickness (mm) ≈ 0.120in
 # hinge panel), it only takes seal-compression + cam-latch load. 50mm FACE = the seal landing; 20mm DEPTH.
 DOOR_FRAME_FACE  = 50                # seal-landing face width (mm)
 DOOR_FRAME_DEPTH = 20                # section depth into the container (mm)
+# Closed ISO cargo-door LEAF thickness (X) — ~40mm corrugation depth + peripheral tube frame ≈ 60mm.
+# The closed leaf straddles the door plane (X=0), so its INNER face sits +CARGO_DOOR_LEAF_T/2 inboard;
+# that is the surface the swung transport panel must clear (see SWUNG_DOOR_CLEARANCE_MM). Single-sourced
+# here for the light-trap model's ghosted door leaf.
+CARGO_DOOR_LEAF_T = 60               # mm
 BRACE_Z_BOT = RAIL_OFF_BOT           # 150mm — bottom cross-beam Z (raised +50 to clear the Z130 walkway)
 BRACE_Z_TOP = C_HGT - RAIL_OFF_TOP   # 2244mm — top cross-beam Z (dropped 44mm with the film-plane top rail)
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
@@ -597,13 +602,14 @@ LT_DRUM_CHAN_N        = 2    # channels total (1 drum opening × 2 edges)
 LT_DRUM_CHAN_RIVET_PITCH = 120  # rivets up the leg (mm) — Ø3.18 SS blind, same family as the rim/housing joints
 
 # Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
-# the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.
-# Its (positive) value is how far the swung frame sits INBOARD of the closed door plane (X=0) — the
-# true minimum clearance. COMPUTED from the swing geometry so it can't drift (was hardcoded +59 in
-# labels + ~8 docs). = 59 (precise 58.6).
-SWUNG_DOOR_CLEARANCE_MM = round(
-    PIVOT_X + (BAY_FRONT_X - PIVOT_X) * math.cos(math.radians(SWING_LOCK_DEG))
-            - (PANEL_CORNER_YD_R - PIVOT_YD) * math.sin(math.radians(SWING_LOCK_DEG)))
+# the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X
+# (=58.6mm inboard of the door plane). The TRUE clearance is to the CLOSED-DOOR INNER FACE, which sits
+# CARGO_DOOR_LEAF_T/2 (=30mm) inboard of the door plane — so subtract it. COMPUTED so it can't drift.
+# = 29 (precise 28.6). NB: this is a design figure; construction starts from actual measurements and
+# adjusts (the re-measure step in the construction sequence).
+SWUNG_FRAME_MIN_X = (PIVOT_X + (BAY_FRONT_X - PIVOT_X) * math.cos(math.radians(SWING_LOCK_DEG))
+                     - (PANEL_CORNER_YD_R - PIVOT_YD) * math.sin(math.radians(SWING_LOCK_DEG)))
+SWUNG_DOOR_CLEARANCE_MM = round(SWUNG_FRAME_MIN_X - CARGO_DOOR_LEAF_T / 2)
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct

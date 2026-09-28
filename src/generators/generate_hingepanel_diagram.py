@@ -1420,7 +1420,7 @@ def sheet4():
         "The panel + drum SWING ~56° about the vertical",
         "pivot (the film far-left post), pulling the punch-",
         "out bay inboard of the door plane so the cargo",
-        f"doors close (true min X +{SWUNG_DOOR_CLEARANCE_MM}mm).",
+        f"doors close (clears the closed door by +{SWUNG_DOOR_CLEARANCE_MM}mm).",
         "",
         "1.  The swinging cage transitions the X=150 rail",
         "    plane, so the two LEFT film rails (TL+BL) are",

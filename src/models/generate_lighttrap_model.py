@@ -49,7 +49,7 @@ PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X
 PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §2.1)
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
 from tbs_constants import PANEL_FLOOR_GAP_SIDE
-from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH
+from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH, CARGO_DOOR_LEAF_T
 PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 195 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
 from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   # apron inner edges (12mm off the cage sides); vertical strip brushes bridge the gap; far-pivot fixed stub width
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
@@ -860,7 +860,7 @@ def door_leaf_local(side):
     hinge. side 'near' (extends +Yd from the Yd=0 corner) or 'far' (extends -Yd
     from the Yd=C_WID corner). At RotZ=0 the leaf lies CLOSED across the opening;
     the DC swings it to ±180° (fully open, flat in the door-frame plane)."""
-    dt = 60                                   # leaf thickness (X at closed)
+    dt = CARGO_DOOR_LEAF_T                     # leaf thickness (X at closed) — single-sourced
     leaf_len = ov.C_WID / 2 - 3               # half width minus the center meeting gap
     y0 = 0 if side == "near" else -leaf_len
     return ruby_box(f"Cargo door leaf {side}", -dt / 2, y0, 0,

@@ -373,7 +373,7 @@ def draw_sheet1():
     ax.text(TN_CX, TN_CY,
             "TRANSPORT (rev10): strike the LEFT film rails + lift out\n"
             "the left walkway → cargo panel + drum SWING ~56° about\n"
-            f"the pivot post, clearing the door (true min X +{SWUNG_DOOR_CLEARANCE_MM}mm)",
+            f"the pivot post, clearing the door (closed-door inner face +{SWUNG_DOOR_CLEARANCE_MM}mm)",
             ha="center", va="center", fontsize=6.2, color="#0D47A1",
             fontweight="bold", zorder=12)
     # Leader arrow from note top to drum box bottom-center

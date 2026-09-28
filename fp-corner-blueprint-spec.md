@@ -109,7 +109,7 @@ the bottom (weight) corner — NOT the flat "inverted-U, wheels-under-web" build
 has. Rationale: the wheels-under-web build is unsound (gravity drops the hanging carriage away from the
 rollers); a captured skate on a web-vertical rail holds the corner regardless of load direction (it
 reacts the plane's tip-force, not gravity). The transport swing does not constrain this — the left rails
-are transport drop-ins (removed for the ~56° swing; door clearance `SWUNG_DOOR_CLEARANCE_MM`=59mm is
+are transport drop-ins (removed for the ~56° swing; door clearance `SWUNG_DOOR_CLEARANCE_MM`=29mm is
 unaffected).
 
 **The old Sheet 10 was reverted** (commit on this branch): its wheels-under-web section was wrong and it

@@ -207,10 +207,12 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   chain/links/bolt-on hinge; latch→1619A74) + costing; (4) report `chemistry-prep-shelves.md` §3.1/3.2/3.3(load
   block)/6/7 to the new design; (5) 3D `chem_shelf()` builder (remove frame, add chain stays) → overview re-send.
   **2D CASCADE DONE 2026-09-07** — items (1)–(4) landed (SHELF_T 22→18, parts+costing reconciled, report + shelf/
-  pinhole/weight diagrams regenerated, hardware firm-sourced). **Remaining:** (5) the 3D `chem_shelf()` rebuild →
-  overview/construction re-send (deferred, needs the live model — pairs with the corridor-water comment cleanup).
-  **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual: datum/tolerance
-  callouts (Phase C) if the shelf goes to a fabricator, and the 3D re-send.
+  pinhole/weight diagrams regenerated, hardware firm-sourced). **3D DONE (verified 2026-09-28):** the `shelf()`
+  builder was rebuilt to the ply-primary design (18mm board + spill lips + piano hinge + 2 SS chain stays, no
+  steel frame) and is wired into overview / construction / electrical; `manifest.py --check` confirms all `.skp`
+  hashes are current (the rebuild rode along in a later overview re-send).
+  **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual (only): datum/tolerance
+  callouts (Phase C) if the shelf goes to a fabricator.
 - [ ] **Disc-holder cost double-count check (costing review).** Confirm the pinhole disc holder (`pdh-*`)
   is not double-counted against the flat pinhole plate in the baseline scenario — it *replaces* the plate.
   Verify at the next costing review.

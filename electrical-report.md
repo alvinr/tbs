@@ -173,9 +173,11 @@ The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC o
 
 ![External Power Panel — Sheet 6: arrangement, wall section, wiring](assets/electrical-sheet6.png)
 
-Sheet 6 gives the box arrangement, the cross-section through the corrugated wall, and the wiring. The dimensioned **fabrication detail** — the front-face cut layout (every hole position + size), the broken-out wall/flange/shroud section, and the material / finish / tolerance notes — is on **Sheet 8**:
+Sheet 6 gives the box arrangement, the cross-section through the corrugated wall, and the wiring. The **fabrication detail** is on two sheets: **Sheet 8** — the fully-dimensioned front-face cut layout (every hole/cutout/bolt located by a dim_h and dim_v from the lower-left datum, with cut sizes), and **Sheet 9** — the box pieces as a cut list (face/flange plate + shroud walls, each dimensioned) plus the securing detail through the corrugated wall (the 4× M6 through-bolts + backing + flashing seal).
 
-![External Power Panel — Sheet 8: box fabrication detail](assets/electrical-sheet8.png)
+![External Power Panel — Sheet 8: face plate fabrication (dimensioned cut layout)](assets/electrical-sheet8.png)
+
+![External Power Panel — Sheet 9: box pieces (cut list) + wall-securing detail](assets/electrical-sheet9.png)
 
 ## 6. Interior Lighting
 

@@ -148,6 +148,7 @@ DIAG_IMAGE_FILES = [
     "electrical-sheet6.png",
     "electrical-sheet7.png",
     "electrical-sheet8.png",
+    "electrical-sheet9.png",
     "ventilation-sheet1.png",
     "ventilation-sheet2.png",
     "ventilation-sheet3.png",

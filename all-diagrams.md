@@ -132,7 +132,9 @@
 
 ![TBS-001 Electrical — Sheet 7: System Schematic (Symbol Diagram)](assets/electrical-sheet7.png)
 
-![TBS-001 Electrical — Sheet 8: External Power Panel — Box Fabrication Detail](assets/electrical-sheet8.png)
+![TBS-001 Electrical — Sheet 8: External Power Panel — Face Plate Fabrication](assets/electrical-sheet8.png)
+
+![TBS-001 Electrical — Sheet 9: External Power Panel — Box Assembly & Wall Mount](assets/electrical-sheet9.png)
 
 ---
 

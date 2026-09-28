@@ -2374,10 +2374,11 @@ def draw_sheet8():
     # cutout near-edge (datum-side) coords — a rectangle is located by an EDGE, not a centre
     nema_xL, nema_yB = _NEMA_X, _NEMA_Y
     dup_xL, dup_yB = _DUP_X - _DUP_W / 2, _DUP_Y - _DUP_H / 2
-    # ── baseline dim_h (X) stacked below · circles by centre, cutouts by their LEFT edge ──
-    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, W - MI]):
+    cut_r = nema_xL + _NEMA_W                        # shared cutout right edge (shore-inlet == duplex)
+    # ── baseline dim_h (X) stacked below · circles by centre, cutouts by their LEFT + shared RIGHT edge ──
+    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, cut_r, W - MI]):
         draw_dim_h(ax, 0, xv, -30 - k * 23, f"{xv:g}mm", offset=4, fs=5.2, above=False, font=FONT)
-    draw_dim_h(ax, 0, W, -30 - 7 * 23, f"{W}mm OVERALL", offset=6, fs=6.4, above=False, font=FONT)
+    draw_dim_h(ax, 0, W, -30 - 8 * 23, f"{W}mm OVERALL", offset=6, fs=6.4, above=False, font=FONT)
     # ── baseline dim_v (Y) stacked left · circles by centre, cutouts by their BOTTOM edge ──
     for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, 175, H - MI]):
         draw_dim_v(ax, -30 - k * 23, 0, yv, f"{yv:g}mm", offset=4, fs=5.2, font=FONT)
@@ -2393,8 +2394,8 @@ def draw_sheet8():
     # ── faint dotted projection (witness) lines — trace each baseline dim to its feature ──
     proj = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)
     x_feat = {MI: MI, mc4L: _MC4_Y0, mc4R: _MC4_Y0, _EST_X: _EST_Y,
-              nema_xL: nema_yB, dup_xL: dup_yB, W - MI: MI}
-    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, W - MI]):
+              nema_xL: nema_yB, dup_xL: dup_yB, cut_r: nema_yB, W - MI: MI}
+    for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, cut_r, W - MI]):
         ax.plot([xv, xv], [-30 - k * 23, x_feat[xv]], **proj)
     y_feat = {MI: MI, _MC4_Y0: mc4L, dup_yB: dup_xL, _EST_Y: _EST_X - _EST_D / 2,
               120: mc4L, nema_yB: nema_xL, 175: mc4L, H - MI: MI}

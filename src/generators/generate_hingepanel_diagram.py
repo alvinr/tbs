@@ -1940,8 +1940,8 @@ def _frame_ga(mirror=False):
     hbar(STEP, jR, yR)                                        # far-corner bottom rail (raised)
     vbar(jL, 0, PH, "CENTER-ZONE JAMB\n(both sides — drum cage welded\ninboard; surround rivets to the\ncage, Sheet 7)", (1700, (400, 1900)))
     vbar(jR, 0, PH)                                           # far center jamb
-    hbar(z_hdr, jL, jR)                                       # drum header
-    hbar(z_sill - RHS, jL, jR)                                 # drum sill
+    hbar(z_hdr, jL + RHS, jR)                                 # drum header — BUTTS between the jambs (both inner faces), symmetric
+    hbar(z_sill - RHS, jL + RHS, jR)                          # drum sill — BUTTS between the jambs (both inner faces), symmetric
     # ── bottom-step callout + dim (both corner zones raised by STEP) ──
     for sxr in (jL, jR + RHS):                                # step risers at the outboard jamb faces
         ax.plot([sxr, sxr], [0, STEP], color="#B00", lw=2.2, zorder=8)
@@ -2833,7 +2833,8 @@ def sheet17():
     leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 28, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
     leader(ax, (cx, cy), (cx - hpw - 28, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
     px, syd = Cx + 44, -46
-    ax.text(Cx + 92, -8, "SECTION — plate pair sandwiches the wall (thickness exaggerated)", ha="center", fontsize=6.2, color=C_DIM, **FONT)
+    ax.text(Cx + 92, -6, "DETAIL C — SECTION on the stay-EYE centerline", ha="center", fontsize=6.6, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Cx + 92, -14, "plate pair sandwiches the wall · the 4× M16 CLAMP bolts are the corner holes above (not on this line)", ha="center", fontsize=5.6, color=C_DIM, **FONT)
     ax.add_patch(Rectangle((px, syd), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((px + 9, syd + 6), 8, 28, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))
     ax.add_patch(Rectangle((px + 17, syd), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
@@ -2843,6 +2844,7 @@ def sheet17():
     ax.add_patch(Circle((px + 42, syd + 10), 6, fc=BG, ec=C_OUT, lw=1.2, zorder=6))
     ax.plot([px + 48, px + 80], [syd + 10, syd + 10], color="#101010", lw=2.0, zorder=6)
     leader(ax, (px + 22, syd + 40), (px + 34, syd + 60), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
+    leader(ax, (px + 60, syd + 10), (px + 88, syd + 24), "welded stay EYE + turnbuckle rod\n(NOT a clamp bolt)", col=C_OUT, fs=5.6, ha="left")
 
     # ═══ DETAIL D — STAY LOCATIONS (swing-stile elevation · heights from the floor) ═══
     Dx = 690

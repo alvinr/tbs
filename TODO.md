@@ -44,6 +44,13 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - ✅ **spray_bar Sheet 7 `+192%` off-left FIXED (2026-09-28)** — it was a hidden DUPLICATE beam-section label
     on the nozzle panel (not the `CARRIAGE_YD_CENTER` hypothesis); dropped it (beam is called out on ax_cf +
     dimensioned on ax_nz). This bullet stays only as the note that the anomaly is resolved; delete on next prune.
+- [ ] **Consolidated plywood cut-sheet generator (2026-09-29, from hingepanel Sheet 11 review).** Plywood is
+  used in many places (Fan-B mount band, EP backboard, pinhole-wall filter-skid backing, corridor plumbing
+  panel, fold-down light aprons, cooler stow, …) but each sheet cuts its own ad-hoc plywood rectangle. Build
+  ONE plywood cut-sheet generator that lays out every plywood part (by grade/thickness) with dimensions +
+  a location/where-used column, so each consumer sheet can *reference* it instead of re-drawing. Single-source
+  the plywood sizes (a plywood registry, likely off `parts.py` ply entries). Reduces drift + gives the
+  fabricator one nesting sheet. (Sheet 11's Fan-B ply would then reference it.)
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking

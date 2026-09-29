@@ -1777,10 +1777,12 @@ def sheet7():
     ax.text(90, 178, "vertical section (roof shown) · thickness exaggerated", ha="center",
             fontsize=7, color=C_DIM, **FONT)
 
-    # Frame top/bottom beam — the cap rivets to its OUTER face
+    # Frame top/bottom beam — 50×50×3 RHS (HOLLOW), the cap rivets to its OUTER (top) WALL
     bx, by, bw, bh = 104, 92, 78, 58
+    _wt = 8                                           # drawn wall (exaggerated; true 3mm) — the RHS is hollow
     ax.add_patch(Rectangle((bx, by), bw, bh, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=3))
-    leader(ax, (bx + 34, by + 12), (150, 44), "frame top/bottom BEAM\n(cap rivets to its outer face)", col=C_OUT)
+    ax.add_patch(Rectangle((bx + _wt, by + _wt), bw - 2 * _wt, bh - 2 * _wt, fc=BG, ec=C_OUT, lw=0.9, zorder=3.5))  # hollow
+    leader(ax, (bx + 20, by + bh - _wt / 2), (150, 44), "frame top/bottom BEAM 50×50×3 RHS\n(HOLLOW — cap rivets to its outer wall)", col=C_OUT)
     # Plain HDPE cap ON the outside (top) of the beam — NO cut-out
     capz = by + bh                                  # cap underside = beam outer face
     ax.add_patch(Rectangle((30, capz), 150, 14, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
@@ -1792,9 +1794,10 @@ def sheet7():
     # caulk bead at the skin-edge ↔ cap-underside butt
     ax.add_patch(Rectangle((hx - 3, capz - 8), hw + 6, 8, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=6))
     leader(ax, (hx - 2, capz - 5), (14, 132), "silicone CAULK bead\n(skin edge ↔ cap seal)", col=C_OUT)
-    # blind rivet: vertical, through the cap + the beam wall
-    _blind_rivet(ax, 150, capz - 3, 90, 34, d=RIV_D)
-    leader(ax, (150, capz + 16), (150, 118), f"1/8\" 18-8 SS blind rivet\ncap → beam @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
+    # blind rivet: vertical, through the cap (14) + the beam's TOP WALL (8) only — the blind head
+    # forms in the RHS HOLLOW (grip = cap + one wall; NOT driven into a solid section).
+    _blind_rivet(ax, 150, capz + 2, 90, 24, d=RIV_D)
+    leader(ax, (150, capz + 16), (150, 118), f"1/8\" 18-8 SS blind rivet · cap → beam OUTER wall\n(blind head sets inside the RHS hollow) @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
     draw_dim_v(ax, 22, capz, capz + 14, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
 
     # ═══ DETAIL B — surround → steel frame blind-rivet lap ══════════════════════
@@ -2805,6 +2808,10 @@ def sheet17():
     draw_dim_h(ax, cx - hpw, cx, cy - hpw - 8, f"{LT_STAY_PLATE_HW}mm", fs=6, offset=8, above=False)
 #     draw_dim_v(ax, cx + hpw + 28, cy - hpw, cy, f"{LT_STAY_PLATE_HW}mm", fs=6, offset=8, right=True)
     draw_dim_v(ax, cx - hpw - 8, cy - hpw, cy, f"{LT_STAY_PLATE_HW}mm", fs=6, offset=8, right=False)
+    # HORIZONTAL hole positions (dim_h) — edge · gauge · edge above the plate (the 30/90/30 chain = 150 width)
+    draw_dim_h(ax, cx - hbg, cx + hbg, cy + hpw + 8, f"{BGAUGE}mm", fs=6, offset=7, above=True)
+    draw_dim_h(ax, cx - hpw, cx - hbg, cy + hpw + 8, f"{_edge}mm", fs=5.4, offset=7, above=True)
+    draw_dim_h(ax, cx + hbg, cx + hpw, cy + hpw + 8, f"{_edge}mm", fs=5.4, offset=7, above=True)
     leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 28, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
     leader(ax, (cx, cy), (cx - hpw - 28, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
     px, syd = Cx + 44, -46
@@ -2831,12 +2838,15 @@ def sheet17():
     ax.text(stx + 26, _dz(0), "FLOOR (Z0)", fontsize=5.6, color=C_DIM, va="center", ha="left", **FONT)
     ax.add_patch(Rectangle((stx, _dz(PANEL_FLOOR_GAP)), stw, _dz(BRACE_Z_TOP) - _dz(PANEL_FLOOR_GAP),
                            fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=4))          # swing stile (to header Z2244)
+    _lh = LT_STAY_LUG_H * _dsc              # lug height TO SCALE — sits within the stile (60mm @ Z2210 tops out below the Z2244 header)
     for z in LT_STAY_Z:                     # the two stay lugs (one at each height)
-        ax.add_patch(Rectangle((stx + stw, _dz(z) - 4), 13, 8, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))
-        ax.add_patch(Circle((stx + stw + 8, _dz(z)), 2.6, fc=BG, ec=C_OUT, lw=0.9, zorder=6))
+        ax.add_patch(Rectangle((stx + stw, _dz(z) - _lh / 2), 12, _lh, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))
+        ax.add_patch(Circle((stx + stw + 7, _dz(z)), min(2.2, _lh * 0.42), fc=BG, ec=C_OUT, lw=0.9, zorder=6))
     draw_dim_v(ax, stx - 12, _dz(0), _dz(LT_STAY_Z[0]), f"{LT_STAY_Z[0]}mm", fs=6, offset=7, right=False)
     draw_dim_v(ax, stx - 30, _dz(0), _dz(LT_STAY_Z[1]), f"{LT_STAY_Z[1]}mm", fs=6, offset=7, right=False)
-    leader(ax, (stx + stw + 8, _dz(LT_STAY_Z[1])), (stx + stw + 30, _dz(LT_STAY_Z[1]) - 6), "stay lug ×2\n(Details B + C)", col=C_OUT, fs=6, ha="left")
+    _midz = (_dz(LT_STAY_Z[0]) + _dz(LT_STAY_Z[1])) / 2
+    leader(ax, (stx + stw / 2, _midz), (stx + stw + 32, _midz), "swing stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6, ha="left")
+    leader(ax, (stx + stw + 7, _dz(LT_STAY_Z[1])), (stx + stw + 32, _dz(LT_STAY_Z[1]) - 4), "stay lug ×2\n(Details B + C)", col=C_OUT, fs=6, ha="left")
 
     draw_notes(ax, [
         "TRANSPORT LOCK — SPEC:",

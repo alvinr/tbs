@@ -1827,7 +1827,7 @@ def sheet7():
     leader(ax, (fx + 30, fy + ft + 5), (220, 160), f"HDPE surround lap\n{T_SKIN}mm 1/8\" skin/wall", col=C_OUT)
     # sealant FILLET (triangle) in the corner where the flange-top HDPE lap and the side HDPE lap BUTT
     # up — this is the skin↔skin joint that must be light-tight (not the lap's free left edge).
-    ax.add_patch(Polygon([(fx + fw, fy + ft + 10), (fx + fw + 8, fy + ft), (fx + fw + 8, fy + ft + 10)],
+    ax.add_patch(Polygon([(fx + fw, fy + ft + 10), (fx + fw, fy + ft), (fx + fw + 8, fy + ft)],
                          closed=True, fc="#5A3020", ec=C_OUT, lw=0.7, zorder=6))
     leader(ax, (fx + fw + 2, fy + ft + 3), (fx + fw + 12, fy - 30), "DP8010 sealant fillet\n(seals the skin↔skin butt)", col=C_OUT, fs=6, ha="left")
     # blind rivet through the lap (axis vertical, +Z head on the HDPE side). CENTER on the full stack
@@ -2287,14 +2287,14 @@ def sheet12():
             continue
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
-    # locate the mounting fastener across the frame: centered on the 50×50 door frame (25mm each face)
+    # locate the mounting fastener: on the holder-channel (14mm from its edge) + on the 50×50 frame (25mm from its face)
     _fc = Cx + 70                                                   # fastener CL (= frame + holder centerline)
     _wl12 = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)
-    ax.plot([_fc, _fc], [72, 44], **_wl12)                          # fastener CL down to the dim
-    for _xw in (Cx + 30, Cx + 110):                                 # frame outer faces
-        ax.plot([_xw, _xw], [100, 44], **_wl12)
-    draw_dim_h(ax, Cx + 30, _fc, 42, "25mm", offset=7, above=False, fs=6, font=FONT)
-    draw_dim_h(ax, _fc, Cx + 110, 42, "25mm", offset=7, above=False, fs=6, font=FONT)
+    ax.plot([_fc, _fc], [72, 30], **_wl12)                          # fastener CL down to the dims
+    ax.plot([Cx + 48, Cx + 48], [78, 46], **_wl12)                  # holder-channel left edge
+    ax.plot([Cx + 30, Cx + 30], [100, 32], **_wl12)                 # frame outer face
+    draw_dim_h(ax, Cx + 48, _fc, 48, "14mm", offset=6, above=False, fs=5.6, font=FONT)   # position on the holder channel
+    draw_dim_h(ax, Cx + 30, _fc, 34, "25mm", offset=6, above=False, fs=6, font=FONT)     # position on the 50×50 frame
 
     title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

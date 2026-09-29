@@ -1991,8 +1991,9 @@ def _frame_ga(mirror=False):
         " Header + sill ..... 2 × 1,056",
     ]
     if not mirror:   # the schedule lives on Sheet 8; the exterior mirror (Sheet 9) omits it (avoids the reversed-axis overflow)
-        ax.text(-650, 1560, '\n'.join(rows), ha="left", va="top", fontsize=6.8, color=C_OUT, **FONT,
-                bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8), zorder=11)
+        draw_notes(ax, rows, -650, 1560, spacing=25, fs=6.8, title_fs=7.4,
+                   color=C_OUT, title_color=C_OUT, width=530,
+                   border_color=C_DIM, font=FONT, zorder=11)
 
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL}mm SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
     # horizontal component chain (near strip · center zone · far strip) — top row, above the cage dim

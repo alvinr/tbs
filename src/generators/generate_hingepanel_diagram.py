@@ -1659,7 +1659,7 @@ def sheet6():
         "• Caps are PLAIN plates (no cut-out): they sit on the OUTSIDE of the top/bottom frame beams and blind-rivet to them; the housing outer skin's top/bottom edge butts the cap underside + a caulk bead seals it (Detail A, SHEET 7). No extrusion-weld, no neoprene.",
         "• Personnel opening trimmed to the housing at assembly — align to SHEET 2 (plan).",
     ]
-    draw_notes(ax, notes, 0, -150, spacing=34, fs=6.5, title_fs=7.0,
+    draw_notes(ax, notes, xW1, yB + BAY_D, spacing=34, fs=6.5, title_fs=7.0,
                color=C_OUT, title_color=C_OUT, width=2400, wrap=110,
                border_color=C_DIM, font=FONT)
 

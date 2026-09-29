@@ -1796,7 +1796,7 @@ def sheet7():
     leader(ax, (hx - 2, capz - 5), (14, 132), "silicone CAULK bead\n(skin edge ↔ cap seal)", col=C_OUT)
     # blind rivet: vertical, through the cap (14) + the beam's TOP WALL (8) only — the blind head
     # forms in the RHS HOLLOW (grip = cap + one wall; NOT driven into a solid section).
-    _blind_rivet(ax, 150, capz + 2, 90, 24, d=RIV_D)
+    _blind_rivet(ax, 150, capz + 3, 90, 22, d=RIV_D)   # grip = cap(14)+wall(8); blind-head flat butts the wall INNER face (capz-8)
     leader(ax, (150, capz + 16), (150, 118), f"1/8\" 18-8 SS blind rivet · cap → beam OUTER wall\n(blind head sets inside the RHS hollow) @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
     draw_dim_v(ax, 22, capz, capz + 14, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
 
@@ -1987,6 +1987,16 @@ def _frame_ga(mirror=False):
     draw_dim_v(ax, PW + 100, z_sill, z_hdr, f"{z_hdr - z_sill}mm cage", offset=50, fs=6, font=FONT, right=True)
     draw_dim_v(ax, PW + 100, z_hdr, PH, f"{PH - z_hdr}mm", offset=50, fs=6, font=FONT, right=True)
     draw_dim_v(ax, PW + 200, 0, PH, f"{PH}mm", offset=50, fs=7, font=FONT, right=True)
+    # witness lines — tie each horizontal zone/cage dim endpoint down to the frame so the ends read clearly
+    _wl = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=3)
+    for xw in (0, yL, jL, jR, yR, PW):
+        ax.plot([xw, xw], [PH, PH + 135], **_wl)                         # zone dims → frame top
+    for xw in (DRUM_CAGE_YD_L, DRUM_CAGE_YD_R):
+        ax.plot([xw, xw], [z_hdr, PH + 45], **_wl)                       # drum-cage dim → the drum header
+    # RHS member section width (typical of every frame member) + the drum header/sill Z positions
+    draw_dim_h(ax, yL, yL + RHS, 1120, f"{RHS:.0f}mm RHS (all members)", offset=14, fs=6, font=FONT)
+    draw_dim_v(ax, jL - 120, 0, z_sill - RHS, f"{z_sill - RHS:.0f}mm", offset=16, fs=6, font=FONT, right=False)
+    draw_dim_v(ax, jL - 120, z_hdr, PH, f"{PH - z_hdr:.0f}mm", offset=16, fs=6, font=FONT, right=False)
 
     _view = "EXTERIOR elevation — viewed from OUTSIDE the cargo door toward the drum (mirror of Sheet 8)" if mirror else "swinging panel · front elevation"
     ax.text(PW / 2, PH + 295, f"STEEL FRAME — GENERAL ARRANGEMENT ({_view})",
@@ -2304,6 +2314,10 @@ def sheet13():
     draw_dim_h(ax, dB(48, 0)[0], dB(91, 0)[0], dB(0, 6)[1], "43mm tab reach", offset=-7, above=False, fs=5.6, font=FONT)
     draw_dim_v(ax, dB(116, 0)[0], dB(0, 69)[1], dB(0, 102)[1], "33mm", offset=8, fs=5.6, font=FONT, right=True)
     ax.plot([dB(84, 69)[0], dB(114, 69)[0]], [dB(0, 69)[1], dB(0, 69)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)   # witness — weld base leg
+    # locate the L-tab base leg on the RHS face (dim_v from the RHS edge) + label the upstand plate
+    draw_dim_v(ax, dB(-9, 0)[0], dB(0, 48)[1], dB(0, 69)[1], "21mm", offset=7, fs=5.6, font=FONT, right=False)
+    ax.plot([dB(0, 48)[0], dB(-9, 48)[0]], [dB(0, 48)[1], dB(0, 48)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)
+    leader(ax, dB(87, 88), (bx0 + 150, 90), "L-tab UPSTAND plate\n(vertical — the bolt seats here)", col=C_OUT, fw="bold", fs=6.0)
 
     # ── COMPANION: rotated 90° view (looking along the bolt axis) — the bolt seats in the tab plate;
     #    the frame stile is off to the side, so the bolt does NOT pass through the frame. ──
@@ -2389,6 +2403,13 @@ def sheet14():
     leader(ax, d(4, -18), (ox - 200, oy - 6 * s), "fillet weld\nbracket→hub", col=C_OUT, fs=6.5)
     leader(ax, d(30, 20), (ox + 20 * s, oy + 80 * s), "bracket plate", col=C_OUT, fs=6.5)
     leader(ax, d(66, 20), (ox + 118 * s, oy + 78 * s), "fillet weld bracket→leaf stile\n(no bolts through the closed tube)", col=C_OUT, fw="bold", fs=6.5)
+    leader(ax, d(90, -42), (ox + 118 * s, oy - 78 * s), "LEAF PIVOT-EDGE STILE\n(2×2×0.120 RHS — the 'beam')", col=C_OUT, fw="bold", fs=6.5)
+    # dim_v — bracket-plate height + its centering on the leaf stile (the beam): 20 / 44 / 20
+    _dvx = d(116, 0)[0] + 34
+    for (za, zb, lbl) in [((0, 22), (0, 42), "20mm"), ((0, -22), (0, 22), "44mm\nbracket"), ((0, -42), (0, -22), "20mm")]:
+        draw_dim_v(ax, _dvx, d(*za)[1], d(*zb)[1], lbl, offset=9, fs=5.8, font=FONT, right=True)
+    for zy in (-42, -22, 22, 42):
+        ax.plot([d(66, zy)[0], _dvx], [d(0, zy)[1], d(0, zy)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)  # witness
 
     draw_notes(ax, [
         "NOTES",

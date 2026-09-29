@@ -1484,7 +1484,7 @@ def sheet5():
     leader(ax, (24, -25), (50, -50), "2×2×0.120in steel frame jamb\n(beside drum aperture)", col=C_OUT)
     # 1/8″ HDPE interior skin on the +X face
     ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
-    leader(ax, (52, 20), (78, 95), "1/8″ HDPE\ninterior skin", col=C_OUT)
+    leader(ax, (52, 20), (65, 90), "1/8″ HDPE\ninterior skin", col=C_OUT)
     # 1871A65 round pull handle (SAME part as the interior drum handle): foot plate,
     # two ~52mm standoff posts, Ø12.7 grip bar (vertical → a circle in this section).
     HA = 0.65
@@ -1497,7 +1497,7 @@ def sheet5():
     # 2× 1/4" screws through the feet into RIVNUTS set in the near RHS wall (load into steel, not the skin)
     for by in (-15, 15):
         _draw_bolt(ax, 54, by, 10, d=6, vertical=False, head=1, end="rivnut", wall=3, zb=7)
-    leader(ax, (49, 15), (8, 58),
+    leader(ax, (49, 15), (0, 58),
            "2× 1/4\" screws into RIVNUTS in the near\nRHS wall (can't tap the 3mm tube; load\nreacts into STEEL, not the HDPE skin)", col=C_OUT, fw="bold")
 
     # ── dimensions (prove the drawing is to scale) ──

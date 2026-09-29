@@ -1851,7 +1851,7 @@ def sheet7():
     draw_notes(ax, [
         "SURROUND ASSEMBLY",
         f"The HDPE surround (bay walls, floor/roof caps, face skins) laps the drum CAGE (50×50×3 RHS, welded into the panel frame) and is blind-riveted @ {LT_RIVET_PITCH}mm + DP8010 bead. The floor/roof caps are PLAIN plates riveted to the frame outside; the housing skin's top/bottom edge butts the cap + a caulk bead (Detail A). Flat patterns → SHEET 6.",
-    ], 170, 25, spacing=3.4, fs=6.5, title_fs=7.0, ha="center",
+    ], 170, 5, spacing=3.4, fs=6.5, title_fs=7.0, ha="center",
        color=C_OUT, title_color=C_OUT, width=180, wrap=88,
        border_color=C_DIM, font=FONT)
 

@@ -1780,7 +1780,7 @@ def sheet7():
     _wt = 8                                           # drawn wall (exaggerated; true 3mm) — the RHS is hollow
     ax.add_patch(Rectangle((bx, by), bw, bh, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=3))
     ax.add_patch(Rectangle((bx + _wt, by + _wt), bw - 2 * _wt, bh - 2 * _wt, fc=BG, ec=C_OUT, lw=0.9, zorder=3.5))  # hollow
-    leader(ax, (bx + 20, by + bh - _wt / 2), (150, 44), "frame top/bottom BEAM 50×50×3 RHS\n(HOLLOW — cap rivets to its outer wall)", col=C_OUT)
+    leader(ax, (bx + 5, by + _wt / 2), (120, 50), "frame top/bottom BEAM 50×50×3 RHS\n(HOLLOW — cap rivets to its outer wall)", col=C_OUT)
     # Plain HDPE cap ON the outside (top) of the beam — NO cut-out
     capz = by + bh                                  # cap underside = beam outer face
     ax.add_patch(Rectangle((30, capz), 150, 14, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
@@ -1804,7 +1804,7 @@ def sheet7():
     # blind rivet: vertical, through the cap (14) + the beam's TOP WALL (8) only — the blind head
     # forms in the RHS HOLLOW (grip = cap + one wall; NOT driven into a solid section).
     _blind_rivet(ax, 150, capz + 3, 90, 22, d=RIV_D)   # grip = cap(14)+wall(8); blind-head flat butts the wall INNER face (capz-8)
-    leader(ax, (150, capz + 16), (150, 118), f"1/8\" 18-8 SS blind rivet · cap → beam OUTER wall\n(blind head sets inside the RHS hollow) @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
+    leader(ax, (150, capz - 10), (165, 78), f"1/8\" 18-8 SS blind rivet · cap → beam OUTER wall\n(blind head sets inside the RHS hollow) @ {LT_RIVET_PITCH}mm", col=C_OUT)
     draw_dim_v(ax, 22, capz, capz + 14, f"{T_SKIN}mm", offset=10, fs=6.2, font=FONT)
 
     # ═══ DETAIL B — surround → steel frame blind-rivet lap ══════════════════════
@@ -1829,8 +1829,8 @@ def sheet7():
     # blind rivet through the lap (axis vertical, +Z head on the HDPE side). CENTER on the full stack
     # (flange ft + HDPE 10) so the factory head BUTTS the HDPE outer face and the blind head the flange back.
     _blind_rivet(ax, fx + 40, fy + (ft + 10) / 2.0, 90, ft + 10, d=RIV_D)
-    leader(ax, (fx + 40, fy + ft + 16), (300, 165),
-           f"1/8\" 18-8 SS blind rivet\nMcMaster 97525A435\ndrill Ø{LT_RIVET_HOLE} @ {LT_RIVET_PITCH}mm", col=C_OUT, fw="bold")
+    leader(ax, (fx + 40, fy + ft + 16), (300, 160),
+           f"1/8\" 18-8 SS blind rivet\nMcMaster 97525A435\ndrill Ø{LT_RIVET_HOLE} @ {LT_RIVET_PITCH}mm", col=C_OUT)
     # the post's SIDE face (steel) turns down from the flange — the HDPE wraps this corner
     ax.add_patch(Rectangle((fx + fw - ft, fy - 44), ft, 44 + ft, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))  # post side wall (steel behind the HDPE)
     ax.add_patch(Rectangle((fx + fw, fy - 44), 8, 44 + ft, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))                   # HDPE lap down the side face
@@ -1838,7 +1838,7 @@ def sheet7():
     # factory head butts the HDPE outer face (x=fx+fw+8) and the set head forms in the tube bore (x=fx+fw-ft)
     _blind_rivet(ax, fx + fw - ft / 2 + 4, fy - 12, 0, 20, d=RIV_D)                                                     # HDPE → into the STEEL side wall, butted
     leader(ax, (fx + fw + 4, fy - 30), (270, 30),
-           "HDPE also laps + rivets into the STEEL SIDE face of the post\n(fasten FRONT + SIDE faces — not the front only)", col=C_OUT, fw="bold", fs=6)
+           "HDPE also laps + rivets into the STEEL SIDE face of the post\n(fasten FRONT + SIDE faces — not the front only)", col=C_OUT, fs=6)
     # CUT (break) lines — the flange + HDPE lap continue to the LEFT, and the post side wall + HDPE
     # side lap continue DOWN (this is an enlarged corner; the members run on past the view).
     _lz = [(fx + 14, fy - 2), (fx + 8, fy + 5), (fx + 20, fy + 12), (fx + 8, fy + 19), (fx + 14, fy + 26)]

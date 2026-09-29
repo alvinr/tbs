@@ -1650,21 +1650,18 @@ def sheet6():
     ax.text(sbx + 250, sby - 70, "0        250       500 mm", ha="center", fontsize=6.5, color=C_OUT, **FONT)
 
     # ── materials / fabrication notes ────────────────────────────────────────
-    notes = (
-        "HDPE SURROUND — FABRICATION NOTES\n"
-        "• Material: 1/8\" (3.18mm) black UV-HDPE sheet — US Plastics 46684; interior face flat-black.\n"
-        "• 6 pieces: 2 center-zone face skins · 2 bay Yd side walls · upper + lower floor/roof caps.\n"
-        "• Bay = 4-wall corner-welded box (extrusion-welded seams); caps close the top + bottom.\n"
-        f"• Rivet each wall/skin lap to the drum CAGE posts/rails (welded into the panel frame) — FRONT + SIDE\n"
-        f"  faces — with 1/8\" 18-8 SS blind rivets @ {RIV_P}mm (drill Ø{LT_RIVET_HOLE}). Cage/rivet lap detail → SHEET 7.\n"
-        "• Caps are PLAIN plates (no cut-out): they sit on the OUTSIDE of the top/bottom frame beams and\n"
-        "  blind-rivet to them; the housing outer skin's top/bottom edge butts the cap underside + a caulk\n"
-        "  bead seals it (Detail A, SHEET 7). No extrusion-weld, no neoprene.\n"
-        "• Personnel opening trimmed to the housing at assembly — align to SHEET 2 (plan)."
-    )
-    ax.text(xC2, yB + BAY_D + 120, notes, ha="left", va="bottom", fontsize=7.0,
-            color=C_OUT, **FONT, zorder=10,
-            bbox=dict(boxstyle="round,pad=0.5", fc="#F4F1E8", ec=C_DIM, lw=0.8))
+    notes = [
+        "HDPE SURROUND — FABRICATION NOTES",
+        "• Material: 1/8\" (3.18mm) black UV-HDPE sheet — US Plastics 46684; interior face flat-black.",
+        "• 6 pieces: 2 center-zone face skins · 2 bay Yd side walls · upper + lower floor/roof caps.",
+        "• Bay = 4-wall corner-welded box (extrusion-welded seams); caps close the top + bottom.",
+        f"• Rivet each wall/skin lap to the drum CAGE posts/rails (welded into the panel frame) — FRONT + SIDE faces — with 1/8\" 18-8 SS blind rivets @ {RIV_P}mm (drill Ø{LT_RIVET_HOLE}). Cage/rivet lap detail → SHEET 7.",
+        "• Caps are PLAIN plates (no cut-out): they sit on the OUTSIDE of the top/bottom frame beams and blind-rivet to them; the housing outer skin's top/bottom edge butts the cap underside + a caulk bead seals it (Detail A, SHEET 7). No extrusion-weld, no neoprene.",
+        "• Personnel opening trimmed to the housing at assembly — align to SHEET 2 (plan).",
+    ]
+    draw_notes(ax, notes, 0, -150, spacing=34, fs=6.5, title_fs=7.0,
+               color=C_OUT, title_color=C_OUT, width=2400, wrap=110,
+               border_color=C_DIM, font=FONT)
 
     ax.text((xS1 + xW2 + BAY_D) / 2, yA + H_PANEL + 140,
             "HDPE SURROUND — FLAT-PATTERN CUT SHEETS  (developed flat; not the assembled bay)",

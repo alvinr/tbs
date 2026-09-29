@@ -1925,9 +1925,9 @@ def _frame_ga(mirror=False):
            "U-FRAME — welded steel channel\n(Yd0–180); hinge panel BUTTS UP\nhere. Flanges WELD to the container\ncargo-door frame (50×20×3 RHS,\nbolted M10 @ 300) — not load-bearing.", col=C_OUT, fw="bold", fs=6)
     leader(ax, (yL + 4, 500), (-275, 690), "web carries 2 cam-latch\nSTRIKE PLATES\n(engage the panel latches)", col=C_OUT, fs=6)
 
-    # NOTE: the Fan-B plywood band and the drum/cage envelope are intentionally NOT drawn here —
-    # this sheet is the STEEL FRAME general arrangement only. The drum + cage are detailed on
-    # Light-Trap Sheet 8; the Fan-B ply on Sheet 11. The center zone is left open to read as frame.
+    # NOTE: this sheet is the STEEL FRAME general arrangement only. The Fan-B plywood band is NOT
+    # drawn (detailed on Sheet 11); the drum/cage envelope is drawn GHOSTED (dashed) so the 962mm
+    # cage dim has a hard stop — the cage itself is detailed on Light-Trap Sheet 8.
 
     # ── swinging-frame perimeter + internal members ──
     vbar(yL, STEP, PH, "LEFT SWING STILE\n(2×2×0.120in RHS — transport-stay\nhooks weld here, Sheet 12)", (PH * 0.78, (-260, PH * 0.86)))  # bottom stepped up
@@ -1942,6 +1942,9 @@ def _frame_ga(mirror=False):
     vbar(jR, 0, PH)                                           # far center jamb
     hbar(z_hdr, jL + RHS, jR)                                 # drum header — BUTTS between the jambs (both inner faces), symmetric
     hbar(z_sill - RHS, jL + RHS, jR)                          # drum sill — BUTTS between the jambs (both inner faces), symmetric
+    # drum-cage ENVELOPE — ghosted (dashed) so the 962mm cage dim has a hard stop; detailed on Light-Trap Sheet 8
+    ax.add_patch(Rectangle((DRUM_CAGE_YD_L, z_sill), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, z_hdr - z_sill,
+                           fc="none", ec=C_DIM, lw=0.7, ls=(0, (5, 3)), alpha=0.55, zorder=2))
     # ── bottom-step callout + dim (both corner zones raised by STEP) ──
     for sxr in (jL, jR + RHS):                                # step risers at the outboard jamb faces
         ax.plot([sxr, sxr], [0, STEP], color="#B00", lw=2.2, zorder=8)
@@ -1979,7 +1982,9 @@ def _frame_ga(mirror=False):
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL}mm SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)
     # horizontal component chain (near strip · center zone · far strip) — top row, above the cage dim
     draw_dim_h(ax, 0, yL, PH + 135, f"{yL}mm", offset=16, fs=6, font=FONT)
-    draw_dim_h(ax, jL, jR, PH + 135, f"{jR - jL}mm center zone", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, yL, jL, PH + 135, f"{int(round(jL - yL))}mm corner", offset=16, fs=6, font=FONT)     # near corner: stile → left jamb
+    draw_dim_h(ax, jL, jR, PH + 135, f"{int(round(jR - jL))}mm center zone", offset=16, fs=6, font=FONT)
+    draw_dim_h(ax, jR, yR, PH + 135, f"{int(round(yR - jR))}mm corner", offset=16, fs=6, font=FONT)     # far corner: right jamb → stile
     draw_dim_h(ax, yR, PW, PH + 135, f"{int(PW - yR)}mm", offset=16, fs=6, font=FONT)
     draw_dim_h(ax, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, PH + 45, f"{DRUM_CAGE_YD_R - DRUM_CAGE_YD_L}mm drum cage", offset=16, fs=6, font=FONT)
     # vertical component chain (sill · cage · header→top) on the right, overall PH outermost
@@ -2310,8 +2315,9 @@ def sheet13():
     # dims (to scale)
     draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18mm", offset=-7, above=False, fs=5.6, font=FONT)
     draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50mm RHS", offset=-7, above=False, fs=5.6, font=FONT)
-    # material-CONNECTION dims: the L-tab reach (frame weld → ply) + the bolt offset above the weld base leg
-    draw_dim_h(ax, dB(48, 0)[0], dB(91, 0)[0], dB(0, 6)[1], "43mm tab reach", offset=-7, above=False, fs=5.6, font=FONT)
+    # material-CONNECTION dims: the tab base-leg reach (frame weld → upstand) + the upstand-plate thickness
+    draw_dim_h(ax, dB(48, 0)[0], dB(84, 0)[0], dB(0, 6)[1], "36mm tab", offset=-7, above=False, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(84, 0)[0], dB(91, 0)[0], dB(0, -8)[1], "7mm plate", offset=-7, above=False, fs=5.6, font=FONT)
     draw_dim_v(ax, dB(116, 0)[0], dB(0, 69)[1], dB(0, 102)[1], "33mm", offset=8, fs=5.6, font=FONT, right=True)
     ax.plot([dB(84, 69)[0], dB(114, 69)[0]], [dB(0, 69)[1], dB(0, 69)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)   # witness — weld base leg
     # locate the L-tab base leg on the RHS face (dim_v from the RHS edge) + label the upstand plate

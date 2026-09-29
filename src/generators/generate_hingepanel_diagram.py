@@ -1953,7 +1953,7 @@ def _frame_ga(mirror=False):
     hbar(STEP, yL, jL)                                        # near-corner bottom rail (raised)
     hbar(0, jL, jR)                                           # center bottom rail (lowest — over the tray)
     hbar(STEP, jR, yR)                                        # far-corner bottom rail (raised)
-    vbar(jL, 0, PH, "CENTER-ZONE JAMB\n(both sides — drum cage welded\ninboard; surround rivets to the\ncage, Sheet 7)", (1700, (400, 1900)))
+    vbar(jL, 0, PH, "CENTER-ZONE JAMB\n(both sides — drum cage welded\ninboard; surround rivets to the\ncage, Sheet 7)", (1700, (1000, 1900)))
     vbar(jR, 0, PH)                                           # far center jamb
     hbar(z_hdr, jL + RHS, jR)                                 # drum header — BUTTS between the jambs (both inner faces), symmetric
     hbar(z_sill - RHS, jL + RHS, jR)                          # drum sill — BUTTS between the jambs (both inner faces), symmetric

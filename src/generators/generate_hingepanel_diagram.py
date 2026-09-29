@@ -1992,7 +1992,7 @@ def _frame_ga(mirror=False):
     ]
     if not mirror:   # the schedule lives on Sheet 8; the exterior mirror (Sheet 9) omits it (avoids the reversed-axis overflow)
         draw_notes(ax, rows, -650, 1560, spacing=25, fs=6.8, title_fs=7.4,
-                   color=C_OUT, title_color=C_OUT, width=530,
+                   color=C_OUT, title_color=C_OUT, width=560,
                    border_color=C_DIM, font=FONT, zorder=11)
 
     draw_dim_h(ax, yL, yR, -150, f"{yR - yL}mm SWINGING FRAME (Yd{yL}–{yR})", offset=20, fs=7, font=FONT)

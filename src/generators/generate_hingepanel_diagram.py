@@ -1512,13 +1512,12 @@ def sheet5():
         ax.plot([xt, xt], [-118, -111], color=C_OUT, lw=1.1, zorder=9)
     ax.text(sbx0 + 25, -128, "0   25   50 mm", ha="center", fontsize=6.2, color=C_OUT, **FONT)
 
-    ax.text(60, -103,
-            "The handle screws into RIVNUTS set in the 50×50 RHS wall — the swing load\n"
-            "reacts into the STEEL frame, never the HDPE skin. Same off-the-shelf pull handle\n"
-            "(McMaster 1871A65) as the interior drum handle. Matte-black keeps the interior\n"
-            "optically dead (stray-light control for the pinhole).",
-            ha="center", fontsize=7.5, color=C_OUT, **FONT,
-            bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
+    draw_notes(ax, [
+        "PULL HANDLE — LOAD PATH",
+        "The handle screws into RIVNUTS set in the 50×50 RHS wall — the swing load reacts into the STEEL frame, never the HDPE skin. Same off-the-shelf pull handle (McMaster 1871A65) as the interior drum handle. Matte-black keeps the interior optically dead (stray-light control for the pinhole).",
+    ], 60, -78, spacing=5.4, fs=7.0, title_fs=7.6, ha="center",
+       color=C_OUT, title_color=C_OUT, width=232, wrap=80,
+       border_color=C_DIM, font=FONT)
 
     title_block(ax, "SHEET 5 OF 17", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
@@ -2104,10 +2103,12 @@ def sheet10():
         draw_dim_v(ax, _bkr + 100 + i * 36, 0, z, f"{z}mm", offset=8, fs=6.0, font=FONT, right=True)
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
-    ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 2200, "3 hinge brackets FILLET-WELDED to both the hub\ntube and the leaf's pivot-edge stile\n(hub + leaf + cage = one weldment).\nDrawn full-size on SHEET 14\n(Frame → Pivot-Post Connection).",
-            ha="center", va="top", fontsize=6.6, color=C_OUT, **FONT,
-            bbox=dict(boxstyle="round,pad=0.6", fc="#F4F1E8", ec=C_DIM, lw=0.9))
+    draw_notes(ax, [
+        "FRAME → HUB BRACKET",
+        "3 hinge brackets FILLET-WELDED to both the hub tube and the leaf's pivot-edge stile (hub + leaf + cage = one weldment). Drawn full-size on SHEET 14 (Frame → Pivot-Post Connection).",
+    ], 940, 2270, spacing=30, fs=6.6, title_fs=7.6, ha="center",
+       color=C_OUT, title_color=C_OUT, width=540, wrap=36,
+       border_color=C_DIM, font=FONT)
 
     # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
     bx0, by0, sB = 890, 470, 1.9

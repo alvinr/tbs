@@ -494,12 +494,14 @@ def sheet2():
     for xw, _pf in side_faces:
         ax.add_patch(Rectangle((xw, CAGE_YB), BWALL, PANEL_EXT - CAGE_YB,
                                 fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
-    # rivet line: horizontal-axis blind rivets (SIDE-VIEW glyph, not end-on circles) through
-    # the HDPE side skin into each corner post — one at the exterior post, one at the interior.
-    # Left skin is outboard of post face → factory head at −X (ang 180); right skin mirror (ang 0).
+    # rivet line: horizontal-axis blind rivets (SIDE-VIEW glyph, not end-on circles) SPREAD DOWN each
+    # HDPE side skin — the same fixing density as the front face, fastening the skin along the full side
+    # wall (into the front/back corner posts + the side perimeter rail). Left skin is outboard of the
+    # post face → factory head at −X (ang 180); right skin mirror (ang 0).
     post_face_L, post_face_R = DRUM_CAGE_YD_L, DRUM_CAGE_YD_R
+    _side_ys = [CAGE_YB + (CAGE_YT - CAGE_YB) * f for f in (0.10, 0.30, 0.50, 0.70, 0.90)]
     for pf, ang, cxr in ((post_face_L, 180, post_face_L - 8), (post_face_R, 0, post_face_R + 8)):
-        for ry in (D_YB, D_YT):                              # exterior post + interior post
+        for ry in _side_ys:
             _blind_rivet(ax, cxr, ry, ang, 16, d=6)
     ax.add_patch(Rectangle((DRUM_CAGE_YD_L, CAGE_YB), DRUM_CAGE_YD_R - DRUM_CAGE_YD_L, BAY_WALL_T * 4,  # bay front wall — width matches the cage frame (post-to-post)
                             fc=C_PLASTIC, ec=C_OUT, lw=1.0, zorder=4))
@@ -1787,13 +1789,22 @@ def sheet7():
     capz = by + bh                                  # cap underside = beam outer face
     ax.add_patch(Rectangle((30, capz), 150, 14, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=4))
     leader(ax, (150, capz + 14), (108, 172), f"plain floor/roof CAP {T_SKIN}mm HDPE\n(no cut-out — sits on the frame)", col=C_OUT)
-    # Housing outer skin (vertical) rising to BUTT the cap underside
+    # Housing outer skin (vertical) rising to BUTT the cap underside. A BREAK line at the bottom shows
+    # the skin continues down out of this section — it is blind-riveted to the drum-cage posts (Detail B),
+    # so it is supported there, not floating.
     hx, hw = 60, 14
-    ax.add_patch(Rectangle((hx, 20), hw, capz - 20, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
+    _skin_b = 24                                    # break-line height (skin continues below)
+    ax.add_patch(Rectangle((hx, _skin_b), hw, capz - _skin_b, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
+    _bk = [(hx - 3, _skin_b + 4), (hx + hw * 0.30, _skin_b - 3), (hx + hw * 0.62, _skin_b + 4), (hx + hw + 3, _skin_b - 2)]
+    ax.plot([p[0] for p in _bk], [p[1] for p in _bk], color=C_OUT, lw=1.2, zorder=6)   # break (skin continues below)
     leader(ax, (hx, 62), (16, 96), f"Ø{int(DRUM_D)} housing OUTER SKIN {T_HOUS}mm\nextends to the beam outer face (Sheet 2/9)\n— top/bottom edge BUTTS the cap", col=C_OUT)
-    # caulk bead at the skin-edge ↔ cap-underside butt
-    ax.add_patch(Rectangle((hx - 3, capz - 8), hw + 6, 8, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=6))
-    leader(ax, (hx - 2, capz - 5), (14, 132), "silicone CAULK bead\n(skin edge ↔ cap seal)", col=C_OUT)
+    leader(ax, (hx - 3, _skin_b + 2), (2, 52), "skin continues down —\nriveted to the cage posts (Detail B)", col=C_DIM, fs=6)
+    # caulk FILLET (triangle) in each re-entrant corner where the housing skin meets the cap underside
+    # — a sealant fillet, like Detail B's bead (not a rectangular cap).
+    for _cx, _sgn in ((hx, -1), (hx + hw, 1)):
+        ax.add_patch(Polygon([(_cx, capz), (_cx + _sgn * 8, capz), (_cx, capz - 8)],
+                             closed=True, fc="#8A6D3B", ec=C_OUT, lw=0.8, zorder=6))
+    leader(ax, (hx, capz - 4), (14, 132), "silicone CAULK fillet\n(skin edge ↔ cap seal)", col=C_OUT)
     # blind rivet: vertical, through the cap (14) + the beam's TOP WALL (8) only — the blind head
     # forms in the RHS HOLLOW (grip = cap + one wall; NOT driven into a solid section).
     _blind_rivet(ax, 150, capz + 3, 90, 22, d=RIV_D)   # grip = cap(14)+wall(8); blind-head flat butts the wall INNER face (capz-8)
@@ -2876,7 +2887,7 @@ def sheet17():
     # ═══ DETAIL D — STAY LOCATIONS (swing-stile elevation · heights from the floor) ═══
     Dx = 690
     ax.text(Dx + 40, 205, "DETAIL D — STAY LOCATIONS", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Dx + 40, 192, "swing-stile elevation · stay heights AFF", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    ax.text(Dx + 40, 192, "swing-stile elevation · lug offsets from the end rails", ha="center", fontsize=6.3, color=C_DIM, **FONT)
     _dsc = 139.0 / BRACE_Z_TOP              # Z(mm) → sheet units; header 2244 → ~139 units (top ≈ y165, clears the title)
     def _dz(z):
         return 26 + z * _dsc               # floor Z0 → y26
@@ -2885,15 +2896,21 @@ def sheet17():
     ax.text(stx + 26, _dz(0), "FLOOR (Z0)", fontsize=5.6, color=C_DIM, va="center", ha="left", **FONT)
     ax.add_patch(Rectangle((stx, _dz(PANEL_FLOOR_GAP)), stw, _dz(BRACE_Z_TOP) - _dz(PANEL_FLOOR_GAP),
                            fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=4))          # swing stile (to header Z2244)
+    # end rails (the beams the lugs are dimensioned FROM) — bottom rail at the stile base, top header at its top
+    _railh = 6
+    for _zb, _lbl, _va in ((PANEL_FLOOR_GAP, "BOTTOM RAIL", "top"), (BRACE_Z_TOP, "TOP HEADER", "bottom")):
+        ax.add_patch(Rectangle((stx - 26, _dz(_zb) - _railh / 2), stw + 26, _railh, fc=C_STEEL, ec=C_OUT, lw=1.1, hatch="///", zorder=4.6))
+        ax.text(stx + stw + 4, _dz(_zb), _lbl, fontsize=5.4, color=C_DIM, va="center", ha="left", **FONT)
     _lh = LT_STAY_LUG_H * _dsc              # lug height TO SCALE — sits within the stile (60mm @ Z2210 tops out below the Z2244 header)
     for z in LT_STAY_Z:                     # the two stay lugs (one at each height)
         ax.add_patch(Rectangle((stx + stw, _dz(z) - _lh / 2), 12, _lh, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))
         ax.add_patch(Circle((stx + stw + 7, _dz(z)), min(2.2, _lh * 0.42), fc=BG, ec=C_OUT, lw=0.9, zorder=6))
-    draw_dim_v(ax, stx - 12, _dz(0), _dz(LT_STAY_Z[0]), f"{LT_STAY_Z[0]}mm", fs=6, offset=7, right=False)
-    draw_dim_v(ax, stx - 30, _dz(0), _dz(LT_STAY_Z[1]), f"{LT_STAY_Z[1]}mm", fs=6, offset=7, right=False)
+    # lug positions dimensioned from the RAIL they weld near: bottom lug UP off the bottom rail, top lug DOWN off the header
+    draw_dim_v(ax, stx - 14, _dz(PANEL_FLOOR_GAP), _dz(LT_STAY_Z[0]), f"{int(LT_STAY_Z[0] - PANEL_FLOOR_GAP)}mm", fs=6, offset=7, right=False)
+    draw_dim_v(ax, stx - 14, _dz(LT_STAY_Z[1]), _dz(BRACE_Z_TOP), f"{int(BRACE_Z_TOP - LT_STAY_Z[1])}mm", fs=6, offset=7, right=False)
     _midz = (_dz(LT_STAY_Z[0]) + _dz(LT_STAY_Z[1])) / 2
     leader(ax, (stx + stw / 2, _midz), (stx + stw + 32, _midz), "swing stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6, ha="left")
-    leader(ax, (stx + stw + 7, _dz(LT_STAY_Z[1])), (stx + stw + 32, _dz(LT_STAY_Z[1]) - 4), "stay lug ×2\n(Details B + C)", col=C_OUT, fs=6, ha="left")
+    leader(ax, (stx + stw + 7, _dz(LT_STAY_Z[1])), (stx + stw + 44, _dz(LT_STAY_Z[1]) - 8), "stay lug ×2\n(Details B + C)", col=C_OUT, fs=6, ha="left")
 
     draw_notes(ax, [
         "TRANSPORT LOCK — SPEC:",

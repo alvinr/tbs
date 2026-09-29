@@ -1444,7 +1444,7 @@ def sheet4():
     ]
     # Standard bordered notes block, raised into the upper-right so it clears the swung
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
-    draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
+    draw_notes(ax, notes, 1425, 2500, spacing=34, fs=6.5, width=985, font=FONT)
 
     title_block(ax, "SHEET 4 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

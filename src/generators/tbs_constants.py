@@ -372,6 +372,11 @@ LT_STAY_LUG_H    = 60   # lug height along the stile (mm)
 LT_STAY_LUG_HOLE = 17   # clevis-pin hole Ø (mm) — clears the M16 turnbuckle jaw pin
 LT_STAY_LUG_EDGE = 25   # pin-hole center inset from the projecting tip (mm) — ~1× hole-Ø of
                         # material past the bore, so the loaded eye can't tear out; centered in LT_STAY_LUG_H
+# Transport-stay heights (Z AFF, mm) — (bottom, top). Single-sourced for 2D (hingepanel Sheet 17) + 3D
+# (wall_anchors/frame_hooks). Spread to the frame limits 2026-09-28 to open the near-side egress passage
+# between the two stays and lengthen the couple arm (→1900mm, lower stay tension): bottom Z310 clears the
+# walkway deck + widened near-wall bracket; top Z2210 sits under the Z2244 frame header (BRACE_Z_TOP), lug-limited.
+LT_STAY_Z = (310, 2210)
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
 PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED 130→217 (2026-08-29)

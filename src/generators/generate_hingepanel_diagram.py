@@ -2730,11 +2730,12 @@ def sheet16():
 def sheet17():
     from tbs_constants import (LT_STAY_PLATE_HW, LT_STAY_PLATE_T, LT_STAY_BOLT_OFF,
                                LT_STAY_BOLT_D, LT_STAY_LUG_T, LT_STAY_LUG_PROJ,
-                               LT_STAY_LUG_H, LT_STAY_LUG_HOLE, LT_STAY_LUG_EDGE)
-    fig, ax = plt.subplots(figsize=(22, 8.5))
+                               LT_STAY_LUG_H, LT_STAY_LUG_HOLE, LT_STAY_LUG_EDGE,
+                               LT_STAY_Z, PANEL_FLOOR_GAP, BRACE_Z_TOP)
+    fig, ax = plt.subplots(figsize=(27, 8.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(0, 660)
+    ax.set_xlim(0, 840)
     ax.set_ylim(-180, 220)
 
     # ═══ DETAIL A — transport-lock general arrangement (one stay, swung pose) ═══
@@ -2818,9 +2819,28 @@ def sheet17():
     ax.plot([px + 48, px + 80], [syd + 10, syd + 10], color="#101010", lw=2.0, zorder=6)
     leader(ax, (px + 22, syd + 40), (px + 34, syd + 60), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
 
+    # ═══ DETAIL D — STAY LOCATIONS (swing-stile elevation · heights from the floor) ═══
+    Dx = 690
+    ax.text(Dx + 40, 205, "DETAIL D — STAY LOCATIONS", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Dx + 40, 192, "swing-stile elevation · stay heights AFF", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    _dsc = 139.0 / BRACE_Z_TOP              # Z(mm) → sheet units; header 2244 → ~139 units (top ≈ y165, clears the title)
+    def _dz(z):
+        return 26 + z * _dsc               # floor Z0 → y26
+    stx, stw = Dx + 50, 12                  # swing-stile left x + width (units)
+    ax.plot([stx - 44, stx + 24], [_dz(0), _dz(0)], color=C_OUT, lw=1.3, zorder=3)       # floor line
+    ax.text(stx + 26, _dz(0), "FLOOR (Z0)", fontsize=5.6, color=C_DIM, va="center", ha="left", **FONT)
+    ax.add_patch(Rectangle((stx, _dz(PANEL_FLOOR_GAP)), stw, _dz(BRACE_Z_TOP) - _dz(PANEL_FLOOR_GAP),
+                           fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=4))          # swing stile (to header Z2244)
+    for z in LT_STAY_Z:                     # the two stay lugs (one at each height)
+        ax.add_patch(Rectangle((stx + stw, _dz(z) - 4), 13, 8, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))
+        ax.add_patch(Circle((stx + stw + 8, _dz(z)), 2.6, fc=BG, ec=C_OUT, lw=0.9, zorder=6))
+    draw_dim_v(ax, stx - 12, _dz(0), _dz(LT_STAY_Z[0]), f"{LT_STAY_Z[0]}mm", fs=6, offset=7, right=False)
+    draw_dim_v(ax, stx - 30, _dz(0), _dz(LT_STAY_Z[1]), f"{LT_STAY_Z[1]}mm", fs=6, offset=7, right=False)
+    leader(ax, (stx + stw + 8, _dz(LT_STAY_Z[1])), (stx + stw + 30, _dz(LT_STAY_Z[1]) - 6), "stay lug ×2\n(Details B + C)", col=C_OUT, fs=6, ha="left")
+
     draw_notes(ax, [
         "TRANSPORT LOCK — SPEC:",
-        f"1. Two stays (top Z2050, bottom Z500), each a couple: swing-stile lug ↔ M16 turnbuckle ↔ near-wall anchor.",
+        f"1. Two stays (top Z{LT_STAY_Z[1]}, bottom Z{LT_STAY_Z[0]} AFF — located in Detail D), each a couple: swing-stile lug ↔ M16 turnbuckle ↔ near-wall anchor.",
         f"2. Turnbuckle: 5/8in jaw-eye galvanized (JETBGV58X6), 2 sets — the jaw pins to the panel lug, the eye to the wall anchor.",
         f"3. Panel lug (Detail B): {LT_STAY_LUG_T}mm steel eye plate, Ø{LT_STAY_LUG_HOLE} pin hole, 6mm fillet-welded all-round to the left 2×2×0.120in RHS stile.",
         f"4. Wall anchor (Detail C): 2× {2*LT_STAY_PLATE_HW}×{2*LT_STAY_PLATE_HW}×{LT_STAY_PLATE_T}mm A36 plate pair, 4× M16 through the near wall @ {2*LT_STAY_BOLT_OFF}mm gauge, welded eye.",
@@ -2829,7 +2849,7 @@ def sheet17():
 
     title_block(ax, "SHEET 17 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="TRANSPORT LOCK — GA · PANEL RECEIVER LUG · NEAR-WALL ANCHOR",
+                subtitle="TRANSPORT LOCK — GA · PANEL RECEIVER LUG · NEAR-WALL ANCHOR · STAY LOCATIONS",
                 scale_note="ENLARGED DETAILS · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet17.png"), dpi=DIAGRAM_DPI,

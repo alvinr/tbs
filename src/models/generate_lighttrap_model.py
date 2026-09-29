@@ -105,13 +105,7 @@ LOCK = ov.SWING_LOCK_DEG                           # 56 — transport swing angl
 CUT = ov.PANEL_CUT_YD                              # 180 — fixed-left / swing cut
 FAR0 = ov.FAR_STRIP_YD0                            # 2287 — fixed-far strip start (= pivot)
 WALL_FAR = 2000                                    # context far extent — reaches the stay wall anchor
-STAY_Z = (310, 2210)                               # bottom + top transport-stay heights
-# Spread to the frame limits (2026-09-28) to open the near-side egress passage between the two stays
-# AND lengthen the couple arm (lower stay tension). BOTTOM 500→310: the 200×200 anchor plate (Z210–410,
-# X1614–1814) clears the walkway deck (Z140) + the widened near-wall cantilever bracket (~Z200) it sits
-# over by ~10mm, and stays X-clear (~15mm) of the EP column/battery (X≥1829, Z160–604). TOP 2050→2210:
-# up to the Z2244 panel frame header (BRACE_Z_TOP), lug-limited (LT_STAY_LUG_H/2 below it). Couple arm
-# now 1900mm (was 1550). The two tight margins (~10mm bracket, ~15mm electrical) confirmed on the live model.
+from tbs_constants import LT_STAY_Z as STAY_Z      # (bottom, top) transport-stay heights — single-sourced
 LOCK_BOLT = (20, CUT + 25)                         # stay hook on the swinging frame's LEFT
 # perimeter 50×50 RHS STILE (Yd≈205, centred on the stile at the swing cut) — STEEL load
 # path, not the 1/8″-HDPE skin. Relocated from the mid-corner (Yd350, which the rev11 plastic

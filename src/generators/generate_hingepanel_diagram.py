@@ -1798,7 +1798,7 @@ def sheet7():
     _bk = [(hx - 3, _skin_b + 4), (hx + hw * 0.30, _skin_b - 3), (hx + hw * 0.62, _skin_b + 4), (hx + hw + 3, _skin_b - 2)]
     ax.plot([p[0] for p in _bk], [p[1] for p in _bk], color=C_OUT, lw=1.2, zorder=6)   # break (skin continues below)
     leader(ax, (hx, 62), (16, 96), f"Ø{int(DRUM_D)} housing OUTER SKIN {T_HOUS}mm\nextends to the beam outer face (Sheet 2/9)\n— top/bottom edge BUTTS the cap", col=C_OUT)
-    leader(ax, (hx - 3, _skin_b + 2), (2, 52), "skin continues down —\nriveted to the cage posts (Detail B)", col=C_DIM, fs=6)
+    leader(ax, (hx - 3, _skin_b + 2), (2, 52), "housing skin is SECURED lower down —\nlapped + riveted to the drum cage\n(SEE DETAIL B · plan Sheet 2)", col=C_OUT, fw="bold", fs=6)
     # caulk FILLET (triangle) in each re-entrant corner where the housing skin meets the cap underside
     # — a sealant fillet, like Detail B's bead (not a rectangular cap).
     for _cx, _sgn in ((hx, -1), (hx + hw, 1)):
@@ -1825,10 +1825,11 @@ def sheet7():
     # HDPE surround skin lapped OVER the flange
     ax.add_patch(Rectangle((fx + 8, fy + ft), fw - 8, 10, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=5))
     leader(ax, (fx + 30, fy + ft + 5), (220, 160), f"HDPE surround lap\n{T_SKIN}mm 1/8\" skin/wall", col=C_OUT)
-    # sealant bead at the lap edge (light-tight)
-    ax.add_patch(Polygon([(fx + 8, fy + ft), (fx + 8, fy + ft + 10), (fx - 2, fy + ft)],
+    # sealant FILLET (triangle) in the corner where the flange-top HDPE lap and the side HDPE lap BUTT
+    # up — this is the skin↔skin joint that must be light-tight (not the lap's free left edge).
+    ax.add_patch(Polygon([(fx + fw, fy + ft + 10), (fx + fw + 8, fy + ft), (fx + fw + 8, fy + ft + 10)],
                          closed=True, fc="#5A3020", ec=C_OUT, lw=0.7, zorder=6))
-    leader(ax, (fx + 6, fy + ft + 8), (200, 150), "DP8010 sealant bead\n(light-tight)", col=C_OUT)
+    leader(ax, (fx + fw + 2, fy + ft + 3), (fx + fw + 12, fy - 30), "DP8010 sealant fillet\n(seals the skin↔skin butt)", col=C_OUT, fs=6, ha="left")
     # blind rivet through the lap (axis vertical, +Z head on the HDPE side). CENTER on the full stack
     # (flange ft + HDPE 10) so the factory head BUTTS the HDPE outer face and the blind head the flange back.
     _blind_rivet(ax, fx + 40, fy + (ft + 10) / 2.0, 90, ft + 10, d=RIV_D)
@@ -1842,6 +1843,14 @@ def sheet7():
     _blind_rivet(ax, fx + fw - ft / 2 + 4, fy - 12, 0, 20, d=RIV_D)                                                     # HDPE → into the STEEL side wall, butted
     leader(ax, (fx + fw + 4, fy - 30), (270, 30),
            "HDPE also laps + rivets into the STEEL SIDE face of the post\n(fasten FRONT + SIDE faces — not the front only)", col=C_OUT, fw="bold", fs=6)
+    # CUT (break) lines — the flange + HDPE lap continue to the LEFT, and the post side wall + HDPE
+    # side lap continue DOWN (this is an enlarged corner; the members run on past the view).
+    _lz = [(fx + 14, fy - 2), (fx + 8, fy + 5), (fx + 20, fy + 12), (fx + 8, fy + 19), (fx + 14, fy + 26)]
+    ax.plot([p[0] for p in _lz], [p[1] for p in _lz], color=C_OUT, lw=1.2, zorder=13)                 # left break
+    ax.text(fx - 2, fy + 12, "continues\n← ", ha="right", va="center", fontsize=5.4, color=C_DIM, **FONT)
+    _bz = [(fx + fw - ft - 4, fy - 30), (fx + fw - ft + 3, fy - 36), (fx + fw - ft + 10, fy - 24), (fx + fw + 4, fy - 36), (fx + fw + 11, fy - 30)]
+    ax.plot([p[0] for p in _bz], [p[1] for p in _bz], color=C_OUT, lw=1.2, zorder=13)                 # bottom break
+    ax.text(fx + fw + 6, fy - 44, "continues ↓", ha="left", va="top", fontsize=5.4, color=C_DIM, **FONT)
 
     ax.text(170, 4,
             "The HDPE surround (bay walls, floor/roof caps, face skins) laps the drum CAGE (50×50×3 RHS,\n"
@@ -2271,13 +2280,21 @@ def sheet12():
     # through the holder into a RIVNUT set in the hollow frame's bottom wall (z 100–103).
     _draw_bolt(ax, Cx + 70, 89, 22, d=5, vertical=True, head=-1, end="rivnut", wall=3, zb=9)
     ax.plot([Cx + 63, Cx + 77], [78, 78], color=C_OUT, lw=1.0, zorder=10)                       # holder face line the head bears on
-    leader(ax, (Cx + 70, 75), (Cx + 55, 30), "#10 screw HEAD on the holder FACE;\nshank up into a RIVNUT in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
+    leader(ax, (Cx + 70, 75), (Cx + 48, 8), "#10 screw HEAD on the holder FACE;\nshank up into a RIVNUT in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
     # brush bristles hanging down (clear column left for the mounting screw)
     for bxk in range(Cx + 54, Cx + 88, 4):
         if Cx + 62 <= bxk <= Cx + 78:
             continue
         ax.plot([bxk, bxk], [82, 50], color="#3A3A3A", lw=0.8, zorder=6)
     leader(ax, (Cx + 70, 60), (Cx + 118, 60), "74405T12 nylon\nstrip brush\n(panel sweeps through)", col=C_OUT, fs=6)
+    # locate the mounting fastener across the frame: centered on the 50×50 door frame (25mm each face)
+    _fc = Cx + 70                                                   # fastener CL (= frame + holder centerline)
+    _wl12 = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)
+    ax.plot([_fc, _fc], [72, 44], **_wl12)                          # fastener CL down to the dim
+    for _xw in (Cx + 30, Cx + 110):                                 # frame outer faces
+        ax.plot([_xw, _xw], [100, 44], **_wl12)
+    draw_dim_h(ax, Cx + 30, _fc, 42, "25mm", offset=7, above=False, fs=6, font=FONT)
+    draw_dim_h(ax, _fc, Cx + 110, 42, "25mm", offset=7, above=False, fs=6, font=FONT)
 
     title_block(ax, "SHEET 12 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

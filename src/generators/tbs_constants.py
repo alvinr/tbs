@@ -357,9 +357,11 @@ PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to
 # Transport-stay wall anchor (top + bottom): the near wall can't be welded to, so each stay eye
 # reacts into an inside + outside plate pair bolted through the wall (4× M16). Shared by the 3D
 # wall_anchors() and hingepanel Sheet 12 Detail D so the plate size + bolt pattern single-source.
-LT_STAY_PLATE_HW = 100  # anchor plate half-width (mm) → 200×200 A36 plate
+LT_STAY_PLATE_HW = 75   # anchor plate half-width (mm) → 150×150 A36 plate (shrunk from 200×200 2026-09-28
+                        # to clear the EP plywood backing at X1817; the stay force fell with the longer
+                        # 1900mm couple arm, and the panel is vertically balanced, so 150×150 has ample margin)
 LT_STAY_PLATE_T  = 12   # anchor plate thickness (mm)
-LT_STAY_BOLT_OFF = 70   # M16 through-bolt offset from plate center (mm) → 140 square pattern
+LT_STAY_BOLT_OFF = 45   # M16 through-bolt offset from plate center (mm) → 90 square pattern (30mm edge dist kept)
 LT_STAY_BOLT_D   = 16   # M16 through-bolt (mm)
 # Panel-side receiver: a welded steel eye lug on the swinging frame's left 2×2×0.120 RHS stile
 # — the turnbuckle jaw clevis-pins to it (the mate of the wall anchor above). Shared by the 3D

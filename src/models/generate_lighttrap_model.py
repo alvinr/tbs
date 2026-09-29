@@ -105,11 +105,13 @@ LOCK = ov.SWING_LOCK_DEG                           # 56 — transport swing angl
 CUT = ov.PANEL_CUT_YD                              # 180 — fixed-left / swing cut
 FAR0 = ov.FAR_STRIP_YD0                            # 2287 — fixed-far strip start (= pivot)
 WALL_FAR = 2000                                    # context far extent — reaches the stay wall anchor
-STAY_Z = (500, 2050)                               # bottom + top transport-stay heights
-# (bottom raised 200→350→500: its anchor plate (Z400–600, X1614–1814) sits LEFT of the EP
-#  column/battery (X1829–2159, stacked Z160–604 on the pinhole wall) and clears the walkway
-#  deck (Z140) + the wall-cantilever brackets (vertical leg to Z150 std / Z200 widened) it sits over.
-#  The 2050↔500 couple arm (1550mm) is still ample for the transport stay.)
+STAY_Z = (310, 2210)                               # bottom + top transport-stay heights
+# Spread to the frame limits (2026-09-28) to open the near-side egress passage between the two stays
+# AND lengthen the couple arm (lower stay tension). BOTTOM 500→310: the 200×200 anchor plate (Z210–410,
+# X1614–1814) clears the walkway deck (Z140) + the widened near-wall cantilever bracket (~Z200) it sits
+# over by ~10mm, and stays X-clear (~15mm) of the EP column/battery (X≥1829, Z160–604). TOP 2050→2210:
+# up to the Z2244 panel frame header (BRACE_Z_TOP), lug-limited (LT_STAY_LUG_H/2 below it). Couple arm
+# now 1900mm (was 1550). The two tight margins (~10mm bracket, ~15mm electrical) confirmed on the live model.
 LOCK_BOLT = (20, CUT + 25)                         # stay hook on the swinging frame's LEFT
 # perimeter 50×50 RHS STILE (Yd≈205, centred on the stile at the swing cut) — STEEL load
 # path, not the 1/8″-HDPE skin. Relocated from the mid-corner (Yd350, which the rev11 plastic
@@ -759,7 +761,8 @@ from tbs_constants import (LT_STAY_PLATE_HW as PLATE_HW, LT_STAY_PLATE_T as PLAT
 # clears the electrical panel (EP) on the same pinhole wall — the relocated top stay
 # (hooks on the perimeter stile) would otherwise overlap the EP left edge by a few mm.
 # The small resulting rod angle (~1°) the turnbuckle stay absorbs. Shared by stay_rods().
-ANCHOR_X = min(SOCKET[0], ov.EP_X - PLATE_HW - 15)   # ≤1714 → plate right edge ≤1814 < EP 1829
+_EP_BACKING_L = ov.EP_X - 12   # EP plywood BACKING left edge (overhangs the battery column 12mm; = _ply_x0 in generate_electrical_model)
+ANCHOR_X = min(SOCKET[0], _EP_BACKING_L - 30 - PLATE_HW)   # plate right edge ≤ 1787 → 30mm clear of the backing (1817), not just EP_X (1829)
 
 
 def wall_anchors():

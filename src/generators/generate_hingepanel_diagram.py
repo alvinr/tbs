@@ -582,7 +582,7 @@ def sheet2():
     leader(ax, (lbl_x_r, Y0_DF + DOOR_FRAME_DEPTH / 2), (lbl_x_r + 1.6 * LBL_OFF, Y0_DF + DOOR_FRAME_DEPTH / 2 - 1.6 * LBL_OFF),
            "50×20×3 RHS DOOR FRAME\npanel seals here · U-frame welds (opening edge)",
            col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
-    leader(ax, (lbl_x_r, Y0_PL + PLY_T / 2), (lbl_x_r + 1 * LBL_OFF, Y0_PL + PLY_T / 2 - 1 * LBL_OFF),
+    leader(ax, (lbl_x_r, Y0_PL + PLY_T / 2), (lbl_x_r + 1 * LBL_OFF + 175, Y0_PL + PLY_T / 2 - 1 * LBL_OFF - 10),
            f"OUTER PLY ({PLY_T}mm)",
            col=C_OUT, fs=6.5, ha="left", va="top", arrow_style="->", lw=0.8, bbox=_bb)
     leader(ax, (731, 36), (475, 141),

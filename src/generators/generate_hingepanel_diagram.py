@@ -1849,13 +1849,12 @@ def sheet7():
     ax.plot([p[0] for p in _bz], [p[1] for p in _bz], color=C_OUT, lw=1.2, zorder=13)                 # bottom break
     ax.text(fx + fw + 6, fy - 44, "continues ↓", ha="left", va="top", fontsize=5.4, color=C_DIM, **FONT)
 
-    ax.text(170, 4,
-            "The HDPE surround (bay walls, floor/roof caps, face skins) laps the drum CAGE (50×50×3 RHS,\n"
-            "welded into the panel frame) and is blind-riveted @ {p}mm + DP8010 bead. The floor/roof caps are\n"
-            "PLAIN plates riveted to the frame outside; the housing skin's top/bottom edge butts the cap +\n"
-            "a caulk bead (Detail A). Flat patterns → SHEET 6.".format(p=LT_RIVET_PITCH),
-            ha="center", va="bottom", fontsize=7.0, color=C_OUT, **FONT,
-            bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
+    draw_notes(ax, [
+        "SURROUND ASSEMBLY",
+        f"The HDPE surround (bay walls, floor/roof caps, face skins) laps the drum CAGE (50×50×3 RHS, welded into the panel frame) and is blind-riveted @ {LT_RIVET_PITCH}mm + DP8010 bead. The floor/roof caps are PLAIN plates riveted to the frame outside; the housing skin's top/bottom edge butts the cap + a caulk bead (Detail A). Flat patterns → SHEET 6.",
+    ], 170, 25, spacing=3.4, fs=6.5, title_fs=7.0, ha="center",
+       color=C_OUT, title_color=C_OUT, width=180, wrap=88,
+       border_color=C_DIM, font=FONT)
 
     title_block(ax, "SHEET 7 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

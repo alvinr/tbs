@@ -2064,6 +2064,13 @@ def sheet10():
     draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116mm hub tube", offset=14, fs=6.2, font=FONT)  # Ø220 plate OD is dimensioned in Detail B
     draw_dim_v(ax, cx + 300, 180, 2050, f"{2050 - 180}mm hub tube", offset=16, fs=6.2, font=FONT, right=True)
     draw_dim_v(ax, cx + 240, 220, 2000, f"{2000 - 220}mm bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
+    # dim_v — the 3 hinge-bracket (leaf) connection heights, ordinate from the floor (Z0)
+    _bkr = cx + R + 164                                          # right edge of the brackets
+    ax.plot([cx - R, _bkr + 200], [0, 0], color=C_OUT, lw=1.0, zorder=2)          # floor baseline
+    ax.text(_bkr + 204, 0, "FLOOR (Z0)", fontsize=6, color=C_DIM, va="center", ha="left", **FONT)
+    for i, z in enumerate((300, 1180, 2000)):
+        ax.plot([_bkr, _bkr + 100 + i * 36], [z, z], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)   # witness
+        draw_dim_v(ax, _bkr + 100 + i * 36, 0, z, f"{z}mm", offset=8, fs=6.0, font=FONT, right=True)
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     ax.text(1000, 1900, "FRAME → HUB BRACKET", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
@@ -2293,6 +2300,10 @@ def sheet13():
     # dims (to scale)
     draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18mm", offset=-7, above=False, fs=5.6, font=FONT)
     draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50mm RHS", offset=-7, above=False, fs=5.6, font=FONT)
+    # material-CONNECTION dims: the L-tab reach (frame weld → ply) + the bolt offset above the weld base leg
+    draw_dim_h(ax, dB(48, 0)[0], dB(91, 0)[0], dB(0, 6)[1], "43mm tab reach", offset=-7, above=False, fs=5.6, font=FONT)
+    draw_dim_v(ax, dB(116, 0)[0], dB(0, 69)[1], dB(0, 102)[1], "33mm", offset=8, fs=5.6, font=FONT, right=True)
+    ax.plot([dB(84, 69)[0], dB(114, 69)[0]], [dB(0, 69)[1], dB(0, 69)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)   # witness — weld base leg
 
     # ── COMPANION: rotated 90° view (looking along the bolt axis) — the bolt seats in the tab plate;
     #    the frame stile is off to the side, so the bolt does NOT pass through the frame. ──
@@ -2354,6 +2365,13 @@ def sheet14():
     leader(ax, (cx + 118, 300), (cx - 250, 500), "3× HINGE BRACKET\nwelded to hub + stile", col=C_OUT, fw="bold", fs=6.5)
     leader(ax, (cx + 178, 2000), (cx + 550, 2200), "LEAF PIVOT-EDGE STILE\n(2×2 RHS — TRAVELS with\nthe leaf, carries its plywood)", col=C_OUT, fw="bold", fs=6.5)
     ax.text(cx + 40, HGT + 130, "ELEVATION — 3 brackets up the hub", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    # dim_v — the 3 hinge-bracket (leaf → hub) connection heights, ordinate from the floor (Z0)
+    _lsr = cx + 58 + 120 + 30                                    # just right of the leaf pivot-edge stile
+    ax.plot([cx - 58, _lsr + 20], [0, 0], color=C_OUT, lw=1.0, zorder=2)   # floor baseline
+    ax.text(_lsr + 24, 0, "FLOOR (Z0)", fontsize=6, color=C_DIM, va="center", ha="left", **FONT)
+    for i, z in enumerate((300, 1180, 2000)):
+        ax.plot([cx + 58 + 120, _lsr + i * 40], [z, z], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)  # witness to the bracket
+        draw_dim_v(ax, _lsr + i * 40, 0, z, f"{z}mm", offset=8, fs=6.2, font=FONT, right=True)
 
     # ── RIGHT: enlarged plan section of one bracket ──
     ox, oy, s = 660, 900, 4.2

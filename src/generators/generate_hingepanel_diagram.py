@@ -2278,7 +2278,7 @@ def sheet12():
     # through the holder into a RIVNUT set in the hollow frame's bottom wall (z 100–103).
     _draw_bolt(ax, Cx + 70, 89, 22, d=5, vertical=True, head=-1, end="rivnut", wall=3, zb=9)
     ax.plot([Cx + 63, Cx + 77], [78, 78], color=C_OUT, lw=1.0, zorder=10)                       # holder face line the head bears on
-    leader(ax, (Cx + 70, 75), (Cx + 48, 8), "#10 screw HEAD on the holder FACE;\nshank up into a RIVNUT in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
+    leader(ax, (Cx + 70, 75), (Cx + 110, 8), "#10 screw HEAD on the holder FACE;\nshank up into a RIVNUT in the hollow\nframe wall (can't tap the 3mm tube)", col=C_OUT, fs=6)
     # brush bristles hanging down (clear column left for the mounting screw)
     for bxk in range(Cx + 54, Cx + 88, 4):
         if Cx + 62 <= bxk <= Cx + 78:

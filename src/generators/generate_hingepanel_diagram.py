@@ -2782,7 +2782,7 @@ def sheet16():
         "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
         f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
         "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45° scarf with EPDM bonded to the FIXED face — a light-tight lap the moving panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom, apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
-    ], WID + 320, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
+    ], WID + 380, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=450, wrap=49, border_color="#806010", font=FONT)
 
     title_block(ax, "SHEET 16 OF 17",

@@ -38,13 +38,25 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     on the nozzle panel (not the `CARRIAGE_YD_CENTER` hypothesis); dropped it (beam is called out on ax_cf +
     dimensioned on ax_nz). This bullet stays only as the note that the anomaly is resolved; delete on next prune.
 - [~] **Consolidated plywood cut-sheet generator — BUILT 2026-09-30.** `generate_plywood_cutsheets.py` +
-  `plywood-cut-sheets.md`: a plywood registry (all 7 `timber-ply` parts, cut dims single-sourced from
+  `plywood-cut-sheets.md`: a plywood registry (every `timber-ply` part, cut dims single-sourced from
   `tbs_constants` where geometry-driven, else spec/report literals; cost/SKU keyed to `parts.py`) → a schedule
-  sheet + a per-stock nesting sheet, grouped by grade/thickness. Registered + gates green. **Residual (open):**
+  sheet + a per-stock nesting sheet, grouped by grade/thickness. Registered + gates green. **MAXRECTS optimizer
+  + 18mm standardization dropped the stock from 8 part-by-part → 5 sheets** (aprons re-graded 12→18mm into the
+  group-A SYP offcut; EP backboard onto the chem-shelf UV-white sheet; −$78). Drifts (b) reconciled (18mm
+  settle, shelf 600×225, Fan-B 1225). **Residual (open):**
   (a) refactor each *consumer* generator to import the shared piece dims from the registry instead of its own
-  literal (the "so each consumer references it" half — not yet done); (b) reconcile the drifts the build
-  surfaced — `corridor-panel-ply-25` procured is 18mm but the 3D draws 25mm; the shelf `parts.py` spec still
-  reads "300×600" vs the authoritative 600×225; Fan-B prose "1,125mm" vs `PANEL_FAN_BAND_Z`=1225.
+  literal (the "so each consumer references it" half — not yet done);
+  (c) **lighttrap.skp re-send PENDING** — `generate_lighttrap_model.py` apron thickness 12→18mm is committed as
+  source but the .skp is stale until re-sent (Alvin opens lighttrap → `--send` → he saves → I push_sketchfab →
+  `manifest.py --update`). Fold it in with the other stale-.skp re-sends (see the manifest note below).
+- [ ] **Stale `.skp` re-send batch — `manifest.py --check` flags 5 models (2026-09-30).** `overview`,
+  `ibc-stack`, `construction`, `water`, `lighttrap` all compute stale vs source. `lighttrap` is the new one
+  (apron 12→18mm, this commit). The other 4 were stale before this task — residue of the 2026-09-30 geometry
+  changes (`PANEL_CORNER_T` stepped corner/Fan-B envelope on the cargo panel; tray sump → `PWP_FILTER_YD`=104);
+  `water` was already known-pending (Sketchfab re-upload). The 2026-09-28 note claiming "all hashes current" is
+  now out of date. **Action (focus-model-first, interactive):** for each — Alvin opens the model → I `--send` →
+  he saves + I `push_sketchfab` → `manifest.py --update` → commit the `.skp` + `dependencies.yml`. Verify each
+  regenerates only the intended geometry (not float noise; regen `.rb` with `/usr/bin/python3`).
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking
@@ -224,8 +236,9 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   **2D CASCADE DONE 2026-09-07** — items (1)–(4) landed (SHELF_T 22→18, parts+costing reconciled, report + shelf/
   pinhole/weight diagrams regenerated, hardware firm-sourced). **3D DONE (verified 2026-09-28):** the `shelf()`
   builder was rebuilt to the ply-primary design (18mm board + spill lips + piano hinge + 2 SS chain stays, no
-  steel frame) and is wired into overview / construction / electrical; `manifest.py --check` confirms all `.skp`
-  hashes are current (the rebuild rode along in a later overview re-send).
+  steel frame) and is wired into overview / construction / electrical; the rebuild rode along in a later overview
+  re-send. (NOTE 2026-09-30: several `.skp` are now stale again after the corner-zone/sump geometry changes —
+  tracked in the *Stale `.skp` re-send batch* item above, not a shelf regression.)
   **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual (only): datum/tolerance
   callouts (Phase C) if the shelf goes to a fabricator.
 - [ ] **Walkway — RIGHT-walkway wall-cleat blank promotion (minor residual from Phase 1.2).** The wall-cleat

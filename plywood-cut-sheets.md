@@ -28,8 +28,12 @@ Every plywood cut piece, grouped by stock. The ᴰ marker flags a dimension deri
 
 ## 3. Nesting layout
 
-Each stock sheet with its pieces shelf-packed to scale on the 4×8. The packing is illustrative, not
-optimized for yield; shaded pieces are fixed (non-fold).
+A MAXRECTS bin-packer nests all pieces of one grade+thickness onto the fewest 4×8 sheets, **mixing
+pieces across subsystems** (e.g. the corridor panel, pump-mount shirt, and pinhole-wall backing all
+share Group A's Southern-Yellow-Pine sheets). This packs the whole job into **7 stock sheets** — down
+from 8 if each part were cut on its own sheet; Group A alone drops from 4 sheets to 3. Pieces are
+drawn to scale; ↻ marks a piece rotated 90° to fit, and shaded pieces are fixed (non-fold). The shelf
+layout is a nesting guide — the shop lays out the actual saw cuts from the labeled dimensions.
 
 ![Plywood nesting](assets/plywood-cutsheets-sheet2.png)
 
@@ -37,17 +41,20 @@ optimized for yield; shaded pieces are fixed (non-fold).
 
 | Group | Thickness | Grade | Parts | Stock sheets |
 |---|---|---|---|---|
-| A | 18mm (23/32") | RTD Southern Yellow Pine exterior sheathing | corridor plumbing panel, pump-mount shirt, pinhole-wall backing | 4 |
+| A | 18mm (23/32") | RTD Southern Yellow Pine exterior sheathing | corridor plumbing panel, pump-mount shirt, pinhole-wall backing | 3 |
 | B | 18mm | SANDEPLY Sande hardwood | EP electrical backboard | 1 |
 | C | 18mm (¾") | CC pressure-treated pine | Fan-B mount band + cooler stowage base | 1 |
 | D | 18mm | UV-coated white hardwood (Swaner) | chem-prep shelf board | 1 |
 | E | 12mm | exterior BC | fold-down light aprons + baffle + pivot stub | 1 |
+| | | | **Total** | **7** |
 
-Group A's three parts share one SKU and may nest at cut; they are carried as separate sheets for cut
-margin, and the pinhole-wall backing exceeds a single sheet's width so it is cut as two butt-jointed
-halves. The pressure-treated sheet also yields the evap-cooler stowage base. Standard exterior grade
-throughout except the SANDEPLY backboard and the UV-coated shelf surface — no marine ply, since no
-plywood part carries a water-immersion load.
+Group A's three parts share one SKU, so the packer nests them together across subsystems (the
+pinhole-wall backing exceeds a single sheet's width, so it is cut as two butt-jointed halves). The
+pressure-treated sheet also yields the evap-cooler stowage base. Groups B–E each use one sheet: they
+are single-grade (different material/finish from Group A and from each other), so they cannot
+cross-nest — that residual sheet-count is set by the grade split, not packing efficiency. Standard
+exterior grade throughout except the SANDEPLY backboard and the UV-coated shelf surface — no marine
+ply, since no plywood part carries a water-immersion load.
 
 ## 5. Source references
 

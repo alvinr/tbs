@@ -110,6 +110,115 @@ GROUPS = [
 _DERIVED = {PINHOLE_W, PINHOLE_HALF, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
             APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH}
 
+CUT_MARGIN = 15      # saw kerf + trim allowance between pieces (mm)
+
+
+def _group_pieces(g):
+    """Flatten a group's parts into a piece pool (label, w, h), expanding qty — nesting mixes pieces
+    across the group's subsystems (same grade+thickness stock)."""
+    out = []
+    for p in g["parts"]:
+        for (label, w, h, q, _where) in p["pieces"]:
+            for _ in range(q):
+                out.append((label, float(w), float(h)))
+    return out
+
+
+def _overlap(a, b):
+    ax, ay, aw, ah = a
+    bx, by, bw, bh = b
+    return not (bx >= ax + aw - 1e-6 or bx + bw <= ax + 1e-6
+               or by >= ay + ah - 1e-6 or by + bh <= ay + 1e-6)
+
+
+def _contains(a, b):     # free-rect a fully contains b
+    ax, ay, aw, ah = a
+    bx, by, bw, bh = b
+    return ax <= bx + 1e-6 and ay <= by + 1e-6 and ax + aw >= bx + bw - 1e-6 and ay + ah >= by + bh - 1e-6
+
+
+def _split_free(f, used):
+    """MAXRECTS split — a free rect f minus the placed rect `used` → up to 4 maximal sub-rects."""
+    if not _overlap(f, used):
+        return [f]
+    fx, fy, fw, fh = f
+    ux, uy, uw, uh = used
+    out = []
+    if ux > fx:                              out.append((fx, fy, ux - fx, fh))                 # left
+    if ux + uw < fx + fw:                    out.append((ux + uw, fy, fx + fw - ux - uw, fh))  # right
+    if uy > fy:                              out.append((fx, fy, fw, uy - fy))                 # below
+    if uy + uh < fy + fh:                    out.append((fx, uy + uh, fw, fy + fh - uy - uh))  # above
+    return out
+
+
+def _prune(rects):
+    out = []
+    for i, r in enumerate(rects):
+        if r[2] <= 1e-6 or r[3] <= 1e-6:
+            continue
+        if any(j != i and _contains(q, r) and (q != r or j < i) for j, q in enumerate(rects)):
+            continue
+        out.append(r)
+    return out
+
+
+def pack_group(pieces, bin_w, bin_h, margin=CUT_MARGIN):
+    """MAXRECTS (Best-Short-Side-Fit, 90° rotation) rectangle bin-packing → minimize the number of
+    stock sheets. Same-material pieces only (caller groups by grade+thickness). Each piece reserves a
+    `margin` kerf on two sides. Returns a list of bins; each bin a list of (x, y, w, h, label, rotated)
+    with the true piece size (kerf excluded). Panel-count-minimizing; the pieces are labeled with dims
+    so the shop lays out the actual saw cuts."""
+    items = sorted(pieces, key=lambda p: -(p[1] * p[2]))         # largest area first
+    bins = []                                                    # each: {"free": [...], "placed": [...]}
+
+    def _try(free, w, h):
+        best = None
+        for ri, (fx, fy, fw, fh) in enumerate(free):
+            for (pw, ph, rot) in ([(w, h, False)] if abs(w - h) < 1e-6 else [(w, h, False), (h, w, True)]):
+                if pw <= fw + 1e-6 and ph <= fh + 1e-6:
+                    score = min(fw - pw, fh - ph)               # best short-side fit
+                    if best is None or score < best[0]:
+                        best = (score, ri, fx, fy, pw, ph, rot)
+        return best
+
+    for (label, w0, h0) in items:
+        w, h = w0 + margin, h0 + margin
+        pick = None
+        for bi, b in enumerate(bins):
+            cand = _try(b["free"], w, h)
+            if cand and (pick is None or cand[0] < pick[1][0]):
+                pick = (bi, cand)
+        if pick is None:                                         # open a new sheet
+            bins.append({"free": [(margin, margin, bin_w - 2 * margin, bin_h - 2 * margin)], "placed": []})
+            bi = len(bins) - 1
+            cand = _try(bins[bi]["free"], w, h)
+            if cand is None:                                     # bigger than a whole sheet
+                bins[bi]["placed"].append((margin, margin, min(w0, bin_w - 2 * margin),
+                                           min(h0, bin_h - 2 * margin), label + " ⚠OVERSIZE", False))
+                bins[bi]["free"] = []
+                continue
+            pick = (bi, cand)
+        bi, (_score, _ri, x, y, pw, ph, rot) = pick
+        b = bins[bi]
+        b["placed"].append((x, y, pw - margin, ph - margin, label, rot))
+        used = (x, y, pw, ph)
+        nf = []
+        for f in b["free"]:
+            nf.extend(_split_free(f, used))
+        b["free"] = _prune(nf)
+    return [b["placed"] for b in bins]
+
+
+# pack every group once (module-level, so Sheet 1's count and Sheet 2's layout agree)
+PACKED = [(g, pack_group(_group_pieces(g), g["stock"][0], g["stock"][1])) for g in GROUPS]
+_BINS = {g["gid"]: bins for g, bins in PACKED}
+NAIVE_TOTAL = sum(sum(p.get("npieced", 1) for p in g["parts"]) for g in GROUPS)
+OPT_TOTAL = sum(len(bins) for _g, bins in PACKED)
+
+
+def _is_fixed(label):
+    return any(k in label for k in ("Fixed", "stub", "baffle"))
+
 
 def _save(fig, fname):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -158,9 +267,12 @@ def draw_sheet1():
         # group band
         ax.plot([1, 99], [y + 1.1, y + 1.1], color=C_DIM, lw=0.5)
         ax.text(CX["grp"], y, g["gid"], fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-        nsheets = sum(p.get("npieced", 1) for p in g["parts"])
+        opt = len(_BINS[g["gid"]])
+        naive = sum(p.get("npieced", 1) for p in g["parts"])
+        npieces = len(_group_pieces(g))
+        saved = f"  (was {naive})" if opt < naive else ""
         ax.text(CX["piece"], y, f"{g['grade']}  ·  {g['sku']}  ·  "
-                f"{nsheets}× {g['stock'][0]}×{g['stock'][1]} stock sheet(s)",
+                f"{npieces} pieces → {opt}× {g['stock'][0]}×{g['stock'][1]} sheet{'s' if opt != 1 else ''}{saved}",
                 fontsize=7.4, fontweight="bold", color=C_DIM, **FONT)
         y -= ROW
         for p in g["parts"]:
@@ -179,9 +291,9 @@ def draw_sheet1():
 
     draw_notes(ax, [
         "READ THIS SHEET:",
-        "• Buy one stock sheet per row in the group band (Group A's three parts share SKU 303564747 and may nest — carried separate for cut margin).",
+        f"• Buy the sheet count in each group band — {OPT_TOTAL} stock sheets total (bin-packed from {NAIVE_TOTAL} if each part were cut on its own sheet). Pieces from different subsystems share a sheet within one grade+thickness; you can't cut across grades.",
         "• ᴰ dims derive from tbs_constants and update with the geometry; plain dims are spec/report literals. Cost, supplier and SKU live in parts.py (the key on each part's └ line).",
-        "• The cut LAYOUT (how the pieces nest on each 4×8) is Sheet 2. Fabrication detail for a piece (hole positions, edge seal, hinge line) stays on its owning subsystem sheet.",
+        "• The optimized cut LAYOUT (which pieces nest on each sheet) is Sheet 2. Fabrication detail for a piece (hole positions, edge seal, hinge line) stays on its owning subsystem sheet.",
     ], 2, 14.5, spacing=2.6, fs=7.2, title_fs=8.0, width=96, wrap=150,
        color=C_OUT, title_color=C_OUT, border_color=C_DIM, font=FONT)
 
@@ -194,30 +306,8 @@ def draw_sheet1():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 2 — NESTING LAYOUT (each stock sheet with its pieces shelf-packed)
+# SHEET 2 — OPTIMIZED NESTING (bin-packed stock sheets, pieces mixed across subsystems)
 # ═══════════════════════════════════════════════════════════════════════════════
-def _pack(pieces, stock_w, margin=25):
-    """Shelf-pack (row-major, tallest first) → [(x, y, w, h, label)] in mm on the stock sheet."""
-    items = []
-    for (label, w, h, q, _where) in pieces:
-        for i in range(q):
-            items.append((f"{label}" + (f" #{i+1}" if q > 1 else ""), w, h))
-    items.sort(key=lambda it: -it[2])
-    out = []
-    x = margin
-    y = margin
-    rowh = 0
-    for (label, w, h) in items:
-        if x + w > stock_w - margin and x > margin:
-            x = margin
-            y += rowh + margin
-            rowh = 0
-        out.append((x, y, w, h, label))
-        x += w + margin
-        rowh = max(rowh, h)
-    return out
-
-
 def draw_sheet2():
     fig = plt.figure(figsize=(20, 14))
     fig.patch.set_facecolor(C_BG)
@@ -226,66 +316,56 @@ def draw_sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # flatten to individual stock sheets (a part with npieced=N draws N stock sheets)
+    # flatten PACKED to a list of (gid, thick, stock, sheet_i, n_sheets, placements)
     sheets = []
-    for g in GROUPS:
-        for p in g["parts"]:
-            n = p.get("npieced", 1)
-            for i in range(n):
-                # when pieced, each stock sheet carries a half of each qty-N piece
-                pcs = []
-                for (label, w, h, q, where) in p["pieces"]:
-                    if n > 1:
-                        pcs.append((label, w, h, max(1, q // n), where))
-                    else:
-                        pcs.append((label, w, h, q, where))
-                sheets.append((g["gid"], p["key"] + (f"  ({i+1}/{n})" if n > 1 else ""),
-                               p["stock"], pcs))
+    for g, bins in PACKED:
+        for i, pl in enumerate(bins):
+            sheets.append((g["gid"], g["thick"], g["stock"], i + 1, len(bins), pl))
 
-    # tile the stock sheets in a grid, drawn at 1:1 mm with gaps
     COLS = 4
-    GAPX, GAPY = 620, 900
-    sw, sh = STOCK_8x4
-    for idx, (gid, key, stock, pcs) in enumerate(sheets):
+    GAPX, GAPY = 640, 1050
+    CELLW, CELLH = 1220, 2440
+    for idx, (gid, thick, stock, si, ns, pl) in enumerate(sheets):
         col = idx % COLS
         row = idx // COLS
-        ox = col * (sw + GAPX)
-        oy = -row * (sh + GAPY)
+        ox = col * (CELLW + GAPX)
+        oy = -row * (CELLH + GAPY)
         w0, h0 = stock
-        # stock sheet
+        used = sum(w * h for (_x, _y, w, h, _l, _r) in pl)
+        util = 100 * used / (w0 * h0)
         ax.add_patch(Rectangle((ox, oy), w0, h0, fc=C_STOCK, ec=C_OUT, lw=1.6, zorder=2))
-        ax.text(ox + w0 / 2, oy + h0 + 90, f"[{gid}] {key}", ha="center", fontsize=7.6,
+        ax.text(ox + w0 / 2, oy + h0 + 120, f"[{gid}] sheet {si}/{ns}", ha="center", fontsize=8.2,
                 fontweight="bold", color=C_OUT, **FONT)
-        ax.text(ox + w0 / 2, oy + h0 + 18, f"{w0}×{h0} stock", ha="center", fontsize=6.2,
-                color=C_DIM, **FONT)
-        # packed pieces
-        for (x, yb, w, h, label) in _pack(pcs, w0):
-            fc = C_STUB if ("Fixed" in label or "stub" in label or "baffle" in label) else C_WOOD
+        ax.text(ox + w0 / 2, oy + h0 + 34, f"{thick}mm · {w0}×{h0} · {util:.0f}% used",
+                ha="center", fontsize=6.4, color=C_DIM, **FONT)
+        for (x, yb, w, h, label, rot) in pl:
+            fc = C_STUB if _is_fixed(label) else C_WOOD
             ax.add_patch(Rectangle((ox + x, oy + yb), w, h, fc=fc, ec=C_OUT, lw=1.0, zorder=3))
             short = label.split(" (")[0]
             cx, cy = ox + x + w / 2, oy + yb + h / 2
-            if h > w * 1.6:                                 # rotate; separate label/dim ACROSS the width
-                ax.text(cx - 26, cy, short[:24], ha="center", va="center", fontsize=5.4,
+            tag = "↻ " if rot else ""
+            if h > w * 1.5:                                    # rotate label; separate dim across width
+                ax.text(cx - 24, cy, (tag + short)[:26], ha="center", va="center", fontsize=5.2,
                         color=C_OUT, rotation=90, **FONT)
-                ax.text(cx + 26, cy, f"{w:g}×{h:g}", ha="center", va="center", fontsize=5.0,
+                ax.text(cx + 26, cy, f"{w:g}×{h:g}", ha="center", va="center", fontsize=4.8,
                         color=C_DIM, rotation=90, **FONT)
             else:
-                ax.text(cx, cy + 34, short[:24], ha="center", va="center", fontsize=5.4,
-                        color=C_OUT, **FONT)
-                ax.text(cx, cy - 44, f"{w:g}×{h:g}", ha="center", va="center", fontsize=5.0,
-                        color=C_DIM, **FONT)
+                ax.text(cx, cy + max(24, h * 0.14), (tag + short)[:26], ha="center", va="center",
+                        fontsize=5.2, color=C_OUT, **FONT)
+                ax.text(cx, cy - max(30, h * 0.16), f"{w:g}×{h:g}", ha="center", va="center",
+                        fontsize=4.8, color=C_DIM, **FONT)
 
     ax.autoscale_view()
-    ax.text(0.5, 1.005, "PLYWOOD NESTING — CUT LAYOUT PER STOCK SHEET", transform=ax.transAxes,
+    ax.text(0.5, 1.006, "PLYWOOD NESTING — OPTIMIZED CUT LAYOUT", transform=ax.transAxes,
             ha="center", fontsize=13, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(0.5, 0.985, "illustrative shelf-pack (not optimized) · pieces to scale on the 4×8 stock · "
-            "shaded = FIXED (non-fold) piece",
+    ax.text(0.5, 0.986, f"MAXRECTS bin-pack per grade+thickness (pieces mixed across subsystems) · "
+            f"{OPT_TOTAL} stock sheets (from {NAIVE_TOTAL} part-by-part) · ↻ = rotated · shaded = FIXED piece",
             transform=ax.transAxes, ha="center", fontsize=8, color=C_DIM, **FONT)
 
     ax_tb = fig.add_axes([0.04, 0.008, 0.92, 0.045])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 2 OF {TOTAL_SHEETS}", drawing_title="PLYWOOD CUT SHEETS",
-                subtitle="NESTING LAYOUT — CUT PER STOCK SHEET",
+                subtitle=f"OPTIMIZED NESTING — {OPT_TOTAL} STOCK SHEETS",
                 scale_note="PIECES TO SCALE ON 4×8 STOCK · ALL DIMS IN mm",
                 doc_id="TBS-001 · Plywood Cut Sheets")
     _save(fig, "plywood-cutsheets-sheet2.png")

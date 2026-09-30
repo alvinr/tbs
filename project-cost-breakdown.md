@@ -19,17 +19,17 @@
 | **3. Optics — pinhole wall interface** | $35 | $52 | $70 |
 | **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $4,063 | $4,291 | $4,525 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,841 | $7,474 | $8,114 |
-| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $3,431 | $3,464 | $3,496 |
+| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $3,363 | $3,396 | $3,428 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $748 | $808 | $898 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $3,144 | $3,651 | $4,155 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,088 | $2,507 | $2,950 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,250 | $1,490 | $1,730 |
-| **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,324 | $1,432 | $1,537 |
+| **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,314 | $1,422 | $1,527 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $270 | $278 | $283 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,250 | $1,710 | $3,100 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$27,790** | **$32,602** | **$39,471** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$27,712** | **$32,524** | **$39,393** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware New Cyanotype** chemistry (ferric ammonium oxalate) + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,250), Mid = Standard ½-Ware ($1,710), High = Rich full-Ware ($3,100)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -535,17 +535,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $35 |
 | Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $4,063 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,841 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,431 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,363 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $748 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $3,144 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,088 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,250 |
-| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,324 |
+| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,314 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $270 |
 | Cyanotype chemistry + substrate (50 prints) | $1,250 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$27,220** |
+| **Scenario A total** | **~$27,142** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -558,18 +558,18 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $52 |
 | Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $4,291 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,474 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,464 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,396 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $808 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $3,651 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,507 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,490 |
-| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,432 |
+| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,422 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $278 |
 | Cyanotype chemistry + substrate (50 prints) | $1,710 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$32,912** |
+| **Scenario B total (excl. CDL)** | **~$32,834** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -577,11 +577,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,012 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,934 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$121,512–$151,512** |
+| **Scenario C total** | **~$121,434–$151,434** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

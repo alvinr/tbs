@@ -2708,7 +2708,7 @@ def sheet16():
     # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
     e0, ebz, S = 775, 150, 5.0
     def eE(x, z): return (e0 + x * S, ebz + z * S)
-    T, xc, BL = 12, 16, 30          # 12mm ply · scarf start · panel run each side
+    T, xc, BL = 18, 16, 30          # 18mm ply · scarf start · panel run each side
     ax.text(e0 + 33 * S, 400, "DETAIL E — plywood↔plywood chamfer joint (TYP)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.text(e0 + 33 * S, 384, "45° scarf · EPDM bonded to the FIXED face · enlarged 5:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
     A = [eE(0, 0), eE(xc, 0), eE(xc + T, T), eE(0, T)]                       # fixed panel (left)
@@ -2725,7 +2725,7 @@ def sheet16():
            col="#B00", fw="bold", fs=6, ha="left", arrow_style="-|>", lw=1.6)
     leader(ax, (eE(xc + T / 2, T / 2)[0] - 4, ebz + T * S * 0.5), (e0 - 46, ebz + T * S * 0.5 - 55),
            "light", col="#B07000", fs=5.6, ha="left", va="top", arrow_style="-|>", lw=1.4)   # light ray blocked at the diagonal lap
-    draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "12mm", offset=10, fs=6, font=FONT)
+    draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "18mm", offset=10, fs=6, font=FONT)
     ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)
 
     # ══ DETAIL F (enlarged ~3.5:1) — apron hinge-line light seal (exterior lapping board) ══
@@ -2740,9 +2740,9 @@ def sheet16():
     ax.add_patch(Rectangle(fF(-13, THR), 3 * SF, 44 * SF, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="\\\\\\"))
     # 10mm closed-cell foam, compressed between the lap and the apron exterior face
     ax.add_patch(Rectangle(fF(-10, THR + 4), 10 * SF, 36 * SF, fc=C_FOAM, ec=C_OUT, lw=0.8))
-    # apron (12mm ply, UP = sealing) — interior side of the hinge, with a break at the top
-    ax.add_patch(Rectangle(fF(0, THR), 12 * SF, 44 * SF, fc=C_WOOD, ec=C_OUT, lw=1.4))
-    _bx0, _bx1, _bzt = fF(0, 95)[0], fF(12, 95)[0], fF(0, 95)[1]
+    # apron (18mm ply, UP = sealing) — interior side of the hinge, with a break at the top
+    ax.add_patch(Rectangle(fF(0, THR), 18 * SF, 44 * SF, fc=C_WOOD, ec=C_OUT, lw=1.4))
+    _bx0, _bx1, _bzt = fF(0, 95)[0], fF(18, 95)[0], fF(0, 95)[1]
     ax.plot([_bx0, (_bx0 + _bx1) / 2 - 6, (_bx0 + _bx1) / 2 + 6, _bx1], [_bzt, _bzt + 9, _bzt - 9, _bzt], color=C_OUT, lw=1.0)
     # piano hinge knuckle (inboard of the lap), at the apron bottom on the sill
     ax.add_patch(Circle(fF(3, THR), 4.0 * SF, fc="#B0B0B8", ec=C_OUT, lw=1.0))
@@ -2752,7 +2752,7 @@ def sheet16():
     ax.text(*fF(-46, 78), "ext. light\nblocked", ha="right", va="center", fontsize=5.6, color="#B07000", **FONT)
     # labels (left-aligned leader column to the right — interior side)
     _lx = f0 + 165
-    leader(ax, fF(6, 88), (_lx, fbz + 315), "12mm apron ply\n(UP = sealing)", col="#204060", fw="bold", fs=6, ha="left")
+    leader(ax, fF(9, 88), (_lx, fbz + 315), "18mm apron ply\n(UP = sealing)", col="#204060", fw="bold", fs=6, ha="left")
     leader(ax, fF(-5, 80), (_lx, fbz + 245), "10mm closed-cell foam\n(compressed when UP)", col=C_FOAM, fw="bold", fs=6, ha="left")
     leader(ax, fF(-11.5, 70), (_lx, fbz + 170), "3mm steel LAPPING BOARD\n— fixed to the sill, exterior\ndaylight baffle over the hinge", col=C_OUT, fw="bold", fs=6, ha="left")
     leader(ax, fF(3, THR), (_lx, fbz + 90), "piano hinge to the sill\n(knuckle inboard of the lap)", col=C_OUT, fs=6, ha="left")
@@ -2761,7 +2761,7 @@ def sheet16():
     # ══ notes ══
     draw_notes(ax, [
         "FOLD-DOWN LIGHT APRON — operation",
-        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 12mm exterior BC plywood, flat-black interior (a light seal).",
+        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 18mm exterior SYP plywood, flat-black interior (a light seal); cut from the group-A sheet (Plywood Cut Sheets).",
         "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-center catch each side.",
         "• HINGE LINE (Detail F): the apron-bottom piano hinge is light-sealed by a fixed 3mm-steel LAPPING BOARD off the sill — an exterior daylight baffle standing over the hinge — plus a 10mm closed-cell foam strip the apron compresses when UP; the hinge knuckle sits inboard of the lap.",
         "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",

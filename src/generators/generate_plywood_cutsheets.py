@@ -75,11 +75,20 @@ GROUPS = [
         dict(key="pinhole-panel-ply-18", stock=STOCK_8x4, npieced=2, pieces=[
             ("Pinhole backing half", PINHOLE_HALF, 1440, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×1440 face (>1219 stock width)"),
         ]),
+        dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
+            ("Near fold-down light apron", APR_NEAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, near corner (18mm, flat-black interior face)"),
+            ("Far fold-down light apron", APR_FAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, far corner"),
+            ("Fixed pivot stub", APRON_FIX_W, APR_CORNER_H, 1, "fixed strip clearing the Ø220 pivot mount plate"),
+            ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
+        ]),
     ]),
-    dict(gid="B", thick=18, grade="18mm SANDEPLY Sande hardwood plywood",
-         sku="Home Depot 203414066", stock=STOCK_HD, parts=[
+    dict(gid="B", thick=18, grade="18mm UV-coated white hardwood (Swaner)",
+         sku="Home Depot 302874373", stock=STOCK_HD, parts=[
+        dict(key="shelf-phenolic-ply", stock=STOCK_HD, pieces=[
+            ("Chem-prep shelf board", SHELF_W, SHELF_DEPTH, 1, "fold-down chemistry-prep work surface (pinhole wall)"),
+        ]),
         dict(key="ep-backing-panel", stock=STOCK_HD, pieces=[
-            ("EP electrical backboard", 700, 2000, 1, "interior wall electrical backboard — MPPT / battery / inverter / disconnects / IP65 box"),
+            ("EP electrical backboard", 700, 2000, 1, "interior wall electrical backboard — MPPT / battery / inverter / disconnects / IP65 box (backboard is finish-agnostic → shares the chem-shelf UV-white sheet)"),
         ]),
     ]),
     dict(gid="C", thick=18, grade='¾" CC pressure-treated pine',
@@ -87,21 +96,6 @@ GROUPS = [
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
             ("Fan-B mount band", 610, 1220, 1, "hinged-panel near-corner rigid fan/duct mount band"),
             ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
-        ]),
-    ]),
-    dict(gid="D", thick=18, grade="18mm UV-coated white hardwood (Swaner)",
-         sku="Home Depot 302874373", stock=STOCK_HD, parts=[
-        dict(key="shelf-phenolic-ply", stock=STOCK_HD, pieces=[
-            ("Chem-prep shelf board", SHELF_W, SHELF_DEPTH, 1, "fold-down chemistry-prep work surface (pinhole wall)"),
-        ]),
-    ]),
-    dict(gid="E", thick=12, grade="12mm exterior BC plywood (flat-black interior face)",
-         sku="standard exterior", stock=STOCK_8x4, parts=[
-        dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
-            ("Near fold-down light apron", APR_NEAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, near corner"),
-            ("Far fold-down light apron", APR_FAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, far corner"),
-            ("Fixed pivot stub", APRON_FIX_W, APR_CORNER_H, 1, "fixed strip clearing the Ø220 pivot mount plate"),
-            ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
     ]),
 ]

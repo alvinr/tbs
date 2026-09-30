@@ -1240,31 +1240,35 @@ def near_bay_wall_frame():
 # so its TOP steps down from the raised corner leaf bottom (PANEL_FLOOR_GAP_SIDE) to the lower center leaf
 # bottom (PANEL_FLOOR_GAP) — a single stepped cut, hinged as one about the threshold. HZ = hinge Z (12).
 _AHZ = 12
+APRON_PLY_T = 18            # fold-down apron re-graded 12mm→18mm so it nests into the group-A SYP sheet
+APRON_X0    = 40 - APRON_PLY_T   # 22 — apron front face (still inside the 40mm frame zone; clears the pivot post/plate)
+APRON_CHAM  = APRON_PLY_T   # 45° moving-flap scarf runs across the apron thickness
+APRON_T     = APRON_PLY_T   # fold-down flap = 18mm plywood, on the interior face (X22..40)
+
 # UP profiles — (Yd, Z) polygon in the door plane, extruded APRON_T mm in +X.
-# Profile TOPS are pulled down CHAM (12mm): the flap body stops 12mm short of the leaf bottom, and a 45°
+# Profile TOPS are pulled down APRON_CHAM (18mm): the flap body stops 18mm short of the leaf bottom, and a 45°
 # top-edge chamfer prism (apron_top_chamfers) fills back to it — the moving flap's scarf sweeps off the
 # EPDM on the fixed leaf face (Sheet 16 Detail E). Corner top = 282, center-ext top = 217.
-_CT_LOW = CORNER_BOT - CHAM           # corner body top (178) — BOTH sides: dropped to meet the lowered
+_CT_LOW = CORNER_BOT - APRON_CHAM     # corner body top — BOTH sides: dropped to meet the lowered
 #                                       corner-skin bottom (CORNER_BOT) so the apron reads shorter, fixed
 #                                       skin below it (far = HDPE, near = Fan-B ply band)
-_CC   = PANEL_FLOOR_GAP - CHAM        # center-ext body top (205)
+_CC   = PANEL_FLOOR_GAP - APRON_CHAM  # center-ext body top
 _APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
                   (YD_L, _CC), (YD_L, _CT_LOW), (0, _CT_LOW)]
 _APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_LOW),
                   (YD_R, _CT_LOW), (YD_R, _CC), (APRON_IN_R, _CC)]
-APRON_T = PLY_T   # fold-down flap = 12mm plywood, on the interior face (X28..40)
 
 
 def _apron_vpanel(name, prof, color, alpha):
-    """One vertical 12mm-ply panel from a (Yd, Z) polygon on the interior face (X=PLY_X0), pushpulled PLY_T in +X."""
-    pts = ", ".join(f"[{ov.mm(PLY_X0)},{ov.mm(y)},{ov.mm(z)}]" for (y, z) in prof)
+    """One vertical 18mm-ply panel from a (Yd, Z) polygon on the interior face (X=APRON_X0), pushpulled APRON_PLY_T in +X."""
+    pts = ", ".join(f"[{ov.mm(APRON_X0)},{ov.mm(y)},{ov.mm(z)}]" for (y, z) in prof)
     r, g, b = ov.hex_to_rgb(color)
     mat = ov.shared_mat_name(name, color, alpha)
     return '\n'.join([
         f'  grp = ents.add_group', f'  grp.name = "{name}"',
         f'  face = grp.entities.add_face({pts})',
         f'  face.reverse! if face.normal.x < 0',
-        f'  face.pushpull({ov.mm(PLY_T)})',
+        f'  face.pushpull({ov.mm(APRON_PLY_T)})',
         f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
         f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
         f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
@@ -1292,7 +1296,7 @@ def apron_top_chamfers():
     segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
             (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
     return '\n'.join(_prism_xz("Fold-down apron top chamfer",
-                               [(PLY_X0, top - CHAM), (40, top - CHAM), (PLY_X0, top)], y0, y1 - y0, C_PLY, 0.85)
+                               [(APRON_X0, top - APRON_CHAM), (40, top - APRON_CHAM), (APRON_X0, top)], y0, y1 - y0, C_PLY, 0.85)
                      for (y0, y1, top) in segs)
 
 
@@ -1305,11 +1309,11 @@ def apron_up_geom():
     # inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the corner-zone height.
     yf = C_WID - APRON_FIX_W
     far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
-                              [(PLY_X0, yf), (40, yf), (40, yf + CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
+                              [(APRON_X0, yf), (40, yf), (40, yf + APRON_CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
     # FIXED (non-folding) plywood stub closing the corner gap between the far apron's far edge
     # (C_WID−APRON_FIX_W) and the pivot post: a fold-down flap here would foul the Ø89 post + its Ø220 floor
     # plate, but this piece stays fixed and at X28..40 it clears both (post X131+, plate X65+).
-    stub = ruby_box("Fold-down apron (far) fixed stub", PLY_X0, C_WID - APRON_FIX_W, _AHZ, PLY_T,
+    stub = ruby_box("Fold-down apron (far) fixed stub", APRON_X0, C_WID - APRON_FIX_W, _AHZ, APRON_PLY_T,
                     PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - _AHZ, color=C_PLY, alpha=0.85)
     return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
             _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) +

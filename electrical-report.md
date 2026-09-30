@@ -221,7 +221,7 @@ The switches are positioned near the electrical panel, accessible from the near 
 ## 7. Wiring Specification
 
 ### 7.1 Main Panel (Plywood Backboard + IP65 Enclosure)
-An **18mm plywood backing panel** (~700 × 2000mm) on the interior pinhole-wall face is the mounting surface every component fixes to. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small **IP65 weatherproof enclosure** bolted to the plywood (its back panel is the plywood), sealing them against splash/dust from the water system; the MPPT, main disconnect, battery bank and inverter mount on the plywood outside it. It carries:
+An **18mm plywood backing panel** (~700 × 2000mm) on the interior pinhole-wall face is the mounting surface every component fixes to. It is a finish-agnostic backboard, so it is cut from the chem-shelf UV-white sheet rather than buying its own — see [Plywood Cut Sheets](plywood-cut-sheets.md) (group B); the UV-coated face is already sealed and wipeable. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small **IP65 weatherproof enclosure** bolted to the plywood (its back panel is the plywood), sealing them against splash/dust from the water system; the MPPT, main disconnect, battery bank and inverter mount on the plywood outside it. It carries:
 
 - Victron MPPT controller — on its own forward sub-panel, clear of the fuse-stack risers
 - **PV array disconnect** — DC load-break isolator in the PV path (array → MPPT), wired in-line on the panel (NEC 690.13)
@@ -405,7 +405,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Deutsch DT connectors | DT 2-pin, 10 sets | Waytek Wire | ~$30 |
 | Cable trunking | 40 × 25mm PVC, 5m lengths × 4 | Lowe's / McMaster-Carr | ~$40 |
 | Corrugated conduit | Gray, 10mm ID, 10m | McMaster-Carr 7828K48 | ~$30 |
-| EP plywood backing panel | 18mm, ~700×2000mm | Home Depot / Lumber yard | ~$60 |
+| EP plywood backing panel | 18mm UV-white, ~700×2000mm — cut from the chem-shelf sheet ([Plywood Cut Sheets](plywood-cut-sheets.md), group B) | shared, no separate sheet | $0 |
 | IP65 enclosure | ~200×220×140mm (fuse block + busbars) | Polycase / Amazon | ~$60 |
 | Brady label kit | M210 with wire label cartridge | McMaster-Carr / Amazon | ~$80 |
 | NEMA 5-15R inlet | Weatherproof outlet box | Leviton / Amazon | ~$25 |
@@ -423,10 +423,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | [12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) + **6× LED Profiles 981 channel/diffuser (white + red)** + connectors/PWM dimmers | white: 2× 2.16m tray + 1× 1.18m corridor (~7,670 lm / ~548 lux), 76W/6.3A, dimmable, true 12V | HitLights + LED Profiles | ~$84 strip + ~$162 channel + ~$15 |
 | [Red 12V COB LED strip, 5m reel (STN-B-BRED-O12A-08F5M-12V)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) | Circuit-D safelight — 40W/reel cut into 3 ceiling runs + drum (~40W/3.3A), COB 620nm, dimmable, cyanotype-safe, IP20 | Super Bright LEDs | ~$90 |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,464<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,396<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,962<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,894<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

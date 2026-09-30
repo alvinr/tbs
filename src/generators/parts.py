@@ -613,12 +613,13 @@ PARTS: list[Part] = [
          url="https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56",
          spec="Panduit grounding jumper kit — 6 AWG, 60in, 45deg bent ring lugs (factory irreversible-compression terminals). Equipotential bond: container body -> battery-neg busbar (§7.6). $95.79 firm (2026-07-31)."),
     Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
-         "electrical", 1, "4'×8' sheet", 68.98, 68.98, "Home Depot", part_no="454559", url="https://www.homedepot.com/p/203414066",
-         spec='18mm SANDEPLY Sande hardwood plywood, full 4\'×8\' sheet, cut to the ~700×2000mm backboard (fits with margin — 1220×2440mm stock) — '
-              'the wall-mounted surface every EP component fixes to (MPPT on its forward sub-panel, battery bank, '
-              'inverter, main + PV disconnects); the DC-distribution terminals (fuse block + busbars) '
-              'sit in a small IP65 enclosure bolted to it. Add DIN rail + standoffs for the DIN gear. '
-              '(Not fire-rated — acceptable for a small 12V DC system; seal/paint before mounting.)'),
+         "electrical", 1, "cut from the shelf sheet", 0.0, 0.0, "shared (Plywood Cut Sheets)", part_no="302874373", url="https://www.homedepot.com/p/302874373",
+         spec='18mm UV-coated white hardwood ply, ~700×2000mm backboard — the wall-mounted surface every EP '
+              'component fixes to (MPPT on its forward sub-panel, battery bank, inverter, main + PV disconnects); '
+              'the DC-distribution terminals (fuse block + busbars) sit in a small IP65 enclosure bolted to it. '
+              'Add DIN rail + standoffs for the DIN gear. A backboard is finish-agnostic, so it is CUT FROM THE '
+              'CHEM-SHELF UV-white sheet (shelf-phenolic-ply) — no separate sheet purchased (Plywood Cut Sheets, '
+              'group B). The UV-coated face is already sealed/wipeable (better than the former SANDEPLY).'),
     Part("ip65-enclosure", "IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)", "electrical-distribution",
          "electrical", 1, "ea", 46.93, 46.93, "Polycase", "Amazon", part_no="ZH-080804", url="https://www.polycase.com/zh-080804",
          spec='Weatherproof IP65 box bolted to the plywood backboard, sealing the DC-distribution '
@@ -1023,10 +1024,10 @@ PARTS: list[Part] = [
          spec="Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8\" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375\", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 7. $14.59/100.", note="NEW 2026-08-28 (hingepanel-bp) — surround→frame connection resolved as a blind-riveted lap; SKU shared with ll-rivets-housing"),
     Part("panel-paint", "Flat black paint (RAL 9005)", "adhesives-finishes",
          "panel", 1, "qt", 10, 20, "local", spec="Bay/weld touch-in (HDPE skins are pre-pigmented black)"),
-    Part("panel-bottom-apron", "Fold-down light aprons + fixed baffle/pivot stub (12mm ext ply) + piano hinges + foam seal + hold-up catches", "timber-ply",
-         "panel", 1, "lot", 95, 150, "Home Depot / McMaster",
-         spec="Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 16). Two bottom-hinged fold-down aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. 12mm exterior BC plywood (~0.5 m² of a 4×8 sheet, flat-black interior), 2× continuous (piano) hinges to the threshold, closed-cell foam-strip perimeter seal, 2× over-center hold-up catches; folds flat into the container for the transport swing. HINGE-LINE seal (Sheet 16 Detail F): a fixed 3mm-steel lapping board off the sill — an exterior daylight baffle standing over the piano hinge — + a 10mm closed-cell foam strip the apron compresses when UP (knuckle inboard of the lap). Est.; lapping-board steel is an offcut, foam within the seal roll.",
-         note="NEW 2026-08-30 — fold-down light apron"),
+    Part("panel-bottom-apron", "Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply, from group-A offcut) + piano hinges + foam seal + hold-up catches", "timber-ply",
+         "panel", 1, "lot", 85, 140, "Home Depot / McMaster",
+         spec="Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 16). Two bottom-hinged fold-down aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. 18mm exterior SYP plywood, flat-black interior — the ~0.5 m² of ply NESTS INTO THE GROUP-A SYP OFFCUT (Plywood Cut Sheets, group A: corridor + pinhole panels), so no separate apron sheet is bought (was a dedicated 12mm sheet); this lot is the piano hinges + foam + catches. 2× continuous (piano) hinges to the threshold, closed-cell foam-strip perimeter seal, 2× over-center hold-up catches; folds flat into the container for the transport swing. HINGE-LINE seal (Sheet 16 Detail F): a fixed 3mm-steel lapping board off the sill — an exterior daylight baffle standing over the piano hinge — + a 10mm closed-cell foam strip the apron compresses when UP (knuckle inboard of the lap). Est.; lapping-board steel is an offcut, foam within the seal roll.",
+         note="NEW 2026-08-30 — fold-down light apron; 2026-09-30 re-graded 12mm→18mm to nest into the group-A SYP sheet (saves a sheet)"),
     Part("panel-grab-handle", "12\" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4\" screws into rivnuts, matte-black", "fasteners-hardware",
          "panel", 1, "ea", 6.43, 6.43, "McMaster-Carr", part_no="1871A65", url="https://www.mcmaster.com/1871A65/",
          spec="Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13\" grip, 2.06\" standoff. Screws into 1/4\"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm.", note="2026-08-28: swap the D-grab → the same 1871A65 pull handle as the drum handle; mount = rivnuts not through-bolt+backing plate"),
@@ -1034,7 +1035,7 @@ PARTS: list[Part] = [
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",
          "shelf", 1, '4\'×8\' 18mm sheet', 73.28, 73.28, "Home Depot", part_no="BPI6WUV2I", url="https://www.homedepot.com/p/302874373",
-         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked).'),
+         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~700×2000mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, group B), so no separate backboard sheet is bought.'),
     # Steel perimeter frame, folding stays, M5 CSK + corner gussets REMOVED — ply-primary redesign
     # (2026-09-07, chem-shelf-blueprint-spec.md): the plywood is the structure; attachments land in
     # ply tee-nuts (1/4-20 ply-mount standard); stays are SS chain. M5 family eliminated.

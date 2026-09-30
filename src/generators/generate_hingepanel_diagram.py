@@ -2761,7 +2761,7 @@ def sheet16():
     # ══ notes ══
     draw_notes(ax, [
         "FOLD-DOWN LIGHT APRON — operation",
-        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 18mm exterior SYP plywood, flat-black interior (a light seal); cut from the group-A sheet (Plywood Cut Sheets).",
+        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 18mm exterior SYP plywood, flat-black interior (a light seal); cut from the SYP sheets A–C (Plywood Cut Sheets).",
         "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-center catch each side.",
         "• HINGE LINE (Detail F): the apron-bottom piano hinge is light-sealed by a fixed 3mm-steel LAPPING BOARD off the sill — an exterior daylight baffle standing over the hinge — plus a 10mm closed-cell foam strip the apron compresses when UP; the hinge knuckle sits inboard of the lap.",
         "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",

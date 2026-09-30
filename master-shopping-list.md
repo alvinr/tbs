@@ -19,13 +19,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,144 | $4,155 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,088 | $2,950 |
-| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,314 | $1,527 |
+| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,244 | $1,457 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $270 | $283 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,662** | **~$36,453** |
+| **TOTAL (base build + 50-print run)** | **~$27,592** | **~$36,383** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -454,12 +454,12 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [EP plywood backing panel (18mm, ~700×2000mm)](https://www.homedepot.com/p/302874373) (302874373) | 1 cut from the shelf sheet | shared (Plywood Cut Sheets) | electrical | $0 |
+| [Fan B mount band + cooler base ply (23/32" exterior SYP, from the sheets A–C offcut)](https://www.homedepot.com/p/303564747) (303564747) | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | panel | $0 |
 | Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply, from the SYP sheets A–C offcut) + piano hinges + foam seal + hold-up catches | 1 lot | Home Depot / McMaster | panel | $85–$140 |
 | [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 2 sheet | Home Depot | water | $59 |
-| [Pressure-treated pine plywood (Fan B mount band + cooler base)](https://www.homedepot.com/p/206343229) (231428) | 1 4'×8' ¾" sheet | Home Depot | panel | $70 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Home Depot | shelf | $73 |
-| **timber-ply subtotal** | | | | **$345–$400** |
+| **timber-ply subtotal** | | | | **$275–$330** |
 
 ### tools-safety
 
@@ -499,7 +499,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,903–$1,923 |
-| Home Depot | 55 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,728–$1,864 |
+| Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,658–$1,795 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -559,7 +559,7 @@ indicative low–high estimates — get quotes before ordering.
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
 | offcuts | 1 | water-equipment | $0 |
-| shared (Plywood Cut Sheets) | 1 | timber-ply | $0 |
+| shared (Plywood Cut Sheets) | 2 | timber-ply | $0 |
 <!-- END parts:master -->
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)

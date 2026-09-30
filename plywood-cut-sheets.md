@@ -29,39 +29,42 @@ Every plywood cut piece, grouped by stock. The ᴰ marker flags a dimension deri
 ## 3. Nesting layout
 
 A MAXRECTS bin-packer nests all pieces of one grade+thickness onto the fewest 4×8 sheets, **mixing
-pieces across subsystems** (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, and the
-fold-down aprons all share the Southern-Yellow-Pine sheets A–C). This packs the whole job into
-**5 stock sheets, lettered A–E** — down from 8 if each part were cut on its own sheet. Standardizing the
-timber plywood on 18mm made this possible: the fold-down aprons were re-graded from a dedicated 12mm sheet
-into the SYP offcut (sheets A–C), and the EP electrical backboard — a finish-agnostic backing surface —
-now shares the chem-shelf UV-white sheet (sheet D), so the whole job settles into three grades (SYP,
-UV-white, pressure-treated). Pieces are drawn to scale; ↻ marks a piece rotated 90° to fit, and shaded
-pieces are fixed (non-fold). The layout is a nesting guide — the shop lays out the actual saw cuts from
-the labeled dimensions.
+pieces across subsystems** (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, the
+fold-down aprons, and the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). The packer
+works to a **5mm cut tolerance** — a piece may overhang a sheet edge by up to 5mm and still nest, so a
+full-width piece cuts to the edge (the 1220mm Fan-B band rotates 90° onto a pinhole-backing sheet, 1mm
+over the 1219mm stock, well inside tolerance). This packs the whole job into **4 stock sheets, lettered
+A–D** — down from 8 if each part were cut on its own sheet. Standardizing the timber plywood on 18mm
+drove the consolidation: the fold-down aprons re-graded from a dedicated 12mm sheet into the SYP offcut
+(sheets A–C); the EP electrical backboard — a finish-agnostic backing surface — now shares the chem-shelf
+UV-white sheet (sheet D); and the Fan-B band + cooler base re-graded from a dedicated ¾" pressure-treated
+sheet into the same SYP offcut, retiring the PT sheet. So the whole job settles into **two grades** (SYP,
+UV-white). Pieces are drawn to scale; ↻ marks a piece rotated 90° to fit, and shaded pieces are fixed
+(non-fold). The layout is a nesting guide — the shop lays out the actual saw cuts from the labeled
+dimensions.
 
 ![Plywood nesting](assets/plywood-cutsheets-sheet2.png)
 
 ## 4. Stock sheets
 
-The five sheets are lettered **A–E** in the nesting layout; the schedule's SHEET column maps each cut
+The four sheets are lettered **A–D** in the nesting layout; the schedule's SHEET column maps each cut
 piece to the same letters.
 
 | Sheets | Thickness | Grade | Parts |
 |---|---|---|---|
-| A–C | 18mm (23/32") | RTD Southern Yellow Pine exterior sheathing | corridor plumbing panel, pump-mount shirt, pinhole-wall backing, fold-down light aprons + baffle + pivot stub |
+| A–C | 18mm (23/32") | RTD Southern Yellow Pine exterior sheathing | corridor plumbing panel, pump-mount shirt, pinhole-wall backing, fold-down light aprons + baffle + pivot stub, Fan-B mount band + cooler stowage base |
 | D | 18mm | UV-coated white hardwood (Swaner) | chem-prep shelf board + EP electrical backboard |
-| E | 18mm (¾") | CC pressure-treated pine | Fan-B mount band + cooler stowage base |
-| | | **Total** | **5 sheets** |
+| | | **Total** | **4 sheets** |
 
 Sheets A–C are one SKU, so the packer nests their parts together across subsystems (the pinhole-wall
-backing exceeds a single sheet's width, so it is cut as two butt-jointed halves; the fold-down aprons
-drop into the offcut). Sheet D's UV-white stock yields both the chem-prep work surface and the EP
-electrical backboard — the backboard needs only a sealed, wipeable face, which the UV coating already
-gives, so it rides the same sheet rather than buying its own. The pressure-treated sheet E also
-yields the evap-cooler stowage base. Sheets D and E are single-grade (different material/finish from
-A–C and from each other), so they cannot cross-nest — that residual sheet-count is set by the grade
-split, not packing efficiency. Standard exterior grade throughout except the UV-coated sheet-D surface
-— no marine ply, since no plywood part carries a water-immersion load.
+backing exceeds a single sheet's width, so it is cut as two butt-jointed halves; the fold-down aprons,
+the rotated Fan-B band, and the cooler base all drop into the offcut). Sheet D's UV-white stock yields
+both the chem-prep work surface and the EP electrical backboard — the backboard needs only a sealed,
+wipeable face, which the UV coating already gives, so it rides the same sheet rather than buying its own.
+Sheet D is single-grade (a different finish from A–C), so it cannot cross-nest — that residual sheet is
+set by the grade split, not packing efficiency. Standard exterior grade throughout except the UV-coated
+sheet-D surface — no marine ply, and no pressure-treated (the former PT Fan-B sheet was over-spec for a
+dry, vented mount), since no plywood part carries a water-immersion load.
 
 ## 5. Source references
 

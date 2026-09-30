@@ -83,6 +83,10 @@ GROUPS = [
             ("Fixed pivot stub", APRON_FIX_W, APR_CORNER_H, 1, "fixed strip clearing the Ø220 pivot mount plate"),
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
+        dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
+            ("Fan-B mount band", 610, 1220, 1, "hinged-panel near-corner rigid fan/duct mount band (rotated 90°, nests on a pinhole-backing sheet)"),
+            ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
+        ]),
     ]),
     dict(gid="B", thick=18, grade="18mm UV-coated white hardwood (Swaner)",
          sku="Home Depot 302874373", stock=STOCK_HD, parts=[
@@ -93,20 +97,15 @@ GROUPS = [
             ("EP electrical backboard", 700, 2000, 1, "interior wall electrical backboard — MPPT / battery / inverter / disconnects / IP65 box (backboard is finish-agnostic → shares the chem-shelf UV-white sheet)"),
         ]),
     ]),
-    dict(gid="C", thick=18, grade='¾" CC pressure-treated pine',
-         sku="Home Depot 206343229", stock=STOCK_8x4, parts=[
-        dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
-            ("Fan-B mount band", 610, 1220, 1, "hinged-panel near-corner rigid fan/duct mount band"),
-            ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
-        ]),
-    ]),
 ]
 
 # dims that DERIVE from a tbs_constants value (shown with a ᴰ marker in the schedule)
 _DERIVED = {PINHOLE_W, PINHOLE_HALF, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
             APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH}
 
-CUT_MARGIN = 15      # saw kerf + trim allowance between pieces (mm)
+CUT_MARGIN = 6       # saw kerf reserved between adjacent pieces (mm)
+FIT_TOL = 5          # plywood cut tolerance — a piece up to 5mm over a free rect still fits (a full-width
+#                      1220mm piece cuts from a 1219mm sheet; the 1mm is inside the tolerance)
 
 
 def _group_pieces(g):
@@ -158,12 +157,13 @@ def _prune(rects):
     return out
 
 
-def pack_group(pieces, bin_w, bin_h, margin=CUT_MARGIN):
+def pack_group(pieces, bin_w, bin_h, tol=FIT_TOL, kerf=CUT_MARGIN):
     """MAXRECTS (Best-Short-Side-Fit, 90° rotation) rectangle bin-packing → minimize the number of
-    stock sheets. Same-material pieces only (caller groups by grade+thickness). Each piece reserves a
-    `margin` kerf on two sides. Returns a list of bins; each bin a list of (x, y, w, h, label, rotated)
-    with the true piece size (kerf excluded). Panel-count-minimizing; the pieces are labeled with dims
-    so the shop lays out the actual saw cuts."""
+    stock sheets. Same-material pieces only (caller groups by grade+thickness). A piece may overhang a
+    free rect by up to `tol` (the 5mm plywood cut tolerance — so a full-width piece cuts to the sheet
+    edge); a `kerf` is reserved between adjacent pieces when the free space is carved up. Returns a list
+    of bins, each a list of (x, y, w, h, label, rotated) at the true piece size. Panel-count-minimizing;
+    the pieces are labeled with dims so the shop lays out the actual saw cuts."""
     items = sorted(pieces, key=lambda p: -(p[1] * p[2]))         # largest area first
     bins = []                                                    # each: {"free": [...], "placed": [...]}
 
@@ -171,33 +171,31 @@ def pack_group(pieces, bin_w, bin_h, margin=CUT_MARGIN):
         best = None
         for ri, (fx, fy, fw, fh) in enumerate(free):
             for (pw, ph, rot) in ([(w, h, False)] if abs(w - h) < 1e-6 else [(w, h, False), (h, w, True)]):
-                if pw <= fw + 1e-6 and ph <= fh + 1e-6:
-                    score = min(fw - pw, fh - ph)               # best short-side fit
+                if pw <= fw + tol and ph <= fh + tol:           # within the cut tolerance
+                    score = max(0.0, min(fw - pw, fh - ph))     # best short-side fit (overhang ranks as a clean fit)
                     if best is None or score < best[0]:
                         best = (score, ri, fx, fy, pw, ph, rot)
         return best
 
     for (label, w0, h0) in items:
-        w, h = w0 + margin, h0 + margin
         pick = None
         for bi, b in enumerate(bins):
-            cand = _try(b["free"], w, h)
+            cand = _try(b["free"], w0, h0)
             if cand and (pick is None or cand[0] < pick[1][0]):
                 pick = (bi, cand)
-        if pick is None:                                         # open a new sheet
-            bins.append({"free": [(margin, margin, bin_w - 2 * margin, bin_h - 2 * margin)], "placed": []})
+        if pick is None:                                         # open a new sheet (full stock, cut to edge)
+            bins.append({"free": [(0, 0, bin_w, bin_h)], "placed": []})
             bi = len(bins) - 1
-            cand = _try(bins[bi]["free"], w, h)
+            cand = _try(bins[bi]["free"], w0, h0)
             if cand is None:                                     # bigger than a whole sheet
-                bins[bi]["placed"].append((margin, margin, min(w0, bin_w - 2 * margin),
-                                           min(h0, bin_h - 2 * margin), label + " ⚠OVERSIZE", False))
+                bins[bi]["placed"].append((0, 0, min(w0, bin_w), min(h0, bin_h), label + " ⚠OVERSIZE", False))
                 bins[bi]["free"] = []
                 continue
             pick = (bi, cand)
         bi, (_score, _ri, x, y, pw, ph, rot) = pick
         b = bins[bi]
-        b["placed"].append((x, y, pw - margin, ph - margin, label, rot))
-        used = (x, y, pw, ph)
+        b["placed"].append((x, y, pw, ph, label, rot))           # true piece size (cut to edge within tol)
+        used = (x, y, pw + kerf, ph + kerf)                       # reserve a saw kerf for neighbors
         nf = []
         for f in b["free"]:
             nf.extend(_split_free(f, used))

@@ -158,7 +158,8 @@ ripple into both.
   geometry directly in the live model via `eval_ruby` to "fix" a position — that diverges the
   model from the generator and is silently overwritten on the next regen. Every geometry change
   goes in the generating Python (`src/models/*.py`) → regenerate → `--send` → verify → ALVIN
-  saves. **`eval_ruby` is for READ-ONLY inspection/verification only** (querying bounds/positions),
+  saves (File>Save) → CLAUDE pushes to Sketchfab (`push_sketchfab.py`, see the `--send` rule below) →
+  commit. **`eval_ruby` is for READ-ONLY inspection/verification only** (querying bounds/positions),
   never mutation. If the live model looks wrong, either the code is wrong (fix it) or the model
   is stale (re-send it) — never patch the model by hand.
 
@@ -171,9 +172,18 @@ ripple into both.
      you're sending → you MAY `--send` WITHOUT asking (rebuilding the same model into its own open doc
      is safe — no clobber), then verify (`eval_ruby` read-only). **If it does NOT match** → do NOT send;
      ASK ALVIN to open the right model and wait for confirmation.
-  3. Tell ALVIN "clean — save + upload". ALVIN is the SOLE saver: he does File>Save + re-uploads to
-     Sketchfab (same model ID).
-  4. **ASK him to confirm "saved + uploaded", and only THEN `git commit` the `.skp`.**
+  3. Tell ALVIN "clean — save". ALVIN is the SOLE saver of the `.skp` BINARY: he does File>Save (he
+     cannot be scripted — `eval_ruby` must NEVER `model.save`). He does NOT touch Sketchfab.
+  4. **Uploading to Sketchfab is CLAUDE's job, NOT ALVIN's** (hands-free REST API — do not tell him to
+     "re-upload"). Once ALVIN confirms SAVED, CLAUDE runs `python3 src/models/push_sketchfab.py <name>`:
+     it exports the LIVE model to Collada `.dae` and `PUT`s it onto the model's EXISTING Sketchfab uid —
+     same URL, viewer settings/materials/name preserved, nothing tracked rewritten. A single-writer GUARD
+     refuses unless the live doc IS the saved `<name>.skp`, so the model must be saved AND still be the
+     active doc → **push each model WHILE its doc is live, before ALVIN switches to the next model.**
+     (`--new` is the legacy POST-a-new-uid path — use only to deliberately create/reset a model. Token:
+     `SKETCHFAB_API_TOKEN` in the gitignored `.env.private`.)
+  5. **Only THEN `git commit` the `.skp`.** (The in-place PUT changes no tracked files, so there is
+     nothing extra to commit for the push itself.)
   Never send a model into a different model's doc. Recover a clobber by re-sending the model he actually
   had open, then waiting.
 

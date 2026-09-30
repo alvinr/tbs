@@ -800,7 +800,7 @@ def plumbing(part="all", sump_on_skid=False):
     # sump, +X to the tray–IBC gap, then +Yd along the IBC −X face into the corridor, across (below the
     # pump bodies) and up into P-04.  The surface run sits ABOVE the FP bottom rail (z190), so it stands
     # ~75mm proud of the deck and the operator steps over it.
-    sumpX, sumpY = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75          # 2399,155 — center pickup (relocated from the IBC corner; = PROC_TRAY_DRAIN_X)
+    sumpX, sumpY = ov.PROC_TRAY_DRAIN_X, ov.PWP_FILTER_YD                    # 2399,104 — pickup UNDER THE RISER (= pw filter/P-02 wall lane, Yd104); clears the blue supply trunk at Yd69
     sump_foot_z  = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3        # 3 — pickup foot near the sump-well bottom (Z0),
     #   so the suction actually evacuates the 20mm-deep well (was Z20 = the floor lip, above the well)
     z04   = _piz("P-04")
@@ -838,7 +838,7 @@ def plumbing(part="all", sump_on_skid=False):
           (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
     if not sump_on_skid:
-        sump.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color=CDK, axis="z"))
+        sump.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color="#222228", axis="z"))  # match the pw (water.skp) strainer foot — same part, unified color
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a

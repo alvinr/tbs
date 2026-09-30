@@ -1137,21 +1137,23 @@ def panel_pivot():
     jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
     parts = [lt.axle()]
     # Cargo-door panel, operational position (X=0). rev11: 1/8″ HDPE plastic skins
-    # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner. The bottom is
-    # STEPPED: the two corner zones step UP to PANEL_FLOOR_GAP_SIDE to clear the bare walkway
-    # cantilever bracket legs in transport (hingepanel Sheet 15); the center bay stays low.
+    # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner. The panel is
+    # STEPPED two ways: in THICKNESS (X) the center drum bay is PANEL_CENTER_T=120, the two
+    # corner zones are the flush PANEL_CORNER_T=40 (matches the lighttrap model + hingepanel
+    # report §2.1); and in the BOTTOM (Z) the corner zones step UP to PANEL_FLOOR_GAP_SIDE to
+    # clear the bare walkway cantilever bracket legs in transport (hingepanel Sheet 15).
     parts.append(ruby_box("Cargo Door Panel (center)",
                           0, jL, PANEL_FLOOR_GAP,
                           PANEL_CENTER_T, jR - jL, 2300 - PANEL_FLOOR_GAP, color=C_PLASTIC, alpha=0.6))
     parts.append(ruby_box("Cargo Door Panel (near corner)",
                           0, 0, PANEL_FLOOR_GAP_SIDE,
-                          PANEL_CENTER_T, jL, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
+                          PANEL_CORNER_T, jL, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
     parts.append(ruby_box("Cargo Door Panel (far corner)",
                           0, jR, PANEL_FLOOR_GAP_SIDE,
-                          PANEL_CENTER_T, C_WID - jR, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
+                          PANEL_CORNER_T, C_WID - jR, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
     parts.append(ruby_box("Fan B mount band (18mm ply)",
                           0, 0, PANEL_FLOOR_GAP_SIDE,
-                          PANEL_CENTER_T, jL, PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE,
+                          PANEL_CORNER_T, jL, PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE,
                           color=C_PLY, alpha=0.6))
     # Transport-lock support brackets (top + bottom): the near-wall stay anchors
     # (sandwiched inside/outside plates + eye + 4× M16) and the frame-side stay hooks.

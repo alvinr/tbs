@@ -18,14 +18,9 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
-- [ ] **★ FULL DIAGRAM REVIEW PASS — OWNER-LED (review pass for you).** One sweep across *every* generated
-  diagram, driven by your visual review; I execute the fixes one generator per tidy pass. Covers: (a) **label
-  overflow** — the `--overflow` backlog below (49 off-frame labels); (b) **part-orientation / axis
-  misalignment** — the class of the Sheet-9 nut fix. The fastener-in-section sweep came back **clean
-  (2026-09-28)**, but *dimension-on-wrong-axis* (`draw_dim_h` where the feature spans vertically, & vice-versa)
-  and *cross-view orientation drift* were only spot-checked — verify these systematically; (c) general
-  legibility/crowding. (The spray_bar Sheet 7 `+192%` anomaly was fixed 2026-09-28 as a standalone bug.)
-  **Suggested start:** `film_plane_mechanism` Sheets 1–11 (worst count, +52%). Feeds ⇒ the backlog below.
+- [x] **★ FULL DIAGRAM REVIEW PASS — OWNER-LED — COMPLETE (2026-09-30).** The owner-driven visual review is
+  closed (culminated in the multi-round hingepanel review, Sheets 5–17). The objective `--overflow` label
+  backlog below remains as background tooling hygiene (no longer owner-review-driven — tackle opportunistically).
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
@@ -58,18 +53,14 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   (lighttrap), **processing tray** (overview `processing_tray(alpha=)` — spraybar now shows the real sloped pan
   ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **REMAINING 3 real
   findings to resolve, then consolidate + remove from `_EMITTER_DUP_ALLOW`:**
-  - **Fan B mount band thickness (hinged-panel model-consistency, MINOR) — RESOLVED 2026-09-28; fix in the 3D pass.**
-    This is the HINGED PANEL's own envelope drawn inconsistently across two models, NOT the container door. The
-    panel is STEPPED and both constants are correct — corner zones `PANEL_CORNER_T=40`mm, center zone
-    `PANEL_CENTER_T=120`mm (84mm RHS drum spine). The Fan-B band is on the near-CORNER (40mm) zone
-    (hinged-panel-report §2), so overview's 120mm is the drift → **band = 40mm (lighttrap is right)**. Fix: set
-    overview's Fan-B band to `PANEL_CORNER_T` (draw the panel as the stepped 40/120 envelope) + consolidate to the
-    shared lighttrap builder. NB: the ONLY real cargo-door requirement — doors close + no panel interference — is
-    already met and single-sourced as `fact:swung_door_clearance_mm` (+29mm to the closed-door inner face in transport);
-    this band nit does not affect it.
-  - **Tray sump strainer foot position — RESOLVED 2026-09-28; fix in the 3D pass.** Correct pickup is **UNDER THE
-    RISER = pw's Yd104** (clears the blue trunk at Yd69). Fix: move cp's `sump_foot` from Yd155 → Yd104 (+ unify
-    color), then consolidate to one shared builder. Cascade: cp is called by overview/water/ibc-stack → re-send those.
+  - [x] **Fan B mount band thickness — FIXED 2026-09-30.** overview now draws the panel as the stepped 40/120
+    envelope: the two corner zones + the Fan-B ply band are `PANEL_CORNER_T` (40mm), matching the lighttrap model.
+    (Consolidation to ONE shared lighttrap builder is still open — separate refactor, not the drift.) Cascaded to
+    overview + construction.
+  - [x] **Tray sump strainer foot position — FIXED 2026-09-30.** cp's `sump_foot` moved Yd155 → **Yd104**
+    (single-sourced off `PWP_FILTER_YD`), under the riser + clear of the blue trunk Yd69; strainer color unified
+    with pw's. Cascaded to overview + construction (water/ibc-stack unaffected — the sump block is Phase-1 only,
+    which they skip). (Single-builder consolidation still open — separate refactor.)
   - **Pinhole wall (mini_tbs)** — ACCEPTED as-is: mini_tbs is a scale toy (BOX_W×BOX_H), pw a real wall section;
     different representations (like the context floors). No action unless mini_tbs is retired.
   (The 2 `Floor`/`Floor (context)` ghosts are permanent allowlist — featureless per-model context.)
@@ -243,10 +234,6 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   hashes are current (the rebuild rode along in a later overview re-send).
   **Fab-detail sheets DONE 2026-09-07** (Sheets 4 board fab + 5 wall plates/schedule). Residual (only): datum/tolerance
   callouts (Phase C) if the shelf goes to a fabricator.
-- [ ] **Light-lock blueprint pass — consider the drum lock mechanism on the FAR side, not the near side
-  (2026-08-18).** When we do the light-trap/light-lock blueprint, evaluate moving the revolving-drum
-  lock mechanism to the far side of the drum so the near-side gap stays clear for operator egress through it.
-  (Surfaced during the egress review that retired the swing-out floorplan sheet.)
 - [ ] **Walkway — RIGHT-walkway wall-cleat blank promotion (minor residual from Phase 1.2).** The wall-cleat
   blank (`_rwk_wall_cleat`: plate 90×8, shelf 90×55×10) is still a model-local literal; promote to
   `WALKWAY_CLEAT_*` constants if/when the cleat gets its own 1:1 cut sheet (the §10.5 plate schedule already

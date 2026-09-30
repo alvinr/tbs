@@ -399,3 +399,11 @@
 ![TBS-001 Light-Trap — Sheet 11: Pull-Handle Mount](assets/lighttrap-sheet11.png)
 
 ![TBS-001 Light-Trap — Sheet 12: Seal Details (enlarged)](assets/lighttrap-sheet12.png)
+
+---
+
+## 23. Plywood Cut Sheets
+
+![Plywood Cut Sheets — Sheet 1: Schedule (all subsystems)](assets/plywood-cutsheets-sheet1.png)
+
+![Plywood Cut Sheets — Sheet 2: Nesting layout (cut per stock sheet)](assets/plywood-cutsheets-sheet2.png)

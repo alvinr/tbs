@@ -35,6 +35,7 @@ generators:
   portrait_viz: {script: src/generators/generate_portrait_viz.py, outputs: [diagrams/portrait-camera-schematic.png, diagrams/portrait-optimal-3m.png, diagrams/portrait-scale-comparison.png]}
   schematic: {script: src/generators/generate_schematic.py, outputs: [diagrams/portrait-camera-schematic.png]}
   shelf_diagram: {script: src/generators/generate_shelf_diagram.py, outputs: [diagrams/shelf-sheet1.png, diagrams/shelf-sheet2.png, diagrams/shelf-sheet3.png, diagrams/shelf-sheet4.png, diagrams/shelf-sheet5.png]}
+  plywood_cutsheets: {script: src/generators/generate_plywood_cutsheets.py, outputs: [diagrams/plywood-cutsheets-sheet1.png, diagrams/plywood-cutsheets-sheet2.png]}
   spray_bar_diagram: {script: src/generators/generate_spray_bar_diagram.py, outputs: [diagrams/spray-bar-sheet1.png]}
   pinhole_disc_holder: {script: src/generators/generate_pinhole_disc_holder.py, outputs: [diagrams/pinhole-disc-holder-sheet1.png, diagrams/pinhole-disc-holder-sheet2.png, diagrams/pinhole-disc-holder-sheet3.png, diagrams/pinhole-disc-holder-sheet4.png]}
   # per-config c0..cN frames are emitted in a loop (f-string), so only the literal summary is declared (matches film_plane_distortion)

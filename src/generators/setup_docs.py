@@ -73,6 +73,7 @@ MD_FILES = [
     ("component-dimension-audit.md",      (".",           "Component Dimension Audit")),
     ("weight-distribution-report.md",    (".",           "Weight Distribution")),
     ("chemistry-prep-shelves.md",         (".",           "Chemistry Prep Shelves")),
+    ("plywood-cut-sheets.md",             (".",           "Plywood Cut Sheets")),
     ("processing-tray-and-spray-bar.md",  (".",           "Processing Tray & Spray Bar")),
     ("hinged-panel-report.md",            (".",           "Hinged Light-Trap Panel")),
     ("ibc-stacking-report.md",            (".",           "IBC Stacking System")),
@@ -224,6 +225,8 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet3.png",
     "shelf-sheet4.png",
     "shelf-sheet5.png",
+    "plywood-cutsheets-sheet1.png",
+    "plywood-cutsheets-sheet2.png",
     "pinhole-wall-elevation.png",
     "panel-layout.png",
     "support-detail-sheet1.png",
@@ -336,6 +339,7 @@ nav:
       - "Walkway": walkway-report.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
       - "Chemistry Prep Shelves": chemistry-prep-shelves.md
+      - "Plywood Cut Sheets": plywood-cut-sheets.md
     - "Construction Sequence": construction-report.md
     - "All Diagrams": all-diagrams.md
   - Shopping:
@@ -477,6 +481,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Component Dimension Audit](component-dimension-audit.md) | Purchased-part dimensional reconciliation — real product sizes vs as-drawn, with datasheet links |
 | [Weight Distribution](weight-distribution-report.md) | Container weight analysis — dry, camera ready, materials exhausted — CG positions and ISO compliance |
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
+| [Plywood Cut Sheets](plywood-cut-sheets.md) | Single plywood schedule + nesting layout for every subsystem — one buyer/fabricator cut sheet, grouped by grade and thickness |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, ~56° transport swing about the pivot, and light seal design |
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external bulkhead ports, and internal pipe routing |

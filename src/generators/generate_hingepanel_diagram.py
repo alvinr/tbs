@@ -2334,22 +2334,22 @@ def sheet13():
     _draw_bolt(ax, dB(95, 102)[0], dB(95, 102)[1], 22 * sB, d=6, vertical=False, head=-1, end="tapped", zb=9)
     ax.add_patch(Rectangle(dB(91, 99), 15, 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                 # tee-nut barrel (in the ply)
     ax.add_patch(Rectangle(dB(106, 96), 3, 12, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=8))                # tee-nut flange on the ply FAR face
-    leader(ax, dB(24, 48), (bx0 - 24, 65), "frame RHS member\n(no bolt enters it)", col=C_OUT, fs=6.2)
-    leader(ax, dB(66, 71), (bx0 + 55, 65), "L-tab base leg\nWELDED to the frame", col=C_OUT, fs=6.2)
-    leader(ax, dB(97, 102), (bx0 + 150, 126), "M8 bolt → the tab\nUPSTAND (hex head on its face)", col=C_OUT, fw="bold", fs=6.2)
+    leader(ax, dB(0, 48), (bx0 - 24, 65), "frame RHS member\n(no bolt enters it)", col=C_OUT, fs=6.2)
+    leader(ax, dB(66, 71), (bx0 + 70, 90), "L-tab base leg\nWELDED to the frame", col=C_OUT, fs=6.2)
+    leader(ax, dB(97, 102), (bx0 + 160, 126), "M8 bolt → the tab\nUPSTAND (hex head on its face)", col=C_OUT, fw="bold", fs=6.2)
     leader(ax, dB(108, 102), (bx0 + 150, 158), "captive TEE-NUT in the ply\n(flange on the far/back face)", col=C_OUT, fw="bold", fs=6.2)
     # dims (to scale)
-    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 50)[1], "18mm", offset=-7, above=False, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(91, 0)[0], dB(109, 0)[0], dB(0, 40)[1], "18mm", offset=-7, above=False, fs=5.6, font=FONT)
     draw_dim_h(ax, dB(0, 0)[0], dB(48, 0)[0], dB(0, 40)[1], "50mm RHS", offset=-7, above=False, fs=5.6, font=FONT)
     # material-CONNECTION dims: the tab base-leg reach (frame weld → upstand) + the upstand-plate thickness
-    draw_dim_h(ax, dB(48, 0)[0], dB(84, 0)[0], dB(0, 6)[1], "36mm tab", offset=-7, above=False, fs=5.6, font=FONT)
-    draw_dim_h(ax, dB(84, 0)[0], dB(91, 0)[0], dB(0, -8)[1], "7mm plate", offset=-7, above=False, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(48, 0)[0], dB(84, 0)[0], dB(0, 40)[1], "36mm tab", offset=-7, above=False, fs=5.6, font=FONT)
+    draw_dim_h(ax, dB(84, 0)[0], dB(91, 0)[0], dB(0, 40)[1], "7mm plate", offset=-7, above=False, fs=5.6, font=FONT)
     draw_dim_v(ax, dB(116, 0)[0], dB(0, 69)[1], dB(0, 102)[1], "33mm", offset=8, fs=5.6, font=FONT, right=True)
     ax.plot([dB(84, 69)[0], dB(114, 69)[0]], [dB(0, 69)[1], dB(0, 69)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)   # witness — weld base leg
     # locate the L-tab base leg on the RHS face (dim_v from the RHS edge) + label the upstand plate
     draw_dim_v(ax, dB(-9, 0)[0], dB(0, 48)[1], dB(0, 69)[1], "21mm", offset=7, fs=5.6, font=FONT, right=False)
     ax.plot([dB(0, 48)[0], dB(-9, 48)[0]], [dB(0, 48)[1], dB(0, 48)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)
-    leader(ax, dB(87, 88), (bx0 + 150, 90), "L-tab UPSTAND plate\n(vertical — the bolt seats here)", col=C_OUT, fw="bold", fs=6.0)
+    leader(ax, dB(87, 88), (bx0 + 150, 100), "L-tab UPSTAND plate\n(vertical — the bolt seats here)", col=C_OUT, fw="bold", fs=6.0)
 
     # ── COMPANION: rotated 90° view (looking along the bolt axis) — the bolt seats in the tab plate;
     #    the frame stile is off to the side, so the bolt does NOT pass through the frame. ──

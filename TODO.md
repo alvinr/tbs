@@ -18,14 +18,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
-- [x] **★ FULL DIAGRAM REVIEW PASS — OWNER-LED — COMPLETE (2026-09-30).** The owner-driven visual review is
-  closed (culminated in the multi-round hingepanel review, Sheets 5–17). The objective `--overflow` label
-  backlog below remains as background tooling hygiene (no longer owner-review-driven — tackle opportunistically).
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
-  are tight-bbox noise, ignore). **UNBLOCKED** (light-trap blueprint shipped) — now driven by the owner-led
-  FULL DIAGRAM REVIEW PASS above. Tackle **one generator per tidy pass** (skill discipline —
+  are tight-bbox noise, ignore). **UNBLOCKED** (light-trap blueprint shipped); the owner-led diagram review is
+  complete (2026-09-30), so this is now background tooling hygiene — tackle opportunistically,
+  **one generator per tidy pass** (skill discipline —
   render → crop-zoom → verify), priority by count/severity:
   - **film_plane_mechanism** (10, worst +52%) — pre-existing overflow/crowding on Sheets **1–11** only (Sheet 2 section
     titles ±19–20%, Sheet 1 "LEFT RAIL" +17%, Sheet 3/4 crowding, Sheet 6 +8%; `CARRIAGE_YD_CENTER` panel overflow).
@@ -51,16 +49,11 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking
   [overview's full-length copy corrected to em's fitted extent], inverter box, master switch), **Fan B box**
   (lighttrap), **processing tray** (overview `processing_tray(alpha=)` — spraybar now shows the real sloped pan
-  ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **REMAINING 3 real
-  findings to resolve, then consolidate + remove from `_EMITTER_DUP_ALLOW`:**
-  - [x] **Fan B mount band thickness — FIXED 2026-09-30.** overview now draws the panel as the stepped 40/120
-    envelope: the two corner zones + the Fan-B ply band are `PANEL_CORNER_T` (40mm), matching the lighttrap model.
-    (Consolidation to ONE shared lighttrap builder is still open — separate refactor, not the drift.) Cascaded to
-    overview + construction.
-  - [x] **Tray sump strainer foot position — FIXED 2026-09-30.** cp's `sump_foot` moved Yd155 → **Yd104**
-    (single-sourced off `PWP_FILTER_YD`), under the riser + clear of the blue trunk Yd69; strainer color unified
-    with pw's. Cascaded to overview + construction (water/ibc-stack unaffected — the sump block is Phase-1 only,
-    which they skip). (Single-builder consolidation still open — separate refactor.)
+  ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **The 2 live drifts
+  were FIXED 2026-09-30** — Fan-B band + panel are now the stepped 40/120 envelope (`PANEL_CORNER_T`), and the
+  tray sump foot moved to Yd104 (`PWP_FILTER_YD`); both cascaded to overview + construction. **REMAINING:**
+  consolidate those two into ONE shared lighttrap/cp builder (separate refactor, not the drift) + remove from
+  `_EMITTER_DUP_ALLOW`. The 3rd finding is accepted:
   - **Pinhole wall (mini_tbs)** — ACCEPTED as-is: mini_tbs is a scale toy (BOX_W×BOX_H), pw a real wall section;
     different representations (like the context floors). No action unless mini_tbs is retired.
   (The 2 `Floor`/`Floor (context)` ghosts are permanent allowlist — featureless per-model context.)

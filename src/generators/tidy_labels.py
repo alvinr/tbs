@@ -26,6 +26,10 @@ Deliberately NOT auto-fixed / not flagged:
     a static bump is unsafe, so it's a visual call.
   * multi-line leaders — on this project the 2D set is manufacturing blueprints where detailed
     callouts (part no., material, DN) are WANTED, so a line-count "spec-sheet" flag is noise.
+  * text-on-fill (a label with no bbox over hatched/dark geometry) — EVALUATED + REJECTED
+    (2026-09-30). The house convention rarely uses a label bbox (~6 of 310 labels in hingepanel);
+    sparse hatch / light section fills read fine under text, so a render check flags ~50/generator
+    — noise, not signal. Whether a specific label needs a background is a visual call (/tidy-labels).
 
 Reported only (need judgement or a rendered look — the /tidy-labels skill, P1/P8/P9):
   * LEADER range-suffix — a ``(X=…)`` on a leader may be a legit part id; a human/vision decides.
@@ -33,9 +37,14 @@ Reported only (need judgement or a rendered look — the /tidy-labels skill, P1/
   * DIM label-literal   — a dimension baked into a label string (``Ø900``) whose value == a
                           tbs_constants value → make it an f-expr so it can't go stale. This is the
                           string-embedded case lint.py's numeric-token scan can't see (complement).
-  * ARCHAEOLOGY label   — a ``RETIRED`` / ``for reference`` / ``superseded`` callout on retired
-                          geometry → delete it and the ghost it names (current design only; the
-                          drawing shows the as-built, history goes in the changelog).
+  * ARCHAEOLOGY label   — a ``RETIRED`` / ``for reference`` / ``superseded`` / ``relocated`` /
+                          ``(was …)`` callout on retired geometry → delete it and the ghost it names
+                          (current design only; the drawing shows the as-built, history → changelog).
+  * FS too small        — a ``fs`` / ``fontsize`` / ``title_fs`` literal below 4.0 (P9 legibility
+                          floor) on a leader / draw_dim_* / draw_notes / ax.text call → enlarge it,
+                          or open space so the label needn't shrink.
+  * NOTES missing-comma — two adjacent string literals in a ``draw_notes([...])`` list (a MISSING
+                          trailing comma) → Python concatenates the two items with no space (P8 r47).
 
 The VISUAL rules (notes over geometry, leader in the nearest clear pocket, bbox on hatch,
 title-block overlap) are NOT detectable from source — render + crop-zoom in the skill. But
@@ -56,9 +65,11 @@ IS caught by the render-based ``--overflow`` pass:
 import argparse
 import ast
 import glob
+import io
 import os
 import re
 import sys
+import tokenize
 
 # label = which positional arg carries the display string
 LABEL_IDX = {"draw_dim_h": 4, "draw_dim_v": 4, "leader": 5}
@@ -77,9 +88,86 @@ LEADING_VAL_RE = re.compile(r"""^(f?)(["'])(~?\d[\d.]*|\{[^{}]*\})(.*)\2$""", re
 # part-nos / grades. An f-expr ("{DRUM_D}mm") has no digit before the unit, so it never matches.
 DIM_IN_LABEL_RE = re.compile(r"Ø\s*(\d+(?:\.\d+)?)|(?<![\w.])R(\d+(?:\.\d+)?)\b|(\d+(?:\.\d+)?)\s*(?:mm|cm|°)")
 # Gap C/E: a drawn-archaeology callout string (retired/superseded/for-reference geometry label).
-ARCH_RE = re.compile(r"RETIRED|SUPERSEDED|for reference|no longer|\(old\)", re.I)
+# House style is current-design-only, so "relocated/(was …)/(moved …)/formerly" are the same
+# violation as RETIRED/superseded — the drawing shows the as-built, history goes in the changelog.
+ARCH_RE = re.compile(r"RETIRED|SUPERSEDED|for reference|no longer|\(old\)|relocated|\(was\b|\(moved\b|formerly", re.I)
+
+# P9 legibility floor: the minimum readable annotation font. A hand fit-shrink loop (drop fs to make
+# a crowded label fit) can silently cross it; flag any fs/fontsize/title_fs LITERAL below this on a
+# label-drawing call. Flag-only — a legitimate tidy may sit just above it, but nothing should go under.
+FS_FLOOR = 4.0
+FS_FUNCS = {"leader", "draw_dim_h", "draw_dim_v", "draw_notes", "text"}
+FS_KWARGS = {"fs", "fontsize", "title_fs"}
 
 _CONST_BY_VAL = None
+
+
+def _notes_missing_comma(src):
+    """P8 r47: a MISSING trailing comma between two strings in a draw_notes([...]) list makes Python
+    implicitly concatenate them into one item — and if neither side carries a boundary space, the two
+    run together with NO separating space (a silent render bug the AST can't see, since it collapses
+    adjacent string literals). Tokenize-scan each draw_notes([...]) list; flag two adjacent STRING
+    tokens at list depth ONLY when the join has no space (a deliberate long item split across lines
+    keeps a trailing/leading space, so it's not flagged). Returns [(lineno, msg)]."""
+    out = []
+    try:
+        toks = list(tokenize.generate_tokens(io.StringIO(src).readline))
+    except Exception:
+        return out
+    n = len(toks)
+    i = 0
+    while i < n:
+        t = toks[i]
+        if t.type == tokenize.NAME and t.string == "draw_notes":
+            # find this call's argument list "[" (paren depth 1)
+            depth_paren = 0
+            j = i + 1
+            list_start = None
+            while j < n:
+                tj = toks[j]
+                if tj.type == tokenize.OP and tj.string == "(":
+                    depth_paren += 1
+                elif tj.type == tokenize.OP and tj.string == ")":
+                    depth_paren -= 1
+                    if depth_paren == 0:
+                        break
+                elif tj.type == tokenize.OP and tj.string == "[" and depth_paren == 1:
+                    list_start = j
+                    break
+                j += 1
+            if list_start is not None:
+                depth_sq = 0
+                prev_tok = None
+                k = list_start
+                while k < n:
+                    tk = toks[k]
+                    if tk.type == tokenize.OP and tk.string == "[":
+                        depth_sq += 1
+                    elif tk.type == tokenize.OP and tk.string == "]":
+                        depth_sq -= 1
+                        if depth_sq == 0:
+                            break
+                    elif depth_sq == 1:
+                        if tk.type == tokenize.STRING:
+                            if prev_tok is not None:
+                                try:
+                                    v1, v2 = ast.literal_eval(prev_tok.string), ast.literal_eval(tk.string)
+                                except Exception:
+                                    v1 = v2 = " "      # can't eval → assume intentional, don't flag
+                                if v1 and v2 and not v1.endswith((" ", "\n", "\t")) \
+                                        and not v2.startswith((" ", "\n", "\t")):
+                                    out.append((tk.start[0], "adjacent string literals concatenate with NO "
+                                                "separating space — likely a missing trailing comma (P8 r47)"))
+                            prev_tok = tk
+                        elif tk.type in (tokenize.NL, tokenize.NEWLINE, tokenize.COMMENT,
+                                         tokenize.INDENT, tokenize.DEDENT):
+                            pass                       # whitespace/comment between items — ignore
+                        else:
+                            prev_tok = None            # a comma / + / expr / name resets the run
+                    k += 1
+            i = j
+        i += 1
+    return out
 
 
 def _const_by_val():
@@ -209,6 +297,21 @@ def analyze(src, path):
                 out.append(Finding("ARCHAEOLOGY label", node.lineno,
                                    f"{am.group()!r} in {node.value.strip()[:40]!r} — remove the retired "
                                    f"geometry + its label (current design only)"))
+
+    # ── legibility floor (P9) — a label fs literal below FS_FLOOR is too small to read ──
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Call) and _fname(node) in FS_FUNCS:
+            for kw in node.keywords:
+                if kw.arg in FS_KWARGS and isinstance(kw.value, ast.Constant) \
+                        and isinstance(kw.value.value, (int, float)) \
+                        and not isinstance(kw.value.value, bool) and kw.value.value < FS_FLOOR:
+                    out.append(Finding("FS too small", kw.value.lineno,
+                                       f"{kw.arg}={kw.value.value} is below the {FS_FLOOR} legibility "
+                                       f"floor (P9) — enlarge, or open space so it needn't shrink"))
+
+    # ── missing trailing comma between draw_notes list items (P8 r47) ────────────
+    for lineno, msg in _notes_missing_comma(src):
+        out.append(Finding("NOTES missing-comma", lineno, msg))
     return out
 
 
@@ -396,7 +499,8 @@ def main():
         return run_overflow(files, tol_frac=args.tol / 100.0, collide=not args.no_collisions)
     total_fix = total_flag = 0
     RANK = {"DIM range-suffix": 0, "DIM unit-less": 1, "DIM label-literal": 2,
-            "ARCHAEOLOGY label": 3, "LEADER range-suffix": 4, "NOTES hand-wrapped": 5}
+            "ARCHAEOLOGY label": 3, "FS too small": 4, "NOTES missing-comma": 5,
+            "LEADER range-suffix": 6, "NOTES hand-wrapped": 7}
     for path in sorted(set(files)):
         try:
             src = open(path).read()

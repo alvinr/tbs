@@ -24,7 +24,7 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **`tidy_labels.py` — three new static label checks** (from a review of the recurring hand "Tidy labels" edits): a **P9 legibility floor** (flag any `fs`/`fontsize`/`title_fs` literal below 4.0 on a label helper); a **notes missing-comma** guard (adjacent string literals in a `draw_notes([...])` list that would concatenate with no separating space — the silent P8 r47 bug, space-aware so intentional line-split items don't false-flag); and a **widened archaeology** flag (adds `relocated` / `(was …)` / `(moved …)` / `formerly`). All flag-only. A render-based text-on-fill/bbox check was evaluated and **rejected** — the house convention rarely bboxes on-fill labels (~6 of 310 in hingepanel), so it flagged ~50/generator (noise, not signal).
 
 ## [0.14] — 2026-09-30
 

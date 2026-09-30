@@ -146,8 +146,12 @@ skin + 1"×1"×⅛" Al stiffener grid + U-channel envelope is moisture/chemical-
 light-tight, and weld-sealed (same material and weld process as the drum/housing); it
 costs more than a plywood build (§8.1).
 
-**Sheet 11 — Fan-B Plywood: Cut Sheet + Attachments (the 18mm ply band, captive tee-nuts, fan/duct bolt pattern)**
-![TBS-001 Hinged Panel — Sheet 11: Fan-B Plywood Cut Sheet](assets/hingepanel-sheet11.png)
+**Sheet 11 — Fan-B Mount Band: Fabrication (fan cutout, fan/duct bolt pattern, frame-tab tee-nut holes)**
+![TBS-001 Hinged Panel — Sheet 11: Fan-B Mount Band Fabrication](assets/hingepanel-sheet11.png)
+
+The band's plywood stock and cut nesting are single-sourced on the
+[Plywood Cut Sheets](plywood-cut-sheets.md) — it is cut, with the corridor and pinhole-wall
+panels, from the shared 18mm exterior sheets rather than a dedicated sheet.
 
 ### 2.6 HDPE Surround Fabrication
 

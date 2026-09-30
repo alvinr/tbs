@@ -2143,73 +2143,59 @@ def sheet10():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 11  —  Fan-B Plywood: Cut Sheet + Attachments
-#   LEFT: the 4'×8' PT-ply cut sheet — the Fan-B mount band + the cooler stow base
-#   nested, with the Ø150 fan cutout, fan bolt holes, and the frame-tab T-nut edge
-#   pattern. RIGHT: Detail A Fan-B→ply through-bolt; Detail B ply→frame welded tab
-#   + captive tee-nut (the IBC-frame convention).
+# SHEET 11  —  Fan-B mount band: FABRICATION (fan cutout + frame-tab holes)
+#   The band as a fabricated piece: the Ø150 fan cutout + 4 flange bolts + the frame-tab
+#   tee-nut edge pattern, dimensioned. The STOCK + CUT NESTING is single-sourced on the
+#   Plywood Cut Sheets doc (not re-drawn here); the fan-mount assembly is Ventilation
+#   Sheet 3; the ply→frame welded-tab + captive tee-nut is Sheet 13.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet11():
-    SW, SH = 1220, 2440                     # 4'×8' PT-ply sheet
-    BW, BH = 610, 1220                      # Fan-B mount band
-    CW, CH = 600, 350                       # cooler stow base plate
-    PLY = 18
+    BW, BH = 610, 1220                      # Fan-B mount band (18mm exterior ply)
     FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
 
-    fig, ax = plt.subplots(figsize=(17, 12.5))
+    fig, ax = plt.subplots(figsize=(11, 13))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-520, SW + 520)
-    ax.set_ylim(-320, SH + 230)
+    ax.set_xlim(-360, BW + 560)
+    ax.set_ylim(-560, BH + 240)
 
-    # ── 4'×8' ply cut sheet (full sheet) ──────────────────────────────────────
-    ax.add_patch(Rectangle((0, 0), SW, SH, fc="#EFE6D2", ec=C_OUT, lw=1.4, zorder=3))
-    ax.text(SW / 2, SH + 90, "PLYWOOD CUT SHEET — 4'×8' ¾\" PT PINE (1220×2440)",
-            ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    # Fan-B band (top) — cut piece
-    bx, by = 0, SH - BH
-    ax.add_patch(Rectangle((bx, by), BW, BH, fc=C_WOOD, ec=C_OUT, lw=1.3, alpha=0.55, zorder=4))
-    ax.text(bx + BW / 2, by + BH - 90, "FAN-B MOUNT BAND\n610 × 1,220 · 18mm", ha="center", va="top",
-            fontsize=7.5, fontweight="bold", color="#6b4a1f", **FONT, zorder=6)
+    ax.text(BW / 2, BH + 150, "FAN-B MOUNT BAND — FABRICATION", ha="center", fontsize=11,
+            fontweight="bold", color=C_OUT, **FONT)
+    ax.text(BW / 2, BH + 72, "18mm exterior ply · fan cutout + frame-tab holes · stock + cut nesting → Plywood Cut Sheets",
+            ha="center", fontsize=6.6, color=C_DIM, **FONT)
+    # the band (drawn to scale, standalone — NOT the 4'×8' cut sheet)
+    ax.add_patch(Rectangle((0, 0), BW, BH, fc=C_WOOD, ec=C_OUT, lw=1.5, alpha=0.55, zorder=3))
     # Ø150 fan cutout + 4 bolt holes
-    fcx, fcy = bx + BW / 2, by + 360
-    ax.add_patch(Circle((fcx, fcy), FR, fc=BG, ec=C_OUT, lw=1.2, zorder=6))
-    ax.text(fcx, fcy, f"Ø{int(FAN_DIAM)}\nfan\ncutout", ha="center", va="center", fontsize=6.4, color=C_DIM, **FONT, zorder=7)
+    fcx, fcy = BW / 2, 360
+    ax.add_patch(Circle((fcx, fcy), FR, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
+    ax.text(fcx, fcy, f"Ø{int(FAN_DIAM)}\nfan\ncutout", ha="center", va="center", fontsize=6.6, color=C_DIM, **FONT, zorder=7)
     for k in range(4):
         a = math.radians(45 + k * 90)
         ax.add_patch(Circle((fcx + (FR + 24) * math.cos(a), fcy + (FR + 24) * math.sin(a)), 5, fc=BG, ec=C_OUT, lw=0.9, zorder=7))
-    ax.text(fcx, fcy - FR - 55, "4× fan-flange bolts", ha="center", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
+    ax.text(fcx, fcy - FR - 60, "4× fan-flange bolts", ha="center", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
     # frame-tab T-nut holes along the two vertical edges (to the jamb + stile)
-    for ex in (bx + 30, bx + BW - 30):
-        for zz in [by + 120 + i * 320 for i in range(4)]:
+    for ex in (30, BW - 30):
+        for zz in [120 + i * 320 for i in range(4)]:
             ax.add_patch(Circle((ex, zz), 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=7))
-    ax.text(bx + BW + 150, by + BH / 2, "frame-tab T-nut holes\n(both edges, @ ~320mm)\n— see Sheet 13", ha="left", va="center", fontsize=6.2, color="#8a5a1f", **FONT, zorder=7)
-    # cooler base (below the band)
-    cx0, cy0 = 0, by - 60 - CH
-    ax.add_patch(Rectangle((cx0, cy0), CW, CH, fc=C_WOOD, ec=C_OUT, lw=1.2, alpha=0.4, zorder=4))
-    ax.text(cx0 + CW / 2, cy0 + CH / 2, "COOLER STOW\nBASE 600×350", ha="center", va="center", fontsize=6.8, color="#6b4a1f", **FONT, zorder=6)
-    ax.text(SW / 2, cy0 / 2, "remainder — offcut stock", ha="center", va="center", fontsize=6.4, color=C_DIM, **FONT, zorder=5)
-    draw_dim_h(ax, 0, SW, -110, f"{SW}mm", offset=16, fs=6.6, font=FONT)
-    draw_dim_v(ax, -110, 0, SH, f"{SH}mm", offset=16, fs=6.6, font=FONT)
-    # per-piece + fan-cutout position dimensions
-    draw_dim_h(ax, bx, bx + BW, by + BH + 34, f"{BW}mm", offset=12, fs=6.0, font=FONT)               # band width
-    draw_dim_v(ax, bx + BW + 60, by, by + BH, f"{BH}mm", offset=12, fs=6.0, font=FONT, right=True)     # band height
-    draw_dim_v(ax, bx + BW - 100, by, fcy, "360mm to fan CL", offset=12, fs=5.8, font=FONT, right=True)  # fan vert position
-    draw_dim_h(ax, bx, fcx, fcy + FR + 55, f"{int(BW / 2)}mm (fan CL, centered)", offset=10, fs=5.8, font=FONT)  # fan horiz position (above cutout)
-    draw_dim_h(ax, cx0, cx0 + CW, cy0 - 34, f"{CW}mm", offset=12, fs=6.0, font=FONT, above=False)      # cooler base width
-    draw_dim_v(ax, cx0 + CW + 60, cy0, cy0 + CH, f"{CH}mm", offset=12, fs=6.0, font=FONT, right=True)   # cooler base height
+    leader(ax, (BW - 30, 120 + 3 * 320), (BW + 210, BH - 160), "frame-tab T-nut holes\n(both edges @ ~320mm)\n— attach detail Sheet 13", col="#8a5a1f", fs=6.2)
+    # dimensions
+    draw_dim_h(ax, 0, BW, BH + 20, f"{BW}mm", offset=14, fs=6.6, font=FONT)
+    draw_dim_v(ax, -70, 0, BH, f"{BH}mm", offset=14, fs=6.6, font=FONT)
+    draw_dim_v(ax, BW + 80, 0, fcy, "360mm to fan CL", offset=12, fs=6.0, font=FONT, right=True)
+    draw_dim_h(ax, 0, fcx, fcy - FR - 95, f"{int(BW / 2)}mm (fan CL)", offset=10, fs=6.0, font=FONT, above=False)
 
     draw_notes(ax, [
-        "CROSS-REFERENCES",
-        "• plywood → frame tab / captive T-nut detail — SHEET 13",
-        "• Fan-B mount — Ventilation Sheet 3",
-    ], SW / 2 - 470, cy0 - 120, spacing=48, fs=6.5, title_fs=7.0,
-       color=C_OUT, title_color=C_OUT, width=950, border_color=C_DIM, font=FONT)
+        "FAN-B BAND",
+        "• Cut piece + stock nesting → the Plywood Cut Sheets doc (18mm exterior; nests with the corridor / pinhole panels).",
+        "• Fan-B fan + duct mount assembly → Ventilation Sheet 3.",
+        "• Ply → frame welded-tab + captive tee-nut → Sheet 13.",
+    ], -340, -110, spacing=70, fs=6.4, title_fs=7.0, width=1150, wrap=68,
+       color=C_OUT, title_color=C_OUT, border_color=C_DIM, font=FONT)
 
     title_block(ax, "SHEET 11 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FAN-B PLYWOOD — CUT SHEET (ply→frame on Sheet 13; Fan-B mount on Ventilation Sheet 3)",
-                scale_note="CUT SHEET · DRAWN TO SCALE · ALL DIMS IN mm",
+                subtitle="FAN-B MOUNT BAND — FABRICATION (fan cutout + frame-tab holes)",
+                scale_note="DRAWN TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)

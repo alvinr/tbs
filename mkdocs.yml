@@ -80,8 +80,9 @@ nav:
       - "Walkway": walkway-report.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
       - "Chemistry Prep Shelves": chemistry-prep-shelves.md
+    - Construction:
+      - "Construction Sequence": construction-report.md
       - "Plywood Cut Sheets": plywood-cut-sheets.md
-    - "Construction Sequence": construction-report.md
     - "All Diagrams": all-diagrams.md
   - Shopping:
     - "Master Shopping List": master-shopping-list.md

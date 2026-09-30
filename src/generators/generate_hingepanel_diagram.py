@@ -2414,13 +2414,13 @@ def sheet14():
     # dim_v — the 3 hinge-bracket (leaf → hub) connection heights, ordinate from the floor (Z0)
     _lsr = cx + 58 + 120 + 30                                    # just right of the leaf pivot-edge stile
     ax.plot([cx - 58, _lsr + 20], [0, 0], color=C_OUT, lw=1.0, zorder=2)   # floor baseline
-    ax.text(_lsr + 24, 0, "FLOOR (Z0)", fontsize=6, color=C_DIM, va="center", ha="left", **FONT)
+    ax.text(cx - 200, 0, "FLOOR (Z0)", fontsize=6, color=C_DIM, va="center", ha="left", **FONT)
     for i, z in enumerate((300, 1180, 2000)):
         ax.plot([cx + 58 + 120, _lsr + i * 40], [z, z], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)  # witness to the bracket
-        draw_dim_v(ax, _lsr + i * 40, 0, z, f"{z}mm", offset=8, fs=6.2, font=FONT, right=True)
+        draw_dim_v(ax, _lsr + i * 40 + 20, 0, z, f"{z}mm", offset=8, fs=6.2, font=FONT, right=True)
 
     # ── RIGHT: enlarged plan section of one bracket ──
-    ox, oy, s = 660, 900, 4.2
+    ox, oy, s = 750, 900, 4.2
     def d(x, y): return (ox + x * s, oy + y * s)
     ax.text(ox + 55 * s, oy + 95 * s, "DETAIL — HINGE BRACKET (plan section)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.add_patch(Rectangle(d(-14, -40), 14 * s, 80 * s, fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=5))       # hub tube wall
@@ -2439,7 +2439,7 @@ def sheet14():
     # dim_v — bracket-plate height + its centering on the leaf stile (the beam): 20 / 44 / 20
     _dvx = d(116, 0)[0] + 34
     for (za, zb, lbl) in [((0, 22), (0, 42), "20mm"), ((0, -22), (0, 22), "44mm\nbracket"), ((0, -42), (0, -22), "20mm")]:
-        draw_dim_v(ax, _dvx, d(*za)[1], d(*zb)[1], lbl, offset=9, fs=5.8, font=FONT, right=True)
+        draw_dim_v(ax, _dvx, d(*za)[1], d(*zb)[1], lbl, offset=18, fs=5.8, font=FONT, right=True)
     for zy in (-42, -22, 22, 42):
         ax.plot([d(66, zy)[0], _dvx], [d(0, zy)[1], d(0, zy)[1]], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)  # witness
 
@@ -2450,7 +2450,7 @@ def sheet14():
         "as ONE weldment about the fixed post. The stile TRAVELS with the leaf",
         "and carries the pivot-corner plywood. No bolts pass through the closed",
         "stile (which can't be back-tightened); all-welded steel.",
-        ], ox - 50 * s, oy - 64 * s, spacing=40, fs=6.0, width=1100, font=FONT)
+        ], ox - 40 * s, oy - 130 * s, spacing=40, fs=6.0, width=800, font=FONT)
 
     title_block(ax, "SHEET 14 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

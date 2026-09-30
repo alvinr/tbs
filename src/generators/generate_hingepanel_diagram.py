@@ -2886,8 +2886,8 @@ def sheet17():
     leader(ax, (cx - hbg, cy + hbg), (cx - hpw - 28, cy + 20), f"4× Ø{LT_STAY_BOLT_D}\n(M16) THROUGH", col=C_OUT, fs=6, ha="right")
     leader(ax, (cx, cy), (cx - hpw - 28, cy - 24), "welded stay EYE\n(turnbuckle clevis)", col=C_OUT, fs=6, ha="right")
     px, syd = Cx + 44, -46
-    ax.text(Cx + 92, -6, "DETAIL C — SECTION on the stay-EYE centerline", ha="center", fontsize=6.6, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Cx + 92, -14, "plate pair sandwiches the wall · the 4× M16 CLAMP bolts are the corner holes above (not on this line)", ha="center", fontsize=5.6, color=C_DIM, **FONT)
+    ax.text(Cx + 92, 8, "DETAIL C — SECTION on the stay-EYE centerline", ha="center", fontsize=6.6, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(Cx + 92, 0, "plate pair sandwiches the wall · the 4× M16 CLAMP bolts are the corner holes above (not on this line)", ha="center", fontsize=5.6, color=C_DIM, **FONT)
     ax.add_patch(Rectangle((px, syd), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
     ax.add_patch(Rectangle((px + 9, syd + 6), 8, 28, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))
     ax.add_patch(Rectangle((px + 17, syd), 9, 40, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
@@ -2896,7 +2896,7 @@ def sheet17():
     ax.add_patch(Rectangle((px + 31, syd + 13), 4, 14, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
     ax.add_patch(Circle((px + 42, syd + 10), 6, fc=BG, ec=C_OUT, lw=1.2, zorder=6))
     ax.plot([px + 48, px + 80], [syd + 10, syd + 10], color="#101010", lw=2.0, zorder=6)
-    leader(ax, (px + 22, syd + 40), (px + 34, syd + 60), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
+    leader(ax, (px + 18, syd + 30), (px + 65, syd + 30), f"2× {LT_STAY_PLATE_T}mm\nA36 plate", col=C_OUT, fs=6)
     leader(ax, (px + 60, syd + 10), (px + 88, syd + 24), "welded stay EYE + turnbuckle rod\n(NOT a clamp bolt)", col=C_OUT, fs=5.6, ha="left")
 
     # ═══ DETAIL D — STAY LOCATIONS (swing-stile elevation · heights from the floor) ═══
@@ -2921,8 +2921,8 @@ def sheet17():
         ax.add_patch(Rectangle((stx + stw, _dz(z) - _lh / 2), 12, _lh, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))
         ax.add_patch(Circle((stx + stw + 7, _dz(z)), min(2.2, _lh * 0.42), fc=BG, ec=C_OUT, lw=0.9, zorder=6))
     # lug positions dimensioned from the RAIL they weld near: bottom lug UP off the bottom rail, top lug DOWN off the header
-    draw_dim_v(ax, stx - 14, _dz(PANEL_FLOOR_GAP), _dz(LT_STAY_Z[0]), f"{int(LT_STAY_Z[0] - PANEL_FLOOR_GAP)}mm", fs=6, offset=7, right=False)
-    draw_dim_v(ax, stx - 14, _dz(LT_STAY_Z[1]), _dz(BRACE_Z_TOP), f"{int(BRACE_Z_TOP - LT_STAY_Z[1])}mm", fs=6, offset=7, right=False)
+    draw_dim_v(ax, stx - 30, _dz(PANEL_FLOOR_GAP), _dz(LT_STAY_Z[0]), f"{int(LT_STAY_Z[0] - PANEL_FLOOR_GAP)}mm", fs=6, offset=7, right=False)
+    draw_dim_v(ax, stx - 30, _dz(LT_STAY_Z[1]), _dz(BRACE_Z_TOP), f"{int(BRACE_Z_TOP - LT_STAY_Z[1])}mm", fs=6, offset=7, right=False)
     _midz = (_dz(LT_STAY_Z[0]) + _dz(LT_STAY_Z[1])) / 2
     leader(ax, (stx + stw / 2, _midz), (stx + stw + 32, _midz), "swing stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6, ha="left")
     leader(ax, (stx + stw + 7, _dz(LT_STAY_Z[1])), (stx + stw + 44, _dz(LT_STAY_Z[1]) - 8), "stay lug ×2\n(Details B + C)", col=C_OUT, fs=6, ha="left")
@@ -2934,7 +2934,7 @@ def sheet17():
         f"3. Panel lug (Detail B): {LT_STAY_LUG_T}mm steel eye plate, Ø{LT_STAY_LUG_HOLE} pin hole, 6mm fillet-welded all-round to the left 2×2×0.120in RHS stile.",
         f"4. Wall anchor (Detail C): 2× {2*LT_STAY_PLATE_HW}×{2*LT_STAY_PLATE_HW}×{LT_STAY_PLATE_T}mm A36 plate pair, 4× M16 through the near wall @ {2*LT_STAY_BOLT_OFF}mm gauge, welded eye.",
         "5. ENGAGE the stays only after the panel is swung + latched at the transport angle; RELEASE both before swinging back.",
-    ], 8, -56, spacing=14, fs=6.4, title_fs=7.0, color=C_OUT, title_color=C_OUT, width=640, wrap=150, border_color=C_DIM, font=FONT)
+    ], 15, -56, spacing=8, fs=6, title_fs=7.0, color=C_OUT, title_color=C_OUT, width=400, wrap=150, border_color=C_DIM, font=FONT)
 
     title_block(ax, "SHEET 17 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

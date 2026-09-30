@@ -2058,7 +2058,7 @@ def sheet10():
     fig, ax = plt.subplots(figsize=(16, 13))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_xlim(-720, 1250)
+    ax.set_xlim(-720, 1450)
     ax.set_ylim(-300, HGT + 250)
 
     # ── pivot section (true scale) ────────────────────────────────────────────
@@ -2088,7 +2088,7 @@ def sheet10():
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
         ax.add_patch(Rectangle((cx + R + 14, z - 20), 150, 70, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))
-    leader(ax, (cx + R + 164, 1160), (cx + 630, 1000), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 14", col=C_OUT, fw="bold")
+    leader(ax, (cx + R + 164, 1160), (cx + 680, 1000), "3× HINGE BRACKET\n(hub → leaf pivot-edge stile)\n— Sheet 14", col=C_OUT, fw="bold")
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT}mm floor→roof", offset=16, fs=6.6, font=FONT)
     # diameters (dim_h) + component lengths (dim_v) on the pivot post
     draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
@@ -2101,7 +2101,7 @@ def sheet10():
     ax.text(_bkr + 204, 0, "FLOOR (Z0)", fontsize=6, color=C_DIM, va="center", ha="left", **FONT)
     for i, z in enumerate((300, 1180, 2000)):
         ax.plot([_bkr, _bkr + 100 + i * 36], [z, z], color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=2)   # witness
-        draw_dim_v(ax, _bkr + 100 + i * 36, 0, z, f"{z}mm", offset=8, fs=6.0, font=FONT, right=True)
+        draw_dim_v(ax, _bkr + 120 + i * 40, 0, z, f"{z}mm", offset=8, fs=6.0, font=FONT, right=True)
 
     # ── RIGHT: frame→hub bracket is detailed on its own sheet ─────────────────
     draw_notes(ax, [
@@ -2112,7 +2112,7 @@ def sheet10():
        border_color=C_DIM, font=FONT)
 
     # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
-    bx0, by0, sB = 890, 470, 1.9
+    bx0, by0, sB = 1200, 470, 1.9
     ax.text(bx0, by0 + 165 * sB, "DETAIL B — FLOOR ANCHOR PLATE (plan)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
     ax.add_patch(Circle((bx0, by0), 110 * sB, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
     ax.add_patch(Circle((bx0, by0), R * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))    # post bore

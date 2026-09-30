@@ -253,7 +253,7 @@ PANEL = [
     LineItem("1/8\" 18-8 SS blind rivets — HDPE surround → frame lap (2× 100-pack)", 29, 29, 29, "2026-08-28: surround→frame connection = blind-riveted lap + DP8010 bead; McMaster 97525A435 $14.59/100 ×2 (SKU shared with the light-trap housing→frame rivet)"),
     LineItem("Flat-black paint (RAL 9005) — bay/weld touch-in", 10, 15, 20, "local"),
     LineItem("12\" round pull handle — McMaster 1871A65 (same as drum handle) + rivnuts", 6, 6, 6, "2026-08-28: D-grab → the 1871A65 pull handle ($6.43 firm), rivnut-mounted; §4.3"),
-    LineItem("Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply from group-A offcut + piano hinges + foam seal + catches)", 85, 113, 140, "2026-08-30: closes the 217mm under-leaf gap the drum-cage clearance opened (Sheet 16); 2 fold-down aprons + fixed center baffle + 200mm pivot stub. 2026-09-30: ply re-graded 12mm→18mm and nested into the group-A SYP sheet (no separate apron sheet); this lot is the hinges + foam + catches. Est."),
+    LineItem("Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply from the SYP sheets A–C offcut + piano hinges + foam seal + catches)", 85, 113, 140, "2026-08-30: closes the 217mm under-leaf gap the drum-cage clearance opened (Sheet 16); 2 fold-down aprons + fixed center baffle + 200mm pivot stub. 2026-09-30: ply re-graded 12mm→18mm and nested into the SYP sheets A–C (no separate apron sheet); this lot is the hinges + foam + catches. Est."),
 ]
 
 # §6d = chemistry-prep-shelves.md §7 (fold-down chemistry prep shelf). Point estimates.

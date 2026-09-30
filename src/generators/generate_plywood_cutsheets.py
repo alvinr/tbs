@@ -20,8 +20,10 @@ figures can't drift from the geometry, and the money can't drift from the regist
 """
 import os
 import sys
+import textwrap
 
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
 from matplotlib.patches import Rectangle
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -31,7 +33,7 @@ from tbs_constants import (                                    # noqa: E402
     PANEL_FLOOR_GAP, PANEL_FLOOR_GAP_SIDE,
     PWP_PANEL_X0, PWP_PANEL_X1, SHELF_W, SHELF_DEPTH,
 )
-from tbs_drawing import draw_notes                            # noqa: E402
+from tbs_drawing import draw_notes, leader                     # noqa: E402
 from tbs_title_block import title_block                        # noqa: E402
 
 TOTAL_SHEETS = 2
@@ -70,7 +72,7 @@ GROUPS = [
         ]),
         dict(key="corridor-panel-ply-25", stock=STOCK_8x4, pieces=[
             ("Pump-mount shirt", 610, 1650, 1, "backs pumps P-01..P-05 on the corridor panel"),
-            ("Shirt standoff cleat", 40, 120, 6, "shirt-to-rear-panel standoff blocks"),
+            ("Shirt standoff cleat strip", 40, 720, 1, "one 40×720 strip, cut to 6× 120mm shirt-to-rear-panel standoff blocks"),
         ]),
         dict(key="pinhole-panel-ply-18", stock=STOCK_8x4, npieced=2, pieces=[
             ("Pinhole backing half", PINHOLE_HALF, 1440, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×1440 face (>1219 stock width)"),
@@ -209,6 +211,20 @@ _BINS = {g["gid"]: bins for g, bins in PACKED}
 NAIVE_TOTAL = sum(sum(p.get("npieced", 1) for p in g["parts"]) for g in GROUPS)
 OPT_TOTAL = sum(len(bins) for _g, bins in PACKED)
 
+# every physical stock sheet gets ONE sequential letter A, B, C… across all groups (the buyer's
+# sheet list), so the schedule and the nesting layout name the same sheet. A grade group maps to a
+# contiguous run of letters (SYP → A–C, UV-white → D, PT → E).
+_SHEET_LETTERS = {}          # gid -> [letters, one per bin]
+_gi = 0
+for _g, _bins in PACKED:
+    _SHEET_LETTERS[_g["gid"]] = [chr(ord("A") + _gi + _i) for _i in range(len(_bins))]
+    _gi += len(_bins)
+
+
+def _letter_span(gid):
+    ls = _SHEET_LETTERS[gid]
+    return ls[0] if len(ls) == 1 else f"{ls[0]}–{ls[-1]}"
+
 
 def _is_fixed(label):
     return any(k in label for k in ("Fixed", "stub", "baffle"))
@@ -248,7 +264,7 @@ def draw_sheet1():
     # columns
     CX = {"grp": 2, "piece": 8, "wh": 41, "qty": 55, "where": 60}
     HDR_Y = 91
-    ax.text(CX["grp"], HDR_Y, "GRP", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(CX["grp"], HDR_Y, "SHEET", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
     ax.text(CX["piece"], HDR_Y, "CUT PIECE", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
     ax.text(CX["wh"], HDR_Y, "W × H (mm)", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
     ax.text(CX["qty"], HDR_Y, "QTY", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
@@ -260,13 +276,15 @@ def draw_sheet1():
     for g in GROUPS:
         # group band
         ax.plot([1, 99], [y + 1.1, y + 1.1], color=C_DIM, lw=0.5)
-        ax.text(CX["grp"], y, g["gid"], fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+        span = _letter_span(g["gid"])
+        ax.text(CX["grp"], y, span, fontsize=9, fontweight="bold", color=C_OUT, **FONT)
         opt = len(_BINS[g["gid"]])
         naive = sum(p.get("npieced", 1) for p in g["parts"])
         npieces = len(_group_pieces(g))
         saved = f"  (was {naive})" if opt < naive else ""
         ax.text(CX["piece"], y, f"{g['grade']}  ·  {g['sku']}  ·  "
-                f"{npieces} pieces → {opt}× {g['stock'][0]}×{g['stock'][1]} sheet{'s' if opt != 1 else ''}{saved}",
+                f"{npieces} pieces → sheet{'s' if opt != 1 else ''} {span} "
+                f"({opt}× {g['stock'][0]}×{g['stock'][1]}){saved}",
                 fontsize=7.4, fontweight="bold", color=C_DIM, **FONT)
         y -= ROW
         for p in g["parts"]:
@@ -299,6 +317,45 @@ def draw_sheet1():
     _save(fig, "plywood-cutsheets-sheet1.png")
 
 
+# ── Sheet-2 label helpers (measure real text extents so a label wraps to fit its box, else leads out) ──
+_LBL_FS = 5.4
+_PX_PAD = 12               # px breathing room inside a box before a label is deemed not to fit
+
+
+def _txt_wh(renderer, s, fs):
+    w, h, _dsc = renderer.get_text_width_height_descent(s, FontProperties(family="monospace", size=fs), False)
+    return w, h
+
+
+def _data_per_px(ax):
+    inv = ax.transData.inverted()
+    o = inv.transform((0, 0))
+    return abs(inv.transform((1, 0))[0] - o[0]), abs(inv.transform((0, 1))[1] - o[1])
+
+
+def _box_px(ax, x0, y0, w, h):
+    p0 = ax.transData.transform((x0, y0))
+    p1 = ax.transData.transform((x0 + w, y0 + h))
+    return abs(p1[0] - p0[0]), abs(p1[1] - p0[1])
+
+
+def _wrap_fit(renderer, label, fs, avail_line_px, avail_stack_px, extra_lines=1):
+    """Fewest-line wrap of `label` whose widest line fits `avail_line_px` and whose stack
+    (lines + extra_lines for the dims) fits `avail_stack_px`. None if it can't fit at all."""
+    aw, ah = avail_line_px - _PX_PAD, avail_stack_px - _PX_PAD
+    if aw < 14 or ah < 14:
+        return None
+    lh = _txt_wh(renderer, "Ag", fs)[1] * 1.35
+    chosen = None
+    for ncols in range(4, len(label) + 1):
+        lines = textwrap.wrap(label, ncols) or [label]
+        if max(_txt_wh(renderer, ln, fs)[0] for ln in lines) <= aw:
+            chosen = lines                                     # keep the widest (fewest-line) fit
+    if chosen is None or (len(chosen) + extra_lines) * lh > ah:
+        return None
+    return chosen
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — OPTIMIZED NESTING (bin-packed stock sheets, pieces mixed across subsystems)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -310,46 +367,81 @@ def draw_sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # flatten PACKED to a list of (gid, thick, stock, sheet_i, n_sheets, placements)
+    # every physical sheet, in group order, with its sequential buyer letter (A, B, C…)
     sheets = []
     for g, bins in PACKED:
+        letters = _SHEET_LETTERS[g["gid"]]
         for i, pl in enumerate(bins):
-            sheets.append((g["gid"], g["thick"], g["stock"], i + 1, len(bins), pl))
+            sheets.append((letters[i], g["thick"], g["stock"], pl))
 
     COLS = 4
-    GAPX, GAPY = 640, 1050
+    GAPX, GAPY = 720, 1050
     CELLW, CELLH = 1220, 2440
-    for idx, (gid, thick, stock, si, ns, pl) in enumerate(sheets):
-        col = idx % COLS
-        row = idx // COLS
-        ox = col * (CELLW + GAPX)
-        oy = -row * (CELLH + GAPY)
+    origins = []
+    for idx in range(len(sheets)):
+        origins.append((idx % COLS * (CELLW + GAPX), -(idx // COLS) * (CELLH + GAPY)))
+
+    # 1) grounds + piece rectangles + sheet headers (labels come after limits are fixed)
+    for (letter, thick, stock, pl), (ox, oy) in zip(sheets, origins):
         w0, h0 = stock
         used = sum(w * h for (_x, _y, w, h, _l, _r) in pl)
         util = 100 * used / (w0 * h0)
         ax.add_patch(Rectangle((ox, oy), w0, h0, fc=C_STOCK, ec=C_OUT, lw=1.6, zorder=2))
-        ax.text(ox + w0 / 2, oy + h0 + 120, f"[{gid}] sheet {si}/{ns}", ha="center", fontsize=8.2,
+        ax.text(ox + w0 / 2, oy + h0 + 120, f"SHEET {letter}", ha="center", fontsize=9.0,
                 fontweight="bold", color=C_OUT, **FONT)
         ax.text(ox + w0 / 2, oy + h0 + 34, f"{thick}mm · {w0}×{h0} · {util:.0f}% used",
                 ha="center", fontsize=6.4, color=C_DIM, **FONT)
         for (x, yb, w, h, label, rot) in pl:
             fc = C_STUB if _is_fixed(label) else C_WOOD
             ax.add_patch(Rectangle((ox + x, oy + yb), w, h, fc=fc, ec=C_OUT, lw=1.0, zorder=3))
-            short = label.split(" (")[0]
-            cx, cy = ox + x + w / 2, oy + yb + h / 2
-            tag = "↻ " if rot else ""
-            if h > w * 1.5:                                    # rotate label; separate dim across width
-                ax.text(cx - 24, cy, (tag + short)[:26], ha="center", va="center", fontsize=5.2,
-                        color=C_OUT, rotation=90, **FONT)
-                ax.text(cx + 26, cy, f"{w:g}×{h:g}", ha="center", va="center", fontsize=4.8,
-                        color=C_DIM, rotation=90, **FONT)
-            else:
-                ax.text(cx, cy + max(24, h * 0.14), (tag + short)[:26], ha="center", va="center",
-                        fontsize=5.2, color=C_OUT, **FONT)
-                ax.text(cx, cy - max(30, h * 0.16), f"{w:g}×{h:g}", ha="center", va="center",
-                        fontsize=4.8, color=C_DIM, **FONT)
 
-    ax.autoscale_view()
+    # 2) fix the view so transData/renderer are valid for text measurement
+    maxx = max(ox + s[2][0] for s, (ox, oy) in zip(sheets, origins))
+    minx = min(ox for ox, oy in origins)
+    maxy = max(oy + s[2][1] for s, (ox, oy) in zip(sheets, origins))
+    miny = min(oy for ox, oy in origins)
+    ax.set_xlim(minx - 80, maxx + 780)                         # right pad holds the leader-label column
+    ax.set_ylim(miny - 300, maxy + 260)
+    fig.canvas.draw()
+    r = fig.canvas.get_renderer()
+    dpp_x, dpp_y = _data_per_px(ax)
+
+    # 3) piece labels — wrap inside the box; if it still won't fit, defer to a leader (one per piece)
+    for (letter, thick, stock, pl), (ox, oy) in zip(sheets, origins):
+        w0, h0 = stock
+        leads = []
+        for (x, yb, w, h, label, rot) in pl:
+            short = ("↻ " if rot else "") + label.split(" (")[0]
+            dims = f"{w:g}×{h:g}"
+            cx, cy = ox + x + w / 2, oy + yb + h / 2
+            bw, bh = _box_px(ax, ox + x, oy + yb, w, h)
+            rotate = h > w * 1.5
+            lines = _wrap_fit(r, short, _LBL_FS, bh if rotate else bw, bw if rotate else bh)
+            if lines is None:
+                leads.append((ox + x + w, cy, f"{short}\n{dims}"))
+                continue
+            # center the (label block + dims line) as one stack; label above, dims one line below
+            lh = _txt_wh(r, "Ag", _LBL_FS)[1] * 1.3 * (dpp_x if rotate else dpp_y)
+            n = len(lines)
+            body = "\n".join(lines)
+            lbl_off, dim_off = lh / 2, n * lh / 2               # label center up ½ line; dims center down n/2 lines
+            if rotate:
+                ax.text(cx + lbl_off, cy, body, rotation=90, ha="center", va="center",
+                        linespacing=1.3, fontsize=_LBL_FS, color=C_OUT, **FONT)
+                ax.text(cx - dim_off, cy, dims, rotation=90, ha="center", va="center",
+                        fontsize=_LBL_FS - 0.6, color=C_DIM, **FONT)
+            else:
+                ax.text(cx, cy + lbl_off, body, ha="center", va="center",
+                        linespacing=1.3, fontsize=_LBL_FS, color=C_OUT, **FONT)
+                ax.text(cx, cy - dim_off, dims, ha="center", va="center",
+                        fontsize=_LBL_FS - 0.6, color=C_DIM, **FONT)
+        # leader column down the sheet's right gap
+        lx = ox + w0 + 80
+        for i, (tipx, tipy, txt) in enumerate(leads):
+            ly = oy + h0 - 60 - (i + 0.5) * ((h0 - 120) / max(len(leads), 1))
+            leader(ax, tipx, tipy, lx, ly, txt, fs=5.0, color=C_OUT, ha="left",
+                   va="center", arrow_style="-", lw=0.6, font=FONT)
+
     ax.text(0.5, 1.006, "PLYWOOD NESTING — OPTIMIZED CUT LAYOUT", transform=ax.transAxes,
             ha="center", fontsize=13, fontweight="bold", color=C_OUT, **FONT)
     ax.text(0.5, 0.986, f"MAXRECTS bin-pack per grade+thickness (pieces mixed across subsystems) · "

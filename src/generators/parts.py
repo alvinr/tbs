@@ -1001,7 +1001,7 @@ PARTS: list[Part] = [
          spec="Panel skins, both faces (~12 m², 4× 4×8 ft sheets). 1/8\" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet."),
     Part("panel-fanb-ply", "Pressure-treated pine plywood (Fan B mount band + cooler base)", "timber-ply",
          "panel", 1, '4\'×8\' ¾" sheet', 69.68, 69.68, "Home Depot", part_no="231428", url="https://www.homedepot.com/p/206343229",
-         spec='¾" CC pressure-treated pine, full 4\'×8\' sheet. Fan B mount band (610×1,220mm, one corner bottom→1,125mm) '
+         spec='¾" CC pressure-treated pine, full 4\'×8\' sheet. Fan B mount band (610×1,220mm, one corner bottom→1,225mm) '
               'AND the cooler stowage base plate (600×350) are both cut from this one sheet. '
               'PT is defensible at the vented cargo-door end; plenty of leftover from one sheet.'),
     Part("panel-corner-stiffener", '1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid', "aluminum",
@@ -1034,7 +1034,7 @@ PARTS: list[Part] = [
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",
          "shelf", 1, '4\'×8\' 18mm sheet', 73.28, 73.28, "Home Depot", part_no="BPI6WUV2I", url="https://www.homedepot.com/p/302874373",
-         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2440mm), cut to 300×600. UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked).'),
+         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked).'),
     # Steel perimeter frame, folding stays, M5 CSK + corner gussets REMOVED — ply-primary redesign
     # (2026-09-07, chem-shelf-blueprint-spec.md): the plywood is the structure; attachments land in
     # ply tee-nuts (1/4-20 ply-mount standard); stays are SS chain. M5 family eliminated.

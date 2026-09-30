@@ -292,7 +292,7 @@ def tote_restraint():
 
 def rear_panel():
     """The 18mm marine-ply REAR panel (recessed into the back-wall opening, flush with the back
-    posts' −X inside face) PLUS the 25mm ply 'shirt' the pumps/ACC clamp to — a backing hard
+    posts' −X inside face) PLUS the 18mm ply 'shirt' the pumps/ACC clamp to — a backing hard
     behind the bodies (deepest = the ACC), tied back to the rear-frame ring across the chase.
     The pumps' integral cam-clamps grip onto it; only short port→riser connectors penetrate it."""
     pz0, ph = S, PANEL_TOP_Z - S                 # top dropped to PANEL_TOP_Z (1900) for the Fan A air window
@@ -318,10 +318,10 @@ def rear_panel():
     spine_holes = [(5500, 1376, RPH)]    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
     p = [ov.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
                      EQT, yw, ph, color=ov.C_PLY, holes=rear_holes, hole_axis="x")]
-    # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
-    # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
-    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 325,   # SHIRT_X: module constant
-                         25, yw, PANEL_TOP_Z - 325, color=ov.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
+    # 18mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
+    # spanning the pump-column height; sits in the chase between the bodies and the rear frame.
+    p.append(ov.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, 325,   # SHIRT_X: module constant
+                         EQT, yw, PANEL_TOP_Z - 325, color=ov.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4

@@ -49,7 +49,7 @@ while keeping the corners flush with the container walls.
 
 | Zone | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 653 | 40 | 1/8" HDPE skin + 1"×1"×⅛" 6061 Al stiffener grid + 1/8" HDPE skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
+| Near corner | 653 | 40 | 1/8" HDPE skin + 1"×1"×⅛" 6061 Al stiffener grid + 1/8" HDPE skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,225mm |
 | Center | 1,056 | 120 | 1/8" HDPE skin + 84mm RHS frame + 1/8" HDPE skin |
 | Far corner | 653 | 40 | 1/8" HDPE skin + 1"×1"×⅛" 6061 Al stiffener grid + 1/8" HDPE skin (40mm framed) |
 
@@ -63,7 +63,7 @@ flush-faced panels that seal against the fixed door frame.
 |-----------|-------|
 | Frame material | 50 × 50 × 3mm RHS mild steel |
 | Outer dimensions | <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm |
-| Skin (each face) | **1/8" HDPE plastic sheet** (same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,125mm) for rigid fan/duct mounting + screw retention |
+| Skin (each face) | **1/8" HDPE plastic sheet** (same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,225mm) for rigid fan/duct mounting + screw retention |
 | Interior finish | Black-pigmented sheet (HDPE) + flat-black touch-in — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitered joints |
 | Panel weight (full panel: skins + Ø800 housing + B2 bay, excl. drum) | ~139 kg (first-principles: 96 kg framed skins + 22 kg housing + 21 kg B2 bay). See §2.4–2.5 for the movable breakdown + trade study |
@@ -141,7 +141,7 @@ is light-tight (proven on the drum), moisture- and chemical-proof in the wet dar
 and floats in its channel to absorb its higher thermal expansion. A tighter stiffener-
 channel grid (~400–450mm centers) keeps the floppier 1/8" sheet flat at the EPDM seal
 line. **One exception:** the Fan B corner keeps an **18mm plywood band** (bottom up to
-1,125mm) for rigid fan/duct mounting + screw retention. The panel sits at **~139 kg**. The HDPE
+1,225mm) for rigid fan/duct mounting + screw retention. The panel sits at **~139 kg**. The HDPE
 skin + 1"×1"×⅛" Al stiffener grid + U-channel envelope is moisture/chemical-proof,
 light-tight, and weld-sealed (same material and weld process as the drum/housing); it
 costs more than a plywood build (§8.1).
@@ -506,7 +506,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 2×2×0.120in steel SHS (6 m bulk lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Panel skins, both faces (~12 m², 4× 4×8 ft sheets). 1/8" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet. | 4 sheet | US Plastics / TAP Plastics | $493 |
-| [Pressure-treated pine plywood (Fan B mount band + cooler base)](https://www.homedepot.com/p/206343229) (231428) | ¾" CC pressure-treated pine, full 4'×8' sheet. Fan B mount band (610×1,220mm, one corner bottom→1,125mm) AND the cooler stowage base plate (600×350) are both cut from this one sheet. PT is defensible at the vented cargo-door end; plenty of leftover from one sheet. | 1 4'×8' ¾" sheet | Home Depot | $70 |
+| [Pressure-treated pine plywood (Fan B mount band + cooler base)](https://www.homedepot.com/p/206343229) (231428) | ¾" CC pressure-treated pine, full 4'×8' sheet. Fan B mount band (610×1,220mm, one corner bottom→1,225mm) AND the cooler stowage base plate (600×350) are both cut from this one sheet. PT is defensible at the vented cargo-door end; plenty of leftover from one sheet. | 1 4'×8' ¾" sheet | Home Depot | $70 |
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1"×1"×1/8" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (2026-07-29). | 4 ea | Grainger | $49 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | Amazon (OKAYASU) | $24–$52 |
 | Aluminum U-channel, 1/8-panel (per meter) | Gasket retainer + 1/8" HDPE-skin retention (perimeter + housing-surround + stiffener grid). SECTION: aluminum '1/8-panel' U-channel — inner slot ~3.2mm (captures the 3.18mm/PANEL_SKIN_T HDPE skin), ~10–12mm legs, ~1.5mm wall. TOTAL LENGTH: 40m (pick a stock 1/8-panel profile; only the 3.18mm slot is fixed by the skin). | 40 m | Online Metals | $120–$200 |

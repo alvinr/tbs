@@ -838,14 +838,8 @@ _EMITTER_DUP_ALLOW = {
     # PERMANENT — featureless per-model CONTEXT ghost (a plain floor slab; no details to drift):
     "Floor": "context ghost — featureless per-model floor slab, no drift risk",
     "Floor (context)": "context ghost — featureless per-model floor slab, no drift risk",
-    # TEMPORARY — being consolidated by the 3D-dedup pass (owner in parens); remove each as it lands:
-    # BLOCKED — the Fan B band is entangled with a deeper drift: overview draws the cargo-door panel
-    # (+band) at PANEL_CENTER_T=120mm thick, lighttrap at 40mm. Unify the PANEL representation first
-    # (which door thickness is right?), then the band consolidates → lighttrap. See TODO.md.
-    "Fan B mount band (18mm ply)": "BLOCKED on cargo-door panel thickness drift (overview 120 vs lighttrap 40)",
-    "Tray sump strainer foot": "BLOCKED — cp puts it at Yd155 (center pickup), pw at Yd104 (under the "
-        "riser): a real sump-pickup position drift entangled with pw's riser routing. Resolve the pickup "
-        "Yd + pw routing, THEN consolidate → cp. See TODO.md.",
+    # (Fan B mount band + Tray sump strainer foot CONSOLIDATED 2026-10-01 → single shared builders
+    #  lt.fan_b_mount_panel / cp.sump_strainer_foot; both removed from the allowlist.)
     "Pinhole wall": "ACCEPTED — pw draws a standalone-panel wall SECTION, mini_tbs a SCALE-TOY miniature "
         "(BOX_W×BOX_H); different representations for different focused models, not a shared component "
         "(same class as the context floors).",

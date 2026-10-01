@@ -611,7 +611,6 @@ def skid_plumbing(part="all"):
     part='all' (default) returns every leg in build order (byte-identical to the water.skp build)."""
     p = []
     rp = ov.PUMP_PIPE_OD / 2
-    cdk = "#222228"
     lz = SROW_Z0 + 162                                   # 1312 — row line AT P-04's OUT-port height (straight run, no dog-leg)
     # ── Leg 1: tray sump pickup → P-04 IN  (DIRECT — deletes the long corridor ribbon) ──
     sfz = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
@@ -626,7 +625,7 @@ def skid_plumbing(part="all"):
          (p04_in[0] - 40, SKID_CLIP_YD, p04_in[2]),                     # rise on the panel face to P-04's IN height
          (p04_in[0] - 40, SROW_YD, p04_in[2]),                          # +Yd back to the P-04 IN lane
          p04_in], rp, color=ov.C_IBC_BROWN))                           # short lead into P-04's IN port
-    p.append(ov.ruby_cylinder("Tray sump strainer foot", *sfoot, 14, 36, color=cdk, axis="z"))
+    p.append(cp.sump_strainer_foot())                                  # shared single source (same part in the corridor sump)
     # ── Leg 2: P-04 OUT → (SV-02 tap) → DV-02 IN, along the row at lz ──
     p04_out = cp.pump_out(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3380,130,1312)
     dv_in = (ov.PWP_FILTER_X3 - (cp.DVB / 2 + cp.DVL), SROW_YD, lz)     # DV-02 −X run port (3943,130,1250)

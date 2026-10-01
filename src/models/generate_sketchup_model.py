@@ -1157,10 +1157,7 @@ def panel_pivot():
                           0, 0, PANEL_FLOOR_GAP_SIDE,
                           PANEL_CORNER_T, PANEL_CUT_YD, PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE,
                           color=C_PLY, alpha=0.6))
-    parts.append(ruby_box("Fan B mount band (18mm ply)",
-                          0, PANEL_CUT_YD, PANEL_FLOOR_GAP_SIDE,
-                          PANEL_CORNER_T, jL - PANEL_CUT_YD, PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE,
-                          color=C_PLY, alpha=0.6))
+    parts.append(lt.fan_b_mount_panel(0.6))   # shared builder (same swinging panel lighttrap swings)
     # Transport-lock support brackets (top + bottom): the near-wall stay anchors
     # (sandwiched inside/outside plates + eye + 4× M16) and the frame-side stay hooks.
     # The stay ROD/turnbuckle itself is left out — only the permanent brackets are shown.

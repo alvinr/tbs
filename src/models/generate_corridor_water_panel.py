@@ -761,6 +761,15 @@ def equipment(sump_on_skid=False, boards=("far", "near", "near-upper")):
     return "\n".join(p)
 
 
+def sump_strainer_foot():
+    """Ø14×36 strainer foot welded at the processing-tray sump pickup. SHARED single source — the
+    corridor sump run (plumbing(), when not on-skid) AND the pw/water.skp tray plumbing both emit THIS,
+    so the strainer can't drift between the two models."""
+    z = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
+    return ov.ruby_cylinder("Tray sump strainer foot", ov.PROC_TRAY_DRAIN_X, ov.PWP_FILTER_YD, z,
+                            14, 36, color="#222228", axis="z")
+
+
 def plumbing(part="all", sump_on_skid=False):
     """Stage-A tray-drain chain (P-04 → SV-02 → 3W-DV-02 → IBC-3 Brown / IBC-4 Waste) + the Blue
     supply (Blue #1 → P-01 → ACC-01 → trunk).  Routing rules: every segment is single-axis (no
@@ -845,7 +854,7 @@ def plumbing(part="all", sump_on_skid=False):
           (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
     if not sump_on_skid:
-        sump.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color="#222228", axis="z"))  # match the pw (water.skp) strainer foot — same part, unified color
+        sump.append(sump_strainer_foot())              # shared single source (same part in pw/water.skp)
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a

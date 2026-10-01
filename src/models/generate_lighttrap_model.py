@@ -50,7 +50,7 @@ PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
 from tbs_constants import PANEL_FLOOR_GAP_SIDE
 from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH, CARGO_DOOR_LEAF_T
-PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 195 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
+PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 282 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
 from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   # apron inner edges (12mm off the cage sides); vertical strip brushes bridge the gap; far-pivot fixed stub width
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
@@ -1417,8 +1417,8 @@ def generate_ruby():
         # (DRUM_CAGE_YD_L 700) so the panel HDPE BUTTS the bay wall — no 47mm slot (2026-09-02, item 2).
         # SWINGING Fan-B mount panel: Yd CUT→PANEL_CORNER_YD_L (473 wide, fan centered on it), floor-gap
         # line → band top (943), matching the overview band (single source). HDPE skin above butts the bay wall.
-        ruby_box("Fan B mount band (18mm ply)", 0, CUT, ov.PANEL_FLOOR_GAP_SIDE, 40,
-                 ov.PANEL_CORNER_YD_L - CUT, ov.PANEL_FAN_BAND_Z - ov.PANEL_FLOOR_GAP_SIDE, color=C_PLY, alpha=0.5),
+        ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_FLOOR_GAP_SIDE, 40,
+                 ov.PANEL_CORNER_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{ov.DRUM_CAGE_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
                  ov.DRUM_CAGE_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
         # swing panel + its top seal now run to the PIVOT line (the pivot-corner plywood travels with it).

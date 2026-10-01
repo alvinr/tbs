@@ -53,9 +53,21 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   (lighttrap), **processing tray** (overview `processing_tray(alpha=)` — spraybar now shows the real sloped pan
   ghosted, not a flat copy), **walkway Far/Near** (wm `far_deck()`/`near_removable_deck()`). **The 2 live drifts
   were FIXED 2026-09-30** — Fan-B band + panel are now the stepped 40/120 envelope (`PANEL_CORNER_T`), and the
-  tray sump foot moved to Yd104 (`PWP_FILTER_YD`); both cascaded to overview + construction. **REMAINING:**
-  consolidate those two into ONE shared lighttrap/cp builder (separate refactor, not the drift) + remove from
-  `_EMITTER_DUP_ALLOW`. The 3rd finding is accepted:
+  tray sump foot moved to Yd104 (`PWP_FILTER_YD`); both cascaded to overview + construction. **REMAINING (2 items,
+  investigated 2026-10-01):**
+  - **Tray sump strainer foot — CLEANLY CONSOLIDATABLE.** cp `sump_foot` and pw `sfoot` are now positionally
+    identical (both `(PROC_TRAY_DRAIN_X, 104, PROC_TRAY_FLOOR_Z_LOW−PROC_TRAY_SUMP_Z+3)`, color `#222228`).
+    Extract one `sump_strainer_foot()` builder (cp owns the sump logic; pw already imports cp) → both call it →
+    byte-identical output (no re-send) → drop from `_EMITTER_DUP_ALLOW`. Low-value (one Ø14×36 cylinder) but clean.
+  - **Fan-B mount band — NOT a mechanical dedup; blocked on a DESIGN DECISION (needs owner).** The thickness
+    drift is resolved (all 40mm), but the band's BOTTOM EXTENT disagrees three ways: 2D Sheet 11 draws the CUT
+    piece `FAN_B_BAND_H`=1220 tall (bottom ~5), lighttrap 3D installs it `CORNER_BOT`(190)→`PANEL_FAN_BAND_Z`(1225)
+    = 1035 tall, overview 3D `PANEL_FLOOR_GAP_SIDE`(282)→1225 = 943 tall. The cut size (1220) matches NEITHER
+    installed extent — so either the cut sheet is oversized or an installed band bottoms too high. DECIDE the real
+    band bottom (does it run to the floor-gap line 282, the apron-split 190, or lower?), then set `FAN_B_BAND_H`
+    accordingly, make lighttrap own a parameterized `fan_b_band(y0,y1,z_bot)` builder that overview calls, and drop
+    from the allowlist. (Reclassify as ACCEPTED-LOD only if the three extents are each deemed correct for their view.)
+  The 3rd finding is accepted:
   - **Pinhole wall (mini_tbs)** — ACCEPTED as-is: mini_tbs is a scale toy (BOX_W×BOX_H), pw a real wall section;
     different representations (like the context floors). No action unless mini_tbs is retired.
   (The 2 `Floor`/`Floor (context)` ghosts are permanent allowlist — featureless per-model context.)

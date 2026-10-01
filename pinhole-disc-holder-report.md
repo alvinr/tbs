@@ -140,11 +140,11 @@ The BOM is single-sourced from the parts registry (`parts.py`) and generated bel
 | Neoprene light-seal washer (Ø82×Ø72×1.5) | Neoprene washer Ø82 OD × Ø72 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. Cut from neoprene sheet or a stock washer. SKU pending — source. | 1 ea | McMaster-Carr / Grainger | $3–$6 |
 | [Pinhole carrier set — SS-302 shim on Ø80×5 6061 (Ø2.17 / Ø1.5 / Ø3.0)](https://lenoxlaser.com/) | Ø80 × 5mm 6061 carrier discs, each with an SS-302 laser-drilled pinhole shim bonded over a central bore — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). The 5mm carrier fills the seat (same envelope as the lens board) so the retaining ring clamps + seals it. 3 off (the interchangeable set). SKU pending — quote (Lenox Laser + disc blanks). | 3 ea | Lenox Laser / Edmund Optics | $60–$120 |
 | Ø80 lens board — Copal/Compur 0/1/3 (optional) | Ø80 × 5mm 6061 lens board (fills the seat) drilled for a Copal/Compur 0 (34.6), 1 (41.6) or 3 (65.0) shutter — drops into the holder to run the camera as a lens optic. The large-format LENS itself is user-supplied (out of BOM). Optional. SKU pending — source. | 1 ea | SK Grimes / Local fab | $10–$30 |
-| [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/products/thumb-screws/) | M6 knurled-head thumb screws — clamp the retaining ring (lens-board clamp force), finger-tightened for quick carrier change. 4 off. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $8–$16 |
-| M6×20 SHCS 18-8 SS, 4× (plate → adapter) | 4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. SKU pending — source. | 4 ea | McMaster-Carr / Bolt Depot | $4 |
+| [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/99607A293/) (99607A293) | M6 knurled-head thumb screws — clamp the retaining ring (lens-board clamp force), finger-tightened for quick carrier change. 4 off. McMaster 99607A293 $8.64 ea firm (2026-10-01). | 4 ea | McMaster-Carr / Bolt Depot | $35 |
+| [M6×20 SHCS 18-8 SS, 4× (plate → adapter)](https://www.mcmaster.com/95263A546/) (95263A546) | 4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×20 SHCS 18-8 SS. McMaster 95263A546 $7.75/25-pack firm (2026-10-01). | 4 ea | McMaster-Carr / Bolt Depot | $1 |
 | CNC machining — front plate + retaining ring (service) | Machine the Ø180 front plate (Ø72 aperture, Ø110 scene taper, Ø82 counterbore 6 deep, 4× M6 mount @ Ø150 + 4× M6 tap @ Ø100) and the Ø120 retaining ring from 6061-T6. SKU pending — fab quote. | 1 job | Fictiv / ProtoLabs | $150–$350 |
 | Anodize — front plate + ring (service) | Black anodize the front plate + retaining ring (matte, non-reflective at the aperture). SKU pending — shop quote. | 1 job | Pac-Nor Anodizing | $40–$80 |
-| **Front-Board total** | | | | **$305–$636** |
+| **Front-Board total** | | | | **$329–$652** |
 <!-- END parts:front-board -->
 
 ---

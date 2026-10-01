@@ -328,8 +328,6 @@ PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
 PANEL_SKIN_T      = 3.18  # panel skin thickness (mm) — 1/8" black HDPE (US Plastics 46684; rev11 was 18mm ply, nom 1/8″ HDPE), U-channel set
 PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only — reserved (spec; band drawn with a literal)
 PANEL_FAN_BAND_Z  = 1225  # ply band top Z (AFF) = FAN_B_H(700) + FAN_DIAM/2(75) + 450; literal — fan consts defined below (rises with the 2026-08-31 Fan B +100mm raise)
-FAN_B_BAND_W      = 610   # Fan B mount band CUT width (mm) — spans the near-corner zone (single source: hingepanel Sheet 11 + Plywood Cut Sheets)
-FAN_B_BAND_H      = 1220  # Fan B mount band CUT height (mm) — bottom of leaf up toward PANEL_FAN_BAND_Z
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
 PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width
@@ -1134,8 +1132,12 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # lifted out for transport, with the SAME 15mm margin the center bottom keeps over the Z115 arms
 # (PANEL_FLOOR_GAP − arm-top). So the two corner zones step UP from PANEL_FLOOR_GAP (130) to this.
 # The center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP. See hinged-panel Sheet 16.
-PANEL_FLOOR_GAP_SIDE = WALKWAY_BRACKET_H + (PANEL_FLOOR_GAP - (WALKWAY_H - WALKWAY_GRATE_T))  # 195
-PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                                  # 65 — corner step-up
+PANEL_FLOOR_GAP_SIDE = WALKWAY_BRACKET_H + (PANEL_FLOOR_GAP - (WALKWAY_H - WALKWAY_GRATE_T))  # 282
+PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                                  # corner step-up
+# Fan B mount band CUT size — DERIVED to match the overview 3D band (single source: hingepanel Sheet 11
+# + Plywood Cut Sheets). Spans the near-corner zone width, from the floor-gap line up to the band top.
+FAN_B_BAND_W = PANEL_CORNER_YD_L                          # 653 — band width = near-corner zone (Yd0→653)
+FAN_B_BAND_H = PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE    # 943 — band height = floor-gap line (282) → band top (1225)
 # Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,
 # IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
 # case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm

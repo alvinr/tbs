@@ -100,7 +100,7 @@ GROUPS = [
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
-            ("Fan-B mount band", FAN_B_BAND_W, FAN_B_BAND_H, 1, "hinged-panel near-corner rigid fan/duct mount band (rotated 90°, nests on a pinhole-backing sheet)"),
+            ("Fan-B mount band", FAN_B_BAND_W, FAN_B_BAND_H, 1, "hinged-panel near-corner rigid fan/duct mount band (nests on a pinhole-backing sheet)"),
             ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
         ]),
     ]),

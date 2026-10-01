@@ -33,10 +33,9 @@ subsystems** (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, t
 the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). Every layout is **guillotine-cuttable
 — each cut is a straight 90° edge-to-edge pass, the only cut a panel saw / sawmill makes** — and the
 drawing shows the cut lines (dashed red), **numbered in cutting order**, with the cut count per sheet. The packer works to a **5mm cut
-tolerance**: a piece may overhang a sheet edge by up to 5mm and still nest, so a full-width piece cuts to
-the edge (the 1220mm Fan-B band rotates 90° onto a pinhole-backing sheet, 1mm over the 1219mm stock, well
-inside tolerance). It minimizes the sheet count first, then the number of cuts (the current nest is
-**4 sheets, 45 cuts**). This packs the whole job into **4 stock sheets, lettered A–D** — down from 8 if
+tolerance**: a piece may overhang a sheet edge by up to 5mm and still nest, so a near-full-width piece cuts
+clean to the edge rather than forcing a new sheet. It minimizes the sheet count first, then the number of
+cuts (the current nest is **4 sheets, 43 cuts**). This packs the whole job into **4 stock sheets, lettered A–D** — down from 8 if
 each part were cut on its own sheet. Standardizing the timber plywood on 18mm drove the consolidation: the
 fold-down aprons re-graded from a dedicated 12mm sheet into the SYP offcut (sheets A–C); the EP electrical
 backboard — a finish-agnostic backing surface — now shares the chem-shelf UV-white sheet (sheet D); and
@@ -60,7 +59,7 @@ piece to the same letters.
 
 Sheets A–C are one SKU, so the packer nests their parts together across subsystems (the pinhole-wall
 backing exceeds a single sheet's width, so it is cut as two butt-jointed halves; the fold-down aprons,
-the rotated Fan-B band, and the cooler base all drop into the offcut). Sheet D's UV-white stock yields
+the Fan-B band, and the cooler base all drop into the offcut). Sheet D's UV-white stock yields
 both the chem-prep work surface and the EP electrical backboard — the backboard needs only a sealed,
 wipeable face, which the UV coating already gives, so it rides the same sheet rather than buying its own.
 Sheet D is single-grade (a different finish from A–C), so it cannot cross-nest — that residual sheet is

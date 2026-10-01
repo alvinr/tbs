@@ -2150,7 +2150,8 @@ def sheet10():
 #   Sheet 3; the ply→frame welded-tab + captive tee-nut is Sheet 13.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet11():
-    from tbs_constants import FAN_B_BAND_W as BW, FAN_B_BAND_H as BH   # single source: Plywood Cut Sheets
+    from tbs_constants import (FAN_B_BAND_W as BW, FAN_B_BAND_H as BH,   # single source: Plywood Cut Sheets
+                               FAN_B_YD, FAN_B_H, PANEL_FLOOR_GAP_SIDE)
     FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
 
     fig, ax = plt.subplots(figsize=(11, 13))
@@ -2165,24 +2166,26 @@ def sheet11():
             ha="center", fontsize=6.6, color=C_DIM, **FONT)
     # the band (drawn to scale, standalone — NOT the 4'×8' cut sheet)
     ax.add_patch(Rectangle((0, 0), BW, BH, fc=C_WOOD, ec=C_OUT, lw=1.5, alpha=0.55, zorder=3))
-    # Ø150 fan cutout + 4 bolt holes
-    fcx, fcy = BW / 2, 360
+    # Ø150 fan cutout + 4 bolt holes — located to MATCH the 3D overview band: fan at its wall height
+    # (FAN_B_H) and near-corner Yd (FAN_B_YD), measured from the band's bottom-left corner.
+    fcx, fcy = FAN_B_YD, FAN_B_H - PANEL_FLOOR_GAP_SIDE   # 365 from edge · 418 from bottom (fan CL = Z700 AFF)
     ax.add_patch(Circle((fcx, fcy), FR, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
     ax.text(fcx, fcy, f"Ø{int(FAN_DIAM)}\nfan\ncutout", ha="center", va="center", fontsize=6.6, color=C_DIM, **FONT, zorder=7)
     for k in range(4):
         a = math.radians(45 + k * 90)
         ax.add_patch(Circle((fcx + (FR + 24) * math.cos(a), fcy + (FR + 24) * math.sin(a)), 5, fc=BG, ec=C_OUT, lw=0.9, zorder=7))
     ax.text(fcx, fcy - FR - 60, "4× fan-flange bolts", ha="center", fontsize=6.2, color=C_DIM, **FONT, zorder=7)
-    # frame-tab T-nut holes along the two vertical edges (to the jamb + stile)
+    # frame-tab T-nut holes along the two vertical edges (to the jamb + stile) — ~320mm pitch, within the band
+    zz_list = [120 + i * 320 for i in range(4) if 120 + i * 320 <= BH - 120]
     for ex in (30, BW - 30):
-        for zz in [120 + i * 320 for i in range(4)]:
+        for zz in zz_list:
             ax.add_patch(Circle((ex, zz), 6, fc="#A8763A", ec=C_OUT, lw=0.8, zorder=7))
-    leader(ax, (BW - 30, 120 + 3 * 320), (BW + 210, BH - 160), "frame-tab T-nut holes\n(both edges @ ~320mm)\n— attach detail Sheet 13", col="#8a5a1f", fs=6.2)
+    leader(ax, (BW - 30, zz_list[-1]), (BW + 210, BH - 120), "frame-tab T-nut holes\n(both edges @ ~320mm)\n— attach detail Sheet 13", col="#8a5a1f", fs=6.2)
     # dimensions
     draw_dim_h(ax, 0, BW, BH + 20, f"{BW}mm", offset=14, fs=6.6, font=FONT)
     draw_dim_v(ax, -70, 0, BH, f"{BH}mm", offset=14, fs=6.6, font=FONT)
-    draw_dim_v(ax, BW + 80, 0, fcy, "360mm to fan CL", offset=12, fs=6.0, font=FONT, right=True)
-    draw_dim_h(ax, 0, fcx, fcy - FR - 95, f"{int(BW / 2)}mm (fan CL)", offset=10, fs=6.0, font=FONT, above=False)
+    draw_dim_v(ax, BW + 80, 0, fcy, f"{int(fcy)}mm to fan CL", offset=12, fs=6.0, font=FONT, right=True)
+    draw_dim_h(ax, 0, fcx, fcy - FR - 95, f"{int(fcx)}mm (fan CL)", offset=10, fs=6.0, font=FONT, above=False)
 
     draw_notes(ax, [
         "FAN-B BAND",

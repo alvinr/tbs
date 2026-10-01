@@ -32,7 +32,7 @@ A bin-packer nests all pieces of one grade+thickness onto the fewest 4×8 sheets
 subsystems** (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, the fold-down aprons, and
 the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). Every layout is **guillotine-cuttable
 — each cut is a straight 90° edge-to-edge pass, the only cut a panel saw / sawmill makes** — and the
-drawing shows the cut lines (dashed red) with the cut count per sheet. The packer works to a **5mm cut
+drawing shows the cut lines (dashed red), **numbered in cutting order**, with the cut count per sheet. The packer works to a **5mm cut
 tolerance**: a piece may overhang a sheet edge by up to 5mm and still nest, so a full-width piece cuts to
 the edge (the 1220mm Fan-B band rotates 90° onto a pinhole-backing sheet, 1mm over the 1219mm stock, well
 inside tolerance). It minimizes the sheet count first, then the number of cuts (the current nest is

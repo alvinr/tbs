@@ -24,7 +24,7 @@ import textwrap
 
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
-from matplotlib.patches import Rectangle
+from matplotlib.patches import Circle, Rectangle
 
 sys.path.insert(0, os.path.dirname(__file__))
 from tbs_constants import (                                    # noqa: E402
@@ -519,9 +519,21 @@ def draw_sheet2():
         for (x, yb, w, h, label, rot) in pl:
             fc = C_STUB if _is_fixed(label) else C_WOOD
             ax.add_patch(Rectangle((ox + x, oy + yb), w, h, fc=fc, ec=C_OUT, lw=1.0, zorder=3))
-        for (sx0, sy0, sx1, sy1) in segs:                       # guillotine saw cuts (edge-to-edge, 90°)
+        placed_badges = []                                      # nudge a badge off any already placed on this sheet
+        for n, (sx0, sy0, sx1, sy1) in enumerate(segs, 1):      # guillotine saw cuts, in cut order
             ax.plot([ox + sx0, ox + sx1], [oy + sy0, oy + sy1], color=C_CUT, lw=0.9,
                     ls=(0, (5, 2)), zorder=6)
+            vert = abs(sx1 - sx0) < 1                            # slide the badge ALONG its own cut (stays on-sheet)
+            lo, hi = (min(sy0, sy1), max(sy0, sy1)) if vert else (min(sx0, sx1), max(sx0, sx1))
+            cands = [lo + f * (hi - lo) for f in (0.5, 0.35, 0.65, 0.22, 0.78)]
+            spots = [(ox + sx0, oy + c) if vert else (ox + c, oy + sy0) for c in cands]
+            bx, by = next((s for s in spots
+                           if all((s[0] - px) ** 2 + (s[1] - py) ** 2 > (2 * 56) ** 2 for px, py in placed_badges)),
+                          spots[0])
+            placed_badges.append((bx, by))
+            ax.add_patch(Circle((bx, by), 56, fc="white", ec=C_CUT, lw=0.9, zorder=7))
+            ax.text(bx, by, str(n), ha="center", va="center", fontsize=5.0,
+                    fontweight="bold", color=C_CUT, zorder=8, **FONT)
         ax.text(ox + w0 / 2, oy + h0 + 120, f"SHEET {letter}", ha="center", fontsize=9.0,
                 fontweight="bold", color=C_OUT, **FONT)
         ax.text(ox + w0 / 2, oy + h0 + 34, f"{thick}mm · {w0}×{h0} · {util:.0f}% used · {ncuts} cuts",
@@ -578,7 +590,7 @@ def draw_sheet2():
              ha="center", fontsize=14, fontweight="bold", color=C_OUT, **FONT)
     fig.text(0.5, 0.952, f"guillotine nest (every cut is a 90° edge-to-edge panel-saw cut) · "
              f"{OPT_TOTAL} stock sheets (from {NAIVE_TOTAL} part-by-part) · {total_cuts} cuts total · "
-             f"↻ = rotated · ‑ ‑ = saw cut · shaded = FIXED piece",
+             f"↻ = rotated · ‑ ‑ ⓝ = saw cuts numbered in cutting order · shaded = FIXED piece",
              ha="center", fontsize=8.5, color=C_DIM, **FONT)
 
     ax_tb = fig.add_axes([0.035, 0.02, 0.93, 0.08])

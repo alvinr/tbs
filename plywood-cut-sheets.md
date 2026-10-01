@@ -28,20 +28,22 @@ Every plywood cut piece, grouped by stock. The ᴰ marker flags a dimension deri
 
 ## 3. Nesting layout
 
-A MAXRECTS bin-packer nests all pieces of one grade+thickness onto the fewest 4×8 sheets, **mixing
-pieces across subsystems** (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, the
-fold-down aprons, and the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). The packer
-works to a **5mm cut tolerance** — a piece may overhang a sheet edge by up to 5mm and still nest, so a
-full-width piece cuts to the edge (the 1220mm Fan-B band rotates 90° onto a pinhole-backing sheet, 1mm
-over the 1219mm stock, well inside tolerance). This packs the whole job into **4 stock sheets, lettered
-A–D** — down from 8 if each part were cut on its own sheet. Standardizing the timber plywood on 18mm
-drove the consolidation: the fold-down aprons re-graded from a dedicated 12mm sheet into the SYP offcut
-(sheets A–C); the EP electrical backboard — a finish-agnostic backing surface — now shares the chem-shelf
-UV-white sheet (sheet D); and the Fan-B band + cooler base re-graded from a dedicated ¾" pressure-treated
-sheet into the same SYP offcut, retiring the PT sheet. So the whole job settles into **two grades** (SYP,
-UV-white). Pieces are drawn to scale; ↻ marks a piece rotated 90° to fit, and shaded pieces are fixed
-(non-fold). The layout is a nesting guide — the shop lays out the actual saw cuts from the labeled
-dimensions.
+A bin-packer nests all pieces of one grade+thickness onto the fewest 4×8 sheets, **mixing pieces across
+subsystems** (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, the fold-down aprons, and
+the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). Every layout is **guillotine-cuttable
+— each cut is a straight 90° edge-to-edge pass, the only cut a panel saw / sawmill makes** — and the
+drawing shows the cut lines (dashed red) with the cut count per sheet. The packer works to a **5mm cut
+tolerance**: a piece may overhang a sheet edge by up to 5mm and still nest, so a full-width piece cuts to
+the edge (the 1220mm Fan-B band rotates 90° onto a pinhole-backing sheet, 1mm over the 1219mm stock, well
+inside tolerance). It minimizes the sheet count first, then the number of cuts (the current nest is
+**4 sheets, 45 cuts**). This packs the whole job into **4 stock sheets, lettered A–D** — down from 8 if
+each part were cut on its own sheet. Standardizing the timber plywood on 18mm drove the consolidation: the
+fold-down aprons re-graded from a dedicated 12mm sheet into the SYP offcut (sheets A–C); the EP electrical
+backboard — a finish-agnostic backing surface — now shares the chem-shelf UV-white sheet (sheet D); and
+the Fan-B band + cooler base re-graded from a dedicated ¾" pressure-treated sheet into the same SYP offcut,
+retiring the PT sheet. So the whole job settles into **two grades** (SYP, UV-white). Pieces are drawn to
+scale; ↻ marks a piece rotated 90° to fit, dashed red lines are saw cuts, and shaded pieces are fixed
+(non-fold). The layout is a nesting + cut guide — the shop rips each sheet along the shown guillotine cuts.
 
 ![Plywood nesting](assets/plywood-cutsheets-sheet2.png)
 

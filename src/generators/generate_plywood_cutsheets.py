@@ -44,6 +44,7 @@ C_DIM = "#404040"
 C_WOOD = "#D8C39A"       # plywood face
 C_STOCK = "#F0E9D8"      # stock-sheet ground
 C_STUB = "#C7B48A"       # fixed (non-fold) piece, distinguished from a fold-down apron
+C_CUT = "#B0202A"        # guillotine saw-cut line (dashed red)
 
 # ── derived cut dimensions (geometry-driven → from tbs_constants; cannot drift) ─────────────
 PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
@@ -157,22 +158,19 @@ def _prune(rects):
     return out
 
 
-def pack_group(pieces, bin_w, bin_h, tol=FIT_TOL, kerf=CUT_MARGIN):
-    """MAXRECTS (Best-Short-Side-Fit, 90° rotation) rectangle bin-packing → minimize the number of
-    stock sheets. Same-material pieces only (caller groups by grade+thickness). A piece may overhang a
-    free rect by up to `tol` (the 5mm plywood cut tolerance — so a full-width piece cuts to the sheet
-    edge); a `kerf` is reserved between adjacent pieces when the free space is carved up. Returns a list
-    of bins, each a list of (x, y, w, h, label, rotated) at the true piece size. Panel-count-minimizing;
-    the pieces are labeled with dims so the shop lays out the actual saw cuts."""
-    items = sorted(pieces, key=lambda p: -(p[1] * p[2]))         # largest area first
-    bins = []                                                    # each: {"free": [...], "placed": [...]}
+def _pack_maxrects(pieces, bin_w, bin_h, tol, kerf):
+    """MAXRECTS (Best-Short-Side-Fit, 90° rotation) — tightest free-placement nesting, minimizing the
+    number of stock sheets. The result is NOT guaranteed guillotine-cuttable; the caller verifies that
+    (via cut_plan) and falls back to _pack_once if a sheet can't be cut edge-to-edge."""
+    items = sorted(pieces, key=lambda p: -(p[1] * p[2]))
+    bins = []
 
     def _try(free, w, h):
         best = None
         for ri, (fx, fy, fw, fh) in enumerate(free):
             for (pw, ph, rot) in ([(w, h, False)] if abs(w - h) < 1e-6 else [(w, h, False), (h, w, True)]):
-                if pw <= fw + tol and ph <= fh + tol:           # within the cut tolerance
-                    score = max(0.0, min(fw - pw, fh - ph))     # best short-side fit (overhang ranks as a clean fit)
+                if pw <= fw + tol and ph <= fh + tol:
+                    score = max(0.0, min(fw - pw, fh - ph))
                     if best is None or score < best[0]:
                         best = (score, ri, fx, fy, pw, ph, rot)
         return best
@@ -183,24 +181,153 @@ def pack_group(pieces, bin_w, bin_h, tol=FIT_TOL, kerf=CUT_MARGIN):
             cand = _try(b["free"], w0, h0)
             if cand and (pick is None or cand[0] < pick[1][0]):
                 pick = (bi, cand)
-        if pick is None:                                         # open a new sheet (full stock, cut to edge)
+        if pick is None:
             bins.append({"free": [(0, 0, bin_w, bin_h)], "placed": []})
             bi = len(bins) - 1
             cand = _try(bins[bi]["free"], w0, h0)
-            if cand is None:                                     # bigger than a whole sheet
+            if cand is None:
                 bins[bi]["placed"].append((0, 0, min(w0, bin_w), min(h0, bin_h), label + " ⚠OVERSIZE", False))
                 bins[bi]["free"] = []
                 continue
             pick = (bi, cand)
         bi, (_score, _ri, x, y, pw, ph, rot) = pick
         b = bins[bi]
-        b["placed"].append((x, y, pw, ph, label, rot))           # true piece size (cut to edge within tol)
-        used = (x, y, pw + kerf, ph + kerf)                       # reserve a saw kerf for neighbors
+        b["placed"].append((x, y, pw, ph, label, rot))
+        used = (x, y, pw + kerf, ph + kerf)
         nf = []
         for f in b["free"]:
             nf.extend(_split_free(f, used))
         b["free"] = _prune(nf)
     return [b["placed"] for b in bins]
+
+
+def _pack_once(pieces, bin_w, bin_h, order, split, fit, tol, kerf):
+    """One GUILLOTINE packing pass (90° cuts only, so every sheet is panel-saw cuttable). `order` keys
+    the piece sort, `split` picks the guillotine axis rule, `fit` the free-rect score. A piece may
+    overhang a free rect by up to `tol` (5mm cut tolerance → full-width pieces cut to the edge); each
+    placed piece reserves `kerf` before its free rect is split by ONE cut into a right strip + top strip."""
+    key = {"area": lambda p: -(p[1] * p[2]), "maxside": lambda p: -max(p[1], p[2]),
+           "height": lambda p: -p[2], "width": lambda p: -p[1]}[order]
+    items = sorted(pieces, key=key)
+    bins = []
+
+    def _try(free, w, h):
+        best = None
+        for ri, (fx, fy, fw, fh) in enumerate(free):
+            for (pw, ph, rot) in ([(w, h, False)] if abs(w - h) < 1e-6 else [(w, h, False), (h, w, True)]):
+                if pw <= fw + tol and ph <= fh + tol:
+                    sss = max(0.0, min(fw - pw, fh - ph))                   # short-side leftover
+                    score = sss if fit == "sss" else max(0.0, fw * fh - pw * ph)  # or best-area
+                    if best is None or score < best[0]:
+                        best = (score, ri, fw, fh, pw, ph, rot)
+        return best
+
+    def _guillotine(fx, fy, fw, fh, pw, ph):
+        horiz = (fw - pw) <= (fh - ph) if split == "shorter" else (fw - pw) > (fh - ph)
+        if horiz:                        # TOP strip kept full-width, right strip piece-high
+            parts = ((fx + pw + kerf, fy, fw - pw - kerf, ph), (fx, fy + ph + kerf, fw, fh - ph - kerf))
+        else:                            # RIGHT strip kept full-height, top strip piece-wide
+            parts = ((fx + pw + kerf, fy, fw - pw - kerf, fh), (fx, fy + ph + kerf, pw, fh - ph - kerf))
+        return [r for r in parts if r[2] > 1 and r[3] > 1]
+
+    for (label, w0, h0) in items:
+        pick = None
+        for bi, b in enumerate(bins):
+            cand = _try(b["free"], w0, h0)
+            if cand and (pick is None or cand[0] < pick[1][0]):
+                pick = (bi, cand)
+        if pick is None:
+            bins.append({"free": [(0, 0, bin_w, bin_h)], "placed": []})
+            bi = len(bins) - 1
+            cand = _try(bins[bi]["free"], w0, h0)
+            if cand is None:
+                bins[bi]["placed"].append((0, 0, min(w0, bin_w), min(h0, bin_h), label + " ⚠OVERSIZE", False))
+                bins[bi]["free"] = []
+                continue
+            pick = (bi, cand)
+        bi, (_score, ri, fw, fh, pw, ph, rot) = pick
+        b = bins[bi]
+        fx, fy, _fw, _fh = b["free"].pop(ri)
+        b["placed"].append((fx, fy, pw, ph, label, rot))
+        b["free"].extend(_guillotine(fx, fy, fw, fh, pw, ph))
+    return [b["placed"] for b in bins]
+
+
+def _total_cuts(bin_w, bin_h, bins):
+    return sum(cut_plan(bin_w, bin_h, pl)[0] for pl in bins)
+
+
+def pack_group(pieces, bin_w, bin_h, tol=FIT_TOL, kerf=CUT_MARGIN):
+    """Pack a group onto the fewest stock sheets, keeping every sheet panel-saw cuttable (edge-to-edge
+    90° cuts). The tight MAXRECTS nest is used when every one of its sheets is guillotine-cuttable (it is
+    for the current pieces, and it packs one sheet fewer than a pure guillotine greedy); otherwise the
+    packer falls back to the guillotine strategy that gives the fewest sheets, then fewest cuts. Among
+    equally-good options the fewest total cuts wins. Returns bins of (x, y, w, h, label, rotated)."""
+    mr = _pack_maxrects(pieces, bin_w, bin_h, tol, kerf)
+    mr_cuts = _total_cuts(bin_w, bin_h, mr)
+    best = (len(mr), mr_cuts, mr) if mr_cuts < INF else None
+    for order in ("area", "maxside", "height", "width"):
+        for split in ("shorter", "longer"):
+            for fit in ("sss", "area"):
+                bins = _pack_once(pieces, bin_w, bin_h, order, split, fit, tol, kerf)
+                cand = (len(bins), _total_cuts(bin_w, bin_h, bins), bins)
+                if best is None or cand[:2] < best[:2]:
+                    best = cand
+    return best[2]
+
+
+_E = 0.5                                                          # mm epsilon for cut-plan edge tests
+INF = float("inf")                                                # a sheet that is not guillotine-cuttable
+
+
+def cut_plan(bin_w, bin_h, placed):
+    """Minimum guillotine (edge-to-edge 90°) cuts to free every piece on a sheet, + the cut segments.
+    Recurse: a region holding >1 piece (or 1 piece not filling it) is split by a full-span cut on a
+    piece edge that crosses no piece; take the fewest-cut choice. Memoized — a few pieces per sheet."""
+    R = [(x, y, x + w, y + h) for (x, y, w, h, _l, _r) in placed]
+    memo = {}
+
+    def rec(x0, y0, x1, y1, idxs):
+        if not idxs:
+            return 0, []
+        if len(idxs) == 1:
+            a = R[idxs[0]]
+            if abs(a[0] - x0) < _E and abs(a[1] - y0) < _E and abs(a[2] - x1) < _E and abs(a[3] - y1) < _E:
+                return 0, []
+        key = (round(x0), round(y0), round(x1), round(y1), idxs)
+        if key in memo:
+            return memo[key]
+        best = None
+        xs = {round(e, 2) for i in idxs for e in (R[i][0], R[i][2]) if x0 + _E < e < x1 - _E}
+        for xc in xs:
+            if any(R[i][0] < xc - _E and R[i][2] > xc + _E for i in idxs):
+                continue
+            left = tuple(i for i in idxs if R[i][2] <= xc + _E)
+            right = tuple(i for i in idxs if R[i][0] >= xc - _E)
+            if len(left) + len(right) != len(idxs):
+                continue
+            cl, sl = rec(x0, y0, xc, y1, left)
+            cr, sr = rec(xc, y0, x1, y1, right)
+            if best is None or 1 + cl + cr < best[0]:
+                best = (1 + cl + cr, [(xc, y0, xc, y1)] + sl + sr)
+        ys = {round(e, 2) for i in idxs for e in (R[i][1], R[i][3]) if y0 + _E < e < y1 - _E}
+        for yc in ys:
+            if any(R[i][1] < yc - _E and R[i][3] > yc + _E for i in idxs):
+                continue
+            bot = tuple(i for i in idxs if R[i][3] <= yc + _E)
+            top = tuple(i for i in idxs if R[i][1] >= yc - _E)
+            if len(bot) + len(top) != len(idxs):
+                continue
+            cb, sb = rec(x0, y0, x1, yc, bot)
+            ct, st = rec(x0, yc, x1, y1, top)
+            if best is None or 1 + cb + ct < best[0]:
+                best = (1 + cb + ct, [(x0, yc, x1, yc)] + sb + st)
+        if best is None:
+            best = (0, []) if len(idxs) <= 1 else (INF, [])     # >1 piece, no cut → not guillotine-cuttable
+        memo[key] = best
+        return best
+
+    return rec(0, 0, bin_w, bin_h, tuple(range(len(R))))
 
 
 # pack every group once (module-level, so Sheet 1's count and Sheet 2's layout agree)
@@ -228,10 +355,10 @@ def _is_fixed(label):
     return any(k in label for k in ("Fixed", "stub", "baffle"))
 
 
-def _save(fig, fname):
+def _save(fig, fname, tight=True):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     png = os.path.join(DIAGRAMS_DIR, fname)
-    fig.savefig(png, dpi=150, bbox_inches="tight", facecolor=C_BG)
+    fig.savefig(png, dpi=150, bbox_inches="tight" if tight else None, facecolor=C_BG)
     plt.close(fig)
     print(f"  {png} saved")
 
@@ -307,12 +434,13 @@ def draw_sheet1():
     ], 2, 14.5, spacing=2.6, fs=7.2, title_fs=8.0, width=96, wrap=150,
        color=C_OUT, title_color=C_OUT, border_color=C_DIM, font=FONT)
 
-    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.045])
+    ax_tb = fig.add_axes([0.03, 0.012, 0.94, 0.055])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 1 OF {TOTAL_SHEETS}", drawing_title="PLYWOOD CUT SHEETS",
                 subtitle="PLYWOOD SCHEDULE — ALL SUBSYSTEMS",
-                scale_note="SCHEDULE · ALL DIMS IN mm", doc_id="TBS-001 · Plywood Cut Sheets")
-    _save(fig, "plywood-cutsheets-sheet1.png")
+                scale_note="SCHEDULE · ALL DIMS IN mm", doc_id="TBS-001 · Plywood Cut Sheets",
+                height=0.92)
+    _save(fig, "plywood-cutsheets-sheet1.png", tight=False)
 
 
 # ── Sheet-2 label helpers (measure real text extents so a label wraps to fit its box, else leads out) ──
@@ -358,11 +486,11 @@ def _wrap_fit(renderer, label, fs, avail_line_px, avail_stack_px, extra_lines=1)
 # SHEET 2 — OPTIMIZED NESTING (bin-packed stock sheets, pieces mixed across subsystems)
 # ═══════════════════════════════════════════════════════════════════════════════
 def draw_sheet2():
-    fig = plt.figure(figsize=(20, 14))
+    fig = plt.figure(figsize=(22, 9))              # wide, to match the row-of-sheets content aspect
     fig.patch.set_facecolor(C_BG)
-    ax = fig.add_axes([0.04, 0.06, 0.92, 0.88])
+    ax = fig.add_axes([0.035, 0.11, 0.93, 0.80])
     ax.set_facecolor(C_BG)
-    ax.set_aspect("equal")
+    ax.set_aspect("equal", adjustable="datalim")   # keep the axes box put (don't shrink onto the title block)
     ax.axis("off")
 
     # every physical sheet, in group order, with its sequential buyer letter (A, B, C…)
@@ -379,19 +507,25 @@ def draw_sheet2():
     for idx in range(len(sheets)):
         origins.append((idx % COLS * (CELLW + GAPX), -(idx // COLS) * (CELLH + GAPY)))
 
-    # 1) grounds + piece rectangles + sheet headers (labels come after limits are fixed)
+    # 1) grounds + piece rectangles + guillotine cut lines + sheet headers
+    total_cuts = 0
     for (letter, thick, stock, pl), (ox, oy) in zip(sheets, origins):
         w0, h0 = stock
         used = sum(w * h for (_x, _y, w, h, _l, _r) in pl)
         util = 100 * used / (w0 * h0)
+        ncuts, segs = cut_plan(w0, h0, pl)
+        total_cuts += ncuts
         ax.add_patch(Rectangle((ox, oy), w0, h0, fc=C_STOCK, ec=C_OUT, lw=1.6, zorder=2))
-        ax.text(ox + w0 / 2, oy + h0 + 120, f"SHEET {letter}", ha="center", fontsize=9.0,
-                fontweight="bold", color=C_OUT, **FONT)
-        ax.text(ox + w0 / 2, oy + h0 + 34, f"{thick}mm · {w0}×{h0} · {util:.0f}% used",
-                ha="center", fontsize=6.4, color=C_DIM, **FONT)
         for (x, yb, w, h, label, rot) in pl:
             fc = C_STUB if _is_fixed(label) else C_WOOD
             ax.add_patch(Rectangle((ox + x, oy + yb), w, h, fc=fc, ec=C_OUT, lw=1.0, zorder=3))
+        for (sx0, sy0, sx1, sy1) in segs:                       # guillotine saw cuts (edge-to-edge, 90°)
+            ax.plot([ox + sx0, ox + sx1], [oy + sy0, oy + sy1], color=C_CUT, lw=0.9,
+                    ls=(0, (5, 2)), zorder=6)
+        ax.text(ox + w0 / 2, oy + h0 + 120, f"SHEET {letter}", ha="center", fontsize=9.0,
+                fontweight="bold", color=C_OUT, **FONT)
+        ax.text(ox + w0 / 2, oy + h0 + 34, f"{thick}mm · {w0}×{h0} · {util:.0f}% used · {ncuts} cuts",
+                ha="center", fontsize=6.4, color=C_DIM, **FONT)
 
     # 2) fix the view so transData/renderer are valid for text measurement
     maxx = max(ox + s[2][0] for s, (ox, oy) in zip(sheets, origins))
@@ -399,7 +533,7 @@ def draw_sheet2():
     maxy = max(oy + s[2][1] for s, (ox, oy) in zip(sheets, origins))
     miny = min(oy for ox, oy in origins)
     ax.set_xlim(minx - 80, maxx + 780)                         # right pad holds the leader-label column
-    ax.set_ylim(miny - 300, maxy + 260)
+    ax.set_ylim(miny - 100, maxy + 330)                        # top pad holds the per-sheet header labels
     fig.canvas.draw()
     r = fig.canvas.get_renderer()
     dpp_x, dpp_y = _data_per_px(ax)
@@ -440,19 +574,20 @@ def draw_sheet2():
             leader(ax, tipx, tipy, lx, ly, txt, fs=5.0, color=C_OUT, ha="left",
                    va="center", arrow_style="-", lw=0.6, font=FONT)
 
-    ax.text(0.5, 1.006, "PLYWOOD NESTING — OPTIMIZED CUT LAYOUT", transform=ax.transAxes,
-            ha="center", fontsize=13, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(0.5, 0.986, f"MAXRECTS bin-pack per grade+thickness (pieces mixed across subsystems) · "
-            f"{OPT_TOTAL} stock sheets (from {NAIVE_TOTAL} part-by-part) · ↻ = rotated · shaded = FIXED piece",
-            transform=ax.transAxes, ha="center", fontsize=8, color=C_DIM, **FONT)
+    fig.text(0.5, 0.975, "PLYWOOD NESTING — OPTIMIZED CUT LAYOUT",
+             ha="center", fontsize=14, fontweight="bold", color=C_OUT, **FONT)
+    fig.text(0.5, 0.952, f"guillotine nest (every cut is a 90° edge-to-edge panel-saw cut) · "
+             f"{OPT_TOTAL} stock sheets (from {NAIVE_TOTAL} part-by-part) · {total_cuts} cuts total · "
+             f"↻ = rotated · ‑ ‑ = saw cut · shaded = FIXED piece",
+             ha="center", fontsize=8.5, color=C_DIM, **FONT)
 
-    ax_tb = fig.add_axes([0.04, 0.008, 0.92, 0.045])
+    ax_tb = fig.add_axes([0.035, 0.02, 0.93, 0.08])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 2 OF {TOTAL_SHEETS}", drawing_title="PLYWOOD CUT SHEETS",
-                subtitle=f"OPTIMIZED NESTING — {OPT_TOTAL} STOCK SHEETS",
+                subtitle=f"GUILLOTINE NESTING — {OPT_TOTAL} SHEETS · {total_cuts} CUTS",
                 scale_note="PIECES TO SCALE ON 4×8 STOCK · ALL DIMS IN mm",
-                doc_id="TBS-001 · Plywood Cut Sheets")
-    _save(fig, "plywood-cutsheets-sheet2.png")
+                doc_id="TBS-001 · Plywood Cut Sheets", height=0.92)
+    _save(fig, "plywood-cutsheets-sheet2.png", tight=False)
 
 
 if __name__ == "__main__":

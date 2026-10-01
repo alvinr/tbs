@@ -152,18 +152,6 @@ Ranked by saving potential, analogous to the SS→ALU depth-rail switch (`fp-u-c
 needs a dedicated follow-up to model + cascade before committing. Cost by system for context: chemistry
 $5,466 · film $4,216–4,572 · container $2,300–4,300 · electrical $3,431–3,496 · water $3,370 · walkway
 $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
-- [ ] ~~Ruland U-joints → Belden UJ-SS750x375 — ~$652 saving (RESEARCHED 2026-07-31, ready to adopt).~~
-  `fp-ujoint` = $1,104 (4× Ruland USKC12-6-6-SS @ $276, 3/8" bore, 303 SS, 45°/axis). **Direct drop-in
-  alternative found: Belden UJ-SS750x375** ([MROSupply $112.68](https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/)) —
-  **3/8" (0.375") bore, 0.75" OD, 45° max angle, 303/416 stainless, pin-and-block friction bearing** (same
-  bearing type + same materials as the Ruland it replaces; 175 in-lbf rated / 875 ult — the corner is a
-  *static positioning* joint, near-zero torque). Matches every hard requirement: 3/8" bore ✓, 45° (covers
-  the ±40° tilt) ✓, stainless for the chloride-free cyanotype wash ✓. Backlash is a non-issue — at **f/1088
-  the depth of field makes mm-scale film-plane position error optically irrelevant** (why we relaxed the
-  zero-backlash worry). **4 × $112.68 = $450.72 vs $1,104 → saves ~$653.** Watch: setscrew bore (vs Ruland
-  keyway+clamp — fine at low torque, or spec the `-K` keyway variant); keep a boot for the wet zone (Belden
-  offers washdown boots, or reuse the `fp-ujoint-boot` concept). Adopt → re-spec `fp-ujoint`, cascade
-  (film §5a... film system, grand), update Sheet 3 / film-plane-mechanism model U-joint callout.
 - [ ] **Ferric ammonium oxalate (AmFe) — $4,026, biggest single cost (sourcing lever, not a switch).**
   `amfe-rich/standard/lean` = $2,196+$1,098+$732 @ $64.20/kg. Core chemistry — the lever is bulk/cheaper
   supplier or trimming the *rich* coat tier, not a material swap. Even 15% ≈ $600. Follow-up: chemistry

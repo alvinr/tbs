@@ -2150,7 +2150,7 @@ def sheet10():
 #   Sheet 3; the ply→frame welded-tab + captive tee-nut is Sheet 13.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet11():
-    BW, BH = 610, 1220                      # Fan-B mount band (18mm exterior ply)
+    from tbs_constants import FAN_B_BAND_W as BW, FAN_B_BAND_H as BH   # single source: Plywood Cut Sheets
     FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
 
     fig, ax = plt.subplots(figsize=(11, 13))

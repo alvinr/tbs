@@ -27,12 +27,15 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.patches import Circle, Rectangle
 
 sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
     DIAGRAMS_DIR,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID,
     PANEL_FLOOR_GAP, PANEL_FLOOR_GAP_SIDE,
     PWP_PANEL_X0, PWP_PANEL_X1, SHELF_W, SHELF_DEPTH,
+    FAN_B_BAND_W, FAN_B_BAND_H,
 )
+import generate_corridor_water_panel as cwp                    # noqa: E402  (corridor ply piece dims — single source)
 from tbs_drawing import draw_notes, leader                     # noqa: E402
 from tbs_title_block import title_block                        # noqa: E402
 
@@ -55,6 +58,18 @@ BAFFLE_W = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L         # 1056 — fixed center
 APR_CORNER_H = PANEL_FLOOR_GAP_SIDE                      # 282  — corner floor gap the aprons/stub close
 APR_CENTER_H = PANEL_FLOOR_GAP                           # 217  — center floor gap the baffle closes
 
+# ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model (single source:
+#    the cut sizes TRACK the model and can't drift). yw = corridor clear Yd width; bw = board X length.
+_YW = round((cwp.YD_FAR - cwp.S) - (cwp.YD_NEAR + cwp.S))        # 168  — shirt + rear-panel face width
+_BW = round(cwp.SB_X1 - cwp.SB_X0)                              # 399  — pump-run support board length
+BACK_H = round(cwp.PANEL_TOP_Z - cwp.S)                        # 1849 — rear backing board height
+SHIRT_H = round(cwp.PANEL_TOP_Z - cwp.SHIRT_Z0)               # 1575 — shirt height (top at the Fan-A window)
+SPINE_W = round(cwp.SPINE_X_END - cwp.BACK_X)                 # 456  — drain-riser spine length
+SPINE_H = round((cwp.TOP_Z - cwp.S) - cwp.SPINE_Z0)          # 1965 — drain-riser spine height
+PUMPRUN_FAR_H = round(cwp.SB_FAR_Z[1] - cwp.SB_FAR_Z[0])       # 420
+PUMPRUN_NEAR_H = round(cwp.SB_NEAR_Z[1] - cwp.SB_NEAR_Z[0])    # 420
+PUMPRUN_UP_H = round(cwp.SB_NEAR_UP_Z[1] - cwp.SB_NEAR_UP_Z[0])  # 690
+
 STOCK_8x4 = (1219, 2438)     # nominal 4'×8' sheet
 STOCK_HD = (1220, 2440)      # Home-Depot-stated 4'×8' for the SANDEPLY / UV-white lines
 
@@ -65,14 +80,14 @@ GROUPS = [
     dict(gid="A", thick=18, grade='23/32" RTD Southern Yellow Pine exterior sheathing',
          sku="Home Depot 303564747", stock=STOCK_8x4, parts=[
         dict(key="corridor-panel-ply-18", stock=STOCK_8x4, pieces=[
-            ("Corridor rear backing board", 168, 1849, 1, "IBC-corridor plumbing panel rear face"),
-            ("Drain-riser spine", 456, 1966, 1, "waste-riser / X-port P-clip spine"),
-            ("Pump-run side board (far)", 399, 420, 1, "#29 pump-run pipe support"),
-            ("Pump-run side board (near-lo)", 399, 420, 1, "#29 pump-run pipe support"),
-            ("Pump-run side board (near-hi)", 399, 690, 1, "#29 pump-run pipe support"),
+            ("Corridor rear backing board", _YW, BACK_H, 1, "IBC-corridor plumbing panel rear face"),
+            ("Drain-riser spine", SPINE_W, SPINE_H, 1, "waste-riser / X-port P-clip spine"),
+            ("Pump-run side board (far)", _BW, PUMPRUN_FAR_H, 1, "#29 pump-run pipe support"),
+            ("Pump-run side board (near-lo)", _BW, PUMPRUN_NEAR_H, 1, "#29 pump-run pipe support"),
+            ("Pump-run side board (near-hi)", _BW, PUMPRUN_UP_H, 1, "#29 pump-run pipe support"),
         ]),
         dict(key="corridor-panel-ply-25", stock=STOCK_8x4, pieces=[
-            ("Pump-mount shirt", 610, 1650, 1, "backs pumps P-01..P-05 on the corridor panel"),
+            ("Pump-mount shirt", _YW, SHIRT_H, 1, "backs pumps P-01..P-05 on the corridor panel (vertical column)"),
             ("Shirt standoff cleat strip", 40, 720, 1, "one 40×720 strip, cut to 6× 120mm shirt-to-rear-panel standoff blocks"),
         ]),
         dict(key="pinhole-panel-ply-18", stock=STOCK_8x4, npieced=2, pieces=[
@@ -85,7 +100,7 @@ GROUPS = [
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
-            ("Fan-B mount band", 610, 1220, 1, "hinged-panel near-corner rigid fan/duct mount band (rotated 90°, nests on a pinhole-backing sheet)"),
+            ("Fan-B mount band", FAN_B_BAND_W, FAN_B_BAND_H, 1, "hinged-panel near-corner rigid fan/duct mount band (rotated 90°, nests on a pinhole-backing sheet)"),
             ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
         ]),
     ]),
@@ -102,7 +117,9 @@ GROUPS = [
 
 # dims that DERIVE from a tbs_constants value (shown with a ᴰ marker in the schedule)
 _DERIVED = {PINHOLE_W, PINHOLE_HALF, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
-            APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH}
+            APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH,
+            _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
+            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W, FAN_B_BAND_H}
 
 CUT_MARGIN = 6       # saw kerf reserved between adjacent pieces (mm)
 FIT_TOL = 5          # plywood cut tolerance — a piece up to 5mm over a free rect still fits (a full-width

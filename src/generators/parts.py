@@ -195,7 +195,7 @@ PARTS: list[Part] = [
     Part("corridor-panel-ply-25", "Pump-mount shirt ply (23/32\" exterior)", "timber-ply",
          "water", 1, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
-         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4\". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted.',
+         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~168×1,575 cut, a tall vertical column in the 168mm-clear corridor) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4\". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted.',
          panel="Corridor"),
     Part("pinhole-panel-ply-18", "Pinhole-wall filter-skid backing ply (23/32\" exterior)", "timber-ply",
          "water", 2, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",

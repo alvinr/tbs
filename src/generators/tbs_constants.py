@@ -328,6 +328,8 @@ PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
 PANEL_SKIN_T      = 3.18  # panel skin thickness (mm) — 1/8" black HDPE (US Plastics 46684; rev11 was 18mm ply, nom 1/8″ HDPE), U-channel set
 PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only — reserved (spec; band drawn with a literal)
 PANEL_FAN_BAND_Z  = 1225  # ply band top Z (AFF) = FAN_B_H(700) + FAN_DIAM/2(75) + 450; literal — fan consts defined below (rises with the 2026-08-31 Fan B +100mm raise)
+FAN_B_BAND_W      = 610   # Fan B mount band CUT width (mm) — spans the near-corner zone (single source: hingepanel Sheet 11 + Plywood Cut Sheets)
+FAN_B_BAND_H      = 1220  # Fan B mount band CUT height (mm) — bottom of leaf up toward PANEL_FAN_BAND_Z
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
 PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width

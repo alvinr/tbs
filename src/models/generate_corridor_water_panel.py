@@ -290,6 +290,13 @@ def tote_restraint():
     return "\n".join(p)
 
 
+# Cut-defining Z/X bounds of the ply shirt + drain-riser spine — named so the Plywood Cut Sheets
+# generator derives the same piece sizes (single source; it can't drift from this model).
+SHIRT_Z0    = 325    # pump-shirt bottom Z (raised to clear the brown P-05 inlet elbow at z298-318)
+SPINE_Z0    = 280    # drain-riser spine bottom Z (clears the low waste pickup z247-268)
+SPINE_X_END = 5560   # drain-riser spine far X (past the X1 cross at 5530)
+
+
 def rear_panel():
     """The 18mm marine-ply REAR panel (recessed into the back-wall opening, flush with the back
     posts' −X inside face) PLUS the 18mm ply 'shirt' the pumps/ACC clamp to — a backing hard
@@ -320,8 +327,8 @@ def rear_panel():
                      EQT, yw, ph, color=ov.C_PLY, holes=rear_holes, hole_axis="x")]
     # 18mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the chase between the bodies and the rear frame.
-    p.append(ov.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, 325,   # SHIRT_X: module constant
-                         EQT, yw, PANEL_TOP_Z - 325, color=ov.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
+    p.append(ov.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, SHIRT_Z0,   # SHIRT_X: module constant
+                         EQT, yw, PANEL_TOP_Z - SHIRT_Z0, color=ov.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
@@ -335,8 +342,8 @@ def rear_panel():
     # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).
-    p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, 280,
-                         5560 - BACK_X, 18, (TOP_Z - S) - 280, color=ov.C_PLY,
+    p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, SPINE_Z0,
+                         SPINE_X_END - BACK_X, 18, (TOP_Z - S) - SPINE_Z0, color=ov.C_PLY,
                          holes=spine_holes, hole_axis="y"))   # −Yd face at 1206 = the grey
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
     #   z247-268).  Extended +X to 5560 (past the X1 cross at 5530) and UP to the rear-panel top

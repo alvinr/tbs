@@ -37,21 +37,15 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - ✅ **spray_bar Sheet 7 `+192%` off-left FIXED (2026-09-28)** — it was a hidden DUPLICATE beam-section label
     on the nozzle panel (not the `CARRIAGE_YD_CENTER` hypothesis); dropped it (beam is called out on ax_cf +
     dimensioned on ax_nz). This bullet stays only as the note that the anomaly is resolved; delete on next prune.
-- [~] **Consolidated plywood cut-sheet generator — BUILT 2026-09-30.** `generate_plywood_cutsheets.py` +
-  `plywood-cut-sheets.md`: a plywood registry (every `timber-ply` part, cut dims single-sourced from
-  `tbs_constants` where geometry-driven, else spec/report literals; cost/SKU keyed to `parts.py`) → a schedule
-  sheet + a per-stock nesting sheet, grouped by grade/thickness. Registered + gates green. **MAXRECTS optimizer
-  + 18mm standardization dropped the stock from 8 part-by-part → 5 sheets** (aprons re-graded 12→18mm into the
-  group-A SYP offcut; EP backboard onto the chem-shelf UV-white sheet; −$78). Drifts (b) reconciled (18mm
-  settle, shelf 600×225, Fan-B 1225). **Residual (open):**
-  (a) refactor each *consumer* generator to import the shared piece dims from the registry instead of its own
-  literal (the "so each consumer references it" half — not yet done);
-  (c) lighttrap.skp apron 12→18mm re-send — DONE 2026-10-01 (part of the stale-.skp batch below).
-- [x] **Stale `.skp` re-send batch — DONE 2026-10-01.** All 5 flagged models (`lighttrap` [apron 12→18mm],
-  then `water`, `ibc-stack`, `construction`, `overview` [residue of the 2026-09-30 corner-zone/sump changes])
-  were re-sent focus-first, saved, pushed to Sketchfab (in-place PUT, same UIDs), manifest-refreshed, and
-  committed. `manifest.py --check` → all 11 model hashes current; the publish gate (`lint.py --verify-all`)
-  clears. `water` also cleared its long-pending Sketchfab re-upload.
+- [~] **Consolidated plywood cut-sheet generator — BUILT 2026-09-30, cut-optimized + published 2026-10-01.**
+  `generate_plywood_cutsheets.py` + `plywood-cut-sheets.md`: a plywood registry (every `timber-ply` part, cut
+  dims single-sourced from `tbs_constants` where geometry-driven, else spec/report literals; cost/SKU keyed to
+  `parts.py`) → a schedule sheet + a per-stock nesting sheet. **18mm standardization + Fan-B PT→SYP re-grade +
+  a 5mm-tolerance guillotine packer dropped the stock from 8 part-by-part → 4 sheets (−$148).** The nest is
+  guillotine-cuttable (90° edge-to-edge), with numbered saw-cut lines + per-sheet cut counts (4 sheets, 45 cuts).
+  Sheets lettered A–D; cleats = one cut-to-length strip. Drifts reconciled (18mm, shelf 600×225, Fan-B 1225).
+  **Residual (open):** (a) refactor each *consumer* generator to import the shared piece dims from the registry
+  instead of its own literal (the "so each consumer references it" half — not yet done).
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking

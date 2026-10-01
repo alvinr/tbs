@@ -46,17 +46,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   settle, shelf 600×225, Fan-B 1225). **Residual (open):**
   (a) refactor each *consumer* generator to import the shared piece dims from the registry instead of its own
   literal (the "so each consumer references it" half — not yet done);
-  (c) **lighttrap.skp re-send PENDING** — `generate_lighttrap_model.py` apron thickness 12→18mm is committed as
-  source but the .skp is stale until re-sent (Alvin opens lighttrap → `--send` → he saves → I push_sketchfab →
-  `manifest.py --update`). Fold it in with the other stale-.skp re-sends (see the manifest note below).
-- [ ] **Stale `.skp` re-send batch — `manifest.py --check` flags 5 models (2026-09-30).** `overview`,
-  `ibc-stack`, `construction`, `water`, `lighttrap` all compute stale vs source. `lighttrap` is the new one
-  (apron 12→18mm, this commit). The other 4 were stale before this task — residue of the 2026-09-30 geometry
-  changes (`PANEL_CORNER_T` stepped corner/Fan-B envelope on the cargo panel; tray sump → `PWP_FILTER_YD`=104);
-  `water` was already known-pending (Sketchfab re-upload). The 2026-09-28 note claiming "all hashes current" is
-  now out of date. **Action (focus-model-first, interactive):** for each — Alvin opens the model → I `--send` →
-  he saves + I `push_sketchfab` → `manifest.py --update` → commit the `.skp` + `dependencies.yml`. Verify each
-  regenerates only the intended geometry (not float noise; regen `.rb` with `/usr/bin/python3`).
+  (c) lighttrap.skp apron 12→18mm re-send — DONE 2026-10-01 (part of the stale-.skp batch below).
+- [x] **Stale `.skp` re-send batch — DONE 2026-10-01.** All 5 flagged models (`lighttrap` [apron 12→18mm],
+  then `water`, `ibc-stack`, `construction`, `overview` [residue of the 2026-09-30 corner-zone/sump changes])
+  were re-sent focus-first, saved, pushed to Sketchfab (in-place PUT, same UIDs), manifest-refreshed, and
+  committed. `manifest.py --check` → all 11 model hashes current; the publish gate (`lint.py --verify-all`)
+  clears. `water` also cleared its long-pending Sketchfab re-upload.
 - [ ] **3D single-owner dedup pass (2026-08-18) — cleaned 12 of 17 cross-file duplicate emitters; 3 real
   drifts SURFACED, blocked on decisions.** Built the `lint.py` ratchet gate (no NEW cross-file duplicate
   emitter) and consolidated 4 clusters to a single owning builder each: **electrical** (em owns cable trunking

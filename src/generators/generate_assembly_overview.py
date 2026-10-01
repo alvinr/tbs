@@ -288,7 +288,7 @@ ax.text(PH_X, PH_H - 300, f"Optical axis (into page)\nFocal length {C_WID}mm",
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
 # Fan A — EXHAUST: sealed end wall (X=C_LEN), Yd=FAN_A_YD=1181 (below X1, in corridor), H=FAN_A_H=2000mm
-# Fan B — INTAKE: cargo door panel (X=0), low position (H=FAN_B_H=600mm)
+# Fan B — INTAKE: cargo door panel (X=0), low position (H=FAN_B_H=700mm)
 FAN_HH = DUCT_HEIGHT  # duct opening height (200mm) — same as hatch block height
 ax.add_patch(mpatches.Rectangle((C_LEN - 60, FAN_A_H - FAN_HH // 2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
@@ -628,7 +628,7 @@ ax2.text(mx((TRAY_X0 + TRAY_X1) / 2), TRAY_H / 2,
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
 # Fan A (EXHAUST) at X=C_LEN (left edge in this view), H=FAN_A_H=2200 (above IBC)
-# Fan B (INTAKE) at X=0 (right edge), H=FAN_B_H=600
+# Fan B (INTAKE) at X=0 (right edge), H=FAN_B_H=700
 FAN_HH = DUCT_HEIGHT
 ax2.add_patch(mpatches.Rectangle((0, FAN_A_H - FAN_HH//2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.8, zorder=6))

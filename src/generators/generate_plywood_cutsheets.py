@@ -33,7 +33,7 @@ from tbs_constants import (                                    # noqa: E402
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID,
     PANEL_FLOOR_GAP, PANEL_FLOOR_GAP_SIDE,
     PWP_PANEL_X0, PWP_PANEL_X1, SHELF_W, SHELF_DEPTH,
-    FAN_B_BAND_W, FAN_B_BAND_H,
+    FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W,
 )
 import generate_corridor_water_panel as cwp                    # noqa: E402  (corridor ply piece dims — single source)
 from tbs_drawing import draw_notes, leader                     # noqa: E402
@@ -100,7 +100,8 @@ GROUPS = [
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
-            ("Fan-B mount band", FAN_B_BAND_W, FAN_B_BAND_H, 1, "hinged-panel near-corner rigid fan/duct mount band (nests on a pinhole-backing sheet)"),
+            ("Fan-B swinging mount panel", FAN_B_BAND_W, FAN_B_BAND_H, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
+            ("Fan-B fixed side part", FAN_B_FIXED_W, FAN_B_BAND_H, 1, "fixed near-corner side part (stays on the pinhole side)"),
             ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
         ]),
     ]),
@@ -119,7 +120,7 @@ GROUPS = [
 _DERIVED = {PINHOLE_W, PINHOLE_HALF, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
             APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH,
             _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
-            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W, FAN_B_BAND_H}
+            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W}
 
 CUT_MARGIN = 6       # saw kerf reserved between adjacent pieces (mm)
 FIT_TOL = 5          # plywood cut tolerance — a piece up to 5mm over a free rect still fits (a full-width

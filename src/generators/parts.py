@@ -1000,13 +1000,15 @@ PARTS: list[Part] = [
          "panel", 4, "sheet", 123.34, 123.34, "US Plastics", "TAP Plastics", part_no="46684",
          url="https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705",
          spec="Panel skins, both faces (~12 m², 4× 4×8 ft sheets). 1/8\" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet."),
-    Part("panel-fanb-ply", "Fan B mount band + cooler base ply (23/32\" exterior SYP, from the sheets A–C offcut)", "timber-ply",
+    Part("panel-fanb-ply", "Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32\" exterior SYP, from the sheets A–C offcut)", "timber-ply",
          "panel", 1, "cut from the SYP sheets A–C", 0.0, 0.0, "shared (Plywood Cut Sheets)", part_no="303564747", url="https://www.homedepot.com/p/303564747",
-         spec='23/32" (18mm) RTD Southern Yellow Pine exterior sheathing. The Fan B mount band (653×943mm, the '
-              'near-corner zone up to the band top) AND the cooler stowage base plate (600×350) both NEST INTO THE '
-              'SYP OFFCUT (Plywood Cut Sheets, sheets A–C), so no separate sheet is bought (was a dedicated ¾" PT '
-              'sheet, retired 2026-09-30). STANDARD exterior per the project rule — PT was over-spec for a dry, '
-              'vented mounting band. Seal cut edges.'),
+         spec='23/32" (18mm) RTD Southern Yellow Pine exterior sheathing. The Fan B near corner is THREE ply pieces: '
+              'the SWINGING fan-mount panel (473×943, Yd180→653, carries the Ø150 fan CENTERED, travels with the hinge '
+              'leaf), the FIXED side part (180×943, Yd0→180, stays on the pinhole side), and the fold-down apron '
+              '(billed separately as panel-bottom-apron). Those two upright pieces PLUS the cooler stowage base plate '
+              '(600×350) all NEST INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C), so no separate sheet is bought '
+              '(was a dedicated ¾" PT sheet, retired 2026-09-30). STANDARD exterior per the project rule — PT was '
+              'over-spec for a dry, vented mount. Seal cut edges.'),
     Part("panel-corner-stiffener", '1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid', "aluminum",
          "panel", 4, "ea", 12.20, 12.20, "Grainger", part_no="2EYP1", url="https://www.grainger.com/product/2EYP1",
          spec="Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1\"×1\"×1/8\" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8\" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (2026-07-29)."),

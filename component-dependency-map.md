@@ -161,7 +161,7 @@ B2 punch-out bay.*
 | Fan A center height AFF (below X1, in corridor) | <!-- BEGIN cdm:FAN_A_H -->2,000<!-- END cdm:FAN_A_H -->mm | `FAN_A_H` |
 | Fan B center height AFF (low) | <!-- BEGIN cdm:FAN_B_H -->700<!-- END cdm:FAN_B_H -->mm | `FAN_B_H` |
 | Fan A Yd position (below the X1 fill port, plumbing corridor) | <!-- BEGIN cdm:FAN_A_YD -->1,181<!-- END cdm:FAN_A_YD -->mm | `FAN_A_YD` |
-| Fan B Yd position (near pinhole wall, near corner — rev9/B2 swap) | <!-- BEGIN cdm:FAN_B_YD -->365<!-- END cdm:FAN_B_YD -->mm | `FAN_B_YD` |
+| Fan B Yd position (near pinhole wall, near corner — rev9/B2 swap) | <!-- BEGIN cdm:FAN_B_YD -->416.5<!-- END cdm:FAN_B_YD -->mm | `FAN_B_YD` |
 | Baffle duct depth | <!-- BEGIN cdm:DUCT_DEPTH -->300<!-- END cdm:DUCT_DEPTH -->mm | `DUCT_DEPTH` |
 | Baffle duct height | <!-- BEGIN cdm:DUCT_HEIGHT -->200<!-- END cdm:DUCT_HEIGHT -->mm | `DUCT_HEIGHT` |
 | Fan A shadow margin (from cone) | <!-- BEGIN cdm:FAN_A_MARGIN -->869<!-- END cdm:FAN_A_MARGIN -->mm | `FAN_A_MARGIN` |

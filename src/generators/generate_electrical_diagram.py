@@ -721,7 +721,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Fan B — INTAKE: LEFT short wall = cargo door panel (X=0), Yd=365mm near pinhole wall (near corner — rev9/B2 swap), LOW
+    # Fan B — INTAKE: LEFT short wall = cargo door panel (X=0), Yd=FAN_B_YD (centered on the swinging Fan-B panel), near corner, LOW
     FB_X = OX + wt/2
     FB_Y = OY + wt + FAN_B_YD * S_yd
     ax.add_patch(plt.Circle((FB_X, FB_Y), 110,

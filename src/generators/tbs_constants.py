@@ -1134,10 +1134,12 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # The center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP. See hinged-panel Sheet 16.
 PANEL_FLOOR_GAP_SIDE = WALKWAY_BRACKET_H + (PANEL_FLOOR_GAP - (WALKWAY_H - WALKWAY_GRATE_T))  # 282
 PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                                  # corner step-up
-# Fan B mount band CUT size — DERIVED to match the overview 3D band (single source: hingepanel Sheet 11
-# + Plywood Cut Sheets). Spans the near-corner zone width, from the floor-gap line up to the band top.
-FAN_B_BAND_W = PANEL_CORNER_YD_L                          # 653 — band width = near-corner zone (Yd0→653)
-FAN_B_BAND_H = PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE    # 943 — band height = floor-gap line (282) → band top (1225)
+# Fan B near corner — split into a SWINGING plywood mount panel (carries the fan, travels with the leaf)
+# and a FIXED plywood side part (stays on the pinhole side). Both run floor-gap line → band top; the swing
+# cut (PANEL_CUT_YD) divides them. Single source for hingepanel Sheet 11 + lighttrap + overview + the cut sheet.
+FAN_B_BAND_W = PANEL_CORNER_YD_L - PANEL_CUT_YD           # 473 — SWINGING mount-panel width (Yd180→653); fan centered on it
+FAN_B_FIXED_W = PANEL_CUT_YD                             # 180 — FIXED side-part width (Yd0→180, to the pinhole side)
+FAN_B_BAND_H = PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE    # 943 — height (both pieces) = floor-gap line (282) → band top (1225)
 # Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,
 # IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
 # case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm
@@ -1409,7 +1411,7 @@ FAN_B_H     = 700    # fan B center height AFF (mm — LOW; intake near floor). 
 # wall — its conduit then runs along that wall; only a flex whip (with swing slack)
 # bridges to the swinging panel so it follows the ~56° transport rotation.
 FAN_A_YD    = EXT_FILL_YD  # = 1181mm — directly BELOW the X1 fill port, in the 270mm plumbing corridor (clear full-height of the 1000L stack; relocated from Yd1996, which the taller 1000L totes buried — see ibc-reconfig-v2)
-FAN_B_YD    = 365          # mm — near the pinhole wall, in the near corner zone clear of the drum. FIXED (Fan A/IBC clash was resolved here); decoupled from the drum Ø on the Ø900→Ø800 shrink — the smaller drum (near edge 781) only gives it MORE clearance.
+FAN_B_YD    = (PANEL_CUT_YD + PANEL_CORNER_YD_L) / 2   # 416.5 — CENTERED on the swinging Fan-B mount panel (Yd PANEL_CUT_YD→PANEL_CORNER_YD_L); derived so the fan tracks the panel.
 
 # Baffle duct (one per fan, welded galvanized steel)
 # Fan A: duct extends into container interior from wall

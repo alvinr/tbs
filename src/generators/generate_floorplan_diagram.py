@@ -249,7 +249,7 @@ def floor_plan():
     # ── Wall penetrations ─────────────────────────────────────────────────────
     # Fan A — EXHAUST: sealed end wall (X=C_LEN), Yd=FAN_A_YD=1181mm (below X1, in plumbing corridor), H=FAN_A_H=2000mm
     penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(130, -30))
-    # Fan B — INTAKE: cargo door panel (X=0), near pinhole wall / near corner zone (Yd=FAN_B_YD=365mm, rev9/B2 swap), LOW (H=600mm)
+    # Fan B — INTAKE: cargo door panel (X=0), near pinhole wall / near corner zone (Yd=FAN_B_YD (centered on the swinging Fan-B panel), LOW (H=FAN_B_H=700mm)
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(-130, -30))
 
     # ── Hinged panel — transport position (ghost, SWUNG ~56° about the pivot) ──

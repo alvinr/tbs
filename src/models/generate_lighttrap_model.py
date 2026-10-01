@@ -1415,8 +1415,10 @@ def generate_ruby():
         # aprons, so the fold-down flap top meets it flush (no overlap) and it clears the walkway cantilever.
         # near corner skins EXTENDED inboard from NEW_YD_L (653) to the near bay wall / cage face
         # (DRUM_CAGE_YD_L 700) so the panel HDPE BUTTS the bay wall — no 47mm slot (2026-09-02, item 2).
-        ruby_box("Fan B mount band (18mm ply)", 0, CUT, CORNER_BOT, 40,
-                 ov.DRUM_CAGE_YD_L - CUT, ov.PANEL_FAN_BAND_Z - CORNER_BOT, color=C_PLY, alpha=0.5),
+        # SWINGING Fan-B mount panel: Yd CUT→PANEL_CORNER_YD_L (473 wide, fan centered on it), floor-gap
+        # line → band top (943), matching the overview band (single source). HDPE skin above butts the bay wall.
+        ruby_box("Fan B mount band (18mm ply)", 0, CUT, ov.PANEL_FLOOR_GAP_SIDE, 40,
+                 ov.PANEL_CORNER_YD_L - CUT, ov.PANEL_FAN_BAND_Z - ov.PANEL_FLOOR_GAP_SIDE, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{ov.DRUM_CAGE_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
                  ov.DRUM_CAGE_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
         # swing panel + its top seal now run to the PIVOT line (the pivot-corner plywood travels with it).

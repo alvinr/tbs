@@ -259,7 +259,7 @@ def sheet1():
             style="italic", zorder=5)
 
     # ── Fans — shown on their correct end walls at correct heights ───────────────
-    # Fan B (intake):  cargo door panel (X=0),   LOW  H=FAN_B_H=600mm
+    # Fan B (intake):  cargo door panel (X=0),   LOW  H=FAN_B_H=700mm
     # Fan A (exhaust): sealed end wall (X=C_LEN), Yd=FAN_A_YD (below X1, corridor), H=FAN_A_H
     FAN_HH = DUCT_HEIGHT   # hatch block height = duct opening height (200mm)
     hatch_rect(ax, -WALL_T, FAN_B_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan B left wall
@@ -478,7 +478,7 @@ def sheet2():
 
     # ── Ventilation — Fan B (intake) only: this is the cargo door panel end (X=0) ──
     # Fan A (exhaust) is on the opposite end wall (X=C_LEN) — not shown in this view.
-    # Fan B: near pinhole wall, near corner zone (Yd=FAN_B_YD=365mm, rev9/B2 swap), LOW position (H=FAN_B_H=600mm).
+    # Fan B: near pinhole wall, near corner zone (Yd=FAN_B_YD (centered on the swinging Fan-B panel), LOW position (H=FAN_B_H=700mm).
     FAN_R2 = FAN_DIAM // 2
     ax.add_patch(plt.Circle((FAN_B_YD, FAN_B_H), FAN_R2,
                  facecolor=C_FILL_INT, edgecolor=C_DIM, linewidth=1.0,

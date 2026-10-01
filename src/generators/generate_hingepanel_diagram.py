@@ -2151,7 +2151,7 @@ def sheet10():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet11():
     from tbs_constants import (FAN_B_BAND_W as BW, FAN_B_BAND_H as BH,   # single source: Plywood Cut Sheets
-                               FAN_B_YD, FAN_B_H, PANEL_FLOOR_GAP_SIDE)
+                               FAN_B_YD, FAN_B_H, PANEL_FLOOR_GAP_SIDE, PANEL_CUT_YD)
     FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
 
     fig, ax = plt.subplots(figsize=(11, 13))
@@ -2160,15 +2160,15 @@ def sheet11():
     ax.set_xlim(-360, BW + 560)
     ax.set_ylim(-560, BH + 240)
 
-    ax.text(BW / 2, BH + 150, "FAN-B MOUNT BAND — FABRICATION", ha="center", fontsize=11,
+    ax.text(BW / 2, BH + 150, "FAN-B SWINGING MOUNT PANEL — FABRICATION", ha="center", fontsize=11,
             fontweight="bold", color=C_OUT, **FONT)
-    ax.text(BW / 2, BH + 72, "18mm exterior ply · fan cutout + frame-tab holes · stock + cut nesting → Plywood Cut Sheets",
+    ax.text(BW / 2, BH + 72, "18mm exterior ply · fan CENTERED · swings with the leaf · stock + cut nesting → Plywood Cut Sheets",
             ha="center", fontsize=6.6, color=C_DIM, **FONT)
     # the band (drawn to scale, standalone — NOT the 4'×8' cut sheet)
     ax.add_patch(Rectangle((0, 0), BW, BH, fc=C_WOOD, ec=C_OUT, lw=1.5, alpha=0.55, zorder=3))
-    # Ø150 fan cutout + 4 bolt holes — located to MATCH the 3D overview band: fan at its wall height
-    # (FAN_B_H) and near-corner Yd (FAN_B_YD), measured from the band's bottom-left corner.
-    fcx, fcy = FAN_B_YD, FAN_B_H - PANEL_FLOOR_GAP_SIDE   # 365 from edge · 418 from bottom (fan CL = Z700 AFF)
+    # Ø150 fan cutout + 4 bolt holes — the fan is CENTERED on this swinging panel: horizontal = the panel
+    # center (FAN_B_YD − PANEL_CUT_YD = BW/2), vertical = the fan's wall height (FAN_B_H − floor-gap line).
+    fcx, fcy = FAN_B_YD - PANEL_CUT_YD, FAN_B_H - PANEL_FLOOR_GAP_SIDE   # 236.5 (center) · 418 from bottom
     ax.add_patch(Circle((fcx, fcy), FR, fc=BG, ec=C_OUT, lw=1.3, zorder=6))
     ax.text(fcx, fcy, f"Ø{int(FAN_DIAM)}\nfan\ncutout", ha="center", va="center", fontsize=6.6, color=C_DIM, **FONT, zorder=7)
     for k in range(4):
@@ -2188,16 +2188,15 @@ def sheet11():
     draw_dim_h(ax, 0, fcx, fcy - FR - 95, f"{int(fcx)}mm (fan CL)", offset=10, fs=6.0, font=FONT, above=False)
 
     draw_notes(ax, [
-        "FAN-B BAND",
-        "• Cut piece + stock nesting → the Plywood Cut Sheets doc (18mm exterior; nests with the corridor / pinhole panels).",
-        "• Fan-B fan + duct mount assembly → Ventilation Sheet 3.",
-        "• Ply → frame welded-tab + captive tee-nut → Sheet 13.",
-    ], -340, -110, spacing=70, fs=6.4, title_fs=7.0, width=1150, wrap=68,
+        "FAN-B SWINGING MOUNT PANEL",
+        "• 3 ply pieces: this swinging fan-mount panel + a fixed side part (pinhole side) + the fold-down apron → Plywood Cut Sheets.",
+        "• Fan CENTERED; fan/duct → Ventilation Sheet 3; ply→frame tee-nut → Sheet 13.",
+    ], -340, -150, spacing=64, fs=6.4, title_fs=7.0, width=1420, wrap=96,
        color=C_OUT, title_color=C_OUT, border_color=C_DIM, font=FONT)
 
     title_block(ax, "SHEET 11 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FAN-B MOUNT BAND — FABRICATION (fan cutout + frame-tab holes)",
+                subtitle="FAN-B SWINGING MOUNT PANEL — FABRICATION (fan centered + frame-tab holes)",
                 scale_note="DRAWN TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,

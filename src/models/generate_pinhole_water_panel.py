@@ -617,7 +617,7 @@ def skid_plumbing(part="all"):
     p04_in = cp.pump_in(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3220,130,1312)
     sfoot = (ov.PROC_TRAY_DRAIN_X, SROW_YD, sfz)                         # (2399, 104, 3) — strainer in the well, DIRECTLY under the riser (Yd104 also clears the blue trunk at Yd69)
     riser_top_z = ov.WALKWAY_H                                          # 140 — reach the wall at the walkway deck level (the −Yd turn), then rise up the wall before turning to the panel
-    wall_run_z  = 230                                                   # along-wall horizontal height — ABOVE the near-walkway cantilever wall-plates (top Z200) so neither the pipe nor its clips foul a cantilever
+    wall_run_z  = ov.SUMP_SUCTION_WALL_RUN_Z                            # along-wall horizontal height — ABOVE the near-walkway cantilever wall-plates (top Z200) so neither the pipe nor its clips foul a cantilever (single-sourced; the pinhole-wall elevation reads the same constant)
     p.append(ov.ruby_pipe_run("Tray sump -> P-04 suction",
         [sfoot,                                                          # strainer foot at the sump bottom
          (ov.PROC_TRAY_DRAIN_X, SROW_YD, riser_top_z),                   # RISER up through the walkway grate to 150mm above the deck (no tall wall riser)

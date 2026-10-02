@@ -174,22 +174,32 @@ def frame(part="all"):
     if rails:
         for rz in (ft, TOP_Z - S):                         # bottom ring on the plate + top ring, rails BUTT between uprights
             for ux in box_xs:
-                p.append(ov.ruby_box("Frame rail (Yd)", ux, YD_NEAR + S, rz, S, (YD_FAR - S) - (YD_NEAR + S), S, color=ov.C_STEEL))
+                # The FRONT bottom Yd-rail is trimmed shorter (IBC_FRONT_RAIL_H) so its top clears the
+                # corridor pipe band — the brown/grey/blue runs pass under it at the corridor mouth.
+                rh = ov.IBC_FRONT_RAIL_H if (rz == ft and ux == FRONT_X) else S
+                p.append(ov.ruby_box("Frame rail (Yd)", ux, YD_NEAR + S, rz, S, (YD_FAR - S) - (YD_NEAR + S), rh, color=ov.C_STEEL))
             for yd in up_yds:
                 p.append(ov.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
     if posts:
-        # floor feet (150×150×12 plate + 4× M12) under each upright
+        # floor feet (plate + 4× M12) under each upright.  FRONT feet still shift outboard (foot_dx) to
+        # clear the processing-tray basin on the −X side, but the plate's +X (tote-side) overhang is
+        # TRIMMED to the upright's +X face — it no longer runs ~75mm past the upright under the IBC
+        # totes (the residual under the tote is the upright's own footprint, the frame line that
+        # restrains the tote).  Anchor heads BUTT the plate top (shank ends at the plate surface z=ft).
         fp, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_BOLT_PCD // 2   # ft hoisted above (uprights sit on the plate)
         for ux in box_xs:
-            # FRONT feet shift OUTBOARD (plate + anchors) to clear the processing-tray basin; the upright
-            # stays put (still fully on the plate) — plate/anchor spec unchanged, only the X station moves.
-            foot_dx = ov.IBC_FRONT_FOOT_DX if ux == FRONT_X else 0.0
+            front = ux == FRONT_X
+            foot_dx = ov.IBC_FRONT_FOOT_DX if front else 0.0
             for yd in up_yds:
                 cx, cy = ux + S / 2 + foot_dx, yd + S / 2
-                p.append(ov.ruby_box("Foot plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=ov.C_STEEL))
-                for dx in (-bpc, bpc):
+                px0 = cx - fp / 2                                      # −X edge (tray-cleared via foot_dx)
+                px1 = min(cx + fp / 2, ux + S) if front else cx + fp / 2   # trim +X to the upright face (front only)
+                pcx, pxw = (px0 + px1) / 2, px1 - px0
+                bpx = min(bpc, pxw / 2 - 13)                           # X bolt half-spacing that fits the (trimmed) plate
+                p.append(ov.ruby_box("Foot plate", px0, cy - fp / 2, 0, pxw, fp, ft, color=ov.C_STEEL))
+                for dx in (-bpx, bpx):
                     for dy in (-bpc, bpc):
-                        p.append(ov.ruby_bolt("Foot anchor M12", cx + dx, cy + dy, 0, ft + 4, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # anchor into the floor — hex head at the top
+                        p.append(ov.ruby_bolt("Foot anchor M12", pcx + dx, cy + dy, 0, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # hex head BUTTS the plate top
         # REAR-panel mount brackets only (on the back uprights, set back behind the inside face).
         # Drawn as an L-ANGLE (5mm legs, per Plate 5 / Detail D): a horizontal base leg TEK-screwed to the
         # post (J8) + a vertical upstand the rear panel bolts to (J4) — NOT a solid block.

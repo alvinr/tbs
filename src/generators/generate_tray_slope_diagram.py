@@ -59,7 +59,7 @@ def sheet1():
     ax.add_patch(FancyArrow(900, gy, XC - 1350, 0, width=10, head_width=55, head_length=90, color=C_WATER, length_includes_head=True))
     ax.add_patch(FancyArrow(3900, gy, -(XC - 1350), 0, width=10, head_width=55, head_length=90, color=C_WATER, length_includes_head=True))
     ax.add_patch(Circle((XC, gy), 70, facecolor=C_WATER, edgecolor="k", zorder=6))
-    ax.text(XC, YN - 130, "single CENTER pickup\n(P-04 suction pops out of the walkway,\nruns under it to the IBC end)",
+    ax.text(XC, YN - 130, "single CENTER pickup\n(P-04 suction rises through the walkway,\nup the pinhole wall to P-04)",
             ha="center", va="top", fontsize=8.5, color=C_WATER, fontweight="bold")
     ax.text(XC, YN + PROC_TRAY_GUTTER_W + 55, "near-rim GUTTER falls both ways → center", ha="center", fontsize=8.5, color=C_WATER)
     ax.add_patch(Rectangle((SPRAY_BEAM_X_L, 1180 - 20), SPRAY_BEAM_X_R - SPRAY_BEAM_X_L, 40, facecolor=C_BEAM, edgecolor="#111", lw=1.0))

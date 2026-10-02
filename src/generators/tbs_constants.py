@@ -915,6 +915,8 @@ IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
 IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
 IBC_FOOT_BOLT_PCD  = 100   # bolt square pitch on flange (mm) — ±50mm from CL
 IBC_FOOT_BOLT_N    = 4     # anchor bolts per foot
+IBC_FRONT_RAIL_H   = 40    # FRONT bottom Yd-rail height (mm, < the full RHS 50.8) — trimmed so its top
+                           # (foot-plate top + this = 52) clears the corridor pipe band (pipes at Z55+)
 # Film-plane CORNER SEAT — welded wall seat bracket that props each film-plane
 # platform-beam OUTER end at the side wall (renamed from IBC_WBKT_* 2026-08-15:
 # the name misread as the IBC wall hanger, but this is the film-plane corner seat;
@@ -967,8 +969,9 @@ PROC_TRAY_SHIM_H   = 10         # shim strip max height at far rim (mm) = PITCH
 PROC_TRAY_SHIM_W   = 50         # shim strip width (mm) — HDPE flat bar
 PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
 # Low LINE: the near-rim gutter (full width) collects the Yd-only fall and drains inward to a
-# single CENTER pickup well at X=PROC_TRAY_DRAIN_X.  The P-04 suction pops out of the walkway
-# above the pickup, then runs UNDER the walkway to the IBC end to rejoin the ribbon lanes.
+# single CENTER pickup well at X=PROC_TRAY_DRAIN_X.  The P-04 suction rises through the walkway
+# grate, turns to the pinhole wall, rises up the wall clear of the cantilever brackets, then runs
+# along the wall to P-04 on the filter skid (height = SUMP_SUCTION_WALL_RUN_Z below).
 PROC_TRAY_DRAIN_X  = 2386       # FIXED (2026-08-12: kept at 2386 when FP_X_L→260 moved PH_X to 2454 + the
                                # tray center to ~2454 — deliberately NOT re-centered; the 1:200 slope is
                                # fine with the well ~68mm left of center, and re-centering would re-cascade
@@ -983,6 +986,10 @@ PROC_TRAY_SUMP_W   = 180        # center pickup well width in X (mm) — a local
 #   (X=PROC_TRAY_DRAIN_X); hosts the brown P-04 suction strainer, well bottom on the container floor (Z0).
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
+SUMP_SUCTION_WALL_RUN_Z = 230   # P-04 suction along-wall horizontal height (mm) — ABOVE the near-walkway
+                                # cantilever wall-plates (top Z200); the suction rises to this up the wall
+                                # before running +X to P-04. SHARED by the 3D routing + the pinhole-wall
+                                # elevation (single source so the 2D and 3D sump paths can't drift).
 
 # ── Muslin cut to fit the WASHABLE tray area (it is washed flat in the tray) ─────────
 # The muslin is cut NARROWER and SHORTER than the film-plane ACM+frame (see the film-plane §muslin

@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $35 | $70 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,063 | $4,525 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,102 | $4,564 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,848 | $8,120 |
 | 6. Electrical — power, circuits, wiring | $3,363 | $3,428 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,144 | $4,155 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,596** | **~$36,385** |
+| **TOTAL (base build + 50-print run)** | **~$27,635** | **~$36,424** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -399,7 +399,7 @@ indicative low–high estimates — get quotes before ordering.
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
-| [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
+| [3/8" PRE-KEYED 304 SS rotary shaft — U-joint stub shafts (1× 36")](https://www.grainger.com/product/Keyed-Rotary-Shaft-3-8-in-822UN5) (822UN5) | 1 lot | Grainger | film | $52 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $316–$516 |
 | [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1 ea | Metals Depot | spray | $183 |
 | 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | 1 lot | Metal Supermarkets | lightlock | $50–$95 |
@@ -439,7 +439,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $68 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $160 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,383–$5,006** |
+| **steel-structural subtotal** | | | | **$3,421–$5,045** |
 
 ### substrate-fabric
 
@@ -497,11 +497,11 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 19 | aluminum, fasteners-hardware, steel-structural | $2,072–$2,713 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
-| McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,932–$1,940 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
+| McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,919–$1,927 |
 | Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,658–$1,795 |
+| Grainger | 8 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings, steel-structural | $1,677 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |

@@ -755,9 +755,9 @@ PARTS: list[Part] = [
     Part("fp-shaft-support", "McMaster 4040N12 304 shaft support", "bearings-motion",
          "film", 4, "ea", 58, 58, "McMaster-Carr", part_no="4040N12", url="https://www.mcmaster.com/4040N12/",
          spec="Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm."),
-    Part("fp-stub-shaft", '3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)', "steel-structural",
-         "film", 1, "lot", 13, 13, "McMaster-Carr", part_no="89535K87", url="https://www.mcmaster.com/89535K87/",
-         spec='Input + output stub shafts into the U-joint (2/corner ×4 = 8 short stubs, ~60–80mm each ≈ 560–640mm + kerf). ONE 3 ft (914mm) length ($13.25 firm) yields all 8 with margin. Each stub gets a 3/32×3/64 KEYSEAT for the SSNBUJ750x3/8KB keyway bore (fp-ujoint-key) — keyed for anti-rotation, then locked axially by the joint set screw (J3/J4).'),
+    Part("fp-stub-shaft", '3/8" PRE-KEYED 304 SS rotary shaft — U-joint stub shafts (1× 36")', "steel-structural",
+         "film", 1, "lot", 51.58, 51.58, "Grainger", part_no="822UN5", url="https://www.grainger.com/product/Keyed-Rotary-Shaft-3-8-in-822UN5",
+         spec='Input + output stub shafts into the U-joint (2/corner ×4 = 8 short stubs, ~60–80mm each ≈ 560–640mm + kerf). ONE 36" (914mm) PRE-KEYED 3/8" 304 SS rotary shaft (Grainger 822UN5 $51.58, confirmed 2026-10-02) yields all 8 with margin — the CONTINUOUS factory keyway REPLACES the per-stub keyseat milling (J3/J4 keyseat fab step eliminated). The 3/32 key (fp-ujoint-key) sits in this shaft keyway + the SSNBUJ750x3/8KB 3/32×3/64 bore keyway, locked axially by the joint set screw. CONFIRM the 822UN5 keyway width = 3/32in (standard for a 3/8in shaft) to match the joint + key.'),
     # fp-skate DECOMPOSED 2026-07-22 → off-the-shelf rollers/axles + fab carriage plate (mirrors the spray skate)
     Part("fp-skate-roller", "1-1/4\" OD acetal load rollers — Delrin rod (cut ×8)", "bearings-motion",
          "film", 1, "1 ft rod", 10.97, 10.97, "McMaster-Carr", part_no="8576K23",

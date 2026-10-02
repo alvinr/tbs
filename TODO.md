@@ -242,8 +242,8 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6
   cantilever wall-plates, top Z200) → +X along the wall to the P-04 climb; standard P-clips in the
   cantilever gaps, driven by one `wall_run_z` param. `water.skp` re-sent + Sketchfab-pushed; interference
-  clean. **REMAINING:** (a) re-send the shared-builder cascade — **overview, ibc, construction** (all call
-  `skid_plumbing()`) — focus-first, one doc at a time; (b) reconcile the stale Phase-1 prose in
+  clean. Shared-builder cascade re-sent + Sketchfab-pushed + committed: **water · overview · ibc-stack ·
+  construction** (all 4 that call `skid_plumbing()`). **REMAINING:** (b) reconcile the stale Phase-1 prose in
   `water-system-report.md` (lines ~213/215/319 still say "under the walkway to the IBC end") +
   `processing-tray-and-spray-bar.md` §2.3 to the current around-the-wall routing; (c) optionally revisit
   the BV-05 −150 nudge + the ACC-02→BV-05 hump-over now the suction no longer crosses the face.

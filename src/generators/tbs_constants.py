@@ -915,8 +915,11 @@ IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
 IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
 IBC_FOOT_BOLT_PCD  = 100   # bolt square pitch on flange (mm) — ±50mm from CL
 IBC_FOOT_BOLT_N    = 4     # anchor bolts per foot
-IBC_FRONT_RAIL_H   = 40    # FRONT bottom Yd-rail height (mm, < the full RHS 50.8) — trimmed so its top
-                           # (foot-plate top + this = 52) clears the corridor pipe band (pipes at Z55+)
+IBC_FRONT_RAIL_H   = 35    # FRONT bottom Yd-rail height (mm, < the full RHS 50.8) — stays LOW on the foot
+                           # plates but trimmed so its top (12+35=47) clears the lowest corridor pipe (blue at Z50)
+IBC_FRONT_RAIL_W   = 20    # FRONT bottom Yd-rail WIDTH in X (mm, < the full RHS 50.8) — narrowed + centred on
+                           # the foot plates so it runs BETWEEN the two foot-bolt columns (bolts straddle it,
+                           # heads clear for install/torque — no access holes needed)
 # Film-plane CORNER SEAT — welded wall seat bracket that props each film-plane
 # platform-beam OUTER end at the side wall (renamed from IBC_WBKT_* 2026-08-15:
 # the name misread as the IBC wall hanger, but this is the film-plane corner seat;

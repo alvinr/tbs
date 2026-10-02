@@ -167,6 +167,11 @@ def frame(part="all"):
     ft = ov.IBC_FOOT_PLATE_T                               # foot-plate thickness — uprights SIT ON the plate (bottom at ft), top fixed at TOP_Z
     up_yds = (YD_NEAR, YD_FAR - S)
     box_xs = (FRONT_X, BACK_X)
+    # The low front Yd-rail is NARROWED (IBC_FRONT_RAIL_W) and centred on the front foot plates so it runs
+    # BETWEEN the two foot-bolt columns — the bolts straddle it and their heads stay clear (no access holes).
+    _fcx = FRONT_X + S / 2 + ov.IBC_FRONT_FOOT_DX
+    _fpx1 = min(_fcx + ov.IBC_FOOT_PLATE / 2, FRONT_X + S)
+    front_rail_cx = ((_fcx - ov.IBC_FOOT_PLATE / 2) + _fpx1) / 2
     if posts:
         for ux in box_xs:                                  # 4 corner uprights
             for yd in up_yds:
@@ -174,10 +179,12 @@ def frame(part="all"):
     if rails:
         for rz in (ft, TOP_Z - S):                         # bottom ring on the plate + top ring, rails BUTT between uprights
             for ux in box_xs:
-                # The FRONT bottom Yd-rail is trimmed shorter (IBC_FRONT_RAIL_H) so its top clears the
-                # corridor pipe band — the brown/grey/blue runs pass under it at the corridor mouth.
-                rh = ov.IBC_FRONT_RAIL_H if (rz == ft and ux == FRONT_X) else S
-                p.append(ov.ruby_box("Frame rail (Yd)", ux, YD_NEAR + S, rz, S, (YD_FAR - S) - (YD_NEAR + S), rh, color=ov.C_STEEL))
+                # The FRONT bottom Yd-rail is LOW + trimmed (IBC_FRONT_RAIL_H clears the Z50 blue) and NARROW
+                # (IBC_FRONT_RAIL_W), centred on the foot plates so it runs between the two bolt columns —
+                # the foot bolts straddle it with the heads clear (no access holes, no riser-corridor clash).
+                front_bot = rz == ft and ux == FRONT_X
+                rx, rw, rh = (front_rail_cx - ov.IBC_FRONT_RAIL_W / 2, ov.IBC_FRONT_RAIL_W, ov.IBC_FRONT_RAIL_H) if front_bot else (ux, S, S)
+                p.append(ov.ruby_box("Frame rail (Yd)", rx, YD_NEAR + S, rz, rw, (YD_FAR - S) - (YD_NEAR + S), rh, color=ov.C_STEEL))
             for yd in up_yds:
                 p.append(ov.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
     if posts:

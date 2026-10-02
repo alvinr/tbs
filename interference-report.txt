@@ -1,4 +1,4 @@
-routing-sources-sha: b718750f501e
+routing-sources-sha: a41d544a36eb
 model=ibc-stack  pipes=436 solids=231  interferences=5
   PIPE  DV-02 waste -> IBC-4                       (Skid plumbing)
     x  FRAME      Frame rail (Yd)                         near (5115,1194,65)

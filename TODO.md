@@ -233,6 +233,10 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   rail** (X4663-4900, Yd1132-1279). Reroute/notch in a focused plumbing pass (plumbing skill). The F1-CAUSED
   clashes are already fixed: #1 ribbon-lane×outer-beam (RIBBON_LANE_X derived from the channel), #2 end-beam×
   near-corner-risers (near RWk end beam un-inset to Yd0).
+- [ ] **Water — revisit the sump-pickup routing so the pipes run AROUND the pinhole wall (2026-10-02).**
+  Re-route the tray sump pickup / suction so it detours around the pinhole wall rather than crossing it.
+  Focused plumbing-routing pass (plumbing skill — detour, never route through a surface); reconcile the 2D
+  water diagrams + the 3D water/pinhole-wall models + `plumbing-report.md` with shared dims.
 
 ## Scheduled
 - [ ] **Source the genuinely-open parts rows** — the `parts-worklist.csv` default now carries only the

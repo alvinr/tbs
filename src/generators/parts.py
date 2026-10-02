@@ -150,7 +150,7 @@ PARTS: list[Part] = [
          "ventilation", 1, "ea", 25.99, 25.99, "Amazon", "Grainger", part_no="B0GYFNXM9Z", url="https://www.amazon.com/dp/B0GYFNXM9Z",
          spec="MECCANIXITY retractable coiled cable, 16 AWG 2-conductor, 10 ft extended (B0GYFNXM9Z), $25.99 firm (2026-07-30). Fan B flex on the swinging hinged panel — takes the ~56° transport swing. Proper 2-conductor. Deutsch DT 2-pin ends."),
     Part("cooler-power-cable", "Cooler external power cable", "electrical-distribution",
-         "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end"),
+         "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="CRIMP-YOUR-OWN (no retail SKU): 1.5m, 14 AWG 2-cond + Deutsch DT 2-pin plug crimped each end (connectors per deutsch-dt-2pin). Self-assembled; $20 is the wire+terminal material estimate, accepted (2026-10-02)."),
     Part("ratchet-strap-25", "Ratchet straps, 25mm", "fasteners-hardware",
          "ventilation", 1, "4-pack", 9.97, 9.97, "Home Depot", part_no="FH0829", url="https://www.homedepot.com/p/312994495", spec='Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare'),
     # plywood-base-12 RETIRED 2026-07-27 — the cooler stowage base plate (600×350) is now cut from the
@@ -344,7 +344,7 @@ PARTS: list[Part] = [
     Part("water-wire-14awg", "14 AWG duplex marine wire", "electrical-distribution",
          "water", 25, "ft", 0.68, 0.68, "Waytek Wire", part_no="MCB14-2", url="https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2", spec="Tinned-copper 2-conductor marine cable, cut to 25 ft (pump feed run)"),
     Part("water-powerpole", "Anderson Powerpole connectors 30A", "electrical-distribution",
-         "water", 5, "pair", 1.30, 1.30, "Powerwerx", url="https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled", spec="Pump connections — one pair per pump (P-01..P-05). Sold in 10-pair packs at $12.99 (unassembled 30A); one pack covers the 5 pairs + spares."),
+         "water", 5, "pair", 1.30, 1.30, "Powerwerx", part_no="PP30-10", url="https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled", spec="Pump connections — one pair per pump (P-01..P-05). Powerwerx PP30-10, 10-pair pack at $12.99 (unassembled 30A); one pack covers the 5 pairs + spares."),
     Part("water-blade-fuses", "15A blade fuse", "electrical-distribution",
          "water", 1, "pack", 7.99, 7.99, "Amazon", part_no="B07WP5FWJJ", url="https://www.amazon.com/dp/B07WP5FWJJ", spec="15A ATC/ATO blade fuse, 100-pack — pump Circuit C single feed (all pumps) + spares."),
     # — processing consumables (241) —
@@ -451,8 +451,8 @@ PARTS: list[Part] = [
     # feed, so the distribution manifold, the 7 ¼" feed tubes, and their barbed-tee taps aren't needed.
     # The ½" flex hose now feeds the manifold center through one inlet tee (spray-brass-barb).
     Part("spray-retainer-clips", 'Figure-8 end clamps, 3/4in poly', "fasteners-hardware",
-         "spray", 1, "10-pack", 4.20, 4.20, "DripDepot", url="https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch",
-         spec='Figure-8 fold-back end closures that crimp the 3/4" poly manifold ends shut — DripDepot 10-pack, $4.20 firm (2026-07-30).'),
+         "spray", 1, "10-pack", 4.20, 4.20, "DripDepot", part_no="1533", url="https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch",
+         spec='Figure-8 fold-back end closures that crimp the 3/4" poly manifold ends shut — DripDepot #1533, 10-pack, $4.20 firm (2026-07-30).'),
     Part("spray-skate-wheel", "Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)", "bearings-motion",
          "spray", 1, "1 ft rod", 10.97, 10.97, "McMaster-Carr", part_no="8576K23",
          url="https://www.mcmaster.com/8576K23/",
@@ -711,8 +711,10 @@ PARTS: list[Part] = [
          "interior", 5, "gal", 24.98, 24.98, "Home Depot", part_no="PR31301", url="https://www.homedepot.com/p/316173659", spec="BEHR PRO Jet Black Dead Flat interior (ECC-10-2), ~400 sq ft/gal. 5 gal = 2 coats over the ~53 m² interior blackout + film wall + margin — re-count coverage at paint-out."),
     # image-plane-backing RETIRED 2026-07-22 — the same ACM backing as film 'dibond-acm-film'
     # (bonded to the moveable film-plane frame); the old fixed-wall backing line was a double-count.
-    Part("interior-ventilation", "Ventilation (inline fans + light-trap baffles) — interior-conversion allowance",
-         "ducting-ventilation", "interior", 1, "lot", 80, 130, "Amazon"),
+    # interior-ventilation RETIRED 2026-10-02 — a vestigial $80–130 placeholder that double-counted
+    # the darkroom ventilation. The real hardware is fully itemized in the 'ventilation' system
+    # (axial-fan-150 ×2 = Fan A + Fan B, baffle-metal-fan, baffle-metal-cooler, cooler + ducting),
+    # and that cross-flow also serves operator comfort / fresh-air exchange — no separate interior vent.
     # Personnel-door hardware, itemized 2026-07-27 from the $50–100 "Door & access upgrades" lot:
     Part("door-hinges", "Personnel-door hinges (heavy-duty, ×3)", "fasteners-hardware",
          "interior", 3, "ea", 5, 8, "Home Depot", spec="Weather-rated butt hinges for the personnel access door. Price est."),

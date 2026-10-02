@@ -11,7 +11,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Area | Low | High |
 |------|-----|------|
 | 1. Container & delivery | $2,300 | $4,300 |
-| 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
+| 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,098 | $4,556 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,848 | $8,120 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,631** | **~$36,416** |
+| **TOTAL (base build + 50-print run)** | **~$27,551** | **~$36,286** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -127,9 +127,8 @@ indicative low–high estimates — get quotes before ordering.
 | [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | 1 coil | Home Depot | ventilation | $63 |
 | [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | 1 set | Home Depot | ventilation | $16 |
 | [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | 1 ea | Home Depot | ventilation | $109 |
-| Ventilation (inline fans + light-trap baffles) — interior-conversion allowance | 1 lot | Amazon | interior | $80–$130 |
 | [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | 1 ea | Home Depot | ventilation | $12 |
-| **ducting-ventilation subtotal** | | | | **$345–$395** |
+| **ducting-ventilation subtotal** | | | | **$265** |
 
 ### electrical-distribution
 
@@ -152,7 +151,7 @@ indicative low–high estimates — get quotes before ordering.
 | [4 AWG ground wire, green/yellow, 20ft](https://www.automationdirect.com/adc/shopping/catalog/bulk_wire_-a-_cable/single_conductor_wire_-a-_cable/mtw4gyl-1) (MTW4GYL-1) | 1 lot | AutomationDirect | electrical | $52 |
 | [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $74 |
 | [Anderson Powerpole 30A connectors, 50 pairs (unassembled)](https://powerwerx.com/1327bk-anderson-powerpole-housing-red) (1327) | 1 kit | Powerwerx | electrical | $55 |
-| [Anderson Powerpole connectors 30A](https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled) | 5 pair | Powerwerx | water | $6 |
+| [Anderson Powerpole connectors 30A](https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled) (PP30-10) | 5 pair | Powerwerx | water | $6 |
 | [Battery main disconnect — Blue Sea 6006 m-Series (300A)](https://offgridstores.com/products/blue-sea-6006-m-series-mini-battery-switch-single-circuit-on-off-red) (6006) | 1 ea | Off Grid Stores | electrical | $36 |
 | [Battery terminal covers (pair), insulating boots](https://www.waytekwire.com/product/23501-straight-in-battery) (23501) | 1 pair | Waytek Wire | electrical | $3 |
 | [Blue Sea 5026 fuse block, 12-circuit ST-blade](https://offgridstores.com/products/blue-sea-5026-st-blade-fuse-block-w-cover-12-circuit-w-negative-bus) (5026) | 1 ea | Off Grid Stores | electrical | $59 |
@@ -291,7 +290,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | [SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)](https://www.mcmaster.com/8992K512/) (8992K512) | 1 2 ft bar | McMaster-Carr | spray | $35 |
-| [Figure-8 end clamps, 3/4in poly](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) | 1 10-pack | DripDepot | spray | $4 |
+| [Figure-8 end clamps, 3/4in poly](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) (1533) | 1 10-pack | DripDepot | spray | $4 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
@@ -496,7 +495,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,212–$3,619 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 19 | aluminum, fasteners-hardware, steel-structural | $2,072–$2,713 |
-| Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,074–$2,124 |
+| Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,994 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | McMaster-Carr | 78 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,913–$1,917 |
 | Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,658–$1,795 |

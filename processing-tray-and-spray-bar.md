@@ -68,9 +68,10 @@ the single center pickup.
 ### 2.3 Sump Well and Pickup
 
 Instead of a through-floor drain fitting, the near-rim gutter drains to a shallow pickup well
-pressed into the floor at the **center** low point (X=2,386). P-04 draws from the well via a suction
-pickup that **pops out of the walkway** above it and runs **under the walkway to the IBC end** to
-rejoin the ribbon lanes — no penetration of the tray or container floor.
+pressed into the floor at the **center** low point. P-04 draws from the well via a suction pickup
+that rises through the walkway grate, turns to the pinhole wall at deck level, rises up the wall
+clear of the walkway cantilever brackets, and runs along the pinhole wall to P-04 on the filter
+skid — no penetration of the tray or container floor.
 
 ![Water System — Sheet 4: Drain Cross-Section](assets/water-system-sheet4.png)
 
@@ -81,7 +82,7 @@ rejoin the ribbon lanes — no penetration of the tray or container floor.
 | Forming | Pressed/stamped into tray panel during fabrication |
 | Pickup tube | 1" PVC dip tube, stainless foot valve with strainer screen |
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75 L residual) |
-| Suction line | 1" flexible reinforced hose — pops out of the walkway above the pickup, runs under the walkway to the IBC end → P-04 |
+| Suction line | 1" flexible reinforced hose — rises through the walkway grate, turns to the pinhole wall, up the wall clear of the cantilever brackets, then along the wall → P-04 on the filter skid |
 | Pump | P-04 (Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI, self-priming) |
 | Discharge | P-04 → 3W-DV-02 diverter → IBC-3 (Brown recycling) or IBC-4 (Waste) |
 
@@ -108,7 +109,7 @@ fold the liner around the sump pickup tube.
 | Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->260<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
 | Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 1½in-square SS beam, (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends — 45mm gap | Clear |
-| Pump manifold (Corridor Plumbing Panel) | Suction hose routes over near rim exterior | Clear |
+| Tray-sump suction hose | Routes exterior to the tray basin (up the walkway grate + pinhole wall) | Clear |
 
 ### 2.6 Permanent Installation
 

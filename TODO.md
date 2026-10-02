@@ -238,6 +238,17 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   Z60) (`check_interference` on `ibc-stack`). Reroute/notch the blue trunk to clear the rail in a focused
   plumbing pass (plumbing skill — detour, never through steel). Part of the pre-existing under-corridor group
   above (blue trunk × IBC frame rail, X4663–4900) — resolve together; not caused by the sump reroute.
+- [ ] **Water — `ribbon_run` corridor-entry rework + revisit the "U" (2026-10-02).** The 4 corridor↔pinhole-wall
+  ribbon lines all DIP down then rise (a U) at the corridor entry, via `ribbon_run()`'s slot-and-notch detour
+  (`generate_corridor_water_panel.py:70`). **Open question (owner): does anything actually block a DIRECT/flush
+  entry?** Visually it looks clear; the queried blockers are the RWk cantilevers at Z90–115 (at the corridor
+  EDGES, Yd1046–1097 / 1265–1316 — the mid-gap Yd1097–1265 is clear) + the outer-beam notch the slot threads.
+  A flush "hop-over" entry (option-b) was attempted and **backed out**: removing the dip makes `ribbon_run`'s
+  +X-to-slot→−X-to-lane a 180° reversal → SketchUp "zero-length vector" elbow error. To do it cleanly:
+  teach `ribbon_run` to skip the slot/notch detour when a line enters at the flush Z (and verify the outer-beam
+  crossing still clears for the low-pickup lines). Fold in the 3 remaining under-corridor flags (J6 plate, blue
+  crossing, far back-rail) — same shared geometry. The `P-02→ACC-02` re-lane (2026-10-02, committed) already
+  cleared that leg's grey/brown + X-rail clashes; this item is the deeper shared-`ribbon_run` pass.
 - [~] **Water — sump-pickup rerouted AROUND the pinhole wall (2026-10-02).** `skid_plumbing()` Leg 1
   redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6
   cantilever wall-plates, top Z200) → +X along the wall to the P-04 climb; standard P-clips in the

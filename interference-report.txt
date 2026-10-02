@@ -1,15 +1,11 @@
-routing-sources-sha: a41d544a36eb
-model=ibc-stack  pipes=436 solids=231  interferences=5
+routing-sources-sha: 37bf91a2a5fd
+model=ibc-stack  pipes=438 solids=231  interferences=4
   PIPE  DV-02 waste -> IBC-4                       (Skid plumbing)
     x  FRAME      Frame rail (Yd)                         near (5115,1194,65)
-  PIPE  P-02 -> ACC-02 (recycle spray) elbow       (Skid plumbing)
-    x  FRAME      Frame rail (X)                          near (4900,1279,71)
   PIPE  P-02 -> ACC-02 (recycle spray) elbow       (Skid plumbing)
     x  CANTILEVER RWk J6 end-plate Yd1046                 near (4644,1110,62)
   PIPE  P-02 -> ACC-02 (recycle spray)             (Skid plumbing)
     x  CANTILEVER RWk J6 end-plate Yd1046                 near (4641,1110,77)
-pipe-on-pipe crossings=2
-  PIPE  DV-02 waste -> IBC-4                        
-    x  PIPE  P-02 -> ACC-02 (recycle spray)                cross (4844,1188,68)  centreline 14mm < 27mm
+pipe-on-pipe crossings=1
   PIPE  Blue trunk: corridor -> ribbon -> outside-ri
     x  PIPE  P-02 -> ACC-02 (recycle spray)                cross (4509,1121,107)  centreline 23mm < 27mm

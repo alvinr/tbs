@@ -1157,7 +1157,7 @@ PARTS: list[Part] = [
          spec="6061-T6 stock — machined to the Ø120 OD × Ø70 bore × 6 retaining ring (4× M6 clearance @ Ø100). Can be cut from the plate offcut. SKU pending — source."),
     Part("pdh-washer", "Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet", "seals-gaskets",
          "front-board", 1, "6x6 sheet", 2.13, 2.13, "Grainger", part_no="398ZW9", url="https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9",
-         spec="Neoprene washer Ø82 OD × Ø72 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. CUT from a Grainger 398ZW9 6in×6in neoprene sheet ($2.13, confirmed 2026-10-02) — one sheet yields the washer + spares. Confirm the 398ZW9 thickness is ~1/16in (1.5–1.6mm) to match."),
+         spec="Neoprene washer Ø82 OD × Ø72 ID × 1.5mm — the carrier presses against it under the retaining ring, sealing the aperture. CUT from a Grainger 398ZW9 6in×6in neoprene sheet ($2.13, confirmed 2026-10-02) — one sheet yields the washer + spares. Thickness 1/16in (1.6mm) confirmed — matches the 1.5mm design."),
     Part("pdh-pinhole-discs", "Pinhole carrier set — SS-302 shim on Ø80×5 6061 (Ø2.17 / Ø1.5 / Ø3.0)", "optics",
          "front-board", 3, "ea", 20, 40, "Lenox Laser", "Edmund Optics", url="https://lenoxlaser.com/",
          spec="Ø80 × 5mm 6061 carrier discs, each with an SS-302 laser-drilled pinhole shim bonded over a central bore — Ø2.17 (Rayleigh optimum), Ø1.5 (sharper), Ø3.0 (brighter). The 5mm carrier fills the seat (same envelope as the lens board) so the retaining ring clamps + seals it. 3 off (the interchangeable set). SKU pending — quote (Lenox Laser + disc blanks)."),

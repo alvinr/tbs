@@ -79,7 +79,10 @@ def flags_for(p) -> list[str]:
     # from a spec-driven supplier. Amazon/Home-Depot commodity (buy-by-the-aisle) is left generic.
     if not pn and p.type in FIT_TYPES and p.supplier in GATED:
         f.append("IDENTIFY")
-    if pn and MM_FMT.match(pn) and "McMaster" not in (p.supplier or ""):
+    if pn and MM_FMT.match(pn) and "McMaster" not in (p.supplier or "") and not url:
+        # Only a risk when the URL is auto-guessed as mcmaster.com/<sku>. An explicit URL
+        # disambiguates — Grainger (795M51, 41D816) legitimately shares McMaster's SKU format.
+        # (Mirrors lint.warn_parts_identity, which already carries this exemption.)
         f.append("SKU≠SUPP")
     if pn and not url:
         f.append("URL-MISSING")
@@ -132,12 +135,21 @@ def _existing_fills() -> dict:
 
 
 def main() -> int:
+    # Bare PRICE-VERIFY (a gated supplier, no other flag) is a near-FABRICATION re-price, not a
+    # now-task — the estimates are accepted until build (see the parts.py re-price reminder + the
+    # TODO Bucket-1 sweep). Default output carries only the genuinely-open rows (SKU/URL/identify/
+    # source-price); --all regenerates the full price-verify sweep when it's time to re-price.
+    include_price_verify = "--all" in sys.argv
     prior = _existing_fills()
     carried = 0
+    deferred = 0
     rows = []
     for p in parts.PARTS:
         flags = flags_for(p)
         if not flags:
+            continue
+        if flags == ["PRICE-VERIFY"] and not include_price_verify:
+            deferred += 1
             continue
         r = {
             "key": p.key, "desc": p.desc, "system": p.system, "type": p.type,
@@ -161,6 +173,8 @@ def main() -> int:
     fc = Counter(fl for r in rows for fl in r["flags"].split())
     print(f"wrote {os.path.relpath(OUT, os.path.join(HERE, '..', '..'))}: {len(rows)} rows"
           + (f" ({carried} with carried-over fills)" if carried else ""))
+    if deferred:
+        print(f"  ({deferred} bare PRICE-VERIFY rows deferred to the near-fab re-price — run --all to include)")
     for fl, n in fc.most_common():
         print(f"  {n:>3}  {fl}")
     return 0

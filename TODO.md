@@ -235,13 +235,17 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   near-corner-risers (near RWk end beam un-inset to Yd0).
 
 ## Scheduled
-- [ ] **Verify spec-driven parts (identity + price)** — 55 rows from JS-/account-gated suppliers
-  (McMaster/Roton/Grainger/…) need a human to pin the exact SKU, product URL, fit-critical dim
-  (bore/thread/Ø), and current price — the automated web pass can't read those suppliers. Also fixes
-  4 SKU↔supplier mismatches + 12 SKUs missing a URL (surfaced by the `parts identity` lint advisory).
+- [ ] **Source the genuinely-open parts rows** — the `parts-worklist.csv` default now carries only the
+  actionable rows (identity / source-price); the bare **PRICE-VERIFY** sweep is **DEFERRED to near-
+  fabrication** (2026-10-02 call: accept the current estimates, re-price everything closer to build —
+  see the Bucket-1 re-price item + the `parts.py` reminder). Currently open: **1 IDENTIFY** (`pdh-washer`
+  neoprene seal) + **4 SOURCE-PRICE** (`interior-ventilation`, `spray-retainer-clips`, `cooler-power-cable`,
+  `water-powerpole`). The SKU↔supplier flags were false positives (Grainger SKUs share McMaster's format)
+  and are resolved — the worklist now carries the lint's URL exemption.
   Workflow: `build_parts_worklist.py` → fill `parts-worklist.csv` (new_* cols, merges on re-run) →
   `apply_parts_csv.py parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
-  filled at the owner's own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
+  **Near-fab re-price:** `build_parts_worklist.py --all` regenerates the full ~113-row price-verify sweep;
+  fill at the owner's own cadence from logged-in supplier sessions.
 
 ## Material validation — soak tests (deferred)
 Physical coupon soaks in the actual potassium-ferricyanide / citric-acid wash, deferred until the

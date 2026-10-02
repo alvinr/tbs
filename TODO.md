@@ -233,6 +233,11 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   rail** (X4663-4900, Yd1132-1279). Reroute/notch in a focused plumbing pass (plumbing skill). The F1-CAUSED
   clashes are already fixed: #1 ribbon-lane×outer-beam (RIBBON_LANE_X derived from the channel), #2 end-beam×
   near-corner-risers (near RWk end beam un-inset to Yd0).
+- [ ] **IBC — Blue trunk pipe interferes with the IBC corridor frame rail (surfaced in `ibc-stack`, 2026-10-02).**
+  The **Blue trunk (TAP-01 + Spray Supply)** run clips the **IBC corridor Frame rail (Yd)** at ~(X4663, Yd1132,
+  Z60) (`check_interference` on `ibc-stack`). Reroute/notch the blue trunk to clear the rail in a focused
+  plumbing pass (plumbing skill — detour, never through steel). Part of the pre-existing under-corridor group
+  above (blue trunk × IBC frame rail, X4663–4900) — resolve together; not caused by the sump reroute.
 - [~] **Water — sump-pickup rerouted AROUND the pinhole wall (2026-10-02).** `skid_plumbing()` Leg 1
   redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6
   cantilever wall-plates, top Z200) → +X along the wall to the P-04 climb; standard P-clips in the

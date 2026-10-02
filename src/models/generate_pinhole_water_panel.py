@@ -616,13 +616,15 @@ def skid_plumbing(part="all"):
     sfz = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
     p04_in = cp.pump_in(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3220,130,1312)
     sfoot = (ov.PROC_TRAY_DRAIN_X, SROW_YD, sfz)                         # (2399, 104, 3) — strainer in the well, DIRECTLY under the riser (Yd104 also clears the blue trunk at Yd69)
-    riser_top_z = ov.WALKWAY_H + 150                                    # 290 — 150mm above the walkway deck (grate top = WALKWAY_H)
+    riser_top_z = ov.WALKWAY_H                                          # 140 — reach the wall at the walkway deck level (the −Yd turn), then rise up the wall before turning to the panel
+    wall_run_z  = 230                                                   # along-wall horizontal height — ABOVE the near-walkway cantilever wall-plates (top Z200) so neither the pipe nor its clips foul a cantilever
     p.append(ov.ruby_pipe_run("Tray sump -> P-04 suction",
         [sfoot,                                                          # strainer foot at the sump bottom
          (ov.PROC_TRAY_DRAIN_X, SROW_YD, riser_top_z),                   # RISER up through the walkway grate to 150mm above the deck (no tall wall riser)
-         (p04_in[0] - 40, SROW_YD, riser_top_z),                        # 90° TURN toward the panel: +X above the walkway to below P-04
-         (p04_in[0] - 40, SKID_CLIP_YD, riser_top_z),                   # −Yd onto the skid clip plane (#29: flush on the panel)
-         (p04_in[0] - 40, SKID_CLIP_YD, p04_in[2]),                     # rise on the panel face to P-04's IN height
+         (ov.PROC_TRAY_DRAIN_X, SKID_CLIP_YD, riser_top_z),             # 90° TURN toward the pinhole wall (−Yd to the clip plane) at the walkway deck level
+         (ov.PROC_TRAY_DRAIN_X, SKID_CLIP_YD, wall_run_z),              # RISE vertically up the wall to clear the cantilever wall-plates (top Z200) BEFORE turning to the panel
+         (p04_in[0] - 40, SKID_CLIP_YD, wall_run_z),                   # 90° TURN along the pinhole wall: +X above the plates, hugging the ply, toward P-04
+         (p04_in[0] - 40, SKID_CLIP_YD, p04_in[2]),                     # climb the panel face to P-04's IN height
          (p04_in[0] - 40, SROW_YD, p04_in[2]),                          # +Yd back to the P-04 IN lane
          p04_in], rp, color=ov.C_IBC_BROWN))                           # short lead into P-04's IN port
     p.append(cp.sump_strainer_foot())                                  # shared single source (same part in the corridor sump)
@@ -737,6 +739,17 @@ def skid_plumbing(part="all"):
                         (3560, 104, 1312), (3820, 104, 1312)): # brown row line → DV-02 (kit-row lane — standoff)
         p.append(ov.ruby_box("Skid pipe P-clip", rx - 14, skid_face, cz - 8,
                              28, (ryd + rp + 2) - skid_face, 16, color=cp.C_CLIP))
+    # Tray-sump suction supports (relocated routing): standard P-clips on the new along-wall
+    # horizontal (Yd35, at the walkway deck level) + a low clip on the X3180 panel climb (it now
+    # starts at the deck).  Each bridges the run back to its backing face — the bare container wall
+    # (Yd0) left of the ply panel edge (PWP_PANEL_X0=2780), the ply face (Yd18) on the panel.
+    # clips sit in the clear gaps BETWEEN the near-walkway cantilevers (Near 5 X2576-2696,
+    # Near 6 X3033-3153) so no support bracket lands on a cantilever arm/plate.
+    for rx, face in ((2520, 0), (2760, 0), (2980, skid_face)):   # along-wall horizontal run (at wall_run_z)
+        p.append(ov.ruby_box("Skid pipe P-clip", rx - 14, face, wall_run_z - 8,
+                             28, (SKID_CLIP_YD + rp + 2) - face, 16, color=cp.C_CLIP))
+    p.append(ov.ruby_box("Skid riser P-clip", (p04_in[0] - 40) - 14, skid_face, 340 - 8,
+                         28, (SKID_CLIP_YD + rp + 2) - skid_face, 16, color=cp.C_CLIP))   # P-04 climb, low (joins the 600/1080 clips)
     if part == "all":
         return "\n".join(p)
     # Partition legs by the construction-model phase they install in, matched on each pipe's own

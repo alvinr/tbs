@@ -233,10 +233,15 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   rail** (X4663-4900, Yd1132-1279). Reroute/notch in a focused plumbing pass (plumbing skill). The F1-CAUSED
   clashes are already fixed: #1 ribbon-lane×outer-beam (RIBBON_LANE_X derived from the channel), #2 end-beam×
   near-corner-risers (near RWk end beam un-inset to Yd0).
-- [ ] **Water — revisit the sump-pickup routing so the pipes run AROUND the pinhole wall (2026-10-02).**
-  Re-route the tray sump pickup / suction so it detours around the pinhole wall rather than crossing it.
-  Focused plumbing-routing pass (plumbing skill — detour, never route through a surface); reconcile the 2D
-  water diagrams + the 3D water/pinhole-wall models + `plumbing-report.md` with shared dims.
+- [~] **Water — sump-pickup rerouted AROUND the pinhole wall (2026-10-02).** `skid_plumbing()` Leg 1
+  redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6
+  cantilever wall-plates, top Z200) → +X along the wall to the P-04 climb; standard P-clips in the
+  cantilever gaps, driven by one `wall_run_z` param. `water.skp` re-sent + Sketchfab-pushed; interference
+  clean. **REMAINING:** (a) re-send the shared-builder cascade — **overview, ibc, construction** (all call
+  `skid_plumbing()`) — focus-first, one doc at a time; (b) reconcile the stale Phase-1 prose in
+  `water-system-report.md` (lines ~213/215/319 still say "under the walkway to the IBC end") +
+  `processing-tray-and-spray-bar.md` §2.3 to the current around-the-wall routing; (c) optionally revisit
+  the BV-05 −150 nudge + the ACC-02→BV-05 hump-over now the suction no longer crosses the face.
 
 ## Scheduled
 - [ ] **Source the genuinely-open parts rows** — the `parts-worklist.csv` default now carries only the

@@ -377,11 +377,11 @@ indicative low–high estimates — get quotes before ordering.
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | Certified anti-slip cargo matting (μ≥0.6) | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
-| Neoprene light-seal washer (Ø82×Ø72×1.5) | 1 ea | McMaster-Carr | front-board | $3–$6 |
+| [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$542–$744** |
+| **seals-gaskets subtotal** | | | | **$542–$741** |
 
 ### stainless-sheet
 
@@ -497,9 +497,9 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 19 | aluminum, fasteners-hardware, steel-structural | $2,072–$2,713 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,994 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| McMaster-Carr | 78 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,913–$1,917 |
+| McMaster-Carr | 77 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,910–$1,911 |
 | Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,658–$1,795 |
-| Grainger | 9 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural | $1,679 |
+| Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |

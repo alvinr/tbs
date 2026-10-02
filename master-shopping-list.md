@@ -399,7 +399,7 @@ indicative low–high estimates — get quotes before ordering.
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
-| [3/8" PRE-KEYED 304 SS rotary shaft — U-joint stub shafts (1× 36")](https://www.grainger.com/product/Keyed-Rotary-Shaft-3-8-in-822UN5) (822UN5) | 1 lot | Grainger | film | $52 |
+| [3/8" PRE-KEYED 316 SS rotary shaft — U-joint stub shafts (1× 36")](https://www.grainger.com/product/Keyed-Rotary-Shaft-3-8-in-822UN5) (822UN5) | 1 lot | Grainger | film | $52 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $316–$516 |
 | [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1 ea | Metals Depot | spray | $183 |
 | 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | 1 lot | Metal Supermarkets | lightlock | $50–$95 |

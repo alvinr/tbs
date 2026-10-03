@@ -1,5 +1,7 @@
-routing-sources-sha: f1aab75570cb
-model=ibc-stack  pipes=423 solids=231  interferences=1
+routing-sources-sha: 671e28c88f2e
+model=water  pipes=440 solids=873  interferences=2
   PIPE  DV-02 waste -> IBC-4                       (Skid plumbing)
     x  FRAME      Frame rail (Yd)                         near (4970,1194,65)
+  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
+    x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
 pipe-on-pipe crossings=0

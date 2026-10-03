@@ -944,7 +944,13 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     parts = []
     lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
-    notch_ranges = [(cy - RWK_RIBBON_NOTCH_W / 2, RWK_RIBBON_NOTCH_W) for cy in RWK_RIBBON_NOTCH_YDS]
+    # Lane-1 notch WIDENED (84 vs 34) so the opening reaches the blue trunk's actual beam crossing at
+    # GAP_CORR_Y≈1161 — the trunk corridor Yd was raised to match the brown centerline, past the nominal
+    # lane-1 notch (1132).  The wide slot merges with the lane-0 notch into one continuous opening
+    # (~1090–1174) covering both the brown (1123) and blue (1161) crossings.  (ov can't import cp, so 84 is
+    # hand-set to span GAP_CORR_Y + a pipe radius — update if GAP_CORR_Y moves.)  Other lanes standard.
+    _notch_w = [RWK_RIBBON_NOTCH_W, 84, RWK_RIBBON_NOTCH_W, RWK_RIBBON_NOTCH_W]
+    notch_ranges = [(cy - w / 2, w) for cy, w in zip(RWK_RIBBON_NOTCH_YDS, _notch_w)]
     parts += _rwk_inner_beam_cranked(lx, arm_ranges, y_inset=8)   # inner beam — CRANKED around the muslin slot; ends BUTT the cleat plates (Yd8..C_WID-8)
     parts += _rwk_long_beam(rx, arm_ranges, notch_ranges, split=RWK_HL_POST, y0=10, y1=C_WID - 10)   # outer beam — DEEP half-lap notch + pipe notches; ends BUTT the combined plates (Yd10..C_WID-10)
     for ey in (0, C_WID - 10 - RWK_BEARER_W):

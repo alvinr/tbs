@@ -1060,7 +1060,7 @@ def drains_ports(sump_on_skid=False):
          #   tee +X end → +X to SHIRT riser → −Yd → up the shirt → −X (forward) to the BV-02 riser → up through
          #   BV-02 → +X stub into the IN port
          ov.C_IBC_BROWN)
-    p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y"))   # handle swings +Yd into the open corridor (clear of the near support board so it can be turned)
+    p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
@@ -1095,7 +1095,7 @@ def drains_ports(sump_on_skid=False):
                     (rx6, BV02_YD, turn6),                          # +X back to the BV-06 riser (through the pump gap)
                     (rx6, BV02_YD, z03),                            # ↑ through BV-06 to the IN-port height
                     (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
-    p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y"))   # handle swings +Yd into the open corridor (clear of the near support board), like BV-02
+    p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),

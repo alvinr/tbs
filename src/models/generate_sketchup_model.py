@@ -859,7 +859,7 @@ def ibc_cantilever_arms(x_to=None):
             parts.append(ruby_bolt(f"RWk J6 bolt M12 Yd{yd}", bx0, ac_y, bz, blen, radius=6, axis="x", color=c_bolt, head="base", nut="far"))  # hex head (front) + hex nut (back)
         # half-lap HOLD-DOWN: 1 #14 TEK screw per crossing (from the underside, through the beam into the arm)
         for bx in sorted(b for b in RWK_BEARER_XS if x_to - 1 < b < RWK_X_UP):
-            parts.append(ruby_bolt(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT - 5, RWK_AH + 5, radius=3, axis="z", color=c_bolt, head="base", nut=None))  # self-drilling — hex head at the underside, no nut
+            parts.append(ruby_bolt(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT, RWK_AH, radius=3, axis="z", color=c_bolt, head="base", nut=None))  # self-drilling — hex head seats FLUSH on the arm underside (head top at RWK_ARM_BOT), shank through arm + beam to the top face
     return parts
 
 

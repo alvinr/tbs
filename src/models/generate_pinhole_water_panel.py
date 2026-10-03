@@ -695,8 +695,8 @@ def skid_plumbing(part="all"):
              (cpt[0], midy, midz),                                      # −X across the uprights' X-span, Yd-clear of the grey DV-02-waste + blue
              # DUCK UNDER the straight flush blue trunk (Yd1132): drop below it, cross beneath, rise back
              # to the flush ribbon entry — the blue runs straight, the brown recycle takes the dip.
-             (cpt[0], midy, 75),                                        # DROP straight down at the mid-gap Yd (1161, 29mm +Yd of the blue at 1132)
-             (cpt[0], 1107, 75),                                        # −Yd UNDER the blue at Z75, well past it
+             (cpt[0], midy, 60),                                        # DROP straight down at the mid-gap Yd (1161, 29mm +Yd of the blue at 1132)
+             (cpt[0], 1107, 60),                                        # −Yd UNDER the blue at Z60, well clear of the cantilever underside (Z90)
              (cpt[0], 1107, midz),                                      # rise back to the flush ribbon Z, clear −Yd of the blue (Yd1107)
              cpt]                                                       # −Yd to the ribbon entry at flush — ribbon_run straight through the notch + hops the cantilever
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt

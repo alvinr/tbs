@@ -353,7 +353,7 @@ def tap01_supply():
     # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
     # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, cp.RIBBON_Z), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # FLUSH entry (no dip — comes down from trz=235); crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN)
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # stays LOW (Z60) through the corridor entry to pass UNDER the flush brown P-02 (not flush — a flush blue coincides with the brown in the saturated Yd window)
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off
@@ -672,11 +672,7 @@ def skid_plumbing(part="all"):
          (wlx, gapyd, RZ),                                # +Yd to the notch Yd (flush under the grate)
          (cp.RIBBON_SLOT_X, gapyd, RZ),                   # +X through the outer-beam notch to the drop slot
          (cp.RIBBON_SLOT_X, gapyd, 65),                   # DOWN the slot to the corridor entry Z
-         (4850, gapyd, 65),                               # +X to just before the brown P-02→ACC-02 jog
-         (4850, gapyd, 110),                              # HUMP UP over the brown (Z55-76) — grey hops the brown at the corridor entry
-         (4930, gapyd, 110),                              # +X over the brown
-         (4930, gapyd, 65),                               # back DOWN to the corridor floor
-         (riseX, gapyd, 65),                              # +X to the merge-approach lane
+         (riseX, gapyd, 65),                              # +X STRAIGHT to the merge-approach lane (the old hump-over-brown is retired — the P-02 re-lane moved the brown to Yd1285 here, so the grey runs straight at Z65)
          (riseX, cp.MERGE4[1], 65),                       # jog to the merge Yd at floor
          (riseX, cp.MERGE4[1], cp.MERGE4[2]),             # RISE to the merge Z (1230)
          cp.MERGE4], rp, color=ov.C_IBC_WASTE))           # +X onto the tee's −x run port

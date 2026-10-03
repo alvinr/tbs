@@ -1307,14 +1307,13 @@ RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 # appropriate (2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
 RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
 RWK_J6_EP_H    = 155.0                                       # end-plate height: top (Z192) clears the upper bolt (Z170) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
-# Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
-# the beam into the corridor.  The carriage crown (Z66) to beam soffit (Z80) gap is too tight for the pipe to
-# pass under, so the beam's top web is slotted instead (Z92-115), leaving the Z80-92 bottom web intact.  These
+# Under-walkway ribbon CROSSING Yds — one per lane, where the FLUSH pipe crosses the outer-beam line into the
+# corridor.  The outer beam is OMITTED over the IBC-corridor bay between the two cantilever arms (see
+# generate_sketchup_model.right_walkway_cantilever), so the pipes cross in the clear — no beam notch.  These
 # Yds are the single source the corridor pipe routing (cp.ribbon_run / the sump line) reads back for its
-# crossing Yd, so the notches and the pipes can't drift apart.
+# crossing Yd, so the routing stays inside the open bay (the lane crossings all fall in ~1097-1266).
 RWK_RIBBON_NOTCH_YDS = [1110, 1132, 1194, 1241]        # lanes 0,1,2,3 corridor-crossing Yd (index-matched to cp.RIBBON_LANE_X)
-RWK_RIBBON_NOTCH_W   = 34                              # Yd width per notch (pipe OD 21 + clearance)
-RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — notch floor, 2mm below the flush pipe soffit (Z94)
+RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — flush-pipe soffit datum (Z94−2); retained as the generic open-top slot floor in _rwk_long_beam
 # Inner long beam is CRANKED outboard around the muslin-drop rod slot: the rigid muslin batten drops
 # straight down at the tray edge (X=RWK_X_L), which sits over the inner beam — so over the notch Yd the
 # beam is jogged outboard by the full notch depth (its inboard face moves R_X0→R_X1) with angled ramps,

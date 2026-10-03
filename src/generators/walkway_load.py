@@ -192,7 +192,7 @@ def corner_plate_check():
 # ── 11-12. Right cantilever rectangle + arm->upright J6 (cross-referenced) ────
 def cross_refs():
     _row("RWK long beam (cross-ref)", "person + grate", "SF 7.1", "7.1",
-         "ibc_frame_load.outer_beam_frame_check — simply-supported full section")
+         "ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section")
     _row("RWK arm half-lap notch (cross-ref)", "334 N·m", "SF 2.03", "2.03",
          "ibc_frame_load.arm_notch_check — solid-bar rebalanced split")
     _row("Arm→upright J6 (IBC-owned)", "395 N·m", "SF 20", "20",

@@ -9,8 +9,9 @@ looking along +Yd, taken at increasing Yd depths.  The four corridor↔pinhole-w
 (IBC-3→P-02, tray-sump→P-04, Blue trunk→TAP-01, filtered return SV-01→DV-01) run TOGETHER
 as a flat RIBBON in the dead space UNDER the right-walkway grate, in the clear channel
 BETWEEN the two walkway long beams (above the tray rim).  The sections show the ribbon in-
-plane over the tray, its loop UP over the first cantilever, and its drop UNDER the walkway
-beam into the corridor — i.e. the vertical clearances the ribbon actually has.
+plane over the tray, its loop UP over the first cantilever, and its drop into the corridor
+through the OPEN bay between the cantilever arms (the outer beam is omitted over the corridor,
+so there is no beam to cross) — i.e. the vertical clearances the ribbon actually has.
 
     Sheet 1 — SECTION B-B · near-end ribbon transitions under the RIGHT walkway (X–Z)
 
@@ -74,10 +75,12 @@ RIBBON_Z      = cp.RIBBON_Z            # 104.5 — FLUSH under the grate (pipe c
 RIBBON_OVER_Z = cp.RIBBON_OVER_Z       # 142 — loop crest just above the grate (over the cantilever)
 RIBBON_YD_UP  = cp.RIBBON_YD_UP        # 1000 — where the ribbon rises to loop over the first cantilever
 CHAN_X0 = BEAM_XS[0] + BEAM_W          # 4369 — inner edge of the channel (inner beam)
-CHAN_X1 = BEAM_XS[1]                   # 4589 — outer edge of the channel (outer beam)
-NOTCH_FLOOR = cp.ov.RWK_NOTCH_FLOOR    # 92 — open-top beam-notch floor (outer beam is slotted here so the flush ribbon crosses)
-UNDER_BEAM_Z = 65                      # corridor-entry Z where the EXISTING corridor routing picks up (reached now
-#                                        via the tray-edge slot drop from the flush ribbon, not an under-beam crossing)
+CHAN_X1 = BEAM_XS[1]                   # 4534 — outer edge of the channel (outer beam)
+# Outer-beam Yd extent: the beam is in TWO runs that stop at the cantilever arms, leaving the
+# corridor bay (Yd RWK_UP_YDS[0]+arm .. RWK_UP_YDS[1], ~1097-1266) OPEN — the ribbon lanes cross
+# there in the clear (no beam, no notch).
+UNDER_BEAM_Z = 65                      # corridor-entry Z where the EXISTING corridor routing picks up (reached
+#                                        via the tray-edge slot drop from the flush ribbon)
 
 
 def _ribbon_circles(ax, z=None, r=None, z0=12, label=False, fs=5.4):
@@ -418,8 +421,8 @@ def sheet3():
     # crest clears the arm top
     draw_dim_v(ax, CHAN_X1 + 60, ARM_ZT, RIBBON_OVER_Z - OD / 2, f"{int(RIBBON_OVER_Z - OD/2 - ARM_ZT)}mm\nover arm top",
                offset=5, fs=5.2, font=FONT)
-    # past the cantilever each lane comes back to FLUSH and crosses the notched outer beam into the corridor
-    ax.text((UP_X1 + X_HI) / 2, 235, "(past the cantilever the lanes stay\nFLUSH, cross the NOTCHED outer beam,\nthen drop the tray-edge slot — in-plane in E-E)",
+    # past the cantilever each lane comes back to FLUSH and crosses the OPEN corridor bay (no outer beam) into the corridor
+    ax.text((UP_X1 + X_HI) / 2, 235, "(past the cantilever the lanes stay\nFLUSH, cross the OPEN corridor bay\n(no outer beam between the arms),\nthen drop the tray-edge slot — in-plane in E-E)",
             fontsize=5.0, ha="center", va="center", color=C_DIM, zorder=10, **FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -432,7 +435,7 @@ def sheet3():
         "1. X–Z cut through the NEAR cantilever (Yd≈1066).  The corridor restraint is the DEEP 4-leg box: FRONT upright X4654, front foot 150×150 at X4604–4754 — its LEFT EDGE sits 25mm UNDER the tray.",
         "2. The four-lane ribbon LOOPS UP OVER the cantilever here: it rose through the grate at Yd1000 and crests at Z142 (RIBBON_OVER_Z), passing OVER the arm top (Z115) and grate (Z130) — never through the steel (Rule 5).  It drops back through the grate past Yd1120.",
         "3. No pipe threads the tray-rim↔upright gap at this plane — the old low-crosser pinch is designed out by the loop-over.",
-        "4. Past the cantilever each lane stays FLUSH (Z104.5), crosses the OUTER beam through an open-top NOTCH, and only THEN drops the tray-edge slot (X4629–4654, clear of the carriage) into the corridor — in-plane in E-E.",
+        "4. Past the cantilever each lane stays FLUSH (Z104.5) and crosses the OPEN corridor bay (Yd~1097–1266) — the outer beam is omitted between the two cantilever arms, so there is no beam to cross — then drops the tray-edge slot (X4629–4654, clear of the carriage) into the corridor — in-plane in E-E.",
         "5. STATUS: (a) front foot / M12 CLEARS under the raised tray pan; (b) RWK cantilever arm reconciled to the deep-box upright (X4654); (c) the ribbon crest clears the arm top — no soffit graze; (d) the flush ribbon clears the spray-carriage crown (Z66) by ~28mm.",
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 7.6, fs=6.2,
@@ -469,9 +472,9 @@ def sheet4():
 
     _rect(ax, X_LO, -40, X_HI - X_LO, 40, C_FLOOR, lw=1.0, hatch="////", z0=2)                 # floor
     _rect(ax, X_LO, DECK_ZB, PROC_TRAY_X_R - X_LO, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)     # deck right edge
-    _rect(ax, BEAM_XS[1], 80, BEAM_W, NOTCH_FLOOR - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")   # outer bearer — surviving Z80–92 web
-    _rect(ax, BEAM_XS[1], NOTCH_FLOOR, BEAM_W, DECK_ZB - NOTCH_FLOOR, "none", ec="#B03030", lw=0.9, z0=6, ls=(0, (3, 2)))  # notched-away top (Z92–115)
-    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck; OUTER beam OPEN-TOP NOTCHED\n(removed at each lane so the flush ribbon crosses)",
+    # OUTER beam is OMITTED over this corridor bay (the two beam runs stop at the cantilever arms),
+    # so no beam is cut by this plane; the grate's CENTER section bridges the ~170mm open bay overhead.
+    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (grate CENTER section bridges here);\nOUTER beam ABSENT in this bay — ends at the cantilever arms",
             fontsize=5.0, ha="left", va="bottom", color=C_DIM, zorder=15, **FONT)
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 50, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail
     _rect(ax, 5104, 0, 50, 50, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail
@@ -481,8 +484,8 @@ def sheet4():
     _rect(ax, 4934, 355, 100, Z_CEIL - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
     ax.text(4984, 470, "pump column\n(P-01/04/05/03)\nghost, Yd≤1131", fontsize=4.8, ha="center", va="center", color=C_GHOST, **FONT)
 
-    # ── Past the cantilever each line comes back to FLUSH (Z104.5), crosses the NOTCHED outer beam, and drops ──
-    # ── the tray-edge SLOT (X4629-4654, clear of the carriage) into the corridor, where the EXISTING routing ──
+    # ── Past the cantilever each line comes back to FLUSH (Z104.5), crosses the OPEN corridor bay (no outer beam), and ──
+    # ── drops the tray-edge SLOT (X4629-4654, clear of the carriage) into the corridor, where the EXISTING routing ──
     # ── (unchanged — "reconnect at the right edge onwards") rises it to its lane and runs in X to the pumps. ──
     GAP_ENTRY_X = 4641
     _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN)    # sump→P-04
@@ -493,7 +496,7 @@ def sheet4():
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
     # mark the flush arrival + slot drop
     leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X - 25, 372,
-           "the four lines arrive FLUSH across the\nnotched beam, drop the tray-edge SLOT (past the\ncarriage) to the corridor entry, then RISE",
+           "the four lines arrive FLUSH across the\nopen bay (no beam), drop the tray-edge SLOT (past the\ncarriage) to the corridor entry, then RISE",
            color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     # legend (identifies the four lanes) — in the open band below the lanes, well right of the risers
     lgx, lgz = 4900, 150
@@ -513,7 +516,7 @@ def sheet4():
     notes = [
         "SECTION E-E NOTES",
         "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the uprights + pump column are just outside the slab, ghosted.",
-        "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the OUTER beam through an OPEN-TOP NOTCH (Z92–115 removed), then drops the tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.",
+        "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the OPEN corridor bay (Yd~1097–1266) — the outer beam is omitted between the two cantilever arms, so none is cut here — then drops the tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.",
         "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises each line to its lane and runs in X toward the pumps (Z205–235 band).",
         "4. No IBC ring rail crosses this span, so the corridor is open above the bottom rail (Z50).",
     ]

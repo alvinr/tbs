@@ -502,14 +502,15 @@ cross. This replaces routing them through the congested tray↔IBC gap.
 At the first cantilever (nearest the pinhole wall) each line **loops up over the
 cantilever** — then returns to the flush ribbon
 height. Rather than dipping under the walkway support beam (which would foul the
-spray carriage), each line crosses the **outer long beam through an open-top notch**
-and drops the **tray-edge slot** — clear of the carriage travel — into the corridor,
-where it rises to its equipment connection. The pump-suction lines carry their own
+spray carriage), each line crosses the **open corridor bay** — the outer long beam is
+run in two simply-supported segments and omitted over the ~170 mm bay between the two
+cantilever arms, so there is no beam to cross — and drops the **tray-edge slot** — clear
+of the carriage travel — into the corridor, where it rises to its equipment connection. The pump-suction lines carry their own
 service turns (P-04's sump pickup rises straight out of the widened sump well and
 elbows flat into the ribbon lane at flush height — no over-deck loop; DV-01's filtered
 return makes a square 90° turn into the diverter's IN port). The ribbon is carried by four welded steel cross-braces between the walkway
 bearers, with the lines clipped to them. The full set of cross-sections — routing
-envelope, clearances, and the beam notch — is in
+envelope, clearances, and the open-bay corridor entry — is in
 [Walkway Pipe Routing](walkway-routing-sections.md); routing is verified
 collision-free by `src/models/check_interference.py` (the ribbon is a sanctioned
 exception to the processing-tray exclusion zone — it runs above the tray rim, under
@@ -615,4 +616,4 @@ minute to flush; check for leaks.
    Tray sump, P-04 suction pickup, spray bar connection to BV-05.
 9. [Walkway Pipe Routing](walkway-routing-sections.md) — Cross-sections of the
    corridor↔pinhole-wall ribbon under the right walkway: routing envelope,
-   clearances, the beam notch, and the spray-carriage clearance (§8.1).
+   clearances, the open-bay corridor entry, and the spray-carriage clearance (§8.1).

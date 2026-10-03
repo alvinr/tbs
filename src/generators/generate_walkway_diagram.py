@@ -1103,11 +1103,13 @@ def sheet2():
 # SHEET 3 — Detail A: Right Walkway Cantilever Support (IBC End)  [rev 12]
 #
 # PLAN view (looking down): X horizontal, Yd vertical.  The right walkway is a
-# closed 2×1in-tube rectangle (2 long beams at X=4329/4574 running full width +
-# 2 short end beams) picked up at mid-span by 2 arms cantilevering off the IBC
-# corridor uprights, on wall cleats at the left corners and combined corner
-# plates (shared with the bottom film rail) at the right corners.  Replaces the
-# ceiling-hung hanger scheme.
+# 2×1in-tube cantilever frame — a continuous inner long beam (X=4329) + an outer long
+# beam in 2 segments (X=4574) with the IBC-corridor bay (~170mm between the arms) left
+# OPEN so the ribbon pipes cross clear + 2 short end beams — picked up at mid-span by 2
+# arms cantilevering off the IBC corridor uprights, on wall cleats at the left corners
+# and combined corner plates (shared with the bottom film rail) at the right corners.
+# The grate is in 3 sections split at the arm centers (center section bridges the open
+# bay).  Replaces the ceiling-hung hanger scheme.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
     """Right walkway — cantilever-rectangle support (rev 12).
@@ -1164,15 +1166,35 @@ def sheet3():
     # Left-margin label gutter (avoids overlap with the narrow rectangle)
     GUT_X = X_LO + 15
 
-    # ── Grated deck (hatched) over the rectangle ─────────────────────────────
+    # ── Grated deck (hatched) over the frame — in 3 butt-jointed sections split at the ──
+    # ── cantilever-arm centers; the CENTER section bridges the open corridor bay ────────
     ax.add_patch(Rectangle(((WK_L_X), (0)), (WK_R_X - WK_L_X), (C_WID),
                             fc=C_GRATE, ec="none", alpha=0.30, zorder=4, hatch="++"))
+    for jy in ARM_YDS:   # the two grate butt joints (on the arms)
+        ax.plot([WK_L_X, WK_R_X], [jy, jy], color=C_OUT, lw=0.8, ls=(0, (4, 2)), zorder=5)
+    leader(ax, (WK_L_X + (WK_R_X - WK_L_X) * 0.5), (ARM_YDS[0]),
+           (GUT_X - 150), (C_WID * 0.40),
+           "GRATE IN 3 SECTIONS\n(split at the arm centers;\ncenter section bridges the\nopen corridor bay)",
+           color=C_OUT, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Closed SHS rectangle: 2 long beams + 2 end beams ─────────────────────
-    # Outer long beam — straight; inner long beam — CRANKED outboard around the muslin-drop rod
-    # slot (mirrors the model's _rwk_inner_beam_cranked: jog = notch depth, 100mm angled ramps).
-    ax.add_patch(Rectangle(((WK_R_X - SHS), (0)), (SHS), (C_WID),
-                            fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
+    # ── SHS frame: 2 long beams + 2 end beams ────────────────────────────────
+    # Outer long beam — TWO straight segments with the IBC-corridor bay OPEN between the two
+    # cantilever arms (the ribbon pipes cross there in the clear — no beam to notch; mirrors the
+    # model's two _rwk_long_beam runs).  Inner long beam — CRANKED outboard around the muslin-drop
+    # rod slot (mirrors _rwk_inner_beam_cranked: jog = notch depth, 100mm angled ramps).
+    bay0 = ARM_YDS[0] + SHS / 2      # near arm far edge ≈ 1096 — near segment ends here
+    bay1 = ARM_YDS[1] - SHS / 2      # far arm near edge  ≈ 1266 — far segment starts here
+    ax.add_patch(Rectangle(((WK_R_X - SHS), (0)), (SHS), (bay0),
+                            fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))             # near outer segment
+    ax.add_patch(Rectangle(((WK_R_X - SHS), (bay1)), (SHS), (C_WID - bay1),
+                            fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))             # far outer segment
+    # open-bay marker (no beam here) + callout
+    ax.plot([WK_R_X - SHS / 2, WK_R_X - SHS / 2], [bay0, bay1], color="#C03028",
+            lw=1.1, ls=(0, (2, 2)), zorder=9)
+    leader(ax, (WK_R_X - SHS / 2), ((bay0 + bay1) / 2),
+           (WK_R_X + 330), ((bay0 + bay1) / 2 + 150),
+           f"OUTER BEAM OMITTED HERE\n(~{int(bay1 - bay0)}mm open corridor bay\nbetween the arms — ribbon\npipes cross in the clear)",
+           color="#C03028", fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
     cN0 = WALKWAY_MUSLIN_NOTCH_YD0
     cN1 = WALKWAY_MUSLIN_NOTCH_YD0 + WALKWAY_MUSLIN_NOTCH_DY
     cDX = WALKWAY_MUSLIN_NOTCH_DX                 # 100 — jog = notch depth
@@ -1196,7 +1218,7 @@ def sheet3():
 
     leader(ax, (WK_L_X + SHS / 2), (C_WID * 0.80),
            (GUT_X - 150), (C_WID * 0.84),
-           f"LONG BEAM\n2×1in tube (50.8×25.4)\n(×2, X={WK_L_X}/{WK_R_X};\ninner cranked at the rod slot)",
+           f"LONG BEAM\n2×1in tube (50.8×25.4)\n(inner continuous, cranked at the rod slot;\nouter in 2 segments, X={WK_L_X}/{WK_R_X})",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, ((WK_L_X + WK_R_X) / 2), (C_WID - SHS / 2),
            ((WK_L_X + WK_R_X) / 2), (C_WID + 120),
@@ -1256,16 +1278,19 @@ def sheet3():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        "RIGHT WALKWAY — CANTILEVER RECTANGLE:",
-        f"1. Closed 2×1in-tube frame: 2 long beams (X={WK_L_X}/{WK_R_X},",
-        f"   full {C_WID}mm width) + 2 end beams.",
-        "2. Picked up at mid-span by 2 arms cantilevering off the",
+        "RIGHT WALKWAY — CANTILEVER FRAME:",
+        f"1. 2×1in-tube frame: a continuous inner long beam (X={WK_L_X}),",
+        f"   an outer long beam in 2 segments (X={WK_R_X}) + 2 end beams.",
+        "2. The outer beam is OMITTED over the IBC-corridor bay",
+        "   (~170mm between the arms) so the ribbon pipes cross clear.",
+        "3. Picked up at mid-span by 2 arms cantilevering off the",
         f"   IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",
         "   half-lapped where the long beams cross them.",
-        "3. LEFT corners on wall cleats; RIGHT corners on combined",
+        "4. LEFT corners on wall cleats; RIGHT corners on combined",
         "   corner plates SHARED with the bottom film rail (BR).",
-        f"4. Deck {WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate spans the rectangle.",
-        "5. ZERO floor contact, ZERO roof penetrations.",
+        f"5. Deck {WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate in 3 sections (split at the",
+        "   arm centers; center section bridges the open bay).",
+        "6. ZERO floor contact, ZERO roof penetrations.",
     ]
     draw_notes(ax, notes, (IBC_COL_X + IBC_W + 90), (C_WID * 0.62),
                spacing=(52), fs=6.5, width=(IBC_W - 60), font=FONT)

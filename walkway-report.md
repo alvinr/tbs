@@ -15,19 +15,19 @@ access functions:
 - **Left walkway** (cargo door end) — access to hinged light-trap panel latches
   and revolving drum. Removable for panel transport.
 - **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
-  manifold. Carried on a cantilever rectangle off the IBC frame to clear the IBC stack below.
+  manifold. Carried on a cantilever frame off the IBC frame to clear the IBC stack below.
 
 All four sections share a common 140mm deck height (115mm bracket arm, L-angle, or
 floor-leg arm + 25mm grating) and 300mm standard width, creating a level perimeter walking
 surface. There are two sections that _punch out_ to allows easier access of the lightrap and around the battery stack.
 
 The design enforces **zero processing tray contact** — all walkway supports are
-either wall-mounted, carried on the cantilever rectangle off the IBC frame, or placed outside the tray footprint. This
+either wall-mounted, carried on the cantilever frame off the IBC frame, or placed outside the tray footprint. This
 prevents chemical contamination of walkway structures and avoids disrupting the
 tray's watertight seal.
 
 <!-- brochure:skip -->
-**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 2×1×0.120in (50.8×25.4mm) frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever frame (2×1×0.120in (50.8×25.4mm) frame with an open bay in the outer rail over the corridor, on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -193,10 +193,23 @@ deflection stays well under 1mm. (2×⅞ would clear by 15mm but isn't a stock s
 Supermarkets carry only **2×1**; being *deeper* it gives **stronger** arms, SF≈2.5, at the cost of 3.4mm
 clearance, which keeps the deck height unchanged.) The frame:
 
-- **Two long beams** run the full container width, with the 245mm grating spanning between them
-  (the right deck is shortened to land on the shared combined corner plate).
-- **Two short end beams** (≈245mm) close the near and far ends, joining the long
-  beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
+- **Two long beams** run the container width, with the 245mm grating spanning between them
+  (the right deck is shortened to land on the shared combined corner plate). The **inner** beam
+  is continuous; the **outer** beam is run in **two simply‑supported segments** (combined corner
+  plate → cantilever arm) with an **open bay over the IBC corridor** (see below).
+- **Two short end beams** (≈245mm) close the near and far ends, joining the beams into a
+  torsionally stiff frame (no free bearer ends to droop).
+
+**Open corridor bay in the outer beam.** The four under‑walkway ribbon pipes cross the outer
+beam line to enter the IBC corridor. Rather than notch the outer beam — an open‑top notch would
+gut the 2×1 section to a ~2.4mm web, a near‑hinge in a primary bending member — the outer beam
+is **omitted over the ~170mm open bay between the two cantilever arms** (Yd ≈ 1,097–1,266, the IBC‑corridor crossing),
+so the pipes cross in the clear. Each outer segment is then a short simply‑supported span (wall
+combined plate at one end, cantilever‑arm half‑lap at the other), and the only continuous member
+across the corridor is the inner beam. The grating is **split at the two cantilever‑arm centers**
+(Yd ≈ 1,071 / 1,291) into near, center, and far sections; the **center section bridges the open
+bay**, its ends landing on the two arms. That short center span carries a little flex, accepted
+over the low‑traffic corridor.
 
 **Cranked inner beam at the muslin-rod slot.** The muslin-drop notch on the right walkway
 (Yd 1,912–2,062) sits at the tray-facing edge, directly over the **inner** long beam — and the
@@ -466,7 +479,7 @@ so they cannot drift from the geometry.
 | Floor-leg post | 807 N·m | 2158 N·m | 2.68 | 2×2×0.120 SHS |
 | Foot-anchor uplift | 2445 N/screw | engage steel pan | ≈1 | 4× #14 SS self-driller; 2 outboard react the couple over the 165 mm foot |
 | Combined corner plate | 1612 N | 161856 N | 100 | 10 mm plate, 4× M12; shared with the BR film rail |
-| RWK long beam (cross-ref) | person + grate | SF 7.1 | 7.1 | ibc_frame_load.outer_beam_frame_check — simply-supported full section |
+| RWK long beam (cross-ref) | person + grate | SF 7.1 | 7.1 | ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section |
 | RWK arm half-lap notch (cross-ref) | 334 N·m | SF 2.03 | 2.03 | ibc_frame_load.arm_notch_check — solid-bar rebalanced split |
 | Arm→upright J6 (IBC-owned) | 395 N·m | SF 20 | 20 | ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only |
 <!-- END load:validation -->
@@ -482,12 +495,13 @@ carry fabrication conditions rather than a clean margin: the **corrugated-rib pu
 ≥30mm corrugation confirmation for bolt grip, and the **floor-leg foot anchors** (~2.4 kN/screw uplift) require
 the #14 self-drillers to engage the container's **steel floor pan**, not the plywood alone.
 
-The **right walkway** is a closed **2×1×0.120in cantilever rectangle** picked up at mid-span by two arms off the
-IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates (right). Its long/end
-beams and the arm half-lap notch are validated in `ibc_frame_load.py` (`outer_beam_frame_check`, SF 7.1;
+The **right walkway** is a **2×1×0.120in cantilever frame** — a continuous inner beam, two outer-beam
+segments, and two end beams, with an **open bay in the outer rail over the corridor** — picked up at mid-span
+by two arms off the IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates
+(right). Its long/end beams and the arm half-lap notch are validated in `ibc_frame_load.py` (`outer_beam_frame_check`, SF 7.1;
 `arm_notch_check`, SF 2.03) and cross-referenced above; the **arm→upright connection (joint J6) is IBC-frame-owned**
 and drawn on IBC-frame Sheet 5, so it is cross-referenced, not re-validated here (see the
-[cantilever study](right-walkway-cantilever-study.md)). The closed rectangle resists twist far better than the
+[cantilever study](right-walkway-cantilever-study.md)). The frame resists twist far better than the
 free-ended bearer angles it replaces, so the deck barely bounces.
 
 ---
@@ -634,7 +648,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
-| Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (~245mm, the 245mm right deck) that make the closed rectangle, ~5.2 m (17.1 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
+| Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — a continuous inner long beam (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + an outer long beam in 2 segments (an open corridor bay ~170mm between the cantilever arms, so the ribbon pipes cross clear of any beam) + 2 end beams (~245mm, the 245mm right deck) that make the cantilever frame, ~5.0 m (16.5 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
 | Combined corner plate (right corners) | 10mm steel, ~200mm wide (widened inboard to back the walkway right beam) — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Right-walkway wall cleats + combined corner plates, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. (The 2 center arms no longer use these — they bolt via the J6 end-plate, see bolt-m12x100.) $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 20 ea | McMaster-Carr | $35 |

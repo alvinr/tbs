@@ -27,7 +27,7 @@ from the pinhole wall across to the plumbing corridor. (Sections
 | **B‑B** | ≈ 62 (near end) | the four ribbon lanes in the channel between the long beams, near their pinhole‑wall end |
 | **C‑C** | ≈ 450 (mid‑tray) | the ribbon passing above the tray, under the grate — a sanctioned pass over the exclusion zone |
 | **D‑D** | ≈ 1066 (near cantilever) | the ribbon looping *over* the cantilever, and the foot under the tray |
-| **E‑E** | ≈ 1130–1245 (corridor center) | the lines crossing the notched beam flush, dropping the tray‑edge slot, and rising into the four corridor lanes |
+| **E‑E** | ≈ 1130–1245 (corridor center) | the lines crossing the open corridor bay flush (the outer beam is omitted between the cantilever arms), dropping the tray‑edge slot, and rising into the four corridor lanes |
 | **F‑F** | ≈ 1286 (far cantilever) | the far cantilever, mirroring D‑D (no line crosses it) |
 
 ## Section B‑B — near end of the ribbon
@@ -64,18 +64,18 @@ The ribbon **loops up over the cantilever** here. It rises through the grate, cr
 then passing over the arm top and the grate, clearing the arm by ≈ 16 mm
 — and drops back to the **flush ribbon height**, so it never passes through the
 cantilever steel and never dips toward the tray. No line threads the tray‑rim↔upright gap at this
-plane. Past the cantilever each lane stays flush, crosses the **outer beam through an open‑top
-notch**, and only then drops the tray‑edge slot into the corridor to run into the pumps
- — they appear in‑plane in E‑E.
+plane. Past the cantilever each lane stays flush, crosses the **open corridor bay** (the outer
+beam is omitted between the two cantilever arms, so there is no beam to cross), and only then
+drops the tray‑edge slot into the corridor to run into the pumps — they appear in‑plane in E‑E.
 
 ## Section E‑E — corridor center
 
 ![TBS-001 — Walkway Routing Section E-E: corridor center, between the frame uprights](assets/walkway-sections-sheet4.png)
 
 A thick‑slab section through the **clear span between the frame uprights**.
-Past the cantilever each line stays **flush** and crosses the **outer long beam through
-an open‑top notch** (the beam's top web is slotted at each lane so the pipe passes
-through without dipping). It then **drops the tray‑edge slot** —
+Past the cantilever each line stays **flush** and crosses the **open corridor bay** — the
+outer long beam is omitted between the two cantilever arms, so there is no beam to cross and
+the lanes pass in the clear. It then **drops the tray‑edge slot** —
 which sits **past the spray‑carriage travel** — to the
 corridor entry, to the ** corridor routing** rises each line to its lane
 height and runs in X toward the pump column: the brown tray‑sump → P‑04
@@ -117,12 +117,15 @@ two remaining structural items the plan views do not reveal:
 2. **Loop‑over clears the cantilever** — the crest clears the cantilever‑arm top by
    ≈ 16 mm and passes just over the grate; the loop keeps the lines out of the cantilever
    steel entirely (D‑D). Past the cantilever each line returns to the flush — never dipping.
-3. **Notched‑beam corridor entry** — a flush pipe cannot pass *under* the outer long beam (the
-   carriage crown to the beam soffit, leaves only 14 mm, less than the 21 mm pipe), so
-   the beam's top web is **slotted with an open‑top notch at each lane**, leaving the
-   bottom web intact. Each line crosses the notch flush, then **drops the tray‑edge slot**
-    — which sits **past the carriage travel** — into the corridor, where the
-   existing routing rises it to the pumps. No pinch remains at the tray‑rim↔upright gap.
+3. **Open‑bay corridor entry** — a flush pipe cannot pass *under* the outer long beam (carriage
+   crown to the beam soffit leaves only 14 mm, less than the 21 mm pipe), so rather than notch a
+   primary bending member the **outer beam is run in two simply‑supported segments** (wall combined
+   plate → cantilever arm) and **omitted over the ~170 mm open bay between the two cantilever
+   arms** (the IBC‑corridor crossing). Each line crosses that open bay flush with no beam to clear, then **drops the tray‑edge
+   slot** — which sits **past the carriage travel** — into the corridor, where the existing routing
+   rises it to the pumps. The walkway grate is split at the two cantilever‑arm centers so its
+   **center section bridges the open bay**; the short span carries a little flex, accepted over the
+   low‑traffic corridor. No pinch remains at the tray‑rim↔upright gap.
 4. **Front foot + M12 anchor under the tray basin** — the tray‑datum correction raises the welded
    pan onto the shim ramp (floor bottom, at the corridor foot stations), so the 12 mm front
    foot clears **~11 mm** *under* the pan (see G‑G).

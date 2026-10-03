@@ -285,21 +285,21 @@ def arm_notch_check(sf_target=2.0):
 
 
 def outer_beam_frame_check():
-    """The outer long beam is half-lapped (notched to 9.4 mm) where the 2 arms cross it — and that notch is
-    at a SUPPORT. A 9.4 mm kept-upper hollow channel is far too weak to carry the elastic hogging, so it
-    cannot act as a rigid moment joint: it is a BEARING SEAT (the beam's upper 9.4 rests on the arm's lower
-    16), i.e. a PINNED support. Designed that way the beam is simply-supported between its 4 bearing points,
-    the notch carries only the vertical reaction, and the FULL 25.4 section governs span bending + deflection
-    (SS is also the conservative bound for the real continuous beam)."""
-    lines = ["\n########## OUTER WALKWAY LONG BEAM — CONTINUOUS-FRAME CHECK ##########"]
+    """The outer long beam runs in TWO simply-supported segments — each from a corner bearing (combined
+    plate) to a cantilever-arm half-lap — with the IBC-corridor bay between the two arms left OPEN (no
+    beam), so the under-walkway ribbon pipes cross in the clear rather than through a notched beam. Each
+    segment bears on its arm through the half-lap (the beam's upper 9.4 rests on the arm's lower 16), i.e.
+    a PINNED / BEARING-SEAT support, so each segment is genuinely simply-supported on the FULL 25.4 section
+    — the open bay carries no span at all, and the worst segment governs bending + deflection."""
+    lines = ["\n########## OUTER WALKWAY LONG BEAM — TWO-SEGMENT FRAME CHECK ##########"]
     E = 200000.0
     z_full = z_rhs(RWK_AH, RWK_BEARER_W, 3.05)
     i_full = z_full * RWK_AH / 2.0
-    sup = [0.0] + sorted(float(y) for y in RWK_UP_YDS) + [C_WID_MM]   # 2 corner + 2 arm supports (RWK_UP_YDS)
-    spans = [sup[i + 1] - sup[i] for i in range(len(sup) - 1)]
+    a0, a1 = sorted(float(y) for y in RWK_UP_YDS)                      # the 2 cantilever-arm supports
+    spans = [a0 - 0.0, C_WID_MM - a1]   # near segment (plate->near arm) + far segment (far arm->plate); bay a0..a1 OPEN
     lmax = max(spans)
     w = 0.063                                                 # N/mm — GRP grate (half the 300mm deck) + self-weight (light)
-    lines.append(f"  supports at Yd {', '.join(f'{s:.0f}' for s in sup)} mm; spans {', '.join(f'{s:.0f}' for s in spans)}; worst {lmax:.0f} mm")
+    lines.append(f"  2 SS segments: near plate(0)->arm({a0:.0f}) span {spans[0]:.0f} mm, far arm({a1:.0f})->plate({C_WID_MM:.0f}) span {spans[1]:.0f} mm; corridor bay {a0:.0f}-{a1:.0f} OPEN; worst {lmax:.0f} mm")
     lines.append(f"  full section Z={z_full:.0f} mm3  I={i_full:.0f} mm4  (2x1x0.120 RHS)")
     for pn in (500.0, 1000.0):                                # person share on one of the 2 close long beams (worst-on-one = 1000)
         m_ss = (w * lmax**2 / 8.0 + pn * lmax / 4.0) / 1e3
@@ -311,7 +311,7 @@ def outer_beam_frame_check():
     m_hog = 3 * 500.0 * lmax / 16.0 / 1e3                     # ~propped-cantilever hogging (person mid long span)
     lines.append(f"  notch (9.4mm kept, Z={z_notch:.0f}) cap {m_cap_notch:.0f} Nm << elastic hogging ~{m_hog:.0f} Nm")
     lines.append("    => the half-lap is a BEARING SEAT / pin, NOT a moment joint: notch carries the vertical")
-    lines.append("       reaction only (~0.2 MPa bearing over 50.8x50.8); the beam spans SS on the FULL section.")
+    lines.append("       reaction only (~0.2 MPa bearing over 50.8x50.8); each segment spans SS on the FULL section.")
     return "\n".join(lines)
 
 

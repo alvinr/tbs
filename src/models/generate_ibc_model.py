@@ -79,15 +79,17 @@ def ibc_labels():
             f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
             f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
-    # Every ball valve + diverter — single-sourced from the water-panel label set (pw.LABEL_POINTS)
-    # so they track the same valve centers and can't drift from the valve geometry both models share.
+    # Plumbing-panel callouts (pumps, ACCs, filters, sample/ball valves, diverters) — single-sourced
+    # from the water-panel label set (pw.LABEL_POINTS) so they track the shared part/valve centers and
+    # can't drift.  The end-wall ports (X1/X3/X4) are skipped — IBC_POINT_LABELS already carries them.
     import generate_pinhole_water_panel as pw
     for x, y, z, text, dx, dy, dz in pw.LABEL_POINTS:
-        if text.lstrip().startswith(("BV-", "DV-", "3W-")):
-            rows.append(
-                f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-                f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
-                f'txt.layer = model.layers["Labels"] rescue nil')
+        if text.lstrip().startswith(("X1", "X3", "X4")):
+            continue
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
 

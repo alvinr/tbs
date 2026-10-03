@@ -79,13 +79,30 @@ def ibc_labels():
             f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
             f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
-    # Plumbing-panel callouts (pumps, ACCs, filters, sample/ball valves, diverters) — single-sourced
-    # from the water-panel label set (pw.LABEL_POINTS) so they track the shared part/valve centers and
-    # can't drift.  The end-wall ports (X1/X3/X4) are skipped — IBC_POINT_LABELS already carries them.
+    # Plumbing-panel callouts, single-sourced from pw.LABEL_POINTS (track the shared part/valve centers).
+    # End-wall ports (X1/X3/X4) are skipped — IBC_POINT_LABELS carries them.  The CORRIDOR cluster (pump
+    # column at Yd1181 + corridor valves at Yd1077, stacked in Z) is RE-LEADERED for this view: each text is
+    # pulled −X into the open aisle and the texts are min-spaced in Z per Yd-column so they fan out instead of
+    # stacking (pw's −X leaders, tuned for the water view, overlapped here).  Pinhole-wall labels keep pw's.
     import generate_pinhole_water_panel as pw
+    from collections import defaultdict
+    corridor, other = defaultdict(list), []
     for x, y, z, text, dx, dy, dz in pw.LABEL_POINTS:
         if text.lstrip().startswith(("X1", "X3", "X4")):
             continue
+        if 4700 <= x <= 5300:
+            corridor[round(y / 60) * 60].append((x, y, z, text))
+        else:
+            other.append((x, y, z, text, dx, dy, dz))
+    placed = list(other)
+    for rank, gy in enumerate(sorted(corridor, reverse=True)):   # each Yd-column its own −X distance so
+        dx = -850 - 300 * rank                                   #   the columns don't overlap on screen
+        pz = None
+        for x, y, z, text in sorted(corridor[gy], key=lambda r: r[2]):   # bottom→top
+            tz = z if pz is None else max(z, pz + 180)           # ≥180mm between stacked texts (fan upward)
+            pz = tz
+            placed.append((x, y, z, text, dx, 0, tz - z))        # lead −X into the aisle, fanned Z
+    for x, y, z, text, dx, dy, dz in placed:
         rows.append(
             f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
             f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'

@@ -963,7 +963,7 @@ def plumbing(part="all", sump_on_skid=False):
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
          [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
           (PXC, GAP_CORR_Y, trz), (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, trz),
-          (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, 60)], ov.C_BLUE)   # drop PAST the FP bottom rail (clears it)
+          (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, RIBBON_Z)], ov.C_BLUE)   # drop to the FLUSH ribbon Z (hands off to ribbon_run's flush branch — no dip)
     if part == "sump":
         return "\n".join(sump)
     if part == "corridor":

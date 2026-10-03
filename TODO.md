@@ -246,9 +246,15 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   A flush "hop-over" entry (option-b) was attempted and **backed out**: removing the dip makes `ribbon_run`'s
   +X-to-slot→−X-to-lane a 180° reversal → SketchUp "zero-length vector" elbow error. To do it cleanly:
   teach `ribbon_run` to skip the slot/notch detour when a line enters at the flush Z (and verify the outer-beam
-  crossing still clears for the low-pickup lines). Fold in the 3 remaining under-corridor flags (J6 plate, blue
-  crossing, far back-rail) — same shared geometry. The `P-02→ACC-02` re-lane (2026-10-02, committed) already
-  cleared that leg's grey/brown + X-rail clashes; this item is the deeper shared-`ribbon_run` pass.
+  crossing still clears for the low-pickup lines). **DONE 2026-10-02:** the `ribbon_run` flush-entry branch is
+  built + committed, and all 4 corridor ribbon lines (P-02→ACC-02, blue trunk, IBC-3 tap→P-02, SV-01→DV-01) now
+  enter FLUSH — every U/dip is gone, and the J6-plate clashes cleared. **REMAINING — lane re-allocation (the real
+  pass):** with all 4 now at the same flush Z they converge in the **saturated Yd window** (the blue sits ~10mm
+  each side of the brown P-02 inlet ≤Yd1111 and the grey DV-01 merge Yd1165). That left **blue × P-02 coincident
+  (0mm) at (4630,1132,104)** — a Yd nudge can't fix it (P-02 nudged down hits the Yd≤1097 cantilever; blue nudged
+  up hits the Yd1165 grey). The fix is a proper lane re-allocation (distinct Z-bands or Yd lanes across the 4 flush
+  lines, a Z-stagger for the blue under P-02) — NOT a single nudge. Plus the unrelated far back-rail graze
+  (DV-02 waste × Frame rail X5115).
 - [~] **Water — sump-pickup rerouted AROUND the pinhole wall (2026-10-02).** `skid_plumbing()` Leg 1
   redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6
   cantilever wall-plates, top Z200) → +X along the wall to the P-04 climb; standard P-clips in the

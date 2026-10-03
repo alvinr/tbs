@@ -231,8 +231,8 @@ def kit(part="all", p02_on_corridor=False):
     # down into the ribbon channel → −Yd to the near-rim strip → rise up the wall to P-02's IN port.
     # split for the construction model: the under-grate RIBBON portion lays with the other ribbons
     # (Phase 3, step 3.2, before the grate); the short RISE to P-02 stays with the skid (3.5).
-    brown_pre = ([(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]               # tap → −X → down to the corridor pickup (past the tray edge)
-                 + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN))  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest at the SHARED line-1 Yd (uniform crests, 2026-07-24)
+    brown_pre = ([(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, cp.RIBBON_Z)]       # tap → −X → to the FLUSH ribbon Z (no dip)
+                 + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], cp.RIBBON_Z), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN))  # FLUSH entry: straight through the NOTCHED beam (lane-0 Yd); crest at the SHARED line-1 Yd
     brown_rise_wps = [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in]         # rise to P-02 IN
     brown_full_pipe = ov.ruby_pipe_run("IBC-3 (Brown) tap -> P-02 inlet", brown_pre + brown_rise_wps, rp, color=ov.C_IBC_BROWN)
     if not p02_on_corridor:                                      # this wall suction is replaced by a corridor IBC-3→P-02 run
@@ -288,7 +288,7 @@ def kit(part="all", p02_on_corridor=False):
           (svx + 50, sv_y, svz),                                               # +X out (dog-leg)
           (blane, sv_y, svz),                                                  # +X at Z1010 OVER the inner beam to the lane X (over the walkway, not under)
           (blane, 60, svz)]                                                     # −Yd to the ribbon near-rim Yd (still Z1010) — top of the drop
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (blane, 60, svz), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # DROP into the lane + under-walkway ribbon (lane 3)
+         + cp.ribbon_run(3, (DCX - 100, DCY, cp.RIBBON_Z), (blane, 60, svz), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # FLUSH entry on the corridor end (no dip) + under-walkway ribbon (lane 3)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
@@ -353,7 +353,7 @@ def tap01_supply():
     # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
     # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (2026-07-24)
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, cp.RIBBON_Z), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # FLUSH entry (no dip — comes down from trz=235); crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN)
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off

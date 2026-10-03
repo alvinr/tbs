@@ -79,6 +79,15 @@ def ibc_labels():
             f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
             f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
+    # Every ball valve + diverter — single-sourced from the water-panel label set (pw.LABEL_POINTS)
+    # so they track the same valve centers and can't drift from the valve geometry both models share.
+    import generate_pinhole_water_panel as pw
+    for x, y, z, text, dx, dy, dz in pw.LABEL_POINTS:
+        if text.lstrip().startswith(("BV-", "DV-", "3W-")):
+            rows.append(
+                f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+                f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+                f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
 

@@ -1,7 +1,5 @@
-routing-sources-sha: cc1fffc5dcf9
-model=ibc-stack  pipes=420 solids=231  interferences=1
+routing-sources-sha: 2f479c6705b9
+model=ibc-stack  pipes=422 solids=231  interferences=1
   PIPE  DV-02 waste -> IBC-4                       (Skid plumbing)
     x  FRAME      Frame rail (Yd)                         near (4970,1194,65)
-pipe-on-pipe crossings=1
-  PIPE  Blue trunk: corridor -> ribbon -> outside-ri
-    x  PIPE  P-02 -> ACC-02 (recycle spray)                cross (4509,1121,107)  centreline 23mm < 27mm
+pipe-on-pipe crossings=0

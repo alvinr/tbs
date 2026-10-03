@@ -353,7 +353,7 @@ def tap01_supply():
     # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
     # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # stays LOW (Z60) through the corridor entry to pass UNDER the flush brown P-02 (not flush — a flush blue coincides with the brown in the saturated Yd window)
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, cp.RIBBON_Z), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # FLUSH entry — runs STRAIGHT back (no U); the brown P-02 ducks UNDER it at the crossing
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off
@@ -684,7 +684,7 @@ def skid_plumbing(part="all"):
     g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd
     acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3770.5,104,948)
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
-    cpt = (4630, g0, RZ)                                               # ribbon entry at the FLUSH ribbon Z — triggers ribbon_run's flush branch (straight through the notch, no dip); rides OVER the J6 plate (tops Z77)
+    cpt = (4630, g0 - 5, RZ)                                           # ribbon entry at the FLUSH ribbon Z (flush branch — straight through the notch); Yd pulled 5mm −Yd (1105) so the brown's under-blue rise clears the blue trunk (Yd1132)
     npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
     rpy = cp.SB_RISER_YD_FAR                                            # 1285 — #29: P-02 discharge riser sits on the FAR support board (flush)
     midz, midy = RZ, 1161                                              # mid-gap lane: run at the FLUSH ribbon Z (above the X-rail top Z63 + the J6 plate Z77); Yd in the gap BETWEEN the blue (Yd1132) and DV-02-waste (Yd1184) runs so it's Yd-clear of both (the DV-02 waste rises to Z86-121, so Z alone won't separate them)
@@ -693,7 +693,12 @@ def skid_plumbing(part="all"):
              (exitX, rpy, midz),                                        # DROP to the flush mid-gap run Z (stays above the X-rail + the J6 plate)
              (exitX, midy, midz),                                       # −Yd to the mid-gap lane (between the blue & DV-02-waste Yd lanes)
              (cpt[0], midy, midz),                                      # −X across the uprights' X-span, Yd-clear of the grey DV-02-waste + blue
-             cpt]                                                       # −Yd to the ribbon entry at flush — NO dip; ribbon_run goes straight through the notch + hops the cantilever
+             # DUCK UNDER the straight flush blue trunk (Yd1132): drop below it, cross beneath, rise back
+             # to the flush ribbon entry — the blue runs straight, the brown recycle takes the dip.
+             (cpt[0], midy, 75),                                        # DROP straight down at the mid-gap Yd (1161, 29mm +Yd of the blue at 1132)
+             (cpt[0], 1107, 75),                                        # −Yd UNDER the blue at Z75, well past it
+             (cpt[0], 1107, midz),                                      # rise back to the flush ribbon Z, clear −Yd of the blue (Yd1107)
+             cpt]                                                       # −Yd to the ribbon entry at flush — ribbon_run straight through the notch + hops the cantilever
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
     # Like lanes 3 & 4 (NOT under the walkway): rise up the wall at the lane, then run the panel bottom (Z948)
     # −X to ACC-02 — crossing the inner beam OVER the top at Z948, near-rim (same as the 3&4 valve-height hops).

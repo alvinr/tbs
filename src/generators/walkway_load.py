@@ -177,7 +177,7 @@ def floor_leg_check():
 def corner_plate_check():
     # The RWK closed rectangle sheds its deck load to 4 corners + 2 mid-span arms. A conservative
     # corner reaction = a person (300 lbf) standing at a corner + the corner's share of the deck.
-    deck_uniform = LL * k.WALKWAY_RIGHT_W * (float(k.C_WID) if hasattr(k, "C_WID") else 2388.0)  # N (whole deck)
+    deck_uniform = LL * k.WALKWAY_RIGHT_W * k.C_WID  # N (whole deck)
     r_corner = P_CONC + deck_uniform / 6.0            # person + 1/6 of the deck (4 corners + 2 arms)
     # 10 mm plate on 4× M12 to the wall: bolt shear governs; group cap is huge.
     bolt_cap = 4 * 0.6 * FUB_88 * AS_M12

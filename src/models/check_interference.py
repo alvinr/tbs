@@ -167,6 +167,11 @@ def near(a, b, margin):
     return True
 
 
+def _pt_near_box(pt, box, margin):
+    """True if point `pt` lies inside `box`'s AABB expanded by `margin` on every axis."""
+    return all(box["mn"][k] - margin <= pt[k] <= box["mx"][k] + margin for k in range(3))
+
+
 # ── centerline geometry (precise pipe-on-pipe crossing detection) ────────────
 # AABB overlap can't tell a real crossing from two parallel neighbours or an end-to-end join, so the
 # pipe-on-pipe pass reduces each pipe leaf to its CENTERLINE and measures the true distance between
@@ -692,7 +697,7 @@ def main():
         A = leaves[i]; ra = run_base(A["n"]); repA = A["rep"]; rA = _radius(repA)
         for j in range(i + 1, len(leaves)):
             B = leaves[j]; rb = run_base(B["n"])
-            if ra == rb or (abut[ra] & abut[rb]):
+            if ra == rb:                               # same run — adjacent segments
                 continue
             repB = B["rep"]; rB = _radius(repB)
             d, cA, cB = closest(repA, repB)
@@ -703,11 +708,19 @@ def main():
             nearB = min(_len(_sub(cB, e)) for e in _ends(repB))
             if nearA <= JOINTOL and nearB <= JOINTOL:  # end-to-end JOIN, not a crossing
                 continue
+            # Shared junction: two runs that meet at a tee/valve are connected THERE — but only there.
+            # Skip the overlap ONLY when the crossing point actually sits at a junction both runs abut;
+            # if they cross elsewhere (away from the shared fitting) it's a real collision.  (The old
+            # code dropped the whole pair whenever they shared ANY junction — it missed crossings like
+            # two suction lines that both pass BV-03 but cross 36mm away from it.)
+            mid = tuple((cA[k] + cB[k]) / 2 for k in range(3))
+            shared = abut[ra] & abut[rb]
+            if shared and any(_pt_near_box(mid, junctions[ji], JTOL) for ji in shared):
+                continue
             key = tuple(sorted((ra, rb)))
             gap = d - clear                            # negative = interpenetration depth
             if key not in worst or gap < worst[key][0]:
-                mid = tuple(round((cA[k] + cB[k]) / 2) for k in range(3))
-                worst[key] = (gap, mid, round(d), round(clear))
+                worst[key] = (gap, tuple(round(x) for x in mid), round(d), round(clear))
 
     print(f"pipe-on-pipe crossings={len(worst)}")
     for key in sorted(worst, key=lambda k: worst[k][0]):

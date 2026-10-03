@@ -151,7 +151,7 @@ diverter = cp.diverter
 
 # 3W-DV-01 center — single source for the geometry (kit()) AND the label anchor, so the
 # callout can never drift off the diverter again when DV-01 is relocated.
-DV01_CX, DV01_CY, DV01_CZ = 4800, cp.CTR_Y + 60, 235   # +100mm toward the sealed (high-X) end so the port turns run square (DCY drives the filtered-line ribbon notch — don't nudge in Yd without decoupling it)
+DV01_CX, DV01_CY, DV01_CZ = 4775, cp.CTR_Y + 60, 235   # nudged 25mm −X toward the walkway; still +X enough that the port turns run square (DCY drives the filtered-line ribbon notch — don't nudge in Yd without decoupling it)
 
 
 def kit(part="all", p02_on_corridor=False):
@@ -353,9 +353,9 @@ def tap01_supply():
     # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
     # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, cp.RIBBON_Z), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # FLUSH entry — runs STRAIGHT back (no U); the brown P-02 ducks UNDER it at the crossing
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, cp.RIBBON_Z), (cp.BLUE_TRUNK_LANE_X, yd, fz), up_yd=cp.RIBBON_YD_DOWN, lane_x=cp.BLUE_TRUNK_LANE_X), pr, color=ov.C_BLUE))  # FLUSH entry; nudged +X toward the brown lane (lane_x) — STRAIGHT back (no U)
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
-        ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
+        ov.TAP_X, yd, fz, pr, cp.BLUE_TRUNK_LANE_X - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off
     # the pinhole wall, close to the spray-bar pole-top feed (2420,633,1303) so the delivery coil is short.
     #   run = fresh (−Yd, up from the trunk) ↔ spray (+Yd, to the coil); branch = recycled IN (+X, from ACC-02).
@@ -447,9 +447,9 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 87, "ACC-01\n(accumulator)", -700, 0, 250),   # + acc_h/2 (body 174)
     (cp.BACK_X + cp.EQT + 24, cp.CTR_Y, (cp.PSTACK["P-01"] + cp.PSTACK["P-03"]) / 2 + 90, "12V DIST BLOCK\n(Cct C)", 300, 0, 400),   # rear-of-panel Circuit-C distribution block (behind the pump column; feed lands here, bus fans out to the pumps)
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
-    (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
+    (cp.FRONT_X + 106, cp.YD_NEAR + 67, 950, "BV-01", -600, 0, 250),   # now on the front walkway-side riser (dropped 50mm)
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", -350, 0, 200),   # tip = BV-02 valve center (walkway-edge loop); text on the −X operator side
-    (cp.BROWN_TAP[0] - 55, cp.SB_RISER_YD_NEAR, 950, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (on the near support board)
+    (cp.BROWN_TAP[0] - 55, cp.SB_RISER_YD_NEAR, 900, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (on the near support board; dropped 50mm)
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-03") - 110, "BV-06", -350, 0, 150),    # tip = BV-06 valve center (walkway-edge loop); text on the −X operator side
     # ── per-tank anti-siphon check valves ──
     (ov.C_LEN - 200, cp.X1_TEE_Y, cp.X1_TEE_Z, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — pumps' integral checks cover the returns
@@ -680,34 +680,23 @@ def skid_plumbing(part="all"):
     # Reverse of the waste leg: off P-02's +Yd OUT, drop into the corridor, ribbon lane 0 back under the
     # walkway to the near rim, then −X along the near rim to the skid and up into ACC-02's bottom IN.
     p2o = cp.pump_out(cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"], "y", 1)      # P-02 OUT (+Yd) (4984,1261,1102)
-    L0  = cp.RIBBON_LANE_X[0]                                           # lane 0 (free)
-    g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd
+    L0  = cp.RIBBON_LANE_X[0]                                           # lane 0
+    g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd (1110)
     acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3770.5,104,948)
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
-    cpt = (4630, g0 - 5, RZ)                                           # ribbon entry at the FLUSH ribbon Z (flush branch — straight through the notch); Yd pulled 5mm −Yd (1105) so the brown's under-blue rise clears the blue trunk (Yd1132)
+    cpt = (4616, g0 + 13, RZ)                                           # ribbon entry at flush Z (flush branch); Yd1123 — nudged +Yd toward the film-plane wall so the flush run + hump-rise clear the cantilever +Yd edge (Yd1097) by ~15mm; X pulled −X to clear the J6 end-plate (−X face X4646)
     npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
-    rpy = cp.SB_RISER_YD_FAR                                            # 1285 — #29: P-02 discharge riser sits on the FAR support board (flush)
-    midz, midy = RZ, 1161                                              # mid-gap lane: run at the FLUSH ribbon Z (above the X-rail top Z63 + the J6 plate Z77); Yd in the gap BETWEEN the blue (Yd1132) and DV-02-waste (Yd1184) runs so it's Yd-clear of both (the DV-02 waste rises to Z86-121, so Z alone won't separate them)
+    rpy = cp.SB_RISER_YD_FAR                                            # 1285 — P-02 discharge riser on the FAR support board (flush)
+    midz = RZ                                                          # flush ribbon Z
     lead  = [p2o, (p2o[0], rpy, p2o[2]),                                # +Yd OUT of the +Yd OUT port onto the board riser plane
              (exitX, rpy, p2o[2]),                                      # −X OUT of the pump column (+Yd side, above P-01/ACC-01)
-             (exitX, rpy, midz),                                        # DROP to the flush mid-gap run Z (stays above the X-rail + the J6 plate)
-             (exitX, midy, midz),                                       # −Yd to the mid-gap lane (between the blue & DV-02-waste Yd lanes)
-             (cpt[0], midy, midz),                                      # −X across the uprights' X-span, Yd-clear of the grey DV-02-waste + blue
-             # DUCK UNDER the straight flush blue trunk (Yd1132): drop below it, cross beneath, rise back
-             # to the flush ribbon entry — the blue runs straight, the brown recycle takes the dip.
-             (cpt[0], midy, 60),                                        # DROP straight down at the mid-gap Yd (1161, 29mm +Yd of the blue at 1132)
-             (cpt[0], 1107, 60),                                        # −Yd UNDER the blue at Z60, well clear of the cantilever underside (Z90)
-             (cpt[0], 1107, midz),                                      # rise back to the flush ribbon Z, clear −Yd of the blue (Yd1107)
-             cpt]                                                       # −Yd to the ribbon entry at flush — ribbon_run straight through the notch + hops the cantilever
+             (exitX, rpy, midz),                                        # DROP to the flush ribbon Z
+             (exitX, cpt[1], midz),                                     # −Yd to the ribbon-entry Yd (1123)
+             cpt]                                                       # −X STRAIGHT back to the 90° ribbon-entry turn — no duck (the lowered blue trunk at z210 clears it)
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
-    # Like lanes 3 & 4 (NOT under the walkway): rise up the wall at the lane, then run the panel bottom (Z948)
-    # −X to ACC-02 — crossing the inner beam OVER the top at Z948, near-rim (same as the 3&4 valve-height hops).
-    tail  = [npt,
-             (L0, 65, acc2_in[2]),                                     # RISE up at the lane (grate slot) to the panel-bottom run height (Z948)
-             (L0, CLIPY, acc2_in[2]),                                  # −Yd onto the ply clip plane — CLAMPED to the panel face
-             (acc2_in[0] + 55, CLIPY, acc2_in[2]),                     # −X along the panel bottom, HUGGING the ply, to just +X of ACC-02 IN
-             (acc2_in[0] + 55, ov.PWP_FILTER_YD, acc2_in[2]),          # +Yd out to the IN-port lane (Yd104)
-             acc2_in]                                                  # −X into ACC-02's +X IN port
+    tail  = [npt, (L0, 65, acc2_in[2]), (L0, CLIPY, acc2_in[2]),
+             (acc2_in[0] + 55, CLIPY, acc2_in[2]),
+             (acc2_in[0] + 55, ov.PWP_FILTER_YD, acc2_in[2]), acc2_in]
     p.append(ov.ruby_pipe_run("P-02 -> ACC-02 (recycle spray)",
         lead[:-1] + cross + tail[1:], rp, color=ov.C_IBC_BROWN))
     # ── Leg 5: ACC-02 OUT (−X) → 3W-BV-05 recycled port — closes the recycle-spray loop ──

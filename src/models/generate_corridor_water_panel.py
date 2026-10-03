@@ -63,11 +63,12 @@ RIBBON_SUP_YD  = [200, 450, 700, 950]           # welded cross-beam supports alo
 RIBBON_BEAM_X  = (ov.RWK_X_R - 40, ov.RWK_X_R)  # 4589-4629 — outer long beam span (the notched member)
 RIBBON_SLOT_X  = ov.PROC_TRAY_X_R + 12          # 4641 — drop lane in the tray-edge↔upright gap (X4629-4654,
 #   clear Z16-150), PAST the carriage travel (X≤4599); each corridor exit drops here, never over the tray.
-BLUE_TRUNK_HANDOFF_X = ov.RAIL_X_R + 21         # 4670 — where the corridor blue trunk drops to meet the ribbon:
-#   PAST the film-plane bottom rail (a 40×40 tube ending at RAIL_X_R=4649) by a pipe radius + ~10mm, so the
-#   vertical drop clears the FP rail (the old X4660 grazed the rail edge by 0.5mm).  ribbon_run(1) picks up here.
+BLUE_TRUNK_HANDOFF_X = 4616                      # where the corridor blue trunk drops to meet the ribbon:
+#   ALIGNED with the brown P-02 drop X (both at the same distance from the pinhole).  The drop is at the
+#   corridor Yd (GAP_CORR_Y=1132), clear of the film-plane bottom rail (which runs at low Yd).  ribbon_run(1) picks up here.
+BLUE_TRUNK_LANE_X = RIBBON_LANE_X[0] - (ov.PUMP_PIPE_OD + 5)   # 4477 — nudged +X toward the brown P-02 lane (X4503), min OD21 + 5mm gap
 
-def ribbon_run(i, corridor_pt, near_pt, up_yd=None):
+def ribbon_run(i, corridor_pt, near_pt, up_yd=None, lane_x=None):
     """Waypoints for ribbon lane i (0..3), from the CORRIDOR connection (X in the corridor, past
     the tray edge) to the pinhole-wall (near-rim) connection.  On the corridor side the line stays
     FLUSH under the deck: it comes off its downstream pickup, jogs into the tray-edge↔upright drop
@@ -76,7 +77,7 @@ def ribbon_run(i, corridor_pt, near_pt, up_yd=None):
     tray).  It then LOOPS UP over the first cantilever (never through it — Rule 5), drops back into
     the under-grate ribbon channel, and runs −Yd to the near rim.  corridor_pt Yd must be past the
     cantilever end (>1086).  up_yd (default = corridor_pt Yd) sets where the loop-over rises."""
-    lx, oz = RIBBON_LANE_X[i], RIBBON_OVER_Z
+    lx, oz = (lane_x if lane_x is not None else RIBBON_LANE_X[i]), RIBBON_OVER_Z
     cy, cz = corridor_pt[1], corridor_pt[2]
     uc = up_yd if up_yd is not None else cy        # loop-over rise Yd on the corridor side
     ny = near_pt[1]                                 # this line's own near-end Yd
@@ -429,9 +430,9 @@ GAPX  = ov.PROC_TRAY_X_R + 12             # 4641 — in the gap between the tray
                                           # outside-rim strip (Yd<80) and the corridor (Rule 5a, around the
                                           # tray).  Cross HORIZONTALLY here at a z clear of the FP rail (z510).
 TRAY_STRIP_Y = 60                         # outside the tray near rim (Yd80): the around-the-rim run lane
-GAP_CORR_Y = 1132                         # corridor-side approach Yd — sits in the clear window between the brown P-02
-                                          #   inlet riser (Yd≤1111) and the grey DV-01→IBC-4 merge run (shifted +Yd to
-                                          #   1165), ~10mm each side; the grey shift toward the film plane opened this lane
+GAP_CORR_Y = 1161                         # corridor-side approach Yd — MATCHED to the brown P-02 lead Yd (midy=1161) so the
+                                          #   blue and brown corridor-entry runs share a center line (the blue run is at trz=235,
+                                          #   the brown lead at RIBBON_Z, so they stack clear in Z); −Yd of the grey merge run (1165)
 BROWN_TAP = (4880, CTR_Y - (PVB_R + 30), ov.IBC_PALLET_H + 140)   # (4880,1101,308) — the SINGLE shared
 #   tap RAISED +50mm (was +90/z258) to lift the P-02/P-05 brown inlet runs clear of the blue supply trunk's
 #   low-lane crossing (z225-246); the dip tube below is extended +50mm to keep the same in-tote pickup depth
@@ -532,7 +533,7 @@ C_BV = "#7A8088"                              # ball-valve body — chrome/steel
                                               # PURPLE check valves and YELLOW diverters)
 
 
-def ball_valve(nm, px, py, pz, axis, color=None, hdir="+y"):
+def ball_valve(nm, px, py, pz, axis, color=None, hdir="+y", rot_deg=0):
     """In-line MANUAL ball valve: a short barrel the pipe runs THROUGH (centered on the pipe
     centerline, oriented ALONG `axis`) plus a clear RED lever handle — a stem out perpendicular
     to the run with a lever bar at its tip (like the diverter handles) so it reads as a hand
@@ -558,6 +559,10 @@ def ball_valve(nm, px, py, pz, axis, color=None, hdir="+y"):
         else:                                  # stem along X, lever a vertical bar at the tip
             p.append(ov.ruby_cylinder(nm + " handle stem", (px + r) if ux > 0 else (px - r - HS), py, pz, HSr, HS, color=C_HANDLE, axis="x"))
             p.append(ov.ruby_box(nm + " handle", px + ux * (r + HS) - (0 if ux > 0 else 9), py - 7, pz - LV / 2, 9, 14, LV, color=C_HANDLE))
+    if rot_deg:                                # rotate the WHOLE valve (body + stem + lever, the last 3 groups) about its own axis
+        p.append(f"  _rot = Geom::Transformation.rotation([{ov.mm(px)},{ov.mm(py)},{ov.mm(pz)}], [0,0,1], {rot_deg}.degrees)")
+        p.append("  ents.grep(Sketchup::Group)[-3..-1].each { |g| g.transform!(_rot) }")
+        p.append("")
     return "\n".join(p)
 
 
@@ -689,16 +694,17 @@ DV02X   = SHIRT_X - DVB / 2                  # 5028.5 — 3W-DV-02 box BACK moun
 # pump risers on that wall P-clip to the board.  FAR (film-plane side): DV-01 recycle + P-02
 # discharge + P-01→ACC-01.  NEAR: P-02 suction (BV-03 mid) + P-05 inlet.
 SB_X0, SB_X1 = FRONT_X + S, BACK_X           # board X span (front post inner +X face → back post inner −X face)
-SB_FAR_Z  = (400, 820)                        # far board Z extent (~420, brackets the 2 clamp rows)
-SB_NEAR_Z = (480, 900)                        # near board Z extent (~420)
+SB_FAR_Z  = (400, 1020)                       # far board Z extent (620mm — raised 200mm to back more of the rising pipes; tabs auto-relocate to z0+35 / z1-35)
+SB_NEAR_Z = (480, 1020)                       # near board Z extent (540mm — raised 120mm to back more of the rising pipes; tabs auto-relocate to z0+35 / z1-35)
 SB_NEAR_UP_Z = (1260, 1950)                   # UPPER near board — backs BV-02 (P-05) + BV-06 (P-03) valves + risers; extended DOWN to the Z1300 P-05-inlet brown horizontal and UP to the Z1902 P-03 grey horizontal
 # Riser planes — the pipe back sits ~2.5mm off each board's corridor face (RP + gap), i.e. flush on it.
 SB_RISER_YD_FAR  = YD_FAR - EQT - RP - 2.5    # 1285 — far risers (DV-01 re-routed here; P-02 disch/P-01 nudged)
 SB_RISER_YD_NEAR = YD_NEAR + EQT + RP + 2.5   # 1077 — near risers (P-02 suction nudged here; P-05 already ~here)
-SB_FAR_RISERS_X  = (4873, 4900, 4984)         # DV-01 recycle · P-02 discharge · P-01→ACC-01
+SB_FAR_RISERS_X  = (4848, 4900, 4984)         # DV-01 recycle · P-02 discharge · P-01→ACC-01
+#   NB index 0 MUST track the DV-01 recycle riser X (= DV01_CX + tipd + 40); update it if DV01_CX moves
 SB_NEAR_RISERS_X = (4825, 5070)               # P-02 suction · P-05 inlet
-SB_FAR_CLAMP_Z   = (480, 740)                 # 2 clamp rows (far)
-SB_NEAR_CLAMP_Z  = (560, 820)                 # 2 clamp rows (near)
+SB_FAR_CLAMP_Z   = (480, 740, 960)            # 3 clamp rows (far) — 3rd added on the raised board section for more riser support
+SB_NEAR_CLAMP_Z  = (560, 820, 960)            # 3 clamp rows (near) — 3rd added above the dropped BV-01/BV-03 valves for more riser support
 C_CLIP = "#55575e"                            # cushioned P-clip strap
 
 def support_boards(sides=("far", "near", "near-upper")):
@@ -933,19 +939,28 @@ def plumbing(part="all", sump_on_skid=False):
     # the corridor front (bvx) — BV-01 at reach height, handle to the walkway — then turns +X BACK through the
     # shirt + panel (round holes) and rises BEHIND the panel, OFF the operator's front zone, before jogging −Yd
     # into Blue #1.  Relocating the tall riser to the rear declutters the front for access to the brown valves.
-    bvx, bvy = FRONT_X + 221, YD_NEAR + 67       # 4875 / 1113 — corridor-front access lane (+115 toward the sealed end), clear of the front
-    #   upright (Yd≤1096) AND −Yd of the pump bodies (Yd≥1128) the +X return run passes
+    bvx, bvy = FRONT_X + 221, SB_RISER_YD_NEAR   # 4875 / 1077 — FRONT vertical ON the near board face (BV-01 + clamps); handle now swings into the corridor
+    bvy_rear = YD_NEAR + 67                       # 1113 — return/behind-panel lane: the +X return run stays here (at the board face it fouled the upright + crossed P-05)
     beh_x = 5200                                 # behind-panel riser X — flange (r36) clears the near upright (x≤5154)
     #   and the riser/flange sit on the Yd1113/1038 lanes, −Yd-separated from the X4 waste riser's Yd1196 lane
     loopz = 1210                                 # loop top — above BV-01 (z1000) AND the rear-panel bracket (z≤1178),
     #   in the P-04↔P-05 gap; where the line turns +X to the rear
+    turnz = 1025                                 # 90° turn off the board face just above the top clamp (z1000) and BELOW the
+    #   brown P-02-suction horizontal (z1098): the front vertical leaves Yd1077 here so it never crosses the brown
     _side_entry(p, "Blue #1 -> P-01 suction",   # flooded suction + P-01's integral check → no foot valve (check=False)
                 [pin("P-01"), (PXC, PIY - 30, z01), (bvx, PIY - 30, z01), (bvx, bvy, z01),
-                 (bvx, bvy, loopz),                          # UP the FRONT vertical (BV-01 on it, accessible)
-                 (beh_x, bvy, loopz),                        # +X BACK through the shirt + panel (round holes), −Yd of the pumps
-                 (beh_x, bvy, blz)],                         # UP the BEHIND-panel riser to the tote-entry height
+                 (bvx, bvy, turnz),                          # UP the FRONT vertical to just above the top clamp (BV-01 + clamps below)
+                 (bvx, bvy_rear, turnz),                     # 90° turn +Yd into the corridor, BELOW the brown P-02-suction horizontal — clears the crossing
+                 (bvx, bvy_rear, loopz),                     # rise to the loop top at the return lane (clear of the brown)
+                 (beh_x, bvy_rear, loopz),                   # +X BACK through the shirt + panel (round holes), −Yd of the pumps
+                 (beh_x, bvy_rear, blz)],                    # UP the BEHIND-panel riser to the tote-entry height
                 beh_x, YD_NEAR, blz, -1, ov.C_BLUE, check=False, drop=-50)   # then −Yd into Blue #1 + 50mm dip tube
-    p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 1000, "z", hdir="-x"))   # FRONT vertical section, handle faces the −X walkway operator
+    p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 950, "z", hdir="-x", rot_deg=-45))   # on the near-board riser; dropped 50mm; whole valve rotated 45° CW so the handle swings into the IBC corridor
+    # P-clips on the P-01 suction riser (now pushed onto the near board) — straddle BV-01 (z928-972),
+    # one below + one above, since the valve body sits across the shared near-board clamp rows
+    _ylo = min(YD_NEAR + EQT, bvy - RP - 2); _yhi = max(YD_NEAR + EQT, bvy + RP + 2)
+    for _cz in (850, 1000):
+        p.append(ov.ruby_box("Riser P-clip (near)", bvx - 14, _ylo, _cz - 8, 28, _yhi - _ylo, 16, color=C_CLIP))
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
     # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
@@ -958,8 +973,8 @@ def plumbing(part="all", sump_on_skid=False):
     # Leave the −Yd OUT port OUTWARD (−Yd), then run +Yd to the gap in the clear band BETWEEN the P-01 head
     # top (z490) and the ACC body bottom (z540) — z515 clears both by ~15mm.  (The old route ran +Yd at the
     # port's z568 and TUNNELED through the ACC body; z490 then grazed the P-01 head top.)
-    trz = 235     # corridor-entry crossing height — dropped to DV-01's low lane (DV01_CZ=235) so the trunk is
-    #   OUT of the operator's way at the mouth (was z515, mid-shin); −Yd of the ACC/pump bodies so it clears them
+    trz = 210     # corridor-entry crossing height — lowered 25mm (from 235) before the trunk turns into the corridor;
+    #   OUT of the operator's way at the mouth; −Yd of the ACC/pump bodies so it clears them
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
          [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
           (PXC, GAP_CORR_Y, trz), (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, trz),
@@ -1029,7 +1044,7 @@ def drains_ports(sump_on_skid=False):
               (tx3 - 55, SB_RISER_YD_NEAR, p2i[2]), # UP the riser on the board
               (PXC, SB_RISER_YD_NEAR, p2i[2]),      # +X to the pump column
               p2i], ov.C_IBC_BROWN)            # +Yd INTO P-02's −Yd IN port (swept elbow at the +X→+Yd vertex)
-        p.append(ball_valve("BV-03 (P-02 suction)", tx3 - 55, SB_RISER_YD_NEAR, 950, "z", hdir="-x"))   # isolation on the P-02 suction riser (near board); handle faces −X toward the cargo door
+        p.append(ball_valve("BV-03 (P-02 suction)", tx3 - 55, SB_RISER_YD_NEAR, 900, "z", hdir="-x", rot_deg=-45))   # isolation on the P-02 suction riser (near board); dropped 50mm to clear the 3rd clamp row (z960) above it; whole valve rotated 45° CW so the handle swings into the IBC corridor
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")

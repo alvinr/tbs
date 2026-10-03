@@ -57,7 +57,7 @@ LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg
 # board face-on specs: (title, subtitle, (z0,z1), risers[(x,label,color)], clamp_zs, horizontals[(z,label,color)])
 BOARDS = [
     ("FAR BOARD", "film-plane wall (Yd 1298–1316)", cp.SB_FAR_Z,
-     [(4873, "DV-01 recycle", C_BROWN), (4900, "P-02 discharge", C_BROWN), (4984, "P-01→ACC-01", C_BLUE)],
+     [(cp.SB_FAR_RISERS_X[0], "DV-01 recycle", C_BROWN), (cp.SB_FAR_RISERS_X[1], "P-02 discharge", C_BROWN), (cp.SB_FAR_RISERS_X[2], "P-01→ACC-01", C_BLUE)],
      cp.SB_FAR_CLAMP_Z, []),
     ("NEAR BOARD", "walkway wall (Yd 1046–1064)", cp.SB_NEAR_Z,
      [(4825, "P-02 suction", C_BROWN), (5070, "P-05 inlet", C_BROWN)],

@@ -359,20 +359,23 @@ board face by **cushioned P-clips**.
 
 ![TBS-001 — Pump-Run Support Detail — Sheet 2: L-bracket flush-mount section, P-clip detail, and fabrication schedule](assets/support-detail-sheet2.png)
 
-- **Corridor side walls** — one board per wall. The far (film-plane) side backs the DV-01
-  recycle, P-02 discharge, and P-01→ACC-01 risers; the near side carries the P-02 suction riser
-  (with BV-03) on a lower board and BV-02 / BV-06 (P-05 / P-03 suction) on an upper board. Each
-  riser is pulled flush onto its board plane, and the DV-01 recycle line is re-routed off IBC-3
-  and down the far board before turning into DV-01.
+- **Corridor side walls** — one board per wall, each **raised to back its risers higher** so an
+  added **third clamp row** lands on the taller board. The far (film-plane) side backs the DV-01
+  recycle, P-02 discharge, and P-01→ACC-01 risers (3 clamp rows); the near-lower board carries the
+  P-02 suction riser (BV-03) **and the P-01 suction riser (BV-01)** — the latter pushed onto the
+  board face with two clamps straddling the valve; the near-upper board carries BV-02 / BV-06
+  (P-05 / P-03 suction). Each riser is pulled flush onto its board plane, and the DV-01 recycle
+  line is re-routed off IBC-3 and down the far board before turning into DV-01.
 - **Drain-riser spine** — the three gray/brown waste risers clamp to the spine's near face; the
   P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.
 - **Filter skid** — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
   the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.
 
-The near-board ball valves (BV-02 / BV-06) turn their handles into the open corridor and sit on
-forward loops at the walkway edge, so they clear the panel and stay reachable. Hardware: 3 side
-boards (cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 39 cushioned
-3/4" P-clips (§Parts).
+The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-06 on the upper board) are
+dropped to clear the clamp row above them and rotated 45° so their handles swing into the open
+corridor on the diagonal — staying reachable while clear of the boards. Hardware: 3 side boards
+(cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 46 cushioned 3/4"
+P-clips (§Parts).
 
 ---
 
@@ -529,19 +532,19 @@ hardware are sourced there and in the IBC stacking frame line.
 |------|------|-----|----------|-----------|
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C) | 5 ea | Amazon / Fresh Water Systems | $500 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 2 ea | Amazon | $72 |
-| [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + 3× pump-run side support boards (far + near-lower ~399×420, near-upper ~399×690, #29, cut from the sheet leftover — ~0.62 m² of a 2.97 m² sheet) + spacer offcuts. STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
+| [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + 3× pump-run side support boards (far ~399×620, near-lower ~399×540, near-upper ~399×690, #29 — raised to back the risers higher for the added clamp rows; cut from the sheet leftover — ~0.74 m² of a 2.97 m² sheet) + spacer offcuts. STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~168×1,575 cut, a tall vertical column in the 168mm-clear corridor) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |
 | 6× steel angle brackets (corridor panel → IBC uprights) | L-brackets fixing the corridor plumbing panel to the IBC-frame back uprights — TEK-screwed to the post (J8, 2× #14 self-drillers per bracket — no weld, bolt-on to the pre-painted frame), rear panel fastened J4 (M8 into captive tee-nut), per ibc-stacking-report §3.5. Price est. | 6 ea | Home Depot | $15–$39 |
 | Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | Shirt-to-panel screws + lag bolts landing the brackets into the panel/uprights. Price est. | 1 lot | Home Depot | $10–$11 |
 | [36× #14 self-drilling TEK screws (bracket → post, J8/J9)](https://www.mcmaster.com/90822A620/) (90822A620) | #14 × 1in HWH self-drilling TEK screw, #4/5 point (drills the ~6–8mm steel-to-steel: angle leg + the 3mm RHS post wall), 410 SS for the damp container. Attach the corridor-panel L-brackets (J8, 2×6=12) + the side-panel pipe-run L-brackets (J9, 2×12=24) to the IBC posts — NO weld, so the brackets bolt onto a pre-painted frame with no hot work. McMaster 90822A620 $12.88/pack of 25 firm (2026-09-07) — the ONE #14×1 HWH 410-SS TEK SKU, shared with the walkway half-lap hold-down (walkway-arm-holddown). | 36 ea | McMaster-Carr | $19 |
 | 12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 12× steel L-brackets TEK-screwed to the IBC side-post inner faces (2 per post × 3 side-panel boards: far, near-lower, near-upper) — the side-wall boards carry the PIPE runs (P-clips), NOT pumps; the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut from 1×1×1/8 steel angle offcuts — attached J9 (2× #14 self-drillers per bracket, no weld), boards fastened J5 (¼-20 into captive tee-nut), per ibc-stacking-report §3.5. MATERIAL est.; FAB (cut) = shop quote (material-now rule). (Registry key kept as 'pump-support-brackets' for cost continuity; they support the pump-run PIPING.) | 1 lot | Metal Supermarkets / Home Depot | $12–$24 |
-| 39× cushioned pipe P-clips (3/4" pipe) | Cushioned (rubber-lined) pipe P-clips securing the pump risers/runs to the ply support boards + spine + skid panel (#29): corridor side boards 17 (far 6 + near-lower 4 + near-upper 7), drain-riser spine 10 (6 riser + 4 far-side X-port lines), filter-skid 12 (6 risers + 6 runs) = 39. Sized for OD21 (3/4") PVC. Zinc + EPDM cushion. Price est. — firm at blueprint. | 39 ea | Home Depot / McMaster-Carr | $21–$37 |
+| 46× cushioned pipe P-clips (3/4" pipe) | Cushioned (rubber-lined) pipe P-clips securing the pump risers/runs to the ply support boards + spine + skid panel (#29): corridor side boards 24 (far 9 + near-lower 8 [incl. 2 straddling the P-01 suction valve] + near-upper 7 — far/near-lower each gained a 3rd clamp row on the raised boards), drain-riser spine 10 (6 riser + 4 far-side X-port lines), filter-skid 12 (6 risers + 6 runs) = 46. Sized for OD21 (3/4") PVC. Zinc + EPDM cushion. Price est. — firm at blueprint. | 46 ea | Home Depot / McMaster-Carr | $25–$44 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port quarter-turn 2-way; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03). Grainger firm $24.14 (checked 2026-08-07; was US Plastic $44.27). | 3 ea | Grainger | $72 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) + BV-05a (spray Blue/Brown SELECTOR — 2 inlets Blue+Brown → 1 outlet to BV-05b on/off). Same valve as the diverters. | 2 ea | US Plastic Corp | $48 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build/SKU as SV-01 (US Plastic 36903 $19.26 — priced under SV-01; applied to SV-02 as the identical build) | 1 ea | US Plastic Corp | $19 |
 | [Steel flat bar 25×3mm — ribbon support cross-brace](https://www.mcmaster.com/6775T37-6775T373/) (6775T37) | Low-carbon steel flat bar 25×3mm × 3 ft. Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (four corridor↔pinhole lines); 4 braces ~300mm each = cut from 2× 3-ft bars (2 spare pieces). | 2 3ft bar | McMaster-Carr | $35 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | Cushioned clamp for ½" pipe (0.84"/21mm OD); secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports). Sold in 20-packs at $9.99 ($0.50/ea); one pack covers the 16 + spares. | 16 ea | Amazon | $8 |
-| **Corridor Plumbing Panel total** | | | | **$890–$943** |
+| **Corridor Plumbing Panel total** | | | | **$894–$950** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel

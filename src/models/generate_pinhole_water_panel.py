@@ -688,17 +688,16 @@ def skid_plumbing(part="all"):
     g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd
     acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3770.5,104,948)
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
-    cpt = (4630, g0, 65)                                               # ribbon entry −X of the near upright (X4646); ribbon_run does the +X to the slot + the notch
+    cpt = (4630, g0, RZ)                                               # ribbon entry at the FLUSH ribbon Z — triggers ribbon_run's flush branch (straight through the notch, no dip); rides OVER the J6 plate (tops Z77)
     npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
     rpy = cp.SB_RISER_YD_FAR                                            # 1285 — #29: P-02 discharge riser sits on the FAR support board (flush)
-    midz, midy = 90, 1161                                              # mid-gap lane: Z above the X-rail top (Z63); Yd in the gap BETWEEN the blue (Yd1132) and DV-02-waste (Yd1184) runs so it's clear of both in Yd (the DV-02 waste rises to Z86-121, so Z alone won't separate them)
+    midz, midy = RZ, 1161                                              # mid-gap lane: run at the FLUSH ribbon Z (above the X-rail top Z63 + the J6 plate Z77); Yd in the gap BETWEEN the blue (Yd1132) and DV-02-waste (Yd1184) runs so it's Yd-clear of both (the DV-02 waste rises to Z86-121, so Z alone won't separate them)
     lead  = [p2o, (p2o[0], rpy, p2o[2]),                                # +Yd OUT of the +Yd OUT port onto the board riser plane
              (exitX, rpy, p2o[2]),                                      # −X OUT of the pump column (+Yd side, above P-01/ACC-01)
-             (exitX, rpy, midz),                                        # DROP only to the mid-gap run Z (stays above the X-rail + floor band)
+             (exitX, rpy, midz),                                        # DROP to the flush mid-gap run Z (stays above the X-rail + the J6 plate)
              (exitX, midy, midz),                                       # −Yd to the mid-gap lane (between the blue & DV-02-waste Yd lanes)
              (cpt[0], midy, midz),                                      # −X across the uprights' X-span, Yd-clear of the grey DV-02-waste + blue
-             (cpt[0], midy, 65),                                        # DROP to the ribbon entry Z at the near upright
-             cpt]                                                       # −Yd to the notch Yd (1110) on the −X side of the near upright
+             cpt]                                                       # −Yd to the ribbon entry at flush — NO dip; ribbon_run goes straight through the notch + hops the cantilever
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
     # Like lanes 3 & 4 (NOT under the walkway): rise up the wall at the lane, then run the panel bottom (Z948)
     # −X to ACC-02 — crossing the inner beam OVER the top at Z948, near-rim (same as the 3&4 valve-height hops).

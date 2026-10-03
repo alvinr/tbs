@@ -80,9 +80,18 @@ def ribbon_run(i, corridor_pt, near_pt, up_yd=None):
     cy, cz = corridor_pt[1], corridor_pt[2]
     uc = up_yd if up_yd is not None else cy        # loop-over rise Yd on the corridor side
     ny = near_pt[1]                                 # this line's own near-end Yd
-    pts = [corridor_pt,
-           (RIBBON_SLOT_X, cy, cz),                # to the drop slot X, in the corridor PAST the tray edge (still at the pickup Z)
-           (RIBBON_SLOT_X, cy, RIBBON_Z),          # RISE up the slot to FLUSH under the deck (X>4599 → clear of the carriage)
+    if cz >= RIBBON_Z:
+        # FLUSH entry: the line already rides at the ribbon Z, so it goes STRAIGHT −X through the
+        # outer-beam OPEN-TOP NOTCH to the lane — no slot-and-dip.  The dip is only for a line coming
+        # UP from a LOW pickup; forcing a flush line through it makes a +X-slot→−X-lane 180° reversal
+        # (a zero-length elbow).  (Outer beam X4523-4574 is notched open above Z92 across Yd1097-1265;
+        # the spray carriage ends at X4599, −X of this crossing — both clear at flush.)
+        head = [corridor_pt]
+    else:
+        head = [corridor_pt,
+                (RIBBON_SLOT_X, cy, cz),           # to the drop slot X, in the corridor PAST the tray edge (still at the pickup Z)
+                (RIBBON_SLOT_X, cy, RIBBON_Z)]     # RISE up the slot to FLUSH under the deck (X>4599 → clear of the carriage)
+    pts = head + [
            (lx, cy, RIBBON_Z),                     # −X through the OPEN-TOP NOTCH in the outer beam to the lane, at flush
            (lx, uc, RIBBON_Z),                     # −Yd (flush under the grate) to the loop-over rise Yd
            (lx, uc, oz),                           # UP to the over-crest height

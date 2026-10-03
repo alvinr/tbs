@@ -2925,17 +2925,17 @@ access functions:</p>
 <li><strong>Left walkway</strong> (cargo door end) — access to hinged light-trap panel latches
   and revolving drum. Removable for panel transport.</li>
 <li><strong>Right walkway</strong> (IBC end) — access to IBC valves, filter skid, and pump
-  manifold. Carried on a cantilever rectangle off the IBC frame to clear the IBC stack below.</li>
+  manifold. Carried on a cantilever frame off the IBC frame to clear the IBC stack below.</li>
 </ul>
 <p>All four sections share a common 140mm deck height (115mm bracket arm, L-angle, or
 floor-leg arm + 25mm grating) and 300mm standard width, creating a level perimeter walking
 surface. There are two sections that <em>punch out</em> to allows easier access of the lightrap and around the battery stack.</p>
 <p>The design enforces <strong>zero processing tray contact</strong> — all walkway supports are
-either wall-mounted, carried on the cantilever rectangle off the IBC frame, or placed outside the tray footprint. This
+either wall-mounted, carried on the cantilever frame off the IBC frame, or placed outside the tray footprint. This
 prevents chemical contamination of walkway structures and avoids disrupting the
 tray's watertight seal.</p>
 <!-- brochure:skip -->
-<p><strong>Interactive 3D model</strong> — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 2×1×0.120in (50.8×25.4mm) frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.</p>
+<p><strong>Interactive 3D model</strong> — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever frame (2×1×0.120in (50.8×25.4mm) frame with an open bay in the outer rail over the corridor, on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.</p>
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
     <iframe title="TBS-001 Walkway Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/96b3d0e5fc8b4fc18c528f64bda028bc/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
@@ -3188,11 +3188,23 @@ deflection stays well under 1mm. (2×⅞ would clear by 15mm but isn't a stock s
 Supermarkets carry only <strong>2×1</strong>; being <em>deeper</em> it gives <strong>stronger</strong> arms, SF≈2.5, at the cost of 3.4mm
 clearance, which keeps the deck height unchanged.) The frame:</p>
 <ul>
-<li><strong>Two long beams</strong> run the full container width, with the 245mm grating spanning between them
-  (the right deck is shortened to land on the shared combined corner plate).</li>
-<li><strong>Two short end beams</strong> (≈245mm) close the near and far ends, joining the long
-  beams into a torsionally stiff closed rectangle (no free bearer ends to droop).</li>
+<li><strong>Two long beams</strong> run the container width, with the 245mm grating spanning between them
+  (the right deck is shortened to land on the shared combined corner plate). The <strong>inner</strong> beam
+  is continuous; the <strong>outer</strong> beam is run in <strong>two simply‑supported segments</strong> (combined corner
+  plate → cantilever arm) with an <strong>open bay over the IBC corridor</strong> (see below).</li>
+<li><strong>Two short end beams</strong> (≈245mm) close the near and far ends, joining the beams into a
+  torsionally stiff frame (no free bearer ends to droop).</li>
 </ul>
+<p><strong>Open corridor bay in the outer beam.</strong> The four under‑walkway ribbon pipes cross the outer
+beam line to enter the IBC corridor. Rather than notch the outer beam — an open‑top notch would
+gut the 2×1 section to a ~2.4mm web, a near‑hinge in a primary bending member — the outer beam
+is <strong>omitted over the ~170mm open bay between the two cantilever arms</strong> (Yd ≈ 1,097–1,266, the IBC‑corridor crossing),
+so the pipes cross in the clear. Each outer segment is then a short simply‑supported span (wall
+combined plate at one end, cantilever‑arm half‑lap at the other), and the only continuous member
+across the corridor is the inner beam. The grating is <strong>split at the two cantilever‑arm centers</strong>
+(Yd ≈ 1,071 / 1,291) into near, center, and far sections; the <strong>center section bridges the open
+bay</strong>, its ends landing on the two arms. That short center span carries a little flex, accepted
+over the low‑traffic corridor.</p>
 <p><strong>Cranked inner beam at the muslin-rod slot.</strong> The muslin-drop notch on the right walkway
 (Yd 1,912–2,062) sits at the tray-facing edge, directly over the <strong>inner</strong> long beam — and the
 rigid batten on the muslin's bottom edge has to drop straight down through it into the tray. Rather
@@ -3644,7 +3656,7 @@ so they cannot drift from the geometry.</p>
 <td>person + grate</td>
 <td>SF 7.1</td>
 <td>7.1</td>
-<td>ibc_frame_load.outer_beam_frame_check — simply-supported full section</td>
+<td>ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section</td>
 </tr>
 <tr>
 <td>RWK arm half-lap notch (cross-ref)</td>
@@ -3674,12 +3686,13 @@ likewise upgraded to a <strong>4×1×0.120in tube</strong> (SF 1.99; the 2×1 wa
 carry fabrication conditions rather than a clean margin: the <strong>corrugated-rib pull-through</strong> (SF 7) depends on the
 ≥30mm corrugation confirmation for bolt grip, and the <strong>floor-leg foot anchors</strong> (~2.4 kN/screw uplift) require
 the #14 self-drillers to engage the container's <strong>steel floor pan</strong>, not the plywood alone.</p>
-<p>The <strong>right walkway</strong> is a closed <strong>2×1×0.120in cantilever rectangle</strong> picked up at mid-span by two arms off the
-IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates (right). Its long/end
-beams and the arm half-lap notch are validated in <code>ibc_frame_load.py</code> (<code>outer_beam_frame_check</code>, SF 7.1;
+<p>The <strong>right walkway</strong> is a <strong>2×1×0.120in cantilever frame</strong> — a continuous inner beam, two outer-beam
+segments, and two end beams, with an <strong>open bay in the outer rail over the corridor</strong> — picked up at mid-span
+by two arms off the IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates
+(right). Its long/end beams and the arm half-lap notch are validated in <code>ibc_frame_load.py</code> (<code>outer_beam_frame_check</code>, SF 7.1;
 <code>arm_notch_check</code>, SF 2.03) and cross-referenced above; the <strong>arm→upright connection (joint J6) is IBC-frame-owned</strong>
 and drawn on IBC-frame Sheet 5, so it is cross-referenced, not re-validated here (see the
-<a href="../right-walkway-cantilever-study/">cantilever study</a>). The closed rectangle resists twist far better than the
+<a href="../right-walkway-cantilever-study/">cantilever study</a>). The frame resists twist far better than the
 free-ended bearer angles it replaces, so the deck barely bounces.</p>
 <hr />
 <h2 id="10-fabrication-schedules">10. Fabrication Schedules<a class="headerlink" href="#10-fabrication-schedules" title="Permanent link">&para;</a></h2>
@@ -4232,7 +4245,7 @@ are in the <strong>IBC-frame</strong> cut list, not here.</p>
 </tr>
 <tr>
 <td>Right walkway cantilever frame (long + end beams)</td>
-<td>2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (~245mm, the 245mm right deck) that make the closed rectangle, ~5.2 m (17.1 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07.</td>
+<td>2×1×0.120in steel tube — a continuous inner long beam (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + an outer long beam in 2 segments (an open corridor bay ~170mm between the cantilever arms, so the ribbon pipes cross clear of any beam) + 2 end beams (~245mm, the 245mm right deck) that make the cantilever frame, ~5.0 m (16.5 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07.</td>
 <td>1 lot</td>
 <td>MetalsDepot / Metal Supermarkets</td>
 <td>$125–$153</td>

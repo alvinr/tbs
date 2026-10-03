@@ -447,7 +447,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 87, "ACC-01\n(accumulator)", -700, 0, 250),   # + acc_h/2 (body 174)
     (cp.BACK_X + cp.EQT + 24, cp.CTR_Y, (cp.PSTACK["P-01"] + cp.PSTACK["P-03"]) / 2 + 90, "12V DIST BLOCK\n(Cct C)", 300, 0, 400),   # rear-of-panel Circuit-C distribution block (behind the pump column; feed lands here, bus fans out to the pumps)
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
-    (cp.FRONT_X + 106, cp.YD_NEAR + 67, 950, "BV-01", -600, 0, 250),   # now on the front walkway-side riser (dropped 50mm)
+    (cp.FRONT_X + 221, cp.SB_RISER_YD_NEAR, 950, "BV-01", -600, 0, 250),   # on the near-board P-01 suction riser (dropped 50mm; pushed onto the board face)
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", -350, 0, 200),   # tip = BV-02 valve center (walkway-edge loop); text on the −X operator side
     (cp.BROWN_TAP[0] - 55, cp.SB_RISER_YD_NEAR, 900, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (on the near support board; dropped 50mm)
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-03") - 110, "BV-06", -350, 0, 150),    # tip = BV-06 valve center (walkway-edge loop); text on the −X operator side

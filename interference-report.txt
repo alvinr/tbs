@@ -1,7 +1,5 @@
-routing-sources-sha: 3aa2cb1750f3
-model=construction  pipes=1014 solids=1275  interferences=12
-  PIPE  Fan A feed (Fan A tap -> pinhole-wall trun ([built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board)
-    x  CANTILEVER Saddle wall bolt M12 TR near nut        near (3839,20,2358)
-  PIPE  DV-02 waste -> IBC-4                       ([built] Step 3.4 — Under-grate ribbons (sump + brown suction) + pipe supports + pinhole filter skid (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02) + skid-side plumbing)
-    x  FRAME      Frame rail (Yd)                         near (4970,1194,65)
+routing-sources-sha: 9d862262a92f
+model=water  pipes=459 solids=866  interferences=1
+  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
+    x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
 pipe-on-pipe crossings=0

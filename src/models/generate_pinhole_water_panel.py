@@ -680,9 +680,11 @@ def skid_plumbing(part="all"):
          (wlx, cp.RIBBON_YD_DOWN, RZ),                    # DOWN through the grate into the corridor
          (wlx, gapyd, RZ),                                # +Yd to the notch Yd (flush under the grate)
          (cp.RIBBON_SLOT_X, gapyd, RZ),                   # +X through the outer-beam notch to the drop slot
-         (cp.RIBBON_SLOT_X, gapyd, 65),                   # DOWN the slot to the corridor entry Z
-         (riseX, gapyd, 65),                              # +X STRAIGHT to the merge-approach lane (the old hump-over-brown is retired — the P-02 re-lane moved the brown to Yd1285 here, so the grey runs straight at Z65)
-         (riseX, cp.MERGE4[1], 65),                       # jog to the merge Yd at floor
+         (cp.RIBBON_SLOT_X, gapyd, 65),                   # DOWN the slot to the corridor-entry Z (Z65)
+         (cp.BACK_X - 44, gapyd, 65),                     # +X at the low floor Z PAST the P-02->ACC-02 recycle crossing (X4900, Z97) — stays ~32mm below it, no crossing
+         (cp.BACK_X - 44, gapyd, 90),                     # HOP UP just before the IBC frame's REAR bottom ring-rail (full-height, top Z65) — the corridor is open above here (between the tote columns), clear headroom
+         (riseX, gapyd, 90),                              # +X OVER the rear ring-rail to the merge-approach lane, held at Z90 (the front rail is already low at Z49 and clears)
+         (riseX, cp.MERGE4[1], 90),                       # jog to the merge Yd, still above the ring-rail
          (riseX, cp.MERGE4[1], cp.MERGE4[2]),             # RISE to the merge Z (1230)
          cp.MERGE4], rp, color=ov.C_IBC_WASTE))           # +X onto the tee's −x run port
     # ── Leg 4: P-02 discharge (corridor) → ACC-02 (skid) — the recycle-spray feed, UNDER THE WALKWAY ──

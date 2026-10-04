@@ -8,8 +8,9 @@ plumbing panel. REUSES the helpers and component builders from the Overview
 generator (generate_sketchup_model.py) — same component/tag/scene structure,
 shared iso camera, and material-sharing-by-color. Subsystem tags grouped into scenes:
     1. IBC Tanks            (the four totes)
-    2. IBC Frame            (the steel stacking frame/rack + the 2 right-walkway
-                             cantilever arms that attach to the corridor uprights, rev12)
+    2. IBC Frame            (the steel stacking frame/rack + the right-walkway support:
+                             2 cantilever arms off the corridor uprights + the inner/outer
+                             beams the corridor ribbon pipes cross past, rev12)
     3. Plumbing & Panel     (plumbing panel + pumps/filters + water plumbing + hookups)
     4. Combined             (all subsystems)
 
@@ -36,7 +37,7 @@ TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel",
 # (instance name, text, leader Δx,Δy,Δz mm). Δy pulls toward the viewer (−Y).
 IBC_LABELS = [
     ("IBC Frame", "IBC FRAME\n(restraint front portal)", -250, 750, 650),
-    ("Walkway Cantilever Arms", "RIGHT-WALKWAY\nCANTILEVER ARMS\n(off the IBC corridor\nuprights — rev12)", -350, -900, 700),
+    ("Right Walkway Support", "RIGHT-WALKWAY SUPPORT\n(2 cantilever arms off the IBC\ncorridor uprights + inner/outer\nbeams the ribbon pipes cross — rev12)", -350, -900, 700),
 ]
 # Point-anchored callouts on specific geometry (totes, drain ports, panel kit).
 IBC_POINT_LABELS = [
@@ -164,8 +165,13 @@ def generate_ruby():
         ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
         # NB: "Ribbon Support Cross-beams" (cp.ribbon_supports() — the 4 welded under-grate
         #     cross-beams) removed — not of interest in this model.
-        ov.component("Walkway Cantilever Arms", "Walkway Cantilever",
-                     '\n'.join(ov.ibc_cantilever_arms())),
+        # Full right-walkway support (inner + 2 outer beam segments + end beams + cantilever
+        # arms + wall cleats) — the SAME shared builder the overview/walkway models use, so the
+        # corridor/ribbon pipes can be clash-checked against the beams they thread past IN THIS
+        # focus model (the blue-trunk × outer-beam clash previously only surfaced downstream at
+        # water).  Grate + combined corner plates omitted to keep the plumbing view readable.
+        ov.component("Right Walkway Support", "Walkway Cantilever",
+                     ov.right_walkway_cantilever(include_combined=False, include_grate=False)),
     ]
     body = '\n'.join(comps)
 

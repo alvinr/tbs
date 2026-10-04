@@ -40,7 +40,7 @@ panel.
 |-----------|-------|
 | Model | Schütz Ecobulk MX 1000L (or equivalent US 48×40 caged composite tote) |
 | Capacity | 1,000 L (~264 US gal) per tote. **"600 L" / "1,000 L" are fill levels, not tote sizes** — all four totes are identical |
-| Overall dimensions | 1,219 × 1016 × 1,168mm (W × D × H) |
+| Overall dimensions | 1,219 × 1,016 × 1,168mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
 | Cage upright tube | Ø25mm |

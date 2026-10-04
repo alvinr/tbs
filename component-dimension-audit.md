@@ -3,7 +3,7 @@
 # Component Dimension Audit — Purchased Parts vs. As-Drawn
 
 **Purpose.** After the IBC tote sizing error (assumed "600 L" small totes; the real
-food-grade caged product is **1,000 L / 1219×1016×1,168 mm**, which forced the entire
+food-grade caged product is **1,000 L / 1,219×1,016×1,168 mm**, which forced the entire
 `ibc-reconfig-v2` rework), this audit reconciles **every major purchased-as-is
 component** against the size used in the 3D models / 2D diagrams (`tbs_constants.py`).
 The goal: no other component is modeled at an assumed size that the real product
@@ -26,7 +26,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 <!-- BEGIN parts:dimension-audit -->
 | # | Component | Real product (datasheet) | Modeled | Verdict |
 |---|-----------|--------------------------|---------|---------|
-| 1 | IBC tote (1,000 L caged) | 1219×1016×1168 | `IBC_W/IBC_D/IBC_H_1000` | ✅ FIXED (v2) |
+| 1 | IBC tote (1,000 L caged) | 1,219×1,016×1,168 | `IBC_W/IBC_D/IBC_H_1000` | ✅ FIXED (v2) |
 | 2 | LiFePO4 battery, 100Ah 12V (Renogy Core Series) | 260×169×211 — Renogy 12V 100Ah Core Series | `BA_W/BA_D/BA_H` | ✅ FIXED |
 | 3 | Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
 | 4 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | 3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price. |
@@ -37,7 +37,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 <!-- END parts:dimension-audit -->
 
 **Excluded from the model but listed for BoM completeness:** Solar panel (Renogy 200 W
-rigid ≈ 1491×699×35, varies by model — mounted externally, no container clash).
+rigid ≈ 1,491×699×35, varies by model — mounted externally, no container clash).
 
 ---
 
@@ -98,7 +98,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | ~~Acme leadscrew ¾"-6~~ (retired) | — | — | RETIRED — no leadscrews in the current design |
 | Rod-end bearing | GIR25-DO / McMaster 60645K73 | 25 mm bore | confirm |
 | Drum bearing | SKF 6215-2RS1 | 75×130×25 | confirm |
-| Solar panel | Renogy 200 W | ~1491×699×35 (external) | no clash |
+| Solar panel | Renogy 200 W | ~1,491×699×35 (external) | no clash |
 | MPPT | Victron 100/50 | ~100×113×40 (in enclosure) | no clash |
 
 ---

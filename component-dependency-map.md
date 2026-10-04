@@ -263,7 +263,7 @@ Mounted on 18mm marine ply plumbing panel (near IBC column face), in the IBC plu
 | Near-column front depth from pinhole wall | <!-- BEGIN cdm:BLUE_IBC_Y -->30<!-- END cdm:BLUE_IBC_Y -->mm | `BLUE_IBC_Y` |
 | Far-column front depth from pinhole wall | <!-- BEGIN cdm:IBC_FAR_Y -->1,316<!-- END cdm:IBC_FAR_Y -->mm | `IBC_FAR_Y` |
 
-*Components: **4× 1,000L caged composite IBC totes** (1219×1016×1168), **direct-stacked**
+*Components: **4× 1,000L caged composite IBC totes** (1,219×1,016×1,168), **direct-stacked**
 cage-on-cage in two columns (near: Brown developer + Blue #1; far: Waste + Blue #2) — Blue-on-top layout
 kept. Held by a **restraint DEEP 4-LEG BOX** at the corridor mouth (2×2×0.120in steel SHS front + back upright pairs
 450mm apart tied by rings + 50×20×3 front retaining bars in the 25mm tote↔film-rail gap + Simpson wall

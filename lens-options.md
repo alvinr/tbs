@@ -257,7 +257,7 @@ Large Fresnel lenses are the only commercially available single elements that co
 | Fresnel Technologies surplus acrylic | Up to 1,200mm × 900mm | Custom | $200–$500 |
 | Glass Fresnel (lighthouse type, antique) | 500–1,000mm dia | 300–1,000mm | $500–$5,000 |
 
-For this camera: a 600 × 600mm Fresnel lens at 1,400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
+For this camera: a 600 × 600mm Fresnel lens at 1,400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1,200 × 600mm assembly would cover about **27% of the active image width**.
 
 A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
 

@@ -165,7 +165,7 @@ PARTS: list[Part] = [
          "water", 4, "ea", 150, 150, "SoCal reconditioner", "Repackify",
          url="https://www.repackify.com/buy-ibc-totes/california",
          spec="Reconditioned food-grade (prior-food-contents) 275-gal/1,000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150.",
-         dims="1219×1016×1168", modeled_const="IBC_W/IBC_D/IBC_H_1000", audit_status="✅ FIXED (v2)"),
+         dims="1,219×1,016×1,168", modeled_const="IBC_W/IBC_D/IBC_H_1000", audit_status="✅ FIXED (v2)"),
     Part("bulkhead-2in", 'Bulkhead fitting 2" NPT (polypropylene)', "plumbing-fittings",
          "water", 3, "ea", 21.14, 21.14, "US Plastic Corp", part_no="32200", url="https://www.usplastic.com/catalog/item.aspx?itemid=32200",
          spec="X1/X3/X4 external fill/drain ports — 2\" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure.",
@@ -200,7 +200,7 @@ PARTS: list[Part] = [
     Part("pinhole-panel-ply-18", "Pinhole-wall filter-skid backing ply (23/32\" exterior)", "timber-ply",
          "water", 2, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
-         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1,219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
+         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1,795×1,440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1,795×1,440 face exceeds a single 4×8 sheet 1,219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
          panel="Pinhole Wall"),
     # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
     Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",
@@ -1041,7 +1041,7 @@ PARTS: list[Part] = [
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",
          "shelf", 1, '4\'×8\' 18mm sheet', 73.28, 73.28, "Home Depot", part_no="BPI6WUV2I", url="https://www.homedepot.com/p/302874373",
-         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2,440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~700×2,000mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, sheet D), so no separate backboard sheet is bought.'),
+         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1,220×2,440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~700×2,000mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, sheet D), so no separate backboard sheet is bought.'),
     # Steel perimeter frame, folding stays, M5 CSK + corner gussets REMOVED — ply-primary redesign
     # (2026-09-07, chem-shelf-blueprint-spec.md): the plywood is the structure; attachments land in
     # ply tee-nuts (1/4-20 ply-mount standard); stays are SS chain. M5 family eliminated.

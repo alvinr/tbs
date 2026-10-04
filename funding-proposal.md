@@ -177,10 +177,10 @@ My practice since has moved between classical portraiture and abstract color in 
 ### Camera Specification Summary
 | Parameter | Value |
 |-----------|-------|
-| Container | 20ft ISO standard (6,058 × 2438 × 2,591mm exterior) |
+| Container | 20ft ISO standard (6,058 × 2,438 × 2,591mm exterior) |
 | Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm |
 | Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10") |
-| Container interior | 5893 × 2,388mm (~19'4" × 7'10") |
+| Container interior | 5,893 × 2,388mm (~19'4" × 7'10") |
 | Image area | ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft |
 | Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Rayleigh formula, λ=550nm) |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |

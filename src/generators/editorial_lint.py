@@ -184,6 +184,16 @@ def warn_thousands_sep() -> list[str]:
             sep = f"{int(digits):,}"
             issues.append(f"{fn}:{_loc(text, m.start())}  "
                           f"'{pre}{digits}{sp}{unit or ''}' → '{pre}{sep}{sp}{unit or ''}'")
+        # dimension expressions (A × B [× C]) share one unit, so a 4+ digit operand that isn't the
+        # last one carries no unit and escapes the scan above. Flag an uncommaed 4+ digit INTEGER
+        # operand; all-integer guards against equations (a decimal operand → it's a formula, skip).
+        for m in re.finditer(r"(?<![\d,.A-Za-z])(\d[\d,]*)\s*[×x]\s*(\d[\d,]*)(?:\s*[×x]\s*(\d[\d,]*))?", text):
+            if m.end() < len(text) and text[m.end()] == ".":
+                continue                              # trailing operand is actually a decimal (formula)
+            for op in (g for g in m.groups() if g):
+                if "," not in op and op.isdigit() and len(op) >= 4:
+                    issues.append(f"{fn}:{_loc(text, m.start())}  "
+                                  f"'{op}' (dimension) → '{int(op):,}'")
     return issues
 
 

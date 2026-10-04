@@ -2662,7 +2662,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="component-dimension-audit-purchased-parts-vs-as-drawn">Component Dimension Audit — Purchased Parts vs. As-Drawn<a class="headerlink" href="#component-dimension-audit-purchased-parts-vs-as-drawn" title="Permanent link">&para;</a></h1>
 <p><strong>Purpose.</strong> After the IBC tote sizing error (assumed "600 L" small totes; the real
-food-grade caged product is <strong>1,000 L / 1219×1016×1,168 mm</strong>, which forced the entire
+food-grade caged product is <strong>1,000 L / 1,219×1,016×1,168 mm</strong>, which forced the entire
 <code>ibc-reconfig-v2</code> rework), this audit reconciles <strong>every major purchased-as-is
 component</strong> against the size used in the 3D models / 2D diagrams (<code>tbs_constants.py</code>).
 The goal: no other component is modeled at an assumed size that the real product
@@ -2692,7 +2692,7 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 <tr>
 <td>1</td>
 <td>IBC tote (1,000 L caged)</td>
-<td>1219×1016×1168</td>
+<td>1,219×1,016×1,168</td>
 <td><code>IBC_W/IBC_D/IBC_H_1000</code></td>
 <td>✅ FIXED (v2)</td>
 </tr>
@@ -2750,7 +2750,7 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 <!-- END parts:dimension-audit -->
 
 <p><strong>Excluded from the model but listed for BoM completeness:</strong> Solar panel (Renogy 200 W
-rigid ≈ 1491×699×35, varies by model — mounted externally, no container clash).</p>
+rigid ≈ 1,491×699×35, varies by model — mounted externally, no container clash).</p>
 <hr />
 <h2 id="2-detail-sources">2. Detail + sources<a class="headerlink" href="#2-detail-sources" title="Permanent link">&para;</a></h2>
 <p><em>All items below are now resolved (see the §1 summary and §4 remediation); each entry
@@ -2847,7 +2847,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 <tr>
 <td>Solar panel</td>
 <td>Renogy 200 W</td>
-<td>~1491×699×35 (external)</td>
+<td>~1,491×699×35 (external)</td>
 <td>no clash</td>
 </tr>
 <tr>

@@ -226,35 +226,6 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   schedule — but it's cross-cutting (IBC report + drawings + parts + costing + master-shopping-list), so do
   it as its OWN IBC-blueprint task, keeping the schedule internally consistent. See
   [[feedback_joint_mark_must_label_diagram]].
-- [ ] **Water — PRE-EXISTING under-corridor plumbing clashes (surfaced during the walkway F1 water re-route, 2026-08-18; NOT caused by the walkway work).** Two clash groups that predate F1 — the J6 plate (IBC
-  upright X4654), the IBC frame rail, and the corridor routing didn't move at F1: (1) **P-02→ACC-02 recycle ×
-  RWk J6 arm end-plate** — the recycle's corridor turn at Yd1110 (`RWK_RIBBON_NOTCH_YDS[0]`) clips the arm plate
-  at X4646-4654; (2) **several lines (blue trunk · DV-02 waste · P-02 recycle · SV-01) × the IBC corridor frame
-  rail** (X4663-4900, Yd1132-1279). Reroute/notch in a focused plumbing pass (plumbing skill). The F1-CAUSED
-  clashes are already fixed: #1 ribbon-lane×outer-beam (RIBBON_LANE_X derived from the channel), #2 end-beam×
-  near-corner-risers (near RWk end beam un-inset to Yd0).
-- [ ] **IBC — Blue trunk pipe interferes with the IBC corridor frame rail (surfaced in `ibc-stack`, 2026-10-02).**
-  The **Blue trunk (TAP-01 + Spray Supply)** run clips the **IBC corridor Frame rail (Yd)** at ~(X4663, Yd1132,
-  Z60) (`check_interference` on `ibc-stack`). Reroute/notch the blue trunk to clear the rail in a focused
-  plumbing pass (plumbing skill — detour, never through steel). Part of the pre-existing under-corridor group
-  above (blue trunk × IBC frame rail, X4663–4900) — resolve together; not caused by the sump reroute.
-- [ ] **Water — `ribbon_run` corridor-entry rework + revisit the "U" (2026-10-02).** The 4 corridor↔pinhole-wall
-  ribbon lines all DIP down then rise (a U) at the corridor entry, via `ribbon_run()`'s slot-and-notch detour
-  (`generate_corridor_water_panel.py:70`). **Open question (owner): does anything actually block a DIRECT/flush
-  entry?** Visually it looks clear; the queried blockers are the RWk cantilevers at Z90–115 (at the corridor
-  EDGES, Yd1046–1097 / 1265–1316 — the mid-gap Yd1097–1265 is clear) + the outer-beam notch the slot threads.
-  A flush "hop-over" entry (option-b) was attempted and **backed out**: removing the dip makes `ribbon_run`'s
-  +X-to-slot→−X-to-lane a 180° reversal → SketchUp "zero-length vector" elbow error. To do it cleanly:
-  teach `ribbon_run` to skip the slot/notch detour when a line enters at the flush Z (and verify the outer-beam
-  crossing still clears for the low-pickup lines). **DONE 2026-10-02:** the `ribbon_run` flush-entry branch is
-  built + committed, and all 4 corridor ribbon lines (P-02→ACC-02, blue trunk, IBC-3 tap→P-02, SV-01→DV-01) now
-  enter FLUSH — every U/dip is gone, and the J6-plate clashes cleared. **REMAINING — lane re-allocation (the real
-  pass):** with all 4 now at the same flush Z they converge in the **saturated Yd window** (the blue sits ~10mm
-  each side of the brown P-02 inlet ≤Yd1111 and the grey DV-01 merge Yd1165). That left **blue × P-02 coincident
-  (0mm) at (4630,1132,104)** — a Yd nudge can't fix it (P-02 nudged down hits the Yd≤1097 cantilever; blue nudged
-  up hits the Yd1165 grey). The fix is a proper lane re-allocation (distinct Z-bands or Yd lanes across the 4 flush
-  lines, a Z-stagger for the blue under P-02) — NOT a single nudge. Plus the unrelated far back-rail graze
-  (DV-02 waste × Frame rail X5115).
 - [~] **Water — sump-pickup rerouted AROUND the pinhole wall (2026-10-02).** `skid_plumbing()` Leg 1
   redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6
   cantilever wall-plates, top Z200) → +X along the wall to the P-04 climb; standard P-clips in the

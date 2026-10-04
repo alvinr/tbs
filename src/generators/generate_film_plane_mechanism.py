@@ -773,7 +773,7 @@ def view_a(ax):
     leader(ax, 60, 270, -30, 350, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical,\nruns in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 190, 253, 232, 262, f"4-wheel acetal skate — Ø{SKATE_ROLLER_OD:.1f} LOAD rollers on the bottom flange\n+ Ø{SKATE_KEEPER_OD:.1f} KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
-    leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 304 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 304 flat bar + UHMW + gib (green, up the plate center)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 176, 162, 232, 160, "X (SWING) slide — 304 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 182, 158, 232, 125, "single U-joint (Belden SSNBUJ750x3/8KB) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 181, 300, 232, 375, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)

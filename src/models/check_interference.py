@@ -726,7 +726,7 @@ def main():
     for key in sorted(worst, key=lambda k: worst[k][0]):
         gap, mid, d, clear = worst[key]
         print(f"  PIPE  {key[0]:44.44s}")
-        print(f"    x  PIPE  {key[1]:44.44s}  cross ({mid[0]},{mid[1]},{mid[2]})  centreline {d}mm < {clear}mm")
+        print(f"    x  PIPE  {key[1]:44.44s}  cross ({mid[0]},{mid[1]},{mid[2]})  centerline {d}mm < {clear}mm")
     return 1 if (hits or worst) else 0
 
 

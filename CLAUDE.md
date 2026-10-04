@@ -67,8 +67,8 @@ Reuse all helpers from `tbs_drawing.py`:
 ```python
 draw_dim_h(ax, x1, x2, y, label, ...)   # horizontal dimension
 draw_dim_v(ax, x, y1, y2, label, ...)   # vertical dimension
-draw_cl(ax, x1, x2, y, ...)             # centre line
-draw_circle(ax, cx, cy, r, ...)         # circle with centre marks
+draw_cl(ax, x1, x2, y, ...)             # center line
+draw_circle(ax, cx, cy, r, ...)         # circle with center marks
 draw_rect(ax, x, y, w, h, ...)          # rectangle
 leader(ax, x1, y1, x2, y2, label, ...)  # leader line + label
 bolt_holes(ax, cx, cy, pcd, n, ...)     # bolt hole pattern
@@ -79,7 +79,7 @@ hatch_rect(ax, x, y, w, h, ...)        # cross-hatched section
 
 ```python
 C_OUT   = "#1A1A1A"   # outlines
-C_CL    = "#2060A0"   # centre lines (blue, dashed)
+C_CL    = "#2060A0"   # center lines (blue, dashed)
 C_DIM   = "#404040"   # dimensions
 C_ALUM  = "#C8D8E8"   # aluminum section fill
 C_STEEL = "#B0B0B8"   # steel section fill

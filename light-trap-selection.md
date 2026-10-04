@@ -308,7 +308,7 @@ light between the openings **circumferentially**. The top-end seal cross-section
 enlarged on **Sheet 12** (the running-gap brush section is the to-scale 7:1 holder-profile
 inset on Sheet 4); the top-end detail closes the other axis: the running gap is capped at its
 axial top/bottom by the **rotating-cap ↔ fixed-frame neoprene wiper seal + silicone bead**, so a
-ray travelling up the gap is stopped at the seal and cannot bypass the brushes over the top/bottom.
+ray traveling up the gap is stopped at the seal and cannot bypass the brushes over the top/bottom.
 The brushes seal the gap circumferentially; the neoprene seals it axially.
 
 ![TBS-001 Light-Trap — Sheet 7: Seals & Light-Path Verification](assets/lighttrap-sheet7.png)

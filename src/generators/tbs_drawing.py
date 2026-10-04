@@ -201,7 +201,7 @@ def draw_rect(ax, x, y, w, h, *, lw=1.8, color=C_OUT, fc="white", zorder=3):
 # ── P&ID valve symbols ───────────────────────────────────────────────────────
 
 def valve_ball(ax, cx, cy, r, color, *, vert=False, fc="white", lw=1.4, zorder=12):
-    """P&ID ball valve: bowtie (two triangles tip-to-tip) + centre circle (the ball)."""
+    """P&ID ball valve: bowtie (two triangles tip-to-tip) + center circle (the ball)."""
     if vert:
         t1 = [(cx - r, cy - r), (cx + r, cy - r), (cx, cy)]
         t2 = [(cx - r, cy + r), (cx + r, cy + r), (cx, cy)]

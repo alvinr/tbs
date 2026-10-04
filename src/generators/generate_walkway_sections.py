@@ -453,7 +453,7 @@ def sheet3():
 
 
 def sheet4():
-    """SECTION E-E — corridor centre (Yd≈1130-1245 slab, the clear span between the frame
+    """SECTION E-E — corridor center (Yd≈1130-1245 slab, the clear span between the frame
     uprights), X–Z looking +Yd.  Here the four corridor lanes the D-D ghosts pointed to run
     as REAL in-plane runs toward the pump column."""
     X_LO, X_HI = 4600, 5185
@@ -466,7 +466,7 @@ def sheet4():
     # Ghost uprights + pump column rise to the top of the drawing area, so place the
     # title/subtitle in the figure margin ABOVE the axes (axes top = 0.08 + 0.82 = 0.90).
     _tcx = 0.05 + 0.92 / 2   # horizontal center of the axes in figure coords
-    fig.text(_tcx, 0.972, "SECTION E-E · CORRIDOR CENTRE (between the frame uprights)",
+    fig.text(_tcx, 0.972, "SECTION E-E · CORRIDOR CENTER (between the frame uprights)",
              ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
     fig.text(_tcx, 0.945, "X–Z elevation, looking +Yd · slab Yd≈1130–1245 (the clear span) · 1:1",
              ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
@@ -530,11 +530,11 @@ def sheet4():
     draw_notes(ax, notes, X_LO + 8, Z_HI - 15, 13.0, fs=6.0,
                font=FONT, width=500, wrap=76, border_color=C_DIM, border_lw=0.7)
     title_block(ax, "SHEET 4 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
-                subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTRE")
+                subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTER")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")
     fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
-    print(f"Walkway section E-E (corridor centre) → {out}")
+    print(f"Walkway section E-E (corridor center) → {out}")
 
 
 def sheet5():

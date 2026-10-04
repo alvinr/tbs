@@ -1644,7 +1644,7 @@ def sheet5():
     pts = [0] + list(yds) + [C_WID]
     for a, b in zip(pts[:-1], pts[1:]):
         draw_dim_h(ax, a, b, chain_x, f"{int(b - a)}mm", offset=6, fs=5.5, above=False, font=FONT)
-    ax.text(1181, chain_x - 26, "BRACKET Yd SPACING (3 land on the punch-out edges 800/1560 + centre 1180)",
+    ax.text(1181, chain_x - 26, "BRACKET Yd SPACING (3 land on the punch-out edges 800/1560 + center 1180)",
             ha="center", va="top", fontsize=6, color=C_OUT, **FONT)
 
     # Reach dims (left side)

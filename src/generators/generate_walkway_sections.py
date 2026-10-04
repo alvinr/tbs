@@ -46,6 +46,7 @@ C_TRAY  = "#A6B4A6"
 C_IBC_B = "#6B4A2E"
 C_BLUE  = "#2979B8"
 C_BROWN = "#8A6A3E"
+C_WASTE = "#8A8A90"   # grey — DV-02 waste → IBC-4 merge line
 FONT    = {"fontfamily": "monospace"}
 
 LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
@@ -476,11 +477,12 @@ def sheet4():
     # so no beam is cut by this plane; the grate's CENTER section bridges the ~170mm open bay overhead.
     ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (grate CENTER section bridges here);\nOUTER beam ABSENT in this bay — ends at the cantilever arms",
             fontsize=5.0, ha="left", va="bottom", color=C_DIM, zorder=15, **FONT)
-    _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 50, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail
-    _rect(ax, 5104, 0, 50, 50, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail
+    _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 49, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail — LOWERED (IBC_FRONT_RAIL_H, top Z49) to clear the Z50 blue trunk
+    _rect(ax, 5104, 0, 50, 65, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail — FULL 50 RHS (top Z65); the DV-02 waste hops it
+    ax.text(5129, 72, "back ring-rail\n(full RHS, top Z65)", fontsize=4.6, ha="center", va="bottom", color=C_DIM, zorder=15, **FONT)
     for ux, tag in ((UP_X0, "front"), (5104, "back")):                                          # uprights (ghost, slab edges)
         _rect(ax, ux, 0, 50, Z_CEIL, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.16, ls="--")
-        ax.text(ux + 25, 600, f"{tag} upright\n(ghost)", fontsize=5, ha="center", va="center", color=C_GHOST, **FONT)
+        ax.text(ux + 25, 455, f"{tag} upright\n(ghost)", fontsize=5, ha="center", va="center", color=C_GHOST, **FONT)
     _rect(ax, 4934, 355, 100, Z_CEIL - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
     ax.text(4984, 470, "pump column\n(P-01/04/05/03)\nghost, Yd≤1131", fontsize=4.8, ha="center", va="center", color=C_GHOST, **FONT)
 
@@ -492,14 +494,20 @@ def sheet4():
     _run(ax, [(GAP_ENTRY_X + 22, RIBBON_Z), (GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)           # blue trunk
     _run(ax, [(GAP_ENTRY_X + 44, RIBBON_Z), (GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)      # brown IBC-3 -> P-02
     _run(ax, [(GAP_ENTRY_X + 66, RIBBON_Z), (GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)       # blue SV-01 -> DV-01
+    # DV-02 waste -> IBC-4 merge: NOT a ribbon-to-pinhole line — it drops the same slot but runs the FLOOR to the
+    # rear, HOPPING the back ring-rail (Z65 -> Z90) to reach the merge tee off-view at X5289 (grey).
+    _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (5060, UNDER_BEAM_Z), (5060, 90), (X_HI - 6, 90)], C_WASTE, z0=12)
+    leader(ax, 5082, 92, 4958, 172, "DV-02 waste → IBC-4:\nhops the back ring-rail (Z65→90)\nto the merge (off-view X5289)",
+           color=C_DIM, fs=4.8, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     ax.annotate("↑ P-04 IN", xy=(4900, Z_CEIL - 24), xytext=(4915, Z_CEIL - 70),
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
     # mark the flush arrival + slot drop
     leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X - 25, 372,
            "the four lines arrive FLUSH across the\nopen bay (no beam), drop the tray-edge SLOT (past the\ncarriage) to the corridor entry, then RISE",
            color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    # legend (identifies the four lanes) — in the open band below the lanes, well right of the risers
-    lgx, lgz = 4900, 150
+    # legend (identifies the four lanes) — in the open upper band, left of the pump riser (freed the
+    # bottom-right corner for the back ring-rail + the DV-02 waste callout)
+    lgx, lgz = 4650, 648
     ax.text(lgx, lgz, "CORRIDOR LANES (→ toward the pumps):", fontsize=6, ha="left", va="top",
             color=C_OUT, fontweight="bold", zorder=14, **FONT)
     for i, (c, t) in enumerate([(C_BROWN, "brown tray-sump → P-04 (rises into P-04)"),
@@ -511,14 +519,13 @@ def sheet4():
         ax.text(lgx + 40, zz, t, fontsize=5.4, ha="left", va="center", color=C_OUT, zorder=14, **FONT)
     ax.text(lgx, lgz - 22 - 4 * 20 - 4, "* co-planar at Z235; the upper two lanes raised +24/+48mm for clarity",
             fontsize=4.8, ha="left", va="top", color=C_DIM, zorder=14, **FONT)
-    draw_dim_v(ax, X_HI - 28, 50, 560, "corridor\nopen\n(no ring\nrail here)", offset=5, fs=5, font=FONT)
 
     notes = [
         "SECTION E-E NOTES",
         "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the uprights + pump column are just outside the slab, ghosted.",
         "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the OPEN corridor bay (Yd~1097–1266) — the outer beam is omitted between the two cantilever arms, so none is cut here — then drops the tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.",
         "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises each line to its lane and runs in X toward the pumps (Z205–235 band).",
-        "4. No IBC ring rail crosses this span, so the corridor is open above the bottom rail (Z50).",
+        "4. The four RIBBON lanes clear the ring rails — they enter at the tray-edge slot (X4641), −X of the frame.  The separate DV-02 waste → IBC-4 line runs the floor to the rear and HOPS the back bottom Yd-rail (full 50 RHS, top Z65) at Z90 to reach the merge; the front rail is lowered (top Z49).",
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 15, 13.0, fs=6.0,
                font=FONT, width=500, wrap=76, border_color=C_DIM, border_lw=0.7)

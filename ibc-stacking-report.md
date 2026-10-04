@@ -229,7 +229,7 @@ tolerances that actually matter for fit-up.
 
 - **A (primary)** — the common plane of the four floor-foot undersides. The frame is set and shimmed to A; everything references off it (it sits on the container floor).
 - **B (secondary)** — the front-upright front faces (X = 4,654 mm, the corridor mouth). References the retaining-bar / hanger X positions and the walkway-arm end-plate point.
-- **C (tertiary)** — the corridor centerline (Yd = 1,181 mm, midway between the two tote columns). Symmetry reference for the columns and the 270 mm plumbing corridor.
+- **C (tertiary)** — the corridor centerline (Yd = 1,181 mm, midway between the two tote columns). Symmetry reference for the columns and the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor.
 
 **Functional tolerances:**
 
@@ -241,7 +241,7 @@ tolerances that actually matter for fit-up.
 | Foot-plate M12 hole pattern (100 mm PCD) | ±0.5 mm | floor-anchor clearance |
 | Front-bar seat / hanger-pocket Z position | ±2 mm | bars seat cleanly + the wall holes align |
 | Exterior backing-plate M12 holes (to its hanger) | ±1 mm | M12×70 through-bolt clearance |
-| Corridor clear width (between the inner uprights) | +2 / −0 mm | the 270 mm plumbing corridor must not pinch |
+| Corridor clear width (between the inner uprights) | +2 / −0 mm | the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor must not pinch |
 | Rear-panel bracket Z position (on the back uprights) | ±2 mm | plumbing-panel mount aligns |
 | Side-panel pipe-run L-bracket landing (post inner face) | ±2 mm | the support boards seat flush |
 
@@ -295,10 +295,10 @@ Cut sizes are member-to-member butt lengths — add saw kerf per shop practice.
 <!-- BEGIN cutlist -->
 | Member | Section / plate | Material | Cut size | Qty | Note |
 |--------|-----------------|----------|----------|-----|------|
-| Corner upright | 50.8×50.8×3 SHS (2×2×0.120in) | A500 Gr.B | 2284 mm | 4 | full height; sits on the foot plate (Z12→TOP_Z) |
+| Corner upright | 50.8×50.8×3 SHS (2×2×0.120in) | A500 Gr.B | 2,284 mm | 4 | full height; sits on the foot plate (Z12→TOP_Z) |
 | Ring rail — Yd (cross) | 50.8×50.8×3 SHS (2×2×0.120in) | A500 Gr.B | 168.4 mm | 4 | 2 rings (top+bottom) × 2 X-faces; butts between uprights |
 | Ring rail — X (deep) | 50.8×50.8×3 SHS (2×2×0.120in) | A500 Gr.B | 399.2 mm | 4 | 2 rings × 2 Yd-faces; ties front↔back uprights |
-| Front retaining bar | 50×20×3 RHS | A500 Gr.B | 1042 mm | 8 | 2 per tote face (near+far columns identical length) |
+| Front retaining bar | 50×20×3 RHS | A500 Gr.B | 1,042 mm | 8 | 2 per tote face (near+far columns identical length) |
 | Foot plate | 150×150×12 plate | A36 plate | 150×150×12 mm | 4 | 4× Ø12mm anchor holes on Ø100 PCD |
 | Exterior wall backing plate | 8 mm plate | A36 plate | 60×204.8×8 mm | 8 | one per wall hanger; spreads the M12×70 load into the corrugated wall |
 | Wall joist hanger | 4 mm folded plate | A36 plate | back 205 + seat 70, ×60 wide | 8 | Simpson-style U-pocket; folded, not welded |

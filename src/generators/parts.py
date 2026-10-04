@@ -164,7 +164,7 @@ PARTS: list[Part] = [
     Part("ibc-tote-1000l", "IBC tote (1,000 L caged)", "water-equipment",
          "water", 4, "ea", 150, 150, "SoCal reconditioner", "Repackify",
          url="https://www.repackify.com/buy-ibc-totes/california",
-         spec="Reconditioned food-grade (prior-food-contents) 275-gal/1000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150.",
+         spec="Reconditioned food-grade (prior-food-contents) 275-gal/1,000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150.",
          dims="1219×1016×1168", modeled_const="IBC_W/IBC_D/IBC_H_1000", audit_status="✅ FIXED (v2)"),
     Part("bulkhead-2in", 'Bulkhead fitting 2" NPT (polypropylene)', "plumbing-fittings",
          "water", 3, "ea", 21.14, 21.14, "US Plastic Corp", part_no="32200", url="https://www.usplastic.com/catalog/item.aspx?itemid=32200",
@@ -200,7 +200,7 @@ PARTS: list[Part] = [
     Part("pinhole-panel-ply-18", "Pinhole-wall filter-skid backing ply (23/32\" exterior)", "timber-ply",
          "water", 2, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
-         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
+         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1,219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
          panel="Pinhole Wall"),
     # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
     Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",
@@ -612,9 +612,9 @@ PARTS: list[Part] = [
          "electrical", 1, "ea", 95.79, 95.79, "Grainger", part_no="21WJ56",
          url="https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56",
          spec="Panduit grounding jumper kit — 6 AWG, 60in, 45deg bent ring lugs (factory irreversible-compression terminals). Equipotential bond: container body -> battery-neg busbar (§7.6). $95.79 firm (2026-07-31)."),
-    Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
+    Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2,000mm)", "timber-ply",
          "electrical", 1, "cut from the shelf sheet", 0.0, 0.0, "shared (Plywood Cut Sheets)", part_no="302874373", url="https://www.homedepot.com/p/302874373",
-         spec='18mm UV-coated white hardwood ply, ~700×2000mm backboard — the wall-mounted surface every EP '
+         spec='18mm UV-coated white hardwood ply, ~700×2,000mm backboard — the wall-mounted surface every EP '
               'component fixes to (MPPT on its forward sub-panel, battery bank, inverter, main + PV disconnects); '
               'the DC-distribution terminals (fuse block + busbars) sit in a small IP65 enclosure bolted to it. '
               'Add DIN rail + standoffs for the DIN gear. A backboard is finish-agnostic, so it is CUT FROM THE '
@@ -823,7 +823,7 @@ PARTS: list[Part] = [
          note="Expendable plain-6061; add 16ft lengths if pre-buying spares."),
     Part("dibond-acm-film", "Dibond ACM panel 3mm (black), 4×8 sheet", "plastics-sheet",
          "film", 4, "sheet", 95, 95, "Central Coast Plastics", "TAP Plastics",
-         spec="4× 48×96\" black 3mm ACM sheets as full-height VERTICAL STRIPS (Option A) — 3 vertical butt seams, splice-battened behind; no horizontal seam (2094mm plane height fits one 2438mm sheet). Covers the {{fact:film_plane_width_mm}}×{{fact:film_plane_height_mm}}mm rigid backing (4389 ÷ 1219 = 4 strips). 3mm (the black-stocked thickness) is slightly less stiff but flatness is carried by the 6061 frame + clamps and is optically irrelevant at f/1088. SUPPLIER: Curbell Plastics does NOT stock black ACM/Dibond (confirmed 2026-08-03 — cannot supply; do not re-source there); black via Central Coast Plastics / TAP Plastics. Price TBC ($95/sheet placeholder, qty 4)."),
+         spec="4× 48×96\" black 3mm ACM sheets as full-height VERTICAL STRIPS (Option A) — 3 vertical butt seams, splice-battened behind; no horizontal seam (2,094mm plane height fits one 2,438mm sheet). Covers the {{fact:film_plane_width_mm}}×{{fact:film_plane_height_mm}}mm rigid backing (4389 ÷ 1219 = 4 strips). 3mm (the black-stocked thickness) is slightly less stiff but flatness is carried by the 6061 frame + clamps and is optically irrelevant at f/1088. SUPPLIER: Curbell Plastics does NOT stock black ACM/Dibond (confirmed 2026-08-03 — cannot supply; do not re-source there); black via Central Coast Plastics / TAP Plastics. Price TBC ($95/sheet placeholder, qty 4)."),
     Part("fp-acm-tek-screw", "Stainless self-drilling (TEK) screw — ACM → 6061 frame", "fasteners-hardware",
          "film", 30, "ea", 6.46 / 10, 6.46 / 10, "McMaster-Carr", part_no="90599A716",
          url="https://www.mcmaster.com/90599A716/",
@@ -1041,7 +1041,7 @@ PARTS: list[Part] = [
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",
          "shelf", 1, '4\'×8\' 18mm sheet', 73.28, 73.28, "Home Depot", part_no="BPI6WUV2I", url="https://www.homedepot.com/p/302874373",
-         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~700×2000mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, sheet D), so no separate backboard sheet is bought.'),
+         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2,440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~700×2,000mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, sheet D), so no separate backboard sheet is bought.'),
     # Steel perimeter frame, folding stays, M5 CSK + corner gussets REMOVED — ply-primary redesign
     # (2026-09-07, chem-shelf-blueprint-spec.md): the plywood is the structure; attachments land in
     # ply tee-nuts (1/4-20 ply-mount standard); stays are SS chain. M5 family eliminated.

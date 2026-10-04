@@ -52,6 +52,7 @@ def _strip(text: str, *, placeholders: bool = False) -> str:
     if placeholders:
         text = re.sub(r"<!-- BEGIN (?:fact|costing):.*?<!-- END (?:fact|costing):[^>]*-->",
                       _blank, text, flags=re.DOTALL)
+        text = re.sub(r"!\[[^\]]*\]", _blank, text)   # image alt-text can't hold a placeholder comment
     text = re.sub(r"<!--.*?-->", _blank, text, flags=re.DOTALL)      # HTML comments (SPDX, markers)
     text = re.sub(r"\]\([^)]*\)", lambda m: "]" + " " * (len(m.group(0)) - 1), text)  # link targets
     text = re.sub(r"https?://\S+", _blank, text)                     # bare URLs
@@ -169,7 +170,7 @@ def warn_thousands_sep() -> list[str]:
     '$1455' → '$1,455'). A unit/`$` is required, so bare product/model numbers (Shurflo 2088,
     years, f-numbers — no unit) are not flagged. `_MODEL_NUMS` exempts model designations
     that collide with a unit ('Ecobulk MX 1000 L' — the 1000 is the model, not a volume)."""
-    num = re.compile(r"(?<![#\d.,$])(\$?)(\d{4,})( ?)(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|m²|km|hrs?|km/h|CFM)?(?![\w])")
+    num = re.compile(r"(?<![#\d.,$A-Za-z])(\$?)(\d{4,})( ?)(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|m²|km|hrs?|km/h|CFM)?(?![\w])")
     _MODEL_NUMS = re.compile(r"MX $")          # Schütz Ecobulk MX 1000 — model name, not a quantity
     issues = []
     for fn in _published_docs():

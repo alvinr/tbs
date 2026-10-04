@@ -60,7 +60,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -1176,6 +1176,16 @@ def sheet3():
            (GUT_X - 150), (C_WID * 0.40),
            "GRATE IN 3 SECTIONS\n(split at the arm centers;\ncenter section bridges the\nopen corridor bay)",
            color=C_OUT, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Ribbon pipe-clearance SLOTS (drilled through the grate so the 4 lanes read as passing through) ──
+    sx0, sx1 = RWK_GRATE_SLOT_X
+    for (sy0, sy1) in RWK_GRATE_SLOT_YDS:
+        ax.add_patch(Rectangle((sx0, sy0), sx1 - sx0, sy1 - sy0, fc="#FFFFFF", ec="#C03028",
+                               lw=1.0, ls=(0, (3, 2)), zorder=9))
+    _mid = RWK_GRATE_SLOT_YDS[1]   # loop-over band
+    leader(ax, (sx0 + sx1) / 2, (_mid[0] + _mid[1]) / 2, (WK_R_X + 330), (_mid[0] + _mid[1]) / 2 - 150,
+           f"RIBBON PIPE SLOT (×3)\n{int(sx1 - sx0)}mm (X) × {int(_mid[1] - _mid[0])}mm (Yd),\nspans the 4 lanes — drilled clearance\nat the end-drop / loop-over rise / corridor drop",
+           color="#C03028", fs=5.2, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── SHS frame: 2 long beams + 2 end beams ────────────────────────────────
     # Outer long beam — TWO straight segments with the IBC-corridor bay OPEN between the two
@@ -2638,6 +2648,16 @@ def sheet9():
     leader(ax, slit_cx + SPRAY_BAR_SLIT_W / 2, WW - 40, slit_cx + 360, WW + 150,
            f"SPRAY-BAR POLE SLIT ({SPRAY_BAR_SLIT_W}mm)\nat pinhole X{slit_cx}",
            color="#C03028", fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # Riser pipe-clearance holes drilled through the near deck (tray-sump / TAP-01 / BV-05)
+    _htags = ["sump → P-04 suction", "TAP-01 fresh-water branch", "BV-05 fresh-supply trunk"]
+    for (_hx, _hy, _hr), _tag in zip(NEAR_GRATE_HOLES, _htags):
+        ax.add_patch(Circle((_hx, _hy), _hr, fc="#FFFFFF", ec="#C03028", lw=1.0, ls=(0, (3, 2)), zorder=10))
+    # label the three together (they share the near deck, Yd~69-104)
+    _lx = NEAR_GRATE_HOLES[1][0]
+    leader(ax, _lx, NEAR_GRATE_HOLES[1][1] - NEAR_GRATE_HOLES[1][2], _lx - 60, -200,
+           "RISER CLEARANCE HOLES (Ø32–Ø36):\nsump→P-04 (X2386) · TAP-01 (X1130) · BV-05 (X2304)\nvertical risers through the deck",
+           color="#C03028", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # Bracket callouts — widened (up-right, clear of the notes box) + a small standard tag.
     # Full bracket specs live in the notes + Sheet 7, so keep these short.

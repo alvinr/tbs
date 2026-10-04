@@ -393,8 +393,8 @@ def rear_panel():
     spine_far_face = 1224
     for px, pyd, pz in ((5250, 1245, 1502), (5450, 1245, 1502),     # P-05 → X3 (brown)
                         (5250, 1235, 1902), (5450, 1235, 1902)):    # P-03 → X4 (grey)
-        p.append(ov.ruby_box("Spine far-side P-clip", px - 14, spine_far_face, pz - 12,
-                             28, (pyd + RP + 2) - spine_far_face, 24, color=C_CLIP))
+        p.append(ov.ruby_box("Spine far-side P-clip", px - 8, spine_far_face, pz - 14,
+                             16, (pyd + RP + 2) - spine_far_face, 28, color=C_CLIP))   # horizontal X-port line: band ⊥ the pipe
     return "\n".join(p)
 
 
@@ -746,8 +746,8 @@ def support_boards(sides=("far", "near", "near-upper")):
     # near-upper board also backs two HORIZONTALS: P-05-inlet brown (Z1300) + P-03 grey (Z1902)
     if "near-upper" in sides:
         for hx, hz in ((4960, 1300), (5020, 1300), (4945, 1902)):
-            p.append(ov.ruby_box("Riser P-clip (near-upper)", hx - 14, YD_NEAR + EQT, hz - 12,
-                                 28, (SB_RISER_YD_NEAR + RP + 2) - (YD_NEAR + EQT), 24, color=C_CLIP))
+            p.append(ov.ruby_box("Horizontal P-clip (near-upper)", hx - 8, YD_NEAR + EQT, hz - 14,
+                                 16, (SB_RISER_YD_NEAR + RP + 2) - (YD_NEAR + EQT), 28, color=C_CLIP))   # horizontal run: band ⊥ the pipe
     return "\n".join(p)
 
 

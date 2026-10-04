@@ -80,6 +80,7 @@ Crosscuts: Panel B strip 1 at 93″; strip 2 at 43.7″ and 87.4″; strip 3 at 
 - Edge treatment: **Fibergrate Sealing & Bonding Kit** (~$50) — molded FRP cut edges are field-sealed with epoxy, not snap-trimmed.
 - Hold-down: 30× SS grating clips (`walkway-holddown-clips`, separate).
 - Drum-exit landing (~2.5 ft²): separate line `walkway-drum-exit-grp` (won't nest in the ≤11.8″ offcuts).
+- **Pipe-clearance cutouts (field-cut + edge-sealed):** the right-walkway deck carries **3 ribbon slots** (~128 × 32 mm, across the 4 lanes, at the pinhole-end drop / loop-over rise / corridor drop); the near-walkway deck carries **3 round riser holes** (Ø32–Ø36 — tray-sump→P-04, TAP-01 fresh-water branch, BV-05 fresh-supply trunk) — see walkway Sheet 3 + Sheet 9 for locations. These are small clearance cuts within already-nested pieces (no effect on the sheet count); seal their cut edges with the same kit.
 
 ## Vendors
 - **McNichols** — 877.891.7418 (quote-only, no public pricing)

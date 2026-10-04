@@ -382,6 +382,15 @@ def tap01_supply():
         [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),
          (ov.TAP_X, yd + 100, ov.SHELF_STOW_TOP_Z), (ov.TAP_X, yd + 100, ov.TAP_Z)], tr, color=ov.C_BLUE))
     p.append(cp.ball_valve("BV-04 (chem tap isolation)", ov.TAP_X, yd, 1010, "z"))
+    # WALL-STANDOFF P-clips — the blue supply trunk + the TAP-01/BV-05 risers run below the ply panel
+    # (Z<920) along the BARE pinhole wall at Yd69; they clamp to the wall (Yd0) on ~55mm standoff blocks.
+    wreach = yd + pr + 2                                      # Yd0 → just past the pipe (wall standoff)
+    for tx in (1500, 2100, 2700, 3300, 3900, 4400):          # Blue Supply Trunk (horizontal, Z=fz): band ⊥ the pipe, ~600mm
+        p.append(ov.ruby_box("Wall-standoff pipe P-clip", tx - 8, 0, int(fz) - 14, 16, wreach, 28, color=cp.C_CLIP))
+    for tz in (250, 550, 850, 1150):                         # TAP-01 riser (vertical, X=TAP_X): thin-Z band, ~300mm
+        p.append(ov.ruby_box("Wall-standoff riser P-clip", ov.TAP_X - 14, 0, tz - 8, 28, yd + tr + 2, 16, color=cp.C_CLIP))
+    for bz in (250, 500, 850):                               # BV-05 fresh-supply riser (vertical, X=bvx)
+        p.append(ov.ruby_box("Wall-standoff riser P-clip", bvx - 14, 0, bz - 8, 28, wreach, 16, color=cp.C_CLIP))
     return "\n".join(p)
 
 
@@ -726,10 +735,15 @@ def skid_plumbing(part="all"):
     # horizontal-run clamps flagged in review — brown ± ACC-02 (on the panel-bottom lane), blue ±
     # SV-01, and the brown row line → DV-02.  Same clip, bridging each run back to the ply face.
     for rx, ryd, cz in ((3720, 35, 948),  (3970, 35, 948),     # brown ± ACC-02 (panel-bottom lane, flush)
+                        (2500, 35, 948), (2800, 35, 948), (3100, 35, 948),   # ACC-02→BV-05 recycle run (−X toward BV-05, ~300mm)
+                        (3370, 35, 948),                                      # ACC-02→BV-05 run (+X segment, past the P-04 riser hump)
+                        (4150, 35, 948), (4380, 35, 948),                     # P-02→ACC-02 recycle run (panel-bottom lane)
+                        (4150, 35, 1050), (4350, 35, 1050),                   # DV-02 waste → IBC-4 run (higher lane, Z1050)
+                        (3050, 104, 1450), (3350, 104, 1450), (3650, 104, 1450), (3900, 104, 1450),  # DV-02 feed → F1 recycle run (Z1450, filter lane — 1104mm, ~300mm)
                         (4230, 110, 1610), (4370, 110, 1610),  # blue ± SV-01 (forward valve lane — standoff)
                         (3560, 104, 1312), (3820, 104, 1312)): # brown row line → DV-02 (kit-row lane — standoff)
-        p.append(ov.ruby_box("Skid pipe P-clip", rx - 14, skid_face, cz - 8,
-                             28, (ryd + rp + 2) - skid_face, 16, color=cp.C_CLIP))
+        p.append(ov.ruby_box("Skid pipe P-clip", rx - 8, skid_face, cz - 14,
+                             16, (ryd + rp + 2) - skid_face, 28, color=cp.C_CLIP))   # horizontal run: band thin in X, wraps in Z (⊥ the pipe)
     # Tray-sump suction supports (relocated routing): standard P-clips on the new along-wall
     # horizontal (Yd35, at the walkway deck level) + a low clip on the X3180 panel climb (it now
     # starts at the deck).  Each bridges the run back to its backing face — the bare container wall
@@ -737,10 +751,17 @@ def skid_plumbing(part="all"):
     # clips sit in the clear gaps BETWEEN the near-walkway cantilevers (Near 5 X2576-2696,
     # Near 6 X3033-3153) so no support bracket lands on a cantilever arm/plate.
     for rx, face in ((2520, 0), (2760, 0), (2980, skid_face)):   # along-wall horizontal run (at wall_run_z)
-        p.append(ov.ruby_box("Skid pipe P-clip", rx - 14, face, wall_run_z - 8,
-                             28, (SKID_CLIP_YD + rp + 2) - face, 16, color=cp.C_CLIP))
+        p.append(ov.ruby_box("Skid pipe P-clip", rx - 8, face, wall_run_z - 14,
+                             16, (SKID_CLIP_YD + rp + 2) - face, 28, color=cp.C_CLIP))   # horizontal along-wall run: band ⊥ the pipe
     p.append(ov.ruby_box("Skid riser P-clip", (p04_in[0] - 40) - 14, skid_face, 340 - 8,
                          28, (SKID_CLIP_YD + rp + 2) - skid_face, 16, color=cp.C_CLIP))   # P-04 climb, low (joins the 600/1080 clips)
+    # WALL-STANDOFF riser clips — the DV-02-waste + P-02→ACC-02 corridor drops run BELOW the ply panel
+    # (Z<920) in front of the BARE pinhole wall (Yd0), ~65mm off it; they mount to the wall on a ~55mm
+    # standoff block (the box spans Yd0→pipe). Vertical pipe → band thin in Z (28×16).
+    for rx, ryd in ((4400, 60), (4434, 65), (4503, 65)):   # SV-01→DV-01 (blue), DV-02 waste, P-02→ACC-02 — the 3 corridor-drop risers
+        for cz in (300, 550, 800):                    # ~300mm down the drop, all below the panel bottom (Z920)
+            p.append(ov.ruby_box("Wall-standoff riser P-clip", rx - 14, 0, cz - 8,
+                                 28, (ryd + rp + 2), 16, color=cp.C_CLIP))
     if part == "all":
         return "\n".join(p)
     # Partition legs by the construction-model phase they install in, matched on each pipe's own

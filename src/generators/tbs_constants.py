@@ -1314,6 +1314,23 @@ RWK_J6_EP_H    = 155.0                                       # end-plate height:
 # crossing Yd, so the routing stays inside the open bay (the lane crossings all fall in ~1097-1266).
 RWK_RIBBON_NOTCH_YDS = [1110, 1132, 1194, 1241]        # lanes 0,1,2,3 corridor-crossing Yd (index-matched to cp.RIBBON_LANE_X)
 RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — flush-pipe soffit datum (Z94−2); retained as the generic open-top slot floor in _rwk_long_beam
+
+# ── Walkway grate pipe-clearance cutouts (ov.ruby_prism holes=) ───────────────────────────────────────
+# Real drilled openings so a pipe reads as passing THROUGH the grate, mirroring the plywood-panel scheme
+# (ruby_box holes=).  RIGHT walkway: 3 Yd-band SLOTS spanning the 4 ribbon lanes in X, where the ribbon
+# crosses the deck — the pinhole-wall-end drop, the loop-over RISE (cp.RIBBON_YD_UP≈1000), and the corridor
+# DROP (cp.RIBBON_YD_DOWN≈1110).  NEAR walkway: 1 round hole at the tray-sump→P-04 suction riser.  X span =
+# the 4 lanes (cp.RIBBON_LANE_X ≈4400..4503) + pipe-OD clearance; set here as the grate's cut schedule
+# because ov (the grate builder) can't import cp.  Each cut must sit strictly inside its grate section.
+RWK_GRATE_SLOT_X   = (4388, 4516)                            # X0..X1 — all 4 ribbon lanes + ~12mm clearance each side
+RWK_GRATE_SLOT_YDS = [(52, 84), (980, 1012), (1098, 1136)]   # (Yd0,Yd1) per band: pinhole-end drop / loop-over rise / corridor drop
+# NEAR walkway: round holes for the 3 vertical risers that cross the deck near the pinhole wall — the
+# tray-sump→P-04 suction, the TAP-01 fresh-water branch, and the BV-05 fresh-supply trunk.  (cx, cy, r);
+# r = pipe OD/2 + ~6mm clearance.  X positions: tray-drain + TAP_X are constants; the BV-05 trunk crosses
+# ~150mm upstream of the BV05_X selector (diagram-of-record detail coord).
+NEAR_GRATE_HOLES   = [(PROC_TRAY_DRAIN_X, 104, 16),          # tray-sump → P-04 suction riser (Ø21 → Ø32)
+                      (TAP_X,             69, 18),           # TAP-01 fresh-water branch riser (Ø25, 3/4in → Ø36)
+                      (2304,              69, 16)]           # BV-05 fresh-supply trunk riser (Ø21 → Ø32)
 # Inner long beam is CRANKED outboard around the muslin-drop rod slot: the rigid muslin batten drops
 # straight down at the tray edge (X=RWK_X_L), which sits over the inner beam — so over the notch Yd the
 # beam is jogged outboard by the full notch depth (its inboard face moves R_X0→R_X1) with angled ramps,

@@ -966,6 +966,11 @@ def plumbing(part="all", sump_on_skid=False):
     _ylo = min(YD_NEAR + EQT, bvy - RP - 2); _yhi = max(YD_NEAR + EQT, bvy + RP + 2)
     for _cz in (850, 1000):
         p.append(ov.ruby_box("Riser P-clip (near)", bvx - 14, _ylo, _cz - 8, 28, _yhi - _ylo, 16, color=C_CLIP))
+    # Frame P-clip on the behind-panel loop-back (+X run at z=loopz, Yd=bvy_rear): clamp it to the
+    # rear-near frame upright (X=BACK_X, Yd=YD_NEAR) just behind the panel — a positive support on the
+    # steel frame beyond the panel penetration.  Strap thin-X (⊥ the run), standoff off the upright +Yd face.
+    p.append(ov.ruby_box("Blue suction frame P-clip", BACK_X + S / 2 - 8, YD_NEAR + S, loopz - 14,
+                         16, (bvy_rear + RP) - (YD_NEAR + S), 28, color=C_CLIP))
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
     # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
@@ -984,6 +989,11 @@ def plumbing(part="all", sump_on_skid=False):
          [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
           (PXC, GAP_CORR_Y, trz), (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, trz),
           (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, RIBBON_Z)], ov.C_BLUE)   # drop to the FLUSH ribbon Z — blue runs straight back (the brown P-02 ducks under it)
+    # Frame P-clip on the Blue trunk's corridor-mouth crossing (+X run at z=trz, Yd=GAP_CORR_Y): the run
+    # otherwise free-spans the open mouth, so clamp it to the front-near frame upright (X=FRONT_X, Yd=YD_NEAR)
+    # on a short standoff.  Strap thin-X (⊥ the run), off the upright +Yd face.
+    p.append(ov.ruby_box("Blue trunk frame P-clip", FRONT_X + S / 2 - 8, YD_NEAR + S, trz - 14,
+                         16, (GAP_CORR_Y + RP) - (YD_NEAR + S), 28, color=C_CLIP))
     if part == "sump":
         return "\n".join(sump)
     if part == "corridor":

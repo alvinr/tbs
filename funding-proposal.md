@@ -197,3 +197,9 @@ All technical reports, fabrication drawings, optical simulations, and shopping l
 
 ### Sample Optical Renders
 The [distortion renders](distortion-renders.md) demonstrate the range of optical projections available from the film-plane movement system — from an undistorted reference frame to compound twisted-plane projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's film-plane movements, modeled from first principles and replicable in the physical instrument.
+
+## See Also
+
+- [Cost Breakdown](project-cost-breakdown.md) — the full project budget
+- [Cost Analysis](cost-analysis-report.md) — scenario cost modeling
+- [Distortion Renders](distortion-renders.md) — sample optical output

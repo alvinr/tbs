@@ -35,3 +35,9 @@ The plane is a fixed-size rigid rectangle, so every configuration is a **flat** 
 | C4 | −40° | Inverted max tilt — bottom rushes forward, ground-rush effect | ![C4](assets/film-plane-distortion-c4.png) |
 | C5 | 0° (near) | Flat plane 2,162mm closer — uniform magnification boost ~2.3× | ![C5](assets/film-plane-distortion-c5.png) |
 <!-- brochure:endskip -->
+
+## See Also
+
+- [Optics Report](pinhole-optics-report.md) — the pinhole optics behind these projections
+- [Film Plane Distortion Analysis](film-plane-mechanism-analysis.md) — the movement geometry that produces them
+- [Film Plane Mechanism](film-plane-mechanism-report.md) — the tilt/swing hardware

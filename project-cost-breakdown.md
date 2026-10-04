@@ -600,3 +600,9 @@ The following costs are not covered by existing research documents and should be
 | Location permit fees | Estimated | Check specific jurisdiction's film permit office before site selection |
 | Commercial photography insurance | Not researched | General liability + inland marine for equipment; estimate $800–$2,000/year |
 | Site preparation (levelling, power, fencing) | Not researched | Highly site-specific; budget $0–$5,000 depending on location |
+
+## See Also
+
+- [Master Shopping List](master-shopping-list.md) — the itemized by-type BOM
+- [Cost Analysis](cost-analysis-report.md) — scenario cost modeling and levers
+- [Proposal](funding-proposal.md) — the funding case

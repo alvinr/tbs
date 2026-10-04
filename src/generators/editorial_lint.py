@@ -189,7 +189,7 @@ def warn_thousands_sep() -> list[str]:
 
 def warn_source_refs_section() -> list[str]:
     """A published report with no References / Sources / See Also section."""
-    hdr = re.compile(r"^#{1,3}\s.*\b(?:source references|references|sources|see also)\b", re.IGNORECASE)
+    hdr = re.compile(r"^#{1,3}\s.*\b(?:source references|references|sources|see also|citations)\b", re.IGNORECASE)
     issues = []
     for fn in _published_docs():
         lines = open(os.path.join(ROOT, fn), encoding="utf-8").read().splitlines()

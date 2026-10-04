@@ -91,3 +91,9 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every engineering diagram on a single page |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for the film-plane movement configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
+
+## See Also
+
+- [Proposal](funding-proposal.md) — the funding case
+- [Cost Breakdown](project-cost-breakdown.md) — the project budget
+- [Operating Manual](operating-manual.md) — how the instrument is run

@@ -47,3 +47,9 @@ A front elevation of the whole pinhole (nose) wall — the equipment mounted on 
 ![TBS-001 — Pinhole Wall Elevation (whole-wall overview)](assets/pinhole-wall-elevation.png)
 
 There are detailed construction reports for each of the major systems and their sub-systems.
+
+## See Also
+
+- [Equipment Layout](equipment-layout-report.md) · [Water System](water-system-report.md) · [Electrical](electrical-report.md) — the major system reports
+- [Film Plane Mechanism](film-plane-mechanism-report.md) · [Pinhole Report](pinhole-report.md) — the optical core
+- [All Diagrams](all-diagrams.md) — the full diagram gallery

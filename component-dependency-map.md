@@ -517,3 +517,9 @@ the updated PNGs and `*.skp`/`*.rb` alongside the constant change.
 8. git add tbs_constants.py diagrams/*.png models/*.skp dependencies.yml && git commit -m "..."   # NOT the .rb (gitignored)
 9. bash publish.sh                   # deploy
 ```
+
+## See Also
+
+- [Dimension Audit](component-dimension-audit.md) — purchased-part vs datasheet reconciliation
+- [Plywood Cut Sheets](plywood-cut-sheets.md) — a worked single-source example (cut dims from `tbs_constants`)
+- [Engineering Overview](engineering-diagrams.md) — the systems these components build

@@ -102,3 +102,8 @@ removes the liner (Option C) despite its big saving. The choice was therefore
 premium #4), for an estimated ~$110–300 saving at no functional cost. The
 $1,000-plus saving of a plastic surface is only available by giving up rigidity
 (Option C), which the print-handling requirement does not allow.
+
+## See Also
+
+- [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) — the tray design this research informed
+- [Water System](water-system-report.md) — the wash/recycle circuit the tray serves

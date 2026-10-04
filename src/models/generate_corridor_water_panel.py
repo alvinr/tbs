@@ -321,7 +321,7 @@ def tote_restraint():
 # generator derives the same piece sizes (single source; it can't drift from this model).
 SHIRT_Z0    = 325    # pump-shirt bottom Z (raised to clear the brown P-05 inlet elbow at z298-318)
 SPINE_Z0    = 280    # drain-riser spine bottom Z (clears the low waste pickup z247-268)
-SPINE_X_END = 5560   # drain-riser spine far X (past the X1 cross at 5530)
+SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the sealed end wall (X5893) so the two end-wall port runs (P-05→X3, P-03→X4) + their X5763 drops get a ply clip surface; still clears the wall
 
 
 def rear_panel():
@@ -349,7 +349,8 @@ def rear_panel():
                   (1196, 1700, RPH),     # X4 Waste (P-03) pickup
                   (CTR_Y, 1030, CBH),    # Cct-C branch -> P-02
                   (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
-    spine_holes = [(5500, 1376, RPH)]    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
+    spine_holes = [(5500, 1376, RPH),                    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
+                   (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
     p = [ov.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
                      EQT, yw, ph, color=ov.C_PLY, holes=rear_holes, hole_axis="x")]
     # 18mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
@@ -391,10 +392,14 @@ def rear_panel():
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
     # P-05→X3 (brown, Yd1245, Z1502) and P-03→X4 (grey, Yd1235, Z1902). 2 clamps each, to the +Yd face.
     spine_far_face = 1224
-    for px, pyd, pz in ((5250, 1245, 1502), (5450, 1245, 1502),     # P-05 → X3 (brown)
-                        (5250, 1235, 1902), (5450, 1235, 1902)):    # P-03 → X4 (grey)
+    for px, pyd, pz in ((5250, 1245, 1502), (5450, 1245, 1502), (5650, 1245, 1502),                       # P-05 → X3 (brown) — run ends at the X5680 crossing
+                        (5250, 1235, 1902), (5450, 1235, 1902), (5650, 1235, 1902), (5730, 1235, 1902)):  # P-03 → X4 (grey) — +2 over the extended spine
         p.append(ov.ruby_box("Spine far-side P-clip", px - 8, spine_far_face, pz - 14,
                              16, (pyd + RP + 2) - spine_far_face, 28, color=C_CLIP))   # horizontal X-port line: band ⊥ the pipe
+    # P-03→X4 end-wall DROP (vertical at X5763, Yd1235) — now backed by the extended spine; clamp to the +Yd face
+    for dz in (1700, 1850):
+        p.append(ov.ruby_box("Spine far-side P-clip", 5763 - 14, spine_far_face, dz - 8,
+                             28, (1235 + RP + 2) - spine_far_face, 16, color=C_CLIP))   # vertical drop: band ⊥ (thin-Z)
     return "\n".join(p)
 
 
@@ -1067,10 +1072,11 @@ def drains_ports(sump_on_skid=False):
     # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
     # to the end wall (extending the straight run), then −Yd onto the X3 port lane past the spine, and down.
     x3lane = 1245
+    x3cross = SPINE_X_END - 100   # 5680 — cross the spine 100mm IN from its new far edge (X5780), not at the weak X-edge
     pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p5o, (PXC, POY + 15, p5o[2]), (5030, POY + 15, p5o[2]), (5030, x3lane, p5o[2]),
-          (ew - 130, x3lane, p5o[2]), (ew - 130, COL_L, p5o[2]),
-          (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
+          (x3cross, x3lane, p5o[2]), (x3cross, COL_L, p5o[2]),     # +X along the lane to x3cross, then −Yd ACROSS the spine (100mm in)
+          (x3cross, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)   # drop, then +X to the X3 end-wall port
 
     # ── IBC-4 WASTE: bottom pickup → grey SPINE riser → WRAP back through the panels → BV-06 → P-03 ──
     # BV-06 valve geometry copies BV-02 (riser at rx6/BV02_YD, valve 110 below the port, −X + +Yd stub

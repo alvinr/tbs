@@ -35,7 +35,7 @@ the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). Every lay
 drawing shows the cut lines (dashed red), **numbered in cutting order**, with the cut count per sheet. The packer works to a **5mm cut
 tolerance**: a piece may overhang a sheet edge by up to 5mm and still nest, so a near-full-width piece cuts
 clean to the edge rather than forcing a new sheet. It minimizes the sheet count first, then the number of
-cuts (the current nest is **4 sheets, 46 cuts**). This packs the whole job into **4 stock sheets, lettered A–D** — down from 8 if
+cuts (the current nest is **4 sheets, 47 cuts**). This packs the whole job into **4 stock sheets, lettered A–D** — down from 8 if
 each part were cut on its own sheet. Standardizing the timber plywood on 18mm drove the consolidation: the
 fold-down aprons re-graded from a dedicated 12mm sheet into the SYP offcut (sheets A–C); the EP electrical
 backboard — a finish-agnostic backing surface — now shares the chem-shelf UV-white sheet (sheet D); and

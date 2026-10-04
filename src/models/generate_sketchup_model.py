@@ -1759,6 +1759,10 @@ def fan_wiring(which="both", a_to_ep=False):
     # per skill_plumbing_drawing — ruby_pipe_run with elbows, right-angle entry).
     fcr = 7                                          # conduit radius (Ø14)
     czr = cz - 30                                    # conduit ceiling run height (2358)
+    ffy = 31                                         # ceiling-run Yd OFF the near wall — threads the narrow clear gap
+    #   between the top film-plane saddle-bolt nuts (TL/TR near, protrude to Yd≈18) and the Cct-C feed riser at the
+    #   master switch (Yd46): >28 clears the nuts, <32 stays >14mm off the riser (2026-08-19 / retuned); every
+    #   EP↔fan-tap ceiling feed runs at this Yd and only returns to the wall at a bolt-free X
     # → Fan A (exhaust, Cct A): fixed on the far/sealed end wall (now far-Yd side,
     #   rev9/B2 swap), high near the ceiling. Tap the trunking, cross in Yd over the
     #   IBC stack (no moving parts at the sealed end), drop onto the fan-frame top
@@ -1776,7 +1780,7 @@ def fan_wiring(which="both", a_to_ep=False):
         # then DOWN the pinhole wall to the EP drop point (the EP itself lands in Phase 4).
         ep_x = 2060
         parts.append(ruby_pipe_run("Fan A feed (Fan A tap -> pinhole-wall trunk to EP, Cct A)",
-                                   [(fa_x, 20, czr), (ep_x, 20, czr)], fcr, color=C_TRUNK))
+                                   [(fa_x, 20, czr), (fa_x, ffy, czr), (ep_x, ffy, czr), (ep_x, 20, czr)], fcr, color=C_TRUNK))   # jog to ffy across the ceiling so it clears the TR saddle-bolt nuts; return to the wall at the bolt-free EP column X
         parts.append(ruby_pipe_run("Fan A EP drop (down the pinhole wall to the EP, Cct A)",
                                    [(ep_x, 20, czr), (ep_x, 20, EP_H_HI)], fcr, color=C_TRUNK))
     # → Fan B (intake, Cct B): in the NEAR corner by the pinhole wall (rev9/B2 swap).
@@ -1813,12 +1817,11 @@ def fan_wiring(which="both", a_to_ep=False):
         parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
                                    [(ep_x, 20, EP_H_HI), (ep_x, 20, czr)], fcr, color=C_TRUNK))
         # The feeds jog OFF the near wall to Yd=ffy across the ceiling run so they clear the top film-plane
-        # saddle bolt nuts (TL/TR near) protruding from the wall, then return to the fan taps (2026-08-19).
-        ffy = 35
+        # saddle bolt nuts (TL/TR near) protruding from the wall, then return to the wall at a bolt-free X.
         parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
                                    [(ep_x, 20, czr), (ep_x, ffy, czr), (fa_x, ffy, czr), (fa_x, 20, czr)], fcr, color=C_TRUNK))
         parts.append(ruby_pipe_run("Fan B feed (EP -> Fan B tap, Cct B)",
-                                   [(ep_x, 20, czr), (fb_drop_x, fb_wall_yd, czr)], fcr, color=C_TRUNK))
+                                   [(ep_x, 20, czr), (ep_x, ffy, czr), (fb_drop_x, ffy, czr), (fb_drop_x, fb_wall_yd, czr)], fcr, color=C_TRUNK))   # jog to ffy so the run clears the TL saddle-bolt nuts; return to the wall at the Fan-B drop X
     return '\n'.join(parts)
 
 

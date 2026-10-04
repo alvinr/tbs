@@ -550,8 +550,16 @@ def panel_power(include_switch=True, part="all"):
     # ── feed: EP master switch → Yd20 ceiling trunk (per electrical.skp, clear of the center
     #    LEDs) → down to the corridor 12V DISTRIBUTION BLOCK.  Split at index 2 = (fx,TY,TZ), the
     #    pinhole-wall ceiling trunk above the EP: corridor side (Phase 1) vs EP drop (Phase 4). ──
-    feed = [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (pwr_edge_x, TY, TZ), (BKX, TY, TZ),
-            (BKX, by, TZ), (BKX, by, zc + 48)]
+    # The dist block sits BEHIND the rear panel, in the Yd-gap between the two rear frame uprights
+    # (Yd1096.8-1265.2) — and the frame's TOP ring Yd-rail bridges exactly that gap (Z2245-2296).  A
+    # straight drop onto the block would pierce that rail, and a Yd-traverse at the block's X (inside the
+    # upright footprint 5104-5154.8) would pierce an upright.  So drop in the CORRIDOR just −X of the rear
+    # frame, pass UNDER the top rail at the block Yd (in the clear upright gap), then step +X into the pocket.
+    cx_clear = cp.BACK_X - 24                         # 5080 — drop lane −X of the rear uprights (5104+), in the corridor
+    urz      = cp.TOP_Z - ov.IBC_FRAME_RHS - 60       # 2185 — under the top ring rail (bottom 2245), above the panel/pumps
+    feed = [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (pwr_edge_x, TY, TZ),   # riser stays at the switch Yd (46) — clear of the Yd15-21 PV-feed/E-stop cluster; the fan feeds thread the Yd~31 gap below it
+            (cx_clear, TY, TZ), (cx_clear, by, TZ), (cx_clear, by, urz),   # ceiling to the clear drop lane, +Yd to the block Yd, DROP to under the rail
+            (BKX, by, urz), (BKX, by, zc + 48)]                            # +X under the rail into the pocket, then down onto the block
     if part == "all":
         p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)", feed, cr, color=PWR))
     else:

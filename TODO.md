@@ -18,7 +18,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
-- [ ] **Add the walkway long beams (notched RWk beams) to the ibc-stack model (2026-10-03).** The ibc-stack 3D model doesn't include the right-walkway long beams, so `check_interference` on ibc-stack can't catch pipe-vs-beam clashes there — the blue-trunk × outer-beam clash only surfaced when the cascade reached the **water** model (which has the beams). Add the beams (reuse `ov._rwk_long_beam` / the walkway-beam builder) so ibc-stack models the beams the corridor pipes thread through, and corridor-pipe clashes against them are caught in the focus model's own audit instead of a downstream one.
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%

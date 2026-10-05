@@ -557,16 +557,17 @@ def panel_power(include_switch=True, part="all"):
     # frame, pass UNDER the top rail at the block Yd (in the clear upright gap), then step +X into the pocket.
     cx_clear = cp.BACK_X - 24                         # 5080 — drop lane −X of the rear uprights (5104+), in the corridor
     urz      = cp.TOP_Z - ov.IBC_FRAME_RHS - 60       # 2185 — under the top ring rail (bottom 2245), above the panel/pumps
-    feed = [(fx, fy, fz), (fx, 65, fz), (fx, 65, TZ), (fx, TY, TZ), (pwr_edge_x, TY, TZ),   # exit the switch REAR, tuck to Yd65 — in FRONT of the fuses/busbar (Yd≤50) but BEHIND the MPPT cross member (Yd82) — then rise
+    _rx = fx - 24                                                                           # riser X, clear LEFT of the battery − cable (X1958-1980)
+    feed = [(fx, fy, fz), (_rx, fy, fz), (_rx, 65, fz), (_rx, 65, TZ), (_rx, TY, TZ), (pwr_edge_x, TY, TZ),   # exit the switch REAR, jog −X clear of the battery − riser (at Yd100), tuck to Yd65 (front of fuses/busbar, behind the MPPT cross member), rise
             (cx_clear, TY, TZ), (cx_clear, by, TZ), (cx_clear, by, urz),   # ceiling to the clear drop lane, +Yd to the block Yd, DROP to under the rail
             (BKX, by, urz), (BKX, by, zc + 48)]                            # +X under the rail into the pocket, then down onto the block
     if part == "all":
         p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)", feed, cr, color=PWR))
     else:
         if do_link:
-            p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> pinhole-wall ceiling)", feed[:4], cr, color=PWR))
+            p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> pinhole-wall ceiling)", feed[:5], cr, color=PWR))
         if do_corr:
-            p.append(ov.ruby_pipe_run("Cct C feed (pinhole-wall ceiling -> corridor dist block)", feed[3:], cr, color=PWR))
+            p.append(ov.ruby_pipe_run("Cct C feed (pinhole-wall ceiling -> corridor dist block)", feed[4:], cr, color=PWR))
     # ── P-04 (tray-drain pump, relocated to the filter skid) taps the trunk off the master-switch
     #    feed → drops down the pinhole wall (Yd20, behind the skid) → into P-04's body from the wall
     #    side.  (P-02 is now a corridor-column pump — wired off the corridor bus below.) ──

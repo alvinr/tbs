@@ -435,8 +435,9 @@ def battery():
     # E-stop at the cluster's RIGHT end (X+270) that the old right-lane route used to cover.
     p.append(ov.ruby_pipe_run("Battery + cable (2/0 AWG, MRBF → main disconnect)",
                               _dedup([(_mrbf_x + MRBF_D / 2, 45, EP_POST_Z + MRBF_H),
-                                      (_mrbf_x + MRBF_D / 2, 45, disc_z - 35),
-                                      (disc_x, 45, disc_z - 35),
+                                      (_mrbf_x + MRBF_D / 2, 45, disc_z - 35),         # up at Yd45 (clears the orange AC line at Yd15)
+                                      (_mrbf_x + MRBF_D / 2, 35, disc_z - 35),         # drop to Yd35 for the −X run
+                                      (disc_x, 35, disc_z - 35),                       # −X to the disc (clears the battery − riser at Yd49-71)
                                       (disc_x, EP_CTRL_FACE_YD, disc_z - 20)]),   # lands on the disconnect LINE terminal (rear, behind the panel)
                               11, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
@@ -444,8 +445,8 @@ def battery():
                                       (EP_X + 40, 60, BA_STACK_TOP),
                                       (EP_RISE_X_M, 60, BA_STACK_TOP),
                                       (EP_RISE_X_M, 60, EP_H_LO + 150),
-                                      (bus_x + 20, 60, EP_H_LO + 150),
-                                      (bus_x + 20, 38, EP_H_LO + 150)]),   # jog FORWARD onto the (−) busbar (Yd30-50) — was ending at Yd60, floating behind it
+                                      (bus_x + 110, 60, EP_H_LO + 150),    # land near the (−) busbar +X END — SHORT horizontal, clear of the fan-feed + Cct-C risers it used to span
+                                      (bus_x + 110, 38, EP_H_LO + 150)]),   # jog FORWARD onto the (−) busbar (Yd30-50)
                               11, color="#202020"))
     return '\n'.join(p)
 

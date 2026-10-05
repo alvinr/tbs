@@ -116,8 +116,8 @@ def classify(name):
     # its DESTINATION name mentions a panel/ply/wall (e.g. '... -> panel GFCI', '... -> pinhole wall').
     # This must come BEFORE the solid-skip keywords below, or those swallow the conductor (the bug that
     # let the orange AC line cross the green PV feed unflagged).
-    if " ->" in name or " →" in name:
-        return ("pipe", None)
+    if " ->" in name or " →" in name or "awg" in n or "pigtail" in n:
+        return ("pipe", None)                 # routed conductor — incl. arrow-less ones (battery AWG cables, fuse pigtails)
     # A Cct-* POWER cable often NAMES its destination ("... -> pump wireway") — it is a cable, not the
     # pump solid it feeds; let it keep its normal (pipe/skip) classification below, never "pump".
     if "pump " in n and not n.startswith("cct "):
@@ -288,7 +288,9 @@ def is_run(name):
     n = name.lower()
     if "flange" in n:
         return False
-    return (" ->" in name) or (" →" in name)   # routing arrow is space-flanked (NOT a '12->120V' spec)
+    # routing arrow is space-flanked (NOT a '12->120V' spec); also catch arrow-less conductor runs
+    # (battery AWG cables, fuse pigtails) that are still routed pipes.
+    return (" ->" in name) or (" →" in name) or ("awg" in n) or ("pigtail" in n)
 
 
 # ── readability seam audits (--solids / --pipes) ─────────────────────────────

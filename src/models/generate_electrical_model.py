@@ -300,20 +300,21 @@ def power_core(external_links=True, links_only=False):
     # PV feed: MC4 (external) -> across ABOVE the chem shelf into the column -> down THROUGH the array
     # disconnect (now at operator height) -> up to the MPPT PV input.
     _pvx = PV_DISC_X + 35   # box center — the green cables land aligned in the disconnect box
-    _pvd_rz = PV_DISC_Z + 50                      # PV-disconnect REAR terminal Z (surface-mounted on the panel, rear-wired)
+    _pvd_rz = PV_DISC_Z + 35                      # PV-disconnect REAR terminal Z = box MID-height (rear-wired)
     # The green PV feed + the grey E-stop link below are the two circuits that run OUT to the external
     # panel; collect them into ext_links so the overview can draw them on a SEPARATE tag.
+    # Both land on the disconnect REAR, centered on the box mid (X = _pvx) and SEPARATED ±18mm.
     ext_links = []
     ext_links.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
                               _dedup([(mc4_x, 22, mc4_z),
-                                      (_pvx + 20, 22, mc4_z),
-                                      (_pvx + 20, 22, _pvd_rz),
-                                      (_pvx + 20, EP_CTRL_FACE_YD, _pvd_rz)]),   # forward to the disconnect REAR (through the panel)
+                                      (_pvx - 18, 22, mc4_z),
+                                      (_pvx - 18, 22, _pvd_rz),
+                                      (_pvx - 18, EP_CTRL_FACE_YD, _pvd_rz)]),   # land LEFT of the box mid, on the REAR
                               9, color="#2D7A2D"))
     ext_links.append(ov.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)",
-                              _dedup([(_pvx + 29, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR
-                                      (_pvx + 29, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
-                                      (_pvx + 29, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
+                              _dedup([(_pvx + 18, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR, RIGHT of the box mid
+                                      (_pvx + 18, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
+                                      (_pvx + 18, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
                                       (_pvx - 4, 45, EP_H_HI - MPPT_H + 40),      # −X behind, to the MPPT X
                                       (_pvx - 4, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 40)]),   # forward into the MPPT back (single clean entry)
                               9, color="#2D7A2D"))

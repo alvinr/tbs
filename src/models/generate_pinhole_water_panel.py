@@ -557,7 +557,7 @@ def panel_power(include_switch=True, part="all"):
     # frame, pass UNDER the top rail at the block Yd (in the clear upright gap), then step +X into the pocket.
     cx_clear = cp.BACK_X - 24                         # 5080 — drop lane −X of the rear uprights (5104+), in the corridor
     urz      = cp.TOP_Z - ov.IBC_FRAME_RHS - 60       # 2185 — under the top ring rail (bottom 2245), above the panel/pumps
-    feed = [(fx, fy, fz), (fx, 45, fz), (fx, 45, TZ), (fx, TY, TZ), (pwr_edge_x, TY, TZ),   # exit the switch REAR, tuck BEHIND the MPPT cross member (Yd45, toward the wall — not through the MPPT), then rise
+    feed = [(fx, fy, fz), (fx, 65, fz), (fx, 65, TZ), (fx, TY, TZ), (pwr_edge_x, TY, TZ),   # exit the switch REAR, tuck to Yd65 — in FRONT of the fuses/busbar (Yd≤50) but BEHIND the MPPT cross member (Yd82) — then rise
             (cx_clear, TY, TZ), (cx_clear, by, TZ), (cx_clear, by, urz),   # ceiling to the clear drop lane, +Yd to the block Yd, DROP to under the rail
             (BKX, by, urz), (BKX, by, zc + 48)]                            # +X under the rail into the pocket, then down onto the block
     if part == "all":

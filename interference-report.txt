@@ -1,4 +1,4 @@
-routing-sources-sha: 96eb2c2507c1
+routing-sources-sha: fd35dcdeca83
 model=overview  pipes=1325 solids=659  interferences=2
   PIPE  Input stub 3/8 (X slide → U-joint) TR      (Film Plane Mechanism)
     x  CANTILEVER Saddle seat TR far                      near (4596,2245,2252)

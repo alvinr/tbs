@@ -272,11 +272,11 @@ def power_core(external_links=True, links_only=False):
     _xm_l = _ply_x0 + 18 - _xm_reb
     _xm_r = (_ply_r - 18) + _xm_reb
     p.append(ov.ruby_box("EP plywood backing panel (18mm)", _ply_x0, -18, BA_H_LO - 12,
-                         _ply_r - _ply_x0, 18, _ply_h, color=ov.C_PLY))
+                         _ply_r - _ply_x0, 18, _ply_h, color=ov.C_PLY, alpha=0.3))   # transparent — see the gear mounted on it
     # 100mm wooden LIPS (returns) down both vertical sides — a mounting surface for the switches +
     # stiffens the skinny board.
-    p.append(ov.ruby_box("Plywood side lip (left, 18mm)", _ply_x0, 0, BA_H_LO - 12, 18, 100, _ply_h, color=ov.C_PLY))
-    p.append(ov.ruby_box("Plywood side lip (right, 18mm)", _ply_r - 18, 0, BA_H_LO - 12, 18, 100, _ply_h, color=ov.C_PLY))
+    p.append(ov.ruby_box("Plywood side lip (left, 18mm)", _ply_x0, 0, BA_H_LO - 12, 18, 100, _ply_h, color=ov.C_PLY, alpha=0.3))
+    p.append(ov.ruby_box("Plywood side lip (right, 18mm)", _ply_r - 18, 0, BA_H_LO - 12, 18, 100, _ply_h, color=ov.C_PLY, alpha=0.3))
     # IP65 enclosure — ghosted weatherproof box over the fuse block + busbars + charge fuse (the DC
     # distribution terminals that need sealing), mounted ON the plywood (its back IS the plywood). The
     # MPPT, main disconnect, battery and inverter mount on the plywood outside it.

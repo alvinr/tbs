@@ -112,6 +112,12 @@ def classify(name):
     # it are bundled, not colliding.  Skip it as an obstacle (its name matches the "trunk" pipe keyword).
     if "cable trunking" in n:
         return ("skip", None)
+    # A routed run (ruby_pipe_run names it 'src -> dst', space-flanked arrow) is ALWAYS a pipe — even when
+    # its DESTINATION name mentions a panel/ply/wall (e.g. '... -> panel GFCI', '... -> pinhole wall').
+    # This must come BEFORE the solid-skip keywords below, or those swallow the conductor (the bug that
+    # let the orange AC line cross the green PV feed unflagged).
+    if " ->" in name or " →" in name:
+        return ("pipe", None)
     # A Cct-* POWER cable often NAMES its destination ("... -> pump wireway") — it is a cable, not the
     # pump solid it feeds; let it keep its normal (pipe/skip) classification below, never "pump".
     if "pump " in n and not n.startswith("cct "):
@@ -143,8 +149,8 @@ def classify(name):
                             "walkway", "panel", "backing", "ply", "spine", "context", "scale", "person",
                             "depth ref", "label")):
         return ("skip", None)
-    # PIPE (a pipe run segment, elbow, or fitting on a line)
-    if ("->" in name or any(k in n for k in (" entry", "pickup", "suction", "equaliz", " tap ",
+    # PIPE (a pipe run segment, elbow, or fitting on a line) — arrow-named runs incl. the unicode '→'
+    if (" ->" in name or " →" in name or any(k in n for k in (" entry", "pickup", "suction", "equaliz", " tap ",
             "merge", "trunk", "fill ", "drain port", "riser", " inlet", "supply", "dead-leg",
             "spray bar", " port", "branch", "tap-0", "bv-0 riser"))):
         return ("pipe", None)
@@ -274,12 +280,15 @@ def run_base(name):
 
 
 def is_run(name):
-    """A real pipe RUN to test for crossings — excludes flanges (fittings on a run) and the
-    electrical cable bundles (legitimately run together)."""
+    """A routed pipe/conductor RUN to test for crossings.  ruby_pipe_run / ruby_coil_cord name every
+    run 'src -> dst' (ascii '->' OR unicode '→'); fittings/flanges are not runs.  Electrical conductors
+    AND conduits ARE runs — they cross like any pipe — so only genuine FLANGES are excluded here (runs
+    that legitimately MEET at a shared terminal/junction are handled by the join/junction exclusions in
+    the crossing pass, not by dropping them from the candidate set)."""
     n = name.lower()
-    if "->" not in name or "flange" in n:
+    if "flange" in n:
         return False
-    return not any(k in n for k in ("cable", "busbar", "awg", " wire", "lug", "conduit"))
+    return (" ->" in name) or (" →" in name)   # routing arrow is space-flanked (NOT a '12->120V' spec)
 
 
 # ── readability seam audits (--solids / --pipes) ─────────────────────────────

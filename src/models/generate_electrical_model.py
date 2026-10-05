@@ -115,7 +115,8 @@ FUSE_POS = {c: (_fuse_cx(i), _FUSE_YD + _FUSE_T / 2, FUSE_TOP_Z)
             for i, c in enumerate(FUSE_ORDER)}
 TRUNK_YD = 20                  # conductors hug the pinhole-wall ceiling line
 TRUNK_Z = ov.C_HGT - 13
-MASTER_SW_POS = (EP_X + 130, 46, EP_DISC_Z + 84)   # master pump switch top terminal (in the disconnect cluster)
+EP_CTRL_FACE_YD = 100   # EP access-panel front face Yd — the E-stop + master switch SURFACE-MOUNT here (wired from behind)
+MASTER_SW_POS = (EP_X + 130, EP_CTRL_FACE_YD, EP_DISC_Z + 84)   # master pump switch REAR terminal (on the access-panel front, rear-wired)
 
 
 # ── Labels (project rule: every .skp gets a Labeled scene) ───────────────────
@@ -242,8 +243,8 @@ def master_switch():
     plumbing-panel's standalone view both call this. `MASTER_SW_POS` is its top feed terminal."""
     _msx, _msz = EP_X + 130, EP_DISC_Z
     return '\n'.join([
-        ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, 0, _msz, 50, 46, 84, color="#202020"),
-        ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, 46, _msz + 40, 16, 34, 16, color="#C0202A"),
+        ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, EP_CTRL_FACE_YD, _msz, 50, 46, 84, color="#202020"),   # SURFACE-mounted on the access-panel front
+        ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, EP_CTRL_FACE_YD + 46, _msz + 40, 16, 20, 16, color="#C0202A"),
     ])
 
 
@@ -255,12 +256,21 @@ def power_core(external_links=True, links_only=False):
     p = []
     ez = EP_H_LO
     eh = EP_H_HI - EP_H_LO
+    # EP access/control panel band (item: controls separated from wiring) — a ply fascia at the E-stop
+    # height spanning the two EP side lips; the E-stop, master lever + disconnect handle poke through it.
+    _ACCESS_YB, _ACCESS_YF = EP_CTRL_FACE_YD - 18, EP_CTRL_FACE_YD   # fascia back + front Yd (controls surface-mount on the front)
+    _ACCESS_Z0, _ACCESS_Z1 = EP_H_LO - 150, EP_H_LO - 5   # just below the enclosure, centered on the E-stop height
     # Plywood backing panel (18mm) — a single tall NARROW board (the panel is now a skinny column in
     # the clear band, right of the external panel, so no step is needed). The DC gear sits inside a
     # ghosted IP65 enclosure (added below) whose back panel is this plywood.
     _ply_x0 = EP_X - 12
     _ply_r = EP_X + EP_COL_W + 12
     _ply_h = (EP_H_HI + 12) - (BA_H_LO - 12)
+    # Cross members (the MPPT mount + the access/control panel) each SPAN the two EP side lips and seat
+    # in a 9mm rebate in each lip — the MPPT and the controls surface-mount on these full-width members.
+    _xm_reb = 9
+    _xm_l = _ply_x0 + 18 - _xm_reb
+    _xm_r = (_ply_r - 18) + _xm_reb
     p.append(ov.ruby_box("EP plywood backing panel (18mm)", _ply_x0, -18, BA_H_LO - 12,
                          _ply_r - _ply_x0, 18, _ply_h, color=ov.C_PLY))
     # 100mm wooden LIPS (returns) down both vertical sides — a mounting surface for the switches +
@@ -272,17 +282,14 @@ def power_core(external_links=True, links_only=False):
     # MPPT, main disconnect, battery and inverter mount on the plywood outside it.
     p.append(ov.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO,
                          200, 140, 220, color=ov.C_STEEL, alpha=0.12))
-    p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
-                         EP_H_HI - MPPT_H, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
-    # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the
-    # MPPT flush-mounts on ply; tall enough to also back the PV-feed riser (Z~1884->1970) so the cable
-    # sits flush on the panel. Front face at Yd120 (the MPPT's back).
+    # MPPT mounts on a plywood CROSS MEMBER that SPANS the two EP side lips (housed in a 9mm rebate in
+    # each), exactly like the access panel below — NOT its own little sub-panel. Transparent, so the gear
+    # behind reads through; the MPPT body surface-mounts on its front face (Yd = EP_CTRL_FACE_YD).
     _sp_z0, _sp_h = EP_H_HI - MPPT_H - 30, MPPT_H + 30
-    p.append(ov.ruby_box("MPPT backing panel (18mm ply)", EP_X + 8, 102,
-                         _sp_z0, MPPT_W + 20, 18, _sp_h, color=ov.C_PLY))
-    # side gussets tying the MPPT sub-panel BACK to the main plywood (Yd0) so it isn't floating
-    for _gx in (EP_X + 8, EP_X + 8 + MPPT_W + 20 - 18):
-        p.append(ov.ruby_box("MPPT sub-panel gusset (ply)", _gx, 0, _sp_z0, 18, 120, _sp_h, color=ov.C_PLY))
+    p.append(ov.ruby_box("MPPT cross-member (18mm ply, spans EP sides, rebated)",
+                         _xm_l, _ACCESS_YB, _sp_z0, _xm_r - _xm_l, 18, _sp_h, color=ov.C_PLY, alpha=0.3))
+    p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, EP_CTRL_FACE_YD,
+                         EP_H_HI - MPPT_H, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # PV interior feed: external-panel MC4 bulkheads -> MPPT PV input (the conductor from
     # the interior side of the MC4 connectors; the exterior array->panel run is ov.solar_array()).
     # Crosses at the bottom MC4 height (Z≈1884, under the overview's upper transport-stay
@@ -293,21 +300,22 @@ def power_core(external_links=True, links_only=False):
     # PV feed: MC4 (external) -> across ABOVE the chem shelf into the column -> down THROUGH the array
     # disconnect (now at operator height) -> up to the MPPT PV input.
     _pvx = PV_DISC_X + 35   # box center — the green cables land aligned in the disconnect box
-    _dtop = PV_DISC_Z + 70                        # disconnect box TOP — BOTH green cables land here
-    # array -> disconnect: drops into the TOP of the disconnect (line terminal). The green PV feed +
-    # the grey E-stop link below are the two circuits that run OUT to the external panel; collect them
-    # into ext_links so the overview can draw them on a SEPARATE tag (hidden in the Ventilation scene).
+    _pvd_rz = PV_DISC_Z + 50                      # PV-disconnect REAR terminal Z (surface-mounted on the panel, rear-wired)
+    # The green PV feed + the grey E-stop link below are the two circuits that run OUT to the external
+    # panel; collect them into ext_links so the overview can draw them on a SEPARATE tag.
     ext_links = []
     ext_links.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
                               _dedup([(mc4_x, 22, mc4_z),
                                       (_pvx + 20, 22, mc4_z),
-                                      (_pvx + 20, 22, _dtop)]),
+                                      (_pvx + 20, 22, _pvd_rz),
+                                      (_pvx + 20, EP_CTRL_FACE_YD, _pvd_rz)]),   # forward to the disconnect REAR (through the panel)
                               9, color="#2D7A2D"))
     ext_links.append(ov.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)",
-                              _dedup([(_pvx - 20, 22, _dtop),
-                                      (_pvx - 20, 22, EP_H_HI - MPPT_H + 30),
-                                      (_pvx - 20, 120, EP_H_HI - MPPT_H + 30),
-                                      (_pvx - 20, 155, EP_H_HI - MPPT_H + 40)]),
+                              _dedup([(_pvx + 29, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR
+                                      (_pvx + 29, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
+                                      (_pvx + 29, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
+                                      (_pvx - 4, 45, EP_H_HI - MPPT_H + 40),      # −X behind, to the MPPT X
+                                      (_pvx - 4, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 40)]),   # forward into the MPPT back (single clean entry)
                               9, color="#2D7A2D"))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.
@@ -324,18 +332,17 @@ def power_core(external_links=True, links_only=False):
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
     p.append(ov.ruby_box("Busbar (-)", EP_X + 15, 30, ez + 140,
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#2C2C2C"))
-    p.append(ov.ruby_cylinder("Main Disconnect (m-Series)", EP_X + 55, 0,
-                              EP_DISC_Z, DISCONNECT_D / 2, DISCONNECT_H,
+    p.append(ov.ruby_cylinder("Main Disconnect (m-Series)", EP_X + 55, _ACCESS_YF,
+                              EP_DISC_Z, DISCONNECT_D / 2, DISCONNECT_H,   # SURFACE-mounted on the access panel, body on the front
                               color="#D43A2F", axis="y"))
-    # Main disconnect → busbar(+) load link: the battery + feed lands on the disconnect
-    # LINE terminal (battery()); it exits the LOAD terminal here to the (+) busbar, so the
-    # whole bank — and every circuit fed off it — is isolated when the knob is OFF.
+    # Main disconnect → busbar(+) load link: the battery + feed lands on the disconnect LINE terminal
+    # (battery()); it exits the LOAD terminal here to the (+) busbar. Both terminals are at the
+    # disconnect REAR (Yd = EP_CTRL_FACE_YD) and the links run BEHIND the access panel.
     disc_x = EP_X + 55
     p.append(ov.ruby_pipe_run("Main feed (disconnect → busbar +)",
-                              _dedup([(disc_x, 30, EP_DISC_Z + DISCONNECT_D + 20),  # off the disconnect LOAD terminal
-                                      (disc_x, 45, EP_DISC_Z + DISCONNECT_D + 20),  # out to the busbar plane
-                                      (disc_x, 45, ez + 170),                        # rise up the panel to busbar(+) level
-                                      (EP_X + 15, 45, ez + 170)]),                   # over to the busbar(+) near end
+                              _dedup([(disc_x, _ACCESS_YF, EP_DISC_Z + 20),   # off the disconnect LOAD terminal (rear)
+                                      (disc_x, 30, EP_DISC_Z + 20),           # back behind the panel to the busbar plane
+                                      (disc_x, 30, ez + 170)]),                # straight up onto the (+) busbar at X1884 (busbar spans X1844-1964) — no −X traverse that fouls the fan-feed riser
                               11, color="#8B1A1A"))
     # MPPT charge-line fuse — 60A on the MPPT battery-output lead, in front of the busbars
     # (D2; protects the 6 AWG charge conductor the 200A main fuse is too large to cover).
@@ -345,10 +352,20 @@ def power_core(external_links=True, links_only=False):
     # a CLEAR spot (left-center, in the gap between the contactor top ~Z714 and the inverter ~Z1180,
     # left of the wiring risers) so it isn't buried under the cables.
     ies_cx, ies_cz = EP_X + 270, EP_DISC_Z + 20
+    # EP access/control panel: a SINGLE ply fascia spanning the two EP side lips, housed in a 9mm rebate
+    # in each lip, at the E-stop height. The E-stop, master lever + disconnect handle poke through its
+    # front; all are WIRED FROM THE REAR (behind the fascia) — controls separated from the distribution
+    # wiring, which stays in the enclosure above.
+    _acc_reb = 9
+    _acc_l = _ply_x0 + 18 - _acc_reb                 # seat 9mm into the left side lip
+    _acc_r = (_ply_r - 18) + _acc_reb                # seat 9mm into the right side lip
+    p.append(ov.ruby_box("EP access panel (18mm ply, rebated to EP sides)",
+                         _acc_l, _ACCESS_YB, _ACCESS_Z0, _acc_r - _acc_l,
+                         _ACCESS_YF - _ACCESS_YB, _ACCESS_Z1 - _ACCESS_Z0, color=ov.C_PLY, alpha=0.3))   # transparent — see the wiring behind
     p.append(ov.ruby_cylinder("Interior E-stop collar (safety yellow)",
-                              ies_cx, 0, ies_cz, 30, 12, color="#F2C200", axis="y"))
+                              ies_cx, _ACCESS_YF, ies_cz, 30, 18, color="#F2C200", axis="y"))   # SURFACE-mounted base on the panel front
     p.append(ov.ruby_cylinder("Interior E-stop button (red mushroom)",
-                              ies_cx, 12, ies_cz, 24, 26, color="#C42B1C", axis="y"))
+                              ies_cx, _ACCESS_YF + 18, ies_cz, 24, 26, color="#C42B1C", axis="y"))
     # E-stop trip wiring (D5): both E-stops sit in the battery-contactor coil loop. A control pair
     # runs from the contactor coil up to the interior E-stop; the two E-stops are then paralleled
     # (interior -> exterior via the external panel) so pressing EITHER drops the contactor.
@@ -357,14 +374,17 @@ def power_core(external_links=True, links_only=False):
     _ctc_x, _ctc_z = EP_X + 10 + CONTACTOR_W / 2, EP_POST_Z + CONTACTOR_H    # contactor coil top (skinny column)
     _ext_x, _ext_z = PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H / 2  # exterior E-stop
     ext_links.append(ov.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
-                              _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 10, _ctc_z + 20),
+                              _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 45, _ctc_z + 20),   # straight UP off the contactor coil (no angled entry)
+                                      (_ctc_x, 10, _ctc_z + 20),                           # then −Yd (right-angle turn)
                                       (ies_cx, 10, _ctc_z + 20), (ies_cx, 10, ies_cz),
-                                      (ies_cx, 0, ies_cz)]),
+                                      (ies_cx, _ACCESS_YB, ies_cz)]),               # land on the E-stop REAR terminal (behind the access panel)
                               4, color="#586070"))
     ext_links.append(ov.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",
-                              _dedup([(ies_cx, 0, ies_cz), (ies_cx, 10, ies_cz),
-                                      (ies_cx, 10, _ext_z - 50), (_ext_x, 10, _ext_z - 50),
-                                      (_ext_x, 10, _ext_z), (_ext_x, -WALL, _ext_z)]),
+                              _dedup([(ies_cx, _ACCESS_YB, ies_cz), (ies_cx, 10, ies_cz),
+                                      (ies_cx, 10, _ext_z - 75),               # rise 25mm lower than the GFCI jog
+                                      (ies_cx, 5, _ext_z - 75),                # tuck to Yd5 (clears the green PV feed at Yd22 + the orange jog at Yd18)
+                                      (_ext_x, 5, _ext_z - 75),                # across at Yd5
+                                      (_ext_x, 5, _ext_z), (_ext_x, -WALL, _ext_z)]),
                               4, color="#586070"))
     # ext_links = the two circuits OUT to the external panel (green PV + grey E-stop). links_only returns
     # JUST them (the overview's separate "EP Ext Wiring" component); external_links=False omits them
@@ -390,6 +410,14 @@ def battery():
     _mrbf_x = EP_X + CONTACTOR_W + 30
     p.append(ov.ruby_box("MRBF Main Fuse (on + post)", _mrbf_x, 20, EP_POST_Z,
                          MRBF_D, MRBF_D, MRBF_H, color="#222222"))
+    # Battery + path INTO the MRBF (so it isn't a pipe-to-nowhere): battery + terminal -> contactor ->
+    # MRBF; the red Battery+ cable below then runs MRBF -> main disconnect.
+    p.append(ov.ruby_pipe_run("Battery + link (battery -> contactor)",
+                              _dedup([(EP_X + 40, 45, BA_STACK_TOP),
+                                      (EP_X + 40, 45, EP_POST_Z + 20)]), 11, color="#8B1A1A"))
+    p.append(ov.ruby_pipe_run("Battery + link (contactor -> MRBF)",
+                              _dedup([(EP_X + 10 + CONTACTOR_W, 40, EP_POST_Z + 20),
+                                      (_mrbf_x + MRBF_D / 2, 40, EP_POST_Z + 20)]), 11, color="#8B1A1A"))
     disc_x, disc_z = EP_X + 55, EP_DISC_Z               # main disconnect centre (matches power_core cluster)
     bus_x = EP_X + 20
     # + leaves the MRBF, rises just BELOW the cluster row, then runs LEFT to the disconnect LINE terminal.
@@ -399,13 +427,15 @@ def battery():
                               _dedup([(_mrbf_x + MRBF_D / 2, 45, EP_POST_Z + MRBF_H),
                                       (_mrbf_x + MRBF_D / 2, 45, disc_z - 35),
                                       (disc_x, 45, disc_z - 35),
-                                      (disc_x, 30, disc_z - 35)]),   # lands ON the disconnect LINE terminal
+                                      (disc_x, EP_CTRL_FACE_YD, disc_z - 20)]),   # lands on the disconnect LINE terminal (rear, behind the panel)
                               11, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
-                              _dedup([(EP_X + 40, 60, BA_STACK_TOP),
+                              _dedup([(EP_X + 40, 60, BA_STACK_TOP - 55),   # DOWN into the battery − terminal (connects; was starting on the top surface, reading as open-ended)
+                                      (EP_X + 40, 60, BA_STACK_TOP),
                                       (EP_RISE_X_M, 60, BA_STACK_TOP),
                                       (EP_RISE_X_M, 60, EP_H_LO + 150),
-                                      (bus_x + 20, 60, EP_H_LO + 150)]),
+                                      (bus_x + 20, 60, EP_H_LO + 150),
+                                      (bus_x + 20, 38, EP_H_LO + 150)]),   # jog FORWARD onto the (−) busbar (Yd30-50) — was ending at Yd60, floating behind it
                               11, color="#202020"))
     return '\n'.join(p)
 
@@ -432,8 +462,8 @@ def pv_disconnect():
     the interior EP rather than with the empty panel shell."""
     return '\n'.join([
         ov.ruby_box("PV Array Disconnect (load-break isolator)",
-                    PV_DISC_X, 0, PV_DISC_Z, 70, 45, 70, color="#D43A2F"),
-        ov.ruby_box("PV disconnect lever (red switch)", PV_DISC_X + 28, 45, PV_DISC_Z + 20,
+                    PV_DISC_X, EP_CTRL_FACE_YD, PV_DISC_Z, 70, 45, 70, color="#D43A2F"),   # SURFACE-mounted on the access panel
+        ov.ruby_box("PV disconnect lever (red switch)", PV_DISC_X + 28, EP_CTRL_FACE_YD + 45, PV_DISC_Z + 20,
                     14, 40, 14, color="#C0202A"),
     ])
 
@@ -525,11 +555,19 @@ def inverter():
     p = [inverter_box()]
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
     gfci_z = PWR_PANEL_Z + _OUTLET_VF * PWR_PANEL_H
+    _ac_lane_x = EP_X + 249                    # clear riser slot between the PV riser (X≤2067) and the interior E-stop (X2099)
+    _ac_top_z = EP_H_HI + 18                   # just above the EP column top edge (penetrates the TOP, not the side)
+    _inv_top = INVERTER_Z + INVERTER_H
     p.append(ov.ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
-                              _dedup([(INVERTER_X + INVERTER_W / 2, 30, INVERTER_Z + INVERTER_H),
-                                      (INVERTER_X + INVERTER_W / 2, 30, gfci_z),
-                                      (gfci_x, 30, gfci_z),
-                                      (gfci_x, 18, gfci_z)]),
+                              _dedup([(INVERTER_X + INVERTER_W / 2, 15, _inv_top),   # off the inverter at Yd15 (clear of the battery+ cable at Yd45)
+                                      (_ac_lane_x, 15, _inv_top),                    # +X to the riser slot
+                                      (_ac_lane_x, 15, EP_H_LO + 150),               # up at Yd15
+                                      (_ac_lane_x, 45, EP_H_LO + 150),               # shift to Yd45 (X clears the E-stop at X2099 by 21mm)
+                                      (_ac_lane_x, 45, _ac_top_z),                   # up and out the EP top
+                                      (_ac_lane_x, 65, _ac_top_z),                   # shift to Yd65 for the crossover (clears the fan-feed riser at X1868/Yd45)
+                                      (gfci_x, 65, _ac_top_z),                       # across the top to the GFCI X
+                                      (gfci_x, 65, gfci_z),                          # up to the GFCI height (Yd65 clears the green MC4 feed at Yd22)
+                                      (gfci_x, 18, gfci_z)]),                         # jog to the GFCI terminal (above the green)
                               7, color="#E8884A"))
     return '\n'.join(p)
 

@@ -18,6 +18,13 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
+- [ ] **Two pre-existing pipe-vs-solid clashes surfaced by the `check_interference` fix (2026-10-05).** The crossing
+  check was skipping any conductor whose name contained a solid keyword ("… → **panel** GFCI", "… → pinhole **wall**");
+  fixing that (routed runs are always pipes) revealed two latent pipe-vs-solid clashes OUTSIDE the EP — neither
+  introduced by the EP work (both at X≈4600). Investigate + resolve each (confirm real vs by-design, then reroute the
+  pipe or notch/butt the solid):
+  - `Input stub 3/8 (X slide → U-joint) TR` ↔ `Saddle seat TR far` — film-plane mechanism, far TR corner (~4596,2245,2252); ~6mm overlap.
+  - `Blue supply trunk → spray bar / TAP-01` ↔ processing-tray exclusion zone (~4616,1161,147) — water system near the tray.
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%

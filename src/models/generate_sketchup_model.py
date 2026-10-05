@@ -81,7 +81,7 @@ C_TRAY = "#9FB8C8"      # processing tray — 304 SS basin
 C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
 
 # Subsystem → tag map (also drives tag creation order).
-TAGS = ["Shell", "Walkways", "Processing Tray",
+TAGS = ["Shell", "Shell Far", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane", "Combined Plate",
         "Pivot Axle", "Spray Bar", "Plumbing Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
@@ -628,10 +628,9 @@ def container_shell():
                           C_LEN, WALL_T, C_HGT,
                           color=w, alpha=0.2, both_sides=True))
 
-    parts.append(ruby_box("Film Plane Wall (Yd=max)",
-                          0, C_WID, 0,
-                          C_LEN, WALL_T, C_HGT,
-                          color=w, alpha=0.2, both_sides=True))
+    # (Film Plane Wall (Yd=max) — the wall OPPOSITE the pinhole — lives in its own component/tag
+    #  (far_wall / "Shell Far") so a scene can hide it; the overview camera sits on the far-wall side
+    #  looking in, so it otherwise occludes whatever is on the pinhole wall, e.g. the electrical panel.)
 
     parts.append(ruby_box("Far End Wall (IBC end)",
                           C_LEN, 0, 0,
@@ -639,6 +638,15 @@ def container_shell():
                           color=w, alpha=0.2, both_sides=True))
 
     return '\n'.join(parts)
+
+
+def far_wall():
+    """The container wall OPPOSITE the pinhole (Film Plane Wall, Yd=max), on its own 'Shell Far' tag
+    so the Electrical scene can hide it — the overview camera looks in from the far-wall side, so this
+    wall sits between the camera and the pinhole-wall-mounted electrical panel."""
+    return ruby_box("Film Plane Wall (Yd=max)",
+                    0, C_WID, 0, C_LEN, WALL_T, C_HGT,
+                    color=C_SHELL, alpha=0.2, both_sides=True)
 
 
 # ── Processing tray ──────────────────────────────────────────────────────────
@@ -1687,7 +1695,7 @@ def lighting_wiring():
     # of the pinhole wall (film carriage starts at Yd=100) and left of the EP
     # (X<1910) + the transport-stay anchor (X1594–1794) so they clear both.
     sw_yd = 45                         # off the wall, past the trunking, clear of carriage
-    for swx in (1450, 1530):
+    for swx in (950, 1030):            # moved 500mm AWAY from the pinhole (was 1450/1530) — further from the EP, well clear of the transport-stay anchor (X1594-1794)
         parts.append(ruby_box("Pull Switch (ceiling)",
                               swx, sw_yd, cz - 40, 40, 40, 40, color=C_SWITCH))
         # beaded-chain pull cord: alternating bead radii read it as a flexible
@@ -1710,9 +1718,19 @@ def lighting_wiring():
     # X2060 runs down the EP center face (Z1500–2100) and continues to the battery top.
     # (rev: the old second drop at X1750 was removed — the EP moved to X1910, leaving
     #  that drop orphaned over the swing-panel transport-lock stay plate.)
-    for cxc, zbot in ((2060, 600),):
-        parts.append(ruby_box("Conduit Drop (10mm)",
-                              cxc, 8, zbot, 10, 10, (cz - 25) - zbot, color=C_TRUNK))
+    # EP power drop — down the clear lane at X2140 (right of the E-stop link's X-end ~2091, left of the
+    # right ply side-lip X2163), then jogs −X to LAND ON the EP enclosure top (Z1370, X1834-2034) so it
+    # actually connects (was a bare box dangling to Z600 past the battery's X2089 edge).
+    parts.append(ruby_pipe_run("Conduit Drop (10mm, trunk -> EP)",
+                               [(2140, 13, cz - 25),       # tap the ceiling trunk at Yd13 (clear of the fan feeds at Yd31)
+                                (2140, 13, 1950),          # descend below the ceiling feeds, above the EP-top riser heads
+                                (2140, 65, 1950),          # shift to a clear front Yd lane (above every riser top)
+                                (2140, 65, 1392),          # down the front lane
+                                (2010, 65, 1392),          # jog −X over the enclosure (Yd65 clears the orange/E-stop/PV risers)
+                                (2010, 45, 1392),          # back to the fuse-block Yd (orthogonal)
+                                (1996, 45, 1392),          # −X to the target fuse X (orthogonal)
+                                (1996, 45, 1262)],         # straight DOWN into the fuse top (vertical entry)
+                               5, color=C_TRUNK))
 
     # Conduit runs along the ceiling from the trunking out to each fixture.
     cr, czc = 7, cz - 38
@@ -1728,6 +1746,17 @@ def lighting_wiring():
         parts.append(ruby_cylinder("Conduit to Safelight (Cct D)",
                                    sx + 20, 40, czc, cr, 60,
                                    color=C_TRUNK, axis="y"))
+
+    # Flex-lead service coils — each strip's flying lead connects to the conduit stub (grey tube) with a
+    # short CURLY cord (droops below the ceiling line for slack, like the Fan-B flex connector).
+    for wx in (600, 2350):
+        parts.append(ruby_coil_cord("White strip flex lead (Cct G)",
+                                    [(wx + 20, 95, czc), (wx + 12, 102, czc - 55), (wx + 2, 108, cz - 25)],
+                                    r=3.5, color=C_TRUNK))
+    for sx in (500, 2250, 4150):
+        parts.append(ruby_coil_cord("Safelight flex lead (Cct D)",
+                                    [(sx + 20, 95, czc), (sx + 12, 102, czc - 55), (sx + 2, 108, cz - 25)],
+                                    r=3.5, color=C_TRUNK))
 
     # Circuit C — feed to the pump/filter plumbing panel (IBC corridor).
     # Branch off the ceiling trunking (Yd≈0) across to the panel center
@@ -1791,7 +1820,7 @@ def fan_wiring(which="both", a_to_ep=False):
     #   Fan B on the swing panel (electrical-report §Circuit B, Deutsch DT — NOT
     #   modeled); it is UNPLUGGED before the panel swings ~56° for transport, so no
     #   wiring crosses the moving joint.
-    fb_drop_x = 300                                  # near the door end, by Fan B
+    fb_drop_x = 420                                  # near the door end, by Fan B — shifted +120mm toward the pinhole to clear the film-plane beams (box follows; flex coil takes up the slack)
     fb_wall_yd = 18                                  # conduit hugs the pinhole wall
     fb_box_z = FAN_B_H                               # wall electrical box at the fan's height
     if which in ("both", "B"):
@@ -1813,9 +1842,17 @@ def fan_wiring(which="both", a_to_ep=False):
         # ── Feed from the EP fan breakers up to the ceiling trunk, then along the trunk line to each
         #    fan tap — so Cct-A / Cct-B visibly connect back to their power source (the EP) in the
         #    Ventilation scene (the real trunking + EP drop are on the hidden Lighting tag). ──
-        ep_x = 2060                                      # EP column X (matches the lighting conduit drop)
+        # Fan-feed riser ORIGINATES at fuses A/B (the Cct-A/B source) and rises through the IP65 enclosure
+        # top (~Z1370) to the ceiling trunk — so it visibly connects (was floating 190mm above the enclosure
+        # at EP_H_HI, reading as a pipe-to-nowhere).
+        fuse_x = 1868                                    # over fuses A/B (Blue Sea 5026 block, X1849-1886)
+        ep_x = fuse_x                                    # fan feeds originate at the riser head
         parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
-                                   [(ep_x, 20, EP_H_HI), (ep_x, 20, czr)], fcr, color=C_TRUNK))
+                                   [(fuse_x, 45, 1255),            # fuse A/B blade top (Cct-A/B origin)
+                                    (fuse_x, 60, 1255),            # jog FORWARD to Yd60 — clear of the (+) busbar (Yd30-50, Z1320-1342) it otherwise passes through
+                                    (fuse_x, 60, 1915),            # rise at Yd60 (clear of the busbar)
+                                    (fuse_x, 20, 1915),            # jog to the trunk Yd (20) ABOVE the green PV run
+                                    (fuse_x, 20, czr)], fcr, color=C_TRUNK))   # rise at Yd20 to the ceiling trunk
         # The feeds jog OFF the near wall to Yd=ffy across the ceiling run so they clear the top film-plane
         # saddle bolt nuts (TL/TR near) protruding from the wall, then return to the wall at a bolt-free X.
         parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
@@ -1854,10 +1891,17 @@ def evap_cooler():
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
     gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
     inv_top = INVERTER_Z + INVERTER_H
+    _ac_lane_x = EP_X + 249                    # clear riser slot between the PV riser (X≤2067) and the interior E-stop (X2099)
+    _ac_top_z = EP_H_HI + 18                   # just above the EP column top edge (penetrates the TOP, not the side)
     parts.append(ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
-                               [(INVERTER_X + INVERTER_W / 2, 30, inv_top),
-                                (gfci_x, 30, inv_top),
-                                (gfci_x, 30, gfci_z),
+                               [(INVERTER_X + INVERTER_W / 2, 15, inv_top),   # off the inverter at Yd15 (clear of the battery+ cable at Yd45)
+                                (_ac_lane_x, 15, inv_top),                    # +X to the riser slot
+                                (_ac_lane_x, 15, EP_H_LO + 150),              # up at Yd15
+                                (_ac_lane_x, 45, EP_H_LO + 150),              # shift to Yd45 (X clears the E-stop at X2099 by 21mm)
+                                (_ac_lane_x, 45, _ac_top_z),                  # up and out the EP top
+                                (_ac_lane_x, 65, _ac_top_z),                  # shift to Yd65 for the crossover (clears the fan-feed riser at X1868/Yd45)
+                                (gfci_x, 65, _ac_top_z),                      # across the top to the GFCI X
+                                (gfci_x, 65, gfci_z),                         # up to the GFCI height (Yd65 clears the green MC4 feed at Yd22)
                                 (gfci_x, 18, gfci_z)],
                                7, color="#E8884A"))
 
@@ -2242,6 +2286,7 @@ def generate_ruby():
     import generate_pinhole_water_panel as pw
     comps = [
         component("Container Shell", "Shell", container_shell()),
+        component("Container Far Wall", "Shell Far", far_wall()),
         component("Walkways", "Walkways", walkways()),
         component("Processing Tray", "Processing Tray", processing_tray()),
         component("Pinhole Assembly", "Pinhole", pinhole_assembly()),
@@ -2382,7 +2427,11 @@ ovp = model.pages.add("Overview"); ovp.use_camera = true
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
 {scene_groups_ruby}.each {{ |name, tags|
-  model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Shell" || tags.include?(l.name)) }}
+  # "Shell" is always shown as context; the far wall ("Shell Far") too EXCEPT in the Electrical scene,
+  # where it sits between the far-side camera and the pinhole-wall electrical panel and occludes it.
+  model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Shell" ||
+                                        (l.name == "Shell Far" && name != "Electrical Systems") ||
+                                        tags.include?(l.name)) }}
   page = model.pages.add(name)
   page.use_camera = true
 }}

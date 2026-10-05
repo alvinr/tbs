@@ -1,3 +1,7 @@
-routing-sources-sha: c4e0e3fe31db
-model=water  pipes=463 solids=866  interferences=0
+routing-sources-sha: c638129c4936
+model=overview  pipes=1325 solids=659  interferences=2
+  PIPE  Input stub 3/8 (X slide → U-joint) TR      (Film Plane Mechanism)
+    x  CANTILEVER Saddle seat TR far                      near (4596,2245,2252)
+  PIPE  Blue supply trunk -> spray bar / TAP-01 (o (Corridor Plumbing)
+    x  TRAY       PROCESSING TRAY (exclusion zone)        near (4616,1161,147)
 pipe-on-pipe crossings=0

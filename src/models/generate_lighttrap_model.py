@@ -894,7 +894,7 @@ def fan_b_box():
     swing-gated coil cable runs to when the door is closed. It is STATIC (stays put when the
     panel swings; only the cable unplugs/hides). Matches the overview's box."""
     return ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
-                    260, 0, FAN_B_H - 45, 80, 60, 90, color=ov.C_SWITCH)
+                    380, 0, FAN_B_H - 45, 80, 60, 90, color=ov.C_SWITCH)   # shifted +120mm toward the pinhole with the Fan-B conduit (clears the film-plane beams); the flex coil to the fan absorbs the extra reach
 
 
 # ── Shared cargo-door-end context (tray + walkways + film-plane rails) ───────

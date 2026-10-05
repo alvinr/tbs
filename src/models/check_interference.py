@@ -261,6 +261,10 @@ def is_junction(name):
     if "->" in name:
         return False                  # that's a pipe run, not a fitting body
     n = name.lower()
+    # a structural cross-MEMBER / panel / plate is NOT a pipe cross fitting — don't let " cross",
+    # etc. match it, or real crossings near it get wrongly excused as "meeting at a junction".
+    if any(k in n for k in ("member", "panel", "ply", "board", "plate", "backing", "lip")):
+        return False
     return any(k in n for k in JUNCTION_KEYS)
 
 

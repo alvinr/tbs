@@ -1539,8 +1539,9 @@ def solar_array():
     # clean straight leads while the long middle legs coil. Coil cords mark the SOFT connector (vs
     # the rigid orthogonal conduit); the bonded run drapes DIAGONALLY up to the panel so it stays
     # right of + clear of the evap cooler (X720-1280) — an angle a rigid conduit can't take.
+    import generate_electrical_model as em
     jx = SOLAR_ARRAY_X + span / 2
-    mc4_z = PWR_PANEL_Z + PWR_PANEL_H * 0.225          # land on the BOTTOM MC4 pair (PV1)
+    mc4_z = em.MC4_BOT_Z                               # land on the BOTTOM MC4 pair (PV1) — single-sourced
     pmid = PWR_PANEL_X + 0.2335 * PWR_PANEL_W          # midpoint of the two MC4 columns
     PAIR, FAN = 8, 18                                  # bonded half-spacing / array-end fan-out
     for s, panel_uf, col, sym in ((-1, 0.192, "#2D7A2D", "+"),     # (+) -> left MC4 column, green

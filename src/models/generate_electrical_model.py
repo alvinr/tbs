@@ -51,7 +51,7 @@ _OUTLET_VF = 0.4292     # raised 25mm from 0.325 (0.325 + 25/240)
 # power_core()'s PV feed take-offs stay aligned. The + and − buses run OUTBOARD of their
 # own stub columns (+ bus left of 0.192, − bus right of 0.275) and on separate Yd lanes,
 # so the green (+) and grey (−) collector never crowd each other at the bottom string pair.
-MC4_PLUS_X  = PWR_PANEL_X + 0.192 * PWR_PANEL_W - 16     # + bus X (outboard-left of the + stubs)
+MC4_PLUS_X  = PWR_PANEL_X + 0.192 * PWR_PANEL_W + 6      # + bus X (just inboard of the + stubs — off the box side wall)
 MC4_MINUS_X = PWR_PANEL_X + 0.275 * PWR_PANEL_W + 16     # − bus X (outboard-right of the − stubs)
 MC4_PLUS_Y, MC4_MINUS_Y = 22, 46                         # +/− bus Yd lanes (feeds inherit these)
 MC4_PAIR_VF = (0.36, 0.5, 0.64)                          # the 3 string-pair heights (fraction of PWR_PANEL_H),

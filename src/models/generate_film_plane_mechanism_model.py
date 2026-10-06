@@ -111,12 +111,12 @@ def channel_v(name, cx, zc, y0, ylen, tag, cin, alpha=None):
     outx = cx - cin * CW_BOT / 2                    # outboard face
     web_x = min(outx, outx + cin * HB_T)
     fl_x = min(outx, outx + cin * CW_BOT)
-    P.append(draw.ruby_box(f"{name} web {tag}", web_x, y0, zc - CD_BOT / 2, HB_T, ylen, CD_BOT, color=ov.C_ALUM, alpha=alpha))
+    P.append(draw.ruby_box(f"{name} web {tag}", web_x, y0, zc - CD_BOT / 2, HB_T, ylen, CD_BOT, color=draw.C_ALUM, alpha=alpha))
     for fz in (zc + CD_BOT / 2 - HB_T, zc - CD_BOT / 2):
-        P.append(draw.ruby_box(f"{name} flange {tag} {int(fz)}", fl_x, y0, fz, CW_BOT, ylen, HB_T, color=ov.C_ALUM, alpha=alpha))
+        P.append(draw.ruby_box(f"{name} flange {tag} {int(fz)}", fl_x, y0, fz, CW_BOT, ylen, HB_T, color=draw.C_ALUM, alpha=alpha))
     # inboard LIP on the bottom flange — lateral keeper: stops the load roller walking off in X on swing
     in_edge = cx + cin * CW_BOT / 2
-    P.append(draw.ruby_box(f"{name} bottom-flange lip {tag}", min(in_edge, in_edge - cin * 5), y0, zc - CD_BOT / 2 + HB_T, 5, ylen, 9, color=ov.C_ALUM, alpha=alpha))
+    P.append(draw.ruby_box(f"{name} bottom-flange lip {tag}", min(in_edge, in_edge - cin * 5), y0, zc - CD_BOT / 2 + HB_T, 5, ylen, 9, color=draw.C_ALUM, alpha=alpha))
     return P
 
 
@@ -762,7 +762,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
-{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, ov.model_uid("film-plane-mechanism"), SF_TAGS)}
+{draw.sketchfab_meta_ruby(SF_TITLE, SF_DESC, draw.model_uid("film-plane-mechanism"), SF_TAGS)}
 {tags_ruby}
 
 {body}
@@ -771,7 +771,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" callouts (Labels tag) ──
 {labels()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

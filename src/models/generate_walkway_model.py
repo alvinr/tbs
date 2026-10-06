@@ -67,8 +67,8 @@ R_X, R_W = ov.WALKWAY_RIGHT_X, k.WALKWAY_RIGHT_W
 # generate_walkway_diagram.py View C).
 REINF_W, REINF_H, REINF_T = k.WALKWAY_REINF_W, k.WALKWAY_REINF_H, k.WALKWAY_REINF_T
 
-C_STEEL, C_TRAY, C_SHELL = ov.C_STEEL, ov.C_TRAY, ov.C_SHELL
-C_WALKWAY, C_REMOVABLE, C_ALUM = ov.C_WALKWAY, ov.C_REMOVABLE, ov.C_ALUM
+C_STEEL, C_TRAY, C_SHELL = draw.C_STEEL, draw.C_TRAY, draw.C_SHELL
+C_WALKWAY, C_REMOVABLE, C_ALUM = draw.C_WALKWAY, draw.C_REMOVABLE, draw.C_ALUM
 C_BOLT = "#505058"
 
 # Left lift-out support — FLOOR-LEG CANTILEVER brackets (replaces the edge beam + wall seats).
@@ -351,10 +351,10 @@ def _rwk_arm_type_parts(x0):
     bp_h = (ep_bz + ep_h) - bp_bz
     ac_y = aw / 2.0                                                # arm centre in Yd
     parts = [
-        draw.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
-        draw.ruby_box("Type RWk cantilever arm (solid 2x1 flat bar)", x0 - reach, 0, armb, reach - ep_t, aw, ah, color=ov.C_STEEL),
-        draw.ruby_box("Type RWk J6 end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=ov.C_STEEL),
-        draw.ruby_box("Type RWk J6 backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=ov.C_STEEL),
+        draw.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=draw.C_STEEL),
+        draw.ruby_box("Type RWk cantilever arm (solid 2x1 flat bar)", x0 - reach, 0, armb, reach - ep_t, aw, ah, color=draw.C_STEEL),
+        draw.ruby_box("Type RWk J6 end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=draw.C_STEEL),
+        draw.ruby_box("Type RWk J6 backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=draw.C_STEEL),
     ]
     for bz in ov.RWK_J6_BOLT_ZS:                                    # 2× M12, both above the arm (bearing-type)
         parts.append(draw.ruby_bolt("Type RWk J6 bolt M12", x0 - ep_t, ac_y, bz, s + 2 * ep_t + 8,
@@ -538,11 +538,11 @@ def generate_ruby():
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
         for n, tags in scene_groups) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 Walkway Model",
         "The perimeter walkway provides dry-foot operator access around all four sides of the "
         "processing tray without wading through chemical solution.",
-        ov.model_uid("walkway"), "sketchup")
+        draw.model_uid("walkway"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -574,7 +574,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {walkway_labels()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 # ── Type callouts for the "Cantilevers" scene (on the Cantilever Types tag) ──
 {cantilever_type_labels()}

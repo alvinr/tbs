@@ -238,9 +238,9 @@ def context():
     # electrical gear, which all lives on the pinhole wall.
     p = [
         draw.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t,
-                    color=ov.C_SHELL, alpha=0.22),
+                    color=draw.C_SHELL, alpha=0.22),
         draw.ruby_box("Pinhole Wall (context)", 0, -t, 0, ov.C_LEN, t, ov.C_HGT,
-                    color=ov.C_SHELL, alpha=0.10),
+                    color=draw.C_SHELL, alpha=0.10),
     ]
     # Ghost loads (faint) — geometry identical to the overview's lighting_wiring().
     p.append(draw.ruby_box("Fan A ghost (exhaust)", _FAN_A_X - 60, FAN_A_YD - 75,
@@ -293,22 +293,22 @@ def power_core(external_links=True, links_only=False):
     _xm_l = _ply_x0 + 18 - _xm_reb
     _xm_r = (_ply_r - 18) + _xm_reb
     p.append(draw.ruby_box("EP plywood backing panel (18mm)", _ply_x0, -18, BA_H_LO - 12,
-                         _ply_r - _ply_x0, 18, _ply_h, color=ov.C_PLY, alpha=0.3))   # transparent — see the gear mounted on it
+                         _ply_r - _ply_x0, 18, _ply_h, color=draw.C_PLY, alpha=0.3))   # transparent — see the gear mounted on it
     # 100mm wooden LIPS (returns) down both vertical sides — a mounting surface for the switches +
     # stiffens the skinny board.
-    p.append(draw.ruby_box("Plywood side lip (left, 18mm)", _ply_x0, 0, BA_H_LO - 12, 18, 100, _ply_h, color=ov.C_PLY, alpha=0.3))
-    p.append(draw.ruby_box("Plywood side lip (right, 18mm)", _ply_r - 18, 0, BA_H_LO - 12, 18, 100, _ply_h, color=ov.C_PLY, alpha=0.3))
+    p.append(draw.ruby_box("Plywood side lip (left, 18mm)", _ply_x0, 0, BA_H_LO - 12, 18, 100, _ply_h, color=draw.C_PLY, alpha=0.3))
+    p.append(draw.ruby_box("Plywood side lip (right, 18mm)", _ply_r - 18, 0, BA_H_LO - 12, 18, 100, _ply_h, color=draw.C_PLY, alpha=0.3))
     # IP65 enclosure — ghosted weatherproof box over the fuse block + busbars + charge fuse (the DC
     # distribution terminals that need sealing), mounted ON the plywood (its back IS the plywood). The
     # MPPT, main disconnect, battery and inverter mount on the plywood outside it.
     p.append(draw.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO,
-                         200, 140, 220, color=ov.C_STEEL, alpha=0.12))
+                         200, 140, 220, color=draw.C_STEEL, alpha=0.12))
     # MPPT mounts on a plywood CROSS MEMBER that SPANS the two EP side lips (housed in a 9mm rebate in
     # each), exactly like the access panel below — NOT its own little sub-panel. Transparent, so the gear
     # behind reads through; the MPPT body surface-mounts on its front face (Yd = EP_CTRL_FACE_YD).
     _sp_z0, _sp_h = EP_H_HI - MPPT_H - 30, MPPT_H + 30
     p.append(draw.ruby_box("MPPT cross-member (18mm ply, spans EP sides, rebated)",
-                         _xm_l, _ACCESS_YB, _sp_z0, _xm_r - _xm_l, 18, _sp_h, color=ov.C_PLY, alpha=0.3))
+                         _xm_l, _ACCESS_YB, _sp_z0, _xm_r - _xm_l, 18, _sp_h, color=draw.C_PLY, alpha=0.3))
     p.append(draw.ruby_box("MPPT Controller (100/50)", EP_X + 15, EP_CTRL_FACE_YD,
                          EP_H_HI - MPPT_H, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # PV interior feed: external-panel MC4 bulkheads -> MPPT PV input (the conductor from
@@ -409,7 +409,7 @@ def power_core(external_links=True, links_only=False):
     _acc_r = (_ply_r - 18) + _acc_reb                # seat 9mm into the right side lip
     p.append(draw.ruby_box("EP access panel (18mm ply, rebated to EP sides)",
                          _acc_l, _ACCESS_YB, _ACCESS_Z0, _acc_r - _acc_l,
-                         _ACCESS_YF - _ACCESS_YB, _ACCESS_Z1 - _ACCESS_Z0, color=ov.C_PLY, alpha=0.3))   # transparent — see the wiring behind
+                         _ACCESS_YF - _ACCESS_YB, _ACCESS_Z1 - _ACCESS_Z0, color=draw.C_PLY, alpha=0.3))   # transparent — see the wiring behind
     p.append(draw.ruby_cylinder("Interior E-stop collar (safety yellow)",
                               ies_cx, _ACCESS_YF, ies_cz, 30, 18, color="#F2C200", axis="y"))   # SURFACE-mounted base on the panel front
     p.append(draw.ruby_cylinder("Interior E-stop button (red mushroom)",
@@ -452,7 +452,7 @@ def battery():
     p = []
     for bz, nm, al in [(BA_H_LO, "Battery 1 (12V 100Ah LiFePO4)", 1.0),
                        (BA_STACK_Z2, "Battery 2 (optional 2nd pack, ghosted)", 0.28)]:
-        p.append(draw.ruby_box(nm, EP_X, 0, bz, BA_W, BA_D, (BA_H_HI - BA_H_LO), color=ov.C_BATT, alpha=al))
+        p.append(draw.ruby_box(nm, EP_X, 0, bz, BA_W, BA_D, (BA_H_HI - BA_H_LO), color=draw.C_BATT, alpha=al))
     p.append(draw.ruby_box("Battery Contactor (ML-RBS)", EP_X + 10, 15, EP_POST_Z,
                          CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, color="#C42B1C"))
     _mrbf_x = EP_X + CONTACTOR_W + 30
@@ -529,19 +529,19 @@ def external_panel(include_estop=True, include_disconnect=True):
     #    + a shroud OPEN to the interior (4 side walls, no back) so it is wired from inside.
     p.append(draw.ruby_box("EP box front face (flange)", PWR_PANEL_X, face_y,
                          PWR_PANEL_Z, PWR_PANEL_W, PWR_PANEL_D, PWR_PANEL_H,
-                         color=ov.C_STEEL))
+                         color=draw.C_STEEL))
     _cx0 = PWR_PANEL_X + (PWR_PANEL_W - PWR_PANEL_CUTOUT_W) / 2     # wall-opening corner
     _cz0 = PWR_PANEL_Z + (PWR_PANEL_H - PWR_PANEL_CUTOUT_H) / 2
     _sy0 = face_y + PWR_PANEL_D               # shroud starts behind the flange
     _t   = PWR_PANEL_SHROUD_T
     p.append(draw.ruby_box("EP box shroud (left)", _cx0 - _t, _sy0, _cz0 - _t,
-                         _t, PWR_PANEL_BOX_D, PWR_PANEL_CUTOUT_H + 2 * _t, color=ov.C_STEEL))
+                         _t, PWR_PANEL_BOX_D, PWR_PANEL_CUTOUT_H + 2 * _t, color=draw.C_STEEL))
     p.append(draw.ruby_box("EP box shroud (right)", _cx0 + PWR_PANEL_CUTOUT_W, _sy0, _cz0 - _t,
-                         _t, PWR_PANEL_BOX_D, PWR_PANEL_CUTOUT_H + 2 * _t, color=ov.C_STEEL))
+                         _t, PWR_PANEL_BOX_D, PWR_PANEL_CUTOUT_H + 2 * _t, color=draw.C_STEEL))
     p.append(draw.ruby_box("EP box shroud (bottom)", _cx0 - _t, _sy0, _cz0 - _t,
-                         PWR_PANEL_CUTOUT_W + 2 * _t, PWR_PANEL_BOX_D, _t, color=ov.C_STEEL))
+                         PWR_PANEL_CUTOUT_W + 2 * _t, PWR_PANEL_BOX_D, _t, color=draw.C_STEEL))
     p.append(draw.ruby_box("EP box shroud (top)", _cx0 - _t, _sy0, _cz0 + PWR_PANEL_CUTOUT_H,
-                         PWR_PANEL_CUTOUT_W + 2 * _t, PWR_PANEL_BOX_D, _t, color=ov.C_STEEL))
+                         PWR_PANEL_CUTOUT_W + 2 * _t, PWR_PANEL_BOX_D, _t, color=draw.C_STEEL))
 
     def px(uf): return PWR_PANEL_X + uf * PWR_PANEL_W
     def pz(vf): return PWR_PANEL_Z + vf * PWR_PANEL_H
@@ -592,7 +592,7 @@ def external_panel(include_estop=True, include_disconnect=True):
     cx = EVAP_DUCT_X - cw / 2
     cyd = -WALL - cd - 100         # matches the overview's evap_cooler() stand-off
     p.append(draw.ruby_box("Evap Cooler (Hessaire MC18M, external)", cx, cyd, 0,
-                         cw, cd, ch, color=ov.C_EVAP))
+                         cw, cd, ch, color=draw.C_EVAP))
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
     gfci_z = PWR_PANEL_Z + _OUTLET_VF * PWR_PANEL_H
     inx = cx + cw - 80                    # cooler-top inlet
@@ -645,19 +645,19 @@ def light_fixtures():
     p = []
     for x0, y0, wx, wyd in LED_PANELS:
         p.append(draw.ruby_box("White LED Strip (Cct G)", x0, y0, cz - 25, wx, wyd, 18,
-                             color=ov.C_LED_W, alpha=0.4))
+                             color=draw.C_LED_W, alpha=0.4))
     for sx in SAFE_XS:
         p.append(draw.ruby_box("Safelight Strip (Cct D)", sx, 100, cz - 25, 40, 1667, 18,
-                             color=ov.C_SAFE, alpha=0.4))
+                             color=draw.C_SAFE, alpha=0.4))
     for swx in PULL_SW_X:
-        p.append(draw.ruby_box("Pull Switch (ceiling)", swx, PULL_SW_YD, cz - 40, 40, 40, 40, color=ov.C_SWITCH))
+        p.append(draw.ruby_box("Pull Switch (ceiling)", swx, PULL_SW_YD, cz - 40, 40, 40, 40, color=draw.C_SWITCH))
         cordx, cordy = swx + 20, PULL_SW_YD + 20
         z0, z1 = PULL_CORD_BOTTOM_Z, cz - 40             # bottom clears the deployed chem shelf below
         nb = max(8, int((z1 - z0) / 20)); bh = (z1 - z0) / nb
         for k in range(nb):
             rr = 3.5 if k % 2 == 0 else 2.0
-            p.append(draw.ruby_cylinder("Pull Cord", cordx, cordy, z0 + k * bh, rr, bh, color=ov.C_CORD, axis="z", n=8))
-        p.append(draw.ruby_cylinder("Pull Cord Knob", cordx, cordy, z0 - 16, 6, 16, color=ov.C_CORD, axis="z", n=10))
+            p.append(draw.ruby_cylinder("Pull Cord", cordx, cordy, z0 + k * bh, rr, bh, color=draw.C_CORD, axis="z", n=8))
+        p.append(draw.ruby_cylinder("Pull Cord Knob", cordx, cordy, z0 - 16, 6, 16, color=draw.C_CORD, axis="z", n=10))
     return '\n'.join(p)
 
 
@@ -728,7 +728,7 @@ def cable_trunking():
           [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
     tx0, tx1 = min(cxs) - 40, max(cxs) + 40
     return draw.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
-                       25, color=ov.C_TRUNK)
+                       25, color=draw.C_TRUNK)
 
 
 def cct_e_feed():
@@ -802,14 +802,14 @@ def generate_ruby():
         '"%s" => [%s, %s, %s, %s]' % (n, draw.mm(x), draw.mm(y), draw.mm(z), draw.mm(d))
         for n, (x, y, z, d) in zoom.items()) + '}'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 Electrical Model",
         "There are a number of discrete systems, color-coded in the diagram below. This view is "
         "shown from the optical axis, looking through the container wall. Each of these sub-systems, "
         "has a detailed breakdown of construction, schematic and other diagrams to show how each "
         "system it built, installed, used and maintained. The 3d model below provides a simply way "
         "to view the whole system.",
-        ov.model_uid("electrical"), "sketchup")
+        draw.model_uid("electrical"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -841,7 +841,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── In-model labels (Labels tag; visible only in the "Labeled" scene) ──
 {elec_labels()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

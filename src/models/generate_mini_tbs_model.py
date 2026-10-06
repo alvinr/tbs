@@ -31,7 +31,6 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-import generate_sketchup_model as ov
 import tbs_draw as draw                          # shared drawing/material primitives
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
@@ -144,9 +143,9 @@ def pinhole_parts():
     """Aluminum pinhole plate on the front wall interior + the tiny pinhole marker."""
     return '\n'.join([
         draw.ruby_box("Pinhole plate (aluminum)", 0, CY - 25, PH_Y - 25, 2, 50, 50,
-                    color=ov.C_ALUM),
+                    color=draw.C_ALUM),
         draw.ruby_cylinder(f"Pinhole Ø{PH_D}mm", -2, CY, PH_Y, 3, 6,
-                         color=ov.C_PINHOLE, axis="x"),
+                         color=draw.C_PINHOLE, axis="x"),
     ])
 
 
@@ -342,11 +341,11 @@ def generate_ruby():
         return f'["{name}", {tg}, {cam}, {so}]'
     scenes_ruby = '[' + ', '.join(slit(s) for s in scenes) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-002",
         "A classroom-ready design for teaching pinhole photography — its process and its craft "
         "— to students from elementary school through college.",
-        ov.model_uid("mini-tbs"), "sketchup")
+        draw.model_uid("mini-tbs"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -377,7 +376,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Component callouts (Labels tag — shown only in the "Labeled" scene) ──
 {labels_ruby()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

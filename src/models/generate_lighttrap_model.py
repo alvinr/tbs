@@ -56,9 +56,9 @@ from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
-C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY
-C_PLASTIC = ov.C_PLASTIC                       # 1/8″ HDPE panel skins + bay (rev11; C_PLY now = wood fan band only)
-C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
+C_STEEL, C_ALUM, C_PLY = draw.C_STEEL, draw.C_ALUM, draw.C_PLY
+C_PLASTIC = draw.C_PLASTIC                       # 1/8″ HDPE panel skins + bay (rev11; C_PLY now = wood fan band only)
+C_DRUM, C_GASKT, C_RAIL, C_CARR = draw.C_DRUM, draw.C_GASKT, draw.C_RAIL, draw.C_CARR
 # The two seal TYPES render in DISTINCT colors (2026-08-31) so they can never be confused
 # with each other — nor with the steel-grey structure:
 #   C_SEAL  (green)  = the BRUSH seals — the panel edge SWEEPS THROUGH them.
@@ -70,8 +70,8 @@ C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
 # ~30mm and sweeps THROUGH it as the panel swings — a brush, not a compression EPDM (which would
 # drag under the sideways sweep). The overlap is by design; do not "fix" it.
 C_SEAL  = "#2FA84F"   # BRUSH seals (green)
-C_GASKT = ov.C_GASKT  # EPDM compression seals — project-standard gasket brown (#5A3020), distinct from the green brush
-C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
+C_GASKT = draw.C_GASKT  # EPDM compression seals — project-standard gasket brown (#5A3020), distinct from the green brush
+C_SHELL, C_VALVE = draw.C_SHELL, draw.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
@@ -895,7 +895,7 @@ def fan_b_box():
     swing-gated coil cable runs to when the door is closed. It is STATIC (stays put when the
     panel swings; only the cable unplugs/hides). Matches the overview's box."""
     return ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
-                    380, 0, FAN_B_H - 45, 80, 60, 90, color=ov.C_SWITCH)   # shifted +120mm toward the pinhole with the Fan-B conduit (clears the film-plane beams); the flex coil to the fan absorbs the extra reach
+                    380, 0, FAN_B_H - 45, 80, 60, 90, color=draw.C_SWITCH)   # shifted +120mm toward the pinhole with the Fan-B conduit (clears the film-plane beams); the flex coil to the fan absorbs the extra reach
 
 
 # ── Shared cargo-door-end context (tray + walkways + film-plane rails) ───────
@@ -915,12 +915,12 @@ def processing_tray_partial():
     zc = ov.tray_floor_z(x0 + w / 2, (yN + yF) / 2)      # representative RAISED floor top at the cargo-door end
     return '\n'.join([
         ruby_box("Tray Shim Base (partial)", x0, yN, 0, w, d, zc - st, color="#D8CFBC", alpha=0.6),
-        ruby_box("Processing Tray Floor (partial)", x0, yN, zc - st, w, d, st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Near (partial)", x0, yN, zc, w, rt, rim - st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Far (partial)", x0, yF - rt, zc, w, rt, rim - st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Left (cargo end)", x0, yN, zc, rt, d, rim - st, color=ov.C_TRAY),
+        ruby_box("Processing Tray Floor (partial)", x0, yN, zc - st, w, d, st, color=draw.C_TRAY),
+        ruby_box("Tray Rim Near (partial)", x0, yN, zc, w, rt, rim - st, color=draw.C_TRAY),
+        ruby_box("Tray Rim Far (partial)", x0, yF - rt, zc, w, rt, rim - st, color=draw.C_TRAY),
+        ruby_box("Tray Rim Left (cargo end)", x0, yN, zc, rt, d, rim - st, color=draw.C_TRAY),
         ruby_box("Chemistry Bath (partial)", x0 + rt, yN + rt, zc,
-                 w - 2 * rt, d - 2 * rt, rim - st - 8, color=ov.C_BATH, alpha=0.45),
+                 w - 2 * rt, d - 2 * rt, rim - st - 8, color=draw.C_BATH, alpha=0.45),
     ])
 
 
@@ -938,9 +938,9 @@ def walkways_partial():
         # (the door-end lift-out band moved to liftout_walkways() — a Panel Swing DC child
         #  that hides on swing; only the FIXED partial decks stay here)
         ruby_box("Walkway Near (partial)", liftout_x, 0, full_z,
-                 PARTIAL_X - liftout_x, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+                 PARTIAL_X - liftout_x, ov.WALKWAY_W, t, color=draw.C_WALKWAY),
         ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, full_z,
-                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+                 w, ov.WALKWAY_W, t, color=draw.C_WALKWAY),
     ])
 
 
@@ -953,7 +953,7 @@ def liftout_walkways():
     full_z = ov.WALKWAY_H - t
     return '\n'.join([
         # ONE continuous lift-out piece: drum-exit punch-out tab + muslin notch both integral.
-        ov.left_liftout_grate("Left walkway (removable)", full_z, t, ov.C_REMOVABLE, alpha=0.6),
+        ov.left_liftout_grate("Left walkway (removable)", full_z, t, draw.C_REMOVABLE, alpha=0.6),
         # door-end removable near band — OWNED by the walkway model (wm), ghosted here as context
         # (was a copy that drew it full-width, not bracket-inset like the real deck).
         wm.near_removable_deck(alpha=0.6),
@@ -1470,12 +1470,12 @@ def generate_ruby():
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 Lighttrap Model",
         "Personnel access during operation is via a revolving light trap drum built into the panel. "
         "Operators can enter or exit at any time without opening the full panel or admitting daylight "
         "— for example, between coating of the photosensitive material, or while the exposure is being made.",
-        ov.model_uid("lighttrap"), "sketchup")
+        draw.model_uid("lighttrap"), "sketchup")
 
     # ── Standalone interactive drum+frame sub-assembly (its own "Drum revolve" scene) ──
     # The FIXED frame (housing + cage + upper bearing) is one static component; the ROTOR is a
@@ -1714,7 +1714,7 @@ revolve_inst.set_attribute(rda, "_onclick_access", "NONE")
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {lighttrap_labels()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

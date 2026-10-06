@@ -20,7 +20,6 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-import generate_sketchup_model as ov
 import tbs_draw as draw                          # shared drawing/material primitives
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
@@ -41,13 +40,13 @@ RING_Y1  = RING_Y0 + PDH_RING_T
 RING_BORE_R1 = PDH_RING_ID / 2 + 8       # ring bore flares open toward the interior — the diverging light cone's exit
 PULL_MM  = 250.0                         # DC pull-out travel (+Y, camera side) to reveal the disc
 
-C_PLATE  = ov.C_ALUM
+C_PLATE  = draw.C_ALUM
 C_WASHER = "#5A3020"     # neoprene
 C_DISC   = "#2A2A2A"     # SS-302 disc
 C_PIN    = "#101010"     # pinhole
 C_RING   = "#BFC6D0"     # retaining ring (slightly cooler alu)
 C_TS     = "#3B3B42"     # knurled thumb screw
-C_STEEL  = ov.C_STEEL
+C_STEEL  = draw.C_STEEL
 
 
 def _mat(name, color, alpha=None):
@@ -237,12 +236,12 @@ def generate_ruby():
         return f'["{name}", [' + ', '.join(f'"{t}"' for t in tags) + ']]'
     scenes_ruby = '[' + ', '.join(slit(s) for s in scenes) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 Pinhole Disc Holder",
         "The pinhole-end front board of The Big Shoebox Project — a compact quick-change disc holder: "
         "an interchangeable pinhole disc (or lens cell) clamped against a light-seal washer by a "
         "circular retaining ring with four thumb screws.",
-        ov.model_uid("pinhole-disc-holder"), "tbs sketchup pinhole", force_name=True)
+        draw.model_uid("pinhole-disc-holder"), "tbs sketchup pinhole", force_name=True)
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -265,7 +264,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Labels (Labels tag — shown only in the "Labeled" scene) ──
 {labels_ruby()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

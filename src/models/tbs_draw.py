@@ -613,3 +613,114 @@ def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16, m
     c = _vadd(node, _vscale(bu, L))
     return '\n'.join([ruby_pipe(name, a, b, rt, color, alpha, n, mute=mute),
                       ruby_pipe(name, node, c, rt, color, alpha, n, mute=mute)])
+
+
+# ── 3D model color palette (shared by every model) ──────────────────────────
+C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
+C_FILM = "#2060A0"      # film plane / muslin screen
+C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
+C_RAIL = "#606068"      # HGR20 linear rail
+C_CARR = "#C04010"      # HGH20CA carriage block
+C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
+C_PLY = "#9C7B4D"       # marine ply (plumbing panel + hinge-panel Fan B mount band)
+C_PLASTIC = "#6E8CA0"   # 1/8″ HDPE plastic sheet (rev11 hinge-panel skins + B2 bay; differentiates from wood C_PLY)
+C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
+C_ACC = "#5A9ACC"       # ACC-01 accumulator
+C_FILTER = "#3A6EA5"    # Big Blue filter housings
+C_DEMOUNT = "#E0902A"   # demountable left-rail segment (swings clear for drum)
+C_WALKWAY = "#808080"   # walkway grating (lowered deck, in place for operation)
+C_REMOVABLE = "#C06000" # left walkway — removable lift-out for transport
+C_PALLET = "#3A3A3A"    # IBC pallet base
+C_IBC_BLUE = "#2E6DB4"  # Blue circuit IBC contents
+C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
+C_IBC_WASTE = "#777777" # Waste IBC contents
+C_DRUM = "#E8E0D0"      # light-trap drum shell (cream)
+C_VANE = "#778088"      # drum turnstile vanes
+C_ELEC = "#F5C518"      # electrical panel (EP)
+C_BATT = "#6A5ACD"      # battery bank (LiFePO4)
+C_SHELF = "#C8B06A"     # chemistry prep shelf (warm gold)
+C_GASKT = "#5A3020"     # EPDM perimeter light seal
+C_TRUNK = "#9AA0A0"     # PVC cable trunking + conduit
+C_LED_W = "#FFFFE0"     # white LED panel (Cct G)
+C_SAFE = "#CC2222"      # red safelight strip (Cct D)
+C_SWITCH = "#D8D8F0"    # pull-cord switch
+C_CORD = "#3A3A3A"      # pull cord
+C_EVAP = "#3DAA96"      # evaporative cooler (teal)
+C_DUCT = "#8090A0"      # vent ducting
+C_FAN = "#606060"       # ventilation fans
+C_BLUE = "#2979B8"      # Blue circuit supply pipe
+C_VALVE = "#B8B840"     # valves / taps (brass)
+C_FLEX = "#FFD500"      # flexible braided/corrugated connectors — BRIGHT yellow so a jumper stands out from the same-color pipe it splices (vs the olive C_VALVE)
+C_SHELL = "#EFEDE4"     # container shell — off-white (shows systems clearly)
+C_TRAY = "#9FB8C8"      # processing tray — 304 SS basin
+C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
+
+
+# ── Model metadata helpers (Sketchfab stamp, uid lookup, license credit) ──────
+LICENSE_TEXT = "© 2026 Alvin Richards\nLicensed under GNU AGPLv3\nalvinr.github.io/tbs"
+def license_note(out=400):
+    """Ruby: a leaderless © + license credit anchored at the model's front-bottom-left
+    (offset `out` mm outboard of the near wall, toward the viewer), left on the DEFAULT
+    layer so it shows in every scene. Emit AFTER all geometry (it reads model.bounds);
+    the idempotent rebuild erases prior Text, so it re-adds cleanly each run.
+    Shared via the `ov` module so every model gets the same credit."""
+    return '\n'.join([
+        '# ── In-model © + license credit (default layer → shown in every scene) ──',
+        'lbb = model.bounds',
+        f'lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - {mm(out)}, lbb.min.z)',
+        f'entities.add_text("{LICENSE_TEXT}", lanc)',
+    ])
+def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup", force_name=False):
+    """Ruby that stamps the Sketchfab upload metadata onto the active model so a
+    `--send` regen carries its identity — the `sketchfab` attribute dict (title,
+    description, tags, and the stable `model_id`) plus model.name/description.
+
+    Setting `model_id` is what makes the manual Sketchfab re-upload REUSE the same
+    model (stable UID → the embedded iframe never has to change); without it a fresh
+    doc uploads as a brand-new model and the name/description come up empty.
+
+    `force_name=True` sets model.name/description UNCONDITIONALLY (the generator is the
+    source of truth for the model's identity). Use it for models whose on-disk .skp keeps
+    coming back with a blank/filename name so fill-if-blank never re-stamps it (water.skp).
+
+    In the sketchfab dict: `model_id` is stamped only when we hold a REAL uid and the slot is
+    blank or an all-zeros placeholder (never clobbering a real / UI-set id); `model_title` /
+    `model_description` re-sync to the generator's current identity unless the value has been
+    edited in the Sketchfab UI (tracked via the `_gen_*` shadow attributes). Every line this
+    emits is stripped by `manifest.py`'s identity filter, so it never churns a `source_hash`.
+    """
+    import json
+    t, d, mid, tg = (json.dumps(x) for x in (title, description, model_id, tags))
+    name_guard = "" if force_name else " if model.name.to_s.strip.empty?"
+    desc_guard = "" if force_name else " if model.description.to_s.strip.empty?"
+    # model_id: only ever stamp a REAL uid, and only into a slot that is blank or an all-zeros
+    # PLACEHOLDER. So a brand-new model (dependencies.yml uid still 0000…) uploads as a NEW model
+    # instead of trying to UPDATE a nonexistent 0000… id, and a leftover all-zeros placeholder gets
+    # replaced once a real uid exists — while a real / Sketchfab-UI-set model_id is never clobbered.
+    id_line = ""
+    if str(model_id).strip().strip("0"):   # non-empty and not all-zeros ⇒ a real uid
+        id_line = (f'model.set_attribute("sketchfab", "model_id", {mid}) '
+                   f'if model.get_attribute("sketchfab", "model_id").to_s.strip =~ /\\A0*\\z/\n')
+    # sketchfab dict title/description: (re)stamp when blank OR still equal to what the generator last
+    # stamped (`_gen_*`). This repairs a REPURPOSED doc's stale title/description (the generator's
+    # identity changed — e.g. the old tilt-swing doc rebuilt as pinhole-disc-holder) WITHOUT clobbering
+    # a genuine Sketchfab-UI edit, which makes the field diverge from the remembered `_gen_*` value.
+    return ("# ── Sketchfab metadata — name/desc forced when asked; dict title/desc re-synced unless UI-edited; real model_id only ──\n"
+            f"model.name = {t}{name_guard}\n"
+            f"model.description = {d}{desc_guard}\n"
+            f'model.set_attribute("sketchfab", "model_title", {t}) if model.get_attribute("sketchfab", "model_title").to_s.strip.empty? || model.get_attribute("sketchfab", "model_title") == model.get_attribute("sketchfab", "_gen_title")\n'
+            f'model.set_attribute("sketchfab", "model_description", {d}) if model.get_attribute("sketchfab", "model_description").to_s.strip.empty? || model.get_attribute("sketchfab", "model_description") == model.get_attribute("sketchfab", "_gen_description")\n'
+            f'model.set_attribute("sketchfab", "_gen_title", {t})\n'
+            f'model.set_attribute("sketchfab", "_gen_description", {d})\n'
+            + id_line +
+            f'model.set_attribute("sketchfab", "model_tags", {tg}) if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?\n')
+def model_uid(name):
+    """The stable Sketchfab UID for logical model `name`, read from dependencies.yml —
+    the single home for every model's uid. Generators pass `model_uid("<name>")` to
+    sketchfab_meta_ruby instead of hardcoding the UID (which used to drift between the
+    generator and models/sketchfab.json). Names match the `models:` keys in dependencies.yml."""
+    import deps
+    uid = deps.ENTRIES.get(name, {}).get("uid", "")
+    if not uid:
+        raise SystemExit(f"model_uid: no uid for model '{name}' in dependencies.yml")
+    return uid

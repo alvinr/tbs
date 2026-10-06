@@ -144,7 +144,7 @@ def context():
     FLOOR. The roof, both side walls, and the (right) sealed end wall are omitted so nothing
     encloses the model or blocks the orbit."""
     t = ov.WALL_T
-    return draw.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.18)
+    return draw.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=draw.C_SHELL, alpha=0.18)
 
 
 def _phase_dc_ruby(pnum, p_steps):
@@ -253,7 +253,7 @@ def generate_ruby():
     scenes_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags)) for n, tags in scenes) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, ov.model_uid("construction"), SF_TAGS, force_name=True)
+    sf_meta = draw.sketchfab_meta_ruby(SF_TITLE, SF_DESC, draw.model_uid("construction"), SF_TAGS, force_name=True)
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -285,7 +285,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 #    the container construction. The panel provisions (Fuse E, Cct-E GFCI outlet) stay.
 model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name =~ /Evap Cooler|cooler cord/ }} }}
 
-{ov.license_note()}
+{draw.license_note()}
 model.definitions.purge_unused
 model.materials.purge_unused
 

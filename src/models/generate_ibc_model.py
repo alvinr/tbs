@@ -124,11 +124,11 @@ def context():
     t = ov.WALL_T
     return '\n'.join([
         draw.ruby_box("Floor (context)", x0, 0, -t, xlen, ov.C_WID, t,
-                    color=ov.C_SHELL, alpha=0.25),
+                    color=draw.C_SHELL, alpha=0.25),
         draw.ruby_box("Side Wall near (context)", x0, -t, 0, xlen, t, ov.C_HGT,
-                    color=ov.C_SHELL, alpha=0.16),
+                    color=draw.C_SHELL, alpha=0.16),
         draw.ruby_box("Side Wall far (context)", x0, ov.C_WID, 0, xlen, t, ov.C_HGT,
-                    color=ov.C_SHELL, alpha=0.16),
+                    color=draw.C_SHELL, alpha=0.16),
     ])
 
 
@@ -140,7 +140,7 @@ def spray_wall_trunk():
     fz = ov.SPRAY_BAR_FEED_Z
     return draw.ruby_pipe("Blue Supply Trunk (along pinhole wall)",
                         (ov.RAIL_X_R, 12, fz), (4300, 12, fz),
-                        ov.PUMP_PIPE_OD / 2, color=ov.C_BLUE)
+                        ov.PUMP_PIPE_OD / 2, color=draw.C_BLUE)
 
 
 def generate_ruby():
@@ -193,10 +193,10 @@ def generate_ruby():
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
         for n, tags in scenes) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 IBC Model",
         "Details of the IBC stack, frame and plumbing panel.",
-        ov.model_uid("ibc-stack"), "sketchup")
+        draw.model_uid("ibc-stack"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -230,7 +230,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── In-model labels (on the 'Labels' tag; visible only in the "Labeled" scene) ──
 {ibc_labels()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

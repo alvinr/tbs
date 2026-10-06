@@ -425,11 +425,11 @@ def generate_ruby():
         return f'["{n}", {tg}, {cam}]'
     scenes_ruby = '[' + ', '.join(scene_lit(*s) for s in scenes) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(
+    sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 Spraybar Model",
         "The processing tray provides the containment surface and the spray bar delivers even "
         "water distribution across the full print width.",
-        ov.model_uid("spraybar"), "sketchup")
+        draw.model_uid("spraybar"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
@@ -459,7 +459,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {spraybar_labels()}
 
-{ov.license_note()}
+{draw.license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

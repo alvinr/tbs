@@ -326,15 +326,8 @@ def power_core(external_links=True, links_only=False):
         p.append(ov.ruby_box(f"Fuse {c} ({CCT_FUSE[c]} — {CCT[c][1]})",
                              _fuse_cx(i) - _FUSE_W / 2, _FUSE_YD, _FBLK_Z0 + _FBASE_H,
                              _FUSE_W, _FUSE_T, _FUSE_H, color=CCT[c][0]))
-    # Colored pigtail off each fuse's load terminal — a short run in the circuit's own color so each
-    # circuit is traceable from its own colored fuse up to where the grey conduit bundle picks it up
-    # (Cct F is a spare — "leave fused, no load" — so no conductor).
-    for c in FUSE_ORDER:
-        if c == "F":
-            continue
-        fx, fy, fz = FUSE_POS[c]
-        p.append(ov.ruby_pipe_run(f"Cct {c} fuse pigtail ({CCT[c][1]})",
-                                  _dedup([(fx, fy, fz), (fx, fy, fz + 48)]), 4, color=CCT[c][0]))
+    # (Per-fuse circuit conductors are drawn by circuit_runs() — each circuit A-G leaves the TOP of its
+    # own colored blade and routes to its load — so no separate pigtail stub is needed here.)
     # MASTER PUMP SWITCH — Cct-C single cutoff on the EP, at the Circuit-C fuse (red-lever disconnect,
     # mounted on the panel at Yd0). The switched Cct-C feed runs the ceiling trunk to the pump wireway.
     p.append(master_switch())

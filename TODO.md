@@ -18,6 +18,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
+- [ ] **Model-drift audit — the overview should be the UNION of the sub-models, not a re-implementation (2026-10-05).** Found while wiring the EP: the **overview drew its OWN electrical circuit wiring** (grey fan feeds / conduit drops / lighting conduits / Cct-C feed in `generate_sketchup_model.py` `lighting_wiring()`/`fan_wiring()`) instead of reusing `em.circuit_runs()` — so the color-coded per-fuse circuits in **electrical.skp** never appeared in **overview**, and the two drifted. Being fixed now by bringing `circuit_runs()` into the overview. **Broader action:** audit EVERY component the overview re-draws vs its owning sub-model (lighting/fan loads vs `em.context` ghosts; pumps vs water; fan-B/light-trap vs lighttrap; walkway brackets — see [[project_walkway_bracket_duplication]] and [[project_overview_electrical_duplication]]) and make the overview COMPOSE the sub-models (shared single-owner builders) rather than keep parallel copies. List the drifted pairs + decide a single owner for each.
 - [ ] **Two pre-existing pipe-vs-solid clashes surfaced by the `check_interference` fix (2026-10-05).** The crossing
   check was skipping any conductor whose name contained a solid keyword ("… → **panel** GFCI", "… → pinhole **wall**");
   fixing that (routed runs are always pipes) revealed two latent pipe-vs-solid clashes OUTSIDE the EP — neither

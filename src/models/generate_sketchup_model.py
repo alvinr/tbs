@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_GRATE_Z, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_HL_TIP, RWK_HL_POST, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_X_UP, RWK_UP_YDS, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, RWK_NOTCH_FLOOR, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_DX, RWK_CRANK_Y0, RWK_CRANK_Y1, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, EQPANEL_YD, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_GRATE_Z, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_HL_TIP, RWK_HL_POST, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_X_UP, RWK_UP_YDS, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, RWK_NOTCH_FLOOR, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_DX, RWK_CRANK_Y0, RWK_CRANK_Y1, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -1713,62 +1713,19 @@ def lighting_wiring():
         parts.append(ruby_cylinder("Pull Cord Knob", cordx, cordy, z0 - 16,
                                    6, 16, color=C_CORD, axis="z", n=10))
 
-    # Conduit drop (10mm) from trunking down to the stacked battery bank + EP, which
-    # are co-located at X≈1910–2240 (the EP column stacks above the battery). A single drop at
-    # X2060 runs down the EP center face (Z1500–2100) and continues to the battery top.
-    # (rev: the old second drop at X1750 was removed — the EP moved to X1910, leaving
-    #  that drop orphaned over the swing-panel transport-lock stay plate.)
-    # EP power drop — down the clear lane at X2140 (right of the E-stop link's X-end ~2091, left of the
-    # right ply side-lip X2163), then jogs −X to LAND ON the EP enclosure top (Z1370, X1834-2034) so it
-    # actually connects (was a bare box dangling to Z600 past the battery's X2089 edge).
-    parts.append(ruby_pipe_run("Conduit Drop (10mm, trunk -> EP)",
-                               [(2140, 13, cz - 25),       # tap the ceiling trunk at Yd13 (clear of the fan feeds at Yd31)
-                                (2140, 13, 1950),          # descend below the ceiling feeds, above the EP-top riser heads
-                                (2140, 65, 1950),          # shift to a clear front Yd lane (above every riser top)
-                                (2140, 65, 1392),          # down the front lane
-                                (2010, 65, 1392),          # jog −X over the enclosure (Yd65 clears the orange/E-stop/PV risers)
-                                (2010, 45, 1392),          # back to the fuse-block Yd (orthogonal)
-                                (1996, 45, 1392),          # −X to the target fuse X (orthogonal)
-                                (1996, 45, 1262)],         # straight DOWN into the fuse top (vertical entry)
-                               5, color=C_TRUNK))
-
-    # Conduit runs along the ceiling from the trunking out to each fixture.
-    cr, czc = 7, cz - 38
-    for wx in (600, 2350):    # → parallel white LED strips (Cct G)
-        parts.append(ruby_cylinder("Conduit to White Strip (Cct G)",
-                                   wx + 20, 40, czc, cr, 60,
-                                   color=C_TRUNK, axis="y"))
-    # → IBC-corridor strip: conduit from the wall trunking out to its Yd position
-    parts.append(ruby_cylinder("Conduit to White Strip (Cct G)",
-                               IBC_COL_X + 60, 40, czc, cr, EQPANEL_YD - 40,
-                               color=C_TRUNK, axis="y"))
-    for sx in (500, 2250, 4150):     # → red safelight strips (Cct D)
-        parts.append(ruby_cylinder("Conduit to Safelight (Cct D)",
-                                   sx + 20, 40, czc, cr, 60,
-                                   color=C_TRUNK, axis="y"))
-
-    # Flex-lead service coils — each strip's flying lead connects to the conduit stub (grey tube) with a
-    # short CURLY cord (droops below the ceiling line for slack, like the Fan-B flex connector).
-    for wx in (600, 2350):
-        parts.append(ruby_coil_cord("White strip flex lead (Cct G)",
-                                    [(wx + 20, 95, czc), (wx + 12, 102, czc - 55), (wx + 2, 108, cz - 25)],
-                                    r=3.5, color=C_TRUNK))
-    for sx in (500, 2250, 4150):
-        parts.append(ruby_coil_cord("Safelight flex lead (Cct D)",
-                                    [(sx + 20, 95, czc), (sx + 12, 102, czc - 55), (sx + 2, 108, cz - 25)],
-                                    r=3.5, color=C_TRUNK))
-
-    # Circuit C — feed to the pump/filter plumbing panel (IBC corridor).
-    # Branch off the ceiling trunking (Yd≈0) across to the panel center
-    # (Yd≈1181), then drop to the top of the pump zone (Z=PUMP_H_HI) at the
-    # panel face (X=EQPANEL_X). Runs at ceiling height (Z=2350), clearing the IBC stack top (Z=2336).
-    pc_yd = EQPANEL_YD + EQPANEL_YD_SPAN / 2
-    parts.append(ruby_cylinder("Conduit to Plumbing Panel (Cct C)",
-                               EQPANEL_X, 40, czc, cr, pc_yd - 40,
-                               color=C_TRUNK, axis="y"))
-    parts.append(ruby_box("Conduit Drop to Pumps (Cct C)",
-                          EQPANEL_X - 5, pc_yd - 5, PUMP_H_HI, 10, 10,
-                          (cz - 25) - PUMP_H_HI, color=C_TRUNK))
+    # Colour-coded branch circuits — OWNED by the electrical model (em's per-circuit routing), so the
+    # overview matches electrical.skp instead of re-drawing grey conduits. Each circuit leaves the TOP of
+    # its own coloured fuse and routes to its load. D (safelight) + G (white LED) are the ceiling-lighting
+    # circuits; A/B (fans) are on the Fan-Wiring tag, C (pumps) via the master switch + pw.panel_power,
+    # E (cooler/inverter) on the Electrical tag.
+    parts.append(em._multi_run("G", em.LED_ENDS))      # 3× white LED
+    parts.append(em._multi_run("D", em.SAFE_ENDS))     # 3× safelight
+    # Cct C: connect fuse C DOWN to the master switch (the switched feed onward to the pumps is drawn by
+    # pw.panel_power), so fuse C isn't left unconnected.
+    _fcx, _fcy, _fcz = em.FUSE_POS["C"]; _msx, _msy, _msz = em.MASTER_SW_POS
+    parts.append(ruby_pipe_run("Cct C feed (fuse C -> master switch)",
+                               em._dedup([(_fcx, _fcy, _fcz), (_fcx, _fcy, _msz),
+                                          (_fcx, _msy, _msz), (_msx, _msy, _msz)]), 6, color=em.CCT["C"][0]))   # forward to Yd100 at fuse-C X (clear of the battery − riser), then across to the switch rear
 
     return '\n'.join(parts)
 
@@ -1798,7 +1755,7 @@ def fan_wiring(which="both", a_to_ep=False):
     #   (perpendicular entry). Rigid all the way — Fan A doesn't move.
     fa_x = (C_LEN - DUCT_DEPTH) + FAN_BODY_D / 2     # fan-body center X (5618)
     fa_top = FAN_A_H + DUCT_HEIGHT / 2               # fan-housing top Z (2300)
-    if which in ("both", "A"):
+    if which == "A":   # construction phase draws the grey load-side conduit; the overview ("both") uses em._run("A")
         parts.append(ruby_pipe_run("Conduit to Fan A (exhaust, Cct A)",
                                    [(fa_x, 20, czr),
                                     (fa_x, FAN_A_YD, czr),
@@ -1824,10 +1781,11 @@ def fan_wiring(which="both", a_to_ep=False):
     fb_wall_yd = 18                                  # conduit hugs the pinhole wall
     fb_box_z = FAN_B_H                               # wall electrical box at the fan's height
     if which in ("both", "B"):
-        parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
-                                   [(fb_drop_x, fb_wall_yd, czr),
-                                    (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
-                                   fcr, color=C_TRUNK))
+        if which == "B":   # construction: the rigid Cct-B conduit to the wall box (overview uses em._run("B"))
+            parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
+                                       [(fb_drop_x, fb_wall_yd, czr),
+                                        (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
+                                       fcr, color=C_TRUNK))
         import generate_lighttrap_model as lt
         parts.append(lt.fan_b_box())   # OWNED by lighttrap (the cargo-door end); was an identical copy here
         # The short FLEXIBLE CONNECTOR from the fixed wall box out to Fan B on the swing panel —
@@ -1839,26 +1797,11 @@ def fan_wiring(which="both", a_to_ep=False):
                                     r=5, color="#E67E22"))
 
     if which == "both":
-        # ── Feed from the EP fan breakers up to the ceiling trunk, then along the trunk line to each
-        #    fan tap — so Cct-A / Cct-B visibly connect back to their power source (the EP) in the
-        #    Ventilation scene (the real trunking + EP drop are on the hidden Lighting tag). ──
-        # Fan-feed riser ORIGINATES at fuses A/B (the Cct-A/B source) and rises through the IP65 enclosure
-        # top (~Z1370) to the ceiling trunk — so it visibly connects (was floating 190mm above the enclosure
-        # at EP_H_HI, reading as a pipe-to-nowhere).
-        fuse_x = 1868                                    # over fuses A/B (Blue Sea 5026 block, X1849-1886)
-        ep_x = fuse_x                                    # fan feeds originate at the riser head
-        parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
-                                   [(fuse_x, 45, 1255),            # fuse A/B blade top (Cct-A/B origin)
-                                    (fuse_x, 60, 1255),            # jog FORWARD to Yd60 — clear of the (+) busbar (Yd30-50, Z1320-1342) it otherwise passes through
-                                    (fuse_x, 60, 1915),            # rise at Yd60 (clear of the busbar)
-                                    (fuse_x, 20, 1915),            # jog to the trunk Yd (20) ABOVE the green PV run
-                                    (fuse_x, 20, czr)], fcr, color=C_TRUNK))   # rise at Yd20 to the ceiling trunk
-        # The feeds jog OFF the near wall to Yd=ffy across the ceiling run so they clear the top film-plane
-        # saddle bolt nuts (TL/TR near) protruding from the wall, then return to the wall at a bolt-free X.
-        parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
-                                   [(ep_x, 20, czr), (ep_x, ffy, czr), (fa_x, ffy, czr), (fa_x, 20, czr)], fcr, color=C_TRUNK))
-        parts.append(ruby_pipe_run("Fan B feed (EP -> Fan B tap, Cct B)",
-                                   [(ep_x, 20, czr), (ep_x, ffy, czr), (fb_drop_x, ffy, czr), (fb_drop_x, fb_wall_yd, czr)], fcr, color=C_TRUNK))   # jog to ffy so the run clears the TL saddle-bolt nuts; return to the wall at the Fan-B drop X
+        # Overview: the full colour-coded Cct-A / Cct-B circuits from their fuses to the fans —
+        # OWNED by the electrical model (em's per-circuit routing), matching electrical.skp.
+        import generate_electrical_model as em
+        parts.append(em._run("A", em.LOADS["A"]))   # fuse A -> ceiling trunk -> Fan A (end wall)
+        parts.append(em._run("B", em.LOADS["B"]))   # fuse B -> ceiling trunk -> Fan B wall box
     return '\n'.join(parts)
 
 
@@ -1883,6 +1826,16 @@ def evap_cooler():
     # cooler.  See electrical-report.md §7.6.  OWNED by em.inverter_box() (was a copy here).
     import generate_electrical_model as em
     parts.append(em.inverter_box())
+
+    # Cct E DC feed: fuse E -> inverter DC input (the inverter sits right below the fuse block, so a
+    # short DOWN-feed, not em's ceiling route). Colour-coded so Cct-E traces from its own fuse.
+    _fex, _fey, _fez = em.FUSE_POS["E"]
+    _invx = INVERTER_X + INVERTER_W / 2
+    parts.append(ruby_pipe_run("Cct E feed (fuse E -> inverter)",
+                               em._dedup([(_fex, _fey, _fez), (_fex, 55, _fez),
+                                          (_fex, 55, INVERTER_Z + INVERTER_H + 10),
+                                          (_invx, 55, INVERTER_Z + INVERTER_H + 10),
+                                          (_invx, 55, INVERTER_Z + INVERTER_H)]), 5, color=em.CCT["E"][0]))
 
     # Cct E 120V AC line: inverter output -> the external panel's GFCI outlet (interior
     # face), which then runs the cooler cord outside. Ported from the electrical model's

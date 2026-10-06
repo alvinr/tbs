@@ -322,15 +322,15 @@ def power_core(external_links=True, links_only=False):
     # The green PV feed + the grey E-stop link below are the two circuits that run OUT to the external
     # panel; collect them into ext_links so the overview can draw them on a SEPARATE tag.
     # Both land on the disconnect REAR, centered on the box mid (X = _pvx) and SEPARATED ±18mm.
-    # Each feed takes off from the bottom of ITS OWN collector bus (MC4_PLUS_*/MC4_MINUS_*); the green
-    # +Yd lane (22) and grey −Yd lane (46) keep the two parallel runs clear across the bottom pair.
+    # Each feed takes off from the bottom of ITS OWN collector bus (MC4_PLUS_*/MC4_MINUS_*) and runs its
+    # horizontal leg at MC4_FEED_Z — well inside the box (above the bottom cutout edge, below the string
+    # pairs + orange AC crossover). The two runs stay clear on their own Yd lanes: green shallow (22),
+    # grey deep (46); both sit INSIDE the box, not along the bottom edge.
     ext_links = []
     ext_links.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
                               _dedup([(MC4_PLUS_X, MC4_PLUS_Y, MC4_BOT_Z),
-                                      (MC4_PLUS_X, MC4_MINUS_Y, MC4_BOT_Z),        # step onto the grey feed's Yd lane
-                                      (MC4_PLUS_X, MC4_MINUS_Y, MC4_FEED_Z - 24),  # drop one pipe-width below the grey feed (clears the − column)
-                                      (_pvx - 18, MC4_MINUS_Y, MC4_FEED_Z - 24),   # run +x INSIDE the box, parallel below the grey feed, out the +x side toward the pinhole
-                                      (_pvx - 18, MC4_PLUS_Y, MC4_FEED_Z - 24),    # step back to the shallow lane at the column (clear of the grey MPPT riser)
+                                      (MC4_PLUS_X, MC4_PLUS_Y, MC4_FEED_Z),        # drop to the feed-run height, on the shallow Yd lane
+                                      (_pvx - 18, MC4_PLUS_Y, MC4_FEED_Z),         # run +x INSIDE the box, parallel to the grey feed, out the +x side toward the pinhole
                                       (_pvx - 18, MC4_PLUS_Y, _pvd_rz),
                                       (_pvx - 18, EP_CTRL_FACE_YD, _pvd_rz)]),   # land LEFT of the box mid, on the REAR
                               6, color="#2D7A2D"))

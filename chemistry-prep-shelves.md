@@ -80,7 +80,7 @@ film-plane position.
 **Work surface:** 18 mm phenolic-faced / UV-coated plywood — chemical-resistant to cyanotype
 solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean. The plywood is the **primary
 structure** — the earlier welded 25×25×3 steel perimeter frame is removed (see
-[`chem-shelf-blueprint-spec.md`](chem-shelf-blueprint-spec.md)); all attachments land in **pronged
+[`chem-shelf-blueprint-spec.md`](https://github.com/alvinr/tbs/blob/main/chem-shelf-blueprint-spec.md)); all attachments land in **pronged
 tee-nuts in the ply underside** (the 1/4-20 ply-mount standard), which is why the M5 CSK ply screws
 are gone.
 

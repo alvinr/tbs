@@ -316,7 +316,7 @@ Classifying the current BOM by this rule:
 | **Component interfaces — THREADED** | NPT (via slip×NPT adapter) | ball/diverter/check valves, camlocks, tank bulkheads, pump & filter ports, sample taps, accumulator |
 
 Applying this convention **(a) resolved 2026-07-27: the run material is PVC Sch-40**
-(see §5.2 — the §5 table is updated). **Still open (see [TODO](TODO.md)):** (b) the 1"
+(see §5.2 — the §5 table is updated). **Still open (see [TODO](https://github.com/alvinr/tbs/blob/main/TODO.md)):** (b) the 1"
 run tees/elbows now carried as threaded **Banjo FRPP** move to PVC slip, and (c) a
 **slip×NPT male adapter** is added at each component interface (currently absent from
 the BOM). The valves, camlocks, bulkheads, check valve, and pump/filter ports stay threaded.

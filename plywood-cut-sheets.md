@@ -69,9 +69,9 @@ dry, vented mount), since no plywood part carries a water-immersion load.
 
 ## 5. Source references
 
-- Cut geometry — [`tbs_constants.py`](src/generators/tbs_constants.py) (single source), drawn by
-  [`generate_plywood_cutsheets.py`](src/generators/generate_plywood_cutsheets.py).
-- Cost / supplier / SKU — [`parts.py`](src/generators/parts.py) (`timber-ply` registry entries).
+- Cut geometry — [`tbs_constants.py`](https://github.com/alvinr/tbs/blob/main/src/generators/tbs_constants.py) (single source), drawn by
+  [`generate_plywood_cutsheets.py`](https://github.com/alvinr/tbs/blob/main/src/generators/generate_plywood_cutsheets.py).
+- Cost / supplier / SKU — [`parts.py`](https://github.com/alvinr/tbs/blob/main/src/generators/parts.py) (`timber-ply` registry entries).
 - Fabrication detail per piece — the owning subsystem reports: [Plumbing](plumbing-report.md),
   [Electrical](electrical-report.md), [Hinged Light-Trap Panel](hinged-panel-report.md),
   [Chemistry Prep Shelves](chemistry-prep-shelves.md).

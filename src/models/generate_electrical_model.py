@@ -358,6 +358,18 @@ def power_core(external_links=True, links_only=False):
     # (D2; protects the 6 AWG charge conductor the 200A main fuse is too large to cover).
     p.append(ov.ruby_box("Charge-line Fuse (60A, MPPT -> battery)",
                          EP_X + 15, 95, ez + 155, 45, 30, 45, color="#222222"))
+    # Charge-line conductors so the 60A fuse isn't floating: MPPT battery output -> fuse -> (+) busbar.
+    _clf_x = EP_X + 15 + 22                                        # charge-fuse center X
+    p.append(ov.ruby_pipe_run("Charge line (MPPT -> charge fuse)",
+                              _dedup([(_clf_x, 110, EP_H_HI - MPPT_H),       # off the MPPT battery-output (bottom)
+                                      (_clf_x, 110, ez + 200)]),              # down into the charge-fuse TOP terminal
+                              5, color="#8B1A1A"))
+    p.append(ov.ruby_pipe_run("Charge line (charge fuse -> busbar +)",
+                              _dedup([(_clf_x, 110, ez + 155),               # off the charge-fuse BOTTOM terminal
+                                      (EP_X + 21, 110, ez + 155),            # −X clear of the fan-feed riser (X1868)
+                                      (EP_X + 21, 110, ez + 181),            # up to the (+) busbar level (in front)
+                                      (EP_X + 21, 40, ez + 181)]),            # back onto the (+) busbar (above the − busbar)
+                              5, color="#8B1A1A"))
     # Interior E-stop — red mushroom on the panel, paralleled with the exterior one (D5). Relocated to
     # a CLEAR spot (left-center, in the gap between the contactor top ~Z714 and the inverter ~Z1180,
     # left of the wiring risers) so it isn't buried under the cables.

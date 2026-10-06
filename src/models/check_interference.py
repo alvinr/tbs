@@ -38,6 +38,10 @@ from collections import defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sketchup_client import send_ruby
 
+# Pipe-on-pipe crossings whose midpoint is above this Z are in the ceiling cable-trunk band — conductors
+# bundled in the 40x25 PVC trunk share the channel by design, so they're a bundle, not a collision.
+TRUNK_BAND_Z = 2340            # mm (just below the trunk, well above the EP riser heads ~1900)
+
 RUBY = r'''
 require 'json'
 m = Sketchup.active_model
@@ -116,8 +120,8 @@ def classify(name):
     # its DESTINATION name mentions a panel/ply/wall (e.g. '... -> panel GFCI', '... -> pinhole wall').
     # This must come BEFORE the solid-skip keywords below, or those swallow the conductor (the bug that
     # let the orange AC line cross the green PV feed unflagged).
-    if " ->" in name or " →" in name or "awg" in n or "pigtail" in n:
-        return ("pipe", None)                 # routed conductor — incl. arrow-less ones (battery AWG cables, fuse pigtails)
+    if " ->" in name or " →" in name or "awg" in n or "pigtail" in n or n.startswith("circuit "):
+        return ("pipe", None)                 # routed conductor — incl. arrow-less ones (battery AWG cables, fuse pigtails, 'Circuit X ...' runs)
     # A Cct-* POWER cable often NAMES its destination ("... -> pump wireway") — it is a cable, not the
     # pump solid it feeds; let it keep its normal (pipe/skip) classification below, never "pump".
     if "pump " in n and not n.startswith("cct "):
@@ -273,6 +277,10 @@ def run_base(name):
     names straights '<run>' and elbows '<run> elbow'; a connection is often modeled in parts that
     are co-located BY DESIGN ('<run> entry', '<run> flex jumper') — strip all such descriptor
     suffixes so those parts aren't reported as crossing each other."""
+    import re
+    cm = re.match(r"(Circuit [A-G])\b", name)   # all segments of one circuit (feed/ceiling spine/drop X…) = one run
+    if cm:
+        return cm.group(1)
     n = name
     changed = True
     while changed:
@@ -293,8 +301,8 @@ def is_run(name):
     if "flange" in n:
         return False
     # routing arrow is space-flanked (NOT a '12->120V' spec); also catch arrow-less conductor runs
-    # (battery AWG cables, fuse pigtails) that are still routed pipes.
-    return (" ->" in name) or (" →" in name) or ("awg" in n) or ("pigtail" in n)
+    # (battery AWG cables, fuse pigtails, 'Circuit X ...' circuit_runs conductors) that are still pipes.
+    return (" ->" in name) or (" →" in name) or ("awg" in n) or ("pigtail" in n) or n.startswith("circuit ")
 
 
 # ── readability seam audits (--solids / --pipes) ─────────────────────────────
@@ -729,6 +737,11 @@ def main():
             # code dropped the whole pair whenever they shared ANY junction — it missed crossings like
             # two suction lines that both pass BV-03 but cross 36mm away from it.)
             mid = tuple((cA[k] + cB[k]) / 2 for k in range(3))
+            # Conductors BUNDLED in the ceiling cable trunk share its narrow channel by design — a bundle,
+            # not a collision (the 40x25 PVC trunk can't hold 6 fat conductors side by side).  Any two
+            # runs meeting up in the ceiling-trunk band are bundled, so don't flag them.
+            if mid[2] > TRUNK_BAND_Z:
+                continue
             shared = abut[ra] & abut[rb]
             if shared and any(_pt_near_box(mid, junctions[ji], JTOL) for ji in shared):
                 continue

@@ -115,6 +115,11 @@ FUSE_POS = {c: (_fuse_cx(i), _FUSE_YD + _FUSE_T / 2, FUSE_TOP_Z)
             for i, c in enumerate(FUSE_ORDER)}
 TRUNK_YD = 20                  # conductors hug the pinhole-wall ceiling line
 TRUNK_Z = ov.C_HGT - 13
+# Each circuit runs at its OWN Yd across the width of the 40mm trunk, so they lie SIDE BY SIDE (a cable
+# bundle) instead of coincident on one centerline (which read as crossings). F is a spare (no run).
+_CCT_RUN = ["A", "B", "C", "D", "E", "G"]
+CCT_TRUNK_YD = {c: 10 + i * 6 for i, c in enumerate(_CCT_RUN)}   # A=10 … G=40, 6mm apart
+CCT_WIRE_R = 2.5               # thin 12V conductor (was 6 — too fat; made the bundle read as one pipe)
 EP_CTRL_FACE_YD = 100   # EP access-panel front face Yd — the E-stop + master switch SURFACE-MOUNT here (wired from behind)
 MASTER_SW_POS = (EP_X + 130, EP_CTRL_FACE_YD, EP_DISC_Z + 84)   # master pump switch REAR terminal (on the access-panel front, rear-wired)
 
@@ -169,16 +174,17 @@ def _dedup(pts):
 def _run(cct, load):
     lx, lyd, lz = load
     fx, fy, fz = FUSE_POS[cct]
+    tyd = CCT_TRUNK_YD[cct]         # this circuit's OWN lane across the trunk width (side-by-side bundle)
     pts = _dedup([
         (fx, fy, fz),               # this circuit's fuse top terminal (inside enclosure)
         (fx, ENCL_FRONT_YD, fz),    # out to the enclosure front face (Yd) — clears the MPPT
         (fx, ENCL_FRONT_YD, TRUNK_Z),  # rise up the enclosure front to the ceiling (Z)
-        (fx, TRUNK_YD, TRUNK_Z),    # pull to the pinhole-wall trunking line (Yd)
-        (lx, TRUNK_YD, TRUNK_Z),    # run ALONG the ceiling to the load's X (X)
+        (fx, tyd, TRUNK_Z),         # pull to this circuit's trunk lane (Yd)
+        (lx, tyd, TRUNK_Z),         # run ALONG the ceiling to the load's X (X)
         (lx, lyd, TRUNK_Z),         # cross out toward the load (Yd)
         (lx, lyd, lz),              # drop perpendicular to the load (Z)
     ])
-    return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, 6, color=CCT[cct][0])
+    return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, CCT_WIRE_R, color=CCT[cct][0])
 
 
 def _multi_run(cct, ends):
@@ -186,21 +192,22 @@ def _multi_run(cct, ends):
     onto the ceiling line, a ceiling spine spanning all fixture Xs, and a perpendicular
     cross+drop at EACH fixture (its own Yd) — all orthogonal, so every light connects."""
     col, fx, fy, fz = CCT[cct][0], *FUSE_POS[cct]
+    tyd = CCT_TRUNK_YD[cct]         # this circuit's OWN lane across the trunk width
     xs = [e[0] for e in ends]
     p = [
         ov.ruby_pipe_run(f"Circuit {cct} feed ({CCT[cct][1]})",
                          _dedup([(fx, fy, fz), (fx, ENCL_FRONT_YD, fz),
-                                 (fx, ENCL_FRONT_YD, TRUNK_Z), (fx, TRUNK_YD, TRUNK_Z)]),
-                         6, color=col),
+                                 (fx, ENCL_FRONT_YD, TRUNK_Z), (fx, tyd, TRUNK_Z)]),
+                         CCT_WIRE_R, color=col),
         ov.ruby_pipe_run(f"Circuit {cct} ceiling spine ({CCT[cct][1]})",
-                         [(min(xs), TRUNK_YD, TRUNK_Z), (max(xs), TRUNK_YD, TRUNK_Z)],
-                         6, color=col),
+                         [(min(xs), tyd, TRUNK_Z), (max(xs), tyd, TRUNK_Z)],
+                         CCT_WIRE_R, color=col),
     ]
     for x, yd, z in ends:
-        br = _dedup([(x, TRUNK_YD, TRUNK_Z), (x, yd, TRUNK_Z), (x, yd, z)])
+        br = _dedup([(x, tyd, TRUNK_Z), (x, yd, TRUNK_Z), (x, yd, z)])
         if len(br) > 1:
             p.append(ov.ruby_pipe_run(f"Circuit {cct} drop X{int(x)} ({CCT[cct][1]})",
-                                      br, 6, color=col))
+                                      br, CCT_WIRE_R, color=col))
     return '\n'.join(p)
 
 

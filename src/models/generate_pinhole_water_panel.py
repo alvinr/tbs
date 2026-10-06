@@ -521,8 +521,8 @@ def panel_power(include_switch=True, part="all"):
     single feed run + everything, byte-identical."""
     do_corr = part in ("all", "corridor")
     do_link = part in ("all", "ep_link")
-    PWR = "#8E44AD"                                 # unique POWER conduit color (purple) — distinct from all water pipes
-    cr = 7                                          # conduit radius (14mm OD)
+    PWR = "#2980B9"                                 # Cct-C color (blue) — matches fuse C (was purple = same as Cct-D, confusing)
+    cr = 4                                          # thin 16 AWG conductor (was 7 — too fat; crowded the fuse-D feed + battery − riser)
     p = []
     TY, TZ = 20, ov.C_HGT - 13                       # pinhole-wall ceiling trunking line (Yd20), per electrical.skp
     ptop = cp.PSTACK['P-03'] + cp.PVB_H              # 1920 — top of the pump column
@@ -557,7 +557,7 @@ def panel_power(include_switch=True, part="all"):
     # frame, pass UNDER the top rail at the block Yd (in the clear upright gap), then step +X into the pocket.
     cx_clear = cp.BACK_X - 24                         # 5080 — drop lane −X of the rear uprights (5104+), in the corridor
     urz      = cp.TOP_Z - ov.IBC_FRAME_RHS - 60       # 2185 — under the top ring rail (bottom 2245), above the panel/pumps
-    _rx = fx - 24                                                                           # riser X, clear LEFT of the battery − cable (X1958-1980)
+    _rx = fx - 19                                                                           # riser X, clear LEFT of the battery − cable (X1958-1980) AND clear of the Cct-D feed at fuse D (X1926)
     feed = [(fx, fy, fz), (_rx, fy, fz), (_rx, 65, fz), (_rx, 65, TZ), (_rx, TY, TZ), (pwr_edge_x, TY, TZ),   # exit the switch REAR, jog −X clear of the battery − riser (at Yd100), tuck to Yd65 (front of fuses/busbar, behind the MPPT cross member), rise
             (cx_clear, TY, TZ), (cx_clear, by, TZ), (cx_clear, by, urz),   # ceiling to the clear drop lane, +Yd to the block Yd, DROP to under the rail
             (BKX, by, urz), (BKX, by, zc + 48)]                            # +X under the rail into the pocket, then down onto the block

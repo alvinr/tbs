@@ -101,8 +101,17 @@ the tag/scene machinery + the `C_*` palette (primitives take color as a param) a
   **unique materials 103 → 91**, geometry + appearance 100% identical. Bonus: base was at 103, *over*
   the ~100 Sketchfab cap the code targets — Phase 0 brings it back under. Only `overview.skp` re-sent.
 - `tbs_draw.py` needs no `dependencies.yml` entry (shared library, no `.skp`/`.png` output).
-- **Deferred Phase 0 hygiene (non-blocking):** move the `C_*` palette and the metadata helpers
-  (`model_uid`, `sketchfab_meta_ruby`) out of overview too, so sub-models stop importing it entirely.
+- **Colors + metadata also moved (2026-10-06, same commit series):** the 38-color 3D palette and the
+  model-metadata helpers (`sketchfab_meta_ruby`, `model_uid`, `license_note`, `LICENSE_TEXT`) now live in
+  `tbs_draw` too. **All 11 models byte-identical** (no re-send). Sub-models now import overview for
+  **only the structural builders** Phase 1 relocates — and `mini-tbs` + `pinhole-disc-holder` already
+  import overview for **nothing** (fully decoupled). Phase 1 builder-moves are now clean: a moved
+  builder uses only `tbs_draw` (`draw.ruby_*`, `draw.C_*`) + `tbs_constants`, never `ov`.
+- **Phase 1 move checklist (per builder):** (1) ensure the target sub-model imports the `tbs_constants`
+  it needs (e.g. `ib` has NO `from tbs_constants import` yet — add one); (2) move the def verbatim,
+  rewriting bare `C_*`→`draw.C_*`, `ruby_*`→`draw.ruby_*`; (3) re-point every consumer `ov.<b>`→`<sub>.<b>`
+  and add the sub-model import (watch the 5-consumer builders like `ibc_stack`); (4) overview late-imports
+  the sub-model in `generate_ruby`; (5) `manifest --check` must stay byte-identical (pure relocation).
 
 ### Phase 1 — Invert the structural owners (pattern ③ → ①), lowest-risk first
 For each, MOVE the builder from overview into its sub-model, delete overview's copy, and have

@@ -118,6 +118,21 @@ the tag/scene machinery + the `C_*` palette (primitives take color as a param) a
 - ✅ `ibc_stack` → `generate_ibc_model` (`ib.ibc_stack`). True ③ inversion; 5 consumers re-pointed.
 - ✅ `spray_bar` → `generate_spraybar_model` (`sb.spray_bar`). Was actually ② — overview's and pw's
   `spray_bar()` were IDENTICAL wrappers over `sb.build_*`; collapsed to one `sb.spray_bar()`.
+- ✅ `fans` + `fan_duct` → `generate_electrical_model` (`em.fans` / `em.fan_duct`; em owns the Cct A/B
+  fan circuits). overview + construction draw `em.fans()`; the light-trap model draws `em.fan_duct()`.
+
+**Owner decisions made (2026-10-06):** processing_tray → a **water model (pw)**; fans → **em** (done);
+the walkway+film-plane cluster → **one focused group move**.
+
+**`processing_tray` → pw — NOT YET DONE (two gotchas to handle in the focused pass):**
+1. **Circular import:** `sb.build_tray()` would need `pw.processing_tray`, but `pw` already imports `sb`
+   (for `sb.spray_bar`). Break it with a LATE `import generate_pinhole_water_panel as pw` inside
+   `sb.build_tray()` (not module-level).
+2. **pw reads constants via `ov.CONSTANT`** (e.g. `ov.PROC_TRAY_YD_NEAR`) — it has NO `from tbs_constants
+   import`. So the moved `processing_tray` uses `ov.PROC_TRAY_*`/`ov.tray_floor_z` (matches pw's pattern)
+   — ownership moves but a constant-coupling to ov remains. Consider giving pw (and cp) their own
+   `tbs_constants` imports as separate hygiene (several sub-models lean on `ov.<CONSTANT>` re-export).
+   Consumers to re-point: overview, construction, sb (ghost), wm, fp (`ov.processing_tray` → `pw.`).
 - **Findings that reshape the remaining work:**
   - `processing_tray` — owner still undecided (sb already ghosts it via `ov.processing_tray`; consumers:
     overview, sb, wm, fp, construction). Decide owner before the walkway/film-plane moves.

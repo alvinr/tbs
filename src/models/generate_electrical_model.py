@@ -365,10 +365,9 @@ def power_core(external_links=True, links_only=False):
                                       (_clf_x, 110, ez + 200)]),              # down into the charge-fuse TOP terminal
                               5, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Charge line (charge fuse -> busbar +)",
-                              _dedup([(_clf_x, 110, ez + 155),               # off the charge-fuse BOTTOM terminal
-                                      (EP_X + 21, 110, ez + 155),            # −X clear of the fan-feed riser (X1868)
-                                      (EP_X + 21, 110, ez + 181),            # up to the (+) busbar level (in front)
-                                      (EP_X + 21, 40, ez + 181)]),            # back onto the (+) busbar (above the − busbar)
+                              _dedup([(_clf_x, 95, ez + 181),                # out the fuse BACK face, at the (+) busbar level (no fold back up through the fuse)
+                                      (EP_X + 21, 95, ez + 181),             # −X clear of the fan-feed riser (X1868)
+                                      (EP_X + 21, 40, ez + 181)]),            # straight back onto the (+) busbar (above the − busbar)
                               5, color="#8B1A1A"))
     # Interior E-stop — red mushroom on the panel, paralleled with the exterior one (D5). Relocated to
     # a CLEAR spot (left-center, in the gap between the contactor top ~Z714 and the inverter ~Z1180,

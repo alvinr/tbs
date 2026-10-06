@@ -1705,14 +1705,14 @@ def draw_sheet6():
     MC4_R    = 8              # MC4 bulkhead connector radius
     MC4_X    = 70             # MC4 column X from panel left edge
     MC4_GAP  = 25             # gap between + and - in a pair
-    MC4_PITCH = 55            # vertical pitch between pairs
+    MC4_PITCH = 0.14 * PWR_PANEL_H   # vertical pitch between pairs — matches the 3D MC4_PAIR_VF (0.36/0.5/0.64)
     MC4_DEPTH = 40            # MC4 bulkhead protrusion behind plate (mm)
 
     # NEMA inlet
     NEMA_W   = 55             # NEMA receptacle width
     NEMA_H   = 45             # NEMA receptacle height
     NEMA_X   = 195            # NEMA left edge from panel left edge
-    NEMA_Y   = 153            # NEMA bottom edge — center aligns with PV3 (175mm)
+    NEMA_Y   = 153            # NEMA bottom edge (upper-right of the face, clear of the tightened MC4 column)
     NEMA_DEPTH = 45           # NEMA body protrusion behind plate (mm)
 
     # AC outlet position (Circuit E — evap cooler, 120V) — repurposed DT_* anchors
@@ -2335,8 +2335,10 @@ _BOX_CW, _BOX_CH = PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H  # 280 × 180 wall cut
 _BOX_FL = (PWR_PANEL_W - PWR_PANEL_CUTOUT_W) // 2          # 30mm flange overlap / side
 # face cut layout (single source — MIRRORS draw_sheet6 View A; used by sheets 8 + 9)
 _BOX_MI, _BOX_MD = 15, 6                                   # 4× M6 mounting holes, corner inset / Ø
-_MC4_X, _MC4_GAP, _MC4_PITCH, _MC4_D = 70, 25, 55, 17
-_MC4_Y0 = PWR_PANEL_H / 2 - _MC4_PITCH                     # 65 (bottom row)
+_MC4_X, _MC4_GAP, _MC4_D = 70, 25, 17
+_MC4_PITCH = 0.14 * PWR_PANEL_H                            # pitch between pairs — matches 3D MC4_PAIR_VF (0.36/0.5/0.64)
+_MC4_Y0 = PWR_PANEL_H / 2 - _MC4_PITCH                     # bottom row (= 0.36·H)
+_MC4_Y2 = PWR_PANEL_H / 2 + _MC4_PITCH                     # top row    (= 0.64·H)
 _NEMA_X, _NEMA_Y, _NEMA_W, _NEMA_H = 195, 153, 55, 45
 _DUP_X, _DUP_Y, _DUP_W, _DUP_H = 227, 90, 46, 84   # X set so the duplex right edge (250) aligns with the shore-inlet right edge
 _EST_X, _EST_Y, _EST_D = 150, 100, 22.5
@@ -2380,7 +2382,7 @@ def draw_sheet8():
         draw_dim_h(ax, 0, xv, -30 - k * 23, f"{xv:g}mm", offset=4, fs=5.2, above=False, font=FONT)
     draw_dim_h(ax, 0, W, -30 - 8 * 23, f"{W}mm OVERALL", offset=6, fs=6.4, above=False, font=FONT)
     # ── baseline dim_v (Y) stacked left · circles by centre, cutouts by their BOTTOM edge ──
-    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, 175, H - MI]):
+    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, _MC4_Y2, H - MI]):
         draw_dim_v(ax, -30 - k * 23, 0, yv, f"{yv:g}mm", offset=4, fs=5.2, font=FONT)
     draw_dim_v(ax, -30 - 8 * 23, 0, H, f"{H}mm OVERALL", offset=6, fs=6.4, font=FONT)
     # ── internal cutout dimensions: width (dim_h, below the cutout) + height (dim_v, left of it) ──
@@ -2398,8 +2400,8 @@ def draw_sheet8():
     for k, xv in enumerate([MI, mc4L, mc4R, _EST_X, nema_xL, dup_xL, cut_r, W - MI]):
         ax.plot([xv, xv], [-30 - k * 23, x_feat[xv]], **proj)
     y_feat = {MI: MI, _MC4_Y0: mc4L, dup_yB: dup_xL, _EST_Y: _EST_X - _EST_D / 2,
-              120: mc4L, nema_yB: nema_xL, 175: mc4L, H - MI: MI}
-    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, 175, H - MI]):
+              120: mc4L, nema_yB: nema_xL, _MC4_Y2: mc4L, H - MI: MI}
+    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, _MC4_Y2, H - MI]):
         ax.plot([-30 - k * 23, y_feat[yv]], [yv, yv], **proj)
 
     # ── size leaders (right) ──

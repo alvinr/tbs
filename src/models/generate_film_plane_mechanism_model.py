@@ -28,7 +28,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-import generate_sketchup_model as ov          # ruby helpers + component()
+import generate_sketchup_model as ov
+import generate_walkway_model as wm   # walkway builders (Phase 1)          # ruby helpers + component()
 import tbs_draw as draw                          # shared drawing/material primitives
 import generate_corridor_water_panel as cp    # IBC corridor deep-box frame + tote restraint (beams) — reused verbatim
 
@@ -386,8 +387,8 @@ def context():
     def s(x):
         return x if isinstance(x, str) else "\n".join(x)
     return "\n".join([
-        s(ov.walkways(include_right=True, include_right_hangers=False)),  # decks + right cantilever + IBC arms
-        s(ov.fp_combined_corner_plates()),                               # BR rail + right-beam combined plates
+        s(wm.walkways(include_right=True, include_right_hangers=False)),  # decks + right cantilever + IBC arms
+        s(wm.fp_combined_corner_plates()),                               # BR rail + right-beam combined plates
         s(cp.frame()),                                                   # IBC corridor deep-box frame (beams)
         s(cp.tote_restraint()),                                          # IBC tote restraint (beams)
     ])

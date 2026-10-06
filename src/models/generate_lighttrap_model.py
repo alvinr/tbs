@@ -954,7 +954,7 @@ def liftout_walkways():
     full_z = ov.WALKWAY_H - t
     return '\n'.join([
         # ONE continuous lift-out piece: drum-exit punch-out tab + muslin notch both integral.
-        ov.left_liftout_grate("Left walkway (removable)", full_z, t, draw.C_REMOVABLE, alpha=0.6),
+        wm.left_liftout_grate("Left walkway (removable)", full_z, t, draw.C_REMOVABLE, alpha=0.6),
         # door-end removable near band — OWNED by the walkway model (wm), ghosted here as context
         # (was a copy that drew it full-width, not bracket-inset like the real deck).
         wm.near_removable_deck(alpha=0.6),

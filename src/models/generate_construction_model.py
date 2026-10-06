@@ -80,10 +80,10 @@ STEPS = [
     (3, "3.1", "P3 Wall Backing",      "Pinhole-wall ply backing (semi-transparent backdrop for the plumbing build)",   # [3.1] the wall backing goes up first as a semi-transparent, plywood-colored backdrop so the skid/plumbing (3.4) reads through it; Phase 4+ it ghosts like all other prior geometry
         lambda: _wall_backing_backdrop()),
     (3, "3.2", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.2]
-        lambda: _join(ov.walkway_brackets(which="far"),
-                      ov.right_walkway_cantilever(include_combined=True, include_grate=False))),
+        lambda: _join(wm.walkway_brackets(which="far"),
+                      wm.right_walkway_cantilever(include_combined=True, include_grate=False))),
     (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3] near-wall brackets go in before the ribbons/skid so the space is fully framed first
-        lambda: ov.walkway_brackets(which="near")),
+        lambda: wm.walkway_brackets(which="near")),
     (3, "3.4", "P3 Ribbons + Filter Skid", "Under-grate ribbons (sump + brown suction) + pipe supports + pinhole filter skid (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02) + skid-side plumbing",  # [3.4] the over-walkway plumbing ribbons + supports AND the pinhole-wall filter skid (mounts to the 3.1 backing) — recycle→IBC-3 + waste returns are in 1.3; on-panel legs are P-04→DV-02, DV-02 recycle-feed→F1, ACC-02→BV-05
         lambda: _join(cp.plumbing(part="sump", sump_on_skid=True), pw.skid_plumbing(part="ribbon"), cp.ribbon_supports(),
                       pw.kit(part="skid", p02_on_corridor=True), pw.skid_row(), pw.skid_plumbing(part="skid"))),
@@ -92,11 +92,11 @@ STEPS = [
     (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
         lambda: pw.processing_tray()),
     (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
-        lambda: _join(ov.film_plane_mechanism(part="beams"), ov.fp_combined_corner_plates())),
+        lambda: _join(ov.film_plane_mechanism(part="beams"), wm.fp_combined_corner_plates())),
     (3, "3.8", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.8]
         lambda: '\n'.join(wm.left_floor_cantilevers())),
     (3, "3.9", "P3 Walkway",           "Walkway grating (all sections)",     # [3.9] — grates only; supports are 3.2/3.3/3.8
-        lambda: ov.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
+        lambda: wm.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
 
     # ── Phase 4 — Electrical ──
     (4, "4.1", "P4 External Panel",    "External power panel (yellow box)",      # shown by default = the click target (box only — no cables, E-stop, or PV disconnect)

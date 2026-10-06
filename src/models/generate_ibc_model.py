@@ -27,7 +27,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-import generate_sketchup_model as ov   # helpers + component builders (Overview)
+import generate_sketchup_model as ov
+import generate_walkway_model as wm   # walkway builders (Phase 1)   # helpers + component builders (Overview)
 import tbs_draw as draw                          # shared drawing/material primitives (adds src/generators to path)
 from tbs_constants import (IBC_PALLET_H, IBC_BOTTLE_INSET, IBC_H_1000, BROWN_IBC_Y,
                            BLUE_IBC_Y, WASTE_IBC_Y, IBC_FAR_Y, IBC_COL_X, IBC_W, IBC_D)
@@ -215,7 +216,7 @@ def generate_ruby():
         # focus model (the blue-trunk × outer-beam clash previously only surfaced downstream at
         # water).  Grate + combined corner plates omitted to keep the plumbing view readable.
         draw.component("Right Walkway Support", "Walkway Cantilever",
-                     ov.right_walkway_cantilever(include_combined=False, include_grate=False)),
+                     wm.right_walkway_cantilever(include_combined=False, include_grate=False)),
     ]
     body = '\n'.join(comps)
 

@@ -18,6 +18,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(os.path.dirname(_HERE))   # repo root (src/models -> src -> root)
 sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
+import generate_walkway_model as wm   # walkway builders (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
 import generate_corridor_water_panel as cp
 import generate_spraybar_model as sb        # owns spray_bar() (Phase 1)
@@ -64,7 +65,7 @@ def context():
     return "\n".join(p)
 
 
-# Cascade hint: walkway_full() reuses ov.walkways(), which draws the near-wide bump-out and the
+# Cascade hint: walkway_full() reuses wm.walkways(), which draws the near-wide bump-out and the
 # muslin-drop notches — so water.skp inherits WALKWAY_NEAR_WIDE_X_R, WALKWAY_MUSLIN_NOTCH_L_X0,
 # WALKWAY_MUSLIN_NOTCH_R_X0. Named here so the grep-based missing-cascade check flags water.skp
 # when any of them change (the deps are indirect via ov.*, which the import scan can't see).
@@ -75,7 +76,7 @@ def walkway_full():
     p = []
     for fn in ("walkways", "walkway_brackets", "ibc_cantilever_arms"):
         try:
-            r = getattr(ov, fn)()
+            r = getattr(wm, fn)()      # walkway builders now owned by the walkway model (Phase 1)
             p.append("\n".join(r) if isinstance(r, (list, tuple)) else r)
         except Exception as e:
             print(f"  (skip {fn}: {e})", file=sys.stderr)

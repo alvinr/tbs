@@ -1722,11 +1722,8 @@ def lighting_wiring():
     parts.append(em._multi_run("G", em.LED_ENDS))      # 3× white LED
     parts.append(em._multi_run("D", em.SAFE_ENDS))     # 3× safelight
     # Cct C: connect fuse C DOWN to the master switch (the switched feed onward to the pumps is drawn by
-    # pw.panel_power), so fuse C isn't left unconnected.
-    _fcx, _fcy, _fcz = em.FUSE_POS["C"]; _msx, _msy, _msz = em.MASTER_SW_POS
-    parts.append(ruby_pipe_run("Cct C feed (fuse C -> master switch)",
-                               em._dedup([(_fcx, _fcy, _fcz), (_fcx, _fcy, _msz),
-                                          (_fcx, _msy, _msz), (_msx, _msy, _msz)]), 6, color=em.CCT["C"][0]))   # forward to Yd100 at fuse-C X (clear of the battery − riser), then across to the switch rear
+    # pw.panel_power), so fuse C isn't left unconnected. SINGLE OWNER — shared with the electrical model.
+    parts.append(em.cct_c_feed())
 
     return '\n'.join(parts)
 
@@ -1829,15 +1826,8 @@ def evap_cooler():
     parts.append(em.inverter_box())
 
     # Cct E DC feed: fuse E -> inverter DC input (the inverter sits right below the fuse block, so a
-    # short DOWN-feed, not em's ceiling route). Colour-coded so Cct-E traces from its own fuse.
-    # (Mirrors em.cct_e_feed(); reconcile to one owner under the model-drift TODO.)
-    _fex, _fey, _fez = em.FUSE_POS["E"]
-    _invx = INVERTER_X + INVERTER_W / 2
-    parts.append(ruby_pipe_run("Cct E feed (fuse E -> inverter)",
-                               em._dedup([(_fex, _fey, _fez), (_fex, 55, _fez),
-                                          (_fex, 55, INVERTER_Z + INVERTER_H + 10),
-                                          (_invx, 55, INVERTER_Z + INVERTER_H + 10),
-                                          (_invx, 55, INVERTER_Z + INVERTER_H)]), 5, color=em.CCT["E"][0]))
+    # short DOWN-feed, not em's ceiling route). SINGLE OWNER — shared with the electrical model.
+    parts.append(em.cct_e_feed())
 
     # Cct E 120V AC line: inverter output -> the external panel's GFCI outlet (interior
     # face), which then runs the cooler cord outside. Ported from the electrical model's

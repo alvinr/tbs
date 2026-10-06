@@ -635,6 +635,18 @@ def inverter():
     return '\n'.join(p)
 
 
+def cct_c_feed():
+    """Cct C feed: fuse C -> master switch. The X-traverse runs fully at the switch-rear Yd (behind the
+    Cct-E feed + battery cables), so it clears the cluster at the disconnect level. SINGLE OWNER —
+    _pump_circuit() (electrical) and the overview both call this, so the fuse-C→switch leg can't drift
+    between models. (The switched feed onward to the pumps is _pump_circuit() / pw.panel_power.)"""
+    fcx, fcy, fcz = FUSE_POS["C"]
+    msx, msy, msz = MASTER_SW_POS
+    return ov.ruby_pipe_run("Cct C feed (fuse C -> master switch)",
+                            _dedup([(fcx, fcy, fcz), (fcx, fcy, msz),
+                                    (fcx, msy, msz), (msx, msy, msz)]), 6, color=CCT["C"][0])
+
+
 def _pump_circuit():
     """Circuit C: the MASTER pump switch is on the EP (single manual cutoff, upstream of
     everything); the switched feed runs the ceiling trunk to a 12V distribution wireway/block
@@ -656,17 +668,9 @@ def _pump_circuit():
     p = [ov.ruby_box("Cct C distribution wireway", EQPANEL_X - 25, cy - 35, way_bot,
                      50, 70, way_top - way_bot, color="#2B2B30")]
     # (The master pump switch itself is drawn in power_core() — it's on the EP; here we just run its
-    # switched Cct-C feed to the pump wireway.)
-    # Cct-C switched feed: fuse C -> DOWN to the master switch (in the reach cluster) -> up the ceiling
-    # trunk -> across to the pump wireway. The master switch is the manual cutoff in this feed.
-    _fcx, _fcy, _fcz = FUSE_POS["C"]; _msx2, _msy2, _mst = MASTER_SW_POS
-    # Traverse on a DEEP Yd lane (behind the Cct-E feed at Yd55 + the battery cables) so the X-run to the
-    # switch doesn't cut across them at the cluster level, then forward into the switch rear terminal.
-    _ccy = _msy2 - 28                                    # deep lane just in front of the switch rear (Yd100)
-    p.append(ov.ruby_pipe_run("Cct C feed (fuse C -> master switch)",
-                              _dedup([(_fcx, _fcy, _fcz), (_fcx, _ccy, _fcz),
-                                      (_fcx, _ccy, _mst), (_msx2, _ccy, _mst),
-                                      (_msx2, _msy2, _mst)]), 6, color=col))
+    # switched Cct-C feed to the pump wireway. The fuse-C→switch leg is the shared cct_c_feed().)
+    _msx2, _msy2, _mst = MASTER_SW_POS
+    p.append(cct_c_feed())
     p.append(ov.ruby_pipe_run("Cct C switched feed (master switch -> pump wireway)",
                               _dedup([(_msx2, _msy2, _mst), (_msx2, _msy2, TRUNK_Z),
                                       (_msx2, TRUNK_YD, TRUNK_Z), (EQPANEL_X, TRUNK_YD, TRUNK_Z),

@@ -120,6 +120,22 @@ the tag/scene machinery + the `C_*` palette (primitives take color as a param) a
   `spray_bar()` were IDENTICAL wrappers over `sb.build_*`; collapsed to one `sb.spray_bar()`.
 - ✅ `fans` + `fan_duct` → `generate_electrical_model` (`em.fans` / `em.fan_duct`; em owns the Cct A/B
   fan circuits). overview + construction draw `em.fans()`; the light-trap model draws `em.fan_duct()`.
+- ✅ `processing_tray` → `pw` (water). `sb`↔`pw` cycle broken by a late import in `sb.build_tray()`.
+- ✅ **Walkway cluster** → `wm`: 14 builders (walkways, right_walkway_cantilever/grate, near/left grates,
+  walkway_brackets, ibc_cantilever_arms, fp_combined_corner_plate(s), `_rwk_*`) moved verbatim; wm gained
+  48 constants + ruby_prism/cone_wire aliases. 6 consumers re-pointed incl. pw's dynamic `getattr(ov,fn)`.
+  Cycles: wm late-imports pw; fp/pw/ib/lt import wm at module (wm imports none of them at module).
+- ✅ **Film-plane cluster** → `fp` + `lt`: `film_plane_saddles` + `film_plane_mechanism` → fp (the latter
+  was a wrapper over `fp.corner()`); **`panel_pivot` → `lt`** (refinement of the plan — it's the cargo-
+  door/hinge-panel swing, lt's domain, built from `lt.axle/fan_b_mount_panel/wall_anchors/frame_hooks`).
+- **All 6 Phase 1 moves byte-identical — zero re-sends.** Overview is down from ~60 defs to 18.
+
+**Remaining (beyond the tray+cluster focused pass):**
+- **Still-③ with no sub-model owner:** `container_shell`, `far_wall`, `pinhole_assembly`, `optical_cone`,
+  `solar_array`, `shelf`, `light_seal`, `light_trap_frame` — decide: a shared `context` home (maybe
+  `tbs_draw`) or genuinely overview-level.
+- **Phase 2 wrapper collapses (②):** `electrical`/`ep_external_wiring`/`lighting_wiring`/`fan_wiring`/
+  `evap_cooler` → one `em` composition; `light_trap_drum`/`cage`/`bay` → `lt` (fix the `cage` double-draw).
 
 **Owner decisions made (2026-10-06):** processing_tray → a **water model (pw)**; fans → **em** (done);
 the walkway+film-plane cluster → **one focused group move**.

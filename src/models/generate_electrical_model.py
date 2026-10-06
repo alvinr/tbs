@@ -36,7 +36,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
 import tbs_draw as draw                          # shared drawing/material primitives
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0, PULL_CORD_BOTTOM_Z
+from tbs_constants import C_LEN, FAN_DIAM, EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0, PULL_CORD_BOTTOM_Z
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Lighting", "Labels"]
@@ -762,6 +762,112 @@ def circuit_runs():
                                [(_FANB_BOX_X, 55, FAN_B_H), (60, FAN_B_YD, FAN_B_H)],
                                r=5, color=CCT["B"][0]))
     return '\n'.join(p)
+
+
+# ── Ventilation fans + light-safe baffle ducts (Phase 1: owner = electrical; Cct A/B) ──
+def fans(which="both"):
+    """Cross-ventilation fans + light-safe baffle ducts on OPPOSITE end walls,
+    diagonal low-in / high-out:
+      Fan A (exhaust) — sealed/IBC end wall (X=C_LEN), in the plumbing corridor
+        directly BELOW the X1 fill port (Yd=1181, Z=2000) — the only full-height
+        clear channel past the 1000L direct-stack.
+      Fan B (intake)  — cargo-door panel (X=0, left), low (Z=600).
+
+    Each fan sits at the INTERIOR mouth of a box-section baffle duct bolted to
+    the wall interior: DUCT_DEPTH (300mm, along the fan axis) x DUCT_W (200mm,
+    Yd) x DUCT_HEIGHT (200mm, Z), translucent galvanized steel. Inside, two
+    150x150mm flat baffle plates are offset top/bottom at 1/3 and 2/3 depth to
+    break the line of sight (light-safe S-path) while passing full airflow.
+    """
+    # Fan A: far end wall (X=C_LEN, exterior on +X); duct projects -X into container.
+    # Fan B: cargo-door panel (X=0, exterior on -X); duct projects +X into container.
+    # `which`: "both" (default), "A", or "B" — the construction model installs Fan A early
+    # (before the far IBC column buries it) and Fan B later.
+    out = []
+    if which in ("both", "A"):
+        out += fan_duct("Fan A (exhaust)", C_LEN, +1, FAN_A_YD, FAN_A_H)
+    if which in ("both", "B"):
+        out += fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H)
+    return '\n'.join(out)
+
+
+def fan_duct(tag, wall_x, ext, yc, zc):
+    """One axial panel fan + light-safe baffle duct opening into the container.
+
+    `ext` = +1 if the exterior is on +X, -1 on -X. The duct projects from the
+    wall interior face into the container; the fan sits at the interior mouth.
+    Returns a list of ruby strings. Shared single source of truth for the
+    Overview fans() and the focused Light-Trap model (Fan B on the hinge panel).
+    """
+    r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm fan body
+    dd, dh = DUCT_DEPTH, DUCT_HEIGHT          # 300 deep (axis), 200 tall (Z)
+    dw = DUCT_HEIGHT                          # 200 wide (Yd) — square section
+    bf, bft = 125, 8                          # baffle plates: FULL height (Z, welded top +
+                                              # bottom) × 125 wide (Yd) — leaves a 75mm airflow
+                                              # gap on one SIDE; the two plates take opposite
+                                              # sides so air winds left↔right (horizontal S-path)
+                                              # while the overlap blocks the line of sight
+    flo, flt = 30, 5                          # flange overhang past the duct, + plate thickness
+    gld, glh = 40, int(dh * 0.65)             # louvre grille depth + height
+
+    if True:
+        mouth_x = wall_x - ext * dd
+        x0 = min(wall_x, mouth_x)
+        out = [draw.ruby_box(f"{tag} baffle duct", x0, yc - dw / 2, zc - dh / 2,
+                        dd, dw, dh, color=draw.C_DUCT, alpha=0.5)]
+        # baffle plates — full height (welded top + bottom), offset left/right in Yd,
+        # leaving a 75mm airflow gap on one side each (horizontal S-path)
+        out.append(draw.ruby_box(f"{tag} baffle plate 1", x0 + dd / 3 - bft / 2,
+                            yc - dw / 2, zc - dh / 2, bft, bf, dh, color=draw.C_FAN))
+        out.append(draw.ruby_box(f"{tag} baffle plate 2", x0 + 2 * dd / 3 - bft / 2,
+                            yc + dw / 2 - bf, zc - dh / 2, bft, bf, dh, color=draw.C_FAN))
+        # ── axial panel fan at the interior mouth (matches 2D Sheet 2):
+        #    square housing frame around the Ø150 bore + motor hub + 4-blade
+        #    impeller, body set inside the duct ──
+        fan_x = mouth_x if ext > 0 else mouth_x - bd   # interior face of fan body
+        fr_y0, fr_y1 = yc - dw / 2, yc + dw / 2
+        fr_z0, fr_z1 = zc - dh / 2, zc + dh / 2
+        out.append(draw.ruby_box(f"{tag} fan frame top", fan_x, fr_y0, zc + r,
+                            bd, dw, fr_z1 - (zc + r), color=draw.C_FAN))
+        out.append(draw.ruby_box(f"{tag} fan frame bottom", fan_x, fr_y0, fr_z0,
+                            bd, dw, (zc - r) - fr_z0, color=draw.C_FAN))
+        out.append(draw.ruby_box(f"{tag} fan frame left", fan_x, fr_y0, zc - r,
+                            bd, (yc - r) - fr_y0, 2 * r, color=draw.C_FAN))
+        out.append(draw.ruby_box(f"{tag} fan frame right", fan_x, yc + r, zc - r,
+                            bd, fr_y1 - (yc + r), 2 * r, color=draw.C_FAN))
+        hub_r = r * 0.26
+        out.append(draw.ruby_cylinder(f"{tag} fan hub", fan_x, yc, zc, hub_r, bd,
+                                 color=draw.C_STEEL, axis="x"))
+        bt, bw = 6, 30                                 # impeller blade thickness/width
+        bx, bl = fan_x + bd * 0.45, r * 0.88 - hub_r   # blade plane + length
+        out.append(draw.ruby_box(f"{tag} fan blade up", bx, yc - bw / 2, zc + hub_r,
+                            bt, bw, bl, color=draw.C_ALUM))
+        out.append(draw.ruby_box(f"{tag} fan blade down", bx, yc - bw / 2,
+                            zc - hub_r - bl, bt, bw, bl, color=draw.C_ALUM))
+        out.append(draw.ruby_box(f"{tag} fan blade left", bx, yc - hub_r - bl,
+                            zc - bw / 2, bt, bl, bw, color=draw.C_ALUM))
+        out.append(draw.ruby_box(f"{tag} fan blade right", bx, yc + hub_r,
+                            zc - bw / 2, bt, bl, bw, color=draw.C_ALUM))
+        # ── wall mounting flange: 5mm plate on the interior wall face, overhanging
+        #    the duct opening, with 4 M10 bolts into the wall ──
+        out.append(draw.ruby_box(f"{tag} wall flange",
+                            wall_x - (flt if ext > 0 else 0), yc - dw / 2 - flo,
+                            zc - dh / 2 - flo, flt, dw + 2 * flo, dh + 2 * flo,
+                            color=draw.C_STEEL))
+        for fy in (yc - dw / 2 - flo / 2, yc + dw / 2 + flo / 2):
+            for fz in (zc - dh / 2 - flo / 2, zc + dh / 2 + flo / 2):
+                out.append(draw.ruby_bolt(f"{tag} flange bolt M10",
+                            wall_x - (flt + 8) / 2, fy, fz, flt + 8, radius=5,
+                            axis="x", color="#3A3A42", head="base", nut="far"))
+        # ── weatherproof louvre grille on the exterior wall face (slatted) ──
+        gx0 = wall_x if ext > 0 else wall_x - gld
+        out.append(draw.ruby_box(f"{tag} louvre grille", gx0, yc - dw / 2,
+                            zc - glh / 2, gld, dw, glh, color=draw.C_DUCT, alpha=0.55))
+        for s in range(5):
+            sz = zc - glh / 2 + (s + 0.5) * glh / 5
+            out.append(draw.ruby_box(f"{tag} louvre slat", gx0 + 2, yc - dw / 2 + 4,
+                                sz - 1.5, gld - 4, dw - 8, 3, color=draw.C_STEEL))
+        return out
 
 
 def generate_ruby():

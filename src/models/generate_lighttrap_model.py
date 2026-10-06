@@ -34,7 +34,8 @@ import math
 import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
-import generate_sketchup_model as ov   # helpers, materials, constants
+import generate_sketchup_model as ov
+import generate_electrical_model as em        # owns fan_duct() (Phase 1)   # helpers, materials, constants
 import tbs_draw as draw                          # shared drawing/material primitives
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
@@ -877,7 +878,7 @@ def fan_b_mount_panel(alpha=0.5):
 
 
 def fan_b():
-    return '\n'.join(ov.fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H))
+    return '\n'.join(em.fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H))
 
 
 def fan_b_cable():

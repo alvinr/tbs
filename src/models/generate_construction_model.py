@@ -70,7 +70,7 @@ STEPS = [
                       pw.kit(part="recycle", p02_on_corridor=True), pw.kit(part="waste", p02_on_corridor=True),
                       pw.panel_power(include_switch=False, part="corridor"))),
     (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board",  # before the far IBCs bury it; Cct-A pre-run down the pinhole wall to the EP drop (EP in Phase 4).  The FAR-wall support board (DV-01/P-02/P-01 risers) reveals here, one click after its risers
-        lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True), cp.support_boards(sides=("far",)))),
+        lambda: _join(em.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True), cp.support_boards(sides=("far",)))),
     (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
         lambda: _join(ib.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
     (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last
@@ -109,7 +109,7 @@ STEPS = [
     (4, "4.4", "P4 Lights",            "Lights",                                 # [4.4]
         lambda: ov.lighting_wiring()),
     (4, "4.5", "P4 Wiring + Fit-out",  "Fan B + its Cct-B wiring + shelf",  # [4.5] (Fan A + Cct-A in Phase 1; external cooler/solar excluded)
-        lambda: _join(ov.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
+        lambda: _join(em.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
     (5, "5.1", "P5 Pinhole",           "Pinhole mechanism (plate + aperture)",    # shown by default = the click target (the minimal element)

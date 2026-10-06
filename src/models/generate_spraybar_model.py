@@ -390,7 +390,8 @@ def build_tray():
     spray bar reads inside it. OWNED by overview (ov.processing_tray) — call it ghosted so the
     spray-bar model shows the SAME dual-axis-sloped pan the overview does (was a flat simplified
     copy here, which drifted from the real sloped tray)."""
-    return ov.processing_tray(alpha=0.35)
+    import generate_pinhole_water_panel as pw   # late import breaks the sb<->pw cycle (pw imports sb)
+    return pw.processing_tray(alpha=0.35)
 
 
 def spray_bar():

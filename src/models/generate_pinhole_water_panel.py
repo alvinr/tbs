@@ -143,6 +143,53 @@ def other_equipment():
 # spray_bar() moved to generate_spraybar_model.py (sb.spray_bar()) — the single owner.
 
 
+def processing_tray(alpha=None):
+    """Processing tray — RAISED, dual-axis-sloped 304 SS welded pan (tilted floor + rim)
+    on a tapered HDPE shim base, holding a translucent chemistry bath.  The low corner
+    (near-right / IBC side = the sump) sits at Z=ov.PROC_TRAY_FLOOR_Z_LOW so the sump bottom
+    rests on the container floor; the pan rises 1:200 in BOTH axes to the far-left corner
+    (see ov.tray_floor_z / tray_rim_top_z).
+
+    SINGLE OWNER of the tray geometry — the spray-bar model calls this with `alpha` set to draw
+    the SAME sloped pan as a faint CONTEXT ghost (so the gantry reads inside the real tray).
+    `alpha=None` (default) = solid detail — byte-identical to the original overview output."""
+    xl, xr = ov.PROC_TRAY_X_L, ov.PROC_TRAY_X_R
+    yn, yf = ov.PROC_TRAY_YD_NEAR, ov.PROC_TRAY_YD_FAR
+    tray_w, tray_d = xr - xl, yf - yn
+    sheet_t, rim_t = 2, 2
+    zc = ov.PROC_TRAY_FLOOR_Z_LOW                       # low-corner floor top = shim base top
+    a_shim = 0.9 if alpha is None else alpha         # ghost mode fades every part uniformly
+    a_bath = 0.45 if alpha is None else alpha
+
+    parts = []
+    # Tapered HDPE shim base — raises the pan so the 20mm sump well bottom rests on Z0
+    parts.append(draw.ruby_box("Tray Shim Base",
+                          xl, yn, 0, tray_w, tray_d, zc - sheet_t,
+                          color="#D8CFBC", alpha=a_shim))
+    # Welded pan FLOOR — dual-axis-tilted plane (two triangles at the true corner Z's)
+    c_nl = [xl, yn, ov.tray_floor_z(xl, yn)]
+    c_nr = [xr, yn, ov.tray_floor_z(xr, yn)]
+    c_fr = [xr, yf, ov.tray_floor_z(xr, yf)]
+    c_fl = [xl, yf, ov.tray_floor_z(xl, yf)]
+    parts.append(draw.ruby_tri("Processing Tray Floor A", c_nl, c_nr, c_fr, -sheet_t, color=draw.C_TRAY, alpha=alpha))
+    parts.append(draw.ruby_tri("Processing Tray Floor B", c_nl, c_fr, c_fl, -sheet_t, color=draw.C_TRAY, alpha=alpha))
+    # Rims — walls on the raised, tilted pan (each placed at the local floor Z for its edge)
+    znr = ov.tray_floor_z((xl + xr) / 2, yn); zfr = ov.tray_floor_z((xl + xr) / 2, yf)
+    zlr = ov.tray_floor_z(xl, (yn + yf) / 2); zrr = ov.tray_floor_z(xr, (yn + yf) / 2)
+    parts.append(draw.ruby_box("Tray Rim Near", xl, yn, znr, tray_w, rim_t, ov.PROC_TRAY_RIM, color=draw.C_TRAY, alpha=alpha))
+    parts.append(draw.ruby_box("Tray Rim Far",  xl, yf - rim_t, zfr, tray_w, rim_t, ov.PROC_TRAY_RIM, color=draw.C_TRAY, alpha=alpha))
+    parts.append(draw.ruby_box("Tray Rim Left", xl, yn, zlr, rim_t, tray_d, ov.PROC_TRAY_RIM, color=draw.C_TRAY, alpha=alpha))
+    parts.append(draw.ruby_box("Tray Rim Right", xr - rim_t, yn, zrr, rim_t, tray_d, ov.PROC_TRAY_RIM, color=draw.C_TRAY, alpha=alpha))
+    # Translucent chemistry bath inside the rims (at the raised level)
+    zb = ov.tray_floor_z((xl + xr) / 2, (yn + yf) / 2)
+    parts.append(draw.ruby_box("Chemistry Bath",
+                          xl + rim_t, yn + rim_t, zb,
+                          tray_w - 2 * rim_t, tray_d - 2 * rim_t,
+                          ov.PROC_TRAY_RIM - sheet_t - 8, color=draw.C_BATH, alpha=a_bath))
+    return '\n'.join(parts)
+
+
+
 # Flat-T red-handle 3-way diverter — shared with the corridor module (DV-01 on the wall,
 # DV-02 on the corridor panel) and kept there to avoid a circular import.
 C_HANDLE = cp.C_HANDLE
@@ -792,7 +839,7 @@ def build():
     for name, tag, builder in [("Context", "Context", context),
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full),
                          ("Film-plane support beams", "Film Plane", film_plane_beams),
-                         ("Processing tray (ghost)", "Processing Tray", ov.processing_tray),
+                         ("Processing tray (ghost)", "Processing Tray", processing_tray),
                          ("Spray Bar", "Spray Bar", sb.spray_bar),
                          ("IBC Tanks (full)", "IBC", lambda: ib.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint),

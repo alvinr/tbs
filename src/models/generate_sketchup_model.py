@@ -248,50 +248,6 @@ def far_wall():
 
 # ── Processing tray ──────────────────────────────────────────────────────────
 
-def processing_tray(alpha=None):
-    """Processing tray — RAISED, dual-axis-sloped 304 SS welded pan (tilted floor + rim)
-    on a tapered HDPE shim base, holding a translucent chemistry bath.  The low corner
-    (near-right / IBC side = the sump) sits at Z=PROC_TRAY_FLOOR_Z_LOW so the sump bottom
-    rests on the container floor; the pan rises 1:200 in BOTH axes to the far-left corner
-    (see tray_floor_z / tray_rim_top_z).
-
-    SINGLE OWNER of the tray geometry — the spray-bar model calls this with `alpha` set to draw
-    the SAME sloped pan as a faint CONTEXT ghost (so the gantry reads inside the real tray).
-    `alpha=None` (default) = solid detail — byte-identical to the original overview output."""
-    xl, xr = PROC_TRAY_X_L, PROC_TRAY_X_R
-    yn, yf = PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
-    tray_w, tray_d = xr - xl, yf - yn
-    sheet_t, rim_t = 2, 2
-    zc = PROC_TRAY_FLOOR_Z_LOW                       # low-corner floor top = shim base top
-    a_shim = 0.9 if alpha is None else alpha         # ghost mode fades every part uniformly
-    a_bath = 0.45 if alpha is None else alpha
-
-    parts = []
-    # Tapered HDPE shim base — raises the pan so the 20mm sump well bottom rests on Z0
-    parts.append(ruby_box("Tray Shim Base",
-                          xl, yn, 0, tray_w, tray_d, zc - sheet_t,
-                          color="#D8CFBC", alpha=a_shim))
-    # Welded pan FLOOR — dual-axis-tilted plane (two triangles at the true corner Z's)
-    c_nl = [xl, yn, tray_floor_z(xl, yn)]
-    c_nr = [xr, yn, tray_floor_z(xr, yn)]
-    c_fr = [xr, yf, tray_floor_z(xr, yf)]
-    c_fl = [xl, yf, tray_floor_z(xl, yf)]
-    parts.append(ruby_tri("Processing Tray Floor A", c_nl, c_nr, c_fr, -sheet_t, color=C_TRAY, alpha=alpha))
-    parts.append(ruby_tri("Processing Tray Floor B", c_nl, c_fr, c_fl, -sheet_t, color=C_TRAY, alpha=alpha))
-    # Rims — walls on the raised, tilted pan (each placed at the local floor Z for its edge)
-    znr = tray_floor_z((xl + xr) / 2, yn); zfr = tray_floor_z((xl + xr) / 2, yf)
-    zlr = tray_floor_z(xl, (yn + yf) / 2); zrr = tray_floor_z(xr, (yn + yf) / 2)
-    parts.append(ruby_box("Tray Rim Near", xl, yn, znr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
-    parts.append(ruby_box("Tray Rim Far",  xl, yf - rim_t, zfr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
-    parts.append(ruby_box("Tray Rim Left", xl, yn, zlr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
-    parts.append(ruby_box("Tray Rim Right", xr - rim_t, yn, zrr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY, alpha=alpha))
-    # Translucent chemistry bath inside the rims (at the raised level)
-    zb = tray_floor_z((xl + xr) / 2, (yn + yf) / 2)
-    parts.append(ruby_box("Chemistry Bath",
-                          xl + rim_t, yn + rim_t, zb,
-                          tray_w - 2 * rim_t, tray_d - 2 * rim_t,
-                          PROC_TRAY_RIM - sheet_t - 8, color=C_BATH, alpha=a_bath))
-    return '\n'.join(parts)
 
 
 # ── Walkways ─────────────────────────────────────────────────────────────────
@@ -1351,7 +1307,7 @@ def generate_ruby():
         component("Container Shell", "Shell", container_shell()),
         component("Container Far Wall", "Shell Far", far_wall()),
         component("Walkways", "Walkways", walkways()),
-        component("Processing Tray", "Processing Tray", processing_tray()),
+        component("Processing Tray", "Processing Tray", pw.processing_tray()),
         component("Pinhole Assembly", "Pinhole", pinhole_assembly()),
         component("Optical Cone", "Optical Cone", optical_cone()),
         component("Film Plane Mechanism", "Film Plane", film_plane_mechanism()),

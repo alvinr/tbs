@@ -90,7 +90,7 @@ STEPS = [
     (3, "3.5", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.5]
         lambda: pw.tap01_supply()),
     (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
-        lambda: ov.processing_tray()),
+        lambda: pw.processing_tray()),
     (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
         lambda: _join(ov.film_plane_mechanism(part="beams"), ov.fp_combined_corner_plates())),
     (3, "3.8", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.8]

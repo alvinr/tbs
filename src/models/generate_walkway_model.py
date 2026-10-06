@@ -39,7 +39,8 @@ import sys
 import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
-import generate_sketchup_model as ov          # helpers, materials, constants
+import generate_sketchup_model as ov
+import generate_pinhole_water_panel as pw   # owns processing_tray() (Phase 1)          # helpers, materials, constants
 import tbs_draw as draw                          # shared drawing/material primitives
 import tbs_constants as k                       # right-hanger constants ov doesn't re-export
 
@@ -499,7 +500,7 @@ def generate_ruby():
     import generate_corridor_water_panel as cp   # late import (cp imports ov) — current deep-box corridor frame
     comps = [
         component("Container (ghost)", "Container", container_ghost()),
-        component("Processing Tray", "Processing Tray", ov.processing_tray()),
+        component("Processing Tray", "Processing Tray", pw.processing_tray()),
         component("Walkway Decks (near/far/left + right grate)", "Walkways",
                   walkway_decks() + "\n" + ov.right_walkway_grate()),
         component("Wall Cantilevers", "Cantilevers", cantilevers()),

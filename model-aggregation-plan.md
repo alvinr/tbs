@@ -130,12 +130,29 @@ the tag/scene machinery + the `C_*` palette (primitives take color as a param) a
   door/hinge-panel swing, lt's domain, built from `lt.axle/fan_b_mount_panel/wall_anchors/frame_hooks`).
 - **All 6 Phase 1 moves byte-identical — zero re-sends.** Overview is down from ~60 defs to 18.
 
-**Remaining (beyond the tray+cluster focused pass):**
-- **Still-③ with no sub-model owner:** `container_shell`, `far_wall`, `pinhole_assembly`, `optical_cone`,
-  `solar_array`, `shelf`, `light_seal`, `light_trap_frame` — decide: a shared `context` home (maybe
-  `tbs_draw`) or genuinely overview-level.
-- **Phase 2 wrapper collapses (②):** `electrical`/`ep_external_wiring`/`lighting_wiring`/`fan_wiring`/
-  `evap_cooler` → one `em` composition; `light_trap_drum`/`cage`/`bay` → `lt` (fix the `cage` double-draw).
+**Also done 2026-10-06:**
+- ✅ `solar_array` → `em` (byte-identical) — removes the reverse edge where electrical imported
+  `ov.solar_array`. `light_trap_frame` → `lt.door_frame` (collapsed with the light-trap wrappers).
+- ✅ **Phase 2 — light-trap wrappers collapsed to `lt`** (`lt.drum`/`drum_frame`/`door_frame`/
+  `light_trap_bay`), and the **`light_trap_cage` double-draw bug fixed** (it emitted `drum_frame()`
+  twice → 20 duplicate overlapping groups; overview + construction re-sent for the geometry change).
+
+**Reframing — the electrical "wrappers" are NOT collapse targets.** `electrical()`/`lighting_wiring()`/
+`fan_wiring()`/`evap_cooler()`/`ep_external_wiring()` COMPOSE `em` builders (power_core/battery/
+external_panel/light_fixtures/cct_e_feed/cct_c_feed) plus overview-specific connective geometry — that's
+the TARGET pattern (overview composes sub-models), not duplication. Leave them.
+
+**Acceptable end state reached.** Overview went from ~60 geometry builders to ~13, now owning only:
+(a) **container-level geometry no sub-model owns** — `container_shell`, `far_wall`, `pinhole_assembly`,
+`optical_cone` (the camera's own shell + pinhole/optics; legitimately overview-level); (b) a couple of
+small furniture/seal builders (`shelf`, `light_seal`) with no sub-model home (minor; `shelf` is a reverse
+context-ghost edge from electrical — leave or host in a future `context` module); (c) the electrical/
+lighting/fan/evap COMPOSITION wrappers (correct). Every subsystem's geometry now lives in its own model.
+
+**The one genuinely-hard item still open (separate from aggregation):** the `circuit_runs` routing drift
+— `em.circuit_runs()` routes to `em`'s internal load stubs while the overview routes to the real
+fixtures. Reconciling those two routings can change geometry and needs its own careful, verified pass
+(it's the TODO item that hid the 3 interior crossings until electrical.skp was rebuilt).
 
 **Owner decisions made (2026-10-06):** processing_tray → a **water model (pw)**; fans → **em** (done);
 the walkway+film-plane cluster → **one focused group move**.

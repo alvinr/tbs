@@ -325,6 +325,15 @@ def power_core(external_links=True, links_only=False):
                                       (_pvx - 4, 45, EP_H_HI - MPPT_H + 40),      # −X behind, to the MPPT X
                                       (_pvx - 4, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 40)]),   # forward into the MPPT back (single clean entry)
                               9, color="#2D7A2D"))
+    # PV − feed (grey): the array negative from the MC4 − bus up to the MPPT PV− input (parallels the
+    # green +, offset so the pair reads clearly; the − is continuous, not switched by the disconnect).
+    ext_links.append(ov.ruby_pipe_run("PV- feed (MC4 -> MPPT -)",
+                              _dedup([(mc4_x + 24, 40, mc4_z),
+                                      (_pvx - 42, 40, mc4_z),
+                                      (_pvx - 42, 40, EP_H_HI - MPPT_H + 70),
+                                      (_pvx - 20, 40, EP_H_HI - MPPT_H + 70),
+                                      (_pvx - 20, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 70)]),
+                              9, color="#9AA0A6"))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.
     p.append(ov.ruby_box("Fuse Block base (Blue Sea 5026)", _FBLK_X0, _FBLK_YD, _FBLK_Z0,
@@ -519,12 +528,27 @@ def external_panel(include_estop=True, include_disconnect=True):
     def px(uf): return PWR_PANEL_X + uf * PWR_PANEL_W
     def pz(vf): return PWR_PANEL_Z + vf * PWR_PANEL_H
 
-    # MC4 PV bulkheads — 3 pairs (+ green, − gray), bare (no cover)
+    # MC4 PV bulkheads — 3 pairs (+ green, − gray), bare (no cover). Drawn on BOTH faces: the exterior
+    # stubs mate the array; the INTERIOR stubs carry the + / − pigtails that bundle to the PV feed.
+    _mc4x = PWR_PANEL_X + 0.23 * PWR_PANEL_W       # + bus X (matches power_core's mc4_x = green PV-feed take-off)
+    _mc4z = PWR_PANEL_Z + 0.225 * PWR_PANEL_H
     for i, vf in enumerate((0.225, 0.5, 0.775)):
         p.append(ov.ruby_cylinder(f"MC4 PV{i + 1} (+)", px(0.192), face_y - 20, pz(vf),
                                   8, 20, color="#2D7A2D", axis="y"))
         p.append(ov.ruby_cylinder(f"MC4 PV{i + 1} (-)", px(0.275), face_y - 20, pz(vf),
                                   8, 20, color="#9AA0A6", axis="y"))
+        # interior stubs (inner face) + pigtails bundling up to the +/− feed take-offs
+        p.append(ov.ruby_cylinder(f"MC4 PV{i + 1} (+) inner", px(0.192), 0, pz(vf), 8, 18, color="#2D7A2D", axis="y"))
+        p.append(ov.ruby_cylinder(f"MC4 PV{i + 1} (-) inner", px(0.275), 0, pz(vf), 8, 18, color="#9AA0A6", axis="y"))
+        p.append(ov.ruby_pipe_run(f"PV+ pigtail {i + 1} (MC4 -> + bus)",      # land at THIS string's height on the + bus (parallel, no convergence)
+                                  _dedup([(px(0.192), 18, pz(vf)), (px(0.192), 22, pz(vf)), (_mc4x, 22, pz(vf))]),
+                                  CCT_WIRE_R, color="#2D7A2D"))
+        p.append(ov.ruby_pipe_run(f"PV- pigtail {i + 1} (MC4 -> - bus)",
+                                  _dedup([(px(0.275), 18, pz(vf)), (px(0.275), 40, pz(vf)), (_mc4x + 24, 40, pz(vf))]),
+                                  CCT_WIRE_R, color="#9AA0A6"))
+    # + / − bus bars collecting the 3 strings; the PV +/− feeds take off from the bottom of each bus
+    p.append(ov.ruby_pipe_run("PV+ bus (3 strings)", _dedup([(_mc4x, 22, pz(0.225)), (_mc4x, 22, pz(0.775))]), CCT_WIRE_R, color="#2D7A2D"))
+    p.append(ov.ruby_pipe_run("PV- bus (3 strings)", _dedup([(_mc4x + 24, 40, pz(0.225)), (_mc4x + 24, 40, pz(0.775))]), CCT_WIRE_R, color="#9AA0A6"))
     # NEMA 5-15 weatherproof shore inlet + its translucent flip-cover, mounted proud
     p.append(ov.ruby_box("NEMA 5-15 shore inlet", px(0.742) - 30, face_y - 30,
                          pz(0.878) - 22, 60, 30, 45, color="#FFF0CC"))

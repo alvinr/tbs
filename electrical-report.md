@@ -196,12 +196,13 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Runs | 3 ceiling runs in aluminum channels + frosted diffusers — two ~2,162mm over the tray, parallel to the X=520 / X=2270 drum-side red safelights, + one ~1,176mm running the IBC/plumbing corridor length (over the plumbing panel) |
 | Power | ~76W (4.2 W/ft × ~18 ft) → ~6.3A |
 | Luminous output | 426 lm/ft → ~7,670 lm total |
+| Illuminance | **~230–250 lux maintained** work-plane average (549 lux lumens-to-area × CU ≈ 0.65 × LLF ≈ 0.77 — see below) |
 | Mounting | Surface aluminum channels (LED Profiles 981) on the ceiling |
 | Dimmable | Yes (inline 12V PWM dimmer) |
 | Circuit | G (10A fuse, 14 AWG) — 6.3A draw |
 | Approximate cost | ~$84 (2 reels) + ~$81 (3× 8 ft channel) + ~$15 connectors/dimmer |
 
-The three runs total ~5.5m of strip at 426 lm/ft → ~7,670 lumens across the ~14 m² floor area — approximately **548 lux**, a solid workshop level for setup, maintenance, and cleaning. A **12V COB strip in an aluminum channel + diffuser** gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. At ~6.3A the Circuit-G feed is run in **14 AWG** for margin and low voltage drop; the load still sits well inside the 10A fuse. True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.
+The three runs total ~5.5m of strip at 426 lm/ft → ~7,670 lumens. Spread over the ~14 m² floor that is ~549 lux as bare lumens-to-area, but the **maintained work-plane average is ~230–250 lux** once the coefficient of utilization (CU ≈ 0.65 — a ceiling line source on a short throw) and light-loss factor (LLF ≈ 0.77 — LED lumen depreciation + the frosted diffuser) are applied. The **matte-black interior** (0% sheen, specified in the [Container report](container-report.md) to prevent image fogging) contributes essentially no inter-reflected light — the 20–60% bounce gain a normal room gets off its walls and ceiling — so the level sits at the **low end of the 250–300 lux workshop target**, adequate for setup, maintenance, and cleaning rather than generously above it. A **12V COB strip in an aluminum channel + diffuser** gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. At ~6.3A the Circuit-G feed is run in **14 AWG** on a **10A fuse**; the 80% continuous-load derate (8.0A) leaves headroom for **one additional ~1.5m run** (→ ~8.0A, ~96W, ~295 lux) before the circuit would need re-fusing to 15–20A and rewiring to 12 AWG. True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.
 
 ### 6.3 Pull-Cord Switches
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
@@ -420,7 +421,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Shade canopy | 80% shade cloth, 20 × 10ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
-| [12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) + **6× LED Profiles 981 channel/diffuser (white + red)** + connectors/PWM dimmers | white: 2× 2.16m tray + 1× 1.18m corridor (~7,670 lm / ~548 lux), 76W/6.3A, dimmable, true 12V | HitLights + LED Profiles | ~$84 strip + ~$162 channel + ~$15 |
+| [12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) + **6× LED Profiles 981 channel/diffuser (white + red)** + connectors/PWM dimmers | white: 2× 2.16m tray + 1× 1.18m corridor (~7,670 lm → ~230–250 lux maintained), 76W/6.3A, dimmable, true 12V | HitLights + LED Profiles | ~$84 strip + ~$162 channel + ~$15 |
 | [Red 12V COB LED strip, 5m reel (STN-B-BRED-O12A-08F5M-12V)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) | Circuit-D safelight — 40W/reel cut into 3 ceiling runs + drum (~40W/3.3A), COB 620nm, dimmable, cyanotype-safe, IP20 | Super Bright LEDs | ~$90 |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
 | **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,396<!-- END costing:elec-system-total -->** |

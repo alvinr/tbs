@@ -101,7 +101,7 @@ The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is c
 
 ### 2.4 Ventilation — costed with Ventilation & Cooling (§5b)
 
-The darkroom cross-flow ventilation (2× 150×150×50mm 12V axial fans + light-safe baffle ducts + evaporative cooler) is itemized once in [Ventilation & Cooling](#5b-ventilation-cooling-system) (§5b) and detailed in the [Ventilation Report](ventilation-report.md). That same cross-flow provides operator comfort and fresh-air exchange, so there is no separate interior ventilation line here.
+The darkroom cross-flow ventilation (2× 150×150×50mm 12V axial fans + light-safe baffle ducts + evaporative cooler) is itemized once in [Ventilation & Cooling](#summary-total-project-cost) (§5b) and detailed in the [Ventilation Report](ventilation-report.md). That same cross-flow provides operator comfort and fresh-air exchange, so there is no separate interior ventilation line here.
 
 ### 2.5 Door & access upgrades
 

@@ -393,6 +393,14 @@ def build_tray():
     return ov.processing_tray(alpha=0.35)
 
 
+def spray_bar():
+    """The spray-bar gantry as ONE context blob (beam + carriages + feed pole). SINGLE OWNER —
+    overview, water (pw), and construction all draw it via sb.spray_bar() (was duplicated as
+    identical ov.spray_bar / pw.spray_bar wrappers). This model's own generate_ruby() draws the
+    pieces as separate tagged components for the focused spray-bar view."""
+    return '\n'.join([build_beam(), build_carriages(include_floor=False), build_feed_pole()])
+
+
 def generate_ruby():
     comps = [
         draw.component("Spray Beam", "Beam", build_beam()),

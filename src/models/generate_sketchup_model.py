@@ -800,18 +800,8 @@ def panel_pivot():
 
 # ── Spray bar (processing-tray wash gantry) ──────────────────────────────────
 
-def spray_bar():
-    """Spray-bar gantry — reuses the detailed spray-bar model builders so the
-    overview stays in sync with models/spraybar.skp: 40×25 304-SS RHS beam (laid flat)
-    with a SIDE-mounted 3/4" LDPE manifold + 39 side-tapped 90° down-jet nozzles, two-wheel
-    Ø32 carriages (curved saddle axle clamps + top/bottom beam clamp plates), flange-base
-    ball joint, a single center feed into the manifold, and the push pole bound
-    to the supply hose with zip ties. The tray-floor ref patch is omitted (overview has
-    its own tray)."""
-    import generate_spraybar_model as sb
-    return '\n'.join([sb.build_beam(),
-                      sb.build_carriages(include_floor=False),
-                      sb.build_feed_pole()])
+# spray_bar() moved to generate_spraybar_model.py (sb.spray_bar()) — the single owner; overview,
+# water, and construction all draw it via sb.spray_bar() (was duplicated here + in pw).
 
 
 # ── Plumbing panel (pumps · filters · accumulator) ──────────────────────────
@@ -1456,6 +1446,7 @@ def generate_ruby():
     import generate_corridor_water_panel as cp
     import generate_pinhole_water_panel as pw
     import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
+    import generate_spraybar_model as sb            # owns spray_bar() (Phase 1)
     comps = [
         component("Container Shell", "Shell", container_shell()),
         component("Container Far Wall", "Shell Far", far_wall()),
@@ -1466,7 +1457,7 @@ def generate_ruby():
         component("Film Plane Mechanism", "Film Plane", film_plane_mechanism()),
         component("FP Combined Corner Plates", "Combined Plate", fp_combined_corner_plates()),
         component("Panel & Pivot Axle", "Pivot Axle", panel_pivot()),
-        component("Spray Bar", "Spray Bar", spray_bar()),
+        component("Spray Bar", "Spray Bar", sb.spray_bar()),
         component("Corridor Frame (deep box)", "IBC Rack", cp.frame()),
         component("IBC Tote Restraint", "IBC Rack", cp.tote_restraint()),
         component("Corridor Rear Panel", "Plumbing Panel", cp.rear_panel()),

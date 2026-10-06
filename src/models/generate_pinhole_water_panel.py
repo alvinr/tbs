@@ -20,6 +20,7 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import tbs_draw as draw                          # shared drawing/material primitives
 import generate_corridor_water_panel as cp
+import generate_spraybar_model as sb        # owns spray_bar() (Phase 1)
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)        # the new corridor plumbing panel (same connected system)
 
 # ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
@@ -139,11 +140,7 @@ def other_equipment():
     return "\n".join([em.power_core(external_links=False), em.battery()])
 
 
-def spray_bar():
-    """Spray-bar gantry (beam + carriages + feed pole) — context so the BV-05 supply coil has the bar
-    to connect to. Reuses the detailed spray-bar builders, same as the overview's spray_bar()."""
-    import generate_spraybar_model as sb
-    return "\n".join([sb.build_beam(), sb.build_carriages(include_floor=False), sb.build_feed_pole()])
+# spray_bar() moved to generate_spraybar_model.py (sb.spray_bar()) — the single owner.
 
 
 # Flat-T red-handle 3-way diverter — shared with the corridor module (DV-01 on the wall,
@@ -796,7 +793,7 @@ def build():
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full),
                          ("Film-plane support beams", "Film Plane", film_plane_beams),
                          ("Processing tray (ghost)", "Processing Tray", ov.processing_tray),
-                         ("Spray Bar", "Spray Bar", spray_bar),
+                         ("Spray Bar", "Spray Bar", sb.spray_bar),
                          ("IBC Tanks (full)", "IBC", lambda: ib.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint),
                          ("End wall (context)", "Context", cp.end_wall),

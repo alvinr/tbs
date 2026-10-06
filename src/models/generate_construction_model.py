@@ -36,7 +36,8 @@ import generate_electrical_model as em          # EP sub-builders (external pane
 import generate_corridor_water_panel as cp      # IBC corridor frame + plumbing
 import generate_pinhole_water_panel as pw        # pinhole-wall kit + spray supply
 import generate_walkway_model as wm
-import generate_ibc_model as ib             # owns ibc_stack() (Phase 1)              # left floor-leg cantilevers
+import generate_ibc_model as ib
+import generate_spraybar_model as sb        # owns spray_bar() (Phase 1)             # owns ibc_stack() (Phase 1)              # left floor-leg cantilevers
 
 
 def _join(*parts):
@@ -122,7 +123,7 @@ STEPS = [
     (5, "5.5", "P5 Surround",          "Light-trap outer HDPE surround/bay (walls + roof) + cage rivets",   # [5.5] the outer bay HDPE around the cage
         lambda: ov.light_trap_bay(part="rest")),
     (5, "5.6", "P5 Spray Bar",         "Spray bar (over the processing tray)",    # [5.6] moved from Phase 3
-        lambda: ov.spray_bar()),
+        lambda: sb.spray_bar()),
 ]
 
 PHASE_NAMES = {

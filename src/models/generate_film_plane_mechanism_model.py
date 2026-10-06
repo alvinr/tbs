@@ -44,6 +44,13 @@ SF_DESC  = ("The configuration the photosensitive film plane is flush against on
             "a mechanism with four independently actuated corners.")
 
 C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
+ruby_box = draw.ruby_box
+ruby_bolt = draw.ruby_bolt
+ruby_tri = draw.ruby_tri
+C_FILM = draw.C_FILM
+C_VALVE = draw.C_VALVE
+from tbs_constants import (C_WID, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_RAIL_WEB, RAIL_X_L, WALL_T)   # film-plane builders moved from overview (Phase 1)
+
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
 C_SWING = "#7B5EA7"  # horizontal (X) slide — SWING accommodation (purple)
@@ -184,7 +191,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         else:                                            # TOP-RIGHT (TR): budgeted wall-seat saddle at BOTH walls; the rail
             sp = ov.FP_CORNER_SEAT_PLATE_T               # ENDS align to the saddle plate INNER faces (butt the upstand) — no end flange (the saddle mounts + caps it)
             P += rail("U-rail (FLANGED)", sp, ov.C_WID - 2 * sp)
-            P.append(ov.film_plane_saddles({tag: (cx, zc)}))
+            P.append(film_plane_saddles({tag: (cx, zc)}))
     else:                                              # LEFT: parking stub + removable + welded bridge + support + gusset
         P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, (ov.C_WID - 12) - LEFT_CUT_YD)   # far end BUTTS the INNER face of the pivot-post flange plate (12mm), not through it (2026-08-19)
         P += rail("U-rail REMOVABLE (out for transport)", ov.FP_CORNER_SEAT_PLATE_T, LEFT_CUT_YD - ov.FP_CORNER_SEAT_PLATE_T, 0.30)   # near end ALIGNED to the saddle plate INNER face (butts the upstand)
@@ -211,11 +218,11 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
                 P.append(draw.ruby_bolt(f"FP far-left bolt M12 {tag} X{int(_bx)} Z{int(_bz)}", _bx, ov.C_WID - 12, _bz, ov.WALL_T + _fp_t + 12, radius=6, axis="y", color=C_STEEL, head="far", nut="base"))   # hex head OUTSIDE (far wall), nut inside
         # WALL-SEAT SADDLES restored at BOTH left ends (items 330/336): the budgeted ICP-11 saddle
         # (back + exterior plate + seat + gusset + 4× M12 + M8 thumb-screw) the fpm redesign had dropped,
-        # leaving a bare gusset/seat block with no wall fixing. Single-sourced from ov.film_plane_saddles
+        # leaving a bare gusset/seat block with no wall fixing. Single-sourced from film_plane_saddles
         # (draws near Yd0 + far C_WID walls); the web-vertical rail bears on the seat's container-facing
         # projection (336), and the through-bolted interior+exterior plates are the standard wall fixing
         # (330). BOM unchanged — parts.py already carries these ends in the 6-saddle wall-seat-saddle line.
-        P.append(ov.film_plane_saddles({tag: (cx, zc)}, walls=(0,)))   # NEAR (pinhole-wall) only — the far end is the pivot post
+        P.append(film_plane_saddles({tag: (cx, zc)}, walls=(0,)))   # NEAR (pinhole-wall) only — the far end is the pivot post
         # length splice (removable = 6ft + 260mm) at the PINHOLE end — shortest-throw, least-travelled;
         # same outboard-web placement so it's clear of the carriage
         P.append(draw.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
@@ -700,6 +707,99 @@ plw{mode}_inst.set_attribute(da, "_onclick_access", "NONE")
 pltxt{mode} = entities.add_text("CLICK: {mode} — the frame {rot_attr}s; each carriage stays on its rail and rolls in Y", Geom::Point3d.new({draw.mm(cxr)}, {draw.mm(yc + 300)}, {draw.mm(PZ1 + 150)}), Geom::Vector3d.new({draw.mm(300)}, {draw.mm(-300)}, {draw.mm(300)}))
 pltxt{mode}.layer = model.layers["{tag}"] rescue nil
 '''
+
+
+def film_plane_saddles(corners, skip=(), walls=(0, C_WID)):
+    """IBC-style wall-seat saddle at each of the film-plane rail ends (the `corners`
+    {id:(x,z)} × near/far wall). Each = interior back-plate + horizontal seat + triangular
+    gusset, THROUGH-BOLTED to an EXTERIOR plate (4-bolt) — dims from the IBC wall seats.
+    RIGHT rails permanently bolted; LEFT rails thumb-screw drop-in. `skip` omits corner ids
+    (rev12: BR is skipped — its corner is the COMBINED plate shared with the right walkway,
+    fp_combined_corner_plate). `walls` limits which wall ends get a saddle — the LEFT rails pass
+    (0,) because the FAR end is anchored by the floor-to-ceiling pivot post (roof-mounted), not a
+    wall saddle (a far saddle is redundant + collides with the pivot roof-mount plate).
+    Single-sourced — the film-plane focus model reuses it."""
+    pw, pt = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T          # 150 plate, 8 thick
+    proj, st = FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T       # 110 seat projection, 10 thick
+    gh, wt, sw = 120, WALL_T, 24 + 24                    # gusset, wall, seat width
+    parts = []
+    for cid, (x, z) in corners.items():
+        if cid in skip:
+            continue
+        left = (x == RAIL_X_L)
+        for wall_yd in walls:
+            near = (wall_yd == 0)
+            din = 1 if near else -1
+            tag = f"{cid} {'near' if near else 'far'}"
+            by_in = 0 if near else C_WID - pt
+            by_out = -wt - pt if near else C_WID + wt
+            face_in = wall_yd + din * pt                   # container-facing (INBOARD) face of the back-plate
+            sy0 = min(face_in, face_in + din * proj)       # seat projects from the INBOARD plate face → the rail bears on the INSIDE (container) face, not the outer/wall edge (336)
+            yt = face_in + din * proj
+            seat_top = z - FP_RAIL_WEB / 2                 # web-vertical rail: seat sits UNDER the rail bottom (not at the web-centre z)
+            gusset_bot = seat_top - st - gh                # bottom of the triangular gusset's back (weld) edge
+            plate_z0 = min(z - pw / 2, gusset_bot)         # LENGTHEN the interior back-plate DOWN so the gusset welds FULLY to it (2026-08-19)
+            plate_h = (z + pw / 2) - plate_z0
+            parts.append(ruby_box(f"Saddle back-plate {tag}",
+                         x - pw / 2, by_in, plate_z0, pw, pt, plate_h, color=C_STEEL))
+            parts.append(ruby_box(f"Saddle OUTSIDE plate {tag}",     # exterior plate carries only the 4 bolts → stays 150×150
+                         x - pw / 2, by_out, z - pw / 2, pw, pt, pw, color=C_STEEL))
+            parts.append(ruby_box(f"Saddle seat {tag}",
+                         x - sw / 2, sy0, seat_top - st, sw, proj, st, color=C_STEEL))
+            # UPSTAND — vertical leg standing up from the seat at the plate's INBOARD face; the rail END butts
+            # + bolts to it (inside-face bearing, matches the fp_combined_corner_plate beam upstand; welded to
+            # the seat + back-plate). This is what makes the rail join the INSIDE face, not the outer edge.
+            parts.append(ruby_box(f"Saddle upstand {tag}",
+                         x - sw / 2, min(face_in, face_in + din * pt), seat_top, sw, pt, FP_RAIL_WEB, color=C_STEEL))
+            parts.append(ruby_tri(f"Saddle gusset {tag}",
+                         (x, yt, seat_top - st), (x, face_in, seat_top - st), (x, face_in, gusset_bot),
+                         8, color=C_STEEL))
+            blo, bhi = min(by_in, by_out), max(by_in, by_out) + pt
+            hd, nt = ("base", "far") if near else ("far", "base")   # hex head OUTSIDE the container on BOTH walls (nut inside)
+            for bx in (x - 50, x + 50):
+                for bz in (z - 50, z + 50):
+                    parts.append(ruby_bolt(f"Saddle wall bolt M12 {tag}",
+                                 bx, blo, bz, bhi - blo, radius=6, axis="y", color=C_STEEL, head=hd, nut=nt))
+            hold_c = C_VALVE if left else C_STEEL
+            hold_nm = "Thumb screw" if left else "Rail fixing bolt"
+            for hy in (sy0 + 25, sy0 + proj - 25):
+                parts.append(ruby_bolt(f"{hold_nm} {tag}",
+                             x, hy, z, 36, radius=5, axis="z", color=hold_c, head="far", nut=None))
+    return '\n'.join(parts)
+def film_plane_mechanism(part="all"):
+    """The film-plane corner mechanism — the REAL detailed assembly, reused verbatim from the dedicated
+    model (generate_film_plane_mechanism_model.corner()/film_plane()) so overview shows the SAME
+    web-vertical rails + skate/rollers/carriage-plate + cam-brake + green-Z/purple-X cross-slides +
+    U-joint + 304 corner-plate + 2×2 angle film frame as film-plane-mechanism.skp — one source, no
+    duplication (2026-08-11; superseded the coarse rail-box + runner-block stand-in).
+    `part`: "all" (default), "beams" (the 4 corner rails + carriages — the structural support installed
+    in the hard-install phase) or "plane" (the ACM/angle film frame + muslin — installed in the
+    photo-system phase). The BR combined corner plate is drawn separately (fp_combined_corner_plates).
+
+    fpm anchors each rail end with its own end-flange/gusset (not the old IBC wall-seat saddle). Late
+    import breaks the fpm→ov cycle (fpm imports ov); corner() emits ov.ruby_* at the shared coords.
+    """
+    parts = []
+    if part in ("all", "beams"):
+        # the 4 DETAILED corners — web-vertical U-channel rails (end-flanges R / drop-in stub+bridge L)
+        # + skate/rollers + carriage plate + cam-brake + green-Z/purple-X cross-slides + U-joint + 304
+        # corner plate. Reused verbatim from the dedicated model (same absolute coords + args as
+        # corners()); corner() emits ov.ruby_* so the parts land in this component directly.
+        parts.append(corner("BL", X_L, PZ0, PZ_HB_BOT, +1, "L"))
+        parts.append(corner("BR", X_R, PZ0, PZ_HB_BOT, -1, "R"))
+        parts.append(corner("TL", X_L, PZ1, PZ_HB_TOP, +1, "L"))
+        parts.append(corner("TR", X_R, PZ1, PZ_HB_TOP, -1, "R"))
+
+    if part in ("all", "plane"):
+        # the film plane itself — ACM rigid backing + 2×2 6061 angle perimeter frame (film_plane()),
+        # plus a translucent muslin panel for legibility at overview scale (the ACM ghost alone is faint).
+        parts.append(film_plane())
+        parts.append(ruby_box("Film Plane Screen (muslin)",
+                              FCX_L, FP_Y_PARK, PZ0,
+                              FP_W_CORNER, 6, PZ1 - PZ0,
+                              color=C_FILM, alpha=0.25))
+
+    return '\n'.join(parts)
 
 
 def generate_ruby():

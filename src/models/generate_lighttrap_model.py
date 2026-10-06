@@ -51,6 +51,7 @@ PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X
 PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §2.1)
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
 from tbs_constants import PANEL_FLOOR_GAP_SIDE
+from tbs_constants import PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CUT_YD, PANEL_FAN_BAND_Z   # panel_pivot (Phase 1)
 from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH, CARGO_DOOR_LEAF_T
 PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 282 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
 from tbs_constants import APRON_CAGE_GAP, APRON_IN_L, APRON_IN_R, APRON_FIX_W   # apron inner edges (12mm off the cage sides); vertical strip brushes bridge the gap; far-pivot fixed stub width
@@ -1391,6 +1392,48 @@ def fixed_bottom_geom():
 
 
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
+
+def panel_pivot():
+    """Cargo-door panel + its vertical SWING pivot.
+
+    The panel + drum assembly rotates ~56° about a Ø89 CHS post (the film-plane
+    far-left upright, REUSED — geometry single-sourced from the light-trap model,
+    axle()) to clear the cargo doors for transport. The old HGR20 ceiling-rail
+    suspension + HGH20CA carriages are retired. Shown here shut at X=0 (operating);
+    the detailed swing mechanism (3-zone split, hub bearings, wall stays, removable
+    rails) lives in models/lighttrap.skp.
+    """
+    jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
+    parts = [axle()]
+    # Cargo-door panel, operational position (X=0). rev11: 1/8″ HDPE plastic skins
+    # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner. The panel is
+    # STEPPED two ways: in THICKNESS (X) the center drum bay is PANEL_CENTER_T=120, the two
+    # corner zones are the flush PANEL_CORNER_T=40 (matches the lighttrap model + hingepanel
+    # report §2.1); and in the BOTTOM (Z) the corner zones step UP to PANEL_FLOOR_GAP_SIDE to
+    # clear the bare walkway cantilever bracket legs in transport (hingepanel Sheet 15).
+    parts.append(ruby_box("Cargo Door Panel (center)",
+                          0, jL, PANEL_FLOOR_GAP,
+                          PANEL_CENTER_T, jR - jL, 2300 - PANEL_FLOOR_GAP, color=C_PLASTIC, alpha=0.6))
+    parts.append(ruby_box("Cargo Door Panel (near corner)",
+                          0, 0, PANEL_FLOOR_GAP_SIDE,
+                          PANEL_CORNER_T, jL, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
+    parts.append(ruby_box("Cargo Door Panel (far corner)",
+                          0, jR, PANEL_FLOOR_GAP_SIDE,
+                          PANEL_CORNER_T, C_WID - jR, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
+    # Fan B near corner = a FIXED ply side part (to the pinhole side) + the SWINGING ply mount panel
+    # (carries the centered fan, travels with the leaf), split at the swing cut PANEL_CUT_YD.
+    parts.append(ruby_box("Fan B fixed side part (18mm ply)",
+                          0, 0, PANEL_FLOOR_GAP_SIDE,
+                          PANEL_CORNER_T, PANEL_CUT_YD, PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE,
+                          color=C_PLY, alpha=0.6))
+    parts.append(fan_b_mount_panel(0.6))   # shared builder (same swinging panel lighttrap swings)
+    # Transport-lock support brackets (top + bottom): the near-wall stay anchors
+    # (sandwiched inside/outside plates + eye + 4× M16) and the frame-side stay hooks.
+    # The stay ROD/turnbuckle itself is left out — only the permanent brackets are shown.
+    parts.append(wall_anchors())
+    parts.append(frame_hooks())
+    return '\n'.join(parts)
+
 
 def generate_ruby():
     # Fixed subsystems (do NOT swing). Context reaches WALL_FAR so the near wall carries

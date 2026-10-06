@@ -36,6 +36,8 @@ import generate_electrical_model as em          # EP sub-builders (external pane
 import generate_corridor_water_panel as cp      # IBC corridor frame + plumbing
 import generate_pinhole_water_panel as pw        # pinhole-wall kit + spray supply
 import generate_walkway_model as wm
+import generate_film_plane_mechanism_model as fp  # film_plane_mechanism (Phase 1)
+import generate_lighttrap_model as lt   # panel_pivot (Phase 1)
 import generate_ibc_model as ib
 import generate_spraybar_model as sb        # owns spray_bar() (Phase 1)             # owns ibc_stack() (Phase 1)              # left floor-leg cantilevers
 
@@ -74,7 +76,7 @@ STEPS = [
     (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
         lambda: _join(ib.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
     (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last
-        lambda: _join(ov.light_trap_frame(), ov.light_seal(), ov.panel_pivot())),
+        lambda: _join(ov.light_trap_frame(), ov.light_seal(), lt.panel_pivot())),
 
     # ── Phase 3 — Framing (Phase 2 = re-measure, no geometry) ──
     (3, "3.1", "P3 Wall Backing",      "Pinhole-wall ply backing (semi-transparent backdrop for the plumbing build)",   # [3.1] the wall backing goes up first as a semi-transparent, plywood-colored backdrop so the skid/plumbing (3.4) reads through it; Phase 4+ it ghosts like all other prior geometry
@@ -92,7 +94,7 @@ STEPS = [
     (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
         lambda: pw.processing_tray()),
     (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
-        lambda: _join(ov.film_plane_mechanism(part="beams"), wm.fp_combined_corner_plates())),
+        lambda: _join(fp.film_plane_mechanism(part="beams"), wm.fp_combined_corner_plates())),
     (3, "3.8", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.8]
         lambda: '\n'.join(wm.left_floor_cantilevers())),
     (3, "3.9", "P3 Walkway",           "Walkway grating (all sections)",     # [3.9] — grates only; supports are 3.2/3.3/3.8
@@ -115,7 +117,7 @@ STEPS = [
     (5, "5.1", "P5 Pinhole",           "Pinhole mechanism (plate + aperture)",    # shown by default = the click target (the minimal element)
         lambda: ov.pinhole_assembly()),
     (5, "5.2", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # beams already in 3.6
-        lambda: ov.film_plane_mechanism(part="plane")),
+        lambda: fp.film_plane_mechanism(part="plane")),
     (5, "5.3", "P5 Drum Cage",         "Light-trap drum support cage + axle beams + SKF 6215 bearings + mount plates + floor HDPE",  # [5.3] the steel structure + its floor base
         lambda: _join(ov.light_trap_cage(), ov.light_trap_bay(part="floor"))),
     (5, "5.4", "P5 Drum Skins",        "Light-trap HDPE skins — rotating drum shell + fixed Ø800 housing panels + H-mullions",  # [5.4] the two HDPE cylinders hang on the cage

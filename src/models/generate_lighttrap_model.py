@@ -1435,6 +1435,14 @@ def panel_pivot():
     return '\n'.join(parts)
 
 
+def light_trap_bay(part="all"):
+    """B2 punch-out bay as one context blob: the bay + (unless floor-only) the cage rivets.
+    SINGLE OWNER — overview + construction draw lt.light_trap_bay() (was the ov.light_trap_bay wrapper)."""
+    if part == "floor":
+        return bay(part="floor")
+    return bay(part=part) + "\n" + cage_face_rivets() + "\n" + bay_wall_cage_rivets()
+
+
 def generate_ruby():
     # Fixed subsystems (do NOT swing). Context reaches WALL_FAR so the near wall carries
     # the transport-stay anchor (X≈1694, beyond the PARTIAL_X tray/walkway crop).

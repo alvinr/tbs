@@ -76,7 +76,7 @@ STEPS = [
     (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
         lambda: _join(ib.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
     (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last
-        lambda: _join(ov.light_trap_frame(), ov.light_seal(), lt.panel_pivot())),
+        lambda: _join(lt.door_frame(), ov.light_seal(), lt.panel_pivot())),
 
     # ── Phase 3 — Framing (Phase 2 = re-measure, no geometry) ──
     (3, "3.1", "P3 Wall Backing",      "Pinhole-wall ply backing (semi-transparent backdrop for the plumbing build)",   # [3.1] the wall backing goes up first as a semi-transparent, plywood-colored backdrop so the skid/plumbing (3.4) reads through it; Phase 4+ it ghosts like all other prior geometry
@@ -119,11 +119,11 @@ STEPS = [
     (5, "5.2", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # beams already in 3.6
         lambda: fp.film_plane_mechanism(part="plane")),
     (5, "5.3", "P5 Drum Cage",         "Light-trap drum support cage + axle beams + SKF 6215 bearings + mount plates + floor HDPE",  # [5.3] the steel structure + its floor base
-        lambda: _join(ov.light_trap_cage(), ov.light_trap_bay(part="floor"))),
+        lambda: _join(lt.drum_frame(), lt.light_trap_bay(part="floor"))),
     (5, "5.4", "P5 Drum Skins",        "Light-trap HDPE skins — rotating drum shell + fixed Ø800 housing panels + H-mullions",  # [5.4] the two HDPE cylinders hang on the cage
-        lambda: ov.light_trap_drum()),
+        lambda: lt.drum()),
     (5, "5.5", "P5 Surround",          "Light-trap outer HDPE surround/bay (walls + roof) + cage rivets",   # [5.5] the outer bay HDPE around the cage
-        lambda: ov.light_trap_bay(part="rest")),
+        lambda: lt.light_trap_bay(part="rest")),
     (5, "5.6", "P5 Spray Bar",         "Spray bar (over the processing tray)",    # [5.6] moved from Phase 3
         lambda: sb.spray_bar()),
 ]

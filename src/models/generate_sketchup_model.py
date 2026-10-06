@@ -359,49 +359,12 @@ def optical_cone():
 # ── Light-trap drum (revolving entry) ────────────────────────────────────────
 
 
-def light_trap_drum():
-    """Housed revolving-door light lock at the cargo-door end (rev 8).
-
-    Reuses the detailed builder from the dedicated Light-Trap model so the two
-    models stay in sync (same pattern as spray_bar()): a FIXED Ø800 housing with
-    two opposed 80° openings (exterior + interior-onto-walkway, 180° apart) and a
-    single-opening C-shell drum (~Ø850 bore) rotating inside on SKF 6215 bearings.
-    No internal fins — light-tight by geometry. Centered at (DRUM_CX=0, DRUM_CY).
-    Replaces the failed Ø750 4-fin drum (see light-trap-selection.md §3).
-
-    The two HDPE skins only (rotating drum shell + fixed housing panels + H-mullions);
-    the steel support cage is light_trap_cage(), the outer surround is light_trap_bay()."""
-    import generate_lighttrap_model as lt
-    return lt.drum()
 
 
-def light_trap_cage():
-    """The drum SUPPORT CAGE (drum_frame from the Light-Trap model): steel cage (4 posts +
-    top/bottom perimeter rails), top + bottom axle beams, 2× SKF 6215 bearings, Ø240 mount
-    plates, upper Al ring + lower steel collar. Installed before the HDPE skins hang on it."""
-    import generate_lighttrap_model as lt
-    return lt.drum_frame() + "\n" + lt.drum_frame()
 
 
-def light_trap_frame():
-    """Cargo-door RHS frame (50×20×3 RHS steel) + the top & bottom seal lips.
-
-    Reused from the Light-Trap model (same pattern as light_trap_drum) so the
-    overview stays in sync. The bottom seal lip closes the 80mm floor gap and the
-    top seal lip closes the panel-top gap — together they block light top and
-    bottom; the EPDM perimeter seal (light_seal) compresses against them."""
-    import generate_lighttrap_model as lt
-    return lt.door_frame()
 
 
-def light_trap_bay(part="all"):
-    """B2 punch-out bay — reused from the Light-Trap model so it stays in sync.
-    part: 'all' (whole bay + cage rivets) · 'floor' (just the bottom floor cap,
-    installed with the cage as its base) · 'rest' (side walls + roof cap + cage rivets)."""
-    import generate_lighttrap_model as lt
-    if part == "floor":
-        return lt.bay(part="floor")
-    return lt.bay(part=part) + "\n" + lt.cage_face_rivets() + "\n" + lt.bay_wall_cage_rivets()
 
 
 # ── Solar array (ground tilt frame, exterior) ────────────────────────────────
@@ -805,15 +768,15 @@ def generate_ruby():
         component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing Panel", pw.skid_row()),
         component("Skid plumbing", "Plumbing Panel", pw.skid_plumbing()),
         component("IBC Stack", "IBC Stack", ib.ibc_stack()),
-        component("Light-Trap Cage", "Light Trap", light_trap_cage()),
-        component("Light-Trap Drum", "Light Trap", light_trap_drum()),
-        component("Light-Trap Bay", "Light Trap", light_trap_bay()),
+        component("Light-Trap Cage", "Light Trap", lt.drum_frame()),
+        component("Light-Trap Drum", "Light Trap", lt.drum()),
+        component("Light-Trap Bay", "Light Trap", lt.light_trap_bay()),
         component("Electrical", "Electrical", electrical()),
         component("EP External Wiring (PV + E-stop)", "EP Ext Wiring", ep_external_wiring()),
         component("Corridor Pump Wiring (Cct C)", "Lighting", pw.panel_power(include_switch=False)),
         component("Solar Array", "Solar Array", solar_array()),
         component("Chemistry Shelf", "Shelf", shelf()),
-        component("Light-Trap Door Frame", "Light Seal", light_trap_frame()),
+        component("Light-Trap Door Frame", "Light Seal", lt.door_frame()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
         component("Fan Wiring", "Fan Wiring", fan_wiring()),

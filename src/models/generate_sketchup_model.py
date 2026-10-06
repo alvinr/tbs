@@ -37,7 +37,7 @@ import math
 import argparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_BEARER_W, RWK_X_UP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_BEARER_W, RWK_X_UP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
 
 from tbs_draw import *            # shared drawing/material primitives (Phase 0 extraction)
 
@@ -371,52 +371,6 @@ def optical_cone():
 
 
 
-def solar_array():
-    """3x 200W panels on a 30deg ground tilt frame, exterior of the pinhole wall,
-    door-end so the right edge clears the pinhole sightline; + PV run to the panel.
-    Shared with the focused electrical model (generate_electrical_model.py)."""
-    p = []
-    th = math.radians(SOLAR_TILT_DEG)
-    pitch = SOLAR_PANEL_W + SOLAR_GAP
-    for i in range(SOLAR_N):
-        x = SOLAR_ARRAY_X + i * pitch
-        p.append(tilted_slab(f"Solar Panel {i + 1} (200W)", x, SOLAR_ARRAY_YD,
-                             SOLAR_ARRAY_Z + 120, SOLAR_PANEL_W, SOLAR_PANEL_L,
-                             SOLAR_PANEL_T, SOLAR_TILT_DEG, "#1B3A6B", alpha=0.3))
-    span = (SOLAR_N - 1) * pitch + SOLAR_PANEL_W
-    back_yd = SOLAR_ARRAY_YD - SOLAR_PANEL_L * math.cos(th)
-    top_z = SOLAR_ARRAY_Z + 120 + SOLAR_PANEL_L * math.sin(th)
-    p.append(ruby_box("Tilt Frame front rail", SOLAR_ARRAY_X, SOLAR_ARRAY_YD - 20,
-                      SOLAR_ARRAY_Z, span, 40, 120, color=C_STEEL))
-    p.append(ruby_box("Tilt Frame back rail", SOLAR_ARRAY_X, back_yd - 20,
-                      SOLAR_ARRAY_Z, span, 40, 60, color=C_STEEL))
-    for x in (SOLAR_ARRAY_X, SOLAR_ARRAY_X + span - 40):
-        p.append(ruby_box("Tilt Frame back leg", x, back_yd - 20, SOLAR_ARRAY_Z,
-                          40, 40, top_z - SOLAR_ARRAY_Z, color=C_STEEL))
-    # PV run: array junction -> up to the external power panel MC4 bulkheads.
-    # A PV feed is a +/- PAIR, drawn as a BONDED ("siamese") pair of curly coil cords: the two
-    # conductors run together (coiled, ~16mm apart with a tightened curl so they read as one
-    # twisted pair, not a tangle) for the whole length, and FAN OUT only at the ends — straight
-    # stubs at the array terminals and to the panel's two MC4 columns (+ at _px 0.192, - at 0.275).
-    # The short end-legs fall under ruby_coil_cord's straight-stub threshold, so the fans render as
-    # clean straight leads while the long middle legs coil. Coil cords mark the SOFT connector (vs
-    # the rigid orthogonal conduit); the bonded run drapes DIAGONALLY up to the panel so it stays
-    # right of + clear of the evap cooler (X720-1280) — an angle a rigid conduit can't take.
-    import generate_electrical_model as em
-    jx = SOLAR_ARRAY_X + span / 2
-    mc4_z = em.MC4_BOT_Z                               # land on the BOTTOM MC4 pair (PV1) — single-sourced
-    pmid = PWR_PANEL_X + 0.2335 * PWR_PANEL_W          # midpoint of the two MC4 columns
-    PAIR, FAN = 8, 18                                  # bonded half-spacing / array-end fan-out
-    for s, panel_uf, col, sym in ((-1, 0.192, "#2D7A2D", "+"),     # (+) -> left MC4 column, green
-                                  (+1, 0.275, "#1A1A1A", "-")):    # (-) -> right MC4 column, black
-        p.append(ruby_coil_cord(f"PV cord ({sym}) (array -> panel MC4, bonded pair)",
-                                [(jx + s * FAN,  SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),  # array terminal (fanned)
-                                 (jx + s * PAIR, SOLAR_ARRAY_YD - 50, SOLAR_ARRAY_Z + 60),  # converge into the pair
-                                 (jx + s * PAIR, -WALL_T - 30,        SOLAR_ARRAY_Z + 60),  # bonded run toward panel
-                                 (pmid + s * PAIR, -WALL_T - 30,      mc4_z),               # bonded, diagonal up
-                                 (PWR_PANEL_X + panel_uf * PWR_PANEL_W, -WALL_T - 30, mc4_z)],  # split to its MC4 column
-                                r=5, coil_r=13, color=col))
-    return '\n'.join(p)
 
 
 # ── Electrical (panel + battery, pinhole wall) ───────────────────────────────
@@ -774,7 +728,7 @@ def generate_ruby():
         component("Electrical", "Electrical", electrical()),
         component("EP External Wiring (PV + E-stop)", "EP Ext Wiring", ep_external_wiring()),
         component("Corridor Pump Wiring (Cct C)", "Lighting", pw.panel_power(include_switch=False)),
-        component("Solar Array", "Solar Array", solar_array()),
+        component("Solar Array", "Solar Array", em.solar_array()),
         component("Chemistry Shelf", "Shelf", shelf()),
         component("Light-Trap Door Frame", "Light Seal", lt.door_frame()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),

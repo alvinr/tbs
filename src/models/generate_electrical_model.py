@@ -29,6 +29,7 @@ NOTE: --send builds into the ACTIVE SketchUp document (it clears it first). Open
 NEW blank document before sending so the Overview model isn't overwritten, then save
 the result as models/electrical.skp.
 """
+import math
 import argparse
 import os
 import sys
@@ -36,7 +37,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
 import tbs_draw as draw                          # shared drawing/material primitives
-from tbs_constants import C_LEN, FAN_DIAM, EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0, PULL_CORD_BOTTOM_Z
+from tbs_constants import SOLAR_ARRAY_Z, SOLAR_GAP, SOLAR_N, SOLAR_PANEL_L, SOLAR_PANEL_T, SOLAR_PANEL_W, SOLAR_TILT_DEG, WALL_T, C_LEN, FAN_DIAM, EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0, PULL_CORD_BOTTOM_Z
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Lighting", "Labels"]
@@ -745,6 +746,53 @@ def cct_e_feed():
                                     (invx, 55, INVERTER_Z + INVERTER_H)]), 5, color=CCT["E"][0])
 
 
+def solar_array():
+    """3x 200W panels on a 30deg ground tilt frame, exterior of the pinhole wall,
+    door-end so the right edge clears the pinhole sightline; + PV run to the panel.
+    Shared with the focused electrical model (generate_electrical_model.py)."""
+    p = []
+    th = math.radians(SOLAR_TILT_DEG)
+    pitch = SOLAR_PANEL_W + SOLAR_GAP
+    for i in range(SOLAR_N):
+        x = SOLAR_ARRAY_X + i * pitch
+        p.append(draw.tilted_slab(f"Solar Panel {i + 1} (200W)", x, SOLAR_ARRAY_YD,
+                             SOLAR_ARRAY_Z + 120, SOLAR_PANEL_W, SOLAR_PANEL_L,
+                             SOLAR_PANEL_T, SOLAR_TILT_DEG, "#1B3A6B", alpha=0.3))
+    span = (SOLAR_N - 1) * pitch + SOLAR_PANEL_W
+    back_yd = SOLAR_ARRAY_YD - SOLAR_PANEL_L * math.cos(th)
+    top_z = SOLAR_ARRAY_Z + 120 + SOLAR_PANEL_L * math.sin(th)
+    p.append(draw.ruby_box("Tilt Frame front rail", SOLAR_ARRAY_X, SOLAR_ARRAY_YD - 20,
+                      SOLAR_ARRAY_Z, span, 40, 120, color=draw.C_STEEL))
+    p.append(draw.ruby_box("Tilt Frame back rail", SOLAR_ARRAY_X, back_yd - 20,
+                      SOLAR_ARRAY_Z, span, 40, 60, color=draw.C_STEEL))
+    for x in (SOLAR_ARRAY_X, SOLAR_ARRAY_X + span - 40):
+        p.append(draw.ruby_box("Tilt Frame back leg", x, back_yd - 20, SOLAR_ARRAY_Z,
+                          40, 40, top_z - SOLAR_ARRAY_Z, color=draw.C_STEEL))
+    # PV run: array junction -> up to the external power panel MC4 bulkheads.
+    # A PV feed is a +/- PAIR, drawn as a BONDED ("siamese") pair of curly coil cords: the two
+    # conductors run together (coiled, ~16mm apart with a tightened curl so they read as one
+    # twisted pair, not a tangle) for the whole length, and FAN OUT only at the ends — straight
+    # stubs at the array terminals and to the panel's two MC4 columns (+ at _px 0.192, - at 0.275).
+    # The short end-legs fall under ruby_coil_cord's straight-stub threshold, so the fans render as
+    # clean straight leads while the long middle legs coil. Coil cords mark the SOFT connector (vs
+    # the rigid orthogonal conduit); the bonded run drapes DIAGONALLY up to the panel so it stays
+    # right of + clear of the evap cooler (X720-1280) — an angle a rigid conduit can't take.
+    jx = SOLAR_ARRAY_X + span / 2
+    mc4_z = MC4_BOT_Z                               # land on the BOTTOM MC4 pair (PV1) — single-sourced
+    pmid = PWR_PANEL_X + 0.2335 * PWR_PANEL_W          # midpoint of the two MC4 columns
+    PAIR, FAN = 8, 18                                  # bonded half-spacing / array-end fan-out
+    for s, panel_uf, col, sym in ((-1, 0.192, "#2D7A2D", "+"),     # (+) -> left MC4 column, green
+                                  (+1, 0.275, "#1A1A1A", "-")):    # (-) -> right MC4 column, black
+        p.append(draw.ruby_coil_cord(f"PV cord ({sym}) (array -> panel MC4, bonded pair)",
+                                [(jx + s * FAN,  SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),  # array terminal (fanned)
+                                 (jx + s * PAIR, SOLAR_ARRAY_YD - 50, SOLAR_ARRAY_Z + 60),  # converge into the pair
+                                 (jx + s * PAIR, -WALL_T - 30,        SOLAR_ARRAY_Z + 60),  # bonded run toward panel
+                                 (pmid + s * PAIR, -WALL_T - 30,      mc4_z),               # bonded, diagonal up
+                                 (PWR_PANEL_X + panel_uf * PWR_PANEL_W, -WALL_T - 30, mc4_z)],  # split to its MC4 column
+                                r=5, coil_r=13, color=col))
+    return '\n'.join(p)
+
+
 def circuit_runs():
     """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads.
     Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
@@ -876,7 +924,7 @@ def generate_ruby():
         draw.component("Container (ghost)", "Context", context()),
         draw.component("Transport Locks (context)", "Context", lt.wall_anchors()),
         draw.component("Chem Prep Shelf (context)", "Context", ov.shelf()),
-        draw.component("Solar Array", "Solar Array", ov.solar_array()),
+        draw.component("Solar Array", "Solar Array", solar_array()),
         draw.component("Power Core", "Power Core", power_core()),
         draw.component("Battery Bank", "Battery", battery()),
         draw.component("External Power Panel", "External Panel", external_panel()),

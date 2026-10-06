@@ -149,10 +149,13 @@ small furniture/seal builders (`shelf`, `light_seal`) with no sub-model home (mi
 context-ghost edge from electrical — leave or host in a future `context` module); (c) the electrical/
 lighting/fan/evap COMPOSITION wrappers (correct). Every subsystem's geometry now lives in its own model.
 
-**The one genuinely-hard item still open (separate from aggregation):** the `circuit_runs` routing drift
-— `em.circuit_runs()` routes to `em`'s internal load stubs while the overview routes to the real
-fixtures. Reconciling those two routings can change geometry and needs its own careful, verified pass
-(it's the TODO item that hid the 3 interior crossings until electrical.skp was rebuilt).
+**✅ `circuit_runs` routing drift RECONCILED (2026-10-06).** The last structural electrical drift was the
+**Cct-C pump distribution**: `em.circuit_runs()` drew `em._pump_circuit()` (pumps in a single column at
+`EQPANEL_X`=4874, stale P-02-at-Z940 assignment) while overview + construction drew `pw.panel_power()`
+(the chase at `cp.PXC`=4984, correct P-04-at-Z940). Two drifted implementations of one circuit. Fixed by
+single-sourcing to the water model: `circuit_runs()` now draws `cct_c_feed()` + `pw.panel_power(
+include_switch=False)` — the same distribution overview/construction use — and `em._pump_circuit()` is
+retired. Only electrical.skp changed (overview + construction byte-identical).
 
 **Owner decisions made (2026-10-06):** processing_tray → a **water model (pw)**; fans → **em** (done);
 the walkway+film-plane cluster → **one focused group move**.

@@ -323,8 +323,10 @@ def power_core(external_links=True, links_only=False):
     ext_links = []
     ext_links.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
                               _dedup([(MC4_PLUS_X, MC4_PLUS_Y, MC4_BOT_Z),
-                                      (MC4_PLUS_X, MC4_PLUS_Y, MC4_BOT_Z - 44),  # drop below the bottom string pair, clear of the − column
-                                      (_pvx - 18, MC4_PLUS_Y, MC4_BOT_Z - 44),   # run +x below the connectors (shallow Yd lane, in front of the gear)
+                                      (MC4_PLUS_X, MC4_MINUS_Y, MC4_BOT_Z),        # step onto the grey feed's Yd lane
+                                      (MC4_PLUS_X, MC4_MINUS_Y, MC4_BOT_Z - 24),   # drop one pipe-width below the grey feed (clears the − column)
+                                      (_pvx - 18, MC4_MINUS_Y, MC4_BOT_Z - 24),    # run +x INSIDE the box, parallel below the grey feed, out the +x side toward the pinhole
+                                      (_pvx - 18, MC4_PLUS_Y, MC4_BOT_Z - 24),     # step back to the shallow lane at the column (clear of the grey MPPT riser)
                                       (_pvx - 18, MC4_PLUS_Y, _pvd_rz),
                                       (_pvx - 18, EP_CTRL_FACE_YD, _pvd_rz)]),   # land LEFT of the box mid, on the REAR
                               6, color="#2D7A2D"))

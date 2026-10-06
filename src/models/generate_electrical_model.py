@@ -35,10 +35,10 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0, PULL_CORD_BOTTOM_Z
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
-        "Inverter", "Circuit Runs", "Labels"]
+        "Inverter", "Circuit Runs", "Lighting", "Labels"]
 
 WALL = ov.WALL_T
 
@@ -83,6 +83,10 @@ LED_ENDS = [(620, 100, ov.C_HGT - 40),
             (2370, 100, ov.C_HGT - 40),
             (ov.IBC_COL_X + 60, EQPANEL_YD, ov.C_HGT - 40)]
 SAFE_ENDS = [(sx + 20, 100, ov.C_HGT - 25) for sx in SAFE_XS]
+# Ceiling pull-cord switches (D, G) — in the ~80mm clear band ahead of the pinhole wall, left of the
+# EP + transport-stay anchor. Single-sourced so electrical + overview draw the SAME switches.
+PULL_SW_X = (950, 1030)
+PULL_SW_YD = 45
 
 # Fan A on the sealed end wall; Fan B terminates at a fixed WALL BOX (the fan itself is
 # on the swing panel, reached by a flex connector — not part of the rigid conduit).
@@ -248,12 +252,8 @@ def context():
     p.append(ov.ruby_box("Pump zone ghost (Cct C)", EQPANEL_X - 140, EQPANEL_YD, pz_bot,
                          150, EQPANEL_YD_SPAN, PUMP_H_HI - pz_bot,
                          color=CCT["C"][0], alpha=0.14))
-    for x0, y0, wx, wy in LED_PANELS:                   # white LED strips (2 tray + 1 corridor)
-        p.append(ov.ruby_box("White LED ghost (Cct G)", x0, y0, ov.C_HGT - 40,
-                             wx, wy, 30, color=CCT["G"][0], alpha=0.16))
-    for sx in SAFE_XS:                                  # safelight strips (Cct D) — cut to ~1,667mm (one 5m reel)
-        p.append(ov.ruby_box("Safelight ghost (Cct D)", sx, 100, ov.C_HGT - 25,
-                             40, 1667, 16, color=CCT["D"][0], alpha=0.16))
+    # (The LED + safelight strips are now REAL fixtures — light_fixtures() — not ghosts; the fan/pump
+    # loads above stay ghosted since those fixtures live in other models.)
     return '\n'.join(p)
 
 
@@ -635,6 +635,31 @@ def inverter():
     return '\n'.join(p)
 
 
+def light_fixtures():
+    """Physical lighting hardware — white LED strips (Cct G), red safelight strips (Cct D), and the two
+    ceiling pull-cord switches (with beaded pull cords). SINGLE OWNER — electrical + overview both draw
+    this (from the shared LED_PANELS/SAFE_XS/PULL_SW_* data), so the fixtures can't drift. The circuit
+    CONDUCTORS to them are _multi_run('G'/'D')."""
+    cz = ov.C_HGT
+    p = []
+    for x0, y0, wx, wyd in LED_PANELS:
+        p.append(ov.ruby_box("White LED Strip (Cct G)", x0, y0, cz - 25, wx, wyd, 18,
+                             color=ov.C_LED_W, alpha=0.4))
+    for sx in SAFE_XS:
+        p.append(ov.ruby_box("Safelight Strip (Cct D)", sx, 100, cz - 25, 40, 1667, 18,
+                             color=ov.C_SAFE, alpha=0.4))
+    for swx in PULL_SW_X:
+        p.append(ov.ruby_box("Pull Switch (ceiling)", swx, PULL_SW_YD, cz - 40, 40, 40, 40, color=ov.C_SWITCH))
+        cordx, cordy = swx + 20, PULL_SW_YD + 20
+        z0, z1 = PULL_CORD_BOTTOM_Z, cz - 40             # bottom clears the deployed chem shelf below
+        nb = max(8, int((z1 - z0) / 20)); bh = (z1 - z0) / nb
+        for k in range(nb):
+            rr = 3.5 if k % 2 == 0 else 2.0
+            p.append(ov.ruby_cylinder("Pull Cord", cordx, cordy, z0 + k * bh, rr, bh, color=ov.C_CORD, axis="z", n=8))
+        p.append(ov.ruby_cylinder("Pull Cord Knob", cordx, cordy, z0 - 16, 6, 16, color=ov.C_CORD, axis="z", n=10))
+    return '\n'.join(p)
+
+
 def cct_c_feed():
     """Cct C feed: fuse C -> master switch. The X-traverse runs fully at the switch-rear Yd (behind the
     Cct-E feed + battery cables), so it clears the cluster at the disconnect level. SINGLE OWNER —
@@ -750,6 +775,7 @@ def generate_ruby():
         ov.component("External Power Panel", "External Panel", external_panel()),
         ov.component("Circuit-E Inverter", "Inverter", inverter()),
         ov.component("Circuit Runs", "Circuit Runs", circuit_runs()),
+        ov.component("Lighting Fixtures", "Lighting", light_fixtures()),
     ]
     body = '\n'.join(comps)
     tags_ruby = '\n'.join(

@@ -16,6 +16,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(os.path.dirname(_HERE))
 sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
+import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
 
 # ── deep-box frame geometry (from the fork; one source) ──
@@ -1123,7 +1124,7 @@ def drains_ports(sump_on_skid=False):
 def context():
     """Ghost of the IBC stack + a floor slice so the corridor frame reads in place."""
     p = []
-    p.append(draw.component("IBC Stack", "IBC Stack", ov.ibc_stack(alpha=0.20)))
+    p.append(draw.component("IBC Stack", "IBC Stack", ib.ibc_stack(alpha=0.20)))
     x0 = 4300
     p.append(draw.component("Floor (context)", "Context",
              draw.ruby_box("Floor", x0, 0, -ov.WALL_T, ov.C_LEN - x0, ov.C_WID, ov.WALL_T, color=draw.C_SHELL, alpha=0.16)))

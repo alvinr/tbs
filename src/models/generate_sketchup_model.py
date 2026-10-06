@@ -37,7 +37,7 @@ import math
 import argparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_GRATE_Z, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_HL_TIP, RWK_HL_POST, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_X_UP, RWK_UP_YDS, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, RWK_NOTCH_FLOOR, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_DX, RWK_CRANK_Y0, RWK_CRANK_Y1, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_GRATE_Z, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_HL_TIP, RWK_HL_POST, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_X_UP, RWK_UP_YDS, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, RWK_NOTCH_FLOOR, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_DX, RWK_CRANK_Y0, RWK_CRANK_Y1, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
 
 from tbs_draw import *            # shared drawing/material primitives (Phase 0 extraction)
 
@@ -830,45 +830,7 @@ def spray_bar():
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
 
-def ibc_stack(alpha=0.55, mute=0.0, cols="both"):
-    """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
-
-    Near column (Yd=30): Brown developer below, Blue #1 on top.
-    Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
-    ibc-reconfig-v2: 1000L caged composite totes (1168mm), direct-stacked to 2336mm.
-    `alpha` sets the bottle translucency (lower = more transparent).
-    `mute` (0–1) desaturates the bottle/pallet colors toward neutral so the stack
-    reads as quiet CONTEXT (a faint tint) rather than saturated volumes — used where
-    the IBC stack is a backdrop to other key systems (e.g. the corridor plumbing view).
-    `cols`: "both" (default), "near" (pinhole-wall column only), or "far" (far column only)
-    — used by the construction model to install the two columns as separate build steps.
-    """
-    parts = []
-    pal = IBC_PALLET_H
-    inset = IBC_BOTTLE_INSET
-    bottle_h = IBC_H_1000 - pal - 20   # leave 20mm for the cage top
-
-    totes = [
-        ("IBC Brown (developer)", BROWN_IBC_Y, 0, C_IBC_BROWN),
-        ("IBC Blue #1", BLUE_IBC_Y, IBC_H_1000, C_IBC_BLUE),
-        ("IBC Waste", WASTE_IBC_Y, 0, C_IBC_WASTE),
-        ("IBC Blue #2", IBC_FAR_Y, IBC_H_1000, C_IBC_BLUE),
-    ]
-    if cols == "near":
-        totes = totes[:2]     # near / pinhole-wall column (Brown + Blue #1)
-    elif cols == "far":
-        totes = totes[2:]     # far column (Waste + Blue #2)
-    for nm, yd, z0, col in totes:
-        parts.append(ruby_box(f"{nm} pallet",
-                              IBC_COL_X, yd, z0, IBC_W, IBC_D, pal,
-                              color=mute_hex(C_PALLET, mute), alpha=(alpha if mute else None)))
-        parts.append(ruby_box(f"{nm} bottle",
-                              IBC_COL_X + inset, yd + inset, z0 + pal,
-                              IBC_W - 2 * inset, IBC_D - 2 * inset, bottle_h,
-                              color=mute_hex(col, mute), alpha=alpha))
-    return '\n'.join(parts)
-
-
+# ibc_stack() moved to generate_ibc_model.py (its owner); overview draws it via ib.ibc_stack().
 
 
 # ── Film plane mechanism ─────────────────────────────────────────────────────
@@ -1493,6 +1455,7 @@ def generate_ruby():
     # sync with the corridor + pinhole-wall panel design (late import — cp/pw import ov).
     import generate_corridor_water_panel as cp
     import generate_pinhole_water_panel as pw
+    import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
     comps = [
         component("Container Shell", "Shell", container_shell()),
         component("Container Far Wall", "Shell Far", far_wall()),
@@ -1512,7 +1475,7 @@ def generate_ruby():
         component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit(p02_on_corridor=True)),
         component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing Panel", pw.skid_row()),
         component("Skid plumbing", "Plumbing Panel", pw.skid_plumbing()),
-        component("IBC Stack", "IBC Stack", ibc_stack()),
+        component("IBC Stack", "IBC Stack", ib.ibc_stack()),
         component("Light-Trap Cage", "Light Trap", light_trap_cage()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Light-Trap Bay", "Light Trap", light_trap_bay()),

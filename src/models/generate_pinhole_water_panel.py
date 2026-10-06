@@ -19,7 +19,8 @@ _ROOT = os.path.dirname(os.path.dirname(_HERE))   # repo root (src/models -> src
 sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import tbs_draw as draw                          # shared drawing/material primitives
-import generate_corridor_water_panel as cp        # the new corridor plumbing panel (same connected system)
+import generate_corridor_water_panel as cp
+import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)        # the new corridor plumbing panel (same connected system)
 
 # ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
 #    Read from the live water.skp 2026-07-03 (the model's own current title/description).
@@ -118,7 +119,7 @@ def ibc_slice():
 OTHER_WALL_EQUIP = [("Electrical (panel/inverter/batteries)", "electrical")]
 
 # Context-muting parameters — ONE place so every muted system matches: the IBC tanks
-# (built muted via ov.ibc_stack(mute=)) and the in-place-muted context tags below all use
+# (built muted via ib.ibc_stack(mute=)) and the in-place-muted context tags below all use
 # these.  Desaturate the color this fraction toward draw.MUTE_NEUTRAL, at this alpha.
 MUTE_DESAT, MUTE_ALPHA = 0.65, 0.18
 # Context systems shown as a quiet faded backdrop (NOT the key plumbing/kit/supply) — desaturated
@@ -796,7 +797,7 @@ def build():
                          ("Film-plane support beams", "Film Plane", film_plane_beams),
                          ("Processing tray (ghost)", "Processing Tray", ov.processing_tray),
                          ("Spray Bar", "Spray Bar", spray_bar),
-                         ("IBC Tanks (full)", "IBC", lambda: ov.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
+                         ("IBC Tanks (full)", "IBC", lambda: ib.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint),
                          ("End wall (context)", "Context", cp.end_wall),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly),

@@ -28,7 +28,9 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + component builders (Overview)
-import tbs_draw as draw                          # shared drawing/material primitives
+import tbs_draw as draw                          # shared drawing/material primitives (adds src/generators to path)
+from tbs_constants import (IBC_PALLET_H, IBC_BOTTLE_INSET, IBC_H_1000, BROWN_IBC_Y,
+                           BLUE_IBC_Y, WASTE_IBC_Y, IBC_FAR_Y, IBC_COL_X, IBC_W, IBC_D)
 
 TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel",
         "Walkway Cantilever", "Labels"]
@@ -143,6 +145,47 @@ def spray_wall_trunk():
                         ov.PUMP_PIPE_OD / 2, color=draw.C_BLUE)
 
 
+def ibc_stack(alpha=0.55, mute=0.0, cols="both"):
+    """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
+
+    Near column (Yd=30): Brown developer below, Blue #1 on top.
+    Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
+    ibc-reconfig-v2: 1000L caged composite totes (1168mm), direct-stacked to 2336mm.
+    `alpha` sets the bottle translucency (lower = more transparent).
+    `mute` (0–1) desaturates the bottle/pallet colors toward neutral so the stack
+    reads as quiet CONTEXT (a faint tint) rather than saturated volumes — used where
+    the IBC stack is a backdrop to other key systems (e.g. the corridor plumbing view).
+    `cols`: "both" (default), "near" (pinhole-wall column only), or "far" (far column only)
+    — used by the construction model to install the two columns as separate build steps.
+
+    OWNER: this model. Overview + the water/construction models draw it as context via
+    `ib.ibc_stack(...)` (was `ov.ibc_stack`). Uses only tbs_draw + tbs_constants."""
+    parts = []
+    pal = IBC_PALLET_H
+    inset = IBC_BOTTLE_INSET
+    bottle_h = IBC_H_1000 - pal - 20   # leave 20mm for the cage top
+
+    totes = [
+        ("IBC Brown (developer)", BROWN_IBC_Y, 0, draw.C_IBC_BROWN),
+        ("IBC Blue #1", BLUE_IBC_Y, IBC_H_1000, draw.C_IBC_BLUE),
+        ("IBC Waste", WASTE_IBC_Y, 0, draw.C_IBC_WASTE),
+        ("IBC Blue #2", IBC_FAR_Y, IBC_H_1000, draw.C_IBC_BLUE),
+    ]
+    if cols == "near":
+        totes = totes[:2]     # near / pinhole-wall column (Brown + Blue #1)
+    elif cols == "far":
+        totes = totes[2:]     # far column (Waste + Blue #2)
+    for nm, yd, z0, col in totes:
+        parts.append(draw.ruby_box(f"{nm} pallet",
+                              IBC_COL_X, yd, z0, IBC_W, IBC_D, pal,
+                              color=draw.mute_hex(draw.C_PALLET, mute), alpha=(alpha if mute else None)))
+        parts.append(draw.ruby_box(f"{nm} bottle",
+                              IBC_COL_X + inset, yd + inset, z0 + pal,
+                              IBC_W - 2 * inset, IBC_D - 2 * inset, bottle_h,
+                              color=draw.mute_hex(col, mute), alpha=alpha))
+    return '\n'.join(parts)
+
+
 def generate_ruby():
     """Build the Ruby script for the IBC Stack model, reusing Overview parts."""
     # Current water-system builders (water.skp source) — corridor + pinhole-wall panels
@@ -150,7 +193,7 @@ def generate_ruby():
     import generate_pinhole_water_panel as pw
     comps = [
         draw.component("Container (ghost)", "Context", context()),
-        draw.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
+        draw.component("IBC Tanks", "IBC Tanks", ibc_stack(alpha=0.25)),
         draw.component("Corridor Frame (deep box)", "IBC Frame", cp.frame()),
         draw.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
         draw.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),

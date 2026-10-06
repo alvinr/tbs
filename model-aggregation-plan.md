@@ -114,6 +114,24 @@ the tag/scene machinery + the `C_*` palette (primitives take color as a param) a
   the sub-model in `generate_ruby`; (5) `manifest --check` must stay byte-identical (pure relocation).
 
 ### Phase 1 — Invert the structural owners (pattern ③ → ①), lowest-risk first
+**Progress 2026-10-06 (all byte-identical, no re-sends):**
+- ✅ `ibc_stack` → `generate_ibc_model` (`ib.ibc_stack`). True ③ inversion; 5 consumers re-pointed.
+- ✅ `spray_bar` → `generate_spraybar_model` (`sb.spray_bar`). Was actually ② — overview's and pw's
+  `spray_bar()` were IDENTICAL wrappers over `sb.build_*`; collapsed to one `sb.spray_bar()`.
+- **Findings that reshape the remaining work:**
+  - `processing_tray` — owner still undecided (sb already ghosts it via `ov.processing_tray`; consumers:
+    overview, sb, wm, fp, construction). Decide owner before the walkway/film-plane moves.
+  - `fans`/`fan_duct` — **`fan_duct` is shared by overview's `fans()` AND the light-trap model** (Fan B
+    on the hinge panel). So "fans → em" isn't clean; `fan_duct` is a shared builder needing a neutral
+    home (or stays a shared owner). Decide owner.
+  - `walkways` + `right_walkway_cantilever` + grates + `fp_combined_corner_plate(s)` + the `_rwk_*`
+    helpers, and `film_plane_mechanism` + `film_plane_saddles` + `panel_pivot` — a **tightly-coupled
+    structural cluster** (shared internal helpers, cross-consumed by wm/fp/ib/overview/construction).
+    These should move as a GROUP, not one at a time, and likely want their shared helpers hosted
+    cleanly. This is the bulk of remaining Phase 1 and deserves its own focused pass.
+  - `container_shell`/`far_wall`/`pinhole_assembly`/`optical_cone` — no dedicated sub-model; candidates
+    for a shared `context`/`tbs_draw` home or they genuinely stay overview-level.
+
 For each, MOVE the builder from overview into its sub-model, delete overview's copy, and have
 overview + all other consumers import the new owner. Regenerate → reconcile → cascade (see §5).
 

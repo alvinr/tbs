@@ -1830,6 +1830,7 @@ def evap_cooler():
 
     # Cct E DC feed: fuse E -> inverter DC input (the inverter sits right below the fuse block, so a
     # short DOWN-feed, not em's ceiling route). Colour-coded so Cct-E traces from its own fuse.
+    # (Mirrors em.cct_e_feed(); reconcile to one owner under the model-drift TODO.)
     _fex, _fey, _fez = em.FUSE_POS["E"]
     _invx = INVERTER_X + INVERTER_W / 2
     parts.append(ruby_pipe_run("Cct E feed (fuse E -> inverter)",

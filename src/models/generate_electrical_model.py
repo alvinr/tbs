@@ -660,9 +660,13 @@ def _pump_circuit():
     # Cct-C switched feed: fuse C -> DOWN to the master switch (in the reach cluster) -> up the ceiling
     # trunk -> across to the pump wireway. The master switch is the manual cutoff in this feed.
     _fcx, _fcy, _fcz = FUSE_POS["C"]; _msx2, _msy2, _mst = MASTER_SW_POS
+    # Traverse on a DEEP Yd lane (behind the Cct-E feed at Yd55 + the battery cables) so the X-run to the
+    # switch doesn't cut across them at the cluster level, then forward into the switch rear terminal.
+    _ccy = _msy2 - 28                                    # deep lane just in front of the switch rear (Yd100)
     p.append(ov.ruby_pipe_run("Cct C feed (fuse C -> master switch)",
-                              _dedup([(_fcx, _fcy, _fcz), (_fcx, _fcy, _mst),
-                                      (_msx2, _fcy, _mst), (_msx2, _msy2, _mst)]), 6, color=col))
+                              _dedup([(_fcx, _fcy, _fcz), (_fcx, _ccy, _fcz),
+                                      (_fcx, _ccy, _mst), (_msx2, _ccy, _mst),
+                                      (_msx2, _msy2, _mst)]), 6, color=col))
     p.append(ov.ruby_pipe_run("Cct C switched feed (master switch -> pump wireway)",
                               _dedup([(_msx2, _msy2, _mst), (_msx2, _msy2, TRUNK_Z),
                                       (_msx2, TRUNK_YD, TRUNK_Z), (EQPANEL_X, TRUNK_YD, TRUNK_Z),
@@ -697,13 +701,28 @@ def cable_trunking():
                        25, color=ov.C_TRUNK)
 
 
+def cct_e_feed():
+    """Cct E DC feed: fuse E -> inverter DC input. The inverter sits right BELOW the fuse block, so
+    this is a short local DOWN-feed — NOT the ceiling _run route (which looped back down through the
+    busbar/disconnect cluster and fouled the Main feed + Battery+ cable). SINGLE OWNER — circuit_runs()
+    and the overview's evap section both call this, so the Cct-E DC leg can't drift between models."""
+    fex, fey, fez = FUSE_POS["E"]
+    invx = INVERTER_X + INVERTER_W / 2
+    return ov.ruby_pipe_run("Cct E feed (fuse E -> inverter)",
+                            _dedup([(fex, fey, fez), (fex, 55, fez),
+                                    (fex, 55, INVERTER_Z + INVERTER_H + 10),
+                                    (invx, 55, INVERTER_Z + INVERTER_H + 10),
+                                    (invx, 55, INVERTER_Z + INVERTER_H)]), 5, color=CCT["E"][0])
+
+
 def circuit_runs():
     """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads.
     Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
     (G white LED, D safelight) fan out to ALL three of their ceiling fixtures."""
     p = [cable_trunking()]
-    for cct in ("A", "B", "E"):
+    for cct in ("A", "B"):
         p.append(_run(cct, LOADS[cct]))
+    p.append(cct_e_feed())                 # Cct E: short fuse-E → inverter DC feed (local, not a ceiling loop)
     p.append(_pump_circuit())              # Cct C: master switch + distribution block → pumps
     p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
     p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight

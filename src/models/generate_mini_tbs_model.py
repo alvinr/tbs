@@ -32,6 +32,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov
+import tbs_draw as draw                          # shared drawing/material primitives
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
 from mini_tbs_constants import (
@@ -66,11 +67,11 @@ def ghost_walls():
     TOP is the box flaps (built separately); the far end is the arm-sleeve wall."""
     a = GHOST_A
     return '\n'.join([
-        ov.ruby_box("Floor", 0, 0, -WALL_T, TOTAL_D, BOX_W, WALL_T,
+        draw.ruby_box("Floor", 0, 0, -WALL_T, TOTAL_D, BOX_W, WALL_T,
                     color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Pinhole wall", -WALL_T, 0, 0, WALL_T, BOX_W, BOX_H,
+        draw.ruby_box("Pinhole wall", -WALL_T, 0, 0, WALL_T, BOX_W, BOX_H,
                     color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Duct-tape drip liner (optional)",
+        draw.ruby_box("Duct-tape drip liner (optional)",
                     BOX_D + WALL_T, 60, 0, PREP_D - 2 * WALL_T - 60, BOX_W - 120, 1,
                     color=C_LINER, alpha=0.55),
     ])
@@ -87,13 +88,13 @@ def internal_walls():
     parts = []
     for wx, nm in [(BOX_D - WALL_T, "Camera junction wall"), (BOX_D, "Prep junction wall")]:
         parts += [
-            ov.ruby_box(f"{nm} (below window)", wx, 0, 0, WALL_T, BOX_W, z0,
+            draw.ruby_box(f"{nm} (below window)", wx, 0, 0, WALL_T, BOX_W, z0,
                         color=C_CARD, alpha=a, both_sides=True),
-            ov.ruby_box(f"{nm} (above window)", wx, 0, z1, WALL_T, BOX_W, BOX_H - z1,
+            draw.ruby_box(f"{nm} (above window)", wx, 0, z1, WALL_T, BOX_W, BOX_H - z1,
                         color=C_CARD, alpha=a, both_sides=True),
-            ov.ruby_box(f"{nm} (left of window)", wx, 0, z0, WALL_T, y0, z1 - z0,
+            draw.ruby_box(f"{nm} (left of window)", wx, 0, z0, WALL_T, y0, z1 - z0,
                         color=C_CARD, alpha=a, both_sides=True),
-            ov.ruby_box(f"{nm} (right of window)", wx, y1, z0, WALL_T, BOX_W - y1, z1 - z0,
+            draw.ruby_box(f"{nm} (right of window)", wx, y1, z0, WALL_T, BOX_W - y1, z1 - z0,
                         color=C_CARD, alpha=a, both_sides=True),
         ]
     return '\n'.join(parts)
@@ -105,11 +106,11 @@ def camera_top():
     hw = BOX_W / 2
     a = GHOST_A * 0.9
     return '\n'.join([
-        ov.ruby_box("Camera top flap (near)", 0, 0, BOX_H - FLAP_T, BOX_D, hw, FLAP_T,
+        draw.ruby_box("Camera top flap (near)", 0, 0, BOX_H - FLAP_T, BOX_D, hw, FLAP_T,
                     color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Camera top flap (far)", 0, hw, BOX_H - FLAP_T, BOX_D, hw, FLAP_T,
+        draw.ruby_box("Camera top flap (far)", 0, hw, BOX_H - FLAP_T, BOX_D, hw, FLAP_T,
                     color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Camera top tape (seam)", 0, hw - 25, BOX_H, BOX_D, 50, 1.5,
+        draw.ruby_box("Camera top tape (seam)", 0, hw - 25, BOX_H, BOX_D, 50, 1.5,
                     color=C_TAPE, alpha=0.85),
     ])
 
@@ -117,10 +118,10 @@ def camera_top():
 def end_wall():
     """Far end wall (opposite the pinhole) — solid, carrying the two arm sleeves that
     give sealed coating access in the dark. Static (extraction is now the top flaps)."""
-    parts = [ov.ruby_box("End wall (arm-sleeve wall)", TOTAL_D - WALL_T, 0, 0,
+    parts = [draw.ruby_box("End wall (arm-sleeve wall)", TOTAL_D - WALL_T, 0, 0,
                          WALL_T, BOX_W, BOX_H, color=C_CARD, alpha=GHOST_A, both_sides=True)]
     for cy in (CY - SLEEVE_SPACING / 2, CY + SLEEVE_SPACING / 2):
-        parts.append(ov.ruby_cylinder("Arm sleeve", TOTAL_D, cy, BOX_H / 2,
+        parts.append(draw.ruby_cylinder("Arm sleeve", TOTAL_D, cy, BOX_H / 2,
                                       SLEEVE_D / 2, SLEEVE_LEN, color=C_SLEEVE,
                                       alpha=0.9, axis="x"))
     return '\n'.join(parts)
@@ -132,26 +133,26 @@ def join_tape():
     b = 50
     x0, t = BOX_D - b / 2, 1.5
     return '\n'.join([
-        ov.ruby_box("Join tape (floor)", x0, 0, -WALL_T - t, b, BOX_W, t, color=C_TAPE, alpha=0.9),
-        ov.ruby_box("Join tape (top)", x0, 0, BOX_H, b, BOX_W, t, color=C_TAPE, alpha=0.9),
-        ov.ruby_box("Join tape (near)", x0, -WALL_T - t, 0, b, t, BOX_H, color=C_TAPE, alpha=0.9),
-        ov.ruby_box("Join tape (far)", x0, BOX_W + WALL_T, 0, b, t, BOX_H, color=C_TAPE, alpha=0.9),
+        draw.ruby_box("Join tape (floor)", x0, 0, -WALL_T - t, b, BOX_W, t, color=C_TAPE, alpha=0.9),
+        draw.ruby_box("Join tape (top)", x0, 0, BOX_H, b, BOX_W, t, color=C_TAPE, alpha=0.9),
+        draw.ruby_box("Join tape (near)", x0, -WALL_T - t, 0, b, t, BOX_H, color=C_TAPE, alpha=0.9),
+        draw.ruby_box("Join tape (far)", x0, BOX_W + WALL_T, 0, b, t, BOX_H, color=C_TAPE, alpha=0.9),
     ])
 
 
 def pinhole_parts():
     """Aluminum pinhole plate on the front wall interior + the tiny pinhole marker."""
     return '\n'.join([
-        ov.ruby_box("Pinhole plate (aluminum)", 0, CY - 25, PH_Y - 25, 2, 50, 50,
+        draw.ruby_box("Pinhole plate (aluminum)", 0, CY - 25, PH_Y - 25, 2, 50, 50,
                     color=ov.C_ALUM),
-        ov.ruby_cylinder(f"Pinhole Ø{PH_D}mm", -2, CY, PH_Y, 3, 6,
+        draw.ruby_cylinder(f"Pinhole Ø{PH_D}mm", -2, CY, PH_Y, 3, 6,
                          color=ov.C_PINHOLE, axis="x"),
     ])
 
 
 # ── Single-flap DCs (shutter, film panel) — built LOCAL at hinge, placed, roty ──
 def _flap_dc(var, disp, code, tag, geom, hinge, driver, label, angle_formula, default=0.0):
-    hx, hy, hz = (ov.mm(v) for v in hinge)
+    hx, hy, hz = (draw.mm(v) for v in hinge)
     return f'''
 # ═══ {disp} — DYNAMIC COMPONENT (click to move) ═══
 {var}_defn = model.definitions.add("{disp}")
@@ -176,7 +177,7 @@ end
 
 
 def shutter_dc():
-    geom = ov.ruby_box("Shutter flap", 0, -45, -90, 2, 90, 90, color=C_SHUTTER)
+    geom = draw.ruby_box("Shutter flap", 0, -45, -90, 2, 90, 90, color=C_SHUTTER)
     hinge = (-WALL_T - 2, CY, PH_Y + 45)
     # default OPEN (lift=1) so the static Sketchfab view shows the pinhole uncovered
     return _flap_dc("sh", "Shutter", "Shutter", "Shutter", geom, hinge,
@@ -185,9 +186,9 @@ def shutter_dc():
 
 def panel_dc():
     parts = [
-        ov.ruby_box("Panel board", -WALL_T, -PANEL_W / 2, 0, WALL_T, PANEL_W, PANEL_H,
+        draw.ruby_box("Panel board", -WALL_T, -PANEL_W / 2, 0, WALL_T, PANEL_W, PANEL_H,
                     color=C_CARD),
-        ov.ruby_box("Coated paper", -WALL_T - 1, -PAPER_W / 2, (PANEL_H - PAPER_H) / 2,
+        draw.ruby_box("Coated paper", -WALL_T - 1, -PAPER_W / 2, (PANEL_H - PAPER_H) / 2,
                     1, PAPER_W, PAPER_H, color=C_PAPER),
     ]
     hinge = (BOX_D, CY, HINGE_Y_ABS)
@@ -202,10 +203,10 @@ def prep_top_flaps_dc():
     parent 'open' driver; each flap child rotates up (rotx) about its top edge via an
     ancestor-reference formula (cargo-door pattern)."""
     hw = BOX_W / 2
-    near = ov.ruby_box("Prep top flap (near)", 0, 0, -FLAP_T, PREP_D, hw, FLAP_T, color=C_CARD)
-    far = ov.ruby_box("Prep top flap (far)", 0, -hw, -FLAP_T, PREP_D, hw, FLAP_T, color=C_CARD)
-    px, py, pz = (ov.mm(v) for v in (BOX_D, 0, BOX_H))
-    fhx, fhy, fhz = (ov.mm(v) for v in (0, BOX_W, 0))
+    near = draw.ruby_box("Prep top flap (near)", 0, 0, -FLAP_T, PREP_D, hw, FLAP_T, color=C_CARD)
+    far = draw.ruby_box("Prep top flap (far)", 0, -hw, -FLAP_T, PREP_D, hw, FLAP_T, color=C_CARD)
+    px, py, pz = (draw.mm(v) for v in (BOX_D, 0, BOX_H))
+    fhx, fhy, fhz = (draw.mm(v) for v in (0, BOX_W, 0))
     return f'''
 # ═══ Prep-box top flaps — DYNAMIC COMPONENT (click: open the top to extract the print) ═══
 pt_defn = model.definitions.add("Prep top flaps")
@@ -257,7 +258,7 @@ def light_cone_ruby():
     N = 32
     pts = [(px, CY + R * math.cos(2 * math.pi * k / N), PH_Y + R * math.sin(2 * math.pi * k / N))
            for k in range(N)]
-    p = lambda t: f'Geom::Point3d.new({ov.mm(round(t[0], 2))}, {ov.mm(round(t[1], 2))}, {ov.mm(round(t[2], 2))})'
+    p = lambda t: f'Geom::Point3d.new({draw.mm(round(t[0], 2))}, {draw.mm(round(t[1], 2))}, {draw.mm(round(t[2], 2))})'
     base_pts = ', '.join(p(t) for t in pts)
     return f'''
 # ── Light cone (pinhole → circular base at the film plane) — translucent teaching aid ──
@@ -306,25 +307,25 @@ def labels_ruby():
             f'if inst\n'
             f'  bb = inst.bounds\n'
             f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
-            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')
     for x, y, z, text, dx, dy, dz in POINT_LABELS:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
 
 def generate_ruby():
     body = '\n'.join([
-        ov.component("Cardboard boxes (ghost)", "Boxes", ghost_walls()),
-        ov.component("Junction walls (panel frame)", "Boxes", internal_walls()),
-        ov.component("Camera-box top (taped shut)", "Boxes", camera_top()),
-        ov.component("End wall + arm sleeves", "Boxes", end_wall()),
-        ov.component("Box-join tape", "Boxes", join_tape()),
-        ov.component("Pinhole", "Pinhole", pinhole_parts()),
+        draw.component("Cardboard boxes (ghost)", "Boxes", ghost_walls()),
+        draw.component("Junction walls (panel frame)", "Boxes", internal_walls()),
+        draw.component("Camera-box top (taped shut)", "Boxes", camera_top()),
+        draw.component("End wall + arm sleeves", "Boxes", end_wall()),
+        draw.component("Box-join tape", "Boxes", join_tape()),
+        draw.component("Pinhole", "Pinhole", pinhole_parts()),
     ])
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
@@ -337,7 +338,7 @@ def generate_ruby():
     def slit(s):
         name, tags, tgt, so = s
         tg = '[' + ', '.join(f'"{t}"' for t in tags) + ']'
-        cam = 'nil' if tgt is None else f'[{ov.mm(tgt[0])}, {ov.mm(tgt[1])}, {ov.mm(tgt[2])}]'
+        cam = 'nil' if tgt is None else f'[{draw.mm(tgt[0])}, {draw.mm(tgt[1])}, {draw.mm(tgt[2])}]'
         return f'["{name}", {tg}, {cam}, {so}]'
     scenes_ruby = '[' + ', '.join(slit(s) for s in scenes) + ']'
 

@@ -29,6 +29,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
+import tbs_draw as draw                          # shared drawing/material primitives
 import generate_corridor_water_panel as cp    # IBC corridor deep-box frame + tote restraint (beams) — reused verbatim
 
 TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Movement", "Shell", "Plane Tilt", "Plane Swing", "Labels"]
@@ -110,12 +111,12 @@ def channel_v(name, cx, zc, y0, ylen, tag, cin, alpha=None):
     outx = cx - cin * CW_BOT / 2                    # outboard face
     web_x = min(outx, outx + cin * HB_T)
     fl_x = min(outx, outx + cin * CW_BOT)
-    P.append(ov.ruby_box(f"{name} web {tag}", web_x, y0, zc - CD_BOT / 2, HB_T, ylen, CD_BOT, color=ov.C_ALUM, alpha=alpha))
+    P.append(draw.ruby_box(f"{name} web {tag}", web_x, y0, zc - CD_BOT / 2, HB_T, ylen, CD_BOT, color=ov.C_ALUM, alpha=alpha))
     for fz in (zc + CD_BOT / 2 - HB_T, zc - CD_BOT / 2):
-        P.append(ov.ruby_box(f"{name} flange {tag} {int(fz)}", fl_x, y0, fz, CW_BOT, ylen, HB_T, color=ov.C_ALUM, alpha=alpha))
+        P.append(draw.ruby_box(f"{name} flange {tag} {int(fz)}", fl_x, y0, fz, CW_BOT, ylen, HB_T, color=ov.C_ALUM, alpha=alpha))
     # inboard LIP on the bottom flange — lateral keeper: stops the load roller walking off in X on swing
     in_edge = cx + cin * CW_BOT / 2
-    P.append(ov.ruby_box(f"{name} bottom-flange lip {tag}", min(in_edge, in_edge - cin * 5), y0, zc - CD_BOT / 2 + HB_T, 5, ylen, 9, color=ov.C_ALUM, alpha=alpha))
+    P.append(draw.ruby_box(f"{name} bottom-flange lip {tag}", min(in_edge, in_edge - cin * 5), y0, zc - CD_BOT / 2 + HB_T, 5, ylen, 9, color=ov.C_ALUM, alpha=alpha))
     return P
 
 
@@ -152,8 +153,8 @@ def emit_slide(label, spec, ox=0, oy=0, oz=0):
     """Emit one corner_slide_parts spec as ruby, applying an (ox,oy,oz) coordinate offset."""
     kind, x, y, z, a, b, c, color, axis = spec
     if kind == "box":
-        return ov.ruby_box(label, x + ox, y + oy, z + oz, a, b, c, color=color)
-    return ov.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis)
+        return draw.ruby_box(label, x + ox, y + oy, z + oz, a, b, c, color=color)
+    return draw.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis)
 
 
 def corner(tag, cx, fz, zc, cin, side, keep="all"):
@@ -178,7 +179,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         if is_bot:                                       # BOTTOM-RIGHT (BR): combined corner plates at both walls
             P += rail("U-rail (FLANGED)", 0, ov.C_WID)
             for fy in (0, ov.C_WID - 12):                # end flange trimmed 35mm on the OUTBOARD (+X) side to clear the IBC frame
-                P.append(ov.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, 12, sec_h + 10, color=C_CROSS))
+                P.append(draw.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, 12, sec_h + 10, color=C_CROSS))
         else:                                            # TOP-RIGHT (TR): budgeted wall-seat saddle at BOTH walls; the rail
             sp = ov.FP_CORNER_SEAT_PLATE_T               # ENDS align to the saddle plate INNER faces (butt the upstand) — no end flange (the saddle mounts + caps it)
             P += rail("U-rail (FLANGED)", sp, ov.C_WID - 2 * sp)
@@ -190,23 +191,23 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # not the screw); a retaining SCREW into the STUB just holds it — drops straight in, then lock
         # BRIDGE welded to the REMOVABLE bears ON TOP of the stub (gravity-held) + a locating PIN (flush to the
         # inner-rail top) + a short bottom support bridge (~64mm) — web-vertical, SAME both corners.
-        P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 60, zc + CD_BOT / 2, CW_BOT, 150, 12, color=C_CROSS))
-        P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush to inner-rail top) {tag}", cx, LEFT_CUT_YD + 45, zc + CD_BOT / 2 - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
-        P.append(ov.ruby_box(f"Bottom support bridge (STUB → beam underside) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 32, botf - 12, CW_BOT, 64, 12, color=C_CROSS))
+        P.append(draw.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 60, zc + CD_BOT / 2, CW_BOT, 150, 12, color=C_CROSS))
+        P.append(draw.ruby_cylinder(f"Locating pin (bridge↔STUB, flush to inner-rail top) {tag}", cx, LEFT_CUT_YD + 45, zc + CD_BOT / 2 - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
+        P.append(draw.ruby_box(f"Bottom support bridge (STUB → beam underside) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 32, botf - 12, CW_BOT, 64, 12, color=C_CROSS))
         # No floor post at the cut: the stub (Yd LEFT_CUT_YD→C_WID) is anchored at the pivot post (= film
         # far-left post) + the far wall, and the cut is only ~197mm cantilevered from it — the removable's
         # welded bridge BEARS on the stub, whose pivot-post anchor carries the reaction, so a floor post
         # (which would foul the sliding carriage) is unnecessary.
-        P.append(ov.ruby_box(f"Rail far flange (pivot post) {tag}", cx - 60, ov.C_WID - 12, botf - 10, 120, 12, sec_h + 20, color=C_CROSS))
+        P.append(draw.ruby_box(f"Rail far flange (pivot post) {tag}", cx - 60, ov.C_WID - 12, botf - 10, 120, 12, sec_h + 20, color=C_CROSS))
         # FAR-LEFT (rear) bracket WALL FIXING — exterior backing plate + 4× M12 through the far wall (# 2026-08-19). The flange (above) is the interior plate the rail butts; this adds the exterior plate +
         # bolts. 120×96 (Z-extent botf-10 .. botf+86) — sized so the 4× M12 get ≥18mm edge distance (1.5·D, edge
         # lint) AND the TL flange top (2348) still clears the pivot ROOF-mount plate at Z2368 (a full 150-tall
         # saddle would foul it, which is why the far-left carries a flange bracket).
         _fp_t = ov.FP_CORNER_SEAT_PLATE_T
-        P.append(ov.ruby_box(f"FP far-left EXT plate {tag}", cx - 60, ov.C_WID + ov.WALL_T, botf - 10, 120, _fp_t, sec_h + 20, color=C_STEEL))
+        P.append(draw.ruby_box(f"FP far-left EXT plate {tag}", cx - 60, ov.C_WID + ov.WALL_T, botf - 10, 120, _fp_t, sec_h + 20, color=C_STEEL))
         for _bx in (cx - 38, cx + 38):
             for _bz in (botf + 8, botf + sec_h - 8):
-                P.append(ov.ruby_bolt(f"FP far-left bolt M12 {tag} X{int(_bx)} Z{int(_bz)}", _bx, ov.C_WID - 12, _bz, ov.WALL_T + _fp_t + 12, radius=6, axis="y", color=C_STEEL, head="far", nut="base"))   # hex head OUTSIDE (far wall), nut inside
+                P.append(draw.ruby_bolt(f"FP far-left bolt M12 {tag} X{int(_bx)} Z{int(_bz)}", _bx, ov.C_WID - 12, _bz, ov.WALL_T + _fp_t + 12, radius=6, axis="y", color=C_STEEL, head="far", nut="base"))   # hex head OUTSIDE (far wall), nut inside
         # WALL-SEAT SADDLES restored at BOTH left ends (items 330/336): the budgeted ICP-11 saddle
         # (back + exterior plate + seat + gusset + 4× M12 + M8 thumb-screw) the fpm redesign had dropped,
         # leaving a bare gusset/seat block with no wall fixing. Single-sourced from ov.film_plane_saddles
@@ -216,7 +217,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         P.append(ov.film_plane_saddles({tag: (cx, zc)}, walls=(0,)))   # NEAR (pinhole-wall) only — the far end is the pivot post
         # length splice (removable = 6ft + 260mm) at the PINHOLE end — shortest-throw, least-travelled;
         # same outboard-web placement so it's clear of the carriage
-        P.append(ov.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
+        P.append(draw.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
 
     # ── SKATE (spray-bar carriage pattern): Ø32 acetal wheels IN the channel; the Ø10 axle is
     # cantilevered from the CARRIAGE (inboard) — the axle and its retainer bolts pass through the
@@ -230,21 +231,21 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
     rlabel, r_x0, r_len = "Acetal roller Ø32 (wide face)", cx - 10, 20
     kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10          # keeper (under the top flange); Ø20 on a stub axle
     for ry in (ty + 8, ty + 48):
-        P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
+        P.append(draw.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
         wax0 = min(r_x0, inb - 6)
-        P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
-        P.append(ov.ruby_cylinder(f"Keeper roller Ø20 (anti-lift / anti-tip) {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
-        P.append(ov.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
+        P.append(draw.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
+        P.append(draw.ruby_cylinder(f"Keeper roller Ø20 (anti-lift / anti-tip) {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
+        P.append(draw.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
     # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
     # Spans the film-corner + load roller + keeper so every axle lands on it. TOP corners: cap the plate top
     # 25mm below the ceiling.
     zvals = (fz, rz, kz)
     zlo, zhi = min(zvals), max(zvals)
     plate_top = min(zhi + 18, ov.C_HGT - 25)
-    P.append(ov.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
+    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
     for ry in (ty + 8, ty + 48):
         blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
-        P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
+        P.append(draw.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
 
     # ── CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — BOTH corners now (web-vertical). Base on the carriage-
     # plate top; the hold-down arm reaches OUTBOARD over the channel TOP FLANGE and a UHMW pad presses DOWN on it.
@@ -254,10 +255,10 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
     basex = inb - cin * 3                                  # base near the plate's outboard edge
     padx = cx + cin * 8                                    # pad over the (inboard part of the) top flange
     cby = ty + 33
-    P.append(ov.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
-    P.append(ov.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
-    P.append(ov.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
-    P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
+    P.append(draw.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
+    P.append(draw.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
+    P.append(draw.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
+    P.append(draw.ruby_cylinder(f"Cam-brake lever {tag}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the
@@ -304,8 +305,8 @@ def corners():
         corner("TR", X_R, PZ1, PZ_HB_TOP, -1, "R"),   # top-right    — web-vertical guide, flanged
     ]
     # faint floor + ceiling so the UPPER (ceiling) and LOWER (floor) rails read as mounted structure
-    P.append(ov.ruby_box("Floor", X_L - 250, 0, -12, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
-    P.append(ov.ruby_box("Ceiling", X_L - 250, 0, CH, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
+    P.append(draw.ruby_box("Floor", X_L - 250, 0, -12, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
+    P.append(draw.ruby_box("Ceiling", X_L - 250, 0, CH, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
     return "\n".join(P)
 
 
@@ -324,18 +325,18 @@ def film_plane():
     yin = FP_Y_PARK - AT                          # in-plane leg lies against the ACM front face — parked
     P = [
         # ACM rigid backing (ghost), seated against the frame in-plane leg
-        ov.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y_PARK, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
+        draw.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y_PARK, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
                     color=C_PANEL, alpha=0.14),
         # 2x2 6061 Al angle perimeter frame — top / bottom (perp leg + in-plane leg = an L)
-        ov.ruby_box("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)", FCX_L, yin, PZ1 - AL, FP_W_CORNER, AT, AL, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)", FCX_L, yin, PZ0, FP_W_CORNER, AT, AL, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)", FCX_L, yin, PZ1 - AL, FP_W_CORNER, AT, AL, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)", FCX_L, yin, PZ0, FP_W_CORNER, AT, AL, color=C_FRAME),
         # left / right
-        ov.ruby_box("Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
+        draw.ruby_box("Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
     ]
     return "\n".join(P)
 
@@ -344,12 +345,12 @@ def pinhole():
     # Pinhole WALL removed (2026-07-17) — the full-width ghost plane made orbiting awkward;
     # the aperture marker + light cone still fix the pinhole in space.
     P = [
-        ov.ruby_box("Pinhole aperture", PH_X - 11, -18, PH_Z - 11, 22, 22, 22, color="#101014"),
+        draw.ruby_box("Pinhole aperture", PH_X - 11, -18, PH_Z - 11, 22, 22, 22, color="#101014"),
     ]
     corners_xyz = [(FCX_L, PZ1), (FCX_R, PZ1), (FCX_L, PZ0), (FCX_R, PZ0)]
     rays = "\n".join(
-        f'  ents.add_edges(Geom::Point3d.new({ov.mm(PH_X)}, {ov.mm(0)}, {ov.mm(PH_Z)}), '
-        f'Geom::Point3d.new({ov.mm(x)}, {ov.mm(FP_Y_PARK)}, {ov.mm(z)}))'
+        f'  ents.add_edges(Geom::Point3d.new({draw.mm(PH_X)}, {draw.mm(0)}, {draw.mm(PH_Z)}), '
+        f'Geom::Point3d.new({draw.mm(x)}, {draw.mm(FP_Y_PARK)}, {draw.mm(z)}))'
         for x, z in corners_xyz)
     P.append("  # light cone — pinhole → 4 panel corners\n" + rays + "\n")
     return "\n".join(P)
@@ -359,7 +360,7 @@ def labels():
     L = []
     def txt(s, x, y, z, vx, vy, vz):
         L.append(f'''
-tt = entities.add_text("{s}", Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)}), Geom::Vector3d.new({ov.mm(vx)}, {ov.mm(vy)}, {ov.mm(vz)}))
+tt = entities.add_text("{s}", Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)}), Geom::Vector3d.new({draw.mm(vx)}, {draw.mm(vy)}, {draw.mm(vz)}))
 tt.layer = model.layers["Labels"] rescue nil''')
     txt("PINHOLE (far wall) — the film plane faces it across the throw", PH_X, 0, PH_Z, 60, -50, 30)
     txt(f"Film plane {FP_W_CORNER} x {PZ1 - PZ0} (edges seated in the carriers; bottom @Z{PZ0} above walkway, weight on the bottom rail; top = light guide only)", 2400, FP_Y, PH_Z, 60, 45, 20)
@@ -457,8 +458,8 @@ def movement(corner="BL", two_way=False):
     carr = []
     static_ruby = "\n".join(channel_v(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}", cin))
     for ry in (ty + 8, ty + 48):
-        carr.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 10, ry, rz, 16, 20, color=C_CAR, axis="x"))
-    carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
+        carr.append(draw.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 10, ry, rz, 16, 20, color=C_CAR, axis="x"))
+    carr.append(draw.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
     # the ACTIVE cross-slide way (fixed to the carriage); the stack floats a SMALL foreshortening along it
     carr.append(deploy_rail)
     # FLOAT (the OTHER cross-slide + U-joint + its mounting hardware) — floats FORESHORTEN mm along the way
@@ -481,11 +482,11 @@ def movement(corner="BL", two_way=False):
     vlbl = "left" if cin > 0 else "right"
     panel = [
         emit_slide(f"304 SS corner plate (Movement {corner})", sp["corner_plate"], -px, -py, -pz),
-        ov.ruby_box(f"ACM film-panel corner — partial ghost (Movement {corner})", ax0 - px, FP_Y - py, az0 - pz, plen, 4, plen, color=C_PANEL, alpha=0.30),
-        ov.ruby_box(f"Film frame 2x2 6061 — {hlbl} upstand (Movement {corner})", ax0 - px, yperp - py, hz_up - pz, plen, AL, AT, color=C_FRAME),
-        ov.ruby_box(f"Film frame 2x2 6061 — {hlbl} in-plane leg (Movement {corner})", ax0 - px, yin - py, hz_in - pz, plen, AT, AL, color=C_FRAME),
-        ov.ruby_box(f"Film frame 2x2 6061 — {vlbl} upstand (Movement {corner})", vx_up - px, yperp - py, az0 - pz, AT, AL, plen, color=C_FRAME),
-        ov.ruby_box(f"Film frame 2x2 6061 — {vlbl} in-plane leg (Movement {corner})", vx_in - px, yin - py, az0 - pz, AL, AT, plen, color=C_FRAME),
+        draw.ruby_box(f"ACM film-panel corner — partial ghost (Movement {corner})", ax0 - px, FP_Y - py, az0 - pz, plen, 4, plen, color=C_PANEL, alpha=0.30),
+        draw.ruby_box(f"Film frame 2x2 6061 — {hlbl} upstand (Movement {corner})", ax0 - px, yperp - py, hz_up - pz, plen, AL, AT, color=C_FRAME),
+        draw.ruby_box(f"Film frame 2x2 6061 — {hlbl} in-plane leg (Movement {corner})", ax0 - px, yin - py, hz_in - pz, plen, AT, AL, color=C_FRAME),
+        draw.ruby_box(f"Film frame 2x2 6061 — {vlbl} upstand (Movement {corner})", vx_up - px, yperp - py, az0 - pz, AT, AL, plen, color=C_FRAME),
+        draw.ruby_box(f"Film frame 2x2 6061 — {vlbl} in-plane leg (Movement {corner})", vx_in - px, yin - py, az0 - pz, AL, AT, plen, color=C_FRAME),
         emit_slide(f"Frame-corner bolt (angle frame → corner plate) (Movement {corner})", sp["frame_bolt"], -px, -py, -pz),
     ]
     anchor = (cx + cin * 420, ty + 500, fz + sz * 520)
@@ -519,7 +520,7 @@ ents = mvpan_{sfx}.entities
 mvfl_{sfx} = model.definitions.add("Float {sfx}")
 ents = mvfl_{sfx}.entities
 {floatp}
-mvpan_{sfx}_inst = mvfl_{sfx}.entities.add_instance(mvpan_{sfx}, Geom::Transformation.translation([{ov.mm(px)}, {ov.mm(py)}, {ov.mm(pz)}]))
+mvpan_{sfx}_inst = mvfl_{sfx}.entities.add_instance(mvpan_{sfx}, Geom::Transformation.translation([{draw.mm(px)}, {draw.mm(py)}, {draw.mm(pz)}]))
 mvpan_{sfx}_inst.name = "Panel tilt {sfx}"; mvpan_{sfx}_inst.layer = model.layers["Movement"]
 mvo_{sfx} = model.definitions.add("Carriage {sfx}")
 ents = mvo_{sfx}.entities
@@ -557,7 +558,7 @@ mvfl_{sfx}_inst.set_attribute(da, "_{dep_axis}_formula", "{dep_expr}")
 end
 mvpan_{sfx}_inst.set_attribute(da, "_drive_formula", "Float{sfx}!drive")
 mvpan_{sfx}_inst.set_attribute(da, "_{rot_attr}_formula", "drive * {rot_val}")
-mvtxt_{sfx} = entities.add_text("{click_text}", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(ldx)}, {ov.mm(-400)}, {ov.mm(ldz)}))
+mvtxt_{sfx} = entities.add_text("{click_text}", Geom::Point3d.new({draw.mm(anchor[0])}, {draw.mm(anchor[1])}, {draw.mm(anchor[2])}), Geom::Vector3d.new({draw.mm(ldx)}, {draw.mm(-400)}, {draw.mm(ldz)}))
 mvtxt_{sfx}.layer = model.layers["Movement"] rescue nil
 '''
 
@@ -572,7 +573,7 @@ def shell():
     x0, xw = -300, (X_R - X_L) + 800
     Wd = ov.C_WID
     P = [
-        ov.ruby_box("Floor (reference)", x0, 0, -12, xw, Wd, 12, color=C_STEEL, alpha=0.08),
+        draw.ruby_box("Floor (reference)", x0, 0, -12, xw, Wd, 12, color=C_STEEL, alpha=0.08),
     ]
     # the FOUR depth rails (run in Y the full container depth): ALL web-vertical (BL/BR floor, TL/TR ceiling)
     P += channel_v("Depth rail BL", X_L, PZ_HB_BOT, 0, Wd, "rBL", +1)
@@ -595,9 +596,9 @@ def plane_frame(px, pz, yc):
     W = FP_W_CORNER
     ty = yc
     def bx(name, x, y, z, w, d, h, color, alpha=None):
-        return ov.ruby_box(name, x - px, y - yc, z - pz, w, d, h, color=color, alpha=alpha)
+        return draw.ruby_box(name, x - px, y - yc, z - pz, w, d, h, color=color, alpha=alpha)
     def bcyl(name, x, y, z, dia, ln, color, axis):
-        return ov.ruby_cylinder(name, x - px, y - yc, z - pz, dia, ln, color=color, axis=axis)
+        return draw.ruby_cylinder(name, x - px, y - yc, z - pz, dia, ln, color=color, axis=axis)
     P = [
         bx("Film panel (near-invisible, clickable fill) — whole plane", FCX_L, yc, PZ0, W, 4, PZ1 - PZ0, C_PANEL, 0.04),
         bx("Film frame — top upstand", FCX_L, yperp, PZ1 - AT, W, AL, AT, C_FRAME),
@@ -638,8 +639,8 @@ def plane_carriage(cx, fz, zc, cin, isb, yc):
     t = f"({int(cx)},{int(fz)})"
     P = []
     for ry in (ty + 8, ty + 48):
-        P.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 {t} {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
-    P.append(ov.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
+        P.append(draw.ruby_cylinder(f"Acetal skate wheel Ø32 {t} {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
+    P.append(draw.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
     # the two cross-slide ways, RAIL-ALIGNED (fixed to the carriage) — SHARED (corner_slide_parts); the
     # U-joint (in the frame) rides them, so they keep their positions and the frame moves relative to them.
     sp = corner_slide_parts(cx, fcx, fz, cin, isb, yc)
@@ -681,7 +682,7 @@ da = "dynamic_attributes"
 frm{mode} = model.definitions.add("Plane frame {mode}")
 ents = frm{mode}.entities
 {plane_frame(cxr, czr, yc)}
-frm{mode}_inst = plw{mode}.entities.add_instance(frm{mode}, Geom::Transformation.translation([{ov.mm(cxr)}, {ov.mm(yc)}, {ov.mm(czr)}]))
+frm{mode}_inst = plw{mode}.entities.add_instance(frm{mode}, Geom::Transformation.translation([{draw.mm(cxr)}, {draw.mm(yc)}, {draw.mm(czr)}]))
 frm{mode}_inst.name = "Plane frame {mode}"; frm{mode}_inst.layer = model.layers["{tag}"]
 [frm{mode}, frm{mode}_inst].each {{ |e| e.set_attribute(da, "_name", "PlaneFrame{mode}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "{rot_attr}", 0.0) }}
 frm{mode}_inst.set_attribute(da, "_{rot_attr}_formula", "WholePlane{mode}!move * {rot_val}")
@@ -695,7 +696,7 @@ plw{mode}_inst.set_attribute(da, "_move_access", "VIEW")
 plw{mode}_inst.set_attribute(da, "_move_label", "{mode}: click — frame {rot_attr}s, carriages roll on the rails")
 plw{mode}_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 plw{mode}_inst.set_attribute(da, "_onclick_access", "NONE")
-pltxt{mode} = entities.add_text("CLICK: {mode} — the frame {rot_attr}s; each carriage stays on its rail and rolls in Y", Geom::Point3d.new({ov.mm(cxr)}, {ov.mm(yc + 300)}, {ov.mm(PZ1 + 150)}), Geom::Vector3d.new({ov.mm(300)}, {ov.mm(-300)}, {ov.mm(300)}))
+pltxt{mode} = entities.add_text("CLICK: {mode} — the frame {rot_attr}s; each carriage stays on its rail and rolls in Y", Geom::Point3d.new({draw.mm(cxr)}, {draw.mm(yc + 300)}, {draw.mm(PZ1 + 150)}), Geom::Vector3d.new({draw.mm(300)}, {draw.mm(-300)}, {draw.mm(300)}))
 pltxt{mode}.layer = model.layers["{tag}"] rescue nil
 '''
 
@@ -704,12 +705,12 @@ def generate_ruby():
     mv_corners = ["BL", "TL", "BR", "TR"]
     mv = {c: movement(c, two_way=(c in MOVEMENT_TWO_WAY)) for c in mv_corners}
     comps = [
-        ov.component("Corners", "Corners", corners()),
-        ov.component("Film Plane", "Film Plane", film_plane()),
-        ov.component("Pinhole", "Pinhole", pinhole()),
-        ov.component("Context (walkway + IBC cantilever/beams)", "Context", context()),
-    ] + [ov.component(f"Movement base ({c} corner)", "Movement", mv[c][0]) for c in mv_corners] + [
-        ov.component("Container shell (no ceiling)", "Shell", shell()),
+        draw.component("Corners", "Corners", corners()),
+        draw.component("Film Plane", "Film Plane", film_plane()),
+        draw.component("Pinhole", "Pinhole", pinhole()),
+        draw.component("Context (walkway + IBC cantilever/beams)", "Context", context()),
+    ] + [draw.component(f"Movement base ({c} corner)", "Movement", mv[c][0]) for c in mv_corners] + [
+        draw.component("Container shell (no ceiling)", "Shell", shell()),
     ]
     body = "\n".join(comps)
     tags_ruby = "\n".join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
@@ -734,7 +735,7 @@ def generate_ruby():
 
     def scene_lit(n, tags, tgt):
         tg = "[" + ", ".join(f'"{t}"' for t in tags) + "]"
-        cam = f"[{ov.mm(tgt[0])}, {ov.mm(tgt[1])}, {ov.mm(tgt[2])}, {ov.mm(tgt[3])}]"
+        cam = f"[{draw.mm(tgt[0])}, {draw.mm(tgt[1])}, {draw.mm(tgt[2])}, {draw.mm(tgt[3])}]"
         return f'["{n}", {tg}, {cam}]'
     # Overview + Corner detail come first; Movement + the two Whole-plane scenes are created AFTER Swing (top)
     iso_first_ruby = "[" + ", ".join(scene_lit(*s) for s in iso[:2]) + "]"
@@ -794,14 +795,14 @@ model.layers.to_a.each {{ |l|
 
 # ── Tilt (side) — look along +X at the left edge: depth (Y) horizontal, height (Z) vertical ──
 model.layers.each {{ |l| l.visible = (l == default_layer || {show_ruby}.include?(l.name)) }}
-tc = Geom::Point3d.new({ov.mm(X_L)}, {ov.mm(FP_Y)}, {ov.mm(CH/2)})
-te = Geom::Point3d.new({ov.mm(X_L - 4200)}, {ov.mm(FP_Y)}, {ov.mm(CH/2)})
+tc = Geom::Point3d.new({draw.mm(X_L)}, {draw.mm(FP_Y)}, {draw.mm(CH/2)})
+te = Geom::Point3d.new({draw.mm(X_L - 4200)}, {draw.mm(FP_Y)}, {draw.mm(CH/2)})
 model.active_view.camera = Sketchup::Camera.new(te, tc, Z_AXIS)
 ps = model.pages.add("Tilt (side)"); ps.use_camera = true
 
 # ── Swing (top) — top-down over the pinhole→panel span: width (X) and depth (Y) ──
-sc = Geom::Point3d.new({ov.mm(PH_X)}, {ov.mm(FP_Y/2)}, 0)
-se = Geom::Point3d.new({ov.mm(PH_X)}, {ov.mm(FP_Y/2)}, {ov.mm(9500)})
+sc = Geom::Point3d.new({draw.mm(PH_X)}, {draw.mm(FP_Y/2)}, 0)
+se = Geom::Point3d.new({draw.mm(PH_X)}, {draw.mm(FP_Y/2)}, {draw.mm(9500)})
 model.active_view.camera = Sketchup::Camera.new(se, sc, Y_AXIS)
 ps2 = model.pages.add("Swing (top)"); ps2.use_camera = true
 
@@ -817,9 +818,9 @@ ps2 = model.pages.add("Swing (top)"); ps2.use_camera = true
 
 # ── Labeled (Labels tag) — LAST scene ──
 model.layers.each {{ |l| l.visible = (l == default_layer || {lbl_show_ruby}.include?(l.name)) }}
-lc = Geom::Point3d.new({ov.mm(2400)}, {ov.mm(FP_Y - 400)}, {ov.mm(CH/2)})
+lc = Geom::Point3d.new({draw.mm(2400)}, {draw.mm(FP_Y - 400)}, {draw.mm(CH/2)})
 ldir = Geom::Vector3d.new(0.5, -0.7, 0.4); ldir.normalize!
-model.active_view.camera = Sketchup::Camera.new(lc.offset(ldir, {ov.mm(7200)}), lc, Z_AXIS)
+model.active_view.camera = Sketchup::Camera.new(lc.offset(ldir, {draw.mm(7200)}), lc, Z_AXIS)
 pl = model.pages.add("Labeled"); pl.use_camera = true
 
 # Land on the Overview scene (which hides Movement/Context) so the post-regen view matches a real

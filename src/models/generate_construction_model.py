@@ -31,6 +31,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov            # Overview helpers + component builders
+import tbs_draw as draw                          # shared drawing/material primitives (live mute state)
 import generate_electrical_model as em          # EP sub-builders (external panel box vs interior core + links)
 import generate_corridor_water_panel as cp      # IBC corridor frame + plumbing
 import generate_pinhole_water_panel as pw        # pinhole-wall kit + spray supply
@@ -47,9 +48,9 @@ def _join(*parts):
 # it via the static copy.)  alpha 0.35 = see-through; ghost is 0.15.
 BACKDROP_MUTE, BACKDROP_ALPHA = 0.30, 0.35
 def _wall_backing_backdrop():
-    if ov._CTX_FORCE:                          # inside a prior-phase forced ghost — let the ghost win (don't un-mute it)
+    if draw._CTX_FORCE:                        # inside a prior-phase forced ghost — let the ghost win (don't un-mute it)
         return pw.backing()
-    with ov.muted(BACKDROP_MUTE, BACKDROP_ALPHA):
+    with draw.muted(BACKDROP_MUTE, BACKDROP_ALPHA):
         return pw.backing()
 
 
@@ -143,7 +144,7 @@ def context():
     FLOOR. The roof, both side walls, and the (right) sealed end wall are omitted so nothing
     encloses the model or blocks the orbit."""
     t = ov.WALL_T
-    return ov.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.18)
+    return draw.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.18)
 
 
 def _phase_dc_ruby(pnum, p_steps):
@@ -199,7 +200,7 @@ def generate_ruby():
     static_tag = {pn: f"P{pn}-static" for pn in DC_PHASES if pn < last_scene_phase}
     TAGS = ["Context"] + step_tags + list(static_tag.values())
 
-    comps = [ov.component("Container (ghost)", "Context", context())]
+    comps = [draw.component("Container (ghost)", "Context", context())]
     dc_blocks, dc_vars, dc_info = [], [], []
     for pn in SCENE_PHASES:
         p_steps = [(sid, tag, label, body) for (p, sid, tag, label, body) in STEPS if p == pn]
@@ -213,12 +214,12 @@ def generate_ruby():
             # against the already-installed context. Skipped for the last phase (no later scene).
             if pn in static_tag:
                 for (sid, tag, label, body) in p_steps:
-                    with ov.muted(GHOST_MUTE, GHOST_ALPHA, force=True):
+                    with draw.muted(GHOST_MUTE, GHOST_ALPHA, force=True):
                         static_body = body()
-                    comps.append(ov.component(f"[built] Step {sid} — {label}", static_tag[pn], static_body))
+                    comps.append(draw.component(f"[built] Step {sid} — {label}", static_tag[pn], static_body))
         else:
             for (sid, tag, label, body) in p_steps:
-                comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
+                comps.append(draw.component(f"Step {sid} — {label}", tag, body()))
     body_ruby = '\n'.join(comps) + '\n' + '\n'.join(dc_blocks)
     dc_redraw = ''.join(f'    cls.redraw_with_undo({v}) rescue nil\n' for v in dc_vars)
     # Re-assert the step-1 default AFTER the DC redraw (the ANIMATE redraw can leave the first DC's

@@ -16,6 +16,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(os.path.dirname(_HERE))
 sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
+import tbs_draw as draw                          # shared drawing/material primitives
 
 # ── deep-box frame geometry (from the fork; one source) ──
 S       = ov.IBC_FRAME_RHS               # 50×50 RHS
@@ -116,7 +117,7 @@ def ribbon_supports():
     x0, x1 = ov.RWK_X_L, ov.RWK_X_R              # bearer span across the walkway (4329..4629)
     ztop = RIBBON_Z - 8                          # ~96 — bar top just under the flush pipes (ribbon Z104.5)
     for yd in RIBBON_SUP_YD:
-        p.append(ov.ruby_box("Ribbon support cross-beam (welded 40x10)",
+        p.append(draw.ruby_box("Ribbon support cross-beam (welded 40x10)",
                              x0, yd - 3, ztop - 10, x1 - x0, 6, 10, color=ov.C_STEEL))
     return "\n".join(p)
 
@@ -125,12 +126,12 @@ def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
     """One port stub of a fitting — a cylinder from the body face outward along an axis."""
     if axis == "x":
         x0 = cx + body / 2 if sd > 0 else cx - body / 2 - L
-        return ov.ruby_cylinder(nm, x0, cy, cz, r, L, color=color, axis="x")
+        return draw.ruby_cylinder(nm, x0, cy, cz, r, L, color=color, axis="x")
     if axis == "y":
         y0 = cy + body / 2 if sd > 0 else cy - body / 2 - L
-        return ov.ruby_cylinder(nm, cx, y0, cz, r, L, color=color, axis="y")
+        return draw.ruby_cylinder(nm, cx, y0, cz, r, L, color=color, axis="y")
     z0 = cz + body / 2 if sd > 0 else cz - body / 2 - L
-    return ov.ruby_cylinder(nm, cx, cy, z0, r, L, color=color, axis="z")
+    return draw.ruby_cylinder(nm, cx, cy, z0, r, L, color=color, axis="z")
 
 
 def diverter(name, cx, cy, cz, run="x", branch="z-", handle="y+", color=None, L=10, r=13):
@@ -144,7 +145,7 @@ def diverter(name, cx, cy, cz, run="x", branch="z-", handle="y+", color=None, L=
     body = 46
     ba, bs = branch[0], (+1 if "+" in branch else -1)
     ha, hs = handle[0], (+1 if "+" in handle else -1)
-    p = [ov.ruby_box(f"{name} body", cx - body / 2, cy - body / 2, cz - body / 2, body, body, body, color=color)]
+    p = [draw.ruby_box(f"{name} body", cx - body / 2, cy - body / 2, cz - body / 2, body, body, body, color=color)]
     p.append(_arm(f"{name} run +", cx, cy, cz, run, +1, body, L, r, color))
     p.append(_arm(f"{name} run -", cx, cy, cz, run, -1, body, L, r, color))
     p.append(_arm(f"{name} branch", cx, cy, cz, ba, bs, body, L, r, color))
@@ -155,11 +156,11 @@ def diverter(name, cx, cy, cz, run="x", branch="z-", handle="y+", color=None, L=
            "z": (cx, cy, cz + hs * (body / 2 + 48))}[ha]
     lx, ly, lz = tip
     if run == "x":
-        p.append(ov.ruby_box(f"{name} handle lever", lx - 32, ly - 8, lz - 7, 64, 16, 14, color=C_HANDLE))
+        p.append(draw.ruby_box(f"{name} handle lever", lx - 32, ly - 8, lz - 7, 64, 16, 14, color=C_HANDLE))
     elif run == "y":
-        p.append(ov.ruby_box(f"{name} handle lever", lx - 8, ly - 32, lz - 7, 16, 64, 14, color=C_HANDLE))
+        p.append(draw.ruby_box(f"{name} handle lever", lx - 8, ly - 32, lz - 7, 16, 64, 14, color=C_HANDLE))
     else:
-        p.append(ov.ruby_box(f"{name} handle lever", lx - 8, ly - 7, lz - 32, 16, 14, 64, color=C_HANDLE))
+        p.append(draw.ruby_box(f"{name} handle lever", lx - 8, ly - 7, lz - 32, 16, 14, 64, color=C_HANDLE))
     return "\n".join(p)
 
 
@@ -185,7 +186,7 @@ def frame(part="all"):
     if posts:
         for ux in box_xs:                                  # 4 corner uprights
             for yd in up_yds:
-                p.append(ov.ruby_box("Frame upright", ux, yd, ft, S, S, TOP_Z - ft, color=ov.C_STEEL))
+                p.append(draw.ruby_box("Frame upright", ux, yd, ft, S, S, TOP_Z - ft, color=ov.C_STEEL))
     if rails:
         for rz in (ft, TOP_Z - S):                         # bottom ring on the plate + top ring, rails BUTT between uprights
             for ux in box_xs:
@@ -194,9 +195,9 @@ def frame(part="all"):
                 # the foot bolts straddle it with the heads clear (no access holes, no riser-corridor clash).
                 front_bot = rz == ft and ux == FRONT_X
                 rx, rw, rh = (front_rail_cx - ov.IBC_FRONT_RAIL_W / 2, ov.IBC_FRONT_RAIL_W, ov.IBC_FRONT_RAIL_H) if front_bot else (ux, S, S)
-                p.append(ov.ruby_box("Frame rail (Yd)", rx, YD_NEAR + S, rz, rw, (YD_FAR - S) - (YD_NEAR + S), rh, color=ov.C_STEEL))
+                p.append(draw.ruby_box("Frame rail (Yd)", rx, YD_NEAR + S, rz, rw, (YD_FAR - S) - (YD_NEAR + S), rh, color=ov.C_STEEL))
             for yd in up_yds:
-                p.append(ov.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
+                p.append(draw.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
     if posts:
         # floor feet (plate + 4× M12) under each upright.  FRONT feet still shift outboard (foot_dx) to
         # clear the processing-tray basin on the −X side, but the plate's +X (tote-side) overhang is
@@ -213,10 +214,10 @@ def frame(part="all"):
                 px1 = min(cx + fp / 2, ux + S) if front else cx + fp / 2   # trim +X to the upright face (front only)
                 pcx, pxw = (px0 + px1) / 2, px1 - px0
                 bpx = min(bpc, pxw / 2 - 13)                           # X bolt half-spacing that fits the (trimmed) plate
-                p.append(ov.ruby_box("Foot plate", px0, cy - fp / 2, 0, pxw, fp, ft, color=ov.C_STEEL))
+                p.append(draw.ruby_box("Foot plate", px0, cy - fp / 2, 0, pxw, fp, ft, color=ov.C_STEEL))
                 for dx in (-bpx, bpx):
                     for dy in (-bpc, bpc):
-                        p.append(ov.ruby_bolt("Foot anchor M12", pcx + dx, cy + dy, 0, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # hex head BUTTS the plate top
+                        p.append(draw.ruby_bolt("Foot anchor M12", pcx + dx, cy + dy, 0, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # hex head BUTTS the plate top
         # REAR-panel mount brackets only (on the back uprights, set back behind the inside face).
         # Drawn as an L-ANGLE (5mm legs, per Plate 5 / Detail D): a horizontal base leg TEK-screwed to the
         # post (J8) + a vertical upstand the rear panel bolts to (J4) — NOT a solid block.
@@ -226,9 +227,9 @@ def frame(part="all"):
             for bz in (120, TOP_Z / 2, PANEL_TOP_Z - 120):
                 by0 = py if pdir > 0 else py - bproj
                 post_y = by0 if pdir > 0 else by0 + bproj - blt   # thin leg sits flat on the upright INBOARD face
-                p.append(ov.ruby_box("Rear-panel bracket post leg", BACK_X, post_y, bz - bw / 2,
+                p.append(draw.ruby_box("Rear-panel bracket post leg", BACK_X, post_y, bz - bw / 2,
                                      EQT + blt, blt, bw, color=ov.C_STEEL))        # vertical leg FLAT on the upright's Yd face — TEK-screwed to the post (J8)
-                p.append(ov.ruby_box("Rear-panel bracket upstand", BACK_X + EQT, by0, bz - bw / 2,
+                p.append(draw.ruby_box("Rear-panel bracket upstand", BACK_X + EQT, by0, bz - bw / 2,
                                      blt, bproj, bw, color=ov.C_STEEL))            # vertical upstand parallel to the ply (Yd-Z plane) — the panel bolts THROUGH it (J4)
     return "\n".join(p)
 
@@ -253,17 +254,17 @@ def tote_restraint():
         cor_yd = y1 if i == 0 else y0          # the bar's CORRIDOR (upright) end
         wdir = -1 if i == 0 else 1             # toward-wall direction the cleat leg extends UNDER the bar
         for bz in bar_zs:
-            p.append(ov.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, S, color=ov.C_STEEL))
+            p.append(draw.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, S, color=ov.C_STEEL))
             # J2/W3 corridor-end connection (Detail B): an L-ANGLE fillet-welded to the upright — a horizontal
             # leg the bar sits on + a vertical leg on the bar's FRONT (−X) face — the bar drops into the corner
             # and a SINGLE horizontal M12 (J2) runs through the vertical leg + the bar's tall (50mm) web, so the
             # hole gets full edge distance and the bolt secures the unsupported direction (2026-08-18).
             lt, llen = 8, 90                                                     # leg thickness / reach along the bar (Yd)
             leg_y0 = cor_yd - llen if wdir < 0 else cor_yd
-            p.append(ov.ruby_box("Bar cleat leg (J2)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=ov.C_STEEL))          # horizontal leg UNDER the bar
-            p.append(ov.ruby_box("Bar cleat upstand (J2/W3)", front_x - lt, leg_y0, bz - lt, lt, llen, S + lt, color=ov.C_STEEL))  # vertical leg on the bar FRONT (−X), welded to the upright
-            p.append(ov.ruby_box("Bar cleat backing plate (J2)", front_x + bar_d, cor_yd + wdir * 45 - 25, bz + 5, lt, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
-            p.append(ov.ruby_bolt("IBC Bar Cleat Bolt M12x65 (J2)", front_x - lt, cor_yd + wdir * 45, bz + S / 2,
+            p.append(draw.ruby_box("Bar cleat leg (J2)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=ov.C_STEEL))          # horizontal leg UNDER the bar
+            p.append(draw.ruby_box("Bar cleat upstand (J2/W3)", front_x - lt, leg_y0, bz - lt, lt, llen, S + lt, color=ov.C_STEEL))  # vertical leg on the bar FRONT (−X), welded to the upright
+            p.append(draw.ruby_box("Bar cleat backing plate (J2)", front_x + bar_d, cor_yd + wdir * 45 - 25, bz + 5, lt, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
+            p.append(draw.ruby_bolt("IBC Bar Cleat Bolt M12x65 (J2)", front_x - lt, cor_yd + wdir * 45, bz + S / 2,
                                   bar_d + 2 * lt, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))                 # SINGLE horizontal bolt: leg + bar web + backing plate
     # D-ring lashing holders — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1); on the LOWER
     # bar of each tier (one per tier) so the ring count stays 8 despite the doubled bars.
@@ -271,7 +272,7 @@ def tote_restraint():
     # D-ring holders don't intersect them (was 520/940/1422/1842 — the 940 + 1422 rings touched the cleats).
     for ydh in (520, 900, 1462, ov.C_WID - 520):
         for bz in tier_zs:
-            p.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + S / 2, 16, 10,
+            p.append(draw.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + S / 2, 16, 10,
                                       color=ov.C_STEEL, axis="x"))
     # Wall joist hangers — ONE identical 2-bolt hanger per bar (symmetric pair, fab-identical), each
     # through-bolted (2× M12×65) to its own exterior backing plate. 8 hangers × 2 bolts = 16 wall
@@ -295,24 +296,24 @@ def tote_restraint():
             # Clamp assembly sits on the INSIDE (corridor) side of the bar — its back edge flush with the bar
             # back (= tote front), NOT projecting into the tote (was front_x−8 → +52, 32mm into the tote).
             hx0 = front_x + bar_d - pocket_w                  # inside plate / backing-plate X start
-            p.append(ov.ruby_box("Wall Hanger Plate", hx0, p_y, plate_z0, pocket_w, ht, ext_ph, color=ov.C_STEEL))
+            p.append(draw.ruby_box("Wall Hanger Plate", hx0, p_y, plate_z0, pocket_w, ht, ext_ph, color=ov.C_STEEL))
             # SAME L-cleat as the post end (welded to the inside plate): a horizontal leg the bar sits on +
             # a vertical leg on the bar FRONT, with 1 HORIZONTAL J7 bolt through the leg + the bar's 50mm web.
             lt2 = 8
-            p.append(ov.ruby_box("Wall Hanger L-leg (J7)", front_x, s_y, bz - lt2, bar_d, dep, lt2, color=ov.C_STEEL))          # horizontal leg (bar sits on it)
-            p.append(ov.ruby_box("Wall Hanger L-upstand (J7/W)", front_x - lt2, s_y, bz - lt2, lt2, dep, S + lt2, color=ov.C_STEEL))  # vertical leg on the bar FRONT
-            p.append(ov.ruby_box("Wall Hanger backing plate (J7)", front_x + bar_d, wall_yd + din * 28 - 25, bz + 5, lt2, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
+            p.append(draw.ruby_box("Wall Hanger L-leg (J7)", front_x, s_y, bz - lt2, bar_d, dep, lt2, color=ov.C_STEEL))          # horizontal leg (bar sits on it)
+            p.append(draw.ruby_box("Wall Hanger L-upstand (J7/W)", front_x - lt2, s_y, bz - lt2, lt2, dep, S + lt2, color=ov.C_STEEL))  # vertical leg on the bar FRONT
+            p.append(draw.ruby_box("Wall Hanger backing plate (J7)", front_x + bar_d, wall_yd + din * 28 - 25, bz + 5, lt2, 50, 40, color=ov.C_STEEL))  # nut-side spreader on the bar's far web
             ecx = hx0 + pocket_w / 2
             plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
             bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
-            p.append(ov.ruby_box("IBC Wall Backing Plate (ext)",
+            p.append(draw.ruby_box("IBC Wall Backing Plate (ext)",
                                  ecx - ext_pw / 2, plate_y, plate_z0, ext_pw, ext_pt, ext_ph, color=ov.C_STEEL))
             for bolt_z in (bolt_lo, bolt_hi):   # 2 through-bolts, ≥50mm clear of the bar + seat
-                p.append(ov.ruby_bolt("IBC Wall Through-Bolt M12", ecx, bolt_cy, bolt_z, 58, radius=7,
+                p.append(draw.ruby_bolt("IBC Wall Through-Bolt M12", ecx, bolt_cy, bolt_z, 58, radius=7,
                                       axis="y", color=C_BOLT, head="far", nut="base"))  # head outside, nut inside
             # J7 retention bolt: ONE HORIZONTAL M12 through the L's vertical leg + the bar's 50mm web (like J2 at
             # the post) — good edge distance; the L-corner carries the load, the bolt secures the unsupported direction.
-            p.append(ov.ruby_bolt("IBC Bar Retention Bolt M12 (J7)", front_x - lt2, wall_yd + din * 28,
+            p.append(draw.ruby_bolt("IBC Bar Retention Bolt M12 (J7)", front_x - lt2, wall_yd + din * 28,
                                   bz + S / 2, bar_d + 2 * lt2, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))
     return "\n".join(p)
 
@@ -351,11 +352,11 @@ def rear_panel():
                   (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
     spine_holes = [(5500, 1376, RPH),                    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
                    (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
-    p = [ov.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
+    p = [draw.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
                      EQT, yw, ph, color=ov.C_PLY, holes=rear_holes, hole_axis="x")]
     # 18mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the chase between the bodies and the rear frame.
-    p.append(ov.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, SHIRT_Z0,   # SHIRT_X: module constant
+    p.append(draw.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, SHIRT_Z0,   # SHIRT_X: module constant
                          EQT, yw, PANEL_TOP_Z - SHIRT_Z0, color=ov.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
@@ -364,13 +365,13 @@ def rear_panel():
     blk_x0, blk_d = SHIRT_X + 25, BACK_X - (SHIRT_X + 25)   # shirt back → rear-panel front
     for byd in (YD_NEAR + S, YD_FAR - S - 40):              # near + far edges, 40mm wide
         for bz in (320, 920, 1560):                        # all clear of the port runs (z1492+)
-            p.append(ov.ruby_box("Shirt-to-panel spacer block", blk_x0, byd, bz, blk_d, 40, 120, color=ov.C_PLY))
+            p.append(draw.ruby_box("Shirt-to-panel spacer block", blk_x0, byd, bz, blk_d, 40, 120, color=ov.C_PLY))
     # Drain-riser backing SPINE — an 18mm ply fin teeing PERPENDICULAR off the rear panel into the
     # rear corridor (matches the documented marine-ply spine), spanning the two tall back-of-panel
     # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).
-    p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, SPINE_Z0,
+    p.append(draw.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, SPINE_Z0,
                          SPINE_X_END - BACK_X, 18, (TOP_Z - S) - SPINE_Z0, color=ov.C_PLY,
                          holes=spine_holes, hole_axis="y"))   # −Yd face at 1206 = the grey
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
@@ -387,18 +388,18 @@ def rear_panel():
         for frac in (0.30, 0.70):
             cz = max(300, min(int(zb + (zt - zb) * frac), int(TOP_Z - S - 20)))
             y_lo = min(spine_face, ryd - RP - 2); y_hi = max(spine_face, ryd + RP + 2)
-            p.append(ov.ruby_box("Spine riser P-clip", rx - 14, y_lo, cz - 8,
+            p.append(draw.ruby_box("Spine riser P-clip", rx - 14, y_lo, cz - 8,
                                  28, y_hi - y_lo, 16, color=C_CLIP))
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
     # P-05→X3 (brown, Yd1245, Z1502) and P-03→X4 (grey, Yd1235, Z1902). 2 clamps each, to the +Yd face.
     spine_far_face = 1224
     for px, pyd, pz in ((5250, 1245, 1502), (5450, 1245, 1502), (5650, 1245, 1502),                       # P-05 → X3 (brown) — run ends at the X5680 crossing
                         (5250, 1235, 1902), (5450, 1235, 1902), (5650, 1235, 1902), (5730, 1235, 1902)):  # P-03 → X4 (grey) — +2 over the extended spine
-        p.append(ov.ruby_box("Spine far-side P-clip", px - 8, spine_far_face, pz - 14,
+        p.append(draw.ruby_box("Spine far-side P-clip", px - 8, spine_far_face, pz - 14,
                              16, (pyd + RP + 2) - spine_far_face, 28, color=C_CLIP))   # horizontal X-port line: band ⊥ the pipe
     # P-03→X4 end-wall DROP (vertical at X5763, Yd1235) — now backed by the extended spine; clamp to the +Yd face
     for dz in (1700, 1850):
-        p.append(ov.ruby_box("Spine far-side P-clip", 5763 - 14, spine_far_face, dz - 8,
+        p.append(draw.ruby_box("Spine far-side P-clip", 5763 - 14, spine_far_face, dz - 8,
                              28, (1235 + RP + 2) - spine_far_face, 16, color=C_CLIP))   # vertical drop: band ⊥ (thin-Z)
     return "\n".join(p)
 
@@ -453,16 +454,16 @@ def pump_unit(nm, cx, cy, cz0, axis="x", face=1, color=None):
     pump_in()/pump_out()."""
     color = color or ov.C_PUMP
     top = cz0 + PVB_H
-    p = [ov.ruby_cylinder(nm + " body", cx, cy, cz0, PVB_R, PVB_H, color=color, axis="z"),
-         ov.ruby_cylinder(nm + " head", cx, cy, top, PVB_R + 3, PCAP_H, color=CDK, axis="z")]
+    p = [draw.ruby_cylinder(nm + " body", cx, cy, cz0, PVB_R, PVB_H, color=color, axis="z"),
+         draw.ruby_cylinder(nm + " head", cx, cy, top, PVB_R + 3, PCAP_H, color=CDK, axis="z")]
     pz = top - 18                                # ports near the top (like the filter cap ports)
     for tag, sd in (("in", -face), ("out", face)):
         if axis == "x":
             x0 = (cx + PVB_R) if sd > 0 else (cx - PVB_R - 30)
-            p.append(ov.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, 30, color=CDK, axis="x"))
+            p.append(draw.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, 30, color=CDK, axis="x"))
         else:
             y0 = (cy + PVB_R) if sd > 0 else (cy - PVB_R - 30)
-            p.append(ov.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, 30, color=CDK, axis="y"))
+            p.append(draw.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, 30, color=CDK, axis="y"))
     return p
 
 
@@ -486,11 +487,11 @@ def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
     p = []
     # RUN body (centered, both ways) + BRANCH body (centre outward)
     run0 = {"x": (cx - half, cy, cz), "y": (cx, cy - half, cz), "z": (cx, cy, cz - half)}[run]
-    p.append(ov.ruby_cylinder(nm + " run", run0[0], run0[1], run0[2], br, 2 * half, color=color, axis=run))
+    p.append(draw.ruby_cylinder(nm + " run", run0[0], run0[1], run0[2], br, 2 * half, color=color, axis=run))
     brn0 = {"x": ((cx if bs > 0 else cx - bl), cy, cz),
             "y": (cx, (cy if bs > 0 else cy - bl), cz),
             "z": (cx, cy, (cz if bs > 0 else cz - bl))}[ba]
-    p.append(ov.ruby_cylinder(nm + " branch", brn0[0], brn0[1], brn0[2], br, bl, color=color, axis=ba))
+    p.append(draw.ruby_cylinder(nm + " branch", brn0[0], brn0[1], brn0[2], br, bl, color=color, axis=ba))
     # SOCKET CUFFS at the 3 ends (raised bell sockets the pipe inserts into)
     ends = {"x": [(cx - half, cy, cz, "x"), (cx + half - cl, cy, cz, "x")],
             "y": [(cx, cy - half, cz, "y"), (cx, cy + half - cl, cz, "y")],
@@ -499,7 +500,7 @@ def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
             "y": (cx, (cy + bl - cl) if bs > 0 else (cy - bl), cz, "y"),
             "z": (cx, cy, (cz + bl - cl) if bs > 0 else (cz - bl), "z")}[ba]
     for ex, ey, ez, ax in ends + [bend]:
-        p.append(ov.ruby_cylinder(nm + " socket cuff", ex, ey, ez, cr, cl, color=color, axis=ax))
+        p.append(draw.ruby_cylinder(nm + " socket cuff", ex, ey, ez, cr, cl, color=color, axis=ax))
     return "\n".join(p)
 
 
@@ -514,12 +515,12 @@ def cross(nm, cx, cy, cz, a1="x", a2="y", color=None):
     ends = []
     for ax in (a1, a2):
         a0 = {"x": (cx - half, cy, cz), "y": (cx, cy - half, cz), "z": (cx, cy, cz - half)}[ax]
-        p.append(ov.ruby_cylinder(nm + " run", a0[0], a0[1], a0[2], br, 2 * half, color=color, axis=ax))
+        p.append(draw.ruby_cylinder(nm + " run", a0[0], a0[1], a0[2], br, 2 * half, color=color, axis=ax))
         ends += {"x": [(cx - half, cy, cz, "x"), (cx + half - cl, cy, cz, "x")],
                  "y": [(cx, cy - half, cz, "y"), (cx, cy + half - cl, cz, "y")],
                  "z": [(cx, cy, cz - half, "z"), (cx, cy, cz + half - cl, "z")]}[ax]
     for ex, ey, ez, ax in ends:
-        p.append(ov.ruby_cylinder(nm + " socket cuff", ex, ey, ez, cr, cl, color=color, axis=ax))
+        p.append(draw.ruby_cylinder(nm + " socket cuff", ex, ey, ez, cr, cl, color=color, axis=ax))
     return "\n".join(p)
 
 
@@ -529,9 +530,9 @@ def check_valve(nm, px, py, pz, axis, color=None):
     they sit on a STRAIGHT length of pipe, never straddling an elbow."""
     color = color or C_CHECK
     L, r = 48, RP + 7
-    if axis == "x": return ov.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x")
-    if axis == "y": return ov.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y")
-    return ov.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z")
+    if axis == "x": return draw.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x")
+    if axis == "y": return draw.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y")
+    return draw.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z")
 
 
 C_BV = "#7A8088"                              # ball-valve body — chrome/steel grey (distinct from
@@ -548,24 +549,24 @@ def ball_valve(nm, px, py, pz, axis, color=None, hdir="+y", rot_deg=0):
     HS, HSr, LV = 28, 6, 48                    # handle stem length / radius, lever-bar length
     p = []
     if axis == "x":                            # horizontal barrel along X — handle sticks UP (+Z)
-        p.append(ov.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x"))
-        p.append(ov.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
-        p.append(ov.ruby_box(nm + " handle", px - LV / 2, py - 7, pz + r + HS, LV, 14, 9, color=C_HANDLE))
+        p.append(draw.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x"))
+        p.append(draw.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
+        p.append(draw.ruby_box(nm + " handle", px - LV / 2, py - 7, pz + r + HS, LV, 14, 9, color=C_HANDLE))
     elif axis == "y":                          # horizontal barrel along Yd — handle sticks UP (+Z)
-        p.append(ov.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y"))
-        p.append(ov.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
-        p.append(ov.ruby_box(nm + " handle", px - 7, py - LV / 2, pz + r + HS, 14, LV, 9, color=C_HANDLE))
+        p.append(draw.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y"))
+        p.append(draw.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
+        p.append(draw.ruby_box(nm + " handle", px - 7, py - LV / 2, pz + r + HS, 14, LV, 9, color=C_HANDLE))
     else:                                      # vertical barrel — handle sticks out horizontally toward `hdir`
-        p.append(ov.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z"))
+        p.append(draw.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z"))
         ux, uy = {"+y": (0, 1), "-y": (0, -1), "+x": (1, 0), "-x": (-1, 0)}[hdir]
         if uy:                                 # stem along Yd, lever a vertical bar at the tip
-            p.append(ov.ruby_cylinder(nm + " handle stem", px, (py + r) if uy > 0 else (py - r - HS), pz, HSr, HS, color=C_HANDLE, axis="y"))
-            p.append(ov.ruby_box(nm + " handle", px - 7, py + uy * (r + HS) - (0 if uy > 0 else 9), pz - LV / 2, 14, 9, LV, color=C_HANDLE))
+            p.append(draw.ruby_cylinder(nm + " handle stem", px, (py + r) if uy > 0 else (py - r - HS), pz, HSr, HS, color=C_HANDLE, axis="y"))
+            p.append(draw.ruby_box(nm + " handle", px - 7, py + uy * (r + HS) - (0 if uy > 0 else 9), pz - LV / 2, 14, 9, LV, color=C_HANDLE))
         else:                                  # stem along X, lever a vertical bar at the tip
-            p.append(ov.ruby_cylinder(nm + " handle stem", (px + r) if ux > 0 else (px - r - HS), py, pz, HSr, HS, color=C_HANDLE, axis="x"))
-            p.append(ov.ruby_box(nm + " handle", px + ux * (r + HS) - (0 if ux > 0 else 9), py - 7, pz - LV / 2, 9, 14, LV, color=C_HANDLE))
+            p.append(draw.ruby_cylinder(nm + " handle stem", (px + r) if ux > 0 else (px - r - HS), py, pz, HSr, HS, color=C_HANDLE, axis="x"))
+            p.append(draw.ruby_box(nm + " handle", px + ux * (r + HS) - (0 if ux > 0 else 9), py - 7, pz - LV / 2, 9, 14, LV, color=C_HANDLE))
     if rot_deg:                                # rotate the WHOLE valve (body + stem + lever, the last 3 groups) about its own axis
-        p.append(f"  _rot = Geom::Transformation.rotation([{ov.mm(px)},{ov.mm(py)},{ov.mm(pz)}], [0,0,1], {rot_deg}.degrees)")
+        p.append(f"  _rot = Geom::Transformation.rotation([{draw.mm(px)},{draw.mm(py)},{draw.mm(pz)}], [0,0,1], {rot_deg}.degrees)")
         p.append("  ents.grep(Sketchup::Group)[-3..-1].each { |g| g.transform!(_rot) }")
         p.append("")
     return "\n".join(p)
@@ -578,17 +579,17 @@ def sample_valve(nm, cx, cy, cz, h=60, color=None, spout="z-"):
     side then turns down — use it when the valve sits in-line on a vertical riser (so the spout clears
     the pipe and a cup fits under it)."""
     color = color or ov.C_VALVE
-    p = [ov.ruby_box(nm, cx - 25, cy - 25, cz, 50, 50, h, color=color)]
+    p = [draw.ruby_box(nm, cx - 25, cy - 25, cz, 50, 50, h, color=color)]
     if spout == "z-":
-        p.append(ov.ruby_cylinder(nm + " spout", cx, cy, cz - 90, 6, 90, color=color, axis="z"))
+        p.append(draw.ruby_cylinder(nm + " spout", cx, cy, cz - 90, 6, 90, color=color, axis="z"))
     else:                                  # project sideways (clear of an in-line riser) then turn DOWN
         sa = "x" if "x" in spout else ("y" if "y" in spout else "z")
         ss = -1 if "-" in spout else 1
         way = {"x": [(cx, cy, cz + 12), (cx + ss * 58, cy, cz + 12), (cx + ss * 58, cy, cz - 60)],
                "y": [(cx, cy, cz + 12), (cx, cy + ss * 58, cz + 12), (cx, cy + ss * 58, cz - 60)]}[sa]
-        p.append(ov.ruby_pipe_run(nm + " spout", way, 6, color=color))
-    p.append(ov.ruby_cylinder(nm + " handwheel stem", cx, cy, cz + h, 5, 16, color=C_HANDLE, axis="z"))
-    p.append(ov.ruby_cylinder(nm + " handwheel", cx, cy, cz + h + 16, 30, 10, color=C_HANDLE, axis="z"))
+        p.append(draw.ruby_pipe_run(nm + " spout", way, 6, color=color))
+    p.append(draw.ruby_cylinder(nm + " handwheel stem", cx, cy, cz + h, 5, 16, color=C_HANDLE, axis="z"))
+    p.append(draw.ruby_cylinder(nm + " handwheel", cx, cy, cz + h + 16, 30, 10, color=C_HANDLE, axis="z"))
     return "\n".join(p)
 
 
@@ -607,7 +608,7 @@ def _flex_jumper(p, nm, flange_pt, approach_pt, col, start=10.0, maxlen=90.0):
     p1 = tuple(flange_pt[i] + u[i] * (start + seg) for i in range(3))
     # Flex connectors draw in BRIGHT yellow (ov.C_FLEX), NOT the pipe's fluid color, so a jumper
     # stands out from the same-color pipe it splices. `col` is kept for call-site intent but ignored.
-    p.append(ov.ruby_flex_run(nm + " flex jumper", [p0, p1], RP, color=ov.C_FLEX, elbow_r=6))
+    p.append(draw.ruby_flex_run(nm + " flex jumper", [p0, p1], RP, color=ov.C_FLEX, elbow_r=6))
 
 
 def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):
@@ -619,8 +620,8 @@ def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):
     (unless `check=False` — e.g. when a single shared check sits upstream of a fill tee)."""
     af  = yface - into * 120                # approach turn, 120mm before the flange
     yin = yface + into * 150                # 150mm penetration into the tote
-    p.append(ov.ruby_pipe_run(nm + " entry", list(approach) + [(x, yin, z), (x, yin, z + drop)], RP, color=col))
-    p.append(ov.ruby_cylinder(nm + " flange", x, yface - into * 8, z, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(draw.ruby_pipe_run(nm + " entry", list(approach) + [(x, yin, z), (x, yin, z + drop)], RP, color=col))
+    p.append(draw.ruby_cylinder(nm + " flange", x, yface - into * 8, z, 36, 16, color=ov.C_STEEL, axis="y"))
     # flexible jumper — a corrugated section ON the corridor-side approach segment, co-linear
     # with the rigid pipe leaving the flange and CAPPED inside it so it never overshoots the
     # turn (de-couples the fixed tote from the semi-rigid panel — stress relief, 2026-07-29).
@@ -639,8 +640,8 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
     yin = yface + into * 150                # 150mm penetration into the tote
     # after the elbow inside the tote the dip tube descends only 50mm (a short standpipe), NOT to the floor
     wps = [(x, yin, z0 - 50), (x, yin, z0), (x, yface - into * 120, z0)] + list(riser_path)
-    p.append(ov.ruby_pipe_run(nm + " pickup", wps, RP, color=col))
-    p.append(ov.ruby_cylinder(nm + " pickup flange", x, yface - into * 8, z0, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(draw.ruby_pipe_run(nm + " pickup", wps, RP, color=col))
+    p.append(draw.ruby_cylinder(nm + " pickup flange", x, yface - into * 8, z0, 36, 16, color=ov.C_STEEL, axis="y"))
     # flexible jumper capped inside the corridor-side approach (flange → riser turn)
     _flex_jumper(p, nm, (x, yface - into * 8, z0), (x, yface - into * 120, z0), col)
 
@@ -731,27 +732,27 @@ def support_boards(sides=("far", "near", "near-upper")):
         by = wall_yd - EQT if ddir < 0 else wall_yd        # ply origin Yd (flush with the wall-side post face)
         back_yd = wall_yd                                   # ply back face = the post wall-side face
         face_yd = wall_yd - EQT if ddir < 0 else wall_yd + EQT   # ply CORRIDOR face (clips attach here)
-        p.append(ov.ruby_box(f"Pump-run support board ({side}, 18mm ply)",
+        p.append(draw.ruby_box(f"Pump-run support board ({side}, 18mm ply)",
                              SB_X0, by, z0, bw, EQT, z1 - z0, color=ov.C_PLY))
         for px, xdir in ((SB_X0, +1), (SB_X1, -1)):        # front / back post inner face
             for bz in (z0 + 35, z1 - 35):
                 lx = px if xdir > 0 else px - LT           # welded leg — flat on the post inner face
-                p.append(ov.ruby_box(f"Support L-bracket weld leg ({side})",
+                p.append(draw.ruby_box(f"Support L-bracket weld leg ({side})",
                                      lx, by, bz - LH / 2, LT, EQT, LH, color=ov.C_STEEL))
                 ly = back_yd if ddir < 0 else back_yd - LT  # landing leg — behind the ply back face
                 lxx = px if xdir > 0 else px - LL
-                p.append(ov.ruby_box(f"Support L-bracket landing leg ({side})",
+                p.append(draw.ruby_box(f"Support L-bracket landing leg ({side})",
                                      lxx, ly, bz - LH / 2, LL, LT, LH, color=ov.C_STEEL))
         # riser P-clips — one per riser at each clamp row, bridging the riser back to the board face
         for rx in risers_x:
             for cz in clamp_z:
                 y_lo = min(face_yd, ryd - RP - 2); y_hi = max(face_yd, ryd + RP + 2)
-                p.append(ov.ruby_box(f"Riser P-clip ({side})", rx - 14, y_lo, cz - 8,
+                p.append(draw.ruby_box(f"Riser P-clip ({side})", rx - 14, y_lo, cz - 8,
                                      28, y_hi - y_lo, 16, color=C_CLIP))
     # near-upper board also backs two HORIZONTALS: P-05-inlet brown (Z1300) + P-03 grey (Z1902)
     if "near-upper" in sides:
         for hx, hz in ((4960, 1300), (5020, 1300), (4945, 1902)):
-            p.append(ov.ruby_box("Horizontal P-clip (near-upper)", hx - 8, YD_NEAR + EQT, hz - 14,
+            p.append(draw.ruby_box("Horizontal P-clip (near-upper)", hx - 8, YD_NEAR + EQT, hz - 14,
                                  16, (SB_RISER_YD_NEAR + RP + 2) - (YD_NEAR + EQT), 28, color=C_CLIP))   # horizontal run: band ⊥ the pipe
     return "\n".join(p)
 
@@ -774,11 +775,11 @@ def equipment(sump_on_skid=False, boards=("far", "near", "near-upper")):
     # Drawn like the filters/pumps: a vertical body with IN/OUT on OPPOSITE sides (IN +Yd from
     # P-01, OUT −Yd to the trunk), in line on the Blue supply.
     acc_h = 174                                  # body 174 + 26 cap = 200 overall (to spec)
-    p.append(ov.ruby_cylinder("ACC-01 Accumulator", PXC, CTR_Y, ACC_Z0, ACC_R, acc_h, color=ov.C_ACC))
-    p.append(ov.ruby_cylinder("ACC-01 head", PXC, CTR_Y, ACC_Z0 + acc_h, ACC_R + 2, 26, color=CDK, axis="z"))
+    p.append(draw.ruby_cylinder("ACC-01 Accumulator", PXC, CTR_Y, ACC_Z0, ACC_R, acc_h, color=ov.C_ACC))
+    p.append(draw.ruby_cylinder("ACC-01 head", PXC, CTR_Y, ACC_Z0 + acc_h, ACC_R + 2, 26, color=CDK, axis="z"))
     for tag, sd in (("in", +1), ("out", -1)):
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
-        p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
+        p.append(draw.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
     if sump_on_skid:
         # P-02 (recycled-spray pump) RELOCATED from the pinhole wall to the corridor column, in P-04's
         # vacated slot — IBC-3 buffer (corridor) → P-02 → ACC-02 (on the filter skid).  Upright like the
@@ -790,7 +791,7 @@ def equipment(sump_on_skid=False, boards=("far", "near", "near-upper")):
         sv_x = PXC - 95
         sv_y = POY + 50                        # the discharge riser's Yd lane (1311) at this height
         p.append(tee("SV-02 tap tee", PXC, sv_y, SV_Z + 25, run="z", branch="x-"))
-        p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, sv_y, SV_Z + 25), (sv_x + 25, sv_y, SV_Z + 25)], RP, color=ov.C_VALVE))
+        p.append(draw.ruby_pipe_run("SV-02 tap", [(PXC, sv_y, SV_Z + 25), (sv_x + 25, sv_y, SV_Z + 25)], RP, color=ov.C_VALVE))
         p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
         # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
         p.append(diverter("3W-DV-02", DV02X, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
@@ -803,7 +804,7 @@ def sump_strainer_foot():
     corridor sump run (plumbing(), when not on-skid) AND the pw/water.skp tray plumbing both emit THIS,
     so the strainer can't drift between the two models."""
     z = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
-    return ov.ruby_cylinder("Tray sump strainer foot", ov.PROC_TRAY_DRAIN_X, ov.PWP_FILTER_YD, z,
+    return draw.ruby_cylinder("Tray sump strainer foot", ov.PROC_TRAY_DRAIN_X, ov.PWP_FILTER_YD, z,
                             14, 36, color="#222228", axis="z")
 
 
@@ -819,12 +820,12 @@ def plumbing(part="all", sump_on_skid=False):
     byte-identical to the original (the sump line was the first thing emitted, so it stays first)."""
     p = []
     sump = []
-    def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+    def pipe(nm, wp, col): p.append(draw.ruby_pipe_run(nm, wp, RP, color=col))
     # gpipe / spipe: GUARDED builders — no-op when the tray-sump chain is relocated to the skid.
     def gpipe(nm, wp, col):
-        if not sump_on_skid: p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+        if not sump_on_skid: p.append(draw.ruby_pipe_run(nm, wp, RP, color=col))
     def spipe(nm, wp, col):
-        if not sump_on_skid: sump.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+        if not sump_on_skid: sump.append(draw.ruby_pipe_run(nm, wp, RP, color=col))
     def pin(k):  return (PXC, PIY, _piz(k))              # IN  tip (−Yd manifold side)
     def pout(k): return (PXC, POY, _piz(k))             # OUT tip (+Yd manifold side)
     # ── #29 — braided ½" flex jumper on BOTH ports of every corridor pump (vibration isolation, 2026-08-07).
@@ -965,11 +966,11 @@ def plumbing(part="all", sump_on_skid=False):
     # one below + one above, since the valve body sits across the shared near-board clamp rows
     _ylo = min(YD_NEAR + EQT, bvy - RP - 2); _yhi = max(YD_NEAR + EQT, bvy + RP + 2)
     for _cz in (850, 1000):
-        p.append(ov.ruby_box("Riser P-clip (near)", bvx - 14, _ylo, _cz - 8, 28, _yhi - _ylo, 16, color=C_CLIP))
+        p.append(draw.ruby_box("Riser P-clip (near)", bvx - 14, _ylo, _cz - 8, 28, _yhi - _ylo, 16, color=C_CLIP))
     # Frame P-clip on the behind-panel loop-back (+X run at z=loopz, Yd=bvy_rear): clamp it to the
     # rear-near frame upright (X=BACK_X, Yd=YD_NEAR) just behind the panel — a positive support on the
     # steel frame beyond the panel penetration.  Strap thin-X (⊥ the run), standoff off the upright +Yd face.
-    p.append(ov.ruby_box("Blue suction frame P-clip", BACK_X + S / 2 - 8, YD_NEAR + S, loopz - 14,
+    p.append(draw.ruby_box("Blue suction frame P-clip", BACK_X + S / 2 - 8, YD_NEAR + S, loopz - 14,
                          16, (bvy_rear + RP) - (YD_NEAR + S), 28, color=C_CLIP))
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
@@ -992,7 +993,7 @@ def plumbing(part="all", sump_on_skid=False):
     # Frame P-clip on the Blue trunk's corridor-mouth crossing (+X run at z=trz, Yd=GAP_CORR_Y): the run
     # otherwise free-spans the open mouth, so clamp it to the front-near frame upright (X=FRONT_X, Yd=YD_NEAR)
     # on a short standoff.  Strap thin-X (⊥ the run), off the upright +Yd face.
-    p.append(ov.ruby_box("Blue trunk frame P-clip", FRONT_X + S / 2 - 8, YD_NEAR + S, trz - 14,
+    p.append(draw.ruby_box("Blue trunk frame P-clip", FRONT_X + S / 2 - 8, YD_NEAR + S, trz - 14,
                          16, (GAP_CORR_Y + RP) - (YD_NEAR + S), 28, color=C_CLIP))
     if part == "sump":
         return "\n".join(sump)
@@ -1004,7 +1005,7 @@ def plumbing(part="all", sump_on_skid=False):
 def end_wall():
     """Faint sealed END WALL slice (X-ports live on it).  Built on the Context layer so it does
     NOT clutter the pipes-only 'Plumbing' scene."""
-    return ov.ruby_box("End wall (context)", ov.C_LEN, 0, 0, ov.WALL_T, ov.C_WID, ov.C_HGT,
+    return draw.ruby_box("End wall (context)", ov.C_LEN, 0, 0, ov.WALL_T, ov.C_WID, ov.C_HGT,
                        color=ov.C_SHELL, alpha=0.12)
 
 
@@ -1013,13 +1014,13 @@ def drains_ports(sump_on_skid=False):
     BOTH Blue totes) and the X3/X4 drains (tote-bottom pickups → panel pumps P-05/P-03 → ports).
     The pumps themselves are on the panel (equipment())."""
     p = []
-    def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+    def pipe(nm, wp, col): p.append(draw.ruby_pipe_run(nm, wp, RP, color=col))
     ew = ov.C_LEN                                        # 5893 — end wall
 
     # ── X1 FILL: camlock → in-line one-way valve → STRAIGHT pipe → T-connector → BOTH Blue totes
     #    (IBC-1 / IBC-2).  ONE check on the inlet; no per-branch checks. ──
     x1z, tx, ty = X1_TEE_Z, X1_TEE_X, X1_TEE_Y   # ty: cross on the spine face, aligned with the recycle riser
-    p.append(ov.ruby_cylinder("X1 fill camlock (end wall)", ew - 60, ty, x1z, 26, 60, color=ov.C_STEEL, axis="x"))
+    p.append(draw.ruby_cylinder("X1 fill camlock (end wall)", ew - 60, ty, x1z, 26, 60, color=ov.C_STEEL, axis="x"))
     p.append(check_valve("X1 one-way valve", ew - 200, ty, x1z, "x"))   # in-line, just after the camlock
     pipe("X1 camlock -> one-way -> cross (straight)", [(ew - 60, ty, x1z), (tx, ty, x1z)], ov.C_BLUE)
     # 4-WAY CROSS: +X X1 inlet, ±Yd to the two Blue totes (IBC-1/IBC-2), −X the DV-01 blue
@@ -1032,18 +1033,18 @@ def drains_ports(sump_on_skid=False):
     # ── Blue EQUALIZATION: a low 1" cross-connect tying the BOTTOMS of the two Blue totes together
     #    so their levels equalize.  Straight across, near the sealed end. ──
     beqz, beqx = ov.IBC_H_1000 + ov.IBC_PALLET_H + 40, 5500   # ~1376 — just above the Blue tote bottoms
-    p.append(ov.ruby_pipe_run("Blue equalization (IBC-1 <-> IBC-2)",
+    p.append(draw.ruby_pipe_run("Blue equalization (IBC-1 <-> IBC-2)",
         [(beqx, YD_NEAR - 150, beqz), (beqx, YD_FAR + 150, beqz)], 16, color=ov.C_BLUE))   # 1" pipe
-    p.append(ov.ruby_cylinder("Blue eq flange (IBC-1)", beqx, YD_NEAR - 8, beqz, 36, 16, color=ov.C_STEEL, axis="y"))
-    p.append(ov.ruby_cylinder("Blue eq flange (IBC-2)", beqx, YD_FAR - 8, beqz, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(draw.ruby_cylinder("Blue eq flange (IBC-1)", beqx, YD_NEAR - 8, beqz, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(draw.ruby_cylinder("Blue eq flange (IBC-2)", beqx, YD_FAR - 8, beqz, 36, 16, color=ov.C_STEEL, axis="y"))
 
     # ── IBC-3 BROWN: ONE shared bottom tap (dip tube → floor) → T-junction (cp.BROWN_TAP) that
     #    feeds BOTH P-05 (drain) and P-02 (wall filter loop) — a single tote penetration. ──
     tx3, ty3, tz3 = BROWN_TAP
     yin3 = YD_NEAR - 150                                  # 896 — penetration into the Brown tote
-    p.append(ov.ruby_pipe_run("IBC-3 (Brown) bottom tap (shared P-02/P-05)",
+    p.append(draw.ruby_pipe_run("IBC-3 (Brown) bottom tap (shared P-02/P-05)",
         [(tx3, yin3, tz3 - 100), (tx3, yin3, tz3), (tx3, ty3 - 36, tz3)], RP, color=ov.C_IBC_BROWN))  # dip tube EXTENDED to tz3-100 (bottom stays z208) — into the tee's −Yd branch end
-    p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(draw.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
     # (no check valve at the bottom tap — the shared bottom tap is just the tee feeding P-02/P-05
     #  through BV-03/BV-02; the pumps have integral checks)
@@ -1076,7 +1077,7 @@ def drains_ports(sump_on_skid=False):
          #   BV-02 → +X stub into the IN port
          ov.C_IBC_BROWN)
     p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
-    p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
+    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
     # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
@@ -1112,7 +1113,7 @@ def drains_ports(sump_on_skid=False):
                     (rx6, BV02_YD, z03),                            # ↑ through BV-06 to the IN-port height
                     (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
     p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
-    p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
+    p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),
           (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
@@ -1122,21 +1123,21 @@ def drains_ports(sump_on_skid=False):
 def context():
     """Ghost of the IBC stack + a floor slice so the corridor frame reads in place."""
     p = []
-    p.append(ov.component("IBC Stack", "IBC Stack", ov.ibc_stack(alpha=0.20)))
+    p.append(draw.component("IBC Stack", "IBC Stack", ov.ibc_stack(alpha=0.20)))
     x0 = 4300
-    p.append(ov.component("Floor (context)", "Context",
-             ov.ruby_box("Floor", x0, 0, -ov.WALL_T, ov.C_LEN - x0, ov.C_WID, ov.WALL_T, color=ov.C_SHELL, alpha=0.16)))
-    p.append(ov.component("End wall (context)", "Context", end_wall()))
+    p.append(draw.component("Floor (context)", "Context",
+             draw.ruby_box("Floor", x0, 0, -ov.WALL_T, ov.C_LEN - x0, ov.C_WID, ov.WALL_T, color=ov.C_SHELL, alpha=0.16)))
+    p.append(draw.component("End wall (context)", "Context", end_wall()))
     return "\n".join(p)
 
 
 def build():
     comps = [context(),
-             ov.component("Corridor frame (deep box)", "Frame", frame()),
-             ov.component("Rear panel (ply)", "Rear Panel", rear_panel()),
-             ov.component("Corridor equipment", "Equipment", equipment()),
-             ov.component("Corridor plumbing", "Plumbing", plumbing()),
-             ov.component("Corridor drains + X-ports", "Drains", drains_ports())]
+             draw.component("Corridor frame (deep box)", "Frame", frame()),
+             draw.component("Rear panel (ply)", "Rear Panel", rear_panel()),
+             draw.component("Corridor equipment", "Equipment", equipment()),
+             draw.component("Corridor plumbing", "Plumbing", plumbing()),
+             draw.component("Corridor drains + X-ports", "Drains", drains_ports())]
     body = "\n".join(comps)
     tags = ["IBC Stack", "Context", "Frame", "Rear Panel", "Equipment", "Plumbing", "Drains"]
     tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in tags)

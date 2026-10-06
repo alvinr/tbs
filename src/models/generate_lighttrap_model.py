@@ -35,14 +35,15 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers, materials, constants
+import tbs_draw as draw                          # shared drawing/material primitives
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
 from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
-ruby_box, ruby_cylinder = ov.ruby_box, ov.ruby_cylinder
-component = ov.component
+ruby_box, ruby_cylinder = draw.ruby_box, draw.ruby_cylinder
+component = draw.component
 C_WID, C_HGT, WALL_T = ov.C_WID, ov.C_HGT, ov.WALL_T
 DRUM_CX, DRUM_CY, DRUM_R, DRUM_H = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R, ov.DRUM_H_LT
 PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X)
@@ -167,13 +168,13 @@ def lighttrap_labels():
             f'if inst\n'
             f'  bb = inst.bounds\n'
             f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
-            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')
     for x, y, z, text, dx, dy, dz in LIGHTTRAP_POINT_LABELS:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
@@ -309,9 +310,9 @@ def cam_latch(yl, zl):
     x0 = PANEL_CORNER_T              # 40 — interior face of the opening-edge zone
     xarm = x0 + L - 10 + HS          # tip of the handle arm, where the grip bends up
     return '\n'.join([
-        ov.ruby_cylinder("Cam latch 1619A74", x0 - 10, yl, zl, r, L, axis="x", color=C_VALVE),
-        ov.ruby_cylinder("Cam latch handle arm", x0 + L - 10, yl, zl, HSr, HS, axis="x", color=C_VALVE),
-        ov.ruby_cylinder("Cam latch grip (bent up)", xarm, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
+        draw.ruby_cylinder("Cam latch 1619A74", x0 - 10, yl, zl, r, L, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Cam latch handle arm", x0 + L - 10, yl, zl, HSr, HS, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Cam latch grip (bent up)", xarm, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
     ])
 
 
@@ -406,10 +407,10 @@ def drum_housing(cx, cy):
     # Fixed HOUSING — two solid arcs leaving two od=80° openings (exterior 180° +
     # interior 0°). Spans Z HZB..HZT (bottom-beam top → top-beam under face) so it laps
     # to rim-angle on both axle beams and skirts the two hub gaps (light seal).
-    parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
+    parts.append(draw.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, HH, gap_center_deg=270, gap_deg=180 + od,
                                   color=C_ALUM, alpha=0.5, z0=HZB))
-    parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
+    parts.append(draw.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, HH, gap_center_deg=90, gap_deg=180 + od,
                                   color=C_ALUM, alpha=0.5, z0=HZB))
     # SILL + HEADER solid bands — CLOSE the two openings in the skirt zones (below the bottom cap /
@@ -418,7 +419,7 @@ def drum_housing(cx, cy):
     # sill/header (80 / 150mm). Without these the full-height opening leaks over/under the drum.
     for zb_band, hb in ((HZB, 80), (HZT - 150, 150)):
         for oc in (0, 180):                             # fill the INT (0°) + EXT (180°) opening angles solid
-            parts.append(ov.ruby_arc_wall("LT Housing sill/header band", cx, cy, HOUSING_R,
+            parts.append(draw.ruby_arc_wall("LT Housing sill/header band", cx, cy, HOUSING_R,
                                           HOUSING_T, hb, gap_center_deg=(oc + 180) % 360,
                                           gap_deg=360 - od, color=C_ALUM, alpha=0.5, z0=zb_band))
     # Opening-edge H-MULLIONS — the housing is TWO arc panels that SLIDE INTO vertical Al H-bars
@@ -438,7 +439,7 @@ def drum_housing(cx, cy):
             a = math.radians(e)
             cr, sr = math.cos(a), math.sin(a)
             pts = [(cx + R * cr - Sc * sr, cy + R * sr + Sc * cr) for R, Sc in hv]
-            parts.append(ov.ruby_prism(f"LT Housing H-mullion ({e:.0f}deg)", pts, BEAM_BOT,
+            parts.append(draw.ruby_prism(f"LT Housing H-mullion ({e:.0f}deg)", pts, BEAM_BOT,
                                        BEAM_TOP - BEAM_BOT, color=C_ALUM))
     # SKIN EXTENSION (2026-09-08) — extend the fixed skin from the beam INNER faces out to
     # their OUTER faces to close the top/bottom gap: top HZT(2167)→top-beam-top(2217),
@@ -448,7 +449,7 @@ def drum_housing(cx, cy):
     NOTCH = 4.0
 
     def arc_seg(a1, a2, z0, h):                          # a solid arc segment a1→a2° (extrude h from z0)
-        parts.append(ov.ruby_arc_wall("LT Housing skin extension", cx, cy, HOUSING_R, HOUSING_T, h,
+        parts.append(draw.ruby_arc_wall("LT Housing skin extension", cx, cy, HOUSING_R, HOUSING_T, h,
                                       gap_center_deg=((a1 + a2) / 2 + 180) % 360, gap_deg=360 - (a2 - a1),
                                       color=C_ALUM, alpha=0.5, z0=z0))
     for z0, h in ((HZT, BEAM_TOP - HZT), (BEAM_BOT, HZB - BEAM_BOT)):
@@ -456,7 +457,7 @@ def drum_housing(cx, cy):
             arc_seg(ac - 50, ac - NOTCH, z0, h)
             arc_seg(ac + NOTCH, ac + 50, z0, h)
         for oc in (0, 180):                              # close the openings across the extension too
-            parts.append(ov.ruby_arc_wall("LT Housing extension band", cx, cy, HOUSING_R, HOUSING_T, h,
+            parts.append(draw.ruby_arc_wall("LT Housing extension band", cx, cy, HOUSING_R, HOUSING_T, h,
                                           gap_center_deg=(oc + 180) % 360, gap_deg=360 - od,
                                           color=C_ALUM, alpha=0.5, z0=z0))
 
@@ -492,7 +493,7 @@ def drum_rotor(cx=0, cy=0):
     H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
     felt = "#7E7E76"
     parts = []
-    parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
+    parts.append(draw.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
                                   color=C_LT_DRUM, alpha=0.6, z0=ZB))   # warm tan — distinct from the cool housing skin
     parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_CAP_R, DRUM_CAP_T,
@@ -502,7 +503,7 @@ def drum_rotor(cx=0, cy=0):
     # Rolled 25×25×3 Al rim-angle lip at each cap rim (280° C-shell arc — NOT a full
     # ring; the 80° opening has no shell/rim). The shell laps + rivets to it.
     for zc in (ZB, H - LT_RIM_LEG):
-        parts.append(ov.ruby_arc_wall("LT Rim-angle lip", cx, cy, DRUM_CAP_R, LT_RIM_T,
+        parts.append(draw.ruby_arc_wall("LT Rim-angle lip", cx, cy, DRUM_CAP_R, LT_RIM_T,
                                       LT_RIM_LEG, gap_center_deg=180, gap_deg=od,
                                       color=C_ALUM, z0=zc))
     # Drum OPENING-edge stiffeners — a riveted Al U-channel caps each of the 2 free HDPE
@@ -516,7 +517,7 @@ def drum_rotor(cx=0, cy=0):
         uv = [(dRi - dCT, -dCT), (dRo + dCT, -dCT), (dRo + dCT, dLG), (dRo, dLG),
               (dRo, 0), (dRi, 0), (dRi, dLG), (dRi - dCT, dLG)]
         pts = [(cx + R * cr - sgn * Sc * sr, cy + R * sr + sgn * Sc * cr) for R, Sc in uv]
-        parts.append(ov.ruby_prism(f"LT Drum edge channel ({e:.0f}deg)", pts, ZB, H - ZB, color=C_ALUM))
+        parts.append(draw.ruby_prism(f"LT Drum edge channel ({e:.0f}deg)", pts, ZB, H - ZB, color=C_ALUM))
     # Top stub shaft — Ø75, rises from the cap up through the upper bearing (H+30..H+55) to just
     # under the top axle beam; the drum HANGS from it (end-retainer at the top, 2D Sheet 10/11).
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, LT_BEAM_STANDOFF - 3,
@@ -560,10 +561,10 @@ def drum_rotor(cx=0, cy=0):
         huv = [(DRUM_OR, -hw * 1.6), (DRUM_OR + hold_d, -hw * 1.6),
                (DRUM_OR + hold_d, hw * 1.6), (DRUM_OR, hw * 1.6)]        # Al flange holder on the OD
         hpts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in huv]
-        parts.append(ov.ruby_prism("LT Drum wiper holder (Al flange)", hpts, ZB, H - ZB, color="#C8D8E8"))
+        parts.append(draw.ruby_prism("LT Drum wiper holder (Al flange)", hpts, ZB, H - ZB, color="#C8D8E8"))
         uv = [(DRUM_OR + hold_d, -hw), (brz, -hw), (brz, hw), (DRUM_OR + hold_d, hw)]  # nylon bristles → bore
         pts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in uv]
-        parts.append(ov.ruby_prism(f"LT Drum wiper brush ({math.degrees(sa) % 360:.0f}°)",
+        parts.append(draw.ruby_prism(f"LT Drum wiper brush ({math.degrees(sa) % 360:.0f}°)",
                                    pts, ZB, H - ZB, color=felt))
     return '\n'.join(parts)
 
@@ -635,7 +636,7 @@ def near_leaf():
         box.append(ruby_box("Cam-latch strike plate", 0, CUT - 4, lz - 35, PLY_X0, 10, 70, color="#8890A0"))
     return '\n'.join(box + [
         # 12mm ply with a 45° chamfered inboard edge (Yd CUT) — the swing panel butts + the cut EPDM seals it.
-        ov.ruby_prism(f"Fixed left ply (Yd0-{CUT})", [(PLY_X0, 0), (PLY_X0, CUT), (40, CUT - CHAM), (40, 0)],
+        draw.ruby_prism(f"Fixed left ply (Yd0-{CUT})", [(PLY_X0, 0), (PLY_X0, CUT), (40, CUT - CHAM), (40, 0)],
                       z0, z1 - z0, color="#C8A060", alpha=1.0),
         ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=C_GASKT),
         # bottom EPDM dropped — the fold-down apron + its top brush now seal the leaf-bottom interface.
@@ -708,14 +709,14 @@ def drum_frame():
     # clear of the Ø160 flange) to a Ø240 steel MOUNT PLATE welded under the beam; drum hangs (2D Sheet 5/10).
     p.append(ruby_box("Drum top axle beam (50×50 RHS)", DRUM_CX - BW // 2, y0, z_tbeam, BW, y1 - y0, BH, color=c))
     p.append(ruby_cylinder("Drum top bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, z_tbeam - LT_BRG_PLATE_T, PR, LT_BRG_PLATE_T, color=c, axis="z"))
-    p.append(ov.ruby_arc_wall("Drum upper bearing ring (Ø240 Al, isolated)", DRUM_CX, DRUM_CY, LT_TOPRING_OD / 2, RTr,
+    p.append(draw.ruby_arc_wall("Drum upper bearing ring (Ø240 Al, isolated)", DRUM_CX, DRUM_CY, LT_TOPRING_OD / 2, RTr,
                               (z_tbeam - LT_BRG_PLATE_T) - (DRUM_H + LT_BRG_STANDOFF), gap_center_deg=0, gap_deg=0, color=ca, z0=DRUM_H + LT_BRG_STANDOFF))
     p.append(ruby_cylinder("Drum upper bearing (SKF 6215)", DRUM_CX, DRUM_CY, DRUM_H + LT_BRG_STANDOFF, 65, 25, color=cb, axis="z"))
     # BOTTOM hub — mirror: the steel bearing COLLAR (Ø240) seats the SKF 6215 + bolts DOWN to a Ø240
     # mount plate on the bottom beam; locates/floats (radial only — no hang) (per 2D LOWER hub).
     p.append(ruby_box("Drum bottom axle beam (50×40 RHS)", DRUM_CX - BW // 2, y0, z_bbeam, BW, y1 - y0, LT_BBEAM_H, color=c))
     p.append(ruby_cylinder("Drum bottom bearing mount plate (Ø240×12)", DRUM_CX, DRUM_CY, LT_BBEAM_Z1, PR, LT_BRG_PLATE_T, color=c, axis="z"))
-    p.append(ov.ruby_arc_wall("Drum lower bearing collar (Ø240 steel)", DRUM_CX, DRUM_CY, LT_COLLAR_OD / 2, RCr,
+    p.append(draw.ruby_arc_wall("Drum lower bearing collar (Ø240 steel)", DRUM_CX, DRUM_CY, LT_COLLAR_OD / 2, RCr,
                               (LT_LBRG_Z0 + 25) - LT_LBRG_Z0, gap_center_deg=0, gap_deg=0, color=c, z0=LT_LBRG_Z0))
     p.append(ruby_cylinder("Drum lower bearing (SKF 6215, floating)", DRUM_CX, DRUM_CY, LT_LBRG_Z0, 65, 25, color=cb, axis="z"))
     return '\n'.join(p)
@@ -791,15 +792,15 @@ def _ruby_rod(name, p0, p1, radius, color, alpha=1.0, n=16):
     (x0, y0, z0), (x1, y1, z1) = p0, p1
     dx, dy, dz = x1 - x0, y1 - y0, z1 - z0
     length = math.sqrt(dx * dx + dy * dy + dz * dz)
-    r, g, b = ov.hex_to_rgb(color)
-    mat = ov.shared_mat_name(name, color, alpha)
+    r, g, b = draw.hex_to_rgb(color)
+    mat = draw.shared_mat_name(name, color, alpha)
     return '\n'.join([
         '  grp = ents.add_group', f'  grp.name = "{name}"',
         f'  nrm = Geom::Vector3d.new({dx}, {dy}, {dz})',
-        f'  circle = grp.entities.add_circle([{ov.mm(x0)},{ov.mm(y0)},{ov.mm(z0)}], nrm, {ov.mm(radius)}, {n})',
+        f'  circle = grp.entities.add_circle([{draw.mm(x0)},{draw.mm(y0)},{draw.mm(z0)}], nrm, {draw.mm(radius)}, {n})',
         f'  cface = grp.entities.add_face(circle)',
         f'  cface.reverse! if cface.normal.dot(nrm) < 0',
-        f'  cface.pushpull({ov.mm(length)})',
+        f'  cface.pushpull({draw.mm(length)})',
         f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
         f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
         f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
@@ -882,9 +883,9 @@ def fan_b():
 def fan_b_cable():
     """Fan B flexible connector (orange curly coil) — wall plug -> Fan B on the swing panel.
     The SOFT jumper that is plugged in when the door is CLOSED and unplugged before the panel
-    swings open; lives in a child DC shown only at swing≈0. Reuses the shared ov.ruby_coil_cord
+    swings open; lives in a child DC shown only at swing≈0. Reuses the shared draw.ruby_coil_cord
     (Cct B colour), matching the overview/electrical models."""
-    return ov.ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
+    return draw.ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
                              [(300, 18, FAN_B_H), (60, FAN_B_YD, FAN_B_H)],
                              r=5, color="#E67E22")
 
@@ -1041,15 +1042,15 @@ def cage_face_rivets():
     for i in range(nx + 1):
         xc = x0 + 40 + i * LT_RIVET_PITCH
         for yd in (yL + 8, yR - 8):
-            p.append(ov.ruby_cylinder("Cage roof rivet", xc, yd, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
-            p.append(ov.ruby_cylinder("Cage floor rivet", xc, yd, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Cage roof rivet", xc, yd, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Cage floor rivet", xc, yd, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
     # front/back edges — rivet rows running in Yd (along the front/back cage rails)
     ny = int((yR - yL - 80) // LT_RIVET_PITCH)
     for i in range(ny + 1):
         yc = yL + 40 + i * LT_RIVET_PITCH
         for xd in (x0 + 8, x1 - 8):
-            p.append(ov.ruby_cylinder("Cage roof rivet", xd, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
-            p.append(ov.ruby_cylinder("Cage floor rivet", xd, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Cage roof rivet", xd, yc, zc, rr, 6, axis="z", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Cage floor rivet", xd, yc, z0 - 6, rr, 6, axis="z", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 
@@ -1065,15 +1066,15 @@ def bay_wall_cage_rivets():
     for i in range(nz + 1):
         zc = z0 + 60 + i * LT_RIVET_PITCH
         for xc in (x_front, x_back):
-            p.append(ov.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
-            p.append(ov.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
     # horizontal rows along the TOP + BOTTOM edge of each side wall (into the top/bottom cage rails)
     nx = int((ov.DRUM_CAGE_X1 - ov.DRUM_CAGE_X0 - 80) // LT_RIVET_PITCH)
     for i in range(nx + 1):
         xc = ov.DRUM_CAGE_X0 + 40 + i * LT_RIVET_PITCH
         for zc in (z0 + 30, z1 - 30):
-            p.append(ov.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
-            p.append(ov.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Near wall cage rivet", xc, yL - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Far wall cage rivet", xc, yR + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 
@@ -1194,12 +1195,12 @@ def far_bay_wall_frame():
     for i in range(ny + 1):
         yc = yR + 40 + i * LT_RIVET_PITCH
         for zc in (zt + RS / 2, CORNER_BOT + 20):   # bottom row in the HDPE just above the beam top
-            p.append(ov.ruby_cylinder("Far bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Far bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
     # rivet line down the drum-side edge STRAIGHT into the front cage post — point 2/3
     nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
     for i in range(nz + 1):
         zc = z0 + 60 + i * LT_RIVET_PITCH
-        p.append(ov.ruby_cylinder("Far wall rivet", xf + 20, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+        p.append(draw.ruby_cylinder("Far wall rivet", xf + 20, yR - t - 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 
@@ -1231,12 +1232,12 @@ def near_bay_wall_frame():
     for i in range(ny + 1):
         yc = yn + 40 + i * LT_RIVET_PITCH
         for zc in (zt + RS / 2, CORNER_BOT + 20):   # bottom row on the Fan-B ply band just above the beam
-            p.append(ov.ruby_cylinder("Near bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
+            p.append(draw.ruby_cylinder("Near bay rivet", -6, yc, zc, rr, 6, axis="x", n=8, color="#C9CCD2"))
     # rivet line down the drum-side edge STRAIGHT into the near cage post
     nz = int((z1 - z0 - 120) // LT_RIVET_PITCH)
     for i in range(nz + 1):
         zc = z0 + 60 + i * LT_RIVET_PITCH
-        p.append(ov.ruby_cylinder("Near wall rivet", xf + 20, yL + t + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
+        p.append(draw.ruby_cylinder("Near wall rivet", xf + 20, yL + t + 6, zc, rr, 6, axis="y", n=8, color="#C9CCD2"))
     return '\n'.join(p)
 
 
@@ -1270,14 +1271,14 @@ _APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRO
 
 def _apron_vpanel(name, prof, color, alpha):
     """One vertical 18mm-ply panel from a (Yd, Z) polygon on the interior face (X=APRON_X0), pushpulled APRON_PLY_T in +X."""
-    pts = ", ".join(f"[{ov.mm(APRON_X0)},{ov.mm(y)},{ov.mm(z)}]" for (y, z) in prof)
-    r, g, b = ov.hex_to_rgb(color)
-    mat = ov.shared_mat_name(name, color, alpha)
+    pts = ", ".join(f"[{draw.mm(APRON_X0)},{draw.mm(y)},{draw.mm(z)}]" for (y, z) in prof)
+    r, g, b = draw.hex_to_rgb(color)
+    mat = draw.shared_mat_name(name, color, alpha)
     return '\n'.join([
         f'  grp = ents.add_group', f'  grp.name = "{name}"',
         f'  face = grp.entities.add_face({pts})',
         f'  face.reverse! if face.normal.x < 0',
-        f'  face.pushpull({ov.mm(APRON_PLY_T)})',
+        f'  face.pushpull({draw.mm(APRON_PLY_T)})',
         f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
         f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
         f'  mat.alpha = {alpha}', f'  grp.material = mat', ''])
@@ -1285,14 +1286,14 @@ def _apron_vpanel(name, prof, color, alpha):
 
 def _prism_xz(name, xz, y0, ylen, color, alpha=1.0):
     """Prism from an (X,Z) polygon in the plane Yd=y0, pushpulled ylen in +Yd. Used for top-edge chamfers."""
-    pts = ", ".join(f"[{ov.mm(x)},{ov.mm(y0)},{ov.mm(z)}]" for (x, z) in xz)
-    r, g, b = ov.hex_to_rgb(color)
-    mat = ov.shared_mat_name(name, color, alpha)
+    pts = ", ".join(f"[{draw.mm(x)},{draw.mm(y0)},{draw.mm(z)}]" for (x, z) in xz)
+    r, g, b = draw.hex_to_rgb(color)
+    mat = draw.shared_mat_name(name, color, alpha)
     return '\n'.join([
         '  grp = ents.add_group', f'  grp.name = "{name}"',
         f'  face = grp.entities.add_face({pts})',
         f'  face.reverse! if face.normal.y < 0',
-        f'  face.pushpull({ov.mm(ylen)})',
+        f'  face.pushpull({draw.mm(ylen)})',
         f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
         f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
         f'  mat.alpha = {alpha}', '  grp.material = mat', ''])
@@ -1317,7 +1318,7 @@ def apron_up_geom():
     # Far edge is 45°-chamfered to mate the full-height far strip's scarf: a plywood wedge adds material
     # inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the corner-zone height.
     yf = C_WID - APRON_FIX_W
-    far_wedge = ov.ruby_prism("Fold-down apron (far, UP) chamfer",
+    far_wedge = draw.ruby_prism("Fold-down apron (far, UP) chamfer",
                               [(APRON_X0, yf), (40, yf), (40, yf + APRON_CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
     # FIXED (non-folding) plywood stub closing the corner gap between the far apron's far edge
     # (C_WID−APRON_FIX_W) and the pivot post: a fold-down flap here would foul the Ø89 post + its Ø220 floor
@@ -1339,8 +1340,8 @@ def apron_folded_geom():
             (PANEL_FLOOR_GAP, APRON_IN_L), (_AHZ, APRON_IN_L)]
     far  = [(_AHZ, APRON_IN_R), (PANEL_FLOOR_GAP, APRON_IN_R), (PANEL_FLOOR_GAP, YD_R),
             (CORNER_BOT, YD_R), (CORNER_BOT, C_WID - APRON_FIX_W), (_AHZ, C_WID - APRON_FIX_W)]
-    return (ov.ruby_prism("Fold-down apron (near, FOLDED)", near, _AHZ, APRON_T, color=C_PLY, alpha=0.6) +
-            ov.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6))
+    return (draw.ruby_prism("Fold-down apron (near, FOLDED)", near, _AHZ, APRON_T, color=C_PLY, alpha=0.6) +
+            draw.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6))
 
 
 def apron_edge_brushes():
@@ -1369,7 +1370,7 @@ def fixed_bottom_geom():
     parts = [
         # 12mm ply baffle with 45° chamfered ENDS (Yd) where the fold-down apron inner edges meet it —
         # the apron scarf laps the chamfer, the apron edge brush seals above (Detail E). X-Yd prism.
-        ov.ruby_prism("Center light baffle (fixed)",
+        draw.ruby_prism("Center light baffle (fixed)",
                       [(PLY_X0, APRON_IN_L), (40, APRON_IN_L + CHAM), (40, APRON_IN_R - CHAM), (PLY_X0, APRON_IN_R)],
                       51, baf_top - 51, color=C_PLY, alpha=1.0),
         # Horizontal strip brush on the baffle top edge — bristles reach the 10mm up to the swinging cage

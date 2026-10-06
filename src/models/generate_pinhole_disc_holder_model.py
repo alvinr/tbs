@@ -21,11 +21,12 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov
+import tbs_draw as draw                          # shared drawing/material primitives
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
 from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_T, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D
 
-mm = ov.mm
+mm = draw.mm
 TAGS = ["Plate", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]
 
 # ── Convention: the plate lies in the X-Z plane; the optical axis is +Y. Scene (exterior) at Y=0,
@@ -50,8 +51,8 @@ C_STEEL  = ov.C_STEEL
 
 
 def _mat(name, color, alpha=None):
-    r, g, b = ov.hex_to_rgb(color)
-    nm = ov.shared_mat_name(name, color, alpha)
+    r, g, b = draw.hex_to_rgb(color)
+    nm = draw.shared_mat_name(name, color, alpha)
     a = alpha if alpha is not None else 1.0
     return [f'  mat = model.materials["{nm}"] || model.materials.add("{nm}")',
             f'  mat.color = Sketchup::Color.new({r}, {g}, {b})', f'  mat.alpha = {a}', '  grp.material = mat']
@@ -118,14 +119,14 @@ def plate():
     # mount holes (4× M6 @ Ø150) — through markers
     for i in range(PDH_MOUNT_N):
         a = math.radians(45 + i * 360.0 / PDH_MOUNT_N)
-        out.append(ov.ruby_cylinder(f"M6 mount hole {i+1}", (PDH_MOUNT_BC / 2) * math.cos(a), PLATE_Y0,
+        out.append(draw.ruby_cylinder(f"M6 mount hole {i+1}", (PDH_MOUNT_BC / 2) * math.cos(a), PLATE_Y0,
                                     (PDH_MOUNT_BC / 2) * math.sin(a), PDH_MOUNT_D / 2, PDH_PLATE_T,
                                     axis="y", color="#5A5A5A", n=16))
     # 4× M5 thumb-screw tapped holes (Ø74) — dark blind bores in the camera face, revealed when the
     # ring + screws pull out in the DC
     for i in range(PDH_TS_N):
         a = math.radians(45 + i * 360.0 / PDH_TS_N)
-        out.append(ov.ruby_cylinder(f"M5 tapped hole {i+1}", (PDH_TS_PCD / 2) * math.cos(a), 8.0,
+        out.append(draw.ruby_cylinder(f"M5 tapped hole {i+1}", (PDH_TS_PCD / 2) * math.cos(a), 8.0,
                                     (PDH_TS_PCD / 2) * math.sin(a), PDH_TS_D / 2 + 0.3, 9.9, axis="y",
                                     color="#1E1E1E", n=16))
     return '\n'.join(out)
@@ -142,8 +143,8 @@ def disc():
     small clearances so no faces coincide (no orbit z-fighting); the pinhole marker sits fully INSIDE
     the disc rather than proud."""
     return '\n'.join([
-        ov.ruby_cylinder("ICP-02 Disc (pinhole / lens)", 0, DISC_Y0, 0, PDH_DISC_OD / 2, DISC_T, axis="y", color=C_DISC, n=48),
-        ov.ruby_cylinder("Pinhole aperture (Ø2.17)", 0, DISC_Y0 + 0.2, 0, 1.3, DISC_T - 0.4, axis="y", color=C_PIN, n=20),
+        draw.ruby_cylinder("ICP-02 Disc (pinhole / lens)", 0, DISC_Y0, 0, PDH_DISC_OD / 2, DISC_T, axis="y", color=C_DISC, n=48),
+        draw.ruby_cylinder("Pinhole aperture (Ø2.17)", 0, DISC_Y0 + 0.2, 0, 1.3, DISC_T - 0.4, axis="y", color=C_PIN, n=20),
     ])
 
 
@@ -163,7 +164,7 @@ def thumb_screws():
     for i in range(PDH_TS_N):
         a = math.radians(45 + i * 360.0 / PDH_TS_N)
         tx, tz = (PDH_TS_PCD / 2) * math.cos(a), (PDH_TS_PCD / 2) * math.sin(a)
-        out.append(ov.ruby_cylinder(f"Knurled knob {i+1}", tx, RING_Y1 + 0.1, tz, 6, 6,
+        out.append(draw.ruby_cylinder(f"Knurled knob {i+1}", tx, RING_Y1 + 0.1, tz, 6, 6,
                                     axis="y", color=C_TS, n=20))
     return '\n'.join(out)
 
@@ -220,9 +221,9 @@ def labels_ruby():
 
 def generate_ruby():
     body = '\n'.join([
-        ov.component("ICP-01 Front plate", "Plate", plate()),
-        ov.component("Neoprene washer", "Washer", washer()),
-        ov.component("ICP-02 Disc", "Disc", disc()),
+        draw.component("ICP-01 Front plate", "Plate", plate()),
+        draw.component("Neoprene washer", "Washer", washer()),
+        draw.component("ICP-02 Disc", "Disc", disc()),
         retainer_dc(),   # retaining ring + thumb screws — click-to-pull-out DC (reveals the tapped holes)
     ])
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)

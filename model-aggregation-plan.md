@@ -87,14 +87,22 @@ geometry. Overview imports everyone; nobody imports overview. The circular edge 
 
 ## 4. Phased plan (one subsystem per phase · cascade + verify each before the next)
 
-### Phase 0 — Extract the shared primitives (PREREQUISITE, unblocks everything)
-Move `mm`, `ruby_box`, `ruby_cylinder`, `ruby_pipe_run`, `ruby_flex_run`, `ruby_coil_cord`,
-`ruby_prism`, `component()`, the `C_*` color palette, and any pure geometry helpers into a new
-`src/models/tbs_draw.py`. Re-point every model (overview + cp/pw/em/wm/ib/sb/fp/lt) from `ov.<helper>`
-to `draw.<helper>`. Overview keeps `generate_ruby()` + the tag/scene machinery.
-- **No geometry changes** → every `.skp` should regenerate byte-identical (manifest hashes
-  unchanged). That's the proof Phase 0 is clean: `manifest.py --check` stays green with **no** re-send.
-- Add `tbs_draw.py` to `dependencies.yml`; update the import-graph note.
+### Phase 0 — Extract the shared primitives (PREREQUISITE) — ✅ DONE 2026-10-06
+Moved `mm`, the material/mute machinery (`_CANON_RGB`, `hex_to_rgb`, `mute_hex`, `shared_mat_name`,
+`_MAT_BY_COLOR`, `muted`, `_mute_ctx`, `_CTX_*`), `ruby_box/prism/cylinder/cone_wire/bolt/tri/arc_wall`,
+`tilted_slab`, `component()`, `ruby_pipe/flex_duct/coil_cord/elbow/pipe_run/flex_run/tee` + vector
+helpers into **`src/models/tbs_draw.py`** (verbatim, AST-extracted). Overview keeps `generate_ruby()` +
+the tag/scene machinery + the `C_*` palette (primitives take color as a param) and does
+`from tbs_draw import *`. Re-pointed all 11 sub-models `ov.<primitive>` → `draw.<primitive>` (631 refs);
+`construction` reads the live `draw._CTX_FORCE`.
+- **Result:** 10 of 11 models byte-identical. **Overview changed benignly** — the shared material
+  registry unified, consolidating 12 redundant duplicates (same color+alpha, previously split because
+  sub-models' import-time `ruby_box = ov.ruby_box` aliases captured a separate registry path):
+  **unique materials 103 → 91**, geometry + appearance 100% identical. Bonus: base was at 103, *over*
+  the ~100 Sketchfab cap the code targets — Phase 0 brings it back under. Only `overview.skp` re-sent.
+- `tbs_draw.py` needs no `dependencies.yml` entry (shared library, no `.skp`/`.png` output).
+- **Deferred Phase 0 hygiene (non-blocking):** move the `C_*` palette and the metadata helpers
+  (`model_uid`, `sketchfab_meta_ruby`) out of overview too, so sub-models stop importing it entirely.
 
 ### Phase 1 — Invert the structural owners (pattern ③ → ①), lowest-risk first
 For each, MOVE the builder from overview into its sub-model, delete overview's copy, and have

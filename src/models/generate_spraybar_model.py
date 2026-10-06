@@ -23,6 +23,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
+import tbs_draw as draw                          # shared drawing/material primitives
 
 from tbs_constants import PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R
 
@@ -69,10 +70,10 @@ def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
         a = a0 + (a1 - a0) * i / n
         pts.append((cy + ri * math.cos(a), cz + ri * math.sin(a)))
     pts_ruby = ', '.join(
-        f'[{ov.mm(round(x0, 2))},{ov.mm(round(y, 2))},{ov.mm(round(z, 2))}]'
+        f'[{draw.mm(round(x0, 2))},{draw.mm(round(y, 2))},{draw.mm(round(z, 2))}]'
         for y, z in pts)
-    r_, g_, b_ = ov.hex_to_rgb(color)
-    mat_nm = ov.shared_mat_name(name, color, None)
+    r_, g_, b_ = draw.hex_to_rgb(color)
+    mat_nm = draw.shared_mat_name(name, color, None)
     return '\n'.join([
         f'  # {name}',
         f'  grp = ents.add_group',
@@ -80,7 +81,7 @@ def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
         f'  ge = grp.entities',
         f'  face = ge.add_face([{pts_ruby}])',
         f'  face.reverse! if face.normal.x < 0',
-        f'  face.pushpull({ov.mm(sw)})',
+        f'  face.pushpull({draw.mm(sw)})',
         f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")',
         f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})',
         f'  mat.alpha = 1.0',
@@ -95,18 +96,18 @@ def build_beam():
     poly_cy = GY + S / 2 + SPRAY_BAR_POLY_OD / 2   # poly on the beam's inboard (+Yd) side face
     poly_cz = ZB + BH / 2                          # poly center at beam mid-height
     # 40×25×3 304-SS RHS beam (laid flat — low profile for grate clearance)
-    parts.append(ov.ruby_box("Spray Beam 40x25x3 304-SS RHS",
+    parts.append(draw.ruby_box("Spray Beam 40x25x3 304-SS RHS",
                              XL, GY - S / 2, ZB, XR - XL, S, BH, color=C_SS))
     # end caps (left = feed end)
-    parts.append(ov.ruby_box("Beam End Cap (feed)",
+    parts.append(draw.ruby_box("Beam End Cap (feed)",
                              XL - 4, GY - S / 2, ZB, 4, S, BH, color=C_SS))
-    parts.append(ov.ruby_box("Beam End Cap",
+    parts.append(draw.ruby_box("Beam End Cap",
                              XR, GY - S / 2, ZB, 4, S, BH, color=C_SS))
     # 3/4" LDPE poly manifold — SIDE-mounted on the beam's inboard face (+ water core)
-    parts.append(ov.ruby_cylinder("Side Poly Manifold (3/4 LDPE)",
+    parts.append(draw.ruby_cylinder("Side Poly Manifold (3/4 LDPE)",
                                   XL, poly_cy, poly_cz, SPRAY_BAR_POLY_OD / 2, XR - XL,
                                   color=C_POLY, axis="x"))
-    parts.append(ov.ruby_cylinder("Water in Manifold",
+    parts.append(draw.ruby_cylinder("Water in Manifold",
                                   XL, poly_cy, poly_cz, SPRAY_BAR_POLY_ID / 2, XR - XL,
                                   color=C_WATER, axis="x", alpha=0.55))
     # 90° down-jet nozzles — side-tapped (saddle-tee) into the poly manifold, spray straight
@@ -117,9 +118,9 @@ def build_beam():
     for i in range(SPRAY_BAR_N_NOZZLES):
         nx = NXL + margin + i * sp
         # saddle-tee barb into the poly + nozzle body hanging below it
-        parts.append(ov.ruby_cylinder("Nozzle Body", nx, poly_cy, poly_cz - 12, 4, 12,
+        parts.append(draw.ruby_cylinder("Nozzle Body", nx, poly_cy, poly_cz - 12, 4, 12,
                                       color=C_NOZZLE, axis="z"))
-        parts.append(ov.ruby_cylinder("Nozzle Tip", nx, poly_cy, poly_cz - 18, 6.5, 6,
+        parts.append(draw.ruby_cylinder("Nozzle Tip", nx, poly_cy, poly_cz - 18, 6.5, 6,
                                       color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
@@ -130,13 +131,13 @@ def _csk_head(name, cx, cy, z0, z1, r0, r1, color, n=12):
     ring = lambda z, r: [(cx + r * math.cos(2 * math.pi * i / n),
                           cy + r * math.sin(2 * math.pi * i / n), z) for i in range(n)]
     bot, top = ring(z0, r0), ring(z1, r1)
-    P = lambda p: f'[{ov.mm(p[0])},{ov.mm(p[1])},{ov.mm(p[2])}]'
+    P = lambda p: f'[{draw.mm(p[0])},{draw.mm(p[1])},{draw.mm(p[2])}]'
     L = [f'  # {name}', '  grp = ents.add_group', f'  grp.name = "{name}"', '  ge = grp.entities']
     for i in range(n):                                   # tapered skirt (quads)
         j = (i + 1) % n
         L.append(f'  ge.add_face({P(bot[i])}, {P(bot[j])}, {P(top[j])}, {P(top[i])})')
     L.append('  ge.add_face(' + ', '.join(P(p) for p in bot) + ')')   # flush bottom cap
-    r, g, b = ov.hex_to_rgb(color)
+    r, g, b = draw.hex_to_rgb(color)
     L += [f'  mat = model.materials["{name}"] || model.materials.add("{name}")',
           f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
           '  grp.material = mat', '']
@@ -161,10 +162,10 @@ def _carriage(xend, side, din):
     notch = S / 2                            # 20 — wings extend in to meet the beam faces
 
     # ── notched 5mm Al carriage plate — two wings either side of the beam ──
-    parts.append(ov.ruby_box(f"Carriage Plate L {side}",
+    parts.append(draw.ruby_box(f"Carriage Plate L {side}",
                              cx0, GY - half - 18, plate_z,
                              CW, (GY - notch) - (GY - half - 18), plate_t, color=C_ALUM))
-    parts.append(ov.ruby_box(f"Carriage Plate R {side}",
+    parts.append(draw.ruby_box(f"Carriage Plate R {side}",
                              cx0, GY + notch, plate_z,
                              CW, (GY + half + 18) - (GY + notch), plate_t, color=C_ALUM))
 
@@ -177,10 +178,10 @@ def _carriage(xend, side, din):
     #                                           moved out to clear the wheel by 2mm
     for dy in (-half, half):
         cy = GY + dy
-        parts.append(ov.ruby_cylinder(f"Wheel {side}",
+        parts.append(draw.ruby_cylinder(f"Wheel {side}",
                                       cxc - ww / 2, cy, az, wd / 2, ww,
                                       color=C_NYLON, axis="x"))
-        parts.append(ov.ruby_cylinder(f"Axle Pin 10mm {side}",
+        parts.append(draw.ruby_cylinder(f"Axle Pin 10mm {side}",
                                       cxc - ww / 2 - 23, cy, az, 5, ww + 46,
                                       color=C_BOLT, axis="x"))
         for sx_ in (cxc - sgap, cxc + sgap):  # a saddle clamp either side of the wheel
@@ -189,10 +190,10 @@ def _carriage(xend, side, din):
                                      sx_, sw, cy, az, 6, 3.18, 180, 360, C_CLAMP))
             for sgn in (-1, 1):               # a flat 12mm foot each side + M5 bolt through it
                 foot_y0 = cy + 6 if sgn > 0 else cy - 18
-                parts.append(ov.ruby_box(f"Axle Saddle Foot {side}",
+                parts.append(draw.ruby_box(f"Axle Saddle Foot {side}",
                                          sx_ - sw / 2, foot_y0, plate_z - 3.18, sw, 12, 3.18,
                                          color=C_CLAMP))
-                parts.append(ov.ruby_cylinder(f"Axle Bolt {side}",
+                parts.append(draw.ruby_cylinder(f"Axle Bolt {side}",
                                               sx_, cy + sgn * 12, plate_z - 4, 2.5,
                                               (plate_top + 3) - (plate_z - 4), color=C_BOLT, axis="z"))
 
@@ -201,21 +202,21 @@ def _carriage(xend, side, din):
     # the full carriage width with the outer edge flush with the beam end. ──
     ct = 3                                   # clamp flat-bar thickness
     cl_y0, cl_yw = GY - 32, 64               # extended so the Ø5 bolt holes are fully enclosed
-    parts.append(ov.ruby_box(f"Bottom Clamp {side}",
+    parts.append(draw.ruby_box(f"Bottom Clamp {side}",
                              cx0, cl_y0, ZB - ct, CW, cl_yw, ct, color=C_CLAMP))
-    parts.append(ov.ruby_box(f"Top Clamp {side}",
+    parts.append(draw.ruby_box(f"Top Clamp {side}",
                              cx0, cl_y0, ZT, CW, cl_yw, ct, color=C_CLAMP))
     # two bolts per side (4 total) — spaced along the carriage width, just outside
     # each beam face; one solid spacer block per side fills the gap between the
     # plates, setting the clamp height to the beam so tightening grips the beam.
     for by_ in (GY - (S / 2 + 4), GY + (S / 2 + 4)):     # near + far beam faces
-        parts.append(ov.ruby_box(f"Clamp Spacer {side}",
+        parts.append(draw.ruby_box(f"Clamp Spacer {side}",
                                  cx0 + 4, by_ - 4, ZB, CW - 8, 8, ZT - ZB, color=C_ALUM))
         for bx_ in (cx0 + 9, cx0 + CW - 9):             # fore + aft along the width
             # COUNTERSUNK on the TRAY-FACING underside (matches the 2D "M6 CSK flush underside —
             # clearance"): the shaft is flush at the bottom-clamp underside (no proud head toward the
             # tray) with a CSK frustum head seated in the clamp; only the TOP nut stays proud.
-            parts.append(ov.ruby_cylinder(f"Clamp Bolt {side}",
+            parts.append(draw.ruby_cylinder(f"Clamp Bolt {side}",
                                           bx_, by_, ZB - ct, 2.5,
                                           (ZT + ct + 4) - (ZB - ct), color=C_BOLT, axis="z"))
             parts.append(_csk_head(f"Clamp Bolt CSK Head {side}", bx_, by_,
@@ -230,7 +231,7 @@ def build_carriages(include_floor=True):
     if include_floor:
         # tray-floor reference patch (the wheels roll on this 2mm SS tray floor).
         # Omitted when embedded in the overview, which has its own processing tray.
-        parts.append(ov.ruby_box("Tray Floor (ref)",
+        parts.append(draw.ruby_box("Tray Floor (ref)",
                                  XL - 60, GY - half_band(), 0,
                                  (XR - XL) + 120, 2 * half_band(), 2,
                                  color=C_TRAY, alpha=0.25))
@@ -250,7 +251,7 @@ def tray_ref_patch():
     """The small tray-floor reference patch the wheels roll on — its OWN tag, shown
     only in the carriage-only scenes (the Combined / Processing Tray scenes have the
     REAL tray, so the ref patch would double up under the beam)."""
-    return ov.ruby_box("Tray Floor (ref)",
+    return draw.ruby_box("Tray Floor (ref)",
                        XL - 60, GY - half_band(), ov.PROC_TRAY_FLOOR_Z_LOW - 2,
                        (XR - XL) + 120, 2 * half_band(), 2,
                        color=C_TRAY, alpha=0.25)
@@ -281,13 +282,13 @@ def spraybar_labels():
             f'if inst\n'
             f'  bb = inst.bounds\n'
             f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
-            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')
     for x, y, z, text, dx, dy, dz in SPRAYBAR_POINT_LABELS:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
@@ -303,16 +304,16 @@ def build_feed_pole():
     # ── pole connection: flange-base ball joint fastened to the beam TOP face ──
     # flange (44×44×5) on the beam top, held by 4 self-tapping screws (no internal
     # beam access for nuts) — nothing overhangs the ball, so the arm articulates free
-    parts.append(ov.ruby_box("Pole Mount Flange",
+    parts.append(draw.ruby_box("Pole Mount Flange",
                              cx - 22, by - 22, ZT, 44, 44, 5, color=C_STEEL))
     for sxx in (cx - 16, cx + 16):
         for syy in (by - 16, by + 16):
-            parts.append(ov.ruby_cylinder("Flange Self-Tapping Screw",
+            parts.append(draw.ruby_cylinder("Flange Self-Tapping Screw",
                                           sxx, syy, ZT - 4, 1.8, 9, color=c_bolt, axis="z"))
-            parts.append(ov.ruby_cylinder("Flange Screw Head",
+            parts.append(draw.ruby_cylinder("Flange Screw Head",
                                           sxx, syy, ZT + 5, 3, 2.5, color=c_bolt, axis="z"))
     # socket housing — the ball-joint body, Ø36 × 28
-    parts.append(ov.ruby_cylinder("Ball-Joint Socket (20mm)",
+    parts.append(draw.ruby_cylinder("Ball-Joint Socket (20mm)",
                                   cx, by, ZT + 5, 18, 28, color=c_joint, axis="z"))
 
     # ── articulated stud + arm tube + telescoping pole to the operator ──
@@ -320,19 +321,19 @@ def build_feed_pole():
     ball_z = ZT + 5 + 14 + 2           # ≈ 71 — ball center inside the socket
     mid_y, mid_z = (by + op_y) / 2, (ball_z + op_z) / 2
     # M12 stud emerging from the socket, angled toward the operator (articulated)
-    parts.append(ov.ruby_pipe("Ball-Joint Stud (M12)",
+    parts.append(draw.ruby_pipe("Ball-Joint Stud (M12)",
                               (cx, by, ball_z), (cx, by - 28, ball_z + 24), 6, color=c_ss))
     # Ø25 aluminum arm tube clamped onto the stud
-    parts.append(ov.ruby_pipe("Arm Tube (25 OD Al)",
+    parts.append(draw.ruby_pipe("Arm Tube (25 OD Al)",
                               (cx, by - 24, ball_z + 20), (cx, mid_y, mid_z), 12.5, color=C_ALUM))
     # pinch bolt clamping the arm onto the stud
-    parts.append(ov.ruby_cylinder("Pinch Bolt",
+    parts.append(draw.ruby_cylinder("Pinch Bolt",
                                   cx - 18, by - 26, ball_z + 26, 3, 36, color=c_bolt, axis="x"))
     # telescoping pole (thinner) continuing to the operator's hand
-    parts.append(ov.ruby_pipe("Telescoping Pole",
+    parts.append(draw.ruby_pipe("Telescoping Pole",
                               (cx, mid_y, mid_z), (cx, op_y, op_z), 11, color=C_ALUM))
     # T-handle at the operator end
-    parts.append(ov.ruby_cylinder("Pole Handle",
+    parts.append(draw.ruby_cylinder("Pole Handle",
                                   cx - 90, op_y, op_z, 9, 180, color=C_STEEL, axis="x"))
 
     # ── water feed: the blue hose runs down the pole and makes a SINGLE center feed
@@ -349,11 +350,11 @@ def build_feed_pole():
     M = (cx, mid_y, mid_z)
     A = (cx, by - 24, ball_z + 20)          # arm base, near the ball joint
     hoff = 20                                # pole radius + hose radius — tangent
-    parts.append(ov.ruby_pipe("Feed Hose (upper)",
+    parts.append(draw.ruby_pipe("Feed Hose (upper)",
                               (cx + hoff, O[1], O[2]), (cx + hoff, M[1], M[2]), 8, color=C_WATER))
-    parts.append(ov.ruby_pipe("Feed Hose (lower)",
+    parts.append(draw.ruby_pipe("Feed Hose (lower)",
                               (cx + hoff, M[1], M[2]), (cx + hoff, A[1], A[2]), 8, color=C_WATER))
-    parts.append(ov.ruby_flex_run("Feed Flex Connector",
+    parts.append(draw.ruby_flex_run("Feed Flex Connector",
                                   [(cx + hoff, A[1], A[2]), (cx + hoff, poly_cy, A[2]),
                                    (cx + hoff, poly_cy, poly_cz + 18),
                                    (cx, poly_cy, poly_cz + 18)],
@@ -376,10 +377,10 @@ def build_feed_pole():
                 ca, sb = 23 * math.cos(th), 16.5 * math.sin(th)
                 loop.append((cyz[0] + ca, cyz[1] + sb * vh[1], cyz[2] + sb * vh[2]))
             for k in range(10):
-                parts.append(ov.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 10], 1.2,
+                parts.append(draw.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 10], 1.2,
                                           color="#888888", n=6))
     # single center-feed barbed inlet tee into the SIDE poly manifold at the beam center
-    parts.append(ov.ruby_cylinder("Center Feed Barb Tee", cx, poly_cy, poly_cz - 2, 5, 18,
+    parts.append(draw.ruby_cylinder("Center Feed Barb Tee", cx, poly_cy, poly_cz - 2, 5, 18,
                  color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
@@ -394,12 +395,12 @@ def build_tray():
 
 def generate_ruby():
     comps = [
-        ov.component("Spray Beam", "Beam", build_beam()),
-        ov.component("Wheel Carriage L", "Carriage L", build_carriage_one(XL, "L", 1)),
-        ov.component("Wheel Carriage R", "Carriage R", build_carriage_one(XR, "R", -1)),
-        ov.component("Tray Floor Ref", "Tray Ref", tray_ref_patch()),
-        ov.component("Feed & Push Pole", "Feed & Pole", build_feed_pole()),
-        ov.component("Processing Tray", "Tray", build_tray()),
+        draw.component("Spray Beam", "Beam", build_beam()),
+        draw.component("Wheel Carriage L", "Carriage L", build_carriage_one(XL, "L", 1)),
+        draw.component("Wheel Carriage R", "Carriage R", build_carriage_one(XR, "R", -1)),
+        draw.component("Tray Floor Ref", "Tray Ref", tray_ref_patch()),
+        draw.component("Feed & Push Pole", "Feed & Pole", build_feed_pole()),
+        draw.component("Processing Tray", "Tray", build_tray()),
     ]
     body = '\n'.join(comps)
     tags_ruby = '\n'.join(
@@ -420,7 +421,7 @@ def generate_ruby():
     def scene_lit(n, tags, tgt):
         tg = '[' + ', '.join(f'"{t}"' for t in tags) + ']'
         cam = 'nil' if tgt is None else \
-            f'[{ov.mm(tgt[0])}, {ov.mm(tgt[1])}, {ov.mm(tgt[2])}, {ov.mm(tgt[3])}]'
+            f'[{draw.mm(tgt[0])}, {draw.mm(tgt[1])}, {draw.mm(tgt[2])}, {draw.mm(tgt[3])}]'
         return f'["{n}", {tg}, {cam}]'
     scenes_ruby = '[' + ', '.join(scene_lit(*s) for s in scenes) + ']'
 

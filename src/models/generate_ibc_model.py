@@ -28,6 +28,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + component builders (Overview)
+import tbs_draw as draw                          # shared drawing/material primitives
 
 TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel",
         "Walkway Cantilever", "Labels"]
@@ -72,13 +73,13 @@ def ibc_labels():
             f'if inst\n'
             f'  bb = inst.bounds\n'
             f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
-            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')
     for x, y, z, text, dx, dy, dz in IBC_POINT_LABELS:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
     # Plumbing-panel callouts, single-sourced from pw.LABEL_POINTS (track the shared part/valve centers).
     # End-wall ports (X1/X3/X4) are skipped — IBC_POINT_LABELS carries them.  The CORRIDOR cluster (pump
@@ -105,8 +106,8 @@ def ibc_labels():
             placed.append((x, y, z, text, dx, 0, tz - z))        # lead −X into the aisle, fanned Z
     for x, y, z, text, dx, dy, dz in placed:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
@@ -122,11 +123,11 @@ def context():
     xlen = ov.C_LEN - x0
     t = ov.WALL_T
     return '\n'.join([
-        ov.ruby_box("Floor (context)", x0, 0, -t, xlen, ov.C_WID, t,
+        draw.ruby_box("Floor (context)", x0, 0, -t, xlen, ov.C_WID, t,
                     color=ov.C_SHELL, alpha=0.25),
-        ov.ruby_box("Side Wall near (context)", x0, -t, 0, xlen, t, ov.C_HGT,
+        draw.ruby_box("Side Wall near (context)", x0, -t, 0, xlen, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.16),
-        ov.ruby_box("Side Wall far (context)", x0, ov.C_WID, 0, xlen, t, ov.C_HGT,
+        draw.ruby_box("Side Wall far (context)", x0, ov.C_WID, 0, xlen, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.16),
     ])
 
@@ -137,7 +138,7 @@ def spray_wall_trunk():
     feed doesn't appear to stop at the rail. (In the overview this run is the spray-bar
     supply trunk; here it's added only for the IBC-end view.)"""
     fz = ov.SPRAY_BAR_FEED_Z
-    return ov.ruby_pipe("Blue Supply Trunk (along pinhole wall)",
+    return draw.ruby_pipe("Blue Supply Trunk (along pinhole wall)",
                         (ov.RAIL_X_R, 12, fz), (4300, 12, fz),
                         ov.PUMP_PIPE_OD / 2, color=ov.C_BLUE)
 
@@ -148,21 +149,21 @@ def generate_ruby():
     import generate_corridor_water_panel as cp
     import generate_pinhole_water_panel as pw
     comps = [
-        ov.component("Container (ghost)", "Context", context()),
-        ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
-        ov.component("Corridor Frame (deep box)", "IBC Frame", cp.frame()),
-        ov.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
-        ov.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
-        ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment(sump_on_skid=True)),
-        ov.component("Wall backing (ply)", "Plumbing & Panel", pw.backing()),
-        ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit(p02_on_corridor=True)),
-        ov.component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing & Panel", pw.skid_row()),
-        ov.component("Skid plumbing", "Plumbing & Panel", pw.skid_plumbing()),
+        draw.component("Container (ghost)", "Context", context()),
+        draw.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
+        draw.component("Corridor Frame (deep box)", "IBC Frame", cp.frame()),
+        draw.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
+        draw.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
+        draw.component("Corridor Equipment", "Plumbing & Panel", cp.equipment(sump_on_skid=True)),
+        draw.component("Wall backing (ply)", "Plumbing & Panel", pw.backing()),
+        draw.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit(p02_on_corridor=True)),
+        draw.component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing & Panel", pw.skid_row()),
+        draw.component("Skid plumbing", "Plumbing & Panel", pw.skid_plumbing()),
         # NB: "Pinhole-Wall Equipment" (ov.electrical() — EP + external power panel + batteries)
         #     removed from this model — electrical is not of interest in the IBC/plumbing view.
-        ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing(sump_on_skid=True)),
-        ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports(sump_on_skid=True)),
-        ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
+        draw.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing(sump_on_skid=True)),
+        draw.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports(sump_on_skid=True)),
+        draw.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
         # NB: "Ribbon Support Cross-beams" (cp.ribbon_supports() — the 4 welded under-grate
         #     cross-beams) removed — not of interest in this model.
         # Full right-walkway support (inner + 2 outer beam segments + end beams + cantilever
@@ -170,7 +171,7 @@ def generate_ruby():
         # corridor/ribbon pipes can be clash-checked against the beams they thread past IN THIS
         # focus model (the blue-trunk × outer-beam clash previously only surfaced downstream at
         # water).  Grate + combined corner plates omitted to keep the plumbing view readable.
-        ov.component("Right Walkway Support", "Walkway Cantilever",
+        draw.component("Right Walkway Support", "Walkway Cantilever",
                      ov.right_walkway_cantilever(include_combined=False, include_grate=False)),
     ]
     body = '\n'.join(comps)

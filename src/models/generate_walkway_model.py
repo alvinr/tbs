@@ -40,13 +40,14 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # helpers, materials, constants
+import tbs_draw as draw                          # shared drawing/material primitives
 import tbs_constants as k                       # right-hanger constants ov doesn't re-export
 
-ruby_box = ov.ruby_box
-ruby_cylinder = ov.ruby_cylinder
-ruby_bolt = ov.ruby_bolt
-ruby_tri = ov.ruby_tri
-component = ov.component
+ruby_box = draw.ruby_box
+ruby_cylinder = draw.ruby_cylinder
+ruby_bolt = draw.ruby_bolt
+ruby_tri = draw.ruby_tri
+component = draw.component
 
 # Spatial constants (single source of truth via tbs_constants, re-exported by ov)
 C_WID, C_HGT, C_LEN, WALL_T = ov.C_WID, ov.C_HGT, ov.C_LEN, ov.WALL_T
@@ -135,13 +136,13 @@ def walkway_labels():
             f'if inst\n'
             f'  bb = inst.bounds\n'
             f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
-            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')
     for x, y, z, text, dx, dy, dz in WALKWAY_POINT_LABELS:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
@@ -350,13 +351,13 @@ def _rwk_arm_type_parts(x0):
     bp_h = (ep_bz + ep_h) - bp_bz
     ac_y = aw / 2.0                                                # arm centre in Yd
     parts = [
-        ov.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
-        ov.ruby_box("Type RWk cantilever arm (solid 2x1 flat bar)", x0 - reach, 0, armb, reach - ep_t, aw, ah, color=ov.C_STEEL),
-        ov.ruby_box("Type RWk J6 end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=ov.C_STEEL),
-        ov.ruby_box("Type RWk J6 backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=ov.C_STEEL),
+        draw.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
+        draw.ruby_box("Type RWk cantilever arm (solid 2x1 flat bar)", x0 - reach, 0, armb, reach - ep_t, aw, ah, color=ov.C_STEEL),
+        draw.ruby_box("Type RWk J6 end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=ov.C_STEEL),
+        draw.ruby_box("Type RWk J6 backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=ov.C_STEEL),
     ]
     for bz in ov.RWK_J6_BOLT_ZS:                                    # 2× M12, both above the arm (bearing-type)
-        parts.append(ov.ruby_bolt("Type RWk J6 bolt M12", x0 - ep_t, ac_y, bz, s + 2 * ep_t + 8,
+        parts.append(draw.ruby_bolt("Type RWk J6 bolt M12", x0 - ep_t, ac_y, bz, s + 2 * ep_t + 8,
                                   radius=6, axis="x", color="#3A3A42", head="base", nut="far"))
     return parts
 
@@ -432,8 +433,8 @@ def cantilever_type_labels():
     rows = []
     for x, y, z, text, dx, dy, dz in labels:
         rows.append(
-            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
-            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'anc = Geom::Point3d.new({draw.mm(x)}, {draw.mm(y)}, {draw.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({draw.mm(dx)}, {draw.mm(dy)}, {draw.mm(dz)}))\n'
             f'txt.layer = model.layers["Cantilever Types"] rescue nil')
     return '\n'.join(rows)
 
@@ -613,9 +614,9 @@ model.pages.add("Overview")
 #    close-up camera (the only scene showing the Cantilever Types catalog tag; the
 #    wall is hidden so the full bracket — plate, arm, gusset, bolts — reads) ──
 model.layers.each {{ |l| l.visible = (l.name == "Cantilever Types") }}
-ct_tgt = Geom::Point3d.new({ov.mm(5000)}, {ov.mm(-100)}, {ov.mm(450)})
+ct_tgt = Geom::Point3d.new({draw.mm(5000)}, {draw.mm(-100)}, {draw.mm(450)})
 ct_dir = Geom::Vector3d.new(-0.18, -0.84, 0.38); ct_dir.normalize!
-ct_eye = ct_tgt.offset(ct_dir, {ov.mm(8800)})
+ct_eye = ct_tgt.offset(ct_dir, {draw.mm(8800)})
 ct_cam = Sketchup::Camera.new(ct_eye, ct_tgt, Z_AXIS)
 ct_cam.perspective = true
 ct_cam.fov = 46

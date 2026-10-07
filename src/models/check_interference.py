@@ -133,6 +133,9 @@ def classify(name):
         import re
         m = re.search(r"\bf(\d)\b", n)           # key = "F1"/"F2"/"F3" so a pipe naming that
         return ("filter", f"F{m.group(1)}" if m else None)   # filter (it connects to) is excluded
+    if "clip" in n and " ->" not in name and " →" not in name:
+        return ("skip", None)          # pipe-support P-clips / saddle straps intentionally CONTACT the
+                                       # pipe they carry — that is support, not a clash (as the plumbing panels)
     if any(k in n for k in ("upright", "frame rail", "foot plate", "foot anchor", "rear-panel bracket",
                             "front portal", "panel mount", "retaining bar", "wall hanger", "through-bolt",
                             "front bar", "d-ring")):

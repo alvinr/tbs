@@ -615,6 +615,10 @@ def panel_power(include_switch=True, part="all"):
             p.append(draw.ruby_pipe_run("Cct C feed (EP master sw -> pinhole-wall ceiling)", feed[:5], cr, color=PWR))
         if do_corr:
             p.append(draw.ruby_pipe_run("Cct C feed (pinhole-wall ceiling -> corridor dist block)", feed[4:], cr, color=PWR))
+    if part == "all" or do_corr:
+        # P-clip supports on the corridor-exposed part of the feed (the Yd-traverse + the drop onto the
+        # dist block, out past the ceiling trunk) — mirrors the plumbing pipe-support-clips.
+        p.append(draw.ruby_clip_run("Cct C feed", feed[6:], spacing=450))
     # ── P-04 (tray-drain pump, relocated to the filter skid) taps the trunk off the master-switch
     #    feed → drops down the pinhole wall (Yd20, behind the skid) → into P-04's body from the wall
     #    side.  (P-02 is now a corridor-column pump — wired off the corridor bus below.) ──
@@ -632,8 +636,10 @@ def panel_power(include_switch=True, part="all"):
         # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
         # pumps as one continuous run; the two middle pumps tee off the bus.
         xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
-        p.append(draw.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)",
-                 [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)], cr, color=PWR))
+        bus_pts = [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)]
+        p.append(draw.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)", bus_pts, cr, color=PWR))
+        # P-clips carrying the pump-feed bus down the rear of the corridor plumbing panel.
+        p.append(draw.ruby_clip_run("Cct C pump bus", bus_pts, spacing=380))
         # corridor branch taps: P-05 + the pump now in P-04's vacated slot (P-02, Phase 2)
         for label, key in (("P-02", "P-04"), ("P-05", "P-05")):
             z = cp.PSTACK[key] + 90

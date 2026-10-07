@@ -599,6 +599,34 @@ def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
                               r, color, alpha, n, seg, mute=mute))
         start = B
     return '\n'.join(out)
+def ruby_clip_run(name, waypoints, spacing=450.0, band=30.0, thick=12.0,
+                  color="#55575e", mute=0.0):
+    """Saddle / P-clip pipe supports every ~`spacing` mm along a run's polyline, each thin along
+    the LOCAL pipe axis and wider across (⊥ the run), bridging the run to its backing. Mirrors the
+    plumbing-panel pipe-support-clips. Call it with the SAME point-list the run is drawn from, so
+    the clips can never drift off the pipe. (The interference check treats 'clip' solids as intended
+    pipe contact, not a clash.)"""
+    V = [tuple(float(c) for c in p) for p in waypoints]
+    out = []
+    carry = spacing * 0.5
+    for a, b in zip(V, V[1:]):
+        d = _vsub(b, a)
+        L = _vlen(d)
+        if L < 1e-6:
+            continue
+        u = _vunit(d)
+        t = carry
+        while t <= L:
+            c = _vadd(a, _vscale(u, t))
+            ax = max(abs(u[0]), abs(u[1]), abs(u[2]))
+            sx = thick if abs(u[0]) == ax else band
+            sy = thick if abs(u[1]) == ax else band
+            sz = thick if abs(u[2]) == ax else band
+            out.append(ruby_box(f"{name} P-clip", c[0] - sx / 2, c[1] - sy / 2, c[2] - sz / 2,
+                                sx, sy, sz, color=color, mute=mute))
+            t += spacing
+        carry = t - L
+    return '\n'.join(out)
 def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16, mute=0.0):
     """Tee fitting body at a branch point: a fat run-through stub (along
     run_dir) plus a fat branch stub (along branch_dir), OD slightly larger than

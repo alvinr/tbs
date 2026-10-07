@@ -208,7 +208,11 @@ def _run(cct, load):
         (lx, lyd, TRUNK_Z),         # cross out toward the load (Yd)
         (lx, lyd, lz),              # drop perpendicular to the load (Z)
     ])
-    return draw.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, CCT_WIRE_R, color=CCT[cct][0])
+    run = draw.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, CCT_WIRE_R, color=CCT[cct][0])
+    # P-clips on the out-of-trunk part — the cross off the trunk lane + the drop to the load (the
+    # Fan A far-end cross/drop, the Fan B wall drop). The along-ceiling leg sits in the trunk.
+    clips = draw.ruby_clip_run(f"Circuit {cct}", pts[4:], spacing=450)
+    return run + ("\n" + clips if clips else "")
 
 
 def _multi_run(cct, ends):
@@ -334,30 +338,30 @@ def power_core(external_links=True, links_only=False):
     # pairs + orange AC crossover). The two runs stay clear on their own Yd lanes: green shallow (22),
     # grey deep (46); both sit INSIDE the box, not along the bottom edge.
     ext_links = []
-    ext_links.append(draw.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
-                              _dedup([(MC4_PLUS_X, MC4_PLUS_Y, MC4_BOT_Z),
-                                      (MC4_PLUS_X, MC4_PLUS_Y, MC4_FEED_Z),        # drop to the feed-run height, on the shallow Yd lane
-                                      (_pvx - 18, MC4_PLUS_Y, MC4_FEED_Z),         # run +x INSIDE the box, parallel to the grey feed, out the +x side toward the pinhole
-                                      (_pvx - 18, MC4_PLUS_Y, _pvd_rz),
-                                      (_pvx - 18, EP_CTRL_FACE_YD, _pvd_rz)]),   # land LEFT of the box mid, on the REAR
-                              6, color="#2D7A2D"))
-    ext_links.append(draw.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)",
-                              _dedup([(_pvx + 18, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR, RIGHT of the box mid
-                                      (_pvx + 18, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
-                                      (_pvx + 18, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
-                                      (_pvx - 4, 45, EP_H_HI - MPPT_H + 40),      # −X behind, to the MPPT X
-                                      (_pvx - 4, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 40)]),   # forward into the MPPT back (single clean entry)
-                              6, color="#2D7A2D"))
+    _pvp1 = _dedup([(MC4_PLUS_X, MC4_PLUS_Y, MC4_BOT_Z),
+                    (MC4_PLUS_X, MC4_PLUS_Y, MC4_FEED_Z),        # drop to the feed-run height, on the shallow Yd lane
+                    (_pvx - 18, MC4_PLUS_Y, MC4_FEED_Z),         # run +x INSIDE the box, parallel to the grey feed, out the +x side toward the pinhole
+                    (_pvx - 18, MC4_PLUS_Y, _pvd_rz),
+                    (_pvx - 18, EP_CTRL_FACE_YD, _pvd_rz)])     # land LEFT of the box mid, on the REAR
+    ext_links.append(draw.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)", _pvp1, 6, color="#2D7A2D"))
+    _pvp2 = _dedup([(_pvx + 18, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR, RIGHT of the box mid
+                    (_pvx + 18, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
+                    (_pvx + 18, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
+                    (_pvx - 4, 45, EP_H_HI - MPPT_H + 40),      # −X behind, to the MPPT X
+                    (_pvx - 4, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 40)])   # forward into the MPPT back (single clean entry)
+    ext_links.append(draw.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)", _pvp2, 6, color="#2D7A2D"))
     # PV − feed (grey): the array negative from the MC4 − bus up to the MPPT PV− input (parallels the
     # green +, on its own −Yd lane so the pair reads clearly; the − is continuous, not switched).
-    ext_links.append(draw.ruby_pipe_run("PV- feed (MC4 -> MPPT -)",
-                              _dedup([(MC4_MINUS_X, MC4_MINUS_Y, MC4_BOT_Z),
-                                      (MC4_MINUS_X, MC4_MINUS_Y, MC4_FEED_Z),      # drop to the clear feed-run height (below the orange AC line)
-                                      (_pvx - 42, MC4_MINUS_Y, MC4_FEED_Z),
-                                      (_pvx - 42, MC4_MINUS_Y, EP_H_HI - MPPT_H + 70),
-                                      (_pvx - 20, MC4_MINUS_Y, EP_H_HI - MPPT_H + 70),
-                                      (_pvx - 20, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 70)]),
-                              6, color="#9AA0A6"))
+    _pvm = _dedup([(MC4_MINUS_X, MC4_MINUS_Y, MC4_BOT_Z),
+                   (MC4_MINUS_X, MC4_MINUS_Y, MC4_FEED_Z),      # drop to the clear feed-run height (below the orange AC line)
+                   (_pvx - 42, MC4_MINUS_Y, MC4_FEED_Z),
+                   (_pvx - 42, MC4_MINUS_Y, EP_H_HI - MPPT_H + 70),
+                   (_pvx - 20, MC4_MINUS_Y, EP_H_HI - MPPT_H + 70),
+                   (_pvx - 20, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 70)])
+    ext_links.append(draw.ruby_pipe_run("PV- feed (MC4 -> MPPT -)", _pvm, 6, color="#9AA0A6"))
+    # P-clips on the interior PV feeds (routed behind the EP panel) — ~350mm centres.
+    for _lbl, _pp in (("PV+ feed", _pvp1), ("PV+ feed", _pvp2), ("PV- feed", _pvm)):
+        ext_links.append(draw.ruby_clip_run(_lbl, _pp, spacing=350))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.
     p.append(draw.ruby_box("Fuse Block base (Blue Sea 5026)", _FBLK_X0, _FBLK_YD, _FBLK_Z0,
@@ -427,19 +431,20 @@ def power_core(external_links=True, links_only=False):
     # so the trip line runs straight up the column to the interior E-stop — no anchor dodge needed.
     _ctc_x, _ctc_z = EP_X + 10 + CONTACTOR_W / 2, EP_POST_Z + CONTACTOR_H    # contactor coil top (skinny column)
     _ext_x, _ext_z = PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H / 2  # exterior E-stop
-    ext_links.append(draw.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
-                              _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 45, _ctc_z + 20),   # straight UP off the contactor coil (no angled entry)
-                                      (_ctc_x, 10, _ctc_z + 20),                           # then −Yd (right-angle turn)
-                                      (ies_cx, 10, _ctc_z + 20), (ies_cx, 10, ies_cz),
-                                      (ies_cx, _ACCESS_YB, ies_cz)]),               # land on the E-stop REAR terminal (behind the access panel)
-                              4, color="#586070"))
-    ext_links.append(draw.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",
-                              _dedup([(ies_cx, _ACCESS_YB, ies_cz), (ies_cx, 10, ies_cz),
-                                      (ies_cx, 10, _ext_z - 75),               # rise 25mm lower than the GFCI jog
-                                      (ies_cx, 5, _ext_z - 75),                # tuck to Yd5 (clears the green PV feed at Yd22 + the orange jog at Yd18)
-                                      (_ext_x, 5, _ext_z - 75),                # across at Yd5
-                                      (_ext_x, 5, _ext_z), (_ext_x, -WALL, _ext_z)]),
-                              4, color="#586070"))
+    _est1 = _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 45, _ctc_z + 20),   # straight UP off the contactor coil (no angled entry)
+                    (_ctc_x, 10, _ctc_z + 20),                           # then −Yd (right-angle turn)
+                    (ies_cx, 10, _ctc_z + 20), (ies_cx, 10, ies_cz),
+                    (ies_cx, _ACCESS_YB, ies_cz)])               # land on the E-stop REAR terminal (behind the access panel)
+    ext_links.append(draw.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)", _est1, 4, color="#586070"))
+    _est2 = _dedup([(ies_cx, _ACCESS_YB, ies_cz), (ies_cx, 10, ies_cz),
+                    (ies_cx, 10, _ext_z - 75),               # rise 25mm lower than the GFCI jog
+                    (ies_cx, 5, _ext_z - 75),                # tuck to Yd5 (clears the green PV feed at Yd22 + the orange jog at Yd18)
+                    (_ext_x, 5, _ext_z - 75),                # across at Yd5
+                    (_ext_x, 5, _ext_z), (_ext_x, -WALL, _ext_z)])
+    ext_links.append(draw.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)", _est2, 4, color="#586070"))
+    # P-clips on the interior E-stop feeds along the EP wall — ~350mm centres.
+    for _lbl, _pp in (("E-stop trip line", _est1), ("E-stop link", _est2)):
+        ext_links.append(draw.ruby_clip_run(_lbl, _pp, spacing=350))
     # ext_links = the two circuits OUT to the external panel (green PV + grey E-stop). links_only returns
     # JUST them (the overview's separate "EP Ext Wiring" component); external_links=False omits them
     # entirely (the water model); external_links=True folds them back inline (legacy default).
@@ -704,6 +709,28 @@ def cable_trunking():
                        25, color=draw.C_TRUNK)
 
 
+def conduit_clips():
+    """FIRST PASS — P-clip / saddle supports for the electrical conduits + cables, mirroring the
+    plumbing-panel pipe-support-clips (cushioned straps, #55575e). Trunk saddle straps fix the PVC
+    ceiling trunk to the pinhole wall at ~500mm centres; drop P-clips carry the long vertical
+    wall-drops (the Cct-B feed down to the Fan-B box) back to the wall at ~450mm centres. Review
+    target: spacing + which runs to add next (EP backboard cables, battery cable)."""
+    C_CLIP = "#55575e"
+    p = []
+    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
+          [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
+    tx0, tx1 = min(cxs) - 40, max(cxs) + 40
+    # Ceiling cable-trunk saddle straps — ~500mm centres, wrapping the 40x25 PVC trunk to the wall.
+    n = max(2, round((tx1 - tx0) / 500.0) + 1)
+    for i in range(n):
+        sx = tx0 + (tx1 - tx0) * i / (n - 1)
+        p.append(draw.ruby_box("Trunk saddle clip", sx - 6, -4, ov.C_HGT - 28,
+                               12, 48, 31, color=C_CLIP))
+    # (The circuit DROP clips — Fan A far-end cross/drop, Fan B wall drop — are emitted by _run()
+    # itself, on the run's own point-list, so they can't drift off the conductor.)
+    return '\n'.join(p)
+
+
 def cct_e_feed():
     """Cct E DC feed: fuse E -> inverter DC input. The inverter sits right BELOW the fuse block, so
     this is a short local DOWN-feed — NOT the ceiling _run route (which looped back down through the
@@ -913,6 +940,7 @@ def generate_ruby():
         draw.component("External Power Panel", "External Panel", external_panel()),
         draw.component("Circuit-E Inverter", "Inverter", inverter()),
         draw.component("Circuit Runs", "Circuit Runs", circuit_runs()),
+        draw.component("Conduit Clips", "Clips", conduit_clips()),
         draw.component("Lighting Fixtures", "Lighting", light_fixtures()),
     ]
     body = '\n'.join(comps)

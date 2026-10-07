@@ -640,17 +640,18 @@ def inverter():
     _ac_lane_x = EP_X + 249                    # clear riser slot between the PV riser (X≤2067) and the interior E-stop (X2099)
     _ac_top_z = EP_H_HI + 40                   # above the EP column top edge + clear of the cross-member top (penetrates the TOP, not the side)
     _inv_top = INVERTER_Z + INVERTER_H
-    p.append(draw.ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
-                              _dedup([(INVERTER_X + INVERTER_W / 2, 15, _inv_top),   # off the inverter at Yd15 (clear of the battery+ cable at Yd45)
-                                      (_ac_lane_x, 15, _inv_top),                    # +X to the riser slot
-                                      (_ac_lane_x, 15, EP_H_LO + 150),               # up at Yd15
-                                      (_ac_lane_x, 45, EP_H_LO + 150),               # shift to Yd45 (X clears the E-stop at X2099 by 21mm)
-                                      (_ac_lane_x, 45, _ac_top_z),                   # up and out the EP top
-                                      (_ac_lane_x, 85, _ac_top_z),                   # shift to Yd85 (clear of EVERY EP-top riser at Yd≤65: fan-feed, Cct-C, PV)
-                                      (gfci_x, 85, _ac_top_z),                       # across the top (over the cross member) to the GFCI X
-                                      (gfci_x, 85, gfci_z),                          # up to the GFCI height (Yd85 clears the green MC4 feed at Yd22)
-                                      (gfci_x, 18, gfci_z)]),                         # jog to the GFCI terminal (above the green)
-                              7, color="#E8884A"))
+    _ac_pts = _dedup([(INVERTER_X + INVERTER_W / 2, 15, _inv_top),   # off the inverter at Yd15 (clear of the battery+ cable at Yd45)
+                      (_ac_lane_x, 15, _inv_top),                    # +X to the riser slot
+                      (_ac_lane_x, 15, EP_H_LO + 150),               # up at Yd15
+                      (_ac_lane_x, 45, EP_H_LO + 150),               # shift to Yd45 (X clears the E-stop at X2099 by 21mm)
+                      (_ac_lane_x, 45, _ac_top_z),                   # up and out the EP top
+                      (_ac_lane_x, 85, _ac_top_z),                   # shift to Yd85 (clear of EVERY EP-top riser at Yd≤65: fan-feed, Cct-C, PV)
+                      (gfci_x, 85, _ac_top_z),                       # across the top (over the cross member) to the GFCI X
+                      (gfci_x, 85, gfci_z),                          # up to the GFCI height (Yd85 clears the green MC4 feed at Yd22)
+                      (gfci_x, 18, gfci_z)])                         # jog to the GFCI terminal (above the green)
+    p.append(draw.ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)", _ac_pts, 7, color="#E8884A"))
+    # P-clips along the orange AC line, incl. where it lands at the GFCI inside the external EP.
+    p.append(draw.ruby_clip_run("Cct E AC line", _ac_pts, spacing=350))
     return '\n'.join(p)
 
 

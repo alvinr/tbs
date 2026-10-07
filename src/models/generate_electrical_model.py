@@ -590,21 +590,28 @@ def external_panel(include_estop=True, include_disconnect=True):
     if include_disconnect:
         p.append(pv_disconnect())
 
-    # Evap cooler (Hessaire MC18M) — external, ground-placed off the pinhole wall — and
-    # its 120V AC cord from the panel GFCI outlet (Circuit E). The DC feed (fuse block ->
-    # inverter) and the inverter -> panel AC line are in their own components; this closes
-    # the Cct E chain: ... GFCI outlet -> cord -> cooler.
+    # Evap cooler BODY + its Cct-E 120V cooler cord (GFCI -> cooler) — SINGLE OWNER (cooler()),
+    # also composed by the overview's evap_cooler(). The DC feed + inverter->GFCI AC line are
+    # their own components; this closes the Cct E chain: GFCI outlet -> cord -> cooler.
+    p.append(cooler())
+    return '\n'.join(p)
+
+
+def cooler():
+    """SINGLE OWNER of the external evap-cooler BODY + its Cct-E 120V cooler cord (panel GFCI ->
+    cooler). external_panel() and the overview's evap_cooler() both call this, so neither can
+    drift — the overview had a ported copy whose GFCI height had gone stale (0.325 vs _OUTLET_VF),
+    so its cord didn't reach the real outlet. The Ø200 supply duct stays with the overview (no
+    ventilation sub-model owns it)."""
     cw, cd, ch = EVAP_W, EVAP_D, EVAP_H
     cx = EVAP_DUCT_X - cw / 2
-    cyd = -WALL - cd - 100         # matches the overview's evap_cooler() stand-off
-    p.append(draw.ruby_box("Evap Cooler (Hessaire MC18M, external)", cx, cyd, 0,
-                         cw, cd, ch, color=draw.C_EVAP))
+    cyd = -WALL - cd - 100         # ground stand-off off the pinhole wall
+    face_y = -WALL - 25            # exterior face of the EP box
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
     gfci_z = PWR_PANEL_Z + _OUTLET_VF * PWR_PANEL_H
     inx = cx + cw - 80                    # cooler-top inlet
-    # SOFT flexible cord — a curly coil draping DIAGONALLY from the GFCI down to the cooler
-    # inlet (matches the overview's evap_cooler()); angles clear of the cooler body, with the
-    # straight terminating stub doing the plug-in.
+    p = [draw.ruby_box("Evap Cooler (Hessaire MC18M, external)", cx, cyd, 0,
+                       cw, cd, ch, color=draw.C_EVAP)]
     p.append(draw.ruby_coil_cord("Cct E cooler cord (panel GFCI -> cooler, flexible)",
                                [(gfci_x, face_y - 10, gfci_z),
                                 (inx, cyd + cd / 2, ch - 70)],

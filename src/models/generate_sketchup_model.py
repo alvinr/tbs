@@ -37,7 +37,7 @@ import math
 import argparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_BEARER_W, RWK_X_UP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_BEARER_W, RWK_X_UP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
 
 from tbs_draw import *            # shared drawing/material primitives (Phase 0 extraction)
 
@@ -590,52 +590,16 @@ def evap_cooler():
     parts = []
     ext = -WALL_T
     cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 508 × 254 × 711 (Hessaire MC18M)
-    # Cooler unit standing on the GROUND outside the pinhole wall.
-    parts.append(ruby_box("Evap Cooler (on ground)",
-                          EVAP_DUCT_X - cw / 2, ext - cd - 100, 0,
-                          cw, cd, ch, color=C_EVAP))
-
-    # Circuit-E inverter (Victron Phoenix 12/375 GFCI) — INTERIOR, wall-mounted on
-    # the pinhole wall below the EP / above the battery; converts 12V→120V for the
-    # cooler.  See electrical-report.md §7.6.  OWNED by em.inverter_box() (was a copy here).
+    # Cct-E chain — all SINGLE-SOURCED from the electrical model (em), so the overview can't drift
+    # from electrical.skp. (It HAD drifted: the overview's copy ran the AC line + cooler cord to a
+    # stale GFCI height 0.325·PWR_PANEL_H vs em's _OUTLET_VF, so they didn't reach the real outlet.)
     import generate_electrical_model as em
-    parts.append(em.inverter_box())
+    parts.append(em.inverter())    # inverter box + Cct-E 120V AC line (inverter -> panel GFCI)
+    parts.append(em.cct_e_feed())  # Cct-E DC feed (fuse E -> inverter)
+    parts.append(em.cooler())      # cooler body + Cct-E cooler cord (panel GFCI -> cooler)
 
-    # Cct E DC feed: fuse E -> inverter DC input (the inverter sits right below the fuse block, so a
-    # short DOWN-feed, not em's ceiling route). SINGLE OWNER — shared with the electrical model.
-    parts.append(em.cct_e_feed())
-
-    # Cct E 120V AC line: inverter output -> the external panel's GFCI outlet (interior
-    # face), which then runs the cooler cord outside. Ported from the electrical model's
-    # inverter(); routed LEFT under the EP enclosure at the inverter-top height (Z≈1415,
-    # below the busbars/fuses and the upper stay anchor), then up to the GFCI on the panel.
-    gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
-    gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
-    inv_top = INVERTER_Z + INVERTER_H
-    _ac_lane_x = EP_X + 249                    # clear riser slot between the PV riser (X≤2067) and the interior E-stop (X2099)
-    _ac_top_z = EP_H_HI + 40                   # above the EP column top edge + clear of the cross-member top (penetrates the TOP, not the side)
-    parts.append(ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
-                               [(INVERTER_X + INVERTER_W / 2, 15, inv_top),   # off the inverter at Yd15 (clear of the battery+ cable at Yd45)
-                                (_ac_lane_x, 15, inv_top),                    # +X to the riser slot
-                                (_ac_lane_x, 15, EP_H_LO + 150),              # up at Yd15
-                                (_ac_lane_x, 45, EP_H_LO + 150),              # shift to Yd45 (X clears the E-stop at X2099 by 21mm)
-                                (_ac_lane_x, 45, _ac_top_z),                  # up and out the EP top
-                                (_ac_lane_x, 85, _ac_top_z),                  # shift to Yd85 (clear of EVERY EP-top riser at Yd≤65: fan-feed, Cct-C, PV)
-                                (gfci_x, 85, _ac_top_z),                      # across the top (over the cross member) to the GFCI X
-                                (gfci_x, 85, gfci_z),                         # up to the GFCI height (Yd85 clears the green MC4 feed at Yd22)
-                                (gfci_x, 18, gfci_z)],
-                               7, color="#E8884A"))
-
-    # Cct E cooler power cord (panel GFCI -> cooler) — a SOFT flexible connector, drawn as a
-    # curly coil that DRAPES DIAGONALLY from the GFCI outlet down to the cooler-top inlet
-    # (not a straight drop), so it angles clear of the cooler body until the straight
-    # terminating stub plugs in.
-    cooler_inlet = (EVAP_DUCT_X + cw / 2 - 80, ext - cd / 2 - 100, ch - 70)
-    parts.append(ruby_coil_cord("Cct E cooler cord (panel GFCI -> cooler, flexible)",
-                                [(gfci_x, ext - 30, gfci_z), cooler_inlet],
-                                r=5, color="#E8884A"))
-
-    # Cold-air duct inlet — a Ø200 circle through the wall (axis into container).
+    # Ø200 supply duct — cooler outlet, through the pinhole-wall penetration into the container.
+    # OVERVIEW-OWNED (no ventilation sub-model draws it).
     parts.append(ruby_cylinder("Cold-Air Duct Inlet (Ø200)",
                                EVAP_DUCT_X, ext - 5, EVAP_DUCT_Z,
                                EVAP_DUCT_D / 2, WALL_T + 10,

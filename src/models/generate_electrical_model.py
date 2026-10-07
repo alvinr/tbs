@@ -99,7 +99,7 @@ PULL_SW_YD = 45
 # on the swing panel, reached by a flex connector — not part of the rigid conduit).
 _FAN_A_X = (ov.C_LEN - DUCT_DEPTH) + FAN_BODY_D / 2     # 5618
 _FAN_A_TOP = FAN_A_H + DUCT_HEIGHT / 2                  # 2100
-_FANB_BOX_X = 300
+_FANB_BOX_X = 420   # Fan B wall-box X — shifted +120mm toward the pinhole to clear the film-plane beams (box + flex + the Cct-B run all key off this; lt.fan_b_box matches)
 
 # Representative load endpoint for each single-load circuit (x, yd, z).
 LOADS = {
@@ -118,7 +118,7 @@ LOADS = {
 # blade, exits to the enclosure front, then rises — so each fuse→load run is traceable and
 # the model conforms to the electrical schematic. ──────────────────────────────────────
 FUSE_ORDER = ["A", "B", "C", "D", "E", "F", "G"]
-CCT_FUSE = {"A": "5A", "B": "5A", "C": "15A", "D": "5A", "E": "40A", "F": "20A", "G": "10A"}
+CCT_FUSE = {"A": "5A", "B": "5A", "C": "15A", "D": "5A", "E": "40A", "F": "20A", "G": "15A"}
 _FBLK_X0 = EP_X + 15                        # fuse-block left edge (X)
 _FBLK_YD = 25                              # block front Yd inside the enclosure
 _FBLK_Z0 = EP_H_LO + 40                    # block base bottom Z — near the enclosure floor (reach re-lay)
@@ -774,12 +774,18 @@ def circuit_runs():
     p.append(pw.panel_power(include_switch=False))
     p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
     p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight
-    # Fan B flexible connector (wall box -> fan on the swing panel) — the SOFT jumper that is
-    # unplugged before the panel swings; a curly coil cord (matches the overview's lighting_wiring()).
-    p.append(draw.ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
-                               [(_FANB_BOX_X, 55, FAN_B_H), (60, FAN_B_YD, FAN_B_H)],
-                               r=5, color=CCT["B"][0]))
+    p.append(fan_b_flex())
     return '\n'.join(p)
+
+
+def fan_b_flex():
+    """SINGLE OWNER of the Fan B flexible connector — the SOFT jumper (curly coil cord) from the
+    fixed wall box out to Fan B on the swinging panel, unplugged before the panel swings. em owns
+    the Cct-B conductor; the overview + construction models call THIS rather than keep a copy, so
+    the flex can't drift from the box (`_FANB_BOX_X`) the way it did (overview at 420, em at 300)."""
+    return draw.ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
+                               [(_FANB_BOX_X, 55, FAN_B_H), (60, FAN_B_YD, FAN_B_H)],
+                               r=5, color=CCT["B"][0])
 
 
 # ── Ventilation fans + light-safe baffle ducts (Phase 1: owner = electrical; Cct A/B) ──

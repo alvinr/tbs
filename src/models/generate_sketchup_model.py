@@ -554,7 +554,8 @@ def fan_wiring(which="both", a_to_ep=False):
     #   Fan B on the swing panel (electrical-report §Circuit B, Deutsch DT — NOT
     #   modeled); it is UNPLUGGED before the panel swings ~56° for transport, so no
     #   wiring crosses the moving joint.
-    fb_drop_x = 420                                  # near the door end, by Fan B — shifted +120mm toward the pinhole to clear the film-plane beams (box follows; flex coil takes up the slack)
+    import generate_electrical_model as em           # em owns the Cct-B box + flex — single-source off it
+    fb_drop_x = em._FANB_BOX_X                        # 420 — box X, shifted to clear the film-plane beams (em is the single source)
     fb_wall_yd = 18                                  # conduit hugs the pinhole wall
     fb_box_z = FAN_B_H                               # wall electrical box at the fan's height
     if which in ("both", "B"):
@@ -564,19 +565,15 @@ def fan_wiring(which="both", a_to_ep=False):
                                         (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
                                        fcr, color=C_TRUNK))
         import generate_lighttrap_model as lt
-        parts.append(lt.fan_b_box())   # OWNED by lighttrap (the cargo-door end); was an identical copy here
+        parts.append(lt.fan_b_box())   # OWNED by lighttrap (the cargo-door end)
         # The short FLEXIBLE CONNECTOR from the fixed wall box out to Fan B on the swing panel —
-        # now drawn (a SOFT cord) as a curly coil, distinguishing it from the rigid Cct B conduit
-        # feeding the box. This is the jumper that is unplugged before the panel swings.
-        parts.append(ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
-                                    [(fb_drop_x, 55, fb_box_z),
-                                     (60, FAN_B_YD, FAN_B_H)],
-                                    r=5, color="#E67E22"))
+        # a SOFT coil cord (the jumper unplugged before the panel swings). SINGLE-SOURCED from em
+        # (the Cct-B owner): was a drifting copy here (overview at 420, em at 300 → disconnected).
+        parts.append(em.fan_b_flex())
 
     if which == "both":
         # Overview: the full colour-coded Cct-A / Cct-B circuits from their fuses to the fans —
         # OWNED by the electrical model (em's per-circuit routing), matching electrical.skp.
-        import generate_electrical_model as em
         parts.append(em._run("A", em.LOADS["A"]))   # fuse A -> ceiling trunk -> Fan A (end wall)
         parts.append(em._run("B", em.LOADS["B"]))   # fuse B -> ceiling trunk -> Fan B wall box
     return '\n'.join(parts)

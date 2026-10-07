@@ -261,14 +261,11 @@ def context():
                          FAN_A_H - 75, 120, 150, 150, color=CCT["A"][0], alpha=0.18))
     p.append(draw.ruby_box("Fan B wall box ghost (Cct B)", _FANB_BOX_X - 40, 0,
                          FAN_B_H - 45, 80, 60, 90, color=CCT["B"][0], alpha=0.20))
-    # Surround box spans the FULL pump stack — down to the lowest pumps (P-01/P-02,
-    # body bottom Z1120) so the lowest outlet is enclosed like the upper ones.
-    pz_bot = 1100
-    p.append(draw.ruby_box("Pump zone ghost (Cct C)", EQPANEL_X - 140, EQPANEL_YD, pz_bot,
-                         150, EQPANEL_YD_SPAN, PUMP_H_HI - pz_bot,
-                         color=CCT["C"][0], alpha=0.14))
-    # (The LED + safelight strips are now REAL fixtures — light_fixtures() — not ghosts; the fan/pump
-    # loads above stay ghosted since those fixtures live in other models.)
+    # (The Cct-C pump-zone ghost was removed: circuit_runs() now draws the REAL corridor pump
+    # distribution via pw.panel_power() — dist block + bus + branches — so the ghost was both
+    # redundant and stale, sitting at the retired EQPANEL_X layout rather than the real cp pumps.)
+    # (The LED + safelight strips are now REAL fixtures — light_fixtures() — not ghosts; the fan
+    # loads below stay ghosted since those fixtures live in other models.)
     return '\n'.join(p)
 
 

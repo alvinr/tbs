@@ -2922,8 +2922,8 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>G</td>
-<td>White LED strip ×3 (general lighting)</td>
-<td>~76W</td>
+<td>White LED strip ×4 (general lighting)</td>
+<td>~92W</td>
 <td>Non-operational periods only</td>
 </tr>
 <tr>
@@ -3044,13 +3044,13 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 </tbody>
 </table>
-<p><strong>Total energy per session: <!-- BEGIN energy:wh-session -->820<!-- END energy:wh-session --> Wh (0.82 kWh)</strong></p>
-<p><strong>Battery bank capacity (standard build, 1 pack):</strong> 100 Ah × 12V = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh (LiFePO4, 100% DoD) → <strong><!-- BEGIN energy:sessions-1pack -->1.5<!-- END energy:sessions-1pack --> sessions per charge</strong>. The distribution busbar + fuse block are <strong>provisioned for a 2nd 100 Ah pack in parallel</strong> — a plug-in expansion (→ 200 Ah / <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh / <!-- BEGIN energy:sessions-2pack -->2.9<!-- END energy:sessions-2pack --> sessions) requiring <strong>no rewiring</strong>; the 2nd pack is shown ghosted in the 2D/3D models.</p>
+<p><strong>Total energy per session: <!-- BEGIN energy:wh-session -->833<!-- END energy:wh-session --> Wh (0.82 kWh)</strong></p>
+<p><strong>Battery bank capacity (standard build, 1 pack):</strong> 100 Ah × 12V = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh (LiFePO4, 100% DoD) → <strong><!-- BEGIN energy:sessions-1pack -->1.4<!-- END energy:sessions-1pack --> sessions per charge</strong>. The distribution busbar + fuse block are <strong>provisioned for a 2nd 100 Ah pack in parallel</strong> — a plug-in expansion (→ 200 Ah / <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh / <!-- BEGIN energy:sessions-2pack -->2.9<!-- END energy:sessions-2pack --> sessions) requiring <strong>no rewiring</strong>; the 2nd pack is shown ghosted in the 2D/3D models.</p>
 <p><strong>Solar recharge:</strong> 600W array × 5.5 peak sun hours (Palm Springs) = <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day → supports <!-- BEGIN energy:solar-sessions-day -->4.0<!-- END energy:solar-sessions-day --> sessions/day from solar alone.</p>
 <h3 id="32-daily-use-disconnected-endurance">3.2 Daily Use &amp; Disconnected Endurance<a class="headerlink" href="#32-daily-use-disconnected-endurance" title="Permanent link">&para;</a></h3>
 <p><em>Full treatment in the <a href="../daily-energy-report/">Daily Energy Report</a>.</em></p>
-<p>A representative daylight day of <strong>3 sequential prints</strong> draws <strong>~<!-- BEGIN energy:daily-wh-3 -->2,218<!-- END energy:daily-wh-3 --> Wh</strong> (2 prints ~<!-- BEGIN energy:daily-wh-2 -->1,515<!-- END energy:daily-wh-2 -->; 4 prints ~<!-- BEGIN energy:daily-wh-4 -->2,921<!-- END energy:daily-wh-4 -->), dominated by the continuous fans + evaporative cooler (the cooler now drives the AC inverter, ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus); the Brown/Waste tote dump is gravity-assisted, tiny (~<!-- BEGIN energy:drain-wh -->40<!-- END energy:drain-wh --> Wh), and incurred only at resupply (~every 4.7 days), not daily.</p>
-<p><strong>Disconnected endurance (no AC charge, solar top-up only): the system is clean-water limited, not power limited.</strong> With sun it is solar-positive (+<!-- BEGIN energy:solar-net-3 -->1,082<!-- END energy:solar-net-3 --> Wh/day at 3 prints) → runs <strong>indefinitely on either 1 or 2 packs</strong>; the fresh Blue supply (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L / 121 L net per print) caps a deployment at <strong>~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days @ 3/day</strong>. Battery count sets only the <em>cloudy-day reserve</em> (1 pack ≈ <!-- BEGIN energy:reserve-1pack-day -->0.5<!-- END energy:reserve-1pack-day --> day, 2 packs ≈ <!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day) and the 4-print-day headroom — <strong>not</strong> the deployment length. The Black waste tote (1,000 L) is a parallel out-flow limit for fully self-contained field use.</p>
+<p>A representative daylight day of <strong>3 sequential prints</strong> draws <strong>~<!-- BEGIN energy:daily-wh-3 -->2,258<!-- END energy:daily-wh-3 --> Wh</strong> (2 prints ~<!-- BEGIN energy:daily-wh-2 -->1,542<!-- END energy:daily-wh-2 -->; 4 prints ~<!-- BEGIN energy:daily-wh-4 -->2,975<!-- END energy:daily-wh-4 -->), dominated by the continuous fans + evaporative cooler (the cooler now drives the AC inverter, ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus); the Brown/Waste tote dump is gravity-assisted, tiny (~<!-- BEGIN energy:drain-wh -->43<!-- END energy:drain-wh --> Wh), and incurred only at resupply (~every 4.7 days), not daily.</p>
+<p><strong>Disconnected endurance (no AC charge, solar top-up only): the system is clean-water limited, not power limited.</strong> With sun it is solar-positive (+<!-- BEGIN energy:solar-net-3 -->1,042<!-- END energy:solar-net-3 --> Wh/day at 3 prints) → runs <strong>indefinitely on either 1 or 2 packs</strong>; the fresh Blue supply (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L / 121 L net per print) caps a deployment at <strong>~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days @ 3/day</strong>. Battery count sets only the <em>cloudy-day reserve</em> (1 pack ≈ <!-- BEGIN energy:reserve-1pack-day -->0.5<!-- END energy:reserve-1pack-day --> day, 2 packs ≈ <!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day) and the 4-print-day headroom — <strong>not</strong> the deployment length. The Black waste tote (1,000 L) is a parallel out-flow limit for fully self-contained field use.</p>
 <h2 id="4-solar-array">4. Solar Array<a class="headerlink" href="#4-solar-array" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3293,7 +3293,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 <p>TBS-001 requires two mutually exclusive lighting modes:</p>
 <ul>
 <li><strong>Safelight (Circuit D):</strong> Red 12V <strong>COB</strong> LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse / 18 AWG, no bump), dimmable, always available. (Two of the three ceiling runs carry a parallel white strip — see §6.2.)</li>
-<li><strong>White light (Circuit G):</strong> Three 12V COB LED strips (in aluminum channels + frosted diffusers) — two over the tray parallel to the two drum-side red safelights (X=520 / 2270), plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~76W total. Must be switched off before any photosensitive material is exposed.</li>
+<li><strong>White light (Circuit G):</strong> Four 12V COB LED strips (in aluminum channels + frosted diffusers) — two over the tray parallel to the two drum-side red safelights (X=520 / 2270), plus two running the length of the IBC/plumbing corridor (offset ~250mm in Yd to bracket the aisle) to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~92W total. Must be switched off before any photosensitive material is exposed.</li>
 </ul>
 <p>The two circuits are independently switched — they are <strong>not</strong> interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.</p>
 <h3 id="62-white-led-strip-specification">6.2 White LED Strip Specification<a class="headerlink" href="#62-white-led-strip-specification" title="Permanent link">&para;</a></h3>
@@ -3311,15 +3311,19 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Runs</td>
-<td>3 ceiling runs in aluminum channels + frosted diffusers — two ~2,162mm over the tray, parallel to the X=520 / X=2270 drum-side red safelights, + one ~1,176mm running the IBC/plumbing corridor length (over the plumbing panel)</td>
+<td>4 ceiling runs in aluminum channels + frosted diffusers — two ~2,162mm over the tray, parallel to the X=520 / X=2270 drum-side red safelights, + two ~1,176mm over the IBC/plumbing corridor (offset ~250mm in Yd to bracket the aisle over the plumbing panel)</td>
 </tr>
 <tr>
 <td>Power</td>
-<td>~76W (4.2 W/ft × ~18 ft) → ~6.3A</td>
+<td>~92W (4.2 W/ft × ~22 ft) → ~7.7A</td>
 </tr>
 <tr>
 <td>Luminous output</td>
-<td>426 lm/ft → ~7,670 lm total</td>
+<td>426 lm/ft → ~9,330 lm total</td>
+</tr>
+<tr>
+<td>Illuminance</td>
+<td><strong>~290 lux maintained</strong> work-plane average (663 lux lumens-to-area × CU ≈ 0.55 × LLF ≈ 0.80 — see below)</td>
 </tr>
 <tr>
 <td>Mounting</td>
@@ -3331,7 +3335,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Circuit</td>
-<td>G (10A fuse, 14 AWG) — 6.3A draw</td>
+<td>G (10A fuse, 14 AWG) — 7.7A draw (near the 8.0A continuous limit)</td>
 </tr>
 <tr>
 <td>Approximate cost</td>
@@ -3339,7 +3343,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 </tbody>
 </table>
-<p>The three runs total ~5.5m of strip at 426 lm/ft → ~7,670 lumens across the ~14 m² floor area — approximately <strong>548 lux</strong>, a solid workshop level for setup, maintenance, and cleaning. A <strong>12V COB strip in an aluminum channel + diffuser</strong> gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. At ~6.3A the Circuit-G feed is run in <strong>14 AWG</strong> for margin and low voltage drop; the load still sits well inside the 10A fuse. True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.</p>
+<p>The four runs total ~6.7m of strip at 426 lm/ft → ~9,330 lumens. Spread over the ~14 m² floor that is ~663 lux as bare lumens-to-area, but the <strong>maintained work-plane average is ~290 lux</strong> once the coefficient of utilization (CU ≈ 0.55 — a diffused ceiling line source on a short throw) and light-loss factor (LLF ≈ 0.80 — LED lumen depreciation + dirt) are applied. The <strong>matte-black interior</strong> (0% sheen, specified in the <a href="../container-report/">Container report</a> to prevent image fogging) is why there is essentially no wall/ceiling bounce — the 20–60% inter-reflected gain a normal room adds — so even with that penalty the level sits <strong>mid-range in the 250–300 lux workshop target</strong>, comfortable for setup, maintenance, and cleaning. A <strong>12V COB strip in an aluminum channel + diffuser</strong> gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. At ~7.7A the Circuit-G feed is run in <strong>14 AWG</strong> on a <strong>10A fuse</strong> — now near the 80% continuous-load derate (8.0A), so any further strip would require re-fusing to 15–20A and rewiring to 12 AWG. True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.</p>
 <h3 id="63-pull-cord-switches">6.3 Pull-Cord Switches<a class="headerlink" href="#63-pull-cord-switches" title="Permanent link">&para;</a></h3>
 <p>Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.</p>
 <table>
@@ -3463,10 +3467,10 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 </tr>
 <tr>
 <td>G</td>
-<td>White LED strip ×3 (general lighting)</td>
+<td>White LED strip ×4 (general lighting)</td>
 <td>10A</td>
 <td>14 AWG</td>
-<td>~14m feed (3 runs ~5.5m lit, 6.3A)</td>
+<td>~14m feed (4 runs ~6.7m lit, 7.7A)</td>
 </tr>
 <tr>
 <td>—</td>
@@ -3863,7 +3867,7 @@ the full hazard assessment including this AC branch.</p>
 </tr>
 <tr>
 <td><a href="https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb">12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)</a> + <strong>6× LED Profiles 981 channel/diffuser (white + red)</strong> + connectors/PWM dimmers</td>
-<td>white: 2× 2.16m tray + 1× 1.18m corridor (~7,670 lm / ~548 lux), 76W/6.3A, dimmable, true 12V</td>
+<td>white: 2× 2.16m tray + 2× 1.18m corridor (~9,330 lm → ~290 lux maintained), 92W/7.7A, dimmable, true 12V</td>
 <td>HitLights + LED Profiles</td>
 <td>~$84 strip + ~$162 channel + ~$15</td>
 </tr>

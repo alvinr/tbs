@@ -236,6 +236,10 @@ def _multi_run(cct, ends):
         if len(br) > 1:
             p.append(draw.ruby_pipe_run(f"Circuit {cct} drop X{int(x)} ({CCT[cct][1]})",
                                       br, CCT_WIRE_R, color=col))
+            # Clip only the LONG drops (the corridor light's cable crosses the corridor off the trunk);
+            # the tray/safelight fixtures sit at the ceiling so their stubs need no support.
+            if abs(yd - tyd) > 200:
+                p.append(draw.ruby_clip_run(f"Circuit {cct} drop", br, spacing=450))
     return '\n'.join(p)
 
 

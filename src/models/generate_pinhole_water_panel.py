@@ -628,9 +628,10 @@ def panel_power(include_switch=True, part="all"):
         # Route AROUND the filters: -X to the pinhole-side plywood edge, DROP the edge at the Yd20 wall
         # lane (clear of F-1/F-2/F-3 at X3161+), run +X below the filter sumps to under P-04, then tap
         # +Yd into P-04's body.  Never passes through a filter or the Yd104 skid-plumbing plane.
-        p.append(draw.ruby_pipe_run("Cct C branch P-04 (filter skid)",
-                 [(pwr_edge_x, TY, TZ), (pwr_edge_x, TY, p4z),
-                  (p04_body_x, TY, p4z), (p04_body_x, p4ty, p4z)], cr, color=PWR))
+        _p04br = [(pwr_edge_x, TY, TZ), (pwr_edge_x, TY, p4z),
+                  (p04_body_x, TY, p4z), (p04_body_x, p4ty, p4z)]
+        p.append(draw.ruby_pipe_run("Cct C branch P-04 (filter skid)", _p04br, cr, color=PWR))
+        p.append(draw.ruby_clip_run("Cct C branch P-04", _p04br, spacing=400))
         # ── 12V DISTRIBUTION BLOCK on the REVERSE of the corridor panel + bus + back-taps to pumps ──
         p.append(draw.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, zc - 45, 48, 60, 90, color="#3A3A42"))
         # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
@@ -643,7 +644,9 @@ def panel_power(include_switch=True, part="all"):
         # corridor branch taps: P-05 + the pump now in P-04's vacated slot (P-02, Phase 2)
         for label, key in (("P-02", "P-04"), ("P-05", "P-05")):
             z = cp.PSTACK[key] + 90
-            p.append(draw.ruby_pipe_run(f"Cct C branch {label}", [(BKX, by, z), (xin, by, z)], cr, color=PWR))
+            _br = [(BKX, by, z), (xin, by, z)]
+            p.append(draw.ruby_pipe_run(f"Cct C branch {label}", _br, cr, color=PWR))
+            p.append(draw.ruby_clip_run(f"Cct C branch {label}", _br, spacing=100))
     return "\n".join(p)
 
 

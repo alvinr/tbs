@@ -74,19 +74,21 @@ CCT = {
 }
 
 # ── Load fixtures — geometry MATCHES the overview's lighting_wiring() (the plan) ──
-# White LED (Cct G): 4 COB strips — 2 over the tray parallel to the drum-side reds
-# (X≈520/2270), + 2 rotated 90° running the IBC/plumbing corridor length, offset ~250mm
-# in Yd to bracket the 270mm aisle and light the plumbing panel evenly. (x0,y0,w_x,w_yd)
+# White LED (Cct G): 4 COB strips — 3 over the tray (X≈600/2350 parallel to the drum-side
+# reds + 1 at the tray's X-center), + 1 rotated 90° running the IBC/plumbing corridor length.
+# The 3rd tray run takes Circuit G to ~8.8A, so its feed is rewired 14→12 AWG on a 15A fuse.
+# (x0,y0,w_x,w_yd)
+_TRAY_CX = (ov.PROC_TRAY_X_L + ov.PROC_TRAY_X_R) // 2   # 2454 — processing-tray X center
 LED_PANELS = [(600, 100, 40, ov.C_WID - 200),
               (2350, 100, 40, ov.C_WID - 200),
-              (ov.IBC_COL_X, EQPANEL_YD - 20, ov.C_LEN - ov.IBC_COL_X - 43, 40),
-              (ov.IBC_COL_X, EQPANEL_YD + 230, ov.C_LEN - ov.IBC_COL_X - 43, 40)]
+              (_TRAY_CX, 100, 40, ov.C_WID - 200),
+              (ov.IBC_COL_X, EQPANEL_YD - 20, ov.C_LEN - ov.IBC_COL_X - 43, 40)]
 SAFE_XS = [500, 2250, 4150]
 # Circuit-drop endpoints (x, yd, z) — conduit lands per the overview.
 LED_ENDS = [(620, 100, ov.C_HGT - 40),
             (2370, 100, ov.C_HGT - 40),
-            (ov.IBC_COL_X + 60, EQPANEL_YD, ov.C_HGT - 40),
-            (ov.IBC_COL_X + 60, EQPANEL_YD + 250, ov.C_HGT - 40)]
+            (_TRAY_CX + 20, 100, ov.C_HGT - 40),
+            (ov.IBC_COL_X + 60, EQPANEL_YD, ov.C_HGT - 40)]
 SAFE_ENDS = [(sx + 20, 100, ov.C_HGT - 25) for sx in SAFE_XS]
 # Ceiling pull-cord switches (D, G) — in the ~80mm clear band ahead of the pinhole wall, left of the
 # EP + transport-stay anchor. Single-sourced so electrical + overview draw the SAME switches.

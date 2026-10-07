@@ -314,8 +314,8 @@ def draw_sheet1():
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
         ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
          "Future provision  |  leave fused spare", "#E8E8E8"),
-        ("G", "WHITE LED PANELS\n(general lighting)",  "10A", "16 AWG", "60W",
-         "3×20W ceiling panels  |  pull-cord switch  |  non-operational only", "#FFFFF0"),
+        ("G", "WHITE LED STRIPS ×4\n(general lighting)",  "15A", "12 AWG", "106W",
+         "3 over tray (X=600/2350/2454) + 1 corridor COB strips  |  pull-cord switch  |  non-operational only", "#FFFFF0"),
     ]
 
     SP_X  = ex - 0.5      # spine x
@@ -730,13 +730,13 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Safelight D — three ceiling-mounted N–S strips
-    # Positioned in gaps between white LED panels to avoid visual overlap
+    # Safelight D — three ceiling-mounted N–S strips (match 3D SAFE_XS = 500/2250/4150)
+    # Offset ~100mm from the white tray strips (600/2350) to avoid visual overlap
     # Each shortened to stay clear of optical cone at its X position
     SL_STRIPS = [
-        (600,  1800),   # near cargo door — cone limit at Yd≈1889, stop at 1800
-        (1800, 2100),   # between white panels 1 & 2 — cone limit at Yd≈2174, stop at 2100
-        (4100, 2100),   # between white panels 2 & 3 — cone limit at Yd≈2730, stop at 2100
+        (500,  1800),   # near cargo door — cone limit at Yd≈1889, stop at 1800
+        (2250, 2100),   # near pinhole — cone limit at Yd≈2174, stop at 2100
+        (4150, 2100),   # far end — cone limit at Yd≈2730, stop at 2100
     ]
     SL_STRIP_W = 20    # strip width along X (mm)
     SL_POSITIONS = [s[0] for s in SL_STRIPS]   # for component key reference
@@ -750,23 +750,32 @@ def draw_sheet2():
         ax.text(sl_dx + sl_dw + 30, (sl_dy1 + sl_dy2) / 2, "D",
                 ha="left", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    # ── White LED panels (Circuit G) — 3× ceiling-mounted ───────────────────
-    LED_W_MM = 600    # panel width along X
-    LED_D_MM = 300    # panel depth along Yd
-    LED_YD   = C_WID / 2 - LED_D_MM / 2   # centered across width
-    LED_POSITIONS = [1000, 2900, 4424]     # X positions (mm) — 3rd rotated 90° at the EP (matches 3D EQPANEL_X)
+    # ── White LED strips (Circuit G) — 4× COB runs: 3 over the tray + 1 corridor ──
     C_LED = "#FFFFF0"
-    for li, lp_x in enumerate(LED_POSITIONS):
-        rot = (li == 2)                    # 3rd panel is rotated 90° (300 across X, 600 along Yd)
-        lx = ix(lp_x)
-        ly = OY + wt + LED_YD * S_yd
-        lw = (LED_D_MM if rot else LED_W_MM) * S_xi
-        ld = (LED_W_MM if rot else LED_D_MM) * S_yd
-        ax.add_patch(mpatches.Rectangle((lx, ly), lw, ld,
-                     fc=C_LED, ec=C_OUT, lw=0.8, zorder=5, alpha=0.85))
-        ax.text(lx + lw / 2, ly + ld / 2, "G",
-                ha="center", va="center", fontsize=7.0, fontweight="bold",
+    WL_STRIP_W = 20          # strip width (mm)
+    WL_TRAY_X  = [600, 2350, 2454]   # 3 N–S tray runs (X=600/2350 + tray-center 2454)
+    WL_TRAY_YD0, WL_TRAY_YD1 = 100, 2262            # full tray depth (Yd)
+    WL_CORR_X0, WL_CORR_X1, WL_CORR_YD = 4674, 5850, 1026   # E–W IBC/plumbing-corridor run
+    # 3 tray strips — thin N–S rectangles
+    wl_ty1 = OY + wt + WL_TRAY_YD0 * S_yd
+    wl_ty2 = OY + wt + WL_TRAY_YD1 * S_yd
+    for wl_x in WL_TRAY_X:
+        wl_dx = ix(wl_x)
+        wl_dw = max(WL_STRIP_W * S_xi, 40)
+        ax.add_patch(mpatches.Rectangle((wl_dx, wl_ty1), wl_dw, wl_ty2 - wl_ty1,
+                     fc=C_LED, ec=C_OUT, lw=0.8, zorder=5, alpha=0.9))
+        ax.text(wl_dx + wl_dw / 2, wl_ty1 - 20, "G",
+                ha="center", va="top", fontsize=6.5, fontweight="bold",
                 color=C_OUT, zorder=6)
+    # 1 corridor strip — thin E–W rectangle over the plumbing panel
+    wl_cx0, wl_cx1 = ix(WL_CORR_X0), ix(WL_CORR_X1)
+    wl_cy = OY + wt + WL_CORR_YD * S_yd
+    wl_cd = max(WL_STRIP_W * S_yd, 40)
+    ax.add_patch(mpatches.Rectangle((min(wl_cx0, wl_cx1), wl_cy), abs(wl_cx1 - wl_cx0), wl_cd,
+                 fc=C_LED, ec=C_OUT, lw=0.8, zorder=5, alpha=0.9))
+    ax.text((wl_cx0 + wl_cx1) / 2, wl_cy + wl_cd + 15, "G",
+            ha="center", va="bottom", fontsize=6.5, fontweight="bold",
+            color=C_OUT, zorder=6)
 
     # ── Pull-cord switches — pinhole wall side, near EP ────────────────────
     PS_X_MM = EP_X - 110   # X position — ceiling-mounted, left of EP (cleared)
@@ -813,7 +822,9 @@ def draw_sheet2():
         (FB_X,               FB_Y - 110),
     ] + [(ix(sl_x + SL_STRIP_W / 2), OY + wt + 25) for sl_x in SL_POSITIONS] + [
         (ix(PS_X_MM),        OY + wt + PS_YD * S_yd),   # pull switches
-    ] + [(ix(lp + LED_W_MM/2 + (150 if lp == 2900 else 0)), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
+    ] + [(ix(wl_x), OY + wt + (WL_TRAY_YD0 + 200) * S_yd) for wl_x in WL_TRAY_X] + [
+        ((wl_cx0 + wl_cx1) / 2, wl_cy),                 # corridor LED strip
+    ]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
                 color=C_PIPE, lw=1.0, ls=":", zorder=4)
 
@@ -855,12 +866,12 @@ def draw_sheet2():
            DUCT_CX - 550, OY - 400,
            f"Evap cooler (E)\n120V AC {EVAP_COOLER_W_AC}W via inverter\nExternal + duct",
            fs=6.5, color=C_EVAP)
-    # LED panels — Cct G (label middle panel only)
-    led_mid_cx = ix(LED_POSITIONS[1] + LED_W_MM / 2)
-    led_mid_cy = OY + wt + (LED_YD + LED_D_MM) * S_yd
-    leader(ax, led_mid_cx, led_mid_cy,
-           led_mid_cx + 300, OY + cwid * 0.62,
-           "LED panels (G)\n3×20W  4000K white",
+    # LED strips — Cct G (label the middle tray strip)
+    led_mid_cx = ix(WL_TRAY_X[1])
+    led_mid_cy = OY + wt + (WL_TRAY_YD1 * 0.5) * S_yd
+    leader(ax, ix(WL_TRAY_X[0]), led_mid_cy,
+           ix(WL_TRAY_X[0]) - 520, OY + cwid * 0.40,
+           "LED strips (G)\n4× COB  4000K white\n3 tray + 1 corridor",
            fs=6.5, color="#808000")
     # External power panel
     leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
@@ -921,8 +932,8 @@ def draw_sheet2():
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"120V AC {EVAP_COOLER_W_AC}W via inverter ({EVAP_COOLER_W_BUS}W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
-        ("G",     C_LED,     "WHITE LED PANELS — Cct G",
-         "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
+        ("G",     C_LED,     "WHITE LED STRIPS — Cct G",
+         "4× COB strips (3 tray + 1 corridor)  |  15A / 12 AWG / 106W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
          f"SPST 6A ceiling switches  |  D=safelight, G=white light  |  Left of EP (cleared), X≈{PS_X_MM}mm"),
         ("EXT\nPWR",C_ALUM,"EXTERNAL POWER PANEL",
@@ -953,7 +964,7 @@ def draw_sheet2():
         "optical cone. Drop conduits (10mm corrugated) to each device.",
         "4. Light trap (housed revolving door, \u00d8900mm vertical axis) in left end zone \u2014 "
         "integral to cargo-door hinged panel. See Hinged Panel drawings (\u00a712).",
-        "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched ",
+        "5. Circuit G (white LED strips) and Circuit D (safelight) are independently switched ",
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
     draw_notes(ax, notes, 6200, Y_LO + 1250, spacing=80,
@@ -1239,41 +1250,50 @@ def draw_sheet3():
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords end ~1180mm AFF\n(above the deployed shelf)",
            fs=6.5, color="#606080")
 
-    # ── LED panels (ceiling-mounted, shown as rectangles at top) ──────────────
-    LED_W_MM = 600
-    LED_H_MM = 30    # panel thickness shown in elevation
+    # ── LED strips (ceiling-mounted) — 3 tray runs end-on + 1 corridor run in-plane ──
+    # The 3 tray strips run N–S (perpendicular to this X–Z elevation) → shown end-on as
+    # small marks; the corridor strip runs E–W (in-plane) → a thin horizontal strip.
+    LED_H_MM = 20    # strip thickness shown in elevation
     LED_Z = C_HGT - TK_H_MM - LED_H_MM - 10   # just below trunking
-    LED_POSITIONS = [1000, 2900, 4800]
+    LED3_TRAY_X = [600, 2350, 2454]
+    LED3_CORR_X0, LED3_CORR_X1 = 4674, 5850
+    LED3_MARK_MM = 70   # end-on mark width (mm)
     C_LED = "#FFFFF0"
-    for lp_x in LED_POSITIONS:
-        lx = wx(lp_x + LED_W_MM)   # mirrored
-        lz = (LED_Z)
-        lw = LED_W_MM
-        lh = LED_H_MM
-        ax.add_patch(mpatches.Rectangle((lx, lz), lw, lh,
+    for lp_x in LED3_TRAY_X:
+        lx = wx(lp_x) - LED3_MARK_MM / 2   # mirrored, centered on the strip
+        ax.add_patch(mpatches.Rectangle((lx, LED_Z), LED3_MARK_MM, LED_H_MM,
                      fc=C_LED, ec=C_OUT, lw=1.0, zorder=5))
-        ax.text(lx + lw / 2, lz + lh / 2, "G",
-                ha="center", va="center", fontsize=6.5, fontweight="bold",
+        ax.text(lx + LED3_MARK_MM / 2, LED_Z + LED_H_MM / 2, "G",
+                ha="center", va="center", fontsize=6.0, fontweight="bold",
                 color=C_OUT, zorder=6)
-        # Conduit stub up to trunking
-        ax.plot([lx + lw / 2, lx + lw / 2], [lz + lh, tk_y],
+        ax.plot([lx + LED3_MARK_MM / 2, lx + LED3_MARK_MM / 2], [LED_Z + LED_H_MM, tk_y],
                 color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
+    # Corridor strip — in-plane, spans X≈4674→5850 at ceiling Z
+    cx0, cx1 = wx(LED3_CORR_X0), wx(LED3_CORR_X1)   # mirrored
+    corr_lx, corr_lw = min(cx0, cx1), abs(cx1 - cx0)
+    ax.add_patch(mpatches.Rectangle((corr_lx, LED_Z), corr_lw, LED_H_MM,
+                 fc=C_LED, ec=C_OUT, lw=1.0, zorder=5))
+    ax.text(corr_lx + corr_lw / 2, LED_Z + LED_H_MM / 2, "G",
+            ha="center", va="center", fontsize=6.0, fontweight="bold",
+            color=C_OUT, zorder=6)
+    ax.plot([corr_lx + corr_lw / 2, corr_lx + corr_lw / 2], [LED_Z + LED_H_MM, tk_y],
+            color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
-    # LED panel leader (label middle panel)
-    mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
+    # LED strip leader (label the middle tray strip)
+    mid_led_cx = wx(LED3_TRAY_X[1])
     mid_led_cz = (LED_Z + LED_H_MM)
     leader(ax, mid_led_cx, mid_led_cz - 40,
            mid_led_cx - 600, mid_led_cz - 200,
-           "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
+           "LED strips (G)\n4× COB 4000K\n3 tray + 1 corridor",
            fs=6.5, color="#808000")
 
-    # ── Safelight strips — two ceiling-mounted N–S strips flanking pinhole ───
-    # Circuit D: 2× red LED strips at X≈1399 and X≈3399 (offset ±1000mm from pinhole)
+    # ── Safelight strips — three ceiling-mounted N–S strips ───
+    # Circuit D: 3× red LED strips (match 3D SAFE_XS = 500/2250/4150)
     # Shown in elevation as short rectangles at ceiling height (they run N–S, perpendicular to this view)
-    SL3_POSITIONS = [600, 1800, 4100]   # match sheet 2 positions
+    SL3_POSITIONS = [500, 2250, 4150]   # match sheet 2 positions / 3D SAFE_XS
     SL3_W_MM = 20     # strip width along X
     SL3_H_MM = 20     # strip thickness in elevation
-    SL3_Z = C_HGT - TK_H_MM - LED_H_MM - 10 - SL3_H_MM - 10  # below LED panels
+    SL3_Z = C_HGT - TK_H_MM - LED_H_MM - 10 - SL3_H_MM - 10  # below the white LED strips
     for sl3_x in SL3_POSITIONS:
         s3x = wx(sl3_x + SL3_W_MM)   # mirrored
         s3z = (SL3_Z)
@@ -1358,7 +1378,7 @@ def draw_sheet3():
         ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/02/03/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-04 (filter skid)"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Penetration box  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
-        ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
+        ("#FFFFF0", "LED STRIPS (G)",    "4× COB 4000K  |  Ceiling-mount  |  3 tray (X=600/2350/2454) + 1 corridor"),
         ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & G  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1500mm AFF"),
         ("#FFD700", "SAFELIGHT (D)",     f"3× red LED strips  |  Ceiling N–S  |  X≈{', '.join(str(x) for x in SL3_POSITIONS)}"),
     ]
@@ -1379,7 +1399,7 @@ def draw_sheet3():
         "in the IBC corridor (Yd=1046), P-04 + the 3-stage filters on the pinhole wall; evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
-        "4. LED panels are ceiling-mounted, centered across container width. Connected to Circuit G via trunking. Non-operational only.",
+        "4. LED strips (Circuit G) are ceiling-mounted — 3 over the processing tray + 1 along the IBC/plumbing corridor. Connected to Circuit G via trunking. Non-operational only.",
     ]
     key_bottom = KY - 100 - (len(key_items) - 1) * 220 - 120
     notes_y_top = key_bottom - 120
@@ -1389,7 +1409,7 @@ def draw_sheet3():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 9",
                 drawing_title="PINHOLE WALL INTERIOR ELEVATION",
-                subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED panels",
+                subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED strips",
                 scale_note="Axes in mm  (approx 1:40)",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
@@ -1537,7 +1557,7 @@ def draw_sheet5():
         ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
         ("F", "Actuators (spare)",   "20A", "12 AWG", "≤100 W", "#7F8C8D"),
-        ("G", "White LED panels",    "10A", "16 AWG", "60 W",   "#F1C40F"),
+        ("G", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
     ]
 
     fig, ax = plt.subplots(figsize=(13.5, 8.0))
@@ -2288,7 +2308,7 @@ def draw_sheet7():
         ("A", "5A", "16", "EXHAUST FAN", "M"), ("B", "5A", "16", "INTAKE FAN", "M"),
         ("C", "15A", "14", "PUMPS (panel)", "M"), ("D", "5A", "18", "SAFELIGHT", "L"),
         ("E", "40A", "10", "EVAP COOLER", "INV"), ("F", "20A", "12", "FP ACTUATORS", "M"),
-        ("G", "10A", "16", "WHITE LED", "L"),
+        ("G", "15A", "12", "WHITE LED", "L"),
     ]
     xs = [1110, 1235, 1360, 1485, 1610, 1735, 1860]
     for (c, fu, awg, name, kind), x in zip(circuits, xs):

@@ -127,6 +127,10 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 
 The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL) and the left walkway have been struck/removed. Convert to operational mode before proceeding.
 
+The two end states — transport (panel + drum swung 56°, doors closed) and operational (panel latched at the door plane, X=0) — are shown in plan at the cargo-door end:
+
+![Cargo-door end — Transport vs Operational (56° panel swing)](assets/assembly-overview-plan.png)
+
 - [ ] 1.3.1 — Open and secure the cargo doors.
 - [ ] 1.3.2 — Release the top + bottom wall stays: slack the turnbuckles and unhook the rods from the near-wall eyes.
 - [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~20 kg dry, one person).

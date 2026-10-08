@@ -586,7 +586,7 @@ def _rwk_wall_cleat(tag, x, wall_yd, din):
     bt = 8                                                   # plate thickness (Yd)
     shelf_top = RWK_ARM_BOT                                  # beam bottom = shelf top (89.6)
     bolt_lo = shelf_top - 10 - 30                            # 30mm below the shelf underside
-    bolt_hi = RWK_ARM_TOP + 30                               # 30mm above the beam top — both clear of the beam
+    bolt_hi = WALKWAY_H + k.WALKWAY_BOLT_GRATE_CLEAR + 9      # 174 — M10 nut (circumradius ~8.25) clears the grate deck (Z140) by 25mm; still well above the beam top (Z115)
     pz0, pz1 = bolt_lo - 18, bolt_hi + 18                    # plate spans both bolts + ≥1.5·D edge margin
     piy = wall_yd if din > 0 else wall_yd - bt
     poy = -WALL_T - bt if din > 0 else C_WID + WALL_T
@@ -661,7 +661,7 @@ def ibc_cantilever_arms(x_to=None):
     ep_bz = ac_z - 65.0                                                     # end-plate (FRONT) bottom Z37 — covers the arm weld + bears against the upright front face (clear of any rail)
     # The REAR backing plate sits in the box-interior corner, where the corridor bottom-ring X-rail also
     # starts — so its bottom is raised to BUTT the rail top (no interpenetration, no fused seam). The bolt
-    # group is at Z140/170, so the shorter plate still fully spreads it. (J6 rail clash fix, 2026-08-17.)
+    # group is at Z175/205, so the shorter plate still fully spreads it. (J6 rail clash fix, 2026-08-17.)
     bp_bz = IBC_FOOT_PLATE_T + IBC_FRAME_RHS                                 # 62.8 — corridor bottom-ring X-rail TOP; backing plate rests on it
     bp_h  = (ep_bz + ep_h) - bp_bz                                          # keep the plate TOP at Z185.3
     c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)

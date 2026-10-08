@@ -377,7 +377,7 @@ def plate_schedule_md():
              "|-------|-----------|----------|-------|-----------------|-----|"]
     for r in rows:
         lines.append("| " + " | ".join(r) + " |")
-    lines.append("| *J6 arm end + backing plates (×4)* | 65×155 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |")
+    lines.append("| *J6 arm end + backing plates (×4)* | 65×190 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |")
     return "\n".join(lines)
 
 

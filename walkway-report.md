@@ -632,7 +632,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Combined corner plate | 150×~271 | 10 | 4× Ø13 corner | shared with the BR film rail (fp_combined_corner_plate) | 2 |
 | Wall cleat (back + ext + shelf) | 90×(bolt span) | 8 | 2× Ø13 horizontal | below-shelf + above-beam, clear of the beam edge | 2 |
 | Transition bearing plate | 40×500 | 5 | — | welded to the arm top at each 300↔500 width step | 2 |
-| *J6 arm end + backing plates (×4)* | 65×155 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |
+| *J6 arm end + backing plates (×4)* | 65×190 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |
 <!-- END load:plates -->
 
 ---

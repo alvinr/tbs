@@ -1306,9 +1306,9 @@ RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 # plate bears compression at the bottom against the upright.  This clears the 3-way corner congestion — the
 # corridor bottom frame X-rail (Z12–63) runs below with NO bolt near it, and neither bolt fouls the welded
 # arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is
-# appropriate (2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
-RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
-RWK_J6_EP_H    = 155.0                                       # end-plate height: top (Z192) clears the upper bolt (Z170) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
+# appropriate (2026-08-17).  The plate top rises to Z227 (bottom unchanged at Z37).
+RWK_J6_BOLT_ZS = (WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_UPPER_BOLT_Z + 30.0)   # Z175 / Z205 — lower bolt matches the cantilever grate-clearance rule (nut clears the deck by WALKWAY_BOLT_GRATE_CLEAR), upper 30mm above; both well above the arm (raised from Z140/Z170 so the nuts torque clear of the dropped-in grate)
+RWK_J6_EP_H    = 190.0                                       # end-plate height: top (Z227) clears the raised upper bolt (Z205) by 22mm ≥ 1.5·D (M12 edge), and the base bears at Z37 — verified by check_interference.py --bolts
 # Under-walkway ribbon CROSSING Yds — one per lane, where the FLUSH pipe crosses the outer-beam line into the
 # corridor.  The outer beam is OMITTED over the IBC-corridor bay between the two cantilever arms (see
 # generate_sketchup_model.right_walkway_cantilever), so the pipes cross in the clear — no beam notch.  These

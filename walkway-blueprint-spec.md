@@ -112,7 +112,7 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
     `_BOLT_Z_LO` 42 / `_LO_WIDE` 35. The 3D model had drifted to ±32 for BOTH — corrected in Phase 1.3 to
     ±27 standard (matches the drawings), re-sending walkway/overview/construction.
   - **Already done** (Phase 0): foot-anchor PCD (`LEFT_WK_CANT_FOOT_BOLT_DX/DY`).
-  - **Out of scope — IBC-frame-owned:** the arm end-plate blank (65×155×8) is the **J6** joint (walkway
+  - **Out of scope — IBC-frame-owned:** the arm end-plate blank (65×190×8) is the **J6** joint (walkway
     arm → IBC upright), drawn on **IBC-frame Sheet 5**; the walkway blueprint cross-references it, does not
     re-dimension it. (Height already single-sourced as `RWK_J6_EP_H`.)
   - **Retired:** the "transition bearing plate (40×500×5)" no longer exists — the left edge beam + wall

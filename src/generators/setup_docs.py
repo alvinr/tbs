@@ -67,6 +67,7 @@ MD_FILES = [
     ("licensing.md",                      (".",           "License")),
     ("light-trap-selection.md",           (".",           "Light Trap Selection")),
     ("engineering-diagrams.md",           (".",           "Engineering Diagrams")),
+    ("portrait-photography.md",           (".",           "Portrait Photography")),
     ("distortion-renders.md",      (".",           "Distortion Renders")),
     ("equipment-layout-report.md",        (".",           "Equipment Layout")),
     ("component-dependency-map.md",       (".",           "Component Dependency Map")),
@@ -359,6 +360,7 @@ nav:
     - "Lens Options": lens-options.md
     - "Photosensitive Materials": photosensitive-plane-options.md
     - "Sensitizer Trials": sensitizer-trials.md
+    - "Portrait Photography": portrait-photography.md
     - "Distortion Renders": distortion-renders.md
     - "Film Plane Distortion Analysis": film-plane-mechanism-analysis.md
     - "Light Trap Selection": light-trap-selection.md
@@ -476,6 +478,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
+| [Portrait Photography](portrait-photography.md) | Portrait framing — field of view (~86°), subject size vs distance, and the optimal portrait distance |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
 | [Component Dependency Map](component-dependency-map.md) | System component registry, diagram index, and change propagation guide |

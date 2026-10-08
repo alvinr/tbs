@@ -426,7 +426,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **LT** | `generate_ventilation_diagram.py` | `diagrams/ventilation-sheet1.png`<br>`diagrams/ventilation-sheet2.png` | 1, 5, 6, 7, 8 |
 | **PDH** | `generate_pinhole_disc_holder.py` | `diagrams/pinhole-disc-holder-sheet1.png`<br>`diagrams/pinhole-disc-holder-sheet2.png` | 2, 4 |
 | **WK** | `generate_walkway_diagram.py` | `diagrams/walkway-sheet1.png`<br>`diagrams/walkway-sheet2.png`<br>`diagrams/walkway-sheet3.png`<br>`diagrams/walkway-sheet4.png`<br>`diagrams/walkway-sheet5.png`<br>`diagrams/walkway-sheet6.png` | 1, 16, 17 |
-| **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
+| **SC** | `generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
 
 > **FPM / FPD — rigid-plane slide-and-clamp corners:** the film-plane mechanism sheets and optical-distortion renders show the **fixed-size rigid plane on slide-and-clamp corners** — **axis tilt/swing** about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, a 304 flat-bar Z/X cross-slide at each corner, and a single-axis envelope (FPD C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane-mechanism.skp`.
 

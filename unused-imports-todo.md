@@ -90,7 +90,6 @@ find src -name '*.py' -not -path '*__pycache__*' -print0 \
       `hatch_rect`
 - [ ] `src/generators/generate_portrait_viz.py` (1)
       `os`
-- [ ] `src/generators/generate_schematic.py` (1)
       `os`
 - [ ] `src/generators/setup_docs.py` (1)
       `os`

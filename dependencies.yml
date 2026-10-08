@@ -33,7 +33,6 @@ generators:
   support_detail: {script: src/generators/generate_support_detail.py, outputs: [diagrams/support-detail-sheet1.png, diagrams/support-detail-sheet2.png]}
   pinhole_wall_elevation: {script: src/generators/generate_pinhole_wall_elevation.py, outputs: [diagrams/pinhole-wall-elevation.png]}
   portrait_viz: {script: src/generators/generate_portrait_viz.py, outputs: [diagrams/portrait-camera-schematic.png, diagrams/portrait-optimal-3m.png, diagrams/portrait-scale-comparison.png]}
-  schematic: {script: src/generators/generate_schematic.py, outputs: [diagrams/portrait-camera-schematic.png]}
   shelf_diagram: {script: src/generators/generate_shelf_diagram.py, outputs: [diagrams/shelf-sheet1.png, diagrams/shelf-sheet2.png, diagrams/shelf-sheet3.png, diagrams/shelf-sheet4.png, diagrams/shelf-sheet5.png]}
   plywood_cutsheets: {script: src/generators/generate_plywood_cutsheets.py, outputs: [diagrams/plywood-cutsheets-sheet1.png, diagrams/plywood-cutsheets-sheet2.png]}
   spray_bar_diagram: {script: src/generators/generate_spray_bar_diagram.py, outputs: [diagrams/spray-bar-sheet1.png]}

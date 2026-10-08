@@ -4,22 +4,27 @@
 """
 Pinhole Camera — Portrait Scale Visualization
 Option B: 20-ft container, side-to-side
-f = 2362mm | d = 2.17mm | f/1088 | 102° horizontal FOV
+f = 2362mm | d = 2.17mm | f/1088 | ~86° horizontal FOV (active 4389mm film plane)
 """
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
-from tbs_constants import DISTORTION_DPI
+import math
+from tbs_constants import DISTORTION_DPI, RAIL_X_L, RAIL_X_R, FP_H, C_LEN, C_WID
 
 # ─────────────────────────────────────────
-# Camera constants
+# Camera constants — the IMAGE PLANE is the ACTIVE FILM PLANE (not the full container wall)
 # ─────────────────────────────────────────
-F   = 2362.0   # focal length, mm
-D   =  2.17    # Rayleigh pinhole, mm
-IW  = 5893.0   # image-plane width,  mm  (19′ 4″)
-IH  = 2388.0   # image-plane height, mm  (7′ 10″)
+F    = float(C_WID)                 # 2362 — focal length = container interior depth, mm
+D    =  2.17                        # Rayleigh pinhole Ø, mm
+FP_W = float(RAIL_X_R - RAIL_X_L)   # 4389 — active film-plane (image-plane) width, mm
+IW   = FP_W                         # image-plane width used for the scale charts
+IH   = float(FP_H)                  # 2094 — active film-plane height, mm
+PINHOLE_X = RAIL_X_L + FP_W / 2     # 2454.5 — pinhole on the long wall, at the ACTIVE-plane center
+H_FOV = 2 * math.degrees(math.atan((IW / 2) / F))   # ~86° — real horizontal field of view
+V_FOV = 2 * math.degrees(math.atan((IH / 2) / F))   # ~48° — real vertical field of view
 
 # ─────────────────────────────────────────
 # Subject proportions for a 1780mm adult
@@ -43,7 +48,7 @@ HEAD_W_F     = 0.107
 # Distances and presentation colors
 DISTS_M  = [2.0, 3.0, 5.0, 10.0]
 COLOURS  = ['#00D8FF', '#7BFF7B', '#FFB347', '#FF6B9D']
-X_CENTS  = [620, 1820, 3200, 5050]   # silhouette centers on image plane
+X_CENTS  = [IW*0.105, IW*0.309, IW*0.543, IW*0.857]   # silhouette centers (fractions of active width)
 
 
 # ─────────────────────────────────────────
@@ -217,7 +222,7 @@ ax.text(IW*0.5, IH*0.80,
 
 # ── Image plane label ────────────────────
 ax.text(IW/2, IH - IH*0.025,
-        "IMAGE PLANE  —  19′ 4″ × 7′ 10″  (5893 × 2388mm)",
+        "ACTIVE FILM PLANE  —  14′ 5″ × 6′ 10″  (4,389 × 2,094mm)",
         ha='center', va='top', fontsize=9, color='#444', zorder=10,
         fontfamily='monospace')
 
@@ -226,7 +231,7 @@ ax.text(IW/2, IH + IH*0.60,
         'OPTION B PINHOLE CAMERA  —  PORTRAIT RENDERING AT SCALE',
         ha='center', fontsize=14, color='#FFFFFF', fontweight='bold', zorder=10)
 ax.text(IW/2, IH + IH*0.48,
-        'Subject: 5′ 10″  (1780mm)  ·  f = 2362mm  ·  Pinhole d = 2.17mm  ·  f/1088  ·  102° H-FOV',
+        f'Subject: 5′ 10″  (1780mm)  ·  f = 2362mm  ·  Pinhole d = 2.17mm  ·  f/1088  ·  {H_FOV:.0f}° H-FOV × {V_FOV:.0f}° V-FOV',
         ha='center', fontsize=9.5, color='#888', zorder=10)
 
 # ── Inversion note ───────────────────────
@@ -258,8 +263,8 @@ ax2.set_facecolor('#0D0D0D')
 
 # Camera container footprint (20 ft × 8 ft)
 # Orient so image plane faces "up" in the diagram
-CONT_L_MM = 5893   # 19'4" interior = image plane width
-CONT_W_MM = 2362   # 7'9" interior = focal length
+CONT_L_MM = float(C_LEN)   # 5893 — container interior length
+CONT_W_MM = float(C_WID)   # 2362 — container interior depth = focal length
 
 # Container rectangle (left edge at x=0, bottom at y=0)
 ax2.add_patch(mpatches.Rectangle(
@@ -270,35 +275,41 @@ ax2.text(CONT_L_MM/2, CONT_W_MM/2,
          ha='center', va='center', fontsize=10, color='#555',
          fontweight='bold', zorder=3)
 
-# Image plane wall (top of container in diagram)
+# Image-plane wall (top of container). The full wall is faint; the ACTIVE FILM PLANE
+# (X = RAIL_X_L..RAIL_X_R) is the bright photosensitive span — offset toward the cargo-door end.
 ax2.plot([0, CONT_L_MM],[CONT_W_MM, CONT_W_MM],
-         color='#00D8FF', lw=4, solid_capstyle='butt', zorder=4, label='Image plane wall')
-ax2.text(CONT_L_MM/2, CONT_W_MM + 120,
-         'IMAGE PLANE  (photosensitive surface)',
+         color='#2A3A3A', lw=4, solid_capstyle='butt', zorder=4)
+ax2.plot([RAIL_X_L, RAIL_X_R],[CONT_W_MM, CONT_W_MM],
+         color='#00D8FF', lw=5, solid_capstyle='butt', zorder=4, label='Active film plane')
+ax2.text((RAIL_X_L+RAIL_X_R)/2, CONT_W_MM + 120,
+         'ACTIVE FILM PLANE  (4,389mm photosensitive span)',
          ha='center', fontsize=9, color='#00D8FF', zorder=5)
 
-# Pinhole wall (bottom of container in diagram)
+# Pinhole wall (bottom of container in diagram) — pinhole at the ACTIVE-plane center X (not container center)
 ax2.plot([0, CONT_L_MM],[0, 0],
          color='#FF6B35', lw=4, solid_capstyle='butt', zorder=4)
 ax2.add_patch(mpatches.Circle(
-    (CONT_L_MM/2, 0), 60,
+    (PINHOLE_X, 0), 60,
     fc='#FF6B35', ec='#FF9900', lw=2, zorder=5))
-ax2.text(CONT_L_MM/2, -350,
-         f'PINHOLE  ⌀ {D}mm  (f/{F/D:.0f})',
+ax2.text(PINHOLE_X, -350,
+         f'PINHOLE  ⌀ {D}mm  (f/{F/D:.0f})  ·  X={PINHOLE_X:.0f}mm',
          ha='center', fontsize=9.5, color='#FF6B35', fontweight='bold', zorder=5)
 
-# Light rays from pinhole to edges of image plane
-ray_color = '#FF6B3518'
-for iy in np.linspace(0, CONT_L_MM, 8):
-    ax2.plot([CONT_L_MM/2, iy],[0, CONT_W_MM],
+# Light rays from the pinhole to the edges of the ACTIVE film plane (the real captured cone)
+for iy in np.linspace(RAIL_X_L, RAIL_X_R, 8):
+    ax2.plot([PINHOLE_X, iy],[0, CONT_W_MM],
              color='#FF6B3530', lw=0.8, zorder=1)
 
-# Subject positions (above the container = outside the pinhole wall)
-scene_scale = 1.0   # mm stays as mm
-max_dist_mm = 12000
+# Subjects sit BELOW the pinhole wall (y = −distance). Bound the view to the actual content —
+# subjects down to the farthest distance, labels up to just above the image-plane stack — so the
+# drawing fills the frame instead of floating under a tall empty top margin.
+_label_top = CONT_W_MM + 500 + (len(DISTS_M) - 1) * 620   # top image-height label row
+_subj_bot  = -max(DISTS_M) * 1000                          # farthest subject (10 m)
+_title_y   = _label_top + 700
+_sub_y     = _label_top + 400
 
 ax2.set_xlim(-1500, CONT_L_MM + 1500)
-ax2.set_ylim(-1600, CONT_W_MM + max_dist_mm + 800)
+ax2.set_ylim(_subj_bot - 600, _title_y + 450)
 ax2.set_aspect('equal')
 ax2.axis('off')
 
@@ -309,9 +320,9 @@ for u_m, col in zip(DISTS_M, COLOURS):
     ph   = PH * M
     sw   = PH * SHOULDER_W_F * M
 
-    # Subject position in diagram: below pinhole wall (y = -u_mm)
+    # Subject position in diagram: below the pinhole (y = -u_mm), centered on the pinhole X
     sy = -u_mm
-    sx = CONT_L_MM/2
+    sx = PINHOLE_X
 
     # Figure (simple vertical bar + head)
     fig_h_diag = 300   # fixed display size for subject in this diagram
@@ -328,29 +339,29 @@ for u_m, col in zip(DISTS_M, COLOURS):
                  xytext=(sx + 900, 0),
                  arrowprops=dict(arrowstyle='<->', color=col, lw=1.4,
                                  mutation_scale=9), zorder=9)
-    ax2.text(sx + 1200, sy/2,
-             f'{u_m:.0f} m\n({u_m*3.28084:.0f} ft)',
-             va='center', fontsize=9, color=col, fontweight='bold', zorder=10)
+    ax2.text(sx + 1200, sy + fig_h_diag / 2,
+             f'{u_m:.0f} m  ({u_m*3.28084:.0f} ft)',
+             va='center', ha='left', fontsize=9, color=col, fontweight='bold', zorder=10)
 
     # Sight lines from subject to pinhole
-    ax2.plot([sx, CONT_L_MM/2],[sy + fig_h_diag/2, 0],
+    ax2.plot([sx, PINHOLE_X],[sy + fig_h_diag/2, 0],
              color=col, lw=0.7, ls='--', alpha=0.35, zorder=3)
 
     # Image height label on image plane
-    img_x_center = CONT_L_MM/2
+    img_x_center = PINHOLE_X
     img_x_offset = img_x_center - ph/2
     ax2.plot([img_x_offset, img_x_offset + ph],
              [CONT_W_MM + 50, CONT_W_MM + 50],
              color=col, lw=3, solid_capstyle='butt', alpha=0.7, zorder=5)
-    ax2.text(img_x_center, CONT_W_MM + 180 + DISTS_M.index(u_m)*150,
+    ax2.text(CONT_L_MM*0.62, CONT_W_MM + 500 + DISTS_M.index(u_m)*620,
              f'{u_m:.0f}m → image {ph:.0f}mm tall  ·  M = {M:.3f}×  ·  Blur Ø {B:.2f}mm',
-             ha='center', fontsize=8.5, color=col, zorder=10)
+             ha='left', fontsize=8.5, color=col, zorder=10)
 
-# Title
-ax2.text(CONT_L_MM/2, CONT_W_MM + max_dist_mm + 500,
+# Title (just above the image-plane label stack — no empty top margin)
+ax2.text(CONT_L_MM/2, _title_y,
          'TOP-DOWN SCHEMATIC  —  CAMERA + SUBJECT DISTANCES',
          ha='center', fontsize=13, color='#FFFFFF', fontweight='bold', zorder=10)
-ax2.text(CONT_L_MM/2, CONT_W_MM + max_dist_mm + 250,
+ax2.text(CONT_L_MM/2, _sub_y,
          'Diagram is to scale in mm. Container interior view. Subject outside, facing pinhole wall.',
          ha='center', fontsize=9, color='#777', zorder=10)
 
@@ -448,7 +459,7 @@ ax3.text((sb3_x0+sb3_x1)/2, sb3_y+IH*0.025,
 
 # Image plane label
 ax3.text(IW/2, IH-IH*0.025,
-         "IMAGE PLANE  —  19′ 4″ × 7′ 10″",
+         "ACTIVE FILM PLANE  —  14′ 5″ × 6′ 10″",
          ha='center', va='top', fontsize=9, color='#444', zorder=10,
          fontfamily='monospace')
 

@@ -62,6 +62,7 @@ MD_FILES=(
     "photosensitive-plane-options.md"
     "chemistry-shopping-list.md"
     "sensitizer-trials.md"
+    "portrait-photography.md"
     "container-transport-options.md"
     "water-system-report.md"
     "film-plane-mechanism-report.md"

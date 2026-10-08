@@ -1133,8 +1133,10 @@ WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, 
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
-WALKWAY_BRACKET_H = 180  # bracket vertical leg height on wall (mm) — raised 150→170→180 so the upper wall-bolt clears the grate DECK (not just the arm); holds the shared WALKWAY_BRACKET_UPPER_BOLT_Z with ≥1.5·D top edge (2026-08-18)
-WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + 15  # 155 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Sits 15mm above the grate top (WALKWAY_H) so the nut clears the deck. Both legs (std 180 / widened 200) hold it with ≥1.5·D top edge.
+WALKWAY_BOLT_GRATE_CLEAR = 25   # min clearance (mm) from the upper wall-bolt NUT bottom to the grate DECK top — the
+                                # bolt is torqued before the grate drops in, so this is the deck-removed access margin
+WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + WALKWAY_BOLT_GRATE_CLEAR + 10  # 175 — upper wall-bolt Z, SHARED by standard + widened brackets (2D sheets 2/7 + 3D _cantilever_parts). Bolt CENTER = grate top (WALKWAY_H) + clearance + 10 (M12 hex-nut circumradius, ruby_bolt 1.65·r6≈9.9) so the NUT bottom clears the deck by WALKWAY_BOLT_GRATE_CLEAR.
+WALKWAY_BRACKET_H = WALKWAY_BRACKET_UPPER_BOLT_Z + 25  # 200 — bracket vertical leg height on wall (mm); holds the shared upper bolt with ≥1.5·D (25mm) top edge. Std + widened legs are now equal height.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # Hinged-panel bottom STEP (derived) — at the near/far side CORNER zones the swinging panel bottom
@@ -1165,10 +1167,10 @@ WALKWAY_BRACKET_ARM_Z0     = WALKWAY_H - WALKWAY_GRATE_T - WALKWAY_BRACKET_ARM_H
 # plate + sheet 7 bolt pattern) dimension the same part (Phase 1.2, 2026-08-18; these
 # were duplicated 100/180/6 + gusset-70 literals in both files before promotion).
 WALKWAY_REINF_W = 100    # exterior reinforcing-plate width  (mm) — covers the triangular bolt pattern, standard bracket
-WALKWAY_REINF_H = 180    # exterior reinforcing-plate height (mm) — standard bracket
+WALKWAY_REINF_H = WALKWAY_BRACKET_H   # 200 — exterior reinforcing-plate height (mm), standard bracket = the std leg so the interior mounting plate + exterior reinforcing plate share one footprint
 WALKWAY_REINF_T = 6      # exterior reinforcing-plate thickness (mm)
 WALKWAY_REINF_W_WIDE = 120   # widened-bracket reinforcing-plate width  (mm) — larger blank for the 4-bolt rectangular pattern
-WALKWAY_REINF_H_WIDE = 200   # widened-bracket reinforcing-plate height (mm) — = the widened vertical leg (WALKWAY_WIDE_BRACKET_H) so the interior mounting plate + exterior reinforcing plate are the SAME footprint (2026-08-19); covers the upper bolt Z155 with 45mm edge
+WALKWAY_REINF_H_WIDE = 200   # widened-bracket reinforcing-plate height (mm) — = the widened vertical leg (WALKWAY_WIDE_BRACKET_H) so the interior mounting plate + exterior reinforcing plate are the SAME footprint (2026-08-19); covers the raised upper bolt Z175 with 25mm edge
 WALKWAY_GUSSET_REACH = 70    # gusset triangle reach from the wall face (mm) — < the 80mm tray-rim standoff so the gusset clears the rim
 WALKWAY_BRACKET_BOLT_DX = 27        # STANDARD-bracket wall-bolt X offset from CL (mm) — flanks the 8mm gusset; ±27 keeps 23mm edge to the 100mm reinforcing-plate edge (vs only 18mm = 1.5·D at ±32). Drawn on Sheet 2 View B.
 WALKWAY_BRACKET_BOLT_DX_WIDE = 32   # WIDENED-bracket wall-bolt X offset from CL (mm) — the wider 120mm reinforcing plate carries ±32 at 28mm edge. Drawn on Sheet 7 View B.

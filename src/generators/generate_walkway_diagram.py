@@ -744,7 +744,7 @@ def sheet2():
     WASHER_T  = 3
     C_BOLT    = "#505058"
     bolt_z_lo = WALKWAY_BRACKET_BOLT_Z_LO   # 42 — lower pair, flanking gusset in X at ±WALKWAY_BRACKET_BOLT_DX (27mm, standard bracket) from CL (matches the 3D pattern)
-    bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 155 — SHARED with sheet7 + the 3D; clears the grate deck top (Z140)
+    bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 175 — SHARED with sheet7 + the 3D; nut clears the grate deck top (Z140) by 25mm
 
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
@@ -2011,7 +2011,7 @@ def sheet7():
 
     # ── Through-bolts (4× M12 rectangular pattern: 2 lower + 2 upper) ───────
     bolt_z_lo = 35
-    bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 155 — SHARED with sheet2 + the 3D (same rule: clears the grate deck)
+    bolt_z_hi = WALKWAY_BRACKET_UPPER_BOLT_Z  # = 175 — SHARED with sheet2 + the 3D (same rule: nut clears the grate deck by 25mm)
     BOLT_HEAD = 8
     NUT_H     = 10
     WASHER_T  = 3

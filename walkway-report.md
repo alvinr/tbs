@@ -76,7 +76,7 @@ the 300 lbf tip load at SF 2.1.
 
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
-| Vertical mounting plate | 8×180mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
+| Vertical mounting plate | 8×200mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
 | Horizontal arm | **2×1×0.120in steel tube** (50.8×25.4), 300mm cantilever (**3×1** in the widened zone) | Supports grating; sized to IBC/OSHA (§9) |
 | Triangular gusset | Right triangle, 70mm reach from wall | Braces the arm root; reach stops before tray rim |
 
@@ -91,7 +91,7 @@ between plate edge and gusset). One upper bolt (just above the bracket
 arm, near the top of the mounting plate) is centered on the gusset
 centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
-A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
+A 6mm reinforcing plate (100×200mm) is welded to the exterior panel face to
 provide a bearing surface for the bolt heads and washers. See View B for the bolt pattern detail.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") centers.
@@ -122,17 +122,18 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
 | Plate thickness (leg + gusset) | 8mm | 10mm |
-| Vertical leg height | 180mm | 200mm |
+| Vertical leg height | 200mm | 200mm |
 | Arm section | 2×1×0.120in tube (SF 2.1) | 3×1×0.120in tube (SF 1.83, defl-governed) |
 | Arm reach | 300mm | 500mm |
 | Gusset reach | 70mm | 70mm (tray rim constrained) |
 | Bolt pattern | 3x M12 triangular (2+1) | 4x M12 rectangular (2+2) |
-| Reinforcing plate | 100x180x6mm | 120x200x6mm |
+| Reinforcing plate | 100x200x6mm | 120x200x6mm |
 
 The gusset reach remains 70mm on both bracket types — limited by the processing
-tray rim. The widened bracket compensates with heavier plate, taller
-vertical leg for greater wall engagement, and the additional bolt for higher
-moment capacity.
+tray rim. Both bracket types share the 200mm vertical leg (sized so the raised
+upper wall-bolt clears the grate deck by 25mm); the widened bracket compensates
+for its longer arm with heavier (10mm) plate, a wider blank for greater wall
+engagement, and the additional bolt for higher moment capacity.
 
 **Attachment:** 4× M12 through-bolts per bracket in a rectangular pattern,
 passing through the full wall assembly: hex head → reinforcing plate (6mm) →
@@ -476,8 +477,8 @@ so they cannot drift from the geometry.
 | Grate — concentrated | 300 lbf | 0.8 mm defl | — | 0.03" @ 18" span (Fibergrate); less at our shorter span |
 | Wall bracket STD arm | 400 N·m | 838 N·m | 2.09 | 2×1×0.120 tube, 300 mm; tip defl 1.4 mm (L/213) |
 | Wall bracket WIDE arm | 667 N·m | 1222 N·m | 1.83 | 3×1×0.120 tube, 500 mm; deflection-governed, tip L/112 |
-| Wall bolt tension (M12 8.8) | 3543 N | 60696 N | 17 | root-moment couple, 113 mm lever |
-| Corrugated-rib pull-through | 3543 N | 25334 N | 7 | 1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip |
+| Wall bolt tension (M12 8.8) | 3010 N | 60696 N | 20 | root-moment couple, 133 mm lever |
+| Corrugated-rib pull-through | 3010 N | 25334 N | 8 | 1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip |
 | Floor-leg STD arm | 406 N·m | 838 N·m | 2.06 | 2×1×0.120, 305 mm cant. |
 | Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. (redesign; 2×1 was SF 1.04) |
 | Floor-leg post | 807 N·m | 2158 N·m | 2.68 | 2×2×0.120 SHS |
@@ -566,7 +567,7 @@ as the subsystems it interfaces (the traveling spray bar, the film-plane rail):
 <!-- BEGIN load:datums -->
 | Datum | Definition | References |
 |-------|-----------|------------|
-| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z140, arm top Z115, bolt Z42/Z155, beam soffit Z89.6 |
+| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z140, arm top Z115, bolt Z42/Z175, beam soffit Z89.6 |
 | **B** | The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd2362) interior faces the brackets bolt to | all Yd bracket/deck positions, bracket spacing 457 |
 | **C** | Rail datum — film-plane rail X260 (left) / X4649 (right) | the right-walkway outer edge (X4574) + combined corner plate register to C (shared with the film plane) |
 <!-- END load:datums -->
@@ -581,7 +582,7 @@ tolerances because a fit or a clearance depends on them:
 |---------|-------|-----------|-----|
 | Deck coplanarity — grate-bearing tops, all 4 sections | A | ±2 mm | level walking surface |
 | Bracket arm reach (tip X) | B | ±2 mm | grate-edge bearing only |
-| Wall-bolt pattern (±27/±32 X, Z42/Z155) | B | ±0.5 mm | must align reinf-plate + wall holes |
+| Wall-bolt pattern (±27/±32 X, Z42/Z175) | B | ±0.5 mm | must align reinf-plate + wall holes |
 | Foot-anchor pattern (X +20/+60, ±18 Yd) | A | ±1 mm | self-drillers are forgiving |
 | Spray-bar slit position (X2454) | C | ±2 mm | align to the traveling spray bar |
 | Muslin notch / drum-exit punch-out position | B/C | ±3 mm | clearance features |
@@ -625,9 +626,9 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Plate | Blank (mm) | Thk (mm) | Holes | Positions / PCD | Qty |
 |-------|-----------|----------|-------|-----------------|-----|
 | Foot plate | 165×60 | 8 | 4× Ø5.5 (#14) | X +20/+60 from left edge × Yd ±18 | 5 |
-| Reinforcing plate — std | 100×180 | 6 | 3× Ø13 (M12) | ±27 X @ Z42; 0 @ Z155 (triangular) | 13 |
-| Reinforcing plate — widened | 120×200 | 6 | 4× Ø13 (M12) | ±32 X @ Z35 & Z155 (rectangular) | 5 |
-| Bracket vertical leg — std / widened | 100×180 / 120×200 | 8 / 10 | matches reinf plate | same bolt pattern; arm + gusset welded on | 13 / 5 |
+| Reinforcing plate — std | 100×200 | 6 | 3× Ø13 (M12) | ±27 X @ Z42; 0 @ Z175 (triangular) | 13 |
+| Reinforcing plate — widened | 120×200 | 6 | 4× Ø13 (M12) | ±32 X @ Z35 & Z175 (rectangular) | 5 |
+| Bracket vertical leg — std / widened | 100×200 / 120×200 | 8 / 10 | matches reinf plate | same bolt pattern; arm + gusset welded on | 13 / 5 |
 | Combined corner plate | 150×~271 | 10 | 4× Ø13 corner | shared with the BR film rail (fp_combined_corner_plate) | 2 |
 | Wall cleat (back + ext + shelf) | 90×(bolt span) | 8 | 2× Ø13 horizontal | below-shelf + above-beam, clear of the beam edge | 2 |
 | Transition bearing plate | 40×500 | 5 | — | welded to the arm top at each 300↔500 width step | 2 |
@@ -644,13 +645,13 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Molded GRP grating (American Grating, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48"×144" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md. | 1 lot | American Grating / McNichols | $830–$1,050 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
-| Cantilever bracket — standard (near/far) | 8mm steel plate (180mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 4 near + 9 far at 457mm centers. ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms). | 13 ea | Local fab | $390–$650 |
+| Cantilever bracket — standard (near/far) | 8mm steel plate (200mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 4 near + 9 far at 457mm centers. ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms). | 13 ea | Local fab | $390–$650 |
 | Cantilever bracket — widened (near) | 10mm steel plate (200mm vert leg + 70mm gusset) + a 500mm 3×1×0.120in steel tube arm, welded — US IBC/OSHA redesign: the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point; arm depth is spray-bar-capped at 25.4mm so the widened bracket takes a WIDER 3×1 section, not deeper). EP/battery/slit zone, X1055–3083 = 5 bays. ~0.5 m of 3×1 tube/bracket. | 5 ea | Local fab | $200–$350 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Cantilever-bracket wall bolts (3 per std + 4 per widened), ~48–50mm grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10. Pad with M12 flat washers to the grip. | 59 ea | McMaster-Carr | $102 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 59 ea | McMaster-Carr | $15 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 cantilever bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 236 ea | McMaster-Carr | $23 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
-| Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 18 ea | Local fab | $75–$130 |
+| Reinforcing plate (exterior) | 6mm steel: 100×200mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
 | Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — a continuous inner long beam (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + an outer long beam in 2 segments (an open corridor bay ~170mm between the cantilever arms, so the ribbon pipes cross clear of any beam) + 2 end beams (~245mm, the 245mm right deck) that make the cantilever frame, ~5.0 m (16.5 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |

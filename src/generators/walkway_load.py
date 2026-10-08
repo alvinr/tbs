@@ -121,7 +121,7 @@ def wall_bracket_check():
 # ── 4-5. Wall bolt group + corrugated-wall pull-through ──────────────────────
 def wall_bolt_check():
     # Root moment (concentrated, standard bracket) reacted as a tension-compression couple on the
-    # wall bolts: upper bolt(s) tension at Z155, lower bear/compress at Z42 -> lever ~113 mm.
+    # wall bolts: upper bolt(s) tension at Z175, lower bear/compress at Z42 -> lever ~133 mm.
     lever = k.WALKWAY_BRACKET_UPPER_BOLT_Z - k.WALKWAY_BRACKET_BOLT_Z_LO   # 113
     m_std = P_CONC * k.WALKWAY_W / 1e3
     t_up = m_std * 1e3 / lever                       # 1 upper bolt (std triangular pattern)
@@ -285,7 +285,7 @@ def datums_md():
     return "\n".join([
         "| Datum | Definition | References |",
         "|-------|-----------|------------|",
-        "| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z140, arm top Z115, bolt Z42/Z155, beam soffit Z89.6 |",
+        f"| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z{int(k.WALKWAY_H)}, arm top Z{int(k.RWK_ARM_TOP)}, bolt Z{int(k.WALKWAY_BRACKET_BOLT_Z_LO)}/Z{int(k.WALKWAY_BRACKET_UPPER_BOLT_Z)}, beam soffit Z{k.WALKWAY_BRACKET_ARM_Z0:g} |",
         f"| **B** | The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd{int(k.C_WID)}) interior faces the brackets bolt to | all Yd bracket/deck positions, bracket spacing 457 |",
         f"| **C** | Rail datum — film-plane rail X{int(k.RAIL_X_L)} (left) / X{int(k.RAIL_X_R)} (right) | the right-walkway outer edge (X{int(k.WALKWAY_RIGHT_X_R)}) + combined corner plate register to C (shared with the film plane) |",
     ])

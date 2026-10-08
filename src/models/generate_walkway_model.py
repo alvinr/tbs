@@ -245,7 +245,7 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     gusset_reach = k.WALKWAY_GUSSET_REACH
     # Bolt patterns (X offset, Z): standard 3 (triangular, ±WALKWAY_BRACKET_BOLT_DX = 27 — Sheet 2 View B);
     # widened 4 (rectangular, ±WALKWAY_BRACKET_BOLT_DX_WIDE = 32 — Sheet 7 View B).
-    _ubz = k.WALKWAY_BRACKET_UPPER_BOLT_Z   # 155 — upper bolt clears the grate deck (SHARED std + widened)
+    _ubz = k.WALKWAY_BRACKET_UPPER_BOLT_Z   # 175 — upper bolt nut clears the grate deck by 25mm (SHARED std + widened)
     _dx  = k.WALKWAY_BRACKET_BOLT_DX          # 27 — STANDARD wall-bolt X offset (Sheet 2 View B)
     _dxw = k.WALKWAY_BRACKET_BOLT_DX_WIDE     # 32 — WIDENED wall-bolt X offset (Sheet 7 View B)
     bolt_pat_std  = [(0, _ubz), (-_dx, k.WALKWAY_BRACKET_BOLT_Z_LO), (_dx, k.WALKWAY_BRACKET_BOLT_Z_LO)]
@@ -421,7 +421,7 @@ def cantilever_type_labels():
          f"FLOOR-LEG CANTILEVER — extended reach\n3 of the 5 brackets reach to X={int(LC_WIDE)} on a\n4x1 arm (drum-exit punch-out; IBC/OSHA SF 1.99)",
          -200, -300, 800),
         (CT_STD_X, 0, BRK_H,
-         "STANDARD CANTILEVER\n8mm plate / 180 leg / 2x1 tube arm\n3x M12 (triangular)",
+         "STANDARD CANTILEVER\n8mm plate / 200 leg / 2x1 tube arm\n3x M12 (triangular)",
          0, -300, 720),
         (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
          "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 3x1 tube arm\n4x M12 (rectangular)",

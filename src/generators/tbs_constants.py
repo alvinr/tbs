@@ -1139,12 +1139,14 @@ WALKWAY_BRACKET_UPPER_BOLT_Z = WALKWAY_H + WALKWAY_BOLT_GRATE_CLEAR + 10  # 175 
 WALKWAY_BRACKET_H = WALKWAY_BRACKET_UPPER_BOLT_Z + 25  # 200 — bracket vertical leg height on wall (mm); holds the shared upper bolt with ≥1.5·D (25mm) top edge. Std + widened legs are now equal height.
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
-# Hinged-panel bottom STEP (derived) — at the near/far side CORNER zones the swinging panel bottom
-# must clear the BARE wall-cantilever bracket vertical legs (WALKWAY_BRACKET_H) when the walkway is
-# lifted out for transport, with the SAME 15mm margin the center bottom keeps over the Z115 arms
-# (PANEL_FLOOR_GAP − arm-top). So the two corner zones step UP from PANEL_FLOOR_GAP (130) to this.
-# The center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP. See hinged-panel Sheet 16.
-PANEL_FLOOR_GAP_SIDE = WALKWAY_BRACKET_H + (PANEL_FLOOR_GAP - (WALKWAY_H - WALKWAY_GRATE_T))  # 282
+# Hinged-panel bottom STEP — at the near/far side CORNER zones the swinging panel bottom sits ABOVE the
+# BARE wall-cantilever bracket vertical legs so it clears them when the walkway grate is lifted out for
+# transport. The transport swing is about the VERTICAL Ø89 pivot, so the panel bottom Z is static through
+# the swing and any positive clearance over the leg TOP suffices. Held at 282 (82mm over the now-200mm leg) —
+# DECOUPLED from WALKWAY_BRACKET_H: its 180→200 growth raised the upper WALL-BOLT for grate clearance, not
+# the panel-leg clearance, so the panel must NOT step up with it. The max() guard only re-steps the panel up
+# if a future leg comes within 50mm. Center zone (drum bay, Yd PANEL_CORNER_YD_L..R) stays at PANEL_FLOOR_GAP.
+PANEL_FLOOR_GAP_SIDE = max(282, WALKWAY_BRACKET_H + 50)  # 282 — corner-zone stepped panel bottom (mm); see above
 PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                                  # corner step-up
 # Fan B near corner — split into a SWINGING plywood mount panel (carries the fan, travels with the leaf)
 # and a FIXED plywood side part (stays on the pinhole side). Both run floor-gap line → band top; the swing

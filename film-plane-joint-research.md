@@ -14,8 +14,8 @@ with it and how it's solved. Manual actuation, corrosion-prone wet environment (
 > film-plane corner redesign; it argues against the pre-redesign mechanism (four rigidly-driven leadscrew
 > corners), which is what "the current design" refers to throughout below. The design this research led to
 > is set out in [`film-plane-corner-rationale.md`](film-plane-corner-rationale.md) — the "why each corner is
-> built this way" report — and specified in [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md);
-> the resulting corner is drawn in `diagrams/film-corner-gimbal.png`. **§8 records what we built** and how it
+> built this way" report — and specified in [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).
+> **§8 records what we built** and how it
 > maps to the finding.
 
 ## The finding, in one line

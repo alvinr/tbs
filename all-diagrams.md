@@ -88,8 +88,6 @@
 
 ![TBS-001 Corner-Joint Design Study — B: U-Joint (cross/spider between two yokes)](assets/film-joint-study-ujoint.png)
 
-![TBS-001 Film-Plane Corner Gimbal — Design A (2-axis universal joint, no twist, ±45°, ×4 corners)](assets/film-corner-gimbal.png)
-
 ---
 
 ## 7. Pinhole Disc Holder (Front Board)

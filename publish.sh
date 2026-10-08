@@ -247,7 +247,6 @@ DIAG_FILES=(
     "film-joint-options.png"
     "film-joint-study-gimbal.png"
     "film-joint-study-ujoint.png"
-    "film-corner-gimbal.png"
     "film-plane-distortion-c0.png"
     "film-plane-distortion-c1.png"
     "film-plane-distortion-c2.png"

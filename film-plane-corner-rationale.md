@@ -5,7 +5,8 @@
 **Branch:** `film-plane-redesign`. This is the design-rationale report for the film-plane corner
 mechanism — *why* each corner is built the way it is. Every choice traces to a specific engineering
 fact; the sources are collected in [`film-plane-joint-research.md`](film-plane-joint-research.md), and
-the resulting corner is drawn in `diagrams/film-corner-gimbal.png`.
+the built corner — an off-the-shelf universal joint on a 2-axis cross-slide — is specified in the
+[Film Plane Mechanism report](film-plane-mechanism-report.md) (corner Sheets 3, 4 & 9).
 
 ---
 
@@ -141,7 +142,8 @@ Per corner (×4):
 
 The off-the-shelf single U-joint (~$451 for four) **replaces the earlier custom gimbal** (ring + two
 yokes + four reamed bores per corner), and **slide-and-clamp replaces the whole leadscrew/handwheel drive
-train** — cheaper, simpler, factory-aligned, and in stock. Drawn in `diagrams/film-corner-gimbal.png`.
+train** — cheaper, simpler, factory-aligned, and in stock. The built U-joint corner is drawn in the
+[Film Plane Mechanism report](film-plane-mechanism-report.md) (Sheets 4 & 9).
 
 ## Design rules adopted (all grounded in the research)
 

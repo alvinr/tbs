@@ -62,6 +62,9 @@ WK_NEAR_WIDE_W = ov.WALKWAY_NEAR_WIDE_W
 WK_LEFT_WIDE_W, WK_LEFT_WIDE_YL, WK_LEFT_WIDE_YR = (
     ov.WALKWAY_LEFT_WIDE_W, ov.WALKWAY_LEFT_WIDE_YD_L, ov.WALKWAY_LEFT_WIDE_YD_R)
 BRK_T, BRK_H = ov.WALKWAY_BRACKET_T, ov.WALKWAY_BRACKET_H
+PLATE_BUTT = k.WALKWAY_WIDE_BRACKET_T   # 10 — every grate wall-edge is held off the wall by the WIDEST wall
+                                        # plate thickness (widened bracket / FP combined corner plate = 10mm) so
+                                        # the deck BUTTS the plate face instead of spearing it (grate stays full-size)
 R_X, R_W = ov.WALKWAY_RIGHT_X, k.WALKWAY_RIGHT_W
 # (rev12: the ceiling-hung bearer/hanger/ceiling-plate constants are retired —
 #  the right walkway is now right_walkway_cantilever().)
@@ -698,8 +701,9 @@ def near_fixed_deck_grate(name, x0, z, t, color, alpha=None):
     bt = WALKWAY_BRACKET_T
     xr = WALKWAY_RIGHT_X
     wxl, wxr, ww = WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W
-    # Wall edge at Yd=bt; inboard edge at Yd=WALKWAY_W, stepping out to Yd=ww over the bump span.
-    pts = [(x0, bt), (xr, bt), (xr, WALKWAY_W),
+    # Wall edge held off at Yd=PLATE_BUTT (butts the wall plates — widened brackets are 10mm, not bt=8);
+    # inboard edge at Yd=WALKWAY_W, stepping out to Yd=ww over the bump span.
+    pts = [(x0, PLATE_BUTT), (xr, PLATE_BUTT), (xr, WALKWAY_W),
            (wxr, WALKWAY_W), (wxr, ww), (wxl, ww), (wxl, WALKWAY_W),
            (x0, WALKWAY_W)]
     return ruby_prism(name, pts, z, t, color=color, alpha=alpha, holes=NEAR_GRATE_HOLES)   # sump / TAP-01 / BV-05 riser clearances
@@ -718,10 +722,11 @@ def left_liftout_grate(name, z, t, color, alpha=None):
     nyd0 = WALKWAY_MUSLIN_NOTCH_YD0
     nyd1 = nyd0 + WALKWAY_MUSLIN_NOTCH_DY
     nx0 = WALKWAY_MUSLIN_NOTCH_L_X0                         # notch bites in to here
-    pts = [(lx0, 0), (lx0, C_WID), (lx1, C_WID),
+    y0, y1 = PLATE_BUTT, C_WID - PLATE_BUTT          # Yd ends held off the pinhole-/film-wall plates
+    pts = [(lx0, y0), (lx0, y1), (lx1, y1),
            (lx1, nyd1), (nx0, nyd1), (nx0, nyd0), (lx1, nyd0),   # muslin notch (in)
            (lx1, pyr), (tab_x1, pyr), (tab_x1, pyl), (lx1, pyl),  # drum-exit punch-out (out)
-           (lx1, 0)]
+           (lx1, y0)]
     return ruby_prism(name, pts, z, t, color=color, alpha=alpha)
 
 
@@ -744,11 +749,11 @@ def right_walkway_grate(name="Right walkway grate (cantilevered)"):
     def _slots_in(y_lo, y_hi):
         return [(sx0, b0, sx1, b1) for (b0, b1) in RWK_GRATE_SLOT_YDS if y_lo <= b0 and b1 <= y_hi]
     out = []
-    out.append(ruby_prism(f"{name} near", [(gx0, 0), (gx1, 0), (gx1, jn), (gx0, jn)], z, t, color=C_WALKWAY,
+    out.append(ruby_prism(f"{name} near", [(gx0, PLATE_BUTT), (gx1, PLATE_BUTT), (gx1, jn), (gx0, jn)], z, t, color=C_WALKWAY,
                           holes=_slots_in(0, jn)))
     out.append(ruby_prism(f"{name} center (corridor bridge)", [(gx0, jn), (gx1, jn), (gx1, jf), (gx0, jf)], z, t, color=C_WALKWAY,
                           holes=_slots_in(jn, jf)))
-    out.append(ruby_prism(f"{name} far", [(gx0, jf), (gx1, jf), (gx1, C_WID), (gx0, C_WID),
+    out.append(ruby_prism(f"{name} far", [(gx0, jf), (gx1, jf), (gx1, C_WID - PLATE_BUTT), (gx0, C_WID - PLATE_BUTT),
                                           (gx0, ny1), (nx1, ny1), (nx1, ny0), (gx0, ny0)], z, t, color=C_WALKWAY,
                           holes=_slots_in(jf, C_WID)))
     return '\n'.join(out)

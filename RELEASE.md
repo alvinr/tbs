@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.15] — 2026-10-08
+
 - **Overview collapsed to a thin aggregator (model refactor).** Shared Ruby-drawing infrastructure (primitives, 38-color palette, model metadata) was extracted to a neutral `tbs_draw.py`, and ~60 geometry builders moved from the overview into their owner sub-models (walkway, IBC, spray-bar, electrical, water, film-plane, light-trap). The overview is now ~13 container-level builders composing those sub-models, so each component lives in exactly one place and the overview can't drift from its parts. See [model-aggregation-plan.md](model-aggregation-plan.md).
 - **Electrical model de-drifted + single-sourced (3D).** Every circuit traces from its own colored fuse to its load through single-owner `em` builders — the Cct-C pump distribution, the Cct-E/Cct-C EP feeds, the lighting fixtures + pull switches, the evaporative cooler, and the Fan-B flex were each formerly duplicated between the overview and electrical and are now unified (fixing several drifted positions and a disconnected conductor). Added an EP control-panel redesign (two full-width ply cross-members, surface controls wired from the rear) and external-EP inner-face MC4 string landings. `check_interference` gained conductor-skip + shared-junction fixes that surfaced real crossings; all models now run **0 pipe crossings**.
 - **Circuit-G work lighting — corrected + rewired.** The illuminance was restated from bare lumens ÷ area to the honest **maintained ~330 lux** (coefficient-of-utilization + light-loss-factor on the matte-black interior, which adds essentially no inter-reflected light); the design is **4 COB runs** (3 over the tray + 1 corridor) rewired to **12 AWG on a 15A fuse** (led-channel 6→7).

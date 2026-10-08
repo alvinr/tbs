@@ -17,7 +17,10 @@ parts.py is the PROCUREMENT SOURCE OF RECORD (firm low/high item costs); costing
 layer (mid + budgeting bands) on top. Every system here must sum to its costing reconcile target.
 
 # ─────────────────────────────────────────────────────────────────────────────────────────────
-# TODO (ONGOING): VERIFY EVERY SPEC-DRIVEN PART's identity + price against current supplier listings.
+# PRICING STATUS: the Aug-2026 full re-price SWEEP IS COMPLETE and CLOSED (2026-10-07) — every system is
+# firm on its material drivers, and prices were re-verified on each part touched since. What remains is
+# build-time only: firm-at-order fab/bulk-steel quotes (material-now/fab-later rule) + the identity/SKU
+# backfill below. Use the worklist workflow when firming a specific row; no standing "re-price all" task.
 # The bands below are an April-2026 basis (indicative low/high, pre-quote), and many hardware rows also
 # lack a verified identity — no part number, the fit-critical dim (bore/thread/Ø) buried in `spec`, and
 # a few carry a SKU whose format doesn't match the named supplier (a McMaster number under a Grainger

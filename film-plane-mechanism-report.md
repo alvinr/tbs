@@ -105,6 +105,10 @@ Sheet 8 shows the same corner from the mechanism side — how the film frame han
 
 ![Sheet 8 — Frame-corner ↔ cross-slide attachment: the frame hangs off the two slides through the U-joint](assets/film-plane-sheet8.png)
 
+Sheet 4 sections the universal joint itself — the yokes, the cross/trunnion, and the factory boot — showing how the two angular axes (tilt + swing) both pass through the one joint.
+
+![Sheet 4 — Universal-joint sections (yokes, cross, boot)](assets/film-plane-sheet4.png)
+
 ### Cross-Slide Load Case
 
 The cross-slide travel and load were firmed against the rotation geometry and the moving mass (Sheet 10):

@@ -55,6 +55,10 @@ tray's watertight seal.
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
 
+The four removable sections are cut from two molded GRP stock panels per the cut plan below, nesting the pieces to minimize offcut from the 2× 36″×120″ sheets.
+
+![GRP grating cut plan — 2× 36×120 panels](assets/grp-cutplan.png)
+
 ---
 
 ## 3. Near and Far Walkways — Wall-Cantilevered

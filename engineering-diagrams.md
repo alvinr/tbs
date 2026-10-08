@@ -48,6 +48,14 @@ A front elevation of the whole pinhole (nose) wall — the equipment mounted on 
 
 There are detailed construction reports for each of the major systems and their sub-systems.
 
+### Assembly fabrication drawings
+
+Two general-arrangement fabrication sheets dimension the whole installation for a builder — a long-section elevation through the length of the container, and an end elevation at the cargo-door end.
+
+![Assembly Fab Sheet 1 — Long-Section Elevation (1:50)](assets/assembly-fab-sheet1.png)
+
+![Assembly Fab Sheet 2 — End Elevation, Cargo Door (1:20)](assets/assembly-fab-sheet2.png)
+
 ## See Also
 
 - [Equipment Layout](equipment-layout-report.md) · [Water System](water-system-report.md) · [Electrical](electrical-report.md) — the major system reports

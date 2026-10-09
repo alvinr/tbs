@@ -24,7 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+### Film-plane corner mechanism
+- Coped the TR far-wall saddle seat's inboard-bottom corner clear of the swing-drive input stub (was a ~5mm interference); the rail bearing surface on top is preserved.
+- Terminated the purple SWING cross-slide at the wheel-channel opening (all 4 corners) — it was overshooting through the U-channel flange/web/lip.
+- Single-sourced the captured-skate carriage into one `corner_skate_parts()` builder shared by the install (`corner()`) and the Movement demo. The Movement scene had been missing the wheel axles, keeper rollers/axles, retainer bolts, and cam rail-brake — now complete and drift-proof.
+- Movement scene: regrouped the output stub into the tilting Panel (it bends with the panel through the U-joint), and ghosted the fixed pivot hardware (U-joint, input stub, shaft support) so the articulation reads cleanly instead of showing solid-box clashes at angle.
+- Re-sent + re-pushed all six affected models (film-plane-mechanism, overview, construction, walkway, water, lighttrap).
 
 ## [0.15] — 2026-10-08
 

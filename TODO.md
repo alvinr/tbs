@@ -24,8 +24,8 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   fixing that (routed runs are always pipes) revealed two latent pipe-vs-solid clashes OUTSIDE the EP — neither
   introduced by the EP work (both at X≈4600). Investigate + resolve each (confirm real vs by-design, then reroute the
   pipe or notch/butt the solid):
-  - `Input stub 3/8 (X slide → U-joint) TR` ↔ `Saddle seat TR far` — film-plane mechanism, far TR corner (~4596,2245,2252); ~6mm overlap.
-  - `Blue supply trunk → spray bar / TAP-01` ↔ processing-tray exclusion zone (~4616,1161,147) — water system near the tray.
+  - ✅ RESOLVED 2026-10-09 — `Input stub 3/8 (X slide → U-joint) TR` ↔ `Saddle seat TR far`: coped the far-wall saddle seat's inboard-bottom corner clear of the stub (bearing surface preserved). Re-sent the 6 affected models.
+  - [ ] `Blue supply trunk → spray bar / TAP-01` ↔ processing-tray exclusion zone (~4616,1161,147) — **analyzed, decision pending.** The drop clears the real tray by ~29mm vertically (rim top Z75, drop Z104.5) but sits over the open basin in plan; every other ribbon line drops in the slot at `RIBBON_SLOT_X=4641` (past the tray edge), only this one drops at 4616. Options: **(a)** move `BLUE_TRUNK_HANDOFF_X` 4616→slot (4641) to match the ribbon pattern (no whitelist, fixes the stale "aligned with brown P-02" comment), or **(b)** whitelist it in `RIBBON_LINES` as a sanctioned under-grate ribbon line.
 - [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
   `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
   generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
@@ -66,6 +66,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - **Pinhole wall (mini_tbs)** — ACCEPTED as-is: mini_tbs is a scale toy (BOX_W×BOX_H), pw a real wall section;
     different representations (like the context floors). No action unless mini_tbs is retired.
   (The 2 `Floor`/`Floor (context)` ghosts are permanent allowlist — featureless per-model context.)
+  - **(2026-10-09) within-file dedup** — the film-plane captured-skate carriage (rollers/axles/keepers/carriage
+    plate/retainer bolts/cam-brake) was duplicated between `corner()` (install) and the `movement()` demo; the
+    demo copy had drifted (missing the axles/keepers/brake). Extracted to `corner_skate_parts()`, now shared by
+    both — `corner()` output byte-identical, Movement scene completed.
 
 - [ ] **`check_interference.py --bolts` — orientation/grip lint (PROTOTYPE landed 2026-08-17).** New read-only
   advisory pass: for every structural grip bolt it finds the members its centerline pierces and flags **EDGE**

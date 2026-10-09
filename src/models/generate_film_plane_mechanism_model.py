@@ -139,7 +139,11 @@ def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
     Lz, Lx = 250, 260
     gx0 = (cx + cin * 26 - 5) if is_bot else ((fcx - 20) if cin > 0 else (fcx + 4))  # green outboard of the frame leg
     gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)        # green Z (bottom up / top down, below the rail)
-    px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
+    # purple SWING rail: inboard end = swing reach (unchanged); OUTBOARD end terminates 3mm inboard of
+    # the wheel-channel opening (cx + cin·CW_BOT/2) — it was overshooting THROUGH the channel flange/lip.
+    p_in = cx + cin * (Lx - 20)                          # inboard end (swing reach)
+    p_out = cx + cin * (CW_BOT / 2 + 3)                  # outboard end, 3mm clear of the channel opening
+    px0, Lxp = min(p_in, p_out), abs(p_in - p_out)
     pz_purple = (fz - 18) if is_bot else (fz + 4)        # purple clear of the film face
     stub_x0 = (cx + 5) if cin > 0 else (cx - 51)
     sup_x0 = (cx + 26) if cin > 0 else (cx - 49)
@@ -147,7 +151,7 @@ def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
     cpz0 = (fz + 5) if is_bot else (fz - 45)
     return {
         "green":         ("box", gx0, ty + 1, gz0, 10, 18, Lz, C_TILT, None),
-        "purple":        ("box", px0, ty + 1, pz_purple, Lx, 14, 14, C_SWING, None),
+        "purple":        ("box", px0, ty + 1, pz_purple, Lxp, 14, 14, C_SWING, None),
         "ujoint":        ("box", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS, None),
         "input_stub":    ("cyl", stub_x0, ty + 8, fz, 4.75, 46, None, C_STEEL, "x"),
         "shaft_support": ("box", sup_x0, ty - 1, fz - 11, 23, 18, 22, C_STEEL, None),
@@ -157,12 +161,57 @@ def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
     }
 
 
-def emit_slide(label, spec, ox=0, oy=0, oz=0):
-    """Emit one corner_slide_parts spec as ruby, applying an (ox,oy,oz) coordinate offset."""
+def emit_slide(label, spec, ox=0, oy=0, oz=0, alpha=None):
+    """Emit one corner_slide_parts spec as ruby, applying an (ox,oy,oz) coordinate offset.
+    `alpha` (default None = opaque) ghosts the part — used by the Movement scene to make the fixed
+    pivot hardware read as a reference the moving film plane sweeps past, not a solid clash."""
     kind, x, y, z, a, b, c, color, axis = spec
     if kind == "box":
-        return draw.ruby_box(label, x + ox, y + oy, z + oz, a, b, c, color=color)
-    return draw.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis)
+        return draw.ruby_box(label, x + ox, y + oy, z + oz, a, b, c, color=color, alpha=alpha)
+    return draw.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis, alpha=alpha)
+
+
+def corner_skate_parts(cx, zc, fz, cin, ty, suffix):
+    """SINGLE source for the captured-skate carriage (spray-bar pattern): Ø32 acetal load rollers +
+    cantilevered Ø10 axles, Ø20 keeper rollers (anti-lift/anti-tip) + Ø8 axles, the carriage plate +
+    axle-retainer bolts, and the cam rail-brake (5128A63, base/arm/UHMW pad/lever). Both corner() (flat
+    install) and movement() (the Carriage DC group) draw from this so the two can't drift. The Ø10 axle
+    is cantilevered from the inboard carriage and exits the channel opening — it never crosses a flange.
+    `ty` = the backing-side Y (FP_Y_PARK install / FP_Y schematic); `suffix` = the label tail (' BL' /
+    ' (Movement BL)'). Returns a list of ruby strings."""
+    botf = zc - CD_BOT / 2
+    rz = botf + HB_T + 16                                 # roller-centre Z — on the bottom flange (both corners)
+    inb = cx + cin * (CW_BOT / 2 + 14)                   # carriage line — inboard of the channel opening (film side)
+    kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10          # keeper (under the top flange); Ø20 on a stub axle
+    r_x0, r_len = cx - 10, 20
+    P = []
+    for ry in (ty + 8, ty + 48):
+        P.append(draw.ruby_cylinder(f"Acetal roller Ø32 (wide face){suffix} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
+        wax0 = min(r_x0, inb - 6)
+        P.append(draw.ruby_cylinder(f"Wheel axle Ø10{suffix} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
+        P.append(draw.ruby_cylinder(f"Keeper roller Ø20 (anti-lift / anti-tip){suffix} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
+        P.append(draw.ruby_cylinder(f"Keeper axle Ø8{suffix} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
+    # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
+    # Spans the film-corner + load roller + keeper so every axle lands on it. TOP corners: cap 25mm below ceiling.
+    zvals = (fz, rz, kz)
+    zlo, zhi = min(zvals), max(zvals)
+    plate_top = min(zhi + 18, ov.C_HGT - 25)
+    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles){suffix}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
+    for ry in (ty + 8, ty + 48):
+        blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
+        P.append(draw.ruby_cylinder(f"Axle retainer bolt (thru plate){suffix} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
+    # CAM RAIL-BRAKE (fp-cam-clamp, 5128A63): base on the carriage-plate top; the hold-down arm reaches
+    # OUTBOARD over the channel top flange + a UHMW pad presses DOWN on it (self-reacting against the Ø32
+    # roller on the bottom flange). Thrown to lock depth for the shot + transport. One representative shown.
+    tfz = zc + CD_BOT / 2                                  # top-flange top surface
+    basex = inb - cin * 3                                  # base near the plate's outboard edge
+    padx = cx + cin * 8                                    # pad over the (inboard part of the) top flange
+    cby = ty + 33
+    P.append(draw.ruby_box(f"Cam-brake base (5128A63){suffix}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
+    P.append(draw.ruby_box(f"Cam-brake hold-down arm{suffix}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
+    P.append(draw.ruby_box(f"Cam-brake UHMW pad{suffix}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
+    P.append(draw.ruby_cylinder(f"Cam-brake lever{suffix}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
+    return P
 
 
 def corner(tag, cx, fz, zc, cin, side, keep="all"):
@@ -176,6 +225,8 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
     P = []
     ty = FP_Y_PARK                                       # film-plane assembly parked forward (display); rails don't use ty
     is_bot = fz < ov.C_HGT / 2
+    fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
+    sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, ty)  # SHARED corner assembly (slides/U-joint/stubs) — single source
     # BOTH corners web-vertical now — same rail + captured skate; only the Z position + stack direction differ.
     rail = lambda nm, y0, yl, al=None: channel_v(nm, cx, zc, y0, yl, tag, cin, al)
     sec_h, chan_w = CD_BOT, CW_BOT
@@ -189,9 +240,11 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
             for fy in (0, ov.C_WID - 12):                # end flange trimmed 35mm on the OUTBOARD (+X) side to clear the IBC frame
                 P.append(draw.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, 12, sec_h + 10, color=C_CROSS))
         else:                                            # TOP-RIGHT (TR): budgeted wall-seat saddle at BOTH walls; the rail
-            sp = ov.FP_CORNER_SEAT_PLATE_T               # ENDS align to the saddle plate INNER faces (butt the upstand) — no end flange (the saddle mounts + caps it)
-            P += rail("U-rail (FLANGED)", sp, ov.C_WID - 2 * sp)
-            P.append(film_plane_saddles({tag: (cx, zc)}))
+            spt = ov.FP_CORNER_SEAT_PLATE_T              # ENDS align to the saddle plate INNER faces (butt the upstand) — no end flange (the saddle mounts + caps it)
+            P += rail("U-rail (FLANGED)", spt, ov.C_WID - 2 * spt)
+            _is = sp["input_stub"]                       # (cyl,x,y,z,r,len,…) — single source for the cope bounds
+            P.append(film_plane_saddles({tag: (cx, zc)},
+                     stub_clear=(_is[2] + _is[4], _is[3] + _is[4])))               # cope the far seat to (y+r, z+r)
     else:                                              # LEFT: parking stub + removable + welded bridge + support + gusset
         P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, (ov.C_WID - 12) - LEFT_CUT_YD)   # far end BUTTS the INNER face of the pivot-post flange plate (12mm), not through it (2026-08-19)
         P += rail("U-rail REMOVABLE (out for transport)", ov.FP_CORNER_SEAT_PLATE_T, LEFT_CUT_YD - ov.FP_CORNER_SEAT_PLATE_T, 0.30)   # near end ALIGNED to the saddle plate INNER face (butts the upstand)
@@ -227,55 +280,17 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # same outboard-web placement so it's clear of the carriage
         P.append(draw.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
 
-    # ── SKATE (spray-bar carriage pattern): Ø32 acetal wheels IN the channel; the Ø10 axle is
-    # cantilevered from the CARRIAGE (inboard) — the axle and its retainer bolts pass through the
-    # CARRIAGE PLATE, never the beam. ──
-    rz = botf + HB_T + 16                                 # roller-centre Z — on the bottom flange (both corners)
-    inb = cx + cin * (chan_w / 2 + 14)                   # carriage line — inboard of the channel opening (film side)
-    # CAPTURED skate (both corners): Ø32 acetal roller (WIDE face) on the bottom flange + a Ø20 KEEPER roller
-    # under the top flange. At the BOTTOM the roller carries gravity; at the TOP the SAME pair reacts the plane's
-    # tip-force in either direction (a captured guide, not gravity-seated). The Ø10 axle is cantilevered from the
-    # inboard CARRIAGE and exits the channel opening — it never crosses a flange.
-    rlabel, r_x0, r_len = "Acetal roller Ø32 (wide face)", cx - 10, 20
-    kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10          # keeper (under the top flange); Ø20 on a stub axle
-    for ry in (ty + 8, ty + 48):
-        P.append(draw.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
-        wax0 = min(r_x0, inb - 6)
-        P.append(draw.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
-        P.append(draw.ruby_cylinder(f"Keeper roller Ø20 (anti-lift / anti-tip) {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
-        P.append(draw.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
-    # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
-    # Spans the film-corner + load roller + keeper so every axle lands on it. TOP corners: cap the plate top
-    # 25mm below the ceiling.
-    zvals = (fz, rz, kz)
-    zlo, zhi = min(zvals), max(zvals)
-    plate_top = min(zhi + 18, ov.C_HGT - 25)
-    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
-    for ry in (ty + 8, ty + 48):
-        blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
-        P.append(draw.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
-
-    # ── CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — BOTH corners now (web-vertical). Base on the carriage-
-    # plate top; the hold-down arm reaches OUTBOARD over the channel TOP FLANGE and a UHMW pad presses DOWN on it.
-    # Self-reacting: the Ø32 roller on the BOTTOM flange reacts the pinch, so it never unloads the skate. Thrown
-    # to lock depth for the shot + transport. One representative shown (BOM: 3 per corner). ──
-    tfz = zc + CD_BOT / 2                                  # top-flange top surface
-    basex = inb - cin * 3                                  # base near the plate's outboard edge
-    padx = cx + cin * 8                                    # pad over the (inboard part of the) top flange
-    cby = ty + 33
-    P.append(draw.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
-    P.append(draw.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
-    P.append(draw.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
-    P.append(draw.ruby_cylinder(f"Cam-brake lever {tag}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
+    # ── SKATE + CAM RAIL-BRAKE — captured Ø32 rollers / Ø10 axles / Ø20 keepers / carriage plate +
+    # retainer bolts + cam-clamp (5128A63). SINGLE source shared with the Movement scene. ──
+    P.extend(corner_skate_parts(cx, zc, fz, cin, ty, f" {tag}"))
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the
     # muslin-clamp perp leg projects the other way (toward the pinhole), so nothing is drawn through the slides.
     # muslin-clamp perp leg projects the other way (toward the pinhole). Green Z / purple X ways, U-joint +
     # stubs + 4040N12 shaft support, 304 corner plate, and the frame-corner bolt are the SHARED assembly
-    # (corner_slide_parts) — the single source these + the Movement + whole-plane scenes all draw from.
-    fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
-    sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, ty)  # ty = FP_Y_PARK — slides/U-joint park with the carriage
+    # (corner_slide_parts) — the single source these + the Movement + whole-plane scenes all draw from
+    # (hoisted to the top of corner() so the TR saddle can cope to the input stub).
     P.append(emit_slide(f"Vertical Z slide rail (TILT, green) {tag}", sp["green"]))
     P.append(emit_slide(f"Horizontal X slide rail (SWING, purple) {tag}", sp["purple"]))
     P.append(emit_slide(f"U-joint (Belden SSNBUJ750x3/8KB, setscrew) {tag}", sp["ujoint"]))
@@ -443,10 +458,6 @@ def movement(corner="BL", two_way=False):
     # tilt. U-joint box = (cx-12, ty-4, fz-14, 24³) → centre = (cx, ty+8, fz-2).
     pivot = (cx, ty + 8, fz - 2)
     px, py, pz = pivot
-    chan_w = CW_BOT
-    inb = cx + cin * (chan_w / 2 + 14)                 # carriage line — inboard of the channel opening
-    rz = zc - CD_BOT / 2 + HB_T + 16                    # wheel-centre Z (web-vertical, both corners)
-    cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
     # Per Sheet 3 EACH corner carries BOTH cross-slides (green Z + purple X). The ACTIVE one (green for tilt,
     # purple for swing) is the base WAY the stack floats along; the OTHER rides the stack. Both come from the
     # SHARED corner_slide_parts (single source with corner() + the whole-plane scenes).
@@ -465,18 +476,21 @@ def movement(corner="BL", two_way=False):
         rail_len += dy_fwd + 40
     carr = []
     static_ruby = "\n".join(channel_v(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}", cin))
-    for ry in (ty + 8, ty + 48):
-        carr.append(draw.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 10, ry, rz, 16, 20, color=C_CAR, axis="x"))
-    carr.append(draw.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
+    # captured skate + carriage plate + axles + keepers + cam-brake — SINGLE source shared with corner()
+    carr.extend(corner_skate_parts(cx, zc, fz, cin, FP_Y, f" (Movement {corner})"))
     # the ACTIVE cross-slide way (fixed to the carriage); the stack floats a SMALL foreshortening along it
     carr.append(deploy_rail)
-    # FLOAT (the OTHER cross-slide + U-joint + its mounting hardware) — floats FORESHORTEN mm along the way
+    # FLOAT (the OTHER cross-slide + U-joint + the INPUT-side shaft hardware) — floats FORESHORTEN mm along
+    # the way. The OUTPUT stub is NOT here: it's rigidly bolted to the corner plate and the U-joint lets it
+    # bend WITH the panel, so it lives in PANEL (tilts about the U-joint), not Float (which stays axial).
+    # The fixed pivot hardware is GHOSTED (alpha) so the moving film plane reads as sweeping PAST a
+    # reference as it tilts — the solid-box joint cluster would otherwise look like a clash at angle.
+    GHOST = 0.3
     floatp = [
         perp_slide,
-        emit_slide(f"U-joint (Belden SSNBUJ750x3/8KB) (Movement {corner})", sp["ujoint"]),
-        emit_slide(f"Input stub 3/8 (X slide → U-joint) (Movement {corner})", sp["input_stub"]),
-        emit_slide(f"4040N12 304 shaft support (clamps stub → carrier) (Movement {corner})", sp["shaft_support"]),
-        emit_slide(f"Output stub 3/8 (U-joint → corner plate) (Movement {corner})", sp["output_stub"]),
+        emit_slide(f"U-joint (Belden SSNBUJ750x3/8KB) (Movement {corner})", sp["ujoint"], alpha=GHOST),
+        emit_slide(f"Input stub 3/8 (X slide → U-joint) (Movement {corner})", sp["input_stub"], alpha=GHOST),
+        emit_slide(f"4040N12 304 shaft support (clamps stub → carrier) (Movement {corner})", sp["shaft_support"], alpha=GHOST),
     ]
     # PANEL (corner plate + frame + ACM) — relative to the U-joint-centre pivot so it TILTS about the U-joint;
     # the 304 corner plate + frame bolt (shared parts, offset -pivot) live HERE so they stay bolted through the tilt.
@@ -490,6 +504,7 @@ def movement(corner="BL", two_way=False):
     vlbl = "left" if cin > 0 else "right"
     panel = [
         emit_slide(f"304 SS corner plate (Movement {corner})", sp["corner_plate"], -px, -py, -pz),
+        emit_slide(f"Output stub 3/8 (U-joint → corner plate) (Movement {corner})", sp["output_stub"], -px, -py, -pz),
         draw.ruby_box(f"ACM film-panel corner — partial ghost (Movement {corner})", ax0 - px, FP_Y - py, az0 - pz, plen, 4, plen, color=C_PANEL, alpha=0.30),
         draw.ruby_box(f"Film frame 2x2 6061 — {hlbl} upstand (Movement {corner})", ax0 - px, yperp - py, hz_up - pz, plen, AL, AT, color=C_FRAME),
         draw.ruby_box(f"Film frame 2x2 6061 — {hlbl} in-plane leg (Movement {corner})", ax0 - px, yin - py, hz_in - pz, plen, AT, AL, color=C_FRAME),
@@ -709,7 +724,7 @@ pltxt{mode}.layer = model.layers["{tag}"] rescue nil
 '''
 
 
-def film_plane_saddles(corners, skip=(), walls=(0, C_WID)):
+def film_plane_saddles(corners, skip=(), walls=(0, C_WID), stub_clear=None):
     """IBC-style wall-seat saddle at each of the film-plane rail ends (the `corners`
     {id:(x,z)} × near/far wall). Each = interior back-plate + horizontal seat + triangular
     gusset, THROUGH-BOLTED to an EXTERIOR plate (4-bolt) — dims from the IBC wall seats.
@@ -718,7 +733,10 @@ def film_plane_saddles(corners, skip=(), walls=(0, C_WID)):
     fp_combined_corner_plate). `walls` limits which wall ends get a saddle — the LEFT rails pass
     (0,) because the FAR end is anchored by the floor-to-ceiling pivot post (roof-mounted), not a
     wall saddle (a far saddle is redundant + collides with the pivot roof-mount plate).
-    Single-sourced — the film-plane focus model reuses it."""
+    Single-sourced — the film-plane focus model reuses it.
+    `stub_clear`=(ymax, zmax) copes the FAR seat's inboard-bottom arris clear of the swing-drive
+    input stub at that corner (TR): the seat is split into a full-thickness top flange (rail bearing
+    surface preserved) + a bottom web pulled outboard of the stub."""
     pw, pt = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T          # 150 plate, 8 thick
     proj, st = FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T       # 110 seat projection, 10 thick
     gh, wt, sw = 120, WALL_T, 24 + 24                    # gusset, wall, seat width
@@ -744,8 +762,18 @@ def film_plane_saddles(corners, skip=(), walls=(0, C_WID)):
                          x - pw / 2, by_in, plate_z0, pw, pt, plate_h, color=C_STEEL))
             parts.append(ruby_box(f"Saddle OUTSIDE plate {tag}",     # exterior plate carries only the 4 bolts → stays 150×150
                          x - pw / 2, by_out, z - pw / 2, pw, pt, pw, color=C_STEEL))
-            parts.append(ruby_box(f"Saddle seat {tag}",
-                         x - sw / 2, sy0, seat_top - st, sw, proj, st, color=C_STEEL))
+            if (not near) and stub_clear is not None:
+                ymax, zmax = stub_clear
+                zb = seat_top - st
+                ry = (ymax + 2.0) - sy0                 # inboard-edge cope depth (Y) — stub radius + 2mm
+                rz = (zmax + 2.0) - zb                  # bottom cope depth (Z)
+                parts.append(ruby_box(f"Saddle seat {tag} (bearing flange)",
+                             x - sw / 2, sy0, zb + rz, sw, proj, st - rz, color=C_STEEL))
+                parts.append(ruby_box(f"Saddle seat {tag} (web, coped for input stub)",
+                             x - sw / 2, sy0 + ry, zb, sw, proj - ry, rz, color=C_STEEL))
+            else:
+                parts.append(ruby_box(f"Saddle seat {tag}",
+                             x - sw / 2, sy0, seat_top - st, sw, proj, st, color=C_STEEL))
             # UPSTAND — vertical leg standing up from the seat at the plate's INBOARD face; the rail END butts
             # + bolts to it (inside-face bearing, matches the fp_combined_corner_plate beam upstand; welded to
             # the seat + back-plate). This is what makes the rail join the INSIDE face, not the outer edge.

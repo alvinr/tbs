@@ -65,9 +65,10 @@ RIBBON_SUP_YD  = [200, 450, 700, 950]           # welded cross-beam supports alo
 RIBBON_BEAM_X  = (ov.RWK_X_R - 40, ov.RWK_X_R)  # 4589-4629 — outer long beam span (the notched member)
 RIBBON_SLOT_X  = ov.PROC_TRAY_X_R + 12          # 4641 — drop lane in the tray-edge↔upright gap (X4629-4654,
 #   clear Z16-150), PAST the carriage travel (X≤4599); each corridor exit drops here, never over the tray.
-BLUE_TRUNK_HANDOFF_X = 4616                      # where the corridor blue trunk drops to meet the ribbon:
-#   ALIGNED with the brown P-02 drop X (both at the same distance from the pinhole).  The drop is at the
-#   corridor Yd (GAP_CORR_Y=1132), clear of the film-plane bottom rail (which runs at low Yd).  ribbon_run(1) picks up here.
+BLUE_TRUNK_HANDOFF_X = RIBBON_SLOT_X             # 4641 — drops in the tray-edge↔upright slot, PAST the tray
+#   edge (4629), like every other ribbon line (never over the open basin; was 4616, which dropped ~13mm
+#   inside the tray footprint).  The drop is at the corridor Yd (GAP_CORR_Y), clear of the film-plane bottom
+#   rail (low Yd).  ribbon_run(1) picks up here.
 BLUE_TRUNK_LANE_X = RIBBON_LANE_X[0] - (ov.PUMP_PIPE_OD + 5)   # 4477 — nudged +X toward the brown P-02 lane (X4503), min OD21 + 5mm gap
 
 def ribbon_run(i, corridor_pt, near_pt, up_yd=None, lane_x=None):

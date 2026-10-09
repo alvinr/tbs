@@ -31,6 +31,9 @@ file** — a release must not ship without a changelog entry:
 - Movement scene: regrouped the output stub into the tilting Panel (it bends with the panel through the U-joint), and ghosted the fixed pivot hardware (U-joint, input stub, shaft support) so the articulation reads cleanly instead of showing solid-box clashes at angle.
 - Re-sent + re-pushed all six affected models (film-plane-mechanism, overview, construction, walkway, water, lighttrap).
 
+### Water
+- Moved the blue supply trunk's drop to the ribbon slot (`BLUE_TRUNK_HANDOFF_X` → `RIBBON_SLOT_X` = 4641, past the tray edge) so it no longer drops over the open processing-tray basin — matching every other under-grate ribbon line. Clears both remaining pipe-vs-tray interferences (overview + water now read 0).
+
 ## [0.15] — 2026-10-08
 
 - **Overview collapsed to a thin aggregator (model refactor).** Shared Ruby-drawing infrastructure (primitives, 38-color palette, model metadata) was extracted to a neutral `tbs_draw.py`, and ~60 geometry builders moved from the overview into their owner sub-models (walkway, IBC, spray-bar, electrical, water, film-plane, light-trap). The overview is now ~13 container-level builders composing those sub-models, so each component lives in exactly one place and the overview can't drift from its parts. See [model-aggregation-plan.md](model-aggregation-plan.md).

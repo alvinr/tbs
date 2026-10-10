@@ -2281,14 +2281,14 @@ def draw_sheet9():
                            fill=False, ec=C_FRAME, lw=1.2, zorder=8))
     leader(ax, sx(CLAMP_X), sz(bz_top + 70), sx(CLAMP_X + 130), sz(bz_top + 200),
            "WHEEL-CARRIAGE CLAMP STATION\n(1/4\" SS top+bottom clamp plates — Sheet 10)",
-           fs=6.2, color=C_FRAME, font=FONT, bbox=LBL_BG, zorder=15)
+           fs=6.2, color=C_FRAME, font=FONT, zorder=15)
 
     # ── ball-joint mount at the centreline (top face, 4 self-tap screws) ───────
     ax.add_patch(Rectangle((sx(HALF) - sz(55), sz(bz_top)), sz(55), sz(60),
                            fill=False, ec=C_FRAME, lw=1.2, zorder=8))
-    leader(ax, sx(HALF), sz(bz_top + 60), sx(HALF - 620), sz(bz_top + 210),
+    leader(ax, sx(HALF), sz(bz_top + 60), sx(HALF - 880), sz(bz_top + 210),
            "BALL-JOINT MOUNT @ CL (beam centre)\nØ20 SS ball · 4× SS self-tap into 3mm top wall",
-           fs=6.2, color=C_FRAME, font=FONT, bbox=LBL_BG, zorder=15)
+           fs=6.2, color=C_FRAME, font=FONT, zorder=15)
 
     # ── symmetry / break at the centreline ────────────────────────────────────
     ax.plot([sx(HALF), sx(HALF)], [sz(bz_bot - 300), sz(bz_top + 240)],
@@ -2309,25 +2309,25 @@ def draw_sheet9():
     # ── dimensions ────────────────────────────────────────────────────────────
     # overall cut length (full span, broken)
     draw_dim_h(ax, sx(0), sx(HALF), sz(bz_top + 620), f"{SPAN:.0f}mm  (FULL BEAM CUT LENGTH — BROKEN AT CL)",
-               offset=0, fs=7.2, font=FONT, above=True)
+               offset=10, fs=7.2, font=FONT, above=True)
     # ball-joint at centreline
     draw_dim_h(ax, sx(0), sx(HALF), sz(bz_top + 470), f"{HALF:.1f}mm  (BALL-JOINT @ CL)",
-               offset=0, fs=6.5, font=FONT, above=True)
+               offset=10, fs=6.5, font=FONT, above=True)
     # first-nozzle offset from the datum end
     ax.plot([sx(FIRST), sx(FIRST)], [sz(nz - 55), sz(bz_bot - 320)], **WIT)
     ax.plot([sx(0), sx(0)], [sz(bz_bot - 65), sz(bz_bot - 320)], **WIT)
-    draw_dim_h(ax, sx(0), sx(FIRST), sz(bz_bot - 320), f"{FIRST:.1f}mm  (1ST NOZZLE)",
-               offset=0, fs=6.3, font=FONT, above=False)
+    draw_dim_h(ax, sx(0), sx(FIRST), sz(bz_bot - 280), f"{FIRST:.1f}mm  (1ST NOZZLE)",
+               offset=10, fs=6.3, font=FONT, above=False)
     # nozzle pitch — bracket over two pitches, TYP
     ax.plot([sx(FIRST + PITCH), sx(FIRST + PITCH)], [sz(nz - 55), sz(bz_bot - 470)], **WIT)
     ax.plot([sx(FIRST + 2 * PITCH), sx(FIRST + 2 * PITCH)], [sz(nz - 55), sz(bz_bot - 470)], **WIT)
-    draw_dim_h(ax, sx(FIRST + PITCH), sx(FIRST + 2 * PITCH), sz(bz_bot - 470),
-               f"{PITCH:.0f}mm  (NOZZLE PITCH — TYP ×{N})", offset=0, fs=6.5, font=FONT, above=False)
+    draw_dim_h(ax, sx(FIRST + PITCH), sx(FIRST + 2 * PITCH), sz(bz_bot - 370),
+               f"{PITCH:.0f}mm  (NOZZLE PITCH — TYP ×{N})", offset=10, fs=6.5, font=FONT, above=False)
     # feed-tee pitch — TYP
     ax.plot([sx(FEED_FIRST), sx(FEED_FIRST)], [sz(mz - POLY / 2 - 26), sz(bz_bot - 620)], **WIT)
     ax.plot([sx(FEED_FIRST + FEED_PITCH), sx(FEED_FIRST + FEED_PITCH)], [sz(mz - POLY / 2 - 26), sz(bz_bot - 620)], **WIT)
-    draw_dim_h(ax, sx(FEED_FIRST), sx(FEED_FIRST + FEED_PITCH), sz(bz_bot - 620),
-               f"{FEED_PITCH:.0f}mm  (FEED-TEE PITCH — TYP, {N_FEED} TEES)", offset=0, fs=6.5, font=FONT, above=False)
+    draw_dim_h(ax, sx(FEED_FIRST), sx(FEED_FIRST + FEED_PITCH), sz(bz_bot - 420),
+               f"{FEED_PITCH:.0f}mm  (FEED-TEE PITCH — TYP, {N_FEED} TEES)", offset=10, fs=6.5, font=FONT, above=False)
     # carriage-clamp station from datum
     ax.plot([sx(CLAMP_X), sx(CLAMP_X)], [sz(bz_top + 70), sz(bz_top + 330)], **WIT)
     draw_dim_h(ax, sx(0), sx(CLAMP_X), sz(bz_top + 330), f"{CLAMP_X:.1f}mm",
@@ -2344,8 +2344,8 @@ def draw_sheet9():
     draw_dim_h(axs, -BW / 2, BW / 2, BH / 2 + 7, f"{BW:.1f}mm", offset=0, fs=5.6, font=FONT, above=True)
     draw_dim_v(axs, -BW / 2 - 7, -BH / 2, BH / 2, f"{BH:.1f}mm", offset=0, fs=5.6, font=FONT)
     leader(axs, BW / 2 + POLY / 2, -BH / 2 + POLY / 2, BW / 2 + 2, BH / 2 + 4,
-           f"Ø{POLY:.0f} LDPE\nMANIFOLD", fs=5.2, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    leader(axs, -BW / 2 + BT, 0, -BW / 2 - 10, -BH / 2 - 10, f"t={BT:.3f}mm", fs=5.2, color=C_FRAME, font=FONT, bbox=LBL_BG)
+           f"Ø{POLY:.0f} LDPE\nMANIFOLD", fs=5.2, color=C_FRAME, font=FONT)
+    leader(axs, -BW / 2 + BT, 0, -BW / 2 - 10, -BH / 2 - 10, f"t={BT:.3f}mm", fs=5.2, color=C_FRAME, font=FONT)
     axs.text(0, BH / 2 + 13, "SECTION A-A", fontsize=6.4, fontweight="bold", ha="center", va="bottom", color=C_FRAME, **FONT)
 
     # ── datums & tolerances note block ────────────────────────────────────────
@@ -2362,7 +2362,7 @@ def draw_sheet9():
     ]
     axn = fig.add_axes([0.045, 0.045, 0.52, 0.20])
     axn.set_xlim(0, 100); axn.set_ylim(0, 100); axn.axis("off")
-    draw_notes(axn, notes, 2, 96, spacing=11, fs=6.6, font=FONT, width=96)
+    draw_notes(axn, notes, 60, 126, spacing=9, fs=6, font=FONT, width=46)
 
     # ── title block ───────────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.04])

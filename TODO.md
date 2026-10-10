@@ -19,25 +19,17 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 ## 🛠 Tooling / infra
 
 - [~] **Model-aggregation — Phases 0–3 DONE** (overview is now a thin aggregator; full history in [`model-aggregation-plan.md`](model-aggregation-plan.md)). Phase 3 (2026-10-10) added the `lint.py` ratchet gate `gate_overview_aggregation` locking overview to its sanctioned builder set, so it can never silently re-grow an owned builder and drift from its sub-model. **Remaining (optional polish, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as accepted (no sub-model home) — if a `context`/furniture owner is created, move them there and drop the allowlist entries (the ratchet flags the stale entries to keep the move honest).
-- [ ] **Label-overflow backlog — cross-generator `--overflow` sweep (2026-08-25).** New render-based
-  `tidy_labels.py --overflow` (measures each label's bbox vs the axes frame; skips tiny insets) swept all 41
-  generators clean (0 render errors) and found **49 genuinely off-frame labels** (one-sided ≥15%; ~163 sub-15%
-  are tight-bbox noise, ignore). **UNBLOCKED** (light-trap blueprint shipped); the owner-led diagram review is
-  complete (2026-09-30), so this is now background tooling hygiene — tackle opportunistically,
-  **one generator per tidy pass** (skill discipline —
-  render → crop-zoom → verify), priority by count/severity:
-  - **film_plane_mechanism** (10, worst +52%) — pre-existing overflow/crowding on Sheets **1–11** only (Sheet 2 section
-    titles ±19–20%, Sheet 1 "LEFT RAIL" +17%, Sheet 3/4 crowding, Sheet 6 +8%; `CARRIAGE_YD_CENTER` panel overflow).
-    The fab-blueprint round (2026-09-05, `filmplane-bp`) renumbered the set to **20 sheets** and left these untouched
-    (out of blueprint scope); the NEW Sheets **12–20 are already tidy-clean**. One tidy pass over 1–11 remains.
-  - **weight_analysis** (9, +35%) — Sheet 1 "Total / CG" stats boxes hang off the BOTTOM (P8 notes placement).
-  - **ibc_frame_drawing** (9, +19%) — Sheet 1 DATUMS + member-schedule table off left (P8).
-  - **shelf_diagram** (3, +33%), **joint_study** (4, +19%), then walkway/electrical/tray_redesign/corner_gimbal/
-    portrait_viz (1 ea, +15–26%).
-  - Re-run `tidy_labels.py --overflow src/generators/generate_*.py` after each pass to confirm the list shrinks.
+- [x] **Label-overflow sweep — RESOLVED 2026-10-10.** The old `--overflow` measured each label vs its
+  **axes data-box**, which over-reported badly: ~136 flags, but with `bbox_inches="tight"` (the house convention
+  on most sheets) the canvas expands to include any margin label, so nearly all were deliberate margin captions
+  that render fine. **Fixed the check to measure against the FIGURE CANVAS edge** (the real clip boundary) and
+  skip tight saves entirely — the only save that can cut a label. Genuine clips found + fixed: **ibc_frame Sheet 1**
+  (cut-list + datum/tolerance blocks off a full-bleed axis → widened the margin), **tray_slope + grp_cutplan**
+  (edge scale/coordinate labels → gave the saves `bbox_inches="tight"`). Diagram set now reports **zero genuine
+  canvas clips**. Remaining `--overflow` output is CROWDED advisories only (title-block labels deliberately close;
+  bbox-whitespace over-reporting on multi-line labels — confirm on crop-zoom, not gating).
   - ✅ **spray_bar Sheet 7 `+192%` off-left FIXED (2026-09-28)** — it was a hidden DUPLICATE beam-section label
-    on the nozzle panel (not the `CARRIAGE_YD_CENTER` hypothesis); dropped it (beam is called out on ax_cf +
-    dimensioned on ax_nz). This bullet stays only as the note that the anomaly is resolved; delete on next prune.
+    on the nozzle panel; dropped it (beam is called out on ax_cf + dimensioned on ax_nz).
 - [~] **Consolidated plywood cut-sheet generator — BUILT 2026-09-30, cut-optimized + published 2026-10-01.**
   `generate_plywood_cutsheets.py` + `plywood-cut-sheets.md`: a plywood registry (every `timber-ply` part, cut
   dims single-sourced from `tbs_constants` where geometry-driven, else spec/report literals; cost/SKU keyed to

@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 import tbs_draw as draw                          # shared drawing/material primitives
 
-from tbs_constants import PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R
+from tbs_constants import SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R
 
 TAGS = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "Labels"]
 
@@ -44,12 +44,13 @@ C_SS     = "#B8BCC4"   # 304 stainless RHS beam
 C_CLAMP  = "#C0C0C8"   # saddle / U-clamps
 C_BOLT   = "#80808A"   # axle + bolts
 
-# Beam / carriages / poly-pipe span the FULL TRAY width (matching the 2D diagram,
-# generate_spray_bar_diagram.py — PROC_TRAY_X±30), so the wheels reach the tray
-# edges. The NOZZLES stay in the print OPEN zone (PROC_OPEN_X). (Bugfix 2026-06-06:
-# the 3D beam previously used PROC_OPEN_X and fell 300mm short of the tray each side.)
-XL, XR = PROC_TRAY_X_L + 30, PROC_TRAY_X_R - 30          # beam span = tray width (200..4599)
-NXL, NXR = PROC_OPEN_X_L, PROC_OPEN_X_R                  # nozzle span = print open zone
+# Beam / carriages / poly-pipe AND the nozzles span the FULL TRAY width (matching the
+# 2D set, generate_spray_bar_diagram.py — Sheet 9), so coverage is edge-to-edge: the
+# 90° down-jets fire down onto the print and the overhead grate is no obstruction.
+# (2026-06-06: fixed the beam falling 300mm short each side; 2026-10-10: the nozzles
+# followed the beam to full width — they had still been restricted to the old open zone.)
+XL, XR = PROC_TRAY_X_L + 30, PROC_TRAY_X_R - 30          # beam span = tray width (310..4599)
+NXL, NXR = XL, XR                                        # nozzle span = full beam width
 S = SPRAY_BAR_BEAM                                       # 40 (Yd width)
 ZB, ZT = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP               # 29 .. 54 (@ low corner)
 

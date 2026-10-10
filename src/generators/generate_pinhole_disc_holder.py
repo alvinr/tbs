@@ -23,7 +23,7 @@ from tbs_constants import (
     DIAGRAMS_DIR, DIAGRAM_DPI,
     PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_TAPER_BORE, PDH_DISC_OD, PDH_DISC_T,
     PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T,
-    PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D,
+    PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D, PDH_CARRIER_BORE,
     PDH_MOUNT_BC as BOLT_BC, PDH_MOUNT_D as BOLT_D, PDH_MOUNT_N as BOLT_N,
     PDH_SEAL_D as SEAL_D,
     PDH_ADAPT_OD, PDH_ADAPT_T, PDH_ADAPT_APT, PDH_WALL_APT,
@@ -123,7 +123,7 @@ def draw_sheet2():
     fig.subplots_adjust(bottom=0.20, wspace=0.06, left=0.02, right=0.98, top=0.98)
     axp, axr, axd = axes
 
-    # ── Panel A: front plate (ICP-01) round Ø180, ~1:1.3 ──
+    # ── Panel A: front plate (ICP-01) round Ø180, ~1.15:1 ──
     S = 1.15
     def s(mm): return mm / S
     axp.set_xlim(0, 300); axp.set_ylim(0, 330)
@@ -174,11 +174,13 @@ def draw_sheet2():
     axd.set_xlim(0, 220); axd.set_ylim(0, 300)
     dx, dy = 110, 175
     draw_circle(axd, dx, dy, s3(PDH_DISC_OD / 2), lw=LW_THICK, color=C_OUT, fill=True, fc='#EDEDED')
+    draw_circle(axd, dx, dy, s3(PDH_CARRIER_BORE / 2), lw=LW_MED, color=C_OUT)   # Ø6 light bore THRU — shim bonds over it
     draw_circle(axd, dx, dy, 4.0, lw=0.8, color=C_OUT, fill=True, fc=C_PIN)   # pinhole (enlarged to read)
     draw_cl(axd, dx, dy, s3(PDH_DISC_OD / 2) * 1.15)
     draw_dim_v(axd, dx + s3(PDH_DISC_OD / 2) + 14, dy - s3(PDH_DISC_OD / 2), dy + s3(PDH_DISC_OD / 2),
                f'Ø{PDH_DISC_OD}', right=True, fs=5, offset=12)
-    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 shim over a central bore)', fs=5, color=C_DIM, arrow_style='->', ha='left')
+    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 shim over the bore)', fs=5, color=C_DIM, arrow_style='->', ha='left')
+    leader(axd, dx - s3(PDH_CARRIER_BORE / 2), dy, dx - s3(PDH_DISC_OD * 0.42), dy + 96, f'Ø{PDH_CARRIER_BORE} LIGHT BORE THRU\n(carrier; shim bonds over)', fs=5, color=C_DIM, arrow_style='->', ha='left')
     axd.text(dx, dy - s3(PDH_DISC_OD / 2) - 70,
              f'PANEL C — ICP-02 CARRIER (2:1) · 6061-T6 Ø{PDH_DISC_OD} × {PDH_DISC_T:.0f}mm\nInterchangeable: Ø2.17 (std) · Ø1.5 (sharper) · Ø3.0 (brighter) · or a Copal/Compur lens board (Sheet 4)',
              ha='center', fontsize=5, style='italic', color='#333')
@@ -186,7 +188,7 @@ def draw_sheet2():
     tb = fig.add_axes([0.03, 0.02, 0.94, 0.13]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
     title_block(tb, "SHEET 2 OF 4", drawing_title="PINHOLE DISC HOLDER — FABRICATION",
                 subtitle="Front plate · retaining ring · interchangeable disc",
-                scale_note="A 1:3 / B 1:1.5 / C 2:1", doc_id="TBS-PDH-02", height=0.82)
+                scale_note="A ~1.15:1 / B 1:1.5 / C 2:1", doc_id="TBS-PDH-02", height=0.82)
 
     out = os.path.join(DIAGRAMS_DIR, 'pinhole-disc-holder-sheet2.png')
     fig.savefig(out, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')

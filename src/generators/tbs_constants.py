@@ -278,6 +278,7 @@ PDH_TS_N          = 4     # 4 thumb screws hold the ring down
 PDH_TS_PCD        = 100   # thumb-screw bolt circle — taps 9mm clear of the Ø82 counterbore wall (≥1.5×M6 edge distance)
 PDH_TS_D          = 6     # M6 knurled thumb screws (clamp force for a lens board)
 PDH_PINHOLE_D     = 2.17  # standard pinhole Ø (Rayleigh optimum at the 2362mm focal length, f/1088)
+PDH_CARRIER_BORE  = 6     # Ø light bore THRU the 6061 carrier — the SS-302 pinhole shim bonds over it; sized well clear of the Ø2.17 pinhole cone over the 5mm carrier, inside the shim footprint
 # Wall-frame adapter — the flat steel plate welded over the corrugated end wall; the Ø180 front plate
 # bolts to it (4× M6 @ PDH_MOUNT_BC). It presents the machined flat datum; every alignment starts here.
 PDH_ADAPT_OD      = 240   # adapter plate Ø (S275 steel, welded to the wall crests)

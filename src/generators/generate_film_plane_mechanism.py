@@ -2332,6 +2332,7 @@ def sheet18():
     ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
         "WALL-SEAT SADDLE (ICP-11) — 4 OFF (TR-near + TR-far right seats; BL-near + TL-near left drop-in seats):",
+        "GENERAL TOL: linear ±1.0mm; cut-piece dims ±1.0mm; welds per AWS D1.1 (5mm fillet UNO); mount-hole position ±0.5mm.",
         f"1. A36 MILD STEEL (structural, behind the wall — not the wet-zone stainless). Back-plate {pw:.0f}×{bph}mm + "
         f"exterior spreader {pw:.0f}×{pw:.0f}mm + gusset {proj}×{gh}mm all in 8mm; seat {pw:.0f}×{proj}mm in 10mm.",
         "2. Laser/plasma cut to the piece dims (all 4 saddles + the 2 far-left flange-brackets nest in one 8mm sheet; "
@@ -2482,6 +2483,7 @@ def sheet16():
     ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
         "304 SS CORNER ANGLE — 4 OFF (L/R mirror pair: BL/TL handed opposite BR/TR):",
+        "CLEARANCE DRILLS (close fit UNO): J5 M6→Ø6.5; J4 keyed-stub bore per the McMaster 4040N12 shaft clamp.",
         f"1. OFF-THE-SHELF 4×4×¼in (leg {leg:.1f} × {t}mm) 304 equal-leg ANGLE, cut to {L:.1f}mm (6in) + drilled — "
         "NO forming (replaced the press-brake 6×8 plate 2026-09-05; stock angle = same 4in legs, cheaper).",
         "2. STAINLESS + NOT expendable (the 6061 perimeter angle stays the expendable part): the U-joint funnels the "
@@ -2586,6 +2588,7 @@ def sheet15():
     ax_n = fig.add_axes([0.53, 0.075, 0.42, 0.20]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
         "CROSS-SLIDE STACK — 1 per corner (8 bars total):",
+        "CLEARANCE DRILLS (bar end bolt-holes, close fit UNO): M6→Ø6.5; mount-hole position ±0.3mm.",
         f"1. 304 SS flat bar ¼×1½in ({XSLIDE_BAR_T}×{XSLIDE_BAR_W}mm): 4× {XSLIDE_Z_BAR_LEN}mm Z (tilt) + 4× {XSLIDE_X_BAR_LEN}mm X "
         "(swing). ≈2.84m cut → 2× 8 ft lengths (Metal Supermarkets $134.73/8ft).",
         "2. MOUNT DEEP — the 38.1mm bar face runs in the gravity/load direction (Sheet 10 load case: SF≈10 deep vs "
@@ -2676,6 +2679,7 @@ def sheet14():
     ax_n = fig.add_axes([0.05, 0.075, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
         "ACETAL SKATE — 4 OFF (one per corner), each a 4-wheel skate on a fab carriage plate:",
+        f"CLEARANCE DRILLS (carriage plate, close fit UNO): M8→Ø9, M6→Ø6.5, M4→Ø4.5; axle bores Ø{SKATE_AXLE_OD} H9.",
         f"1. LOAD rollers — 2/skate, Ø{SKATE_ROLLER_OD:.2f} ({SKATE_ROLLER_W}mm wide) cut from Delrin rod (McMaster 8576K23), "
         f"Ø{SKATE_AXLE_OD} bore. Gravity-seated on the U-channel bottom flange — they carry the corner weight.",
         f"2. KEEPER rollers — 2/skate, Ø{SKATE_KEEPER_OD:.2f} ({SKATE_ROLLER_W}mm wide) Delrin (McMaster 8497K276), Ø{SKATE_AXLE_OD} bore. "
@@ -2762,6 +2766,7 @@ def sheet13():
     ax_n = fig.add_axes([0.06, 0.085, 0.88, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
         "DEPTH RAIL — 4 OFF (one per corner):",
+        "GENERAL TOL: cut length ±1.5mm; U-channel section per the Grainger 795M51 extrusion; drilled end/skate features ±0.3mm.",
         f"1. Section: 3×1½in 6061-T6 aluminum U-channel — web {FP_RAIL_WEB}mm × flange {FP_RAIL_FLANGE}mm × "
         f"{FP_RAIL_WALL_T}mm (0.2in) wall. Grainger 795M51, purchased in {FP_RAIL_STOCK_LEN}mm (8 ft) sticks.",
         f"2. Cut length {C_WID}mm — spans wall-to-wall (Yd0 → C_WID); ONE continuous piece per rail (the skate "

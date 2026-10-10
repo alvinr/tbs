@@ -45,6 +45,12 @@ file** — a release must not ship without a changelog entry:
 - IBC frame Sheet 1: widened the right margin so the member cut-list and datum/tolerance reference blocks seat fully inside the frame instead of clipping off the edge.
 - Tray-slope + GRP cut-plan: gave their saves `bbox_inches="tight"` (matching the house convention) so the edge-most scale/coordinate labels can no longer be clipped by the canvas. Diagram set now shows zero genuine canvas clips.
 
+### Blueprint polish (all-systems audit follow-ups)
+- Walkway routing-sections: fixed the stale "SHEET N OF 5" denominator (the set has 6 sheets) → "OF 6" on sheets 1–5.
+- Pinhole disc/holder Sheet 2: dimensioned the carrier's Ø6 light bore (the SS-302 pinhole shim bonds over it — new `PDH_CARRIER_BORE` constant); corrected Panel A's scale note ("1:3" → "~1.15:1" to match the drawn scale).
+- Pinhole-wall elevation: fixed a "Conatiner" typo.
+- Film-plane fab sheets: added a general-tolerance note to the depth-rail (Sheet 13) and wall-seat saddle (Sheet 18) sheets (they sat outside the Sheet-9 corner-tolerance scheme), and a clearance-drill convention note to the skate / cross-slide / corner-angle sheets (14/15/16) so the drilling layouts are self-contained.
+
 ### Processing tray + spray bar — fabrication blueprints
 - Closed the one open blueprint gap found in the all-systems readiness audit: added three fully-dimensioned, monochrome fab sheets to the spray-bar set (now 11 sheets), each with a datum/tolerance block — **Sheet 9** spray-beam + manifold full-length station layout, **Sheet 10** wheel-carriage plate (5mm 6061-T6, notch + 12-hole drilling), **Sheet 11** processing-tray pan (304 SS 1.5mm, 2-panel, rim fold + pressed sump + seam-bolt pattern). The three fabricated parts now each have a shop-ready drawing.
 - Reconciled the stale fabrication numbers the 2026-08-11 left-rail widening (FP_X_L 150→260) never cascaded into prose/parts: nozzle count 44→43, beam span 4,399→4,289mm, panel 2,175→2,195mm, sump 150→180mm, plus the matching stale inline comments in `tbs_constants.py`. The constants were already correct; the prose/parts and the new sheets now agree.

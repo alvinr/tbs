@@ -214,7 +214,7 @@ def sheet1():
     draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 6.6, fs=6.2,
                font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)
 
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — B-B NEAR-END RIBBON")
 
@@ -318,7 +318,7 @@ def sheet2():
     draw_notes(ax, notes, X_LO + 8, Z_HI - 66, 6.6, fs=6.2,
                font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)
 
-    title_block(ax, "SHEET 2 OF 5",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — C-C MIDWAY")
 
@@ -442,7 +442,7 @@ def sheet3():
     draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 7.6, fs=6.2,
                font=FONT, width=285, wrap=72, border_color=C_DIM, border_lw=0.7)
 
-    title_block(ax, "SHEET 3 OF 5",
+    title_block(ax, "SHEET 3 OF 6",
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — D-D NEAR CANTILEVER")
 
@@ -529,7 +529,7 @@ def sheet4():
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 15, 13.0, fs=6.0,
                font=FONT, width=500, wrap=76, border_color=C_DIM, border_lw=0.7)
-    title_block(ax, "SHEET 4 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
+    title_block(ax, "SHEET 4 OF 6", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTER")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")
     fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
@@ -598,7 +598,7 @@ def sheet5():
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 7.4, fs=6.0,
                font=FONT, width=280, wrap=72, border_color=C_DIM, border_lw=0.7)
-    title_block(ax, "SHEET 5 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
+    title_block(ax, "SHEET 5 OF 6", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — F-F FAR CANTILEVER")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet5.png")
     fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)

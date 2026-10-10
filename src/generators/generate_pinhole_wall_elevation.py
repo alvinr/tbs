@@ -604,7 +604,7 @@ lx0 = C_LEN + 45
 
 # Pinhole height
 draw_dim_v(ax, lx0, sz(0), sz(PH_H),
-           f"{PH_H}mm\nConatiner floor to Pinhole", offset=120, fs=5, right=True)
+           f"{PH_H}mm\nContainer floor to Pinhole", offset=120, fs=5, right=True)
 
 # ── Horizontal dims below floor ─────────────────────────────────────────────
 row1_z = -60     # first dim row, 60mm below floor

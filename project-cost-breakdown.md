@@ -242,7 +242,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Pump flexible connections (braided flex both ports × 5 pumps + 18 barb couplings + 18 SS clamps) | $55 | $55 |
 | Pipe (PVC Sch-40 — spray bar + 1"/½" runs) | $84 | $84 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,473 | $2,121 |
-| Spray bar assembly (gantry: beam, LDPE pipe, 44 nozzles, single center feed, 4 wheels, ball joint, arm, hose) | $587 | $599 |
+| Spray bar assembly (gantry: beam, LDPE pipe, 43 nozzles, single center feed, 4 wheels, ball joint, arm, hose) | $587 | $599 |
 | Electrical (wiring only — fuse block in Electrical Report) | $31 | $31 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $257 | $257 |
 | **Water system total** | **$6,875** | **$8,166** |

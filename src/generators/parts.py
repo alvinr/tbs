@@ -411,7 +411,7 @@ PARTS: list[Part] = [
          "ibc-frame", 1, "lot", 30, 50, "Hardware store", spec="Anti-corrosion coating"),
     # — tray (processing-tray-and-spray-bar §6.1) — itemized, sums to costing tray (1,300–2,015) —
     Part("tray-ss-sheet", "304 SS sheet, 16-gauge (1.5mm), 2B mill finish", "stainless-sheet",
-         "tray", 2, "ea", 305, 425, "Online Metals", spec="2,175 × 2,200mm panels. 2B mill finish (dropped from #4 brushed 2026-08-02 — the brush is a cosmetic upcharge, unneeded for a drain pan; ~15% est saving vs #4, keeps 16-ga rigidity + 304). Firm at a 2B quote. See tray-research.md."),
+         "tray", 2, "ea", 305, 425, "Online Metals", spec="2,195 × 2,200mm panels. 2B mill finish (dropped from #4 brushed 2026-08-02 — the brush is a cosmetic upcharge, unneeded for a drain pan; ~15% est saving vs #4, keeps 16-ga rigidity + 304). Firm at a 2B quote. See tray-research.md."),
     Part("tray-fabrication", "Fabrication (cut, brake, weld, press sump)", "fabrication-labor",
          "tray", 1, "lot", 450, 850, "local sheet metal", spec="Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well"),
     Part("tray-hdpe-shim", "HDPE sheet, laminated to 1-1/4\" (slope shims)", "plastics-sheet",
@@ -439,7 +439,7 @@ PARTS: list[Part] = [
     Part("spray-al-shs", '304 SS square tube 1½×1½×0.062in, single 17ft4in *', "steel-structural",
          "spray", 1, "ea", 183.00, 183.00, "Metals Depot",
          url="https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube",
-         spec="1½×1½×0.062in (38×38×1.6mm) 304-SS SQUARE tube. SINGLE 17ft4in (5,283mm) length spans the full-width 4,399mm beam with margin — NO butt weld. The 1½in square depth (up from the old 40×25) holds the full-width span to ~11mm wet sag (L/395), flattened by ~12mm pre-camber; wall barely affects sag (self-weight-dominated). Metals Depot $183 confirmed 2026-08-03. (Metric 40×25/40×40 nominals are NOT stock — see the beam re-source TODO.)",
+         spec="1½×1½×0.062in (38×38×1.6mm) 304-SS SQUARE tube. SINGLE 17ft4in (5,283mm) length spans the full-width 4,289mm beam with margin — NO butt weld. The 1½in square depth (up from the old 40×25) holds the full-width span to ~11mm wet sag (L/395), flattened by ~12mm pre-camber; wall barely affects sag (self-weight-dominated). Metals Depot $183 confirmed 2026-08-03. (Metric 40×25/40×40 nominals are NOT stock — see the beam re-source TODO.)",
          note="* pre-camber ~12mm up at mid-span so it deflects flat under the wet load (SS beam ~1.9 kg/m; raw wet sag ~L/395)",
          dims="38×38×1.6", modeled_const="SPRAY_BAR_BEAM_W/SPRAY_BAR_BEAM_H"),
     Part("spray-al-plate", '6061-T6 AL plate 3/16" (5mm)', "aluminum",
@@ -447,7 +447,7 @@ PARTS: list[Part] = [
     Part("spray-ldpe-pipe", '3/4" LDPE irrigation poly pipe, 100 ft', "plumbing-fittings",
          "spray", 1, "100ft roll", 31.24, 31.24, "DripDepot", part_no="3552", url="https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet", spec="Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾\" poly tubing (0.820\" ID × 0.940\" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28."),
     Part("spray-nozzles", "90° spray jets, barbed", "plumbing-fittings",
-         "spray", 5, "10-pack", 3.47, 3.47, "Home Depot", part_no="110B", url="https://www.homedepot.com/p/302581648", spec="DIG 110B 90° spray jets, 10-pack ×5 = 50 (44 used, 6 spare); side-tapped into the poly manifold, spray straight down. Nozzles now run the FULL beam width (4,399mm) — 90° down-jets clear the overhead grate, so no reason to stop at the open zone. Pitch 100mm → 44 jets edge-to-edge — see processing-tray §3.9."),
+         "spray", 5, "10-pack", 3.47, 3.47, "Home Depot", part_no="110B", url="https://www.homedepot.com/p/302581648", spec="DIG 110B 90° spray jets, 10-pack ×5 = 50 (43 used, 7 spare); side-tapped into the poly manifold, spray straight down. Nozzles now run the FULL beam width (4,289mm) — 90° down-jets clear the overhead grate, so no reason to stop at the open zone. Pitch 100mm → 43 jets edge-to-edge — see processing-tray §3.9."),
     # spray-manifold + spray-feed-tube + spray-barbed-feed RETIRED 2026-07-28 (— Option 1,
     # single center feed). The ¾" side manifold (ID ~20mm) is hugely over-bored for 3.5 GPM feeding
     # 39 small jets — pressure is uniform end-to-end (~0.1 PSI drop over 3.86m) from a single center

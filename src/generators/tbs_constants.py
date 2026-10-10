@@ -944,9 +944,9 @@ PANEL_FRAME_YD_N   = CORRIDOR_YD_NEAR  # 1046 — near corridor upright — rese
 PANEL_FRAME_YD_F   = CORRIDOR_YD_FAR   # 1316 — far corridor upright — reserved (alias; code uses CORRIDOR_YD_FAR)
 
 # ── Processing tray — permanently installed in optical zone (rev 5) ──────────
-PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev6: was 645]
+PROC_TRAY_X_L  = FP_X_L + 20    # = 280mm — 20mm clearance from left rail [was 170 pre-260 left rail]
 PROC_TRAY_X_R  = FP_X_R - 20    # = 4629mm — 20mm clearance from right rail
-PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 4459mm [rev6: was 3984]
+PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 4349mm [was 4459 pre-260 left rail]
 PROC_TRAY_D    = 2200            # depth in Y direction (mm)
 PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pinhole wall
 PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2280mm
@@ -1259,9 +1259,9 @@ WALKWAY_MAX_OVERHANG  = 100             # max grate cantilever past an end brack
 _NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
 _CANT0 = _NX0 + CONTAINER_RIB_SPACING // 2             # first cantilever station ≈ 698
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
-SPRAY_BEAM_X_L  = PROC_TRAY_X_L + 30                    # = 200mm — beam left end (30mm off the tray rim)
+SPRAY_BEAM_X_L  = PROC_TRAY_X_L + 30                    # = 310mm — beam left end (30mm off the tray rim)
 SPRAY_BEAM_X_R  = PROC_TRAY_X_R - 30                    # = 4599mm — beam right end
-SPRAY_BEAM_SPAN = SPRAY_BEAM_X_R - SPRAY_BEAM_X_L       # = 4399mm — spray beam runs the FULL tray width; nozzles span it end-to-end (90° down-jets clear the overhead grate)
+SPRAY_BEAM_SPAN = SPRAY_BEAM_X_R - SPRAY_BEAM_X_L       # = 4289mm — spray beam runs the FULL tray width; nozzles span it end-to-end (90° down-jets clear the overhead grate)
 WALKWAY_NEAR_WIDE_X_L = _CANT0 + CONTAINER_RIB_SPACING - WALKWAY_MAX_OVERHANG      # 1055 = cantilever 1155 − 100
 WALKWAY_NEAR_WIDE_X_R = _CANT0 + 5 * CONTAINER_RIB_SPACING + WALKWAY_MAX_OVERHANG  # 3083 = cantilever 2983 + 100 (rev 2026-07-23b: +2nd rib toward the IBC)
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
@@ -1357,7 +1357,7 @@ PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_Y
                                                # = 6.80 m² open processing area
 
 # ── Spray bar — gantry design: full-width 1½in-square beam (rev 11) ─────────
-# The beam runs the FULL tray width (SPRAY_BEAM_X_L..X_R, 4,399mm) so its 90°
+# The beam runs the FULL tray width (SPRAY_BEAM_X_L..X_R, 4,289mm) so its 90°
 # down-jet nozzles cover the print edge-to-edge; wheel carriages roll on the tray
 # floor beneath the walkway grating.  Section is 1½×1½×0.062in 304-SS SQUARE tube
 # — the depth needed so the full-width span sags only ~11mm (L/395, flattened by
@@ -1365,9 +1365,9 @@ PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_Y
 # side-mounted on the beam's inboard face with the barbed 90° down-jets tapping it.
 # Ø32 nylon wheels keep the carriage low.  Beam-top-vs-walkway-arm clearance is
 # resolved by the Yd-only tray slope (see spray-tray-redesign-plan.md / Commit B).
-SPRAY_BAR_SPAN       = SPRAY_BEAM_SPAN  # nozzle span = full beam width (4,399mm); 90° down-jets fire down onto the print, so the overhead grate is no obstruction
+SPRAY_BAR_SPAN       = SPRAY_BEAM_SPAN  # nozzle span = full beam width (4,289mm); 90° down-jets fire down onto the print, so the overhead grate is no obstruction
 SPRAY_BAR_BEAM_W     = 38.1        # beam footprint in Yd (mm) — 1½×1½×0.062in 304-SS SQUARE tube
-SPRAY_BAR_BEAM_H     = 38.1        # beam HEIGHT in Z (mm) — 1½in square; deep enough that the full-width 4,399mm span sags only ~11mm (L/395), flattened by ~12mm pre-camber
+SPRAY_BAR_BEAM_H     = 38.1        # beam HEIGHT in Z (mm) — 1½in square; deep enough that the full-width 4,289mm span sags only ~11mm (L/395), flattened by ~12mm pre-camber
 SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias → the square section (38.1)
 SPRAY_BAR_BEAM_T     = 1.575       # wall thickness (mm) — 0.062in; single 17ft4in Metals Depot stick (no butt weld); wall barely affects sag (self-weight-dominated)
 SPRAY_BAR_BORE       = SPRAY_BAR_BEAM_W - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore (poly no longer housed here)
@@ -1396,7 +1396,7 @@ SPRAY_BAR_Z_TOP      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE  # = 54mm
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
 SPRAY_BAR_HOLE_DIA   = 8           # nozzle barb bore (mm) — side-tap into the poly manifold (was a beam-wall through-hole)
 SPRAY_BAR_NOZZLE_PITCH = 100       # nozzle center-to-center pitch along the beam (mm) — 90° down-jets: a 90° cone at the ~50mm nozzle height gives a ~100mm footprint, so 100mm pitch = edge-to-edge along-beam coverage (was 150 for 180° flat-fans)
-SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 44 @ 100mm (full beam width)
+SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 43 @ 100mm (full 4,289mm beam width)
 SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm)
 SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-05b to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner

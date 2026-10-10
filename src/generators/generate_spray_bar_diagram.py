@@ -13,7 +13,9 @@ Sheet 5 — Detail C — wheel attachment (section along axle, 2:1)
 Sheet 6 — Detail D — wheel attachment plan (X-Yd, looking down)
 
 Output:
-  diagrams/spray-bar-sheet1.png … spray-bar-sheet6.png
+  diagrams/spray-bar-sheet1.png … spray-bar-sheet8.png
+  Fab sheets: spray-bar-sheet9.png (beam+manifold layout), spray-bar-sheet10.png
+  (wheel-carriage plate), spray-bar-sheet11.png (processing-tray pan)
 """
 
 import os
@@ -24,7 +26,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle, Circle, Wedge, Polygon
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, SPRAY_BEAM_SPAN, BV05_X, BV05_Z, SPRAY_BAR_SLIT_W, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, SPRAY_BEAM_SPAN, BV05_X, BV05_Z, SPRAY_BAR_SLIT_W, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_GUTTER_W, PROC_TRAY_SHIM_N, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import DIAGRAM_DPI
@@ -76,7 +78,7 @@ POLY_ID = SPRAY_BAR_POLY_ID              # 19
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
 C_SS   = "#B8BCC4"                        # 304 stainless RHS fill (cooler than the old alu blue)
-N_NOZZLES = SPRAY_BAR_N_NOZZLES   # 90° down-jets (=44; tbs_constants computes from full beam span / 100mm pitch)
+N_NOZZLES = SPRAY_BAR_N_NOZZLES   # 90° down-jets (=43; tbs_constants computes from full beam span / 100mm pitch)
 NOZZLE_BODY_W = 10
 NOZZLE_BODY_H = 6
 C_NOZZLE = "#3B7A3B"
@@ -102,7 +104,36 @@ POLE_X = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
 SLIT_WIDTH = SPRAY_BAR_SLIT_W
 CARRIAGE_YD_CENTER = 220
 
-TOTAL_SHEETS = 8
+TOTAL_SHEETS = 11
+
+# ── Fab sheets 9–11 geometry (see draw_sheet9/10/11) ─────────────────────────
+WIT = dict(color="#AEAEAE", lw=0.5, ls=(0, (1, 3)), zorder=4)   # faint witness line
+
+# Sheet 10 — wheel-carriage plate (plan: horizontal = Yd 0..L, vertical = X 0..W)
+PL_L, PL_W, PL_T = 280.0, 60.0, 5.0            # blank 280×60×5 6061-T6 (report §3.6.1)
+WH_SP = SPRAY_BAR_WHEEL_SP                      # 200 — wheel axle CL spacing (Yd)
+WH_D  = SPRAY_BAR_WHEEL_DIA                     # 32 — wheel Ø (phantom ref)
+YC    = PL_L / 2                                # 140 — plate / beam centerline (Yd)
+WH1   = YC - WH_SP / 2                          # 40 — near wheel axle CL
+WH2   = YC + WH_SP / 2                          # 240 — far wheel axle CL
+NOTCH_D = 30.0                                 # notch depth into the plate (mm) — beam seats here
+NL    = YC - SPRAY_BAR_BEAM_W / 2               # 120.95 — notch near edge
+NR    = YC + SPRAY_BAR_BEAM_W / 2               # 159.05 — notch far edge
+HOLE_D = 5.5                                    # Ø5.5 CLR (M5)
+HR = HOLE_D / 2
+SADDLE_BOLT_SP = 22.0                           # Yd straddle of a saddle's 2 feet  # confirm vs Boxonly saddle clamp
+SADDLE_X1, SADDLE_X2 = 15.0, 45.0               # two saddles per axle, X stations  # confirm vs Boxonly saddle
+CLAMP_OFFSET = 12.0                             # clamp-bolt Yd offset outboard of the notch edge
+CLAMP_X1, CLAMP_X2 = 15.0, 45.0                 # clamp bolts at these X stations
+SADDLE = [(wy + s, xx) for wy in (WH1, WH2) for xx in (SADDLE_X1, SADDLE_X2)
+          for s in (-SADDLE_BOLT_SP / 2, SADDLE_BOLT_SP / 2)]
+CLAMP  = [(cy, xx) for cy in (NL - CLAMP_OFFSET, NR + CLAMP_OFFSET) for xx in (CLAMP_X1, CLAMP_X2)]
+
+# Sheet 11 — tray-pan seam-bolt pattern (12 bolts, 110mm end margin, 180mm pitch
+# over the 2200mm center seam: 110 + 11×180 = 2090, far margin 2200−2090 = 110)
+SEAM_LAP, SEAM_N_BOLTS = 40, 12
+SEAM_BOLT_MARGIN, SEAM_BOLT_PITCH = 110, 180
+PANEL_W = (PROC_TRAY_W + SEAM_LAP) / 2.0        # each panel incl. lap = 2194.5mm
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -2178,6 +2209,432 @@ def _save(fig, stem):
 # Main
 # ═════════════════════════════════════════════════════════════════════════════
 
+def draw_sheet9():
+    # ── part data (all from tbs_constants; local fab choices flagged) ──────────
+    SPAN  = SPRAY_BEAM_SPAN                 # 4289 — beam cut length
+    N     = SPRAY_BAR_N_NOZZLES             # 43 nozzle saddle-tees
+    PITCH = SPRAY_BAR_NOZZLE_PITCH          # 100 — nozzle pitch
+    FIRST = (SPAN - (N - 1) * PITCH) / 2    # 44.5 — first-nozzle offset from each beam end
+    HALF  = SPAN / 2                        # 2144.5 — centerline
+    BW, BH, BT = SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T
+    POLY  = SPRAY_BAR_POLY_OD               # 25 — manifold OD
+    N_FEED     = 7                          # feed tees (report §3.3)
+    FEED_PITCH = 550                        # LOCAL CHOICE: 7 tees over the span ≈ 550mm pitch
+    FEED_FIRST = HALF - 3 * FEED_PITCH      # 494.5 — first feed tee from the left end
+    CLAMP_X    = FIRST + 0.5 * PITCH        # carriage-clamp station ≈ 94.5 from end (straddles near end)
+
+    # split scale (long member): 1:11 horizontal, mild vertical exaggeration for the callout lanes
+    SC_H, SC_V = 11.0, 8.0
+    def sx(mm): return mm / SC_H
+    def sz(mm): return mm / SC_V
+
+    fig = plt.figure(figsize=(15, 9))
+    fig.patch.set_facecolor(C_BG)
+    ax = fig.add_axes([0.04, 0.30, 0.66, 0.64])
+    ax.set_facecolor(C_BG)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    x0, x1 = sx(-FIRST - 130), sx(HALF + 110)
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(sz(-760), sz(720))
+
+    # beam datum centre-line (Z of beam mid)
+    bz_mid = 0.0
+    bz_top = bz_mid + BH / 2
+    bz_bot = bz_mid - BH / 2
+
+    # ── beam side elevation (left end 0 → centreline HALF) ────────────────────
+    ax.add_patch(Rectangle((sx(0), sz(bz_bot)), sx(HALF) - sx(0), sz(bz_top) - sz(bz_bot),
+                           fill=False, ec=C_FRAME, lw=1.4, zorder=6))
+    # end cap at the left end (welded/plug)
+    ax.add_patch(Rectangle((sx(-6), sz(bz_bot)), sx(6) - sx(0) + sx(0), sz(bz_top) - sz(bz_bot),
+                           facecolor="none", ec=C_FRAME, lw=1.4, zorder=6))
+    ax.plot([sx(0), sx(0)], [sz(bz_bot), sz(bz_top)], color=C_FRAME, lw=1.4, zorder=6)
+    ax.add_patch(Rectangle((sx(-6), sz(bz_bot)), sx(6), sz(BH), fill=False, ec=C_FRAME, lw=1.1, hatch="////", zorder=5))
+
+    # side manifold (Ø25 poly) running along the inboard face, just below the beam
+    mz = bz_bot - 30
+    ax.add_patch(Rectangle((sx(-FIRST + 8), sz(mz - POLY / 2)), sx(HALF + 40) - sx(-FIRST + 8),
+                           sz(POLY), fill=False, ec=C_FRAME, lw=1.0, zorder=5))
+    # fold-back closure at the left manifold end
+    ax.add_patch(Circle((sx(-FIRST + 2), sz(mz)), sz(POLY * 0.7), fill=False, ec=C_FRAME, lw=1.0, zorder=5))
+
+    # ── nozzle saddle-tee ticks (left half: FIRST .. HALF step PITCH) ──────────
+    nz = mz - POLY / 2
+    nx = FIRST
+    while nx <= HALF + 1:
+        ax.plot([sx(nx), sx(nx)], [sz(nz), sz(nz - 45)], color=C_FRAME, lw=1.0, zorder=7)
+        ax.add_patch(Circle((sx(nx), sz(nz - 55)), sz(16), fill=False, ec=C_FRAME, lw=0.9, zorder=7))
+        nx += PITCH
+
+    # ── feed tees (larger glyph on the manifold) ──────────────────────────────
+    fx = FEED_FIRST
+    while fx <= HALF + 1:
+        ax.add_patch(Rectangle((sx(fx) - sx(0) - sz(14), sz(mz - POLY / 2 - 26)), sz(28), sz(26),
+                               facecolor="white", ec=C_FRAME, lw=1.1, zorder=8))
+        ax.plot([sx(fx), sx(fx)], [sz(mz + POLY / 2), sz(mz + POLY / 2 + 22)], color=C_FRAME, lw=1.1, zorder=8)
+        fx += FEED_PITCH
+
+    # ── carriage-clamp station near the left end (bracket over the beam) ───────
+    ax.add_patch(Rectangle((sx(CLAMP_X) - sz(70), sz(bz_top)), sz(140), sz(70),
+                           fill=False, ec=C_FRAME, lw=1.2, zorder=8))
+    leader(ax, sx(CLAMP_X), sz(bz_top + 70), sx(CLAMP_X + 130), sz(bz_top + 200),
+           "WHEEL-CARRIAGE CLAMP STATION\n(1/4\" SS top+bottom clamp plates — Sheet 10)",
+           fs=6.2, color=C_FRAME, font=FONT, bbox=LBL_BG, zorder=15)
+
+    # ── ball-joint mount at the centreline (top face, 4 self-tap screws) ───────
+    ax.add_patch(Rectangle((sx(HALF) - sz(55), sz(bz_top)), sz(55), sz(60),
+                           fill=False, ec=C_FRAME, lw=1.2, zorder=8))
+    leader(ax, sx(HALF), sz(bz_top + 60), sx(HALF - 620), sz(bz_top + 210),
+           "BALL-JOINT MOUNT @ CL (beam centre)\nØ20 SS ball · 4× SS self-tap into 3mm top wall",
+           fs=6.2, color=C_FRAME, font=FONT, bbox=LBL_BG, zorder=15)
+
+    # ── symmetry / break at the centreline ────────────────────────────────────
+    ax.plot([sx(HALF), sx(HALF)], [sz(bz_bot - 300), sz(bz_top + 240)],
+            color=C_FRAME, lw=1.0, ls=(0, (6, 3, 1, 3)), zorder=9)   # centreline
+    # break zigzag
+    byu, byl = sz(bz_top + 90), sz(bz_bot - 90)
+    bx = sx(HALF)
+    ax.plot([bx - sz(26), bx, bx - sz(26), bx, bx - sz(26)],
+            [byl, (byl + byu) / 2 - sz(30), (byl + byu) / 2, (byl + byu) / 2 + sz(30), byu],
+            color=C_FRAME, lw=1.0, zorder=10)
+    ax.text(sx(HALF), sz(bz_top + 250), "CL  SYMMETRIC — RIGHT HALF MIRRORS",
+            fontsize=6.6, fontweight="bold", color=C_FRAME, ha="center", va="bottom", **FONT, zorder=15)
+
+    # ── datum flag at the left beam end (lower-left, clear of the nozzle row) ──
+    ax.text(sx(-FIRST - 10), sz(bz_bot - 150), "DATUM A\nBEAM END (X0)", fontsize=6.0, color=C_FRAME,
+            ha="left", va="top", **FONT, zorder=15)
+
+    # ── dimensions ────────────────────────────────────────────────────────────
+    # overall cut length (full span, broken)
+    draw_dim_h(ax, sx(0), sx(HALF), sz(bz_top + 620), f"{SPAN:.0f}mm  (FULL BEAM CUT LENGTH — BROKEN AT CL)",
+               offset=0, fs=7.2, font=FONT, above=True)
+    # ball-joint at centreline
+    draw_dim_h(ax, sx(0), sx(HALF), sz(bz_top + 470), f"{HALF:.1f}mm  (BALL-JOINT @ CL)",
+               offset=0, fs=6.5, font=FONT, above=True)
+    # first-nozzle offset from the datum end
+    ax.plot([sx(FIRST), sx(FIRST)], [sz(nz - 55), sz(bz_bot - 320)], **WIT)
+    ax.plot([sx(0), sx(0)], [sz(bz_bot - 65), sz(bz_bot - 320)], **WIT)
+    draw_dim_h(ax, sx(0), sx(FIRST), sz(bz_bot - 320), f"{FIRST:.1f}mm  (1ST NOZZLE)",
+               offset=0, fs=6.3, font=FONT, above=False)
+    # nozzle pitch — bracket over two pitches, TYP
+    ax.plot([sx(FIRST + PITCH), sx(FIRST + PITCH)], [sz(nz - 55), sz(bz_bot - 470)], **WIT)
+    ax.plot([sx(FIRST + 2 * PITCH), sx(FIRST + 2 * PITCH)], [sz(nz - 55), sz(bz_bot - 470)], **WIT)
+    draw_dim_h(ax, sx(FIRST + PITCH), sx(FIRST + 2 * PITCH), sz(bz_bot - 470),
+               f"{PITCH:.0f}mm  (NOZZLE PITCH — TYP ×{N})", offset=0, fs=6.5, font=FONT, above=False)
+    # feed-tee pitch — TYP
+    ax.plot([sx(FEED_FIRST), sx(FEED_FIRST)], [sz(mz - POLY / 2 - 26), sz(bz_bot - 620)], **WIT)
+    ax.plot([sx(FEED_FIRST + FEED_PITCH), sx(FEED_FIRST + FEED_PITCH)], [sz(mz - POLY / 2 - 26), sz(bz_bot - 620)], **WIT)
+    draw_dim_h(ax, sx(FEED_FIRST), sx(FEED_FIRST + FEED_PITCH), sz(bz_bot - 620),
+               f"{FEED_PITCH:.0f}mm  (FEED-TEE PITCH — TYP, {N_FEED} TEES)", offset=0, fs=6.5, font=FONT, above=False)
+    # carriage-clamp station from datum
+    ax.plot([sx(CLAMP_X), sx(CLAMP_X)], [sz(bz_top + 70), sz(bz_top + 330)], **WIT)
+    draw_dim_h(ax, sx(0), sx(CLAMP_X), sz(bz_top + 330), f"{CLAMP_X:.1f}mm",
+               offset=0, fs=6.3, font=FONT, above=True)
+
+    # ── beam section inset (A-A: square tube + side manifold) ─────────────────
+    axs = fig.add_axes([0.73, 0.50, 0.17, 0.38])
+    axs.set_facecolor(C_BG); axs.set_aspect("equal"); axs.axis("off")
+    axs.set_xlim(-BW / 2 - 14, BW / 2 + POLY + 16)
+    axs.set_ylim(-BH / 2 - 16, BH / 2 + 20)
+    axs.add_patch(Rectangle((-BW / 2, -BH / 2), BW, BH, fill=False, ec=C_FRAME, lw=1.5))
+    axs.add_patch(Rectangle((-BW / 2 + BT, -BH / 2 + BT), BW - 2 * BT, BH - 2 * BT, fill=False, ec=C_FRAME, lw=1.0))
+    axs.add_patch(Circle((BW / 2 + POLY / 2, -BH / 2 + POLY / 2), POLY / 2, fill=False, ec=C_FRAME, lw=1.2))
+    draw_dim_h(axs, -BW / 2, BW / 2, BH / 2 + 7, f"{BW:.1f}mm", offset=0, fs=5.6, font=FONT, above=True)
+    draw_dim_v(axs, -BW / 2 - 7, -BH / 2, BH / 2, f"{BH:.1f}mm", offset=0, fs=5.6, font=FONT)
+    leader(axs, BW / 2 + POLY / 2, -BH / 2 + POLY / 2, BW / 2 + 2, BH / 2 + 4,
+           f"Ø{POLY:.0f} LDPE\nMANIFOLD", fs=5.2, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(axs, -BW / 2 + BT, 0, -BW / 2 - 10, -BH / 2 - 10, f"t={BT:.3f}mm", fs=5.2, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    axs.text(0, BH / 2 + 13, "SECTION A-A", fontsize=6.4, fontweight="bold", ha="center", va="bottom", color=C_FRAME, **FONT)
+
+    # ── datums & tolerances note block ────────────────────────────────────────
+    notes = [
+        "DATUMS & TOLERANCES",
+        " A = left beam end (X0)   ·   datum axis = beam centerline",
+        " general linear .......... ±1.0mm",
+        " nozzle-station pitch .... ±0.5mm (non-cumulative)",
+        " cut length (overall) .... ±1.5mm",
+        " beam: 304 SS 1½×1½×0.062in sq. tube — ends capped (weld/plug)",
+        " manifold: 3/4\" LDPE (OD25/ID19) side-clipped — fold-back ends",
+        " NO beam-wall drilling — saddle-tees tap the EXTERNAL manifold",
+        " ~12mm pre-camber UP at mid-span (offsets wet self-weight sag)",
+    ]
+    axn = fig.add_axes([0.045, 0.045, 0.52, 0.20])
+    axn.set_xlim(0, 100); axn.set_ylim(0, 100); axn.axis("off")
+    draw_notes(axn, notes, 2, 96, spacing=11, fs=6.6, font=FONT, width=96)
+
+    # ── title block ───────────────────────────────────────────────────────────
+    ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.04])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, f"SHEET 9 OF {TOTAL_SHEETS}",
+                drawing_title="SPRAY BEAM + MANIFOLD LAYOUT",
+                subtitle="FULL-LENGTH STATION LAYOUT (X ALONG BEAM)",
+                scale_note="BROKEN SYMMETRIC VIEW — ALL DIMS IN mm",
+                doc_id="TBS-001 · Spray Bar", height=0.7)
+
+    _save(fig, "spray-bar-sheet9")
+
+
+def draw_sheet10():
+    fig = plt.figure(figsize=(16, 9))
+    fig.patch.set_facecolor(C_BG)
+
+    # ── PLAN view ────────────────────────────────────────────────────────────
+    ax = fig.add_axes([0.05, 0.46, 0.90, 0.50])
+    ax.set_facecolor(C_BG); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-46, PL_L + 46); ax.set_ylim(-78, PL_W + 54)
+
+    # plate outline with central notch (U-fork), as one path
+    ax.plot([0, NL, NL, NR, NR, PL_L, PL_L, 0, 0],
+            [0, 0, NOTCH_D, NOTCH_D, 0, 0, PL_W, PL_W, 0],
+            color=C_FRAME, lw=1.6, zorder=6)
+
+    # phantom beam (ref) seated in the notch, running in X past the plate
+    ax.add_patch(Rectangle((NL, -14), BEAM_W, PL_W + 26, fill=False, ec="#8A8A8A",
+                           lw=0.9, ls=(0, (6, 3)), zorder=3))
+    ax.text(YC, -12, "BEAM (ref)", ha="center", va="bottom",
+            fontsize=5.0, color="#8A8A8A", **FONT)
+    # phantom wheels (ref) below the plate
+    for wy in (WH1, WH2):
+        ax.add_patch(Circle((wy, 30), WH_D / 2, fill=False, ec="#8A8A8A",
+                            lw=0.9, ls=(0, (6, 3)), zorder=3))
+    ax.text(WH1, 30, f"Ø{WH_D}\nwheel\n(ref)", ha="center", va="center",
+            fontsize=4.6, color="#8A8A8A", **FONT)
+
+    # holes
+    for (hy, hx) in SADDLE + CLAMP:
+        ax.add_patch(Circle((hy, hx), HR, fill=False, ec=C_FRAME, lw=1.1, zorder=8))
+        ax.plot([hy - HR - 1.5, hy + HR + 1.5], [hx, hx], color=C_FRAME, lw=0.4, zorder=8)
+        ax.plot([hy, hy], [hx - HR - 1.5, hx + HR + 1.5], color=C_FRAME, lw=0.4, zorder=8)
+
+    # ── dimensions ───────────────────────────────────────────────────────────
+    # overall length + width
+    draw_dim_h(ax, 0, PL_L, PL_W + 24, f"{PL_L:.0f}mm", fs=7, font=FONT)
+    draw_dim_v(ax, -18, 0, PL_W, f"{PL_W:.0f}mm", fs=7, font=FONT)
+    # wheel axle CLs + spacing (baseline from left datum)
+    draw_dim_h(ax, 0, WH1, -26, f"{WH1:.0f}mm", fs=6, font=FONT, above=False)
+    draw_dim_h(ax, WH1, WH2, -40, f"{WH_SP:.0f}mm (wheel CL sp)", fs=6, font=FONT, above=False)
+    draw_dim_h(ax, WH2, PL_L, -26, f"{PL_L - WH2:.0f}mm", fs=6, font=FONT, above=False)
+    for wy in (WH1, WH2):
+        ax.plot([wy, wy], [-24, 30], **WIT)
+    # notch width (at the open mouth) + depth
+    draw_dim_h(ax, NL, NR, -10, f"NOTCH {BEAM_W:.1f}mm", fs=5.6, font=FONT, above=False)
+    draw_dim_v(ax, PL_L + 18, 0, NOTCH_D, f"{NOTCH_D:.0f}mm", fs=6, font=FONT, right=True)
+    ax.plot([NR, PL_L + 18], [NOTCH_D, NOTCH_D], **WIT)
+    # hole X stations (rows) from bottom datum
+    draw_dim_v(ax, -34, 0, SADDLE_X1, f"{SADDLE_X1:.0f}mm", fs=5.6, font=FONT)
+    draw_dim_v(ax, -34, 0, SADDLE_X2, f"{SADDLE_X2:.0f}mm", fs=5.6, font=FONT)
+    for xx in (SADDLE_X1, SADDLE_X2):
+        ax.plot([-32, WH1], [xx, xx], **WIT)
+    # saddle bolt straddle (local, at near wheel)
+    draw_dim_h(ax, WH1 - SADDLE_BOLT_SP / 2, WH1 + SADDLE_BOLT_SP / 2, PL_W + 8,
+               f"{SADDLE_BOLT_SP:.0f}mm", fs=5.4, font=FONT)
+    for hy in (WH1 - SADDLE_BOLT_SP / 2, WH1 + SADDLE_BOLT_SP / 2):
+        ax.plot([hy, hy], [SADDLE_X2, PL_W + 8], **WIT)
+    # clamp offset (local, left of notch)
+    draw_dim_h(ax, NL - CLAMP_OFFSET, NL, PL_W + 8, f"{CLAMP_OFFSET:.0f}mm", fs=5.2, font=FONT)
+    ax.plot([NL, NL], [NOTCH_D, PL_W + 8], **WIT)
+
+    # callouts
+    leader(ax, SADDLE[0][0], SADDLE[0][1], 14, -58,
+           f"8× Ø{HOLE_D} CLR (M5) — AXLE-SADDLE BOLTS\n(2 saddles/axle · 2 feet each · underside straps)",
+           ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(ax, CLAMP[-1][0], CLAMP[-1][1], 196, -58,
+           f"4× Ø{HOLE_D} CLR (M5) — BEAM-CLAMP BOLTS\n(top/bottom clamp plates sandwich the beam)",
+           ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(ax, NR, NOTCH_D, 182, PL_W + 20,
+           "CENTRAL NOTCH — wings butt the 38.1mm beam faces\n(outer edge flush with the beam end; jig/bandsaw cut)",
+           ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
+
+    ax.text(0, PL_W + 40, "PLAN  (looking down Z — Yd × X)", ha="left", va="bottom",
+            fontsize=8, fontweight="bold", color=C_FRAME, **FONT)
+
+    # ── EDGE SECTION (thickness, exaggerated) ────────────────────────────────
+    axs = fig.add_axes([0.05, 0.30, 0.90, 0.10])
+    axs.set_facecolor(C_BG); axs.axis("off")
+    axs.set_xlim(-46, PL_L + 46); axs.set_ylim(-10, 30)
+    TEXAG = 3.2
+    axs.plot([0, PL_L, PL_L, 0, 0],
+             [0, 0, PL_T * TEXAG, PL_T * TEXAG, 0], color=C_FRAME, lw=1.6)
+    # notch mouth on the near (beam-end) edge, as a gap marker
+    axs.add_patch(Rectangle((NL, 0), BEAM_W, PL_T * TEXAG, fill=False, ec="#C0C0C0", lw=0.7))
+    draw_dim_v(axs, -18, 0, PL_T * TEXAG, f"{PL_T:.0f}mm", fs=6, font=FONT)
+    axs.text(0, PL_T * TEXAG + 6, "EDGE SECTION  (thickness ×3.2 exag.)  ·  6061-T6 PLATE",
+             ha="left", va="bottom", fontsize=6.5, fontweight="bold", color=C_FRAME, **FONT)
+
+    # ── notes ────────────────────────────────────────────────────────────────
+    axn = fig.add_axes([0.06, 0.10, 0.88, 0.16]); axn.set_xlim(0, 100); axn.set_ylim(0, 100); axn.axis("off")
+    draw_notes(axn, [
+        "DATUMS & TOLERANCES",
+        "DATUM = plate lower-left corner (Yd0, X0); notch on CL (Yd140).",
+        "General linear ±0.5mm · hole position ±0.3mm · Ø5.5 +0.2/0.",
+        "Material: 6061-T6 aluminum, 5mm plate.  Deburr all edges + holes.  2 REQUIRED (left + right carriage, identical).",
+    ], 0, 96, spacing=20, fs=6.2, font=FONT, width=100)
+
+    # ── title block (full width, bottom) ──────────────────────────────────────
+    axt = fig.add_axes([0.04, 0.02, 0.92, 0.05])
+    axt.set_xlim(0, 1); axt.set_ylim(0, 1); axt.axis("off")
+    title_block(axt, "SHEET 10 OF 11", drawing_title="WHEEL-CARRIAGE PLATE",
+                subtitle="FABRICATION — 5mm 6061-T6 (2 REQ)",
+                scale_note="SCALE 1:2 — ALL DIMS IN mm", height=0.7)
+
+    _save(fig, "spray-bar-sheet10")
+
+
+def draw_sheet11():
+    W, D = PROC_TRAY_W, PROC_TRAY_D          # 4349 × 2200 (local pan coords)
+    cx = W / 2.0                              # center seam X (local)
+    sump_x = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L   # sump CL, local from pan left edge
+    rim = PROC_TRAY_RIM                       # 50
+
+    fig = plt.figure(figsize=(17, 12))
+    fig.patch.set_facecolor(C_BG)
+
+    # ══ PLAN (looking down Z; near rim at TOP) ═════════════════════════════════
+    ax = fig.add_axes([0.05, 0.42, 0.90, 0.54])
+    ax.set_facecolor(C_BG); ax.axis("off"); ax.set_aspect("equal")
+    # plan y = depth, near rim (Yd0) at TOP → plot y = D - Yd
+    def py(yd): return D - yd
+    M = 520
+    ax.set_xlim(-M, W + M); ax.set_ylim(-M - 60, D + M)
+
+    # pan outline
+    ax.add_patch(Rectangle((0, 0), W, D, fill=False, ec=C_FRAME, lw=1.6, zorder=6))
+    # rim fold lines (dashed, 50mm in from each edge)
+    ax.add_patch(Rectangle((rim, rim), W - 2 * rim, D - 2 * rim, fill=False,
+                           ec=C_FRAME, lw=0.9, ls=(0, (6, 3)), zorder=5))
+    # center seam: the two panel edges (lap band straddles the center)
+    seam_l, seam_r = cx - SEAM_LAP / 2, cx + SEAM_LAP / 2
+    ax.plot([seam_l, seam_l], [0, D], color=C_FRAME, lw=1.0, zorder=6)   # downhill panel edge (under)
+    ax.plot([seam_r, seam_r], [0, D], color=C_FRAME, lw=1.0, zorder=6)   # uphill panel edge (over)
+    # seam bolts (tick loop ok; the PITCH dim is one explicit call below)
+    for i in range(SEAM_N_BOLTS):
+        yd = SEAM_BOLT_MARGIN + i * SEAM_BOLT_PITCH
+        ax.add_patch(plt.Circle((cx, py(yd)), 14, fill=False, ec=C_FRAME, lw=0.9, zorder=8))
+        ax.plot([cx - 20, cx + 20], [py(yd), py(yd)], color=C_FRAME, lw=0.5, zorder=8)
+        ax.plot([cx, cx], [py(yd) - 20, py(yd) + 20], color=C_FRAME, lw=0.5, zorder=8)
+
+    # near-rim gutter band (100mm in from the near rim)
+    gy = PROC_TRAY_GUTTER_W
+    ax.plot([rim, W - rim], [py(gy), py(gy)], color=C_FRAME, lw=0.7, ls=(0, (2, 2)), zorder=5)
+
+    # sump pressed well (180 X × 100 Yd), at the near rim, CL at sump_x
+    sx0, sx1 = sump_x - PROC_TRAY_SUMP_W / 2, sump_x + PROC_TRAY_SUMP_W / 2
+    sy0, sy1 = 0, PROC_TRAY_SUMP_D
+    ax.add_patch(Rectangle((sx0, py(sy1)), PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D,
+                           fill=False, ec=C_FRAME, lw=1.3, zorder=9))
+    ax.plot([sx0, sx1], [py(sy1) + PROC_TRAY_SUMP_D, py(sy0)], color="#AEAEAE", lw=0.0)  # noop keep bounds
+
+    # DATUM marker at near-rim left corner (local 0,0 → plot top-left)
+    dx, dyv = 0, py(0)
+    ax.plot([dx], [dyv], marker="s", ms=7, mfc="white", mec=C_FRAME, mew=1.2, zorder=12)
+    leader(ax, dx, dyv, -M + 60, dyv + 230,
+           "DATUM\n(pan near-rim LEFT corner;\ncontainer X280 / Yd80)",
+           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+
+    # ── dimensions ──
+    draw_dim_h(ax, 0, W, -M + 180, f"{W:.0f}mm — OVERALL (2 panels, field-bolted)",
+               fs=7.5, font=FONT, above=False, offset=26)
+    draw_dim_h(ax, 0, seam_r, -M + 360, f"PANEL (each) {int(PANEL_W + 0.5)}mm (cut)", fs=6.5, font=FONT, above=False, offset=20)
+    draw_dim_v(ax, -M + 200, 0, D, f"{D:.0f}mm", fs=7.5, font=FONT, right=False, offset=24)
+    # rim fold inset (near-rim, top-right corner — clear of the sump)
+    draw_dim_v(ax, W + 120, py(0), py(0) - rim, f"{rim:.0f}mm", fs=6.0, font=FONT, right=True, offset=18)
+    leader(ax, W - rim, py(rim), W + 120, py(rim) + 150,
+           f"RIM FOLD LINE — up-bend {rim:.0f}mm (all 4 sides)", ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+
+    # ── center seam: lap note (into lower-right interior) + bolt pitch (mid, right of seam) ──
+    leader(ax, cx, py(1500), cx + 560, py(1700),
+           f"CENTER SEAM — {SEAM_LAP:.0f}mm shingle LAP (uphill over downhill),\nsilicone-bedded + {SEAM_N_BOLTS}× M6×16 serrated flange nut (underside)",
+           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    # pitch dim between two MIDDLE bolts (clear of the top sump zone)
+    bx = cx + 170
+    ya, yb = SEAM_BOLT_MARGIN + 5 * SEAM_BOLT_PITCH, SEAM_BOLT_MARGIN + 6 * SEAM_BOLT_PITCH
+    ax.plot([cx, bx], [py(ya), py(ya)], **WIT); ax.plot([cx, bx], [py(yb), py(yb)], **WIT)
+    draw_dim_v(ax, bx, py(ya), py(yb), f"{SEAM_BOLT_PITCH}mm PITCH", fs=6.0, font=FONT, right=True, offset=16)
+    # end margin dim at the FAR rim (empty bottom), last bolt → far rim
+    ylast = SEAM_BOLT_MARGIN + (SEAM_N_BOLTS - 1) * SEAM_BOLT_PITCH
+    ax.plot([cx, bx], [py(ylast), py(ylast)], **WIT); ax.plot([0, bx], [py(D), py(D)], **WIT)
+    draw_dim_v(ax, bx, py(ylast), py(D), f"{SEAM_BOLT_MARGIN}mm END", fs=5.5, font=FONT, right=True, offset=14)
+
+    # ── sump: CL dim (high, clear of datum) + size dims + label into interior ──
+    ax.plot([sump_x, sump_x], [py(0), py(0) + 400], **WIT)
+    draw_dim_h(ax, 0, sump_x, py(0) + 350, f"SUMP CL  {sump_x:.0f}mm (from left edge)",
+               fs=6.0, font=FONT, above=True, offset=18)
+    draw_dim_h(ax, sx0, sx1, py(sy1) - 60, f"{PROC_TRAY_SUMP_W:.0f}mm", fs=5.5, font=FONT, above=False, offset=12)
+    draw_dim_v(ax, sx0 - 70, py(0), py(PROC_TRAY_SUMP_D), f"{PROC_TRAY_SUMP_D:.0f}mm", fs=5.5, font=FONT, right=False, offset=12)
+    leader(ax, sump_x, py(PROC_TRAY_SUMP_D), sump_x + 250, py(820),
+           f"PRESSED SUMP WELL {PROC_TRAY_SUMP_W:.0f}×{PROC_TRAY_SUMP_D:.0f}mm × {PROC_TRAY_SUMP_Z:.0f}mm DEEP\n(stamped during forming — see SECTION)",
+           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    # gutter width — leader into interior
+    leader(ax, rim + 250, py(gy), 650, py(560),
+           f"NEAR-RIM GUTTER {PROC_TRAY_GUTTER_W:.0f}mm — falls 1:200 inward to the sump",
+           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    draw_dim_v(ax, rim + 120, py(0), py(gy), f"{PROC_TRAY_GUTTER_W:.0f}mm", fs=5.5, font=FONT, right=False, offset=12)
+
+    ax.text(W / 2, D + M - 40, "PLAN — PAN (looking down · near rim at top · X across · Yd down)",
+            ha="center", va="top", fontsize=8.5, fontweight="bold", color=C_FRAME, **FONT)
+
+    # ══ SECTION (Yd × Z; vertical scale exaggerated) ══════════════════════════
+    axs = fig.add_axes([0.07, 0.12, 0.86, 0.22])
+    axs.set_facecolor(C_BG); axs.axis("off")
+    axs.set_xlim(-170, D + 420); axs.set_ylim(-18, 120)
+    shim_near, shim_far = 20, 30
+    def floor_top(yd): return shim_near + (shim_far - shim_near) * (yd / D)  # pan floor top (on shims)
+    # container floor
+    axs.plot([-120, D + 120], [0, 0], color=C_FRAME, lw=1.4, zorder=4)
+    axs.text(D + 130, 0, "CONTAINER FLOOR Z0", ha="left", va="center", fontsize=5.5, color=C_FRAME, **FONT)
+    # shim wedge (under pan)
+    axs.add_patch(plt.Polygon([(0, 0), (D, 0), (D, shim_far), (0, shim_near)],
+                              closed=True, fill=False, ec=C_FRAME, lw=0.8, ls=(0, (4, 2)), zorder=3))
+    # pan sheet profile: near rim up, sump drop near the near rim, slope to far rim up
+    t = 3.0   # drawn sheet thickness (exaggerated from 1.5)
+    znear, zfar = floor_top(0), floor_top(D)
+    sump_yd0, sump_yd1 = 0, PROC_TRAY_SUMP_D
+    prof = [
+        (0, znear + rim),                 # near rim top
+        (0, znear),                       # near rim base (inner)
+        (sump_yd0, znear),                # to sump near edge (at near rim)
+        (sump_yd0, 0), (sump_yd1, 0),     # sump floor on container floor (20 below pan floor)
+        (sump_yd1, floor_top(sump_yd1)),  # back up to pan floor
+        (D, zfar),                        # slope to far rim base
+        (D, zfar + rim),                  # far rim top
+    ]
+    xs = [p[0] for p in prof]; zs = [p[1] for p in prof]
+    axs.plot(xs, zs, color=C_FRAME, lw=1.6, zorder=6)
+    # section dims
+    draw_dim_v(axs, -90, znear, znear + rim, f"{rim:.0f}mm", fs=6.0, font=FONT, right=False, offset=70)
+    draw_dim_v(axs, D + 150, zfar, zfar + rim, f"{rim:.0f}mm RIM", fs=6.0, font=FONT, right=True, offset=70)
+    draw_dim_v(axs, sump_yd1 + 60, 0, floor_top(sump_yd1), f"{PROC_TRAY_SUMP_Z:.0f}mm", fs=5.5, font=FONT, right=True, offset=60)
+    leader(axs, sump_yd1 / 2, 0, 360, -12, f"PRESSED SUMP — {PROC_TRAY_SUMP_Z:.0f}mm below pan floor, bottom on Z0",
+           ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(axs, D * 0.6, floor_top(D * 0.6), D * 0.6 + 60, floor_top(D * 0.6) + 40,
+           "PAN SHEET 304 SS 1.5mm (flat)", ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(axs, D * 0.35, shim_near + (shim_far - shim_near) * 0.35 - 1, D * 0.35, -14,
+           f"TAPERED HDPE SHIM STRIPS (×{PROC_TRAY_SHIM_N}) — set the 1:200 Yd fall (far→near)",
+           ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    axs.text(D / 2, 112, "SECTION — Yd × Z  (VERTICAL SCALE EXAGGERATED — slope + thickness not to scale)",
+             ha="center", va="top", fontsize=7.5, fontweight="bold", color=C_FRAME, **FONT)
+
+    # ══ notes ═════════════════════════════════════════════════════════════════
+    axn = fig.add_axes([0.05, 0.065, 0.90, 0.05]); axn.set_xlim(0, 100); axn.set_ylim(0, 100); axn.axis("off")
+    draw_notes(axn, [
+        "DATUMS & TOLERANCES",
+        "Datum: pan near-rim LEFT corner (container X280 / Yd80).  Material: 304 SS 1.5mm sheet.",
+        "General linear ±1.0mm; seam-bolt + sump pattern ±0.5mm.  Forming: press-formed 50mm rim up-bend (all 4 sides) + pressed sump well.",
+        "2 equal panels, field-bolted at the center shingle lap (uphill over downhill), silicone-bedded.  Pan is FLAT — the 1:200 fall is set by the tapered HDPE shims beneath.",
+    ], 2, 92, spacing=22, fs=6.2, font=FONT, width=96)
+
+    # ══ title block ═══════════════════════════════════════════════════════════
+    ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, f"SHEET 11 OF {TOTAL_SHEETS}",
+                drawing_title="PROCESSING-TRAY PAN",
+                subtitle="FABRICATION — 304 SS 1.5mm, 2-PANEL",
+                scale_note="PLAN 1:25 · SECTION Yd×Z EXAGGERATED — ALL DIMS IN mm")
+    _save(fig, "spray-bar-sheet11")
+
+
 if __name__ == "__main__":
     draw_sheet1()
     draw_sheet2()
@@ -2187,3 +2644,6 @@ if __name__ == "__main__":
     draw_sheet6()
     draw_sheet7()
     draw_sheet8()
+    draw_sheet9()
+    draw_sheet10()
+    draw_sheet11()

@@ -45,6 +45,10 @@ file** — a release must not ship without a changelog entry:
 - IBC frame Sheet 1: widened the right margin so the member cut-list and datum/tolerance reference blocks seat fully inside the frame instead of clipping off the edge.
 - Tray-slope + GRP cut-plan: gave their saves `bbox_inches="tight"` (matching the house convention) so the edge-most scale/coordinate labels can no longer be clipped by the canvas. Diagram set now shows zero genuine canvas clips.
 
+### Processing tray + spray bar — fabrication blueprints
+- Closed the one open blueprint gap found in the all-systems readiness audit: added three fully-dimensioned, monochrome fab sheets to the spray-bar set (now 11 sheets), each with a datum/tolerance block — **Sheet 9** spray-beam + manifold full-length station layout, **Sheet 10** wheel-carriage plate (5mm 6061-T6, notch + 12-hole drilling), **Sheet 11** processing-tray pan (304 SS 1.5mm, 2-panel, rim fold + pressed sump + seam-bolt pattern). The three fabricated parts now each have a shop-ready drawing.
+- Reconciled the stale fabrication numbers the 2026-08-11 left-rail widening (FP_X_L 150→260) never cascaded into prose/parts: nozzle count 44→43, beam span 4,399→4,289mm, panel 2,175→2,195mm, sump 150→180mm, plus the matching stale inline comments in `tbs_constants.py`. The constants were already correct; the prose/parts and the new sheets now agree.
+
 ## [0.15] — 2026-10-08
 
 - **Overview collapsed to a thin aggregator (model refactor).** Shared Ruby-drawing infrastructure (primitives, 38-color palette, model metadata) was extracted to a neutral `tbs_draw.py`, and ~60 geometry builders moved from the overview into their owner sub-models (walkway, IBC, spray-bar, electrical, water, film-plane, light-trap). The overview is now ~13 container-level builders composing those sub-models, so each component lives in exactly one place and the overview can't drift from its parts. See [model-aggregation-plan.md](model-aggregation-plan.md).

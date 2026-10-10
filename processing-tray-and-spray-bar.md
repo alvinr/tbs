@@ -39,13 +39,15 @@ full print width. Together they form the print washing subsystem of the
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, 2B mill finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment. 2B (not #4 brushed) — the brush is a cosmetic upcharge unneeded for a drain pan ([tray research](tray-research.md)) |
 | Overall footprint | 4,349 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->260<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
-| Panel size (each) | 2,175 × 2,200mm | Two equal panels, joined at the midpoint by a ~40mm shingle-oriented lap (silicone-sealed, 12× M6×16). Each panel fits through the cargo door opening (2,340 × 2,280mm) |
+| Panel size (each) | 2,195 × 2,200mm | Two equal panels ((4,349 + 40mm lap)/2), joined at the midpoint by a ~40mm shingle-oriented lap (silicone-sealed, 12× M6×16). Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
 | Fall | 1:200 **Yd-only** (10mm over 2,200mm, far rim → near rim); level across X | Level-across-X keeps the full-width spray beam level so it clears the walkway arms; lateral drainage is off the surface via the near-rim gutter |
 | Near-rim gutter + center pickup | full-width gutter falls 1:200 inward to a 180 × 100mm × 20mm center pickup well (X=2,386) | Self-draining to one pickup; well bottom rests on the container floor (Z0) |
 | Weight (empty) | ~114 kg (2 panels × ~57 kg) | 304 SS, 1.5mm × 4.78 m² per panel × 7.93 kg/m² per mm |
 | Weight (operating, 6mm flood) | ~171 kg | Tray + ~57 kg water (6mm over the 4,349 × 2,200mm tray ≈ 57 L) |
+
+![Processing-Tray Pan — Sheet 11: fabrication (304 SS 1.5mm, 2-panel; rim fold, pressed sump, seam-bolt pattern)](assets/spray-bar-sheet11.png)
 
 ### 2.2 Slope Support — Tapered HDPE Shim Strips
 
@@ -77,7 +79,7 @@ skid — no penetration of the tray or container floor.
 
 | Parameter | Value |
 |-----------|-------|
-| Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
+| Sump dimensions | 180mm (X) × 100mm (Yd) × 20mm deep |
 | Pickup location | near-rim gutter low point, **X=2,386 (center)** |
 | Forming | Pressed/stamped into tray panel during fabrication |
 | Pickup tube | 1" PVC dip tube, stainless foot valve with strainer screen |
@@ -168,7 +170,7 @@ two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4
 spray manifold — the supply hose feeds it at its center through a single barbed inlet tee by
 the ball joint. The 3/4" bore is far larger than the 3.5 GPM flow demands, so pressure holds
 uniform end-to-end (~0.1 PSI drop across the full span) from that one feed — no multi-point
-distribution is needed. Water exits through thirty-nine barbed 90° down-jets that side-tap the
+distribution is needed. Water exits through forty-three barbed 90° down-jets that side-tap the
 manifold and spray straight down, at 100mm pitch along the beam.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
@@ -188,7 +190,7 @@ manifold and spray straight down, at 100mm pitch along the beam.
 |-----------|--------------|-----|---------|
 | Beam | 304 SS 1½×1½×0.062in square tube, <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm long (single 17ft4in length, no weld); ~12mm pre-camber | 1 | Full-width structural beam; carries the side manifold |
 | Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
-| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 44 | Side-tapped into the manifold, spray straight down (100mm pitch) |
+| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 43 | Side-tapped into the manifold, spray straight down (100mm pitch) |
 | Center-feed inlet | 1/2" PVC barbed tee (DripDepot 1084), flex hose → manifold center | 1 | Single feed point at the beam center (the over-bored manifold needs no multi-point distribution) |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Acetal (Delrin) roller wheels](https://www.mcmaster.com/products/acetal-round-stock/) | Ø32 × 20mm wide, Ø10 plain bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
@@ -233,13 +235,13 @@ square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,28
 | Property | Value |
 |----------|-------|
 | Nozzle type | 90° down-jet, barbed inlet (DIG 110B) |
-| Number of nozzles | 44 |
+| Number of nozzles | 43 |
 | Nozzle spacing | 100mm center-to-center |
 | Spray pattern | 90° cone, directed straight down |
 | Manifold OD / ID | 25mm / 19mm (3/4" LDPE) |
 | Manifold mounting | Clipped to the beam's inboard side face (cushioned pipe clips + the nozzle saddle-tees) |
 
-The thirty-nine nozzle saddle-tees plus the seven feed tees tap directly into the side
+The forty-three nozzle saddle-tees plus the seven feed tees tap directly into the side
 manifold and grip it by their barb ridges. Because the manifold is external, no beam-wall
 drilling is needed; the tees plus cushioned pipe clips locate the manifold along the beam.
 
@@ -255,6 +257,8 @@ seal; the SS beam is purely structural.
   — each connects an irrigation tube from the ball-joint manifold to the poly
   pipe bore, distributing the supply evenly along the pipe.
 - **Both ends (X=470 and X=4,329):** LDPE fold-back with retainer clip — fully sealed.
+
+![Spray Beam + Manifold — Sheet 9: full-length station layout (cut length, nozzle + feed-tee pitch, carriage-clamp + ball-joint stations)](assets/spray-bar-sheet9.png)
 
 ### 3.4 Wheel Carriage Assemblies
 
@@ -358,6 +362,8 @@ through it, capturing the plate between the top and bottom clamp plates.
 | 5 | Drill all holes | Drill press for accuracy — 8 axle saddle holes + 4 beam clamp holes per plate |
 | 6 | Deburr | Remove all burrs from edges, notch, and holes |
 
+![Wheel-Carriage Plate — Sheet 10: fabrication (5mm 6061-T6, 2 req; notch + 12-hole drilling)](assets/spray-bar-sheet10.png)
+
 #### 3.6.2 Wheel Assembly (2 per carriage, 4 total)
 
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
@@ -415,7 +421,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 | Water in manifold (19mm ID bore) | 0.283 | 2.78 |
 | **Total UDL** | **2.406** | **23.60** |
 
-Water volume in the manifold: π × 9.5² × 4,399 = 1.25 L (1.25 kg), carried in the LDPE
+Water volume in the manifold: π × 9.5² × 4,289 = 1.22 L (1.22 kg), carried in the LDPE
 manifold, not the beam.
 
 **Deflection — δ = 5wL⁴ / 384EI, E = 193,000 MPa (304 SS), I = 51,300mm⁴:**
@@ -458,7 +464,7 @@ budget in [Weight Distribution](weight-distribution-report.md).
 ### 3.8 Beam — Single Length, No Splice
 
 The beam is a **single 17 ft 4 in (5,283mm) length** of 1½×1½×0.062in 304-SS square tube — it
-spans the full 4,399mm width with margin, so there is **no butt weld and no splice**. This deletes
+spans the full 4,289mm width with margin, so there is **no butt weld and no splice**. This deletes
 the former mid-span joint, which sat at the point of maximum bending moment. The **~12mm pre-camber**
 is set over the full length in the fabrication jig.
 
@@ -469,17 +475,17 @@ is set over the full length in the fabrication jig.
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
 | Feed points (manifold) | 7 (~550mm pitch) — 0.5 GPM per feed tube |
-| Spray nozzles | 44 × 90° down-jets (DIG 110B) |
+| Spray nozzles | 43 × 90° down-jets (DIG 110B) |
 | Flow per nozzle | 0.09 GPM (0.34 L/min) |
 
 Feeding the poly pipe at seven points (~550mm pitch) from the ball-joint manifold — rather
 than a single center feed — keeps the supply pressure uniform along the pipe, so each of
-the 44 nozzles sees nearly the same flow regardless of its distance from the inlet. The
+the 43 nozzles sees nearly the same flow regardless of its distance from the inlet. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each jet delivers a **90° cone directed
 straight down** — chosen over a flat-fan/180° pattern so the wash lands on the print rather
 than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
 A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
-(now 44 at full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
+(now 43 at full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
 
 ### 3.10 Water Connection
 
@@ -584,7 +590,7 @@ tray drainage plan and sump cross-section).
 <!-- BEGIN parts:tray -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 304 SS sheet, 16-gauge (1.5mm), 2B mill finish | 2,175 × 2,200mm panels. 2B mill finish (dropped from #4 brushed 2026-08-02 — the brush is a cosmetic upcharge, unneeded for a drain pan; ~15% est saving vs #4, keeps 16-ga rigidity + 304). Firm at a 2B quote. See tray-research.md. | 2 ea | Online Metals | $610–$850 |
+| 304 SS sheet, 16-gauge (1.5mm), 2B mill finish | 2,195 × 2,200mm panels. 2B mill finish (dropped from #4 brushed 2026-08-02 — the brush is a cosmetic upcharge, unneeded for a drain pan; ~15% est saving vs #4, keeps 16-ga rigidity + 304). Firm at a 2B quote. See tray-research.md. | 2 ea | Online Metals | $610–$850 |
 | Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1", so LAMINATE two 24×48 sheets to 1-1/4" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4" (US Plastic 46039 $177.58) + 1/2" (42591 $118.38) = $295.96; the 3/4"+1/2" split keeps the taper cut inside the 3/4" top layer so the glue line stays buried (the 1"+1/4" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab. | 1 lot | US Plastic Corp | $296 |
 | [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube) | 2 tube | Home Depot | $12 |
@@ -601,10 +607,10 @@ tray drainage plan and sump cross-section).
 <!-- BEGIN parts:spray -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1½×1½×0.062in (38×38×1.6mm) 304-SS SQUARE tube. SINGLE 17ft4in (5,283mm) length spans the full-width 4,399mm beam with margin — NO butt weld. The 1½in square depth (up from the old 40×25) holds the full-width span to ~11mm wet sag (L/395), flattened by ~12mm pre-camber; wall barely affects sag (self-weight-dominated). Metals Depot $183 confirmed 2026-08-03. (Metric 40×25/40×40 nominals are NOT stock — see the beam re-source TODO.) | 1 ea | Metals Depot | $183 |
+| [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1½×1½×0.062in (38×38×1.6mm) 304-SS SQUARE tube. SINGLE 17ft4in (5,283mm) length spans the full-width 4,289mm beam with margin — NO butt weld. The 1½in square depth (up from the old 40×25) holds the full-width span to ~11mm wet sag (L/395), flattened by ~12mm pre-camber; wall barely affects sag (self-weight-dominated). Metals Depot $183 confirmed 2026-08-03. (Metric 40×25/40×40 nominals are NOT stock — see the beam re-source TODO.) | 1 ea | Metals Depot | $183 |
 | [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | Carriage plates + spacer blocks cut from one 12×20×3/16in sheet. Metal Supermarkets $124.88 firm (2026-08-01, cut-to-size retail); an online 6061 sheet supplier is likely cheaper — worth comparing at purchase (not yet quoted). | 1 ea | Metal Supermarkets | $125 |
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾" poly tubing (0.820" ID × 0.940" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28. | 1 100ft roll | DripDepot | $31 |
-| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×5 = 50 (44 used, 6 spare); side-tapped into the poly manifold, spray straight down. Nozzles now run the FULL beam width (4,399mm) — 90° down-jets clear the overhead grate, so no reason to stop at the open zone. Pitch 100mm → 44 jets edge-to-edge — see processing-tray §3.9. | 5 10-pack | Home Depot | $17 |
+| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×5 = 50 (43 used, 7 spare); side-tapped into the poly manifold, spray straight down. Nozzles now run the FULL beam width (4,289mm) — 90° down-jets clear the overhead grate, so no reason to stop at the open zone. Pitch 100mm → 43 jets edge-to-edge — see processing-tray §3.9. | 5 10-pack | Home Depot | $17 |
 | [Figure-8 end clamps, 3/4in poly](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) (1533) | Figure-8 fold-back end closures that crimp the 3/4" poly manifold ends shut — DripDepot #1533, 10-pack, $4.20 firm (2026-07-30). | 1 10-pack | DripDepot | $4 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
 | [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center. 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |

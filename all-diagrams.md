@@ -306,6 +306,12 @@
 
 ![TBS-001 — Processing Tray Detail C: Center-Seam Shingle-Lap Joint](assets/spray-bar-sheet8.png)
 
+![TBS-001 — Spray Beam + Manifold Layout (Sheet 9)](assets/spray-bar-sheet9.png)
+
+![TBS-001 — Wheel-Carriage Plate Fabrication (Sheet 10)](assets/spray-bar-sheet10.png)
+
+![TBS-001 — Processing-Tray Pan Fabrication (Sheet 11)](assets/spray-bar-sheet11.png)
+
 **Tray drainage — Yd surface slope + center-draining near-rim gutter:**
 
 ![TBS-001 — Tray drainage plan: Yd fall + gutter to center pickup](assets/tray-slope-sheet1.png)

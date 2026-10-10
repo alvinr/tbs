@@ -52,12 +52,13 @@ the ONE mechanical visual failure — a label off the frame edge or overlapping 
 IS caught by the render-based ``--overflow`` pass:
   * ``--overflow``   — RENDER every sheet the generator's __main__ draws (via monkeypatched
                        Figure.savefig, no files written) and measure each text artist's bbox
-                       against the axes data limits (the intended frame — the sheets use
-                       axis("off") + bbox_inches="tight") and against its neighbours. Reports
-                       OVERFLOW (off LEFT/RIGHT/TOP/BOTTOM by >``--tol``%, default 4 — skipped on
-                       small INSET axes <12%% of the figure, whose tiny frame isn't the visual
-                       boundary and balloons the %%) + CROWDED (two DIFFERENT labels overlapping
-                       ≥60%% of the smaller; ``--no-collisions`` to skip — bbox-based, so multi-line
+                       against the FIGURE CANVAS edge — what actually clips in the PNG. A sheet
+                       saved with bbox_inches="tight" can't clip (the canvas expands to the
+                       artists), so its OVERFLOW scan is skipped entirely; only a sheet saved
+                       WITHOUT tight can cut a label off the canvas. Reports OVERFLOW (off
+                       LEFT/RIGHT/TOP/BOTTOM of the canvas by >``--tol``%, default 2) + CROWDED
+                       (two DIFFERENT labels overlapping ≥60%% of the smaller; ``--no-collisions``
+                       to skip — bbox-based, so multi-line
                        whitespace makes it advisory). Report
                        only; repositioning is a judgement (P1/P8). Needs matplotlib; the static
                        ``--check``/``--fix`` path stays dependency-free (mpl imported lazily).
@@ -332,36 +333,42 @@ def apply_fixes(src, findings):
 # ─────────────────────────────────────────────────────────────────────────────
 # RENDER-BASED overflow/collision pass (--overflow). The STATIC checks above can't
 # see where a label lands; this one RENDERS each sheet the generator draws and
-# measures every text artist's bbox against the axes data limits (the intended
-# frame, since the sheets use axis("off") + bbox_inches="tight") and against its
-# neighbours. Catches the one visual failure mode that IS mechanical: a leader/dim/
-# notes label sprawling past the frame edge (P8/P1) or overlapping another label.
+# measures every text artist's bbox against the FIGURE CANVAS edge — the real clip
+# boundary of the saved PNG. A sheet saved with bbox_inches="tight" cannot clip (its
+# canvas grows to fit the artists), so its overflow scan is skipped; only a non-tight
+# save can cut a label off the canvas. Catches the one visual failure mode that IS
+# mechanical: a leader/dim/notes label actually cut off (P8/P1) or overlapping another.
 # Heavy deps (matplotlib) are imported lazily so the static path stays dep-free.
 # ─────────────────────────────────────────────────────────────────────────────
-def _scan_axes(ax, renderer, sheet, findings, tol_frac, collide):
-    """Measure every non-empty Text artist in `ax`; record frame-overflow + label collisions."""
+def _clip_label(s):
+    s = " / ".join(p.strip() for p in s.splitlines() if p.strip())
+    return (s[:44] + "…") if len(s) > 45 else s
+
+
+def _savefig_is_tight(kwargs):
+    """True when this savefig crops to the artists (``bbox_inches="tight"``) — then NOTHING clips:
+    the saved canvas expands to include every label, so a label past an axis box is just margin."""
+    import matplotlib
+    bbox = kwargs.get("bbox_inches", matplotlib.rcParams.get("savefig.bbox"))
+    return bbox == "tight"
+
+
+def _scan_figure_clip(fig, renderer, sheet, findings, tol_frac):
+    """Record every Text artist whose rendered bbox is cut off by the FIGURE CANVAS edge.
+
+    This is what actually clips a label in the saved PNG: saving WITHOUT bbox_inches="tight"
+    rasterizes only the figure canvas (0..W, 0..H in display px), so any text poking past the
+    canvas loses those pixels. Measured against the canvas edge, NOT the axes data-box — a
+    label sitting in the margin outside an axis("off") box reads fine as long as it stays on
+    the canvas (the old axes-box measure over-reported every such deliberate margin caption)."""
     import matplotlib.text as mtext
-    # A small INSET axes (section detail, legend) isn't the sheet's visual frame — a label leaving
-    # its tiny box into the surrounding sheet is cosmetic, and % overflow vs a tiny range balloons
-    # (a label 2× an inset's width reads "+192%"). Skip OVERFLOW on insets; still check collisions.
-    pos = ax.get_position()
-    is_inset = (pos.width * pos.height) < 0.12
-    xl, yl = ax.get_xlim(), ax.get_ylim()
-    x_lo, x_hi = min(xl), max(xl)
-    y_lo, y_hi = min(yl), max(yl)
-    xr, yr = x_hi - x_lo, y_hi - y_lo
-    if xr <= 0 or yr <= 0:
+    fb = fig.bbox
+    fw, fh = fb.width, fb.height
+    if fw <= 0 or fh <= 0:
         return
-    tol_x, tol_y = tol_frac * xr, tol_frac * yr
-    inv = ax.transData.inverted()
-
-    def _clip(s):
-        s = " / ".join(p.strip() for p in s.splitlines() if p.strip())
-        return (s[:44] + "…") if len(s) > 45 else s
-
-    boxes = []
-    for t in ax.get_children():
-        if not isinstance(t, mtext.Text):
+    tol_x, tol_y = tol_frac * fw, tol_frac * fh
+    for t in fig.findobj(mtext.Text):
+        if not t.get_visible():
             continue
         s = t.get_text()
         if not s or not s.strip():
@@ -372,26 +379,40 @@ def _scan_axes(ax, renderer, sheet, findings, tol_frac, collide):
             continue
         if bb.width <= 0 or bb.height <= 0:
             continue
+        sides = []
+        if -bb.x0 > tol_x:
+            sides.append(("off LEFT", (-bb.x0) / fw))
+        if bb.x1 - fw > tol_x:
+            sides.append(("off RIGHT", (bb.x1 - fw) / fw))
+        if -bb.y0 > tol_y:
+            sides.append(("off BOTTOM", (-bb.y0) / fh))
+        if bb.y1 - fh > tol_y:
+            sides.append(("off TOP", (bb.y1 - fh) / fh))
+        if sides:
+            desc = ", ".join(f"{d} +{f * 100:.0f}%" for d, f in sides)
+            findings.append((sheet, "OVERFLOW", _clip_label(s), desc))
+
+
+def _scan_axes_collisions(ax, renderer, sheet, findings):
+    """Record pairs of DIFFERENT Text labels in `ax` whose rendered bboxes substantially overlap."""
+    import matplotlib.text as mtext
+    inv = ax.transData.inverted()
+    boxes = []
+    for t in ax.get_children():
+        if not isinstance(t, mtext.Text):
+            continue
+        s = t.get_text()
+        if not s or not s.strip():
+            continue
+        try:
+            bb = t.get_window_extent(renderer)
+        except Exception:
+            continue
+        if bb.width <= 0 or bb.height <= 0:
+            continue
         (ax0, ay0) = inv.transform((bb.x0, bb.y0))
         (ax1, ay1) = inv.transform((bb.x1, bb.y1))
-        bx_lo, bx_hi = min(ax0, ax1), max(ax0, ax1)
-        by_lo, by_hi = min(ay0, ay1), max(ay0, ay1)
-        boxes.append((_clip(s), bx_lo, bx_hi, by_lo, by_hi))
-        sides = []
-        if x_lo - bx_lo > tol_x:
-            sides.append(("off LEFT", (x_lo - bx_lo) / xr))
-        if bx_hi - x_hi > tol_x:
-            sides.append(("off RIGHT", (bx_hi - x_hi) / xr))
-        if y_lo - by_lo > tol_y:
-            sides.append(("off BOTTOM", (y_lo - by_lo) / yr))
-        if by_hi - y_hi > tol_y:
-            sides.append(("off TOP", (by_hi - y_hi) / yr))
-        if sides and not is_inset:
-            desc = ", ".join(f"{d} +{f * 100:.0f}%" for d, f in sides)
-            findings.append((sheet, "OVERFLOW", _clip(s), desc))
-
-    if not collide:
-        return
+        boxes.append((_clip_label(s), min(ax0, ax1), max(ax0, ax1), min(ay0, ay1), max(ay0, ay1)))
     for i in range(len(boxes)):
         si, ix0, ix1, iy0, iy1 = boxes[i]
         ai = (ix1 - ix0) * (iy1 - iy0)
@@ -407,7 +428,7 @@ def _scan_axes(ax, renderer, sheet, findings, tol_frac, collide):
                 findings.append((sheet, "CROWDED", si, f"overlaps “{sj}” ({frac * 100:.0f}%)"))
 
 
-def overflow_pass(path, tol_frac=0.02, collide=True):
+def overflow_pass(path, tol_frac=0.02, collide=True):  # tol_frac is a fraction of the FIGURE canvas
     """Render every sheet `path`'s main() draws and return (sheet, kind, text, detail) findings."""
     import matplotlib
     matplotlib.use("Agg")
@@ -422,8 +443,11 @@ def overflow_pass(path, tol_frac=0.02, collide=True):
         try:
             self.canvas.draw()
             renderer = self.canvas.get_renderer()
-            for ax in self.axes:
-                _scan_axes(ax, renderer, str(sheet), findings, tol_frac, collide)
+            if not _savefig_is_tight(k):               # tight bbox expands to include every label → nothing clips
+                _scan_figure_clip(self, renderer, str(sheet), findings, tol_frac)
+            if collide:
+                for ax in self.axes:
+                    _scan_axes_collisions(ax, renderer, str(sheet), findings)
         except Exception as ex:                        # never let the check crash the render sweep
             findings.append((str(sheet), "ERROR", "", f"scan failed: {ex}"))
         return                                          # skip the real write — read-only check
@@ -476,7 +500,7 @@ def run_overflow(files, tol_frac, collide):
             label = f"“{text}” " if text else ""
             print(f"    {col}{kind:<9}\033[0m {label}— {detail}")
             total += (kind in ("OVERFLOW", "CROWDED"))
-    print(f"\n{total} label(s) off-frame / overlapping — reposition per skill_label_placement.md (P1/P8).")
+    print(f"\n{total} label(s) clipped by the canvas / overlapping — reposition per skill_label_placement.md (P1/P8).")
     return 0
 
 
@@ -488,7 +512,7 @@ def main():
     ap.add_argument("--overflow", action="store_true",
                     help="RENDER each sheet and report labels off the frame edge / overlapping (render-based, needs matplotlib)")
     ap.add_argument("--no-collisions", action="store_true", help="with --overflow: report frame-overflow only, skip label collisions")
-    ap.add_argument("--tol", type=float, default=4.0, help="with --overflow: overflow tolerance, %% of axis range (default 4; bbox_inches=tight absorbs a few %%)")
+    ap.add_argument("--tol", type=float, default=2.0, help="with --overflow: clip tolerance, %% of the FIGURE canvas a label may exceed before it counts as cut off (default 2)")
     args = ap.parse_args()
 
     files = []

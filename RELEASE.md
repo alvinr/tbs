@@ -41,7 +41,9 @@ file** — a release must not ship without a changelog entry:
 - Verified the 5-sheet blueprint set complete and current (GA, fab-detail board + wall-plate/hinge sheets, all dimensioned; 3D `shelf()` builder current). Tidied a label collision on Sheet 1 (`EP (high)` moved to the EP's exposed strip, clear of `BATTERY BANK`).
 
 ### Diagrams — label-overflow sweep
-- IBC frame Sheet 1: widened the right margin so the member cut-list and datum/tolerance reference blocks seat fully inside the frame instead of hanging off the edge.
+- Fixed the `tidy_labels.py --overflow` check to measure each label against the **figure canvas edge** (what actually clips in the saved PNG) instead of the axes data-box. A sheet saved with `bbox_inches="tight"` cannot clip (the canvas grows to fit the labels), so its scan is now skipped; only a non-tight save can cut a label off. This cut the flagged count from ~136 (mostly deliberate margin captions that rendered fine) to the handful of genuine clips.
+- IBC frame Sheet 1: widened the right margin so the member cut-list and datum/tolerance reference blocks seat fully inside the frame instead of clipping off the edge.
+- Tray-slope + GRP cut-plan: gave their saves `bbox_inches="tight"` (matching the house convention) so the edge-most scale/coordinate labels can no longer be clipped by the canvas. Diagram set now shows zero genuine canvas clips.
 
 ## [0.15] — 2026-10-08
 

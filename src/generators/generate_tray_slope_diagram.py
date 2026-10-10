@@ -37,7 +37,7 @@ def _tb(fig, sheet, subtitle, scale_note):
 
 def _save(fig, name):
     path = os.path.join(DIAGRAMS_DIR, name)
-    fig.savefig(path, dpi=150); plt.close(fig); print(f"  {path} saved")
+    fig.savefig(path, dpi=150, bbox_inches="tight"); plt.close(fig); print(f"  {path} saved")
 
 
 # ── Sheet 1 — PLAN ────────────────────────────────────────────────────────────

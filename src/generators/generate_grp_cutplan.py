@@ -96,7 +96,7 @@ def main():
     fig.tight_layout(rect=(0, 0.03, 1, 0.96))
     out = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
                        "diagrams", "grp-cutplan.png")
-    fig.savefig(out, dpi=150, facecolor="white")
+    fig.savefig(out, dpi=150, facecolor="white", bbox_inches="tight")
     print("wrote", out)
 
 

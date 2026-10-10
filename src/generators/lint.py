@@ -882,6 +882,52 @@ def gate_emitter_dups() -> tuple[bool, list[str]]:
                                      f"({len(detected)} allowlisted: {len(allow) - 2} pending, 2 context)"])
 
 
+# ── Overview aggregation RATCHET (model-aggregation-plan.md Phase 3) ──────────
+# `generate_sketchup_model.py` (overview) is a thin AGGREGATOR: it composes each subsystem's builder
+# from that subsystem's own model. The allowlist below is the sanctioned set of functions overview may
+# define — the aggregator itself, the container/camera-level geometry no sub-model owns, and the
+# electrical COMPOSITION wrappers (which compose `em.*`, the target pattern). A NEW top-level def is a
+# re-grown OWNED builder that belongs in its sub-model — so it can't silently drift from the sub-model
+# the way the Cct-E/Cct-C wiring did. To add one, move it to a sub-model, or (if genuinely
+# overview-level) allowlist it here with a reason. Bidirectional ratchet: a removed def must also be
+# dropped from the allowlist in the same commit (overview shrinking toward pure aggregation is the goal).
+_OVERVIEW_BUILDER_ALLOW = {
+    "generate_ruby":      "the AGGREGATOR — overview's one job (composes every sub-model builder)",
+    "overview_labels":    "the overview-scene label set",
+    "container_shell":    "container-level geometry — the camera's own shell; no sub-model owns it",
+    "far_wall":           "container-level geometry (sealed end wall); overview-level",
+    "pinhole_assembly":   "the camera's pinhole — no dedicated sub-model; overview-level",
+    "optical_cone":       "the camera's optical cone — overview-level",
+    "electrical":         "COMPOSITION wrapper over em.* (target pattern — composes, not duplicates)",
+    "ep_external_wiring": "COMPOSITION wrapper over em.*",
+    "lighting_wiring":    "COMPOSITION wrapper over em.*",
+    "fan_wiring":         "COMPOSITION wrapper over em.*",
+    "evap_cooler":        "COMPOSITION wrapper over em.*",
+    "shelf":              "accepted orphan — reverse context-ghost edge from electrical; no sub-model home yet",
+    "light_seal":         "accepted orphan — no sub-model home yet",
+}
+
+
+def gate_overview_aggregation() -> tuple[bool, list[str]]:
+    """Phase-3 ratchet: overview may define ONLY the sanctioned aggregator/container/composition
+    functions. A new def is a re-grown owned builder (move it to its sub-model); a removed one is a
+    stale allowlist entry (drop it here) — so overview can never silently re-grow owned geometry."""
+    import ast
+    path = os.path.join(_MODELS, "generate_sketchup_model.py")
+    try:
+        defs = [n.name for n in ast.parse(open(path, encoding="utf-8").read()).body
+                if isinstance(n, ast.FunctionDef)]
+    except (OSError, SyntaxError) as e:
+        return False, [f"could not parse overview: {e}"]
+    allow = set(_OVERVIEW_BUILDER_ALLOW)
+    issues = [f"overview defines {n!r} — move it to its subsystem model, or if it is genuinely "
+              f"overview-level add it to _OVERVIEW_BUILDER_ALLOW with a reason"
+              for n in defs if n not in allow]
+    issues += [f"stale allowlist entry {n!r} — overview no longer defines it; drop it from "
+               f"_OVERVIEW_BUILDER_ALLOW" for n in sorted(allow - set(defs))]
+    return (not issues), (issues or [f"overview is a pure aggregator ({len(defs)} sanctioned functions)"])
+
+
 def warn_unused_imports() -> tuple[bool, list[str]]:
     """A generator/model that imports a name it no longer uses — code cruft that
     check_unused_imports.py (a release gate) strips with --fix. Surfaced here as a per-commit
@@ -980,6 +1026,7 @@ GATES = [
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),
     ("plumbing routing change ships a refreshed interference report", gate_interference_report),
     ("no NEW cross-file duplicate geometry emitter (ratchet)", gate_emitter_dups),
+    ("overview defines no re-grown owned builder (aggregation ratchet)", gate_overview_aggregation),
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),

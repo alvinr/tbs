@@ -34,6 +34,9 @@ file** — a release must not ship without a changelog entry:
 ### Water
 - Moved the blue supply trunk's drop to the ribbon slot (`BLUE_TRUNK_HANDOFF_X` → `RIBBON_SLOT_X` = 4641, past the tray edge) so it no longer drops over the open processing-tray basin — matching every other under-grate ribbon line. Clears both remaining pipe-vs-tray interferences (overview + water now read 0).
 
+### Tooling
+- Model-aggregation Phase 3: added a `lint.py` gate (`gate_overview_aggregation`) that locks the overview model as a pure aggregator — it may define only the sanctioned aggregator/container/composition functions, so it can never silently re-grow an owned builder and drift from its sub-model (the Cct-E/Cct-C class of bug). Completes the aggregation plan.
+
 ## [0.15] — 2026-10-08
 
 - **Overview collapsed to a thin aggregator (model refactor).** Shared Ruby-drawing infrastructure (primitives, 38-color palette, model metadata) was extracted to a neutral `tbs_draw.py`, and ~60 geometry builders moved from the overview into their owner sub-models (walkway, IBC, spray-bar, electrical, water, film-plane, light-trap). The overview is now ~13 container-level builders composing those sub-models, so each component lives in exactly one place and the overview can't drift from its parts. See [model-aggregation-plan.md](model-aggregation-plan.md).

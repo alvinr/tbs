@@ -215,11 +215,21 @@ The fix is one composition, not two:
 - Resolve the reverse edge: move `solar_array` + `shelf` to their proper owner (solar → `em`;
   shelf → a `context`/furniture owner) so electrical stops importing overview.
 
-### Phase 3 — Overview is pure aggregation
-`generate_ruby()` is only `component(name, tag, <module>.<builder>(...))` lines + the tag/scene
-tables. Add a lint check: **`generate_sketchup_model.py` defines no `ruby_*`/`*_build` geometry
-functions** (only `generate_ruby`, scenes, and imports) — so overview can never silently re-grow
-an owned builder.
+### Phase 3 — Overview is pure aggregation — ✅ DONE 2026-10-10
+`generate_ruby()` composes sub-model builders + the tag/scene tables. Added the ratchet as a
+**lint.py GATE** — `gate_overview_aggregation` ("overview defines no re-grown owned builder"):
+overview may define ONLY the sanctioned functions in `_OVERVIEW_BUILDER_ALLOW` — the aggregator
+(`generate_ruby`), the overview label set, the container/camera-level geometry no sub-model owns
+(`container_shell`, `far_wall`, `pinhole_assembly`, `optical_cone`), and the electrical COMPOSITION
+wrappers (`electrical`, `ep_external_wiring`, `lighting_wiring`, `fan_wiring`, `evap_cooler`), plus
+the two accepted orphans (`shelf`, `light_seal`). A NEW top-level def fails the gate ("move it to its
+subsystem model, or allowlist it with a reason"); a removed def must be dropped from the allowlist
+(bidirectional ratchet). So overview can never silently re-grow an owned builder — the exact drift
+(Cct-E/Cct-C wiring) this plan chased. Lint-only change, no geometry — no model re-sends.
+
+**Open polish (optional, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as
+accepted (no sub-model home). If a `context`/furniture owner is ever created, move them there and drop
+them from the allowlist (the ratchet will flag the stale entries, keeping the move honest).
 
 ---
 

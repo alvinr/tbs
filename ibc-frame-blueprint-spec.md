@@ -110,7 +110,7 @@ text), authoritative voice, each capacity/coefficient cited.
 
 ## Phase B — Fastener + weld schedule — DONE 2026-08-14
 
-- [x] **Fastener schedule J1–J3** (report §3.5): J1 floor foot-plate → #14×3¼″ 410 SS self-driller ×16 (driven to seat); J2/J7 bar→upright L-cleat → M12×65 18-8 SS ×16 (8 corridor-end J2 + 8 wall-end J7, 1 horizontal bolt per cleat through the L leg + the bar's 50 mm web, ~50 N·m + anti-seize, nyloc); J3 wall-hanger through-bolt → M12×70 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex).
+- [x] **Fastener schedule J1–J3** (report §3.5): J1 floor foot-plate → M12×70 Gr.8.8 zinc through-bolt ×16 (4/foot, through the 12mm plate + 28mm ply + ~4mm cross-member flange, nut underside, ~90 N·m); J2/J7 bar→upright L-cleat → M12×65 18-8 SS ×16 (8 corridor-end J2 + 8 wall-end J7, 1 horizontal bolt per cleat through the L leg + the bar's 50 mm web, ~50 N·m + anti-seize, nyloc); J3 wall-hanger through-bolt → M12×70 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex).
 - [x] **Weld schedule W1–W5** (report §3.5, sized in `ibc_frame_load.py`): W4 lashing-ring→bar 6 mm fillet (SF 9.1 vs strap WLL) + W3 cleat→upright 4 mm (SF 37) are load-checked; W1 upright↔ring 5 mm, W2 foot↔upright 6 mm, W5 hanger-seat↔pocket 4 mm are AWS D1.1 minimum practical fillets (frame load << capacity). Hangers are folded (not welded); backing plates loose (bolted).
 - [x] Added as tables in `ibc-stacking-report.md` §3.5. (A dedicated fastening/weld detail SHEET is deferred to Phase D.)
 

@@ -34,6 +34,11 @@ file** — a release must not ship without a changelog entry:
 ### Water
 - Moved the blue supply trunk's drop to the ribbon slot (`BLUE_TRUNK_HANDOFF_X` → `RIBBON_SLOT_X` = 4641, past the tray edge) so it no longer drops over the open processing-tray basin — matching every other under-grate ribbon line. Clears both remaining pipe-vs-tray interferences (overview + water now read 0).
 
+### IBC frame
+- Reconciled the floor-foot anchor spec (owner-confirmed **4× M12 per foot**): the stacking-report §3.4 J1 row and the parts registry still carried the old `#14` 410-SS self-driller, while the drawing + datum table were already fully committed to a welded 150×150×12 flange foot with 4× M12 on a 100mm PCD. J1 is now a **M12×70 Gr.8.8 zinc through-bolt** (16 total, reusing the standard structural SKU 91280A732) into the steel floor cross-members — plain nut + split-lock on the underside (true uplift + lateral restraint, vs the self-driller's slide-only hold). Added the 16 backing nuts + washers to the registry; cost cascaded (+$21/$20/$19).
+- Added the missing **J1 mark** to the owning Sheet 1 foot callout (per the joint-mark-on-its-diagram rule).
+- Fixed a stale `44 jets` → `43` straggler in the spray-bar cost line (left over from the 2026-08 nozzle reconciliation) and realigned its $1 rounding.
+
 ### Tooling
 - Model-aggregation Phase 3: added a `lint.py` gate (`gate_overview_aggregation`) that locks the overview model as a pure aggregator — it may define only the sanctioned aggregator/container/composition functions, so it can never silently re-grow an owned builder and drift from its sub-model (the Cct-E/Cct-C class of bug). Completes the aggregation plan.
 

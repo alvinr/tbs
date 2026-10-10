@@ -2626,12 +2626,13 @@ def draw_sheet11():
     ], 20, 92, spacing=22, fs=6, font=FONT, width=56)
 
     # ══ title block ═══════════════════════════════════════════════════════════
-    ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])
+    ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 11 OF {TOTAL_SHEETS}",
                 drawing_title="PROCESSING-TRAY PAN",
                 subtitle="FABRICATION — 304 SS 1.5mm, 2-PANEL",
-                scale_note="PLAN 1:25 · SECTION Yd×Z EXAGGERATED — ALL DIMS IN mm")
+                scale_note="PLAN 1:25 · SECTION Yd×Z EXAGGERATED — ALL DIMS IN mm",
+                height=0.7)
     _save(fig, "spray-bar-sheet11")
 
 

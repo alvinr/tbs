@@ -420,7 +420,7 @@ def _datum_tol_block(ax, x, y):
 def sheet1():
     """Sheet 1 — Front elevation of IBC support frame."""
 
-    YD_LO = -300
+    YD_LO = -980   # wide right margin to seat the cut-list + datum/tolerance blocks
     YD_HI = FRAME_FOOTPRINT_W + 300
     Z_LO  = -400
     Z_HI  = TOP_Z + 700

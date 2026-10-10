@@ -40,6 +40,9 @@ file** — a release must not ship without a changelog entry:
 ### Chemistry prep shelf
 - Verified the 5-sheet blueprint set complete and current (GA, fab-detail board + wall-plate/hinge sheets, all dimensioned; 3D `shelf()` builder current). Tidied a label collision on Sheet 1 (`EP (high)` moved to the EP's exposed strip, clear of `BATTERY BANK`).
 
+### Diagrams — label-overflow sweep
+- IBC frame Sheet 1: widened the right margin so the member cut-list and datum/tolerance reference blocks seat fully inside the frame instead of hanging off the edge.
+
 ## [0.15] — 2026-10-08
 
 - **Overview collapsed to a thin aggregator (model refactor).** Shared Ruby-drawing infrastructure (primitives, 38-color palette, model metadata) was extracted to a neutral `tbs_draw.py`, and ~60 geometry builders moved from the overview into their owner sub-models (walkway, IBC, spray-bar, electrical, water, film-plane, light-trap). The overview is now ~13 container-level builders composing those sub-models, so each component lives in exactly one place and the overview can't drift from its parts. See [model-aggregation-plan.md](model-aggregation-plan.md).

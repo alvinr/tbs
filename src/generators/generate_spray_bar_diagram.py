@@ -2531,7 +2531,7 @@ def draw_sheet11():
     ax.plot([dx], [dyv], marker="s", ms=7, mfc="white", mec=C_FRAME, mew=1.2, zorder=12)
     leader(ax, dx, dyv, -M + 60, dyv + 230,
            "DATUM\n(pan near-rim LEFT corner;\ncontainer X280 / Yd80)",
-           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+           ha="left", fs=6.0, color=C_FRAME, font=FONT)
 
     # ── dimensions ──
     draw_dim_h(ax, 0, W, -M + 180, f"{W:.0f}mm — OVERALL (2 panels, field-bolted)",
@@ -2540,8 +2540,8 @@ def draw_sheet11():
     draw_dim_v(ax, -M + 200, 0, D, f"{D:.0f}mm", fs=7.5, font=FONT, right=False, offset=24)
     # rim fold inset (near-rim, top-right corner — clear of the sump)
     draw_dim_v(ax, W + 120, py(0), py(0) - rim, f"{rim:.0f}mm", fs=6.0, font=FONT, right=True, offset=18)
-    leader(ax, W - rim, py(rim), W + 120, py(rim) + 150,
-           f"RIM FOLD LINE — up-bend {rim:.0f}mm (all 4 sides)", ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(ax, W - rim, py(rim), W - (W * 0.10), py(rim) + 160,
+           f"RIM FOLD LINE — up-bend {rim:.0f}mm (all 4 sides)", ha="left", fs=6.0, color=C_FRAME, font=FONT)
 
     # ── center seam: lap note (into lower-right interior) + bolt pitch (mid, right of seam) ──
     leader(ax, cx, py(1500), cx + 560, py(1700),
@@ -2563,13 +2563,13 @@ def draw_sheet11():
                fs=6.0, font=FONT, above=True, offset=18)
     draw_dim_h(ax, sx0, sx1, py(sy1) - 60, f"{PROC_TRAY_SUMP_W:.0f}mm", fs=5.5, font=FONT, above=False, offset=12)
     draw_dim_v(ax, sx0 - 70, py(0), py(PROC_TRAY_SUMP_D), f"{PROC_TRAY_SUMP_D:.0f}mm", fs=5.5, font=FONT, right=False, offset=12)
-    leader(ax, sump_x, py(PROC_TRAY_SUMP_D), sump_x + 250, py(820),
+    leader(ax, sump_x, py(PROC_TRAY_SUMP_D), sump_x + 250, py(460),
            f"PRESSED SUMP WELL {PROC_TRAY_SUMP_W:.0f}×{PROC_TRAY_SUMP_D:.0f}mm × {PROC_TRAY_SUMP_Z:.0f}mm DEEP\n(stamped during forming — see SECTION)",
-           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+           ha="left", fs=6.0, color=C_FRAME, font=FONT)
     # gutter width — leader into interior
-    leader(ax, rim + 250, py(gy), 650, py(560),
+    leader(ax, rim + 250, py(gy), 450, py(460),
            f"NEAR-RIM GUTTER {PROC_TRAY_GUTTER_W:.0f}mm — falls 1:200 inward to the sump",
-           ha="left", fs=6.0, color=C_FRAME, font=FONT, bbox=LBL_BG)
+           ha="left", fs=6.0, color=C_FRAME, font=FONT)
     draw_dim_v(ax, rim + 120, py(0), py(gy), f"{PROC_TRAY_GUTTER_W:.0f}mm", fs=5.5, font=FONT, right=False, offset=12)
 
     ax.text(W / 2, D + M - 40, "PLAN — PAN (looking down · near rim at top · X across · Yd down)",
@@ -2606,13 +2606,13 @@ def draw_sheet11():
     draw_dim_v(axs, -90, znear, znear + rim, f"{rim:.0f}mm", fs=6.0, font=FONT, right=False, offset=70)
     draw_dim_v(axs, D + 150, zfar, zfar + rim, f"{rim:.0f}mm RIM", fs=6.0, font=FONT, right=True, offset=70)
     draw_dim_v(axs, sump_yd1 + 60, 0, floor_top(sump_yd1), f"{PROC_TRAY_SUMP_Z:.0f}mm", fs=5.5, font=FONT, right=True, offset=60)
-    leader(axs, sump_yd1 / 2, 0, 360, -12, f"PRESSED SUMP — {PROC_TRAY_SUMP_Z:.0f}mm below pan floor, bottom on Z0",
-           ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(axs, sump_yd1 / 2, 0, 160, -12, f"PRESSED SUMP — {PROC_TRAY_SUMP_Z:.0f}mm below pan floor, bottom on Z0",
+           ha="left", fs=5.5, color=C_FRAME, font=FONT)
     leader(axs, D * 0.6, floor_top(D * 0.6), D * 0.6 + 60, floor_top(D * 0.6) + 40,
-           "PAN SHEET 304 SS 1.5mm (flat)", ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    leader(axs, D * 0.35, shim_near + (shim_far - shim_near) * 0.35 - 1, D * 0.35, -14,
+           "PAN SHEET 304 SS 1.5mm (flat)", ha="left", fs=5.5, color=C_FRAME, font=FONT)
+    leader(axs, D * 0.35, shim_near + (shim_far - shim_near) * 0.35 - 1, D * 0.35, 44,
            f"TAPERED HDPE SHIM STRIPS (×{PROC_TRAY_SHIM_N}) — set the 1:200 Yd fall (far→near)",
-           ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+           ha="left", fs=5.5, color=C_FRAME, font=FONT)
     axs.text(D / 2, 112, "SECTION — Yd × Z  (VERTICAL SCALE EXAGGERATED — slope + thickness not to scale)",
              ha="center", va="top", fontsize=7.5, fontweight="bold", color=C_FRAME, **FONT)
 
@@ -2623,7 +2623,7 @@ def draw_sheet11():
         "Datum: pan near-rim LEFT corner (container X280 / Yd80).  Material: 304 SS 1.5mm sheet.",
         "General linear ±1.0mm; seam-bolt + sump pattern ±0.5mm.  Forming: press-formed 50mm rim up-bend (all 4 sides) + pressed sump well.",
         "2 equal panels, field-bolted at the center shingle lap (uphill over downhill), silicone-bedded.  Pan is FLAT — the 1:200 fall is set by the tapered HDPE shims beneath.",
-    ], 2, 92, spacing=22, fs=6.2, font=FONT, width=96)
+    ], 20, 92, spacing=22, fs=6, font=FONT, width=56)
 
     # ══ title block ═══════════════════════════════════════════════════════════
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])

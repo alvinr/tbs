@@ -2413,13 +2413,13 @@ def draw_sheet10():
     draw_dim_h(ax, 0, PL_L, PL_W + 24, f"{PL_L:.0f}mm", fs=7, font=FONT)
     draw_dim_v(ax, -18, 0, PL_W, f"{PL_W:.0f}mm", fs=7, font=FONT)
     # wheel axle CLs + spacing (baseline from left datum)
-    draw_dim_h(ax, 0, WH1, -26, f"{WH1:.0f}mm", fs=6, font=FONT, above=False)
+    draw_dim_h(ax, 0, WH1, -40, f"{WH1:.0f}mm", fs=6, font=FONT, above=False)
     draw_dim_h(ax, WH1, WH2, -40, f"{WH_SP:.0f}mm (wheel CL sp)", fs=6, font=FONT, above=False)
-    draw_dim_h(ax, WH2, PL_L, -26, f"{PL_L - WH2:.0f}mm", fs=6, font=FONT, above=False)
+    draw_dim_h(ax, WH2, PL_L, -40, f"{PL_L - WH2:.0f}mm", fs=6, font=FONT, above=False)
     for wy in (WH1, WH2):
         ax.plot([wy, wy], [-24, 30], **WIT)
     # notch width (at the open mouth) + depth
-    draw_dim_h(ax, NL, NR, -10, f"NOTCH {BEAM_W:.1f}mm", fs=5.6, font=FONT, above=False)
+    draw_dim_h(ax, NL, NR, -26, f"NOTCH {BEAM_W:.1f}mm", fs=5.6, font=FONT, above=False)
     draw_dim_v(ax, PL_L + 18, 0, NOTCH_D, f"{NOTCH_D:.0f}mm", fs=6, font=FONT, right=True)
     ax.plot([NR, PL_L + 18], [NOTCH_D, NOTCH_D], **WIT)
     # hole X stations (rows) from bottom datum
@@ -2437,15 +2437,15 @@ def draw_sheet10():
     ax.plot([NL, NL], [NOTCH_D, PL_W + 8], **WIT)
 
     # callouts
-    leader(ax, SADDLE[0][0], SADDLE[0][1], 14, -58,
+    leader(ax, SADDLE[0][0], SADDLE[0][1], 14, -28,
            f"8× Ø{HOLE_D} CLR (M5) — AXLE-SADDLE BOLTS\n(2 saddles/axle · 2 feet each · underside straps)",
-           ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    leader(ax, CLAMP[-1][0], CLAMP[-1][1], 196, -58,
+           ha="left", fs=5.4, color=C_FRAME, font=FONT)
+    leader(ax, CLAMP[-1][0], CLAMP[-1][1], 196, -28,
            f"4× Ø{HOLE_D} CLR (M5) — BEAM-CLAMP BOLTS\n(top/bottom clamp plates sandwich the beam)",
-           ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    leader(ax, NR, NOTCH_D, 182, PL_W + 20,
+           ha="left", fs=5.4, color=C_FRAME, font=FONT)
+    leader(ax, NR, NOTCH_D, 182, PL_W + 10,
            "CENTRAL NOTCH — wings butt the 38.1mm beam faces\n(outer edge flush with the beam end; jig/bandsaw cut)",
-           ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
+           ha="left", fs=5.4, color=C_FRAME, font=FONT)
 
     ax.text(0, PL_W + 40, "PLAN  (looking down Z — Yd × X)", ha="left", va="bottom",
             fontsize=8, fontweight="bold", color=C_FRAME, **FONT)

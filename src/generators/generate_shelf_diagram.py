@@ -77,7 +77,8 @@ def sheet1():
     ax.text(BA_X + BA_W / 2, BA_D / 2, "BATTERY BANK", fontsize=5.5, color="#3a4a20",
             ha="center", va="center", **FONT)
     ax.add_patch(Rectangle((EP_X, 0), EP_W, 60, fc=C_ELEC, ec=C_OUT, lw=0.6, alpha=0.4, zorder=3))
-    ax.text(EP_X + EP_W / 2, 75, "EP (high)", fontsize=4.5, color="#8a5a10", ha="center", **FONT)
+    # label the EP on its EXPOSED strip to the right of the battery bank (clear of "BATTERY BANK")
+    ax.text(BA_X + BA_W + 6, 30, "EP (high)", fontsize=4.5, color="#8a5a10", ha="left", va="center", **FONT)
 
     # evap cooler (transport stow) — slides under, ghost
     ax.add_patch(Rectangle((EVAP_STOW_X, 0), EVAP_W, EVAP_D, fc=C_EVAP, ec=C_OUT, lw=0.6,

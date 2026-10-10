@@ -2331,7 +2331,7 @@ def draw_sheet9():
     # carriage-clamp station from datum
     ax.plot([sx(CLAMP_X), sx(CLAMP_X)], [sz(bz_top + 70), sz(bz_top + 330)], **WIT)
     draw_dim_h(ax, sx(0), sx(CLAMP_X), sz(bz_top + 330), f"{CLAMP_X:.1f}mm",
-               offset=0, fs=6.3, font=FONT, above=True)
+               offset=10, fs=6.3, font=FONT, above=True)
 
     # ── beam section inset (A-A: square tube + side manifold) ─────────────────
     axs = fig.add_axes([0.73, 0.50, 0.17, 0.38])
@@ -2341,8 +2341,8 @@ def draw_sheet9():
     axs.add_patch(Rectangle((-BW / 2, -BH / 2), BW, BH, fill=False, ec=C_FRAME, lw=1.5))
     axs.add_patch(Rectangle((-BW / 2 + BT, -BH / 2 + BT), BW - 2 * BT, BH - 2 * BT, fill=False, ec=C_FRAME, lw=1.0))
     axs.add_patch(Circle((BW / 2 + POLY / 2, -BH / 2 + POLY / 2), POLY / 2, fill=False, ec=C_FRAME, lw=1.2))
-    draw_dim_h(axs, -BW / 2, BW / 2, BH / 2 + 7, f"{BW:.1f}mm", offset=0, fs=5.6, font=FONT, above=True)
-    draw_dim_v(axs, -BW / 2 - 7, -BH / 2, BH / 2, f"{BH:.1f}mm", offset=0, fs=5.6, font=FONT)
+    draw_dim_h(axs, -BW / 2, BW / 2, BH / 2 + 7, f"{BW:.1f}mm", offset=10, fs=5.6, font=FONT, above=True)
+    draw_dim_v(axs, -BW / 2 - 7, -BH / 2, BH / 2, f"{BH:.1f}mm", offset=10, fs=5.6, font=FONT)
     leader(axs, BW / 2 + POLY / 2, -BH / 2 + POLY / 2, BW / 2 + 2, BH / 2 + 4,
            f"Ø{POLY:.0f} LDPE\nMANIFOLD", fs=5.2, color=C_FRAME, font=FONT)
     leader(axs, -BW / 2 + BT, 0, -BW / 2 - 10, -BH / 2 - 10, f"t={BT:.3f}mm", fs=5.2, color=C_FRAME, font=FONT)

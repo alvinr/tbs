@@ -41,7 +41,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
-from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
+from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_constants import DIAGRAM_DPI
@@ -117,6 +117,8 @@ C_ARM       = "#9098A0"                            # walkway-steel (distinct fro
 # Floor flange foot (under each corridor upright)
 FOOT_PLATE   = IBC_FOOT_PLATE     # 150mm square
 FOOT_PLATE_T = IBC_FOOT_PLATE_T   # 12mm thick
+PT           = FLOOR_PLATE_T       # floor-anchor sub-plate (strongback) thickness — the feet SIT ON it, so the
+                                   # upright base rises by PT and the post is cut shorter by PT (frame top fixed)
 FOOT_BOLT_D  = IBC_FOOT_BOLT_D    # M12
 FOOT_BOLT_PCD = IBC_FOOT_BOLT_PCD # 100mm square pitch
 FOOT_BOLT_N  = IBC_FOOT_BOLT_N    # 4 per foot
@@ -211,17 +213,25 @@ def _break(ax, x, y0, y1, *, amp=8, zo=11):
 # Floor flange foot helpers (anchor each corridor upright to the container floor)
 # ═══════════════════════════════════════════════════════════════════════════════
 def _foot_elev(ax, c, *, zo=7):
-    """Floor flange foot in elevation (edge-on): a wide thin plate just below
-    Z=0 plus two anchor-bolt stubs.  `c` = horizontal position (Yd or X)."""
+    """Welded 150×150×12 floor flange foot in elevation (edge-on), sitting ON the
+    floor-anchor sub-plate (drawn once per view by `_subplate_elev`).  The foot top
+    = PT (the upright base), so the post is cut shorter by the plate thickness and
+    the frame top is unchanged.  `c` = horizontal position (Yd or X)."""
     half = FOOT_PLATE / 2
-    _rhs_rect(ax, c - half, -FOOT_PLATE_T, FOOT_PLATE, FOOT_PLATE_T,
-              fc=C_STEEL, lw=1.4, zo=zo)
-    for d in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
-        ax.plot([(c + d), (c + d)],
-                [(-FOOT_PLATE_T), (-FOOT_PLATE_T - 28)],
-                color=C_OUT, lw=1.8, zorder=zo + 1)
-        ax.plot((c + d), (-FOOT_PLATE_T - 28), 'v', color=C_OUT,
-                ms=4, mew=0, zorder=zo + 1)
+    _rhs_rect(ax, c - half, PT - FOOT_PLATE_T, FOOT_PLATE, FOOT_PLATE_T, fc=C_STEEL, lw=1.4, zo=zo)
+
+
+def _subplate_elev(ax, c_lo, c_hi, *, zo=6):
+    """The ONE floor-anchor sub-plate (strongback) spanning all the feet in this
+    view, lying on the floor; winged TEKs self-tap it into the cross-members (J1a).
+    Container-dependent length — drawn to span the visible feet + a margin."""
+    x0, x1 = c_lo - FOOT_PLATE / 2 - 55, c_hi + FOOT_PLATE / 2 + 55
+    _rhs_rect(ax, x0, -FOOT_PLATE_T, x1 - x0, PT, fc=C_STEEL, lw=1.2, zo=zo)                 # sub-plate on the floor
+    n = max(4, round((x1 - x0) / 95))
+    for i in range(n):                                                                       # winged TEKs: plate → floor/members
+        xx = x0 + (i + 0.5) * (x1 - x0) / n
+        ax.plot([xx, xx], [PT - FOOT_PLATE_T, -FOOT_PLATE_T - 26], color=C_BOLT, lw=1.4, zorder=zo + 1)
+        ax.plot(xx, -FOOT_PLATE_T - 26, 'v', color=C_BOLT, ms=3.5, mew=0, zorder=zo + 1)
 
 
 def _foot_plan(ax, cx, cyd, *, zo=7):
@@ -385,11 +395,12 @@ def _cut_list(ax, x, y):
     rows = [
         "MEMBER CUT LIST",
         " qty  member                section       length (mm)",
-        f"  4   upright               2×2×0.120 RHS  {TOP_Z:.0f}",
+        f"  4   upright               2×2×0.120 RHS  {TOP_Z - PT:.0f}",
         f"  4   ring rail (Yd)        2×2×0.120 RHS  {ring_yd:.0f}",
         f"  4   ring rail (X)         2×2×0.120 RHS  {ring_x:.0f}",
         f"  8   front retaining bar   50×20×3 RHS    {NEAR_COL_R:.0f}",
         f"  4   floor foot plate      12mm A36       150×150",
+        f"  1   floor-anchor sub-plate {FLOOR_PLATE_T:.0f}mm A36       container-dep.",
         f"  8   wall backing plate    8mm A36        60×205",
         f"  8   wall joist hanger     4mm folded     per detail",
         f"  8   bar→upright cleat     6mm angle      per detail",
@@ -407,7 +418,7 @@ def _datum_tol_block(ax, x, y):
         " A = 4-foot underside plane    B = front-upright faces (X4654)",
         " C = corridor CL (Yd1181)",
         " foot coplanarity ⟂A ......... ±1.5",
-        " upright plumb ⟂A ............ ±2 over 2296",
+        f" upright plumb ⟂A ............ ±2 over {TOP_Z - PT:.0f}",
         " frame diagonal square ....... ±3",
         " foot M12 hole PCD (100) ..... ±0.5",
         " bar-seat / hanger-pocket Z .. ±2",
@@ -456,17 +467,19 @@ def sheet1():
     # ── Front pair of the deep 4-leg box — two full-height corridor uprights.
     #    A matching BACK pair sits 450mm behind (occluded in this front view). ──
     for uyd in (POST_NEAR_YD, POST_FAR_YD):
-        _rhs_rect(ax, uyd, 0, FRAME_RHS, TOP_Z, alpha=0.85, hatch="///")
+        _rhs_rect(ax, uyd, PT, FRAME_RHS, TOP_Z - PT, alpha=0.85, hatch="///")   # base raised onto the sub-plate → post cut shorter by PT
 
     # Top + bottom rings tie the near & far uprights across the corridor (front ring pair).
-    for rz in (0, TOP_Z - FRAME_RHS):
+    for rz in (PT, TOP_Z - FRAME_RHS):
         _rhs_rect(ax, POST_NEAR_YD + FRAME_RHS, rz,
                   POST_FAR_YD - (POST_NEAR_YD + FRAME_RHS), FRAME_RHS,
                   fc=C_FRAME, alpha=0.7, lw=1.2, zo=6)
 
-    # Floor flange feet under the two uprights.
-    for uyd in (POST_NEAR_YD, POST_FAR_YD):
-        _foot_elev(ax, uyd + FRAME_RHS / 2)
+    # Floor flange feet on the ONE floor-anchor sub-plate (spans both front feet).
+    foot_cs = [uyd + FRAME_RHS / 2 for uyd in (POST_NEAR_YD, POST_FAR_YD)]
+    _subplate_elev(ax, min(foot_cs), max(foot_cs))
+    for c in foot_cs:
+        _foot_elev(ax, c)
 
     # Direct-stack junction line (totes bear cage-on-cage — no deck, 52mm headroom).
     for col_l, col_r in [(BLUE_IBC_Y, NEAR_COL_R), (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
@@ -756,17 +769,18 @@ def sheet2():
 
     # ── Uprights (deep 4-leg box: front pair + back pair, 450mm apart) ───────
     for fx in FX_POSTS:
-        _rhs_rect(ax, fx, 0, FRAME_RHS, TOP_Z, alpha=0.8)
+        _rhs_rect(ax, fx, PT, FRAME_RHS, TOP_Z - PT, alpha=0.8)   # base raised onto the sub-plate → post cut shorter by PT
 
     # ── Top + bottom rings tying the front and back uprights (butt-jointed) ──
-    for rz in (0, TOP_Z - FRAME_RHS):
+    for rz in (PT, TOP_Z - FRAME_RHS):
         _rhs_rect(ax, FX_FRONT + FRAME_RHS, rz, FRAME_FOOTPRINT_D - FRAME_RHS, FRAME_RHS,
                   fc=C_FRAME, alpha=0.5, lw=1.2, zo=4)
 
-    # ── Floor flange feet under each upright ─────────────────────────────────
-    for fx in FX_POSTS:
-        foot_dx = IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0   # FRONT feet shifted outboard to clear the processing tray
-        _foot_elev(ax, fx + FRAME_RHS / 2 + foot_dx)
+    # ── Floor flange feet on the ONE floor-anchor sub-plate (spans front+back feet) ──
+    foot_cs = [fx + FRAME_RHS / 2 + (IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0) for fx in FX_POSTS]
+    _subplate_elev(ax, min(foot_cs), max(foot_cs))
+    for c in foot_cs:
+        _foot_elev(ax, c)
 
     # ── Direct-stack junction line (totes bear cage-on-cage — no deck) ──────
     ax.plot([(ibc_x_offset), (ibc_x_offset + IBC_W)], [(PLATFORM_Z)] * 2,
@@ -871,8 +885,8 @@ def sheet2():
          "   back uprights; the direct-stacked totes need only restraint.",
         f"2. Totes DIRECT-STACK cage-on-cage at Z={PLATFORM_Z}mm (no deck, 52mm",
          "   headroom). Restraint = box + front retaining bars + lashing.",
-         "3. Each upright base (×4): 150×150×12mm floor flange plate, 4× M12 anchors;",
-         "   the front feet reach ~25mm under the tray edge.",
+         "3. Each upright base (×4): 150×150×12mm floor flange plate, 4× M12 to the ONE floor-anchor",
+         "   sub-plate (self-taps to the cross-members, §3.4a); front feet reach ~25mm under the tray.",
          "4. Front retaining bars (Z500/950 + Z1500/1950) stop the totes sliding out the",
          "   front; wall ends drop into Simpson-style joist hangers.",
         f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 2×1×0.120in steel clamp to the",
@@ -979,6 +993,17 @@ def sheet3():
     # ── Floor flange feet (projected, under the 4 box legs: front + back) ────
     # The FRONT feet are shifted OUTBOARD (+X, toward the corridor) by IBC_FRONT_FOOT_DX so the
     # 150×150 plate + inboard anchors clear the processing-tray basin (the plate spec is unchanged).
+    # The ONE floor-anchor sub-plate footprint (spans all 4 feet), drawn under them.
+    _fxs = [fx + FRAME_RHS / 2 + (IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0) for fx in FX_POSTS]
+    _fyds = [post_yd + FRAME_RHS / 2 for post_yd in (POST_NEAR_YD, POST_FAR_YD)]
+    _m = FOOT_PLATE / 2 + 45
+    _px0, _px1 = min(_fxs) - _m, max(_fxs) + _m
+    _py0, _py1 = min(_fyds) - _m, max(_fyds) + _m
+    ax.add_patch(Rectangle((_px0, _py0), _px1 - _px0, _py1 - _py0, fc=C_STEEL, ec=C_OUT,
+                           lw=1.2, ls=(0, (5, 3)), alpha=0.22, zorder=3))
+    leader(ax, _px0, (_py0 + _py1) / 2, _px0 - 120, (_py0 + _py1) / 2 + 140,
+           "FLOOR-ANCHOR SUB-PLATE\n(ONE plate, all 4 feet;\nself-taps to the cross-members, J1a)",
+           color=C_DIM, fs=5, ha="right", va="bottom", arrow_style="-|>", font=FONT)
     for fx in FX_POSTS:
         foot_dx = IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0
         for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
@@ -1500,6 +1525,7 @@ def sheet6():
     # BACK bay (ghost, dashed): the 450mm-behind upright pair + its top/bottom rings + feet — this is WHY
     # there are 2 rings and 8 ring-welds (the front bay shows only 4 of them).
     _gh = dict(fc="none", ec=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=2)
+    ax.add_patch(Rectangle((xL - 62 + bxo, zb - 34 + bzo), (xR + 62) - (xL - 62), 12, **_gh))           # ONE back sub-plate (ghost, spans both back feet)
     for ux in (xL, xR):
         ax.add_patch(Rectangle((ux - upw / 2 + bxo, zb + bzo), upw, zt - zb, **_gh))                    # back upright
         ax.add_patch(Rectangle((ux - 44 + bxo, zb - 22 + bzo), 88, 18, **_gh))                          # back foot
@@ -1507,11 +1533,15 @@ def sheet6():
     for rz in (zb, zt - upw):
         ax.add_patch(Rectangle((xLi + bxo, rz + bzo), xRi - xLi, upw, **_gh))                           # back ring
     # FRONT bay: uprights + feet + the two rings (solid)
+    ax.add_patch(Rectangle((xL - 78, zb - 37), (xR + 78) - (xL - 78), 15, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))  # ONE floor-anchor SUB-PLATE spanning both front feet (self-tapped to the cross-members)
     for ux in (xL, xR):
         _rhs_rect(ax, ux - upw / 2, zb, upw, zt - zb, fc=C_FRAME, zo=5)          # upright
-        ax.add_patch(Rectangle((ux - 55, zb - 22), 110, 22, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))  # foot plate
+        ax.add_patch(Rectangle((ux - 55, zb - 22), 110, 22, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))  # foot plate (sits ON the sub-plate; post cut shorter by the plate thickness)
     for rz in (zb, zt - upw):                          # bottom + top rings tie the near+far uprights across the corridor
         ax.add_patch(Rectangle((xLi, rz), xRi - xLi, upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
+    leader(ax, xL - 78, zb - 30, wallL - 10, zb - 78,
+           "FLOOR-ANCHOR SUB-PLATE\n(self-taps to the cross-members, J1a;\nfeet bolt to it, J1b — post cut shorter\nby the plate thickness)",
+           fs=5.0, font=FONT, ha="left", color=C_DIM)
     # FOUR retaining bars (2 per tier × 2 tiers): each covers its column and ends (cleated) at the upright's
     # OUTSIDE (column-facing) edge — near = xLo, far = xRo — extending outward to the wall; corridor carries no bar.
     xLo, xRo = xL - upw / 2, xR + upw / 2               # upright OUTSIDE (column-facing) edges

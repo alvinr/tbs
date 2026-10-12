@@ -913,6 +913,12 @@ IBC_FRONT_BAR_N_PER_TIER = 2   # bars per tote face (upper + lower) — R5
 # Floor feet — one under each of the 4 corridor uprights
 IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
 IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
+FLOOR_PLATE_T      = 8     # floor-anchor sub-plate (strongback) thickness (mm) — the shared steel plate the
+                           # feet/legs bolt to and that self-taps into the cross-members (container floor
+                           # members aren't standardized; ISO 1496-1). The feet sit ON this plate, so the
+                           # upright base rises by FLOOR_PLATE_T and the post is cut shorter by the same
+                           # amount — the frame TOP (TOP_Z, tote-stack-derived) and everything above are
+                           # unchanged. Shared IBC + walkway. See ibc-stacking §3.4a / walkway §5.1a.
 IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
 IBC_FOOT_BOLT_PCD  = 100   # bolt square pitch on flange (mm) — ±50mm from CL
 IBC_FOOT_BOLT_N    = 4     # anchor bolts per foot

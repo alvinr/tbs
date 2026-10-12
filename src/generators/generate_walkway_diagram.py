@@ -60,7 +60,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, FLOOR_PLATE_T, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -68,6 +68,7 @@ BG      = "#FFFFFF"
 C_OUT   = "#1A1A1A"
 C_CL    = "#2060A0"
 C_DIM   = "#404040"
+C_BOLT  = "#505058"     # bolt/TEK heads + shanks (module default; some sheets re-bind it locally)
 C_STEEL = "#B0B0B8"
 C_GRATE = "#A0A0A8"
 C_FRAME = "#808890"
@@ -1398,10 +1399,18 @@ def sheet4():
     fx0 = LEFT_WK_CANT_FOOT_X0
     arm_z0 = LEFT_WK_CANT_ARM_Z0
     arm_x0 = legx + post / 2
-    ax.add_patch(Rectangle(((fx0), (0)), (fl), (ft),
-                            fc=C_SUPPORT, ec=C_OUT, lw=0.9, zorder=5))
-    ax.add_patch(Rectangle(((legx - post / 2), (0)), (post), (grate_bot),
-                            fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=5))
+    pt = FLOOR_PLATE_T
+    sp_x0, sp_x1 = (legx - post / 2) - 15, (fx0 + fl) + 15   # the ONE continuous sub-plate spans the post + foot outrigger
+    ax.add_patch(Rectangle(((sp_x0), (0)), (sp_x1 - sp_x0), (pt),
+                            fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4))           # floor-anchor SUB-PLATE on the floor (self-taps to sill/cross-members, WF4a)
+    for i in range(4):                                                        # winged TEKs: sub-plate -> floor
+        xx = sp_x0 + (i + 0.5) * (sp_x1 - sp_x0) / 4
+        ax.plot([xx, xx], [pt, -16], color=C_BOLT, lw=1.3, zorder=3)
+        ax.plot(xx, -16, 'v', color=C_BOLT, ms=3, mew=0, zorder=3)
+    ax.add_patch(Rectangle(((fx0), (pt)), (fl), (ft),
+                            fc=C_SUPPORT, ec=C_OUT, lw=0.9, zorder=5))         # foot plate ON the sub-plate
+    ax.add_patch(Rectangle(((legx - post / 2), (pt)), (post), (grate_bot - pt),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=5))         # post, cut shorter by the plate thickness (deck Z unchanged)
     ax.add_patch(Rectangle(((arm_x0), (arm_z0)), (LEFT_WK_R - arm_x0),
                             (grate_bot - arm_z0), fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
     leader(ax, (legx), (grate_bot * 0.5), (legx - 70), (grate_bot * 0.5),
@@ -1737,9 +1746,12 @@ def sheet6():
     leader(axA, TX + 2, rim, TX + 70, rim - 5, "PROCESSING TRAY RIM\n(Z0-50, STAYS at floor level)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Foot plate (on bare floor, outboard of the tray)
-    axA.add_patch(Rectangle((fx0, 0), fl, ft, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))
-    # Post 50x50 (floor to grate bottom)
-    axA.add_patch(Rectangle((legx - post / 2, 0), post, grate_bot, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))
+    pt = FLOOR_PLATE_T
+    sp_x0, sp_x1 = (legx - post / 2) - 18, (fx0 + fl) + 18   # the ONE continuous sub-plate spans the post + foot outrigger
+    axA.add_patch(Rectangle((sp_x0, 0), sp_x1 - sp_x0, pt, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))  # floor-anchor SUB-PLATE on the floor (WF4a)
+    axA.add_patch(Rectangle((fx0, pt), fl, ft, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))              # foot plate ON the sub-plate
+    # Post 50x50 (sub-plate top to grate bottom) — cut shorter by the plate thickness
+    axA.add_patch(Rectangle((legx - post / 2, pt), post, grate_bot - pt, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))
     leader(axA, legx, grate_bot * 0.55, legx - 20, grate_bot * 1.3,
            "50x50x3 STEEL\nSHS POST\n(bare floor, outside tray)\nWW7 post→foot (§10.2)",
            color=C_OUT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1763,15 +1775,16 @@ def sheet6():
     draw_dim_v(axA, std_reach + 5, sb1, arm_z0, f"{arm_z0 - sb1:.0f}mm", offset=8, fs=6, right=True, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
-    # Foot anchors — M12 (2 of the 4 visible) bolting DOWN into the floor-anchor sub-plate's tapped bosses
-    # (WF4b; the sub-plate self-taps to the cross-members, WF4a — drawn in full on the floor-anchor-map Sheet 2).
-    # Drive-from-above: hex head on the foot plate + a shank into the boss below (no accessible underside).
-    # Positions single-sourced from LEFT_WK_CANT_FOOT_BOLT_DX (outboard, clear of the post).
+    # WF4a — winged TEKs self-tap the sub-plate DOWN into the sill / cross-members (drive from above).
+    for i in range(4):
+        xx = sp_x0 + (i + 0.5) * (sp_x1 - sp_x0) / 4
+        axA.plot([xx, xx], [pt, -18], color=C_BOLT, lw=1.5, zorder=4)               # TEK shaft into the floor
+        axA.plot(xx, -18, 'v', color=C_BOLT, ms=4, mew=0, zorder=4)                 # drill point (sub-plate → sill/cross-members, WF4a; see note 2)
+    # WF4b — foot → sub-plate tapped-boss bolts (M12, drive from above, 2 of 4 visible; outboard, clear of the post).
     for dx in LEFT_WK_CANT_FOOT_BOLT_DX:
         ax_ = fx0 + dx
-        axA.plot([ax_, ax_], [ft, -14], color=C_OUT, lw=1.8, zorder=8)              # shank: head level → into the boss
-        axA.add_patch(Rectangle((ax_ - 5, -16), 10, 6, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=7))  # tapped boss below the foot plate
-        axA.add_patch(Rectangle((ax_ - 6, ft), 12, 5, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=9))   # hex head on the plate
+        axA.add_patch(Rectangle((ax_ - 6, pt + ft), 12, 5, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=9))  # hex head on the foot
+        axA.plot([ax_, ax_], [pt + ft, pt], color=C_BOLT, lw=1.8, zorder=8)                          # M12 into the tapped boss on the plate
     # Load arrow at the arm tip
     axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=2.0))

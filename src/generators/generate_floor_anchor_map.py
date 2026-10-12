@@ -33,6 +33,7 @@ C_IBC, C_WK, C_PIV = "#1F6FB2", "#C8541E", "#2E8B4A"   # system colors
 C_MEMBER = "#9AA7B0"
 C_PLATE = "#7C8B99"
 C_PLY = "#D9C39A"
+C_BOLT = "#3A3A42"     # bolt/TEK heads + shanks (house convention)
 
 PITCH = 305.0           # ~12 in NOMINAL (representative — varies by maker)
 BAND = 50.0             # screwable top-flange band width shown (~45mm CIMC)
@@ -206,13 +207,17 @@ def sheet2(fig):
     ax.add_patch(Rectangle((sx(10), sy(plate_y)), sx(280), sy(8), fill=False, edgecolor=C_OUT, lw=1.4, zorder=3))
     ax.text(sx(20), sy(plate_y+4), "SUB-PLATE ~8mm STEEL", ha="left", va="center", fontsize=6.5, color=C_OUT, **FONT)
 
-    # winged TEK through plate + ply into the member flange (J1a)
+    # winged TEK through plate + ply into the member flange (J1a) — house convention:
+    # hex-washer head on the plate + shaft driving DOWN + reaming wings + drill-point marker.
     tek_x = mx
-    ax.plot([sx(tek_x), sx(tek_x)], [sy(plate_y+8), sy(base_y)], color="#8A1A1A", lw=2.6, zorder=5)
-    ax.add_patch(Circle((sx(tek_x), sy(plate_y+8)), sx(5), facecolor="#8A1A1A", edgecolor="white", lw=0.5, zorder=6))
-    leader(ax, sx(tek_x), sy(base_y+2), sx(tek_x-70), sy(base_y-20),
+    ax.plot([sx(tek_x), sx(tek_x)], [sy(plate_y + 8), sy(base_y - 3)], color=C_BOLT, lw=1.8, zorder=6)  # shaft
+    ax.add_patch(Rectangle((sx(tek_x - 7), sy(plate_y + 8)), sx(14), sy(5), fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=7))  # hex-washer head
+    for s in (-1, 1):                                                                 # reaming wings (snap off at the steel)
+        ax.plot([sx(tek_x), sx(tek_x + s * 7)], [sy(base_y + 13), sy(base_y + 20)], color=C_BOLT, lw=1.1, zorder=6)
+    ax.plot(sx(tek_x), sy(base_y - 3), 'v', color=C_BOLT, ms=5, mew=0, zorder=7)      # drill point into the member
+    leader(ax, sx(tek_x + 6), sy(base_y + 24), sx(tek_x - 78), sy(base_y - 18),
            "J1a / WF4a  winged #14x3.25\" TEK\n(self-taps the member; wings ream the ply)",
-           fs=6, color="#8A1A1A", font=FONT, ha="center")
+           fs=6, color=C_BOLT, font=FONT, ha="center")
 
     # foot base-plate on the sub-plate, bolted into a tapped boss (J1b)
     foot_x = 235
@@ -220,8 +225,8 @@ def sheet2(fig):
     ax.text(sx(foot_x), sy(plate_y+14), "FOOT", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
     # tapped boss below the plate
     ax.add_patch(Rectangle((sx(foot_x-8), sy(plate_y-14)), sx(16), sy(14), facecolor=C_PLATE, edgecolor=C_OUT, lw=1.0, zorder=4))
-    ax.plot([sx(foot_x), sx(foot_x)], [sy(plate_y+20), sy(plate_y-12)], color=C_OUT, lw=2.2, zorder=5)
-    ax.add_patch(Rectangle((sx(foot_x-7), sy(plate_y+20)), sx(14), sy(4), facecolor=C_OUT, zorder=6))   # bolt head
+    ax.plot([sx(foot_x), sx(foot_x)], [sy(plate_y+20), sy(plate_y-12)], color=C_BOLT, lw=1.8, zorder=5)  # M12 shaft into the boss
+    ax.add_patch(Rectangle((sx(foot_x-7), sy(plate_y+20)), sx(14), sy(4), fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=6))   # hex head
     leader(ax, sx(foot_x), sy(plate_y-12), sx(foot_x+5), sy(plate_y-34),
            "J1b / WF4b  M12x30 into a\nTAPPED BOSS (drive from above,\nno underside access)",
            fs=6, color=C_OUT, font=FONT, ha="left")

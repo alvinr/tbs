@@ -201,9 +201,7 @@ The sub-plate exists because the container floor cross-members are **not dimensi
 
 > **Plate dimensions are container-dependent.** The ~650×450×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed members. The feet and their Ø100mm PCD bolt pattern do **not** change — only the plate adapts to the box.
 
-![Floor Anchoring — Sheet 1: Cross-Member Map](assets/floor-anchor-map-sheet1.png)
-
-![Floor Anchoring — Sheet 2: Sub-Plate (Strongback) Standard](assets/floor-anchor-map-sheet2.png)
+![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
 
 **Weld schedule** (fillet, E70xx electrode; frame welds carry small restraint loads → set by the AWS D1.1 minimum practical fillet for ≤6 mm plate, except the load-checked W3/W4)
 

@@ -311,9 +311,7 @@ The five floor-legs do **not** screw straight into the floor. They bolt to one c
 
 The legs make the case for it sharper than anywhere else on the project: all five sit at essentially **one X-station**, parallel to the cross-members, so direct floor screws are a single coin-flip — if that line lands between members, all five miss at once. The container floor gives no help here, because its cross-members are **not dimensionally standardized**: [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container is flat-bottomed), and [the pitch and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) — [CIMC](https://www.cimc-equilink.com/media/3659.html) uses a ~45mm-flange C-section at ~300mm, but it is not guaranteed. The continuous plate removes the lottery: it runs from the door-end sill (guaranteed bottom-end-rail steel) across the first cross-members, and winged self-drillers ([#14×3¼″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)) fix it down wherever the steel actually is. The map and the standard are drawn on the floor-anchoring sheets:
 
-![Floor Anchoring — Sheet 1: Cross-Member Map](assets/floor-anchor-map-sheet1.png)
-
-![Floor Anchoring — Sheet 2: Sub-Plate (Strongback) Standard](assets/floor-anchor-map-sheet2.png)
+![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
 
 > **Plate dimensions are container-dependent.** The ~1,900×350×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the sill and cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed steel. The leg positions and their foot bolt pattern do **not** change — only the plate adapts to the box.
 

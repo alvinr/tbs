@@ -123,67 +123,62 @@ def plot_region(ax, x0, x1, title, holes_on=True, hole_r=9, plate=None):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-def sheet1(fig):
-    fig.suptitle("FLOOR-ANCHOR MAP — cross-member grid vs. floor-secured items (PLAN, looking down)",
-                 fontsize=12, fontweight="bold", y=0.975, **FONT)
-    ax_plan = fig.add_axes([0.04, 0.60, 0.92, 0.30])
+def _draw_plates(ax):
+    """Overlay the two sub-plate FOOTPRINTS (dashed) on a plan axes."""
+    ibc_fx = [f[0] for f in ibc_feet()]; ibc_fy = [f[1] for f in ibc_feet()]
+    ax.add_patch(Rectangle((min(ibc_fx) - 110, min(ibc_fy) - 110),
+                           (max(ibc_fx) - min(ibc_fx)) + 220, (max(ibc_fy) - min(ibc_fy)) + 220,
+                           facecolor=C_PLATE, alpha=0.30, edgecolor=C_IBC, lw=1.8, ls=(0, (6, 3)), zorder=3))
+    wy = k.LEFT_WK_CANT_LEG_YDS                                   # walkway plate: cargo-door sill (X0) → tray edge
+    ax.add_patch(Rectangle((0, min(wy) - 90), k.PROC_TRAY_X_L, (max(wy) - min(wy)) + 180,
+                           facecolor=C_PLATE, alpha=0.30, edgecolor=C_WK, lw=1.8, ls=(0, (6, 3)), zorder=3))
+
+
+def _legend(fig, y):
+    leg = fig.add_axes([0.04, y, 0.92, 0.03]); leg.axis("off")
+    leg.add_patch(Rectangle((0.005, 0.1), 0.02, 0.6, facecolor=C_MEMBER, alpha=0.5, transform=leg.transAxes))
+    leg.text(0.03, 0.4, "nominal cross-member band", fontsize=7, va="center", transform=leg.transAxes, **FONT)
+    leg.add_patch(Circle((0.255, 0.42), 0.007, facecolor="#1A7D32", transform=leg.transAxes))
+    leg.text(0.267, 0.4, "anchor ON a member", fontsize=7, va="center", transform=leg.transAxes, **FONT)
+    leg.add_patch(Circle((0.40, 0.42), 0.007, facecolor="#C21D1D", transform=leg.transAxes))
+    leg.text(0.412, 0.4, "anchor in a GAP (vs nominal grid)", fontsize=7, va="center", transform=leg.transAxes, **FONT)
+    leg.add_patch(Rectangle((0.595, 0.33), 0.018, 0.2, facecolor=C_PLATE, alpha=0.4, edgecolor=C_OUT, ls=(0, (4, 2)), transform=leg.transAxes))
+    leg.text(0.617, 0.4, "sub-plate footprint", fontsize=7, va="center", transform=leg.transAxes, **FONT)
+    for i, (c, t) in enumerate([(C_IBC, "IBC feet"), (C_WK, "walkway legs"), (C_PIV, "pivot")]):
+        leg.add_patch(Rectangle((0.76 + i*0.08, 0.33), 0.013, 0.2, facecolor=c, alpha=0.3, edgecolor=c, transform=leg.transAxes))
+        leg.text(0.775 + i*0.08, 0.4, t, fontsize=6.3, va="center", transform=leg.transAxes, **FONT)
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+def sheet(fig):
+    fig.suptitle("FLOOR-ANCHOR SUB-PLATE (STRONGBACK) STANDARD — cross-member map + sub-plate footprints + anchor stack",
+                 fontsize=12, fontweight="bold", y=0.988, **FONT)
+
+    # ── TOP: full-length plan + both sub-plate footprints (dashed) ─────────────
+    ax_plan = fig.add_axes([0.04, 0.72, 0.92, 0.155])
     plot_region(ax_plan, -160, k.C_LEN + 160, "", holes_on=False)
+    _draw_plates(ax_plan)
     ax_plan.text(k.C_LEN*0.52, k.C_WID/2, "(no floor anchors in the central ~4.3 m)",
                  ha="center", va="center", fontsize=8.5, color="#888", style="italic", **FONT)
     ax_plan.text(0, k.C_WID + 190, "DOOR-END SILL", fontsize=6.5, color=C_DIM, ha="left", **FONT)
     ax_plan.text(k.C_LEN, k.C_WID + 190, "SEALED-END SILL", fontsize=6.5, color=C_DIM, ha="right", **FONT)
-    ax_plan.text(k.C_LEN*0.5, -250,
-                 f"X (container length, mm) ->   nominal ~{int(PITCH)}mm cross-member pitch, ~16-23 members typical",
+    ax_plan.text(k.C_LEN*0.5, -320,
+                 "PLAN (looking down) — the two sub-plate footprints (dashed) over a REPRESENTATIVE "
+                 f"~{int(PITCH)}mm cross-member grid; stations vary by maker, verify on the box",
                  ha="center", fontsize=7, color=C_DIM, **FONT)
 
-    ax_near = fig.add_axes([0.04, 0.17, 0.44, 0.36])
-    plot_region(ax_near, -120, 520, "DOOR-END CLUSTER  (walkway floor-legs x5 + pivot post)")
-    ax_seal = fig.add_axes([0.52, 0.17, 0.44, 0.36])
-    plot_region(ax_seal, 4480, 5240, "SEALED-END CLUSTER  (IBC frame feet x4, corridor)")
+    # ── MID: two cluster zooms, each with its plate footprint ──────────────────
+    ax_near = fig.add_axes([0.04, 0.49, 0.44, 0.185])
+    plot_region(ax_near, -120, 560, "DOOR-END CLUSTER — walkway plate (sill → tray edge) under 5 legs + pivot")
+    _draw_plates(ax_near)
+    ax_seal = fig.add_axes([0.52, 0.49, 0.44, 0.185])
+    plot_region(ax_seal, 4480, 5240, "SEALED-END CLUSTER — IBC: ONE plate under 4 feet")
+    _draw_plates(ax_seal)
 
-    leader(ax_near, 170, k.LEFT_WK_CANT_LEG_YDS[0], 360, k.LEFT_WK_CANT_LEG_YDS[0]-230,
-           "walkway leg: 2 anchors only 40mm\napart (X130/170) - can't span a\n~255mm bay",
-           fs=6, color=C_WK, font=FONT, ha="left")
-    leader(ax_near, k.PIVOT_X, k.PIVOT_YD, 320, k.PIVOT_YD+40,
-           "pivot O220, 6x M12 on O170 -\nby the door-end sill",
-           fs=6, color=C_PIV, font=FONT, ha="left")
-    leader(ax_seal, 4664, ibc.POST_NEAR_YD+rhs/2, 4760, 600,
-           "IBC foot 150sq, 4x M12 @100 PCD -\nspans ~1/3 bay; only 1 bolt column\ncan reach a member",
-           fs=6, color=C_IBC, font=FONT, ha="left")
+    _legend(fig, 0.45)
 
-    _legend(fig)
-    _caveat(fig,
-            "GRID IS REPRESENTATIVE - a 20ft container has ~16-23 cross-members at ~300mm, but exact stations + any forklift pockets "
-            "VARY by maker (verify on the actual box). The green/red marks only show fall against this NOMINAL grid; the standard on "
-            "Sheet 2 removes the dependency on them entirely.")
-
-
-def _legend(fig):
-    leg = fig.add_axes([0.04, 0.015, 0.92, 0.12]); leg.axis("off")
-    leg.add_patch(Rectangle((0.005, 0.1), 0.02, 0.6, facecolor=C_MEMBER, alpha=0.5, transform=leg.transAxes))
-    leg.text(0.03, 0.4, "nominal cross-member band", fontsize=7, va="center", transform=leg.transAxes, **FONT)
-    leg.add_patch(Circle((0.30, 0.42), 0.008, facecolor="#1A7D32", transform=leg.transAxes))
-    leg.text(0.315, 0.4, "anchor ON a member", fontsize=7, va="center", transform=leg.transAxes, **FONT)
-    leg.add_patch(Circle((0.47, 0.42), 0.008, facecolor="#C21D1D", transform=leg.transAxes))
-    leg.text(0.485, 0.4, "anchor in a GAP (vs nominal grid)", fontsize=7, va="center", transform=leg.transAxes, **FONT)
-    for i, (c, t) in enumerate([(C_IBC, "IBC feet"), (C_WK, "walkway legs"), (C_PIV, "pivot")]):
-        leg.add_patch(Rectangle((0.70+i*0.10, 0.33), 0.015, 0.18, facecolor=c, alpha=0.3, edgecolor=c, transform=leg.transAxes))
-        leg.text(0.72+i*0.10, 0.4, t, fontsize=7, va="center", transform=leg.transAxes, **FONT)
-
-
-def _caveat(fig, text):
-    cav = fig.add_axes([0.04, -0.02, 0.92, 0.05]); cav.axis("off")
-    cav.text(0.005, 0.5, text, fontsize=6.3, color=C_DIM, va="center",
-             transform=cav.transAxes, wrap=True, **FONT)
-
-
-# ──────────────────────────────────────────────────────────────────────────────
-def sheet2(fig):
-    fig.suptitle("FLOOR-ANCHOR SUB-PLATE (STRONGBACK) STANDARD — feet/legs bolt to a self-tapped plate",
-                 fontsize=12, fontweight="bold", y=0.975, **FONT)
-
-    # ── LEFT: section detail of the anchor stack (thickness exaggerated) ────────
-    ax = fig.add_axes([0.04, 0.26, 0.56, 0.62]); ax.axis("off")
+    # ── BOTTOM-LEFT: anchor-stack section (thickness exaggerated) ──────────────
+    ax = fig.add_axes([0.03, 0.075, 0.55, 0.34]); ax.axis("off")
     ax.set_xlim(0, 310); ax.set_ylim(-40, 150); ax.set_aspect("auto")
 
     base_y, mx = 40, 150
@@ -230,8 +225,8 @@ def sheet2(fig):
     ax.text(155, 140, "SECTION — anchor stack (thickness exaggerated for clarity)",
             ha="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT)
 
-    # ── RIGHT: container-dependent notes (standard note block + title footer) ──
-    axn = fig.add_axes([0.62, 0.13, 0.35, 0.75]); axn.axis("off")
+    # ── BOTTOM-RIGHT: container-dependent notes (standard note block) ──────────
+    axn = fig.add_axes([0.61, 0.065, 0.36, 0.36]); axn.axis("off")
     axn.set_xlim(0, 1); axn.set_ylim(0, 1)
     draw_notes(axn, [
         "PLATE DIMENSIONS ARE CONTAINER-DEPENDENT",
@@ -251,24 +246,22 @@ def sheet2(fig):
         "",
         "The feet/legs + tapped-boss pattern do NOT",
         "change — only the plate adapts to the box.",
-    ], 0.04, 0.96, 0.047, fs=6.6, title_fs=7.3, title_color="#9A3B10", font=FONT, width=0.92)
+    ], 0.04, 0.985, 0.052, fs=6.8, title_fs=7.5, title_color="#9A3B10", font=FONT, width=0.93)
 
     tb = fig.add_axes([0.0, 0.0, 1.0, 1.0]); tb.axis("off")
-    title_block(tb, "SHEET 2 OF 2",
+    title_block(tb, "SHEET 1 OF 1",
                 drawing_title="FLOOR-ANCHOR SUB-PLATE STANDARD",
-                subtitle="ANCHOR-STACK SECTION + CONTAINER-DEPENDENT NOTES",
+                subtitle="CROSS-MEMBER MAP + SUB-PLATE FOOTPRINTS + ANCHOR STACK",
                 scale_note="NTS", doc_id="TBS-240 · Floor Anchoring")
 
 
 def main():
-    for fname, fn in (("floor-anchor-map-sheet1.png", sheet1),
-                      ("floor-anchor-map-sheet2.png", sheet2)):
-        fig = plt.figure(figsize=(16, 11))
-        fn(fig)
-        out = os.path.join(k.DIAGRAMS_DIR, fname)
-        fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="white")
-        plt.close(fig)
-        print(f"saved {out}")
+    fig = plt.figure(figsize=(16, 15))
+    sheet(fig)
+    out = os.path.join(k.DIAGRAMS_DIR, "floor-anchor-map.png")
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print(f"saved {out}")
 
 
 if __name__ == "__main__":

@@ -164,13 +164,14 @@ def floor_leg_check():
          f"4×1×0.120, {l_wide:.0f} mm cant. (redesign; 2×1 was SF 1.04)")
     _row("Floor-leg post", f"{m_post:.0f} N·m", f"{zp * FY / 1e3:.0f} N·m", f"{sf_post:.2f}",
          "2×2×0.120 SHS")
-    _row("Foot-anchor uplift", f"{t_anchor:.0f} N/screw", "engage steel pan", "≈1",
-         f"4× #14 SS self-driller; 2 outboard react the couple over the {foot_l:.0f} mm foot")
+    tek_pullout = 5300.0   # winged #14×3¼ 410-SS self-driller, ~5.3 kN pull-out in 4mm steel
+    _row("Floor-leg uplift → sub-plate", f"{t_anchor:.0f} N/fixing", f"{tek_pullout:.0f} N", f"{tek_pullout / t_anchor:.2f}",
+         f"leg bolts to the sub-plate (§5.1a); winged TEKs carry the couple into the sill/members, 2 outboard over the {foot_l:.0f} mm foot")
     return ("\n## 6-9. LEFT-WALKWAY FLOOR-LEG CANTILEVER (arm + post + foot anchors) ##\n"
             f"  STD arm 2×1 {l_std:.0f} mm: M {ms:.0f} N·m cap {mcs:.0f} SF {sfs:.2f}\n"
             f"  PUNCH-OUT arm 4×1 {l_wide:.0f} mm: M {mw:.0f} N·m cap {mcw:.0f} SF {sfw:.2f}  (redesigned; the 2×1 was SF 1.04)\n"
             f"  post 2×2×0.120: M_base {m_post:.0f} N·m cap {zp * FY / 1e3:.0f} SF {sf_post:.2f}\n"
-            f"  foot anchors: ~{t_anchor:.0f} N/screw uplift — the #14 self-drillers MUST engage the steel floor pan (not plywood alone).")
+            f"  floor-leg uplift: ~{t_anchor:.0f} N/fixing — reacted through the foot into the continuous sub-plate, whose winged TEKs engage the sill/cross-members (~{tek_pullout:.0f} N each, SF {tek_pullout / t_anchor:.2f}).")
 
 
 # ── 10. Combined corner plate (shared walkway beam + film rail) ──────────────
@@ -213,8 +214,10 @@ FASTENERS = [
      "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
-    ("WF4", "Floor-leg foot plate → container floor", "#14×2″ HWH self-driller",
-     "410 SS", "4/foot × 5 = 20", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
+    ("WF4a", "Floor-anchor sub-plate → sill + cross-members (§5.1a)", "#14×3¼″ winged self-driller (F14C325FDC)",
+     "410 SS", "container-dependent (~20)", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
+    ("WF4b", "Floor-leg foot plate → sub-plate (tapped boss)", "M12×30 into tapped boss",
+     "Gr.8.8 zinc", "4/foot × 5 = 20", "snug + locker", "split-lock under head", "thread-locker (tapped boss)"),
     ("WF5", "Grating hold-down clip → bracket arm / long beam", "M-type FRP grating clip + bolt",
      "316 SS", f"{k.WALKWAY_GRATE_CLIP_PITCH} mm (24\") along bearing edges + corners", "snug", "—", "—"),
 ]
@@ -285,7 +288,7 @@ def datums_md():
     return "\n".join([
         "| Datum | Definition | References |",
         "|-------|-----------|------------|",
-        f"| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z{int(k.WALKWAY_H)}, arm top Z{int(k.RWK_ARM_TOP)}, bolt Z{int(k.WALKWAY_BRACKET_BOLT_Z_LO)}/Z{int(k.WALKWAY_BRACKET_UPPER_BOLT_Z)}, beam soffit Z{k.WALKWAY_BRACKET_ARM_Z0:g} |",
+        f"| **A** | Floor plane — the container floor / floor-anchor sub-plate underside (Z0; the leg posts are trimmed by the plate thickness so deck + clearances hold) | all heights: deck Z{int(k.WALKWAY_H)}, arm top Z{int(k.RWK_ARM_TOP)}, bolt Z{int(k.WALKWAY_BRACKET_BOLT_Z_LO)}/Z{int(k.WALKWAY_BRACKET_UPPER_BOLT_Z)}, beam soffit Z{k.WALKWAY_BRACKET_ARM_Z0:g} |",
         f"| **B** | The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd{int(k.C_WID)}) interior faces the brackets bolt to | all Yd bracket/deck positions, bracket spacing 457 |",
         f"| **C** | Rail datum — film-plane rail X{int(k.RAIL_X_L)} (left) / X{int(k.RAIL_X_R)} (right) | the right-walkway outer edge (X{int(k.WALKWAY_RIGHT_X_R)}) + combined corner plate register to C (shared with the film plane) |",
     ])

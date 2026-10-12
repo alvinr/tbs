@@ -52,7 +52,7 @@ model *before* dimensioning, because you cannot blueprint geometry that is about
 | Center cantilever arms (×2) — **IBC-frame owned** | **solid** 2×1in bar, half-lapped over both long beams (`RWK_HL_TIP` 95.0 / `RWK_HL_POST` 105.6 rebalanced splits); cantilever off the IBC front uprights (`RWK_X_UP` 4654). Detailed/validated/costed in the **IBC-frame blueprint** (J6); listed here only for the rectangle interface (the mid-span pickup) |
 | Combined corner plate (right ×2) | 10 mm plate, 150 mm wide — carries the walkway right beam (70 mm seat) AND the film bottom/top rail (150 mm seat); 4× M12 permanent, interior+exterior sandwich (`fp_combined_corner_plate`) |
 | Wall cleat (left corners of right walkway ×2) | 8 mm back-plate + exterior plate + shelf; M12 through-bolt |
-| Floor-leg cantilever bracket (left walkway ×5) | 2×2×0.120in SHS post (~115 mm, `LEFT_WK_CANT_POST`) + arm (`LEFT_WK_CANT_ARM_*`): **2×1×0.120in** for the 2 std legs (reach X580, SF 2.06) / **4×1×0.120in** for the 3 drum-exit punch-out legs (reach X880, IBC/OSHA SF 1.99) + 165×60×8 foot plate (F3 outrigger, `LEFT_WK_CANT_FOOT`); **4× #14×2″ 410 SS** screws into ply-over-steel floor (`LEFT_WK_CANT_FOOT_BOLT_N`) |
+| Floor-leg cantilever bracket (left walkway ×5) | 2×2×0.120in SHS post (~115 mm, `LEFT_WK_CANT_POST`) + arm (`LEFT_WK_CANT_ARM_*`): **2×1×0.120in** for the 2 std legs (reach X580, SF 2.06) / **4×1×0.120in** for the 3 drum-exit punch-out legs (reach X880, IBC/OSHA SF 1.99) + 165×60×8 foot plate (F3 outrigger, `LEFT_WK_CANT_FOOT`); **4× M12** each into a continuous floor-anchor **sub-plate** (self-tapped to the sill + cross-members; §5.1a) (`LEFT_WK_CANT_FOOT_BOLT_N`) |
 | Grate retention | 316 SS hold-down clips (near/far/right, 610 mm/24" centers + corners, `WALKWAY_GRATE_CLIP_PITCH`); gravity lift-out (left) |
 | Grate cut features | spray-bar slits (30 mm, near+far), left drum-exit punch-out (600 mm, Yd800–1560), near bump-out (500 mm, X1055–3083), muslin notches (100×150, left+right) |
 
@@ -138,8 +138,8 @@ design force → capacity → SF, authoritative voice, every capacity/coefficien
 - [x] **Wall bolt group** — 3× (std) / 4× (widened) M12 in shear + **reinforcing-plate bearing /
   corrugated-wall pull-through** (ties to the parked 30 mm corrugation-depth procurement gate).
 - [x] **Floor-leg cantilever** — worst = extended punch-out arm (X880 reach): the 2×1 was SF 1.04, so
-  **redesigned to a 4×1 arm** (SF 1.99) + 2×2 post bending; **foot-anchor group** (4× #14×2 screws) shear
-  + uplift into ply-over-steel (must engage the steel floor pan).
+  **redesigned to a 4×1 arm** (SF 1.99) + 2×2 post bending; **foot-anchor group** (4× M12 into the sub-plate) shear
+  + uplift carried through the sub-plate's winged TEKs into the sill + cross-members (SF 2.17; §5.1a).
 - [x] **Right cantilever rectangle** — long/end/cranked-beam bending + rectangle deflection **assuming
   the mid-span pickup** by the two IBC-post arms; half-lap notch net section at the crossings. The
   arm-root moment (≈0.35 kN·m vs ≈0.84 kN·m capacity per the
@@ -155,7 +155,7 @@ they can't drift.
 
 - [x] **Fastener schedule J1…Jn** (size/grade/torque/washer/locker, cited): std bracket wall bolt
   (M12×70 91280A732); widened bracket wall bolt (M12×70); right cleat / combined-corner bolt (M12×70
-  91280A732); floor-leg foot screw (#14×2 410 SS self-driller); grating clips. (The center-arm end-plate
+  91280A732); floor-anchor sub-plate → sill/cross-members (winged #14×3¼ 410 SS, WF4a) + floor-leg foot → sub-plate boss (M12×30, WF4b); grating clips. (The center-arm end-plate
   bolt M12×100 + the half-lap hold-down screws that fix the two arms belong to the **IBC-frame** J6
   schedule — cross-ref, not scheduled here.)
 - [x] **Weld schedule W1…Wn** (leg/symbol/extent): bracket gusset↔leg↔arm fillets; reinforcing-plate;

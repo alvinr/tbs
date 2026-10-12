@@ -283,26 +283,39 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 | Component | Specification | Position |
 |-----------|--------------|----------|
 | Floor-leg cantilever bracket (×5) | 2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + arm (2×1×0.120in standard / **4×1×0.120in** on the 3 punch-out legs, §9) + 165×60×8mm foot plate (inboard outrigger — the post sits on its outboard end, the plate reaches inboard so the 4 floor anchors clear the post footprint) | 5 brackets (outside the tray) |
-| Floor screws | 4× #14×2″ 410 SS self-drilling structural screws per foot plate (20 total) | Bite the plywood-over-steel container floor — wedge/concrete anchors don't hold there |
+| Floor anchoring | One continuous steel **sub-plate** (strongback) under all 5 legs, self-tapped into the door-end sill + cross-members (winged #14×3¼″ 410 SS); each leg foot bolts to the plate's tapped bosses (4× M12×30, 20 total) | §5.1a — plate is container-dependent |
 | Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
 | Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
 
 The grate rests on the cantilever arms and lifts straight out — no fasteners, no
 kerb. The operator load travels grating → cantilever arm (2×1; 4×1 at the punch-out) → 2×2×0.120in post →
-foot plate → floor anchor, with **zero tray contact**: the posts stand on bare
+foot plate → sub-plate → cross-members, with **zero tray contact**: the posts stand on bare
 floor outside the tray and the arms cantilever over it. The arm bottom clears the floor-level spray bar
 by 15mm and the tray rim
 by 25mm. Because the brackets
 stand entirely outside the panel's transport-swing footprint, the grate simply
 lifts out before the panel swings; the floor-bolted posts stay put.
 
-**Load path.** The operator load travels grate → cantilever arm → 2×2×0.120in post → foot plate → floor
-anchors. The longest cantilever is the drum-exit punch-out arm (605mm). Under the US IBC/OSHA 300 lbf tip
+**Load path.** The operator load travels grate → cantilever arm → 2×2×0.120in post → foot plate → sub-plate
+→ cross-members. The longest cantilever is the drum-exit punch-out arm (605mm). Under the US IBC/OSHA 300 lbf tip
 load this needs a **4×1×0.120in tube** (SF 1.99) — a plain 2×1 was only SF 1.04 — while the standard
-305mm arms stay 2×1 (SF 2.06); the post carries SF 2.68 (all computed in §9, `walkway_load.py`). The foot
-plate's 4× #14 anchors react the ~2.4 kN/screw overturning uplift and **must engage the container's steel
-floor pan**, not the plywood alone. This floor-leg cantilever supersedes the earlier full-width edge-beam
-scheme — simpler, lighter, and needs no through-wall seats.
+305mm arms stay 2×1 (SF 2.06); the post carries SF 2.68 (all computed in §9, `walkway_load.py`). Each leg's
+~2.4 kN overturning uplift is reacted through the foot into the continuous sub-plate (§5.1a), whose winged
+self-drillers engage the door-end sill and the steel cross-members — the plate spreads the reaction across
+several fixings, each good for ~5.3 kN in 4mm steel. This floor-leg cantilever supersedes the earlier
+full-width edge-beam scheme — simpler, lighter, and needs no through-wall seats.
+
+### 5.1a Floor anchoring — sub-plate (strongback)
+
+The five floor-legs do **not** screw straight into the floor. They bolt to one continuous steel **sub-plate** (a strongback) that lies flat on the floor, self-taps down into the door-end sill and the cross-members it spans (WF4a), and carries tapped bosses the leg feet bolt up into (WF4b). This is the project-wide floor-anchoring standard, shared with the IBC frame feet (see [IBC Stacking Report §3.4a](ibc-stacking-report.md#34a-floor-anchoring-sub-plate-strongback-standard)).
+
+The legs make the case for it sharper than anywhere else on the project: all five sit at essentially **one X-station**, parallel to the cross-members, so direct floor screws are a single coin-flip — if that line lands between members, all five miss at once. The container floor gives no help here, because its cross-members are **not dimensionally standardized**: [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container is flat-bottomed), and [the pitch and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) — [CIMC](https://www.cimc-equilink.com/media/3659.html) uses a ~45mm-flange C-section at ~300mm, but it is not guaranteed. The continuous plate removes the lottery: it runs from the door-end sill (guaranteed bottom-end-rail steel) across the first cross-members, and winged self-drillers ([#14×3¼″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)) fix it down wherever the steel actually is. The map and the standard are drawn on the floor-anchoring sheets:
+
+![Floor Anchoring — Sheet 1: Cross-Member Map](assets/floor-anchor-map-sheet1.png)
+
+![Floor Anchoring — Sheet 2: Sub-Plate (Strongback) Standard](assets/floor-anchor-map-sheet2.png)
+
+> **Plate dimensions are container-dependent.** The ~1,900×350×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the sill and cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed steel. The leg positions and their foot bolt pattern do **not** change — only the plate adapts to the box.
 
 ### 5.2 Drum-Exit Punch-Out
 
@@ -344,10 +357,10 @@ contact.
 
 | Component | Specification |
 |-----------|--------------|
-| Post | 2×2×0.120in steel SHS, ~115mm tall (floor to grate bottom), on bare floor at X=140mm |
-| Foot plate | 165×60×8mm steel plate (inboard outrigger — F3), with **4× #14×2″ 410 SS self-drilling screws** into the plywood-over-steel container floor |
+| Post | 2×2×0.120in steel SHS, ~115mm tall (floor to grate bottom), on the sub-plate at X=140mm (post trimmed by the plate thickness so deck level + tray clearances are preserved) |
+| Foot plate | 165×60×8mm steel plate (inboard outrigger — F3), bolting **4× M12×30** into the floor-anchor sub-plate's tapped bosses (§5.1a) |
 | Arm | 2×1×0.120in (50.8×25.4mm) steel reaching X=580mm (2 standard brackets, SF 2.06); **4×1×0.120in** extended to X=880mm (3 punch-out brackets, SF 1.99 — IBC/OSHA, §9) |
-| Overturning reaction | reacted by the 4× #14 foot-plate anchors (~2.4 kN/screw uplift → engage the steel floor pan); 300 lbf tip point load governs (§9) |
+| Overturning reaction | reacted through the foot into the continuous sub-plate, whose winged self-drillers carry the ~2.4 kN/leg uplift into the sill + steel cross-members (§5.1a); 300 lbf tip point load governs (§9) |
 
 The grate simply rests on the cantilever arms — located laterally by butting the
 near/far grate edges, free to lift straight out (no fasteners, no kerb).
@@ -482,7 +495,7 @@ so they cannot drift from the geometry.
 | Floor-leg STD arm | 406 N·m | 838 N·m | 2.06 | 2×1×0.120, 305 mm cant. |
 | Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. (redesign; 2×1 was SF 1.04) |
 | Floor-leg post | 807 N·m | 2158 N·m | 2.68 | 2×2×0.120 SHS |
-| Foot-anchor uplift | 2445 N/screw | engage steel pan | ≈1 | 4× #14 SS self-driller; 2 outboard react the couple over the 165 mm foot |
+| Floor-leg uplift → sub-plate | 2445 N/fixing | 5300 N | 2.17 | leg bolts to the sub-plate (§5.1a); winged TEKs carry the couple into the sill/members, 2 outboard over the 165 mm foot |
 | Combined corner plate | 1612 N | 161856 N | 100 | 10 mm plate, 4× M12; shared with the BR film rail |
 | RWK long beam (cross-ref) | person + grate | SF 7.1 | 7.1 | ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section |
 | RWK arm half-lap notch (cross-ref) | 334 N·m | SF 2.03 | 2.03 | ibc_frame_load.arm_notch_check — solid-bar rebalanced split |
@@ -497,8 +510,9 @@ SF 2.1) / **3×1×0.120in tube** (widened, SF 1.83). The widened bracket is **de
 load (a rare position; distributed standing deflects far less). The **left-walkway floor-leg** punch-out arm was
 likewise upgraded to a **4×1×0.120in tube** (SF 1.99; the 2×1 was only SF 1.04 at the 605mm reach). Two items
 carry fabrication conditions rather than a clean margin: the **corrugated-rib pull-through** (SF 7) depends on the
-≥30mm corrugation confirmation for bolt grip, and the **floor-leg foot anchors** (~2.4 kN/screw uplift) require
-the #14 self-drillers to engage the container's **steel floor pan**, not the plywood alone.
+≥30mm corrugation confirmation for bolt grip, and the **floor-leg overturning uplift** (~2.4 kN/leg) is carried
+into the continuous floor-anchor sub-plate (§5.1a), whose winged self-drillers engage the door-end sill and the
+steel cross-members (~5.3 kN each) rather than the plywood alone.
 
 The **right walkway** is a **2×1×0.120in cantilever frame** — a continuous inner beam, two outer-beam
 segments, and two end beams, with an **open bay in the outer rail over the corridor** — picked up at mid-span
@@ -527,7 +541,8 @@ practical fillets for the plate thickness.
 | WF1 | Standard bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 3/brkt × 13 = 39 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF2 | Widened bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 4/brkt × 5 = 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF3 | Right-walkway wall cleat + combined corner plate → wall | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 20 | ~90 N·m | flat both ends | plain nut + split-lock |
-| WF4 | Floor-leg foot plate → container floor | #14×2″ HWH self-driller | 410 SS | 4/foot × 5 = 20 | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
+| WF4a | Floor-anchor sub-plate → sill + cross-members (§5.1a) | #14×3¼″ winged self-driller (F14C325FDC) | 410 SS | container-dependent (~20) | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
+| WF4b | Floor-leg foot plate → sub-plate (tapped boss) | M12×30 into tapped boss | Gr.8.8 zinc | 4/foot × 5 = 20 | snug + locker | split-lock under head | thread-locker (tapped boss) |
 | WF5 | Grating hold-down clip → bracket arm / long beam | M-type FRP grating clip + bolt | 316 SS | 610 mm (24") along bearing edges + corners | snug | — | — |
 | J6 (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |
 <!-- END load:fasteners -->
@@ -551,12 +566,13 @@ practical fillets for the plate thickness.
 
 **Weld-location map** — each mark is ticked at its joint on the detail sheets: **WW1/WW3** on Sheet 2
 (standard bracket), **WW2/WW3** on Sheet 7 (widened), **WW6/WW7** on Sheet 6 (floor-leg), and
-**WW5/WW8/WW9** on Sheet 3 (right cantilever rectangle). **WF1–WF4** land on the same sheets; **WF5**
+**WW5/WW8/WW9** on Sheet 3 (right cantilever rectangle). **WF1–WF5** land on the same sheets; **WF5**
 (grating clips) is dimensioned on the Sheet 10 cut-plan.
 
 All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame J3/J6 wall bolts) with a
-flat washer each end, a plain nut, and a split-lock washer. The floor-leg #14 self-drillers are driven
-to seat (no torque spec — thread-forming). The grating hold-down clip pitch is fixed in Phase D against
+flat washer each end, a plain nut, and a split-lock washer. The floor-anchor sub-plate's winged self-drillers
+(WF4a) are driven to seat (no torque spec — thread-forming); each leg foot bolts to the plate's tapped bosses
+(WF4b, M12×30, snug + thread-locker). The grating hold-down clip pitch is fixed in Phase D against
 the McNichols clip datasheet.
 
 ### 10.3 Datums & Tolerances
@@ -567,7 +583,7 @@ as the subsystems it interfaces (the traveling spray bar, the film-plane rail):
 <!-- BEGIN load:datums -->
 | Datum | Definition | References |
 |-------|-----------|------------|
-| **A** | Floor plane — the container floor / foot-plate undersides (Z0) | all heights: deck Z140, arm top Z115, bolt Z42/Z175, beam soffit Z89.6 |
+| **A** | Floor plane — the container floor / floor-anchor sub-plate underside (Z0; the leg posts are trimmed by the plate thickness so deck + clearances hold) | all heights: deck Z140, arm top Z115, bolt Z42/Z175, beam soffit Z89.6 |
 | **B** | The two long wall faces — pinhole wall (Yd0) + film-plane wall (Yd2362) interior faces the brackets bolt to | all Yd bracket/deck positions, bracket spacing 457 |
 | **C** | Rail datum — film-plane rail X260 (left) / X4649 (right) | the right-walkway outer edge (X4574) + combined corner plate register to C (shared with the film plane) |
 <!-- END load:datums -->
@@ -661,9 +677,11 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 right-walkway bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 96 ea | McMaster-Carr | $9 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked). | 24 ea | McMaster-Carr | $3 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 2×2×0.120in SHS post (~115mm) + arm: 2×1×0.120in for the 2 standard legs (reach X580, SF 2.06) / 4×1×0.120in for the 3 drum-exit punch-out legs (extended to X880 — REDESIGNED to US IBC/OSHA, the 2×1 was only SF 1.04, 4×1 → SF 1.99; walkway_load.py) + 165×60×8mm foot plate (F3: lengthened 128→165 so the 4 floor anchors clear the post footprint as an inboard outrigger). #26: post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote. | 5 ea | MetalsDepot / Local fab | $65–$105 |
-| [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 4 per foot plate (20 total). Self-drills the 6mm plate + 28mm plywood (structural bite in the ply — wedge/concrete anchors don't hold in a ply-over-steel container floor). Hex washer head bears on the plate. 410 SS. Simpson SDWS 316 (pre-drilled plate holes) if max corrosion is wanted. | 20 ea | Bridge Fasteners / ASMC | $7–$11 |
+| Floor-anchor sub-plate (strongback) — steel ~1,900×350×8mm A36 | ONE continuous sub-plate (strongback) under the whole 5-leg line (WF4a/WF4b). The 5 floor-legs sit near one cross-member station (all at ~one X, parallel to the members), so bolting them straight to the floor is a single coin-flip — if that X lands in a gap, ALL five miss. The plate lies flat on the floor spanning from the door-end sill / bottom-end-rail (guaranteed steel) across the first cross-members; it is self-tapped down into the sill + every member flange it crosses (WF4a — see walkway-floor-tek), and all 5 legs bolt UP into tapped bosses on the plate (WF4b — see walkway-leg-bolt). Decouples the fixed leg positions from the UNKNOWN cross-member pitch (not standardized — ISO 1496-1 caps members ≤1,000mm; varies by maker). PLATE LENGTH/WIDTH + members spanned + TEK count are FINALIZED AGAINST THE ACTUAL ACQUIRED CONTAINER (~1,900×350×8 is representative: ~1,860mm leg-line span × wide enough in X to reach the sill + first member). Raw plate MATERIAL only; cut + tapped bosses + on-site TEK clearance holes = fab (deferred, material-now rule). | 1 ea | Metal Supermarkets | $90–$180 |
+| Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members) (F14C325FDC) | Fix the walkway floor sub-plate (walkway-floor-plate) DOWN into the door-end sill + the steel cross-members it crosses (WF4a), driven from above. SAME winged #14×3¼″ 410 SS as the IBC sub-plate (ibcf-floor-tek): wings ream the 28mm plywood, snap off at the steel, drill point threads the ~4mm member flange; passes an on-site clearance hole in the 8mm plate. ~5.3 kN pull-out/screw in 4mm steel; the 2 outboard screws per leg react the ~2.4 kN overturning uplift with large margin. QTY container-dependent (~20 incl. spares across the sill + members under the leg line). $1.02 ea. | 20 ea | Fasteners Plus / ASMC | $20 |
+| M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss) | Bolt each floor-leg foot DOWN to the continuous sub-plate (WF4b) — 5 legs × 4 (the 165×60 foot's anchor pattern) = 20. Threads into a tapped boss on the plate (no underside nut — drive-from-above), blue thread-locker + split-lock under each head. Grip = 8mm foot plate + boss → M12×30. Gr.8.8 zinc. SKU pending — source (M12×1.75 × 30 hex, Gr.8.8 zinc); ~$0.50 ea est. | 20 ea | McMaster-Carr | $10 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
-| **Walkway total** | | | | **$2,088–$2,950** |
+| **Walkway total** | | | | **$2,201–$3,149** |
 <!-- END parts:walkway -->
 
 *Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*
@@ -707,3 +725,8 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
    floor zone clearance requirements.
 10. [Walkway Routing Sections](walkway-routing-sections.md) — Under-walkway
     pipe-routing cross-sections and clearances at each junction.
+11. Floor cross-member structure + non-standardization (§5.1a): [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf)
+    (intermediate transverse members ≤1,000mm apart, or a flat underside); [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)
+    (box/C/Z/I cross-member sections); [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html)
+    (C-section SPA-H Corten ~4–4.5mm, ~45mm flange, ~122mm high); [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/)
+    (cross-member size + spacing not standardized, varies by manufacturer).

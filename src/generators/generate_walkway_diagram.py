@@ -1699,7 +1699,7 @@ def sheet6():
     """Sheet 6 — Detail D: Left walkway FLOOR-LEG CANTILEVER bracket.
     VIEW A — section through one bracket (X-Z, looking along Yd): foot plate on bare
     floor outside the tray + 50x50 post + arm reaching IN over the (floor-level) spray
-    bar to the grate inner edge. VIEW B — foot-plate plan with the 4x #14 SS self-drilling floor anchors."""
+    bar to the grate inner edge. VIEW B — foot-plate plan with the 4x M12 bolts to the floor-anchor sub-plate."""
     C_BOLT = "#505058"
     C_SB = "#C8D8E8"                          # spray bar (aluminum)
     legx = LEFT_WK_CANT_LEG_X                # 140
@@ -1763,14 +1763,14 @@ def sheet6():
     draw_dim_v(axA, std_reach + 5, sb1, arm_z0, f"{arm_z0 - sb1:.0f}mm", offset=8, fs=6, right=True, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
-    # Floor anchors — #14 SS self-drillers (2 of the 4 visible). SAME convention as the IBC corridor-post
-    # floor anchors (_foot_elev): hex head on the plate + a shank driving DOWN into the ply-over-steel
-    # floor to a drill-point marker — self-driller, NO nut (no accessible underside on a container floor).
+    # Foot anchors — M12 (2 of the 4 visible) bolting DOWN into the floor-anchor sub-plate's tapped bosses
+    # (WF4b; the sub-plate self-taps to the cross-members, WF4a — drawn in full on the floor-anchor-map Sheet 2).
+    # Drive-from-above: hex head on the foot plate + a shank into the boss below (no accessible underside).
     # Positions single-sourced from LEFT_WK_CANT_FOOT_BOLT_DX (outboard, clear of the post).
     for dx in LEFT_WK_CANT_FOOT_BOLT_DX:
         ax_ = fx0 + dx
-        axA.plot([ax_, ax_], [ft, -16], color=C_OUT, lw=1.8, zorder=8)              # shank: head level → into the floor
-        axA.plot(ax_, -16, 'v', color=C_OUT, ms=4, mew=0, zorder=8)                 # self-drill point (into floor)
+        axA.plot([ax_, ax_], [ft, -14], color=C_OUT, lw=1.8, zorder=8)              # shank: head level → into the boss
+        axA.add_patch(Rectangle((ax_ - 5, -16), 10, 6, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=7))  # tapped boss below the foot plate
         axA.add_patch(Rectangle((ax_ - 6, ft), 12, 5, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=9))   # hex head on the plate
     # Load arrow at the arm tip
     axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
@@ -1812,7 +1812,7 @@ def sheet6():
              [anchor_oys[0], anchor_oys[0], anchor_oys[1], anchor_oys[1], anchor_oys[0]],
              color=C_BOLT, lw=0.6, ls=(0, (3, 3)), zorder=7, alpha=0.5)
     leader(axB, anchor_oxs[0], anchor_oys[1], -fl / 2 - 18, fw / 2 + 24,
-           f"WF4 · {nb}x #14 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
+           f"WF4b · {nb}x M12 TO SUB-PLATE", color=C_BOLT, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
     draw_dim_h(axB, -fl / 2, fl / 2, -fw / 2 - 12, f"{fl}mm", offset=4, fs=6, above=False, font=FONT)
     draw_dim_v(axB, fl / 2 + 14, -fw / 2, fw / 2, f"{fw}mm", offset=6, fs=6, right=True, font=FONT)
@@ -1826,7 +1826,7 @@ def sheet6():
     notes = [
         "FLOOR-LEG CANTILEVER BRACKET (x5, at Yd 250/800/1180/1560/2110):",
         "1. Bolted to BARE FLOOR outboard of the tray (X<170) — ZERO tray contact, ZERO wall fixings.",
-        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x #14 SS self-drilling floor anchors per foot (no nut — bite the ply floor).",
+        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x M12 per foot into the floor-anchor SUB-PLATE's tapped bosses (WF4b); the plate self-taps to the cross-members (WF4a; §5.1a).",
         f"3. Arm Z{int(arm_z0)}-{int(grate_bot)} (2×1×0.120, 25.4 deep) carries the grate inner edge (X{int(LEFT_WK_CANT_STD_REACH)}); the 3 punch-out brackets EXTEND to X{int(LEFT_WK_CANT_WIDE_REACH)} on a 4×1×0.120 arm (IBC/OSHA SF 1.99).",
         "4. The arm clears the traveling spray bar (top Z67) by ~22mm — enabled by the raised Z140 deck.",
         "5. The grate lifts out for transport; the brackets stay bolted (permanent). Replaces the former edge-beam-on-wall-seats.",

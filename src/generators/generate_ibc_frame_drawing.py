@@ -20,8 +20,8 @@ Frame concept (ibc-reconfig-v2 — restraint-only deep 4-leg box):
   deck), so the frame only RESTRAINS.  It is a DEEP 4-LEG BOX at the corridor mouth:
   a FRONT upright pair (X4654) + a BACK pair 450mm behind (X5104), each column at
   Yd 1046/1266, tied by butt-jointed top + bottom rings.  Each of the 4 legs is
-  anchored to the floor by a 150×150×12 flange plate with 4× M12×70 (J1) through-
-  bolts into the steel cross-member; the front feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
+  anchored to the floor by a 150×150×12 flange plate that bolts (4× M12, J1b) to a
+  shared floor-anchor sub-plate self-tapped into the cross-members (J1a); the front feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
   drain-riser spine on its BACK uprights.  Transport restraint is by front retaining
   8 bars (2/tier: Z500/950 + Z1500/1950) whose wall ends drop into Simpson-style joist hangers through-
   bolted to exterior backing plates, plus D-ring lashing.  Geometry matches the 3D
@@ -615,7 +615,7 @@ def sheet1():
 
     leader(ax, (POST_NEAR_YD - FRAME_RHS * 0.3), (FOOT_PLATE_T / 2),
            (POST_NEAR_YD - 220), (140),
-           "FLOOR FLANGE FOOT (J1)\n150×150×12 PLATE, 4× M12×70 (8.8)\nTHRU-BOLT TO STEEL CROSS-MEMBER\n(×4, one per leg)",
+           "FLOOR FLANGE FOOT (J1b)\n150×150×12 PLATE, 4× M12 TO THE\nFLOOR-ANCHOR SUB-PLATE (J1a → cross-members)\n(×4, one per leg)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -672,7 +672,7 @@ def sheet1():
         f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Fillet welds per §3.5 schedule (W1 upright↔ring 5mm, W2 foot↔upright 6mm, W3 cleat 4mm, W4 lashing ring 6mm), continuous / all-around.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
-        f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12×70 thru-bolts (J1) into the floor cross-members (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
+        f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, J1b) to the floor-anchor sub-plate (J1a → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
         f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into",
          "   a Simpson-style wall joist",
         f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",

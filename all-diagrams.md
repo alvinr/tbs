@@ -250,6 +250,10 @@
 
 ![TBS-001 IBC Stacking — Sheet 5: Internal Plumbing Elevation](assets/ibc-stacking-sheet5.png)
 
+![Floor Anchoring — Sheet 1: Cross-Member Map (floor-secured items vs. the nominal grid)](assets/floor-anchor-map-sheet1.png)
+
+![Floor Anchoring — Sheet 2: Sub-Plate (Strongback) Standard — section stack + plate footprints](assets/floor-anchor-map-sheet2.png)
+
 ---
 
 ## 15. IBC Support Frame Fabrication

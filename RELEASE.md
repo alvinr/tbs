@@ -34,8 +34,13 @@ file** — a release must not ship without a changelog entry:
 ### Water
 - Moved the blue supply trunk's drop to the ribbon slot (`BLUE_TRUNK_HANDOFF_X` → `RIBBON_SLOT_X` = 4641, past the tray edge) so it no longer drops over the open processing-tray basin — matching every other under-grate ribbon line. Clears both remaining pipe-vs-tray interferences (overview + water now read 0).
 
+### Floor anchoring — sub-plate (strongback) standard
+- **New project-wide standard for every floor-fastened component.** Container floor cross-members are not dimensionally standardized ([ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) only caps them ≤1000mm apart; pitch/stations vary by maker), so feet/legs bolted straight to the floor cannot guarantee a member under each bolt. Instead, each system's feet now bolt to a shared steel **sub-plate** laid on the floor and self-tapped (winged #14×3¼″ 410-SS) into whatever cross-members (and the door-end sill) it spans — drive-from-above, no underside access. The feet bolt up into tapped bosses on the plate. Plate size + TEK count are finalized against the actual acquired container.
+- **IBC frame (J1):** the 4 feet bolt (4× M12 into tapped bosses) to one shared sub-plate; retires the previous floor through-bolt. Cost +$46/$68/$90 vs the original self-driller feet.
+- **Walkway floor-legs (WF4):** one continuous sub-plate under the whole 5-leg line (they sit at ~one X-station, so direct screws are a single coin-flip); cost +$113/$156/$199. Load path + §9 margins updated (uplift → sub-plate TEKs, SF 2.17).
+- **New diagram** `floor-anchor-map` (2 sheets): the cross-member map (feet vs. the nominal grid) + the sub-plate section stack / footprints / container-dependent note. Embedded in the IBC stacking (§3.4a) and walkway (§5.1a) reports with the container-cross-member research sources.
+
 ### IBC frame
-- Reconciled the floor-foot anchor spec (owner-confirmed **4× M12 per foot**): the stacking-report §3.4 J1 row and the parts registry still carried the old `#14` 410-SS self-driller, while the drawing + datum table were already fully committed to a welded 150×150×12 flange foot with 4× M12 on a 100mm PCD. J1 is now a **M12×70 Gr.8.8 zinc through-bolt** (16 total, reusing the standard structural SKU 91280A732) into the steel floor cross-members — plain nut + split-lock on the underside (true uplift + lateral restraint, vs the self-driller's slide-only hold). Added the 16 backing nuts + washers to the registry; cost cascaded (+$21/$20/$19).
 - Added the missing **J1 mark** to the owning Sheet 1 foot callout (per the joint-mark-on-its-diagram rule).
 - Fixed a stale `44 jets` → `43` straggler in the spray-bar cost line (left over from the 2026-08 nozzle reconciliation) and realigned its $1 rounding.
 

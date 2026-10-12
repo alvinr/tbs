@@ -256,7 +256,7 @@ indicative low–high estimates — get quotes before ordering.
 | [3/32" sq key stock, 12in bar — U-joint stub keys (×8 cut)](https://www.grainger.com/product/Key-Stock-5UY75) (5UY75) | 1 lot | Grainger | film | $2 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 2 10-pack | Home Depot | water | $37 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
-| Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → cross-members) (F14C325FDC) | 12 ea | Fasteners Plus | ibc-frame | $12 |
+| [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | 12 ea | Fasteners Plus | ibc-frame | $12 |
 | M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss) | 16 ea | McMaster-Carr | ibc-frame | $8 |
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Home Depot | ibc-frame | $68 |
 | [Bearing retaining rings + upper end-retainer plate](https://www.mcmaster.com/90154A895/) (90154A895) | 1 lot | McMaster-Carr | lightlock | $17–$18 |
@@ -298,7 +298,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Home Depot | water | $19 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
-| Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members) (F14C325FDC) | 20 ea | Fasteners Plus | walkway | $20 |
+| [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | 20 ea | Fasteners Plus | walkway | $20 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss) | 20 ea | McMaster-Carr | walkway | $10 |
 | **fasteners-hardware subtotal** | | | | **$2,067–$2,358** |

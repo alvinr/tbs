@@ -1,3 +1,3 @@
-routing-sources-sha: 9272fe8cea4b
-model=water  pipes=563 solids=865  interferences=0
+routing-sources-sha: 69056ef32cc7
+model=overview  pipes=1376 solids=652  interferences=0
 pipe-on-pipe crossings=0

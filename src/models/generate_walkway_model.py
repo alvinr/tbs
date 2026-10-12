@@ -42,7 +42,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov
 import tbs_draw as draw                          # shared drawing/material primitives
 import tbs_constants as k                       # right-hanger constants ov doesn't re-export
-from tbs_constants import (FP_CORNER_SEAT_PLATE_W, FP_RAIL_WEB, FP_RAIL_ZC_BOT, IBC_FOOT_PLATE_T, IBC_FRAME_RHS, NEAR_GRATE_HOLES, RAIL_X_R, RWK_AH, RWK_ARM_BOT, RWK_ARM_TOP, RWK_ARM_W, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_CRANK_DX, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_Y0, RWK_CRANK_Y1, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, RWK_GRATE_Z, RWK_HL_POST, RWK_HL_TIP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_NOTCH_FLOOR, RWK_UP_YDS, RWK_X_L, RWK_X_R, RWK_X_UP, WALKWAY_BRACKET_T, WALKWAY_GRATE_T, WALKWAY_H, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_LEFT_X, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X1, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_W)   # walkway builders (Phase 1, moved from overview)
+from tbs_constants import (FP_CORNER_SEAT_PLATE_W, FP_RAIL_WEB, FP_RAIL_ZC_BOT, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FRAME_RHS, NEAR_GRATE_HOLES, RAIL_X_R, RWK_AH, RWK_ARM_BOT, RWK_ARM_TOP, RWK_ARM_W, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, RWK_CRANK_DX, RWK_CRANK_N0, RWK_CRANK_N1, RWK_CRANK_Y0, RWK_CRANK_Y1, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, RWK_GRATE_Z, RWK_HL_POST, RWK_HL_TIP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_NOTCH_FLOOR, RWK_UP_YDS, RWK_X_L, RWK_X_R, RWK_X_UP, WALKWAY_BRACKET_T, WALKWAY_GRATE_T, WALKWAY_H, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_LEFT_X, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X1, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_W)   # walkway builders (Phase 1, moved from overview)
 
 ruby_box = draw.ruby_box
 ruby_cylinder = draw.ruby_cylinder
@@ -353,7 +353,7 @@ def _rwk_arm_type_parts(x0):
     ep_t, ep_w, ep_h = 8, 65, ov.RWK_J6_EP_H                        # end-plate thickness / Yd width / Z height (155)
     ac_z = (armb + armt) / 2.0
     ep_bz = ac_z - 65.0                                            # end-plate bottom Z37 (mirrors the real builder)
-    bp_bz = ov.IBC_FOOT_PLATE_T + ov.IBC_FRAME_RHS                  # rear backing-plate bottom (butts the bottom rail)
+    bp_bz = ov.FLOOR_PLATE_T + ov.IBC_FOOT_PLATE_T + ov.IBC_FRAME_RHS   # rear backing-plate bottom (butts the bottom rail, now raised onto the floor-anchor sub-plate)
     bp_h = (ep_bz + ep_h) - bp_bz
     ac_y = aw / 2.0                                                # arm centre in Yd
     parts = [
@@ -375,12 +375,15 @@ def _floor_cant_type_parts(x0, reach, suffix, target_x, arm_w):
     inner edge, X580, 2×1 arm) and the EXTENDED reach (X880, the 3 drum-exit punch-out
     brackets, 4×1 arm — IBC/OSHA). `arm_w` is the arm's Yd width per type."""
     foot_l, foot_w, foot_t = LC_FOOT
+    pt = FLOOR_PLATE_T
     az0, az1 = LC_ARM_Z0, GRATE_Z
     return [
-        ruby_box(f"Type FloorCant {suffix} foot plate", x0 - foot_l / 2, 0, 0,
+        ruby_box(f"Type FloorCant {suffix} sub-plate", x0 - foot_l / 2 - 10, -foot_w / 2 - 20, 0,
+                 foot_l + 20, foot_w + 40, pt, color=C_STEEL),
+        ruby_box(f"Type FloorCant {suffix} foot plate", x0 - foot_l / 2, 0, pt,
                  foot_l, foot_w, foot_t, color=C_STEEL),
-        ruby_box(f"Type FloorCant {suffix} post (2x2x0.120 SHS)", x0 - LC_POST / 2, 0, 0,
-                 LC_POST, LC_PW, az1, color=C_STEEL),
+        ruby_box(f"Type FloorCant {suffix} post (2x2x0.120 SHS)", x0 - LC_POST / 2, 0, pt + foot_t,
+                 LC_POST, LC_PW, az1 - (pt + foot_t), color=C_STEEL),      # on the foot, on the sub-plate — post cut shorter by pt
         ruby_box(f"Type FloorCant {suffix} arm (to X{target_x})", x0 + LC_POST / 2, -arm_w / 2, az0,
                  reach, arm_w, az1 - az0, color=C_STEEL),
     ]
@@ -463,27 +466,33 @@ def left_floor_cantilevers():
     section is supported, not cantilevered. Zero tray contact. Returns a list of ruby
     parts — SHARED by left_support() and the overview so the two never diverge."""
     foot_l, foot_w, foot_t = LC_FOOT           # 128 x 60 x 8
+    pt = FLOOR_PLATE_T                          # floor-anchor sub-plate (strongback) thickness
     az0, az1 = LC_ARM_Z0, GRATE_Z              # 75 .. 115 (grate bottom)
     arm_x0 = LC_LEGX + LC_POST / 2             # 165 — arm starts at the post inner face
     parts = []
+    # ONE continuous floor-anchor SUB-PLATE under all 5 legs, on the floor (Z0→pt): it runs from the
+    # cargo-door sill (X0, guaranteed bottom-end-rail steel) and BUTTS the processing-tray near edge
+    # (X=PROC_TRAY_X_L) — it cannot pass under the tray. The legs bolt into it (WF4b); it self-taps into
+    # the sill + cross-members (WF4a — container-dependent winged TEKs, drawn on the floor-anchor 2D sheet).
+    _y0 = min(LC_YDS) - foot_w / 2 - 30
+    _y1 = max(LC_YDS) + foot_w / 2 + 30
+    parts.append(ruby_box("Left floor-anchor sub-plate", 0, _y0, 0, k.PROC_TRAY_X_L, _y1 - _y0, pt, color=C_STEEL))
     for i, y in enumerate(LC_YDS, 1):
         wide = WK_LEFT_WIDE_YL <= y <= WK_LEFT_WIDE_YR
         reach = LC_WIDE if wide else LC_STD     # 880 (punch-out) / 580 (standard) tip X
         aw = LC_ARM_WW if wide else LC_ARM_W    # 101.6 (4×1, IBC/OSHA) / 50.8 (2×1) arm width in Yd
-        parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, 0,
-                              foot_l, foot_w, foot_t, color=C_STEEL))
+        parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, pt,
+                              foot_l, foot_w, foot_t, color=C_STEEL))        # foot ON the sub-plate
         parts.append(ruby_box(f"Left cantilever {i} post (2x2x0.120 SHS)",
-                              LC_LEGX - LC_POST / 2, y - LC_PW / 2, foot_t,   # sits ON the foot plate (butt, not sunk in — the weld is not modeled)
-                              LC_POST, LC_PW, az1 - foot_t, color=C_STEEL))
+                              LC_LEGX - LC_POST / 2, y - LC_PW / 2, pt + foot_t,   # on the foot, on the sub-plate — post cut shorter by pt
+                              LC_POST, LC_PW, az1 - (pt + foot_t), color=C_STEEL))
         parts.append(ruby_box(f"Left cantilever {i} arm (to X{int(reach)})", arm_x0,
                               y - aw / 2, az0, reach - arm_x0, aw, az1 - az0, color=C_STEEL))
-        # Floor anchors — 4× #14 SS self-drillers through the foot plate into the ply-over-steel
-        # floor, in the INBOARD outrigger clear of the post (F3, 2026-08-18). Hex head at the top;
-        # nut=None (self-drilling, no back nut).
+        # WF4b — foot → sub-plate tapped-boss bolts (M12), in the INBOARD outrigger clear of the post.
         for dx in LC_FOOT_BOLT_DX:
             for dy in (-LC_FOOT_BOLT_DY, LC_FOOT_BOLT_DY):
-                parts.append(ruby_bolt(f"Left cantilever {i} floor anchor",
-                                       LC_FX0 + dx, y + dy, 0, foot_t + 4, radius=4,
+                parts.append(ruby_bolt(f"Left cantilever {i} foot→plate bolt",
+                                       LC_FX0 + dx, y + dy, pt, foot_t, radius=4,
                                        axis="z", color=C_BOLT, head="far", nut=None))
     return parts
 
@@ -662,7 +671,7 @@ def ibc_cantilever_arms(x_to=None):
     # The REAR backing plate sits in the box-interior corner, where the corridor bottom-ring X-rail also
     # starts — so its bottom is raised to BUTT the rail top (no interpenetration, no fused seam). The bolt
     # group is at Z175/205, so the shorter plate still fully spreads it. (J6 rail clash fix, 2026-08-17.)
-    bp_bz = IBC_FOOT_PLATE_T + IBC_FRAME_RHS                                 # 62.8 — corridor bottom-ring X-rail TOP; backing plate rests on it
+    bp_bz = FLOOR_PLATE_T + IBC_FOOT_PLATE_T + IBC_FRAME_RHS                 # corridor bottom-ring X-rail TOP (raised onto the floor-anchor sub-plate); backing plate rests on it
     bp_h  = (ep_bz + ep_h) - bp_bz                                          # keep the plate TOP at Z185.3
     c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)
     parts = []

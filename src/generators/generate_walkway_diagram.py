@@ -1400,11 +1400,15 @@ def sheet4():
     arm_z0 = LEFT_WK_CANT_ARM_Z0
     arm_x0 = legx + post / 2
     pt = FLOOR_PLATE_T
-    sp_x0, sp_x1 = (legx - post / 2) - 15, (fx0 + fl) + 15   # the ONE continuous sub-plate spans the post + foot outrigger
+    # The sub-plate runs from the CARGO-DOOR SILL (X0) and BUTTS the processing-tray near edge (X=PROC_TRAY_X_L)
+    # — it cannot pass under the tray; it carries the foot bolts (X130/170) and reaches the sill steel.
+    sp_x0, sp_x1 = 0, PROC_TRAY_X_L
     ax.add_patch(Rectangle(((sp_x0), (0)), (sp_x1 - sp_x0), (pt),
-                            fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4))           # floor-anchor SUB-PLATE on the floor (self-taps to sill/cross-members, WF4a)
-    for i in range(4):                                                        # winged TEKs: sub-plate -> floor
-        xx = sp_x0 + (i + 0.5) * (sp_x1 - sp_x0) / 4
+                            fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=4))           # floor-anchor SUB-PLATE (WF4a): door sill → butt the tray
+    ax.text(sp_x0 + 4, pt + 4, "← SILL", fontsize=4.5, color=C_DIM, ha="left", va="bottom", **FONT)
+    ax.text(sp_x1 - 4, pt + 4, "BUTT TRAY →", fontsize=4.5, color=C_DIM, ha="right", va="bottom", **FONT)
+    _teks = [15] + [sp_x0 + (i + 0.5) * (sp_x1 - sp_x0) / 5 for i in range(1, 5)]
+    for xx in _teks:                                                          # winged TEKs: sub-plate -> door sill + cross-members
         ax.plot([xx, xx], [pt, -16], color=C_BOLT, lw=1.3, zorder=3)
         ax.plot(xx, -16, 'v', color=C_BOLT, ms=3, mew=0, zorder=3)
     ax.add_patch(Rectangle(((fx0), (pt)), (fl), (ft),
@@ -1747,8 +1751,12 @@ def sheet6():
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Foot plate (on bare floor, outboard of the tray)
     pt = FLOOR_PLATE_T
-    sp_x0, sp_x1 = (legx - post / 2) - 18, (fx0 + fl) + 18   # the ONE continuous sub-plate spans the post + foot outrigger
-    axA.add_patch(Rectangle((sp_x0, 0), sp_x1 - sp_x0, pt, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))  # floor-anchor SUB-PLATE on the floor (WF4a)
+    # The sub-plate runs from the CARGO-DOOR SILL (X0, guaranteed bottom-end-rail steel) and BUTTS the
+    # processing-tray near edge (X=TX) — it cannot pass under the tray. It carries the foot bolts (X130/170).
+    sp_x0, sp_x1 = 0, TX
+    axA.add_patch(Rectangle((sp_x0, 0), sp_x1 - sp_x0, pt, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=5))  # floor-anchor SUB-PLATE (WF4a): door sill → tray edge
+    axA.text(sp_x0 + 4, pt + 5, "← CARGO-DOOR SILL", fontsize=4.6, color=C_DIM, ha="left", va="bottom", **FONT)
+    axA.text(sp_x1 - 4, pt + 5, "BUTTS TRAY →", fontsize=4.6, color=C_DIM, ha="right", va="bottom", **FONT)
     axA.add_patch(Rectangle((fx0, pt), fl, ft, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))              # foot plate ON the sub-plate
     # Post 50x50 (sub-plate top to grate bottom) — cut shorter by the plate thickness
     axA.add_patch(Rectangle((legx - post / 2, pt), post, grate_bot - pt, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))
@@ -1775,9 +1783,9 @@ def sheet6():
     draw_dim_v(axA, std_reach + 5, sb1, arm_z0, f"{arm_z0 - sb1:.0f}mm", offset=8, fs=6, right=True, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
-    # WF4a — winged TEKs self-tap the sub-plate DOWN into the sill / cross-members (drive from above).
-    for i in range(4):
-        xx = sp_x0 + (i + 0.5) * (sp_x1 - sp_x0) / 4
+    # WF4a — winged TEKs self-tap the sub-plate DOWN into the door sill + cross-members (drive from above).
+    _teks = [15] + [sp_x0 + (i + 0.5) * (sp_x1 - sp_x0) / 5 for i in range(1, 5)]
+    for xx in _teks:
         axA.plot([xx, xx], [pt, -18], color=C_BOLT, lw=1.5, zorder=4)               # TEK shaft into the floor
         axA.plot(xx, -18, 'v', color=C_BOLT, ms=4, mew=0, zorder=4)                 # drill point (sub-plate → sill/cross-members, WF4a; see note 2)
     # WF4b — foot → sub-plate tapped-boss bolts (M12, drive from above, 2 of 4 visible; outboard, clear of the post).

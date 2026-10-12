@@ -20,12 +20,12 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle
+from matplotlib.patches import Rectangle, Circle, Polygon
 
 import tbs_constants as k
 import generate_ibc_frame_drawing as ibc
 from tbs_title_block import title_block
-from tbs_drawing import leader, hatch_rect
+from tbs_drawing import leader, hatch_rect, draw_notes, draw_dim_h
 
 FONT = {"fontfamily": "monospace"}
 C_OUT, C_DIM, C_CL, C_STEEL = k.C_OUT, k.C_DIM, k.C_CL, k.C_STEEL
@@ -182,106 +182,82 @@ def sheet2(fig):
     fig.suptitle("FLOOR-ANCHOR SUB-PLATE (STRONGBACK) STANDARD — feet/legs bolt to a self-tapped plate",
                  fontsize=12, fontweight="bold", y=0.975, **FONT)
 
-    # ── LEFT: section detail of the stack (vertical exaggeration) ──────────────
-    ax = fig.add_axes([0.05, 0.40, 0.46, 0.50]); ax.axis("off")
-    ax.set_xlim(0, 300); ax.set_ylim(-40, 140); ax.set_aspect("auto")
+    # ── LEFT: section detail of the anchor stack (thickness exaggerated) ────────
+    ax = fig.add_axes([0.04, 0.26, 0.56, 0.62]); ax.axis("off")
+    ax.set_xlim(0, 310); ax.set_ylim(-40, 150); ax.set_aspect("auto")
 
-    def sx(v): return v           # horizontal mm 1:1
-    def sy(v): return v           # vertical mm 1:1 (layers are thin but legible here)
-
-    base_y = 40
+    base_y, mx = 40, 150
     # steel cross-member (C-section stub, in section) under the plywood
-    mx = 150
-    hatch_rect(ax, sx(mx-45), sy(base_y), sx(90), sy(4), color=C_STEEL)      # top flange
-    ax.add_patch(Rectangle((sx(mx-45), sy(base_y)), sx(90), sy(4), fill=False, edgecolor=C_OUT, lw=1.2))
-    ax.add_patch(Rectangle((sx(mx-45), sy(base_y-56)), sx(6), sy(56), facecolor=C_STEEL, edgecolor=C_OUT, lw=1.0))  # web down
-    ax.text(sx(mx), sy(base_y-28), "STEEL\nCROSS-MEMBER\n~4mm C-section", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
-
-    # plywood deck (full width)
-    ax.add_patch(Rectangle((sx(10), sy(base_y+4)), sx(280), sy(28), facecolor=C_PLY, edgecolor=C_OUT, lw=1.0, zorder=2))
-    ax.text(sx(265), sy(base_y+18), "28mm PLY", ha="right", va="center", fontsize=6, color="#6B5A33", **FONT)
-
-    # sub-plate (on top of ply, full width)
+    hatch_rect(ax, mx-45, base_y, 90, 4, color=C_STEEL)                                                  # top flange (~45mm)
+    ax.add_patch(Rectangle((mx-45, base_y), 90, 4, fill=False, edgecolor=C_OUT, lw=1.2))
+    ax.add_patch(Rectangle((mx-45, base_y-50), 6, 50, facecolor=C_STEEL, edgecolor=C_OUT, lw=1.0))        # web down
+    ax.text(mx, base_y-28, "STEEL CROSS-MEMBER\n~4mm C-section (~45mm flange)", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
+    # plywood deck + sub-plate on top
+    ax.add_patch(Rectangle((10, base_y+4), 290, 28, facecolor=C_PLY, edgecolor=C_OUT, lw=1.0, zorder=2))  # 28mm ply
+    ax.text(292, base_y+18, "28mm PLY", ha="right", va="center", fontsize=6, color="#6B5A33", **FONT)
     plate_y = base_y + 32
-    hatch_rect(ax, sx(10), sy(plate_y), sx(280), sy(8), color=C_PLATE)
-    ax.add_patch(Rectangle((sx(10), sy(plate_y)), sx(280), sy(8), fill=False, edgecolor=C_OUT, lw=1.4, zorder=3))
-    ax.text(sx(20), sy(plate_y+4), "SUB-PLATE ~8mm STEEL", ha="left", va="center", fontsize=6.5, color=C_OUT, **FONT)
+    hatch_rect(ax, 10, plate_y, 290, 8, color=C_PLATE)
+    ax.add_patch(Rectangle((10, plate_y), 290, 8, fill=False, edgecolor=C_OUT, lw=1.4, zorder=3))
+    ax.text(18, plate_y+4, "SUB-PLATE ~8mm STEEL", ha="left", va="center", fontsize=6.5, color=C_OUT, **FONT)
 
-    # winged TEK through plate + ply into the member flange (J1a) — house convention:
-    # hex-washer head on the plate + shaft driving DOWN + reaming wings + drill-point marker.
-    tek_x = mx
-    ax.plot([sx(tek_x), sx(tek_x)], [sy(plate_y + 8), sy(base_y - 3)], color=C_BOLT, lw=1.8, zorder=6)  # shaft
-    ax.add_patch(Rectangle((sx(tek_x - 7), sy(plate_y + 8)), sx(14), sy(5), fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=7))  # hex-washer head
-    for s in (-1, 1):                                                                 # reaming wings (snap off at the steel)
-        ax.plot([sx(tek_x), sx(tek_x + s * 7)], [sy(base_y + 13), sy(base_y + 20)], color=C_BOLT, lw=1.1, zorder=6)
-    ax.plot(sx(tek_x), sy(base_y - 3), 'v', color=C_BOLT, ms=5, mew=0, zorder=7)      # drill point into the member
-    leader(ax, sx(tek_x + 6), sy(base_y + 24), sx(tek_x - 78), sy(base_y - 18),
-           "J1a / WF4a  winged #14x3.25\" TEK\n(self-taps the member; wings ream the ply)",
+    # ── J1a winged TEK — drawn as a screw WITH its diameter (house convention) ──
+    tek_x, dia = mx, 7.0                                    # #14 ~Ø6.3mm, drawn to scale
+    head_z, tip_z = plate_y + 8, base_y - 8
+    body_bot = tip_z + 9
+    ax.add_patch(Rectangle((tek_x-11, head_z), 22, 5, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))             # hex-washer head
+    ax.add_patch(Rectangle((tek_x-dia/2, body_bot), dia, head_z-body_bot, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=6))  # shank (shows diameter)
+    for tz in range(int(body_bot)+2, int(head_z)-1, 4):                                                  # thread ticks
+        ax.plot([tek_x-dia/2, tek_x+dia/2], [tz, tz-2.2], color=C_OUT, lw=0.5, zorder=7)
+    for s in (-1, 1):                                                                                     # reaming wings (snap off at the steel)
+        ax.plot([tek_x+s*dia/2, tek_x+s*(dia/2+8)], [base_y+16, base_y+22], color=C_BOLT, lw=1.2, zorder=6)
+    ax.add_patch(Polygon([(tek_x-dia/2, body_bot), (tek_x+dia/2, body_bot), (tek_x, tip_z)], closed=True, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=6))  # drill point
+    draw_dim_h(ax, tek_x-dia/2, tek_x+dia/2, head_z+13, "Ø6.3", offset=3, fs=5.5, above=True, font=FONT)  # the SCREW DIAMETER
+    leader(ax, tek_x-dia/2-1, base_y+10, tek_x-78, base_y-24,
+           "J1a / WF4a  winged #14×3.25\" TEK\n(self-taps the member; wings ream the ply)",
            fs=6, color=C_BOLT, font=FONT, ha="center")
 
-    # foot base-plate on the sub-plate, bolted into a tapped boss (J1b)
-    foot_x = 235
-    ax.add_patch(Rectangle((sx(foot_x-40), sy(plate_y+8)), sx(80), sy(12), facecolor=C_STEEL, edgecolor=C_OUT, lw=1.2, zorder=4))
-    ax.text(sx(foot_x), sy(plate_y+14), "FOOT", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
-    # tapped boss below the plate
-    ax.add_patch(Rectangle((sx(foot_x-8), sy(plate_y-14)), sx(16), sy(14), facecolor=C_PLATE, edgecolor=C_OUT, lw=1.0, zorder=4))
-    ax.plot([sx(foot_x), sx(foot_x)], [sy(plate_y+20), sy(plate_y-12)], color=C_BOLT, lw=1.8, zorder=5)  # M12 shaft into the boss
-    ax.add_patch(Rectangle((sx(foot_x-7), sy(plate_y+20)), sx(14), sy(4), fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=6))   # hex head
-    leader(ax, sx(foot_x), sy(plate_y-12), sx(foot_x+5), sy(plate_y-34),
-           "J1b / WF4b  M12x30 into a\nTAPPED BOSS (drive from above,\nno underside access)",
-           fs=6, color=C_OUT, font=FONT, ha="left")
+    # ── J1b foot → sub-plate tapped boss ───────────────────────────────────────
+    foot_x = 248
+    ax.add_patch(Rectangle((foot_x-40, plate_y+8), 80, 12, facecolor=C_STEEL, edgecolor=C_OUT, lw=1.2, zorder=4))  # foot
+    ax.text(foot_x, plate_y+14, "FOOT", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((foot_x-9, plate_y-13), 18, 13, facecolor=C_PLATE, edgecolor=C_OUT, lw=1.0, zorder=4))  # tapped boss
+    ax.add_patch(Rectangle((foot_x-3.5, plate_y-9), 7, 29, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=5))             # M12 shank (shows diameter)
+    ax.add_patch(Rectangle((foot_x-8, plate_y+20), 16, 4, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=6))                # hex head
+    leader(ax, foot_x, plate_y-11, foot_x-18, base_y-28,
+           "J1b / WF4b  M12×30 into a TAPPED BOSS\n(drive from above, no underside access)",
+           fs=6, color=C_OUT, font=FONT, ha="center")
 
-    ax.text(sx(150), sy(128), "SECTION — anchor stack (vertical scale exaggerated)",
+    ax.text(155, 140, "SECTION — anchor stack (thickness exaggerated for clarity)",
             ha="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT)
 
-    # ── RIGHT TOP: schematic plate footprints over the two clusters ────────────
-    axp = fig.add_axes([0.55, 0.52, 0.42, 0.38])
-    plot_region(axp, -120, 5240, "", holes_on=False)
-    axp.set_xlim(-160, k.C_LEN + 160)
-    # IBC single plate over the 4 feet
-    ibc_fx = [f[0] for f in ibc_feet()]; ibc_fy = [f[1] for f in ibc_feet()]
-    px0, px1 = min(ibc_fx)-110, max(ibc_fx)+110
-    py0, py1 = min(ibc_fy)-110, max(ibc_fy)+110
-    axp.add_patch(Rectangle((px0, py0), px1-px0, py1-py0, facecolor=C_PLATE, alpha=0.32,
-                            edgecolor=C_IBC, lw=1.8, ls=(0, (6, 3)), zorder=3))
-    # walkway continuous plate under the 5-leg line (door-sill to first members)
-    axp.add_patch(Rectangle((-20, min(k.LEFT_WK_CANT_LEG_YDS)-110), 360,
-                            max(k.LEFT_WK_CANT_LEG_YDS)-min(k.LEFT_WK_CANT_LEG_YDS)+220,
-                            facecolor=C_PLATE, alpha=0.32, edgecolor=C_WK, lw=1.8, ls=(0, (6, 3)), zorder=3))
-    axp.text((px0+px1)/2, py1+120, "IBC: ONE plate, 4 feet", ha="center", fontsize=6.5, color=C_IBC, **FONT)
-    axp.text(170, max(k.LEFT_WK_CANT_LEG_YDS)+170, "WALKWAY: ONE continuous\nplate, 5 legs + door sill",
-             ha="center", fontsize=6.5, color=C_WK, **FONT)
-    axp.text(k.C_LEN*0.5, k.C_WID+200, "PLAN — sub-plate footprints (dashed) over the nominal grid",
-             ha="center", fontsize=7.5, fontweight="bold", color=C_OUT, **FONT)
-
-    # ── RIGHT BOTTOM: the BIG container-dependent note ─────────────────────────
-    nb = fig.add_axes([0.55, 0.14, 0.42, 0.33]); nb.axis("off")
-    nb.add_patch(Rectangle((0.0, 0.0), 1.0, 1.0, facecolor="#FFF3E0", edgecolor="#C8541E",
-                           lw=2.0, transform=nb.transAxes))
-    nb.text(0.5, 0.92, "!!  PLATE DIMENSIONS ARE CONTAINER-DEPENDENT  !!",
-            ha="center", va="top", fontsize=8.5, fontweight="bold", color="#9A3B10",
-            transform=nb.transAxes, **FONT)
-    nb.text(0.04, 0.78,
-            "Container floor cross-members are NOT standardized:\n"
-            "  - ISO 1496-1 only caps them <=1000mm apart\n"
-            "  - CIMC: C-section SPA-H Corten, ~4-4.5mm, ~45mm\n"
-            "    top flange, ~122mm high, but PITCH + STATIONS\n"
-            "    vary by maker; forklift pockets interrupt them.\n\n"
-            "ON THE ACQUIRED CONTAINER, finalize:\n"
-            "  1. plate length / width (span 3+ members; a\n"
-            "     >=1000mm plate ALWAYS crosses >=1 member)\n"
-            "  2. TEK clearance-hole positions (drill to the\n"
-            "     SURVEYED member flanges + the door sill)\n"
-            "  3. TEK count (2-3 per member crossed)\n\n"
-            "The feet/legs + tapped-boss pattern do NOT change\n"
-            "- only the plate adapts to the box.",
-            ha="left", va="top", fontsize=6.6, color="#5A3A20", transform=nb.transAxes, **FONT)
+    # ── RIGHT: container-dependent notes (standard note block + title footer) ──
+    axn = fig.add_axes([0.62, 0.13, 0.35, 0.75]); axn.axis("off")
+    axn.set_xlim(0, 1); axn.set_ylim(0, 1)
+    draw_notes(axn, [
+        "PLATE DIMENSIONS ARE CONTAINER-DEPENDENT",
+        "Container floor cross-members are NOT standardized:",
+        "  - ISO 1496-1 only caps them ≤1,000mm apart",
+        "  - CIMC: C-section SPA-H Corten ~4-4.5mm,",
+        "    ~45mm flange, ~122mm high, but PITCH +",
+        "    STATIONS vary by maker (forklift pockets",
+        "    interrupt them).",
+        "",
+        "ON THE ACQUIRED CONTAINER, finalize:",
+        "  1. plate length/width (span 3+ members; a",
+        "     ≥1,000mm plate always crosses ≥1 member)",
+        "  2. TEK clearance-hole positions (drill to the",
+        "     surveyed member flanges + the door sill)",
+        "  3. TEK count (2-3 per member crossed)",
+        "",
+        "The feet/legs + tapped-boss pattern do NOT",
+        "change — only the plate adapts to the box.",
+    ], 0.04, 0.96, 0.047, fs=6.6, title_fs=7.3, title_color="#9A3B10", font=FONT, width=0.92)
 
     tb = fig.add_axes([0.0, 0.0, 1.0, 1.0]); tb.axis("off")
     title_block(tb, "SHEET 2 OF 2",
                 drawing_title="FLOOR-ANCHOR SUB-PLATE STANDARD",
-                subtitle="SECTION STACK + PLATE FOOTPRINTS + CONTAINER-DEPENDENT NOTE",
-                scale_note="NTS — representative", doc_id="TBS-240 · Floor Anchoring")
+                subtitle="ANCHOR-STACK SECTION + CONTAINER-DEPENDENT NOTES",
+                scale_note="NTS", doc_id="TBS-240 · Floor Anchoring")
 
 
 def main():

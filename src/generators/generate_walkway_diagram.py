@@ -1137,7 +1137,7 @@ def sheet3():
     X_LO = WK_L_X - 520     # wide left gutter so the cleat/plate callouts clear the beam
     PLAN_X_R = IBC_COL_X + IBC_W + 20    # plan right edge — walls + full-width dim stop here
     X_HI = IBC_COL_X + 2 * IBC_W + 130    # extended right: the notes go in a clean column past the IBC ghost
-    Y_LO = -150
+    Y_LO = -350
     Y_HI = C_WID + 120
 
     fig, ax = plt.subplots(figsize=(14, 10))

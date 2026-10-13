@@ -2530,26 +2530,26 @@ def sheet8():
            (80), (-72),
            "316 SS HOLD-DOWN CLIP\nBOLTED INTO\nBRACKET ARM BELOW\n(TYP. BOTH SIDES)",
            color=C_DIM, fs=5.5, ha="right", va="top",
-           arrow_style="-|>", font=FONT, bbox=bbox)
+           arrow_style="-|>", font=FONT, lbl_bg=True)
 
     # ── Dimension: standard grating width ────────────────────────────────────
     draw_dim_h(ax, (0), (W_STD), (SHOW_X - 20),
-               f"{W_STD}mm", color=C_DIM, fs=6, offset=(8), font=FONT)
+               f"{W_STD}mm", color=C_DIM, fs=6, offset=(8), lbl_bg=True, font=FONT)
 
     # ── Dimension: widened grating width ─────────────────────────────────────
     draw_dim_h(ax, (0), (W_WIDE), (-SHOW_X + 20),
-               f"{W_WIDE}mm", color=C_DIM, fs=6, offset=(8), font=FONT)
+               f"{W_WIDE}mm", color=C_DIM, fs=6, offset=(8), lbl_bg=True, font=FONT)
 
     # ── Dimension: bearing plate width ───────────────────────────────────────
     draw_dim_v(ax, (ARM_LEN + 40),
                (-BEARING_PLATE_W / 2), (BEARING_PLATE_W / 2),
                f"{BEARING_PLATE_W}mm", color=C_DIM, fs=5.5,
-               offset=(8), font=FONT)
+               offset=(8), lbl_bg=True, font=FONT)
 
     # ── Dimension: tray lip to wall ──────────────────────────────────────────
     draw_dim_h(ax, (0), (TRAY_LIP), (SHOW_X - 60),
                f"{TRAY_LIP}mm", color="#4A8A4A", fs=5.5,
-               offset=(8), font=FONT)
+               offset=(8), lbl_bg=True, font=FONT)
 
     # ── Edge labels ──────────────────────────────────────────────────────────
     ax.annotate("", xy=((W_STD), (SHOW_X - 5)),

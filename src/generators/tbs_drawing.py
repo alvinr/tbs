@@ -29,7 +29,7 @@ from tbs_constants import C_OUT, C_CL, C_DIM
 
 def draw_dim_h(ax, x1, x2, y, label, *, offset=12, fs=6.5, color=C_DIM,
                lw=0.8, tick_lw=0.6, zorder=15, above=True, font=None,
-               perpendicular=False):
+               perpendicular=False, lbl_bg=False):
     """Horizontal dimension line with extension ticks and centered label.
 
     Parameters
@@ -47,7 +47,17 @@ def draw_dim_h(ax, x1, x2, y, label, *, offset=12, fs=6.5, color=C_DIM,
     above         : if True label goes above the line, else below
     font          : optional dict e.g. {"fontfamily": "monospace"}
     perpendicular : if True rotate label 90° to the line (vertical text)
+    lbl_bg        : if True then the lable background has a white rounded box
     """
+    extra = {}
+    bbox=dict(
+        boxstyle="round,pad=0.3",
+        facecolor="white",
+        edgecolor="none",              # "#1A1A1A" if you want a visible border
+        alpha=1.0,                     # fully opaque so it masks what's under it
+    )
+    extra = {"bbox": bbox} if lbl_bg else {}
+
     tick = abs(offset) * 0.3
     ax.annotate("", xy=(x2, y), xytext=(x1, y),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=lw),
@@ -61,7 +71,7 @@ def draw_dim_h(ax, x1, x2, y, label, *, offset=12, fs=6.5, color=C_DIM,
     rot = 90 if perpendicular else 0
     kw = font or {}
     ax.text((x1 + x2) / 2, label_y, label, ha="center", va=va,
-            fontsize=fs, color=color, rotation=rot, zorder=zorder, **kw)
+            fontsize=fs, color=color, rotation=rot, zorder=zorder, **extra, **kw)
 
 
 def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
@@ -118,7 +128,7 @@ def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
 
 def leader(ax, x_tip, y_tip, x_txt, y_txt, label, *, fs=6.5, color=C_OUT,
            ha="left", va="center", arrow_style="-", lw=0.7, zorder=15,
-           font=None, rotation=0, bbox=None):
+           font=None, rotation=0, lbl_bg=False, bbox=None):
     """Leader line from a point to a text label.
 
     Parameters
@@ -136,10 +146,20 @@ def leader(ax, x_tip, y_tip, x_txt, y_txt, label, *, fs=6.5, color=C_OUT,
     zorder          : drawing order
     font            : optional dict e.g. {"fontfamily": "monospace"}
     rotation        : label text rotation in degrees (0 = horizontal)
+    lbl_bg          : if True then the lable background has a white rounded box
     bbox            : optional dict for text background box
     """
+    lbl_bbox=dict(
+        boxstyle="round,pad=0.3",
+        facecolor="white",
+        edgecolor="none",              # "#1A1A1A" if you want a visible border
+        alpha=1.0,                     # fully opaque so it masks what's under it
+    )
+
     kw = font or {}
     ann_kw = {}
+    if lbl_bg:
+        ann_kw["bbox"] = lbl_bbox
     if bbox is not None:
         ann_kw["bbox"] = bbox
     ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),

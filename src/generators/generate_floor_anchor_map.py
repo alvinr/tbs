@@ -15,6 +15,7 @@ Sheet 2 — the standard: a self-tapped SUB-PLATE (strongback) spanning several
 members, with the feet/legs bolting UP into tapped bosses on the plate. Plate
 dimensions + TEK count are container-dependent (finalized on the acquired box).
 """
+import math
 import os
 
 import matplotlib
@@ -66,7 +67,6 @@ def wk_feet():
 
 
 def pivot_feet():
-    import math
     cx, cy, pcd = k.PIVOT_X, k.PIVOT_YD, 170.0
     holes = [(cx + pcd/2 * math.cos(math.radians(a)), cy + pcd/2 * math.sin(math.radians(a)))
              for a in range(0, 360, 60)]
@@ -154,13 +154,6 @@ def sheet(fig):
     fig.suptitle("FLOOR-ANCHOR SUB-PLATE (STRONGBACK) STANDARD — cross-member map + sub-plate footprints + anchor stack",
                  fontsize=12, fontweight="bold", y=0.988, **FONT)
 
-    bbox=dict(
-        boxstyle="round,pad=0.30",   # or "square,pad=…" for sharp corners
-        facecolor="white",
-        edgecolor="none",              # "#1A1A1A" if you want a visible border
-        alpha=1.0,                     # fully opaque so it masks what's under it
-    )
-
     # ── TOP: full-length plan + both sub-plate footprints (dashed) ─────────────
     ax_plan = fig.add_axes([0.04, 0.72, 0.92, 0.155])
     plot_region(ax_plan, -160, k.C_LEN + 160, "", holes_on=False)
@@ -186,24 +179,28 @@ def sheet(fig):
 
     # ── BOTTOM-LEFT: anchor-stack section (thickness exaggerated) ──────────────
     ax = fig.add_axes([0.03, 0.075, 0.55, 0.34]); ax.axis("off")
-    ax.set_xlim(0, 310); ax.set_ylim(-40, 150); ax.set_aspect("auto")
+    ax.set_xlim(0, 390); ax.set_ylim(-40, 150); ax.set_aspect("auto")
 
     base_y, mx = 40, 150
     # steel cross-member (C-section stub, in section) under the plywood
     hatch_rect(ax, mx-45, base_y, 90, 4, color=C_STEEL)                                                  # top flange (~45mm)
     ax.add_patch(Rectangle((mx-45, base_y), 90, 4, fill=False, edgecolor=C_OUT, lw=1.2))
     ax.add_patch(Rectangle((mx-45, base_y-50), 6, 50, facecolor=C_STEEL, edgecolor=C_OUT, lw=1.0))        # web down
-    ax.text(mx, base_y-28, "STEEL CROSS-MEMBER\n~4mm C-section (~45mm flange)", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
     # plywood deck + sub-plate on top
     ax.add_patch(Rectangle((10, base_y+4), 290, 28, facecolor=C_PLY, edgecolor=C_OUT, lw=1.0, zorder=2))  # 28mm ply
-    ax.text(292, base_y+18, "28mm PLY", ha="right", va="center", fontsize=6, color="#6B5A33", **FONT)
     plate_y = base_y + 32
     hatch_rect(ax, 10, plate_y, 290, 8, color=C_PLATE)
     ax.add_patch(Rectangle((10, plate_y), 290, 8, fill=False, edgecolor=C_OUT, lw=1.4, zorder=3))
-    ax.text(18, plate_y+4, "SUB-PLATE ~8mm STEEL", ha="left", va="center", fontsize=6.5, color=C_OUT, bbox=bbox, **FONT)
+
+    # layer callouts — leaders to a right-hand column, each tip on its layer's edge
+    LX = 330
+    leader(ax, mx+45, base_y+2, LX, base_y+2, "STEEL CROSS-MEMBER\n~4mm C-section, ~45mm flange",
+           fs=6, color=C_DIM, font=FONT)
+    leader(ax, 300, base_y+18, LX, base_y+26, "28mm PLY", fs=6, color="#6B5A33", font=FONT)
+    leader(ax, 300, plate_y+4, LX, plate_y+18, "SUB-PLATE ~8mm STEEL", fs=6.5, color=C_OUT, font=FONT)
 
     # ── J1a winged TEK — drawn as a screw WITH its diameter (house convention) ──
-    tek_x, dia = mx, 7.0                                    # #14 ~Ø6.3mm, drawn to scale
+    tek_x, dia = mx, 6.3                                    # #14 ~Ø6.3mm, drawn to scale
     head_z, tip_z = plate_y + 8, base_y - 8
     body_bot = tip_z + 9
     ax.add_patch(Rectangle((tek_x-11, head_z), 22, 5, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))             # hex-washer head
@@ -213,7 +210,7 @@ def sheet(fig):
     for s in (-1, 1):                                                                                     # reaming wings (snap off at the steel)
         ax.plot([tek_x+s*dia/2, tek_x+s*(dia/2+8)], [base_y+16, base_y+22], color=C_BOLT, lw=1.2, zorder=6)
     ax.add_patch(Polygon([(tek_x-dia/2, body_bot), (tek_x+dia/2, body_bot), (tek_x, tip_z)], closed=True, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=6))  # drill point
-    draw_dim_h(ax, tek_x-dia/2, tek_x+dia/2, head_z+13, "Ø6.3", offset=3, fs=5.5, above=True, font=FONT)  # the SCREW DIAMETER
+    draw_dim_h(ax, tek_x-dia/2, tek_x+dia/2, head_z+13, f"Ø{dia:g}", offset=3, fs=5.5, above=True, font=FONT)  # the SCREW DIAMETER
     leader(ax, tek_x-dia/2-1, base_y+10, tek_x-78, base_y-24,
            "J1a / WF4a  winged #14×3.25\" TEK\n(self-taps the member; wings ream the ply)",
            fs=6, color=C_BOLT, font=FONT, ha="center")
@@ -221,7 +218,7 @@ def sheet(fig):
     # ── J1b foot → sub-plate tapped boss ───────────────────────────────────────
     foot_x = 248
     ax.add_patch(Rectangle((foot_x-40, plate_y+8), 80, 12, facecolor=C_STEEL, edgecolor=C_OUT, lw=1.2, zorder=4))  # foot
-    ax.text(foot_x, plate_y+14, "FOOT", ha="center", va="center", fontsize=6, color=C_DIM, **FONT)
+    leader(ax, foot_x+40, plate_y+14, LX, plate_y+40, "FOOT", fs=6, color=C_DIM, font=FONT)
     ax.add_patch(Rectangle((foot_x-9, plate_y-13), 18, 13, facecolor=C_PLATE, edgecolor=C_OUT, lw=1.0, zorder=4))  # tapped boss
     ax.add_patch(Rectangle((foot_x-3.5, plate_y-9), 7, 29, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=5))             # M12 shank (shows diameter)
     ax.add_patch(Rectangle((foot_x-8, plate_y+20), 16, 4, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=6))                # hex head

@@ -66,7 +66,7 @@ def draw_dim_h(ax, x1, x2, y, label, *, offset=12, fs=6.5, color=C_DIM,
 
 def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
                lw=0.8, tick_lw=0.6, zorder=15, right=False, font=None,
-               perpendicular=False):
+               perpendicular=False, lbl_bg=False):
     """Vertical dimension line with extension ticks and centered label.
 
     Parameters
@@ -84,7 +84,17 @@ def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
     right         : if True label goes to the right of the line, else left
     font          : optional dict e.g. {"fontfamily": "monospace"}
     perpendicular : if True rotate label 90° to the line (horizontal text)
+    lbl_bg        : if True then the lable background has a white rounded box
     """
+
+    extra = {}
+    bbox=dict(
+        boxstyle="round,pad=0.3",
+        facecolor="white",
+        edgecolor="none",              # "#1A1A1A" if you want a visible border
+        alpha=1.0,                     # fully opaque so it masks what's under it
+    )
+    extra = {"bbox": bbox} if lbl_bg else {}
     tick = abs(offset) * 0.3
     ax.annotate("", xy=(x, y2), xytext=(x, y1),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=lw),
@@ -97,11 +107,11 @@ def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
     if right:
         ax.text(x + abs(offset) * 0.6, (y1 + y2) / 2, label,
                 ha="left", va="center", fontsize=fs, color=color,
-                rotation=rot, zorder=zorder, **(font or {}))
+                rotation=rot, zorder=zorder, **extra, **(font or {}))
     else:
         ax.text(x - abs(offset) * 0.6, (y1 + y2) / 2, label,
                 ha="right", va="center", fontsize=fs, color=color,
-                rotation=rot, zorder=zorder, **(font or {}))
+                rotation=rot, zorder=zorder, **extra, **(font or {}))
 
 
 # ── Leader lines ─────────────────────────────────────────────────────────────

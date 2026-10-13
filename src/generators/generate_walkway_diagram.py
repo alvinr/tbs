@@ -2676,7 +2676,7 @@ def sheet9():
         ax.add_patch(Circle((_hx, _hy), _hr, fc="#FFFFFF", ec="#C03028", lw=1.0, ls=(0, (3, 2)), zorder=10))
     # label the three together (they share the near deck, Yd~69-104)
     _lx = NEAR_GRATE_HOLES[1][0]
-    leader(ax, _lx, NEAR_GRATE_HOLES[1][1] - NEAR_GRATE_HOLES[1][2], _lx - 60, -200,
+    leader(ax, _lx, NEAR_GRATE_HOLES[1][1] - NEAR_GRATE_HOLES[1][2], _lx * 0.55, -150,
            "RISER CLEARANCE HOLES (Ø32–Ø36):\nsump→P-04 (X2386) · TAP-01 (X1130) · BV-05 (X2304)\nvertical risers through the deck",
            color="#C03028", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
@@ -2688,7 +2688,7 @@ def sheet9():
            color=C_WIDE, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     std_right = [s for s in stations if s > WXR and s < x1]
     if std_right:
-        leader(ax, std_right[0], W - 20, std_right[0] + 30, W + 150,
+        leader(ax, std_right[0], W - 20, std_right[0] - 90, W + 50,
                "STANDARD\n300mm arm, 3× M12",
                color=C_STD, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -2698,15 +2698,15 @@ def sheet9():
     ax.text(x1 - 200, -172, "toward IBC", ha="center", va="top", fontsize=6, color=C_OUT, style="italic", **FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_v(ax, WXL - 70, 0, WW, f"{WW}mm", offset=6, fs=6, right=False, font=FONT)
-    draw_dim_v(ax, nxl - 10, 0, W, f"{W}mm", offset=6, fs=5.5, right=False, font=FONT)
+    draw_dim_v(ax, WXL - 90, 0, WW, f"{WW}mm", offset=20, fs=5.5, right=False, lbl_bg=True, font=FONT)
+    draw_dim_v(ax, nxl + 100, 0, W, f"{W}mm", offset=20, fs=5.5, right=False, lbl_bg=True, font=FONT)
     draw_dim_h(ax, WXL, WXR, WW + 60, f"{int(WXR - WXL)}mm BUMP-OUT (X{WXL}-{WXR})", offset=6, fs=6.5, font=FONT)
     # 100mm deck overhang past the end widened brackets
-    draw_dim_h(ax, WXL, wide_st[0], -110, f"{ovh}mm ovh", offset=5, fs=5, above=False, font=FONT)
-    draw_dim_h(ax, wide_st[-1], WXR, -110, f"{ovh}mm ovh", offset=5, fs=5, above=False, font=FONT)
+    draw_dim_h(ax, WXL, wide_st[0], -110, f"{ovh}mm ovh", offset=20, fs=5.5, above=False, font=FONT)
+    draw_dim_h(ax, wide_st[-1], WXR, -110, f"{ovh}mm ovh", offset=20, fs=5.5, above=False, font=FONT)
     # rib spacing between two widened brackets
-    draw_dim_h(ax, wide_st[0], wide_st[1], -200,
-               f"{int(WALKWAY_BRACKET_SPACING)}mm rib", offset=5, fs=5, above=False, font=FONT)
+    draw_dim_h(ax, wide_st[0], wide_st[1], -110,
+               f"{int(WALKWAY_BRACKET_SPACING)}mm rib", offset=20, fs=5.5, above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [

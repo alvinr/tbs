@@ -1539,7 +1539,7 @@ def sheet6():
         ax.add_patch(Rectangle((ux - 55, zb - 22), 110, 22, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))  # foot plate (sits ON the sub-plate; post cut shorter by the plate thickness)
     for rz in (zb, zt - upw):                          # bottom + top rings tie the near+far uprights across the corridor
         ax.add_patch(Rectangle((xLi, rz), xRi - xLi, upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
-    leader(ax, xL - 78, zb - 30, wallL - 10, zb - 78,
+    leader(ax, xL - 78, zb - 30, wallL - 10, zb - 88,
            "FLOOR-ANCHOR SUB-PLATE\n(self-taps to the cross-members, J1a;\nfeet bolt to it, J1b — post cut shorter\nby the plate thickness)",
            fs=5.0, font=FONT, ha="left", color=C_DIM)
     # FOUR retaining bars (2 per tier × 2 tiers): each covers its column and ends (cleated) at the upright's
@@ -1583,7 +1583,7 @@ def sheet6():
             _weld_tick(ax, rx, bz + 12, side='up', size=4)
     # one leader per weld TYPE
     leader(ax, xLi, zt - upw / 2, xL - 150, zt + 26, "W1 (×8 = 4 legs × 2 rings)", fs=6.6, font=FONT, ha="right")
-    leader(ax, xLo, zb, xLo - 130, zb - 60, "W2 (×4 feet)", fs=6.6, font=FONT, ha="right")
+    leader(ax, xLo, zb, xLo - 130, zb - 30, "W2 (×4 feet)", fs=6.6, font=FONT, ha="right")
     leader(ax, xRo, 485, xRo + 130, 430, "W3 (×8 cleats)", fs=6.6, font=FONT, ha="left")
     leader(ax, 310, 210 + 12, 230, 120, "W4 (×8 rings)", fs=6.6, font=FONT, ha="right")
     ax.text(670, -18, "W5 — wall-hanger seat↔back-plate (off-frame; see Plate Schedule, Plate 3)   ·   "
@@ -1600,7 +1600,7 @@ def sheet6():
         "W5 — Wall-hanger seat ↔ pocket back-plate: 4mm fillet (×8 hangers; the bar is BOLTED to the hanger via J7, not welded).",
         "W6 — Ribbon cross-beam ↔ walkway bearer: 4mm fillet, both ends (×4 — on the plumbing-corridor ribbon, not the tote frame).",
         "• Grind zinc back at all weld zones; weld a pre-finished frame only at the TEK-screwed brackets (J8/J9 — no hot work).",
-    ], 44, -70, spacing=24, fs=6.6, font=FONT, width=1300)
+    ], 44, -70, spacing=24, fs=6.6, font=FONT, width=1200)
 
     title_block(ax, "SHEET 6 OF 6", drawing_title="IBC SUPPORT FRAME",
                 subtitle="WELD MAP — W1–W6 LOCATIONS + SCHEDULE",

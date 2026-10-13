@@ -1648,12 +1648,12 @@ def sheet5():
     leader(ax, yds[0], legx, yds[0] - 210, legx - 70,
            f"FLOOR-LEG CANTILEVER\nBRACKET (x5) - 2×2 post\non bare floor + 2×1 arm to X{int(std)}",
            color=C_SUPPORT, fs=6, ha="center", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, 1180, (std + wide) / 2, 1180, arm_x0 - 130,
+    leader(ax, 1180, (std + wide) / 2, 1000, arm_x0 - 130,
            f"4×1 arm (punch-out)\nSF 1.99",
            color=C_SUPPORT, fs=6, ha="center", va="top", arrow_style="-|>", font=FONT)
 
     # Bracket Yd spacing chain (along the bottom)
-    chain_x = -70
+    chain_x = 60
     pts = [0] + list(yds) + [C_WID]
     for a, b in zip(pts[:-1], pts[1:]):
         draw_dim_h(ax, a, b, chain_x, f"{int(b - a)}mm", offset=6, fs=5.5, above=False, font=FONT)
@@ -1677,7 +1677,7 @@ def sheet5():
         "6. grate + punch-out lift out together before panel transport; brackets stay floor-bolted.",
         "   No kerb. Bracket section on Sheet 6.",
     ]
-    draw_notes(ax, notes, 10, 930, spacing=24, fs=6, ha="left", width=760, font=FONT)
+    draw_notes(ax, notes, 10, -25, spacing=24, fs=6, ha="left", width=950, font=FONT)
 
     title_block(ax, "SHEET 5 OF 10",
                 drawing_title="PERIMETER WALKWAY",

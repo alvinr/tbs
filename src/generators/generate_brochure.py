@@ -838,7 +838,7 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "", 8)
         self.set_text_color(100, 120, 140)
         self.cell(PAGE_W, 6,
-                  _safe(f"{len(pages)} chapters  ·  alvinr.github.io/tbs"),
+                  _safe(f"{len(pages)} chapters  ·  thebigshoebox.org"),
                   align="C")
 
         self.set_auto_page_break(auto=True, margin=M_B)

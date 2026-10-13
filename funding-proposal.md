@@ -25,7 +25,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
 ### How
-The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
+The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [thebigshoebox.org](https://thebigshoebox.org/).
 
 The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs. Power is provided by Lithium battery packs with are recharged via Solar panels or through regular household power outlet.
 
@@ -150,7 +150,7 @@ Each deployment is a public event. The container is placed on-site; visitors can
 50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
-All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
+All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [thebigshoebox.org](https://thebigshoebox.org/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
 
 This is intentional. The project is as much a contribution to the field as it is a body of work. The permissive license encourages others to tweak and modify this design, contributing back to improve the body of knowledge for all.
 
@@ -193,7 +193,7 @@ My practice since has moved between classical portraiture and abstract color in 
 
 ### Full Documentation
 All technical reports, fabrication drawings, optical simulations, and shopping lists:
-**[alvinr.github.io/tbs](https://alvinr.github.io/tbs/)**
+**[thebigshoebox.org](https://thebigshoebox.org/)**
 
 ### Sample Optical Renders
 The [distortion renders](distortion-renders.md) demonstrate the range of optical projections available from the film-plane movement system — from an undistorted reference frame to compound twisted-plane projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's film-plane movements, modeled from first principles and replicable in the physical instrument.

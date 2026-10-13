@@ -14,7 +14,7 @@ shopping / weight figures, and the [MkDocs](https://www.mkdocs.org/) website.
 
 > **Looking for the camera itself?** This README is about running the **repo** (regenerating
 > drawings, building the site, the tooling). For the project overview see
-> **[`project-summary.md`](project-summary.md)** or the live site: **<https://alvinr.github.io/tbs/>**.
+> **[`project-summary.md`](project-summary.md)** or the live site: **<https://thebigshoebox.org/>**.
 
 ---
 
@@ -255,4 +255,4 @@ The full checklist is in `CLAUDE.md`.
 ---
 
 *© 2026 Alvin Richards — released under the [GNU AGPLv3](licensing.md). Live site:
-<https://alvinr.github.io/tbs/>*
+<https://thebigshoebox.org/>*

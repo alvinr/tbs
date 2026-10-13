@@ -33,9 +33,8 @@ SITE_NAME = "The Big Shoebox — Research & Build"
 SITE_DESCRIPTION = (
     "A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera."
 )
-# Set this to your GitHub Pages URL once the repo is created, e.g.:
-#   https://yourusername.github.io/tbs
-SITE_URL = "https://alvinr.github.io/tbs"
+# Public site URL (custom domain; the alvinr.github.io/tbs Pages URL redirects here).
+SITE_URL = "https://thebigshoebox.org"
 
 # Map source filename → (docs subdirectory, nav title)
 # Order here controls the sidebar navigation order.

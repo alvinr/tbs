@@ -117,6 +117,14 @@ fi
 
 mkdir -p "$DOCS_DIR/mini-tbs"
 
+# ── Custom domain: carry CNAME into the build so gh-deploy --force keeps it ───
+# (mkdocs copies docs_dir static files verbatim; without this, --force wipes the
+#  gh-pages CNAME on every deploy and the custom domain is lost.)
+if [[ -f "$SCRIPT_DIR/CNAME" ]]; then
+    cp "$SCRIPT_DIR/CNAME" "$DOCS_DIR/CNAME"
+    echo "    custom domain: published/CNAME ($(cat "$SCRIPT_DIR/CNAME"))"
+fi
+
 CHANGED=0
 for f in "${MD_FILES[@]}"; do
     src="$SCRIPT_DIR/$f"

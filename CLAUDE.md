@@ -10,7 +10,7 @@
 - **Container:** 20ft ISO standard shipping container, 2362mm interior focal depth
 - **Image plane:** 4389 × 2094mm active (X=260–4649mm; left edge pulled inboard clear of the pivot hub — 2026-08-11; height mechanism-limited by the corner slides + walkway clearance); container interior 5893 × 2388mm
 - **Pinhole:** Ø2.17mm, SS-302 shim, f/1088 (Rayleigh formula, λ=550nm)
-- **Site:** https://alvinr.github.io/tbs/
+- **Site:** https://thebigshoebox.org/
 
 ---
 

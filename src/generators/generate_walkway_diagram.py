@@ -1967,7 +1967,7 @@ def sheet7():
                             (REINF_T), (W_REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, (reinf_yd - 1), (W_REINF_H * 0.8),
-           (reinf_yd - 25), (W_REINF_H),
+           (reinf_yd - 25), (W_REINF_H * 0.6),
            f"REINFORCING\nPLATE\n{W_REINF_W}×{W_REINF_H}\n×{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)

@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+### Site & hosting
+- **Custom domain — the site now serves at [thebigshoebox.org](https://thebigshoebox.org)** (apex), with the old `alvinr.github.io/tbs` project URL and `www.` both 301-redirecting to it and HTTPS enforced. A committed `CNAME` is carried into the build by `publish.sh` so `gh-deploy --force` can't wipe it; `site_url`, `setup_docs.py` `SITE_URL`, the brochure footer, README, and funding proposal all point at the new domain. (The in-model license stamp is deliberately deferred — see TODO.)
+- **Google Analytics 4** (`G-5GT2XBPGV9`) added via Material's native `extra.analytics` config, so the gtag.js tag renders in every page's `<head>` (all 50 pages).
+
 ### Film-plane corner mechanism
 - Coped the TR far-wall saddle seat's inboard-bottom corner clear of the swing-drive input stub (was a ~5mm interference); the rail bearing surface on top is preserved.
 - Terminated the purple SWING cross-slide at the wheel-channel opening (all 4 corners) — it was overshooting through the U-channel flange/web/lip.

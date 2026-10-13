@@ -122,6 +122,9 @@ hooks:
   - src/generators/mkdocs_version_hook.py
 
 extra:
+  analytics:
+    provider: google
+    property: G-5GT2XBPGV9
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs

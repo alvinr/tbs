@@ -2761,8 +2761,6 @@ def sheet10():
                                fc="#FFFFFF", ec=C_CUT, lw=1.1, zorder=6))
         for fx in (flL, flR):
             ax.plot([fx], [y - 20], marker="^", ms=7, color="#208020", zorder=9)   # ▲ bears on a bracket
-        ax.text(slit_c, y - 44, f"SLIT X{PH_X}", ha="center", va="top",
-                fontsize=5, color=C_CUT, **FONT)
     lw_l, lw_r = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R             # punch-out 800-1560
     lw_w = WALKWAY_LEFT_WIDE_W                      # 600
     mn0, mnd, mnw = WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY  # 1912/100/150
@@ -2788,7 +2786,7 @@ def sheet10():
         """A dimension chain along a piece bottom locating every cutout edge (skips <25mm slivers)."""
         for a, b in zip(sorted(set(pts))[:-1], sorted(set(pts))[1:]):
             if b - a >= 25:
-                draw_dim_h(ax, a, b, y_dim, f"{b - a:.0f}", offset=3, fs=4.5, above=False, font=FONT)
+                draw_dim_h(ax, a, b, y_dim, f"{b - a:.0f}mm", offset=12, fs=4.5, above=False, font=FONT)
 
     y = 2850
     # ── LEFT piece (2362 × 300, punch-out to 600 over Yd800-1560, muslin notch) ──
@@ -2797,14 +2795,14 @@ def sheet10():
     ax.text(lw_l + (lw_r - lw_l) / 2, y + W + (lw_w - W) / 2, "DRUM-EXIT\nPUNCH-OUT\n600 deep",
             ha="center", va="center", fontsize=6, color="#206020", fontweight="bold", **FONT, zorder=7)
     ax.add_patch(Rectangle((mn0, y), mnw, mnd, fc="#FFFFFF", ec=C_CUT, lw=1.1, ls=(0, (3, 2)), zorder=6))  # muslin notch
-    ax.text(0, y + lw_w + 35, "LEFT WALKWAY GRATE (removable lift-out) — 1 pc, no clips (gravity)",
+    ax.text(0, y + lw_w + 80, "LEFT WALKWAY GRATE (removable lift-out) — 1 pc, no clips (gravity)",
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
-    draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
-    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=12, fs=4.5, above=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=10, fs=5.5, right=False, font=FONT)
     # cutout dims — punch-out (width above, 600 depth on the right) + muslin notch depth + position chain
-    draw_dim_h(ax, lw_l, lw_r, y + lw_w + 12, f"{lw_r - lw_l:.0f}", offset=4, fs=5.5, font=FONT)
-    draw_dim_v(ax, lw_r + 58, y, y + lw_w, f"{lw_w:.0f}", offset=5, fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, mn0 - 26, y, y + mnd, f"{mnd:.0f}", offset=4, fs=5, right=False, font=FONT)
+    draw_dim_h(ax, lw_l, lw_r, y + lw_w + 30, f"{lw_r - lw_l:.0f}", offset=12, fs=4.5, font=FONT)
+    draw_dim_v(ax, lw_r + 58, y, y + lw_w, f"{lw_w:.0f}", offset=12, fs=4.5, right=True, font=FONT)
+    draw_dim_v(ax, mn0 - 26, y, y + mnd, f"{mnd:.0f}", offset=12, fs=4.5, right=False, font=FONT)
     ax.text(mn0 + mnw + 20, y + mnd / 2, f"MUSLIN NOTCH {mnd}×{mnw}", ha="left", va="center",
             fontsize=5.5, color=C_CUT, **FONT)
     chain([0, lw_l, lw_r, mn0, mn0 + mnw, lr_len], y - 108)
@@ -2814,12 +2812,12 @@ def sheet10():
     ax.add_patch(Rectangle((0, y), lr_len, RW, fc=C_GRP, ec=C_OUT, lw=1.4, zorder=5))
     ax.add_patch(Rectangle((mn0, y), mnw, mnd, fc="#FFFFFF", ec=C_CUT, lw=1.1, ls=(0, (3, 2)), zorder=6))
     nc = clips(0, lr_len, y - 8) + clips(0, lr_len, y + RW + 8)
-    ax.text(0, y + RW + 55, f"RIGHT WALKWAY GRATE (cantilever) — 1 pc · {nc} clips (WF5)",
+    ax.text(0, y + RW + 80, f"RIGHT WALKWAY GRATE (cantilever) — 1 pc · {nc} clips (WF5)",
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
-    draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=8, fs=6.5, above=False, font=FONT)
-    draw_dim_v(ax, -60, y, y + RW, f"{RW}mm", offset=8, fs=6, right=False, font=FONT)
+    draw_dim_h(ax, 0, lr_len, y - 60, f"{lr_len:.0f}mm", offset=12, fs=4.5, above=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + RW, f"{RW}mm", offset=12, fs=4.5, right=False, font=FONT)
     # muslin notch — depth + width + position chain
-    draw_dim_v(ax, mn0 - 26, y, y + mnd, f"{mnd:.0f}", offset=4, fs=5, right=False, font=FONT)
+    draw_dim_v(ax, mn0 - 26, y, y + mnd, f"{mnd:.0f}mm", offset=12, fs=4.5, right=False, font=FONT)
     ax.text(mn0 + mnw + 20, y + mnd / 2, f"MUSLIN NOTCH {mnd}×{mnw}", ha="left", va="center",
             fontsize=5.5, color=C_CUT, **FONT)
     chain([0, mn0, mn0 + mnw, lr_len], y - 108)
@@ -2834,15 +2832,15 @@ def sheet10():
             ha="center", va="center", fontsize=6, color="#206020", fontweight="bold", **FONT, zorder=7)
     slit(y, WW)   # the near slit is INSIDE the bump-out → cut the full 500mm depth
     ax.plot([GRP_MAX, GRP_MAX], [y - 20, y + W + 20], color="#A040A0", lw=1.6, ls=(0, (5, 3)), zorder=8)
-    ax.text(GRP_MAX, y - 34, f"GRP SEAM\n(3048 panel)", ha="center", va="top", fontsize=5.5, color="#A040A0", **FONT)
+    ax.text(GRP_MAX, y - 120, f"GRP SEAM\n(3048 panel)", ha="center", va="top", fontsize=5.5, color="#A040A0", **FONT)
     nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
-    ax.text(0, y + W + 260, f"NEAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
+    ax.text(0, y + W + 280, f"NEAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
-    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=12, fs=4.5, right=False, font=FONT)
     # cutout dims — bump-out (width above, 500 depth on the right) + position chain (incl. the 30 slit);
     # the position chain replaces the overall length line on the long near/far sections (2026-08-19)
-    draw_dim_h(ax, xoff_nw_l, xoff_nw_r, y + WW + 12, f"{xoff_nw_r - xoff_nw_l:.0f}", offset=4, fs=5.5, font=FONT)
-    draw_dim_v(ax, xoff_nw_r + 58, y, y + WW, f"{WW}mm", offset=5, fs=5.5, right=True, font=FONT)
+    draw_dim_h(ax, xoff_nw_l, xoff_nw_r, y + WW + 30, f"{xoff_nw_r - xoff_nw_l:.0f}mm", offset=12, fs=4.5, font=FONT)
+    draw_dim_v(ax, xoff_nw_r + 58, y, y + WW, f"{WW}mm", offset=12, fs=4.5, right=True, font=FONT)
     chain([0, xoff_nw_l, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, xoff_nw_r, GRP_MAX, nf_len], y - 92)
 
     # ── FAR piece (4049 × 300, spray slit, seam) ──
@@ -2851,9 +2849,9 @@ def sheet10():
     slit(y, W)   # far walkway is uniform 300 (no bump-out) — full 300mm depth
     ax.plot([GRP_MAX, GRP_MAX], [y - 20, y + W + 20], color="#A040A0", lw=1.6, ls=(0, (5, 3)), zorder=8)
     nc = clips(0, nf_len, y - 8) + clips(0, nf_len, y + W + 8)
-    ax.text(0, y + W + 55, f"FAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
+    ax.text(0, y + W + 80, f"FAR WALKWAY GRATE — 2 pcs spliced at the seam · {nc} clips (WF5) · spray-bar slit {SPRAY_BAR_SLIT_W}mm",
             ha="left", va="bottom", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
-    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=8, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, -60, y, y + W, f"{W}mm", offset=12, fs=4.5, right=False, font=FONT)
     chain([0, slit_c - SPRAY_BAR_SLIT_W / 2, slit_c + SPRAY_BAR_SLIT_W / 2, GRP_MAX, nf_len], y - 92)
 
     # ── Notes / legend ──
@@ -2870,7 +2868,7 @@ def sheet10():
     ]
     ax.plot([-380], [460], marker="s", ms=3.4, color=C_CLIP)
     ax.text(-350, 460, "= FRP hold-down clip (WF5)", ha="left", va="center", fontsize=6.5, color=C_CLIP, **FONT)
-    draw_notes(ax, notes, -450, 360, spacing=58, fs=7, width=4600, font=FONT)
+    draw_notes(ax, notes, -450, 320, spacing=58, fs=7, width=4600, font=FONT)
 
     title_block(ax, "SHEET 10 OF 10", drawing_title="PERIMETER WALKWAY",
                 subtitle="GRATE CUT-PLAN — 4 GRP SECTIONS (nesting) · CLIPS AT 610mm")

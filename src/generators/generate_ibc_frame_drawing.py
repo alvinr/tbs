@@ -567,22 +567,22 @@ def sheet1():
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall width
-    draw_dim_h(ax, (0), (FRAME_FOOTPRINT_W), (-80),
+    draw_dim_h(ax, (0), (FRAME_FOOTPRINT_W), (-185),
                f"{FRAME_FOOTPRINT_W}mm  FRAME WIDTH (WALL-TO-WALL)",
                offset=(9), fs=6, font=FONT, above=False)
 
     # Near column
-    draw_dim_h(ax, (BLUE_IBC_Y), (NEAR_COL_R), (-50),
+    draw_dim_h(ax, (BLUE_IBC_Y), (NEAR_COL_R), (-145),
                f"{IBC_D}mm  IBC DEPTH",
                offset=(9), fs=5.5, font=FONT)
 
     # Corridor
-    draw_dim_h(ax, (NEAR_COL_R), (FAR_COL_L), (-50),
+    draw_dim_h(ax, (NEAR_COL_R), (FAR_COL_L), (-145),
                f"{CORRIDOR_W}mm\nCORRIDOR",
                offset=(9), fs=5.5, font=FONT)
 
     # Far column
-    draw_dim_h(ax, (IBC_FAR_Y), (IBC_FAR_Y + IBC_D), (-50),
+    draw_dim_h(ax, (IBC_FAR_Y), (IBC_FAR_Y + IBC_D), (-145),
                f"{IBC_D}mm  IBC DEPTH",
                offset=(9), fs=5.5, font=FONT)
 
@@ -590,13 +590,13 @@ def sheet1():
     dim_yd = IBC_FAR_Y + IBC_D + FRAME_RHS + 80
     draw_dim_v(ax, (dim_yd), (0), (PLATFORM_Z),
                f"{PLATFORM_Z}mm JUNCTION",
-               offset=(32), fs=5.5, right=True, font=FONT)
+               offset=(42), fs=5.5, right=True, font=FONT)
     draw_dim_v(ax, (dim_yd + 60), (0), (STACK_Z),
                f"{STACK_Z}mm 2x STACK",
-               offset=(32), fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, (dim_yd + 120), (STACK_Z), (C_HGT),
-               f"{C_HGT - STACK_Z}mm CLEARANCE",
-               offset=(32), fs=5.5, right=True, font=FONT)
+               offset=(42), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, (dim_yd + 60), (STACK_Z), (C_HGT),
+               f"{C_HGT - STACK_Z}mm\nCLEARANCE",
+               offset=(112), fs=5.5, right=False, font=FONT)
 
     # RHS member size
     draw_dim_h(ax, (POST_NEAR_YD), (POST_NEAR_YD + FRAME_RHS),
@@ -607,17 +607,17 @@ def sheet1():
     anat_yd = BLUE_IBC_Y - FRAME_RHS - 90
     draw_dim_v(ax, (anat_yd), (0), (IBC_PALLET_H),
                f"{IBC_PALLET_H}mm PALLET",
-               offset=(32), fs=5, font=FONT)
+               offset=(42), fs=5, font=FONT)
     draw_dim_v(ax, (anat_yd), (IBC_PALLET_H), (IBC_BOTTLE_TOP),
                f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm BOTTLE",
-               offset=(32), fs=5, font=FONT)
-    draw_dim_v(ax, (anat_yd + 40), (IBC_BOTTLE_TOP), (IBC_H_1000),
-               f"{IBC_CAGE_RAIL_W}mm RAIL",
                offset=(42), fs=5, font=FONT)
+    draw_dim_v(ax, (anat_yd), (IBC_BOTTLE_TOP), (IBC_H_1000),
+               f"{IBC_CAGE_RAIL_W}mm RAIL",
+               offset=(82), fs=5, font=FONT)
     # Valve height
     draw_dim_v(ax, (anat_yd - 60), (0), (IBC_VALVE_Z),
                f"{IBC_VALVE_Z}mm VALVE CL",
-               offset=(32), fs=5, font=FONT)
+               offset=(42), fs=5, font=FONT)
 
     # ── Member labels (restraint frame — lighter callouts) ──────────────────
     leader(ax, (NEAR_COL_R + FRAME_RHS / 2), (TOP_Z * 0.7),
@@ -683,22 +683,22 @@ def sheet1():
     notes = [
         "MATERIAL & FABRICATION NOTES (IBC-CORRIDOR METAL FRAME):",
         f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Fillet welds per §3.5 schedule (W1 upright↔ring 5mm, W2 foot↔upright 6mm, W3 cleat 4mm, W4 lashing ring 6mm), continuous / all-around.",
-        f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
+        f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers)."
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, J1b) to the floor-anchor sub-plate (J1a → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
-        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into",
-         "   a Simpson-style wall joist",
+        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into"
+         "   a Simpson-style wall joist"
         f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
-        f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
+        f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage."
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
         f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
         f"10. Total frame weight: ~123 kg (incl. 4 feet + rings + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 anti-slip mats).",
     ]
-    draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=(23),
-               fs=7, font=FONT, width=(2200))
+    draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=23,
+               fs=7, font=FONT, wrap=150, width=2200)
 
     # ── Member cut list + datum/tolerance block (Phase D, fab-grade) ──────────
     _cut_list(ax, (-220), (TOP_Z + 600))

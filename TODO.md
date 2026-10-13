@@ -18,6 +18,14 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
+- [ ] **3D-model license stamp → thebigshoebox.org (deferred, 2026-10-13).** The site rehosted to the custom
+  domain `thebigshoebox.org` (all `.md`/`.py`/`mkdocs`/brochure refs updated), but the in-model license footer
+  `LICENSE_TEXT` in [`src/models/tbs_draw.py`](src/models/tbs_draw.py) still prints `alvinr.github.io/tbs`, as
+  does the archived `src/models/archive/right-cantilever-study.rb`. Left deliberately: editing `LICENSE_TEXT`
+  re-stamps every model, which changes each `.rb` → bumps all `source_hash`es → forces a **re-send + Sketchfab
+  push of all 11 `.skp`** (the full single-writer cycle). **Fold it into the next batch model re-send** rather
+  than spending a whole cascade on a URL string. (Archive `.rb` is frozen history — update only if that model
+  is ever revived.)
 - [~] **Model-aggregation — Phases 0–3 DONE** (overview is now a thin aggregator; full history in [`model-aggregation-plan.md`](model-aggregation-plan.md)). Phase 3 (2026-10-10) added the `lint.py` ratchet gate `gate_overview_aggregation` locking overview to its sanctioned builder set, so it can never silently re-grow an owned builder and drift from its sub-model. **Remaining (optional polish, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as accepted (no sub-model home) — if a `context`/furniture owner is created, move them there and drop the allowlist entries (the ratchet flags the stale entries to keep the move honest).
 - [x] **Label-overflow sweep — RESOLVED 2026-10-10.** The old `--overflow` measured each label vs its
   **axes data-box**, which over-reported badly: ~136 flags, but with `bbox_inches="tight"` (the house convention

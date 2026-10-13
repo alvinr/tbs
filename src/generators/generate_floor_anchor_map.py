@@ -194,7 +194,7 @@ def sheet(fig):
 
     # layer callouts — leaders to a right-hand column, each tip on its layer's edge
     LX = 330
-    leader(ax, mx+45, base_y+2, LX, base_y+2, "STEEL CROSS-MEMBER\n~4mm C-section, ~45mm flange",
+    leader(ax, mx+25, base_y+2, LX * 0.5, base_y-50, "STEEL CROSS-MEMBER\n~4mm C-section, ~45mm flange",
            fs=6, color=C_DIM, font=FONT)
     leader(ax, 300, base_y+18, LX, base_y+26, "28mm PLY", fs=6, color="#6B5A33", font=FONT)
     leader(ax, 300, plate_y+4, LX, plate_y+18, "SUB-PLATE ~8mm STEEL", fs=6.5, color=C_OUT, font=FONT)
@@ -211,7 +211,7 @@ def sheet(fig):
         ax.plot([tek_x+s*dia/2, tek_x+s*(dia/2+8)], [base_y+16, base_y+22], color=C_BOLT, lw=1.2, zorder=6)
     ax.add_patch(Polygon([(tek_x-dia/2, body_bot), (tek_x+dia/2, body_bot), (tek_x, tip_z)], closed=True, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=6))  # drill point
     draw_dim_h(ax, tek_x-dia/2, tek_x+dia/2, head_z+13, f"Ø{dia:g}", offset=3, fs=5.5, above=True, font=FONT)  # the SCREW DIAMETER
-    leader(ax, tek_x-dia/2-1, base_y+10, tek_x-78, base_y-24,
+    leader(ax, tek_x-dia/2-1, base_y+10, tek_x-108, base_y-24,
            "J1a / WF4a  winged #14×3.25\" TEK\n(self-taps the member; wings ream the ply)",
            fs=6, color=C_BOLT, font=FONT, ha="center")
 
@@ -222,7 +222,7 @@ def sheet(fig):
     ax.add_patch(Rectangle((foot_x-9, plate_y-13), 18, 13, facecolor=C_PLATE, edgecolor=C_OUT, lw=1.0, zorder=4))  # tapped boss
     ax.add_patch(Rectangle((foot_x-3.5, plate_y-9), 7, 29, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=5))             # M12 shank (shows diameter)
     ax.add_patch(Rectangle((foot_x-8, plate_y+20), 16, 4, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=6))                # hex head
-    leader(ax, foot_x, plate_y-11, foot_x-18, base_y-28,
+    leader(ax, foot_x, plate_y-11, foot_x+28, base_y-28,
            "J1b / WF4b  M12×30 into a TAPPED BOSS\n(drive from above, no underside access)",
            fs=6, color=C_OUT, font=FONT, ha="center")
 

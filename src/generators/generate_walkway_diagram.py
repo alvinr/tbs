@@ -2651,8 +2651,9 @@ def sheet9():
     ax.add_patch(Rectangle((WXL, W), WXR - WXL, WW - W, fc="#8FBF8F", ec="none", alpha=0.35, zorder=7))
     ax.text((WXL + WXR) / 2, (W + WW) / 2, "NEAR-WALKWAY BUMP-OUT  ·  500mm-deep standing band",
             ha="center", va="center", fontsize=7, color="#1D5A1D", fontweight="bold", **FONT, zorder=12)
-    ax.text((nxl + WXL) / 2, W / 2, "300mm\nstd deck", ha="center", va="center",
-            fontsize=5.5, color="#206020", **FONT, zorder=12)
+    leader(ax, (nxl + WXL) / 2, W / 2, (nxl + WXL) / 2, W + 40,
+           f"{W}mm\nstd deck", color="#206020", fs=5.5, ha="center", va="bottom",
+           arrow_style="-|>", font=FONT)
 
     # Wall-cantilever brackets: standard (300mm arm) + widened (500mm arm, heavier)
     for s in stations:

@@ -1387,7 +1387,7 @@ def sheet4():
             zz, color=C_OUT, lw=1.0, zorder=5)
     # Tray rim label
     leader(ax, (tray_x - 5), (PROC_TRAY_RIM / 2 + 10),
-           (tray_x + 50), (PROC_TRAY_RIM),
+           (tray_x + 50), (PROC_TRAY_RIM + 20),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1439,7 +1439,7 @@ def sheet4():
     ax.plot([(0), (PANEL_INNER)], [(PANEL_FLOOR_GAP), (PANEL_FLOOR_GAP)],
             color="#CC4422", lw=2.0, ls="--", alpha=0.6, zorder=8)
     ax.text((PANEL_INNER / 2), (PANEL_Z_TOP - 10),
-            f"PANEL SWING\nSWEEP\n(rides Z={PANEL_FLOOR_GAP}mm over\nthe Z115 brackets)",
+            f"PANEL SWING SWEEP\n(rides Z={PANEL_FLOOR_GAP}mm over the Z115 brackets)",
             ha="center", va="top", fontsize=6, color="#CC4422",
             fontweight="bold", **FONT, alpha=0.7, zorder=15)
 
@@ -1528,7 +1528,7 @@ def sheet4():
             color="#CC4422", lw=0.6, ls=":", alpha=0.5, zorder=3)
 
     # ── Left walkway span dimension ──────────────────────────────────────────
-    draw_dim_h(ax, (LEFT_WK_L), (LEFT_WK_R), (grate_top + 70),
+    draw_dim_h(ax, (LEFT_WK_L), (LEFT_WK_R), (grate_top + 45),
                f"{WALKWAY_W}mm LEFT WALKWAY", offset=(5), fs=7, font=FONT)
 
     # ── Height dimensions (right side) ───────────────────────────────────────
@@ -1544,8 +1544,8 @@ def sheet4():
                f"{PROC_TRAY_RIM}mm", offset=(6), fs=6, right=True,
                color=C_TRAY, font=FONT)
     # Panel bottom
-    draw_dim_v(ax, (LEFT_WK_L - 150), (0), (PANEL_FLOOR_GAP),
-               f"{PANEL_FLOOR_GAP}mm\nPANEL\nBOTTOM", offset=(6), fs=5.5, right=False,
+    draw_dim_v(ax, (LEFT_WK_L - 200), (0), (PANEL_FLOOR_GAP),
+               f"{PANEL_FLOOR_GAP}mm PANEL BOTTOM", offset=(6), fs=5.5, right=False,
                color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
@@ -1560,7 +1560,7 @@ def sheet4():
         f"5. Panel + drum swing {SWING_LOCK_DEG}\u00b0 about the pivot; the cage sweeps ~{SWEEP_OVER}mm past the X={LEFT_WK_R} butt joint (rides Z{PANEL_FLOOR_GAP}, clears the Z115 brackets).",
         f"6. The grate lifts out before the swing; the floor brackets stay bolted (permanent). No kerb.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=(8), fs=7, width=(600), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=8, fs=7, width=700, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 10",

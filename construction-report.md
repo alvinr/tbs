@@ -85,8 +85,8 @@ plumbing, the film-plane support, and the walkway.
 | 3.4 | Lay the **under-grate ribbons** (sump line + skid ribbon legs — tray-sump→P-04 suction, DV-02 waste, P-02→ACC-02 — + pipe support beams) **and install the pinhole filter skid** (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02 + skid-side plumbing; mounts to the 3.1 backing; connects to the recycle→IBC-3 + waste returns from 1.3) — *span the space, so after the beams and both cantilever sets, before the grate*; Note: Before the pipes can be glued, the walkway has to be test-fitted to locate the holes for the pipe bump-through. | 3.1, 3.2, 3.3 | ☐ |
 | 3.5 | **Extend plumbing** to the pinhole-wall panel | 3.4 | ☐ |
 | 3.6 | Install the **processing tray** | 3.2 | ☐ |
-| 3.7 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.2 | ☐ |
-| 3.8 | Install the **left cantilevers** | 3.4 | ☐ |
+| 3.7 | Install the **left cantilevers** | 3.4 | ☐ |
+| 3.8 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.2 | ☐ |
 | 3.9 | Install the **walkway** (grating on all cantilevers) | 3.3, 3.4, 3.7, 3.8 | ☐ |
 
 **Exit gate:** walkway decked, tray sealed, perimeter proof-loaded.
@@ -116,7 +116,7 @@ plumbing, the film-plane support, and the walkway.
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 5.1 | Install the **pinhole mechanism** (plate + aperture) | Phase 3 | ☐ |
-| 5.2 | Install the **film plane + carriages** (screen + frame; the beams were 3.7) | Phase 3 (beams), 5.1 | ☐ |
+| 5.2 | Install the **film plane + carriages** (screen + frame; the beams were 3.8) | Phase 3 (beams), 5.1 | ☐ |
 | 5.3 | Install the **light-trap drum support cage** + axle beams + SKF 6215 bearings + mount plates + floor HDPE | Phase 1 (panel), 5.2 | ☐ |
 | 5.4 | Hang the **light-trap HDPE skins** — rotating drum shell + fixed Ø800 housing panels + H-mullions | 5.3 | ☐ |
 | 5.5 | Fit the **light-trap outer HDPE surround / bay** (walls + roof) + cage rivets | 5.4 | ☐ |

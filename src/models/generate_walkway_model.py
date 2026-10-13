@@ -457,26 +457,34 @@ def cantilever_type_labels():
 
 # ── Left walkway: removable lift-out support (floor-leg cantilever brackets) ────
 
-def left_floor_cantilevers():
+def left_floor_cantilevers(part="all"):
     """The left walkway's removable lift-out support: a row of FLOOR-LEG CANTILEVER
     brackets bolted to bare floor OUTSIDE the tray (X<170). Each = foot plate + 50x50
     post (to the grate bottom) + an arm (Z75-115, 40mm deep, ABOVE the floor-level
     spray bar) reaching IN to carry the grate inner edge (X=470). Brackets on the
     drum-exit punch-out (Yd 800-1560) get EXTENDED arms (to X=770) so the widened
     section is supported, not cantilevered. Zero tray contact. Returns a list of ruby
-    parts — SHARED by left_support() and the overview so the two never diverge."""
+    parts — SHARED by left_support() and the overview so the two never diverge.
+
+    `part`: 'plate' = only the floor-anchor SUB-PLATE (the foundation, laid first);
+    'legs' = only the 5 cantilever brackets (foot/post/arm/bolts); 'all' (default) = both.
+    The construction model splits these onto different build steps (plate in Phase 1,
+    brackets in Phase 3)."""
     foot_l, foot_w, foot_t = LC_FOOT           # 128 x 60 x 8
     pt = FLOOR_PLATE_T                          # floor-anchor sub-plate (strongback) thickness
     az0, az1 = LC_ARM_Z0, GRATE_Z              # 75 .. 115 (grate bottom)
     arm_x0 = LC_LEGX + LC_POST / 2             # 165 — arm starts at the post inner face
     parts = []
-    # ONE continuous floor-anchor SUB-PLATE under all 5 legs, on the floor (Z0→pt): it runs from the
-    # cargo-door sill (X0, guaranteed bottom-end-rail steel) and BUTTS the processing-tray near edge
-    # (X=PROC_TRAY_X_L) — it cannot pass under the tray. The legs bolt into it (WF4b); it self-taps into
-    # the sill + cross-members (WF4a — container-dependent winged TEKs, drawn on the floor-anchor 2D sheet).
-    _y0 = min(LC_YDS) - foot_w / 2 - 30
-    _y1 = max(LC_YDS) + foot_w / 2 + 30
-    parts.append(ruby_box("Left floor-anchor sub-plate", 0, _y0, 0, k.PROC_TRAY_X_L, _y1 - _y0, pt, color=C_STEEL))
+    if part in ("all", "plate"):
+        # ONE continuous floor-anchor SUB-PLATE under all 5 legs, on the floor (Z0→pt): it runs from the
+        # cargo-door sill (X0, guaranteed bottom-end-rail steel) and BUTTS the processing-tray near edge
+        # (X=PROC_TRAY_X_L) — it cannot pass under the tray. The legs bolt into it (WF4b); it self-taps into
+        # the sill + cross-members (WF4a — container-dependent winged TEKs, drawn on the floor-anchor 2D sheet).
+        _y0 = min(LC_YDS) - foot_w / 2 - 30
+        _y1 = max(LC_YDS) + foot_w / 2 + 30
+        parts.append(ruby_box("Left floor-anchor sub-plate", 0, _y0, 0, k.PROC_TRAY_X_L, _y1 - _y0, pt, color=C_STEEL))
+    if part == "plate":
+        return parts
     for i, y in enumerate(LC_YDS, 1):
         wide = WK_LEFT_WIDE_YL <= y <= WK_LEFT_WIDE_YR
         reach = LC_WIDE if wide else LC_STD     # 880 (punch-out) / 580 (standard) tip X

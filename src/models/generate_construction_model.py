@@ -75,8 +75,10 @@ STEPS = [
         lambda: _join(em.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True), cp.support_boards(sides=("far",)))),
     (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
         lambda: _join(ib.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
-    (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last
+    (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",
         lambda: _join(lt.door_frame(), ov.light_seal(), lt.panel_pivot())),
+    (1, "1.7", "P1 Floor Sub-Plate", "Left-walkway floor-anchor sub-plate (strongback) — survey the cross-members, then lay + self-tap it before the framing bolts to it",  # last — the foundation plate goes down as the final set-out step (its exact size/holes are container-dependent); the Phase-3 floor-leg brackets (3.8) bolt to it.  The IBC-frame sub-plate rides in with the frame posts (1.1).
+        lambda: '\n'.join(wm.left_floor_cantilevers(part="plate"))),
 
     # ── Phase 3 — Framing (Phase 2 = re-measure, no geometry) ──
     (3, "3.1", "P3 Wall Backing",      "Pinhole-wall ply backing (semi-transparent backdrop for the plumbing build)",   # [3.1] the wall backing goes up first as a semi-transparent, plywood-colored backdrop so the skid/plumbing (3.4) reads through it; Phase 4+ it ghosts like all other prior geometry
@@ -93,10 +95,10 @@ STEPS = [
         lambda: pw.tap01_supply()),
     (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
         lambda: pw.processing_tray()),
-    (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
+    (3, "3.7", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers (bolt onto the Phase-1 sub-plate)",  # [3.7] brackets only — the sub-plate they bolt to was laid at 1.7
+        lambda: '\n'.join(wm.left_floor_cantilevers(part="legs"))),
+    (3, "3.8", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.8] (+ FP↔walkway corner plates)
         lambda: _join(fp.film_plane_mechanism(part="beams"), wm.fp_combined_corner_plates())),
-    (3, "3.8", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.8]
-        lambda: '\n'.join(wm.left_floor_cantilevers())),
     (3, "3.9", "P3 Walkway",           "Walkway grating (all sections)",     # [3.9] — grates only; supports are 3.2/3.3/3.8
         lambda: wm.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
 

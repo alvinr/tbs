@@ -1367,7 +1367,7 @@ def sheet5():
         ax.plot([n0, n1], [hlz, hlz], color=C_OUT, lw=1.0, zorder=8)                       # half-lap line
         xc = (n0 + n1) / 2                                                                 # #14 TEK hold-down at EACH lap (tip + post) — from the underside up into the walkway beam
         _bolt(ax, xc, az - ah/2, ah + 6, vert=True, d=5, nut=False)                        # standard bolt/screw convention (hex head + shank), driven from the underside
-    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 100, az - ah/2 - 65,
+    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 120, az - ah/2 - 60,
            "#14 TEK hold-down\n(×4 — 1 per lap; see detail)", fs=5.3, font=FONT, ha="left")
     for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # LOCATE each TEK clearance hole: dim_h along the arm (from the notch edge → CL)
         draw_dim_h(ax, n0, (n0 + n1) / 2, az + ah/2 + 15, "25.4mm", fs=4.6, font=FONT, above=True)
@@ -1378,21 +1378,21 @@ def sheet5():
     leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam\n(post end)", fs=6, font=FONT, ha="right")
     # notch depths are sub-30mm → stated as notes (not stacked micro-dims, which crowd the 25.4mm arm); the
     # half-lap line already shows the split visually.
-    ax.text(XT - 20, az + ah/2 + 15, "TIP notch\narm 5.4mm / beam 20mm", fontsize=5.0, ha="center", color=C_DIM, **FONT)
-    ax.text(XOUT0 - 8, az + ah/2 + 15, "POST notch\narm 16mm / beam 9.4mm", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    ax.text(XT - 20, az + ah/2 + 35, "TIP notch\narm 5.4mm / beam 20mm", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    ax.text(XOUT0 - 70, az + ah/2 + 15, "POST notch\narm 16mm / beam 9.4mm", fontsize=5.0, ha="center", color=C_DIM, **FONT)
     p_bz, p_ht = az - ah/2 - 12, 132                                                       # end-plate bottom just below the arm; TALLER, extends UP so both bolts sit above the arm
     ax.add_patch(Rectangle((XUP - ep_x, p_bz), ep_x, p_ht, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))  # end-plate (welded to arm, extends up)
     ax.add_patch(Rectangle((XUP + 60, p_bz), ep_x, p_ht, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))    # rear backing plate
     for bz in (az + ah/2 + 22, az + ah/2 + 52):                                            # BOTH bolts ABOVE the arm (bearing-type) — clears the arm AND the corridor rail below
         _bolt(ax, XUP - ep_x, bz, 60 + 2 * ep_x, d=8, nut=True)
     leader(ax, XUP + 60 + ep_x, az + ah/2 + 52, XUP - 40, az + 100, "J6 (bearing-type)\n2 bolts ABOVE arm →\nPLATE detail + Sheet 4 F", fs=5.6, font=FONT, ha="right")
-    zc = az - ah/2 - 34                                                                    # longitudinal chain-dim line
-    draw_dim_h(ax, XT, XIN1, zc, "50.8mm", fs=5.8, font=FONT, above=False)                   # inner notch width
-    draw_dim_h(ax, XIN1, XOUT0, zc, "198.4mm", fs=5.8, font=FONT, above=False)               # clear gap
-    draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8mm", fs=5.8, font=FONT, above=False)               # outer notch width
-    draw_dim_h(ax, XOUT1, XUP - ep_x, zc, "17mm", fs=5.8, font=FONT, above=False)            # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
+    zc = az - ah/2 - 32                                                                  # longitudinal chain-dim line
+    draw_dim_h(ax, XT, XIN1, zc, "50.8mm", fs=5.5, font=FONT, above=False)                   # inner notch width
+    draw_dim_h(ax, XIN1, XOUT0, zc, "198.4mm", fs=5.5, font=FONT, above=False)               # clear gap
+    draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8mm", fs=5.5, font=FONT, above=False)               # outer notch width
+    draw_dim_h(ax, XOUT1, XUP - ep_x, zc, "17mm", fs=5.5, font=FONT, above=False)            # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
     draw_dim_h(ax, XUP - ep_x, XUP, zc, "8mm", fs=5.0, font=FONT, above=False)               # end-plate (welded to the arm end; fills to the upright face — part of the 325)
-    draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (incl. 8 end-plate)", fs=6.5, font=FONT, above=False)
+    draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (incl. 8 end-plate)", fs=5.5, font=FONT, above=False)
 
     # ── PLAN VIEW — top-down: each half-lap is a full-width crossing (notch = beam width) ──
     _dcell(ax, 20, 500, 1320, 280, "PLAN VIEW (top-down)  ·  each notch is a FULL-WIDTH half-lap (beam width 50.8)")
@@ -1406,9 +1406,9 @@ def sheet5():
         ax.add_patch(Circle((xc, py), 6, fc=BG, ec=C_OUT, lw=1.3, zorder=9))
         ax.plot([xc - 9, xc + 9], [py, py], color=C_CL, lw=0.5, zorder=9)
         ax.plot([xc, xc], [py - 9, py + 9], color=C_CL, lw=0.5, zorder=9)
-        draw_dim_h(ax, n0, xc, py - dw/2 - 6, "25.4mm", fs=4.6, font=FONT, above=False)               # hole CL from the notch edge
+        draw_dim_h(ax, n0, xc, py - dw/2 - 10, "25.4mm", fs=4.6, font=FONT, above=False)               # hole CL from the notch edge
     ax.text(XT - 8, py, "TIP", fontsize=5.5, ha="right", va="center", color=C_DIM, **FONT)
-    leader(ax, (XIN0 + XIN1) / 2, py + 6, (XIN0 + XIN1) / 2 - 30, py + dw/2 + 46, "Ø7 TEK clearance\n(1 per notch)", fs=5, font=FONT, ha="right")
+    leader(ax, (XIN0 + XIN1) / 2, py + 6, (XIN0 + XIN1) / 2 - 40, py + dw/2 + 46, "Ø7 TEK clearance\n(1 per notch)", fs=5, font=FONT, ha="right")
     # J6 connection (top-down): the through-bolts run from the end-plate, through the POST, into the rear
     # backing plate.  Both bolts share the Yd centreline (a central column), so they project onto one line here.
     ax.add_patch(Rectangle((XUP, py - dw/2 - 4), 50, dw + 8, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.2, zorder=6))            # upright (POST), top-down
@@ -1417,13 +1417,13 @@ def sheet5():
     _bolt(ax, XUP - ep_x, py, 2 * ep_x + 50, d=8, nut=True)                                                                # M12 through-bolt: head butts the end-plate front, nut butts the backing-plate back (post is 50 wide here)
     leader(ax, XUP + 25, py, XUP + 40, py + dw/2 + 30, "2× M12 through-bolts\n(both project here —\nZ's on the end-plate detail)", fs=5.2, font=FONT, ha="center")
     draw_dim_v(ax, XUP - ep_x - 18, py - dw/2, py + dw/2, "50.8mm", fs=5.6, font=FONT)                # arm width = beam width
-    zcp = py - dw/2 - 22                                                                            # chain-dim line (mirrors VIEW A)
-    draw_dim_h(ax, XT, XIN1, zcp, "50.8mm", fs=5.8, font=FONT, above=False)                           # inner notch width
-    draw_dim_h(ax, XIN1, XOUT0, zcp, "198.4mm", fs=5.8, font=FONT, above=False)                       # clear gap
-    draw_dim_h(ax, XOUT0, XOUT1, zcp, "50.8mm", fs=5.8, font=FONT, above=False)                       # outer notch width
-    draw_dim_h(ax, XOUT1, XUP - ep_x, zcp, "17mm", fs=5.8, font=FONT, above=False)                     # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
+    zcp = py - dw/2 - 32                                                                            # chain-dim line (mirrors VIEW A)
+    draw_dim_h(ax, XT, XIN1, zcp, "50.8mm", fs=5.5, font=FONT, above=False)                           # inner notch width
+    draw_dim_h(ax, XIN1, XOUT0, zcp, "198.4mm", fs=5.5, font=FONT, above=False)                       # clear gap
+    draw_dim_h(ax, XOUT0, XOUT1, zcp, "50.8mm", fs=5.5, font=FONT, above=False)                       # outer notch width
+    draw_dim_h(ax, XOUT1, XUP - ep_x, zcp, "17mm", fs=5.5, font=FONT, above=False)                     # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
     draw_dim_h(ax, XUP - ep_x, XUP, zcp, "8mm", fs=5.0, font=FONT, above=False)                        # end-plate (part of the 325)
-    draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (incl. 8 end-plate)", fs=6.3, font=FONT, above=False)
+    draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (incl. 8 end-plate)", fs=5.5, font=FONT, above=False)
 
     # ── END-PLATE — BEARING-TYPE, both bolts ABOVE the arm; rail ghosted below (no bolt near it) ──
     _dcell(ax, 20, 40, 500, 440, "END-PLATE + REAR BACKING PLATE (×2)  ·  2× M12 ABOVE the arm")

@@ -893,7 +893,7 @@ def sheet2():
          "   FRONT box uprights and project off the front to carry the walkway.",
     ]
     draw_notes(ax, notes, (X_LO + 20), (Z_HI - 100), spacing=(20),
-               fs=6.5, font=FONT, width=(950))
+               fs=6.5, font=FONT, width=(1150))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",

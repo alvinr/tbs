@@ -1835,10 +1835,10 @@ def sheet6():
     leader(axB, anchor_oxs[0], anchor_oys[1], -fl / 2 - 18, fw / 2 + 24,
            f"WF4b · {nb}x M12 TO SUB-PLATE", color=C_BOLT, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
-    draw_dim_h(axB, -fl / 2, fl / 2, -fw / 2 - 12, f"{fl}mm", offset=4, fs=6, above=False, font=FONT)
-    draw_dim_v(axB, fl / 2 + 14, -fw / 2, fw / 2, f"{fw}mm", offset=6, fs=6, right=True, font=FONT)
+    draw_dim_h(axB, -fl / 2, fl / 2, -fw / 2 - 5, f"{fl}mm", offset=4, fs=6, above=False, font=FONT)
+    draw_dim_v(axB, fl / 2 + 5, -fw / 2, fw / 2, f"{fw}mm", offset=6, fs=6, right=True, font=FONT)
     # Anchor PATTERN dims (what the shop drills to): column spacing (dim_h) + row spacing (dim_v)
-    draw_dim_h(axB, anchor_oxs[0], anchor_oxs[1], anchor_oys[1] + 13,
+    draw_dim_h(axB, anchor_oxs[0], anchor_oxs[1], anchor_oys[1] + 18,
                f"{int(anchor_oxs[1] - anchor_oxs[0])}mm", offset=4, fs=5.5, above=True, font=FONT)
     draw_dim_v(axB, anchor_oxs[0] - 13, anchor_oys[0], anchor_oys[1],
                f"{int(anchor_oys[1] - anchor_oys[0])}mm", offset=5, fs=5.5, right=False, font=FONT)
@@ -1852,7 +1852,7 @@ def sheet6():
         "4. The arm clears the traveling spray bar (top Z67) by ~22mm — enabled by the raised Z140 deck.",
         "5. The grate lifts out for transport; the brackets stay bolted (permanent). Replaces the former edge-beam-on-wall-seats.",
     ]
-    draw_notes(axA, notes, 4, -58, spacing=7, fs=6.5, ha="left", width=552, font=FONT)
+    draw_notes(axA, notes, 4, -75, spacing=7, fs=6.5, ha="left", wrap=90, width=450, font=FONT)
 
     # The two views share ONE title block. Drawing it on the narrow axB squeezed the
     # three columns together (PROJECT|PERIMETER ran into each other); give it a

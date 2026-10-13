@@ -154,6 +154,13 @@ def sheet(fig):
     fig.suptitle("FLOOR-ANCHOR SUB-PLATE (STRONGBACK) STANDARD — cross-member map + sub-plate footprints + anchor stack",
                  fontsize=12, fontweight="bold", y=0.988, **FONT)
 
+    bbox=dict(
+        boxstyle="round,pad=0.30",   # or "square,pad=…" for sharp corners
+        facecolor="white",
+        edgecolor="none",              # "#1A1A1A" if you want a visible border
+        alpha=1.0,                     # fully opaque so it masks what's under it
+    )
+
     # ── TOP: full-length plan + both sub-plate footprints (dashed) ─────────────
     ax_plan = fig.add_axes([0.04, 0.72, 0.92, 0.155])
     plot_region(ax_plan, -160, k.C_LEN + 160, "", holes_on=False)
@@ -193,7 +200,7 @@ def sheet(fig):
     plate_y = base_y + 32
     hatch_rect(ax, 10, plate_y, 290, 8, color=C_PLATE)
     ax.add_patch(Rectangle((10, plate_y), 290, 8, fill=False, edgecolor=C_OUT, lw=1.4, zorder=3))
-    ax.text(18, plate_y+4, "SUB-PLATE ~8mm STEEL", ha="left", va="center", fontsize=6.5, color=C_OUT, **FONT)
+    ax.text(18, plate_y+4, "SUB-PLATE ~8mm STEEL", ha="left", va="center", fontsize=6.5, color=C_OUT, bbox=bbox, **FONT)
 
     # ── J1a winged TEK — drawn as a screw WITH its diameter (house convention) ──
     tek_x, dia = mx, 7.0                                    # #14 ~Ø6.3mm, drawn to scale

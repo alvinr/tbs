@@ -647,7 +647,7 @@ def sheet2():
                             (REINF_T), (REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, (reinf_yd - 1), (REINF_H * 0.8),
-           (reinf_yd - 25), (REINF_H),
+           (reinf_yd - 25), (REINF_H * 0.7),
            f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -665,7 +665,7 @@ def sheet2():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Tray rim label
     leader(ax, (TRAY_RIM_YD - 5), (PROC_TRAY_RIM / 2 + 20),
-           (TRAY_RIM_YD - 20), (PROC_TRAY_RIM + 10),
+           (TRAY_RIM_YD - 15), (PROC_TRAY_RIM + 10),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     # Sawtooth break line on tray floor (continues right)
@@ -771,8 +771,8 @@ def sheet2():
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
     # Bracket label — point at the arm
-    leader(ax, (WALKWAY_W * 0.4), (brkt_arm_z - 5),
-           (WALKWAY_W * 0.4 + 50), (brkt_arm_z - 30),
+    leader(ax, (WALKWAY_W * 0.4), (brkt_arm_z - 15),
+           (WALKWAY_W * 0.4 + 50), (brkt_arm_z - 40),
            f"CANTILEVER BRACKET\n{BRKT_T}mm PLATE (vert leg + gusset)\n+ 2×1×0.120 TUBE ARM\n(50.8×25.4, welded on)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -786,12 +786,12 @@ def sheet2():
 
     # Bolt labels
     leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_lo),
-           (reinf_yd - 30), (bolt_z_lo + 20),
+           (reinf_yd - 25), (bolt_z_lo + 20),
            f"WF1 \u00b7 2\u00d7 M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X \u2014 SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_hi),
-           (reinf_yd - 30), (bolt_z_hi + 20),
+           (reinf_yd - 25), (bolt_z_hi + 20),
            f"1\u00d7 M12 AT Z={bolt_z_hi}\n(ON GUSSET CL\nIN X \u2014 SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -818,7 +818,7 @@ def sheet2():
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
     leader(ax, (WALKWAY_W / 4), ((grate_bot + grate_top) / 2),
-           (WALKWAY_W / 4 - 30), (grate_top + 35),
+           (WALKWAY_W / 4 - 10), (grate_top + 45),
            f"MOLDED GRP (FIBERGLASS) GRATING\n{WALKWAY_GRATE_T}mm \u00b7 VINYL-ESTER \u00b7 GRIT TOP",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)

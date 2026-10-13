@@ -78,7 +78,7 @@ C_WALL  = "#C0C0C8"
 C_BRKT  = C_STEEL     # bracket fill — unified to the project-standard steel tone (lighter, matches sheet6 + the IBC/film-plane/hingepanel sheets; the darker #707888 was a readability outlier, 2026-08-18)
 FONT    = {"fontfamily": "monospace"}
 
-bbox = dict(fc="white", ec="none", pad=1.5, alpha=0.85)
+bbox = dict(boxstyle="round,pad=0.3", fc="white", ec="none", pad=1.5, alpha=0.85)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — Plan View of Walkway Layout
@@ -242,8 +242,8 @@ def sheet1():
     # Leader from left walkway center pointing left (clear of panel swing sweep)
     leader(ax, LX + W / 2, (NY + FYO) / 2,
            LX - 380, (NY + FYO) / 2 + 300,
-           f"LEFT WALKWAY — LIFT-OUT SECTION\n"
-           f"REMOVE FOR TRANSPORT\n(panel + drum swing 56° about the pivot)",
+           f"LEFT WALKWAY\nLIFT-OUT SECTION\n"
+           f"REMOVE FOR TRANSPORT\n(panel + drum swing 56°\nabout the pivot)",
            color=C_REMOVABLE, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -256,7 +256,7 @@ def sheet1():
         ax.add_patch(Rectangle((_nx0, _NY0), _DX, _DY, fc="none", ec="#B00020",
                                lw=1.6, ls=(0, (4, 2)), zorder=15))
     leader(ax, WALKWAY_MUSLIN_NOTCH_R_X0 + _DX / 2, _NY0 + _DY / 2,
-           WALKWAY_MUSLIN_NOTCH_R_X0 + 380, _NY0 - 260,
+           WALKWAY_MUSLIN_NOTCH_R_X0 + 780, _NY0 - 260,
            f"MUSLIN-DROP NOTCH ({_DX}\u00d7{_DY}mm)\ntray-facing edge, L + R walkways —\nslide muslin from image plane into tray",
            color="#B00020", fs=5.0, ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -280,7 +280,7 @@ def sheet1():
             fontweight="bold", **FONT, zorder=15, bbox=bbox)
     # Support leg under the cantilevered landing (see support detail sheet)
     leader(ax, pX0 + pW, pY0 + pH / 2,
-           pX0 + pW + 360, pY0 + pH / 2 - 360,
+           pX0 + pW + 360, pY0 + pH / 2 - 260,
            "CANTILEVER SUB-FRAME off the\nX=470 bearer (see Detail E)",
            color="#408040", fs=5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -329,7 +329,7 @@ def sheet1():
     bump_cy = (NYI + WW) / 2
     ax.text(bump_cx, bump_cy, f"WIDENED TO {WW}mm\n(EP + BATTERY ZONE)",
             ha="center", va="center", fontsize=5.5, color=C_OUT,
-            backgroundcolor="#FFFFFF", fontweight="bold", **FONT, zorder=9)
+            backgroundcolor="#FFFFFF", bbox=bbox, fontweight="bold", **FONT, zorder=9)
     draw_dim_v(ax, WXL - 40, NY, WW,
                f"{WW}mm", offset=50, fs=6, right=False, font=FONT)
     # Dimension the ACTUAL drawn bump-out (snapped to the widened-bracket ribs WXL_B..WXR_B),
@@ -369,7 +369,7 @@ def sheet1():
                  fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))
 
     leader(ax, slit_cx, NYI + 15,
-           slit_cx + 500, NYI + 300,
+           slit_cx + 500, NYI + 350,
            f"{slit_w}mm SLIT (NEAR + FAR)\nSPRAY BAR POLE PASSAGE\n(SEE SPRAY BAR ASSEMBLY)",
            color=C_SLIT, fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
@@ -385,7 +385,7 @@ def sheet1():
             color=C_OUT, lw=0.5, ls="--", alpha=0.4, zorder=7)
     ax.text(EVAP_STOW_X + EVAP_W / 2, EVAP_STOW_YD + EVAP_D / 2,
             f"EVAP COOLER\nTRANSPORT STOW\n{EVAP_W}×{EVAP_D}mm",
-            ha="center", va="center", fontsize=5, color=C_OUT,
+            ha="center", va="center", fontsize=5, color=C_OUT, bbox=bbox,
             fontweight="bold", **FONT, zorder=8)
     # Ratchet strap indicators (two lines across cooler to bracket arms)
     for strap_x in [EVAP_STOW_X + 100, EVAP_STOW_X + EVAP_W - 100]:
@@ -452,12 +452,12 @@ def sheet1():
                      fc=C_SUPPORT, ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, leg_x, LEFT_WK_CANT_LEG_YDS[0] + leg_sz / 2 + 5,
            leg_x - 300, LEFT_WK_CANT_LEG_YDS[0] + 180,
-           "FLOOR-LEG CANTILEVER\nBRACKETS (x5) on BARE FLOOR (X140)\narms reach to X470 (3 extend to X770)",
+           "FLOOR-LEG CANTILEVER\nBRACKETS (x5) on BARE FLOOR\n(X140) arms reach to\nX470 (3 extend to X770)",
            color=C_SUPPORT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
-    draw_dim_v(ax, PROC_TRAY_X_L - 90, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
+    draw_dim_v(ax, PROC_TRAY_X_L - 140, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
                f"{WALKWAY_W}mm", offset=50, fs=6, right=True, font=FONT)
 
     # Bracket spacing callout
@@ -490,36 +490,36 @@ def sheet1():
     n_brackets_total = n_brackets_near * 2  # near + far only (no right brackets)
     notes = [
         "CONSTRUCTION NOTES:",
-        f"1. 4 removable grated sections, {WALKWAY_W}mm wide standard. Butt joints ONLY at the 4 corners;",
+        f"1. 4 removable grated sections, {WALKWAY_W}mm wide standard. Butt joints ONLY at the 4 corners;"
         f"   the bump-out + drum-exit widenings are INTEGRAL (cut as one piece, no mid-deck joint).",
-        f"2. Near walkway WIDENED to {WALKWAY_NEAR_WIDE_W}mm at X={WXL}\u2013{WXR} (clears EP + battery bank) \u2014 an",
-        f"   integral inboard tab, not a bolted-on section. Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm)",
-        f"   with heavier gussets carry the bump-out; the near deck is >3m so it splits at ONE sheet",
+        f"2. Near walkway WIDENED to {WALKWAY_NEAR_WIDE_W}mm at X={WXL}\u2013{WXR} (clears EP + battery bank) \u2014 an"
+        f"   integral inboard tab, not a bolted-on section. Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm)"
+        f"   with heavier gussets carry the bump-out; the near deck is >3m so it splits at ONE sheet"
         f"   seam placed away from the bump shoulders (molded GRP max 3'\u00d710').",
-        f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers."
         f"   Start at X={LXR} (butt joint), clear of the door-end panel swing sweep.",
         f"4. Right: CANTILEVER RECTANGLE \u2014 closed 2\u00d71in-tube frame on 2 arms off the IBC uprights + combined corner plates.",
         f"5. Left: REMOVABLE LIFT-OUT \u2014 5 FLOOR-LEG CANTILEVER brackets on bare floor (X140, outside tray),",
         f"   arms reach the grate inner edge (X={LXR}); 3 extend to X770 on the drum-exit punch-out. See sheets 5/6.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"7. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
-        f"8. SPRAY BAR SLIT: {SPRAY_BAR_SLIT_W}mm slot at beam center X={int((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2)} in near + far walkway",
+        f"8. SPRAY BAR SLIT: {SPRAY_BAR_SLIT_W}mm slot at beam center X={int((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2)} in near + far walkway"
         f"   grating for telescoping pole passage. See Spray Bar Assembly drawings.",
-        f"9. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
+        f"9. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),"
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
-        f"10. WIDENED BRACKETS ({len(_wide_brkt)}): {WALKWAY_WIDE_BRACKET_T}mm plate, {WALKWAY_WIDE_BRACKET_H}mm vert leg, 4× M12 rectangular",
+        f"10. WIDENED BRACKETS ({len(_wide_brkt)}): {WALKWAY_WIDE_BRACKET_T}mm plate, {WALKWAY_WIDE_BRACKET_H}mm vert leg, 4× M12 rectangular"
         f"    pattern. 500mm arm reach for EP + battery access. See Sheet 2 View C.",
-        f"11. LOWERED DECK: deck top at Z={WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate bottom at Z=65, bracket arm",
-        f"    clears the {PROC_TRAY_RIM}mm tray rim by 5mm. Film-plane frame bottom at Z=100mm gives {100 - WALKWAY_H}mm clearance.",
+        f"11. LOWERED DECK: deck top at Z={WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate bottom at Z=65, bracket arm"
+        f"    clears the {PROC_TRAY_RIM}mm tray rim by 5mm. Film-plane frame bottom at Z=100mm gives {100 - WALKWAY_H}mm clearance."
         f"    Walkway stays installed during camera operation.",
-        f"12. LEFT WALKWAY — LIFT-OUT: remove before the light-trap (panel + drum) swings",
+        f"12. LEFT WALKWAY — LIFT-OUT: remove before the light-trap (panel + drum) swings"
         f"    ~{SWING_LOCK_DEG}° about the pivot for transport. Reinstall for operation. See Sheet 4.",
-        f"13. DOOR-END BRACKETS STAY BOLTED: the swing rides Z{PANEL_FLOOR_GAP} — the cage underside",
+        f"13. DOOR-END BRACKETS STAY BOLTED: the swing rides Z{PANEL_FLOOR_GAP} — the cage underside"
         f"    passes OVER the Z115 bracket tops, so no bracket is struck for transport (rev10).",
     ]
-    draw_notes(ax, notes, 1100,
-               -PAD_Y_BOT + 450 + (len(notes) - 1) * 44,
-               spacing=44, fs=7, width=3000, font=FONT)
+    draw_notes(ax, notes, 700,
+               -PAD_Y_BOT + 825 + (len(notes) - 1) * 44,
+               spacing=44, fs=7, wrap=125, width=3400, font=FONT)
 
     # ── DATUMS & TOLERANCES callout (Phase C) ────────────────────────────────
     dt_lines = [
@@ -531,7 +531,7 @@ def sheet1():
         f"  combined corner seat Z (A+C) ±1  ·  beam soffit Z{WALKWAY_BRACKET_ARM_Z0:.1f} (A) +2/−0",
         "  spray-bar slit (C) ±2  ·  foot-anchor pattern (A) ±1   ·   §10.3",
     ]
-    ax.text(-280, -1010, "\n".join(dt_lines), ha="left", va="top", fontsize=6.5,
+    ax.text(4280, -980, "\n".join(dt_lines), ha="left", va="top", fontsize=6.5,
             color=C_OUT, **FONT, zorder=16,
             bbox=dict(boxstyle="round,pad=0.6", fc="#F4F4F0", ec=C_OUT, lw=1.0))
 

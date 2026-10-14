@@ -2402,7 +2402,7 @@ def draw_sheet8():
         draw_dim_h(ax, 0, xv, -30 - k * 23, f"{xv:g}mm", offset=4, fs=5.2, above=False, font=FONT)
     draw_dim_h(ax, 0, W, -30 - 8 * 23, f"{W}mm OVERALL", offset=6, fs=6.4, above=False, font=FONT)
     # ── baseline dim_v (Y) stacked left · circles by centre, cutouts by their BOTTOM edge ──
-    for k, yv in enumerate([MI, _MC4_Y0, dup_yB, _EST_Y, 120, nema_yB, _MC4_Y2, H - MI]):
+    for k, yv in enumerate([MI, dup_yB, _MC4_Y0, _EST_Y, 120, nema_yB, _MC4_Y2, H - MI]):
         draw_dim_v(ax, -30 - k * 23, 0, yv, f"{yv:g}mm", offset=4, fs=5.2, font=FONT)
     draw_dim_v(ax, -30 - 8 * 23, 0, H, f"{H}mm OVERALL", offset=6, fs=6.4, font=FONT)
     # ── internal cutout dimensions: width (dim_h, below the cutout) + height (dim_v, left of it) ──

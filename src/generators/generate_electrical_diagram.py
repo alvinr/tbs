@@ -1676,7 +1676,7 @@ def draw_sheet5():
             ha="left", va="top", fontsize=6.2, color="#333")
 
     ax.set_xlim(-70, 1230)
-    ax.set_ylim(80, 1720)
+    ax.set_ylim(-20, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block
 
     title_block(ax, "SHEET 5 OF 9",
                 drawing_title="MAIN PANEL — LAYOUT",

@@ -2456,7 +2456,7 @@ def draw_sheet9():
     ST = PWR_PANEL_SHROUD_T     # 8mm shroud wall
     MI, MD = _BOX_MI, _BOX_MD
 
-    fig = plt.figure(figsize=(18, 8.6)); fig.patch.set_facecolor("white")
+    fig = plt.figure(figsize=(16, 8)); fig.patch.set_facecolor("white")
     gs = fig.add_gridspec(1, 2, width_ratios=[1.25, 1], wspace=0.12, left=0.05, right=0.965, top=0.9, bottom=0.30)
 
     # ══ PANEL A — box pieces (cut list), each dimensioned ══
@@ -2491,7 +2491,7 @@ def draw_sheet9():
     # seats on the corrugation CRESTS, the seal beds the flange↔wall interface, and the
     # through-bolt grip spans the ~30mm corrugation depth to an interior backing plate + nut.
     axb = fig.add_subplot(gs[0, 1]); axb.set_aspect("equal"); axb.axis("off")
-    axb.set_xlim(-95, 150); axb.set_ylim(-70, 80)
+    axb.set_xlim(-40, 150); axb.set_ylim(-70, 80)
     fex = 4.0                                     # flange/fastener scale (thin metal exaggerated)
     dsc = 1.4                                      # corrugation-depth scale
     CD = CONTAINER_CORRUGATION_DEPTH * dsc         # drawn corrugation depth (crest → trough)

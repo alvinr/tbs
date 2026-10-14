@@ -39,16 +39,23 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   `_datum_tol_block` already called `draw_notes` (the TODO over-listed it from a text-match). Gotcha captured for
   the future: `draw_notes` `pad_x`/`pad_y` default to `spacing`, which bleeds the border left of a fig-coord rect
   — pass small explicit pads (see the shelf/PDH fixes).
-- [x] **Audit every sheet's page size — DONE 2026-10-14, clean.** Prompted by shelf-sheet4, where an
+- [x] **Audit every sheet's page size — DONE 2026-10-14 (two passes).** Prompted by shelf-sheet4, where an
   `aspect="equal"` data axes was narrower than the figure, so a figure-coord block floated in the right margin
-  *beyond* the title block. Fix pattern (applied to the shelf): size `figsize` so its aspect ≈ the data aspect
-  (`xrange/yrange`) → the data axes fills the width → the title block (drawn on `ax`) spans the whole page; keep
-  side blocks in **data** coords. **Audit method:** a harness ran every generator with `Figure.savefig` patched
-  to compare each sheet's widest (title-block-host) axes against the content x-union — flags any overlay sticking
-  out past it. Result across the whole set: **4 flags, all false positives** (pinhole-panel, pinhole-disc-holder
-  sheet3/4 — title block is on a dedicated full-width axes, so it spans fine; film-joint-options is a concept
-  diagram with no title block). The one genuine case (shelf) was already fixed. Canvas-edge clipping stays covered
-  by `tidy_labels --overflow` (0.16 established zero genuine clips). No other sheet needs a page-size change.
+  *beyond* the title block. Fix pattern: size `figsize` so its aspect ≈ the data aspect (`xrange/yrange`) → the
+  data axes fills the width → the title block (drawn on `ax`) spans the whole page; keep side blocks in **data**
+  coords.
+  - **Pass 1 (horizontal):** a harness ran every generator with `Figure.savefig` patched to compare each sheet's
+    widest axes against the content x-union. 4 flags, all false positives (pinhole-panel, PDH sheet3/4 — title
+    block on a dedicated full-width axes; film-joint-options — concept diagram, no title block). Shelf already fixed.
+  - **Pass 2 (vertical — added after this pass MISSED a real one):** the horizontal check did **not** catch
+    `electrical-sheet5`, where the true-scale panel elevation (BAT 1 bottoms at `BA_H_LO`=160) ran **into** the
+    title block (bottom 7% of `ylim`). Found by eye, fixed (dropped the ylim floor). Then patched `title_block`
+    to flag content dipping into the bottom title-block band: re-ran the whole set → electrical-sheet5 clears, plus
+    4 **floor-background false positives** (lighttrap-sheet1, walkway-sections 3/4/5 — a ground/floor fill reaches
+    the band but the white-filled title block sits cleanly below it; verified sheet3 + lighttrap by eye).
+  - Canvas-edge clipping stays covered by `tidy_labels --overflow` (0.16 = zero genuine clips). No other sheet needs
+    a page-size change. (Lesson: a title-block overlap can be **vertical** — content dropping into the band — not
+    just a horizontal float.)
 - [~] **Model-aggregation — Phases 0–3 DONE** (overview is now a thin aggregator; full history in [`model-aggregation-plan.md`](model-aggregation-plan.md)). Phase 3 (2026-10-10) added the `lint.py` ratchet gate `gate_overview_aggregation` locking overview to its sanctioned builder set, so it can never silently re-grow an owned builder and drift from its sub-model. **Remaining (optional polish, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as accepted (no sub-model home) — if a `context`/furniture owner is created, move them there and drop the allowlist entries (the ratchet flags the stale entries to keep the move honest).
 - [x] **Label-overflow sweep — RESOLVED 2026-10-10.** The old `--overflow` measured each label vs its
   **axes data-box**, which over-reported badly: ~136 flags, but with `bbox_inches="tight"` (the house convention

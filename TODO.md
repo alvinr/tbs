@@ -156,10 +156,10 @@ Ranked by saving potential, analogous to the SS→ALU depth-rail switch (`fp-u-c
 needs a dedicated follow-up to model + cascade before committing. Cost by system for context: chemistry
 $5,466 · film $4,216–4,572 · container $2,300–4,300 · electrical $3,431–3,496 · water $3,370 · walkway
 $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
-- [ ] **Ferric ammonium oxalate (AmFe) — $4,026, biggest single cost (sourcing lever, not a switch).**
-  `amfe-rich/standard/lean` = $2,196+$1,098+$732 @ $64.20/kg. Core chemistry — the lever is bulk/cheaper
-  supplier or trimming the *rich* coat tier, not a material swap. Even 15% ≈ $600. Follow-up: chemistry
-  sourcing pass (also `ferri-rich` potassium ferricyanide $582).
+- The top-ranked lever — **ferric ammonium oxalate** ($4,026) — is a *sourcing* move (bulk supplier /
+  trim the rich coat tier), not a design change, so it has **no design-phase impact → deferred to Bucket 3
+  (construction)**, 2026-10-14. The remaining desk-doable levers here are all material swaps already captured
+  above or in Bucket 2.
 
 ### Bucket 2 — ACTIONABLE WHEN BLUEPRINTS FINALIZED (v1.0)
 - [ ] **Front-bar J2/J7 joint — crush through the hollow bar (design review at quote time, 2026-08-17).**
@@ -177,6 +177,11 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
 - [ ] **`pinhole-shim`** — Lenox SS-3/8-DISC laser-drilled pinhole; firm via RFQ once the optics drawing set is design-complete.
 
 ### Bucket 3 — ACTIONABLE ON BUILD
+- [ ] **Ferric ammonium oxalate — chemistry sourcing lever, DEFERRED to construction (2026-10-14).** $4,026, the
+  biggest single line (`amfe-rich/standard/lean` = $2,196+$1,098+$732 @ $64.20/kg; plus `ferri-rich` potassium
+  ferricyanide $582). It's a **sourcing** lever — bulk/cheaper supplier, or trim the *rich* coat tier (even 15% ≈
+  $600) — NOT a material swap or a design change, so it has no bearing on the design phase. Run the chemistry
+  sourcing pass at order/construction time, then cascade through `parts.py` → `costing.py`.
 - [ ] **Container corrugation depth — PARKED pending physical measurement (EARLY procurement gate, post-blueprints).** The design side is CLOSED and robust to the unknown: `CONTAINER_CORRUGATION_DEPTH=30` (conservative max of the 25–30mm ISO side-wall range), the IBC wall-hangers use **M12×70 partial-thread** sized for the 42–54mm worst-case grip, and the BOM already carries **2 shim washers per bolt** (`91166A290`) to pad the grip if the real wall measures shallower. **Gate action (do FIRST, before ordering any wall fastener / bracket plate):** once the actual container is on site, **measure the real side-wall corrugation peak-to-valley**; if <30mm, confirm the shim count and whether M12×70 can drop to a shorter partial-thread length; apply **A36** to the final bracket-plate specs. No desk work possible — needs the physical container.
 - [ ] **Walkway grating.** American Grating is primary (~$830 public list, banded $830–$1,050 for freight/cut); get the **firm cut quote + SoCal freight** at build. **McNichols is a FIRM SHIPPED fallback: 2× 48″×144″ @ $796.77 = $1,593.54 + $456 freight = $2,049.98 shipped (firm 2026-07-24)** — ~2× the American estimate, and its 4′×12′ sheet would re-nest the cut plan if chosen.
 - [ ] **Container** — `container-20ft` (±$1,500) + `container-delivery` (±$500), firm at purchase.

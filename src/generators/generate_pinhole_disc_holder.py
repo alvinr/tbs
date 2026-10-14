@@ -158,7 +158,7 @@ def draw_sheet2():
     draw_circle(axr, rx, ry, s2(PDH_RING_OD / 2), lw=LW_THICK, color=C_OUT)
     draw_circle(axr, rx, ry, s2(PDH_RING_ID / 2), lw=LW_MED, color=C_OUT)
     for tx, ty in _thumb_screw_positions(rx, ry, PDH_TS_PCD, s2):
-        draw_circle(axr, tx, ty, s2(PDH_TS_D / 2 + 0.5), lw=0.7, color=C_OUT)   # M5 clearance
+        draw_circle(axr, tx, ty, s2(PDH_TS_D / 2 + 0.5), lw=0.7, color=C_OUT)   # M6 clearance
     draw_cl(axr, rx, ry, s2(PDH_RING_OD / 2) * 1.1)
     dia_stack(axr, rx, ry - s2(PDH_RING_OD / 2), [
         (s2(PDH_RING_ID), f'Ø{PDH_RING_ID} BORE (clamps disc rim)'),

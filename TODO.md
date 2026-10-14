@@ -26,6 +26,11 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   push of all 11 `.skp`** (the full single-writer cycle). **Fold it into the next batch model re-send** rather
   than spending a whole cascade on a URL string. (Archive `.rb` is frozen history — update only if that model
   is ever revived.)
+  - **Ride-along (same deferral):** `generate_pinhole_disc_holder_model.py` names the thumb-screw tapped-hole
+    components `"M5 tapped hole"` — stale (the thumb screws are **M6**, `PDH_TS_D=6`; the geometry already uses
+    the constant, only the component NAME text lags). Flip the 5 `M5`→`M6` label/comment strings on the next
+    `pinhole-disc-holder` re-send (the name change touches the `.rb` → needs a re-send + push). Size is already
+    reconciled to M6 everywhere else (constants, parts, report, all 2D sheets, fastener-standardization.md).
 - [~] **Model-aggregation — Phases 0–3 DONE** (overview is now a thin aggregator; full history in [`model-aggregation-plan.md`](model-aggregation-plan.md)). Phase 3 (2026-10-10) added the `lint.py` ratchet gate `gate_overview_aggregation` locking overview to its sanctioned builder set, so it can never silently re-grow an owned builder and drift from its sub-model. **Remaining (optional polish, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as accepted (no sub-model home) — if a `context`/furniture owner is created, move them there and drop the allowlist entries (the ratchet flags the stale entries to keep the move honest).
 - [x] **Label-overflow sweep — RESOLVED 2026-10-10.** The old `--overflow` measured each label vs its
   **axes data-box**, which over-reported badly: ~136 flags, but with `bbox_inches="tight"` (the house convention
@@ -171,7 +176,11 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
   tall web is the confirmed design of record (the 2× M12×40 vertical joint left only ~3mm edge; reverting
   reintroduces that defect — see fastener-standardization.md).
 - [ ] **Fastener standardization (part-reconcile branch) — remaining open items** (decisions/details in `fastener-standardization.md`):
-  - **Tilt-swing board** — design chat: socket-vs-hex heads, M8×1.0 fine vs M8×1.25 coarse pitch, A4/316 vs 304/zinc, and itemize its off-registry fasteners (M8×1.0×80 / M12×45 / M16×55 SHCS / M6 set screws / dowel pins) into `parts.py`.
+  - ~~**Tilt-swing board** fastener itemization~~ — **CLOSED (moot): the tilt-swing mechanism was RETIRED
+    2026-09-21** (optically inert) and replaced by the pinhole disc holder; its off-registry fasteners
+    (M8×1.0×80 / M12×45 / M16×55 / M6 set screws / dowels) went with it. The successor's fasteners — 4× M6
+    mount bolts + 4× M6 thumb screws — are already itemized in `parts.py` (`front-board` system) and carry
+    firm SKUs. See `fastener-standardization.md` §Front board.
   - **M5 → flange bolt + nyloc** — deferred to the chem-shelf design (no blueprint yet).
   - **Filter bracket 244718 — confirm URL + price** (switched to the bracket-only Pentair 244718; $10.50 kit price held as a conservative placeholder, `filter-skid-frame`).
 - [ ] **`pinhole-shim`** — Lenox SS-3/8-DISC laser-drilled pinhole; firm via RFQ once the optics drawing set is design-complete.
@@ -216,8 +225,10 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 
 - [~] **★ FINAL cross-cutting step — fastener standardization (LARGELY EXECUTED 2026-09-07, branch `part-reconcile`).** Full status + rationale live in **`fastener-standardization.md`** (target revised to metric families **6→5** — M5 retires, M10 KEPT). **Done this pass:** IBC J2/J7 spec reconciled to M12×65; M8 washer text/key/duty; **M12 wall bolts unified to one zinc length (×70)**; **5/16→1/4 ply-mount** (5/16 family retired); **#14 TEK unified** (90822A620); **optical-plate M12×40 itemized + socket→hex**; **TSB central M16→M8×1.0**. **Reversed on evidence:** M10 KEPT (thin light-trap hosts preclude M12 CSK); ⅛″ rivet consolidation INFEASIBLE (no grip spans both laps). **Remaining:**
   - **M5 → flange bolt + nyloc** — deferred to the chem-shelf design (no blueprint yet).
-  - **TSB registry merge** — deferred to the TSB blueprint review (see the TSB item above).
-  - **Tilt-swing A4/316→304 material downgrades** on non-structural fasteners — confirm at the TSB review.
+  - ~~**TSB registry merge** / **tilt-swing A4/316→304 downgrades**~~ — **CLOSED (moot):** both were gated on a
+    "TSB blueprint review" that no longer exists — the tilt-swing board was **RETIRED 2026-09-21**. The successor
+    pinhole-disc-holder fasteners are already in the `parts.py` `front-board` system (4× M6 mount + 4× M6 thumb
+    screws, firm SKUs); no registry merge or material downgrade is outstanding.
   - **BOM-gap itemization** (M4 grubs, M4 cam-mounts, M12 pivot anchors/hinge brackets) — each blocked on a length dim; itemize per the owning sheet, don't assume.
   - **#14 TEK washer + M8×1.0×50 central SKUs** — SKU-pending items to firm at order.
 

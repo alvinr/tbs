@@ -121,9 +121,10 @@ screw can share one.
   the socket-vs-hex question; the tilt-swing board's socket heads are covered below).
 - **Front board — tilt-swing RETIRED, now the pinhole disc holder (2026-09-22).** The tilt-swing board was
   eliminated (a pinhole board is optically inert). Its front-board fasteners are now the disc holder's: **4× M6
-  mount bolts** (Ø150, plate → wall-frame adapter) + **4× M5 knurled thumb screws** (retaining ring). Firm-costed
-  in the `parts.py` `front-board` registry system (no standalone BOM). The former M12×45 mount / M8×1.0 adjustment
-  / M16 retention / dowels are gone with the mechanism.
+  mount bolts** (Ø150, plate → wall-frame adapter) + **4× M6 knurled thumb screws** (retaining ring; bumped from
+  M5 so it stays in the kept families now that M5 is retired — matches `PDH_TS_D=6` + `pdh-thumb-screws`).
+  Firm-costed in the `parts.py` `front-board` registry system (no standalone BOM). The former M12×45 mount /
+  M8×1.0 adjustment / M16 retention / dowels are gone with the mechanism.
 
 ## Itemization — BOM gaps (fasteners used but not discrete SKUs)
 Every gap is blocked on the same thing: the **length is a blueprint dim** we should confirm, not assume

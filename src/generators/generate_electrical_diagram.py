@@ -1464,7 +1464,7 @@ def draw_sheet4():
     for nm, zb, sub in pumps:
         ax.add_patch(R((p_left, zb), pw, ph, fc="#B4B4BC", ec=C_OUT, lw=1.3, zorder=6))
         ax.text(pcx, zb + ph / 2 + 14, nm, ha="center", va="center", fontsize=9, fontweight="bold", zorder=8)
-        ax.text(pcx, zb + ph / 2 - 20, sub, ha="center", va="center", fontsize=5.4, color="#444", zorder=8)
+        ax.text(pcx, zb + ph / 2 - 35, sub, ha="center", va="center", fontsize=5.4, color="#444", zorder=8)
         tz = zb + ph / 2
         ax.add_patch(R((p_left - 15, tz - 13), 15, 26, fc="#242424", ec=C_OUT, lw=0.8, zorder=7))
         term[nm] = (p_left - 15, tz)                      # terminal left face (branch lands here)

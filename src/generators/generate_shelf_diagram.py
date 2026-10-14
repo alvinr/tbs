@@ -276,23 +276,22 @@ def _datum(ax, x, y, letter, dx, dy):
             fontweight="bold", color=C_OUT, zorder=11, **FONT)
 
 
+_TOL_ROWS = [
+    "GENERAL TOLERANCES + DATUMS (unless noted)",
+    "Linear: ply cut ±0.5mm · steel plate cut ±0.3mm · Angular ±0.5°",
+    "Hole positions ±0.2mm · tee-nut pitch 150mm / gauge 25mm (±0.2mm)",
+    "Tee-nut Ø8 +0.2/0 · hinge Ø7 clr ±0.2mm · M8 backing Ø9 clr ±0.2mm",
+    "Datum A = board back (hinge) edge · B = left edge · plates: wall face",
+    "Deployed level ±1mm / 225mm depth (chain-set) · break edges 0.5mm",
+]
+
+
 def _tol_block(fig, rect):
-    """Shop tolerance + datum block at `rect` [l,b,w,h] in figure coords (house style — cf. PDH)."""
+    """Tolerance + datum block via the house draw_notes helper (bold first line = title),
+    placed at `rect` [l,b,w,h] in figure coords so it sits in the sheet's side whitespace."""
     axb = fig.add_axes(rect); axb.axis("off"); axb.set_xlim(0, 1); axb.set_ylim(0, 1)
-    axb.add_patch(Rectangle((0, 0), 1, 1, fc="#F7F7F7", ec=C_OUT, lw=0.8))
-    rows = [
-        "GENERAL TOLERANCES + DATUMS (unless noted)",
-        "Linear: ply cut ±0.5mm · steel plate cut ±0.3mm    Angular ±0.5°",
-        "Hole positions ±0.2mm · tee-nut pitch 150mm / gauge 25mm (±0.2mm)",
-        "Tee-nut Ø8 +0.2/0 · hinge Ø7 clr ±0.2mm · M8 backing Ø9 clr ±0.2mm",
-        "Datum A = board back (hinge) edge · B = board left edge · plates: wall face",
-        "Deployed surface level ±1mm over 225mm depth (chain-set) · break edges 0.5mm",
-    ]
-    y = 0.90
-    for i, t in enumerate(rows):
-        axb.text(0.03, y, t, fontsize=4.7 if i else 5.4, fontweight="bold" if i == 0 else "normal",
-                 va="center", ha="left", color=C_OUT, **FONT)
-        y -= 0.155
+    draw_notes(axb, _TOL_ROWS, 0.04, 0.88, 0.15, fs=4.7, width=0.90,
+               pad_x=0.03, pad_y=0.05, font=FONT)
 
 # ── Piano hinge 14835A77 extra-clearance (blank) geometry — from the McMaster 14835A33 datasheet ──
 HINGE_OPEN    = 76.2     # open width (3in) — both leaves flat

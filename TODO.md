@@ -31,6 +31,13 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     the constant, only the component NAME text lags). Flip the 5 `M5`→`M6` label/comment strings on the next
     `pinhole-disc-holder` re-send (the name change touches the `.rb` → needs a re-send + push). Size is already
     reconciled to M6 everywhere else (constants, parts, report, all 2D sheets, fastener-standardization.md).
+- [ ] **Tolerance/datum blocks — sweep the hand-rolled `_tol_block`s onto the shared `draw_notes` helper (2026-10-14).**
+  `generate_shelf_diagram.py`'s `_tol_block` was refactored to render via `tbs_drawing.draw_notes` (bold first-line
+  title + bordered box) instead of a hand-rolled `fig.add_axes` + `Rectangle` + text-loop. The **same hand-rolled
+  pattern still lives in `generate_pinhole_disc_holder.py` (`_tol_block`), `generate_ibc_frame_drawing.py`, and
+  `generate_electrical_diagram.py`** — sweep each to `draw_notes` so every tolerance/note block is one code path.
+  Output-equivalent, low-risk. Gotcha: `draw_notes` `pad_x`/`pad_y` default to `spacing`, which bleeds the border
+  left of its placement rect — pass small explicit pads when the block sits in a fig-coord rect (see the shelf fix).
 - [~] **Model-aggregation — Phases 0–3 DONE** (overview is now a thin aggregator; full history in [`model-aggregation-plan.md`](model-aggregation-plan.md)). Phase 3 (2026-10-10) added the `lint.py` ratchet gate `gate_overview_aggregation` locking overview to its sanctioned builder set, so it can never silently re-grow an owned builder and drift from its sub-model. **Remaining (optional polish, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as accepted (no sub-model home) — if a `context`/furniture owner is created, move them there and drop the allowlist entries (the ratchet flags the stale entries to keep the move honest).
 - [x] **Label-overflow sweep — RESOLVED 2026-10-10.** The old `--overflow` measured each label vs its
   **axes data-box**, which over-reported badly: ~136 flags, but with `bbox_inches="tight"` (the house convention

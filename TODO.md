@@ -38,6 +38,14 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   `generate_electrical_diagram.py`** — sweep each to `draw_notes` so every tolerance/note block is one code path.
   Output-equivalent, low-risk. Gotcha: `draw_notes` `pad_x`/`pad_y` default to `spacing`, which bleeds the border
   left of its placement rect — pass small explicit pads when the block sits in a fig-coord rect (see the shelf fix).
+- [ ] **Audit every sheet's page size — confirm all content fits inside the page and title blocks span the full width (2026-10-14).**
+  Prompted by shelf-sheet4, where an `aspect="equal"` data axes was narrower than the figure, so a figure-coord
+  block floated in the right margin *beyond* the title block (which only spanned the shrunk data axes). Fix pattern
+  used: size `figsize` so its aspect ≈ the data aspect (`xrange/yrange`) → the data axes fills the width → the
+  title block (drawn on `ax`) spans the whole page; keep side blocks in **data** coords so they share the page.
+  Sweep every generator's sheets: nothing clipped at the canvas edge, no element past the title-block width, and
+  each title block reaches both page edges. (Many sheets save with `bbox_inches="tight"`, which hides a too-narrow
+  figure but can still leave a title block not spanning a side-floated block — eyeball each.)
 - [~] **Model-aggregation — Phases 0–3 DONE** (overview is now a thin aggregator; full history in [`model-aggregation-plan.md`](model-aggregation-plan.md)). Phase 3 (2026-10-10) added the `lint.py` ratchet gate `gate_overview_aggregation` locking overview to its sanctioned builder set, so it can never silently re-grow an owned builder and drift from its sub-model. **Remaining (optional polish, not blocking):** the two orphans `shelf` + `light_seal` are allowlisted as accepted (no sub-model home) — if a `context`/furniture owner is created, move them there and drop the allowlist entries (the ratchet flags the stale entries to keep the move honest).
 - [x] **Label-overflow sweep — RESOLVED 2026-10-10.** The old `--overflow` measured each label vs its
   **axes data-box**, which over-reported badly: ~136 flags, but with `bbox_inches="tight"` (the house convention

@@ -286,12 +286,10 @@ _TOL_ROWS = [
 ]
 
 
-def _tol_block(fig, rect):
+def _tol_block(ax, x, y_top, *, width, spacing=24, fs=5.6):
     """Tolerance + datum block via the house draw_notes helper (bold first line = title),
-    placed at `rect` [l,b,w,h] in figure coords so it sits in the sheet's side whitespace."""
-    axb = fig.add_axes(rect); axb.axis("off"); axb.set_xlim(0, 1); axb.set_ylim(0, 1)
-    draw_notes(axb, _TOL_ROWS, 0.04, 0.88, 0.15, fs=4.7, width=0.90,
-               pad_x=0.03, pad_y=0.05, font=FONT)
+    drawn in the sheet's data axes at (x, y_top) so it shares the page with the title block."""
+    draw_notes(ax, _TOL_ROWS, x, y_top, spacing, fs=fs, width=width, font=FONT)
 
 # ── Piano hinge 14835A77 extra-clearance (blank) geometry — from the McMaster 14835A33 datasheet ──
 HINGE_OPEN    = 76.2     # open width (3in) — both leaves flat
@@ -305,9 +303,9 @@ HINGE_DRILL_D = 7        # 1/4-20 clearance in each leaf (Ø~7)
 # SHEET 4 — BOARD FABRICATION (top view: cut + tee-nut drill positions)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
-    fig, ax = plt.subplots(figsize=(14, 6))
+    fig, ax = plt.subplots(figsize=(14, 6.8))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-95, SHELF_W + 470); ax.set_ylim(-150, SHELF_DEPTH + 330)
+    ax.set_xlim(-95, SHELF_W + 760); ax.set_ylim(-150, SHELF_DEPTH + 330)
     ax.set_aspect("equal"); ax.axis("off")
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
@@ -366,7 +364,7 @@ def sheet4():
         "for the chain eye bolts.",
     ], 0, SHELF_DEPTH + 300, spacing=18, fs=6, width=750, wrap=100, font=FONT)
 
-    _tol_block(fig, [0.715, 0.46, 0.275, 0.30])
+    _tol_block(ax, SHELF_W + 190, SHELF_DEPTH + 300, width=430)
 
     title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="BOARD FABRICATION — 18mm UV-PLY (cut + tee-nut drill)",
@@ -382,7 +380,7 @@ def sheet4():
 def sheet5():
     fig, ax = plt.subplots(figsize=(14, 7.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-70, 1620); ax.set_ylim(0, 820)
+    ax.set_xlim(-70, 1830); ax.set_ylim(0, 820)
     ax.set_aspect("equal"); ax.axis("off")
 
     # ── Hinge cleat + its 8mm hinge-backing plate (drawn 1:1-ish, top zone) ──
@@ -469,7 +467,7 @@ def sheet5():
         "Deburr; keep the knuckle clear.",
     ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1000, wrap=120, font=FONT)
 
-    _tol_block(fig, [0.635, 0.36, 0.25, 0.26])
+    _tol_block(ax, 1230, 600, width=530)
 
     title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + PIANO HINGE DRILLING",

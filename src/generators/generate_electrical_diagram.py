@@ -1560,9 +1560,10 @@ def draw_sheet5():
         ("G", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
     ]
 
-    fig, ax = plt.subplots(figsize=(13.5, 10.0))
+    fig, ax = plt.subplots(figsize=(16.5, 10.0))
     ax.set_aspect("equal")        # ← true scale: 1 mm in X == 1 mm in Z
     ax.axis("off")
+    LCX = -60                     # right edge of the left callout column (leaders tip here; text extends left)
 
     eh0, eh1 = EP_H_LO, EP_H_HI                          # 1150, 1560 (reach re-lay)
     # ── Panel outline — plywood backboard, dimensioned ──
@@ -1581,7 +1582,7 @@ def draw_sheet5():
         ax.add_patch(R((0, _bz), BA_W, BA_H_HI - BA_H_LO, fc=C_BATT, ec=C_OUT, lw=1.0, zorder=4))
         ax.text(BA_W / 2, _bz + (BA_H_HI - BA_H_LO) / 2, _lb, ha="center", va="center",
                 fontsize=5.2, color="white", fontweight="bold", zorder=5)
-    ax.text(BA_W + 8, (BA_H_LO + BA_STACK_TOP) / 2, "2x 100Ah\nstacked", ha="left", va="center", fontsize=5.0, color=C_OUT)
+    leader(ax, 5, (BA_H_LO + BA_STACK_TOP) / 2, LCX, 440, "2× 100Ah packs, stacked", fs=5.6, color=C_DIM, ha="right")
     # ── Contactor + MRBF ──
     ax.add_patch(R((10, EP_POST_Z), CONTACTOR_W, CONTACTOR_H, fc="#C42B1C", ec=C_OUT, lw=0.9, zorder=4))
     ax.text(10 + CONTACTOR_W / 2, EP_POST_Z + CONTACTOR_H / 2, "CONT.", ha="center", va="center", fontsize=4.5, color="white", fontweight="bold", zorder=5)
@@ -1606,11 +1607,11 @@ def draw_sheet5():
     ax.add_patch(mpatches.Circle((300, dz + 25), 16, fc="#C42B1C", ec="#F2C200", lw=2.0, zorder=5))
     ax.text(300, dz + 25, "E", ha="center", va="center", fontsize=4.6, color="white", fontweight="bold", zorder=6)
     ax.plot([20, 320], [dz - 8, dz - 8], color=C_OUT, lw=0.6, ls=(0, (3, 2)), zorder=3)
-    ax.text(170, dz - 14, "↑ reachable disconnect cluster", ha="center", va="top", fontsize=5.0, color=C_OUT, fontweight="bold", zorder=6)
+    leader(ax, 55, dz + 35, LCX, 1020, "Reachable disconnect cluster\n(main · master · PV · E-stop)", fs=5.6, color=C_DIM, ha="right")
 
     # ── IP65 enclosure (fuse block 5026 + busbars + charge fuse) at chest height ──
     ax.add_patch(R((10, eh0), 200, 220, fc="none", ec="#8A9AA8", lw=1.0, ls=(0, (4, 2)), zorder=3))
-    ax.text(12, eh0 + 224, "IP65 enclosure", ha="left", va="bottom", fontsize=5.0, color="#8A9AA8")
+    leader(ax, 10, eh0 + 200, LCX, 1470, "IP65 enclosure (DC terminals)", fs=5.6, color=C_DIM, ha="right")
     fb_x0, base_z = 15, eh0 + 40                          # 1190
     fbase_h, fuse_h = 28, 42
     ax.add_patch(R((fb_x0, base_z), FUSEBLK_W, fbase_h, fc="#2B2B30", ec=C_OUT, lw=0.9, zorder=4))
@@ -1620,16 +1621,16 @@ def draw_sheet5():
         cx = fb_x0 + (i + 0.5) * pitch
         ax.add_patch(R((cx - bw / 2, base_z + fbase_h), bw, fuse_h, fc=col, ec=C_OUT, lw=0.7, zorder=5))
         ax.text(cx, base_z + fbase_h + fuse_h / 2, lt, ha="center", va="center", fontsize=5.0, fontweight="bold", color="white", zorder=6)
-    ax.text(fb_x0 + FUSEBLK_W / 2, base_z + fbase_h + fuse_h + 6, "↑ A–G → loads", ha="center", va="bottom", fontsize=5.0, color=C_OUT, fontweight="bold")
-    ax.text(fb_x0 + FUSEBLK_W / 2, base_z - 8, "Blue Sea 5026 · 12-circ (7 used + 5 spare) · flip cover", ha="center", va="top", fontsize=4.4, color=C_OUT)
+    leader(ax, fb_x0 + FUSEBLK_W / 2, base_z + fbase_h + fuse_h, LCX, 1190, "A–G fuses → loads", fs=5.6, color=C_DIM, ha="right")
+    leader(ax, fb_x0 + 25, base_z, LCX, 1400, "Blue Sea 5026 fuse block · 12-circ (7 used + 5 spare)", fs=5.6, color=C_DIM, ha="right")
     bbp, bbn = eh0 + 170, eh0 + 140
     ax.add_patch(R((15, bbp), BUSBAR_L, BUSBAR_H, fc="#C0392B", ec=C_OUT, lw=0.7, zorder=4))
     ax.add_patch(R((15, bbn), BUSBAR_L, BUSBAR_H, fc="#2C2C2C", ec=C_OUT, lw=0.7, zorder=4))
     ax.text(15 + BUSBAR_L / 2, bbp + BUSBAR_H / 2, "+", ha="center", va="center", fontsize=6, color="white", fontweight="bold", zorder=5)
     ax.text(15 + BUSBAR_L / 2, bbn + BUSBAR_H / 2, "−", ha="center", va="center", fontsize=6, color="white", fontweight="bold", zorder=5)
-    ax.text(15 + BUSBAR_L + 6, (bbp + bbn) / 2 + BUSBAR_H / 2, "± busbars", ha="left", va="center", fontsize=5.2, color=C_OUT)
+    leader(ax, 15, (bbp + bbn) / 2 + BUSBAR_H / 2, LCX, 1330, "+ / − distribution busbars", fs=5.6, color=C_DIM, ha="right")
     ax.add_patch(R((150, eh0 + 155), 45, 45, fc="#222222", ec=C_OUT, lw=0.7, zorder=5))
-    ax.text(172, eh0 + 155 + 22, "60A\nchg", ha="center", va="center", fontsize=3.8, color="white", zorder=6)
+    leader(ax, 150, eh0 + 155 + 22, LCX, 1260, "60A charge fuse (MPPT → batt)", fs=5.6, color=C_DIM, ha="right")
 
     # ── MPPT (top of the reachable stack — was ~1970) ──
     mz = eh1 - MPPT_H                                     # 1460
@@ -1676,7 +1677,7 @@ def draw_sheet5():
         "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
     ], tx, botline - 50, spacing=32, fs=6, wrap=60, width=700)
 
-    ax.set_xlim(-70, 1230)
+    ax.set_xlim(-600, 1230)
     ax.set_ylim(-60, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block
 
     title_block(ax, "SHEET 5 OF 9",

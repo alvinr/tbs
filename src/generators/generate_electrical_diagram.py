@@ -1495,14 +1495,18 @@ def draw_sheet4():
     ax.text(-70, 1907, "→ P-04", ha="right", va="center", fontsize=6.4, color=CDK, fontweight="bold")
 
     # ── Right-side callouts ──
-    ax.text(PW + 90, 1500,
-            "12V DIST. BLOCK — the switched\nCircuit-C feed lands here. The MASTER\npump switch (one manual cutoff for the\n"
-            "whole circuit) is on the EP — see\nSheet 5. No per-pump switches; each\nShurflo 2088 runs on its internal\n"
-            "pressure switch when its valves open.\n\n"
-            "16 AWG branches — curved elbow\nfittings (pipe convention), one per\npump.\n\n"
-            "P-04 (Tray drain) is fed by a\nCircuit-C branch off this block, on\nthe pinhole-wall filter skid.\n\n"
-            "ACC-01 is a passive accumulator —\nunpowered.",
-            fontsize=6.2, ha="left", va="top", color="#333")
+    draw_notes(ax, [
+        "12V DIST. BLOCK",
+        "The switched Circuit-C feed lands here. The MASTER pump switch (one manual cutoff for the whole "
+        "circuit) is on the EP — see Sheet 5. No per-pump switches; each Shurflo 2088 runs on its internal "
+        "pressure switch when its valves open.",
+        "",
+        "16 AWG branches — curved elbow fittings (pipe convention), one per pump.",
+        "",
+        "P-04 (Tray drain) is fed by a Circuit-C branch off this block, on the pinhole-wall filter skid.",
+        "",
+        "ACC-01 is a passive accumulator — unpowered.",
+    ], PW + 90, 1500, spacing=32, fs=6.2, width=700, wrap=44)
 
     # xlim encompasses ALL content — the CORRIDOR leader (left) and the notes block (right) — so the
     # transAxes title block spans the full page width (and its left cell is wide enough for the © line).

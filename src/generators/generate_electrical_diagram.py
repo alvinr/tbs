@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch
 import os
-from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS
+from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS, FAN_DIAM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_rect, draw_circle, draw_pipe_path
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
@@ -302,9 +302,9 @@ def draw_sheet1():
     # ── CIRCUITS — right column ───────────────────────────────────────────────
     circuits = [
         # letter, name, fuse, wire, load, note, color
-        ("A", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
+        ("A", f"VENTILATION FAN\nEXHAUST  (Ø{FAN_DIAM}mm)",  "5A",  "16 AWG", "60W",
          "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
-        ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
+        ("B", f"VENTILATION FAN\nINTAKE  (Ø{FAN_DIAM}mm)",   "5A",  "16 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
         ("C", "WATER PUMPS\n(corridor + P-04)",       "15A", "14 AWG", "100W",
          "Corridor panel (Yd=1046–1316) + P-04 (filter skid)", C_PUMP_TINT),

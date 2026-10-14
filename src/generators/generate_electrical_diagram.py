@@ -1669,11 +1669,12 @@ def draw_sheet5():
         ax.text(tx + 700, ry, ld, ha="center", va="center", fontsize=6.4)
     botline = th - 60 - len(CIRCUITS5) * row_h + 36
     ax.plot([tx - 20, tx + 790], [botline, botline], color=C_OUT, lw=0.8)
-    ax.text(tx, botline - 44,
-            "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.\n"
-            "Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).\n"
-            "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
-            ha="left", va="top", fontsize=6, color="#333")
+    draw_notes(ax, [
+        "NOTES",
+        "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.",
+        "Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).",
+        "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
+    ], tx, botline - 30, spacing=40, fs=6.2, width=1000)
 
     ax.set_xlim(-70, 1230)
     ax.set_ylim(-60, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block

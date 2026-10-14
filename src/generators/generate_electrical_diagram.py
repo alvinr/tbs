@@ -1646,7 +1646,7 @@ def draw_sheet5():
     c_cx = fb_x0 + 2.5 * pitch                            # Cct-C blade
     ax.plot([c_cx, c_cx, msw_x + msw_w / 2], [base_z, dz + msw_h, dz + msw_h], color="#2980B9", lw=1.3, zorder=3)  # fuse C → master sw
     varrow(ax, msw_x + msw_w / 2, dz + msw_h, eh1 + 18, col="#2980B9", lw=1.4)
-    ax.text(msw_x + msw_w / 2 + 6, eh1 + 14, "→ ceiling → pumps (Sheet 4)", ha="left", va="top", fontsize=5.0, color="#2980B9", fontweight="bold")
+    ax.text(msw_x + msw_w / 2 + 6, eh1 + 40, "→ ceiling → pumps (Sheet 4)", ha="left", va="top", fontsize=5.0, color="#2980B9", fontweight="bold")
 
     # ── Fuse schedule table (right, same mm coordinate space) ──
     tx = 500
@@ -1674,7 +1674,7 @@ def draw_sheet5():
         "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.",
         "Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).",
         "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
-    ], tx, botline - 30, spacing=40, fs=6.2, width=1000)
+    ], tx, botline - 50, spacing=32, fs=6, wrap=60, width=700)
 
     ax.set_xlim(-70, 1230)
     ax.set_ylim(-60, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block

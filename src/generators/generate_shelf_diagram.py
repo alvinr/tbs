@@ -467,7 +467,7 @@ def sheet5():
         "Deburr; keep the knuckle clear.",
     ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1000, wrap=120, font=FONT)
 
-    _tol_block(ax, 1230, 600, width=530)
+    _tol_block(ax, 1230, 600, width=550)
 
     title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + PIANO HINGE DRILLING",

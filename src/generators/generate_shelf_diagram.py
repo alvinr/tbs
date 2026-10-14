@@ -364,7 +364,7 @@ def sheet4():
         "for the chain eye bolts.",
     ], 0, SHELF_DEPTH + 300, spacing=18, fs=6, width=750, wrap=100, font=FONT)
 
-    _tol_block(ax, SHELF_W + 190, SHELF_DEPTH + 300, width=430)
+    _tol_block(ax, SHELF_W + 220, SHELF_DEPTH + 300, width=430)
 
     title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="BOARD FABRICATION — 18mm UV-PLY (cut + tee-nut drill)",

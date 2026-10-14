@@ -1560,7 +1560,7 @@ def draw_sheet5():
         ("G", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
     ]
 
-    fig, ax = plt.subplots(figsize=(13.5, 8.0))
+    fig, ax = plt.subplots(figsize=(13.5, 10.0))
     ax.set_aspect("equal")        # ← true scale: 1 mm in X == 1 mm in Z
     ax.axis("off")
 
@@ -1673,7 +1673,7 @@ def draw_sheet5():
             "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.\n"
             "Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).\n"
             "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
-            ha="left", va="top", fontsize=6.2, color="#333")
+            ha="left", va="top", fontsize=6, color="#333")
 
     ax.set_xlim(-70, 1230)
     ax.set_ylim(-60, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block

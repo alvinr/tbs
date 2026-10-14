@@ -17,8 +17,10 @@ file** — a release must not ship without a changelog entry:
    **[Unreleased]** above it.
 3. Commit, tag, and create the GitHub release from that section's notes.
 
-**`bash release.sh X.Y`** automates steps 2–3 (promote → commit → tag → `gh release create`) and
-**refuses to proceed if [Unreleased] is empty**, which is what enforces the gate.
+**`bash release.sh X.Y`** automates steps 2–3 (promote → regenerate version-stamped diagrams →
+commit → **publish the site + brochure** → tag → `gh release create`) and **refuses to proceed if
+[Unreleased] is empty**, which is what enforces the gate. Cutting a release always deploys, so there
+is no separate publish step to run afterward.
 
 ---
 

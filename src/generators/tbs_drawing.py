@@ -602,6 +602,21 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     ax.add_patch(rect)
 
 
+def draw_notes_panel(fig, rect, notes, *, fs=7, title_fs=None, font=None, width=0.94):
+    """A bordered notes/tolerance block anchored to the FIGURE — its own axes at
+    `rect` [l, b, w, h] in figure coords — for a full-width strip that spans a
+    multi-panel sheet (where no single data axes covers it). Row spacing auto-fills
+    the box, so call sites pass only the figure placement + font size. For a notes
+    block that lives inside one data axes, call `draw_notes` directly at data coords.
+    """
+    ax = fig.add_axes(rect); ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
+    top, bottom = 0.88, 0.12
+    spacing = (top - bottom) / max(len(notes) - 1, 1)
+    draw_notes(ax, notes, 0.03, top, spacing, fs=fs, title_fs=title_fs,
+               width=width, pad_x=0.02, pad_y=spacing * 0.45, font=font)
+    return ax
+
+
 # ── Legend box ──────────────────────────────────────────────────────────────
 
 def draw_legend(ax, items, x, y, *, row_h=46, swatch_w=32, swatch_h=28,

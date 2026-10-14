@@ -21,7 +21,7 @@ from matplotlib.patches import FancyBboxPatch
 import os
 from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS, FAN_DIAM
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_rect, draw_circle, draw_pipe_path
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
 from tbs_constants import DIAGRAM_DPI
@@ -2535,9 +2535,7 @@ def draw_sheet9():
         "Wall seal: flange bedded on silicone + flashing over the corrugation crests — water- AND light-tight",
         "Box OPENS to the interior; every device gasketed to the face with an opaque light-baffle behind its cavity.",
     ]
-    axn = fig.add_axes([0.05, 0.10, 0.915, 0.17]); axn.axis("off"); axn.set_xlim(0, 1); axn.set_ylim(0, 1)
-    draw_notes(axn, notes, 0.01, 0.90, 0.135, fs=6.7, width=0.98,
-               pad_x=0.012, pad_y=0.06, font=FONT)
+    draw_notes_panel(fig, [0.05, 0.10, 0.915, 0.17], notes, fs=6.7, font=FONT)
 
     ax_tb = fig.add_axes([0.05, 0.0, 0.915, 0.085]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 9 OF 9",

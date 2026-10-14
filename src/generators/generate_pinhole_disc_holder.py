@@ -30,7 +30,7 @@ from tbs_constants import (
     PDH_LENS_COPAL0, PDH_LENS_COPAL1, PDH_LENS_COPAL3,
 )
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl, draw_circle, leader, draw_notes
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl, draw_circle, leader, draw_notes_panel
 
 # ── Style ─────────────────────────────────────────────────────────────────────
 LW_THICK, LW_MED, LW_THIN, LW_CUT = 1.8, 1.0, 0.5, 2.2
@@ -197,9 +197,7 @@ def draw_sheet2():
 
 
 def _tol_block(fig, rect, title="GENERAL TOLERANCES (unless noted)"):
-    """A CNC-shop tolerance/notes block (house draw_notes helper, bold first-line title)
-    placed at `rect` [l,b,w,h] on the figure."""
-    ax = fig.add_axes(rect); ax.axis('off'); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+    """A CNC-shop tolerance/notes block (figure-anchored) at `rect` [l,b,w,h]."""
     rows = [
         title,
         "Linear ≤6mm ±0.1 · ≤30 ±0.2 · >30 ±0.3    Angular ±0.5°",
@@ -208,8 +206,7 @@ def _tol_block(fig, rect, title="GENERAL TOLERANCES (unless noted)"):
         "Surfaces: mating/seal faces Ra 1.6 · bores Ra 3.2 · others Ra 6.3 · break sharp edges 0.3×45°",
         "Datum A = plate camera face · B = Ø82 seat axis · finish: black hard-anodize (Al) after machining",
     ]
-    draw_notes(ax, rows, 0.02, 0.88, 0.15, fs=4.6, width=0.97,
-               pad_x=0.015, pad_y=0.06, font={"fontfamily": "monospace"})
+    draw_notes_panel(fig, rect, rows, fs=4.6, width=0.97, font={"fontfamily": "monospace"})
 
 
 # ══════════════════════════════════════════════════════════════════════════════

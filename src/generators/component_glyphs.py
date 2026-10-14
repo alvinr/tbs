@@ -72,5 +72,5 @@ def draw_estop_22mm(ax, cx, cy, r=20, z=6):
     ax.add_patch(mpatches.Circle((cx, cy), r * 1.3, fc=C_RING, ec=C_OUT, lw=1.4, zorder=z))
     ax.add_patch(mpatches.Circle((cx, cy), r, fc=C_ESTOP, ec="#7A1810", lw=1.4, zorder=z + 0.4))
     ax.add_patch(mpatches.Circle((cx, cy), r * 0.55, fc="#D8382A", ec="none", zorder=z + 0.5))
-    ax.text(cx, cy - r - 4, "STOP", ha="center", va="top", fontsize=6.5,
+    ax.text(cx, cy - r - 12, "STOP", ha="center", va="top", fontsize=6.5,
             fontweight="bold", color=C_ESTOP, zorder=z + 1)

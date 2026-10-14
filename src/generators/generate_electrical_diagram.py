@@ -1842,7 +1842,7 @@ def draw_sheet6():
            fs=6, color=C_AC, ha="left", arrow_style="-|>", font=FONT)
 
     leader(ax_a, (ESTOP_X), (ESTOP_Y + ESTOP_RING_R + 3),
-           (ESTOP_X), (PLATE_H + 28),
+           (ESTOP_X), (PLATE_H + 18),
            "EMERGENCY CUT-OFF (E-STOP)\n22mm mount / ⌀40mm cap · IP66 · TRIPS BATTERY CONTACTOR",
            fs=6.5, color=C_ESTOP, ha="center", arrow_style="-|>", font=FONT)
 
@@ -2016,7 +2016,7 @@ def draw_sheet6():
     ax_c.set_aspect("equal")
     ax_c.axis("off")
     ax_c.set_xlim(0, 22)
-    ax_c.set_ylim(-2.7, 4.5)
+    ax_c.set_ylim(-3.7, 4.5)
 
     ax_c.text(8.75, 4.6, "VIEW C — WIRING SCHEMATIC",
               ha="center", va="bottom", fontsize=9, fontweight="bold",

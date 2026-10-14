@@ -306,7 +306,7 @@ HINGE_DRILL_D = 7        # 1/4-20 clearance in each leaf (Ø~7)
 # SHEET 4 — BOARD FABRICATION (top view: cut + tee-nut drill positions)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
-    fig, ax = plt.subplots(figsize=(13.5, 6))
+    fig, ax = plt.subplots(figsize=(14, 6))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(-95, SHELF_W + 470); ax.set_ylim(-150, SHELF_DEPTH + 330)
     ax.set_aspect("equal"); ax.axis("off")

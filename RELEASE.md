@@ -26,7 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Chemistry prep shelf — blueprint spec closed out.** Added the missing **datum + general-tolerance block** to the two fab sheets (shelf-sheet4/5) — datum A = board back/hinge edge, B = left edge; tee-nut PCD/pitch and backing-plate holes ±0.2mm; deployed level ±1mm over the 225mm depth — matching the house tol-block style, so the set now meets the manufacturing-ready standard. Resolved the four open "confirm at review" decisions: the spill lip is **HDPE on all 4 edges** (splash-zone inert; plywood there would break the dry-use rule), the board face is **UV-coated white ply** (retiring the stale "phenolic" prose), the transport latch is the reused **cam latch 1619A74**, and the hinge-leaf screw is the already-sourced SS SKU. Also closed the stale **"M5 → flange-bolt" TODO** — that conversion was superseded on 2026-09-07 when the ply-primary redesign moved the attachment to ¼-20 pronged tee-nuts (no M5 remains anywhere).
 
 ## [0.16] — 2026-10-13
 

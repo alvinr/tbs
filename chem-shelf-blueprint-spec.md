@@ -4,9 +4,10 @@
 
 # Chemistry Prep Shelf — Definitive Blueprint Spec
 
-**Status:** **EXECUTED — 2D (2026-09-07).** Design locked; load case + dimensioned fab sheets (shelf-sheet4/5) +
-fastener schedule + the full 2D cascade (constants/parts/costing/report) DONE. **Deferred:** the 3D `chem_shelf()`
-re-send (overview/construction — needs the live model) + datum/tolerance polish. Current record = `chemistry-prep-shelves.md`. Follows the
+**Status:** **COMPLETE (2D) — 2026-09-07, closed out 2026-10-14.** Design locked; load case + dimensioned fab
+sheets (shelf-sheet4/5) + fastener schedule + the full 2D cascade (constants/parts/costing/report) DONE. The
+**datum + general-tolerance block is now on shelf-sheet4/5** (2026-10-14) and the four review-opens are resolved
+(below); the 3D `shelf()` builder is current in the overview model. Current record = `chemistry-prep-shelves.md`. Follows the
 [`ibc-frame-blueprint-spec.md`](ibc-frame-blueprint-spec.md) / `fp-corner-blueprint-spec.md` template:
 promote the current arrangement-schematic shelf (`chemistry-prep-shelves.md` + `shelf-sheet1–3`) to a
 dimensionally-exact, fabricator-ready package.
@@ -26,9 +27,9 @@ the shelf on the same 1/4″-20 tee-nut family used everywhere else.
 
 | Element | Decision |
 |---|---|
-| **Board** | 18 mm UV-coated / phenolic plywood, **600 × 225 mm** — chemical-resistant (cyanotype + pH 3–4 citric), wipe-clean. **Primary structure** (no steel frame). |
+| **Board** | 18 mm UV-coated white plywood (`BPI6WUV2I`), **600 × 225 mm** — chemical-resistant (cyanotype + pH 3–4 citric), wipe-clean, white for visibility. **Primary structure** (no steel frame). |
 | **Perimeter frame** | **REMOVED.** The ply carries the load; the frame's only jobs were the lip + the M5 attach, both re-solved below. |
-| **Spill lip** | Light chemical-resistant lip on the **3 free edges** (not the hinge edge). *Default: HDPE/PVC angle, ~15 mm, screwed to the ply edge — inert in the splash zone; confirm material at review.* |
+| **Spill lip** | **15 mm HDPE lip on all 4 edges** (closed tray; the back lip butts the hinge leaf). HDPE is inert in the splash zone — plywood would violate the dry/backing-only rule. Offcut of the light-trap HDPE stock (no new SKU). |
 | **Ply attachment** | **Pronged tee-nuts in the ply underside** (1/4″-20, `tnut-quarter` standard). No M5 CSK. Wet-zone → 1/4″-20 hardware in **SS** (a documented splash-zone exception, like the M8 film-plane SS exception). |
 | **Piano hinge** | 600 mm **bolt-on** SS piano hinge, supplied **blank** (drill leaves to the tee-nut pitch) — **shelf leaf** machine-screwed (1/4″-20 SS into the ply tee-nut row); **wall leaf** to the 8 mm wall backing plate. *(Was weld-on; bolt-on because the ply attaches by tee-nut, not weld.)* |
 | **Stays** | **2 × 304 SS chain** — a **1/4″-20 SS eye bolt** threaded into a ply tee-nut at each front corner ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. The shortest eye-bolt shank (1″/25 mm) threads through the tee-nut and **protrudes ~7 mm past the 18 mm top** — acceptable (the tee-nut carries the thread); cap/grind the tip flush at the corner for a clean work surface. Length-adjustable by link + quick-link. Tension-only. |
@@ -57,8 +58,9 @@ crest welds. Elements to check (each demand → capacity → SF), in a driftproo
    tee-nuts), the hinge + tee-nut row detail, the chain + eye + wall-anchor detail, the 8 mm backing-plate
    plate schedule (1:1, hole Ø/PCD), the transport-latch keeper.
 3. **Fastener + weld schedule** — the tee-nut/hinge/chain/wall-bolt schedule + the crest-weld callouts.
-4. **Datums + tolerances** — board datum, tee-nut PCD tolerance, backing-plate hole tolerance, deployed-level
-   ± from the chain adjustment.
+4. **Datums + tolerances** — ✅ DONE (2026-10-14): a GENERAL-TOLERANCES + datum block on shelf-sheet4/5
+   (datum A = board back/hinge edge, B = left edge; tee-nut PCD/pitch ±0.2, backing-plate holes ±0.2,
+   deployed-level ±1mm over 225mm), matching the house tol-block style (PDH / IBC / film-plane).
 5. **Cascade** — `tbs_constants` (SHELF_* + new tee-nut/chain constants), `parts.py` shelf system (drop the
    25×25×3 SHS + M5 CSK; add tee-nuts + machine screws + SS chain + eye bolts + wall eyes/hooks), `costing.py`
    shelf section, the **3D `chem_shelf()` builder in `generate_sketchup_model.py`** (overview — remove the
@@ -87,10 +89,13 @@ tee-nut decision. Only the chain stays + the bolt-on hinge variant are genuinely
 5. **304 SS quick-links ×4** — McMaster **8947T25** ($2.90 ea).
 6. **Transport latch ×1** — reuse the hinged-panel **cam latch 1619A74** (standard-part reuse — retires the est zinc toggle).
 
-*Still pending:* a 1/4″-20 **SS** machine-screw SKU (~3/4″) for the hinge leaf, or accept the zinc `panel-machine-screws`.
+*Resolved:* the hinge-leaf screw is `shelf-hinge-screws` (McMaster **90272A540**, ¼″-20 **SS**, 8 off) — SS per the splash-zone exception.
 
-**Remaining opens (confirm at review):** lip material (ply vs HDPE offcut); tee-nut count (from the hinge screw
-pitch); board face (keep UV-ply vs phenolic); latch — dedicated toggle vs the cam-latch family.
+**Review opens — RESOLVED (2026-10-14):**
+- **Lip material** → **HDPE on all 4 edges** (closed tray; inert in the splash zone — plywood would violate the dry/backing-only rule). Offcut of the light-trap HDPE stock, no new SKU.
+- **Board face** → **UV-coated white ply** (`BPI6WUV2I`, already sourced, nests with the EP backboard) — adequate for pH 3–4 citric + cyanotype, and white for chemistry visibility. (Retires the stale "phenolic" prose.)
+- **Tee-nut count** → **6** (4 hinge row + 2 front-corner eye bolts).
+- **Transport latch** → **cam latch 1619A74** (standard-part reuse of the hinged-panel latch; the toggle is retired).
 
 ## Not in scope
 The wall backing plates + M8 weld-nut group + the pinhole-wall crest welding are the existing wall interface

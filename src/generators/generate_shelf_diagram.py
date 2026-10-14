@@ -18,7 +18,7 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle
+from matplotlib.patches import Rectangle, Circle, Polygon
 
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
@@ -26,7 +26,7 @@ from tbs_constants import WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_NEAR_WIDE_X_L, WAL
 from tbs_constants import DIAGRAM_DPI
 
 BG        = "#FFFFFF"
-C_SHELF   = "#C8B06A"    # phenolic ply — warm tan
+C_SHELF   = "#C8B06A"    # shelf ply (UV-coated) — warm tan fill
 C_HINGE   = "#606870"    # steel hinge / stays
 C_WALK    = "#ECECEC"    # walkway grating fill
 C_BATT    = "#9BB36A"    # battery bank
@@ -260,9 +260,39 @@ TNUT_HINGE_YD = 25                                 # hinge tee-nut row inset —
 TNUT_EYE_X    = 30                                 # front-corner eye-bolt tee-nut inset from each side
 TNUT_EYE_YD   = SHELF_DEPTH - 20                   # eye-bolt tee-nut inset from the front edge
 TNUT_HOLE_D   = 8                                  # tee-nut barrel hole (5/16") — Ø8
-LIP_W         = 15                                 # spill-lip width (3 free edges)
+LIP_W         = 15                                 # spill-lip width (4 edges — closed tray)
 HINGE_XS      = [TNUT_MARGIN_X + i * TNUT_HINGE_PITCH for i in range(TNUT_HINGE_N)]
 EYE_XS        = [TNUT_EYE_X, SHELF_W - TNUT_EYE_X]
+
+
+def _datum(ax, x, y, letter, dx, dy):
+    """A GD&T datum-feature symbol: a filled triangle on the edge + a leader to a boxed letter."""
+    tri = 7
+    ax.add_patch(Polygon([(x - tri, y), (x + tri, y), (x, y + (tri if dy >= 0 else -tri))],
+                         closed=True, fc=C_OUT, ec=C_OUT, lw=0.6, zorder=9))
+    ax.plot([x, x + dx], [y, y + dy], color=C_OUT, lw=0.7, zorder=9)
+    ax.add_patch(Rectangle((x + dx - 10, y + dy - 10), 20, 20, fc="white", ec=C_OUT, lw=1.0, zorder=10))
+    ax.text(x + dx, y + dy, letter, ha="center", va="center", fontsize=8,
+            fontweight="bold", color=C_OUT, zorder=11, **FONT)
+
+
+def _tol_block(fig, rect):
+    """Shop tolerance + datum block at `rect` [l,b,w,h] in figure coords (house style — cf. PDH)."""
+    axb = fig.add_axes(rect); axb.axis("off"); axb.set_xlim(0, 1); axb.set_ylim(0, 1)
+    axb.add_patch(Rectangle((0, 0), 1, 1, fc="#F7F7F7", ec=C_OUT, lw=0.8))
+    rows = [
+        "GENERAL TOLERANCES + DATUMS (unless noted)",
+        "Linear: ply cut ±0.5mm · steel plate cut ±0.3mm    Angular ±0.5°",
+        "Hole positions ±0.2mm · tee-nut pitch 150mm / gauge 25mm (±0.2mm)",
+        "Tee-nut Ø8 +0.2/0 · hinge Ø7 clr ±0.2mm · M8 backing Ø9 clr ±0.2mm",
+        "Datum A = board back (hinge) edge · B = board left edge · plates: wall face",
+        "Deployed surface level ±1mm over 225mm depth (chain-set) · break edges 0.5mm",
+    ]
+    y = 0.90
+    for i, t in enumerate(rows):
+        axb.text(0.03, y, t, fontsize=4.7 if i else 5.4, fontweight="bold" if i == 0 else "normal",
+                 va="center", ha="left", color=C_OUT, **FONT)
+        y -= 0.155
 
 # ── Piano hinge 14835A77 extra-clearance (blank) geometry — from the McMaster 14835A33 datasheet ──
 HINGE_OPEN    = 76.2     # open width (3in) — both leaves flat
@@ -276,9 +306,9 @@ HINGE_DRILL_D = 7        # 1/4-20 clearance in each leaf (Ø~7)
 # SHEET 4 — BOARD FABRICATION (top view: cut + tee-nut drill positions)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
-    fig, ax = plt.subplots(figsize=(11, 6))
+    fig, ax = plt.subplots(figsize=(13.5, 6))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-95, SHELF_W + 150); ax.set_ylim(-150, SHELF_DEPTH + 330)
+    ax.set_xlim(-95, SHELF_W + 470); ax.set_ylim(-150, SHELF_DEPTH + 330)
     ax.set_aspect("equal"); ax.axis("off")
 
     # board outline (top view; back edge = hinge at Yd0, front edge at Yd=SHELF_DEPTH)
@@ -316,24 +346,31 @@ def sheet4():
     leader(ax, EYE_XS[1], TNUT_EYE_YD, SHELF_W + 44, TNUT_EYE_YD,
            "2× Ø8 tee-nut — front corner\n(1/4-20 eye bolt → chain)", fs=6, font=FONT, ha="left")
     leader(ax, SHELF_W - LIP_W, 110, SHELF_W + 44, 150,
-           f"{LIP_W}mm spill lip\n(ply/HDPE, front + 2 sides)", fs=6, font=FONT, ha="left")
+           f"{LIP_W}mm HDPE spill lip\n(4 edges — closed tray)", fs=6, font=FONT, ha="left")
     leader(ax, SHELF_W - LIP_W, LIP_BACK + LIP_W / 2, SHELF_W + 44, LIP_BACK - 40,
-           f"{LIP_W}mm spill lip — butts the\nhinge leaf (back edge)", fs=6, font=FONT, ha="left")
+           "4th lip butts the\nhinge leaf (back edge)", fs=6, font=FONT, ha="left")
+
+    # datum features — A = back (hinge) edge, B = left edge (referenced in the tolerance block)
+    _datum(ax, SHELF_W - 20, 0, "A", 95, 55)
+    _datum(ax, 0, SHELF_DEPTH - 55, "B", -62, 0)
 
     # notes (top — clear of the board + dims)
     draw_notes(ax, [
-        "BOARD FAB — 18mm phenolic / UV-coated ply; ply-primary (NO steel frame). Seal all cut edges.",
+        "BOARD FAB — 18mm UV-coated white ply; ply-primary (NO steel frame). Seal all cut edges.",
         f"HINGE ROW (back/bottom edge): {TNUT_HINGE_N}× Ø{TNUT_HOLE_D} pronged tee-nut (825001) at "
         f"{int(TNUT_HINGE_PITCH)}mm pitch, {TNUT_MARGIN_X}mm side margin — seat from the BACK face.",
         "Piano hinge 14835A77 (extra-clearance) supplied BLANK — 76.2mm open / 38.1mm leaf. Hinge row sits "
         "25mm off the back edge (full ply edge distance; the tee-nut flange seats clear of the edge); drill "
         "both leaves to this pitch. Pan/truss-head 1/4-20 machine screws into the tee-nuts.",
-        "Back-edge spill lip butts the hinge leaf (Yd 38mm) — a 4th lip so the tray is closed on all sides; "
-        "the outer 38mm strip is the hinge-leaf zone. Front corners: 2× Ø8 tee-nut for the chain eye bolts.",
+        "SPILL LIP — 15mm HDPE on all 4 edges (closed tray; inert in the splash zone). The back lip butts "
+        "the hinge leaf (Yd 38mm); the outer 38mm strip is the hinge-leaf zone. Front corners: 2× Ø8 tee-nut "
+        "for the chain eye bolts.",
     ], 0, SHELF_DEPTH + 300, spacing=18, fs=6, width=750, wrap=100, font=FONT)
 
+    _tol_block(fig, [0.715, 0.46, 0.275, 0.30])
+
     title_block(ax, "SHEET 4 OF 5", drawing_title="CHEMISTRY PREP SHELF",
-                subtitle="BOARD FABRICATION — 18mm PLY (cut + tee-nut drill)",
+                subtitle="BOARD FABRICATION — 18mm UV-PLY (cut + tee-nut drill)",
                 scale_note="Axes in mm", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -344,9 +381,9 @@ def sheet4():
 # SHEET 5 — WALL PLATES + HINGE CLEAT + PIANO HINGE DRILLING
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet5():
-    fig, ax = plt.subplots(figsize=(11, 7.5))
+    fig, ax = plt.subplots(figsize=(14, 7.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-70, 1180); ax.set_ylim(0, 820)
+    ax.set_xlim(-70, 1620); ax.set_ylim(0, 820)
     ax.set_aspect("equal"); ax.axis("off")
 
     # ── Hinge cleat + its 8mm hinge-backing plate (drawn 1:1-ish, top zone) ──
@@ -432,6 +469,8 @@ def sheet5():
         "Pan/truss-head 1/4-20 machine screws. Open 76.2 / leaf 38.1 / barrel Ø10.16 (extra-clearance). "
         "Deburr; keep the knuckle clear.",
     ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1080, wrap=138, font=FONT)
+
+    _tol_block(fig, [0.735, 0.36, 0.25, 0.26])
 
     title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + PIANO HINGE DRILLING",

@@ -74,19 +74,19 @@ film-plane position.
 | Width (X) | 600 mm |
 | Depth (Yd, deployed) | 225 mm |
 | Work surface height | 945 mm above the walkway deck |
-| Thickness | 18 mm phenolic ply — **ply-primary (no steel frame)** |
+| Thickness | 18 mm UV-coated white ply — **ply-primary (no steel frame)** |
 | Work surface area | 600 × 225 = 0.135 m² |
 
-**Work surface:** 18 mm phenolic-faced / UV-coated plywood — chemical-resistant to cyanotype
-solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean. The plywood is the **primary
+**Work surface:** 18 mm UV-coated white plywood (`BPI6WUV2I`) — chemical-resistant to cyanotype
+solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean, and white for chemistry visibility. The plywood is the **primary
 structure** — the earlier welded 25×25×3 steel perimeter frame is removed (see
 [`chem-shelf-blueprint-spec.md`](https://github.com/alvinr/tbs/blob/main/chem-shelf-blueprint-spec.md)); all attachments land in **pronged
 tee-nuts in the ply underside** (the 1/4-20 ply-mount standard), which is why the M5 CSK ply screws
 are gone.
 
-**Spill lip:** a 15 mm chemical-resistant lip (ply or HDPE offcut) on all four edges retains
-bottles/items — front and two sides at the board edge, plus a fourth lip on the back that butts up to the
-hinge leaf (~38 mm in), so the tray is closed on every side. Cut edges sealed.
+**Spill lip:** a 15 mm **HDPE** lip on all four edges retains bottles/items — front and two sides at
+the board edge, plus a fourth lip on the back that butts up to the hinge leaf (~38 mm in), so the tray is
+closed on every side. HDPE (an offcut of the light-trap stock) is inert in the splash zone; cut edges sealed.
 
 ### 3.2 Fold-down mechanism
 
@@ -179,7 +179,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 
 ## 6. Assembly Sequence
 
-1. Cut the 18 mm ply board to 600 × 225; seal the cut edges; fit the 15 mm spill lip (ply/HDPE) to the three free edges.
+1. Cut the 18 mm ply board to 600 × 225; seal the cut edges; fit the 15 mm HDPE spill lip to all four edges (the back lip butts the hinge leaf).
 2. Set the pronged tee-nuts into the ply underside — the hinge screw row along the back edge + one at each front corner.
 3. Weld the 8 mm backing plates to the pinhole-wall crests (behind the hinge cleat + one per chain anchor); tap them M8; bolt the 6 mm hinge cleat on (M8×25 into the tapped plate).
 4. Bolt on the piano hinge: wall leaf to the cleat, shelf leaf into the back-edge tee-nut row (1/4-20 SS screws).
@@ -209,7 +209,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf hinge cleat](https://www.mcmaster.com/91280A534/) (91280A534) | Clamps the shelf hinge cleat (6mm) to its welded, TAPPED 8mm backing plate — 1 per hinge bolt (4 at the 150mm hinge pitch). The 8mm plate taps M8 directly (no weld-nut, no loose nut — the plate is wall-welded, no access behind). Grip = 6mm cleat, thread engages the plate. M8×25, pitch M8×1.25 coarse. $18.51/pack of 50 (same 91280A534 as the film ICP-14 fixing). | 4 ea | McMaster-Carr | $1 |
 | [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | Flat washer (1/bolt) — shelf hinge-cleat bolts (dry). Distinct SKU from the film-plane wet-zone washer-m8-flat (98689A673): separate keys so the by-type BOM doesn't blend the two M8 flat washers. $3.32/pack of 100. | 4 ea | McMaster-Carr | $0 |
 | [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | Secures the folded board for transport — reuses the hinged-panel cam latch (1619A74), a standard-part reuse that retires the est zinc toggle. $30.57 ea. | 1 ea | McMaster-Carr | $31 |
-| Ply edge sealer + lip fixings | Seal the ply cut edges (chemical-resistant) + fix the spill lip (ply/HDPE offcut, 3 free edges). No steel frame to powder-coat (frame removed). | 1 lot | Hardware store | $10 |
+| Ply edge sealer + lip fixings | Seal the ply cut edges (chemical-resistant) + fix the HDPE spill lip (4 edges, offcut of the light-trap HDPE stock). No steel frame to powder-coat (frame removed). | 1 lot | Hardware store | $10 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | Extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention). IPEX ½" × 10 ft — same stick as pvc-half; one covers the run. | 1 stick | Home Depot | $5 |
 | **Shelf total** | | | | **$267–$279** |
 <!-- END parts:shelf -->

@@ -1085,7 +1085,7 @@ PARTS: list[Part] = [
     Part("shelf-transport-latch", "Transport latch — cam latch (reuse 1619A74)", "fasteners-hardware",
          "shelf", 1, "ea", 30.57, 30.57, "McMaster-Carr", part_no="1619A74", url="https://www.mcmaster.com/1619A74/", spec="Secures the folded board for transport — reuses the hinged-panel cam latch (1619A74), a standard-part reuse that retires the est zinc toggle. $30.57 ea."),
     Part("shelf-edge-sealer", "Ply edge sealer + lip fixings", "adhesives-finishes",
-         "shelf", 1, "lot", 10, 10, "Hardware store", spec="Seal the ply cut edges (chemical-resistant) + fix the spill lip (ply/HDPE offcut, 3 free edges). No steel frame to powder-coat (frame removed)."),
+         "shelf", 1, "lot", 10, 10, "Hardware store", spec="Seal the ply cut edges (chemical-resistant) + fix the HDPE spill lip (4 edges, offcut of the light-trap HDPE stock). No steel frame to powder-coat (frame removed)."),
     Part("shelf-pvc-pipe", '½" PVC Sch-40 pipe (tap relocation)', "plumbing-fittings",
          "shelf", 1, "stick", 4.81, 4.81, "Home Depot", part_no="30-05010HD", url="https://www.homedepot.com/p/319692959", spec="Extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention). IPEX ½\" × 10 ft — same stick as pvc-half; one covers the run."),
 

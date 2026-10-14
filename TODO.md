@@ -31,13 +31,14 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     the constant, only the component NAME text lags). Flip the 5 `M5`→`M6` label/comment strings on the next
     `pinhole-disc-holder` re-send (the name change touches the `.rb` → needs a re-send + push). Size is already
     reconciled to M6 everywhere else (constants, parts, report, all 2D sheets, fastener-standardization.md).
-- [ ] **Tolerance/datum blocks — sweep the hand-rolled `_tol_block`s onto the shared `draw_notes` helper (2026-10-14).**
-  `generate_shelf_diagram.py`'s `_tol_block` was refactored to render via `tbs_drawing.draw_notes` (bold first-line
-  title + bordered box) instead of a hand-rolled `fig.add_axes` + `Rectangle` + text-loop. The **same hand-rolled
-  pattern still lives in `generate_pinhole_disc_holder.py` (`_tol_block`), `generate_ibc_frame_drawing.py`, and
-  `generate_electrical_diagram.py`** — sweep each to `draw_notes` so every tolerance/note block is one code path.
-  Output-equivalent, low-risk. Gotcha: `draw_notes` `pad_x`/`pad_y` default to `spacing`, which bleeds the border
-  left of its placement rect — pass small explicit pads when the block sits in a fig-coord rect (see the shelf fix).
+- [x] **Tolerance/datum blocks — DONE 2026-10-14. Every tolerance/note block now renders via `draw_notes`.**
+  Swept the hand-rolled `fig.add_axes` + `Rectangle` + text-loop pattern onto `tbs_drawing.draw_notes` (bold
+  first-line title + bordered box): `generate_shelf_diagram.py` (`_tol_block`), `generate_pinhole_disc_holder.py`
+  (`_tol_block`, PDH sheet 3), and `generate_electrical_diagram.py` (the power-box notes block, sheet 9). All
+  output-equivalent (verified visually). **`generate_ibc_frame_drawing.py` was already compliant** — its
+  `_datum_tol_block` already called `draw_notes` (the TODO over-listed it from a text-match). Gotcha captured for
+  the future: `draw_notes` `pad_x`/`pad_y` default to `spacing`, which bleeds the border left of a fig-coord rect
+  — pass small explicit pads (see the shelf/PDH fixes).
 - [x] **Audit every sheet's page size — DONE 2026-10-14, clean.** Prompted by shelf-sheet4, where an
   `aspect="equal"` data axes was narrower than the figure, so a figure-coord block floated in the right margin
   *beyond* the title block. Fix pattern (applied to the shelf): size `figsize` so its aspect ≈ the data aspect

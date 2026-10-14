@@ -2536,13 +2536,8 @@ def draw_sheet9():
         "Box OPENS to the interior; every device gasketed to the face with an opaque light-baffle behind its cavity.",
     ]
     axn = fig.add_axes([0.05, 0.10, 0.915, 0.17]); axn.axis("off"); axn.set_xlim(0, 1); axn.set_ylim(0, 1)
-    axn.add_patch(mpatches.Rectangle((0, 0), 1, 1, fc="#F7F7F7", ec=C_OUT, lw=0.8))
-    yy = 0.86
-    for i, ln in enumerate(notes):
-        axn.text(0.01, yy, ln, ha="left", va="top",
-                 fontsize=(7.4 if i == 0 else 6.7), fontweight=("bold" if i == 0 else "normal"),
-                 color=(C_OUT if i == 0 else C_DIM), **FONT)
-        yy -= 0.132
+    draw_notes(axn, notes, 0.01, 0.90, 0.135, fs=6.7, width=0.98,
+               pad_x=0.012, pad_y=0.06, font=FONT)
 
     ax_tb = fig.add_axes([0.05, 0.0, 0.915, 0.085]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 9 OF 9",

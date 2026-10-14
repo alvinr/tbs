@@ -1143,7 +1143,7 @@ def spine_view(side):
     # IBC-4 merge tee (a circle on the spine).
     axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
                   edgecolor=C_WASTEB, lw=1.6, zorder=13))
-    leader(axb, MERGEX, 1230, 5650, 1370,
+    leader(axb, MERGEX, 1230, 5600, 1370,
            "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
            color="#555", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
@@ -1356,7 +1356,7 @@ def spine_view(side):
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" PVC Sch-40 (IBC fill/drain + recycle) and 1/2\" PVC (pump runs), threaded at components; risers stainless P-clipped to the spine face.",
-    ], mxa(6800), 2440, spacing=27, fs=9.3, ha="left", width=900, wrap=42, font=FB)
+    ], mxa(6800), 2440, spacing=34, fs=9.3, ha="left", width=900, wrap=45, font=FB)
 
     # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,
     #    and draw_symbol_key lays out in screen space for the reversed View-B axis) ──

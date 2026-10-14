@@ -468,9 +468,9 @@ def sheet5():
         "tee-nuts (Sheet 4); wall leaf → the tapped cleat above.",
         "Pan/truss-head 1/4-20 machine screws. Open 76.2 / leaf 38.1 / barrel Ø10.16 (extra-clearance). "
         "Deburr; keep the knuckle clear.",
-    ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1080, wrap=138, font=FONT)
+    ], 20, HY0 - HINGE_LEAF - 90, spacing=17, fs=6, width=1000, wrap=120, font=FONT)
 
-    _tol_block(fig, [0.735, 0.36, 0.25, 0.26])
+    _tol_block(fig, [0.635, 0.36, 0.25, 0.26])
 
     title_block(ax, "SHEET 5 OF 5", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="WALL PLATES + HINGE CLEAT + PIANO HINGE DRILLING",

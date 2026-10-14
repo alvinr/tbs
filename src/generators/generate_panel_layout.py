@@ -1047,7 +1047,7 @@ def spine_view(side):
     # the full-width title block — instead of hanging off its right edge.  The
     # mirror map (mxa) pivots on the DRAWING-span center (D0+D1)/2, independent of
     # the margin, so View B still mirrors with the notes in the same screen corner.
-    D0, D1, NOTE_MARGIN = 4560, 6760, 1120
+    D0, D1, NOTE_MARGIN = 4200, 6760, 1120
     figb, axb = plt.subplots(figsize=(12.6 * (D1 - D0 + NOTE_MARGIN) / (D1 - D0), 15.3))
     if side == 'a':
         axb.set_xlim(D0, D1 + NOTE_MARGIN)
@@ -1106,7 +1106,7 @@ def spine_view(side):
     # VIEW B (mirror) draws the +Yd discharge runs.
     _rect(PANX, SPINE_ZB, SPX1 - PANX, SPINE_ZT - SPINE_ZB, C_PLYB, lw=1.2,
           z0=8, alpha=0.55)
-    leader(axb, (PANX + SPX1) / 2, 1180, 5650, 1140,
+    leader(axb, (PANX + SPX1) / 2, 1180, 6050, 1140,
            f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
            f"panel (a T in plan) — X={PANX}–{SPX1}, Z={SPINE_ZB}–{SPINE_ZT};\n"
            "the back-of-panel drain risers P-clip to it",
@@ -1287,7 +1287,7 @@ def spine_view(side):
                 cz = 460 + i * 400
                 if cz < zt - 80:
                     _rect(rx - 8, cz - 11, 16, 22, C_STEEL, lw=0.6, z0=11)
-        leader(axb, RX4, 1000, 5690, 880,
+        leader(axb, RX4, 1000, 6050, 880,
                "FRONT of spine (−Yd face), P-clipped:\nX4 suction-pickup riser (→ P-03),\nblue-recycle + DV-01-waste risers",
                color="#555", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FB)
         leader(axb, RX_BLUE, 900, 4720, 740, "BLUE-RECYCLE RISER\n(DV-01 → up the spine → X1 cross)",
@@ -1356,7 +1356,7 @@ def spine_view(side):
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" PVC Sch-40 (IBC fill/drain + recycle) and 1/2\" PVC (pump runs), threaded at components; risers stainless P-clipped to the spine face.",
-    ], mxa(6800), 2440, spacing=34, fs=9.3, ha="left", width=900, wrap=45, font=FB)
+    ], mxa(6800), 2440, spacing=34, fs=9.3, ha="left", width=950, wrap=45, font=FB)
 
     # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,
     #    and draw_symbol_key lays out in screen space for the reversed View-B axis) ──

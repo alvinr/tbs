@@ -139,7 +139,7 @@ def sheet2():
     ax.plot([Y_LO, Y_HI], [0, 0], color=C_OUT, lw=1.2, zorder=3)
     ax.add_patch(Rectangle((0, DECK_Z - WALKWAY_GRATE_T), WALKWAY_NEAR_WIDE_W, WALKWAY_GRATE_T,
                            fc=C_WALK, ec=C_OUT, lw=0.7, alpha=0.7, zorder=3))
-    ax.text(WALKWAY_NEAR_WIDE_W - 10, DECK_Z + 30, "walkway deck Z130", fontsize=5, color=C_DIM,
+    ax.text(WALKWAY_NEAR_WIDE_W + 50, DECK_Z + 30, "walkway deck Z130", fontsize=5, color=C_DIM,
             ha="right", **FONT)
 
     # evap cooler ghost (slides under)
@@ -173,11 +173,11 @@ def sheet2():
     evap_top = EVAP_STOW_Z + EVAP_H
 
     # dimensions
-    draw_dim_v(ax, -70, 0, SHELF_H, f"{SHELF_H}mm AFF", offset=6, fs=6, right=False, font=FONT)
-    draw_dim_v(ax, 430, DECK_Z, SHELF_H, f"{SHELF_H - DECK_Z}mm\nabove deck", offset=6, fs=6, right=True, font=FONT)
-    draw_dim_h(ax, 0, SHELF_DEPTH, SHELF_H - SHELF_T - 70, f"{SHELF_DEPTH}mm deep", offset=6, fs=6, font=FONT)
+    draw_dim_v(ax, -70, 0, SHELF_H, f"{SHELF_H}mm AFF", offset=10, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, 310, DECK_Z, SHELF_H, f"{SHELF_H - DECK_Z}mm above deck", offset=10, fs=6, right=True, font=FONT)
+    draw_dim_h(ax, 0, SHELF_DEPTH, SHELF_H - SHELF_T - 80, f"{SHELF_DEPTH}mm deep", offset=6, fs=6, font=FONT)
     # clearance between the deployed shelf underside and the evap top
-    draw_dim_v(ax, 70, evap_top, shelf_under, f"{shelf_under - evap_top}mm\nclearance", offset=6, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, 250, evap_top, shelf_under, f"{shelf_under - evap_top}mm\nclearance", offset=6, fs=6, right=True, font=FONT)
 
     notes = [
         "FOLD-DOWN MECHANISM (SECTION):",

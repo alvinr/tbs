@@ -1571,11 +1571,8 @@ def draw_sheet5():
                                 fc="#F4F6F8", ec=C_OUT, lw=1.8, zorder=2))
     ax.text(EP_COL_W / 2, eh1 + 95, "EP PANEL — FRONT ELEVATION\n(reach-optimized · plywood backboard)",
             ha="center", va="bottom", fontsize=7.5, fontweight="bold", color=TITLE_COL)
-    draw_dim_v(ax, EP_COL_W + 48, BA_H_LO, eh1, f"{eh1 - BA_H_LO}mm")
+    draw_dim_v(ax, EP_COL_W + 48, BA_H_LO, eh1, f"{eh1 - BA_H_LO}mm", right=True)
     draw_dim_h(ax, 0, EP_COL_W, BA_H_LO - 45, f"{EP_COL_W}mm", above=False)
-    # no-stool reach ceiling reference
-    ax.plot([-60, EP_COL_W + 20], [1750, 1750], color="#B03030", lw=0.7, ls=(0, (5, 3)), zorder=1)
-    ax.text(-58, 1758, "no-stool reach 1750", ha="left", va="bottom", fontsize=5.0, color="#B03030")
 
     # ── Battery stack (bottom, set-and-forget) ──
     for _bz, _lb in [(BA_H_LO, "BAT 1"), (BA_STACK_Z2, "BAT 2")]:
@@ -1622,7 +1619,7 @@ def draw_sheet5():
         ax.add_patch(R((cx - bw / 2, base_z + fbase_h), bw, fuse_h, fc=col, ec=C_OUT, lw=0.7, zorder=5))
         ax.text(cx, base_z + fbase_h + fuse_h / 2, lt, ha="center", va="center", fontsize=5.0, fontweight="bold", color="white", zorder=6)
     leader(ax, fb_x0 + FUSEBLK_W / 2, base_z + fbase_h + fuse_h, LCX, 1190, "A–G fuses → loads", fs=5.6, color=C_DIM, ha="right")
-    leader(ax, fb_x0 + 25, base_z, LCX, 1400, "Blue Sea 5026 fuse block · 12-circ (7 used + 5 spare)", fs=5.6, color=C_DIM, ha="right")
+    leader(ax, fb_x0 + 25, base_z, LCX, 1100, "Blue Sea 5026 fuse block\n12-circ (7 used + 5 spare)", fs=5.6, color=C_DIM, ha="right")
     bbp, bbn = eh0 + 170, eh0 + 140
     ax.add_patch(R((15, bbp), BUSBAR_L, BUSBAR_H, fc="#C0392B", ec=C_OUT, lw=0.7, zorder=4))
     ax.add_patch(R((15, bbn), BUSBAR_L, BUSBAR_H, fc="#2C2C2C", ec=C_OUT, lw=0.7, zorder=4))
@@ -1641,9 +1638,9 @@ def draw_sheet5():
 
     # ── feed one-line ──
     varrow(ax, 55, BA_STACK_TOP + 8, dz + 35 - DISCONNECT_D / 2, col="#8B1A1A", lw=1.5)   # batt(+) → main disc
-    ax.text(80, (BA_STACK_TOP + dz) / 2, "(+) 2/0 · MRBF 200A", ha="left", va="center", fontsize=4.6, color="#8B1A1A", fontweight="bold", rotation=90)
+    ax.text(125, (BA_STACK_TOP + dz) / 2, "(+) 2/0 · MRBF 200A", ha="left", va="center", fontsize=4.6, color="#8B1A1A", fontweight="bold", rotation=90, zorder=5)
     ax.plot([55, 55, 15], [dz + 35 + DISCONNECT_D / 2, bbp + 70, bbp + BUSBAR_H], color="#8B1A1A", lw=1.3, zorder=3)  # disc → +bus
-    ax.text(24, bbp + 80, "→ (+) bus", ha="left", va="bottom", fontsize=4.6, color="#8B1A1A")
+    ax.text(24, bbp + 85, "→ (+) bus", ha="left", va="bottom", fontsize=4.6, color="#8B1A1A")
     c_cx = fb_x0 + 2.5 * pitch                            # Cct-C blade
     ax.plot([c_cx, c_cx, msw_x + msw_w / 2], [base_z, dz + msw_h, dz + msw_h], color="#2980B9", lw=1.3, zorder=3)  # fuse C → master sw
     varrow(ax, msw_x + msw_w / 2, dz + msw_h, eh1 + 18, col="#2980B9", lw=1.4)
@@ -1672,9 +1669,9 @@ def draw_sheet5():
     ax.plot([tx - 20, tx + 790], [botline, botline], color=C_OUT, lw=0.8)
     draw_notes(ax, [
         "NOTES",
-        "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.",
-        "Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).",
-        "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
+        "· Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.",
+        "· Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).",
+        "· Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
     ], tx, botline - 50, spacing=32, fs=6, wrap=60, width=700)
 
     ax.set_xlim(-600, 1230)

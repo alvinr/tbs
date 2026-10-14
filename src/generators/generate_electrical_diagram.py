@@ -1649,7 +1649,7 @@ def draw_sheet5():
     ax.text(msw_x + msw_w / 2 + 6, eh1 + 14, "→ ceiling → pumps (Sheet 4)", ha="left", va="top", fontsize=5.0, color="#2980B9", fontweight="bold")
 
     # ── Fuse schedule table (right, same mm coordinate space) ──
-    tx = 400
+    tx = 500
     th = eh1 - 50                                        # header Z
     ax.text(tx, eh1 + 80, "FUSE SCHEDULE — BLUE SEA 5026  (Cct A–G)", ha="left",
             va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
@@ -1676,7 +1676,7 @@ def draw_sheet5():
             ha="left", va="top", fontsize=6.2, color="#333")
 
     ax.set_xlim(-70, 1230)
-    ax.set_ylim(-20, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block
+    ax.set_ylim(-60, 1720)   # headroom below the panel (bottom at BA_H_LO-12=148) for the title block
 
     title_block(ax, "SHEET 5 OF 9",
                 drawing_title="MAIN PANEL — LAYOUT",

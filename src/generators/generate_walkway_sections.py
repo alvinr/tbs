@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "models"))
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
@@ -52,6 +52,7 @@ FONT    = {"fontfamily": "monospace"}
 LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
 
 OD = 21.0
+PIPE_WALL = 2.5   # OD21 HDPE wall for draw_pipe_path (parallel-sided pipe + elbow fittings)
 
 # Right-walkway support (long beams run in Yd → cut as boxes at these X, Z80-115).
 BEAM_XS = [WALKWAY_RIGHT_X, WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 40]   # 4329, 4589
@@ -109,16 +110,10 @@ def _rect(ax, x, z, w, h, fc, ec=C_OUT, lw=0.9, hatch=None, z0=5, alpha=1.0, ls=
 
 
 def _run(ax, pts, col, z0=11):
-    """Pipe run (axis-aligned X–Z waypoints) drawn OD-thick."""
-    r = OD / 2
-    for (a, b) in zip(pts[:-1], pts[1:]):
-        (xa, za), (xb, zb) = a, b
-        if za == zb:
-            x0, w = min(xa, xb) - r, abs(xb - xa) + OD
-            ax.add_patch(Rectangle((x0, za - r), w, OD, facecolor=col, edgecolor=C_OUT, lw=0.7, zorder=z0))
-        else:
-            z0b, h = min(za, zb) - r, abs(zb - za) + OD
-            ax.add_patch(Rectangle((xa - r, z0b), OD, h, facecolor=col, edgecolor=C_OUT, lw=0.7, zorder=z0))
+    """Pipe run (X–Z waypoints) drawn as parallel-sided pipe with ELBOW fittings at the
+    direction changes (house convention, draw_pipe_path) rather than square mitred corners."""
+    draw_pipe_path(ax, [p[0] for p in pts], [p[1] for p in pts], OD, PIPE_WALL,
+                   fc=col, ec=C_OUT, zorder=z0)
 
 
 def sheet1():
@@ -477,11 +472,17 @@ def sheet4():
     # so no beam is cut by this plane; the grate's CENTER section bridges the ~170mm open bay overhead.
     ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (grate CENTER section bridges here);\nOUTER beam ABSENT in this bay — ends at the cantilever arms",
             fontsize=5.0, ha="left", va="bottom", color=C_DIM, zorder=15, **FONT)
-    _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 49, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail — LOWERED (IBC_FRONT_RAIL_H, top Z49) to clear the Z50 blue trunk
-    _rect(ax, 5104, 0, 50, 65, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail — FULL 50 RHS (top Z65); the DV-02 waste hops it
-    ax.text(5129, 72, "back ring-rail\n(full RHS, top Z65)", fontsize=4.6, ha="center", va="bottom", color=C_DIM, zorder=15, **FONT)
-    for ux, tag in ((UP_X0, "front"), (5104, "back")):                                          # uprights (ghost, slab edges)
-        _rect(ax, ux, 0, 50, Z_CEIL, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.16, ls="--")
+    # Bottom Yd-rails float on the Z20 plate stack (sub-plate + foot plate); no plate under this
+    # mid-span cut (the feet are at the uprights, outside the slab), so the rails sit clear of the floor.
+    _BASE = cp.FRAME_BASE_Z                                                                    # 20 — frame base
+    _RHS  = cp.ov.IBC_FRAME_RHS                                                                # 50.8 — full RHS
+    _FRW, _FRH = cp.ov.IBC_FRONT_RAIL_W, cp.ov.IBC_FRONT_RAIL_H                                 # 20 wide × 35 tall
+    _rect(ax, cp.FRONT_RAIL_CX - _FRW / 2, _BASE, _FRW, _FRH, C_STEEL, lw=0.9, z0=6)            # front bottom Yd-rail — narrowed + centred on the foot plates (top Z55)
+    _rect(ax, cp.BACK_X, _BASE, _RHS, _RHS, C_STEEL, lw=0.9, z0=6)                              # back bottom Yd-rail — full RHS (top Z70.8); the DV-02 waste hops it
+    ax.text(cp.BACK_X + 25, _BASE + _RHS + 7, "back ring-rail\n(full RHS, top Z%g)" % (_BASE + _RHS),
+            fontsize=4.6, ha="center", va="bottom", color=C_DIM, zorder=15, **FONT)
+    for ux, tag in ((UP_X0, "front"), (cp.BACK_X, "back")):                                     # uprights (ghost, slab edges) — float on the Z20 base
+        _rect(ax, ux, _BASE, _RHS, Z_CEIL - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.16, ls="--")
         ax.text(ux + 25, 455, f"{tag} upright\n(ghost)", fontsize=5, ha="center", va="center", color=C_GHOST, **FONT)
     _rect(ax, 4934, 355, 100, Z_CEIL - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
     ax.text(4984, 470, "pump column\n(P-01/04/05/03)\nghost, Yd≤1131", fontsize=4.8, ha="center", va="center", color=C_GHOST, **FONT)
@@ -490,20 +491,22 @@ def sheet4():
     # ── drops the tray-edge SLOT (X4629-4654, clear of the carriage) into the corridor, where the EXISTING routing ──
     # ── (unchanged — "reconnect at the right edge onwards") rises it to its lane and runs in X to the pumps. ──
     GAP_ENTRY_X = 4641
-    _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN)    # sump→P-04
-    _run(ax, [(GAP_ENTRY_X + 22, RIBBON_Z), (GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)           # blue trunk
-    _run(ax, [(GAP_ENTRY_X + 44, RIBBON_Z), (GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)      # brown IBC-3 -> P-02
-    _run(ax, [(GAP_ENTRY_X + 66, RIBBON_Z), (GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)       # blue SV-01 -> DV-01
+    # Each lane spans the corridor entry (UNDER_BEAM_Z 65) up through the flush level (104.5) to its
+    # lane Z, then runs in X — the flush arrival + slot drop is called out by the red leader below.
+    _run(ax, [(GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN)    # sump→P-04
+    _run(ax, [(GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)                # blue trunk
+    _run(ax, [(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)           # brown IBC-3 -> P-02
+    _run(ax, [(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)            # blue SV-01 -> DV-01
     # DV-02 waste -> IBC-4 merge: NOT a ribbon-to-pinhole line — it drops the same slot but runs the FLOOR to the
-    # rear, HOPPING the back ring-rail (Z65 -> Z90) to reach the merge tee off-view at X5289 (grey).
+    # rear, rising Z65 -> Z90 to HOP the back ring-rail (top Z70.8) and reach the merge tee off-view at X5289 (grey).
     _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (5060, UNDER_BEAM_Z), (5060, 90), (X_HI - 6, 90)], C_WASTE, z0=12)
-    leader(ax, 5082, 92, 4958, 172, "DV-02 waste → IBC-4:\nhops the back ring-rail (Z65→90)\nto the merge (off-view X5289)",
+    leader(ax, 5082, 92, 4958, 172, "DV-02 waste → IBC-4:\nrises Z65→90 to clear the back\nring-rail (top Z70.8) → merge (off-view X5289)",
            color=C_DIM, fs=4.8, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     ax.annotate("↑ P-04 IN", xy=(4900, Z_CEIL - 24), xytext=(4915, Z_CEIL - 70),
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
     # mark the flush arrival + slot drop
     leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X - 25, 372,
-           "the four lines arrive FLUSH across the\nopen bay (no beam), drop the tray-edge SLOT (past the\ncarriage) to the corridor entry, then RISE",
+           "the four lines arrive FLUSH across the\nopen bay (no beam), drop the tray-edge SLOT\n(past the carriage) to the corridor entry,\nthen RISE",
            color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     # legend (identifies the four lanes) — in the clear header band ABOVE the drawing top (Z_CEIL=660),
     # below the NOTES box, so it no longer overlaps the P-04 riser / pump-column ghost
@@ -525,7 +528,7 @@ def sheet4():
         "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the uprights + pump column are just outside the slab, ghosted.",
         "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the OPEN corridor bay (Yd~1097–1266) — the outer beam is omitted between the two cantilever arms, so none is cut here — then drops the tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.",
         "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises each line to its lane and runs in X toward the pumps (Z205–235 band).",
-        "4. The four RIBBON lanes clear the ring rails — they enter at the tray-edge slot (X4641), −X of the frame.  The separate DV-02 waste → IBC-4 line runs the floor to the rear and HOPS the back bottom Yd-rail (full 50 RHS, top Z65) at Z90 to reach the merge; the front rail is lowered (top Z49).",
+        "4. The four RIBBON lanes clear the ring rails — they enter at the tray-edge slot (X4641), −X of the frame.  The bottom Yd-rails float on the Z20 plate stack: the FRONT rail is narrowed + low (top Z55), the BACK rail is full RHS (top Z70.8).  The separate DV-02 waste → IBC-4 line runs the floor to the rear and rises to Z90 to hop the back rail, reaching the merge.",
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 15, 13.0, fs=6.0,
                font=FONT, width=500, wrap=76, border_color=C_DIM, border_lw=0.7)

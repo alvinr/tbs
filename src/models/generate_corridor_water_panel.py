@@ -31,6 +31,15 @@ FRONT_X = ov.IBC_COL_X - 20              # 4654 — front uprights on the wall-b
 DEPTH   = 450                            # deep box (≈⅓ tote depth)
 BACK_X  = FRONT_X + DEPTH                 # 5104 — the REAR panel plane (pumps mount here, face -X)
 EQT     = ov.EQPANEL_T                    # 18mm ply
+
+# Frame base + FRONT bottom Yd-rail X-center, hoisted to module scope so the 2D corridor
+# section (generate_walkway_sections Sheet 4) draws the SAME rail box from one source.  The
+# feet sit on the floor-anchor sub-plate + foot plate, so the base ring floats at FRAME_BASE_Z
+# (not on the floor); the front rail is narrowed + centred on the front foot plates.
+FRAME_BASE_Z  = ov.FLOOR_PLATE_T + ov.IBC_FOOT_PLATE_T          # 20 — upright/rail base Z
+_FCX          = FRONT_X + S / 2 + ov.IBC_FRONT_FOOT_DX
+_FPX1         = min(_FCX + ov.IBC_FOOT_PLATE / 2, FRONT_X + S)
+FRONT_RAIL_CX = ((_FCX - ov.IBC_FOOT_PLATE / 2) + _FPX1) / 2    # 4669.4 — narrowed front-rail center
 C_BOLT  = "#3A3A42"
 C_HANDLE = "#C0202A"                      # red diverter handle
 
@@ -179,14 +188,12 @@ def frame(part="all"):
     p = []
     ft = ov.IBC_FOOT_PLATE_T                               # foot-plate thickness
     pt = ov.FLOOR_PLATE_T                                  # floor-anchor sub-plate (strongback) thickness
-    base = pt + ft                                         # upright base — feet SIT ON the sub-plate on the floor; the post is cut shorter by pt, TOP_Z fixed
+    base = FRAME_BASE_Z                                    # upright base — feet SIT ON the sub-plate on the floor; the post is cut shorter by pt, TOP_Z fixed
     up_yds = (YD_NEAR, YD_FAR - S)
     box_xs = (FRONT_X, BACK_X)
     # The low front Yd-rail is NARROWED (IBC_FRONT_RAIL_W) and centred on the front foot plates so it runs
     # BETWEEN the two foot-bolt columns — the bolts straddle it and their heads stay clear (no access holes).
-    _fcx = FRONT_X + S / 2 + ov.IBC_FRONT_FOOT_DX
-    _fpx1 = min(_fcx + ov.IBC_FOOT_PLATE / 2, FRONT_X + S)
-    front_rail_cx = ((_fcx - ov.IBC_FOOT_PLATE / 2) + _fpx1) / 2
+    front_rail_cx = FRONT_RAIL_CX
     if posts:
         for ux in box_xs:                                  # 4 corner uprights
             for yd in up_yds:
@@ -194,9 +201,11 @@ def frame(part="all"):
     if rails:
         for rz in (base, TOP_Z - S):                       # bottom ring on the foot plate + top ring, rails BUTT between uprights
             for ux in box_xs:
-                # The FRONT bottom Yd-rail is LOW + trimmed (IBC_FRONT_RAIL_H clears the Z50 blue) and NARROW
-                # (IBC_FRONT_RAIL_W), centred on the foot plates so it runs between the two bolt columns —
-                # the foot bolts straddle it with the heads clear (no access holes, no riser-corridor clash).
+                # The FRONT bottom Yd-rail is LOW (IBC_FRONT_RAIL_H) + NARROW (IBC_FRONT_RAIL_W), centred on
+                # the foot plates so it runs between the two bolt columns — the foot bolts straddle it with
+                # the heads clear (no access holes, no riser-corridor clash).  The corridor blue clears it
+                # overhead: the supply trunk crosses at Z210 and only drops to the flush Z104.5 lane at X4641,
+                # −X of the rail face — there is no low Z50 crossing.
                 front_bot = rz == base and ux == FRONT_X
                 rx, rw, rh = (front_rail_cx - ov.IBC_FRONT_RAIL_W / 2, ov.IBC_FRONT_RAIL_W, ov.IBC_FRONT_RAIL_H) if front_bot else (ux, S, S)
                 p.append(draw.ruby_box("Frame rail (Yd)", rx, YD_NEAR + S, rz, rw, (YD_FAR - S) - (YD_NEAR + S), rh, color=draw.C_STEEL))

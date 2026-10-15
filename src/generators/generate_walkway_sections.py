@@ -109,11 +109,71 @@ def _rect(ax, x, z, w, h, fc, ec=C_OUT, lw=0.9, hatch=None, z0=5, alpha=1.0, ls=
                             linewidth=lw, hatch=hatch, zorder=z0, alpha=alpha, linestyle=ls))
 
 
-def _run(ax, pts, col, z0=11):
-    """Pipe run (X–Z waypoints) drawn as parallel-sided pipe with ELBOW fittings at the
-    direction changes (house convention, draw_pipe_path) rather than square mitred corners."""
-    draw_pipe_path(ax, [p[0] for p in pts], [p[1] for p in pts], OD, PIPE_WALL,
-                   fc=col, ec=C_OUT, zorder=z0)
+def _crossing_gaps(a, b, obstacles, gap):
+    """Scalar gap-intervals along the axis-aligned segment a->b where a (perpendicular)
+    obstacle segment crosses its interior — the rear pipe breaks here (plumbing skill)."""
+    horiz = a[1] == b[1]
+    out = []
+    for oa, ob in obstacles:
+        if (oa[1] == ob[1]) == horiz:
+            continue                                    # parallel runs don't cross
+        if horiz:
+            hz, (hx0, hx1) = a[1], sorted((a[0], b[0]))
+            vx, (vz0, vz1) = oa[0], sorted((oa[1], ob[1]))
+            if hx0 < vx < hx1 and vz0 < hz < vz1:
+                out.append((vx - gap, vx + gap))
+        else:
+            vx, (vz0, vz1) = a[0], sorted((a[1], b[1]))
+            hz, (hx0, hx1) = oa[1], sorted((oa[0], ob[0]))
+            if vz0 < hz < vz1 and hx0 < vx < hx1:
+                out.append((hz - gap, hz + gap))
+    return out
+
+
+def _merge_gaps(ivals, slack):
+    """Coalesce gap intervals that are closer than *slack* (drops sub-OD visible stubs)."""
+    out = []
+    for lo, hi in sorted(ivals):
+        if out and lo <= out[-1][1] + slack:
+            out[-1][1] = max(out[-1][1], hi)
+        else:
+            out.append([lo, hi])
+    return out
+
+
+def _split_run(pts, obstacles, gap):
+    """Break a polyline into contiguous sub-polylines wherever a front obstacle crosses it,
+    preserving its real corners (so each sub-run still draws its elbow fittings)."""
+    subs, cur = [], [pts[0]]
+    for a, b in zip(pts[:-1], pts[1:]):
+        horiz = a[1] == b[1]
+        s0, s1 = (a[0], b[0]) if horiz else (a[1], b[1])
+        lo, hi, fwd = min(s0, s1), max(s0, s1), s1 > s0
+        mk = (lambda s: (s, a[1])) if horiz else (lambda s: (a[0], s))
+        gaps = _merge_gaps([(max(g0, lo), min(g1, hi)) for g0, g1 in
+                            _crossing_gaps(a, b, obstacles, gap) if lo < (g0 + g1) / 2 < hi], OD)
+        for g0, g1 in sorted(gaps, reverse=not fwd):
+            near, far = (g0, g1) if fwd else (g1, g0)
+            cur.append(mk(near))
+            if len(cur) >= 2:
+                subs.append(cur)
+            cur = [mk(far)]
+        cur.append(b)
+    if len(cur) >= 2:
+        subs.append(cur)
+    return subs
+
+
+def _draw_lanes(ax, runs):
+    """Draw pipe runs with elbow fittings AND legible over/under crossings: runs are listed
+    BACK->FRONT, each rear run breaks flush at every front run's wall (house crossing convention,
+    grey->brown->blue layering)."""
+    segs = [list(zip(pts[:-1], pts[1:])) for pts, _ in runs]
+    for i, (pts, col) in enumerate(runs):
+        obstacles = [s for j in range(i + 1, len(runs)) for s in segs[j]]   # higher index = in front
+        for sub in _split_run(pts, obstacles, OD / 2):
+            draw_pipe_path(ax, [p[0] for p in sub], [p[1] for p in sub], OD, PIPE_WALL,
+                           fc=col, ec=C_OUT, zorder=8 + 2 * i)
 
 
 def sheet1():
@@ -493,13 +553,16 @@ def sheet4():
     GAP_ENTRY_X = 4641
     # Each lane spans the corridor entry (UNDER_BEAM_Z 65) up through the flush level (104.5) to its
     # lane Z, then runs in X — the flush arrival + slot drop is called out by the red leader below.
-    _run(ax, [(GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN)    # sump→P-04
-    _run(ax, [(GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)                # blue trunk
-    _run(ax, [(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)           # brown IBC-3 -> P-02
-    _run(ax, [(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)            # blue SV-01 -> DV-01
-    # DV-02 waste -> IBC-4 merge: NOT a ribbon-to-pinhole line — it drops the same slot but runs the FLOOR to the
-    # rear, rising Z65 -> Z90 to HOP the back ring-rail (top Z70.8) and reach the merge tee off-view at X5289 (grey).
-    _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (5060, UNDER_BEAM_Z), (5060, 90), (X_HI - 6, 90)], C_WASTE, z0=12)
+    # Drawn BACK->FRONT (grey waste, browns, blues) so crossings read as clean over/unders: the rear
+    # pipe breaks at each front pipe's wall.  DV-02 waste drops the same slot but runs the FLOOR to the
+    # rear, rising Z65->Z90 to HOP the back ring-rail (top Z70.8) to the merge tee off-view at X5289.
+    _draw_lanes(ax, [
+        ([(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (5060, UNDER_BEAM_Z), (5060, 90), (X_HI - 6, 90)], C_WASTE),  # DV-02 waste → IBC-4
+        ([(GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN),       # sump → P-04
+        ([(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN),              # IBC-3 → P-02
+        ([(GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE),                   # blue trunk
+        ([(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE),               # blue SV-01 → DV-01
+    ])
     leader(ax, 5082, 92, 4958, 172, "DV-02 waste → IBC-4:\nrises Z65→90 to clear the back\nring-rail (top Z70.8) → merge (off-view X5289)",
            color=C_DIM, fs=4.8, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     ax.annotate("↑ P-04 IN", xy=(4900, Z_CEIL - 24), xytext=(4915, Z_CEIL - 70),

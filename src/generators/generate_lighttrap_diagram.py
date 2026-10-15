@@ -1557,7 +1557,7 @@ def draw_sheet8():
     for z0 in (Z_CTOP + 6, Z_CBOT - 55):
         rrect(fe(cyl - 90, z0), cW_y + 180, 50, fc="#EDEDED", lw=0.8, zorder=2)
     # elevation dims + labels
-    draw_dim_v(ax, fe(cyl, 0)[0] - 90, fe(cyl, Z_CBOT)[1], fe(cyl, Z_CTOP)[1],
+    draw_dim_v(ax, fe(cyl, 0)[0] - 30, fe(cyl, Z_CBOT)[1], fe(cyl, Z_CTOP)[1],
                f"{cH}mm POST H", offset=70, fs=7, font=FONT)
     draw_dim_v(ax, fe(cyr, 0)[0] + 70, fe(cyr, Z_DBOT)[1], fe(cyr, Z_DTOP)[1],
                f"{Z_DTOP - Z_DBOT}mm DRUM", offset=44, fs=6.6, right=True, font=FONT)
@@ -1567,9 +1567,9 @@ def draw_sheet8():
            f"CORNER POST\n{RHS}×{RHS}×{LT_FRAME_T} RHS (×4)\nwelded into panel rails",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, *fe(cyl + 150, Z_CTOP - BH / 2), *fe(cyl - 80, Z_CTOP + 110),
-           f"TOP AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\nCLEAR above the cap — bearing hangs below (drum hangs from it)",
+           f"TOP AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W}×{LT_AXLE_BEAM_T} RHS\nCLEAR above the cap — bearing\nhangs below (drum hangs from it)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, *fe(cyl + 150, Z_CBOT + BH / 2), *fe(cyl - 80, Z_CBOT - 130),
+    leader(ax, *fe(cyl + 150, Z_CBOT + BH / 2), *fe(cyl + 280, Z_CBOT - 130),
            f"BOTTOM AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} RHS\n+ floor anchor (lower bearing sits above it)",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
     leader(ax, *fe(CY + SKF6215_OD / 2, z_ubrg + SKF6215_W / 2),
@@ -1659,7 +1659,7 @@ def draw_sheet8():
         ex = CX + HR * math.cos(math.radians(oc - LT_OPENING_DEG / 2))
         rrect(fp(ex - STRIP_W / 2, cyl), STRIP_W, cW_y, fc="#C9A24A", color=C_OUT, lw=1.2, zorder=6)
     leader(ax, *fp(CX + HR * math.cos(math.radians(-LT_OPENING_DEG / 2)), cyr - 140),
-           fp(cx1, cyr)[0] + 40, fp(cx1, cyr)[1] + 250,
+           fp(cx1, cyr)[0] - 280, fp(cx1, cyr)[1] + 200,
            "1×1×1/8 Al ANGLE SUPPORT STRIP (×4: each\nopening, top + bottom) — rail-to-rail across\nthe opening; the H-mullion ends bolt to the up-leg",
            fs=6.3, color="#8A6A20", ha="left", arrow_style="->", font=FONT)
     # plan dims + labels

@@ -228,7 +228,9 @@ def draw_sheet1():
     PAD_L, PAD_R = 720, 1560
     PAD_B, PAD_T = 560, 540
     X_LO, X_HI = HO_L - PAD_L, HO_R + PAD_R
-    Z_LO, Z_HI = 0 - PAD_B, Z_TOP + PAD_T
+    Z_FLOOR_BOT, Z_HI = 0 - PAD_B, Z_TOP + PAD_T
+    TB_BAND = 320                                  # clear band below the floor for the in-axes title block
+    Z_LO = Z_FLOOR_BOT - TB_BAND
 
     FIG_H = 13.0
     FIG_W = FIG_H * (X_HI - X_LO) / (Z_HI - Z_LO)
@@ -241,10 +243,10 @@ def draw_sheet1():
     ax.axis("off")
 
     # ── Environment zones + floor ────────────────────────────────────────────
-    draw_rect(ax, X_LO, Z_LO, HO_L - X_LO, Z_HI - Z_LO, fc="#EEF2F8", color="none", zorder=1)
+    draw_rect(ax, X_LO, Z_FLOOR_BOT, HO_L - X_LO, Z_HI - Z_FLOOR_BOT, fc="#EEF2F8", color="none", zorder=1)
     ax.text((X_LO + HO_L) / 2, Z_TOP, "EXTERIOR", color="#5060A0", fontsize=10,
             ha="center", va="center", fontweight="bold", alpha=0.55, **FONT, zorder=15)
-    draw_rect(ax, HO_R, Z_LO, X_HI - HO_R, Z_HI - Z_LO, fc="#EEF6EE", color="none", zorder=1)
+    draw_rect(ax, HO_R, Z_FLOOR_BOT, X_HI - HO_R, Z_HI - Z_FLOOR_BOT, fc="#EEF6EE", color="none", zorder=1)
     ax.text(X_HI - 340, 300, "INTERIOR\n(DARKROOM / WALKWAY)", color="#407040",
             fontsize=9, ha="center", va="center", fontweight="bold", alpha=0.55,
             **FONT, zorder=15)
@@ -277,7 +279,7 @@ def draw_sheet1():
     draw_rect(ax, cap_x0, Z_DBOT, LT_CAP_OD, LT_CAP_BOT_T, fc=C_ALUM, lw=1.2, zorder=7)                 # bottom cap 130..138
 
     # ── Rotation axis ─────────────────────────────────────────────────────────
-    draw_cl_v(ax, X_AX, Z_LO + 120, Z_HI - 120)          # drum rotation axis
+    draw_cl_v(ax, X_AX, Z_FLOOR_BOT + 120, Z_HI - 120)   # drum rotation axis
 
     # ── Axle beams (top + bottom) + Ø240 mount plates + bearing ring/collar ──
     #    (the drum HANGS from the upper bearing seated below the top beam — Sheet 8)
@@ -427,7 +429,7 @@ def draw_sheet2():
     pAx, pBx = 0.0, PW + GAP                              # panel A / panel B left x
 
     # ── figure window ────────────────────────────────────────────────────────
-    PAD_L, PAD_R, PAD_B, PAD_T = 470, 300, 1560, 430
+    PAD_L, PAD_R, PAD_B, PAD_T = 470, 300, 1880, 430   # deep bottom pad drops the title block clear of the notes
     X_LO, X_HI = -PAD_L, pBx + PW + PAD_R
     Z_LO, Z_HI = zb0 - PAD_B, zt1 + PAD_T
     FIG_W = 18.0

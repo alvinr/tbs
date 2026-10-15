@@ -31,9 +31,11 @@ C_BEAM = "#8892A0"; C_WK = "#C8D8E8"; C_STEEL = "#B0B0B8"
 
 
 def _tb(fig, sheet, subtitle, scale_note):
-    ax = fig.add_axes([0.04, 0.005, 0.92, 0.055]); ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
+    # The title block lives on its own short strip axes; title_block's `height` is a fraction
+    # of THIS axes, so it must be large (near-1) or the three rows collapse onto each other.
+    ax = fig.add_axes([0.04, 0.008, 0.92, 0.07]); ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
     title_block(ax, f"SHEET {sheet} OF {TOTAL_SHEETS}", drawing_title="PROCESSING TRAY — DRAINAGE",
-                subtitle=subtitle, scale_note=scale_note)
+                subtitle=subtitle, scale_note=scale_note, height=0.9)
 
 
 def _save(fig, name):

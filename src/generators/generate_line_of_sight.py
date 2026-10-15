@@ -259,12 +259,12 @@ for eq in EQUIPMENT:
     else:
         # External label with 45° leader line for small items
         _small_idx = getattr(ax, '_small_label_n', 0)
-        offsets = [150, 300, 450]
+        offsets = [150, 250, 350]
         label_off = offsets[_small_idx % len(offsets)]
         ax._small_label_n = _small_idx + 1
         lx = eq["x"] + eq["w"] / 2
         ly = eq["yd"] + eq["d"]
-        leader(ax, lx, ly, lx + label_off, ly + label_off, short,
+        leader(ax, lx, ly, lx - label_off, ly + label_off, short,
                fs=max(FS_SM - 1.5, 5), color=C_OUT, ha="left", va="bottom",
                arrow_style="->", lw=0.7, font=dict(fontweight="bold"))
 
@@ -356,7 +356,7 @@ for eq in EQUIPMENT:
     else:
         # External label with 45° leader line for small items
         _elev_idx = getattr(ax, '_elev_label_n', 0)
-        offsets = [200, 400, 600]
+        offsets = [100, 100, 350]
         label_off = offsets[_elev_idx % len(offsets)]
         ax._elev_label_n = _elev_idx + 1
         leader(ax, mid_yd, eq["h_top"], mid_yd + label_off, eq["h_top"] + label_off, label,

@@ -564,10 +564,16 @@ def draw_sheet2():
     ]
     ax.add_patch(MplPolygon(cone_verts, closed=True,
                 fc="#FFE8C0", ec="none", alpha=0.40, zorder=5))
+    bbox=dict(
+        boxstyle="round,pad=0.3",
+        facecolor="white",
+        edgecolor="none",              # "#1A1A1A" if you want a visible border
+        alpha=1.0,                     # fully opaque so it masks what's under it
+    )
     ax.text(ph_x, OY + cwid * 0.60,
             "OPTICAL CONE — keep clear",
             ha="center", va="center", fontsize=8.0,
-            color="#8B5A00", style="italic", alpha=0.85, zorder=6)
+            color="#8B5A00", style="italic", bbox=bbox, alpha=0.85, zorder=6)
 
     # ── Image plane strip — X=150–4649mm ────────────────────────────────────
     ax.add_patch(mpatches.Rectangle(
@@ -831,12 +837,12 @@ def draw_sheet2():
     # ── Component leaders — label every key item on the diagram ────────────────
     # EP — Electrical panel
     leader(ax, EP_DX + 50, OY + wt + WALL_MOUNT_H,
-           EP_DX - EP_DW + 25, OY + cwid * 0.32,
+           EP_DX - EP_DW - 75, OY + cwid * 0.32,
            "Electrical panel (EP)\nMPPT + fuse block\nPinhole wall face",
            fs=6.5, color=C_ELEC)
     # BAT — Battery bank
     leader(ax, BA_DX + BA_DW * 0.9, OY + wt + WALL_MOUNT_H,
-           BA_DX + BA_DW * 0.6, OY + cwid * 0.3,
+           BA_DX - BA_DW * 0.1, OY + cwid * 0.25,
            "Battery bank (BAT)\n2×100Ah LiFePO4",
            fs=6.5, color=C_BATT)
     # Fan A — Exhaust (far end wall)
@@ -851,26 +857,26 @@ def draw_sheet2():
            fs=6.5)
     # Pump — Cct C (on plumbing panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
-           PUMP_CX + 275, OY + cwid * 0.50,
+           PUMP_CX + 275, OY + cwid * 0.60,
            "Water pumps (C)\n12V DC  100W\ncorridor + P-04 (skid)",
-           fs=6.5, color=C_PUMP)
+           fs=6.5, lbl_bg=True, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
     sl_ldr_y = OY + cwid * 0.5
     leader(ax, sl_ldr_x, sl_ldr_y,
-           sl_ldr_x - 450, OY + cwid * 0.72,
+           sl_ldr_x * 0.7, OY + cwid * 0.55,
            "Safelight (D)\n3× red LED strips\nceiling, N–S",
            fs=6.5, color="#B8960A")
     # Evap cooler — Cct E (external, duct penetration)
     leader(ax, DUCT_CX, OY + wt / 2,
-           DUCT_CX - 550, OY - 400,
+           DUCT_CX * 0.1, OY - 200,
            f"Evap cooler (E)\n120V AC {EVAP_COOLER_W_AC}W via inverter\nExternal + duct",
            fs=6.5, color=C_EVAP)
     # LED strips — Cct G (label the middle tray strip)
     led_mid_cx = ix(WL_TRAY_X[1])
     led_mid_cy = OY + wt + (WL_TRAY_YD1 * 0.5) * S_yd
     leader(ax, ix(WL_TRAY_X[0]), led_mid_cy,
-           ix(WL_TRAY_X[0]) - 520, OY + cwid * 0.40,
+           ix(WL_TRAY_X[0]) + 100, OY + cwid * 0.40,
            "LED strips (G)\n4× COB  4000K white\n3 tray + 1 corridor",
            fs=6.5, color="#808000")
     # External power panel

@@ -854,7 +854,7 @@ def sheet_dry(components):
             va="center", ha="left", **_FONT,
             bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=6))
 
-    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_xlim(-400, C_LEN + 1850)
     ax.set_ylim(-1000, C_WID + 500)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
@@ -969,7 +969,7 @@ def sheet_ready(components):
     ax_tb = fig.add_subplot(gs[1])
     _draw_state_diagram(ax, components, "ready", "CAMERA READY")
 
-    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_xlim(-400, C_LEN + 850)
     ax.set_ylim(-500, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
@@ -1014,7 +1014,7 @@ def sheet_exhausted(components):
             fontweight="bold", **_FONT,
             bbox=dict(fc="#FFF8F0", ec="orange", lw=1, pad=6))
 
-    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_xlim(-400, C_LEN + 1250)
     ax.set_ylim(-500, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
@@ -1064,7 +1064,7 @@ def sheet_loaded_transport(components):
             fontweight="bold", **_FONT,
             bbox=dict(fc="#F0F6FC", ec="#1A6FB0", lw=1, pad=6))
 
-    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_xlim(-400, C_LEN + 2050)
     ax.set_ylim(-500, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)

@@ -221,10 +221,10 @@ def draw_circle(ax, cx, cy, r, *, lw=1.8, color=C_OUT, ls="-",
     ax.add_patch(c)
 
 
-def draw_rect(ax, x, y, w, h, *, lw=1.8, color=C_OUT, fc="white", zorder=3):
+def draw_rect(ax, x, y, w, h, *, lw=1.8, color=C_OUT, fc="white", zorder=3, alpha=None):
     """Rectangle with optional fill."""
     r = mpatches.Rectangle((x, y), w, h, lw=lw, edgecolor=color,
-                            facecolor=fc, zorder=zorder)
+                            facecolor=fc, zorder=zorder, alpha=alpha)
     ax.add_patch(r)
 
 

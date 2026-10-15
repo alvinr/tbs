@@ -29,10 +29,10 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import os
 
 from tbs_title_block import title_block
+from tbs_drawing import leader, draw_dim_h, draw_dim_v, draw_rect
 from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H, ZONE_L_END, ZONE_R_START, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D, CORRIDOR_YD_NEAR, IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, DIAGRAMS_DIR, cone_left, cone_right, C_OUT, C_CL, C_DIM, C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_BLUE_IBC, C_BROWN_IBC, C_WALL
 from tbs_constants import DIAGRAM_DPI
 
@@ -186,16 +186,12 @@ ax_b.set_aspect("equal")
 ax = ax_a
 
 # Zone fills
-ax.add_patch(mpatches.Rectangle((0, 0), ZONE_L_END, C_WID,
-             facecolor=C_ZONE_L, edgecolor="none", zorder=0))
-ax.add_patch(mpatches.Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_WID,
-             facecolor=C_ZONE_OPT, edgecolor="none", zorder=0))
-ax.add_patch(mpatches.Rectangle((ZONE_R_START, 0), C_LEN - ZONE_R_START, C_WID,
-             facecolor=C_ZONE_R, edgecolor="none", zorder=0))
+draw_rect(ax, 0, 0, ZONE_L_END, C_WID, color="none", fc=C_ZONE_L, zorder=0)
+draw_rect(ax, ZONE_L_END, 0, ZONE_R_START - ZONE_L_END, C_WID, color="none", fc=C_ZONE_OPT, zorder=0)
+draw_rect(ax, ZONE_R_START, 0, C_LEN - ZONE_R_START, C_WID, color="none", fc=C_ZONE_R, zorder=0)
 
 # Container outline
-ax.add_patch(mpatches.Rectangle((0, 0), C_LEN, C_WID,
-             facecolor="none", edgecolor=C_OUT, linewidth=1.8, zorder=3))
+draw_rect(ax, 0, 0, C_LEN, C_WID, color=C_OUT, fc="none", lw=1.8, zorder=3)
 
 # Zone boundary lines
 for xb in [ZONE_L_END, ZONE_R_START]:
@@ -234,10 +230,8 @@ ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 115,
 
 # Pinhole
 ax.plot(PH_X, 0, "o", color=C_BLOCK, ms=9, zorder=6)
-ax.annotate(f"Pinhole  X={PH_X}mm",
-            xy=(PH_X, 0), xytext=(PH_X - 650, -150),
-            fontsize=FS_SM, color=C_BLOCK, ha="left",
-            arrowprops=dict(arrowstyle="->", linestyle=":", color=C_BLOCK, lw=0.8))
+leader(ax, PH_X, 0, PH_X - 650, -150, f"Pinhole  X={PH_X}mm",
+       fs=FS_SM, color=C_BLOCK, ha="left", va="center", arrow_style="->", lw=0.8)
 
 # Optical axis
 ax.annotate("", xy=(PH_X, FP_Y - 20), xytext=(PH_X, 20),
@@ -252,10 +246,8 @@ for eq in EQUIPMENT:
     edge_lw = 2.2 if in_cone else 1.4
     alpha = 0.75 if in_cone else 0.55
 
-    ax.add_patch(mpatches.Rectangle(
-        (eq["x"], eq["yd"]), eq["w"], eq["d"],
-        facecolor=eq["color"], edgecolor=edge_color,
-        linewidth=edge_lw, alpha=alpha, zorder=4))
+    draw_rect(ax, eq["x"], eq["yd"], eq["w"], eq["d"],
+              color=edge_color, fc=eq["color"], lw=edge_lw, alpha=alpha, zorder=4)
 
     # Label inside footprint, or outside for small items
     short = eq["name"].split(" (")[0].split(" x")[0]
@@ -272,12 +264,9 @@ for eq in EQUIPMENT:
         ax._small_label_n = _small_idx + 1
         lx = eq["x"] + eq["w"] / 2
         ly = eq["yd"] + eq["d"]
-        ax.annotate(short, xy=(lx, ly),
-                    xytext=(lx + label_off, ly + label_off),
-                    ha="left", va="bottom",
-                    fontsize=max(FS_SM - 1.5, 5), color=C_OUT, fontweight="bold",
-                    arrowprops=dict(arrowstyle="->", linestyle=":", color=C_DIM, lw=0.7),
-                    zorder=10)
+        leader(ax, lx, ly, lx + label_off, ly + label_off, short,
+               fs=max(FS_SM - 1.5, 5), color=C_OUT, ha="left", va="bottom",
+               arrow_style="->", lw=0.7, font=dict(fontweight="bold"))
 
     if in_cone:
         ax.text(eq["x"] + eq["w"] / 1.5, eq["yd"] + eq["d"] + 870,
@@ -292,15 +281,8 @@ ax.text(C_LEN / 2, -350,
         f"(X={FP_X_L} & X={FP_X_R}, Yd={FP_Y}mm)",
         ha="center", va="top", fontsize=FS_SM, color=C_DIM, zorder=10)
 
-ax.annotate("", xy=(C_LEN, -320), xytext=(0, -320),
-            arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(C_LEN / 2, -280, f"{C_LEN}mm", ha="center", va="bottom",
-        fontsize=FS_SM, color=C_DIM, zorder=10)
-
-ax.annotate("", xy=(-450, C_WID), xytext=(-450, 0),
-            arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-500, C_WID / 2, f"{C_WID}mm", ha="right", va="center",
-        fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
+draw_dim_h(ax, 0, C_LEN, -320, f"{C_LEN}mm", offset=70, fs=FS_SM, color=C_DIM, lw=0.8)
+draw_dim_v(ax, -450, 0, C_WID, f"{C_WID}mm", offset=90, fs=FS_SM, color=C_DIM, lw=0.8)
 
 # Legend box
 ax.text(PA_X_LO + 60, PA_Y_HI - 60,
@@ -319,8 +301,7 @@ ax.text(PA_X_LO + 60, PA_Y_HI - 60,
 ax = ax_b
 
 # Container fill
-ax.add_patch(mpatches.Rectangle((0, 0), C_WID, C_HGT,
-             facecolor="#F4F4F4", edgecolor=C_OUT, linewidth=1.8, zorder=1))
+draw_rect(ax, 0, 0, C_WID, C_HGT, color=C_OUT, fc="#F4F4F4", lw=1.8, zorder=1)
 
 # ── Optical cone (elevation) ──────────────────────────────────────────────────
 yd_e = np.linspace(0, FP_Y, 300)
@@ -359,10 +340,8 @@ for eq in EQUIPMENT:
     yd_near = eq["yd"]
     yd_far  = min(eq["yd"] + eq["d"], C_WID)
 
-    ax.add_patch(mpatches.Rectangle(
-        (yd_near, eq["h_bot"]), yd_far - yd_near, eq["h_top"] - eq["h_bot"],
-        facecolor=eq["color"], edgecolor=edge_color,
-        linewidth=edge_lw, alpha=0.65, zorder=4))
+    draw_rect(ax, yd_near, eq["h_bot"], yd_far - yd_near, eq["h_top"] - eq["h_bot"],
+              color=edge_color, fc=eq["color"], lw=edge_lw, alpha=0.65, zorder=4)
 
     mid_yd = (yd_near + yd_far) / 2
     mid_h  = (eq["h_bot"] + eq["h_top"]) / 2
@@ -380,12 +359,9 @@ for eq in EQUIPMENT:
         offsets = [200, 400, 600]
         label_off = offsets[_elev_idx % len(offsets)]
         ax._elev_label_n = _elev_idx + 1
-        ax.annotate(label, xy=(mid_yd, eq["h_top"]),
-                    xytext=(mid_yd + label_off, eq["h_top"] + label_off),
-                    ha="left", va="bottom",
-                    fontsize=max(FS_SM - 2, 4.5), color=C_OUT, fontweight="bold",
-                    arrowprops=dict(arrowstyle="->", linestyle=":", color=C_DIM, lw=0.7),
-                    zorder=10)
+        leader(ax, mid_yd, eq["h_top"], mid_yd + label_off, eq["h_top"] + label_off, label,
+               fs=max(FS_SM - 2, 4.5), color=C_OUT, ha="left", va="bottom",
+               arrow_style="->", lw=0.7, font=dict(fontweight="bold"))
 
 # ── Elevation labels ──────────────────────────────────────────────────────────
 ax.text(C_WID / 2, -120, "SIDE ELEVATION — along long axis (X)",
@@ -394,15 +370,8 @@ ax.text(C_WID / 2, -320,
         f"Cone spread in HEIGHT — Pinhole at H={PH_H}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_DIM, zorder=10)
 
-ax.annotate("", xy=(C_WID, -270), xytext=(0, -270),
-            arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(C_WID / 2, -250, f"{C_WID}mm (optical depth)",
-        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, zorder=10)
-
-ax.annotate("", xy=(-280, C_HGT), xytext=(-280, 0),
-            arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-300, C_HGT / 2, f"{C_HGT}mm",
-        ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
+draw_dim_h(ax, 0, C_WID, -270, f"{C_WID}mm (optical depth)", offset=60, fs=FS_SM, color=C_DIM, lw=0.8)
+draw_dim_v(ax, -280, 0, C_HGT, f"{C_HGT}mm", offset=70, fs=FS_SM, color=C_DIM, lw=0.8)
 
 
 # ── Title block (full-figure overlay) ──────────────���──────────────────────────

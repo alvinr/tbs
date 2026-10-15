@@ -35,7 +35,7 @@ from matplotlib.patches import Rectangle, Circle
 import matplotlib.patches
 
 from tbs_constants import *
-from tbs_drawing import draw_dim_h, draw_dim_v, draw_legend
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_legend, leader
 
 # ── Palette (local overrides removed — equipment colors from tbs_constants) ──
 BG            = "#FFFFFF"
@@ -461,17 +461,12 @@ def floor_plan():
     # X=DRUM_CX, via the hinge-panel punch-out bay), so no demountable segment.
     NOTE_NX = -PAD_L + 120
     NOTE_NY = DRUM_CY   # 1181 — light-lock Yd center
-    ax.annotate("",
-                xy=(RAIL_X_L, NOTE_NY),
-                xytext=(NOTE_NX + 600, NOTE_NY),
-                arrowprops=dict(arrowstyle="->", color="#7A3A00", lw=1.0),
-                zorder=10)
-    ax.text(NOTE_NX + 400, NOTE_NY - 380,
-            f"FILM LEFT RAIL CONTINUOUS — full travel\n"
-            f"Drum offset to X={DRUM_CX}mm via the panel bay\n— clears the X={RAIL_X_L}mm rail",
-            ha="right", va="bottom", fontsize=6.0, color="#7A3A00",
-            fontweight="bold", **FONT, zorder=10,
-            bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#7A3A00", lw=0.9))
+    leader(ax, RAIL_X_L, NOTE_NY, NOTE_NX + 400, NOTE_NY - 380,
+           f"FILM LEFT RAIL CONTINUOUS — full travel\n"
+           f"Drum offset to X={DRUM_CX}mm via the panel bay\n— clears the X={RAIL_X_L}mm rail",
+           fs=6.0, color="#7A3A00", ha="right", va="bottom", arrow_style="->", lw=1.0,
+           zorder=10, font={**FONT, "fontweight": "bold"},
+           bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#7A3A00", lw=0.9))
 
     # ── Left walkway — removable lift-out overlay + label ─────────────────────
     # The LEFT walkway (X WALKWAY_LEFT_X–470, full Yd span) is a removable
@@ -493,18 +488,13 @@ def floor_plan():
     # Leader pointing to left walkway mid-height
     LW_MID_Y = (NY + FYO) / 2
     LW_NOTE_X = -PAD_L + 120
-    ax.annotate("",
-                xy=(LXR, LW_MID_Y),
-                xytext=(LW_NOTE_X + 520, LW_MID_Y),
-                arrowprops=dict(arrowstyle="->", color="#408040", lw=1.0),
-                zorder=14)
-    ax.text(LW_NOTE_X + 400, LW_MID_Y + 200,
-            f"LEFT WALKWAY — REMOVABLE LIFT-OUT\n"
-            f"X={WALKWAY_LEFT_X}–{int(LXR)}mm\n"
-            "Remove for transport (panel+drum swing 56°)",
-            ha="right", va="bottom", fontsize=6.0, color="#204820",
-            fontweight="bold", **FONT, zorder=14,
-            bbox=dict(boxstyle="round,pad=0.3", fc="#F0FFF0", ec="#408040", lw=0.9))
+    leader(ax, LXR, LW_MID_Y, LW_NOTE_X + 400, LW_MID_Y + 200,
+           f"LEFT WALKWAY — REMOVABLE LIFT-OUT\n"
+           f"X={WALKWAY_LEFT_X}–{int(LXR)}mm\n"
+           "Remove for transport (panel+drum swing 56°)",
+           fs=6.0, color="#204820", ha="right", va="bottom", arrow_style="->", lw=1.0,
+           zorder=14, font={**FONT, "fontweight": "bold"},
+           bbox=dict(boxstyle="round,pad=0.3", fc="#F0FFF0", ec="#408040", lw=0.9))
 
     # ── Egress path annotation ─────────────────────────────────────────────────
     # With drums eliminated, the full container width (2362mm) is clear for egress.

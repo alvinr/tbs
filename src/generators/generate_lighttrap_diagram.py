@@ -241,17 +241,14 @@ def draw_sheet1():
     ax.axis("off")
 
     # ── Environment zones + floor ────────────────────────────────────────────
-    ax.add_patch(plt.Rectangle((X_LO, Z_LO), HO_L - X_LO, Z_HI - Z_LO,
-                               fc="#EEF2F8", ec="none", zorder=1))
+    draw_rect(ax, X_LO, Z_LO, HO_L - X_LO, Z_HI - Z_LO, fc="#EEF2F8", color="none", zorder=1)
     ax.text((X_LO + HO_L) / 2, Z_TOP, "EXTERIOR", color="#5060A0", fontsize=10,
             ha="center", va="center", fontweight="bold", alpha=0.55, **FONT, zorder=15)
-    ax.add_patch(plt.Rectangle((HO_R, Z_LO), X_HI - HO_R, Z_HI - Z_LO,
-                               fc="#EEF6EE", ec="none", zorder=1))
+    draw_rect(ax, HO_R, Z_LO, X_HI - HO_R, Z_HI - Z_LO, fc="#EEF6EE", color="none", zorder=1)
     ax.text(X_HI - 340, 300, "INTERIOR\n(DARKROOM / WALKWAY)", color="#407040",
             fontsize=9, ha="center", va="center", fontweight="bold", alpha=0.55,
             **FONT, zorder=15)
-    ax.add_patch(plt.Rectangle((X_LO, -PAD_B), X_HI - X_LO, PAD_B,
-                               fc="#D8D0C0", ec="none", zorder=1))
+    draw_rect(ax, X_LO, -PAD_B, X_HI - X_LO, PAD_B, fc="#D8D0C0", color="none", zorder=1)
     ax.plot([X_LO, X_HI], [0, 0], color=C_OUT, lw=1.6, zorder=4)
     ax.text(X_LO + 30, -430, "FLOOR LEVEL", ha="left", va="center",
             fontsize=7.5, color=C_DIM, **FONT, zorder=15)
@@ -1338,8 +1335,8 @@ def draw_sheet7():
         ax.plot(xs, ys, color=color, lw=lw, solid_capstyle="butt", zorder=z)
 
     def zones(cx, cy, w):
-        ax.add_patch(mpatches.Rectangle((cx - w, cy - w), 2 * w, w, fc="#EEF2F8", ec="none", zorder=1))
-        ax.add_patch(mpatches.Rectangle((cx - w, cy), 2 * w, w, fc="#EEF6EE", ec="none", zorder=1))
+        draw_rect(ax, cx - w, cy - w, 2 * w, w, fc="#EEF2F8", color="none", zorder=1)
+        draw_rect(ax, cx - w, cy, 2 * w, w, fc="#EEF6EE", color="none", zorder=1)
         ax.plot([cx - w, cx + w], [cy, cy], color=C_DIM, lw=0.8, ls=(0, (5, 3)), zorder=2)
 
     def sun(x, y, s=28):
@@ -1975,9 +1972,9 @@ def draw_sheet10():
     # ── Detail bubbles → the enlarged joint sheets (A→4, B→8; see notes) ─────
     for (rc, zc, tag) in ((CAPR, LT_LAP_H / 2, "A"), (HIR_, Z_BEAM0 + LT_AXLE_BEAM_H / 2, "B")):
         draw_circle(ax, rc, zc, 40, lw=1.0, color=C_DIM, ls="--", zorder=8)
-        ax.annotate(tag, xy=(rc - 34, zc), xytext=(rc - 95, zc),
-                    ha="center", va="center", fontsize=11, fontweight="bold", color=C_DIM,
-                    arrowprops=dict(arrowstyle="->", color=C_DIM, lw=0.9), zorder=9, **FONT)
+        leader(ax, rc - 34, zc, rc - 95, zc, tag, fs=11, color=C_DIM,
+               ha="center", va="center", arrow_style="->", lw=0.9, zorder=9,
+               font={**FONT, "fontweight": "bold"})
 
     # ── Scale bar (100 mm, to scale) ─────────────────────────────────────────
     sb_z = Z_BRK - 70

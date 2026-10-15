@@ -15,6 +15,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
+from tbs_drawing import draw_dim_h, draw_dim_v
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))
@@ -30,14 +31,11 @@ FONT = {"family": "monospace"}
 
 
 def dimv(ax, x, y0, y1, txt, off=0):
-    ax.annotate("", (x, y0), (x, y1), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.8))
-    ax.text(x + off - 2, (y0 + y1) / 2, txt, color=DIM, fontsize=5.5, ha="right", va="center",
-            rotation=90, **FONT)
+    draw_dim_v(ax, x, y0, y1, txt, offset=6, fs=5.5, color=DIM, lw=0.8, font=FONT)
 
 
 def dimh(ax, x0, x1, y, txt):
-    ax.annotate("", (x0, y), (x1, y), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.8))
-    ax.text((x0 + x1) / 2, y + 2, txt, color=DIM, fontsize=5.5, ha="center", va="bottom", **FONT)
+    draw_dim_h(ax, x0, x1, y, txt, offset=6, fs=5.5, color=DIM, lw=0.8, font=FONT)
 
 
 def lead(ax, x0, y0, x1, y1, txt, ha="left", color=OUT):

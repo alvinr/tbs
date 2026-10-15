@@ -19,6 +19,7 @@ from matplotlib.patches import Rectangle, Polygon, FancyArrow, Circle
 
 from tbs_constants import PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_FLOOR_Z_LOW, PROC_TRAY_FLOOR_Z_HIGH, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_GUTTER_W, PROC_TRAY_GUTTER_Z_CENTER, PROC_TRAY_GUTTER_Z_END, tray_floor_z, tray_gutter_floor_z, SPRAY_BEAM_X_L, SPRAY_BEAM_X_R, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_TOP_RISE, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, LEFT_WK_CANT_ARM_Z0, DIAGRAMS_DIR
 from tbs_title_block import title_block
+from tbs_drawing import leader, draw_dim_v
 
 TOTAL_SHEETS = 4
 XC = PROC_TRAY_DRAIN_X                       # 2399 — center pickup
@@ -91,9 +92,9 @@ def sheet2():
     ax.add_patch(Rectangle((yb - 40, tray_floor_z(XC, yb) + SPRAY_BAR_BEAM_BOT_RISE), 80, SPRAY_BAR_BEAM_H,
                  facecolor=C_BEAM, edgecolor="#111"))
     ax.text(yb, tray_floor_z(XC, yb) + SPRAY_BAR_BEAM_TOP_RISE + 3, "spray beam\n(rides the surface)", ha="center", fontsize=7.5)
-    ax.annotate(f"{PROC_TRAY_FLOOR_Z_HIGH - PROC_TRAY_FLOOR_Z_LOW:.0f}mm fall over {PROC_TRAY_D}mm (1:200)",
-                xy=(PROC_TRAY_YD_FAR, PROC_TRAY_FLOOR_Z_HIGH), xytext=(1200, 55), fontsize=8.5, color=C_SURF,
-                arrowprops=dict(arrowstyle="->", color=C_SURF))
+    leader(ax, PROC_TRAY_YD_FAR, PROC_TRAY_FLOOR_Z_HIGH, 1200, 55,
+           f"{PROC_TRAY_FLOOR_Z_HIGH - PROC_TRAY_FLOOR_Z_LOW:.0f}mm fall over {PROC_TRAY_D}mm (1:200)",
+           fs=8.5, color=C_SURF, ha="left", va="baseline", arrow_style="->")
     ax.set_xlim(0, PROC_TRAY_YD_FAR + 60); ax.set_ylim(0, 80)
     ax.set_xlabel("Yd (mm):  near rim (L) → far rim (R)"); ax.set_ylabel("Z (mm), exaggerated")
     ax.set_title("SECTION A-A — surface falls far→near into the near-rim gutter", fontsize=11)
@@ -121,8 +122,8 @@ def sheet3():
     ax.add_patch(Rectangle((WALKWAY_RIGHT_X, R_ARM_Z), WALKWAY_W, GRATE_B - R_ARM_Z, facecolor=C_WK, edgecolor="#204060"))
     ax.text(WALKWAY_RIGHT_X + WALKWAY_W / 2, R_ARM_Z + 6, f"R arm Z{R_ARM_Z}", ha="center", fontsize=7.5, color="#204060")
     beam_top = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE
-    ax.annotate(f"beam top Z{beam_top:.0f} — clears the arms", xy=(1200, beam_top), xytext=(1500, beam_top + 22),
-                fontsize=8, color="#2E8B57", arrowprops=dict(arrowstyle="->", color="#2E8B57"))
+    leader(ax, 1200, beam_top, 1500, beam_top + 22, f"beam top Z{beam_top:.0f} — clears the arms",
+           fs=8, color="#2E8B57", ha="left", va="baseline", arrow_style="->")
     ax.set_xlim(XL - 100, XR + 100); ax.set_ylim(-6, GRATE_B + 8)
     ax.set_xlabel("X (mm):  left end → center pickup → right end"); ax.set_ylabel("Z (mm), exaggerated")
     ax.set_title("SECTION B-B — gutter V-slopes to the center pickup; the level beam clears the walkway arms", fontsize=10.5)
@@ -142,8 +143,8 @@ def sheet4():
     ax.add_patch(Polygon([(160, PROC_TRAY_FLOOR_Z_LOW), (160, PROC_TRAY_GUTTER_Z_CENTER),
                  (95, PROC_TRAY_GUTTER_Z_CENTER), (80, PROC_TRAY_FLOOR_Z_LOW)], closed=True, facecolor=C_GUT, edgecolor="#204060"))
     ax.add_patch(Rectangle((100, 0), 40, PROC_TRAY_GUTTER_Z_CENTER, facecolor=C_WATER))
-    ax.annotate("", xy=(60, 0), xytext=(60, PROC_TRAY_FLOOR_Z_LOW), arrowprops=dict(arrowstyle="<->", color="#B00", lw=1.3))
-    ax.text(52, PROC_TRAY_FLOOR_Z_LOW / 2, f"{PROC_TRAY_SUMP_Z}mm\nbudget", fontsize=8, color="#B00", ha="right", va="center", fontweight="bold")
+    draw_dim_v(ax, 60, 0, PROC_TRAY_FLOOR_Z_LOW, f"{PROC_TRAY_SUMP_Z}mm\nbudget",
+               offset=13, fs=8, color="#B00", lw=1.3, perpendicular=True, font=dict(fontweight="bold"))
     ax.text(300, 40, "fall-off into the gutter", fontsize=8.5, color=C_WATER)
     ax.set_xlim(40, 510); ax.set_ylim(-8, 150); ax.set_xlabel("Yd (mm): near rim → inboard"); ax.set_ylabel("Z (mm), exag.")
     ax.set_title("Near-rim fall-off (center)", fontsize=9.5); ax.grid(True, ls=":", lw=0.4, alpha=0.4)

@@ -13,6 +13,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 import math
 from tbs_constants import DISTORTION_DPI, RAIL_X_L, RAIL_X_R, FP_H, C_LEN, C_WID
+from tbs_drawing import draw_rect
 
 # ─────────────────────────────────────────
 # Camera constants — the IMAGE PLANE is the ACTIVE FILM PLANE (not the full container wall)
@@ -124,9 +125,7 @@ fig.patch.set_facecolor('#101010')
 ax.set_facecolor('#101010')
 
 # Image plane rectangle
-ax.add_patch(mpatches.Rectangle(
-    (0, 0), IW, IH,
-    linewidth=2, edgecolor='#555', facecolor='#1C1915', zorder=0))
+draw_rect(ax, 0, 0, IW, IH, color='#555', fc='#1C1915', lw=2, zorder=0)
 
 # Subtle horizontal grain lines
 for yl in np.linspace(0, IH, 48):
@@ -267,9 +266,7 @@ CONT_L_MM = float(C_LEN)   # 5893 — container interior length
 CONT_W_MM = float(C_WID)   # 2362 — container interior depth = focal length
 
 # Container rectangle (left edge at x=0, bottom at y=0)
-ax2.add_patch(mpatches.Rectangle(
-    (0, 0), CONT_L_MM, CONT_W_MM,
-    linewidth=2, edgecolor='#777', facecolor='#1A1A1A', zorder=2))
+draw_rect(ax2, 0, 0, CONT_L_MM, CONT_W_MM, color='#777', fc='#1A1A1A', lw=2, zorder=2)
 ax2.text(CONT_L_MM/2, CONT_W_MM/2,
          '20-FT CONTAINER\n(camera interior)',
          ha='center', va='center', fontsize=10, color='#555',
@@ -326,9 +323,8 @@ for u_m, col in zip(DISTS_M, COLOURS):
 
     # Figure (simple vertical bar + head)
     fig_h_diag = 300   # fixed display size for subject in this diagram
-    ax2.add_patch(mpatches.Rectangle(
-        (sx - 80, sy), 160, fig_h_diag * 0.78,
-        fc=col, ec='none', alpha=0.80, zorder=5))
+    draw_rect(ax2, sx - 80, sy, 160, fig_h_diag * 0.78,
+              color='none', fc=col, alpha=0.80, zorder=5)
     ax2.add_patch(mpatches.Ellipse(
         (sx, sy + fig_h_diag * 0.78 + 80), 120, 160,
         fc=col, ec='none', alpha=0.80, zorder=5))
@@ -383,9 +379,7 @@ fig3.patch.set_facecolor('#101010')
 ax3.set_facecolor('#101010')
 
 # Image plane
-ax3.add_patch(mpatches.Rectangle(
-    (0, 0), IW, IH,
-    lw=2, edgecolor='#555', facecolor='#1A1815', zorder=0))
+draw_rect(ax3, 0, 0, IW, IH, color='#555', fc='#1A1815', lw=2, zorder=0)
 for yl in np.linspace(0, IH, 40):
     ax3.axhline(yl, color='#1F1D1A', lw=0.35, alpha=0.6, zorder=1)
 

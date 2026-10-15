@@ -1154,9 +1154,14 @@ def spine_view(side):
         # DV-01 — pH-gated filter-output diverter, low at the corridor mouth
         # (its blue-recycle and waste legs are both on this −Yd intake face).
         DV01X = 4700
-        valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "down"))
+        valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "right"), zorder=14)
+        # Filtered INPUT (from the pinhole-wall filter train / SV-01, off-section) → LEFT (common) port
+        _pipe([4560, DV01X - 16], [235, 235], "#8A8A8A", zorder=11)
+        _flowhead(4560, 235, "right", "#8A8A8A")
+        axb.text(4548, 286, "from SV-01\n(filtered)", fontsize=4.0, ha="left",
+                 va="bottom", color="#777", zorder=15, **FB)
         axb.text(DV01X, 258, "DV-01", fontsize=4.6, ha="center",
-                 va="bottom", color="#8A6D08", zorder=13, **FB)
+                 va="bottom", color="#8A6D08", zorder=15, **FB)
         # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
         # reachable, Z≈1000) → UP the front vertical to the loop top → +X back
         # through the shirt + panel → up the behind-panel riser to the Blue tote.
@@ -1186,15 +1191,15 @@ def spine_view(side):
         axb.text(BV06X - 22, 1792, "BV-06", fontsize=4.6, ha="right", va="center", color=C_WASTEB, zorder=13, **FB)
         _flowhead(RX4, 330, "up", C_WASTEB)                # suction: IBC-4 waste pickup → up the spine → BV-06 → P-03
         axb.text(RX4 + 135, 255, "from IBC-4 (waste pickup)", fontsize=4.0, ha="right",
-                 va="top", color=C_WASTEB, zorder=12,
+                 va="top", color=C_WASTEB, zorder=15,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
-        # DV-01 BLUE RECYCLE — straight +X off the diverter, THROUGH the rear panel, up the spine to X1.
-        _pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
-              [276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)
+        # DV-01 BLUE RECYCLE — off the UP port, +X THROUGH the rear panel, up the spine to X1.
+        _pipe([DV01X, DV01X, RX_BLUE, RX_BLUE, X1X],
+              [251, 276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)
         axb.text(PANX + 9, 300, "through\npanel", fontsize=4.0, ha="center", va="bottom",
-                 color="#999", zorder=14, **FB)
-        # DV-01 WASTE → the IBC-4 merge tee (lower, parallel lane).
-        _pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)
+                 color="#999", zorder=15, **FB)
+        # DV-01 WASTE — off the RIGHT port, +X to the IBC-4 merge tee, then up.
+        _pipe([DV01X + 16, MERGEX, MERGEX], [235, 235, 1214], C_WASTEB, zorder=11)
         # → IBC-1 (X1) fill stub off the cross (water continues down to IBC-1, off-section).
         _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
         _flowhead(X1X - 14, X1_PORT_Z - 140, "down", C_BLUEB)   # fill: → IBC-1 tote (below)
@@ -1280,7 +1285,8 @@ def spine_view(side):
                  color=C_BROWNB, zorder=13, **FB)
         _flowhead(SHIRT_RX, 700, "up", C_BROWNB)           # suction: IBC-3 shared tap → up the shirt riser → BV-02 → P-05
         axb.text(4914, 296, "from IBC-3 (shared tap):\n+X to shirt riser, up, then\nforward loop to BV-02",
-                 fontsize=3.8, ha="left", va="top", color=C_BROWNB, zorder=12, **FB)
+                 fontsize=3.8, ha="left", va="top", color=C_BROWNB, zorder=15,
+                 bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
         # P-clips fastening the −Yd-face spine risers.
         for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
             for i in range(4):

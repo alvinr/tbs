@@ -574,7 +574,7 @@ def sheet5():
     for bx in BEAM_XS:
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")
     _rect(ax, WALKWAY_RIGHT_X, DECK_ZB, WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)
-    leader(ax, 4500, ARM_ZB, 4358, 50, "walkway support: far cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)", color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, 4500, ARM_ZB, 4358, 60, "walkway support: far cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)", color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 175, "right walkway grate deck (Z115–130)", color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     # far upright + far foot (also under tray) + M12 + bottom rail + retaining bar
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, Z_HI - Z_LO, C_STEEL, lw=1.0, z0=6)                     # far upright X4654-4704

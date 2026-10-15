@@ -528,22 +528,22 @@ def draw_corridor_panel():
         f"1. Panel: 18mm marine ply spanning corridor Yd={PANEL_YD}-{PANEL_YD + PANEL_W} (270mm).",
         f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
         f"3. Panel height: Z={PANEL_Z_AFF}-{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm).",
-        "4. SINGLE vertical pump column (bottom→top): ACC-01, P-01 (Blue supply),",
-        "    P-02 (Brown recycle), P-05 (Brown drain), P-03 (Waste drain).",
+        "4. SINGLE vertical pump column (bottom→top): ACC-01, P-01 (Blue supply),"
+        " P-02 (Brown recycle), P-05 (Brown drain), P-03 (Waste drain).",
         "5. ACC-01: 0.75L bladder accumulator on the Blue supply, dead-leg below P-01.",
         "6. Suctions enter on the LEFT through their isolation valve; discharges exit RIGHT.",
-        "7. BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),",
-        "    BV-06 (P-03 suction) — manual ball valves.",
-        "8. P-02 pulls IBC-3 (Brown buffer) and discharges to ACC-02 (recycle-spray damper",
-        "    on the pinhole-wall skid) → BV-05 → spray bar.",
+        "7. BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),"
+        " BV-06 (P-03 suction) — manual ball valves.",
+        "8. P-02 pulls IBC-3 (Brown buffer) and discharges to ACC-02 (recycle-spray damper"
+        " on the pinhole-wall skid) → BV-05 → spray bar.",
         "9. The tray-drain skid (P-04 · SV-02 · DV-02) is on the PINHOLE WALL panel, not here.",
         f"10. Max protrusion: {max_depth}mm. The filter train + tray-drain skid are on the PINHOLE WALL panel.",
-        "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; braided flex hose",
-        "     at each pump port. Pumps + ACC cam-clamp to a 25mm ply shirt; 4-bolt brackets.",
+        "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; braided flex hose"
+        " at each pump port. Pumps + ACC cam-clamp to a 25mm ply shirt; 4-bolt brackets.",
         "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-02 940 · P-05 1340 · P-03 1740.",
     ]
-    draw_notes(ax, notes, 575, 375, spacing=14,
-               fs=6, width=450, color=C_DIM, title_color=C_NEW, font=FONT)
+    draw_notes(ax, notes, 575, 475, spacing=14,
+               fs=6, wrap=80, width=425, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY ──────────────────────────────────────────────────
     draw_symbol_key(ax, 575, 2540, r=11, row=58, fs=6.5, w=300)

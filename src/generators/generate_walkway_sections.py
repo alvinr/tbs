@@ -457,9 +457,9 @@ def sheet4():
     uprights), X–Z looking +Yd.  Here the four corridor lanes the D-D ghosts pointed to run
     as REAL in-plane runs toward the pump column."""
     X_LO, X_HI = 4600, 5185
-    Z_LO, Z_HI = -80, 860    # extended upward: header band above the ghost-upright tops (Z_CEIL)
+    Z_LO, Z_HI = -80, 1100   # tall header band above the ghost-upright tops (Z_CEIL) — fits NOTES + legend clear of the drawing
     Z_CEIL = 660             # ghost uprights / pump column / P-04 riser rise to here (top of the drawing)
-    fig = plt.figure(figsize=(15.5, 8.8))
+    fig = plt.figure(figsize=(15.5, 11.1))
     ax = fig.add_axes([0.05, 0.08, 0.92, 0.82])
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI); ax.set_aspect("equal"); ax.axis("off")
@@ -505,9 +505,9 @@ def sheet4():
     leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X - 25, 372,
            "the four lines arrive FLUSH across the\nopen bay (no beam), drop the tray-edge SLOT (past the\ncarriage) to the corridor entry, then RISE",
            color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    # legend (identifies the four lanes) — in the open upper band, left of the pump riser (freed the
-    # bottom-right corner for the back ring-rail + the DV-02 waste callout)
-    lgx, lgz = 4650, 648
+    # legend (identifies the four lanes) — in the clear header band ABOVE the drawing top (Z_CEIL=660),
+    # below the NOTES box, so it no longer overlaps the P-04 riser / pump-column ghost
+    lgx, lgz = 4650, 800
     ax.text(lgx, lgz, "CORRIDOR LANES (→ toward the pumps):", fontsize=6, ha="left", va="top",
             color=C_OUT, fontweight="bold", zorder=14, **FONT)
     for i, (c, t) in enumerate([(C_BROWN, "brown tray-sump → P-04 (rises into P-04)"),

@@ -2159,7 +2159,7 @@ def draw_sheet12():
     # Top-end seal cross-section pulled off Sheet 7 and drawn large + schematic (radial gap
     # exaggerated) so the neoprene/brush seal path is easy to read; not a true single scale.
     X_LO, X_HI, Z_LO, Z_HI = 120, 1500, -360, 1000
-    FIG_W = 15.0
+    FIG_W = 10.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor(BG)
@@ -2210,7 +2210,7 @@ def draw_sheet12():
         f"The running-gap brush radial section (the {LT_WIPER_N}× #4 strip brushes flange-riveted to the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
         "NOT TO SCALE — the radial running gap is exaggerated so the seal path reads clearly (a true 13mm gap would be a hairline here); vertical members ≈ 1.5×. See Sheet 4 for the to-scale (7:1) holder profile and Sheet 7 for the rotation/light-path plans A–C.",
     ]
-    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=850, wrap=118, title_color=TITLE_COL)
+    draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1250, wrap=118, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 12 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
                 subtitle="SEAL DETAIL — TOP-END NEOPRENE (enlarged)",

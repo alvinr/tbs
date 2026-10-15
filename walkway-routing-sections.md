@@ -27,7 +27,7 @@ from the pinhole wall across to the plumbing corridor. (Sections
 | **B‑B** | ≈ 62 (near end) | the four ribbon lanes in the channel between the long beams, near their pinhole‑wall end |
 | **C‑C** | ≈ 450 (mid‑tray) | the ribbon passing above the tray, under the grate — a sanctioned pass over the exclusion zone |
 | **D‑D** | ≈ 1066 (near cantilever) | the ribbon looping *over* the cantilever, and the foot under the tray |
-| **E‑E** | ≈ 1130–1245 (corridor center) | the lines crossing the open corridor bay flush (the outer beam is omitted between the cantilever arms), dropping the tray‑edge slot, and rising into the four corridor lanes |
+| **E‑E** | corridor pump‑column bay | a faithful X–Z *elevation* of the whole corridor plumbing — every real pipe run, projected from the 3D model (captured live, so it can't drift) |
 | **F‑F** | ≈ 1286 (far cantilever) | the far cantilever, mirroring D‑D (no line crosses it) |
 
 ## Section B‑B — near end of the ribbon
@@ -68,25 +68,24 @@ plane. Past the cantilever each lane stays flush, crosses the **open corridor ba
 beam is omitted between the two cantilever arms, so there is no beam to cross), and only then
 drops the tray‑edge slot into the corridor to run into the pumps — they appear in‑plane in E‑E.
 
-## Section E‑E — corridor center
+## Section E‑E — corridor plumbing elevation
 
-![TBS-001 — Walkway Routing Section E-E: corridor center, between the frame uprights](assets/walkway-sections-sheet4.png)
+![TBS-001 — Walkway Routing Elevation E-E: corridor plumbing, pump-column bay](assets/walkway-sections-sheet4.png)
 
-A thick‑slab section through the **clear span between the frame uprights**.
-Past the cantilever each line stays **flush** and crosses the **open corridor bay** — the
-outer long beam is omitted between the two cantilever arms, so there is no beam to cross and
-the lanes pass in the clear. It then **drops the tray‑edge slot** —
-which sits **past the spray‑carriage travel** — to the
-corridor entry, to the ** corridor routing** rises each line to its lane
-height and runs in X toward the pump column: the brown tray‑sump → P‑04
-and the other three ribbon lines — brown IBC‑3 → P‑02, blue Blue trunk → TAP‑01, and blue
-SV‑01 → DV‑01 return.
-The four ribbon lanes clear the ring rails — they enter at the tray‑edge slot (X4641), inboard of
-the frame. The one line that does meet a rail here is the separate **DV‑02 waste → IBC‑4** merge
-line: it drops the same slot but runs the floor to the rear and **hops the back bottom Yd‑rail**
-(full 50 RHS, top Z65) — rising from Z65 to **Z90** just before the rail and holding Z90 across it —
-to reach the merge tee off‑section. The front bottom rail is lowered (top Z49) and clears the lines
-beneath it without a hop.
+Unlike the thin cuts B‑B…D‑D, E‑E is a full **X–Z elevation of the corridor pump‑column bay** —
+every real pipe run in the corridor, **projected from the 3D model looking +Yd**. The paths are
+captured **live from the `water.skp` builders** at render time, so this sheet tracks the 3D model
+automatically and cannot drift from it.
+
+Reading it: a run that goes **into the page** (a pure‑Yd move — e.g. a riser stepping across to its
+port lane) collapses to a point, so on the sheet a **vertical is a real Z rise and a horizontal a
+real X run**. Where two runs cross, the rear one breaks flush at the front one's wall; the layering
+(**blue in front, then brown, then gray waste**) is a drawing convention for legibility, **not** a
+depth statement — true depth is the Yd the projection drops. The pump column (P‑01 · P‑04 · P‑05 ·
+P‑03 + ACC‑01), the frame uprights and the rear panel are **ghosted context**; the bottom Yd‑rails
+float on the **Z20 sub‑plate + foot‑plate stack** (front rail narrowed, top Z55; back rail full RHS,
+top Z70.8). The IBC tote‑fill and equalization lines, which belong to the IBC stack, are omitted here
+— they are drawn in the [IBC‑stacking](ibc-stacking-report.md) plumbing views. The legend numbers every run.
 
 ## Section F‑F — through the far cantilever
 

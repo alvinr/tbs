@@ -31,6 +31,7 @@ from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_pa
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "models"))
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
+import generate_pinhole_water_panel as pw    # P-02/DV-01/SV-01 + ribbon corridor ends (water.skp build)
 from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
@@ -46,13 +47,14 @@ C_TRAY  = "#A6B4A6"
 C_IBC_B = "#6B4A2E"
 C_BLUE  = "#2979B8"
 C_BROWN = "#8A6A3E"
-C_WASTE = "#8A8A90"   # grey — DV-02 waste → IBC-4 merge line
+C_WASTE = "#8A8A90"   # gray — DV-02 waste → IBC-4 merge line
 FONT    = {"fontfamily": "monospace"}
 
 LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
 
 OD = 21.0
 PIPE_WALL = 2.5   # OD21 HDPE wall for draw_pipe_path (parallel-sided pipe + elbow fittings)
+CORR_X_LO, CORR_X_HI = 4580, 5480   # E-E corridor-elevation X window (pump column + end-wall ports)
 
 # Right-walkway support (long beams run in Yd → cut as boxes at these X, Z80-115).
 BEAM_XS = [WALKWAY_RIGHT_X, WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 40]   # 4329, 4589
@@ -167,13 +169,72 @@ def _split_run(pts, obstacles, gap):
 def _draw_lanes(ax, runs):
     """Draw pipe runs with elbow fittings AND legible over/under crossings: runs are listed
     BACK->FRONT, each rear run breaks flush at every front run's wall (house crossing convention,
-    grey->brown->blue layering)."""
+    gray->brown->blue layering)."""
     segs = [list(zip(pts[:-1], pts[1:])) for pts, _ in runs]
     for i, (pts, col) in enumerate(runs):
         obstacles = [s for j in range(i + 1, len(runs)) for s in segs[j]]   # higher index = in front
         for sub in _split_run(pts, obstacles, OD / 2):
             draw_pipe_path(ax, [p[0] for p in sub], [p[1] for p in sub], OD, PIPE_WALL,
                            fc=col, ec=C_OUT, zorder=8 + 2 * i)
+
+
+# ── Faithful corridor routing: the REAL 3D pipe paths, projected into the E-E X–Z plane ──────────
+# Captured LIVE from the water.skp builders (generate_corridor_water_panel + generate_pinhole_water_panel,
+# the sump_on_skid=True config the water model is built with) so the section can never drift from the 3D.
+# Each 3D waypoint (X,Yd,Z) projects to (X,Z); pure-Yd moves collapse (they're "into the page").
+_LAYER = {"#777777": 0, "#8A8A90": 0,                      # gray waste → back
+          "#6B4A2E": 1, "#8A6A3E": 1,                      # brown → middle
+          "#2979B8": 2, "#3A6EA5": 2, "#2060A0": 2}        # blue / filtered-blue → front
+_CORRIDOR_COL = {"#6B4A2E": C_BROWN, "#8A6A3E": C_BROWN,
+                 "#2979B8": C_BLUE, "#3A6EA5": C_BLUE, "#2060A0": C_BLUE,
+                 "#777777": C_WASTE, "#8A8A90": C_WASTE, "#B8B840": "#B8B840"}
+
+
+def _project_xz(way):
+    """3D (X,Yd,Z) waypoints → X–Z polyline with pure-Yd (into-page) moves collapsed."""
+    out = []
+    for x, _yd, z in way:
+        p = (round(x, 1), round(z, 1))
+        if not out or p != out[-1]:
+            out.append(p)
+    return out
+
+
+def _capture_corridor_pipes():
+    """Run the water.skp pipe builders with a capturing shim and return the corridor runs as
+    (name, xz_pts, matplotlib_color), ordered BACK->FRONT (gray, brown, blue) for _draw_lanes."""
+    cap = []
+    orig = cp.draw.ruby_pipe_run                                   # draw is shared by cp + pw
+    cp.draw.ruby_pipe_run = lambda nm, way, *a, **k: (
+        cap.append((nm, [tuple(c for c in p) for p in way], k.get("color"))) or "")
+    try:
+        for fn in (lambda: cp.plumbing(sump_on_skid=True),
+                   lambda: cp.drains_ports(sump_on_skid=True),
+                   lambda: cp.equipment(sump_on_skid=True),
+                   pw.tap01_supply, lambda: pw.kit(p02_on_corridor=True),
+                   pw.skid_row, pw.skid_plumbing, pw.other_equipment):
+            try:
+                fn()
+            except Exception:
+                pass                                              # a builder we don't need may need SU; skip it
+    finally:
+        cp.draw.ruby_pipe_run = orig
+    # IBC tote-top FILL + equalization lines belong to the IBC stack (ghosted here) and the
+    # IBC-stacking diagram — they'd only float sparse tags in the upper band, so omit them from
+    # the corridor pump-bay elevation.
+    SKIP = ("x1 ", "equalization")
+    seen, runs = set(), []
+    for nm, way, col in cap:
+        key = (nm, tuple(way))
+        if key in seen or any(s in nm.lower() for s in SKIP):
+            continue
+        seen.add(key)
+        xz = _project_xz(way)
+        if len(xz) < 2 or max(p[0] for p in xz) < CORR_X_LO:       # fully off toward the pinhole wall
+            continue
+        runs.append((nm, xz, col))
+    runs.sort(key=lambda r: _LAYER.get(r[2], 1))                   # gray → brown → blue (back → front)
+    return runs
 
 
 def sheet1():
@@ -507,100 +568,106 @@ def sheet3():
     print(f"Walkway section D-D (near cantilever) → {out}")
 
 
+def _clean_name(nm):
+    """Tidy a captured 3D pipe name for the legend."""
+    nm = nm.replace(" (off-panel)", "").replace(" entry", "").replace(" (in)", " IN")
+    nm = nm.replace(" -> ", " → ").replace("(single filtered line)", "(filtered)")
+    return nm.strip()
+
+
 def sheet4():
-    """SECTION E-E — corridor center (Yd≈1130-1245 slab, the clear span between the frame
-    uprights), X–Z looking +Yd.  Here the four corridor lanes the D-D ghosts pointed to run
-    as REAL in-plane runs toward the pump column."""
-    X_LO, X_HI = 4600, 5185
-    Z_LO, Z_HI = -210, 1100  # bottom margin clears the title block (drawn at the axes-fraction bottom); tall header band above Z_CEIL fits NOTES + legend
-    Z_CEIL = 660             # ghost uprights / pump column / P-04 riser rise to here (top of the drawing)
-    fig = plt.figure(figsize=(15.5, 12.4))
-    ax = fig.add_axes([0.05, 0.08, 0.92, 0.82])
+    """CORRIDOR PLUMBING ELEVATION E-E — the REAL 3D corridor routing (every pipe in the pump-column
+    bay) projected into the X–Z plane, looking +Yd.  Paths are captured LIVE from the water.skp
+    builders, so the elevation can never drift from the 3D model; pure-Yd (into-page) moves collapse."""
+    X_LO, X_HI = CORR_X_LO, CORR_X_HI
+    runs = _capture_corridor_pipes()                                     # REAL 3D paths, projected (captured live)
+    _zmax = max(p[1] for _n, xz, _c in runs for p in xz)
+    Z_LO, Z_HI = -360, _zmax + 110     # floor at 0; title block sits below the floor; top margin above the tallest riser
+    fig = plt.figure(figsize=(16.5, 13.5))
+    ax = fig.add_axes([0.035, 0.05, 0.60, 0.90])     # drawing on the left; legend/notes in the right margin
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI); ax.set_aspect("equal"); ax.axis("off")
-    # Ghost uprights + pump column rise to the top of the drawing area, so place the
-    # title/subtitle in the figure margin ABOVE the axes (axes top = 0.08 + 0.82 = 0.90).
-    _tcx = 0.05 + 0.92 / 2   # horizontal center of the axes in figure coords
-    fig.text(_tcx, 0.972, "SECTION E-E · CORRIDOR CENTER (between the frame uprights)",
-             ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
-    fig.text(_tcx, 0.945, "X–Z elevation, looking +Yd · slab Yd≈1130–1245 (the clear span) · 1:1",
-             ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
+    fig.text(0.035, 0.975, "ELEVATION E-E · CORRIDOR PLUMBING (pump-column bay)",
+             ha="left", va="top", fontsize=13, fontweight="bold", color=C_OUT, **FONT)
+    fig.text(0.035, 0.955, "X–Z projection looking +Yd · every real corridor run, captured from the 3D model · 1:1",
+             ha="left", va="top", fontsize=8, color=C_DIM, **FONT)
 
+    # ── structural context ──
     _rect(ax, X_LO, -40, X_HI - X_LO, 40, C_FLOOR, lw=1.0, hatch="////", z0=2)                 # floor
-    _rect(ax, X_LO, DECK_ZB, PROC_TRAY_X_R - X_LO, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)     # deck right edge
-    # OUTER beam is OMITTED over this corridor bay (the two beam runs stop at the cantilever arms),
-    # so no beam is cut by this plane; the grate's CENTER section bridges the ~170mm open bay overhead.
-    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (grate CENTER section bridges here);\nOUTER beam ABSENT in this bay — ends at the cantilever arms",
-            fontsize=5.0, ha="left", va="bottom", color=C_DIM, zorder=15, **FONT)
-    # Bottom Yd-rails float on the Z20 plate stack (sub-plate + foot plate); no plate under this
-    # mid-span cut (the feet are at the uprights, outside the slab), so the rails sit clear of the floor.
-    _BASE = cp.FRAME_BASE_Z                                                                    # 20 — frame base
-    _RHS  = cp.ov.IBC_FRAME_RHS                                                                # 50.8 — full RHS
-    _FRW, _FRH = cp.ov.IBC_FRONT_RAIL_W, cp.ov.IBC_FRONT_RAIL_H                                 # 20 wide × 35 tall
-    _rect(ax, cp.FRONT_RAIL_CX - _FRW / 2, _BASE, _FRW, _FRH, C_STEEL, lw=0.9, z0=6)            # front bottom Yd-rail — narrowed + centred on the foot plates (top Z55)
-    _rect(ax, cp.BACK_X, _BASE, _RHS, _RHS, C_STEEL, lw=0.9, z0=6)                              # back bottom Yd-rail — full RHS (top Z70.8); the DV-02 waste hops it
-    ax.text(cp.BACK_X + 25, _BASE + _RHS + 7, "back ring-rail\n(full RHS, top Z%g)" % (_BASE + _RHS),
-            fontsize=4.6, ha="center", va="bottom", color=C_DIM, zorder=15, **FONT)
-    for ux, tag in ((UP_X0, "front"), (cp.BACK_X, "back")):                                     # uprights (ghost, slab edges) — float on the Z20 base
-        _rect(ax, ux, _BASE, _RHS, Z_CEIL - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.16, ls="--")
-        ax.text(ux + 25, 455, f"{tag} upright\n(ghost)", fontsize=5, ha="center", va="center", color=C_GHOST, **FONT)
-    _rect(ax, 4934, 355, 100, Z_CEIL - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
-    ax.text(4984, 470, "pump column\n(P-01/04/05/03)\nghost, Yd≤1131", fontsize=4.8, ha="center", va="center", color=C_GHOST, **FONT)
+    _rect(ax, X_LO, DECK_ZB, PROC_TRAY_X_R - X_LO, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=3)      # walkway deck edge (−X)
+    _BASE, _RHS = cp.FRAME_BASE_Z, cp.ov.IBC_FRAME_RHS
+    _FRW, _FRH = cp.ov.IBC_FRONT_RAIL_W, cp.ov.IBC_FRONT_RAIL_H
+    _rect(ax, cp.FRONT_RAIL_CX - _FRW / 2, _BASE, _FRW, _FRH, C_STEEL, lw=0.9, z0=4)            # front bottom Yd-rail (top Z55)
+    _rect(ax, cp.BACK_X, _BASE, _RHS, _RHS, C_STEEL, lw=0.9, z0=4)                              # back bottom Yd-rail (top Z70.8)
+    # frame uprights + rear panel + pump column, ghosted (just outside / behind the pipes)
+    for ux in (UP_X0, cp.BACK_X):
+        _rect(ax, ux, _BASE, _RHS, Z_HI - 120 - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.14, ls="--")
+    _ghost_top = Z_HI - 110
+    _rect(ax, cp.BACK_X, _BASE, 18, _ghost_top - _BASE, C_GHOST, ec="none", z0=1, alpha=0.08)   # rear panel ply
+    _rect(ax, 4934, _BASE, 100, _ghost_top - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.10, ls="--")  # pump column (P-01/04/05/03 + ACC)
+    ax.text(4984, _ghost_top - 70, "pump column\n(P-01·P-04·P-05·P-03\n+ ACC-01) ghost", fontsize=5.0,
+            ha="center", va="top", color=C_GHOST, zorder=2, **FONT)
+    ax.text(UP_X0 - 4, _ghost_top, "front\nupright", fontsize=4.8, ha="right", va="top", color=C_GHOST, **FONT)
+    ax.text(cp.BACK_X + 60, _ghost_top, "back upright\n+ rear panel", fontsize=4.8, ha="left", va="top", color=C_GHOST, **FONT)
 
-    # ── Past the cantilever each line comes back to FLUSH (Z104.5), crosses the OPEN corridor bay (no outer beam), and ──
-    # ── drops the tray-edge SLOT (X4629-4654, clear of the carriage) into the corridor, where the EXISTING routing ──
-    # ── (unchanged — "reconnect at the right edge onwards") rises it to its lane and runs in X to the pumps. ──
-    GAP_ENTRY_X = 4641
-    # Each lane spans the corridor entry (UNDER_BEAM_Z 65) up through the flush level (104.5) to its
-    # lane Z, then runs in X — the flush arrival + slot drop is called out by the red leader below.
-    # Drawn BACK->FRONT (grey waste, browns, blues) so crossings read as clean over/unders: the rear
-    # pipe breaks at each front pipe's wall.  DV-02 waste drops the same slot but runs the FLOOR to the
-    # rear, rising Z65->Z90 to HOP the back ring-rail (top Z70.8) to the merge tee off-view at X5289.
-    _draw_lanes(ax, [
-        ([(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (5060, UNDER_BEAM_Z), (5060, 90), (X_HI - 6, 90)], C_WASTE),  # DV-02 waste → IBC-4
-        ([(GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN),       # sump → P-04
-        ([(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN),              # IBC-3 → P-02
-        ([(GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE),                   # blue trunk
-        ([(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE),               # blue SV-01 → DV-01
-    ])
-    leader(ax, 5082, 92, 4958, 172, "DV-02 waste → IBC-4:\nrises Z65→90 to clear the back\nring-rail (top Z70.8) → merge (off-view X5289)",
-           color=C_DIM, fs=4.8, ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    ax.annotate("↑ P-04 IN", xy=(4900, Z_CEIL - 24), xytext=(4915, Z_CEIL - 70),
-                fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
-    # mark the flush arrival + slot drop
-    leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X - 25, 372,
-           "the four lines arrive FLUSH across the\nopen bay (no beam), drop the tray-edge SLOT\n(past the carriage) to the corridor entry,\nthen RISE",
-           color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    # legend (identifies the four lanes) — in the clear header band ABOVE the drawing top (Z_CEIL=660),
-    # below the NOTES box, so it no longer overlaps the P-04 riser / pump-column ghost
-    lgx, lgz = 4650, 800
-    ax.text(lgx, lgz, "CORRIDOR LANES (→ toward the pumps):", fontsize=6, ha="left", va="top",
-            color=C_OUT, fontweight="bold", zorder=14, **FONT)
-    for i, (c, t) in enumerate([(C_BROWN, "brown tray-sump → P-04 (rises into P-04)"),
-                                (C_BLUE, "blue supply trunk"),
-                                (C_BROWN, "brown IBC-3 → P-02"),
-                                (C_BLUE, "blue SV-01 → DV-01 return")]):
-        zz = lgz - 22 - i * 20
-        ax.add_patch(Rectangle((lgx, zz - 7), 30, 13, facecolor=c, edgecolor=C_OUT, lw=0.6, zorder=14))
-        ax.text(lgx + 40, zz, t, fontsize=5.4, ha="left", va="center", color=C_OUT, zorder=14, **FONT)
-    ax.text(lgx, lgz - 22 - 4 * 20 - 4, "* co-planar at Z235; the upper two lanes raised +24/+48mm for clarity",
-            fontsize=4.8, ha="left", va="top", color=C_DIM, zorder=14, **FONT)
+    # ── the REAL corridor pipe routing, projected from the 3D (captured live) ──
+    _draw_lanes(ax, [(xz, _CORRIDOR_COL.get(col, C_DIM)) for _nm, xz, col in runs])
 
-    notes = [
-        "SECTION E-E NOTES",
-        "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the uprights + pump column are just outside the slab, ghosted.",
-        "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the OPEN corridor bay (Yd~1097–1266) — the outer beam is omitted between the two cantilever arms, so none is cut here — then drops the tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.",
-        "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises each line to its lane and runs in X toward the pumps (Z205–235 band).",
-        "4. The four RIBBON lanes clear the ring rails — they enter at the tray-edge slot (X4641), −X of the frame.  The bottom Yd-rails float on the Z20 plate stack: the FRONT rail is narrowed + low (top Z55), the BACK rail is full RHS (top Z70.8).  The separate DV-02 waste → IBC-4 line runs the floor to the rear and rises to Z90 to hop the back rail, reaching the merge.",
-    ]
-    draw_notes(ax, notes, X_LO + 8, Z_HI - 15, 13.0, fs=6.0,
-               font=FONT, width=500, wrap=76, border_color=C_DIM, border_lw=0.7)
+    # number runs in LEGEND order (blue → brown → gray) so both the tags and the legend read 1..N
+    order = {C_BLUE: 0, C_BROWN: 1, C_WASTE: 2}
+    leg = sorted(range(len(runs)), key=lambda j: (order.get(_CORRIDOR_COL.get(runs[j][2], C_DIM), 3), j))
+    numof = {j: k + 1 for k, j in enumerate(leg)}
+
+    # numbered callouts: anchor each tag at the MIDPOINT of its run's longest in-window segment
+    # (its most prominent length), falling back to shorter segments if that collides with a placed tag
+    placed = []
+    for j, (nm, xz, col) in enumerate(runs):
+        segs = sorted(zip(xz[:-1], xz[1:]),
+                      key=lambda s: -((s[0][0] - s[1][0]) ** 2 + (s[0][1] - s[1][1]) ** 2))
+        mids = [((a[0] + b[0]) / 2, (a[1] + b[1]) / 2) for a, b in segs
+                if X_LO + 14 <= (a[0] + b[0]) / 2 <= X_HI - 14] or [xz[len(xz) // 2]]
+        anchor = next((m for m in mids if all((m[0] - q[0]) ** 2 + (m[1] - q[1]) ** 2 > 30 ** 2 for q in placed)), mids[0])
+        placed.append(anchor)
+        ax.text(anchor[0], anchor[1], str(numof[j]), fontsize=5.0, ha="center", va="center", zorder=30,
+                color="white", fontweight="bold",
+                bbox=dict(boxstyle="circle,pad=0.16", fc=_CORRIDOR_COL.get(col, C_DIM), ec="white", lw=0.5), **FONT)
+
+    # ── legend (right margin): numbered 1..N, grouped by color/system ──
+    lx = 0.655
+    fig.text(lx, 0.93, "CORRIDOR RUNS (→ pump column / end wall)", fontsize=8.5,
+             fontweight="bold", color=C_OUT, **FONT)
+    y = 0.905
+    for j in leg:
+        nm, xz, col = runs[j]
+        mc = _CORRIDOR_COL.get(col, C_DIM)
+        fig.text(lx, y, "●", fontsize=8, color=mc, va="center", **FONT)
+        fig.text(lx + 0.016, y, f"{numof[j]}. {_clean_name(nm)}", fontsize=6.3, color=C_OUT, va="center", **FONT)
+        y -= 0.0185
+    y -= 0.010
+    for line in [
+        "HOW TO READ THIS SHEET",
+        "• X–Z projection looking +Yd: a run going INTO the page (a pure-Yd",
+        "  move, e.g. a riser stepping to its port lane) collapses to a point,",
+        "  so a vertical here is a real Z rise and a horizontal a real X run.",
+        "• Crossings read as over/unders (rear pipe breaks at the front wall);",
+        "  blue in front, then brown, then gray waste — a drawing convention,",
+        "  NOT a depth statement (true depth is the Yd the projection drops).",
+        "• Captured live from the water.skp builders — this elevation tracks",
+        "  the 3D model automatically and cannot drift from it.",
+        "• The pump column, uprights + rear panel are ghosted context; the",
+        "  bottom Yd-rails float on the Z20 sub-plate + foot-plate stack.",
+    ]:
+        bold = not line.startswith("•")
+        fig.text(lx, y, line, fontsize=7.2 if bold else 6.4, fontweight="bold" if bold else "normal",
+                 color=C_OUT if bold else C_DIM, va="top", **FONT)
+        y -= 0.019 if bold else 0.016
+
     title_block(ax, "SHEET 4 OF 6", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
-                subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTER")
+                subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR PLUMBING ELEVATION")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")
     fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
-    print(f"Walkway section E-E (corridor center) → {out}")
+    print(f"Walkway elevation E-E (corridor plumbing) → {out}")
 
 
 def sheet5():

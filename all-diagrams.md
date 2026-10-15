@@ -230,7 +230,7 @@
 
 ![TBS-001 — Walkway Routing Section D-D: through the near cantilever](assets/walkway-sections-sheet3.png)
 
-![TBS-001 — Walkway Routing Section E-E: corridor center](assets/walkway-sections-sheet4.png)
+![TBS-001 — Walkway Routing Elevation E-E: corridor plumbing (pump-column bay)](assets/walkway-sections-sheet4.png)
 
 ![TBS-001 — Walkway Routing Section F-F: through the far cantilever](assets/walkway-sections-sheet5.png)
 

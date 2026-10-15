@@ -2010,19 +2010,19 @@ def draw_sheet10():
             color="#5060A0", fontweight="bold", **FONT, zorder=9)
 
     # ── Leaders ──────────────────────────────────────────────────────────────
-    leader(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 270, Z_BEAM0 + 30,
-           "SKF 6215-2RS1 upper bearing\nin isolated Al ring, bolted to the axle beam (Sheet 5)",
+    leader(ax, (bID + bOD) / 2, Z_BRG0 + bW / 2, 70, Z_BEAM0 + 130,
+           "SKF 6215-2RS1 upper bearing\nin isolated Al ring, bolted\nto the axle beam (Sheet 5)",
            fs=6.5, color=C_OUT, ha="center", arrow_style="->", font=FONT)
     leader(ax, 30, 8, -20, -20, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 575, 55,
-           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× #4 strip brushes in Al flange holders\nFLANGE-RIVETED to the ROTATING drum OD, bristles\n wiping the fixed bore (Sheets 4/7)",
+           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× #4 strip brushes in Al\nflange holders FLANGE-RIVETED to the ROTATING\ndrum OD, bristles wiping the fixed bore\n(Sheets 4/7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 575, Z_BEAM0 + 120,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing;\nswing-panel weldment (Sheet 8)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, POST_R0 + LT_FRAME_RHS / 2, -35, 575, -35,
-           f"CAGE CORNER POST {LT_FRAME_RHS}×{LT_FRAME_RHS}×{LT_FRAME_T} RHS\nframes the beam end · welded to the panel rails (Sheet 8)",
+           f"CAGE CORNER POST {LT_FRAME_RHS}×{LT_FRAME_RHS}×{LT_FRAME_T} RHS\nframes the beam end · welded to the panel\nrails (Sheet 8)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, HOR_, -110, 575, -130, f"FIXED HOUSING Ø{DRUM_D} (outer skin)\nrotating drum Ø{2 * LT_DRUM_OR} inside",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)

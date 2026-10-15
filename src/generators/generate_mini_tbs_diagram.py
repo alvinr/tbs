@@ -273,16 +273,16 @@ leader(ax, sleeve_wall_x + WALL_T + SLEEVE_PROJ / 2, arm_top_s + 3,
        TOTAL_D + SLEEVE_PROJ + 30, arm_top_s + 50,
        f"Arm sleeves (×2) Ø{SLEEVE_D}mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, panel_x, (paper_y1 + paper_y2) / 2,
-       panel_x - 80, ph_y + 90,
+       panel_x - 80, ph_y + 50,
        "10×14\" paper\n(centered on panel)", ha="center", color=C_CL)
 panel_fold_mid = hinge_x + PANEL_H / 2
 leader(ax, hinge_x + PANEL_H - 10, hinge_y - 8,
-       hinge_x + PANEL_H + 20, hinge_y + 80,
+       hinge_x + PANEL_H + 20, hinge_y + 30,
        "Panel folded down\n(horizontal —\npin + coat paper here)", ha="center", color=C_MOTION)
-leader(ax, hinge_x, hinge_y - PANEL_T, hinge_x + 30, hinge_y - 50,
+leader(ax, hinge_x, hinge_y - PANEL_T, hinge_x + 30, hinge_y - 30,
        "Hinge — reinforced\nbottom edge of window", ha="left", color=C_HINGE)
 leader(ax, BOX_D + PREP_D / 2, WALL_T + 5,
-       BOX_D + PREP_D / 2 + 40, WALL_T + 60,
+       BOX_D + PREP_D / 2 + 40, WALL_T + 30,
        "Duct-tape drip liner\n(optional)", ha="center", color=C_HINGE, fs=FS_SM - 0.5)
 ax.text(BOX_D / 2, ph_y + 10, "Light cone",
         ha="center", color=C_CONE_LN)
@@ -290,7 +290,7 @@ leader(ax, BOX_D + PREP_D * 0.30, BOX_H + PREP_D * 0.40 * math.sin(math.radians(
        BOX_D + PREP_D * 0.5, BOX_H + 150,
        "Prep-box top flaps — the extraction opening\n(built flaps-up; open in daylight to remove\nthe print; masking-taped shut during coating + exposure)",
        ha="center", color=C_FLAP, fs=FS_SM - 0.5)
-leader(ax, BOX_D, -6, BOX_D - 100, -55,
+leader(ax, BOX_D, -6, BOX_D - 100, -35,
        "Grey tape joins\nthe two boxes", ha="center", color="#8A8A8A", fs=FS_SM - 0.5)
 
 # View title
@@ -345,9 +345,9 @@ draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
            f"Ø{SLEEVE_D}mm (4\")", offset=10, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, arm_cx1, arm_cy, -60, arm_cy + 50,
+leader(ax, arm_cx1, arm_cy, 80, arm_cy + 75,
        f"Armhole Ø{SLEEVE_D}mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
-leader(ax, arm_cx1 + SLEEVE_D / 2 + 5, arm_cy, EF_W + 80, arm_cy +270,
+leader(ax, arm_cx1 + SLEEVE_D / 2 + 5, arm_cy, EF_W * 0.5, arm_cy + 70,
        "Gaffer tape seal", ha="left", fs=FS_SM - 0.5)
 
 # View title
@@ -486,9 +486,9 @@ draw_dim_h(ax, wall_x + wall_thick, elastic_x, wall_bot - 25,
            f"Sleeve ~450mm (18\")\n(shown truncated)", offset=8, fs=FS_SM - 1)
 
 # ── Leaders ──────────────────────────────────────────────────────────────
-leader(ax, wall_x + wall_thick / 2, wall_top - 5, -60, wall_top + 35,
+leader(ax, wall_x + wall_thick / 2, wall_top - 5, -20, wall_top + 15,
        "Cardboard wall\n(end face)", ha="right", fs=FS_SM - 0.5)
-leader(ax, -fold_back / 2, hole_r + fabric_thick + tape_t + 2, -60, hole_r + 45,
+leader(ax, -fold_back / 2, hole_r + fabric_thick + tape_t + 2, -30, hole_r + 25,
        "Duct tape\nseal (inside)", ha="right", fs=FS_SM - 0.5, color=C_HINGE)
 leader(ax, -fold_back / 2, hole_r + 1, -60, hole_r + 25,
        "Fabric fold-back", ha="right", fs=FS_SM - 0.5, color=C_SLEEVE)

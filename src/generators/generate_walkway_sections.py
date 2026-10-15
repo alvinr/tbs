@@ -457,9 +457,9 @@ def sheet4():
     uprights), X–Z looking +Yd.  Here the four corridor lanes the D-D ghosts pointed to run
     as REAL in-plane runs toward the pump column."""
     X_LO, X_HI = 4600, 5185
-    Z_LO, Z_HI = -80, 1100   # tall header band above the ghost-upright tops (Z_CEIL) — fits NOTES + legend clear of the drawing
+    Z_LO, Z_HI = -210, 1100  # bottom margin clears the title block (drawn at the axes-fraction bottom); tall header band above Z_CEIL fits NOTES + legend
     Z_CEIL = 660             # ghost uprights / pump column / P-04 riser rise to here (top of the drawing)
-    fig = plt.figure(figsize=(15.5, 11.1))
+    fig = plt.figure(figsize=(15.5, 12.4))
     ax = fig.add_axes([0.05, 0.08, 0.92, 0.82])
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI); ax.set_aspect("equal"); ax.axis("off")

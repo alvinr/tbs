@@ -1403,8 +1403,8 @@ def draw_sheet3():
     ]
     key_bottom = KY - 100 - (len(key_items) - 1) * 220 - 120
     notes_y_top = key_bottom - 120
-    draw_notes(ax, notes, -500, KY + 40, spacing=60,
-               fs=7, width=3400, font={"fontfamily": "monospace"})
+    draw_notes(ax, notes, -500, KY + 100, spacing=60,
+               fs=7, wrap=150, width=3400, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 9",

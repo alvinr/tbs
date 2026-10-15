@@ -175,7 +175,7 @@ def _draw_lanes(ax, runs):
         obstacles = [s for j in range(i + 1, len(runs)) for s in segs[j]]   # higher index = in front
         for sub in _split_run(pts, obstacles, OD / 2):
             draw_pipe_path(ax, [p[0] for p in sub], [p[1] for p in sub], OD, PIPE_WALL,
-                           fc=col, ec=C_OUT, zorder=8 + 2 * i)
+                           fc=col, ec=C_OUT, bore_fc=col, zorder=8 + 2 * i)
 
 
 # ── Faithful corridor routing: the REAL 3D pipe paths, projected into the E-E X–Z plane ──────────
@@ -582,9 +582,9 @@ def sheet4():
     X_LO, X_HI = CORR_X_LO, CORR_X_HI
     runs = _capture_corridor_pipes()                                     # REAL 3D paths, projected (captured live)
     _zmax = max(p[1] for _n, xz, _c in runs for p in xz)
-    Z_LO, Z_HI = -360, _zmax + 110     # floor at 0; title block sits below the floor; top margin above the tallest riser
-    fig = plt.figure(figsize=(16.5, 13.5))
-    ax = fig.add_axes([0.035, 0.05, 0.60, 0.90])     # drawing on the left; legend/notes in the right margin
+    Z_LO, Z_HI = -60, _zmax + 110      # floor hatch at −40..0; top margin above the tallest riser (the title block sits in its own full-width strip below, not reserved inside the drawing)
+    fig = plt.figure(figsize=(16.5, 12.0))
+    ax = fig.add_axes([0.035, 0.11, 0.60, 0.84])     # drawing on the left; legend/notes in the right margin; a full-width title-block strip spans below both
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI); ax.set_aspect("equal"); ax.axis("off")
     fig.text(0.035, 0.975, "ELEVATION E-E · CORRIDOR PLUMBING (pump-column bay)",
@@ -662,8 +662,12 @@ def sheet4():
                  color=C_OUT if bold else C_DIM, va="top", **FONT)
         y -= 0.019 if bold else 0.016
 
-    title_block(ax, "SHEET 4 OF 6", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
-                subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR PLUMBING ELEVATION")
+    # Title block on its OWN full-width strip so it spans the used width (drawing + legend),
+    # rather than shrinking to the tall-narrow drawing axes and stranding the key beside it.
+    tb_ax = fig.add_axes([0.035, 0.015, 0.825, 0.075]); tb_ax.axis("off")
+    tb_ax.set_xlim(0, 1); tb_ax.set_ylim(0, 1)
+    title_block(tb_ax, "SHEET 4 OF 6", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
+                subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR PLUMBING ELEVATION", height=0.62)
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")
     fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)

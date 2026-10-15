@@ -1266,8 +1266,8 @@ def spine_view(side):
         # rise at X4908 crosses the blue HORIZONTAL trunk at Z235 — so the blue
         # reads continuous (skill_plumbing_drawing: the crossing run breaks).
         _pipe([4600, 4655 - 16], [205, 205], C_WASTEB, zorder=9)   # floor, before the blue drop at 4655
-        _pipe([4655 + 16, 4908], [205, 205], C_WASTEB, zorder=9)   # floor, after the blue drop
-        _pipe([4908, 4908], [205, 235 - 16], C_WASTEB, zorder=9)   # rise, up to the blue trunk crossing
+        # floor after the blue drop → rise: ONE path so the corner at (4908, 205) gets an elbow fitting
+        _pipe([4655 + 16, 4908, 4908], [205, 205, 235 - 16], C_WASTEB, zorder=9)
         # rise past blue → +X back to the P-04 IN at the pump axis (PXC) — the forward-riser LOOP
         _pipe([4908, 4908, PXC], [235 + 16, 1075, 1075], C_WASTEB, zorder=9)
         _flowhead(4600, 205, "right", C_WASTEB)            # suction: tray sump → P-04

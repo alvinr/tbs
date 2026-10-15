@@ -633,7 +633,7 @@ def sheet4():
                 bbox=dict(boxstyle="circle,pad=0.16", fc=_CORRIDOR_COL.get(col, C_DIM), ec="white", lw=0.5), **FONT)
 
     # ── legend (right margin): numbered 1..N, grouped by color/system ──
-    lx = 0.655
+    lx = 0.555
     fig.text(lx, 0.93, "CORRIDOR RUNS (→ pump column / end wall)", fontsize=8.5,
              fontweight="bold", color=C_OUT, **FONT)
     y = 0.905

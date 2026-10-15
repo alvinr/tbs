@@ -800,7 +800,10 @@ def _draw_quadrant_labels(ax, quads, total):
 
 def sheet_dry(components):
     """Sheet 2: Weight Distribution — Dry, configured for transport."""
-    fig, ax = plt.subplots(figsize=(18, 10))
+    fig = plt.figure(figsize=(18, 11.25))
+    gs = fig.add_gridspec(2, 1, height_ratios=[1, 0.07], hspace=0.09)
+    ax = fig.add_subplot(gs[0])
+    ax_tb = fig.add_subplot(gs[1])
     total_dry, x_cg, yd_cg, z_cg = _draw_state_diagram(
         ax, components, "dry", "DRY (TRANSPORT)")
 
@@ -858,12 +861,15 @@ def sheet_dry(components):
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 2 OF 5",
+    ax_tb.set_xlim(0, 1)
+    ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 2 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — DRY (CONFIGURED FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
-                height=0.065)
+                height=0.8)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet2.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -957,7 +963,10 @@ def _draw_state_diagram(ax, components, state, state_label):
 
 def sheet_ready(components):
     """Sheet 3: Camera Ready state distribution."""
-    fig, ax = plt.subplots(figsize=(18, 8))
+    fig = plt.figure(figsize=(18, 9.0))
+    gs = fig.add_gridspec(2, 1, height_ratios=[1, 0.085], hspace=0.10)
+    ax = fig.add_subplot(gs[0])
+    ax_tb = fig.add_subplot(gs[1])
     _draw_state_diagram(ax, components, "ready", "CAMERA READY")
 
     ax.set_xlim(-400, C_LEN + 500)
@@ -967,12 +976,15 @@ def sheet_ready(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 3 OF 5",
+    ax_tb.set_xlim(0, 1)
+    ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 3 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — CAMERA READY (PANEL DEPLOYED)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
-                height=0.065)
+                height=0.8)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet3.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -981,7 +993,10 @@ def sheet_ready(components):
 
 def sheet_exhausted(components):
     """Sheet 4: Materials Exhausted state distribution."""
-    fig, ax = plt.subplots(figsize=(18, 8))
+    fig = plt.figure(figsize=(18, 9.0))
+    gs = fig.add_gridspec(2, 1, height_ratios=[1, 0.085], hspace=0.10)
+    ax = fig.add_subplot(gs[0])
+    ax_tb = fig.add_subplot(gs[1])
     total_ex, x_ex, yd_ex, z_ex = _draw_state_diagram(
         ax, components, "exhausted", "MATERIALS EXHAUSTED")
 
@@ -1006,12 +1021,15 @@ def sheet_exhausted(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 4 OF 5",
+    ax_tb.set_xlim(0, 1)
+    ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 4 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — MATERIALS EXHAUSTED (FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
-                height=0.065)
+                height=0.8)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet4.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -1024,7 +1042,10 @@ def sheet_loaded_transport(components):
     Heaviest top-tier case while configured for the road: full Blue IBCs
     (1,200 kg) with the panel swung in and the cargo doors closed.
     """
-    fig, ax = plt.subplots(figsize=(18, 8))
+    fig = plt.figure(figsize=(18, 9.0))
+    gs = fig.add_gridspec(2, 1, height_ratios=[1, 0.085], hspace=0.10)
+    ax = fig.add_subplot(gs[0])
+    ax_tb = fig.add_subplot(gs[1])
     total_lt, x_lt, yd_lt, z_lt = _draw_state_diagram(
         ax, components, "loaded_transport", "LOADED TRANSPORT (BLUE FULL)")
 
@@ -1050,12 +1071,15 @@ def sheet_loaded_transport(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 5 OF 5",
+    ax_tb.set_xlim(0, 1)
+    ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 5 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — LOADED TRANSPORT (FULL BLUE IBCs)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
-                height=0.065)
+                height=0.8)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet5.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)

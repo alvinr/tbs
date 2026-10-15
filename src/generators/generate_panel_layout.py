@@ -773,7 +773,7 @@ def draw_pinhole_panel():
     pw_rect(PWP_ACC2_X - 63, PWP_ACC2_Z0, 126, 200, C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.85)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BLUE_EC, fontweight="bold", zorder=8)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BLUE_EC, zorder=8)
-    leader(ax_p, pwx(PWP_ACC2_X) - 24, pwz(PWP_ACC2_Z0 + 200), pwx(PWP_ACC2_X) - 150, pwz(1560),
+    leader(ax_p, pwx(PWP_ACC2_X) - 24, pwz(PWP_ACC2_Z0 + 200), pwx(PWP_ACC2_X) - 300, pwz(1160),
            "ACC-02 pulsation damper\n(P-02 in corridor → ACC-02\n→ BV-05 spray selector)",
            fs=6, color=C_BLUE_EC, ha="left", va="center", font=FONT)
 
@@ -822,7 +822,7 @@ def draw_pinhole_panel():
     pw_pipe([SV01_X, SV01_X, SV01_X - 45, SV01_X - 45],
             [SV01_Z - 20, SV01_Z - 130, SV01_Z - 130, SV01_Z - 175], C_BROWN, zorder=Z_BROWN)
     pw_arrow(SV01_X - 45, SV01_Z - 150, SV01_X - 45, SV01_Z - 185, C_BROWN)
-    leader(ax_p, pwx(SV01_X), pwz(SV01_Z) + 22, pwx(4370), pwz(1980),
+    leader(ax_p, pwx(SV01_X), pwz(SV01_Z) + 22, pwx(4450), pwz(1780),
            "SV-01 — pH sample tap\n(filtered line, before DV-01;\n"
            "raised beside F-03)",
            fs=6, color=C_BROWN, ha="left", va="bottom", font=FONT)
@@ -832,7 +832,7 @@ def draw_pinhole_panel():
     DV01_EDGE_X = BD_XR + 40            # just past the board's (mirrored) left edge
     pw_pipe([SV01_X, DV01_EDGE_X], [SV01_Z, SV01_Z], C_FILTER, zorder=Z_BROWN)
     pw_arrow(DV01_EDGE_X - 30, SV01_Z, DV01_EDGE_X, SV01_Z, C_FILTER)
-    leader(ax_p, pwx(DV01_EDGE_X), pwz(SV01_Z), pwx(DV01_EDGE_X) - 8, pwz(SV01_Z) - 150,
+    leader(ax_p, pwx(DV01_EDGE_X) + 25, pwz(SV01_Z), pwx(DV01_EDGE_X) + 240, pwz(SV01_Z) - 160,
            "3W-DV-01 (corridor mouth):\npH-gated split →\n"
            "recycle (IBC-3) / Waste (IBC-4)",
            fs=6, color=C_BROWN_EC, ha="right", va="top", font=FONT)
@@ -851,10 +851,10 @@ def draw_pinhole_panel():
               fontsize=5.5, color=C_FILTER, zorder=10, **FONT)
 
     # ── LEADERS ─────────────────────────────────────────────────────
-    leader(ax_p, pwx(PWP_FILTER_X1) - 40, pwz(PWP_SROW_Z0 + 90), pwx(3060), pwz(1030),
+    leader(ax_p, pwx(PWP_FILTER_X1), pwz(PWP_SROW_Z0 + 20), pwx(3360), pwz(1030),
            "P-04 Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(tray-drain pump)",
            fs=6, color=C_PUMP_EC, ha="left", va="center", font=FONT)
-    leader(ax_p, pwx(F2_CX), pwz(SUMP_ZB + 40), pwx(3500), pwz(1640),
+    leader(ax_p, pwx(F2_CX), pwz(SUMP_ZB + 40), pwx(3500), pwz(1650),
            "Big Blue 4.5\"×20\" housing\n(Ø184 sump to Z1746, head Z2262–2340;\n"
            "F-01 5µm → F-02 KDF-55 → F-03 GAC)",
            fs=6, color=C_FILTER, ha="left", va="center", font=FONT)
@@ -862,31 +862,31 @@ def draw_pinhole_panel():
     # ── NOTES ───────────────────────────────────────────────────────
     notes = [
         "PINHOLE WALL FILTER SKID — TRAY-DRAIN RECYCLE + FILTER TRAIN:",
-        "1. Wide 18mm marine-ply backing board on the pinhole wall (Yd≈0),",
-        "    X=2780–4575, Z=920–2360mm AFF.",
-        "2. Tray-drain skid row UNDER the filters: P-04 (tray-sump pump) →",
-        "   SV-02 (pH sample) → 3W-DV-02, on the row line Z≈1312.",
-        "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →",
-        "    F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×20\" housings.",
+        "1. Wide 18mm marine-ply backing board on the pinhole wall (Yd≈0),"
+        " X=2780–4575, Z=920–2360mm AFF.",
+        "2. Tray-drain skid row UNDER the filters: P-04 (tray-sump pump) →"
+        " SV-02 (pH sample) → 3W-DV-02, on the row line Z≈1312.",
+        "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →"
+        " F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×20\" housings.",
         "4. DV-02 recycle branch feeds F-01; waste branch → IBC-4 (corridor).",
-        "5. SV-01: pH sample tap on the filtered line, RAISED beside F-03",
-        "   (Z≈1610), before DV-01.",
-        "6. 3W-DV-01 is PHYSICALLY at the corridor mouth (off this wall) — the filtered",
-        "    line leaves the board's edge and splits there: pH-gated to recycle",
-        "    (IBC-3) or Waste (IBC-4).",
-        "7. ACC-02 (recycle-spray damper, center-bottom) is fed from P-02 in the",
-        "   corridor and feeds BV-05 → the spray bar.",
+        "5. SV-01: pH sample tap on the filtered line, RAISED beside F-03"
+        " (Z≈1610), before DV-01.",
+        "6. 3W-DV-01 is PHYSICALLY at the corridor mouth (off this wall) — the filtered"
+        " line leaves the board's edge and splits there: pH-gated to recycle"
+        "  (IBC-3) or Waste (IBC-4).",
+        "7. ACC-02 (recycle-spray damper, center-bottom) is fed from P-02 in the"
+        " corridor and feeds BV-05 → the spray bar.",
         "8. Flow: sump → P-04 → SV-02 → DV-02 → F-01 → F-02 → F-03 → SV-01 → DV-01.",
-        "9. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms",
-        "    Z≈1746 AFF (4.5×20).",
-        "10. PIPE: 1\" PVC Sch-40 (filter loop) / ½\" (recycle-spray); housings on their",
-        "    integral brackets through-bolted to the ply board.",
+        "9. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms"
+        " Z≈1746 AFF (4.5×20).",
+        "10. PIPE: 1\" PVC Sch-40 (filter loop) / ½\" (recycle-spray); housings on their"
+        " integral brackets through-bolted to the ply board.",
     ]
     draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=32,
-               fs=6.5, width=720, color=C_DIM, title_color=C_NEW, font=FONT)
+               fs=6.5, wrap=95, width=720, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY (clear left margin strip, X4500–5060) ────────────
-    draw_symbol_key(ax_p, 5, pwz(2200), r=13, row=70, fs=6.5, w=375)
+    draw_symbol_key(ax_p, 1600, pwz(2200), r=13, row=70, fs=6.5, w=375)
 
     # ── TITLE BLOCK ─────────────────────────────────────────────────
     title_block(ax_p, "PINHOLE WALL PANEL",
@@ -900,7 +900,7 @@ def draw_pinhole_panel():
     #   Replaces the retired steel U-bracket: the head's own mounting ear lag-screws
     #   through a 25mm HDPE standoff straight into the 18mm ply; the Ø184 sump hangs
     #   below and clears the wall.
-    axd = fig.add_axes([0.775, 0.60, 0.20, 0.30])
+    axd = fig.add_axes([0.725, 0.60, 0.20, 0.30])
     axd.set_facecolor("white")
     axd.set_xlim(-50, 160); axd.set_ylim(-165, 150); axd.set_aspect("equal"); axd.axis("off")
     C_HDPE = "#7FBF8A"

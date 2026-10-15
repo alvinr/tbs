@@ -675,11 +675,11 @@ def sheet6():
     fz = tray_floor_z(cx, ydc)
     top_new = spray_beam_top_z(cx, ydc)
     axB.add_patch(Rectangle((cx - 40, zx(fz)), 150, zx(top_new - fz), fc="#C9D6E4", ec=C_OUT, lw=1.1, zorder=9))
-    axB.text(cx + 55, zx(fz + (top_new - fz) / 2), "Ø32 wheels +\n40×25 SS beam", fontsize=5.6,
+    axB.text(cx + 125, zx(fz + (top_new - fz) / 2), "Ø32 wheels +\n40×25 SS beam", fontsize=5.6,
              ha="left", va="center", color=C_OUT, **FONT)
     # clearance dimension (new)
-    draw_dim_v(axB, cx + 140, zx(top_new), zx(DECK_ZB), f"{DECK_ZB - top_new:.0f}mm CLEAR", offset=3, fs=7, right=True, font=FONT)
-    leader(axB, PROC_TRAY_X_L + 3, zx(ttop[0] + PROC_TRAY_RIM), PROC_TRAY_X_L + 380, zx(ttop[0] + PROC_TRAY_RIM + 26),
+    draw_dim_v(axB, cx, zx(top_new), zx(DECK_ZB), f"{DECK_ZB - top_new:.0f}mm CLEAR", offset=3, fs=7, right=True, font=FONT)
+    leader(axB, PROC_TRAY_X_L + 3, zx(ttop[0] + PROC_TRAY_RIM), PROC_TRAY_X_L + 480, zx(ttop[0] + PROC_TRAY_RIM + 26),
            f"pan/rim highest at the far-left corner\n(floor Z{ttop[0]:.0f}, rim top Z{tray_rim_top_z(PROC_TRAY_X_L, ydc):.0f})",
            color="#3C5A6E", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
 

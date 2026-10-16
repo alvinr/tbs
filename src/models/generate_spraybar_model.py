@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 import tbs_draw as draw                          # shared drawing/material primitives
 
-from tbs_constants import SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R
+from tbs_constants import SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R, C_ALUM, C_STEEL
 
 TAGS = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "Labels"]
 
@@ -33,8 +33,6 @@ TAGS = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "
 GY = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) // 2        # 1180
 
 # Colors
-C_ALUM   = "#C8D8E8"   # aluminum SHS beam + pole
-C_STEEL  = "#B0B0B8"   # carriage plate / clamps
 C_NYLON  = "#33343A"   # acetal (Delrin) wheels
 C_WATER  = "#2060C0"   # feed hose / water in pipe
 C_TRAY   = "#9FB8C8"   # tray-floor reference patch

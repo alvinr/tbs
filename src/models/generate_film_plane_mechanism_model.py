@@ -43,13 +43,13 @@ SF_DESC  = ("The configuration the photosensitive film plane is flush against on
             "long-side walls of the container. This has a view-camera-style moveable film plane — "
             "a mechanism with four independently actuated corners.")
 
-C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
+C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
 ruby_box = draw.ruby_box
 ruby_bolt = draw.ruby_bolt
 ruby_tri = draw.ruby_tri
 C_FILM = draw.C_FILM
 C_VALVE = draw.C_VALVE
-from tbs_constants import (C_WID, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_RAIL_WEB, RAIL_X_L, WALL_T)   # film-plane builders moved from overview (Phase 1)
+from tbs_constants import (C_WID, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_RAIL_WEB, RAIL_X_L, WALL_T, C_STEEL)   # film-plane builders moved from overview (Phase 1)
 
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)

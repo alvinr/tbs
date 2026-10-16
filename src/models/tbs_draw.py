@@ -644,15 +644,14 @@ def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16, m
 
 
 # ── 3D model color palette (shared by every model) ──────────────────────────
-C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
-C_FILM = "#2060A0"      # film plane / muslin screen
+# Colors shared with the 2D diagrams are single-sourced from tbs_constants
+# (the path to src/generators is added above); the rest are model-material-only.
+from tbs_constants import (C_STEEL, C_FILM, C_ALUM, C_PLASTIC, C_PUMP,   # noqa: E402
+                           C_BATT, C_GASKT, C_EVAP, C_FAN)
 C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
-C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
 C_PLY = "#9C7B4D"       # marine ply (plumbing panel + hinge-panel Fan B mount band)
-C_PLASTIC = "#6E8CA0"   # 1/8″ HDPE plastic sheet (rev11 hinge-panel skins + B2 bay; differentiates from wood C_PLY)
-C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
 C_DEMOUNT = "#E0902A"   # demountable left-rail segment (swings clear for drum)
@@ -664,18 +663,13 @@ C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
 C_IBC_WASTE = "#777777" # Waste IBC contents
 C_DRUM = "#E8E0D0"      # light-trap drum shell (cream)
 C_VANE = "#778088"      # drum turnstile vanes
-C_ELEC = "#F5C518"      # electrical panel (EP)
-C_BATT = "#6A5ACD"      # battery bank (LiFePO4)
 C_SHELF = "#C8B06A"     # chemistry prep shelf (warm gold)
-C_GASKT = "#5A3020"     # EPDM perimeter light seal
 C_TRUNK = "#9AA0A0"     # PVC cable trunking + conduit
 C_LED_W = "#FFFFE0"     # white LED panel (Cct G)
 C_SAFE = "#CC2222"      # red safelight strip (Cct D)
 C_SWITCH = "#D8D8F0"    # pull-cord switch
 C_CORD = "#3A3A3A"      # pull cord
-C_EVAP = "#3DAA96"      # evaporative cooler (teal)
 C_DUCT = "#8090A0"      # vent ducting
-C_FAN = "#606060"       # ventilation fans
 C_BLUE = "#2979B8"      # Blue circuit supply pipe
 C_VALVE = "#B8B840"     # valves / taps (brass)
 C_FLEX = "#FFD500"      # flexible braided/corrugated connectors — BRIGHT yellow so a jumper stands out from the same-color pipe it splices (vs the olive C_VALVE)
@@ -685,7 +679,7 @@ C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
 
 
 # ── Model metadata helpers (Sketchfab stamp, uid lookup, license credit) ──────
-LICENSE_TEXT = "© 2026 Alvin Richards\nLicensed under GNU AGPLv3\nalvinr.github.io/tbs"
+LICENSE_TEXT = "© 2026 Alvin Richards\nLicensed under GNU AGPLv3\nthebigshoebox.org"
 def license_note(out=400):
     """Ruby: a leaderless © + license credit anchored at the model's front-bottom-left
     (offset `out` mm outboard of the near wall, toward the viewer), left on the DEFAULT

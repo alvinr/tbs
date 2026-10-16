@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH, C_WID
 from tbs_title_block import title_block
 import tbs_drawing
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes, draw_legend
@@ -41,8 +41,8 @@ C_HOLLOW  = "#EEEEE8"  # framed hollow core between the HDPE skins
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
 
 # ── Panel dimensions (mm) ─────────────────────────────────────────────────────
-PW = 2362   # panel width  (= container interior short-axis width)
-PH = 2388   # panel height (= container interior height)
+PW = C_WID   # panel width  (= container interior short-axis width)
+PH = C_HGT   # panel height (= container interior height)
 PT = 120    # panel overall thickness (2×2×0.120in steel frame + 1/8″ HDPE skin each face)
 
 # Light-trap housing (housed revolving door — see tbs_constants)
@@ -1336,7 +1336,7 @@ def sheet4():
     from tbs_constants import (PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD,
                                FAR_STRIP_YD0, PIVOT_POST_OD)
     RED, GREEN, BLUE = "#C0202A", "#2E8B57", "#1763C8"
-    RX, PT_ = RAIL_X_L, PANEL_CENTER_T                     # 150, 120
+    RX, PT_ = RAIL_X_L, PANEL_CENTER_T                     # 260, 120
     HX, HY, LOCK = PIVOT_X, PIVOT_YD, SWING_LOCK_DEG
     CUT, FAR0 = PANEL_CUT_YD, FAR_STRIP_YD0
     cyd = PW / 2                                            # 1181 light-lock Yd center
@@ -1358,11 +1358,11 @@ def sheet4():
     ax.plot([0, 0], [0, PW], color=C_CL, lw=1.4, ls=(0, (6, 4)), zorder=3)
     ax.text(10, PW + 95, "door plane X=0", fontsize=8, color=C_CL, **FONT)
 
-    # film-plane LEFT rails (X=150) — REMOVABLE: struck for transport so the swinging
-    # cage can transition the X=150 rail plane, then re-seated to datum.
+    # film-plane LEFT rails (X=260) — REMOVABLE: struck for transport so the swinging
+    # cage can transition the X=260 rail plane, then re-seated to datum.
     ax.add_patch(Rectangle((RX - 13, FP_Y_MIN), 26, (FP_Y + 38) - FP_Y_MIN,
                            fc="#C06000", ec=C_OUT, lw=1, ls=(0, (4, 2)), alpha=0.55, zorder=6))
-    ax.text(RX - 225, DRUM_CY, "left rails X=150\nREMOVABLE\n(struck for transport —\ndrop-in saddles)",
+    ax.text(RX - 225, DRUM_CY, f"left rails X={RAIL_X_L}\nREMOVABLE\n(struck for transport —\ndrop-in saddles)",
             fontsize=6, color="#8a5a10", **FONT, ha="right", va="center", zorder=12,
             bbox=dict(facecolor="white", edgecolor="none", boxstyle="round,pad=0.3", alpha=0.88))
     for yy in (FP_Y_MIN, FP_Y):                              # brace-cage beams (run X 150→far)
@@ -1415,7 +1415,7 @@ def sheet4():
         "out bay inboard of the door plane so the cargo",
         f"doors close (clears the closed door by +{SWUNG_DOOR_CLEARANCE_MM}mm).",
         "",
-        "1.  The swinging cage transitions the X=150 rail",
+        f"1.  The swinging cage transitions the X={RAIL_X_L} rail",
         "    plane, so the two LEFT film rails (TL+BL) are",
         "    REMOVABLE — lifted out (drop-in saddles) for",
         "    the swing, re-seated to datum after. The far-",

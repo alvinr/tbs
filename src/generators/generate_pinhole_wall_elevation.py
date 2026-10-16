@@ -302,7 +302,7 @@ ax.plot([sx(TUBE_X - 5), sx(TUBE_X)],
         color="#666666", lw=0.3, zorder=10)
 
 # ── Zone labels for empty areas ───────────────────────────────────────────
-# Left end zone (X=0–150mm, cargo door / hinged panel)
+# Left end zone (X=0–260mm, cargo door / hinged panel)
 ax.text(sx(125), sz(C_HGT / 2), "CARGO DOOR\nEND\n(HINGED PANEL)",
         ha="center", va="center", fontsize=5, color="#AAAAAA",
         style="italic", zorder=2, **FONT)

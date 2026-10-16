@@ -13,8 +13,8 @@ View direction: looking at the near long wall (Y=0 face) from outside.
   Yd (into page) = 0–2362mm  (optical depth; not a diagram axis)
 
 Zones (shadow-free proof):
-  Left end zone:   X = 0–150mm     (light trap drum only)
-  Optical zone:    X = 150–4649mm   (film plane only)
+  Left end zone:   X = 0–260mm     (light trap drum only)
+  Optical zone:    X = 260–4649mm   (film plane only)
   Right end zone:  X = 4649–5893mm  (IBCs only, right-justified)
   Pinhole wall:    Yd = 0 face  (electrical + battery + pump; flush-mount)
 
@@ -805,7 +805,7 @@ def draw_container_walls(ax):
     # Container interior floor area
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, PLAN_X_MAX,
                  facecolor=C_INTERIOR, edgecolor="none", alpha=0.5, zorder=0))
-    # Film plane floor rail at X=RAIL_X_L (= ZONE_L_END = 150mm)
+    # Film plane floor rail at X=RAIL_X_L (= ZONE_L_END = 260mm)
     ax.add_patch(mpatches.Rectangle((0, RAIL_X_L - 10), C_WID, 20,
                  facecolor=C_RAIL3, edgecolor=C_OUT, linewidth=0.5,
                  alpha=0.5, zorder=4))

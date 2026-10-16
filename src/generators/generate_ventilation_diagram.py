@@ -24,7 +24,7 @@ from tbs_constants import (
 )
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_rect, leader, draw_notes
 from tbs_title_block import title_block
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, RAIL_X_L
 
 # ── Local palette (not in tbs_constants — specific to this diagram) ──────────
 C_SOLAR = "#D4EDDA"   # evap cooler fill
@@ -321,7 +321,7 @@ def draw_sheet1():
             fontweight="bold", rotation=90)
 
     # ── Film left-rail removal — swing-out clearance note ─────────────────────
-    # The film-plane LEFT RAIL (X=150mm in container coords) passes through the
+    # The film-plane LEFT RAIL (X=260mm in container coords) passes through the
     # drum volume (Yd 731–1631mm). That rail (TL+BL) lifts out of its saddles so the
     # cargo panel + drum can SWING ~56° about the pivot post for transport.
     # In this schematic longitudinal section the left rail is not drawn (it runs
@@ -345,7 +345,7 @@ def draw_sheet1():
     ax.text(NOTE_CX, NOTE_CY,
             "SWING-OUT (rev10): CARGO PANEL + DRUM REVOLVE\n"
             "~56° ABOUT THE PIVOT POST FOR TRANSPORT\n"
-            "LEFT film rail (TL+BL) lifts out to clear the X=150 plane",
+            f"LEFT film rail (TL+BL) lifts out to clear the X={RAIL_X_L} plane",
             ha="center", va="center", fontsize=6.5, color="#7A3A00",
             fontweight="bold", zorder=12)
     # Leader arrow from note bottom to drum box top-center
@@ -358,7 +358,7 @@ def draw_sheet1():
     # ── Transport / walkway note — the swing needs the left rails + left walkway out ─
     # (rev10) The cargo panel + drum SWING ~56° about the pivot post for transport (no
     # slide). The LEFT film rails (TL+BL) lift out of their saddles + the LEFT WALKWAY
-    # (X 170–470mm) lifts out so the swinging cage can transition the X=150 rail plane.
+    # (X 170–470mm) lifts out so the swinging cage can transition the X=260 rail plane.
     # The walkway is LOWERED (deck Z=130) and stays in place during camera operation.
     TN_W  = 3.70
     TN_H  = 0.95

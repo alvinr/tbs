@@ -9,8 +9,8 @@ for TBS-001 (redesigned film-plane-reduction layout).
 
 Panel A — Plan view (top-down):
   Shows the optical cone from the pinhole (X=2399, Yd=0) expanding to the
-  film plane edges (X=150–4649 at Yd=2262mm).
-  Equipment in shadow-free end zones (X<150 or X>4649) is always clear.
+  film plane edges (X=260–4649 at Yd=2262mm).
+  Equipment in shadow-free end zones (X<260 or X>4649) is always clear.
   Equipment on the pinhole wall (Yd=0) is also always clear.
 
 Panel B — Side elevation:
@@ -56,7 +56,7 @@ FS_LG = 10.0
 # zone: "left", "wall", "right" — used to assign expected clearance status
 
 EQUIPMENT = [
-    # LEFT END ZONE — X=0–150mm (shadow-free at all depths)
+    # LEFT END ZONE — X=0–260mm (shadow-free at all depths)
     dict(name="Light trap drum",
          x=DRUM_CX - DRUM_R, yd=C_WID//2 - DRUM_R, w=DRUM_D, d=DRUM_D,  # centerd at Yd=CW/2=1181mm
          h_bot=0, h_top=DRUM_H_LT,

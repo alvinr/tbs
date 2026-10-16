@@ -392,7 +392,7 @@ def sheet1():
     # ── Panel swing sweep (dashed red) ───────────────────────────────────────
     # rev10: the cargo panel + drum SWING ~56° about the Ø89 pivot (PIVOT_X, PIVOT_YD),
     # they no longer slide. The left walkway must lift out before the swing so the
-    # swinging cage can transition the X=150 rail line / near-door deck. Shade the
+    # swinging cage can transition the X=260 rail line / near-door deck. Shade the
     # sector swept by the SWINGING part's free edge (Yd=PANEL_CUT_YD — the fixed near
     # strip Yd0..180 does NOT swing) — the keep-clear transport zone.
     def _sw(x, y, deg):

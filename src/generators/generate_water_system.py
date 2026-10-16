@@ -618,8 +618,8 @@ def draw_sheet2():
     ax2.text(drain_x + 0.45, drain_y - 0.1, "SUMP WELL\nP-04 PICKUP", ha="center",
              fontsize=6, color="#388E3C")
 
-    # Left end zone shading (X=0–150mm — light trap only, drums removed rev 5)
-    ZONE_L_DX = ZONE_L_END * SX   # = 150mm
+    # Left end zone shading (X=0–260mm — light trap only, drums removed rev 5)
+    ZONE_L_DX = ZONE_L_END * SX   # = 260mm
     ax2.add_patch(plt.Rectangle((0, 0), ZONE_L_DX, CH,
                   fc="#FFF3E0", ec="none", alpha=0.45, zorder=0))
     ax2.plot([ZONE_L_DX, ZONE_L_DX], [0, CH], color="#805000", lw=1.5, ls="--",

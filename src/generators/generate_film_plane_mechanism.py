@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Ellipse
 
-from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
+from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
 from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
@@ -69,9 +69,9 @@ C_MUSLIN = "#D4B896"  # muslin fabric (warm tan)
 LBL_BG  = dict(fc="white", ec="none", alpha=0.85, pad=1)
 
 # ── Container dimensions (mm) ─────────────────────────────────────────────────
-L = 5893   # interior length (film plane spans this direction)
-W = 2362   # interior width = optical axis = focal length
-H = 2388   # interior height
+L = C_LEN   # interior length (film plane spans this direction)
+W = C_WID   # interior width = optical axis = focal length
+H = C_HGT   # interior height
 from tbs_constants import WALL_T
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_STEEL
 

@@ -297,7 +297,7 @@ IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                       
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
-ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150mm)  [rev6: was 625]
+ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 260mm)  [rev6: was 625]
 ZONE_R_START = FP_X_R    # right zone left boundary X  (= 4649mm) [was 4019]
 
 # ── Optical cone helper ───────────────────────────────────────────────────────
@@ -404,7 +404,7 @@ PANEL_FLOOR_GAP   = 217   # gap between panel bottom edge and floor (mm). RAISED
 DRUM_CX    = -420    # light-lock center X (mm) [rev9 B2: 0→-400; 2026-08-26: -400→-420 —
                      # re-centered in the FIXED drum cage (which is pinned by the walkway /
                      # swung-panel transport position / film-beam + cargo-door clearances).
-                     # Housing interior edge now -20, clears the X=150 film-plane rail by ~170mm]
+                     # Housing interior edge now -20, clears the X=260 film-plane rail by ~170mm]
 DRUM_D     = 800     # fixed housing OUTER diameter (mm) [rev8 Ø900; 2026-08-26: Ø900→Ø800 —
                      # REDUCED to fit inside the fixed cage with 31mm clearance (the Ø900 drum
                      # overhung the cage rails). Passage (80° sideways entry) ~555→~487mm; the
@@ -492,10 +492,10 @@ BRACE_Z_TOP = C_HGT - RAIL_OFF_TOP   # 2244mm — top cross-beam Z (dropped 44mm
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
 DRUM_CY     = C_WID // 2             # 1181mm — light-lock center in Yd (= container width center)
-# B2 (rev9): the drum is offset clear of the X=150 rail (via the punch-out bay), so the
+# B2 (rev9): the drum is offset clear of the X=260 rail (via the punch-out bay), so the
 # left film-plane rail is CONTINUOUS (one piece, no demountable mid-segment). rev10: that
 # whole left rail pair (TL+BL) is REMOVABLE for transport — it lifts straight up out of
-# drop-in saddles so the swinging drum cage can transition the X=150 rail plane, then
+# drop-in saddles so the swinging drum cage can transition the X=260 rail plane, then
 # re-seats to the film datum on tapered dowels.
 
 # ── Rotating-panel swing geometry (derived — reads brace/drum/bay above) ─────
@@ -1462,7 +1462,7 @@ FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 # Fan B: mounted on panel — intake grille on panel inner face, no duct on interior side.
 # Shadow margin is panel inner face to ZONE_L_END = 40mm (corner zone thickness).
 # Fan at Yd=365mm (rev9/B2 swap, near pinhole wall): still at X=0, behind the
-# X=150–4649 active image-plane zone, so no cone intrusion (and still in a 40mm
+# X=260–4649 active image-plane zone, so no cone intrusion (and still in a 40mm
 # corner zone — now the NEAR corner instead of the far one).
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 

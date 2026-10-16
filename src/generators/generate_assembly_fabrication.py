@@ -437,7 +437,7 @@ def sheet2():
             ha="center", va="center", fontsize=FS_SM-0.5, color=C_OUT,
             style="italic", zorder=7)
 
-    # ── Film plane (dashed inset — behind this view, at X=150–4649 depth) ─────
+    # ── Film plane (dashed inset — behind this view, at X=260–4649 depth) ─────
     # In this end elevation the film plane spans the full container height but
     # only the range Y=0–CW in the horizontal axis here. Indicate with dashed rect.
     ax.add_patch(mpatches.Rectangle((50, 50), C_WID-100, C_HGT-100,

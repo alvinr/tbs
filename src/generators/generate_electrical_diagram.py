@@ -571,7 +571,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=8.0,
             color="#8B5A00", style="italic", bbox=bbox, alpha=0.85, zorder=6)
 
-    # ── Image plane strip — X=150–4649mm ────────────────────────────────────
+    # ── Image plane strip — X=260–4649mm ────────────────────────────────────
     ax.add_patch(mpatches.Rectangle(
                  (fp_l_x, OY+cwid-wt-75), fp_r_x - fp_l_x, 75,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))
@@ -609,7 +609,7 @@ def draw_sheet2():
             ax.text(ex+ew/2, cy_e - 60, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # LEFT END ZONE (X=0–150mm) — light trap drum only (waste drums eliminated rev 5)
+    # LEFT END ZONE (X=0–260mm) — light trap drum only (waste drums eliminated rev 5)
     # Drum centerd at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
     from tbs_constants import C_LT_DRUM
     equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "LT DRUM\n(partial)", C_LT_DRUM,

@@ -16,9 +16,9 @@ Coordinate system (all mm):
            Y=2362: far long wall (image plane / film fabric)
 
 Equipment layout — end-zone design rev 5 (4-IBC 2×2 stack, drums eliminated):
-  Left end zone  (X=0–150):    light trap drum only (freed up by drum removal)
+  Left end zone  (X=0–260):    light trap drum only (freed up by drum removal)
   Pinhole wall   (Yd=0 face):  duct penetration (X=1200) + electrical panel + battery bank
-  Optical zone   (X=150–4649): film plane rails only — floor clear
+  Optical zone   (X=260–4649): film plane rails only — floor clear
   Right end zone (X=4649–5893): 4× IBC in 2×2 stack (2 columns × 2 high)
 
   Every item in the end zones is provably shadow-free at all depths:
@@ -453,7 +453,7 @@ def floor_plan():
     ], 0, leg_y_top, cols=3, col_w=1900, font=FONT, zorder=8)
 
     # ── Film left-rail demountable segment (drum-mode clearance) ─────────────
-    # The LEFT RAIL (X=RAIL_X_L=150mm) passes through the drum volume.
+    # The LEFT RAIL (X=RAIL_X_L=260mm) passes through the drum volume.
     # B2 (rev9): the left rail is CONTINUOUS — the drum is offset out (center
     # X=DRUM_CX, via the hinge-panel punch-out bay), so no demountable segment.
     NOTE_NX = -PAD_L + 120

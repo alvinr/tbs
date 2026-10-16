@@ -17,12 +17,11 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Polygon
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, C_OUT
 
 C_KEEP = "#C8D8E8"   # pieces we use
 C_OFF = "#EFEFE8"    # usable offcut
 C_WASTE = "#D6D6D6"  # trim waste
-C_OUT = "#1A1A1A"
 C_CUT = "#B00020"    # cut lines (rip/crosscut callouts)
 
 # Panel = 120 long (x) × 36 wide (y).  Each piece: (label, polygon-points, kind).

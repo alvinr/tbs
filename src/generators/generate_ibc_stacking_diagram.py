@@ -34,13 +34,9 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          bolt_holes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
-from tbs_constants import DIAGRAM_DPI, FONT, BG
+from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-C_OUT   = "#1A1A1A"
-C_CL    = "#2060A0"
-C_DIM   = "#404040"
-C_STEEL = "#B0B0B8"
 C_FRAME = "#606068"
 C_FLOOR = "#E0DDD8"
 C_WALL  = "#C0C0C8"

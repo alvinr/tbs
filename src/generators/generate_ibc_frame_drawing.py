@@ -44,13 +44,9 @@ from matplotlib.patches import Rectangle, Circle
 from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
-from tbs_constants import DIAGRAM_DPI, FONT, BG
+from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL
 
 # ── Palette ──────────────────────────────────────────────────────────────────
-C_OUT    = "#1A1A1A"       # outlines
-C_CL     = "#2060A0"       # center lines (blue, dashed)
-C_DIM    = "#404040"       # dimensions
-C_STEEL  = "#B0B0B8"       # steel section fill
 C_FRAME  = "#606068"       # frame RHS steel (darker)
 C_WELD   = "#C04040"       # weld symbols
 C_BOLT   = "#3A3A42"       # bolt heads / nuts (dark)

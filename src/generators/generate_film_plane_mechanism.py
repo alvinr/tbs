@@ -54,7 +54,6 @@ PINHOLE = "#CC6600"   # pinhole aperture (orange, visible on white)
 # ── Corner-detail palette (ported from the retired generate_corner_detail.py) ──
 # Sheets 3 (corner detail) & 4 (U-joint sections) use this richer, color-coded set.
 OUT     = "#1A1A1A"   # outlines / bold text
-C_STEEL = "#B0B0B8"   # steel section fill
 C_CAR   = "#C04010"   # depth carriage (red)
 C_TILT  = "#2E8B57"   # vertical (tilt) slide — green
 C_SWING = "#7B5EA7"   # horizontal (swing) slide — purple
@@ -74,7 +73,7 @@ L = 5893   # interior length (film plane spans this direction)
 W = 2362   # interior width = optical axis = focal length
 H = 2388   # interior height
 from tbs_constants import WALL_T
-from tbs_constants import DIAGRAM_DPI, FONT, BG
+from tbs_constants import DIAGRAM_DPI, FONT, BG, C_STEEL
 
 # Carriage travel limits (100mm clearance each end)
 D_NEAR = 100

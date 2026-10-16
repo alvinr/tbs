@@ -24,14 +24,10 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
-from tbs_constants import DIAGRAM_DPI, FONT
+from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_ALUM, C_STEEL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-C_OUT   = "#1A1A1A"
-C_CL    = "#2060A0"
 C_DIM   = "#505050"
-C_ALUM  = "#C8D8E8"
-C_STEEL = "#B0B0B8"
 # C_ELEC, C_BATT imported from tbs_constants (unified equipment colors)
 C_SOLAR = "#D4EDDA"       # solar array schematic fill (not an equipment constant)
 C_WARN  = "#F8D7DA"

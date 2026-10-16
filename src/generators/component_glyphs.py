@@ -11,8 +11,8 @@ diagram generator. All dimensions are drawing units (the caller sets the scale).
 
 import numpy as np
 import matplotlib.patches as mpatches
+from tbs_constants import C_OUT
 
-C_OUT   = "#1A1A1A"
 C_MC4   = "#2D7A2D"
 C_AC    = "#A07820"
 C_NEMA  = "#FFF0CC"

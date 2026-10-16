@@ -33,17 +33,10 @@ from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET
 from tbs_title_block import title_block
 import tbs_drawing
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes, draw_legend
-from tbs_constants import DIAGRAM_DPI, FONT, BG
+from tbs_constants import (DIAGRAM_DPI, FONT, BG,
+    C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WOOD, C_PLASTIC)
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
-C_OUT   = "#1A1A1A"   # outlines
-C_CL    = "#2060A0"   # center lines (blue, dashed)
-C_DIM   = "#404040"   # dimensions / annotation text
-C_ALUM  = "#C8D8E8"   # aluminum (corner stiffener rib)
-C_STEEL = "#B0B0B8"   # steel section fill
-C_GASKT = "#5A3020"   # EPDM gasket fill
-C_WOOD    = "#C9A36B"  # plywood — Fan B mount band
-C_PLASTIC = "#6E8CA0"  # 1/8″ HDPE plastic sheet — panel skins + B2 bay
 C_HOLLOW  = "#EEEEE8"  # framed hollow core between the HDPE skins
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
 

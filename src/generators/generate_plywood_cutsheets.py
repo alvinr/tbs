@@ -29,7 +29,7 @@ from matplotlib.patches import Circle, Rectangle
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
-    DIAGRAMS_DIR, DIAGRAM_DPI, FONT,
+    DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID,
     PANEL_FLOOR_GAP, PANEL_FLOOR_GAP_SIDE,
     PWP_PANEL_X0, PWP_PANEL_X1, SHELF_W, SHELF_DEPTH,
@@ -41,8 +41,6 @@ from tbs_title_block import title_block                        # noqa: E402
 
 TOTAL_SHEETS = 2
 C_BG = "#FAFAFA"
-C_OUT = "#1A1A1A"
-C_DIM = "#404040"
 C_WOOD = "#D8C39A"       # plywood face
 C_STOCK = "#F0E9D8"      # stock-sheet ground
 C_STUB = "#C7B48A"       # fixed (non-fold) piece, distinguished from a fold-down apron

@@ -25,15 +25,12 @@ from matplotlib.patches import Rectangle, Circle
 
 from tbs_constants import (IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD,
                            IBC_FOOT_BOLT_N, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FRONT_BAR_W,
-                           IBC_FRONT_FOOT_DX, DIAGRAM_DPI, FONT, BG, DIAGRAMS_DIR)
+                           IBC_FRONT_FOOT_DX, DIAGRAM_DPI, FONT, BG, DIAGRAMS_DIR,
+                           C_OUT, C_CL, C_DIM, C_STEEL)
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes
 
 # ── Palette (matches generate_ibc_frame_drawing.py) ───────────────────────────
-C_OUT   = "#1A1A1A"
-C_CL    = "#2060A0"
-C_DIM   = "#404040"
-C_STEEL = "#B0B0B8"
 C_FRAME = "#606068"
 C_HOLE  = "#FFFFFF"
 

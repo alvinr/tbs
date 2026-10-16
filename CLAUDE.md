@@ -17,7 +17,9 @@
 ## Repository Structure
 
 ```
-/                        ← project root: .md reports, config files
+/                        ← project root: config files + CLAUDE.md / README.md / RELEASE.md only
+docs/                    ← all .md report + working-doc SOURCES (moved off root 2026-10); docs/mini-tbs/ = TBS-002
+docs/superpowers/        ← brainstorming plans/specs (real tracked sources)
 src/generators/          ← all .py scripts (diagram generators, helpers, setup)
 diagrams/                ← generated PNGs and SVGs (output of generators)
 skills/                  ← codified drawing and labeling conventions (read before creating diagrams)
@@ -44,7 +46,7 @@ site/                    ← built output — gitignored, never commit
 
 ## Workflow: Adding a New Document
 
-1. Write `<name>.md` in the project root.
+1. Write `<name>.md` in `docs/` (report + working-doc sources live there; CLAUDE.md / README.md / RELEASE.md stay at root).
 2. If drawings are needed: write `src/generators/generate_<name>.py` → outputs to `diagrams/<name>-sheet1.png`, `diagrams/<name>-sheet2.png`, etc. (all generated PNGs go into `diagrams/`).
 3. Register the `.md` in `publish.sh` → `MD_FILES` array.
 4. Register any new `.png` files in `publish.sh` → `DIAG_FILES` array (for generated diagrams) or `IMG_FILES` (for root-only images like logos).

@@ -991,7 +991,7 @@ def _render_detail(content: str, items: list, fields: tuple) -> str:
 
 
 def _apply(rel: str, key: str, regen, write: bool) -> tuple:
-    path = os.path.join(_REPO, rel)
+    path = os.path.join(_REPO, "docs", rel)
     text = open(path, encoding="utf-8").read()
     pat = _block_pat(key)
     matches = list(pat.finditer(text))
@@ -1007,7 +1007,7 @@ def _apply(rel: str, key: str, regen, write: bool) -> tuple:
 
 
 def _apply_inline(rel: str, key: str, fn, write: bool) -> tuple:
-    path = os.path.join(_REPO, rel)
+    path = os.path.join(_REPO, "docs", rel)
     text = open(path, encoding="utf-8").read()
     pat = _inline_pat(key)
     matches = list(pat.finditer(text))

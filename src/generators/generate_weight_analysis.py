@@ -1259,7 +1259,7 @@ from tbs_constants import DIAGRAM_DPI
 
 _REPORT = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "weight-distribution-report.md")
+    "docs", "weight-distribution-report.md")
 
 _STATES = {"dry": "dry", "loaded_transport": "loadedtx",
            "ready": "ready", "exhausted": "exhausted"}

@@ -24,7 +24,7 @@ import generate_sketchup_model as ov          # noqa: E402  (IBC_FRAME_RHS/FOOT_
 import tbs_constants as k                      # noqa: E402  (IBC_FOOT_BOLT_D/PCD)
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-REPORT = os.path.join(_ROOT, "ibc-stacking-report.md")
+REPORT = os.path.join(_ROOT, "docs", "ibc-stacking-report.md")
 
 MM_PER_FT = 304.8
 

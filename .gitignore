@@ -4,10 +4,10 @@ site/
 # Auto-generated publish directory — rebuilt by publish.sh on every deploy
 published/
 
-# Generated report copies in docs/ — publish.sh/setup_docs.py rebuild these from the
-# root-level .md sources on every deploy. Only the top-level docs/*.md are generated;
-# docs/superpowers/** (brainstorming plans/specs) are real tracked sources and stay tracked.
-docs/*.md
+# docs/ holds the Markdown SOURCES (moved from the repo root 2026-10) — tracked.
+# publish.sh copies the published subset (MD_FILES) into published/ at deploy;
+# docs/index.md (if regenerated) is the only generated file here.
+docs/index.md
 
 # Brochure PDFs — generated on publish, not committed
 tbs-brochure.pdf

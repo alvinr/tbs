@@ -106,7 +106,7 @@ MD_FILES=(
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────
 info "Syncing home page (project-summary.md → published/index.md)..."
-SUMMARY_SRC="$SCRIPT_DIR/project-summary.md"
+SUMMARY_SRC="$SCRIPT_DIR/docs/project-summary.md"
 INDEX_DST="$DOCS_DIR/index.md"
 if [[ ! -f "$SUMMARY_SRC" ]]; then
     warn "project-summary.md not found — home page not updated"
@@ -127,7 +127,7 @@ fi
 
 CHANGED=0
 for f in "${MD_FILES[@]}"; do
-    src="$SCRIPT_DIR/$f"
+    src="$SCRIPT_DIR/docs/$f"
     dst="$DOCS_DIR/$f"
     if [[ ! -f "$src" ]]; then
         warn "$f not found in project root — skipping"

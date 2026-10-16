@@ -551,7 +551,7 @@ def main():
     # 3. Copy markdown files
     print("\n[3/5] Copying markdown files...")
     for src_name, (subdir, _title) in MD_FILES:
-        src = PROJECT_ROOT / src_name
+        src = PROJECT_ROOT / "docs" / src_name
         if subdir == ".":
             dst = DOCS_DIR / src_name
         else:

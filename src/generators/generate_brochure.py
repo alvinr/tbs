@@ -361,7 +361,7 @@ def parse_nav(mkdocs_yml_path, extra_exclude=frozenset()):
                         if val in BROCHURE_EXCLUDE or val in extra_exclude:
                             continue
                         src_md   = NAV_SOURCE_OVERRIDE.get(val, val)
-                        src_path = os.path.join(PROJECT_ROOT, src_md)
+                        src_path = os.path.join(PROJECT_ROOT, "docs", src_md)
                         if src_md not in seen:
                             seen.add(src_md)
                             pages.append({

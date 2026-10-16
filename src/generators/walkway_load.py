@@ -35,7 +35,7 @@ import tbs_constants as k  # noqa: E402
 from ibc_frame_load import z_rhs, AS_M12, FUB_88, arm_notch_check, outer_beam_frame_check, service_loads
 
 _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-_REPORT = os.path.join(_ROOT, "walkway-report.md")
+_REPORT = os.path.join(_ROOT, "docs", "walkway-report.md")
 
 # ── Load basis (US IBC/OSHA — IBC Table 1607.1) ──────────────────────────────
 PSF = 47.880259           # 1 lbf/ft^2 -> Pa

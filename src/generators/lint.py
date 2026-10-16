@@ -122,7 +122,7 @@ def warn_editorial_list() -> tuple[bool, list[str]]:
     m = re.search(r"MD_FILES=\((.*?)\)", pub, re.DOTALL)
     published = {os.path.basename(f) for f in re.findall(r'"([^"]+\.md)"', m.group(1))} if m else set()
     published.add("project-summary.md")                         # the home page (synced separately)
-    todo = open(os.path.join(ROOT, "editorial-review-todo.md"), encoding="utf-8").read()
+    todo = open(os.path.join(ROOT, "docs", "editorial-review-todo.md"), encoding="utf-8").read()
     listed = {os.path.basename(f) for f in re.findall(r"^- \[[ x]\]\s+(\S+\.md)", todo, re.M)}
     missing = sorted(published - listed)
     issues = [f"{f} is published (publish.sh MD_FILES) but has no editorial-review-todo.md entry"
@@ -137,7 +137,7 @@ def warn_editorial_list() -> tuple[bool, list[str]]:
 def warn_gallery_coverage() -> tuple[bool, list[str]]:
     diag = os.path.join(ROOT, "diagrams")
     generated = {f for f in os.listdir(diag) if f.endswith(".png")} if os.path.isdir(diag) else set()
-    gallery = open(os.path.join(ROOT, "all-diagrams.md"), encoding="utf-8").read()
+    gallery = open(os.path.join(ROOT, "docs", "all-diagrams.md"), encoding="utf-8").read()
     referenced = {os.path.basename(p) for p in re.findall(r"assets/([^)\s]+\.png)", gallery)}
     missing = sorted(generated - referenced)
     issues = [f"{f} is generated (diagrams/) but not in all-diagrams.md" for f in missing]

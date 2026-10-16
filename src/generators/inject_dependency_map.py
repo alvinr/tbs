@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tbs_constants as C  # noqa: E402
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-_DOC = os.path.join(_ROOT, "component-dependency-map.md")
+_DOC = os.path.join(_ROOT, "docs", "component-dependency-map.md")
 
 
 def fmt(const: str) -> str:

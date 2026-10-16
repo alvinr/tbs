@@ -444,7 +444,7 @@ def inject(write: bool = True) -> list:
     vals = _energy_values()
     out = []
     for rel in _ENERGY_DOCS:
-        path = _os.path.join(_REPO, rel)
+        path = _os.path.join(_REPO, "docs", rel)
         text = open(path, encoding="utf-8").read()
         changed = False
         for key, sval in vals.items():

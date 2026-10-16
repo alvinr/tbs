@@ -1494,7 +1494,7 @@ def inject(write: bool = True) -> list:
     """Regenerate every marked parts: block. Returns (file, key, 'ok'|'updated'|'STALE'|'missing')."""
     out = []
     for key, (rel, fn) in _blocks().items():
-        path = os.path.join(ROOT, rel)
+        path = os.path.join(ROOT, "docs", rel)
         text = open(path, encoding="utf-8").read()
         pat = _block_pat(key)
         matches = list(pat.finditer(text))

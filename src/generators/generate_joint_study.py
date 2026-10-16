@@ -16,19 +16,18 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 from tbs_drawing import draw_dim_h, draw_dim_v
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT, BG
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))
 
-BG = "#FFFFFF"; OUT = "#1A1A1A"
+OUT = "#1A1A1A"
 STEEL = "#B0B0B8"     # cross-slide (fixed side)
 ALUM = "#C8D8E8"      # gimbal ring / yokes / intermediate
 FRAME = "#2A6B2A"     # film-frame side
 PIN = "#B07010"       # pins / shoulder bolts
 BUSH = "#5A3E00"      # bushings
 DIM = "#404040"
-FONT = {"family": "monospace"}
 
 
 def dimv(ax, x, y0, y1, txt, off=0):

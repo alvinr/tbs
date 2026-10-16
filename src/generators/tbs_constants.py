@@ -1475,6 +1475,10 @@ DIAGRAM_DPI    = 300   # engineering diagrams — high DPI so text stays sharp w
 DISTORTION_DPI = 150   # override for the dark full-bleed distortion renders (no fine text; keeps files smaller)
 
 # ── Palette (shared drawing style) ───────────────────────────────────────────
+# One home for the two style defaults every diagram repeats, so they can't drift
+# across generators (dark distortion/portrait views set their own background locally).
+FONT    = {"fontfamily": "monospace"}   # shared label font for the whole diagram set
+BG      = "#FFFFFF"   # white page background
 C_OUT   = "#1A1A1A"   # outlines
 C_CL    = "#2060A0"   # center lines
 C_DIM   = "#404040"   # dimensions

@@ -26,7 +26,7 @@ import os
 from tbs_title_block import title_block
 from tbs_constants import DIAGRAMS_DIR,  C_OUT, C_CL, C_DIM
 from tbs_drawing import draw_dim_h, draw_dim_v, leader
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, BG
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
@@ -36,7 +36,6 @@ os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 from mini_tbs_constants import *  # noqa: F401,F403 (BOX_*, PANEL_*, PAPER_*, SLEEVE_*, WALL_T, PH_D, …)
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
-BG         = "#FFFFFF"
 C_BOX      = "#D2B48C"    # tan — cardboard
 C_BOX_WALL = "#C4A882"    # darker cardboard for walls
 C_CONE     = "#CCE4FF"    # light cone fill

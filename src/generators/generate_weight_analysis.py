@@ -689,7 +689,7 @@ def compute_splits(quads, total):
 # Diagram helpers
 # ═══════════════════════════════════════════════════════════════════════════
 
-_FONT = {"fontfamily": "monospace"}
+from tbs_constants import FONT as _FONT
 
 # Scale: 1mm → 1 data unit (plan view uses mm directly)
 def _draw_container_outline(ax):

@@ -37,8 +37,7 @@ import matplotlib.patches
 from tbs_constants import *
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_legend, leader
 
-# ── Palette (local overrides removed — equipment colors from tbs_constants) ──
-BG            = "#FFFFFF"
+# ── Palette (local overrides removed — equipment colors + BG/FONT from tbs_constants) ──
 C_RAIL        = "#5A3E00"
 C_PINHOLE     = C_PINHOLE_EQ
 C_OPT         = C_FILM
@@ -46,7 +45,6 @@ C_ZONE_L      = "#FFF3E8"   # left zone tint
 C_ZONE_R      = "#E8F3FF"   # right zone tint
 C_ZONE_OPT    = "#F0F8F0"   # optical zone tint
 C_PROC_ZONE   = "#E8F0FF"   # interior processing zone tint
-FONT          = {"fontfamily": "monospace"}
 
 WALL  = 40   # schematic wall thickness
 

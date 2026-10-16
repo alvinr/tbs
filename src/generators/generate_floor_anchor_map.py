@@ -28,7 +28,7 @@ import generate_ibc_frame_drawing as ibc
 from tbs_title_block import title_block
 from tbs_drawing import leader, hatch_rect, draw_notes, draw_dim_h
 
-FONT = {"fontfamily": "monospace"}
+FONT = k.FONT
 C_OUT, C_DIM, C_CL, C_STEEL = k.C_OUT, k.C_DIM, k.C_CL, k.C_STEEL
 C_IBC, C_WK, C_PIV = "#1F6FB2", "#C8541E", "#2E8B4A"   # system colors
 C_MEMBER = "#9AA7B0"

@@ -37,7 +37,6 @@ from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
 
 # ── Palette (white engineering style) ────────────────────────────────────────
-BG      = "#FFFFFF"   # white background
 GRID    = "#FFFFFF"   # container interior (white)
 STRUCT  = "#B0B0B8"   # steel section fill (walls)
 STRUCT2 = "#C8D8E8"   # aluminum / secondary structure
@@ -75,7 +74,7 @@ L = 5893   # interior length (film plane spans this direction)
 W = 2362   # interior width = optical axis = focal length
 H = 2388   # interior height
 from tbs_constants import WALL_T
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT, BG
 
 # Carriage travel limits (100mm clearance each end)
 D_NEAR = 100
@@ -92,8 +91,6 @@ CONFIGS = [
     ("Swing 14°",           0.0, 14.0,  C_T2,   "-."),
     ("Tilt+Swing\n(limited)", 14.0, 10.0, C_T3,   ":"),
 ]
-
-FONT = {"fontfamily": "monospace"}
 
 # ── Geometry helpers ──────────────────────────────────────────────────────────
 RAIL_X_L = FP_X_L       # left rail X position (mm) — tracks FP_X_L from constants

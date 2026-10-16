@@ -33,10 +33,9 @@ from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET
 from tbs_title_block import title_block
 import tbs_drawing
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes, draw_legend
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT, BG
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
-BG      = "#FFFFFF"   # white background
 C_OUT   = "#1A1A1A"   # outlines
 C_CL    = "#2060A0"   # center lines (blue, dashed)
 C_DIM   = "#404040"   # dimensions / annotation text
@@ -47,7 +46,6 @@ C_WOOD    = "#C9A36B"  # plywood — Fan B mount band
 C_PLASTIC = "#6E8CA0"  # 1/8″ HDPE plastic sheet — panel skins + B2 bay
 C_HOLLOW  = "#EEEEE8"  # framed hollow core between the HDPE skins
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
-FONT    = {"fontfamily": "monospace"}
 
 # ── Panel dimensions (mm) ─────────────────────────────────────────────────────
 PW = 2362   # panel width  (= container interior short-axis width)

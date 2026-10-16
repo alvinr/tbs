@@ -21,7 +21,7 @@ from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EV
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes,
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT
 
 # ── Local constants (computed from tbs_constants) ────────────────────────────
 # Pipe colors for Blue circuit (only Blue supply remains on this wall)
@@ -101,8 +101,6 @@ ax2.set_ylim(PLAN_Y_LO, PLAN_Y_HI)
 ax2.invert_xaxis()
 ax2.set_aspect("equal")
 ax2.axis("off")
-
-FONT = {"fontfamily": "monospace"}
 
 # ── Helper: filled, labeled equipment block ─────────────────────────────────
 def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,

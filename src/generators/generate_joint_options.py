@@ -13,19 +13,17 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Arc
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT, BG
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))
 
-BG = "#FFFFFF"
 OUT = "#1A1A1A"
 STEEL = "#B0B0B8"      # cross-slide (fixed side)
 ALUM = "#C8D8E8"       # intermediate / ring / yoke
 FRAME = "#2A6B2A"      # film-frame side (green)
 PIN = "#B07010"        # pins / bolts (amber)
 DIM = "#404040"
-FONT = {"family": "monospace"}
 
 
 def _slide(ax):

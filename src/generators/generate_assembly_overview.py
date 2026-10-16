@@ -37,11 +37,10 @@ os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 # ── Constants shared with previous session ────────────────────────────────────
 from tbs_constants import RAIL_OFF   # floor offset for all floor-standing equipment (mm)
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, BG
 DRUM_H_ELV = DRUM_H_LT   # 2100mm — revolving drum height in elevation view
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-BG        = "#FFFFFF"
 C_INTERIOR = "#F4F4F4"
 C_ZONE_L  = "#FFF0E0"   # left end zone (orange tint)
 C_ZONE_O  = "#F0FFF0"   # optical zone (green tint)

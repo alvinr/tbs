@@ -24,7 +24,7 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -1717,7 +1717,6 @@ def draw_sheet6():
     C_WALL  = "#C0C0C8"       # container wall
     C_GASKT = "#5A3020"       # gasket / neoprene
     C_INT   = "#F0FFF0"       # interior zone
-    FONT    = {"fontfamily": "monospace"}
 
     # ── Panel dimensions (mm) ───────────────────────────────────────────────────
     PLATE_W  = PWR_PANEL_W         # 300mm face plate
@@ -2378,7 +2377,6 @@ def draw_sheet8():
     Front-face cut layout with a dim_h (X) + dim_v (Y) locating EVERY hole/cutout/bolt from
     the lower-left datum. Box pieces + the wall-securing detail are on Sheet 9."""
     C_OUT = "#1A1A1A"; C_DIM = "#404040"; C_HID = "#8A8A8A"
-    FONT = {"fontfamily": "monospace"}
     W, H, CW, CH, FL = _BOX_W, _BOX_H, _BOX_CW, _BOX_CH, _BOX_FL
     MI, MD = _BOX_MI, _BOX_MD
     mc4L, mc4R = _MC4_X - _MC4_GAP / 2, _MC4_X + _MC4_GAP / 2   # 57.5, 82.5
@@ -2458,7 +2456,6 @@ def draw_sheet9():
     from tbs_constants import PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, CONTAINER_CORRUGATION_DEPTH
     C_OUT = "#1A1A1A"; C_DIM = "#404040"; C_HID = "#8A8A8A"
     C_STEEL = "#B0B0B8"; C_GASKT = "#5A3020"
-    FONT = {"fontfamily": "monospace"}
     W, H, CW, CH, FL = _BOX_W, _BOX_H, _BOX_CW, _BOX_CH, _BOX_FL
     FT = PWR_PANEL_D            # 3mm face/flange plate
     BD = PWR_PANEL_BOX_D        # 90mm box depth

@@ -34,10 +34,9 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          bolt_holes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, FONT, BG
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-BG      = "#FFFFFF"
 C_OUT   = "#1A1A1A"
 C_CL    = "#2060A0"
 C_DIM   = "#404040"
@@ -49,7 +48,6 @@ C_GRATE = "#A0A0A8"
 C_RUBBER = "#404040"
 C_PORT  = "#708090"
 C_PLY   = "#D4C8A0"
-FONT    = {"fontfamily": "monospace"}
 
 # ── Frame constants (from equipment-layout-report.md §5) ──────────────────────
 FRAME_RHS      = 50.8   # 2×2×0.120in steel SHS (#26)

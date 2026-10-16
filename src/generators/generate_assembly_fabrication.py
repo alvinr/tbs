@@ -37,12 +37,11 @@ from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H,
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 from tbs_constants import RAIL_OFF   # floor/ceiling offset for all equipment (mm)
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, BG
 DRUM_H_ELV = DRUM_H_LT  # 2100mm — drum height in elevation view
 DRUM_CY    = C_WID // 2  # drum center in Y direction = container width center = 1181mm
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-BG          = "#FFFFFF"
 C_ALUM      = "#C8D8E8"
 C_STEEL     = "#B0B0B8"
 C_GASKT     = "#5A3020"

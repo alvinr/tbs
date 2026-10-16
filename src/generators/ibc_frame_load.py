@@ -22,7 +22,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from tbs_constants import (DIAGRAM_DPI, IBC_FRAME_RHS, IBC_FRAME_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
+from tbs_constants import (DIAGRAM_DPI, C_STEEL, IBC_FRAME_RHS, IBC_FRAME_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
                            CONTAINER_CORRUGATION_DEPTH,
                            IBC_FRONT_BAR_D, IBC_FRONT_BAR_W, IBC_FRONT_BAR_T,
                            IBC_FRONT_BAR_N_PER_TIER,
@@ -342,7 +342,7 @@ def render_png(path=None):
     endplate_cap = 0.9 * FUB_88 * AS_M12                # M12 8.8 tensile capacity/bolt (N)
     sf_endplate = endplate_cap / (m_conn / 0.065 / 2.0)   # bearing-type: 2 M12 ABOVE the arm share the tension over a ~54mm lever to the compression at the arm bottom
 
-    C_STEEL = "#8890a0"; C_TOTE = "#c9d4e4"; C_LOAD = "#c0392b"; C_OK = "#1f7a3d"; C_WARN = "#b8860b"
+    C_TOTE = "#c9d4e4"; C_LOAD = "#c0392b"; C_OK = "#1f7a3d"; C_WARN = "#b8860b"
 
     fig = plt.figure(figsize=(15.5, 9)); fig.patch.set_facecolor("white")
     gs = fig.add_gridspec(2, 2, width_ratios=[1, 1.28], height_ratios=[1.05, 1],

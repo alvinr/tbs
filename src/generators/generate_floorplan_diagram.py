@@ -44,7 +44,6 @@ C_OPT         = C_FILM
 C_ZONE_L      = "#FFF3E8"   # left zone tint
 C_ZONE_R      = "#E8F3FF"   # right zone tint
 C_ZONE_OPT    = "#F0F8F0"   # optical zone tint
-C_PROC_ZONE   = "#E8F0FF"   # interior processing zone tint
 
 WALL  = 40   # schematic wall thickness
 

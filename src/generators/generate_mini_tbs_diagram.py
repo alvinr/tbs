@@ -24,7 +24,7 @@ from matplotlib.patches import Arc
 import os
 
 from tbs_title_block import title_block
-from tbs_constants import DIAGRAMS_DIR,  C_OUT, C_CL, C_DIM
+from tbs_constants import DIAGRAMS_DIR,  C_OUT, C_CL, C_DIM, C_ALUM
 from tbs_drawing import draw_dim_h, draw_dim_v, leader
 from tbs_constants import DIAGRAM_DPI, BG
 
@@ -43,7 +43,6 @@ C_CONE_LN  = "#4488CC"    # light cone boundary
 C_PINHOLE  = "#CC2020"    # pinhole marker
 C_SLEEVE   = "#484060"    # arm sleeve fabric (dark purple-gray)
 C_PANEL  = "#C9B08A"    # cut cardboard panel (from the box wall)
-C_ALUM     = "#C0C0C8"    # aluminum pinhole plate
 C_PAPER    = "#FAFAE8"    # watercolor paper
 C_HINGE    = "#886644"    # duct tape hinge
 C_MOTION   = "#CC6600"    # motion arc color

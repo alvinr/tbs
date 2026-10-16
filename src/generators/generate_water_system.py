@@ -29,7 +29,7 @@ from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DIAGRAM_DPI, C_DIM
 
 # ── Color palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
@@ -41,7 +41,6 @@ C_BLACK_L= "#DDDDDD"   # black system fill (light)
 C_PROC   = "#E8F5E9"   # processing area fill
 C_FILT   = "#FFF9C4"   # filter skid fill
 C_FRAME  = "#444444"   # drawing frame
-C_DIM    = "#888888"   # dimension lines
 C_TEXT   = "#111111"
 C_TITLE  = "#1A237E"
 

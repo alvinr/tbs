@@ -33,12 +33,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
 import generate_pinhole_water_panel as pw    # P-02/DV-01/SV-01 + ribbon corridor ends (water.skp build)
 from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
-from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_DIM
+from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_DIM, C_STEEL
 
 # ── Palette (C_OUT/C_DIM from tbs_constants) ─────────────────────────────────────
 C_GHOST = "#9AA0A8"
 C_FLOOR = "#E0DDD8"
-C_STEEL = "#9A9AA2"   # walkway support beams (cut)
 C_GRATE = "#8C8C94"   # grate deck
 C_TRAY  = "#A6B4A6"
 C_IBC_B = "#6B4A2E"

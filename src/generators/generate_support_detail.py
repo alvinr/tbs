@@ -22,7 +22,7 @@ from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models"))
 
-from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM
+from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_STEEL
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_title_block import title_block
 import generate_corridor_water_panel as cp
@@ -31,7 +31,6 @@ TOTAL_SHEETS = 2
 C_BG = "#FAFAFA"
 
 # palette (C_OUT/C_DIM from tbs_constants)
-C_STEEL = "#8A8C94"
 C_STEEL_D = "#6C6E76"
 C_PLY = "#D8B78A"
 C_PLY_E = "#A9843F"

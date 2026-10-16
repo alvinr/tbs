@@ -69,7 +69,6 @@ C_GRATE = "#A0A0A8"
 C_FRAME = "#808890"
 C_TRAY  = "#A0B0A0"
 C_FLOOR = "#E0DDD8"
-C_WALL  = "#C0C0C8"
 C_BRKT  = C_STEEL     # bracket fill — unified to the project-standard steel tone (lighter, matches sheet6 + the IBC/film-plane/hingepanel sheets; the darker #707888 was a readability outlier, 2026-08-18)
 
 bbox = dict(boxstyle="round,pad=0.3", fc="white", ec="none", pad=1.5, alpha=0.85)

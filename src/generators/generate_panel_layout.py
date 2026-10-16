@@ -40,7 +40,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI, FONT
+from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI, FONT, C_WALL
 from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 from tbs_title_block import title_block
@@ -141,7 +141,6 @@ C_PIPE_FILL  = "#2A5A2A"
 C_PIPE_EC    = "#1A3A1A"
 C_NEW        = "#22AA44"
 C_WALK       = "#A8D8A8"
-C_WALL       = "#C0C0C8"
 C_WALL_HATCH = "#999999"
 
 # ── Layout ───────────────────────────────────────────────────────────────

@@ -13,6 +13,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Arc
+from tbs_constants import DIAGRAM_DPI
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))
@@ -161,7 +162,7 @@ def main():
              ha="center", fontsize=8, family="monospace", color=DIM)
     fig.subplots_adjust(left=0.02, right=0.98, top=0.9, bottom=0.1, wspace=0.08)
     out = os.path.join(DIAGRAMS_DIR, "film-joint-options.png")
-    fig.savefig(out, dpi=150, facecolor=BG)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG)
     print(f"  → {out}")
 
 

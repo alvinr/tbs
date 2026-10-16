@@ -17,6 +17,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Polygon
+from tbs_constants import DIAGRAM_DPI
 
 C_KEEP = "#C8D8E8"   # pieces we use
 C_OFF = "#EFEFE8"    # usable offcut
@@ -96,7 +97,7 @@ def main():
     fig.tight_layout(rect=(0, 0.03, 1, 0.96))
     out = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
                        "diagrams", "grp-cutplan.png")
-    fig.savefig(out, dpi=150, facecolor="white", bbox_inches="tight")
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor="white", bbox_inches="tight")
     print("wrote", out)
 
 

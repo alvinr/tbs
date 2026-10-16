@@ -16,6 +16,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 from tbs_drawing import draw_dim_h, draw_dim_v
+from tbs_constants import DIAGRAM_DPI
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))
@@ -158,7 +159,7 @@ def sheet_gimbal():
         ("·", "Axes offset ~30mm (through-pins can't intersect) — a true gimbal ring, not a cross"),
     ])
     out = os.path.join(DIAGRAMS_DIR, "film-joint-study-gimbal.png")
-    fig.savefig(out, dpi=150, facecolor=BG); print(f"  → {out}")
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG); print(f"  → {out}")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -234,7 +235,7 @@ def sheet_ujoint():
         ("-", "Hard to source SS at size; a fab cross is a lot of precise work"),
     ])
     out = os.path.join(DIAGRAMS_DIR, "film-joint-study-ujoint.png")
-    fig.savefig(out, dpi=150, facecolor=BG); print(f"  → {out}")
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG); print(f"  → {out}")
 
 
 if __name__ == "__main__":

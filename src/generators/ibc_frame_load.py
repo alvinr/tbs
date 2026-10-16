@@ -22,7 +22,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from tbs_constants import (IBC_FRAME_RHS, IBC_FRAME_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
+from tbs_constants import (DIAGRAM_DPI, IBC_FRAME_RHS, IBC_FRAME_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
                            CONTAINER_CORRUGATION_DEPTH,
                            IBC_FRONT_BAR_D, IBC_FRONT_BAR_W, IBC_FRONT_BAR_T,
                            IBC_FRONT_BAR_N_PER_TIER,
@@ -447,7 +447,7 @@ def render_png(path=None):
              ha="center", fontsize=9, color="#555")
     fig.text(0.5, 0.018, "IBC FRAME — LOAD CASE  ·  TBS-001  ·  see report §3.4  ·  © 2026 Alvin Richards",
              ha="center", fontsize=8, color="#777")
-    fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
+    fig.savefig(path, dpi=DIAGRAM_DPI, facecolor="white", bbox_inches="tight")
     plt.close(fig)
     print(f"  {os.path.relpath(path)} saved")
     return path

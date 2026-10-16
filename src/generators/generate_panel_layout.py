@@ -175,7 +175,7 @@ FONT = {"fontfamily": "monospace"}
 def _new_panel_fig():
     """Create a fresh figure + axes for a panel front elevation; rebinds global ax."""
     global ax
-    fig, ax = plt.subplots(1, 1, figsize=(FW, FH), dpi=200)
+    fig, ax = plt.subplots(1, 1, figsize=(FW, FH), dpi=DIAGRAM_DPI)
     ax.set_xlim(0, FW * 80)
     ax.set_ylim(0, FH * 80)
     ax.set_aspect("equal")
@@ -689,7 +689,7 @@ def draw_pinhole_panel():
     def pwx(x_mm): return PW_OX + (PW_XR - x_mm) * PW_KX
     def pwz(z_mm): return PW_OZ + (z_mm - PW_ZB)
 
-    fig, ax_p = plt.subplots(1, 1, figsize=(23, 13), dpi=200)
+    fig, ax_p = plt.subplots(1, 1, figsize=(23, 13), dpi=DIAGRAM_DPI)
     # +750 units of right-hand room so the notes block (a border PATCH, which matplotlib clips to the
     # axes) fits inside the page instead of being cut at the xlim; figsize widened in step to keep the
     # board's X scale.

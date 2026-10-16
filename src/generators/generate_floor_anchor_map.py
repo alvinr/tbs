@@ -263,7 +263,7 @@ def main():
     fig = plt.figure(figsize=(16, 15))
     sheet(fig)
     out = os.path.join(k.DIAGRAMS_DIR, "floor-anchor-map.png")
-    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="white")
+    fig.savefig(out, dpi=k.DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"saved {out}")
 

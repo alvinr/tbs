@@ -29,7 +29,7 @@ from matplotlib.patches import Circle, Rectangle
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
-    DIAGRAMS_DIR,
+    DIAGRAMS_DIR, DIAGRAM_DPI,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID,
     PANEL_FLOOR_GAP, PANEL_FLOOR_GAP_SIDE,
     PWP_PANEL_X0, PWP_PANEL_X1, SHELF_W, SHELF_DEPTH,
@@ -376,7 +376,7 @@ def _is_fixed(label):
 def _save(fig, fname, tight=True):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     png = os.path.join(DIAGRAMS_DIR, fname)
-    fig.savefig(png, dpi=150, bbox_inches="tight" if tight else None, facecolor=C_BG)
+    fig.savefig(png, dpi=DIAGRAM_DPI, bbox_inches="tight" if tight else None, facecolor=C_BG)
     plt.close(fig)
     print(f"  {png} saved")
 

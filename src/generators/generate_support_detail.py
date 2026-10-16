@@ -22,7 +22,7 @@ from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models"))
 
-from tbs_constants import DIAGRAMS_DIR
+from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_title_block import title_block
 import generate_corridor_water_panel as cp
@@ -72,7 +72,7 @@ BOARDS = [
 def _save(fig, filename):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     png = os.path.join(DIAGRAMS_DIR, filename)
-    fig.savefig(png, dpi=150, bbox_inches="tight", facecolor=C_BG)
+    fig.savefig(png, dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=C_BG)
     plt.close(fig)
     print(f"  {png} saved")
 

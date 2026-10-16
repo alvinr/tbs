@@ -17,7 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Polygon, FancyArrow, Circle
 
-from tbs_constants import PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_FLOOR_Z_LOW, PROC_TRAY_FLOOR_Z_HIGH, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_GUTTER_W, PROC_TRAY_GUTTER_Z_CENTER, PROC_TRAY_GUTTER_Z_END, tray_floor_z, tray_gutter_floor_z, SPRAY_BEAM_X_L, SPRAY_BEAM_X_R, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_TOP_RISE, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, LEFT_WK_CANT_ARM_Z0, DIAGRAMS_DIR
+from tbs_constants import PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_FLOOR_Z_LOW, PROC_TRAY_FLOOR_Z_HIGH, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_GUTTER_W, PROC_TRAY_GUTTER_Z_CENTER, PROC_TRAY_GUTTER_Z_END, tray_floor_z, tray_gutter_floor_z, SPRAY_BEAM_X_L, SPRAY_BEAM_X_R, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_TOP_RISE, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, LEFT_WK_CANT_ARM_Z0, DIAGRAMS_DIR, DIAGRAM_DPI
 from tbs_title_block import title_block
 from tbs_drawing import leader, draw_dim_v
 
@@ -40,7 +40,7 @@ def _tb(fig, sheet, subtitle, scale_note):
 
 def _save(fig, name):
     path = os.path.join(DIAGRAMS_DIR, name)
-    fig.savefig(path, dpi=150, bbox_inches="tight"); plt.close(fig); print(f"  {path} saved")
+    fig.savefig(path, dpi=DIAGRAM_DPI, bbox_inches="tight"); plt.close(fig); print(f"  {path} saved")
 
 
 # ── Sheet 1 — PLAN ────────────────────────────────────────────────────────────

@@ -185,7 +185,7 @@ def render_png(path=None):
     title_block(ax_tb, "SHEET 10 OF 18", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner load case (Phase 1c) — cross-slide travel verification + bending safety factor",
                 scale_note="Analysis (mm)", doc_id="TBS-FM01 · Film Plane Mechanism", height=0.75)
-    fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
+    fig.savefig(path, dpi=c.DIAGRAM_DPI, facecolor="white", bbox_inches="tight")
     plt.close(fig)
     print(f"  → {path}")
     return path

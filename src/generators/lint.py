@@ -981,6 +981,44 @@ def warn_narrow_dep_guard() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["optional numpy/matplotlib guards use except ImportError"])
 
 
+def warn_local_palette_redef() -> tuple[bool, list[str]]:
+    """Advisory: a generator that redefines a tbs_constants palette/style name locally
+    (FONT, BG, or a C_* color) is a single-source violation waiting to drift — the reader sees
+    a shared palette name but the value is a private copy. An *exact* copy silently falls out of
+    step the next time the canonical value changes; a *drifted* copy already disagrees (that is
+    how five diagrams ended up drawing the wall a different gray). Either reference the constant,
+    or give the local a genuinely distinct name. (The palette was hoisted into tbs_constants in
+    2026-10; the remaining hits are the known drifted shades + electrical's tangled in-function
+    blocks, being resolved per-case.)"""
+    import re
+    const_path = os.path.join(ROOT, "src", "generators", "tbs_constants.py")
+    canon = {}
+    for line in open(const_path, encoding="utf-8"):
+        m = re.match(r'^(C_[A-Z0-9_]+|FONT|BG)\s*=\s*("(?:#[0-9A-Fa-f]{3,8}|[a-z]+)"|\{[^}]*\})', line)
+        if m:
+            canon[m.group(1)] = m.group(2).strip().lower()
+    pat = re.compile(
+        r'(?:^|;)\s*(C_[A-Z0-9_]+|FONT|BG)\s*=\s*'
+        r'("(?:#[0-9A-Fa-f]{3,8}|[a-z]+)"|\{[^}]*\}|dict\([^)]*\))', re.MULTILINE)
+    issues = []
+    for path in _scan_files():
+        if os.path.basename(path) == "tbs_constants.py":
+            continue
+        try:
+            src = open(path, encoding="utf-8").read()
+        except OSError:
+            continue
+        for m in pat.finditer(src):
+            name = m.group(1)
+            if name not in canon:
+                continue
+            ln = src.count("\n", 0, m.start()) + 1
+            local = m.group(2).strip().lower()
+            how = "exact copy" if local == canon[name] else f"DRIFTED: local {m.group(2).strip()} vs canonical {canon[name]}"
+            issues.append(f"{os.path.relpath(path, ROOT)}:{ln} redefines palette name {name} ({how})")
+    return (not issues), (issues or ["no generator redefines a tbs_constants palette/style name locally"])
+
+
 def gate_license_headers() -> tuple[bool, list[str]]:
     """Every tracked .py / .rb / .md must carry the SPDX license header (AGPL-3.0-only + ©).
     Protects each source file at the source, independent of the rendered footer. Deterministic —
@@ -1041,6 +1079,7 @@ WARNINGS = [
     ("duplicated geometry in sync (staged emitters)", warn_duplication),
     ("unused imports in generators/models (check_unused_imports --fix)", warn_unused_imports),
     ("optional dep guards use except ImportError (arch/ABI-safe)", warn_narrow_dep_guard),
+    ("no local redefinition of a tbs_constants palette color/FONT/BG", warn_local_palette_redef),
 ]
 
 

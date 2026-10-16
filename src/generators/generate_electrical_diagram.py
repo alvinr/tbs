@@ -24,11 +24,11 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
-from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_ALUM, C_STEEL
+from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WALL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-C_DIM   = "#505050"
-# C_ELEC, C_BATT imported from tbs_constants (unified equipment colors)
+# All shared palette names (C_OUT/C_CL/C_DIM/C_STEEL/C_ALUM/C_GASKT/C_WALL + equipment
+# colors C_ELEC/C_BATT/…) come from tbs_constants — single source, no local overrides.
 C_SOLAR = "#D4EDDA"       # solar array schematic fill (not an equipment constant)
 C_WARN  = "#F8D7DA"
 C_GND   = "#2C5F2E"
@@ -1699,19 +1699,12 @@ def draw_sheet5():
 
 def draw_sheet6():
     """External Power Panel — folded in from the retired generate_power_panel_diagram.py
-    (2026-06). Palette + layout constants are LOCAL here so the drawing is byte-identical
-    regardless of this module's module-level palette (e.g. C_DIM differs between the two)."""
-    C_OUT   = "#1A1A1A"
-    C_DIM   = "#404040"
-    C_CL    = "#2060A0"
-    C_STEEL = "#B0B0B8"
-    C_ALUM  = "#C8D8E8"
+    (2026-06). Shared palette colors come from tbs_constants (single source); only the
+    panel-specific fills below are local."""
     C_BOX   = "#E8E0C8"      # panel face plate fill
     C_NEMA  = "#FFF0CC"       # NEMA inlet fill
     C_MC4   = "#2D7A2D"       # MC4 connector color (solar green)
     C_AC    = "#A07820"       # AC shore power color
-    C_WALL  = "#C0C0C8"       # container wall
-    C_GASKT = "#5A3020"       # gasket / neoprene
     C_INT   = "#F0FFF0"       # interior zone
 
     # ── Panel dimensions (mm) ───────────────────────────────────────────────────
@@ -2372,7 +2365,7 @@ def draw_sheet8():
     """External Power Panel — FACE PLATE FABRICATION (monochrome single-part fab sheet).
     Front-face cut layout with a dim_h (X) + dim_v (Y) locating EVERY hole/cutout/bolt from
     the lower-left datum. Box pieces + the wall-securing detail are on Sheet 9."""
-    C_OUT = "#1A1A1A"; C_DIM = "#404040"; C_HID = "#8A8A8A"
+    C_HID = "#8A8A8A"
     W, H, CW, CH, FL = _BOX_W, _BOX_H, _BOX_CW, _BOX_CH, _BOX_FL
     MI, MD = _BOX_MI, _BOX_MD
     mc4L, mc4R = _MC4_X - _MC4_GAP / 2, _MC4_X + _MC4_GAP / 2   # 57.5, 82.5
@@ -2450,8 +2443,7 @@ def draw_sheet9():
     Panel A: the box as separate pieces, each dimensioned (face/flange plate + shroud walls).
     Panel B: a section through a mounting bolt showing how the box is secured through the wall."""
     from tbs_constants import PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, CONTAINER_CORRUGATION_DEPTH
-    C_OUT = "#1A1A1A"; C_DIM = "#404040"; C_HID = "#8A8A8A"
-    C_STEEL = "#B0B0B8"; C_GASKT = "#5A3020"
+    C_HID = "#8A8A8A"
     W, H, CW, CH, FL = _BOX_W, _BOX_H, _BOX_CW, _BOX_CH, _BOX_FL
     FT = PWR_PANEL_D            # 3mm face/flange plate
     BD = PWR_PANEL_BOX_D        # 90mm box depth

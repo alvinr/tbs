@@ -10,11 +10,11 @@ five diagram sheets showing component positions and weight distribution.
 
 Outputs
 -------
-diagrams/weight-analysis-sheet1.png  — Summary comparison (4 states)
-diagrams/weight-analysis-sheet2.png  — Dry, configured for transport
-diagrams/weight-analysis-sheet3.png  — Camera Ready state distribution
-diagrams/weight-analysis-sheet4.png  — Materials Exhausted state distribution
-diagrams/weight-analysis-sheet5.png  — Loaded Transport (full Blue IBCs)
+docs/assets/weight-analysis-sheet1.png  — Summary comparison (4 states)
+docs/assets/weight-analysis-sheet2.png  — Dry, configured for transport
+docs/assets/weight-analysis-sheet3.png  — Camera Ready state distribution
+docs/assets/weight-analysis-sheet4.png  — Materials Exhausted state distribution
+docs/assets/weight-analysis-sheet5.png  — Loaded Transport (full Blue IBCs)
 """
 
 import os

@@ -400,7 +400,7 @@ def draw_sheet1():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet1.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet1.png saved")
+    print("  → docs/assets/lighttrap-sheet1.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -503,7 +503,7 @@ def draw_sheet2():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet2.png saved")
+    print("  → docs/assets/lighttrap-sheet2.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -619,7 +619,7 @@ def draw_sheet3():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet3.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet3.png saved")
+    print("  → docs/assets/lighttrap-sheet3.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -815,7 +815,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet4.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet4.png saved")
+    print("  → docs/assets/lighttrap-sheet4.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1100,7 +1100,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet5.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet5.png saved")
+    print("  → docs/assets/lighttrap-sheet5.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1299,7 +1299,7 @@ def draw_sheet6():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet6.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet6.png saved")
+    print("  → docs/assets/lighttrap-sheet6.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1448,7 +1448,7 @@ def draw_sheet7():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet7.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet7.png saved")
+    print("  → docs/assets/lighttrap-sheet7.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1718,7 +1718,7 @@ def draw_sheet8():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet8.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet8.png saved")
+    print("  → docs/assets/lighttrap-sheet8.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1863,7 +1863,7 @@ def draw_sheet9():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet9.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet9.png saved")
+    print("  → docs/assets/lighttrap-sheet9.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -2042,7 +2042,7 @@ def draw_sheet10():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet10.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet10.png saved")
+    print("  → docs/assets/lighttrap-sheet10.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -2149,7 +2149,7 @@ def draw_sheet11():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet11.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet11.png saved")
+    print("  → docs/assets/lighttrap-sheet11.png saved")
 
 
 def draw_sheet12():
@@ -2216,7 +2216,7 @@ def draw_sheet12():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet12.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet12.png saved")
+    print("  → docs/assets/lighttrap-sheet12.png saved")
 
 
 def main():

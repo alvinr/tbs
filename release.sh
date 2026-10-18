@@ -72,7 +72,7 @@ awk -v ver="$VERSION" -v d="$DATE" '
 echo "Regenerating diagrams at v$VERSION ..."
 bash "$SCRIPT_DIR/src/generators/regenerate_diagrams.sh"
 
-git add "$RL" diagrams/*.png
+git add "$RL" docs/assets/*.png
 git commit -q -m "release $VERSION"
 
 # Publish the new-version site + brochure. The version is DERIVED from the just-promoted

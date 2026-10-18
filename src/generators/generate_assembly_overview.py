@@ -4,7 +4,7 @@
 """
 generate_assembly_overview.py
 
-Generates diagrams/assembly-overview.png — high-level schematic side-elevation
+Generates docs/assets/assembly-overview.png — high-level schematic side-elevation
 of the TBS-001 container interior (redesigned film-plane-reduction layout).
 
 View direction: looking at the near long wall (Y=0 face) from outside.

@@ -135,12 +135,16 @@ def warn_editorial_list() -> tuple[bool, list[str]]:
 # hingepanel-sheet6 were added to existing generators and never reached the gallery). Flags only the
 # 'generated but ungalleried' direction. ──
 def warn_gallery_coverage() -> tuple[bool, list[str]]:
-    diag = os.path.join(ROOT, "diagrams")
-    generated = {f for f in os.listdir(diag) if f.endswith(".png")} if os.path.isdir(diag) else set()
+    # Generated PNGs now share docs/assets/ with the static logos, so list the AUTHORITATIVE
+    # generated set from dependencies.yml (the script→output map) rather than the directory —
+    # that excludes the static images for free and can't drift from what the generators write.
+    deps = _deps()
+    generated = {os.path.basename(o) for e in deps.ENTRIES.values()
+                 for o in e["outputs"] if o.endswith(".png")}
     gallery = open(os.path.join(ROOT, "docs", "all-diagrams.md"), encoding="utf-8").read()
     referenced = {os.path.basename(p) for p in re.findall(r"assets/([^)\s]+\.png)", gallery)}
     missing = sorted(generated - referenced)
-    issues = [f"{f} is generated (diagrams/) but not in all-diagrams.md" for f in missing]
+    issues = [f"{f} is generated (docs/assets/) but not in all-diagrams.md" for f in missing]
     return (not issues), (issues or ["every generated diagram PNG is in the all-diagrams gallery"])
 
 

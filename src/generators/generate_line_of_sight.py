@@ -4,7 +4,7 @@
 """
 generate_line_of_sight.py
 
-Generates diagrams/line-of-sight.png — two-panel optical clearance diagram
+Generates docs/assets/line-of-sight.png — two-panel optical clearance diagram
 for TBS-001 (redesigned film-plane-reduction layout).
 
 Panel A — Plan view (top-down):

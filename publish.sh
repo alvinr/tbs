@@ -206,14 +206,14 @@ info "Syncing image assets to published/assets/..."
 
 mkdir -p "$ASSETS_DIR"
 
-# Images stored in assets/ (not root, not diagrams/)
+# Static images (logo / favicon) — live in docs/assets/ alongside the generated diagrams.
 ASSET_FILES=(
     "logo-final.png"
     "favicon.png"
 )
 
 for f in "${ASSET_FILES[@]}"; do
-    src="$SCRIPT_DIR/assets/$f"
+    src="$SCRIPT_DIR/docs/assets/$f"
     dst="$ASSETS_DIR/$f"
     if [[ ! -f "$src" ]]; then
         warn "assets/$f not found — skipping"
@@ -226,7 +226,7 @@ for f in "${ASSET_FILES[@]}"; do
     fi
 done
 
-# Generated diagram images (all live in diagrams/)
+# Generated diagram images (all live in docs/assets/)
 DIAG_FILES=(
     "portrait-camera-schematic.png"
     "portrait-optimal-3m.png"
@@ -387,15 +387,15 @@ DIAG_FILES=(
 )
 
 for f in "${DIAG_FILES[@]}"; do
-    src="$SCRIPT_DIR/diagrams/$f"
+    src="$SCRIPT_DIR/docs/assets/$f"
     dst="$ASSETS_DIR/$f"
     if [[ ! -f "$src" ]]; then
-        warn "diagrams/$f not found — skipping"
+        warn "docs/assets/$f not found — skipping"
         continue
     fi
     if [[ ! -f "$dst" ]] || [[ "$src" -nt "$dst" ]]; then
         cp "$src" "$dst"
-        echo "    updated: diagrams/$f"
+        echo "    updated: docs/assets/$f"
         CHANGED=$((CHANGED + 1))
     fi
 done
@@ -434,16 +434,16 @@ case "$MODE" in
         echo "  Hot-reload is active — edits to root .md files auto-sync to published/."
         echo "  Press Ctrl-C to stop."
         echo ""
-        # Background loop: re-sync root .md and diagrams → published/ every 2 seconds.
+        # Background loop: re-sync docs/ .md and docs/assets/ images → published/ every 2 seconds.
         # Uses rsync --update so only changed files trigger mkdocs hot-reload.
         (
             while true; do
                 for f in "${MD_FILES[@]}"; do
-                    [[ -f "$SCRIPT_DIR/$f" ]] && rsync -q --update "$SCRIPT_DIR/$f" "$DOCS_DIR/$f" 2>/dev/null || true
+                    [[ -f "$SCRIPT_DIR/docs/$f" ]] && rsync -q --update "$SCRIPT_DIR/docs/$f" "$DOCS_DIR/$f" 2>/dev/null || true
                 done
                 [[ -f "$SUMMARY_SRC" ]] && rsync -q --update "$SUMMARY_SRC" "$INDEX_DST" 2>/dev/null || true
                 for f in "${DIAG_FILES[@]}"; do
-                    [[ -f "$SCRIPT_DIR/$f" ]] && rsync -q --update "$SCRIPT_DIR/$f" "$ASSETS_DIR/$(basename "$f")" 2>/dev/null || true
+                    [[ -f "$SCRIPT_DIR/docs/assets/$f" ]] && rsync -q --update "$SCRIPT_DIR/docs/assets/$f" "$ASSETS_DIR/$(basename "$f")" 2>/dev/null || true
                 done
                 sleep 2
             done

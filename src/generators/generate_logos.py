@@ -166,7 +166,7 @@ def make_logo1():
                     [cy, cy + dy * (1 if cy < 50 else -1)],
                     color=WHITE, lw=1, alpha=0.4)
 
-    save(fig, os.path.join(_PROJECT_ROOT, "assets", "logo-option1.png"))
+    save(fig, os.path.join(_PROJECT_ROOT, "docs", "assets", "logo-option1.png"))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -358,7 +358,7 @@ def make_logo2():
     ax.text(50, 22.5, specs, color=IBM_BLUE, fontsize=6.2, ha="center", va="center",
             fontfamily="monospace", fontweight="bold", zorder=6)
 
-    save(fig, os.path.join(_PROJECT_ROOT, "assets", "logo-option2.png"))
+    save(fig, os.path.join(_PROJECT_ROOT, "docs", "assets", "logo-option2.png"))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -509,7 +509,7 @@ def make_logo3():
             color=BLACK, fontsize=7.5, ha="left", va="center",
             fontweight="bold", fontfamily="monospace", zorder=6)
 
-    save(fig, os.path.join(_PROJECT_ROOT, "assets", "logo-option3.png"))
+    save(fig, os.path.join(_PROJECT_ROOT, "docs", "assets", "logo-option3.png"))
 
 
 # ── Run all ───────────────────────────────────────────────────────────────────

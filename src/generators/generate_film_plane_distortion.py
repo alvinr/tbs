@@ -351,7 +351,7 @@ def render_summary():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "film-plane-distortion-summary.png"), dpi=DISTORTION_DPI,
                 bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  → diagrams/film-plane-distortion-summary.png")
+    print("  → docs/assets/film-plane-distortion-summary.png")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

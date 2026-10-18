@@ -10,7 +10,7 @@ type: feedback
 
 **Mode:** auto-apply + show. Apply the safe static fixes and the confident visual fixes, regenerate, then present the before/after render and a summary for review — don't stop for approval on each edit.
 
-**Scope discipline:** one diagram/generator per pass. Regenerating a generator rewrites *its* PNGs only; `git checkout -- diagrams/` any PNG you didn't intend to change (generators that share an output, render-noise). Always drive matplotlib with `/usr/bin/python3`.
+**Scope discipline:** one diagram/generator per pass. Regenerating a generator rewrites *its* PNGs only; `git checkout -- docs/assets/` any PNG you didn't intend to change (generators that share an output, render-noise). Always drive matplotlib with `/usr/bin/python3`.
 
 ---
 
@@ -67,7 +67,7 @@ Regenerate, crop-zoom the same clusters again. Fix-then-eyeball — never ship t
 ### 5. Show + commit
 Present a before/after crop (or the full render) and a one-line summary of what changed. Commit the generator + only its regenerated PNG(s):
 ```
-git add src/generators/<generator.py> diagrams/<its-pngs>.png
+git add src/generators/<generator.py> docs/assets/<its-pngs>.png
 git commit -m "tidy labels: <diagram> — <what changed>"
 ```
 

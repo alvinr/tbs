@@ -29,8 +29,8 @@ spine, looking along Yd:
 Both share all structure + fittings/valves/diverters as landmarks; each face's
 own pipe runs are drawn only on its own sheet.
 
-Outputs: diagrams/panel-layout.png, diagrams/pinhole-panel.png,
-         diagrams/panel-spine-view-a.png, diagrams/panel-spine-view-b.png
+Outputs: docs/assets/panel-layout.png, docs/assets/pinhole-panel.png,
+         docs/assets/panel-spine-view-a.png, docs/assets/panel-spine-view-b.png
 """
 
 import os

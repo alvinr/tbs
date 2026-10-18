@@ -12,7 +12,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import math
-from tbs_constants import DISTORTION_DPI, RAIL_X_L, RAIL_X_R, FP_H, C_LEN, C_WID
+import os
+from tbs_constants import DISTORTION_DPI, DIAGRAMS_DIR, RAIL_X_L, RAIL_X_R, FP_H, C_LEN, C_WID
 from tbs_drawing import draw_rect
 
 # ─────────────────────────────────────────
@@ -246,7 +247,7 @@ ax.axis('off')
 
 plt.tight_layout(pad=0.3)
 
-out1 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-scale-comparison.png'
+out1 = os.path.join(DIAGRAMS_DIR, 'portrait-scale-comparison.png')
 plt.savefig(out1, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out1}')
@@ -363,7 +364,7 @@ ax2.text(CONT_L_MM/2, _sub_y,
 
 plt.tight_layout(pad=0.3)
 
-out2 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
+out2 = os.path.join(DIAGRAMS_DIR, 'portrait-camera-schematic.png')
 plt.savefig(out2, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out2}')
@@ -475,7 +476,7 @@ ax3.axis('off')
 
 plt.tight_layout(pad=0.3)
 
-out3 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-optimal-3m.png'
+out3 = os.path.join(DIAGRAMS_DIR, 'portrait-optimal-3m.png')
 plt.savefig(out3, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out3}')

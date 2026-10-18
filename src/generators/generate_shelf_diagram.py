@@ -114,7 +114,7 @@ def sheet1():
                 scale_note="Axes in mm · PLAN VIEW", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/shelf-sheet1.png saved")
+    print("  docs/assets/shelf-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -188,7 +188,7 @@ def sheet2():
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/shelf-sheet2.png saved")
+    print("  docs/assets/shelf-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -244,7 +244,7 @@ def sheet3():
                 scale_note="Axes in mm · DETAIL", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/shelf-sheet3.png saved")
+    print("  docs/assets/shelf-sheet3.png saved")
 
 
 # ── Fab-detail layout (diagram-of-record — exact hole positions belong in the drawing) ──
@@ -366,7 +366,7 @@ def sheet4():
                 scale_note="Axes in mm", height=0.08)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/shelf-sheet4.png saved")
+    print("  docs/assets/shelf-sheet4.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -469,7 +469,7 @@ def sheet5():
                 scale_note="Axes in mm · 1:1", height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/shelf-sheet5.png saved")
+    print("  docs/assets/shelf-sheet5.png saved")
 
 
 if __name__ == "__main__":

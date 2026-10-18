@@ -89,17 +89,17 @@ MD_FILES = [
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
 
-# Root-only images (not generated into diagrams/)
+# Root-only images (none — all images live in docs/assets/)
 ROOT_IMAGE_FILES = [
 ]
 
-# Images stored in assets/ (not root, not diagrams/)
+# Static images (logo / favicon) — live in docs/assets/ alongside the generated diagrams.
 ASSET_IMAGE_FILES = [
     "logo-final.png",
     "favicon.png",
 ]
 
-# Generated diagram images (all live in diagrams/)
+# Generated diagram images (all live in docs/assets/)
 DIAG_IMAGE_FILES = [
     "portrait-camera-schematic.png",
     "portrait-optimal-3m.png",
@@ -566,20 +566,13 @@ def main():
 
     # 4. Copy image assets
     print("\n[4/5] Copying image assets...")
-    for img_name in ASSET_IMAGE_FILES:
-        src = PROJECT_ROOT / "assets" / img_name
+    for img_name in ASSET_IMAGE_FILES + DIAG_IMAGE_FILES:
+        src = PROJECT_ROOT / "docs" / "assets" / img_name
         if src.exists():
             shutil.copy2(src, ASSETS_DIR / img_name)
-            print(f"  assets/{img_name} → published/assets/{img_name}")
+            print(f"  docs/assets/{img_name} → published/assets/{img_name}")
         else:
-            print(f"  WARNING: assets/{img_name} not found — skipping")
-    for img_name in DIAG_IMAGE_FILES:
-        src = PROJECT_ROOT / "diagrams" / img_name
-        if src.exists():
-            shutil.copy2(src, ASSETS_DIR / img_name)
-            print(f"  diagrams/{img_name} → published/assets/{img_name}")
-        else:
-            print(f"  WARNING: diagrams/{img_name} not found — skipping")
+            print(f"  WARNING: docs/assets/{img_name} not found — skipping")
 
     # 5. Write mkdocs.yml
     print("\n[5/5] Writing mkdocs.yml and published/index.md...")

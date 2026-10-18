@@ -708,7 +708,7 @@ def sheet1():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-frame-sheet1.png saved")
+    print("  docs/assets/ibc-frame-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -899,7 +899,7 @@ def sheet2():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet2.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-frame-sheet2.png saved")
+    print("  docs/assets/ibc-frame-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1171,7 +1171,7 @@ def sheet3():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet3.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-frame-sheet3.png saved")
+    print("  docs/assets/ibc-frame-sheet3.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1325,7 +1325,7 @@ def sheet4():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet4.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-frame-sheet4.png saved")
+    print("  docs/assets/ibc-frame-sheet4.png saved")
 
 
 def sheet5():
@@ -1496,7 +1496,7 @@ def sheet5():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet5.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-frame-sheet5.png saved")
+    print("  docs/assets/ibc-frame-sheet5.png saved")
 
 
 def sheet6():
@@ -1601,7 +1601,7 @@ def sheet6():
                 scale_note="Schematic — not to scale; weld sizes in mm", height=0.04)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet6.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-frame-sheet6.png saved")
+    print("  docs/assets/ibc-frame-sheet6.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

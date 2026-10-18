@@ -16,7 +16,7 @@ the spec fixes them (EP backboard, pump-mount shirt, side boards, Fan-B band, co
 supplier / SKU stay single-sourced in `parts.py` (cross-referenced by the `key` column). So the cut
 figures can't drift from the geometry, and the money can't drift from the registry.
 
-    python3 src/generators/generate_plywood_cutsheets.py     # → diagrams/plywood-cutsheets-sheet1/2.png
+    python3 src/generators/generate_plywood_cutsheets.py     # → docs/assets/plywood-cutsheets-sheet1/2.png
 """
 import os
 import sys

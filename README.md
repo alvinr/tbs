@@ -21,10 +21,11 @@ shopping / weight figures, and the [MkDocs](https://www.mkdocs.org/) website.
 ## Repository layout
 
 ```
-/                      project root — engineering reports (*.md), config, this README
+/                      project root — config + CLAUDE.md / README.md / RELEASE.md only
+docs/                  engineering reports + working-doc sources (*.md)
+docs/assets/           all images — generated PNGs/SVGs + static logo/favicon, cited as assets/<name>
 src/generators/        all 2D diagram generators + the tooling (lint.py, costing.py, …)
 src/models/            SketchUp 3D model generators (emit Ruby, drive SketchUp)
-diagrams/              generated PNGs/SVGs (output of src/generators/)
 skills/                codified drawing/labeling conventions
 published/             MkDocs input — auto-populated by publish.sh (gitignored, never edit)
 site/                  built site output — gitignored, never commit
@@ -61,7 +62,7 @@ installed. Only the diagram generators and the site build need `requirements.txt
 
 ## Regenerating the 2D diagrams
 
-Each generator writes one or more PNGs into `diagrams/`:
+Each generator writes one or more PNGs into `docs/assets/` (via `DIAGRAMS_DIR`):
 
 ```bash
 python3 src/generators/generate_<name>.py        # e.g. generate_walkway_diagram.py
@@ -224,7 +225,7 @@ bash publish.sh --local    # sync + serve a local preview at http://127.0.0.1:80
 bash publish.sh --build    # sync + build to site/ only (no deploy)
 ```
 
-`publish.sh` syncs the root `.md` files + `diagrams/` into `published/`, copies
+`publish.sh` syncs the `docs/` `.md` files + `docs/assets/` images into `published/`, copies
 `project-summary.md → published/index.md` (the site Home), builds with MkDocs, optionally writes
 the PDF brochure, and pushes the `gh-pages` branch. It auto-detects whether a git remote exists and
 falls back to `--build` if not. On some systems run it as `PATH=/usr/bin:$PATH bash publish.sh`.
@@ -235,7 +236,7 @@ falls back to `--build` if not. On some systems run it as `PATH=/usr/bin:$PATH b
 
 ## Adding a new document (short version)
 
-1. Write `<name>.md` in the repo root (+ a `src/generators/generate_<name>.py` if it needs drawings).
+1. Write `<name>.md` in `docs/` (+ a `src/generators/generate_<name>.py` if it needs drawings).
 2. Register it in `publish.sh` (`MD_FILES` / `DIAG_FILES`) and `src/generators/setup_docs.py`
    (`MD_FILES` / `DIAG_IMAGE_FILES` + the index table), and add a `nav:` entry to `mkdocs.yml`.
 3. If you added a generator/model, add its `script → outputs` entry to `dependencies.yml`.

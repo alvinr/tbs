@@ -421,7 +421,7 @@ def draw_sheet1():
     plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → diagrams/ventilation-sheet1.png  Done.")
+    print("  → docs/assets/ventilation-sheet1.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -682,7 +682,7 @@ def draw_sheet2():
     plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → diagrams/ventilation-sheet2.png  Done.")
+    print("  → docs/assets/ventilation-sheet2.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -821,7 +821,7 @@ def draw_sheet3():
     plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → diagrams/ventilation-sheet3.png  Done.")
+    print("  → docs/assets/ventilation-sheet3.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

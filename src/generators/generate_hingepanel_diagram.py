@@ -351,7 +351,7 @@ def sheet1():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet1.png saved")
+    print("  docs/assets/hingepanel-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -810,7 +810,7 @@ def sheet2():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet2.png saved")
+    print("  docs/assets/hingepanel-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1325,7 +1325,7 @@ def sheet3():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet3.png saved")
+    print("  docs/assets/hingepanel-sheet3.png saved")
 
 
 
@@ -1445,7 +1445,7 @@ def sheet4():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet4.png saved")
+    print("  docs/assets/hingepanel-sheet4.png saved")
 
 def sheet5():
     """Sheet 5 — interior pull-handle mounting detail. Horizontal section through the
@@ -1517,7 +1517,7 @@ def sheet5():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet5.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet5.png saved")
+    print("  docs/assets/hingepanel-sheet5.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1668,7 +1668,7 @@ def sheet6():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet6.png saved")
+    print("  docs/assets/hingepanel-sheet6.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1854,7 +1854,7 @@ def sheet7():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet7.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet7.png saved")
+    print("  docs/assets/hingepanel-sheet7.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2023,7 +2023,7 @@ def _frame_ga(mirror=False):
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet9.png" if mirror else "hingepanel-sheet8.png"),
                 dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet9.png saved" if mirror else "  diagrams/hingepanel-sheet8.png saved")
+    print("  docs/assets/hingepanel-sheet9.png saved" if mirror else "  docs/assets/hingepanel-sheet8.png saved")
 
 
 # RULE: function names match sheet numbers. Sheet 8 (interior) + Sheet 9 (exterior mirror) share the
@@ -2130,7 +2130,7 @@ def sheet10():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet10.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet10.png saved")
+    print("  docs/assets/hingepanel-sheet10.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2193,7 +2193,7 @@ def sheet11():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet11.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet11.png saved")
+    print("  docs/assets/hingepanel-sheet11.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 12  —  Frame Hardware Attachments (three details)
@@ -2281,7 +2281,7 @@ def sheet12():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet12.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet12.png saved")
+    print("  docs/assets/hingepanel-sheet12.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2358,7 +2358,7 @@ def sheet13():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet13.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet13.png saved")
+    print("  docs/assets/hingepanel-sheet13.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2439,7 +2439,7 @@ def sheet14():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet14.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet14.png saved")
+    print("  docs/assets/hingepanel-sheet14.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 15  —  Bottom Clearance Cross-Section (Yd–Z), walkway grate lifted out.
@@ -2583,7 +2583,7 @@ def sheet15():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet15.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet15.png saved")
+    print("  docs/assets/hingepanel-sheet15.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2772,7 +2772,7 @@ def sheet16():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet16.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet16.png saved")
+    print("  docs/assets/hingepanel-sheet16.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2923,7 +2923,7 @@ def sheet17():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet17.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet17.png saved")
+    print("  docs/assets/hingepanel-sheet17.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

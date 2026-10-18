@@ -10,7 +10,7 @@ mid-deck joint), matching the 3D model. The only butt joints are the four corner
 joins between the near / far / left / right decks and the one unavoidable sheet
 seam in the >10ft near/far runs (molded GRP tops out at 3'×10').
 
-Dimensions in INCHES (supplier units). Output: diagrams/grp-cutplan.png
+Dimensions in INCHES (supplier units). Output: docs/assets/grp-cutplan.png
 """
 import os
 import matplotlib

@@ -166,14 +166,14 @@ if __name__ == "__main__":
     draw_sheet2()
 ```
 
-**Naming convention:** `generate_<name>_diagram.py` → outputs `diagrams/<name>-sheet1.png`, `diagrams/<name>-sheet2.png`, etc.
+**Naming convention:** `generate_<name>_diagram.py` → outputs `docs/assets/<name>-sheet1.png`, `docs/assets/<name>-sheet2.png`, etc. (save via `DIAGRAMS_DIR`, never a hardcoded path).
 
 **Every new diagram PNG goes into `all-diagrams.md`** (the gallery index), under the right
 section in sheet order — **including a new sheet added to an existing generator**, not just a
 new generator. This is the easiest step to forget (`electrical-sheet4/5`, `hingepanel-sheet6`
 slipped because they were extra sheets on existing generators). It's enforced: `lint.py` warns
-`all-diagrams gallery covers every generated diagram PNG` for any `diagrams/*.png` the gallery
-doesn't reference. Also register the PNG in `publish.sh` (`DIAG_FILES`) + `setup_docs.py`
+`all-diagrams gallery covers every generated diagram PNG` for any generated PNG (per
+`dependencies.yml`) the gallery doesn't reference. Also register the PNG in `publish.sh` (`DIAG_FILES`) + `setup_docs.py`
 (`DIAG_IMAGE_FILES`) so it syncs to `published/assets/` — see CLAUDE.md "Adding a New Document".
 
 ## Scale Functions

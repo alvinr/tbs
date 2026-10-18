@@ -537,7 +537,7 @@ def sheet1():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet1.png saved")
+    print("  docs/assets/walkway-sheet1.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — Cross-Section + Bolt Pattern
@@ -1091,7 +1091,7 @@ def sheet2():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet2.png saved")
+    print("  docs/assets/walkway-sheet2.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 3 — Detail A: Right Walkway Cantilever Support (IBC End)  [rev 12]
@@ -1308,7 +1308,7 @@ def sheet3():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet3.png saved")
+    print("  docs/assets/walkway-sheet3.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 4 — Detail B: Left Walkway Lift-Out at Butt Joint
@@ -1564,7 +1564,7 @@ def sheet4():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet4.png saved")
+    print("  docs/assets/walkway-sheet4.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 5 — Detail C: Left Walkway Support System
@@ -1680,7 +1680,7 @@ def sheet5():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet5.png saved")
+    print("  docs/assets/walkway-sheet5.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1861,7 +1861,7 @@ def sheet6():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=DIAGRAM_DPI, facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet6.png saved")
+    print("  docs/assets/walkway-sheet6.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2333,7 +2333,7 @@ def sheet7():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet7.png saved")
+    print("  docs/assets/walkway-sheet7.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2594,7 +2594,7 @@ def sheet8():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet8.png saved")
+    print("  docs/assets/walkway-sheet8.png saved")
 
 
 def sheet9():
@@ -2724,7 +2724,7 @@ def sheet9():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet9.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet9.png saved")
+    print("  docs/assets/walkway-sheet9.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2868,7 +2868,7 @@ def sheet10():
                 subtitle="GRATE CUT-PLAN — 4 GRP SECTIONS (nesting) · CLIPS AT 610mm")
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet10.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet10.png saved")
+    print("  docs/assets/walkway-sheet10.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

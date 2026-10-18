@@ -13,7 +13,7 @@ Sheet 5 — Detail C — wheel attachment (section along axle, 2:1)
 Sheet 6 — Detail D — wheel attachment plan (X-Yd, looking down)
 
 Output:
-  diagrams/spray-bar-sheet1.png … spray-bar-sheet8.png
+  docs/assets/spray-bar-sheet1.png … spray-bar-sheet8.png
   Fab sheets: spray-bar-sheet9.png (beam+manifold layout), spray-bar-sheet10.png
   (wheel-carriage plate), spray-bar-sheet11.png (processing-tray pan)
 """

@@ -47,8 +47,8 @@ except ImportError:
 # -- Constants -----------------------------------------------------------------
 PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 MKDOCS_YML   = os.path.join(PROJECT_ROOT, "mkdocs.yml")
-DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")
-ASSETS_DIR   = os.path.join(PROJECT_ROOT, "assets")
+DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "docs", "assets")
+ASSETS_DIR   = os.path.join(PROJECT_ROOT, "docs", "assets")
 
 # index.md in mkdocs nav is sourced from project-summary.md
 NAV_SOURCE_OVERRIDE = {"index.md": "project-summary.md"}

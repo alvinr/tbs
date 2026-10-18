@@ -8,7 +8,7 @@ pinhole wall (Yd=0) showing all mounted systems for interference checking.
 View: looking at the pinhole wall from inside the container.
 Horizontal axis = X (mm), Vertical axis = Z (mm AFF).
 
-Output: diagrams/pinhole-wall-elevation.png
+Output: docs/assets/pinhole-wall-elevation.png
 """
 
 import os

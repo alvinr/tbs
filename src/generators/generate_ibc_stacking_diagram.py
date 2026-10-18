@@ -308,7 +308,7 @@ def sheet1():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet1.png saved")
+    print("  docs/assets/ibc-stacking-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -392,7 +392,7 @@ def sheet2():
                 scale_note="Front elevation — dims in mm")
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet2.png saved")
+    print("  docs/assets/ibc-stacking-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -621,7 +621,7 @@ def sheet3():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet3.png saved")
+    print("  docs/assets/ibc-stacking-sheet3.png saved")
 
 
 # ── Shared pipe drawing helpers ───────────────────────────────────────────────
@@ -1146,7 +1146,7 @@ def sheet4():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet4.png saved")
+    print("  docs/assets/ibc-stacking-sheet4.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1727,7 +1727,7 @@ def sheet5():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet5.png saved")
+    print("  docs/assets/ibc-stacking-sheet5.png saved")
 
 
 def _draw_valve_elev(ax, yd, z, color, label, lside="right", text_color=None):

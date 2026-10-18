@@ -196,7 +196,7 @@ def sheet1():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-plate-schedule-sheet1.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-plate-schedule-sheet1.png saved")
+    print("  docs/assets/ibc-plate-schedule-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -305,7 +305,7 @@ def sheet2():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-plate-schedule-sheet2.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-plate-schedule-sheet2.png saved")
+    print("  docs/assets/ibc-plate-schedule-sheet2.png saved")
 
 
 if __name__ == "__main__":

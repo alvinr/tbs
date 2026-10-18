@@ -5,7 +5,7 @@
 generate_mini_tbs_diagram.py
 
 Mini-TBS proof-of-concept pinhole camera — engineering drawing.
-Output: diagrams/mini-tbs-sheet1.png
+Output: docs/assets/mini-tbs-sheet1.png
 
 Single sheet with four panels:
   Top (full width):    Side cross-section — camera box + prep box,

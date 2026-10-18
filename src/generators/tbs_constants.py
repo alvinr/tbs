@@ -1467,7 +1467,7 @@ FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────
-DIAGRAMS_DIR = os.environ.get("TBS_DIAGRAMS_DIR") or os.path.join(PROJECT_ROOT, "diagrams")  # env override: lint regenerates to a temp dir to byte-diff the cascade
+DIAGRAMS_DIR = os.environ.get("TBS_DIAGRAMS_DIR") or os.path.join(PROJECT_ROOT, "docs", "assets")  # co-located with the docs that cite them (assets/<name>) so GitHub renders them in-repo; env override: lint regenerates to a temp dir to byte-diff the cascade
 
 # ── Raster resolution (savefig dpi) ───────────────────────────────────────────
 # One knob for the whole diagram set so it can't drift across ~90 savefig calls.

@@ -19,9 +19,9 @@
 ```
 /                        ← project root: config files + CLAUDE.md / README.md / RELEASE.md only
 docs/                    ← all .md report + working-doc SOURCES (moved off root 2026-10); docs/mini-tbs/ = TBS-002
+docs/assets/             ← ALL images (generated PNGs/SVGs + static logo/favicon) — co-located with the docs that cite them as assets/<name> so GitHub renders them in-repo
 docs/superpowers/        ← brainstorming plans/specs (real tracked sources)
 src/generators/          ← all .py scripts (diagram generators, helpers, setup)
-diagrams/                ← generated PNGs and SVGs (output of generators)
 skills/                  ← codified drawing and labeling conventions (read before creating diagrams)
 published/               ← MkDocs input — auto-populated by publish.sh (gitignored, never edit directly)
 published/assets/        ← images — auto-populated by publish.sh
@@ -31,7 +31,7 @@ site/                    ← built output — gitignored, never commit
 
 **Key config files:** `mkdocs.yml` (nav + theme), `publish.sh` (sync + deploy), `src/generators/setup_docs.py` (one-time setup).
 
-**HARD RULE — scratch files NEVER live inside a repo directory.** Temporary/working files — one-off scripts, intermediate data, downloaded references, conversation dumps, throwaway images, experiment output — go in the **session scratchpad directory** (given in the environment prompt), never in the project tree. Nothing that isn't a committed source or a registered build artifact belongs under the repo. If a scratch file is genuinely worth keeping, promote it to its proper home (a `src/` script, a `diagrams/` output, a datasheet under the gitignored `eng-specs/`) — don't leave it loose in the root. This keeps `git status` clean and prevents an accidental `git add` from sweeping in junk.
+**HARD RULE — scratch files NEVER live inside a repo directory.** Temporary/working files — one-off scripts, intermediate data, downloaded references, conversation dumps, throwaway images, experiment output — go in the **session scratchpad directory** (given in the environment prompt), never in the project tree. Nothing that isn't a committed source or a registered build artifact belongs under the repo. If a scratch file is genuinely worth keeping, promote it to its proper home (a `src/` script, a `docs/assets/` diagram output, a datasheet under the gitignored `eng-specs/`) — don't leave it loose in the root. This keeps `git status` clean and prevents an accidental `git add` from sweeping in junk.
 
 **Skills** (read these before working on diagrams):
 - `skills/skill_diagram_structure.md` — coordinate system, view conventions, multi-sheet generator boilerplate, shared helper catalog
@@ -47,13 +47,13 @@ site/                    ← built output — gitignored, never commit
 ## Workflow: Adding a New Document
 
 1. Write `<name>.md` in `docs/` (report + working-doc sources live there; CLAUDE.md / README.md / RELEASE.md stay at root).
-2. If drawings are needed: write `src/generators/generate_<name>.py` → outputs to `diagrams/<name>-sheet1.png`, `diagrams/<name>-sheet2.png`, etc. (all generated PNGs go into `diagrams/`).
+2. If drawings are needed: write `src/generators/generate_<name>.py` → save via `DIAGRAMS_DIR` (from `tbs_constants.py`) so output lands in `docs/assets/<name>-sheet1.png`, etc. (all generated PNGs go into `docs/assets/` — never hardcode the path).
 3. Register the `.md` in `publish.sh` → `MD_FILES` array.
 4. Register any new `.png` files in `publish.sh` → `DIAG_FILES` array (for generated diagrams) or `IMG_FILES` (for root-only images like logos).
 5. Register the `.md` in `src/generators/setup_docs.py` → `MD_FILES` list (controls nav title).
 6. Register any new `.png` files in `src/generators/setup_docs.py` → `DIAG_IMAGE_FILES` list (for generated diagrams) or `ROOT_IMAGE_FILES` (for root-only images).
 7. **Add every new diagram PNG to `all-diagrams.md`** (the gallery index) under the right section, in sheet order. **This applies to a NEW SHEET added to an EXISTING generator too — not just new documents** (the common miss: `electrical-sheet4/5` and `hingepanel-sheet6` were added to existing generators and never reached the gallery). Audit any time — the output must be empty:
-   `comm -23 <(ls diagrams/*.png | xargs -n1 basename | sort -u) <(grep -oE 'assets/[^)]+\.png' all-diagrams.md | sed 's|assets/||' | sort -u)`
+   `python3 src/generators/lint.py` — its *all-diagrams gallery coverage* WARNING lists any generated PNG (per `dependencies.yml`) missing from `docs/all-diagrams.md`.
 8. Add a row to the `INDEX_MD` table in `setup_docs.py`.
 9. Add a nav entry to `mkdocs.yml` → `nav:` block.
 10. Add a row to `docs/index.md` → Documents table.

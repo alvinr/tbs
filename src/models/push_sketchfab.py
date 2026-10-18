@@ -178,7 +178,7 @@ def push_new_model(token, name, entry):
             capture_output=True, text=True).stdout.strip()
         print(f"  deleted old model {old_uid} (HTTP {code})")
     print(f"  live: https://sketchfab.com/models/{new_uid}")
-    print("  -> commit the embed + dependencies.yml changes and run `bash publish.sh`.")
+    print("  -> commit the embed + dependencies.yml changes and run `bash scripts/publish.sh`.")
 
 
 def main():

@@ -512,10 +512,10 @@ the updated PNGs and `*.skp`/`*.rb` alongside the constant change.
      python3 src/models/generate_sketchup_model.py --save --send
    # regenerates overview.rb + re-sends to SketchUp; save the .skp
 5. Visually inspect updated PNGs in diagrams/ AND the SketchUp model
-6. bash publish.sh --build           # verify zero MkDocs warnings
+6. bash scripts/publish.sh --build           # verify zero MkDocs warnings
 7. python3 src/generators/manifest.py --update   # refresh the model source_hash in dependencies.yml
 8. git add tbs_constants.py diagrams/*.png models/*.skp dependencies.yml && git commit -m "..."   # NOT the .rb (gitignored)
-9. bash publish.sh                   # deploy
+9. bash scripts/publish.sh                   # deploy
 ```
 
 ## See Also

@@ -4,7 +4,7 @@
 # THE GATE: refuses to run if RELEASE.md's [Unreleased] section is empty, so no release
 # ever ships without a changelog entry.
 #
-#   bash release.sh 0.2
+#   bash scripts/release.sh 0.2
 #
 # Steps: verify [Unreleased] has content -> promote it to "## [X.Y] — <date>" (leaving a
 # fresh empty [Unreleased]) -> commit RELEASE.md -> tag X.Y -> push -> gh release create X.Y.
@@ -13,12 +13,12 @@
 # invocation (a pipe, CI, or a tool shell with no TTY) proceeds automatically, as does
 # RELEASE_ASSUME_YES=1. The [Unreleased]/tag/unused-import gates are the real guardrails.
 set -euo pipefail
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # repo root (this script lives in scripts/)
 cd "$SCRIPT_DIR"
 
 VERSION="${1:-}"
 if [[ -z "$VERSION" ]]; then
-    echo "usage: bash release.sh <version>    e.g.  bash release.sh 0.2" >&2
+    echo "usage: bash scripts/release.sh <version>    e.g.  bash scripts/release.sh 0.2" >&2
     exit 1
 fi
 RL="RELEASE.md"
@@ -79,7 +79,7 @@ git commit -q -m "release $VERSION"
 # RELEASE.md (single source, via tbs_version), so the site footer + PDF stamp pick up $VERSION
 # automatically — nothing else to bump.
 echo "Publishing site + brochure at $VERSION ..."
-PATH=/usr/bin:$PATH bash publish.sh
+PATH=/usr/bin:$PATH bash "$SCRIPT_DIR/scripts/publish.sh"
 
 git tag -a "$VERSION" -m "Release $VERSION"
 git push origin HEAD --follow-tags

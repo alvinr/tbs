@@ -118,7 +118,7 @@ def warn_facts() -> tuple[bool, list[str]]:
 # 'published but unlisted' direction; editorial entries for unpublished docs (§E meta, superseded
 # reports pending a retire decision) are intentional and not flagged. ──
 def warn_editorial_list() -> tuple[bool, list[str]]:
-    pub = open(os.path.join(ROOT, "publish.sh"), encoding="utf-8").read()
+    pub = open(os.path.join(ROOT, "scripts", "publish.sh"), encoding="utf-8").read()
     m = re.search(r"MD_FILES=\((.*?)\)", pub, re.DOTALL)
     published = {os.path.basename(f) for f in re.findall(r'"([^"]+\.md)"', m.group(1))} if m else set()
     published.add("project-summary.md")                         # the home page (synced separately)

@@ -173,7 +173,7 @@ section in sheet order — **including a new sheet added to an existing generato
 new generator. This is the easiest step to forget (`electrical-sheet4/5`, `hingepanel-sheet6`
 slipped because they were extra sheets on existing generators). It's enforced: `lint.py` warns
 `all-diagrams gallery covers every generated diagram PNG` for any generated PNG (per
-`dependencies.yml`) the gallery doesn't reference. Also register the PNG in `publish.sh` (`DIAG_FILES`) + `setup_docs.py`
+`dependencies.yml`) the gallery doesn't reference. Also register the PNG in `scripts/publish.sh` (`DIAG_FILES`) + `setup_docs.py`
 (`DIAG_IMAGE_FILES`) so it syncs to `published/assets/` — see CLAUDE.md "Adding a New Document".
 
 ## Scale Functions
@@ -213,7 +213,7 @@ See `skills/skill_plumbing_drawing.md` for detailed pipe crossing and fitting co
 
 After creating a new diagram generator, register its outputs in:
 
-1. `publish.sh` → `MD_FILES` (if new report) and `DIAG_FILES` (PNG names)
+1. `scripts/publish.sh` → `MD_FILES` (if new report) and `DIAG_FILES` (PNG names)
 2. `src/generators/setup_docs.py` → `MD_FILES`, `DIAG_IMAGE_FILES`, `INDEX_MD`
 3. `mkdocs.yml` → `nav:` block
 4. `engineering-diagrams.md` → diagram index table

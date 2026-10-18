@@ -2,16 +2,16 @@
 # publish.sh — Sync docs and redeploy to GitHub Pages.
 #
 # Usage:
-#   bash publish.sh            # sync + deploy
-#   bash publish.sh --local    # sync + serve locally only (no deploy)
-#   bash publish.sh --build    # sync + build to site/ only (no deploy)
+#   bash scripts/publish.sh            # sync + deploy
+#   bash scripts/publish.sh --local    # sync + serve locally only (no deploy)
+#   bash scripts/publish.sh --build    # sync + build to site/ only (no deploy)
 #
 # Run from the project root (same directory as mkdocs.yml).
 # Requires: mkdocs, mkdocs-material (run setup_docs.py first).
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # repo root (this script lives in scripts/)
 DOCS_DIR="$SCRIPT_DIR/published"
 ASSETS_DIR="$DOCS_DIR/assets"
 
@@ -506,4 +506,4 @@ fi
 # It needs SketchUp open (to export .dae) and must rewrite the embed UID *before*
 # the site builds, so run it as part of updating the model:
 #   python3 src/models/generate_sketchup_model.py --save --send --sketchfab
-# then `bash publish.sh` deploys the updated embed (project-summary.md).
+# then `bash scripts/publish.sh` deploys the updated embed (project-summary.md).

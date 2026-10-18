@@ -27,11 +27,11 @@ docs/assets/           all images — generated PNGs/SVGs + static logo/favicon,
 src/generators/        all 2D diagram generators + the tooling (lint.py, costing.py, …)
 src/models/            SketchUp 3D model generators (emit Ruby, drive SketchUp)
 skills/                codified drawing/labeling conventions
-published/             MkDocs input — auto-populated by publish.sh (gitignored, never edit)
+published/             MkDocs input — auto-populated by scripts/publish.sh (gitignored, never edit)
 site/                  built site output — gitignored, never commit
 .githooks/             versioned git hooks (the pre-commit drift gate)
 dependencies.yml       machine source: script → output-file graph (see "Tooling")
-mkdocs.yml             site nav + theme           publish.sh   sync + build + deploy
+mkdocs.yml             site nav + theme           scripts/publish.sh   sync + build + deploy
 ```
 
 `CLAUDE.md` holds the working conventions (drawing style, report style, the add-a-document
@@ -42,12 +42,12 @@ workflow) in more depth — it's worth a read before adding content.
 ## Prerequisites
 
 - **Interpreter: CPython 3.9** — developed and run on **3.9.6** (the macOS system `python3`).
-- **Packages: [`requirements.txt`](requirements.txt)** — the single, pinned dependency list (for the
+- **Packages: [`src/requirements.txt`](src/requirements.txt)** — the single, pinned dependency list (for the
   2D diagram generators and the documentation site). Set up a virtual environment from it:
 
   ```bash
   python3 -m venv .venv
-  .venv/bin/pip install -r requirements.txt
+  .venv/bin/pip install -r src/requirements.txt
   # then activate it, or prefix commands with .venv/bin/
   ```
 
@@ -56,7 +56,7 @@ workflow) in more depth — it's worth a read before adding content.
 
 The drift tooling (`lint.py`, `costing.py`, `facts.py`, `deps.py`) and the SketchUp model generators
 use **only the Python standard library**, so the pre-commit hook runs on any `python3` with nothing
-installed. Only the diagram generators and the site build need `requirements.txt`.
+installed. Only the diagram generators and the site build need `src/requirements.txt`.
 
 ---
 
@@ -195,7 +195,7 @@ subsystem × diagram matrix, per-model narratives); `dependencies.yml` is the **
 
 `src/generators/editorial_lint.py` enforces the report **narrative** house style codified in
 [`skills/skill_report_writing.md`](skills/skill_report_writing.md) (the counterpart to `lint.py`,
-which guards the *numbers*). It scans the published reports (`publish.sh` `MD_FILES` +
+which guards the *numbers*). It scans the published reports (`scripts/publish.sh` `MD_FILES` +
 `project-summary.md`).
 
 It is a **manual step — *not* wired into the pre-commit hook.** Run it by hand:
@@ -220,15 +220,15 @@ thousands-separator styles, and reports missing a *Source References* section.
 ## Building & deploying the site
 
 ```bash
-bash publish.sh            # sync docs → published/, build, and gh-deploy to GitHub Pages
-bash publish.sh --local    # sync + serve a local preview at http://127.0.0.1:8000
-bash publish.sh --build    # sync + build to site/ only (no deploy)
+bash scripts/publish.sh            # sync docs → published/, build, and gh-deploy to GitHub Pages
+bash scripts/publish.sh --local    # sync + serve a local preview at http://127.0.0.1:8000
+bash scripts/publish.sh --build    # sync + build to site/ only (no deploy)
 ```
 
-`publish.sh` syncs the `docs/` `.md` files + `docs/assets/` images into `published/`, copies
+`scripts/publish.sh` syncs the `docs/` `.md` files + `docs/assets/` images into `published/`, copies
 `project-summary.md → published/index.md` (the site Home), builds with MkDocs, optionally writes
 the PDF brochure, and pushes the `gh-pages` branch. It auto-detects whether a git remote exists and
-falls back to `--build` if not. On some systems run it as `PATH=/usr/bin:$PATH bash publish.sh`.
+falls back to `--build` if not. On some systems run it as `PATH=/usr/bin:$PATH bash scripts/publish.sh`.
 
 **Never edit `published/` or `site/` by hand** — they are regenerated.
 
@@ -237,10 +237,10 @@ falls back to `--build` if not. On some systems run it as `PATH=/usr/bin:$PATH b
 ## Adding a new document (short version)
 
 1. Write `<name>.md` in `docs/` (+ a `src/generators/generate_<name>.py` if it needs drawings).
-2. Register it in `publish.sh` (`MD_FILES` / `DIAG_FILES`) and `src/generators/setup_docs.py`
+2. Register it in `scripts/publish.sh` (`MD_FILES` / `DIAG_FILES`) and `src/generators/setup_docs.py`
    (`MD_FILES` / `DIAG_IMAGE_FILES` + the index table), and add a `nav:` entry to `mkdocs.yml`.
 3. If you added a generator/model, add its `script → outputs` entry to `dependencies.yml`.
-4. `bash publish.sh` to deploy; commit the script + `.md` + `.png` together.
+4. `bash scripts/publish.sh` to deploy; commit the script + `.md` + `.png` together.
 
 The full checklist is in `CLAUDE.md`.
 

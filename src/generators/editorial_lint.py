@@ -31,7 +31,7 @@ ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"],
 
 # ── published report docs (same set lint.py's editorial-list check uses) ──────
 def _published_docs() -> list[str]:
-    pub = open(os.path.join(ROOT, "publish.sh"), encoding="utf-8").read()
+    pub = open(os.path.join(ROOT, "scripts", "publish.sh"), encoding="utf-8").read()
     m = re.search(r"MD_FILES=\((.*?)\)", pub, re.DOTALL)
     docs = [os.path.basename(f) for f in re.findall(r'"([^"]+\.md)"', m.group(1))] if m else []
     docs.append("project-summary.md")                       # the home page (synced separately)

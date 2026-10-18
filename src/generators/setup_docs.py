@@ -15,7 +15,7 @@ What it does:
   5. Writes a published/index.md landing page
   6. Prints next steps
 
-After running, use publish.sh for subsequent refreshes.
+After running, use scripts/publish.sh for subsequent refreshes.
 """
 
 import subprocess
@@ -612,7 +612,7 @@ Next steps:
     → pushes to gh-pages branch; live at your SITE_URL
 
   Refresh after editing .md files:
-    bash publish.sh
+    bash scripts/publish.sh
 
   Edit SITE_URL in this script once your GitHub repo is created.
 """)

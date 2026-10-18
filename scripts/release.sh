@@ -70,7 +70,7 @@ awk -v ver="$VERSION" -v d="$DATE" '
 # Regenerate every title-block diagram so its version stamp (left cell) == the just-promoted
 # $VERSION — the stamp is read from RELEASE.md via tbs_version at generation time.
 echo "Regenerating diagrams at v$VERSION ..."
-bash "$SCRIPT_DIR/src/generators/regenerate_diagrams.sh"
+bash "$SCRIPT_DIR/scripts/regenerate_diagrams.sh"
 
 git add "$RL" docs/assets/*.png
 git commit -q -m "release $VERSION"

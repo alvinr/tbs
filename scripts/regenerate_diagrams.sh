@@ -6,13 +6,14 @@
 # stamp (left cell, read from RELEASE.md via tbs_version) is current. Run after a RELEASE.md version
 # bump (release.sh calls this) or after a title_block change. Uses /usr/bin/python3 (matplotlib).
 #
-#   bash src/generators/regenerate_diagrams.sh
+#   bash scripts/regenerate_diagrams.sh
 set -uo pipefail
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # repo root (this script lives in scripts/)
+GEN_DIR="$ROOT/src/generators"
 PY="${PY:-/usr/bin/python3}"
 
 fail=0
-for f in "$SCRIPT_DIR"/generate_*.py; do
+for f in "$GEN_DIR"/generate_*.py; do
     grep -q "title_block" "$f" || continue          # only title-block diagrams carry the version
     name="$(basename "$f")"
     if "$PY" "$f" >/dev/null 2>&1; then

@@ -25,12 +25,12 @@ shopping / weight figures, and the [MkDocs](https://www.mkdocs.org/) website.
 docs/                  engineering reports + working-doc sources (*.md)
 docs/assets/           all images — generated PNGs/SVGs + static logo/favicon, cited as assets/<name>
 src/generators/        all 2D diagram generators + the tooling (lint.py, costing.py, …)
+src/generators/dependencies.yml  machine source: script → output-file graph (see "Tooling")
 src/models/            SketchUp 3D model generators (emit Ruby, drive SketchUp)
 skills/                codified drawing/labeling conventions
 published/             MkDocs input — auto-populated by scripts/publish.sh (gitignored, never edit)
 site/                  built site output — gitignored, never commit
 .githooks/             versioned git hooks (the pre-commit drift gate)
-dependencies.yml       machine source: script → output-file graph (see "Tooling")
 mkdocs.yml             site nav + theme           scripts/publish.sh   sync + build + deploy
 ```
 

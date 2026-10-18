@@ -23,8 +23,10 @@ lint.py validates it (deps_valid) and the missing-cascade check consumes it.
 """
 import os
 
-_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-YAML_PATH = os.path.join(_ROOT, "dependencies.yml")
+# dependencies.yml lives beside this loader in src/generators/ (with the other data stores —
+# facts.yml, tbs_constants.py, parts.py, costing.py). The script→output paths INSIDE it are
+# repo-root-relative and resolved against the repo root by the consumers, not against this file.
+YAML_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dependencies.yml")
 
 
 def _flow_list(s: str) -> list:

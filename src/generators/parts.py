@@ -28,7 +28,7 @@ layer (mid + budgeting bands) on top. Every system here must sum to its costing 
 # Workflow for the JS-/account-gated suppliers the web pass can't read (McMaster/Roton/Grainger/…):
 # 1. python3 src/generators/build_parts_worklist.py → (re)generates parts-worklist.csv (merges fills)
 # 2. fill the new_* columns from your logged-in supplier session (SKU, URL, fit dims, price)
-# 3. python3 src/generators/apply_parts_csv.py parts-worklist.csv → writes them back here, scoped
+# 3. python3 src/generators/apply_parts_csv.py src/generators/parts-worklist.csv → writes them back here, scoped
 # 4. python3 src/generators/parts.py --inject + costing.py --inject + lint.py → cascade + prove
 # A band edit cascades automatically (master/report/cost blocks regenerate; costing reconciliation
 # gate proves consistency). Update the master header's "Basis:" line when the refresh completes.

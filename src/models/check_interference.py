@@ -84,7 +84,7 @@ walk.call(m.entities, Geom::Transformation.new, "root")
 # to-be-committed sources and blocks unless the report's sha matches — so a reroute can't land
 # without the crossing/clash audit having been re-run against the live model.
 _ROOT_DIR   = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-REPORT_PATH = os.path.join(_ROOT_DIR, "interference-report.txt")
+REPORT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "interference-report.txt")  # beside this audit tool in src/models/
 # CALL-syntax markers (a mention in a comment must NOT count) — keep in sync with lint.py.
 ROUTING_MARKERS = ("ruby_pipe_run(", "ruby_flex_run(", "ribbon_run(", "spipe(")
 

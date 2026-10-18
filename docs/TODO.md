@@ -288,7 +288,7 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   `water-powerpole`). The SKU↔supplier flags were false positives (Grainger SKUs share McMaster's format)
   and are resolved — the worklist now carries the lint's URL exemption.
   Workflow: `build_parts_worklist.py` → fill `parts-worklist.csv` (new_* cols, merges on re-run) →
-  `apply_parts_csv.py parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
+  `apply_parts_csv.py src/generators/parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
   **Near-fab re-price:** `build_parts_worklist.py --all` regenerates the full ~113-row price-verify sweep;
   fill at the owner's own cadence from logged-in supplier sessions.
 

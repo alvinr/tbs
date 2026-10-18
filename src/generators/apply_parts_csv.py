@@ -20,8 +20,8 @@ offending rows are reported. After a successful write it re-imports the registry
 costing reconciliation (sections whose total moved). Finish with `parts.py --inject` +
 `costing.py --inject` + `lint.py` to cascade into the reports + master BOM.
 
-  python3 src/generators/apply_parts_csv.py parts-worklist.csv            # apply
-  python3 src/generators/apply_parts_csv.py parts-worklist.csv --dry-run  # preview only
+  python3 src/generators/apply_parts_csv.py src/generators/parts-worklist.csv            # apply
+  python3 src/generators/apply_parts_csv.py src/generators/parts-worklist.csv --dry-run  # preview only
 """
 import argparse
 import csv

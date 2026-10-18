@@ -36,7 +36,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import parts  # the registry (source of record)
 
-OUT = os.path.normpath(os.path.join(HERE, "..", "..", "parts-worklist.csv"))
+OUT = os.path.join(HERE, "parts-worklist.csv")   # beside parts.py / apply_parts_csv.py in src/generators/
 
 MM_FMT = re.compile(r"^\d+[A-Z]\d+$")          # McMaster SKU format, e.g. 6440K64
 FIT_TYPES = {"fasteners-hardware", "bearings-motion", "plumbing-fittings", "seals-gaskets"}

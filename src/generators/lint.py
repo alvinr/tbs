@@ -487,7 +487,7 @@ def _regen_diff(scr: str, pngs: list[str]) -> list[str]:
 # crossing/clash audit having been run and its result committed for review (the report has no
 # timestamp, so its diff shows exactly which interferences a commit adds or resolves).
 _ROUTING_MARKERS = ("ruby_pipe_run(", "ruby_flex_run(", "ribbon_run(", "spipe(")   # CALL syntax, not a mention
-_INTERFERENCE_REPORT = "interference-report.txt"
+_INTERFERENCE_REPORT = "src/models/interference-report.txt"
 
 
 def _index_text(path: str) -> str | None:
@@ -527,7 +527,7 @@ def gate_interference_report() -> tuple[bool, list[str]]:
     if rep is None:
         return False, [f"staged a routing change ({', '.join(routed)}) but {_INTERFERENCE_REPORT} is not committed.",
                        "Audit the LIVE model and stage the report:",
-                       "    python3 src/models/check_interference.py --write && git add interference-report.txt"]
+                       "    python3 src/models/check_interference.py --write && git add src/models/interference-report.txt"]
     m = re.search(r"routing-sources-sha:\s*([0-9a-f]+)", rep)
     have = m.group(1) if m else "(none)"
     if have != expected:
@@ -535,7 +535,7 @@ def gate_interference_report() -> tuple[bool, list[str]]:
             f"{_INTERFERENCE_REPORT} is STALE — its routing-sources-sha {have} != {expected} (the routing "
             f"source changed since the last audit).  Staged routing change: {', '.join(routed)}.",
             "Re-run the pipe-clash/crossing audit against the LIVE model and stage it:",
-            "    python3 src/models/check_interference.py --write && git add interference-report.txt",
+            "    python3 src/models/check_interference.py --write && git add src/models/interference-report.txt",
         ]
     return True, [f"interference report current with routing sources (sha {expected})"]
 

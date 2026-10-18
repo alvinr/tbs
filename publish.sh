@@ -407,14 +407,15 @@ else
 fi
 
 # ── Classroom brochure PDF (hosted for download) ──────────────────────────────
-# Build the TBS-002 booklet and stage it in published/assets/ BEFORE the site
-# build, so the "Printable Instructions" links (Educational Program nav + the
-# TBS-002 page) resolve to a downloadable PDF. Must precede the build so mkdocs
-# copies it into the deployed site.
+# Build the TBS-002 booklet straight into published/assets/ BEFORE the site build,
+# so the "Printable Instructions" links (Educational Program nav + the TBS-002 page)
+# resolve to a downloadable PDF. Must precede the build so mkdocs copies it into the
+# deployed site. Also clear any stale local TBS-001 prospectus so the 48MB file (built
+# after the build, below) is never swept into the deployed site on the next run.
+rm -f "$ASSETS_DIR/tbs-brochure.pdf"
 if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
     info "Generating TBS-002 classroom brochure (hosted for download)..."
     if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py" --edition tbs002; then
-        cp "${SCRIPT_DIR}/tbs-002-brochure.pdf" "${ASSETS_DIR}/tbs-002-brochure.pdf"
         info "PDF -> published/assets/tbs-002-brochure.pdf"
     else
         warn "TBS-002 brochure generation failed -- Printable Instructions link will 404"
@@ -484,12 +485,14 @@ esac
 
 # -- Generate the TBS-001 brochure PDF ----------------------------------------
 # (The TBS-002 classroom booklet is built + staged for download before the site
-# build, above.) The TBS-001 prospectus is a local artifact only, not hosted.
+# build, above.) The TBS-001 prospectus is a local artifact only, not hosted — it
+# is generated AFTER the build into published/assets/ (gitignored) so it never
+# reaches the deployed site; the pre-build `rm` above clears the prior run's copy.
 if [[ "$MODE" != "local" ]]; then
     if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
         info "Generating TBS-001 brochure PDF..."
         if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py"; then
-            info "PDF -> tbs-brochure.pdf (TBS-001)"
+            info "PDF -> published/assets/tbs-brochure.pdf (TBS-001, local only)"
         else
             warn "PDF generation failed (TBS-001) -- check src/generators/generate_brochure.py output above"
         fi

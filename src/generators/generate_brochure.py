@@ -7,10 +7,10 @@ generate_brochure.py -- Build a TBS brochure PDF.
 Reads mkdocs.yml for page order, converts each .md source to HTML via the
 `markdown` library, then renders a combined PDF via fpdf2.
 
-Two editions (see EDITIONS):
-  tbs001 (default) -- the full engineering prospectus -> tbs-brochure.pdf
+Both editions write into published/assets/ (gitignored build output, not the repo root):
+  tbs001 (default) -- the full engineering prospectus -> published/assets/tbs-brochure.pdf
   tbs002           -- a standalone classroom brochure (teacher quick-reference
-                      page + the two mini-TBS docs) -> tbs-002-brochure.pdf
+                      page + the two mini-TBS docs) -> published/assets/tbs-002-brochure.pdf
 
 Usage:  python3 generate_brochure.py [--edition tbs001|tbs002]
 """
@@ -1560,7 +1560,13 @@ def main():
                          "tbs002 = standalone classroom brochure")
     args = ap.parse_args()
     cfg = EDITIONS[args.edition]
-    output_pdf = os.path.join(PROJECT_ROOT, cfg["output"])
+    # Generated brochures are build artifacts — write them into published/assets/ (gitignored),
+    # not the repo root. The TBS-002 booklet is served from there; publish.sh keeps the big
+    # TBS-001 prospectus out of the deployed site (generated after the build, stale copy cleared
+    # before it) so it stays a local-only artifact.
+    out_dir = os.path.join(PROJECT_ROOT, "published", "assets")
+    os.makedirs(out_dir, exist_ok=True)
+    output_pdf = os.path.join(out_dir, cfg["output"])
 
     if cfg["source"] == "nav":
         print(f"Parsing navigation from {MKDOCS_YML}...")

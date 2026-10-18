@@ -4243,11 +4243,11 @@ outputs and the <em>missing-cascade</em> check names the specific files you stil
 4. Re-run affected SketchUp model(s) (§3.1):
      python3 src/models/generate_sketchup_model.py --save --send
    # regenerates overview.rb + re-sends to SketchUp; save the .skp
-5. Visually inspect updated PNGs in diagrams/ AND the SketchUp model
-6. bash publish.sh --build           # verify zero MkDocs warnings
+5. Visually inspect updated PNGs in docs/assets/ AND the SketchUp model
+6. bash scripts/publish.sh --build           # verify zero MkDocs warnings
 7. python3 src/generators/manifest.py --update   # refresh the model source_hash in dependencies.yml
-8. git add tbs_constants.py diagrams/*.png models/*.skp dependencies.yml &amp;&amp; git commit -m &quot;...&quot;   # NOT the .rb (gitignored)
-9. bash publish.sh                   # deploy
+8. git add src/generators/tbs_constants.py docs/assets/*.png models/*.skp src/generators/dependencies.yml &amp;&amp; git commit -m &quot;...&quot;   # NOT the .rb (gitignored)
+9. bash scripts/publish.sh                   # deploy
 </code></pre></div>
 <h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>

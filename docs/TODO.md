@@ -55,15 +55,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   bbox-whitespace over-reporting on multi-line labels — confirm on crop-zoom, not gating).
   - ✅ **spray_bar Sheet 7 `+192%` off-left FIXED (2026-09-28)** — it was a hidden DUPLICATE beam-section label
     on the nozzle panel; dropped it (beam is called out on ax_cf + dimensioned on ax_nz).
-- [~] **Consolidated plywood cut-sheet generator — BUILT 2026-09-30, cut-optimized + published 2026-10-01.**
-  `generate_plywood_cutsheets.py` + `plywood-cut-sheets.md`: a plywood registry (every `timber-ply` part, cut
-  dims single-sourced from `tbs_constants` where geometry-driven, else spec/report literals; cost/SKU keyed to
-  `parts.py`) → a schedule sheet + a per-stock nesting sheet. **18mm standardization + Fan-B PT→SYP re-grade +
-  a 5mm-tolerance guillotine packer dropped the stock from 8 part-by-part → 4 sheets (−$148).** The nest is
-  guillotine-cuttable (90° edge-to-edge), with numbered saw-cut lines + per-sheet cut counts (4 sheets, 45 cuts).
-  Sheets lettered A–D; cleats = one cut-to-length strip. Drifts reconciled (18mm, shelf 600×225, Fan-B 1225).
-  **Residual (open):** (a) refactor each *consumer* generator to import the shared piece dims from the registry
-  instead of its own literal (the "so each consumer references it" half — not yet done).
 - [~] **3D single-owner dedup pass (2026-08-18) — cleaned the cross-file duplicate emitters.** Built the
   `lint.py` ratchet gate (no NEW cross-file duplicate emitter) and consolidated each cluster to a single owning
   builder: **electrical** (em owns cable trunking, inverter box, master switch), **Fan B box** (lighttrap),

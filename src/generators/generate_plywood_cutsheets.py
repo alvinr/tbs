@@ -46,43 +46,31 @@ C_STOCK = "#F0E9D8"      # stock-sheet ground
 C_STUB = "#C7B48A"       # fixed (non-fold) piece, distinguished from a fold-down apron
 C_CUT = "#B0202A"        # guillotine saw-cut line (dashed red)
 
-# ── 5mm cut standardization (geometry UNTOUCHED — only the cut nominal rounds) ──────────────
-# Each piece's exact dim stays single-sourced to its geometry constant; these wrappers set the
-# fabricated CUT to a 5mm nominal without moving any constant (so every model/diagram that reads
-# the geometry is unaffected):
-#   · OVERLAY boards (mount on a wall face with clearance) round UP   — oversize, trimmed to fit.
-#   · STRUCTURAL / between-members boards round DOWN — cut inside the opening (0–4mm clearance),
-#     so the surrounding frame/zone is untouched (an up-rounded board wouldn't fit the gap).
-def _r5up(v): v = round(v); return v + (-v) % 5
-def _r5dn(v): v = round(v); return v - v % 5
+# ── derived cut dimensions (geometry-driven → from tbs_constants; cannot drift) ─────────────
+PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
+PINHOLE_HALF = round(PINHOLE_W / 2)                      # 898  — cut as 2 butt-jointed halves (1795 > 1219 stock width)
+APR_NEAR_W = PANEL_CORNER_YD_L                           # 653  — near fold-down apron (Yd0→653)
+APR_FAR_W = (C_WID - APRON_FIX_W) - PANEL_CORNER_YD_R    # 453  — far apron (Yd1709→2162)
+BAFFLE_W = APRON_IN_R - APRON_IN_L                      # 986  — fixed center baffle (matches hinge-panel Sheet 16: inner apron edges)
+APR_CORNER_H = PANEL_FLOOR_GAP_SIDE                     # 282  — corner floor gap the aprons/stub close
+APR_CENTER_H = LT_CAGE_BOT - 10                         # 130  — baffle top at the cage underside (matches the drawing)
 
-# ── derived cut dimensions (geometry-driven → from tbs_constants; the CUT rounds to 5mm) ─────
-PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — true pinhole-wall face width (X span)
-PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — overlay: 2 halves, each cut over + trimmed to the 1795 face
-APR_NEAR_W = _r5dn(PANEL_CORNER_YD_L)                    # 650  — near fold-down apron (in the 653 corner zone)
-APR_FAR_W = _r5dn((C_WID - APRON_FIX_W) - PANEL_CORNER_YD_R)  # 450  — far apron (in the 453 zone)
-BAFFLE_W = _r5dn(APRON_IN_R - APRON_IN_L)                # 985  — fixed center baffle (in the 986 inner-apron span)
-APR_CORNER_H = _r5dn(PANEL_FLOOR_GAP_SIDE)               # 280  — corner floor gap the aprons/stub close (282)
-APR_CENTER_H = _r5dn(LT_CAGE_BOT - 10)                   # 130  — baffle top at the cage underside (already 5mm)
-FANB_W_CUT = _r5dn(FAN_B_BAND_W)                         # 470  — Fan-B swinging panel (in the 473 band zone)
-FANB_H_CUT = _r5dn(FAN_B_BAND_H)                         # 940  — Fan-B band height (943)
+# ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model (single source:
+#    the cut sizes TRACK the model and can't drift). yw = corridor clear Yd width; bw = board X length.
+_YW = round((cwp.YD_FAR - cwp.S) - (cwp.YD_NEAR + cwp.S))        # 168  — shirt + rear-panel face width
+_BW = round(cwp.SB_X1 - cwp.SB_X0)                              # 399  — pump-run support board length
+BACK_H = round(cwp.PANEL_TOP_Z - cwp.S)                        # 1849 — rear backing board height
+SHIRT_H = round(cwp.PANEL_TOP_Z - cwp.SHIRT_Z0)               # 1575 — shirt height (top at the Fan-A window)
+SPINE_W = round(cwp.SPINE_X_END - cwp.BACK_X)                 # 456  — drain-riser spine length
+SPINE_H = round((cwp.TOP_Z - cwp.S) - cwp.SPINE_Z0)          # 1965 — drain-riser spine height
+PUMPRUN_FAR_H = round(cwp.SB_FAR_Z[1] - cwp.SB_FAR_Z[0])       # 420
+PUMPRUN_NEAR_H = round(cwp.SB_NEAR_Z[1] - cwp.SB_NEAR_Z[0])    # 420
+PUMPRUN_UP_H = round(cwp.SB_NEAR_UP_Z[1] - cwp.SB_NEAR_UP_Z[0])  # 690
 
-# ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model; STRUCTURAL
-#    (fit between posts) → round DOWN. yw = corridor clear Yd width; bw = board X length.
-_YW = _r5dn((cwp.YD_FAR - cwp.S) - (cwp.YD_NEAR + cwp.S))  # 165  — shirt + rear-panel face (168 corridor clear Yd)
-_BW = _r5dn(cwp.SB_X1 - cwp.SB_X0)                        # 395  — pump-run support board length (399 post window)
-BACK_H = _r5dn(cwp.PANEL_TOP_Z - cwp.S)                  # 1845 — rear backing board height (1849 to the fan baffle)
-SHIRT_H = _r5dn(cwp.PANEL_TOP_Z - cwp.SHIRT_Z0)          # 1575 — shirt height (already 5mm)
-SPINE_W = _r5up(cwp.SPINE_X_END - cwp.BACK_X)            # 680  — overlay fin on the rear panel → round UP (676)
-SPINE_H = _r5dn((cwp.TOP_Z - cwp.S) - cwp.SPINE_Z0)      # 1965 — drain-riser spine height (already 5mm)
-PUMPRUN_FAR_H = _r5dn(cwp.SB_FAR_Z[1] - cwp.SB_FAR_Z[0])   # 620 (already 5mm)
-PUMPRUN_NEAR_H = _r5dn(cwp.SB_NEAR_Z[1] - cwp.SB_NEAR_Z[0])  # 540 (already 5mm)
-PUMPRUN_UP_H = _r5dn(cwp.SB_NEAR_UP_Z[1] - cwp.SB_NEAR_UP_Z[0])  # 690 (already 5mm)
-
-# ── EP electrical backboard — DERIVED from the electrical model's ply extents; OVERLAY on the
-#    interior wall → round UP (gear-column geometry + a 12mm ply margin each side).
-EP_BACK_W = _r5up(EP_COL_W + 24)                         # 365  — EP column width + 12mm margin each side (364)
-EP_BACK_H = _r5up((EP_H_HI - BA_H_LO) + 24)              # 1425 — gear span (battery base → MPPT top) + 12mm (1424)
+# ── EP electrical backboard — DERIVED from the electrical model's ply extents (single source: the
+#    gear-column geometry + a 12mm ply margin each side, matching generate_electrical_model.py).
+EP_BACK_W = EP_COL_W + 24                                # 364  — EP column width + 12mm margin each side
+EP_BACK_H = (EP_H_HI - BA_H_LO) + 24                     # 1424 — gear span (battery base → MPPT top) + 12mm top/bottom
 
 STOCK_8x4 = (1219, 2438)     # nominal 4'×8' sheet
 STOCK_HD = (1220, 2440)      # Home-Depot-stated 4'×8' for the SANDEPLY / UV-white lines
@@ -105,7 +93,7 @@ GROUPS = [
             ("Shirt standoff cleat strip", cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H, 1, f"one {cwp.SHIRT_CLEAT_W}×{cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H} strip, cut to {cwp.SHIRT_CLEAT_N}× {cwp.SHIRT_CLEAT_H}mm shirt-to-rear-panel standoff blocks"),
         ]),
         dict(key="pinhole-panel-ply-18", stock=STOCK_8x4, npieced=2, pieces=[
-            ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves (each cut {PINHOLE_HALF}, trimmed) butt-jointed → the {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
+            ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
             ("Near fold-down light apron", APR_NEAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, near corner (18mm, flat-black interior face)"),
@@ -114,8 +102,8 @@ GROUPS = [
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
-            ("Fan-B swinging mount panel", FANB_W_CUT, FANB_H_CUT, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
-            ("Fan-B fixed side part", FAN_B_FIXED_W, FANB_H_CUT, 1, "fixed near-corner side part (stays on the pinhole side)"),
+            ("Fan-B swinging mount panel", FAN_B_BAND_W, FAN_B_BAND_H, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
+            ("Fan-B fixed side part", FAN_B_FIXED_W, FAN_B_BAND_H, 1, "fixed near-corner side part (stays on the pinhole side)"),
             ("Cooler stowage base", 600, 350, 1, "evap-cooler transit stow base — sits on the near walkway at the pinhole wall (X1450), 2× ratchet straps (walkway Sheet 1)"),
         ]),
     ]),
@@ -135,7 +123,7 @@ _DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, APRON_F
             APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
             _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
             cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H,
-            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FANB_W_CUT, FANB_H_CUT, FAN_B_FIXED_W}
+            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W}
 
 CUT_MARGIN = 6       # saw kerf reserved between adjacent pieces (mm)
 FIT_TOL = 5          # plywood cut tolerance — a piece up to 5mm over a free rect still fits (a full-width

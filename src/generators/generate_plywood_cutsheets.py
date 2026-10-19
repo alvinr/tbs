@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
     DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD,
-    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID,
+    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID, PIVOT_YD,
     PANEL_FLOOR_GAP_SIDE, APRON_IN_L, APRON_IN_R, LT_CAGE_BOT,
     PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, SHELF_W, SHELF_DEPTH,
     FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W,
@@ -51,6 +51,7 @@ PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall
 PINHOLE_HALF = round(PINHOLE_W / 2)                      # 898  — cut as 2 butt-jointed halves (1795 > 1219 stock width)
 APR_NEAR_W = PANEL_CORNER_YD_L                           # 653  — near fold-down apron (Yd0→653)
 APR_FAR_W = (C_WID - APRON_FIX_W) - PANEL_CORNER_YD_R    # 453  — far apron (Yd1709→2162)
+STUB_W = PIVOT_YD - (C_WID - APRON_FIX_W)                # 125  — fixed pivot stub: Yd 2162→pivot post (matches 3D + hingepanel Sheet 16; the Ø220 post plate takes it from here to the wall)
 BAFFLE_W = APRON_IN_R - APRON_IN_L                      # 986  — fixed center baffle (matches hinge-panel Sheet 16: inner apron edges)
 APR_CORNER_H = PANEL_FLOOR_GAP_SIDE                     # 282  — corner floor gap the aprons/stub close
 APR_CENTER_H = LT_CAGE_BOT - 10                         # 130  — baffle top at the cage underside (matches the drawing)
@@ -88,7 +89,7 @@ GROUPS = [
             ("Pump-run side board (near-lo)", _BW, PUMPRUN_NEAR_H, 1, "#29 pump-run pipe support"),
             ("Pump-run side board (near-hi)", _BW, PUMPRUN_UP_H, 1, "#29 pump-run pipe support"),
         ]),
-        dict(key="corridor-panel-ply-25", stock=STOCK_8x4, pieces=[
+        dict(key="corridor-panel-shirt-ply", stock=STOCK_8x4, pieces=[
             ("Pump-mount shirt", _YW, SHIRT_H, 1, "backs pumps P-01..P-05 on the corridor panel (vertical column)"),
             ("Shirt standoff cleat strip", cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H, 1, f"one {cwp.SHIRT_CLEAT_W}×{cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H} strip, cut to {cwp.SHIRT_CLEAT_N}× {cwp.SHIRT_CLEAT_H}mm shirt-to-rear-panel standoff blocks"),
         ]),
@@ -98,7 +99,7 @@ GROUPS = [
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
             ("Near fold-down light apron", APR_NEAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, near corner (18mm, flat-black interior face)"),
             ("Far fold-down light apron", APR_FAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, far corner"),
-            ("Fixed pivot stub", APRON_FIX_W, APR_CORNER_H, 1, "fixed strip clearing the Ø220 pivot mount plate"),
+            ("Fixed pivot stub", STUB_W, APR_CORNER_H, 1, "fixed strip from the far apron to the Ø220 pivot post plate (Yd 2162→2287)"),
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
@@ -119,7 +120,7 @@ GROUPS = [
 ]
 
 # dims that DERIVE from a tbs_constants value (shown with a ᴰ marker in the schedule)
-_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
+_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, STUB_W, BAFFLE_W,
             APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
             _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
             cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H,

@@ -1374,7 +1374,7 @@ def fixed_bottom_geom():
         # the apron scarf laps the chamfer, the apron edge brush seals above (Detail E). X-Yd prism.
         draw.ruby_prism("Center light baffle (fixed)",
                       [(PLY_X0, APRON_IN_L), (40, APRON_IN_L + CHAM), (40, APRON_IN_R - CHAM), (PLY_X0, APRON_IN_R)],
-                      51, baf_top - 51, color=C_PLY, alpha=1.0),
+                      0, baf_top, color=C_PLY, alpha=1.0),   # floor (Z0) → baf_top: full 130mm, matching the 2D sheet + cut sheet
         # Horizontal strip brush on the baffle top edge — bristles reach the 10mm up to the swinging cage
         # bottom (Z140) over the cage width; the side corners are sealed by apron_edge_brushes().
         ruby_box("Baffle top brush", -1, cgL, baf_top, 30, cgR - cgL, LT_CAGE_BOT - baf_top, color=C_SEAL),

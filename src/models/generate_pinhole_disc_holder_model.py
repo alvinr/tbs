@@ -107,7 +107,7 @@ def ruby_taper_ring(name, y0, y1, r_out, r_in0, r_in1, color, n=64):
 # ── Parts ─────────────────────────────────────────────────────────────────────
 def plate():
     """ICP-01 front plate — Ø180 × 18, Ø40 light aperture (thru), Ø90 scene taper (marker), Ø52
-    disc-seat counterbore (camera face), 4× M6 mount holes @ Ø150, 4× M5 thumb-screw tapped holes."""
+    disc-seat counterbore (camera face), 4× M6 mount holes @ Ø150, 4× M6 thumb-screw tapped holes."""
     out = [ruby_annulus("ICP-01 Front plate", 0, PLATE_Y0, 0, PDH_PLATE_OD / 2, PDH_APERTURE / 2,
                         PDH_PLATE_T, axis="y", color=C_PLATE, n=72)]
     # disc-seat counterbore (Ø52 recess on the camera face) — a shallow ring marker
@@ -121,11 +121,11 @@ def plate():
         out.append(draw.ruby_cylinder(f"M6 mount hole {i+1}", (PDH_MOUNT_BC / 2) * math.cos(a), PLATE_Y0,
                                     (PDH_MOUNT_BC / 2) * math.sin(a), PDH_MOUNT_D / 2, PDH_PLATE_T,
                                     axis="y", color="#5A5A5A", n=16))
-    # 4× M5 thumb-screw tapped holes (Ø74) — dark blind bores in the camera face, revealed when the
+    # 4× M6 thumb-screw tapped holes (Ø74) — dark blind bores in the camera face, revealed when the
     # ring + screws pull out in the DC
     for i in range(PDH_TS_N):
         a = math.radians(45 + i * 360.0 / PDH_TS_N)
-        out.append(draw.ruby_cylinder(f"M5 tapped hole {i+1}", (PDH_TS_PCD / 2) * math.cos(a), 8.0,
+        out.append(draw.ruby_cylinder(f"M6 tapped hole {i+1}", (PDH_TS_PCD / 2) * math.cos(a), 8.0,
                                     (PDH_TS_PCD / 2) * math.sin(a), PDH_TS_D / 2 + 0.3, 9.9, axis="y",
                                     color="#1E1E1E", n=16))
     return '\n'.join(out)
@@ -156,7 +156,7 @@ def ring():
 
 
 def thumb_screws():
-    """4× M5 knurled thumb-screw heads @ Ø74, seated on the retaining ring — they ride OUT with the
+    """4× M6 knurled thumb-screw heads @ Ø74, seated on the retaining ring — they ride OUT with the
     ring in the DC (0.1 gap above the ring top so no coincident faces), revealing the plate's tapped
     holes."""
     out = []

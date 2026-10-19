@@ -18,19 +18,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
-- [ ] **3D-model license stamp → thebigshoebox.org (deferred, 2026-10-13).** The site rehosted to the custom
-  domain `thebigshoebox.org` (all `.md`/`.py`/`mkdocs`/brochure refs updated), but the in-model license footer
-  `LICENSE_TEXT` in [`src/models/tbs_draw.py`](src/models/tbs_draw.py) still prints `alvinr.github.io/tbs`, as
-  does the archived `src/models/archive/right-cantilever-study.rb`. Left deliberately: editing `LICENSE_TEXT`
-  re-stamps every model, which changes each `.rb` → bumps all `source_hash`es → forces a **re-send + Sketchfab
-  push of all 11 `.skp`** (the full single-writer cycle). **Fold it into the next batch model re-send** rather
-  than spending a whole cascade on a URL string. (Archive `.rb` is frozen history — update only if that model
-  is ever revived.)
-  - **Ride-along (same deferral):** `generate_pinhole_disc_holder_model.py` names the thumb-screw tapped-hole
-    components `"M5 tapped hole"` — stale (the thumb screws are **M6**, `PDH_TS_D=6`; the geometry already uses
-    the constant, only the component NAME text lags). Flip the 5 `M5`→`M6` label/comment strings on the next
-    `pinhole-disc-holder` re-send (the name change touches the `.rb` → needs a re-send + push). Size is already
-    reconciled to M6 everywhere else (constants, parts, report, all 2D sheets, fastener-standardization.md).
+- [ ] **Pinhole-disc-holder M5→M6 component names — stale label text, needs a re-send (deferred).**
+  `generate_pinhole_disc_holder_model.py` still names the thumb-screw tapped-hole components `"M5 tapped hole"` /
+  `"M5 knurled thumb-screw heads"` — stale (the thumb screws are **M6**, `PDH_TS_D=6`; the geometry already uses
+  the constant, only the component NAME/comment text lags). Flip the 5 `M5`→`M6` strings on the next
+  `pinhole-disc-holder` re-send (the name change touches the `.rb` → needs a re-send + Sketchfab push). Size is
+  already reconciled to M6 everywhere else (constants, parts, report, all 2D sheets, fastener-standardization.md).
+  - The in-model **license URL** that used to ride with this item is **DONE** — `LICENSE_TEXT` in
+    [`src/models/tbs_draw.py`](src/models/tbs_draw.py) now prints `thebigshoebox.org` and all 11 models were
+    re-pushed (shipped in 0.17). Only the frozen `src/models/archive/right-cantilever-study.rb` keeps the old
+    `alvinr.github.io/tbs` string, deliberately — update only if that archived model is ever revived.
 - [x] **Tolerance/datum blocks — DONE 2026-10-14. Every tolerance/note block now renders via `draw_notes`.**
   Swept the hand-rolled `fig.add_axes` + `Rectangle` + text-loop pattern onto `tbs_drawing.draw_notes` (bold
   first-line title + bordered box): `generate_shelf_diagram.py` (`_tol_block`), `generate_pinhole_disc_holder.py`

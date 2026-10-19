@@ -840,6 +840,7 @@ PWP_SV01_Z        = 1610                          # SV-01 valve-center Z — rai
 PWP_PANEL_X0      = 2780                          # ply left edge (low X)
 PWP_PANEL_X1      = 4575                          # ply right edge (high X, walkway side)
 PWP_PANEL_Z0      = 920                           # ply bottom edge (Z AFF)
+PWP_PANEL_H       = 1440                          # ply backing height (Z 920→2360 AFF); full face, cut as 2 butt-jointed halves
 PWP_SROW_Z0       = 1150                          # skid-row base Z (P-04·SV-02·DV-02 under the filters)
 PWP_SV02_Z        = PWP_SROW_Z0 + 132             # 1282 — SV-02 valve-center Z (in-line on the P-04→DV-02 row)
 PWP_DV02_Z        = PWP_SROW_Z0 + 162             # 1312 — DV-02 valve-center Z (= P-04 OUT / row line)

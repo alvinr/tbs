@@ -446,7 +446,8 @@ def backing():
     container wall; the pump, filters and valves mount on it and the pipes clamp to it for support
     (so the sub-loop installs as one panel, mirroring the corridor rear panel).  Dry mounting
     backboard — exterior grade, NOT marine (no water-immersion load)."""
-    return draw.ruby_box("Wall backing (18mm ply)", 2780, 0, 920, 1795, ov.EQPANEL_T, 1440, color=draw.C_PLY)  # +75mm at the +X edge so the grey waste clamps to the ply before it bends into the ribbon
+    return draw.ruby_box("Wall backing (18mm ply)", ov.PWP_PANEL_X0, 0, ov.PWP_PANEL_Z0,
+                         ov.PWP_PANEL_X1 - ov.PWP_PANEL_X0, ov.EQPANEL_T, ov.PWP_PANEL_H, color=draw.C_PLY)  # extents single-sourced from PWP_PANEL_* (= the plywood cut-sheet backing)
 
 
 def person():

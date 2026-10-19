@@ -387,9 +387,9 @@ def rear_panel():
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
     # port runs that cross the chase (those sit at z≈1500 / 1820 / 1900).
     blk_x0, blk_d = SHIRT_X + 25, BACK_X - (SHIRT_X + 25)   # shirt back → rear-panel front
-    for byd in (YD_NEAR + S, YD_FAR - S - 40):              # near + far edges, 40mm wide
-        for bz in (320, 920, 1560):                        # all clear of the port runs (z1492+)
-            p.append(draw.ruby_box("Shirt-to-panel spacer block", blk_x0, byd, bz, blk_d, 40, 120, color=draw.C_PLY))
+    for byd in (YD_NEAR + S, YD_FAR - S - SHIRT_CLEAT_W):   # near + far edges, SHIRT_CLEAT_W wide
+        for bz in SHIRT_CLEAT_Z:                            # all clear of the port runs (z1492+)
+            p.append(draw.ruby_box("Shirt-to-panel spacer block", blk_x0, byd, bz, blk_d, SHIRT_CLEAT_W, SHIRT_CLEAT_H, color=draw.C_PLY))
     # Drain-riser backing SPINE — an 18mm ply fin teeing PERPENDICULAR off the rear panel into the
     # rear corridor (matches the documented marine-ply spine), spanning the two tall back-of-panel
     # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
@@ -716,6 +716,12 @@ def acc_out(): return (PXC, CTR_Y - ACC_R - 30, ACC_PZ)   # −Yd (to the supply
 SHIRT_X = PXC + ACC_R + 4                   # 5051.5 — pump-mount shirt front face (just clear of the ACC back)
 DV02X   = SHIRT_X - DVB / 2                  # 5028.5 — 3W-DV-02 box BACK mounts FLUSH on the (raised) shirt front
 #   face, so the shirt SUPPORTS DV-02; its feed + both run legs nudge +X to follow (toward the sealed end)
+
+# ── shirt-to-rear-panel standoff cleats (single source: drawn here + listed on the plywood cut sheet) ──
+SHIRT_CLEAT_W = 40                      # block Yd width (mm)
+SHIRT_CLEAT_H = 120                     # block Z height (mm)
+SHIRT_CLEAT_Z = (320, 920, 1560)        # block Z stations, clear of the X3/X4 port runs (z1492+)
+SHIRT_CLEAT_N = 2 * len(SHIRT_CLEAT_Z)  # 2 Yd edges × 3 stations = 6 blocks, cut from one strip
 
 # ── #29 pump-flex run supports — two 18mm ply boards on the corridor SIDE walls ──────────────
 # Each board fills the WINDOW between the front and rear side-posts (X FRONT_X+S..BACK_X), recessed

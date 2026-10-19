@@ -31,9 +31,10 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
     DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID,
-    PANEL_FLOOR_GAP, PANEL_FLOOR_GAP_SIDE,
-    PWP_PANEL_X0, PWP_PANEL_X1, SHELF_W, SHELF_DEPTH,
+    PANEL_FLOOR_GAP_SIDE, APRON_IN_L, APRON_IN_R, LT_CAGE_BOT,
+    PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, SHELF_W, SHELF_DEPTH,
     FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W,
+    EP_COL_W, EP_H_HI, BA_H_LO,
 )
 import generate_corridor_water_panel as cwp                    # noqa: E402  (corridor ply piece dims — single source)
 from tbs_drawing import draw_notes, leader                     # noqa: E402
@@ -50,9 +51,9 @@ PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall
 PINHOLE_HALF = round(PINHOLE_W / 2)                      # 898  — cut as 2 butt-jointed halves (1795 > 1219 stock width)
 APR_NEAR_W = PANEL_CORNER_YD_L                           # 653  — near fold-down apron (Yd0→653)
 APR_FAR_W = (C_WID - APRON_FIX_W) - PANEL_CORNER_YD_R    # 453  — far apron (Yd1709→2162)
-BAFFLE_W = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L         # 1056 — fixed center baffle (drum-bay width)
-APR_CORNER_H = PANEL_FLOOR_GAP_SIDE                      # 282  — corner floor gap the aprons/stub close
-APR_CENTER_H = PANEL_FLOOR_GAP                           # 217  — center floor gap the baffle closes
+BAFFLE_W = APRON_IN_R - APRON_IN_L                      # 986  — fixed center baffle (matches hinge-panel Sheet 16: inner apron edges)
+APR_CORNER_H = PANEL_FLOOR_GAP_SIDE                     # 282  — corner floor gap the aprons/stub close
+APR_CENTER_H = LT_CAGE_BOT - 10                         # 130  — baffle top at the cage underside (matches the drawing)
 
 # ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model (single source:
 #    the cut sizes TRACK the model and can't drift). yw = corridor clear Yd width; bw = board X length.
@@ -65,6 +66,11 @@ SPINE_H = round((cwp.TOP_Z - cwp.S) - cwp.SPINE_Z0)          # 1965 — drain-ri
 PUMPRUN_FAR_H = round(cwp.SB_FAR_Z[1] - cwp.SB_FAR_Z[0])       # 420
 PUMPRUN_NEAR_H = round(cwp.SB_NEAR_Z[1] - cwp.SB_NEAR_Z[0])    # 420
 PUMPRUN_UP_H = round(cwp.SB_NEAR_UP_Z[1] - cwp.SB_NEAR_UP_Z[0])  # 690
+
+# ── EP electrical backboard — DERIVED from the electrical model's ply extents (single source: the
+#    gear-column geometry + a 12mm ply margin each side, matching generate_electrical_model.py).
+EP_BACK_W = EP_COL_W + 24                                # 364  — EP column width + 12mm margin each side
+EP_BACK_H = (EP_H_HI - BA_H_LO) + 24                     # 1424 — gear span (battery base → MPPT top) + 12mm top/bottom
 
 STOCK_8x4 = (1219, 2438)     # nominal 4'×8' sheet
 STOCK_HD = (1220, 2440)      # Home-Depot-stated 4'×8' for the SANDEPLY / UV-white lines
@@ -84,10 +90,10 @@ GROUPS = [
         ]),
         dict(key="corridor-panel-ply-25", stock=STOCK_8x4, pieces=[
             ("Pump-mount shirt", _YW, SHIRT_H, 1, "backs pumps P-01..P-05 on the corridor panel (vertical column)"),
-            ("Shirt standoff cleat strip", 40, 720, 1, "one 40×720 strip, cut to 6× 120mm shirt-to-rear-panel standoff blocks"),
+            ("Shirt standoff cleat strip", cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H, 1, f"one {cwp.SHIRT_CLEAT_W}×{cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H} strip, cut to {cwp.SHIRT_CLEAT_N}× {cwp.SHIRT_CLEAT_H}mm shirt-to-rear-panel standoff blocks"),
         ]),
         dict(key="pinhole-panel-ply-18", stock=STOCK_8x4, npieced=2, pieces=[
-            ("Pinhole backing half", PINHOLE_HALF, 1440, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×1440 face (>1219 stock width)"),
+            ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
             ("Near fold-down light apron", APR_NEAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, near corner (18mm, flat-black interior face)"),
@@ -98,7 +104,7 @@ GROUPS = [
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
             ("Fan-B swinging mount panel", FAN_B_BAND_W, FAN_B_BAND_H, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
             ("Fan-B fixed side part", FAN_B_FIXED_W, FAN_B_BAND_H, 1, "fixed near-corner side part (stays on the pinhole side)"),
-            ("Cooler stowage base", 600, 350, 1, "evap-cooler stowage base (cargo-door end)"),
+            ("Cooler stowage base", 600, 350, 1, "evap-cooler transit stow base — sits on the near walkway at the pinhole wall (X1450), 2× ratchet straps (walkway Sheet 1)"),
         ]),
     ]),
     dict(gid="B", thick=18, grade="18mm UV-coated white hardwood (Swaner)",
@@ -107,15 +113,16 @@ GROUPS = [
             ("Chem-prep shelf board", SHELF_W, SHELF_DEPTH, 1, "fold-down chemistry-prep work surface (pinhole wall)"),
         ]),
         dict(key="ep-backing-panel", stock=STOCK_HD, pieces=[
-            ("EP electrical backboard", 700, 2000, 1, "interior wall electrical backboard — MPPT / battery / inverter / disconnects / IP65 box (backboard is finish-agnostic → shares the chem-shelf UV-white sheet)"),
+            ("EP electrical backboard", EP_BACK_W, EP_BACK_H, 1, "interior wall electrical backboard — MPPT / battery / inverter / disconnects / IP65 box (gear-column ply from the electrical model; finish-agnostic → shares the chem-shelf UV-white sheet)"),
         ]),
     ]),
 ]
 
 # dims that DERIVE from a tbs_constants value (shown with a ᴰ marker in the schedule)
-_DERIVED = {PINHOLE_W, PINHOLE_HALF, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
-            APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH,
+_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, APRON_FIX_W, BAFFLE_W,
+            APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
             _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
+            cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H,
             PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W}
 
 CUT_MARGIN = 6       # saw kerf reserved between adjacent pieces (mm)

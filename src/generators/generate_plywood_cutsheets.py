@@ -46,9 +46,13 @@ C_STOCK = "#F0E9D8"      # stock-sheet ground
 C_STUB = "#C7B48A"       # fixed (non-fold) piece, distinguished from a fold-down apron
 C_CUT = "#B0202A"        # guillotine saw-cut line (dashed red)
 
+# Overlay boards (mount on a wall face with clearance) round their CUT BLANK UP to 5mm and are
+# trimmed to the modeled finished extent — so the 3D keeps the exact size and no re-send is needed.
+def _r5up(v): v = round(v); return v + (-v) % 5
+
 # ── derived cut dimensions (geometry-driven → from tbs_constants; cannot drift) ─────────────
 PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
-PINHOLE_HALF = round(PINHOLE_W / 2)                      # 898  — cut as 2 butt-jointed halves (1795 > 1219 stock width)
+PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — blank for each of 2 butt-jointed halves, trimmed to the 1795 face
 APR_NEAR_W = PANEL_CORNER_YD_L                           # 653  — near fold-down apron (Yd0→653)
 APR_FAR_W = (C_WID - APRON_FIX_W) - PANEL_CORNER_YD_R    # 453  — far apron (Yd1709→2162)
 STUB_W = PIVOT_YD - (C_WID - APRON_FIX_W)                # 125  — fixed pivot stub: Yd 2162→pivot post (matches 3D + hingepanel Sheet 16; the Ø220 post plate takes it from here to the wall)
@@ -62,7 +66,7 @@ _YW = round((cwp.YD_FAR - cwp.S) - (cwp.YD_NEAR + cwp.S))        # 168  — shir
 _BW = round(cwp.SB_X1 - cwp.SB_X0)                              # 399  — pump-run support board length
 BACK_H = round(cwp.PANEL_TOP_Z - cwp.S)                        # 1849 — rear backing board height
 SHIRT_H = round(cwp.PANEL_TOP_Z - cwp.SHIRT_Z0)               # 1575 — shirt height (top at the Fan-A window)
-SPINE_W = round(cwp.SPINE_X_END - cwp.BACK_X)                 # 456  — drain-riser spine length
+SPINE_W = _r5up(cwp.SPINE_X_END - cwp.BACK_X)                # 680  — overlay fin blank (rounds up, trimmed on the panel)
 SPINE_H = round((cwp.TOP_Z - cwp.S) - cwp.SPINE_Z0)          # 1965 — drain-riser spine height
 PUMPRUN_FAR_H = round(cwp.SB_FAR_Z[1] - cwp.SB_FAR_Z[0])       # 420
 PUMPRUN_NEAR_H = round(cwp.SB_NEAR_Z[1] - cwp.SB_NEAR_Z[0])    # 420
@@ -70,8 +74,8 @@ PUMPRUN_UP_H = round(cwp.SB_NEAR_UP_Z[1] - cwp.SB_NEAR_UP_Z[0])  # 690
 
 # ── EP electrical backboard — DERIVED from the electrical model's ply extents (single source: the
 #    gear-column geometry + a 12mm ply margin each side, matching generate_electrical_model.py).
-EP_BACK_W = EP_COL_W + 24                                # 364  — EP column width + 12mm margin each side
-EP_BACK_H = (EP_H_HI - BA_H_LO) + 24                     # 1424 — gear span (battery base → MPPT top) + 12mm top/bottom
+EP_BACK_W = _r5up(EP_COL_W + 24)                         # 365  — overlay blank: EP column + 12mm margin each side (364), rounded up
+EP_BACK_H = _r5up((EP_H_HI - BA_H_LO) + 24)              # 1425 — overlay blank: gear span + 12mm top/bottom (1424), rounded up
 
 STOCK_8x4 = (1219, 2438)     # nominal 4'×8' sheet
 STOCK_HD = (1220, 2440)      # Home-Depot-stated 4'×8' for the SANDEPLY / UV-white lines

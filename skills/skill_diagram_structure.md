@@ -90,6 +90,8 @@ Never hardcode positions or colors that exist in `tbs_constants.py`.
 | `draw_notes(ax, notes, x, y_top, spacing)` | Formatted notes block with title |
 | `draw_legend(ax, items, x, y)` | Color legend block |
 
+- **`draw_dim_h` / `draw_dim_v` / `leader` take `lbl_bg=True`** → an opaque white rounded box behind the label (the shared `tbs_drawing.LBL_BG` style, single-sourced so it can't drift between helpers), for a dim/leader label sitting on hatch / ghost / a filled body. Prefer moving the label to a clear pocket first; use `lbl_bg=True` when the frame is full. (Raw `ax.text` uses `bbox=tbs_drawing.LBL_BG`.)
+
 ### `tbs_title_block.py` — Standard title block
 
 ```python

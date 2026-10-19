@@ -25,6 +25,17 @@ import matplotlib.patches as mpatches
 from tbs_constants import C_OUT, C_CL, C_DIM
 
 
+# Opaque white rounded box drawn behind a label so it masks whatever it sits on
+# (hatch / ghost / fill). Shared by draw_dim_h/v and leader via lbl_bg=True — the
+# single home for the mask style so it can't drift between helpers.
+LBL_BG = dict(
+    boxstyle="round,pad=0.3",
+    facecolor="white",
+    edgecolor="none",   # set to "#1A1A1A" for a visible border
+    alpha=1.0,          # fully opaque so it masks what's under it
+)
+
+
 # ── Dimension lines ─────────────────────────────────────────────────────────
 
 def draw_dim_h(ax, x1, x2, y, label, *, offset=12, fs=6.5, color=C_DIM,
@@ -47,16 +58,9 @@ def draw_dim_h(ax, x1, x2, y, label, *, offset=12, fs=6.5, color=C_DIM,
     above         : if True label goes above the line, else below
     font          : optional dict e.g. {"fontfamily": "monospace"}
     perpendicular : if True rotate label 90° to the line (vertical text)
-    lbl_bg        : if True then the lable background has a white rounded box
+    lbl_bg        : if True the label gets an opaque white rounded box (LBL_BG)
     """
-    extra = {}
-    bbox=dict(
-        boxstyle="round,pad=0.3",
-        facecolor="white",
-        edgecolor="none",              # "#1A1A1A" if you want a visible border
-        alpha=1.0,                     # fully opaque so it masks what's under it
-    )
-    extra = {"bbox": bbox} if lbl_bg else {}
+    extra = {"bbox": LBL_BG} if lbl_bg else {}
 
     tick = abs(offset) * 0.3
     ax.annotate("", xy=(x2, y), xytext=(x1, y),
@@ -94,17 +98,9 @@ def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
     right         : if True label goes to the right of the line, else left
     font          : optional dict e.g. {"fontfamily": "monospace"}
     perpendicular : if True rotate label 90° to the line (horizontal text)
-    lbl_bg        : if True then the lable background has a white rounded box
+    lbl_bg        : if True the label gets an opaque white rounded box (LBL_BG)
     """
-
-    extra = {}
-    bbox=dict(
-        boxstyle="round,pad=0.3",
-        facecolor="white",
-        edgecolor="none",              # "#1A1A1A" if you want a visible border
-        alpha=1.0,                     # fully opaque so it masks what's under it
-    )
-    extra = {"bbox": bbox} if lbl_bg else {}
+    extra = {"bbox": LBL_BG} if lbl_bg else {}
     tick = abs(offset) * 0.3
     ax.annotate("", xy=(x, y2), xytext=(x, y1),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=lw),
@@ -146,20 +142,13 @@ def leader(ax, x_tip, y_tip, x_txt, y_txt, label, *, fs=6.5, color=C_OUT,
     zorder          : drawing order
     font            : optional dict e.g. {"fontfamily": "monospace"}
     rotation        : label text rotation in degrees (0 = horizontal)
-    lbl_bg          : if True then the lable background has a white rounded box
-    bbox            : optional dict for text background box
+    lbl_bg          : if True the label gets an opaque white rounded box (LBL_BG)
+    bbox            : optional dict for text background box (overrides lbl_bg)
     """
-    lbl_bbox=dict(
-        boxstyle="round,pad=0.3",
-        facecolor="white",
-        edgecolor="none",              # "#1A1A1A" if you want a visible border
-        alpha=1.0,                     # fully opaque so it masks what's under it
-    )
-
     kw = font or {}
     ann_kw = {}
     if lbl_bg:
-        ann_kw["bbox"] = lbl_bbox
+        ann_kw["bbox"] = LBL_BG
     if bbox is not None:
         ann_kw["bbox"] = bbox
     ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),

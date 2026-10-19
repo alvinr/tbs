@@ -26,7 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Tidy-labels tooling + skills refined from the October label-polish pass.** Mined the ~47 "Tidy labels" commits for patterns the drawing tooling could capture. `draw_dim_h`/`draw_dim_v`/`leader` now share one `LBL_BG` white-mask constant in `tbs_drawing.py` applied via `lbl_bg=True` (the bbox dict had been copy-pasted into all three helpers, with a typo); `tidy_labels.py` gained a deterministic *DIM offset-zero* flag (a dimension drawn with `offset=0` rides its own line and loses its extension ticks — a guaranteed collision, distinct from the scale-dependent offset the tool still won't judge); and the drawing skills now document `lbl_bg=True` as the canonical mask (with "a clear pocket beats the box"), the `offset=0` flag, `fs`+`offset` tuned together across a dense dim chain, and an explicit `wrap=` on every `draw_notes`. Pure tooling/refactor — output-neutral, no diagram re-renders.
 
 ## [0.17] — 2026-10-19
 

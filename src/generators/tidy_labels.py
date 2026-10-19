@@ -228,6 +228,16 @@ def analyze(src, path):
         # NOTE: no static `offset<8` rule — the right offset is scale-dependent (3–8 data-units
         # in detail views, 25–80 in mm-first sheets, P1/P7). Judging it needs the rendered scale,
         # so it belongs to the visual /tidy-labels pass, not a blanket static bump.
+        # The ONE deterministic exception is offset=0: it drops the label onto the dimension
+        # line and zeroes the extension ticks (tick = offset*0.3), always a collision, never
+        # intentional. Flag it (no auto-fix — the non-zero replacement is still a scale call).
+        if is_dim:
+            ok = next((k for k in node.keywords if k.arg == "offset"), None)
+            if (ok is not None and isinstance(ok.value, ast.Constant)
+                    and not isinstance(ok.value.value, bool) and ok.value.value == 0):
+                out.append(Finding("DIM offset-zero", ok.value.lineno,
+                                   "offset=0 — label rides its own dimension line (no extension "
+                                   "ticks); set a sheet-appropriate offset in the visual pass"))
 
         if not isinstance(label, (ast.Constant, ast.JoinedStr)):
             continue

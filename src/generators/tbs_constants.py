@@ -197,7 +197,7 @@ XSLIDE_STROKE   = 300   # specified linear cross-slide travel per axis (mm) — 
 XSLIDE_BAR_W = 38.1    # cross-slide flat-bar width (mm) = 1-1/2"
 XSLIDE_BAR_T = 6.35    # cross-slide flat-bar thickness (mm) = 1/4"
 XSLIDE_Z_BAR_LEN = 345 # Z (tilt) slide bar cut length (mm) = XSLIDE_Z_TRAVEL 245 + ~carriage/margin — sized to hold MAX_TILT (corner blueprint 2026-08-10)
-XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 263 + ~carriage/margin — sized to hold MAX_SWING
+XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 257 + ~carriage/margin — sized to hold MAX_SWING
 XSLIDE_UHMW_T = 3.2    # UHMW self-lube pad thickness (mm, 1/8") between carriage and bar bearing faces
 XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge
 XSLIDE_GIB_T  = 6.35   # gib thickness (mm) = 1/4"
@@ -237,13 +237,13 @@ CARRIAGE_AXLE_ROW_SP = 38  # Z gap between the load-axle row and the keeper-axle
 # 4 SHORT STUB axles (Ø SKATE_AXLE_OD) at ±SKATE_ROLLER_SP/2 (Yd) × 2 rows (load / keeper).
 CARRIAGE_J1_SP_YD = 28   # J1 4×M8 Z-slide-mount hole pattern width (Yd, mm)
 CARRIAGE_J1_SP_Z  = 44   # J1 4×M8 Z-slide-mount hole pattern height (Z, mm)
-# Corner (L) plate — 1/4" 304 SS, 6"x8" blank bent to an L (parts.py corner-l-plate):
-CORNER_PLATE_W = 203.2   # plate blank long side (mm) = 8"
-CORNER_PLATE_H = 152.4   # plate blank short side (mm) = 6"
-CORNER_PLATE_T = 6.35    # plate thickness (mm) = 1/4"
-CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the plate edge (mm, 1") — >2xM6 dia
-CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each leg (mm)
-CORNER_PLATE_BEND_R    = 6.35   # L-plate press-brake inside bend radius (mm) = 1T — reserved (unused; TODO remove)
+# Corner U-joint mount — OFF-THE-SHELF 4×4×¼in 304 equal-leg ANGLE, cut to 6in (parts.py corner-l-plate;
+# was a press-brake-formed 6×8 L-plate until 2026-09-05 — stock angle gives the same 4in legs, no forming):
+CORNER_PLATE_LEG = 101.6   # equal-leg angle leg (mm) = 4"
+CORNER_PLATE_CUT = 152.4   # angle cut length (mm) = 6"
+CORNER_PLATE_T   = 6.35    # angle thickness (mm) = 1/4"
+CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the leg edge (mm, 1") — >2xM6 dia
+CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along the leg (mm)
 
 # ── Pinhole disc holder (front board) — replaces the retired tilt-swing mechanism ─────────────
 # The interchangeable Ø80 carrier is clamped against a neoprene light-seal washer by a circular
@@ -937,7 +937,7 @@ FP_CORNER_SEAT_PLATE_W   = 150   # back-plate width along X (mm)
 FP_CORNER_SEAT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
 FP_CORNER_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
 FP_CORNER_SEAT_T    = 10    # seat plate thickness (mm)
-FP_CORNER_SEAT_GUSSET_H  = 120   # triangular gusset web depth down the back-plate (mm) — reserved (seat spec; not drawn per-feature; = the 3D gusset 120 / parts 110×120)
+FP_CORNER_SEAT_GUSSET_H  = 120   # triangular gusset web depth down the back-plate (mm) — single source for the 2D Sheet 17 + 3D gusset (parts 110×120)
 FP_CORNER_SEAT_BOLT_D    = 12    # M12 wall anchor bolt — reserved (seat spec; not drawn per-feature)
 FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket — reserved (seat spec; not drawn per-feature)
 

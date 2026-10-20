@@ -27,8 +27,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Ellipse
 
-from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
-from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
+from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
+from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
 from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_constants import FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN, FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N, SKATE_ROLLER_W, SKATE_AXLE_LEN, XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE, UJOINT_STUB_OD, DIBOND_T
@@ -1893,7 +1893,7 @@ def _corner_elevation(ax):
     draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}mm", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8mm)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 75, 120, 225, 175, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_W/2:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_H:.0f}mm + drilled; U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 75, 120, 225, 175, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_LEG:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_CUT:.0f}mm + drilled; U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden SSNBUJ750x3/8KB", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, 40, 150, -15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per leg (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the plate back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
@@ -1925,7 +1925,7 @@ def _corner_section(ax):
     ax.plot([106, 106], [-13, 13], color=C_PIN, lw=2.0, zorder=8)                          # tilt pin (along X, true)
     draw_circle(ax, 106, 0, 2.6, color=OUT, fill=False, lw=0.9, zorder=9)                  # swing pin (end-on)
     ax.add_patch(plt.Rectangle((140, -4.75), 26, 9.5, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6))
-    # 304 SS corner plate — ¼"(6) thick, 6×8 (part shown)
+    # 304 SS corner ANGLE — ¼"(6) thick, 4×4×¼ (schematic section; fab shape on Sheet 16)
     ax.add_patch(plt.Rectangle((166, -70), 6, 140, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6)); _hatch_xs(ax, 166, -70, 6, 140)
     # 6061 angle L (2", 1/8" wall): in-plane leg + perp leg; ACM (4mm) + muslin NEST inside
     ax.add_patch(plt.Rectangle((172, -56), AW, 112, fc=C_FRAME, ec=OUT, lw=1.2, zorder=7))        # in-plane leg
@@ -2275,7 +2275,7 @@ def sheet18():
     C_BOLT = "#3A3A42"
     pw, proj = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ
     bt, st = FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_T     # back-plate 8mm / seat 10mm
-    bph, gh = 250, 120                                    # back-plate height / gusset height (parts.py cut sheet)
+    bph, gh = 250, FP_CORNER_SEAT_GUSSET_H                # back-plate height / gusset height (single-sourced)
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
 
     # ── View A — saddle side elevation (wall on the right) ─────────────────────
@@ -2435,7 +2435,7 @@ def sheet17():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet16():
     reset_label_registry()
-    leg, L, t = CORNER_PLATE_W / 2, CORNER_PLATE_H, CORNER_PLATE_T   # 4in leg · 6in length · 1/4in
+    leg, L, t = CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T   # 4in leg · 6in length · 1/4in
     edge, sp = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
 

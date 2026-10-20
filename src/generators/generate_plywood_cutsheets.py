@@ -30,13 +30,13 @@ sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
     DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD,
-    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, APRON_FIX_W, C_WID, PIVOT_YD,
-    PANEL_FLOOR_GAP_SIDE, APRON_IN_L, APRON_IN_R, LT_CAGE_BOT,
+    APRON_IN_L, APRON_IN_R, LT_CAGE_BOT,
     PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, SHELF_W, SHELF_DEPTH,
-    FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W,
+    FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W,
     EP_COL_W, EP_H_HI, BA_H_LO,
 )
 import generate_corridor_water_panel as cwp                    # noqa: E402  (corridor ply piece dims — single source)
+import generate_lighttrap_model as lt                          # noqa: E402  (apron/stub bounding blanks — single source; 3D is authoritative)
 from tbs_drawing import draw_notes, leader                     # noqa: E402
 from tbs_title_block import title_block                        # noqa: E402
 
@@ -49,22 +49,26 @@ C_CUT = "#B0202A"        # guillotine saw-cut line (dashed red)
 # Overlay boards (mount on a wall face with clearance) round their CUT BLANK UP to 5mm and are
 # trimmed to the modeled finished extent — so the 3D keeps the exact size and no re-send is needed.
 def _r5up(v): v = round(v); return v + (-v) % 5
+def _r5dn(v): v = round(v); return v - v % 5   # between-members boards shrink DOWN into their opening
 
 # ── derived cut dimensions (geometry-driven → from tbs_constants; cannot drift) ─────────────
 PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
 PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — blank for each of 2 butt-jointed halves, trimmed to the 1795 face
-APR_NEAR_W = PANEL_CORNER_YD_L                           # 653  — near fold-down apron (Yd0→653)
-APR_FAR_W = (C_WID - APRON_FIX_W) - PANEL_CORNER_YD_R    # 453  — far apron (Yd1709→2162)
-STUB_W = PIVOT_YD - (C_WID - APRON_FIX_W)                # 125  — fixed pivot stub: Yd 2162→pivot post (matches 3D + hingepanel Sheet 16; the Ø220 post plate takes it from here to the wall)
-BAFFLE_W = APRON_IN_R - APRON_IN_L                      # 986  — fixed center baffle (matches hinge-panel Sheet 16: inner apron edges)
-APR_CORNER_H = PANEL_FLOOR_GAP_SIDE                     # 282  — corner floor gap the aprons/stub close
-APR_CENTER_H = LT_CAGE_BOT - 10                         # 130  — baffle top at the cage underside (matches the drawing)
+# Aprons/stub are STEPPED/notched boards in the 3D (authoritative); the cut sheet carries the bounding
+# BLANK (rounded up, cut then notched) — real profile dimensioned on hingepanel Sheet 16.
+APR_NEAR_W  = _r5up(lt.APRON_NEAR_BLANK[0])             # 690  — stepped near apron bounding blank (688)
+APR_FAR_W   = _r5up(lt.APRON_FAR_BLANK[0])              # 490  — stepped far apron bounding blank (488)
+APR_BLANK_H = _r5up(lt.APRON_NEAR_BLANK[1])             # 190  — apron bounding-blank height (187), both aprons
+STUB_W = _r5up(lt.STUB_BLANK[0])                        # 125  — fixed pivot stub width (125, already 5mm)
+STUB_H = _r5up(lt.STUB_BLANK[1])                        # 180  — fixed pivot stub height (178)
+BAFFLE_W = _r5dn(APRON_IN_R - APRON_IN_L)               # 985  — center baffle width (between-members, round down)
+APR_CENTER_H = LT_CAGE_BOT - 10                         # 130  — baffle height, floor→cage (already 5mm)
 
 # ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model (single source:
 #    the cut sizes TRACK the model and can't drift). yw = corridor clear Yd width; bw = board X length.
-_YW = round((cwp.YD_FAR - cwp.S) - (cwp.YD_NEAR + cwp.S))        # 168  — shirt + rear-panel face width
-_BW = round(cwp.SB_X1 - cwp.SB_X0)                              # 399  — pump-run support board length
-BACK_H = round(cwp.PANEL_TOP_Z - cwp.S)                        # 1849 — rear backing board height
+_YW = cwp.YW_CUT                                                # 165  — shirt + rear-panel board Yd width (single source: cwp.YW_CUT)
+_BW = cwp.BW_CUT                                                # 395  — pump-run board length (single source: cwp.BW_CUT)
+BACK_H = cwp.PH_CUT                                            # 1845 — rear backing board height (single source: cwp.PH_CUT)
 SHIRT_H = round(cwp.PANEL_TOP_Z - cwp.SHIRT_Z0)               # 1575 — shirt height (top at the Fan-A window)
 SPINE_W = _r5up(cwp.SPINE_X_END - cwp.BACK_X)                # 680  — overlay fin blank (rounds up, trimmed on the panel)
 SPINE_H = round((cwp.TOP_Z - cwp.S) - cwp.SPINE_Z0)          # 1965 — drain-riser spine height
@@ -101,14 +105,14 @@ GROUPS = [
             ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
-            ("Near fold-down light apron", APR_NEAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, near corner (18mm, flat-black interior face)"),
-            ("Far fold-down light apron", APR_FAR_W, APR_CORNER_H, 1, "seals under-leaf light gap, far corner"),
-            ("Fixed pivot stub", STUB_W, APR_CORNER_H, 1, "fixed strip from the far apron to the Ø220 pivot post plate (Yd 2162→2287)"),
+            ("Near fold-down light apron", APR_NEAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, near corner — STEPPED/notched blank (18mm, flat-black interior face); profile on hingepanel Sheet 16"),
+            ("Far fold-down light apron", APR_FAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, far corner — STEPPED/notched blank; profile on hingepanel Sheet 16"),
+            ("Fixed pivot stub", STUB_W, STUB_H, 1, "fixed strip from the far apron to the Ø220 pivot post plate (Yd 2162→2287)"),
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
-            ("Fan-B swinging mount panel", FAN_B_BAND_W, FAN_B_BAND_H, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
-            ("Fan-B fixed side part", FAN_B_FIXED_W, FAN_B_BAND_H, 1, "fixed near-corner side part (stays on the pinhole side)"),
+            ("Fan-B swinging mount panel", FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
+            ("Fan-B fixed side part", FAN_B_FIXED_W, FAN_B_BAND_H_CUT, 1, "fixed near-corner side part (stays on the pinhole side)"),
             ("Cooler stowage base", 600, 350, 1, "evap-cooler transit stow base — sits on the near walkway at the pinhole wall (X1450), 2× ratchet straps (walkway Sheet 1)"),
         ]),
     ]),
@@ -124,11 +128,11 @@ GROUPS = [
 ]
 
 # dims that DERIVE from a tbs_constants value (shown with a ᴰ marker in the schedule)
-_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, STUB_W, BAFFLE_W,
-            APR_CORNER_H, APR_CENTER_H, SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
+_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, APR_BLANK_H, STUB_W, STUB_H, BAFFLE_W,
+            APR_CENTER_H, SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
             _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
             cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H,
-            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W, FAN_B_BAND_H, FAN_B_FIXED_W}
+            PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W}
 
 CUT_MARGIN = 6       # saw kerf reserved between adjacent pieces (mm)
 FIT_TOL = 5          # plywood cut tolerance — a piece up to 5mm over a free rect still fits (a full-width

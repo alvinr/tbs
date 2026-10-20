@@ -1162,6 +1162,10 @@ PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                   
 FAN_B_BAND_W = PANEL_CORNER_YD_L - PANEL_CUT_YD           # 473 — SWINGING mount-panel width (Yd180→653); fan centered on it
 FAN_B_FIXED_W = PANEL_CUT_YD                             # 180 — FIXED side-part width (Yd0→180, to the pinhole side)
 FAN_B_BAND_H = PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE    # 943 — height (both pieces) = floor-gap line (282) → band top (1225)
+# 5mm CUT sizes for the Fan-B swinging band (between-members → round DOWN into its opening; single
+# source read by the lighttrap 3D, hingepanel Sheet 11, and the plywood cut sheet).
+FAN_B_BAND_W_CUT = FAN_B_BAND_W - FAN_B_BAND_W % 5        # 470 — swinging panel cut width (473 opening)
+FAN_B_BAND_H_CUT = FAN_B_BAND_H - FAN_B_BAND_H % 5        # 940 — band cut height (943 opening)
 # Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,
 # IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
 # case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm

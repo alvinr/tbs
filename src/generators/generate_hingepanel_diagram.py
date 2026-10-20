@@ -2141,7 +2141,7 @@ def sheet10():
 #   Sheet 3; the ply→frame welded-tab + captive tee-nut is Sheet 13.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet11():
-    from tbs_constants import (FAN_B_BAND_W as BW, FAN_B_BAND_H as BH,   # single source: Plywood Cut Sheets
+    from tbs_constants import (FAN_B_BAND_W_CUT as BW, FAN_B_BAND_H_CUT as BH,   # 470×940 cut; single source
                                FAN_B_YD, FAN_B_H, PANEL_FLOOR_GAP_SIDE, PANEL_CUT_YD)
     FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
 

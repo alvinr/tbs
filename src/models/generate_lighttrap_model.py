@@ -40,7 +40,7 @@ import tbs_draw as draw                          # shared drawing/material primi
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM, FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = draw.ruby_box, draw.ruby_cylinder
@@ -874,7 +874,7 @@ def fan_b_mount_panel(alpha=0.5):
     floor-gap line → band top). SHARED single source: lighttrap dc_body (swings) + overview (static,
     in place) both emit THIS, so the band can't drift between the two models."""
     return ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_FLOOR_GAP_SIDE, 40,
-                    ov.PANEL_CORNER_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE,
+                    FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT,   # 470×940 cut (shrinks into the 473×943 opening); single source
                     color=C_PLY, alpha=alpha)
 
 
@@ -1269,6 +1269,15 @@ _APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
                   (YD_L, _CC), (YD_L, _CT_LOW), (0, _CT_LOW)]
 _APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_LOW),
                   (YD_R, _CT_LOW), (YD_R, _CC), (APRON_IN_R, _CC)]
+
+# Bounding blanks of the stepped aprons + the fixed stub — SINGLE SOURCE for the cut sheet + hingepanel
+# Sheet 16. The 2D under-represented these as plain rectangles; the 3D polygon here is authoritative.
+def _apron_bbox(prof):
+    ys = [y for y, z in prof]; zs = [z for y, z in prof]
+    return (max(ys) - min(ys), max(zs) - min(zs))
+APRON_NEAR_BLANK = _apron_bbox(_APRON_UP_NEAR)   # (688, 187) — stepped near apron bounding blank
+APRON_FAR_BLANK  = _apron_bbox(_APRON_UP_FAR)    # (488, 187) — stepped far apron bounding blank
+STUB_BLANK = (PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - _AHZ)   # (125, 178) — fixed pivot stub (simple rect)
 
 
 def _apron_vpanel(name, prof, color, alpha):

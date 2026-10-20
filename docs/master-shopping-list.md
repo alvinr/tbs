@@ -71,7 +71,7 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | 4 ea | Grainger | panel | $49 |
 | 1×1×1/8in 6061-T6 Al angle — channel-support beams (×4) + rivets | 4 4ft | Metals Depot | lightlock | $69 |
-| 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427) | 1 lot | Online Metals | lightlock | $45–$90 |
+| 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R377.5) | 1 lot | Online Metals | lightlock | $45–$90 |
 | [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | 1 ea | Metal Supermarkets | spray | $125 |
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 ea | Grainger | film | $328 |

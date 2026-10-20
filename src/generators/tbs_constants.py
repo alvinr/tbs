@@ -431,7 +431,7 @@ LT_SHELL_ARC   = 360 - LT_OPENING_DEG   # 280 — drum shell / rim-angle / rivet
 # Full Ø discs (the opening is in the cylindrical shell only, not the caps).
 LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
 LT_CAP_BOT_T   = 8.0      # bottom cap: 8mm 6061-T6 aluminum plate (identical to top)
-LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
+LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 755 — cap nests INSIDE the shell (shell laps over the rim)
 # ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
 # The rim angle + shell lap + rivets follow the drum's 280° C-shell arc (LT_SHELL_ARC) —
 # NOT a full ring; the 80° operator opening has no shell/rim there.
@@ -937,7 +937,7 @@ FP_CORNER_SEAT_PLATE_W   = 150   # back-plate width along X (mm)
 FP_CORNER_SEAT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
 FP_CORNER_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
 FP_CORNER_SEAT_T    = 10    # seat plate thickness (mm)
-FP_CORNER_SEAT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm) — reserved (seat spec; not drawn per-feature)
+FP_CORNER_SEAT_GUSSET_H  = 120   # triangular gusset web depth down the back-plate (mm) — reserved (seat spec; not drawn per-feature; = the 3D gusset 120 / parts 110×120)
 FP_CORNER_SEAT_BOLT_D    = 12    # M12 wall anchor bolt — reserved (seat spec; not drawn per-feature)
 FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket — reserved (seat spec; not drawn per-feature)
 

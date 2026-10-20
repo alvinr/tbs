@@ -605,7 +605,7 @@ def draw_sheet3():
         f"1. Cut the blank, roll to R{LT_DRUM_OR}; the two free edges are the {LT_OPENING_DEG}° opening jambs.",
         f"2. Cap each opening jamb with a riveted Al U-channel {LT_DRUM_CHAN_W}×{LT_DRUM_CHAN_LEG}×{LT_DRUM_CHAN_T} 6063-T5 ({LT_DRUM_CHAN_N} edges) — Ø{LT_RIVET_D} SS blind rivets thru both legs + HDPE @ {LT_DRUM_CHAN_RIVET_PITCH}mm (40mm top edge, remainder at the bottom — see dims), rivet-only (see DETAIL). Drill the rivet line before rolling.",
         f"3. Shell laps {LT_LAP_H}mm over each cap rim → {LT_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets/cap + DP8010 bead (see Sheet 4).",
-        "The end caps (Ø855 6061-T6 Al, hub bore + 4×M10 flange + rim-rivet holes) are drawn on Sheet 6 with the other machined metal parts.",
+        f"The end caps (Ø{LT_CAP_OD} 6061-T6 Al, hub bore + 4×M10 flange + rim-rivet holes) are drawn on Sheet 6 with the other machined metal parts.",
         f"Running clearance to housing bore ≈ {RUN_GAP_L}mm (radial) — see Sheet 7.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
@@ -716,7 +716,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
 
     # ── Rivet pattern — cap plan (280° C-shell arc; the 80° opening has no rim) ─
     pcx, pcz, pr = 790, 300, LT_CAP_OD / 4                                  # cap outline at 1:2
-    draw_circle(ax, pcx, pcz, pr, lw=1.0, color=C_DIM, ls="--", zorder=5)   # cap disc (full Ø855)
+    draw_circle(ax, pcx, pcz, pr, lw=1.0, color=C_DIM, ls="--", zorder=5)   # cap disc (full Ø755)
     oh = LT_OPENING_DEG / 2
     aarc = [math.radians(oh + t) for t in range(0, LT_SHELL_ARC + 1, 4)]    # 280° rim-angle arc
     ax.plot([pcx + pr * math.cos(a) for a in aarc], [pcz + pr * math.sin(a) for a in aarc],
@@ -1066,7 +1066,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
     ax.text((UX + LX) / 2, -640,
             "MACHINED COMPONENTS (Al top ring · steel floor collar · stub-shaft + flange) —\n"
             "fully dimensioned single-part blueprints incl. bolt patterns on SHEET 6.\n"
-            "End cap (Ø855 6061-T6 Al, 4×M10 hub flange) — SHEET 6.",
+            f"End cap (Ø{LT_CAP_OD} 6061-T6 Al, 4×M10 hub flange) — SHEET 6.",
             ha="center", va="center", fontsize=8, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=9)
 
@@ -1112,7 +1112,7 @@ def draw_sheet5():                              # Sheet 5 — bearing hub
 def draw_sheet6():
     # PORTRAIT single column — four machined parts stacked, drawn large (page width).
     s2 = 2.2                                                                  # 2.2:1 (rings / collar / stub)
-    scc = 0.5                                                                 # 1:2 (the big Ø855 end cap)
+    scc = 0.5                                                                 # 1:2 (the big Ø755 end cap)
     CX = 560                                                                  # single-column center
     SEC_DZ = 400                                                             # plan → section drop (rings)
     R_RING, R_COLLAR, R_STUB, R_CAP = -150, -1060, -1990, -3110              # plan-z of each row
@@ -1240,7 +1240,7 @@ def draw_sheet6():
     ax.text(cx, ez - fl_t - 34, "1045 steel shaft + steel flange · weld + stress-relieve", ha="center",
             va="top", fontsize=7.5, color=C_OUT, **FONT, zorder=9)
 
-    # ── End cap (Ø855) — plan + thickness note (1:2) ─────────────────────────
+    # ── End cap (Ø755) — plan + thickness note (1:2) ─────────────────────────
     ccx, ccz = CX, R_CAP
     cr = LT_CAP_OD / 2 * scc
     ax.text(ccx, ccz + cr + 82, "END CAP ×2 identical  (1:2)", ha="center", va="bottom",

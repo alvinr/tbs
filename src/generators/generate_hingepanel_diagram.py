@@ -2633,7 +2633,7 @@ def sheet16():
             fontsize=5.8, fontweight="bold", color="#204060", **FONT)
     ax.add_patch(Rectangle((PIVOT_YD, ez), WID - PIVOT_YD, ATOP, fc="#B8B8C0", ec=C_OUT, lw=1.0, hatch="xx", alpha=0.6))
     ax.add_patch(Rectangle((APRON_IN_L, ez), APRON_IN_R - APRON_IN_L, BAF_TOP, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///", alpha=0.6))
-    ax.text((APRON_IN_L + APRON_IN_R) / 2, ez + 66, f"FIXED CENTER BAFFLE\n(trimmed to the apron edges — no moving part)\nZ51–{int(BAF_TOP)} (drum frame sweeps clear above)", ha="center", va="center",
+    ax.text((APRON_IN_L + APRON_IN_R) / 2, ez + 66, f"FIXED CENTER BAFFLE\n(trimmed to the apron edges — no moving part)\nZ0–{int(BAF_TOP)} (floor→cage; drum frame sweeps clear above)", ha="center", va="center",
             fontsize=7, fontweight="bold", color=C_OUT, **FONT)
     # Horizontal strip brush on the baffle top edge → bristles sweep the cage bottom (Z140), 10mm gap.
     ax.add_patch(Rectangle((cgL, ez + BAF_TOP), cgR - cgL, 12, fc="#2FA84F", ec="#1c6b32", lw=0.8))
@@ -2689,14 +2689,14 @@ def sheet16():
     leader(ax, dD(118, BAYB - 4), dD(55, 300), "bay bottom cap (Z217) —\nbay closes Z130→217 in operation", col=C_OUT, fs=6)
     ax.add_patch(Rectangle(dD(58, LT_CAGE_BOT), 118, 40, fc="none", ec="#803030", lw=1.0, ls=(0, (4, 2))))   # drum cage ghost (bottom beam)
     leader(ax, dD(117, LT_CAGE_BOT + 20), dD(300, 250), f"drum cage bottom (Z{int(LT_CAGE_BOT)})\nsweeps clear above the baffle", col="#803030", fs=6)
-    ax.add_patch(Rectangle(dD(70, THR), 90, BAF_TOP - THR, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///"))      # fixed plywood baffle Z51..130
-    leader(ax, dD(115, (THR + BAF_TOP) / 2), dD(-75, 120), f"fixed plywood baffle\n(Z{THR}–{int(BAF_TOP)}) — kills the\nsightline under the bay", col=C_OUT, fw="bold", fs=6)
+    ax.add_patch(Rectangle(dD(70, 0), 90, BAF_TOP, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///"))      # fixed plywood baffle Z0..130 (floor→cage)
+    leader(ax, dD(115, BAF_TOP / 2), dD(-75, 120), f"fixed plywood baffle\n(Z0–{int(BAF_TOP)}, floor→cage) — kills\nthe sightline under the bay", col=C_OUT, fw="bold", fs=6)
     # horizontal strip brush on the baffle top edge — fills the 10mm gap up to the swept cage bottom
     ax.add_patch(Rectangle(dD(70, BAF_TOP), 90, LT_CAGE_BOT - BAF_TOP, fc="#2FA84F", ec="#1c6b32", lw=0.8))
     for bx in range(int(dD(74, 0)[0]), int(dD(158, 0)[0]), 6):
         ax.plot([bx, bx], [BAF_TOP, LT_CAGE_BOT], color="#141414", lw=0.7)
     leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(375, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
-    draw_dim_v(ax, d0 + 225, THR, BAF_TOP, f"{int(BAF_TOP - THR)}mm", offset=10, fs=6, font=FONT)
+    draw_dim_v(ax, d0 + 225, 0, BAF_TOP, f"{int(BAF_TOP)}mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
     e0, ebz, S = 775, 150, 5.0
@@ -2758,7 +2758,7 @@ def sheet16():
         "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-center catch each side.",
         "• HINGE LINE (Detail F): the apron-bottom piano hinge is light-sealed by a fixed 3mm-steel LAPPING BOARD off the sill — an exterior daylight baffle standing over the hinge — plus a 10mm closed-cell foam strip the apron compresses when UP; the hinge knuckle sits inboard of the lap.",
         "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",
-        "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
+        "• CENTER (drum bay): a FIXED plywood baffle (Z0–130, floor→cage), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
         f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
         "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45° scarf with EPDM bonded to the FIXED face — a light-tight lap the moving panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom, apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
     ], WID + 380, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",

@@ -1111,8 +1111,8 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 #       Panel (hinged door) occupies the end wall at X=0 and SWINGS ~56° about
 #       the pivot for transport.  Left walkway must be removed before the swing.
 #       Left corners use butt joints (no miter) so near/far walkways start at
-#       X=470 — clear of the door-end panel swing sweep.
-#       Only the left walkway (X=280–470) needs removal for transport.
+#       X=580 — clear of the door-end panel swing sweep.
+#       Only the left walkway (X=280–580) needs removal for transport.
 #       Supported at ends by near/far walkway bracket arms at butt joints.
 #       Processing tray side (X=470): removable bearer beam (2×2×0.125in 6061 Al SHS; #26 — was 50×50×3, 2in stock. Metal Supermarkets $31.99/ft; uncosted removable spare)
 #       runs along Yd, bolted to near/far bracket vertical legs, spanning
@@ -1132,12 +1132,12 @@ WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 +
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — 1" McNichols MS-S-100 molded FRP (real product min; 15mm molded FRP doesn't exist, 2.60 lb/sf). Sits on the SAME Z115 arm → deck top 140.
 WALKWAY_GRATE_CLIP_PITCH = 610  # FRP hold-down clip spacing (mm) — 24" along the supported (bearing) edges + one at each panel corner; standard McNichols/Fibergrate molded-grating clip guidance for a pedestrian deck (2026-08-19)
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
-WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, Yd0–300) is a
+WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈580–950, Yd0–300) is a
                          # REMOVABLE lift-out for transport — the swing sweeps this band to X≈896
                          # (over Yd0–300), so the lift-out runs to 950 for a ~50mm margin; it lifts
                          # out (with the left walkway)
                          # rather than dropping the grate (the walkway stays LEVEL at Z130). The FAR
-                         # deck is NOT swept (swept points stay short of the X470 deck start).
+                         # deck is NOT swept (swept points stay short of the X580 deck start).
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
@@ -1215,7 +1215,7 @@ WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 2062mm
 # Supported by FLOOR-LEG CANTILEVER brackets on the cargo-door side (rev 2026-06-07,
 # replaces the edge-beam-on-wall-seats): see the LEFT_WK_CANT_* block below + Sheet 5/6.
 # Zero processing tray contact — all supports outside or above the tray/bath.
-WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
+WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 280mm (starts at tray left edge; follows the 260 left rail)
 WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm — floor-leg span (outer edge)
 # Left walkway DRUM-EXIT punch-out (rev 8): the operator steps out of the
 # revolving drum at X=450, but the 300mm walkway ends at X=470 — only 20mm of
@@ -1231,7 +1231,7 @@ WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 # A row of brackets bolted to the bare floor OUTSIDE the tray (X<170): each = foot plate +
 # vertical post (to the grate bottom) + a cantilever arm reaching IN under the grate, ABOVE the
 # floor-level spray bar (possible only after the +50 walkway raise lifted the grate). Standard
-# brackets carry the grate inner edge (X=470); brackets on the drum-exit punch-out (Yd 800-1560)
+# brackets carry the grate inner edge (X=580); brackets on the drum-exit punch-out (Yd 800-1560)
 # get EXTENDED arms to X=770 so the widened section is supported, not cantilevered. Zero tray
 # contact; grate + brackets lift out for transport. Validated in the cantilever-study exploration (retired 2026-06-07).
 LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # leg centreline (bare floor, just outboard of the tray L edge = WALKWAY_LEFT_X)
@@ -1249,8 +1249,8 @@ LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline 
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)
 LEFT_WK_CANT_ARM_W_WIDE = 101.6  # widened (drum-exit punch-out) arm — 4×1×0.120in tube (4in face in Yd × 25.4 Z). REDESIGNED to US IBC/OSHA: the 605mm punch-out cantilever at 2×1 was only SF 1.04 under the 300 lbf tip load; 4×1 → SF 1.99 (walkway_load.py). Depth spray-bar-capped, so wider not deeper (2026-08-19).
-LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
-LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
+LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 580 — standard arm tip (grate inner edge)
+LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 880 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): the deck's INNER (tray-facing) edge is anchored to the tray module
 # (X4329); its OUTER edge lands on the shared COMBINED-CORNER-PLATE FACE (F1, 2026-08-18) —
 # RAIL_X_R − FP_CORNER_SEAT_PLATE_W/2 = 4574 — so the cantilever rectangle no longer overruns the
@@ -1268,7 +1268,7 @@ WALKWAY_RIGHT_W   = WALKWAY_RIGHT_X_R - WALKWAY_RIGHT_X       # = 245mm  — act
 # cuts only to the tray lip (Yd=80), not the full depth.
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 WALKWAY_MAX_OVERHANG  = 100             # max grate cantilever past an end bracket (deflection to be checked)
-_NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
+_NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 580
 _CANT0 = _NX0 + CONTAINER_RIB_SPACING // 2             # first cantilever station ≈ 698
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
 SPRAY_BEAM_X_L  = PROC_TRAY_X_L + 30                    # = 310mm — beam left end (30mm off the tray rim)
@@ -1286,8 +1286,8 @@ WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (m
 WALKWAY_MUSLIN_NOTCH_DX = 100   # depth into the walkway from the tray-facing (inboard) edge (X, mm)
 WALKWAY_MUSLIN_NOTCH_DY = 150   # width along the tray-facing edge (Yd, mm)
 WALKWAY_MUSLIN_NOTCH_YD0 = WALKWAY_FAR_YD - WALKWAY_MUSLIN_NOTCH_DY                 # 1912 — notch Yd start (far end of the open zone, just inboard of the far walkway)
-WALKWAY_MUSLIN_NOTCH_L_X1 = WALKWAY_LEFT_X + WALKWAY_W                              # 470 — left walkway INBOARD (tray) edge
-WALKWAY_MUSLIN_NOTCH_L_X0 = WALKWAY_MUSLIN_NOTCH_L_X1 - WALKWAY_MUSLIN_NOTCH_DX     # 370 — left notch cut in from X470
+WALKWAY_MUSLIN_NOTCH_L_X1 = WALKWAY_LEFT_X + WALKWAY_W                              # 580 — left walkway INBOARD (tray) edge
+WALKWAY_MUSLIN_NOTCH_L_X0 = WALKWAY_MUSLIN_NOTCH_L_X1 - WALKWAY_MUSLIN_NOTCH_DX     # 480 — left notch cut in from X580
 WALKWAY_MUSLIN_NOTCH_R_X0 = WALKWAY_RIGHT_X                                        # 4329 — right walkway INBOARD (tray) edge
 WALKWAY_MUSLIN_NOTCH_R_X1 = WALKWAY_MUSLIN_NOTCH_R_X0 + WALKWAY_MUSLIN_NOTCH_DX     # 4429 — right notch cut in from X4329
 
@@ -1361,7 +1361,7 @@ RWK_CRANK_Y0   = RWK_CRANK_N0 - RWK_CRANK_RAMP                        # 1812 —
 RWK_CRANK_Y1   = RWK_CRANK_N1 + RWK_CRANK_RAMP                        # 2162 — ramp-in end
 
 # Open processing area (center, clear of walkways):
-PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 470mm
+PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 580mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4329mm
 PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
 PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 2062mm
@@ -1389,7 +1389,7 @@ SPRAY_BAR_WHEEL_DIA  = 32          # nylon wheel diameter (mm) — shrunk from 5
 SPRAY_BAR_WHEEL_W    = 20          # wheel width (mm)
 SPRAY_BAR_WHEELS_PER_SIDE = 2      # wheels per carriage (spaced in Yd direction) — reserved (spec; 2D/3D draw wheels via WHEEL_SP)
 SPRAY_BAR_WHEEL_SP   = 200         # wheel center-to-center spacing in Yd (mm)
-SPRAY_BAR_TRAY_FLOOR = 2           # tray sheet metal thickness on container floor (mm)
+SPRAY_BAR_TRAY_FLOOR = 1.5         # tray sheet metal thickness (mm) — 16-ga (0.0598in ≈ 1.5mm) 304 SS pan, per parts tray-ss-sheet
 # Carriage vertical stack is now FLOOR-RELATIVE: the wheels ride the LOCAL (sloped) floor,
 # so absolute Z = tray_floor_z(x, yd) + rise.  Use spray_beam_bot_z / spray_beam_top_z.
 SPRAY_BAR_AXLE_RISE    = SPRAY_BAR_WHEEL_DIA // 2                        # = 16mm — axle CL above the local floor

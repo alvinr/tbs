@@ -335,7 +335,7 @@ def cantilevers(which="both"):
 
 
 # Near-wall X positions for the isolated type-catalog ("Cantilevers" scene), ordered
-# left→right: floor-leg cantilever SHORT (to X470), floor-leg LONG (to X770, punch-out),
+# left→right: floor-leg cantilever SHORT (to X580), floor-leg LONG (to X880, punch-out),
 # standard wall cantilever, widened wall cantilever.
 CT_SEAT_X, CT_SEAT_LONG_X, CT_STD_X, CT_WIDE_X = 2000, 3000, 4000, 5000
 # rev12 right-walkway cantilever-rectangle support brackets (added to the catalog):
@@ -372,7 +372,7 @@ def _floor_cant_type_parts(x0, reach, suffix, target_x, arm_w):
     """ONE LEFT-walkway FLOOR-LEG CANTILEVER bracket for the type-catalog — foot plate +
     50x50 post to the grate bottom + arm at Z89.6-115 reaching `reach` mm in — isolated at
     catalog X station `x0`, near wall. Built twice: the STANDARD reach (arm to the grate
-    inner edge, X470, 2×1 arm) and the EXTENDED reach (X770, the 3 drum-exit punch-out
+    inner edge, X580, 2×1 arm) and the EXTENDED reach (X880, the 3 drum-exit punch-out
     brackets, 4×1 arm — IBC/OSHA). `arm_w` is the arm's Yd width per type."""
     foot_l, foot_w, foot_t = LC_FOOT
     pt = FLOOR_PLATE_T
@@ -393,8 +393,8 @@ def cantilever_types():
     """ONE of each unique walkway-support bracket, isolated side-by-side for the
     "Cantilevers" scene:
       • FLOOR-LEG CANTILEVER, two reaches — the LEFT removable walkway's support (a 50x50
-        post on bare floor + arm): the STANDARD reach to the grate inner edge (X470) and
-        the EXTENDED reach (X770) on the 3 drum-exit punch-out brackets;
+        post on bare floor + arm): the STANDARD reach to the grate inner edge (X580) and
+        the EXTENDED reach (X880) on the 3 drum-exit punch-out brackets;
       • STANDARD wall cantilever — 8mm/150/300, 3× M12 (typical near/far deck bracket);
       • WIDENED  wall cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
       • the rev12 RIGHT-WALKWAY cantilever-rectangle supports — WALL CLEAT (left corners),
@@ -461,8 +461,8 @@ def left_floor_cantilevers(part="all"):
     """The left walkway's removable lift-out support: a row of FLOOR-LEG CANTILEVER
     brackets bolted to bare floor OUTSIDE the tray (X<170). Each = foot plate + 50x50
     post (to the grate bottom) + an arm (Z75-115, 40mm deep, ABOVE the floor-level
-    spray bar) reaching IN to carry the grate inner edge (X=470). Brackets on the
-    drum-exit punch-out (Yd 800-1560) get EXTENDED arms (to X=770) so the widened
+    spray bar) reaching IN to carry the grate inner edge (X=580). Brackets on the
+    drum-exit punch-out (Yd 800-1560) get EXTENDED arms (to X=880) so the widened
     section is supported, not cantilevered. Zero tray contact. Returns a list of ruby
     parts — SHARED by left_support() and the overview so the two never diverge.
 
@@ -487,7 +487,7 @@ def left_floor_cantilevers(part="all"):
         return parts
     for i, y in enumerate(LC_YDS, 1):
         wide = WK_LEFT_WIDE_YL <= y <= WK_LEFT_WIDE_YR
-        reach = LC_WIDE if wide else LC_STD     # 770 (punch-out) / 470 (standard) tip X
+        reach = LC_WIDE if wide else LC_STD     # 880 (punch-out) / 580 (standard) tip X
         aw = LC_ARM_WW if wide else LC_ARM_W    # 101.6 (4×1, IBC/OSHA) / 50.8 (2×1) arm width in Yd
         parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, pt,
                               foot_l, foot_w, foot_t, color=C_STEEL))        # foot ON the sub-plate
@@ -509,7 +509,7 @@ def left_support():
     """The LEFT walkway is a removable lift-out, carried by a row of FLOOR-LEG
     CANTILEVER brackets (see left_floor_cantilevers) — bolted to bare floor outside the
     tray, arms reaching in over the floor-level spray bar to the grate inner edge (and
-    extended to X=770 on the drum-exit punch-out). Replaces the former edge-beam-on-
+    extended to X=880 on the drum-exit punch-out). Replaces the former edge-beam-on-
     wall-seats: the +50 walkway raise lifted the grate clear of the spray bar, so a
     floor-rooted arm can pass over the open tray. Zero tray contact; brackets + grate
     lift out for transport (before the panel + drum swing inboard — see lighttrap.skp)."""

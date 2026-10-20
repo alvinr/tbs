@@ -31,7 +31,7 @@ OD_H = PUMP_PIPE_OD     # 21mm (1/2" PVC)
 WALL_H = PUMP_PIPE_WALL  # 3mm
 
 # Walkway X range (near walkway = pinhole wall side)
-WK_X_L = PROC_TRAY_X_L + WALKWAY_W   # 470mm — near walkway left edge (past left walkway)
+WK_X_L = PROC_TRAY_X_L + WALKWAY_W   # 580mm — near walkway left edge (past left walkway)
 WK_X_R = PROC_TRAY_X_R               # 4629mm — near walkway right edge
 
 # Pull-cord switches — ceiling-mounted, left of the electrical panel (cleared)
@@ -708,7 +708,7 @@ ax2.text(C_LEN / 2, plan_sy(0) - 36,
         "PINHOLE WALL (Yd = 0)", ha="center", va="top",
         fontsize=5, color=C_OUT, fontweight="bold", zorder=10, **FONT)
 
-# ── Walkway grating zone (X=470-4629, Yd=0-300mm) ──────────────────────────
+# ── Walkway grating zone (X=580-4629, Yd=0-300mm) ──────────────────────────
 ax2.add_patch(mpatches.FancyBboxPatch(
     (WK_X_L, plan_sy(0)), WK_X_R - WK_X_L, plan_sy(WALKWAY_W) - plan_sy(0),
     boxstyle="square,pad=0", fc="#F0F0F0", ec="none", alpha=0.5, zorder=1))

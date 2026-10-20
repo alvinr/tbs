@@ -38,7 +38,7 @@ try:                                    # drawing helper (imports numpy) — opt
     from tbs_drawing import leader
 except ImportError:
     leader = None
-from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_W, FP_Y, FP_H, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_N_TOTAL, PH_X, PH_H, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, IBC_PALLET_H, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_SPACING, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_YD_NEAR, SHELF_STOW_TOP_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SKIN_T, PANEL_FAN_BAND_Z, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, DRUM_D, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_SHELL_ARC, LT_OPENING_DEG, BAY_FRONT_X, BAY_BACK_X, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, FAN_A_YD, FAN_B_YD, C_OUT, C_DIM, C_STEEL, C_ALUM, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_LT_DRUM, C_PROC_ZONE, C_WALL, C_FAN, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_W, FP_Y, FP_H, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_N_TOTAL, PH_X, PH_H, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, IBC_PALLET_H, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_OPEN_X_L, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_SPACING, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_YD_NEAR, SHELF_STOW_TOP_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SKIN_T, PANEL_FAN_BAND_Z, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, DRUM_D, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_SHELL_ARC, LT_OPENING_DEG, BAY_FRONT_X, BAY_BACK_X, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, FAN_A_YD, FAN_B_YD, C_OUT, C_DIM, C_STEEL, C_ALUM, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_LT_DRUM, C_PROC_ZONE, C_WALL, C_FAN, DIAGRAMS_DIR
 try:                                    # drawing helper (imports matplotlib) — optional, see above
     from tbs_title_block import title_block
 except ImportError:
@@ -205,7 +205,7 @@ def _walkway_near_far_weight():
     Brackets: 8mm steel plate gussets at 457mm centers.
     Grating: 25mm galvanized press-locked, 300mm wide.
     """
-    walkway_length = PROC_TRAY_X_R - 470  # X=470 to X=4629 = 4159mm
+    walkway_length = PROC_TRAY_X_R - PROC_OPEN_X_L  # X=580 to X=4629 = 4049mm
     # Number of brackets
     n_brackets = int(walkway_length / WALKWAY_BRACKET_SPACING) + 1  # ≈ 10
     # Each bracket: right triangle 150mm vert × 300mm horiz, 8mm plate
@@ -257,7 +257,7 @@ def _walkway_left_weight():
     post_kg = n_brk * post_area * post_h * RHO_STEEL
     fl, fw, ft = LEFT_WK_CANT_FOOT                          # 128×60×8 plate
     foot_kg = n_brk * (fl / 1000 * fw / 1000 * ft / 1000) * RHO_STEEL
-    # Arms (40×40×3 SHS): 2 standard (reach to X470) + 3 punch-out (extended to X770).
+    # Arms: 2 standard (reach to X580) + 3 punch-out (extended to X880).
     arm_x0 = LEFT_WK_CANT_LEG_X + P / 2
     std_reach = (LEFT_WK_CANT_STD_REACH - arm_x0) / 1000.0
     wide_reach = (LEFT_WK_CANT_WIDE_REACH - arm_x0) / 1000.0
@@ -455,11 +455,11 @@ def build_components():
                   0, PROC_TRAY_RIM, color=C_PROC_ZONE,
                   calc_note="304 SS 1.5mm, 2 panels × 57 kg (water-system-report.md; tray narrowed to 4,349mm when FP_X_L→260)"),
         Component("Near walkway", "structure", near_far_wk,
-                  470, PROC_TRAY_X_R, 0, WALKWAY_W,
+                  PROC_OPEN_X_L, PROC_TRAY_X_R, 0, WALKWAY_W,
                   0, WALKWAY_H, color=C_STEEL,
                   calc_note=f"Brackets + {GRATING_KG_PER_M2} kg/m² grating"),
         Component("Far walkway", "structure", near_far_wk,
-                  470, PROC_TRAY_X_R, C_WID - WALKWAY_W, C_WID,
+                  PROC_OPEN_X_L, PROC_TRAY_X_R, C_WID - WALKWAY_W, C_WID,
                   0, WALKWAY_H, color=C_STEEL,
                   calc_note=f"Brackets + {GRATING_KG_PER_M2} kg/m² grating"),
         Component("Right walkway", "structure", right_wk,

@@ -157,7 +157,7 @@ def processing_tray(alpha=None):
     xl, xr = ov.PROC_TRAY_X_L, ov.PROC_TRAY_X_R
     yn, yf = ov.PROC_TRAY_YD_NEAR, ov.PROC_TRAY_YD_FAR
     tray_w, tray_d = xr - xl, yf - yn
-    sheet_t, rim_t = 2, 2
+    sheet_t, rim_t = ov.SPRAY_BAR_TRAY_FLOOR, 2
     zc = ov.PROC_TRAY_FLOOR_Z_LOW                       # low-corner floor top = shim base top
     a_shim = 0.9 if alpha is None else alpha         # ghost mode fades every part uniformly
     a_bath = 0.45 if alpha is None else alpha

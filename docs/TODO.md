@@ -18,6 +18,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛠 Tooling / infra
 
+- [ ] **Remove the 24 reserved/unused fab-part constants (2026-10 fab-tolerance audit).** `check_consistency.py` CHECK E flagged 24 `tbs_constants` dimensions defined but drawn by no generator/model — each a hand-copied-literal seed. All are now annotated `# reserved (unused; TODO remove)`: `SPRAY_BAR_BORE`, `SPRAY_BAR_HOLE_DIA`, `SPRAY_BAR_HOLE_SP`, `CAM_CLAMP_BASE_D/W`, `CAM_CLAMP_HOLE_SP`, `CAM_CLAMP_N`, `UJOINT_HUB_L`, `UJOINT_BOOT_LEN`, `LT_EDGE_CHAN_W/T/N/RIVET_PITCH/END_BOLT`, `CORNER_PLATE_BEND_R`, `BRACE_T`, `XSLIDE_N`, `RWK_HL`, `EP_RISE_X_P`, `BLUE_SUPPLY_GAL`, `COLLECTION_FILL_L`, `LOST_L`, `EVAP_CFM_RATED`, `IBC_CEILING_CLEARANCE_MM`. Per constant: **drop** it (retired design intent) or **wire it in** (the consumer should reference it instead of a hand-typed literal). Resolve them so the dead-constant seed can't re-sprout a literal.
 - [x] **Tolerance/datum blocks — DONE 2026-10-14. Every tolerance/note block now renders via `draw_notes`.**
   Swept the hand-rolled `fig.add_axes` + `Rectangle` + text-loop pattern onto `tbs_drawing.draw_notes` (bold
   first-line title + bordered box): `generate_shelf_diagram.py` (`_tol_block`), `generate_pinhole_disc_holder.py`

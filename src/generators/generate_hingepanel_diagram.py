@@ -719,7 +719,7 @@ def sheet2():
     # revolve bearing — CENTERED on the drum axis (the bore label is offset below it instead)
     ax.add_patch(Circle((D_CX, D_CY), 60, fc="#5A5AA0", ec=C_OUT, lw=1.3, zorder=12))
     leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 320, D_CY - DR * 0.4),
-           "DRUM CAGE CROSS-BEAM (top +\nbottom) carrying the central\nØ220/Ø120 revolve bearing", col=C_STEEL, fs=6)
+           "DRUM CAGE CROSS-BEAM (top +\nbottom) carrying the central\nØ240/Ø130 revolve bearing", col=C_STEEL, fs=6)
     # daylight ray at ENTER: enters bore from exterior, blocked at interior by drum
     ax.annotate("", xy=(D_CX, D_CY + LT_DRUM_OR * 0.9), xytext=(D_CX, D_YB - 70),
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.8), zorder=12)

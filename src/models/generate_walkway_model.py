@@ -372,7 +372,7 @@ def _floor_cant_type_parts(x0, reach, suffix, target_x, arm_w):
     """ONE LEFT-walkway FLOOR-LEG CANTILEVER bracket for the type-catalog — foot plate +
     50x50 post to the grate bottom + arm at Z89.6-115 reaching `reach` mm in — isolated at
     catalog X station `x0`, near wall. Built twice: the STANDARD reach (arm to the grate
-    inner edge, X580, 2×1 arm) and the EXTENDED reach (X880, the 3 drum-exit punch-out
+    inner edge, X470, 2×1 arm) and the EXTENDED reach (X770, the 3 drum-exit punch-out
     brackets, 4×1 arm — IBC/OSHA). `arm_w` is the arm's Yd width per type."""
     foot_l, foot_w, foot_t = LC_FOOT
     pt = FLOOR_PLATE_T
@@ -487,7 +487,7 @@ def left_floor_cantilevers(part="all"):
         return parts
     for i, y in enumerate(LC_YDS, 1):
         wide = WK_LEFT_WIDE_YL <= y <= WK_LEFT_WIDE_YR
-        reach = LC_WIDE if wide else LC_STD     # 880 (punch-out) / 580 (standard) tip X
+        reach = LC_WIDE if wide else LC_STD     # 770 (punch-out) / 470 (standard) tip X
         aw = LC_ARM_WW if wide else LC_ARM_W    # 101.6 (4×1, IBC/OSHA) / 50.8 (2×1) arm width in Yd
         parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, pt,
                               foot_l, foot_w, foot_t, color=C_STEEL))        # foot ON the sub-plate

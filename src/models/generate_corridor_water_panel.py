@@ -20,7 +20,7 @@ import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
 
 # ── deep-box frame geometry (from the fork; one source) ──
-S       = ov.IBC_FRAME_RHS               # 50×50 RHS
+S       = ov.IBC_FRAME_RHS               # 50.8×50.8 RHS (2×2×0.120in)
 TOP_Z   = 2 * ov.IBC_H_1000 - 40         # 2296 — frame reaches near the stack top
 # Equipment-panel top — DROPPED to the underside of the Fan A exhaust baffle so the corridor is
 # open across the fan window (Z1900-2100), letting air pass THROUGH the panel to Fan A.  Tied to

@@ -49,7 +49,8 @@ ruby_bolt = draw.ruby_bolt
 ruby_tri = draw.ruby_tri
 C_FILM = draw.C_FILM
 C_VALVE = draw.C_VALVE
-from tbs_constants import (C_WID, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_RAIL_WEB, RAIL_X_L, WALL_T, C_STEEL)   # film-plane builders moved from overview (Phase 1)
+from tbs_constants import (C_WID, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, FP_RAIL_WEB, RAIL_X_L, WALL_T, C_STEEL,
+                           UJOINT_OD, UJOINT_LEN, UJOINT_STUB_OD, XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN)   # film-plane builders moved from overview (Phase 1)
 
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
@@ -136,28 +137,33 @@ def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
     the corner's backing-side Y (FP_Y, or MID_Y for the whole plane). Positions/dims match the Movement +
     whole-plane scenes (Sheet-3 slide-clearance fixes); corner() re-syncs to these.
       spec = (kind, x, y, z, a, b, c, color, axis)   kind ∈ {box (a×b×c), cyl (Ø a, len b, axis)}."""
-    Lz, Lx = 250, 260
-    gx0 = (cx + cin * 26 - 5) if is_bot else ((fcx - 20) if cin > 0 else (fcx + 4))  # green outboard of the frame leg
-    gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)        # green Z (bottom up / top down, below the rail)
-    # purple SWING rail: inboard end = swing reach (unchanged); OUTBOARD end terminates 3mm inboard of
-    # the wheel-channel opening (cx + cin·CW_BOT/2) — it was overshooting THROUGH the channel flange/lip.
-    p_in = cx + cin * (Lx - 20)                          # inboard end (swing reach)
-    p_out = cx + cin * (CW_BOT / 2 + 3)                  # outboard end, 3mm clear of the channel opening
-    px0, Lxp = min(p_in, p_out), abs(p_in - p_out)
-    pz_purple = (fz - 18) if is_bot else (fz + 4)        # purple clear of the film face
-    stub_x0 = (cx + 5) if cin > 0 else (cx - 51)
-    sup_x0 = (cx + 26) if cin > 0 else (cx - 49)
-    cpx0 = (cx - 14) if cin > 0 else (cx - 20)
-    cpz0 = (fz + 5) if is_bot else (fz - 45)
+    # GIMBAL mounted INBOARD at the film-frame corner (fcx), NOT out over the depth rail (cx) — only the
+    # skate reaches the rail. Depth datum = the frame back (ty): the ¼" 304 corner plate is a thin LEAF
+    # flat on it (Y[ty, ty+T]); the Belden U-joint (Ø19×68, through-axis Y) + keyed stubs + 304 flat-bar
+    # cross-slides all nest BEHIND the leaf, within the skate-carriage depth, so the corner fits the
+    # ~100mm from the deepest film (FP_Y) to the back wall (C_WID).
+    sz = 1 if is_bot else -1                             # +Z up (bottom corner) / down (top corner)
+    T  = CORNER_PLATE_T                                  # plate-leaf thickness (6.35), stacked along +Y
+    mech_y0 = ty + T + 1                                 # gimbal front — just behind the plate leaf
+    uj_y0, uj_y1 = mech_y0, mech_y0 + UJOINT_LEN         # U-joint through-axis Y, at the frame corner
+    uj_r = UJOINT_OD / 2
+    st_r = UJOINT_STUB_OD / 2
+    bar_t, bar_w = XSLIDE_BAR_T, XSLIDE_BAR_W            # 304 flat bar 6.35 × 38.1
+    # Z (tilt) way — bar runs along Z, thin in X, nested just inboard of the U-joint
+    gx0 = min(fcx + cin * 22, fcx + cin * 22 + cin * bar_t) if cin > 0 else (fcx - 22 - bar_t)
+    gz0 = fz if sz > 0 else fz - XSLIDE_Z_BAR_LEN
+    # X (swing) way — bar runs along X, mounted DEEP (38.1 vertical in Z), thin in Y, behind the Z way
+    px0 = fcx if cin > 0 else fcx - XSLIDE_X_BAR_LEN
+    pz0 = (fz + sz * 22) - bar_w / 2
     return {
-        "green":         ("box", gx0, ty + 1, gz0, 10, 18, Lz, C_TILT, None),
-        "purple":        ("box", px0, ty + 1, pz_purple, Lxp, 14, 14, C_SWING, None),
-        "ujoint":        ("box", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS, None),
-        "input_stub":    ("cyl", stub_x0, ty + 8, fz, 4.75, 46, None, C_STEEL, "x"),
-        "shaft_support": ("box", sup_x0, ty - 1, fz - 11, 23, 18, 22, C_STEEL, None),
-        "output_stub":   ("cyl", cx, ty - 14, fz, 4.75, 20, None, C_STEEL, "y"),
+        "corner_plate":  ("lshape", fcx, ty, fz, CORNER_PLATE_LEG, CORNER_PLATE_CUT, T, C_STEEL, (cin, sz)),
+        "output_stub":   ("cyl", fcx, ty - 3, fz, st_r, (uj_y0 + 3) - (ty - 3), None, C_STEEL, "y"),
+        "ujoint":        ("cyl", fcx, uj_y0, fz, uj_r, UJOINT_LEN, None, C_CROSS, "y"),
+        "input_stub":    ("cyl", fcx, uj_y1 - 15, fz, st_r, 30, None, C_STEEL, "y"),
+        "shaft_support": ("box", fcx - 11, uj_y1 - 8, fz - 11, 23, 18, 22, C_STEEL, None),
+        "green":         ("box", gx0, mech_y0 + 2, gz0, bar_t, bar_w, XSLIDE_Z_BAR_LEN, C_TILT, None),
+        "purple":        ("box", px0, mech_y0 + 2 + bar_w + 2, pz0, XSLIDE_X_BAR_LEN, bar_t, bar_w, C_SWING, None),
         "frame_bolt":    ("cyl", fcx, ty - 6, fz, 3, 18, None, C_STEEL, "y"),
-        "corner_plate":  ("box", cpx0, ty - 8, cpz0, 34, 16, 40, C_STEEL, None),
     }
 
 
@@ -168,6 +174,13 @@ def emit_slide(label, spec, ox=0, oy=0, oz=0, alpha=None):
     kind, x, y, z, a, b, c, color, axis = spec
     if kind == "box":
         return draw.ruby_box(label, x + ox, y + oy, z + oz, a, b, c, color=color, alpha=alpha)
+    if kind == "lshape":                                 # 304 ¼" FLAT corner GUSSET — ONE laser-cut L-shaped plate
+        leg, cut, th = a, b, c                           # in the X-Z plane flat on the frame back (th thin in +Y),
+        cin, sz = axis                                   # bolted to BOTH frame members (J5); the output stub passes
+        X, Z = x + ox, z + oz                            # through it. Corner heel at (x=fcx, y=ty, z=fz). ONE prism
+        pts = [(X, Z), (X + cin * cut, Z), (X + cin * cut, Z + sz * leg),   # (not two overlapping boxes) so it reads
+               (X + cin * leg, Z + sz * leg), (X + cin * leg, Z + sz * cut), (X, Z + sz * cut)]  # as a single part.
+        return draw.ruby_prism(label, pts, y + oy, th, color=color, alpha=alpha, axis="y")
     return draw.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis, alpha=alpha)
 
 
@@ -185,7 +198,7 @@ def corner_skate_parts(cx, zc, fz, cin, ty, suffix):
     kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10          # keeper (under the top flange); Ø20 on a stub axle
     r_x0, r_len = cx - 10, 20
     P = []
-    for ry in (ty + 8, ty + 48):
+    for ry in (ty + 13, ty + 53):                        # skate nudged +5 in Y so the carriage/axle inboard ends sit BEHIND the ¼" gusset leaf on the frame back
         P.append(draw.ruby_cylinder(f"Acetal roller Ø32 (wide face){suffix} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
         wax0 = min(r_x0, inb - 6)
         P.append(draw.ruby_cylinder(f"Wheel axle Ø10{suffix} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
@@ -196,8 +209,8 @@ def corner_skate_parts(cx, zc, fz, cin, ty, suffix):
     zvals = (fz, rz, kz)
     zlo, zhi = min(zvals), max(zvals)
     plate_top = min(zhi + 18, ov.C_HGT - 25)
-    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles){suffix}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
-    for ry in (ty + 8, ty + 48):
+    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles){suffix}", inb - 6, ty + 7, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
+    for ry in (ty + 13, ty + 53):
         blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
         P.append(draw.ruby_cylinder(f"Axle retainer bolt (thru plate){suffix} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
     # CAM RAIL-BRAKE (fp-cam-clamp, 5128A63): base on the carriage-plate top; the hold-down arm reaches
@@ -236,15 +249,16 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
     # ── U-CHANNEL DEPTH RAIL ──
     if side == "R":                                     # RIGHT: continuous, flanged wall-to-wall
         if is_bot:                                       # BOTTOM-RIGHT (BR): combined corner plates at both walls
-            P += rail("U-rail (FLANGED)", 0, ov.C_WID)
-            for fy in (0, ov.C_WID - 12):                # end flange trimmed 35mm on the OUTBOARD (+X) side to clear the IBC frame
-                P.append(draw.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, 12, sec_h + 10, color=C_CROSS))
+            ef_t = 12                                    # rail end-flange thickness (bolts to the IBC combined corner plate at the wall)
+            P += rail("U-rail (FLANGED)", ef_t, ov.C_WID - 2 * ef_t)   # rail web/flange BUTTS the end-flange inner faces — it no longer runs THROUGH the combined corner plate at the wall
+            for fy in (0, ov.C_WID - ef_t):              # end flange trimmed 35mm on the OUTBOARD (+X) side to clear the IBC frame
+                P.append(draw.ruby_box(f"Rail end flange (outboard-trimmed) {tag} {int(fy)}", cx - 55, fy, botf - 5, 75, ef_t, sec_h + 10, color=C_CROSS))
         else:                                            # TOP-RIGHT (TR): budgeted wall-seat saddle at BOTH walls; the rail
             spt = ov.FP_CORNER_SEAT_PLATE_T              # ENDS align to the saddle plate INNER faces (butt the upstand) — no end flange (the saddle mounts + caps it)
             P += rail("U-rail (FLANGED)", spt, ov.C_WID - 2 * spt)
-            _is = sp["input_stub"]                       # (cyl,x,y,z,r,len,…) — single source for the cope bounds
-            P.append(film_plane_saddles({tag: (cx, zc)},
-                     stub_clear=(_is[2] + _is[4], _is[3] + _is[4])))               # cope the far seat to (y+r, z+r)
+            # the gimbal now sits INBOARD at the frame corner (fcx), clear of the wall saddle — so the far
+            # seat no longer needs the input-stub cope nor the gusset notch the OLD outboard gimbal forced.
+            P.append(film_plane_saddles({tag: (cx, zc)}))
     else:                                              # LEFT: parking stub + removable + welded bridge + support + gusset
         P += rail("U-rail STUB (fixed, parks corner)", LEFT_CUT_YD, (ov.C_WID - 12) - LEFT_CUT_YD)   # far end BUTTS the INNER face of the pivot-post flange plate (12mm), not through it (2026-08-19)
         P += rail("U-rail REMOVABLE (out for transport)", ov.FP_CORNER_SEAT_PLATE_T, LEFT_CUT_YD - ov.FP_CORNER_SEAT_PLATE_T, 0.30)   # near end ALIGNED to the saddle plate INNER face (butts the upstand)
@@ -724,7 +738,7 @@ pltxt{mode}.layer = model.layers["{tag}"] rescue nil
 '''
 
 
-def film_plane_saddles(corners, skip=(), walls=(0, C_WID), stub_clear=None):
+def film_plane_saddles(corners, skip=(), walls=(0, C_WID), stub_clear=None, gusset_clip_y=None):
     """IBC-style wall-seat saddle at each of the film-plane rail ends (the `corners`
     {id:(x,z)} × near/far wall). Each = interior back-plate + horizontal seat + triangular
     gusset, THROUGH-BOLTED to an EXTERIOR plate (4-bolt) — dims from the IBC wall seats.
@@ -739,7 +753,7 @@ def film_plane_saddles(corners, skip=(), walls=(0, C_WID), stub_clear=None):
     surface preserved) + a bottom web pulled outboard of the stub."""
     pw, pt = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PLATE_T          # 150 plate, 8 thick
     proj, st = FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T       # 110 seat projection, 10 thick
-    gh, wt, sw = 120, WALL_T, 24 + 24                    # gusset, wall, seat width
+    gh, wt, sw = FP_CORNER_SEAT_GUSSET_H, WALL_T, 24 + 24  # gusset (single-sourced), wall, seat width
     parts = []
     for cid, (x, z) in corners.items():
         if cid in skip:
@@ -779,8 +793,11 @@ def film_plane_saddles(corners, skip=(), walls=(0, C_WID), stub_clear=None):
             # the seat + back-plate). This is what makes the rail join the INSIDE face, not the outer edge.
             parts.append(ruby_box(f"Saddle upstand {tag}",
                          x - sw / 2, min(face_in, face_in + din * pt), seat_top, sw, pt, FP_RAIL_WEB, color=C_STEEL))
+            g_yt = yt
+            if (not near) and gusset_clip_y is not None:   # notch the FAR gusset's inboard tip clear of the 4×4 corner-plate U-joint leg (TR)
+                g_yt = max(yt, gusset_clip_y)
             parts.append(ruby_tri(f"Saddle gusset {tag}",
-                         (x, yt, seat_top - st), (x, face_in, seat_top - st), (x, face_in, gusset_bot),
+                         (x, g_yt, seat_top - st), (x, face_in, seat_top - st), (x, face_in, gusset_bot),
                          8, color=C_STEEL))
             blo, bhi = min(by_in, by_out), max(by_in, by_out) + pt
             hd, nt = ("base", "far") if near else ("far", "base")   # hex head OUTSIDE the container on BOTH walls (nut inside)

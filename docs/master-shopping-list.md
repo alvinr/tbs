@@ -415,7 +415,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cantilever bracket — standard (near/far) | 11 ea | Local fab | walkway | $330–$550 |
 | Cantilever bracket — widened (near) | 5 ea | Local fab | walkway | $200–$350 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
-| Corner angle 304 SS (U-joint mount) — 4×4×¼in stock | 4 ea | Metal Supermarkets | film | $100–$160 |
+| Corner gusset 304 SS (U-joint mount) — ¼in flat L-plate | 4 ea | Metal Supermarkets | film | $100–$160 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 2×2×0.120in steel SHS | 1 lot | Local fab | swing | $70–$120 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |

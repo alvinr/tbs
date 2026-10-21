@@ -237,13 +237,16 @@ CARRIAGE_AXLE_ROW_SP = 38  # Z gap between the load-axle row and the keeper-axle
 # 4 SHORT STUB axles (Ø SKATE_AXLE_OD) at ±SKATE_ROLLER_SP/2 (Yd) × 2 rows (load / keeper).
 CARRIAGE_J1_SP_YD = 28   # J1 4×M8 Z-slide-mount hole pattern width (Yd, mm)
 CARRIAGE_J1_SP_Z  = 44   # J1 4×M8 Z-slide-mount hole pattern height (Z, mm)
-# Corner U-joint mount — OFF-THE-SHELF 4×4×¼in 304 equal-leg ANGLE, cut to 6in (parts.py corner-l-plate;
-# was a press-brake-formed 6×8 L-plate until 2026-09-05 — stock angle gives the same 4in legs, no forming):
-CORNER_PLATE_LEG = 101.6   # equal-leg angle leg (mm) = 4"
-CORNER_PLATE_CUT = 152.4   # angle cut length (mm) = 6"
-CORNER_PLATE_T   = 6.35    # angle thickness (mm) = 1/4"
-CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the leg edge (mm, 1") — >2xM6 dia
-CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along the leg (mm)
+# Corner U-joint mount — LASER/WATERJET-CUT ¼in 304 FLAT L-GUSSET, lying flat on the film-frame back,
+# both arms coplanar in the frame plane (parts.py corner-l-plate; was a press-brake 6×8 L-plate until
+# 2026-09-05, then a stock 4×4×¼ bent ANGLE until 2026-10-21 — the bent leg fouled the cross-slide/carriage
+# packaging, so the mount is now a FLAT L-plate with both legs in the frame plane). LEG/CUT define the L: two
+# 4in arms, ~6in overall span, ¼in thick:
+CORNER_PLATE_LEG = 101.6   # L-gusset arm width (mm) = 4"
+CORNER_PLATE_CUT = 152.4   # L-gusset overall span along each frame member (mm) = 6"
+CORNER_PLATE_T   = 6.35    # plate thickness (mm) = 1/4"
+CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the arm edge (mm, 1") — >2xM6 dia
+CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each arm (mm)
 
 # ── Pinhole disc holder (front board) — replaces the retired tilt-swing mechanism ─────────────
 # The interchangeable Ø80 carrier is clamped against a neoprene light-seal washer by a circular

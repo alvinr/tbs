@@ -25,7 +25,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, Arc, Ellipse
+from matplotlib.patches import Rectangle, Circle, Arc, Ellipse, Polygon
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
@@ -771,7 +771,7 @@ def view_a(ax):
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 304 flat bar + UHMW + gib (green, up the plate center)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 176, 162, 232, 160, "X (SWING) slide — 304 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 182, 158, 232, 125, "single U-joint (Belden SSNBUJ750x3/8KB) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 182, 158, 232, 125, "single U-joint (Belden SSNBUJ750x3/8KB) + 304 SS corner gusset → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 181, 300, 232, 375, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
 
     ax.text(-25, 522, "GUIDE (TOP) CORNER — the mirror: the SAME web-vertical rail + captured skate. The\n"
@@ -1879,12 +1879,13 @@ def _corner_elevation(ax):
                                alpha=0.30, zorder=4))                                    # 6061 angle L — bottom leg (behind the plate)
     ax.add_patch(plt.Rectangle((0, 0), AL, 214, fc=C_FRAME, ec=OUT, lw=1.0, ls=(0, (4, 2)),
                                alpha=0.30, zorder=4))                                    # 6061 angle L — left leg
-    ax.add_patch(plt.Rectangle((-2, -2), 152, 152, fc=C_STEEL, ec=OUT, lw=1.2, zorder=5))  # 304 SS corner plate — NOW the visible face
-    _hatch_xs(ax, -2, -2, 152, 152)
+    Lg = [(-2, -2), (150, -2), (150, 99.6), (99.6, 99.6), (99.6, 150), (-2, 150)]           # flat L-GUSSET face — two 4in arms, far quadrant cut away
+    ax.add_patch(Polygon(Lg, closed=True, fc=C_STEEL, ec=OUT, lw=1.2, zorder=5))             # 304 SS corner gusset — the visible face (ONE flat plate)
+    _hatch_xs(ax, -2, -2, 101.6, 101.6)                                                      # hatch the loaded corner square
     ax.add_patch(plt.Rectangle((-58, 21), 168, 38, fc=C_SWING, ec=OUT, lw=1.0, zorder=6))   # X (swing) slide — frontmost now, solid
     ax.add_patch(plt.Circle((40, 40), 9.5, fc=C_UJ, ec=OUT, lw=1.1, zorder=7))              # U-joint Ø19 end-on — yoke toward us
     draw_circle(ax, 40, 40, 2.6, color=OUT, fill=False, lw=0.9, zorder=8)                   # swing pin (end-on)
-    # M6 bolt HEADS on the plate back face, angle → 304 SS corner plate (J5, 2 per leg) — end-on, now toward us.
+    # M6 bolt HEADS on the gusset back face, frame → 304 SS gusset (J5, 2 per frame member) — end-on, now toward us.
     # Pattern driven from constants: edge distance CORNER_PLATE_HOLE_EDGE, pair spacing CORNER_PLATE_HOLE_SP.
     E, SP, P0 = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, 96
     for (bx, bz) in [(P0, E), (P0 + SP, E), (E, P0), (E, P0 + SP)]:
@@ -1893,10 +1894,10 @@ def _corner_elevation(ax):
     draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}mm", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8mm)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 75, 120, 225, 175, f"304 SS corner ANGLE — stock 4×4×¼in (leg {CORNER_PLATE_LEG:.0f}×{CORNER_PLATE_T:g}mm),\ncut {CORNER_PLATE_CUT:.0f}mm + drilled; U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 75, 120, 225, 175, f"304 flat L-GUSSET — laser-cut ¼in plate\n(two {CORNER_PLATE_LEG:.0f}mm/4in arms, {CORNER_PLATE_CUT:.0f}mm/6in overall); U-joint mount (Sheet 16)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden SSNBUJ750x3/8KB", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, 40, 150, -15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per leg (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the plate back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per frame member (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the gusset back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 200, 25.4, 210, -34, "2x2 6061 Al angle L (FRAME)\n— behind the plate now (ACM behind it)", ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
     ax.text(240, 256, "A — FROM THE X-SLIDE / RAIL SIDE  (X × Z)",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1925,7 +1926,7 @@ def _corner_section(ax):
     ax.plot([106, 106], [-13, 13], color=C_PIN, lw=2.0, zorder=8)                          # tilt pin (along X, true)
     draw_circle(ax, 106, 0, 2.6, color=OUT, fill=False, lw=0.9, zorder=9)                  # swing pin (end-on)
     ax.add_patch(plt.Rectangle((140, -4.75), 26, 9.5, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6))
-    # 304 SS corner ANGLE — ¼"(6) thick, 4×4×¼ (schematic section; fab shape on Sheet 16)
+    # 304 flat L-GUSSET — ¼"(6) thick, laser-cut (section cuts ONE arm; L-profile on Sheet 16)
     ax.add_patch(plt.Rectangle((166, -70), 6, 140, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6)); _hatch_xs(ax, 166, -70, 6, 140)
     # 6061 angle L (2", 1/8" wall): in-plane leg + perp leg; ACM (4mm) + muslin NEST inside
     ax.add_patch(plt.Rectangle((172, -56), AW, 112, fc=C_FRAME, ec=OUT, lw=1.2, zorder=7))        # in-plane leg
@@ -1970,15 +1971,15 @@ def _corner_section(ax):
     leader(ax, 60, -6, 110, -48, f"J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 5, 11, 47, 85, "4040N12 304 shaft support — clamps the U-joint INPUT stub;\nits foot BOLTS (2× M6) to the X-carriage, so the corner load\nis positively secured to the purple X-slide", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 84, 11.9, 86, 46, f"U-joint (tilt+swing, ±{UJOINT_ANGLE}° max)\nkeyed 3/8in stub + set screw locks it", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 169, -40, 160, -64, "304 SS corner plate — J4 U-joint stub (keyed + set screw)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 167, 24, 160, 56, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 169, -40, 160, -64, "304 flat L-gusset — J4 U-joint stub (keyed + set screw)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 167, 24, 160, 56, "J5 COUNTERSUNK from the gusset side → frame (M6 ×2 per member)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 174, 10, 252, 38, "ACM secured FROM the frame INTO the ACM\n(countersunk in the frame back; front face clean)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 170, -1.2, 148, -36, "countersunk cap screw:\ncorner plate → output stub (secures the shaft)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 178, 40, 252, 60, "6061 angle L cradles the ACM (4mm) + muslin;\nACM on the pinhole face — Sheet 6", ha="left", fs=5.2, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(170, -92, "B — CROSS-SECTION  (Yd × X, to scale)",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(170, -85, "pinhole at left · X-slide at right (90° to it)",
-            fontsize=5.6, color=DIM, ha="left", va="top", **FONT)
+    ax.text(170, -85, "pinhole at left · X-slide at right (90° to it). Kinematic chain shown UNFOLDED along Yd;\nassembled depth behind the frame ≈87mm — the skate carriage NESTS around the U-joint (not stacked\nbehind it), so it clears the ~100mm to the container back wall at the deepest focus.",
+            fontsize=5.3, color=DIM, ha="left", va="top", **FONT)
 
 
 def sheet9():
@@ -2208,7 +2209,7 @@ def sheet12():
         ("4", "Z (tilt) slide", "Sheet 15", C_TILT, 53),
         ("5", "X (swing) slide", "Sheet 15", C_SWING, 40),
         ("6", "U-joint (Belden)", "Sheet 9", C_UJ, 27),
-        ("7", "304 corner plate", "Sheet 16", C_STEEL, 16),
+        ("7", "304 corner gusset (flat L)", "Sheet 16", C_STEEL, 16),
         ("8", "6061 frame corner", "Sheet 17", C_FRAME, 6),
     ]
     for num, name, sh, col, y in stack:
@@ -2234,7 +2235,7 @@ def sheet12():
     rows = [
         ("M4×0.7", "cam-clamp base → mount tab", "6", "304", "Sheet 3"),
         ("M6×20", "axle-saddle retention", "8", "304", "Sheet 14"),
-        ("M6", "J5 corner plate → 6061 frame", "2", "304", "25.4mm · Sh 15"),
+        ("M6", "J5 corner gusset → 6061 frame", "4", "304", "25.4mm · Sh 16"),
         ("M8", "J1 carriage → Z-slide", "4", "304", "Sheet 14/15"),
         ("3/8 key + set screw", "U-joint stub → bore", "2+1", "304", "Sheet 9"),
         ("M6 (4040N12)", "U-joint input → X-slide", "2", "304", "Sheet 9"),
@@ -2431,7 +2432,7 @@ def sheet17():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 15 — 304 CORNER PLATE (L-bracket) — FABRICATION DETAIL
+# SHEET 16 — 304 CORNER GUSSET (flat L-plate) — FABRICATION DETAIL
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet16():
     reset_label_registry()
@@ -2439,61 +2440,62 @@ def sheet16():
     edge, sp = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
 
-    # ── View A — drilling layout (both legs developed) with hole coordinates ────
+    # ── View A — flat L-gusset profile + drilling layout (datum = frame corner, bottom-left) ──
     axA = fig.add_axes([0.08, 0.40, 0.74, 0.52]); axA.set_aspect("equal"); axA.axis("off")
-    axA.set_xlim(-72, 2 * leg + 150); axA.set_ylim(-70, L + 40)
-    axA.add_patch(Rectangle((0, 0), 2 * leg, L, fc="white", ec=OUT, lw=1.4, zorder=3))   # blueprint — no fill color
-    axA.plot([leg, leg], [0, L], color=OUT, lw=1.0, ls=(0, (6, 3)), zorder=5)     # angle corner (fold line, not a bend)
-    # J5 frame-bolt holes (frame leg = left), on the leg centerline
-    j5x = leg / 2
-    j5 = [(j5x, L / 2 - sp / 2), (j5x, L / 2 + sp / 2)]
-    for hx, hy in j5:
+    axA.set_xlim(-72, L + 170); axA.set_ylim(-70, L + 40)
+    Lpath = [(0, 0), (L, 0), (L, leg), (leg, leg), (leg, L), (0, L)]       # flat L outline: two 'leg'-wide arms, 'L' overall
+    axA.add_patch(Polygon(Lpath, closed=True, fc="white", ec=OUT, lw=1.6, zorder=3))   # blueprint — no fill color
+    hc = leg / 2                                                           # arm centerline
+    b1, b2 = L - edge - sp, L - edge                                       # J5 pair, on the outer half of each arm
+    j5_h = [(b1, hc), (b2, hc)]                                            # bottom-member bolts (horizontal arm)
+    j5_v = [(hc, b1), (hc, b2)]                                            # left-member bolts (vertical arm)
+    for hx, hy in j5_h + j5_v:
         draw_circle(axA, hx, hy, 3.4, lw=1.1, color=C_FRAME, zorder=6)
-    # J4 U-joint stub + 4040N12 mount holes (U-joint leg = right)
-    ujx = leg + leg / 2
-    draw_circle(axA, ujx, L / 2, UJOINT_STUB_OD / 2 + 1, lw=1.2, color=C_SWING, zorder=6)     # stub clearance
-    for dx in (-24, 24):
-        draw_circle(axA, ujx + dx, L / 2, 3.0, lw=1.0, color=C_SWING, zorder=6)                # 4040N12 mount bolts
-    # overall
-    draw_dim_h(axA, 0, 2 * leg, -10, f"2 legs × {leg:.1f}mm (4in)", fs=5.8, font=FONT, above=False, offset=9)
-    draw_dim_v(axA, -10, 0, L, f"{L:.1f}mm (6in) cut", fs=5.8, font=FONT, offset=9)
-    # EVERY hole located by an X (dim_h) + Y (dim_v), placed INSIDE the panel near the holes (white plate → readable)
-    j5lo, j5hi = j5[0][1], j5[1][1]
-    # One explicit call per hole so each dim can be nudged independently (3rd arg = stack offset from the bottom/left edge).
-    draw_dim_h(axA, 0, j5x,      40,  f"{j5x:.1f}mm",      fs=5.0, font=FONT, offset=5)   # J5 X (frame leg)
-    draw_dim_h(axA, 0, ujx - 24, 30, f"{ujx - 24:.1f}mm", fs=5.0, font=FONT, offset=5)   # J4 left-mount X
-    draw_dim_h(axA, 0, ujx,      20, f"{ujx:.1f}mm",      fs=5.0, font=FONT, offset=5)   # J4 stub X
-    draw_dim_h(axA, 0, ujx + 24, 10, f"{ujx + 24:.1f}mm", fs=5.0, font=FONT, offset=5)   # J4 right-mount X
-    draw_dim_v(axA, 40,  0, j5lo,  f"{j5lo:.1f}mm",  fs=5.0, font=FONT, offset=5)          # J5 low Y
-    draw_dim_v(axA, 185, 0, L / 2, f"{L / 2:.1f}mm", fs=5.0, font=FONT, offset=5)          # J4 centerline Y
-    draw_dim_v(axA, 65, 0, j5hi,  f"{j5hi:.1f}mm",  fs=5.0, font=FONT, offset=5)          # J5 high Y
-    # extension guides — tie EACH hole to its inside dims (↓ to the X band, ← to the Y band) so the hole↔dim link is unambiguous
-    for hx, hy in [(j5x, j5lo), (j5x, j5hi), (ujx - 24, L / 2), (ujx, L / 2), (ujx + 24, L / 2)]:
+    ux = uz = hc                                                          # J4 U-joint stub bore + 4040N12 mount at the corner square
+    draw_circle(axA, ux, uz, UJOINT_STUB_OD / 2 + 1, lw=1.2, color=C_SWING, zorder=6)     # stub clearance
+    for dz in (-24, 24):
+        draw_circle(axA, ux, uz + dz, 3.0, lw=1.0, color=C_SWING, zorder=6)                # 4040N12 mount bolts
+    # overall + arm widths
+    draw_dim_h(axA, 0, L, -10, f"{L:.1f}mm (6in) overall", fs=5.8, font=FONT, above=False, offset=9)
+    draw_dim_v(axA, -10, 0, L, f"{L:.1f}mm (6in) overall", fs=5.8, font=FONT, offset=9)
+    draw_dim_v(axA, L + 22, 0, leg, f"{leg:.1f}mm arm (4in)", fs=5.4, font=FONT, offset=6)
+    # locate every hole by X (dim_h) + Y (dim_v), placed INSIDE the white plate (readable)
+    draw_dim_h(axA, 0, hc, 40, f"{hc:.1f}mm", fs=5.0, font=FONT, offset=5)   # arm centerline / J4 X
+    draw_dim_h(axA, 0, b1, 30, f"{b1:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 horiz X (near)
+    draw_dim_h(axA, 0, b2, 20, f"{b2:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 horiz X (far)
+    draw_dim_v(axA, 40, 0, hc, f"{hc:.1f}mm", fs=5.0, font=FONT, offset=5)   # arm centerline / J4 Y
+    draw_dim_v(axA, 62, 0, b1, f"{b1:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 vert Y (near)
+    draw_dim_v(axA, 84, 0, b2, f"{b2:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 vert Y (far)
+    # extension guides — tie EACH hole to its inside dims so the hole↔dim link is unambiguous
+    for hx, hy in j5_h + j5_v + [(ux, uz)]:
         axA.plot([hx, hx], [hy, 6], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)   # above the white plate (zorder 3)
         axA.plot([hx, 6], [hy, hy], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
-    leader(axA, j5[1][0], j5hi, 2 * leg + 6, j5hi + 8, "J5: 2× M6 → 6061 frame (frame leg)", ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(axA, ujx, L / 2, 2 * leg + 6, L / 2 - 20, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(U-joint leg, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
-    axA.text(-56, L + 26, "A — DRILLING LAYOUT  (both legs developed; datum = bottom-left, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
+    leader(axA, b2, hc, L + 8, hc - 18, f"J5: 2× M6 → 6061 frame\n(per member, ×2 members) · {sp}mm pitch", ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(axA, ux, uz, L + 8, L / 2 + 24, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(at the corner, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
+    axA.text(-56, L + 26, "A — FLAT L-GUSSET  (laser/waterjet cut, ¼in 304 plate; datum = frame corner, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── notes ──────────────────────────────────────────────────────────────────
     ax_n = fig.add_axes([0.06, 0.085, 0.90, 0.22]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
-        "304 SS CORNER ANGLE — 4 OFF (L/R mirror pair: BL/TL handed opposite BR/TR):",
-        "CLEARANCE DRILLS (close fit UNO): J5 M6→Ø6.5; J4 keyed-stub bore per the McMaster 4040N12 shaft clamp.",
-        f"1. OFF-THE-SHELF 4×4×¼in (leg {leg:.1f} × {t}mm) 304 equal-leg ANGLE, cut to {L:.1f}mm (6in) + drilled — "
-        "NO forming (replaced the press-brake 6×8 plate 2026-09-05; stock angle = same 4in legs, cheaper).",
+        "304 SS CORNER GUSSET — 4 OFF (L/R mirror pair: BL/TL handed opposite BR/TR):",
+        "LASER/WATERJET CUT from ¼in 304 plate — ONE flat L-profile, NO forming/bend. Deburr edges + holes; "
+        "J5 M6→Ø6.5 close fit; J4 keyed-stub bore per the McMaster 4040N12 shaft clamp.",
+        f"1. FLAT L-GUSSET: two {leg:.1f}mm (4in) arms, {L:.1f}mm (6in) overall, {t}mm (¼in) thick — lies FLAT on the "
+        "film-frame back, both arms coplanar in the frame plane (supersedes the bent 4×4 angle 2026-10-21; the angle's "
+        "second leg fouled the cross-slide/carriage packaging, so the mount is a flat plate the stub passes through).",
         "2. STAINLESS + NOT expendable (the 6061 perimeter angle stays the expendable part): the U-joint funnels the "
-        "whole corner load into a few bolts, so this angle carries it in steel; 304 matches the SS U-joint galvanically "
+        "whole corner load into a few bolts, so the gusset carries it in steel; 304 matches the SS U-joint galvanically "
         "in the cyanotype splash zone.",
-        f"3. FRAME leg — J5: 2× M6 into the 6061 angle at {sp}mm spacing, {edge}mm edge distance (>2×M6 dia). "
-        f"U-JOINT leg — J4: the keyed 3/8in stub bore + the McMaster 4040N12 clamp mount (Sheet 9). Hole coordinates in View A.",
-        "4. The corner is CARRIED BY the X-slide THROUGH the U-joint — the angle is never bolted straight to the joint "
+        f"3. FRAME bolts — J5: 2× M6 into EACH 6061 frame member (×2 members) at {sp}mm spacing, {edge}mm edge distance "
+        f"(>2×M6 dia). U-JOINT — J4: the keyed 3/8in stub bore + the McMaster 4040N12 clamp mount at the corner (Sheet 9). "
+        "Hole coordinates in View A.",
+        "4. The corner is CARRIED BY the X-slide THROUGH the U-joint — the gusset is never bolted straight to the joint "
         "(Sheet 9 shows the square-on connection).",
     ], 20, 98, 4.6, fs=6.2, title_fs=6.8, color=DIM, width=58, wrap=150, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.90, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 16 OF 18", drawing_title="MOVEABLE FILM PLANE",
-                subtitle="304 corner angle (stock 4×4×¼in, ×4) — fabrication detail: drilling layout + hole coordinates",
+                subtitle="304 corner GUSSET (laser-cut ¼in flat L-plate, ×4) — fabrication detail: profile + drilling layout",
                 scale_note="A/B 1:1 (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)

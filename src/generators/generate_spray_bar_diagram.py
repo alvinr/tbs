@@ -191,7 +191,7 @@ def draw_sheet1():
             "PROCESSING TRAY (304 SS)", ha="center", va="bottom",
             fontsize=5, color=C_DIM, style="italic", **FONT, zorder=10)
 
-    # ── Left walkway grating (X=170-470) ─────────────────────────────────
+    # ── Left walkway grating (X=280-580) ─────────────────────────────────
     wk_l = WALKWAY_LEFT_X
     wk_r = PROC_OPEN_X_L
 

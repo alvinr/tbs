@@ -3,7 +3,7 @@
 # © 2026 Alvin Richards
 """Generate the TBS-001 Spray-Bar Gantry SketchUp model (logical model: spraybar).
 
-A focused model of the spray-bar gantry: the 40×25×3mm 304-SS RHS beam (its
+A focused model of the spray-bar gantry: the 38×38×1.6mm (1½in sq) 304-SS RHS beam (its
 side-mounted 3/4" LDPE manifold carries the wash water), the two wheel carriages
 that roll on the tray floor, the spray jets, the feed hose, and the telescoping
 push pole. REUSES the ruby helpers from the Overview generator
@@ -49,7 +49,7 @@ C_BOLT   = "#80808A"   # axle + bolts
 # followed the beam to full width — they had still been restricted to the old open zone.)
 XL, XR = PROC_TRAY_X_L + 30, PROC_TRAY_X_R - 30          # beam span = tray width (310..4599)
 NXL, NXR = XL, XR                                        # nozzle span = full beam width
-S = SPRAY_BAR_BEAM                                       # 40 (Yd width)
+S = SPRAY_BAR_BEAM                                       # 38.1 (Yd width — 1½in sq)
 ZB, ZT = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP               # 29 .. 54 (@ low corner)
 
 
@@ -91,11 +91,11 @@ def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
 
 def build_beam():
     parts = []
-    BH = SPRAY_BAR_BEAM_H                       # 25 — beam height in Z (laid flat)
+    BH = SPRAY_BAR_BEAM_H                       # 38.1 — beam height in Z (1½in sq)
     poly_cy = GY + S / 2 + SPRAY_BAR_POLY_OD / 2   # poly on the beam's inboard (+Yd) side face
     poly_cz = ZB + BH / 2                          # poly center at beam mid-height
-    # 40×25×3 304-SS RHS beam (laid flat — low profile for grate clearance)
-    parts.append(draw.ruby_box("Spray Beam 40x25x3 304-SS RHS",
+    # 38×38×1.6 (1½in sq) 304-SS RHS beam (deep square section — holds the full-width span to ~11mm sag)
+    parts.append(draw.ruby_box("Spray Beam 38×38×1.6 304-SS SQ RHS",
                              XL, GY - S / 2, ZB, XR - XL, S, BH, color=C_SS))
     # end caps (left = feed end)
     parts.append(draw.ruby_box("Beam End Cap (feed)",
@@ -261,7 +261,7 @@ SPRAYBAR_LABELS = [   # (instance name, text, leader Δx,Δy,Δz mm)
     ("Processing Tray", "PROCESSING TRAY", 500, -700, 700),
 ]
 SPRAYBAR_POINT_LABELS = [   # (x,y,z,text,Δx,Δy,Δz)
-    (1400, 1180,  60, "SPRAY BEAM\n(40 RHS + 3/4-in LDPE bore)", 0, -900,  650),
+    (1400, 1180,  60, "SPRAY BEAM\n(38 sq RHS + 3/4-in LDPE bore)", 0, -900,  650),
     (  XL, 1180,  60, "WHEEL CARRIAGE\n(saddle clamp + 2 wheels)", -750, -350, 600),
     (  XR, 1180,  60, "WHEEL CARRIAGE",                          700, -350,  600),  # 2nd (right) carriage
     ( 950, 1180,  18, "SPRAY NOZZLES\n(39 90-deg down-jets @ 100mm)", 250, -950,  380),

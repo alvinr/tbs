@@ -20,7 +20,7 @@ import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
 
 # ── deep-box frame geometry (from the fork; one source) ──
-S       = ov.IBC_FRAME_RHS               # 50×50 RHS
+S       = ov.IBC_FRAME_RHS               # 50.8×50.8 RHS (2×2×0.120in)
 TOP_Z   = 2 * ov.IBC_H_1000 - 40         # 2296 — frame reaches near the stack top
 # Equipment-panel top — DROPPED to the underside of the Fan A exhaust baffle so the corridor is
 # open across the fan window (Z1900-2100), letting air pass THROUGH the panel to Fan A.  Tied to
@@ -354,8 +354,7 @@ def rear_panel():
     posts' −X inside face) PLUS the 18mm ply 'shirt' the pumps/ACC clamp to — a backing hard
     behind the bodies (deepest = the ACC), tied back to the rear-frame ring across the chase.
     The pumps' integral cam-clamps grip onto it; only short port→riser connectors penetrate it."""
-    pz0, ph = S, PANEL_TOP_Z - S                 # top dropped to PANEL_TOP_Z (1900) for the Fan A air window
-    yw = (YD_FAR - S) - (YD_NEAR + S)
+    pz0 = S                                      # board bottom = opening edge; board cut to YW_CUT × PH_CUT (shrinks into the opening)
     # DRILLED clearance holes — the "round holes" already called out where the port→riser connectors and
     # the Cct-C branches penetrate the ply (a void, not a part), so each reads as passing THROUGH a hole
     # rather than fused into the slab (check_interference.py --pipes).  Centers = (Yd, Z) mirror the pipe
@@ -377,11 +376,11 @@ def rear_panel():
     spine_holes = [(5500, 1376, RPH),                    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
                    (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
     p = [draw.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
-                     EQT, yw, ph, color=draw.C_PLY, holes=rear_holes, hole_axis="x")]
+                     EQT, YW_CUT, PH_CUT, color=draw.C_PLY, holes=rear_holes, hole_axis="x")]
     # 18mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the chase between the bodies and the rear frame.
     p.append(draw.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, SHIRT_Z0,   # SHIRT_X: module constant
-                         EQT, yw, PANEL_TOP_Z - SHIRT_Z0, color=draw.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
+                         EQT, YW_CUT, PANEL_TOP_Z - SHIRT_Z0, color=draw.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
@@ -733,6 +732,13 @@ SB_X0, SB_X1 = FRONT_X + S, BACK_X           # board X span (front post inner +X
 SB_FAR_Z  = (400, 1020)                       # far board Z extent (620mm — raised 200mm to back more of the rising pipes; tabs auto-relocate to z0+35 / z1-35)
 SB_NEAR_Z = (480, 1020)                       # near board Z extent (540mm — raised 120mm to back more of the rising pipes; tabs auto-relocate to z0+35 / z1-35)
 SB_NEAR_UP_Z = (1260, 1950)                   # UPPER near board — backs BV-02 (P-05) + BV-06 (P-03) valves + risers; extended DOWN to the Z1300 P-05-inlet brown horizontal and UP to the Z1902 P-03 grey horizontal
+
+# ── 5mm ply-board CUT sizes (single source for every consumer: this model, the cut sheet, panel_layout).
+#    The board shrinks DOWN into its opening (frame/openings unchanged); positions stay on the opening edge.
+def _r5dn(v): v = round(v); return v - v % 5
+YW_CUT = _r5dn((YD_FAR - S) - (YD_NEAR + S))   # 165 — rear-panel + shirt board Yd width (opening 168)
+PH_CUT = _r5dn(PANEL_TOP_Z - S)                # 1845 — rear-panel board height (opening 1849)
+BW_CUT = _r5dn(SB_X1 - SB_X0)                  # 395 — pump-run board X length (opening 399)
 # Riser planes — the pipe back sits ~2.5mm off each board's corridor face (RP + gap), i.e. flush on it.
 SB_RISER_YD_FAR  = YD_FAR - EQT - RP - 2.5    # 1285 — far risers (DV-01 re-routed here; P-02 disch/P-01 nudged)
 SB_RISER_YD_NEAR = YD_NEAR + EQT + RP + 2.5   # 1077 — near risers (P-02 suction nudged here; P-05 already ~here)
@@ -749,7 +755,6 @@ def support_boards(sides=("far", "near", "near-upper")):
     `sides` selects which boards to emit (far / near / near-upper) so the construction
     sequence can stage the FAR board on a later click; defaults to all (overview/water)."""
     p = []
-    bw = SB_X1 - SB_X0
     LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg length / bracket height
     for side, wall_yd, ddir, (z0, z1), ryd, risers_x, clamp_z in (
             ("far",  YD_FAR,  -1, SB_FAR_Z,  SB_RISER_YD_FAR,  SB_FAR_RISERS_X,  SB_FAR_CLAMP_Z),
@@ -763,7 +768,7 @@ def support_boards(sides=("far", "near", "near-upper")):
         back_yd = wall_yd                                   # ply back face = the post wall-side face
         face_yd = wall_yd - EQT if ddir < 0 else wall_yd + EQT   # ply CORRIDOR face (clips attach here)
         p.append(draw.ruby_box(f"Pump-run support board ({side}, 18mm ply)",
-                             SB_X0, by, z0, bw, EQT, z1 - z0, color=draw.C_PLY))
+                             SB_X0, by, z0, BW_CUT, EQT, z1 - z0, color=draw.C_PLY))
         for px, xdir in ((SB_X0, +1), (SB_X1, -1)):        # front / back post inner face
             for bz in (z0 + 35, z1 - 35):
                 lx = px if xdir > 0 else px - LT           # welded leg — flat on the post inner face

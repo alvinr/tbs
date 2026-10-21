@@ -188,10 +188,14 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, m
 
     lines.append('')
     return '\n'.join(lines)
-def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None, holes=None):
-    """A vertical prism from an arbitrary polygon (list of (x, y) mm points) at height z,
-    pushpulled up by h. Same material handling as ruby_box. Used for NOTCHED grates so the deck
-    is ONE continuous piece (a bite cut out of one edge), not separate sections needing support.
+def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None, holes=None, axis="z"):
+    """A prism from an arbitrary polygon, pushpulled by h. Same material handling as ruby_box. Used for
+    NOTCHED grates so the deck is ONE continuous piece (a bite cut out of one edge), and for flat L-plates
+    (e.g. the film-plane corner gusset) so a bent/cut part reads as a SINGLE piece, not overlapping boxes.
+
+    `axis` picks the extrude direction + the plane the `pts` live in: 'z' (default) = profile is (x, y) at
+    height z, pushpulled +h in Z; 'y' = profile is (x, zc) in the X-Z plane at depth y=z, pushpulled +h in Y;
+    'x' = profile is (y, zc) in the Y-Z plane at x=z, pushpulled +h in X. `holes` is Z-axis only.
 
     `holes` cuts real drilled clearance cutouts THROUGH the slab (along its Z thickness) so a pipe
     reads as passing through a hole/slot, not fused into the deck (see check_interference.py --pipes).
@@ -200,13 +204,18 @@ def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None, holes=None):
     drill as ruby_box — Group#subtract chaining is unreliable in this SketchUp)."""
     mute, alpha = _mute_ctx(mute, alpha)
     z0, h_mm = mm(z), mm(h)
-    face_pts = ", ".join(f"[{mm(px)},{mm(py)},{z0}]" for px, py in pts)
+    if axis == "y":                                          # profile (x, zc) in the X-Z plane at Y=z0, extrude +Y
+        face_pts = ", ".join(f"[{mm(px)},{z0},{mm(py)}]" for px, py in pts)
+    elif axis == "x":                                        # profile (y, zc) in the Y-Z plane at X=z0, extrude +X
+        face_pts = ", ".join(f"[{z0},{mm(px)},{mm(py)}]" for px, py in pts)
+    else:                                                    # 'z' (default): profile (x, y) at Z=z0, extrude +Z
+        face_pts = ", ".join(f"[{mm(px)},{mm(py)},{z0}]" for px, py in pts)
     lines = [
         f'  # {name}',
         f'  grp = ents.add_group',
         f'  grp.name = "{name}"',
         f'  face = grp.entities.add_face({face_pts})',
-        f'  face.reverse! if face.normal.z < 0',
+        f'  face.reverse! if face.normal.{axis} < 0',
         f'  face.pushpull({h_mm})',
     ]
     for hole in (holes or []):

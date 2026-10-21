@@ -358,7 +358,7 @@ def draw_sheet1():
     # ── Transport / walkway note — the swing needs the left rails + left walkway out ─
     # (rev10) The cargo panel + drum SWING ~56° about the pivot post for transport (no
     # slide). The LEFT film rails (TL+BL) lift out of their saddles + the LEFT WALKWAY
-    # (X 170–470mm) lifts out so the swinging cage can transition the X=260 rail plane.
+    # (X 280–580mm) lifts out so the swinging cage can transition the X=260 rail plane.
     # The walkway is LOWERED (deck Z=130) and stays in place during camera operation.
     TN_W  = 3.70
     TN_H  = 0.95

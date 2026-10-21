@@ -1081,7 +1081,7 @@ def draw_sheet3():
     GHOST_ALPHA = 0.22
     GHOST_EC = "#808080"
     GHOST_LS = (0, (4, 3))
-    # Tray rim: X=170–4629, Z=0–50mm
+    # Tray rim: X=280–4629, Z=0–50mm
     tray_x_l = wx(PROC_TRAY_X_L)    # mirrored: right in drawing
     tray_x_r = wx(PROC_TRAY_X_R)    # mirrored: left in drawing
     tray_w = tray_x_l - tray_x_r    # positive because mirrored
@@ -1095,8 +1095,8 @@ def draw_sheet3():
             style="italic", zorder=4)
 
     # ── Ghost: near walkway deck ─────────────────────────────────────────────
-    # Near walkway runs along pinhole wall, X=470–4629, deck at Z=100mm
-    wk_x_l = wx(WALKWAY_LEFT_X + WALKWAY_W)   # walkway starts at X=470 (left butt joint)
+    # Near walkway runs along pinhole wall, X=580–4629, deck at Z=100mm
+    wk_x_l = wx(WALKWAY_LEFT_X + WALKWAY_W)   # walkway starts at X=580 (left butt joint)
     wk_x_r = wx(PROC_TRAY_X_R)                # ends at tray right edge
     wk_w = wk_x_l - wk_x_r
     wk_h = WALKWAY_H

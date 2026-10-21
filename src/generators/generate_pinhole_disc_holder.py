@@ -136,7 +136,7 @@ def draw_sheet2():
         draw_circle(axp, cx + s(BOLT_BC / 2) * np.cos(a), cy + s(BOLT_BC / 2) * np.sin(a), s(BOLT_D / 2), lw=0.7, color=C_OUT)
     draw_circle(axp, cx, cy, s(PDH_DISC_SEAT_D / 2), lw=LW_MED, color=C_OUT)          # disc seat
     draw_circle(axp, cx, cy, s(PDH_TAPER_BORE / 2), lw=LW_THIN, color=C_HID, ls='--')  # taper bore (scene face)
-    draw_circle(axp, cx, cy, s(PDH_APERTURE / 2), lw=LW_MED, color=C_OUT)             # Ø40 aperture
+    draw_circle(axp, cx, cy, s(PDH_APERTURE / 2), lw=LW_MED, color=C_OUT)             # Ø72 aperture
     for tx, ty in _thumb_screw_positions(cx, cy, PDH_TS_PCD, s):
         draw_circle(axp, tx, ty, s(PDH_TS_D / 2), lw=0.7, color=C_OUT)
     draw_cl(axp, cx, cy, r * 1.08)

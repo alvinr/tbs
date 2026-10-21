@@ -58,8 +58,6 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 7: System Schematic, Front Elevation](assets/film-plane-sheet7.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 8: Frame-Corner ↔ Cross-Slide Attachment](assets/film-plane-sheet8.png)
-
 ![TBS-001 Film Plane Mechanism — Sheet 9: Frame + ACM ↔ U-joint ↔ X-Slide Connection Detail](assets/film-plane-sheet9.png)
 
 ![TBS-001 Film Plane Mechanism — Sheet 10: Corner Load Case (cross-slide travel + bending SF)](assets/film-plane-sheet10.png)

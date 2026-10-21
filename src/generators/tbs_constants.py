@@ -197,9 +197,9 @@ XSLIDE_STROKE   = 300   # specified linear cross-slide travel per axis (mm) — 
 XSLIDE_BAR_W = 38.1    # cross-slide flat-bar width (mm) = 1-1/2"
 XSLIDE_BAR_T = 6.35    # cross-slide flat-bar thickness (mm) = 1/4"
 XSLIDE_Z_BAR_LEN = 345 # Z (tilt) slide bar cut length (mm) = XSLIDE_Z_TRAVEL 245 + ~carriage/margin — sized to hold MAX_TILT (corner blueprint 2026-08-10)
-XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 263 + ~carriage/margin — sized to hold MAX_SWING
+XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 257 + ~carriage/margin — sized to hold MAX_SWING
 XSLIDE_UHMW_T = 3.2    # UHMW self-lube pad thickness (mm, 1/8") between carriage and bar bearing faces
-XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge
+XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge (stock brass flat-bar width; 5mm-cut-rule exempt)
 XSLIDE_GIB_T  = 6.35   # gib thickness (mm) = 1/4"
 XSLIDE_CARR_WALL = 8   # cross-slide carriage wall thickness (mm) around the bar
 # Belden SSNBUJ750x3/8KB needle-bearing U-joint (Grainger 41D816; datasheet eng-specs/grainger-41d816.pdf):
@@ -207,7 +207,6 @@ UJOINT_BORE   = 9.53   # bore (mm) = 0.375" (3/8") keyway bore
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)
 UJOINT_LEN    = 68.3   # overall length (mm) = 2.690"
 UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345" — reserved (catalog spec; the U-joint is shown in-assembly on Sheets 3/9, not as a standalone dimensioned part)
-UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)
 # RETENTION (J3/J4): 3/8" KEYWAY bore (3/32×3/64 key) + set screw — the stub is keyed (anti-rotation)
@@ -215,7 +214,6 @@ UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py 
 # Boot: FACTORY-INTEGRAL (no separate part) — bulges the joint CENTER to UJOINT_BOOT_OD; the yoke OD
 # stays UJOINT_OD and the overall length stays UJOINT_LEN.
 UJOINT_BOOT_OD  = 32.54  # integral-boot center OD (mm) = 1-9/32"
-UJOINT_BOOT_LEN = 31.75  # integral-boot bellows length (mm) = 1-1/4"
 # Acetal skate rollers on Ø10 304 axles (parts.py fp-skate-*):
 SKATE_ROLLER_OD = 31.75  # load roller OD (mm) = 1-1/4" Delrin (rides the U-channel bottom flange)
 SKATE_KEEPER_OD = 19.05  # keeper roller OD (mm) = 3/4" Delrin (captive under the top flange)
@@ -223,27 +221,33 @@ SKATE_ROLLER_W  = 20     # roller width (mm, cut)
 SKATE_AXLE_OD   = 10     # axle-pin OD (mm) — 10x60mm 304 clevis pin
 SKATE_AXLE_LEN  = 60     # axle-pin length (mm)
 SKATE_ROLLER_SP = 40     # load-roller pitch along the rail (Yd) on the carriage plate (mm)
-# Cam rail-brake — McMaster 5128A63 (3 per corner):
-CAM_CLAMP_BASE_W  = 22   # clamp base long dim (mm)
-CAM_CLAMP_BASE_D  = 19   # clamp base short dim (mm)
-CAM_CLAMP_HOLE_SP = 15.7 # 2x M4x0.7 base-hole spacing (mm)
-CAM_CLAMP_N       = 3    # cam clamps per corner
 # Skate carriage plate — 6mm 6061-T6; the MOVING part the 4-wheel skate + Z-slide + cam clamp mount to
-# (Sheet 3 View A). H grown 171→181 so the top keeper-axle row clears its ≥2×Ø10 edge distance.
+# (Sheet 3 View A). H needs ≥171 so the top keeper-axle row clears its ≥2×Ø10 edge distance; rounded UP
+# to 185 per the 5mm cut rule (sheared from a 12×20 sheet — the extra 4mm keeps the edge-distance margin).
 CARRIAGE_PLATE_W  = 80   # plate width along Yd (mm)
-CARRIAGE_PLATE_H  = 181  # plate height along Z (mm) — grown +10 for keeper-axle edge distance
+CARRIAGE_PLATE_H  = 185  # plate height along Z (mm) — keeper-axle edge distance (min 171), rounded up to the 5mm cut
 CARRIAGE_PLATE_T  = 6    # plate thickness (mm) — 6061-T6
 CARRIAGE_AXLE_ROW_SP = 38  # Z gap between the load-axle row and the keeper-axle row (mm)
+CARRIAGE_PLATE_KEEPER_EDGE = 28  # keeper-axle row → plate TOP edge (mm, Sheet 3 View A), >2×Ø8. The plate's
+                                 # Z DATUM: it hangs from the keeper (the topmost feature) and extends DOWN
+                                 # CARRIAGE_PLATE_H toward the film corner — the SAME part at all 4 corners;
+                                 # at a TOP corner it grows into the film (not up past the rail), so the 185mm
+                                 # plate clears the ceiling (top ~37mm under the lid). Single-sources the 2D
+                                 # hole pattern (Sheet 3) + the 3D carriage-plate placement so they can't drift.
 # 4 SHORT STUB axles (Ø SKATE_AXLE_OD) at ±SKATE_ROLLER_SP/2 (Yd) × 2 rows (load / keeper).
 CARRIAGE_J1_SP_YD = 28   # J1 4×M8 Z-slide-mount hole pattern width (Yd, mm)
 CARRIAGE_J1_SP_Z  = 44   # J1 4×M8 Z-slide-mount hole pattern height (Z, mm)
-# Corner (L) plate — 1/4" 304 SS, 6"x8" blank bent to an L (parts.py corner-l-plate):
-CORNER_PLATE_W = 203.2   # plate blank long side (mm) = 8"
-CORNER_PLATE_H = 152.4   # plate blank short side (mm) = 6"
-CORNER_PLATE_T = 6.35    # plate thickness (mm) = 1/4"
-CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the plate edge (mm, 1") — >2xM6 dia
-CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each leg (mm)
-CORNER_PLATE_BEND_R    = 6.35   # L-plate press-brake inside bend radius (mm) = 1T
+# Corner U-joint mount — LASER/WATERJET-CUT ¼in 304 FLAT L-GUSSET, lying flat on the film-frame back,
+# both arms coplanar in the frame plane (parts.py corner-l-plate; was a press-brake 6×8 L-plate until
+# 2026-09-05, then a stock 4×4×¼ bent ANGLE until 2026-10-21 — the bent leg fouled the cross-slide/carriage
+# packaging, so the mount is now a FLAT L-plate with both legs in the frame plane). LEG/CUT define the L: two
+# 4in arms, ~6in overall span, ¼in thick. (5mm-cut-rule EXEMPT: a laser/waterjet DXF profile, not a
+# saw/shear-fence cut — the round 4in/6in imperial gains nothing from a metric 5mm round.)
+CORNER_PLATE_LEG = 101.6   # L-gusset arm width (mm) = 4"
+CORNER_PLATE_CUT = 152.4   # L-gusset overall span along each frame member (mm) = 6"
+CORNER_PLATE_T   = 6.35    # plate thickness (mm) = 1/4"
+CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the arm edge (mm, 1") — >2xM6 dia
+CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each arm (mm)
 
 # ── Pinhole disc holder (front board) — replaces the retired tilt-swing mechanism ─────────────
 # The interchangeable Ø80 carrier is clamped against a neoprene light-seal washer by a circular
@@ -294,7 +298,7 @@ PDH_LENS_COPAL3   = 65.0  # Copal / Compur 3 board hole (standard; Compur 3 = 65
 # These appear hand-computed across many reports; deriving them here (and registering as facts)
 # means a focal-length or film-size change ripples to every doc that restates them.
 IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 101 sq ft (active film plane)
-XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners
+XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners (firm per fp-corner-blueprint-spec; injected via component-dependency-map cdm:XSLIDE_N)
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
 ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 260mm)  [rev6: was 625]
@@ -431,7 +435,7 @@ LT_SHELL_ARC   = 360 - LT_OPENING_DEG   # 280 — drum shell / rim-angle / rivet
 # Full Ø discs (the opening is in the cylindrical shell only, not the caps).
 LT_CAP_TOP_T   = 8.0      # top cap: 8mm 6061-T6 aluminum plate
 LT_CAP_BOT_T   = 8.0      # bottom cap: 8mm 6061-T6 aluminum plate (identical to top)
-LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 855 — cap nests INSIDE the shell (shell laps over the rim)
+LT_CAP_OD      = round(2 * (LT_DRUM_OR - LT_DRUM_T)) - 3   # 755 — cap nests INSIDE the shell (shell laps over the rim)
 # ── Shell → cap lap-and-fasten joint (2026-08-21; supersedes the extrusion weld).
 # The rim angle + shell lap + rivets follow the drum's 280° C-shell arc (LT_SHELL_ARC) —
 # NOT a full ring; the 80° operator opening has no shell/rim there.
@@ -476,7 +480,6 @@ BAY_WALL_T  = 3.18                     # bay box wall thickness (mm) — 1/8" HD
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50.8                   # brace member section 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
-BRACE_T     = 3                      # RHS wall thickness (mm) ≈ 0.120in
 # Container cargo-door frame section — 50×20×3 RHS (reuses the IBC retaining-bar section, ibcf-rhs),
 # lighter than the old 2×2×0.120 tube: the frame is NO LONGER weight-bearing (the pivot post carries the
 # hinge panel), it only takes seal-compression + cam-latch load. 50mm FACE = the seal landing; 20mm DEPTH.
@@ -585,12 +588,7 @@ LT_HBAR_N        = 4    # H-mullions total (2 openings × 2 edges)
 LT_HBAR_RIVET_PITCH = 120  # rivets up the flange (mm) — same 1/8" SS domed-head as the other joints
 LT_HBAR_END_BOLT = 8    # M8 bolt each mullion end → the support strip (via L-clip)
 # Back-compat aliases (edge stiffener renamed U-channel → H-mullion 2026-09-09):
-LT_EDGE_CHAN_N = LT_HBAR_N
-LT_EDGE_CHAN_RIVET_PITCH = LT_HBAR_RIVET_PITCH
-LT_EDGE_CHAN_END_BOLT = LT_HBAR_END_BOLT
 LT_EDGE_CHAN_LEG = LT_HBAR_LEG
-LT_EDGE_CHAN_T = LT_HBAR_T
-LT_EDGE_CHAN_W = 2 * LT_HBAR_LEG + LT_HBAR_T   # H overall width across both slots (~39mm)
 
 # Channel-support strip (2026-09-08) — 4 formed-Al angles, one across each housing opening
 # (top + bottom), spanning the cage Yd rail-to-rail so the opening's two U-channel ends bolt to
@@ -632,7 +630,7 @@ EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 EVAP_W     = 508     # cooler width along X (mm)  — 20 in
 EVAP_D     = 254     # cooler depth along Yd (mm) — 10 in
 EVAP_H     = 711     # cooler height (mm)         — 28 in
-EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct
+EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct (injected via facts.yml cooler_cfm_rated)
 # Transport stowage — on near walkway grating, in the widened section.
 # rev10: moved deeper (was 1200) to clear the panel SWING sweep, which reaches
 # X≈1395 in the near-walkway Yd band; 1450 gives margin (cooler X1450–2009,
@@ -697,7 +695,6 @@ EP_COL_W     = 340                         # EP column width (mm) — fits one s
 BA_STACK_Z2  = BA_H_HI + 16                # 380 — upper (2nd) pack bottom Z (stacked on the lower pack)
 BA_STACK_TOP = BA_STACK_Z2 + (BA_H_HI - BA_H_LO)  # 594 — battery stack top Z
 EP_POST_Z    = BA_STACK_TOP + 20           # 614 — contactor / MRBF sit above the battery stack
-EP_RISE_X_P  = EP_X + 260                  # 2170 — (+) 2/0 cable riser lane (right of the PV disconnect)
 EP_RISE_X_M  = EP_X + 140                  # 2050 — (−) 2/0 cable riser lane (inverter ↔ PV disconnect gap)
 PV_DISC_X    = EP_X + 165                  # 2075 — PV array-disconnect X (operator-reach switch)
 EP_DISC_Z    = 1045                        # disconnect cluster row Z — main + master + PV disconnects grouped, reachable (~chest)
@@ -872,7 +869,7 @@ IBC_H_STK   = 2020   # 2× stacked height (mm)
 # Layout is UNCHANGED from main: two Blue on top, Brown + Waste on the bottom.
 IBC_H_1000  = 1168   # 275-gal (≈1000 L) caged composite overall height (mm) = 46"
 IBC_H_STK_1000 = 2 * IBC_H_1000   # 2336 mm 2× stacked
-IBC_CEILING_CLEARANCE_MM = C_HGT - IBC_H_STK_1000   # = 52mm — direct-stack ceiling headroom (was restated raw in ~5 docs)
+IBC_CEILING_CLEARANCE_MM = C_HGT - IBC_H_STK_1000   # = 52mm — direct-stack ceiling headroom (was restated raw in ~5 docs) (injected via facts.yml ibc_ceiling_clearance_mm)
 
 # IBC cage/pallet anatomy (US 48"×40" composite tote)
 # Three parts: steel/plastic pallet base, HDPE blow-molded bottle, galvanized wire cage.
@@ -937,7 +934,7 @@ FP_CORNER_SEAT_PLATE_W   = 150   # back-plate width along X (mm)
 FP_CORNER_SEAT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
 FP_CORNER_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
 FP_CORNER_SEAT_T    = 10    # seat plate thickness (mm)
-FP_CORNER_SEAT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm) — reserved (seat spec; not drawn per-feature)
+FP_CORNER_SEAT_GUSSET_H  = 120   # triangular gusset web depth down the back-plate (mm) — single source for the 2D Sheet 17 + 3D gusset (parts 110×120)
 FP_CORNER_SEAT_BOLT_D    = 12    # M12 wall anchor bolt — reserved (seat spec; not drawn per-feature)
 FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket — reserved (seat spec; not drawn per-feature)
 
@@ -1075,7 +1072,7 @@ TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 
 BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
 BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
 PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 14
-BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons)
+BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons) (injected via facts.yml blue_supply_gal)
 
 # Water balance — of the Blue consumed per run, ~31 L/print is open-process loss (muslin carryout +
 # evaporation + unrecovered residual; water-system-report §4); the rest is recovered into Brown+Waste.
@@ -1083,8 +1080,8 @@ BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Bl
 LOSS_PER_PRINT_L      = 31                                             # design est. — see water-system §4
 RECOVERED_PER_PRINT_L = round(BLUE_PER_PRINT_L) - LOSS_PER_PRINT_L     # ≈ 90 L recovered/print
 RECOVERED_L           = PRINTS_PER_RESUPPLY * RECOVERED_PER_PRINT_L    # = 1260 L (Brown+Waste at exhaustion)
-COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 630 L per collection tote
-LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L lost over a run
+COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 622 L per collection tote (injected via facts.yml collection_fill_l)
+LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L lost over a run (injected via facts.yml lost_l)
 
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all
@@ -1111,16 +1108,13 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 #       Panel (hinged door) occupies the end wall at X=0 and SWINGS ~56° about
 #       the pivot for transport.  Left walkway must be removed before the swing.
 #       Left corners use butt joints (no miter) so near/far walkways start at
-#       X=470 — clear of the door-end panel swing sweep.
-#       Only the left walkway (X=280–470) needs removal for transport.
-#       Supported at ends by near/far walkway bracket arms at butt joints.
-#       Processing tray side (X=470): removable bearer beam (2×2×0.125in 6061 Al SHS; #26 — was 50×50×3, 2in stock. Metal Supermarkets $31.99/ft; uncosted removable spare)
-#       runs along Yd, bolted to near/far bracket vertical legs, spanning
-#       1762mm.  Beam top flush at Z=75mm (grate bottom).
-#       Cargo door side (X=170): 3 floor-standing support legs at X≈140 on
-#       bare container floor (outside tray), plus a bearing strip (25×25×3mm
-#       Al angle) on the processing tray rim (Z=50→75mm).
-#       Zero processing tray contact — all supports outside or above tray.
+#       X=580 — clear of the door-end panel swing sweep.
+#       Only the left walkway (X=280–580) needs removal for transport.
+#       Carried on 5 floor-standing CANTILEVER brackets (LEFT_WK_CANT_* block below):
+#       posts on the bare container floor just outboard of the tray L edge, each arm
+#       cantilevering 300mm over the tray to the grate inner edge (580); the drum-exit
+#       span (Yd 800–1560) widens to 880 on 4×1 arms. Near/far ends butt-joint to the
+#       near/far walkways. Zero processing tray contact — all supports outside or above the tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 + 25mm grate.
@@ -1132,12 +1126,12 @@ WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 +
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — 1" McNichols MS-S-100 molded FRP (real product min; 15mm molded FRP doesn't exist, 2.60 lb/sf). Sits on the SAME Z115 arm → deck top 140.
 WALKWAY_GRATE_CLIP_PITCH = 610  # FRP hold-down clip spacing (mm) — 24" along the supported (bearing) edges + one at each panel corner; standard McNichols/Fibergrate molded-grating clip guidance for a pedestrian deck (2026-08-19)
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
-WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, Yd0–300) is a
+WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈580–950, Yd0–300) is a
                          # REMOVABLE lift-out for transport — the swing sweeps this band to X≈896
                          # (over Yd0–300), so the lift-out runs to 950 for a ~50mm margin; it lifts
                          # out (with the left walkway)
                          # rather than dropping the grate (the walkway stays LEVEL at Z130). The FAR
-                         # deck is NOT swept (swept points stay short of the X470 deck start).
+                         # deck is NOT swept (swept points stay short of the X580 deck start).
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
@@ -1162,6 +1156,10 @@ PANEL_BOTTOM_STEP    = PANEL_FLOOR_GAP_SIDE - PANEL_FLOOR_GAP                   
 FAN_B_BAND_W = PANEL_CORNER_YD_L - PANEL_CUT_YD           # 473 — SWINGING mount-panel width (Yd180→653); fan centered on it
 FAN_B_FIXED_W = PANEL_CUT_YD                             # 180 — FIXED side-part width (Yd0→180, to the pinhole side)
 FAN_B_BAND_H = PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP_SIDE    # 943 — height (both pieces) = floor-gap line (282) → band top (1225)
+# 5mm CUT sizes for the Fan-B swinging band (between-members → round DOWN into its opening; single
+# source read by the lighttrap 3D, hingepanel Sheet 11, and the plywood cut sheet).
+FAN_B_BAND_W_CUT = FAN_B_BAND_W - FAN_B_BAND_W % 5        # 470 — swinging panel cut width (473 opening)
+FAN_B_BAND_H_CUT = FAN_B_BAND_H - FAN_B_BAND_H % 5        # 940 — band cut height (943 opening)
 # Cantilever bracket ARM section — REDESIGNED to the US IBC/OSHA basis (60 psf + 300 lbf concentrated,
 # IBC Table 1607.1; walkway_load.py). The as-drawn 8mm×10mm plate arm yielded at ~25 lbf; the governing
 # case is the 300 lbf tip point load (M = 400 N·m std / 667 N·m widened). Arm DEPTH is capped at 25.4mm
@@ -1211,24 +1209,24 @@ WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 2062mm
 # Supported by FLOOR-LEG CANTILEVER brackets on the cargo-door side (rev 2026-06-07,
 # replaces the edge-beam-on-wall-seats): see the LEFT_WK_CANT_* block below + Sheet 5/6.
 # Zero processing tray contact — all supports outside or above the tray/bath.
-WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
+WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 280mm (starts at tray left edge; follows the 260 left rail)
 WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm — floor-leg span (outer edge)
-# Left walkway DRUM-EXIT punch-out (rev 8): the operator steps out of the
-# revolving drum at X=450, but the 300mm walkway ends at X=470 — only 20mm of
-# landing. Deepen the walkway to 600mm over the drum-opening Yd span + stepping
-# margin. Verified clear of the optical cone (door-end; cone left edge is X≈914+
-# at this depth, punch-out reaches only X=770). Needs an extra bearer + support
-# leg under the deeper section (it cantilevers ~300mm further over the tray).
+# Left walkway DRUM-EXIT punch-out: the operator steps out of the revolving drum
+# onto the left walkway over the drum-opening Yd span (WIDE_YD_L..R = 800..1560).
+# The standard 300mm walkway (reach 580) gives too little landing there, so that
+# span is deepened to 600mm (WIDE_REACH = 880) for a full step-out + margin. Clear
+# of the door-end optical cone at this depth; the deeper section cantilevers ~300mm
+# further over the tray on the wider 4×1 arms (3 of the 5 brackets land on it).
 WALKWAY_LEFT_WIDE_W    = 600    # deepened walkway width here (mm) vs 300 normal
 WALKWAY_LEFT_WIDE_YD_L = 800    # punch-out Yd start (near the drum opening)
 WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 
 # ── Left walkway support — FLOOR-LEG CANTILEVERS (rev 2026-06-07: supersedes the edge beam) ──
-# A row of brackets bolted to the bare floor OUTSIDE the tray (X<170): each = foot plate +
+# A row of brackets bolted to the bare floor OUTSIDE the tray (X<280, leg CL ≈250): each = foot plate +
 # vertical post (to the grate bottom) + a cantilever arm reaching IN under the grate, ABOVE the
 # floor-level spray bar (possible only after the +50 walkway raise lifted the grate). Standard
-# brackets carry the grate inner edge (X=470); brackets on the drum-exit punch-out (Yd 800-1560)
-# get EXTENDED arms to X=770 so the widened section is supported, not cantilevered. Zero tray
+# brackets carry the grate inner edge (X=580); brackets on the drum-exit punch-out (Yd 800-1560)
+# get EXTENDED arms to X=880 (WIDE_REACH) so the widened section is supported, not cantilevered. Zero tray
 # contact; grate + brackets lift out for transport. Validated in the cantilever-study exploration (retired 2026-06-07).
 LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # leg centreline (bare floor, just outboard of the tray L edge = WALKWAY_LEFT_X)
 LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on the punch-out (800/1180/1560)
@@ -1238,15 +1236,15 @@ LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
 LEFT_WK_CANT_FOOT     = (165, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the post sits on its OUTBOARD end; foot extends INBOARD as an outrigger. Lengthened 128→165 (F3, 2026-08-18) so the 4 floor anchors clear the post footprint (post X224.6–275.4 → clear inboard land X110–224.6).
 # Foot LEFT edge DERIVED so the foot always sits under the post (inboard edge = post inboard edge; foot then runs outboard).
 # Was hardcoded 38 (correct only while LEG_X=140); it got stranded when FP_X_L moved 150→260 (2026-08-11) cascaded LEG_X→250. (2026-08-16)
-LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈147; foot right edge ≈ post right edge, ~5mm clear of the tray L
+LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈110; foot right edge ≈ post right edge, ~5mm clear of the tray L
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
 LEFT_WK_CANT_FOOT_BOLT_DX = (20, 60)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+20/+60 (=130/170), OUTBOARD in the clear land: ~55mm clear of the post (X224.6) for driver access AND best-placed to react the cantilever's uplift (2026-08-18) [F3]
 LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline (within the 60mm foot width) [F3, 2026-08-18]
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)
 LEFT_WK_CANT_ARM_W_WIDE = 101.6  # widened (drum-exit punch-out) arm — 4×1×0.120in tube (4in face in Yd × 25.4 Z). REDESIGNED to US IBC/OSHA: the 605mm punch-out cantilever at 2×1 was only SF 1.04 under the 300 lbf tip load; 4×1 → SF 1.99 (walkway_load.py). Depth spray-bar-capped, so wider not deeper (2026-08-19).
-LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
-LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
+LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 580 — standard arm tip (grate inner edge)
+LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 880 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): the deck's INNER (tray-facing) edge is anchored to the tray module
 # (X4329); its OUTER edge lands on the shared COMBINED-CORNER-PLATE FACE (F1, 2026-08-18) —
 # RAIL_X_R − FP_CORNER_SEAT_PLATE_W/2 = 4574 — so the cantilever rectangle no longer overruns the
@@ -1264,7 +1262,7 @@ WALKWAY_RIGHT_W   = WALKWAY_RIGHT_X_R - WALKWAY_RIGHT_X       # = 245mm  — act
 # cuts only to the tray lip (Yd=80), not the full depth.
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 WALKWAY_MAX_OVERHANG  = 100             # max grate cantilever past an end bracket (deflection to be checked)
-_NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
+_NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 580
 _CANT0 = _NX0 + CONTAINER_RIB_SPACING // 2             # first cantilever station ≈ 698
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
 SPRAY_BEAM_X_L  = PROC_TRAY_X_L + 30                    # = 310mm — beam left end (30mm off the tray rim)
@@ -1282,8 +1280,8 @@ WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (m
 WALKWAY_MUSLIN_NOTCH_DX = 100   # depth into the walkway from the tray-facing (inboard) edge (X, mm)
 WALKWAY_MUSLIN_NOTCH_DY = 150   # width along the tray-facing edge (Yd, mm)
 WALKWAY_MUSLIN_NOTCH_YD0 = WALKWAY_FAR_YD - WALKWAY_MUSLIN_NOTCH_DY                 # 1912 — notch Yd start (far end of the open zone, just inboard of the far walkway)
-WALKWAY_MUSLIN_NOTCH_L_X1 = WALKWAY_LEFT_X + WALKWAY_W                              # 470 — left walkway INBOARD (tray) edge
-WALKWAY_MUSLIN_NOTCH_L_X0 = WALKWAY_MUSLIN_NOTCH_L_X1 - WALKWAY_MUSLIN_NOTCH_DX     # 370 — left notch cut in from X470
+WALKWAY_MUSLIN_NOTCH_L_X1 = WALKWAY_LEFT_X + WALKWAY_W                              # 580 — left walkway INBOARD (tray) edge
+WALKWAY_MUSLIN_NOTCH_L_X0 = WALKWAY_MUSLIN_NOTCH_L_X1 - WALKWAY_MUSLIN_NOTCH_DX     # 480 — left notch cut in from X580
 WALKWAY_MUSLIN_NOTCH_R_X0 = WALKWAY_RIGHT_X                                        # 4329 — right walkway INBOARD (tray) edge
 WALKWAY_MUSLIN_NOTCH_R_X1 = WALKWAY_MUSLIN_NOTCH_R_X0 + WALKWAY_MUSLIN_NOTCH_DX     # 4429 — right notch cut in from X4329
 
@@ -1306,7 +1304,6 @@ RWK_ARM_W = 50.8                                       # 2in — arm width in Yd
 # OUTER beam takes the deep notch). Sized in ibc_frame_load.arm_notch_check().
 RWK_HL_TIP  = round(RWK_ARM_BOT + 5.4, 1)             # 95.0 — TIP crossing split: arm keeps 5.4 (M≈30 Nm); inner beam keeps 20
 RWK_HL_POST = round(RWK_ARM_BOT + 16.0, 1)           # 105.6 — POST crossing split: arm keeps 16 (M≈334 Nm); outer beam notched to 9.4
-RWK_HL = RWK_HL_TIP                                    # legacy alias / default split
 RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×1in section)
 RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
@@ -1357,7 +1354,7 @@ RWK_CRANK_Y0   = RWK_CRANK_N0 - RWK_CRANK_RAMP                        # 1812 —
 RWK_CRANK_Y1   = RWK_CRANK_N1 + RWK_CRANK_RAMP                        # 2162 — ramp-in end
 
 # Open processing area (center, clear of walkways):
-PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 470mm
+PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 580mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4329mm
 PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
 PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 2062mm
@@ -1378,14 +1375,13 @@ SPRAY_BAR_BEAM_W     = 38.1        # beam footprint in Yd (mm) — 1½×1½×0.0
 SPRAY_BAR_BEAM_H     = 38.1        # beam HEIGHT in Z (mm) — 1½in square; deep enough that the full-width 4,289mm span sags only ~11mm (L/395), flattened by ~12mm pre-camber
 SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias → the square section (38.1)
 SPRAY_BAR_BEAM_T     = 1.575       # wall thickness (mm) — 0.062in; single 17ft4in Metals Depot stick (no butt weld); wall barely affects sag (self-weight-dominated)
-SPRAY_BAR_BORE       = SPRAY_BAR_BEAM_W - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore (poly no longer housed here)
 SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — SIDE-mounted on the beam's inboard face
 SPRAY_BAR_POLY_ID    = 19          # poly pipe ID (mm)
 SPRAY_BAR_WHEEL_DIA  = 32          # nylon wheel diameter (mm) — shrunk from 50 for grate clearance on the raised tray
 SPRAY_BAR_WHEEL_W    = 20          # wheel width (mm)
 SPRAY_BAR_WHEELS_PER_SIDE = 2      # wheels per carriage (spaced in Yd direction) — reserved (spec; 2D/3D draw wheels via WHEEL_SP)
 SPRAY_BAR_WHEEL_SP   = 200         # wheel center-to-center spacing in Yd (mm)
-SPRAY_BAR_TRAY_FLOOR = 2           # tray sheet metal thickness on container floor (mm)
+SPRAY_BAR_TRAY_FLOOR = 1.5         # tray sheet metal thickness (mm) — 16-ga (0.0598in ≈ 1.5mm) 304 SS pan, per parts tray-ss-sheet
 # Carriage vertical stack is now FLOOR-RELATIVE: the wheels ride the LOCAL (sloped) floor,
 # so absolute Z = tray_floor_z(x, yd) + rise.  Use spray_beam_bot_z / spray_beam_top_z.
 SPRAY_BAR_AXLE_RISE    = SPRAY_BAR_WHEEL_DIA // 2                        # = 16mm — axle CL above the local floor
@@ -1402,10 +1398,8 @@ SPRAY_BAR_AXLE_Z     = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_AXLE_RISE      # = 36mm
 SPRAY_BAR_Z_BOT      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_BOT_RISE  # = 29mm beam bottom @ low corner (was 20)
 SPRAY_BAR_Z_TOP      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE  # = 54mm beam top @ low corner (was 60)
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
-SPRAY_BAR_HOLE_DIA   = 8           # nozzle barb bore (mm) — side-tap into the poly manifold (was a beam-wall through-hole)
 SPRAY_BAR_NOZZLE_PITCH = 100       # nozzle center-to-center pitch along the beam (mm) — 90° down-jets: a 90° cone at the ~50mm nozzle height gives a ~100mm footprint, so 100mm pitch = edge-to-edge along-beam coverage (was 150 for 180° flat-fans)
 SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 43 @ 100mm (full 4,289mm beam width)
-SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm)
 SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-05b to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner
 SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)

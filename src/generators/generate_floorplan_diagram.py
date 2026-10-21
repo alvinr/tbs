@@ -466,13 +466,13 @@ def floor_plan():
            bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#7A3A00", lw=0.9))
 
     # ── Left walkway — removable lift-out overlay + label ─────────────────────
-    # The LEFT walkway (X WALKWAY_LEFT_X–470, full Yd span) is a removable
+    # The LEFT walkway (X WALKWAY_LEFT_X–PROC_OPEN_X_L = 280–580, full Yd span) is a removable
     # lift-out panel — removed only for transport so the light-trap cargo panel
     # + drum can swing ~56° about the pivot.  Highlight with a dashed green border.
     ax.add_patch(Rectangle((LX, NY), W, FYO - NY,
                             fc="none", ec="#408040", lw=2.0, ls=(0, (6, 3)),
                             zorder=13, alpha=0.85))
-    # Drum-exit punch-out — deeper landing (X 470–770) in front of the light-lock exit.
+    # Drum-exit punch-out — deeper landing (X 580–880) in front of the light-lock exit.
     ax.add_patch(Rectangle((LXR, WALKWAY_LEFT_WIDE_YD_L),
                             WALKWAY_LEFT_WIDE_W - W,
                             WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L,

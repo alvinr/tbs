@@ -129,11 +129,13 @@ Per corner (×4):
 - **1 × single universal joint** — [Belden SSNBUJ750x3/8KB](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816): stainless
   stainless **needle bearing plain (friction) bearing**, **45° max articulation**, 3/8" bore,
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$113, in stock)
-- **2 × base-mount shaft support** — [McMaster 4040N12](https://www.mcmaster.com/4040N12/), 304 SS,
-  clamps a 3/8" stub (removable cap + two 6-32 screws): one to the floating X slide, one to the
-  film-frame corner (off-the-shelf clamp, not a precision-reamed gimbal)
+- **1 × base-mount shaft support** — [McMaster 4040N12](https://www.mcmaster.com/4040N12/), 304 SS,
+  clamps the 3/8" INPUT stub (removable cap + two 6-32 screws) to the floating X slide (off-the-shelf
+  clamp, not a precision-reamed gimbal). The OUTPUT stub is secured to the corner gusset by a countersunk
+  cap screw — so only one support per corner, not two.
 - **2 × stub shaft** — 3/8" (9.5 mm) 304 SS rod, ~60 mm each: one end into the U-joint hub (set-screw
-  locked), the other clamped in the shaft support
+  locked); the INPUT stub's other end is clamped in the shaft support, the OUTPUT stub passes through the
+  corner gusset (countersunk cap screw)
 - **Integral boot** — the SSNBUJ750x3/8KB is factory-booted (bellows over the needle bearings; no separate part):
   integral bellows sealing the needle bearings from the wash
 - **Depth (Y): friction slide (~2.2 m) + cam clamp** — produces tilt + swing (+ focus); push, then lock

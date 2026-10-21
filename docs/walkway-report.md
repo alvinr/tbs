@@ -371,7 +371,7 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 |-----------|-------|
 | Panel transport motion | SWING ~56° about the Ø89 pivot |
 | Swing sweep reach (near-walkway zone) | X≈1,395mm |
-| Butt joint / near-far walkway start | X=470mm |
+| Butt joint / near-far walkway start | X=580mm |
 | Panel / cage bottom edge | Z=130mm (panel floor gap; 10mm below the Z140 grate top) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
@@ -396,12 +396,12 @@ intersections.
 
 | Corner | Butt joint X | Design |
 |--------|-------------|--------|
-| Near-left / Far-left | X=470mm | Left walkway grate rests on the floor-leg cantilever arms; butts the near/far grate |
+| Near-left / Far-left | X=580mm | Left walkway grate rests on the floor-leg cantilever arms; butts the near/far grate |
 | Near-right / Far-right | X=4,629mm | Right walkway grating abuts near/far grating |
 
 Butt joints are used rather than miters for two reasons:
 
-1. **Panel clearance** — near/far walkways start at X=470mm, clear of the door-end
+1. **Panel clearance** — near/far walkways start at X=580mm, clear of the door-end
    panel swing sweep, so only the left walkway + the door-end near-deck section need
    removal for transport mode.
 2. **Simplicity** — each grating section lifts off independently without
@@ -659,13 +659,13 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Molded GRP grating (American Grating, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48"×144" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md. | 1 lot | American Grating / McNichols | $830–$1,050 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
-| Cantilever bracket — standard (near/far) | 8mm steel plate (200mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 4 near + 9 far at 457mm centers. ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms). | 13 ea | Local fab | $390–$650 |
+| Cantilever bracket — standard (near/far) | 8mm steel plate (200mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 3 near + 8 far at 457mm centers (5 near bays are widened brackets). ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms). | 11 ea | Local fab | $330–$550 |
 | Cantilever bracket — widened (near) | 10mm steel plate (200mm vert leg + 70mm gusset) + a 500mm 3×1×0.120in steel tube arm, welded — US IBC/OSHA redesign: the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point; arm depth is spray-bar-capped at 25.4mm so the widened bracket takes a WIDER 3×1 section, not deeper). EP/battery/slit zone, X1055–3083 = 5 bays. ~0.5 m of 3×1 tube/bracket. | 5 ea | Local fab | $200–$350 |
-| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Cantilever-bracket wall bolts (3 per std + 4 per widened), ~48–50mm grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10. Pad with M12 flat washers to the grip. | 59 ea | McMaster-Carr | $102 |
+| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Cantilever-bracket wall bolts (3 per std + 4 per widened), ~48–50mm grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10. Pad with M12 flat washers to the grip. | 53 ea | McMaster-Carr | $92 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 59 ea | McMaster-Carr | $15 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 cantilever bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 236 ea | McMaster-Carr | $23 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
-| Reinforcing plate (exterior) | 6mm steel: 100×200mm std (×13) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 18 ea | Local fab | $75–$130 |
+| Reinforcing plate (exterior) | 6mm steel: 100×200mm std (×11) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 16 ea | Local fab | $67–$116 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
 | Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — a continuous inner long beam (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + an outer long beam in 2 segments (an open corridor bay ~170mm between the cantilever arms, so the ribbon pipes cross clear of any beam) + 2 end beams (~245mm, the 245mm right deck) that make the cantilever frame, ~5.0 m (16.5 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
@@ -679,7 +679,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | Fix the walkway floor sub-plate (walkway-floor-plate) DOWN into the door-end sill + the steel cross-members it crosses (WF4a), driven from above. SAME winged #14×3¼″ 410 SS as the IBC sub-plate (ibcf-floor-tek): wings ream the 28mm plywood, snap off at the steel, drill point threads the ~4mm member flange; passes an on-site clearance hole in the 8mm plate. ~5.3 kN pull-out/screw in 4mm steel; the 2 outboard screws per leg react the ~2.4 kN overturning uplift with large margin. QTY container-dependent (~20 incl. spares across the sill + members under the leg line). $1.02 ea. | 20 ea | Fasteners Plus / ASMC | $20 |
 | M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss) | Bolt each floor-leg foot DOWN to the continuous sub-plate (WF4b) — 5 legs × 4 (the 165×60 foot's anchor pattern) = 20. Threads into a tapped boss on the plate (no underside nut — drive-from-above), blue thread-locker + split-lock under each head. Grip = 8mm foot plate + boss → M12×30. Gr.8.8 zinc. SKU pending — source (M12×1.75 × 30 hex, Gr.8.8 zinc); ~$0.50 ea est. | 20 ea | McMaster-Carr | $10 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
-| **Walkway total** | | | | **$2,201–$3,149** |
+| **Walkway total** | | | | **$2,122–$3,024** |
 <!-- END parts:walkway -->
 
 *Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*

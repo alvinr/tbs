@@ -18,14 +18,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $3,416 | $3,502 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,144 | $4,155 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,201 | $3,149 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,122 | $3,024 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,244 | $1,457 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $267 | $279 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,790** | **~$36,696** |
+| **TOTAL (base build + 50-print run)** | **~$27,711** | **~$36,571** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -71,7 +71,7 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | 4 ea | Grainger | panel | $49 |
 | 1×1×1/8in 6061-T6 Al angle — channel-support beams (×4) + rivets | 4 4ft | Metals Depot | lightlock | $69 |
-| 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R427) | 1 lot | Online Metals | lightlock | $45–$90 |
+| 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R377.5) | 1 lot | Online Metals | lightlock | $45–$90 |
 | [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | 1 ea | Metal Supermarkets | spray | $125 |
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 ea | Grainger | film | $328 |
@@ -227,7 +227,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — cross-slide joints J1/J2](https://www.mcmaster.com/92314A711/) (92314A711) | 32 ea | McMaster-Carr | film | $14 |
 | [M12×100 hex through-bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A770/) (91280A770) | 4 ea | McMaster-Carr | ibc-frame | $15 |
 | [M12×65 hex bolt, 18-8 SS (partial thread)](https://www.mcmaster.com/92800A481/) (92800A481) | 16 ea | McMaster-Carr | ibc-frame | $32 |
-| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 123 ea | McMaster-Carr | film, ibc-frame, walkway | $214 |
+| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 117 ea | McMaster-Carr | film, ibc-frame, walkway | $203 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
 | [M8 flat washer, 304 SS](https://www.mcmaster.com/98689A673/) (98689A673) | 32 ea | McMaster-Carr | film | $9 |
 | [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 4 ea | McMaster-Carr | shelf | $0 |
@@ -301,7 +301,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | 20 ea | Fasteners Plus | walkway | $20 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss) | 20 ea | McMaster-Carr | walkway | $10 |
-| **fasteners-hardware subtotal** | | | | **$2,067–$2,358** |
+| **fasteners-hardware subtotal** | | | | **$2,056–$2,347** |
 
 ### optics
 
@@ -412,10 +412,10 @@ indicative low–high estimates — get quotes before ordering.
 | Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
 | Baffle duct sheet metal (fans) | 1 lot | Local sheet metal | ventilation | $30 |
 | Bearing mount plates — 2× Ø240×12 steel disc | 2 ea | Online Metals | lightlock | $24–$44 |
-| Cantilever bracket — standard (near/far) | 13 ea | Local fab | walkway | $390–$650 |
+| Cantilever bracket — standard (near/far) | 11 ea | Local fab | walkway | $330–$550 |
 | Cantilever bracket — widened (near) | 5 ea | Local fab | walkway | $200–$350 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
-| Corner angle 304 SS (U-joint mount) — 4×4×¼in stock | 4 ea | Metal Supermarkets | film | $100–$160 |
+| Corner gusset 304 SS (U-joint mount) — ¼in flat L-plate | 4 ea | Metal Supermarkets | film | $100–$160 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 2×2×0.120in steel SHS | 1 lot | Local fab | swing | $70–$120 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |
@@ -428,7 +428,7 @@ indicative low–high estimates — get quotes before ordering.
 | Hinge wall cleat, 6mm steel | 1 lot | Local fab | shelf | $10 |
 | L-cleat nut backing plate 40×50×8mm | 16 ea | Metal Supermarkets | ibc-frame | $10–$19 |
 | Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | 1 lot | Local fab | swing | $70–$120 |
-| Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
+| Reinforcing plate (exterior) | 16 ea | Local fab | walkway | $67–$116 |
 | Right walkway cantilever frame (long + end beams) | 1 lot | MetalsDepot | walkway | $125–$153 |
 | Right walkway center cantilever arms (solid bar) | 2 ea | Metal Supermarkets | ibc-frame | $91 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | 3 ea | Local fab | shelf | $18–$30 |
@@ -443,7 +443,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $68 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $160 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,551–$5,310** |
+| **steel-structural subtotal** | | | | **$3,483–$5,195** |
 
 ### substrate-fabric
 
@@ -497,12 +497,12 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,212–$3,619 |
+| Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 21 | aluminum, fasteners-hardware, steel-structural | $2,202–$2,978 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,994 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,930–$1,931 |
+| McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,920–$1,921 |
 | Home Depot | 55 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,711–$1,887 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |

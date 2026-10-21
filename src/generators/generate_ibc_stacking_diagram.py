@@ -201,7 +201,7 @@ def sheet1():
                                fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7, alpha=0.8))
     leader(ax, ((ring_y0 + far_col_l - FRAME_RHS) / 2), (top_z - FRAME_RHS / 2),
            (far_col_l + 170), (top_z - 430),
-           "TOP + BOTTOM RINGS\n50x50x3 RHS — tie the near +\nfar uprights (back pair too)",
+           "TOP + BOTTOM RINGS\n50.8×50.8×3 RHS — tie the near +\nfar uprights (back pair too)",
            color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # Floor flange feet under each upright.
@@ -238,7 +238,7 @@ def sheet1():
             ha="center", va="center", fontsize=6.5, color=C_CL, fontweight="bold", **FONT, zorder=15)
     leader(ax, (near_col_r + FRAME_RHS / 2), (top_z * 0.72),
            (near_col_r - 90), (top_z * 0.72 + 40),
-           "DEEP-BOX FRONT UPRIGHTS\n50x50x3 RHS (x2, full height)\non flange feet (back pair 450mm behind)",
+           "DEEP-BOX FRONT UPRIGHTS\n50.8×50.8×3 RHS (x2, full height)\non flange feet (back pair 450mm behind)",
            color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, (near_col_r + FRAME_RHS), (1760 + FRAME_RHS / 2),
            (near_col_r - 90), (1980),

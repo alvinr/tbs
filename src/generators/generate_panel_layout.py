@@ -43,6 +43,9 @@ import matplotlib.patches as mpatches
 from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI, FONT, C_WALL
 from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
+import sys as _sys
+_sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
+import generate_corridor_water_panel as cwp   # corridor-panel geometry — single source for the side-section (was hard-coded + stale)
 from tbs_title_block import title_block
 
 # ── Panel geometry ────────────────────────────────────────────────────────
@@ -300,7 +303,7 @@ def draw_corridor_panel():
     #    welded steel L-brackets, the risers P-clipped to it. NEAR wall = local Yd 0 (lower board
     #    Z480-900 + upper board Z1260-1950, backing BV-02/BV-06); FAR wall = local Yd PANEL_W (Z400-820).
     SB_T = 18
-    for xb, z0b, z1b in ((0, 480, 900), (0, 1260, 1950), (PANEL_W - SB_T, 400, 820)):
+    for xb, z0b, z1b in ((0, cwp.SB_NEAR_Z[0], cwp.SB_NEAR_Z[1]), (0, cwp.SB_NEAR_UP_Z[0], cwp.SB_NEAR_UP_Z[1]), (PANEL_W - SB_T, cwp.SB_FAR_Z[0], cwp.SB_FAR_Z[1])):
         rect(xb, z0b, SB_T, z1b - z0b, C_PLY, C_PLY_EC, lw=1.0, zorder=6, alpha=0.9)
     ax.text(sx(SB_T + 6), sz(1600), "NEAR SIDE\nSUPPORT BOARDS\n(edge-on, on\nwelded L-brackets)",
             ha="left", va="center", fontsize=3.6, color=C_PLY_EC, zorder=9, **FONT)
@@ -536,7 +539,7 @@ def draw_corridor_panel():
         "9. The tray-drain skid (P-04 · SV-02 · DV-02) is on the PINHOLE WALL panel, not here.",
         f"10. Max protrusion: {max_depth}mm. The filter train + tray-drain skid are on the PINHOLE WALL panel.",
         "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; braided flex hose"
-        " at each pump port. Pumps + ACC cam-clamp to a 25mm ply shirt; 4-bolt brackets.",
+        f" at each pump port. Pumps + ACC cam-clamp to a {cwp.EQT:.0f}mm ply shirt; 4-bolt brackets.",
         "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-02 940 · P-05 1340 · P-03 1740.",
     ]
     draw_notes(ax, notes, 575, 475, spacing=14,
@@ -954,14 +957,13 @@ C_BLUEB  = "#3A78C0"   # blue fill
 C_WALLB  = "#C8C8C8"
 
 # ── Geometry (matches generate_corridor_water_panel.py: BACK_X=5104 rear panel) ──
-PANX   = 5104                     # rear-panel front face (pumps hang -X off it)
-PANX1  = 5122                     # rear-panel rear face (18mm ply)
-SHIRTX0, SHIRTX1 = 5052, 5077     # 25mm pump-mount shirt (in FRONT of the panel)
-SHIRT_ZB, SHIRT_ZT = 325, 2191    # shirt Z extent (bottom shortened to 325 to clear the
-                                  # raised P-05 inlet elbow; top raised to back DV-02 at DV_Z+DVB)
-SPX1   = 5560                     # drain-riser spine rear (X5104–5560)
-SPINE_ZB, SPINE_ZT = 280, 2246    # spine Z extent
-PAN_ZB, PAN_ZT = 50, 2246         # rear-panel Z extent
+PANX   = cwp.BACK_X                        # rear-panel front face (pumps hang -X off it)
+PANX1  = cwp.BACK_X + cwp.EQT              # rear-panel rear face (18mm ply)
+SHIRTX0, SHIRTX1 = cwp.SHIRT_X, cwp.SHIRT_X + cwp.EQT   # 18mm pump-mount shirt (in FRONT of the panel)
+SHIRT_ZB, SHIRT_ZT = cwp.SHIRT_Z0, cwp.PANEL_TOP_Z      # shirt Z extent (bottom clears the raised P-05 elbow; top at the fan baffle)
+SPX1   = cwp.SPINE_X_END                   # drain-riser spine rear
+SPINE_ZB, SPINE_ZT = cwp.SPINE_Z0, cwp.TOP_Z - cwp.S    # spine Z extent
+PAN_ZB, PAN_ZT = cwp.S, cwp.S + cwp.PH_CUT  # rear-panel BOARD Z extent (cut height PH_CUT=1845; the opening top is PANEL_TOP_Z 1900)
 WALLX  = C_LEN                    # 5893 — sealed end wall
 # Back-of-panel riser X lanes (in the rear corridor, +X of the panel)
 RX4    = 5200                     # X4 waste riser X (3D)
@@ -1066,19 +1068,19 @@ def spine_view(side):
     # ── Rear panel (edge-on) ─────────────────────────────────────────────────
     _rect(PANX, PAN_ZB, PANX1 - PANX, PAN_ZT - PAN_ZB, C_PLYB, lw=1.3, z0=6)
     leader(axb, PANX1, 640, 5640, 520,
-           f"18mm REAR PANEL\n(edge-on)\nX={PANX}–{PANX1}\nZ={PAN_ZB}–{PAN_ZT}",
+           f"18mm REAR PANEL\n(edge-on)\nX={PANX:.0f}–{PANX1:.0f}\nZ={PAN_ZB:.0f}–{PAN_ZT:.0f}",
            color=C_OUT, fs=6, ha=_ha("left"), va="top", arrow_style="-|>", font=FB)
 
-    # ── 25mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
+    # ── 18mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
     _rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
           C_PLYB, lw=1.2, z0=6, alpha=0.85)
     leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 545,
-           "25mm PUMP-MOUNT SHIRT",   # dims + cam-clamp detail live in Note 1
+           f"{SHIRTX1 - SHIRTX0:.0f}mm PUMP-MOUNT SHIRT",   # dims + cam-clamp detail live in Note 1
            color="#7A6A40", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
-    # ~27mm chase gap (shirt back 5077 → panel front 5104) + 6 spacer blocks
+    # ~34mm chase gap (shirt back ≈5070 → panel front 5104) + 6 spacer blocks
     for bz in (320, 920, 1560):
         _rect(SHIRTX1, bz, PANX - SHIRTX1, 80, C_PLYB, ec=C_OUT, lw=0.6, z0=7)
-    draw_dim_h(axb, SHIRTX1, PANX, 60, f"{PANX - SHIRTX1}mm\nchase", offset=4,
+    draw_dim_h(axb, SHIRTX1, PANX, 60, f"{PANX - SHIRTX1:.0f}mm\nchase", offset=4,
                fs=5, above=False, font=FB)
     axb.text(SHIRTX1 + (PANX - SHIRTX1) / 2 + 90, 1700,
              "6× SPACER\nBLOCKS", fontsize=4.6, ha="center", va="center",
@@ -1105,7 +1107,7 @@ def spine_view(side):
           z0=8, alpha=0.55)
     leader(axb, (PANX + SPX1) / 2, 1180, 6050, 1140,
            f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
-           f"panel (a T in plan) — X={PANX}–{SPX1}, Z={SPINE_ZB}–{SPINE_ZT};\n"
+           f"panel (a T in plan) — X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f};\n"
            "the back-of-panel drain risers P-clip to it",
            color=C_OUT, fs=6, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
@@ -1336,7 +1338,7 @@ def spine_view(side):
                  fontweight="bold", color=col, zorder=15, **FB)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(axb, PANX, SPX1, 150, f"{SPX1 - PANX}mm spine depth", offset=4,
+    draw_dim_h(axb, PANX, SPX1, 150, f"{SPX1 - PANX:.0f}mm spine depth", offset=4,
                fs=5.5, above=False, font=FB)
 
     # ── Notes (right margin) ─────────────────────────────────────────────────
@@ -1349,9 +1351,9 @@ def spine_view(side):
     draw_notes(axb, [
         "CORRIDOR PLUMBING PANEL — SPINE SIDE SECTION (looking along Yd):",
         cross_note,
-        "1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a 25mm pump-mount shirt that backs the bodies (X=5052–5077, Z=325–2191); the shirt top backs DV-02.",
-        "2. A ~27mm chase gap separates the shirt back (X=5077) and the rear-panel front (X=5104); six ply spacer blocks bridge it.",
-        "3. Rear panel: 18mm ply, X=5104–5122, Z=50–2246. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X=5104–5560, Z=280–2246).",
+        f"1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a {SHIRTX1 - SHIRTX0:.0f}mm pump-mount shirt that backs the bodies (X={SHIRTX0:.0f}–{SHIRTX1:.0f}, Z={SHIRT_ZB:.0f}–{SHIRT_ZT:.0f}); the shirt top backs DV-02.",
+        f"2. A ~{PANX - SHIRTX1:.0f}mm chase gap separates the shirt back (X={SHIRTX1:.0f}) and the rear-panel front (X={PANX:.0f}); six ply spacer blocks bridge it.",
+        f"3. Rear panel: 18mm ply, X={PANX:.0f}–{PANX1:.0f}, Z={PAN_ZB:.0f}–{PAN_ZT:.0f}. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f}).",
         "4. View A (−Yd intake face): X4 suction-pickup riser, blue-recycle riser onto the spine into the X1 fill cross, DV-01-waste → merge, suctions, fills.",
         "5. View B (+Yd discharge face): the X3 brown (P-05 → Z=1700) and X4 grey (P-03 → Z=1620) pump discharges run full along the spine to the end-wall ports.",
         "6. DV-02 → IBC-3 / IBC-4; the IBC-4 merge tee (DV-01 + DV-02 waste) is consolidated on the spine.",

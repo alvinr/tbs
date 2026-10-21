@@ -241,7 +241,6 @@ DIAG_FILES=(
     "film-plane-sheet6.png"
     "film-plane-muslin-clamp-layout.png"
     "film-plane-sheet7.png"
-    "film-plane-sheet8.png"
     "film-plane-sheet9.png"
     "film-plane-sheet10.png"
     "film-plane-sheet11.png"

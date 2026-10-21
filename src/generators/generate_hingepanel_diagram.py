@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH, C_WID
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH, DOOR_FRAME_FACE, C_WID
 from tbs_title_block import title_block
 import tbs_drawing
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes, draw_legend
@@ -646,7 +646,7 @@ def sheet2():
 
     # ── Housed revolving-door light lock ─────────────────────────────────────
     # Fixed Ø800 housing (two 80° openings: exterior=down / interior=up) + a
-    # single-opening C-shell drum (~Ø850 bore) rotating inside it. No fins.
+    # single-opening C-shell drum (~Ø758 bore) rotating inside it. No fins.
     def _arc(cx, cy, r, gaps, lw, color, z=9):
         deg = np.arange(0, 360.4, 0.4); openm = np.zeros(deg.shape, bool)
         for gc, gw in gaps:
@@ -656,7 +656,7 @@ def sheet2():
                 np.where(openm, np.nan, cy + r * np.sin(th)),
                 color=color, lw=lw, solid_capstyle="butt", zorder=z)
     OD = LT_OPENING_DEG                          # 80° openings
-    BORE_R = LT_DRUM_OR - 3                       # ~Ø850 bore
+    BORE_R = LT_DRUM_OR - 3                       # ~Ø758 bore
     ax.add_patch(Circle((D_CX, D_CY), LT_DRUM_OR, fc="#F8F4EC", ec="none", zorder=8))
     _arc(D_CX, D_CY, DR, [(90, OD), (270, OD)], 4.0, C_ALUM, z=9)      # fixed Al housing
     _arc(D_CX, D_CY, LT_DRUM_OR, [(270, OD)], 3.0, "#9C7B4D", z=10)      # C-shell drum (ENTER)
@@ -719,7 +719,7 @@ def sheet2():
     # revolve bearing — CENTERED on the drum axis (the bore label is offset below it instead)
     ax.add_patch(Circle((D_CX, D_CY), 60, fc="#5A5AA0", ec=C_OUT, lw=1.3, zorder=12))
     leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 320, D_CY - DR * 0.4),
-           "DRUM CAGE CROSS-BEAM (top +\nbottom) carrying the central\nØ220/Ø120 revolve bearing", col=C_STEEL, fs=6)
+           "DRUM CAGE CROSS-BEAM (top +\nbottom) carrying the central\nØ240/Ø130 revolve bearing", col=C_STEEL, fs=6)
     # daylight ray at ENTER: enters bore from exterior, blocked at interior by drum
     ax.annotate("", xy=(D_CX, D_CY + LT_DRUM_OR * 0.9), xytext=(D_CX, D_YB - 70),
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.8), zorder=12)
@@ -1029,10 +1029,10 @@ def sheet3():
 
     # ── NO internal fins — single-opening C-shell + fixed housing ────────────
     # A fixed Ø800 housing with a single-opening C-shell drum (no fins); the whole
-    # ~Ø850 bore is clear. In this elevation the bore reads as open space
+    # ~Ø758 bore is clear. In this elevation the bore reads as open space
     # (light-tightness is by the housing geometry — see Sheet 2 plan and Light-Trap Sheet 7).
     ax.text(D_CX_DEPTH / 2 - 150, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
-            "Single-opening C-shell\n~Ø850 clear bore\nFlat black interior",
+            "Single-opening C-shell\n~Ø758 clear bore\nFlat black interior",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.7, zorder=15)
 
@@ -1181,8 +1181,8 @@ def sheet3():
                            fc="#ECECEC", ec="none", hatch="////", lw=0, zorder=19))
     ax.plot([bx0, bx1], [DY(0), DY(0)], color=C_OUT, lw=2.2, zorder=22)
 
-    # door-frame threshold (50×50 RHS), seal lip, EPDM, panel corner zone, tray rim
-    ax.add_patch(Rectangle((DX(-50), DY(0)), k * 50, k * 50,
+    # door-frame threshold (50×20×3 RHS — 50 face × 20 depth), seal lip, EPDM, panel corner zone, tray rim
+    ax.add_patch(Rectangle((DX(-DOOR_FRAME_DEPTH), DY(0)), k * DOOR_FRAME_DEPTH, k * DOOR_FRAME_FACE,
                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=21))
     ax.add_patch(Rectangle((DX(-32), DY(0)), k * 12, k * 110,
                            fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=23))
@@ -1214,7 +1214,7 @@ def sheet3():
     leader(ax, (DX(20), DY(120)), (DX(92), DY(128)), "Panel bottom edge\n(40 mm corner zone)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (DX(-10), DY(100)), (DX(92), DY(108)), "20 mm EPDM — panel\nrecedes into / seals on lip", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (DX(-26), DY(64)), (DX(92), DY(74)), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
-    leader(ax, (DX(-40), DY(22)), (DX(92), DY(45)), "Fixed door-frame\nthreshold (50×50 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (DX(-40), DY(22)), (DX(92), DY(45)), "Fixed door-frame\nthreshold (50×20×3 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (DX(74), DY(28)), (DX(92), DY(12)), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
 
     # ══════════════════════════════════════════════════════════════════════════
@@ -1249,8 +1249,8 @@ def sheet3():
     ax.plot([cbx0, cbx1], [CY(90), CY(90)], color=C_OUT, lw=2.2, zorder=22)
 
     # frame top rail, top seal lip (downstand), EPDM, panel top edge, ceiling rail
-    ax.add_patch(Rectangle((CX(-50), CY(40)), k * 50, k * 50,
-                           fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=21))      # frame top rail
+    ax.add_patch(Rectangle((CX(-DOOR_FRAME_DEPTH), CY(40)), k * DOOR_FRAME_DEPTH, k * DOOR_FRAME_FACE,
+                           fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=21))      # frame top rail (50×20×3 — 50 face × 20 depth)
     ax.add_patch(Rectangle((CX(-32), CY(-30)), k * 12, k * 120,
                            fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=23))      # top seal lip
     ax.add_patch(Rectangle((CX(-20), CY(-40)), k * 20, k * 40,
@@ -1269,7 +1269,7 @@ def sheet3():
     ax.annotate("", xy=(CX(2), CY(-58)), xytext=(CX(34), CY(-58)),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
 
-    leader(ax, (CX(-40), CY(64)), (CX(92), CY(82)), "Frame top rail (50×50 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
+    leader(ax, (CX(-40), CY(64)), (CX(92), CY(82)), "Frame top rail (50×20×3 RHS)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (CX(30), CY(55)), (CX(92), CY(64)), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (CX(-26), CY(30)), (CX(92), CY(28)), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
     leader(ax, (CX(-10), CY(-20)), (CX(92), CY(-10)), "20 mm EPDM — panel top\nedge seals on lip", col=C_DIM, fs=6.0, ha="left", zorder=24, lw=0.8)
@@ -2141,7 +2141,7 @@ def sheet10():
 #   Sheet 3; the ply→frame welded-tab + captive tee-nut is Sheet 13.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet11():
-    from tbs_constants import (FAN_B_BAND_W as BW, FAN_B_BAND_H as BH,   # single source: Plywood Cut Sheets
+    from tbs_constants import (FAN_B_BAND_W_CUT as BW, FAN_B_BAND_H_CUT as BH,   # 470×940 cut; single source
                                FAN_B_YD, FAN_B_H, PANEL_FLOOR_GAP_SIDE, PANEL_CUT_YD)
     FR = FAN_DIAM / 2                       # 75 — Ø150 fan cutout
 
@@ -2633,7 +2633,7 @@ def sheet16():
             fontsize=5.8, fontweight="bold", color="#204060", **FONT)
     ax.add_patch(Rectangle((PIVOT_YD, ez), WID - PIVOT_YD, ATOP, fc="#B8B8C0", ec=C_OUT, lw=1.0, hatch="xx", alpha=0.6))
     ax.add_patch(Rectangle((APRON_IN_L, ez), APRON_IN_R - APRON_IN_L, BAF_TOP, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///", alpha=0.6))
-    ax.text((APRON_IN_L + APRON_IN_R) / 2, ez + 66, f"FIXED CENTER BAFFLE\n(trimmed to the apron edges — no moving part)\nZ51–{int(BAF_TOP)} (drum frame sweeps clear above)", ha="center", va="center",
+    ax.text((APRON_IN_L + APRON_IN_R) / 2, ez + 66, f"FIXED CENTER BAFFLE\n(trimmed to the apron edges — no moving part)\nZ0–{int(BAF_TOP)} (floor→cage; drum frame sweeps clear above)", ha="center", va="center",
             fontsize=7, fontweight="bold", color=C_OUT, **FONT)
     # Horizontal strip brush on the baffle top edge → bristles sweep the cage bottom (Z140), 10mm gap.
     ax.add_patch(Rectangle((cgL, ez + BAF_TOP), cgR - cgL, 12, fc="#2FA84F", ec="#1c6b32", lw=0.8))
@@ -2689,14 +2689,14 @@ def sheet16():
     leader(ax, dD(118, BAYB - 4), dD(55, 300), "bay bottom cap (Z217) —\nbay closes Z130→217 in operation", col=C_OUT, fs=6)
     ax.add_patch(Rectangle(dD(58, LT_CAGE_BOT), 118, 40, fc="none", ec="#803030", lw=1.0, ls=(0, (4, 2))))   # drum cage ghost (bottom beam)
     leader(ax, dD(117, LT_CAGE_BOT + 20), dD(300, 250), f"drum cage bottom (Z{int(LT_CAGE_BOT)})\nsweeps clear above the baffle", col="#803030", fs=6)
-    ax.add_patch(Rectangle(dD(70, THR), 90, BAF_TOP - THR, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///"))      # fixed plywood baffle Z51..130
-    leader(ax, dD(115, (THR + BAF_TOP) / 2), dD(-75, 120), f"fixed plywood baffle\n(Z{THR}–{int(BAF_TOP)}) — kills the\nsightline under the bay", col=C_OUT, fw="bold", fs=6)
+    ax.add_patch(Rectangle(dD(70, 0), 90, BAF_TOP, fc="#C8A56A", ec=C_OUT, lw=1.2, hatch="///"))      # fixed plywood baffle Z0..130 (floor→cage)
+    leader(ax, dD(115, BAF_TOP / 2), dD(-75, 120), f"fixed plywood baffle\n(Z0–{int(BAF_TOP)}, floor→cage) — kills\nthe sightline under the bay", col=C_OUT, fw="bold", fs=6)
     # horizontal strip brush on the baffle top edge — fills the 10mm gap up to the swept cage bottom
     ax.add_patch(Rectangle(dD(70, BAF_TOP), 90, LT_CAGE_BOT - BAF_TOP, fc="#2FA84F", ec="#1c6b32", lw=0.8))
     for bx in range(int(dD(74, 0)[0]), int(dD(158, 0)[0]), 6):
         ax.plot([bx, bx], [BAF_TOP, LT_CAGE_BOT], color="#141414", lw=0.7)
     leader(ax, dD(160, (BAF_TOP + LT_CAGE_BOT) / 2), dD(375, 175), "top BRUSH strip — bristles sweep\nthe cage bottom (fills the 10mm gap)", col="#1c6b32", fw="bold", fs=6)
-    draw_dim_v(ax, d0 + 225, THR, BAF_TOP, f"{int(BAF_TOP - THR)}mm", offset=10, fs=6, font=FONT)
+    draw_dim_v(ax, d0 + 225, 0, BAF_TOP, f"{int(BAF_TOP)}mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL E (enlarged 5:1) — plywood↔plywood 45° chamfer joint (TYP of all moving plywood joints) ══
     e0, ebz, S = 775, 150, 5.0
@@ -2758,7 +2758,7 @@ def sheet16():
         "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-center catch each side.",
         "• HINGE LINE (Detail F): the apron-bottom piano hinge is light-sealed by a fixed 3mm-steel LAPPING BOARD off the sill — an exterior daylight baffle standing over the hinge — plus a 10mm closed-cell foam strip the apron compresses when UP; the hinge knuckle sits inboard of the lap.",
         "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",
-        "• CENTER (drum bay): a FIXED plywood baffle (Z51–130), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
+        "• CENTER (drum bay): a FIXED plywood baffle (Z0–130, floor→cage), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
         f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
         "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45° scarf with EPDM bonded to the FIXED face — a light-tight lap the moving panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom, apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
     ], WID + 380, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",

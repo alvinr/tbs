@@ -18,7 +18,6 @@ Sheet 4 — Rail mounting & transport drop-in: left split (stub + removable + br
 Sheet 5 — Movement specification table & BOM
 Sheet 6 — Muslin clamp detail: off-the-shelf nylon spring clamp + HDPE filler
 Sheet 7 — System schematic: four-corner frame front elevation
-Sheet 8 — Frame-corner ↔ cross-slide attachment: how the frame hangs off the two slides through the U-joint
 """
 
 import numpy as np
@@ -1799,120 +1798,6 @@ def _hatch_xs(ax, x, y, w, h, z=6):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 8 — FRAME-CORNER ↔ CROSS-SLIDE ATTACHMENT  (how the frame hangs off the two slides through the U-joint)
-# ═══════════════════════════════════════════════════════════════════════════════
-def attach_plan(ax):
-    """PLAN VIEW (Yd × X), looking DOWN the Z axis — the SWING stack. Here the X (swing) slide shows its
-    real travel along X, and the U-joint's SWING pin is seen true. The Z (tilt) slide is edge-on (into page)."""
-    ax.set_xlim(-20, 470); ax.set_ylim(-70, 90); ax.set_aspect("equal"); ax.axis("off")
-    cyy = 0
-    # carriage plate + Z slide edge-on (into the page here)
-    _rect(ax, 40, cyy - 20, 40, 40, C_CAR, z=4)
-    _rect(ax, 52, cyy - 12, 18, 24, C_TILT, z=5); _hatch_xs(ax, 52, cyy - 12, 18, 24)
-    ax.text(60, cyy - 26, "Z slide\n(edge-on)", fontsize=5.0, color=C_TILT, ha="center", va="top", **FONT)
-    # X (SWING) way — a long 304 flat bar along X + carriage that traverses it
-    _rect(ax, 90, cyy - 8, 300, 16, C_SWING, z=5); _hatch_xs(ax, 90, cyy - 8, 300, 16)
-    _rect(ax, 300, cyy - 12, 46, 24, C_SWING, z=6)                # X carriage (near one end = swung)
-    ax.annotate("", xy=(96, cyy + 26), xytext=(384, cyy + 26), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
-    ax.text(240, cyy + 30, f"X travel {XSLIDE_X_TRAVEL}mm = SWING (bar {XSLIDE_X_BAR_LEN}mm)", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
-    leader(ax, 160, cyy - 8, 120, -44, f"304 flat bar ¼×1½ = {XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm — MOUNT DEEP (38.1 ⟂ load)\n(UHMW pad {XSLIDE_UHMW_T}mm + brass-tip gib {XSLIDE_GIB_W}mm)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    # stub → U-joint (swing pin seen true here) → frame
-    _rect(ax, 346, cyy - 6, 16, 12, C_STEEL, z=6)
-    _rect(ax, 362, cyy - 18, 34, 36, C_UJ, z=6)
-    ax.plot([379, 379], [cyy - 22, cyy + 22], color=C_PIN, lw=2.4, zorder=8)       # SWING pin (true)
-    draw_circle(ax, 379, cyy + 14, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
-    draw_circle(ax, 379, cyy - 14, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
-    _rect(ax, 396, cyy - 6, 14, 12, C_STEEL, z=6)                 # output stub
-    _rect(ax, 410, cyy - 22, 22, 44, C_STEEL, z=6)                # frame corner bracket
-    _rect(ax, 432, cyy - 26, 8, 52, C_FRAME, z=7)                 # frame angle (runs along X)
-    ax.add_patch(plt.Rectangle((440, cyy - 26), 6, 52, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
-    _joint(ax, 354, cyy); _joint(ax, 403, cyy); _joint(ax, 421, cyy - 16)
-    leader(ax, 320, cyy - 12, 250, -50, "X carriage — 304 on UHMW; cam-clamp locks swing", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 379, cyy + 18, 300, 58, "U-joint SWING pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 421, cyy - 16, 405, -52, "frame angle + ACM\n(runs along X)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(40, 75, "B — PLAN  (Yd × X; looking down Z) — the SWING slide + U-joint swing pin", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-
-
-def attach_tilt(ax):
-    """SECTION (Yd × Z), looking along +X — the TILT stack (companion to plan B, which does the SWING / X slide).
-    Here the Z (tilt) slide shows its real VERTICAL travel and the U-joint's TILT pin is seen true; the X (swing)
-    slide is edge-on (into the page)."""
-    ax.set_xlim(-96, 118); ax.set_ylim(-44, 332); ax.set_aspect("equal"); ax.axis("off")
-    cx = 30
-    # carriage plate (top, hangs from the skate) + X (swing) slide edge-on (into page)
-    _rect(ax, cx - 24, 296, 48, 24, C_CAR, z=4)
-    _rect(ax, cx - 10, 300, 20, 16, C_SWING, z=5); _hatch_xs(ax, cx - 10, 300, 20, 16)
-    ax.text(cx, 324, "carriage plate + X slide (edge-on)", fontsize=5.2, color=DIM, ha="center", va="bottom", **FONT)
-    # Z (TILT) way — a long 304 flat bar running in Z (vertical) + carriage traversing it (lower = nominal)
-    _rect(ax, cx - 8, 44, 16, 256, C_TILT, z=5); _hatch_xs(ax, cx - 8, 44, 16, 256)
-    _rect(ax, cx - 15, 44, 30, 50, C_TILT, z=6)
-    _rect(ax, cx - 11, 48, 4, 42, C_POLY, z=7); _rect(ax, cx + 7, 48, 4, 42, C_POLY, z=7)   # UHMW pads
-    _rect(ax, cx - 15, 66, 8, 10, C_PIN, z=7)                                               # gib
-    ax.annotate("", xy=(cx + 34, 300), xytext=(cx + 34, 44), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=1.0))
-    ax.text(cx + 38, 172, f"Z travel {XSLIDE_Z_TRAVEL}mm = TILT (bar {XSLIDE_Z_BAR_LEN}mm)", fontsize=6, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
-    leader(ax, cx + 8, 120, 78, 150, f"304 flat bar ¼×1½ — MOUNT DEEP (38.1 ⟂ load)\n{XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm + UHMW {XSLIDE_UHMW_T}mm + gib", ha="left", fs=5.2, color=C_TILT, font=FONT, bbox=LBL_BG)
-    # stub → U-joint (TILT pin seen true) → 304 SS corner plate → frame angle (below)
-    _rect(ax, cx - 6, 30, 12, 16, C_STEEL, z=6)                                             # stub
-    _rect(ax, cx - 18, -4, 36, 34, C_UJ, z=6)                                               # U-joint
-    ax.plot([cx - 24, cx + 24], [13, 13], color=C_PIN, lw=2.4, zorder=8)                    # TILT pin (horizontal, true)
-    draw_circle(ax, cx - 16, 13, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
-    draw_circle(ax, cx + 16, 13, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
-    _rect(ax, cx - 12, -26, 24, 22, C_STEEL, z=6)                                           # L-bracket
-    _rect(ax, cx - 12, -32, 34, 6, C_FRAME, z=7)                                            # frame angle
-    ax.add_patch(plt.Rectangle((cx - 12, -40), 34, 8, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
-    _joint(ax, cx, 37); _joint(ax, cx, -8)
-    leader(ax, cx - 15, 68, -64, 128, "Z carriage — 304 on UHMW + gib\ncam-clamp locks tilt", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, cx - 24, 13, -64, 44, "U-joint TILT pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, cx + 20, -30, 64, -38, "frame angle + ACM", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-56, 340, "A — SECTION  (Yd × Z; looking along X) — the TILT slide + U-joint tilt pin", fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-
-
-def sheet8():
-    reset_label_registry()
-    fig = plt.figure(figsize=(17, 12)); fig.patch.set_facecolor(BG)
-    axA = fig.add_axes([0.01, 0.08, 0.32, 0.86]); axA.set_facecolor(BG)   # tall left — the TILT (green) slide
-    axB = fig.add_axes([0.37, 0.66, 0.61, 0.30]); axB.set_facecolor(BG)   # wide top-right — the SWING (purple) slide
-    attach_tilt(axA)
-    attach_plan(axB)
-    # notes + fastener schedule
-    axN = fig.add_axes([0.37, 0.06, 0.61, 0.55]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
-    draw_notes(axN, [
-        "FRAME ↔ CROSS-SLIDE ATTACHMENT — ONE OF FOUR CORNERS:",
-        "The film frame is NOT bolted straight to a slide. Each corner hangs off BOTH cross-slides "
-        "through a single U-joint, so the rigid plane can tilt AND swing while every corner stays "
-        "square (the U-joint locks twist). Load path, film → rail: 2x2 6061 Al frame angle → 304 SS "
-        "corner plate → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate. At the "
-        "BOTTOM corner the film hangs ~110mm BELOW the weight rail (Sheet 3, View A) — the stack hangs off "
-        "skate and the ACM rises back up; the TOP corner is the mirror (film below its guide rail).",
-        "THE TWO SLIDES do different jobs: the Z (tilt, green) slide takes the vertical arc-travel a "
-        "rigid tilt forces on the corner (~250mm); the X (swing, purple) slide takes the horizontal "
-        "arc-travel of a swing (~260mm). Both are 304 flat bar on UHMW pads with a gib; the gib drag "
-        "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
-        "FIVE JOINTS make the chain (rail→frame, top-down — the full stack is on Sheet 3, View A):",
-        "  J1  Z-way → carriage-plate face ...... 4x M8x25 A2-70 SS THROUGH-BOLT + nut · 24 N·m · flat+split washer · Loctite 243",
-        "  J2  X-way → Z-carriage ............... 4x M8x25 A2-70 SS THROUGH-BOLT + nut · 24 N·m · flat+split washer · Loctite 243",
-        f"  J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint KEYWAY bore .. 3/32×3/64 KEY + set screw ~2.5 N·m",
-        "  J4  U-joint 2nd bore → keyed 3/8\" stub → 304 corner plate .. 3/32×3/64 KEY + set screw ~2.5 N·m (both stubs)",
-        "  J5  6061 frame angle → 304 corner plate .. 4x M6x16 A2-70 SS (2/leg) · 10 N·m · flat washer · tapped in the angle · Loctite 243",
-        "TORQUES: A2-70 stainless, lightly anti-seized (galling); values per a standard A2-70 fastener table (M6 10 N·m, M8 24 N·m). Setscrews per the Belden datasheet. Medium threadlocker on every screw — the mechanism sees transport vibration.",
-        "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
-        "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
-        "(a pinhole's infinite depth of field makes this scene control, not focus).",
-    ], 20, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=65, wrap=128, font=FONT)
-    # title block
-    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 8 OF 18",
-                drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
-                scale_note="Proportional (mm)",
-                doc_id="TBS-FM01 · Film Plane Mechanism",
-                height=0.75)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet8.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet8.png")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 9 — CORNER CONNECTION DETAIL  (frame + ACM ↔ U-joint ↔ X swing slide)
 # ═══════════════════════════════════════════════════════════════════════════════
 def _corner_elevation(ax):
@@ -2051,7 +1936,7 @@ def sheet9():
         "The corner plate carries a single U-JOINT (Belden SSNBUJ750x3/8KB). The U-joint's other yoke bolts to "
         "the X (SWING) slide carriage. So the corner is CARRIED BY the purple X-slide THROUGH the U-joint — "
         "it never bolts to the slide directly. The U-joint gives tilt + swing angular freedom (keyed + set screw); "
-        "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 8) take the in-plane arc travel.",
+        "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 9) take the in-plane arc travel.",
         "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
         "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 6061 Al U-channel rail.",
     ], 1, 97, spacing=4.5, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=42, wrap=100)
@@ -2805,7 +2690,6 @@ if __name__ == "__main__":
     sheet6()
     muslin_clamp_layout()
     sheet7()
-    sheet8()
     sheet9()
     sheet11()
     sheet12()

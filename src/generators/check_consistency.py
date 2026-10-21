@@ -275,7 +275,12 @@ def check_e_dead_constants():
     # derive another counts as used); just drop this auditor itself.
     code = [f for f in _files((".py",), GEN_DIR, MOD_DIR) + _files((".rb",), MOD_DIR)
             if not f.endswith("check_consistency.py")]
-    blob = "".join(open(f, errors="ignore").read() for f in code)
+    # Constants consumed via the facts-injection system (facts.yml `constant:` refs) or the
+    # dependency-map injector (cdm: blocks in component-dependency-map.md) have no .py/.rb
+    # reference — a getattr(tbs_constants, NAME) driven by a data file. Include those data files
+    # so a facts/cdm-wired constant isn't mis-flagged as a dead generator/model constant.
+    data = [os.path.join(GEN_DIR, "facts.yml"), os.path.join(ROOT, "docs", "component-dependency-map.md")]
+    blob = "".join(open(f, errors="ignore").read() for f in code + [d for d in data if os.path.exists(d)])
     dead, reserved = [], 0
     for name, is_res in names.items():
         if len(re.findall(r"\b" + re.escape(name) + r"\b", blob)) <= 1:   # def line only

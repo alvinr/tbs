@@ -207,7 +207,6 @@ UJOINT_BORE   = 9.53   # bore (mm) = 0.375" (3/8") keyway bore
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)
 UJOINT_LEN    = 68.3   # overall length (mm) = 2.690"
 UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345" — reserved (catalog spec; the U-joint is shown in-assembly on Sheets 3/9, not as a standalone dimensioned part)
-UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950" — reserved (unused; TODO remove)
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)
 # RETENTION (J3/J4): 3/8" KEYWAY bore (3/32×3/64 key) + set screw — the stub is keyed (anti-rotation)
@@ -215,7 +214,6 @@ UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py 
 # Boot: FACTORY-INTEGRAL (no separate part) — bulges the joint CENTER to UJOINT_BOOT_OD; the yoke OD
 # stays UJOINT_OD and the overall length stays UJOINT_LEN.
 UJOINT_BOOT_OD  = 32.54  # integral-boot center OD (mm) = 1-9/32"
-UJOINT_BOOT_LEN = 31.75  # integral-boot bellows length (mm) = 1-1/4" — reserved (unused; TODO remove)
 # Acetal skate rollers on Ø10 304 axles (parts.py fp-skate-*):
 SKATE_ROLLER_OD = 31.75  # load roller OD (mm) = 1-1/4" Delrin (rides the U-channel bottom flange)
 SKATE_KEEPER_OD = 19.05  # keeper roller OD (mm) = 3/4" Delrin (captive under the top flange)
@@ -223,11 +221,6 @@ SKATE_ROLLER_W  = 20     # roller width (mm, cut)
 SKATE_AXLE_OD   = 10     # axle-pin OD (mm) — 10x60mm 304 clevis pin
 SKATE_AXLE_LEN  = 60     # axle-pin length (mm)
 SKATE_ROLLER_SP = 40     # load-roller pitch along the rail (Yd) on the carriage plate (mm)
-# Cam rail-brake — McMaster 5128A63 (3 per corner):
-CAM_CLAMP_BASE_W  = 22   # clamp base long dim (mm) — reserved (unused; TODO remove)
-CAM_CLAMP_BASE_D  = 19   # clamp base short dim (mm) — reserved (unused; TODO remove)
-CAM_CLAMP_HOLE_SP = 15.7 # 2x M4x0.7 base-hole spacing (mm) — reserved (unused; TODO remove)
-CAM_CLAMP_N       = 3    # cam clamps per corner — reserved (unused; TODO remove)
 # Skate carriage plate — 6mm 6061-T6; the MOVING part the 4-wheel skate + Z-slide + cam clamp mount to
 # (Sheet 3 View A). H grown 171→181 so the top keeper-axle row clears its ≥2×Ø10 edge distance.
 CARRIAGE_PLATE_W  = 80   # plate width along Yd (mm)
@@ -297,7 +290,7 @@ PDH_LENS_COPAL3   = 65.0  # Copal / Compur 3 board hole (standard; Compur 3 = 65
 # These appear hand-computed across many reports; deriving them here (and registering as facts)
 # means a focal-length or film-size change ripples to every doc that restates them.
 IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 101 sq ft (active film plane)
-XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved (unused; TODO remove)
+XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners (firm per fp-corner-blueprint-spec; injected via component-dependency-map cdm:XSLIDE_N)
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
 ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 260mm)  [rev6: was 625]
@@ -479,7 +472,6 @@ BAY_WALL_T  = 3.18                     # bay box wall thickness (mm) — 1/8" HD
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50.8                   # brace member section 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
-BRACE_T     = 3                      # RHS wall thickness (mm) ≈ 0.120in — reserved (unused; TODO remove)
 # Container cargo-door frame section — 50×20×3 RHS (reuses the IBC retaining-bar section, ibcf-rhs),
 # lighter than the old 2×2×0.120 tube: the frame is NO LONGER weight-bearing (the pivot post carries the
 # hinge panel), it only takes seal-compression + cam-latch load. 50mm FACE = the seal landing; 20mm DEPTH.
@@ -588,12 +580,7 @@ LT_HBAR_N        = 4    # H-mullions total (2 openings × 2 edges)
 LT_HBAR_RIVET_PITCH = 120  # rivets up the flange (mm) — same 1/8" SS domed-head as the other joints
 LT_HBAR_END_BOLT = 8    # M8 bolt each mullion end → the support strip (via L-clip)
 # Back-compat aliases (edge stiffener renamed U-channel → H-mullion 2026-09-09):
-LT_EDGE_CHAN_N = LT_HBAR_N   # reserved (unused; TODO remove)
-LT_EDGE_CHAN_RIVET_PITCH = LT_HBAR_RIVET_PITCH   # reserved (unused; TODO remove)
-LT_EDGE_CHAN_END_BOLT = LT_HBAR_END_BOLT   # reserved (unused; TODO remove)
 LT_EDGE_CHAN_LEG = LT_HBAR_LEG
-LT_EDGE_CHAN_T = LT_HBAR_T   # reserved (unused; TODO remove)
-LT_EDGE_CHAN_W = 2 * LT_HBAR_LEG + LT_HBAR_T   # H overall width across both slots (~39mm) — reserved (unused; TODO remove)
 
 # Channel-support strip (2026-09-08) — 4 formed-Al angles, one across each housing opening
 # (top + bottom), spanning the cage Yd rail-to-rail so the opening's two U-channel ends bolt to
@@ -635,7 +622,7 @@ EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 EVAP_W     = 508     # cooler width along X (mm)  — 20 in
 EVAP_D     = 254     # cooler depth along Yd (mm) — 10 in
 EVAP_H     = 711     # cooler height (mm)         — 28 in
-EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct — reserved (unused; TODO remove)
+EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct (injected via facts.yml cooler_cfm_rated)
 # Transport stowage — on near walkway grating, in the widened section.
 # rev10: moved deeper (was 1200) to clear the panel SWING sweep, which reaches
 # X≈1395 in the near-walkway Yd band; 1450 gives margin (cooler X1450–2009,
@@ -700,7 +687,6 @@ EP_COL_W     = 340                         # EP column width (mm) — fits one s
 BA_STACK_Z2  = BA_H_HI + 16                # 380 — upper (2nd) pack bottom Z (stacked on the lower pack)
 BA_STACK_TOP = BA_STACK_Z2 + (BA_H_HI - BA_H_LO)  # 594 — battery stack top Z
 EP_POST_Z    = BA_STACK_TOP + 20           # 614 — contactor / MRBF sit above the battery stack
-EP_RISE_X_P  = EP_X + 260                  # 2170 — (+) 2/0 cable riser lane (right of the PV disconnect) — reserved (unused; TODO remove)
 EP_RISE_X_M  = EP_X + 140                  # 2050 — (−) 2/0 cable riser lane (inverter ↔ PV disconnect gap)
 PV_DISC_X    = EP_X + 165                  # 2075 — PV array-disconnect X (operator-reach switch)
 EP_DISC_Z    = 1045                        # disconnect cluster row Z — main + master + PV disconnects grouped, reachable (~chest)
@@ -875,7 +861,7 @@ IBC_H_STK   = 2020   # 2× stacked height (mm)
 # Layout is UNCHANGED from main: two Blue on top, Brown + Waste on the bottom.
 IBC_H_1000  = 1168   # 275-gal (≈1000 L) caged composite overall height (mm) = 46"
 IBC_H_STK_1000 = 2 * IBC_H_1000   # 2336 mm 2× stacked
-IBC_CEILING_CLEARANCE_MM = C_HGT - IBC_H_STK_1000   # = 52mm — direct-stack ceiling headroom (was restated raw in ~5 docs) — reserved (unused; TODO remove)
+IBC_CEILING_CLEARANCE_MM = C_HGT - IBC_H_STK_1000   # = 52mm — direct-stack ceiling headroom (was restated raw in ~5 docs) (injected via facts.yml ibc_ceiling_clearance_mm)
 
 # IBC cage/pallet anatomy (US 48"×40" composite tote)
 # Three parts: steel/plastic pallet base, HDPE blow-molded bottle, galvanized wire cage.
@@ -1078,7 +1064,7 @@ TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 
 BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
 BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
 PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 14
-BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons) — reserved (unused; TODO remove)
+BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons) (injected via facts.yml blue_supply_gal)
 
 # Water balance — of the Blue consumed per run, ~31 L/print is open-process loss (muslin carryout +
 # evaporation + unrecovered residual; water-system-report §4); the rest is recovered into Brown+Waste.
@@ -1086,8 +1072,8 @@ BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Bl
 LOSS_PER_PRINT_L      = 31                                             # design est. — see water-system §4
 RECOVERED_PER_PRINT_L = round(BLUE_PER_PRINT_L) - LOSS_PER_PRINT_L     # ≈ 90 L recovered/print
 RECOVERED_L           = PRINTS_PER_RESUPPLY * RECOVERED_PER_PRINT_L    # = 1260 L (Brown+Waste at exhaustion)
-COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 630 L per collection tote — reserved (unused; TODO remove)
-LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L lost over a run — reserved (unused; TODO remove)
+COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 622 L per collection tote (injected via facts.yml collection_fill_l)
+LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L lost over a run (injected via facts.yml lost_l)
 
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all
@@ -1313,7 +1299,6 @@ RWK_ARM_W = 50.8                                       # 2in — arm width in Yd
 # OUTER beam takes the deep notch). Sized in ibc_frame_load.arm_notch_check().
 RWK_HL_TIP  = round(RWK_ARM_BOT + 5.4, 1)             # 95.0 — TIP crossing split: arm keeps 5.4 (M≈30 Nm); inner beam keeps 20
 RWK_HL_POST = round(RWK_ARM_BOT + 16.0, 1)           # 105.6 — POST crossing split: arm keeps 16 (M≈334 Nm); outer beam notched to 9.4
-RWK_HL = RWK_HL_TIP                                    # legacy alias / default split — reserved (unused; TODO remove)
 RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×1in section)
 RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
@@ -1385,7 +1370,6 @@ SPRAY_BAR_BEAM_W     = 38.1        # beam footprint in Yd (mm) — 1½×1½×0.0
 SPRAY_BAR_BEAM_H     = 38.1        # beam HEIGHT in Z (mm) — 1½in square; deep enough that the full-width 4,289mm span sags only ~11mm (L/395), flattened by ~12mm pre-camber
 SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias → the square section (38.1)
 SPRAY_BAR_BEAM_T     = 1.575       # wall thickness (mm) — 0.062in; single 17ft4in Metals Depot stick (no butt weld); wall barely affects sag (self-weight-dominated)
-SPRAY_BAR_BORE       = SPRAY_BAR_BEAM_W - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore (poly no longer housed here) — reserved (unused; TODO remove)
 SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — SIDE-mounted on the beam's inboard face
 SPRAY_BAR_POLY_ID    = 19          # poly pipe ID (mm)
 SPRAY_BAR_WHEEL_DIA  = 32          # nylon wheel diameter (mm) — shrunk from 50 for grate clearance on the raised tray
@@ -1409,10 +1393,8 @@ SPRAY_BAR_AXLE_Z     = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_AXLE_RISE      # = 36mm
 SPRAY_BAR_Z_BOT      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_BOT_RISE  # = 29mm beam bottom @ low corner (was 20)
 SPRAY_BAR_Z_TOP      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE  # = 54mm beam top @ low corner (was 60)
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
-SPRAY_BAR_HOLE_DIA   = 8           # nozzle barb bore (mm) — side-tap into the poly manifold (was a beam-wall through-hole) — reserved (unused; TODO remove)
 SPRAY_BAR_NOZZLE_PITCH = 100       # nozzle center-to-center pitch along the beam (mm) — 90° down-jets: a 90° cone at the ~50mm nozzle height gives a ~100mm footprint, so 100mm pitch = edge-to-edge along-beam coverage (was 150 for 180° flat-fans)
 SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 43 @ 100mm (full 4,289mm beam width)
-SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm) — reserved (unused; TODO remove)
 SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-05b to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner
 SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)

@@ -2455,21 +2455,20 @@ def sheet16():
     draw_circle(axA, ux, uz, UJOINT_STUB_OD / 2 + 1, lw=1.2, color=C_SWING, zorder=6)     # stub clearance
     for dz in (-24, 24):
         draw_circle(axA, ux, uz + dz, 3.0, lw=1.0, color=C_SWING, zorder=6)                # 4040N12 mount bolts
-    # overall + arm widths
-    draw_dim_h(axA, 0, L, -10, f"{L:.1f}mm (6in) overall", fs=5.8, font=FONT, above=False, offset=9)
-    draw_dim_v(axA, -10, 0, L, f"{L:.1f}mm (6in) overall", fs=5.8, font=FONT, offset=9)
+    # hole-locating dims OUTSIDE the piece — X-dims stacked BELOW, Z-dims stacked LEFT; overall outermost. Arm width on the right.
     draw_dim_v(axA, L + 22, 0, leg, f"{leg:.1f}mm arm (4in)", fs=5.4, font=FONT, offset=6)
-    # locate every hole by X (dim_h) + Y (dim_v), placed INSIDE the white plate (readable)
-    draw_dim_h(axA, 0, hc, 40, f"{hc:.1f}mm", fs=5.0, font=FONT, offset=5)   # arm centerline / J4 X
-    draw_dim_h(axA, 0, b1, 30, f"{b1:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 horiz X (near)
-    draw_dim_h(axA, 0, b2, 20, f"{b2:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 horiz X (far)
-    draw_dim_v(axA, 40, 0, hc, f"{hc:.1f}mm", fs=5.0, font=FONT, offset=5)   # arm centerline / J4 Y
-    draw_dim_v(axA, 62, 0, b1, f"{b1:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 vert Y (near)
-    draw_dim_v(axA, 84, 0, b2, f"{b2:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 vert Y (far)
-    # extension guides — tie EACH hole to its inside dims so the hole↔dim link is unambiguous
+    draw_dim_h(axA, 0, hc, -12, f"{hc:.1f}mm", fs=5.0, font=FONT, above=False, offset=5)   # arm centerline / J4 X
+    draw_dim_h(axA, 0, b1, -22, f"{b1:.1f}mm", fs=5.0, font=FONT, above=False, offset=5)   # J5 horiz X (near)
+    draw_dim_h(axA, 0, b2, -32, f"{b2:.1f}mm", fs=5.0, font=FONT, above=False, offset=5)   # J5 horiz X (far)
+    draw_dim_h(axA, 0, L,  -44, f"{L:.1f}mm (6in) overall", fs=5.8, font=FONT, above=False, offset=6)
+    draw_dim_v(axA, -12, 0, hc, f"{hc:.1f}mm", fs=5.0, font=FONT, offset=5)   # arm centerline / J4 Z
+    draw_dim_v(axA, -22, 0, b1, f"{b1:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 vert Z (near)
+    draw_dim_v(axA, -32, 0, b2, f"{b2:.1f}mm", fs=5.0, font=FONT, offset=5)   # J5 vert Z (far)
+    draw_dim_v(axA, -44, 0, L,  f"{L:.1f}mm (6in) overall", fs=5.8, font=FONT, offset=6)
+    # witness lines — trace EACH hole OUT to its dim band (down to the X band, left to the Z band)
     for hx, hy in j5_h + j5_v + [(ux, uz)]:
-        axA.plot([hx, hx], [hy, 6], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)   # above the white plate (zorder 3)
-        axA.plot([hx, 6], [hy, hy], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
+        axA.plot([hx, hx], [hy, -32], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
+        axA.plot([hx, -32], [hy, hy], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
     leader(axA, b2, hc, L + 8, hc - 18, f"J5: 2× M6 → 6061 frame\n(per member, ×2 members) · {sp}mm pitch", ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
     leader(axA, ux, uz, L + 8, L / 2 + 24, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(at the corner, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
     axA.text(-56, L + 26, "A — FLAT L-GUSSET  (laser/waterjet cut, ¼in 304 plate; datum = frame corner, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)

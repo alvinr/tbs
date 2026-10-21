@@ -111,7 +111,7 @@ git commit -m "Film-plane blueprint Phase 0: interference triage + bolt edge-dis
 - Modify: `dependencies.yml`, `all-diagrams.md`
 
 **Interfaces:**
-- Consumes: `SKATE_ROLLER_OD` (31.75), `SKATE_KEEPER_OD` (19.05), `SKATE_ROLLER_W` (20), `SKATE_AXLE_OD` (10), `SKATE_AXLE_LEN` (60), `SKATE_ROLLER_SP` (40), `CARRIAGE_PLATE_W` (80), `CARRIAGE_PLATE_H` (181), `CARRIAGE_PLATE_T` (6), `CARRIAGE_AXLE_ROW_SP` (38).
+- Consumes: `SKATE_ROLLER_OD` (31.75), `SKATE_KEEPER_OD` (19.05), `SKATE_ROLLER_W` (20), `SKATE_AXLE_OD` (10), `SKATE_AXLE_LEN` (60), `SKATE_ROLLER_SP` (40), `CARRIAGE_PLATE_W` (80), `CARRIAGE_PLATE_H` (185), `CARRIAGE_PLATE_T` (6), `CARRIAGE_AXLE_ROW_SP` (38).
 - Produces: `sheet13()`. **Wires the dead constants `SKATE_AXLE_LEN`, `SKATE_ROLLER_W`.**
 
 **Drawing spec (the acetal skate assembly):**

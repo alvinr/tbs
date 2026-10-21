@@ -710,7 +710,7 @@ def view_a(ax):
         ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=4)
     # ── WIDE carriage plate (red) — the MOVING part, drawn FULLY and IN FRONT: it extends UP over the skate, so
     #    the 4 wheels sit BEHIND it and are shown ghosted (dotted). The Z-slide (green) runs up its centre. ──
-    _rect(ax, 130, 134, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, C_CAR, z=5)              # carriage plate 80×181×6mm 6061-T6 (top grown +10 for keeper-axle edge dist)
+    _rect(ax, 130, 134, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, C_CAR, z=5)              # carriage plate 80×185×6mm 6061-T6 (keeper-axle edge dist, rounded up to the 5mm cut)
     # ── carriage-plate HOLE PATTERN (located, ≥2×Ø edge distance) ─────────────────
     _ax_yd = (170 - SKATE_ROLLER_SP / 2, 170 + SKATE_ROLLER_SP / 2)                  # ±SKATE_ROLLER_SP/2
     _ax_z = (253, 253 + CARRIAGE_AXLE_ROW_SP)                                        # load row / keeper row

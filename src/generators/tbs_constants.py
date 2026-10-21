@@ -199,7 +199,7 @@ XSLIDE_BAR_T = 6.35    # cross-slide flat-bar thickness (mm) = 1/4"
 XSLIDE_Z_BAR_LEN = 345 # Z (tilt) slide bar cut length (mm) = XSLIDE_Z_TRAVEL 245 + ~carriage/margin — sized to hold MAX_TILT (corner blueprint 2026-08-10)
 XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 257 + ~carriage/margin — sized to hold MAX_SWING
 XSLIDE_UHMW_T = 3.2    # UHMW self-lube pad thickness (mm, 1/8") between carriage and bar bearing faces
-XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge
+XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge (stock brass flat-bar width; 5mm-cut-rule exempt)
 XSLIDE_GIB_T  = 6.35   # gib thickness (mm) = 1/4"
 XSLIDE_CARR_WALL = 8   # cross-slide carriage wall thickness (mm) around the bar
 # Belden SSNBUJ750x3/8KB needle-bearing U-joint (Grainger 41D816; datasheet eng-specs/grainger-41d816.pdf):
@@ -222,9 +222,10 @@ SKATE_AXLE_OD   = 10     # axle-pin OD (mm) — 10x60mm 304 clevis pin
 SKATE_AXLE_LEN  = 60     # axle-pin length (mm)
 SKATE_ROLLER_SP = 40     # load-roller pitch along the rail (Yd) on the carriage plate (mm)
 # Skate carriage plate — 6mm 6061-T6; the MOVING part the 4-wheel skate + Z-slide + cam clamp mount to
-# (Sheet 3 View A). H grown 171→181 so the top keeper-axle row clears its ≥2×Ø10 edge distance.
+# (Sheet 3 View A). H needs ≥171 so the top keeper-axle row clears its ≥2×Ø10 edge distance; rounded UP
+# to 185 per the 5mm cut rule (sheared from a 12×20 sheet — the extra 4mm keeps the edge-distance margin).
 CARRIAGE_PLATE_W  = 80   # plate width along Yd (mm)
-CARRIAGE_PLATE_H  = 181  # plate height along Z (mm) — grown +10 for keeper-axle edge distance
+CARRIAGE_PLATE_H  = 185  # plate height along Z (mm) — keeper-axle edge distance (min 171), rounded up to the 5mm cut
 CARRIAGE_PLATE_T  = 6    # plate thickness (mm) — 6061-T6
 CARRIAGE_AXLE_ROW_SP = 38  # Z gap between the load-axle row and the keeper-axle row (mm)
 # 4 SHORT STUB axles (Ø SKATE_AXLE_OD) at ±SKATE_ROLLER_SP/2 (Yd) × 2 rows (load / keeper).
@@ -234,7 +235,8 @@ CARRIAGE_J1_SP_Z  = 44   # J1 4×M8 Z-slide-mount hole pattern height (Z, mm)
 # both arms coplanar in the frame plane (parts.py corner-l-plate; was a press-brake 6×8 L-plate until
 # 2026-09-05, then a stock 4×4×¼ bent ANGLE until 2026-10-21 — the bent leg fouled the cross-slide/carriage
 # packaging, so the mount is now a FLAT L-plate with both legs in the frame plane). LEG/CUT define the L: two
-# 4in arms, ~6in overall span, ¼in thick:
+# 4in arms, ~6in overall span, ¼in thick. (5mm-cut-rule EXEMPT: a laser/waterjet DXF profile, not a
+# saw/shear-fence cut — the round 4in/6in imperial gains nothing from a metric 5mm round.)
 CORNER_PLATE_LEG = 101.6   # L-gusset arm width (mm) = 4"
 CORNER_PLATE_CUT = 152.4   # L-gusset overall span along each frame member (mm) = 6"
 CORNER_PLATE_T   = 6.35    # plate thickness (mm) = 1/4"

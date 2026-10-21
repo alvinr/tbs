@@ -2585,8 +2585,8 @@ def sheet16():
     for hx, hy in j5_h + j5_v + [(ux, uz)]:
         axA.plot([hx, hx], [hy, -32], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
         axA.plot([hx, -32], [hy, hy], color=DIM, lw=0.3, ls=(0, (2, 2)), zorder=4)
-    leader(axA, b2, hc, L + 8, hc - 18, f"J5: 2× M6 → 6061 frame\n(per member, ×2 members) · {sp}mm pitch", ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    leader(axA, ux, uz, L + 8, L / 2 + 24, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(at the corner, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(axA, b2, hc, L - 15, -10, f"J5: 2× M6 → 6061 frame\n(per member, ×2 members) · {sp}mm pitch", ha="left", fs=5.5, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(axA, ux, uz, L + 8, L * 0.8, f"J4: U-joint stub Ø{UJOINT_STUB_OD} + 4040N12 mount\n(at the corner, Sheet 9)", ha="left", fs=5.5, color=C_SWING, font=FONT, bbox=LBL_BG)
     axA.text(-56, L + 26, "A — FLAT L-GUSSET  (laser/waterjet cut, ¼in 304 plate; datum = frame corner, dims to hole centers)", fontsize=7.2, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── notes ──────────────────────────────────────────────────────────────────

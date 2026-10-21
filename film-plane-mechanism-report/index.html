@@ -2975,8 +2975,6 @@ The floor plan below shows the film plane rail positions in the context of the c
 <p>The film plane is a <strong>fixed-size rigid rectangle</strong>; tilt and swing are a true <strong>rigid-body rotation</strong> of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the acetal skate) and partly <em>across</em> it (in X and Z). The <strong>2-axis cross-slide</strong> absorbs that across-rail travel, and the <strong>single universal joint</strong> (Belden SSNBUJ750x3/8KB, 45° per axis) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt and swing <strong>without stretching</strong>, and keeps the plane a single flat rectangle at every angle.</p>
 <p>Each corner connects to that mechanism through a <strong>304 stainless corner gusset</strong> — a flat ¼" L-plate lying on the frame back, bolted to both 6061 frame members; it carries the U-joint, whose other yoke mounts on the <strong>X (swing) slide</strong> — so the corner is <em>carried by</em> the slide <strong>through</strong> the U-joint, never bolted to it directly. The gusset is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. It is a flat laser-cut plate (both legs coplanar in the frame plane), not a bent angle — the angle's second leg fouled the cross-slide/carriage packaging. Sheet 9 details this connection square-on and in section.</p>
 <p><img alt="Sheet 9 — Frame + ACM ↔ U-joint ↔ X-slide connection detail" src="../assets/film-plane-sheet9.png" /></p>
-<p>Sheet 8 shows the same corner from the mechanism side — how the film frame hangs off the two cross-slides through the U-joint.</p>
-<p><img alt="Sheet 8 — Frame-corner ↔ cross-slide attachment: the frame hangs off the two slides through the U-joint" src="../assets/film-plane-sheet8.png" /></p>
 <p>Sheet 4 sections the universal joint itself — the yokes, the cross/trunnion, and the factory boot — showing how the two angular axes (tilt + swing) both pass through the one joint.</p>
 <p><img alt="Sheet 4 — Universal-joint sections (yokes, cross, boot)" src="../assets/film-plane-sheet4.png" /></p>
 <h3 id="cross-slide-load-case">Cross-Slide Load Case<a class="headerlink" href="#cross-slide-load-case" title="Permanent link">&para;</a></h3>
@@ -3225,7 +3223,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 </tr>
 <tr>
 <td>Skate carriage plate (×4) — fab</td>
-<td>One carriage plate per corner — carries the 4 rollers on their axles + the inboard lip; the U-joint/cross-slide stack bolts to it. The only fab piece of the skate. FIRM DESIGN (Sheet 3 View A): 80×181×6mm 6061-T6 (aluminum; grown to 181 tall so the top keeper-axle row clears its ≥2×Ø10 edge distance). Hole pattern: 4× Ø10 stub-axle holes on a 40(Yd)×38(Z) grid + 4× M8 (J1) to the Z-slide (28×44) + 2× M4 for the cam-clamp base; all holes ≥2×Ø from the edges. Est. cost — firm at fab quote.</td>
+<td>One carriage plate per corner — carries the 4 rollers on their axles + the inboard lip; the U-joint/cross-slide stack bolts to it. The only fab piece of the skate. FIRM DESIGN (Sheet 3 View A): 80×185×6mm 6061-T6 (aluminum; min 171 tall so the top keeper-axle row clears its ≥2×Ø10 edge distance, rounded up to 185 per the 5mm cut rule). Hole pattern: 4× Ø10 stub-axle holes on a 40(Yd)×38(Z) grid + 4× M8 (J1) to the Z-slide (28×44) + 2× M4 for the cam-clamp base; all holes ≥2×Ø from the edges. Est. cost — firm at fab quote.</td>
 <td>4 ea</td>
 <td>Local fab</td>
 <td>$136–$236</td>
@@ -3239,21 +3237,21 @@ The floor plan below shows the film plane rail positions in the context of the c
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/92314A711/">M8×1.25 × 25 hex bolt, 304 SS (A2-70) — cross-slide joints J1/J2</a> (92314A711)</td>
-<td>J1 (skate carriage → Z-slide) + J2 (X-way → Z-carriage) — 4× M8×25 each, 2 joints/corner ×4 = 32. THROUGH-BOLT + M8 nut (flat washer under head, split under nut), 24 N·m, Loctite 243 (Sheet 8). Length M8×25 for the 14mm J1 grip (6mm carriage plate + 8mm Z-carriage wall) + 2 washers + nut. 304 SS A2-70 (wet cyanotype zone; no chloride → 316 unneeded). McMaster 92314A711 $10.60/pack of 25 (sourced 2026-09-06).</td>
+<td>J1 (skate carriage → Z-slide) + J2 (X-way → Z-carriage) — 4× M8×25 each, 2 joints/corner ×4 = 32. THROUGH-BOLT + M8 nut (flat washer under head, split under nut), 24 N·m, Loctite 243 (Sheet 12). Length M8×25 for the 14mm J1 grip (6mm carriage plate + 8mm Z-carriage wall) + 2 washers + nut. 304 SS A2-70 (wet cyanotype zone; no chloride → 316 unneeded). McMaster 92314A711 $10.60/pack of 25 (sourced 2026-09-06).</td>
 <td>32 ea</td>
 <td>McMaster-Carr</td>
 <td>$14</td>
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/98689A673/">M8 flat washer, 304 SS</a> (98689A673)</td>
-<td>Flat washer under each J1/J2 M8×25 head (Sheet 8). 304 SS, wet zone. McMaster 98689A673 $13.59/pack of 50 (sourced 2026-09-06).</td>
+<td>Flat washer under each J1/J2 M8×25 head (Sheet 12). 304 SS, wet zone. McMaster 98689A673 $13.59/pack of 50 (sourced 2026-09-06).</td>
 <td>32 ea</td>
 <td>McMaster-Carr</td>
 <td>$9</td>
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/91111A132/">M8 split lock washer, 304 SS</a> (91111A132)</td>
-<td>Split lock washer under each J1/J2 M8×25 (with Loctite 243 — belt + suspenders vs transport vibration; Sheet 8). 304 SS, wet zone. McMaster 91111A132 $11.19/pack of 100 (sourced 2026-09-06).</td>
+<td>Split lock washer under each J1/J2 M8×25 (with Loctite 243 — belt + suspenders vs transport vibration; Sheet 12). 304 SS, wet zone. McMaster 91111A132 $11.19/pack of 100 (sourced 2026-09-06).</td>
 <td>32 ea</td>
 <td>McMaster-Carr</td>
 <td>$4</td>
@@ -3337,7 +3335,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 </tr>
 <tr>
 <td>Wall-seat saddle 8mm A36 plate (ICP-11)</td>
-<td>8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×250, seat flush at the top so both M12 wall-bolt rows sit clear below it) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (120×96, sized for ≥18mm M12 edge). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate 250mm for seat-flush-top + full gusset weld) pending quote.</td>
+<td>8mm A36 mild-steel plate, 610×560mm (24×22in) — nests all 4 saddles' back-plates (150×250, seat flush at the top so both M12 wall-bolt rows sit clear below it) + exterior plates (150×150) + gusset triangles (110×120) + the 2 far-left flange-bracket exterior plates (120×100, ≥18mm M12 edge; 96→100 on the 5mm cut rule). Laser/plasma cut to the piece dims; weld by owner ($0 labor). QUOTE NEEDED — local metal/fab shop, not online. $160 placeholder (4 saddles + 2 far-left brackets nest in one sheet; back-plate 250mm for seat-flush-top + full gusset weld) pending quote.</td>
 <td>1 sheet</td>
 <td>Metal Supermarkets</td>
 <td>$160</td>

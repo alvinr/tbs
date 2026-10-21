@@ -106,14 +106,14 @@ def ruby_taper_ring(name, y0, y1, r_out, r_in0, r_in1, color, n=64):
 
 # ── Parts ─────────────────────────────────────────────────────────────────────
 def plate():
-    """ICP-01 front plate — Ø180 × 18, Ø40 light aperture (thru), Ø90 scene taper (marker), Ø52
+    """ICP-01 front plate — Ø180 × 18, Ø72 light aperture (thru), Ø110 scene taper (marker), Ø52
     disc-seat counterbore (camera face), 4× M6 mount holes @ Ø150, 4× M6 thumb-screw tapped holes."""
     out = [ruby_annulus("ICP-01 Front plate", 0, PLATE_Y0, 0, PDH_PLATE_OD / 2, PDH_APERTURE / 2,
                         PDH_PLATE_T, axis="y", color=C_PLATE, n=72)]
     # disc-seat counterbore (Ø52 recess on the camera face) — a shallow ring marker
     out.append(ruby_annulus("Disc seat counterbore", 0, SEAT_Y, 0, PDH_DISC_SEAT_D / 2, PDH_APERTURE / 2,
                             PDH_DISC_SEAT_DEP, axis="y", color="#C4CCD4", n=48))
-    # (The Ø90→Ø40 scene-side light taper is a fab detail carried on the 2D sheets / report — not
+    # (The Ø110→Ø72 scene-side light taper is a fab detail carried on the 2D sheets / report — not
     #  scribed here, where a flat marker ring only reads as a spurious circle.)
     # mount holes (4× M6 @ Ø150) — through markers
     for i in range(PDH_MOUNT_N):
@@ -132,7 +132,7 @@ def plate():
 
 
 def washer():
-    """Neoprene light-seal washer — Ø56/Ø40 × 1.5, in the disc-seat counterbore floor."""
+    """Neoprene light-seal washer — Ø82/Ø72 × 1.5, in the disc-seat counterbore floor."""
     return ruby_annulus("Neoprene light-seal washer", 0, SEAT_Y, 0, PDH_WASHER_OD / 2, PDH_WASHER_ID / 2,
                         PDH_WASHER_T, axis="y", color=C_WASHER, n=48)
 
@@ -213,7 +213,7 @@ def labels_ruby():
         ("ICP-01 FRONT PLATE (Ø180)", (PDH_PLATE_OD / 2 - 15, PLATE_Y0, 0), (55, -20, 40)),
         ("ICP-03 RETAINING RING\n+ 4 thumb screws", (PDH_RING_OD / 2, PLATE_Y1 + PDH_RING_T, 0), (60, 30, 40)),
         ("ICP-02 DISC — pinhole / lens\n(quick-change)", (0, PLATE_Y1 + PDH_RING_T, PDH_RING_ID / 2 - 4), (0, 45, 70)),
-        ("Ø40 LIGHT APERTURE", (0, PLATE_Y0, -PDH_APERTURE / 2), (-70, -20, -50)),
+        ("Ø72 LIGHT APERTURE", (0, PLATE_Y0, -PDH_APERTURE / 2), (-70, -20, -50)),
     ]
     return '\n'.join(lab(*r) for r in rows)
 

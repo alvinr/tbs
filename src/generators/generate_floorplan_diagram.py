@@ -472,7 +472,7 @@ def floor_plan():
     ax.add_patch(Rectangle((LX, NY), W, FYO - NY,
                             fc="none", ec="#408040", lw=2.0, ls=(0, (6, 3)),
                             zorder=13, alpha=0.85))
-    # Drum-exit punch-out — deeper landing (X 470–770) in front of the light-lock exit.
+    # Drum-exit punch-out — deeper landing (X 580–880) in front of the light-lock exit.
     ax.add_patch(Rectangle((LXR, WALKWAY_LEFT_WIDE_YD_L),
                             WALKWAY_LEFT_WIDE_W - W,
                             WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L,

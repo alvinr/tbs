@@ -256,7 +256,7 @@ seal; the SS beam is purely structural.
 - **Feed points (7, ~550mm pitch):** Barbed feed tees installed into the side manifold
   — each connects an irrigation tube from the ball-joint manifold to the poly
   pipe bore, distributing the supply evenly along the pipe.
-- **Both ends (X=470 and X=4,329):** LDPE fold-back with retainer clip — fully sealed.
+- **Both ends (X=310 and X=4,599, the beam ends):** LDPE fold-back with retainer clip — fully sealed.
 
 ![Spray Beam + Manifold — Sheet 9: full-length station layout (cut length, nozzle + feed-tee pitch, carriage-clamp + ball-joint stations)](assets/spray-bar-sheet9.png)
 

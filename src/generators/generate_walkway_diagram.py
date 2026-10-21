@@ -32,7 +32,7 @@ Sheet 3 — Detail A: Right walkway cantilever support (IBC end)  [rev 12]:
 
 Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
-  Shows left walkway grating (X=170-470, removable lift-out) meeting the
+  Shows left walkway grating (X=280-580, removable lift-out) meeting the
   full-width steel edge beam at the butt joint (X=470); both grating edges bear
   on its Z65 ledges (no X=470 bracket). The swinging cage (panel + drum) is
   shown as ghost — it sweeps past the butt joint through the vacated left-walkway
@@ -40,10 +40,10 @@ Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   shown in cross-section.
 
 Sheet 5 — Detail C: Left walkway floor-leg support + drum-exit punch-out (plan):
-  All 5 floor-leg cantilever brackets (post on bare floor X=140 + arm to the grate
-  edge X=470) carrying the removable left grate, PLUS the drum-exit punch-out — the
+  All 5 floor-leg cantilever brackets (post on bare floor X≈250 + arm to the grate
+  edge X=580) carrying the removable left grate, PLUS the drum-exit punch-out — the
   deck deepened to 600×760mm at the light-lock exit, on the 3 middle brackets whose
-  arms extend to X=770. Zero processing tray contact. (Merged from the former Sheet 9.)
+  arms extend to X=880. Zero processing tray contact. (Merged from the former Sheet 9.)
 
 Sheet 6 — Detail D: Left walkway floor-leg cantilever bracket (section + foot plate):
   Two views of how the steel edge beam is simply supported at each end — an
@@ -224,7 +224,7 @@ def sheet1():
                 fontweight="bold", **FONT, zorder=9, rotation=rot)
 
     # ── Left walkway — removable section marking ──────────────────────────────
-    # The left walkway (X 170–470, full Yd depth) is a LIFT-OUT section so the
+    # The left walkway (X 280–580, full Yd depth) is a LIFT-OUT section so the
     # light-trap (cargo panel + drum) can swing ~56° about the pivot for transport.
     # It stays installed for camera operation.
     # Mark it with a dashed orange outline to indicate removable status.
@@ -430,14 +430,14 @@ def sheet1():
 
     # ── Left walkway support — FLOOR-LEG CANTILEVER brackets (plan) ──
     C_SUPPORT = "#D08020"   # orange for support elements
-    leg_x = LEFT_WK_CANT_LEG_X                 # 140 (bare floor, outside tray)
-    arm_x0 = leg_x + LEFT_WK_CANT_POST / 2     # 165
+    leg_x = LEFT_WK_CANT_LEG_X                 # 250 (bare floor, outside tray)
+    arm_x0 = leg_x + LEFT_WK_CANT_POST / 2     # 275
     leg_sz = 24
     for cy in LEFT_WK_CANT_LEG_YDS:
         wide_b = WALKWAY_LEFT_WIDE_YD_L <= cy <= WALKWAY_LEFT_WIDE_YD_R
         reach = LEFT_WK_CANT_WIDE_REACH if wide_b else LEFT_WK_CANT_STD_REACH
         aw = 16 if wide_b else 10
-        # cantilever arm to the grate inner edge (X470) / punch-out (X770)
+        # cantilever arm to the grate inner edge (X580) / punch-out (X880)
         ax.add_patch(Rectangle((arm_x0, cy - aw / 2), reach - arm_x0, aw,
                      fc=C_SUPPORT, ec=C_OUT, lw=0.6, alpha=0.7, zorder=8))
         # foot/post marker on the floor
@@ -445,7 +445,7 @@ def sheet1():
                      fc=C_SUPPORT, ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, leg_x, LEFT_WK_CANT_LEG_YDS[0] + leg_sz / 2 + 5,
            leg_x - 300, LEFT_WK_CANT_LEG_YDS[0] + 180,
-           "FLOOR-LEG CANTILEVER\nBRACKETS (x5) on BARE FLOOR\n(X140) arms reach to\nX470 (3 extend to X770)",
+           "FLOOR-LEG CANTILEVER\nBRACKETS (x5) on BARE FLOOR\n(X250) arms reach to\nX580 (3 extend to X880)",
            color=C_SUPPORT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
@@ -456,7 +456,7 @@ def sheet1():
     # Bracket spacing callout
     # Find two adjacent bracket positions on near walkway for dimensioning
     # Match the drawn near-walkway bracket grid: markers start at LXR + spacing/2 (the walkway
-    # origin, X=470), NOT the tray-left TL — otherwise the dim sits offset from the ribs.
+    # origin, X=580), NOT the tray-left TL — otherwise the dim sits offset from the ribs.
     brkt_x0 = LXR + WALKWAY_BRACKET_SPACING / 2
     brkt_x1 = brkt_x0 + WALKWAY_BRACKET_SPACING
     draw_dim_h(ax, brkt_x0, brkt_x1, -40,
@@ -1436,7 +1436,7 @@ def sheet4():
             ha="center", va="top", fontsize=6, color="#CC4422",
             fontweight="bold", **FONT, alpha=0.7, zorder=15)
 
-    # ── Left walkway grating (X=170 to X=470, removable lift-out) ────────────
+    # ── Left walkway grating (X=280 to X=580, removable lift-out) ────────────
     C_LEFT_WK = "#A8C8A8"   # green tint for removable section
     ax.add_patch(Rectangle(((LEFT_WK_L), (grate_bot)),
                             (WALKWAY_W), (WALKWAY_GRATE_T),
@@ -1569,38 +1569,35 @@ def sheet4():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 5 — Detail C: Left Walkway Support System
 #
-# Elevation cross-section showing the support elements for the left walkway:
-#   (a) Floor-standing support leg (cargo door side, X=140, on bare floor)
-#       with cantilever arm to walkway edge.
-#   (b) Steel edge beam (40×40×3mm steel SHS) at X=470 (processing tray side),
-#       standing in the Z52–92 envelope (top ~12mm proud as a toe-board kerb),
-#       simply supported wall-to-wall on bolt-through wall seats (see Sheet 6).
-#       The grating bears on a ledge at Z65; the kerb stops it sliding tray-ward.
-#   (c) Bearing strip (15mm Al flat bar) on tray rim at X=170.
+# Plan (looking down) of the left-walkway support: 5 floor-standing CANTILEVER
+#   brackets (LEFT_WK_CANT_*) along Yd — each a foot plate bolted to the bare floor
+#   just outboard of the tray L edge (X<280) + a vertical post to the grate bottom +
+#   a cantilever arm reaching IN over the tray to the grate inner edge (X=580). The 3
+#   on the drum-exit punch-out (Yd 800–1560) get EXTENDED 4×1 arms to X=880.
+#   (Supersedes the retired edge-beam-on-wall-seats.)
 # View: looking along Yd (same as sheets 1, 3, 5).
-# Zero processing tray contact — all supports outside or above tray; the edge
-# beam bottom (Z52) clears the bath (Z≈42) by 10mm and the near/far tray rims
-# (Z50, crossed at Yd≈80/2280) by 2mm.
+# Zero processing tray contact — all supports outside or above the tray; the arm
+# underside (Z≈90) clears the full-width spray-bar top and the tray rim.
 # Scale ≈ 3.5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet5():
     """Sheet 5 - Detail C: Left walkway support SYSTEM (plan, looking down).
     The 5 floor-leg cantilever brackets along Yd carry the removable grate; the 3 on
-    the drum-exit punch-out (Yd 800-1560) have EXTENDED arms to X770. The spray bar
-    travels under the grate (X>=470); the brackets are bolted to bare floor (X<170)."""
+    the drum-exit punch-out (Yd 800-1560) have EXTENDED arms to X880. The spray bar
+    travels under the grate (X>=580); the brackets are bolted to bare floor (X<280)."""
     C_SUPPORT = "#D08020"
     C_LEFT_WK = "#A8C8A8"
-    legx = LEFT_WK_CANT_LEG_X                 # 140
+    legx = LEFT_WK_CANT_LEG_X                 # 250
     post = LEFT_WK_CANT_POST                  # 50
     pw   = LEFT_WK_CANT_POST_W                # 60
-    fl, fw, ft = LEFT_WK_CANT_FOOT            # 128, 60, 8
-    fx0  = LEFT_WK_CANT_FOOT_X0               # 38
+    fl, fw, ft = LEFT_WK_CANT_FOOT            # 165, 60, 8
+    fx0  = LEFT_WK_CANT_FOOT_X0               # 110
     aw_s, aw_w = LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE   # 50.8 (2×1) / 101.6 (4×1, IBC/OSHA)
     std, wide = LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH  # 580 / 880 tip X
-    arm_x0 = legx + post / 2                  # 165
+    arm_x0 = legx + post / 2                  # 275
     wyl, wyr = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R    # 800, 1560
-    tray_x = PROC_TRAY_X_L                    # 170
-    lwx = WALKWAY_LEFT_X                      # 170
+    tray_x = PROC_TRAY_X_L                    # 280
+    lwx = WALKWAY_LEFT_X                      # 280
     yds = LEFT_WK_CANT_LEG_YDS                # (250,800,1180,1560,2110)
 
     fig, ax = plt.subplots(figsize=(18, 8.5))
@@ -1611,13 +1608,13 @@ def sheet5():
     ax.text(1181, 955, "DETAIL C - LEFT WALKWAY SUPPORT + DRUM-EXIT PUNCH-OUT (plan, looking down)",
             ha="center", va="bottom", fontsize=9, color=C_OUT, fontweight="bold", **FONT)
 
-    # Spray-bar travel zone (X>=470, under the grate)
+    # Spray-bar travel zone (X>=580, under the grate)
     ax.add_patch(Rectangle((0, std), C_WID, 980 - std, fc="#EAF2FA", ec="none", zorder=1))
     ax.text(2080, (std + wide) / 2, "SPRAY BAR travels here\n(under the grate, on the sloped floor)",
             ha="center", va="center", fontsize=6, color="#3A7AB0", style="italic", zorder=2)
-    # Tray rim line at X=170
+    # Tray rim line at X=280
     ax.plot([0, C_WID], [tray_x, tray_x], color=C_TRAY, lw=1.6, zorder=3)
-    ax.text(-95, tray_x - 4, "TRAY RIM (X170)\ntray + spray bar STAY at floor level",
+    ax.text(-95, tray_x - 4, "TRAY RIM (X280)\ntray + spray bar STAY at floor level",
             ha="left", va="top", fontsize=5.5, color=C_TRAY, zorder=3)
 
     # Grate footprint + drum-exit punch-out

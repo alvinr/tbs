@@ -1102,14 +1102,11 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L
 #       Left corners use butt joints (no miter) so near/far walkways start at
 #       X=580 — clear of the door-end panel swing sweep.
 #       Only the left walkway (X=280–580) needs removal for transport.
-#       Supported at ends by near/far walkway bracket arms at butt joints.
-#       Processing tray side (X=470): removable bearer beam (2×2×0.125in 6061 Al SHS; #26 — was 50×50×3, 2in stock. Metal Supermarkets $31.99/ft; uncosted removable spare)
-#       runs along Yd, bolted to near/far bracket vertical legs, spanning
-#       1762mm.  Beam top flush at Z=75mm (grate bottom).
-#       Cargo door side (X=170): 3 floor-standing support legs at X≈140 on
-#       bare container floor (outside tray), plus a bearing strip (25×25×3mm
-#       Al angle) on the processing tray rim (Z=50→75mm).
-#       Zero processing tray contact — all supports outside or above tray.
+#       Carried on 5 floor-standing CANTILEVER brackets (LEFT_WK_CANT_* block below):
+#       posts on the bare container floor just outboard of the tray L edge, each arm
+#       cantilevering 300mm over the tray to the grate inner edge (580); the drum-exit
+#       span (Yd 800–1560) widens to 880 on 4×1 arms. Near/far ends butt-joint to the
+#       near/far walkways. Zero processing tray contact — all supports outside or above the tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 + 25mm grate.
@@ -1206,22 +1203,22 @@ WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 2062mm
 # Zero processing tray contact — all supports outside or above the tray/bath.
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 280mm (starts at tray left edge; follows the 260 left rail)
 WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm — floor-leg span (outer edge)
-# Left walkway DRUM-EXIT punch-out (rev 8): the operator steps out of the
-# revolving drum at X=450, but the 300mm walkway ends at X=470 — only 20mm of
-# landing. Deepen the walkway to 600mm over the drum-opening Yd span + stepping
-# margin. Verified clear of the optical cone (door-end; cone left edge is X≈914+
-# at this depth, punch-out reaches only X=770). Needs an extra bearer + support
-# leg under the deeper section (it cantilevers ~300mm further over the tray).
+# Left walkway DRUM-EXIT punch-out: the operator steps out of the revolving drum
+# onto the left walkway over the drum-opening Yd span (WIDE_YD_L..R = 800..1560).
+# The standard 300mm walkway (reach 580) gives too little landing there, so that
+# span is deepened to 600mm (WIDE_REACH = 880) for a full step-out + margin. Clear
+# of the door-end optical cone at this depth; the deeper section cantilevers ~300mm
+# further over the tray on the wider 4×1 arms (3 of the 5 brackets land on it).
 WALKWAY_LEFT_WIDE_W    = 600    # deepened walkway width here (mm) vs 300 normal
 WALKWAY_LEFT_WIDE_YD_L = 800    # punch-out Yd start (near the drum opening)
 WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 
 # ── Left walkway support — FLOOR-LEG CANTILEVERS (rev 2026-06-07: supersedes the edge beam) ──
-# A row of brackets bolted to the bare floor OUTSIDE the tray (X<170): each = foot plate +
+# A row of brackets bolted to the bare floor OUTSIDE the tray (X<280, leg CL ≈250): each = foot plate +
 # vertical post (to the grate bottom) + a cantilever arm reaching IN under the grate, ABOVE the
 # floor-level spray bar (possible only after the +50 walkway raise lifted the grate). Standard
 # brackets carry the grate inner edge (X=580); brackets on the drum-exit punch-out (Yd 800-1560)
-# get EXTENDED arms to X=770 so the widened section is supported, not cantilevered. Zero tray
+# get EXTENDED arms to X=880 (WIDE_REACH) so the widened section is supported, not cantilevered. Zero tray
 # contact; grate + brackets lift out for transport. Validated in the cantilever-study exploration (retired 2026-06-07).
 LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # leg centreline (bare floor, just outboard of the tray L edge = WALKWAY_LEFT_X)
 LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on the punch-out (800/1180/1560)
@@ -1231,7 +1228,7 @@ LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
 LEFT_WK_CANT_FOOT     = (165, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the post sits on its OUTBOARD end; foot extends INBOARD as an outrigger. Lengthened 128→165 (F3, 2026-08-18) so the 4 floor anchors clear the post footprint (post X224.6–275.4 → clear inboard land X110–224.6).
 # Foot LEFT edge DERIVED so the foot always sits under the post (inboard edge = post inboard edge; foot then runs outboard).
 # Was hardcoded 38 (correct only while LEG_X=140); it got stranded when FP_X_L moved 150→260 (2026-08-11) cascaded LEG_X→250. (2026-08-16)
-LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈147; foot right edge ≈ post right edge, ~5mm clear of the tray L
+LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈110; foot right edge ≈ post right edge, ~5mm clear of the tray L
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
 LEFT_WK_CANT_FOOT_BOLT_DX = (20, 60)  # anchor X offsets from the foot LEFT edge → X FOOT_X0+20/+60 (=130/170), OUTBOARD in the clear land: ~55mm clear of the post (X224.6) for driver access AND best-placed to react the cantilever's uplift (2026-08-18) [F3]
 LEFT_WK_CANT_FOOT_BOLT_DY = 18        # anchor ±Yd from the bracket centreline (within the 60mm foot width) [F3, 2026-08-18]

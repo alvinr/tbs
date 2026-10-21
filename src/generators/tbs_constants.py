@@ -228,6 +228,12 @@ CARRIAGE_PLATE_W  = 80   # plate width along Yd (mm)
 CARRIAGE_PLATE_H  = 185  # plate height along Z (mm) — keeper-axle edge distance (min 171), rounded up to the 5mm cut
 CARRIAGE_PLATE_T  = 6    # plate thickness (mm) — 6061-T6
 CARRIAGE_AXLE_ROW_SP = 38  # Z gap between the load-axle row and the keeper-axle row (mm)
+CARRIAGE_PLATE_KEEPER_EDGE = 28  # keeper-axle row → plate TOP edge (mm, Sheet 3 View A), >2×Ø8. The plate's
+                                 # Z DATUM: it hangs from the keeper (the topmost feature) and extends DOWN
+                                 # CARRIAGE_PLATE_H toward the film corner — the SAME part at all 4 corners;
+                                 # at a TOP corner it grows into the film (not up past the rail), so the 185mm
+                                 # plate clears the ceiling (top ~37mm under the lid). Single-sources the 2D
+                                 # hole pattern (Sheet 3) + the 3D carriage-plate placement so they can't drift.
 # 4 SHORT STUB axles (Ø SKATE_AXLE_OD) at ±SKATE_ROLLER_SP/2 (Yd) × 2 rows (load / keeper).
 CARRIAGE_J1_SP_YD = 28   # J1 4×M8 Z-slide-mount hole pattern width (Yd, mm)
 CARRIAGE_J1_SP_Z  = 44   # J1 4×M8 Z-slide-mount hole pattern height (Z, mm)

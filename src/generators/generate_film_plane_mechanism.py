@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Ellipse, Polygon
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
-from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
+from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_PLATE_KEEPER_EDGE, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
 from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_constants import FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN, FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N, SKATE_ROLLER_W, SKATE_AXLE_LEN, XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE, UJOINT_STUB_OD, DIBOND_T
@@ -710,21 +710,24 @@ def view_a(ax):
         ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=4)
     # ── WIDE carriage plate (red) — the MOVING part, drawn FULLY and IN FRONT: it extends UP over the skate, so
     #    the 4 wheels sit BEHIND it and are shown ghosted (dotted). The Z-slide (green) runs up its centre. ──
-    _rect(ax, 130, 134, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, C_CAR, z=5)              # carriage plate 80×185×6mm 6061-T6 (keeper-axle edge dist, rounded up to the 5mm cut)
+    _PLATE_Z0 = 134                                                                 # plate bottom edge (View A local Z, drawing frame)
+    _keeper_z = _PLATE_Z0 + CARRIAGE_PLATE_H - CARRIAGE_PLATE_KEEPER_EDGE            # keeper axle row — datum'd off the plate TOP (single source w/ the 3D)
+    _load_z   = _keeper_z - CARRIAGE_AXLE_ROW_SP                                     # load axle row
+    _rect(ax, 130, _PLATE_Z0, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, C_CAR, z=5)        # carriage plate 80×185×6mm 6061-T6 (keeper-axle edge dist, rounded up to the 5mm cut)
     # ── carriage-plate HOLE PATTERN (located, ≥2×Ø edge distance) ─────────────────
     _ax_yd = (170 - SKATE_ROLLER_SP / 2, 170 + SKATE_ROLLER_SP / 2)                  # ±SKATE_ROLLER_SP/2
-    _ax_z = (253, 253 + CARRIAGE_AXLE_ROW_SP)                                        # load row / keeper row
+    _ax_z = (_load_z, _keeper_z)                                                     # load row / keeper row
     for _hz in _ax_z:
         for _hx in _ax_yd:
             ax.add_patch(plt.Circle((_hx, _hz), SKATE_AXLE_OD / 2, fc=BG, ec=C_PIN, lw=1.0, zorder=6))
             ax.plot([_hx - 8, _hx + 8], [_hz, _hz], color=C_PIN, lw=0.4, zorder=6)
             ax.plot([_hx, _hx], [_hz - 8, _hz + 8], color=C_PIN, lw=0.4, zorder=6)
-    draw_dim_v(ax, 122, 253, 253 + CARRIAGE_AXLE_ROW_SP, f"{CARRIAGE_AXLE_ROW_SP:.0f}mm", offset=6, fs=4.8, color=C_PIN, font=FONT)
-    leader(ax, 190, 291, 300, 340,
+    draw_dim_v(ax, 122, _load_z, _keeper_z, f"{CARRIAGE_AXLE_ROW_SP:.0f}mm", offset=6, fs=4.8, color=C_PIN, font=FONT)
+    leader(ax, 190, _keeper_z, 300, 340,
            f"CARRIAGE PLATE {CARRIAGE_PLATE_W:.0f}×{CARRIAGE_PLATE_H:.0f}×{CARRIAGE_PLATE_T:.0f}mm 6061-T6\n"
            f"· 4× Ø{SKATE_AXLE_OD:.0f} STUB-AXLE holes, {SKATE_ROLLER_SP:.0f}(Yd)×{CARRIAGE_AXLE_ROW_SP:.0f}(Z) pattern\n"
            f"· J1: 4× M8 to Z-slide ({CARRIAGE_J1_SP_YD:.0f}×{CARRIAGE_J1_SP_Z:.0f}) · 2× M4 cam base\n"
-           f"· all holes ≥2×Ø from edges (keeper row 24mm to top)",
+           f"· all holes ≥2×Ø from edges (keeper row {CARRIAGE_PLATE_KEEPER_EDGE:.0f}mm to top)",
            ha="left", fs=5.4, color=C_CAR, font=FONT, bbox=LBL_BG)
     _rect(ax, 161, 156, 18, 76, C_TILT, z=6); _hatch_xs(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred, IN FRONT
     _rect(ax, 161, 156, 2.5, 76, C_POLY, z=7); _rect(ax, 176.5, 156, 2.5, 76, C_POLY, z=7)
@@ -737,9 +740,9 @@ def view_a(ax):
     # Roller pitch driven from SKATE_ROLLER_SP (to scale, mm).
     _rc, _sp = 170, SKATE_ROLLER_SP
     for wx in (_rc - _sp / 2, _rc + _sp / 2):
-        ax.add_patch(plt.Circle((wx, 253), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller
-        ax.add_patch(plt.Circle((wx, 291), 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=10))  # keeper
-    ax.plot([_rc - _sp / 2, _rc + _sp / 2], [253, 253], color=OUT, lw=0.6, dashes=(3, 2), zorder=10)   # axle (ghost)
+        ax.add_patch(plt.Circle((wx, _load_z), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller
+        ax.add_patch(plt.Circle((wx, _keeper_z), 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=10))  # keeper
+    ax.plot([_rc - _sp / 2, _rc + _sp / 2], [_load_z, _load_z], color=OUT, lw=0.6, dashes=(3, 2), zorder=10)   # axle (ghost)
     draw_dim_h(ax, _rc - _sp / 2, _rc + _sp / 2, 325, f"{SKATE_ROLLER_SP:.0f}mm roller pitch", offset=7, fs=5.2, color=DIM, above=True, font=FONT)
     # section A-A cut through the bottom carriage
     ax.plot([170, 170], [232, 250], color=OUT, lw=0.6, zorder=11)
@@ -758,7 +761,7 @@ def view_a(ax):
 
     # ── dimensions ──
     draw_dim_h(ax, 130, 130 + CARRIAGE_PLATE_W, 126, f"{CARRIAGE_PLATE_W:.0f}mm", offset=5, fs=5.0, color=C_CAR, above=False, font=FONT)   # carriage plate width
-    draw_dim_v(ax, 219, 134, 134 + CARRIAGE_PLATE_H, f"{CARRIAGE_PLATE_H:.0f}mm", offset=5, fs=5.0, color=C_CAR, right=True, font=FONT)     # carriage plate height
+    draw_dim_v(ax, 219, _PLATE_Z0, _PLATE_Z0 + CARRIAGE_PLATE_H, f"{CARRIAGE_PLATE_H:.0f}mm", offset=5, fs=5.0, color=C_CAR, right=True, font=FONT)     # carriage plate height
     draw_dim_v(ax, -46, 232, 308, f"{FP_RAIL_WEB:.0f}mm\nweb", offset=5, fs=5.0, color=DIM, font=FONT)                                       # depth-rail web
     draw_dim_v(ax, 108, 160, 270, "≈110mm\nfilm corner\nBELOW\nthe rail\n(BUILD_BOT)", offset=14, fs=5.4, color=DIM, font=FONT)
     ax.annotate("", xy=(224, 300), xytext=(224, 156), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=0.6))

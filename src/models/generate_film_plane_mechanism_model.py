@@ -50,7 +50,8 @@ ruby_tri = draw.ruby_tri
 C_FILM = draw.C_FILM
 C_VALVE = draw.C_VALVE
 from tbs_constants import (C_WID, FP_CORNER_SEAT_PLATE_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, FP_RAIL_WEB, RAIL_X_L, WALL_T, C_STEEL,
-                           UJOINT_OD, UJOINT_LEN, UJOINT_STUB_OD, XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN)   # film-plane builders moved from overview (Phase 1)
+                           UJOINT_OD, UJOINT_LEN, UJOINT_STUB_OD, XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN,
+                           CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_PLATE_KEEPER_EDGE)   # film-plane builders moved from overview (Phase 1)
 
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
@@ -198,20 +199,24 @@ def corner_skate_parts(cx, zc, fz, cin, ty, suffix):
     kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10          # keeper (under the top flange); Ø20 on a stub axle
     r_x0, r_len = cx - 10, 20
     P = []
-    for ry in (ty + 13, ty + 53):                        # skate nudged +5 in Y so the carriage/axle inboard ends sit BEHIND the ¼" gusset leaf on the frame back
+    RY = (ty + 13, ty + 53)                              # the two load/keeper axle Yd stations (skate nudged +5 in Y so the carriage/axle inboard ends sit BEHIND the ¼" gusset leaf on the frame back)
+    for ry in RY:
         P.append(draw.ruby_cylinder(f"Acetal roller Ø32 (wide face){suffix} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
         wax0 = min(r_x0, inb - 6)
         P.append(draw.ruby_cylinder(f"Wheel axle Ø10{suffix} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
         P.append(draw.ruby_cylinder(f"Keeper roller Ø20 (anti-lift / anti-tip){suffix} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
         P.append(draw.ruby_cylinder(f"Keeper axle Ø8{suffix} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
-    # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
-    # Spans the film-corner + load roller + keeper so every axle lands on it. TOP corners: cap 25mm below ceiling.
-    zvals = (fz, rz, kz)
-    zlo, zhi = min(zvals), max(zvals)
-    plate_top = min(zhi + 18, ov.C_HGT - 25)
-    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles){suffix}", inb - 6, ty + 7, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
-    for ry in (ty + 13, ty + 53):
-        blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
+    # Carriage plate — the ONE fabricated part, CARRIAGE_PLATE_W×H×T (×4 identical; Sheet 3 View A fab truth).
+    # Z-DATUM = the keeper row (topmost feature, kz): the plate top sits CARRIAGE_PLATE_KEEPER_EDGE above it
+    # and the plate extends DOWN CARRIAGE_PLATE_H toward the film corner — the SAME 185mm part at every corner.
+    # At a TOP corner it grows INTO the film (not up past the rail), so it clears the ceiling. Centered on the
+    # roller pair in Yd for the ≥2×Ø10 axle edge distance. Axle-retainer bolts drop DOWN through it (saddle-clamp).
+    plate_top = kz + CARRIAGE_PLATE_KEEPER_EDGE
+    plate_z0  = plate_top - CARRIAGE_PLATE_H
+    plate_y0  = (RY[0] + RY[1]) / 2 - CARRIAGE_PLATE_W / 2
+    P.append(draw.ruby_box(f"Carriage plate (bolted to skate axles){suffix}", inb - CARRIAGE_PLATE_T / 2, plate_y0, plate_z0, CARRIAGE_PLATE_T, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, color=C_CAR))
+    for ry in RY:
+        blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the plate
         P.append(draw.ruby_cylinder(f"Axle retainer bolt (thru plate){suffix} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
     # CAM RAIL-BRAKE (fp-cam-clamp, 5128A63): base on the carriage-plate top; the hold-down arm reaches
     # OUTBOARD over the channel top flange + a UHMW pad presses DOWN on it (self-reacting against the Ø32
@@ -672,12 +677,15 @@ def plane_carriage(cx, fz, zc, cin, isb, yc):
     inb = cx + cin * (chan_w / 2 + 14)
     fcx = cx + cin * FILM_INSET
     rz = zc - CD_BOT / 2 + HB_T + 16
-    cpx0c = (inb - 6) if cin > 0 else (inb - 8)
+    kz = zc + CD_BOT / 2 - HB_T - 10                      # keeper row — same Z datum as corner_skate_parts
     t = f"({int(cx)},{int(fz)})"
     P = []
-    for ry in (ty + 8, ty + 48):
+    RY = (ty + 8, ty + 48)
+    for ry in RY:
         P.append(draw.ruby_cylinder(f"Acetal skate wheel Ø32 {t} {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
-    P.append(draw.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
+    # Carriage plate — the ONE fabricated part, CARRIAGE_PLATE_W×H×T (IDENTICAL to corner_skate_parts;
+    # Sheet 3 View A). Datum'd to the keeper row, extends DOWN CARRIAGE_PLATE_H toward the film corner.
+    P.append(draw.ruby_box(f"Carriage plate {t}", inb - CARRIAGE_PLATE_T / 2, (RY[0] + RY[1]) / 2 - CARRIAGE_PLATE_W / 2, kz + CARRIAGE_PLATE_KEEPER_EDGE - CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, color=C_CAR))
     # the two cross-slide ways, RAIL-ALIGNED (fixed to the carriage) — SHARED (corner_slide_parts); the
     # U-joint (in the frame) rides them, so they keep their positions and the frame moves relative to them.
     sp = corner_slide_parts(cx, fcx, fz, cin, isb, yc)

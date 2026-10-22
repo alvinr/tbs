@@ -655,7 +655,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     draw_rect(ax, -340, -CAPT, 340, CAPT, fc=C_ALUM, lw=1.6, zorder=4)         # cap disc (Al)
     l_angle(ax, 0, 0, -RIML, LIP, LEGT, fc=C_ALUM, lw=1.4, zorder=5)           # rim-angle (L) — flat leg on cap + lip up
     draw_rect(ax, 0, -DPT, DPT, LIP + DPT, fc=C_GASKT, lw=0.8, zorder=5)       # DP8010 bead
-    draw_rect(ax, DPT, -125, SHT, LIP + 175, fc=C_LT_DRUM, lw=1.6, zorder=6)   # shell laps the lip + hangs down (drum body)
+    draw_rect(ax, DPT, -125, SHT, LIP + 125, fc=C_LT_DRUM, lw=1.6, zorder=6)   # shell laps the lip (top flush at LIP = LT_LAP_H, 25mm) + hangs down (drum body)
     rz = LIP * 0.5
     blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
     blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
@@ -696,7 +696,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     leader(ax, -LEGT, LIP - 20, -200, LIP + 55,
            f"RIM ANGLE {LT_RIM_LEG}×{LT_RIM_LEG}×{LT_RIM_T}, rolled to R{LT_CAP_OD // 2}\n6061-T6 Al — riveted to both caps",
            fs=6.5, color=C_OUT, ha="right", arrow_style="->", font=FONT)
-    leader(ax, DPT + SHT, LIP + 30, 250, LIP + 30,
+    leader(ax, DPT + SHT, LIP - 15, 250, LIP + 30,
            f"HDPE SHELL {LT_DRUM_T:.2f}mm\nlaps {LT_LAP_H}mm over the lip",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, DPT / 2, 40, 250, -30,

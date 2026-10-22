@@ -171,7 +171,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 | Rockland Liquid Light | 141 oz (double coat) | **7,050 oz** | 221 × 32oz OR contact Rockland for bulk |
 | Developer (Dektol) | 11.1 L | 555 L | As above |
 | Fixer | 15 L working | 750 L | As above |
-| Substrate (muslin) | ~101 sq ft | ~5,050 sq ft | ~400 yd of 60" muslin |
+| Substrate (muslin) | ~99 sq ft | ~4,950 sq ft | ~360 yd of 60" muslin |
 
 ### Shopping list
 

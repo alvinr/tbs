@@ -297,7 +297,8 @@ PDH_LENS_COPAL3   = 65.0  # Copal / Compur 3 board hole (standard; Compur 3 = 65
 # ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────
 # These appear hand-computed across many reports; deriving them here (and registering as facts)
 # means a focal-length or film-size change ripples to every doc that restates them.
-IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 101 sq ft (active film plane)
+IMAGE_AREA_M2        = round(FP_W * FP_H / 1e6, 2)                                 # = 9.19 m² (active film plane)
+IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 99 sq ft (active film plane)
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners (firm per fp-corner-blueprint-spec; injected via component-dependency-map cdm:XSLIDE_N)
 
 # ── Equipment zones ───────────────────────────────────────────────────────────

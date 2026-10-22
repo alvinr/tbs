@@ -39,7 +39,7 @@ The water system has three circuits (Blue/Brown/Black), pumps on the plumbing pa
 **Lighting: WHITE LIGHT — Part A is not light-sensitive in dry or dissolved form.**
 
 > **⚠ RECIPE NOT YET LOCKED — see [Sensitizer Trials](sensitizer-trials.md).** Quantities use the
-> **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **9.42 m² active
+> **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active
 > plane, TWO wet-on-wet coats** (§2.5), at the sourced muslin coverage **~120 ml/m²/coat →
 > ~2.3 L working sensitizer per print**. The **concentration tier is the open variable** — it
 > swings chemistry cost and print count by **~3×** across the three tiers. Three alternatives are given for costing/trialling.
@@ -50,9 +50,9 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 
 | Tier (per print) | AmFe (dry) | Part A water (warm) | mixed strength | AmFe for 50 prints |
 |---|---|---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->228<!-- END costing:om-amfe-g-lean --> g | ~1.15 L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->11.4<!-- END costing:om-amfe-kg-lean --> kg |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->342<!-- END costing:om-amfe-g-standard --> g** | **~1.15 L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->17.1<!-- END costing:om-amfe-kg-standard --> kg** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->684<!-- END costing:om-amfe-g-rich --> g | ~1.15 L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->34.2<!-- END costing:om-amfe-kg-rich --> kg |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->222<!-- END costing:om-amfe-g-lean --> g | ~1.15 L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->11.1<!-- END costing:om-amfe-kg-lean --> kg |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard --> g** | **~1.15 L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->668<!-- END costing:om-amfe-g-rich --> g | ~1.15 L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->33.4<!-- END costing:om-amfe-kg-rich --> kg |
 
 - [ ] 0.2.1 — Heat water to 50–60°C (a kettle left to stand for 2 minutes after boiling is ideal).
 - [ ] 0.2.2 — Weigh AmFe into a mixing jug.
@@ -70,9 +70,9 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 
 | Tier (per print) | Potassium ferricyanide | Ammonium dichromate (0.1–0.4%, trial) | Part B water |
 |---|---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->76<!-- END costing:om-ferri-g-lean --> g | 2.6–10.4 g | ~1.15 L |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->114<!-- END costing:om-ferri-g-standard --> g** | **2.6–10.4 g** | **~1.15 L** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->228<!-- END costing:om-ferri-g-rich --> g | 2.6–10.4 g | ~1.15 L |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->74<!-- END costing:om-ferri-g-lean --> g | 2.6–10.4 g | ~1.15 L |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard --> g** | **2.6–10.4 g** | **~1.15 L** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->222<!-- END costing:om-ferri-g-rich --> g | 2.6–10.4 g | ~1.15 L |
 
 - [ ] 0.3.1 — Weigh potassium ferricyanide and ammonium dichromate into a second jug.
 - [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns bright orange-red.
@@ -187,13 +187,13 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 ### 2.1 Prepare Working Sensitizer
 **Do this step just before entering — the combined sensitizer is UV-sensitive.**
 
-| For 1 print (9.42 m² active plane, **2 wet-on-wet coats**) | Volume |
+| For 1 print (<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane, **2 wet-on-wet coats**) | Volume |
 |------------------------|--------|
 | Part A | ~1.15 L |
 | Part B | ~1.15 L |
 | **Working sensitizer** | **~2.3 L** |
 
-> **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × 9.42 m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
+> **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
 
 - [ ] 2.1.1 — Pour equal volumes of Part A and Part B into a third jug. Stir gently. The mix turns yellow-green.
 - [ ] 2.1.2 — Pour into the roller tray immediately.

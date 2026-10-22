@@ -26,10 +26,10 @@
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,250 | $1,490 | $1,730 |
 | **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,244 | $1,352 | $1,457 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $267 | $274 | $279 |
-| **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,250 | $1,710 | $3,100 |
+| **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,230 | $1,680 | $3,040 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$27,761** | **$32,612** | **$39,511** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$27,741** | **$32,582** | **$39,451** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware New Cyanotype** chemistry (ferric ammonium oxalate) + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,250), Mid = Standard ½-Ware ($1,710), High = Rich full-Ware ($3,100)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -362,7 +362,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 > **⚠ Chemistry is a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** The
 > **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe**),
-> **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the 9.42 m² active plane.
+> **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane.
 > Per-print AmFe is **260–780 g** by concentration tier (Lean ⅓-Ware / Standard ½-Ware / Rich full-Ware —
 > operating-manual §0.2), so the chemistry cost spans a wide band until a tier is trialled. **Standard
 > (½-Ware) is the working default.**
@@ -370,11 +370,11 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 <!-- BEGIN costing:chemistry-7-1 -->
 | Item (50 prints) | Lean (⅓-Ware) | **Standard (½-Ware) — default** | Rich (full-Ware) | Source |
 |---|---|---|---|---|
-| Ferric ammonium oxalate (AmFe) | 11.4 kg / ~$730 | **17.1 kg / ~$1,100** | 34.2 kg / ~$2,200 | Artcraft Chemicals (~$64/kg) |
-| Potassium ferricyanide (3:1 ratio) | 3.8 kg / ~$194 | **5.7 kg / ~$291** | 11.4 kg / ~$582 | Artcraft Chemicals ($51/kg) |
+| Ferric ammonium oxalate (AmFe) | 11.1 kg / ~$710 | **16.7 kg / ~$1,070** | 33.4 kg / ~$2,140 | Artcraft Chemicals (~$64/kg) |
+| Potassium ferricyanide (3:1 ratio) | 3.7 kg / ~$189 | **5.6 kg / ~$286** | 11.1 kg / ~$566 | Artcraft Chemicals ($51/kg) |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Artcraft Chemicals |
 | Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~360 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
-| **Cyanotype total — 50 prints** | **~$1,250** | **~$1,710** | **~$3,100** | |
+| **Cyanotype total — 50 prints** | **~$1,230** | **~$1,680** | **~$3,040** | |
 <!-- END costing:chemistry-7-1 -->
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
@@ -398,7 +398,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype** | **~<!-- BEGIN costing:s73-50run-range -->$1,400–3,250<!-- END costing:s73-50run-range -->** (Std ~<!-- BEGIN costing:s73-50run-std -->$1,850<!-- END costing:s73-50run-std -->)‡ | **~<!-- BEGIN costing:s73-pp-range -->$28–65<!-- END costing:s73-pp-range -->** (Std ~<!-- BEGIN costing:s73-pp-std -->$37<!-- END costing:s73-pp-std -->)‡ | None — easiest |
+| **Cyanotype** | **~<!-- BEGIN costing:s73-50run-range -->$1,400–3,200<!-- END costing:s73-50run-range -->** (Std ~<!-- BEGIN costing:s73-50run-std -->$1,850<!-- END costing:s73-50run-std -->)‡ | **~<!-- BEGIN costing:s73-pp-range -->$28–64<!-- END costing:s73-pp-range -->** (Std ~<!-- BEGIN costing:s73-pp-std -->$37<!-- END costing:s73-pp-std -->)‡ | None — easiest |
 | Gum bichromate | ~$5,150 | ~$103 | Hazmat shipping (dichromate) |
 | Van Dyke Brown | ~$11,000 | ~$220 | DEA form; AgNO₃ price volatility |
 | Ilford RC paper | ~$20,500 | ~$410 | Paper rolls very expensive at this size |
@@ -537,10 +537,10 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,250 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,244 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $267 |
-| Cyanotype chemistry + substrate (50 prints) | $1,250 |
+| Cyanotype chemistry + substrate (50 prints) | $1,230 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$27,191** |
+| **Scenario A total** | **~$27,171** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -560,11 +560,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,490 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,352 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $274 |
-| Cyanotype chemistry + substrate (50 prints) | $1,710 |
+| Cyanotype chemistry + substrate (50 prints) | $1,680 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$32,922** |
+| **Scenario B total (excl. CDL)** | **~$32,892** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -572,11 +572,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,022 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,992 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$121,522–$151,522** |
+| **Scenario C total** | **~$121,492–$151,492** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

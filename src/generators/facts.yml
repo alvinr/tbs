@@ -248,6 +248,13 @@ image_area_sqft:
   owner: project-summary.md
   aliases:
     - '[Ii]mage area\s*\|\s*~?(\d+)\s*sq ft'
+
+# Active image-plane area in m² (= IMAGE_AREA_M2). The chemistry-coverage basis restated in the
+# operating-manual / sensitizer-trials / cost docs. INJECTION-ONLY (a bare "9.19" would false-positive).
+image_area_m2:
+  constant: IMAGE_AREA_M2
+  unit: m2
+  owner: photosensitive-plane-options.md
     - '~?(\d+)\s*sq ft each'
     - '~?(\d+)\s*sq ft \(active'
     - '~?(\d+)\s*sq ft active'

@@ -65,13 +65,13 @@ The **per-print masses are under trial** — two wet-on-wet coats at a diluted W
 <!-- BEGIN parts:chemistry -->
 | Reagent | Supplier | Lean ⅓-Ware | Standard ½-Ware (default) | Rich full-Ware |
 |---|---|---|---|---|
-| Ferric ammonium oxalate (AmFe) | Artcraft Chemicals | 11.4 kg / $732 | 17.1 kg / $1,098 | 34.2 kg / $2,196 |
-| Potassium ferricyanide | Artcraft Chemicals | 3.8 kg / $194 | 5.7 kg / $291 | 11.4 kg / $582 |
+| Ferric ammonium oxalate (AmFe) | Artcraft Chemicals | 11.1 kg / $713 | 16.7 kg / $1,072 | 33.4 kg / $2,144 |
+| Potassium ferricyanide | Artcraft Chemicals | 3.7 kg / $189 | 5.6 kg / $286 | 11.1 kg / $566 |
 | Ammonium dichromate | Artcraft Chemicals | $25 | $25 | $25 |
-| **Chemistry subtotal** | | **$951** | **$1,414** | **$2,802** |
+| **Chemistry subtotal** | | **$926** | **$1,383** | **$2,735** |
 | Unbleached muslin (substrate) | Fabric Direct | $300 | $300 | $300 |
-| **Total (50 prints)** | | **$1,251** | **$1,714** | **$3,102** |
-| **Per print** | | **$25** | **$34** | **$62** |
+| **Total (50 prints)** | | **$1,226** | **$1,683** | **$3,035** |
+| **Per print** | | **$25** | **$34** | **$61** |
 <!-- END parts:chemistry -->
 
 *No fixer required. Development in plain cold water. No darkroom required for processing.*

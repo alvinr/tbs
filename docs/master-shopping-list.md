@@ -22,10 +22,10 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,244 | $1,457 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $267 | $279 |
 | 8. Cooling & ventilation | $748 | $898 |
-| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,711** | **~$36,571** |
+| **TOTAL (base build + 50-print run)** | **~$27,691** | **~$36,511** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -107,9 +107,9 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Ammonium dichromate](https://artcraftchemicals.com/products/ammonium-bi-dichromate-part-1022) | 1 run | Artcraft Chemicals | chemistry | $25 |
-| [Ferric ammonium oxalate (AmFe)](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527) | 17.1 kg | Artcraft Chemicals | chemistry | $1,098 |
-| [Potassium ferricyanide](https://artcraftchemicals.com/products/potassium-ferricyanide-part-1275) | 5.7 kg | Artcraft Chemicals | chemistry | $291 |
-| **chemistry-reagents subtotal** | | | | **$1,414** |
+| [Ferric ammonium oxalate (AmFe)](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527) | 16.7 kg | Artcraft Chemicals | chemistry | $1,072 |
+| [Potassium ferricyanide](https://artcraftchemicals.com/products/potassium-ferricyanide-part-1275) | 5.6 kg | Artcraft Chemicals | chemistry | $286 |
+| **chemistry-reagents subtotal** | | | | **$1,383** |
 
 ### container
 
@@ -506,7 +506,7 @@ indicative low–high estimates — get quotes before ordering.
 | Home Depot | 55 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,711–$1,887 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
+| Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
 | Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | US Plastic Corp | 13 | plastics-sheet, plumbing-fittings | $1,001 |
@@ -572,11 +572,11 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 **recipe + per-print basis** only.*
 
 **Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
-+ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 9.42 m² active plane.
++ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane.
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
-| Ferric ammonium oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->342<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.1<!-- END costing:om-amfe-kg-standard --> kg |
+| Ferric ammonium oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | 130g | 6.5 kg |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
 | Distilled water | ~2.6 L | ~130 L |

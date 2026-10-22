@@ -405,6 +405,28 @@ _SANCTIONED_SOLID = [
     ("feed hose", "feed hose", "one continuous feed-hose run (adjacent bend segments)"),
     ("retaining bar", "d-ring holder", "D-ring lashing holder mounted on the front retaining bar"),
     ("arm tube", "telescoping pole", "spray-bar arm — telescoping pole in a concentric sliding fit"),
+    # — Light-trap HOUSING/DRUM skin — thin CONCENTRIC ARCS + seated slots (2026-10-22, Group-1 review).
+    #   --solids is AABB-based (_ovl_vol); the LT is built from thin arcs at different radii (housing Ø800,
+    #   drum/rim Ø755) + slotted/seated skin, so bounding boxes over-count massively while the real curved
+    #   surfaces seat or clear. The owning 2D fab sheets (RLT Sheet 2 housing cut / 3 drum cut / 4 shell-cap
+    #   lap / 7 seals / 9 housing→frame / 10 top-end lap) draw these as designed.
+    ("rim-angle", "cap", "rim-angle lip (thin 280° arc) seats on the cap rim — AABB over-count vs the cap disc, no interpenetration"),
+    ("rim-angle", "housing arc", "rim-angle (Ø755 drum) vs housing arc (Ø800) — concentric, ~22mm radial gap; AABB over-count, surfaces clear"),
+    ("rim-angle", "header band", "rim-angle vs the concentric housing sill/header band — AABB over-count of thin arcs"),
+    ("rim-angle", "edge channel", "rim-angle + drum edge channel both ride the drum rim (riveted) — AABB over-count"),
+    ("rim-angle", "wiper", "rim-angle vs the drum wiper holder on the rim — AABB over-count, clear"),
+    ("rim-angle", "h-mullion", "rim-angle (drum) vs H-mullion (housing opening edge) — different radii, AABB over-count"),
+    ("h-mullion", "housing arc", "housing arc edge slides into the H-divider slot (weld-free seam, Sheet 2/9) — seated by design"),
+    ("h-mullion", "header band", "sill/header band slides into the H-mullion opposite slot (Sheet 2) — seated by design"),
+    ("h-mullion", "skin extension", "housing skin slides into the H-mullion slot — seated by design"),
+    ("h-mullion", "extension band", "housing extension band slides into the H-mullion slot — seated by design"),
+    ("h-mullion", "cap", "H-mullion (housing edge) vs drum cap — different radii, AABB over-count"),
+    ("h-mullion", "edge channel", "H-mullion (housing edge) vs drum edge channel — different radii, AABB over-count"),
+    ("h-mullion", "wiper", "H-mullion vs the drum wiper holder — different radii, AABB over-count"),
+    ("cap", "header band", "drum cap vs the concentric housing sill/header band — AABB over-count"),
+    ("cap", "edge channel", "drum cap vs its own drum edge channel on the rim (seated) — AABB over-count"),
+    ("edge channel", "wiper", "drum edge channel + wiper holder both on the drum opening rim (riveted/bonded) — AABB over-count"),
+    ("housing arc", "header band", "housing arc + its own sill/header band — one housing skin assembly, seated"),
 ]
 
 

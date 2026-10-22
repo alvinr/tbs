@@ -123,6 +123,13 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     the 4,023/1,835/963/691 cm³ ones), the **film-plane 2×2 angle frame corners** (4, bolted — lap vs
     butt?), and the **carriage-plate↔clamp-spacer** stack (4, film-plane precision). Confirm each as
     as-designed → sanction, or fix the box-model → butt. No model geometry changed this pass.
+  - **GROUP 1 (Light-Trap housing/drum) RESOLVED 2026-10-22.** Owner review found the 3D `--solids` numbers
+    there are AABB over-counts — the LT is thin CONCENTRIC ARCS (housing Ø800, drum/rim Ø755) + slotted/seated
+    skin, so bounding boxes over-count while surfaces seat or clear. Sanctioned the 17 housing/drum skin
+    pair-types (each with its reason) and **fixed one genuine 2D bug the review surfaced** — RLT Sheet 4's
+    shell→cap lap drew the shell ~50mm past the 25mm rim lip (now `LIP+125`, flush at `LT_LAP_H`).
+    **56 → 8 OPEN (95 → 143 sanctioned).** Residual 8 = Group 2 (film-frame 2×2 corners) + Group 3
+    (carriage↔clamp), still pending review.
   - **Film-plane blueprint Phase-0 triage (2026-09-05, `filmplane-bp`).** Ran `check_interference.py`
     against the live `film-plane-mechanism` model. **Pipe/solid OPEN = 0.** `--solids` = **165 OPEN**,
     dominated by U-channel **web↔flange self-overlap** (one-piece extrusion modeled as boxes — intentional),

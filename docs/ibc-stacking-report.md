@@ -116,7 +116,7 @@ and the walkway-arm connection are validated and scheduled in §3.4–3.6 alongs
 | Anti-slip matting | **4 × certified anti-slip mat (μ ≥ 0.6)** under the tote interfaces (2 on the floor + 2 on the lower-tote cage tops) — raises the sliding friction that credits against the forward thrust (§3.4) |
 | Wall joist hangers | **8 × identical 2-bolt Simpson-style U-pocket** — one per bar (the pair uses identical hangers for fab simplicity), each **through-bolted (2 × M12×70) to an exterior backing plate** (M12×70 spans the 8mm plate + corrugation + 4mm hanger grip). Wall penetrations unchanged at 16 |
 | Exterior backing plates | 8 × 60 × 205 × 8mm steel (one per hanger), on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
-| Weld-on lashing rings | 8 on the front bars (4 per tier); 3,333 lb (~1,512 kg) assembly WLL (2" strap-limited), 2 straps per stack |
+| Weld-on lashing rings | 8 on the front bars (4 per tier); 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL (2" strap-limited), 2 straps per stack |
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
 | Frame weight | ~123 kg (4 uprights + rings + 4 feet + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 mats — see [weight report](weight-distribution-report.md)) |
 | Joints | Welded (fillet weld throughout — sizes scheduled in §3.5); the walkway-arm connection is a bolted end-plate (J6), not a frame weld |
@@ -139,7 +139,7 @@ when the container is moved by road — and, because the camera is designed to r
 (disconnected from mains water and power), it is transported with **water aboard**. The restraint is
 therefore designed for the loaded case, not just the drained one.
 
-**Load basis — [EN 12195-1:2010](https://cdn.standards.iteh.ai/samples/32961/4592590bcf194f1a8ffa917a5db7d258/SIST-EN-12195-1-2011.pdf)** (the European cargo-securing standard for road transport). Design accelerations: **0.8 g forward** (braking), 0.5 g rearward, 0.5 g lateral, with **1.0 g vertical** in the friction term; safety factor **f_s = 1.25 forward / 1.1 otherwise** ([Table 2 + §5](https://hvttforum.org/wp-content/uploads/2019/11/Johansson-International-guidelines-on-safe-load-securing-for-road-transport.pdf)). A blocking (positive-restraint) device must carry **BC ≥ f_s · m · g · (c − μ·c_z)** — the inertia demand less the friction credit. Sliding friction **μ = 0.20** bare (the conservative fallback for an unlisted plastic-pallet-on-steel pairing), rising to **μ = 0.60** with certified anti-slip matting ([EN 12195-1 Annex B](https://res.jedermann.de/data/downloads/KB029-2_Gesamtdokument.pdf)). Forward (0.8 g) governs: it is the only direction with no wall to trap the totes (the side walls trap laterally, the sealed end wall rearward). The design mass is a full top-tier Blue tote, **965 kg** (65 kg tare + 900 L). Computed in [`ibc_frame_load.py`](https://github.com/alvinr/tbs/blob/main/src/generators/ibc_frame_load.py).
+**Load basis — [EN 12195-1:2010](https://cdn.standards.iteh.ai/samples/32961/4592590bcf194f1a8ffa917a5db7d258/SIST-EN-12195-1-2011.pdf)** (the European cargo-securing standard for road transport). Design accelerations: **0.8 g forward** (braking), 0.5 g rearward, 0.5 g lateral, with **1.0 g vertical** in the friction term; safety factor **f_s = 1.25 forward / 1.1 otherwise** ([Table 2 + §5](https://hvttforum.org/wp-content/uploads/2019/11/Johansson-International-guidelines-on-safe-load-securing-for-road-transport.pdf)). A blocking (positive-restraint) device must carry **BC ≥ f_s · m · g · (c − μ·c_z)** — the inertia demand less the friction credit. Sliding friction **μ = 0.20** bare (the conservative fallback for an unlisted plastic-pallet-on-steel pairing), rising to **μ = 0.60** with certified anti-slip matting ([EN 12195-1 Annex B](https://res.jedermann.de/data/downloads/KB029-2_Gesamtdokument.pdf)). Forward (0.8 g) governs: it is the only direction with no wall to trap the totes (the side walls trap laterally, the sealed end wall rearward). The design mass is a full top-tier Blue tote, **965 kg** (65 kg tare + <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L). Computed in [`ibc_frame_load.py`](https://github.com/alvinr/tbs/blob/main/src/generators/ibc_frame_load.py).
 
 The forward thrust is blocked by the **front retaining bars**, seated in the 25mm film-rail slot — which limits each bar to a **20mm depth in the load direction** (weak-axis bending). A single bar per tote face fails this case (bending SF **0.79**). The design therefore uses **two bars per tote face** sharing the thrust, plus certified anti-slip matting to cut the demand:
 
@@ -156,7 +156,7 @@ The two bars give **defense in depth**: as positive blocking they pass on their 
 - **Front retaining bars** (two per tote face, 50×20×3 RHS, ~1,046mm span) share each tote's forward (−X) thrust into the floor feet + wall hangers.
 - **Wall joist hangers** — **one identical 2-bolt hanger per bar** (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each **through-bolted (2 × M12×70) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. Total wall penetrations stay at 16 (8 hangers × 2 bolts = the old 4 × 4). M12×70 (partial thread, the single standardized zinc wall length) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger). **Both ends of the bar now use the SAME L-cleat** — the corridor-end **J2** and the wall-end **J7** each drop the bar into an L-angle and run a single horizontal M12×65 through the L's vertical leg + the bar's 50mm web, with a small nut-side **backing plate** spreading the load into the bar's far web.
 - **Anti-slip matting** (certified μ ≥ 0.6) under each tote interface is the primary friction lever — it triples the effective margin and directly answers the "totes must not shift" requirement.
-- **Weld-on lashing rings + 2 straps/stack** (3,333 lb / ~1,512 kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.
+- **Weld-on lashing rings + 2 straps/stack** (3,333 lb / ~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.
 - **Floor feet** (150×150×12, 4 × M12 each) bolt to a shared floor-anchor sub-plate (§3.4a) that self-taps into the steel cross-members, anchoring the uprights against uplift and transferring loads into the container structure.
 
 **Service + walkway load cases** (the same frame also carries the plumbing panel and the walkway — both **non-governing** vs the transport case):
@@ -189,7 +189,7 @@ are the standard values for the grade.
 | J8 | Rear-panel L-bracket → back upright (post leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 6 = 12 | driven to seat — no torque spec (self-drilling; light static panel load) | bonded washer | thread-forming, self-locking |
 | J9 | Side-panel pipe-run L-bracket → side post (weld leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 12 = 24 | driven to seat — no torque spec (self-drilling; light pipe load) | bonded washer | thread-forming, self-locking |
 
-Straps: 2 × 2″ ratchet strap per stack, ratcheted to the 3,333 lb (~1,512 kg) assembly WLL — no torque.
+Straps: 2 × 2″ ratchet strap per stack, ratcheted to the 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL — no torque.
 
 Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20](https://crafter.fastenal.com/static-assets/pdfs/technical-resources/Torque-Tension-Relationship-for-Metric-Fasteners-Property-Class-4.6-8.8-10.9-12.9.pdf)) to 93 N·m ([Bossard preload/torque, µ = 0.14](https://assets.eu.ctfassets.net/0vp0u5uh75zd/3S40LEUM235Qk3rJk2phR1/c715f9f45232756c12b59aa681c7fede/060_074_Preload_tightening_torques_Fastening_EN_01_2025.pdf)); M12 A2-70 ≈ 51 N·m (µ = 0.10, [Bossard austenitic-stainless table](https://assets.eu.ctfassets.net/0vp0u5uh75zd/3S40LEUM235Qk3rJk2phR1/c715f9f45232756c12b59aa681c7fede/060_074_Preload_tightening_torques_Fastening_EN_01_2025.pdf)); #14 self-drillers are driven to seat, not torqued ([ITW Buildex TEKS technical guide](https://www.tannerbolt.com/media/akeneo_connector/media_files/T/e/Teks_Select_Technical_Guide_Steel_to_Steel_4_5_56b0.pdf)).
 
@@ -339,7 +339,7 @@ The fabricated (non-stick) parts — the foot plate, the exterior wall backing p
 |-----------|-------|
 | Quantity | 8 total (4 per tier) |
 | Type | 1½" (38mm) ID weld-on tie-down ring, ½" thick, zinc-plated steel |
-| Working load limit | 6,600 lb (2,994 kg) ring — assembly strap-limited to 3,333 lb (~1,512 kg) |
+| Working load limit | 6,600 lb (2,994 kg) ring — assembly strap-limited to 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) |
 | Mounting | Fillet-welded directly to the front retaining bars (integrated weld base — no separate plate) |
 | Supplier | McMaster-Carr #3028T31 |
 
@@ -348,7 +348,7 @@ The fabricated (non-stick) parts — the foot plate, the exterior wall backing p
 | Parameter | Value |
 |-----------|-------|
 | Type | 2" (50mm) ratchet strap (Keeper 82827) |
-| Working load limit | 3,333 lb (~1,512 kg) |
+| Working load limit | 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) |
 | Routing | ring to ring, over IBC top, 1 strap per tier per side |
 | Total straps | 4 (2 per tier) |
 | Pre-transport | Tighten all straps; re-check tension after 50 km |

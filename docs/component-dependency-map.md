@@ -218,7 +218,7 @@ AC isolation/GFCI/equipotential-bonding: [Electrical §7.6](electrical-report.md
 | Battery bank height range | 100–600mm | `BA_H_LO`, `BA_H_HI` |
 
 *Components: 3× 200W monocrystalline solar panels (roof-mounted), Victron SmartSolar MPPT 100/50,
-1× 100Ah LiFePO4 battery (1,200Wh standard; 2nd pack ghosted = plug-in → 200Ah / 2,400Wh),
+1× 100Ah LiFePO4 battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh -->Wh standard; 2nd pack ghosted = plug-in → 200Ah / 2,400Wh),
 Victron Blue Smart IP65 shore charger, NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit
 fuse block, IP65 enclosure (300×200×130mm). Battery protection chain: 200A MRBF terminal fuse →
 ML-RBS remote contactor → m-Series main disconnect; external emergency E-stop on the power-panel

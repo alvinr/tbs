@@ -193,6 +193,33 @@ spray_bar_nozzle_count:
   unit: nozzles
   owner: processing-tray-and-spray-bar.md
 
+# Blue supply fill level per tote (= BLUE_FILL_PER_TOTE_L). INJECTION-ONLY — a bare "900" is
+# polysemous (900mm structural dims abound), so it is filled only where a placeholder marks it.
+blue_fill_per_tote_l:
+  constant: BLUE_FILL_PER_TOTE_L
+  unit: L
+  owner: water-system-report.md
+
+# Shurflo 2088 demand-pump current draw (= PUMP_DRAW_A, 90W / 12V). INJECTION-ONLY.
+pump_current_a:
+  constant: PUMP_DRAW_A
+  unit: A
+  owner: plumbing-report.md
+
+# Battery usable energy per 100Ah pack (= BATTERY_WH). INJECTION-ONLY.
+battery_usable_wh:
+  constant: BATTERY_WH
+  unit: Wh
+  owner: electrical-report.md
+  display: comma
+
+# Ratchet-strap assembly WLL in kg (= STRAP_ASSY_WLL_KG, from the 3,333 lb strap rating). INJECTION-ONLY.
+strap_assembly_wll_kg:
+  constant: STRAP_ASSY_WLL_KG
+  unit: kg
+  owner: ibc-stacking-report.md
+  display: comma
+
 # Evaporative-cooler rated airflow — Hessaire MC18M spec, restated in ventilation §5.1/§9/§11.
 # INJECTION-ONLY (no aliases): 200/300/400 CFM also appear for the fans/duct, so a CFM-value
 # alias would false-positive; filled only where a placeholder marks the cooler rating.

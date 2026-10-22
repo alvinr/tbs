@@ -19,7 +19,7 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 
 | Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1,000L IBC totes (1,800L working fill total — 900L each), stacked side-by-side |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1,000L IBC totes (1,800L working fill total — <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L each), stacked side-by-side |
 | **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1,000L IBC tote, stacked below Blue IBCs |
 | **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1,000L IBC tote, stacked below Blue IBCs |
 
@@ -88,7 +88,7 @@ Volume per flood = 103 sq ft × (6mm / 304.8) = 103 × 0.0197 ft = 2.03 cu ft
 | With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** | ~224 gal reused |
 | Brown recycle limit (3 passes) | — | — | 166 gal max before going to Black |
 
-**~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply run** — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× 900L) with Brown recycling for wash 2.
+**~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply run** — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L) with Brown recycling for wash 2.
 
 **Water balance — recovered vs. consumed.** Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply, a 14-print run processes ~1,690L
 (leaving ~110L of dregs, under one print): ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
@@ -102,7 +102,7 @@ for its exhausted-state transport mass — 4,546 kg, ~540 kg below the loaded st
 
 #### Extending capacity beyond 14 prints
 
-**Maximizing the initial load.** The standard 900L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) leaves a little
+**Maximizing the initial load.** The standard <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) leaves a little
 residue in each 1,000L tote; topping toward the ~950–1,000L tote limit (~1,900–2,000L) buys ~1–2 more prints
 (~15–16), transport-validated to a worst-case static tip of 41.0° (see
 [weight report §4.4](weight-distribution-report.md)). To actually realize those extra prints the
@@ -127,9 +127,9 @@ return-haul limit). See the [Operating Manual](operating-manual.md) for the top-
 ### 4.1 Blue System — Clean Water Supply
 
 ```
-IBC-1 (900L) ──┐
+IBC-1 (<!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L) ──┐
                 ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-05 → Distribution
-IBC-2 (900L) ──┘                                                      │
+IBC-2 (<!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
                                                               ↓ (Processing tray)
@@ -281,15 +281,15 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 
 | Item | Current draw | Hours/print | Wh/print |
 |------|-------------|-------------|---------|
-| P-01 Blue pump (Shurflo 2088) | 7.5 A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
-| P-02 Filter-loop feed pump (Shurflo 2088) | 7.5 A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
-| P-03 Waste pump (Shurflo 2088) — *IBC corridor* | 7.5 A @ 12V | intermittent (waste disposal only) | — |
-| P-04 Tray drain transfer pump (Shurflo 2088) | 7.5 A @ 12V | 0.08 hr (5 min run) | 7.5 Wh |
-| P-05 Brown drain-out pump (Shurflo 2088) — *IBC corridor* | 7.5 A @ 12V | intermittent (drain-out only) | — |
+| P-01 Blue pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
+| P-02 Filter-loop feed pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
+| P-03 Waste pump (Shurflo 2088) — *IBC corridor* | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | intermittent (waste disposal only) | — |
+| P-04 Tray drain transfer pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.08 hr (5 min run) | 7.5 Wh |
+| P-05 Brown drain-out pump (Shurflo 2088) — *IBC corridor* | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | intermittent (drain-out only) | — |
 | pH meter | <0.1 A | — | <1 Wh |
 | **Total per print** | | | **~46 Wh** |
 
-A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.
+A 100 Ah 12V lithium battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh --> Wh usable) provides **>25 prints** of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.
 
 ---
 
@@ -451,7 +451,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 
 4. **IBC-4 waste transport:** Ensure IBC cap is sealed and ball valve is closed before transport. Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright. Drain remotely via external bulkhead port to a disposal tanker.
 
-5. **Electrical:** Each pump draws 7.5A at 12V. All five pumps share a single **Circuit C** (12V, 15A fuse, 14 AWG) and run **one at a time**, so the single feed carries them — see [Plumbing Report §3.2](plumbing-report.md).
+5. **Electrical:** Each pump draws <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A at 12V. All five pumps share a single **Circuit C** (12V, 15A fuse, 14 AWG) and run **one at a time**, so the single feed carries them — see [Plumbing Report §3.2](plumbing-report.md).
 
 ---
 

@@ -68,7 +68,7 @@ load case). Follows [`fp-corner-blueprint-spec.md`](fp-corner-blueprint-spec.md)
 | Wall joist hangers | 8 × Simpson-style **4 mm folded U-pocket** (one per bar), each **through-bolted 2× M12×70 Gr.8.8** (91280A732) to an exterior backing plate (16 wall penetrations) |
 | Exterior backing plates | 8 × **60×205×8** steel, OUTSIDE the corrugated side wall (hex heads out), 2× M12 holes each — spreads tote thrust so bolts can't pull through the thin wall |
 | Weld-on lashing rings | 8 × 1½" weld-on (3028T31), 6,600 lb ring WLL; on the front bars (4/tier × 2 tiers) |
-| Ratchet straps | 4 × 2" (50 mm), 3,333 lb (~1,512 kg) assembly WLL |
+| Ratchet straps | 4 × 2" (50 mm), 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL |
 | Joints | fillet weld throughout (sizes to be scheduled — Phase B) |
 
 ## Load basis — EN 12195-1:2010
@@ -90,7 +90,7 @@ Sources: [EN 12195-1:2010 (SIST preview — Table 2, §5, Annex B)](https://cdn.
 
 **Design mass — RESOLVED ("design for both").** Both states carried: **drained** (nominal — totes
 site-filled, 65 kg tare) and **loaded** (self-contained transport, a full top-tier Blue tote ≈ **965 kg**,
-900 L + tare, high CG). The restraint is sized so the loaded case passes; the drained case then clears
+<!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L + tare, high CG). The restraint is sized so the loaded case passes; the drained case then clears
 ≥ 12× everywhere.
 
 ## Phase A — Structural validation (compute demand vs capacity, with SF)

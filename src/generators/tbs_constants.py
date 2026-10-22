@@ -758,6 +758,14 @@ PUMP_D       = 114     # pump protrusion from panel face in -X direction (mm) �
 PUMP_YD_SPAN = 127     # pump body width in Yd direction (mm) — Shurflo 2088 width
 PUMP_X       = EQPANEL_X - PUMP_D   # = 4900 — pump zone left edge X for elevation views
 PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevation views
+
+# ── 12V DC house bus — electrical power ratings (single home; energy-budget imports these) ──
+DC_BUS_V            = 12                                     # 12V DC house bus (pumps, lighting, cooler, battery)
+PUMP_DRAW_W         = 90                                     # Shurflo 2088 demand-pump electrical draw (W) — Circuit C, one pump at a time
+PUMP_DRAW_A         = round(PUMP_DRAW_W / DC_BUS_V, 1)       # = 7.5A @ 12V (datasheet: 7.5A × 12V = 90W)
+BATTERY_AH_PER_PACK = 100                                    # LiFePO4 pack Ah (standard build = 1 pack; busbar provisioned for a 2nd parallel pack)
+BATTERY_V           = DC_BUS_V                               # battery nominal = bus voltage
+BATTERY_WH          = BATTERY_AH_PER_PACK * BATTERY_V        # = 1200 Wh usable per pack (LiFePO4 ~100% usable)
 PUMP_H_LO    = 1370    # pump zone bottom Z (mm) — above filter stack + 40mm gap [+50 walkway raise; was 1320]
 PUMP_H_HI    = 2270    # pump zone top Z (mm) — includes ACC-01 top [+50 walkway raise; was 2220]
 PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of corridor
@@ -859,6 +867,8 @@ IBC_W       = 1219   # IBC overall width  (mm) — US 48" pallet format, include
 IBC_D       = 1016   # IBC overall depth  (mm) — US 40" pallet format, includes cage
 IBC_H_600   = 1010   # 640L IBC overall height (mm) — includes pallet base + cage + bottle
 IBC_H_STK   = 2020   # 2× stacked height (mm)
+STRAP_ASSY_WLL_LB = 3333                                   # 2" ratchet-strap assembly working load limit (lb) — strap-limited (the 6,600 lb ring is not the governing limit)
+STRAP_ASSY_WLL_KG = round(STRAP_ASSY_WLL_LB * 0.45359237)  # = 1512 kg
 # ibc-reconfig-v2 (2026-06): all four positions standardize on the 275-gal (≈1000 L)
 # caged composite — the only food-grade, 48×40-footprint tote our supplier (Container
 # Exchanger) stocks; a compatible 600 L tote does NOT exist, so "600 L"/"1000 L" are
@@ -1066,6 +1076,7 @@ def tray_gutter_floor_z(x):
 # facts.yml references PRINTS_PER_RESUPPLY via `constant:`; energy-budget imports these (one source).
 L_PER_GAL             = 3.78541
 BLUE_SUPPLY_L         = 1800    # usable clean-water (Blue) volume — 2× 900L gravity fill (~476 gal)
+BLUE_FILL_PER_TOTE_L  = BLUE_SUPPLY_L // 2    # = 900L gravity fill per Blue tote (a FILL LEVEL, not the 1000L tote size)
 TRAY_FLOOD_DEPTH_MM   = 6       # one process flood depth (¼") over the tray footprint
 BLUE_WASHES_PER_PRINT = 2       # washes 1 & 3 draw Blue; wash 2 recycles from Brown
 TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.6 → 16

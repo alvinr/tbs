@@ -13,14 +13,16 @@ Run:  python3 calculate_energy_budget.py
 
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
-from tbs_constants import EVAP_COOLER_W_BUS  # noqa: E402
+from tbs_constants import (  # noqa: E402
+    EVAP_COOLER_W_BUS, PUMP_DRAW_W, BATTERY_AH_PER_PACK as _BATTERY_AH_PER_PACK, DC_BUS_V,
+)
 
 # ── Circuit power ratings (watts) ─────────────────────────────────────────────
 # From electrical-report.md §3 Power Budget table
 
 FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC Infinity S6)
 FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
-PUMP_W          = 90    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time)
+PUMP_W          = PUMP_DRAW_W    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time); source: tbs_constants
 SAFELIGHT_W     = 40    # Circuit D — 12V red COB safelight strip (SBL, 1× 5m reel @ 2.4 W/ft ≈ 40W / 3.3A)
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
 ACTUATOR_W      = 100   # Circuit F — film plane actuators (optional, peak)
@@ -31,10 +33,10 @@ WHITE_LIGHT_W   = 106   # Circuit G — 12V COB LED strip (HitLights 4000K): 3×
 # Standard build = 1× 100Ah pack (cost). The distribution busbar + fuse block are
 # provisioned for a 2nd 100Ah in parallel as a plug-in expansion (no rewiring) —
 # the autonomy model below reports both 1- and 2-pack reserves.
-BATTERY_AH_PER_PACK = 100
+BATTERY_AH_PER_PACK = _BATTERY_AH_PER_PACK   # source: tbs_constants
 STANDARD_PACKS      = 1     # fitted in the standard build (2nd is ghosted/optional)
 BATTERY_AH      = STANDARD_PACKS * BATTERY_AH_PER_PACK
-BATTERY_V       = 12    # nominal voltage
+BATTERY_V       = DC_BUS_V   # nominal voltage; source: tbs_constants
 DOD             = 1.0   # LiFePO4: 100% depth of discharge usable
 
 # ── Solar array ───────────────────────────────────────────────────────────────

@@ -263,8 +263,8 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   actionable rows (identity / source-price); the bare **PRICE-VERIFY** sweep is **DEFERRED to near-
   fabrication** (2026-10-02 call: accept the current estimates, re-price everything closer to build —
   see the Bucket-1 re-price item + the `parts.py` reminder). Currently open: **1 IDENTIFY** (`pdh-washer`
-  neoprene seal) + **4 SOURCE-PRICE** (`interior-ventilation`, `spray-retainer-clips`, `cooler-power-cable`,
-  `water-powerpole`). The SKU↔supplier flags were false positives (Grainger SKUs share McMaster's format)
+  neoprene seal) + **3 SOURCE-PRICE** (`spray-retainer-clips`, `cooler-power-cable`, `water-powerpole`) —
+  `interior-ventilation` was **retired** 2026-10-02 (vestigial double-count). The SKU↔supplier flags were false positives (Grainger SKUs share McMaster's format)
   and are resolved — the worklist now carries the lint's URL exemption.
   Workflow: `build_parts_worklist.py` → fill `parts-worklist.csv` (new_* cols, merges on re-run) →
   `apply_parts_csv.py src/generators/parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.

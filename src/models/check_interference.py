@@ -385,6 +385,26 @@ _SANCTIONED_SOLID = [
     ("u-rail", "saddle seat", "film depth-rail bears on its wall-seat saddle (336)"),
     ("u-rail", "saddle upstand", "film depth-rail END butts/bolts to the saddle upstand (inside-face joint, 336)"),
     ("pivot post", "roof mount plate", "pivot post seated in its roof mount"),
+    # — Welded FRAME joints / bearing fits / one-piece parts — model-wide --solids pass (2026-10-22).
+    #   Deliberately NOT here (left OPEN pending a seat/slot-depth design review): the light-trap HOUSING
+    #   SKIN seats — H-mullion↔arc/band/cap, rim-angle↔cap/arc/edge-channel, edge-channel↔wiper.
+    ("drum frame rail", "drum frame rail", "one welded drum frame (rail↔rail corner joints)"),
+    ("drum frame rail", "drum frame post", "welded drum frame joint (rail↔post)"),
+    ("drum frame rail", "axle beam", "drum axle beam welded across the frame rails"),
+    ("drum frame rail", "channel support strip", "channel-support strip spans rail-to-rail, riveted/welded to the frame"),
+    ("ep box shroud", "ep box shroud", "one-piece EP penetration-box shroud (faces drawn as boxes)"),
+    ("wall hanger plate", "wall hanger l-upstand", "one welded wall-hanger L (plate + upstand)"),
+    ("long beam", "ribbon support cross-beam", "ribbon-support cross-beam welded to the RWk long beam"),
+    ("rear-panel bracket", "rear-panel bracket", "one formed rear-panel bracket (post leg + upstand)"),
+    ("tilt frame", "tilt frame", "one welded film-plane tilt frame (rails + legs)"),
+    ("bearing collar", "stub", "drum bearing collar on its stub / Ø160 stub flange (press/bolted fit)"),
+    ("drum top shaft", "stub flange", "drum top shaft through its Ø160 stub flange"),
+    ("drum bottom stub", "stub flange", "drum bottom stub through its Ø160 stub flange"),
+    ("filter", "port", "molded Big Blue filter housing — cap + in/out ports are one piece"),
+    ("channel support strip", "channel support strip", "one formed channel-support strip (web + flanges)"),
+    ("feed hose", "feed hose", "one continuous feed-hose run (adjacent bend segments)"),
+    ("retaining bar", "d-ring holder", "D-ring lashing holder mounted on the front retaining bar"),
+    ("arm tube", "telescoping pole", "spray-bar arm — telescoping pole in a concentric sliding fit"),
 ]
 
 

@@ -113,6 +113,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   mechanisms — mostly intentional one-piece/bolted/bearing overlaps that just aren't classified yet. To
   make `--solids` report globally clean: walk each mechanism, butt/notch the genuine fused-seam defects,
   and extend `_SANCTIONED_SOLID` with the rest (each with a reason). Larger effort; do per-mechanism.
+  - **PASS 2026-10-22 (overview, live):** sanctioned the UNAMBIGUOUS classes — welded frame joints
+    (drum frame rails↔posts/rails/axle-beams/channel-support strips), one-piece parts (EP shroud,
+    rear-panel bracket, formed channel strip), molded filter housings, bearing stub↔flange↔collar fits,
+    welded wall-hanger L + RWk ribbon cross-beam + D-ring holder, telescoping arm/pole, continuous
+    feed-hose. **110 → 56 OPEN (41 → 95 sanctioned).** RESIDUAL — **56 FLAGGED for a seat/slot-depth
+    design review** (NOT sanctioned from geometry alone, per owner call): the Light-Trap HOUSING SKIN
+    seats (~48: H-mullion↔arc/band/cap/skin/rim/edge-channel/wiper, cap↔rim-angle, arc↔rim-angle — incl.
+    the 4,023/1,835/963/691 cm³ ones), the **film-plane 2×2 angle frame corners** (4, bolted — lap vs
+    butt?), and the **carriage-plate↔clamp-spacer** stack (4, film-plane precision). Confirm each as
+    as-designed → sanction, or fix the box-model → butt. No model geometry changed this pass.
   - **Film-plane blueprint Phase-0 triage (2026-09-05, `filmplane-bp`).** Ran `check_interference.py`
     against the live `film-plane-mechanism` model. **Pipe/solid OPEN = 0.** `--solids` = **165 OPEN**,
     dominated by U-channel **web↔flange self-overlap** (one-piece extrusion modeled as boxes — intentional),

@@ -65,13 +65,13 @@ film-plane zone** — the **carriage** *and* the ICP-14 **rail-fixing** (`bolt-m
 set-screws** are different head classes — they stay.
 - **Gate:** film-plane blueprint (carriage material + confirm edge-channel/carriage land on ×25).
 
-### M6 — consolidate the easy axes (Option A) — *doing now*
+### M6 — consolidate the easy axes (Option A) — DONE (2026-09-04, via fastener-rework)
 **Decision:** nuts **3 → 2** — the 4× plain (electrical panel mount) → **nyloc**; keep the serrated **flange**
 nut on the tray (it spreads clamp load on the thin 1.5 mm panel). Keep **both lengths** (×16 tray 4 mm lap /
 ×20 carriage-clamp) and the **316/304 material split** (tray 316 was a deliberate keep — the wash is
 chloride-free). (The earlier plan to absorb the retired M5 at ×16 was moot — the chem-shelf redesign retired M5
 by moving the ply attachment to 1/4-20 tee-nuts, not a fold into M6 CSK; see M5 below.)
-- **Now:** the nut merge is a registry change (no geometry) — executed on `fastener-rework`.
+- **Landed:** the nut merge was a registry change (no geometry) — the 4× plain electrical-panel M6 nuts are now `nut-m6-nyloc` (`parts.py`), leaving two M6 nut families (serrated flange on the tray + nyloc everywhere else).
 
 ### M5 — family RETIRED via the chem-shelf design (2026-09-07)
 The film-clamp "clips" that once shared this screw were retired to off-the-shelf nylon spring clamps, leaving
@@ -83,7 +83,7 @@ frame leg. The predicted flange-bolt direction was overtaken by the tee-nut stan
 M12 (5)**. No M5 SKU remains in `parts.py`.
 - **Gate:** none — landed with the chem-shelf blueprint.
 
-### M4 — itemize and keep — *itemizing now (clean parts only)*
+### M4 — itemize and keep — itemization blueprint-gated (see BOM gaps below)
 M4 is not a free choice: the cam-clamp base holes are **vendor-fixed** at M4×0.7 (McMaster 5128A63) and the
 pinhole grubs are an optical-precision detail. Not worth a vendor swap + optical redesign for ~31 tiny screws.
 **Decision:** close the BOM gap (itemize) and keep the family; merge the two M4 lengths if the grub + cam

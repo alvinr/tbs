@@ -179,7 +179,7 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
   through Detail B / parts.py / the 3D. **Do NOT "restore M12×40"** — the single horizontal M12×65 through the
   tall web is the confirmed design of record (the 2× M12×40 vertical joint left only ~3mm edge; reverting
   reintroduces that defect — see fastener-standardization.md).
-- [ ] **Fastener standardization (part-reconcile branch) — remaining open items** (decisions/details in `fastener-standardization.md`):
+- [x] **Fastener standardization — DONE (decisions complete; residual is blueprint-gated / user-sourced).** All per-family decisions landed (M5 retired, M6 nut merge, M8/M10/M12/M4 settled → ~7 metric lengths from ~12); full record in `fastener-standardization.md`. Remaining itemization is blocked on blueprint dims (tracked in the BOM-gaps table) and the `SKU pending` rows are sourced at order by rule — nothing left to decide:
   - ~~**Tilt-swing board** fastener itemization~~ — **CLOSED (moot): the tilt-swing mechanism was RETIRED
     2026-09-21** (optically inert) and replaced by the pinhole disc holder; its off-registry fasteners
     (M8×1.0×80 / M12×45 / M16×55 / M6 set screws / dowels) went with it. The successor's fasteners — 4× M6
@@ -189,7 +189,7 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
     by moving the ply attachment to **¼-20 pronged tee-nuts** (not a flange-bolt fold) — the flange-bolt
     prediction was overtaken. No M5 remains anywhere. Chem-shelf blueprint is fab-complete (datum/tolerance
     block added 2026-10-14). See `chem-shelf-blueprint-spec.md` + `fastener-standardization.md` §M5.
-  - **Filter bracket 244718 — confirm URL + price** (switched to the bracket-only Pentair 244718; $10.50 kit price held as a conservative placeholder, `filter-skid-frame`).
+  - ~~**Filter bracket 244718 — confirm URL + price**~~ — **DONE:** `filter-skid-frame` carries the Fresh Water Systems URL + firm $10.50 (bracket-only Pentair 244718, 2026-09-07). Residual fastener itemization (M4 grubs, pivot M12 anchors) is **blueprint-gated** per the BOM-gaps table in `fastener-standardization.md`; the `SKU pending` rows are user-sourced / firm-at-build by project rule.
 - [ ] **`pinhole-shim`** — Lenox SS-3/8-DISC laser-drilled pinhole; firm via RFQ once the optics drawing set is design-complete.
 
 ### Bucket 3 — ACTIONABLE ON BUILD

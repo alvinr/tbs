@@ -2904,7 +2904,7 @@
 <td><strong>Blue</strong></td>
 <td>Blue — clean</td>
 <td>Fresh water supply for processing</td>
-<td>2× 1,000L IBC totes (1,800L working fill total — 900L each), stacked side-by-side</td>
+<td>2× 1,000L IBC totes (1,800L working fill total — <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L each), stacked side-by-side</td>
 </tr>
 <tr>
 <td><strong>Brown</strong></td>
@@ -3043,18 +3043,18 @@
 </tr>
 </tbody>
 </table>
-<p><strong>~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply run</strong> — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× 900L) with Brown recycling for wash 2.</p>
+<p><strong>~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply run</strong> — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L) with Brown recycling for wash 2.</p>
 <p><strong>Water balance — recovered vs. consumed.</strong> Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply, a 14-print run processes ~1,690L
 (leaving ~110L of dregs, under one print): ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
 ~<!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L each at their working fill) and ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l -->L (~31L per print, ~17% of the ~182L gross washed per print) is
-open-process loss — water <strong>carried out in the wet prints</strong> (each full-plane muslin sheet, ~9.42 m²,
+open-process loss — water <strong>carried out in the wet prints</strong> (each full-plane muslin sheet, ~<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m²,
 leaves saturated to dry), <strong>evaporation</strong> from the open spray-wash tray, and <strong>unrecovered residual</strong>
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is <em>why
 two <!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L collection totes balance the supply</em> — they are sized for the recovered fraction, not full
 throughput. (The <a href="../weight-distribution-report/">weight report</a> carries the same ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L recovered figure
 for its exhausted-state transport mass — 4,546 kg, ~540 kg below the loaded state.)</p>
 <h4 id="extending-capacity-beyond-14-prints">Extending capacity beyond 14 prints<a class="headerlink" href="#extending-capacity-beyond-14-prints" title="Permanent link">&para;</a></h4>
-<p><strong>Maximizing the initial load.</strong> The standard 900L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) leaves a little
+<p><strong>Maximizing the initial load.</strong> The standard <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) leaves a little
 residue in each 1,000L tote; topping toward the ~950–1,000L tote limit (~1,900–2,000L) buys ~1–2 more prints
 (~15–16), transport-validated to a worst-case static tip of 41.0° (see
 <a href="../weight-distribution-report/">weight report §4.4</a>). To actually realize those extra prints the
@@ -3072,9 +3072,9 @@ return-haul limit). See the <a href="../operating-manual/">Operating Manual</a> 
 <hr />
 <h2 id="4-system-architecture">4. System Architecture<a class="headerlink" href="#4-system-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="41-blue-system-clean-water-supply">4.1 Blue System — Clean Water Supply<a class="headerlink" href="#41-blue-system-clean-water-supply" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>IBC-1 (900L) ──┐
+<div class="highlight"><pre><span></span><code>IBC-1 (&lt;!-- BEGIN fact:blue_fill_per_tote_l --&gt;900&lt;!-- END fact:blue_fill_per_tote_l --&gt;L) ──┐
                 ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-05 → Distribution
-IBC-2 (900L) ──┘                                                      │
+IBC-2 (&lt;!-- BEGIN fact:blue_fill_per_tote_l --&gt;900&lt;!-- END fact:blue_fill_per_tote_l --&gt;L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
                                                               ↓ (Processing tray)
@@ -3086,7 +3086,7 @@ IBC-2 (900L) ──┘                                                      │
 <li><strong>Check valves:</strong> only <strong>CV-1</strong> is fitted, on the X1 gravity fill — the single flow path with no pump. Every return and drain leg is pump-driven, and the Shurflo 2088 pumps carry an <strong>integral 1-way check valve</strong> (<a href="https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf">2088-554-144 datasheet</a>), so dedicated anti-siphon checks on the IBC-2 return, IBC-3 buffer return and IBC-4 waste legs would be redundant and are not used</li>
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
-<li>Spray bar: gantry design — 1½×1½×0.062in 304 SS square beam (~12mm pre-camber) spanning the full tray width (4,399mm), with Ø32 wheel carriages rolling on the Yd-sloped tray floor beneath walkway grating. A 3/4" LDPE manifold clipped to the beam side feeds 44 side-tapped 90° down-jet nozzles. See the <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a> report for full mechanical design</li>
+<li>Spray bar: gantry design — 1½×1½×0.062in 304 SS square beam (~12mm pre-camber) spanning the full beam width (<!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm), with Ø32 wheel carriages rolling on the Yd-sloped tray floor beneath walkway grating. A 3/4" LDPE manifold clipped to the beam side feeds <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> side-tapped 90° down-jet nozzles. See the <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a> report for full mechanical design</li>
 <li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal 4-way cross (near X1) — where the DV-01 blue recycle also joins — splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="42-brown-system-used-water-recycling">4.2 Brown System — Used Water Recycling<a class="headerlink" href="#42-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
@@ -3167,7 +3167,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <p><strong>Processing tray:</strong> A permanently installed 4,349 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 Yd-only slope sheets wash water to a near-rim gutter that falls 1:200 inward to a center pickup well. P-04 draws from the center pickup — the suction rises through the walkway grate, turns to the pinhole wall at deck level, rises up the wall clear of the walkway cantilever brackets, and runs along the pinhole wall to P-04 on the filter skid — no penetration of the tray floor or container floor.</p>
 <p><strong>Drain path:</strong> P-04 suction pickup → 1" hose up through the walkway grate and along the pinhole wall → P-04 pump on the Pinhole Wall filter skid → SV-02 sample → 3W-DV-02 diverter → the 3-stage filter train (recycle) or IBC-4 (Waste).</p>
 <p><strong>External drain-out risers:</strong> The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm exterior-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.</p>
-<p><strong>Spray bar:</strong> A 4,399mm full-width 304 SS square beam gantry (1½×1½×0.062in) rolls on the Yd-sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → single center feed into the side LDPE manifold → 44 90° down-jet nozzles at 100mm centers, spraying straight down.</p>
+<p><strong>Spray bar:</strong> A <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm full-width 304 SS square beam gantry (1½×1½×0.062in) rolls on the Yd-sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → single center feed into the side LDPE manifold → <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> 90° down-jet nozzles at 100mm centers, spraying straight down.</p>
 <p><strong>Supply path:</strong> P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.</p>
 <p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session to prevent direct stainless-to-print contact and simplify cleanup.</p>
 <p>For full construction details, structural analysis, parts list, and engineering drawings, see <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a>.</p>
@@ -3366,31 +3366,31 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tbody>
 <tr>
 <td>P-01 Blue pump (Shurflo 2088)</td>
-<td>7.5 A @ 12V</td>
+<td><!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V</td>
 <td>0.25 hr (15 min run)</td>
 <td>22.5 Wh</td>
 </tr>
 <tr>
 <td>P-02 Filter-loop feed pump (Shurflo 2088)</td>
-<td>7.5 A @ 12V</td>
+<td><!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V</td>
 <td>0.17 hr (10 min run)</td>
 <td>15.2 Wh</td>
 </tr>
 <tr>
 <td>P-03 Waste pump (Shurflo 2088) — <em>IBC corridor</em></td>
-<td>7.5 A @ 12V</td>
+<td><!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V</td>
 <td>intermittent (waste disposal only)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>P-04 Tray drain transfer pump (Shurflo 2088)</td>
-<td>7.5 A @ 12V</td>
+<td><!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V</td>
 <td>0.08 hr (5 min run)</td>
 <td>7.5 Wh</td>
 </tr>
 <tr>
 <td>P-05 Brown drain-out pump (Shurflo 2088) — <em>IBC corridor</em></td>
-<td>7.5 A @ 12V</td>
+<td><!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V</td>
 <td>intermittent (drain-out only)</td>
 <td>—</td>
 </tr>
@@ -3408,7 +3408,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p>A 100 Ah 12V lithium battery (1,200 Wh usable) provides <strong>&gt;25 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
+<p>A 100 Ah 12V lithium battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh --> Wh usable) provides <strong>&gt;25 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
 <hr />
 <h2 id="7-equipment-layout">7. Equipment Layout<a class="headerlink" href="#7-equipment-layout" title="Permanent link">&para;</a></h2>
 <p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>) for the water-system-specific P&amp;ID layout. All four IBCs are in the provably shadow-free <strong>right end zone</strong> (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone contains only the processing tray and perimeter walkways at floor level.</p>
@@ -4111,7 +4111,7 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
 <p><strong>IBC-4 waste transport:</strong> Ensure IBC cap is sealed and ball valve is closed before transport. Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright. Drain remotely via external bulkhead port to a disposal tanker.</p>
 </li>
 <li>
-<p><strong>Electrical:</strong> Each pump draws 7.5A at 12V. All five pumps share a single <strong>Circuit C</strong> (12V, 15A fuse, 14 AWG) and run <strong>one at a time</strong>, so the single feed carries them — see <a href="../plumbing-report/">Plumbing Report §3.2</a>.</p>
+<p><strong>Electrical:</strong> Each pump draws <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A at 12V. All five pumps share a single <strong>Circuit C</strong> (12V, 15A fuse, 14 AWG) and run <strong>one at a time</strong>, so the single feed carries them — see <a href="../plumbing-report/">Plumbing Report §3.2</a>.</p>
 </li>
 </ol>
 <hr />
@@ -4162,7 +4162,7 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-  <div class="md-copyright__highlight">© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a>. Version v0.18</div>
+  <div class="md-copyright__highlight">© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a>. Version v0.19</div>
 </div>
       
         
@@ -4194,7 +4194,7 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.18"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.19"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

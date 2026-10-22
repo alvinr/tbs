@@ -334,6 +334,83 @@ def check_f_inlined_pipe_helpers():
     return len(hits)
 
 
+# Name-alias groups: labels that denote the SAME physical part across models. The literal name-match
+# only sees identical names, so a same-part copy emitted under a DIFFERENT label slips past it; the
+# alias layer normalizes these to one canonical before the >1-model test. Each: canonical ->
+# (accepted-reason | None, {exact emitter labels}). Seeded with the context-floor slab (overview labels
+# it "Container Floor", focused models "Floor") — a verified, benign group, so the net isn't empty.
+_EMITTER_ALIASES = {
+    "context floor slab": (
+        "context ghost — overview's 'Container Floor' and the focused models' 'Floor' are the same "
+        "featureless slab; no detail to drift (same class as lint._EMITTER_DUP_ALLOW's per-model floors)",
+        {"Container Floor", "Floor", "Floor (context)"}),
+}
+
+
+def check_g_duplicate_emitters():
+    """A component's geometry must have ONE owning builder every model CALLS — never a divergent copy.
+    This mirrors the commit-time ratchet into the on-demand audit (reusing lint, no reinvention): the
+    literal cross-file name-match + allowlist, the _DUP_PAIRS geometry-equality harness for same-part
+    copies in different frames, and a name-alias layer so a copy under a DIFFERENT label can't slip the
+    name-match. See skills/skill_model_consistency.md + lint.py's emitter-ratchet."""
+    print(f"\n{CB}── CHECK G · cross-file duplicate 3D emitters (one owning builder per part) ──{C0}")
+    sys.path.insert(0, GEN_DIR)
+    import lint  # noqa: E402 — reuse the gate's detectors; don't re-implement
+    hits = 0
+
+    print("  Layer 1 · literal component name emitted by >1 model generator:")
+    dups = lint._cross_file_emitter_dups()
+    unallowed = {n: m for n, m in dups.items() if n not in lint._EMITTER_DUP_ALLOW}
+    if unallowed:
+        for n, mods in sorted(unallowed.items()):
+            print(f"    {C1}{n}{C0} — {', '.join(mods)} (add a shared builder, or allowlist with a reason)")
+        hits += len(unallowed)
+    else:
+        print(f"    none un-allowlisted ({len(dups)} known dup name(s), all sanctioned in lint._EMITTER_DUP_ALLOW)")
+
+    print("  Layer 2 · geometry equality for same-part builders (different frame/label):")
+    for label, fn, _trig, _sw, accepted in lint._DUP_PAIRS:
+        try:
+            found = fn()
+        except Exception as e:
+            print(f"    {C1}{label}: harness could not run ({type(e).__name__}: {e}){C0}")
+            hits += 1
+            continue
+        if not found:
+            print(f"    ok · {label}: emitters agree")
+        elif accepted:
+            print(f"    {C2}{label}: {len(found)} expected LOD diff(s){C0} (accepted: {accepted[:70]}…)")
+        else:
+            for m in found:
+                print(f"    {C1}{label}: {m}{C0}")
+            hits += len(found)
+
+    print("  Layer 3 · name-alias (same part under different labels):")
+    full = lint._cross_file_emitter_dups(1)   # every literal emitter name → the models that emit it
+    reported = 0
+    for canon, (reason, labels) in sorted(_EMITTER_ALIASES.items()):
+        mods, seen = set(), set()
+        for name, m in full.items():
+            if name in labels:
+                mods.update(m)
+                seen.add(name)
+        if len(mods) > 1 and len(seen) > 1:          # a genuine multi-label, multi-model part
+            reported += 1
+            if reason:
+                print(f"    {C2}expected · '{canon}'{C0} as {sorted(seen)} across {len(mods)} models "
+                      f"(accepted: {reason[:60]}…)")
+            else:
+                print(f"    {C1}DRIFT · '{canon}'{C0} as {sorted(seen)} across {len(mods)} models — "
+                      f"consolidate to one shared builder")
+                hits += 1
+    if not reported:
+        print("    no aliased same-part labels detected (add groups to _EMITTER_ALIASES as they arise)")
+
+    print(f"  → the 3D models are partial VIEWS of ONE design; a divergent copy drifts silently. "
+          f"This is the commit gate's coverage, surfaced in the audit + the alias net the name-match can't see.")
+    return hits
+
+
 def literals_mode():
     """Opt-in (--literals): the inverse of CHECK A. Bare numeric literals in a
     generator/model that equal a CURRENT distinctive constant value — a latent
@@ -382,7 +459,8 @@ def main():
     print(f"  parsed {len(cur)} numeric constants from tbs_constants.py")
     total = (check_a_stale_values(cur) + check_b_imports()
              + check_c_divergence() + check_d_inventory()
-             + check_e_dead_constants() + check_f_inlined_pipe_helpers())
+             + check_e_dead_constants() + check_f_inlined_pipe_helpers()
+             + check_g_duplicate_emitters())
     print(f"\n{CB}Audit complete.{C0} Findings are heuristics, not failures — "
           f"triage against skills/skill_model_consistency.md.")
 

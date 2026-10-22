@@ -84,7 +84,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   OPEN. **Deferred (nice-to-have, not blocking):** a `bolted_joint()` emitter so orientation is
   correct-by-construction (tracked in `skills/skill_fastener_convention.md`).
 
-- [ ] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (2026-08-17, HARD PRINCIPLE).** A design change must reflect in **every** model when they regenerate; the
+- [x] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (2026-08-17, HARD PRINCIPLE) — DONE 2026-10-22.** The detection is complete (see the CHECK G note below); the principle is enforced by the `lint.py` emitter ratchet + geometry-equality harness + the new audit CHECK G. A design change must reflect in **every** model when they regenerate; the
   model must not drift. The GOOD pattern already exists — the IBC front bars are one shared builder
   (`generate_corridor_water_panel.py` `tote_restraint()`) that overview/ibc-stack/water all call, so the
   4-bar + cleat + M12×65 + hex-bolt changes flow to every model on regen. The DRIFT RISK is **dead/divergent
@@ -97,10 +97,13 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   accepted = pinhole-wall representation + walkway-bracket LOD, 2 permanent Floor ghosts). The existing detection
   is two-tier in `lint.py`: the static `_cross_file_emitter_dups()` ratchet (name + `ruby_*` literal) **plus** a
   runtime geometry-equality harness (`_DUP_PAIRS`/`_record()`) for same-part-different-label copies (EP core,
-  walkway bracket). **REMAINING (the only open piece):** a `check_consistency.py` gate — but rather than reinvent,
-  have it *call* `lint._cross_file_emitter_dups()` + run the `_DUP_PAIRS` equality checks, and add a name-alias
-  layer so a same-part / different-label copy can't slip past the pure name-match. Lower priority than resolving
-  the 2 live drifts.
+  walkway bracket). **DONE 2026-10-22 — `check_consistency.py` CHECK G** (audit-side mirror of the commit ratchet,
+  no reinvention): Layer 1 calls `lint._cross_file_emitter_dups()` + the `_EMITTER_DUP_ALLOW` allowlist, Layer 2
+  runs the `_DUP_PAIRS` geometry-equality harness, Layer 3 is the name-alias net (`_EMITTER_ALIASES`) so a same-part
+  copy under a DIFFERENT label can't slip the literal match. Running it unconditionally also **exposed + fixed** two
+  latently-broken lint harnesses: `_record`'s `box` stub missing the new `mute` kwarg, and the **walkway-bracket
+  `_DUP_PAIRS` pair retired** (the aggregation refactor made `walkway_brackets()` a single shared builder — no
+  re-implementation to compare). EP-core geometry agrees; alias net exercised (context-floor group).
 
 - [ ] **`--solids` larger sanctioning pass (model-wide, beyond the named categories).** The
   `check_interference.py --solids` sanctioned list currently covers only the categories triaged in the

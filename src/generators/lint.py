@@ -693,7 +693,7 @@ def _record(run) -> list:
     import generate_sketchup_model as ov  # noqa: E402
     rec = []
 
-    def box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
+    def box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, **k):
         rec.append(("box", name, (x, y, z, w, d, h))); return ""
 
     def cyl(name, cx, cy, cz, radius, height, color=None, alpha=None, **k):
@@ -781,47 +781,15 @@ def _check_electrical() -> list[str]:
     return issues
 
 
-def _sizesig(rec) -> set:
-    """Position-invariant set of distinct part SIZE-signatures (box w×d×h sorted, cyl r×h, pipe r)."""
-    sig = set()
-    for k, n, g in rec:
-        if k == "box":
-            sig.add(("box",) + tuple(sorted(round(v, 1) for v in g[3:6])))
-        elif k == "cyl":
-            sig.add(("cyl", round(g[3], 1), round(g[4], 1)))
-        else:
-            sig.add(("pipe", round(g[1], 1)))
-    return sig
-
-
-def _check_walkway() -> list[str]:
-    _models_on_path()
-    import generate_sketchup_model as ov
-    import generate_walkway_model as wm
-    src = _sizesig(_record(lambda: [
-        wm._cantilever_parts("Std", wm.CT_STD_X, 0, +1, wm.WK_W, False),
-        wm._cantilever_parts("Wide", wm.CT_WIDE_X, 0, +1, wm.WK_NEAR_WIDE_W, True)]))
-    ovr = _sizesig(_record(ov.walkway_brackets))
-    issues = []
-    for s in sorted(src - ovr, key=str):
-        issues.append(f"walkway bracket: walkway-model emits size {s} that overview omits")
-    for s in sorted(ovr - src, key=str):
-        issues.append(f"walkway bracket: overview emits size {s} not in the walkway model")
-    return issues
-
-
 # Each pair: (label, check-fn, trigger-files, staged_warn, accepted). `staged_warn` gates the
 # pre-commit warning (True only for a PRECISE same-frame equality with no false positives).
-# `accepted` documents an EXPECTED, signed-off difference: the overview deliberately simplifies the
-# walkway bracket's fab detail (a whole-system level-of-detail choice, like the 2D thin-section
-# scale exaggeration), so --duplication reports it as expected, not drift, and it never warns.
+# `accepted` documents an EXPECTED, signed-off difference, reported as expected (not drift).
+# (The walkway-bracket pair was RETIRED 2026-10-22: the aggregation refactor made walkway_brackets()
+#  a single shared builder in the walkway model that overview/construction CALL — no re-implementation
+#  to compare, so the cross-file duplication it guarded no longer exists. See CHECK G's alias layer.)
 _DUP_PAIRS = [
     ("electrical EP core (power_core ↔ electrical)", _check_electrical,
      ["src/models/generate_electrical_model.py", "src/models/generate_sketchup_model.py"], True, None),
-    ("walkway bracket (_cantilever_parts ↔ walkway_brackets)", _check_walkway,
-     ["src/models/generate_walkway_model.py", "src/models/generate_sketchup_model.py"], False,
-     "overview is a simplified whole-system view — it omits the exterior reinforcing plates + "
-     "full-length through-bolts the dedicated walkway model shows (intentional LOD, 2026-06)"),
 ]
 
 
@@ -868,8 +836,10 @@ _EMITTER_DUP_ALLOW = {
 }
 
 
-def _cross_file_emitter_dups() -> dict:
-    """{name: [model files]} for every ruby_* literal component name emitted in >1 model generator."""
+def _cross_file_emitter_dups(min_models: int = 2) -> dict:
+    """{name: [model files]} for every ruby_* literal component name emitted in `min_models`+ model
+    generators (default 2 = the duplicate set). Pass min_models=1 for the full name→models map
+    (check_consistency's CHECK G alias layer normalizes that so a relabeled copy can't slip past)."""
     import ast, glob
     nf: dict = {}
     for path in sorted(glob.glob(os.path.join(_MODELS, "generate_*.py"))):
@@ -885,7 +855,7 @@ def _cross_file_emitter_dups() -> dict:
                 a0 = node.args[0]
                 if nm in _EMIT_HELPERS and isinstance(a0, ast.Constant) and isinstance(a0.value, str):
                     nf.setdefault(a0.value, set()).add(mod)
-    return {k: sorted(v) for k, v in nf.items() if len(v) > 1}
+    return {k: sorted(v) for k, v in nf.items() if len(v) >= min_models}
 
 
 def gate_emitter_dups() -> tuple[bool, list[str]]:

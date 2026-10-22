@@ -29,11 +29,12 @@ dimension written as a literal anywhere else is a latent stale value.
 | 3 | **Change applied to one side only** (2D or 3D, not both) | zip-tie loops & top shelf in 3D only; aluminum colour; weight pin | CHECK C + B |
 | 4 | **Doc / number staleness** | weights, costs, passage 625→555 | CHECK A |
 | 5 | **Latent duplicate** — a constant nobody uses, or a bare literal equal to a constant's *current* value (matches today, the inverse of #1, waiting to drift) | 2D `N_NOZZLES = 26` vs computed `SPRAY_BAR_N_NOZZLES`; `PANEL_H = 2060` vs unused `EQPANEL_H` | CHECK E + `--literals` |
+| 6 | **Divergent 3D builder** — a component re-implemented in >1 model (a copy, not a shared call) that can silently drift; worst when the copy uses a *different* label | overview re-drawing a sub-model's bracket; a relabeled same-part copy | CHECK G |
 
 ## The audit tool
 
 ```bash
-python3 src/generators/check_consistency.py          # CHECK A–E
+python3 src/generators/check_consistency.py          # CHECK A–G
 python3 src/generators/check_consistency.py --scan 750,375,1606   # hunt specific old values
 python3 src/generators/check_consistency.py --literals           # latent duplicates (noisy)
 ```
@@ -72,6 +73,21 @@ will get hand-copied as a literal later and then silently drift. Two remedies:
 `PANEL_H`), or annotate the definition line `# reserved` (a spec/alias/history
 value kept on purpose). CHECK E skips any line whose comment contains *reserved*,
 so it only nags on genuinely new orphans.
+
+**CHECK F — re-inlined pipe-path copies.** Flags any generator that re-implements the
+canonical `tbs_drawing` pipe-elbow geometry inline instead of keeping a thin delegating
+wrapper (a copy that drifts from the plumbing skill). See `skill_plumbing_drawing.md`.
+
+**CHECK G — cross-file duplicate 3D emitters (one owning builder per part).** The models
+are partial VIEWS of ONE design, so every component must have ONE owning builder each model
+*calls* — never a divergent copy. CHECK G mirrors the commit-time emitter ratchet into the
+audit, reusing `lint` (no reinvention): **Layer 1** the literal name-match
+(`lint._cross_file_emitter_dups` + the `_EMITTER_DUP_ALLOW` allowlist); **Layer 2** the
+`_DUP_PAIRS` geometry-equality harness for same-part copies built in different frames/labels
+(`accepted` pairs shown as expected-LOD, not drift); **Layer 3** the name-alias net
+(`_EMITTER_ALIASES`) so a same part under a DIFFERENT label can't slip the literal match.
+When a real duplicate appears, give it one shared builder the models call (or allowlist with
+a reason); when a part is legitimately relabeled across models, add an alias group.
 
 **`--literals` (opt-in, noisy) — bare literal == a current constant.** The inverse
 of CHECK A: a number hardcoded in a generator/model that *equals* a constant's

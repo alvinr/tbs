@@ -185,6 +185,14 @@ spray_beam_span_mm:
   owner: processing-tray-and-spray-bar.md
   display: comma
 
+# Spray-bar nozzle count — side-tapped 90° down-jets at 100mm pitch over the full beam width
+# (= SPRAY_BAR_N_NOZZLES). INJECTION-ONLY (no aliases): a bare 2-digit count would false-positive
+# against unrelated numbers; filled only where a placeholder marks the nozzle count.
+spray_bar_nozzle_count:
+  constant: SPRAY_BAR_N_NOZZLES
+  unit: nozzles
+  owner: processing-tray-and-spray-bar.md
+
 # Evaporative-cooler rated airflow — Hessaire MC18M spec, restated in ventilation §5.1/§9/§11.
 # INJECTION-ONLY (no aliases): 200/300/400 CFM also appear for the fans/duct, so a CFM-value
 # alias would false-positive; filled only where a placeholder marks the cooler rating.

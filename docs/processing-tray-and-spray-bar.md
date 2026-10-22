@@ -132,7 +132,7 @@ The drainage geometry is set by one requirement chain:
 
 1. **The spray nozzles run the full print width.** They are 90° down-jets firing *down* onto the
    print, and the walkway grate sits *above* the beam — so there is no reason to stop the jets at
-   the open zone. The beam therefore spans the full tray width (X=200–4,599).
+   the open zone. The beam therefore spans the full tray width (X=310–4,599).
 2. **A full-width beam that rides the tray floor must stay level across X.** The beam is rigid and
    its wheels ride the floor. If the floor slopes across X (a dual-axis fall to one corner), the
    beam's far end rides up ~24mm into the *level* walkway support arms. So the surface **falls in Yd
@@ -211,7 +211,7 @@ manifold and spray straight down, at 100mm pitch along the beam.
 ### 3.3 Beam / Spray Pipe
 
 The structural beam carries a 3/4" LDPE irrigation poly manifold clipped to its inboard side face. A 304 SS
-square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm — the full tray width (X=200 to X=4,599).
+square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm — the full tray width (X=310 to X=4,599).
 
 **Beam properties:**
 
@@ -220,7 +220,7 @@ square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,28
 | Material | 304 stainless steel |
 | Section | 1½×1½×0.062in (38×38×1.6mm) square tube |
 | Internal bore | ~35×35mm |
-| Span | <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm (X=200 to X=4,599, the full tray width) |
+| Span | <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm (X=310 to X=4,599, the full tray width) |
 | Second moment of area (I) | 51,300mm⁴ |
 | Cross-sectional area | 241mm² |
 | Linear mass (beam only) | 1.93 kg/m |
@@ -228,7 +228,7 @@ square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,28
 | Bending stiffness (EI) | 9.9×10⁹ N·mm² |
 | Pre-camber | ~12mm up at mid-span (offsets the wet self-weight sag, L/378, so the beam runs flat under load) |
 
-**Sourcing:** A **single 17 ft 4 in (5,283mm)** length of 304-SS 1½×1½×0.062in square tube (Metals Depot) spans the full-width 4,399mm beam with margin — **no butt weld, no splice** (the old mid-span splice sat where the moment peaks; deleting it removes the weak point). *(Metric 40×25/40×40 nominals are not stock — see the beam re-source item in TODO.md.)*
+**Sourcing:** A **single 17 ft 4 in (5,283mm)** length of 304-SS 1½×1½×0.062in square tube (Metals Depot) spans the full-width <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam with margin — **no butt weld, no splice** (the old mid-span splice sat where the moment peaks; deleting it removes the weak point). *(Metric 40×25/40×40 nominals are not stock — see the beam re-source item in TODO.md.)*
 
 **Spray nozzles:**
 

@@ -26,7 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Un-registered-values audit — caught a stale spray-beam drift in two published reports.** A fresh scan for numbers restated across ≥3 docs with no fact/constant owner surfaced the spray beam's span and nozzle count still reading the pre-260-left-rail values (`4,399mm` / `44` nozzles) in `water-system-report.md` and in a few `X=200` left-end annotations in the `processing-tray-and-spray-bar.md` owner doc — the 2026-10-10 `4,399→4,289` / `44→43` reconcile never reached them. The current geometry is beam X=310→4,599, span **4,289mm**, **43** nozzles. Corrected and wrapped each restatement in placeholders so it auto-updates, and registered a `spray_bar_nozzle_count` fact (injection-only, like the existing span fact) so the count is single-sourced. The rest of the scan's ~18 hits are diagram-of-record structural dims (polysemous — the same "130mm" means different parts) or scan artifacts, left per the report-writing skill.
 
 ## [0.18] — 2026-10-21
 

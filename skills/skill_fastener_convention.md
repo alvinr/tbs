@@ -124,6 +124,18 @@ Scope + caveats (so you read the output correctly):
   is named, which may be an incidental notched-beam remnant rather than the primary
   plate. A human confirms — a flag is a "look here," not a verdict.
 
+### The ratchet — sanctioned baseline + committed advisory
+
+Each triaged-benign flag is recorded in **`_SANCTIONED_BOLT`** (in `check_interference.py`)
+with a one-line reason — the same pattern as `_SANCTIONED_SOLID`/`_SANCTIONED_PIPE`. The
+`--bolts` output then tags every flag `[OK <reason>]` (sanctioned) or `[OPEN]` (new / not yet
+triaged). Because the pass needs the live model, it rides the committed
+**`interference-report.txt`**: `check_interference.py --write` appends the `--bolts` section to
+the report (run it at pre-send, against overview). A `lint.py` **advisory** —
+*"grip-bolt orientation/grip flags triaged"* — then reads that report and warns on any `[OPEN]`
+line. So a new or regressed joint surfaces at commit time; to clear it, either fix the joint or
+add a `_SANCTIONED_BOLT` entry explaining why it's benign.
+
 ---
 
 ## Where this is heading (don't hand-place if you can emit)

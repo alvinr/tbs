@@ -578,6 +578,43 @@ def is_grip_bolt(name):
     return True
 
 
+# SANCTIONED grip-bolt flags — triaged and ACCEPTED (not structural edge-distance defects), so the
+# --bolts advisory can ratchet: it WARNS only on flags NOT listed here (a new/regressed joint).  Each
+# entry = (bolt-name substring, member substring | None, kind, reason).  member=None matches any member
+# (FLOATING/PROJECT have no gripped member).  Triaged 2026-10-22 against the live overview model.
+_SANCTIONED_BOLT = [
+    ("Flange Self-Tapping Screw", "Spray Beam", "EDGE",
+     "self-tapping flange screw into the thin 1.6mm RHS wall — a thread-former, not an edge-distance grip bolt"),
+    ("FP combined beam TEK screw", "RWk Long beam", "EDGE",
+     "TEK self-driller (half-lap hold-down) into the beam flange — thread-former, no 1.5·D edge rule"),
+    ("Foot→plate bolt M12", "Foot plate", "EDGE",
+     "short vertical anchor bolt — AABB axis/edge artifact; nominal edge = (IBC_FOOT_PLATE−PCD)/2 = 25mm ≥ 1.5·D"),
+    ("M6 mount bolt", "Disc-holder retaining ring", "EDGE",
+     "pinhole disc-holder retaining-ring bolt circle — precision optical sub-assembly, ring-radius edge by design"),
+    ("Door frame anchor M10", "EPDM Seal", "EDGE",
+     "worst edge measured to the EPDM seal (non-structural); the M10 anchors into the door frame with full edge"),
+    ("IBC Wall Through-Bolt M12", "Wall Hanger Plate", "EDGE",
+     "drawn-D14 conservative; at nominal M12 the 18mm edge = 1.5·D exactly — OK"),
+    ("Frame-corner bolt", None, "FLOATING",
+     "film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating"),
+    ("Cage roof rivet", None, "FLOATING", "light-trap drum cage rivet into the thin cage frame (excluded) — a rivet, not a grip bolt"),
+    ("Cage floor rivet", None, "FLOATING", "light-trap drum cage rivet into the thin cage frame (excluded) — a rivet, not a grip bolt"),
+    ("wall cage rivet", None, "FLOATING", "light-trap drum cage rivet into the thin cage frame (excluded) — a rivet, not a grip bolt"),
+    ("IBC Wall Through-Bolt M12", None, "PROJECT",
+     "projection = the container-wall penetration length (the wall shell is not in the structural solid set) — by design"),
+    ("Thumb screw", None, "PROJECT", "muslin-clamp thumb screw — the projecting stem/knob is the hand-grip, by design"),
+    ("Rail fixing bolt", None, "PROJECT", "rail-fixing bolt — the projecting stem is thread length, by design"),
+]
+
+
+def is_sanctioned_bolt(bolt_name, member_name, kind):
+    bn, mn = bolt_name.lower(), (member_name or "").lower()
+    for bsub, msub, bkind, _reason in _SANCTIONED_BOLT:
+        if bkind == kind and bsub.lower() in bn and (msub is None or msub.lower() in mn):
+            return _reason
+    return None
+
+
 def bolts_pass(data, edge_factor=1.5, proj_tol=25.0, grace_mm=1.0):
     # NOTE: D is the DRAWN shank AABB (radius 6-7 → D12-14), slightly larger than the nominal thread
     # (M12=12), so the 1.5·D bar is a touch conservative — a flag within a few mm of the bar may be
@@ -627,20 +664,25 @@ def bolts_pass(data, edge_factor=1.5, proj_tol=25.0, grace_mm=1.0):
         if k not in seen:
             seen.add(k); uniq.append(f)
     axis_nm = ("X", "Yd", "Z")
-    print(f"grip-bolt orientation/grip flags: {len(uniq)}  "
+    tagged = [(kind, s, g, val, D, is_sanctioned_bolt(s["n"], g["n"] if g else None, kind))
+              for kind, s, g, val, D in uniq]
+    n_open = sum(1 for t in tagged if t[5] is None)
+    print(f"grip-bolt orientation/grip flags: {len(uniq)}  ({n_open} OPEN, {len(uniq) - n_open} sanctioned)  "
           f"(EDGE = hole < {edge_factor}xD from a member edge; FLOATING = pierces nothing; "
           f"PROJECT = shank > {proj_tol:.0f}mm past the grip)")
-    for kind, s, g, val, D in sorted(uniq, key=lambda f: (f[0], -f[3] if f[0] != "EDGE" else f[3])):
+    # OPEN first (the actionable ones), then sanctioned; within each, by kind then severity.
+    for kind, s, g, val, D, reason in sorted(tagged, key=lambda f: (f[5] is not None, f[0], -f[3] if f[0] != "EDGE" else f[3])):
         dims = [s["mx"][i] - s["mn"][i] for i in range(3)]
         la = max(range(3), key=lambda i: dims[i])
         c = [round((s["mn"][i] + s["mx"][i]) / 2) for i in range(3)]
+        tag = "[OK] " + reason if reason else "[OPEN]"
         if kind == "EDGE":
-            print(f"  EDGE      {s['n']:40.40s} axis {axis_nm[la]:2s} D{D:.0f}  edge {val:.1f}mm < {edge_factor*D:.0f}mm  in {g['n']}")
+            print(f"  EDGE      {s['n']:40.40s} axis {axis_nm[la]:2s} D{D:.0f}  edge {val:.1f}mm < {edge_factor*D:.0f}mm  in {g['n']:28.28s}  {tag}")
         elif kind == "FLOATING":
-            print(f"  FLOATING  {s['n']:40.40s} axis {axis_nm[la]:2s}  pierces no structural member @ ({c[0]},{c[1]},{c[2]})")
+            print(f"  FLOATING  {s['n']:40.40s} axis {axis_nm[la]:2s}  pierces no structural member @ ({c[0]},{c[1]},{c[2]})  {tag}")
         else:
-            print(f"  PROJECT   {s['n']:40.40s} axis {axis_nm[la]:2s}  shank {val:.0f}mm past the grip @ ({c[0]},{c[1]},{c[2]})")
-    return len(uniq)
+            print(f"  PROJECT   {s['n']:40.40s} axis {axis_nm[la]:2s}  shank {val:.0f}mm past the grip @ ({c[0]},{c[1]},{c[2]})  {tag}")
+    return n_open
 
 
 def main():
@@ -791,6 +833,8 @@ if __name__ == "__main__":
         buf = io.StringIO()
         with contextlib.redirect_stdout(buf):
             rc = main()
+            print("\n── grip-bolt orientation/grip audit (--bolts, advisory) ──")
+            bolts_pass(json.loads(send_ruby(RUBY))["g"])
         sys.stdout.write(buf.getvalue())
         header = f"routing-sources-sha: {routing_sources_sha(_ROOT_DIR)}\n"
         with open(REPORT_PATH, "w") as fh:

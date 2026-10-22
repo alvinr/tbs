@@ -540,6 +540,24 @@ def gate_interference_report() -> tuple[bool, list[str]]:
     return True, [f"interference report current with routing sources (sha {expected})"]
 
 
+# ── WARNING: un-sanctioned grip-bolt orientation/grip flags ──────────────────
+# check_interference.py --bolts flags every structural through-bolt that is EDGE (< 1.5·D to a member
+# edge — the J2/J7 3mm-edge class), FLOATING (pierces nothing), or PROJECT (shank runs past the grip).
+# It needs the LIVE model, so (like the routing gate) it rides the committed interference report: its
+# --bolts section tags each flag [OK <reason>] (triaged-benign, sanctioned in _SANCTIONED_BOLT) or
+# [OPEN]. This advisory surfaces the [OPEN] ones — a new or regressed joint to fix or sanction. Refresh
+# the report at pre-send: `python3 src/models/check_interference.py --write`.
+def warn_open_bolt_flags() -> tuple[bool, list[str]]:
+    path = os.path.join(ROOT, _INTERFERENCE_REPORT)
+    if not os.path.exists(path):
+        return True, ["no interference report yet (the routing gate handles its presence)"]
+    opens = [ln.rstrip() for ln in open(path, encoding="utf-8").read().splitlines() if "[OPEN]" in ln]
+    if opens:
+        return False, ["un-sanctioned grip-bolt flag(s) — fix the joint, or sanction in "
+                       "check_interference._SANCTIONED_BOLT with a reason:"] + ["  " + o.strip() for o in opens]
+    return True, []
+
+
 # ── WARNING: hardwired literal that should be a tbs_constants reference ──────
 # The "should have been a constant" drift class (Phase 4): a generator/model carries a numeric
 # literal that equals a tbs_constants value instead of importing it — so when the constant changes,
@@ -1084,6 +1102,7 @@ WARNINGS = [
     ("unused imports in generators/models (check_unused_imports --fix)", warn_unused_imports),
     ("optional dep guards use except ImportError (arch/ABI-safe)", warn_narrow_dep_guard),
     ("no local redefinition of a tbs_constants palette color/FONT/BG", warn_local_palette_redef),
+    ("grip-bolt orientation/grip flags triaged (--bolts, via interference report)", warn_open_bolt_flags),
 ]
 
 

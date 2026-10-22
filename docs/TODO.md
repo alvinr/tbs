@@ -74,16 +74,15 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     demo copy had drifted (missing the axles/keepers/brake). Extracted to `corner_skate_parts()`, now shared by
     both — `corner()` output byte-identical, Movement scene completed.
 
-- [ ] **`check_interference.py --bolts` — orientation/grip lint (PROTOTYPE landed 2026-08-17).** New read-only
-  advisory pass: for every structural grip bolt it finds the members its centerline pierces and flags **EDGE**
-  (center-to-edge < 1.5·D — the J2/J7 3mm-edge class that kept slipping to review), **FLOATING** (pierces no
-  member), **PROJECT** (shank runs past the grip). Bounding-box based, scoped to structural steel (film-plane
-  precision mechanism + liquids excluded), drawn-D so slightly conservative. **Triage the 15 current overview
-  flags:** the genuine one is **RWk J6 top bolt 15.3mm from the end-plate top edge** (make `RWK_J6_EP_H` ~6mm
-  taller, or accept); **Frame-corner bolt 7<9 in the X-slide shaft support** (film-plane bracket — confirm);
-  the `0.6/2.0mm in beam upper/lower` are half-lap remnant clips (benign if the remnant isn't load-bearing
-  there); IBC wall-bolt 18<21 is nominal-OK (drawn D14 vs M12). **Next:** wire it into the pre-send routine +
-  a lint advisory; consider a `bolted_joint()` emitter so orientation is correct-by-construction (retro item A).
+- [x] **`check_interference.py --bolts` — orientation/grip lint — DONE 2026-10-22.** The read-only pass flags
+  every structural grip bolt EDGE (< 1.5·D to a member edge), FLOATING (pierces nothing), or PROJECT (shank past
+  the grip). **Wired as a ratchet:** `--write` now appends the `--bolts` section to the committed
+  `interference-report.txt`; a `_SANCTIONED_BOLT` baseline tags each flag `[OK <reason>]` or `[OPEN]`; and a
+  `lint.py` advisory warns on any `[OPEN]`. Re-triaged against the live overview model (the 2026-08-17 list was
+  stale — RWk J6 is already fixed at `RWK_J6_EP_H=190`): all 24 current flags are benign (fastener-type /
+  precision-mechanism / non-structural-edge-member / drawn-D / AABB artifacts) and sanctioned with reasons; 0
+  OPEN. **Deferred (nice-to-have, not blocking):** a `bolted_joint()` emitter so orientation is
+  correct-by-construction (tracked in `skills/skill_fastener_convention.md`).
 
 - [ ] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (2026-08-17, HARD PRINCIPLE).** A design change must reflect in **every** model when they regenerate; the
   model must not drift. The GOOD pattern already exists — the IBC front bars are one shared builder

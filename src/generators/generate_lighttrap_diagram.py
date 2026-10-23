@@ -1851,6 +1851,7 @@ def draw_sheet9():
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge; light-tightness is carried by the drum + running-gap wipers (the skin edge is a structural fix, not a light seal).",
         f"4. NO WELDED SEAM — the housing is TWO 100° arc panels that SLIDE into {LT_HBAR_N} opening-edge Al H-MULLIONS (DETAIL B; Eagle SGN-113 H-divider). One slot takes the arc-panel edge (full height); the sill/header BAND pieces (glued/riveted) take the opposite slot at top + bottom. Riveted thru the flange + HDPE @ ~{LT_HBAR_RIVET_PITCH}mm.",
         f"5. The 4 H-mullions run full height and their ends bolt (1× M{LT_HBAR_END_BOLT}/end via L-clip) to 4 formed-Al SUPPORT STRIPS — one across each opening (top + bottom), rail-to-rail; each strip blind-rivets to the frame beams (Sheet 8).",
+        f"6. MID-HEIGHT STIFFENER (optional — field-confirm): each ~{LT_HOUSING_Z_TOP - LT_HOUSING_Z_BOT}mm-tall 100° HDPE arc panel is edge-supported ONLY (its two H-mullions + the top/bottom beams), with no intermediate support. The R{int(DRUM_D // 2)} cylindrical curvature carries the span, but if the built panel reads floppy a mid-height Al angle ring (arc'd to R{int(DRUM_D // 2)}, blind-riveted across each panel, ends landing on the X-near/far frame rails like the support strips) MAY be added to kill mid-span flex. Not currently fitted.",
         "SECTION A–A 7:1 · DETAIL B 7:1 · HOUSING PLAN 1:2 · fastener symbols schematic · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, X_LO + 930, -320, 14, fs=5, font=FONT, width=650,
@@ -1962,7 +1963,7 @@ def draw_sheet10():
 
     # ── FIXED outer skin — housing extends to the beam OUTER face + rivets DIRECTLY (Sheet 9) ─
     draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, (Z_BEAM0 + LT_AXLE_BEAM_H) - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing skin — up to the beam OUTER face (no rim-angle)
-    blind_rivet(ax, HIR_ - 8, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 0, LT_HOUSING_T + 16, d=LT_RIVET_D)  # skin → beam wall (radial, into the beam behind)
+    blind_rivet(ax, HIR_ + LT_HOUSING_T / 2, Z_BEAM0 + LT_AXLE_BEAM_T / 2, 0, LT_HOUSING_T + LT_AXLE_BEAM_T + 6, d=LT_RIVET_D)  # skin → beam BOTTOM WALL (radial, through the 5mm skin + 3mm wall; head sets into the bore — full detail Sheet 9). Was floating in the bore/gap pre-2026-10-22.
 
     # break lines (drum + housing continue down to the floor) ─────────────────
     for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):

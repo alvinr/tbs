@@ -1961,9 +1961,14 @@ def draw_sheet10():
     # BELOW the cap lap (not at this level); shown + detailed on Sheets 4 & 7, called out by the
     # leader below. (No horizontal seal element here — that was a stale felt-seal artifact.)
 
-    # ── FIXED outer skin — housing extends to the beam OUTER face + rivets DIRECTLY (Sheet 9) ─
-    draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, (Z_BEAM0 + LT_AXLE_BEAM_H) - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # housing skin — up to the beam OUTER face (no rim-angle)
-    blind_rivet(ax, HIR_ + LT_HOUSING_T / 2, Z_BEAM0 + LT_AXLE_BEAM_T / 2, 0, LT_HOUSING_T + LT_AXLE_BEAM_T + 6, d=LT_RIVET_D)  # skin → beam BOTTOM WALL (radial, through the 5mm skin + 3mm wall; head sets into the bore — full detail Sheet 9). Was floating in the bore/gap pre-2026-10-22.
+    # ── FIXED outer skin — at the beam azimuth (90°/270°) the axle beam half-span (481) exceeds the
+    #    housing R (400), so the beam passes THROUGH the wall and the skin is NOTCHED around it here:
+    #    NO skin across the beam, and NO rivet in this plane. The skin laps + rivets to the beam SIDE
+    #    walls just off this section (full detail Sheet 9); an EPDM-foam light-seal fills the notch gap.
+    draw_rect(ax, HIR_, Z_BRK, LT_HOUSING_T, Z_BEAM0 - Z_BRK, fc="#DDE4EC", lw=1.0, zorder=6)  # skin stops at the beam underside (notched around the beam above)
+    leader(ax, HIR_ + LT_HOUSING_T, Z_BEAM0 - 12, HIR_ - 175, Z_BEAM0 + 44,
+           "SKIN NOTCHED around the beam\n(beam penetrates the wall @ 90°/270°) — EPDM-FOAM\nLIGHT-SEAL in the notch gap; skin laps + rivets to the\nbeam SIDE walls off-section (Sheet 9)",
+           fs=5.2, color=C_OUT, ha="right", arrow_style="->", font=FONT)
 
     # break lines (drum + housing continue down to the floor) ─────────────────
     for r0, r1 in ((DIR_ - 4, DOR_ + 4), (HIR_ - 4, HOR_ + 4)):

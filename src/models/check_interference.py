@@ -444,6 +444,7 @@ _SANCTIONED_SOLID = [
     ("fixed left box", "strike face", "one-piece fixed left box — flanges + web (strike face) drawn as separate primitives"),
     ("slot l-strip", "upstand", "one formed Slot L-strip — base leg + upstand leg (box-model L self-overlap)"),
     ("stay lug", "stay clevis", "the stay clevis hook engages the stay lug — a clevis/pin fit, intended contact"),
+    ("apron", "folded", "DC dual-state — the fold-down apron's UP pose and FOLDED pose both exist in the swing component (hidden per swing state), so the two poses overlap near the hinge; only one is 'real' at a time"),
 ]
 
 

@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,098 | $4,556 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,921 | $8,257 |
 | 6. Electrical — power, circuits, wiring | $3,416 | $3,502 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,144 | $4,155 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,122 | $3,024 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,244 | $1,457 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,691** | **~$36,511** |
+| **TOTAL (base build + 50-print run)** | **~$27,703** | **~$36,531** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -379,12 +379,13 @@ indicative low–high estimates — get quotes before ordering.
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 21 m | Amazon (OKAYASU) | panel | $24–$52 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | Certified anti-slip cargo matting (μ≥0.6) | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
+| Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$542–$741** |
+| **seals-gaskets subtotal** | | | | **$554–$761** |
 
 ### stainless-sheet
 
@@ -544,12 +545,12 @@ indicative low–high estimates — get quotes before ordering.
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | B&H Photo | 1 | fabric-textile | $69 |
 | Blue Sea | 2 | electrical-distribution | $61 |
+| Canal Rubber | 2 | seals-gaskets | $37–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
 | AutomationDirect | 1 | electrical-distribution | $52 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
-| Canal Rubber | 1 | seals-gaskets | $25–$40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Fresh Water Systems | 1 | water-equipment | $32 |

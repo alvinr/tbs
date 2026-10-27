@@ -491,7 +491,9 @@ def draw_sheet2():
         f"2. Cut 4 band pieces {BW:.0f} × {SILL_H}/{HEADER_H}mm (sill + header, ×2 openings).",
         "3. Slide each panel edge into an opening H-mullion (4 total); glue/rivet the sill + header bands",
         "   into the H's opposite slot + across the opening. Rivet the panels' top/bottom edges to the beams.",
-        "4. Interior face black-pigmented; exterior UV-stabilized — no primer.",
+        "4. LIGHT-SEAL each axle-beam notch (4 total): closed-cell EPDM foam gasket wrapped round the beam,",
+        "   compressed in the notch gap + a DP8010/silicone bead — static light-tight seal (the notch is otherwise a light leak).",
+        "5. Interior face black-pigmented; exterior UV-stabilized — no primer.",
         "FLAT PATTERN · TRUE DEVELOPED SCALE · ALL DIMS IN mm",
     ]
     draw_notes(ax, notes, pAx, byz - 340, 34, fs=7, font=FONT, width=1900, title_color=TITLE_COL)
@@ -1847,7 +1849,7 @@ def draw_sheet9():
     notes = [
         "HOUSING → FRAME ATTACHMENT  (fixed outer skin — does NOT rotate)",
         f"1. The housing skin extends to the beam OUTER faces (+{LT_CAGE_TOP - LT_HOUSING_Z_TOP} top / +{LT_HOUSING_Z_BOT - LT_CAGE_BOT} bottom past the inner faces) and BLIND-RIVETS DIRECTLY to the frame top + bottom beams (SECTION A-A; Ø1/8\" 18-8 SS, McMaster 97525A425, {LT_HOUSING_T}mm HDPE → 3mm steel wall, ~{LT_RIVET_PITCH}mm pitch; two 100° arcs — the openings carry no fixing). Set from outside; the set head forms inside the closed RHS. NO rim-angle (dropped 2026-09-08), no welds, no self-drillers.",
-        f"2. The two central axle beams cross the housing at 90° + 270°, so each arc panel is NOTCHED at its center in both extension bands (≈56mm wide — see Sheet 2).",
+        f"2. The two central axle beams PASS THROUGH the wall at 90° + 270° (beam half-span 481 > housing R{int(DRUM_D // 2)}), so each extension band is NOTCHED around the beam (≈56mm — see Sheet 2). A closed-cell EPDM foam LIGHT-SEAL (ll-beam-notch-seal) wraps the beam at each of the 4 notches + a DP8010/silicone bead — a STATIC light-tight seal (beam + housing both fixed). WITHOUT it the notch is a light leak.",
         f"3. Drill Ø{LT_RIVET_HOLE:.1f} (#30), {LT_HOUSING_RIVET_N}× Ø{LT_RIVET_D} SS blind rivets per edge; light-tightness is carried by the drum + running-gap wipers (the skin edge is a structural fix, not a light seal).",
         f"4. NO WELDED SEAM — the housing is TWO 100° arc panels that SLIDE into {LT_HBAR_N} opening-edge Al H-MULLIONS (DETAIL B; Eagle SGN-113 H-divider). One slot takes the arc-panel edge (full height); the sill/header BAND pieces (glued/riveted) take the opposite slot at top + bottom. Riveted thru the flange + HDPE @ ~{LT_HBAR_RIVET_PITCH}mm.",
         f"5. The 4 H-mullions run full height and their ends bolt (1× M{LT_HBAR_END_BOLT}/end via L-clip) to 4 formed-Al SUPPORT STRIPS — one across each opening (top + bottom), rail-to-rail; each strip blind-rivets to the frame beams (Sheet 8).",

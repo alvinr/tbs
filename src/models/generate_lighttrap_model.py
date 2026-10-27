@@ -463,6 +463,15 @@ def drum_housing(cx, cy):
                                           gap_center_deg=(oc + 180) % 360, gap_deg=360 - od,
                                           color=C_ALUM, alpha=0.5, z0=z0))
 
+    # BEAM-NOTCH LIGHT-SEAL — the two central axle beams pass THROUGH the skin at 90° + 270°, so each
+    # extension band is notched (~NOTCH° half-angle) around the beam. A closed-cell EPDM foam gasket
+    # (ll-beam-notch-seal) fills each notch gap around the beam, light-tight — a STATIC joint (the beam
+    # + housing are both fixed; only the drum rotates). 4 penetrations: top + bottom beams × 90°/270°.
+    for z0, h in ((HZT, BEAM_TOP - HZT), (BEAM_BOT, HZB - BEAM_BOT)):
+        for ac in (90, 270):
+            parts.append(draw.ruby_arc_wall("LT Beam-notch light-seal (EPDM foam)", cx, cy, HOUSING_R,
+                                          HOUSING_T, h, gap_center_deg=(ac + 180) % 360,
+                                          gap_deg=360 - 2 * NOTCH, color=draw.C_GASKT, alpha=0.6, z0=z0))
     # CHANNEL SUPPORT STRIPS — 4 formed-Al angles (Metals Depot 1"×1"×1/8" 6061-T6 Al equal-leg
     # angle), one across each opening at TOP + BOTTOM, riveted to the frame; each opening's two
     # U-channel ends bolt to the up-leg (replaces the floating channel ends; no rim-angle). Each

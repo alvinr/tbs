@@ -21,7 +21,7 @@
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,921 | $7,586 | $8,257 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $3,416 | $3,459 | $3,502 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $748 | $808 | $898 |
-| **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $3,144 | $3,651 | $4,155 |
+| **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $3,156 | $3,667 | $4,175 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,122 | $2,561 | $3,024 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,250 | $1,490 | $1,730 |
 | **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,244 | $1,352 | $1,457 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,230 | $1,680 | $3,040 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$27,741** | **$32,582** | **$39,451** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$27,753** | **$32,598** | **$39,471** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware New Cyanotype** chemistry (ferric ammonium oxalate) + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,250), Mid = Standard ½-Ware ($1,710), High = Rich full-Ware ($3,100)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -277,16 +277,16 @@ Personnel access during operation is via a **Ø800 fixed housing + single-openin
 | Running-gap wiper — #4 (3/16") black-nylon strip brush ×4 (Gordon/Tanis, 8 ft) | $88 | $124 | $160 | 4 lines snapped into Al flange holders; est., firm at order |
 | Al straight-flange holders for the #4 wiper brush ×4 (8 ft) | $72 | $116 | $160 | flange-riveted to the drum OD — rivets clear of the brush; est. |
 | 12mm closed-cell neoprene — top/bottom cap wiper seals | $25 | $33 | $40 | cap↔frame seals; the running-gap seal is the drum brush |
-| Silicone bead sealant (bearing housing) | $20 | $20 | $20 | Maxisil black 10.5 oz $19.91, Home Depot |
-| 12" round pull handle — McMaster 1871A65 | $6 | $6 | $6 | $6.43 firm; off-the-shelf, BOLTED to the stile (1/4" tapped), not welded |
-| 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | $50 | $73 | $95 | pull load into the Al caps (not the HDPE wall); est. |
-| Matte-black interior finish | $40 | $55 | $70 | scuff + flat-black touch-in |
-| Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing (SS) | $95 | $95 | $95 | ≈$91 firm, McMaster F1–F7 + W (one pack per line) |
-| SS blind rivets — housing skin → outer beam face (97525A425, 100-pack) | $14 | $14 | $14 | 2026-09-08: rim-angle dropped, skin fixes directly to the outer beam face (Sheets 9/10); $13.83/100 firm |
-| M10 twist-resistant rivet-nuts ×20 (95105A199) + setting tool (96349A866) | $24 | $34 | $44 | $53 firm; 14 into the 3mm RHS beam wall (ring/collar→beam) |
-| 1/8" blind rivets — brush-holder → drum OD (97447A015, 250-pack) | $16 | $16 | $16 | $10.78 firm; ~72 for the Al holder flanges |
-| Fabrication — roll + weld 2 cylinders, roll rim-angle, fit metal caps/bearings (16–22 hrs) | $800 | $975 | $1,150 | Local plastic + metal fab |
-| **Housing + drum total** | **$3,144** | **$3,651** | **$4,155** | |
+| Silicone bead sealant (bearing housing) | $12 | $16 | $20 | Maxisil black 10.5 oz $19.91, Home Depot |
+| 12" round pull handle — McMaster 1871A65 | $20 | $20 | $20 | $6.43 firm; off-the-shelf, BOLTED to the stile (1/4" tapped), not welded |
+| 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | $6 | $6 | $6 | pull load into the Al caps (not the HDPE wall); est. |
+| Matte-black interior finish | $50 | $73 | $95 | scuff + flat-black touch-in |
+| Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing (SS) | $40 | $55 | $70 | ≈$91 firm, McMaster F1–F7 + W (one pack per line) |
+| SS blind rivets — housing skin → outer beam face (97525A425, 100-pack) | $95 | $95 | $95 | 2026-09-08: rim-angle dropped, skin fixes directly to the outer beam face (Sheets 9/10); $13.83/100 firm |
+| M10 twist-resistant rivet-nuts ×20 (95105A199) + setting tool (96349A866) | $14 | $14 | $14 | $53 firm; 14 into the 3mm RHS beam wall (ring/collar→beam) |
+| 1/8" blind rivets — brush-holder → drum OD (97447A015, 250-pack) | $24 | $34 | $44 | $10.78 firm; ~72 for the Al holder flanges |
+| Fabrication — roll + weld 2 cylinders, roll rim-angle, fit metal caps/bearings (16–22 hrs) | $16 | $16 | $16 | Local plastic + metal fab |
+| **Housing + drum total** | **$3,156** | **$3,667** | **$4,175** | |
 <!-- END costing:lightlock -->
 
 *Note: the hinged panel that the housing mounts into (2×2×0.120in steel frame, 1/8" HDPE plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
@@ -532,7 +532,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,921 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,416 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $748 |
-| Revolving drum light trap (plastic-skin custom fabrication) | $3,144 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $3,156 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,122 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,250 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,244 |
@@ -540,7 +540,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,230 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$27,171** |
+| **Scenario A total** | **~$27,183** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -555,7 +555,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,586 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,459 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $808 |
-| Revolving drum light trap (plastic-skin custom fabrication) | $3,651 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $3,667 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,561 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,490 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,352 |
@@ -564,7 +564,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$32,892** |
+| **Scenario B total (excl. CDL)** | **~$32,908** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -572,11 +572,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,992 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,008 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$121,492–$151,492** |
+| **Scenario C total** | **~$121,508–$151,508** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

@@ -432,6 +432,10 @@ _SANCTIONED_SOLID = [
     #   primitives, so their un-mitered ends overlap at each corner; the real miter removes that material.
     #   Welded joint, reads continuous — same class as the door-frame weldment above.
     ("film frame", "film frame", "45° mitered + TIG-welded perimeter-frame corner (Sheet 17); full-length box primitives overlap but the miter removes it"),
+    # — Spray-bar wheel-carriage clamp stack (Group 3, 2026-10-27): the bottom/spacer/top beam clamp
+    #   bolts together and deliberately sandwiches the beam AND the carriage plate vertically (SPRAY BAR
+    #   ASSEMBLY Sheet 10), so the solid spacer seats against/through the plate in the bolted stack.
+    ("carriage plate", "clamp spacer", "spray-bar wheel carriage — the bottom/spacer/top clamp sandwiches the beam AND the carriage plate vertically (Sheet 10); the spacer seats against the plate in the bolted stack, not a fused defect"),
 ]
 
 

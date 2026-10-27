@@ -130,6 +130,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
     shell→cap lap drew the shell ~50mm past the 25mm rim lip (now `LIP+125`, flush at `LT_LAP_H`).
     **56 → 8 OPEN (95 → 143 sanctioned).** Residual 8 = Group 2 (film-frame 2×2 corners) + Group 3
     (carriage↔clamp), still pending review.
+  - **OVERVIEW set CLOSED 2026-10-27 (Groups 1–3 all resolved).** Group 2 = film-plane perimeter-frame
+    corners — 45° mitered + TIG-welded (film-plane Sheet 17), box-model full-length-overlap artifact →
+    sanctioned. Group 3 = spray-bar wheel-carriage — the beam clamp + spacer sandwiches the beam AND the
+    carriage plate (SPRAY BAR Sheet 10), bolted stack → sanctioned. The review also fixed two real 2D
+    drawing bugs (light-trap Sheet 4 shell overshoot, Sheet 10 beam-notch rivet) + added the beam-notch
+    light-seal. **`--solids` is PER-ACTIVE-MODEL**, so this cleared the OVERVIEW doc only. **REMAINING — a
+    per-sub-model pass:** the live `lighttrap` doc shows **18 of its own** OPEN (hinged-panel bay beams /
+    stiles, fold-down aprons, pivot-post↔hub, stay lug↔clevis, slot L-strip, fixed-box flange↔web — mostly
+    the same welded/one-piece/bearing classes); the film-plane-mechanism + other sub-models likely similar.
+    Do each as its own `--solids` pass against that live doc.
   - **Film-plane blueprint Phase-0 triage (2026-09-05, `filmplane-bp`).** Ran `check_interference.py`
     against the live `film-plane-mechanism` model. **Pipe/solid OPEN = 0.** `--solids` = **165 OPEN**,
     dominated by U-channel **web↔flange self-overlap** (one-piece extrusion modeled as boxes — intentional),

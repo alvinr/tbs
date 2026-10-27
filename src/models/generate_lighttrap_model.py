@@ -1355,13 +1355,24 @@ def apron_folded_geom():
     notched panel per side, laid flat (the panel LENGTH steps 270/205 with the top). Drawn in the
     folded-at-door-plane pose; the swing-DC child gets a −LOCK pre-rotation so the parent's +LOCK lands it
     here at swing=1. SHOWN when swung / HIDDEN closed."""
-    # folded outline in (X, Yd) at Z=_AHZ, extruded APRON_T up in Z. X = _AHZ + (leaf_top − _AHZ) reach.
-    near = [(_AHZ, 0), (CORNER_BOT, 0), (CORNER_BOT, YD_L), (PANEL_FLOOR_GAP, YD_L),
-            (PANEL_FLOOR_GAP, APRON_IN_L), (_AHZ, APRON_IN_L)]
-    far  = [(_AHZ, APRON_IN_R), (PANEL_FLOOR_GAP, APRON_IN_R), (PANEL_FLOOR_GAP, YD_R),
-            (CORNER_BOT, YD_R), (CORNER_BOT, C_WID - APRON_FIX_W), (_AHZ, C_WID - APRON_FIX_W)]
+    # folded outline in (X, Yd) at Z=_AHZ, extruded APRON_T up in Z. The flap hinges about its INNER
+    # face (X=40) — NOT the X12 front — so it lays INWARD and clears the fixed baffle (X28..40) + the
+    # hinge lapping board (X15..18); FX maps the standing height to that inward X reach.
+    FX = lambda z: 40 + (z - _AHZ)
+    near = [(FX(_AHZ), 0), (FX(CORNER_BOT), 0), (FX(CORNER_BOT), YD_L), (FX(PANEL_FLOOR_GAP), YD_L),
+            (FX(PANEL_FLOOR_GAP), APRON_IN_L), (FX(_AHZ), APRON_IN_L)]
+    far  = [(FX(_AHZ), APRON_IN_R), (FX(PANEL_FLOOR_GAP), APRON_IN_R), (FX(PANEL_FLOOR_GAP), YD_R),
+            (FX(CORNER_BOT), YD_R), (FX(CORNER_BOT), C_WID - APRON_FIX_W), (FX(_AHZ), C_WID - APRON_FIX_W)]
+    # 45° tip chamfer — the UP top-edge scarf, carried onto the folded TIP (a wedge across the 18mm
+    # thickness, tapering back APRON_CHAM from each tip; one segment per step, matching apron_top_chamfers).
+    segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+            (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
+    cham = '\n'.join(_prism_xz("Fold-down apron top chamfer",
+                               [(FX(top), _AHZ), (FX(top), _AHZ + APRON_T), (FX(top) - APRON_CHAM, _AHZ + APRON_T)],
+                               y0, y1 - y0, C_PLY, 0.6)
+                     for (y0, y1, top) in segs)
     return (draw.ruby_prism("Fold-down apron (near, FOLDED)", near, _AHZ, APRON_T, color=C_PLY, alpha=0.6) +
-            draw.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6))
+            draw.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6) + cham)
 
 
 def apron_edge_brushes():

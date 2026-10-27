@@ -427,6 +427,11 @@ _SANCTIONED_SOLID = [
     ("cap", "edge channel", "drum cap vs its own drum edge channel on the rim (seated) — AABB over-count"),
     ("edge channel", "wiper", "drum edge channel + wiper holder both on the drum opening rim (riveted/bonded) — AABB over-count"),
     ("housing arc", "header band", "housing arc + its own sill/header band — one housing skin assembly, seated"),
+    # — Film-plane perimeter frame corners (Group 2, 2026-10-27): the 4 corners are 45° MITERED + TIG-welded
+    #   (MOVEABLE FILM PLANE Sheet 17 weldment). The 3D draws the 4 angle members as full-length box
+    #   primitives, so their un-mitered ends overlap at each corner; the real miter removes that material.
+    #   Welded joint, reads continuous — same class as the door-frame weldment above.
+    ("film frame", "film frame", "45° mitered + TIG-welded perimeter-frame corner (Sheet 17); full-length box primitives overlap but the miter removes it"),
 ]
 
 

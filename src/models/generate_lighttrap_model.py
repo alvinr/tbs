@@ -49,7 +49,7 @@ C_WID, C_HGT, WALL_T = ov.C_WID, ov.C_HGT, ov.WALL_T
 DRUM_CX, DRUM_CY, DRUM_R, DRUM_H = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R, ov.DRUM_H_LT
 PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X)
 PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §2.1)
-PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
+PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 217 — center-zone leaf-bottom (= tbs_constants, via ov)
 from tbs_constants import PANEL_FLOOR_GAP_SIDE
 from tbs_constants import PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CUT_YD, PANEL_FAN_BAND_Z   # panel_pivot (Phase 1)
 from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH, CARGO_DOOR_LEAF_T
@@ -77,9 +77,10 @@ C_SHELL, C_VALVE = draw.C_SHELL, draw.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
-CORNER_BOT = LT_CAGE_BOT + 50                 # 190 — corner-skin/apron split (BOTH sides): dropped from the
-#   282 stepped bottom down to the bottom-beam TOP so the beam's rivets land on the fixed corner skin, not
-#   the fold-down apron plywood flap (2026-08-31). Far side = HDPE corner; near side = Fan-B ply band.
+CORNER_BOT = PANEL_FLOOR_GAP_SIDE             # 282 — corner apron/skin split at the leaf-bottom line: the
+#   fold-down apron runs FULL height up to the leaf (hingepanel Sheet 16), meeting the fixed corner skin
+#   (far = HDPE corner, near = Fan-B ply band) at 282. (Was LT_CAGE_BOT+50=190, the old bottom-beam TOP, when
+#   the rail sat in the apron's gap; the rail is now raised to the leaf line, so the apron no longer stops short.)
 PLY_T  = 12   # real plywood thickness (12mm exterior BC). Inset on the INTERIOR face of the 40mm frame zone.
 PLY_X0 = 40 - PLY_T   # 28 — ply front face (X28..40 = interior 12mm; the 40mm frame zone stays around it)
 CHAM   = PLY_T   # plywood↔plywood joint chamfer: 45° across the 12mm ply (hingepanel Sheet 16 Detail E)

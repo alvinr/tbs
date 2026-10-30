@@ -1185,14 +1185,14 @@ def far_bay_wall_frame():
     yR = ov.DRUM_CAGE_YD_R                 # 1662 — far cage face / far-wall Yd
     yf = PIVOT_YD                          # 2287 — pivot frame (the beams reach it)
     xf, xb = ov.BAY_FRONT_X, 0             # -890 .. 0 — tunnel depth (mouth → panel plane)
-    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP      # 140 .. 2217 — the HDPE wall stops at the top beams
+    z0, z1 = PANEL_FLOOR_GAP_SIDE, LT_CAGE_TOP   # 282 .. 2217 — bay-wall bottom RAISED to the leaf-bottom line, ABOVE the fold-down apron's seal gap (Sheet 16: the apron's gap + fold path are clear)
     t = ov.BAY_WALL_T
     xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0);
     #                                        full 50mm lap onto the cage, skin laps the beam like the jambs
     RS, rr = 50, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (sits on the cage top)
-    zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
+    zb = PANEL_FLOOR_GAP_SIDE              # bottom RAIL raised to the leaf-bottom line, above the apron (was LT_CAGE_BOT=140, inside the apron's seal gap)
     p = [
         # (4/5) TOP + BOTTOM beams running in Yd from the drum cage across to the pivot frame — the visible
         #       horizontal beams of Sheet 8; the far HDPE top/bottom edges rivet to them. Just inboard of
@@ -1223,13 +1223,13 @@ def near_bay_wall_frame():
     yL = ov.DRUM_CAGE_YD_L                 # 700 — near cage face
     yn = CUT                               # 180 — near frame edge (left swing stile)
     xf = ov.BAY_FRONT_X                    # -890 — bay mouth
-    z0, z1 = LT_CAGE_BOT, LT_CAGE_TOP      # 140 .. 2217 — the HDPE wall stops at the top beams
+    z0, z1 = PANEL_FLOOR_GAP_SIDE, LT_CAGE_TOP   # 282 .. 2217 — bay-wall bottom RAISED to the leaf-bottom line, ABOVE the fold-down apron's seal gap (Sheet 16: the apron's gap + fold path are clear)
     t = ov.BAY_WALL_T
     xb2 = 0                                # FLUSH-FRONT with the cage post + frame jambs (door plane X0)
     RS, rr = 50, 5
     c = C_STEEL
     zt = LT_CAGE_TOP - RS                  # top beam Z2217..2267 (cage top)
-    zb = LT_CAGE_BOT                       # bottom beam Z140..190 (cage bottom)
+    zb = PANEL_FLOOR_GAP_SIDE              # bottom RAIL raised to the leaf-bottom line, above the apron (was LT_CAGE_BOT=140, inside the apron's seal gap)
     p = [
         ruby_box("Near bay top beam (50 RHS)", xb2, yn, zt, RS, yL - yn, RS, color=c),
         ruby_box("Near bay bottom beam (50 RHS)", xb2, yn, zb, RS, yL - yn, RS, color=c),

@@ -185,8 +185,9 @@ def lighttrap_labels():
 # ── Ghosted container context (end opening only) ─────────────────────────────
 
 def context(left_walkway=True, x_far=None):
-    """Low-alpha stub of floor, ceiling and both side walls near X=0 so the
-    assembly reads in place without modeling the whole container.
+    """Low-alpha FLOOR stub (ground reference only) so the assembly reads in place
+    without modeling the whole container. (Roof + side walls are NOT drawn — they
+    break the DC click/swing interaction; see below.)
 
     left_walkway: include the ghosted left walkway deck + drum-exit punch-out
     (default True = operating; byte-identical). The transport model passes False —
@@ -201,18 +202,12 @@ def context(left_walkway=True, x_far=None):
     # swings in for transport — so it legitimately sits BEYOND this closing plane while operating.
     x0 = DOOR_HINGE_X
     xlen = (x_far if x_far is not None else 2000) - x0
-    # Floor + a LOW-ALPHA container ghost (roof + both side walls, same 0.25 alpha as the floor) so the
-    # container envelope reads and the B2 punch-out (bay/drum at X<0) clearly protrudes past the X=0 end.
-    # Left OPEN at the X=0 cargo-door end (the door opening) and at the +X crop so the walls don't box in
-    # the corner mechanism — at 0.25 alpha you orbit straight through them.
+    # FLOOR ONLY — a low-alpha ground datum from the cargo-door end (DOOR_HINGE_X) to the +X crop.
+    # The roof + both side walls are intentionally NOT drawn: at any alpha they intercept the DC
+    # click/swing interaction (the Panel-Swing + Cargo-Door dynamic components stop animating) and
+    # box in the corner mechanism. Keep the floor as the only reference.
     parts = [
         ruby_box("Floor (context)", x0, 0, -WALL_T, xlen, C_WID, WALL_T,
-                 color=C_SHELL, alpha=0.25),
-        ruby_box("Ceiling (context)", x0, 0, C_HGT, xlen, C_WID, WALL_T,
-                 color=C_SHELL, alpha=0.25),
-        ruby_box("Side wall near (context)", x0, 0, 0, xlen, WALL_T, C_HGT,
-                 color=C_SHELL, alpha=0.25),
-        ruby_box("Side wall far (context)", x0, C_WID - WALL_T, 0, xlen, WALL_T, C_HGT,
                  color=C_SHELL, alpha=0.25),
     ]
     # The left walkway + drum-exit punch-out (the amber lift-out decks) are now built by

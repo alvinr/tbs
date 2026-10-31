@@ -1407,7 +1407,8 @@ def fixed_bottom_geom():
     # interior apron body + its EPDM scarf it forms a TWO-STAGE light labyrinth: the lip blocks daylight at
     # the door, the leaf swings past it, and the apron body takes the final wipe seal. Inset from the door-
     # frame stiles. (Replaces the retired piano-hinge lapping board + foam strip + fold.)
-    _lipz = (CORNER_BOT + 18) - 50
+    _lipz = (CORNER_BOT + 8) - 50   # lip top Z290 — 8mm over the leaf bottom (282) but UNDER the bay-wall
+    #                                 HDPE-to-beam rivet row (~Z297), so it doesn't foul the rivets/bolts
     _sl = CUT + 25   # transport stay-lug Yd (LOCK_BOLT) — the near lip notches around it
     for _y0, _y1 in ((50, _sl - 14), (_sl + 14, YD_L), (YD_R, C_WID - APRON_FIX_W)):   # near (split at the stay lug) + far, clear of the stiles
         parts.append(ruby_box("Fixed apron baffle lip (ext daylight baffle)", -20, _y0, 50, 18, _y1 - _y0, _lipz, color=C_PLY, alpha=0.85))

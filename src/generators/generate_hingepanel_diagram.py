@@ -2587,10 +2587,11 @@ def sheet15():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 16  —  Fold-Down Light Apron (closes the 217mm under-leaf gap that the
-#   floor-gap raise opened). TWO fold-down aprons at the corner zones (bottom-hinged
-#   to the threshold, fold INTO the container for the transport swing) + a FIXED
-#   center baffle under the drum bay (the drum sweeps through, so no moving part).
+# SHEET 16  —  Fixed Light-Seal Apron (closes the 217mm under-leaf gap that the
+#   floor-gap raise opened). TWO FIXED labyrinth aprons at the corner zones — each a
+#   two-piece glued/screwed plywood profile (apron body + baffle lip) with an EPDM
+#   scarf the swinging leaf WIPES off (no fold, no hinge) — + a FIXED center baffle
+#   under the drum bay (the drum sweeps through, so no moving part).
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet16():
     from tbs_constants import (PANEL_FLOOR_GAP_SIDE as ATOP, PANEL_FLOOR_GAP as PBOT_CTR,
@@ -2611,7 +2612,7 @@ def sheet16():
     ax.set_xlim(-130, WID + 950)
     ax.set_ylim(-170, 920)
 
-    ax.text(WID / 2, 878, "FOLD-DOWN LIGHT APRON — closes the under-leaf gap at the 217mm floor gap",
+    ax.text(WID / 2, 878, "FIXED LIGHT-SEAL APRON — closes the under-leaf gap at the 217mm floor gap",
             ha="center", fontsize=12, fontweight="bold", color=C_OUT, **FONT)
 
     # ══ ELEVATION (Yd–Z) — door-bottom layout, interior face (top band) ══
@@ -2621,11 +2622,11 @@ def sheet16():
     ax.text(WID + 20, ez, "FLOOR Z0", va="center", ha="left", fontsize=6.5, color=C_DIM, **FONT)
     # Fold-down aprons — each extends INBOARD past the center-zone step line to a brush gap off the cage
     # (Yd APRON_IN_L / APRON_IN_R); its top steps 282 (corner) → 217 (center ext) to follow the leaf bottom.
-    for y0, y1, top, lbl in [(0, jL, ATOP, "NEAR fold-down apron"), (jL, APRON_IN_L, PBOT_CTR, None),
-                             (APRON_IN_R, jR, PBOT_CTR, None), (jR, STUB, ATOP, "FAR fold-down apron")]:
-        ax.add_patch(Rectangle((y0, ez), y1 - y0, top, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.75))
+    for y0, y1, top, lbl in [(0, jL, ATOP, "NEAR fixed apron"), (jL, APRON_IN_L, PBOT_CTR, None),
+                             (APRON_IN_R, jR, PBOT_CTR, None), (jR, STUB, ATOP, "FAR fixed apron")]:
+        ax.add_patch(Rectangle((y0, ez), y1 - y0, top, fc=C_WOOD, ec=C_OUT, lw=1.4, alpha=0.8))
         if lbl:
-            ax.text((y0 + y1) / 2, ez + top * 0.5, f"{lbl}\n(UP = sealing)\nZ0–{int(top)}", ha="center", va="center",
+            ax.text((y0 + y1) / 2, ez + top * 0.5, f"{lbl}\n(labyrinth seal)\nZ0–{int(top)}", ha="center", va="center",
                     fontsize=7, fontweight="bold", color="#204060", **FONT)
     # pivot-corner leaf TRAVELS with the swinging panel up to the pivot line; tiny fixed past-pivot at the wall
     ax.add_patch(Rectangle((STUB, ez), PIVOT_YD - STUB, ATOP, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.75))
@@ -2653,32 +2654,23 @@ def sheet16():
     draw_dim_h(ax, APRON_IN_R, STUB, ez - 45, f"{int(STUB - APRON_IN_R)}mm far apron", offset=-12, fs=6, font=FONT)
     draw_dim_h(ax, STUB, PIVOT_YD, ez - 45, f"{int(PIVOT_YD - STUB)}mm pivot leaf", offset=-12, fs=5.6, font=FONT)
 
-    # ══ SECTION A (X–Z) — corner apron fold action (bottom-left) ══
-    a0 = 130
+    # ══ SECTION A (X–Z) — corner apron FIXED (no fold); seal zoom in DETAIL F ══
+    a0 = 150
     def aA(x, z): return (a0 + x, z)
-    ax.text(a0 + 130, 400, "SECTION A — corner apron (fold action)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(a0 + 130, 384, "vertical section · exterior LEFT → interior RIGHT", ha="center", fontsize=6.4, color=C_DIM, **FONT)
-    ax.plot([a0 - 95, a0 + 340], [0, 0], color=C_OUT, lw=1.6)
-    ax.add_patch(Rectangle(aA(-51, 0), 51, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))            # threshold sill
-    leader(ax, aA(-25, THR), aA(-85, 165), "threshold sill\n(fixed, Z0–51)", col=C_OUT, fs=6)
-    ax.add_patch(Rectangle(aA(-20, ATOP), 62, 95, fc=C_PLASTIC, ec=C_OUT, lw=1.4, alpha=0.7))          # leaf bottom (corner)
-    leader(ax, aA(32, ATOP + 45), aA(175, 360), "swinging leaf bottom\n(corner zone, Z282)", col="#1763C8", fs=6)
-    hx, hz = 6, 10
-    ax.add_patch(Rectangle(aA(hx, hz), AT, ATOP - hz, fc=C_PLASTIC, ec=C_OUT, lw=1.7))                 # apron UP
-    for bxx in range(int(a0 + hx + 4), int(a0 + hx + AT - 2), 5):                                      # top brush seal
-        ax.plot([bxx, bxx], [ATOP, ATOP + 17], color="#806040", lw=0.9)
-    leader(ax, aA(hx + AT / 2, ATOP + 9), aA(250, 320), "top BRUSH seal to the leaf\n(leaf sweeps sideways off it)", col=C_OUT, fw="bold", fs=6)
-    ax.add_patch(Circle(aA(hx, hz), 7, fc=C_STEEL, ec=C_OUT, lw=1.1))                                  # bottom hinge
-    leader(ax, aA(hx, hz), aA(-80, -50), "piano hinge to the sill\n+ baffle lip (light-tight)", col=C_OUT, fw="bold", fs=6)
-    R = ATOP - hz
-    th = np.linspace(np.pi / 2, 0, 40)                                                                 # fold arc (top edge)
-    ax.plot(a0 + hx + R * np.cos(th), hz + R * np.sin(th), color="#B00", lw=0.9, ls=(0, (4, 2)))
-    ax.annotate("", xy=aA(hx + R * 0.78, hz + R * 0.30), xytext=aA(hx + 26, ATOP * 0.62),
-                arrowprops=dict(arrowstyle="-|>", color="#B00", lw=1.5))
-    ax.add_patch(Rectangle(aA(hx, hz), R, AT, fc=C_PLASTIC, ec="#B00", lw=1.2, ls=(0, (4, 2)), alpha=0.30))  # folded (transport)
-    ax.text(a0 + hx + R * 0.55 + 200, hz - AT - 25, "FOLDED (transport) — flat INTO the container,\nclear of the swing path",
-            ha="center", fontsize=6.3, color="#B00", fontweight="bold", **FONT)
-    draw_dim_v(ax, a0 - 175, 0, ATOP, f"{int(ATOP)}mm", offset=12, fs=6, font=FONT)
+    PLY2 = "#B8914E"; SCINT = ATOP - 14; BLIP = ATOP + 18   # scarf interior-low 268; baffle-lip top 300
+    ax.text(a0 + 35, 400, "SECTION A — corner apron (fixed, no fold)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(a0 + 35, 384, "vertical section · exterior (cargo door) LEFT → interior RIGHT · seal → DETAIL F", ha="center", fontsize=6.1, color=C_DIM, **FONT)
+    ax.plot([a0 - 80, a0 + 200], [0, 0], color=C_OUT, lw=1.6)
+    ax.add_patch(Rectangle(aA(-30, 0), 54, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))            # threshold sill
+    ax.add_patch(Rectangle(aA(-12, 0), 18, BLIP, fc=PLY2, ec=C_OUT, lw=1.4))                           # PIECE 2 — baffle lip
+    ax.add_patch(Polygon([aA(6, 0), aA(24, 0), aA(24, SCINT), aA(6, ATOP)], closed=True, fc=C_WOOD, ec=C_OUT, lw=1.4))  # PIECE 1 — apron body
+    ax.plot([a0 + 6, a0 + 6], [12, SCINT - 6], color="#7A4A12", lw=1.3, alpha=0.7)                     # glue line
+    ax.plot([a0 + 6, a0 + 24], [ATOP, SCINT], color="#5A3020", lw=4, solid_capstyle="butt", zorder=5) # EPDM scarf
+    ax.add_patch(Polygon([aA(6, ATOP + 3), aA(24, SCINT + 3), aA(24, ATOP + 95), aA(6, ATOP + 95)], closed=True, fc=C_PLASTIC, ec=C_OUT, lw=1.6, alpha=0.7))  # swinging leaf
+    ax.annotate("", xy=aA(80, ATOP + 22), xytext=aA(28, ATOP + 22), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.7))  # swing-off
+    leader(ax, aA(2, 150), aA(116, 128), "two glued/screwed ply pieces\n(apron body + baffle lip) —\nseal in DETAIL F", col="#5A3A10", fw="bold", fs=6)
+    ax.text(a0 + 100, ATOP + 24, "swinging leaf —\nswings INWARD, wipes\noff (no fold)", fontsize=6.1, color="#1763C8", fontweight="bold", va="center", **FONT)
+    draw_dim_v(ax, a0 - 46, 0, ATOP, f"{int(ATOP)}mm", offset=12, fs=6, font=FONT)
 
     # ══ DETAIL D (X–Z) — fixed center baffle under the bay (bottom-right) ══
     d0 = 1560
@@ -2721,52 +2713,46 @@ def sheet16():
     draw_dim_v(ax, e0 - 24, ebz, ebz + T * S, "18mm", offset=10, fs=6, font=FONT)
     ax.text(*eE(xc + T + 2, 1.5), "45°", ha="left", va="bottom", fontsize=6, color=C_DIM, **FONT)
 
-    # ══ DETAIL F (enlarged ~3.5:1) — apron hinge-line light seal (exterior lapping board) ══
-    f0, fbz, SF = 2230, 30, 3.5
-    def fF(x, z): return (f0 + x * SF, fbz + z * SF)
-    C_FOAM = "#6E7478"
-    ax.text(f0 + 95, 400, "DETAIL F — apron hinge-line seal", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(f0 + 95, 384, "vertical section · exterior LEFT → interior RIGHT · enlarged 3.5:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
-    # threshold sill (fixed, Z0–51)
-    ax.add_patch(Rectangle(fF(-34, 0), 48 * SF, THR * SF, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))
-    # fixed EXTERIOR lapping board — 3mm steel off the sill, standing up as the daylight baffle (z 51..101)
-    ax.add_patch(Rectangle(fF(-13, THR), 3 * SF, 44 * SF, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="\\\\\\"))
-    # 10mm closed-cell foam, compressed between the lap and the apron exterior face
-    ax.add_patch(Rectangle(fF(-10, THR + 4), 10 * SF, 36 * SF, fc=C_FOAM, ec=C_OUT, lw=0.8))
-    # apron (18mm ply, UP = sealing) — interior side of the hinge, with a break at the top
-    ax.add_patch(Rectangle(fF(0, THR), 18 * SF, 44 * SF, fc=C_WOOD, ec=C_OUT, lw=1.4))
-    _bx0, _bx1, _bzt = fF(0, 95)[0], fF(18, 95)[0], fF(0, 95)[1]
-    ax.plot([_bx0, (_bx0 + _bx1) / 2 - 6, (_bx0 + _bx1) / 2 + 6, _bx1], [_bzt, _bzt + 9, _bzt - 9, _bzt], color=C_OUT, lw=1.0)
-    # piano hinge knuckle (inboard of the lap), at the apron bottom on the sill
-    ax.add_patch(Circle(fF(3, THR), 4.0 * SF, fc="#B0B0B8", ec=C_OUT, lw=1.0))
-    # ext. light ray blocked at the lapping board
-    ax.annotate("", xy=fF(-13, 84), xytext=fF(-40, 84), arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.4))
-    ax.plot(*fF(-13, 84), marker="x", ms=8, mew=2.2, color="#C0202A")
-    ax.text(*fF(-46, 78), "ext. light\nblocked", ha="right", va="center", fontsize=5.6, color="#B07000", **FONT)
-    # labels (left-aligned leader column to the right — interior side)
-    _lx = f0 + 165
-    leader(ax, fF(9, 88), (_lx, fbz + 315), "18mm apron ply\n(UP = sealing)", col="#204060", fw="bold", fs=6, ha="left")
-    leader(ax, fF(-5, 80), (_lx, fbz + 245), "10mm closed-cell foam\n(compressed when UP)", col=C_FOAM, fw="bold", fs=6, ha="left")
-    leader(ax, fF(-11.5, 70), (_lx, fbz + 170), "3mm steel LAPPING BOARD\n— fixed to the sill, exterior\ndaylight baffle over the hinge", col=C_OUT, fw="bold", fs=6, ha="left")
-    leader(ax, fF(3, THR), (_lx, fbz + 90), "piano hinge to the sill\n(knuckle inboard of the lap)", col=C_OUT, fs=6, ha="left")
-    leader(ax, fF(-24, 25), (_lx, fbz + 20), "threshold sill (Z0–51)", col=C_OUT, fs=6, ha="left")
+    # ══ DETAIL F (enlarged ~4:1) — corner apron seal: two-ply + EPDM scarf + CSK screw ══
+    f0, fbz, SF = 2250, 198, 4.0
+    def fF(x, z): return (f0 + x * SF, fbz + z * SF)   # local mm (scarf interior-low z0, exterior-high z14), enlarged
+    EPDM = "#5A3020"; PLY2 = "#B8914E"
+    ax.text(f0 + 20, 400, "DETAIL F — apron seal (enlarged 4:1)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(f0 + 20, 384, "two glued/screwed ply pieces + EPDM scarf · exterior (cargo door) LEFT", ha="center", fontsize=5.9, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle(fF(-18, -40), 18 * SF, 70 * SF, fc=PLY2, ec=C_OUT, lw=1.4))                              # PIECE 2 — baffle lip
+    ax.add_patch(Polygon([fF(0, -40), fF(18, -40), fF(18, 0), fF(0, 14)], closed=True, fc=C_WOOD, ec=C_OUT, lw=1.4))  # PIECE 1 — apron body w/ scarf
+    ax.plot([fF(0, 14)[0], fF(18, 0)[0]], [fF(0, 14)[1], fF(18, 0)[1]], color=EPDM, lw=6, solid_capstyle="butt", zorder=5)  # EPDM on scarf
+    ax.add_patch(Polygon([fF(0, 17), fF(18, 3), fF(18, 50), fF(0, 50)], closed=True, fc=C_PLASTIC, ec=C_OUT, lw=1.5, alpha=0.75))  # swinging leaf
+    zc = -22   # CSK screw — head FLUSH in the baffle-lip EXTERIOR (cargo-door) face, driven interior into the apron body
+    ax.plot([fF(-18, zc)[0], fF(12, zc)[0]], [fF(-18, zc)[1], fF(12, zc)[1]], color="#555", lw=1.6)
+    ax.plot([fF(-18, zc - 2.3)[0], fF(-11, zc)[0]], [fF(-18, zc - 2.3)[1], fF(-11, zc)[1]], color="#555", lw=2.0)
+    ax.plot([fF(-18, zc + 2.3)[0], fF(-11, zc)[0]], [fF(-18, zc + 2.3)[1], fF(-11, zc)[1]], color="#555", lw=2.0)
+    ax.annotate("", xy=fF(-18, -8), xytext=fF(-42, -8), arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.5)); ax.plot(*fF(-18, -8), marker="x", ms=9, mew=2.3, color="#C0202A")
+    ax.annotate("", xy=fF(1, 22), xytext=fF(-42, 44), arrowprops=dict(arrowstyle="-|>", color="#E0A000", lw=1.5, ls=(0, (4, 2)))); ax.plot(*fF(1, 22), marker="x", ms=9, mew=2.3, color="#C0202A")
+    ax.text(*fF(-44, 6), "daylight\nblocked", ha="right", va="center", fontsize=5.6, color="#B07000", **FONT)
+    _lx = f0 + 115
+    leader(ax, fF(10, 40), (_lx, 372), "swinging leaf\n(wipes off · no fold)", col="#204060", fw="bold", fs=6, ha="left")
+    leader(ax, fF(-9, 24), (_lx, 300), "PIECE 2 — baffle lip\n(blocks daylight · to Z300)", col="#6a4a1a", fw="bold", fs=6, ha="left")
+    leader(ax, fF(9, 7), (_lx, 212), "EPDM on the fixed 45° scarf —\nleaf WIPES it (sealed closed,\nwipes off as it swings)", col=EPDM, fw="bold", fs=6, ha="left")
+    leader(ax, fF(12, -34), (_lx, 100), "PIECE 1 — apron body (18mm ply)", col="#5A3A10", fw="bold", fs=6, ha="left")
+    leader(ax, fF(-18, zc), (f0 - 185, 135), "CSK wood screw — head FLUSH in the\nEXTERIOR (cargo-door) face, driven into\nthe apron body (+ glue full-length)", col="#555", fs=5.8, ha="left", bbox=tbs_drawing.LBL_BG)
 
     # ══ notes ══
     draw_notes(ax, [
-        "FOLD-DOWN LIGHT APRON — operation",
-        f"• Two aprons, bottom-hinged to the threshold, fold INTO the container. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), crossing the step line — top steps 282→217 to follow the leaf. 18mm exterior SYP plywood, flat-black interior (a light seal); cut from the SYP sheets A–C (Plywood Cut Sheets).",
-        "• OPERATION: apron UP — top brush to the leaf bottom, EPDM to the jambs. Held vertical by an over-center catch each side.",
-        "• HINGE LINE (Detail F): the apron-bottom piano hinge is light-sealed by a fixed 3mm-steel LAPPING BOARD off the sill — an exterior daylight baffle standing over the hinge — plus a 10mm closed-cell foam strip the apron compresses when UP; the hinge knuckle sits inboard of the lap.",
-        "• TRANSPORT: release the catches, fold both aprons flat into the container, then swing the panel; the leaf clears the ~40mm folded panel.",
+        "FIXED LIGHT-SEAL APRON — operation",
+        f"• Two FIXED aprons (corner zones) + a fixed center baffle close the under-leaf gap — NO fold, hinges, catches or foam. Each runs from the door corner IN to {int(APRON_CAGE_GAP)}mm off the cage side (Yd {int(APRON_IN_L)} / {int(APRON_IN_R)}), top stepped 282→217 to follow the leaf. 18mm exterior SYP plywood, flat-black interior; cut from the SYP sheets A–C (Plywood Cut Sheets).",
+        "• CONSTRUCTION (Section A / Detail F): each apron is TWO glued + screwed ply pieces — an apron BODY + an exterior BAFFLE LIP standing over the leaf bottom (the daylight baffle). Glued full-length; CSK wood screws driven from the EXTERIOR (cargo-door) face, heads flush so nothing protrudes toward the door.",
+        "• SEAL (Detail F): EPDM bonded to the apron's fixed 45° scarf; the swinging leaf's matching scarf compresses it closed and WIPES off it as the leaf swings inward (pure RotZ — the leaf stays at Z282 and just retreats, so nothing folds). Daylight is blocked by the baffle lip + the leaf.",
+        "• TRANSPORT: no apron action — just swing the panel; the leaf lifts straight off the fixed aprons.",
         "• CENTER (drum bay): a FIXED plywood baffle (Z0–130, floor→cage), trimmed to the apron edges, closes the strip under the cage; a horizontal strip BRUSH on its top edge fills the 10mm up to the swept Z140 cage bottom.",
         f"• SIDE BRUSHES: a vertical strip brush on each apron inner edge bridges the {int(APRON_CAGE_GAP)}mm to the cage side; the bay bottom cap closes Z130→217 in operation.",
-        "• CHAMFER JOINTS (Detail E): every plywood↔plywood MOVING joint is a 45° scarf with EPDM bonded to the FIXED face — a light-tight lap the moving panel sweeps off without binding. TYP at: apron top↔swing-leaf bottom, apron side↔fixed stub/jamb, swing-panel edge↔side leaves, apron↔center baffle.",
+        "• CHAMFER JOINTS (Detail E): every ply↔ply moving joint is a 45° scarf with EPDM on the FIXED face — a light-tight lap the moving panel wipes off without binding (TYP).",
     ], WID + 380, 890, spacing=21, fs=5.8, title_fs=6.6, color="#403000",
        title_color="#806010", width=450, wrap=49, border_color="#806010", font=FONT)
 
     title_block(ax, "SHEET 16 OF 17",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="FOLD-DOWN LIGHT APRON + FIXED CENTER BAFFLE — under-leaf gap closure",
+                subtitle="FIXED LIGHT-SEAL APRON + CENTER BAFFLE — under-leaf gap closure",
                 scale_note="SECTION + ELEVATION · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet16.png"), dpi=DIAGRAM_DPI,

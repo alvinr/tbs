@@ -1261,9 +1261,12 @@ def near_bay_wall_frame():
 # the drum-cage side (APRON_IN_L/R = cage ∓ APRON_CAGE_GAP). It crosses the center-zone step line (YD_L/R),
 # so its TOP steps down from the raised corner leaf bottom (PANEL_FLOOR_GAP_SIDE) to the lower center leaf
 # bottom (PANEL_FLOOR_GAP) — a single stepped cut, hinged as one about the threshold. HZ = hinge Z (12).
-_AHZ = 12
-APRON_PLY_T = 18            # fold-down apron re-graded 12mm→18mm so it nests into the group-A SYP sheet
-APRON_X0    = 40 - APRON_PLY_T   # 22 — apron front face (still inside the 40mm frame zone; clears the pivot post/plate)
+_AHZ = 50                  # apron BODY bottom — sits on the door-sill top (threshold Z0..50); the steel sill is the bottom seal
+APRON_PLY_T = 18           # 18mm so it nests into the group-A SYP sheet
+APRON_X0    = -APRON_PLY_T # -18 — apron BODY outer face. The two-ply GLUED sandwich (body + exterior baffle lip) sits
+#                            EXTERIOR of the swinging leaf (Sheet 16): the leaf (X0..40) swings inward and WIPES the body's
+#                            EPDM scarf; daylight is blocked at the door. (Was X22..40 interior — reconciled to the 2D sandwich.)
+APRON_XI    = APRON_X0 + APRON_PLY_T   # 0 — apron body INNER face, against the leaf exterior face (X0)
 APRON_CHAM  = APRON_PLY_T   # 45° moving-flap scarf runs across the apron thickness
 APRON_T     = APRON_PLY_T   # fold-down flap = 18mm plywood, on the interior face (X22..40)
 
@@ -1275,8 +1278,9 @@ _CT_LOW = CORNER_BOT - APRON_CHAM     # corner body top — BOTH sides: dropped 
 #                                       corner-skin bottom (CORNER_BOT) so the apron reads shorter, fixed
 #                                       skin below it (far = HDPE, near = Fan-B ply band)
 _CC   = PANEL_FLOOR_GAP - APRON_CHAM  # center-ext body top
-_APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
-                  (YD_L, _CC), (YD_L, _CT_LOW), (0, _CT_LOW)]
+# near edge inset to Yd52, clear of the near door-frame stile (Yd0..50) now that the apron sits exterior (X-18..0)
+_APRON_UP_NEAR = [(52, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
+                  (YD_L, _CC), (YD_L, _CT_LOW), (52, _CT_LOW)]
 _APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_LOW),
                   (YD_R, _CT_LOW), (YD_R, _CC), (APRON_IN_R, _CC)]
 
@@ -1324,10 +1328,10 @@ def apron_top_chamfers():
     """45° chamfer along each apron TOP edge (the moving-flap scarf that sweeps off the fixed leaf's EPDM,
     Detail E): a triangular X-Z prism per top segment — outer face (X28) rises the full CHAM to the leaf
     bottom, inner face (X40) stays CHAM lower. One segment per step (corner→282, center-ext→217)."""
-    segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+    segs = [(52, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
             (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
     return '\n'.join(_prism_xz("Fixed apron top scarf",
-                               [(APRON_X0, top - APRON_CHAM), (40, top - APRON_CHAM), (APRON_X0, top)], y0, y1 - y0, C_PLY, 0.85)
+                               [(APRON_X0, top - APRON_CHAM), (APRON_XI, top - APRON_CHAM), (APRON_X0, top)], y0, y1 - y0, C_PLY, 0.85)
                      for (y0, y1, top) in segs)
 
 
@@ -1335,10 +1339,10 @@ def apron_scarf_epdm():
     """Thin EPDM strip bonded to each apron's 45° top scarf — the swinging leaf WIPES it (Sheet 16 Detail F).
     A sliver laid on the chamfer face (apron_top_chamfers), one segment per stepped zone."""
     E = 3
-    segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+    segs = [(52, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
             (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
     return '\n'.join(_prism_xz("Apron scarf EPDM seal (leaf wipes it)",
-                               [(APRON_X0, top), (APRON_X0, top + E), (40, top - APRON_CHAM + E)],
+                               [(APRON_X0, top), (APRON_X0, top + E), (APRON_XI, top - APRON_CHAM + E)],
                                y0, y1 - y0, "#5A3020", 0.95)
                      for (y0, y1, top) in segs)
 
@@ -1351,7 +1355,7 @@ def fixed_apron_geom():
     STATIC — no fold, no hinge: the leaf retreats inward (pure RotZ) and wipes the scarf."""
     yf = C_WID - APRON_FIX_W
     far_wedge = draw.ruby_prism("Fixed apron (far) chamfer",
-                              [(APRON_X0, yf), (40, yf), (40, yf + APRON_CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
+                              [(APRON_X0, yf), (APRON_XI, yf), (APRON_XI, yf + APRON_CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
     # FIXED plywood corner stub closing the gap between the far apron's far edge (C_WID−APRON_FIX_W) and the
     # pivot post: a flap here would foul the Ø89 post + its Ø220 floor plate, but at X22..40 it clears both.
     stub = ruby_box("Fixed apron (far) corner stub", APRON_X0, C_WID - APRON_FIX_W, _AHZ, APRON_PLY_T,
@@ -1402,16 +1406,16 @@ def fixed_bottom_geom():
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12
         parts.append(ruby_box("Baffle brush bristle", 8, yc, baf_top, 2, 2, LT_CAGE_BOT - baf_top, color="#141414"))
-    # EXTERIOR daylight-baffle lip (Sheet 16 Detail F) — a fixed 18mm ply strip on the threshold (X-20..-2),
-    # OUTBOARD of the swinging leaf (X0), standing over the corner leaf bottom (to CORNER_BOT+18). With the
-    # interior apron body + its EPDM scarf it forms a TWO-STAGE light labyrinth: the lip blocks daylight at
-    # the door, the leaf swings past it, and the apron body takes the final wipe seal. Inset from the door-
-    # frame stiles. (Replaces the retired piano-hinge lapping board + foam strip + fold.)
-    _lipz = (CORNER_BOT + 8) - 50   # lip top Z290 — 8mm over the leaf bottom (282) but UNDER the bay-wall
-    #                                 HDPE-to-beam rivet row (~Z297), so it doesn't foul the rivets/bolts
+    # Baffle lip — the GLUED OUTER PLY of the two-ply apron sandwich (Sheet 16 Detail F): an 18mm ply strip
+    # glued to the apron BODY's exterior face (X=APRON_X0), so the sandwich is X(APRON_X0−APRON_PLY_T)..APRON_XI,
+    # EXTERIOR of the swinging leaf (X0). The lip stands taller than the body (to CORNER_BOT+8) as the exterior
+    # daylight baffle; the leaf swings inward and wipes the body's EPDM scarf. On the sill top (Z=_AHZ), inset
+    # from the door-frame stiles, notched around the transport stay lug. (Replaces the piano hinge + foam + fold.)
+    _lipz = (CORNER_BOT + 8) - _AHZ   # lip top Z290 — 8mm over the leaf bottom (282) but UNDER the bay-wall
+    #                                   HDPE-to-beam rivet row (~Z297), so it doesn't foul the rivets/bolts
     _sl = CUT + 25   # transport stay-lug Yd (LOCK_BOLT) — the near lip notches around it
     for _y0, _y1 in ((50, _sl - 14), (_sl + 14, YD_L), (YD_R, C_WID - APRON_FIX_W)):   # near (split at the stay lug) + far, clear of the stiles
-        parts.append(ruby_box("Fixed apron baffle lip (ext daylight baffle)", -20, _y0, 50, 18, _y1 - _y0, _lipz, color=C_PLY, alpha=0.85))
+        parts.append(ruby_box("Fixed apron baffle lip (glued outer ply, ext daylight baffle)", APRON_X0 - APRON_PLY_T, _y0, _AHZ, APRON_PLY_T, _y1 - _y0, _lipz, color=C_PLY, alpha=0.85))
     return '\n'.join(parts)
 
 

@@ -5,8 +5,8 @@
 generate_plywood_cutsheets.py — the ONE plywood cut-sheet / nesting drawing for TBS-001.
 
 Plywood is used in many subsystems (IBC-corridor plumbing panel, pump-mount shirt, pinhole-wall
-filter-skid backing, the EP electrical backboard, the hinged panel's Fan-B mount band + fold-down
-light-trap aprons, and the chem-prep shelf). Each consumer sheet used to cut its own ad-hoc rectangle;
+filter-skid backing, the EP electrical backboard, the hinged panel's Fan-B mount band + fixed
+light-seal aprons, and the chem-prep shelf). Each consumer sheet used to cut its own ad-hoc rectangle;
 this generator is the SINGLE cut-sheet the buyer/fabricator works from — every plywood part in one
 schedule + nesting layout, grouped by grade + thickness so same-stock parts nest on one sheet.
 
@@ -43,7 +43,7 @@ from tbs_title_block import title_block                        # noqa: E402
 TOTAL_SHEETS = 2
 C_BG = "#FAFAFA"
 C_STOCK = "#F0E9D8"      # stock-sheet ground
-C_STUB = "#C7B48A"       # fixed (non-fold) piece, distinguished from a fold-down apron
+C_STUB = "#C7B48A"       # fixed pivot-stub piece, distinguished from the apron body
 C_CUT = "#B0202A"        # guillotine saw-cut line (dashed red)
 
 # Overlay boards (mount on a wall face with clearance) round their CUT BLANK UP to 5mm and are
@@ -105,8 +105,8 @@ GROUPS = [
             ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
-            ("Near fold-down light apron", APR_NEAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, near corner — STEPPED/notched blank (18mm, flat-black interior face); profile on hingepanel Sheet 16"),
-            ("Far fold-down light apron", APR_FAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, far corner — STEPPED/notched blank; profile on hingepanel Sheet 16"),
+            ("Near fixed light-seal apron (body)", APR_NEAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, near corner — STEPPED/notched blank (18mm, flat-black interior face); + a baffle-lip piece (pending cut-sheet add); profile on hingepanel Sheet 16"),
+            ("Far fixed light-seal apron (body)", APR_FAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, far corner — STEPPED/notched blank; + a baffle-lip piece (pending cut-sheet add); profile on hingepanel Sheet 16"),
             ("Fixed pivot stub", STUB_W, STUB_H, 1, "fixed strip from the far apron to the Ø220 pivot post plate (Yd 2162→2287)"),
             ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
         ]),

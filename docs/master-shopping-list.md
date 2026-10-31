@@ -19,13 +19,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,122 | $3,024 |
-| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,244 | $1,457 |
+| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,174 | $1,347 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $267 | $279 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,703** | **~$36,531** |
+| **TOTAL (base build + 50-print run)** | **~$27,633** | **~$36,421** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -460,11 +460,11 @@ indicative low–high estimates — get quotes before ordering.
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [EP plywood backing panel (18mm, ~700×2,000mm)](https://www.homedepot.com/p/302874373) (302874373) | 1 cut from the shelf sheet | shared (Plywood Cut Sheets) | electrical | $0 |
 | [Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32" exterior SYP, from the sheets A–C offcut)](https://www.homedepot.com/p/303564747) (303564747) | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | panel | $0 |
-| Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply, from the SYP sheets A–C offcut) + piano hinges + foam seal + hold-up catches | 1 lot | Home Depot / McMaster | panel | $85–$140 |
+| Fixed light-seal aprons + center baffle/pivot stub (two-ply SYP, from the sheets A–C offcut) + EPDM scarf + CSK screws | 1 lot | Home Depot / McMaster | panel | $15–$30 |
 | [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 2 sheet | Home Depot | water | $59 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Home Depot | shelf | $73 |
-| **timber-ply subtotal** | | | | **$275–$330** |
+| **timber-ply subtotal** | | | | **$205–$220** |
 
 ### tools-safety
 
@@ -534,7 +534,6 @@ indicative low–high estimates — get quotes before ordering.
 | Fasteners Plus | 3 | fasteners-hardware | $123–$153 |
 | Inverter Service Center | 1 | electrical-power | $152 |
 | Eagle Aluminum | 1 | aluminum | $152 |
-| Home Depot / McMaster | 1 | timber-ply | $85–$140 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
 | Lenox Laser | 1 | optics | $60–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
@@ -555,6 +554,7 @@ indicative low–high estimates — get quotes before ordering.
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Fresh Water Systems | 1 | water-equipment | $32 |
 | Signature Solar | 1 | electrical-distribution | $30 |
+| Home Depot / McMaster | 1 | timber-ply | $15–$30 |
 | SK Grimes | 1 | optics | $10–$30 |
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |

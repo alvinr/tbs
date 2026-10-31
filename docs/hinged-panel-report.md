@@ -394,21 +394,27 @@ still clearing a 1,780mm operator by 103mm.
 
 The swing is about a **vertical** pivot, so the cage underside stays at the same height throughout — this
 is what makes the deep Ø800 housing transport-feasible without a slide; a floor-mounted housing
-would have fouled the tray. The 217mm floor gap is closed in the operational position by the
-**fold-down light aprons** (§6, **Sheet 16**). The clearance is drawn on **Sheet 15**
+would have fouled the tray. The 217mm floor gap is closed by the
+**fixed light-seal aprons** (§6, **Sheet 16**). The clearance is drawn on **Sheet 15**
 (transport-swing bottom-clearance section).
 
 **Sheet 15 — Transport-Swing Bottom-Clearance Section (Yd–Z): drum-cage underside vs the fixed floor-leg posts + tray rim, walkway grate lifted out**
 ![TBS-001 Hinged Panel — Sheet 15: Bottom-Clearance Section](assets/hingepanel-sheet15.png)
 
-The 217mm gap would otherwise be a straight light path, so it is closed by **fold-down light
-aprons** (Sheet 16): two bottom-hinged 18mm exterior-ply flaps at the corner zones (the far one
-minus a 200mm fixed stub that clears the Ø220 pivot mount plate) plus a fixed center baffle under
-the drum bay. The apron ply cuts from the SYP sheets A–C ([Plywood Cut Sheets](plywood-cut-sheets.md)),
-so it buys no sheet of its own. They stand up and seal in operation and fold flat into the container for the swing.
-The apron **hinge line** is light-sealed by a fixed 3mm-steel **lapping board** off the sill — an
-exterior daylight baffle standing over the piano hinge — plus a 10mm closed-cell **foam strip** the
-apron compresses when up, with the hinge knuckle inboard of the lap (**Sheet 16 Detail F**).
+The 217mm gap would otherwise be a straight light path, so it is closed by **fixed light-seal
+aprons** (Sheet 16): two fixed 18mm exterior-ply aprons at the corner zones (the far one minus a
+200mm stub that clears the Ø220 pivot mount plate) plus a fixed center baffle under the drum bay.
+Each apron is **two glued and screwed plywood pieces** — an apron body plus an exterior **baffle
+lip** that stands over the leaf bottom as a daylight baffle. The ply cuts from the SYP sheets A–C
+([Plywood Cut Sheets](plywood-cut-sheets.md)), so it buys no sheet of its own.
+
+Because the panel swings about a vertical pivot (pure rotation), the leaf bottom stays at Z282 and
+simply retreats inward as it opens — so the apron need not move. **EPDM** is bonded to each apron's
+fixed 45° scarf; the swinging leaf's matching scarf compresses it closed and **wipes off** it as the
+leaf swings (**Sheet 16 Detail F**) — the same no-bind sweep as the Detail E chamfer joint. The two
+ply pieces are glued full-length and fixed with countersunk wood screws driven from the exterior
+(cargo-door) face, heads flush so nothing protrudes toward the door. No hinges, catches, foam or
+fold: on transport the leaf just lifts straight off the fixed aprons.
 
 ### 5.4 Transport Conversion Sequence
 
@@ -472,7 +478,7 @@ position. Five light ingress paths are sealed:
 |---|-----------|-------------|
 | 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 2 × McMaster 1619A74 lift-and-turn cam latches (opening edge, top + bottom) against the fixed door frame. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
-| 3 | Panel bottom → 217mm floor gap | **Fold-down light aprons** (Sheet 16) — two bottom-hinged 18mm exterior-ply flaps at the corner zones (the far one minus a 200mm fixed pivot stub) + a fixed center baffle under the drum bay, closing the 217mm gap under the raised leaf. Foam-strip perimeter seal, flat-black interior. Stand up + seal in operation; release + fold flat into the container for the swing. The hinge line is sealed by a fixed steel lapping board (exterior baffle over the piano hinge) + a compressed foam strip — Sheet 16 Detail F. |
+| 3 | Panel bottom → 217mm floor gap | **Fixed light-seal aprons** (Sheet 16) — two fixed 18mm exterior-ply aprons at the corner zones (the far one minus a 200mm fixed pivot stub) + a fixed center baffle under the drum bay, closing the 217mm gap under the raised leaf. Each apron is two glued + screwed ply pieces (apron body + exterior baffle lip, the daylight baffle); flat-black interior. EPDM bonded to a 45° scarf the swinging leaf wipes off (sealed closed, wipes off on the swing); CSK screws from the cargo-door face. No hinge, catch, foam or fold — the leaf just lifts off on transport — Sheet 16 Detail F. |
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
 | 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
@@ -480,8 +486,8 @@ position. Five light ingress paths are sealed:
 dark-adaptation check inside the container with all seals engaged. Any visible light
 points are marked with gaffer tape for re-sealing.
 
-**Sheet 16 — Fold-Down Light Aprons: closing the 217mm floor gap (Details A–F incl. the hinge-line lapping-board/foam seal)**
-![TBS-001 Hinged Panel — Sheet 16: Fold-Down Light Aprons](assets/hingepanel-sheet16.png)
+**Sheet 16 — Fixed Light-Seal Aprons: closing the 217mm floor gap (two-ply + EPDM scarf; Details A–F)**
+![TBS-001 Hinged Panel — Sheet 16: Fixed Light-Seal Aprons](assets/hingepanel-sheet16.png)
 
 ---
 
@@ -497,7 +503,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Function | Seal landing for the swinging-panel **vertical** perimeter + cut seals + housing-surround EPDM, plus the **top + bottom strip-brush** light seals |
 | Attachment | Welded to container end wall structural members |
 | Cut-seal landings | 2 × vertical EPDM landings (the swing cuts between the swinging panel and the fixed strips) |
-| Bottom light seal | **Fold-down light aprons** — 2× bottom-hinged 18mm-ply flaps (corner zones) + fixed center baffle + 200mm pivot stub; foam-strip seal, fold flat for transport (see §6 path #3, Sheet 16) |
+| Bottom light seal | **Fixed light-seal aprons** — 2× fixed two-ply aprons (corner zones; apron body + baffle lip) + fixed center baffle + 200mm pivot stub; EPDM scarf the leaf wipes off, no fold (see §6 path #3, Sheet 16) |
 | Top brush seal | Mirror of the bottom: continuous nylon-filament **strip brush** in a holder on the frame top rail, bristles reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the panel + drum-box top edge sweeps through the bristles (see §6 path #4) |
 
 ---
@@ -511,7 +517,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 2×2×0.120in steel SHS (6 m bulk lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Panel skins, both faces (~12 m², 4× 4×8 ft sheets). 1/8" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet. | 4 sheet | US Plastics / TAP Plastics | $493 |
-| [Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32" exterior SYP, from the sheets A–C offcut)](https://www.homedepot.com/p/303564747) (303564747) | 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing. The Fan B near corner is THREE ply pieces: the SWINGING fan-mount panel (473×943, Yd180→653, carries the Ø150 fan CENTERED, travels with the hinge leaf), the FIXED side part (180×943, Yd0→180, stays on the pinhole side), and the fold-down apron (billed separately as panel-bottom-apron). Those two upright pieces PLUS the cooler stowage base plate (600×350) all NEST INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C), so no separate sheet is bought (was a dedicated ¾" PT sheet, retired 2026-09-30). STANDARD exterior per the project rule — PT was over-spec for a dry, vented mount. Seal cut edges. | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | $0 |
+| [Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32" exterior SYP, from the sheets A–C offcut)](https://www.homedepot.com/p/303564747) (303564747) | 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing. The Fan B near corner is THREE ply pieces: the SWINGING fan-mount panel (473×943, Yd180→653, carries the Ø150 fan CENTERED, travels with the hinge leaf), the FIXED side part (180×943, Yd0→180, stays on the pinhole side), and the fixed light-seal apron (billed separately as panel-bottom-apron). Those two upright pieces PLUS the cooler stowage base plate (600×350) all NEST INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C), so no separate sheet is bought (was a dedicated ¾" PT sheet, retired 2026-09-30). STANDARD exterior per the project rule — PT was over-spec for a dry, vented mount. Seal cut edges. | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | $0 |
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1"×1"×1/8" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (2026-07-29). | 4 ea | Grainger | $49 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | Amazon (OKAYASU) | $24–$52 |
 | Aluminum U-channel, 1/8-panel (per meter) | Gasket retainer + 1/8" HDPE-skin retention (perimeter + housing-surround + stiffener grid). SECTION: aluminum '1/8-panel' U-channel — inner slot ~3.2mm (captures the 3.18mm/PANEL_SKIN_T HDPE skin), ~10–12mm legs, ~1.5mm wall. TOTAL LENGTH: 40m (pick a stock 1/8-panel profile; only the 3.18mm slot is fixed by the skin). | 40 m | Online Metals | $120–$200 |
@@ -519,9 +525,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing; 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | Fasten the HDPE surround (B2 bay walls + upper/lower floor caps + center-zone face skins) to the steel center-zone frame at the panel-plane lap — ~140 rivets over the lap edges (2 jamb lines ~35 each + cap/skin laps) → 2× 100-pack. 1/8" (Ø3.18) 18-8 SS blind rivet, grip 0.313–0.375", drill #30 (Ø3.3), set with a DP8010 sealant bead for light-tightness (same rivet family as the light-trap housing→frame lap, ll-rivets-housing). Hingepanel Sheet 7. $14.59/100. | 2 pack | McMaster-Carr | $29 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
-| Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply, from the SYP sheets A–C offcut) + piano hinges + foam seal + hold-up catches | Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 16). Two bottom-hinged fold-down aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. 18mm exterior SYP plywood, flat-black interior — the ~0.5 m² of ply NESTS INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C: corridor + pinhole panels), so no separate apron sheet is bought (was a dedicated 12mm sheet); this lot is the piano hinges + foam + catches. 2× continuous (piano) hinges to the threshold, closed-cell foam-strip perimeter seal, 2× over-center hold-up catches; folds flat into the container for the transport swing. HINGE-LINE seal (Sheet 16 Detail F): a fixed 3mm-steel lapping board off the sill — an exterior daylight baffle standing over the piano hinge — + a 10mm closed-cell foam strip the apron compresses when UP (knuckle inboard of the lap). Est.; lapping-board steel is an offcut, foam within the seal roll. | 1 lot | Home Depot / McMaster | $85–$140 |
+| Fixed light-seal aprons + center baffle/pivot stub (two-ply SYP, from the sheets A–C offcut) + EPDM scarf + CSK screws | Closes the 217mm under-leaf floor gap opened by the drum-cage clearance (hingepanel Sheet 16). Two FIXED light-seal aprons (near corner Yd0–653 + far corner Yd1709–2162; the far one minus a 200mm FIXED stub Yd2162–2362 that clears the Ø220 pivot mount plate) + a fixed center baffle under the drum bay. NO hinges, catches, foam or fold — each apron is TWO glued + screwed ply pieces (an apron BODY + an exterior BAFFLE LIP standing over the leaf bottom, the daylight baffle). 18mm exterior SYP plywood, flat-black interior; the ply NESTS INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C: corridor + pinhole panels), so no separate apron sheet is bought (baffle-lip nesting to confirm at cut-sheet). This lot is the SEAL + fasteners: EPDM strip bonded to each apron's fixed 45° scarf (the swinging leaf wipes it — compressed closed, wipes off on the swing · Sheet 16 Detail F), CSK wood screws driven from the EXTERIOR (cargo-door) face (heads flush, nothing protrudes toward the door), and wood glue. Est.; EPDM from the seal roll, screws + glue a small lot. Replaces the retired piano hinges + over-center catches + foam strip + steel lapping board. | 1 lot | Home Depot / McMaster | $15–$30 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | Interior panel-swing pull handle (§4.3) — the SAME off-the-shelf part as the interior drum handle (ll-grab-rail): Ø12.7 bar, 12.13" grip, 2.06" standoff. Screws into 1/4"-20 rivet-nuts set in the panel-frame RHS near wall — the swing load reacts into the STEEL frame, not the HDPE skin (rivnuts because the 3mm tube wall can't be tapped, and there is no back-access to a nut). Matte-black powder-coat (optically dead). $6.43 firm. | 1 ea | McMaster-Carr | $6 |
-| **Panel total** | | | | **$1,244–$1,457** |
+| **Panel total** | | | | **$1,174–$1,347** |
 <!-- END parts:panel -->
 
 
@@ -594,11 +600,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,244<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,457<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,174<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,347<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,156<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,175<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$831<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,131<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,650<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,362<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,580<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,252<!-- END costing:hp-total-high -->** |
 
 ---
 

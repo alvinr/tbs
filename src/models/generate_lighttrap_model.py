@@ -134,7 +134,7 @@ TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Cargo Doors",        # dynamic-component swing doors (click to close)
         "Fan B Cable",        # child DC: orange coil shown only when the door is closed
         "Drum Revolve",       # standalone interactive drum+frame sub-assembly (its own scene); hidden elsewhere
-        "Bottom Apron",       # fixed light-seal aprons (static: body + EPDM scarf + ext lip) + center baffle
+        "Bottom Apron",       # fold-down light aprons (up/folded child DCs) + fixed center baffle
         "Labels"]             # add_text callouts — shown only in the "Labeled" scene
 
 
@@ -1253,6 +1253,17 @@ def near_bay_wall_frame():
     return '\n'.join(p)
 
 
+# ━━━ DESIGN CONSTRAINT — THE APRON MUST FOLD DOWN; DO NOT MAKE IT A FIXED APRON ━━━━━━━━━━━━━━━━━━━━━━━━━
+# The hinge panel swings as a pure HORIZONTAL rotation (RotZ) about the vertical Ø89 pivot post: the leaf
+# bottom stays at Z282 and sweeps SIDEWAYS — it never lifts. So a FIXED apron that reaches the seal plane
+# (Z282) anywhere the leaf sweeps (X≥0, inboard of the leaf outer face X0) sits in the leaf's path and
+# BLOCKS the swing. For a fixed apron the door/cargo-edge clearance (seal forced inboard → X16) and the
+# swing clearance (seal must stay at the leaf outer edge X≤0) are mutually exclusive — a 36mm two-ply
+# sandwich can't fit the ~20mm window between them. The fold-down exists precisely to drop the apron OUT
+# of the horizontal sweep. A fixed-apron redesign was tried and REVERTED (commits 3721b105..20790300,
+# 2026-10-31). Keep the UP/FOLDED swing-DC states below. (See hinged-panel-report.md §6 path #3.)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
 # The FAR apron's last APRON_FIX_W (Yd C_WID−200 .. C_WID) is a FIXED stub, not a fold-down: the folding
 # flap would foul the Ø89 pivot post + its Ø220 floor mount plate (near edge PIVOT_YD−110 = Yd2177).
 # (APRON_FIX_W now single-sourced from tbs_constants.)
@@ -1261,12 +1272,9 @@ def near_bay_wall_frame():
 # the drum-cage side (APRON_IN_L/R = cage ∓ APRON_CAGE_GAP). It crosses the center-zone step line (YD_L/R),
 # so its TOP steps down from the raised corner leaf bottom (PANEL_FLOOR_GAP_SIDE) to the lower center leaf
 # bottom (PANEL_FLOOR_GAP) — a single stepped cut, hinged as one about the threshold. HZ = hinge Z (12).
-_AHZ = 50                  # apron BODY bottom — sits on the door-sill top (threshold Z0..50); the steel sill is the bottom seal
-APRON_PLY_T = 18           # 18mm so it nests into the group-A SYP sheet
-APRON_X0    = -APRON_PLY_T # -18 — apron BODY outer face. The two-ply GLUED sandwich (body + exterior baffle lip) sits
-#                            EXTERIOR of the swinging leaf (Sheet 16): the leaf (X0..40) swings inward and WIPES the body's
-#                            EPDM scarf; daylight is blocked at the door. (Was X22..40 interior — reconciled to the 2D sandwich.)
-APRON_XI    = APRON_X0 + APRON_PLY_T   # 0 — apron body INNER face, against the leaf exterior face (X0)
+_AHZ = 12
+APRON_PLY_T = 18            # fold-down apron re-graded 12mm→18mm so it nests into the group-A SYP sheet
+APRON_X0    = 40 - APRON_PLY_T   # 22 — apron front face (still inside the 40mm frame zone; clears the pivot post/plate)
 APRON_CHAM  = APRON_PLY_T   # 45° moving-flap scarf runs across the apron thickness
 APRON_T     = APRON_PLY_T   # fold-down flap = 18mm plywood, on the interior face (X22..40)
 
@@ -1278,9 +1286,8 @@ _CT_LOW = CORNER_BOT - APRON_CHAM     # corner body top — BOTH sides: dropped 
 #                                       corner-skin bottom (CORNER_BOT) so the apron reads shorter, fixed
 #                                       skin below it (far = HDPE, near = Fan-B ply band)
 _CC   = PANEL_FLOOR_GAP - APRON_CHAM  # center-ext body top
-# near edge inset to Yd52, clear of the near door-frame stile (Yd0..50) now that the apron sits exterior (X-18..0)
-_APRON_UP_NEAR = [(52, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
-                  (YD_L, _CC), (YD_L, _CT_LOW), (52, _CT_LOW)]
+_APRON_UP_NEAR = [(0, _AHZ), (APRON_IN_L, _AHZ), (APRON_IN_L, _CC),
+                  (YD_L, _CC), (YD_L, _CT_LOW), (0, _CT_LOW)]
 _APRON_UP_FAR  = [(APRON_IN_R, _AHZ), (C_WID - APRON_FIX_W, _AHZ), (C_WID - APRON_FIX_W, _CT_LOW),
                   (YD_R, _CT_LOW), (YD_R, _CC), (APRON_IN_R, _CC)]
 
@@ -1328,52 +1335,62 @@ def apron_top_chamfers():
     """45° chamfer along each apron TOP edge (the moving-flap scarf that sweeps off the fixed leaf's EPDM,
     Detail E): a triangular X-Z prism per top segment — outer face (X28) rises the full CHAM to the leaf
     bottom, inner face (X40) stays CHAM lower. One segment per step (corner→282, center-ext→217)."""
-    segs = [(52, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+    segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
             (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
-    return '\n'.join(_prism_xz("Fixed apron top scarf",
-                               [(APRON_X0, top - APRON_CHAM), (APRON_XI, top - APRON_CHAM), (APRON_X0, top)], y0, y1 - y0, C_PLY, 0.85)
+    return '\n'.join(_prism_xz("Fold-down apron top chamfer",
+                               [(APRON_X0, top - APRON_CHAM), (40, top - APRON_CHAM), (APRON_X0, top)], y0, y1 - y0, C_PLY, 0.85)
                      for (y0, y1, top) in segs)
 
 
-def apron_scarf_epdm():
-    """Thin EPDM strip bonded to each apron's 45° top scarf — the swinging leaf WIPES it (Sheet 16 Detail F).
-    A sliver laid on the chamfer face (apron_top_chamfers), one segment per stepped zone."""
-    E = 3
-    segs = [(52, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
-            (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
-    return '\n'.join(_prism_xz("Apron scarf EPDM seal (leaf wipes it)",
-                               [(APRON_X0, top), (APRON_X0, top + E), (APRON_XI, top - APRON_CHAM + E)],
-                               y0, y1 - y0, "#5A3020", 0.95)
-                     for (y0, y1, top) in segs)
-
-
-def fixed_apron_geom():
-    """The FIXED light-seal aprons — ONE stepped/notched plywood panel per side (the apron BODY), interior
-    of the swinging leaf (X22..40), stepped top (corner→PANEL_FLOOR_GAP_SIDE, center→PANEL_FLOOR_GAP),
-    extended inboard to a brush gap off the cage. The top edge is a 45° scarf with bonded EPDM the leaf
-    WIPES off as it swings (Sheet 16 Detail F; the exterior daylight-baffle lip is in fixed_bottom_geom).
-    STATIC — no fold, no hinge: the leaf retreats inward (pure RotZ) and wipes the scarf."""
+def apron_up_geom():
+    """The fold-down light aprons in the UP (operational, sealing) position — ONE notched plywood panel per
+    side (stepped top: corner→PANEL_FLOOR_GAP_SIDE, center ext→PANEL_FLOOR_GAP), bottom-hinged to the
+    threshold, extended inboard to a brush gap off the cage. Top + far edges 45°-chamfered (moving-flap
+    scarf; Detail E). CHILD of the Panel Swing DC: SHOWN when closed / HIDDEN when swung."""
+    # Far edge is 45°-chamfered to mate the full-height far strip's scarf: a plywood wedge adds material
+    # inboard-inner (X40) from the square edge (Yd2162) to the scarf (Yd2202) over the corner-zone height.
     yf = C_WID - APRON_FIX_W
-    far_wedge = draw.ruby_prism("Fixed apron (far) chamfer",
-                              [(APRON_X0, yf), (APRON_XI, yf), (APRON_XI, yf + APRON_CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
-    # FIXED plywood corner stub closing the gap between the far apron's far edge (C_WID−APRON_FIX_W) and the
-    # pivot post: a flap here would foul the Ø89 post + its Ø220 floor plate, but at X22..40 it clears both.
-    stub = ruby_box("Fixed apron (far) corner stub", APRON_X0, C_WID - APRON_FIX_W, _AHZ, APRON_PLY_T,
+    far_wedge = draw.ruby_prism("Fold-down apron (far, UP) chamfer",
+                              [(APRON_X0, yf), (40, yf), (40, yf + APRON_CHAM)], _AHZ, _CT_LOW - _AHZ, color=C_PLY, alpha=0.85)
+    # FIXED (non-folding) plywood stub closing the corner gap between the far apron's far edge
+    # (C_WID−APRON_FIX_W) and the pivot post: a fold-down flap here would foul the Ø89 post + its Ø220 floor
+    # plate, but this piece stays fixed and at X28..40 it clears both (post X131+, plate X65+).
+    stub = ruby_box("Fold-down apron (far) fixed stub", APRON_X0, C_WID - APRON_FIX_W, _AHZ, APRON_PLY_T,
                     PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - _AHZ, color=C_PLY, alpha=0.85)
-    return (_apron_vpanel("Fixed light-seal apron (near)", _APRON_UP_NEAR, C_PLY, 0.85) +
-            _apron_vpanel("Fixed light-seal apron (far)",  _APRON_UP_FAR,  C_PLY, 0.85) +
-            far_wedge + apron_top_chamfers() + apron_scarf_epdm() + stub)
+    return (_apron_vpanel("Fold-down apron (near, UP)", _APRON_UP_NEAR, C_PLY, 0.85) +
+            _apron_vpanel("Fold-down apron (far, UP)",  _APRON_UP_FAR,  C_PLY, 0.85) +
+            far_wedge + apron_top_chamfers() + stub)
 
 
-# (apron_folded_geom removed 2026-10-31 — the apron no longer folds. It is now a FIXED static
-#  two-stage labyrinth: the apron BODY + EPDM scarf (fixed_apron_geom, interior) + the exterior
-#  daylight-baffle lip (fixed_bottom_geom). The leaf swings past it (pure RotZ) and wipes the scarf.)
+def apron_folded_geom():
+    """The aprons FOLDED FLAT into the container for transport (hinged down 90° about the threshold) — ONE
+    notched panel per side, laid flat (the panel LENGTH steps 270/205 with the top). Drawn in the
+    folded-at-door-plane pose; the swing-DC child gets a −LOCK pre-rotation so the parent's +LOCK lands it
+    here at swing=1. SHOWN when swung / HIDDEN closed."""
+    # folded outline in (X, Yd) at Z=_AHZ, extruded APRON_T up in Z. The flap hinges about its INNER
+    # face (X=40) — NOT the X12 front — so it lays INWARD and clears the fixed baffle (X28..40) + the
+    # hinge lapping board (X15..18); FX maps the standing height to that inward X reach.
+    FX = lambda z: 40 + (z - _AHZ)
+    near = [(FX(_AHZ), 0), (FX(CORNER_BOT), 0), (FX(CORNER_BOT), YD_L), (FX(PANEL_FLOOR_GAP), YD_L),
+            (FX(PANEL_FLOOR_GAP), APRON_IN_L), (FX(_AHZ), APRON_IN_L)]
+    far  = [(FX(_AHZ), APRON_IN_R), (FX(PANEL_FLOOR_GAP), APRON_IN_R), (FX(PANEL_FLOOR_GAP), YD_R),
+            (FX(CORNER_BOT), YD_R), (FX(CORNER_BOT), C_WID - APRON_FIX_W), (FX(_AHZ), C_WID - APRON_FIX_W)]
+    # 45° tip chamfer — the UP top-edge scarf, carried onto the folded TIP (a wedge across the 18mm
+    # thickness, tapering back APRON_CHAM from each tip; one segment per step, matching apron_top_chamfers).
+    segs = [(0, YD_L, CORNER_BOT), (YD_L, APRON_IN_L, PANEL_FLOOR_GAP),
+            (APRON_IN_R, YD_R, PANEL_FLOOR_GAP), (YD_R, C_WID - APRON_FIX_W, CORNER_BOT)]
+    cham = '\n'.join(_prism_xz("Fold-down apron top chamfer",
+                               [(FX(top), _AHZ), (FX(top), _AHZ + APRON_T), (FX(top) - APRON_CHAM, _AHZ + APRON_T)],
+                               y0, y1 - y0, C_PLY, 0.6)
+                     for (y0, y1, top) in segs)
+    return (draw.ruby_prism("Fold-down apron (near, FOLDED)", near, _AHZ, APRON_T, color=C_PLY, alpha=0.6) +
+            draw.ruby_prism("Fold-down apron (far, FOLDED)",  far,  _AHZ, APRON_T, color=C_PLY, alpha=0.6) + cham)
 
 
 def apron_edge_brushes():
-    """Vertical strip brushes on the two fixed-apron inner edges (Yd APRON_IN_L / APRON_IN_R), reaching
+    """Vertical strip brushes on the two fold-down apron inner edges (Yd APRON_IN_L / APRON_IN_R), reaching
     APRON_CAGE_GAP across to the cage sides — a light-tight bristle wall closing the residual side slot
-    (baffle top → center leaf bottom). STATIC (part of the fixed-apron component); the cage sweeps them."""
+    (baffle top → center leaf bottom). CHILD of the swing DC (rides + hides with the aprons)."""
     z0, z1 = LT_CAGE_BOT - 10, PANEL_FLOOR_GAP            # 130 → 217 (baffle top to center leaf bottom)
     parts = [
         ruby_box("Apron edge brush (near)", 0, APRON_IN_L,     z0, 30, 2, z1 - z0, color=C_SEAL),
@@ -1406,16 +1423,12 @@ def fixed_bottom_geom():
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12
         parts.append(ruby_box("Baffle brush bristle", 8, yc, baf_top, 2, 2, LT_CAGE_BOT - baf_top, color="#141414"))
-    # Baffle lip — the GLUED OUTER PLY of the two-ply apron sandwich (Sheet 16 Detail F): an 18mm ply strip
-    # glued to the apron BODY's exterior face (X=APRON_X0), so the sandwich is X(APRON_X0−APRON_PLY_T)..APRON_XI,
-    # EXTERIOR of the swinging leaf (X0). The lip stands taller than the body (to CORNER_BOT+8) as the exterior
-    # daylight baffle; the leaf swings inward and wipes the body's EPDM scarf. On the sill top (Z=_AHZ), inset
-    # from the door-frame stiles, notched around the transport stay lug. (Replaces the piano hinge + foam + fold.)
-    _lipz = (CORNER_BOT + 8) - _AHZ   # lip top Z290 — 8mm over the leaf bottom (282) but UNDER the bay-wall
-    #                                   HDPE-to-beam rivet row (~Z297), so it doesn't foul the rivets/bolts
-    _sl = CUT + 25   # transport stay-lug Yd (LOCK_BOLT) — the near lip notches around it
-    for _y0, _y1 in ((50, _sl - 14), (_sl + 14, YD_L), (YD_R, C_WID - APRON_FIX_W)):   # near (split at the stay lug) + far, clear of the stiles
-        parts.append(ruby_box("Fixed apron baffle lip (glued outer ply, ext daylight baffle)", APRON_X0 - APRON_PLY_T, _y0, _AHZ, APRON_PLY_T, _y1 - _y0, _lipz, color=C_PLY, alpha=0.85))
+    # FIXED hinge-line light seal per fold-down apron (Sheet 16 Detail F): a 3mm steel LAPPING BOARD off the
+    # sill standing over the piano hinge on the EXTERIOR side (X15..18, outboard of the apron's X28 face) +
+    # a 10mm closed-cell FOAM strip the apron compresses when UP. Fixed to the threshold — does NOT fold.
+    for _y0, _y1 in ((0, APRON_IN_L), (APRON_IN_R, C_WID - APRON_FIX_W)):   # near + far apron Yd spans
+        parts.append(ruby_box("Apron hinge lapping board (fixed steel baffle)", 15, _y0, 0, 3, _y1 - _y0, 62, color=C_RAIL))
+        parts.append(ruby_box("Apron hinge foam seal (compressed when UP)", 18, _y0, 14, 10, _y1 - _y0, 44, color="#6E7478"))
     return '\n'.join(parts)
 
 
@@ -1490,11 +1503,7 @@ def generate_ruby():
         component("Film-plane left (fixed rig: stub + cradle + hangers)", "Film Plane Rails", film_plane_left()),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
         component("Fan B electrical box", "Fan B Cable", fan_b_box()),
-        # FIXED light-seal aprons are now STATIC (the leaf swings past them and wipes the EPDM scarf — no
-        # fold, no hinge). Apron body + EPDM scarf + edge brushes + the center baffle + exterior daylight-
-        # baffle lip, all one static component.
-        component("Fixed light-seal aprons + center baffle", "Bottom Apron",
-                  fixed_apron_geom() + "\n" + apron_edge_brushes() + "\n" + fixed_bottom_geom()),
+        component("Fixed bottom closures (baffle + pivot stub)", "Bottom Apron", fixed_bottom_geom()),
     ]
     static_body = '\n'.join(static_comps)
 
@@ -1681,9 +1690,33 @@ lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swin
 # (Film-plane left FIXED rig is now a STATIC root component — see static_comps above — so it STAYS through
 #  the swing; only the REMOVABLE lift-out rail (lfr_inst) hides. It is no longer a swing-DC child.)
 
-# (Fold-down apron DC children removed 2026-10-31 — the light-seal aprons are now FIXED/STATIC, added as
-#  a root component in static_comps above. The leaf swings past them (pure RotZ) and wipes the EPDM scarf;
-#  there is no up/folded visibility swap and no fold rotation.)
+# ── Fold-down light aprons — CHILD DC components inside the swing def. UP (sealing) is SHOWN when the
+#    door is CLOSED and HIDDEN once the panel swings; FOLDED (flat into the container) is the mirror,
+#    built in the folded-at-door-plane pose with a −LOCK pre-rotation so the parent's +LOCK lands it
+#    there at swing=1. Same visibility-swap pattern as the transport stay rods. ──
+au_defn = model.definitions.add("Fold-down Aprons (up)")
+ents = au_defn.entities
+{apron_up_geom()}
+{apron_edge_brushes()}
+ents = defn.entities
+au_inst = ents.add_instance(au_defn, Geom::Transformation.new)
+au_inst.name = "Fold-down Aprons (up)"
+au_inst.layer = model.layers["Bottom Apron"]
+au_inst.set_attribute("dynamic_attributes", "_name", "FoldApronsUp")
+au_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+au_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+af_defn = model.definitions.add("Fold-down Aprons (folded)")
+ents = af_defn.entities
+{apron_folded_geom()}
+ents = defn.entities
+af_tr = Geom::Transformation.rotation([{PIVOT_X}.mm, {PIVOT_YD}.mm, 0], Z_AXIS, (-{LOCK}).degrees)
+af_inst = ents.add_instance(af_defn, af_tr)
+af_inst.name = "Fold-down Aprons (folded)"
+af_inst.layer = model.layers["Bottom Apron"]
+af_inst.set_attribute("dynamic_attributes", "_name", "FoldApronsFolded")
+af_inst.set_attribute("dynamic_attributes", "hidden", 1.0)
+af_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing<0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

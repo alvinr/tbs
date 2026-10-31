@@ -199,10 +199,18 @@ def context(left_walkway=True, x_far=None):
     # stub must NOT extend past the door plane or it reads as a misalignment.
     x0 = 0
     xlen = (x_far - x0) if x_far is not None else 2000
-    # Roof (ceiling) + both side walls REMOVED (2026-08-11) — they boxed in the corner mechanism and
-    # made orbiting awkward. Keep only the floor as a ground reference; the corner clash detail reads open.
+    # Floor + a LOW-ALPHA container ghost (roof + both side walls, same 0.25 alpha as the floor) so the
+    # container envelope reads and the B2 punch-out (bay/drum at X<0) clearly protrudes past the X=0 end.
+    # Left OPEN at the X=0 cargo-door end (the door opening) and at the +X crop so the walls don't box in
+    # the corner mechanism — at 0.25 alpha you orbit straight through them.
     parts = [
         ruby_box("Floor (context)", x0, 0, -WALL_T, xlen, C_WID, WALL_T,
+                 color=C_SHELL, alpha=0.25),
+        ruby_box("Ceiling (context)", x0, 0, C_HGT, xlen, C_WID, WALL_T,
+                 color=C_SHELL, alpha=0.25),
+        ruby_box("Side wall near (context)", x0, 0, 0, xlen, WALL_T, C_HGT,
+                 color=C_SHELL, alpha=0.25),
+        ruby_box("Side wall far (context)", x0, C_WID - WALL_T, 0, xlen, WALL_T, C_HGT,
                  color=C_SHELL, alpha=0.25),
     ]
     # The left walkway + drum-exit punch-out (the amber lift-out decks) are now built by

@@ -194,12 +194,12 @@ def context(left_walkway=True, x_far=None):
     x_far: far (+X) edge of the stub (default None = operating extent, X=1600,
     byte-identical). The transport model passes a value so the container crops to
     the same plane as its tray / walkway / rail partials."""
-    # The container's cargo-door-END face is at BAY_FRONT_X (−890): the light-trap bay FILLS the
-    # cargo-door end (BAY_FRONT_X..0) INSIDE the shell (local X=−890 ≡ global X=0; the darkroom runs
-    # +X to the pinhole at BAY_FRONT_X+C_LEN=+5003). So the ghost starts at that true end — NOT at the
-    # inner door plane (X=0). (Starting at X=0 wrongly made the bay/drum read as protruding OUTSIDE the
-    # container; the cargo-door end is 890mm further out. Corrected 2026-10-31.)
-    x0 = ov.BAY_FRONT_X
+    # The container's cargo-door END — where the ISO cargo doors CLOSE — is the DOOR_HINGE_X plane
+    # (−85; the cargo-door builder hinges the closed leaves here). The ghost ends there, so the doors
+    # can close against it and the door-frame + fold-down apron read INSIDE the shell. The drum BAY
+    # reaches further out (to BAY_FRONT_X=−890) as the DEPLOYED external light-lock vestibule that
+    # swings in for transport — so it legitimately sits BEYOND this closing plane while operating.
+    x0 = DOOR_HINGE_X
     xlen = (x_far if x_far is not None else 2000) - x0
     # Floor + a LOW-ALPHA container ghost (roof + both side walls, same 0.25 alpha as the floor) so the
     # container envelope reads and the B2 punch-out (bay/drum at X<0) clearly protrudes past the X=0 end.

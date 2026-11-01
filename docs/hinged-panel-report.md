@@ -392,6 +392,17 @@ the posts by **25mm** (and the tray rim by 70mm; the bottom axle beam uses a sha
 win 10mm of that from the lower hub without raising the drum), at a cost of 87mm of drum interior —
 still clearing a 1,780mm operator by 103mm.
 
+**Why the panel bottom is stepped (corner zones at 282mm).** The 217mm gap above is the *center*
+zone, under the drum bay. The near/far **corner zones** of the panel bottom step **up** to **282mm**
+(`PANEL_FLOOR_GAP_SIDE`) — a *separate* transport-swing clearance from the drum-cage gap. With the
+walkway grate lifted out for transport, the panel corners swing over the **bare wall-cantilever
+walkway-bracket legs**, which stand to ~200mm on the near/far side walls; the corner bottom is raised
+to clear those legs with margin (≥50mm by design, 82mm as built — the swing is about the vertical
+pivot, so any positive clearance over the leg top suffices). The center zone has **no** wall brackets
+in its swept path, so it stays at the lower 217mm. The 65mm difference is `PANEL_BOTTOM_STEP`. (This
+corner height sets the corner apron height, so it also governs how far the fold-down apron reaches
+when folded flat — see §6.)
+
 The swing is about a **vertical** pivot, so the cage underside stays at the same height throughout — this
 is what makes the deep Ø800 housing transport-feasible without a slide; a floor-mounted housing
 would have fouled the tray. The 217mm floor gap is closed in the operational position by the

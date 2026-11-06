@@ -133,7 +133,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 
 - [ ] 1.3.1 — Open and secure the cargo doors.
 - [ ] 1.3.2 — Release the top + bottom wall stays: slack the turnbuckles and unhook the rods from the near-wall eyes.
-- [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~7 kg / 16 lb dry, one person).
+- [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb dry, one person).
 - [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill the reservoir (~18 L, one tankful) from the Blue circuit at TAP-01 on the pinhole wall — doors are open at this stage, so draw at TAP-01 and carry/hose the water out to the cooler.
 - [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. The vertical pivot is balanced at any angle (no gravity torque) — effort is only inertia + bearing friction; control momentum at the stop.
 - [ ] 1.3.6 — Latch the panel to the door frame with both 1619A74 lift-and-turn cam latches (interior-face lever — lift and turn) — compresses the EPDM perimeter + cut seals.
@@ -430,7 +430,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.1 — End camera use: power off Fan B, finish any darkroom access. Stow all interior items; return the film-plane cross-slides to their datum.
 - [ ] 5.5.2 — Park the revolving drum in its closed/aligned position and pin its rotation (detent) so it cannot flop during the move.
 - [ ] 5.5.3 — Disconnect the flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain the cooler reservoir completely.
-- [ ] 5.5.4 — Carry the cooler in through the door opening (~7 kg / 16 lb drained, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
+- [ ] 5.5.4 — Carry the cooler in through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb drained, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
 - [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section — both sit inside the swing arc.
 - [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the left rail plane.*
 - [ ] 5.5.7 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.

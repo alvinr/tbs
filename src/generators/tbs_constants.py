@@ -633,6 +633,8 @@ EVAP_W     = 508     # cooler width along X (mm)  — 20 in
 EVAP_D     = 254     # cooler depth along Yd (mm) — 10 in
 EVAP_H     = 711     # cooler height (mm)         — 28 in
 EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct (injected via facts.yml cooler_cfm_rated)
+EVAP_WEIGHT_LB = 16    # Hessaire MC18M assembled/dry weight (lb) — datasheet; injected via facts.yml cooler_weight_lb
+EVAP_WEIGHT_KG = round(EVAP_WEIGHT_LB * 0.4536)   # = 7 kg (derived; cooler_weight_kg)
 # Transport stowage — on near walkway grating, in the widened section.
 # rev10: moved deeper (was 1200) to clear the panel SWING sweep, which reaches
 # X≈1395 in the near-walkway Yd band; 1450 gives margin (cooler X1450–2009,

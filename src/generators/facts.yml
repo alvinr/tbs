@@ -229,6 +229,18 @@ cooler_cfm_rated:
   owner: ventilation-report.md
   display: comma
 
+# Evaporative-cooler assembled/dry weight — Hessaire MC18M datasheet (16 lb ≈ 7 kg), restated as a
+# carry-weight in operating-manual §1.3/§5.5 and walkway §7. INJECTION-ONLY (no aliases): a bare "7"
+# or "16" is wildly polysemous, so each is filled only where a placeholder marks the cooler weight.
+cooler_weight_lb:
+  constant: EVAP_WEIGHT_LB
+  unit: lb
+  owner: operating-manual.md
+cooler_weight_kg:
+  constant: EVAP_WEIGHT_KG
+  unit: kg
+  owner: operating-manual.md
+
 blue_supply_l:
   constant: BLUE_SUPPLY_L
   unit: L

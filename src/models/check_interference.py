@@ -438,13 +438,11 @@ _SANCTIONED_SOLID = [
     ("carriage plate", "clamp spacer", "spray-bar wheel carriage — the bottom/spacer/top clamp sandwiches the beam AND the carriage plate vertically (Sheet 10); the spacer seats against the plate in the bolted stack, not a fused defect"),
     # — Light-trap / hinged-panel bay — unambiguous classes (2026-10-27, lighttrap-doc --solids pass):
     ("pivot post", "hub tube", "the moving swing hub tube rides concentrically on the fixed Ø89 pivot post (sleeve/bearing fit) — AABB over-count of concentric tubes, not a fused defect"),
-    ("apron", "top chamfer", "one-piece fold-down apron — the top chamfer is part of the same plate (box-model self-overlap)"),
+    ("pull-out apron strip", "apron fixed base", "the removable pull-out strip (Z130–282) seats on the fixed full-width base (Z0–130) at the Z130 line — intended box-on-box seating contact, not a fused defect"),
     ("bay", "opening-edge stile", "welded bay-frame joint — the opening-edge stile meets the bay top/bottom beam at the corner"),
-    ("apron", "fixed stub", "fold-down apron ↔ its fixed fold-hinge stub — the hinge connection, intended contact"),
     ("fixed left box", "strike face", "one-piece fixed left box — flanges + web (strike face) drawn as separate primitives"),
     ("slot l-strip", "upstand", "one formed Slot L-strip — base leg + upstand leg (box-model L self-overlap)"),
     ("stay lug", "stay clevis", "the stay clevis hook engages the stay lug — a clevis/pin fit, intended contact"),
-    ("apron", "folded", "DC dual-state — the fold-down apron's UP pose and FOLDED pose both exist in the swing component (hidden per swing state), so the two poses overlap near the hinge; only one is 'real' at a time"),
 ]
 
 

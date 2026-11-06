@@ -5,8 +5,8 @@
 generate_plywood_cutsheets.py — the ONE plywood cut-sheet / nesting drawing for TBS-001.
 
 Plywood is used in many subsystems (IBC-corridor plumbing panel, pump-mount shirt, pinhole-wall
-filter-skid backing, the EP electrical backboard, the hinged panel's Fan-B mount band + fold-down
-light-trap aprons, and the chem-prep shelf). Each consumer sheet used to cut its own ad-hoc rectangle;
+filter-skid backing, the EP electrical backboard, the hinged panel's Fan-B mount band + pull-out
+corner apron (base + strips + lip cleats), and the chem-prep shelf). Each consumer sheet used to cut its own ad-hoc rectangle;
 this generator is the SINGLE cut-sheet the buyer/fabricator works from — every plywood part in one
 schedule + nesting layout, grouped by grade + thickness so same-stock parts nest on one sheet.
 
@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
     DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD,
-    APRON_IN_L, APRON_IN_R, LT_CAGE_BOT,
+    LT_CAGE_BOT,
     PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, SHELF_W, SHELF_DEPTH,
     FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W,
     EP_COL_W, EP_H_HI, BA_H_LO,
@@ -43,7 +43,7 @@ from tbs_title_block import title_block                        # noqa: E402
 TOTAL_SHEETS = 2
 C_BG = "#FAFAFA"
 C_STOCK = "#F0E9D8"      # stock-sheet ground
-C_STUB = "#C7B48A"       # fixed (non-fold) piece, distinguished from a fold-down apron
+C_STUB = "#C7B48A"       # fixed piece (e.g. the apron base), distinguished from a removable pull-out strip
 C_CUT = "#B0202A"        # guillotine saw-cut line (dashed red)
 
 # Overlay boards (mount on a wall face with clearance) round their CUT BLANK UP to 5mm and are
@@ -54,15 +54,15 @@ def _r5dn(v): v = round(v); return v - v % 5   # between-members boards shrink D
 # ── derived cut dimensions (geometry-driven → from tbs_constants; cannot drift) ─────────────
 PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
 PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — blank for each of 2 butt-jointed halves, trimmed to the 1795 face
-# Aprons/stub are STEPPED/notched boards in the 3D (authoritative); the cut sheet carries the bounding
-# BLANK (rounded up, cut then notched) — real profile dimensioned on hingepanel Sheet 16.
-APR_NEAR_W  = _r5up(lt.APRON_NEAR_BLANK[0])             # 690  — stepped near apron bounding blank (688)
-APR_FAR_W   = _r5up(lt.APRON_FAR_BLANK[0])              # 490  — stepped far apron bounding blank (488)
-APR_BLANK_H = _r5up(lt.APRON_NEAR_BLANK[1])             # 190  — apron bounding-blank height (187), both aprons
-STUB_W = _r5up(lt.STUB_BLANK[0])                        # 125  — fixed pivot stub width (125, already 5mm)
-STUB_H = _r5up(lt.STUB_BLANK[1])                        # 180  — fixed pivot stub height (178)
-BAFFLE_W = _r5dn(APRON_IN_R - APRON_IN_L)               # 985  — center baffle width (between-members, round down)
-APR_CENTER_H = LT_CAGE_BOT - 10                         # 130  — baffle height, floor→cage (already 5mm)
+# Pull-out apron (lighttrap model = authoritative): a FIXED full-width base + 2 removable corner strips
+# + 2 leaf lip cleats. The cut sheet carries each bounding BLANK (rounded up); the 45° chamfer / lip
+# lap / cam-latch holes are dimensioned on hingepanel Sheet 16.
+APR_BASE_W  = _r5up(lt.APRON_BASE_BLANK[0])            # 2365 — fixed full-width base width (2362)
+APR_BASE_H  = LT_CAGE_BOT - 10                         # 130  — base height, floor→cage (already 5mm)
+APR_NEAR_W  = _r5up(lt.APRON_NEAR_BLANK[0])            # 655  — near pull-out strip width (653)
+APR_FAR_W   = _r5up(lt.APRON_FAR_BLANK[0])             # 455  — far pull-out strip width (453)
+APR_STRIP_H = _r5up(lt.APRON_NEAR_BLANK[1])            # 155  — pull-out strip height (152), both strips
+APR_LIP_H   = 90                                       # leaf lip-cleat height (lap 54 + downstand 36; Sheet 16 Detail E)
 
 # ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model (single source:
 #    the cut sizes TRACK the model and can't drift). yw = corridor clear Yd width; bw = board X length.
@@ -105,10 +105,11 @@ GROUPS = [
             ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
-            ("Near fold-down light apron", APR_NEAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, near corner — STEPPED/notched blank (18mm, flat-black interior face); profile on hingepanel Sheet 16"),
-            ("Far fold-down light apron", APR_FAR_W, APR_BLANK_H, 1, "seals under-leaf light gap, far corner — STEPPED/notched blank; profile on hingepanel Sheet 16"),
-            ("Fixed pivot stub", STUB_W, STUB_H, 1, "fixed strip from the far apron to the Ø220 pivot post plate (Yd 2162→2287)"),
-            ("Fixed center baffle", BAFFLE_W, APR_CENTER_H, 1, "fixed light baffle under the drum bay"),
+            ("Apron fixed base (full width)", APR_BASE_W, APR_BASE_H, 1, "FIXED full-width base Z0–130, continuous across the door bottom — never moves; 18mm, flat-black interior; hingepanel Sheet 16"),
+            ("Near pull-out apron strip", APR_NEAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip Z130–282, near corner — 45° bottom chamfer + top lip butt; profile on hingepanel Sheet 16"),
+            ("Far pull-out apron strip", APR_FAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip, far corner; profile on hingepanel Sheet 16"),
+            ("Near leaf lip cleat", APR_NEAR_W, APR_LIP_H, 1, "flat ply lip lapped on the leaf exterior face, near corner — CSK wood screws; Sheet 16 Detail E"),
+            ("Far leaf lip cleat", APR_FAR_W, APR_LIP_H, 1, "flat ply lip, far corner; Sheet 16 Detail E"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
             ("Fan-B swinging mount panel", FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
@@ -128,8 +129,8 @@ GROUPS = [
 ]
 
 # dims that DERIVE from a tbs_constants value (shown with a ᴰ marker in the schedule)
-_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_NEAR_W, APR_FAR_W, APR_BLANK_H, STUB_W, STUB_H, BAFFLE_W,
-            APR_CENTER_H, SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
+_DERIVED = {PINHOLE_W, PINHOLE_HALF, PWP_PANEL_H, APR_BASE_W, APR_BASE_H, APR_NEAR_W, APR_FAR_W, APR_STRIP_H,
+            SHELF_W, SHELF_DEPTH, EP_BACK_W, EP_BACK_H,
             _YW, _BW, BACK_H, SHIRT_H, SPINE_W, SPINE_H,
             cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H,
             PUMPRUN_FAR_H, PUMPRUN_NEAR_H, PUMPRUN_UP_H, FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W}

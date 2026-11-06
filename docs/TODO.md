@@ -11,13 +11,14 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🔧 Light-trap PULL-OUT corner apron — cascade from the Sheet 16 redesign (2026-11-05)
 
-Sheet 16 now draws the **pull-out corner apron** (fixed full-width base + removable corner strips, over-center toggle latches, screwed leaf lip cleat, strapped stow) — it REPLACES the fold-down apron. The 2D is committed; the rest of the design still describes the fold-down and must be cascaded onto the pull-out design:
+Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable corner strips, allen-key cam latches, leaf lip cleat, strapped stow) — it REPLACES the fold-down apron. The 2D + procurement + report + 3D-source are committed; only the SketchUp save + Sketchfab push remain:
 
-- [ ] **3D model** — `generate_lighttrap_model.py` still builds the fold-down apron + its UP/FOLDED swing-DC states + the −LOCK pre-rotation. Rebuild as: fixed full-width base (always present) + removable corner strips that are simply ABSENT in the swing/transport DC state (no fold arc). Re-send `lighttrap` + `overview` + `construction`; save; push Sketchfab; `manifest.py --update`.
-- [ ] **Report** — `hinged-panel-report.md` §6 path #3 + the §Parts-List narrative + the §summary row: fold-down → pull-out.
-- [ ] **parts.py** — retire the piano-hinges / foam / steel lapping-board / hold-up-catch lot; add removable pull-out strips (ply), ply lip cleats + CSK wood screws, over-center toggle latches (qty = 2 per strip?), and the stow straps. Source + price (SKU-pending per the McMaster rule). Cascade `costing.py`, `master-shopping-list.md`, `project-cost-breakdown.md`.
-- [ ] **plywood-cut-sheets.md** — the apron ply changes from 2 fold-down flaps to a full-width base + 2 strips; re-nest in the SYP offcut, confirm sheet count.
-- [ ] **Open design detail** — the strip removal-path kinematics (clearance to pull OUT past the sill/lapping line) and the **near-stile notch at Yd0** (where the near strip meets the door-frame stile).
+- [x] **parts.py / costing.py** — retired the piano-hinge/foam/lapping-board/catch lot; added pull-out base + strips + lip cleats (ply) + CSK screws + 4× allen-key cam latches (SKU pending) + 2× stow straps + 3 m EPDM; reconciled `EXPECTED[panel]`/`grand_total`; injected `master-shopping-list` + `project-cost-breakdown` (commit `f373537d`).
+- [x] **Report** — `hinged-panel-report.md` §5.3/§6 path #3/§7 + Sheet-16 heading rewritten fold-down → pull-out (`f373537d`).
+- [x] **plywood-cut-sheets.md** — apron ply → full-width base + 2 strips + 2 lip cleats; re-nested, still **4 sheets** (50 cuts); generator + PNG + prose updated.
+- [x] **3D model source** — `generate_lighttrap_model.py` rebuilt: fixed full-width base (static) + removable corner strips (hide-on-swing DC child, `swing>0.5`); fold UP/FOLDED states + hinge lapping-board/foam + edge brushes + center baffle retired; DESIGN-CONSTRAINT block rewritten; `check_interference.py` apron exemptions updated; `APRON_IN_L/R`/`APRON_CAGE_GAP` retired. Sent to the live model + verified (base Z0–130 full width; strips Z130–282 at Yd0–653 / 1709–2162).
+- [ ] **SketchUp save + Sketchfab** — SAVE `lighttrap.skp` (now the pull-out apron); also re-send + save `overview` + `construction` (pre-existing pending re-send from the rail-raise — apron is only in lighttrap, but all 3 are manifest-stale). Then `push_sketchfab.py` each + `manifest.py --update` + commit the `.skp` + `dependencies.yml`.
+- [ ] **Open design detail** — the strip removal-path kinematics (clearance to pull OUT past the sill) and the **near-stile notch at Yd0** (where the near strip meets the door-frame stile).
 
 ---
 

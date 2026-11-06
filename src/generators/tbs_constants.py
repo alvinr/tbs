@@ -520,10 +520,11 @@ DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
 DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
 DRUM_CAGE_YD_L = 700    # cage near side — FIXED (walkway/transport envelope); decoupled from the drum Ø on the Ø900→Ø800 shrink. Clears the Ø800 housing (near edge 781) by 31mm at the rail inner face (750).
 DRUM_CAGE_YD_R = 1662   # cage far side — FIXED (see YD_L); clears the Ø800 housing (far edge 1581) by 31mm.
-APRON_FIX_W    = 200    # far-pivot FIXED apron stub width (Yd): the folding flap can't hinge here — it would foul the Ø89 pivot post + its Ø220 floor mount plate — so the last 200mm stays fixed.
-APRON_CAGE_GAP = 12     # brush clearance between the fold-down apron inner edge and the cage side (Yd). The apron extends inboard from the center-zone step line to cage∓this; a vertical strip brush bridges it.
-APRON_IN_L     = DRUM_CAGE_YD_L - APRON_CAGE_GAP   # 688 — near apron inner edge (12mm off the cage near side)
-APRON_IN_R     = DRUM_CAGE_YD_R + APRON_CAGE_GAP   # 1674 — far apron inner edge (12mm off the cage far side)
+APRON_FIX_W    = 200    # far-pivot FIXED region width (Yd): the pull-out strips stop here — a strip at the pivot would foul the Ø89 pivot post + its Ø220 floor mount plate; the far-pivot bottom is the full-height far_leaf strip. (The far pull-out strip spans Yd PANEL_CORNER_YD_R..C_WID−APRON_FIX_W.)
+# APRON_CAGE_GAP / APRON_IN_L / APRON_IN_R retired 2026-11-05 — the fold-down apron's cage-side brush gap +
+# center baffle are gone (pull-out redesign, hingepanel Sheet 16): the fixed full-width base (Z0–130)
+# spans the whole door bottom and the drum's own vertical cage seals the center; the corner strips end at
+# the corner-zone step lines PANEL_CORNER_YD_L/R, not a brush gap off the cage.
 # ── Light-trap SUPPORT FRAME (2026-08-21) — steel welded box cage, INTEGRATED with the
 # swing-panel frame (one weldment). Carries both SKF 6215 bearings + the fixed housing
 # (outer skin). Members = steel RHS matching the panel; top/bottom bearing plates. The

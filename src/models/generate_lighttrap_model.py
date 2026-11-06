@@ -325,7 +325,10 @@ def cam_latch(yl, zl):
     ])
 
 
-def hinge_panel():
+def hinge_panel(seals=True):
+    """Detailed cargo-door panel: skins + center frame + (seals) + piano hinges + 2 cam latches + pull
+    handle. seals=True for lighttrap's own scene; overview/construction aggregate hinge_panel(seals=False)
+    via panel_pivot() and draw the perimeter EPDM with their own light_seal() (no double-seal)."""
     h = PANEL_Z_TOP - PANEL_Z_BOT                  # panel skin height (center zone, low bottom)
     hs = PANEL_Z_TOP - PANEL_FLOOR_GAP_SIDE        # corner-zone height — bottom STEPPED UP
     tc, tk = PANEL_CORNER_T, PANEL_CENTER_T        # 40 corner, 120 center
@@ -356,19 +359,21 @@ def hinge_panel():
 
     # EPDM perimeter gasket — 20mm strips on the panel exterior face, compressed
     # against the door frame (and the top/bottom seal lips) by the cam latches.
-    gw, gt = 40, 20
-    z0, z1 = PANEL_Z_BOT, PANEL_Z_TOP
-    dg0, dg1 = DRUM_CY - HOUSING_R - 15, DRUM_CY + HOUSING_R + 15  # clear housing aperture
-    # bottom + top strips run on the panel edges, notched around the housing
-    parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT, alpha=0.5))
-    parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
-                          color=C_GASKT, alpha=0.5))
-    # top strip runs continuously full-width (panel top edge is the solid header)
-    parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT, alpha=0.5))
-    zs = PANEL_FLOOR_GAP_SIDE     # left/right side seals sit in the stepped corner zones (raised bottom)
-    parts.append(ruby_box("EPDM seal left", -gt, 0, zs, gt, gw, z1 - zs, color=C_GASKT, alpha=0.5))
-    parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, zs, gt, gw, z1 - zs,
-                          color=C_GASKT, alpha=0.5))
+    # (seals=False when aggregated into overview/construction — they draw it via light_seal().)
+    if seals:
+        gw, gt = 40, 20
+        z0, z1 = PANEL_Z_BOT, PANEL_Z_TOP
+        dg0, dg1 = DRUM_CY - HOUSING_R - 15, DRUM_CY + HOUSING_R + 15  # clear housing aperture
+        # bottom + top strips run on the panel edges, notched around the housing
+        parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT, alpha=0.5))
+        parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
+                              color=C_GASKT, alpha=0.5))
+        # top strip runs continuously full-width (panel top edge is the solid header)
+        parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT, alpha=0.5))
+        zs = PANEL_FLOOR_GAP_SIDE     # left/right side seals sit in the stepped corner zones (raised bottom)
+        parts.append(ruby_box("EPDM seal left", -gt, 0, zs, gt, gw, z1 - zs, color=C_GASKT, alpha=0.5))
+        parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, zs, gt, gw, z1 - zs,
+                              color=C_GASKT, alpha=0.5))
 
     # 3 × 200mm SS piano hinges on the left edge (Yd=0), exterior, per report §4.1.
     hd, hw, hh = 60, 30, 200
@@ -1425,27 +1430,19 @@ def panel_pivot():
     The panel + drum assembly rotates ~56° about a Ø89 CHS post (the film-plane
     far-left upright, REUSED — geometry single-sourced from the light-trap model,
     axle()) to clear the cargo doors for transport. The old HGR20 ceiling-rail
-    suspension + HGH20CA carriages are retired. Shown here shut at X=0 (operating);
-    the detailed swing mechanism (3-zone split, hub bearings, wall stays, removable
-    rails) lives in models/lighttrap.skp.
+    suspension + HGH20CA carriages are retired. Shown here shut at X=0 (operating).
+    This is the AGGREGATION entry for overview + construction: it now carries the FULL
+    panel detail (hinge_panel skins/frame/hinges/cam latches/handle + the pull-out apron),
+    so those models match lighttrap; only the swing SPLIT/DC + removable rails are
+    lighttrap-only (overview is a static GA).
     """
     jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
     parts = [axle()]
-    # Cargo-door panel, operational position (X=0). rev11: 1/8″ HDPE plastic skins
-    # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner. The panel is
-    # STEPPED two ways: in THICKNESS (X) the center drum bay is PANEL_CENTER_T=120, the two
-    # corner zones are the flush PANEL_CORNER_T=40 (matches the lighttrap model + hingepanel
-    # report §2.1); and in the BOTTOM (Z) the corner zones step UP to PANEL_FLOOR_GAP_SIDE to
-    # clear the bare walkway cantilever bracket legs in transport (hingepanel Sheet 15).
-    parts.append(ruby_box("Cargo Door Panel (center)",
-                          0, jL, PANEL_FLOOR_GAP,
-                          PANEL_CENTER_T, jR - jL, 2300 - PANEL_FLOOR_GAP, color=C_PLASTIC, alpha=0.6))
-    parts.append(ruby_box("Cargo Door Panel (near corner)",
-                          0, 0, PANEL_FLOOR_GAP_SIDE,
-                          PANEL_CORNER_T, jL, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
-    parts.append(ruby_box("Cargo Door Panel (far corner)",
-                          0, jR, PANEL_FLOOR_GAP_SIDE,
-                          PANEL_CORNER_T, C_WID - jR, 2300 - PANEL_FLOOR_GAP_SIDE, color=C_PLASTIC, alpha=0.6))
+    # DETAILED cargo-door panel at operational position (X=0), aggregated so overview + construction
+    # MATCH lighttrap: skins + center frame + piano hinges + 2 cam latches + pull handle. seals=False —
+    # overview/construction draw the perimeter EPDM via their own light_seal() (no double-seal). The
+    # swing split/trim is lighttrap-only (overview is a static GA, so it uses the full untrimmed panel).
+    parts.append(hinge_panel(seals=False))
     # Fan B near corner = a FIXED ply side part (to the pinhole side) + the SWINGING ply mount panel
     # (carries the centered fan, travels with the leaf), split at the swing cut PANEL_CUT_YD.
     parts.append(ruby_box("Fan B fixed side part (18mm ply)",
@@ -1458,6 +1455,11 @@ def panel_pivot():
     # The stay ROD/turnbuckle itself is left out — only the permanent brackets are shown.
     parts.append(wall_anchors())
     parts.append(frame_hooks())
+    # Bottom pull-out corner apron — full parity with lighttrap (fixed base + removable strips + leaf lip
+    # batten B1 + strip batten B2 + the bottom/span draw latches). Static here (overview is a GA, no swing DC).
+    parts.append(apron_base_geom())
+    parts.append(apron_strips_geom())
+    parts.append(apron_lip_geom())
     return '\n'.join(parts)
 
 

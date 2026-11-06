@@ -19,13 +19,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,122 | $3,024 |
-| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,244 | $1,457 |
+| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,233 | $1,431 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $267 | $279 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,703** | **~$36,531** |
+| **TOTAL (base build + 50-print run)** | **~$27,692** | **~$36,505** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -268,6 +268,8 @@ indicative low–high estimates — get quotes before ordering.
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
 | [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | 58 ea | Harbor Freight | clamp | $115–$173 |
+| Allen-key quarter-turn cam latch — apron pull-out strips (×4) | 4 ea | McMaster-Carr | panel | $48–$72 |
+| Webbing stow strap w/ cam buckle — pull-out strips (×2) | 2 ea | Amazon / hardware | panel | $16–$22 |
 | [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 2 ea | McMaster-Carr | panel | $61 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | panel | $6 |
 | [1/4"-20 zinc machine screws (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-x-1-in-Combo-Truss-Head-Zinc-Plated-Machine-Screw-4-Pack-826771/317479749) (826771) | 10 4-pack | Home Depot | water | $16 |
@@ -301,7 +303,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | 20 ea | Fasteners Plus | walkway | $20 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss) | 20 ea | McMaster-Carr | walkway | $10 |
-| **fasteners-hardware subtotal** | | | | **$2,056–$2,347** |
+| **fasteners-hardware subtotal** | | | | **$2,120–$2,441** |
 
 ### optics
 
@@ -376,7 +378,7 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [#4 (3/16") black-nylon strip brush — running-gap light-seal wiper (×4 lines)](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) | 4 8ft | Gordon Brush | lightlock | $88–$160 |
 | 12mm closed-cell neoprene — top/bottom cap wiper seals | 1 lot | Canal Rubber | lightlock | $25–$40 |
-| [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 21 m | Amazon (OKAYASU) | panel | $24–$52 |
+| [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 24 m | Amazon (OKAYASU) | panel | $27–$59 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | Certified anti-slip cargo matting (μ≥0.6) | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
@@ -385,7 +387,7 @@ indicative low–high estimates — get quotes before ordering.
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$554–$761** |
+| **seals-gaskets subtotal** | | | | **$557–$768** |
 
 ### stainless-sheet
 
@@ -460,11 +462,11 @@ indicative low–high estimates — get quotes before ordering.
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [EP plywood backing panel (18mm, ~700×2,000mm)](https://www.homedepot.com/p/302874373) (302874373) | 1 cut from the shelf sheet | shared (Plywood Cut Sheets) | electrical | $0 |
 | [Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32" exterior SYP, from the sheets A–C offcut)](https://www.homedepot.com/p/303564747) (303564747) | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | panel | $0 |
-| Fold-down light aprons + fixed baffle/pivot stub (18mm ext ply, from the SYP sheets A–C offcut) + piano hinges + foam seal + hold-up catches | 1 lot | Home Depot / McMaster | panel | $85–$140 |
 | [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 2 sheet | Home Depot | water | $59 |
+| Pull-out corner apron — fixed full-width base + 2 removable corner strips + leaf lip cleats (18mm ext ply, from the SYP sheets A–C offcut) + CSK wood screws | 1 lot | Home Depot | panel | $6–$12 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Home Depot | shelf | $73 |
-| **timber-ply subtotal** | | | | **$275–$330** |
+| **timber-ply subtotal** | | | | **$196–$202** |
 
 ### tools-safety
 
@@ -502,9 +504,9 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 21 | aluminum, fasteners-hardware, steel-structural | $2,202–$2,978 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,994 |
+| McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,968–$1,993 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| McMaster-Carr | 79 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,920–$1,921 |
-| Home Depot | 55 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,711–$1,887 |
+| Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,717–$1,899 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
@@ -534,7 +536,6 @@ indicative low–high estimates — get quotes before ordering.
 | Fasteners Plus | 3 | fasteners-hardware | $123–$153 |
 | Inverter Service Center | 1 | electrical-power | $152 |
 | Eagle Aluminum | 1 | aluminum | $152 |
-| Home Depot / McMaster | 1 | timber-ply | $85–$140 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
 | Lenox Laser | 1 | optics | $60–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
@@ -547,8 +548,8 @@ indicative low–high estimates — get quotes before ordering.
 | Blue Sea | 2 | electrical-distribution | $61 |
 | Canal Rubber | 2 | seals-gaskets | $37–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
+| Amazon (OKAYASU) | 1 | seals-gaskets | $27–$59 |
 | AutomationDirect | 1 | electrical-distribution | $52 |
-| Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
@@ -559,6 +560,7 @@ indicative low–high estimates — get quotes before ordering.
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
+| Amazon / hardware | 1 | fasteners-hardware | $16–$22 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | misterworker | 1 | plumbing-fittings | $14 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |

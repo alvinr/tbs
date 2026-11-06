@@ -2594,13 +2594,13 @@ def sheet15():
 #   interior-HIGH, so the strip gravity-seats EXTERIOR-down; EPDM) and BUTTS a flat
 #   LIP on the EXTERIOR at the top — a flat ply cleat lapped on the swinging leaf's
 #   exterior face (the full flat lap takes the CSK wood screws), projecting below
-#   the leaf bottom as a downstand register the strip's exterior top butts. A DRAW
-#   LATCH at each strip end (McMaster 1590A13 surface-mounted toggle draw latch)
-#   OPERATED FROM THE INTERIOR (darkroom) face spans the strip↔base joint — the lever
-#   body screws to the STRIP, the keeper to the FIXED BASE just below — and, thrown
-#   over-center, draws the strip DOWN onto its 45° chamfer seat under tension (the
-#   interior-high chamfer converts the down-draw into the exterior seat against the
-#   lip). The leaf's repeatable hard close-stop sets the
+#   the leaf bottom as a downstand register the strip's exterior top butts. TWO DRAW
+#   LATCHES at each strip end (McMaster 1590A13 surface-mounted toggle draw latches,
+#   4 per strip) OPERATED FROM THE INTERIOR (darkroom) face: the BOTTOM pair spans the
+#   strip↔base joint (keeper on the fixed base) and draws the strip DOWN onto its 45°
+#   chamfer seat; the TOP pair spans the strip↔leaf joint (keeper on the swinging leaf)
+#   and draws the strip UP against the lip register — so both joints seal in tension.
+#   The leaf's repeatable hard close-stop sets the
 #   strip's top datum. For the transport swing the draw latches are released and each
 #   strip is lifted straight up out of the chamfer (it stows strapped inside; nothing
 #   passes through the strip or lip) so the leaf sweeps through the empty corner zone. The drum-bay center
@@ -2666,10 +2666,12 @@ def sheet16():
     # DRAW LATCH (1590A13) — surface-mounted on the INTERIOR face, spanning the strip↔base joint (this view IS the interior).
     # OUTBOARD latch pulled IN off the door-frame END stile (near 110 / far STUB−110); inboard latch near the drum-bay end.
     for ly in (110, jL - 45, jR + 45, STUB - 110):
-        ax.add_patch(Rectangle((ly - 11, ez + BASE_TOP - 4), 22, 40, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))              # draw latch straddling the joint
+        ax.add_patch(Rectangle((ly - 11, ez + BASE_TOP - 4), 22, 36, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))              # BOTTOM draw latch (strip↔base joint)
         ax.plot([ly - 11, ly + 11], [ez + BASE_TOP, ez + BASE_TOP], color=C_OUT, lw=0.8, ls=(0, (3, 2)), zorder=8)          # strip↔base joint under the latch
-    leader(ax, (jR + 45, ez + BASE_TOP + 20), (jR + 170, ez + ATOP + 56),
-           "DRAW LATCH (1590A13) — surface draw latch, handle INSIDE; clamps the\nstrip DOWN onto the chamfer seat; outboard latch pulled IN off the stile", col=C_OUT, fw="bold", fs=6, ha="left")
+        ax.add_patch(Rectangle((ly - 11, ez + ATOP - 32), 22, 36, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))                 # TOP draw latch (strip↔leaf joint)
+        ax.plot([ly - 11, ly + 11], [ez + ATOP, ez + ATOP], color=C_OUT, lw=0.8, ls=(0, (3, 2)), zorder=8)                  # strip↔leaf joint under the latch
+    leader(ax, (jR + 45, ez + ATOP - 14), (jR + 170, ez + ATOP + 56),
+           "DRAW LATCHES (1590A13) — surface draw latches, handle INSIDE; TWO per strip end\n(top joint + bottom joint); outboard pair pulled IN off the door-frame stile", col=C_OUT, fw="bold", fs=6, ha="left")
     # swinging leaf bottom (stepped Z217 ctr / Z282 corners) — the base + strips seal up to it
     ax.plot([0, jL, jL, jR, jR, WID], [ez + ATOP, ez + ATOP, ez + PBOT_CTR, ez + PBOT_CTR, ez + ATOP, ez + ATOP],
             color="#1763C8", lw=1.6, ls=(0, (6, 3)))
@@ -2716,18 +2718,25 @@ def sheet16():
             color="#1c6b32", lw=2.2, zorder=10)                                                           # over-center bail across the joint
     ax.annotate("", xy=aA(TW + 7, BASE_TOP - 12), xytext=aA(TW + 7, BASE_TOP + 22),
                 arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.5))                               # draws the strip DOWN onto the seat
-    # removal action arrow (release the draw latch, lift the strip up off its chamfer seat)
+    # TOP draw latch — spanning the strip↔leaf joint at Z282; body on the STRIP (below), keeper on the LEAF (above); draws the strip UP against the lip
+    ax.add_patch(Rectangle(aA(TW, ATOP - 48), 14, 46, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=9))            # lever body on the STRIP (below the joint)
+    ax.add_patch(Rectangle(aA(TW, ATOP + 2), 4, 22, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=9))              # keeper on the swinging LEAF (above the joint)
+    ax.plot([aA(TW + 11, ATOP - 42)[0], aA(TW + 11, ATOP + 16)[0]], [ATOP - 42, ATOP + 16],
+            color="#1c6b32", lw=2.2, zorder=10)                                                           # over-center bail across the joint
+    ax.annotate("", xy=aA(TW + 7, ATOP + 12), xytext=aA(TW + 7, ATOP - 20),
+                arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.5))                               # draws the strip UP against the lip/leaf
+    # removal action arrow (release the draw latches, lift the strip up off its chamfer seat)
     ax.annotate("", xy=aA(10, ATOP + 30), xytext=aA(10, 234), arrowprops=dict(arrowstyle="-|>", color="#C0392B", lw=2.0))
 
     # — left column (exterior-side features: lip, removal note, sill) —
     leader(ax, aA(-16, 318), (LX, 344), "LIP — flat ply cleat lapped on the\nleaf EXTERIOR face (CSK screws);\ndownstand = strip register (Detail E)", col="#3C6A96", fw="bold", fs=6, ha="right")
-    ax.text(LX, 214, "remove: release the\ndraw latch (inside),\nlift the strip up off\nits chamfer seat + stow", ha="right", va="center",
+    ax.text(LX, 214, "remove: release all\nfour draw latches\n(inside), lift off the\nchamfer seat + stow", ha="right", va="center",
             fontsize=6, fontweight="bold", color="#C0392B", **FONT)
     leader(ax, aA(-34, 30), (LX, 70), "threshold sill\nZ0–51", col=C_OUT, fs=6, ha="right")
     # — right column (interior-side features: leaf, strip, draw latch, chamfer, base) —
     leader(ax, aA(10, ATOP + 55), (RX, 372), "swinging leaf\n(corner, Z282)", col="#1763C8", fs=6, ha="left")
     leader(ax, aA(14, 232), (RX, 312), "PULL-OUT STRIP\n(removable) Z130–282", col="#6B4A00", fw="bold", fs=6, ha="left")
-    leader(ax, aA(TW + 11, BASE_TOP + 20), (RX, 244), "DRAW LATCH (1590A13) —\nclamps the strip DOWN onto\nthe chamfer seat (Detail F)", col="#1c6b32", fw="bold", fs=6, ha="left")
+    leader(ax, aA(TW + 11, ATOP - 24), (RX, 258), "DRAW LATCHES (1590A13) — TWO per\nend: top joint (strip→leaf) + bottom\njoint (strip→base, chamfer); Detail F", col="#1c6b32", fw="bold", fs=6, ha="left")
     leader(ax, aA(14, BASE_TOP - 6), (RX, 150), "45° chamfer + EPDM\n(ext-low → int-high;\nlocates strip bottom — Detail D)", col=C_EPDM, fw="bold", fs=6, ha="left")
     leader(ax, aA(10, 60), (RX, 78), f"FIXED BASE\nZ0–{int(BASE_TOP)}", col="#5A3F10", fw="bold", fs=6, ha="left")
     draw_dim_v(ax, a0 + 32, 0, BASE_TOP, f"{int(BASE_TOP)}mm", offset=10, fs=6, font=FONT)
@@ -2785,7 +2794,7 @@ def sheet16():
     # ══ DETAIL F (top-right) — CAM LATCH through the strip; cam overlaps the hinged-panel lip (ribbon) ══
     f0 = 1360
     ax.text(f0 + 90, 408, "DETAIL F — draw latch (strip↔base joint)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(f0 + 90, 392, "1590A13 surface draw latch · clamps the strip DOWN onto the chamfer seat · handle INSIDE · 1 per strip end", ha="center", fontsize=5.3, color=C_DIM, **FONT)
+    ax.text(f0 + 90, 392, "1590A13 surface draw latch · TWO per strip end (this = bottom joint; a matching one at the top joint draws the strip UP to the leaf) · handle INSIDE", ha="center", fontsize=5.0, color=C_DIM, **FONT)
     # --- SECTION (ext LEFT → int RIGHT): strip over base at the chamfer joint; draw latch on the INTERIOR (right) face ---
     SJ = 150                                                                                             # joint Y in the detail (strip above / base below)
     ax.add_patch(Rectangle((f0 + 40, SJ), 46, 150, fc=C_PULL, ec=C_OUT, lw=1.5))                         # pull-out STRIP (above the joint)
@@ -2812,9 +2821,9 @@ def sheet16():
         f"• FIXED full-width base (Z0–{int(BASE_TOP)}, floor→cage), continuous across the door bottom, never moves. 18mm exterior SYP ply, flat-black interior. Top is a 45° chamfer, exterior-LOW → interior-HIGH — the interior shoulder backs the strip bottom.",
         f"• Two REMOVABLE PULL-OUT STRIPS at the corner zones (near Yd 0–{int(jL)}, far Yd {int(jR)}–{int(STUB)}), Z{int(BASE_TOP)}–{int(ATOP)}, 18mm ply. Each locates in the base chamfer at the bottom (EPDM — Detail D) and BUTTS the exterior LIP at the top (Detail E).",
         "• LIP register (Detail E): a flat ply cleat lapped on the swinging leaf's EXTERIOR face — the full flat lap takes the CSK wood screws (heads flush on the exterior, good purchase into the leaf) — and projecting below the leaf bottom as a downstand. The strip's exterior top butts the downstand (EPDM); the register sits on the exterior (door) side.",
-        "• DRAW LATCH (Detail F): McMaster 1590A13 surface-mounted toggle draw latch, one at each strip end — handle on the INTERIOR / darkroom face, like every other latch. Both halves screw to the interior face spanning the strip↔base joint: the LEVER BODY on the pull-out strip, the KEEPER on the fixed base just below. Thrown over-center, the bail draws the strip DOWN onto its 45° chamfer seat under tension — the interior-high chamfer converts the down-draw into the exterior seat against the lip, so latch + gravity load both seats. Nothing passes through the strip or the lip. Light-duty and cheap ($9.85 ea), suits a light-seal strip.",
-        "• DATUM: the leaf's repeatable hard close-stop sets the strip's top datum (lip on the leaf exterior); the bottom locates in the fixed chamfer. The lip + chamfer LOCATE the strip; the draw latch CLAMPS it down onto the seat. Released, nothing captures the strip — it simply slips up out of the chamfer.",
-        "• TRANSPORT: release the draw latches (from inside), lift each strip up off its chamfer seat and strap it inside; the empty corner lets the leaf sweep through. No floor hinge — nothing folds onto the tray.",
+        "• DRAW LATCHES (Detail F): McMaster 1590A13 surface-mounted toggle draw latches, TWO at each strip end (4 per strip) — handle on the INTERIOR / darkroom face, like every other latch. All halves screw to the interior face: the BOTTOM pair spans the strip↔base joint (keeper on the fixed base) and draws the strip DOWN onto its 45° chamfer seat; the TOP pair spans the strip↔leaf joint (keeper on the swinging leaf) and draws the strip UP against the lip register — both joints seal in tension. Nothing passes through the strip or the lip. Light-duty and cheap (1× 10-pack, $9.85, covers all 8 + 2 spare), suits a light-seal strip.",
+        "• DATUM: the leaf's repeatable hard close-stop sets the strip's top datum (lip on the leaf exterior); the bottom locates in the fixed chamfer. The lip + chamfer LOCATE the strip; the draw latches CLAMP it at both joints. Released, nothing captures the strip — it simply slips up out of the chamfer.",
+        "• TRANSPORT: release all four draw latches (from inside), lift each strip up off its chamfer seat and strap it inside; the empty corner lets the leaf sweep through. No floor hinge — nothing folds onto the tray.",
         f"• CENTER (drum bay, Yd {int(jL)}–{int(jR)}): NO pull-out — the fixed base closes Z0–{int(BASE_TOP)} and the drum's own cage seals Z{int(BASE_TOP)}→{int(BAYB)} (bay cap) as it sweeps. Base continuous under the bay.",
         "• LIGHT SEAL: light-tight joints with EPDM at every seam — the 45° base↔strip chamfer, the strip↔lip butt, and the strip ends↔jambs. The strip lifts straight off its chamfer seat — no binding.",
     ], WID + 380, 892, spacing=19, fs=5.5, title_fs=6.4, color="#403000",

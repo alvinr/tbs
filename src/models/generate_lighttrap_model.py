@@ -1263,9 +1263,10 @@ def near_bay_wall_frame():
 # the door bottom, NEVER moves) + two REMOVABLE pull-out STRIPS at the corner zones (Z130..PANEL_FLOOR_GAP_SIDE
 # =282). Each strip locates in a 45° chamfer in the base at the bottom (ext-low → int-high; gravity-seats it
 # exterior-down) and butts a flat ply LIP cleat lapped on the leaf's EXTERIOR face at the top; 1590A13
-# surface-mounted DRAW LATCHES on the interior face hold it — TWO at each strip end, one at the BOTTOM joint
-# (strip↔base, draws the strip DOWN onto the chamfer) + one at the TOP joint (strip↔leaf, draws it UP against
-# the lip) = 4 per strip. Released, the strip slips out of the chamfer (nothing passes through the strip or
+# surface-mounted DRAW LATCHES on the interior face hold it — TWO bottom latches (strip↔base joint, draw the
+# strip DOWN onto the chamfer) one at each strip END + ONE top latch (strip↔leaf joint, draws it UP against
+# the lip) at the strip CENTER = 3 per strip. The single top latch is centered to clear the film-plane rails
+# that park at the ends. Released, the strip slips out of the chamfer (nothing passes through the strip or
 # lip). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
 # the fixed base closes Z0..130 and the drum's own vertical cage seals Z130→217 as it sweeps.
 #
@@ -1357,11 +1358,12 @@ def apron_draw_latch(yl, jt, keeper_below):
 def apron_strips_geom():
     """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
     18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
-    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries TWO draw
-    latches — one at the BOTTOM joint (strip↔base, draws down onto the chamfer) + one at the TOP joint
-    (strip↔leaf, draws up against the lip) — so 4 per strip, 8 total. CHILD of the Panel Swing DC: SHOWN
-    when closed, ABSENT (hidden) when swung (lifts out of the sweep; no fold); the latches travel + hide
-    with the strip."""
+    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Latch layout: TWO bottom draw
+    latches (strip↔base joint, draw the strip DOWN onto the chamfer) one at each strip END, + ONE top draw
+    latch (strip↔leaf joint, draws the strip UP against the lip) at the strip CENTER — so 3 per strip, 6
+    total. The single top latch sits at mid-span (clamps the bow-prone middle) and clears the film-plane
+    rails that park at the strip ENDS (the end-corner top latch fouled the left lift-out rail). CHILD of the
+    Panel Swing DC: SHOWN when closed, ABSENT (hidden) when swung; the latches travel + hide with the strip."""
     parts = []
     LAT_BAY, LAT_STILE = 45, 110                        # inboard (drum-bay side) inset; OUTBOARD inset keeps the
     #                                                    latch off the door-frame END stile (Yd0–50 near /
@@ -1373,8 +1375,8 @@ def apron_strips_geom():
         # outboard latch pulled in off the end stile; inboard (drum-bay) latch stays near the open bay end
         lats = (y0 + LAT_STILE, y1 - LAT_BAY) if out_lo else (y0 + LAT_BAY, y1 - LAT_STILE)
         for yl in lats:
-            parts.append(apron_draw_latch(yl, APRON_BASE_TOP, True))    # bottom — strip↔base joint (draws down)
-            parts.append(apron_draw_latch(yl, _STRIP_TOP, False))       # top — strip↔leaf joint (draws up)
+            parts.append(apron_draw_latch(yl, APRON_BASE_TOP, True))    # bottom — strip↔base joint (draws down), one per END
+        parts.append(apron_draw_latch((y0 + y1) / 2.0, _STRIP_TOP, False))  # top — strip↔leaf joint (draws up), ONE at strip CENTER (clears the end rails)
     return '\n'.join(parts)
 
 

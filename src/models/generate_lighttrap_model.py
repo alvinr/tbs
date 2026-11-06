@@ -1307,19 +1307,21 @@ _Z_BODY = APRON_BASE_TOP - APRON_CHAM   # 112 — base body top / chamfer bottom
 
 
 def apron_base_geom():
-    """FIXED full-width base (Z0..130), continuous across the door bottom — never moves. 18mm ply (X22..40).
-    The base TOP is a 45° chamfer at the corner zones (ext-low X22=Z112 → int-high X40=Z130) — the pull-out
-    strip's seat (Sheet 16 Detail D); the center/far-pivot top is flat at Z130. Plus a strip brush over the
-    drum-cage width (Z130→140) sweeping the swinging cage bottom to close the center gap."""
+    """FIXED full-width base (Z0..130), continuous — never moves. 18mm ply (X22..40), built as ONE
+    continuous prism per Yd zone (chamfer integral to the base, not a separate wedge): the corner zones
+    have the 45° chamfered top (ext-low X22=Z112 → int-high X40=Z130) = the pull-out strip seat (Sheet 16
+    Detail D); the center + far-pivot top is flat at Z130. Plus a strip brush over the drum-cage width
+    (Z130→140) sweeping the swinging cage bottom to close the center gap."""
     cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R      # 700, 1662 — cage width the top brush spans
-    parts = [ruby_box("Apron fixed base (full width)", APRON_X0, 0, 0, APRON_STRIP_T, C_WID, _Z_BODY, color=C_PLY, alpha=1.0)]
-    # 45° chamfer strip-seat (ext-low → int-high) under each pull-out strip
-    for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
-        parts.append(_prism_xz(f"Apron base 45° chamfer seat ({nm})",
-                     [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _Z_BODY)], y0, y1 - y0, C_PLY, 1.0))
-    # flat top fill (Z112→130) over the non-corner zones: center drum bay + far-pivot
-    for y0, y1 in ((_STRIP_NEAR[1], _STRIP_FAR[0]), (_STRIP_FAR[1], C_WID)):
-        parts.append(ruby_box("Apron base top (flat)", APRON_X0, y0, _Z_BODY, APRON_STRIP_T, y1 - y0, APRON_CHAM, color=C_PLY, alpha=1.0))
+    segs = [(_STRIP_NEAR[0], _STRIP_NEAR[1], True),      # near corner — chamfered strip seat
+            (_STRIP_NEAR[1], _STRIP_FAR[0], False),      # center drum bay — flat top
+            (_STRIP_FAR[0], _STRIP_FAR[1], True),        # far corner — chamfered strip seat
+            (_STRIP_FAR[1], C_WID, False)]               # far-pivot — flat top
+    parts = []
+    for y0, y1, cham in segs:
+        top = [(40, APRON_BASE_TOP), (APRON_X0, _Z_BODY)] if cham else [(40, APRON_BASE_TOP), (APRON_X0, APRON_BASE_TOP)]
+        parts.append(_prism_xz("Apron fixed base (chamfered seat)" if cham else "Apron fixed base",
+                     [(APRON_X0, 0), (40, 0)] + top, y0, y1 - y0, C_PLY, 1.0))
     parts.append(ruby_box("Apron base top brush (cage)", -1, cgL, APRON_BASE_TOP, 30, cgR - cgL, LT_CAGE_BOT - APRON_BASE_TOP, color=C_SEAL))
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12
@@ -1330,13 +1332,17 @@ def apron_base_geom():
 def apron_strips_geom():
     """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
     18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
-    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. CHILD of the Panel Swing DC: SHOWN
-    when closed, ABSENT (hidden) when swung (lifts out of the sweep; no fold). Sheet 16 Detail D."""
+    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries a CAM LATCH
+    (reuses the cam_latch() builder — one per end, 4 total). CHILD of the Panel Swing DC: SHOWN when closed,
+    ABSENT (hidden) when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
     parts = []
+    zl = (APRON_BASE_TOP + _STRIP_TOP) // 2             # 206 — mid-strip latch height
     for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
         parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
                      [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
                      y0, y1 - y0, C_PLY, 0.9))
+        for yl in (y0 + 45, y1 - 45):                   # one cam latch at each strip end
+            parts.append(cam_latch(yl, zl))
     return '\n'.join(parts)
 
 

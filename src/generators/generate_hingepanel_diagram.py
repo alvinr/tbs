@@ -2591,16 +2591,16 @@ def sheet15():
 #   zones without a floor hinge). A FIXED full-width base (Z0–130, continuous,
 #   never moves) + two REMOVABLE pull-out STRIPS at the corner zones (Z130–282).
 #   Each strip LOCATES in the base's 45° chamfer at the bottom (exterior-LOW →
-#   interior-HIGH, so the interior shoulder backs the strip; EPDM) and BUTTS a
-#   SQUARE SECTION at the top — a square batten CSK-screwed to the swinging leaf
-#   (laps the leaf interior face, projects below the leaf bottom; the strip top
-#   butts its face). An over-center TOGGLE latch at each strip end SPANS the strip
-#   → leaf (handle interior): closing it pulls the strip IN, seating the top on the
-#   square section and wedge-locking the bottom up the chamfer shoulder. The leaf's
+#   interior-HIGH, so the strip gravity-seats EXTERIOR-down; EPDM) and BUTTS a
+#   SQUARE SECTION on the EXTERIOR at the top — a square batten CSK-screwed to the
+#   swinging leaf's exterior face (laps the face, projects below the leaf bottom;
+#   the strip's exterior top butts its interior face). An over-center TOGGLE latch
+#   at each strip end SPANS the strip → leaf: closing it pulls the strip OUT onto
+#   the square section, reinforcing the exterior-down gravity seat. The leaf's
 #   repeatable hard close-stop sets the strip's top datum. For the transport swing
-#   the toggles are released from the interior, each strip is tilted off the square
-#   section and taken OUT the cargo-door side (it stows strapped inside) so the leaf
-#   sweeps through the empty corner zone. The drum-bay center
+#   the toggles are released, each strip is tilted interior off the square section
+#   and lifted out (it stows strapped inside) so the leaf sweeps through the empty
+#   corner zone. The drum-bay center
 #   seals on the fixed base + the drum's own sweep (no pull-out there). This
 #   REPLACES the earlier fold-down apron, which folded onto the processing tray
 #   (CORNER_BOT=282 → the folded leaf reached X310, over the tray at X280).
@@ -2659,13 +2659,13 @@ def sheet16():
     for y0, y1 in [(0, jL), (jR, STUB)]:
         ax.plot([y0, y1], [ez + ATOP + 4, ez + ATOP + 4], color=C_CLEAT, lw=5, solid_capstyle="butt", zorder=6)
     leader(ax, (jL * 0.5, ez + ATOP + 4), (jL * 0.5, ez + ATOP + 58),
-           "SQUARE SECTION CSK to the swinging leaf\n— strip top butts it (register, Detail E)", col="#3C6A96", fw="bold", fs=6)
+           "SQUARE SECTION CSK to the leaf EXTERIOR face\n— strip top butts it (register, Detail E)", col="#3C6A96", fw="bold", fs=6)
     # over-center TOGGLE at each strip END (interior face) — holds the strip IN against the lip
     for ly in (34, jL - 34, jR + 34, STUB - 34):
         ax.add_patch(Rectangle((ly - 9, ez + ATOP - 34), 18, 13, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
         ax.plot([ly, ly + 13], [ez + ATOP - 28, ez + ATOP - 18], color=C_OUT, lw=1.5, zorder=7)
     leader(ax, (jR + 34, ez + ATOP - 27), (jR + 160, ez + ATOP + 56),
-           "over-center TOGGLE — one at each strip end\n(spans strip → leaf; pulls the strip IN)", col=C_OUT, fw="bold", fs=6, ha="left")
+           "over-center TOGGLE — one at each strip end\n(spans strip → leaf; pulls the strip onto the square)", col=C_OUT, fw="bold", fs=6, ha="left")
     # swinging leaf bottom (stepped Z217 ctr / Z282 corners) — the base + strips seal up to it
     ax.plot([0, jL, jL, jR, jR, WID], [ez + ATOP, ez + ATOP, ez + PBOT_CTR, ez + PBOT_CTR, ez + ATOP, ez + ATOP],
             color="#1763C8", lw=1.6, ls=(0, (6, 3)))
@@ -2677,58 +2677,58 @@ def sheet16():
     draw_dim_h(ax, STUB, PIVOT_YD, ez - 45, f"{int(PIVOT_YD - STUB)}mm pivot leaf", offset=-12, fs=5.6, font=FONT)
 
     # ══ SECTION A (X–Z) — corner apron: full stack + removal (bottom-left) ══
-    a0 = 230
-    RX = a0 + 92                 # right label column (interior-side features)
-    LX = a0 - 70                 # left label column (exterior-side features)
+    a0 = 272
+    RX = a0 + 86                 # right label column (interior-side features)
+    LX = a0 - 86                 # left label column (exterior-side features)
     def aA(x, z): return (a0 + x, z)
-    ax.text(a0 + 6, 408, "SECTION A — corner apron", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(a0 + 6, 392, "vertical section · ext LEFT → int RIGHT", ha="center", fontsize=6.2, color=C_DIM, **FONT)
-    ax.plot([a0 - 40, a0 + 60], [0, 0], color=C_OUT, lw=1.6)
-    ax.add_patch(Rectangle(aA(-20, 0), 20, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))            # threshold sill
+    TW = 20                      # panel thickness: exterior face X0 → interior face X20 (darkroom = +x)
+    ax.text(a0 + 10, 408, "SECTION A — corner apron", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(a0 + 10, 392, "vertical section · ext LEFT → int RIGHT", ha="center", fontsize=6.2, color=C_DIM, **FONT)
+    ax.plot([a0 - 46, a0 + 46], [0, 0], color=C_OUT, lw=1.6)
+    ax.add_patch(Rectangle(aA(-42, 0), 16, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))             # threshold sill (exterior)
     # fixed base Z0–130, top 45° chamfer (exterior LOW → interior HIGH — the interior shoulder backs the strip bottom)
-    ax.add_patch(Polygon([aA(22, 0), aA(40, 0), aA(40, BASE_TOP), aA(22, BASE_TOP - 18)], closed=True,
+    ax.add_patch(Polygon([aA(0, 0), aA(TW, 0), aA(TW, BASE_TOP), aA(0, BASE_TOP - 18)], closed=True,
                          fc=C_FIXP, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
-    # pull-out strip Z130–282, bottom located in the chamfer (latch pulls IN → bottom wedge-locks up the interior shoulder)
-    ax.add_patch(Polygon([aA(22, BASE_TOP - 18), aA(40, BASE_TOP), aA(40, ATOP), aA(22, ATOP)], closed=True,
+    # pull-out strip Z130–282, bottom located in the chamfer (gravity + latch seat it EXTERIOR-down onto the square)
+    ax.add_patch(Polygon([aA(0, BASE_TOP - 18), aA(TW, BASE_TOP), aA(TW, ATOP), aA(0, ATOP)], closed=True,
                          fc=C_PULL, ec=C_OUT, lw=1.7, zorder=4))
-    ax.plot([aA(22, BASE_TOP - 18)[0], aA(40, BASE_TOP)[0]], [aA(22, BASE_TOP - 18)[1], aA(40, BASE_TOP)[1]],
-            color=C_EPDM, lw=3.2, solid_capstyle="butt", zorder=5)                                     # EPDM on chamfer
+    ax.plot([aA(0, BASE_TOP - 18)[0], aA(TW, BASE_TOP)[0]], [aA(0, BASE_TOP - 18)[1], aA(TW, BASE_TOP)[1]],
+            color=C_EPDM, lw=3.2, solid_capstyle="butt", zorder=5)                                      # EPDM on chamfer
     # swinging leaf body (corner, Z282+)
-    ax.add_patch(Rectangle(aA(0, ATOP), 40, 100, fc=C_PLASTIC, ec=C_OUT, lw=1.3, alpha=0.75))
-    # SQUARE SECTION register CSK-screwed to the leaf (laps the leaf interior face, projects
-    # below the leaf bottom); the strip TOP butts its exterior face (Detail E)
-    ax.add_patch(Rectangle(aA(40, 266), 30, 30, fc=C_CLEAT, ec=C_OUT, lw=1.5, zorder=6))                # 30×30 square section
-    for z in (285, 291):                                                                                # CSK wood screws (horizontal) into the leaf, in the lap
-        ax.plot([aA(70, z)[0], aA(24, z)[0]], [z, z], color=C_OUT, lw=1.3, zorder=7)
-        ax.plot([aA(70, z + 2.6)[0], aA(65, z)[0]], [z + 2.6, z], color=C_OUT, lw=0.9, zorder=7)
-        ax.plot([aA(70, z - 2.6)[0], aA(65, z)[0]], [z - 2.6, z], color=C_OUT, lw=0.9, zorder=7)
-    ax.add_patch(Rectangle(aA(40, 266), 2.5, 16, fc=C_EPDM, ec="none", zorder=7))                       # EPDM on the butt face (strip↔square)
-    # over-center toggle latch spanning the strip → swinging leaf (interior); pulls the strip IN against the square section
-    ax.add_patch(Rectangle(aA(40, 300), 20, 9, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))                 # mount plate on the leaf
-    ax.add_patch(Circle(aA(46, 304), 3, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))                        # pivot
-    ax.plot([aA(46, 304)[0], aA(80, 309)[0]], [304, 309], color=C_OUT, lw=2.4, zorder=8)                # over-center lever (interior handle)
-    ax.plot([aA(52, 306)[0], aA(41, 252)[0]], [306, 252], color=C_OUT, lw=2.0, zorder=8)                # draw link down to the strip keeper
-    ax.add_patch(Rectangle(aA(36, 246), 7, 13, fc="none", ec=C_OUT, lw=1.2, zorder=8))                  # keeper on the strip
-    ax.add_patch(Circle(aA(41, 252), 2.6, fc=C_STEEL, ec=C_OUT, zorder=9))                              # hook on the draw link
-    # strip pulled IN against the square-section register (horizontal)
-    ax.annotate("", xy=aA(40, 226), xytext=aA(26, 226), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.8))
-    ax.text(*aA(16, 226), "IN", ha="right", va="center", fontsize=6, fontweight="bold", color="#1c6b32", **FONT)
-    # removal action arrow (lift off the chamfer + take OUT the cargo-door side)
-    ax.annotate("", xy=aA(-34, 118), xytext=aA(22, 168), arrowprops=dict(arrowstyle="-|>", color="#C0392B", lw=2.0))
+    ax.add_patch(Rectangle(aA(0, ATOP), TW, 100, fc=C_PLASTIC, ec=C_OUT, lw=1.3, alpha=0.75))
+    # SQUARE SECTION register CSK-screwed to the leaf EXTERIOR face (laps it, projects below the
+    # leaf bottom); the strip EXTERIOR top butts its interior face (Detail E)
+    ax.add_patch(Rectangle(aA(-26, 252), 26, 44, fc=C_CLEAT, ec=C_OUT, lw=1.5, zorder=6))               # square section (exterior)
+    for z in (286, 292):                                                                                # CSK wood screws (horizontal) into the leaf, in the lap
+        ax.plot([aA(-26, z)[0], aA(12, z)[0]], [z, z], color=C_OUT, lw=1.3, zorder=7)
+        ax.plot([aA(-26, z + 2.6)[0], aA(-21, z)[0]], [z + 2.6, z], color=C_OUT, lw=0.9, zorder=7)
+        ax.plot([aA(-26, z - 2.6)[0], aA(-21, z)[0]], [z - 2.6, z], color=C_OUT, lw=0.9, zorder=7)
+    ax.add_patch(Rectangle(aA(-2.5, 252), 2.5, 30, fc=C_EPDM, ec="none", zorder=7))                     # EPDM butt (strip↔square)
+    # over-center toggle latch spanning the strip → leaf; pulls the strip OUT (exterior) onto the square section
+    ax.add_patch(Rectangle(aA(-20, 300), 20, 9, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))                # mount plate on the leaf exterior face
+    ax.add_patch(Circle(aA(-14, 304), 3, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))                       # pivot
+    ax.plot([aA(-14, 304)[0], aA(-46, 309)[0]], [304, 309], color=C_OUT, lw=2.4, zorder=8)              # over-center lever (exterior handle)
+    ax.plot([aA(-20, 306)[0], aA(-1, 252)[0]], [306, 252], color=C_OUT, lw=2.0, zorder=8)               # draw link down to the strip keeper
+    ax.add_patch(Rectangle(aA(-4, 246), 7, 13, fc="none", ec=C_OUT, lw=1.2, zorder=8))                  # keeper on the strip
+    ax.add_patch(Circle(aA(1, 252), 2.6, fc=C_STEEL, ec=C_OUT, zorder=9))                               # hook on the draw link
+    # strip pulled OUT (exterior) onto the square-section register (short green arrow)
+    ax.annotate("", xy=aA(-1, 214), xytext=aA(13, 214), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.8))
+    # removal action arrow (tilt interior off the square, lift out into the darkroom)
+    ax.annotate("", xy=aA(56, 250), xytext=aA(18, 210), arrowprops=dict(arrowstyle="-|>", color="#C0392B", lw=2.0))
 
-    # — right column (interior-side features: leaf, latch, square section, strip) —
-    leader(ax, aA(16, ATOP + 55), (RX, 380), "swinging leaf\n(corner, Z282)", col="#1763C8", fs=6, ha="left")
-    leader(ax, aA(80, 309), (RX, 322), "over-center TOGGLE latch — spans\nthe strip → leaf; pulls the strip IN\nagainst the square section (Detail F)", col=C_OUT, fw="bold", fs=6, ha="left")
-    leader(ax, aA(70, 280), (RX, 258), "SQUARE SECTION — CSK-screwed to\nthe leaf; strip top BUTTS its face\n(+ EPDM — Detail E)", col="#3C6A96", fw="bold", fs=6, ha="left")
-    leader(ax, aA(30, 205), (RX, 196), "PULL-OUT STRIP\n(removable) Z130–282", col="#6B4A00", fw="bold", fs=6, ha="left")
-    # — left column (exterior-side features: chamfer, removal, base, sill) —
-    leader(ax, aA(30, BASE_TOP - 9), (LX, 192), "45° chamfer + EPDM\n(ext-low → int-high;\nlocates strip bottom — Detail D)", col=C_EPDM, fw="bold", fs=6, ha="right")
-    ax.text(LX, 134, "remove: release latch,\ntilt off the square section,\nlift out the door side", ha="right", va="center",
+    # — left column (exterior-side features: square section + latch, sill) —
+    leader(ax, aA(-26, 272), (LX, 300), "SQUARE SECTION — CSK to the\nleaf EXTERIOR face; strip\nbutts it (+ EPDM, Detail E)", col="#3C6A96", fw="bold", fs=6, ha="right")
+    leader(ax, aA(-42, 306), (LX, 214), "over-center TOGGLE — spans\nstrip → leaf; pulls the strip\nOUT onto the square (Detail F)", col=C_OUT, fw="bold", fs=6, ha="right")
+    leader(ax, aA(-34, 30), (LX, 58), "threshold sill\nZ0–51", col=C_OUT, fs=6, ha="right")
+    # — right column (interior-side features: leaf, strip, removal, chamfer, base) —
+    leader(ax, aA(10, ATOP + 55), (RX, 380), "swinging leaf\n(corner, Z282)", col="#1763C8", fs=6, ha="left")
+    leader(ax, aA(14, 206), (RX, 306), "PULL-OUT STRIP\n(removable) Z130–282", col="#6B4A00", fw="bold", fs=6, ha="left")
+    ax.text(RX, 236, "remove: release latch,\ntilt interior off the\nsquare, lift out +\nstow inside", ha="left", va="center",
             fontsize=6, fontweight="bold", color="#C0392B", **FONT)
-    leader(ax, aA(31, 62), (LX, 74), f"FIXED BASE\nZ0–{int(BASE_TOP)}", col="#5A3F10", fw="bold", fs=6, ha="right")
-    leader(ax, aA(-10, 38), (LX, 24), "threshold sill\nZ0–51", col=C_OUT, fs=6, ha="right")
-    draw_dim_v(ax, a0 - 30, 0, BASE_TOP, f"{int(BASE_TOP)}mm", offset=-10, fs=6, font=FONT)
-    draw_dim_v(ax, a0 - 30, BASE_TOP, ATOP, f"{int(SH)}mm", offset=-10, fs=6, font=FONT)
+    leader(ax, aA(14, BASE_TOP - 6), (RX, 158), "45° chamfer + EPDM\n(ext-low → int-high;\nlocates strip bottom — Detail D)", col=C_EPDM, fw="bold", fs=6, ha="left")
+    leader(ax, aA(10, 60), (RX, 80), f"FIXED BASE\nZ0–{int(BASE_TOP)}", col="#5A3F10", fw="bold", fs=6, ha="left")
+    draw_dim_v(ax, a0 + 32, 0, BASE_TOP, f"{int(BASE_TOP)}mm", offset=10, fs=6, font=FONT)
+    draw_dim_v(ax, a0 + 32, BASE_TOP, ATOP, f"{int(SH)}mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL D (enlarged 5:1) — base↔strip 45° self-seating chamfer joint ══
     d0, dbz, SD = 1560, 150, 5.0
@@ -2744,76 +2744,76 @@ def sheet16():
     leader(ax, dD(T * 0.5, T * 0.5), (d0 - 20, dbz + T * SD + 70), "EPDM bonded to the\nFIXED base chamfer", col=C_EPDM, fw="bold", fs=6)
     ax.text(*dD(xc + T - 7, T * 0.42), "FIXED base", ha="center", va="center", fontsize=6.2, fontweight="bold", color="#5A3F10", **FONT)
     ax.text(*dD(xc * 0.75 + 5, T * 1.55), "PULL-OUT strip", ha="center", va="center", fontsize=6.2, fontweight="bold", color="#6B4A00", **FONT)
-    ax.annotate("", xy=dD(xc + T - 1, T + 5), xytext=dD(xc - 3, T + 5), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.7))
-    ax.text(*dD(xc + T + 3, T + 5), "latch pulls IN →\nbottom wedge-locks\nup the interior shoulder", ha="left", va="center",
+    ax.annotate("", xy=dD(2, T + 3), xytext=dD(xc, T + 7), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.7))
+    ax.text(*dD(xc + T + 3, T + 2), "gravity + latch seat\nthe strip EXTERIOR-\ndown in the chamfer", ha="left", va="center",
             fontsize=5.6, fontweight="bold", color="#1c6b32", **FONT)
     leader(ax, dD(3, T * 0.28), (d0 - 44, dbz - 24), "light", col="#B07000", fs=5.6, ha="left", va="top", arrow_style="-|>", lw=1.4)
     draw_dim_v(ax, d0 - 26, dbz, dbz + T * SD, "18mm", offset=10, fs=6, font=FONT)
 
     # ══ DETAIL E (enlarged 4:1) — SQUARE-SECTION register CSK-screwed to the leaf ══
-    e0, ebz, SE = 760, 110, 4.0
+    e0, ebz, SE = 940, 118, 4.0
     def eE(x, z): return (e0 + x * SE, ebz + z * SE)
     LT_ = 18                                                                                           # leaf-edge ply thickness
     SQ  = 30                                                                                           # square-section size
-    ax.text(e0 + 14 * SE, 408, "DETAIL E — square-section register", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(e0 + 14 * SE, 392, "square batten CSK-screwed to the leaf · strip top BUTTS its face · 4:1", ha="center", fontsize=6.0, color=C_DIM, **FONT)
-    # leaf edge (interior-face ply), bottom at Z282-datum (z=0 here = leaf bottom)
-    ax.add_patch(Rectangle(eE(0, 0), LT_ * SE, 24 * SE, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=3))      # leaf, above the bottom line
+    ax.text(e0 - 6 * SE, 408, "DETAIL E — square-section register", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(e0 - 6 * SE, 392, "square batten CSK-screwed to the leaf EXTERIOR face · strip butts it · 4:1", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    # square section (EXTERIOR, left): laps the leaf exterior face (z 0..14, screwed) + projects below as the register (z −16..0)
+    ax.add_patch(Rectangle(eE(-SQ, -16), SQ * SE, SQ * SE, fc=C_CLEAT, ec=C_OUT, lw=1.5, zorder=4))
+    # leaf edge (ply), bottom at Z282-datum (z=0 = leaf bottom); exterior face at x=0
+    ax.add_patch(Rectangle(eE(0, 0), LT_ * SE, 24 * SE, fc=C_PLASTIC, ec=C_OUT, lw=1.4, zorder=3))
     ax.text(*eE(LT_ / 2, 12), "LEAF", ha="center", va="center", fontsize=6, fontweight="bold", color="#204060", rotation=90, **FONT)
-    # pull-out strip (below the leaf bottom, interior face at x = LT_, butting the square section)
+    # pull-out strip (below the leaf bottom, EXTERIOR face at x = 0 butting the square section)
     ax.add_patch(Rectangle(eE(0, -34), LT_ * SE, 34 * SE, fc=C_PULL, ec=C_OUT, lw=1.4, zorder=3))
     ax.text(*eE(LT_ / 2, -24), "PULL-OUT\nstrip", ha="center", va="center", fontsize=5.6, fontweight="bold", color="#6B4A00", **FONT)
-    # square section: laps the leaf interior face (z 0..14, screwed) + projects below as the register (z −16..0)
-    ax.add_patch(Rectangle(eE(LT_, -16), SQ * SE, SQ * SE, fc=C_CLEAT, ec=C_OUT, lw=1.5, zorder=4))
-    ax.add_patch(Rectangle(eE(LT_ - 0.6, -16), 2.4 * SE, 16 * SE, fc=C_EPDM, ec="none", zorder=5))      # EPDM on the butt face (strip↔square)
+    ax.add_patch(Rectangle(eE(-0.6, -16), 2.4 * SE, 16 * SE, fc=C_EPDM, ec="none", zorder=5))           # EPDM butt (strip↔square)
     # leaf bottom datum line
-    ax.plot([eE(0, 0)[0], eE(LT_ + SQ + 3, 0)[0]], [eE(0, 0)[1], eE(0, 0)[1]], color="#1763C8", lw=0.9, ls=(0, (4, 3)), zorder=2)
-    ax.text(*eE(LT_ + SQ + 4, 0.5), "leaf bottom Z282", ha="left", va="bottom", fontsize=5.6, color="#1763C8", **FONT)
+    ax.plot([eE(-SQ, 0)[0], eE(LT_ + 3, 0)[0]], [eE(0, 0)[1], eE(0, 0)[1]], color="#1763C8", lw=0.9, ls=(0, (4, 3)), zorder=2)
+    ax.text(*eE(LT_ + 4, 0.5), "leaf bottom Z282", ha="left", va="bottom", fontsize=5.6, color="#1763C8", **FONT)
     # CSK wood screws horizontally into the leaf, in the lap region (z > 0)
-    ax.plot([eE(LT_ + SQ, 7)[0], eE(4, 7)[0]], [eE(0, 7)[1], eE(0, 7)[1]], color=C_OUT, lw=1.6, zorder=6)      # shank into the leaf
-    ax.plot([eE(LT_ + SQ, 7)[0], eE(LT_ + SQ - 3, 9.4)[0]], [eE(0, 7)[1], eE(0, 9.4)[1]], color=C_OUT, lw=1.0, zorder=6)
-    ax.plot([eE(LT_ + SQ, 7)[0], eE(LT_ + SQ - 3, 4.6)[0]], [eE(0, 7)[1], eE(0, 4.6)[1]], color=C_OUT, lw=1.0, zorder=6)
-    leader(ax, eE(LT_ + SQ, 7), (e0 + 52 * SE, ebz + 20 * SE), "No.8 × 1-1/4in (32mm) CSK wood\nscrews into the leaf @ ~150mm pitch\n(heads flush, interior side)", col=C_OUT, fw="bold", fs=6, ha="left")
-    leader(ax, eE(LT_ + SQ / 2, -16), (e0 + 52 * SE, ebz - 22 * SE), "30×30 SQUARE SECTION — the\nstrip top butts its face (register)", col="#3C6A96", fw="bold", fs=6, ha="left")
-    leader(ax, eE(LT_ - 1, -8), (e0 - 20, ebz - 22 * SE), "EPDM butt seal\n(strip ↔ square)", col=C_EPDM, fw="bold", fs=6, ha="right")
-    draw_dim_v(ax, e0 - 16, ebz - 16 * SE, ebz + 14 * SE, "register 16 +\nlap 14mm", offset=-10, fs=5.6, font=FONT)
+    ax.plot([eE(-SQ, 7)[0], eE(14, 7)[0]], [eE(0, 7)[1], eE(0, 7)[1]], color=C_OUT, lw=1.6, zorder=6)   # shank into the leaf
+    ax.plot([eE(-SQ, 7)[0], eE(-SQ + 3, 9.4)[0]], [eE(0, 7)[1], eE(0, 9.4)[1]], color=C_OUT, lw=1.0, zorder=6)
+    ax.plot([eE(-SQ, 7)[0], eE(-SQ + 3, 4.6)[0]], [eE(0, 7)[1], eE(0, 4.6)[1]], color=C_OUT, lw=1.0, zorder=6)
+    leader(ax, eE(-SQ + 2, 7), (e0 - 34 * SE, ebz + 30 * SE), "CSK wood screws into\nthe leaf (exterior side)\n@ ~150mm pitch", col=C_OUT, fw="bold", fs=6, ha="right")
+    leader(ax, eE(-SQ / 2, -16), (e0 - 34 * SE, ebz - 26 * SE), "SQUARE SECTION\n(exterior register)\n— strip butts it", col="#3C6A96", fw="bold", fs=6, ha="right")
+    leader(ax, eE(0.5, -8), (e0 + 26 * SE, ebz - 6 * SE), "EPDM butt seal\n(strip ↔ square)", col=C_EPDM, fw="bold", fs=6, ha="left")
+    draw_dim_v(ax, e0 + 22 * SE, ebz - 16 * SE, ebz + 14 * SE, "register 16 +\nlap 14mm", offset=10, fs=5.6, font=FONT)
 
-    # ══ DETAIL F (schematic) — INTERIOR over-center toggle (strip → leaf) + strap stow ══
+    # ══ DETAIL F (schematic) — over-center toggle (strip → leaf), EXTERIOR square register ══
     f0 = 2210
-    ax.text(f0 + 110, 408, "DETAIL F — interior toggle latch", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(f0 + 110, 392, "over-center · one at each strip end", ha="center", fontsize=6.0, color=C_DIM, **FONT)
-    # pull-out strip (exterior / left)
-    ax.add_patch(Rectangle((f0 + 40, 40), 40, 215, fc=C_PULL, ec=C_OUT, lw=1.5))
-    ax.text(f0 + 60, 140, "strip", ha="center", va="center", fontsize=6, fontweight="bold", color="#6B4A00", rotation=90, **FONT)
-    # swinging leaf (interior, above) + SQUARE-SECTION register (CSK to the leaf) + EPDM
-    ax.add_patch(Rectangle((f0 + 80, 255), 96, 45, fc=C_PLASTIC, ec=C_OUT, lw=1.3, alpha=0.8))
-    ax.text(f0 + 132, 288, "swinging leaf", ha="center", va="center", fontsize=5.8, fontweight="bold", color="#204060", **FONT)
-    ax.add_patch(Rectangle((f0 + 80, 120), 26, 150, fc=C_CLEAT, ec=C_OUT, lw=1.4))                      # square section = register (laps the leaf, projects down)
-    ax.add_patch(Rectangle((f0 + 77.5, 120), 2.5, 135, fc=C_EPDM, ec="none"))                           # EPDM strip↔square
-    leader(ax, (f0 + 93, 150), (f0 + 150, 120), "square section CSK to the\nleaf = top register (+ EPDM)", col="#3C6A96", fw="bold", fs=6, ha="left")
-    # over-center toggle: mount on the leaf, draw link to a keeper on the strip, handle faces interior
-    ax.add_patch(Rectangle((f0 + 96, 250), 24, 10, fc=C_STEEL, ec=C_OUT, lw=1.1))                       # mount plate on the leaf
-    ax.add_patch(Circle((f0 + 102, 255), 4, fc=C_STEEL, ec=C_OUT, lw=1.0))                              # pivot
-    ax.plot([f0 + 102, f0 + 150], [255, 263], color=C_OUT, lw=2.4)                                      # over-center handle (interior)
-    ax.plot([f0 + 108, f0 + 74], [252, 210], color=C_OUT, lw=2.1)                                       # draw link down to the strip keeper
+    ax.text(f0 + 96, 408, "DETAIL F — toggle latch", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(f0 + 96, 392, "over-center · one at each strip end · ext ← → int", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    # pull-out strip (middle)
+    ax.add_patch(Rectangle((f0 + 70, 40), 40, 215, fc=C_PULL, ec=C_OUT, lw=1.5))
+    ax.text(f0 + 90, 150, "strip", ha="center", va="center", fontsize=6, fontweight="bold", color="#6B4A00", rotation=90, **FONT)
+    # swinging leaf (above) + EXTERIOR SQUARE-SECTION register (CSK to the leaf exterior face) + EPDM
+    ax.add_patch(Rectangle((f0 + 44, 255), 96, 45, fc=C_PLASTIC, ec=C_OUT, lw=1.3, alpha=0.8))
+    ax.text(f0 + 108, 288, "swinging leaf", ha="center", va="center", fontsize=5.8, fontweight="bold", color="#204060", **FONT)
+    ax.add_patch(Rectangle((f0 + 44, 120), 26, 150, fc=C_CLEAT, ec=C_OUT, lw=1.4))                      # square section = register (exterior, laps the leaf, projects down)
+    ax.add_patch(Rectangle((f0 + 70, 120), 2.5, 135, fc=C_EPDM, ec="none"))                             # EPDM strip↔square
+    leader(ax, (f0 + 57, 150), (f0 + 2, 120), "square section CSK to the leaf\nEXTERIOR face = register (+ EPDM)", col="#3C6A96", fw="bold", fs=6, ha="right")
+    # over-center toggle: mount on the leaf, draw link to a keeper on the strip, pulls the strip OUT (exterior)
+    ax.add_patch(Rectangle((f0 + 30, 250), 24, 10, fc=C_STEEL, ec=C_OUT, lw=1.1))                       # mount plate on the leaf
+    ax.add_patch(Circle((f0 + 36, 255), 4, fc=C_STEEL, ec=C_OUT, lw=1.0))                               # pivot
+    ax.plot([f0 + 36, f0 - 12], [255, 263], color=C_OUT, lw=2.4)                                        # over-center lever (exterior handle)
+    ax.plot([f0 + 30, f0 + 72], [252, 210], color=C_OUT, lw=2.1)                                        # draw link to the strip keeper
     ax.add_patch(Rectangle((f0 + 70, 204), 9, 13, fc="none", ec=C_OUT, lw=1.2))                         # keeper on the strip
     ax.add_patch(Circle((f0 + 74, 210), 3.3, fc=C_STEEL, ec=C_OUT, lw=1.0))                             # hook on the draw link
-    leader(ax, (f0 + 140, 261), (f0 + 150, 330), "over-center lever (interior\nhandle) — stays clamped\npast dead-center", col=C_OUT, fw="bold", fs=6, ha="left")
-    leader(ax, (f0 + 75, 211), (f0 - 8, 180), "keeper on the strip +\nhook on the draw link", col=C_OUT, fs=6, ha="right")
-    # arrow: strip pulled IN (interior, horizontal) against the register
-    ax.annotate("", xy=(f0 + 78, 92), xytext=(f0 + 44, 92), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.9))
-    ax.text(f0 + 22, 92, "IN", ha="right", va="center", fontsize=6.5, fontweight="bold", color="#1c6b32", **FONT)
-    ax.text(f0 + 108, 66, "(bottom locates + wedge-locks in the chamfer — Detail D)", ha="center", va="center", fontsize=5.3, color="#555", **FONT)
+    leader(ax, (f0 + 6, 262), (f0 - 60, 330), "over-center lever (exterior\nhandle) — stays clamped\npast dead-center", col=C_OUT, fw="bold", fs=6, ha="left")
+    leader(ax, (f0 + 75, 211), (f0 + 150, 200), "keeper on the strip +\nhook on the draw link", col=C_OUT, fs=6, ha="left")
+    # arrow: strip pulled OUT (exterior, horizontal) onto the register
+    ax.annotate("", xy=(f0 + 68, 92), xytext=(f0 + 102, 92), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.9))
+    ax.text(f0 + 110, 92, "onto\nsquare", ha="left", va="center", fontsize=5.6, fontweight="bold", color="#1c6b32", **FONT)
+    ax.text(f0 + 96, 66, "(bottom gravity-seats exterior-down in the chamfer — Detail D)", ha="center", va="center", fontsize=5.3, color="#555", **FONT)
 
     # ══ notes ══
     draw_notes(ax, [
         "PULL-OUT CORNER APRON — operation",
         f"• FIXED full-width base (Z0–{int(BASE_TOP)}, floor→cage), continuous across the door bottom, never moves. 18mm exterior SYP ply, flat-black interior. Top is a 45° chamfer, exterior-LOW → interior-HIGH — the interior shoulder backs the strip bottom.",
-        f"• Two REMOVABLE PULL-OUT STRIPS at the corner zones (near Yd 0–{int(jL)}, far Yd {int(jR)}–{int(STUB)}), Z{int(BASE_TOP)}–{int(ATOP)}, 18mm ply. Each locates in the base chamfer at the bottom (EPDM — Detail D) and BUTTS a SQUARE SECTION at the top (Detail E).",
-        "• SQUARE-SECTION register (Detail E): a square ply/timber batten CSK-screwed to the swinging leaf (laps the leaf interior face, screws clear of the butt face) and projecting below the leaf bottom. The strip top butts its exterior face (EPDM) — this is the top register.",
-        "• LATCH (Detail F): an over-center TOGGLE at each strip end SPANS the strip → swinging leaf (handle on the interior). Closing it pulls the strip IN — seating the top against the square section and wedge-locking the bottom up the chamfer's interior shoulder. Over-center stays clamped (no secondary catch).",
-        "• DATUM: the leaf's repeatable hard close-stop sets the strip's top datum (square section on the leaf); the bottom locates in the fixed chamfer. The square section + chamfer LOCATE the strip; the toggles PRELOAD it (keepers lightly slotted).",
-        "• TRANSPORT: release the toggles from the interior, tilt each strip off the square section, lift it out the cargo-door side, strap it inside; the empty corner lets the leaf sweep through. No floor hinge — nothing folds onto the tray.",
+        f"• Two REMOVABLE PULL-OUT STRIPS at the corner zones (near Yd 0–{int(jL)}, far Yd {int(jR)}–{int(STUB)}), Z{int(BASE_TOP)}–{int(ATOP)}, 18mm ply. Each locates in the base chamfer at the bottom (EPDM — Detail D) and BUTTS a SQUARE SECTION on the exterior at the top (Detail E).",
+        "• SQUARE-SECTION register (Detail E): a square ply/timber batten CSK-screwed to the swinging leaf's EXTERIOR face (laps the face, screws clear of the butt) and projecting below the leaf bottom. The strip's exterior top butts its interior face (EPDM) — the top register sits on the exterior (door) side.",
+        "• LATCH (Detail F): an over-center TOGGLE at each strip end SPANS the strip → swinging leaf. Closing it pulls the strip OUT (exterior) onto the square section; the interior-high chamfer means the strip also gravity-seats exterior-down into the chamfer, so the pull reinforces both seats. Over-center stays clamped (no secondary catch).",
+        "• DATUM: the leaf's repeatable hard close-stop sets the strip's top datum (square section on the leaf exterior); the bottom locates in the fixed chamfer. The square section + chamfer LOCATE the strip; the toggles PRELOAD it (keepers lightly slotted).",
+        "• TRANSPORT: release the toggles, tilt each strip interior off the square section, lift it out and strap it inside (the drum-bay/darkroom side); the empty corner lets the leaf sweep through. No floor hinge — nothing folds onto the tray.",
         f"• CENTER (drum bay, Yd {int(jL)}–{int(jR)}): NO pull-out — the fixed base closes Z0–{int(BASE_TOP)} and the drum's own cage seals Z{int(BASE_TOP)}→{int(BAYB)} (bay cap) as it sweeps. Base continuous under the bay.",
         "• LIGHT SEAL: light-tight joints with EPDM at every seam — the 45° base↔strip chamfer, the strip↔square-section butt, and the strip ends↔jambs. The strip lifts straight off its seats — no binding.",
     ], WID + 380, 892, spacing=19, fs=5.5, title_fs=6.4, color="#403000",

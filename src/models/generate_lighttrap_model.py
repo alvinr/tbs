@@ -321,6 +321,7 @@ def cam_latch(yl, zl):
         draw.ruby_cylinder("Cam latch 1619A74", x0 - 10, yl, zl, r, L, axis="x", color=C_VALVE),
         draw.ruby_cylinder("Cam latch handle arm", x0 + L - 10, yl, zl, HSr, HS, axis="x", color=C_VALVE),
         draw.ruby_cylinder("Cam latch grip (bent up)", xarm, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
+        draw.ruby_sphere("Cam latch handle elbow", xarm, yl, zl, HSr, color=C_VALVE),  # right-angle joint — blends arm↔grip into one continuous L
     ])
 
 

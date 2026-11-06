@@ -310,6 +310,39 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
         lines.append(f'  grp.material = mat')
     lines.append('')
     return '\n'.join(lines)
+
+
+def ruby_sphere(name, cx, cy, cz, radius, color=None, alpha=None, n=24, mute=None):
+    """Generate Ruby for a sphere centered at (cx, cy, cz), radius in mm. Built by revolving a
+    semicircle profile 360° about the vertical (Z) axis through the center. Used for round joints —
+    e.g. the elbow that blends a bent round-bar handle into one continuous L-piece."""
+    mute, alpha = _mute_ctx(mute, alpha)
+    lines = [
+        f'  # {name}',
+        '  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        '  ge = grp.entities',
+        f'  _c = Geom::Point3d.new([{mm(cx)},{mm(cy)},{mm(cz)}])',
+        f'  _arc = ge.add_arc(_c, [0,0,1], [0,1,0], {mm(radius)}, 0, Math::PI, {n})',
+        f'  _dia = ge.add_line([{mm(cx)},{mm(cy)},{mm(cz + radius)}], [{mm(cx)},{mm(cy)},{mm(cz - radius)}])',
+        '  _pf = ge.add_face(_arc + [_dia])',
+        f'  _path = ge.add_circle(_c, [0,0,1], {mm(radius)}, {n})',
+        '  _pf.followme(_path)',
+        '  _path.each { |e| e.erase! if e.valid? }',
+    ]
+    if color:
+        color = mute_hex(color, mute)
+        r, g, b = hex_to_rgb(color)
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || '
+                     f'model.materials.add("{mat_nm}")')
+        lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
+        lines.append('  grp.material = mat')
+    lines.append('')
+    return '\n'.join(lines)
+
+
 def ruby_bolt(name, x, y, z, length, radius=6.0, axis="z", color=None, head="base", nut="far", mute=None):
     """A fastener: an Ø(2·radius) shank from (x,y,z) along +`axis` by `length`, PLUS a hex HEAD and/or hex
     NUT drawn as 6-sided prisms so it reads as a real bolt, not a plain rod.  `head`/`nut` name the end each

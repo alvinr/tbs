@@ -268,7 +268,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
 | [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | 58 ea | Harbor Freight | clamp | $115–$173 |
-| [Draw latch — apron pull-out strips (McMaster 1590A13, 10-pack — 6 used)](https://www.mcmaster.com/1590A13/) (1590A13) | 1 10-pack | McMaster-Carr | panel | $10 |
+| [Draw latch — apron pull-out strips (McMaster 1590A13, 10-pack — 8 used)](https://www.mcmaster.com/1590A13/) (1590A13) | 1 10-pack | McMaster-Carr | panel | $10 |
 | Webbing stow strap w/ cam buckle — pull-out strips (×2) | 2 ea | Amazon / hardware | panel | $16–$22 |
 | [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 2 ea | McMaster-Carr | panel | $61 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | panel | $6 |
@@ -463,7 +463,7 @@ indicative low–high estimates — get quotes before ordering.
 | [EP plywood backing panel (18mm, ~700×2,000mm)](https://www.homedepot.com/p/302874373) (302874373) | 1 cut from the shelf sheet | shared (Plywood Cut Sheets) | electrical | $0 |
 | [Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32" exterior SYP, from the sheets A–C offcut)](https://www.homedepot.com/p/303564747) (303564747) | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | panel | $0 |
 | [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 2 sheet | Home Depot | water | $59 |
-| Pull-out corner apron — fixed full-width base + 2 removable corner strips + leaf lip cleats (18mm ext ply, from the SYP sheets A–C offcut) + CSK wood screws | 1 lot | Home Depot | panel | $6–$12 |
+| Pull-out corner apron — fixed full-width base + 2 removable corner strips + leaf lip battens (B1) + 2 strip battens (B2) (18mm ext ply, from the SYP sheets A–C offcut) + CSK wood screws | 1 lot | Home Depot | panel | $6–$12 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Home Depot | shelf | $73 |
 | **timber-ply subtotal** | | | | **$196–$202** |

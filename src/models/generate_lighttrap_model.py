@@ -1262,12 +1262,13 @@ def near_bay_wall_frame():
 # The under-leaf floor gap is closed by a FIXED FULL-WIDTH BASE (Z0..APRON_BASE_TOP=130, continuous across
 # the door bottom, NEVER moves) + two REMOVABLE pull-out STRIPS at the corner zones (Z130..PANEL_FLOOR_GAP_SIDE
 # =282). Each strip locates in a 45° chamfer in the base at the bottom (ext-low → int-high; gravity-seats it
-# exterior-down) and butts a flat ply LIP cleat lapped on the leaf's EXTERIOR face at the top; 1590A13
-# surface-mounted DRAW LATCHES on the interior face hold it — TWO bottom latches (strip↔base joint, draw the
-# strip DOWN onto the chamfer) one at each strip END + ONE top latch (strip↔leaf joint, draws it UP against
-# the lip) at the strip CENTER = 3 per strip. The single top latch is centered to clear the film-plane rails
-# that park at the ends. Released, the strip slips out of the chamfer (nothing passes through the strip or
-# lip). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
+# exterior-down) and butts a flat ply LIP cleat (batten B1) lapped on the leaf's EXTERIOR face at the top.
+# 1590A13 draw latches hold it, 4 per strip: TWO BOTTOM latches on the INTERIOR face (strip↔base joint, one
+# at each strip END) draw the strip DOWN onto the chamfer; TWO EXTERIOR SPAN latches bridge B1 and a second
+# ply batten B2 (added to the strip's exterior face, coplanar with B1) on the DOOR side (one at each END),
+# drawing the strip UP to the leaf/lip. Putting the top-joint clamp on the exterior batten pair keeps it OFF
+# the darkroom face, clear of the film-plane beam that an interior top latch fouled. Released, the strip
+# slips out of the chamfer (nothing passes through the strip or lip). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
 # the fixed base closes Z0..130 and the drum's own vertical cage seals Z130→217 as it sweeps.
 #
 # This is a THIRD approach to the swing-clearance problem (a fixed apron was tried + reverted 2026-10-31; the
@@ -1355,15 +1356,35 @@ def apron_draw_latch(yl, jt, keeper_below):
     ])
 
 
+_B2_TOP = _STRIP_TOP - 40          # 242 — strip batten (B2) top, 4mm under the lip batten bottom (Z246)
+_B2_H   = 46                       # strip batten height (Z196..242)
+
+
+def apron_span_latch(yl):
+    """EXTERIOR span DRAW LATCH (McMaster 1590A13) bridging the leaf lip batten (B1) and the strip batten
+    (B2) — both coplanar on the EXTERIOR (door-side) face at X = APRON_X0 − APRON_STRIP_T (4). The KEEPER
+    screws to B1 (leaf, upper), the LEVER BODY to B2 (strip, lower); thrown, it draws the strip UP against
+    the leaf/lip. It mounts + operates on the DOOR side (the cargo doors are open in operation), so nothing
+    projects into the darkroom — this is what clears the film-plane beam that an interior top latch fouled."""
+    xf = APRON_X0 - APRON_STRIP_T            # 4 — the coplanar batten exterior face
+    W, PRJ = 22, 13                          # 1590A13 width (0.87in) + projection off the face (0.50in)
+    jt = _B2_TOP + 2                          # 244 — B1↔B2 parting line the latch closes
+    return '\n'.join([
+        ruby_box("Apron span latch keeper 1590A13", xf - 3, yl - W / 2.0, jt + 2, 3, W, 24, color=C_VALVE),    # keeper on B1 (leaf, above)
+        ruby_box("Apron span latch body 1590A13", xf - PRJ, yl - W / 2.0, jt - 48, PRJ, W, 46, color=C_VALVE),  # lever body on B2 (strip, below) — projects −X (door side)
+        ruby_box("Apron span latch bail", xf - PRJ, yl - W / 2.0 + 3, jt - 15, 3, W - 6, 30, color=C_VALVE),    # over-center bail across the B1↔B2 parting line
+    ])
+
+
 def apron_strips_geom():
     """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
-    18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
-    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Latch layout: TWO bottom draw
-    latches (strip↔base joint, draw the strip DOWN onto the chamfer) one at each strip END, + ONE top draw
-    latch (strip↔leaf joint, draws the strip UP against the lip) at the strip CENTER — so 3 per strip, 6
-    total. The single top latch sits at mid-span (clamps the bow-prone middle) and clears the film-plane
-    rails that park at the strip ENDS (the end-corner top latch fouled the left lift-out rail). CHILD of the
-    Panel Swing DC: SHOWN when closed, ABSENT (hidden) when swung; the latches travel + hide with the strip."""
+    18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat; top flat at 282 — the strip LOCATES in
+    the chamfer and butts the lip. Each strip also carries a second ply batten B2 on its EXTERIOR face
+    (coplanar with the leaf lip batten B1). Latch layout, 4 per strip: TWO bottom draw latches (interior,
+    strip↔base joint, draw the strip DOWN onto the chamfer) one at each strip END + TWO exterior SPAN draw
+    latches (apron_span_latch, bridging B1↔B2 on the door side, draw the strip UP to the leaf/lip) one at
+    each strip END. The span latches live on the exterior, clear of the film-plane beam. CHILD of the Panel
+    Swing DC: SHOWN when closed, ABSENT (hidden) when swung; the strip + B2 + latches travel + hide together."""
     parts = []
     LAT_BAY, LAT_STILE = 45, 110                        # inboard (drum-bay side) inset; OUTBOARD inset keeps the
     #                                                    latch off the door-frame END stile (Yd0–50 near /
@@ -1372,11 +1393,13 @@ def apron_strips_geom():
         parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
                      [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
                      y0, y1 - y0, C_PLY, 0.9))
-        # outboard latch pulled in off the end stile; inboard (drum-bay) latch stays near the open bay end
+        # B2 — second ply batten on the strip EXTERIOR face (X4..22), coplanar with the leaf lip batten B1
+        parts.append(ruby_box(f"Strip batten B2 ({nm})", APRON_X0 - APRON_STRIP_T, y0, _B2_TOP - _B2_H,
+                              APRON_STRIP_T, y1 - y0, _B2_H, color=C_PLY, alpha=0.95))
         lats = (y0 + LAT_STILE, y1 - LAT_BAY) if out_lo else (y0 + LAT_BAY, y1 - LAT_STILE)
         for yl in lats:
-            parts.append(apron_draw_latch(yl, APRON_BASE_TOP, True))    # bottom — strip↔base joint (draws down), one per END
-        parts.append(apron_draw_latch((y0 + y1) / 2.0, _STRIP_TOP, False))  # top — strip↔leaf joint (draws up), ONE at strip CENTER (clears the end rails)
+            parts.append(apron_draw_latch(yl, APRON_BASE_TOP, True))   # bottom — interior strip↔base joint (draws down), one per END
+            parts.append(apron_span_latch(yl))                         # exterior span latch (B1↔B2), one per END
     return '\n'.join(parts)
 
 

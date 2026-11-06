@@ -6,7 +6,7 @@ generate_plywood_cutsheets.py — the ONE plywood cut-sheet / nesting drawing fo
 
 Plywood is used in many subsystems (IBC-corridor plumbing panel, pump-mount shirt, pinhole-wall
 filter-skid backing, the EP electrical backboard, the hinged panel's Fan-B mount band + pull-out
-corner apron (base + strips + lip cleats), and the chem-prep shelf). Each consumer sheet used to cut its own ad-hoc rectangle;
+corner apron (base + strips + lip battens B1 + strip battens B2), and the chem-prep shelf). Each consumer sheet used to cut its own ad-hoc rectangle;
 this generator is the SINGLE cut-sheet the buyer/fabricator works from — every plywood part in one
 schedule + nesting layout, grouped by grade + thickness so same-stock parts nest on one sheet.
 
@@ -55,14 +55,15 @@ def _r5dn(v): v = round(v); return v - v % 5   # between-members boards shrink D
 PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
 PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — blank for each of 2 butt-jointed halves, trimmed to the 1795 face
 # Pull-out apron (lighttrap model = authoritative): a FIXED full-width base + 2 removable corner strips
-# + 2 leaf lip cleats. The cut sheet carries each bounding BLANK (rounded up); the 45° chamfer / lip
+# + 2 lip battens B1 + 2 strip battens B2. The cut sheet carries each bounding BLANK (rounded up); the 45° chamfer / lip
 # lap / cam-latch holes are dimensioned on hingepanel Sheet 16.
 APR_BASE_W  = _r5up(lt.APRON_BASE_BLANK[0])            # 2365 — fixed full-width base width (2362)
 APR_BASE_H  = LT_CAGE_BOT - 10                         # 130  — base height, floor→cage (already 5mm)
 APR_NEAR_W  = _r5up(lt.APRON_NEAR_BLANK[0])            # 655  — near pull-out strip width (653)
 APR_FAR_W   = _r5up(lt.APRON_FAR_BLANK[0])             # 455  — far pull-out strip width (453)
 APR_STRIP_H = _r5up(lt.APRON_NEAR_BLANK[1])            # 155  — pull-out strip height (152), both strips
-APR_LIP_H   = 90                                       # leaf lip-cleat height (lap 54 + downstand 36; Sheet 16 Detail E)
+APR_LIP_H   = 90                                       # leaf lip-batten B1 height (lap 54 + downstand 36; Sheet 16 Detail E)
+APR_B2_H    = 46                                        # strip batten B2 height (Z196–242; coplanar with B1, carries the span latches)
 
 # ── corridor plumbing-panel pieces — DERIVED from the 3D corridor water-panel model (single source:
 #    the cut sizes TRACK the model and can't drift). yw = corridor clear Yd width; bw = board X length.
@@ -108,8 +109,10 @@ GROUPS = [
             ("Apron fixed base (full width)", APR_BASE_W, APR_BASE_H, 1, "FIXED full-width base Z0–130, continuous across the door bottom — never moves; 18mm, flat-black interior; hingepanel Sheet 16"),
             ("Near pull-out apron strip", APR_NEAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip Z130–282, near corner — 45° bottom chamfer + top lip butt; profile on hingepanel Sheet 16"),
             ("Far pull-out apron strip", APR_FAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip, far corner; profile on hingepanel Sheet 16"),
-            ("Near leaf lip cleat", APR_NEAR_W, APR_LIP_H, 1, "flat ply lip lapped on the leaf exterior face, near corner — CSK wood screws; Sheet 16 Detail E"),
-            ("Far leaf lip cleat", APR_FAR_W, APR_LIP_H, 1, "flat ply lip, far corner; Sheet 16 Detail E"),
+            ("Near leaf lip batten B1", APR_NEAR_W, APR_LIP_H, 1, "flat ply lip lapped on the leaf exterior face, near corner — CSK wood screws; Sheet 16 Detail E"),
+            ("Far leaf lip batten B1", APR_FAR_W, APR_LIP_H, 1, "flat ply lip, far corner; Sheet 16 Detail E"),
+            ("Near strip batten B2", APR_NEAR_W, APR_B2_H, 1, "flat ply batten on the strip exterior face (coplanar with B1), near corner — carries the exterior span latches; Sheet 16 Detail F"),
+            ("Far strip batten B2", APR_FAR_W, APR_B2_H, 1, "flat ply batten on the strip exterior face, far corner; Sheet 16 Detail F"),
         ]),
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
             ("Fan-B swinging mount panel", FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),

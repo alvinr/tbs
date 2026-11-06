@@ -1330,18 +1330,22 @@ def apron_base_geom():
 
 
 def apron_cam_latch(yl, zl):
-    """Apron pull-out strip cam latch (Sheet 16 Detail F). How it locks: a shaft runs through the strip; the
-    HANDLE (a knob) sits on the INTERIOR face, proud of the ply in the open darkroom where it can be grabbed
-    + turned; the flat CAM BLADE on the exterior end, turned to LOCKED, BEARS flat against the lip's inside
-    (interior-facing) face — so the strip can't be drawn out (the blade is caught on the lip). Turned to
-    open, the blade lines up with the lip's oversized slot and passes through. Olive-yellow C_VALVE."""
-    r = 5                                                  # shaft Ø10
-    sx0, sL = APRON_X0 - 2, APRON_STRIP_T + 14             # shaft X20 (at the lip face) → X52 (interior)
-    kx0, kL, kr = sx0 + sL - 2, 18, 12                     # KNOB handle at the interior end (X50..68, Ø24) — proud in the darkroom
-    bx0, bw, bt, bh = APRON_X0 - 4, 5, 34, 28              # CAM BLADE X16..21: BEARS on the lip's inside face (X22), ≈ lip height
+    """Apron pull-out strip cam latch — the SAME 1619A74 lift-and-turn convention as the panel opening-edge
+    latches (cam_latch, McMaster 1619A74 datasheet): an L-shaped LIFT-AND-TURN handle on the INTERIOR
+    (darkroom) face (arm out +X, grip bent up — handle INSIDE like every other latch), the barrel runs
+    THROUGH the strip + the leaf lip, and the CAM BLADE on the far end BUTTS the fixed panel's face — the
+    leaf-lip (ribbon) EXTERIOR face. Turned to locked the blade overlaps the lip + draws the strip onto it;
+    turned to open it clears the lip's oversized slot and the strip lifts out (Sheet 16 Detail F)."""
+    LIP_EXT = APRON_X0 - APRON_STRIP_T                     # 4 — lip exterior face = the fixed-panel face the cam butts
+    r = 6                                                  # barrel Ø12
+    sx0, sL = LIP_EXT - 8, 60                              # barrel X-4 (cam side) → X56 (handle root), THROUGH lip + strip
+    HSr, HS, GRIP = 5, 30, 40                              # interior lift-and-turn handle: arm out +X + grip bent up (cam_latch convention)
+    xarm = sx0 + sL                                        # handle arm root — on the strip's INTERIOR face
+    bx0, bw, bt, bh = LIP_EXT - 3, 6, 34, 30               # CAM BLADE X1..7 — bears on + overlaps the lip EXTERIOR face (X4)
     return '\n'.join([
-        draw.ruby_cylinder("Apron cam latch shaft", sx0, yl, zl, r, sL, axis="x", color=C_VALVE),
-        draw.ruby_cylinder("Apron cam latch knob (handle)", kx0, yl, zl, kr, kL, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Apron cam latch barrel 1619A74", sx0, yl, zl, r, sL, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Apron cam latch handle arm", xarm, yl, zl, HSr, HS, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Apron cam latch grip (bent up)", xarm + HS, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
         ruby_box("Apron cam latch blade (cam)", bx0, yl - bt / 2.0, zl - bh / 2.0, bw, bt, bh, color=C_VALVE),
     ])
 

@@ -411,7 +411,7 @@ Butt joints are used rather than miters for two reasons:
 
 ## 7. Evaporative Cooler Transport Stowage
 
-During transport, the evaporative cooler (~20kg dry) is stowed on the
+During transport, the evaporative cooler (~7 kg / 16 lb dry, Hessaire MC18M) is stowed on the
 near walkway grating — in the widened section, so it clears the panel swing sweep. The cooler sits on a
 12mm plywood base plate that distributes
 load across the grating and prevents the housing from catching in grate openings.

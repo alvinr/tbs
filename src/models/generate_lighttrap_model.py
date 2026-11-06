@@ -1261,9 +1261,11 @@ def near_bay_wall_frame():
 # ━━━ PULL-OUT CORNER APRON (replaces the fold-down) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # The under-leaf floor gap is closed by a FIXED FULL-WIDTH BASE (Z0..APRON_BASE_TOP=130, continuous across
 # the door bottom, NEVER moves) + two REMOVABLE pull-out STRIPS at the corner zones (Z130..PANEL_FLOOR_GAP_SIDE
-# =282). Each strip locates in a 45° chamfer in the base at the bottom and butts a flat ply LIP cleat lapped
-# on the leaf's EXTERIOR face at the top; a hex/allen-key cam latch at each strip end holds it (2D detail,
-# hingepanel Sheet 16 Details D–F — not modeled here). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
+# =282). Each strip locates in a 45° chamfer in the base at the bottom (ext-low → int-high; gravity-seats it
+# exterior-down) and butts a flat ply LIP cleat lapped on the leaf's EXTERIOR face at the top; a 1590A13
+# surface-mounted DRAW LATCH at each strip end (interior face, spanning the strip↔base joint) clamps the strip
+# DOWN onto the chamfer seat (released, the strip slips out of the chamfer — nothing passes through the strip
+# or lip). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
 # the fixed base closes Z0..130 and the drum's own vertical cage seals Z130→217 as it sweeps.
 #
 # This is a THIRD approach to the swing-clearance problem (a fixed apron was tried + reverted 2026-10-31; the
@@ -1329,38 +1331,37 @@ def apron_base_geom():
     return '\n'.join(parts)
 
 
-def apron_cam_latch(yl, zl):
-    """Apron pull-out strip cam latch — the SAME 1619A74 lift-and-turn convention as the panel opening-edge
-    latches (cam_latch, McMaster 1619A74 datasheet): an L-shaped LIFT-AND-TURN handle on the INTERIOR
-    (darkroom) face (arm out +X, grip bent up — handle INSIDE like every other latch), the barrel runs
-    THROUGH the strip + the leaf lip, and the CAM BLADE on the far end BUTTS the fixed panel's face — the
-    leaf-lip (ribbon) EXTERIOR face. Turned to locked the blade overlaps the lip + draws the strip onto it;
-    turned to open it clears the lip's oversized slot and the strip lifts out (Sheet 16 Detail F)."""
-    LIP_EXT = APRON_X0 - APRON_STRIP_T                     # 4 — lip exterior face = the fixed-panel face the cam butts
-    r = 6                                                  # barrel Ø12
-    sx0, sL = LIP_EXT - 8, 60                              # barrel X-4 (cam side) → X56 (handle root), THROUGH lip + strip
-    HSr, HS, GRIP = 5, 30, 40                              # interior lift-and-turn handle: arm out +X + grip bent up (cam_latch convention)
-    xarm = sx0 + sL                                        # handle arm root — on the strip's INTERIOR face
-    bx0, bw, bt, bh = LIP_EXT - 3, 6, 34, 30               # CAM BLADE X1..7 — bears on + overlaps the lip EXTERIOR face (X4)
+def apron_draw_latch(yl):
+    """Apron pull-out strip DRAW LATCH — McMaster 1590A13 surface-mounted toggle draw latch (datasheet:
+    58mm long, 1.063in=27mm latching distance, No.5/6 mounting screws). Mounted on the INTERIOR (darkroom)
+    face (X40) spanning the strip↔base joint at Z=APRON_BASE_TOP, axis VERTICAL: the LEVER BODY screws to
+    the pull-out STRIP (above the joint), the KEEPER to the FIXED BASE just below. Thrown over-center it
+    draws the strip DOWN onto its 45° chamfer seat and holds it in tension — the interior-high chamfer
+    converts the down-draw into the exterior seat against the lip. Released, NOTHING passes through the strip
+    or the lip, so the strip simply slips out of the chamfer (the chamfer, not the latch, allows removal).
+    Operated from inside, like every other latch. One at each strip end (Sheet 16 Detail F)."""
+    xf = 40                                           # interior (darkroom) face — both halves mount here, coplanar
+    W = 22                                            # latch width along Yd (0.87in datasheet)
+    PRJ = 13                                          # projection off the face +X (0.50in datasheet)
+    jt = APRON_BASE_TOP                               # 130 — the strip↔base joint the latch clamps across
     return '\n'.join([
-        draw.ruby_cylinder("Apron cam latch barrel 1619A74", sx0, yl, zl, r, sL, axis="x", color=C_VALVE),
-        draw.ruby_cylinder("Apron cam latch handle arm", xarm, yl, zl, HSr, HS, axis="x", color=C_VALVE),
-        draw.ruby_cylinder("Apron cam latch grip (bent up)", xarm + HS, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
-        ruby_box("Apron cam latch blade (cam)", bx0, yl - bt / 2.0, zl - bh / 2.0, bw, bt, bh, color=C_VALVE),
+        ruby_box("Apron draw latch keeper 1590A13", xf, yl - W / 2.0, jt - 26, 3, W, 24, color=C_VALVE),   # keeper plate on the FIXED base (below the joint)
+        ruby_box("Apron draw latch body 1590A13", xf, yl - W / 2.0, jt + 2, PRJ, W, 46, color=C_VALVE),    # lever housing on the STRIP (above the joint)
+        ruby_box("Apron draw latch bail", xf + PRJ - 3, yl - W / 2.0 + 3, jt - 14, 3, W - 6, 30, color=C_VALVE),  # over-center bail reaching down to the keeper
     ])
 
 
 def apron_strips_geom():
     """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
     18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
-    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries a cam latch
-    (apron_cam_latch — one per end, 4 total). CHILD of the Panel Swing DC: SHOWN when closed, ABSENT (hidden)
-    when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
+    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries a draw latch
+    (apron_draw_latch — one per end, 4 total) clamping the strip down onto the chamfer seat. CHILD of the
+    Panel Swing DC: SHOWN when closed, ABSENT (hidden) when swung (lifts out of the sweep; no fold); the
+    latches travel + hide with the strip."""
     parts = []
-    zl = _STRIP_TOP - 18                               # 264 — latch at the lip height (the cam engages the lip)
-    LAT_BAY, LAT_STILE = 45, 110                        # inboard (drum-bay side) inset; OUTBOARD inset — clears the
-    #                                                    door-frame END stile (Yd0–50 near / Yd2312–2362 far: the
-    #                                                    latch's exterior cam/barrel would otherwise foul it)
+    LAT_BAY, LAT_STILE = 45, 110                        # inboard (drum-bay side) inset; OUTBOARD inset keeps the
+    #                                                    latch off the door-frame END stile (Yd0–50 near /
+    #                                                    Yd2312–2362 far) for screw purchase + access
     for nm, (y0, y1), out_lo in (("near", _STRIP_NEAR, True), ("far", _STRIP_FAR, False)):
         parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
                      [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
@@ -1368,7 +1369,7 @@ def apron_strips_geom():
         # outboard latch pulled in off the end stile; inboard (drum-bay) latch stays near the open bay end
         lats = (y0 + LAT_STILE, y1 - LAT_BAY) if out_lo else (y0 + LAT_BAY, y1 - LAT_STILE)
         for yl in lats:
-            parts.append(apron_cam_latch(yl, zl))
+            parts.append(apron_draw_latch(yl))
     return '\n'.join(parts)
 
 

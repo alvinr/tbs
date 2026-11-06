@@ -1330,19 +1330,19 @@ def apron_base_geom():
 
 
 def apron_cam_latch(yl, zl):
-    """Apron pull-out strip cam latch (Sheet 16 Detail F): a SHAFT through the lip + strip with a HANDLE on
-    the interior end to turn it, and a flat CAM BLADE on the shaft that — when turned to LOCKED — CROSSES
-    the strip↔lip joint line (X22) and overlaps the leaf lip, securing the pull-out strip. Placed at the lip
-    height so the cam engages the lip. Olive-yellow C_VALVE."""
-    r, sx0, sL = 6, APRON_X0 - 28, APRON_STRIP_T + 44      # shaft Ø12: just behind the lip (X-6) through lip+strip to X56 interior
-    bx0, bw, bh, bt = APRON_X0 - 16, 26, 34, 4             # cam blade X6..32 — CROSSES the strip↔lip joint (X22), ≈ lip height, thin
-    HSr, HS, GRIP = 5, 28, 36                              # interior lift-and-turn handle — arm along X + grip bent up (Z)
-    xarm = sx0 + sL
+    """Apron pull-out strip cam latch (Sheet 16 Detail F). How it locks: a shaft runs through the strip; the
+    HANDLE (a knob) sits on the INTERIOR face, proud of the ply in the open darkroom where it can be grabbed
+    + turned; the flat CAM BLADE on the exterior end, turned to LOCKED, BEARS flat against the lip's inside
+    (interior-facing) face — so the strip can't be drawn out (the blade is caught on the lip). Turned to
+    open, the blade lines up with the lip's oversized slot and passes through. Olive-yellow C_VALVE."""
+    r = 5                                                  # shaft Ø10
+    sx0, sL = APRON_X0 - 2, APRON_STRIP_T + 14             # shaft X20 (at the lip face) → X52 (interior)
+    kx0, kL, kr = sx0 + sL - 2, 18, 12                     # KNOB handle at the interior end (X50..68, Ø24) — proud in the darkroom
+    bx0, bw, bt, bh = APRON_X0 - 4, 5, 34, 28              # CAM BLADE X16..21: BEARS on the lip's inside face (X22), ≈ lip height
     return '\n'.join([
         draw.ruby_cylinder("Apron cam latch shaft", sx0, yl, zl, r, sL, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Apron cam latch knob (handle)", kx0, yl, zl, kr, kL, axis="x", color=C_VALVE),
         ruby_box("Apron cam latch blade (cam)", bx0, yl - bt / 2.0, zl - bh / 2.0, bw, bt, bh, color=C_VALVE),
-        draw.ruby_cylinder("Apron cam latch handle arm", xarm, yl, zl, HSr, HS, axis="x", color=C_VALVE),
-        draw.ruby_cylinder("Apron cam latch handle grip", xarm + HS, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
     ])
 
 

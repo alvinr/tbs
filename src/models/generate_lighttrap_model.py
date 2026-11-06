@@ -1358,11 +1358,16 @@ def apron_strips_geom():
     when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
     parts = []
     zl = _STRIP_TOP - 18                               # 264 — latch at the lip height (the cam engages the lip)
-    for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
+    LAT_BAY, LAT_STILE = 45, 110                        # inboard (drum-bay side) inset; OUTBOARD inset — clears the
+    #                                                    door-frame END stile (Yd0–50 near / Yd2312–2362 far: the
+    #                                                    latch's exterior cam/barrel would otherwise foul it)
+    for nm, (y0, y1), out_lo in (("near", _STRIP_NEAR, True), ("far", _STRIP_FAR, False)):
         parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
                      [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
                      y0, y1 - y0, C_PLY, 0.9))
-        for yl in (y0 + 45, y1 - 45):                   # one cam latch at each strip end
+        # outboard latch pulled in off the end stile; inboard (drum-bay) latch stays near the open bay end
+        lats = (y0 + LAT_STILE, y1 - LAT_BAY) if out_lo else (y0 + LAT_BAY, y1 - LAT_STILE)
+        for yl in lats:
             parts.append(apron_cam_latch(yl, zl))
     return '\n'.join(parts)
 

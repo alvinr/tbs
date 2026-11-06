@@ -2663,12 +2663,13 @@ def sheet16():
         ax.plot([y0, y1], [ez + ATOP + 4, ez + ATOP + 4], color=C_CLEAT, lw=5, solid_capstyle="butt", zorder=6)
     leader(ax, (jL * 0.5, ez + ATOP + 4), (jL * 0.5, ez + ATOP + 58),
            "LIP cleat CSK to the leaf EXTERIOR face\n— strip top butts the downstand (register, Detail E)", col="#3C6A96", fw="bold", fs=6)
-    # CAM LATCH at each strip END — 1619A74 lift-and-turn handle on the INTERIOR face (this view IS the interior)
-    for ly in (34, jL - 34, jR + 34, STUB - 34):
+    # CAM LATCH — 1619A74 lift-and-turn handle on the INTERIOR face (this view IS the interior).
+    # OUTBOARD latch pulled IN off the door-frame END stile (near 110 / far STUB−110); inboard latch near the drum-bay end.
+    for ly in (110, jL - 45, jR + 45, STUB - 110):
         ax.add_patch(Rectangle((ly - 9, ez + ATOP - 34), 18, 13, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
         ax.plot([ly, ly + 13], [ez + ATOP - 28, ez + ATOP - 18], color=C_OUT, lw=1.5, zorder=7)
-    leader(ax, (jR + 34, ez + ATOP - 27), (jR + 160, ez + ATOP + 56),
-           "CAM LATCH — one at each strip end; 1619A74\nlift-and-turn, handle INSIDE, cam through the lip", col=C_OUT, fw="bold", fs=6, ha="left")
+    leader(ax, (jR + 45, ez + ATOP - 27), (jR + 160, ez + ATOP + 56),
+           "CAM LATCH — 1619A74 lift-and-turn, handle INSIDE, cam through the\nlip; outboard latch pulled IN off the door-frame end stile", col=C_OUT, fw="bold", fs=6, ha="left")
     # swinging leaf bottom (stepped Z217 ctr / Z282 corners) — the base + strips seal up to it
     ax.plot([0, jL, jL, jR, jR, WID], [ez + ATOP, ez + ATOP, ez + PBOT_CTR, ez + PBOT_CTR, ez + ATOP, ez + ATOP],
             color="#1763C8", lw=1.6, ls=(0, (6, 3)))

@@ -438,8 +438,7 @@ _SANCTIONED_SOLID = [
     ("carriage plate", "clamp spacer", "spray-bar wheel carriage — the bottom/spacer/top clamp sandwiches the beam AND the carriage plate vertically (Sheet 10); the spacer seats against the plate in the bolted stack, not a fused defect"),
     # — Light-trap / hinged-panel bay — unambiguous classes (2026-10-27, lighttrap-doc --solids pass):
     ("pivot post", "hub tube", "the moving swing hub tube rides concentrically on the fixed Ø89 pivot post (sleeve/bearing fit) — AABB over-count of concentric tubes, not a fused defect"),
-    ("pull-out apron strip", "apron fixed base", "the removable pull-out strip seats on the fixed full-width base — intended box-on-box seating contact, not a fused defect"),
-    ("chamfer seat", "pull-out apron strip", "the strip's 45° chamfered bottom seats on the base's 45° chamfer seat (Sheet 16 Detail D) — mating wedges sharing the chamfer face; the AABB check over-counts their Z112–130 bounding-box overlap, not a fused defect"),
+    ("pull-out apron strip", "apron fixed base", "the removable pull-out strip seats FLAT on the fixed full-width base top (Z130, EPDM-gasketed — Sheet 16 Detail D) — intended box-on-box seating contact, not a fused defect"),
     ("apron cam latch", "apron cam latch", "one apron cam-latch assembly — shaft + cam blade + handle; intended internal overlaps, not fused defects"),
     ("apron cam latch", "pull-out apron strip", "the apron cam latch runs THROUGH the pull-out strip (barrel + cam) — the mounting hole, intended, not a fused defect"),
     ("apron cam latch", "leaf lip cleat", "the cam blade, turned to LOCKED, crosses the strip↔lip joint and overlaps the leaf lip to secure the strip (Sheet 16 Detail F) — intended cam engagement, not a fused defect"),

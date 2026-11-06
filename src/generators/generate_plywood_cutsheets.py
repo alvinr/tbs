@@ -55,7 +55,7 @@ def _r5dn(v): v = round(v); return v - v % 5   # between-members boards shrink D
 PINHOLE_W = PWP_PANEL_X1 - PWP_PANEL_X0                  # 1795 — pinhole-wall panel width (X span)
 PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — blank for each of 2 butt-jointed halves, trimmed to the 1795 face
 # Pull-out apron (lighttrap model = authoritative): a FIXED full-width base + 2 removable corner strips
-# + 2 leaf lip cleats. The cut sheet carries each bounding BLANK (rounded up); the 45° chamfer / lip
+# + 2 leaf lip cleats. The cut sheet carries each bounding BLANK (rounded up); the flat seat / lip
 # lap / cam-latch holes are dimensioned on hingepanel Sheet 16.
 APR_BASE_W  = _r5up(lt.APRON_BASE_BLANK[0])            # 2365 — fixed full-width base width (2362)
 APR_BASE_H  = LT_CAGE_BOT - 10                         # 130  — base height, floor→cage (already 5mm)
@@ -106,7 +106,7 @@ GROUPS = [
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
             ("Apron fixed base (full width)", APR_BASE_W, APR_BASE_H, 1, "FIXED full-width base Z0–130, continuous across the door bottom — never moves; 18mm, flat-black interior; hingepanel Sheet 16"),
-            ("Near pull-out apron strip", APR_NEAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip Z130–282, near corner — 45° bottom chamfer + top lip butt; profile on hingepanel Sheet 16"),
+            ("Near pull-out apron strip", APR_NEAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip Z130–282, near corner — flat bottom seat + top lip butt; profile on hingepanel Sheet 16"),
             ("Far pull-out apron strip", APR_FAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip, far corner; profile on hingepanel Sheet 16"),
             ("Near leaf lip cleat", APR_NEAR_W, APR_LIP_H, 1, "flat ply lip lapped on the leaf exterior face, near corner — CSK wood screws; Sheet 16 Detail E"),
             ("Far leaf lip cleat", APR_FAR_W, APR_LIP_H, 1, "flat ply lip, far corner; Sheet 16 Detail E"),

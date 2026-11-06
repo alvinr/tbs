@@ -125,7 +125,7 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 ### 1.3 Mode Conversion — Transport to Operational
 **Time: ~5 minutes. Single-person operation.**
 
-The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL) and the left walkway have been struck/removed. Convert to operational mode before proceeding.
+The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL), the left walkway, and the two pull-out apron strips have been struck/removed (the strips stow strapped inside). Convert to operational mode before proceeding.
 
 The two end states — transport (panel + drum swung 56°, doors closed) and operational (panel latched at the door plane, X=0) — are shown in plan at the cargo-door end:
 
@@ -136,14 +136,15 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~20 kg dry, one person).
 - [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill the reservoir (~18 L, one tankful) from the Blue circuit at TAP-01 on the pinhole wall — doors are open at this stage, so draw at TAP-01 and carry/hose the water out to the cooler.
 - [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. The vertical pivot is balanced at any angle (no gravity torque) — effort is only inertia + bearing friction; control momentum at the stop.
-- [ ] 1.3.6 — Latch the panel to the door frame with all 4 Southco cam latches (quarter-turn, flush with panel face) — compresses the EPDM perimeter + cut seals.
-- [ ] 1.3.7 — Re-fit the two left film rails (TL + BL): drop each into its saddles; the tapered dowels set the film datum; clamp down. Confirm the re-seated rails return the film plane square and planar to datum.
-- [ ] 1.3.8 — Re-fit the left walkway + door-end near-deck lift-out section onto their butt-joint ends / floor-leg cantilever brackets.
-- [ ] 1.3.9 — Un-pin the revolving drum (ready for personnel light-lock use).
-- [ ] 1.3.10 — Perform dark-adaptation check (see step 1.4.4 below).
+- [ ] 1.3.6 — Latch the panel to the door frame with both 1619A74 lift-and-turn cam latches (interior-face lever — lift and turn) — compresses the EPDM perimeter + cut seals.
+- [ ] 1.3.7 — Re-fit the two pull-out apron strips (near + far corner zones) that close the under-leaf floor gap: set each onto its 45° base chamfer seat (exterior-low → interior-high, so it gravity-seats exterior-down) and butt it up to the leaf lip at the top, then turn its two lift-and-turn cam latches (from inside) so each cam passes through the lip hole and overlaps the lip, drawing the strip onto it. Confirm the EPDM joints (chamfer, strip↔lip butt, strip ends) are seated.
+- [ ] 1.3.8 — Re-fit the two left film rails (TL + BL): drop each into its saddles; the tapered dowels set the film datum; clamp down. Confirm the re-seated rails return the film plane square and planar to datum.
+- [ ] 1.3.9 — Re-fit the left walkway + door-end near-deck lift-out section onto their butt-joint ends / floor-leg cantilever brackets.
+- [ ] 1.3.10 — Un-pin the revolving drum (ready for personnel light-lock use).
+- [ ] 1.3.11 — Perform dark-adaptation check (see step 1.4.4 below).
 
 ### 1.4 Light Trap — Revolving Drum Panel
-- [ ] 1.4.1 — Confirm the hinged drum panel is closed and all four Southco cam latches are engaged (quarter-turn, flush with panel face).
+- [ ] 1.4.1 — Confirm the hinged drum panel is closed and both 1619A74 lift-and-turn cam latches are engaged (interior-face lever).
 - [ ] 1.4.2 — Check the EPDM perimeter gasket is seated with no gaps or folded sections.
 - [ ] 1.4.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
 - [ ] 1.4.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 2 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
@@ -172,7 +173,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.7.2 — Lay fresh LDPE containment liner (see 0.5.5).
 
 ### 1.8 Light-Leak Inspection
-- [ ] 1.8.1 — Latch the drum panel (all four Southco cam latches engaged).
+- [ ] 1.8.1 — Latch the drum panel (both 1619A74 lift-and-turn cam latches engaged).
 - [ ] 1.8.2 — Switch ON interior safelight (circuit D, **red LED only**). Enter through the revolving drum.
 - [ ] 1.8.3 — Switch OFF safelight. Stand still for **15 minutes** minimum — full dark adaptation.
 - [ ] 1.8.4 — Inspect all seams, door perimeters, and duct penetrations. Even a pinprick leak will be visible.
@@ -214,7 +215,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 ### 2.3 Entering via the Light Trap
 **Revolving drum entry procedure (memorize this — you will do it in dim conditions):**
 
-- [ ] 2.3.1 — Confirm drum panel is latched (all four Southco cam latches engaged).
+- [ ] 2.3.1 — Confirm drum panel is latched (both 1619A74 lift-and-turn cam latches engaged).
 - [ ] 2.3.2 — Carry all equipment to the drum entry side. Set it down at your feet.
 - [ ] 2.3.3 — Push the drum wall forward until the first baffle clears. Step in.
 - [ ] 2.3.4 — Continue rotating forward until you exit into the container interior.
@@ -416,7 +417,7 @@ Power down in this order to avoid voltage spikes on sensitive electronics:
 If shore charger is connected, leave it running overnight to top up the battery bank.
 
 ### 5.4 Securing the Container (Operational Mode)
-- [ ] 5.4.1 — Engage all four Southco cam latches on the drum panel.
+- [ ] 5.4.1 — Engage both 1619A74 lift-and-turn cam latches on the drum panel.
 - [ ] 5.4.2 — Apply secondary locking bar across the drum panel face if the container will be unattended overnight.
 - [ ] 5.4.3 — Cap all ventilation duct stubs on the exterior.
 - [ ] 5.4.4 — Secure solar panels — if conditions allow, lay flat or fold to minimize wind load.
@@ -424,7 +425,7 @@ If shore charger is connected, leave it running overnight to top up the battery 
 ### 5.5 Transport Mode Conversion (Packing Up)
 **Time: ~5 minutes. Single-person operation.**
 
-The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot post for transport, riding the floor gap (clearing the processing tray rim). The two left film rails (TL + BL) and the left walkway must be removed before the swing so the drum cage can transition the left film-plane rail plane. The processing tray and the near/far/right walkway sections remain in place during mode conversion.
+The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot post for transport, riding the floor gap (clearing the processing tray rim). The two left film rails (TL + BL), the left walkway, and the two pull-out apron strips must be removed before the swing — the rails so the drum cage can transition the left film-plane rail plane, and the apron strips because they sit in the leaf's horizontal sweep at the floor-gap seal plane (they lift straight out — no floor hinge, nothing folds onto the tray). The processing tray and the near/far/right walkway sections remain in place during mode conversion.
 
 - [ ] 5.5.1 — End camera use: power off Fan B, finish any darkroom access. Stow all interior items; return the film-plane cross-slides to their datum.
 - [ ] 5.5.2 — Park the revolving drum in its closed/aligned position and pin its rotation (detent) so it cannot flop during the move.
@@ -432,15 +433,16 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.4 — Carry the cooler in through the door opening (~20 kg, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
 - [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section — both sit inside the swing arc.
 - [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the left rail plane.*
-- [ ] 5.5.7 — Release all 4 Southco cam latches — releases the perimeter + cut seals.
-- [ ] 5.5.8 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
-- [ ] 5.5.9 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.
-- [ ] 5.5.10 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
+- [ ] 5.5.7 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.
+- [ ] 5.5.8 — Remove the two pull-out apron strips (near + far corner zones): at each strip, turn its two lift-and-turn cam latches (from inside) to align the cam with the lip holes and release it, then lift the strip up off its 45° chamfer seat and out; stow both strips strapped inside. *Required before the swing — the strips sit in the leaf's horizontal sweep; the empty corner lets the leaf sweep through (no floor hinge — nothing folds onto the tray).*
+- [ ] 5.5.9 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
+- [ ] 5.5.10 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.
+- [ ] 5.5.11 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
-Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → dark-adaptation check.
+Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the two pull-out apron strips (seat in the chamfer, butt the lip, turn the cam latches to lock) → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → dark-adaptation check.
 
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*

@@ -157,7 +157,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.5.3 — Connect controller to battery bank (2 × 100Ah LiFePO4 in parallel). **Observe polarity.**
 - [ ] 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.
 - [ ] 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
-- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C (water pumps P-01–P-04), D (safelight), E (evap cooler), F (actuators, if fitted).
+- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C (water pumps P-01–P-05, run one at a time), D (red safelight), E (evap cooler inverter), F (film-plane actuators, optional), G (white LED lighting).
 
 > **Shore power backup:** If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
@@ -299,7 +299,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 
 ## Phase 4 — Development
 **Time: ~20 minutes.**
-**Lighting: RED LED safelight on entry, then switch to WHITE LIGHT after first wash begins.**
+**Lighting: RED LED safelight (Circuit D) on entry, then switch to WHITE LIGHT (Circuit G) after first wash begins.**
 
 ### 4.1 Entering and Removing the Muslin
 - [ ] 4.1.1 — Enter via light trap (same procedure as Phase 2.3). Switch safelight ON (**red light**).
@@ -307,7 +307,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 - [ ] 4.1.3 — Lay the muslin face-up on the LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails).
 
 ### 4.2 Development in Water
-**Lighting: switch to WHITE LIGHT (circuit D, white mode) once the first wash begins — the image is no longer UV-sensitive after initial water contact.**
+**Lighting: switch to WHITE LIGHT (Circuit G — white LED, a SEPARATE circuit from the Circuit D red safelight) once the first wash begins — the image is no longer UV-sensitive after initial water contact. The two lighting circuits are independently switched (pull-cords labeled RED / WHITE), not interlocked.**
 
 Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue color deepens over the first few minutes of drying.
 
@@ -318,7 +318,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 **Wash sequence using the Blue circuit:**
 
 - [ ] 4.2.2 — Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.
-- [ ] 4.2.3 — Set BV-05a to Blue (fresh) and open BV-05b. Using the pole, slowly pull the spray bar toward the pinhole wall (decreasing Yd), flooding the print progressively. Travel speed ~50mm/second — full traverse takes ~44 seconds. At the near rim (Yd≈80mm), close BV-05b. Push the bar back to the far end and repeat. Allow water to flow over the full surface for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. **Switch to WHITE LIGHT now** — the print is safe once washing begins.
+- [ ] 4.2.3 — Set BV-05a to Blue (fresh) and open BV-05b. Using the pole, slowly pull the spray bar toward the pinhole wall (decreasing Yd), flooding the print progressively. Travel speed ~50mm/second — full traverse takes ~44 seconds. At the near rim (Yd≈80mm), close BV-05b. Push the bar back to the far end and repeat. Allow water to flow over the full surface for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. **Switch to WHITE LIGHT now (Circuit G)** — the print is safe once washing begins.
 - [ ] 4.2.4 — Close BV-05b. Switch ON P-04 to pump wash water from the sump up to IBC-3 (Brown recovery) via 3W-DV-02. If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
 - [ ] 4.2.5 — For the second wash pass, set BV-05a to Brown (recycled), close BV-05b, and activate P-02 through the filter train. Recycled Brown water from IBC-3 is pumped through the three-stage filter skid and back into the spray bar via the same supply path. Open BV-05b and repeat the spray bar traverse.
 - [ ] 4.2.6 — Repeat for a total of **3 wash cycles** (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.
@@ -408,9 +408,9 @@ required for a normal 1–2 print outing.
 Power down in this order to avoid voltage spikes on sensitive electronics:
 
 - [ ] 5.3.1 — Evaporative cooler (circuit E)
-- [ ] 5.3.2 — Water pumps P-01 through P-04 (circuit C)
+- [ ] 5.3.2 — Water pumps P-01 through P-05 (circuit C)
 - [ ] 5.3.3 — Ventilation fans (circuits A, B)
-- [ ] 5.3.4 — Safelight (circuit D)
+- [ ] 5.3.4 — Lighting — safelight (circuit D) and white light (circuit G)
 - [ ] 5.3.5 — Film plane actuators if used (circuit F)
 - [ ] 5.3.6 — Disconnect solar panel inputs at the MPPT controller
 

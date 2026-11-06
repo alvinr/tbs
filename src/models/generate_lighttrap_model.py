@@ -1261,25 +1261,22 @@ def near_bay_wall_frame():
 # ━━━ PULL-OUT CORNER APRON (replaces the fold-down) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # The under-leaf floor gap is closed by a FIXED FULL-WIDTH BASE (Z0..APRON_BASE_TOP=130, continuous across
 # the door bottom, NEVER moves) + two REMOVABLE pull-out STRIPS at the corner zones (Z130..PANEL_FLOOR_GAP_SIDE
-# =282). Each strip sits FLAT on the base top (Z130, EPDM-gasketed — Detail D) at the bottom and butts a flat
-# ply LIP cleat lapped on the leaf's EXTERIOR face at the top; a 1619A74 lift-and-turn cam latch at each strip
-# end clamps it exterior onto the lip (2D detail, hingepanel Sheet 16 Details D–F — not modeled here). The seat
-# is FLAT (not a 45° chamfer): the strip is capped above by the CLOSED leaf bottom (Z282, 0mm clearance) so it
-# cannot lift or ramp up — removal is a straight HORIZONTAL pull toward the interior (+X), shearing along the
-# leaf bottom + base top, then lower + carry (kinematics 2026-11-06; a chamfer seat trapped the strip — it
-# coupled any interior move to a lift into the leaf). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
+# =282). Each strip locates in a 45° chamfer in the base at the bottom and butts a flat ply LIP cleat lapped
+# on the leaf's EXTERIOR face at the top; a hex/allen-key cam latch at each strip end holds it (2D detail,
+# hingepanel Sheet 16 Details D–F — not modeled here). The drum-bay center (Yd YD_L..YD_R) has NO pull-out:
 # the fixed base closes Z0..130 and the drum's own vertical cage seals Z130→217 as it sweeps.
 #
 # This is a THIRD approach to the swing-clearance problem (a fixed apron was tried + reverted 2026-10-31; the
 # fold-down preceded it). The panel swings as a pure HORIZONTAL rotation about the vertical pivot — the leaf
 # bottom stays at Z282 and sweeps sideways, it never lifts — so a FIXED apron reaching the seal plane sits in
 # the sweep and blocks the panel. The PULL-OUT strip resolves it by being simply ABSENT during the swing: it
-# pulls straight out toward the interior (no fold arc, no lift) and stows strapped inside. So the strip is a hide-on-swing DC child
+# lifts out of the sweep (no fold arc) and stows strapped inside. So the strip is a hide-on-swing DC child
 # (shown closed, hidden when swung); the base is static. The far-pivot region (Yd C_WID−APRON_FIX_W..C_WID) is
 # the bottom of the full-height far_leaf strip — no apron there (a strip would foul the Ø89 pivot post).
 APRON_BASE_TOP = LT_CAGE_BOT - 10          # 130 — fixed base top, 10mm under the swept cage bottom (Z140)
 APRON_STRIP_T  = 18                        # 18mm exterior ply (base + strips + lip cleats)
 APRON_X0       = 40 - APRON_STRIP_T        # 22 — apron interior face (inside the 40mm frame zone; clears the pivot post/plate)
+APRON_CHAM     = APRON_STRIP_T             # 18 — 45° base↔strip chamfer across the thickness (2D detail)
 _STRIP_TOP     = PANEL_FLOOR_GAP_SIDE      # 282 — corner leaf bottom = pull-out strip top
 _STRIP_NEAR    = (0, YD_L)                 # near corner zone Yd (0..653)
 _STRIP_FAR     = (YD_R, C_WID - APRON_FIX_W)  # far corner zone Yd (1709..2162)
@@ -1291,14 +1288,40 @@ APRON_FAR_BLANK  = (_STRIP_FAR[1] - _STRIP_FAR[0], _STRIP_TOP - APRON_BASE_TOP) 
 STUB_BLANK = (PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - APRON_BASE_TOP)       # (125, 152) — far-pivot region (far_leaf bottom)
 
 
+def _prism_xz(name, xz, y0, ylen, color, alpha=1.0):
+    """Prism from an (X,Z) polygon in the plane Yd=y0, pushpulled ylen in +Yd. For the 45° chamfer + strips."""
+    pts = ", ".join(f"[{draw.mm(x)},{draw.mm(y0)},{draw.mm(z)}]" for (x, z) in xz)
+    r, g, b = draw.hex_to_rgb(color)
+    mat = draw.shared_mat_name(name, color, alpha)
+    return '\n'.join([
+        '  grp = ents.add_group', f'  grp.name = "{name}"',
+        f'  face = grp.entities.add_face({pts})',
+        f'  face.reverse! if face.normal.y < 0',
+        f'  face.pushpull({draw.mm(ylen)})',
+        f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+        f'  mat.alpha = {alpha}', '  grp.material = mat', ''])
+
+
+_Z_BODY = APRON_BASE_TOP - APRON_CHAM   # 112 — base body top / chamfer bottom (the 45° strip seat spans 112→130)
+
+
 def apron_base_geom():
-    """FIXED full-width base (Z0..130), continuous — never moves. 18mm ply (X22..40), FLAT top at Z130 across
-    the full width: the pull-out strips sit flat on it (EPDM-gasketed seat, Sheet 16 Detail D — the light seal,
-    a 2D detail not modeled here) and pull straight out toward the interior; no chamfer (see apron_strips_geom
-    for why — the closed leaf caps the strip, so a chamfer would trap it). Plus a strip brush over the
-    drum-cage width (Z130→140) sweeping the swinging cage bottom to close the center gap."""
+    """FIXED full-width base (Z0..130), continuous — never moves. 18mm ply (X22..40), built as ONE
+    continuous prism per Yd zone (chamfer integral to the base, not a separate wedge): the corner zones
+    have the 45° chamfered top (ext-low X22=Z112 → int-high X40=Z130) = the pull-out strip seat (Sheet 16
+    Detail D); the center + far-pivot top is flat at Z130. Plus a strip brush over the drum-cage width
+    (Z130→140) sweeping the swinging cage bottom to close the center gap."""
     cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R      # 700, 1662 — cage width the top brush spans
-    parts = [ruby_box("Apron fixed base", APRON_X0, 0, 0, 40 - APRON_X0, C_WID, APRON_BASE_TOP, color=C_PLY)]
+    segs = [(_STRIP_NEAR[0], _STRIP_NEAR[1], True),      # near corner — chamfered strip seat
+            (_STRIP_NEAR[1], _STRIP_FAR[0], False),      # center drum bay — flat top
+            (_STRIP_FAR[0], _STRIP_FAR[1], True),        # far corner — chamfered strip seat
+            (_STRIP_FAR[1], C_WID, False)]               # far-pivot — flat top
+    parts = []
+    for y0, y1, cham in segs:
+        top = [(40, APRON_BASE_TOP), (APRON_X0, _Z_BODY)] if cham else [(40, APRON_BASE_TOP), (APRON_X0, APRON_BASE_TOP)]
+        parts.append(_prism_xz("Apron fixed base (chamfered seat)" if cham else "Apron fixed base",
+                     [(APRON_X0, 0), (40, 0)] + top, y0, y1 - y0, C_PLY, 1.0))
     parts.append(ruby_box("Apron base top brush (cage)", -1, cgL, APRON_BASE_TOP, 30, cgR - cgL, LT_CAGE_BOT - APRON_BASE_TOP, color=C_SEAL))
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12
@@ -1329,22 +1352,19 @@ def apron_cam_latch(yl, zl):
 
 def apron_strips_geom():
     """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
-    18mm ply (X22..40), a flat rectangle Z130..282. The strip sits FLAT on the base top (Z130) and butts the
-    lip at the top; its top (Z282) meets the closed leaf bottom (Z282, 0mm clearance) — so it cannot lift.
-    Removal is a straight HORIZONTAL pull toward the interior (+X): the top shears along the leaf bottom and
-    the bottom shears along the base top until it clears the base interior edge (X40, ~18mm), then it lowers
-    out. Each strip end carries a cam latch (apron_cam_latch — one per end, 4 total) clamping it exterior onto
-    the lip. CHILD of the Panel Swing DC: SHOWN when closed, ABSENT (hidden) when swung (pulled out before the
-    swing; no fold); the latches travel + hide with the strip."""
+    18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
+    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries a cam latch
+    (apron_cam_latch — one per end, 4 total). CHILD of the Panel Swing DC: SHOWN when closed, ABSENT (hidden)
+    when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
     parts = []
     zl = _STRIP_TOP - 18                               # 264 — latch at the lip height (the cam engages the lip)
     LAT_BAY, LAT_STILE = 45, 110                        # inboard (drum-bay side) inset; OUTBOARD inset — clears the
     #                                                    door-frame END stile (Yd0–50 near / Yd2312–2362 far: the
     #                                                    latch's exterior cam/barrel would otherwise foul it)
     for nm, (y0, y1), out_lo in (("near", _STRIP_NEAR, True), ("far", _STRIP_FAR, False)):
-        parts.append(ruby_box(f"Pull-out apron strip ({nm})",
-                     APRON_X0, y0, APRON_BASE_TOP, 40 - APRON_X0, y1 - y0, _STRIP_TOP - APRON_BASE_TOP,
-                     color=C_PLY, alpha=0.9))
+        parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
+                     [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
+                     y0, y1 - y0, C_PLY, 0.9))
         # outboard latch pulled in off the end stile; inboard (drum-bay) latch stays near the open bay end
         lats = (y0 + LAT_STILE, y1 - LAT_BAY) if out_lo else (y0 + LAT_BAY, y1 - LAT_STILE)
         for yl in lats:

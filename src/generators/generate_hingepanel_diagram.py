@@ -2590,22 +2590,20 @@ def sheet15():
 # SHEET 16  —  Pull-Out Corner Apron (closes the under-leaf gap at the corner
 #   zones without a floor hinge). A FIXED full-width base (Z0–130, continuous,
 #   never moves) + two REMOVABLE pull-out STRIPS at the corner zones (Z130–282).
-#   Each strip sits FLAT on the base top (Z130, EPDM-gasketed) at the bottom and
-#   BUTTS a flat LIP on the EXTERIOR at the top — a flat ply cleat lapped on the
-#   swinging leaf's exterior face (the full flat lap takes the CSK wood screws),
-#   projecting below the leaf bottom as a downstand register the strip's exterior
-#   top butts. A CAM LATCH at each strip end runs its barrel THROUGH the pull-out
-#   strip — the SAME 1619A74 lift-and-turn cam latch as the panel opening-edge
-#   latches (reused), OPERATED FROM THE INTERIOR (darkroom) face: its cam passes
-#   through an OVERSIZED HOLE in the lip and, turned 90°, OVERLAPS the lip (the
-#   hinged-panel ribbon, exterior) to draw the strip OUT onto it — the cam is the
-#   clamp (the flat seat + lip + cam locate and hold it). The leaf's repeatable hard
-#   close-stop sets the strip's top datum. The seat is FLAT, not a 45° chamfer: the
-#   strip is capped above by the CLOSED leaf bottom (Z282, 0mm clearance) so it
-#   cannot lift or ramp up — REMOVAL is a straight HORIZONTAL pull toward the
-#   interior (+X), shearing along the leaf bottom + base top, then lower + stow
-#   strapped inside (kinematics 2026-11-06: a chamfer seat trapped the strip, coupling
-#   any interior move to a lift into the closed leaf). The drum-bay center
+#   Each strip LOCATES in the base's 45° chamfer at the bottom (exterior-LOW →
+#   interior-HIGH, so the strip gravity-seats EXTERIOR-down; EPDM) and BUTTS a flat
+#   LIP on the EXTERIOR at the top — a flat ply cleat lapped on the swinging leaf's
+#   exterior face (the full flat lap takes the CSK wood screws), projecting below
+#   the leaf bottom as a downstand register the strip's exterior top butts. A CAM
+#   LATCH at each strip end runs its barrel THROUGH the pull-out strip — the SAME
+#   1619A74 lift-and-turn cam latch as the panel opening-edge latches (reused),
+#   OPERATED FROM THE INTERIOR (darkroom) face: its cam passes through an OVERSIZED
+#   HOLE in the lip and, turned 90°, OVERLAPS the lip (the hinged-panel ribbon,
+#   exterior) to draw the strip OUT onto it, reinforcing the exterior-down gravity
+#   seat. The leaf's repeatable hard close-stop sets the
+#   strip's top datum. For the transport swing the cams are turned from inside to
+#   align with the lip holes and each strip is lifted out (it stows strapped inside)
+#   so the leaf sweeps through the empty corner zone. The drum-bay center
 #   seals on the fixed base + the drum's own sweep (no pull-out there). This
 #   REPLACES the earlier fold-down apron, which folded onto the processing tray
 #   (CORNER_BOT=282 → the folded leaf reached X310, over the tray at X280).
@@ -2692,12 +2690,14 @@ def sheet16():
     ax.text(a0 + 10, 392, "vertical section · ext LEFT → int RIGHT", ha="center", fontsize=6.2, color=C_DIM, **FONT)
     ax.plot([a0 - 46, a0 + 46], [0, 0], color=C_OUT, lw=1.6)
     ax.add_patch(Rectangle(aA(-42, 0), 16, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))             # threshold sill (exterior)
-    # fixed base Z0–130, FLAT top (the strip sits flat on it; no chamfer — the closed leaf caps the strip, so a chamfer would trap it)
-    ax.add_patch(Rectangle(aA(0, 0), TW, BASE_TOP, fc=C_FIXP, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
-    # pull-out strip Z130–282, FLAT bottom sitting flat on the base top (latch clamps it exterior onto the lip)
-    ax.add_patch(Rectangle(aA(0, BASE_TOP), TW, ATOP - BASE_TOP, fc=C_PULL, ec=C_OUT, lw=1.7, zorder=4))
-    ax.plot([aA(0, BASE_TOP)[0], aA(TW, BASE_TOP)[0]], [BASE_TOP, BASE_TOP],
-            color=C_EPDM, lw=3.2, solid_capstyle="butt", zorder=5)                                      # EPDM on the flat seat
+    # fixed base Z0–130, top 45° chamfer (exterior LOW → interior HIGH — the interior shoulder backs the strip bottom)
+    ax.add_patch(Polygon([aA(0, 0), aA(TW, 0), aA(TW, BASE_TOP), aA(0, BASE_TOP - 18)], closed=True,
+                         fc=C_FIXP, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
+    # pull-out strip Z130–282, bottom located in the chamfer (gravity + latch seat it EXTERIOR-down onto the square)
+    ax.add_patch(Polygon([aA(0, BASE_TOP - 18), aA(TW, BASE_TOP), aA(TW, ATOP), aA(0, ATOP)], closed=True,
+                         fc=C_PULL, ec=C_OUT, lw=1.7, zorder=4))
+    ax.plot([aA(0, BASE_TOP - 18)[0], aA(TW, BASE_TOP)[0]], [aA(0, BASE_TOP - 18)[1], aA(TW, BASE_TOP)[1]],
+            color=C_EPDM, lw=3.2, solid_capstyle="butt", zorder=5)                                      # EPDM on chamfer
     # swinging leaf body (corner, Z282+)
     ax.add_patch(Rectangle(aA(0, ATOP), TW, 100, fc=C_PLASTIC, ec=C_OUT, lw=1.3, alpha=0.75))
     # LIP — a flat ply cleat lapped on the leaf EXTERIOR face (full flat lap for the CSK screws),
@@ -2717,39 +2717,39 @@ def sheet16():
     ax.plot([aA(TW, 264)[0], aA(TW + 34, 264)[0]], [264, 264], color="#1c6b32", lw=2.0, zorder=11)      # handle arm (interior)
     ax.plot([aA(TW + 34, 264)[0], aA(TW + 34, 280)[0]], [264, 280], color="#1c6b32", lw=2.0, zorder=11) # grip bent up
     ax.annotate("", xy=aA(TW + 22, 277), xytext=aA(TW + 33, 272), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.3, connectionstyle="arc3,rad=0.5"))  # turn arrow
-    # removal action arrow (release the cam from inside, then pull the strip straight toward the INTERIOR — it cannot lift, the leaf caps it)
-    ax.annotate("", xy=aA(TW + 72, 200), xytext=aA(TW, 200), arrowprops=dict(arrowstyle="-|>", color="#C0392B", lw=2.2))
+    # removal action arrow (release the cam from inside, lift the strip off its seats)
+    ax.annotate("", xy=aA(56, 250), xytext=aA(18, 220), arrowprops=dict(arrowstyle="-|>", color="#C0392B", lw=2.0))
 
     # — left column (exterior-side features: lip + cam latch, sill) —
     leader(ax, aA(-16, 318), (LX, 322), "LIP — flat ply cleat lapped on the\nleaf EXTERIOR face (CSK screws);\ndownstand = strip register (Detail E)", col="#3C6A96", fw="bold", fs=6, ha="right")
     leader(ax, aA(-18, 264), (LX, 210), "CAM LATCH (1619A74) — barrel THROUGH the\nstrip; cam BUTTS the lip (ribbon) through an\noversized hole; handle INTERIOR (Detail F)", col=C_OUT, fw="bold", fs=6, ha="right")
     leader(ax, aA(-34, 30), (LX, 60), "threshold sill\nZ0–51", col=C_OUT, fs=6, ha="right")
-    # — right column (interior-side features: leaf, strip, removal, flat seat, base) —
+    # — right column (interior-side features: leaf, strip, removal, chamfer, base) —
     leader(ax, aA(10, ATOP + 55), (RX, 380), "swinging leaf\n(corner, Z282)", col="#1763C8", fs=6, ha="left")
     leader(ax, aA(14, 206), (RX, 306), "PULL-OUT STRIP\n(removable) Z130–282", col="#6B4A00", fw="bold", fs=6, ha="left")
-    ax.text(RX, 236, "remove: turn the cam\n(inside) to release,\npull straight INTERIOR\n(can't lift — leaf caps)\n+ stow inside", ha="left", va="center",
+    ax.text(RX, 236, "remove: turn the cam\n(inside) to release,\nlift the strip off its\nseats + stow inside", ha="left", va="center",
             fontsize=6, fontweight="bold", color="#C0392B", **FONT)
-    leader(ax, aA(14, BASE_TOP - 6), (RX, 158), "FLAT seat + EPDM\n(strip bottom sits flat\non the base — Detail D)", col=C_EPDM, fw="bold", fs=6, ha="left")
+    leader(ax, aA(14, BASE_TOP - 6), (RX, 158), "45° chamfer + EPDM\n(ext-low → int-high;\nlocates strip bottom — Detail D)", col=C_EPDM, fw="bold", fs=6, ha="left")
     leader(ax, aA(10, 60), (RX, 80), f"FIXED BASE\nZ0–{int(BASE_TOP)}", col="#5A3F10", fw="bold", fs=6, ha="left")
     draw_dim_v(ax, a0 + 32, 0, BASE_TOP, f"{int(BASE_TOP)}mm", offset=10, fs=6, font=FONT)
     draw_dim_v(ax, a0 + 32, BASE_TOP, ATOP, f"{int(SH)}mm", offset=10, fs=6, font=FONT)
 
-    # ══ DETAIL D (bottom-right, enlarged 7:1) — base↔strip flat seat joint ══
+    # ══ DETAIL D (bottom-right, enlarged 7:1) — base↔strip 45° chamfer joint ══
     d0, dbz, SD = 1430, -382, 7.0
     def dD(x, z): return (d0 + x * SD, dbz + z * SD)
     T, xc = 18, 16
-    ax.text(d0 + 17 * SD, -98, "DETAIL D — base↔strip flat seat", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(d0 + 17 * SD, -116, "flat butt · EPDM on the base top · 7:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
-    base  = [dD(0, 0), dD(xc + T, 0), dD(xc + T, T), dD(0, T)]                                         # fixed base: flat top at Z130
-    strip = [dD(0, T), dD(xc + T, T), dD(xc + T, 2 * T), dD(0, 2 * T)]                                 # pull-out strip, flat bottom sitting on it
+    ax.text(d0 + 17 * SD, -98, "DETAIL D — base↔strip chamfer", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(d0 + 17 * SD, -116, "45° scarf · ext LOW → int HIGH · EPDM on the base · 7:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
+    base  = [dD(0, 0), dD(xc + T, 0), dD(xc + T, T), dD(T, T)]                                         # fixed base: exterior (L) low, interior (R) high shoulder
+    strip = [dD(xc + T, T), dD(T, T), dD(0, 2 * T), dD(xc + T, 2 * T)]                                 # pull-out strip, bottom chamfered to match
     ax.fill([p[0] for p in base], [p[1] for p in base], fc=C_FIXP, ec=C_OUT, lw=1.4, hatch="///", zorder=3)
     ax.fill([p[0] for p in strip], [p[1] for p in strip], fc=C_PULL, ec=C_OUT, lw=1.4, zorder=3)
-    ax.plot([dD(0, T)[0], dD(xc + T, T)[0]], [dD(0, T)[1], dD(xc + T, T)[1]], color=C_EPDM, lw=4, solid_capstyle="butt", zorder=4)   # EPDM on the flat base top
-    leader(ax, dD((xc + T) * 0.5, T), (d0 - 20, dbz + T * SD + 70), "EPDM bonded to the\nFIXED base top", col=C_EPDM, fw="bold", fs=6)
-    ax.text(*dD((xc + T) * 0.5, T * 0.42), "FIXED base", ha="center", va="center", fontsize=6.2, fontweight="bold", color="#5A3F10", **FONT)
-    ax.text(*dD((xc + T) * 0.5, T * 1.55), "PULL-OUT strip", ha="center", va="center", fontsize=6.2, fontweight="bold", color="#6B4A00", **FONT)
-    ax.annotate("", xy=dD(xc + T + 10, T + T), xytext=dD(xc + T - 4, T + T), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.7))
-    ax.text(*dD(xc + T + 12, T + T), "pull straight\nINTERIOR to remove\n(no lift — leaf caps)", ha="left", va="center",
+    ax.plot([dD(0, 0)[0], dD(T, T)[0]], [dD(0, 0)[1], dD(T, T)[1]], color=C_EPDM, lw=4, solid_capstyle="butt", zorder=4)   # EPDM on the base chamfer
+    leader(ax, dD(T * 0.5, T * 0.5), (d0 - 20, dbz + T * SD + 70), "EPDM bonded to the\nFIXED base chamfer", col=C_EPDM, fw="bold", fs=6)
+    ax.text(*dD(xc + T - 7, T * 0.42), "FIXED base", ha="center", va="center", fontsize=6.2, fontweight="bold", color="#5A3F10", **FONT)
+    ax.text(*dD(xc * 0.75 + 5, T * 1.55), "PULL-OUT strip", ha="center", va="center", fontsize=6.2, fontweight="bold", color="#6B4A00", **FONT)
+    ax.annotate("", xy=dD(2, T + 3), xytext=dD(xc, T + 7), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.7))
+    ax.text(*dD(xc + T + 3, T + 2), "gravity + latch seat\nthe strip EXTERIOR-\ndown in the chamfer", ha="left", va="center",
             fontsize=5.6, fontweight="bold", color="#1c6b32", **FONT)
     leader(ax, dD(3, T * 0.28), (d0 - 44, dbz - 24), "light", col="#B07000", fs=5.6, ha="left", va="top", arrow_style="-|>", lw=1.4)
     draw_dim_v(ax, d0 - 26, dbz, dbz + T * SD, "18mm", offset=10, fs=6, font=FONT)
@@ -2804,7 +2804,7 @@ def sheet16():
     ax.plot([f0 + 120, f0 + 120], [174, 192], color="#1c6b32", lw=2.0, zorder=9)                        # grip bent up
     leader(ax, (f0 + 48, 166), (f0 - 6, 150), "cam BUTTS the lip\n(exterior); barrel\nTHROUGH the strip", col=C_OUT, fw="bold", fs=6, ha="right")
     leader(ax, (f0 + 112, 180), (f0 + 150, 118), "lift-and-turn\nhandle — INSIDE", col="#1c6b32", fw="bold", fs=6, ha="left")
-    ax.text(f0 + 66, 30, "(bottom sits FLAT on the base — Detail D)", ha="center", va="center", fontsize=5.3, color="#555", **FONT)
+    ax.text(f0 + 66, 30, "(bottom gravity-seats exterior-down in the chamfer — Detail D)", ha="center", va="center", fontsize=5.3, color="#555", **FONT)
     # --- FACE-ON inset (right): how the cam OVERLAPS the lip ribbon ---
     g0, gy = f0 + 215, 205
     ax.text(g0, 300, "cam vs lip ribbon (face-on)", ha="center", fontsize=6.4, fontweight="bold", color=C_OUT, **FONT)
@@ -2816,19 +2816,19 @@ def sheet16():
     ax.add_patch(Circle((g0, gy), 5, fc="#808088", ec=C_OUT, lw=0.9, zorder=7))                          # hex drive
     ax.annotate("", xy=(g0 + 18, gy + 15), xytext=(g0 + 21, gy - 2), arrowprops=dict(arrowstyle="-|>", color="#1c6b32", lw=1.3, connectionstyle="arc3,rad=0.5"))
     ax.text(g0, gy - 46, "cam LOCKED (vertical) overlaps the ribbon", ha="center", va="center", fontsize=5.6, fontweight="bold", color="#1c6b32", **FONT)
-    ax.text(g0, gy - 62, "cam OPEN (dashed) clears the hole → pulls out (interior)", ha="center", va="center", fontsize=5.6, color=C_OUT, **FONT)
+    ax.text(g0, gy - 62, "cam OPEN (dashed) clears the hole → lifts out", ha="center", va="center", fontsize=5.6, color=C_OUT, **FONT)
 
     # ══ notes ══
     draw_notes(ax, [
         "PULL-OUT CORNER APRON — operation",
-        f"• FIXED full-width base (Z0–{int(BASE_TOP)}, floor→cage), continuous across the door bottom, never moves. 18mm exterior SYP ply, flat-black interior. Top is FLAT at Z{int(BASE_TOP)} (EPDM-gasketed) — the strip sits flat on it.",
-        f"• Two REMOVABLE PULL-OUT STRIPS at the corner zones (near Yd 0–{int(jL)}, far Yd {int(jR)}–{int(STUB)}), Z{int(BASE_TOP)}–{int(ATOP)}, 18mm ply. Each sits FLAT on the base top at the bottom (EPDM — Detail D) and BUTTS the exterior LIP at the top (Detail E).",
+        f"• FIXED full-width base (Z0–{int(BASE_TOP)}, floor→cage), continuous across the door bottom, never moves. 18mm exterior SYP ply, flat-black interior. Top is a 45° chamfer, exterior-LOW → interior-HIGH — the interior shoulder backs the strip bottom.",
+        f"• Two REMOVABLE PULL-OUT STRIPS at the corner zones (near Yd 0–{int(jL)}, far Yd {int(jR)}–{int(STUB)}), Z{int(BASE_TOP)}–{int(ATOP)}, 18mm ply. Each locates in the base chamfer at the bottom (EPDM — Detail D) and BUTTS the exterior LIP at the top (Detail E).",
         "• LIP register (Detail E): a flat ply cleat lapped on the swinging leaf's EXTERIOR face — the full flat lap takes the CSK wood screws (heads flush on the exterior, good purchase into the leaf) — and projecting below the leaf bottom as a downstand. The strip's exterior top butts the downstand (EPDM); the register sits on the exterior (door) side.",
-        "• CAM LATCH (Detail F): the SAME 1619A74 lift-and-turn cam latch as the panel opening-edge latches (reused — handle on the INTERIOR / darkroom face, like every other latch), one at each strip end, its barrel runs THROUGH the pull-out strip. Its cam passes through an OVERSIZED HOLE in the lip and, turned 90°, OVERLAPS the lip (the hinged-panel ribbon, exterior) — the cam BUTTS the fixed leaf-lip exterior face, drawing the strip OUT onto it; the cam is the CLAMP (the flat seat gives no self-seat — the lip + cam locate and hold the strip). (TODO: a full 1619A74 is heavy-duty for a light seal — evaluate a lower-duty latch.)",
-        "• DATUM: the leaf's repeatable hard close-stop sets the strip's top datum (lip on the leaf exterior); the bottom sits FLAT on the fixed base top. The lip LOCATES the strip (exterior register); the cam latch CLAMPS it onto the lip. The oversized lip hole lets the cam sweep through aligned, then lock when it overlaps the lip.",
-        "• TRANSPORT: turn the cams (from inside) to align with the lip holes, then PULL each strip STRAIGHT TOWARD THE INTERIOR (+X) — it CANNOT lift (the closed leaf bottom caps it at Z282, 0mm clearance), so it shears out along the leaf bottom + base top, ~18mm to clear the base edge, then lowers + straps inside. The empty corner lets the leaf sweep through. No floor hinge — nothing folds onto the tray.",
+        "• CAM LATCH (Detail F): the SAME 1619A74 lift-and-turn cam latch as the panel opening-edge latches (reused — handle on the INTERIOR / darkroom face, like every other latch), one at each strip end, its barrel runs THROUGH the pull-out strip. Its cam passes through an OVERSIZED HOLE in the lip and, turned 90°, OVERLAPS the lip (the hinged-panel ribbon, exterior) — the cam BUTTS the fixed leaf-lip exterior face, drawing the strip OUT onto it; the interior-high chamfer also gravity-seats the strip exterior-down, so latch + gravity load both seats. (TODO: a full 1619A74 is heavy-duty for a light seal — evaluate a lower-duty latch.)",
+        "• DATUM: the leaf's repeatable hard close-stop sets the strip's top datum (lip on the leaf exterior); the bottom locates in the fixed chamfer. The lip + chamfer LOCATE the strip; the cam latch CLAMPS it against them. The oversized lip hole lets the cam sweep through aligned, then lock when it overlaps the lip.",
+        "• TRANSPORT: turn the cams (from inside) to align with the lip holes, lift each strip off its seats and strap it inside; the empty corner lets the leaf sweep through. No floor hinge — nothing folds onto the tray.",
         f"• CENTER (drum bay, Yd {int(jL)}–{int(jR)}): NO pull-out — the fixed base closes Z0–{int(BASE_TOP)} and the drum's own cage seals Z{int(BASE_TOP)}→{int(BAYB)} (bay cap) as it sweeps. Base continuous under the bay.",
-        "• LIGHT SEAL: light-tight joints with EPDM at every seam — the FLAT base↔strip seat, the strip↔lip butt, and the strip ends↔jambs. The strip pulls straight out toward the interior — the flat seat + leaf cap mean no lift, no binding.",
+        "• LIGHT SEAL: light-tight joints with EPDM at every seam — the 45° base↔strip chamfer, the strip↔lip butt, and the strip ends↔jambs. The strip lifts straight off its seats — no binding.",
     ], WID + 380, 892, spacing=19, fs=5.5, title_fs=6.4, color="#403000",
        title_color="#806010", width=450, wrap=50, border_color="#806010", font=FONT)
 

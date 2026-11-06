@@ -2623,11 +2623,11 @@ def sheet16():
     C_CLEAT = "#7FA8C9"          # ply lip cleat (screwed to the leaf)
     C_EPDM  = "#5A3020"          # EPDM seal
 
-    fig, ax = plt.subplots(figsize=(23, 11))
+    fig, ax = plt.subplots(figsize=(24, 13))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
     ax.set_xlim(-130, WID + 950)
-    ax.set_ylim(-170, 920)
+    ax.set_ylim(-700, 930)
 
     ax.text(WID / 2, 908, "PULL-OUT CORNER APRON — fixed full-width base + removable corner strips (no floor hinge)",
             ha="center", fontsize=12, fontweight="bold", color=C_OUT, **FONT)
@@ -2731,12 +2731,12 @@ def sheet16():
     draw_dim_v(ax, a0 + 32, 0, BASE_TOP, f"{int(BASE_TOP)}mm", offset=10, fs=6, font=FONT)
     draw_dim_v(ax, a0 + 32, BASE_TOP, ATOP, f"{int(SH)}mm", offset=10, fs=6, font=FONT)
 
-    # ══ DETAIL D (enlarged 5:1) — base↔strip 45° self-seating chamfer joint ══
-    d0, dbz, SD = 1560, 150, 5.0
+    # ══ DETAIL D (bottom-right, enlarged 7:1) — base↔strip 45° chamfer joint ══
+    d0, dbz, SD = 1430, -382, 7.0
     def dD(x, z): return (d0 + x * SD, dbz + z * SD)
     T, xc = 18, 16
-    ax.text(d0 + 33 * SD, 408, "DETAIL D — base↔strip chamfer", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(d0 + 33 * SD, 392, "45° scarf · ext LOW → int HIGH · EPDM on the base · 5:1", ha="center", fontsize=5.8, color=C_DIM, **FONT)
+    ax.text(d0 + 17 * SD, -98, "DETAIL D — base↔strip chamfer", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(d0 + 17 * SD, -116, "45° scarf · ext LOW → int HIGH · EPDM on the base · 7:1", ha="center", fontsize=6.4, color=C_DIM, **FONT)
     base  = [dD(0, 0), dD(xc + T, 0), dD(xc + T, T), dD(T, T)]                                         # fixed base: exterior (L) low, interior (R) high shoulder
     strip = [dD(xc + T, T), dD(T, T), dD(0, 2 * T), dD(xc + T, 2 * T)]                                 # pull-out strip, bottom chamfered to match
     ax.fill([p[0] for p in base], [p[1] for p in base], fc=C_FIXP, ec=C_OUT, lw=1.4, hatch="///", zorder=3)
@@ -2751,13 +2751,13 @@ def sheet16():
     leader(ax, dD(3, T * 0.28), (d0 - 44, dbz - 24), "light", col="#B07000", fs=5.6, ha="left", va="top", arrow_style="-|>", lw=1.4)
     draw_dim_v(ax, d0 - 26, dbz, dbz + T * SD, "18mm", offset=10, fs=6, font=FONT)
 
-    # ══ DETAIL E (enlarged ~3:1) — flat LIP lapped on the leaf EXTERIOR face (CSK screws) ══
-    e0, ebz, SE = 940, 150, 2.8
+    # ══ DETAIL E (bottom-left, enlarged ~4:1) — flat LIP lapped on the leaf EXTERIOR face (CSK screws) ══
+    e0, ebz, SE = 300, -357, 4.2
     def eE(x, z): return (e0 + x * SE, ebz + z * SE)
     LT_ = 18                                                                                           # leaf-edge ply thickness
     LPT = 18                                                                                           # lip board thickness
-    ax.text(e0 - 4 * SE, 408, "DETAIL E — leaf lip register", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(e0 - 4 * SE, 392, "flat ply lip lapped on the leaf EXTERIOR face · CSK screws in the flat lap · ~3:1", ha="center", fontsize=6.0, color=C_DIM, **FONT)
+    ax.text(e0 - 2 * SE, -98, "DETAIL E — leaf lip register", ha="center", fontsize=9.5, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(e0 - 2 * SE, -116, "flat ply lip lapped on the leaf EXTERIOR face · CSK screws in the flat lap · ~4:1", ha="center", fontsize=6.0, color=C_DIM, **FONT)
     # LIP (EXTERIOR, left): flat board lapped on the leaf exterior face (z 0..54, CSK-screwed) + downstand register (z −36..0)
     ax.add_patch(Rectangle(eE(-LPT, -36), LPT * SE, 90 * SE, fc=C_CLEAT, ec=C_OUT, lw=1.5, zorder=4))
     # leaf edge (ply), bottom at Z282-datum (z=0 = leaf bottom); exterior face at x=0
@@ -2775,13 +2775,13 @@ def sheet16():
         ax.plot([eE(-LPT, z)[0], eE(13, z)[0]], [eE(0, z)[1], eE(0, z)[1]], color=C_OUT, lw=1.5, zorder=6)   # shank into the leaf
         ax.plot([eE(-LPT, z + 3.2)[0], eE(-LPT + 4, z)[0]], [eE(0, z + 3.2)[1], eE(0, z)[1]], color=C_OUT, lw=1.0, zorder=6)  # CSK head
         ax.plot([eE(-LPT, z - 3.2)[0], eE(-LPT + 4, z)[0]], [eE(0, z - 3.2)[1], eE(0, z)[1]], color=C_OUT, lw=1.0, zorder=6)
-    leader(ax, eE(-LPT + 2, 40), (e0 - 32 * SE, ebz + 56 * SE), "No.8 CSK wood screws into the\nleaf through the FLAT lap (heads\nflush, exterior) @ ~150mm pitch", col=C_OUT, fw="bold", fs=6, ha="right")
+    leader(ax, eE(-LPT + 2, 34), (e0 - 30 * SE, ebz + 38 * SE), "No.8 CSK wood screws into the\nleaf through the FLAT lap (heads\nflush, exterior) @ ~150mm pitch", col=C_OUT, fw="bold", fs=6, ha="right")
     leader(ax, eE(-LPT / 2, -36), (e0 - 32 * SE, ebz - 30 * SE), "LIP (flat cleat on the leaf\nexterior face); downstand\n= strip register", col="#3C6A96", fw="bold", fs=6, ha="right")
     leader(ax, eE(0.5, -18), (e0 + 26 * SE, ebz - 24 * SE), "EPDM butt seal\n(strip ↔ lip)", col=C_EPDM, fw="bold", fs=6, ha="left")
     draw_dim_v(ax, e0 + 22 * SE, ebz - 36 * SE, ebz + 54 * SE, "downstand 36 +\nlap 54mm", offset=10, fs=5.6, font=FONT)
 
-    # ══ DETAIL F — CAM LATCH through the strip; cam overlaps the hinged-panel lip (ribbon) ══
-    f0 = 2210
+    # ══ DETAIL F (top-right) — CAM LATCH through the strip; cam overlaps the hinged-panel lip (ribbon) ══
+    f0 = 1360
     ax.text(f0 + 78, 408, "DETAIL F — cam latch through the strip", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
     ax.text(f0 + 78, 392, "allen-key cam · overlaps the lip ribbon · 1 per strip end", ha="center", fontsize=5.7, color=C_DIM, **FONT)
     # --- SECTION (left): barrel THROUGH the strip, allen key from OUTSIDE through the lip hole ---

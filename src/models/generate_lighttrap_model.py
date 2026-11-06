@@ -1288,16 +1288,39 @@ APRON_FAR_BLANK  = (_STRIP_FAR[1] - _STRIP_FAR[0], _STRIP_TOP - APRON_BASE_TOP) 
 STUB_BLANK = (PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - APRON_BASE_TOP)       # (125, 152) — far-pivot region (far_leaf bottom)
 
 
+def _prism_xz(name, xz, y0, ylen, color, alpha=1.0):
+    """Prism from an (X,Z) polygon in the plane Yd=y0, pushpulled ylen in +Yd. For the 45° chamfer + strips."""
+    pts = ", ".join(f"[{draw.mm(x)},{draw.mm(y0)},{draw.mm(z)}]" for (x, z) in xz)
+    r, g, b = draw.hex_to_rgb(color)
+    mat = draw.shared_mat_name(name, color, alpha)
+    return '\n'.join([
+        '  grp = ents.add_group', f'  grp.name = "{name}"',
+        f'  face = grp.entities.add_face({pts})',
+        f'  face.reverse! if face.normal.y < 0',
+        f'  face.pushpull({draw.mm(ylen)})',
+        f'  mat = model.materials["{mat}"] || model.materials.add("{mat}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+        f'  mat.alpha = {alpha}', '  grp.material = mat', ''])
+
+
+_Z_BODY = APRON_BASE_TOP - APRON_CHAM   # 112 — base body top / chamfer bottom (the 45° strip seat spans 112→130)
+
+
 def apron_base_geom():
-    """FIXED full-width base (Z0..APRON_BASE_TOP=130), continuous across the door bottom — never moves. 18mm
-    ply on the interior face (X22..40). Plus a horizontal strip brush over the drum-cage width, bristles
-    reaching the 10mm from the base top (130) up to the swinging cage bottom (Z140) to close the center gap.
-    (The 45° strip-seat chamfer on the base top is a 2D joint detail — Sheet 16 Detail D — not modeled.)"""
+    """FIXED full-width base (Z0..130), continuous across the door bottom — never moves. 18mm ply (X22..40).
+    The base TOP is a 45° chamfer at the corner zones (ext-low X22=Z112 → int-high X40=Z130) — the pull-out
+    strip's seat (Sheet 16 Detail D); the center/far-pivot top is flat at Z130. Plus a strip brush over the
+    drum-cage width (Z130→140) sweeping the swinging cage bottom to close the center gap."""
     cgL, cgR = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R      # 700, 1662 — cage width the top brush spans
-    parts = [
-        ruby_box("Apron fixed base (full width)", APRON_X0, 0, 0, APRON_STRIP_T, C_WID, APRON_BASE_TOP, color=C_PLY, alpha=1.0),
-        ruby_box("Apron base top brush (cage)", -1, cgL, APRON_BASE_TOP, 30, cgR - cgL, LT_CAGE_BOT - APRON_BASE_TOP, color=C_SEAL),
-    ]
+    parts = [ruby_box("Apron fixed base (full width)", APRON_X0, 0, 0, APRON_STRIP_T, C_WID, _Z_BODY, color=C_PLY, alpha=1.0)]
+    # 45° chamfer strip-seat (ext-low → int-high) under each pull-out strip
+    for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
+        parts.append(_prism_xz(f"Apron base 45° chamfer seat ({nm})",
+                     [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _Z_BODY)], y0, y1 - y0, C_PLY, 1.0))
+    # flat top fill (Z112→130) over the non-corner zones: center drum bay + far-pivot
+    for y0, y1 in ((_STRIP_NEAR[1], _STRIP_FAR[0]), (_STRIP_FAR[1], C_WID)):
+        parts.append(ruby_box("Apron base top (flat)", APRON_X0, y0, _Z_BODY, APRON_STRIP_T, y1 - y0, APRON_CHAM, color=C_PLY, alpha=1.0))
+    parts.append(ruby_box("Apron base top brush (cage)", -1, cgL, APRON_BASE_TOP, 30, cgR - cgL, LT_CAGE_BOT - APRON_BASE_TOP, color=C_SEAL))
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12
         parts.append(ruby_box("Apron base brush bristle", 8, yc, APRON_BASE_TOP, 2, 2, LT_CAGE_BOT - APRON_BASE_TOP, color="#141414"))
@@ -1305,14 +1328,28 @@ def apron_base_geom():
 
 
 def apron_strips_geom():
-    """The two REMOVABLE pull-out strips (Z130..282) at the corner zones — near Yd0..YD_L, far Yd YD_R..(C_WID
-    −APRON_FIX_W). 18mm ply on the interior face (X22..40), sitting on the fixed base at Z130. CHILD of the
-    Panel Swing DC: SHOWN when closed, ABSENT (hidden) when swung — the strip lifts out of the horizontal
-    sweep (no fold). (The bottom 45° chamfer + top lip butt + cam latch are 2D details — Sheet 16.)"""
+    """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
+    18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
+    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. CHILD of the Panel Swing DC: SHOWN
+    when closed, ABSENT (hidden) when swung (lifts out of the sweep; no fold). Sheet 16 Detail D."""
     parts = []
     for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
-        parts.append(ruby_box(f"Pull-out apron strip ({nm})", APRON_X0, y0, APRON_BASE_TOP,
-                              APRON_STRIP_T, y1 - y0, _STRIP_TOP - APRON_BASE_TOP, color=C_PLY, alpha=0.9))
+        parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
+                     [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
+                     y0, y1 - y0, C_PLY, 0.9))
+    return '\n'.join(parts)
+
+
+def apron_lip_geom():
+    """The ply LIP cleat on the leaf's EXTERIOR face at each corner zone (Sheet 16 Detail E) — a flat cleat
+    just exterior of the strip (X4..22), projecting below the leaf bottom (Z246..282) as the downstand the
+    strip's exterior top butts + seals against. Travels with the leaf (Panel Swing child, always present —
+    stays when the strip is pulled out), so it is NOT hidden on swing."""
+    x0, x1 = APRON_X0 - APRON_STRIP_T, APRON_X0          # 4..22 — exterior of the strip face
+    z0 = _STRIP_TOP - 36                                 # 246 — downstand bottom (register)
+    parts = []
+    for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
+        parts.append(ruby_box(f"Leaf lip cleat ({nm})", x0, y0, z0, x1 - x0, y1 - y0, _STRIP_TOP - z0, color=C_PLY, alpha=0.95))
     return '\n'.join(parts)
 
 
@@ -1588,6 +1625,16 @@ ps_inst.layer = model.layers["Bottom Apron"]
 ps_inst.set_attribute("dynamic_attributes", "_name", "PullOutApronStrips")
 ps_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 ps_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+# Leaf LIP cleats — a Panel Swing CHILD that travels with the leaf and STAYS through the swing (the
+# strip butts + latches to it; it is screwed to the leaf, so it is always present — no hide formula).
+lp_defn = model.definitions.add("Leaf lip cleats")
+ents = lp_defn.entities
+{apron_lip_geom()}
+ents = defn.entities
+lp_inst = ents.add_instance(lp_defn, Geom::Transformation.new)
+lp_inst.name = "Leaf lip cleats"
+lp_inst.layer = model.layers["Bottom Apron"]
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

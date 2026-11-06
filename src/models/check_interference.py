@@ -440,6 +440,7 @@ _SANCTIONED_SOLID = [
     ("pivot post", "hub tube", "the moving swing hub tube rides concentrically on the fixed Ø89 pivot post (sleeve/bearing fit) — AABB over-count of concentric tubes, not a fused defect"),
     ("pull-out apron strip", "apron fixed base", "the removable pull-out strip seats on the fixed full-width base — intended box-on-box seating contact, not a fused defect"),
     ("chamfer seat", "pull-out apron strip", "the strip's 45° chamfered bottom seats on the base's 45° chamfer seat (Sheet 16 Detail D) — mating wedges sharing the chamfer face; the AABB check over-counts their Z112–130 bounding-box overlap, not a fused defect"),
+    ("apron cam latch shaft", "apron cam latch blade", "the apron cam latch's blade is mounted centered on its shaft — one latch assembly (shaft + cam blade), intended overlap, not a fused defect"),
     ("bay", "opening-edge stile", "welded bay-frame joint — the opening-edge stile meets the bay top/bottom beam at the corner"),
     ("fixed left box", "strike face", "one-piece fixed left box — flanges + web (strike face) drawn as separate primitives"),
     ("slot l-strip", "upstand", "one formed Slot L-strip — base leg + upstand leg (box-model L self-overlap)"),

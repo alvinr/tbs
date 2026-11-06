@@ -1329,12 +1329,25 @@ def apron_base_geom():
     return '\n'.join(parts)
 
 
+def apron_cam_latch(yl, zl):
+    """Apron pull-out strip cam latch (Sheet 16 Detail F): a SHAFT through the strip (along X, hex/allen-driven)
+    with a flat CAM BLADE centered on the shaft (the cam tongue that sweeps through the lip's oversized hole
+    and overlaps it) — NOT the panel's lift-and-turn L-handle. Olive-yellow C_VALVE."""
+    r, sx0, sL = 8, APRON_X0 - 8, APRON_STRIP_T + 26        # shaft Ø16, X14 → X58 (exterior hex → interior tip)
+    bw, bh, bt = 16, 48, 4                                  # blade: X-length × Z-height × Y-thickness
+    bx0 = 40                                                # blade on the interior side, centered on the shaft (Z=zl)
+    return '\n'.join([
+        draw.ruby_cylinder("Apron cam latch shaft", sx0, yl, zl, r, sL, axis="x", color=C_VALVE),
+        ruby_box("Apron cam latch blade", bx0, yl - bt / 2.0, zl - bh / 2.0, bw, bt, bh, color=C_VALVE),
+    ])
+
+
 def apron_strips_geom():
     """The two REMOVABLE pull-out strips at the corner zones (near Yd0..YD_L, far Yd YD_R..C_WID−APRON_FIX_W),
     18mm ply (X22..40). Bottom is a 45° chamfer mating the base seat (ext-low X22=Z112 → int-high X40=Z130),
-    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries a CAM LATCH
-    (reuses the cam_latch() builder — one per end, 4 total). CHILD of the Panel Swing DC: SHOWN when closed,
-    ABSENT (hidden) when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
+    top flat at 282 — the strip LOCATES in the chamfer and butts the lip. Each strip end carries a cam latch
+    (apron_cam_latch — one per end, 4 total). CHILD of the Panel Swing DC: SHOWN when closed, ABSENT (hidden)
+    when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
     parts = []
     zl = (APRON_BASE_TOP + _STRIP_TOP) // 2             # 206 — mid-strip latch height
     for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
@@ -1342,7 +1355,7 @@ def apron_strips_geom():
                      [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],
                      y0, y1 - y0, C_PLY, 0.9))
         for yl in (y0 + 45, y1 - 45):                   # one cam latch at each strip end
-            parts.append(cam_latch(yl, zl))
+            parts.append(apron_cam_latch(yl, zl))
     return '\n'.join(parts)
 
 

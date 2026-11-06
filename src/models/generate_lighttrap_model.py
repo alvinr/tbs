@@ -1330,15 +1330,19 @@ def apron_base_geom():
 
 
 def apron_cam_latch(yl, zl):
-    """Apron pull-out strip cam latch (Sheet 16 Detail F): a SHAFT through the strip (along X, hex/allen-driven)
-    with a flat CAM BLADE centered on the shaft (the cam tongue that sweeps through the lip's oversized hole
-    and overlaps it) — NOT the panel's lift-and-turn L-handle. Olive-yellow C_VALVE."""
-    r, sx0, sL = 8, APRON_X0 - 8, APRON_STRIP_T + 26        # shaft Ø16, X14 → X58 (exterior hex → interior tip)
-    bw, bh, bt = 16, 48, 4                                  # blade: X-length × Z-height × Y-thickness
-    bx0 = 40                                                # blade on the interior side, centered on the shaft (Z=zl)
+    """Apron pull-out strip cam latch (Sheet 16 Detail F): a SHAFT through the lip + strip with a HANDLE on
+    the interior end to turn it, and a flat CAM BLADE on the shaft that — when turned to LOCKED — CROSSES
+    the strip↔lip joint line (X22) and overlaps the leaf lip, securing the pull-out strip. Placed at the lip
+    height so the cam engages the lip. Olive-yellow C_VALVE."""
+    r, sx0, sL = 6, APRON_X0 - 28, APRON_STRIP_T + 44      # shaft Ø12: just behind the lip (X-6) through lip+strip to X56 interior
+    bx0, bw, bh, bt = APRON_X0 - 16, 26, 34, 4             # cam blade X6..32 — CROSSES the strip↔lip joint (X22), ≈ lip height, thin
+    HSr, HS, GRIP = 5, 28, 36                              # interior lift-and-turn handle — arm along X + grip bent up (Z)
+    xarm = sx0 + sL
     return '\n'.join([
         draw.ruby_cylinder("Apron cam latch shaft", sx0, yl, zl, r, sL, axis="x", color=C_VALVE),
-        ruby_box("Apron cam latch blade", bx0, yl - bt / 2.0, zl - bh / 2.0, bw, bt, bh, color=C_VALVE),
+        ruby_box("Apron cam latch blade (cam)", bx0, yl - bt / 2.0, zl - bh / 2.0, bw, bt, bh, color=C_VALVE),
+        draw.ruby_cylinder("Apron cam latch handle arm", xarm, yl, zl, HSr, HS, axis="x", color=C_VALVE),
+        draw.ruby_cylinder("Apron cam latch handle grip", xarm + HS, yl, zl, HSr, GRIP, axis="z", color=C_VALVE),
     ])
 
 
@@ -1349,7 +1353,7 @@ def apron_strips_geom():
     (apron_cam_latch — one per end, 4 total). CHILD of the Panel Swing DC: SHOWN when closed, ABSENT (hidden)
     when swung (lifts out of the sweep; no fold); the latches travel + hide with the strip."""
     parts = []
-    zl = (APRON_BASE_TOP + _STRIP_TOP) // 2             # 206 — mid-strip latch height
+    zl = _STRIP_TOP - 18                               # 264 — latch at the lip height (the cam engages the lip)
     for nm, (y0, y1) in (("near", _STRIP_NEAR), ("far", _STRIP_FAR)):
         parts.append(_prism_xz(f"Pull-out apron strip ({nm})",
                      [(APRON_X0, _Z_BODY), (40, APRON_BASE_TOP), (40, _STRIP_TOP), (APRON_X0, _STRIP_TOP)],

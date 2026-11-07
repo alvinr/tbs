@@ -204,7 +204,7 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
   - **Fab quotes (post-blueprint):** film cross-slide assembly (¼in bar firm $134.73, + UHMW/gib/fab), the 2 wall-seat-saddle plate cuts + weld.
   - **Steel-yard bulk quotes:** `ibcf-rhs`/`ibcf-feet`/`ibcf-wall-backing` (2×2×⅛ A500 + A36 plate), `shelf-steel-shs` (1×1×⅛ A500 6 m). Estimates are realistic bulk figures.
   - **At-purchase confirms:** `shelf-folding-stays` + `shelf-transport-latch` (zinc chosen, estimates hold).
-- [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — the supplier paste-check; each SKU auto-appears in the master on the next `--inject`.
+- [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — the supplier paste-check; each SKU auto-appears in the master on the next `--inject`. **2026-11-07:** firmed the M12×30 foot/leg bolt (`ibcf-foot-bolt` + `walkway-leg-bolt`, McMaster **91280A716** $21.12/25 → $0.85 ea; panel... ibc-frame +$5, walkway +$7, grand total +$12) + the light-trap fastener-lot F4 set screw (**91390A139**) + F5 rivet-nut (**95105A143**). The remaining `SKU pending` rows are all **fab/machined** items (pinhole discs/plates/anodize, pivot-post hub, front-board, shutter) → shop quotes, tracked under *Fab estimates*, not catalog SKUs.
 ### Cost-reduction opportunities (grounding — analysis 2026-07-31)
 Ranked by saving potential, analogous to the SS→ALU depth-rail switch (`fp-u-channel` $2,173→$328). Each
 needs a dedicated follow-up to model + cascade before committing. Cost by system for context: chemistry

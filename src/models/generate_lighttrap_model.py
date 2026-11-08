@@ -326,7 +326,7 @@ def cam_latch(yl, zl):
 
 
 def hinge_panel(seals=True):
-    """Detailed cargo-door panel: skins + center frame + (seals) + piano hinges + 2 cam latches + pull
+    """Detailed cargo-door panel: skins + center frame + (seals) + 2 cam latches + pull
     handle. seals=True for lighttrap's own scene; overview/construction aggregate hinge_panel(seals=False)
     via panel_pivot() and draw the perimeter EPDM with their own light_seal() (no double-seal)."""
     h = PANEL_Z_TOP - PANEL_Z_BOT                  # panel skin height (center zone, low bottom)
@@ -375,10 +375,8 @@ def hinge_panel(seals=True):
         parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, zs, gt, gw, z1 - zs,
                               color=C_GASKT, alpha=0.5))
 
-    # 3 × 200mm SS piano hinges on the left edge (Yd=0), exterior, per report §4.1.
-    hd, hw, hh = 60, 30, 200
-    for hz in (220, 1190, 2158):
-        parts.append(ruby_box("Piano hinge", -hd / 2, 0, hz, hd, hw, hh, color=C_STEEL))
+    # (Piano hinges retired 2026-11-05 with the pull-out-apron redesign — the panel swings on the
+    # Ø89 pivot post, not an edge hinge; see report §4.1.)
 
     # 2 × lift-and-turn cam latches (McMaster 1619A74) — interior face, OPENING edge only
     # (the pivot edge is hinged; a frame stop takes the outward direction — report §4.2).
@@ -1439,7 +1437,7 @@ def panel_pivot():
     jL, jR = PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
     parts = [axle()]
     # DETAILED cargo-door panel at operational position (X=0), aggregated so overview + construction
-    # MATCH lighttrap: skins + center frame + piano hinges + 2 cam latches + pull handle. seals=False —
+    # MATCH lighttrap: skins + center frame + 2 cam latches + pull handle. seals=False —
     # overview/construction draw the perimeter EPDM via their own light_seal() (no double-seal). The
     # swing split/trim is lighttrap-only (overview is a static GA, so it uses the full untrimmed panel).
     parts.append(hinge_panel(seals=False))
@@ -1606,9 +1604,9 @@ fpdef.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.name =~ /FP Brace
 defn = model.definitions.add("Panel Swing")
 ents = defn.entities
 {dc_body}
-# Trim to the 3-zone split: erase the un-split corners + full-width seals + piano hinges
+# Trim to the 3-zone split: erase the un-split corners + full-width seals
 # (the fixed left/far leaves + the trimmed swing seals provide the rest).
-defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
+defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$/ }}.each {{ |g| g.erase! }}
 
 # ── Lift-out walkways — a CHILD DC component inside the swing def: HIDDEN when the panel
 #    swings (lifted out for transport). Built at world coords, then shifted with the rest

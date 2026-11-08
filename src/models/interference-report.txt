@@ -3,14 +3,14 @@ model=lighttrap  pipes=48 solids=51  interferences=0
 pipe-on-pipe crossings=0
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──
-grip-bolt orientation/grip flags: 13  (5 OPEN, 8 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)
-  EDGE      Near wall cage rivet                     axis Z  D6  edge 3.0mm < 9mm  in Near bay bottom beam (50 RHS  [OPEN]
-  EDGE      Far wall rivet                           axis Z  D6  edge 6.2mm < 9mm  in Drum frame post               [OPEN]
-  EDGE      Door frame anchor M10                    axis X  D12  edge 15.0mm < 18mm  in EPDM fixed-far right (far wa  [OPEN]
-  FLOATING  Far bay rivet                            axis Z   pierces no structural member @ (-3,1702,2192)  [OPEN]
-  FLOATING  Near bay rivet                           axis Yd  pierces no structural member @ (-3,220,2192)  [OPEN]
+grip-bolt orientation/grip flags: 13  (0 OPEN, 13 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)
+  EDGE      Near wall cage rivet                     axis Z  D6  edge 3.0mm < 9mm  in Near bay bottom beam (50 RHS  [OK] HDPE-skin blind rivet into the light-gauge cage/bay RHS frame — a pop rivet, not a structural grip bolt; the <1.5·D edge is the AABB worst-edge against an incidental beam face raised beside the rivet line by the apron rework
+  EDGE      Far wall rivet                           axis Z  D6  edge 6.2mm < 9mm  in Drum frame post               [OK] HDPE-skin blind rivet into the drum cage post — a pop rivet, not a structural grip bolt; the <1.5·D edge is the AABB worst-edge against an incidental frame post, not the rivet's own hole
+  EDGE      Door frame anchor M10                    axis X  D12  edge 15.0mm < 18mm  in EPDM fixed-far right (far wa  [OK] worst edge measured to the EPDM seal (non-structural); the M10 anchors into the door frame with full edge
   FLOATING  Frame-corner bolt (angle frame → bracket axis Yd  pierces no structural member @ (293,2240,160)  [OK] film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating
   FLOATING  Frame-corner bolt (angle frame → bracket axis Yd  pierces no structural member @ (293,2240,2252)  [OK] film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating
+  FLOATING  Far bay rivet                            axis Z   pierces no structural member @ (-3,1702,2192)  [OK] HDPE door-skin blind rivet on the exterior face (x=-6, ahead of the beam at x0) — the skin is excluded from the structural solid set so it reads floating; a rivet, not a grip bolt
+  FLOATING  Near bay rivet                           axis Yd  pierces no structural member @ (-3,220,2192)  [OK] HDPE door-skin blind rivet on the exterior face (x=-6, ahead of the beam at x0) — the skin is excluded from the structural solid set so it reads floating; a rivet, not a grip bolt
   FLOATING  Cage roof rivet                          axis X   pierces no structural member @ (-850,708,2220)  [OK] light-trap drum cage rivet into the thin cage frame (excluded) — a rivet, not a grip bolt
   FLOATING  Cage floor rivet                         axis X   pierces no structural member @ (-850,708,137)  [OK] light-trap drum cage rivet into the thin cage frame (excluded) — a rivet, not a grip bolt
   FLOATING  Near wall cage rivet                     axis Z   pierces no structural member @ (-865,697,200)  [OK] light-trap drum cage rivet into the thin cage frame (excluded) — a rivet, not a grip bolt

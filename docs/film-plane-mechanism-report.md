@@ -167,7 +167,7 @@ The color assembly/mechanism views come first; the monochrome single-part dimens
 
 ![Sheet 15 — Cross-slide stack: Z + X 304 flat bars, deep-mount section, gib, stroke](assets/film-plane-sheet15.png)
 
-![Sheet 16 — Corner angle: 4×4×¼" 304 L-bracket drilling layout — the U-joint mount](assets/film-plane-sheet16.png)
+![Sheet 16 — Corner gusset: laser-cut ¼" 304 flat L-plate drilling layout — the U-joint mount](assets/film-plane-sheet16.png)
 
 ![Sheet 17 — Frame weldment: 2×2×⅛" 6061 angle frame, the 4 corner welds, member section + ACM backing](assets/film-plane-sheet17.png)
 
@@ -259,7 +259,7 @@ saddle design is described below.*
 
 Each of the **8 rail ends** anchors to the container — **6 of them** with a standalone **IBC-style wall-seat saddle** (a back-plate + horizontal seat the rail end rests on + triangular gusset, dims reused from the IBC frame wall seats, **through-bolted with a 4-bolt pattern to an exterior wall plate**), and **the 2 bottom-right ends (BR, near + far)** with a **combined corner plate shared with the right walkway** (see below). The container shell carries the lateral rigidity, so no cross-cage is needed; this also frees the near/far Yd footprint and removes the near-wall equipment clash. Costs ~110mm of carriage travel at each end (immaterial to the design). The rails now run the full width **saddle-to-saddle** (Yd 0 → C_WID).
 
-**Right vs left.** The **right** rails (X 4649, TR + BR) are **permanently bolted** into place. The **left** rails (X 150, TL + BL) drop into their saddles on **knurled thumb screws** so they lift out for transport.
+**Right vs left.** The **right** rails (X 4649, TR + BR) are **permanently bolted** into place. The **left** rails (X 260, TL + BL) drop into their saddles on **knurled thumb screws** so they lift out for transport.
 
 **Combined corner plate (rev 12).** At each bottom-right corner (near and far) the film plane and the right walkway terminate at the same wall station, so a single **10mm combined corner plate** seats both — the **bottom film rail (BR) on a 150mm seat** and the **right walkway long beam on a 70mm seat** — bolted through the wall with a shared interior/exterior plate pair. This **replaces the 2 BR wall-seat saddles**. The plate is single-sourced in the overview generator (`fp_combined_corner_plate`) and reused by both the film-plane and walkway 3D models; the film-plane model skips the BR saddle and draws the combined plate instead. See [Walkway Report](walkway-report.md) §4.3.
 

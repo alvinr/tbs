@@ -58,7 +58,7 @@ film-plane position.
 |-----------|-------|
 | Deployed footprint | Hinged on the pinhole wall, projects 225 mm |
 | Stowed (transport) | Vertical against the wall, ~25 mm proud |
-| Work surface height | 945 mm above the 130 mm walkway deck |
+| Work surface height | 935 mm above the 140 mm walkway deck |
 | Walkway (widened) | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep — ~275 mm pass when deployed, full clear when stowed |
 | Evap cooler (stow) | Slides under the deployed shelf |
 | Optical cone | ~456 mm clear |
@@ -73,7 +73,7 @@ film-plane position.
 |-----------|-------|
 | Width (X) | 600 mm |
 | Depth (Yd, deployed) | 225 mm |
-| Work surface height | 945 mm above the walkway deck |
+| Work surface height | 935 mm above the walkway deck |
 | Thickness | 18 mm UV-coated white ply — **ply-primary (no steel frame)** |
 | Work surface area | 600 × 225 = 0.135 m² |
 
@@ -167,7 +167,7 @@ The shelf folds UP flat against the pinhole wall and latches.
 ## 5. Operator Access
 
 The operator stands on the widened near walkway at about the shelf
-midpoint, facing the wall. The deployed surface (945 mm above the deck) is
+midpoint, facing the wall. The deployed surface (935 mm above the deck) is
 ergonomic counter height; the full depth is reachable. The tap (left of the shelf)
 fills containers staged on the board.
 

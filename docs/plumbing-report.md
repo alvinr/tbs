@@ -440,7 +440,7 @@ earlier welded slotted-angle frame — purpose-built, −$85). The mount provide
   (a re-torqueable joint, serviceable without stripping the ply)
 
 Each filter housing mounts through its own **mounting-hole ears** — Big Blue
-heads are pre-drilled for wall mounting — with **5/16"-18 zinc machine screws into
+heads are pre-drilled for wall mounting — with **1/4"-20 zinc machine screws (+ a washer spanning the 5/16-sized ear bore) into
 back-face pronged tee-nuts in the 18mm plywood backing** (no custom bracket; #30 —
 a re-torqueable machine-screw joint, not wood/lag screws). 25mm plywood-offcut standoff blocks behind
 each ear space the housing off the ply so the sump bowl hangs free and clears for

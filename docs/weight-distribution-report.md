@@ -35,7 +35,7 @@ changes during a photographic session.
 All weights are calculated from first principles (material density × volume)
 unless a specific report value is cited. Material densities used:
 mild steel 7,850 kg/m³, 304 SS 7,930 kg/m³, aluminum 2,700 kg/m³,
-marine plywood 600 kg/m³, HDPE (all light-lock plastic skin) 950 kg/m³,
+exterior plywood 600 kg/m³, HDPE (all light-lock plastic skin) 950 kg/m³,
 water 1,000 kg/m³.
 
 ### 3.1 Container
@@ -50,7 +50,7 @@ water 1,000 kg/m³.
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Hinged panel (incl. Ø800 housing + punch-out bay) | 161 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 1/8" HDPE plastic skins + 18mm-ply Fan-B mount band + 3mm-Al corner cores + 2×2×0.120in steel SHS center ≈ 119 kg + bolted 5mm (3/16in) HDPE Ø800 housing ≈ 22 kg + 1/8"-HDPE punch-out bay ≈ 21 kg (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
+| Hinged panel (incl. Ø800 housing + punch-out bay) | 161 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 1/8" HDPE plastic skins + 18mm-ply Fan-B mount band + HDPE-skinned 6061 Al stiffener-grid (1×1×1/8in) corner cores + 2×2×0.120in steel SHS center ≈ 119 kg + bolted 5mm (3/16in) HDPE Ø800 housing ≈ 22 kg + 1/8"-HDPE punch-out bay ≈ 21 kg (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
 | Light-trap drum (rotating) | 69 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø764 C-shell, 1/8" HDPE plastic skin, no fins (suspended with panel) + 2× 8mm 6061-T6 Al end caps + rolled rim-angles + steel Ø75 stub shafts + 2× SKF 6215 bearings + the interior 40×40×5 SS pull-handle stile (bolts to the caps → rotates with the drum) + plugs + pull handle |
 | Processing tray | 114 | 280–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 57 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 37 | 580–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 12.7 kg/m² GRP grating |
@@ -59,7 +59,7 @@ water 1,000 kg/m³.
 | Left walkway | 27 | 280–580 | 0–2,362 | Removable lift-out: GRP grating + 5 floor-leg cantilever brackets (2×2 post + arm on bare floor outside the tray) + drum-exit punch-out (deeper grating) |
 | Swing pivot + cage hardware | 38 | 0–400 | 700–2,287 | Rotation transport hardware: pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs the rotation-hardware BOM |
 | Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
-| Chem-prep shelf (fold-down, stowed) | 7 | 1,180–1,780 | 0–22 | Wall-hinged fold-down: 18mm phenolic ply + 2" Al angle frame + spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
+| Chem-prep shelf (fold-down, stowed) | 7 | 1,180–1,780 | 0–22 | Wall-hinged fold-down: 18mm UV-coated white ply (ply-primary, no steel/Al frame) + HDPE spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
 | **Structure subtotal** | **<!-- BEGIN weight:wt-cat-structure -->581<!-- END weight:wt-cat-structure -->** | | | |
 
 ### 3.3 Equipment
@@ -69,10 +69,10 @@ water 1,000 kg/m³.
 | Electrical panel | 15 | 1,910–2,210 | 0–150 | Wall-mount distribution panel |
 | Battery bank | 13 | 1,540–2,220 | 0–150 | 1× 100Ah LiFePO4 @ 13 kg (standard build; +13 kg for the optional 2nd pack) |
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
-| Plumbing — Corridor panel | 5 | 4,760–4,874 | 1,046–1,160 | 4× Shurflo 2088 (P-01/P-03/P-04/P-05) + ACC-01 |
-| Plumbing — Pinhole Wall panel | 8 | 3,300–4,016 | 12–196 | P-02 + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
+| Plumbing — Corridor panel | 5 | 4,760–4,874 | 1,046–1,160 | 4× Shurflo 2088 (P-01/P-02/P-03/P-05) + ACC-01 |
+| Plumbing — Pinhole Wall panel | 8 | 3,300–4,016 | 12–196 | P-04 (tray-drain) + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
 | Film plane carriage | <!-- BEGIN weight:wt-comp-film -->51<!-- END weight:wt-comp-film --> | 260–4,649 | 2,212–2,312 | **3mm Dibond ACM backing sheet ≈36 kg (3.80 kg/m² × the FP_W×FP_H face — moves with the plane)** + plain 6061 Al angle frame (50.8×50.8×3.175mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 58 nylon muslin clamps + 4 acetal skate carriages |
-| Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
+| Pinhole disc holder | 2 | 2,364–2,544 | 1,104–1,284 | Ø180×18mm Al front plate + Ø80 carrier + retaining ring + 4 thumb screws (on the pinhole wall) |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
 | Blue IBC-1 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (top tier, near) |
@@ -163,8 +163,8 @@ that heavier load stays well within transport limits:
 
 | Loaded Transport | Gross mass | Z_cg | Static tip threshold |
 |------------------|-----------:|-----:|---------------------:|
-| Standard Blue fill (1,800L) | 5,086 kg | 1,341mm | 41.4° |
-| **Max Blue fill (1,900L)** | **5,186 kg** | **1,358mm** | **41.0°** |
+| Standard Blue fill (1,800L) | 5,068 kg | 1,343mm | 41.4° |
+| **Max Blue fill (1,900L)** | **5,168 kg** | **1,360mm** | **41.0°** |
 
 The extra ~100 kg sits in the top tier, raising the worst-case vertical CG only 17mm and lowering
 the static sideways tip threshold ~0.4° (to 41.0° — still far above any rollover concern). Gross
@@ -248,7 +248,9 @@ design: equipment on the pinhole wall (near side) is lightweight (electrical
 panel, battery, and solar controller totaling ~<!-- BEGIN weight:wt-near-elec -->28<!-- END weight:wt-near-elec --> kg), the pump manifold is on the Corridor Plumbing Panel
 centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
 across the container width. The film plane carriage contributes ~<!-- BEGIN weight:wt-comp-film -->51<!-- END weight:wt-comp-film --> kg to
-the far side but is offset by the tilt-swing board on the near side.
+the far side; the near (pinhole-wall) side now carries only the light pinhole disc
+holder (~1.5 kg), so this lateral offset is taken up by the IBC stack and corridor
+plumbing rather than a near-side counterweight board.
 
 ### 6.3 Front-Rear Balance
 

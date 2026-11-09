@@ -26,7 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Cost-analysis bucket B closed as COMPLETE.** The §4 savings-lever roll-up and both still-available levers (container grade = computed CW−WWT, solar = drop 1× 200W panel) already derive in `costing.py`, and the phantom levers (film banked, battery moot) were already dropped — bucket B's substantive goal was met back on 2026-07-05 (a stale memory had it flagged open). Reframed the lingering "STILL OPEN" comment + the §4 derivation note: the decided/banked levers (film, tray, battery, valves) keep their saving as a declared estimate band **by design** — each is a path not taken, so pricing a full alternative would single-source a figure for an option that won't be built. No cost or figure change.
 
 ## [0.19] — 2026-11-08
 

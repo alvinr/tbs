@@ -117,7 +117,7 @@ pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 
 ![TBS-001 Walkway — Sheet 9: Near-Walkway Bump-Out (Pinhole Wall)](assets/walkway-sheet9.png)
 
-![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet7.png)
+![TBS-001 Walkway — Sheet 7: Widened-Bracket Cross-Section](assets/walkway-sheet7.png)
 
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
@@ -229,7 +229,7 @@ such treatment — it falls between floor-leg brackets, with no beam beneath it.
 
 ### 4.2 Center Cantilever Arms
 
-Two **2×1×0.120in arms** cantilever inward off the **IBC corridor uprights**
+Two **solid 2×1in bar arms** cantilever inward off the **IBC corridor uprights**
 and pick the rectangle up at
 mid-span. Each arm is **half-lapped (cross-halved)** where the long beams cross
 it, so the beams seat down into the arm and the two members share a flush top
@@ -276,7 +276,7 @@ floor-leg cantilever brackets** — each a post standing on the bare floor *outs
 the tray with an arm that cantilevers over the tray to the grate inner
 edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
-![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
+![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
 
 ### 5.1 Support System
 
@@ -382,7 +382,7 @@ bolted to the floor). As the panel + drum swing ~56° about the pivot, the cage 
 the butt joint into the vacated zone, its **cage underside (Z130) passing over the
 Z115 door-end floor-leg posts** — so no floor-leg post is struck (the swing clears).
 The relevant standing clearance is vertical: the drum-cage underside sits at Z130 —
-25mm over the Z115 posts and 70mm over the Z70 tray rim (the panel bottom rides higher
+15mm over the Z115 posts and 60mm over the Z70 tray rim (the panel bottom rides higher
 still, at the 217mm floor gap). See hinged-panel Sheet 16.
 
 ---
@@ -693,7 +693,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
 | Before each session | Check the 5 floor-leg foot-plate anchors are tight; posts standing square |
 | Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
-| Monthly | Check right walkway cantilever-arm U-clamps to the IBC uprights and the combined-plate bolts for tightness |
+| Monthly | Check the right-walkway cantilever-arm J6 end-plate bolts (M12×100) to the IBC uprights and the combined-plate bolts for tightness |
 | Monthly | Inspect GRP grating panels for cracks, delamination, or a worn grit top |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
 | Quarterly | Inspect the right walkway cantilever-rectangle welds + wall cleats for corrosion and bolt tightness |

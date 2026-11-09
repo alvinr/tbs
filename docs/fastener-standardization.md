@@ -64,6 +64,7 @@ film-plane zone** — the **carriage** *and* the ICP-14 **rail-fixing** (`bolt-m
 2026-08-13 for the same "film plane wets" reason). The spray-saddle **thumbscrew** and stile-plug **grub
 set-screws** are different head classes — they stay.
 - **Gate:** film-plane blueprint (carriage material + confirm edge-channel/carriage land on ×25).
+- **SKU merge (2026-11-09 pass):** the two M8×25 **304 SS** rows now share **one** SKU — the ICP-14 rail-fixing (`bolt-m8-fixing`, ×8) folded onto the cross-slide SKU **92314A711** (SS, pack of 50), retiring the duplicate **91310A535** (which was the steel part — the fixing is wet-zone, so SS); 32+8 = 40 on a single 50-pack. Likewise the dry **M8 flat washer** (`washer-m8-flat-shelf`, ×4) folded onto the film SS washer **98689A673** (both SS; 32+4 = 36 on one 50-pack), retiring **91166A270**. **−2 fastener SKUs** (64 → 62); net cost −$7 (film −$8 / shelf +$1). *(Verify $10.60 is the 92314A711 50-pack price — the registry had it mislabeled pack-of-25.)*
 
 ### M6 — consolidate the easy axes (Option A) — DONE (2026-09-04, via fastener-rework)
 **Decision:** nuts **3 → 2** — the 4× plain (electrical panel mount) → **nyloc**; keep the serrated **flange**

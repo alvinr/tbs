@@ -119,7 +119,7 @@ plumbing, the film-plane support, and the walkway.
 | 5.2 | Install the **film plane + carriages** (screen + frame; the beams were 3.8) | Phase 3 (beams), 5.1 | ☐ |
 | 5.3 | Install the **light-trap drum support cage** + axle beams + SKF 6215 bearings + mount plates + floor HDPE | Phase 1 (panel), 5.2 | ☐ |
 | 5.4 | Hang the **light-trap HDPE skins** — rotating drum shell + fixed Ø800 housing panels + H-mullions | 5.3 | ☐ |
-| 5.5 | Fit the **light-trap outer HDPE surround / bay** (walls + roof) + cage rivets | 5.4 | ☐ |
+| 5.5 | Fit the **light-trap outer HDPE surround / bay** (walls + roof) + cage rivets + the EPDM beam-notch seals (×4) + the **pull-out corner apron** (fixed base + 2 removable strips + draw latches) | 5.4 | ☐ |
 | 5.6 | Install the **spray bar** (over the processing tray) | Phase 3 (tray) | ☐ |
 
 **Exit gate:** plane travels through its full tilt/swing envelope; spray bar movement is free; camera confirmed light-tight.

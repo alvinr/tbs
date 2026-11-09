@@ -26,6 +26,10 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.19] — 2026-11-08
+
 - **Light-trap bottom light seal redesigned as a PULL-OUT CORNER APRON** (replaces the fold-down apron). A **fixed full-width base** (floor → drum cage, never moves) closes the center; the two corner zones are closed by **removable pull-out strips** that locate in a 45° chamfer seat at the bottom and butt the swinging leaf's exterior lip at the top. Each strip is held by surface draw latches — two interior, at the strip↔base joint, and two exterior "span" latches bridging the leaf lip batten B1 and a new strip batten B2 on the door side (kept off the interior face so nothing projects into the darkroom and fouls the left lift-out film beam). For transport the strips lift off and stow inside, so the panel swings through the empty corner. Cascaded across hingepanel Sheet 16, the 3D model, parts/costing, the plywood cut sheets, the operating manual, and `hinged-panel-report.md`.
 
 - **3D — overview + construction now carry the full detailed cargo-door panel + apron** (matching lighttrap), routed through the existing `panel_pivot()` aggregation; removed the retired piano-hinge geometry; the 1619A74 cam-latch handle now renders as one continuous L (added a `ruby_sphere` elbow). All three `.skp` regenerated, saved, and pushed to Sketchfab in place (same URLs); manifest current.

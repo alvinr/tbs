@@ -1896,7 +1896,7 @@ def draw_sheet7():
            fs=5, color=C_BRASS, font=FONT, zorder=20)
     leader(ax_cf, HOSE_OD / 2, hose_top - 3,
            d_xr - 5, hose_top,
-           "IRRIGATION TUBE\n(FROM MANIFOLD)",
+           "FLEX SUPPLY HOSE\n(FROM BV-05)",
            fs=5, color=C_HOSE, font=FONT, zorder=20)
     ax_cf.text(d_xl + 15, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",
@@ -1909,7 +1909,7 @@ def draw_sheet7():
                f"{POLY_OD:.0f}mm\nOD",
                offset=2, fs=4.5, font=FONT, right=True)
 
-    ax_cf.text(0, d_yt - 1, "FEED CONNECTION (TYP. ×7)",
+    ax_cf.text(0, d_yt - 1, "CENTER FEED CONNECTION (×1)",
                ha="center", va="top", fontsize=7, color="#CC6600",
                fontweight="bold", **FONT, zorder=20)
     ax_cf.text(0, d_yt - 5, "(BARBED TEE INTO THE SIDE POLY MANIFOLD)",
@@ -2216,9 +2216,7 @@ def draw_sheet9():
     HALF  = SPAN / 2                        # 2144.5 — centerline
     BW, BH, BT = SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T
     POLY  = SPRAY_BAR_POLY_OD               # 25 — manifold OD
-    N_FEED     = 7                          # feed tees (report §3.3)
-    FEED_PITCH = 550                        # LOCAL CHOICE: 7 tees over the span ≈ 550mm pitch
-    FEED_FIRST = HALF - 3 * FEED_PITCH      # 494.5 — first feed tee from the left end
+    # Single CENTER feed into the over-bored manifold (no multi-point feed fan) — report §3.3
     CLAMP_X    = FIRST + 0.5 * PITCH        # carriage-clamp station ≈ 94.5 from end (straddles near end)
 
     # split scale (long member): 1:11 horizontal, mild vertical exaggeration for the callout lanes
@@ -2266,13 +2264,10 @@ def draw_sheet9():
         ax.add_patch(Circle((sx(nx), sz(nz - 55)), sz(16), fill=False, ec=C_FRAME, lw=0.9, zorder=7))
         nx += PITCH
 
-    # ── feed tees (larger glyph on the manifold) ──────────────────────────────
-    fx = FEED_FIRST
-    while fx <= HALF + 1:
-        ax.add_patch(Rectangle((sx(fx) - sx(0) - sz(14), sz(mz - POLY / 2 - 26)), sz(28), sz(26),
-                               facecolor="white", ec=C_FRAME, lw=1.1, zorder=8))
-        ax.plot([sx(fx), sx(fx)], [sz(mz + POLY / 2), sz(mz + POLY / 2 + 22)], color=C_FRAME, lw=1.1, zorder=8)
-        fx += FEED_PITCH
+    # ── single center feed tee (at the beam centerline) ───────────────────────
+    ax.add_patch(Rectangle((sx(HALF) - sz(14), sz(mz - POLY / 2 - 26)), sz(28), sz(26),
+                           facecolor="white", ec=C_FRAME, lw=1.1, zorder=8))
+    ax.plot([sx(HALF), sx(HALF)], [sz(mz + POLY / 2), sz(mz + POLY / 2 + 22)], color=C_FRAME, lw=1.1, zorder=8)
 
     # ── carriage-clamp station near the left end (bracket over the beam) ───────
     ax.add_patch(Rectangle((sx(CLAMP_X) - sz(70), sz(bz_top)), sz(140), sz(70),
@@ -2321,11 +2316,9 @@ def draw_sheet9():
     ax.plot([sx(FIRST + 2 * PITCH), sx(FIRST + 2 * PITCH)], [sz(nz - 55), sz(bz_bot - 470)], **WIT)
     draw_dim_h(ax, sx(FIRST + PITCH), sx(FIRST + 2 * PITCH), sz(bz_bot - 370),
                f"{PITCH:.0f}mm  (NOZZLE PITCH — TYP ×{N})", offset=10, fs=6.5, font=FONT, above=False)
-    # feed-tee pitch — TYP
-    ax.plot([sx(FEED_FIRST), sx(FEED_FIRST)], [sz(mz - POLY / 2 - 26), sz(bz_bot - 620)], **WIT)
-    ax.plot([sx(FEED_FIRST + FEED_PITCH), sx(FEED_FIRST + FEED_PITCH)], [sz(mz - POLY / 2 - 26), sz(bz_bot - 620)], **WIT)
-    draw_dim_h(ax, sx(FEED_FIRST), sx(FEED_FIRST + FEED_PITCH), sz(bz_bot - 420),
-               f"{FEED_PITCH:.0f}mm  (FEED-TEE PITCH — TYP, {N_FEED} TEES)", offset=10, fs=6.5, font=FONT, above=False)
+    # single center feed callout
+    leader(ax, sx(HALF), sz(mz - POLY / 2 - 26), sx(HALF - 760), sz(bz_bot - 470),
+           "SINGLE CENTER FEED\n(barbed tee → over-bored manifold)", fs=6.5, color="#CC6600", font=FONT, zorder=15)
     # carriage-clamp station from datum
     ax.plot([sx(CLAMP_X), sx(CLAMP_X)], [sz(bz_top + 70), sz(bz_top + 330)], **WIT)
     draw_dim_h(ax, sx(0), sx(CLAMP_X), sz(bz_top + 330), f"{CLAMP_X:.1f}mm",

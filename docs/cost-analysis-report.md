@@ -86,6 +86,9 @@ After the material decisions, the only still-**available** build-savings levers 
 > is already 1×100 Ah, and its 2nd pack is a +$375 **upgrade**, not a saving — so both were dropped
 > from the roll-up. Lever 3 (tray) is now **decided** too — 304 SS kept (over the 4.5 m span a poly
 > tray needs a support frame that erodes the saving, plus poly-weld fab) — so it also leaves the roll-up.
+> The decided/banked levers keep their saving as a declared estimate band by design: each describes a
+> path not taken, so pricing a full alternative would single-source a figure for an option that won't be
+> built. The roll-up and both still-available levers derive; nothing here is pending.
 
 ---
 

@@ -27,7 +27,7 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> | None | **Yes — always** |
+| 70% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
 | Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$242<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
@@ -154,12 +154,12 @@ From the walkway design, the location of the cooler (green rectangle) can be see
 
 | Parameter | Specification |
 |-----------|--------------|
-| Material | 80% shade cloth, 20 × 10 ft |
-| Frame | 1.5" EMT conduit + fittings |
+| Material | 70% shade cloth, 20 × 10 ft |
+| Frame | 1" EMT conduit + fittings |
 | Installation | Erected over the container before solar noon |
 | Temperature reduction | −15 to −20°C interior |
 | Power requirement | None |
-| Approximate cost | ~$200 (cloth $80 + frame $120) |
+| Approximate cost | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> (70% cloth ~$30 + 1" EMT frame ~$131 + fittings) |
 
 The shade canopy is the most effective single mitigation — it eliminates direct solar irradiance on the container roof and walls, reducing the primary heat source before any active cooling is applied. It is required at all deployments regardless of season.
 

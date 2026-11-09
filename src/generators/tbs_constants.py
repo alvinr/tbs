@@ -123,7 +123,7 @@ MUSLIN_T      = 0.5    # muslin fabric thickness (mm, approx)
 # Loading: the beam parks at the near/pinhole-wall end, the muslin is fed through the far drop-slot and
 # pulled across to the beam, then the beam rolls back over the laid muslin to wash (see the tray report).
 CLAMP_SPACING = 150    # clamp center-to-center spacing (mm)
-CLAMP_FILLER_D = FP_ANGLE_LEG - DIBOND_T - MUSLIN_T - FP_ANGLE_T   # inert HDPE filler depth into the L channel (mm) = 41.5
+CLAMP_FILLER_D = FP_ANGLE_LEG - DIBOND_T - MUSLIN_T - FP_ANGLE_T   # inert HDPE filler depth into the L channel (mm) = 44.125
 CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # clamps per horizontal edge
 CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # clamps per vertical edge
 CLAMP_N_TOTAL = CLAMP_N_HORIZ + 2 * CLAMP_N_VERT   # top edge + 2 sides; bottom (walkway) edge omitted
@@ -1019,11 +1019,11 @@ SUMP_SUCTION_WALL_RUN_Z = 230   # P-04 suction along-wall horizontal height (mm)
 # tray minus a wash clearance each side; height spans from just past the sump well (near) to the far
 # rim.  Muslin < washable tray area < tray < film plane (ACM+frame).
 MUSLIN_TRAY_CLEAR = 50                                                       # wash clearance, each edge (mm)
-MUSLIN_CUT_W   = PROC_TRAY_W - 2 * MUSLIN_TRAY_CLEAR                         # = 4359mm
+MUSLIN_CUT_W   = PROC_TRAY_W - 2 * MUSLIN_TRAY_CLEAR                         # = 4249mm
 MUSLIN_YD_NEAR = PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D + MUSLIN_TRAY_CLEAR   # = 230mm — clears the sump well (Yd80..180)
 MUSLIN_YD_FAR  = PROC_TRAY_YD_FAR - MUSLIN_TRAY_CLEAR                        # = 2230mm
 MUSLIN_CUT_H   = MUSLIN_YD_FAR - MUSLIN_YD_NEAR                             # = 2000mm (washable depth, clear of the sump)
-MUSLIN_AREA_SQFT = round(MUSLIN_CUT_W * MUSLIN_CUT_H / 1e6 * 10.7639)       # = 94 sq ft (captured print; < the 101 sqft film plane)
+MUSLIN_AREA_SQFT = round(MUSLIN_CUT_W * MUSLIN_CUT_H / 1e6 * 10.7639)       # = 91 sq ft (captured print; < the 99 sqft film plane)
 
 # ── Tray floor surface — SINGLE SOURCE for the raised, dual-axis-sloped basin ────────
 # The basin floor is NOT flat at Z0.  Its low corner is RAISED to Z=PROC_TRAY_SUMP_Z so the

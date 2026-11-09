@@ -575,12 +575,15 @@ def _pct(mid: int, cap: int) -> str:
 # roll-up + percentage are computed sums of the levers below; the remaining bands are single-
 # sourced here as declared estimates (they were hand-typed in the report). This ends the
 # duplication and lets the roll-up cascade.
-# Bucket B (partially resolved 2026-07-05): solar is now a computed subtraction (drop 1×
+# Bucket B (COMPLETE 2026-07-05): solar is now a computed subtraction (drop 1×
 # solar-panel-200w), and modeling against the BOM showed two "levers" were phantom — film is BANKED
 # (manual is the standard build) and the battery is ALREADY 1×100Ah — so both were dropped from the
-# roll-up (see the SAVINGS_LEVERS note below). STILL OPEN: a costed chem-compatible poly-tray
-# alternative for lever #3 (leave as a band until specced), and — not a §4 lever — a galvanized-steel
-# walkway-grating alt vs the §5 GRP premium.
+# roll-up (see the SAVINGS_LEVERS note below). The roll-up (the figure that drives the report) and
+# both still-available levers (container, solar) derive. The decided/banked levers (film, tray,
+# battery, valves) keep their declared estimate bands BY DESIGN — each is a path NOT taken (decided
+# against or already standard), so pricing a full alternative BOM (poly tray, galvanized-steel
+# grating vs the §5 GRP premium, electric-actuation kit) would single-source numbers for options
+# that will never be built. Nothing here is pending.
 def _lever_container() -> int:
     return SCEN_B["container"] - SCEN_A["container"] # CW − WWT grade delta (computed)
 

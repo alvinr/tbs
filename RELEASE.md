@@ -13,7 +13,18 @@ change). That running list is the source we curate from. **Cutting a release is 
 file** — a release must not ship without a changelog entry:
 
 1. Make sure **[Unreleased]** captures everything since the last tag.
-2. Promote it: rename `## [Unreleased]
+2. Promote it: rename `## [Unreleased]` → `## [X.Y] — YYYY-MM-DD` and start a fresh empty
+   **[Unreleased]** above it.
+3. Commit, tag, and create the GitHub release from that section's notes.
+
+**`bash scripts/release.sh X.Y`** automates steps 2–3 (promote → regenerate version-stamped diagrams →
+commit → **publish the site + brochure** → tag → `gh release create`) and **refuses to proceed if
+[Unreleased] is empty**, which is what enforces the gate. Cutting a release always deploys, so there
+is no separate publish step to run afterward.
+
+---
+
+## [Unreleased]
 
 - **Light-trap bottom light seal redesigned as a PULL-OUT CORNER APRON** (replaces the fold-down apron). A **fixed full-width base** (floor → drum cage, never moves) closes the center; the two corner zones are closed by **removable pull-out strips** that locate in a 45° chamfer seat at the bottom and butt the swinging leaf's exterior lip at the top. Each strip is held by surface draw latches — two interior, at the strip↔base joint, and two exterior "span" latches bridging the leaf lip batten B1 and a new strip batten B2 on the door side (kept off the interior face so nothing projects into the darkroom and fouls the left lift-out film beam). For transport the strips lift off and stow inside, so the panel swings through the empty corner. Cascaded across hingepanel Sheet 16, the 3D model, parts/costing, the plywood cut sheets, the operating manual, and `hinged-panel-report.md`.
 
@@ -29,7 +40,7 @@ file** — a release must not ship without a changelog entry:
 
 - **Single-source / drift fixes.** Film-plane active area corrected **101 → 99 sq ft**, and the chemistry cost tiers now **derive** from a new `IMAGE_AREA_M2` constant (ends that drift class; budget −$20/$30/$60). Un-registered-values audit single-sourced a batch — the spray-beam span + nozzle count, pump current, Blue fill, battery energy, and ratchet-strap WLL — each wrapped as an injection placeholder so it can't re-drift.
 
-- **Procurement — Master-BOM SKU backfill.** Added missimng SKUs and prices.
+- **Procurement — Master-BOM SKU backfill.** Added missing SKUs and prices.
 
 ## [0.18] — 2026-10-21
 

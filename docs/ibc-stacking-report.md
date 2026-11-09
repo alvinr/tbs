@@ -247,7 +247,7 @@ tolerances that actually matter for fit-up.
 | Feature | Tolerance | Why |
 |---------|-----------|-----|
 | Foot-underside coplanarity (flatness ⟂ A) | ±1.5 mm | frame sits flat on the floor, minimal shim |
-| Upright plumb (perpendicularity to A) | ±2 mm over 2,296 mm (≈0.05°) | totes + corridor stay square |
+| Upright plumb (perpendicularity to A) | ±2 mm over 2,284 mm (≈0.05°) | totes + corridor stay square |
 | Frame diagonal square (Δ of the two diagonals) | ±3 mm | a true rectangular box |
 | Foot-plate M12 hole pattern (100 mm PCD) | ±0.5 mm | floor-anchor clearance |
 | Front-bar seat / hanger-pocket Z position | ±2 mm | bars seat cleanly + the wall holes align |

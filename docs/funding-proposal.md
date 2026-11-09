@@ -99,7 +99,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Perimeter walkway (4 sections + drum-exit punch-out) | $2,568 |
 | Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,490 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,282 |
-| Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $274 |
+| Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + tap trunk extension) | $274 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,680 |
 | Contingency (10%) | ~$3,130 |
 | **Level 1 total** | **~$34,459** |

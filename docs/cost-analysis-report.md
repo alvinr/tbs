@@ -53,7 +53,7 @@ Capital systems ranked by mid cost:
 | **Hinged panel structure** | $1,282 | 4% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
 | **Ventilation & cooling** | $808 | 3% | Fans + cooler + inverter + baffle-duct fab + canopy |
 | **Interior conversion** | $505 | 2% | Insulation, sealing, safelight |
-| **Chemistry prep shelf** | $274 | 0.9% | Fold-down phenolic board + frame + hinge/stays + tap extension |
+| **Chemistry prep shelf** | $274 | 0.9% | Fold-down UV-white ply board + hinge/stays + tap extension |
 | **Optics — pinhole** | $52 | 0.2% | Trivial (it is a pinhole) |
 <!-- END costing:ca-ranking -->
 

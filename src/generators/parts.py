@@ -126,7 +126,7 @@ PARTS: list[Part] = [
          "ventilation", 1, "ea", 30.50, 30.50, "Amazon", "Farm supply", part_no="B075J93DTJ", url="https://www.amazon.com/dp/B075J93DTJ",
          spec="Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade)."),
     # Shade-canopy frame (20×10 ft), itemized 2026-07-27 from the $120 "Canopy frame" lot:
-    Part("canopy-emt-conduit", '1.5" EMT conduit, 10 ft', "steel-structural",
+    Part("canopy-emt-conduit", '1" EMT conduit, 10 ft', "steel-structural",
          "ventilation", 6, "stick", 21.86, 21.86, "Home Depot", part_no="550210000", url="https://www.homedepot.com/p/304229415", spec='Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy).'),
     Part("canopy-emt-fittings", "EMT canopy fittings (couplings, corner ells, connectors)", "steel-structural",
          "ventilation", 8, "ea", 1.45, 1.45, "Home Depot", part_no="12210", url="https://www.homedepot.com/p/100135091", spec="1\" EMT set-screw couplings joining the straight frame runs (×8). Corner turns handled by the 1\" pull elbows (canopy-emt-elbows)."),

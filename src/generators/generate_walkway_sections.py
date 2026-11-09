@@ -285,10 +285,10 @@ def sheet1():
            f"2×1×0.120in long beam\n(runs in Yd, cut) Z{BEAM_Z_BOT:.0f}–{DECK_ZB}", color=C_DIM, fs=6, ha="right",
            va="center", arrow_style="-|>", font=FONT)
 
-    # ── Ribbon support cross-brace (welded 40×10 between the beams, top Z90) ──
-    _rect(ax, CHAN_X0, RIBBON_Z - 18, CHAN_X1 - CHAN_X0, 10, C_STEEL, lw=0.7, z0=6)
-    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 18, (CHAN_X0 + CHAN_X1) / 2 + 70, +60,
-           "ribbon support cross-brace\n(welded 40×10, top Z90 — carries the ribbon)",
+    # ── Ribbon support cross-brace (welded 25×3 flat bar between the beams, top ~Z96) ──
+    _rect(ax, CHAN_X0, RIBBON_Z - 11, CHAN_X1 - CHAN_X0, 3, C_STEEL, lw=0.7, z0=6)
+    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 11, (CHAN_X0 + CHAN_X1) / 2 + 70, +60,
+           "ribbon support cross-brace\n(welded 25×3 flat bar — carries the ribbon)",
            color=C_DIM, fs=5.6, ha="right", va="top", arrow_style="-|>", font=FONT)
 
     # ── The four ribbon lanes IN-PLANE here, in the channel between the beams (Z104.5, flush) ──
@@ -308,7 +308,7 @@ def sheet1():
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     draw_dim_v(ax, X_HI - 105, 0, WALKWAY_H, f"{WALKWAY_H}mm", offset=5, fs=5.6, font=FONT)
-    draw_dim_v(ax, PROC_TRAY_X_R, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm",
+    draw_dim_v(ax, PROC_TRAY_X_R, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM:.1f}mm",
                offset=5, fs=5.4, font=FONT)
     draw_dim_h(ax, PROC_TRAY_X_R+3, IBC_COL_X, 20, f"{IBC_COL_X - PROC_TRAY_X_R}mm", offset=4, fs=5.4,
                above=False, font=FONT)
@@ -318,7 +318,7 @@ def sheet1():
         "SECTION B-B NOTES",
         "1. X–Z elevation looking +Yd near the pinhole-wall END of the ribbon (Yd≈62), where the four corridor↔pinhole-wall lines run TOGETHER as a flat ribbon under the right-walkway grate.",
         "2. The four lanes (26mm pitch, Z104.5 — FLUSH, pipe crown at the deck underside Z115) sit in the clear channel BETWEEN the two 2×1×0.120in long beams (X4380–4523), above the tray rim (Z50), tucked under the grate.",
-        "3. A welded 40×10 cross-brace between the beams (top Z90) carries the ribbon at each support station.",
+        "3. A welded 25×3 flat-bar cross-brace between the beams (top ~Z96) carries the ribbon at each support station.",
         "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump) so blue/brown alternate and no longer cross into the corridor.",
         "5. Off-section (−Yd) each lane drops to its wall feature: the two blue lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on toward the near-rim taps.",
     ]
@@ -393,10 +393,10 @@ def sheet2():
     ax.text((IBC_COL_X + X_HI) / 2, 330, "IBC-3\n(Brown)\n↑ tote", fontsize=8, ha="center", va="center",
             color="white", fontweight="bold", zorder=8, **FONT)
 
-    # ── Ribbon support cross-brace (welded 40×10 between the beams, top Z90 — this cut is on a station) ──
-    _rect(ax, CHAN_X0, RIBBON_Z - 18, CHAN_X1 - CHAN_X0, 10, C_STEEL, lw=0.7, z0=6)
-    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 18, (CHAN_X0 + CHAN_X1) / 2 + 70, +60,
-           "ribbon support cross-brace\n(welded 40×10, top Z90 — carries the ribbon)",
+    # ── Ribbon support cross-brace (welded 25×3 flat bar between the beams, top ~Z96 — this cut is on a station) ──
+    _rect(ax, CHAN_X0, RIBBON_Z - 11, CHAN_X1 - CHAN_X0, 3, C_STEEL, lw=0.7, z0=6)
+    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 11, (CHAN_X0 + CHAN_X1) / 2 + 70, +60,
+           "ribbon support cross-brace\n(welded 25×3 flat bar — carries the ribbon)",
            color=C_DIM, fs=5.6, ha="right", va="top", arrow_style="-|>", font=FONT)
 
     # ── The four ribbon lanes IN-PLANE here (they run the length under the grate) ──
@@ -414,7 +414,7 @@ def sheet2():
     leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1, 175,
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
-    draw_dim_v(ax, PROC_TRAY_X_R, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm",
+    draw_dim_v(ax, PROC_TRAY_X_R, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM:.1f}mm",
                offset=5, fs=5.4, font=FONT)
     draw_dim_v(ax, X_HI - 105, 0, WALKWAY_H, f"{WALKWAY_H}mm", offset=5, fs=5.6, font=FONT)
     draw_dim_h(ax, TXR+3, IBC_COL_X, 20, f"{IBC_COL_X - TXR}mm", offset=4, fs=5.4, above=False, font=FONT)
@@ -424,7 +424,7 @@ def sheet2():
         "1. SAME cut as B-B (X–Z, looking +Yd), moved to mid-depth (Yd≈450), halfway between the pinhole wall and the plumbing corridor, at a ribbon support station.",
         "2. Here the plane is INSIDE the processing tray — the basin + wash water are cut; the walkway deck spans over the tray.",
         "3. The four ribbon lanes (Z104.5 flush, 26mm pitch) run IN-PLANE here, in channel BETWEEN the long beams (X4380–4523) — a SANCTIONED pass ABOVE the tray rim, under the grate, clear of the print/water.",
-        "4. A welded 40×10 cross-brace (top Z90) carries the ribbon at this station.  The lanes read as RUNS the length of B-B → C-C → D-D.",
+        "4. A welded 25×3 flat-bar cross-brace (top ~Z96) carries the ribbon at this station.  The lanes read as RUNS the length of B-B → C-C → D-D.",
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 66, 6.6, fs=6.2,
                font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)

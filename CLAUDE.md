@@ -347,7 +347,7 @@ with-permission HARD RULE).
 
 ## Tracking
 
-`TODO.md` is the **single record** of outstanding actions/TODOs (repo-only, not published). Add new items there rather than scattering `# TODO` comments through the code; review and tick them off as they're done. `editorial-review-todo.md` (complete) and `unused-imports-todo.md` are detailed sub-trackers linked from it.
+`docs/TODO.md` is the **single record** of outstanding actions/TODOs (repo-only, not published — it lives under `docs/` since the 2026-10 Markdown reorg but is deliberately left out of `publish.sh`/`setup_docs.py`/`mkdocs.yml`). Add new items there rather than scattering `# TODO` comments through the code; review and tick them off as they're done. `editorial-review-todo.md` (complete) and `unused-imports-todo.md` are detailed sub-trackers linked from it.
 
 ## Communication
 

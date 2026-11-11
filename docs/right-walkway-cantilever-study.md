@@ -8,7 +8,7 @@
 
 The right walkway was originally **ceiling-hung** — five M10 rod-pairs from the deck up to the roof. The film-plane rework (wall-seat saddles, rails now running the full width) exposed a conflict: **those vertical rods sit in the film plane's X-footprint (X4329–4629 ⊂ X260–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing and Yd1575 at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, colliding with the hangers at Yd1828/1371 — plus the rods sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
 
-**Key insight:** the **deck itself was never the problem** — it sits at Z130, tucked *under* the film-frame bottom (Z150). Only the **vertical rods** intrude. Remove the rods and the film-plane conflict disappears, **with no reduction in film size and the same swing range on both sides**.
+**Key insight:** the **deck itself was never the problem** — it sits at Z140, tucked *under* the film-frame bottom (Z160). Only the **vertical rods** intrude. Remove the rods and the film-plane conflict disappears, **with no reduction in film size and the same swing range on both sides**.
 
 ## 2. The clearance that makes this possible now
 
@@ -30,12 +30,12 @@ Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC fra
 
 The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4654)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
 
-- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). A U-clamp grips each upright with 2× M12; the arm (2×1×0.120in, 50.8×22mm) reaches ~325mm back to the deck's left edge (X4329).
+- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). The arm bolts to each upright through a J6 end-plate (M12×100 + rear backing plate — the as-built connection; see [Walkway §4.2](walkway-report.md)); the arm (2×1×0.120in, 50.8×25.4mm) reaches ~325mm back to the deck's left edge (X4329).
 - **2 outer wall-mounted ledgers** — on the **near (Yd0) and far (Yd2362) container walls**, each **through-bolted** (interior + exterior plate, 2 bolts) at 2 X stations along the deck width. These carry the deck's ends, where the frame can't reach.
 - **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1,046mm between supports.
 - All members sit at **Z70–115** — ~10mm above the spray-bar top at the (low-side) cantilever stations, below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
 
-3D study model: `src/models/generate_right_cantilever_study.py` (scenes: Combined / **Anchors (frame + walls)** / Clearance / Labeled — the Anchors scene shows both the upright U-clamps and the wall ledgers).
+3D study model: `src/models/generate_right_cantilever_study.py` (scenes: Combined / **Anchors (frame + walls)** / Clearance / Labeled — the Anchors scene shows both the upright arm-mounts and the wall ledgers).
 
 ## 4. Load check (first-order — favorable)
 

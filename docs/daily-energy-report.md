@@ -121,8 +121,10 @@ dumped; this line covers the case where it is drained off.)
 **Conclusions:**
 - The system is **solar-positive at every realistic daily throughput** — even a 4-print
   day generates more than it consumes, so it sustains indefinitely on sun.
-- A **3-print day fits within a single 2-pack battery charge**, giving a full day of operation
-  on a dead-cloudy day from the battery alone.
+- A **3-print day fits within a 2-pack battery charge** (2×100 Ah = 2,400 Wh), giving a full
+  day of operation on a dead-cloudy day from the battery alone. **The standard build is 1 pack
+  (1,200 Wh)** — good for ~1.5 prints battery-alone, relying on daytime solar for the rest; the
+  2nd pack is the optional config analyzed in §8.
 - A **4-print day relies on the panels topping up during the day** (the loads run in
   daylight, so this is normally fine); on a fully overcast day, cap at ~3 prints. The
   higher-draw AC cooler (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W) puts the 4-print battery

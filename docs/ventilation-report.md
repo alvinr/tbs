@@ -27,7 +27,7 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> | None | **Yes — always** |
+| 70% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
 | Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$242<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
@@ -154,12 +154,12 @@ From the walkway design, the location of the cooler (green rectangle) can be see
 
 | Parameter | Specification |
 |-----------|--------------|
-| Material | 80% shade cloth, 20 × 10 ft |
-| Frame | 1.5" EMT conduit + fittings |
+| Material | 70% shade cloth, 20 × 10 ft |
+| Frame | 1" EMT conduit + fittings |
 | Installation | Erected over the container before solar noon |
 | Temperature reduction | −15 to −20°C interior |
 | Power requirement | None |
-| Approximate cost | ~$200 (cloth $80 + frame $120) |
+| Approximate cost | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> (70% cloth ~$30 + 1" EMT frame ~$131 + fittings) |
 
 The shade canopy is the most effective single mitigation — it eliminates direct solar irradiance on the container roof and walls, reducing the primary heat source before any active cooling is applied. It is required at all deployments regardless of season.
 
@@ -200,7 +200,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Home Depot | $109 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
 | [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade). | 1 ea | Amazon / Farm supply | $30 |
-| [1.5" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy). | 6 stick | Home Depot | $131 |
+| [1" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy). | 6 stick | Home Depot | $131 |
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 1" EMT set-screw couplings joining the straight frame runs (×8). Corner turns handled by the 1" pull elbows (canopy-emt-elbows). | 8 ea | Home Depot | $12 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | PIPE DECOR 1" black-iron floor flange 4-pack — one per leg base (×4). Add ground stakes/guys if free-standing. | 1 4-pack | Home Depot | $16 |
 | [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | Halex 1" EMT rigid pull elbow at the 4 top-frame corners (chose bought elbows over field-bending). | 4 ea | Home Depot | $47 |

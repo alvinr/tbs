@@ -182,7 +182,7 @@ against this frame with the 2× lift-and-turn cam latches and 20mm EPDM gaskets 
 The swinging panel seals against the fixed door frame in its operational (closed)
 position via five light-tight paths — panel perimeter, the two swing-cut seals, the
 bottom and top frame seal lips, and the Ø800 housing-surround ring — all 20mm EPDM,
-compressed by the four Southco C2-33 cam latches and released before the swing. See
+compressed by the two McMaster 1619A74 lift-and-turn cam latches and released before the swing. See
 **[Hinged Panel Report §6 — Light Seal Design](hinged-panel-report.md)** for the full
 per-path seal table and the dark-adaptation verification check.
 
@@ -219,7 +219,7 @@ the P-05/P-03 waste-drain pumps) mount on the **Corridor Plumbing Panel** in the
 270mm IBC plumbing corridor (right end zone), at the tote stack — so the pump↔tote
 runs are short. The Blue supply pipe runs from P-01 along the pinhole wall to the
 spray-bar feed in the optical zone (~4m coiled flex to the rolling beam); the tray
-drain returns from the sump to P-04 on the panel. P-02 (Brown filter feed) and the
+drain returns from the sump to P-04 (the tray-drain pump). P-04 and the
 3-stage filter stack are on the **Pinhole Wall Plumbing Panel** on the pinhole wall
 face. See the [Plumbing Report](plumbing-report.md) for the full plumbing layout.
 

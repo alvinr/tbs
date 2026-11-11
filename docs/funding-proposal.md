@@ -68,10 +68,10 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 ### Chemistry
 Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide, with an optional trace of ammonium dichromate (0.1–0.4%) for added contrast. The two base reagents require no DEA registration, hazmat shipping, or special disposal; only the trace dichromate needs careful handling — at a tiny fraction of the bulk quantities used by dichromate-sensitized processes. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller in two wet-on-wet coats, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$34<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$25–61<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,680<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
+Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$34<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$25–61<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,680<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$103 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
 
 ### Water System
-A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1,000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1,000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full prints between resupply. Water recycling: the three-stage filter train extends usable supply by approximately 40%. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
 
 The system was designed for remote deployments: no municipal water or power connection required.
 
@@ -81,7 +81,7 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,459<!-- END costing:fund-l1-total -->, Standard scenario)
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,452<!-- END costing:fund-l1-total -->, Standard scenario)
 Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$28,000–$39,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
@@ -90,7 +90,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | 20ft container (Cargo Worthy grade) + delivery | $3,300 |
 | Interior conversion (light-seal, paint, ventilation, door) | $505 |
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $52 |
-| Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint) | $4,324 |
+| Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint) | $4,316 |
 | Pinhole disc holder (front board) | $329 |
 | Housed revolving-door light trap (plastic-skin Ø800 housing + C-shell drum, bearings, seals, fabrication) | $3,667 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $7,591 |
@@ -99,10 +99,10 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Perimeter walkway (4 sections + drum-exit punch-out) | $2,568 |
 | Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,490 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,282 |
-| Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $274 |
+| Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + tap trunk extension) | $275 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,680 |
 | Contingency (10%) | ~$3,130 |
-| **Level 1 total** | **~$34,459** |
+| **Level 1 total** | **~$34,452** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,025–2,750)
@@ -125,7 +125,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–5,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,484–42,209<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,477–42,202<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

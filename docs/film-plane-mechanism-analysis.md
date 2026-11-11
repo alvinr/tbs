@@ -107,6 +107,8 @@ This varying effective focal length is the source of all the distortion effects 
 
 ### Distortion Effects by Configuration
 
+> **Note:** The C0–C6 labels in this section index the **distortion render set** — illustrative optical cases (flat, four tilt extremes, a uniform-close case) chosen to show the range of effects — and are **independent of the §4 mechanism-configuration numbers** (where C4–C6 are the swing poses). Each render is a pure flat rotation of the rigid plane.
+
 **C0 — Flat (reference):**
 Standard central projection. Vertical lines remain vertical, horizontal lines remain horizontal. The checker pattern is a regular perspective view.
 

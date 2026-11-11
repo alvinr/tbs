@@ -448,11 +448,14 @@ Order of operations (single person, ~10 min) — see the [Operating Manual](oper
 3. Lift out the left walkway + door-end near-deck section.
 4. **Strike the two left film rails (TL + BL)** — release each clamp bar, lift the rail
    out of its saddles, and stow.
-5. Release the two lift-and-turn cam latches (releases the perimeter + cut seals).
-6. **Swing the frame ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard** about the pivot, assisted (balanced about the
+5. **Remove the two pull-out apron strips (near + far)** — release the 4 draw latches on each,
+   lift it off its 45° chamfer seat, and stow it strapped inside (the strips sit in the leaf's
+   horizontal sweep, so they must be out before the swing).
+6. Release the two lift-and-turn cam latches (releases the perimeter + cut seals).
+7. **Swing the frame ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard** about the pivot, assisted (balanced about the
    vertical axis — no gravity torque; control momentum at the stop).
-7. Engage the top + bottom wall stays (the transport lock).
-8. Close the ISO cargo doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm).
+8. Engage the top + bottom wall stays (the transport lock).
+9. Close the ISO cargo doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm).
 
 Re-deployment reverses the sequence.
 

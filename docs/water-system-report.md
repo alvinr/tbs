@@ -66,11 +66,11 @@ It will **not**:
 
 ### Per-print water requirement
 
-Processing a ~103 sq ft print in the processing tray (4,349 × 2,200mm), flooded to 6mm (¼ inch) depth:
+Flooding the ~103 sq ft processing-tray area (4,349 × 2,200mm) to 6mm (¼ inch) depth:
 
 ```
 Volume per flood = 103 sq ft × (6mm / 304.8) = 103 × 0.0197 ft = 2.03 cu ft
-                 = 2.09 × 7.48 = 15.6 gallons ≈ 16 gallons per wash cycle
+                 = 2.03 × 7.48 = 15.2 gallons ≈ 16 gal allowed per wash cycle (rounded up for margin)
 ```
 
 | Wash cycle | Water source | Volume | Drain to |
@@ -311,7 +311,7 @@ IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to t
 | Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,316–2,332 | 0–1,010 |
 | Pinhole wall face | Pinhole Wall panel — P-04 + 3-stage filter bank (high, sumps hanging) | 3,300–3,976 | ~100 | 1,746–2,340 |
 | IBC plumbing corridor | Corridor panel — P-01/P-02/P-03/P-05 + ACC-01 | 4,654–5,104 | 1,046–1,316 | 355–1,930 |
-| Optical zone floor | Processing tray | 280–4,629 | 60–2,300 | 0–50 |
+| Optical zone floor | Processing tray | 280–4,629 | 80–2,280 | 0–50 |
 | Optical zone | No equipment | 260–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).

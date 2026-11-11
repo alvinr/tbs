@@ -36,8 +36,8 @@ from the pinhole wall across to the plumbing corridor. (Sections
 
 Cut near the **pinhole‑wall end of the ribbon (Yd ≈ 62)**. The four lanes run side‑by‑side on
 a 26 mm pitch at **Z104.5 — flush**, their crowns at the grate underside, in the clear
-channel between the two 40 × 40 long beams, sitting **above the tray rim**.
-A welded 40 × 10 cross‑brace between the beams carries the ribbon at each support station.
+channel between the two 2×1×0.120in (50.8 × 25.4mm) long beams, sitting **above the tray rim**.
+A welded 25 × 3mm flat-bar cross‑brace between the beams carries the ribbon at each support station.
 Off‑section each lane drops to its wall feature — the two blue lanes to TAP‑01 and the
 SV‑01 filtered return, the two brown lanes on toward the near‑rim taps.
 

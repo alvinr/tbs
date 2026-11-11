@@ -241,7 +241,7 @@ square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,28
 | Manifold OD / ID | 25mm / 19mm (3/4" LDPE) |
 | Manifold mounting | Clipped to the beam's inboard side face (cushioned pipe clips + the nozzle saddle-tees) |
 
-The forty-three nozzle saddle-tees plus the seven feed tees tap directly into the side
+The forty-three nozzle saddle-tees plus the single center feed tee tap directly into the side
 manifold and grip it by their barb ridges. Because the manifold is external, no beam-wall
 drilling is needed; the tees plus cushioned pipe clips locate the manifold along the beam.
 
@@ -253,9 +253,10 @@ folds 180° back on itself and is secured with a stainless steel or nylon retain
 clip (see Sheet 4, Detail A). The fold-back and retainer clip provide a watertight
 seal; the SS beam is purely structural.
 
-- **Feed points (7, ~550mm pitch):** Barbed feed tees installed into the side manifold
-  — each connects an irrigation tube from the ball-joint manifold to the poly
-  pipe bore, distributing the supply evenly along the pipe.
+- **Feed point (1, at the beam center):** A single barbed feed tee taps the side manifold
+  at the beam center, connecting the flex supply hose to the poly pipe bore; the
+  over-bored 3/4" manifold distributes the supply evenly along the pipe with no
+  multi-point feeding needed.
 - **Both ends (X=310 and X=4,599, the beam ends):** LDPE fold-back with retainer clip — fully sealed.
 
 ![Spray Beam + Manifold — Sheet 9: full-length station layout (cut length, nozzle + feed-tee pitch, carriage-clamp + ball-joint stations)](assets/spray-bar-sheet9.png)
@@ -452,7 +453,7 @@ clearance at the supports and the camber applied, the beam runs level under load
 | Water in manifold | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× Ø32 wheel + axle + 8 saddle clamps) | 0.45 |
-| Nozzles (26×) + feed manifold/tubes/fittings | 0.50 |
+| Nozzles (43×) + feed manifold/fittings | 0.50 |
 | Hardware (bolts, clips, clamp plates) | 0.35 |
 | **Dry total** | **~13.3 kg** |
 | **Wet total (operating)** | **~14.4 kg** |
@@ -474,13 +475,14 @@ is set over the full length in the fabrication jig.
 |-----------|-------|
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
-| Feed points (manifold) | 7 (~550mm pitch) — 0.5 GPM per feed tube |
+| Feed point (manifold) | 1 (beam center) — single center feed into the over-bored manifold |
 | Spray nozzles | 43 × 90° down-jets (DIG 110B) |
 | Flow per nozzle | 0.09 GPM (0.34 L/min) |
 
-Feeding the poly pipe at seven points (~550mm pitch) from the ball-joint manifold — rather
-than a single center feed — keeps the supply pressure uniform along the pipe, so each of
-the 43 nozzles sees nearly the same flow regardless of its distance from the inlet. The
+Feeding the over-bored 3/4" manifold at a single center point from the ball joint keeps the
+supply pressure uniform along the pipe: the manifold bore is over-sized relative to the nozzle
+saddle-tees, so it acts as a low-loss plenum and each of the 43 nozzles sees nearly the same
+flow regardless of its distance from the inlet, with no multi-point feeding needed. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each jet delivers a **90° cone directed
 straight down** — chosen over a flat-fan/180° pattern so the wash lands on the print rather
 than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
@@ -500,7 +502,7 @@ the print surface.
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05a (Blue/Brown selector) → BV-05b (spray on/off) →
-coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 26× spray nozzles.
+coiled flexible hose → manifold center inlet (single feed) → over-bored 3/4" manifold bore → 43× spray nozzles.
 
 ### 3.11 Walkway Slit
 
@@ -541,7 +543,7 @@ Loading needs **no lift mechanism**. The beam parks out of the way and the musli
 
 1. Roll the spray-bar gantry to the **near (pinhole-wall) end** of its Yd travel and park it there.
 2. Feed the exposed muslin down through the **far muslin-drop slot** (image-plane side) and pull it across the tray toward the parked beam until it lies flat over the washable area.
-3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈200/4,599, ~10–20mm outboard of the muslin's X≈220/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
+3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈310/4,599, ~20mm outboard of the muslin's X≈330/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
 
 ### 4.3 Beam Removal for Maintenance
 
@@ -561,7 +563,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
 | 5 | Detail C — Wheel Attachment | Section along axle at 4:1 — carriage plate, nylon wheel, axle pin, saddle clamp |
 | 6 | Detail D — Wheel Plan | Plan view of carriage — beam, carriage plate, beam clamp plate, saddle clamps, wheels |
-| 7 | Detail B — Manifold Feed | Longitudinal section at 2:1 — manifold-fed barbed feed connection (typ. ×7) and nozzle connection details |
+| 7 | Detail B — Manifold Feed | Longitudinal section at 2:1 — single center-feed barbed connection and nozzle connection details |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 

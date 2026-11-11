@@ -128,8 +128,8 @@ def ribbon_supports():
     x0, x1 = ov.RWK_X_L, ov.RWK_X_R              # bearer span across the walkway (4329..4629)
     ztop = RIBBON_Z - 8                          # ~96 — bar top just under the flush pipes (ribbon Z104.5)
     for yd in RIBBON_SUP_YD:
-        p.append(draw.ruby_box("Ribbon support cross-beam (welded 40x10)",
-                             x0, yd - 3, ztop - 10, x1 - x0, 6, 10, color=draw.C_STEEL))
+        p.append(draw.ruby_box("Ribbon support cross-beam (welded 25x3 flat bar)",
+                             x0, yd - 12.5, ztop - 3, x1 - x0, 25, 3, color=draw.C_STEEL))
     return "\n".join(p)
 
 

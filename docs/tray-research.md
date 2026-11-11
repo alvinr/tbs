@@ -11,7 +11,7 @@ available if the question is reopened.
 
 ## 1. Why the tray was reviewed
 
-At ~$1,583–2,271 the processing tray is the **largest single reducible line** in
+At ~$1,473–2,121 the processing tray is the **largest single reducible line** in
 the [water system](water-system-report.md) — stainless was chosen originally for
 **rigidity and finish, not chemistry** (the cyanotype wash — dilute ferric
 ammonium oxalate / potassium ferricyanide / citric acid, no chloride — is inert
@@ -23,7 +23,7 @@ Per its [design goals](processing-tray-and-spray-bar.md), the tray is a **catch 
 drain pan**, not a soaking basin:
 
 - **Contain** all wash water — no penetration of the container floor.
-- **Drain** to a corner sump for pump-out + recycling.
+- **Drain** to a center pickup well for pump-out + recycling.
 - Provide a **rigid surface** that simplifies handling the large (4,389 × 2,094 mm) print.
 - **Permanently installed**; a leak is a serious failure (water loose in the container).
 
@@ -33,7 +33,7 @@ tray. The **rigid-surface requirement** is the one that ends up deciding the mat
 ## 3. Options evaluated
 
 The two redesigns share one idea — a **sloped sub-structure** carrying a thin
-watertight surface that falls 1:200 to the corner sump. They differ only in that
+watertight surface that falls 1:200 to the center pickup well. They differ only in that
 surface: a **welded-PP skin** or a **draped liner**.
 
 ![Welded-PP option — construction cross-section (evaluated, not adopted)](assets/tray-redesign-sheet1.png)
@@ -50,7 +50,7 @@ surface: a **welded-PP skin** or a **draped liner**.
 
 | Option | **Tray total** | vs SS | Note |
 |---|---|---|---|
-| **A. 304 SS** (retained) | **$1,583–2,271** | — | rigid, premium #4 finish; proven |
+| **A. 304 SS** (retained) | **$1,473–2,121** | — | rigid, 2B mill finish; proven |
 | **B. Welded PP** | **$935–1,263** (self-weld) / $1,335–1,963 (shop) | save ~$550–920 / ~$150–220 | PP sheet ($258/sheet, US Plastic) is *not* cheaper than SS; saving is fabrication only, and hinges on who welds |
 | **C. Liner** | **~$220–450** | save ~$1,150–1,850 | cheapest, but a flexible liner — not a rigid surface |
 

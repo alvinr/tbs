@@ -166,12 +166,12 @@ def floor_leg_check():
          "2×2×0.120 SHS")
     tek_pullout = 5300.0   # #14×3½ 410-SS self-driller, ~5.3 kN pull-out in 4mm steel
     _row("Floor-leg uplift → sub-plate", f"{t_anchor:.0f} N/fixing", f"{tek_pullout:.0f} N", f"{tek_pullout / t_anchor:.2f}",
-         f"leg bolts to the sub-plate (§5.1a); self-drilling TEKs carry the couple into the sill/members, 2 outboard over the {foot_l:.0f} mm foot")
+         f"leg bolts to the sub-plate (§5.1a); winged TEKs carry the couple into the sill/members, 2 outboard over the {foot_l:.0f} mm foot")
     return ("\n## 6-9. LEFT-WALKWAY FLOOR-LEG CANTILEVER (arm + post + foot anchors) ##\n"
             f"  STD arm 2×1 {l_std:.0f} mm: M {ms:.0f} N·m cap {mcs:.0f} SF {sfs:.2f}\n"
             f"  PUNCH-OUT arm 4×1 {l_wide:.0f} mm: M {mw:.0f} N·m cap {mcw:.0f} SF {sfw:.2f}  (redesigned; the 2×1 was SF 1.04)\n"
             f"  post 2×2×0.120: M_base {m_post:.0f} N·m cap {zp * FY / 1e3:.0f} SF {sf_post:.2f}\n"
-            f"  floor-leg uplift: ~{t_anchor:.0f} N/fixing — reacted through the foot into the continuous sub-plate, whose self-drilling TEKs engage the sill/cross-members (~{tek_pullout:.0f} N each, SF {tek_pullout / t_anchor:.2f}).")
+            f"  floor-leg uplift: ~{t_anchor:.0f} N/fixing — reacted through the foot into the continuous sub-plate, whose winged TEKs engage the sill/cross-members (~{tek_pullout:.0f} N each, SF {tek_pullout / t_anchor:.2f}).")
 
 
 # ── 10. Combined corner plate (shared walkway beam + film rail) ──────────────
@@ -215,7 +215,7 @@ FASTENERS = [
      "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
-    ("WF4a", "Floor-anchor sub-plate → sill + cross-members (§5.1a)", "#14×3½″ self-driller (90822A536)",
+    ("WF4a", "Floor-anchor sub-plate → sill + cross-members (§5.1a)", "#14×3½″ winged self-driller (90822A536)",
      "410 SS", "container-dependent (~20)", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
     ("WF4b", "Floor-leg foot plate → sub-plate (tapped boss)", "M12×30 into tapped boss",
      "Gr.8.8 zinc", "4/foot × 5 = 20", "snug + locker", "split-lock under head", "thread-locker (tapped boss)"),
@@ -301,7 +301,7 @@ def tolerances_md():
         ("Deck coplanarity — grate-bearing tops, all 4 sections", "A", "±2 mm", "level walking surface"),
         ("Bracket arm reach (tip X)", "B", "±2 mm", "grate-edge bearing only"),
         (f"Wall-bolt pattern (±{dx}/±{k.WALKWAY_BRACKET_BOLT_DX_WIDE} X, Z{k.WALKWAY_BRACKET_BOLT_Z_LO}/Z{k.WALKWAY_BRACKET_UPPER_BOLT_Z})", "B", "±0.5 mm", "must align reinf-plate + wall holes"),
-        (f"Foot-anchor pattern (X +{k.LEFT_WK_CANT_FOOT_BOLT_DX[0]}/+{k.LEFT_WK_CANT_FOOT_BOLT_DX[1]}, ±{k.LEFT_WK_CANT_FOOT_BOLT_DY} Yd)", "A", "±1 mm", "self-drillers are forgiving"),
+        (f"Foot-anchor pattern (X +{k.LEFT_WK_CANT_FOOT_BOLT_DX[0]}/+{k.LEFT_WK_CANT_FOOT_BOLT_DX[1]}, ±{k.LEFT_WK_CANT_FOOT_BOLT_DY} Yd)", "A", "±1 mm", "winged self-drillers are forgiving"),
         (f"Spray-bar slit position (X{int(k.PH_X) if hasattr(k,'PH_X') else 2454})", "C", "±2 mm", "align to the traveling spray bar"),
         ("Muslin notch / drum-exit punch-out position", "B/C", "±3 mm", "clearance features"),
         ("Combined corner-plate seat Z (walkway beam + film rail)", "A+C", "±1 mm", "shared level interface with the film plane"),

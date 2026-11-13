@@ -322,7 +322,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | 316 SS hold-down clips (FRP M/G-clip, ×20) | $25 | $32 | $40 | Near/far/right walkway GRP grating retention |
 | Drum-exit punch-out — extra GRP grating (~0.23 m²) | $50 | $57 | $65 | 600mm-deep landing at the light-lock exit |
 | Left floor-leg cantilever brackets (×5) | $65 | $80 | $105 | 2×2×0.120in posts + 2×1×0.120in arms + foot plates |
-| Floor-anchor sub-plate (strongback) + self-drilling TEKs + leg bolts | $133 | $178 | $223 | One continuous self-tapped sub-plate under the 5-leg line (the legs sit at ~one X; cross-member pitch not standardized). ~1,900×350×8 steel (material est) + #14×3½″ TEKs (×20) + 20× M12×30 leg bolts into tapped bosses; finalized on the acquired container |
+| Floor-anchor sub-plate (strongback) + winged TEKs + leg bolts | $133 | $178 | $223 | One continuous self-tapped sub-plate under the 5-leg line (the legs sit at ~one X; cross-member pitch not standardized). ~1,900×350×8 steel (material est) + winged #14×3½″ TEKs (×20) + 20× M12×30 leg bolts into tapped bosses; finalized on the acquired container |
 | Fabrication (brackets, cantilever frame, install) | $345 | $488 | $625 | 13 std + 5 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices |
 | **Perimeter walkway total** | **$2,135** | **$2,574** | **$3,037** | |
 <!-- END costing:walkway -->

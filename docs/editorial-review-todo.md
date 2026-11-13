@@ -26,7 +26,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 
 ## Track 2 — Personal voice (Home + Proposal)
 
-- [ ] project-summary.md  *(Home — source synced → index.md by publish.sh)*
+- [x] project-summary.md  *(Home — source synced → index.md by publish.sh)* — voiced to first person (concede-then-punch), front-board claim corrected (pinhole-point vs field-camera, no deprecated-tilt echo), width → "about 14ft", solar/battery + off-grid line added. 0 tells / 0 stiff.
 - [ ] funding-proposal.md  *(Proposal)*
 
 ---

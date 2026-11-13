@@ -9,7 +9,7 @@
 ---
 
 ## 1. The Hook
-A standard shipping container sits in a field. Inside, on 99 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 15 feet wide and 7 feet tall. The people who made it will wade into the image to develop it.
+A standard shipping container sits in a field. Inside, on 99 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 14 feet wide and 7 feet tall. The people who made it will wade into the image to develop it.
 
 The container is a camera.
 
@@ -27,7 +27,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 ### How
 The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [thebigshoebox.org](https://thebigshoebox.org/).
 
-It travels on a commercial hire truck (no CDL required) and runs off-grid: a self-contained water system good for ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, powered by LiFePO4 battery packs that recharge from solar or a household outlet.
+It travels on a commercial hire truck (no CDL required) and runs off-grid: a self-contained water system good for ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, powered on 12V DC by a 100Ah LiFePO4 battery and a 600W solar array — solar-positive in sun, so it keeps running indefinitely.
 
 ### Why Now
 The history of large-format photography is a history of increasing precision in decreasing size. The view camera shrank from room to studio to field. The Big Shoebox inverts that trajectory: it scales a camera back up to architectural dimensions, not as spectacle, but as instrument. The container is not incidental to the work — it is the camera body. The constraint of the container's interior geometry is the optical specification. Site, transport, and access become compositional decisions.
@@ -147,7 +147,7 @@ A 12-month build and deployment program:
 Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programs, and community organizations at each site.
 
 ### Archival Print Edition
-50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'5" × 6'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [thebigshoebox.org](https://thebigshoebox.org/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
@@ -179,7 +179,7 @@ My practice since has moved between classical portraiture and abstract color in 
 |-----------|-------|
 | Container | 20ft ISO standard (6,058 × 2,438 × 2,591mm exterior) |
 | Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm |
-| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10") |
+| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'5" × 6'10") |
 | Container interior | 5,893 × 2,388mm (~19'4" × 7'10") |
 | Image area | ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft |
 | Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Rayleigh formula, λ=550nm) |

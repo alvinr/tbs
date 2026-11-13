@@ -19,7 +19,7 @@ access functions:
 
 All four sections share a common 140mm deck height (115mm bracket arm, L-angle, or
 floor-leg arm + 25mm grating) and 300mm standard width, creating a level perimeter walking
-surface. There are two sections that _punch out_ to allows easier access of the lightrap and around the battery stack.
+surface. Two sections _punch out_ wider — at the light trap and the battery stack — for easier access.
 
 The design enforces **zero processing tray contact** — all walkway supports are
 either wall-mounted, carried on the cantilever frame off the IBC frame, or placed outside the tray footprint. This
@@ -63,9 +63,8 @@ The four removable sections are cut from two molded GRP stock panels per the cut
 
 ## 3. Near and Far Walkways — Wall-Cantilevered
 
-The near (pinhole wall) and far (film plane wall) walkways run
-the full length of the processing tray zone, from the left walkway butt joint at
-with the left and right walkways.
+The near (pinhole wall) and far (film plane wall) walkways run the full length of
+the processing tray, butting the left and right walkways at each end.
 
 ### 3.1 Cantilever Bracket Design
 
@@ -82,33 +81,24 @@ the 300 lbf tip load at SF 2.1.
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
-**Attachment:** 3× M12 through-bolts per bracket in a triangular pattern,
-passing through the full wall assembly: hex head → reinforcing plate (6mm) →
-exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (8mm) → nut. Two lower bolts straddle
-the 8mm gusset plate at ±27mm from the plate centerline in X (centered
-between plate edge and gusset). One upper bolt (just above the bracket
-arm, near the top of the mounting plate) is centered on the gusset
-centerline. The container
-corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
-A 6mm reinforcing plate (100×200mm) is welded to the exterior panel face to
-provide a bearing surface for the bolt heads and washers. See View B for the bolt pattern detail.
+**Attachment:** 3× M12 through-bolts per bracket, triangular pattern, sandwiching
+the full wall: reinforcing plate (6mm) → exterior panel (1.6mm Corten) → hollow rib
+(1.6mm) → bracket leg (8mm) → nut. The two lower bolts straddle the gusset at ±27mm X;
+the upper bolt sits just above the arm on the gusset centerline. Each bolt bridges the
+air gap inside the hollow rib; a welded 6mm reinforcing plate (100×200mm) gives the
+heads a bearing face. See View B.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") centers.
 
 ### 3.2 Near Walkway Widened Section
 
-The near walkway widens from 300mm to 500mm, extending past the spray bar slit to the next rib position.
-This widened section provides additional standing room in front of the
-electrical panel, battery bank, and
-through the spray bar slit zone. These wall-mounted equipment
-items require front access for operation and maintenance, and the wider
-platform gives the operator full-width standing room during spray bar passes.
+The near walkway widens from 300mm to 500mm, extending past the spray bar slit to the
+next rib. It gives the operator full-width standing room in front of the electrical
+panel, battery bank, and spray-bar slit — wall-mounted equipment that needs front
+access for operation and maintenance.
 
-Five brackets in this zone use a heavier design to support the 500mm cantilever arm. The
-bracket positions align to container corrugation ribs.
-Extending the widened zone past the slit ensures 500mm-arm brackets support
-the grating on both sides of the slit, eliminating unsupported overhang.
+Five heavier brackets carry the 500mm arm. The zone runs past the slit so a 500mm-arm
+bracket supports the grating on both sides of it — no unsupported overhang.
 
 **Sheet 9 — Detail F: Near-Walkway Bump-Out (pinhole wall, plan).** The 500mm-deep standing
 band over X1,055–3,083, its 5 widened wall-cantilever brackets on the ribs, the 100mm deck
@@ -135,17 +125,9 @@ upper wall-bolt clears the grate deck by 25mm); the widened bracket compensates
 for its longer arm with heavier (10mm) plate, a wider blank for greater wall
 engagement, and the additional bolt for higher moment capacity.
 
-**Attachment:** 4× M12 through-bolts per bracket in a rectangular pattern,
-passing through the full wall assembly: hex head → reinforcing plate (6mm) →
-exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (10mm) → nut. Two lower bolts straddle
-the 10mm gusset plate at ±32mm from the plate centerline in X (centered
-between plate edge and gusset). Two upper bolts (30mm above the grating
-deck) at the same ±32mm X offset. The
-container corrugation ribs are hollow — each bolt bridges the air gap inside
-the rib. A 6mm reinforcing plate (120×200mm) is welded to the exterior panel
-face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
-View B for the bolt pattern detail.
+**Attachment:** same through-wall stack-up as §3.1, but **4× M12** in a rectangular
+pattern — two lower bolts straddling the 10mm gusset at ±32mm X, two upper 30mm above
+the deck — through a 120×200×6mm reinforcing plate. See Sheet 7, View B.
 
 **Width transition:** At the two transition brackets,
 the grating changes from 300mm to 500mm width (or vice versa). Both the
@@ -287,14 +269,11 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 | Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
 | Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
 
-The grate rests on the cantilever arms and lifts straight out — no fasteners, no
-kerb. The operator load travels grating → cantilever arm (2×1; 4×1 at the punch-out) → 2×2×0.120in post →
-foot plate → sub-plate → cross-members, with **zero tray contact**: the posts stand on bare
-floor outside the tray and the arms cantilever over it. The arm bottom clears the floor-level spray bar
-by 15mm and the tray rim
-by 25mm. Because the brackets
-stand entirely outside the panel's transport-swing footprint, the grate simply
-lifts out before the panel swings; the floor-bolted posts stay put.
+The grate rests on the cantilever arms and lifts straight out — no fasteners, no kerb —
+with **zero tray contact**: the posts stand on bare floor outside the tray, the arms
+cantilever over it. The arm bottom clears the floor-level spray bar by 15mm and the tray
+rim by 25mm. The brackets sit entirely outside the panel's transport-swing footprint, so
+the grate lifts out before the panel swings and the floor-bolted posts stay put.
 
 **Load path.** The operator load travels grate → cantilever arm → 2×2×0.120in post → foot plate → sub-plate
 → cross-members. The longest cantilever is the drum-exit punch-out arm (605mm). Under the US IBC/OSHA 300 lbf tip
@@ -324,12 +303,10 @@ beyond. The left walkway is therefore **deepened to 600mm over the
 drum-opening span** — a ~600 × 760mm landing centered on the exit
 (the same approach as the near-walkway widened section on the pinhole side).
 
-**Optical clearance.** The punch-out is inside the active image
-zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
-the cone's left boundary, so the punch-out is entirely **left of the cone**:
-every pinhole sight line through it lands ~113mm clear
-of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
-the cone).
+**Optical clearance.** The punch-out sits inside the active image zone (X≥150mm), so it
+was checked against the optical cone: every pinhole sight line through it lands ~113mm
+clear of the image edge, entirely **left of the cone** (confirmed by
+`generate_line_of_sight.py` — no equipment intersects the cone).
 
 **Support.** The 600mm punch-out is carried by the **3 middle
 floor-leg brackets** — the same posts that carry the

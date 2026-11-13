@@ -55,7 +55,7 @@ Every number here traces to a peer-reviewed source or a datasheet. The optics ar
 
 **It runs off-grid.** A self-contained three-circuit water system covers ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, recycling 40% of its water, all on 12V DC. No power connection needed.
 
-**It runs off-grid.** A self-contained three-circuit water system covers ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, recycling 40% of its water. Everything runs on 12V DC from a 100Ah battery, topped up by a 600W solar array — solar-positive in full sun, so it generates more than it uses and keeps running indefinitely. No power or water connection needed to operate.
+**It runs off-grid.** A self-contained three-circuit water system covers ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, recycling 40% of its water. Everything runs on 12V DC from one or two 100Ah battery, topped up by a 600W solar array — solar-positive in full sun, so it generates more than it uses and keeps running indefinitely. No power or water connection needed to operate.
 
 
 ---

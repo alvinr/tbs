@@ -542,7 +542,7 @@ def gate_interference_report() -> tuple[bool, list[str]]:
 
 # ── WARNING: un-sanctioned grip-bolt orientation/grip flags ──────────────────
 # check_interference.py --bolts flags every structural through-bolt that is EDGE (< 1.5·D to a member
-# edge — the J2/J7 3mm-edge class), FLOATING (pierces nothing), or PROJECT (shank runs past the grip).
+# edge — the BC-C/BC-W 3mm-edge class), FLOATING (pierces nothing), or PROJECT (shank runs past the grip).
 # It needs the LIVE model, so (like the routing gate) it rides the committed interference report: its
 # --bolts section tags each flag [OK <reason>] (triaged-benign, sanctioned in _SANCTIONED_BOLT) or
 # [OPEN]. This advisory surfaces the [OPEN] ones — a new or regressed joint to fix or sanction. Refresh

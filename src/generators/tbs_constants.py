@@ -1324,7 +1324,7 @@ RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
 RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
-# J6 BEARING-TYPE end-plate.  BOTH M12 sit ABOVE the arm weld toe (Z120) as a tension bolt group; the taller
+# CJ BEARING-TYPE end-plate.  BOTH M12 sit ABOVE the arm weld toe (Z120) as a tension bolt group; the taller
 # plate bears compression at the bottom against the upright.  This clears the 3-way corner congestion — the
 # corridor bottom frame X-rail (Z12–63) runs below with NO bolt near it, and neither bolt fouls the welded
 # arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is

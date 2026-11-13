@@ -13,7 +13,7 @@ Bolts are the single biggest source of *rework* in this project. A bolt is easy
 to place with the right coordinates and still be **physically wrong** — pointed
 along the wrong axis, driven through the wrong *face*, too near an edge, the
 wrong length, or floating in air. None of that shows in the numbers; it only
-surfaces when someone eyeballs a render. This session's log is full of it: *"J2
+surfaces when someone eyeballs a render. This session's log is full of it: *"BC-C
 cleat → single horizontal bolt (fixes edge distance)"*, *"bolts now clamp the
 assembly (were projecting past the plates)"*, *"tee-nut on the correct (back)
 face"*, *"Detail B bolts flush"*.
@@ -51,13 +51,13 @@ ruby_bolt(name, x, y, z, length, radius=6.0, axis="z", color=None,
   `--bolts` lint reads D from this AABB, so it is slightly conservative vs the
   nominal thread.
 
-**Worked example — the J6 moment bolt** (through end-plate → upright → backing
+**Worked example — the CJ moment bolt** (through end-plate → upright → backing
 plate, hex head on the walkway side, nut on the box-interior side):
 
 ```python
 bx0  = RWK_X_UP - ep_t                 # low-X face = the end-plate front
 blen = IBC_FRAME_RHS + 2*ep_t + 8      # spans the whole stack + nut protrusion
-ruby_bolt("RWk J6 bolt M12", bx0, ac_y, bz, blen, radius=6, axis="x",
+ruby_bolt("RWk CJ bolt M12", bx0, ac_y, bz, blen, radius=6, axis="x",
           head="base", nut="far")      # head at bx0 (front), nut at the far (interior) end
 ```
 
@@ -66,7 +66,7 @@ ruby_bolt("RWk J6 bolt M12", bx0, ac_y, bz, blen, radius=6, axis="x",
 ## The rules that keep biting (check every one)
 
 1. **Edge distance ≥ 1.5·D, in the member that MATTERS.** Center-to-edge, in the
-   structural member the bolt grips. This is the J2/J7 flaw: the retaining bar is
+   structural member the bolt grips. This is the BC-C/BC-W flaw: the retaining bar is
    a `50×20` RHS; a vertical bolt through the **20 mm** face gives a Ø14 hole
    ~3 mm of edge. The fix was to run the bolt **horizontally through the tall
    50 mm web** → ~18 mm edge. **When a hollow section is bolted, drive the bolt
@@ -81,7 +81,7 @@ ruby_bolt("RWk J6 bolt M12", bx0, ac_y, bz, blen, radius=6, axis="x",
 3. **Head and nut on ACCESSIBLE faces.** A nut you can't get a wrench on is
    unbuildable. Through-bolts into the thin corrugated container wall put the
    **hex head OUTSIDE** and the nut inside; check there is wrench clearance on the
-   nut side (the J6 bolts sit *above the arm* so both can be tightened).
+   nut side (the CJ bolts sit *above the arm* so both can be tightened).
 
 4. **The bolt must PIERCE a structural member** — not float in air, not only
    catch a thin notched-beam remnant. If it grips nothing, it's mis-placed.
@@ -108,7 +108,7 @@ python3 src/models/check_interference.py --bolts
 Read-only, advisory. For every structural grip bolt it finds the members its
 centerline pierces and flags:
 
-- **EDGE** — center-to-edge < 1.5·D in the gripped member (the J2/J7 class).
+- **EDGE** — center-to-edge < 1.5·D in the gripped member (the BC-C/BC-W class).
 - **FLOATING** — the bolt pierces no structural member (mis-placed).
 - **PROJECT** — the shank runs > 25 mm past the outermost member it grips.
 

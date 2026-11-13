@@ -30,7 +30,7 @@ render as one fused piece because no seam line shows — a semantic-triage revie
 One READ-ONLY fastener-orientation pass (advisory) catches through-bolts that are dimensionally fine but
 physically wrong — the class that only ever surfaced when a render was eyeballed:
   --bolts   for every grip bolt, find the members its centerline pierces and flag EDGE (hole < 1.5xD from
-            a member edge — the J2/J7 3mm-edge class), FLOATING (pierces no structural member), and
+            a member edge — the BC-C/BC-W 3mm-edge class), FLOATING (pierces no structural member), and
             PROJECT (shank runs well past the grip — the "bolts projecting past the plates" class).
 """
 import sys, os, json
@@ -348,7 +348,7 @@ def _ovl_vol(a, b):
 # SANCTIONED same-color solid overlaps — NOT readability defects: the overlap is intentional and a
 # butt would be WRONG.  Each entry is (pat_a, pat_b, reason); a hit matches if the two names contain the
 # two patterns (either order).  Once the clean end-butts are done (posts↔plates, RWk end-beams), every
-# remaining flagged overlap falls in one of these by-design classes.  (The J6 backing plate ↔ frame rail
+# remaining flagged overlap falls in one of these by-design classes.  (The CJ backing plate ↔ frame rail
 # corner is deliberately NOT here — it is a real structural congestion to resolve in design, so it stays
 # an OPEN flag.)
 _SANCTIONED_SOLID = [
@@ -607,16 +607,16 @@ def pipes_pass(data, margin=1.0):
 # ── fastener orientation / grip audit (--bolts) ──────────────────────────────
 # A through-bolt drawn with the wrong axis, through the wrong FACE, at the wrong length, or too near an
 # edge is dimensionally "correct" but physically wrong — and it stays invisible until someone eyeballs a
-# render (the J2 3mm-edge flaw, "bolts projecting past the plates", "bolt through the 20mm face").  This
+# render (the BC-C 3mm-edge flaw, "bolts projecting past the plates", "bolt through the 20mm face").  This
 # pass makes the computer catch what the eye was catching: for every grip bolt (a fastener cylinder that
 # is NOT a head/nut/washer sub-part), it finds the structural members its centerline PIERCES and checks:
-#   EDGE      center-to-edge distance in the gripped member < edge_factor·D  (1.5·D — the J2/J7 class)
+#   EDGE      center-to-edge distance in the gripped member < edge_factor·D  (1.5·D — the BC-C/BC-W class)
 #   FLOATING  the bolt pierces NO structural member (placed in air / wrong spot)
 #   PROJECT   the shank runs > proj_tol mm beyond the outermost member it grips (sticking out / wrong len)
 # Bounding-box based (bolts are axis-aligned cylinders, so their AABB is tight + the axis unambiguous).
 # READ-ONLY, advisory — a triage list, not a gate.  D is read from the shank's own cross-section.
 # Fasteners that carry NO structural edge-distance rule (precision fits, seals, non-through parts) — the
-# pass is scoped to structural STEEL through-bolts (the J2/J7/J6/wall/flange class), so the film-plane
+# pass is scoped to structural STEEL through-bolts (the BC-C/BC-W/CJ/wall/flange class), so the film-plane
 # skate/clamp precision mechanism and liquid vessels are out of scope on either the bolt OR the member.
 _NON_BOLT_FASTENER = ("u-joint", "u joint", "gib", " pad", "shim", "dowel", "washer", "threaded rod",
                       "stud")

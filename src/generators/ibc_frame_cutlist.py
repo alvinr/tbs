@@ -59,8 +59,8 @@ def cut_list():
         ("Foot plate", f"{fp}×{fp}×{ft} plate", A36, f"{fp}×{fp}×{ft} mm", 4, "4× Ø{}mm anchor holes on Ø{} PCD".format(int(k.IBC_FOOT_BOLT_D), int(k.IBC_FOOT_BOLT_PCD))),
         ("Exterior wall backing plate", "8 mm plate", A36, f"60×{ext_ph:.1f}×8 mm", 8, "one per wall hanger; spreads the M12×70 load into the corrugated wall"),
         ("Wall joist hanger", "4 mm folded plate", A36, f"back {ext_ph:.0f} + seat 70, ×60 wide", 8, "Simpson-style U-pocket; folded, not welded"),
-        ("Front-bar cleat (J2/W3)", "8 mm angle", A36, f"leg 90 + upstand {S + 8:.0f}, ×{bar_d} wide", 8, "L-angle: horizontal leg (bar sits on it) + upstand fillet-welded to the upright"),
-        ("Rear-panel bracket (D)", "5 mm angle", A36, "base 40 + upstand, ×60 tall × 30 wide", 6, "L-bracket TEK-screwed to the back uprights (J8) + panel bolts (J4)"),
+        ("Front-bar cleat (BC-C/W3)", "8 mm angle", A36, f"leg 90 + upstand {S + 8:.0f}, ×{bar_d} wide", 8, "L-angle: horizontal leg (bar sits on it) + upstand fillet-welded to the upright"),
+        ("Rear-panel bracket (D)", "5 mm angle", A36, "base 40 + upstand, ×60 tall × 30 wide", 6, "L-bracket TEK-screwed to the back uprights (RP2) + panel bolts (RP1)"),
         ("Weld-on lashing ring", "forged ring + base", "—", "purchased", 8, "not a cut member — 2 per tier on the lower front bars (W4)"),
     ]
     return rows

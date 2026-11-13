@@ -214,8 +214,8 @@ def frame(part="all"):
     if posts:
         # floor feet (plate + 4× M12) under each upright, sitting ON the floor-anchor SUB-PLATE (strongback).
         # FRONT feet still shift outboard (foot_dx) to clear the processing-tray basin on the −X side, and the
-        # plate's +X (tote-side) overhang is TRIMMED to the upright's +X face.  J1b bolts run from the foot top
-        # down into the sub-plate's tapped bosses; the sub-plate self-taps into the cross-members (J1a — the
+        # plate's +X (tote-side) overhang is TRIMMED to the upright's +X face.  FA2 bolts run from the foot top
+        # down into the sub-plate's tapped bosses; the sub-plate self-taps into the cross-members (FA1 — the
         # winged TEKs are a container-dependent fab detail, drawn on the floor-anchor 2D sheet, not modeled here).
         fp, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_BOLT_PCD // 2
         # ── ONE sub-plate spanning the 4 feet, on the floor (Z0→pt) ──
@@ -241,10 +241,10 @@ def frame(part="all"):
                 p.append(draw.ruby_box("Foot plate", px0, cy - fp / 2, pt, pxw, fp, ft, color=draw.C_STEEL))   # foot ON the sub-plate
                 for dx in (-bpx, bpx):
                     for dy in (-bpc, bpc):
-                        p.append(draw.ruby_bolt("Foot→plate bolt M12", pcx + dx, cy + dy, pt, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # J1b into the sub-plate boss
+                        p.append(draw.ruby_bolt("Foot→plate bolt M12", pcx + dx, cy + dy, pt, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # FA2 into the sub-plate boss
         # REAR-panel mount brackets only (on the back uprights, set back behind the inside face).
         # Drawn as an L-ANGLE (5mm legs, per Plate 5 / Detail D): a horizontal base leg TEK-screwed to the
-        # post (J8) + a vertical upstand the rear panel bolts to (J4) — NOT a solid block.
+        # post (RP2) + a vertical upstand the rear panel bolts to (RP1) — NOT a solid block.
         bw, bproj, bwid, blt = 60, 40, 30, 5      # upstand height, projection, bracket width (X), leg thickness
         for py, pdir in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
             # top pair dropped from TOP_Z-120 (2176) to sit under the new lowered panel top
@@ -252,9 +252,9 @@ def frame(part="all"):
                 by0 = py if pdir > 0 else py - bproj
                 post_y = by0 if pdir > 0 else by0 + bproj - blt   # thin leg sits flat on the upright INBOARD face
                 p.append(draw.ruby_box("Rear-panel bracket post leg", BACK_X, post_y, bz - bw / 2,
-                                     EQT + blt, blt, bw, color=draw.C_STEEL))        # vertical leg FLAT on the upright's Yd face — TEK-screwed to the post (J8)
+                                     EQT + blt, blt, bw, color=draw.C_STEEL))        # vertical leg FLAT on the upright's Yd face — TEK-screwed to the post (RP2)
                 p.append(draw.ruby_box("Rear-panel bracket upstand", BACK_X + EQT, by0, bz - bw / 2,
-                                     blt, bproj, bw, color=draw.C_STEEL))            # vertical upstand parallel to the ply (Yd-Z plane) — the panel bolts THROUGH it (J4)
+                                     blt, bproj, bw, color=draw.C_STEEL))            # vertical upstand parallel to the ply (Yd-Z plane) — the panel bolts THROUGH it (RP1)
     return "\n".join(p)
 
 
@@ -279,16 +279,16 @@ def tote_restraint():
         wdir = -1 if i == 0 else 1             # toward-wall direction the cleat leg extends UNDER the bar
         for bz in bar_zs:
             p.append(draw.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, S, color=draw.C_STEEL))
-            # J2/W3 corridor-end connection (Detail B): an L-ANGLE fillet-welded to the upright — a horizontal
+            # BC-C/W3 corridor-end connection (Detail B): an L-ANGLE fillet-welded to the upright — a horizontal
             # leg the bar sits on + a vertical leg on the bar's FRONT (−X) face — the bar drops into the corner
-            # and a SINGLE horizontal M12 (J2) runs through the vertical leg + the bar's tall (50mm) web, so the
+            # and a SINGLE horizontal M12 (BC-C) runs through the vertical leg + the bar's tall (50mm) web, so the
             # hole gets full edge distance and the bolt secures the unsupported direction (2026-08-18).
             lt, llen = 8, 90                                                     # leg thickness / reach along the bar (Yd)
             leg_y0 = cor_yd - llen if wdir < 0 else cor_yd
-            p.append(draw.ruby_box("Bar cleat leg (J2)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=draw.C_STEEL))          # horizontal leg UNDER the bar
-            p.append(draw.ruby_box("Bar cleat upstand (J2/W3)", front_x - lt, leg_y0, bz - lt, lt, llen, S + lt, color=draw.C_STEEL))  # vertical leg on the bar FRONT (−X), welded to the upright
-            p.append(draw.ruby_box("Bar cleat backing plate (J2)", front_x + bar_d, cor_yd + wdir * 45 - 25, bz + 5, lt, 50, 40, color=draw.C_STEEL))  # nut-side spreader on the bar's far web
-            p.append(draw.ruby_bolt("IBC Bar Cleat Bolt M12x65 (J2)", front_x - lt, cor_yd + wdir * 45, bz + S / 2,
+            p.append(draw.ruby_box("Bar cleat leg (BC-C)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=draw.C_STEEL))          # horizontal leg UNDER the bar
+            p.append(draw.ruby_box("Bar cleat upstand (BC-C/W3)", front_x - lt, leg_y0, bz - lt, lt, llen, S + lt, color=draw.C_STEEL))  # vertical leg on the bar FRONT (−X), welded to the upright
+            p.append(draw.ruby_box("Bar cleat backing plate (BC-C)", front_x + bar_d, cor_yd + wdir * 45 - 25, bz + 5, lt, 50, 40, color=draw.C_STEEL))  # nut-side spreader on the bar's far web
+            p.append(draw.ruby_bolt("IBC Bar Cleat Bolt M12x65 (BC-C)", front_x - lt, cor_yd + wdir * 45, bz + S / 2,
                                   bar_d + 2 * lt, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))                 # SINGLE horizontal bolt: leg + bar web + backing plate
     # D-ring lashing holders — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1); on the LOWER
     # bar of each tier (one per tier) so the ring count stays 8 despite the doubled bars.
@@ -322,11 +322,11 @@ def tote_restraint():
             hx0 = front_x + bar_d - pocket_w                  # inside plate / backing-plate X start
             p.append(draw.ruby_box("Wall Hanger Plate", hx0, p_y, plate_z0, pocket_w, ht, ext_ph, color=draw.C_STEEL))
             # SAME L-cleat as the post end (welded to the inside plate): a horizontal leg the bar sits on +
-            # a vertical leg on the bar FRONT, with 1 HORIZONTAL J7 bolt through the leg + the bar's 50mm web.
+            # a vertical leg on the bar FRONT, with 1 HORIZONTAL BC-W bolt through the leg + the bar's 50mm web.
             lt2 = 8
-            p.append(draw.ruby_box("Wall Hanger L-leg (J7)", front_x, s_y, bz - lt2, bar_d, dep, lt2, color=draw.C_STEEL))          # horizontal leg (bar sits on it)
-            p.append(draw.ruby_box("Wall Hanger L-upstand (J7/W)", front_x - lt2, s_y, bz - lt2, lt2, dep, S + lt2, color=draw.C_STEEL))  # vertical leg on the bar FRONT
-            p.append(draw.ruby_box("Wall Hanger backing plate (J7)", front_x + bar_d, wall_yd + din * 28 - 25, bz + 5, lt2, 50, 40, color=draw.C_STEEL))  # nut-side spreader on the bar's far web
+            p.append(draw.ruby_box("Wall Hanger L-leg (BC-W)", front_x, s_y, bz - lt2, bar_d, dep, lt2, color=draw.C_STEEL))          # horizontal leg (bar sits on it)
+            p.append(draw.ruby_box("Wall Hanger L-upstand (BC-W/W)", front_x - lt2, s_y, bz - lt2, lt2, dep, S + lt2, color=draw.C_STEEL))  # vertical leg on the bar FRONT
+            p.append(draw.ruby_box("Wall Hanger backing plate (BC-W)", front_x + bar_d, wall_yd + din * 28 - 25, bz + 5, lt2, 50, 40, color=draw.C_STEEL))  # nut-side spreader on the bar's far web
             ecx = hx0 + pocket_w / 2
             plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
             bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
@@ -335,9 +335,9 @@ def tote_restraint():
             for bolt_z in (bolt_lo, bolt_hi):   # 2 through-bolts, ≥50mm clear of the bar + seat
                 p.append(draw.ruby_bolt("IBC Wall Through-Bolt M12", ecx, bolt_cy, bolt_z, 58, radius=7,
                                       axis="y", color=C_BOLT, head="far", nut="base"))  # head outside, nut inside
-            # J7 retention bolt: ONE HORIZONTAL M12 through the L's vertical leg + the bar's 50mm web (like J2 at
+            # BC-W retention bolt: ONE HORIZONTAL M12 through the L's vertical leg + the bar's 50mm web (like BC-C at
             # the post) — good edge distance; the L-corner carries the load, the bolt secures the unsupported direction.
-            p.append(draw.ruby_bolt("IBC Bar Retention Bolt M12 (J7)", front_x - lt2, wall_yd + din * 28,
+            p.append(draw.ruby_bolt("IBC Bar Retention Bolt M12 (BC-W)", front_x - lt2, wall_yd + din * 28,
                                   bz + S / 2, bar_d + 2 * lt2, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))
     return "\n".join(p)
 

@@ -345,7 +345,7 @@ CT_RWK_CLEAT_X, CT_RWK_PLATE_X, CT_RWK_ARM_X = 6000, 7000, 8000
 def _rwk_arm_type_parts(x0):
     """ONE right-walkway CENTER CANTILEVER ARM for the catalog, mirroring the CURRENT design
     (ibc_cantilever_arms): an IBC-upright stub + a SOLID 2×1 flat-bar arm cantilevering off it
-    (toward -X) + the J6 BEARING-TYPE connection — a welded END-PLATE + a REAR backing plate +
+    (toward -X) + the CJ BEARING-TYPE connection — a welded END-PLATE + a REAR backing plate +
     2× M12 through-bolts, both above the arm. (Was an old 40×40 SHS arm + single-bolt clamp.)"""
     armb, armt, aw, ah = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W, ov.RWK_AH   # 89.6, 115, 50.8, 25.4
     s = ov.IBC_FRAME_RHS                                            # 50.8 upright RHS
@@ -359,11 +359,11 @@ def _rwk_arm_type_parts(x0):
     parts = [
         draw.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=draw.C_STEEL),
         draw.ruby_box("Type RWk cantilever arm (solid 2x1 flat bar)", x0 - reach, 0, armb, reach - ep_t, aw, ah, color=draw.C_STEEL),
-        draw.ruby_box("Type RWk J6 end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=draw.C_STEEL),
-        draw.ruby_box("Type RWk J6 backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=draw.C_STEEL),
+        draw.ruby_box("Type RWk CJ end-plate (welded to arm)", x0 - ep_t, ac_y - ep_w / 2, ep_bz, ep_t, ep_w, ep_h, color=draw.C_STEEL),
+        draw.ruby_box("Type RWk CJ backing plate (rear)", x0 + s, ac_y - ep_w / 2, bp_bz, ep_t, ep_w, bp_h, color=draw.C_STEEL),
     ]
     for bz in ov.RWK_J6_BOLT_ZS:                                    # 2× M12, both above the arm (bearing-type)
-        parts.append(draw.ruby_bolt("Type RWk J6 bolt M12", x0 - ep_t, ac_y, bz, s + 2 * ep_t + 8,
+        parts.append(draw.ruby_bolt("Type RWk CJ bolt M12", x0 - ep_t, ac_y, bz, s + 2 * ep_t + 8,
                                   radius=6, axis="x", color="#3A3A42", head="base", nut="far"))
     return parts
 
@@ -436,7 +436,7 @@ def cantilever_type_labels():
          "RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)\n10mm, carries the walkway right beam (Z70 seat)\n+ the BR film rail (web-vertical: Z232 seat / Z270 bolt); 4x M12",
          0, -300, 850),
         (CT_RWK_ARM_X, 0, ov.RWK_ARM_TOP,
-         "RIGHT WALKWAY — CENTER CANTILEVER ARM\nsolid 2x1 flat bar off an IBC corridor upright\n(half-lapped at the long beams); J6 end-plate, 2x M12",
+         "RIGHT WALKWAY — CENTER CANTILEVER ARM\nsolid 2x1 flat bar off an IBC corridor upright\n(half-lapped at the long beams); CJ end-plate, 2x M12",
          150, -300, 820),
     ]
     rows = []
@@ -668,7 +668,7 @@ def fp_combined_corner_plate(wall_yd, din, cx=None):
 
 def ibc_cantilever_arms(x_to=None):
     """The 2 walkway cantilever arms that ATTACH TO THE IBC corridor uprights (rev12): each arm (a SOLID
-    2×1 flat bar) cantilevers off a front upright (Yd 1046/1266) toward the walkway long beams. J6 joint =
+    2×1 flat bar) cantilevers off a front upright (Yd 1046/1266) toward the walkway long beams. CJ joint =
     an END-PLATE welded to the arm end, bolted through the upright (4× M12) to a REAR backing plate — a
     bolted moment connection (mirrors the container-wall cantilever detail). Single-sourced so the
     overview/walkway models and the focused IBC model stay in register.
@@ -678,7 +678,7 @@ def ibc_cantilever_arms(x_to=None):
     ep_bz = ac_z - 65.0                                                     # end-plate (FRONT) bottom Z37 — covers the arm weld + bears against the upright front face (clear of any rail)
     # The REAR backing plate sits in the box-interior corner, where the corridor bottom-ring X-rail also
     # starts — so its bottom is raised to BUTT the rail top (no interpenetration, no fused seam). The bolt
-    # group is at Z175/205, so the shorter plate still fully spreads it. (J6 rail clash fix, 2026-08-17.)
+    # group is at Z175/205, so the shorter plate still fully spreads it. (CJ rail clash fix, 2026-08-17.)
     bp_bz = FLOOR_PLATE_T + IBC_FOOT_PLATE_T + IBC_FRAME_RHS                 # corridor bottom-ring X-rail TOP (raised onto the floor-anchor sub-plate); backing plate rests on it
     bp_h  = (ep_bz + ep_h) - bp_bz                                          # keep the plate TOP at Z185.3
     c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)
@@ -686,12 +686,12 @@ def ibc_cantilever_arms(x_to=None):
     for yd in RWK_UP_YDS:
         parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP - ep_t)   # arm ends SHORT so the end-plate isn't buried in it
         ac_y = yd + RWK_ARM_W / 2.0
-        parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ep_bz, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end (between arm + upright)
-        parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, bp_bz, ep_t, ep_w, bp_h, color=C_STEEL))  # rear backing plate — BUTTS the bottom rail (bp_bz)
+        parts.append(ruby_box(f"RWk CJ end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ep_bz, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end (between arm + upright)
+        parts.append(ruby_box(f"RWk CJ backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, bp_bz, ep_t, ep_w, bp_h, color=C_STEEL))  # rear backing plate — BUTTS the bottom rail (bp_bz)
         for bz in RWK_J6_BOLT_ZS:                                           # 2 M12 — CENTRAL column (Yd 0), BOTH above the arm (bearing-type); clears the rail AND the welded arm
             bx0 = RWK_X_UP - ep_t                                           # shank start = end-plate front (−X) face
             blen = IBC_FRAME_RHS + 2*ep_t + 8                               # 74 — through end-plate + upright + backing plate, protruding
-            parts.append(ruby_bolt(f"RWk J6 bolt M12 Yd{yd}", bx0, ac_y, bz, blen, radius=6, axis="x", color=c_bolt, head="base", nut="far"))  # hex head (front) + hex nut (back)
+            parts.append(ruby_bolt(f"RWk CJ bolt M12 Yd{yd}", bx0, ac_y, bz, blen, radius=6, axis="x", color=c_bolt, head="base", nut="far"))  # hex head (front) + hex nut (back)
         # half-lap HOLD-DOWN: 1 #14 TEK screw per crossing (from the underside, through the beam into the arm)
         for bx in sorted(b for b in RWK_BEARER_XS if x_to - 1 < b < RWK_X_UP):
             parts.append(ruby_bolt(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT, RWK_AH, radius=3, axis="z", color=c_bolt, head="base", nut=None))  # self-drilling — hex head seats FLUSH on the arm underside (head top at RWK_ARM_BOT), shank through arm + beam to the top face

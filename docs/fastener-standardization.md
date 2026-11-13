@@ -32,11 +32,11 @@ The zinc wall through-bolts split ×65 / ×70. The deepest joint (walkway cleats
 the 10 mm corner plate) genuinely needs ×70 — at ~54 mm an M12×65 leaves ~0 thread past the nut. So rather than
 the Lever-B geometry route (thin the load-bearing 10 mm corner plate, which carries the walkway right beam +
 the bottom film rail — not worth a re-check + 3D re-send for 5 mm), **Lever A**: buy the longer ×70 everywhere
-and pad the shorter 48–50 mm grips (IBC J3, film wall-sandwich, walkway brackets) with a washer.
+and pad the shorter 48–50 mm grips (IBC WH, film wall-sandwich, walkway brackets) with a washer.
 **Decision (2026-09-07):** all **123 zinc wall through-bolts → M12×70** (`91280A732`); retired the zinc M12×65
-(`91280A728`). Keep **M12×100** for the deep J6 arm joint. The **×65/×70 material "unify"** was resolved
-separately — the split is duty-based (18-8 SS wet-corridor J2/J7 vs Gr.8.8 zinc dry wall), kept + annotated,
-NOT merged. The **J2/J7 cleat stays M12×65 18-8 SS** — a different member (cleat-leg grip ~36–58 mm), material,
+(`91280A728`). Keep **M12×100** for the deep CJ arm joint. The **×65/×70 material "unify"** was resolved
+separately — the split is duty-based (18-8 SS wet-corridor BC-C/BC-W vs Gr.8.8 zinc dry wall), kept + annotated,
+NOT merged. The **BC-C/BC-W cleat stays M12×65 18-8 SS** — a different member (cleat-leg grip ~36–58 mm), material,
 and thread line from the wall-through bolts; the crush-through of the horizontal bolt through the hollow bar is
 a fab-review item (TODO.md), not a length change. Free (Lever A), no geometry, no 3D re-send. *(−1 zinc SKU.)*
 

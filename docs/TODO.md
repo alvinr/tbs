@@ -21,6 +21,13 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 - [x] **SketchUp save + Sketchfab** — *DONE 2026-11-06.* `lighttrap` + `overview` + `construction` re-sent, saved, pushed in place (uids a4f73191 / e624e210 / dcc54fb3, same URLs), `manifest --update` → all 11 models current, `.skp` + `dependencies.yml` committed (`b8d522a9`, `71b2b569`). Site + brochure published. (overview/construction were stale from the rail-raise; neither aggregates the apron.)
 - [x] **Strip removal-path kinematics** — *RESOLVED 2026-11-06.* A flat-seat redesign was tried (on a wrong "trapped strip" assessment) and REVERTED — owner confirmed the strip slips out of the 45° chamfer fine; the real change was the latch (cam → draw latch, above), which no longer passes through the strip/lip, so release + lift-out of the chamfer is clean.
 - [x] **Near-stile clearance at Yd0** — *RESOLVED 2026-11-06: NO notch needed.* Verified in the live model: the left door-frame stile (50×20×3) + perimeter EPDM sit exterior of X0, while the near strip (X22–40) and its battens B1/B2 (X4–22) sit interior of X0 — no overlap (clearances: strip 22mm, battens 4mm). The exterior span latch is at Yd99–121 (~50mm clear of the stile's Yd0–50 span). Lift-out moves the strip up/interior, away from the exterior stile; the M10 door anchor (Z294–306) is above the strip top (Z282). Tightest gap = 4mm batten↔stile/EPDM (adequate; the EPDM compresses toward the frame).
+- [ ] **construction.skp — apron under the hinge panel ignores the phase-alpha convention (2026-11-13).**
+  Noticed in the live construction model: the light-trap pull-out apron stays **full alpha** (fully opaque)
+  in the subsequent build phases, instead of ghosting/dimming the way the other components do under the
+  construction-sequence phase-alpha rules. Wire the apron's per-phase `alpha=` into the construction DC
+  phasing (`generate_construction_model.py`; the apron is built in `generate_lighttrap_model.py` and reused)
+  so it dims in the phases where it isn't the active build — then re-send + save + Sketchfab-push +
+  `manifest --update` + commit per the model workflow.
 
 ---
 

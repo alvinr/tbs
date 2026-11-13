@@ -28,6 +28,15 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
   phasing (`generate_construction_model.py`; the apron is built in `generate_lighttrap_model.py` and reused)
   so it dims in the phases where it isn't the active build — then re-send + save + Sketchfab-push +
   `manifest --update` + commit per the model workflow.
+- [ ] **lighttrap.skp — the left-walkway floor-leg cantilevers are not shown (2026-11-13).** The 5
+  floor-leg cantilever brackets (fixed posts on the floor + arms cantilevering over the tray) that carry the
+  left walkway / drum-exit punch-out sit in the cargo-door zone the lighttrap model covers, but the model
+  doesn't draw them — so the hinge-panel-swing-clears-the-fixed-cantilevers relationship (walkway §5.4:
+  cage underside Z130 passes over the Z115 posts) isn't visible. Add the floor-leg brackets to
+  `generate_lighttrap_model.py` (reuse `generate_walkway_model.py`'s builder if practical) → re-send + save +
+  Sketchfab-push + `manifest --update` + commit. *(Design note to reconcile in walkway §5.2 "Support": the
+  cantilever posts+arms are FIXED — only the grate lifts out; the panel swings over them — so the wording
+  "[the arm] lifts out with the rest of the left walkway" should be tightened to the grate lifting out.)*
 
 ---
 

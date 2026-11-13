@@ -27,7 +27,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 ## Track 2 — Personal voice (Home + Proposal)
 
 - [x] project-summary.md  *(Home — source synced → index.md by publish.sh)* — voiced to first person (concede-then-punch), front-board claim corrected (pinhole-point vs field-camera, no deprecated-tilt echo), width → "about 14ft", solar/battery + off-grid line added. 0 tells / 0 stiff.
-- [ ] funding-proposal.md  *(Proposal)*
+- [x] funding-proposal.md  *(Proposal)*— already largely in-voice (§1/§4/§9 kept as the benchmark); defect fixes, width-drift → ~14ft, solar/battery aligned, '99 sq ft' injected, §2/§8 imperial via computed facts, artistic-vision extension (exposure → motion/ghosting), Construction link added.
 
 ---
 

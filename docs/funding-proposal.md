@@ -20,14 +20,14 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 ## 2. Project Overview
 
 ### What
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (about <!-- BEGIN fact:pinhole_diameter_in -->0.085<!-- END fact:pinhole_diameter_in --> in / <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one face of the container. The image plane — a stretched cotton muslin surface spanning roughly <!-- BEGIN fact:film_plane_width_feet -->14<!-- END fact:film_plane_width_feet --> × <!-- BEGIN fact:film_plane_height_feet -->7<!-- END fact:film_plane_height_feet --> feet (the active <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone) — sits at the other. Every exposure produces a latent cyanotype image on approximately <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (about <!-- BEGIN fact:pinhole_diameter_in -->0.085<!-- END fact:pinhole_diameter_in --> in / <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one face of the container. The image plane — a stretched cotton muslin surface spanning roughly <!-- BEGIN fact:film_plane_width_feet -->14<!-- END fact:film_plane_width_feet --> × <!-- BEGIN fact:film_plane_height_feet -->7<!-- END fact:film_plane_height_feet --> feet (the active <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone) — sits on the other face. Every exposure produces a latent cyanotype image on approximately <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
 ### How
 The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [thebigshoebox.org](https://thebigshoebox.org/).
 
-It travels on a commercial hire truck (no CDL required) and runs off-grid: a self-contained water system good for ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, powered on 12V DC by a 100Ah LiFePO4 battery and a 600W solar array — solar-positive in sun, so it keeps running indefinitely.
+It travels on a commercial hire truck (no CDL required) and runs off-grid: a self-contained water system good for ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, powered on 12V DC by one or two 100Ah LiFePO4 battery and a 600W solar array — solar-positive in sun, so it keeps running indefinitely.
 
 ### Why Now
 The history of large-format photography is a history of increasing precision in decreasing size. The view camera shrank from room to studio to field. The Big Shoebox inverts that trajectory: it scales a camera back up to architectural dimensions, not as spectacle, but as instrument. The container is not incidental to the work — it is the camera body. The constraint of the container's interior geometry is the optical specification. Site, transport, and access become compositional decisions.
@@ -41,7 +41,7 @@ The interchangeable pinhole disc is clamped against a neoprene light-seal washer
 **Why the board is fixed:** a pinhole is a point aperture. The image is a central projection *through the pinhole point*, determined only by the pinhole's position and the film plane — it is completely independent of the orientation of the plate that holds it. Tilting a pinhole board therefore does nothing to the image. All perspective and geometric control is provided by the film plane.
 
 ### Film Plane: 4-Corner Independent Actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)
-Four independently-set corners allow the fixed-size rigid image plane to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner rides an acetal skate inside a 6061 aluminum U-channel depth rail (slid by hand and cam-clamped to set focus); a 2-axis 304 cross-slide plus a single Belden universal joint at each corner absorb the rigid-rotation arc travel and supply the angular change, so the plane rotates without stretching or twisting.
+Four independently-set corners allow the fixed-size rigid image plane to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner rides an skate inside an aluminum U-channel depth rail (slid by hand and clamped to set focus); a 2-axis cross-slide plus a single universal joint at each corner absorb the rigid-rotation arc travel and supply the angular change, so the plane rotates without stretching or twisting.
 
 **Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection. Because the front board contributes nothing optically, the film plane alone produces the full range of projections, from an undistorted reference frame to compound twisted-plane geometries where no lines remain parallel.
 
@@ -59,9 +59,14 @@ The film-plane movements add a second layer. They allow the photographer to plac
 
 **The result:** a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A nearly 15-foot-wide cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and the viewer.
 
-The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the cyanotype process — iron salts exposed to UV, developed in plain water. (Atkins used the classical ferric-ammonium-citrate formula; TBS-001 uses the modern, far more UV-sensitive Mike Ware ammonium-iron(III)-oxalate variant of the same process.) The blue-white palette of cyanotype — Prussian blue base, white highlights — is one of the most immediately recognizable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardized it.
+The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the cyanotype process — iron salts exposed to UV, developed in plain water. The blue-white palette of cyanotype — Prussian blue base, white highlights — is one of the most immediately recognizable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardized it.
 
 The camera is deployable. It comes to the subject. A landscape that could never be brought to a studio is instead surrounded by the camera. The field, the parking structure, the salt flat, the housing development — each becomes not just the subject but the site of the printing, developed there in plain water and hung to dry in the same air that made the exposure.
+
+The final aspect of creative control, is a function of the design choice and processes chosen. The expousre time will be between 35-40 minyates in full daylight. In a landscape scene, the clouds will move, leaves will flutter. That will give a glassy or mily appearance to those scene. In a downtown setting, moving vehicles or peoples will simply not register and will disappear. Ghost fragments will exist across the image.
+
+The last layer of control is the exposure itself. At f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> a
+frame takes 30 to 45 minutes in full sun. In a landscape, clouds drift and leaves flutter across the exposure, so moving water and sky go glassy and milky, smeared smooth. A city is stranger still: traffic and pedestrians move too fast to register and simply vanish, leaving the street deserted — only what holds still records sharply, and where someone paused, a faint ghost remains. It is the same effect that placed the first human being in a photograph: the man who stood long enough to have his boots shined on Daguerre's otherwise-empty Boulevard du Temple in 1838.
 
 ## 5. Process and Sustainability
 
@@ -147,7 +152,8 @@ A 12-month build and deployment program:
 Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programs, and community organizations at each site.
 
 ### Archival Print Edition
-50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:film_plane_width_ftin -->14'5"<!-- END fact:film_plane_width_ftin --> × <!-- BEGIN fact:film_plane_height_ftin -->6'10"<!-- END fact:film_plane_height_ftin -->). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_ftin -->14'5"<!-- END
+fact:film_plane_width_ftin --> × <!-- BEGIN fact:film_plane_height_ftin -->6'10"<!-- END fact:film_plane_height_ftin -->. Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [thebigshoebox.org](https://thebigshoebox.org/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
@@ -170,7 +176,7 @@ At Nottingham Trent University I encountered the pinhole camera and understood i
 
 Through the late 1990s I worked as a photojournalist with the International Committee of the Red Cross, documenting people inside conflicts the world was not watching. It was there I encountered Alistair Thain's large-format photographs made in Sarajevo during the siege, and understood that the gravity of a slow process is not a constraint. It was the point. That work was about witness — about making visible what others could not, or would not, see. It put a thought deep in the back of my mind — why hadn't I taken the 5×4 camera I'd built into that same environment?
 
-My practice since has moved between classical portraiture and abstract color in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 45 minutes of sun, to stretch time, distort it, and make it visible. This is modern analog slow photography.
+My practice since has moved between classical portraiture and abstract color in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 45 minutes of sun, to stretch time, distort it, and make it visible. This is contemporary analog slow photography.
 
 ## 10. Appendix
 
@@ -203,3 +209,4 @@ The [distortion renders](distortion-renders.md) demonstrate the range of optical
 - [Cost Breakdown](project-cost-breakdown.md) — the full project budget
 - [Cost Analysis](cost-analysis-report.md) — scenario cost modeling
 - [Distortion Renders](distortion-renders.md) — sample optical output
+- [Technical Blueprints](engineering-diagrams.md) - blueprints and designs

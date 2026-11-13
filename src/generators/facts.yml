@@ -80,6 +80,14 @@ pinhole_diameter_mm:
     - 'Ø(\d\.\d+)\s*mm \([Rr]ayleigh'
     - '[Pp]inhole\s*\|\s*Ø(\d\.\d+)\s*mm'
 
+# Imperial for US-reader prose — INJECTION-ONLY, computed from the mm constant (the display mode
+# converts at inject time, so it can never drift). Never hand-write imperial.
+pinhole_diameter_in:
+  constant: PH_D
+  unit: in
+  owner: pinhole-optics-report.md
+  display: inch
+
 # NB: f-number and focal length appear in MANY comparison/alternative contexts (other pinhole sizes,
 # lens options), so a value-equality check must anchor ONLY to the CANONICAL statement — the spec-table
 # row and the one prose phrasing — never a bare 'f/NNNN' or 'NNNN mm'.
@@ -116,6 +124,29 @@ film_plane_height_mm:
   unit: mm
   owner: film-plane-mechanism-report.md
   display: comma
+
+# Imperial renderings of the film-plane dimensions — INJECTION-ONLY, computed from FP_W/FP_H at inject
+# time (ftin = 14'5" for tables; feet = 14 for rounded reader prose). Never hand-write imperial.
+film_plane_width_ftin:
+  constant: FP_W
+  unit: ftin
+  owner: film-plane-mechanism-report.md
+  display: ftin
+film_plane_height_ftin:
+  constant: FP_H
+  unit: ftin
+  owner: film-plane-mechanism-report.md
+  display: ftin
+film_plane_width_feet:
+  constant: FP_W
+  unit: ft
+  owner: film-plane-mechanism-report.md
+  display: feet
+film_plane_height_feet:
+  constant: FP_H
+  unit: ft
+  owner: film-plane-mechanism-report.md
+  display: feet
 
 # Muslin cut size — INJECTION-ONLY. The muslin is cut to fit the WASHABLE tray area (narrower AND
 # shorter than the film-plane frame), so it differs from film_plane_width/height. No aliases (the

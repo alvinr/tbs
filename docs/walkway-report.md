@@ -274,7 +274,7 @@ the grate lifts out before the panel swings and the floor-bolted posts stay put.
 load this needs a **4×1×0.120in tube** (SF 1.99) — while the standard
 305mm arms stay 2×1 (SF 2.06); the post carries SF 2.68 (all computed in §9, `walkway_load.py`). Each leg's
 ~2.4 kN overturning uplift is reacted through the foot into the continuous sub-plate (§5.1a),
-winged self-drillers engage the door-end sill and the steel cross-members — the plate spreads the reaction across
+self-drillers engage the door-end sill and the steel cross-members — the plate spreads the reaction across
 several fixings, each good for ~5.3 kN in 4mm steel. This floor-leg cantilever supersedes the earlier
 full-width edge-beam scheme — simpler, lighter, and needs no through-wall seats.
 
@@ -282,7 +282,7 @@ full-width edge-beam scheme — simpler, lighter, and needs no through-wall seat
 
 The five floor-legs do **not** screw straight into the floor. They bolt to one continuous steel **sub-plate** (a strongback) that lies flat on the floor, self-taps down into the door-end sill and the cross-members it spans (WF4a), and carries tapped bosses the leg feet bolt up into (WF4b). This is the project-wide floor-anchoring standard, shared with the IBC frame feet (see [IBC Stacking Report §3.4a](ibc-stacking-report.md#34a-floor-anchoring-sub-plate-strongback-standard)).
 
-Because the containers cross-members are **not dimensionally standardized**: [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container is flat-bottomed), and [the pitch and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) — [CIMC](https://www.cimc-equilink.com/media/3659.html) uses a ~45mm-flange C-section at ~300mm, but it is not guaranteed. The continuous plate removes the lottery: it runs from the door-end sill (guaranteed bottom-end-rail steel) across the first cross-members, and winged self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)) fix it down wherever the steel actually is. The map and the standard are drawn on the floor-anchoring sheets:
+Because the containers cross-members are **not dimensionally standardized**: [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container is flat-bottomed), and [the pitch and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) — [CIMC](https://www.cimc-equilink.com/media/3659.html) uses a ~45mm-flange C-section at ~300mm, but it is not guaranteed. The continuous plate removes the lottery: it runs from the door-end sill (guaranteed bottom-end-rail steel) across the first cross-members, and self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)) fix it down wherever the steel actually is. The map and the standard are drawn on the floor-anchoring sheets:
 
 ![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
 
@@ -329,7 +329,7 @@ contact.
 | Post | 2×2×0.120in steel SHS, ~115mm tall (floor to grate bottom), on the sub-plate at X=140mm (post trimmed by the plate thickness so deck level + tray clearances are preserved) |
 | Foot plate | 165×60×8mm steel plate (inboard outrigger — F3), bolting **4× M12×30** into the floor-anchor sub-plate's tapped bosses (§5.1a) |
 | Arm | 2×1×0.120in (50.8×25.4mm) steel reaching X=580mm (2 standard brackets, SF 2.06); **4×1×0.120in** extended to X=880mm (3 punch-out brackets, SF 1.99 — IBC/OSHA, §9) |
-| Overturning reaction | reacted through the foot into the continuous sub-plate, whose winged self-drillers carry the ~2.4 kN/leg uplift into the sill + steel cross-members (§5.1a); 300 lbf tip point load governs (§9) |
+| Overturning reaction | reacted through the foot into the continuous sub-plate, whose self-drillers carry the ~2.4 kN/leg uplift into the sill + steel cross-members (§5.1a); 300 lbf tip point load governs (§9) |
 
 The grate simply rests on the cantilever arms — located laterally by butting the
 near/far grate edges, free to lift straight out (no fasteners, no kerb).
@@ -348,10 +348,10 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
 The left walkway grate — together with the door-end near-deck lift-out
-section — must be lifted out before the panel can swing (the 5 floor-leg posts stay
-bolted to the floor). As the panel + drum swing ~56° about the pivot, the cage sweeps past
-the butt joint into the vacated zone, its **cage underside (Z130) passing over the
-Z115 door-end floor-leg posts** — so no floor-leg post is struck (the swing clears).
+section — must be lifted out before the panel can swin, the 5 floor-leg posts stay
+bolted to the floor. As the panel + drum swing ~56° about the pivot, the cage sweeps past
+the butt joint into the vacated zone, its **cage underside passing over the
+door-end floor-leg posts** — so no floor-leg post is struck.
 The relevant standing clearance is vertical: the drum-cage underside sits at Z130 —
 15mm over the Z115 posts and 60mm over the Z70 tray rim (the panel bottom rides higher
 still, at the 217mm floor gap). See hinged-panel Sheet 16.
@@ -390,8 +390,7 @@ Two 25mm ratchet straps loop over the cooler and hook to near walkway cantilever
 bracket arms.
 
 The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler
-overhangs 50mm into the processing tray zone. This is acceptable because the
-tray is drained and empty during transport.
+overhangs 50mm into the processing tray zone. This is acceptable tollerance during transport.
 
 ---
 
@@ -408,9 +407,8 @@ All four walkway sections use the same grating:
 | Open area | ~40% |
 | Surface finish | Grit top (slip-resistant) |
 
-The four sections' overall sizes, cut features (spray-bar slits, drum-exit punch-out, near bump-out,
-muslin notches), GRP panel seams (each 4,049mm near/far run splices at the 3,048mm panel length), and
-hold-down-clip positions (WF5, 610mm centers + corners) are dimensioned on the **Sheet 10 grate cut-plan**
+The four sections' overall sizes, cut features , GRP panel seams, and
+hold-down-clip positions are dimensioned on the **Sheet 10 grate cut-plan**
 — a nesting/fabricator drawing:
 
 ![TBS-001 Walkway — Sheet 10: Grate Cut-Plan (GRP Nesting)](assets/walkway-sheet10.png)
@@ -480,7 +478,7 @@ load (a rare position; distributed standing deflects far less). The **left-walkw
 likewise upgraded to a **4×1×0.120in tube** (SF 1.99; the 2×1 was only SF 1.04 at the 605mm reach). Two items
 carry fabrication conditions rather than a clean margin: the **corrugated-rib pull-through** (SF 7) depends on the
 ≥30mm corrugation confirmation for bolt grip, and the **floor-leg overturning uplift** (~2.4 kN/leg) is carried
-into the continuous floor-anchor sub-plate (§5.1a), whose winged self-drillers engage the door-end sill and the
+into the continuous floor-anchor sub-plate (§5.1a), whose self-drillers engage the door-end sill and the
 steel cross-members (~5.3 kN each) rather than the plywood alone.
 
 The **right walkway** is a **2×1×0.120in cantilever frame** — a continuous inner beam, two outer-beam
@@ -489,15 +487,13 @@ by two arms off the IBC corridor uprights and at its corners by wall cleats (lef
 (right). Its long/end beams and the arm half-lap notch are validated in `ibc_frame_load.py` (`outer_beam_frame_check`, SF 7.1;
 `arm_notch_check`, SF 2.03) and cross-referenced above; the **arm→upright connection (joint CJ) is IBC-frame-owned**
 and drawn on IBC-frame Sheet 5, so it is cross-referenced, not re-validated here (see the
-[cantilever study](right-walkway-cantilever-study.md)). The frame resists twist far better than the
-free-ended bearer angles it replaces, so the deck barely bounces.
+[cantilever study](right-walkway-cantilever-study.md)).
 
 ---
 
 ## 10. Fabrication Schedules
 
-Walkway-scoped marks (**WF#** fasteners, **WW#** welds) so they don't collide with the IBC-frame
-joint schedule (FA–SP2). The center-arm end-plate bolts and the half-lap hold-down screws belong to
+Walkway-scoped marks (**WF#** fasteners, **WW#** welds). The center-arm end-plate bolts and the half-lap hold-down screws belong to
 the **IBC-frame CJ** schedule and are cross-referenced, not scheduled here. Governing weld throats are
 load-checked in `walkway_load.py`; the rest are [AWS D1.1](https://www.aws.org/standards/) minimum
 practical fillets for the plate thickness.
@@ -539,7 +535,7 @@ practical fillets for the plate thickness.
 (grating clips) is dimensioned on the Sheet 10 cut-plan.
 
 All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame WH/CJ wall bolts) with a
-flat washer each end, a plain nut, and a split-lock washer. The floor-anchor sub-plate's winged self-drillers
+flat washer each end, a plain nut, and a split-lock washer. The floor-anchor sub-plate's self-drillers
 (WF4a) are driven to seat (no torque spec — thread-forming); each leg foot bolts to the plate's tapped bosses
 (WF4b, M12×30, snug + thread-locker). The grating hold-down clip pitch is fixed in Phase D against
 the McNichols clip datasheet.

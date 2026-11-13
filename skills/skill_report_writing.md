@@ -254,9 +254,12 @@ paragraph with zero contractions in Track 2; a sentence that only restates its t
 
 - `editorial_lint.py` (advisory, manual) — American-spelling, bare source links, raw
   values that should be placeholders, thousands-separators, missing Source References.
-- `style_lint.py` (advisory, manual) — the §F voice pass: robotic tells + word-count/bloat,
-  with per-track thresholds (reads each doc's track from `docs/editorial-review-todo.md`).
-  It flags; it never rewrites an engineering value. Run it before ticking a doc in the tracker.
+- `style_lint.py` (advisory, manual) — the §F voice pass: robotic tells, word-count/bloat,
+  **long sentences** (>40 words — windups to tighten), and **dim-dump parentheticals** (a `(…)`
+  with ≥3 measurement tokens — detail the diagram-of-record already carries, the kind of
+  `(each 4,049mm … 3,048mm)` aside to cut). Per-track thresholds; reads each doc's track from
+  `docs/editorial-review-todo.md`. It flags; it never rewrites an engineering value. Run it before
+  ticking a doc. (`style_lint.py <doc>` = line-level; no arg = ranked roster.)
 
 Both are advisory (not in the commit hook) — judgment-heavy checks shouldn't block a commit.
 The skill is enforced by reading it before each editorial pass.

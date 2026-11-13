@@ -59,6 +59,16 @@ TELLS = [(label, re.compile(pat, re.IGNORECASE)) for label, pat in TELLS]
 CONTRACTION = re.compile(r"\b\w+'(?:s|t|re|ve|ll|d|m)\b", re.IGNORECASE)
 FIRST_PERSON = re.compile(r"\b(?:I|I'm|I've|I'd|my|we|we're|we've|our)\b")
 
+# ── terseness candidates (learned from editorial corrections) ────────────────
+# A sentence longer than this reads as a windup to tighten; and a parenthetical that
+# dumps ≥3 measurement tokens is usually detail the diagram-of-record already carries
+# (the kind of "(each 4,049mm … 3,048mm)" / "(WF5, 610mm centers)" aside cut by hand).
+LONG_SENTENCE_WORDS = 40
+MEASURE = re.compile(r"\b\d[\d,]*(?:\.\d+)?\s?mm\b|\b[ZX]\d{2,}\b|Ø\d|\b\d+(?:\.\d+)?\s?(?:kN|N·m)\b|\b\d+°")
+PAREN = re.compile(r"\(([^()]{1,400}?)\)")
+SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
+_WORD = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
+
 
 def tracked_docs() -> dict[str, int]:
     """Map doc path (relative to docs/) → track (1 or 2), parsed from the tracker."""
@@ -89,7 +99,7 @@ def _prose(text: str) -> str:
     kept = []
     for ln in text.splitlines():
         s = ln.strip()
-        if not s or s.startswith("|") or s.startswith("#") or s.startswith("!["):
+        if not s or s.startswith(("|", "#", "![", "<")):   # tables, headings, images, HTML blocks
             continue
         if s.startswith("|---") or re.match(r"^\|?[-: |]+\|", s):   # table rule
             continue
@@ -102,23 +112,41 @@ def _words(prose: str) -> int:
 
 
 def scan(path: str, track: int):
-    """Return (word_count, [(line_no, label, matched_text)], stiff_para_count)."""
+    """Return (word_count, hits, stiff, long_sentences, dim_parens)."""
     full = open(path, encoding="utf-8").read()
     prose = _prose(full)
-    hits = []
+    hits, dim_parens = [], []
     for i, ln in enumerate(full.splitlines(), 1):
         if ln.strip().startswith(("|", "#", "<!--")):
             continue
         for label, rx in TELLS:
             for m in rx.finditer(ln):
                 hits.append((i, label, m.group(0)))
+        for m in PAREN.finditer(ln):                      # dim-dump parentheticals
+            inner = m.group(1)
+            if "http" in inner or "](" in inner:          # skip markdown links / URLs
+                continue
+            if len(MEASURE.findall(inner)) >= 3:
+                snip = inner if len(inner) <= 48 else inner[:46] + "…"
+                dim_parens.append((i, f"({snip})"))
+    long_sents = []                                       # sentences can span lines → scan the prose
+    for block in re.split(r"\n\s*\n", prose):
+        lines = block.split("\n")
+        is_list = sum(bool(re.match(r"\s*[-*]|\s*\d+\.", l)) for l in lines) > len(lines) / 2
+        units = lines if is_list else SENT_SPLIT.split(" ".join(lines))
+        for u in units:
+            if "](" in u or "http" in u:                  # skip link-heavy lines
+                continue
+            wc = len(_WORD.findall(u))
+            if wc > LONG_SENTENCE_WORDS:
+                long_sents.append((wc, u.strip().lstrip("-*0123456789. ")[:58] + "…"))
     stiff = 0
     if track == 2:                              # Track-2 stiffness: prose that reads corporate
         for para in re.split(r"\n\s*\n", prose):
             sents = [s for s in re.split(r"(?<=[.!?])\s+", para.strip()) if len(s.split()) > 3]
             if len(sents) >= 4 and not CONTRACTION.search(para) and not FIRST_PERSON.search(para):
                 stiff += 1
-    return _words(prose), hits, stiff
+    return _words(prose), hits, stiff, long_sents, dim_parens
 
 
 def main() -> int:
@@ -142,30 +170,38 @@ def main() -> int:
             continue
         if single and os.path.basename(rel) != os.path.basename(single) and rel != single:
             continue
-        words, hits, stiff = scan(path, track)
-        rows.append((rel, track, words, hits, stiff))
+        words, hits, stiff, longs, dims = scan(path, track)
+        rows.append((rel, track, words, hits, stiff, longs, dims))
 
     if single and rows:
-        rel, track, words, hits, stiff = rows[0]
+        rel, track, words, hits, stiff, longs, dims = rows[0]
         print(f"\n{rel}  (Track {track})  ·  {words} prose words  ·  {len(hits)} tells"
-              + (f"  ·  {stiff} stiff para(s)" if track == 2 else ""))
+              + (f"  ·  {stiff} stiff para(s)" if track == 2 else "")
+              + f"  ·  {len(longs)} long sent · {len(dims)} dim-dump paren")
         for ln, label, txt in hits:
             print(f"  L{ln:<4} {label:<26} “{txt}”")
-        if not hits and not stiff:
-            print("  clean — no robotic tells flagged.")
+        for ln, snip in dims:
+            print(f"  L{ln:<4} {'dim-dump paren':<26} {snip}")
+        for wc, snip in sorted(longs, reverse=True):
+            print(f"  {'':<6}{'long sentence (' + str(wc) + 'w)':<26} “{snip}”")
+        if not (hits or stiff or longs or dims):
+            print("  clean — no tells, long sentences, or dim-dump parens.")
         return 0
 
     # roster view, ranked by tell count
     print("TBS-001 style_lint — voice & terseness (advisory; never blocks)\n")
-    print(f"  {'doc':<42} {'trk':>3} {'words':>6} {'tells':>6}  {'stiff':>5}")
-    print(f"  {'-'*42} {'-'*3} {'-'*6} {'-'*6}  {'-'*5}")
-    for rel, track, words, hits, stiff in sorted(rows, key=lambda r: (-len(r[3]), -r[2])):
-        flag = "  ⚠" if (len(hits) >= 5 or (words and len(hits) * 1000 / words > 4)) else ""
-        print(f"  {rel:<42} {track:>3} {words:>6} {len(hits):>6}  {stiff:>5}{flag}")
+    print(f"  {'doc':<42} {'trk':>3} {'words':>6} {'tells':>5} {'long':>5} {'dims':>5} {'stiff':>5}")
+    print(f"  {'-'*42} {'-'*3} {'-'*6} {'-'*5} {'-'*5} {'-'*5} {'-'*5}")
+    for rel, track, words, hits, stiff, longs, dims in sorted(
+            rows, key=lambda r: (-(len(r[3]) + len(r[5]) + len(r[6])), -r[2])):
+        flag = "  ⚠" if (len(hits) >= 5 or len(longs) >= 8 or len(dims) >= 4) else ""
+        print(f"  {rel:<42} {track:>3} {words:>6} {len(hits):>5} {len(longs):>5} {len(dims):>5} {stiff:>5}{flag}")
     tot_w = sum(r[2] for r in rows)
     tot_t = sum(len(r[3]) for r in rows)
-    print(f"\n  {len(rows)} docs · {tot_w:,} prose words · {tot_t} tells."
-          " Run `style_lint.py <doc>` for line-level hits. ⚠ = tell-dense.")
+    tot_l = sum(len(r[5]) for r in rows)
+    tot_d = sum(len(r[6]) for r in rows)
+    print(f"\n  {len(rows)} docs · {tot_w:,} prose words · {tot_t} tells · {tot_l} long sentences"
+          f" · {tot_d} dim-dump parens. Run `style_lint.py <doc>` for line-level. ⚠ = dense.")
     return 0
 
 

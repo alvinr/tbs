@@ -56,7 +56,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 - [ ] pinhole-disc-holder-report.md
 
 ### Construction — Misc & Sequence
-- [ ] walkway-report.md
+- [x] walkway-report.md  — terseness pass (4,138 → ~3,700 words): fixed 3 broken sentences, collapsed duplicate bolt-"Attachment" + load-path paragraphs, dropped the "winged" label (unnecessary over self-tapping) + diagram-restated dims. Author editorial folded in.
 - [ ] hinged-panel-report.md
 - [ ] chemistry-prep-shelves.md
 - [ ] construction-report.md

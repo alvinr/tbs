@@ -318,7 +318,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | Right walkway cantilever frame (long + end beams), 2×1×0.120in steel (~5.4m) | $125 | $139 | $153 | rev12: closed rectangle (2 long + 2 end beams); the 2 center arms are IBC-owned (see the IBC frame §5) |
 | Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — through-bolted to the wall |
 | Combined corner plates, 10mm steel (×2) | $50 | $65 | $80 | Right corners — shared with the bottom film rail |
-| M12×70 partial-thread bolts + nuts/washers (~20) | $53 | $53 | $53 | 91280A732 $1.736 + plain nut + 4 flat + split /bolt; wall cleats + combined plates (arms bolt via the J6 end-plate, now IBC-frame §5) |
+| M12×70 partial-thread bolts + nuts/washers (~20) | $53 | $53 | $53 | 91280A732 $1.736 + plain nut + 4 flat + split /bolt; wall cleats + combined plates (arms bolt via the CJ end-plate, now IBC-frame §5) |
 | 316 SS hold-down clips (FRP M/G-clip, ×20) | $25 | $32 | $40 | Near/far/right walkway GRP grating retention |
 | Drum-exit punch-out — extra GRP grating (~0.23 m²) | $50 | $57 | $65 | 600mm-deep landing at the light-lock exit |
 | Left floor-leg cantilever brackets (×5) | $65 | $80 | $105 | 2×2×0.120in posts + 2×1×0.120in arms + foot plates |

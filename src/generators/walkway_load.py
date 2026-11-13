@@ -19,7 +19,7 @@ Sources (every capacity/coefficient cited):
   - Steel A36 / A500B mild steel Fy = 250 MPa; M12 Gr.8.8 Fub = 800 MPa (shared with ibc_frame_load)
 
 Reuses the right-walkway ARM + long-BEAM checks from ibc_frame_load.py — the arm->IBC-upright
-connection (joint J6) is IBC-frame-owned (drawn on IBC-frame Sheet 5), so it is CROSS-REFERENCED
+connection (joint CJ) is IBC-frame-owned (drawn on IBC-frame Sheet 5), so it is CROSS-REFERENCED
 here, not re-validated.
 
 Run:  python3 src/generators/walkway_load.py              # print the full validation report
@@ -190,23 +190,24 @@ def corner_plate_check():
             "  10 mm plate, permanently bolted; non-governing.")
 
 
-# ── 11-12. Right cantilever rectangle + arm->upright J6 (cross-referenced) ────
+# ── 11-12. Right cantilever rectangle + arm->upright CJ (cross-referenced) ────
 def cross_refs():
     _row("RWK long beam (cross-ref)", "person + grate", "SF 7.1", "7.1",
          "ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section")
     _row("RWK arm half-lap notch (cross-ref)", "334 N·m", "SF 2.03", "2.03",
          "ibc_frame_load.arm_notch_check — solid-bar rebalanced split")
-    _row("Arm→upright J6 (IBC-owned)", "395 N·m", "SF 20", "20",
+    _row("Arm→upright CJ (IBC-owned)", "395 N·m", "SF 20", "20",
          "ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only")
-    return ("\n## 11-12. RIGHT CANTILEVER RECTANGLE + ARM→UPRIGHT J6 (cross-referenced) ##\n"
+    return ("\n## 11-12. RIGHT CANTILEVER RECTANGLE + ARM→UPRIGHT CJ (cross-referenced) ##\n"
             "  The right-walkway long/end beams + the arm half-lap notch are validated in\n"
             "  ibc_frame_load.py (outer_beam_frame_check / arm_notch_check); the arm→IBC-upright\n"
-            "  connection (joint J6) is IBC-frame-owned (IBC-frame Sheet 5) — cross-referenced, not re-checked here.")
+            "  connection (joint CJ) is IBC-frame-owned (IBC-frame Sheet 5) — cross-referenced, not re-checked here.")
 
 
 # ── Phase B: fastener schedule (WF#) ─────────────────────────────────────────
-# Walkway-scoped marks (WF/WW) so they can't collide with the IBC-frame J1–J9 / W1–W5.
-# Torque for M12 Gr.8.8 through the (dry) corrugated wall ~90 N·m (matches the IBC J3/J6 wall bolts).
+# Walkway-scoped marks (WF/WW) so they can't collide with the IBC-frame joint marks
+# (FA/BC/WH/CJ/RP/SP) or welds W1–W6.
+# Torque for M12 Gr.8.8 through the (dry) corrugated wall ~90 N·m (matches the IBC WH/CJ wall bolts).
 FASTENERS = [
     ("WF1", "Standard bracket → wall rib", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "3/brkt × 13 = 39", "~90 N·m", "flat both ends", "plain nut + split-lock"),
@@ -228,7 +229,7 @@ def fastener_table_md():
              "|------|-------|----------|-------|-----|--------|--------|--------|"]
     for r in FASTENERS:
         lines.append("| " + " | ".join(r) + " |")
-    lines.append("| J6 (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | "
+    lines.append("| CJ (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | "
                  "M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |")
     return "\n".join(lines)
 
@@ -276,7 +277,7 @@ def weld_rows():
          f"base M {m_fl:.0f} N·m → SF {sf7:.1f}; also carries the {P_CONC:.0f} N vertical in shear"),
         ("WW8", "Wall cleat — back-plate + shelf + upstand", "5mm", "AWS D1.1 min; the long beam bears on the shelf, TEK-locked"),
         ("WW9", "Combined corner plate — beam seat + upstand", "5mm", "AWS D1.1 min; shared with the BR film rail"),
-        ("J6/W (IBC-owned)", "Half-lap seat + arm end-plate welds", "5mm", "IBC-frame schedule — cross-ref, not scheduled here"),
+        ("CJ/W (IBC-owned)", "Half-lap seat + arm end-plate welds", "5mm", "IBC-frame schedule — cross-ref, not scheduled here"),
     ]
 
 
@@ -380,7 +381,7 @@ def plate_schedule_md():
              "|-------|-----------|----------|-------|-----------------|-----|"]
     for r in rows:
         lines.append("| " + " | ".join(r) + " |")
-    lines.append("| *J6 arm end + backing plates (×4)* | 65×190 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |")
+    lines.append("| *CJ arm end + backing plates (×4)* | 65×190 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |")
     return "\n".join(lines)
 
 

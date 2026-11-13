@@ -11,15 +11,15 @@ walkway-arm connection, folded into §3.4–3.6 + the cut list).
 
 **Delivered beyond the original plan (review sweep, Aug 15):**
 - **Sheet 4 — Fabrication Details A–F** (added F = walkway-arm→upright clamp) + ~7 review passes correcting the
-  actual joints: bar bolted (not welded) to the hanger, vertical J7 retention, flush cleat bolts, tee-nut on
+  actual joints: bar bolted (not welded) to the hanger, vertical BC-W retention, flush cleat bolts, tee-nut on
   the ply BACK face, Detail D as a proper welded-L per the sketch, lighter steel tone.
 - **NEW — Plate Fabrication Schedule (2 sheets)**: every plate 1:1 with hole Ø/positions/PCD (foot, hanger
   backing, hanger pocket as back-plate + seat faces, cleat, rear-panel tab, pipe-run L).
 - **Design refinements:** wall-hanger back-plate + seat standardized to 60 mm (reuse the backing stock);
-  **J7 → 1 centered bolt** (redundancy not strength); **rear-panel + pipe-run brackets W6/W7 → #14 TEK
-  self-drillers (J8/J9)** — bolt-on to a painted frame, no hot work; `IBC_WBKT_* → FP_CORNER_SEAT_*` rename.
+  **BC-W → 1 centered bolt** (redundancy not strength); **rear-panel + pipe-run brackets W6/W7 → #14 TEK
+  self-drillers (RP2/SP2)** — bolt-on to a painted frame, no hot work; `IBC_WBKT_* → FP_CORNER_SEAT_*` rename.
 
-**Remaining / next:** (1) **3D-model reconciliation** — DONE 2026-08-16: pocket → 60/60 + centered J7 bolt +
+**Remaining / next:** (1) **3D-model reconciliation** — DONE 2026-08-16: pocket → 60/60 + centered BC-W bolt +
 the left-cantilever foot-X0 missed-cascade fix; all 6 affected models re-sent/saved/uploaded, drift-free.
 (2) **Assembly / weld-sequence** notes — DONE 2026-08-16 (report §3.7: 4-phase shop-weld → bolt-on → install →
 load, with balanced-weld distortion control). (3) **Rendered load-case sheet** — DONE 2026-08-16
@@ -64,7 +64,7 @@ load case). Follows [`fp-corner-blueprint-spec.md`](fp-corner-blueprint-spec.md)
 | Floor feet | 4 × **150×150×12** steel flange plate, **4× M12** each into a shared floor-anchor **sub-plate** (self-tapped to the cross-members; §3.4a) (front feet reach ~25 mm under the tray) |
 | Front retaining bars | **8 × 50×20×3 RHS — 2 per tote face** (R5), wall→upright per column, span ~1,046 mm |
 | Anti-slip matting | 4 × certified anti-slip mat (**μ ≥ 0.6**) under the tote interfaces |
-| Front-bar → upright L-cleats | **M12×65** 18-8 SS (92800A481), **1 horizontal bolt per cleat** through the L's vertical leg + the bar's 50 mm web — corridor end (J2) + wall end (J7), 8 + 8 = 16 |
+| Front-bar → upright L-cleats | **M12×65** 18-8 SS (92800A481), **1 horizontal bolt per cleat** through the L's vertical leg + the bar's 50 mm web — corridor end (BC-C) + wall end (BC-W), 8 + 8 = 16 |
 | Wall joist hangers | 8 × Simpson-style **4 mm folded U-pocket** (one per bar), each **through-bolted 2× M12×70 Gr.8.8** (91280A732) to an exterior backing plate (16 wall penetrations) |
 | Exterior backing plates | 8 × **60×205×8** steel, OUTSIDE the corrugated side wall (hex heads out), 2× M12 holes each — spreads tote thrust so bolts can't pull through the thin wall |
 | Weld-on lashing rings | 8 × 1½" weld-on (3028T31), 6,600 lb ring WLL; on the front bars (4/tier × 2 tiers) |
@@ -101,7 +101,7 @@ sheet. Elements to check, each with an EN 12195-1 design force → capacity → 
 - [x] **Front retaining bar** (50×20×3 RHS, ~1,046 mm span) — bending + shear under the top-tote forward thrust (0.8 g, friction-credited).
 - [x] **Wall-hanger bolt group** — 4× M12×70 Gr.8.8 in shear + **backing-plate bearing / corrugated-wall pull-through** (100×135×8 plate). The corrugation-depth (30 mm) is the pull-through assumption — ties to the parked procurement gate.
 - [x] **Front-bar → upright cleat** — M12×65 18-8 SS shear (1 horizontal bolt through the L leg + the bar's 50 mm web).
-- [x] **Floor-foot anchors** — 4× M12 per foot into the floor-anchor sub-plate's tapped bosses (J1b); the plate self-taps to the cross-members (J1a), carrying shear + uplift (§3.4a).
+- [x] **Floor-foot anchors** — 4× M12 per foot into the floor-anchor sub-plate's tapped bosses (FA2); the plate self-taps to the cross-members (FA1), carrying shear + uplift (§3.4a).
 - [x] **Lashing ring + strap** — 6,600 lb ring / 3,333 lb strap WLL vs the EN 12195-1 vertical + lateral tie-down demand.
 - [ ] **Weld throats** — ring→bar, upright↔ring, foot↔upright fillet throat vs demand → **moved to Phase B** (weld schedule).
 
@@ -110,7 +110,7 @@ text), authoritative voice, each capacity/coefficient cited.
 
 ## Phase B — Fastener + weld schedule — DONE 2026-08-14
 
-- [x] **Fastener schedule J1–J3** (report §3.4a/§3.5): J1a floor-anchor sub-plate → cross-members, winged #14×3¼″ 410 SS self-driller (container-dependent count, driven from above) + J1b foot-plate → sub-plate tapped boss, M12×30 ×16 (4/foot, snug + thread-locker); J2/J7 bar→upright L-cleat → M12×65 18-8 SS ×16 (8 corridor-end J2 + 8 wall-end J7, 1 horizontal bolt per cleat through the L leg + the bar's 50 mm web, ~50 N·m + anti-seize, nyloc); J3 wall-hanger through-bolt → M12×70 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex).
+- [x] **Fastener schedule FA–WH** (report §3.4a/§3.5): FA1 floor-anchor sub-plate → cross-members, winged #14×3¼″ 410 SS self-driller (container-dependent count, driven from above) + FA2 foot-plate → sub-plate tapped boss, M12×30 ×16 (4/foot, snug + thread-locker); BC-C/BC-W bar→upright L-cleat → M12×65 18-8 SS ×16 (8 corridor-end BC-C + 8 wall-end BC-W, 1 horizontal bolt per cleat through the L leg + the bar's 50 mm web, ~50 N·m + anti-seize, nyloc); WH wall-hanger through-bolt → M12×70 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex).
 - [x] **Weld schedule W1–W5** (report §3.5, sized in `ibc_frame_load.py`): W4 lashing-ring→bar 6 mm fillet (SF 9.1 vs strap WLL) + W3 cleat→upright 4 mm (SF 37) are load-checked; W1 upright↔ring 5 mm, W2 foot↔upright 6 mm, W5 hanger-seat↔pocket 4 mm are AWS D1.1 minimum practical fillets (frame load << capacity). Hangers are folded (not welded); backing plates loose (bolted).
 - [x] Added as tables in `ibc-stacking-report.md` §3.5. (A dedicated fastening/weld detail SHEET is deferred to Phase D.)
 
@@ -124,7 +124,7 @@ text), authoritative voice, each capacity/coefficient cited.
 - [x] **Member cut list** — drawn on `ibc-frame-sheet1` (4 uprights @2296, ring rails, 8 bars @1046, 4 feet, 8 backing plates @60×205, 8 hangers, 8 cleats), lengths computed from the frame constants.
 - [x] **Datum + tolerance callout block** on sheet1 (from §3.6); weld-schedule (§3.5 W1–W5 leg sizes) folded into the fab notes.
 - [x] Stale-value cleanup: sheet labels/notes 100×80→60×205, ~119→~123 kg, bar Z560/1760→Z500/950+1500/1950.
-- [x] **Detail INSETS — DONE 2026-08-14:** new **Sheet 4 (Fabrication Details)** with DETAIL A wall joist hanger (per-bar 2-bolt, 50mm clearance, backing plate), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E pump-support L-bracket — each with its weld (W) + fastener (J) callout + a notes cell. Registered (gallery/publish/setup_docs), embedded in report §3.5 + §8. (The foot-plate inset already lived on sheet 1.) Optional rendered load-case sheet still deferred.
+- [x] **Detail INSETS — DONE 2026-08-14:** new **Sheet 4 (Fabrication Details)** with DETAIL A wall joist hanger (per-bar 2-bolt, 50mm clearance, backing plate), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E pump-support L-bracket — each with its weld (W) + fastener callout + a notes cell. Registered (gallery/publish/setup_docs), embedded in report §3.5 + §8. (The foot-plate inset already lived on sheet 1.) Optional rendered load-case sheet still deferred.
 
 ## Phase E — Cascade + close (as changes land)
 

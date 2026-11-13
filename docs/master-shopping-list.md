@@ -240,7 +240,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 40 ea | McMaster-Carr | film | $3 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
-| [36× #14 self-drilling TEK screws (bracket → post, J8/J9)](https://www.mcmaster.com/90822A620/) (90822A620) | 36 ea | McMaster-Carr | water | $19 |
+| [36× #14 self-drilling TEK screws (bracket → post, RP2/SP2)](https://www.mcmaster.com/90822A620/) (90822A620) | 36 ea | McMaster-Carr | water | $19 |
 | 58× conduit P-clips + PVC-trunk saddle straps | 58 ea | Home Depot | electrical | $26–$46 |
 | 6× steel angle brackets (corridor panel → IBC uprights) | 6 ea | Home Depot | water | $15–$39 |
 | Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | 1 lot | Home Depot | water | $10–$11 |
@@ -439,8 +439,8 @@ indicative low–high estimates — get quotes before ordering.
 | Steel backing plate 60×205×8mm | 8 ea | Metal Supermarkets | ibc-frame | $32–$56 |
 | [Steel flat bar 25×3mm — ribbon support cross-brace](https://www.mcmaster.com/6775T37-6775T373/) (6775T37) | 2 3ft bar | McMaster-Carr | water | $35 |
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
-| Walkway-arm end + backing plates (J6) | 4 ea | Local fab | ibc-frame | $12–$24 |
-| Walkway-arm J6 crush sleeves | 4 ea | Local fab | ibc-frame | $3–$6 |
+| Walkway-arm CJ crush sleeves | 4 ea | Local fab | ibc-frame | $3–$6 |
+| Walkway-arm end + backing plates (CJ) | 4 ea | Local fab | ibc-frame | $12–$24 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall-frame adapter plate + weld | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $68 |

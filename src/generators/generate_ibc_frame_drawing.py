@@ -20,8 +20,8 @@ Frame concept (ibc-reconfig-v2 — restraint-only deep 4-leg box):
   deck), so the frame only RESTRAINS.  It is a DEEP 4-LEG BOX at the corridor mouth:
   a FRONT upright pair (X4654) + a BACK pair 450mm behind (X5104), each column at
   Yd 1046/1266, tied by butt-jointed top + bottom rings.  Each of the 4 legs is
-  anchored to the floor by a 150×150×12 flange plate that bolts (4× M12, J1b) to a
-  shared floor-anchor sub-plate self-tapped into the cross-members (J1a); the front feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
+  anchored to the floor by a 150×150×12 flange plate that bolts (4× M12, FA2) to a
+  shared floor-anchor sub-plate self-tapped into the cross-members (FA1); the front feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
   drain-riser spine on its BACK uprights.  Transport restraint is by front retaining
   8 bars (2/tier: Z500/950 + Z1500/1950) whose wall ends drop into Simpson-style joist hangers through-
   bolted to exterior backing plates, plus D-ring lashing.  Geometry matches the 3D
@@ -217,7 +217,7 @@ def _foot_elev(ax, c, *, zo=7):
 
 def _subplate_elev(ax, c_lo, c_hi, *, zo=6):
     """The ONE floor-anchor sub-plate (strongback) spanning all the feet in this
-    view, lying on the floor; winged TEKs self-tap it into the cross-members (J1a).
+    view, lying on the floor; winged TEKs self-tap it into the cross-members (FA1).
     Container-dependent length — drawn to span the visible feet + a margin."""
     x0, x1 = c_lo - FOOT_PLATE / 2 - 55, c_hi + FOOT_PLATE / 2 + 55
     _rhs_rect(ax, x0, -FOOT_PLATE_T, x1 - x0, PT, fc=C_STEEL, lw=1.2, zo=zo)                 # sub-plate on the floor
@@ -493,9 +493,9 @@ def sheet1():
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
     # Wall hangers: the bar's wall end is secured by the SAME L-cleat as the post end (horizontal leg the bar
-    # sits on + vertical leg on the bar front, 1 horizontal J7 bolt through the leg + the bar web), welded to an
+    # sits on + vertical leg on the bar front, 1 horizontal BC-W bolt through the leg + the bar web), welded to an
     # INSIDE plate.  That inside plate + an OUTSIDE backing plate clamp the container wall (shown as the GAP
-    # between them) with 2× M12 (J3) through-bolts run HORIZONTALLY through both plates (head out, nut in).
+    # between them) with 2× M12 (WH) through-bolts run HORIZONTALLY through both plates (head out, nut in).
     def _wall_hanger(wall_yd, din, bz):
         bmid = bz + FRAME_RHS / 2
         wo = wall_yd - din * WALL_T                    # wall OUTER face
@@ -507,14 +507,14 @@ def sheet1():
         _seg(wo, bpo, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)                 # OUTSIDE backing plate
         _seg(wall_yd, ipf, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)            # INSIDE plate
         # SAME L-cleat as the post end (welded to the inside plate): horizontal leg (bar sits on it) + vertical
-        # leg on the bar FRONT, with 1 HORIZONTAL J7 bolt through the leg + the bar web (end-on in this view).
+        # leg on the bar FRONT, with 1 HORIZONTAL BC-W bolt through the leg + the bar web (end-on in this view).
         _seg(ipf, lout, bz - 11, 11, fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8)                            # L horizontal leg (shelf, edge-on)
         _seg(ipf, lout, bz - 2, FRAME_RHS + 4, fc=C_FRAME, ec=C_OUT, lw=0.9, alpha=0.45, zorder=11)     # L vertical leg (bar FRONT, welded to the inside plate)
-        for zz in (bz - 24, bz + FRAME_RHS + 24):      # 2× J3 through-bolts — HORIZONTAL, STACKED, through both plates + wall
+        for zz in (bz - 24, bz + FRAME_RHS + 24):      # 2× WH through-bolts — HORIZONTAL, STACKED, through both plates + wall
             _seg(bpo, ipf + din * 6, zz - 4.5, 9, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12)              # shank (protrudes past the inside plate for the nut)
             _seg(bpo, bpo - din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex head (OUTSIDE)
             _seg(ipf, ipf + din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex NUT (INSIDE face)
-        bxc = wall_yd + din * 26                                                                        # 1× J7 bolt — HORIZONTAL through the L leg + the bar web (END-ON here), like J2 at the post
+        bxc = wall_yd + din * 26                                                                        # 1× BC-W bolt — HORIZONTAL through the L leg + the bar web (END-ON here), like BC-C at the post
         ax.add_patch(Circle((bxc, bmid), 9, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=13))
         ax.plot([bxc - 6, bxc + 6], [bmid, bmid], color=C_OUT, lw=0.8, zorder=14)
         ax.plot([bxc, bxc], [bmid - 6, bmid + 6], color=C_OUT, lw=0.8, zorder=14)
@@ -526,7 +526,7 @@ def sheet1():
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
-    # ── Each bar's CORRIDOR-END connection: a J2 cleat welded to the upright's outside face (W3) + 2 vertical
+    # ── Each bar's CORRIDOR-END connection: a BC-C cleat welded to the upright's outside face (W3) + 2 vertical
     #    bolts down through the bar into the cleat leg.  (The wall end is drawn above; details on Sheet 4.)
     for bz in (500, 950, 1500, 1950):
         bmid = bz + FRAME_RHS / 2
@@ -537,7 +537,7 @@ def sheet1():
             ax.add_patch(Rectangle((legx, bz - 11), 45, 11, fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))            # horizontal leg (edge-on, under the bar)
             ax.add_patch(Rectangle((legx, bz - 2), 45, FRAME_RHS + 4, fc=C_FRAME, ec=C_OUT, lw=0.9, alpha=0.45, zorder=11))  # vertical leg (on the bar FRONT −X, welded to the upright — W3)
             _weld_tick(ax, post_face, bmid, side=('left' if din < 0 else 'right'), size=10)   # W3 weld
-            bxc = post_face + din * 22                                              # 1× J2 bolt — HORIZONTAL (along X, into the page here): drawn END-ON (circle + cross) at the bar mid-height
+            bxc = post_face + din * 22                                              # 1× BC-C bolt — HORIZONTAL (along X, into the page here): drawn END-ON (circle + cross) at the bar mid-height
             ax.add_patch(Circle((bxc, bmid), 9, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=13))
             ax.plot([bxc - 6, bxc + 6], [bmid, bmid], color=C_OUT, lw=0.8, zorder=14)
             ax.plot([bxc, bxc], [bmid - 6, bmid + 6], color=C_OUT, lw=0.8, zorder=14)
@@ -622,7 +622,7 @@ def sheet1():
 
     leader(ax, (POST_NEAR_YD - FRAME_RHS * 0.3), (FOOT_PLATE_T / 2),
            (POST_NEAR_YD - 220), (140),
-           "FLOOR FLANGE FOOT (J1b)\n150×150×12 PLATE, 4× M12 TO THE\nFLOOR-ANCHOR SUB-PLATE (J1a → cross-members)\n(×4, one per leg)",
+           "FLOOR FLANGE FOOT (FA2)\n150×150×12 PLATE, 4× M12 TO THE\nFLOOR-ANCHOR SUB-PLATE (FA1 → cross-members)\n(×4, one per leg)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -634,13 +634,13 @@ def sheet1():
 
     leader(ax, (NEAR_COL_R - 40), (1500 + FRAME_RHS / 2),
            (NEAR_COL_R - 60), (1430),
-           "J2 CORRIDOR-END L-CLEAT (×8)\nL-angle welded to the upright (W3); bar drops in,\n1× M12×65 HORIZONTAL through the leg + web (J2)\n— see Sheet 4 Det B / Plate 4",
+           "BC-C CORRIDOR-END L-CLEAT (×8)\nL-angle welded to the upright (W3); bar drops in,\n1× M12×65 HORIZONTAL through the leg + web (BC-C)\n— see Sheet 4 Det B / Plate 4",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     leader(ax, (30), (1500 + FRAME_RHS / 2),
            (330), (1700),
-           "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 J7\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×70 (J3), head out / nut in",
+           "WALL HANGER (×8, 1/bar)\nSAME L-cleat as the post end (1× M12×65 BC-W\nhorizontal); the inside + outside plates clamp\nthe wall — 2× M12×70 (WH), head out / nut in",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -679,7 +679,7 @@ def sheet1():
         f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Fillet welds per §3.5 schedule (W1 upright↔ring 5mm, W2 foot↔upright 6mm, W3 cleat 4mm, W4 lashing ring 6mm), continuous / all-around.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers)."
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
-        f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, J1b) to the floor-anchor sub-plate (J1a → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
+        f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, FA2) to the floor-anchor sub-plate (FA1 → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
         f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into"
          "   a Simpson-style wall joist"
         f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
@@ -807,10 +807,10 @@ def sheet2():
     # ── Right-walkway cantilever arm (rev12) — attaches to the front corridor
     # upright and projects off the front of the frame toward the walkway.  In side
     # elevation (along Yd) the 2 arms (Yd 1046/1266) overlap into one bar. ──
-    EP_T = 8                                                                         # J6 end-plate / backing-plate thickness
+    EP_T = 8                                                                         # CJ end-plate / backing-plate thickness
     _rhs_rect(ax, ARM_X_TIP_L, ARM_Z0, (FX_FRONT - EP_T) - ARM_X_TIP_L, ARM_Z1 - ARM_Z0,
               fc=C_ARM, alpha=0.9, zo=7)                                              # SOLID arm — ends 8mm short of the post (the end-plate fills the gap)
-    # J6 BEARING-TYPE (matches Sheet 5): an end-plate WELDED to the arm end (post FRONT face) + a REAR
+    # CJ BEARING-TYPE (matches Sheet 5): an end-plate WELDED to the arm end (post FRONT face) + a REAR
     # backing plate, with 2× M12 through the post ABOVE the arm — the bolts run left→right THROUGH the
     # post (not into the page), both high so they clear the arm and the corridor bottom rail below.
     ep_z0, ep_z1 = 56, 192                                                           # bottom raised to clear the base ring + its weld (ring top Z50.8); top Z192 gives the upper bolt (Z170) 22mm edge (≥1.5·D)
@@ -821,7 +821,7 @@ def sheet2():
     _weld_tick(ax, FX_FRONT - EP_T + 2, ARM_Z1 - 4, side='up', size=6)               # end-plate ↔ arm weld
     leader(ax, (FX_FRONT + FRAME_RHS / 2), (ARM_Z1 + 55),
            (FX_FRONT + FRAME_RHS + 95), (ARM_Z1 + 165),
-           "J6 (bearing-type): 2× M12 run THROUGH\nthe post ABOVE the arm → end-plate (front)\n+ rear backing plate (see Sheet 5)",
+           "CJ (bearing-type): 2× M12 run THROUGH\nthe post ABOVE the arm → end-plate (front)\n+ rear backing plate (see Sheet 5)",
            color=C_OUT, fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, (ARM_X_TIP_L + 40), (ARM_Z1),
            (ARM_X_TIP_L - 10), (ARM_Z1 + 90),
@@ -829,13 +829,13 @@ def sheet2():
            color=C_ARM, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Plywood mounting tabs on the BACK upright — the rear-panel brackets that carry the corridor
-    #    pump panel (note 5).  J8: TEK screws to the post; J4: bolt into a tee-nut in the ply. ──
+    #    pump panel (note 5).  RP2: TEK screws to the post; RP1: bolt into a tee-nut in the ply. ──
     for tz in (350, 980, 1600):
         ax.add_patch(Rectangle((FX_BACK - 34, tz - 4), 34, 8, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))   # tab leg (projects into the corridor)
-        ax.add_patch(Circle((FX_BACK - 28, tz), 5, fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))                # J4 ply bolt head
-        _weld_tick(ax, FX_BACK, tz, side='left', size=5)                                                  # J8 TEK to the post
+        ax.add_patch(Circle((FX_BACK - 28, tz), 5, fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))                # RP1 ply bolt head
+        _weld_tick(ax, FX_BACK, tz, side='left', size=5)                                                  # RP2 TEK to the post
     leader(ax, (FX_BACK - 34), 980, (FX_BACK - 350), 880,
-           "PLYWOOD MOUNTING TABS (×6)\nrear-panel brackets: J8 TEK to the post\n+ J4 bolt into a tee-nut in the ply\n— see Sheet 4 Det D / Plate 5",
+           "PLYWOOD MOUNTING TABS (×6)\nrear-panel brackets: RP2 TEK to the post\n+ RP1 bolt into a tee-nut in the ply\n— see Sheet 4 Det D / Plate 5",
            color=C_OUT, fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
@@ -996,7 +996,7 @@ def sheet3():
     ax.add_patch(Rectangle((_px0, _py0), _px1 - _px0, _py1 - _py0, fc=C_STEEL, ec=C_OUT,
                            lw=1.2, ls=(0, (5, 3)), alpha=0.22, zorder=3))
     leader(ax, _px0, (_py0 + _py1) / 2, _px0 - 120, (_py0 + _py1) / 2 + 140,
-           "FLOOR-ANCHOR SUB-PLATE\n(ONE plate, all 4 feet;\nself-taps to the cross-members, J1a)",
+           "FLOOR-ANCHOR SUB-PLATE\n(ONE plate, all 4 feet;\nself-taps to the cross-members, FA1)",
            color=C_DIM, fs=5, ha="right", va="bottom", arrow_style="-|>", font=FONT)
     for fx in FX_POSTS:
         foot_dx = IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0
@@ -1201,7 +1201,7 @@ def sheet4():
     _rhs_rect(ax, wy + 16, zc - 22, 150, 44, fc=C_FRAME, alpha=0.5, zo=7)                           # bar rests on the seat, extends RIGHT
     _break(ax, wy + 166, zc - 22, zc + 22)                                                          # bar continues (jagged)
     ax.text(wy + 116, zc + 34, "BAR → into container", fontsize=6, ha="center", **FONT, zorder=8)
-    # J7 RETENTION bolt: ONE VERTICAL down through the bar into the seat, CENTERED (reverted from 2 —
+    # BC-W RETENTION bolt: ONE VERTICAL down through the bar into the seat, CENTERED (reverted from 2 —
     # redundancy not strength; the pocket + the fixed 2-bolt corridor cleat already stop the bar rotating)
     _hh7, _hl7 = 9 * 1.7, 9 * 0.7
     jbx = wy + 70
@@ -1211,8 +1211,8 @@ def sheet4():
     for dz in (75, -75):
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # 2 wall through-bolts: fix HANGER to wall — NOT the bar
     draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150mm")
-    leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×70 (J3)\nHANGER→wall", fs=6, font=FONT, ha="left")
-    leader(ax, jbx, zc + 28, wy + 60, zc + 85, "M12 (J7)\nbar→seat, centered", fs=6, font=FONT, ha="left")
+    leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×70 (WH)\nHANGER→wall", fs=6, font=FONT, ha="left")
+    leader(ax, jbx, zc + 28, wy + 60, zc + 85, "M12 (BC-W)\nbar→seat, centered", fs=6, font=FONT, ha="left")
     leader(ax, wy + 14, zc - 25, wy - 100, zc - 40, "seat↔plate\nweld (W5)", fs=6, font=FONT, ha="left")
     leader(ax, wy - 22, zc - 100, wy - 40, zc - 128, "60×205×8 A36\n(hex heads out)", fs=6, font=FONT, ha="right")
     ax.text(wy - 42, ay0 + 32, "OUTSIDE", fontsize=6, ha="center", **FONT)
@@ -1220,7 +1220,7 @@ def sheet4():
 
     # ── DETAIL B — BAR→UPRIGHT L-CLEAT (END SECTION: bar drops into the L, ONE horizontal bolt) ──
     bx0, by0 = 470, 470
-    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT L-CLEAT (J2/W3, ×8)")
+    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT L-CLEAT (BC-C/W3, ×8)")
     # end-section (looking along the bar): X horizontal (front −X on the LEFT), Z vertical; upright is BEHIND
     ex, ez = bx0 + 120, by0 + 70                                                                    # L corner
     lt2, barW2, barH2 = 16, 40, 100                                                                 # drawn (exaggerated): leg thickness / bar depth (20) / bar height (50)
@@ -1235,7 +1235,7 @@ def sheet4():
     _bolt(ax, ex - 6, bzc, lt2 + barW2 + 14, d=13, nut=True)                                        # 1× M12 HORIZONTAL through the leg + the bar's 50 web
     draw_dim_v(ax, ex - 24, ez + lt2, ez + lt2 + barH2, "50mm")                                       # bar web the bolt passes through (→ ~18mm edge)
     leader(ax, ex, ez + barH2 + 35, ex + 25, ez + barH2 + 76, "L FILLET WELDED\nto upright (W3 4mm)", fs=6, font=FONT, ha="right")
-    leader(ax, ex + lt2 + barW2 + 8, bzc, ex + lt2 + barW2 + 40, bzc - 44, "1× M12×65 (J2)\nHORIZONTAL through\nthe leg + the 50 web", fs=6, font=FONT, ha="left")
+    leader(ax, ex + lt2 + barW2 + 8, bzc, ex + lt2 + barW2 + 40, bzc - 44, "1× M12×65 (BC-C)\nHORIZONTAL through\nthe leg + the 50 web", fs=6, font=FONT, ha="left")
 
     # ── DETAIL C — FRONT-BAR LASH RINGS (2 rings on weld plates + distances + break) ──
     lx0, ly0 = 940, 470
@@ -1253,9 +1253,9 @@ def sheet4():
     draw_dim_h(ax, lx0 + 250, lx0 + 336, bz - 32, "→ bar end")
     leader(ax, lx0 + 120, bz + 58, lx0 + 40, bz - 48, "weld-on ring: ring + base\nare ONE piece; base FILLET\n6mm to the bar (W4)", fs=6, font=FONT, ha="left")
 
-    # ── DETAIL D — REAR-PANEL BRACKET (welded L-bracket; ply BOLTED to the upstand via a bolt+washer → tee-nut in the ply, J4) ──
+    # ── DETAIL D — REAR-PANEL BRACKET (welded L-bracket; ply BOLTED to the upstand via a bolt+washer → tee-nut in the ply, RP1) ──
     dx0, dy0 = 20, 60
-    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/J8 ×6)")
+    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (RP1/RP2 ×6)")
     px, py = dx0 + 60, dy0 + 105
     _rhs_rect(ax, px, py, 44, 210, fc=C_FRAME, alpha=0.5, zo=5)                                      # back-upright POST (steel section)
     ax.text(px + 22, py + 150, "POST", fontsize=6, ha="center", va="center", **FONT, zorder=9, rotation=90)
@@ -1278,12 +1278,12 @@ def sheet4():
     ax.add_patch(Rectangle((px + 116, bz - 11), 4, 22, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))      # washer under the head
     _bolt(ax, px + 120, bz, 32, d=8, nut=False)                                                      # head (corridor side) + shank through upstand & ply → threads into the tee-nut barrel
     ax.text(px + 145, lz + 142, "PLYWOOD (rear panel)", fontsize=5.6, ha="center", **FONT, zorder=9)
-    leader(ax, px + 48, lz + 26, px + 6, lz - 75, "L-BRACKET → POST:\n2× #14 TEK (J8)", fs=6, font=FONT, ha="left")
-    leader(ax, px + 108, bz, px + 50, bz - 90, "M8 hex + washer thru the upstand\n→ tee-nut, flange on the ply BACK\nface (bolt pulls it tight) — J4", fs=6, font=FONT, ha="left")
+    leader(ax, px + 48, lz + 26, px + 6, lz - 75, "L-BRACKET → POST:\n2× #14 TEK (RP2)", fs=6, font=FONT, ha="left")
+    leader(ax, px + 108, bz, px + 50, bz - 90, "M8 hex + washer thru the upstand\n→ tee-nut, flange on the ply BACK\nface (bolt pulls it tight) — RP1", fs=6, font=FONT, ha="left")
 
     # ── DETAIL E — SIDE-PANEL PIPE-RUN SUPPORT L-BRACKET (carries the pipe runs, NOT pumps) ──
     ex0, ey0 = 470, 60
-    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — SIDE-PANEL PIPE-RUN L-BRACKET (J5/J9, ×12)")
+    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — SIDE-PANEL PIPE-RUN L-BRACKET (SP1/SP2, ×12)")
     ax.text(ex0 + 210, ey0 + 338, "side-wall boards carry PIPE runs, NOT pumps",
             fontsize=5.6, ha="center", **FONT, zorder=6)
     qx, qy = ex0 + 60, ey0 + 110
@@ -1299,10 +1299,10 @@ def sheet4():
     ax.add_patch(Rectangle((qx + 120, qy + 88), 18, 8, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=8))        # tee-nut rectangle (board back/top)
     ax.add_patch(Rectangle((qx + 125, qy + 60), 8, 32, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=8))       # screw shank up through the leg+board
     ax.fill([qx + 123, qx + 135, qx + 132, qx + 126], [qy + 60, qy + 60, qy + 66, qy + 66], color=C_BOLT, zorder=9)  # CSK head under the leg
-    leader(ax, qx + 61, qy + 105, qx + 8, qy + 40, "1×1×⅛ L → post:\n2× #14 TEK (J9)", fs=6, font=FONT, ha="left")
-    leader(ax, qx + 138, qy + 90, qx + 176, qy + 44, "board → tee-nut\n+ CSK (J5)", fs=6, font=FONT, ha="left")
+    leader(ax, qx + 61, qy + 105, qx + 8, qy + 40, "1×1×⅛ L → post:\n2× #14 TEK (SP2)", fs=6, font=FONT, ha="left")
+    leader(ax, qx + 138, qy + 90, qx + 176, qy + 44, "board → tee-nut\n+ CSK (SP1)", fs=6, font=FONT, ha="left")
 
-    # (DETAIL F removed — the walkway arm → upright J6 connection is fully drawn on Sheet 5: the VIEW A
+    # (DETAIL F removed — the walkway arm → upright CJ connection is fully drawn on Sheet 5: the VIEW A
     #  side elevation of the joint + the END-PLATE detail + the PLAN VIEW now showing the through-bolts.
     #  Keeping it here duplicated Sheet 5's plan view — 2026-08-17.)
 
@@ -1310,11 +1310,11 @@ def sheet4():
     _dcell(ax, 20, -300, 1340, 268, "NOTES")
     draw_notes(ax, [
         "• All welds E70xx per §3.5 (W1–W6); grind zinc at weld zones. A36 plate; A500 Gr.B RHS. Deburr holes. Datums A/B/C + tolerances: sheet 1 + §3.6.",
-        "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm wrench clearance. BAR bolts DOWN to the seat — 1× vertical M12 (J7); W5 = seat↔plate weld.",
-        "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×65 (J2); the wall end drops into the hanger (A).",
-        "• Brackets (D/E): L-brackets TEK-screwed to the post (J8/J9, 2× #14 each — NO weld). D: rear panel → upstand tee-nut (J4). E: side pipe-board → tee-nut + CSK (J5).",
+        "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm wrench clearance. BAR bolts DOWN to the seat — 1× vertical M12 (BC-W); W5 = seat↔plate weld.",
+        "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×65 (BC-C); the wall end drops into the hanger (A).",
+        "• Brackets (D/E): L-brackets TEK-screwed to the post (RP2/SP2, 2× #14 each — NO weld). D: rear panel → upstand tee-nut (RP1). E: side pipe-board → tee-nut + CSK (SP1).",
         "• Walkway arm: bolted end-plate, BEARING-TYPE (2× M12 both above the arm), no frame weld → fully detailed on Sheet 5. Straps → stacking Sheet 2 (ops).",
-        "• Where used: A/B 8 retaining-bar ends · C lash rings · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · walkway-arm J6 (4× M12) → Sheet 5.",
+        "• Where used: A/B 8 retaining-bar ends · C lash rings · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · walkway-arm CJ (4× M12) → Sheet 5.",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)
 
     title_block(ax, "SHEET 4 OF 6",
@@ -1379,7 +1379,7 @@ def sheet5():
     ax.add_patch(Rectangle((XUP + 60, p_bz), ep_x, p_ht, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))    # rear backing plate
     for bz in (az + ah/2 + 22, az + ah/2 + 52):                                            # BOTH bolts ABOVE the arm (bearing-type) — clears the arm AND the corridor rail below
         _bolt(ax, XUP - ep_x, bz, 60 + 2 * ep_x, d=8, nut=True)
-    leader(ax, XUP + 60 + ep_x, az + ah/2 + 52, XUP - 40, az + 100, "J6 (bearing-type)\n2 bolts ABOVE arm →\nPLATE detail + Sheet 4 F", fs=5.6, font=FONT, ha="right")
+    leader(ax, XUP + 60 + ep_x, az + ah/2 + 52, XUP - 40, az + 100, "CJ (bearing-type)\n2 bolts ABOVE arm →\nPLATE detail + Sheet 4 F", fs=5.6, font=FONT, ha="right")
     zc = az - ah/2 - 32                                                                  # longitudinal chain-dim line
     draw_dim_h(ax, XT, XIN1, zc, "50.8mm", fs=5.5, font=FONT, above=False)                   # inner notch width
     draw_dim_h(ax, XIN1, XOUT0, zc, "198.4mm", fs=5.5, font=FONT, above=False)               # clear gap
@@ -1403,7 +1403,7 @@ def sheet5():
         draw_dim_h(ax, n0, xc, py - dw/2 - 10, "25.4mm", fs=4.6, font=FONT, above=False)               # hole CL from the notch edge
     ax.text(XT - 8, py, "TIP", fontsize=5.5, ha="right", va="center", color=C_DIM, **FONT)
     leader(ax, (XIN0 + XIN1) / 2, py + 6, (XIN0 + XIN1) / 2 - 40, py + dw/2 + 46, "Ø7 TEK clearance\n(1 per notch)", fs=5, font=FONT, ha="right")
-    # J6 connection (top-down): the through-bolts run from the end-plate, through the POST, into the rear
+    # CJ connection (top-down): the through-bolts run from the end-plate, through the POST, into the rear
     # backing plate.  Both bolts share the Yd centreline (a central column), so they project onto one line here.
     ax.add_patch(Rectangle((XUP, py - dw/2 - 4), 50, dw + 8, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.2, zorder=6))            # upright (POST), top-down
     ax.text(XUP + 25, py, "POST", fontsize=5.0, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
@@ -1486,7 +1486,7 @@ def sheet5():
         "• Notch REBALANCED to the moment (solid bar): TIP (M≈30 Nm) arm keeps 5.4 / beam 20;  POST (M≈334 Nm) arm keeps 16 (SF≈1.6) — the beam's 9.4 notch is a BEARING SEAT,",
         "  so the beam spans simply-supported on its full section.",
         "• HOLD-DOWN: 1× #14 TEK per lap (×4), from the UNDERSIDE through the beam into the solid arm (locks the beam to the seat). Arm underside Z90; top Z115 (grate).",
-        "• J6 (bearing-type): an end-plate WELDED to the arm end → 2× M12 (central column, BOTH above the arm) → REAR backing plate. Full connection on Sheet 4, Det F.",
+        "• CJ (bearing-type): an end-plate WELDED to the arm end → 2× M12 (central column, BOTH above the arm) → REAR backing plate. Full connection on Sheet 4, Det F.",
     ], 30, -30, spacing=30, fs=6.2, font=FONT, width=1310)
 
     title_block(ax, "SHEET 5 OF 6",
@@ -1534,7 +1534,7 @@ def sheet6():
     for rz in (zb, zt - upw):                          # bottom + top rings tie the near+far uprights across the corridor
         ax.add_patch(Rectangle((xLi, rz), xRi - xLi, upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
     leader(ax, xL - 78, zb - 30, wallL - 10, zb - 88,
-           "FLOOR-ANCHOR SUB-PLATE\n(self-taps to the cross-members, J1a;\nfeet bolt to it, J1b — post cut shorter\nby the plate thickness)",
+           "FLOOR-ANCHOR SUB-PLATE\n(self-taps to the cross-members, FA1;\nfeet bolt to it, FA2 — post cut shorter\nby the plate thickness)",
            fs=5.0, font=FONT, ha="left", color=C_DIM)
     # FOUR retaining bars (2 per tier × 2 tiers): each covers its column and ends (cleated) at the upright's
     # OUTSIDE (column-facing) edge — near = xLo, far = xRo — extending outward to the wall; corridor carries no bar.
@@ -1591,9 +1591,9 @@ def sheet6():
         "W2 — Foot plate ↔ upright base: 6mm fillet, ALL-AROUND (×4 feet; min fillet).",
         "W3 — Bar-end cleat ↔ upright: 4mm fillet, BOTH cleat legs (×8 cleats; SF 37, demand 1.8 kN).",
         "W4 — Lashing ring ↔ front bar: 6mm fillet, ALL-AROUND the ring base (×8 rings; SF 9.1 vs strap WLL 14.8 kN).",
-        "W5 — Wall-hanger seat ↔ pocket back-plate: 4mm fillet (×8 hangers; the bar is BOLTED to the hanger via J7, not welded).",
+        "W5 — Wall-hanger seat ↔ pocket back-plate: 4mm fillet (×8 hangers; the bar is BOLTED to the hanger via BC-W, not welded).",
         "W6 — Ribbon cross-beam ↔ walkway bearer: 4mm fillet, both ends (×4 — on the plumbing-corridor ribbon, not the tote frame).",
-        "• Grind zinc back at all weld zones; weld a pre-finished frame only at the TEK-screwed brackets (J8/J9 — no hot work).",
+        "• Grind zinc back at all weld zones; weld a pre-finished frame only at the TEK-screwed brackets (RP2/SP2 — no hot work).",
     ], 44, -70, spacing=24, fs=6.6, font=FONT, width=1200)
 
     title_block(ax, "SHEET 6 OF 6", drawing_title="IBC SUPPORT FRAME",

@@ -199,7 +199,7 @@ def sheet(fig):
     leader(ax, 300, base_y+18, LX, base_y+26, "28mm PLY", fs=6, color="#6B5A33", font=FONT)
     leader(ax, 300, plate_y+4, LX, plate_y+18, "SUB-PLATE ~8mm STEEL", fs=6.5, color=C_OUT, font=FONT)
 
-    # ── J1a winged TEK — drawn as a screw WITH its diameter (house convention) ──
+    # ── FA1 winged TEK — drawn as a screw WITH its diameter (house convention) ──
     tek_x, dia = mx, 6.3                                    # #14 ~Ø6.3mm, drawn to scale
     head_z, tip_z = plate_y + 8, base_y - 8
     body_bot = tip_z + 9
@@ -212,10 +212,10 @@ def sheet(fig):
     ax.add_patch(Polygon([(tek_x-dia/2, body_bot), (tek_x+dia/2, body_bot), (tek_x, tip_z)], closed=True, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=6))  # drill point
     draw_dim_h(ax, tek_x-dia/2, tek_x+dia/2, head_z+13, f"Ø{dia:g}", offset=3, fs=5.5, above=True, font=FONT)  # the SCREW DIAMETER
     leader(ax, tek_x-dia/2-1, base_y+10, tek_x-108, base_y-24,
-           "J1a / WF4a  winged #14×3.25\" TEK\n(self-taps the member; wings ream the ply)",
+           "FA1 / WF4a  winged #14×3.25\" TEK\n(self-taps the member; wings ream the ply)",
            fs=6, color=C_BOLT, font=FONT, ha="center")
 
-    # ── J1b foot → sub-plate tapped boss ───────────────────────────────────────
+    # ── FA2 foot → sub-plate tapped boss ───────────────────────────────────────
     foot_x = 248
     ax.add_patch(Rectangle((foot_x-40, plate_y+8), 80, 12, facecolor=C_STEEL, edgecolor=C_OUT, lw=1.2, zorder=4))  # foot
     leader(ax, foot_x+40, plate_y+14, LX, plate_y+40, "FOOT", fs=6, color=C_DIM, font=FONT)
@@ -223,7 +223,7 @@ def sheet(fig):
     ax.add_patch(Rectangle((foot_x-3.5, plate_y-9), 7, 29, fc="#6E6E78", ec=C_OUT, lw=1.0, zorder=5))             # M12 shank (shows diameter)
     ax.add_patch(Rectangle((foot_x-8, plate_y+20), 16, 4, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=6))                # hex head
     leader(ax, foot_x, plate_y-11, foot_x+28, base_y-28,
-           "J1b / WF4b  M12×30 into a TAPPED BOSS\n(drive from above, no underside access)",
+           "FA2 / WF4b  M12×30 into a TAPPED BOSS\n(drive from above, no underside access)",
            fs=6, color=C_OUT, font=FONT, ha="center")
 
     ax.text(155, 140, "SECTION — anchor stack (thickness exaggerated for clarity)",

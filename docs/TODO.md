@@ -288,10 +288,13 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   blank (`_rwk_wall_cleat`: plate 90×8, shelf 90×55×10) is still a model-local literal; promote to
   `WALKWAY_CLEAT_*` constants if/when the cleat gets its own 1:1 cut sheet (the §10.5 plate schedule already
   lists it). *(The grate-clip pitch was resolved in Phase D — `WALKWAY_GRATE_CLIP_PITCH` = 610mm/24".)*
-- [ ] **IBC frame — joint-mark naming (J1–J9) revisit (2026-08-18).** The bare `J#` joint
-  marks read as opaque / hard to identify with. Consider human-descriptive marks for the IBC connection
-  schedule — but it's cross-cutting (IBC report + drawings + parts + costing + master-shopping-list), so do
-  it as its OWN IBC-blueprint task, keeping the schedule internally consistent. See
+- [~] **IBC frame — joint-mark naming (J1–J9) revisit (2026-08-18).** DONE in docs/2D/BOM (2026-11-13):
+  `J1–J9` → descriptive part-grouped marks **FA1/FA2** (floor-anchor), **BC-C/BC-W** (bar-cleat corridor/wall),
+  **WH** (wall-hanger), **CJ** (cantilever-arm joint), **RP1/RP2** (rear panel), **SP1/SP2** (side panel) — §3.5
+  schedule relabeled + family legend added; cascaded through the IBC 2D drawings, plate-schedule, load-case,
+  `parts.py`, `costing.py`, `master-shopping-list`, walkway cross-refs. Also resolved the latent film-plane
+  `J1–J5` collision (IBC moved off `J`). **REMAINING:** re-send the 3D model part-names (water/overview/
+  ibc-stack/construction/walkway `.skp`) — Phase 2, needs the save cycle. See
   [[feedback_joint_mark_must_label_diagram]].
 - [~] **Water — sump-pickup rerouted AROUND the pinhole wall (2026-10-02).** `skid_plumbing()` Leg 1
   redone: riser up at X2386 → to the wall at deck level → vertical rise to Z230 (clears the Near-5/6

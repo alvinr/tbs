@@ -497,7 +497,7 @@ so they cannot drift from the geometry.
 | Combined corner plate | 1612 N | 161856 N | 100 | 10 mm plate, 4× M12; shared with the BR film rail |
 | RWK long beam (cross-ref) | person + grate | SF 7.1 | 7.1 | ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section |
 | RWK arm half-lap notch (cross-ref) | 334 N·m | SF 2.03 | 2.03 | ibc_frame_load.arm_notch_check — solid-bar rebalanced split |
-| Arm→upright J6 (IBC-owned) | 395 N·m | SF 20 | 20 | ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only |
+| Arm→upright CJ (IBC-owned) | 395 N·m | SF 20 | 20 | ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only |
 <!-- END load:validation -->
 
 **Reading the table.** The grate is far over-capacity (SF ≈ 39 on the 245–300mm span — well below the
@@ -516,7 +516,7 @@ The **right walkway** is a **2×1×0.120in cantilever frame** — a continuous i
 segments, and two end beams, with an **open bay in the outer rail over the corridor** — picked up at mid-span
 by two arms off the IBC corridor uprights and at its corners by wall cleats (left) + combined corner plates
 (right). Its long/end beams and the arm half-lap notch are validated in `ibc_frame_load.py` (`outer_beam_frame_check`, SF 7.1;
-`arm_notch_check`, SF 2.03) and cross-referenced above; the **arm→upright connection (joint J6) is IBC-frame-owned**
+`arm_notch_check`, SF 2.03) and cross-referenced above; the **arm→upright connection (joint CJ) is IBC-frame-owned**
 and drawn on IBC-frame Sheet 5, so it is cross-referenced, not re-validated here (see the
 [cantilever study](right-walkway-cantilever-study.md)). The frame resists twist far better than the
 free-ended bearer angles it replaces, so the deck barely bounces.
@@ -526,8 +526,8 @@ free-ended bearer angles it replaces, so the deck barely bounces.
 ## 10. Fabrication Schedules
 
 Walkway-scoped marks (**WF#** fasteners, **WW#** welds) so they don't collide with the IBC-frame
-joint schedule (J1–J9). The center-arm end-plate bolts and the half-lap hold-down screws belong to
-the **IBC-frame J6** schedule and are cross-referenced, not scheduled here. Governing weld throats are
+joint schedule (FA–SP2). The center-arm end-plate bolts and the half-lap hold-down screws belong to
+the **IBC-frame CJ** schedule and are cross-referenced, not scheduled here. Governing weld throats are
 load-checked in `walkway_load.py`; the rest are [AWS D1.1](https://www.aws.org/standards/) minimum
 practical fillets for the plate thickness.
 
@@ -542,7 +542,7 @@ practical fillets for the plate thickness.
 | WF4a | Floor-anchor sub-plate → sill + cross-members (§5.1a) | #14×3¼″ winged self-driller (F14C325FDC) | 410 SS | container-dependent (~20) | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
 | WF4b | Floor-leg foot plate → sub-plate (tapped boss) | M12×30 into tapped boss | Gr.8.8 zinc | 4/foot × 5 = 20 | snug + locker | split-lock under head | thread-locker (tapped boss) |
 | WF5 | Grating hold-down clip → bracket arm / long beam | M-type FRP grating clip + bolt | 316 SS | 610 mm (24") along bearing edges + corners | snug | — | — |
-| J6 (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |
+| CJ (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |
 <!-- END load:fasteners -->
 
 ### 10.2 Weld Schedule
@@ -559,7 +559,7 @@ practical fillets for the plate thickness.
 | WW7 | Floor-leg post → foot plate (GOVERNING) | 5mm all-round | base M 807 N·m → SF 3.3; also carries the 1334 N vertical in shear |
 | WW8 | Wall cleat — back-plate + shelf + upstand | 5mm | AWS D1.1 min; the long beam bears on the shelf, TEK-locked |
 | WW9 | Combined corner plate — beam seat + upstand | 5mm | AWS D1.1 min; shared with the BR film rail |
-| J6/W (IBC-owned) | Half-lap seat + arm end-plate welds | 5mm | IBC-frame schedule — cross-ref, not scheduled here |
+| CJ/W (IBC-owned) | Half-lap seat + arm end-plate welds | 5mm | IBC-frame schedule — cross-ref, not scheduled here |
 <!-- END load:welds -->
 
 **Weld-location map** — each mark is ticked at its joint on the detail sheets: **WW1/WW3** on Sheet 2
@@ -567,7 +567,7 @@ practical fillets for the plate thickness.
 **WW5/WW8/WW9** on Sheet 3 (right cantilever rectangle). **WF1–WF5** land on the same sheets; **WF5**
 (grating clips) is dimensioned on the Sheet 10 cut-plan.
 
-All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame J3/J6 wall bolts) with a
+All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame WH/CJ wall bolts) with a
 flat washer each end, a plain nut, and a split-lock washer. The floor-anchor sub-plate's winged self-drillers
 (WF4a) are driven to seat (no torque spec — thread-forming); each leg foot bolts to the plate's tapped bosses
 (WF4b, M12×30, snug + thread-locker). The grating hold-down clip pitch is fixed in Phase D against
@@ -634,7 +634,7 @@ are in the **IBC-frame** cut list, not here.
 ### 10.5 Plate Fabrication Schedule
 
 Flat-plate parts with their hole sizes and positions (the bolt patterns are referenced to the datums of
-§10.3). The J6 arm end/backing plates are on the **IBC-frame** plate schedule.
+§10.3). The CJ arm end/backing plates are on the **IBC-frame** plate schedule.
 
 <!-- BEGIN load:plates -->
 | Plate | Blank (mm) | Thk (mm) | Holes | Positions / PCD | Qty |
@@ -646,7 +646,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Combined corner plate | 150×~271 | 10 | 4× Ø13 corner | shared with the BR film rail (fp_combined_corner_plate) | 2 |
 | Wall cleat (back + ext + shelf) | 90×(bolt span) | 8 | 2× Ø13 horizontal | below-shelf + above-beam, clear of the beam edge | 2 |
 | Transition bearing plate | 40×500 | 5 | — | welded to the arm top at each 300↔500 width step | 2 |
-| *J6 arm end + backing plates (×4)* | 65×190 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |
+| *CJ arm end + backing plates (×4)* | 65×190 | 8 | 2× Ø13 | *IBC-frame plate schedule* | — |
 <!-- END load:plates -->
 
 ---
@@ -670,7 +670,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — a continuous inner long beam (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + an outer long beam in 2 segments (an open corridor bay ~170mm between the cantilever arms, so the ribbon pipes cross clear of any beam) + 2 end beams (~245mm, the 245mm right deck) that make the cantilever frame, ~5.0 m (16.5 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
 | Combined corner plate (right corners) | 10mm steel, ~200mm wide (widened inboard to back the walkway right beam) — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
-| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Right-walkway wall cleats + combined corner plates, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. (The 2 center arms no longer use these — they bolt via the J6 end-plate, see bolt-m12x100.) $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 20 ea | McMaster-Carr | $35 |
+| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Right-walkway wall cleats + combined corner plates, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. (The 2 center arms no longer use these — they bolt via the CJ end-plate, see bolt-m12x100.) $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 20 ea | McMaster-Carr | $35 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 right-walkway bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 24 ea | McMaster-Carr | $6 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 right-walkway bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 96 ea | McMaster-Carr | $9 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked). | 24 ea | McMaster-Carr | $3 |
@@ -693,7 +693,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
 | Before each session | Check the 5 floor-leg foot-plate anchors are tight; posts standing square |
 | Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
-| Monthly | Check the right-walkway cantilever-arm J6 end-plate bolts (M12×100) to the IBC uprights and the combined-plate bolts for tightness |
+| Monthly | Check the right-walkway cantilever-arm CJ end-plate bolts (M12×100) to the IBC uprights and the combined-plate bolts for tightness |
 | Monthly | Inspect GRP grating panels for cracks, delamination, or a worn grit top |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
 | Quarterly | Inspect the right walkway cantilever-rectangle welds + wall cleats for corrosion and bolt tightness |

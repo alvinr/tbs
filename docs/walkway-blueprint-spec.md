@@ -30,10 +30,10 @@ model *before* dimensioning, because you cannot blueprint geometry that is about
    blueprint OWNS: the near/far wall-cantilever gusset brackets, the 5 left floor-leg cantilever
    brackets, the right cantilever-rectangle (long + end + cranked beams), the wall cleats, the grating
    cut-plans, and the walkway side of the combined corner plate. **The two center cantilever arms that
-   mount on the IBC front uprights — and their J6 connection — are owned by the IBC-frame component**
+   mount on the IBC front uprights — and their CJ connection — are owned by the IBC-frame component**
    ([`ibc-frame-blueprint-spec.md`](ibc-frame-blueprint-spec.md) §3.4–3.6); the walkway blueprint
    cross-references them and does NOT dimension, validate, or cost them. (2026-08-18.) **BOM
-   consequence (Phase E):** the `walkway-cantilever-arms`, J6 end/backing-plate, and crush-sleeve lines
+   consequence (Phase E):** the `walkway-cantilever-arms`, CJ end/backing-plate, and crush-sleeve lines
    currently sit in the *walkway* parts list — reconcile their placement to the IBC frame (touches the
    IBC-frame total, so do it deliberately, not silently). The **combined corner plate** (shared with the
    film-plane bottom/top rail) is likewise cross-referenced, not silently re-specced.
@@ -49,7 +49,7 @@ model *before* dimensioning, because you cannot blueprint geometry that is about
 | Width-transition bearing plate | 40×500×5 flat bar, welded to arm top at each 300↔500 transition (×2) |
 | Right cantilever rectangle | 2×1×0.120in (50.8×25.4) A500 RHS closed frame: 2 long beams (`RWK_BEARER_W`, span `C_WID` 2362) + 2 end beams (~143, the 245 mm F1-shortened deck `WALKWAY_RIGHT_W`), soffit Z89.6 (`LEFT_WK_CANT_ARM_Z0`/`RWK_ARM_BOT`) clears the 1½ spray beam by 11.6 mm |
 | Cranked inner beam | inner long beam jogged outboard 100 mm (`RWK_CRANK_DX`) over the muslin notch Yd1912–2062 with 100 mm ramps (`RWK_CRANK_*`) — one continuous uncut member |
-| Center cantilever arms (×2) — **IBC-frame owned** | **solid** 2×1in bar, half-lapped over both long beams (`RWK_HL_TIP` 95.0 / `RWK_HL_POST` 105.6 rebalanced splits); cantilever off the IBC front uprights (`RWK_X_UP` 4654). Detailed/validated/costed in the **IBC-frame blueprint** (J6); listed here only for the rectangle interface (the mid-span pickup) |
+| Center cantilever arms (×2) — **IBC-frame owned** | **solid** 2×1in bar, half-lapped over both long beams (`RWK_HL_TIP` 95.0 / `RWK_HL_POST` 105.6 rebalanced splits); cantilever off the IBC front uprights (`RWK_X_UP` 4654). Detailed/validated/costed in the **IBC-frame blueprint** (CJ); listed here only for the rectangle interface (the mid-span pickup) |
 | Combined corner plate (right ×2) | 10 mm plate, 150 mm wide — carries the walkway right beam (70 mm seat) AND the film bottom/top rail (150 mm seat); 4× M12 permanent, interior+exterior sandwich (`fp_combined_corner_plate`) |
 | Wall cleat (left corners of right walkway ×2) | 8 mm back-plate + exterior plate + shelf; M12 through-bolt |
 | Floor-leg cantilever bracket (left walkway ×5) | 2×2×0.120in SHS post (~115 mm, `LEFT_WK_CANT_POST`) + arm (`LEFT_WK_CANT_ARM_*`): **2×1×0.120in** for the 2 std legs (reach X580, SF 2.06) / **4×1×0.120in** for the 3 drum-exit punch-out legs (reach X880, IBC/OSHA SF 1.99) + 165×60×8 foot plate (F3 outrigger, `LEFT_WK_CANT_FOOT`); **4× M12** each into a continuous floor-anchor **sub-plate** (self-tapped to the sill + cross-members; §5.1a) (`LEFT_WK_CANT_FOOT_BOLT_N`) |
@@ -112,7 +112,7 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
     `_BOLT_Z_LO` 42 / `_LO_WIDE` 35. The 3D model had drifted to ±32 for BOTH — corrected in Phase 1.3 to
     ±27 standard (matches the drawings), re-sending walkway/overview/construction.
   - **Already done** (Phase 0): foot-anchor PCD (`LEFT_WK_CANT_FOOT_BOLT_DX/DY`).
-  - **Out of scope — IBC-frame-owned:** the arm end-plate blank (65×190×8) is the **J6** joint (walkway
+  - **Out of scope — IBC-frame-owned:** the arm end-plate blank (65×190×8) is the **CJ** joint (walkway
     arm → IBC upright), drawn on **IBC-frame Sheet 5**; the walkway blueprint cross-references it, does not
     re-dimension it. (Height already single-sourced as `RWK_J6_EP_H`.)
   - **Retired:** the "transition bearing plate (40×500×5)" no longer exists — the left edge beam + wall
@@ -122,7 +122,7 @@ confirms "saved + uploaded" for every re-sent model. Only then start Phase 1.
     McNichols clip datasheet). Logged in TODO.
 - [x] **Drift sweep** — DONE (Phase 1.3): stale literals in `walkway-report.md`, the two generators, and
   `component-dependency-map.md`; reconcile any residual "4734" RWK comments and pre-Phase-0 geometry.
-  Also confirm the walkway-report's **J6** mention points to IBC-frame Sheet 5 (a mark must resolve to a
+  Also confirm the walkway-report's **CJ** mention points to IBC-frame Sheet 5 (a mark must resolve to a
   labeled drawing).
 
 ## Phase A — Structural validation (`walkway_load.py`, analog of `ibc_frame_load.py`)
@@ -143,7 +143,7 @@ design force → capacity → SF, authoritative voice, every capacity/coefficien
 - [x] **Right cantilever rectangle** — long/end/cranked-beam bending + rectangle deflection **assuming
   the mid-span pickup** by the two IBC-post arms; half-lap notch net section at the crossings. The
   arm-root moment (≈0.35 kN·m vs ≈0.84 kN·m capacity per the
-  [cantilever study](right-walkway-cantilever-study.md)) is the **IBC-frame** J6's check — cross-ref
+  [cantilever study](right-walkway-cantilever-study.md)) is the **IBC-frame** CJ's check — cross-ref
   `ibc_frame_load.py`, do not re-validate here.
 - [x] **Combined corner plate** — 10 mm plate carrying walkway beam + film rail; bolt group.
 
@@ -153,16 +153,16 @@ they can't drift.
 
 ## Phase B — Fastener + weld schedule
 
-- [x] **Fastener schedule J1…Jn** (size/grade/torque/washer/locker, cited): std bracket wall bolt
+- [x] **Fastener schedule WF1…WFn** (size/grade/torque/washer/locker, cited): std bracket wall bolt
   (M12×70 91280A732); widened bracket wall bolt (M12×70); right cleat / combined-corner bolt (M12×70
   91280A732); floor-anchor sub-plate → sill/cross-members (winged #14×3¼ 410 SS, WF4a) + floor-leg foot → sub-plate boss (M12×30, WF4b); grating clips. (The center-arm end-plate
-  bolt M12×100 + the half-lap hold-down screws that fix the two arms belong to the **IBC-frame** J6
+  bolt M12×100 + the half-lap hold-down screws that fix the two arms belong to the **IBC-frame** CJ
   schedule — cross-ref, not scheduled here.)
 - [x] **Weld schedule W1…Wn** (leg/symbol/extent): bracket gusset↔leg↔arm fillets; reinforcing-plate;
   rectangle long↔end beam corners; cranked-beam ramps; floor-leg post↔foot + post↔arm; wall-cleat welds;
   combined-corner-plate seats. Load-check the governing throats in `walkway_load.py`; the rest are AWS
   D1.1 minimum practical fillets (note which). (The half-lap seat + arm-end-plate welds are the
-  **IBC-frame** J6/W schedule — cross-ref, not scheduled here.)
+  **IBC-frame** CJ/W schedule — cross-ref, not scheduled here.)
 - [x] Tables into `walkway-report.md` (§ near the parts list); J/W callouts land on the sheets in Phase D.
 
 ## Phase C — Datum + tolerance scheme
@@ -183,7 +183,7 @@ they can't drift.
   list, not here.
 - [x] **Plate fabrication schedule (1:1)** — foot plate (with relocated anchors), std + widened
   reinforcing plates, combined corner plate, wall cleat, transition bearing plate — each with hole
-  Ø/positions/PCD. (The J6 arm end/backing plates are on the **IBC-frame** plate schedule.)
+  Ø/positions/PCD. (The CJ arm end/backing plates are on the **IBC-frame** plate schedule.)
 - [x] **Grate cut-plan** — the 4 sections dimensioned with spray slits, drum-exit punch-out, near
   bump-out, muslin notches, and clip positions (a fabricator/nesting drawing).
 - [x] **Consolidated weld map** — W1…Wn ticked to their frame locations + the schedule.

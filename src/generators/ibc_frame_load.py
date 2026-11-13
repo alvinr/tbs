@@ -373,7 +373,7 @@ def render_png(path=None):
     axE.text(58, 34, "1.0 g ↓", color=C_LOAD, fontsize=8, ha="left", fontweight="bold")
     axE.add_patch(FancyArrow(52, 68, 14, 0, width=0.9, head_width=3, head_length=3, fc="#e08e0b", ec="#e08e0b"))
     axE.text(60, 72, "0.5 g lat", color="#b8860b", fontsize=7.5, ha="center")
-    axE.text(50, 0.5, "forward thrust → front bars → (wall hanger J3  +  corridor cleat J2) → frame → floor anchors",
+    axE.text(50, 0.5, "forward thrust → front bars → (wall hanger WH  +  corridor cleat BC-C) → frame → floor anchors",
              ha="center", fontsize=6.6, color="#333")
 
     # ── axM — EN 12195-1 method + states ──
@@ -414,11 +414,11 @@ def render_png(path=None):
     rows = [
         ("Front retaining bars ×2/face (μ0.20, no mat)", f"{rL['bar'][0]:,.0f} N·m", f"{rL['bar'][1]:,.0f} N·m", rL['bar'][2], "gov"),
         ("   … same bars + anti-slip mat (μ0.60)",       f"{rLm['bar'][0]:,.0f} N·m", f"{rLm['bar'][1]:,.0f} N·m", rLm['bar'][2], ""),
-        ("Wall-hanger bolts J3 (2× M12×70, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
+        ("Wall-hanger bolts WH (2× M12×70, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
         ("Corrugated-wall bearing (backing plate)",      f"{rL['wall_bear'][0]:,.0f} N", f"{rL['wall_bear'][1]:,.0f} N", rL['wall_bear'][2], ""),
-        ("Corridor cleat bolts J2 (1× M12×65, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
+        ("Corridor cleat bolts BC-C (1× M12×65, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
         ("Lash ring + 2\" strap (vertical, per stack)",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),
-        ("Walkway-arm end-plate J6 (service, +1 kN)",    f"{m_conn:,.0f} N·m", f"{endplate_cap:,.0f} N", sf_endplate, "svc"),
+        ("Walkway-arm end-plate CJ (service, +1 kN)",    f"{m_conn:,.0f} N·m", f"{endplate_cap:,.0f} N", sf_endplate, "svc"),
         ("Front upright bending (service)",              f"{m_conn:,.0f} N·m", "—", sf_upr, "svc"),
     ]
     y = 82

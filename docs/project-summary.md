@@ -10,7 +10,7 @@
 
 ## What Is It
 
-A pinhole camera the size of a shipping container — and I mean that literally. It's built inside a standard 20-foot ISO container: light comes in through a pinhole at one end, crosses the length of the box, and lands as an image roughly fifteen feet wide on the far wall, caught as a cyanotype on cotton muslin. It's transportable, runs off-grid, and processes its own prints.
+A pinhole camera the size of a shipping container — and I mean that literally. It's built inside a standard 20-foot ISO container: light comes in through a pinhole on one face, crosses the width of the box, and lands as an image roughly fouteen feet wide on the far wall, caught as a cyanotype on cotton muslin. It's transportable, runs off-grid, and processes its own prints.
 
 One thing up front. This isn't an installation that resembles a camera. It's a camera — and it makes photographs no other camera can.
 
@@ -45,15 +45,18 @@ One thing up front. This isn't an installation that resembles a camera. It's a c
 
 ## The Technology
 
-**The front board doesn't move — on purpose.**
-The pinhole disc clamps against a neoprene light-seal washer under a retaining ring on four thumb screws, so carriers swap in seconds: a different pinhole, or a large-format lens board (Copal/Compur) on the same Ø80 carrier. Why fixed? A pinhole is a single point, and the image is a projection *through* that point — tilt the board and the image doesn't move. So all the perspective control goes where it belongs: the film plane.
+**The front board doesn't move — all the perspective control is in the film plane.**
+The pinhole disc clamps against a neoprene light-seal washer under a retaining ring on four thumb screws, so carriers swap in seconds: a different pinhole, or a large-format lens board (Copal/Compur) on the same Ø80 carrier. Why fixed? A pinhole is a single point, and the image is a projection *through* that point — so tilting it doesn't change the perspective. This is not a view camera, so all the perspective control is in the the film plane, which is not fixed.
 
 **The film plane is where it earns its keep (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing).**
-Its four corners move independently — each an acetal skate you slide by hand in an aluminum depth rail and lock with a cam clamp — which buys the full vocabulary of a large-format view camera at pinhole focal lengths: Scheimpflug focus, twisted-plane projections, convergence control. The [distortion renders](distortion-renders.md) show what that looks like — geometry you can't get any other way.
+Its four corners move independently — each can slide by hand in an aluminum depth rail and lock with a clamp — which buys the full vocabulary of a large-format view camera at pinhole focal lengths: Scheimpflug focus, twisted-plane projections, convergence control. The [distortion renders](distortion-renders.md) show what that looks like — geometry you can't get any other way.
 
 Every number here traces to a peer-reviewed source or a datasheet. The optics aren't approximated.
 
 **It runs off-grid.** A self-contained three-circuit water system covers ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, recycling 40% of its water, all on 12V DC. No power connection needed.
+
+**It runs off-grid.** A self-contained three-circuit water system covers ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, recycling 40% of its water. Everything runs on 12V DC from a 100Ah battery, topped up by a 600W solar array — solar-positive in full sun, so it generates more than it uses and keeps running indefinitely. No power or water connection needed to operate.
+
 
 ---
 

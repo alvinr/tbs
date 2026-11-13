@@ -159,10 +159,48 @@ URL. Reports end with a **Source References** section.
 
 ---
 
-## F. Voice, structure, tables
+## F. Voice — two tracks, one mandate
 
-- **Voice:** declarative, precise, present-tense ("The tray drains to a sump well"),
-  no marketing register. State the fact, then the rationale.
+**The mandate (both tracks): be terse. Cut words. People don't read.** Every sentence earns
+its place; lead with the point; delete the windup. `style_lint.py` flags bloat and the robotic
+tells below (advisory, per-track thresholds) — run it before ticking a doc.
+
+**Which track a doc is:** **Track 2** = `project-summary.md` (Home) + `funding-proposal.md`
+(Proposal) only. **Track 1** = everything else reader-facing. (The split lives in
+`docs/editorial-review-todo.md`.)
+
+### Track 1 — terse engineering (the default)
+- **Declarative, precise, present-tense, authoritative.** "The tray drains to a sump well."
+  No marketing register, no hedging, no self-correction, no old-vs-new archaeology (see §D).
+- **Say what a drawing *is* and *why* — in one plain line — then let the drawing carry the
+  numbers.** The reports are dense with dimensions that don't help a reader understand the
+  figure. Don't narrate a number the diagram-of-record already shows (see §A, §F-tables).
+- **Short sentences.** Lead with the subject and the point. An occasional one-line beat is
+  fine; wit, anecdote, and first person are not.
+
+### Track 2 — personal & engaging (Home + Proposal only)
+Outward-facing, for audience-building / fundraising / the MFA proposal. It must *sound like the
+author* — the voice of the vector-database and road-trip essays, not a brochure:
+- **First person, candid, a little self-deprecating, wry.** Opinion is welcome.
+- **Concede, then make the case.** Be fair to the other side first ("Sure, … — but").
+- **Long setup → short punch.** A fragment can land the beat ("But not so fast.").
+- **Everyday analogies carry the hard ideas** (two-phase commit as mailing birthday invitations).
+- **Direct address + the occasional rhetorical question** ("So why would you need this?").
+- **The signature:** humor sits next to sincerity — and when a moment is real, the jokes drop
+  away and you go straight. That contrast is the voice.
+- **Still terse.** Personal ≠ flowery. Short paragraphs, warm close, a plain next step.
+- Capture the **voice, not the typos** — published copy stays clean.
+
+### Robotic tells to cut (both tracks — Track 1 especially)
+Hedging/filler: "we aim to", "we look forward to", "it is important to note (that)", "in order to"
+(→ "to"), "due to the fact that" (→ "because"), "a number of" (→ a count), "in terms of",
+"serves to", "it should be noted". Stock-marketing: "represents a significant step forward",
+"lays the foundation", "seamless", "robust solution", "best-in-class", empty rule-of-three triads
+("clear, flexible, and powerful"). Stiffness: passive openings where an actor exists; a whole
+paragraph with zero contractions in Track 2; a sentence that only restates its table.
+
+## F2. Structure, tables
+
 - **Structure:** numbered `##` sections; a short Purpose/Executive Summary up top;
   Source References at the end. Match the section pattern of sibling reports.
 - **Tables over paragraphs** for parameter lists; one row per item; bold the
@@ -212,15 +250,13 @@ URL. Reports end with a **Source References** section.
 
 ---
 
-## Future enforcement (planned validator — not yet built)
+## Enforcement
 
-The mechanical subset of this skill is intended to become commit-time lint checks,
-with the **unambiguous ones as blocking gates** and the judgment-y ones advisory:
+- `editorial_lint.py` (advisory, manual) — American-spelling, bare source links, raw
+  values that should be placeholders, thousands-separators, missing Source References.
+- `style_lint.py` (advisory, manual) — the §F voice pass: robotic tells + word-count/bloat,
+  with per-track thresholds (reads each doc's track from `docs/editorial-review-todo.md`).
+  It flags; it never rewrites an engineering value. Run it before ticking a doc in the tracker.
 
-- **gate:** American-spelling violations; bare source references missing a hyperlink.
-- **advisory:** banned stale terms (`55-gal`, `colonnade`, `Portacool Jetstream`,
-  retired constant values); a value the alias registry recognizes but which sits raw
-  outside a placeholder block ("should be a placeholder"); thousands-separator
-  inconsistency; a published report missing its Source References section.
-
-Until that exists, this skill is enforced by reading it before each editorial pass.
+Both are advisory (not in the commit hook) — judgment-heavy checks shouldn't block a commit.
+The skill is enforced by reading it before each editorial pass.

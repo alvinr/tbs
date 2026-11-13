@@ -91,8 +91,20 @@ FACTS = _resolve()
 # value diverges from the registry. The alias-scan still polices UN-marked restatements.
 def _fmt(fact: dict) -> str:
     v = fact["value"]
-    if fact.get("display") == "comma":
+    d = fact.get("display")
+    if d == "comma":
         return f"{int(round(v)):,}"
+    if d == "ftin":                               # mm -> feet'inches" (4389 -> 14'5")
+        ti = v / 25.4
+        ft = int(ti // 12)
+        inch = round(ti - ft * 12)
+        if inch == 12:
+            ft, inch = ft + 1, 0
+        return f"{ft}'{inch}\""
+    if d == "feet":                               # mm -> rounded whole feet (4389 -> 14)
+        return str(round(v / 304.8))
+    if d == "inch":                               # mm -> decimal inches (2.17 -> 0.085)
+        return f"{v / 25.4:.3f}".rstrip("0").rstrip(".")
     if float(v).is_integer():
         return str(int(round(v)))
     return "%g" % v

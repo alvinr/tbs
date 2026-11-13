@@ -14,18 +14,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,926 | $8,262 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,930 | $8,265 |
 | 6. Electrical — power, circuits, wiring | $3,416 | $3,502 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,129 | $3,031 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,135 | $3,037 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,659** | **~$36,447** |
+| **TOTAL (base build + 50-print run)** | **~$27,669** | **~$36,456** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -256,7 +256,7 @@ indicative low–high estimates — get quotes before ordering.
 | [3/32" sq key stock, 12in bar — U-joint stub keys (×8 cut)](https://www.grainger.com/product/Key-Stock-5UY75) (5UY75) | 1 lot | Grainger | film | $2 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 2 10-pack | Home Depot | water | $37 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
-| [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | 12 ea | Fasteners Plus | ibc-frame | $12 |
+| [Self-drilling screw, #14×3½″ 410 SS (sub-plate → cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 12 ea | McMaster-Carr | ibc-frame | $16 |
 | [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 16 ea | McMaster-Carr | ibc-frame | $14 |
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Home Depot | ibc-frame | $68 |
 | [Bearing retaining rings + upper end-retainer plate](https://www.mcmaster.com/90154A895/) (90154A895) | 1 lot | McMaster-Carr | lightlock | $17–$18 |
@@ -300,10 +300,10 @@ indicative low–high estimates — get quotes before ordering.
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Home Depot | water | $19 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
-| [Winged self-drilling screw, #14×3¼″ 410 SS (sub-plate → sill/cross-members)](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-1000) (F14C325FDC) | 20 ea | Fasteners Plus | walkway | $20 |
+| [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 20 ea | McMaster-Carr | walkway | $26 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
-| **fasteners-hardware subtotal** | | | | **$2,088–$2,385** |
+| **fasteners-hardware subtotal** | | | | **$2,097–$2,394** |
 
 ### optics
 
@@ -504,8 +504,8 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 21 | aluminum, fasteners-hardware, steel-structural | $2,202–$2,978 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,994 |
+| McMaster-Carr | 82 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,977–$1,978 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| McMaster-Carr | 80 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,936–$1,937 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,717–$1,899 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
@@ -533,10 +533,10 @@ indicative low–high estimates — get quotes before ordering.
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |
 | Gordon Brush | 1 | seals-gaskets | $88–$160 |
 | Tanis Brush | 1 | aluminum | $72–$160 |
-| Fasteners Plus | 3 | fasteners-hardware | $123–$153 |
 | Inverter Service Center | 1 | electrical-power | $152 |
 | Eagle Aluminum | 1 | aluminum | $152 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
+| Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Lenox Laser | 1 | optics | $60–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |

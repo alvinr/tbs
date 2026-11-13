@@ -9,7 +9,7 @@
 ---
 
 ## 1. The Hook
-A standard shipping container sits in a field. Inside, on 99 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 14 feet wide and 7 feet tall. The people who made it will wade into the image to develop it.
+A standard shipping container sits in a field. Inside, on <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 14 feet wide and 7 feet tall. The people who made it will wade into the image to develop it.
 
 The container is a camera.
 
@@ -20,7 +20,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 ## 2. Project Overview
 
 ### What
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 99 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 

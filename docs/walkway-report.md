@@ -348,7 +348,7 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
 The left walkway grate — together with the door-end near-deck lift-out
-section — must be lifted out before the panel can swin, the 5 floor-leg posts stay
+section — must be lifted out before the panel can swing — the 5 floor-leg posts stay
 bolted to the floor. As the panel + drum swing ~56° about the pivot, the cage sweeps past
 the butt joint into the vacated zone, its **cage underside passing over the
 door-end floor-leg posts** — so no floor-leg post is struck.
@@ -390,7 +390,7 @@ Two 25mm ratchet straps loop over the cooler and hook to near walkway cantilever
 bracket arms.
 
 The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler
-overhangs 50mm into the processing tray zone. This is acceptable tollerance during transport.
+overhangs 50mm into the processing tray zone. This is acceptable — the tray is drained and empty in transport.
 
 ---
 
@@ -407,7 +407,7 @@ All four walkway sections use the same grating:
 | Open area | ~40% |
 | Surface finish | Grit top (slip-resistant) |
 
-The four sections' overall sizes, cut features , GRP panel seams, and
+The four sections' overall sizes, cut features, GRP panel seams, and
 hold-down-clip positions are dimensioned on the **Sheet 10 grate cut-plan**
 — a nesting/fabricator drawing:
 

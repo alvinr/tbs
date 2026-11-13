@@ -10,7 +10,9 @@
 
 ## What Is It
 
-A fully operational pinhole camera built inside a standard 20-foot ISO shipping container. It makes photographs — real, large-format photographs — on contact-scale cyanotype prints measuring approximately 15 feet wide by 7 feet tall. It is transportable, deployable in remote locations, and self-sufficient for water and processing. It is not an installation that resembles a camera. It is a camera.
+A pinhole camera the size of a shipping container — and I mean that literally. It's built inside a standard 20-foot ISO container: light comes in through a pinhole at one end, crosses the length of the box, and lands as an image roughly fifteen feet wide on the far wall, caught as a cyanotype on cotton muslin. It's transportable, runs off-grid, and processes its own prints.
+
+One thing up front. This isn't an installation that resembles a camera. It's a camera — and it makes photographs no other camera can.
 
 <!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">
@@ -43,23 +45,23 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 ## The Technology
 
-**Front board — quick-change pinhole disc holder**
-The pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring on four thumb screws, so carriers swap in seconds — a different pinhole diameter, or a large-format lens board (Copal/Compur) on the same Ø80 carrier. The board is fixed: a pinhole is a point aperture, and the image is a central projection *through the pinhole point*, so tilting the board that holds it does not steer or distort the image. All perspective control lives in the film plane.
+**The front board doesn't move — on purpose.**
+The pinhole disc clamps against a neoprene light-seal washer under a retaining ring on four thumb screws, so carriers swap in seconds: a different pinhole, or a large-format lens board (Copal/Compur) on the same Ø80 carrier. Why fixed? A pinhole is a single point, and the image is a projection *through* that point — tilt the board and the image doesn't move. So all the perspective control goes where it belongs: the film plane.
 
-**Film plane — 4-corner independent actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)**
-Four corners of the image plane are set independently — each an acetal skate hand-slid in a 6061 Al U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole. The [distortion renders](distortion-renders.md) document the range of projections this produces — images that no other camera type can make.
+**The film plane is where it earns its keep (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing).**
+Its four corners move independently — each an acetal skate you slide by hand in an aluminum depth rail and lock with a cam clamp — which buys the full vocabulary of a large-format view camera at pinhole focal lengths: Scheimpflug focus, twisted-plane projections, convergence control. The [distortion renders](distortion-renders.md) show what that looks like — geometry you can't get any other way.
 
-Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.
+Every number here traces to a peer-reviewed source or a datasheet. The optics aren't approximated.
 
-**Off-grid capable:** a self-contained three-circuit water system supports ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
+**It runs off-grid.** A self-contained three-circuit water system covers ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, recycling 40% of its water, all on 12V DC. No power connection needed.
 
 ---
 
 ## The Process
 
-Cyanotype on cotton muslin using the **Mike Ware New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). Baseline exposure 30–45 minutes in full sun at f/1088 — 4–8× faster than the traditional Herschel formula. Developed in plain cold water, no silver or hazardous chemistry required.
+Cyanotype on cotton muslin, using **Mike Ware's New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). About 30–45 minutes in full sun at f/1088 — 4–8× faster than the old Herschel recipe — then developed in plain cold water. No silver, no darkroom, nothing toxic.
 
-The container travels by commercial hire truck. No CDL required for the operator. No oversize permits required for an empty 20ft standard container on Interstate highways.
+Getting it there is deliberately unremarkable: a commercial hire truck, no CDL, no oversize permits — it's an empty 20-foot container on the Interstate.
 
 ---
 

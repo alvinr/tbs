@@ -249,7 +249,9 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 
     Putting P-04 on its own fuse (each branch ≤<!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A) removes the single-fuse limit, so the tray drain (C2) can run **concurrently** with a supply pump (C1) — headroom for a continuous flow-through wash — with no fuse at 100% of rating. The wash is run this way — a **continuous flow-through** cycle (supply + drain together, [Operating Manual §4.2](operating-manual.md)); P-04 then drains across the whole wash, which is the ~30 Wh/session the energy budget reflects. There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
 
-**Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main panel. Drive an 8-foot copper ground stake at the container foundation and connect to the main panel earth terminal. The inverter chassis, AC equipment-ground, and cooler ground bond to this same single point — see §7.6.
+**Grounding:** the protective ground is **equipotential bonding, not a site earth electrode**. The container steel shell, the inverter and cooler chassis, the AC equipment-ground, and the DC negative are all **permanently bonded to one point** at the main panel (4 AWG green/yellow to the battery-negative busbar). This bonding is what clears a fault — any positive-to-metal or AC-line-to-metal fault becomes a low-impedance short back to that point that opens the fuse or trips the GFCI — and it works **on any surface**, so the system does not depend on a ground driven into the earth (the same way an RV, boat, or portable generator is grounded; see §7.6).
+
+An **8-foot copper earth stake is optional supplementary earthing, not a requirement.** Drive it next to the power panel and clamp it to the main-panel earth terminal **only when the container sits on soil** — it dissipates static (worth having in a dry desert darkroom) and gives a site earth at lightning-prone deployments. **On a hard surface (concrete, asphalt), skip the stake entirely** — the bonding above provides the full fault protection regardless; if a convenient earth is wanted, bond instead to a building ground or a grounded metal water pipe. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.
 
 **Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F; the pump circuit is dual-fused **C1**/**C2**) plus device description. Re-label after any wiring change.
 
@@ -347,6 +349,8 @@ code-anchored rules:
    bond only the **safety grounds** to one point. Isolation (of the current-carrying
    conductors) and single-point bonding (of the grounds) are complementary, not in conflict.
 
+**No site earth required.** The shock protection above comes from the inverter's single neutral-ground bond + the GFCI + the equipotential bonding — the fault current returns through the *bonding* (rule 3), not through the earth — so the system is fully protected **on any surface, soil or concrete**, with no ground rod driven. The optional 8-ft earth stake (§7.3) only adds a supplementary site earth when the container sits on soil.
+
 **Operationally:** the cooler is plugged into the panel's in-use-covered GFCI outlet only
 during sessions; for transport the cord is unplugged and stowed and the inverter DC
 disconnect is opened. The [Electrical Safety Report](electrical-safety-report.md) carries
@@ -392,7 +396,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Inverter DC protection | 40A ANL fuse + holder + DC disconnect switch (inverter feed) | Blue Sea / Amazon | ~$40 |
 | Panel AC outlet (Circuit E) | GFCI-fed weatherproof NEMA 5-15R + in-use (bubble) cover | Leviton / Amazon | ~$25 |
 | Cooler power cord | 1.5m outdoor SJOOW, NEMA 5-15P each end | Amazon | ~$20 |
-| Copper ground stake | 8ft × 5/8" diameter | Home Depot | ~$20 |
+| Copper ground stake *(optional — soil sites only; skip on hard surfaces)* | 8ft × 5/8" diameter | Home Depot | ~$20 |
 | 4 AWG ground wire | Green/yellow, 3m | AutoZone / Amazon | ~$15 |
 | Solar mount + PV cabling + power-panel | Ground tilt frame (30°), MC4 PV cable + bulkheads, flush-panel plate + gasket + bolts, 2/0 AWG battery cable | various | ~$195 |
 | Evaporative cooler | Hessaire MC18M, 120V AC, 1,300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 16 lb | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
@@ -422,7 +426,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Every 6 months | Clean solar panel surfaces; check MC4 connector seals |
 | Every 6 months | Inspect EPDM gasket on external power panel for compression set |
 | Annually | Test battery BMS function (charge/discharge cycle under monitoring) |
-| Annually | Inspect ground stake connection and measure earth resistance |
+| Annually | Inspect the ground-stake connection and measure earth resistance *(only if the optional earth stake is deployed — see §7.3)* |
 | Annually | Check pull-cord switch mechanisms for wear |
 | Before transport | Disconnect evaporative cooler and stow per [Equipment Layout](equipment-layout-report.md) §6.2 |
 | Before transport | Verify all circuit breakers/fuses are off except safelight standby |

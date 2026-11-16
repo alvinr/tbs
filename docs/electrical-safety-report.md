@@ -74,7 +74,7 @@ These were specified independently of this review and form a sound baseline.
 | **12 V DC distribution; AC isolated to Circuit E** | Eliminates the lethal-voltage path for every interior load except the one isolated, GFCI-protected cooler inverter (Hazard #6) | [Elec §2, §7.6](electrical-report.md) |
 | **LiFePO4 chemistry** | No thermal runaway (unlike NMC / lead-acid); rated −20 to +60 °C for the hot container; internal per-cell BMS (over-current / over-temp / over-discharge) | [Elec §5.2](electrical-report.md) |
 | **Layered fusing** | 200 A main fuse at the battery + per-circuit fuses (Blue Sea block) + 30 A per-string solar fuses | [Elec §7](electrical-report.md) |
-| **Negative-ground bonding** | Steel shell bonded to battery-negative (4 AWG) + 8-ft earth stake — a positive-to-shell fault becomes a short the fuse clears | [Elec §7.3](electrical-report.md) |
+| **Negative-ground bonding** | Steel shell + inverter/cooler chassis + AC equipment-ground + DC negative all bonded to one point (4 AWG) — a positive-to-metal or AC-to-metal fault becomes a short the fuse/GFCI clears. The *bonding* is the fault path, so this works on any surface; the 8-ft earth stake is optional supplementary earthing for soil sites, not required for protection | [Elec §7.3](electrical-report.md) |
 | **IP-rated enclosures / penetrations** | IP65 distribution enclosure; IP67 Deutsch DT exterior connectors; IP67 MC4 solar | [Elec §5.4, §7.3](electrical-report.md) |
 | **Protected, elevated routing** | Wiring in corrugated conduit + ceiling trunking, kept high and clear of the wet floor | [Elec §7.3](electrical-report.md) |
 

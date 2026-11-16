@@ -46,42 +46,15 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 
 > **Circuit E is the only AC load.** The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is **<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus** (÷0.88 inverter efficiency). See [§7.6 AC Isolation & Safety](#ac-safety) for the grounding/GFCI design.
 
-### 3.1 Itemized Energy Budget (per print session)
+### 3.1 Energy & Autonomy (summary)
 
-**Continuous loads by phase:**
+*Consumption — the per-session itemization, the daily model, and the disconnected-endurance analysis — is covered in full by the **[Daily Energy Report](daily-energy-report.md)**. This report sizes the hardware; the headline figures only:*
 
-| Phase | Min | Active circuits | W | Wh |
-|-------|----:|-----------------|--:|---:|
-| 1.6  Cooling warmup | 30 | Fan A (exhaust), Fan B (intake), Evap cooler | 217 | 108 |
-| 1.7–1.8  Dark adaptation | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, Safelight | 257 | 86 |
-| 2  Load image plane | 45 | Fan A (exhaust), Fan B (intake), Evap cooler, Safelight | 257 | 193 |
-| 3  Exposure | 37.5 | Fan A (exhaust), Fan B (intake), Evap cooler | 217 | 136 |
-| 4  Development & wash | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 323 | 108 |
-| 5  Cleanup | 30 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 323 | 161 |
-| **Subtotal** | **182** | | | **792** |
+- **Per session:** ~<!-- BEGIN energy:wh-session -->837<!-- END energy:wh-session --> Wh (0.84 kWh), dominated by the continuous fans + evaporative cooler.
+- **Battery:** 1 × 100 Ah LiFePO4 = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh usable (standard build); busbar provisioned for a 2nd parallel pack (→ 200 Ah, no rewiring).
+- **Solar:** 600 W array ≈ <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day (Palm Springs) — **solar-positive** at the 3-print design duty.
 
-**Intermittent loads (total runtime per print):**
-
-| Item | W | Min | Wh |
-|------|--:|----:|---:|
-| Pumps (P-01 Blue) | 90 | 15 | 22.5 |
-| Pumps (P-02 Brown) | 90 | 10 | 15.0 |
-| Pumps (P-04 drain) | 90 | 5 | 7.5 |
-| **Subtotal** | | | **45** |
-
-**Total energy per session: <!-- BEGIN energy:wh-session -->837<!-- END energy:wh-session --> Wh (0.84 kWh)**
-
-**Battery bank capacity (standard build, 1 pack):** 100 Ah × 12V = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh (LiFePO4, 100% DoD) → **<!-- BEGIN energy:sessions-1pack -->1.4<!-- END energy:sessions-1pack --> sessions per charge**. The distribution busbar + fuse block are **provisioned for a 2nd 100 Ah pack in parallel** — a plug-in expansion (→ 200 Ah / <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh / <!-- BEGIN energy:sessions-2pack -->2.9<!-- END energy:sessions-2pack --> sessions) requiring **no rewiring**; the 2nd pack is shown ghosted in the 2D/3D models.
-
-**Solar recharge:** 600W array × 5.5 peak sun hours (Palm Springs) = <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day → supports <!-- BEGIN energy:solar-sessions-day -->3.9<!-- END energy:solar-sessions-day --> sessions/day from solar alone.
-
-### 3.2 Daily Use & Disconnected Endurance
-
-*Full treatment in the [Daily Energy Report](daily-energy-report.md).*
-
-A representative daylight day of **3 sequential prints** draws **~<!-- BEGIN energy:daily-wh-3 -->2,293<!-- END energy:daily-wh-3 --> Wh** (2 prints ~<!-- BEGIN energy:daily-wh-2 -->1,565<!-- END energy:daily-wh-2 -->; 4 prints ~<!-- BEGIN energy:daily-wh-4 -->3,021<!-- END energy:daily-wh-4 -->), dominated by the continuous fans + evaporative cooler (the cooler now drives the AC inverter, ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus); the Brown/Waste tote dump is gravity-assisted, tiny (~<!-- BEGIN energy:drain-wh -->45<!-- END energy:drain-wh --> Wh), and incurred only at resupply (~every 4.7 days), not daily.
-
-**Disconnected endurance (no AC charge, solar top-up only): the system is clean-water limited, not power limited.** With sun it is solar-positive (+<!-- BEGIN energy:solar-net-3 -->1,007<!-- END energy:solar-net-3 --> Wh/day at 3 prints) → runs **indefinitely on either 1 or 2 packs**; the fresh Blue supply (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L / 121 L net per print) caps a deployment at **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days @ 3/day**. Battery count sets only the *cloudy-day reserve* (1 pack ≈ <!-- BEGIN energy:reserve-1pack-day -->0.5<!-- END energy:reserve-1pack-day --> day, 2 packs ≈ <!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day) and the 4-print-day headroom — **not** the deployment length. The Black waste tote (1,000 L) is a parallel out-flow limit for fully self-contained field use.
+**Sizing outcome:** a disconnected deployment is **clean-water limited, not power limited** (the fresh Blue supply caps it at ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days), so **one pack runs it indefinitely on sun**. The 2nd pack is an optional cloudy-day resilience upgrade, not an endurance requirement — see §5.2.
 
 ## 4. Solar Array
 
@@ -131,7 +104,7 @@ The MPPT delivers up to 50 A to the battery, so its battery lead carries far mor
 
 **Thermal siting (required).** Because the BMS inhibits charging above ~45 °C while a sun-exposed steel container can reach 60 °C interior, the pack is **mounted low (floor level, in the coolest stratified air), shaded from the sun-baked shell, and kept in the evaporative-cooler / ventilation airflow path** — so it stays inside the charge window during peak sun rather than locking out the solar charge. A commissioning temperature check confirms the bay stays < 45 °C under load (see [Electrical Safety §4 #4](electrical-safety-report.md)).
 
-**One pack vs two — sizing rationale:** a disconnected deployment is **clean-water limited (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints / ~4.7 days)**, not power limited (see §3.2), and the system is solar-positive, so **one 100 Ah pack runs the standard deployment indefinitely on sun**. The 2nd pack is a **resilience upgrade** — it extends the no-sun (cloudy-day) reserve from ~<!-- BEGIN energy:reserve-1pack-day -->0.5<!-- END energy:reserve-1pack-day --> day to ~<!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day and gives headroom for a 4-print day — not an endurance one. It plugs onto the busbar via its **own terminal MRBF fuse** — each parallel pack is fused at its own + post, so one pack's fault can't be back-fed by the other (the 2/0 cable and main disconnect are already sized for 200 Ah), so it can be added later without touching the wiring.
+**One pack vs two — sizing rationale:** the standard build is **1 × 100 Ah** — a disconnected deployment is clean-water limited (not power limited) and the system is solar-positive, so one pack suffices (§3.1). The 2nd pack is a **resilience upgrade** (cloudy-day reserve + 4-print-day headroom), not an endurance requirement. It plugs onto the busbar via its **own terminal MRBF fuse** — each parallel pack fused at its own + post, so one pack's fault can't be back-fed by the other — and the 2/0 cable and main disconnect are already sized for 200 Ah, so it is added later without touching the wiring.
 
 **Why LiFePO4 and not NMC or lead-acid:**
 - LiFePO4 does not exhibit thermal runaway — safe in an enclosed steel container that may reach 60°C interior

@@ -308,8 +308,6 @@ def draw_sheet1():
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
-        ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
-         "Future provision  |  leave fused spare", "#E8E8E8"),
         ("G", "WHITE LED STRIPS ×4\n(general lighting)",  "15A", "12 AWG", "106W",
          "3 over tray (X=600/2350/2454) + 1 corridor COB strips  |  pull-cord switch  |  non-operational only", "#FFFFF0"),
     ]
@@ -1562,7 +1560,6 @@ def draw_sheet5():
         ("C", "Plumbing panel (pumps)", "15A", "14 AWG", "100 W",  "#2980B9"),
         ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
-        ("F", "Actuators (spare)",   "20A", "12 AWG", "≤100 W", "#7F8C8D"),
         ("G", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
     ]
 
@@ -1625,7 +1622,7 @@ def draw_sheet5():
         ax.add_patch(R((cx - bw / 2, base_z + fbase_h), bw, fuse_h, fc=col, ec=C_OUT, lw=0.7, zorder=5))
         ax.text(cx, base_z + fbase_h + fuse_h / 2, lt, ha="center", va="center", fontsize=5.0, fontweight="bold", color="white", zorder=6)
     leader(ax, fb_x0 + FUSEBLK_W / 2, base_z + fbase_h + fuse_h, LCX, 1190, "A–G fuses → loads", fs=5.6, color=C_DIM, ha="right")
-    leader(ax, fb_x0 + 25, base_z, LCX, 1100, "Blue Sea 5026 fuse block\n12-circ (7 used + 5 spare)", fs=5.6, color=C_DIM, ha="right")
+    leader(ax, fb_x0 + 25, base_z, LCX, 1100, "Blue Sea 5026 fuse block\n12-circ (6 used + 6 spare)", fs=5.6, color=C_DIM, ha="right")
     bbp, bbn = eh0 + 170, eh0 + 140
     ax.add_patch(R((15, bbp), BUSBAR_L, BUSBAR_H, fc="#C0392B", ec=C_OUT, lw=0.7, zorder=4))
     ax.add_patch(R((15, bbn), BUSBAR_L, BUSBAR_H, fc="#2C2C2C", ec=C_OUT, lw=0.7, zorder=4))
@@ -2174,7 +2171,7 @@ def draw_sheet7():
 
     Complements the Sheet-1 block one-line with a standard-symbol schematic of the
     whole 12V DC system: PV → disconnect → MPPT → 60A fuse → battery → 200A MRBF →
-    contactor → main disconnect → fuse block → the seven load circuits (A–G, each a
+    contactor → main disconnect → fuse block → the six load circuits (A–E, G, each a
     fuse + load symbol) → negative bus → battery. The contactor coil (K1) is held in
     by the two E-stops (NC) in series; a shore charger feeds the battery; the negative
     bus is bonded to chassis earth. Not to scale — a connection schematic.
@@ -2304,10 +2301,10 @@ def draw_sheet7():
     circuits = [
         ("A", "5A", "16", "EXHAUST FAN", "M"), ("B", "5A", "16", "INTAKE FAN", "M"),
         ("C", "15A", "14", "PUMPS (panel)", "M"), ("D", "5A", "18", "SAFELIGHT", "L"),
-        ("E", "40A", "10", "EVAP COOLER", "INV"), ("F", "20A", "12", "FP ACTUATORS", "M"),
+        ("E", "40A", "10", "EVAP COOLER", "INV"),
         ("G", "15A", "12", "WHITE LED", "L"),
     ]
-    xs = [1110, 1235, 1360, 1485, 1610, 1735, 1860]
+    xs = [1110, 1235, 1360, 1485, 1610, 1735]
     for (c, fu, awg, name, kind), x in zip(circuits, xs):
         dot(x, BUS_Y)
         wire([(x, BUS_Y), (x, 1090)]); fuse(x, 1064, fu)

@@ -179,16 +179,6 @@ The full itemized parts list — specs, SKUs, ICP numbers, per-item quantities �
 
 **Wall-seat saddles** — each of the 8 rail ends anchors to the container: **6 with a standalone wall-seat saddle** (back-plate + seat + gusset, through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity); the **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
-### Optional electric actuation
-
-*Not included in any standard build — Scenarios A–C are all **manual** (each corner is hand-slid along its U-channel and cam-clamped). This is a documented upgrade only (the [Cost Analysis](cost-analysis-report.md) drops it from the recommended build to save ~$827): it motorizes the four corners with PA-14 actuators for entry-free repositioning. See the [Film Plane Mechanism Report §electric actuation](film-plane-mechanism-report.md).*
-
-| Item | Spec | Qty | Unit | Total |
-|------|------|-----|------|-------|
-| PA-14 linear actuator | 12V, 20" stroke, 150 lb | 4 | $185† | $740 |
-| 12V 30A power supply | Enclosed | 1 | $55† | $55 |
-| DPDT momentary rocker | Panel-mount, 20A | 4 | $8† | $32 |
-
 ### Section total
 
 Line items (Option A, manual handwheel actuation) — **generated from `costing.py`; do not hand-edit the numbers**:
@@ -212,8 +202,6 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Saddle fasteners — M12×70 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8) | $228 | $228 | $228 |
 | **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$4,090** | **$4,316** | **$4,548** |
 <!-- END costing:film -->
-
-*Electric actuation (optional add-on, not in any standard build): +$827 — see Optional electric actuation above.*
 
 *Includes $145–243 for the muslin clamp system (58 Pittsburgh 69289 nylon spring clamps + HDPE filler). Range reflects generic vs quality.*
 

@@ -25,7 +25,6 @@ FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC 
 PUMP_W          = PUMP_DRAW_W    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time); source: tbs_constants
 SAFELIGHT_W     = 40    # Circuit D — 12V red COB safelight strip (SBL, 1× 5m reel @ 2.4 W/ft ≈ 40W / 3.3A)
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
-ACTUATOR_W      = 100   # Circuit F — film plane actuators (optional, peak)
 WHITE_LIGHT_W   = 106   # Circuit G — 12V COB LED strip (HitLights 4000K): 3× 2.16m tray + 1× 1.18m corridor ≈ 7.7m @ 4.2 W/ft ≈ 106W / 8.8A (12 AWG / 15A)
 
 # ── Battery bank ──────────────────────────────────────────────────────────────
@@ -66,16 +65,14 @@ CLEANUP_MIN         = 30    # Phase 5: ventilation flush + pack-down
 P01_BLUE_MIN    = 15    # 3× wash fills at 3.5 GPM
 P02_BROWN_MIN   = 10    # recycled wash (if Brown stock available)
 P04_DRAIN_MIN   =  5    # tray sump drain between washes
-ACTUATOR_MIN    =  5    # brief positioning moves (optional)
 
 # ── Daily operating model ─────────────────────────────────────────────────────
 # A pinhole exposure uses one film plane at a time, so prints are sequential
 # (~3h cycle each). The container is cooled ONCE in the morning; fans + cooler
-# then run continuously. Standard build is manual (electric actuation dropped —
-# see cost-analysis-report.md), so Circuit F draws nothing by default.
+# then run continuously. The film plane is positioned manually (hand-slid corners),
+# so there is no powered actuation load.
 
 PRINTS_PER_DAY    = 3       # representative daylight field day (2 short / 4 pushed)
-INCLUDE_ACTUATORS = False   # manual build is standard; set True to add Circuit F
 
 # End-of-day Brown + Waste pump-out (P-05 Brown→X3, P-03 Waste→X4). Gravity-assisted:
 # each tote gravity-drains through its low Z=200mm port; the pump lifts only the
@@ -96,8 +93,7 @@ WASTE_CAP_L = 600   # 1× Black (waste) tote — parallel out-flow constraint
 
 # ── Phase-by-phase load matrix ────────────────────────────────────────────────
 # Each phase specifies which circuits are ON and for how long.
-# Pumps and actuators are itemized separately (they don't run for
-# the full phase duration).
+# Pumps are itemized separately (they don't run for the full phase duration).
 
 phases = [
     {
@@ -165,7 +161,6 @@ standalone_items = [
     ("Pumps (P-01 Blue)",       PUMP_W, P01_BLUE_MIN),
     ("Pumps (P-02 Brown)",      PUMP_W, P02_BROWN_MIN),
     ("Pumps (P-04 drain)",      PUMP_W, P04_DRAIN_MIN),
-    ("Actuators (optional)",    ACTUATOR_W, ACTUATOR_MIN),
 ]
 
 
@@ -236,11 +231,10 @@ def warmup_wh():
     return _phase_wh(phases[0])
 
 
-def per_print_wh(include_actuators=INCLUDE_ACTUATORS):
+def per_print_wh():
     """Energy for one print cycle EXCLUDING the one-time morning warmup."""
     cont = sum(_phase_wh(ph) for ph in phases[1:])            # dark-adapt … cleanup
-    pumps = sum(w * m / 60.0 for n, w, m in standalone_items
-                if not (("Actuator" in n) and not include_actuators))
+    pumps = sum(w * m / 60.0 for n, w, m in standalone_items)
     return cont + pumps
 
 
@@ -254,12 +248,12 @@ def resupply_drain_wh():
     return pump_wh + light_wh
 
 
-def compute_daily(n=PRINTS_PER_DAY, include_actuators=INCLUDE_ACTUATORS):
+def compute_daily(n=PRINTS_PER_DAY):
     """Energy for one full operating day of `n` sequential prints: the once-daily morning
     cooling warmup + the n print cycles. The Brown/Waste dump is a per-resupply servicing
     event (resupply_drain_wh), not a daily one, so it is deliberately excluded here."""
     w = warmup_wh()
-    pp = per_print_wh(include_actuators)
+    pp = per_print_wh()
     return {"n": n, "warmup_wh": w, "per_print_wh": pp,
             "daily_wh": w + n * pp}
 
@@ -283,8 +277,7 @@ def compute_autonomy(battery_ah, prints_per_day=PRINTS_PER_DAY):
 def print_daily_report():
     d = compute_daily()
     print("\n" + "=" * 72)
-    print(f"DAILY MODEL — {d['n']} sequential prints/day"
-          f" ({'manual' if not INCLUDE_ACTUATORS else 'with actuators'})")
+    print(f"DAILY MODEL — {d['n']} sequential prints/day (manual)")
     print("=" * 72)
     print(f"  Morning cooling warmup (once)   : {d['warmup_wh']:6.0f} Wh")
     print(f"  Per print (cycle + wash/drain)  : {d['per_print_wh']:6.0f} Wh  × {d['n']}"

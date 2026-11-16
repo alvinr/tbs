@@ -29,7 +29,7 @@ All loads run at **12V DC** - the one exception is the dedicated Circuit-E coole
 ---
 
 **Sheet 7 — System Schematic (Symbol Diagram)**
-The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the seven load circuits (A–G), with the NC E-stop loop and shore charger shown explicitly.
+The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the six load circuits (A–E, G), with the NC E-stop loop and shore charger shown explicitly.
 
 ![TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)](assets/electrical-sheet7.png)
 
@@ -41,9 +41,8 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | C | Water pumps **P-01–P-05** (12V DC; 5× Shurflo 2088, run one at a time; single master switch) | 100W (one pump) | Intermittent (~30 min/print) |
 | D | Safelight — interior + vestibule | 40W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | Continuous during operation |
-| F | Film plane actuators (optional) | 100W peak | Intermittent |
 | G | White LED strip ×4 (general lighting) | ~106W | Non-operational periods only |
-| **Total peak (all on)** | | **533W** | Not all simultaneous |
+| **Total peak (all on)** | | **463W** | Not all simultaneous |
 
 > **Circuit E is the only AC load.** The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is **<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus** (÷0.88 inverter efficiency). See [§7.6 AC Isolation & Safety](#ac-safety) for the grounding/GFCI design.
 
@@ -57,9 +56,9 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | 1.7–1.8  Dark adaptation | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, Safelight | 257 | 86 |
 | 2  Load image plane | 45 | Fan A (exhaust), Fan B (intake), Evap cooler, Safelight | 257 | 193 |
 | 3  Exposure | 37.5 | Fan A (exhaust), Fan B (intake), Evap cooler | 217 | 136 |
-| 4  Development & wash | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 293 | 98 |
-| 5  Cleanup | 30 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 293 | 146 |
-| **Subtotal** | **182** | | | **767** |
+| 4  Development & wash | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 323 | 108 |
+| 5  Cleanup | 30 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 323 | 161 |
+| **Subtotal** | **182** | | | **792** |
 
 **Intermittent loads (total runtime per print):**
 
@@ -68,12 +67,11 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | Pumps (P-01 Blue) | 90 | 15 | 22.5 |
 | Pumps (P-02 Brown) | 90 | 10 | 15.0 |
 | Pumps (P-04 drain) | 90 | 5 | 7.5 |
-| Actuators (optional) | 100 | 5 | 8.3 |
-| **Subtotal** | | | **53** |
+| **Subtotal** | | | **45** |
 
-**Total energy per session: <!-- BEGIN energy:wh-session -->845<!-- END energy:wh-session --> Wh (0.82 kWh)**
+**Total energy per session: <!-- BEGIN energy:wh-session -->837<!-- END energy:wh-session --> Wh (0.84 kWh)**
 
-**Battery bank capacity (standard build, 1 pack):** 100 Ah × 12V = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh (LiFePO4, 100% DoD) → **<!-- BEGIN energy:sessions-1pack -->1.4<!-- END energy:sessions-1pack --> sessions per charge**. The distribution busbar + fuse block are **provisioned for a 2nd 100 Ah pack in parallel** — a plug-in expansion (→ 200 Ah / <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh / <!-- BEGIN energy:sessions-2pack -->2.8<!-- END energy:sessions-2pack --> sessions) requiring **no rewiring**; the 2nd pack is shown ghosted in the 2D/3D models.
+**Battery bank capacity (standard build, 1 pack):** 100 Ah × 12V = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh (LiFePO4, 100% DoD) → **<!-- BEGIN energy:sessions-1pack -->1.4<!-- END energy:sessions-1pack --> sessions per charge**. The distribution busbar + fuse block are **provisioned for a 2nd 100 Ah pack in parallel** — a plug-in expansion (→ 200 Ah / <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh / <!-- BEGIN energy:sessions-2pack -->2.9<!-- END energy:sessions-2pack --> sessions) requiring **no rewiring**; the 2nd pack is shown ghosted in the 2D/3D models.
 
 **Solar recharge:** 600W array × 5.5 peak sun hours (Palm Springs) = <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day → supports <!-- BEGIN energy:solar-sessions-day -->3.9<!-- END energy:solar-sessions-day --> sessions/day from solar alone.
 
@@ -202,7 +200,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Circuit | G (15A fuse, 12 AWG) — 8.8A draw (rewired from 10A / 14 AWG for the 3rd tray run) |
 | Approximate cost | ~$84 (2 reels) + ~$81 (3× 8 ft channel) + ~$15 connectors/dimmer |
 
-The ~10,700 lumens over the ~14 m² floor give a **~330 lux maintained work-plane average** (the table's CU/LLF deration). The **matte-black interior** (0% sheen, [Container report](container-report.md)) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the **250–300 lux workshop target**. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit G to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is **rewired 14 AWG/10A → 12 AWG/15A** (the 12 AWG shares the Circuit-F spool; 15A fuses already stocked for Circuit C). True 12V-native, wired via the ceiling trunking.
+The ~10,700 lumens over the ~14 m² floor give a **~330 lux maintained work-plane average** (the table's CU/LLF deration). The **matte-black interior** (0% sheen, [Container report](container-report.md)) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the **250–300 lux workshop target**. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit G to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is **rewired 14 AWG/10A → 12 AWG/15A** (its own 12 AWG spool; 15A fuses already stocked for Circuit C). True 12V-native, wired via the ceiling trunking.
 
 ### 6.3 Pull-Cord Switches
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
@@ -253,7 +251,6 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 | D | Safelight (3× ceiling strips + drum) | 5A | 18 AWG | ~15m (3 branches + drum) |
 | E | Evaporative cooler **inverter** (12V DC input) | 40A | 10 AWG | ~1m (battery → inverter) |
 | E-AC | Inverter 120V AC out → panel cooler outlet | (GFCI at inverter) | 14 AWG / SJOOW | ~4m |
-| F | Film plane actuators (optional) | 20A | 12 AWG | ~6m |
 | G | White LED strip ×4 (general lighting) | 15A | 12 AWG | ~14m feed (4 runs ~7.7m lit, 8.8A) |
 | — | Main battery fuse | 200A | 2/0 AWG | ~0.5m (battery to busbar) |
 | — | PV array disconnect (load-break isolator) | — | 10 AWG | array → MPPT (at power panel) |

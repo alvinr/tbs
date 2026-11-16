@@ -180,7 +180,7 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 
 *Report: [Ventilation & Cooling System](ventilation-report.md) — authoritative specification for fan system, baffle ducts, operating modes, and shade canopy.*
 
-*Reports: [Ventilation & Cooling](ventilation-report.md) §4/§7/§8 (fans A/B + baffle ducts, operating modes, electrical integration); [Electrical](electrical-report.md) §7.2 (Circuit F ventilation fans).*
+*Reports: [Ventilation & Cooling](ventilation-report.md) §4/§7/§8 (fans A/B + baffle ducts, operating modes, electrical integration); [Electrical](electrical-report.md) §7.2 (Circuits A/B ventilation fans).*
 
 *Diagrams: lighttrap sheet 1 combined elevation (LT), lighttrap sheet 2 ventilation details (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO).*
 

@@ -24,9 +24,9 @@ the **exposure is 37.5 min**. A realistic daylight field day is therefore **~3 p
 day. The container is cooled **once** in the morning and the fans + evaporative cooler
 then run **continuously** through the operating day.
 
-> **Standard build is manual** (electric actuation was dropped — see [Cost Analysis](cost-analysis-report.md)),
-> so Circuit F draws nothing. Per-**session** energy (incl. the once-daily morning warmup) is ~**812 Wh** (vs 820 Wh with the optional
-> actuators); the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).
+> **The film plane is positioned manually** (hand-slid corners — no powered actuation load).
+> Per-**session** energy (incl. the once-daily morning warmup) is ~**812 Wh**; the cooler runs through
+> the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).
 
 ---
 
@@ -195,4 +195,4 @@ all, that — not power or fresh water — becomes the hard stop.
 1. [Electrical Report §3](electrical-report.md) — power budget and the per-session itemized energy.
 2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
 3. [Plumbing Report §4.3](plumbing-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
-4. [Cost Analysis](cost-analysis-report.md) — the manual-actuation decision (Circuit F unused in the standard build).
+4. [Cost Analysis](cost-analysis-report.md) — the capital build cost and savings levers.

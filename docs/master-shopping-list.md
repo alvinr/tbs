@@ -28,7 +28,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | **TOTAL (base build + 50-print run)** | **~$27,669** | **~$36,456** |
 <!-- END costing:master-summary -->
 
-*Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
+*Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
 *Line 9 (printmaking chemistry) is the **Mike Ware New Cyanotype** recipe (ferric ammonium oxalate sensitizer) with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,250), High = Rich full-Ware (~$3,100)**, working default Standard ½-Ware (~$1,710). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans that Lean–Rich range ($1,250–$3,100), narrowing once a tier is locked.*
 
@@ -135,15 +135,15 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
-| [12 AWG tinned hook-up wire, black — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
-| [12 AWG tinned hook-up wire, red — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
+| [12 AWG tinned hook-up wire, black — 100ft (Circuit G)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
+| [12 AWG tinned hook-up wire, red — 100ft (Circuit G)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
 | [14 AWG duplex marine wire](https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2) (MCB14-2) | 25 ft | Waytek Wire | water | $17 |
 | [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
 | [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
 | [15A blade fuse](https://www.amazon.com/dp/B07WP5FWJJ) (B07WP5FWJJ) | 1 pack | Amazon | water | $8 |
 | [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B0GYFNXM9Z) (B0GYFNXM9Z) | 1 ea | Amazon | ventilation | $26 |
-| [16 AWG tinned hook-up wire, black — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-0-hook-up-wire-tinned-copper) (WRT16-0) | 1 spool | Waytek Wire | electrical | $16 |
-| [16 AWG tinned hook-up wire, red — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-2-hook-up-wire-tinned-copper) (WRT16-2) | 1 spool | Waytek Wire | electrical | $16 |
+| [16 AWG tinned hook-up wire, black — 100ft (Circuits A/B + branches)](https://www.waytekwire.com/product/wrt16-0-hook-up-wire-tinned-copper) (WRT16-0) | 1 spool | Waytek Wire | electrical | $16 |
+| [16 AWG tinned hook-up wire, red — 100ft (Circuits A/B + branches)](https://www.waytekwire.com/product/wrt16-2-hook-up-wire-tinned-copper) (WRT16-2) | 1 spool | Waytek Wire | electrical | $16 |
 | [18 AWG tinned hook-up wire, black — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-0-hook-up-wire-tinned-copper) (WQT18-0) | 1 spool | Waytek Wire | electrical | $12 |
 | [18 AWG tinned hook-up wire, red — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-2-hook-up-wire-tinned-copper) (WQT18-2) | 1 spool | Waytek Wire | electrical | $12 |
 | [2/0 AWG battery cable, 3ft (battery–fuse–busbar)](https://www.amazon.com/dp/B0B3HD7CWP) (B0B3HD7CWP) | 1 lot | Amazon | electrical | $26 |

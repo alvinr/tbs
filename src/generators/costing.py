@@ -366,7 +366,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1310, 1310, 1310, "2026-07-23: fully firmed. 2026-07-26: shore charger Victron BPC121531104R re-sourced Powerwerx $175.95 → Inverter Service Center $152.15 (−$24)"),
-    LineItem("Distribution & wiring (plywood backboard from the chem-shelf sheet + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, external power-panel IP enclosure + wall gland)", 2106, 2149, 2192, "2026-10-07: +$27 led-channel 6→7 (Circuit-G 4th run over the tray center; strip stays 2 reels; the 12 AWG/15A rewire is cost-neutral — 12 AWG shares the Circuit-F spool, 15A fuses are the Circuit-C pack). 2026-09-30: EP backboard no longer buys its own sheet (−$69) — a finish-agnostic backboard now nests on the chem-shelf UV-white sheet (Plywood Cut Sheets, group B). 2026-07-31: bonding-kit Panduit 6AWG jumper $95.79; wet-zone-connectors 6x DT pairs $27.42; ground-wire-4awg 20ft MTW $52; mppt-charge-fuse Powerwerx 5005 block $36.39 + Amazon BOJACK ANL60 3pk $6.99 = $43.38; led-connectors firm $31.90 (8 clamps + 2 LDK-8A dimmers); dielectric-grease $8.99; powerpole 100 housings $55, dielectric-grease $8.99, powerpole housings 100×$0.55. 2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 +$228. 2026-07-28: external power panel → IP-rated McMaster enclosure 7335K231+plate+hw $291.91, retired the flush Al plate+gasket (+$253/+$232)"),
+    LineItem("Distribution & wiring (plywood backboard from the chem-shelf sheet + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, external power-panel IP enclosure + wall gland)", 2106, 2149, 2192, "2026-10-07: +$27 led-channel 6→7 (Circuit-G 4th run over the tray center; strip stays 2 reels; the 12 AWG/15A rewire is cost-neutral — the 12 AWG spool was already in the BOM, 15A fuses are the Circuit-C pack). 2026-09-30: EP backboard no longer buys its own sheet (−$69) — a finish-agnostic backboard now nests on the chem-shelf UV-white sheet (Plywood Cut Sheets, group B). 2026-07-31: bonding-kit Panduit 6AWG jumper $95.79; wet-zone-connectors 6x DT pairs $27.42; ground-wire-4awg 20ft MTW $52; mppt-charge-fuse Powerwerx 5005 block $36.39 + Amazon BOJACK ANL60 3pk $6.99 = $43.38; led-connectors firm $31.90 (8 clamps + 2 LDK-8A dimmers); dielectric-grease $8.99; powerpole 100 housings $55, dielectric-grease $8.99, powerpole housings 100×$0.55. 2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 +$228. 2026-07-28: external power panel → IP-rated McMaster enclosure 7335K231+plate+hw $291.91, retired the flush Al plate+gasket (+$253/+$232)"),
 ]
 
 
@@ -576,34 +576,30 @@ def _pct(mid: int, cap: int) -> str:
 # sourced here as declared estimates (they were hand-typed in the report). This ends the
 # duplication and lets the roll-up cascade.
 # Bucket B (COMPLETE 2026-07-05): solar is now a computed subtraction (drop 1×
-# solar-panel-200w), and modeling against the BOM showed two "levers" were phantom — film is BANKED
-# (manual is the standard build) and the battery is ALREADY 1×100Ah — so both were dropped from the
-# roll-up (see the SAVINGS_LEVERS note below). The roll-up (the figure that drives the report) and
-# both still-available levers (container, solar) derive. The decided/banked levers (film, tray,
-# battery, valves) keep their declared estimate bands BY DESIGN — each is a path NOT taken (decided
-# against or already standard), so pricing a full alternative BOM (poly tray, galvanized-steel
-# grating vs the §5 GRP premium, electric-actuation kit) would single-source numbers for options
-# that will never be built. Nothing here is pending.
+# solar-panel-200w), and modeling against the BOM showed the battery "lever" was phantom — the
+# standard is ALREADY 1×100Ah — so it was dropped from the roll-up (see the SAVINGS_LEVERS note
+# below). The roll-up (the figure that drives the report) and both still-available levers
+# (container, solar) derive. The decided levers (tray, battery, valves) keep their declared estimate
+# bands BY DESIGN — each is a path NOT taken (decided against or already standard), so pricing a full
+# alternative BOM (poly tray, galvanized-steel grating vs the §5 GRP premium) would single-source
+# numbers for options that will never be built. Nothing here is pending.
 def _lever_container() -> int:
     return SCEN_B["container"] - SCEN_A["container"] # CW − WWT grade delta (computed)
 
 
 # (id, low, high, in_rollup) — only levers that are STILL AVAILABLE feed the §4 roll-up.
-# Bucket B (2026-07-05): modeling each alternative against the as-built BOM showed two levers are NOT
-# available savings, so they were dropped from the roll-up (they were double-counting):
-# • film — ACTIONED: manual IS the standard build, so the $827 electric-kit cost is already BANKED,
-# not a saving you can still take.
+# Bucket B (2026-07-05): modeling the battery against the as-built BOM showed it is NOT an available
+# saving, so it was dropped from the roll-up (it was double-counting):
 # • battery — the costed standard is already 1×100Ah ($350); there is no 200→100Ah drop to make. A
 # 2nd pack is a +$375 optional UPGRADE (parts.py lifepo4-100ah note), i.e. an ADD, not a save.
 # The available levers: container (computed CW−WWT), solar (computed = drop 1× solar-panel-200w), and
 # tray (still a declared band — a chem-compatible poly-tray alternative isn't costed yet).
 SAVINGS_LEVERS = [
     ("container", _lever_container(), _lever_container(), True),
-    ("film", 827, 827, False), # #2 ACTIONED — $827 electric kit is BANKED into the manual standard, not available
-    ("tray", 600, 1000, False), # #3 DECIDED 2026-07-05: KEEP 304 SS (poly needs a support frame over the 4.5m span + poly-weld fab; SS is self-supporting + durable) — declined, out of the roll-up
-    ("battery", 375, 375, False), # #4 standard is 1×100Ah; the 2nd pack is a +$375 UPGRADE, not a saving
-    ("solar", 133, 133, True), # #5 computed: drop 1× solar-panel-200w ($133 low=high, parts.py)
-    ("valves", 100, 200, False), # #6 estimate — no specced alternative
+    ("tray", 600, 1000, False), # #2 DECIDED 2026-07-05: KEEP 304 SS (poly needs a support frame over the 4.5m span + poly-weld fab; SS is self-supporting + durable) — declined, out of the roll-up
+    ("battery", 375, 375, False), # #3 standard is 1×100Ah; the 2nd pack is a +$375 UPGRADE, not a saving
+    ("solar", 133, 133, True), # #4 computed: drop 1× solar-panel-200w ($133 low=high, parts.py)
+    ("valves", 100, 200, False), # #5 estimate — no specced alternative
 ]
 
 
@@ -848,7 +844,6 @@ def _inline_blocks() -> dict:
         "tray-high": ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
         # cost-analysis-report.md §4 savings levers (bucket A — see SAVINGS_LEVERS) + §6 light lock
         "ca-lever-container": (_CA, lambda: f"${_lever('container')[0]:,}"),
-        "ca-lever-film": (_CA, lambda: f"${_lever('film')[0]:,}"),
         "ca-lever-tray-low": (_CA, lambda: f"${_lever('tray')[0]:,}"),
         "ca-lever-tray-high": (_CA, lambda: f"${_lever('tray')[1]:,}"),
         "ca-lever-battery": (_CA, lambda: f"${_lever('battery')[0]:,}"),

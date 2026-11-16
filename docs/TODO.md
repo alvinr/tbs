@@ -40,6 +40,14 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 ---
 
+## ⚡ Electrical — Circuit F (film-plane actuators) removed; 3D re-send pending (2026-11-16)
+
+Film-plane electric actuation was removed from the design project-wide (manual positioning only). The 2D / docs / parts / costing / energy source is committed (2026-11-16). The **3D model generator edit was deliberately held back** from that commit because it is a routing-source file whose hash change trips the interference-report gate, and the audit can only run against the live model (which isn't re-sent yet). So this step bundles the 3D-generator edit + re-send + interference re-audit together:
+
+- [ ] **Edit `src/models/generate_electrical_model.py` to drop Circuit F** (not yet committed): remove `"F": ("#7F8C8D", "actuators (spare)")` from `CCT`; `"F"` from `FUSE_ORDER` and `CCT_FUSE`; the `# Circuit F … NO routed conduit` comment in `LOADS`; retire the `F is a spare (no run)` aside; set the `FUSE STACK` label `A-G 5/5/15/5/40/20/10 A` → `A-E,G 5/5/15/5/40/15 A`; and the A-G → "A-E, G" / "7" → "6" count strings in the module docstring + fuse-stack comments. (Validated earlier: `/usr/bin/python3 … --save` builds a clean `electrical.rb` with fuses A,B,C,D,E,G.)
+- [ ] **Re-send the 4 models that embed the fuse block** — `electrical`, `overview`, `construction`, `water` (all contain `Fuse F (20A — actuators (spare))`). Per the model workflow: open each in SketchUp → `--send` into its own live doc → verify → save → `push_sketchfab.py <name>` (in-place, same uid) → `manifest.py --update` → commit `.skp` + `dependencies.yml`.
+- [ ] **Refresh `interference-report.txt` against the re-sent live model.** The Fuse-F removal re-pitches the blade stack (`_FUSE_PITCH` /7→/6), nudging the per-circuit conduit origins (`FUSE_POS`), so the routing-source hash changes when the generator edit above lands. After the construction re-send: `python3 src/models/check_interference.py --write && git add src/models/interference-report.txt`, then commit alongside the generator edit + `.skp`. (Clash results expected unchanged — F had no routed conduit.)
+
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 
 - [~] **Brush + holder — KEEP AS-IS for now (2026-08-24: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.

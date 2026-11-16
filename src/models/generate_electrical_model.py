@@ -18,7 +18,7 @@ Tags / scenes:
     Battery        100Ah pack (+ ghost 2nd) + contactor + MRBF main fuse
     External Panel penetration box + MC4 / NEMA inlet / WR cooler outlet + E-stop
     Inverter       Circuit-E 12->120V inverter
-    Circuit Runs   ceiling trunking spine + 6 color-coded circuits A-F to the loads
+    Circuit Runs   ceiling trunking spine + 7 color-coded circuits (A,B,C1,C2,D,E,F) to the loads
   Scenes: Overview, Power Core, Distribution, External Panel, Labeled.
 
 Usage:
@@ -66,7 +66,8 @@ MC4_FEED_Z  = PWR_PANEL_Z + 0.225 * PWR_PANEL_H           # the feeds drop to th
 CCT = {
     "A": ("#C0392B", "exhaust fan"),
     "B": ("#E67E22", "intake fan"),
-    "C": ("#2980B9", "water pumps"),
+    "C1": ("#2980B9", "corridor pumps"),
+    "C2": ("#5DADE2", "tray drain P-04"),
     "D": ("#8E44AD", "safelight"),
     "E": ("#16A085", "cooler / inverter"),
     "F": ("#F1C40F", "white LED"),
@@ -104,18 +105,18 @@ _FANB_BOX_X = 420   # Fan B wall-box X — shifted +120mm toward the pinhole to 
 LOADS = {
     "A": (_FAN_A_X, FAN_A_YD, _FAN_A_TOP),                          # Fan A, end wall
     "B": (_FANB_BOX_X, 18, FAN_B_H + 45),                          # Fan B wall box
-    "C": (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI),  # pump zone @ panel
+    "C1": (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI),  # corridor pump zone @ panel
     "E": (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H / 2),
 }
 
 # Fuse-block reference point (runs originate here) — front face of the block in the EP.
-# ── Blade-fuse stack (Blue Sea 5026): a standing row of 6 ATO blade fuses on the block
-# base, one per circuit A-F (left→right = the one-line schematic order), each coloured to
+# ── Blade-fuse stack (Blue Sea 5026): a standing row of 7 ATO blade fuses on the block
+# base, one per circuit A,B,C1,C2,D,E,F (left→right = the one-line schematic order), each coloured to
 # its circuit and rated per the schematic. Every circuit cable leaves the TOP of its OWN
 # blade, exits to the enclosure front, then rises — so each fuse→load run is traceable and
 # the model conforms to the electrical schematic. ──────────────────────────────────────
-FUSE_ORDER = ["A", "B", "C", "D", "E", "F"]
-CCT_FUSE = {"A": "5A", "B": "5A", "C": "15A", "D": "5A", "E": "40A", "F": "15A"}
+FUSE_ORDER = ["A", "B", "C1", "C2", "D", "E", "F"]
+CCT_FUSE = {"A": "5A", "B": "5A", "C1": "15A", "C2": "10A", "D": "5A", "E": "40A", "F": "15A"}
 _FBLK_X0 = EP_X + 15                        # fuse-block left edge (X)
 _FBLK_YD = 25                              # block front Yd inside the enclosure
 _FBLK_Z0 = EP_H_LO + 40                    # block base bottom Z — near the enclosure floor (reach re-lay)
@@ -138,7 +139,7 @@ TRUNK_YD = 20                  # conductors hug the pinhole-wall ceiling line
 TRUNK_Z = ov.C_HGT - 13
 # Each circuit runs at its OWN Yd across the width of the 40mm trunk, so they lie SIDE BY SIDE (a cable
 # bundle) instead of coincident on one centerline (which read as crossings).
-_CCT_RUN = ["A", "B", "C", "D", "E", "F"]
+_CCT_RUN = ["A", "B", "C1", "C2", "D", "E", "F"]
 CCT_TRUNK_YD = {c: 10 + i * 6 for i, c in enumerate(_CCT_RUN)}   # A=10 … G=40, 6mm apart
 CCT_WIRE_R = 2.5               # thin 12V conductor (was 6 — too fat; made the bundle read as one pipe)
 EP_CTRL_FACE_YD = 100   # EP access-panel front face Yd — the E-stop + master switch SURFACE-MOUNT here (wired from behind)
@@ -150,7 +151,7 @@ ELEC_POINT_LABELS = [
     (SOLAR_ARRAY_X + 700, SOLAR_ARRAY_YD - 600, 700,
      "SOLAR ARRAY\n3x 200W (30deg tilt)", -200, -700, 700),
     (EP_X + 90, 40, EP_H_HI - 60, "MPPT 100/50",                 -380, 700, 280),
-    (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-F\n5/5/15/5/40/15 A", 420, 700, 240),
+    (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-F\n5/5/15/10/5/40/15 A", 420, 700, 240),
     (EP_X + 90, 40, EP_H_LO + 160, "+/- BUSBARS",                 420, 640, -120),
     (EP_X + 55, 0, EP_DISC_Z, "MAIN DISCONNECT", 360, 760, -260),
     (EP_X + 60, 40, EP_POST_Z + 60, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, 760, 900),
@@ -360,7 +361,7 @@ def power_core(external_links=True, links_only=False):
     # P-clips on the interior PV feeds (routed behind the EP panel) — ~350mm centres.
     for _lbl, _pp in (("PV+ feed", _pvp1), ("PV+ feed", _pvp2), ("PV- feed", _pvm)):
         ext_links.append(draw.ruby_clip_run(_lbl, _pp, spacing=350))
-    # Blue Sea 5026: the block base + a standing row of 6 blade fuses (one per circuit A-F,
+    # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A,B,C1,C2,D,E,F,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.
     p.append(draw.ruby_box("Fuse Block base (Blue Sea 5026)", _FBLK_X0, _FBLK_YD, _FBLK_Z0,
                          FUSEBLK_W, FUSEBLK_D, _FBASE_H, color="#2B2B30"))
@@ -688,11 +689,14 @@ def cct_c_feed():
     Cct-E feed + battery cables), so it clears the cluster at the disconnect level. SINGLE OWNER —
     _pump_circuit() (electrical) and the overview both call this, so the fuse-C→switch leg can't drift
     between models. (The switched feed onward to the pumps is _pump_circuit() / pw.panel_power.)"""
-    fcx, fcy, fcz = FUSE_POS["C"]
     msx, msy, msz = MASTER_SW_POS
-    return draw.ruby_pipe_run("Cct C feed (fuse C -> master switch)",
-                            _dedup([(fcx, fcy, fcz), (fcx, fcy, msz),
-                                    (fcx, msy, msz), (msx, msy, msz)]), 6, color=CCT["C"][0])
+    runs = []
+    for cc in ("C1", "C2"):                       # 2-pole master switch gates both pump fuses
+        fcx, fcy, fcz = FUSE_POS[cc]
+        runs.append(draw.ruby_pipe_run(f"Cct {cc} feed (fuse {cc} -> 2-pole master switch)",
+                                _dedup([(fcx, fcy, fcz), (fcx, fcy, msz),
+                                        (fcx, msy, msz), (msx, msy, msz)]), 6, color=CCT[cc][0]))
+    return "\n".join(runs)
 
 
 
@@ -701,7 +705,7 @@ def cable_trunking():
     """The 40x25 PVC ceiling trunk bundling every circuit. SINGLE OWNER — circuit_runs() + the
     overview model both call this. Spans ONLY the circuit range (door-end first tap → Fan A) so
     there is no dead-end grey stub past the last drop (the overview used to draw it full-length)."""
-    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
+    cxs = [LOADS[c][0] for c in ("A", "B", "C1", "E")] + \
           [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
     tx0, tx1 = min(cxs) - 40, max(cxs) + 40
     return draw.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
@@ -716,7 +720,7 @@ def conduit_clips():
     target: spacing + which runs to add next (EP backboard cables, battery cable)."""
     C_CLIP = "#55575e"
     p = []
-    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
+    cxs = [LOADS[c][0] for c in ("A", "B", "C1", "E")] + \
           [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
     tx0, tx1 = min(cxs) - 40, max(cxs) + 40
     # Ceiling cable-trunk saddle straps — ~500mm centres, wrapping the 40x25 PVC trunk to the wall.
@@ -792,7 +796,7 @@ def solar_array():
 
 
 def circuit_runs():
-    """Ceiling cable-trunking spine + the 6 color-coded circuits A-F to their loads.
+    """Ceiling cable-trunking spine + the 7 color-coded circuits (A,B,C1,C2,D,E,F) to their loads.
     Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
     (G white LED, D safelight) fan out to ALL three of their ceiling fixtures."""
     p = [cable_trunking()]

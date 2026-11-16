@@ -29,7 +29,7 @@ All loads run at **12V DC** - the one exception is the dedicated Circuit-E coole
 ---
 
 **Sheet 7 — System Schematic (Symbol Diagram)**
-The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the six load circuits (A–E, G), with the NC E-stop loop and shore charger shown explicitly.
+The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the six load circuits (A–F), with the NC E-stop loop and shore charger shown explicitly.
 
 ![TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)](assets/electrical-sheet7.png)
 
@@ -41,7 +41,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | C | Water pumps **P-01–P-05** (12V DC; 5× Shurflo 2088, run one at a time; single master switch) | 100W (one pump) | Intermittent (~30 min/print) |
 | D | Safelight — interior + vestibule | 40W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | Continuous during operation |
-| G | White LED strip ×4 (general lighting) | ~106W | Non-operational periods only |
+| F | White LED strip ×4 (general lighting) | ~106W | Non-operational periods only |
 | **Total peak (all on)** | | **463W** | Not all simultaneous |
 
 > **Circuit E is the only AC load.** The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is **<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus** (÷0.88 inverter efficiency). See [§7.6 AC Isolation & Safety](#ac-safety) for the grounding/GFCI design.
@@ -183,9 +183,9 @@ Sheet 6 gives the box arrangement, the cross-section through the corrugated wall
 TBS-001 requires two mutually exclusive lighting modes:
 
 - **Safelight (Circuit D):** Red 12V **COB** LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse / 18 AWG, no bump), dimmable, always available. (Two of the three ceiling runs carry a parallel white strip — see §6.2.)
-- **White light (Circuit G):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray (two parallel to the two drum-side red safelights at X=520 / 2270, plus one at the tray's X-center ~2454), plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.
+- **White light (Circuit F):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray (two parallel to the two drum-side red safelights at X=520 / 2270, plus one at the tray's X-center ~2454), plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.
 
-The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
+The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit F is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
 
 ### 6.2 White LED Strip Specification
 | Parameter | Specification |
@@ -200,7 +200,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Circuit | G (15A fuse, 12 AWG) — 8.8A draw (rewired from 10A / 14 AWG for the 3rd tray run) |
 | Approximate cost | ~$84 (2 reels) + ~$81 (3× 8 ft channel) + ~$15 connectors/dimmer |
 
-The ~10,700 lumens over the ~14 m² floor give a **~330 lux maintained work-plane average** (the table's CU/LLF deration). The **matte-black interior** (0% sheen, [Container report](container-report.md)) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the **250–300 lux workshop target**. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit G to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is **rewired 14 AWG/10A → 12 AWG/15A** (its own 12 AWG spool; 15A fuses already stocked for Circuit C). True 12V-native, wired via the ceiling trunking.
+The ~10,700 lumens over the ~14 m² floor give a **~330 lux maintained work-plane average** (the table's CU/LLF deration). The **matte-black interior** (0% sheen, [Container report](container-report.md)) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the **250–300 lux workshop target**. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit F to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is **rewired 14 AWG/10A → 12 AWG/15A** (its own 12 AWG spool; 15A fuses already stocked for Circuit C). True 12V-native, wired via the ceiling trunking.
 
 ### 6.3 Pull-Cord Switches
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
@@ -211,7 +211,7 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 | Quantity | 2 |
 | Position | Pinhole wall face, ceiling height |
 | Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
-| Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
+| Switch 2 | Circuit F — white light. Cord labeled "WHITE" |
 | Wire | Inline on respective circuit, between fuse block and load |
 | Approximate cost | ~$8 each, ~$16 total |
 
@@ -251,7 +251,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 | D | Safelight (3× ceiling strips + drum) | 5A | 18 AWG | ~15m (3 branches + drum) |
 | E | Evaporative cooler **inverter** (12V DC input) | 40A | 10 AWG | ~1m (battery → inverter) |
 | E-AC | Inverter 120V AC out → panel cooler outlet | (GFCI at inverter) | 14 AWG / SJOOW | ~4m |
-| G | White LED strip ×4 (general lighting) | 15A | 12 AWG | ~14m feed (4 runs ~7.7m lit, 8.8A) |
+| F | White LED strip ×4 (general lighting) | 15A | 12 AWG | ~14m feed (4 runs ~7.7m lit, 8.8A) |
 | — | Main battery fuse | 200A | 2/0 AWG | ~0.5m (battery to busbar) |
 | — | PV array disconnect (load-break isolator) | — | 10 AWG | array → MPPT (at power panel) |
 | — | MPPT charge-line fuse | 60A | 6 AWG | MPPT → battery (~0.5m) |
@@ -433,7 +433,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 |----------|------|
 | Before each session | Check battery state of charge via Victron Connect app |
 | Before each session | Verify all circuit fuses are intact on Blue Sea 5026 fuse block |
-| Before each session | Test safelight (Circuit D) and white light (Circuit G) switches |
+| Before each session | Test safelight (Circuit D) and white light (Circuit F) switches |
 | Monthly | Inspect Anderson Powerpole connections for corrosion or looseness |
 | Monthly | Check cable trunking clips and conduit routing for chafe |
 | Monthly | Inspect Deutsch DT weatherproof connectors at fan penetrations; test the Circuit-E GFCI (cooler AC outlet) trip/reset |

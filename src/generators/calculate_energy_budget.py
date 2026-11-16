@@ -25,7 +25,7 @@ FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC 
 PUMP_W          = PUMP_DRAW_W    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time); source: tbs_constants
 SAFELIGHT_W     = 40    # Circuit D — 12V red COB safelight strip (SBL, 1× 5m reel @ 2.4 W/ft ≈ 40W / 3.3A)
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
-WHITE_LIGHT_W   = 106   # Circuit G — 12V COB LED strip (HitLights 4000K): 3× 2.16m tray + 1× 1.18m corridor ≈ 7.7m @ 4.2 W/ft ≈ 106W / 8.8A (12 AWG / 15A)
+WHITE_LIGHT_W   = 106   # Circuit F — 12V COB LED strip (HitLights 4000K): 3× 2.16m tray + 1× 1.18m corridor ≈ 7.7m @ 4.2 W/ft ≈ 106W / 8.8A (12 AWG / 15A)
 
 # ── Battery bank ──────────────────────────────────────────────────────────────
 

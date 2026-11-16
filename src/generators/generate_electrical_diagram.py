@@ -308,7 +308,7 @@ def draw_sheet1():
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
-        ("G", "WHITE LED STRIPS ×4\n(general lighting)",  "15A", "12 AWG", "106W",
+        ("F", "WHITE LED STRIPS ×4\n(general lighting)",  "15A", "12 AWG", "106W",
          "3 over tray (X=600/2350/2454) + 1 corridor COB strips  |  pull-cord switch  |  non-operational only", "#FFFFF0"),
     ]
 
@@ -750,7 +750,7 @@ def draw_sheet2():
         ax.text(sl_dx + sl_dw + 30, (sl_dy1 + sl_dy2) / 2, "D",
                 ha="left", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    # ── White LED strips (Circuit G) — 4× COB runs: 3 over the tray + 1 corridor ──
+    # ── White LED strips (Circuit F) — 4× COB runs: 3 over the tray + 1 corridor ──
     C_LED = "#FFFFF0"
     WL_STRIP_W = 20          # strip width (mm)
     WL_TRAY_X  = [600, 2350, 2454]   # 3 N–S tray runs (X=600/2350 + tray-center 2454)
@@ -782,7 +782,7 @@ def draw_sheet2():
     PS_YD   = 50     # just off pinhole wall
     PS_SZ   = 80     # symbol radius (mm)
     C_SWITCH = "#E0E0FF"
-    for si, (sw_label, sw_x_off) in enumerate([("D", -40), ("G", 40)]):
+    for si, (sw_label, sw_x_off) in enumerate([("D", -40), ("F", 40)]):
         sx = ix(PS_X_MM + sw_x_off)
         sy = OY + wt + PS_YD * S_yd
         ax.add_patch(mpatches.Circle((sx, sy), PS_SZ,
@@ -866,7 +866,7 @@ def draw_sheet2():
            DUCT_CX * 0.1, OY - 200,
            f"Evap cooler (E)\n120V AC {EVAP_COOLER_W_AC}W via inverter\nExternal + duct",
            fs=6.5, color=C_EVAP)
-    # LED strips — Cct G (label the middle tray strip)
+    # LED strips — Cct F (label the middle tray strip)
     led_mid_cx = ix(WL_TRAY_X[1])
     led_mid_cy = OY + wt + (WL_TRAY_YD1 * 0.5) * S_yd
     leader(ax, ix(WL_TRAY_X[0]), led_mid_cy,
@@ -932,7 +932,7 @@ def draw_sheet2():
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"120V AC {EVAP_COOLER_W_AC}W via inverter ({EVAP_COOLER_W_BUS}W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
-        ("G",     C_LED,     "WHITE LED STRIPS — Cct G",
+        ("F",     C_LED,     "WHITE LED STRIPS — Cct F",
          "4× COB strips (3 tray + 1 corridor)  |  15A / 12 AWG / 106W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
          f"SPST 6A ceiling switches  |  D=safelight, G=white light  |  Left of EP (cleared), X≈{PS_X_MM}mm"),
@@ -964,7 +964,7 @@ def draw_sheet2():
         "optical cone. Drop conduits (10mm corrugated) to each device.",
         "4. Light trap (housed revolving door, \u00d8900mm vertical axis) in left end zone \u2014 "
         "integral to cargo-door hinged panel. See Hinged Panel drawings (\u00a712).",
-        "5. Circuit G (white LED strips) and Circuit D (safelight) are independently switched ",
+        "5. Circuit F (white LED strips) and Circuit D (safelight) are independently switched ",
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
     draw_notes(ax, notes, 6200, Y_LO + 1250, spacing=80,
@@ -1208,7 +1208,7 @@ def draw_sheet3():
 
     C_SWITCH = "#E0E0FF"
     for si, (sw_label, sw_color, sw_x_off) in enumerate([
-        ("D", "#FFD700", -60), ("G", "#FFFFF0", 60)
+        ("D", "#FFD700", -60), ("F", "#FFFFF0", 60)
     ]):
         sx = wx(PS_X_MM + sw_x_off)
         sz = (PS_Z_MM)
@@ -1379,7 +1379,7 @@ def draw_sheet3():
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Penetration box  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED STRIPS (G)",    "4× COB 4000K  |  Ceiling-mount  |  3 tray (X=600/2350/2454) + 1 corridor"),
-        ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & G  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1500mm AFF"),
+        ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & F  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1500mm AFF"),
         ("#FFD700", "SAFELIGHT (D)",     f"3× red LED strips  |  Ceiling N–S  |  X≈{', '.join(str(x) for x in SL3_POSITIONS)}"),
     ]
     for j, (fc, title_k, spec) in enumerate(key_items):
@@ -1399,7 +1399,7 @@ def draw_sheet3():
         "in the IBC corridor (Yd=1046), P-04 + the 3-stage filters on the pinhole wall; evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
-        "4. LED strips (Circuit G) are ceiling-mounted — 3 over the processing tray + 1 along the IBC/plumbing corridor. Connected to Circuit G via trunking. Non-operational only.",
+        "4. LED strips (Circuit F) are ceiling-mounted — 3 over the processing tray + 1 along the IBC/plumbing corridor. Connected to Circuit F via trunking. Non-operational only.",
     ]
     key_bottom = KY - 100 - (len(key_items) - 1) * 220 - 120
     notes_y_top = key_bottom - 120
@@ -1560,7 +1560,7 @@ def draw_sheet5():
         ("C", "Plumbing panel (pumps)", "15A", "14 AWG", "100 W",  "#2980B9"),
         ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
-        ("G", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
+        ("F", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
     ]
 
     fig, ax = plt.subplots(figsize=(16.5, 10.0))
@@ -2171,7 +2171,7 @@ def draw_sheet7():
 
     Complements the Sheet-1 block one-line with a standard-symbol schematic of the
     whole 12V DC system: PV → disconnect → MPPT → 60A fuse → battery → 200A MRBF →
-    contactor → main disconnect → fuse block → the six load circuits (A–E, G, each a
+    contactor → main disconnect → fuse block → the six load circuits (A–F, each a
     fuse + load symbol) → negative bus → battery. The contactor coil (K1) is held in
     by the two E-stops (NC) in series; a shore charger feeds the battery; the negative
     bus is bonded to chassis earth. Not to scale — a connection schematic.
@@ -2302,7 +2302,7 @@ def draw_sheet7():
         ("A", "5A", "16", "EXHAUST FAN", "M"), ("B", "5A", "16", "INTAKE FAN", "M"),
         ("C", "15A", "14", "PUMPS (panel)", "M"), ("D", "5A", "18", "SAFELIGHT", "L"),
         ("E", "40A", "10", "EVAP COOLER", "INV"),
-        ("G", "15A", "12", "WHITE LED", "L"),
+        ("F", "15A", "12", "WHITE LED", "L"),
     ]
     xs = [1110, 1235, 1360, 1485, 1610, 1735]
     for (c, fu, awg, name, kind), x in zip(circuits, xs):

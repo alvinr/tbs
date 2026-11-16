@@ -135,8 +135,8 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
-| [12 AWG tinned hook-up wire, black — 100ft (Circuit G)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
-| [12 AWG tinned hook-up wire, red — 100ft (Circuit G)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
+| [12 AWG tinned hook-up wire, black — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
+| [12 AWG tinned hook-up wire, red — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
 | [14 AWG duplex marine wire](https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2) (MCB14-2) | 25 ft | Waytek Wire | water | $17 |
 | [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
 | [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
@@ -164,7 +164,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Deutsch DT 2-pin connectors, IP67 (exterior penetrations)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 10 set | Waytek Wire | electrical | $30 |
 | [Equipotential bonding kit — 6 AWG jumper + ring lugs](https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56) (21WJ56) | 1 ea | Grainger | electrical | $96 |
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
-| [HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit G, ×2)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) (L2712V-40D3-1630-U) | 2 reel | HitLights | electrical | $75–$85 |
+| [HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit F, ×2)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) (L2712V-40D3-1630-U) | 2 reel | HitLights | electrical | $75–$85 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)](https://www.polycase.com/zh-080804) (ZH-080804) | 1 ea | Polycase | electrical | $47 |
 | [LED Profiles 981 slimline channel + diffuser, 8 ft (×7)](https://ledprofiles.com/collections/all-led-channels/products/slimline-ultra-low-profile-led-channel-981-series) (981ASL) | 7 8ft length | LED Profiles | electrical | $189 |

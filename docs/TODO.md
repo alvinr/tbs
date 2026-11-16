@@ -40,12 +40,6 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 ---
 
-## ⚡ Electrical — Circuit C split C1/C2 (B′): wash-procedure decision pending (2026-11-16)
-
-The B′ split is **fully built** — 2D/docs/parts/costing committed, and the 3D fuse stack (A,B,**C1,C2**,D,E,F, both to the 2-pole master switch) re-sent + pushed across electrical/overview/construction/water with the interference report refreshed (commit `6aed4016`). One decision remains:
-
-- [ ] **Wash-procedure decision (operating/water scope):** B′ only *enables* continuous flow-through; the Operating Manual §4.2 wash is still the fill-then-drain cycle. To adopt continuous washing, confirm with the **Water System Report** that P-04 (3.5 GPM) holds a stable tray level against P-01/P-02 (3.5 GPM), then rewrite §4.2 + the valve matrix (run C1 + C2 together). Not started.
-
 ## 📐 electrical-sheet1 — ENERGY SUMMARY is hand-keyed (drifts) (2026-11-16)
 
 - [ ] The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.

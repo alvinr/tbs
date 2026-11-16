@@ -48,7 +48,6 @@ Film-plane electric actuation was removed project-wide (manual positioning only)
 - [ ] **Also rename the white-LED `Cct G` strings in `src/models/generate_sketchup_model.py` (lighting_wiring: "White LED strips (Cct G)" etc.) and the `C_LED_W` comment in `src/models/tbs_draw.py`** → `Cct F`, so the overview/construction group names match.
 - [ ] **Re-send the 4 models that embed the fuse block** — `electrical`, `overview`, `construction`, `water` (they contain `Fuse F (20A — actuators (spare))` and `… (Cct G)` group names). Per the model workflow: open each in SketchUp → `--send` into its own live doc → verify → save → `push_sketchfab.py <name>` (in-place, same uid) → `manifest.py --update` → commit `.skp` + `dependencies.yml`.
 - [ ] **Refresh `interference-report.txt` against the re-sent live model.** The Fuse-F removal re-pitches the blade stack (`_FUSE_PITCH` /7→/6), nudging the per-circuit conduit origins (`FUSE_POS`), so the routing-source hash changes when the generator edit lands. After the construction re-send: `python3 src/models/check_interference.py --write && git add src/models/interference-report.txt`, then commit alongside the generator edits + `.skp`. (Clash results expected unchanged — F had no routed conduit; the rename moves no geometry.)
-- [ ] **Update the `project_12v_lighting_constraint` memory** (reference) — it names the white LED as "Circuit G"; it is now Circuit F.
 
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 

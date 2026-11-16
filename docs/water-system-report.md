@@ -284,12 +284,14 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 | P-01 Blue pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
 | P-02 Filter-loop feed pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
 | P-03 Waste pump (Shurflo 2088) — *IBC corridor* | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | intermittent (waste disposal only) | — |
-| P-04 Tray drain transfer pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.08 hr (5 min run) | 7.5 Wh |
+| P-04 Tray drain transfer pump (Shurflo 2088) | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | 0.42 hr (25 min, continuous drain through the wash) | 37.5 Wh |
 | P-05 Brown drain-out pump (Shurflo 2088) — *IBC corridor* | <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V | intermittent (drain-out only) | — |
 | pH meter | <0.1 A | — | <1 Wh |
-| **Total per print** | | | **~46 Wh** |
+| **Total per print** | | | **~75 Wh** |
 
-A 100 Ah 12V lithium battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh --> Wh usable) provides **>25 prints** of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.
+**Continuous flow-through wash (hydraulic balance).** The wash runs the supply pump (P-01 Blue or P-02 Brown) and the tray-drain pump P-04 **concurrently** — both Shurflo 2088s move the same **3.5 GPM**, so the drain removes water as fast as the spray bar delivers it and the tray holds a **shallow, stable flowing film** rather than filling and dwelling. This is enabled by the Circuit-C **C1/C2** split (the two pumps are on separate fuses, one 2-pole master switch; [Electrical Report §7.3](electrical-report.md)). **Water consumed per print is unchanged** — the spray bar delivers the same volume either way (§3); only P-04's runtime rises (it drains across the whole wash instead of a separate 5-min phase), which is the ~30 Wh/print the table above reflects.
+
+A 100 Ah 12V lithium battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh --> Wh usable) provides **>15 prints** of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.
 
 ---
 

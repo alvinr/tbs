@@ -280,10 +280,10 @@ def draw_sheet1():
     # electrical-report.md §3.1.  Update all three when specs change.
     summary = [
         ("Battery capacity",    "100Ah × 12V = 1,200Wh  (standard, 1 pack; +2nd → 2,400Wh)"),
-        ("Energy per session",  "837 Wh (0.84 kWh)  — continuous fans/cooler + pumps"),
-        ("Sessions per charge", "1.4 standard  (2.9 with the 2nd pack)"),
+        ("Energy per session",  "867 Wh (0.87 kWh)  — continuous fans/cooler + pumps"),
+        ("Sessions per charge", "1.4 standard  (2.8 with the 2nd pack)"),
         ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
-        ("Solar sessions/day",  "3.9 prints/day from solar alone"),
+        ("Solar sessions/day",  "3.8 prints/day from solar alone"),
         ("Shore recharge",      "~7h standard  (~14h with the 2nd pack)"),
         ("Peak load",           "543W peak  (all circuits on, not simultaneous)"),
     ]

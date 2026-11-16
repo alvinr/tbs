@@ -315,28 +315,33 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 - [ ] 4.2.1 — Position the spray bar at the far end of the tray (Yd≈2,280mm, film-plane side). Attach the telescoping pole to the arm tube.
 
-**Wash sequence using the Blue circuit:**
+**Continuous flow-through wash (supply + drain run together):**
 
-- [ ] 4.2.2 — Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.
-- [ ] 4.2.3 — Set BV-05a to Blue (fresh) and open BV-05b. Using the pole, slowly pull the spray bar toward the pinhole wall (decreasing Yd), flooding the print progressively. Travel speed ~50mm/second — full traverse takes ~44 seconds. At the near rim (Yd≈80mm), close BV-05b. Push the bar back to the far end and repeat. Allow water to flow over the full surface for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins.
-- [ ] 4.2.4 — Close BV-05b. Switch ON P-04 to pump wash water from the sump up to IBC-3 (Brown recovery) via 3W-DV-02. If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
-- [ ] 4.2.5 — For the second wash pass, set BV-05a to Brown (recycled), close BV-05b, and activate P-02 through the filter train. Recycled Brown water from IBC-3 is pumped through the three-stage filter skid and back into the spray bar via the same supply path. Open BV-05b and repeat the spray bar traverse.
-- [ ] 4.2.6 — Repeat for a total of **3 wash cycles** (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.
-- [ ] 4.2.7 — Final rinse: set BV-05a to Blue and open BV-05b for a 2-minute final flush with clean Blue water. Drain via P-04 to IBC-3.
+Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump — instead of the old fill-dwell-drain cycle (water consumed per print is the same; see [Water System Report §6](water-system-report.md)).
+
+- [ ] 4.2.2 — Switch ON the master pump switch — **P-01 (Blue supply) and P-04 (tray drain) both run.** P-01 feeds the spray bar; P-04 continuously lifts the sump water to IBC-3 via 3W-DV-02. Confirm VB1, VB2, VB3 are open.
+- [ ] 4.2.3 — Set BV-05a to Blue (fresh), 3W-DV-02 to Brown, and open BV-05b. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains to IBC-3 as fast as it arrives, so the tray never fills. The wash runs yellow-green as unreacted sensitizer clears (normal, non-toxic). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(If the first rinse is heavily contaminated, set 3W-DV-02 to IBC-4/Waste instead — see the diverter decisions below.)*
+- [ ] 4.2.4 — **Recycled pass:** set BV-05a to Brown (recycled) and bring up **P-02** (it draws IBC-3 through the 3-stage filter skid back to the spray bar); P-01 idles. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
+- [ ] 4.2.5 — **Final rinse:** set BV-05a back to Blue (P-01) for a 2-minute clean-Blue flush, P-04 still draining to IBC-3.
+- [ ] 4.2.6 — **Stop:** close BV-05b (spray off), let P-04 run ~30 seconds to clear the sump, then switch OFF the master pump switch. Total wash ~15 minutes (**3 passes**).
 
 > **Visual check after the second wash:** The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.
 
 #### Valve matrix
 
-| Valve | Default | Wash 1 | Drain 1→Brown | Wash 2 (recycled) | Drain 2→Brown | Wash 3 | Drain 3 |
-|-------|---------|--------|---------------|-------------------|---------------|--------|---------|
-| BV-01 (Blue manifold) | Open | Open | Open | Open | Open | Open | Open |
-| BV-05a (spray selector) | Blue | Blue | — | **Brown** | — | Blue | — |
-| BV-05b (spray on/off) | Closed | **Open** | Closed | **Open** | Closed | **Open** | Closed |
-| BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed | Closed | Closed |
-| 3W-DV-02 (tray drain) | Brown | Brown | **Brown** | Brown | **Brown** | Brown | **Brown** |
-| P-02 (Brown pump) | Off | Off | Off | **On** | Off | Off | Off |
-| 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue | Blue | Blue |
+Flow-through, so there are no separate drain phases — **P-04 drains throughout** all three passes:
+
+| Valve / pump | Default | Pass 1 (Blue) | Pass 2 (Brown recycle) | Pass 3 (Blue final) | Stop |
+|---|---|---|---|---|---|
+| BV-01 (Blue manifold) | Open | Open | Open | Open | Open |
+| BV-05a (spray selector) | Blue | Blue | **Brown** | Blue | — |
+| BV-05b (spray on/off) | Closed | **Open** | **Open** | **Open** | **Closed** |
+| BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed |
+| 3W-DV-02 (tray drain) | Brown | Brown | Brown | Brown | Brown |
+| P-01 (Blue supply) | Off | **On** | Off | **On** | Off |
+| P-02 (Brown pump) | Off | Off | **On** | Off | Off |
+| P-04 (tray drain, C2) | Off | **On** | **On** | **On** | Off (after sump clear) |
+| 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue |
 
 #### Diverter valve operator decisions
 

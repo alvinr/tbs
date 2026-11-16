@@ -59,12 +59,16 @@ DEVELOPMENT_MIN     = 20    # Phase 4: 3× wash cycles + drain
 CLEANUP_MIN         = 30    # Phase 5: ventilation flush + pack-down
 
 # ── Pump runtimes per print (minutes) ─────────────────────────────────────────
-# From water-system-report.md §8 electrical table.
-# Pumps run one at a time (never simultaneous).
+# From water-system-report.md §6 electrical table.
+# The SUPPLY pumps (P-01/P-02) still run one at a time; the tray drain P-04 now runs
+# CONCURRENTLY with them — continuous flow-through wash enabled by the Circuit-C C1/C2
+# split (operating-manual §4.2). So P-04's runtime ≈ the total supply time. Pump energy
+# is additive (the model sums these regardless of overlap); the concurrency shows up only
+# in the §3 peak (C1 + C2 = 180 W), not the per-pump Wh.
 
 P01_BLUE_MIN    = 15    # 3× wash fills at 3.5 GPM
 P02_BROWN_MIN   = 10    # recycled wash (if Brown stock available)
-P04_DRAIN_MIN   =  5    # tray sump drain between washes
+P04_DRAIN_MIN   = 25    # continuous drain across the wash (concurrent with P-01 15 + P-02 10)
 
 # ── Daily operating model ─────────────────────────────────────────────────────
 # A pinhole exposure uses one film plane at a time, so prints are sequential

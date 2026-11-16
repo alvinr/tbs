@@ -8,7 +8,7 @@ TBS-001 Electrical & Systems — five engineering drawing sheets.
 Sheet 1: System one-line diagram (power flow, components, fuse ratings)
 Sheet 2: Container floor plan with wiring layout  (scale 1:500)
 Sheet 3: Pinhole-wall interior elevation
-Sheet 4: Plumbing-panel pump power (Circuit C)
+Sheet 4: Plumbing-panel pump power (Circuit C1 — corridor)
 Sheet 5: Main panel layout + fuse schedule
 """
 
@@ -302,8 +302,10 @@ def draw_sheet1():
          "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
         ("B", f"VENTILATION FAN\nINTAKE  (Ø{FAN_DIAM}mm)",   "5A",  "16 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
-        ("C", "WATER PUMPS\n(corridor + P-04)",       "15A", "14 AWG", "100W",
-         "Corridor panel (Yd=1046–1316) + P-04 (filter skid)", C_PUMP_TINT),
+        ("C1", "WATER PUMPS\n(corridor)",       "15A", "14 AWG", "90W",
+         "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time", C_PUMP_TINT),
+        ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "16 AWG", "90W",
+         "P-04, filter skid  |  own fuse  |  2-pole master switch gangs C1+C2", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
@@ -849,7 +851,7 @@ def draw_sheet2():
            FB_X - 480, FB_Y + 350,
            "Intake fan (B)\n6\" DC  60W",
            fs=6.5)
-    # Pump — Cct C (on plumbing panel in IBC corridor)
+    # Pump — Cct C1 (corridor pumps on the plumbing panel)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
            PUMP_CX + 275, OY + cwid * 0.60,
            "Water pumps (C)\n12V DC  100W\ncorridor + P-04 (skid)",
@@ -926,8 +928,8 @@ def draw_sheet2():
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Sealed end wall (X=5893mm), below X1  |  Yd=1181mm"),
         ("B",     C_ALUM,    "INTAKE FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
-        ("C",     C_PUMP,    "PLUMBING PANEL — Cct C",
-         f"Water pumps P-01/02/03/05 (corridor) + P-04 (filter skid)  |  12V DC  |  15A / 14 AWG / 100W"),
+        ("C1/C2", C_PUMP,    "PUMPS — Cct C1 + C2",
+         f"P-01/02/03/05 corridor (C1, 15A/14 AWG) + P-04 tray drain (C2, 10A/16 AWG)  |  12V DC  |  2-pole master switch"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
@@ -1143,7 +1145,7 @@ def draw_sheet3():
     # ── P-04 (tray-drain pump) on the pinhole-wall FILTER SKID — its own Cct-C drop from the trunk ──
     # P-04 relocated to the skid (Phase-2), so it is a pinhole-wall load like the others and gets a drop.
     wall_equip(PWP_FILTER_X1 - 50, PWP_SROW_Z0, PWP_SROW_Z0 + 180, 100,
-               "P-04", "tray drain\n(Cct C · filter skid)", C_PUMP_TINT)
+               "P-04", "tray drain\n(Cct C2 · filter skid)", C_PUMP_TINT)
 
     # ── External power panel (penetration box in wall) ────────────────────────
     # Centered vertically at ~EP mounting height
@@ -1375,7 +1377,7 @@ def draw_sheet3():
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_STACK_TOP}mm (2 stacked)"),
-        ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/02/03/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-04 (filter skid)"),
+        ("#F5C8A0", "WATER PUMPS",   f"Cct C1/C2  |  P-01/02/03/05 corridor (C1, Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-04 tray drain (C2, filter skid)"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Penetration box  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED STRIPS (G)",    "4× COB 4000K  |  Ceiling-mount  |  3 tray (X=600/2350/2454) + 1 corridor"),
@@ -1422,7 +1424,7 @@ def draw_sheet3():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet4():
-    """SHEET 4 — Corridor Plumbing-Panel Pump Power (Circuit C), scale elevation.
+    """SHEET 4 — Corridor Plumbing-Panel Pump Power (Circuit C1 — corridor), scale elevation.
 
     Engineering elevation of the corridor plumbing panel (matches panel-layout.png):
     the single vertical pump column (ACC-01 + P-01/P-02/P-05/P-03) drawn to scale,
@@ -1479,7 +1481,7 @@ def draw_sheet4():
 
     # ── Circuit-C feed (switched at the EP master switch) into the block ──
     draw_pipe_path(ax, [mcx, mcx], [PH + 300, 1962], 17, 2.5, fc=CC, ec=CDK, zorder=5)
-    ax.text(mcx, PH + 330, "CIRCUIT C · 14 AWG · 15A\n(switched at the EP master switch,\nvia ceiling trunk)",
+    ax.text(mcx, PH + 330, "CIRCUIT C1 · 14 AWG · 15A\n(switched at the EP 2-pole master switch,\nvia ceiling trunk)",
             ha="center", va="bottom", fontsize=6.4, color=CC, fontweight="bold")
 
     # ── Curved-elbow branch conduits: block → each pump terminal. Own lane each, longest
@@ -1515,7 +1517,7 @@ def draw_sheet4():
 
     # ── Notes + title block (clear band below the panel) ──
     draw_notes(ax, [
-        "CIRCUIT C — PUMP POWER:",
+        "CIRCUIT C1 — PUMP POWER:",
         "The 14 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
         "runs the ceiling trunk to this panel's 12V distribution block, then a 16 AWG branch to each",
         "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05,",
@@ -1528,7 +1530,7 @@ def draw_sheet4():
 
     title_block(ax, "SHEET 4 OF 9",
                 drawing_title="PUMP POWER",
-                subtitle="Circuit C · scale elevation",
+                subtitle="Circuit C1 (corridor) · scale elevation",
                 scale_note="1:8 · mm",
                 doc_id="TBS-ELEC", height=0.075, portrait=True)
 
@@ -1557,7 +1559,8 @@ def draw_sheet5():
     CIRCUITS5 = [
         ("A", "Vent fan — exhaust",  "5A",  "16 AWG", "60 W",   "#C0392B"),
         ("B", "Vent fan — intake",   "5A",  "16 AWG", "60 W",   "#E67E22"),
-        ("C", "Plumbing panel (pumps)", "15A", "14 AWG", "100 W",  "#2980B9"),
+        ("C1", "Corridor pumps",     "15A", "14 AWG", "90 W",   "#2980B9"),
+        ("C2", "Tray-drain P-04",    "10A", "16 AWG", "90 W",   "#2980B9"),
         ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
         ("F", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
@@ -1622,7 +1625,7 @@ def draw_sheet5():
         ax.add_patch(R((cx - bw / 2, base_z + fbase_h), bw, fuse_h, fc=col, ec=C_OUT, lw=0.7, zorder=5))
         ax.text(cx, base_z + fbase_h + fuse_h / 2, lt, ha="center", va="center", fontsize=5.0, fontweight="bold", color="white", zorder=6)
     leader(ax, fb_x0 + FUSEBLK_W / 2, base_z + fbase_h + fuse_h, LCX, 1190, "A–G fuses → loads", fs=5.6, color=C_DIM, ha="right")
-    leader(ax, fb_x0 + 25, base_z, LCX, 1100, "Blue Sea 5026 fuse block\n12-circ (6 used + 6 spare)", fs=5.6, color=C_DIM, ha="right")
+    leader(ax, fb_x0 + 25, base_z, LCX, 1100, "Blue Sea 5026 fuse block\n12-circ (7 used + 5 spare)", fs=5.6, color=C_DIM, ha="right")
     bbp, bbn = eh0 + 170, eh0 + 140
     ax.add_patch(R((15, bbp), BUSBAR_L, BUSBAR_H, fc="#C0392B", ec=C_OUT, lw=0.7, zorder=4))
     ax.add_patch(R((15, bbn), BUSBAR_L, BUSBAR_H, fc="#2C2C2C", ec=C_OUT, lw=0.7, zorder=4))
@@ -1673,7 +1676,7 @@ def draw_sheet5():
     draw_notes(ax, [
         "NOTES",
         "· Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.",
-        "· Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).",
+        "· Circuits C1/C2 are switched at the on-panel 2-POLE MASTER PUMP SWITCH (one throw kills both) before they leave for the pumps (Sheet 4).",
         "· Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
     ], tx, botline - 50, spacing=32, fs=6, wrap=60, width=700)
 
@@ -2300,11 +2303,12 @@ def draw_sheet7():
     txt(BUS_X1, NEG_Y - 20, "NEGATIVE BUS  (− return)", fs=6.4, ha="right")
     circuits = [
         ("A", "5A", "16", "EXHAUST FAN", "M"), ("B", "5A", "16", "INTAKE FAN", "M"),
-        ("C", "15A", "14", "PUMPS (panel)", "M"), ("D", "5A", "18", "SAFELIGHT", "L"),
+        ("C1", "15A", "14", "CORRIDOR PUMPS", "M"), ("C2", "10A", "16", "TRAY DRAIN P-04", "M"),
+        ("D", "5A", "18", "SAFELIGHT", "L"),
         ("E", "40A", "10", "EVAP COOLER", "INV"),
         ("F", "15A", "12", "WHITE LED", "L"),
     ]
-    xs = [1110, 1235, 1360, 1485, 1610, 1735]
+    xs = [1110, 1225, 1340, 1455, 1570, 1685, 1800]
     for (c, fu, awg, name, kind), x in zip(circuits, xs):
         dot(x, BUS_Y)
         wire([(x, BUS_Y), (x, 1090)]); fuse(x, 1064, fu)

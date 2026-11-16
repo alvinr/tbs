@@ -38,11 +38,12 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 |---------|--------|-----------|-----------|
 | A | Ventilation fan — exhaust (6") | 60W | Continuous during processing |
 | B | Ventilation fan — intake (6") | 60W | Continuous during processing |
-| C | Water pumps **P-01–P-05** (12V DC; 5× Shurflo 2088, run one at a time; single master switch) | 100W (one pump) | Intermittent (~30 min/print) |
+| C1 | Water pumps — corridor **P-01/P-02/P-03/P-05** (12V DC; Shurflo 2088, one at a time) | 90W (one pump) | Intermittent (~30 min/print) |
+| C2 | Tray-drain pump **P-04** (12V DC Shurflo 2088) | 90W | Intermittent — **may run with C1** (continuous-wash option, §7.3) |
 | D | Safelight — interior + vestibule | 40W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | Continuous during operation |
 | F | White LED strip ×4 (general lighting) | ~106W | Non-operational periods only |
-| **Total peak (all on)** | | **463W** | Not all simultaneous |
+| **Total peak (all on)** | | **543W** | Not all simultaneous |
 
 > **Circuit E is the only AC load.** The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is **<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus** (÷0.88 inverter efficiency). See [§7.6 AC Isolation & Safety](#ac-safety) for the grounding/GFCI design.
 
@@ -197,7 +198,7 @@ An **18mm plywood backing panel** on the interior pinhole-wall face is the mount
 
 - Victron MPPT controller — on its own forward sub-panel, clear of the fuse-stack risers
 - **PV array disconnect** — DC load-break isolator in the PV path (array → MPPT), wired in-line on the panel (NEC 690.13)
-- Blue Sea 5026 12-circuit fuse block with busbars
+- Blue Sea 5026 12-circuit fuse block with busbars (7 used: A, B, C1, C2, D, E, F)
 - Battery positive and negative busbars, fed from the battery through a terminal-mount **200A MRBF fuse** (on the battery + post, ≤180mm), a **remote battery contactor** (Blue Sea ML-RBS, tripped by **either the exterior power-panel E-stop or an interior E-stop on the EP face**, wired in parallel), and a **main disconnect switch** (Blue Sea m-Series 300A) — see §7.5
 - **MPPT charge-line fuse** — a 60A ANL/MIDI fuse on the MPPT→battery lead at the busbar (§5.1)
 - **Interior E-stop** — a red mushroom button (uxcell a19061100ux1510) on the EP face, paralleled with the exterior E-stop, so the contactor can also be tripped from inside the container (§7.5)
@@ -220,7 +221,8 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 |---------|--------|------|-----------|-----------|
 | A | Ventilation fan — exhaust (far end wall, high) | 5A | 16 AWG | ~2.5m |
 | B | Ventilation fan — intake (panel-mounted, low) | 5A | 16 AWG | ~8m + flex connector |
-| C | Water pumps **P-01–P-05** (5× Shurflo, master switch) | 15A | 14 AWG feed + 16 AWG branches | ~5m feed (~8m to P-03) |
+| C1 | Water pumps — corridor **P-01/02/03/05** (one at a time, via the 2-pole master switch) | 15A | 14 AWG feed + 16 AWG branches | ~5m feed (~8m to P-03) |
+| C2 | Tray-drain pump **P-04** (own feed off the 2-pole master switch) | 10A | 16 AWG | ~3m (EP → filter skid) |
 | D | Safelight (3× ceiling strips + drum) | 5A | 18 AWG | ~15m (3 branches + drum) |
 | E | Evaporative cooler **inverter** (12V DC input) | 40A | 10 AWG | ~1m (battery → inverter) |
 | E-AC | Inverter 120V AC out → panel cooler outlet | (GFCI at inverter) | 14 AWG / SJOOW | ~4m |
@@ -238,11 +240,15 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 - Exterior penetrations (fans, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated. (The cooler is **120V AC** and terminates at the panel's GFCI-fed weatherproof outlet, **not** a DT connector — see Circuit E below and §7.6.)
 - **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
 - **Circuit E (evaporative cooler, via inverter):** The cooler is a 120V AC unit operating outside the container during sessions. The **DC side** is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The **AC side** runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
-- **Circuit C (water pumps P-01–P-05):** The single 14 AWG Circuit-C feed is switched at a **master pump switch on the Electrical Panel (EP)** — one IP-rated manual cutoff for the whole pump circuit, upstream of everything — then runs along the ceiling trunking to a **12V DC distribution block** (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, which feeds each corridor pump directly via a short **16 AWG** branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: **ACC-01** accumulator, **P-01** Blue fresh → spray bar, **P-02** Brown recycle → spray bar, **P-05** Brown drain-out → X3, **P-03** Waste drain-out → X4); **P-04** (tray-sump drain → filter skid) taps the switched feed on the Pinhole-Wall filter skid. There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open, and the pumps are sequenced by opening the relevant valves (**one at a time**; simultaneous operation is not intended). The 15A circuit fuse protects the 14 AWG feed and covers a single pump (90W / <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A) with margin. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
+- **Circuit C (water pumps P-01–P-05) — dual-fused, one 2-pole master switch.** The pump circuit splits into two independently-fused branches, both gated by a single **2-pole (DPST) master pump switch on the EP** — one throw kills every pump (the single IP-rated cutoff, upstream of everything), but each pole carries only one pump, so nothing is uprated:
+    - **C1 — corridor pumps** (15A fuse, 14 AWG feed): runs along the ceiling trunking to a **12V DC distribution block** (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, feeding each corridor pump via a short **16 AWG** branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: **ACC-01** accumulator, **P-01** Blue fresh → spray bar, **P-02** Brown recycle → spray bar, **P-05** Brown drain-out → X3, **P-03** Waste drain-out → X4), sequenced one at a time by opening the relevant valves.
+    - **C2 — tray-drain pump P-04** (10A fuse, 16 AWG feed): its own run from the EP to **P-04** on the Pinhole-Wall filter skid (tray-sump drain → filter skid).
+
+    Putting P-04 on its own fuse (each branch ≤<!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A) removes the single-fuse limit, so the tray drain (C2) can run **concurrently** with a supply pump (C1) — headroom for a continuous flow-through wash — with no fuse at 100% of rating. The standard wash procedure remains the fill-then-drain cycle ([Operating Manual §4.2](operating-manual.md)). There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main panel. Drive an 8-foot copper ground stake at the container foundation and connect to the main panel earth terminal. The inverter chassis, AC equipment-ground, and cooler ground bond to this same single point — see §7.6.
 
-**Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–G) plus device description. Re-label after any wiring change.
+**Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F; the pump circuit is dual-fused **C1**/**C2**) plus device description. Re-label after any wiring change.
 
 ### 7.4 Electrical Diagrams
 **Sheet 1 — System One-Line Diagram**
@@ -255,10 +261,10 @@ Interior elevation of the pinhole wall face, looking from inside the container. 
 
 ![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
-**Sheet 4 — Plumbing-Panel Pump Power (Circuit C)**
-Scale engineering elevation of the Circuit-C pump distribution on the corridor plumbing panel (matches the panel-layout elevation in the [Plumbing Panel report §3.2](plumbing-report.md)): the switched 14 AWG / 15A feed (from the **master pump switch on the EP** — Sheet 5) → 12V distribution block → a 16 AWG **curved-elbow** branch to each of the four column pumps (bottom→top ACC-01, P-01, P-02, P-05, P-03; P-04 is fed on the Pinhole-Wall filter skid). No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the [Plumbing Panel report §3.2](plumbing-report.md).
+**Sheet 4 — Plumbing-Panel Pump Power (Circuit C1 — corridor)**
+Scale engineering elevation of the corridor-pump (C1) distribution on the plumbing panel (matches the panel-layout elevation in the [Plumbing Panel report §3.2](plumbing-report.md)): the switched 14 AWG / 15A C1 feed (from pole 1 of the **2-pole master pump switch on the EP** — Sheet 5) → 12V distribution block → a 16 AWG **curved-elbow** branch to each of the four column pumps (bottom→top ACC-01, P-01, P-02, P-05, P-03). The tray-drain P-04 is **not** on this panel — it is on its own fuse C2, fed separately from pole 2 of the master switch to the Pinhole-Wall filter skid. No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the [Plumbing Panel report §3.2](plumbing-report.md).
 
-![TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
+![TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C1 — corridor)](assets/electrical-sheet4.png)
 
 **Sheet 5 — Main Panel Layout** — the reach-optimized EP panel elevation + fuse schedule (fully described in §7.1).
 
@@ -364,7 +370,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Shore-charger output fuse | 20A inline on the charger DC output lead | Amazon | ~$5 |
 | Battery terminal covers (pair) | Insulating boots over + / − posts/busbar | Amazon | ~$10 |
 | Sealed wet-zone connectors | Deutsch DT / adhesive-lined heat-shrink, pump circuits | Waytek Wire | ~$25 |
-| Master pump switch (Circuit C) | 1× IP67 sealed rocker/disconnect, 12V 16A — single cutoff for the whole pump circuit, **mounted on the EP** | Amazon / Waytek Wire | ~$10 |
+| Master pump switch (Circuit C) | 1× **2-pole (DPST)** IP67 sealed rocker/disconnect, 12V ≥10A/pole — single throw kills both pump fuses (pole 1 → C1 corridor, pole 2 → C2 tray-drain), **mounted on the EP** | Amazon / Waytek Wire | ~$13 |
 | Pump distribution block | 12V DC positive bus + negative bus (6-way), panel-mount on the rear of the Corridor Plumbing Panel, fed from the EP master switch | Blue Sea / Amazon | ~$15 |
 | Dielectric grease | Marine-grade — chemistry-vapor terminal protection | Amazon | ~$10 |
 | Tinned marine wire (wet-zone runs) | 14/16 AWG tinned copper, ~25ft | Waytek Wire | ~$30 |
@@ -393,10 +399,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | [12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) + **6× LED Profiles 981 channel/diffuser (white + red)** + connectors/PWM dimmers | white: 3× 2.16m tray + 1× 1.18m corridor (~10,700 lm → ~330 lux maintained), 106W/8.8A (12 AWG/15A), dimmable, true 12V | HitLights + LED Profiles | ~$84 strip + ~$162 channel + ~$15 |
 | [Red 12V COB LED strip, 5m reel (STN-B-BRED-O12A-08F5M-12V)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) | Circuit-D safelight — 40W/reel cut into 3 ceiling runs + drum (~40W/3.3A), COB 620nm, dimmable, cyanotype-safe, IP20 | Super Bright LEDs | ~$90 |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,459<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,464<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,957<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,962<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (the `electrical-power` + `electrical-distribution` subtotals, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

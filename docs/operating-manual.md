@@ -157,7 +157,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.5.3 — Connect controller to battery bank (1 × 100Ah LiFePO4 standard; optional 2nd pack in parallel). **Observe polarity.**
 - [ ] 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.
 - [ ] 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
-- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C (water pumps P-01–P-05, run one at a time), D (red safelight), E (evap cooler inverter), F (white LED lighting).
+- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C1 (corridor pumps P-01/02/03/05, one at a time), C2 (tray-drain pump P-04), D (red safelight), E (evap cooler inverter), F (white LED lighting). Both pump fuses are gated by the single 2-pole master pump switch.
 
 > **Shore power backup:** If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 

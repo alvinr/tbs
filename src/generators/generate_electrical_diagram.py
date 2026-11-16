@@ -223,7 +223,7 @@ def draw_sheet1():
                 arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
     wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.52,
-           "Control 2× 18 AWG  |  pinhole-wall gland", ha="center", size=7.0)
+           "Control 2× 12 AWG  |  pinhole-wall gland", ha="center", size=7.0)
     # interior E-stop on the EP face — paralleled with the exterior one (kill from inside too).
     # Sits BELOW the distribution bus (y≈5.98) — the external E-stop is above it — so the bus runs
     # cleanly in the gap between the two E-stop boxes instead of straight through this one.
@@ -298,15 +298,15 @@ def draw_sheet1():
     # ── CIRCUITS — right column ───────────────────────────────────────────────
     circuits = [
         # letter, name, fuse, wire, load, note, color
-        ("A", f"VENTILATION FAN\nEXHAUST  (Ø{FAN_DIAM}mm)",  "5A",  "16 AWG", "60W",
+        ("A", f"VENTILATION FAN\nEXHAUST  (Ø{FAN_DIAM}mm)",  "5A",  "12 AWG", "60W",
          "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
-        ("B", f"VENTILATION FAN\nINTAKE  (Ø{FAN_DIAM}mm)",   "5A",  "16 AWG", "60W",
+        ("B", f"VENTILATION FAN\nINTAKE  (Ø{FAN_DIAM}mm)",   "5A",  "12 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
-        ("C1", "WATER PUMPS\n(corridor)",       "15A", "14 AWG", "90W",
+        ("C1", "WATER PUMPS\n(corridor)",       "15A", "12 AWG", "90W",
          "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time", C_PUMP_TINT),
-        ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "16 AWG", "90W",
+        ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "12 AWG", "90W",
          "P-04, filter skid  |  own fuse  |  2-pole master switch gangs C1+C2", C_PUMP_TINT),
-        ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
+        ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "12 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
@@ -925,13 +925,13 @@ def draw_sheet2():
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X}mm"),
         ("A",     C_ALUM,    "EXHAUST FAN — Cct A",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Sealed end wall (X=5893mm), below X1  |  Yd=1181mm"),
+         "6\" inline DC  |  5A / 12 AWG / 60W  |  Sealed end wall (X=5893mm), below X1  |  Yd=1181mm"),
         ("B",     C_ALUM,    "INTAKE FAN — Cct B",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
+         "6\" inline DC  |  5A / 12 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
         ("C1/C2", C_PUMP,    "PUMPS — Cct C1 + C2",
-         f"P-01/02/03/05 corridor (C1, 15A/14 AWG) + P-04 tray drain (C2, 10A/16 AWG)  |  12V DC  |  2-pole master switch"),
+         f"P-01/02/03/05 corridor (C1, 15A/12 AWG) + P-04 tray drain (C2, 10A/12 AWG)  |  12V DC  |  2-pole master switch"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
-         f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
+         f"3× red LED strips  |  5A / 12 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"120V AC {EVAP_COOLER_W_AC}W via inverter ({EVAP_COOLER_W_BUS}W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
         ("F",     C_LED,     "WHITE LED STRIPS — Cct F",
@@ -1481,7 +1481,7 @@ def draw_sheet4():
 
     # ── Circuit-C feed (switched at the EP master switch) into the block ──
     draw_pipe_path(ax, [mcx, mcx], [PH + 300, 1962], 17, 2.5, fc=CC, ec=CDK, zorder=5)
-    ax.text(mcx, PH + 330, "CIRCUIT C1 · 14 AWG · 15A\n(switched at the EP 2-pole master switch,\nvia ceiling trunk)",
+    ax.text(mcx, PH + 330, "CIRCUIT C1 · 12 AWG · 15A\n(switched at the EP 2-pole master switch,\nvia ceiling trunk)",
             ha="center", va="bottom", fontsize=6.4, color=CC, fontweight="bold")
 
     # ── Curved-elbow branch conduits: block → each pump terminal. Own lane each, longest
@@ -1503,7 +1503,7 @@ def draw_sheet4():
         "circuit) is on the EP — see Sheet 5. No per-pump switches; each Shurflo 2088 runs on its internal "
         "pressure switch when its valves open.",
         "",
-        "16 AWG branches — curved elbow fittings (pipe convention), one per pump.",
+        "14 AWG marine-duplex branches — curved elbow fittings (pipe convention), one per pump.",
         "",
         "P-04 (Tray drain) is fed by a Circuit-C branch off this block, on the pinhole-wall filter skid.",
         "",
@@ -1518,8 +1518,8 @@ def draw_sheet4():
     # ── Notes + title block (clear band below the panel) ──
     draw_notes(ax, [
         "CIRCUIT C1 — PUMP POWER:",
-        "The 14 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
-        "runs the ceiling trunk to this panel's 12V distribution block, then a 16 AWG branch to each",
+        "The 12 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
+        "runs the ceiling trunk to this panel's 12V distribution block, then a 14 AWG marine branch to each",
         "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05,",
         "P-03); P-04 (Tray drain) taps the switched feed on the pinhole-wall filter skid. No per-pump",
         "switches — the EP master switch is the single cutoff and each Shurflo 2088 runs on its internal",
@@ -1557,11 +1557,11 @@ def draw_sheet5():
     R = mpatches.Rectangle
     # letter, circuit name, fuse, wire, load, color (= 3D model CCT color)
     CIRCUITS5 = [
-        ("A", "Vent fan — exhaust",  "5A",  "16 AWG", "60 W",   "#C0392B"),
-        ("B", "Vent fan — intake",   "5A",  "16 AWG", "60 W",   "#E67E22"),
-        ("C1", "Corridor pumps",     "15A", "14 AWG", "90 W",   "#2980B9"),
-        ("C2", "Tray-drain P-04",    "10A", "16 AWG", "90 W",   "#2980B9"),
-        ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
+        ("A", "Vent fan — exhaust",  "5A",  "12 AWG", "60 W",   "#C0392B"),
+        ("B", "Vent fan — intake",   "5A",  "12 AWG", "60 W",   "#E67E22"),
+        ("C1", "Corridor pumps",     "15A", "12 AWG", "90 W",   "#2980B9"),
+        ("C2", "Tray-drain P-04",    "10A", "12 AWG", "90 W",   "#2980B9"),
+        ("D", "Safelight",           "5A",  "12 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
         ("F", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),
     ]
@@ -2119,7 +2119,7 @@ def draw_sheet6():
     sbox(ax_c, 4.5, row_es, 3.0, 0.9,
          "PENETRATION BOX", "E-stop button", fc=C_ALUM)
     carrow(ax_c, 7.5, row_es + 0.45, 10.0)
-    ax_c.text(8.75, row_es + 0.65, "control 2×18 AWG", fontsize=6, color=C_CTRL,
+    ax_c.text(8.75, row_es + 0.65, "control 2×12 AWG", fontsize=6, color=C_CTRL,
               ha="center", **FONT)
     sbox(ax_c, 10.0, row_es, 3.2, 0.9,
          "BATTERY CONTACTOR", "ML-RBS · in battery + feed", fc="#F6D6D2", tc=C_ESTOP)
@@ -2312,9 +2312,9 @@ def draw_sheet7():
     txt(BUS_X0 + 6, BUS_Y + 20, "BLUE SEA 5026 FUSE BLOCK  (+ bus)", fs=6.4, ha="left", w="bold")
     txt(BUS_X1, NEG_Y - 20, "NEGATIVE BUS  (− return)", fs=6.4, ha="right")
     circuits = [
-        ("A", "5A", "16", "EXHAUST FAN", "M"), ("B", "5A", "16", "INTAKE FAN", "M"),
-        ("C1", "15A", "14", "CORRIDOR PUMPS", "M"), ("C2", "10A", "16", "TRAY DRAIN P-04", "M"),
-        ("D", "5A", "18", "SAFELIGHT", "L"),
+        ("A", "5A", "12", "EXHAUST FAN", "M"), ("B", "5A", "12", "INTAKE FAN", "M"),
+        ("C1", "15A", "12", "CORRIDOR PUMPS", "M"), ("C2", "10A", "12", "TRAY DRAIN P-04", "M"),
+        ("D", "5A", "12", "SAFELIGHT", "L"),
         ("E", "40A", "10", "EVAP COOLER", "INV"),
         ("F", "15A", "12", "WHITE LED", "L"),
     ]

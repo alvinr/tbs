@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,930 | $8,265 |
-| 6. Electrical — power, circuits, wiring | $3,421 | $3,507 |
+| 6. Electrical — power, circuits, wiring | $3,389 | $3,475 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,135 | $3,037 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,674** | **~$36,461** |
+| **TOTAL (base build + 50-print run)** | **~$27,642** | **~$36,429** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -135,16 +135,10 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
-| [12 AWG tinned hook-up wire, black — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
-| [12 AWG tinned hook-up wire, red — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
+| [12 AWG tinned hook-up wire, black — 100ft (ALL 12V DC distribution)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 3 spool | Waytek Wire | electrical | $39 |
+| [12 AWG tinned hook-up wire, red — 100ft (ALL 12V DC distribution)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 3 spool | Waytek Wire | electrical | $39 |
 | [14 AWG duplex marine wire](https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2) (MCB14-2) | 25 ft | Waytek Wire | water | $17 |
-| [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
-| [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
 | [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B0GYFNXM9Z) (B0GYFNXM9Z) | 1 ea | Amazon | ventilation | $26 |
-| [16 AWG tinned hook-up wire, black — 100ft (Circuits A/B + branches)](https://www.waytekwire.com/product/wrt16-0-hook-up-wire-tinned-copper) (WRT16-0) | 1 spool | Waytek Wire | electrical | $16 |
-| [16 AWG tinned hook-up wire, red — 100ft (Circuits A/B + branches)](https://www.waytekwire.com/product/wrt16-2-hook-up-wire-tinned-copper) (WRT16-2) | 1 spool | Waytek Wire | electrical | $16 |
-| [18 AWG tinned hook-up wire, black — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-0-hook-up-wire-tinned-copper) (WQT18-0) | 1 spool | Waytek Wire | electrical | $12 |
-| [18 AWG tinned hook-up wire, red — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-2-hook-up-wire-tinned-copper) (WQT18-2) | 1 spool | Waytek Wire | electrical | $12 |
 | [2/0 AWG battery cable, 3ft (battery–fuse–busbar)](https://www.amazon.com/dp/B0B3HD7CWP) (B0B3HD7CWP) | 1 lot | Amazon | electrical | $26 |
 | [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
 | [4 AWG ground wire, green/yellow, 20ft](https://www.automationdirect.com/adc/shopping/catalog/bulk_wire_-a-_cable/single_conductor_wire_-a-_cable/mtw4gyl-1) (MTW4GYL-1) | 1 lot | AutomationDirect | electrical | $52 |
@@ -180,7 +174,7 @@ indicative low–high estimates — get quotes before ordering.
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,091–$2,101** |
+| **electrical-distribution subtotal** | | | | **$2,059–$2,069** |
 
 ### electrical-power
 
@@ -526,8 +520,8 @@ indicative low–high estimates — get quotes before ordering.
 | MetalsDepot | 2 | steel-structural | $190–$258 |
 | Metals Depot | 2 | aluminum, steel-structural | $252 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
-| Waytek Wire | 15 | electrical-distribution, electrical-power | $229 |
 | Bearings Direct | 2 | bearings-motion | $201 |
+| Waytek Wire | 9 | electrical-distribution, electrical-power | $197 |
 | LED Profiles | 1 | electrical-distribution | $189 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |

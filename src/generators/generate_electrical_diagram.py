@@ -106,74 +106,74 @@ def draw_sheet1():
     CX = LX + LW / 2   # centerline
 
     # 1. Solar array  y=12.0–13.1
-    rbox(ax, LX, 12.0, LW, 1.1,
+    rbox(ax, LX, 12.44, LW, 1.1,
          "SOLAR ARRAY",
          "3 × 200W monocrystalline  |  12V nominal  |  Isc = 30A combined",
          fc=C_SOLAR, ts=9.5, ss=8.0)
 
     # 2. MPPT  y=10.3–11.2
-    rbox(ax, LX, 10.3, LW, 0.9,
+    rbox(ax, LX, 10.68, LW, 0.9,
          "MPPT CHARGE CONTROLLER",
          "Victron SmartSolar MPPT 100/50  |  Max PV: 100V OC / 50A charge",
          fc=C_ELEC_TINT, ts=9.5, ss=8.0)
     # 1b. PV array disconnect — load-break isolator between array and MPPT (NEC 690.13)
-    rbox(ax, LX + 1.2, 11.32, LW - 2.4, 0.46,
+    rbox(ax, LX + 1.2, 11.78, LW - 2.4, 0.46,
          "PV ARRAY DISCONNECT  (load-break)",
          "DC 50A / 150VDC  |  array → MPPT, on the EP interior (NEC 690.13)",
          fc=C_WARN, ts=8.3, ss=6.4)
-    varrow(ax, CX, 12.0, 11.78, col=C_SOLAR)
-    wlabel(ax, CX + 0.18, 11.92, "10 AWG PV  |  via power panel", size=6.8)
+    varrow(ax, CX, 12.44, 12.24, col=C_SOLAR)
+    wlabel(ax, CX + 0.18, 12.34, "10 AWG PV  |  via power panel", size=6.8)
 
     # 3. Battery bank  y=8.4–9.5
-    rbox(ax, LX, 8.4, LW, 1.1,
+    rbox(ax, LX, 8.76, LW, 1.1,
          "BATTERY — 100Ah / 1,200Wh (standard, 1 pack)",
          "1× 100Ah 12V LiFePO4  |  busbar wired for a 2nd pack (plug-in → 200Ah / 2,400Wh)  |  100% DoD",
          fc=C_BATT_TINT, ts=9.5, ss=8.0)
     # 2b. MPPT charge-line fuse — protects the MPPT→battery conductor (6 AWG)
-    rbox(ax, LX + 1.2, 9.55, LW - 2.4, 0.42,
+    rbox(ax, LX + 1.2, 10.06, LW - 2.4, 0.42,
          "60A CHARGE-LINE FUSE  (MPPT → battery)",
          "Close to the battery  |  6 AWG charge conductor",
          fc=C_WARN, ts=8.3, ss=6.4)
-    varrow(ax, CX, 10.3, 9.97, col=C_CL)
-    wlabel(ax, CX + 0.18, 10.12, "6 AWG  |  Charge +", size=6.8)
+    varrow(ax, CX, 10.68, 10.48, col=C_CL)
+    wlabel(ax, CX + 0.18, 10.58, "6 AWG  |  Charge +", size=6.8)
 
     # Negative busbar (dashed, right side of column)
     nb_x = LX + LW - 0.35
-    ax.plot([nb_x, nb_x], [8.4, 5.6],
+    ax.plot([nb_x, nb_x], [8.76, 5.6],
             color=C_STEEL, lw=1.5, linestyle="--", zorder=3)
     wlabel(ax, nb_x + 0.12, 7.0, "NEG busbar  2/0 AWG", size=7.0)
 
     # 4. MRBF terminal fuse — on the battery (+) post, ≤180mm  y=7.82–8.29
     bx = LX + 1.2
     bw = LW - 2.4
-    rbox(ax, bx, 7.82, bw, 0.47,
+    rbox(ax, bx, 8.09, bw, 0.47,
          "200A MRBF TERMINAL FUSE",
          "Terminal-mount on battery (+) post, ≤180mm (ABYC E-11)",
          fc=C_WARN, ts=9.0, ss=6.8)
-    varrow(ax, CX, 8.4, 8.29, col=C_OUT)
-    wlabel(ax, CX + 0.18, 8.36, "2/0 AWG  |  Battery positive")
+    varrow(ax, CX, 8.76, 8.56, col=C_OUT)
+    wlabel(ax, CX + 0.18, 8.66, "2/0 AWG  |  Battery positive")
 
     # 4b. Remote battery switch (contactor) — tripped by the external E-stop  y=7.24–7.71
-    rbox(ax, bx, 7.24, bw, 0.47,
+    rbox(ax, bx, 7.42, bw, 0.47,
          "REMOTE BATTERY SWITCH  (contactor)",
          "Blue Sea ML-RBS 500A magnetic-latch  |  trips OFF on either E-stop (in/out)",
          fc=C_WARN, ts=9.0, ss=6.8)
-    varrow(ax, CX, 7.82, 7.71, col=C_OUT)
+    varrow(ax, CX, 8.09, 7.89, col=C_OUT)
 
     # 4c. Internal main disconnect switch — maintenance/service  y=6.66–7.13
-    rbox(ax, bx, 6.66, bw, 0.47,
+    rbox(ax, bx, 6.75, bw, 0.47,
          "MAIN DISCONNECT SWITCH  (internal)",
          "Blue Sea m-Series 300A manual isolator  |  maintenance / service",
          fc=C_WARN, ts=9.0, ss=6.8)
-    varrow(ax, CX, 7.24, 7.13, col=C_OUT)
+    varrow(ax, CX, 7.42, 7.22, col=C_OUT)
 
     # 5. Fuse block  y=5.4–6.55
     rbox(ax, LX, 5.4, LW, 1.15,
          "BLUE SEA 5026 FUSE BLOCK",
          "12-circuit ST-blade  |  Positive + negative busbars  |  In IP65 enclosure on the plywood",
          fc=C_WARN, ts=10.0, ss=8.0)
-    varrow(ax, CX, 6.66, 6.55, col=C_OUT)
-    wlabel(ax, CX + 0.18, 6.605, "2/0 AWG", size=6.8)
+    varrow(ax, CX, 6.75, 6.55, col=C_OUT)
+    wlabel(ax, CX + 0.18, 6.65, "2/0 AWG", size=6.8)
 
     # Ground symbol below fuse block
     gx = LX + 0.7
@@ -219,10 +219,10 @@ def draw_sheet1():
          "Red IP66 mushroom on power-panel face  →  trips contactor OFF (1 of 2)",
          fc=C_WARN, ts=9.0, ss=7.0)
     # low-current control loop: contactor (left chain) → external E-stop
-    ax.annotate("", xy=(SC_X, es_y + es_h / 2), xytext=(bx + bw, 7.47),
+    ax.annotate("", xy=(SC_X, es_y + es_h / 2), xytext=(bx + bw, 7.72),
                 arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
-    wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.18,
+    wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.52,
            "Control 2× 18 AWG  |  pinhole-wall gland", ha="center", size=7.0)
     # interior E-stop on the EP face — paralleled with the exterior one (kill from inside too).
     # Sits BELOW the distribution bus (y≈5.98) — the external E-stop is above it — so the bus runs
@@ -232,7 +232,7 @@ def draw_sheet1():
          "EMERGENCY CUT-OFF  (E-STOP) — interior EP",
          "Red IP65 mushroom on the EP face  →  also trips contactor OFF (2 of 2)",
          fc=C_WARN, ts=9.0, ss=7.0)
-    ax.annotate("", xy=(SC_X, ies_y + es_h / 2), xytext=(bx + bw, 7.20),
+    ax.annotate("", xy=(SC_X, ies_y + es_h / 2), xytext=(bx + bw, 7.50),
                 arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
     wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 6.42,
@@ -280,12 +280,12 @@ def draw_sheet1():
     # electrical-report.md §3.1.  Update all three when specs change.
     summary = [
         ("Battery capacity",    "100Ah × 12V = 1,200Wh  (standard, 1 pack; +2nd → 2,400Wh)"),
-        ("Energy per session",  "780 Wh (0.78 kWh)  — 3.0h continuous + pumps"),
-        ("Sessions per charge", "1.5 standard  (3.1 with the 2nd pack)"),
+        ("Energy per session",  "837 Wh (0.84 kWh)  — continuous fans/cooler + pumps"),
+        ("Sessions per charge", "1.4 standard  (2.9 with the 2nd pack)"),
         ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
-        ("Solar sessions/day",  "4.2 prints/day from solar alone"),
+        ("Solar sessions/day",  "3.9 prints/day from solar alone"),
         ("Shore recharge",      "~7h standard  (~14h with the 2nd pack)"),
-        ("Peak load",           "~492W simultaneous  (all circuits on)"),
+        ("Peak load",           "543W peak  (all circuits on, not simultaneous)"),
     ]
     for k, (param, val) in enumerate(summary):
         yk = ey + eh - 0.80 - k * 0.37
@@ -2212,14 +2212,24 @@ def draw_sheet7():
             ax.add_patch(R((x - 26, y - 13), 52, 26, fc="white", ec=LN, lw=1.6, zorder=5))
             ax.plot([x - 26, x + 26], [y, y], color=LN, lw=1.1, zorder=6)
             txt(x, y + 22, rating, fs=6.4, w="bold", c=RED)
-    def disconnect(x, y, label=""):                       # open-able isolator (vertical)
-        dot(x, y - 22); ax.plot([x, x - 18], [y - 22, y + 20], color=LN, lw=2.0, zorder=5); dot(x, y + 22)
-        if label:
-            txt(x - 28, y, label, fs=6, ha="right")
-    def contactor(x, y):                                  # NO power contact of K1 (vertical)
-        dot(x, y - 22); ax.plot([x, x - 18], [y - 22, y + 20], color=LN, lw=2.0, zorder=5); dot(x, y + 22)
-        ax.plot([x - 9, x - 9], [y - 4, y + 8], color=LN, lw=0.9, ls=(0, (2, 2)), zorder=5)  # actuation tie
-        txt(x - 30, y + 26, "K1", fs=6.3, ha="right", w="bold")
+    def disconnect(x, y, label="", vert=True):            # open-able isolator
+        if vert:                                          # terminals top/bottom, blade lifts up-left
+            dot(x, y - 22); ax.plot([x, x - 18], [y - 22, y + 20], color=LN, lw=2.0, zorder=5); dot(x, y + 22)
+            if label:
+                txt(x - 28, y, label, fs=6, ha="right")
+        else:                                             # terminals left/right, blade lifts up-right (matches the run)
+            dot(x - 22, y); ax.plot([x - 22, x + 14], [y, y + 14], color=LN, lw=2.0, zorder=5); dot(x + 22, y)
+            if label:
+                txt(x, y - 16, label, fs=6, ha="center", va="top")
+    def contactor(x, y, vert=True):                       # NO power contact of K1
+        if vert:
+            dot(x, y - 22); ax.plot([x, x - 18], [y - 22, y + 20], color=LN, lw=2.0, zorder=5); dot(x, y + 22)
+            ax.plot([x - 9, x - 9], [y - 4, y + 8], color=LN, lw=0.9, ls=(0, (2, 2)), zorder=5)  # actuation tie
+            txt(x - 30, y + 26, "K1", fs=6.3, ha="right", w="bold")
+        else:                                             # horizontal: terminals left/right, blade lifts up-right
+            dot(x - 22, y); ax.plot([x - 22, x + 14], [y, y + 14], color=LN, lw=2.0, zorder=5); dot(x + 22, y)
+            ax.plot([x - 4, x + 6], [y + 8, y + 8], color=LN, lw=0.9, ls=(0, (2, 2)), zorder=5)  # actuation tie
+            txt(x, y + 26, "K1", fs=6.3, ha="center", w="bold")
     def battery(x, y):
         yy = y + 34
         for w, lw in [(38, 1.2), (18, 3.2), (38, 1.2), (18, 3.2)]:
@@ -2269,9 +2279,9 @@ def draw_sheet7():
     PY = 700
     wire([(BX, PY), (610, PY)]); fuse(636, PY, "200A", vert=False)
     txt(636, PY + 40, "MRBF", fs=5.6, c="#666")
-    wire([(662, PY), (742, PY)]); contactor(768, PY)
-    wire([(794, PY), (874, PY)]); disconnect(900, PY, "MAIN")
-    wire([(926, PY), (1000, PY)]); dot(1000, PY)
+    wire([(662, PY), (746, PY)]); contactor(768, PY, vert=False)
+    wire([(790, PY), (878, PY)]); disconnect(900, PY, "MAIN", vert=False)
+    wire([(922, PY), (1000, PY)]); dot(1000, PY)
     wire([(1000, PY), (1000, 1150)])                        # rise to the positive bus
     # negative return
     wire([(BX, BY - 62), (BX, 250)]); dot(BX, 250)

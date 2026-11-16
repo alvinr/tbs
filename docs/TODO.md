@@ -49,6 +49,14 @@ The tray-drain pump P-04 moved to its own fuse (**C2**, 10A/16AWG), separate fro
 - [ ] **Refresh `interference-report.txt`** against the re-sent live construction model (the added C2 fuse re-pitches the blade stack again).
 - [ ] **Wash-procedure decision (separate, operating/water scope):** B′ only *enables* continuous flow-through; the Operating Manual §4.2 wash is still the fill-then-drain cycle. To adopt continuous washing, confirm with the **Water System Report** that P-04 (3.5 GPM) holds a stable tray level against P-01/P-02 (3.5 GPM), then rewrite §4.2 + the valve matrix (run C1 + C2 together). Not started.
 
+## 📐 electrical-sheet1 — ENERGY SUMMARY is hand-keyed (drifts) (2026-11-16)
+
+- [ ] The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.
+
+## 📐 electrical-sheet9 — corrugated-wall section drawn as a peak, not a flat bridge (2026-11-16)
+
+- [ ] On electrical-sheet9 (external power-panel box pieces + wall-securing detail) the container-wall **corrugation** is drawn as a sharp **peak/triangle**. Real ISO-container corrugation is closer to a **trapezoidal flat-topped bridge** (flat crest + sloped webs + flat valley), so the flange seats on a flat, not a point. Needs research for a better corrugation profile (trapezoid dims: crest width, pitch, depth, web angle for a standard 20ft corten side/end wall) and then update the section-drawing helper in `generate_electrical_diagram.py` (Sheet 9). Regenerate + re-check.
+
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 
 - [~] **Brush + holder — KEEP AS-IS for now (2026-08-24: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.

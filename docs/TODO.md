@@ -40,14 +40,11 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 ---
 
-## ⚡ Electrical — Circuit C split C1/C2 (B′); 3D re-send + wash-procedure decision pending (2026-11-16)
+## ⚡ Electrical — Circuit C split C1/C2 (B′): wash-procedure decision pending (2026-11-16)
 
-The tray-drain pump P-04 moved to its own fuse (**C2**, 10A/16AWG), separate from the corridor pumps (**C1**, 15A/14AWG), ganged by a single **2-pole (DPST) master pump switch** — so a supply pump + the drain can run concurrently (continuous-wash capable) with no fuse at 100%. The 2D / docs / parts / costing are committed (2026-11-16). The 3D fuse-block change was held back (`generate_electrical_model.py` is a routing-source file → interference gate; audit runs only against the live model):
+The B′ split is **fully built** — 2D/docs/parts/costing committed, and the 3D fuse stack (A,B,**C1,C2**,D,E,F, both to the 2-pole master switch) re-sent + pushed across electrical/overview/construction/water with the interference report refreshed (commit `6aed4016`). One decision remains:
 
-- [ ] **Edit `src/models/generate_electrical_model.py` to split Circuit C → C1/C2** (not yet committed). `FUSE_ORDER` `[A,B,C,D,E,F]` → `[A,B,C1,C2,D,E,F]` (7 fuses). In `CCT`: split `"C"` (water pumps) into `"C1"` (corridor pumps) + `"C2"` (tray drain P-04) — pick a distinct color or reuse the pump blue. `CCT_FUSE`: `"C":"15A"` → `"C1":"15A"` + `"C2":"10A"`. Update `_CCT_RUN`, `LOADS` (the P-04/C2 run is separate), and any `CCT["C"]`/`_multi_run("C"…)` functional reference. `FUSE STACK` label → 7 fuses `5/5/15/10/5/40/15 A`; docstring/comment counts 6→7. Represent the master switch as **2-pole**. Validate with `--save` (clean `electrical.rb`, fuses A,B,C1,C2,D,E,F).
-- [ ] **Re-send the 4 models** — `electrical`, `overview`, `construction`, `water` → `--send` → save → `push_sketchfab.py` → `manifest.py --update` → commit `.skp` + `dependencies.yml`.
-- [ ] **Refresh `interference-report.txt`** against the re-sent live construction model (the added C2 fuse re-pitches the blade stack again).
-- [ ] **Wash-procedure decision (separate, operating/water scope):** B′ only *enables* continuous flow-through; the Operating Manual §4.2 wash is still the fill-then-drain cycle. To adopt continuous washing, confirm with the **Water System Report** that P-04 (3.5 GPM) holds a stable tray level against P-01/P-02 (3.5 GPM), then rewrite §4.2 + the valve matrix (run C1 + C2 together). Not started.
+- [ ] **Wash-procedure decision (operating/water scope):** B′ only *enables* continuous flow-through; the Operating Manual §4.2 wash is still the fill-then-drain cycle. To adopt continuous washing, confirm with the **Water System Report** that P-04 (3.5 GPM) holds a stable tray level against P-01/P-02 (3.5 GPM), then rewrite §4.2 + the valve matrix (run C1 + C2 together). Not started.
 
 ## 📐 electrical-sheet1 — ENERGY SUMMARY is hand-keyed (drifts) (2026-11-16)
 

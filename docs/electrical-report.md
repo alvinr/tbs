@@ -87,7 +87,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 
 The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).
 
-The MPPT delivers up to 50 A to the battery, so its battery lead carries far more than the array side — a **dedicated 60 A fuse close to the battery** protects that conductor (the 200 A main fuse is far too large to protect a charge-controller lead), and the conductor is upsized to 6 AWG to match.
+The MPPT delivers up to 50A to the battery, so its battery lead carries far more than the array side — a **dedicated 60A fuse close to the battery** protects that conductor (the 200A main fuse is far too large to protect a charge-controller lead), and the conductor is upsized to 6 AWG to match.
 
 ### 5.2 Battery Bank
 | Parameter | Specification |
@@ -155,8 +155,8 @@ Sheet 6 gives the box arrangement, the cross-section through the corrugated wall
 ### 6.1 Two-Circuit Lighting Design
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Red 12V **COB** LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse / 18 AWG, no bump), dimmable, always available. (Two of the three ceiling runs carry a parallel white strip — see §6.2.)
-- **White light (Circuit F):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray (two parallel to the two drum-side red safelights at X=520 / 2270, plus one at the tray's X-center ~2454), plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.
+- **Safelight (Circuit D):** Red 12V **COB** LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse / 18 AWG, no bump), dimmable, always available.
+- **White light (Circuit F):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray, plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit F is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
 
@@ -164,7 +164,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Parameter | Specification |
 |-----------|--------------|
 | Type | 12V DC COB LED strip, 4000K neutral white (HitLights, 16.4 ft reels) |
-| Runs | 4 ceiling runs in aluminum channels + frosted diffusers — three ~2,162mm over the tray (X=600 / X=2350 parallel to the drum-side red safelights + one at the tray X-center ~2454) + one ~1,176mm over the IBC/plumbing corridor (over the plumbing panel) |
+| Runs | 4 ceiling runs in aluminum channels + frosted diffusers — three ~2,162mm over the tray (parallel to the drum-side red safelights + one at the tray center) + one over the IBC/plumbing corridor |
 | Power | ~106W (4.2 W/ft × ~25 ft) → ~8.8A |
 | Luminous output | 426 lm/ft → ~10,700 lm total |
 | Illuminance | **~330 lux maintained** work-plane average (760 lux lumens-to-area × CU ≈ 0.55 × LLF ≈ 0.80 — see below) |
@@ -173,7 +173,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Circuit | G (15A fuse, 12 AWG) — 8.8A draw (rewired from 10A / 14 AWG for the 3rd tray run) |
 | Approximate cost | ~$84 (2 reels) + ~$81 (3× 8 ft channel) + ~$15 connectors/dimmer |
 
-The ~10,700 lumens over the ~14 m² floor give a **~330 lux maintained work-plane average** (the table's CU/LLF deration). The **matte-black interior** (0% sheen, [Container report](container-report.md)) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the **250–300 lux workshop target**. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit F to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is **rewired 14 AWG/10A → 12 AWG/15A** (its own 12 AWG spool; 15A fuses already stocked for Circuit C). True 12V-native, wired via the ceiling trunking.
+The ~10,700 lumens over the ~14 m² floor give a **~330 lux maintained work-plane average** (the table's CU/LLF deration). The **matte-black interior** (0% sheen, [Container report](container-report.md)) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the **250–300 lux workshop target**. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit F to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is **r14 AWG/10A → 12 AWG/15A** (its own 12 AWG spool; 15A fuses already stocked for Circuit C).
 
 ### 6.3 Pull-Cord Switches
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
@@ -188,12 +188,12 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 | Wire | Inline on respective circuit, between fuse block and load |
 | Approximate cost | ~$8 each, ~$16 total |
 
-The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
+The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 60 inches above the walkway deck — reachable without stretching.
 
 ## 7. Wiring Specification
 
 ### 7.1 Main Panel (Plywood Backboard + IP65 Enclosure)
-An **18mm plywood backing panel** (~700 × 2,000mm) on the interior pinhole-wall face is the mounting surface for every component — cut from the chem-shelf UV-white sheet (sealed, wipeable; [Plywood Cut Sheets](plywood-cut-sheets.md) sheet D), not bought separately. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small **IP65 enclosure** bolted to the plywood (splash/dust seal from the water system); the MPPT, main disconnect, battery, and inverter mount on the plywood outside it. It carries:
+An **18mm plywood backing panel** on the interior pinhole-wall face is the mounting surface for every component — cut from the chem-shelf UV-white sheet (sealed, wipeable; [Plywood Cut Sheets](plywood-cut-sheets.md) sheet D), not bought separately. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small **IP65 enclosure** bolted to the plywood (splash/dust seal from the water system); the MPPT, main disconnect, battery, and inverter mount on the plywood outside it. It carries:
 
 - Victron MPPT controller — on its own forward sub-panel, clear of the fuse-stack risers
 - **PV array disconnect** — DC load-break isolator in the PV path (array → MPPT), wired in-line on the panel (NEC 690.13)
@@ -236,7 +236,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated. (The cooler is **120V AC** and terminates at the panel's GFCI-fed weatherproof outlet, **not** a DT connector — see Circuit E below and §7.6.)
-- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate the ~56° transport swing about the pivot (with slack) without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
+- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
 - **Circuit E (evaporative cooler, via inverter):** The cooler is a 120V AC unit operating outside the container during sessions. The **DC side** is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The **AC side** runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
 - **Circuit C (water pumps P-01–P-05):** The single 14 AWG Circuit-C feed is switched at a **master pump switch on the Electrical Panel (EP)** — one IP-rated manual cutoff for the whole pump circuit, upstream of everything — then runs along the ceiling trunking to a **12V DC distribution block** (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, which feeds each corridor pump directly via a short **16 AWG** branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05, P-03); P-04 (tray drain) taps the switched feed on the Pinhole-Wall filter skid. There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open, and the pumps are sequenced by opening the relevant valves (**one at a time**; simultaneous operation is not intended). The 15A circuit fuse protects the 14 AWG feed and covers a single pump (90W / <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A) with margin. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
 

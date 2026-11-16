@@ -1,6 +1,8 @@
-routing-sources-sha: b583fc67bff1
+routing-sources-sha: 2d289164fd30
 model=construction  pipes=1442 solids=1199  interferences=0
-pipe-on-pipe crossings=0
+pipe-on-pipe crossings=1
+  PIPE  Cct C feed (EP master sw -> pinhole-wall cei
+    x  PIPE  Circuit D                                     cross (1940,65,1260)  centerline 0mm < 7mm
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──
 grip-bolt orientation/grip flags: 24  (0 OPEN, 24 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)

@@ -472,7 +472,7 @@ def light_seal():
 # ── Lighting & wiring (trunking, LEDs, safelights, switches, conduit) ─────────
 
 def lighting_wiring():
-    """Ceiling cable trunking + white LED strips (Cct G) + red safelight strips
+    """Ceiling cable trunking + white LED strips (Cct F) + red safelight strips
     (Cct D) + pull-cord switches + conduit drops.
 
     Trunking runs the pinhole-wall ceiling line (Yd≈0, outside the optical
@@ -488,7 +488,7 @@ def lighting_wiring():
     import generate_electrical_model as em
     parts.append(em.cable_trunking())
 
-    # White LED strips (Cct G) + red safelight strips (Cct D) + the two ceiling pull-cord switches.
+    # White LED strips (Cct F) + red safelight strips (Cct D) + the two ceiling pull-cord switches.
     # SINGLE OWNER — em.light_fixtures() (from the shared LED_PANELS/SAFE_XS/PULL_SW_* data), so the
     # fixtures can't drift between overview + electrical.
     parts.append(em.light_fixtures())
@@ -498,7 +498,7 @@ def lighting_wiring():
     # its own coloured fuse and routes to its load. D (safelight) + G (white LED) are the ceiling-lighting
     # circuits; A/B (fans) are on the Fan-Wiring tag, C (pumps) via the master switch + pw.panel_power,
     # E (cooler/inverter) on the Electrical tag.
-    parts.append(em._multi_run("G", em.LED_ENDS))      # 3× white LED
+    parts.append(em._multi_run("F", em.LED_ENDS))      # 3× white LED
     parts.append(em._multi_run("D", em.SAFE_ENDS))     # 3× safelight
     # Cct C: connect fuse C DOWN to the master switch (the switched feed onward to the pumps is drawn by
     # pw.panel_power), so fuse C isn't left unconnected. SINGLE OWNER — shared with the electrical model.

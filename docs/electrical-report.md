@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This report specifies the complete electrical and environmental control systems for TBS-001: solar power architecture, battery bank, light trap vestibule, cooling, ventilation, interior lighting, and wiring. All systems run at 12V DC from a solar array with optional shore power backup, enabling fully off-grid operation.
+This report specifies the complete electrical and environmental control systems for TBS-001: solar power architecture, battery bank, cooling, ventilation, interior lighting, and wiring. All systems run at 12V DC from a solar array with optional shore power backup, enabling fully off-grid operation.
 
 See also: [Operating Manual](operating-manual.md) for step-by-step operational procedures.
 

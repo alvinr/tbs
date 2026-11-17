@@ -45,7 +45,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 - [ ] processing-tray-and-spray-bar.md
 
 ### Construction — Electrical & Ventilation
-- [ ] electrical-report.md
+- [x] electrical-report.md  — confirmed complete (owner). §8 de-duplicated (hand-keyed parts table → filtered-BOM link + injected cost summary); inverter DC protection backfilled (§7.6 rule 4); weather/lightning pre-step + corner-casting earth note added; prose already terse.
 - [ ] electrical-safety-report.md
 - [ ] ventilation-report.md
 

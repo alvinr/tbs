@@ -251,7 +251,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 
 **Grounding:** the protective ground is **equipotential bonding, not a site earth electrode**. The container steel shell, the inverter and cooler chassis, the AC equipment-ground, and the DC negative are all **permanently bonded to one point** at the main panel (4 AWG green/yellow to the battery-negative busbar). This bonding is what clears a fault — any positive-to-metal or AC-line-to-metal fault becomes a low-impedance short back to that point that opens the fuse or trips the GFCI — and it works **on any surface**, so the system does not depend on a ground driven into the earth (the same way an RV, boat, or portable generator is grounded; see §7.6).
 
-An **8-foot copper earth stake is optional, not a requirement** — its one practical benefit is **static dissipation**: a sun-baked steel box in a dry desert can build a static charge, and bleeding it to earth cuts nuisance zaps and settles less dust on drying prints. It is **not** lightning protection (a single rod is no defense against a strike — the real mitigation is simply not occupying the container during a storm), and it is **not** part of the electrical-safety design (that's the bonding above). So: **on soil**, drive it beside the power panel and clamp it to the main-panel earth terminal if you want the static benefit; **on a hard surface (concrete, asphalt), or any deployment where static isn't a concern, skip it entirely** — the bonding provides the full fault protection regardless. If a convenient earth is handy (building ground, grounded metal water pipe), bond to that instead. In fact, when the container is set **directly on bare soil** its own steel corner castings are in contact with earth and bleed static on their own — so even on soil the stake is only worth driving if the container is leveled up on **timber sleepers** ([Operating Manual §1.2.2](operating-manual.md)), which insulate the castings from the ground. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.
+An **8-foot copper earth stake is optional, not a requirement** — its one practical benefit is **static dissipation**: a sun-baked steel box in a dry desert can build a static charge, and bleeding it to earth cuts nuisance zaps and settles less dust on drying prints. It is **not** lightning protection, and it is **not** part of the electrical-safety design (that's the bonding above). So: **on soil**, drive it beside the power panel and clamp it to the main-panel earth terminal if you want the static benefit; **on a hard surface (concrete, asphalt), or any deployment where static isn't a concern, skip it entirely** — the bonding provides the full fault protection regardless. If a convenient earth is handy (building ground, grounded metal water pipe), bond to that instead. When the container is set **directly on bare soil** its own steel corner castings are in contact with earth and bleed static on their own — so even on soil the stake is only worth driving if the container is leveled up on **timber sleepers** ([Operating Manual §1.2.2](operating-manual.md)), which insulate the castings from the ground. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.
 
 **Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F; the pump circuit is dual-fused **C1**/**C2**) plus device description. Re-label after any wiring change.
 
@@ -295,13 +295,13 @@ isolation/GFCI/bonding design in §7.6. The following protective measures are pa
   is at the contactor's manual lever. A low-current 2 × 12 AWG control loop (both buttons in
   parallel) runs to the contactor, the exterior leg penetrating the pinhole wall through a
   sealed gland.
-- **Battery main disconnect switch** (Blue Sea m-Series 300 A) between the contactor and
+- **Battery main disconnect switch** (Blue Sea m-Series 300A) between the contactor and
   the distribution busbar — a manual isolator for maintenance / service
-  de-energization (the 200 A fuse is overcurrent protection, not a switch).
-- **PV array disconnect** — a DC load-break isolator (50 A / 150 VDC) on the array→MPPT
+  de-energization (the 200A fuse is overcurrent protection, not a switch).
+- **PV array disconnect** — a DC load-break isolator (50A / 150 VDC) on the array→MPPT
   line at the power panel isolates the *charge* side (which the battery-side E-stops do not
   reach) for service or fault; MC4 connectors are not load-break rated (NEC 690.13).
-- **MPPT charge-line fuse** — a 60 A ANL/MIDI fuse on the MPPT→battery lead (6 AWG) close to
+- **MPPT charge-line fuse** — a 60A ANL/MIDI fuse on the MPPT→battery lead (6 AWG) close to
   the battery protects the charge conductor, which the 200 A main fuse is too large to cover.
 - **Main fuse at the battery terminal** — a terminal-mount MRBF fuse on the battery + post
   (≤180 mm, per ABYC E-11) protects the main cable along its whole length.
@@ -335,17 +335,17 @@ code-anchored rules:
    requires GFCI protection ([NEC 210.8](https://iaeimagazine.org/issue/january2020/nec-requirements-for-gfci-protection-section-210-8/)).
    The recommended inverter has a **built-in GFCI outlet**; the panel's cooler outlet is fed
    from it, protecting the operator handling a wet cooler.
-3. **Equipotential bonding / effective fault path.** The **container shell, inverter chassis,
-   cooler chassis, AC equipment-grounding conductor, and DC negative** all tie to the single
+3. **Equipotential bonding / effective fault path.** The container shell, inverter chassis,
+   cooler chassis, AC equipment-grounding conductor, and DC negative all tie to the single
    ground point (§7.3/§7.5). Any AC line-to-metal fault then has a low-impedance return that
    trips the GFCI/breaker instantly, so the **steel shell can never become energized**
    ([NEC 250.110 / Art. 250 Part V](https://www.electricallicenserenewal.com/Electrical-Continuing-Education-Courses/NEC-Content.php?sectionID=870)).
-4. **DC-side protection + positive isolation.** The inverter's 12 V feed is fused at the
-   battery (40 A, 10 AWG, ~1 m) with a **dedicated DC disconnect**, so the entire AC
+4. **DC-side protection + positive isolation.** The inverter's 12V feed is fused at the
+   battery (40A, 10 AWG, ~1 m) with a **dedicated DC disconnect**, so the entire AC
    subsystem is hard-isolated whenever the cooler is not running — which is most of the time.
    The external E-stop (§7.5) also kills it with everything else.
 5. **Galvanic isolation vs. bonding — by design.** A transformer pure-sine inverter already
-   isolates the AC live/neutral conductors from the 12 V battery side; rules 1–3 deliberately
+   isolates the AC live/neutral conductors from the 12V battery side; rules 1–3 deliberately
    bond only the **safety grounds** to one point. Isolation (of the current-carrying
    conductors) and single-point bonding (of the grounds) are complementary, not in conflict.
 

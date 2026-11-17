@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,930 | $8,265 |
-| 6. Electrical — power, circuits, wiring | $3,389 | $3,475 |
+| 6. Electrical — power, circuits, wiring | $3,429 | $3,515 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,135 | $3,037 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,642** | **~$36,429** |
+| **TOTAL (base build + 50-print run)** | **~$27,682** | **~$36,469** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -160,6 +160,7 @@ indicative low–high estimates — get quotes before ordering.
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit F, ×2)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) (L2712V-40D3-1630-U) | 2 reel | HitLights | electrical | $75–$85 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
+| Inverter DC protection — 40A ANL fuse + holder + dedicated DC disconnect (Circuit-E inverter feed) | 1 set | Blue Sea | electrical | $40 |
 | [IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)](https://www.polycase.com/zh-080804) (ZH-080804) | 1 ea | Polycase | electrical | $47 |
 | [LED Profiles 981 slimline channel + diffuser, 8 ft (×7)](https://ledprofiles.com/collections/all-led-channels/products/slimline-ultra-low-profile-led-channel-981-series) (981ASL) | 7 8ft length | LED Profiles | electrical | $189 |
 | [LED strip connectors + 12V PWM dimmers (Circuits G + D)](https://www.superbrightleds.com/ldk-8a-12-24-volt-dc-single-color-led-dimmer) (LDK-8A) | 1 lot | Super Bright LEDs | electrical | $32 |
@@ -174,7 +175,7 @@ indicative low–high estimates — get quotes before ordering.
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,059–$2,069** |
+| **electrical-distribution subtotal** | | | | **$2,099–$2,109** |
 
 ### electrical-power
 
@@ -533,13 +534,13 @@ indicative low–high estimates — get quotes before ordering.
 | Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Lenox Laser | 1 | optics | $60–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
+| Blue Sea | 3 | electrical-distribution | $101 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
 | Uline / cargo-securing supplier | 1 | seals-gaskets | $40–$80 |
 | Pac-Nor Anodizing | 1 | adhesives-finishes | $40–$80 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | B&H Photo | 1 | fabric-textile | $69 |
-| Blue Sea | 2 | electrical-distribution | $61 |
 | Canal Rubber | 2 | seals-gaskets | $37–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $27–$59 |

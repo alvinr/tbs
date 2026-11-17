@@ -188,6 +188,45 @@ function isFooterRow(row) {
   }
   return /total/i.test(c[0].textContent);   // "...total" / "...subtotal" / "TOTAL"
 }
+// System deep-link filter: a `?system=<name>` query param (how a report's parts section links into
+// the Master Shopping List) shows only the BOM rows whose "Systems" column contains that system, and
+// collapses the type sections it empties — so the reader lands on just that system's slice of the
+// by-type BOM. "Show all" drops the param. Tables without a Systems column (summary, suppliers) are
+// left untouched. Runs on every instant-loading navigation, so it also RESTORES on a param-less page.
+function sysTokens(s) { return s.toLowerCase().split(/[^a-z0-9-]+/).filter(Boolean); }
+function applySystemFilter() {
+  var sys = (new URLSearchParams(location.search).get("system") || "").trim().toLowerCase();
+  var old = document.getElementById("system-filter-banner");
+  if (old) old.remove();
+  document.querySelectorAll("article table:not([class])").forEach(function (table) {
+    var head = table.tHead && table.tHead.rows[0], tbody = table.tBodies[0], sysCol = -1;
+    if (head) Array.prototype.forEach.call(head.cells, function (c, i) {
+      if (c.textContent.trim().toLowerCase() === "systems") sysCol = i;
+    });
+    if (sysCol < 0 || !tbody) return;   // not a by-system BOM table — leave it alone
+    var shown = 0;
+    Array.prototype.forEach.call(tbody.rows, function (row) {
+      var cell = row.cells[sysCol];
+      var show = !sys || (cell && sysTokens(cell.textContent).indexOf(sys) >= 0);
+      row.style.display = show ? "" : "none";
+      if (show) shown++;
+    });
+    var collapse = !!sys && shown === 0;
+    table.style.display = collapse ? "none" : "";
+    var heading = table.previousElementSibling;   // the ### type heading for this section
+    if (heading && /^H[1-6]$/.test(heading.tagName)) heading.style.display = collapse ? "none" : "";
+  });
+  if (sys) {
+    var banner = document.createElement("div");
+    banner.id = "system-filter-banner";
+    banner.style.cssText = "margin:0 0 1rem;padding:.5rem .75rem;border-left:4px solid var(--md-accent-fg-color,#2960A0);" +
+      "background:var(--md-code-bg-color,#f5f5f5);border-radius:.1rem;font-size:.8rem;";
+    banner.innerHTML = "Filtered to <strong>" + sys.replace(/[^a-z0-9-]/g, "") +
+      "</strong> items only. <a href=\"" + location.pathname + "\">Show all →</a>";
+    var article = document.querySelector("article");
+    if (article) article.insertBefore(banner, article.firstChild);
+  }
+}
 document$.subscribe(function () {
   document.querySelectorAll("article table:not([class])").forEach(function (table) {
     var tbody = table.tBodies[0];
@@ -198,6 +237,7 @@ document$.subscribe(function () {
     }
     if (!table.dataset.sortInit) { table.dataset.sortInit = "1"; new Tablesort(table); }
   });
+  applySystemFilter();
 });
 JS
 

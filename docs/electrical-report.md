@@ -357,61 +357,33 @@ disconnect is opened. The [Electrical Safety Report](electrical-safety-report.md
 the full hazard assessment including this AC branch.
 
 ## 8. Parts List
-All US/SoCal sources. Prices approximate as of 2026.
 
-| Item | Spec | Source | Est. cost |
-|------|------|--------|-----------|
-| Solar panels | 200W mono × 3 | Renogy (renogy.com), Amazon | ~$400 |
-| MPPT charge controller | Victron SmartSolar MPPT 100/50 | altE Store (altestore.com) | ~$200 |
-| LiFePO4 battery × 1 (standard) | 100Ah 12V (Renogy Core RBT12100LFP-US) | offgridstores.com / renogy.com | $306 |
-| LiFePO4 battery — 2nd pack (optional, plug-in) | 100Ah 12V, parallel onto the busbar (no rewiring) + its **own MRBF terminal fuse** | same | +$375 |
-| Shore backup charger | Victron Blue Smart IP65 12/15 | altE Store | ~$150 |
-| Fuse block | Blue Sea 5026 ST Blade 12-circuit | West Marine (Torrance CA) / Amazon | ~$55 |
-| 200A main fuse (terminal-mount) | Blue Sea MRBF on the battery + post (≤180mm, ABYC E-11) | Amazon | ~$25 |
-| Battery main disconnect switch | Blue Sea m-Series 300A — manual isolator, contactor to busbar | West Marine (Torrance CA) / Amazon | ~$40 |
-| Remote battery switch (contactor) | Blue Sea ML-RBS 500A magnetic-latch — in battery + feed, tripped by the external E-stop | West Marine (Torrance CA) / Amazon | ~$150 |
-| External emergency cut-off (E-stop) | Red mushroom switch (uxcell a19061100ux1510) in a **weatherproof control-station box** (uxcell B07GN5P3NF, IP65, 78×71×64mm — ample for rain; upgrade to a gasketed IP66 box only if washdown-rated) + 2× 12 AWG control loop | [Harfington](https://www.harfington.com/products/p-1071142) / Amazon | ~$21 |
-| Interior emergency cut-off (E-stop) | Red mushroom switch (uxcell a19061100ux1510), EP-face mount — paralleled to the exterior E-stop → ML-RBS trip | [Harfington](https://www.harfington.com/products/p-1071142) / Amazon | ~$13 |
-| PV array disconnect | DC load-break isolator, 50A / 150VDC, panel-mount (array → MPPT; NEC 690.13) | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$40 |
-| MPPT charge-line fuse | 60A ANL/MIDI + holder on the MPPT→battery lead; 6 AWG charge conductor | Blue Sea / Amazon | ~$15 |
-| Shore-charger output fuse | 20A inline on the charger DC output lead | Amazon | ~$5 |
-| Battery terminal covers (pair) | Insulating boots over + / − posts/busbar | Amazon | ~$10 |
-| Sealed wet-zone connectors | Deutsch DT / adhesive-lined heat-shrink, pump circuits | Waytek Wire | ~$25 |
-| Master pump switch (Circuit C) | 1× **2-pole (DPST)** IP67 sealed rocker/disconnect, 12V ≥10A/pole — single throw kills both pump fuses (pole 1 → C1 corridor, pole 2 → C2 tray-drain), **mounted on the EP** | Amazon / Waytek Wire | ~$13 |
-| Pump distribution block | 12V DC positive bus + negative bus (6-way), panel-mount on the rear of the Corridor Plumbing Panel, fed from the EP master switch | Blue Sea / Amazon | ~$15 |
-| Dielectric grease | Marine-grade — chemistry-vapor terminal protection | Amazon | ~$10 |
-| Tinned marine wire (wet-zone pump run) | 14 AWG duplex marine, ~25ft | Waytek Wire | ~$17 |
-| Cable grommets / glands | Steel-shell penetrations (chafe protection) | McMaster-Carr | ~$15 |
-| Equipotential bonding kit | 6 AWG green/yellow + ring lugs — IBC frame / walkway / tray-metal to battery-negative | Amazon | ~$20 |
-| Distribution hook-up wire — **single 12 AWG gauge** | 12 AWG tinned, 6× 100ft spools (3 red + 3 black) — all load circuits standardized on one gauge for install simplicity (over-rated for the low-current ones) | Waytek Wire | ~$78 |
-| Anderson Powerpole connectors | 30A kit, 50 pairs | Powerwerx (powerwerx.com) | ~$40 |
-| Deutsch DT connectors | DT 2-pin, 10 sets | Waytek Wire | ~$30 |
-| Cable trunking | 40 × 25mm PVC, 5m lengths × 4 | Lowe's / McMaster-Carr | ~$40 |
-| Corrugated conduit | Gray, 10mm ID, 10m | McMaster-Carr 7828K48 | ~$30 |
-| EP plywood backing panel | 18mm UV-white, ~700×2,000mm — cut from the chem-shelf sheet ([Plywood Cut Sheets](plywood-cut-sheets.md), sheet D) | shared, no separate sheet | $0 |
-| IP65 enclosure | ~200×220×140mm (fuse block + busbars) | Polycase / Amazon | ~$60 |
-| Brady label kit | M210 with wire label cartridge | McMaster-Carr / Amazon | ~$80 |
-| NEMA 5-15R inlet | Weatherproof outlet box | Leviton / Amazon | ~$25 |
-| Cooler inverter | Victron Phoenix 12/375, **GFCI version** (12V→120V pure-sine, Circuit E) | [Victron](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) / Amazon | ~$210 |
-| Inverter DC protection | 40A ANL fuse + holder + DC disconnect switch (inverter feed) | Blue Sea / Amazon | ~$40 |
-| Panel AC outlet (Circuit E) | GFCI-fed weatherproof NEMA 5-15R + in-use (bubble) cover | Leviton / Amazon | ~$25 |
-| Cooler power cord | 1.5m outdoor SJOOW, NEMA 5-15P each end | Amazon | ~$20 |
-| Copper ground stake *(optional — soil sites only; skip on hard surfaces)* | 8ft × 5/8" diameter | Home Depot | ~$20 |
-| 4 AWG ground wire | Green/yellow, 3m | AutoZone / Amazon | ~$15 |
-| Solar mount + PV cabling + power-panel | Ground tilt frame (30°), MC4 PV cable + bulkheads, flush-panel plate + gasket + bolts, 2/0 AWG battery cable | various | ~$195 |
-| Evaporative cooler | Hessaire MC18M, 120V AC, 1,300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 16 lb | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
-| Shade canopy | 70% shade cloth, 20 × 10ft | Amazon / Farm supply | ~$30 |
-| Canopy frame | 1" EMT conduit + fittings | Home Depot | ~$131 |
-| Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
-| [12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) + **6× LED Profiles 981 channel/diffuser (white + red)** + connectors/PWM dimmers | white: 3× 2.16m tray + 1× 1.18m corridor (~10,700 lm → ~330 lux maintained), 106W/8.8A (12 AWG/15A), dimmable, true 12V | HitLights + LED Profiles | ~$84 strip + ~$162 channel + ~$15 |
-| [Red 12V COB LED strip, 5m reel (STN-B-BRED-O12A-08F5M-12V)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) | Circuit-D safelight — 40W/reel cut into 3 ceiling runs + drum (~40W/3.3A), COB 620nm, dimmable, cyanotype-safe, IP20 | Super Bright LEDs | ~$90 |
-| Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,432<!-- END costing:elec-system-total -->** |
-| **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total -->** |
-| **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,930<!-- END costing:elec-grand-total -->** |
+The full electrical **Bill of Materials** — every item, quantity, current price, and supplier — lives in
+the single-source parts registry, rendered as the
+[**Master Shopping List, filtered to the electrical system**](master-shopping-list.md?system=electrical).
+That view is **sortable** (click any column header — e.g. *Est. cost* or *Supplier*) and is always current,
+so this report no longer restates the line items (the old hand-keyed table drifted — the inverter DC
+protection, for one, had been listed here but never reached the registry). The powered cooling/ventilation
+hardware the electrical system feeds — evaporative cooler, 12V→120V inverter, fans, shade canopy — is the
+[ventilation slice](master-shopping-list.md?system=ventilation).
 
-*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (the `electrical-power` + `electrical-distribution` subtotals, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
+**Cost summary** (generated from the cost model):
+
+| Subtotal | Est. cost |
+|----------|-----------|
+| **Electrical system total** (standard 1-pack build) | **~<!-- BEGIN costing:elec-system-total -->$3,472<!-- END costing:elec-system-total -->** |
+| **Shade canopy** | **~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total -->** |
+| **Cooling** (evap cooler + inverter + external cord) | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
+| **Systems grand total** | **~<!-- BEGIN costing:elec-grand-total -->$3,970<!-- END costing:elec-grand-total -->** |
+
+*The electrical system total is the **standard 1-pack build** and equals the
+[Master Shopping List §6](master-shopping-list.md?system=electrical) electrical subtotal (the authoritative
+electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). The total carries ~$450 of
+circuit-protection / wet-zone-sealing hardware per the [Electrical Safety Report](electrical-safety-report.md)
+§5 (interior **+** exterior emergency cut-offs, battery contactor, disconnect switch, terminal-mount fuse,
+PV array disconnect, MPPT charge-line + shore-charger fuses, **inverter DC fuse + disconnect**, sealed
+connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (master pump switch +
+distribution block).*
 
 ## 9. Maintenance
 

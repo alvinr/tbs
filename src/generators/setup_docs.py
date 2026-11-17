@@ -313,7 +313,7 @@ markdown_extensions:
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js
-  - javascripts/tablesort.js?v=3
+  - javascripts/tablesort.js?v=4
 
 nav:
   - Home: index.md

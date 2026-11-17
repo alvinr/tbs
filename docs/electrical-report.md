@@ -358,12 +358,10 @@ the full hazard assessment including this AC branch.
 
 ## 8. Parts List
 
-The full electrical **Bill of Materials** — every item, quantity, current price, and supplier — lives in
+The full electrical **Bill of Materials** — lives in
 the single-source parts registry, rendered as the
 [**Master Shopping List, filtered to the electrical system**](master-shopping-list.md?system=electrical).
-That view is **sortable** (click any column header — e.g. *Est. cost* or *Supplier*) and is always current,
-so this report no longer restates the line items (the old hand-keyed table drifted — the inverter DC
-protection, for one, had been listed here but never reached the registry). The powered cooling/ventilation
+The powered cooling/ventilation
 hardware the electrical system feeds — evaporative cooler, 12V→120V inverter, fans, shade canopy — is the
 [ventilation slice](master-shopping-list.md?system=ventilation).
 

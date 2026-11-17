@@ -21,7 +21,7 @@ from matplotlib.patches import FancyBboxPatch
 import os
 from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS, FAN_DIAM
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path, LBL_BG
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
 from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WALL
@@ -2192,8 +2192,9 @@ def draw_sheet7():
                 solid_capstyle="round", solid_joinstyle="round")
     def dot(x, y, c=LN):
         ax.add_patch(mpatches.Circle((x, y), 6.5, fc=c, ec=c, zorder=6))
-    def txt(x, y, t, fs=7, ha="center", va="center", c=LN, w="normal"):
-        ax.text(x, y, t, ha=ha, va=va, fontsize=fs, color=c, zorder=8, fontweight=w, **FT)
+    def txt(x, y, t, fs=7, ha="center", va="center", c=LN, w="normal", lbl_bg=False):
+        extra = {"bbox": LBL_BG} if lbl_bg else {}
+        ax.text(x, y, t, ha=ha, va=va, fontsize=fs, color=c, zorder=8, fontweight=w, **extra, **FT)
     def box(x, y, w, h, label, sub="", fc="white", fs=7.5):
         ax.add_patch(mpatches.FancyBboxPatch((x - w / 2, y - h / 2), w, h,
                      boxstyle="round,pad=0,rounding_size=7", fc=fc, ec=LN, lw=1.6, zorder=4))
@@ -2312,18 +2313,20 @@ def draw_sheet7():
     txt(BUS_X0 + 6, BUS_Y + 20, "BLUE SEA 5026 FUSE BLOCK  (+ bus)", fs=6.4, ha="left", w="bold")
     txt(BUS_X1, NEG_Y - 20, "NEGATIVE BUS  (− return)", fs=6.4, ha="right")
     circuits = [
-        ("A", "5A", "12", "EXHAUST FAN", "M"), ("B", "5A", "12", "INTAKE FAN", "M"),
-        ("C1", "15A", "12", "CORRIDOR PUMPS", "M"), ("C2", "10A", "12", "TRAY DRAIN P-04", "M"),
+        ("A", "5A", "12", "EXHAUST\nFAN", "M"),
+        ("B", "5A", "12", "INTAKE\nFAN", "M"),
+        ("C1", "15A", "12", "CORRIDOR\nPUMPS", "M"),
+        ("C2", "10A", "12", "TRAY\nDRAIN\nP-04", "M"),
         ("D", "5A", "12", "SAFELIGHT", "L"),
-        ("E", "40A", "10", "EVAP COOLER", "INV"),
-        ("F", "15A", "12", "WHITE LED", "L"),
+        ("E", "40A", "10", "EVAP\nCOOLER", "INV"),
+        ("F", "15A", "12", "WHITE\nLED", "L"),
     ]
     xs = [1110, 1225, 1340, 1455, 1570, 1685, 1800]
     for (c, fu, awg, name, kind), x in zip(circuits, xs):
         dot(x, BUS_Y)
         wire([(x, BUS_Y), (x, 1090)]); fuse(x, 1064, fu)
-        txt(x, 1112, c, fs=9, w="bold", c=BLU)
-        wire([(x, 1038), (x, 690)])
+        txt(x+15, 1112, c, fs=9, w="bold", c=BLU)
+        wire([(x, 1038), (x, 640)])
         txt(x + 16, 950, f"{awg} AWG", fs=5.2, ha="left", c="#666")
         if kind == "M":
             motor(x, 640); nb = 613
@@ -2334,7 +2337,7 @@ def draw_sheet7():
             wire([(x, 678), (x, 617)])
         wire([(x, 640 if kind != "INV" else 590), (x, 640 if kind != "INV" else 590)])
         wire([(x, nb), (x, NEG_Y)]); dot(x, NEG_Y)
-        txt(x, 686 if kind != "INV" else 740, name, fs=5.4, va="bottom")
+        txt(x, 740, name, fs=5.4, va="bottom", lbl_bg=True)
 
     # ── legend of symbols ──
     lx, ly = 70, 150

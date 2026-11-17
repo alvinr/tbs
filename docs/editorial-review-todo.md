@@ -46,7 +46,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 
 ### Construction — Electrical & Ventilation
 - [x] electrical-report.md  — confirmed complete (owner). §8 de-duplicated (hand-keyed parts table → filtered-BOM link + injected cost summary); inverter DC protection backfilled (§7.6 rule 4); weather/lightning pre-step + corner-casting earth note added; prose already terse.
-- [ ] electrical-safety-report.md
+- [x] electrical-safety-report.md  — confirmed complete (owner). §7.3 corner-casting earth note + §7.6 DC-protection rule (drove the inverter-DC-protection backfill); prose already terse.
 - [ ] ventilation-report.md
 
 ### Construction — Film Plane & Pinhole

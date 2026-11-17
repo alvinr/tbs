@@ -130,6 +130,8 @@ These are carried as a **CNC-shop tolerance block on Sheets 2–4**: general lin
 
 ## 9. Parts List
 
+See the **[Master Shopping List, filtered to the front-board system](master-shopping-list.md?system=front-board)** for the same parts with suppliers, current prices, and click-to-sort/filter.
+
 The BOM is single-sourced from the parts registry (`parts.py`) and generated below. Purchased hardware (thumb screws, mount bolts, washer) is catalog; the raw 6061 stock, the pinhole board set / lens boards, and the fab/finishing **services** (CNC, anodize) carry **SKU pending — source**.
 
 <!-- BEGIN parts:front-board -->

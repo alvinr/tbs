@@ -336,11 +336,14 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ## 8. Parts List
 
+See the **[Master Shopping List, filtered to the water system](master-shopping-list.md?system=water)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 <!-- BEGIN parts:water -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | Reconditioned food-grade (prior-food-contents) 275-gal/1,000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150. | 4 ea | SoCal reconditioner / Repackify | $600 |
 | [Bulkhead fitting 2" NPT (polypropylene)](https://www.usplastic.com/catalog/item.aspx?itemid=32200) (32200) | X1/X3/X4 external fill/drain ports — 2" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure. | 3 ea | US Plastic Corp | $63 |
+| Low-level float switch (IBC-2 Blue supply) — low-water operator alert | 12V side- or vertical-mount float level switch on IBC-2 (Blue clean-water supply) — alerts the operator when the Blue supply runs low (water-system-report §4.1). SKU pending — source a 12V marine/RV float level switch; $8–20 est, confirm at order. | 1 ea | Amazon | $8–$20 |
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C) | 5 ea | Amazon / Fresh Water Systems | $500 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 2 ea | Amazon | $72 |
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + 3× pump-run side support boards (far ~399×620, near-lower ~399×540, near-upper ~399×690, #29 — raised to back the risers higher for the added clamp rows; cut from the sheet leftover — ~0.74 m² of a 2.97 m² sheet) + spacer offcuts. STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
@@ -405,7 +408,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | pH adjustment (acidifier), 6 lb/bag | 2 bag | Amazon | $60 |
 | [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | GHS pre-printed pictogram secondary-container labels, perforated — for the 4 IBC totes (pictograms pre-printed; hand-write the reagent name). Amazon B0BWFW5481 $23.99 firm (2026-08-01). | 1 pack | Amazon | $24 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | TitanFlex nitrile, textured, box of 100 (size M/L). | 2 box | Amazon | $30 |
-| **Water total** | | | | **$3,495–$3,567** |
+| **Water total** | | | | **$3,503–$3,587** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own
@@ -420,7 +423,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
 | Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> |
-| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$587<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$600<!-- END costing:spray-high --> |
+| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$595<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$615<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 
 *The Water-equipment row is the generated §8 `parts:water` BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are `costing.py` blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).*

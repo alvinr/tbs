@@ -620,6 +620,8 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 
 ## 11. Parts List
 
+See the **[Master Shopping List, filtered to the walkway system](master-shopping-list.md?system=walkway)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 <!-- BEGIN parts:walkway -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
@@ -646,7 +648,8 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | Fix the walkway floor sub-plate (walkway-floor-plate) DOWN into the door-end sill + the steel cross-members it crosses (WF4a), driven from above. SAME #14×3½″ 410 SS self-driller as the IBC sub-plate (ibcf-floor-tek): drills+threads the ~4mm member flange through the 8mm plate + the 28mm floor ply. ~5.3 kN pull-out/screw in 4mm steel; the 2 outboard screws per leg react the ~2.4 kN overturning uplift with large margin. QTY container-dependent (~20 incl. spares across the sill + members under the leg line). McMaster 90822A536 $12.97/pack of 10 ($1.30 ea). | 20 ea | McMaster-Carr | $26 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | Bolt each floor-leg foot DOWN to the continuous sub-plate (WF4b) — 5 legs × 4 (the 165×60 foot's anchor pattern) = 20. Threads into a tapped boss on the plate (no underside nut — drive-from-above), blue thread-locker + split-lock under each head. Grip = 8mm foot plate + boss → M12×30. McMaster 91280A716 M12×1.75 × 30 hex cap, class 8.8 zinc, $21.12/pack of 25 firm (2026-11-07) — the SAME SKU as ibcf-foot-bolt (one bolt, 36 total across both lines, 2 packs). ~$0.85 ea. | 20 ea | McMaster-Carr | $17 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
-| **Walkway total** | | | | **$2,135–$3,037** |
+| Right-walkway grating-bearer L-angle 1×1×3/16in | 1×1×3/16in (25.4×25.4×4.8mm) steel equal-leg L-angle, ~2 runs along the right-walkway grating bearing edges — the horizontal leg is the WF5 grating-clip landing + grate bearing for the right deck (walkway-report §8.1). Not part of the cantilever-frame tube. ~4–5 m total at ~$8–10/ft. SKU pending — source 1×1×3/16 angle; $25–75 est, confirm at fab. | 1 lot | Metal Supermarkets / MetalsDepot | $25–$75 |
+| **Walkway total** | | | | **$2,160–$3,112** |
 <!-- END parts:walkway -->
 
 *Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*

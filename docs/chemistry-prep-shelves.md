@@ -193,6 +193,8 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 
 ## 7. Parts List
 
+See the **[Master Shopping List, filtered to the shelf system](master-shopping-list.md?system=shelf)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 <!-- BEGIN parts:shelf -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|

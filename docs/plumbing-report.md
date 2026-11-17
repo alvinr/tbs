@@ -520,6 +520,8 @@ the grate).
 
 ## 9. Parts List
 
+See the **[Master Shopping List, filtered to the water system](master-shopping-list.md?system=water)** for the full water BOM with suppliers, current prices, and click-to-sort/filter.
+
 The panel-mounted equipment for each plumbing panel is listed below — generated from the parts
 registry (firm low–high bands, April-2026 indicative basis). The **full** water-system BOM (pipe,
 fittings, IBC totes, external bulkhead ports, wiring, consumables) is in the

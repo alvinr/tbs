@@ -587,6 +587,8 @@ tray drainage plan and sump cross-section).
 
 ## 6. Parts List
 
+See the **[Master Shopping List, filtered to this report's systems](master-shopping-list.md?system=tray,spray)** for the same parts with suppliers, current prices, and click-to-sort/filter — the tables below are the tray + spray slices of the single-source parts registry.
+
 ### 6.1 Processing Tray
 
 <!-- BEGIN parts:tray -->
@@ -614,6 +616,7 @@ tray drainage plan and sump cross-section).
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾" poly tubing (0.820" ID × 0.940" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28. | 1 100ft roll | DripDepot | $31 |
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×5 = 50 (43 used, 7 spare); side-tapped into the poly manifold, spray straight down. Nozzles now run the FULL beam width (4,289mm) — 90° down-jets clear the overhead grate, so no reason to stop at the open zone. Pitch 100mm → 43 jets edge-to-edge — see processing-tray §3.9. | 5 10-pack | Home Depot | $17 |
 | [Figure-8 end clamps, 3/4in poly](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) (1533) | Figure-8 fold-back end closures that crimp the 3/4" poly manifold ends shut — DripDepot #1533, 10-pack, $4.20 firm (2026-07-30). | 1 10-pack | DripDepot | $4 |
+| Cushioned pipe clips, 3/4in — spray manifold mount | Cushioned (rubber/EPDM-lined) P-clips, ~24mm (3/4in poly OD), bolted to the SS beam inboard face to retain the LDPE spray manifold between the 43 saddle-tees (processing-tray §3.3). ~10 off along the 4,289mm beam. SKU pending — source a 3/4in cushioned clip 10-pack; $8–15 est, confirm at order. | 1 10-pack | McMaster-Carr / Home Depot | $8–$15 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
 | [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center. 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm. | 1 ea | Amazon | $15 |
@@ -630,7 +633,7 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10. | 1 ea | McMaster-Carr | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). Harbor Freight $2.68 firm (2026-08-01). | 1 100-pack | Harbor Freight | $3 |
-| **Spray total** | | | | **$588–$600** |
+| **Spray total** | | | | **$596–$615** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -638,8 +641,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$587<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$600<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,060<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,721<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$595<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$615<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,068<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,736<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

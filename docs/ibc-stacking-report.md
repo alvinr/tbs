@@ -486,6 +486,8 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ## 9. Parts List
 
+See the **[Master Shopping List, filtered to the IBC-frame system](master-shopping-list.md?system=ibc-frame)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 ### 9.1 Stacking Frame
 
 <!-- BEGIN parts:ibc-frame -->
@@ -507,6 +509,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer — 16 under each WH wall-hanger nut (plain nut + split = locked) + 16 under each FA2 foot→sub-plate bolt head (with thread-locker, into the plate's tapped boss). $11.97/pack of 100. | 32 ea | McMaster-Carr | $4 |
 | Steel backing plate 60×205×8mm | Exterior wall backing plates — 8 identical, one per 2-bolt hanger — flat 60×205×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 2× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through. | 8 ea | Metal Supermarkets | $32–$56 |
 | L-cleat nut backing plate 40×50×8mm | Small nut-side spreader plate (~40×50×8mm A36) on the bar's FAR web at each L-cleat through-bolt — 8 corridor-end (BC-C) + 8 wall-end (BC-W). The single horizontal M12 nut bears on this plate instead of the thin (3mm) RHS bar wall, so the wall can't dish (2026-08-18). Cut from A36 plate offcuts. | 16 ea | Metal Supermarkets | $10–$19 |
+| Front-bar L-cleat angle 8mm A36 (bar seat, BC-C/BC-W) | 8mm A36 L-angle (horizontal leg 90 + upstand 59 × 20 wide, 1× Ø14 hole for the M12×65 BC bolt), fillet-welded (W3) to the upright — the front retaining bar drops into the L and through-bolts through the vertical leg + bar web (ibc-stacking-report §3.5/§3.7, Plate Schedule Sheet 2). Cut from A36 angle/plate offcuts, by parity with the cleat nut-backing plate. Qty per the §3.7 cut list (8); confirm 8 vs 16 (BC-C + BC-W) at fab. $6–20 est, SKU pending. | 8 ea | Metal Supermarkets | $6–$20 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
 | Right walkway center cantilever arms (solid bar) | SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces. | 2 ea | Metal Supermarkets | $91 |
@@ -514,7 +517,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Walkway-arm end + backing plates (CJ) | 65×190×8mm mild-steel plate (arm 50.8 wide + weld toe; 190 tall so the raised upper bolt keeps ≥1.5·D edge to the plate top), 2× Ø13 for M12 in a central column, both above the arm at 30mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate. | 4 ea | Local fab | $12–$24 |
 | Walkway-arm CJ crush sleeves | Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per CJ through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut. | 4 ea | Local fab | $3–$6 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 1× #14 self-drilling TEK screw + SS flat washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). The SAME #14×1 HWH 410-SS TEK as the RP2/SP2 bracket screws (McMaster 90822A620 $12.88/25) + a 1/4 SS flat washer (McMaster 92141A223 $13.48/100) under each head. Firm 2026-09-07. | 4 ea | McMaster-Carr | $3 |
-| **Ibc-Frame total** | | | | **$1,374–$1,977** |
+| **Ibc-Frame total** | | | | **$1,380–$1,997** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -534,7 +537,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,374<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,977<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,380<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,997<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

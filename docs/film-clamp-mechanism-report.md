@@ -44,6 +44,8 @@ An inert **HDPE strip, 44.1mm deep** (= frame leg 50.8 − ACM 3 − muslin 0.5 
 
 ## 4. Parts List
 
+See the **[Master Shopping List, filtered to the clamp system](master-shopping-list.md?system=clamp)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 All items ship within the United States. Local Southern California pickup noted where available.
 
 <!-- BEGIN parts:clamp -->

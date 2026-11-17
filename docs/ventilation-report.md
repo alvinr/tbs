@@ -193,6 +193,8 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 
 ## 9. Parts List
 
+See the **[Master Shopping List, filtered to the ventilation system](master-shopping-list.md?system=ventilation)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 <!-- BEGIN parts:ventilation -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
@@ -210,11 +212,12 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | [200mm 90° duct elbow](https://www.homedepot.com/p/100187427) (MF-90E8) | Master Flow 8" 90° adjustable galvanized elbow (model 90E8), cooler riser to wall stub | 1 ea | Home Depot | $15 |
 | [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | Master Flow 8" starting collar/take-off (DSCF8 $8.98, Home Depot) + worm-drive band clamp (McMaster 4866N35 $7.25) = $16.23/set to secure the flex duct. | 1 set | Home Depot | $16 |
 | [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | Master Flow 8" round removable duct cap | 1 ea | Home Depot | $12 |
+| Weatherproof louvre grille, 6in (Fan A + Fan B exterior vents) | 6in (150mm) louvered weatherproof wall vent with insect screen on the exterior face of each fan penetration — the fans' only external component (ventilation-report §4.2/§4.3/§4.4). ×2 (Fan A + Fan B). SKU pending — source a 6in louvered weatherproof vent cover; $10–20 ea est, confirm at order. | 2 ea | Home Depot / Amazon | $20–$40 |
 | [Deutsch DT 2-pin connectors (Amphenol AT2PS-CKIT)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | Amphenol AT2PS-CKIT 2-pin connector kit (DT-compatible), IP67 — Fan B flex connector (×2 sets). Same part as deutsch-dt-2pin-elec. $4/set est — confirm at order. | 2 set | Waytek Wire | $8 |
 | [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B0GYFNXM9Z) (B0GYFNXM9Z) | MECCANIXITY retractable coiled cable, 16 AWG 2-conductor, 10 ft extended (B0GYFNXM9Z), $25.99 firm (2026-07-30). Fan B flex on the swinging hinged panel — takes the ~56° transport swing. Proper 2-conductor. Deutsch DT 2-pin ends. | 1 ea | Amazon / Grainger | $26 |
 | Cooler external power cable | CRIMP-YOUR-OWN (no retail SKU): 1.5m, 14 AWG 2-cond + Deutsch DT 2-pin plug crimped each end (connectors per deutsch-dt-2pin). Self-assembled; $20 is the wire+terminal material estimate, accepted (2026-10-02). | 1 ea | Waytek Wire / Amazon | $20 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
-| **Ventilation total** | | | | **$748** |
+| **Ventilation total** | | | | **$768–$788** |
 <!-- END parts:ventilation -->
 
 ---

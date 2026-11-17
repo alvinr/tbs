@@ -207,6 +207,8 @@ A detailed analysis of the optical distortions can be found [here](distortion-re
 
 ## 7. Parts List
 
+See the **[Master Shopping List, filtered to the film-plane system](master-shopping-list.md?system=film)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
+
 All items ship within the United States. Local Southern California pickup noted where available.
 
 <!-- BEGIN parts:film -->

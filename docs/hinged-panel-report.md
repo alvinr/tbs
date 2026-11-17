@@ -523,6 +523,8 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 ## 8. Parts List
 
+See the **[Master Shopping List, filtered to this report's systems](master-shopping-list.md?system=panel,lightlock,swing,door)** for the same parts with suppliers, current prices, and click-to-sort/filter — the tables below are the panel + revolving-door + swing-pivot + door-frame slices of the single-source parts registry.
+
 ### 8.1 Panel Structure
 
 <!-- BEGIN parts:panel -->

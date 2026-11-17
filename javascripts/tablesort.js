@@ -51,8 +51,9 @@ function applySystemFilter() {
       if (show) shown++;
     });
     var collapse = !!sys && shown === 0;
-    table.style.display = collapse ? "none" : "";
-    var heading = table.previousElementSibling;   // the ### type heading for this section
+    var block = table.closest(".md-typeset__scrollwrap") || table;   // Material wraps each data table at runtime; hide the wrapper so no empty margin box is left
+    block.style.display = collapse ? "none" : "";
+    var heading = block.previousElementSibling;   // the ### type heading for this section
     if (heading && /^H[1-6]$/.test(heading.tagName)) heading.style.display = collapse ? "none" : "";
   });
   if (sys) {

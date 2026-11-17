@@ -210,7 +210,7 @@ def cross_refs():
 # Torque for M12 Gr.8.8 through the (dry) corrugated wall ~90 N·m (matches the IBC WH/CJ wall bolts).
 FASTENERS = [
     ("WF1", "Standard bracket → wall rib", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
-     "Gr.8.8 zinc", "3/brkt × 13 = 39", "~90 N·m", "flat both ends", "plain nut + split-lock"),
+     "Gr.8.8 zinc", "3/brkt × 11 = 33", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF2", "Widened bracket → wall rib", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
@@ -327,7 +327,7 @@ def cut_list_md():
     post_h = round(k.WALKWAY_H - k.WALKWAY_GRATE_T)   # ~115 floor→grate bottom
     # (member, stock section, length mm, qty)
     members = [
-        ("Near/far bracket arm — standard", "2×1×0.120in tube", k.WALKWAY_W, 13),
+        ("Near/far bracket arm — standard", "2×1×0.120in tube", k.WALKWAY_W, 11),
         ("Near/far bracket arm — widened", "3×1×0.120in tube", k.WALKWAY_NEAR_WIDE_W, 5),
         ("Right-rectangle long beam (inner cranked + outer)", "2×1×0.120in tube", k.C_WID, 2),
         ("Right-rectangle end beam", "2×1×0.120in tube", end_beam, 2),
@@ -339,7 +339,7 @@ def cut_list_md():
     for name, stock, ln, qty in members:
         lines.append(f"| {name} | {stock} | {ln:.0f} | {qty} |")
     # stock linear-feet (net; add cut/kerf waste at the shop)
-    tube_2x1 = 13 * k.WALKWAY_W + 2 * fl_std + 2 * k.C_WID + 2 * end_beam
+    tube_2x1 = 11 * k.WALKWAY_W + 2 * fl_std + 2 * k.C_WID + 2 * end_beam
     tube_3x1 = 5 * k.WALKWAY_NEAR_WIDE_W
     tube_4x1 = 3 * fl_wide
     shs_2x2 = 5 * post_h
@@ -365,11 +365,11 @@ def plate_schedule_md():
         ("Foot plate", f"{fl:.0f}×{fw:.0f}", f"{ft:.0f}", "4× Ø5.5 (#14)",
          f"X +{fdx[0]}/+{fdx[1]} from left edge × Yd ±{fdy}", "5"),
         ("Reinforcing plate — std", f"{k.WALKWAY_REINF_W}×{k.WALKWAY_REINF_H}", f"{k.WALKWAY_REINF_T:.0f}", "3× Ø13 (M12)",
-         f"±{dx} X @ Z{zlo}; 0 @ Z{zhi} (triangular)", "13"),
+         f"±{dx} X @ Z{zlo}; 0 @ Z{zhi} (triangular)", "11"),
         ("Reinforcing plate — widened", f"{k.WALKWAY_REINF_W_WIDE}×{k.WALKWAY_REINF_H_WIDE}", f"{k.WALKWAY_REINF_T:.0f}", "4× Ø13 (M12)",
          f"±{dxw} X @ Z{zlow} & Z{zhi} (rectangular)", "5"),
         ("Bracket vertical leg — std / widened", f"{k.WALKWAY_REINF_W}×{k.WALKWAY_REINF_H} / {k.WALKWAY_REINF_W_WIDE}×{k.WALKWAY_REINF_H_WIDE}", "8 / 10", "matches reinf plate",
-         "same bolt pattern; arm + gusset welded on", "13 / 5"),
+         "same bolt pattern; arm + gusset welded on", "11 / 5"),
         ("Combined corner plate", f"{k.FP_CORNER_SEAT_PLATE_W}×~271", f"{k.FP_CORNER_SEAT_PLATE_T + 2:.0f}", "4× Ø13 corner",
          "shared with the BR film rail (fp_combined_corner_plate)", "2"),
         ("Wall cleat (back + ext + shelf)", "90×(bolt span)", "8", "2× Ø13 horizontal",

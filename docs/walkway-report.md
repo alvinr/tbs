@@ -503,7 +503,7 @@ practical fillets for the plate thickness.
 <!-- BEGIN load:fasteners -->
 | Mark | Joint | Fastener | Grade | Qty | Torque | Washer | Locker |
 |------|-------|----------|-------|-----|--------|--------|--------|
-| WF1 | Standard bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 3/brkt × 13 = 39 | ~90 N·m | flat both ends | plain nut + split-lock |
+| WF1 | Standard bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 3/brkt × 11 = 33 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF2 | Widened bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 4/brkt × 5 = 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF3 | Right-walkway wall cleat + combined corner plate → wall | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF4a | Floor-anchor sub-plate → sill + cross-members (§5.1a) | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~20) | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
@@ -583,7 +583,7 @@ are in the **IBC-frame** cut list, not here.
 <!-- BEGIN load:cutlist -->
 | Member | Stock | Length (mm) | Qty |
 |--------|-------|-------------|-----|
-| Near/far bracket arm — standard | 2×1×0.120in tube | 300 | 13 |
+| Near/far bracket arm — standard | 2×1×0.120in tube | 300 | 11 |
 | Near/far bracket arm — widened | 3×1×0.120in tube | 500 | 5 |
 | Right-rectangle long beam (inner cranked + outer) | 2×1×0.120in tube | 2362 | 2 |
 | Right-rectangle end beam | 2×1×0.120in tube | 143 | 2 |
@@ -591,7 +591,7 @@ are in the **IBC-frame** cut list, not here.
 | Floor-leg arm — standard | 2×1×0.120in tube | 305 | 2 |
 | Floor-leg arm — drum-exit punch-out | 4×1×0.120in tube | 605 | 3 |
 | **Stock summary (net, add kerf/waste)** | | | |
-| 2×1×0.120in tube | — | 9520 = 31.2 ft | — |
+| 2×1×0.120in tube | — | 8920 = 29.3 ft | — |
 | 3×1×0.120in tube | — | 2500 = 8.2 ft | — |
 | 4×1×0.120in tube | — | 1815 = 6.0 ft | — |
 | 2×2×0.120in SHS | — | 575 = 1.9 ft | — |
@@ -607,9 +607,9 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 | Plate | Blank (mm) | Thk (mm) | Holes | Positions / PCD | Qty |
 |-------|-----------|----------|-------|-----------------|-----|
 | Foot plate | 165×60 | 8 | 4× Ø5.5 (#14) | X +20/+60 from left edge × Yd ±18 | 5 |
-| Reinforcing plate — std | 100×200 | 6 | 3× Ø13 (M12) | ±27 X @ Z42; 0 @ Z175 (triangular) | 13 |
+| Reinforcing plate — std | 100×200 | 6 | 3× Ø13 (M12) | ±27 X @ Z42; 0 @ Z175 (triangular) | 11 |
 | Reinforcing plate — widened | 120×200 | 6 | 4× Ø13 (M12) | ±32 X @ Z35 & Z175 (rectangular) | 5 |
-| Bracket vertical leg — std / widened | 100×200 / 120×200 | 8 / 10 | matches reinf plate | same bolt pattern; arm + gusset welded on | 13 / 5 |
+| Bracket vertical leg — std / widened | 100×200 / 120×200 | 8 / 10 | matches reinf plate | same bolt pattern; arm + gusset welded on | 11 / 5 |
 | Combined corner plate | 150×~271 | 10 | 4× Ø13 corner | shared with the BR film rail (fp_combined_corner_plate) | 2 |
 | Wall cleat (back + ext + shelf) | 90×(bolt span) | 8 | 2× Ø13 horizontal | below-shelf + above-beam, clear of the beam edge | 2 |
 | Transition bearing plate | 40×500 | 5 | — | welded to the arm top at each 300↔500 width step | 2 |
@@ -631,9 +631,9 @@ See the **[Master Shopping List, filtered to the walkway system](master-shopping
 | Cantilever bracket — standard (near/far) | 8mm steel plate (200mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 3 near + 8 far at 457mm centers (5 near bays are widened brackets). ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms). | 11 ea | Local fab | $330–$550 |
 | Cantilever bracket — widened (near) | 10mm steel plate (200mm vert leg + 70mm gusset) + a 500mm 3×1×0.120in steel tube arm, welded — US IBC/OSHA redesign: the 500mm cantilever is deflection-governed (SF 1.83 strength, tip L/112 under the 300 lbf point; arm depth is spray-bar-capped at 25.4mm so the widened bracket takes a WIDER 3×1 section, not deeper). EP/battery/slit zone, X1055–3083 = 5 bays. ~0.5 m of 3×1 tube/bracket. | 5 ea | Local fab | $200–$350 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Cantilever-bracket wall bolts (3 per std + 4 per widened), ~48–50mm grip → M12×70, the single standardized zinc wall length (2026-09-07; padded to the grip with washers). $17.36/pack of 10. Pad with M12 flat washers to the grip. | 53 ea | McMaster-Carr | $92 |
-| [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 cantilever bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 59 ea | McMaster-Carr | $15 |
-| [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 cantilever bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 236 ea | McMaster-Carr | $23 |
-| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
+| [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 cantilever bolts (+ split lock washer), 1/bolt (3/std × 11 + 4/widened × 5 = 53). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 53 ea | McMaster-Carr | $14 |
+| [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 cantilever bolts — 2 functional + 2 shim/bolt (4 × 53 bolts = 212; shims pad the grip if corrugation <30mm). | 212 ea | McMaster-Carr | $21 |
+| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 cantilever bolts, 1/bolt (53, plain nut + split = locked). | 53 ea | McMaster-Carr | $6 |
 | Reinforcing plate (exterior) | 6mm steel: 100×200mm std (×11) + 120×200mm widened (×5) — each matches its interior mounting-plate footprint | 16 ea | Local fab | $67–$116 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
 | Right walkway cantilever frame (long + end beams) | 2×1×0.120in steel tube — a continuous inner long beam (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + an outer long beam in 2 segments (an open corridor bay ~170mm between the cantilever arms, so the ribbon pipes cross clear of any beam) + 2 end beams (~245mm, the 245mm right deck) that make the cantilever frame, ~5.0 m (16.5 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07. | 1 lot | MetalsDepot / Metal Supermarkets | $125–$153 |
@@ -649,7 +649,7 @@ See the **[Master Shopping List, filtered to the walkway system](master-shopping
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | Bolt each floor-leg foot DOWN to the continuous sub-plate (WF4b) — 5 legs × 4 (the 165×60 foot's anchor pattern) = 20. Threads into a tapped boss on the plate (no underside nut — drive-from-above), blue thread-locker + split-lock under each head. Grip = 8mm foot plate + boss → M12×30. McMaster 91280A716 M12×1.75 × 30 hex cap, class 8.8 zinc, $21.12/pack of 25 firm (2026-11-07) — the SAME SKU as ibcf-foot-bolt (one bolt, 36 total across both lines, 2 packs). ~$0.85 ea. | 20 ea | McMaster-Carr | $17 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
 | Right-walkway grating-bearer L-angle 1×1×3/16in | 1×1×3/16in (25.4×25.4×4.8mm) steel equal-leg L-angle, ~2 runs along the right-walkway grating bearing edges — the horizontal leg is the WF5 grating-clip landing + grate bearing for the right deck (walkway-report §8.1). Not part of the cantilever-frame tube. ~4–5 m total at ~$8–10/ft. SKU pending — source 1×1×3/16 angle; $25–75 est, confirm at fab. | 1 lot | Metal Supermarkets / MetalsDepot | $25–$75 |
-| **Walkway total** | | | | **$2,160–$3,112** |
+| **Walkway total** | | | | **$2,155–$3,107** |
 <!-- END parts:walkway -->
 
 *Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*

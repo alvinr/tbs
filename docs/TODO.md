@@ -9,6 +9,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## 📄 Brochure PDF — decide whether to carry the full parts list (2026-11-17)
+
+- [ ] **Brochure PDF parts coverage.** The PDF excludes `master-shopping-list.md` (`generate_brochure.py` → `BROCHURE_EXCLUDE`), so parts appear in the PDF only via each report's per-system injected table. That leaves the **electrical** parts (its §8 table was replaced by a link to the filtered BOM), plus **container / interior / optics** (no per-report §Parts block by design), **absent from the PDF**. The on-page `?system=` filter is JS-only and has no effect on the static PDF. **Decide:** either (a) add the Master Shopping List to the brochure — remove it from `BROCHURE_EXCLUDE` — so the full unfiltered by-type BOM is in the PDF (covers every system, future-proofs any report that links to the BOM instead of embedding a table); or (b) keep the prospectus lean and leave procurement detail to the web + cost-breakdown. Owner to decide.
+
+---
+
 ## 🔧 Light-trap PULL-OUT corner apron — cascade from the Sheet 16 redesign (2026-11-05)
 
 Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable corner strips, 1590A13 draw latches, leaf lip cleat, strapped stow) — it REPLACES the fold-down apron. The 2D + procurement + report + 3D-source are committed; only the SketchUp save + Sketchfab push of the latch change remain:

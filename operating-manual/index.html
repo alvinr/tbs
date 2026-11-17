@@ -3317,6 +3317,7 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.1.4 — Solar panel deployment area: clear southern exposure, ~4m × 3m.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.1.5 — Water source within 20m, or tanker access for IBC tote fill (if not pre-filled).</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.1.6 — Emergency vehicle access not blocked by container placement.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.1.7 — <strong>Weather — check for lightning.</strong> Review the forecast before departure and again on site. The container is an exposed, unprotected metal box — <strong>do not occupy it during a thunderstorm</strong>; step out and well away until the storm has passed, and plan sessions around clear-weather windows.</li>
 </ul>
 <h3 id="12-container-positioning">1.2 Container Positioning<a class="headerlink" href="#12-container-positioning" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
@@ -3359,7 +3360,8 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.5.3 — Connect controller to battery bank (1 × 100Ah LiFePO4 standard; optional 2nd pack in parallel). <strong>Observe polarity.</strong></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C (water pumps P-01–P-05, run one at a time), D (red safelight), E (evap cooler inverter), F (film-plane actuators, optional), G (white LED lighting).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C1 (corridor pumps P-01/02/03/05, one at a time), C2 (tray-drain pump P-04), D (red safelight), E (evap cooler inverter), F (white LED lighting). Both pump fuses are gated by the single 2-pole master pump switch.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1.5.7 — <strong>Grounding.</strong> The protective bond (container shell + inverter/cooler/equipment → battery-negative, 4 AWG) is <strong>permanent</strong> — just confirm the main-panel bond lug is tight. It protects on any surface; <strong>no site earth needs to be driven.</strong> The 8-ft copper earth stake is <strong>optional supplementary earthing</strong>: <strong>on soil</strong>, drive it beside the power panel and clamp it to the main-panel earth terminal (it dissipates static — good in a dry darkroom); <strong>on concrete, asphalt, or any hard surface, skip it</strong> — the bonding provides full fault protection regardless (<a href="../electrical-report/">Electrical Report §7.3</a>). If a convenient earth is at hand (building ground, grounded metal water pipe), bond to that instead of driving the stake. (Set <strong>directly on bare soil</strong>, the container's steel corner castings already earth it enough to bleed static — so the stake only matters if it is leveled up on <strong>timber sleepers</strong>, §1.2.2, which insulate the castings.)</li>
 </ul>
 <blockquote>
 <p><strong>Shore power backup:</strong> If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.</p>
@@ -3561,7 +3563,7 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <p><strong>GO/NO-GO checkpoint:</strong> Shutter confirmed closed. Elapsed time within ± 2 min of target.</p>
 <h2 id="phase-4-development">Phase 4 — Development<a class="headerlink" href="#phase-4-development" title="Permanent link">&para;</a></h2>
 <p><strong>Time: ~20 minutes.</strong>
-<strong>Lighting: RED LED safelight (Circuit D) on entry, then switch to WHITE LIGHT (Circuit G) after first wash begins.</strong></p>
+<strong>Lighting: RED LED safelight (Circuit D) on entry, then switch to WHITE LIGHT (Circuit F) after first wash begins.</strong></p>
 <h3 id="41-entering-and-removing-the-muslin">4.1 Entering and Removing the Muslin<a class="headerlink" href="#41-entering-and-removing-the-muslin" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.1.1 — Enter via light trap (same procedure as Phase 2.3). Switch safelight ON (<strong>red light</strong>).</li>
@@ -3569,36 +3571,35 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.1.3 — Lay the muslin face-up on the LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails).</li>
 </ul>
 <h3 id="42-development-in-water">4.2 Development in Water<a class="headerlink" href="#42-development-in-water" title="Permanent link">&para;</a></h3>
-<p><strong>Lighting: switch to WHITE LIGHT (Circuit G — white LED, a SEPARATE circuit from the Circuit D red safelight) once the first wash begins — the image is no longer UV-sensitive after initial water contact. The two lighting circuits are independently switched (pull-cords labeled RED / WHITE), not interlocked.</strong></p>
+<p><strong>Lighting: switch to WHITE LIGHT (Circuit F — white LED, a SEPARATE circuit from the Circuit D red safelight) once the first wash begins — the image is no longer UV-sensitive after initial water contact. The two lighting circuits are independently switched (pull-cords labeled RED / WHITE), not interlocked.</strong></p>
 <p>Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue color deepens over the first few minutes of drying.</p>
 <p><strong>Spray bar setup:</strong></p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.1 — Position the spray bar at the far end of the tray (Yd≈2,280mm, film-plane side). Attach the telescoping pole to the arm tube.</li>
 </ul>
-<p><strong>Wash sequence using the Blue circuit:</strong></p>
+<p><strong>Continuous flow-through wash (supply + drain run together):</strong></p>
+<p>Circuit C is dual-fused (<strong>C1</strong> corridor supply pumps, <strong>C2</strong> tray-drain P-04) so a supply pump and the drain run <strong>at the same time</strong>, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump — instead of the old fill-dwell-drain cycle (water consumed per print is the same; see <a href="../water-system-report/">Water System Report §6</a>).</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.2 — Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.3 — Set BV-05a to Blue (fresh) and open BV-05b. Using the pole, slowly pull the spray bar toward the pinhole wall (decreasing Yd), flooding the print progressively. Travel speed ~50mm/second — full traverse takes ~44 seconds. At the near rim (Yd≈80mm), close BV-05b. Push the bar back to the far end and repeat. Allow water to flow over the full surface for <strong>5 minutes</strong>. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. <strong>Switch to WHITE LIGHT now (Circuit G)</strong> — the print is safe once washing begins.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.4 — Close BV-05b. Switch ON P-04 to pump wash water from the sump up to IBC-3 (Brown recovery) via 3W-DV-02. If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.5 — For the second wash pass, set BV-05a to Brown (recycled), close BV-05b, and activate P-02 through the filter train. Recycled Brown water from IBC-3 is pumped through the three-stage filter skid and back into the spray bar via the same supply path. Open BV-05b and repeat the spray bar traverse.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.6 — Repeat for a total of <strong>3 wash cycles</strong> (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.7 — Final rinse: set BV-05a to Blue and open BV-05b for a 2-minute final flush with clean Blue water. Drain via P-04 to IBC-3.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.2 — Switch ON the master pump switch — <strong>P-01 (Blue supply) and P-04 (tray drain) both run.</strong> P-01 feeds the spray bar; P-04 continuously lifts the sump water to IBC-3 via 3W-DV-02. Confirm VB1, VB2, VB3 are open.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.3 — Set BV-05a to Blue (fresh), 3W-DV-02 to Brown, and open BV-05b. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for <strong>5 minutes</strong> — water flows continuously over the print and drains to IBC-3 as fast as it arrives, so the tray never fills. The wash runs yellow-green as unreacted sensitizer clears (normal, non-toxic). <strong>Switch to WHITE LIGHT now (Circuit F)</strong> — the print is safe once washing begins. <em>(If the first rinse is heavily contaminated, set 3W-DV-02 to IBC-4/Waste instead — see the diverter decisions below.)</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.4 — <strong>Recycled pass:</strong> set BV-05a to Brown (recycled) and bring up <strong>P-02</strong> (it draws IBC-3 through the 3-stage filter skid back to the spray bar); P-01 idles. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.5 — <strong>Final rinse:</strong> set BV-05a back to Blue (P-01) for a 2-minute clean-Blue flush, P-04 still draining to IBC-3.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4.2.6 — <strong>Stop:</strong> close BV-05b (spray off), let P-04 run ~30 seconds to clear the sump, then switch OFF the master pump switch. Total wash ~15 minutes (<strong>3 passes</strong>).</li>
 </ul>
 <blockquote>
 <p><strong>Visual check after the second wash:</strong> The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.</p>
 </blockquote>
 <h4 id="valve-matrix">Valve matrix<a class="headerlink" href="#valve-matrix" title="Permanent link">&para;</a></h4>
+<p>Flow-through, so there are no separate drain phases — <strong>P-04 drains throughout</strong> all three passes:</p>
 <table>
 <thead>
 <tr>
-<th>Valve</th>
+<th>Valve / pump</th>
 <th>Default</th>
-<th>Wash 1</th>
-<th>Drain 1→Brown</th>
-<th>Wash 2 (recycled)</th>
-<th>Drain 2→Brown</th>
-<th>Wash 3</th>
-<th>Drain 3</th>
+<th>Pass 1 (Blue)</th>
+<th>Pass 2 (Brown recycle)</th>
+<th>Pass 3 (Blue final)</th>
+<th>Stop</th>
 </tr>
 </thead>
 <tbody>
@@ -3609,16 +3610,12 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <td>Open</td>
 <td>Open</td>
 <td>Open</td>
-<td>Open</td>
-<td>Open</td>
 </tr>
 <tr>
 <td>BV-05a (spray selector)</td>
 <td>Blue</td>
 <td>Blue</td>
-<td>—</td>
 <td><strong>Brown</strong></td>
-<td>—</td>
 <td>Blue</td>
 <td>—</td>
 </tr>
@@ -3626,16 +3623,12 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <td>BV-05b (spray on/off)</td>
 <td>Closed</td>
 <td><strong>Open</strong></td>
-<td>Closed</td>
 <td><strong>Open</strong></td>
-<td>Closed</td>
 <td><strong>Open</strong></td>
-<td>Closed</td>
+<td><strong>Closed</strong></td>
 </tr>
 <tr>
 <td>BV-06 (Chem tap)</td>
-<td>Closed</td>
-<td>Closed</td>
 <td>Closed</td>
 <td>Closed</td>
 <td>Closed</td>
@@ -3646,27 +3639,37 @@ for more contrast (trial <strong>T3</strong>: 0.1% / 0.2% / 0.4%).</p>
 <td>3W-DV-02 (tray drain)</td>
 <td>Brown</td>
 <td>Brown</td>
-<td><strong>Brown</strong></td>
 <td>Brown</td>
-<td><strong>Brown</strong></td>
 <td>Brown</td>
-<td><strong>Brown</strong></td>
+<td>Brown</td>
+</tr>
+<tr>
+<td>P-01 (Blue supply)</td>
+<td>Off</td>
+<td><strong>On</strong></td>
+<td>Off</td>
+<td><strong>On</strong></td>
+<td>Off</td>
 </tr>
 <tr>
 <td>P-02 (Brown pump)</td>
 <td>Off</td>
 <td>Off</td>
-<td>Off</td>
 <td><strong>On</strong></td>
-<td>Off</td>
 <td>Off</td>
 <td>Off</td>
 </tr>
 <tr>
+<td>P-04 (tray drain, C2)</td>
+<td>Off</td>
+<td><strong>On</strong></td>
+<td><strong>On</strong></td>
+<td><strong>On</strong></td>
+<td>Off (after sump clear)</td>
+</tr>
+<tr>
 <td>3W-DV-01 (filter out)</td>
 <td>Blue return</td>
-<td>Blue</td>
-<td>Blue</td>
 <td>Blue</td>
 <td>Blue</td>
 <td>Blue</td>
@@ -3761,9 +3764,8 @@ its return-haul limit — per <a href="#55-transport-mode-conversion-packing-up"
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.1 — Evaporative cooler (circuit E)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.2 — Water pumps P-01 through P-05 (circuit C)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.3 — Ventilation fans (circuits A, B)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.4 — Lighting — safelight (circuit D) and white light (circuit G)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.5 — Film plane actuators if used (circuit F)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.6 — Disconnect solar panel inputs at the MPPT controller</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.4 — Lighting — safelight (circuit D) and white light (circuit F)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5.3.5 — Disconnect solar panel inputs at the MPPT controller</li>
 </ul>
 <p>If shore charger is connected, leave it running overnight to top up the battery bank.</p>
 <h3 id="54-securing-the-container-operational-mode">5.4 Securing the Container (Operational Mode)<a class="headerlink" href="#54-securing-the-container-operational-mode" title="Permanent link">&para;</a></h3>
@@ -3961,7 +3963,7 @@ its return-haul limit — per <a href="#55-transport-mode-conversion-packing-up"
       
         <script src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js?v=3"></script>
+        <script src="../javascripts/tablesort.js?v=4"></script>
       
     
   </body>

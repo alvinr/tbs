@@ -1007,21 +1007,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-itemized-energy-budget-per-print-session" class="md-nav__link">
+  <a href="#31-energy-autonomy-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 Itemized Energy Budget (per print session)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-daily-use-disconnected-endurance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 Daily Use &amp; Disconnected Endurance
+        3.1 Energy &amp; Autonomy (summary)
       
     </span>
   </a>
@@ -2891,7 +2880,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="electrical-report">Electrical Report<a class="headerlink" href="#electrical-report" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>This report specifies the complete electrical and environmental control systems for TBS-001: solar power architecture, battery bank, light trap vestibule, cooling, ventilation, interior lighting, and wiring. All systems run at 12V DC from a solar array with optional shore power backup, enabling fully off-grid operation.</p>
+<p>This report specifies the complete electrical and environmental control systems for TBS-001: solar power architecture, battery bank, cooling, ventilation, interior lighting, and wiring. All systems run at 12V DC from a solar array with optional shore power backup, enabling fully off-grid operation.</p>
 <p>See also: <a href="../operating-manual/">Operating Manual</a> for step-by-step operational procedures.</p>
 <hr />
 <h2 id="2-system-overview">2. System Overview<a class="headerlink" href="#2-system-overview" title="Permanent link">&para;</a></h2>
@@ -2909,7 +2898,7 @@
 
 <hr />
 <p><strong>Sheet 7 — System Schematic (Symbol Diagram)</strong>
-The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the seven load circuits (A–G), with the NC E-stop loop and shore charger shown explicitly.</p>
+The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the six load circuits (A–F), with the NC E-stop loop and shore charger shown explicitly.</p>
 <p><img alt="TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)" src="../assets/electrical-sheet7.png" /></p>
 <h2 id="3-power-budget">3. Power Budget<a class="headerlink" href="#3-power-budget" title="Permanent link">&para;</a></h2>
 <table>
@@ -2935,10 +2924,16 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 <td>Continuous during processing</td>
 </tr>
 <tr>
-<td>C</td>
-<td>Water pumps <strong>P-01–P-05</strong> (12V DC; 5× Shurflo 2088, run one at a time; single master switch)</td>
-<td>100W (one pump)</td>
+<td>C1</td>
+<td>Water pumps — corridor <strong>P-01/P-02/P-03/P-05</strong> (12V DC; Shurflo 2088, one at a time)</td>
+<td>90W (one pump)</td>
 <td>Intermittent (~30 min/print)</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Tray-drain pump <strong>P-04</strong> (12V DC Shurflo 2088)</td>
+<td>90W</td>
+<td>Intermittent — <strong>may run with C1</strong> (continuous-wash option, §7.3)</td>
 </tr>
 <tr>
 <td>D</td>
@@ -2954,12 +2949,6 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>F</td>
-<td>Film plane actuators (optional)</td>
-<td>100W peak</td>
-<td>Intermittent</td>
-</tr>
-<tr>
-<td>G</td>
 <td>White LED strip ×4 (general lighting)</td>
 <td>~106W</td>
 <td>Non-operational periods only</td>
@@ -2967,7 +2956,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 <tr>
 <td><strong>Total peak (all on)</strong></td>
 <td></td>
-<td><strong>533W</strong></td>
+<td><strong>543W</strong></td>
 <td>Not all simultaneous</td>
 </tr>
 </tbody>
@@ -2975,120 +2964,14 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 <blockquote>
 <p><strong>Circuit E is the only AC load.</strong> The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is <strong><!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus</strong> (÷0.88 inverter efficiency). See <a href="#ac-safety">§7.6 AC Isolation &amp; Safety</a> for the grounding/GFCI design.</p>
 </blockquote>
-<h3 id="31-itemized-energy-budget-per-print-session">3.1 Itemized Energy Budget (per print session)<a class="headerlink" href="#31-itemized-energy-budget-per-print-session" title="Permanent link">&para;</a></h3>
-<p><strong>Continuous loads by phase:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Phase</th>
-<th style="text-align: right;">Min</th>
-<th>Active circuits</th>
-<th style="text-align: right;">W</th>
-<th style="text-align: right;">Wh</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.6  Cooling warmup</td>
-<td style="text-align: right;">30</td>
-<td>Fan A (exhaust), Fan B (intake), Evap cooler</td>
-<td style="text-align: right;">217</td>
-<td style="text-align: right;">108</td>
-</tr>
-<tr>
-<td>1.7–1.8  Dark adaptation</td>
-<td style="text-align: right;">20</td>
-<td>Fan A (exhaust), Fan B (intake), Evap cooler, Safelight</td>
-<td style="text-align: right;">257</td>
-<td style="text-align: right;">86</td>
-</tr>
-<tr>
-<td>2  Load image plane</td>
-<td style="text-align: right;">45</td>
-<td>Fan A (exhaust), Fan B (intake), Evap cooler, Safelight</td>
-<td style="text-align: right;">257</td>
-<td style="text-align: right;">193</td>
-</tr>
-<tr>
-<td>3  Exposure</td>
-<td style="text-align: right;">37.5</td>
-<td>Fan A (exhaust), Fan B (intake), Evap cooler</td>
-<td style="text-align: right;">217</td>
-<td style="text-align: right;">136</td>
-</tr>
-<tr>
-<td>4  Development &amp; wash</td>
-<td style="text-align: right;">20</td>
-<td>Fan A (exhaust), Fan B (intake), Evap cooler, White light</td>
-<td style="text-align: right;">293</td>
-<td style="text-align: right;">98</td>
-</tr>
-<tr>
-<td>5  Cleanup</td>
-<td style="text-align: right;">30</td>
-<td>Fan A (exhaust), Fan B (intake), Evap cooler, White light</td>
-<td style="text-align: right;">293</td>
-<td style="text-align: right;">146</td>
-</tr>
-<tr>
-<td><strong>Subtotal</strong></td>
-<td style="text-align: right;"><strong>182</strong></td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"><strong>767</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Intermittent loads (total runtime per print):</strong></p>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th style="text-align: right;">W</th>
-<th style="text-align: right;">Min</th>
-<th style="text-align: right;">Wh</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Pumps (P-01 Blue)</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">22.5</td>
-</tr>
-<tr>
-<td>Pumps (P-02 Brown)</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">15.0</td>
-</tr>
-<tr>
-<td>Pumps (P-04 drain)</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">7.5</td>
-</tr>
-<tr>
-<td>Actuators (optional)</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">8.3</td>
-</tr>
-<tr>
-<td><strong>Subtotal</strong></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"><strong>53</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Total energy per session: <!-- BEGIN energy:wh-session -->845<!-- END energy:wh-session --> Wh (0.82 kWh)</strong></p>
-<p><strong>Battery bank capacity (standard build, 1 pack):</strong> 100 Ah × 12V = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh (LiFePO4, 100% DoD) → <strong><!-- BEGIN energy:sessions-1pack -->1.4<!-- END energy:sessions-1pack --> sessions per charge</strong>. The distribution busbar + fuse block are <strong>provisioned for a 2nd 100 Ah pack in parallel</strong> — a plug-in expansion (→ 200 Ah / <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh / <!-- BEGIN energy:sessions-2pack -->2.8<!-- END energy:sessions-2pack --> sessions) requiring <strong>no rewiring</strong>; the 2nd pack is shown ghosted in the 2D/3D models.</p>
-<p><strong>Solar recharge:</strong> 600W array × 5.5 peak sun hours (Palm Springs) = <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day → supports <!-- BEGIN energy:solar-sessions-day -->3.9<!-- END energy:solar-sessions-day --> sessions/day from solar alone.</p>
-<h3 id="32-daily-use-disconnected-endurance">3.2 Daily Use &amp; Disconnected Endurance<a class="headerlink" href="#32-daily-use-disconnected-endurance" title="Permanent link">&para;</a></h3>
-<p><em>Full treatment in the <a href="../daily-energy-report/">Daily Energy Report</a>.</em></p>
-<p>A representative daylight day of <strong>3 sequential prints</strong> draws <strong>~<!-- BEGIN energy:daily-wh-3 -->2,293<!-- END energy:daily-wh-3 --> Wh</strong> (2 prints ~<!-- BEGIN energy:daily-wh-2 -->1,565<!-- END energy:daily-wh-2 -->; 4 prints ~<!-- BEGIN energy:daily-wh-4 -->3,021<!-- END energy:daily-wh-4 -->), dominated by the continuous fans + evaporative cooler (the cooler now drives the AC inverter, ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus); the Brown/Waste tote dump is gravity-assisted, tiny (~<!-- BEGIN energy:drain-wh -->45<!-- END energy:drain-wh --> Wh), and incurred only at resupply (~every 4.7 days), not daily.</p>
-<p><strong>Disconnected endurance (no AC charge, solar top-up only): the system is clean-water limited, not power limited.</strong> With sun it is solar-positive (+<!-- BEGIN energy:solar-net-3 -->1,007<!-- END energy:solar-net-3 --> Wh/day at 3 prints) → runs <strong>indefinitely on either 1 or 2 packs</strong>; the fresh Blue supply (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L / 121 L net per print) caps a deployment at <strong>~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days @ 3/day</strong>. Battery count sets only the <em>cloudy-day reserve</em> (1 pack ≈ <!-- BEGIN energy:reserve-1pack-day -->0.5<!-- END energy:reserve-1pack-day --> day, 2 packs ≈ <!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day) and the 4-print-day headroom — <strong>not</strong> the deployment length. The Black waste tote (1,000 L) is a parallel out-flow limit for fully self-contained field use.</p>
+<h3 id="31-energy-autonomy-summary">3.1 Energy &amp; Autonomy (summary)<a class="headerlink" href="#31-energy-autonomy-summary" title="Permanent link">&para;</a></h3>
+<p><em>Consumption — the per-session itemization, the daily model, and the disconnected-endurance analysis — is covered in full by the </em><em><a href="../daily-energy-report/">Daily Energy Report</a></em><em>. This report sizes the hardware; the headline figures only:</em></p>
+<ul>
+<li><strong>Per session:</strong> ~<!-- BEGIN energy:wh-session -->867<!-- END energy:wh-session --> Wh (0.87 kWh), dominated by the continuous fans + evaporative cooler (the tray drain now runs through the wash — see §7.3).</li>
+<li><strong>Battery:</strong> 1 × 100 Ah LiFePO4 = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh usable (standard build); busbar provisioned for a 2nd parallel pack (→ 200 Ah, no rewiring).</li>
+<li><strong>Solar:</strong> 600 W array ≈ <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day (Palm Springs) — <strong>solar-positive</strong> at the 3-print design duty.</li>
+</ul>
+<p><strong>Sizing outcome:</strong> a disconnected deployment is <strong>clean-water limited, not power limited</strong> (the fresh Blue supply caps it at ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days), so <strong>one pack runs it indefinitely on sun</strong>. The 2nd pack is an optional cloudy-day resilience upgrade, not an endurance requirement — see §5.2.</p>
 <h2 id="4-solar-array">4. Solar Array<a class="headerlink" href="#4-solar-array" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3178,7 +3061,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tbody>
 </table>
 <p>The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).</p>
-<p>The MPPT delivers up to 50 A to the battery, so its battery lead carries far more than the array side — a <strong>dedicated 60 A fuse close to the battery</strong> protects that conductor (the 200 A main fuse is far too large to protect a charge-controller lead), and the conductor is upsized to 6 AWG to match.</p>
+<p>The MPPT delivers up to 50A to the battery, so its battery lead carries far more than the array side — a <strong>dedicated 60A fuse close to the battery</strong> protects that conductor (the 200A main fuse is far too large to protect a charge-controller lead), and the conductor is upsized to 6 AWG to match.</p>
 <h3 id="52-battery-bank">5.2 Battery Bank<a class="headerlink" href="#52-battery-bank" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3227,7 +3110,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tbody>
 </table>
 <p><strong>Thermal siting (required).</strong> Because the BMS inhibits charging above ~45 °C while a sun-exposed steel container can reach 60 °C interior, the pack is <strong>mounted low (floor level, in the coolest stratified air), shaded from the sun-baked shell, and kept in the evaporative-cooler / ventilation airflow path</strong> — so it stays inside the charge window during peak sun rather than locking out the solar charge. A commissioning temperature check confirms the bay stays &lt; 45 °C under load (see <a href="../electrical-safety-report/">Electrical Safety §4 #4</a>).</p>
-<p><strong>One pack vs two — sizing rationale:</strong> a disconnected deployment is <strong>clean-water limited (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints / ~4.7 days)</strong>, not power limited (see §3.2), and the system is solar-positive, so <strong>one 100 Ah pack runs the standard deployment indefinitely on sun</strong>. The 2nd pack is a <strong>resilience upgrade</strong> — it extends the no-sun (cloudy-day) reserve from ~<!-- BEGIN energy:reserve-1pack-day -->0.5<!-- END energy:reserve-1pack-day --> day to ~<!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day and gives headroom for a 4-print day — not an endurance one. It plugs onto the busbar via its <strong>own terminal MRBF fuse</strong> — each parallel pack is fused at its own + post, so one pack's fault can't be back-fed by the other (the 2/0 cable and main disconnect are already sized for 200 Ah), so it can be added later without touching the wiring.</p>
+<p><strong>One pack vs two — sizing rationale:</strong> the standard build is <strong>1 × 100 Ah</strong> — a disconnected deployment is clean-water limited (not power limited) and the system is solar-positive, so one pack suffices (§3.1). The 2nd pack is a <strong>resilience upgrade</strong> (cloudy-day reserve + 4-print-day headroom), not an endurance requirement. It plugs onto the busbar via its <strong>own terminal MRBF fuse</strong> — each parallel pack fused at its own + post, so one pack's fault can't be back-fed by the other — and the 2/0 cable and main disconnect are already sized for 200 Ah, so it is added later without touching the wiring.</p>
 <p><strong>Why LiFePO4 and not NMC or lead-acid:</strong>
 - LiFePO4 does not exhibit thermal runaway — safe in an enclosed steel container that may reach 60°C interior
 - Full 100% depth of discharge usable (vs. 50% for lead-acid, 80% for NMC)
@@ -3321,7 +3204,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 </tbody>
 </table>
-<p><strong>All four exterior interfaces are already weatherproof</strong> (MC4 IP67, weatherproof shore inlet, WR duplex under an in-use cover, IP65 E-stop), so they mount <strong>exposed</strong> — each surface-mounted and gasket-sealed to the box's front face, with the electrical <strong>attached from the container-interior side</strong> (the box opens inward). No secondary IP enclosure is needed. The container wall is <strong>corrugated</strong>, so the box's exterior flange can't seat flat: it is sealed to the wall with <strong>flashing over the corrugation crests plus a silicone bead</strong> — a seal that must be <strong>light-tight as well as water-tight</strong> (this is a pinhole camera; any perimeter gap or connector cavity fogs the print). Opaque front face + gasketed opaque devices + flashed flange give the light seal; the inlet/outlet socket cavities get a light-baffle behind them. Each device's wiring runs <strong>inside the container</strong> to the EP — the PV pairs to the <strong>Blue Sea 6006 disconnect</strong> on the EP backboard, the shore inlet to the charger, the cooler outlet from the inverter (Circuit E), the E-stop loop to the contactor. The cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.</p>
+<p>All four interfaces are already weatherproof (MC4 IP67, WR shore inlet, WR duplex under an in-use cover, IP65 E-stop), so they mount <strong>exposed</strong> — surface-mounted and gasket-sealed to the box face, wired <strong>from the interior side</strong> (the box opens inward); no secondary IP enclosure is needed. The seal must be <strong>light-tight as well as water-tight</strong> (any perimeter gap or connector cavity fogs the print): the corrugated wall can't seat the flange flat, so it's <strong>flashed over the corrugation crests + a silicone bead</strong>, with an opaque face, gasketed opaque devices, and a light-baffle behind each socket cavity. Each device wires back to the EP — PV → the <strong>Blue Sea 6006 disconnect</strong>, shore inlet → charger, cooler outlet → inverter (Circuit E), E-stop loop → contactor. The cooler is unplugged and stowed inside for transport.</p>
 <p><img alt="External Power Panel — Sheet 6: arrangement, wall section, wiring" src="../assets/electrical-sheet6.png" /></p>
 <p>Sheet 6 gives the box arrangement, the cross-section through the corrugated wall, and the wiring. The <strong>fabrication detail</strong> is on two sheets: <strong>Sheet 8</strong> — the fully-dimensioned front-face cut layout (every hole/cutout/bolt located by a dim_h and dim_v from the lower-left datum, with cut sizes), and <strong>Sheet 9</strong> — the box pieces as a cut list (face/flange plate + shroud walls, each dimensioned) plus the securing detail through the corrugated wall (the 4× M6 through-bolts + backing + flashing seal).</p>
 <p><img alt="External Power Panel — Sheet 8: face plate fabrication (dimensioned cut layout)" src="../assets/electrical-sheet8.png" /></p>
@@ -3330,10 +3213,10 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 <h3 id="61-two-circuit-lighting-design">6.1 Two-Circuit Lighting Design<a class="headerlink" href="#61-two-circuit-lighting-design" title="Permanent link">&para;</a></h3>
 <p>TBS-001 requires two mutually exclusive lighting modes:</p>
 <ul>
-<li><strong>Safelight (Circuit D):</strong> Red 12V <strong>COB</strong> LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse / 18 AWG, no bump), dimmable, always available. (Two of the three ceiling runs carry a parallel white strip — see §6.2.)</li>
-<li><strong>White light (Circuit G):</strong> Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray (two parallel to the two drum-side red safelights at X=520 / 2270, plus one at the tray's X-center ~2454), plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.</li>
+<li><strong>Safelight (Circuit D):</strong> Red 12V <strong>COB</strong> LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse; on the single 12 AWG distribution gauge), dimmable, always available.</li>
+<li><strong>White light (Circuit F):</strong> Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray, plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.</li>
 </ul>
-<p>The two circuits are independently switched — they are <strong>not</strong> interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.</p>
+<p>The two circuits are independently switched — they are <strong>not</strong> interlocked, so the operator is responsible for ensuring Circuit F is off during operational phases. The pull-cord switches are positioned side by side for easy identification.</p>
 <h3 id="62-white-led-strip-specification">6.2 White LED Strip Specification<a class="headerlink" href="#62-white-led-strip-specification" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3349,7 +3232,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Runs</td>
-<td>4 ceiling runs in aluminum channels + frosted diffusers — three ~2,162mm over the tray (X=600 / X=2350 parallel to the drum-side red safelights + one at the tray X-center ~2454) + one ~1,176mm over the IBC/plumbing corridor (over the plumbing panel)</td>
+<td>4 ceiling runs in aluminum channels + frosted diffusers — three ~2,162mm over the tray (parallel to the drum-side red safelights + one at the tray center) + one over the IBC/plumbing corridor</td>
 </tr>
 <tr>
 <td>Power</td>
@@ -3373,7 +3256,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Circuit</td>
-<td>G (15A fuse, 12 AWG) — 8.8A draw (rewired from 10A / 14 AWG for the 3rd tray run)</td>
+<td>F (15A fuse, 12 AWG) — 8.8A draw (rewired from 10A / 14 AWG for the 3rd tray run)</td>
 </tr>
 <tr>
 <td>Approximate cost</td>
@@ -3381,7 +3264,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 </tbody>
 </table>
-<p>The four runs total ~7.7m of strip at 426 lm/ft → ~10,700 lumens. Spread over the ~14 m² floor that is ~760 lux as bare lumens-to-area, but the <strong>maintained work-plane average is ~330 lux</strong> once the coefficient of utilization (CU ≈ 0.55 — a diffused ceiling line source on a short throw) and light-loss factor (LLF ≈ 0.80 — LED lumen depreciation + dirt) are applied. The <strong>matte-black interior</strong> (0% sheen, specified in the <a href="../container-report/">Container report</a> to prevent image fogging) is why there is essentially no wall/ceiling bounce — the 20–60% inter-reflected gain a normal room adds — so even with that penalty the level sits <strong>comfortably mid-range in the 250–300 lux workshop target</strong>. A <strong>12V COB strip in an aluminum channel + diffuser</strong> gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. The 3rd tray run takes Circuit G to ~8.8A — past the 10A fuse's 8.0A continuous derate — so its feed is <strong>rewired from 14 AWG / 10A to 12 AWG on a 15A fuse</strong> (the 12 AWG shares the Circuit-F spool, which has the capacity; 15A fuses are already stocked for Circuit C, so no added cost beyond one more channel stick). True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.</p>
+<p>The ~10,700 lumens over the ~14 m² floor give a <strong>~330 lux maintained work-plane average</strong> (the table's CU/LLF deration). The <strong>matte-black interior</strong> (0% sheen, <a href="../container-report/">Container report</a>) kills the wall/ceiling bounce a normal room adds, yet the level still sits mid-range in the <strong>250–300 lux workshop target</strong>. The COB-in-channel strip gives an even, glare-free, dimmable wash that runs cool. The 3rd tray run pushes Circuit F to ~8.8A — past the 10A fuse's 8.0A derate — so its feed is <strong>rewired 14 AWG/10A → 12 AWG/15A</strong> (on the single 12 AWG distribution gauge; 15A fuses already stocked for Circuit C).</p>
 <h3 id="63-pull-cord-switches">6.3 Pull-Cord Switches<a class="headerlink" href="#63-pull-cord-switches" title="Permanent link">&para;</a></h3>
 <p>Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.</p>
 <table>
@@ -3410,7 +3293,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Switch 2</td>
-<td>Circuit G — white light. Cord labeled "WHITE"</td>
+<td>Circuit F — white light. Cord labeled "WHITE"</td>
 </tr>
 <tr>
 <td>Wire</td>
@@ -3422,14 +3305,14 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 </tbody>
 </table>
-<p>The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.</p>
+<p>The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 60 inches above the walkway deck — reachable without stretching.</p>
 <h2 id="7-wiring-specification">7. Wiring Specification<a class="headerlink" href="#7-wiring-specification" title="Permanent link">&para;</a></h2>
 <h3 id="71-main-panel-plywood-backboard-ip65-enclosure">7.1 Main Panel (Plywood Backboard + IP65 Enclosure)<a class="headerlink" href="#71-main-panel-plywood-backboard-ip65-enclosure" title="Permanent link">&para;</a></h3>
-<p>An <strong>18mm plywood backing panel</strong> (~700 × 2,000mm) on the interior pinhole-wall face is the mounting surface every component fixes to. It is a finish-agnostic backboard, so it is cut from the chem-shelf UV-white sheet rather than buying its own — see <a href="../plywood-cut-sheets/">Plywood Cut Sheets</a> (sheet D); the UV-coated face is already sealed and wipeable. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small <strong>IP65 weatherproof enclosure</strong> bolted to the plywood (its back panel is the plywood), sealing them against splash/dust from the water system; the MPPT, main disconnect, battery bank and inverter mount on the plywood outside it. It carries:</p>
+<p>An <strong>18mm plywood backing panel</strong> on the interior pinhole-wall face is the mounting surface for every component — cut from the chem-shelf UV-white sheet (sealed, wipeable; <a href="../plywood-cut-sheets/">Plywood Cut Sheets</a> sheet D), not bought separately. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small <strong>IP65 enclosure</strong> bolted to the plywood (splash/dust seal from the water system); the MPPT, main disconnect, battery, and inverter mount on the plywood outside it. It carries:</p>
 <ul>
 <li>Victron MPPT controller — on its own forward sub-panel, clear of the fuse-stack risers</li>
 <li><strong>PV array disconnect</strong> — DC load-break isolator in the PV path (array → MPPT), wired in-line on the panel (NEC 690.13)</li>
-<li>Blue Sea 5026 12-circuit fuse block with busbars</li>
+<li>Blue Sea 5026 12-circuit fuse block with busbars (7 used: A, B, C1, C2, D, E, F)</li>
 <li>Battery positive and negative busbars, fed from the battery through a terminal-mount <strong>200A MRBF fuse</strong> (on the battery + post, ≤180mm), a <strong>remote battery contactor</strong> (Blue Sea ML-RBS, tripped by <strong>either the exterior power-panel E-stop or an interior E-stop on the EP face</strong>, wired in parallel), and a <strong>main disconnect switch</strong> (Blue Sea m-Series 300A) — see §7.5</li>
 <li><strong>MPPT charge-line fuse</strong> — a 60A ANL/MIDI fuse on the MPPT→battery lead at the busbar (§5.1)</li>
 <li><strong>Interior E-stop</strong> — a red mushroom button (uxcell a19061100ux1510) on the EP face, paralleled with the exterior E-stop, so the contactor can also be tripped from inside the container (§7.5)</li>
@@ -3458,28 +3341,35 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 <td>A</td>
 <td>Ventilation fan — exhaust (far end wall, high)</td>
 <td>5A</td>
-<td>16 AWG</td>
+<td>12 AWG</td>
 <td>~2.5m</td>
 </tr>
 <tr>
 <td>B</td>
 <td>Ventilation fan — intake (panel-mounted, low)</td>
 <td>5A</td>
-<td>16 AWG</td>
+<td>12 AWG</td>
 <td>~8m + flex connector</td>
 </tr>
 <tr>
-<td>C</td>
-<td>Water pumps <strong>P-01–P-05</strong> (5× Shurflo, master switch)</td>
+<td>C1</td>
+<td>Water pumps — corridor <strong>P-01/02/03/05</strong> (one at a time, via the 2-pole master switch)</td>
 <td>15A</td>
-<td>14 AWG feed + 16 AWG branches</td>
+<td>12 AWG dry feed + 14 AWG marine duplex (wet-zone pump run)</td>
 <td>~5m feed (~8m to P-03)</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Tray-drain pump <strong>P-04</strong> (own feed off the 2-pole master switch)</td>
+<td>10A</td>
+<td>12 AWG</td>
+<td>~3m (EP → filter skid)</td>
 </tr>
 <tr>
 <td>D</td>
 <td>Safelight (3× ceiling strips + drum)</td>
 <td>5A</td>
-<td>18 AWG</td>
+<td>12 AWG</td>
 <td>~15m (3 branches + drum)</td>
 </tr>
 <tr>
@@ -3493,18 +3383,11 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 <td>E-AC</td>
 <td>Inverter 120V AC out → panel cooler outlet</td>
 <td>(GFCI at inverter)</td>
-<td>14 AWG / SJOOW</td>
+<td>12 AWG (fixed run in trunk)</td>
 <td>~4m</td>
 </tr>
 <tr>
 <td>F</td>
-<td>Film plane actuators (optional)</td>
-<td>20A</td>
-<td>12 AWG</td>
-<td>~6m</td>
-</tr>
-<tr>
-<td>G</td>
 <td>White LED strip ×4 (general lighting)</td>
 <td>15A</td>
 <td>12 AWG</td>
@@ -3535,21 +3418,27 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 <td>—</td>
 <td>E-stop control loop (exterior <strong>+</strong> interior, parallel)</td>
 <td>—</td>
-<td>2× 18 AWG</td>
+<td>2× 12 AWG</td>
 <td>both → ML-RBS trip</td>
 </tr>
 </tbody>
 </table>
 <h3 id="73-wiring-construction">7.3 Wiring Construction<a class="headerlink" href="#73-wiring-construction" title="Permanent link">&para;</a></h3>
-<p><strong>Conduit:</strong> All DC wiring in gray corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).</p>
+<p><strong>Single distribution gauge — 12 AWG.</strong> Every load circuit (A, B, C1, C2, D, F) and the E-stop control loop are wired in <strong>one hook-up gauge, 12 AWG</strong>, deliberately over-rated for the low-current circuits (fans, safelight, pumps at ≤7.5 A) so the installer never has to decide which gauge goes where — one spool covers everything dry. The gauge is set by the two 15 A circuits (C1 feed, F), and the others simply carry it. The only exceptions are <em>specialized cables</em> (not gauge choices): Circuit <strong>E</strong>'s 40 A inverter DC feed stays <strong>10 AWG</strong> (ampacity); the battery main is <strong>2/0</strong> and the MPPT charge lead <strong>6 AWG</strong>; the wet-zone pump branches use <strong>14 AWG tinned marine duplex</strong>, the Fan-B swing jumper is a <strong>16 AWG silicone-flex</strong> coiled lead (for the repeated swing), and the exterior cooler cord is <strong>SJOOW</strong> — each a distinct cable type for its job.</p>
+<p><strong>Conduit:</strong> All DC wiring in gray corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized). The flat profile is the compelling choice here because its 40mm width lets all <strong>7 load circuits lie side-by-side in a single duct</strong> along the corner rail — a round conduit sized for the same bundle would protrude much further into the already-tight interior — and the open channel with a snap-on cover lets the cables lay in (and be added or re-routed) without fishing.</p>
 <p><strong>Connectors:</strong>
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated. (The cooler is <strong>120V AC</strong> and terminates at the panel's GFCI-fed weatherproof outlet, <strong>not</strong> a DT connector — see Circuit E below and §7.6.)
-- <strong>Circuit B flex connector (panel-mounted intake fan):</strong> Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate the ~56° transport swing about the pivot (with slack) without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
+- <strong>Circuit B flex connector (panel-mounted intake fan):</strong> Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
 - <strong>Circuit E (evaporative cooler, via inverter):</strong> The cooler is a 120V AC unit operating outside the container during sessions. The <strong>DC side</strong> is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The <strong>AC side</strong> runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
-- <strong>Circuit C (water pumps P-01–P-05):</strong> The single 14 AWG Circuit-C feed is switched at a <strong>master pump switch on the Electrical Panel (EP)</strong> — one IP-rated manual cutoff for the whole pump circuit, upstream of everything — then runs along the ceiling trunking to a <strong>12V DC distribution block</strong> (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, which feeds each corridor pump directly via a short <strong>16 AWG</strong> branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05, P-03); P-04 (tray drain) taps the switched feed on the Pinhole-Wall filter skid. There are <strong>no per-pump switches</strong> — each Shurflo 2088 runs on its <strong>internal demand/pressure switch</strong> when its valves open, and the pumps are sequenced by opening the relevant valves (<strong>one at a time</strong>; simultaneous operation is not intended). The 15A circuit fuse protects the 14 AWG feed and covers a single pump (90W / <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A) with margin. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.</p>
-<p><strong>Grounding:</strong> Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main panel. Drive an 8-foot copper ground stake at the container foundation and connect to the main panel earth terminal. The inverter chassis, AC equipment-ground, and cooler ground bond to this same single point — see §7.6.</p>
-<p><strong>Labelling:</strong> Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–G) plus device description. Re-label after any wiring change.</p>
+- <strong>Circuit C (water pumps P-01–P-05) — dual-fused, one 2-pole master switch.</strong> The pump circuit splits into two independently-fused branches, both gated by a single <strong>2-pole (DPST) master pump switch on the EP</strong> — one throw kills every pump (the single IP-rated cutoff, upstream of everything), but each pole carries only one pump, so nothing is uprated:
+    - <strong>C1 — corridor pumps</strong> (15A fuse, 12 AWG dry feed): runs along the ceiling trunking to a <strong>12V DC distribution block</strong> (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, feeding each corridor pump via a short <strong>14 AWG marine-duplex</strong> branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: <strong>ACC-01</strong> accumulator, <strong>P-01</strong> Blue fresh → spray bar, <strong>P-02</strong> Brown recycle → spray bar, <strong>P-05</strong> Brown drain-out → X3, <strong>P-03</strong> Waste drain-out → X4), sequenced one at a time by opening the relevant valves.
+    - <strong>C2 — tray-drain pump P-04</strong> (10A fuse, 12 AWG feed): its own run from the EP to <strong>P-04</strong> on the Pinhole-Wall filter skid (tray-sump drain → filter skid).</p>
+<pre><code>Putting P-04 on its own fuse (each branch ≤&lt;!-- BEGIN fact:pump_current_a --&gt;7.5&lt;!-- END fact:pump_current_a --&gt;A) removes the single-fuse limit, so the tray drain (C2) can run **concurrently** with a supply pump (C1) — headroom for a continuous flow-through wash — with no fuse at 100% of rating. The wash is run this way — a **continuous flow-through** cycle (supply + drain together, [Operating Manual §4.2](operating-manual.md)); P-04 then drains across the whole wash, which is the ~30 Wh/session the energy budget reflects. There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
+</code></pre>
+<p><strong>Grounding:</strong> the protective ground is <strong>equipotential bonding, not a site earth electrode</strong>. The container steel shell, the inverter and cooler chassis, the AC equipment-ground, and the DC negative are all <strong>permanently bonded to one point</strong> at the main panel (4 AWG green/yellow to the battery-negative busbar). This bonding is what clears a fault — any positive-to-metal or AC-line-to-metal fault becomes a low-impedance short back to that point that opens the fuse or trips the GFCI — and it works <strong>on any surface</strong>, so the system does not depend on a ground driven into the earth (the same way an RV, boat, or portable generator is grounded; see §7.6).</p>
+<p>An <strong>8-foot copper earth stake is optional, not a requirement</strong> — its one practical benefit is <strong>static dissipation</strong>: a sun-baked steel box in a dry desert can build a static charge, and bleeding it to earth cuts nuisance zaps and settles less dust on drying prints. It is <strong>not</strong> lightning protection, and it is <strong>not</strong> part of the electrical-safety design (that's the bonding above). So: <strong>on soil</strong>, drive it beside the power panel and clamp it to the main-panel earth terminal if you want the static benefit; <strong>on a hard surface (concrete, asphalt), or any deployment where static isn't a concern, skip it entirely</strong> — the bonding provides the full fault protection regardless. If a convenient earth is handy (building ground, grounded metal water pipe), bond to that instead. When the container is set <strong>directly on bare soil</strong> its own steel corner castings are in contact with earth and bleed static on their own — so even on soil the stake is only worth driving if the container is leveled up on <strong>timber sleepers</strong> (<a href="../operating-manual/">Operating Manual §1.2.2</a>), which insulate the castings from the ground. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.</p>
+<p><strong>Labelling:</strong> Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F; the pump circuit is dual-fused <strong>C1</strong>/<strong>C2</strong>) plus device description. Re-label after any wiring change.</p>
 <h3 id="74-electrical-diagrams">7.4 Electrical Diagrams<a class="headerlink" href="#74-electrical-diagrams" title="Permanent link">&para;</a></h3>
 <p><strong>Sheet 1 — System One-Line Diagram</strong>
 Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labeled.</p>
@@ -3557,11 +3446,10 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <p><strong>Sheet 3 — Pinhole Wall Interior Elevation</strong>
 Interior elevation of the pinhole wall face, looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.</p>
 <p><img alt="TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation" src="../assets/electrical-sheet3.png" /></p>
-<p><strong>Sheet 4 — Plumbing-Panel Pump Power (Circuit C)</strong>
-Scale engineering elevation of the Circuit-C pump distribution on the corridor plumbing panel (matches the panel-layout elevation in the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>): the switched 14 AWG / 15A feed (from the <strong>master pump switch on the EP</strong> — Sheet 5) → 12V distribution block → a 16 AWG <strong>curved-elbow</strong> branch to each of the four column pumps (bottom→top ACC-01, P-01, P-02, P-05, P-03; P-04 is fed on the Pinhole-Wall filter skid). No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>.</p>
-<p><img alt="TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)" src="../assets/electrical-sheet4.png" /></p>
-<p><strong>Sheet 5 — Main Panel Layout</strong>
-Front elevation of the EP plywood panel (the 2D companion to the electrical 3D model's <code>power_core</code>), <strong>reach-optimized so every maintenance item clears no-stool reach (≤1.75 m)</strong>: bottom-to-top the battery pair, the inverter, a grouped <strong>disconnect cluster</strong> at ~chest height (main disconnect · Circuit-C master pump switch · PV disconnect · interior E-stop), the color-coded A–G blade-fuse stack on the Blue Sea 5026 with the +/− busbars in the IP65 enclosure at chest height, and the MPPT display at the top of the reachable stack, with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.</p>
+<p><strong>Sheet 4 — Plumbing-Panel Pump Power (Circuit C1 — corridor)</strong>
+Scale engineering elevation of the corridor-pump (C1) distribution on the plumbing panel (matches the panel-layout elevation in the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>): the switched 12 AWG / 15A C1 feed (from pole 1 of the <strong>2-pole master pump switch on the EP</strong> — Sheet 5) → 12V distribution block → a 14 AWG marine-duplex <strong>curved-elbow</strong> branch to each of the four column pumps (bottom→top ACC-01, P-01, P-02, P-05, P-03). The tray-drain P-04 is <strong>not</strong> on this panel — it is on its own fuse C2, fed separately from pole 2 of the master switch to the Pinhole-Wall filter skid. No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>.</p>
+<p><img alt="TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C1 — corridor)" src="../assets/electrical-sheet4.png" /></p>
+<p><strong>Sheet 5 — Main Panel Layout</strong> — the reach-optimized EP panel elevation + fuse schedule (fully described in §7.1).</p>
 <p><img alt="TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule" src="../assets/electrical-sheet5.png" /></p>
 <h3 id="75-circuit-protection-electrical-safety">7.5 Circuit Protection &amp; Electrical Safety<a class="headerlink" href="#75-circuit-protection-electrical-safety" title="Permanent link">&para;</a></h3>
 <p>This is a 12 V DC (extra-low-voltage) system whose <strong>only</strong> 120 V AC element is the
@@ -3579,16 +3467,16 @@ isolation/GFCI/bonding design in §7.6. The following protective measures are pa
   button on the EP face inside</strong> (so an operator already in the container kills it without
   going out to the panel). Pressing either opens the contactor and de-energizes the entire
   DC system. The magnetic latch holds the contactor open at <strong>zero standby current</strong>; reset
-  is at the contactor's manual lever. A low-current 2 × 18 AWG control loop (both buttons in
+  is at the contactor's manual lever. A low-current 2 × 12 AWG control loop (both buttons in
   parallel) runs to the contactor, the exterior leg penetrating the pinhole wall through a
   sealed gland.</li>
-<li><strong>Battery main disconnect switch</strong> (Blue Sea m-Series 300 A) between the contactor and
+<li><strong>Battery main disconnect switch</strong> (Blue Sea m-Series 300A) between the contactor and
   the distribution busbar — a manual isolator for maintenance / service
-  de-energization (the 200 A fuse is overcurrent protection, not a switch).</li>
-<li><strong>PV array disconnect</strong> — a DC load-break isolator (50 A / 150 VDC) on the array→MPPT
+  de-energization (the 200A fuse is overcurrent protection, not a switch).</li>
+<li><strong>PV array disconnect</strong> — a DC load-break isolator (50A / 150 VDC) on the array→MPPT
   line at the power panel isolates the <em>charge</em> side (which the battery-side E-stops do not
   reach) for service or fault; MC4 connectors are not load-break rated (NEC 690.13).</li>
-<li><strong>MPPT charge-line fuse</strong> — a 60 A ANL/MIDI fuse on the MPPT→battery lead (6 AWG) close to
+<li><strong>MPPT charge-line fuse</strong> — a 60A ANL/MIDI fuse on the MPPT→battery lead (6 AWG) close to
   the battery protects the charge conductor, which the 200 A main fuse is too large to cover.</li>
 <li><strong>Main fuse at the battery terminal</strong> — a terminal-mount MRBF fuse on the battery + post
   (≤180 mm, per ABYC E-11) protects the main cable along its whole length.</li>
@@ -3621,333 +3509,69 @@ code-anchored rules:</p>
    requires GFCI protection (<a href="https://iaeimagazine.org/issue/january2020/nec-requirements-for-gfci-protection-section-210-8/">NEC 210.8</a>).
    The recommended inverter has a <strong>built-in GFCI outlet</strong>; the panel's cooler outlet is fed
    from it, protecting the operator handling a wet cooler.</li>
-<li><strong>Equipotential bonding / effective fault path.</strong> The <strong>container shell, inverter chassis,
-   cooler chassis, AC equipment-grounding conductor, and DC negative</strong> all tie to the single
+<li><strong>Equipotential bonding / effective fault path.</strong> The container shell, inverter chassis,
+   cooler chassis, AC equipment-grounding conductor, and DC negative all tie to the single
    ground point (§7.3/§7.5). Any AC line-to-metal fault then has a low-impedance return that
    trips the GFCI/breaker instantly, so the <strong>steel shell can never become energized</strong>
    (<a href="https://www.electricallicenserenewal.com/Electrical-Continuing-Education-Courses/NEC-Content.php?sectionID=870">NEC 250.110 / Art. 250 Part V</a>).</li>
-<li><strong>DC-side protection + positive isolation.</strong> The inverter's 12 V feed is fused at the
-   battery (40 A, 10 AWG, ~1 m) with a <strong>dedicated DC disconnect</strong>, so the entire AC
+<li><strong>DC-side protection + positive isolation.</strong> The inverter's 12V feed is fused at the
+   battery (40A, 10 AWG, ~1 m) with a <strong>dedicated DC disconnect</strong>, so the entire AC
    subsystem is hard-isolated whenever the cooler is not running — which is most of the time.
    The external E-stop (§7.5) also kills it with everything else.</li>
 <li><strong>Galvanic isolation vs. bonding — by design.</strong> A transformer pure-sine inverter already
-   isolates the AC live/neutral conductors from the 12 V battery side; rules 1–3 deliberately
+   isolates the AC live/neutral conductors from the 12V battery side; rules 1–3 deliberately
    bond only the <strong>safety grounds</strong> to one point. Isolation (of the current-carrying
    conductors) and single-point bonding (of the grounds) are complementary, not in conflict.</li>
 </ol>
+<p><strong>No site earth required.</strong> The shock protection above comes from the inverter's single neutral-ground bond + the GFCI + the equipotential bonding — the fault current returns through the <em>bonding</em> (rule 3), not through the earth — so the system is fully protected <strong>on any surface, soil or concrete</strong>, with no ground rod driven. The optional 8-ft earth stake (§7.3) only adds a supplementary site earth when the container sits on soil.</p>
 <p><strong>Operationally:</strong> the cooler is plugged into the panel's in-use-covered GFCI outlet only
 during sessions; for transport the cord is unplugged and stowed and the inverter DC
 disconnect is opened. The <a href="../electrical-safety-report/">Electrical Safety Report</a> carries
 the full hazard assessment including this AC branch.</p>
 <h2 id="8-parts-list">8. Parts List<a class="headerlink" href="#8-parts-list" title="Permanent link">&para;</a></h2>
-<p>All US/SoCal sources. Prices approximate as of 2026.</p>
+<p>The full electrical <strong>Bill of Materials</strong> — every item, quantity, current price, and supplier — lives in
+the single-source parts registry, rendered as the
+<a href="../master-shopping-list/?system=electrical"><strong>Master Shopping List, filtered to the electrical system</strong></a>.
+That view is <strong>sortable</strong> (click any column header — e.g. <em>Est. cost</em> or <em>Supplier</em>) and is always current,
+so this report no longer restates the line items (the old hand-keyed table drifted — the inverter DC
+protection, for one, had been listed here but never reached the registry). The powered cooling/ventilation
+hardware the electrical system feeds — evaporative cooler, 12V→120V inverter, fans, shade canopy — is the
+<a href="../master-shopping-list/?system=ventilation">ventilation slice</a>.</p>
+<p><strong>Cost summary</strong> (generated from the cost model):</p>
 <table>
 <thead>
 <tr>
-<th>Item</th>
-<th>Spec</th>
-<th>Source</th>
+<th>Subtotal</th>
 <th>Est. cost</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Solar panels</td>
-<td>200W mono × 3</td>
-<td>Renogy (renogy.com), Amazon</td>
-<td>~$400</td>
+<td><strong>Electrical system total</strong> (standard 1-pack build)</td>
+<td><strong>~<!-- BEGIN costing:elec-system-total -->$3,472<!-- END costing:elec-system-total --></strong></td>
 </tr>
 <tr>
-<td>MPPT charge controller</td>
-<td>Victron SmartSolar MPPT 100/50</td>
-<td>altE Store (altestore.com)</td>
-<td>~$200</td>
-</tr>
-<tr>
-<td>LiFePO4 battery × 1 (standard)</td>
-<td>100Ah 12V (Renogy Core RBT12100LFP-US)</td>
-<td>offgridstores.com / renogy.com</td>
-<td>$306</td>
-</tr>
-<tr>
-<td>LiFePO4 battery — 2nd pack (optional, plug-in)</td>
-<td>100Ah 12V, parallel onto the busbar (no rewiring) + its <strong>own MRBF terminal fuse</strong></td>
-<td>same</td>
-<td>+$375</td>
-</tr>
-<tr>
-<td>Shore backup charger</td>
-<td>Victron Blue Smart IP65 12/15</td>
-<td>altE Store</td>
-<td>~$150</td>
-</tr>
-<tr>
-<td>Fuse block</td>
-<td>Blue Sea 5026 ST Blade 12-circuit</td>
-<td>West Marine (Torrance CA) / Amazon</td>
-<td>~$55</td>
-</tr>
-<tr>
-<td>200A main fuse (terminal-mount)</td>
-<td>Blue Sea MRBF on the battery + post (≤180mm, ABYC E-11)</td>
-<td>Amazon</td>
-<td>~$25</td>
-</tr>
-<tr>
-<td>Battery main disconnect switch</td>
-<td>Blue Sea m-Series 300A — manual isolator, contactor to busbar</td>
-<td>West Marine (Torrance CA) / Amazon</td>
-<td>~$40</td>
-</tr>
-<tr>
-<td>Remote battery switch (contactor)</td>
-<td>Blue Sea ML-RBS 500A magnetic-latch — in battery + feed, tripped by the external E-stop</td>
-<td>West Marine (Torrance CA) / Amazon</td>
-<td>~$150</td>
-</tr>
-<tr>
-<td>External emergency cut-off (E-stop)</td>
-<td>Red mushroom switch (uxcell a19061100ux1510) in a <strong>weatherproof control-station box</strong> (uxcell B07GN5P3NF, IP65, 78×71×64mm — ample for rain; upgrade to a gasketed IP66 box only if washdown-rated) + 2× 18 AWG control loop</td>
-<td><a href="https://www.harfington.com/products/p-1071142">Harfington</a> / Amazon</td>
-<td>~$21</td>
-</tr>
-<tr>
-<td>Interior emergency cut-off (E-stop)</td>
-<td>Red mushroom switch (uxcell a19061100ux1510), EP-face mount — paralleled to the exterior E-stop → ML-RBS trip</td>
-<td><a href="https://www.harfington.com/products/p-1071142">Harfington</a> / Amazon</td>
-<td>~$13</td>
-</tr>
-<tr>
-<td>PV array disconnect</td>
-<td>DC load-break isolator, 50A / 150VDC, panel-mount (array → MPPT; NEC 690.13)</td>
-<td><a href="https://www.automationdirect.com/">AutomationDirect</a> / Amazon</td>
-<td>~$40</td>
-</tr>
-<tr>
-<td>MPPT charge-line fuse</td>
-<td>60A ANL/MIDI + holder on the MPPT→battery lead; 6 AWG charge conductor</td>
-<td>Blue Sea / Amazon</td>
-<td>~$15</td>
-</tr>
-<tr>
-<td>Shore-charger output fuse</td>
-<td>20A inline on the charger DC output lead</td>
-<td>Amazon</td>
-<td>~$5</td>
-</tr>
-<tr>
-<td>Battery terminal covers (pair)</td>
-<td>Insulating boots over + / − posts/busbar</td>
-<td>Amazon</td>
-<td>~$10</td>
-</tr>
-<tr>
-<td>Sealed wet-zone connectors</td>
-<td>Deutsch DT / adhesive-lined heat-shrink, pump circuits</td>
-<td>Waytek Wire</td>
-<td>~$25</td>
-</tr>
-<tr>
-<td>Master pump switch (Circuit C)</td>
-<td>1× IP67 sealed rocker/disconnect, 12V 16A — single cutoff for the whole pump circuit, <strong>mounted on the EP</strong></td>
-<td>Amazon / Waytek Wire</td>
-<td>~$10</td>
-</tr>
-<tr>
-<td>Pump distribution block</td>
-<td>12V DC positive bus + negative bus (6-way), panel-mount on the rear of the Corridor Plumbing Panel, fed from the EP master switch</td>
-<td>Blue Sea / Amazon</td>
-<td>~$15</td>
-</tr>
-<tr>
-<td>Dielectric grease</td>
-<td>Marine-grade — chemistry-vapor terminal protection</td>
-<td>Amazon</td>
-<td>~$10</td>
-</tr>
-<tr>
-<td>Tinned marine wire (wet-zone runs)</td>
-<td>14/16 AWG tinned copper, ~25ft</td>
-<td>Waytek Wire</td>
-<td>~$30</td>
-</tr>
-<tr>
-<td>Cable grommets / glands</td>
-<td>Steel-shell penetrations (chafe protection)</td>
-<td>McMaster-Carr</td>
-<td>~$15</td>
-</tr>
-<tr>
-<td>Equipotential bonding kit</td>
-<td>6 AWG green/yellow + ring lugs — IBC frame / walkway / tray-metal to battery-negative</td>
-<td>Amazon</td>
-<td>~$20</td>
-</tr>
-<tr>
-<td>Wiring kit</td>
-<td>14/16/18 AWG, 50ft each color</td>
-<td>Amazon / Waytek Wire (waytekwire.com)</td>
-<td>~$80</td>
-</tr>
-<tr>
-<td>Anderson Powerpole connectors</td>
-<td>30A kit, 50 pairs</td>
-<td>Powerwerx (powerwerx.com)</td>
-<td>~$40</td>
-</tr>
-<tr>
-<td>Deutsch DT connectors</td>
-<td>DT 2-pin, 10 sets</td>
-<td>Waytek Wire</td>
-<td>~$30</td>
-</tr>
-<tr>
-<td>Cable trunking</td>
-<td>40 × 25mm PVC, 5m lengths × 4</td>
-<td>Lowe's / McMaster-Carr</td>
-<td>~$40</td>
-</tr>
-<tr>
-<td>Corrugated conduit</td>
-<td>Gray, 10mm ID, 10m</td>
-<td>McMaster-Carr 7828K48</td>
-<td>~$30</td>
-</tr>
-<tr>
-<td>EP plywood backing panel</td>
-<td>18mm UV-white, ~700×2,000mm — cut from the chem-shelf sheet (<a href="../plywood-cut-sheets/">Plywood Cut Sheets</a>, sheet D)</td>
-<td>shared, no separate sheet</td>
-<td>$0</td>
-</tr>
-<tr>
-<td>IP65 enclosure</td>
-<td>~200×220×140mm (fuse block + busbars)</td>
-<td>Polycase / Amazon</td>
-<td>~$60</td>
-</tr>
-<tr>
-<td>Brady label kit</td>
-<td>M210 with wire label cartridge</td>
-<td>McMaster-Carr / Amazon</td>
-<td>~$80</td>
-</tr>
-<tr>
-<td>NEMA 5-15R inlet</td>
-<td>Weatherproof outlet box</td>
-<td>Leviton / Amazon</td>
-<td>~$25</td>
-</tr>
-<tr>
-<td>Cooler inverter</td>
-<td>Victron Phoenix 12/375, <strong>GFCI version</strong> (12V→120V pure-sine, Circuit E)</td>
-<td><a href="https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va">Victron</a> / Amazon</td>
-<td>~$210</td>
-</tr>
-<tr>
-<td>Inverter DC protection</td>
-<td>40A ANL fuse + holder + DC disconnect switch (inverter feed)</td>
-<td>Blue Sea / Amazon</td>
-<td>~$40</td>
-</tr>
-<tr>
-<td>Panel AC outlet (Circuit E)</td>
-<td>GFCI-fed weatherproof NEMA 5-15R + in-use (bubble) cover</td>
-<td>Leviton / Amazon</td>
-<td>~$25</td>
-</tr>
-<tr>
-<td>Cooler power cord</td>
-<td>1.5m outdoor SJOOW, NEMA 5-15P each end</td>
-<td>Amazon</td>
-<td>~$20</td>
-</tr>
-<tr>
-<td>Copper ground stake</td>
-<td>8ft × 5/8" diameter</td>
-<td>Home Depot</td>
-<td>~$20</td>
-</tr>
-<tr>
-<td>4 AWG ground wire</td>
-<td>Green/yellow, 3m</td>
-<td>AutoZone / Amazon</td>
-<td>~$15</td>
-</tr>
-<tr>
-<td>Solar mount + PV cabling + power-panel</td>
-<td>Ground tilt frame (30°), MC4 PV cable + bulkheads, flush-panel plate + gasket + bolts, 2/0 AWG battery cable</td>
-<td>various</td>
-<td>~$195</td>
-</tr>
-<tr>
-<td>Evaporative cooler</td>
-<td>Hessaire MC18M, 120V AC, 1,300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 16 lb</td>
-<td><a href="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler">Hessaire</a> / Amazon</td>
-<td>~$130</td>
-</tr>
-<tr>
-<td>Shade canopy</td>
-<td>70% shade cloth, 20 × 10ft</td>
-<td>Amazon / Farm supply</td>
-<td>~$30</td>
-</tr>
-<tr>
-<td>Canopy frame</td>
-<td>1" EMT conduit + fittings</td>
-<td>Home Depot</td>
-<td>~$131</td>
-</tr>
-<tr>
-<td>Ventilation fans × 2</td>
-<td>150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline)</td>
-<td>Amazon</td>
-<td>~$50</td>
-</tr>
-<tr>
-<td><a href="https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb">12V COB LED strip, 4000K, 16.4ft reel ×2 (L2712V-40D3-1630-U)</a> + <strong>6× LED Profiles 981 channel/diffuser (white + red)</strong> + connectors/PWM dimmers</td>
-<td>white: 3× 2.16m tray + 1× 1.18m corridor (~10,700 lm → ~330 lux maintained), 106W/8.8A (12 AWG/15A), dimmable, true 12V</td>
-<td>HitLights + LED Profiles</td>
-<td>~$84 strip + ~$162 channel + ~$15</td>
-</tr>
-<tr>
-<td><a href="https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc">Red 12V COB LED strip, 5m reel (STN-B-BRED-O12A-08F5M-12V)</a></td>
-<td>Circuit-D safelight — 40W/reel cut into 3 ceiling runs + drum (~40W/3.3A), COB 620nm, dimmable, cyanotype-safe, IP20</td>
-<td>Super Bright LEDs</td>
-<td>~$90</td>
-</tr>
-<tr>
-<td>Pull-cord ceiling switch, 12V 6A SPST</td>
-<td>Inline switch for lighting circuits D &amp; G</td>
-<td>Amazon / Lowe's</td>
-<td>~$16 (×2)</td>
-</tr>
-<tr>
-<td><strong>Electrical system total</strong></td>
-<td></td>
-<td></td>
-<td><strong>~<!-- BEGIN costing:elec-system-total -->$3,459<!-- END costing:elec-system-total --></strong></td>
-</tr>
-<tr>
-<td><strong>Shade canopy total</strong></td>
-<td></td>
-<td></td>
+<td><strong>Shade canopy</strong></td>
 <td><strong>~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total --></strong></td>
 </tr>
 <tr>
-<td><strong>Cooling (cooler + inverter + DC protection + AC outlet + cord)</strong></td>
-<td></td>
-<td></td>
+<td><strong>Cooling</strong> (evap cooler + inverter + external cord)</td>
 <td><strong>~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total --></strong></td>
 </tr>
 <tr>
 <td><strong>Systems grand total</strong></td>
-<td></td>
-<td></td>
-<td><strong>~<!-- BEGIN costing:elec-grand-total -->$3,957<!-- END costing:elec-grand-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-grand-total -->$3,970<!-- END costing:elec-grand-total --></strong></td>
 </tr>
 </tbody>
 </table>
-<p><em>Electrical system total is the </em><em>standard 1-pack build</em><em> and matches the consolidated <a href="../master-shopping-list/">Master Shopping List §6</a> (the <code>electrical-power</code> + <code>electrical-distribution</code> subtotals, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the <a href="../electrical-safety-report/">Electrical Safety Report</a> §5 (interior </em><em>+</em><em> exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, </em><em>PV array disconnect, MPPT charge-line + shore-charger fuses</em><em>, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).</em></p>
+<p><em>The electrical system total is the </em><em>standard 1-pack build</em><em> and equals the
+<a href="../master-shopping-list/?system=electrical">Master Shopping List §6</a> electrical subtotal (the authoritative
+electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). The total carries ~$450 of
+circuit-protection / wet-zone-sealing hardware per the <a href="../electrical-safety-report/">Electrical Safety Report</a>
+§5 (interior </em><em>+</em><em> exterior emergency cut-offs, battery contactor, disconnect switch, terminal-mount fuse,
+PV array disconnect, MPPT charge-line + shore-charger fuses, </em><em>inverter DC fuse + disconnect</em><em>, sealed
+connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (master pump switch +
+distribution block).</em></p>
 <h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3967,7 +3591,7 @@ the full hazard assessment including this AC branch.</p>
 </tr>
 <tr>
 <td>Before each session</td>
-<td>Test safelight (Circuit D) and white light (Circuit G) switches</td>
+<td>Test safelight (Circuit D) and white light (Circuit F) switches</td>
 </tr>
 <tr>
 <td>Monthly</td>
@@ -3995,7 +3619,7 @@ the full hazard assessment including this AC branch.</p>
 </tr>
 <tr>
 <td>Annually</td>
-<td>Inspect ground stake connection and measure earth resistance</td>
+<td>Inspect the ground-stake connection and measure earth resistance <em>(only if the optional earth stake is deployed — see §7.3)</em></td>
 </tr>
 <tr>
 <td>Annually</td>
@@ -4099,7 +3723,7 @@ the full hazard assessment including this AC branch.</p>
       
         <script src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js?v=3"></script>
+        <script src="../javascripts/tablesort.js?v=4"></script>
       
     
   </body>

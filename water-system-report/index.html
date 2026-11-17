@@ -3385,8 +3385,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tr>
 <td>P-04 Tray drain transfer pump (Shurflo 2088)</td>
 <td><!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a --> A @ 12V</td>
-<td>0.08 hr (5 min run)</td>
-<td>7.5 Wh</td>
+<td>0.42 hr (25 min, continuous drain through the wash)</td>
+<td>37.5 Wh</td>
 </tr>
 <tr>
 <td>P-05 Brown drain-out pump (Shurflo 2088) — <em>IBC corridor</em></td>
@@ -3404,11 +3404,12 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>Total per print</strong></td>
 <td></td>
 <td></td>
-<td><strong>~46 Wh</strong></td>
+<td><strong>~75 Wh</strong></td>
 </tr>
 </tbody>
 </table>
-<p>A 100 Ah 12V lithium battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh --> Wh usable) provides <strong>&gt;25 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
+<p><strong>Continuous flow-through wash (hydraulic balance).</strong> The wash runs the supply pump (P-01 Blue or P-02 Brown) and the tray-drain pump P-04 <strong>concurrently</strong> — both Shurflo 2088s move the same <strong>3.5 GPM</strong>, so the drain removes water as fast as the spray bar delivers it and the tray holds a <strong>shallow, stable flowing film</strong> rather than filling and dwelling. This is enabled by the Circuit-C <strong>C1/C2</strong> split (the two pumps are on separate fuses, one 2-pole master switch; <a href="../electrical-report/">Electrical Report §7.3</a>). <strong>Water consumed per print is unchanged</strong> — the spray bar delivers the same volume either way (§3); only P-04's runtime rises (it drains across the whole wash instead of a separate 5-min phase), which is the ~30 Wh/print the table above reflects.</p>
+<p>A 100 Ah 12V lithium battery (<!-- BEGIN fact:battery_usable_wh -->1,200<!-- END fact:battery_usable_wh --> Wh usable) provides <strong>&gt;15 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
 <hr />
 <h2 id="7-equipment-layout">7. Equipment Layout<a class="headerlink" href="#7-equipment-layout" title="Permanent link">&para;</a></h2>
 <p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>) for the water-system-specific P&amp;ID layout. All four IBCs are in the provably shadow-free <strong>right end zone</strong> (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone contains only the processing tray and perimeter walkways at floor level.</p>
@@ -3937,7 +3938,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2">14 AWG duplex marine wire</a> (MCB14-2)</td>
-<td>Tinned-copper 2-conductor marine cable, cut to 25 ft (pump feed run)</td>
+<td>Tinned-copper 2-conductor marine cable, cut to 25 ft (wet-zone pump feed run). A jacketed duplex CABLE (distinct product from the dry hook-up spools), so it is left at 14 AWG and is not part of the single dry-distribution gauge; bump to MCB12-2 only if a zero-14-AWG BOM is wanted.</td>
 <td>25 ft</td>
 <td>Waytek Wire</td>
 <td>$17</td>
@@ -3950,8 +3951,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$6</td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/dp/B07WP5FWJJ">15A blade fuse</a> (B07WP5FWJJ)</td>
-<td>15A ATC/ATO blade fuse, 100-pack — pump Circuit C single feed (all pumps) + spares.</td>
+<td><a href="https://www.amazon.com/dp/B07WP5FWJJ">Blade fuses — 15A (C1) + 10A (C2)</a> (B07WP5FWJJ)</td>
+<td>ATC/ATO blade fuse assortment (incl. 15A + 10A) — Circuit C is dual-fused on the Blue Sea 5026: <strong>C1</strong> 15A (corridor pumps P-01/02/03/05 feed, one at a time) + <strong>C2</strong> 10A (tray-drain P-04, its own feed). Both gated by the 2-pole master pump switch. +spares for A/B/D/E/F.</td>
 <td>1 pack</td>
 <td>Amazon</td>
 <td>$8</td>
@@ -4203,7 +4204,7 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
       
         <script src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js?v=3"></script>
+        <script src="../javascripts/tablesort.js?v=4"></script>
       
     
   </body>

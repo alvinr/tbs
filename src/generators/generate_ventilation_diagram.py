@@ -844,7 +844,7 @@ def draw_sheet3():
 # SHEET 4 — Fan-A grille AL mounting frame (fab blueprint · monochrome)
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet4():
-    # All geometry is in MILLIMETRES (like every other sheet): aspect-equal, mm view limits, no scale
+    # All geometry is in MILLIMETRES: aspect-equal, mm view limits, no scale
     # factor. The FRONT VIEW is 1:1; the SECTION exaggerates the thin 5mm wall by T_EXAG so it reads.
     C = "#1A1A1A"; CL = "#2060A0"
     FR_W, FR_T, BORE = 320, 5, 150         # frame 320×320×5mm · Ø150 airflow bore (mm)
@@ -876,10 +876,10 @@ def draw_sheet4():
             ax.plot([sgx * M4_P] * 2, [sgy * M4_P - 12, sgy * M4_P + 12], color=C, lw=0.6)
             ax.add_patch(mpatches.Circle((sgx * TEK_P, sgy * TEK_P), TEK_DR, fc="none", ec=C, lw=1.3))  # TEK clearance (corner)
     draw_dim_h(ax, -FR_W / 2, FR_W / 2, FR_W / 2 + 14, f"{FR_W}mm", fs=9, color=C)
-    draw_dim_v(ax, FR_W / 2 + 14, -FR_W / 2, FR_W / 2, f"{FR_W}mm", fs=9, color=C)
-    leader(ax, br * 0.7, br * 0.7, -150, -16, f"Ø{BORE}\nAIRFLOW BORE", fs=8, color=C, arrow_style="->", ha="right")
-    leader(ax, M4_P, M4_P, FR_W / 2 + 60, M4_P + 52, f"4× M4 TAP (grille)\n{2 * M4_P}mm sq. pattern", fs=8, color=C, arrow_style="->", ha="left")
-    leader(ax, TEK_P, -TEK_P, FR_W / 2 + 60, -TEK_P - 52, f"4× Ø5.5 CLR — #14 TEK → crests\n{2 * TEK_P}mm sq. (OUTBOARD of the grille)", fs=8, color=C, arrow_style="->", ha="left")
+    draw_dim_v(ax, FR_W / 2 + 20, -FR_W / 2, FR_W / 2, f"{FR_W}mm", fs=9, color=C)
+    leader(ax, br * 0.7, br * 0.7, FR_W - 50, 0, f"Ø{BORE}\nAIRFLOW BORE", fs=8, color=C, arrow_style="->", ha="right")
+    leader(ax, M4_P, M4_P, FR_W / 2 + 60, M4_P - 60, f"4× M4 TAP (grille)\n{2 * M4_P}mm sq. pattern", fs=8, color=C, arrow_style="->", ha="left")
+    leader(ax, TEK_P, -TEK_P, FR_W / 2 + 60, -TEK_P + 60, f"4× Ø5.5 CLR — #14 TEK → crests\n{2 * TEK_P}mm sq. (OUTBOARD of the grille)", fs=8, color=C, arrow_style="->", ha="left")
     # ── SECTION A-A (thickness ×T_EXAG) ──────────────────────────────────────
     ax.text(SX + TSd / 2, FR_W / 2 + 48, "SECTION A–A", ha="center", fontsize=12, fontweight="bold", color=C)
     ax.text(SX + TSd / 2, FR_W / 2 + 26, "(frame thickness · fixings)", ha="center", fontsize=8, style="italic", color=C)
@@ -892,8 +892,8 @@ def draw_sheet4():
     ax.text(SX - 12, FR_W / 2 - 8, "EXTERIOR\n(grille side)", ha="right", va="top", fontsize=7, color=C)
     ax.text(SX + TSd + 12, FR_W / 2 - 8, "→ to\ncorrugated\nwall", ha="left", va="top", fontsize=7, color=C)
     ax.text(SX + TSd / 2, 0, "Ø150\nBORE\n(open)", ha="center", va="center", fontsize=7, style="italic", color=C)
-    leader(ax, SX + TSd * 0.55, M4_P, SX + 130, M4_P + 42, "M4 TAP (grille screw) — SHORT screw:\nflat end must NOT project past the frame back", fs=7, color=C, arrow_style="->", ha="left")
-    leader(ax, SX + TSd, TEK_P, SX + 130, TEK_P - 46, "Ø5.5 THROUGH (frame → wall)\n#14 TEK into the corrugation crest", fs=7, color=C, arrow_style="->", ha="left")
+    leader(ax, SX + TSd * 0.55, M4_P, SX + 75, M4_P - 42, "M4 TAP (grille screw) — SHORT screw:\nflat end must NOT project past the frame back", fs=7, color=C, arrow_style="->", ha="left")
+    leader(ax, SX + TSd, TEK_P, SX + 75, TEK_P + 46, "Ø5.5 THROUGH (frame → wall)\n#14 TEK into the corrugation crest", fs=7, color=C, arrow_style="->", ha="left")
     draw_notes(ax, [
         "Material: 6061-T6 aluminum · 320×320×5mm · Ø150 airflow bore (deburr all edges).",
         "GRILLE → FRAME: 4× M4 tapped holes (may be through); flat-ended M4 screws SHORT so the flat end does NOT project past the frame's back face onto the corrugation.",

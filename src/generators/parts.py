@@ -1446,20 +1446,16 @@ def emit_master() -> str:
 # the lint gate (check_blocks) blocks a commit if any block ever diverges from the registry.
 _DOC_MASTER = "master-shopping-list.md"
 
-# system → the report doc that carries its §Parts-List `parts:<system>` block (Phase 2b).
-SYSTEM_DOC = {
-    "water": "water-system-report.md",
-    "film": "film-plane-mechanism-report.md",
-    "panel": "hinged-panel-report.md", "lightlock": "hinged-panel-report.md",
-    "swing": "hinged-panel-report.md", "door": "hinged-panel-report.md",
-    "shelf": "chemistry-prep-shelves.md", "walkway": "walkway-report.md",
-    "ibc-frame": "ibc-stacking-report.md",
-    "tray": "processing-tray-and-spray-bar.md", "spray": "processing-tray-and-spray-bar.md",
-    "clamp": "film-clamp-mechanism-report.md",
-    "front-board": "pinhole-disc-holder-report.md",
-}
-# Deliberately NOT block-generated (these systems live in the master BOM only, no per-report §Parts
-# block): container + interior (project-level rollups), optics (pinhole §9 is an optical-ASSEMBLY
+# system → the report doc that carries its §Parts-List `parts:<system>` block.
+# EMPTY (2026-11-18): every engineering report's §Parts-List was consolidated to a reference into the
+# filtered Master Shopping List (`master-shopping-list.md?system=<sys>`) — the electrical-§8 pattern,
+# swept across all reports — so no report embeds a per-system parts table any more. The registry still
+# OWNS every part's cost (reconciled via self_check / check_registry); the per-report BOM view is just
+# the master BOM, filtered. Repopulate this map only to re-embed a per-report `parts:<system>` block.
+SYSTEM_DOC: dict[str, str] = {}
+# Deliberately NOT block-generated (every system lives in the master BOM only, reached per report via
+# the filtered `master-shopping-list.md?system=<sys>` link — no per-report §Parts table). Formerly
+# noted here: container + interior (project-level rollups), optics (pinhole §9 is an optical-ASSEMBLY
 # spec — H7 bores / g6 fits / weld notes + an optional lens add-on, not a procurement table),
 # electrical (§8 is a curated cross-system electrical+cooling summary, not a pure parts list), and
 # ventilation (§9 refers out to the filtered master BOM; the authoritative cost band is costing §5b).
@@ -1493,12 +1489,10 @@ def _blocks() -> dict:
     b = {"master": (_DOC_MASTER, emit_master),
          "dimension-audit": ("component-dimension-audit.md", emit_dimension_audit),
          "chemistry": ("chemistry-shopping-list.md", emit_chemistry)}
-    # per-system §Parts-List blocks (Phase 2b) — only those already placed in their doc.
+    # per-system §Parts-List blocks: none are placed in a doc any more (reports reference the filtered
+    # master BOM instead). SYSTEM_DOC is empty; this loop is a no-op kept for re-embedding a block later.
     for sys, doc in SYSTEM_DOC.items():
         b[sys] = (doc, lambda s=sys: emit_system(s))
-    # plumbing-report.md per-panel sub-lists (the two-panel split — water equipment by panel)
-    b["corridor-plumbing-panel"] = ("plumbing-report.md", lambda: emit_panel("Corridor"))
-    b["pinhole-wall-plumbing-panel"] = ("plumbing-report.md", lambda: emit_panel("Pinhole Wall"))
     return b
 
 

@@ -1448,8 +1448,8 @@ _DOC_MASTER = "master-shopping-list.md"
 
 # system → the report doc that carries its §Parts-List `parts:<system>` block (Phase 2b).
 SYSTEM_DOC = {
-    "water": "water-system-report.md", "electrical": "electrical-report.md",
-    "ventilation": "ventilation-report.md", "film": "film-plane-mechanism-report.md",
+    "water": "water-system-report.md",
+    "film": "film-plane-mechanism-report.md",
     "panel": "hinged-panel-report.md", "lightlock": "hinged-panel-report.md",
     "swing": "hinged-panel-report.md", "door": "hinged-panel-report.md",
     "shelf": "chemistry-prep-shelves.md", "walkway": "walkway-report.md",
@@ -1461,7 +1461,8 @@ SYSTEM_DOC = {
 # Deliberately NOT block-generated (these systems live in the master BOM only, no per-report §Parts
 # block): container + interior (project-level rollups), optics (pinhole §9 is an optical-ASSEMBLY
 # spec — H7 bores / g6 fits / weld notes + an optional lens add-on, not a procurement table),
-# electrical (§8 is a curated cross-system electrical+cooling summary, not a pure parts list).
+# electrical (§8 is a curated cross-system electrical+cooling summary, not a pure parts list), and
+# ventilation (§9 refers out to the filtered master BOM; the authoritative cost band is costing §5b).
 
 
 # component-dimension-audit.md §1 findings — generated from the parts carrying size data, in this

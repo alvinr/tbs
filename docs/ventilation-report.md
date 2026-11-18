@@ -193,32 +193,10 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 
 ## 9. Parts List
 
-See the **[Master Shopping List, filtered to the ventilation system](master-shopping-list.md?system=ventilation)** for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.
-
-<!-- BEGIN parts:ventilation -->
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [150×150×50mm axial fans (12V DC)](https://www.amazon.com/dp/B091BTFBD9) (B091BTFBD9) | 12V DC, ~150–200 CFM each — DA15050B12H (B091BTFBD9), 150×150×50mm, 12V 1.80A, dual-ball. ⚠ NOT the GDSTIME/Wathai '15050' Amazon fans (those are 110/120V AC) — this is the 12V DC part. Price est — confirm. | 2 ea | Amazon | $50 |
-| [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Home Depot | $109 |
-| [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
-| [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade). | 1 ea | Amazon / Farm supply | $30 |
-| [1" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy). | 6 stick | Home Depot | $131 |
-| [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 1" EMT set-screw couplings joining the straight frame runs (×8). Corner turns handled by the 1" pull elbows (canopy-emt-elbows). | 8 ea | Home Depot | $12 |
-| [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | PIPE DECOR 1" black-iron floor flange 4-pack — one per leg base (×4). Add ground stakes/guys if free-standing. | 1 4-pack | Home Depot | $16 |
-| [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | Halex 1" EMT rigid pull elbow at the 4 top-frame corners (chose bought elbows over field-bending). | 4 ea | Home Depot | $47 |
-| Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
-| Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | 1 lot | Local sheet metal / Home Depot | $20 |
-| [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin) | 1 coil | Home Depot | $63 |
-| [200mm 90° duct elbow](https://www.homedepot.com/p/100187427) (MF-90E8) | Master Flow 8" 90° adjustable galvanized elbow (model 90E8), cooler riser to wall stub | 1 ea | Home Depot | $15 |
-| [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | Master Flow 8" starting collar/take-off (DSCF8 $8.98, Home Depot) + worm-drive band clamp (McMaster 4866N35 $7.25) = $16.23/set to secure the flex duct. | 1 set | Home Depot | $16 |
-| [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | Master Flow 8" round removable duct cap | 1 ea | Home Depot | $12 |
-| Weatherproof louvre grille, 6in (Fan A + Fan B exterior vents) | 6in (150mm) louvered weatherproof wall vent with insect screen on the exterior face of each fan penetration — the fans' only external component (ventilation-report §4.2/§4.3/§4.4). ×2 (Fan A + Fan B). SKU pending — source a 6in louvered weatherproof vent cover; $10–20 ea est, confirm at order. | 2 ea | Home Depot / Amazon | $20–$40 |
-| [Deutsch DT 2-pin connectors (Amphenol AT2PS-CKIT)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | Amphenol AT2PS-CKIT 2-pin connector kit (DT-compatible), IP67 — Fan B flex connector (×2 sets). Same part as deutsch-dt-2pin-elec. $4/set est — confirm at order. | 2 set | Waytek Wire | $8 |
-| [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B0GYFNXM9Z) (B0GYFNXM9Z) | MECCANIXITY retractable coiled cable, 16 AWG 2-conductor, 10 ft extended (B0GYFNXM9Z), $25.99 firm (2026-07-30). Fan B flex on the swinging hinged panel — takes the ~56° transport swing. Proper 2-conductor. Deutsch DT 2-pin ends. | 1 ea | Amazon / Grainger | $26 |
-| Cooler external power cable | CRIMP-YOUR-OWN (no retail SKU): 1.5m, 14 AWG 2-cond + Deutsch DT 2-pin plug crimped each end (connectors per deutsch-dt-2pin). Self-assembled; $20 is the wire+terminal material estimate, accepted (2026-10-02). | 1 ea | Waytek Wire / Amazon | $20 |
-| [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
-| **Ventilation total** | | | | **$768–$788** |
-<!-- END parts:ventilation -->
+The ventilation & cooling **Bill of Materials** lives in the single-source parts registry, rendered as the
+[**Master Shopping List, filtered to the ventilation system**](master-shopping-list.md?system=ventilation) —
+suppliers, current prices, and click-to-sort/filter. The strategy-level cost band (fans · evaporative cooler +
+inverter · light-safe baffle-duct fab · shade canopy) is the [Project Cost Breakdown §5b](project-cost-breakdown.md).
 
 ---
 

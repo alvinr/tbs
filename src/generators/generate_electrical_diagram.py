@@ -2509,13 +2509,15 @@ def draw_sheet9():
     # FLAT crests (not points); depth = the project's conservative CONTAINER_CORRUGATION_DEPTH. A crest
     # is centered on the bolt; one full valley shows each side (next crests fall outside this window).
     CR, WB, VL = 72.0, 68.0, 70.0
-    YV = CR / 2 + WB + VL                            # 174 — central crest + a full valley each side
+    YV = VL / 2 + WB + CR                            # 175 — central valley (bolt) + a crest each side
     axb.set_xlim(-95, 150); axb.set_ylim(-YV - 60, YV + 66)
-    half, yq, i = [(0.0, CR / 2)], CR / 2, 0         # exterior surface (x, y) up from crest center
+    # A VALLEY is centered on the bolt: the interior backing plate bears on the valley's interior face
+    # and the bolt grip spans the full corrugation depth; the flange seats on the flat crests each side.
+    half, yq, i = [(CD, VL / 2)], VL / 2, 0          # exterior surface (x, y) up from valley center
     while yq < YV:
-        length, xend = [(WB, CD), (VL, CD), (WB, 0.0), (CR, 0.0)][i % 4]
+        length, xend = [(WB, 0.0), (CR, 0.0), (WB, CD), (VL, CD)][i % 4]
         yq += length; half.append((xend, min(yq, YV))); i += 1
-    ext = [(x, -y) for (x, y) in reversed(half)] + half   # crest-centered, flat crests + flat valleys
+    ext = [(x, -y) for (x, y) in reversed(half)] + half   # valley-centered, flat crests + flat valleys
     # corrugated wall sheet (constant thickness)
     axb.add_patch(mpatches.Polygon(ext + [(x + ts, y) for (x, y) in ext][::-1],
                                    closed=True, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="xx", zorder=3))
@@ -2535,9 +2537,9 @@ def draw_sheet9():
     axb.text(146, YV + 20, "INTERIOR", ha="right", fontsize=6.5, color=C_DIM, **FONT)
     leader(axb, -FTs - HEAD_THK / 2, 0, -88, 40, f"M{MD} THROUGH-BOLT\n(head + sealing washer)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
     leader(axb, CDi + 10 + NUT_THK, 0, 88, -42, f"M{MD} NUT + backing plate\n(interior · grip spans the corrugation)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    leader(axb, CD, CR / 2 + WB + VL / 2, 96, 118, "FLASHING + SILICONE\n(beds flange over the valleys)", fs=5.8, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
-    leader(axb, 0, CR / 2 - 6, -88, YV - 10, f"{FT}mm FLANGE PLATE\nseats on the flat 72mm CRESTS", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
-    leader(axb, CD, -(CR / 2 + WB + VL / 2), 72, -YV - 26, f"CORRUGATED WALL — trapezoid\ncrest 72 · web 68 · valley 70 · pitch 278\n(depth {CONTAINER_CORRUGATION_DEPTH}mm, to scale)", fs=5.5, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(axb, CD * 0.5, 28, 96, 96, "FLASHING + SILICONE\n(beds flange over the valley)", fs=5.8, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
+    leader(axb, 0, VL / 2 + WB + CR / 2, -88, YV - 10, f"{FT}mm FLANGE PLATE\nseats on the flat 72mm CRESTS", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(axb, 0, -(VL / 2 + WB + CR / 2), 72, -YV - 26, f"CORRUGATED WALL — trapezoid\ncrest 72 · web 68 · valley 70 · pitch 278\n(depth {CONTAINER_CORRUGATION_DEPTH}mm, to scale)", fs=5.5, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
     axb.text(27, YV + 54, "PANEL B — WALL-SECURING DETAIL (section at a mounting bolt · 4 places, flange corners)", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, **FONT)
 
     # ══ notes ══

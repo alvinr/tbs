@@ -74,7 +74,7 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 
 **Source document:** `container-report.md`
 
-Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, and door upgrades. (The rigid ACM image-plane backing is bonded to the moveable film-plane frame and costed with the film-plane mechanism, not here — §2.3. Ventilation is the darkroom cross-flow system — costed with Ventilation & Cooling, §5b — not a separate interior line.)
+Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, and door upgrades.
 
 ### 2.1 Light-sealing materials
 
@@ -95,15 +95,7 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 | Rollers, brushes, trays | 1 kit | $20 | $20 | |
 | **Paint subtotal** | | | **$125** | |
 
-### 2.3 Image-plane flat backing — costed with the Film Plane Mechanism
-
-The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is costed with the film-plane mechanism (`dibond-acm-film`: 4× black 3mm 4'×8' ACM ≈ $380 — see [Film Plane Mechanism](film-plane-mechanism-report.md)). The design uses the moveable back, not a wall-mounted panel.
-
-### 2.4 Ventilation — costed with Ventilation & Cooling (§5b)
-
-The darkroom cross-flow ventilation (2× 150×150×50mm 12V axial fans + light-safe baffle ducts + evaporative cooler) is itemized once in [Ventilation & Cooling](#summary-total-project-cost) (§5b) and detailed in the [Ventilation Report](ventilation-report.md). That same cross-flow provides operator comfort and fresh-air exchange, so there is no separate interior ventilation line here.
-
-### 2.5 Door & access upgrades
+### 2.3 Door & access upgrades
 
 | Item | Qty | Unit | Total | Notes |
 |------|-----|------|-------|-------|
@@ -113,7 +105,7 @@ The darkroom cross-flow ventilation (2× 150×150×50mm 12V axial fans + light-s
 | Door pull handle + mounting hardware | 1 | $39 | $39 | Firm quote |
 | **Door subtotal** | | | **$103** | |
 
-### 2.6 Miscellaneous conversion hardware
+### 2.4 Miscellaneous conversion hardware
 
 | Item | Est. total |
 |------|-----------|
@@ -173,11 +165,11 @@ The disc holder takes a Copal/Compur **lens board** (0/1/3) in place of a pinhol
 
 **Source document:** `film-plane-mechanism-report.md`
 
-View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a 6061 Al U-channel depth rail, coupled to a 2-axis 304 cross-slide through a single Belden universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
+View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a U-channel depth rail, coupled to a 2-axis cross-slide through a single universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
 
-The full itemized parts list — specs, SKUs, ICP numbers, per-item quantities — is the [Film Plane Mechanism report Parts List](film-plane-mechanism-report.md), held in the parts registry so it can't drift. The cost roll-up is the [Section total](#section-total) below.
+The full itemized parts list is the [Film Plane Mechanism report Parts List](film-plane-mechanism-report.md), held in the parts registry. The cost roll-up is the [Section total](#section-total) below.
 
-**Wall-seat saddles** — each of the 8 rail ends anchors to the container: **6 with a standalone wall-seat saddle** (back-plate + seat + gusset, through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity); the **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
+**Wall-seat saddles** — each of the 8 rail ends anchors to the container: **6 with a standalone wall-seat saddle**; the **2 bottom-right (BR) ends share a combined corner plate with the right walkway**. The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
 ### Section total
 

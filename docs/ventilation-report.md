@@ -12,7 +12,7 @@ All ventilation and cooling components run at 12V DC from the solar/battery powe
 
 ## 2. Thermal Problem
 
-A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. Two constraints drive the cooling design:
+Using a Plam Spring summer deployment as a reference point (ambient 40–45°C, direct irradiance 1,000 W/m²), A 20ft ISO steel container in direct sun reaches interior temperatures of 65–75°C without intervention. Two constraints drive the cooling design:
 
 | Constraint | Limit | Source |
 |-----------|-------|--------|
@@ -65,7 +65,7 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 
 Both fans are 12V DC, **150×150×50mm axial panel fans** (e.g. GDSTIME/Wathai 15050-12V). Fan bodies (50mm deep) do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the sealed end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
 
-> **Why this layout:** The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v1,000L direct-stack the totes now reach Z=<!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm against the end wall in both flanking columns, leaving only the **<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor** clear full-height. Fan A is therefore placed in that corridor, directly **below the X1 fill port** — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.
+> **Why this layout:** The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v1,000L direct-stack the totes reach Z=<!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm against the end wall in both flanking columns, leaving only the **<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor** clear full-height. Fan A is therefore placed in that corridor — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.
 
 ### 4.2 Fan A — Sealed End Wall Exhaust
 

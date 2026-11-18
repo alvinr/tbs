@@ -26,7 +26,18 @@ originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
 
 6. **In-line valves go ON a straight run, oriented ALONG it.** A check / one-way valve, ball valve, or any in-line fitting is an **in-line device**: the pipe runs straight THROUGH it, so its body is centered on the pipe centerline and elongated **along the run axis** — placed on a STRAIGHT length of pipe, **never straddling an elbow** and never drawn as a right-angle block off to the side. To meter or protect a port (e.g. an anti-siphon check before a tank entry), put the valve on the straight approach run a short distance before the flange, not at the corner. (3D: a short barrel cylinder, radius ≈ pipe-OD + a little, length ≈ 2× OD, with `axis` = the local run direction.)
 
-7. **Minimize connections — every joint is an integrity/leak risk.** Each fitting (elbow, tee, cross, coupling, union, threaded joint) is a potential leak and failure point, so among valid orthogonal routings prefer the one with the **FEWEST fittings**. Concretely: a longer straight run beats a short run + two elbows + a jog; **align a junction/fitting to its incoming run so the pipe enters straight (one elbow), not offset into it (an offset = two elbows + a dead jog)**; place a tee/cross/manifold **ON** the line that feeds it. When a *small* move of a junction or component deletes a fitting, make the move (it's worth re-positioning the fitting to save the joint). *Example:* the X1 fill cross was shifted onto the blue-recycle riser's Yd (`X1_TEE_Y`) so the recycle rises **straight** into the cross's −X port — one elbow, replacing the old rise → −Yd jog → elbow (two fittings + a stub).
+7. **Minimize connections — every joint is an integrity/leak risk.** Each fitting (elbow, tee, cross, coupling, union, threaded joint) is a potential leak and failure point, so among valid orthogonal routings prefer the one with the **FEWEST fittings**. Concretely: a longer straight run beats a short run + two elbows + a jog; **align a junction/fitting to its incoming run so the pipe enters straight (one elbow), not offset into it (an offset = two elbows + a dead jog)**; place a tee/cross/manifold **ON** the line that feeds it. When a *small* move of a junction or component deletes a fitting, make the move (it's worth re-positioning the fitting to save the joint).
+
+8. **A pipe's color says what it carries — the same in every 2D diagram and 3D model.** Use the
+   `tbs_constants` fluid palette, never a local hex: **Blue `C_PIPE_FRESH`** = fresh water, **Brown
+   `C_PIPE_RECYCLE`** = used / filtered-recycled water (the tray drain and the whole filter train are
+   Brown), **near-black `C_PIPE_WASTE`** = waste (everything bound for IBC-4 or out X4). A line that
+   carries either Blue or Brown — everything downstream of the BV-05a selector (BV-05a→BV-05b, the
+   spray-bar hose and feed) — is **striped**: 3D `ruby_mixed_pipe_run` / `ruby_coil_cord(color2=…)`,
+   2D a blue line with a brown dash overlay. Fittings, port stubs and end-wall ports are neutral
+   (`C_PIPE_FITTING` grey / `C_STEEL`), flex jumpers are `C_FLEX` yellow, valves keep their valve color —
+   so **black means waste and nothing else**. Enforced in 3D by the `lint.py` GATE *water pipes use the
+   fluid color convention*.
 
 ## Right-Angle Connections (applies to 2D diagrams AND 3D models)
 

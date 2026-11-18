@@ -242,7 +242,7 @@ def kit(part="all", p02_on_corridor=False):
             if nm == "F3" and tag == "out":
                 continue        # F3 OUT stub drawn separately below — it TURNS the collection elbow
             p.append(draw.ruby_pipe_run(f"Filter {nm} {tag} port",
-                [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
+                [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=draw.C_PIPE_FITTING))
         p.append(draw.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=draw.C_STEEL))
 
     # ── P-02 — UPRIGHT, IN/OUT on OPPOSITE sides along X (same pattern as the filters): OUT (+X)
@@ -303,18 +303,18 @@ def kit(part="all", p02_on_corridor=False):
     #    line picks up at the handoff and drops DOWN the wall (yW) to waist → SV-01.
     #    Why draw the elbow in the black run: ruby_pipe_run insets its fillet along the INCOMING leg,
     #    so an elbow at f_out always eats ~one radius back into whatever precedes it — keeping that
-    #    leg the same black fitting means nothing colored is intruded and the elbow sits at the
-    #    black extension's end (endpoints get no fitting, so f_out must be an interior vertex).
-    f3_hand = (f_out("F3")[0], fcy - 40, tie)          # handoff just past the black elbow's -Y exit tangent
+    #    leg the same fitting-grey means nothing fluid-colored is intruded and the elbow sits at the
+    #    grey extension's end (endpoints get no fitting, so f_out must be an interior vertex).
+    f3_hand = (f_out("F3")[0], fcy - 40, tie)          # handoff just past the grey elbow's -Y exit tangent
     p.append(draw.ruby_pipe_run("Filter F3 out port",
-             [(FX["F3"] + (fr - 6), fcy, tie), f_out("F3"), f3_hand], rp, color=cdk))
+             [(FX["F3"] + (fr - 6), fcy, tie), f_out("F3"), f3_hand], rp, color=draw.C_PIPE_FITTING))
     # F3 -> SV-01: drop down the wall, then dog-leg IN through SV-01's −X face — the filtered line runs
     # HORIZONTALLY through the valve body (in-line, matching SV-02), box over the through-segment.
     pipe("F3 -> SV-01 (wall-mounted drop)",
          [f3_hand, (f_out("F3")[0], yW, tie), (svx - 60, yW, tie),          # −Yd to the wall, +X to just −X of SV-01
           (svx - 60, yW, svz),                                       # DOWN the wall to the SV-01 in-line height
           (svx - 60, sv_y, svz),                                     # +Yd forward to the valve lane
-          (svx + 25, sv_y, svz)], draw.C_FILTER)                       # +X THROUGH the body (in-line) to the +X face
+          (svx + 25, sv_y, svz)], draw.C_IBC_BROWN)                       # +X THROUGH the body (in-line) to the +X face
     # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
     # 4b. SV-01 -> DV-01: ONE filtered line follows the shared surface-perimeter route across the
@@ -339,7 +339,7 @@ def kit(part="all", p02_on_corridor=False):
          + cp.ribbon_run(3, (DCX - 100, DCY, cp.RIBBON_Z), (blane, 60, svz), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # FLUSH entry on the corridor end (no dip) + under-walkway ribbon (lane 3)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
-         draw.C_FILTER)
+         draw.C_IBC_BROWN)
     # 5. DV-01 RECYCLE (run+, +X) → IBC-3 BUFFER tote — the recycle loop's buffer; P-02 pulls from IBC-3.
     #    Blue is fill-only fresh water, so the filtered recycle stays isolated in IBC-3.  Brown-circuit color:
     #    it carries filtered USED water, even though it climbs the far board beside IBC-4.
@@ -365,7 +365,7 @@ def kit(part="all", p02_on_corridor=False):
           #   film plane, was 1147) to open a lane for the blue supply trunk; still clears the brown P-02 riser below and
           #   the blue recycle elbow above (−Yd edge 1185)
           (mx, my, DCZ),                                              # −Yd to the merge column at the far end
-          (mx, my, mz)], rp, color=draw.C_IBC_WASTE)                    # rise into the merge tee's z− branch
+          (mx, my, mz)], rp, color=draw.C_PIPE_WASTE)                    # rise into the merge tee's z− branch
     p.append(waste_pipe)
     if part == "all":
         return "\n".join(p)
@@ -416,15 +416,15 @@ def tap01_supply():
          (b5x, b5y, b5z - dvt)], pr, color=draw.C_BLUE))  # UP into the −Z fresh port
     # Spray delivery: BV-05a +Z selected port → BV-05b (2-way ON/OFF, WALL-MOUNTED just above the
     # selector — a fixed mount, not on the moving spray-bar pole) → coiled hose forward to the beam.
-    p.append(draw.ruby_pipe_run("BV-05a -> BV-05b (up the pinhole wall)",
+    p.append(draw.ruby_mixed_pipe_run("BV-05a -> BV-05b (up the pinhole wall)",
         [(b5x, b5y, b5z + dvt),                        # off the BV-05a +Z selected port
-         (b5x, b5y, 1000)], pr, color=draw.C_BLUE))      # UP the pinhole wall to BV-05b (stays below the pinhole Z1024)
+         (b5x, b5y, 1000)], pr))      # MIXED (Blue or Brown per BV-05a) — UP the pinhole wall to BV-05b (stays below the pinhole Z1024)
     p.append(cp.ball_valve("BV-05b (spray on/off)", b5x, b5y, 900, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
     p.append(draw.ruby_coil_cord("Spray-bar supply hose (BV-05b -> spray bar, coiled)",
         [(b5x, b5y, 1000),                             # off the top of BV-05b
          (2380, 480, 720),                             # FORWARD-low to the pole area (below the pinhole Z1024)
          (2410, 660, 440),                             # LONG service loop — droop down for slack (forward of the pinhole)
-         (2420, 633, 1303)], r=7, color=draw.C_BLUE))    # UP alongside the pole to the pole-top feed
+         (2420, 633, 1303)], r=7, color=draw.C_PIPE_FRESH, color2=draw.C_PIPE_RECYCLE))    # MIXED stripe — UP alongside the pole to the pole-top feed
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(draw.ruby_pipe_run("TAP-01 Branch (3/4in)",
         [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),
@@ -676,7 +676,7 @@ def skid_row():
     acc2z = ACC2_Z0 + 28                                 # port Z at the body bottom (= ACC-01's ACC_PZ offset)
     for tag, sd in (("in", +1), ("out", -1)):
         x0 = (ACC2_X + cp.ACC_R) if sd > 0 else (ACC2_X - cp.ACC_R - 30)
-        p.append(draw.ruby_cylinder(f"ACC-02 {tag} port", x0, ov.PWP_FILTER_YD, acc2z, cp.RP, 30, color="#222228", axis="x"))
+        p.append(draw.ruby_cylinder(f"ACC-02 {tag} port", x0, ov.PWP_FILTER_YD, acc2z, cp.RP, 30, color=draw.C_PIPE_FITTING, axis="x"))
     return "\n".join(p)
 
 
@@ -753,7 +753,7 @@ def skid_plumbing(part="all"):
          (riseX, gapyd, 90),                              # +X OVER the rear ring-rail to the merge-approach lane, held at Z90 (the front rail is already low at Z49 and clears)
          (riseX, cp.MERGE4[1], 90),                       # jog to the merge Yd, still above the ring-rail
          (riseX, cp.MERGE4[1], cp.MERGE4[2]),             # RISE to the merge Z (1230)
-         cp.MERGE4], rp, color=draw.C_IBC_WASTE))           # +X onto the tee's −x run port
+         cp.MERGE4], rp, color=draw.C_PIPE_WASTE))           # +X onto the tee's −x run port
     # ── Leg 4: P-02 discharge (corridor) → ACC-02 (skid) — the recycle-spray feed, UNDER THE WALKWAY ──
     # Reverse of the waste leg: off P-02's +Yd OUT, drop into the corridor, ribbon lane 0 back under the
     # walkway to the near rim, then −X along the near rim to the skid and up into ACC-02's bottom IN.

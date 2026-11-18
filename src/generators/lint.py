@@ -1075,8 +1075,40 @@ def gate_diagram_mm_native() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["diagrams authored mm-native (no canvas scale factor)"])
 
 
+def gate_pipe_fluid_colors() -> tuple[bool, list[str]]:
+    """Water pipes are colored by what they carry (tbs_constants fluid palette): Blue = fresh,
+    Brown = used/recycled, near-black = waste; a Blue-or-Brown line uses the mixed stripe helper.
+    Fittings, port stubs and flex jumpers take the neutral fitting grey / C_FLEX, so black reads as
+    waste only. Every pipe-drawing call in the water panel generators must name one of those colors
+    (caught: filtered line in the filter-housing blue, waste in mid-grey, X3/X4 in check-valve
+    purple, 2026-11-18). Dynamic color variables are not resolved."""
+    import ast
+    calls = {"ruby_pipe_run", "ruby_pipe", "pipe", "gpipe", "_side_entry", "_bottom_pickup",
+             "ruby_mixed_pipe_run", "ruby_coil_cord", "ruby_flex_run"}
+    ok = {"C_BLUE", "C_PIPE_FRESH", "C_IBC_BROWN", "C_PIPE_RECYCLE", "C_PIPE_WASTE",
+          "C_PIPE_FITTING", "C_FLEX", "C_VALVE"}
+    msgs = []
+    for rel in ("src/models/generate_corridor_water_panel.py", "src/models/generate_pinhole_water_panel.py"):
+        tree = ast.parse(open(os.path.join(ROOT, rel)).read())
+        for n in ast.walk(tree):
+            if not isinstance(n, ast.Call):
+                continue
+            fn = n.func.attr if isinstance(n.func, ast.Attribute) else getattr(n.func, "id", None)
+            if fn not in calls:
+                continue
+            for a in list(n.args[1:]) + [k.value for k in n.keywords if k.arg in ("color", "color2")]:
+                c = (a.attr if isinstance(a, ast.Attribute) and a.attr.startswith("C_") else
+                     a.id if isinstance(a, ast.Name) and a.id.startswith("C_") else
+                     a.value if isinstance(a, ast.Constant) and isinstance(a.value, str)
+                     and re.fullmatch(r"#[0-9A-Fa-f]{6}", a.value) else None)
+                if c and c not in ok:
+                    msgs.append(f"{rel}:{n.lineno}  {fn}(…) color={c} — not a fluid/fitting color")
+    return (not msgs, msgs)
+
+
 GATES = [
     ("diagrams authored in mm (no canvas scale factor)", gate_diagram_mm_native),
+    ("water pipes use the fluid color convention", gate_pipe_fluid_colors),
     ("license headers on every .py/.rb/.md", gate_license_headers),
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),

@@ -1521,6 +1521,16 @@ C_PINHOLE_EQ   = "#CC6600"   # pinhole aperture
 C_FAN          = "#A0A0A8"   # fans (A and B)
 C_PROC_ZONE    = "#E8F5E9"   # processing tray zone
 
+# ── Water pipe FLUID palette — one convention for every 2D diagram AND 3D model ──
+# A pipe's color says what it carries: Blue = fresh, Brown = recycled/used, near-black = waste.
+# A line that carries either Blue or Brown (downstream of the BV-05a selector) is STRIPED in both.
+# Fittings, port stubs, valves and flex jumpers are NOT fluid colors (neutral / their own), so black
+# reads as waste only.  Enforced by lint.py (pipe runs in the water generators use only these).
+C_PIPE_FRESH   = "#2979B8"   # Blue circuit — fresh water
+C_PIPE_RECYCLE = "#6B4A2E"   # Brown circuit — used / filtered-recycled water
+C_PIPE_WASTE   = "#2B2B2B"   # Black circuit — waste water
+C_PIPE_FITTING = "#9AA0A8"   # neutral PVC fitting / port-stub grey
+
 # ── Convenience summary (printed on import in debug mode) ────────────────────
 if __name__ == "__main__":
     print("TBS-001 Constants (rev 7)")

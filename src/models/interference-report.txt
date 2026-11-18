@@ -1,6 +1,8 @@
-routing-sources-sha: 41810dca4a0b
-model=water  pipes=562 solids=832  interferences=0
-pipe-on-pipe crossings=0
+routing-sources-sha: 5bd349a5b182
+model=water  pipes=564 solids=832  interferences=0
+pipe-on-pipe crossings=1
+  PIPE  BV-05a -> BV-05b (up the pinhole wall)      
+    x  PIPE  BV-05a -> BV-05b (up the pinhole wall) strip  cross (2304,69,759)  centerline 0mm < 22mm
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──
 grip-bolt orientation/grip flags: 12  (0 OPEN, 12 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)

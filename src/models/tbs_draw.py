@@ -485,14 +485,15 @@ def ruby_flex_duct(name, p1, p2, r, color=None, alpha=None, ribs=None, mute=0.0)
         out.append(ruby_pipe(name, a, b, rr, color=color, alpha=alpha, n=14, mute=mute))
     return '\n'.join(out)
 def ruby_coil_cord(name, waypoints, r=5.0, color=None, alpha=None,
-                   coil_r=None, pitch=None, pts_per_turn=8, mute=0.0):
+                   coil_r=None, pitch=None, pts_per_turn=8, mute=0.0, color2=None):
     """A 'soft' flexible cord — the visual opposite of the rigid `ruby_pipe_run`:
     a thin conductor that runs as a HELICAL COIL ('curly cord') along each straight
     leg, with short straight stubs at the ends / at each waypoint for termination.
     Color still encodes the circuit; the coiled geometry marks it as a flexible
     connector (the soft-connector analogue of the beaded pull-cord + corrugated
     flex-duct helpers). Tune `coil_r` (curl radius), `pitch` (axial advance per turn),
-    and `r` (conductor radius — keep it thinner than the rigid conduit it replaces)."""
+    and `r` (conductor radius — keep it thinner than the rigid conduit it replaces).
+    `color2` stripes the coil: alternate half-turns take color2 (a MIXED Blue/Brown line)."""
     coil_r = coil_r if coil_r is not None else 5.6 * r      # curl radius (~28 @ r=5, tightened 20%)
     pitch = pitch if pitch is not None else 18.0 * r        # axial advance/turn (~90 @ r=5)
     V = [tuple(float(c) for c in p) for p in waypoints]
@@ -521,7 +522,8 @@ def ruby_coil_cord(name, waypoints, r=5.0, color=None, alpha=None,
                 axial = _vadd(p0, _vscale(d, coil_L * t))
                 pt = _vadd(axial, _vadd(_vscale(u, coil_r * math.cos(ang)),
                                         _vscale(w, coil_r * math.sin(ang))))
-                out.append(ruby_pipe(name, prev, pt, r, color=color, alpha=alpha, n=6, mute=mute))
+                ck = color2 if (color2 and (2 * (k - 1) // pts_per_turn) % 2) else color
+                out.append(ruby_pipe(name, prev, pt, r, color=ck, alpha=alpha, n=6, mute=mute))
                 prev = pt
             p1 = _vadd(p0, _vscale(d, coil_L))              # coil end (back on axis)
             out.append(ruby_pipe(name, prev, p1, r, color=color, alpha=alpha, n=8, mute=mute))
@@ -607,6 +609,26 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
                               r, color, alpha, n, seg, mute=mute))
         start = B
     return '\n'.join(out)
+def ruby_mixed_pipe_run(name, waypoints, r, band=60, pitch=120, **kw):
+    """A MIXED-fluid line (Blue OR Brown, downstream of the BV-05a selector): a fresh-blue
+    ruby_pipe_run with recycle-brown sleeve bands every `pitch` mm along each straight leg —
+    the 3D twin of the 2D blue-with-brown-dash stripe.  Bands stop short of the elbows."""
+    out = [ruby_pipe_run(name, waypoints, r, color=C_PIPE_FRESH, **kw)]
+    V = [tuple(float(c) for c in p) for p in waypoints]
+    keep = 2.5 * r
+    for a, b in zip(V, V[1:]):
+        L = _vlen(_vsub(b, a))
+        if L < 1e-3:
+            continue
+        d = _vscale(_vsub(b, a), 1.0 / L)
+        t = keep
+        while t + band <= L - keep:
+            out.append(ruby_pipe(name + " stripe", _vadd(a, _vscale(d, t)),
+                                 _vadd(a, _vscale(d, t + band)), r + 0.6, color=C_PIPE_RECYCLE, n=16))
+            t += pitch
+    return '\n'.join(out)
+
+
 def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
                   elbow_r=None, n=16, seg=8, mute=0.0):
     """Like ruby_pipe_run but the straight legs are corrugated flex duct
@@ -689,7 +711,8 @@ def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16, m
 # Colors shared with the 2D diagrams are single-sourced from tbs_constants
 # (the path to src/generators is added above); the rest are model-material-only.
 from tbs_constants import (C_STEEL, C_FILM, C_ALUM, C_PLASTIC, C_PUMP,   # noqa: E402
-                           C_BATT, C_GASKT, C_EVAP, C_FAN)
+                           C_BATT, C_GASKT, C_EVAP, C_FAN,
+                           C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE, C_PIPE_FITTING)
 C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
@@ -712,7 +735,7 @@ C_SAFE = "#CC2222"      # red safelight strip (Cct D)
 C_SWITCH = "#D8D8F0"    # pull-cord switch
 C_CORD = "#3A3A3A"      # pull cord
 C_DUCT = "#8090A0"      # vent ducting
-C_BLUE = "#2979B8"      # Blue circuit supply pipe
+C_BLUE = C_PIPE_FRESH   # Blue circuit supply pipe (fluid palette — tbs_constants)
 C_VALVE = "#B8B840"     # valves / taps (brass)
 C_FLEX = "#FFD500"      # flexible braided/corrugated connectors — BRIGHT yellow so a jumper stands out from the same-color pipe it splices (vs the olive C_VALVE)
 C_SHELL = "#EFEDE4"     # container shell — off-white (shows systems clearly)

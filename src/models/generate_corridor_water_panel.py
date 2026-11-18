@@ -483,10 +483,10 @@ def pump_unit(nm, cx, cy, cz0, axis="x", face=1, color=None):
     for tag, sd in (("in", -face), ("out", face)):
         if axis == "x":
             x0 = (cx + PVB_R) if sd > 0 else (cx - PVB_R - 30)
-            p.append(draw.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, 30, color=CDK, axis="x"))
+            p.append(draw.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, 30, color=draw.C_PIPE_FITTING, axis="x"))
         else:
             y0 = (cy + PVB_R) if sd > 0 else (cy - PVB_R - 30)
-            p.append(draw.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, 30, color=CDK, axis="y"))
+            p.append(draw.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, 30, color=draw.C_PIPE_FITTING, axis="y"))
     return p
 
 
@@ -813,7 +813,7 @@ def equipment(sump_on_skid=False, boards=("far", "near", "near-upper")):
     p.append(draw.ruby_cylinder("ACC-01 head", PXC, CTR_Y, ACC_Z0 + acc_h, ACC_R + 2, 26, color=CDK, axis="z"))
     for tag, sd in (("in", +1), ("out", -1)):
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
-        p.append(draw.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
+        p.append(draw.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=draw.C_PIPE_FITTING, axis="y"))
     if sump_on_skid:
         # P-02 (recycled-spray pump) RELOCATED from the pinhole wall to the corridor column, in P-04's
         # vacated slot — IBC-3 buffer (corridor) → P-02 → ACC-02 (on the filter skid).  Upright like the
@@ -869,7 +869,7 @@ def plumbing(part="all", sump_on_skid=False):
     #    jumper live on the skid (pinhole panel), so only the 4 corridor pumps are jumpered here.
     _p4lbl = "P-02" if sump_on_skid else "P-04"
     for _pk, _sk, _jc in (("P-01", "P-01", draw.C_BLUE), ("P-05", "P-05", draw.C_IBC_BROWN),
-                          ("P-03", "P-03", draw.C_IBC_WASTE), (_p4lbl, "P-04", draw.C_IBC_BROWN)):
+                          ("P-03", "P-03", draw.C_PIPE_WASTE), (_p4lbl, "P-04", draw.C_IBC_BROWN)):
         _jz = _piz(_sk)
         _flex_jumper(p, f"{_pk} suction jumper",   (PXC, PIY, _jz), (PXC, PIY - 38, _jz), _jc, start=2, maxlen=24)
         _flex_jumper(p, f"{_pk} discharge jumper", (PXC, POY, _jz), (PXC, POY + 38, _jz), _jc, start=2, maxlen=24)
@@ -962,12 +962,12 @@ def plumbing(part="all", sump_on_skid=False):
          [(DV02X, dvp, DV_Z), (DV02X, dvp + 31, DV_Z), (DV02X, dvp + 31, DV_Z - 45),   # +Yd stub EXTENDED (+40) so the panel
           #   penetration + the +X run clear the spine root (Yd1206-1224) at the panel-spine join, then drop below the rear-panel
           (dvwx, dvp + 31, DV_Z - 45), (dvwx, MERGE4[1], DV_Z - 45),                    # +X, then −Yd to the spine lane
-          (dvwx, MERGE4[1], wz), MERGE4], draw.C_IBC_WASTE)   # high (round-hole spine crossing); DROP on the spine, then
+          (dvwx, MERGE4[1], wz), MERGE4], draw.C_PIPE_WASTE)   # high (round-hole spine crossing); DROP on the spine, then
     #   a horizontal +x run that SEATS on the merge's −x run port (was dropping inside the tee body)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
     xe4 = ov.IBC_COL_X + 830                              # 5504 — entry +130 toward the sealed end
-    _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, draw.C_IBC_WASTE, check=False)   # no CV-4 — P-02/P-04 have integral check valves
+    _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, draw.C_PIPE_WASTE, check=False)   # no CV-4 — P-02/P-04 have integral check valves
 
     # BLUE #1 → P-01 suction: P-01 IN → front Yd-jog onto its back-lane → penetrate the panel →
     # vertical riser BEHIND the panel (clear of the pump-port stack) → back to the front → near tote.
@@ -1110,7 +1110,7 @@ def drains_ports(sump_on_skid=False):
          #   BV-02 → +X stub into the IN port
          draw.C_IBC_BROWN)
     p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
-    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
+    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=draw.C_STEEL, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
     # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
@@ -1138,7 +1138,7 @@ def drains_ports(sump_on_skid=False):
                                    #   bottom-pickup approach Yd, so the riser rises STRAIGHT up the spine
     grey_x = 5200                  # X4 grey pickup riser X (on the spine)
     # yface = YD_FAR so the pickup FLANGE sits on the corridor far face / IBC-4 (NOT the spine lane)
-    _bottom_pickup(p, "X4 Waste (P-03)", grey_x, YD_FAR, +1, draw.C_IBC_WASTE,
+    _bottom_pickup(p, "X4 Waste (P-03)", grey_x, YD_FAR, +1, draw.C_PIPE_WASTE,
                    [(grey_x, spine_yd, turn6),                      # ↑ grey spine riser (straight up the spine face) to the wrap level
                     (corr_x, spine_yd, turn6),                      # −X through panel+shirt (pump gap) into the corridor
                     (corr_x, BV02_YD, turn6),                       # −Yd to the BV-06 riser lane (in front of the pumps)
@@ -1146,10 +1146,10 @@ def drains_ports(sump_on_skid=False):
                     (rx6, BV02_YD, z03),                            # ↑ through BV-06 to the IN-port height
                     (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
     p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
-    p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
+    p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=draw.C_STEEL, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),
-          (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], draw.C_IBC_WASTE)
+          (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], draw.C_PIPE_WASTE)
     return "\n".join(p)
 
 

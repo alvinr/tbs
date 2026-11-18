@@ -34,7 +34,6 @@ GY = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) // 2        # 1180
 
 # Colors
 C_NYLON  = "#33343A"   # acetal (Delrin) wheels
-C_WATER  = "#2060C0"   # feed hose / water in pipe
 C_TRAY   = "#9FB8C8"   # tray-floor reference patch
 C_POLY   = "#2A2A2A"   # LDPE irrigation poly pipe (side-mounted manifold)
 C_NOZZLE = "#3B7A3B"   # flat-fan spray nozzles
@@ -108,7 +107,7 @@ def build_beam():
                                   color=C_POLY, axis="x"))
     parts.append(draw.ruby_cylinder("Water in Manifold",
                                   XL, poly_cy, poly_cz, SPRAY_BAR_POLY_ID / 2, XR - XL,
-                                  color=C_WATER, axis="x", alpha=0.55))
+                                  color=draw.C_PIPE_FRESH, axis="x", alpha=0.55))
     # 90° down-jet nozzles — side-tapped (saddle-tee) into the poly manifold, spray straight
     # down. Pitch keys off the constant (was a stale hardcoded 150 — with N=39 that overshot
     # the beam by ~1.2m, flinging nozzles into the corridor; SPRAY_BAR_NOZZLE_PITCH is 100).
@@ -349,15 +348,15 @@ def build_feed_pole():
     M = (cx, mid_y, mid_z)
     A = (cx, by - 24, ball_z + 20)          # arm base, near the ball joint
     hoff = 20                                # pole radius + hose radius — tangent
-    parts.append(draw.ruby_pipe("Feed Hose (upper)",
-                              (cx + hoff, O[1], O[2]), (cx + hoff, M[1], M[2]), 8, color=C_WATER))
-    parts.append(draw.ruby_pipe("Feed Hose (lower)",
-                              (cx + hoff, M[1], M[2]), (cx + hoff, A[1], A[2]), 8, color=C_WATER))
+    parts.append(draw.ruby_mixed_pipe_run("Feed Hose (upper)",
+                              [(cx + hoff, O[1], O[2]), (cx + hoff, M[1], M[2])], 8))
+    parts.append(draw.ruby_mixed_pipe_run("Feed Hose (lower)",
+                              [(cx + hoff, M[1], M[2]), (cx + hoff, A[1], A[2])], 8))
     parts.append(draw.ruby_flex_run("Feed Flex Connector",
                                   [(cx + hoff, A[1], A[2]), (cx + hoff, poly_cy, A[2]),
                                    (cx + hoff, poly_cy, poly_cz + 18),
                                    (cx, poly_cy, poly_cz + 18)],
-                                  7, color=C_WATER, elbow_r=10))
+                                  7, color=draw.C_FLEX, elbow_r=10))
     # grey zip-tie loops binding the hose to the pole at ~200mm intervals (report §3.12)
     for q1, q2 in ((O, M), (M, A)):
         dd = (0.0, q2[1] - q1[1], q2[2] - q1[2])

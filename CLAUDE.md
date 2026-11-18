@@ -99,6 +99,11 @@ C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # gasket/neoprene fill
 ```
 
+**Water pipe colors — one convention, 2D and 3D:** Blue = fresh, Brown = used/recycled, near-black =
+waste, blue/brown **stripe** = a Blue-or-Brown line (downstream of the BV-05a selector). Import the
+`C_PIPE_*` fluid palette from `tbs_constants.py`; fittings/ports are neutral grey, flex jumpers yellow, so
+black reads as waste only. See `skills/skill_plumbing_drawing.md` rule 8; enforced by `lint.py`.
+
 **Dimension units — HARD RULE: every dimension label carries an explicit unit; NO bare length numbers.**
 Each length value gets `mm` (`600mm`, `50mm DEEP`, `3mm WIDE × 3mm DEEP`, `BUSH L=35mm`) — including
 secondary values inside a compound label. Diameters keep the `Ø` symbol, which already denotes mm

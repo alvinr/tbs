@@ -490,24 +490,34 @@ def draw_sheet2():
         (WALL_X + WALL_T / 2, wz1 - 5), (WALL_X - 40, wz1 + 25))
     draw_dim_v(ax, WALL_X + WALL_T + 18, HB, HT, f"Ø{FAN_DIAM}\nwall hole", offset=8, fs=6.5, zorder=10, color=C_DIM)
 
-    # ── Weatherproof louvre grille — LARGER than the Ø150 hole so its flange overlaps the wall; fixed
-    #    with self-drilling TEK screws through the flange margins into the wall (passive, no fan) ──
-    GL_MARG = 30                                             # flange margin beyond the hole (for the Tek screws)
+    # ── Exterior AL mounting plate — a flat 3mm aluminum plate the louvre grille mounts to (a flat
+    #    grille can't seat on corrugations). TEK self-drilled to the corrugation CRESTS + sealed over the
+    #    valleys (no through-bolt — a corrugated wall can't be cleanly bolted through). ──
+    PLT_T   = 8                                              # plate thickness (exaggerated, real ~3mm)
+    GL_MARG = 30                                             # flange / plate margin beyond the hole
+    PLT_Z   = HB - GL_MARG - 10                              # plate spans a little beyond the grille
+    PLT_H   = (HT + GL_MARG + 10) - PLT_Z
+    for z0, z1 in [(PLT_Z, HB), (HT, PLT_Z + PLT_H)]:       # plate FRAME — open at the Ø150 hole for airflow
+        draw_rect(ax, WALL_X - PLT_T, z0, PLT_T, z1 - z0, fc=C_ALUM, lw=1.3, zorder=5)
+    for tz in (PLT_Z + 16, PLT_Z + PLT_H - 16):             # TEK: plate → wall CRESTS (sealed over valleys)
+        tek_screw(ax, WALL_X - 2, tz, 22, d=5, head=-1)
+    # ── Weatherproof louvre grille — screws to the flat AL plate (LARGER than the Ø150 hole) ──
+    GX   = WALL_X - PLT_T                                    # grille mounts on the plate's exterior face
     GL_Z = HB - GL_MARG                                      # louvre bottom (below the hole)
-    GL_H = (HT + GL_MARG) - GL_Z                             # louvre height > hole → flange overlaps the wall
-    draw_rect(ax, WALL_X - GL_W, GL_Z, GL_W, GL_H, fc="#D0D8C8", lw=1.2, zorder=6)
+    GL_H = (HT + GL_MARG) - GL_Z                             # louvre height > hole
+    draw_rect(ax, GX - GL_W, GL_Z, GL_W, GL_H, fc="#D0D8C8", lw=1.2, zorder=6)
     slat_h = 4
     for i in range(5):                                       # slats across the OPENING (hole) region
         slat_z = HB + (HT - HB) / 6 * (i + 0.5)
         ax.add_patch(mpatches.FancyBboxPatch(
-            (WALL_X - GL_W + 3, slat_z - slat_h / 2), GL_W - 6, slat_h,
+            (GX - GL_W + 3, slat_z - slat_h / 2), GL_W - 6, slat_h,
             boxstyle="round,pad=0.3", fc=C_DIM, ec="none", zorder=7, alpha=0.75))
-    for tz in (GL_Z + GL_MARG / 2, GL_Z + GL_H - GL_MARG / 2):   # TEK screws through the flange → wall
-        tek_screw(ax, WALL_X - 2, tz, 22, d=5, head=-1)
-    ann(ax, "Weatherproof louvre grille (passive)\nLARGER than the Ø150 wall hole →\nflange overlaps the wall",
-        (WALL_X - GL_W / 2, HT + 4), (WALL_X - GL_W / 2 - 55, HT + 55))
-    ann(ax, "TEK self-drilling screws\n(louvre flange → wall)",
-        (WALL_X - 2, GL_Z + GL_MARG / 2), (WALL_X - 95, GL_Z - 20))
+    for tz in (GL_Z + GL_MARG / 2, GL_Z + GL_H - GL_MARG / 2):   # TEK: grille flange → AL plate
+        tek_screw(ax, GX - 2, tz, 18, d=5, head=-1)
+    ann(ax, "Weatherproof louvre grille (passive)\nscrews to the AL plate",
+        (GX - GL_W / 2, HT + 4), (GX - GL_W / 2 - 55, HT + 55))
+    ann(ax, "Exterior AL mounting plate (3mm) — flat seat for the grille;\nTEK to the corrugation CRESTS, sealed over the valleys (no through-bolt)",
+        (WALL_X - PLT_T / 2, HT + 16), (WALL_X - PLT_T - 95, 450))
 
     # ── Baffle duct housing — the top & bottom walls TURN OUT 90° at the fan end to form the duct flange ──
     draw_rect(ax, DX, DZ, DD, DH, fc="#F5F5F5", lw=2.0, zorder=3)

@@ -21,11 +21,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,155 | $3,107 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
-| 8. Cooling & ventilation | $768 | $918 |
+| 8. Cooling & ventilation | $783 | $933 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,744** | **~$36,614** |
+| **TOTAL (base build + 50-print run)** | **~$27,759** | **~$36,629** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -127,9 +127,10 @@ indicative low–high estimates — get quotes before ordering.
 | [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | 1 coil | Home Depot | ventilation | $63 |
 | [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | 1 set | Home Depot | ventilation | $16 |
 | [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | 1 ea | Home Depot | ventilation | $109 |
+| Fan-A grille mounting plate — 3mm aluminum over the corrugated wall | 1 ea | Metal Supermarkets | ventilation | $15–$30 |
 | [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | 1 ea | Home Depot | ventilation | $12 |
 | Weatherproof louvre grille, 6in (Fan A + Fan B exterior vents) | 2 ea | Home Depot | ventilation | $20–$40 |
-| **ducting-ventilation subtotal** | | | | **$285–$305** |
+| **ducting-ventilation subtotal** | | | | **$300–$335** |
 
 ### electrical-distribution
 
@@ -502,7 +503,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Metal Supermarkets | 23 | aluminum, fasteners-hardware, steel-structural | $2,233–$3,073 |
+| Metal Supermarkets | 24 | aluminum, ducting-ventilation, fasteners-hardware, steel-structural | $2,248–$3,103 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,007–$2,019 |
 | McMaster-Carr | 83 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,981–$1,989 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |

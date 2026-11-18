@@ -46,7 +46,12 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 ## 📐 Corrugated-wall rendition — walkway square-rib → trapezoid (optional) (2026-11-18)
 
-- [ ] **Electrical Sheets 9 + 6 DONE** (2026-11-18): both now draw the corrugation as flat-topped **trapezoids** (Sheet 9 to-scale with a valley centered on the bolt; Sheet 6 a pitch-compressed schematic flute). A cross-generator inventory found **no other sharp-peak/triangle corrugation drawings**. **Remaining candidate (not a peak, lower priority):** `generate_walkway_diagram.py` `sheet2` (~L598-635) and `sheet7` (~L1924-1952) draw the wall as a **SQUARE hollow-rib box** (vertical webs, `CORR_DEPTH=38`, `WALL_T=1.6`) — a duplicated block; convert the vertical webs to sloped trapezoid webs + refactor to a shared helper if the square rib should match the new rendition. All other wall sections (film-plane ×4, ibc-frame ×2, pinhole §3, ventilation, shelf) are plain FLAT SLABS labeled "corrugated" with no profile drawn — not peaks; only relevant if the project later wants to ADD a profile there.
+- [ ] **Electrical Sheets 9 + 6 DONE** (2026-11-18): both now draw the corrugation as flat-topped **trapezoids** (Sheet 9 to-scale with a valley centered on the bolt; Sheet 6 a pitch-compressed schematic flute). A cross-generator inventory found **no other sharp-peak/triangle corrugation drawings**. Walkway Sheets 2/7 (square hollow-rib box) and the flat-slab sections (film-plane ×4, ibc-frame ×2, shelf) are **OK as-is** (owner, 2026-11-18): they show across the full corrugation depth, which is correct since the exact bolt/crest location isn't known until the actual container is purchased.
+
+## 🔧 Ventilation grille + pinhole adapter — exterior mounting plate on the corrugation (2026-11-18)
+
+- [x] **ventilation Fan-A grille exterior AL plate — DONE** (2026-11-18). Added a flat ~3mm aluminum plate (frame, open at the Ø150 hole) the grille screws to, TEK self-drilled to the corrugation crests + sealed over the valleys (no through-bolt). Cascaded: `parts.py` (`fan-grille-al-plate`, +$15/$30 ventilation) → `costing.py` (§5b + EXPECTED ventilation/grand) → `generate_ventilation_diagram.py` sheet 2 (drawn) → ventilation-report §4.2. Gates pass.
+- [ ] **pinhole-disc-holder-sheet3 — drawing fix** (owner, drawing only — the Ø240 S275 adapter design is fine): sheet 3 draws the wall as a flat slab; update it to show the trapezoid corrugation profile with the adapter welded to the crests.
 
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 

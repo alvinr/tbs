@@ -478,16 +478,19 @@ def draw_sheet2():
             "Baffles full-height (welded top+bottom), air gap on alternating sides  ·  Dimensions in mm",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
-    # ── Container wall — with the Ø150 airflow HOLE (the duct passes through; the hole is SMALLER
-    #    than the louvre panel so its flange overlaps the wall for the Tek screws) ──
+    # ── Container wall — with the Ø150 airflow HOLE. Drawn tall enough to carry the grille FRAME and its
+    #    OUTBOARD TEK fixings (the frame is wider than the hole, so the wall extends past the grille). ──
     HB, HT = FCZ - PF_R, FCZ + PF_R                          # Ø150 airflow hole (bottom / top)
-    for z0, z1 in [(wz0, HB), (HT, wz1)]:                    # wall drawn ABOVE + BELOW the hole
+    GL_MARG = 30                                             # grille flange margin beyond the hole
+    FR_MARG = GL_MARG + 48                                   # frame margin beyond the hole — WIDER than the grille
+    WZB, WZT = HB - FR_MARG - 18, HT + FR_MARG + 18          # wall extent — covers the frame + its outboard TEK
+    for z0, z1 in [(WZB, HB), (HT, WZT)]:                    # wall drawn ABOVE + BELOW the hole
         draw_rect(ax, WALL_X, z0, WALL_T, z1 - z0, fc=C_STEEL, lw=2.0, zorder=4)
         for zi in range(int(z0), int(z1), 8):
             ax.plot([WALL_X, WALL_X + WALL_T], [zi, zi + 10],
                     color=C_OUT, lw=0.4, alpha=0.4, zorder=5)
     ann(ax, "CONTAINER WALL\ncorrugated steel\n(wall thickness exaggerated)",
-        (WALL_X + WALL_T / 2, wz1 - 5), (WALL_X - 40, wz1 + 25))
+        (WALL_X + WALL_T / 2, wz1 - 5), (WALL_X - 40, WZT + 20))
     draw_dim_v(ax, WALL_X + WALL_T + 18, HB, HT, f"Ø{FAN_DIAM}\nwall hole", offset=8, fs=6.5, zorder=10, color=C_DIM)
 
     # ── Exterior AL mounting FRAME — a flat 5mm aluminum frame (WIDER than the grille) the louvre grille
@@ -495,9 +498,7 @@ def draw_sheet2():
     #    CRESTS, placed OUTBOARD of the grille + sealant over the valleys (no through-bolt). GRILLE→FRAME:
     #    M4 flat-ended screws BLIND-tapped into the frame (they do NOT reach the wall). Blueprint: Sheet 4. ──
     PLT_T   = 8                                              # frame thickness (exaggerated; real ~5mm)
-    GL_MARG = 30                                             # grille flange margin beyond the hole
-    FR_MARG = GL_MARG + 48                                   # frame margin beyond the hole — WIDER than the grille
-    PLT_Z   = HB - FR_MARG
+    PLT_Z   = HB - FR_MARG                                   # GL_MARG / FR_MARG defined with the wall above
     PLT_H   = (HT + FR_MARG) - PLT_Z
     for z0, z1 in [(PLT_Z, HB), (HT, PLT_Z + PLT_H)]:        # frame — open at the Ø150 hole for airflow
         draw_rect(ax, WALL_X - PLT_T, z0, PLT_T, z1 - z0, fc=C_ALUM, lw=1.3, zorder=5)
@@ -859,8 +860,15 @@ def draw_sheet4():
     ax.text(fcx, fy(FR_W / 2) + 1.2, "FRONT VIEW — EXTERIOR FACE", ha="center", fontsize=12, fontweight="bold", color=C)
     draw_rect(ax, fx(-FR_W / 2), fy(-FR_W / 2), FR_W * sc, FR_W * sc, fc="none", color=C, lw=2.2)    # frame outline (open centre)
     ax.add_patch(mpatches.Circle((fx(0), fy(0)), BORE / 2 * sc, fc="none", ec=C, lw=1.8))            # Ø150 airflow bore
-    ax.plot([fcx - hw - 0.7, fcx + hw + 0.7], [fcy, fcy], color=CL, lw=0.7, ls=(0, (12, 4, 2, 4)), zorder=1)
-    ax.plot([fcx, fcx], [fcy - hw - 0.7, fcy + hw + 0.7], color=CL, lw=0.7, ls=(0, (12, 4, 2, 4)), zorder=1)
+    br = BORE / 2 * sc
+    ax.plot([fcx - br - 0.35, fcx + br + 0.35], [fcy, fcy], color=CL, lw=0.7, ls=(0, (10, 3, 2, 3)), zorder=1)   # bore centre cross (short)
+    ax.plot([fcx, fcx], [fcy - br - 0.35, fcy + br + 0.35], color=CL, lw=0.7, ls=(0, (10, 3, 2, 3)), zorder=1)
+    # section cut A–A — vertical plane through the left fixing column (view looks right)
+    axx = fx(-M4_P - 24)
+    ax.plot([axx, axx], [fy(-FR_W / 2 - 26), fy(FR_W / 2 + 26)], color=C, lw=0.9, ls=(0, (9, 3, 2, 3)), zorder=2)
+    for yy in (fy(FR_W / 2 + 26), fy(-FR_W / 2 - 26)):
+        ax.annotate("", xy=(axx + 0.45, yy), xytext=(axx, yy), arrowprops=dict(arrowstyle="-|>", color=C, lw=1.1))
+        ax.text(axx - 0.14, yy, "A", ha="right", va="center", fontsize=9, fontweight="bold", color=C)
     for sgx in (-1, 1):
         for sgy in (-1, 1):
             cx_, cy_ = fx(sgx * M4_P), fy(sgy * M4_P)                                                # M4 tap (grille)
@@ -869,8 +877,8 @@ def draw_sheet4():
             ax.plot([cx_, cx_], [cy_ - 0.22, cy_ + 0.22], color=C, lw=0.6)
             tx_, ty_ = fx(sgx * TEK_P), fy(sgy * TEK_P)                                              # TEK clearance (corner)
             ax.add_patch(mpatches.Circle((tx_, ty_), 0.17, fc="none", ec=C, lw=1.3))
-    draw_dim_h(ax, fx(-FR_W / 2), fx(FR_W / 2), fy(FR_W / 2) + 0.5, f"{FR_W}", fs=9, color=C)
-    draw_dim_v(ax, fx(FR_W / 2) + 0.55, fy(-FR_W / 2), fy(FR_W / 2), f"{FR_W}", fs=9, color=C)
+    draw_dim_h(ax, fx(-FR_W / 2), fx(FR_W / 2), fy(FR_W / 2) + 0.3, f"{FR_W}", fs=9, color=C, offset=0.45)
+    draw_dim_v(ax, fx(FR_W / 2) + 0.35, fy(-FR_W / 2), fy(FR_W / 2), f"{FR_W}", fs=9, color=C, offset=0.45)
     leader(ax, fx(0) + BORE / 2 * sc * 0.7, fy(0) + BORE / 2 * sc * 0.7, fcx - 2.8, fcy - 0.3, f"Ø{BORE}\nAIRFLOW BORE", fs=8, color=C, arrow_style="->", ha="right")
     leader(ax, fx(M4_P), fy(M4_P), fx(FR_W / 2) + 1.2, fy(M4_P) + 1.0, f"4× M4 TAP — BLIND (grille)\n{2 * M4_P} sq. pattern", fs=8, color=C, arrow_style="->", ha="left")
     leader(ax, fx(TEK_P), fy(-TEK_P), fx(FR_W / 2) + 1.2, fy(-TEK_P) - 1.0, f"4× Ø5.5 CLR — #14 TEK → crests\n{2 * TEK_P} sq. (OUTBOARD of the grille)", fs=8, color=C, arrow_style="->", ha="left")
@@ -879,15 +887,20 @@ def draw_sheet4():
     TSd = 1.1                               # drawn thickness (exaggerated)
     def sfy(mm): return scz + mm * sc
     ax.text(scx + TSd / 2, sfy(FR_W / 2) + 1.2, "SECTION A–A", ha="center", fontsize=12, fontweight="bold", color=C)
+    ax.text(scx + TSd / 2, sfy(FR_W / 2) + 0.62, "(frame thickness · hole depths)", ha="center", fontsize=7.5, style="italic", color=C)
     for y0, y1 in [(-FR_W / 2, -BORE / 2), (BORE / 2, FR_W / 2)]:
         draw_rect(ax, scx, sfy(y0), TSd, (y1 - y0) * sc, fc="none", color=C, lw=1.8)
     for sgy in (-1, 1):
-        ax.add_patch(mpatches.Rectangle((scx, sfy(sgy * M4_P) - 0.12), TSd * 0.6, 0.24, fc="white", ec=C, lw=0.9, ls=(0, (3, 2))))   # M4 blind tap (from exterior)
-        ax.add_patch(mpatches.Rectangle((scx, sfy(sgy * TEK_P) - 0.10), TSd, 0.20, fc="white", ec=C, lw=0.9, ls=(0, (3, 2))))        # TEK clearance (through)
-    draw_dim_h(ax, scx, scx + TSd, sfy(FR_W / 2) + 0.5, f"{FR_T}", fs=9, color=C)
-    ax.text(scx - 0.35, sfy(0), "EXT", ha="right", va="center", fontsize=7, color=C)
-    leader(ax, scx + TSd * 0.6, sfy(M4_P), scx + 2.7, sfy(M4_P) + 0.8, "M4 TAP — BLIND ~4mm\n(flat-ended screw · NOT through)", fs=7, color=C, arrow_style="->", ha="left")
-    leader(ax, scx + TSd, sfy(TEK_P), scx + 2.7, sfy(TEK_P) - 0.9, "Ø5.5 THROUGH\n(#14 TEK → crest)", fs=7, color=C, arrow_style="->", ha="left")
+        # M4 TAP — BLIND: hole from the EXTERIOR face that STOPS SHORT of the back (grille screw)
+        ax.add_patch(mpatches.Rectangle((scx, sfy(sgy * M4_P) - 0.11), TSd * 0.55, 0.22, fc="white", ec=C, lw=1.0))
+        # TEK — THROUGH: hole across the FULL thickness (fixes the frame to the wall)
+        ax.add_patch(mpatches.Rectangle((scx, sfy(sgy * TEK_P) - 0.10), TSd, 0.20, fc="white", ec=C, lw=1.0, ls=(0, (4, 2))))
+    draw_dim_h(ax, scx, scx + TSd, sfy(-FR_W / 2) - 0.35, f"{FR_T}", fs=9, color=C, offset=0.45, above=False)
+    ax.text(scx - 0.25, sfy(FR_W / 2) - 0.2, "EXTERIOR\n(grille side)", ha="right", va="top", fontsize=7, color=C)
+    ax.text(scx + TSd + 0.25, sfy(FR_W / 2) - 0.2, "→ to\ncorrugated\nwall", ha="left", va="top", fontsize=7, color=C)
+    ax.text(scx + TSd / 2, sfy(0), "Ø150\nBORE\n(open)", ha="center", va="center", fontsize=7, style="italic", color=C)
+    leader(ax, scx + TSd * 0.55, sfy(M4_P), scx + 2.8, sfy(M4_P) + 0.8, "M4 TAP — BLIND (grille screw)\nstops short of the back · NOT through", fs=7, color=C, arrow_style="->", ha="left")
+    leader(ax, scx + TSd, sfy(TEK_P), scx + 2.8, sfy(TEK_P) - 0.9, "Ø5.5 THROUGH (frame → wall)\n#14 TEK into the corrugation crest", fs=7, color=C, arrow_style="->", ha="left")
     draw_notes(ax, [
         "Material: 6061-T6 aluminum · 320×320×5mm · Ø150 airflow bore (deburr all edges).",
         "GRILLE → FRAME: 4× M4 BLIND tapped holes (do NOT break through); flat-ended M4 screws, short so the flat end stays within the frame.",

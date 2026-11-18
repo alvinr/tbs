@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system that:
+The camera operates in remote locations with no required municipal water or drainage. This document specifies a self-contained three-circuit water system that:
 
 - Stores sufficient clean water for 9–14 full-size prints between resupply runs on fresh Blue alone (**~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** once Brown wash-2 recycling is counted — see §below)
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%

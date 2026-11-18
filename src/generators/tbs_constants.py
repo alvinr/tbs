@@ -57,7 +57,7 @@ Redesign basis (2026-05-20 rev 7 — walkway reorg):
   Batteries switched to 120mm slim-profile depth.  Pump manifold
   (P-01/P-02/P-04), ACC-01, and 3× filter housings relocated from pinhole
   wall to equipment panel in IBC plumbing corridor (270mm gap between
-  near/far IBC columns, Yd=1046–1316).  Panel: 18mm marine ply, 780×1110mm
+  near/far IBC columns, Yd=1046–1316).  Panel: 18mm exterior ply, 780×1110mm
   at X=4800.  Near walkway widened to 500mm at X=1600–2310.  Corner
   triangle at right walkway/IBC junction.  Tray sump relocated to X=4550,
   Yd=80 (slope to IBC corner).  Filter housings reverted to 3× separate
@@ -730,7 +730,7 @@ CONTACTOR_W, CONTACTOR_D, CONTACTOR_H = 120, 90, 100  # Blue Sea ML-RBS contacto
 MRBF_D, MRBF_H = 40, 38  # terminal-mount MRBF main fuse (on the battery + post)
 
 # ── Equipment panel — IBC plumbing corridor (rev 7: walkway reorg) ───────
-# 18mm marine ply panel spanning ACROSS the IBC plumbing corridor (Yd
+# 18mm exterior ply panel spanning ACROSS the IBC plumbing corridor (Yd
 # direction), perpendicular to the sealed end wall.  Panel face (equipment
 # side) faces the open end (lower X = accessible from walkway).  Equipment
 # protrudes from panel face toward open end.

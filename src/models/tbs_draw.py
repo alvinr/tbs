@@ -693,7 +693,7 @@ from tbs_constants import (C_STEEL, C_FILM, C_ALUM, C_PLASTIC, C_PUMP,   # noqa:
 C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
-C_PLY = "#9C7B4D"       # marine ply (plumbing panel + hinge-panel Fan B mount band)
+C_PLY = "#9C7B4D"       # exterior ply (plumbing panel + hinge-panel Fan B mount band)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
 C_DEMOUNT = "#E0902A"   # demountable left-rail segment (swings clear for drum)

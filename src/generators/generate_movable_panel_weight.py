@@ -28,7 +28,7 @@ import tbs_constants as k
 # ── Material densities (kg/m³) — same set as generate_weight_analysis.py ──
 RHO_STEEL = 7850      # mild / Corten steel
 RHO_ALUM  = 2700      # 5052 aluminum
-RHO_PLY   = 600       # marine plywood
+RHO_PLY   = 600       # exterior plywood
 RHO_HDPE  = 950       # HDPE — ALL light-lock plastic (housing 3/16", drum/skins/bay 1/8"; 2026-07-22)
 RHO_EPDM  = 140       # closed-cell EPDM/neoprene compression foam (typ.)
 

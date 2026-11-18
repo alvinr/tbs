@@ -294,7 +294,7 @@ def draw_corridor_panel():
 
     # Panel label (near top)
     ax.text(sx(PANEL_W / 2), sz(PANEL_H - 30),
-            f"18mm MARINE PLY\n{PANEL_W}mm x {PANEL_H}mm",
+            f"18mm EXTERIOR PLY\n{PANEL_W}mm x {PANEL_H}mm",
             ha="center", va="top",
             fontsize=5.5, color=C_PLY_EC, zorder=4, **FONT)
 
@@ -525,7 +525,7 @@ def draw_corridor_panel():
     # ── NOTES ───────────────────────────────────────────────────────
     notes = [
         "CORRIDOR PLUMBING PANEL — IBC PLUMBING CORRIDOR:",
-        f"1. Panel: 18mm marine ply spanning corridor Yd={PANEL_YD}-{PANEL_YD + PANEL_W} (270mm).",
+        f"1. Panel: 18mm exterior ply spanning corridor Yd={PANEL_YD}-{PANEL_YD + PANEL_W} (270mm).",
         f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
         f"3. Panel height: Z={PANEL_Z_AFF}-{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm).",
         "4. SINGLE vertical pump column (bottom→top): ACC-01, P-01 (Blue supply),"
@@ -727,13 +727,13 @@ def draw_pinhole_panel():
             ha="center", va="bottom", fontsize=11, color=C_DIM,
             fontweight="bold")
 
-    # ── Backing board (18mm marine ply) — X 2780–4500, Z 920–2360 ──────────
+    # ── Backing board (18mm exterior ply) — X 2780–4500, Z 920–2360 ──────────
     BD_XL, BD_XR = PWP_PANEL_X0, PWP_PANEL_X1
     BD_ZB, BD_ZT = PWP_PANEL_Z0, 2360
     pw_rect(BD_XL, BD_ZB, BD_XR - BD_XL, BD_ZT - BD_ZB,
             C_PLY, C_PLY_EC, lw=2.0, zorder=3, alpha=0.5)
     pw_text(4470, 2255,
-            f"{BD_XR - BD_XL} × {BD_ZT - BD_ZB}mm\n18mm MARINE PLY\n(pinhole wall)",
+            f"{BD_XR - BD_XL} × {BD_ZT - BD_ZB}mm\n18mm EXTERIOR PLY\n(pinhole wall)",
             ha="center", va="center", fontsize=6.5, color=C_PLY_EC, zorder=4)
 
     # ── Filter geometry (Big Blue 4.5×20: head block + Ø184 sump below) ────
@@ -862,7 +862,7 @@ def draw_pinhole_panel():
     # ── NOTES ───────────────────────────────────────────────────────
     notes = [
         "PINHOLE WALL FILTER SKID — TRAY-DRAIN RECYCLE + FILTER TRAIN:",
-        "1. Wide 18mm marine-ply backing board on the pinhole wall (Yd≈0),"
+        "1. Wide 18mm exterior-ply backing board on the pinhole wall (Yd≈0),"
         " X=2780–4575, Z=920–2360mm AFF.",
         "2. Tray-drain skid row UNDER the filters: P-04 (tray-sump pump) →"
         " SV-02 (pH sample) → 3W-DV-02, on the row line Z≈1312.",

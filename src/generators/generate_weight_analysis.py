@@ -48,7 +48,7 @@ except ImportError:
 RHO_STEEL  = 7850     # mild / Corten steel
 RHO_SS304  = 7930     # 304 stainless steel
 RHO_ALUM   = 2700     # aluminum 6061
-RHO_PLY    = 600      # marine plywood (typical)
+RHO_PLY    = 600      # exterior plywood (typical)
 RHO_WATER  = 1000     # fresh water at ~20°C
 RHO_HDPE   = 950      # HDPE sheet — ALL light-lock plastic (housing 3/16", drum/skins/bay 1/8"; US Plastics 46685/46684, 2026-07-22; was a HDPE-housing + PP-drum hybrid)
 RHO_ACM_3MM = 3.80    # 3mm DIBOND ACM AREAL weight (kg/m²) — 4mm not stocked black (Curbell w01-05317 is 3mm); 0.30mm Al skins + 2.4mm PE core (= 4.75 − 0.95 for the 1mm thinner PE)
@@ -308,7 +308,7 @@ def _film_plane_carriage_weight():
     return frame_kg + acm_kg + clamp_kg + carriage_kg
 
 def _bay_weight():
-    """B2 punch-out bay carried on the swinging leaf: a 6mm marine-ply 4-wall
+    """B2 punch-out bay carried on the swinging leaf: a 6mm exterior-ply 4-wall
     tube (2 sides + top + bottom) plus the exterior front face (Ø800 housing
     opening deducted), enclosing the offset light-trap housing. First-principles
     from the bay/cage footprint constants — supersedes the old 12 kg placeholder."""

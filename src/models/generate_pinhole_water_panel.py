@@ -211,7 +211,7 @@ def kit(part="all", p02_on_corridor=False):
     sits under them; SV-01 raised beside F-3; ACC-02 center-bottom.  Plumbing orthogonal.
 
     Construction-model splits (default "all" = the full skid, byte-identical):
-      • "recycle"       — ONLY the blue DV-01→X1 recycle line (corridor run to the IBC panel; Phase 1)
+      • "recycle"       — ONLY the brown DV-01→IBC-3 recycle line (corridor run to the IBC panel; Phase 1)
       • "waste"         — ONLY the grey DV-01→IBC-4 merge line (corridor run to the IBC panel; Phase 1)
       • "brown_ribbon"  — ONLY the brown IBC-3→P-02 suction's under-grate RIBBON portion (Phase 3, 3.2)
       • "skid"          — the skid bodies + on-panel plumbing + the short brown RISE to P-02, but NOT
@@ -341,8 +341,8 @@ def kit(part="all", p02_on_corridor=False):
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          draw.C_FILTER)
     # 5. DV-01 RECYCLE (run+, +X) → IBC-3 BUFFER tote — the recycle loop's buffer; P-02 pulls from IBC-3.
-    #    (Was routed to the Blue X1 fill cross; Blue is now FILL-ONLY fresh water, so the filtered recycle
-    #    stays isolated in IBC-3 — the contamination fix.)  CV-3 anti-siphon check on the approach.
+    #    Blue is fill-only fresh water, so the filtered recycle stays isolated in IBC-3.  Brown-circuit color:
+    #    it carries filtered USED water, even though it climbs the far board beside IBC-4.
     r_ex = 4760                                          # entry X on the Brown-tote near face, just −X of DV-01 (clear of the tap 4880 + pump column 4934)
     r_ez = ov.IBC_H_1000 - 38                            # 1130 — Brown top-entry level (= the old DV-02→IBC-3 entry)
     _rec0 = len(p)                                        # capture the recycle-leg elements _side_entry is about to append (part='recycle')
@@ -354,7 +354,7 @@ def kit(part="all", p02_on_corridor=False):
          (DCX + tipd + 40, cp.SB_RISER_YD_FAR, DCZ),     # +Yd onto the FAR support-board riser plane (#29) — 90° #2 into DV-01
          (DCX + tipd + 40, cp.SB_RISER_YD_FAR, entry_z), # RISE up the board face straight to the ENTRY level (lowered — no drop jog)
          (r_ex, cp.SB_RISER_YD_FAR, entry_z)],           # −X along the far board; _side_entry then runs −Yd STRAIGHT into the flange (at X4760, −X of the pumps → clear)
-        r_ex, entry_face, entry_z, -1, draw.C_BLUE, drop=-50, check=False)   # −Yd into the Brown tote; flange seats on the cage edge (Yd1046) at Z1080
+        r_ex, entry_face, entry_z, -1, draw.C_IBC_BROWN, drop=-50, check=False)   # −Yd into the Brown tote; flange seats on the cage edge (Yd1046) at Z1080
     recycle_elems = list(p[_rec0:])                      # the DV-01 recycle→IBC-3 pieces, captured by identity (material names leak across pipes — don't match by substring)
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).

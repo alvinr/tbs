@@ -350,7 +350,7 @@ SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the se
 
 
 def rear_panel():
-    """The 18mm marine-ply REAR panel (recessed into the back-wall opening, flush with the back
+    """The 18mm exterior-ply REAR panel (recessed into the back-wall opening, flush with the back
     posts' −X inside face) PLUS the 18mm ply 'shirt' the pumps/ACC clamp to — a backing hard
     behind the bodies (deepest = the ACC), tied back to the rear-frame ring across the chase.
     The pumps' integral cam-clamps grip onto it; only short port→riser connectors penetrate it."""
@@ -390,7 +390,7 @@ def rear_panel():
         for bz in SHIRT_CLEAT_Z:                            # all clear of the port runs (z1492+)
             p.append(draw.ruby_box("Shirt-to-panel spacer block", blk_x0, byd, bz, blk_d, SHIRT_CLEAT_W, SHIRT_CLEAT_H, color=draw.C_PLY))
     # Drain-riser backing SPINE — an 18mm ply fin teeing PERPENDICULAR off the rear panel into the
-    # rear corridor (matches the documented marine-ply spine), spanning the two tall back-of-panel
+    # rear corridor (matches the documented exterior-ply spine), spanning the two tall back-of-panel
     # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).

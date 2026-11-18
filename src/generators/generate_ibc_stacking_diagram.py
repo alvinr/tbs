@@ -828,7 +828,7 @@ def sheet4():
     leader(ax, (ep_face_x - BB_OD / 2), (ep_yd_near),
            (ep_face_x - 260), (ep_yd_near - 220),
            "CORRIDOR PLUMBING PANEL\n"
-           "Backing Board (18mm marine ply)\n"
+           "Backing Board (18mm exterior ply)\n"
            "P-01/P-03/P-04/P-05 pumps (Shurflo 2088)\n"
            "ACC-01 accumulator (125 PSI); DV-02 + SV-02\n"
            "(3-stage filter bank → Pinhole Wall panel)",
@@ -1129,7 +1129,7 @@ def sheet4():
         "   behind the panel support frame (clear of uprights).",
         "7. X1 fill tees to BOTH Blue totes (IBC-1 & IBC-2), each branch",
         "   SIDE-ENTERING the tote's corridor face near the top (no cap drop).",
-        f"8. Corridor plumbing panel (18mm marine ply) at X={EQPANEL_X}: pumps",
+        f"8. Corridor plumbing panel (18mm exterior ply) at X={EQPANEL_X}: pumps",
         "   P-01/P-03/P-04/P-05 + ACC-01 (filters on the Pinhole Wall panel).",
         f"9. Deep 4-leg box frame: 4 uprights (front X{int(cp.FRONT_X)} + back X{int(cp.BACK_X)})",
         f"   + top/bottom rings + 4 flange feet. ~{FRAME_WEIGHT}kg.",

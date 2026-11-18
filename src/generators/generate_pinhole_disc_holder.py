@@ -253,10 +253,28 @@ def draw_sheet3():
     xa0 = xw0 + wt; at = sx(PDH_ADAPT_T)        # adapter (welded on the interior face)
     xp0 = xa0 + at; pt = sx(PDH_PLATE_T)        # disc-holder plate, bolted to the adapter
     apt = sy(PDH_APERTURE / 2)
+    # corrugated wall drawn as a trapezoid flute (flat crests + sloped webs + flat valleys); pitch/depth
+    # compressed for this small wall segment. The Ø240 adapter welds to the INTERIOR crests (interior
+    # face at xa0) and bridges the valleys. (The to-scale corrugation profile is on electrical Sheet 9.)
+    CD = sx(8)                        # corrugation depth in the section (compressed)
+    CRv, WBv, VLv = 10.0, 9.0, 10.0   # crest / web / valley along Y (compressed pitch)
+    def corr_sheet(ya, yb):
+        ylo, yhi = sorted((ya, yb))
+        steps = [(CRv, xw0), (WBv, xw0 - CD), (VLv, xw0 - CD), (WBv, xw0)]   # (dy, exterior-face x at end)
+        ext, y, i = [(xw0, ylo)], ylo, 0
+        while y < yhi:
+            dy, xend = steps[i % 4]; x0 = ext[-1][0]
+            if y + dy <= yhi:
+                ext.append((xend, y + dy))
+            else:
+                ext.append((x0 + (xend - x0) * (yhi - y) / dy, yhi)); break
+            y += dy; i += 1
+        inner = [(x + wt, yy) for (x, yy) in reversed(ext)]
+        axsec.add_patch(mpatches.Polygon(ext + inner, closed=True, fc='#C9C9C9', ec=C_OUT, lw=1.0, hatch='xx', zorder=3))
     for sgn in (-1, 1):
-        # corrugated wall (Ø150 aperture)
+        # corrugated wall (Ø150 aperture) — trapezoid flute; adapter welds to the interior crests
         y0, y1 = (ry + sgn * sy(PDH_WALL_APT / 2), ry + sgn * rad)
-        axsec.add_patch(mpatches.Rectangle((xw0, min(y0, y1)), wt, abs(y1 - y0), fc='#C9C9C9', ec=C_OUT, lw=1.0, hatch='xx', zorder=3))
+        corr_sheet(y0, y1)
         # adapter (Ø120 aperture) — steel, welded
         y0, y1 = (ry + sgn * sy(PDH_ADAPT_APT / 2), ry + sgn * sy(PDH_ADAPT_OD / 2))
         axsec.add_patch(mpatches.Rectangle((xa0, min(y0, y1)), at, abs(y1 - y0), fc=C_STEEL, ec=C_OUT, lw=1.2, hatch='///', zorder=3))

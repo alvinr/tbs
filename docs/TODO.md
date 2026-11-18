@@ -44,15 +44,6 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 - [ ] The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.
 
-## 📐 Corrugated-wall rendition — walkway square-rib → trapezoid (optional) (2026-11-18)
-
-- [ ] **Electrical Sheets 9 + 6 DONE** (2026-11-18): both now draw the corrugation as flat-topped **trapezoids** (Sheet 9 to-scale with a valley centered on the bolt; Sheet 6 a pitch-compressed schematic flute). A cross-generator inventory found **no other sharp-peak/triangle corrugation drawings**. Walkway Sheets 2/7 (square hollow-rib box) and the flat-slab sections (film-plane ×4, ibc-frame ×2, shelf) are **OK as-is** (owner, 2026-11-18): they show across the full corrugation depth, which is correct since the exact bolt/crest location isn't known until the actual container is purchased.
-
-## 🔧 Ventilation grille + pinhole adapter — exterior mounting plate on the corrugation (2026-11-18)
-
-- [x] **ventilation Fan-A grille exterior AL plate — DONE** (2026-11-18). Added a flat ~3mm aluminum plate (frame, open at the Ø150 hole) the grille screws to, TEK self-drilled to the corrugation crests + sealed over the valleys (no through-bolt). Cascaded: `parts.py` (`fan-grille-al-plate`, +$15/$30 ventilation) → `costing.py` (§5b + EXPECTED ventilation/grand) → `generate_ventilation_diagram.py` sheet 2 (drawn) → ventilation-report §4.2. Gates pass.
-- [ ] **pinhole-disc-holder-sheet3 — drawing fix** (owner, drawing only — the Ø240 S275 adapter design is fine): sheet 3 draws the wall as a flat slab; update it to show the trapezoid corrugation profile with the adapter welded to the crests.
-
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 
 - [~] **Brush + holder — KEEP AS-IS for now (2026-08-24: "drive to completed blueprints, optimize cost later").** Leave `ll-wiper-brush` (#4 3/16″ est) + `ll-wiper-holder` (Tanis Al est) + the current drawing (Sheets 4/6/7) unchanged — the design is complete; only the price is an estimate. **Cost-optimization candidate for later:** Grainger 18A417 brush + 18A320 holder (confirmed 1/8″ backing pair, 3/4″/19mm trim; only in 10-packs → $270+$259 for a 4-need — expensive as-is; a by-the-foot source would cut it). If adopted later, re-spec the drawing/constants to 1/8″ backing/19mm trim → cascade Sheets 4/6/7/10.

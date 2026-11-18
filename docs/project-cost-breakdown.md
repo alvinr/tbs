@@ -203,7 +203,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> on fresh Blue alone).
 
 <!-- BEGIN costing:water -->
 | Category | Low† | High† |
@@ -482,7 +482,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 |------|------|
 | Muslin substrate | ~$43 |
 | Sensitizer chemistry | ~$21 |
-| Water (32 gal Blue circuit) | ~$0.35 (if resupplied by tanker at ~$0.01/gal) |
+| Water (<!-- BEGIN fact:blue_per_print_gal -->30<!-- END fact:blue_per_print_gal --> gal Blue circuit) | ~$0.30 (if resupplied by tanker at ~$0.01/gal) |
 | Containment poly & consumables | ~$2 |
 | Filter cartridge amortized (4.5×20; replace every ~40–60 prints) | ~$5 |
 | **Per-print running cost** | **~$71** |

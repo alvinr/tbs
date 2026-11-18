@@ -552,7 +552,6 @@ _CA = "cost-analysis-report.md"
 _OM = "operating-manual.md"
 _IBC = "ibc-stacking-report.md"
 _PT = "processing-tray-and-spray-bar.md"
-_WS = "water-system-report.md"
 _ELEC = "electrical-report.md"
 _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
@@ -840,8 +839,8 @@ def _inline_blocks() -> dict:
         "ibc-frame-high": (_IBC, lambda: f"${_ibc_frame().high:,}"),
         # processing-tray-and-spray-bar.md §6 BOM subtotals (from the WATER line items).
         # Shared across the dedicated report + the two docs that summarize/point to it.
-        "tray-low": ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').low:,}"),
-        "tray-high": ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
+        "tray-low": ([_PT, _CA], lambda: f"${_pt_line('Processing tray').low:,}"),
+        "tray-high": ([_PT, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
         # cost-analysis-report.md §4 savings levers (bucket A — see SAVINGS_LEVERS) + §6 light lock
         "ca-lever-container": (_CA, lambda: f"${_lever('container')[0]:,}"),
         "ca-lever-tray-low": (_CA, lambda: f"${_lever('tray')[0]:,}"),
@@ -854,8 +853,8 @@ def _inline_blocks() -> dict:
         "ca-savings-low": (_CA, lambda: f"${_savings_rollup()[0]:,}"),
         "ca-savings-pct-low": (_CA, lambda: f"{_savings_pct()[0]}"),
         "ca-lightlock-mid": (_CA, lambda: f"${total(LIGHTLOCK)[1]:,}"),
-        "spray-low": ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
-        "spray-high": ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),
+        "spray-low": ([_PT], lambda: f"${_pt_line('Spray bar').low:,}"),
+        "spray-high": ([_PT], lambda: f"${_pt_line('Spray bar').high:,}"),
         "tray-spray-total-low": (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
         "tray-spray-total-high": (_PT, lambda: f"${_pt_line('Processing tray').high + _pt_line('Spray bar').high:,}"),
         # electrical-report.md §8 system totals (1-pack standard build).

@@ -52,7 +52,7 @@ water 1,000 kg/m³.
 |-----------|------------|-------------|---------------|-------------------|
 | Hinged panel (incl. Ø800 housing + punch-out bay) | 161 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 1/8" HDPE plastic skins + 18mm-ply Fan-B mount band + HDPE-skinned 6061 Al stiffener-grid (1×1×1/8in) corner cores + 2×2×0.120in steel SHS center ≈ 119 kg + bolted 5mm (3/16in) HDPE Ø800 housing ≈ 22 kg + 1/8"-HDPE punch-out bay ≈ 21 kg (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
 | Light-trap drum (rotating) | 69 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø764 C-shell, 1/8" HDPE plastic skin, no fins (suspended with panel) + 2× 8mm 6061-T6 Al end caps + rolled rim-angles + steel Ø75 stub shafts + 2× SKF 6215 bearings + the interior 40×40×5 SS pull-handle stile (bolts to the caps → rotates with the drum) + plugs + pull handle |
-| Processing tray | 114 | 280–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 57 kg ([Water System Report](water-system-report.md) §4) |
+| Processing tray | 114 | 280–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 57 kg ([Processing Tray Report](processing-tray-and-spray-bar.md)) |
 | Near walkway | 37 | 580–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 12.7 kg/m² GRP grating |
 | Far walkway | 37 | 580–4,629 | 2,062–2,362 | Same as near walkway |
 | Right walkway | 44 | 4,329–4,629 | 0–2,362 | Cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (2×1×0.120in steel) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
@@ -123,7 +123,7 @@ After a full session, wash water has been consumed and redistributed.
 Blue IBCs are empty; Brown (recycled) and Waste IBCs hold the ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L
 recovered (~<!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L each). The processing tray has been drained; the other
 ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l -->L was lost to the open process (evaporation, wet-print carryout,
-unrecovered residual — see [water-system report §4](water-system-report.md)).
+unrecovered residual — see [water-system report §3](water-system-report.md)).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
@@ -157,7 +157,7 @@ Blue-on-top layout stays comfortably stable.
 ### 4.4 Optional Max-Blue-Fill Transport Case
 
 The standard load fills each Blue tote to 900L (1,800L). The totes are 1,000L vessels, so the
-[water-system report §4](water-system-report.md) notes they can be topped further — to
+[water-system report §3](water-system-report.md) notes they can be topped further — to
 **~1,900L** (~950L per tote) — for one more print (~15). Re-running the weight model confirms even
 that heavier load stays well within transport limits:
 
@@ -204,7 +204,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l --> kg of it has
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
-[water-system report §4](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l --> kg is recovered. The hinged panel
+[water-system report §3](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l --> kg is recovered. The hinged panel
 is swung ~56° about the pivot to its transport position. Total mass therefore drops to **<!-- BEGIN weight:wt-total-exhausted -->4,528<!-- END weight:wt-total-exhausted --> kg**
 (~<!-- BEGIN weight:wt-mass-drop -->540<!-- END weight:wt-mass-drop --> kg below the loaded state), and the vertical CG drops by <!-- BEGIN weight:wt-mig-dz -->415<!-- END weight:wt-mig-dz -->mm (Z: <!-- BEGIN weight:wt-loadedtx-z -->1,343<!-- END weight:wt-loadedtx-z --> → <!-- BEGIN weight:wt-exhausted-z -->928<!-- END weight:wt-exhausted-z -->mm) as the
 remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never

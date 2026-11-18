@@ -396,7 +396,7 @@ exterior backing plates, [§3.2](#32-frame-specification)).
 
 The port elevations are the diagram-of-record (see [§8 Sheet 3](#8-engineering-drawings)).
 The bulkhead fittings, camlock, and seals are specified in the
-[Water System Report](water-system-report.md) §5 and §7; the bulkhead BOM,
+[Water System Report](water-system-report.md) §7; the bulkhead BOM,
 including the reinforcing plates, is in the
 [master shopping list](master-shopping-list.md). (These end-wall ports are
 distinct from the two equipment **Plumbing Panels** — Corridor and Pinhole Wall —
@@ -413,7 +413,7 @@ between the near and far IBC columns, reaching each tote's corridor-facing DN50
 butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
 (X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
 and the recycle returns), and the valve schedule are specified in the
-[Water System Report](water-system-report.md) §4–§5 and §7. The pumps and
+[Water System Report](water-system-report.md) §4 and §7. The pumps and
 diverter valves that drive those circuits — on the **Corridor Plumbing Panel**
 (plywood, at the front (cargo-door) mouth of the corridor, bolted to the
 deep-box frame, see [§3.2](#32-frame-specification)) — together with the
@@ -529,8 +529,8 @@ the stacking structure and the totes it restrains.
 | Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y (all four totes are this size; "600 L"/"640 L" are fill levels, not tote sizes) |
 | Weld-on lashing ring | [McMaster-Carr #3028T31](https://www.mcmaster.com/3028t31/) — 1½" ID, ½" thick, 6,600 lb WLL |
 | Floor cross-member structure + non-standardization (§3.4a) | [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) (intermediate members ≤1,000mm, or flat underside) · [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) (box/C/Z/I members) · [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html) (C-section SPA-H Corten ~4–4.5mm, ~45mm flange) · [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/) (spacing not standardized, varies by maker) |
-| Plumbing fittings, pipe, valves, camlock, pumps | Specified and sourced in the [Water System Report](water-system-report.md) §11 and [Plumbing Report](plumbing-report.md) §11 |
-| Water system architecture | [Water System Report](water-system-report.md) §3 |
+| Plumbing fittings, pipe, valves, camlock, pumps | Specified in the [Plumbing Report](plumbing-report.md); sourced in the [Master Shopping List](master-shopping-list.md?system=water) |
+| Water system architecture | [Water System Report](water-system-report.md) §4 |
 | IBC layout and placement | [Equipment Layout Report](equipment-layout-report.md) §2.4 (right end zone) |
 | Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |
 | Plumbing panel specification | [Plumbing Report](plumbing-report.md) |

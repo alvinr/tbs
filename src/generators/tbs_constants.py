@@ -1068,14 +1068,14 @@ def tray_gutter_floor_z(x):
     return PROC_TRAY_GUTTER_Z_CENTER + abs(x - cx) * PROC_TRAY_GUTTER_SLOPE
 
 # ── Water throughput — prints per resupply (COMPUTED, never transcribed) ──────
-# "~13 prints per resupply" (and the ~32 gal/print, ~121 L/print, ~4.4 days figures derived from it)
+# "~15 prints per resupply" (and the ~30 gal/print, ~114 L/print figures derived from it)
 # is restated across the docs and was independently re-declared in calculate_energy_budget.py. Rather
 # than copy any of those literals, derive them here from named inputs so they can't drift. The chain
 # mirrors water-system-report.md §"Per-print water requirement" / §"Storage capacity vs. print count"
-# EXACTLY, including the report's documented per-wash rounding (15.6 gal ≈ 16 gal), so every
+# EXACTLY, including the per-wash rounding (15.2 gal ≈ 15 gal), so every
 # downstream published number stays stable:
-#   tray flood at TRAY_FLOOD_DEPTH_MM over the real footprint -> ~15.6 gal, ROUNDED to 16 gal/wash
-#   wash 1 + wash 3 draw clean Blue (wash 2 recycles Brown) -> BLUE_WASHES_PER_PRINT × 16 = 32 gal
+#   tray flood at TRAY_FLOOD_DEPTH_MM over the real footprint -> ~15.2 gal, ROUNDED to 15 gal/wash
+#   wash 1 + wash 3 draw clean Blue (wash 2 recycles Brown) -> BLUE_WASHES_PER_PRINT × 15 = 30 gal
 #   usable Blue supply / Blue-per-print -> prints between resupply runs (floor)
 # facts.yml references PRINTS_PER_RESUPPLY via `constant:`; energy-budget imports these (one source).
 L_PER_GAL             = 3.78541
@@ -1083,21 +1083,24 @@ BLUE_SUPPLY_L         = 1800    # usable clean-water (Blue) volume — 2× 900L 
 BLUE_FILL_PER_TOTE_L  = BLUE_SUPPLY_L // 2    # = 900L gravity fill per Blue tote (a FILL LEVEL, not the 1000L tote size)
 TRAY_FLOOD_DEPTH_MM   = 6       # one process flood depth (¼") over the tray footprint
 BLUE_WASHES_PER_PRINT = 2       # washes 1 & 3 draw Blue; wash 2 recycles from Brown
-TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.6 → 16
-BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
-BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
+TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.2 → 15 (injected via facts.yml tray_flood_gal)
+BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 30 gal net Blue/print (injected via facts.yml blue_per_print_gal)
+BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 114 L
+BLUE_PER_PRINT_L_R    = round(BLUE_PER_PRINT_L)                 # = 114 L (injected via facts.yml blue_per_print_l)
 PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 15
 WASHES_PER_PRINT      = 3       # three wash baths per print (1 & 3 Blue, 2 Brown-recycled)
 PRINTS_NO_RECYCLE     = int(BLUE_SUPPLY_L / (WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL))  # = 10 (injected via facts.yml prints_no_recycle)
 RECYCLE_SUPPLY_GAIN_PCT = round((WASHES_PER_PRINT / BLUE_WASHES_PER_PRINT - 1) * 100)      # = 50 (injected via facts.yml recycle_supply_gain_pct)
+IBC_CAPACITY_L        = 1000    # tote vessel volume — the hard per-tote fill ceiling
+PRINTS_MAX_FILL       = int(2 * IBC_CAPACITY_L / BLUE_PER_PRINT_L)   # = 17 — both Blue totes filled to the brim (injected via facts.yml prints_max_fill)
 BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons) (injected via facts.yml blue_supply_gal)
 
 # Water balance — of the Blue consumed per run, ~31 L/print is open-process loss (muslin carryout +
 # evaporation + unrecovered residual; water-system-report §4); the rest is recovered into Brown+Waste.
 # All COMPUTED so a supply/print change (e.g. the 1,600→1,800 L revision) re-derives them everywhere.
-LOSS_PER_PRINT_L      = 31                                             # design est. — see water-system §4
-RECOVERED_PER_PRINT_L = round(BLUE_PER_PRINT_L) - LOSS_PER_PRINT_L     # ≈ 90 L recovered/print
-RECOVERED_L           = PRINTS_PER_RESUPPLY * RECOVERED_PER_PRINT_L    # = 1260 L (Brown+Waste at exhaustion)
+LOSS_PER_PRINT_L      = 31                                             # design est. — see water-system §3 (injected via facts.yml loss_per_print_l)
+RECOVERED_PER_PRINT_L = round(BLUE_PER_PRINT_L) - LOSS_PER_PRINT_L     # ≈ 83 L recovered/print
+RECOVERED_L           = PRINTS_PER_RESUPPLY * RECOVERED_PER_PRINT_L    # = 1245 L (Brown+Waste at exhaustion)
 COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 622 L per collection tote (injected via facts.yml collection_fill_l)
 LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L lost over a run (injected via facts.yml lost_l)
 

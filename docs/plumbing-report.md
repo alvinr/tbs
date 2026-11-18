@@ -120,8 +120,7 @@ sumps, half the interval).
 **Alternative:** A single 3-stage combo unit (e.g. Purcooflow WHF2045B302 or
 iSpring WGB32B) with 4.5"×20" cartridges eliminates the inter-housing plumbing
 and the separate frame — one integrated bracket, 1" NPT inlet/outlet, a single
-1/2"→1" bushing at the DV-02 recycle feed. See
-[Water System Report](water-system-report.md) §3.2 for sizing rationale.
+1/2"→1" bushing at the DV-02 recycle feed.
 
 ### 3.2 Corridor Plumbing Panel — Pump Zone
 
@@ -530,7 +529,7 @@ The panel-mounted equipment for both plumbing panels is part of the water system
 
 | Interval | Task |
 |----------|------|
-| Before each session | Verify all valve positions per valve matrix (see [Water System Report](water-system-report.md) §4) |
+| Before each session | Verify all valve positions per §4 |
 | Before each session | Run P-04 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output |
 | Before each session | Confirm P-04 suction pickup tube seated in sump well (visual check) |
 | After each session | Run P-04 to evacuate residual tray water to Brown or Black as appropriate |

@@ -80,10 +80,10 @@ energy — the cooling load is the real consumer.
 
 The Brown (IBC-3) and Waste (IBC-4) totes are evacuated to the sealed end-wall ports —
 **Brown → X3 via P-05**, **Waste → X4 via P-03** ([Plumbing
-Report §4.3](plumbing-report.md), [Water System Report §6](water-system-report.md))
+Report §4.3](plumbing-report.md), [Water System Report §7](water-system-report.md))
 — only at a **resupply / dump run**, when the clean-water supply is replenished. That
-service interval is set by the Blue water (~14 prints ≈ 4.7 days at 3/day, §8.2), so the
-totes are emptied roughly **every ~4.7 days, not every evening** — the camera can sit on
+service interval is set by the Blue water (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 5 days at 3/day, §8.2), so the
+totes are emptied roughly **every ~5 days, not every evening** — the camera can sit on
 site for several days between dump runs.
 
 This is **gravity-assisted**: each tote gravity-drains through its low port,
@@ -159,12 +159,12 @@ So the **second pack does not lengthen the deployment** — it buys a **cloudy-d
 ### 8.2 Clean water *is* the limit
 
 Power being effectively unlimited on sun, the binding constraint is the **fresh (Blue)
-water supply**. Each print consumes **~32 gal (121 L) of net Blue water** even with Brown
+water supply**. Each print consumes **~<!-- BEGIN fact:blue_per_print_gal -->30<!-- END fact:blue_per_print_gal --> gal (<!-- BEGIN fact:blue_per_print_l -->114<!-- END fact:blue_per_print_l --> L) of net Blue water** even with Brown
 recycling ([Water System Report §3–4](water-system-report.md)), so:
 
 | Constraint | Capacity | Per print | Endurance |
 |---|--:|--:|---|
-| **Clean water (Blue, in)** | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal) | 121 L (32 gal) | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days** @ 3/day |
+| **Clean water (Blue, in)** | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal) | <!-- BEGIN fact:blue_per_print_l -->114<!-- END fact:blue_per_print_l --> L (<!-- BEGIN fact:blue_per_print_gal -->30<!-- END fact:blue_per_print_gal --> gal) | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 5 days** @ 3/day |
 | Power, 2 packs + sun | — | ~620 Wh | Indefinite |
 | Power, 2 packs, no sun | <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh | ~620 Wh | ~3 prints (~<!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day) |
 
@@ -193,6 +193,6 @@ all, that — not power or fresh water — becomes the hard stop.
 ## 9. Source References
 
 1. [Electrical Report §3](electrical-report.md) — power budget and the per-session itemized energy.
-2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
+2. [Water System Report §3, §6–7](water-system-report.md) — wash cycles, the flow-through wash, and the Brown/Waste drain-out ports.
 3. [Plumbing Report §4.3](plumbing-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
 4. [Cost Analysis](cost-analysis-report.md) — the capital build cost and savings levers.

@@ -352,6 +352,41 @@ ibc_ceiling_clearance_mm:
 # Water-balance figures — COMPUTED from BLUE_SUPPLY_L + the per-print loss (water-system §4); a
 # supply/print change re-derives them everywhere. Anchored to the recovered/collection/lost/gal
 # phrasings (value appears as both L and kg — water is 1:1 — in the water vs weight reports).
+tray_flood_gal:
+  constant: TRAY_FLOOD_GAL
+  unit: gal
+  owner: water-system-report.md
+  aliases:
+    - '(\d+) gal(?:lons)? (?:allowed )?per wash'
+
+blue_per_print_gal:
+  constant: BLUE_PER_PRINT_GAL
+  unit: gal
+  owner: water-system-report.md
+  aliases:
+    - '~?(\d+) gal net Blue'
+
+blue_per_print_l:
+  constant: BLUE_PER_PRINT_L_R
+  unit: L
+  owner: water-system-report.md
+  aliases:
+    - '\((\d+) L\) of net Blue'
+
+prints_max_fill:
+  constant: PRINTS_MAX_FILL
+  unit: prints
+  owner: water-system-report.md
+  aliases:
+    - 'capping it at ~?(\d+) prints'
+
+loss_per_print_l:
+  constant: LOSS_PER_PRINT_L
+  unit: L
+  owner: water-system-report.md
+  aliases:
+    - '~(\d+)\s?L per print'
+
 prints_no_recycle:
   constant: PRINTS_NO_RECYCLE
   unit: prints

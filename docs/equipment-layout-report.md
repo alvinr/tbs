@@ -89,17 +89,7 @@ exact cone fit at the film-plane edges.
 
 ---
 
-## 4. Transport-Mode Positions
-
-Two items move for transport. The hinged panel + drum swing ~56° inboard about the pivot
-(see the [Hinged Panel Report](hinged-panel-report.md)). The evaporative cooler, which
-operates on the ground outside, stows on the near-walkway wide section — clearing both the
-panel swing and the tray zone; its base plate, straps, and stow sequence are in the
-[Operating Manual](operating-manual.md).
-
----
-
-## 5. Source References
+## 4. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
 2. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications and cage dimensions (~65 kg tare; a 600L caged tote does not exist).

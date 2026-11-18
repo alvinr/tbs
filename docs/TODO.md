@@ -44,9 +44,9 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 - [ ] The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.
 
-## 📐 electrical-sheet6 — corrugated-wall section still drawn as a peak (2026-11-18)
+## 📐 Corrugated-wall rendition — walkway square-rib → trapezoid (optional) (2026-11-18)
 
-- [ ] **Sheet 9 DONE** (2026-11-18): the wall-securing detail now draws the corrugation as a to-scale **trapezoid** (flat crest + sloped webs + flat valley; ISO-typical crest 72 · web 68 · valley 70 · pitch 278mm, depth = `CONTAINER_CORRUGATION_DEPTH`), so the flange seats on a flat 72mm crest, not a point. **Remaining:** `draw_sheet6` (`EXTERNAL POWER PANEL — PENETRATION BOX`) draws the SAME corrugated-wall section with the same triangular `corr_band` — apply the identical trapezoid profile there for consistency, then regenerate + re-check.
+- [ ] **Electrical Sheets 9 + 6 DONE** (2026-11-18): both now draw the corrugation as flat-topped **trapezoids** (Sheet 9 to-scale with a valley centered on the bolt; Sheet 6 a pitch-compressed schematic flute). A cross-generator inventory found **no other sharp-peak/triangle corrugation drawings**. **Remaining candidate (not a peak, lower priority):** `generate_walkway_diagram.py` `sheet2` (~L598-635) and `sheet7` (~L1924-1952) draw the wall as a **SQUARE hollow-rib box** (vertical webs, `CORR_DEPTH=38`, `WALL_T=1.6`) — a duplicated block; convert the vertical webs to sloped trapezoid webs + refactor to a shared helper if the square rib should match the new rendition. All other wall sections (film-plane ×4, ibc-frame ×2, pinhole §3, ventilation, shelf) are plain FLAT SLABS labeled "corrugated" with no profile drawn — not peaks; only relevant if the project later wants to ADD a profile there.
 
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 

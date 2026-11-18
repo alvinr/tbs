@@ -1886,19 +1886,31 @@ def draw_sheet6():
     ax_b.add_patch(mpatches.Rectangle((wall_int, -28), int_pad, sec_h + 100,
                    fc=C_INT, ec="none", alpha=0.3, zorder=1))
 
-    # ── Corrugated container wall: solid bands above + below the opening ──
-    def corr_band(y0, y1):
-        n = max(4, int(round((y1 - y0) / (11 * mm_v))))
-        pts = []
-        for k in range(n + 1):
-            yy = y0 + (y1 - y0) * k / n
-            xx = crest_x if (k % 2 == 0) else valley_x
-            pts.append((xx, yy))
-        pts += [(wall_int, y1), (wall_int, y0)]
-        ax_b.add_patch(mpatches.Polygon(pts, closed=True, fc=C_WALL,
-                       ec=C_OUT, lw=1.3, zorder=3))
-    corr_band(cut_top, sec_h + 24)
-    corr_band(-24, cut_bot)
+    # ── Corrugated container wall — trapezoid profile (flat crests + sloped webs + flat valleys),
+    #    proportioned ~72:68:70 like the ISO-typical flute; pitch is compressed + depth exaggerated for
+    #    this short schematic band so the flutes read (the to-scale profile is on Sheet 9). Exterior
+    #    crests at crest_x (the flange seats on them), interior face flat at wall_int. Bands above +
+    #    below the box opening each start on a crest at the opening edge.
+    CRv, WBv, VLv = 13.0, 12.0, 13.0
+    def corr_band(y0, y1, up=True):
+        steps = [(CRv, crest_x), (WBv, valley_x), (VLv, valley_x), (WBv, crest_x)]
+        s = 1 if up else -1
+        start, end = (y0, y1) if up else (y1, y0)      # walk away from the opening edge (start)
+        pts, y, i = [(crest_x, start)], start, 0
+        while (y < end) if up else (y > end):
+            dy, xend = steps[i % 4]
+            x0 = pts[-1][0]
+            if (y + s * dy <= end) if up else (y + s * dy >= end):
+                pts.append((xend, y + s * dy))
+            else:
+                frac = abs(end - y) / dy
+                pts.append((x0 + (xend - x0) * frac, end))
+                break
+            y += s * dy; i += 1
+        pts += [(wall_int, end), (wall_int, start)]
+        ax_b.add_patch(mpatches.Polygon(pts, closed=True, fc=C_WALL, ec=C_OUT, lw=1.3, zorder=3))
+    corr_band(cut_top, sec_h + 24, up=True)            # above the opening — crest at cut_top, walk up
+    corr_band(-24, cut_bot, up=False)                  # below the opening — crest at cut_bot, walk down
 
     # ── Flashing + silicone bead — bridges the flange over the corrugation ──
     for (yy0, yy1) in [(cut_top, plate_h_draw), (0, cut_bot)]:

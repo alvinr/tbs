@@ -40,8 +40,15 @@ pipe running from DV-01 into IBC-4. Filtered used water bound for the Brown buff
   recolor the leg to the Brown-circuit pipe color (add a shared `C_BROWN` to `tbs_draw.py` if none
   exists — 2D uses `#8B5E3C`); regenerate → `--send` into water.skp → save → `push_sketchfab.py water`.
 - [x] Recolored in water.skp (2026-11-18).
-- [ ] Re-send the other models that reuse this leg — **ibc-stack, construction, overview** (manifest
-  `--check` flags them STALE) — then `manifest.py --update` + commit the `.skp`s.
+- [ ] Re-send the other models that reuse this leg (and the color pass) — **spraybar, ibc-stack,
+  construction, overview** (manifest `--check` flags them STALE) — then `manifest.py --update` + commit
+  the `.skp`s.
+- [x] Pipe-color convention applied to 3D (water/corridor/spraybar) + 2D (17 sheets); lint GATE added (2026-11-18).
+- [ ] **ibc-stacking Sheet 5 still draws the retired topology** — "FILTER RETURN → IBC-2 SIDE-ENTRY
+  (recycle to Blue)" + note 11 (recolored Brown, not redrawn). Redraw: DV-01 recycle → IBC-3.
+- [ ] **water-system-sheet1 draws CV-2 / CV-3 check valves** (and the SYMBOLS row "CV-2/3
+  anti-backflow"), but the design fits only CV-1 (the Shurflo 2088s carry integral checks — water §4.1).
+  Remove them from the schematic.
 - [x] X1 4-way cross → TEE in `generate_corridor_water_panel.py` + BOM (cross-100 → 4th tee-100, −$4) (2026-11-18).
 - [ ] **panel-spine-view-a/b (`generate_panel_layout.py`) still draw the retired DV-01 BLUE-RECYCLE riser
   up the spine into the "X1 FILL CROSS (4-way)"** (`RX_BLUE` lane, the leader label, notes 4/8/9) and

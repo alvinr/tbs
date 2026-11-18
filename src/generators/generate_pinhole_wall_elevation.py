@@ -18,14 +18,14 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_STACK_TOP, BA_D, PUMP_PIPE_OD, PUMP_PIPE_WALL, TAP_X, TAP_Z, SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_YD_NEAR, SHELF_DEPTH, PULL_CORD_BOTTOM_Z, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W, WALKWAY_BRACKET_T, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, CONTAINER_RIB_SPACING, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, SPRAY_BAR_FEED_Z, BV05_X, BV05_Z, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_EVAP, C_ELEC, C_BATT, C_PINHOLE_EQ, ZONE_R_START, BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_FILTER_CAP_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_PANEL_H, DIAGRAMS_DIR
-from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes,
+from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes, draw_mixed_pipe,
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
-from tbs_constants import DIAGRAM_DPI, FONT
+from tbs_constants import DIAGRAM_DPI, FONT, C_PIPE_FRESH, C_PIPE_RECYCLE
 
 # ── Local constants (computed from tbs_constants) ────────────────────────────
 # Pipe colors for Blue circuit (only Blue supply remains on this wall)
-C_BLUE  = "#2979B8"      # Blue circuit pipe fill
+C_BLUE  = C_PIPE_FRESH   # Blue circuit pipe fill
 C_BLUE_EC = "#1A5A8A"    # Blue circuit pipe edge
 OD_H = PUMP_PIPE_OD     # 21mm (1/2" PVC)
 WALL_H = PUMP_PIPE_WALL  # 3mm
@@ -364,7 +364,8 @@ ax.text(sx(PH_X), sz(PH_H - 80), "PINHOLE\nØ2.17mm",
 # SV-01 rides raised beside F-03; ACC-02 (recycle-spray damper) sits center-bottom; DV-01 exits
 # to the corridor mouth off the high-X edge. Positions match the 3D pinhole-water-panel model.
 # (Corridor pumps P-01/P-02/P-03/P-05 + ACC-01 stay in the IBC corridor — see the panel-layout detail.)
-C_FILT, C_FILT_EC, C_BROWN, C_ACC, C_VALVE = "#C3D6E8", "#5A7A9A", "#8A5A3A", "#C3D6E8", "#E8D24A"
+C_FILT, C_FILT_EC, C_ACC, C_VALVE = "#C3D6E8", "#5A7A9A", "#C3D6E8", "#E8D24A"
+C_BROWN = C_PIPE_RECYCLE
 _bb_r, _bb_bot, _bb_top, _bb_head = BB_OD // 2, PWP_FILTER_BOT_Z, PWP_FILTER_TOP_Z, PWP_FILTER_HEAD_Z
 ax.add_patch(mpatches.Rectangle((sx(PWP_PANEL_X0), sz(PWP_PANEL_Z0)),
              sx(PWP_PANEL_X1) - sx(PWP_PANEL_X0), sz(PWP_PANEL_Z0 + PWP_PANEL_H) - sz(PWP_PANEL_Z0),
@@ -475,11 +476,12 @@ ax.text(sx(_supply_mid_x + 500), sz(SUPPLY_Z + 5),
 
 BV05_R = 25              # valve body radius for symbol
 
-# Riser from supply pipe up to BV-05b
+# Riser from supply pipe up to BV-05b — downstream of the BV-05a selector: Blue OR Brown (striped)
 draw_pipe_path(ax,
     [BV05_X, BV05_X],
     [SUPPLY_Z, BV05_Z],
-    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
+    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc=C_BLUE, zorder=8)
+draw_mixed_pipe(ax, [sx(BV05_X), sx(BV05_X)], [sz(SUPPLY_Z), sz(BV05_Z)], 2.0, base=False, zorder=10)
 
 # BV-05b ball-valve symbol (bowtie inside white circle)
 _bvx, _bvz = sx(BV05_X), sz(BV05_Z)
@@ -510,7 +512,7 @@ ax.annotate("", xy=(sx(BV05_X - 100), sz(BV05_Z - 50)),
                             connectionstyle="arc3,rad=0.3"),
             zorder=10)
 ax.text(sx(BV05_X - 80), sz(BV05_Z - 80),
-        "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL)",
+        "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL ·\nBlue or Brown)",
         ha="center", va="top", fontsize=4.0, color=C_BLUE,
         style="italic", zorder=10, **FONT)
 

@@ -22,7 +22,7 @@ from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models"))
 
-from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_STEEL
+from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_STEEL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_title_block import title_block
 import generate_corridor_water_panel as cp
@@ -34,9 +34,9 @@ C_BG = "#FAFAFA"
 C_STEEL_D = "#6C6E76"
 C_PLY = "#D8B78A"
 C_PLY_E = "#A9843F"
-C_BLUE = "#2979B8"
-C_BROWN = "#8B5E3C"
-C_GREY = "#6E7076"
+C_BLUE = C_PIPE_FRESH
+C_BROWN = C_PIPE_RECYCLE
+C_WASTE = C_PIPE_WASTE
 C_CLIP = "#55575E"
 C_CUSH = "#2E2E34"
 LBL_BG = dict(fc="white", ec="none", alpha=0.85, pad=1)
@@ -61,7 +61,7 @@ BOARDS = [
     ("NEAR-UPPER BOARD", "walkway wall — backs BV-02 / BV-06", cp.SB_NEAR_UP_Z,
      [(cp.BV_FWD_X, "BV-02 / BV-06 risers", C_BROWN)],
      (1370, 1440, 1770, 1840),
-     [(1300, "P-05-inlet brown", C_BROWN), (1902, "P-03 grey", C_GREY)]),
+     [(1300, "P-05-inlet brown", C_BROWN), (1902, "P-03 waste", C_WASTE)]),
 ]
 
 

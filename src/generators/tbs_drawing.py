@@ -22,7 +22,7 @@ import math
 import numpy as np
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_CL, C_DIM
+from tbs_constants import C_OUT, C_CL, C_DIM, C_PIPE_FRESH, C_PIPE_RECYCLE
 
 
 # Opaque white rounded box drawn behind a label so it masks whatever it sits on
@@ -667,6 +667,24 @@ def draw_legend(ax, items, x, y, *, row_h=46, swatch_w=32, swatch_h=28,
 #  keep a thin local wrapper that injects their own scale functions / default
 #  colors and delegates here.  DO NOT re-inline this body into a generator.
 # ═════════════════════════════════════════════════════════════════════════
+
+def draw_mixed_pipe(ax, xs, ys, lw, *, dash=(4, 4), zorder=3, capstyle="butt", base=True):
+    """A line that carries EITHER Blue or Brown (downstream of the BV-05a spray selector):
+    a C_PIPE_FRESH line with a C_PIPE_RECYCLE dash overlay at the same width.  `dash` is the
+    on/off pattern in line-width units (matplotlib scales it by lw).  base=False draws only the
+    brown dashes — for overlaying the centerline of a double-wall pipe already filled Blue."""
+    if base:
+        ax.plot(xs, ys, color=C_PIPE_FRESH, lw=lw, solid_capstyle=capstyle, zorder=zorder)
+    ax.plot(xs, ys, color=C_PIPE_RECYCLE, lw=lw, ls=(0, dash), dash_capstyle="butt",
+            zorder=zorder + 0.01)
+
+
+def mixed_pipe_legend_handle(lw, *, dash=(4, 4)):
+    """Legend proxy matching draw_mixed_pipe (a 2-line tuple for matplotlib's HandlerTuple)."""
+    from matplotlib.lines import Line2D
+    return (Line2D([], [], color=C_PIPE_FRESH, lw=lw),
+            Line2D([], [], color=C_PIPE_RECYCLE, lw=lw, ls=(0, dash)))
+
 
 def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm, fc="#B0B0B8", *,
                    ec="#333333", bore_fc="white", elbow_r=None, zorder=8,

@@ -40,6 +40,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
+from tbs_constants import C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE, C_PIPE_FITTING
 from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI, FONT, C_WALL
 from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
@@ -130,18 +131,18 @@ C_FRAME      = "#1A1A1A"
 C_FRAME_FILL = "#B0B0B8"
 C_PLY        = "#D4C8A0"
 C_PLY_EC     = "#A09060"
-C_BLUE       = "#2979B8"
+C_BLUE       = C_PIPE_FRESH
 C_BLUE_EC    = "#1A5A8A"
-C_BROWN      = "#8B5E3C"
+C_BROWN      = C_PIPE_RECYCLE
 C_BROWN_EC   = "#5A3A20"
-C_BLACK_SYS  = "#777777"
+C_BLACK_SYS  = C_PIPE_WASTE
 C_BLACK_EC   = "#444444"
 C_FILTER     = "#4A90D9"
 C_PUMP_BODY  = "#E0D0C0"
 C_PUMP_EC    = "#806040"
 C_ACC        = "#5A9ACC"
-C_PIPE_FILL  = "#2A5A2A"
-C_PIPE_EC    = "#1A3A1A"
+C_PIPE_FILL  = C_PIPE_FITTING   # port stubs — neutral (black = waste only)
+C_PIPE_EC    = "#5A5F66"
 C_NEW        = "#22AA44"
 C_WALK       = "#A8D8A8"
 C_WALL_HATCH = "#999999"
@@ -771,11 +772,11 @@ def draw_pinhole_panel():
     pw_text(PWP_FILTER_X3, PWP_DV02_Z - 54, "DV-02\n3-WAY", ha="center", va="top", fontsize=6, color="#8A6D08", fontweight="bold", zorder=14)
     # ── ACC-02 (recycle-spray damper) — center-bottom cylinder, fed from P-02 in the corridor ──
     pw_rect(PWP_ACC2_X - 63, PWP_ACC2_Z0, 126, 200, C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.85)
-    pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BLUE_EC, fontweight="bold", zorder=8)
-    pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BLUE_EC, zorder=8)
+    pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BROWN_EC, fontweight="bold", zorder=8)
+    pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BROWN_EC, zorder=8)
     leader(ax_p, pwx(PWP_ACC2_X) - 24, pwz(PWP_ACC2_Z0 + 200), pwx(PWP_ACC2_X) - 300, pwz(1160),
            "ACC-02 pulsation damper\n(P-02 in corridor → ACC-02\n→ BV-05 spray selector)",
-           fs=6, color=C_BLUE_EC, ha="left", va="center", font=FONT)
+           fs=6, color=C_BROWN_EC, ha="left", va="center", font=FONT)
 
     # ════════════════════════════════════════════════════════════════
     #  FLOW — tray sump → P-04 → SV-02 → DV-02 (row line); DV-02 recycle branch UP the
@@ -792,7 +793,7 @@ def draw_pinhole_panel():
     P4_TOP_Z = PWP_SROW_Z0 + 180               # top of P-04's body (port face)
     pw_pipe([SRC_X, SRC_X, PWP_FILTER_X1, PWP_FILTER_X1],
             [SUCT_TURN_Z, P4_TOP_Z + 45, P4_TOP_Z + 45, P4_TOP_Z], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X, SUCT_TURN_Z - 42, C_BLUE)
+    pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X, SUCT_TURN_Z - 42, C_BROWN)
     pw_text(SRC_X, SUCT_TURN_Z - 58, "FROM\nTRAY SUMP", ha="center", va="top", fontsize=6, color=C_BROWN, zorder=10)
     # P-04 OUT → SV-02 → DV-02 along the row line (SV-02 taps in-line)
     pw_pipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3 - 22], [ROW_Z, ROW_Z], C_BROWN, zorder=Z_BROWN)
@@ -816,7 +817,7 @@ def draw_pinhole_panel():
     F3_OUT_X = 4090
     pw_pipe([F3_XR, F3_OUT_X, F3_OUT_X, SV01_X, SV01_X],
             [HEAD_Z, HEAD_Z, SV01_Z, SV01_Z, SV01_Z],
-            C_FILTER, zorder=Z_BROWN)
+            C_BROWN, zorder=Z_BROWN)
     pw_valve(SV01_X, SV01_Z, "SV\n01", C_BROWN, half=20)
     # SV-01 downturned sample spout
     pw_pipe([SV01_X, SV01_X, SV01_X - 45, SV01_X - 45],
@@ -830,8 +831,8 @@ def draw_pinhole_panel():
     # SV-01 → 3W-DV-01: the filtered line leaves the board's LEFT edge (mirrored
     # view — the corridor mouth / DV-01 sits on the sealed-end/+X side).
     DV01_EDGE_X = BD_XR + 40            # just past the board's (mirrored) left edge
-    pw_pipe([SV01_X, DV01_EDGE_X], [SV01_Z, SV01_Z], C_FILTER, zorder=Z_BROWN)
-    pw_arrow(DV01_EDGE_X - 30, SV01_Z, DV01_EDGE_X, SV01_Z, C_FILTER)
+    pw_pipe([SV01_X, DV01_EDGE_X], [SV01_Z, SV01_Z], C_BROWN, zorder=Z_BROWN)
+    pw_arrow(DV01_EDGE_X - 30, SV01_Z, DV01_EDGE_X, SV01_Z, C_BROWN)
     leader(ax_p, pwx(DV01_EDGE_X) + 25, pwz(SV01_Z), pwx(DV01_EDGE_X) + 240, pwz(SV01_Z) - 160,
            "3W-DV-01 (corridor mouth):\npH-gated split →\n"
            "recycle (IBC-3) / Waste (IBC-4)",
@@ -951,9 +952,9 @@ from tbs_constants import (C_LEN, C_HGT, EXT_FILL_1_H)
 
 FB = {"fontfamily": "monospace"}
 C_PLYB   = "#D9C9A3"   # plywood (tan)
-C_BROWNB = "#7A5230"   # brown developer drain
-C_WASTEB = "#8A8A8A"   # waste/grey drain
-C_BLUEB  = "#3A78C0"   # blue fill
+C_BROWNB = C_PIPE_RECYCLE   # brown (used/recycled) drain
+C_WASTEB = C_PIPE_WASTE     # waste drain (black)
+C_BLUEB  = C_PIPE_FRESH     # blue fill
 C_WALLB  = "#C8C8C8"
 
 # ── Geometry (matches generate_corridor_water_panel.py: BACK_X=5104 rear panel) ──
@@ -1355,7 +1356,7 @@ def spine_view(side):
         f"2. A ~{PANX - SHIRTX1:.0f}mm chase gap separates the shirt back (X={SHIRTX1:.0f}) and the rear-panel front (X={PANX:.0f}); six ply spacer blocks bridge it.",
         f"3. Rear panel: 18mm ply, X={PANX:.0f}–{PANX1:.0f}, Z={PAN_ZB:.0f}–{PAN_ZT:.0f}. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f}).",
         "4. View A (−Yd intake face): X4 suction-pickup riser, blue-recycle riser onto the spine into the X1 fill cross, DV-01-waste → merge, suctions, fills.",
-        "5. View B (+Yd discharge face): the X3 brown (P-05 → Z=1700) and X4 grey (P-03 → Z=1620) pump discharges run full along the spine to the end-wall ports.",
+        "5. View B (+Yd discharge face): the X3 brown (P-05 → Z=1700) and X4 waste/black (P-03 → Z=1620) pump discharges run full along the spine to the end-wall ports.",
         "6. DV-02 → IBC-3 / IBC-4; the IBC-4 merge tee (DV-01 + DV-02 waste) is consolidated on the spine.",
         "7. Circuit C powers all 5 pumps (one IP switch each, run one at a time); P-02 lives on the Pinhole Wall panel and shares Circuit C.",
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",

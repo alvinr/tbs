@@ -33,7 +33,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
 import generate_pinhole_water_panel as pw    # P-02/DV-01/SV-01 + ribbon corridor ends (water.skp build)
 from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
-from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_DIM, C_STEEL
+from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_DIM, C_STEEL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 
 # ── Palette (C_OUT/C_DIM from tbs_constants) ─────────────────────────────────────
 C_GHOST = "#9AA0A8"
@@ -41,9 +41,9 @@ C_FLOOR = "#E0DDD8"
 C_GRATE = "#8C8C94"   # grate deck
 C_TRAY  = "#A6B4A6"
 C_IBC_B = "#6B4A2E"
-C_BLUE  = "#2979B8"
-C_BROWN = "#8A6A3E"
-C_WASTE = "#8A8A90"   # gray — DV-02 waste → IBC-4 merge line
+C_BLUE  = C_PIPE_FRESH
+C_BROWN = C_PIPE_RECYCLE
+C_WASTE = C_PIPE_WASTE   # black — DV-01/DV-02 waste → IBC-4 merge line
 
 LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
 
@@ -68,7 +68,7 @@ RIBBON_LANES = [   # (X, color, tag)  — index-matched to cp.RIBBON_LANE_X
     (cp.RIBBON_LANE_X[0], C_BROWN, "IBC-3 → P-02"),
     (cp.RIBBON_LANE_X[1], C_BLUE,  "Blue trunk → TAP-01"),
     (cp.RIBBON_LANE_X[2], C_BROWN, "tray sump → P-04"),
-    (cp.RIBBON_LANE_X[3], C_BLUE,  "SV-01 → DV-01 return"),
+    (cp.RIBBON_LANE_X[3], C_BROWN, "SV-01 → DV-01 (filtered)"),
 ]
 RIBBON_Z      = cp.RIBBON_Z            # 104.5 — FLUSH under the grate (pipe crown at deck underside Z115)
 RIBBON_OVER_Z = cp.RIBBON_OVER_Z       # 142 — loop crest just above the grate (over the cantilever)
@@ -177,12 +177,12 @@ def _draw_lanes(ax, runs):
 # Captured LIVE from the water.skp builders (generate_corridor_water_panel + generate_pinhole_water_panel,
 # the sump_on_skid=True config the water model is built with) so the section can never drift from the 3D.
 # Each 3D waypoint (X,Yd,Z) projects to (X,Z); pure-Yd moves collapse (they're "into the page").
-_LAYER = {"#777777": 0, "#8A8A90": 0,                      # gray waste → back
-          "#6B4A2E": 1, "#8A6A3E": 1,                      # brown → middle
-          "#2979B8": 2, "#3A6EA5": 2, "#2060A0": 2}        # blue / filtered-blue → front
-_CORRIDOR_COL = {"#6B4A2E": C_BROWN, "#8A6A3E": C_BROWN,
-                 "#2979B8": C_BLUE, "#3A6EA5": C_BLUE, "#2060A0": C_BLUE,
-                 "#777777": C_WASTE, "#8A8A90": C_WASTE, "#B8B840": "#B8B840"}
+_LAYER = {"#777777": 0, "#8A8A90": 0, C_PIPE_WASTE: 0,                # waste → back
+          "#6B4A2E": 1, "#8A6A3E": 1, "#3A6EA5": 1,                     # brown (incl. the filtered line) → middle
+          "#2979B8": 2, "#2060A0": 2}                                   # blue → front
+_CORRIDOR_COL = {"#6B4A2E": C_BROWN, "#8A6A3E": C_BROWN, "#3A6EA5": C_BROWN,
+                 "#2979B8": C_BLUE, "#2060A0": C_BLUE,
+                 "#777777": C_WASTE, "#8A8A90": C_WASTE, C_PIPE_WASTE: C_WASTE, "#B8B840": "#B8B840"}
 
 
 def _project_xz(way):
@@ -295,7 +295,7 @@ def sheet1():
     # At the near end the lines are still in the ribbon; each drops off-section to its wall feature.
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
     for (xx, col, tag), lz in zip(RIBBON_LANES, (225, 190, 155, 122)):
-        cn = "blue" if col == C_BLUE else "brown"
+        cn = {C_BLUE: "blue", C_BROWN: "brown", C_WASTE: "waste"}[col]
         leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
                ha="right", va="center", arrow_style="-|>", font=FONT)
     ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 40,
@@ -403,7 +403,7 @@ def sheet2():
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
     # Labels pulled LEFT into the clear zone above the tray, never over the IBC-3 tote.
     for (xx, col, tag), lz in zip(RIBBON_LANES, (225, 190, 155, 122)):
-        cn = "blue" if col == C_BLUE else "brown"
+        cn = {C_BLUE: "blue", C_BROWN: "brown", C_WASTE: "waste"}[col]
         leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
                ha="right", va="center", arrow_style="-|>", font=FONT)
     ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 40,
@@ -527,7 +527,7 @@ def sheet3():
     ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_OVER_Z + OD, "4-lane ribbon LOOPING OVER\nthe cantilever (crest Z142)",
             fontsize=5.6, ha="center", va="bottom", color=C_OUT, fontweight="bold", zorder=13, **FONT)
     for (xx, col, tag), lz in zip(RIBBON_LANES, (430, 390, 300, 260)):
-        cn = "blue" if col == C_BLUE else "brown"
+        cn = {C_BLUE: "blue", C_BROWN: "brown", C_WASTE: "waste"}[col]
         leader(ax, xx, RIBBON_OVER_Z, CHAN_X0 + 30, lz - 100, f"{tag} ({cn})", color=col, fs=5.4,
                ha="right", va="center", arrow_style="-|>", font=FONT)
     # crest clears the arm top
@@ -645,7 +645,7 @@ def sheet4():
         "  move, e.g. a riser stepping to its port lane) collapses to a point,",
         "  so a vertical here is a real Z rise and a horizontal a real X run.",
         "• Crossings read as over/unders (rear pipe breaks at the front wall);",
-        "  blue in front, then brown, then gray waste — a drawing convention,",
+        "  blue in front, then brown, then black waste — a drawing convention,",
         "  NOT a depth statement (true depth is the Yd the projection drops).",
         "• Captured live from the water.skp builders — this elevation tracks",
         "  the 3D model automatically and cannot drift from it.",

@@ -26,15 +26,15 @@ from matplotlib.gridspec import GridSpec
 from tbs_constants import C_LEN, C_HGT, IBC_COL_X, IBC_W, IBC_D, ZONE_L_END, ZONE_R_START, FP_X_L, FP_X_R, BLUE_IBC_Y, IBC_FAR_Y, PUMP_X, PUMP_W, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_RIM, PROC_TRAY_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, DIAGRAMS_DIR
 import os
 from tbs_title_block import title_block
-from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
+from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes, draw_mixed_pipe,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
-from tbs_constants import DIAGRAM_DPI, C_DIM
+from tbs_constants import DIAGRAM_DPI, C_DIM, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 
 # ── Color palette ────────────────────────────────────────────────────────────
-C_BLUE   = "#2979B8"   # clean water — Blue system
-C_BROWN  = "#8B5E3C"   # used / grey water — Brown system
-C_BLACK  = "#222222"   # waste water — Black system
+C_BLUE   = C_PIPE_FRESH     # clean water — Blue system
+C_BROWN  = C_PIPE_RECYCLE   # used / recycled water — Brown system
+C_BLACK  = C_PIPE_WASTE     # waste water — Black system
 C_BLUE_L = "#D6E9F8"   # blue system fill (light)
 C_BROWN_L= "#F0E0CC"   # brown system fill (light)
 C_BLACK_L= "#DDDDDD"   # black system fill (light)
@@ -455,8 +455,8 @@ def draw_sheet1():
     ax1.text(SEL_X - 0.16, SEL_Y + 0.35, "(SPRAY SELECT)", ha="right", fontsize=5.0, color="#6A1B9A", style="italic")
     arrow_pipe(ax1, SEL_X - 0.34, SEL_Y, SEL_X - 0.20, SEL_Y, color=C_BLUE)                    # blue fresh IN — straight, no dog-leg
     pipe(ax1, SEL_X, L_RECY, SEL_X, SEL_Y - 0.14, C_BROWN); arrow_pipe(ax1, SEL_X, 4.65, SEL_X, 4.80, color=C_BROWN)   # recycled brown IN — from below
-    pipe(ax1, SEL_X, SEL_Y + 0.14, SEL_X, 8.0, C_BLUE); arrow_pipe(ax1, SEL_X, 6.6, SEL_X, 6.9, color=C_BLUE)          # spray OUT — up
-    pipe(ax1, SEL_X, 8.0, 16.9, 8.0, C_BLUE)
+    draw_mixed_pipe(ax1, [SEL_X, SEL_X, 16.9], [SEL_Y + 0.14, 8.0, 8.0], LW_PIPE)              # spray OUT — Blue OR Brown (selector)
+    arrow_pipe(ax1, SEL_X, 6.6, SEL_X, 6.9, color=C_BLUE)
     for xd in [13.9, 14.5, 15.1, 15.7, 16.3, 16.8]:
         ax1.annotate("", xy=(xd, 7.7), xytext=(xd, 7.95), arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.5, mutation_scale=10), zorder=5)
     ax1.text(15.5, 8.2, "FLOOD/SPRAY BAR (3/4\" HDPE)", ha="center", fontsize=6.5, color=C_BLUE)
@@ -471,10 +471,14 @@ def draw_sheet1():
         (C_BROWN, "-",  "Brown — Used / recycled water"),
         (C_BLACK, "-",  "Black — Waste water"),
         (C_BROWN, "--", "Dashed — Recycle / fill / return"),
+        (None,    "mixed", "Blue or Brown (BV-05a selector)"),
     ]
     for i, (col, ls, lbl) in enumerate(legend_items):
         yy = ly - 0.12 - i * 0.20
-        ax1.plot([lx, lx + 0.5], [yy, yy], color=col, lw=2.2, ls=ls, zorder=7)
+        if ls == "mixed":
+            draw_mixed_pipe(ax1, [lx, lx + 0.5], [yy, yy], 2.2, zorder=7)
+        else:
+            ax1.plot([lx, lx + 0.5], [yy, yy], color=col, lw=2.2, ls=ls, zorder=7)
         ax1.text(lx + 0.62, yy, lbl, va="center", fontsize=6.2, color=C_TEXT, zorder=7)
 
     SYM_X = 5.1
@@ -586,7 +590,7 @@ def draw_sheet2():
     TRAY_X1 = (FP_X_R - 20) * SX   # right edge in drawing units
 
     # Spray bar along top wall — aligned with processing tray
-    pipe(ax2, TRAY_X0, 4.75, TRAY_X1, 4.75, C_BLUE, lw=3)
+    draw_mixed_pipe(ax2, [TRAY_X0, TRAY_X1], [4.75, 4.75], 3)   # Blue OR Brown (BV-05a selector)
     ax2.text((TRAY_X0 + TRAY_X1) / 2, 4.88,
              "FLOOD/SPRAY BAR (3/4\" HDPE, 1\" NPT inlets every 600mm)",
              ha="center", fontsize=7, color=C_BLUE)

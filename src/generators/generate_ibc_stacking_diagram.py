@@ -34,7 +34,7 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          bolt_holes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
-from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL, C_WALL
+from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL, C_WALL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_FRAME = "#606068"
@@ -911,9 +911,9 @@ def sheet4():
                     fontweight="bold", **FONT, zorder=zo + 2)
 
     # ── Pipe system colors (matching sheet 5) ────────────────────────────────
-    C_PIPE_BLUE   = "#2060C0"
-    C_PIPE_BROWN  = "#8D6E63"
-    C_PIPE_BLACK  = "#505050"
+    C_PIPE_BLUE   = C_PIPE_FRESH
+    C_PIPE_BROWN  = C_PIPE_RECYCLE
+    C_PIPE_BLACK  = C_PIPE_WASTE
 
     # ── Bulkhead ports at end wall ──────────────────────────────────────────
     # All 4 ports are at the same Yd (panel_yd = corridor centerline),
@@ -1031,7 +1031,7 @@ def sheet4():
         (C_PIPE_BROWN, "BROWN CIRCUIT — Recycle: P-04 sump → IBC-3, P-02 → filter; P-05 drain → X3 (1\" HDPE SDR-11)"),
         (C_PIPE_BLACK, "BLACK/WASTE — IBC-4 → P-03 drain pump → X4 (1\" HDPE SDR-11)"),
     ]
-    ec_map = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020", "#505050": "#333333"}
+    ec_map = {C_PIPE_FRESH: "#1A4A90", C_PIPE_RECYCLE: "#3E2A1A", C_PIPE_WASTE: "#111111"}
     for i, (color, desc) in enumerate(legend_items):
         y = leg_top - i * leg_sp
         lx0 = leg_x / (1)  # back to mm
@@ -1386,10 +1386,10 @@ def sheet5():
         draw_flange(ax, cl_yd, port_z, 'h', color, zo=8)
 
     # ── Pipe system colors ───────────────────────────────────────────────────
-    C_PIPE_BLUE   = "#2060C0"   # Blue circuit (clean supply)
-    C_PIPE_BROWN  = "#8D6E63"   # Brown circuit (recycled)
-    C_PIPE_BLACK  = "#505050"   # Black/waste
-    C_PIPE_FILTER = "#E65100"   # Filter unit circuit
+    C_PIPE_BLUE   = C_PIPE_FRESH     # Blue circuit (clean supply)
+    C_PIPE_BROWN  = C_PIPE_RECYCLE   # Brown circuit (recycled)
+    C_PIPE_BLACK  = C_PIPE_WASTE     # Black/waste
+    C_PIPE_FILTER = C_PIPE_RECYCLE   # filtered return is filtered USED water → Brown circuit
     pipe_lw = 2.5
 
     # ── IBC connection heights ───────────────────────────────────────────────
@@ -1607,11 +1607,9 @@ def sheet5():
     legend_items = [
         (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill side-entry near top, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
         (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3 side-entry, P-02 → filter unit, P-05 drain pump → X3)"),
-        (C_PIPE_FILTER, "FILTER CIRCUIT — DV-01 recycle: filtered return → IBC-2 side-entry"),
         (C_PIPE_BLACK,  "BLACK/WASTE — Reject → IBC-4 side-entry; P-03 drain pump → X4"),
     ]
-    ec_map6 = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020",
-               "#E65100": "#B34000", "#505050": "#333333"}
+    ec_map6 = {C_PIPE_FRESH: "#1A4A90", C_PIPE_RECYCLE: "#3E2A1A", C_PIPE_WASTE: "#111111"}
     for i, (color, desc) in enumerate(legend_items):
         y = leg_top - i * leg_spacing
         lx0 = leg_x / (1)  # back to mm

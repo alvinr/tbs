@@ -398,7 +398,7 @@ distribution block).*
 | Annually | Test battery BMS function (charge/discharge cycle under monitoring) |
 | Annually | Inspect the ground-stake connection and measure earth resistance *(only if the optional earth stake is deployed — see §7.3)* |
 | Annually | Check pull-cord switch mechanisms for wear |
-| Before transport | Disconnect evaporative cooler and stow per [Equipment Layout](equipment-layout-report.md) §6.2 |
+| Before transport | Disconnect evaporative cooler and stow per [Equipment Layout](equipment-layout-report.md) §4 |
 | Before transport | Verify all circuit breakers/fuses are off except safelight standby |
 
 ---

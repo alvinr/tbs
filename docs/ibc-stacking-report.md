@@ -531,6 +531,6 @@ the stacking structure and the totes it restrains.
 | Floor cross-member structure + non-standardization (§3.4a) | [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) (intermediate members ≤1,000mm, or flat underside) · [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) (box/C/Z/I members) · [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html) (C-section SPA-H Corten ~4–4.5mm, ~45mm flange) · [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/) (spacing not standardized, varies by maker) |
 | Plumbing fittings, pipe, valves, camlock, pumps | Specified and sourced in the [Water System Report](water-system-report.md) §11 and [Plumbing Report](plumbing-report.md) §11 |
 | Water system architecture | [Water System Report](water-system-report.md) §3 |
-| IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
+| IBC layout and placement | [Equipment Layout Report](equipment-layout-report.md) §2.4 (right end zone) |
 | Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |
 | Plumbing panel specification | [Plumbing Report](plumbing-report.md) |

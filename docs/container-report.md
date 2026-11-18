@@ -409,7 +409,7 @@ TBS-001 supplements the original cargo doors with a purpose-built stepped hinged
 - 2 × lift-and-turn cam latches (McMaster 1619A74) on the opening edge, compressing the 20mm EPDM perimeter + cut seals against a fixed welded door frame (50×20×3 RHS — no longer weight-bearing, the pivot post carries the panel)
 - Ø800 housed revolving-door light lock (single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
 - **Bottom light seal — pull-out corner apron:** a fixed full-width base + two removable pull-out strips (held by McMaster 1590A13 draw latches, located in a 45° chamfer seat) close the under-leaf floor gap; the strips lift out and stow inside before the transport swing (hingepanel Sheet 16)
-- **Transport mode:** panel + drum swing ~56° about the pivot, carrying the bay inboard of the door plane (clear +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. Single-person operation (swing assisted), ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
+- **Transport mode:** panel + drum swing ~56° about the pivot, carrying the bay inboard of the door plane (clear +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. Single-person operation (swing assisted), ~5 minutes. See the [Hinged Panel Report](hinged-panel-report.md) §4–5 for the swing-pivot specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
 

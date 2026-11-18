@@ -141,7 +141,7 @@ This arrangement requires no permanent external mounting — the cooler is simpl
 
 ### 5.3 Transport Stowage
 
-The cooler is stowed inside the container for transport. See [Equipment Layout Report](equipment-layout-report.md) §6.2 for the full stowage specification.
+The cooler is stowed inside the container for transport. See [Equipment Layout Report](equipment-layout-report.md) §4 for the stowage position and the [Operating Manual](operating-manual.md) for the securing procedure.
 
 From the walkway design, the location of the cooler (green rectangle) can be seen for transportation, secured by straps and D-rings.
 

@@ -9,6 +9,26 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## 🏷️ parts.py — tag each part with a layout ZONE, add a zone filter to the BOM page (2026-11-18)
+
+Surfaced by the `equipment-layout-report.md` editorial pass: the report assigns every system to a
+shadow-free **zone** (left end / pinhole wall / optical / right end), but the parts registry carries no
+zone field, so the Master Shopping List can't be filtered by *where a part physically lives* the way it
+is already filtered by system. New requirement:
+
+- [ ] **Add a `zone` field to the `Part` dataclass in `parts.py`** (e.g. `left` / `pinhole-wall` /
+  `optical` / `right` / `exterior`, plus a neutral value for container-wide / fastener-stock items),
+  and populate it per part. Reconcile against the `equipment-layout-report.md` §1 zone table so the
+  two can't disagree.
+- [ ] **Add a zone filter to the Master Shopping List page** — the same mechanism as the existing
+  `?system=…` deep-link + on-page chip bar (`scripts/publish.sh` tablesort JS), so a reader can filter
+  the by-type BOM to **left / right / center (optical) / pinhole-wall** parts. Likely a second chip row
+  (or a combined system+zone filter); bump the JS `?v=`.
+- [ ] Decide whether the by-type BOM gains a **Zone** column (so the tag is visible, not just a filter
+  key) — mirrors the existing System grouping.
+
+---
+
 ## 🔧 Light-trap PULL-OUT corner apron — cascade from the Sheet 16 redesign (2026-11-05)
 
 Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable corner strips, 1590A13 draw latches, leaf lip cleat, strapped stow) — it REPLACES the fold-down apron. The 2D + procurement + report + 3D-source are committed; only the SketchUp save + Sketchfab push of the latch change remain:

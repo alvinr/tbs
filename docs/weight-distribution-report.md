@@ -79,7 +79,7 @@ water 1,000 kg/m³.
 | Blue IBC-2 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (top tier, far) |
 | Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (bottom tier, near) |
 | Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (bottom tier, far) |
-| IBC restraint frame | 123 | 4,654–5,104 | 1,046–1,316 | 2×2×0.120in steel restraint-only deep 4-leg box (totes direct-stack cage-on-cage): 4 full-height uprights (front pair X4654 + back pair X5104) + top/bottom rings + 4 floor flange feet + **8 front retaining bars (2/tote face — doubled for the loaded-transport case)** + **8 identical 2-bolt wall joist hangers (through-bolted to 8 exterior backing plates, 16 penetrations)** + rear-panel brackets + **4 anti-slip mats** ([Equipment Layout](equipment-layout-report.md) §5) |
+| IBC restraint frame | 123 | 4,654–5,104 | 1,046–1,316 | 2×2×0.120in steel restraint-only deep 4-leg box (totes direct-stack cage-on-cage): 4 full-height uprights (front pair X4654 + back pair X5104) + top/bottom rings + 4 floor flange feet + **8 front retaining bars (2/tote face — doubled for the loaded-transport case)** + **8 identical 2-bolt wall joist hangers (through-bolted to 8 exterior backing plates, 16 penetrations)** + rear-panel brackets + **4 anti-slip mats** ([IBC Stacking Report](ibc-stacking-report.md)) |
 | **Equipment subtotal** | **<!-- BEGIN weight:wt-cat-equipment -->487<!-- END weight:wt-cat-equipment -->** | | | |
 
 ### 3.4 Dry Weight Summary
@@ -157,7 +157,7 @@ Blue-on-top layout stays comfortably stable.
 ### 4.4 Optional Max-Blue-Fill Transport Case
 
 The standard load fills each Blue tote to 900L (1,800L). The totes are 1,000L vessels, so the
-[equipment-layout report §8](equipment-layout-report.md) notes they can be topped further — to
+[water-system report §4](water-system-report.md) notes they can be topped further — to
 **~1,900L** (~950L per tote) — for one more print (~15). Re-running the weight model confirms even
 that heavier load stays well within transport limits:
 

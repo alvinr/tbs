@@ -338,6 +338,19 @@ See the [Master Shopping List](master-shopping-list.md?system=panel) for the par
 **Sheet 12 — Door-Frame Hardware: cam-latch keeper + brush-strip holder (two details)** — the transport lock formerly here is now on its own focused sheet (Sheet 17).
 ![TBS-001 Hinged Panel — Sheet 12: Frame Hardware Attachments](assets/hingepanel-sheet12.png)
 
+### 4.4 Emergency Egress — Path Clearance
+
+The panel is the camera's egress route, and the left end zone it fronts is kept clear at
+floor level. With the waste drums eliminated, no fixed equipment stands in the path, so the
+open panel yields the **full container-width passage**
+(<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm, 93") —
+several times any walk-through or emergency-egress minimum. All fixed interior equipment —
+the electrical panel, battery, pumps, and water lines — sits inboard of the door-end swing
+sweep, so nothing fouls the panel's inward swing or narrows the clear floor (the
+[container floor plan](equipment-layout-report.md) carries the positions). The revolving
+drum is the normal light-tight entry and exit; if it jams, the whole panel swings inward as
+the backup (§4.2).
+
 ---
 
 ## 5. Rotating Transport System
@@ -566,5 +579,5 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 | EPDM gasket material | [McMaster-Carr](https://www.mcmaster.com/epdm-rubber-sheets) — closed-cell EPDM, UV-stable |
 | Neoprene wiper strip | [McMaster-Carr #93855K6](https://www.mcmaster.com/93855K6) — closed-cell, pressure-sensitive adhesive |
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |
-| Swing mechanism specification | See [Equipment Layout Report](equipment-layout-report.md) §6 for clearance analysis and light seal design |
+| Swing mechanism & light seal | §4–6 (this report) — hinges/latches, rotating transport, light-seal design |
 | Panel construction drawings | See [Engineering Diagrams](engineering-diagrams.md) §12 — Sheets 1–5 |

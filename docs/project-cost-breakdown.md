@@ -311,7 +311,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 
 ## 6b. Panel Swing Pivot
 
-**Source documents:** `equipment-layout-report.md` §6.1, `hinged-panel-report.md` §4–5
+**Source documents:** `hinged-panel-report.md` §4–5
 
 The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying the punch-out bay inboard of the door plane so the cargo doors close. See the rotation-hardware detail in [master-shopping-list.md](master-shopping-list.md) §7a.
 

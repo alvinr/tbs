@@ -343,7 +343,7 @@ Equipment in the IBC corridor is shadow-free.*
 2× Ø90 journal), drum support cage (1.5×1.5×0.120in steel SHS), top + bottom wall stays + 4-bolt wall anchor
 plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails).*
 
-*Reports: [Hinged Light-Trap Panel](hinged-panel-report.md) §5/§8.3 (rotating transport system + locking wall stays, swing-pivot hardware); [Equipment Layout](equipment-layout-report.md) §6.1 (stepped panel & swing pivot, transport mode).*
+*Reports: [Hinged Light-Trap Panel](hinged-panel-report.md) §5/§8.3 (rotating transport system + locking wall stays, swing-pivot hardware); [Equipment Layout](equipment-layout-report.md) §2.1/§4 (left-zone panel placement + transport-mode positions).*
 
 *Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
 

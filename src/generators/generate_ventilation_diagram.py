@@ -496,7 +496,7 @@ def draw_sheet2():
     # ── Exterior AL mounting FRAME — a flat 5mm aluminum frame (WIDER than the grille) the louvre grille
     #    mounts to (a flat grille can't seat on corrugations). FRAME→WALL: #14 TEK into the corrugation
     #    CRESTS, placed OUTBOARD of the grille + sealant over the valleys (no through-bolt). GRILLE→FRAME:
-    #    M4 flat-ended screws BLIND-tapped into the frame (they do NOT reach the wall). Blueprint: Sheet 4. ──
+    #    M4 flat-ended screws tapped into the frame (short — do NOT project past the frame back). Blueprint: Sheet 4. ──
     PLT_T   = 8                                              # frame thickness (exaggerated; real ~5mm)
     PLT_Z   = HB - FR_MARG                                   # GL_MARG / FR_MARG defined with the wall above
     PLT_H   = (HT + FR_MARG) - PLT_Z
@@ -515,12 +515,12 @@ def draw_sheet2():
         ax.add_patch(mpatches.FancyBboxPatch(
             (GX - GL_W + 3, slat_z - slat_h / 2), GL_W - 6, slat_h,
             boxstyle="round,pad=0.3", fc=C_DIM, ec="none", zorder=7, alpha=0.75))
-    for tz in (GL_Z + 16, GL_Z + GL_H - 16):                # GRILLE → FRAME: M4 flat-ended, BLIND tap (not to the wall)
+    for tz in (GL_Z + 16, GL_Z + GL_H - 16):                # GRILLE → FRAME: M4 flat-ended, tapped (short — doesn't project past the frame back)
         ax.add_patch(mpatches.Rectangle((GX - GL_W - 5, tz - 3), 5, 6, fc="#404040", ec=C_OUT, lw=0.4, zorder=8))                     # screw head (exterior)
         ax.add_patch(mpatches.Rectangle((GX - GL_W, tz - 1.6), GL_W + (PLT_T - 3), 3.2, fc="#606068", ec=C_OUT, lw=0.3, zorder=7))    # shank → blind into frame (flat end stops inside it)
     ann(ax, "Weatherproof louvre grille (passive)\nscrews to the AL frame",
         (GX - GL_W / 2, HT + 4), (GX - GL_W / 2 - 50, HT + 58))
-    ann(ax, "4× M4 flat-ended screws — grille → BLIND tap in the AL frame\n(flat end captured in the frame · does NOT reach the wall)",
+    ann(ax, "4× M4 flat-ended screws — grille → tapped in the AL frame\n(short · flat end must NOT project past the frame back)",
         (GX - GL_W, GL_Z + 16), (GX - GL_W - 128, GL_Z - 6))
     ann(ax, "Exterior AL frame (5mm · wider than the grille) — flat seat;\n4× #14 TEK → corrugation CRESTS OUTBOARD of the grille,\nsealed over the valleys (blueprint: Sheet 4)",
         (WALL_X - PLT_T / 2, PLT_Z + 16), (WALL_X - PLT_T - 108, PLT_Z - 36))
@@ -878,30 +878,30 @@ def draw_sheet4():
     draw_dim_h(ax, -FR_W / 2, FR_W / 2, FR_W / 2 + 14, f"{FR_W}mm", fs=9, color=C)
     draw_dim_v(ax, FR_W / 2 + 14, -FR_W / 2, FR_W / 2, f"{FR_W}mm", fs=9, color=C)
     leader(ax, br * 0.7, br * 0.7, -150, -16, f"Ø{BORE}\nAIRFLOW BORE", fs=8, color=C, arrow_style="->", ha="right")
-    leader(ax, M4_P, M4_P, FR_W / 2 + 60, M4_P + 52, f"4× M4 TAP — BLIND (grille)\n{2 * M4_P}mm sq. pattern", fs=8, color=C, arrow_style="->", ha="left")
+    leader(ax, M4_P, M4_P, FR_W / 2 + 60, M4_P + 52, f"4× M4 TAP (grille)\n{2 * M4_P}mm sq. pattern", fs=8, color=C, arrow_style="->", ha="left")
     leader(ax, TEK_P, -TEK_P, FR_W / 2 + 60, -TEK_P - 52, f"4× Ø5.5 CLR — #14 TEK → crests\n{2 * TEK_P}mm sq. (OUTBOARD of the grille)", fs=8, color=C, arrow_style="->", ha="left")
     # ── SECTION A-A (thickness ×T_EXAG) ──────────────────────────────────────
     ax.text(SX + TSd / 2, FR_W / 2 + 48, "SECTION A–A", ha="center", fontsize=12, fontweight="bold", color=C)
-    ax.text(SX + TSd / 2, FR_W / 2 + 26, "(frame thickness · hole depths)", ha="center", fontsize=8, style="italic", color=C)
+    ax.text(SX + TSd / 2, FR_W / 2 + 26, "(frame thickness · fixings)", ha="center", fontsize=8, style="italic", color=C)
     for y0, y1 in [(-FR_W / 2, -BORE / 2), (BORE / 2, FR_W / 2)]:
         draw_rect(ax, SX, y0, TSd, y1 - y0, fc="none", color=C, lw=1.8)
     for sgy in (-1, 1):
-        ax.add_patch(mpatches.Rectangle((SX, sgy * M4_P - 5), TSd * 0.55, 10, fc="white", ec=C, lw=1.0))          # M4 BLIND tap — stops short of the back
+        ax.add_patch(mpatches.Rectangle((SX, sgy * M4_P - 5), TSd, 10, fc="white", ec=C, lw=1.0))                 # M4 TAP (solid = tapped; may be through)
         ax.add_patch(mpatches.Rectangle((SX, sgy * TEK_P - 4.5), TSd, 9, fc="white", ec=C, lw=1.0, ls=(0, (4, 2))))  # TEK — THROUGH the full thickness
     draw_dim_h(ax, SX, SX + TSd, -FR_W / 2 - 16, f"{FR_T}mm", fs=9, color=C, above=False)
     ax.text(SX - 12, FR_W / 2 - 8, "EXTERIOR\n(grille side)", ha="right", va="top", fontsize=7, color=C)
     ax.text(SX + TSd + 12, FR_W / 2 - 8, "→ to\ncorrugated\nwall", ha="left", va="top", fontsize=7, color=C)
     ax.text(SX + TSd / 2, 0, "Ø150\nBORE\n(open)", ha="center", va="center", fontsize=7, style="italic", color=C)
-    leader(ax, SX + TSd * 0.55, M4_P, SX + 130, M4_P + 42, "M4 TAP — BLIND (grille screw)\nstops short of the back · NOT through", fs=7, color=C, arrow_style="->", ha="left")
+    leader(ax, SX + TSd * 0.55, M4_P, SX + 130, M4_P + 42, "M4 TAP (grille screw) — SHORT screw:\nflat end must NOT project past the frame back", fs=7, color=C, arrow_style="->", ha="left")
     leader(ax, SX + TSd, TEK_P, SX + 130, TEK_P - 46, "Ø5.5 THROUGH (frame → wall)\n#14 TEK into the corrugation crest", fs=7, color=C, arrow_style="->", ha="left")
     draw_notes(ax, [
         "Material: 6061-T6 aluminum · 320×320×5mm · Ø150 airflow bore (deburr all edges).",
-        "GRILLE → FRAME: 4× M4 BLIND tapped holes (do NOT break through); flat-ended M4 screws, short so the flat end stays within the frame.",
+        "GRILLE → FRAME: 4× M4 tapped holes (may be through); flat-ended M4 screws SHORT so the flat end does NOT project past the frame's back face onto the corrugation.",
         "FRAME → WALL: 4× Ø5.5 clearance (corners, outboard of the grille) for #14 TEK self-drilling screws into the corrugation CRESTS; silicone/flashing bead over the valleys (no through-bolt).",
     ], -235, -205, 26, fs=8, color=C)
     title_block(ax, "SHEET 4 OF 4",
                 drawing_title="FAN-A GRILLE AL MOUNTING FRAME",
-                subtitle="6061-T6 · 320×320×5mm · Ø150 bore · 4× M4 tap (grille · blind) · 4× Ø5.5 (#14 TEK → crests) · monochrome",
+                subtitle="6061-T6 · 320×320×5mm · Ø150 bore · 4× M4 tap (grille) · 4× Ø5.5 (#14 TEK → crests) · monochrome",
                 scale_note=f"FRONT VIEW 1:1 (holes shown for clarity) · SECTION thickness ×{T_EXAG} · mm",
                 doc_id="TBS-LT · Light Trap & Ventilation")
     plt.savefig(os.path.join(DIAGRAMS_DIR, "ventilation-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",

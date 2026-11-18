@@ -1043,7 +1043,40 @@ def gate_license_headers() -> tuple[bool, list[str]]:
     return True, [f"all {len(files)} tracked .py/.rb/.md carry the license header"]
 
 
+def gate_diagram_mm_native() -> tuple[bool, list[str]]:
+    """Diagrams are authored in MILLIMETRES (CLAUDE.md → Drawing Style Conventions): geometry +
+    plot coordinates are mm, aspect-equal, with mm view limits. A coordinate helper that SHRINKS mm
+    into a small plot canvas via a sub-0.2 scale factor is the 'crammed-canvas' anti-pattern — draw in
+    mm and, for a thin feature, exaggerate ONE axis with a NAMED factor (>1) instead. Exaggeration
+    (mm*3) and mild compression (mm/1.35) are fine; only a >5× shrink of mm trips this.
+    (Caught a ventilation blueprint drawn with sc=0.019 in a 24-unit canvas, 2026-11-18.)"""
+    import re
+    issues = []
+    for path in _scan_files():
+        if not os.path.basename(path).startswith("generate_"):
+            continue
+        try:
+            src = open(path, encoding="utf-8").read()
+        except OSError:
+            continue
+        small = {m.group(1): float(m.group(2))
+                 for m in re.finditer(r"(?m)^\s*(\w+)\s*=\s*(0\.\d+)\b", src) if float(m.group(2)) < 0.2}
+        for m in re.finditer(r"def\s+\w+\(\s*mm\s*\)\s*:([^\n]*)", src):
+            body, ln = m.group(1), src.count("\n", 0, m.start()) + 1
+            for lit in re.finditer(r"mm\s*\*\s*([0-9]*\.?[0-9]+)", body):
+                if float(lit.group(1)) < 0.2:
+                    issues.append(f"{os.path.relpath(path, ROOT)}:{ln} diagram not mm-native — `mm * {lit.group(1)}` shrinks mm into canvas units; author in mm")
+            for lit in re.finditer(r"mm\s*/\s*([0-9]*\.?[0-9]+)", body):
+                if float(lit.group(1)) > 5:
+                    issues.append(f"{os.path.relpath(path, ROOT)}:{ln} diagram not mm-native — `mm / {lit.group(1)}` shrinks mm; author in mm")
+            for var in re.finditer(r"mm\s*\*\s*([A-Za-z_]\w*)", body):
+                if var.group(1) in small:
+                    issues.append(f"{os.path.relpath(path, ROOT)}:{ln} diagram not mm-native — `mm * {var.group(1)}` ({var.group(1)}={small[var.group(1)]}) shrinks mm into canvas units; author in mm")
+    return (not issues), (issues or ["diagrams authored mm-native (no canvas scale factor)"])
+
+
 GATES = [
+    ("diagrams authored in mm (no canvas scale factor)", gate_diagram_mm_native),
     ("license headers on every .py/.rb/.md", gate_license_headers),
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),

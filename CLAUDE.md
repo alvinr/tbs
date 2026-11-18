@@ -64,6 +64,17 @@ site/                    ← built output — gitignored, never commit
 
 ## Drawing Style Conventions
 
+**Units — HARD RULE: every diagram is authored in MILLIMETRES.** Geometry constants and plot
+coordinates are mm, the axes use `set_aspect("equal")`, and the view limits (`set_xlim`/`set_ylim`)
+are in mm. **NEVER cram a drawing into an arbitrary small canvas with a scale factor** (e.g.
+`sc = 0.019; def fx(mm): return base + mm*sc` drawing into `set_xlim(0, 24)`) — that deviates from
+the project unit, produces decimal coordinates, and breaks the dimension/offset defaults in the
+`tbs_drawing.py` helpers. For a genuinely thin feature (a plate much wider than it is thick), exaggerate
+**one axis** with a **named factor > 1** (e.g. `T_EXAG = 9` → `sy(mm) = mm*T_EXAG`, or the `sx`/`sy`
+pattern below) and state it in the scale note (`… SECTION thickness ×9 · mm`); the base unit stays mm.
+Enforced by `lint.py` (GATE *diagrams authored in mm (no canvas scale factor)* — flags a `def f(mm)`
+helper that shrinks mm by >5×).
+
 Reuse all helpers from `tbs_drawing.py`:
 
 ```python

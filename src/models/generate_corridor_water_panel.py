@@ -367,7 +367,7 @@ def rear_panel():
                    (CTR_Y, 1030, CBH),   # Cct-C branch -> P-02 (power cable)
                    (CTR_Y, 1430, CBH)]   # Cct-C branch -> P-05 (power cable)
     rear_holes = [(1165, 235, RPH),      # DV-01 -> IBC-4 merge
-                  (1194, 65,  RPH),      # DV-02 waste -> IBC-4
+                  (ov.RWK_RIBBON_NOTCH_YDS[2], WASTE_PANEL_Z, RPH),   # DV-02 waste -> IBC-4
                   (1113, 1210, RPH),     # Blue #1 -> P-01 suction entry
                   (1245, 1502, RPH),     # P-05 -> X3 end-wall port
                   (1196, 1700, RPH),     # X4 Waste (P-03) pickup
@@ -450,6 +450,11 @@ PXC     = FACE_X - 120                    # 4984 — pump body center X (upright
 BV_FWD_X = 4770                           # BV-02/BV-06 forward-loop riser X — pulled toward the walkway edge (near the front post inner face 4704.8) for operator reach (#29)
 Z_ACC0  = 1780                            # ACC-01 BOTTOM — raised clear of the pipe runs below it
 MERGE4  = (ov.IBC_COL_X + 730, 1195, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5404,1195,1230)
+MERGE_CV_DZ = 150      # CV-2 / CV-3 sit on each inbound waste riser this far below the merge tee —
+                       # each leg is one-way into the tee, so one leg can't back-feed the other and the
+                       # IBC-4 riser column can't drain back through DV-01 into the filter train.
+WASTE_PANEL_Z = 90     # DV-02 waste leg's rear-panel crossing Z (hops over the frame's rear ring-rail) — the
+                       # pipe (pinhole kit) AND its rear-panel clearance hole read this one value.
                                           # shared IBC-4 waste merge — now SURFACE-MOUNTED on the drain-riser
                                           # spine (Yd1195 ≈ spine −Yd face 1206 − pipe radius), so the DV-01
                                           # riser + DV-02 drop both clamp to the spine and only the tote-entry

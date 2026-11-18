@@ -154,8 +154,8 @@ def classify(name):
     # PERMITTED penetrations / not obstacles (skip as obstacles)
     if any(k in n for k in ("ibc ", "tote", "pinhole wall", "floor", "ceiling", "end wall", "deck",
                             "walkway", "panel", "backing", "ply", "spine", "context", "scale", "person",
-                            "depth ref", "label")):
-        return ("skip", None)
+                            "depth ref", "label", " stripe")):
+        return ("skip", None)          # ' stripe' = the mixed-line color sleeves on a pipe, not a pipe
     # PIPE (a pipe run segment, elbow, or fitting on a line) — arrow-named runs incl. the unicode '→'
     if (" ->" in name or " →" in name or any(k in n for k in (" entry", "pickup", "suction", "equaliz", " tap ",
             "merge", "trunk", "fill ", "drain port", "riser", " inlet", "supply", "dead-leg",
@@ -301,7 +301,7 @@ def is_run(name):
     that legitimately MEET at a shared terminal/junction are handled by the join/junction exclusions in
     the crossing pass, not by dropping them from the candidate set)."""
     n = name.lower()
-    if "flange" in n:
+    if "flange" in n or n.endswith(" stripe"):     # a mixed-line color sleeve rides ON its pipe
         return False
     # routing arrow is space-flanked (NOT a '12->120V' spec); also catch arrow-less conductor runs
     # (battery AWG cables, fuse pigtails, 'Circuit X ...' circuit_runs conductors) that are still pipes.

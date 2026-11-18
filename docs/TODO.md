@@ -46,9 +46,7 @@ pipe running from DV-01 into IBC-4. Filtered used water bound for the Brown buff
 - [x] Pipe-color convention applied to 3D (water/corridor/spraybar) + 2D (17 sheets); lint GATE added (2026-11-18).
 - [ ] **ibc-stacking Sheet 5 still draws the retired topology** — "FILTER RETURN → IBC-2 SIDE-ENTRY
   (recycle to Blue)" + note 11 (recolored Brown, not redrawn). Redraw: DV-01 recycle → IBC-3.
-- [ ] **water-system-sheet1 draws CV-2 / CV-3 check valves** (and the SYMBOLS row "CV-2/3
-  anti-backflow"), but the design fits only CV-1 (the Shurflo 2088s carry integral checks — water §4.1).
-  Remove them from the schematic.
+- [x] CV-2 / CV-3 on the two waste legs into the IBC-4 merge — schematic was right; added to the 3D, BOM and reports (2026-11-18). Spine views A/B + pinhole-wall elevation still need the CV marks (with the spine redraw above).
 - [x] X1 4-way cross → TEE in `generate_corridor_water_panel.py` + BOM (cross-100 → 4th tee-100, −$4) (2026-11-18).
 - [ ] **panel-spine-view-a/b (`generate_panel_layout.py`) still draw the retired DV-01 BLUE-RECYCLE riser
   up the spine into the "X1 FILL CROSS (4-way)"** (`RX_BLUE` lane, the leader label, notes 4/8/9) and

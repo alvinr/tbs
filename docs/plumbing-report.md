@@ -255,9 +255,12 @@ recycle (IBC-3 Brown buffer, which P-02 later sprays back); if pH >7.5 or discol
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
 | CV-1 | 1" NPT | X1 bulkhead fill line | Prevents backflow from the Blue totes to the external fill port |
+| CV-2 | 1/2" | DV-01 reject riser, just below the IBC-4 merge tee | One-way into the merge — stops the IBC-4 riser draining back through DV-01 into the filter train |
+| CV-3 | 1/2" | DV-02 waste riser, just below the IBC-4 merge tee | One-way into the merge — stops the DV-01 reject leg back-feeding the DV-02 leg |
 
-** Check Value CV-1** The Shurflo 2088 pumps have integral check valves. CV-1 guards the single gravity (non-pumped) path, the
-X1 fresh-fill. Installed in the IBC zone, not on a panel.
+The Shurflo 2088 pumps carry integral check valves, but those sit upstream of the diverters. CV-1
+guards the one gravity (non-pumped) path, the X1 fresh fill. CV-2 and CV-3 make the two waste legs
+one-way where they share the IBC-4 merge tee. All three are in the IBC zone, not on a panel.
 
 ### 4.4 Sample Tap (SV-01)
 
@@ -540,7 +543,7 @@ The panel-mounted equipment for both plumbing panels is part of the water system
 | Every ~50 prints | Replace F-01 (5μm sediment) cartridge |
 | Every ~60 prints | Replace F-02 (KDF-55) cartridge |
 | Quarterly | Check accumulator pre-charge pressure (should hold 30 PSI) |
-| Quarterly | Inspect check valve CV-1 (X1 fill line) for proper seating |
+| Quarterly | Inspect check valves CV-1 (X1 fill line) and CV-2 / CV-3 (IBC-4 merge risers) for proper seating |
 | Annually | Inspect plywood panel for delamination or moisture damage; reseal if needed |
 
 **Filter replacement procedure:** Close P-02 supply valve. Place bucket under

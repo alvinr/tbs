@@ -366,6 +366,7 @@ def kit(part="all", p02_on_corridor=False):
           #   the blue recycle elbow above (−Yd edge 1185)
           (mx, my, DCZ),                                              # −Yd to the merge column at the far end
           (mx, my, mz)], rp, color=draw.C_PIPE_WASTE)                    # rise into the merge tee's z− branch
+    waste_pipe += "\n" + cp.check_valve("CV-2 (DV-01 reject, one-way into the IBC-4 merge)", mx, my, mz - cp.MERGE_CV_DZ, "z")
     p.append(waste_pipe)
     if part == "all":
         return "\n".join(p)
@@ -749,11 +750,12 @@ def skid_plumbing(part="all"):
          (cp.RIBBON_SLOT_X, gapyd, RZ),                   # +X through the outer-beam notch to the drop slot
          (cp.RIBBON_SLOT_X, gapyd, 65),                   # DOWN the slot to the corridor-entry Z (Z65)
          (cp.BACK_X - 44, gapyd, 65),                     # +X at the low floor Z PAST the P-02->ACC-02 recycle crossing (X4900, Z97) — stays ~32mm below it, no crossing
-         (cp.BACK_X - 44, gapyd, 90),                     # HOP UP just before the IBC frame's REAR bottom ring-rail (full-height, top Z65) — the corridor is open above here (between the tote columns), clear headroom
-         (riseX, gapyd, 90),                              # +X OVER the rear ring-rail to the merge-approach lane, held at Z90 (the front rail is already low at Z49 and clears)
-         (riseX, cp.MERGE4[1], 90),                       # jog to the merge Yd, still above the ring-rail
+         (cp.BACK_X - 44, gapyd, cp.WASTE_PANEL_Z),       # HOP UP just before the IBC frame's REAR bottom ring-rail (full-height, top Z65) — the corridor is open above here (between the tote columns), clear headroom
+         (riseX, gapyd, cp.WASTE_PANEL_Z),                # +X OVER the rear ring-rail (and THROUGH the rear-panel hole) to the merge-approach lane (the front rail is already low at Z49 and clears)
+         (riseX, cp.MERGE4[1], cp.WASTE_PANEL_Z),         # jog to the merge Yd, still above the ring-rail
          (riseX, cp.MERGE4[1], cp.MERGE4[2]),             # RISE to the merge Z (1230)
          cp.MERGE4], rp, color=draw.C_PIPE_WASTE))           # +X onto the tee's −x run port
+    p.append(cp.check_valve("CV-3 (DV-02 waste, one-way into the IBC-4 merge)", riseX, cp.MERGE4[1], cp.MERGE4[2] - cp.MERGE_CV_DZ, "z"))
     # ── Leg 4: P-02 discharge (corridor) → ACC-02 (skid) — the recycle-spray feed, UNDER THE WALKWAY ──
     # Reverse of the waste leg: off P-02's +Yd OUT, drop into the corridor, ribbon lane 0 back under the
     # walkway to the near rim, then −X along the near rim to the skid and up into ACC-02's bottom IN.

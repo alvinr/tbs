@@ -69,7 +69,7 @@ Both fans are 12V DC, **150×150×50mm axial panel fans** (e.g. GDSTIME/Wathai 1
 
 ### 4.2 Fan A — Sealed End Wall Exhaust
 
-Fan A is flush-mounted in a wall penetration at the sealed end wall, in the plumbing corridor directly below the X1 fill port, the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor between the two 1,000L tote columns is the only full-height clear channel at this end. Its 300mm baffle duct projects into the clear corridor, clearing the X1 fill trunk above. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. Because a flat grille cannot seat against the corrugated side wall, it mounts to a flat **~3mm aluminum plate** on the exterior face: the plate is TEK self-drilled to the corrugation **crests** and sealed with a silicone/flashing bead over the valleys (no through-bolt — the corrugated wall can't be cleanly bolted through), and the grille screws to the flat plate (Sheet 2). The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+Fan A is flush-mounted in a wall penetration at the sealed end wall, in the plumbing corridor directly below the X1 fill port, the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor between the two 1,000L tote columns is the only full-height clear channel at this end. Its 300mm baffle duct projects into the clear corridor, clearing the X1 fill trunk above. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. Because a flat grille cannot seat against the corrugated side wall, it mounts to a flat **~5mm aluminum frame** (wider than the grille) on the exterior face: the frame is #14 TEK self-drilled to the corrugation **crests** — the TEK screws sit **outboard of the grille** so they drive from outside — and sealed with a silicone/flashing bead over the valleys (no through-bolt — the corrugated wall can't be cleanly bolted through); the grille then fixes to the frame with **4× flat-ended M4 screws into blind tapped holes** (they do not reach the wall). See Sheet 2 for the assembly and **Sheet 4 for the frame blueprint**. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
 **Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the sealed end wall, then drops down the plumbing corridor to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 
@@ -98,6 +98,12 @@ The fan body and baffle duct are identical for both fans, but the **mounting sub
 Fan B is on the swinging cargo-door (hinge) panel, so it cannot use Fan A's steel-wall fixing (an L-bracket wrapping the hole edge + Tek self-drilling screws). Instead the fan flange plate bolts to the panel's **18mm PT plywood band** with **2× M8 through captive tee-nuts** set in the ply (detailed on this sheet). The fan body and light-tight baffle duct are otherwise identical to Fan A.
 
 ![TBS-001 Ventilation — Sheet 3: Fan B Mount (plywood panel, tee-nut fixing)](assets/ventilation-sheet3.png)
+
+**Sheet 4 — Fan-A Grille AL Mounting Frame (fab blueprint)**
+
+The Fan-A grille can't seat on the corrugated wall, so it mounts to a flat 6061-T6 aluminum frame (320×320×5mm, Ø150 bore). The frame carries **4× M4 blind tapped holes** for the grille (flat-ended screws, not through) and **4× Ø5.5 clearance holes at the corners** — outboard of the grille — for the #14 TEK screws that fix it to the corrugation crests.
+
+![TBS-001 Ventilation — Sheet 4: Fan-A Grille AL Mounting Frame (fab blueprint)](assets/ventilation-sheet4.png)
 
 ---
 

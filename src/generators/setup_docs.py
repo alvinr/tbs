@@ -151,6 +151,7 @@ DIAG_IMAGE_FILES = [
     "ventilation-sheet1.png",
     "ventilation-sheet2.png",
     "ventilation-sheet3.png",
+    "ventilation-sheet4.png",
     "lighttrap-sheet1.png",
     "lighttrap-sheet2.png",
     "lighttrap-sheet3.png",

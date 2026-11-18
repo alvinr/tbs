@@ -142,6 +142,8 @@
 
 ![TBS-001 Ventilation — Sheet 3: Fan B Mount (plywood panel, tee-nut fixing)](assets/ventilation-sheet3.png)
 
+![TBS-001 Ventilation — Sheet 4: Fan-A Grille AL Mounting Frame (fab blueprint)](assets/ventilation-sheet4.png)
+
 ---
 
 ## 11. Hinged Panel & Revolving Drum

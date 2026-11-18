@@ -26,7 +26,7 @@ generators:
   joint_options: {script: src/generators/generate_joint_options.py, outputs: [docs/assets/film-joint-options.png]}
   joint_study: {script: src/generators/generate_joint_study.py, outputs: [docs/assets/film-joint-study-gimbal.png, docs/assets/film-joint-study-ujoint.png]}
   lighttrap_diagram: {script: src/generators/generate_lighttrap_diagram.py, outputs: [docs/assets/lighttrap-sheet1.png, docs/assets/lighttrap-sheet2.png, docs/assets/lighttrap-sheet3.png, docs/assets/lighttrap-sheet4.png, docs/assets/lighttrap-sheet5.png, docs/assets/lighttrap-sheet6.png, docs/assets/lighttrap-sheet7.png, docs/assets/lighttrap-sheet8.png, docs/assets/lighttrap-sheet9.png, docs/assets/lighttrap-sheet10.png, docs/assets/lighttrap-sheet11.png, docs/assets/lighttrap-sheet12.png]}
-  ventilation_diagram: {script: src/generators/generate_ventilation_diagram.py, outputs: [docs/assets/ventilation-sheet1.png, docs/assets/ventilation-sheet2.png, docs/assets/ventilation-sheet3.png]}
+  ventilation_diagram: {script: src/generators/generate_ventilation_diagram.py, outputs: [docs/assets/ventilation-sheet1.png, docs/assets/ventilation-sheet2.png, docs/assets/ventilation-sheet3.png, docs/assets/ventilation-sheet4.png]}
   line_of_sight: {script: src/generators/generate_line_of_sight.py, outputs: [docs/assets/line-of-sight.png]}
   mini_tbs_diagram: {script: src/generators/generate_mini_tbs_diagram.py, outputs: [docs/assets/mini-tbs-sheet1.png]}
   panel_layout: {script: src/generators/generate_panel_layout.py, outputs: [docs/assets/panel-layout.png, docs/assets/pinhole-panel.png, docs/assets/panel-spine-view-a.png, docs/assets/panel-spine-view-b.png]}

@@ -110,9 +110,7 @@ separated by a <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_wi
 
 ## 5. IBC Stacking Frame — Design Specification
 
-A welded mild steel **restraint-only** frame holds the 2×2 IBC stack (4× 1,000L
-caged composite totes — two columns, two tiers each, direct-stacked) as a single
-unit. The totes stack cage-on-cage, so the frame does not carry vertical load — it
+A welded mild steel **restraint-only** frame holds the 2×2 IBC stack. The totes stack cage-on-cage, so the frame does not carry vertical load — it
 only restrains them for transport (front retaining bars + D-ring lashing).
 
 | Item | Specification |

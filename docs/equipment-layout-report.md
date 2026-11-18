@@ -66,10 +66,9 @@ and the [Walkway Report](walkway-report.md).
 ### 2.4 Right End Zone — the water plant
 
 Shadow-free at all depths, the right end zone takes the tall, heavy water plant: the four
-IBC totes, the plumbing corridor, and the pump/filter panel. The totes stack **2×2,
-right-justified to the end wall** — a side-by-side spread would need ~2,400mm of X, but the
-zone is only 1,244mm wide, so the totes go two columns wide and two tiers high instead. The
-two columns are separated by a
+IBC totes, the plumbing corridor, and the pump/filter panel. The zone is one tote wide, so
+the totes stand against the end wall in two columns across the container's depth, two tiers
+high. The columns are separated by a
 <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing
 corridor, which carries the Corridor Plumbing Panel (pumps + filters) on the IBC frame's
 back uprights. The restraint frame, tote roles, stacking, and water balance are in the

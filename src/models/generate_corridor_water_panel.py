@@ -676,11 +676,10 @@ PSTACK = {"P-01": 615, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z (P-01 
 PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
 def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
 
-# X1 fresh-fill distribution fitting (top of the corridor, near the sealed end): a 4-WAY CROSS —
-# +X X1 inlet, ±Yd to both Blue totes (IBC-1/IBC-2), −X the DV-01 blue recycle return.
+# X1 fresh-fill distribution fitting (top of the corridor, near the sealed end): a TEE —
+# +X X1 inlet (branch), ±Yd run to both Blue totes (IBC-1/IBC-2).  Blue is fill-only fresh water.
 X1_TEE_X, X1_TEE_Z = 5500, 2250
-X1_TEE_Y = 1206 - ov.PUMP_PIPE_OD / 2   # on the spine face, aligned with the blue-recycle riser, so the
-#   recycle rises STRAIGHT into the cross (one elbow, no top jog) — fewer connections (see skill_plumbing)
+X1_TEE_Y = 1206 - ov.PUMP_PIPE_OD / 2   # on the spine face
 
 # Shared SURFACE perimeter lane for the two pipes that can't pass under the IBC tote / walkway grate
 # (the tray-sump→P-04 suction and the DV-01 blue recycle): both run ON the walkway surface along the
@@ -1054,13 +1053,12 @@ def drains_ports(sump_on_skid=False):
 
     # ── X1 FILL: camlock → in-line one-way valve → STRAIGHT pipe → T-connector → BOTH Blue totes
     #    (IBC-1 / IBC-2).  ONE check on the inlet; no per-branch checks. ──
-    x1z, tx, ty = X1_TEE_Z, X1_TEE_X, X1_TEE_Y   # ty: cross on the spine face, aligned with the recycle riser
+    x1z, tx, ty = X1_TEE_Z, X1_TEE_X, X1_TEE_Y
     p.append(draw.ruby_cylinder("X1 fill camlock (end wall)", ew - 60, ty, x1z, 26, 60, color=draw.C_STEEL, axis="x"))
     p.append(check_valve("X1 one-way valve", ew - 200, ty, x1z, "x"))   # in-line, just after the camlock
-    pipe("X1 camlock -> one-way -> cross (straight)", [(ew - 60, ty, x1z), (tx, ty, x1z)], draw.C_BLUE)
-    # 4-WAY CROSS: +X X1 inlet, ±Yd to the two Blue totes (IBC-1/IBC-2), −X the DV-01 blue
-    # recycle return (rises STRAIGHT up the spine into this −X port — one elbow, no top jog).
-    p.append(cross("X1 fill cross", tx, ty, x1z, "x", "y"))
+    pipe("X1 camlock -> one-way -> tee (straight)", [(ew - 60, ty, x1z), (tx, ty, x1z)], draw.C_BLUE)
+    # TEE: +X X1 inlet on the branch, ±Yd run to the two Blue totes (IBC-1/IBC-2).
+    p.append(tee("X1 fill tee", tx, ty, x1z, run="y", branch="x+"))
     # each outlet runs STRAIGHT ±Yd off the tee's run port into its tote (no −X detour)
     for yface, into, nm in ((YD_NEAR, -1, "Blue #1 (IBC-1)"), (YD_FAR, +1, "Blue #2 (IBC-2)")):
         _side_entry(p, f"X1 fill -> {nm}", [(tx, ty, x1z)], tx, yface, x1z, into, draw.C_BLUE, check=False)

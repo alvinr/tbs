@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,952 | $8,320 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,948 | $8,316 |
 | 6. Electrical — power, circuits, wiring | $3,429 | $3,515 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,764** | **~$36,634** |
+| **TOTAL (base build + 50-print run)** | **~$27,760** | **~$36,630** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -335,10 +335,9 @@ indicative low–high estimates — get quotes before ordering.
 | [1" FNPT × 1" hose barb (Banjo)](https://www.usplastic.com/catalog/item.aspx?itemid=135154) (31544) | 8 ea | US Plastic Corp | water | $24 |
 | [1" MNPT × 1" hose barb (Banjo HB100)](https://www.usplastic.com/catalog/item.aspx?itemid=135135) (31527) | 8 ea | US Plastic Corp | water | $14 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
-| [1" PVC 4-way cross fitting](https://www.amazon.com/dp/B0CGGV74MB) (B0CGGV74MB) | 1 ea | Amazon | water | $6 |
 | [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | 4 stick | Home Depot | water | $35 |
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
-| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 3 ea | Home Depot | water | $6 |
+| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 4 ea | Home Depot | water | $9 |
 | [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 26 ea | Home Depot | water | $30 |
 | [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | 1 25ft coil | Home Depot | tray | $66 |
 | [1/2" barbed coupling (pump flex jumpers)](https://www.homedepot.com/p/Rain-Bird-1-2-in-Barbed-Couplings-for-Drip-Tubing-Brown-20-Pack-BC50-20/318470443) (318470443) | 1 20-pack | Home Depot | water | $12 |
@@ -368,7 +367,7 @@ indicative low–high estimates — get quotes before ordering.
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,300** |
+| **plumbing-fittings subtotal** | | | | **$1,296** |
 
 ### seals-gaskets
 
@@ -504,10 +503,10 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 24 | aluminum, ducting-ventilation, fasteners-hardware, steel-structural | $2,253–$3,113 |
-| Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,007–$2,019 |
+| Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,001–$2,013 |
 | McMaster-Carr | 83 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,981–$1,989 |
+| Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,739–$1,941 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,737–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |

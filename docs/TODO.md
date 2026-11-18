@@ -42,9 +42,12 @@ pipe running from DV-01 into IBC-4. Filtered used water bound for the Brown buff
 - [x] Recolored in water.skp (2026-11-18).
 - [ ] Re-send the other models that reuse this leg — **ibc-stack, construction, overview** (manifest
   `--check` flags them STALE) — then `manifest.py --update` + commit the `.skp`s.
-- [ ] Pinhole-panel comments fixed. Remaining: `generate_corridor_water_panel.py` still describes the X1 4-way cross's −X leg as "the
-  DV-01 blue recycle return". Confirm that cross has no orphan 4th port in the geometry; if it does,
-  it becomes a tee.
+- [x] X1 4-way cross → TEE in `generate_corridor_water_panel.py` + BOM (cross-100 → 4th tee-100, −$4) (2026-11-18).
+- [ ] **panel-spine-view-a/b (`generate_panel_layout.py`) still draw the retired DV-01 BLUE-RECYCLE riser
+  up the spine into the "X1 FILL CROSS (4-way)"** (`RX_BLUE` lane, the leader label, notes 4/8/9) and
+  note 7 says the pumps "run one at a time" (they don't — C1/C2). Redraw View A with DV-01 recycle →
+  IBC-3 per the 3D, relabel the X1 fitting a tee, and drop the "pending topology update" caveat in
+  plumbing-report §3.2.
 
 ---
 

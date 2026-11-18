@@ -47,7 +47,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 ### Construction — Electrical & Ventilation
 - [x] electrical-report.md  — confirmed complete (owner). §8 de-duplicated (hand-keyed parts table → filtered-BOM link + injected cost summary); inverter DC protection backfilled (§7.6 rule 4); weather/lightning pre-step + corner-casting earth note added; prose already terse.
 - [x] electrical-safety-report.md  — confirmed complete (owner). §7.3 corner-casting earth note + §7.6 DC-protection rule (drove the inverter-DC-protection backfill); prose already terse.
-- [ ] ventilation-report.md
+- [x] ventilation-report.md  — confirmed complete (owner). §9 consolidated to the filtered-master-BOM reference; §5.1 Fan-B wiring verified (silicone-jacketed descriptor dropped); louvre-grille part added; prose terse.
 
 ### Construction — Film Plane & Pinhole
 - [ ] pinhole-report.md

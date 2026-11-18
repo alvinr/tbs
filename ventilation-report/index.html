@@ -2806,7 +2806,7 @@
 <p>All ventilation and cooling components run at 12V DC from the solar/battery power system. See <a href="../electrical-report/">Electrical Report</a> for circuit assignments and wiring.</p>
 <hr />
 <h2 id="2-thermal-problem">2. Thermal Problem<a class="headerlink" href="#2-thermal-problem" title="Permanent link">&para;</a></h2>
-<p>A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. Two constraints drive the cooling design:</p>
+<p>Using a Plam Spring summer deployment as a reference point (ambient 40–45°C, direct irradiance 1,000 W/m²), A 20ft ISO steel container in direct sun reaches interior temperatures of 65–75°C without intervention. Two constraints drive the cooling design:</p>
 <table>
 <thead>
 <tr>
@@ -2936,14 +2936,14 @@
 </table>
 <p>Both fans are 12V DC, <strong>150×150×50mm axial panel fans</strong> (e.g. GDSTIME/Wathai 15050-12V). Fan bodies (50mm deep) do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: <strong>low intake at the cargo door end → high exhaust at the sealed end</strong> — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.</p>
 <blockquote>
-<p><strong>Why this layout:</strong> The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v1,000L direct-stack the totes now reach Z=<!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm against the end wall in both flanking columns, leaving only the <strong><!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor</strong> clear full-height. Fan A is therefore placed in that corridor, directly <strong>below the X1 fill port</strong> — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.</p>
+<p><strong>Why this layout:</strong> The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v1,000L direct-stack the totes reach Z=<!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm against the end wall in both flanking columns, leaving only the <strong><!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor</strong> clear full-height. Fan A is therefore placed in that corridor — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.</p>
 </blockquote>
 <h3 id="42-fan-a-sealed-end-wall-exhaust">4.2 Fan A — Sealed End Wall Exhaust<a class="headerlink" href="#42-fan-a-sealed-end-wall-exhaust" title="Permanent link">&para;</a></h3>
 <p>Fan A is flush-mounted in a wall penetration at the sealed end wall, in the plumbing corridor directly below the X1 fill port, the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor between the two 1,000L tote columns is the only full-height clear channel at this end. Its 300mm baffle duct projects into the clear corridor, clearing the X1 fill trunk above. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.</p>
 <p><strong>Wiring:</strong> Fan A's wire run routes from the fuse block along the ceiling cable trunking to the sealed end wall, then drops down the plumbing corridor to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.</p>
 <h3 id="43-fan-b-panel-mounted-intake">4.3 Fan B — Panel-Mounted Intake<a class="headerlink" href="#43-fan-b-panel-mounted-intake" title="Permanent link">&para;</a></h3>
 <p>Fan B is mounted low on the swinging hinged panel, so it travels with the panel during mode conversion (the ~56° transport swing about the pivot). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so fresh outside air is drawn in through the grille near floor level.</p>
-<p><strong>Wiring:</strong> Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates the ~56° transport swing about the pivot (with slack) without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the swinging frame near the pivot. The service loop hangs in the ceiling zone; the wire drops down the panel to the low fan.</p>
+<p><strong>Wiring:</strong> Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, coiled cable) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates the ~56° transport swing about the pivot (with slack) without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the swinging frame near the pivot. The service loop hangs in the ceiling zone; the wire drops down the panel to the low fan.</p>
 <h3 id="44-light-safe-baffle-ducts">4.4 Light-Safe Baffle Ducts<a class="headerlink" href="#44-light-safe-baffle-ducts" title="Permanent link">&para;</a></h3>
 <p>Both fan penetrations include L-shaped offset baffles inside a duct stub to prevent light ingress while allowing unrestricted airflow:</p>
 <ul>
@@ -3205,163 +3205,10 @@ Fan B is on the swinging cargo-door (hinge) panel, so it cannot use Fan A's stee
 <p>All circuits originate from the Blue Sea 5026 fuse block in the main electrical enclosure. See <a href="../electrical-report/">Electrical Report</a> §10 for full wiring specification.</p>
 <hr />
 <h2 id="9-parts-list">9. Parts List<a class="headerlink" href="#9-parts-list" title="Permanent link">&para;</a></h2>
-<p>See the <strong><a href="../master-shopping-list/?system=ventilation">Master Shopping List, filtered to the ventilation system</a></strong> for the same parts with suppliers, current prices, and click-to-sort/filter — the table below is that system's slice of the single-source parts registry.</p>
-<!-- BEGIN parts:ventilation -->
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Spec</th>
-<th>Qty</th>
-<th>Supplier</th>
-<th>Est. cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.amazon.com/dp/B091BTFBD9">150×150×50mm axial fans (12V DC)</a> (B091BTFBD9)</td>
-<td>12V DC, ~150–200 CFM each — DA15050B12H (B091BTFBD9), 150×150×50mm, 12V 1.80A, dual-ball. ⚠ NOT the GDSTIME/Wathai '15050' Amazon fans (those are 110/120V AC) — this is the 12V DC part. Price est — confirm.</td>
-<td>2 ea</td>
-<td>Amazon</td>
-<td>$50</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/321429692">Evaporative cooler</a> (MC18MT)</td>
-<td>Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W</td>
-<td>1 ea</td>
-<td>Home Depot</td>
-<td>$109</td>
-</tr>
-<tr>
-<td><a href="https://www.invertersupply.com/index.php?main_page=product_info&amp;products_id=200695">Cooler inverter — Victron Phoenix 12/375 GFCI</a> (PIN123750510)</td>
-<td>Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60.</td>
-<td>1 ea</td>
-<td>Inverter Supply / PKYS</td>
-<td>$133</td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/dp/B075J93DTJ">Shade cloth — 70% (10×20 ft)</a> (B075J93DTJ)</td>
-<td>Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade).</td>
-<td>1 ea</td>
-<td>Amazon / Farm supply</td>
-<td>$30</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/304229415">1" EMT conduit, 10 ft</a> (550210000)</td>
-<td>Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy).</td>
-<td>6 stick</td>
-<td>Home Depot</td>
-<td>$131</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/100135091">EMT canopy fittings (couplings, corner ells, connectors)</a> (12210)</td>
-<td>1" EMT set-screw couplings joining the straight frame runs (×8). Corner turns handled by the 1" pull elbows (canopy-emt-elbows).</td>
-<td>8 ea</td>
-<td>Home Depot</td>
-<td>$12</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/317889187">EMT canopy base plates + ground stakes (×4)</a> (PDB-F-1-4)</td>
-<td>PIPE DECOR 1" black-iron floor flange 4-pack — one per leg base (×4). Add ground stakes/guys if free-standing.</td>
-<td>1 4-pack</td>
-<td>Home Depot</td>
-<td>$16</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/203776547">EMT canopy corner pull elbows (×4)</a> (94510)</td>
-<td>Halex 1" EMT rigid pull elbow at the 4 top-frame corners (chose bought elbows over field-bending).</td>
-<td>4 ea</td>
-<td>Home Depot</td>
-<td>$47</td>
-</tr>
-<tr>
-<td>Baffle duct sheet metal (fans)</td>
-<td>22 ga galvanized, 2 × 300mm stubs</td>
-<td>1 lot</td>
-<td>Local sheet metal / Home Depot</td>
-<td>$30</td>
-</tr>
-<tr>
-<td>Baffle duct sheet metal (cooler)</td>
-<td>22 ga galvanized, 1 × 300mm stub, Ø200mm</td>
-<td>1 lot</td>
-<td>Local sheet metal / Home Depot</td>
-<td>$20</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/314398619">200mm insulated flex duct</a> (23-183-08-25)</td>
-<td>Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin)</td>
-<td>1 coil</td>
-<td>Home Depot</td>
-<td>$63</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/100187427">200mm 90° duct elbow</a> (MF-90E8)</td>
-<td>Master Flow 8" 90° adjustable galvanized elbow (model 90E8), cooler riser to wall stub</td>
-<td>1 ea</td>
-<td>Home Depot</td>
-<td>$15</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/100211540">Duct collar + hose clamp</a> (DSCF8)</td>
-<td>Master Flow 8" starting collar/take-off (DSCF8 $8.98, Home Depot) + worm-drive band clamp (McMaster 4866N35 $7.25) = $16.23/set to secure the flex duct.</td>
-<td>1 set</td>
-<td>Home Depot</td>
-<td>$16</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/100396923">Weatherproof duct cap</a> (8DC)</td>
-<td>Master Flow 8" round removable duct cap</td>
-<td>1 ea</td>
-<td>Home Depot</td>
-<td>$12</td>
-</tr>
-<tr>
-<td>Weatherproof louvre grille, 6in (Fan A + Fan B exterior vents)</td>
-<td>6in (150mm) louvered weatherproof wall vent with insect screen on the exterior face of each fan penetration — the fans' only external component (ventilation-report §4.2/§4.3/§4.4). ×2 (Fan A + Fan B). SKU pending — source a 6in louvered weatherproof vent cover; $10–20 ea est, confirm at order.</td>
-<td>2 ea</td>
-<td>Home Depot / Amazon</td>
-<td>$20–$40</td>
-</tr>
-<tr>
-<td><a href="https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin">Deutsch DT 2-pin connectors (Amphenol AT2PS-CKIT)</a> (AT2PS-CKIT)</td>
-<td>Amphenol AT2PS-CKIT 2-pin connector kit (DT-compatible), IP67 — Fan B flex connector (×2 sets). Same part as deutsch-dt-2pin-elec. $4/set est — confirm at order.</td>
-<td>2 set</td>
-<td>Waytek Wire</td>
-<td>$8</td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/dp/B0GYFNXM9Z">16 AWG coiled (retractile) cable, 2-cond</a> (B0GYFNXM9Z)</td>
-<td>MECCANIXITY retractable coiled cable, 16 AWG 2-conductor, 10 ft extended (B0GYFNXM9Z), $25.99 firm (2026-07-30). Fan B flex on the swinging hinged panel — takes the ~56° transport swing. Proper 2-conductor. Deutsch DT 2-pin ends.</td>
-<td>1 ea</td>
-<td>Amazon / Grainger</td>
-<td>$26</td>
-</tr>
-<tr>
-<td>Cooler external power cable</td>
-<td>CRIMP-YOUR-OWN (no retail SKU): 1.5m, 14 AWG 2-cond + Deutsch DT 2-pin plug crimped each end (connectors per deutsch-dt-2pin). Self-assembled; $20 is the wire+terminal material estimate, accepted (2026-10-02).</td>
-<td>1 ea</td>
-<td>Waytek Wire / Amazon</td>
-<td>$20</td>
-</tr>
-<tr>
-<td><a href="https://www.homedepot.com/p/312994495">Ratchet straps, 25mm</a> (FH0829)</td>
-<td>Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare</td>
-<td>1 4-pack</td>
-<td>Home Depot</td>
-<td>$10</td>
-</tr>
-<tr>
-<td><strong>Ventilation total</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$768–$788</strong></td>
-</tr>
-</tbody>
-</table>
-<!-- END parts:ventilation -->
-
+<p>The ventilation &amp; cooling <strong>Bill of Materials</strong> lives in the single-source parts registry, rendered as the
+<a href="../master-shopping-list/?system=ventilation"><strong>Master Shopping List, filtered to the ventilation system</strong></a> —
+suppliers, current prices, and click-to-sort/filter. The strategy-level cost band (fans · evaporative cooler +
+inverter · light-safe baffle-duct fab · shade canopy) is the <a href="../project-cost-breakdown/">Project Cost Breakdown §5b</a>.</p>
 <hr />
 <h2 id="10-maintenance">10. Maintenance<a class="headerlink" href="#10-maintenance" title="Permanent link">&para;</a></h2>
 <table>

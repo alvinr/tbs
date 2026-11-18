@@ -36,14 +36,13 @@ water-system-sheet1), but the **recycle leg is colored `draw.C_BLUE`**, and it c
 board beside IBC-4 before crossing the corridor into IBC-3's corridor face. The result reads as a blue
 pipe running from DV-01 into IBC-4. Filtered used water bound for the Brown buffer is Brown-circuit.
 
-- [ ] `generate_pinhole_water_panel.py` (`cp._side_entry(... "DV-01 recycle -> IBC-3 (buffer)" ...)`):
+- [x] `generate_pinhole_water_panel.py` (`cp._side_entry(... "DV-01 recycle -> IBC-3 (buffer)" ...)`):
   recolor the leg to the Brown-circuit pipe color (add a shared `C_BROWN` to `tbs_draw.py` if none
   exists — 2D uses `#8B5E3C`); regenerate → `--send` into water.skp → save → `push_sketchfab.py water`.
-- [ ] Re-check the construction model's recycle slice (`part="recycle"`) and the overview/corridor
-  models that reuse this leg for the same color.
-- [ ] Stale comments in the same area: the `kit()` docstring still says "blue DV-01→X1 recycle line",
-  the recycle comment says "CV-3 anti-siphon check on the approach" (it's `check=False`; only CV-1
-  exists), and `generate_corridor_water_panel.py` still describes the X1 4-way cross's −X leg as "the
+- [x] Recolored in water.skp (2026-11-18).
+- [ ] Re-send the other models that reuse this leg — **ibc-stack, construction, overview** (manifest
+  `--check` flags them STALE) — then `manifest.py --update` + commit the `.skp`s.
+- [ ] Pinhole-panel comments fixed. Remaining: `generate_corridor_water_panel.py` still describes the X1 4-way cross's −X leg as "the
   DV-01 blue recycle return". Confirm that cross has no orphan 4th port in the geometry; if it does,
   it becomes a tee.
 

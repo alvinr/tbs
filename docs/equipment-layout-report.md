@@ -23,7 +23,7 @@ cone, carry all the equipment; the optical zone itself holds only the film-plane
 |------|---------|--------------|--------------------------|
 | **Left end zone** | 0–260mm | Yes, at all depths | Hinged panel + revolving-drum light lock — the door-end entry, kept clear for egress |
 | **Pinhole wall face** | Y=0 surface | Yes (cone collapses to a point) | Electrical panel, battery, inverter, cable + pipe runs — the service wall, shortest runs |
-| **Optical zone** | 260–4,649mm | No | Film plane + rails only; the tray and walkway lie on the floor, below the cone |
+| **Optical zone** | 260–4,649mm | No | Film plane + its two depth rails; floor-level tray and walkway only, below the cone |
 | **Right end zone** | 4,649–5,893mm | Yes, at all depths | 2×2 IBC stack + plumbing corridor + pump/filter panel — the tall, heavy water plant, clear of the cone |
 
 ---
@@ -55,14 +55,13 @@ outside, ducted through a wall stub. Circuit and wiring detail is in the
 [Electrical Report](electrical-report.md); the supply pipe in the
 [Plumbing Report](plumbing-report.md).
 
-### 2.3 Optical Zone — rails only, floor clear
+### 2.3 Optical Zone — the cone's footprint
 
-The optical zone is **not** shadow-free, so nothing stands up into it. Only the film-plane
-depth rails live here, at the two zone boundaries. The processing tray and the perimeter
-walkway lie flat on the floor, below the cone — the tray clears the film-plane carriage
-blocks even at full tilt, so it never reaches into the optical path. Tray and walkway detail
-are in the [Processing Tray Report](processing-tray-and-spray-bar.md) and the
-[Walkway Report](walkway-report.md).
+This is the span the optical cone fills, so nothing may rise into it. It holds the film
+plane, carried on a depth rail at each edge, and, under the cone, only floor-level items
+that stay below its lower boundary: the processing tray and the perimeter walkway. Tray
+and walkway detail are in the [Processing Tray Report](processing-tray-and-spray-bar.md)
+and the [Walkway Report](walkway-report.md).
 
 ### 2.4 Right End Zone — the water plant
 

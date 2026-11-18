@@ -6,7 +6,7 @@
 
 The camera operates in remote locations with no municipal water or drainage. This report specifies a self-contained three-circuit water system that:
 
-- Stores clean water for ~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> full-size prints per resupply run on fresh Blue alone, or **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** with Brown wash-2 recycling (§3)
+- Stores clean water for ~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> full-size prints per resupply run on fresh Blue alone, or **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** with Brown wash-1 recycling (§3)
 - Recycles used wash water through a three-stage filter train, extending usable supply by ~<!-- BEGIN fact:recycle_supply_gain_pct -->50<!-- END fact:recycle_supply_gain_pct -->%
 - Contains all waste water in a closed, transportable IBC for off-site disposal
 - Runs entirely on 12V DC from the solar/battery system
@@ -18,7 +18,7 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 | Circuit | Purpose | Storage |
 |---------|---------|---------|
 | **Blue** — clean | Fresh water for processing | IBC-1 + IBC-2, top tier — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L working fill (<!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L each) |
-| **Brown** — used | Collected wash water, filtered into a buffer and reused for wash 2 | IBC-3, bottom tier |
+| **Brown** — used | Collected wash water, filtered into a buffer and reused for wash 1 | IBC-3, bottom tier |
 | **Black** — waste | Rejected or heavily contaminated water, sealed for off-site disposal | IBC-4, bottom tier |
 
 All four totes are identical 1,000L caged IBCs; the fills above are working levels, not tote sizes.
@@ -58,7 +58,7 @@ It will **not**:
 - Remove dissolved iron salts fully
 - Make the water safe for discharge to ground
 
-**Reuse rule:** Recycled Brown water is used only for the **middle wash (wash 2)**. The first and final washes always use Blue, so the print ends in clean water and iron compounds are not re-deposited. After 3 recycle passes, Brown water goes to Black.
+**Reuse rule:** Recycled Brown water is used only for the **first wash**, where the unexposed sensitizer leaches out and the bath is dirtiest regardless of what it starts as. Washes 2 and 3 use Blue, so the print finishes in clean water and iron compounds are not re-deposited. After 3 recycle passes, Brown water goes to Black.
 
 Iron compounds in the wash water react with copper and galvanized steel — the plumbing is PVC throughout ([Plumbing Report §5](plumbing-report.md)).
 
@@ -72,8 +72,8 @@ One wash floods the processing tray (~103 sq ft) to 6mm (¼") depth — **<!-- B
 
 | Wash cycle | Water source | Volume | Drains to |
 |-----------|-------------|--------|---------|
-| Wash 1 — 5 min | Blue (clean) | <!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal | Brown |
-| Wash 2 — 5 min | Brown (recycled) | <!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal | Brown |
+| Wash 1 — 5 min | Brown (recycled) | <!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal | Brown |
+| Wash 2 — 5 min | Blue (clean) | <!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal | Brown |
 | Wash 3 — 5 min | Blue (clean) | <!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal | Brown → Black after 3 recycles |
 | **Total per print** | | **~<!-- BEGIN fact:blue_per_print_gal -->30<!-- END fact:blue_per_print_gal --> gal net Blue consumed** | |
 
@@ -82,7 +82,9 @@ One wash floods the processing tray (~103 sq ft) to 6mm (¼") depth — **<!-- B
 | Scenario | Blue washes per print | Prints from <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal Blue |
 |----------|----------------------|--------------------------|
 | No recycling | 3 | ~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> prints |
-| With recycling (wash 2 from Brown) | 2 | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** |
+| With recycling (wash 1 from Brown) | 2 | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** |
+
+The first print after a resupply finds IBC-3 empty, so it runs wash 1 on Blue; that one extra Blue wash does not change the count.
 
 **Water balance — recovered vs. consumed.** Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply,
 ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
@@ -158,7 +160,7 @@ Processing tray sump (P-04 suction pickup)
 
    IBC-3 (Brown buffer)
         │
-       P-02 ──→ ACC-02 (pulsation damper) ──→ BV-05 ──→ spray bar   (wash 2)
+       P-02 ──→ ACC-02 (pulsation damper) ──→ BV-05 ──→ spray bar   (wash 1)
 ```
 
 **Filter train:** three 4.5"×20" Big Blue housings in a bank high on the pinhole wall. Housings, plumbing, and cartridge replacement intervals are in [Plumbing Report §3.1](plumbing-report.md).

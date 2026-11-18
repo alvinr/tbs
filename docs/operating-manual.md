@@ -321,10 +321,10 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump — instead of the old fill-dwell-drain cycle (water consumed per print is the same; see [Water System Report §6](water-system-report.md)).
 
-- [ ] 4.2.2 — Switch ON the master pump switch — **P-01 (Blue supply) and P-04 (tray drain) both run.** P-01 feeds the spray bar; P-04 continuously lifts the sump water to IBC-3 via 3W-DV-02. Confirm VB1, VB2, VB3 are open.
-- [ ] 4.2.3 — Set BV-05a to Blue (fresh), 3W-DV-02 to Brown, and open BV-05b. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains to IBC-3 as fast as it arrives, so the tray never fills. The wash runs yellow-green as unreacted sensitizer clears (normal, non-toxic). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(If the first rinse is heavily contaminated, set 3W-DV-02 to IBC-4/Waste instead — see the diverter decisions below.)*
-- [ ] 4.2.4 — **Recycled pass:** set BV-05a to Brown (recycled) and bring up **P-02** (it draws IBC-3 through the 3-stage filter skid back to the spray bar); P-01 idles. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
-- [ ] 4.2.5 — **Final rinse:** set BV-05a back to Blue (P-01) for a 2-minute clean-Blue flush, P-04 still draining to IBC-3.
+- [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm VB1, VB2, VB3 are open. *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05a to Blue, P-01 instead of P-02.)*
+- [ ] 4.2.3 — **Recycled first wash:** set BV-05a to Brown (recycled), 3W-DV-02 to Brown, and open BV-05b. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (normal, non-toxic). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(If the drain water is heavily contaminated, set 3W-DV-02 to IBC-4/Waste instead — see the diverter decisions below.)*
+- [ ] 4.2.4 — **Clean wash:** set BV-05a to Blue (fresh) and bring up **P-01**; P-02 idles. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
+- [ ] 4.2.5 — **Final rinse:** keep BV-05a on Blue (P-01) for a final ~5-minute clean-Blue flush, P-04 still draining.
 - [ ] 4.2.6 — **Stop:** close BV-05b (spray off), let P-04 run ~30 seconds to clear the sump, then switch OFF the master pump switch. Total wash ~15 minutes (**3 passes**).
 
 > **Visual check after the second wash:** The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.
@@ -333,17 +333,19 @@ Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) s
 
 Flow-through, so there are no separate drain phases — **P-04 drains throughout** all three passes:
 
-| Valve / pump | Default | Pass 1 (Blue) | Pass 2 (Brown recycle) | Pass 3 (Blue final) | Stop |
+| Valve / pump | Default | Pass 1 (Brown recycle) | Pass 2 (Blue) | Pass 3 (Blue final) | Stop |
 |---|---|---|---|---|---|
 | BV-01 (Blue manifold) | Open | Open | Open | Open | Open |
-| BV-05a (spray selector) | Blue | Blue | **Brown** | Blue | — |
+| BV-05a (spray selector) | Blue | **Brown** | Blue | Blue | — |
 | BV-05b (spray on/off) | Closed | **Open** | **Open** | **Open** | **Closed** |
 | BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed |
 | 3W-DV-02 (tray drain) | Brown | Brown | Brown | Brown | Brown |
-| P-01 (Blue supply) | Off | **On** | Off | **On** | Off |
-| P-02 (Brown pump) | Off | Off | **On** | Off | Off |
+| P-01 (Blue supply) | Off | Off | **On** | **On** | Off |
+| P-02 (Brown pump) | Off | **On** | Off | Off | Off |
 | P-04 (tray drain, C2) | Off | **On** | **On** | **On** | Off (after sump clear) |
-| 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue |
+| 3W-DV-01 (filter out) | Brown buffer | Brown | Brown | Brown | Brown |
+
+*First print after a resupply: IBC-3 is empty, so Pass 1 runs on Blue (BV-05a Blue, P-01 On, P-02 Off).*
 
 #### Diverter valve operator decisions
 
@@ -353,7 +355,7 @@ The two 3-way diverter valves serve different roles in the water triage chain. U
 
 DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:
 
-- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and potential recycling back to Blue.
+- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and reuse as the next print's first wash.
 - **Switch to Black:** Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.
 
 **Rule of thumb:** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.
@@ -362,13 +364,13 @@ DV-02 sits on the P-04 pump discharge and controls whether drain water from the 
 
 DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After brown water has been filtered, the operator draws a ~50 ml sample at SV-01 and checks the pH reading:
 
-- **Set to Blue return (default):** pH is between 6.5 and 8.0, indicating the filtered water is chemically neutral enough to return to IBC-2 (Blue clean supply) for reuse.
-- **Switch to Black:** pH is outside the acceptable range, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the clean supply.
+- **Set to Brown buffer (default):** pH is 6–7 and the water looks clean, so it returns to IBC-3 (Brown buffer) for reuse as a first wash. The Blue supply only ever holds fresh water.
+- **Switch to Black:** pH is above 7.5, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the recycle buffer.
 
 | Valve | Decision | Basis | Who decides |
 |-------|----------|-------|-------------|
 | 3W-DV-02 (tray drain) | Brown vs Black | Contamination severity at drain time | Operator — visual judgment |
-| 3W-DV-01 (filter output) | Blue vs Black | Water quality after filtering | Operator — pH meter reading |
+| 3W-DV-01 (filter output) | Brown buffer vs Black | Water quality after filtering | Operator — pH meter reading |
 
 ### 4.3 Drying
 **Lighting: WHITE LIGHT or daylight — cyanotype is no longer light-sensitive after washing.**

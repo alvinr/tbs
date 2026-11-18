@@ -203,7 +203,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> on fresh Blue alone).
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-1 recycling (~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> on fresh Blue alone).
 
 <!-- BEGIN costing:water -->
 | Category | Low† | High† |

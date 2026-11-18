@@ -165,8 +165,8 @@ recycling ([Water System Report §3–4](water-system-report.md)), so:
 | Constraint | Capacity | Per print | Endurance |
 |---|--:|--:|---|
 | **Clean water (Blue, in)** | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal) | <!-- BEGIN fact:blue_per_print_l -->114<!-- END fact:blue_per_print_l --> L (<!-- BEGIN fact:blue_per_print_gal -->30<!-- END fact:blue_per_print_gal --> gal) | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints ≈ 5 days** @ 3/day |
-| Power, 2 packs + sun | — | ~620 Wh | Indefinite |
-| Power, 2 packs, no sun | <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh | ~620 Wh | ~3 prints (~<!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day) |
+| Power, 2 packs + sun | — | ~<!-- BEGIN energy:per-print-wh -->758<!-- END energy:per-print-wh --> Wh | Indefinite |
+| Power, 2 packs, no sun | <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh | ~<!-- BEGIN energy:per-print-wh -->758<!-- END energy:per-print-wh --> Wh | ~3 prints (~<!-- BEGIN energy:reserve-2pack-day -->1.0<!-- END energy:reserve-2pack-day --> day) |
 
 A disconnected deployment therefore runs **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints (~4.7 days at 3/day)** before it needs
 a **resupply run** — which is fundamentally a *water* event (refill Blue), not a charging

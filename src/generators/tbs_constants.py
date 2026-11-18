@@ -1075,20 +1075,20 @@ def tray_gutter_floor_z(x):
 # EXACTLY, including the per-wash rounding (15.2 gal ≈ 15 gal), so every
 # downstream published number stays stable:
 #   tray flood at TRAY_FLOOD_DEPTH_MM over the real footprint -> ~15.2 gal, ROUNDED to 15 gal/wash
-#   wash 1 + wash 3 draw clean Blue (wash 2 recycles Brown) -> BLUE_WASHES_PER_PRINT × 15 = 30 gal
+#   wash 1 recycles Brown; washes 2 + 3 draw clean Blue -> BLUE_WASHES_PER_PRINT × 15 = 30 gal
 #   usable Blue supply / Blue-per-print -> prints between resupply runs (floor)
 # facts.yml references PRINTS_PER_RESUPPLY via `constant:`; energy-budget imports these (one source).
 L_PER_GAL             = 3.78541
 BLUE_SUPPLY_L         = 1800    # usable clean-water (Blue) volume — 2× 900L gravity fill (~476 gal)
 BLUE_FILL_PER_TOTE_L  = BLUE_SUPPLY_L // 2    # = 900L gravity fill per Blue tote (a FILL LEVEL, not the 1000L tote size)
 TRAY_FLOOD_DEPTH_MM   = 6       # one process flood depth (¼") over the tray footprint
-BLUE_WASHES_PER_PRINT = 2       # washes 1 & 3 draw Blue; wash 2 recycles from Brown
+BLUE_WASHES_PER_PRINT = 2       # wash 1 recycles Brown (the leaching wash); washes 2 & 3 draw Blue
 TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.2 → 15 (injected via facts.yml tray_flood_gal)
 BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 30 gal net Blue/print (injected via facts.yml blue_per_print_gal)
 BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 114 L
 BLUE_PER_PRINT_L_R    = round(BLUE_PER_PRINT_L)                 # = 114 L (injected via facts.yml blue_per_print_l)
 PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 15
-WASHES_PER_PRINT      = 3       # three wash baths per print (1 & 3 Blue, 2 Brown-recycled)
+WASHES_PER_PRINT      = 3       # three wash baths per print (1 Brown-recycled, 2 & 3 Blue)
 PRINTS_NO_RECYCLE     = int(BLUE_SUPPLY_L / (WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL))  # = 10 (injected via facts.yml prints_no_recycle)
 RECYCLE_SUPPLY_GAIN_PCT = round((WASHES_PER_PRINT / BLUE_WASHES_PER_PRINT - 1) * 100)      # = 50 (injected via facts.yml recycle_supply_gain_pct)
 IBC_CAPACITY_L        = 1000    # tote vessel volume — the hard per-tote fill ceiling

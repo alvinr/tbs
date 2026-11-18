@@ -22,6 +22,7 @@ import generate_walkway_model as wm   # walkway builders (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
 import generate_corridor_water_panel as cp
 import generate_spraybar_model as sb        # owns spray_bar() (Phase 1)
+from tbs_constants import PRINTS_NO_RECYCLE, PRINTS_PER_RESUPPLY, RECYCLE_SUPPLY_GAIN_PCT
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)        # the new corridor plumbing panel (same connected system)
 
 # ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
@@ -30,12 +31,12 @@ SF_TITLE = "TBS-001 Water Model"
 SF_TAGS  = "sketchup"
 SF_DESC  = (
     "The camera operates in remote locations with no municipal water or drainage. "
-    "This document specifies a self-contained three-circuit water system that:\n\n"
-    "Stores sufficient clean water for 9–14 full-size prints between resupply runs on "
-    "fresh Blue alone (~14 prints once Brown wash-2 recycling is counted — see §below) "
-    "Recycles used wash water through a three-stage filter train, extending usable supply by "
-    "approximately 40% Contains all waste water in a closed, transportable IBC for proper "
-    "off-site disposal Runs entirely on 12V DC, compatible with a solar/battery off-grid power system."
+    "A self-contained three-circuit water system: "
+    f"stores clean water for ~{PRINTS_NO_RECYCLE} full-size prints per resupply run on fresh Blue alone, "
+    f"or ~{PRINTS_PER_RESUPPLY} with Brown wash-1 recycling; "
+    f"recycles used wash water through a three-stage filter train, extending usable supply by ~{RECYCLE_SUPPLY_GAIN_PCT}%; "
+    "contains all waste water in a closed, transportable IBC for off-site disposal; "
+    "runs entirely on 12V DC from the solar/battery system."
 )
 
 # ── band + wall ──────────────────────────────────────────────────────────────

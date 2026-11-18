@@ -2499,24 +2499,31 @@ def draw_sheet9():
     # seats on the corrugation CRESTS, the seal beds the flange↔wall interface, and the
     # through-bolt grip spans the ~30mm corrugation depth to an interior backing plate + nut.
     axb = fig.add_subplot(gs[0, 1]); axb.set_aspect("equal"); axb.axis("off")
-    axb.set_xlim(-40, 150); axb.set_ylim(-70, 80)
-    fex = 4.0                                     # flange/fastener scale (thin metal exaggerated)
-    dsc = 1.4                                      # corrugation-depth scale
-    CD = CONTAINER_CORRUGATION_DEPTH * dsc         # drawn corrugation depth (crest → trough)
-    ts = 4.0                                        # wall sheet thickness (exaggerated)
+    fex = 4.0                                      # fastener/flange scale (thin metal exaggerated)
+    ts  = 4.0                                        # wall sheet thickness (drawn)
+    CD  = CONTAINER_CORRUGATION_DEPTH               # 30mm corrugation depth — TRUE 1:1 scale
     CDi = CD + ts                                   # interior face of the troughs
     FTs = FT * fex                                  # flange thickness drawn
-    # corrugated wall sheet — exterior crests at x=0 (flange side), interior troughs at x=CD
-    ys = [-48, -36, -24, -12, 0, 12, 24, 36, 48]
-    outer = [(0.0 if i % 2 == 0 else CD, y) for i, y in enumerate(ys)]
-    axb.add_patch(mpatches.Polygon(outer + [(x + ts, y) for (x, y) in outer][::-1],
+    # ISO-typical side-wall corrugation (trapezium): crest 72 · web 68 · valley 70 · pitch 278mm
+    # (shipped.com 20'GP wall section). Drawn to the real along-wall scale so the flange seats on the
+    # FLAT crests (not points); depth = the project's conservative CONTAINER_CORRUGATION_DEPTH. A crest
+    # is centered on the bolt; one full valley shows each side (next crests fall outside this window).
+    CR, WB, VL = 72.0, 68.0, 70.0
+    YV = CR / 2 + WB + VL                            # 174 — central crest + a full valley each side
+    axb.set_xlim(-95, 150); axb.set_ylim(-YV - 60, YV + 66)
+    half, yq, i = [(0.0, CR / 2)], CR / 2, 0         # exterior surface (x, y) up from crest center
+    while yq < YV:
+        length, xend = [(WB, CD), (VL, CD), (WB, 0.0), (CR, 0.0)][i % 4]
+        yq += length; half.append((xend, min(yq, YV))); i += 1
+    ext = [(x, -y) for (x, y) in reversed(half)] + half   # crest-centered, flat crests + flat valleys
+    # corrugated wall sheet (constant thickness)
+    axb.add_patch(mpatches.Polygon(ext + [(x + ts, y) for (x, y) in ext][::-1],
                                    closed=True, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="xx", zorder=3))
-    # flashing + silicone — beds the flange to the corrugation (fills the exterior valleys)
-    for i in (0, 2, 4, 6):
-        axb.add_patch(mpatches.Polygon([(0, ys[i]), (CD, ys[i + 1]), (0, ys[i + 2])],
-                                       closed=True, fc=C_GASKT, ec=C_OUT, lw=0.4, zorder=2))
+    # flashing + silicone — fills the exterior valleys between the flat flange (x=0) and the receding wall
+    axb.add_patch(mpatches.Polygon(ext + [(0.0, YV), (0.0, -YV)],
+                                   closed=True, fc=C_GASKT, ec="none", alpha=0.8, zorder=2))
     # flange / face plate — flat, seats on the exterior crests
-    axb.add_patch(mpatches.Rectangle((-FTs, -48), FTs, 96, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))
+    axb.add_patch(mpatches.Rectangle((-FTs, -YV), FTs, 2 * YV, fc=C_STEEL, ec=C_OUT, lw=1.3, hatch="///", zorder=5))
     # interior backing plate — bridges the troughs, spreads the nut load
     axb.add_patch(mpatches.Rectangle((CDi, -20), 10, 40, fc=C_STEEL, ec=C_OUT, lw=0.9, zorder=5))
     # M6 through-bolt (head exterior, nut interior) — matched hex pair, thin axial × tall across-flats
@@ -2524,14 +2531,14 @@ def draw_sheet9():
     axb.add_patch(mpatches.Rectangle((-FTs - HEAD_THK, -HEX_AF / 2), HEAD_THK, HEX_AF, fc="#404040", ec=C_OUT, lw=0.5, zorder=7))   # hex head
     axb.add_patch(mpatches.Rectangle((-FTs, -SHANK_D / 2), (CDi + 10 + NUT_THK + 2) + FTs, SHANK_D, fc="#606068", ec=C_OUT, lw=0.4, zorder=6))  # shank
     axb.add_patch(mpatches.Rectangle((CDi + 10, -HEX_AF / 2), NUT_THK, HEX_AF, fc="#404040", ec=C_OUT, lw=0.5, zorder=7))            # hex nut
-    axb.text(-90, 44, "EXTERIOR", ha="left", fontsize=6.5, color=C_DIM, **FONT)
-    axb.text(145, 44, "INTERIOR", ha="right", fontsize=6.5, color=C_DIM, **FONT)
-    leader(axb, -FTs - HEAD_THK / 2, 0, -70, 26, f"M{MD} THROUGH-BOLT\n(head + sealing washer)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
-    leader(axb, CDi + 10 + NUT_THK, 0, 70, -34, f"M{MD} NUT + backing plate\n(interior · grip spans the corrugation)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    leader(axb, CD * 0.5, 36, 22, 64, "FLASHING + SILICONE\n(beds flange · water- + light-tight)", fs=5.8, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
-    leader(axb, -FTs / 2, -30, -70, -50, f"{FT}mm FLANGE PLATE\n(seats on crests)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
-    leader(axb, CD, 12, 60, -52, f"CORRUGATED WALL\n({CONTAINER_CORRUGATION_DEPTH}mm deep)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
-    axb.text(30, 74, "PANEL B — WALL-SECURING DETAIL (section at a mounting bolt · 4 places, flange corners)", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, **FONT)
+    axb.text(-92, YV + 20, "EXTERIOR", ha="left", fontsize=6.5, color=C_DIM, **FONT)
+    axb.text(146, YV + 20, "INTERIOR", ha="right", fontsize=6.5, color=C_DIM, **FONT)
+    leader(axb, -FTs - HEAD_THK / 2, 0, -88, 40, f"M{MD} THROUGH-BOLT\n(head + sealing washer)", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(axb, CDi + 10 + NUT_THK, 0, 88, -42, f"M{MD} NUT + backing plate\n(interior · grip spans the corrugation)", fs=5.8, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    leader(axb, CD, CR / 2 + WB + VL / 2, 96, 118, "FLASHING + SILICONE\n(beds flange over the valleys)", fs=5.8, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
+    leader(axb, 0, CR / 2 - 6, -88, YV - 10, f"{FT}mm FLANGE PLATE\nseats on the flat 72mm CRESTS", fs=5.8, color=C_DIM, ha="right", arrow_style="-|>", font=FONT)
+    leader(axb, CD, -(CR / 2 + WB + VL / 2), 72, -YV - 26, f"CORRUGATED WALL — trapezoid\ncrest 72 · web 68 · valley 70 · pitch 278\n(depth {CONTAINER_CORRUGATION_DEPTH}mm, to scale)", fs=5.5, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    axb.text(27, YV + 54, "PANEL B — WALL-SECURING DETAIL (section at a mounting bolt · 4 places, flange corners)", ha="center", fontsize=7.4, fontweight="bold", color=C_OUT, **FONT)
 
     # ══ notes ══
     notes = [
@@ -2549,7 +2556,7 @@ def draw_sheet9():
     title_block(ax_tb, "SHEET 9 OF 9",
                 drawing_title="EXTERNAL POWER PANEL — BOX ASSEMBLY & WALL MOUNT",
                 subtitle="Box pieces (cut list) · securing detail through the corrugated wall · monochrome",
-                scale_note="PANEL A 1:2 · PANEL B thickness exaggerated · mm", height=0.85)
+                scale_note="PANEL A 1:2 · PANEL B 1:1 corrugation (fastener thickness exaggerated) · mm", height=0.85)
     fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet9.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet9.png  Done.")

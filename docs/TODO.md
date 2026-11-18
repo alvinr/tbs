@@ -44,9 +44,9 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 - [ ] The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.
 
-## 📐 electrical-sheet9 — corrugated-wall section drawn as a peak, not a flat bridge (2026-11-16)
+## 📐 electrical-sheet6 — corrugated-wall section still drawn as a peak (2026-11-18)
 
-- [ ] On electrical-sheet9 (external power-panel box pieces + wall-securing detail) the container-wall **corrugation** is drawn as a sharp **peak/triangle**. Real ISO-container corrugation is closer to a **trapezoidal flat-topped bridge** (flat crest + sloped webs + flat valley), so the flange seats on a flat, not a point. Needs research for a better corrugation profile (trapezoid dims: crest width, pitch, depth, web angle for a standard 20ft corten side/end wall) and then update the section-drawing helper in `generate_electrical_diagram.py` (Sheet 9). Regenerate + re-check.
+- [ ] **Sheet 9 DONE** (2026-11-18): the wall-securing detail now draws the corrugation as a to-scale **trapezoid** (flat crest + sloped webs + flat valley; ISO-typical crest 72 · web 68 · valley 70 · pitch 278mm, depth = `CONTAINER_CORRUGATION_DEPTH`), so the flange seats on a flat 72mm crest, not a point. **Remaining:** `draw_sheet6` (`EXTERNAL POWER PANEL — PENETRATION BOX`) draws the SAME corrugated-wall section with the same triangular `corr_band` — apply the identical trapezoid profile there for consistency, then regenerate + re-check.
 
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 

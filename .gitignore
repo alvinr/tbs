@@ -54,4 +54,5 @@ quotes/
 # Playwright MCP browser session/cache scratch dir
 .playwright-mcp/
 
-
+# VSCode files
+.vscode

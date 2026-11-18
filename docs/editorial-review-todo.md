@@ -34,7 +34,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 ## Track 1 — Terse engineering (everything else reader-facing)
 
 ### Costing
-- [ ] project-cost-breakdown.md
+- [x] project-cost-breakdown.md  — confirmed complete (owner). Verified it is a section/subsystem cost rollup (not a part-by-part BOM) — same totals as the master BOM, every major component named, no SKU/supplier/qty; decided it is the brochure PDF's parts/cost coverage (the itemized BOM stays web-only).
 
 ### Construction — Equipment & Water
 - [ ] equipment-layout-report.md

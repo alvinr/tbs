@@ -1086,7 +1086,10 @@ BLUE_WASHES_PER_PRINT = 2       # washes 1 & 3 draw Blue; wash 2 recycles from B
 TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.6 → 16
 BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
 BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
-PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 14
+PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 15
+WASHES_PER_PRINT      = 3       # three wash baths per print (1 & 3 Blue, 2 Brown-recycled)
+PRINTS_NO_RECYCLE     = int(BLUE_SUPPLY_L / (WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL))  # = 10 (injected via facts.yml prints_no_recycle)
+RECYCLE_SUPPLY_GAIN_PCT = round((WASHES_PER_PRINT / BLUE_WASHES_PER_PRINT - 1) * 100)      # = 50 (injected via facts.yml recycle_supply_gain_pct)
 BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons) (injected via facts.yml blue_supply_gal)
 
 # Water balance — of the Blue consumed per run, ~31 L/print is open-process loss (muslin carryout +

@@ -6,8 +6,8 @@
 
 The camera operates in remote locations with no required municipal water or drainage. This document specifies a self-contained three-circuit water system that:
 
-- Stores sufficient clean water for 9–14 full-size prints between resupply runs on fresh Blue alone (**~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** once Brown wash-2 recycling is counted — see §below)
-- Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%
+- Stores clean water for ~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> full-size prints per resupply run on fresh Blue alone, or **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** with Brown wash-2 recycling (§3)
+- Recycles used wash water through a three-stage filter train, extending usable supply by ~<!-- BEGIN fact:recycle_supply_gain_pct -->50<!-- END fact:recycle_supply_gain_pct -->%
 - Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system
 
@@ -82,7 +82,7 @@ Volume per flood = 103 sq ft × (6mm / 304.8) = 103 × 0.0197 ft = 2.03 cu ft
 
 | Scenario | Blue consumed per print | Prints from <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal Blue | Brown recycled |
 |----------|------------------------|--------------------------|---------------|
-| No recycling | 48 gal (3 × 16) | ~10 prints | 0 |
+| No recycling | 48 gal (3 × 16) | ~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> prints | 0 |
 | With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** | ~224 gal reused |
 | Brown recycle limit (3 passes) | — | — | 166 gal max before going to Black |
 

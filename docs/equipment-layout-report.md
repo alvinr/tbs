@@ -6,8 +6,8 @@
 
 The optical cone from the pinhole narrows toward the pinhole wall and widens toward the
 film plane. Any equipment standing inside the cone casts a shadow on the film plane — an
-unexposed void in the image. The layout follows one governing rule: **keep the cone empty,
-and put everything else where the cone cannot reach.**
+unexposed void in the image. The layout follows one governing rule: **keep the cone clear,
+and put everything else outside of the cone.**
 
 Reducing the active film plane from the full
 <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm
@@ -40,19 +40,15 @@ read the positions off the drawing.
 ### 2.1 Left End Zone — the door-end entry
 
 The cargo-door end holds the hinged light-trap panel and, in its center, the revolving drum
-that is the camera's light-tight entry and exit. Nothing else goes here: the zone is
-deliberately empty at floor level so it doubles as the egress path — full container-width
-when the panel is open. For transport the panel + drum swing ~56° inboard about the shared
-film-plane pivot post, clearing the door plane. The panel construction, swing pivot, seals,
+that provides the camera's light-tight entry and exit. For transport the panel + drum swing ~56° inboard about the shared
+film-plane pivot post, clearing the cargo door plane. The panel construction, swing pivot, seals,
 and the emergency-egress assessment are in the
 [Hinged Panel Report](hinged-panel-report.md); the drum light lock is in the
 [Light Trap Selection](light-trap-selection.md).
 
 ### 2.2 Pinhole Wall Face — the service wall
 
-At the pinhole wall the cone has collapsed to a point, so the whole wall face is shadow-free
-at any height. It carries the services: the electrical panel and battery bank (a slim column
-that clears the cone), the cooler inverter, the full-length cable trunking, and the Blue
+The pinhole wall carries the services: the electrical panel and battery bank, the cooler inverter, the full-length cable trunking, and the Blue
 supply pipe running to the spray-bar feed. Mounting them on this wall keeps every cable and
 pipe run short and out of the optical zone. The evaporative cooler sits on the ground
 outside, ducted through a wall stub. Circuit and wiring detail is in the

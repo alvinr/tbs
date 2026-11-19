@@ -9,7 +9,9 @@ Three checks, all run against an in-process build of generate_pinhole_water_pane
   ply_penetrations — a pipe may cross a plywood panel only along its thin axis, through a drilled
                      hole at least as big as the pipe; no hole, an undersized hole, or a pipe running
                      inside the ply fails (the clash checker treats ply as passable, so it can't see this).
-  collapsed_elbows — every elbow in a ruby_pipe_run needs straight leg on both sides (one tangent
+  collapsed_elbows — (also: every ruby_pipe_run leg must be axis-aligned — a leg that moves on two axes
+                     is drawn as a diagonal pipe no one can build.)
+                     every elbow in a ruby_pipe_run needs straight leg on both sides (one tangent
                      length at a run end, two between elbows).  A shorter leg shrinks the swept elbow,
                      so the run no longer meets its port/fitting cleanly (how the pump connections broke
                      when the riser planes crowded the pump ports, 2026-11-18).  Ratchet: legs that were
@@ -54,6 +56,17 @@ def build_instrumented():
             q = tuple(float(c) for c in p)
             if not V or math.dist(q, V[-1]) > 1e-6:
                 V.append(q)
+        for i in range(1, len(V)):
+            if sum(abs(V[i][k] - V[i - 1][k]) > 0.5 for k in range(3)) > 1:
+                short.add(f"{name} @diagonal leg {i}")
+        W = [V[0]]                                     # merge collinear points (no elbow there — as ruby_pipe_run does)
+        for i in range(1, len(V) - 1):
+            u = [V[i][k] - W[-1][k] for k in range(3)]
+            w = [V[i + 1][k] - V[i][k] for k in range(3)]
+            cr = math.hypot(u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0])
+            if cr > 1e-6 * (math.hypot(*u) * math.hypot(*w) + 1e-9) or sum(u[k] * w[k] for k in range(3)) < 0:
+                W.append(V[i])
+        V = W + [V[-1]] if len(V) > 1 else V
         for i in range(1, len(V) - 1):
             a, b, c = V[i - 1], V[i], V[i + 1]
             u = [b[k] - a[k] for k in range(3)]

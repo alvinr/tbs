@@ -24,6 +24,7 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path, LBL_BG
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
+from tbs_constants import PUMP_YD_SPAN
 from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WALL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -1445,7 +1446,7 @@ def draw_sheet4():
     ax.axis("off")
 
     PW, PH = pl.PANEL_W, pl.PANEL_H                       # 270 × 2060 (to scale)
-    pcx, pw, ph = pl.PUMP_COL_C, pl.PUMP_W, pl.PUMP_H     # column center 135, body 127 × 218
+    pcx, pw, ph = pl.PUMP_COL_C, PUMP_YD_SPAN, pl.PUMP_H  # column center · 127 across the port tips (datasheet envelope) × body + head
     p_left = pcx - pw / 2                                 # 71.5 — pump left edge
 
     # ── Panel (to scale) ──

@@ -854,7 +854,7 @@ PWP_PANEL_H       = 2360 - PWP_PANEL_Z0           # 2160 — ply backing height 
 PWP_PANEL_NOTCH_BR = (10, 120)                    # (W, H) bottom-right corner notch — clears the film-plane right-rail end flange (X4569+, Z227–313)
 PWP_PANEL_NOTCH_TR = (30, 235)                    # (W, H) top-right corner notch — clears the right-rail saddle back-plate (X4549+, Z2132+)
 PWP_SROW_Z0       = 1150                          # skid-row base Z (P-04·SV-02·DV-02 under the filters)
-PWP_SV02_Z        = PWP_SROW_Z0 + 132             # 1282 — SV-02 valve-center Z (in-line on the P-04→DV-02 row)
+PWP_SV02_Z        = PWP_SROW_Z0 + 162             # 1312 — SV-02 valve-center Z (in-line ON the P-04→DV-02 row line; 60mm body, base 1282)
 PWP_DV02_Z        = PWP_SROW_Z0 + 162             # 1312 — DV-02 valve-center Z (= P-04 OUT / row line)
 PWP_ACC2_X        = (PWP_PANEL_X0 + PWP_PANEL_X1) // 2 + 180   # 3857 — ACC-02 (recycle-spray damper) center X
 PWP_ACC2_Z0       = 920                           # ACC-02 base Z (was the old panel bottom; the panel now extends below it)

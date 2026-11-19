@@ -44,13 +44,14 @@ Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off
   C — keep as a logged exception.
 - [ ] Add the offcut shim blocks (40×40mm, 18mm ply, 85 in water.skp; cut-to-depth for the wider
   standoffs) to `plywood-cut-sheets.md` as an offcut item.
-- [ ] 2D: panel-layout / pinhole-panel / spine views still draw the pipes flush on the ply (own lane
+- [x] (2026-11-19 — panel sheets now project the 3D routes/clips via `water_3d()`; low runs + notches drawn) 2D: panel-layout / pinhole-panel / spine views still draw the pipes flush on the ply (own lane
   constants) — move them out with the shim (fold into the spine-view redraw). pinhole-panel also needs the
   extended board's LOW runs (sump suction Z230, the 3 corridor drops, their clips) and the 2 corner notches
   drawn — the board is the right size now but its lower half is empty.
-- [ ] 2D: check every sheet that draws the Shurflo pumps against the 3D port reach (127mm across the
+- [x] (2026-11-19) 2D: check every sheet that draws the Shurflo pumps against the 3D port reach (127mm across the
   1/2"-14 NPSM port tips = `PUMP_YD_SPAN`; 13.5mm stubs + a 16.5mm ½" FNPT×slip adapter to the turn elbow)
   and the new flex jumpers on both ends of the Blue equalization tie (water-system sheets, spine views).
+- [ ] `tbs_drawing.draw_pipe_path` reads a COLLINEAR middle waypoint as a 180° turn (turn = π − angle), drawing a bogus elbow; panel-layout works around it by dropping collinear points. Fix the helper (skip collinear vertices) and re-render every sheet that uses it.
 - [ ] Electrical cables drawn INSIDE ply (EP access panel, MPPT cross-member, the Cct C branch on the skid)
   — ratcheted in `pipe_elbow_allowlist.txt` (`ply:` lines); fix in the electrical pass.
 
@@ -71,11 +72,11 @@ pipe running from DV-01 into IBC-4. Filtered used water bound for the Brown buff
   construction, overview** (manifest `--check` flags them STALE) — then `manifest.py --update` + commit
   the `.skp`s.
 - [x] Pipe-color convention applied to 3D (water/corridor/spraybar) + 2D (17 sheets); lint GATE added (2026-11-18).
-- [ ] **ibc-stacking Sheet 5 still draws the retired topology** — "FILTER RETURN → IBC-2 SIDE-ENTRY
+- [x] (2026-11-19 — redrawn) **ibc-stacking Sheet 5 still draws the retired topology** — "FILTER RETURN → IBC-2 SIDE-ENTRY
   (recycle to Blue)" + note 11 (recolored Brown, not redrawn). Redraw: DV-01 recycle → IBC-3.
 - [x] CV-2 / CV-3 on the two waste legs into the IBC-4 merge — schematic was right; added to the 3D, BOM and reports (2026-11-18). Spine views A/B + pinhole-wall elevation still need the CV marks (with the spine redraw above).
 - [x] X1 4-way cross → TEE in `generate_corridor_water_panel.py` + BOM (cross-100 → 4th tee-100, −$4) (2026-11-18).
-- [ ] **panel-spine-view-a/b (`generate_panel_layout.py`) still draw the retired DV-01 BLUE-RECYCLE riser
+- [x] (2026-11-19 — redrawn from the 3D; §3.2 caveat dropped) **panel-spine-view-a/b (`generate_panel_layout.py`) still draw the retired DV-01 BLUE-RECYCLE riser
   up the spine into the "X1 FILL CROSS (4-way)"** (`RX_BLUE` lane, the leader label, notes 4/8/9) and
   note 7 says the pumps "run one at a time" (they don't — C1/C2). Redraw View A with DV-01 recycle →
   IBC-3 per the 3D, relabel the X1 fitting a tee, and drop the "pending topology update" caveat in

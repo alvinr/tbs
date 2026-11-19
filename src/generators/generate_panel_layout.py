@@ -42,6 +42,7 @@ import matplotlib.patches as mpatches
 
 from tbs_constants import C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE, C_PIPE_FITTING
 from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI, FONT, C_WALL
+from tbs_constants import PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR
 from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_PANEL_H
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 import sys as _sys
@@ -49,9 +50,54 @@ _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 import generate_corridor_water_panel as cwp   # corridor-panel geometry — single source for the side-section (was hard-coded + stale)
 from tbs_title_block import title_block
 
+
+_W3D = None
+
+
+def water_3d():
+    """The live water.skp build, captured in-process: every named pipe run's waypoints, every
+    flex jumper's end points, every in-line check / ball valve's center (3D mm, keyed "CV-2", "BV-01"),
+    and every P-clip on a standoff block (name, cx, cz, block face Yd, pipe Yd, vertical).  The 2D sheets read
+    routes from here so they can't drift from the model."""
+    global _W3D
+    if _W3D is None:
+        import tbs_draw as d
+        runs, flex, checks, clips = {}, [], {}, []
+        o_run, o_flex, o_cyl, o_clip = d.ruby_pipe_run, d.ruby_flex_run, d.ruby_cylinder, cwp.clip_on_block
+
+        def run(name, wps, r, *a, **k):
+            runs.setdefault(name, [tuple(map(float, q)) for q in wps])
+            return o_run(name, wps, r, *a, **k)
+
+        def fl(name, wps, r, *a, **k):
+            flex.append((name, [tuple(map(float, q)) for q in wps]))
+            return o_flex(name, wps, r, *a, **k)
+
+        def cyl(name, cx, cy, cz, rad, h, *a, **k):
+            if (name.startswith(("CV-", "BV-")) or "one-way valve" in name) and "handle" not in name:
+                ax_ = k.get("axis", "z")
+                c = [cx, cy, cz]
+                c["xyz".index(ax_)] += h / 2
+                checks["CV-1" if "one-way valve" in name else name.split(" ")[0]] = tuple(map(float, c))
+            return o_cyl(name, cx, cy, cz, rad, h, *a, **k)
+
+        def clip(nm, cx, cz, face_y, pipe_y, vertical, *a, **k):
+            clips.append((nm, float(cx), float(cz), float(face_y), float(pipe_y), vertical))
+            return o_clip(nm, cx, cz, face_y, pipe_y, vertical, *a, **k)
+
+        d.ruby_pipe_run, d.ruby_flex_run, d.ruby_cylinder, cwp.clip_on_block = run, fl, cyl, clip
+        try:
+            import generate_pinhole_water_panel as pw
+            ruby = pw.build()
+        finally:
+            d.ruby_pipe_run, d.ruby_flex_run, d.ruby_cylinder, cwp.clip_on_block = o_run, o_flex, o_cyl, o_clip
+        runs = {n: w for n, w in runs.items() if f'grp.name = "{n}"' in ruby}    # emitted runs only
+        _W3D = {"runs": runs, "flex": flex, "checks": checks, "clips": clips}
+    return _W3D
+
 # ── Panel geometry ────────────────────────────────────────────────────────
 PANEL_T      = 18    # plywood thickness (mm)
-PANEL_YD     = 1046  # panel near edge Yd (mm from pinhole wall)
+PANEL_YD     = cwp.YD_NEAR  # 1046 — panel near edge Yd (mm from pinhole wall)
 PANEL_WALL_X = EQPANEL_X  # panel face X position (= EQPANEL_X)
 from tbs_constants import WALKWAY_W   # standard walkway width (mm)
 WALKWAY_Z    = 100   # walkway grating top (mm AFF)
@@ -62,15 +108,17 @@ PANEL_H  = EQPANEL_H  # face height (mm, =2060; Z span: 250–2310)
 PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
-PUMP_W   = 127   # front face width (mm)
-PUMP_H   = 218   # front face height (mm) — body length, vertical mount
+PUMP_W   = 2 * cwp.PVB_R                  # 100 — upright body Ø (3D pump_unit)
+PUMP_BODY_H = cwp.PVB_H                   # 180 — body height
+PUMP_H   = cwp.PVB_H + cwp.PCAP_H         # 210 — body + head
+PORT_ZOFF = cwp.PVB_H - 18                # 162 — port centerline above the pump base (3D pz)
 from tbs_constants import PUMP_D   # depth from panel (mm) — real Shurflo 2088 (4.5")
 from tbs_constants import IBC_D    # IBC tote depth (mm) — used by the cross-section strip
 PUMP_GAP = 40    # vertical gap between pumps (mm)
 PORT_HALF = 30   # half of port-to-port spacing (mm)
 
 # ── Accumulator ───────────────────────────────────────────────────────────
-ACC_OD  = 127    # body OD (mm)
+ACC_OD  = 2 * cwp.ACC_R    # 127 — body OD (mm)
 ACC_LEN = 200    # body length (mm) — real SeaFlo 0.75L ~200; KEEP IN SYNC with the 3D equipment_panel() ACC cylinder
 
 # ── Filter housing (separate, 4.5"×20") ──────────────────────────────────
@@ -98,19 +146,22 @@ R_PORT_OUT = R_COL - PORT_HALF       # 145 — left (outlet/discharge)
 # (3D Yd1181 → panel-Yd 135); IN/suction on the LEFT (panel-Yd 55 = 3D Yd1101,
 # faces -Yd / near wall), OUT/discharge on the RIGHT (panel-Yd 215 = 3D Yd1261).
 # Bottom→top: ACC-01 (dead-leg), P-01, P-04, P-05, P-03.  Panel-Z = (3D AFF Z) − 200.
-PUMP_COL_C   = 135    # pump-column center (panel-Yd; 3D Yd1181 corridor center)
-CORR_PORT_IN  = 55    # IN / suction port panel-Yd (3D Yd1101, faces near wall)
-CORR_PORT_OUT = 215   # OUT / discharge port panel-Yd (3D Yd1261)
+PUMP_COL_C    = cwp.CTR_Y - PANEL_YD      # 135 — pump-column center (3D Yd1181)
+CORR_PORT_IN  = cwp.PIY - PANEL_YD        # 71.5 — IN port TIP (Shurflo 2088-554-144: 127mm across the tips)
+CORR_PORT_OUT = cwp.POY - PANEL_YD        # 198.5 — OUT port TIP
+LANE_IN  = cwp.PORT_TURN_YD_IN - PANEL_YD    # 34 — near-board suction riser lane (adapter + turn elbow off the IN tip)
+LANE_OUT = cwp.PORT_TURN_YD_OUT - PANEL_YD   # 237 — far-board discharge riser lane
 
 # Pump body bases (panel-Z = 3D AFF − 200):
-P01_Z = 415                           # P-01 Blue supply
-P04_Z = 740                           # P-02 Brown recycle (took the tray-drain pump's vacated corridor slot)
-P05_Z = 1140                          # P-05 Brown drain
-P03_Z = 1540                          # P-03 Waste drain
+P01_Z = cwp.PSTACK["P-01"] - PANEL_Z_AFF   # P-01 Blue supply
+P04_Z = cwp.PSTACK["P-04"] - PANEL_Z_AFF   # P-02 Brown recycle (in the tray-drain pump's vacated corridor slot)
+P05_Z = cwp.PSTACK["P-05"] - PANEL_Z_AFF   # P-05 Brown drain
+P03_Z = cwp.PSTACK["P-03"] - PANEL_Z_AFF   # P-03 Waste drain
 
 # ACC-01 — Ø127 × 200 cylinder at the very bottom, below P-01.
 ACC_YD = PUMP_COL_C
-ACC_Z  = 155                          # ACC bottom (3D z355 − 200)
+ACC_Z  = cwp.ACC_Z0 - PANEL_Z_AFF       # ACC bottom (3D ACC_Z0)
+ACC_PORT_Z = cwp.ACC_PZ - PANEL_Z_AFF   # ACC IN/OUT port centerline (3D ACC_PZ)
 
 # ── PINHOLE WALL PANEL layout ────────────────────────────────────────────
 # 3 filter housings stacked vertically (sump-down) at BOTTOM; P-02 above.
@@ -305,39 +356,32 @@ def draw_corridor_panel():
     #    Z480-900 + upper board Z1260-1950, backing BV-02/BV-06); FAR wall = local Yd PANEL_W (Z400-820).
     SB_T = 18
     for xb, z0b, z1b in ((0, cwp.SB_NEAR_Z[0], cwp.SB_NEAR_Z[1]), (0, cwp.SB_NEAR_UP_Z[0], cwp.SB_NEAR_UP_Z[1]), (PANEL_W - SB_T, cwp.SB_FAR_Z[0], cwp.SB_FAR_Z[1])):
-        rect(xb, z0b, SB_T, z1b - z0b, C_PLY, C_PLY_EC, lw=1.0, zorder=6, alpha=0.9)
-    ax.text(sx(SB_T + 6), sz(1600), "NEAR SIDE\nSUPPORT BOARDS\n(edge-on, on\nwelded L-brackets)",
-            ha="left", va="center", fontsize=3.6, color=C_PLY_EC, zorder=9, **FONT)
-    ax.text(sx(PANEL_W - SB_T - 6), sz(610), "FAR SIDE\nSUPPORT BOARD\n(edge-on)",
-            ha="right", va="center", fontsize=3.6, color=C_PLY_EC, zorder=9, **FONT)
+        rect(xb, z0b - PANEL_Z_AFF, SB_T, z1b - z0b, C_PLY, C_PLY_EC, lw=1.0, zorder=6, alpha=0.9)   # 3D AFF → panel Z
+    ax.text(sx(SB_T + 6), sz(1450), "NEAR SIDE\nSUPPORT BOARDS\n(edge-on, on\nwelded L-brackets)",
+            ha="left", va="center", fontsize=4.0, color=C_PLY_EC, zorder=9, **FONT)
+    ax.text(sx(PANEL_W + 8), sz(560), "FAR SIDE\nSUPPORT BOARD\n(edge-on)",
+            ha="left", va="center", fontsize=4.0, color=C_PLY_EC, zorder=9, **FONT)
 
     # ── PUMPS — SINGLE VERTICAL COLUMN ────────────────────────────────────
-    #   Bottom→top: ACC-01 (below P-01), P-01, P-04, P-05, P-03.  All centered
-    #   on PUMP_COL_C; IN/suction LEFT (CORR_PORT_IN), OUT/discharge RIGHT.
-    _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
-               P01_Z, "P-01", "BLUE\nSUPPLY", C_BLUE, C_BLUE_EC)
-    _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
-               P04_Z, "P-02", "BROWN\nRECYCLE", C_BROWN, C_BROWN_EC)
-    _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
-               P05_Z, "P-05", "BROWN\nDRAIN", C_BROWN, C_BROWN_EC)
-    _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
-               P03_Z, "P-03", "WASTE\nDRAIN", C_BLACK_SYS, C_BLACK_EC)
+    #   Bottom→top: ACC-01 (below P-01), P-01, P-02, P-05, P-03 — all on the corridor
+    #   center (3D CTR_Y).  Each upright body takes its IN port on the −Yd (LEFT) side and its
+    #   OUT on +Yd (RIGHT), 127mm across the tips (Shurflo 2088-554-144 datasheet).
+    _draw_pump(PUMP_COL_C, P01_Z, "P-01", "BLUE\nSUPPLY", C_BLUE, C_BLUE_EC)
+    _draw_pump(PUMP_COL_C, P04_Z, "P-02", "BROWN\nRECYCLE", C_BROWN, C_BROWN_EC)
+    _draw_pump(PUMP_COL_C, P05_Z, "P-05", "BROWN\nDRAIN", C_BROWN, C_BROWN_EC)
+    _draw_pump(PUMP_COL_C, P03_Z, "P-03", "WASTE\nDRAIN", C_BLACK_SYS, C_BLACK_EC)
 
-    # ── ACC-01 — Ø127 × 200 cylinder at the very bottom, below P-01 ───────
+    # ── ACC-01 — Ø127 × 200 at the very bottom, below P-01; IN (+Yd) / OUT (−Yd) side ports ──
     rect(ACC_YD - ACC_OD / 2, ACC_Z, ACC_OD, ACC_LEN,
          C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.7)
     ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 + 12),
             "ACC-01", ha="center", va="center",
             fontsize=7, color="white", fontweight="bold", zorder=8, **FONT)
     ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 - 16),
-            f"O/{ACC_OD}", ha="center", va="center",
+            f"Ø{ACC_OD:.0f}", ha="center", va="center",
             fontsize=5, color="white", zorder=8, **FONT)
-    # ACC ports underneath (SeaFlo bottom-port bladder): IN +Yd, OUT -Yd
-    for port_yd in [CORR_PORT_OUT, CORR_PORT_IN]:
-        circ(port_yd, ACC_Z + 12, 9, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=10)
-    clamp_w = ACC_OD + 20
-    rect(ACC_YD - clamp_w / 2, ACC_Z + ACC_LEN, clamp_w, 8,
-         C_FRAME_FILL, C_FRAME, lw=0.5, zorder=5)
+    for y0 in (ACC_YD - ACC_OD / 2 - 30, ACC_YD + ACC_OD / 2):
+        rect(y0, ACC_PORT_Z - PIPE_OD / 2, 30, PIPE_OD, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
 
     # ── Zone label ────────────────────────────────────────────────────────
     ax.text(sx(PANEL_W + 8), sz((P01_Z + P03_Z + PUMP_H) / 2),
@@ -346,154 +390,111 @@ def draw_corridor_panel():
             fontsize=5.5, color=C_PUMP_EC, fontweight="bold", zorder=10, **FONT)
 
     # ════════════════════════════════════════════════════════════════
-    #  PLUMBING — suctions enter LEFT (via BV); discharges exit RIGHT
+    #  PLUMBING — read from the live 3D build (water_3d).  Every run off a port turns one
+    #  elbow onto its side-board lane (IN → near board LANE_IN, OUT → far board LANE_OUT)
+    #  after a ½" adapter leg.  Runs are drawn in this plane up to their first leg along X;
+    #  that leg is marked end-on (⊙ toward the walkway / −X, ⊗ away behind the panel / +X).
+    #  The suction risers share the near-board lane at different X depths, so they overlap
+    #  in this elevation — their full routes are on Spine View A.
     # ════════════════════════════════════════════════════════════════
-    EXIT_L = -70    # past left panel edge (near wall / walkway)
-    EXIT_R = 340    # past right panel edge (far wall / sealed end)
+    W = water_3d()
+    EXIT_L = -70    # label column past the left panel edge (near wall / walkway)
+    EXIT_R = 340    # label column past the right panel edge (far wall / sealed end)
 
-    P01_PORT_Z = P01_Z + PUMP_H - 25
-    P04_PORT_Z = P04_Z + PUMP_H - 25
-    P05_PORT_Z = P05_Z + PUMP_H - 25
-    P03_PORT_Z = P03_Z + PUMP_H - 25
+    def py(p):
+        return p[1] - PANEL_YD, p[2] - PANEL_Z_AFF
 
-    # Far-right discharge riser lane (clear of the OUT ports at CORR_PORT_OUT)
-    DISCH_RISER = 255
+    def endon(y, z, toward):
+        r = PIPE_OD / 2 + 2
+        circ(y, z, r, "white", C_FRAME, lw=1.0, zorder=Z_DISCH + 1)
+        if toward:
+            circ(y, z, 2.6, C_FRAME, C_FRAME, lw=0.5, zorder=Z_DISCH + 2)
+        else:
+            for sgn in (1, -1):
+                ax.plot([sx(y - r * 0.6), sx(y + r * 0.6)], [sz(z - sgn * r * 0.6), sz(z + sgn * r * 0.6)],
+                        color=C_FRAME, lw=0.9, zorder=Z_DISCH + 2)
 
-    # ── BLUE SYSTEM (P-01) ──────────────────────────────────────────
-    # Blue suction: IBC-1/2 (LEFT) → BV-01 → 90° elbow → P-01 inlet (LEFT port)
-    _P01_SUCT_Z = P01_PORT_Z + SUCT_RISE
-    BV01_YD = CORR_PORT_IN
-    BV01_Z  = _P01_SUCT_Z
-    draw_pipe_path(ax,
-        [EXIT_L, BV01_YD, BV01_YD],
-        [_P01_SUCT_Z, _P01_SUCT_Z, P01_PORT_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
-    draw_ball_valve(BV01_YD, BV01_Z, "BV\n01", C_BLUE)
-    ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P01_SUCT_Z)),
-                xytext=(sx(EXIT_L), sz(_P01_SUCT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
-            "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
-            fontsize=5.5, color=C_BLUE, zorder=10, **FONT)
+    def from_tip(tip):
+        """The 3D run that starts or ends on this port tip, ordered FROM the tip."""
+        for wps in W["runs"].values():
+            for seq in (wps, wps[::-1]):
+                if math.dist(seq[0], tip) < 0.6:
+                    return seq
+        raise KeyError(f"no 3D run meets port tip {tip}")
 
-    # P-01 discharge: outlet (RIGHT port) → drop to ACC-01 inlet (right port,
-    # dead-leg cylinder just below P-01).  Down the right side, around to ACC.
-    _ACC_DROP_YD = CORR_PORT_OUT
-    draw_pipe_path(ax,
-        [CORR_PORT_OUT, CORR_PORT_OUT],
-        [P01_PORT_Z, ACC_Z + 12],
-        PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-    # ACC-01 outlet (left port) → exit LEFT to spray bar / TAP-01
-    draw_pipe_path(ax,
-        [EXIT_L, CORR_PORT_IN, CORR_PORT_IN],
-        [ACC_Z - 30, ACC_Z - 30, ACC_Z + 12],
-        PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-    ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z - 30)),
-                xytext=(sx(EXIT_L + _AW), sz(ACC_Z - 30)),
-                arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(ACC_Z - 30),
-            "TO SPRAY BAR\n/ TAP-01", ha="right", va="center",
-            fontsize=5.5, color=C_BLUE, zorder=10, **FONT)
+    def port_run(tip, fc, label, side, label_z=None):
+        seq = from_tip(tip)
+        ys, zs = [], []
+        for a, b in zip(seq, seq[1:]):
+            if not ys:
+                ys.append(py(a)[0]); zs.append(py(a)[1])
+            if abs(b[0] - a[0]) > 0.5 and abs(b[1] - a[1]) < 0.5 and abs(b[2] - a[2]) < 0.5:
+                endon(ys[-1], zs[-1], toward=b[0] < a[0])
+                break
+            ys.append(py(b)[0]); zs.append(py(b)[1])
+        if len(ys) > 2 and math.hypot(ys[-1] - ys[-2], zs[-1] - zs[-2]) < PIPE_OD:
+            ys.pop(); zs.pop()           # a sub-OD last leg into a side port (3D allowlisted short leg)
+        draw_pipe_path(ax, ys, zs, PIPE_OD, PIPE_WALL, fc=fc, zorder=Z_DISCH)
+        if label:
+            ex = EXIT_L if side == "left" else EXIT_R
+            lz = zs[-1] if label_z is None else label_z
+            leader(ax, sx(ys[-1]), sz(zs[-1]), sx(ex), sz(lz), label, fs=5.2, color=fc,
+                   ha="right" if side == "left" else "left", va="center", font=FONT)
+        return ys[-1], zs[-1]
 
-    # ── BROWN RECYCLE (P-02) ─────────────────────────────────────────
-    # P-02 suction: IBC-3 Brown buffer (LEFT) → BV-03 → P-02 inlet (LEFT port)
-    _P04_SUCT_Z = P04_PORT_Z + SUCT_RISE
-    draw_pipe_path(ax,
-        [EXIT_L, CORR_PORT_IN, CORR_PORT_IN],
-        [_P04_SUCT_Z, _P04_SUCT_Z, P04_PORT_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
-    draw_ball_valve(CORR_PORT_IN, _P04_SUCT_Z, "BV\n03", C_BROWN)
-    ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P04_SUCT_Z)),
-                xytext=(sx(EXIT_L), sz(_P04_SUCT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(_P04_SUCT_Z),
-            "FROM\nIBC-3\n(BROWN)", ha="right", va="center",
-            fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
+    stacks = [("P-01", C_BLUE, "FROM IBC-1 (BLUE)\n−X, up past BV-01,\nbehind panel to IBC-1", None,
+               "TO ACC-01 IN", None),
+              ("P-04", C_BROWN, "FROM IBC-3 (BROWN)\n−X, down past BV-03\nto the shared tap", None,
+               "TO ACC-02 (skid)\n−X, down the far board,\nunder-walkway ribbon", None),
+              ("P-05", C_BROWN, "FROM IBC-3 (BROWN)\n−X, down past BV-02,\nshirt riser to the tap", None,
+               "TO X3 PORT\n+X behind the panel", None),
+              ("P-03", C_BLACK_SYS, "FROM IBC-4 (WASTE)\n−X, down past BV-06,\nspine pickup riser", None,
+               "TO X4 PORT\n+X behind the panel", None)]
+    for key, fc, lin, lzi, lout, lzo in stacks:
+        zb = cwp.PSTACK[key]
+        port_run(cwp.pump_in(cwp.PXC, cwp.CTR_Y, zb, "y"), fc, lin, "left", lzi)
+        if key == "P-01":
+            port_run(cwp.pump_out(cwp.PXC, cwp.CTR_Y, zb, "y"), fc, None, "right")
+        else:
+            port_run(cwp.pump_out(cwp.PXC, cwp.CTR_Y, zb, "y"), fc, lout, "right", lzo)
+    # ACC-01 OUT → Blue supply trunk (drops to the panel foot, −X under the walkway to the spray bar)
+    port_run((cwp.PXC, cwp.CTR_Y - cwp.ACC_R - 30, cwp.ACC_PZ), C_BLUE,
+             "TO SPRAY BAR / TAP-01\n−X, under-walkway ribbon", "left", ACC_Z - 60)
 
-    # P-02 discharge: outlet (RIGHT port) → up the far-right riser lane (DISCH_RISER,
-    # clear of the OUT ports) → exits to ACC-02 (the recycle-spray damper on the
-    # pinhole-wall skid) → BV-05 → the spray bar.
-    _P02_DISCH_Z = 1650                   # discharge-riser exit height (above P-05, below the symbol-key box)
-    draw_pipe_path(ax,
-        [CORR_PORT_OUT, DISCH_RISER, DISCH_RISER, EXIT_R],
-        [P04_PORT_Z, P04_PORT_Z, _P02_DISCH_Z, _P02_DISCH_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BLACK + 0.5)
-    ax.annotate("", xy=(sx(EXIT_R), sz(_P02_DISCH_Z)),
-                xytext=(sx(EXIT_R - _AW), sz(_P02_DISCH_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-    ax.text(sx(EXIT_R + 5), sz(_P02_DISCH_Z),
-            "TO ACC-02\n(skid) →\nBV-05 spray", ha="left", va="center",
-            fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
+    # ── Isolation ball valves on the near-board suction risers (3D centers, Yd1080 lane) ──
+    for bv, fc in (("BV-01", C_BLUE), ("BV-03", C_BROWN), ("BV-02", C_BROWN), ("BV-06", C_BLACK_EC)):
+        y, z = py(W["checks"][bv])
+        draw_pipe_path(ax, [y, y], [z - BV_R - 8, z + BV_R + 8], PIPE_OD, PIPE_WALL, fc=fc, zorder=Z_DISCH)
+        valve_ball(ax, sx(y), sz(z), BV_R, fc, vert=True)
+        ax.text(sx(y + BV_R) + 4, sz(z), bv, ha="left", va="center",
+                fontsize=4.6, color=fc, fontweight="bold", zorder=14, **FONT)
 
-    # ── BROWN DRAIN (P-05) ───────────────────────────────────────────
-    # P-05 suction: IBC-3 Brown (LEFT) → BV-02 → P-05 inlet (LEFT port)
-    _P05_SUCT_Z = P05_PORT_Z + SUCT_RISE
-    BV02_YD = CORR_PORT_IN
-    BV02_Z  = _P05_SUCT_Z
-    draw_pipe_path(ax,
-        [EXIT_L, CORR_PORT_IN, CORR_PORT_IN],
-        [_P05_SUCT_Z, _P05_SUCT_Z, P05_PORT_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
-    draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BROWN)
-    ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P05_SUCT_Z)),
-                xytext=(sx(EXIT_L), sz(_P05_SUCT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(_P05_SUCT_Z),
-            "FROM\nIBC-3\n(BROWN)", ha="right", va="center",
-            fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
-    # P-05 discharge: outlet (RIGHT port) → exit RIGHT to X3 port (behind panel).
-    # It CROSSES the P-02 discharge riser (DISCH_RISER) — they do NOT join, so the
-    # discharge is gap-broken at the crossing (skill_plumbing_drawing § crossings).
-    _xg = PIPE_OD / 2 + 3
-    draw_pipe_path(ax, [CORR_PORT_OUT, DISCH_RISER - _xg], [P05_PORT_Z, P05_PORT_Z],
-                   PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
-    draw_pipe_path(ax, [DISCH_RISER + _xg, EXIT_R], [P05_PORT_Z, P05_PORT_Z],
-                   PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
-    ax.annotate("", xy=(sx(EXIT_R), sz(P05_PORT_Z)),
-                xytext=(sx(EXIT_R - _AW), sz(P05_PORT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-    ax.text(sx(EXIT_R + 5), sz(P05_PORT_Z),
-            "TO X3\nPORT", ha="left", va="center",
-            fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
-
-    # ── WASTE DRAIN (P-03) ───────────────────────────────────────────
-    # P-03 suction: IBC-4 Waste (LEFT) → BV-06 → P-03 inlet (LEFT port)
-    _P03_SUCT_Z = P03_PORT_Z + SUCT_RISE
-    BV06_YD = CORR_PORT_IN
-    BV06_Z  = _P03_SUCT_Z
-    draw_pipe_path(ax,
-        [EXIT_L, CORR_PORT_IN, CORR_PORT_IN],
-        [_P03_SUCT_Z, _P03_SUCT_Z, P03_PORT_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
-    draw_ball_valve(BV06_YD, BV06_Z, "BV\n06", C_BLACK_EC)
-    ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P03_SUCT_Z)),
-                xytext=(sx(EXIT_L), sz(_P03_SUCT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(_P03_SUCT_Z),
-            "FROM\nIBC-4\n(WASTE)", ha="right", va="center",
-            fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
-    # P-03 discharge: outlet (RIGHT port) → exit RIGHT to X4 port (behind panel).
-    # Gap-broken where it CROSSES the P-04 discharge riser (DISCH_RISER) — cross, not join.
-    draw_pipe_path(ax, [CORR_PORT_OUT, DISCH_RISER - _xg], [P03_PORT_Z, P03_PORT_Z],
-                   PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK + 0.5)
-    draw_pipe_path(ax, [DISCH_RISER + _xg, EXIT_R], [P03_PORT_Z, P03_PORT_Z],
-                   PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK + 0.5)
-    ax.annotate("", xy=(sx(EXIT_R), sz(P03_PORT_Z)),
-                xytext=(sx(EXIT_R - _AW), sz(P03_PORT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-    ax.text(sx(EXIT_R + 5), sz(P03_PORT_Z),
-            "TO X4\nPORT", ha="left", va="center",
-            fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
+    # ── Flex jumpers (from the 3D): a gold band along an in-plane leg, a gold ring on an X leg
+    #    (end-on); dashed where the jumper sits behind the pump column. ──
+    for nm, (a, b) in ((n, (p[0], p[-1])) for n, p in W["flex"]):
+        if not ("jumper" in nm and cwp.BACK_X - 200 < a[0] < cwp.BACK_X):
+            continue
+        (ya, za), (yb, zb_) = py(a), py(b)
+        hidden = a[0] > cwp.PXC + cwp.PVB_R and abs(ya - PUMP_COL_C) < PUMP_W / 2 + 15
+        ls = (0, (2, 1.5)) if hidden else "-"
+        if math.hypot(yb - ya, zb_ - za) < 1:
+            ax.add_patch(plt.Circle((sx(ya), sz(za)), PIPE_OD / 2 + 5, fc="none", ec="#E0A800",
+                                    lw=2.0, ls=ls, zorder=Z_DISCH + 3))
+        else:
+            ax.plot([sx(ya), sx(yb)], [sz(za), sz(zb_)], color="#E0A800", lw=PIPE_OD * 0.9,
+                    alpha=0.75, solid_capstyle="butt", ls=ls, zorder=Z_DISCH + 3)
 
     # ── DIMENSIONS ──────────────────────────────────────────────────
     draw_dim_h(ax, sx(0), sx(PANEL_W), sz(-50),
                f"{PANEL_W}mm", offset=4.8, fs=6, color=C_DIM, font=FONT)
-    draw_dim_h(ax, sx(PUMP_COL_C - PUMP_W / 2), sx(PUMP_COL_C + PUMP_W / 2),
-               sz(P01_Z - 15),
-               f"{PUMP_W}mm", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
+    _p1z = P01_Z + PORT_ZOFF
+    draw_dim_h(ax, sx(CORR_PORT_IN), sx(CORR_PORT_OUT), sz(P01_Z + PUMP_H + 40),
+               f"{CORR_PORT_OUT - CORR_PORT_IN:.0f}mm PORT TIPS", offset=3.2, fs=5, color=C_DIM, font=FONT)
+    draw_dim_h(ax, sx(LANE_IN), sx(CORR_PORT_IN), sz(_p1z - 45),
+               f"{CORR_PORT_IN - LANE_IN:.1f}mm", offset=3.0, fs=4.4, color=C_DIM, above=False, font=FONT)
     draw_dim_v(ax, sx(PUMP_COL_C + PUMP_W / 2 + 15),
-               sz(P01_Z), sz(P01_Z + PUMP_H),
-               f"{PUMP_H}mm", offset=4.8, fs=5.5, color=C_DIM,
+               sz(P05_Z), sz(P05_Z + PUMP_H),
+               f"{PUMP_H:.0f}mm", offset=4.8, fs=5.5, color=C_DIM,
                right=True, font=FONT)
     draw_dim_v(ax, sx(-30), sz(0), sz(PANEL_H),
                f"{PANEL_H}mm", offset=8.0, fs=7, color=C_DIM,
@@ -505,13 +506,14 @@ def draw_corridor_panel():
     # ── LEADERS ─────────────────────────────────────────────────────
     leader(ax,
            sx(PUMP_COL_C - PUMP_W / 2), sz(P04_Z + PUMP_H / 2),
-           sx(X_SHOW_L + 10), sz(P04_Z + PUMP_H / 2 + 40),
-           "Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(4 pumps on SS L-brackets)",
+           sx(X_SHOW_L + 10), sz(P04_Z + PUMP_H / 2 + 120),
+           f"Shurflo 2088-554-144\n12V · 3.5 GPM · 45 PSI\n1/2\"-14 NPSM ports,\n"
+           f"{cwp.PUMP_YD_SPAN:.0f}mm across the tips",
            fs=5.5, color=C_PUMP_EC, font=FONT)
     leader(ax,
            sx(ACC_YD - ACC_OD / 2), sz(ACC_Z + ACC_LEN / 2),
            sx(ACC_YD - 200), sz(ACC_Z + ACC_LEN / 2 + 60),
-           "ACC-01: 0.75L ACCUM.\nO/127 × 200mm\n1/2\" MNPT (bottom)",
+           f"ACC-01: 0.75L ACCUM.\nØ{ACC_OD:.0f} × {ACC_LEN}mm",
            fs=5.5, color=C_BLUE_EC, font=FONT)
     max_depth = PUMP_D
     leader(ax,
@@ -532,16 +534,21 @@ def draw_corridor_panel():
         "4. SINGLE vertical pump column (bottom→top): ACC-01, P-01 (Blue supply),"
         " P-02 (Brown recycle), P-05 (Brown drain), P-03 (Waste drain).",
         "5. ACC-01: 0.75L bladder accumulator on the Blue supply, dead-leg below P-01.",
-        "6. Suctions enter on the LEFT through their isolation valve; discharges exit RIGHT.",
+        "6. Each IN port (−Yd) takes a ½\" FNPT×slip adapter + elbow onto the near-board riser lane"
+        f" (Yd{cwp.PORT_TURN_YD_IN:.0f}); each OUT (+Yd) onto the far-board lane (Yd{cwp.PORT_TURN_YD_OUT:.0f})."
+        " Runs are drawn to their first leg along X: ⊙ = toward the walkway (−X), ⊗ = behind the panel (+X)."
+        " The suction risers share the near lane at different X depths, so full routes are on Spine Views A/B.",
         "7. BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),"
         " BV-06 (P-03 suction) — manual ball valves.",
         "8. P-02 pulls IBC-3 (Brown buffer) and discharges to ACC-02 (recycle-spray damper"
         " on the pinhole-wall skid) → BV-05 → spray bar.",
         "9. The tray-drain skid (P-04 · SV-02 · DV-02) is on the PINHOLE WALL panel, not here.",
         f"10. Max protrusion: {max_depth}mm. The filter train + tray-drain skid are on the PINHOLE WALL panel.",
-        "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; braided flex hose"
-        f" at each pump port. Pumps + ACC cam-clamp to a {cwp.EQT:.0f}mm ply shirt; 4-bolt brackets.",
-        "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-02 940 · P-05 1340 · P-03 1740.",
+        "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; a braided flex"
+        " jumper (gold; dashed where hidden behind the pump) on the first straight leg after each port turn."
+        f" Pumps + ACC cam-clamp to a {cwp.EQT:.0f}mm ply shirt; 4-bolt brackets.",
+        f"12. Pump-base Z (AFF): ACC-01 {cwp.ACC_Z0} · P-01 {cwp.PSTACK['P-01']} · P-02 {cwp.PSTACK['P-04']}"
+        f" · P-05 {cwp.PSTACK['P-05']} · P-03 {cwp.PSTACK['P-03']}.",
     ]
     draw_notes(ax, notes, 575, 475, spacing=14,
                fs=6, wrap=80, width=425, color=C_DIM, title_color=C_NEW, font=FONT)
@@ -566,30 +573,20 @@ def draw_corridor_panel():
 
 
 # ── Shared pump symbol ─────────────────────────────────────────────────────
-def _flex_coil(yd, z, n=3, amp=6, length=30):
-    """#29 — bright-gold flex-connector coil at a pump port (the 2D analogue of the 3D C_FLEX
-    yellow jumper): a short sine coil rising off the port, marking the braided vibration jumper
-    that de-couples the pump from the rigid run. Gold (not the fluid color) so it stands out."""
-    pts = 40
-    xs = [sx(yd + amp * math.sin(2 * math.pi * n * (i / (pts - 1)))) for i in range(pts)]
-    zs = [sz(z + (i / (pts - 1)) * length) for i in range(pts)]
-    ax.plot(xs, zs, color="#E0A800", lw=1.8, zorder=9, solid_capstyle="round")
-
-
-def _draw_pump(col_yd, port_in_yd, port_out_yd, pz, pname, pdesc, pfc, pec):
-    rect(col_yd - PUMP_W / 2 - 10, pz - 8,
-         PUMP_W + 20, 8,
-         C_FRAME_FILL, C_FRAME, lw=0.5, zorder=4)
-    rect(col_yd - PUMP_W / 2, pz, PUMP_W, PUMP_H,
+def _draw_pump(col_yd, pz, pname, pdesc, pfc, pec):
+    """Upright pump as built in 3D (cwp.pump_unit): body + head, the IN/OUT ports as short side
+    stubs reaching cwp.PORT_REACH from the axis (13.5mm off the Ø100 body)."""
+    rect(col_yd - PUMP_W / 2, pz, PUMP_W, PUMP_BODY_H,
          C_PUMP_BODY, C_PUMP_EC, lw=1.2, zorder=6)
-    for port_yd in [port_out_yd, port_in_yd]:
-        circ(port_yd, pz + PUMP_H - 25, 10,
-             C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
-        _flex_coil(port_yd, pz + PUMP_H - 13)   # #29 braided flex jumper on both ports
-    ax.text(sx(col_yd), sz(pz + PUMP_H / 2 + 15),
+    rect(col_yd - PUMP_W / 2 - 3, pz + PUMP_BODY_H, PUMP_W + 6, cwp.PCAP_H,
+         "#C9B8A6", C_PUMP_EC, lw=1.0, zorder=6)
+    stub = cwp.PORT_REACH - cwp.PVB_R
+    for y0 in (col_yd - cwp.PORT_REACH, col_yd + cwp.PVB_R):
+        rect(y0, pz + PORT_ZOFF - PIPE_OD / 2, stub, PIPE_OD, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+    ax.text(sx(col_yd), sz(pz + PUMP_BODY_H / 2 + 5),
             pname, ha="center", va="center",
             fontsize=8, color=pfc, fontweight="bold", zorder=8, **FONT)
-    ax.text(sx(col_yd), sz(pz + PUMP_H / 2 - 20),
+    ax.text(sx(col_yd), sz(pz + PUMP_BODY_H / 2 - 30),
             pdesc, ha="center", va="center",
             fontsize=5, color=pec, zorder=8, **FONT)
 
@@ -680,7 +677,7 @@ def _corridor_cross_section():
 def draw_pinhole_panel():
     # Local X×Z scale (this elevation is wide, not the corridor panel-Yd strip).
     PW_XL, PW_XR = 2680, 5060          # view X bounds (mm)
-    PW_ZB, PW_ZT = PWP_PANEL_Z0 - 100, 2440   # view Z bounds (mm) — follows the panel bottom
+    PW_ZB, PW_ZT = PWP_PANEL_Z0 - 330, 2440   # view Z bounds (mm) — below the panel bottom for the corridor-drop callouts
     PW_OX, PW_OZ = 90, 200             # drawing-unit origin offsets
     PW_KX = 0.62                       # X mm→unit (board ~1720mm → ~1066 units)
 
@@ -730,9 +727,16 @@ def draw_pinhole_panel():
 
     # ── Backing board (18mm exterior ply) — extents from PWP_PANEL_* ──────────
     BD_XL, BD_XR = PWP_PANEL_X0, PWP_PANEL_X1
-    BD_ZB, BD_ZT = PWP_PANEL_Z0, 2360
-    pw_rect(BD_XL, BD_ZB, BD_XR - BD_XL, BD_ZT - BD_ZB,
-            C_PLY, C_PLY_EC, lw=2.0, zorder=3, alpha=0.5)
+    BD_ZB, BD_ZT = PWP_PANEL_Z0, PWP_PANEL_Z0 + PWP_PANEL_H
+    (nbw, nbh), (ntw, nth) = PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR
+    outline = [(BD_XL, BD_ZB), (BD_XR - nbw, BD_ZB), (BD_XR - nbw, BD_ZB + nbh), (BD_XR, BD_ZB + nbh),
+               (BD_XR, BD_ZT - nth), (BD_XR - ntw, BD_ZT - nth), (BD_XR - ntw, BD_ZT), (BD_XL, BD_ZT)]
+    ax_p.add_patch(mpatches.Polygon([(pwx(x), pwz(z)) for x, z in outline], closed=True, fc=C_PLY,
+                                    ec=C_PLY_EC, lw=2.0, zorder=3, alpha=0.5))
+    leader(ax_p, pwx(BD_XR - nbw / 2), pwz(BD_ZB + nbh / 2), pwx(BD_XR) - 60, pwz(BD_ZB + 330),
+           f"{nbw}×{nbh}mm notch\n(rail end flange)", fs=5.5, color=C_PLY_EC, ha="right", va="center", font=FONT)
+    leader(ax_p, pwx(BD_XR - ntw / 2), pwz(BD_ZT - nth / 2), pwx(BD_XR) - 60, pwz(BD_ZT - nth - 120),
+           f"{ntw}×{nth}mm notch\n(rail saddle plate)", fs=5.5, color=C_PLY_EC, ha="right", va="center", font=FONT)
     pw_text(4470, 2255,
             f"{BD_XR - BD_XL} × {BD_ZT - BD_ZB}mm\n18mm EXTERIOR PLY\n(pinhole wall)",
             ha="center", va="center", fontsize=6.5, color=C_PLY_EC, zorder=4)
@@ -774,69 +778,128 @@ def draw_pinhole_panel():
     pw_rect(PWP_ACC2_X - 63, PWP_ACC2_Z0, 126, 200, C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.85)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BROWN_EC, fontweight="bold", zorder=8)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BROWN_EC, zorder=8)
-    leader(ax_p, pwx(PWP_ACC2_X) - 24, pwz(PWP_ACC2_Z0 + 200), pwx(PWP_ACC2_X) - 300, pwz(1160),
+    leader(ax_p, pwx(PWP_ACC2_X), pwz(PWP_ACC2_Z0), pwx(PWP_ACC2_X) + 40, pwz(460),
            "ACC-02 pulsation damper\n(P-02 in corridor → ACC-02\n→ BV-05 spray selector)",
            fs=6, color=C_BROWN_EC, ha="left", va="center", font=FONT)
 
     # ════════════════════════════════════════════════════════════════
-    #  FLOW — tray sump → P-04 → SV-02 → DV-02 (row line); DV-02 recycle branch UP the
-    #  edge into F-01; F-01 → F-02 → F-03 along the head line; F-03 → SV-01 → DV-01 (left).
+    #  FLOW — every pipe on the wall, projected from the live 3D build (water_3d) onto X×Z.
+    #  Legs along Yd (off / onto the ply) collapse; a run is clipped where it leaves the wall
+    #  zone into the corridor (Yd > WALL_YD) or the view's X window.
     # ════════════════════════════════════════════════════════════════
+    W = water_3d()
+    import generate_pinhole_water_panel as _pw
+    WALL_YD = 200
     F1_CX, F2_CX, F3_CX = PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3
-    F1_XL, F1_XR = PWP_FILTER_X1 - BB_OD // 2, PWP_FILTER_X1 + BB_OD // 2
-    F3_XR = PWP_FILTER_X3 + BB_OD // 2
+    drawn = []
 
-    # tray-sump suction: enters P-04's TOP port — the Shurflo 2088 ports are on top (per convention),
-    # so the suction rises from the sump line and comes DOWN into the pump's top face.
-    SUCT_TURN_Z = 850
-    SRC_X = PWP_FILTER_X1 - 250
-    P4_TOP_Z = PWP_SROW_Z0 + 180               # top of P-04's body (port face)
-    pw_pipe([SRC_X, SRC_X, PWP_FILTER_X1, PWP_FILTER_X1],
-            [SUCT_TURN_Z, P4_TOP_Z + 45, P4_TOP_Z + 45, P4_TOP_Z], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X, SUCT_TURN_Z - 42, C_BROWN)
-    pw_text(SRC_X, SUCT_TURN_Z - 58, "FROM\nTRAY SUMP", ha="center", va="top", fontsize=6, color=C_BROWN, zorder=10)
-    # P-04 OUT → SV-02 → DV-02 along the row line (SV-02 taps in-line)
-    pw_pipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3 - 22], [ROW_Z, ROW_Z], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(PWP_FILTER_X2 + 80, ROW_Z, PWP_FILTER_X2 + 20, ROW_Z, C_BROWN)
-    # #29 — P-04 DISCHARGE braided flex jumper (gold coil, +X off the port; suction = the 1" tray hose)
-    _fcp = 36
-    ax_p.plot([pwx(PWP_FILTER_X1 + 55 + (i / (_fcp - 1)) * 95) for i in range(_fcp)],
-              [pwz(ROW_Z + 7 * math.sin(2 * math.pi * 3 * (i / (_fcp - 1)))) for i in range(_fcp)],
-              color="#E0A800", lw=1.8, zorder=10, solid_capstyle="round")
-    # DV-02 recycle branch (up port) → up the panel edge → F-01 IN at the head line
-    EDGE_X = 2830
-    pw_pipe([PWP_FILTER_X3, PWP_FILTER_X3, EDGE_X, EDGE_X, F1_XL],
-            [ROW_Z + 22, 1600, 1600, HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)
-    # F-01 → F-02 → F-03 (straight jumpers, head line)
-    pw_pipe([PWP_FILTER_X1 + BB_OD // 2, PWP_FILTER_X2 - BB_OD // 2], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F1→F2
-    pw_pipe([PWP_FILTER_X2 + BB_OD // 2, PWP_FILTER_X3 - BB_OD // 2], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F2→F3
+    def wall_pieces(name):
+        seq = W["runs"][name]
+        ok = lambda q: q[1] <= WALL_YD and PW_XL <= q[0] <= PW_XR
+        pcs, cur = [], []
+        for a, b in zip(seq, seq[1:]):
+            if ok(a) and not cur:
+                cur.append(a)
+            if ok(a) and ok(b):
+                cur.append(b)
+                continue
+            if ok(a) != ok(b):
+                inn, out = (a, b) if ok(a) else (b, a)
+                edge = PW_XL if out[0] < PW_XL else (PW_XR if out[0] > PW_XR else None)
+                c = inn
+                if edge is not None and out[0] != inn[0]:
+                    t = (edge - inn[0]) / (out[0] - inn[0])
+                    c = tuple(inn[k] + t * (out[k] - inn[k]) for k in range(3))
+                if ok(a):
+                    cur.append(c); pcs.append(cur); cur = []
+                else:
+                    cur = [c, b]
+        if cur:
+            pcs.append(cur)
+        res = []
+        for pc in pcs:
+            xs, zs = [], []
+            for q in pc:
+                if xs and abs(q[0] - xs[-1]) < 0.5 and abs(q[2] - zs[-1]) < 0.5:
+                    continue
+                xs.append(q[0]); zs.append(q[2])
+            k = 1
+            while k < len(xs) - 1:     # drop collinear waypoints (draw_pipe_path reads them as a U-turn)
+                if abs((xs[k] - xs[k - 1]) * (zs[k + 1] - zs[k]) - (zs[k] - zs[k - 1]) * (xs[k + 1] - xs[k])) < 1e-6:
+                    del xs[k], zs[k]
+                else:
+                    k += 1
+            if len(xs) >= 2:
+                res.append((xs, zs))
+        return res
 
-    # F-03 OUT → drops down to SV-01 (RAISED beside F-03) — pH sample tap
-    SV01_X = PWP_SV01_X
-    SV01_Z = PWP_SV01_Z                 # raised beside F-03 (Z1610)
-    F3_OUT_X = 4090
-    pw_pipe([F3_XR, F3_OUT_X, F3_OUT_X, SV01_X, SV01_X],
-            [HEAD_Z, HEAD_Z, SV01_Z, SV01_Z, SV01_Z],
-            C_BROWN, zorder=Z_BROWN)
+    def wall_run(name, fc, zorder):
+        pcs = wall_pieces(name)
+        for xs, zs in pcs:
+            pw_pipe(xs, zs, fc, zorder=zorder)
+            drawn.extend((xs[k], zs[k], xs[k + 1], zs[k + 1], zorder) for k in range(len(xs) - 1))
+        return pcs
+
+    for nm in ("Filter F1 in port", "Filter F1 out port", "Filter F2 in port", "Filter F2 out port",
+               "Filter F3 in port", "Filter F3 out port", "F1 out -> F2 in", "F2 out -> F3 in"):
+        wall_run(nm, C_BROWN, Z_BROWN)
+    wall_run("F3 -> SV-01 (wall-mounted drop)", C_BROWN, Z_BROWN)
+    sv = wall_run("SV-01 -> DV-01 (single filtered line)", C_BROWN, Z_BROWN + 3)
+    ts = wall_run("Tray sump -> P-04 suction", C_BROWN, Z_BROWN + 3)
+    wall_run("P-04 -> SV-02 -> DV-02", C_BROWN, Z_BROWN)
+    wall_run("DV-02 feed -> F1 (recycle)", C_BROWN, Z_BROWN)
+    dw = wall_run("DV-02 waste -> IBC-4", C_BLACK_SYS, Z_BLACK + 1)
+    pa = wall_run("P-02 -> ACC-02 (recycle spray)", C_BROWN, Z_BROWN + 3)
+    ab = wall_run("ACC-02 -> BV-05 (recycled spray)", C_BROWN, Z_BROWN)
+
+    # projection crossings: the lower-zorder run gets a white break (skill_plumbing_drawing)
+    gx = PIPE_OD / 2 + 8
+    for h in drawn:
+        if abs(h[1] - h[3]) > 0.5:
+            continue
+        for v in drawn:
+            if abs(v[0] - v[2]) > 0.5 or v[4] == h[4]:
+                continue
+            x, z = v[0], h[1]
+            if not (min(h[0], h[2]) + gx < x < max(h[0], h[2]) - gx and min(v[1], v[3]) + gx < z < max(v[1], v[3]) - gx):
+                continue
+            if h[4] < v[4]:
+                pw_rect(x - gx, z - PIPE_OD / 2 - 2, 2 * gx, PIPE_OD + 4, "white", ec="none", lw=0, zorder=h[4] + 1.6)
+            else:
+                pw_rect(x - PIPE_OD / 2 - 2, z - gx, PIPE_OD + 4, 2 * gx, "white", ec="none", lw=0, zorder=v[4] + 1.6)
+
+    # off-wall ends (where a run leaves into the corridor / past the view edge)
+    def end_note(pcs, idx, txt, col, dx, dz, ha):
+        xs, zs = pcs[0] if idx == 0 else pcs[-1]
+        x, z = (xs[0], zs[0]) if idx == 0 else (xs[-1], zs[-1])
+        leader(ax_p, pwx(x), pwz(z), pwx(x + dx), pwz(z + dz), txt, fs=5.8, color=col, ha=ha, va="center", font=FONT)
+    end_note(ts, 0, "FROM TRAY SUMP\n(along the wall at Z230)", C_BROWN, -120, -60, "left")
+    end_note(ab, -1, "→ BV-05 spray selector", C_BROWN, -110, 60, "left")
+    end_note(sv, -1, "→ DV-01 (corridor mouth,\nunder-walkway ribbon)", C_BROWN, -260, -110, "left")
+    end_note(dw, -1, "DV-02 waste → IBC-4\n(ribbon, CV-3 at the merge)", C_BLACK_SYS, -30, -215, "center")
+    end_note(pa, 0, "FROM P-02 (corridor,\nunder-walkway ribbon)", C_BROWN, 230, -110, "right")
+
+    # P-clips on the ply (3D, on 18mm offcut blocks — the low runs + the 3 corridor drops included)
+    for nm, cx, cz, face_y, pipe_y, vert in W["clips"]:
+        if face_y != _pw.SKID_FACE_YD or not (PW_XL <= cx <= PW_XR):
+            continue
+        w_, h_ = (16, 24) if vert else (24, 16)
+        pw_rect(cx - w_ / 2, cz - h_ / 2, w_, h_, C_STEEL, ec=C_FRAME, lw=0.6, zorder=16)
+    # P-04 discharge flex jumper (3D)
+    for nm, wp in W["flex"]:
+        a, b = wp[0], wp[-1]
+        if a[1] <= WALL_YD and PW_XL <= a[0] <= PW_XR:
+            ax_p.plot([pwx(a[0]), pwx(b[0])], [pwz(a[2]), pwz(b[2])], color="#E0A800", lw=6, alpha=0.8,
+                      solid_capstyle="butt", zorder=15)
+
+    # SV-01 (in-line pH sample tap on the filtered drop)
+    SV01_X, SV01_Z = PWP_SV01_X, PWP_SV01_Z
     pw_valve(SV01_X, SV01_Z, "SV\n01", C_BROWN, half=20)
-    # SV-01 downturned sample spout
-    pw_pipe([SV01_X, SV01_X, SV01_X - 45, SV01_X - 45],
-            [SV01_Z - 20, SV01_Z - 130, SV01_Z - 130, SV01_Z - 175], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(SV01_X - 45, SV01_Z - 150, SV01_X - 45, SV01_Z - 185, C_BROWN)
     leader(ax_p, pwx(SV01_X), pwz(SV01_Z) + 22, pwx(4450), pwz(1780),
-           "SV-01 — pH sample tap\n(filtered line, before DV-01;\n"
-           "raised beside F-03)",
+           "SV-01 — pH sample tap\n(filtered line, before DV-01)",
            fs=6, color=C_BROWN, ha="left", va="bottom", font=FONT)
-
-    # SV-01 → 3W-DV-01: the filtered line leaves the board's LEFT edge (mirrored
-    # view — the corridor mouth / DV-01 sits on the sealed-end/+X side).
-    DV01_EDGE_X = BD_XR + 40            # just past the board's (mirrored) left edge
-    pw_pipe([SV01_X, DV01_EDGE_X], [SV01_Z, SV01_Z], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(DV01_EDGE_X - 30, SV01_Z, DV01_EDGE_X, SV01_Z, C_BROWN)
-    leader(ax_p, pwx(DV01_EDGE_X) + 25, pwz(SV01_Z), pwx(DV01_EDGE_X) + 240, pwz(SV01_Z) - 160,
-           "3W-DV-01 (corridor mouth):\npH-gated split →\n"
-           "recycle (IBC-3) / Waste (IBC-4)",
-           fs=6, color=C_BROWN_EC, ha="right", va="top", font=FONT)
+    HEAD_Z = (HEAD_ZB + HEAD_ZT) / 2
+    F3_XR = PWP_FILTER_X3 + BB_OD // 2
 
     # ── DIMENSIONS ──────────────────────────────────────────────────
     draw_dim_h(ax_p, pwx(BD_XR), pwx(BD_XL), pwz(BD_ZB - 50),
@@ -852,9 +915,9 @@ def draw_pinhole_panel():
               fontsize=5.5, color=C_FILTER, zorder=10, **FONT)
 
     # ── LEADERS ─────────────────────────────────────────────────────
-    leader(ax_p, pwx(PWP_FILTER_X1), pwz(PWP_SROW_Z0 + 20), pwx(3360), pwz(1030),
+    leader(ax_p, pwx(PWP_FILTER_X1), pwz(PWP_SROW_Z0 + 20), pwx(3420), pwz(700),
            "P-04 Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(tray-drain pump)",
-           fs=6, color=C_PUMP_EC, ha="left", va="center", font=FONT)
+           fs=6, color=C_PUMP_EC, ha="right", va="center", font=FONT)
     leader(ax_p, pwx(F2_CX), pwz(SUMP_ZB + 40), pwx(3500), pwz(1650),
            "Big Blue 4.5\"×20\" housing\n(Ø184 sump to Z1746, head Z2262–2340;\n"
            "F-01 5µm → F-02 KDF-55 → F-03 GAC)",
@@ -869,19 +932,21 @@ def draw_pinhole_panel():
         " SV-02 (pH sample) → 3W-DV-02, on the row line Z≈1312.",
         "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →"
         " F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×20\" housings.",
-        "4. DV-02 recycle branch feeds F-01; waste branch → IBC-4 (corridor).",
+        "4. DV-02 recycle branch feeds F-01; its waste branch drops down the wall to the under-walkway"
+        " ribbon → corridor → CV-3 → the IBC-4 merge tee.",
         "5. SV-01: pH sample tap on the filtered line, RAISED beside F-03"
         " (Z≈1610), before DV-01.",
-        "6. 3W-DV-01 is PHYSICALLY at the corridor mouth (off this wall) — the filtered"
-        " line leaves the board's edge and splits there: pH-gated to recycle"
-        "  (IBC-3) or Waste (IBC-4).",
+        "6. 3W-DV-01 is at the corridor mouth (off this wall): the filtered line drops down the wall from SV-01"
+        " to the under-walkway ribbon and splits there, pH-gated to recycle (IBC-3) or Waste (IBC-4).",
         "7. ACC-02 (recycle-spray damper, center-bottom) is fed from P-02 in the"
         " corridor and feeds BV-05 → the spray bar.",
         "8. Flow: sump → P-04 → SV-02 → DV-02 → F-01 → F-02 → F-03 → SV-01 → DV-01.",
-        "9. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms"
-        " Z≈1746 AFF (4.5×20).",
+        f"9. Filters at {PWP_FILTER_X2 - PWP_FILTER_X1}mm centers (X{PWP_FILTER_X1}/{PWP_FILTER_X2}/{PWP_FILTER_X3});"
+        f" heads Z≈{(PWP_FILTER_HEAD_Z + PWP_FILTER_TOP_Z) / 2:.0f}, sump bottoms Z≈{PWP_FILTER_BOT_Z} AFF (4.5×20).",
         "10. PIPE: 1\" PVC Sch-40 (filter loop) / ½\" (recycle-spray); housings on their"
-        " integral brackets through-bolted to the ply board.",
+        " integral brackets through-bolted to the ply board. Routes are projected from the 3D; every pipe"
+        f" clips to the ply on a {cwp.CLIP_SHIM:.0f}mm offcut block (grey), incl. the Z230 tray-suction run and"
+        " the three corridor drops (SV-01→DV-01, DV-02 waste, P-02→ACC-02) on the extended board.",
     ]
     draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=32,
                fs=6.5, wrap=95, width=720, color=C_DIM, title_color=C_NEW, font=FONT)
@@ -948,7 +1013,7 @@ draw_pinhole_panel()
 #  Structure + all fittings/valves/diverters are landmarks drawn in BOTH; each
 #  face's own pipe runs are guarded to its own sheet via the _NEAR flag.
 # ═══════════════════════════════════════════════════════════════════════════
-from tbs_constants import (C_LEN, C_HGT, EXT_FILL_1_H)
+from tbs_constants import (C_LEN, C_HGT)
 
 FB = {"fontfamily": "monospace"}
 C_PLYB   = "#D9C9A3"   # plywood (tan)
@@ -966,18 +1031,12 @@ SPX1   = cwp.SPINE_X_END                   # drain-riser spine rear
 SPINE_ZB, SPINE_ZT = cwp.SPINE_Z0, cwp.TOP_Z - cwp.S    # spine Z extent
 PAN_ZB, PAN_ZT = cwp.S, cwp.S + cwp.PH_CUT  # rear-panel BOARD Z extent (cut height PH_CUT=1845; the opening top is PANEL_TOP_Z 1900)
 WALLX  = C_LEN                    # 5893 — sealed end wall
-# Back-of-panel riser X lanes (in the rear corridor, +X of the panel)
-RX4    = 5200                     # X4 waste riser X (3D)
-RX_BLUE = 5239                    # blue-recycle riser X (onto the spine, to X1 cross)
-X1X    = 5500                     # X1 fill cross X (3D X1_TEE_X)
-MERGEX = 5404                     # IBC-4 merge tee X (3D MERGE4[0])
-DV02X  = 5028                     # 3W-DV-02 X (3D DV02X = SHIRT_X − DVB/2 = 5028.5; PXC mounts DV-02 on the shirt front)
-# End-wall port heights (3D drains_ports): X1 fill high, X3 Z1700, X4 Z1620
-X1_PORT_Z, X3_PORT_Z, X4_PORT_Z = EXT_FILL_1_H, 1700, 1620
+X1X    = cwp.X1_TEE_X                # X1 fill TEE X (on the spine face)
+# End-wall port heights (3D drains_ports): X1 fill tee Z; X3 / X4 from the discharge runs' last points
+X1_PORT_Z = cwp.X1_TEE_Z
 # Pump / ACC stack on the shirt front (single column, projected along Yd)
-PUMP_FRONT_X = 4934              # pump body front (PXC 4984 − radius 50)
-PUMP_BACK_X  = 5034             # pump body back  (PXC 4984 + radius 50)
-PXC          = 4984             # pump axis / IN-port X (upright pumps take suction at the top-centre)
+PUMP_FRONT_X = cwp.PXC - cwp.PVB_R    # pump body front
+PUMP_BACK_X  = cwp.PXC + cwp.PVB_R    # pump body back
 POD = 24                         # pipe OD (mm)
 
 # `axb` is the current spine-view axes; spine_view() rebinds it per sheet.
@@ -1002,21 +1061,6 @@ def _pipe(xs, zs, fc, zorder=8):
                    zorder=zorder, sxf=_sid, szf=_sid)
 
 
-def _hpipe(z, x0, x1, fc, zorder=8, crosses=()):
-    """A horizontal back-of-panel run that CROSSES the spine risers without joining
-    them: gap-break the run at each riser X it passes (skill_plumbing_drawing §
-    crossings — the riser, in front on the spine, reads continuous)."""
-    g = 16
-    cuts = sorted(c for c in crosses if min(x0, x1) + g < c < max(x0, x1) - g)
-    a = x0
-    for c in cuts:
-        _pipe([a, c - g], [z, z], fc, zorder=zorder)
-        a = c + g
-    _pipe([a, x1], [z, z], fc, zorder=zorder)
-
-
-# spine riser X-lanes that the horizontal drain/recycle runs cross
-SPINE_RISERS = (5200, 5239, 5404)
 
 
 def spine_view(side):
@@ -1075,7 +1119,7 @@ def spine_view(side):
     # ── 18mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
     _rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
           C_PLYB, lw=1.2, z0=6, alpha=0.85)
-    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 545,
+    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4210, 600,
            f"{SHIRTX1 - SHIRTX0:.0f}mm PUMP-MOUNT SHIRT",   # dims + cam-clamp detail live in Note 1
            color="#7A6A40", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
     # ~34mm chase gap (shirt back ≈5070 → panel front 5104) + 6 spacer blocks
@@ -1088,16 +1132,17 @@ def spine_view(side):
              color="#7A6A40", zorder=10, **FB)
 
     # ── Pump + ACC stack on the shirt front (single column, projected along Yd) ──
-    # 3D bases (Z AFF): ACC 355, P-01 615, P-02 940, P-05 1340, P-03 1740.
-    for zb, h, lbl, hot in [(355, 200, "ACC-01", True), (615, 180, "P-01", False),
-                            (940, 180, "P-02", True), (1340, 180, "P-05", True),
-                            (1740, 180, "P-03", False)]:
+    for zb, h, lbl, hot in [(cwp.ACC_Z0, 200, "ACC-01", True),
+                            (cwp.PSTACK["P-01"], PUMP_H, "P-01", False),
+                            (cwp.PSTACK["P-04"], PUMP_H, "P-02", True),
+                            (cwp.PSTACK["P-05"], PUMP_H, "P-05", True),
+                            (cwp.PSTACK["P-03"], PUMP_H, "P-03", False)]:
         _rect(PUMP_FRONT_X, zb, PUMP_BACK_X - PUMP_FRONT_X, h,
               "#E6D9F0" if hot else "#EAEAEA", ec=C_OUT, lw=0.9, z0=5)
         axb.text((PUMP_FRONT_X + PUMP_BACK_X) / 2, zb + h / 2, lbl, fontsize=6,
                  ha="center", va="center", color="#202020", fontweight="bold", zorder=15,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
-    leader(axb, PUMP_FRONT_X, 1830, 4570, 1980,
+    leader(axb, PUMP_FRONT_X, cwp.PSTACK["P-03"] + 90, 4570, 1980,
            "PUMP COLUMN + ACC-01\n(P-01/P-02/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
            color="#777", fs=5.3, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
@@ -1109,228 +1154,245 @@ def spine_view(side):
     leader(axb, (PANX + SPX1) / 2, 1180, 6050, 1140,
            f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
            f"panel (a T in plan) — X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f};\n"
-           "the back-of-panel drain risers P-clip to it",
+           "the drain risers P-clip to it on 18mm offcut blocks",
            color=C_OUT, fs=6, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
+    # ── Pipe runs, projected from the live 3D build (water_3d) onto X×Z ──────
+    # Legs along Yd collapse to a point; a run is clipped where it leaves the corridor
+    # (into a tote, Yd outside YD_NEAR..YD_FAR) or −X of `xmin` (under the walkway).
+    W = water_3d()
+
+    def _pieces(name, xmin=4560.0):
+        seq = W["runs"][name]
+        out, cur = [], []
+        inside = lambda q: q[0] >= xmin - 1e-6 and cwp.YD_NEAR - 1e-6 <= q[1] <= cwp.YD_FAR + 1e-6
+
+        def cut(a, b):            # the point on a→b where it crosses back over the clip boundary
+            if a[0] < xmin <= b[0] or b[0] < xmin <= a[0]:
+                t = (xmin - a[0]) / (b[0] - a[0])
+                return tuple(a[k] + t * (b[k] - a[k]) for k in range(3))
+            return b if inside(b) else a
+        for a, b in zip(seq, seq[1:]):
+            ia, ib = inside(a), inside(b)
+            if ia and not cur:
+                cur.append(a)
+            if ia and ib:
+                cur.append(b)
+            elif ia and not ib:
+                cur.append(cut(a, b)); out.append(cur); cur = []
+            elif ib and not ia:
+                cur = [cut(a, b), b]
+        if cur:
+            out.append(cur)
+        res = []
+        for pc in out:
+            xs, zs = [], []
+            for q in pc:
+                if xs and abs(q[0] - xs[-1]) < 0.5 and abs(q[2] - zs[-1]) < 0.5:
+                    continue
+                xs.append(q[0]); zs.append(q[2])
+            k = 1
+            while k < len(xs) - 1:     # drop collinear waypoints (draw_pipe_path reads them as a U-turn)
+                if abs((xs[k] - xs[k - 1]) * (zs[k + 1] - zs[k]) - (zs[k] - zs[k - 1]) * (xs[k + 1] - xs[k])) < 1e-6:
+                    del xs[k], zs[k]
+                else:
+                    k += 1
+            if len(xs) >= 2:
+                res.append((xs, zs))
+        return res
+
+    drawn = []                       # (x0, z0, x1, z1, zorder) of every straight leg drawn on this sheet
+
+    def run3d(name, fc, zorder=11, xmin=4560.0, shift=None):
+        """`shift` = {true X: drawn X} — a display-only offset for a leg that projects exactly onto
+        another run (different Yd in 3D); every use is labelled on the sheet."""
+        pcs = _pieces(name, xmin)
+        if shift:
+            pcs = [([shift.get(round(x), x) for x in xs], zs) for xs, zs in pcs]
+        for xs, zs in pcs:
+            _pipe(xs, zs, fc, zorder=zorder)
+            drawn.extend((xs[k], zs[k], xs[k + 1], zs[k + 1], zorder) for k in range(len(xs) - 1))
+        return pcs
+
+    def gap_breaks():
+        """Projection crossings (runs on different Yd that cross in this view): the lower-zorder
+        run gets a white break so the upper one reads continuous (skill_plumbing_drawing)."""
+        g = POD / 2 + 6
+        for h in drawn:
+            if abs(h[1] - h[3]) > 0.5:
+                continue
+            for v in drawn:
+                if abs(v[0] - v[2]) > 0.5 or v[4] == h[4]:
+                    continue
+                x, z = v[0], h[1]
+                if not (min(h[0], h[2]) + g < x < max(h[0], h[2]) - g and min(v[1], v[3]) + g < z < max(v[1], v[3]) - g):
+                    continue
+                lo = h if h[4] < v[4] else v
+                if lo is h:
+                    _rect(x - g, z - POD / 2 - 2, 2 * g, POD + 4, "white", ec="none", lw=0, z0=lo[4] + 1.6)
+                else:
+                    _rect(x - POD / 2 - 2, z - g, POD + 4, 2 * g, "white", ec="none", lw=0, z0=lo[4] + 1.6)
+
+    def endon(x, z, col, toward=True, r=13):
+        """A leg along Yd, end-on: ⊙ toward the viewer, ⊗ away."""
+        axb.add_patch(mpatches.Circle((x, z), r, facecolor="white", edgecolor=col, lw=1.2, zorder=14))
+        if toward:
+            axb.add_patch(mpatches.Circle((x, z), 3, facecolor=col, edgecolor=col, zorder=15))
+        else:
+            for sgn in (1, -1):
+                axb.plot([x - r * 0.6, x + r * 0.6], [z - sgn * r * 0.6, z + sgn * r * 0.6],
+                         color=col, lw=0.9, zorder=15)
+
+    def note(x, z, txt, col, ha="left", va="center", fs=4.2):
+        axb.text(x, z, txt, fontsize=fs, ha=_ha(ha), va=va, color=col, zorder=15,
+                 bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
+
+    near = (lambda yd: yd < cwp.CTR_Y) if _NEAR == '-Yd' else (lambda yd: yd > cwp.CTR_Y)
+
     # ── Fitting landmarks (drawn in BOTH views) ──────────────────────────────
-    # (DV-01 and DV-02 diverters are View-A-only — their recycle/waste/brown
-    #  legs all run on the −Yd intake face — so they live in the VIEW A block.)
-    # X1 fill cross (4-way) on the spine + the end-wall X1 camlock + CV-1.
-    _pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
-    # CV-1 (one-way / check valve) + the end-wall DC camlock on the X1 gravity-fill line.
-    # Flow allowed toward lower X (the cross / IBC fills); keep data-space "left" so
-    # View B's reversed xlim flips the arrow with the rest of the drawing.
-    valve_check(axb, 5693, X1_PORT_Z, 15, C_BLUEB, flow="left")
-    axb.text(5693, X1_PORT_Z + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
-    _rect(5836, X1_PORT_Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
-    axb.text(5833, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
+    X1Z = X1_PORT_Z
+    run3d("X1 camlock -> one-way -> tee (straight)", C_BLUEB, zorder=11)
+    cv1 = W["checks"]["CV-1"]
+    valve_check(axb, cv1[0], cv1[2], 15, C_BLUEB, flow="left", zorder=18)
+    axb.text(cv1[0], cv1[2] + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
+    _rect(5836, X1Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
+    axb.text(5833, X1Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
              color=C_BLUEB, zorder=15, **FB)
-    axb.add_patch(mpatches.Circle((X1X, X1_PORT_Z), 16, facecolor="white",
-                  edgecolor=C_BLUEB, lw=1.4, zorder=14))
-    axb.text(X1X - 64, X1_PORT_Z + 36, "X1 FILL CROSS\n(4-way)", fontsize=5, ha="center",
+    # X1 fill TEE: run along Yd (IBC-1 −Yd · IBC-2 +Yd, both end-on here), branch +X to the camlock.
+    endon(X1X, X1Z, C_BLUEB, toward=True, r=16)
+    axb.text(X1X - 64, X1Z + 36, "X1 FILL TEE\n(X1 in → IBC-1 + IBC-2)", fontsize=5, ha="center",
              va="bottom", color=C_BLUEB, zorder=14, **FB)
-    axb.text(X1X, X1_PORT_Z - 182, "IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
-             ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
-    # X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2: a 2"
-    # pipe running in Yd between the two totes, so it reads end-on as a pipe
-    # cross-section (2× the POD drain runs → OD ring + bore).
-    axb.add_patch(mpatches.Circle((X1X, 1376), POD, facecolor="white",
-                  edgecolor=C_BLUEB, lw=1.6, zorder=13))                        # 2" OD
-    axb.add_patch(mpatches.Circle((X1X, 1376), POD - 9, facecolor="white",
-                  edgecolor=C_BLUEB, lw=0.9, zorder=14))                        # bore
-    axb.text(X1X - POD - 6, 1376, "X1/X2 BALANCE\n(2\" Blue equalization tie)", fontsize=4.4,
-             ha=_ha("right"), va="center", color=C_BLUEB, zorder=14, **FB)
-    # IBC-4 merge tee (a circle on the spine).
-    axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
-                  edgecolor=C_WASTEB, lw=1.6, zorder=13))
-    leader(axb, MERGEX, 1230, 5600, 1370,
-           "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
+    note(X1X, X1Z - 40, ("→ IBC-1 (−Yd, toward you)" if _NEAR == '-Yd' else "→ IBC-2 (+Yd, toward you)")
+         + "\nflex jumper at the flange", C_BLUEB, ha="center", va="top", fs=4.0)
+    # Blue EQUALIZATION tie IBC-1 ↔ IBC-2: 1" pipe straight across in Yd (end-on), a flex jumper at
+    # each tote flange.
+    beq = W["runs"]["Blue equalization (IBC-1 <-> IBC-2)"][0]
+    axb.add_patch(mpatches.Circle((beq[0], beq[2]), 17, facecolor="white", edgecolor=C_BLUEB, lw=1.6, zorder=13))
+    axb.add_patch(mpatches.Circle((beq[0], beq[2]), 12, facecolor="white", edgecolor=C_BLUEB, lw=0.9, zorder=14))
+    axb.add_patch(mpatches.Circle((beq[0], beq[2]), 22, facecolor="none", edgecolor="#E0A800", lw=1.6,
+                                  ls=(0, (2, 1.5)), zorder=14))
+    note(beq[0], beq[2] - 30, "BLUE EQUALIZATION TIE\n1\" IBC-1 ↔ IBC-2 (end-on),\nflex jumper at each tote",
+         C_BLUEB, ha="center", va="top", fs=4.4)
+    # IBC-4 merge tee (run along X, branch z− from CV-2 / DV-01).
+    mx, _, mz = cwp.MERGE4
+    _rect(mx - 30, mz - 15, 60, 30, "white", ec=C_WASTEB, lw=1.4, z0=13)
+    _rect(mx - 15, mz - 36, 30, 21, "white", ec=C_WASTEB, lw=1.4, z0=13)
+    leader(axb, mx + 30, mz, 5620, 1110,
+           "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\none-way legs:\nCV-2 / CV-3)",
            color="#555", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
+    # DV-01 — pH-gated filtered-line diverter at the corridor mouth (input from SV-01 on the −X
+    # port; recycle +X → IBC-3 on View B; waste −Yd → IBC-4 merge on View A).
+    import generate_pinhole_water_panel as _pw
+    DV01X, DV01Z = _pw.DV01_CX, _pw.DV01_CZ
+    valve_3way(axb, DV01X, DV01Z, 16, "#8A6D08", ports=("left", "right", "up"), zorder=18)
+    axb.text(DV01X, DV01Z + 26, "DV-01", fontsize=4.6, ha="center", va="bottom", color="#8A6D08", zorder=15, **FB)
+
+    # ── P-clips on standoff blocks for this face's runs (3D) ─────────────────
+    for nm, cx, cz, face_y, pipe_y, vert in W["clips"]:
+        if cx < 4600 or not near(pipe_y):
+            continue
+        w_, h_ = (16, 22) if vert else (22, 16)
+        _rect(cx - w_ / 2, cz - h_ / 2, w_, h_, C_STEEL, lw=0.6, z0=16)
+
+    # ── Flex jumpers on this face (3D): gold band along X / Z, gold ring when end-on (along Yd) ──
+    for nm, wp in W["flex"]:
+        a, b = wp[0], wp[-1]
+        on_b = "discharge" in nm or nm.startswith("DV-01 recycle")
+        if a[0] < 4600 or on_b != (_NEAR == '+Yd') or "equalization" in nm or "X1 fill" in nm:
+            continue
+        if nm.startswith("Blue #1"):         # follows its riser's display offset (run3d shift, View A)
+            a, b = (a[0] - 35, a[1], a[2]), (b[0] - 35, b[1], b[2])
+        if abs(a[0] - b[0]) < 1 and abs(a[2] - b[2]) < 1:
+            axb.add_patch(mpatches.Circle((a[0], a[2]), POD / 2 + 6, facecolor="none", edgecolor="#E0A800",
+                                          lw=1.8, zorder=15))
+        else:
+            axb.plot([a[0], b[0]], [a[2], b[2]], color="#E0A800", lw=6, alpha=0.75,
+                     solid_capstyle="butt", zorder=15)
 
     # ════════════════════════════════════════════════════════════════════════
-    #  VIEW A ONLY — −Yd INTAKE face (suctions · recycle · fills · merge)
+    #  VIEW A ONLY — −Yd INTAKE face (suctions · waste · fills · merge)
     # ════════════════════════════════════════════════════════════════════════
     if _NEAR == '-Yd':
-        # DV-01 — pH-gated filter-output diverter, low at the corridor mouth
-        # (its blue-recycle and waste legs are both on this −Yd intake face).
-        DV01X = 4700
-        valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "right"), zorder=14)
-        # Filtered INPUT (from the pinhole-wall filter train / SV-01, off-section) → LEFT (common) port
-        _pipe([4560, DV01X - 16], [235, 235], "#8A8A8A", zorder=11)
-        _flowhead(4560, 235, "right", "#8A8A8A")
-        axb.text(4548, 286, "from SV-01\n(filtered)", fontsize=4.0, ha="left",
-                 va="bottom", color="#777", zorder=15, **FB)
-        axb.text(DV01X, 258, "DV-01", fontsize=4.6, ha="center",
-                 va="bottom", color="#8A6D08", zorder=15, **FB)
-        # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
-        # reachable, Z≈1000) → UP the front vertical to the loop top → +X back
-        # through the shirt + panel → up the behind-panel riser to the Blue tote.
-        BV01X = 4840                                       # drawn −X of its true X (3D bvx=4875) so the blue
-        #   suction reads CLEAR of the brown P-05 riser (X4898) — their 24mm pipe walls otherwise abut
-        BLUE_BEHIND_X = 5165                               # 3D beh_x=5200; drawn −X of the X4 riser (5200) so the
-        #   two read as SEPARATE risers (in 3D they share X5200 but sit on different Yd lanes / depths)
-        BLUE_LOOPZ = 1210                                  # 3D loopz — loop top (P-04↔P-05 gap)
-        # pump-front → −X to BV-01 → UP the front vertical to the loop top → +X (ONE pipe, so the elbow at the
-        # riser top IS drawn).  GAP-BROKEN where the +X run crosses the P-05 brown SHIRT riser (X5070) so it
-        # reads continuous (projection crossing — different Yd in 3D).
-        _pipe([PUMP_FRONT_X, BV01X, BV01X, 5070 - 16], [777, 777, BLUE_LOOPZ, BLUE_LOOPZ], C_BLUEB, zorder=11)
-        valve_ball(axb, BV01X, 1000, 16, C_BLUEB, vert=True)
-        _pipe([5070 + 16, BLUE_BEHIND_X, BLUE_BEHIND_X], [BLUE_LOOPZ, BLUE_LOOPZ, 1400], C_BLUEB, zorder=11)
-        _flowhead(BLUE_BEHIND_X, 1380, "down", C_BLUEB)    # suction: Blue #1 tote → down the riser → P-01
-        axb.text(BLUE_BEHIND_X + 60, 1370, "from Blue #1\n(behind-panel\nP-01 suction riser)", fontsize=4.2,
-                 ha="left", va="top", color=C_BLUEB, zorder=13, **FB)
-        leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
-               color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
-        # X4 suction PICKUP riser climbs the spine, then WRAPS −X to the forward BV-06 riser, up through
-        # BV-06, +X into the P-03 IN — BV-06 on a forward loop (operator side), same pattern as BV-02.
-        # The wrap gap-breaks where it crosses the DV-02→IBC-3 brown chase drop (X5090).
-        BV06X = 4898                                       # 3D rx6 = PXC−86 (forward)
-        _pipe([RX4, RX4, 5090 + 16], [300, 1700, 1700], C_WASTEB, zorder=11)                    # riser up → −X wrap
-        _pipe([5090 - 16, BV06X, BV06X, PXC], [1700, 1700, 1902, 1902], C_WASTEB, zorder=11)    # → BV-06 riser → up → +X into P-03 IN
-        valve_ball(axb, BV06X, 1792, 16, C_WASTEB, vert=True)
-        axb.text(BV06X - 22, 1792, "BV-06", fontsize=4.6, ha="right", va="center", color=C_WASTEB, zorder=13, **FB)
-        _flowhead(RX4, 330, "up", C_WASTEB)                # suction: IBC-4 waste pickup → up the spine → BV-06 → P-03
-        axb.text(RX4 + 135, 255, "from IBC-4 (waste pickup)", fontsize=4.0, ha="right",
-                 va="top", color=C_WASTEB, zorder=15,
-                 bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
-        # DV-01 BLUE RECYCLE — off the UP port, +X THROUGH the rear panel, up the spine to X1.
-        _pipe([DV01X, DV01X, RX_BLUE, RX_BLUE, X1X],
-              [251, 276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)
-        axb.text(PANX + 9, 300, "through\npanel", fontsize=4.0, ha="center", va="bottom",
-                 color="#999", zorder=15, **FB)
-        # DV-01 WASTE — off the RIGHT port, +X to the IBC-4 merge tee, then up.
-        _pipe([DV01X + 16, MERGEX, MERGEX], [235, 235, 1214], C_WASTEB, zorder=11)
-        # → IBC-1 (X1) fill stub off the cross (water continues down to IBC-1, off-section).
-        _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
-        _flowhead(X1X - 14, X1_PORT_Z - 140, "down", C_BLUEB)   # fill: → IBC-1 tote (below)
-        # DV-02 — tray-drain diverter above the pump column (3D: run along Yd,
-        # branch z−).  Its input is the P-04 discharge (rear +Yd face, Spine View
-        # B), arriving at the junction.  Both outputs sit on this −Yd face and
-        # leave toward +X: BROWN runs +X into the shirt↔panel chase then drops to
-        # IBC-3; WASTE runs +X then drops to the IBC-4 merge tee.  DV-02 is now
-        # mounted on the raised shirt front (X5028).  Symbol centred on the junction.
-        valve_3way(axb, DV02X, 2145, 18, "#B8860B", ports=("left", "right", "down"))
-        axb.text(DV02X, 2145 + 32, "DV-02", fontsize=5, ha="center", va="bottom",
-                 color="#8A6D08", zorder=14, **FB)
-        axb.text(DV02X - 26, 2145, "← P-04\n(View B)", fontsize=3.8, ha="right",
-                 va="center", color="#999", zorder=13, **FB)
-        # DV-02 BROWN output → IBC-3 (Brown): leaves the −Yd run port, runs +X into
-        # the ~27mm shirt↔panel chase (X≈5090), then DROPS down the chase to the
-        # IBC-3 entry level. (3D: down off the run port, +X to the chase, drop.)
-        BROWN_CHASE_X = 5090
-        # brown leaves at z2120 (below the waste run at 2145) so the two +X outputs read SEPARATELY
-        # near the diverter (in 3D they leave opposite Yd run ports — projection-coincident here).
-        # GAP-BROKEN where it crosses the X4 suction-pickup horizontal into P-03 (z1820) so that run reads continuous
-        _pipe([DV02X, DV02X, BROWN_CHASE_X, BROWN_CHASE_X], [2128, 2120, 2120, 1836], C_BROWNB, zorder=10)
-        _pipe([BROWN_CHASE_X, BROWN_CHASE_X], [1804, 1130], C_BROWNB, zorder=10)
-        axb.annotate("", xy=(BROWN_CHASE_X, 1135), xytext=(BROWN_CHASE_X, 1185),
-                     arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
-        axb.text(BROWN_CHASE_X + 26, 1175, "IBC-3\n(Brown,\ndown chase)", fontsize=4.2, ha="left", va="top",
-                 color=C_BROWNB, zorder=13, **FB)
-        # DV-02 WASTE output → leaves the +Yd run port, PENETRATES the rear panel
-        # near the spine top, then DROPS at X5289 (3D dvwx = MERGE4[0]−115) into the
-        # merge tee's LEFT side.
-        _hpipe(2145, DV02X + 18, 5289, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
-        axb.text(PANX + 9, 2178, "through\npanel", fontsize=4.0, ha="center", va="bottom",
-                 color="#999", zorder=12, **FB)
-        # Lead the drop in from a short horizontal (from 5261, clear of the blue-
-        # riser crossing gap) so the top corner at (5289,2145) is an INTERIOR
-        # vertex and draws an elbow fitting — the _hpipe ends there straight, so
-        # without this the left turn into the DV-02 horizontal had no elbow.
-        _pipe([5261, 5289, 5289, MERGEX], [2145, 2145, 1230, 1230], C_WASTEB, zorder=11)
-        # IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe.
-        _pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
-        axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
-                     arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
-        axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
-                 color=C_WASTEB, zorder=13, **FB)
-        # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.  The trunk teed onto
-        # the ACC-01 bottom OUT port (3D acc_out(), Z383 on the −Yd face) DROPS to
-        # the corridor-entry lane (Z235 = DV-01's low lane, out of the operator's
-        # way at the mouth), then −X to the tray-gap drop.
-        ACC_OUT_Z = 383                                   # 3D ACC_PZ = ACC_Z0 + 28 — bottom OUT port
-        circ_yd = PXC                                     # ACC OUT port projects to the body axis
-        axb.add_patch(mpatches.Circle((circ_yd, ACC_OUT_Z), 6, facecolor="white",
-                      edgecolor=C_BLUEB, lw=1.0, zorder=12))     # ACC-01 OUT port stub
-        # Gap-broken at Z308 where the drop crosses the brown P-05 tap run (X4910–5070,
-        # a projection crossing — different Yd in 3D) so the blue does not read as
-        # teeing into the brown.
-        _pipe([PXC, PXC], [ACC_OUT_Z, 308 + 18], C_BLUEB, zorder=9)                  # port stub → down to the brown crossing
-        _pipe([PXC, PXC, 4655, 4655], [308 - 18, 235, 235, 30], C_BLUEB, zorder=9)   # below the crossing → −X → down to spray bar
-        _flowhead(4655, 80, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
-        axb.text(4648, -10, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
-                 va="bottom", color=C_BLUEB, zorder=12, **FB)
-        # P-04 tray-drain SUCTION (← from the tray sump, far −X) up to P-04 IN.
-        # Gap-broken where it crosses the blue supply trunk, now lowered to Z235:
-        # the floor run at Z205 crosses the blue VERTICAL drop at X4655, and the
-        # rise at X4908 crosses the blue HORIZONTAL trunk at Z235 — so the blue
-        # reads continuous (skill_plumbing_drawing: the crossing run breaks).
-        _pipe([4600, 4655 - 16], [205, 205], C_WASTEB, zorder=9)   # floor, before the blue drop at 4655
-        # floor after the blue drop → rise: ONE path so the corner at (4908, 205) gets an elbow fitting
-        _pipe([4655 + 16, 4908, 4908], [205, 205, 235 - 16], C_WASTEB, zorder=9)
-        # rise past blue → +X back to the P-04 IN at the pump axis (PXC) — the forward-riser LOOP
-        _pipe([4908, 4908, PXC], [235 + 16, 1075, 1075], C_WASTEB, zorder=9)
-        _flowhead(4600, 205, "right", C_WASTEB)            # suction: tray sump → P-04
-        axb.text(4546, 185, "from\ntray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
-        # P-05 brown-drain SUCTION (IBC-3 Brown tap via BV-02).  3D: +X off the tee to the SHIRT riser
-        # (X5070, P-clipped for support — the down-route to the tap), UP the shirt, then −X (forward) to the
-        # BV-02 riser (X4898, operator side) through the P-04↔P-05 gap, up through BV-02, +X into the P-05 IN.
-        BV02X = 4898                                       # 3D rx = PXC−86 (BV-02 forward, operator side)
-        SHIRT_RX = 5070                                    # 3D shirt_rx — shirt riser, the down-route to the tap
-        ZLOOP = 1300                                       # 3D zloop — step −X from the shirt riser onto BV-02's
-        _pipe([4910, SHIRT_RX, SHIRT_RX, BV02X, BV02X, PXC],
-              [308, 308, ZLOOP, ZLOOP, 1502, 1502], C_BROWNB, zorder=9)
-        valve_ball(axb, BV02X, 1417, 16, C_BROWNB, vert=True)
-        axb.text(BV02X - 22, 1417, "BV-02", fontsize=4.6, ha="right", va="center",
-                 color=C_BROWNB, zorder=13, **FB)
-        _flowhead(SHIRT_RX, 700, "up", C_BROWNB)           # suction: IBC-3 shared tap → up the shirt riser → BV-02 → P-05
-        axb.text(4914, 296, "from IBC-3 (shared tap):\n+X to shirt riser, up, then\nforward loop to BV-02",
-                 fontsize=3.8, ha="left", va="top", color=C_BROWNB, zorder=15,
-                 bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
-        # P-clips fastening the −Yd-face spine risers.
-        for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
-            for i in range(4):
-                cz = 460 + i * 400
-                if cz < zt - 80:
-                    _rect(rx - 8, cz - 11, 16, 22, C_STEEL, lw=0.6, z0=11)
-        leader(axb, RX4, 1000, 6050, 880,
-               "FRONT of spine (−Yd face), P-clipped:\nX4 suction-pickup riser (→ P-03),\nblue-recycle + DV-01-waste risers",
+        GAPX = cwp.GAPX                          # tray↔IBC gap: where the under-walkway ribbon enters the corridor
+        # filtered line (SV-01, pinhole skid) → under-walkway ribbon → rises at the mouth → DV-01 −X port
+        run3d("SV-01 -> DV-01 (single filtered line)", "#8A8A8A", zorder=11, xmin=GAPX)
+        note(GAPX - 10, cwp.RIBBON_Z + 40, "from SV-01 (filtered)\nunder-walkway ribbon", "#777", ha="right")
+        # DV-01 WASTE → −Yd lane across the corridor at Z235 → up the merge riser (CV-2) into the tee
+        run3d("DV-01 -> IBC-4 merge", C_WASTEB, zorder=8)
+        # DV-02 WASTE (pinhole skid) → ribbon → corridor floor Z65 → hop to the rear-panel hole → up (CV-3)
+        run3d("DV-02 waste -> IBC-4", C_WASTEB, zorder=14, xmin=GAPX + 1)
+        note(GAPX + 20, 40, "from DV-02 (skid) waste,\nunder-walkway ribbon", C_WASTEB, va="top")
+        for cv in ("CV-2", "CV-3"):
+            c = W["checks"][cv]
+            valve_check(axb, c[0], c[2], 14, C_WASTEB, flow="up", zorder=18)
+            axb.text(c[0] + 20, c[2], cv, fontsize=4.6, ha=_ha("left"), va="center", color=C_WASTEB, zorder=15, **FB)
+        # merge → IBC-4 entry (+X along the spine lane, then +Yd into the tote — end-on here)
+        ent = run3d("IBC-4 (Waste) entry", C_WASTEB, zorder=11)
+        ex, ez = ent[0][0][-1], ent[0][1][-1]
+        endon(ex, ez, C_WASTEB, toward=False)
+        note(ex + 20, ez + 20, "→ IBC-4 (+Yd, flex\njumper at the flange)", C_WASTEB, va="bottom", fs=4.4)
+        # P-01 suction: IN → −X → up past BV-01 → +X behind the panel → up → −Yd into Blue #1 (IBC-1)
+        bxt = W["runs"]["Blue #1 -> P-01 suction entry"][-1][0]
+        p1 = run3d("Blue #1 -> P-01 suction entry", C_BLUEB, zorder=10, shift={round(bxt): bxt - 35})
+        bx, bz = p1[-1][0][-1], p1[-1][1][-1]
+        endon(bx, bz, C_BLUEB, toward=True)
+        note(bx + 20, bz + 10, f"from Blue #1 (IBC-1) — behind-panel suction\nriser (true X{bxt:.0f}, drawn 35mm −X\nclear of the X4 riser)", C_BLUEB, va="bottom")
+        # IBC-3 shared bottom tap (tee along X) → P-02 (−X) / P-05 (+X) suctions
+        tx3, _, tz3 = cwp.BROWN_TAP
+        run3d("IBC-3 (Brown) bottom tap (shared P-02/P-05)", C_BROWNB, zorder=10)
+        _rect(tx3 - 30, tz3 - 15, 60, 30, "white", ec=C_BROWNB, lw=1.3, z0=13)
+        run3d("IBC-3 tap -> P-02 suction", C_BROWNB, zorder=9)
+        run3d("Brown tap -> P-05 inlet", C_BROWNB, zorder=12)
+        leader(axb, tx3 - 30, tz3, 4740, 470, "IBC-3 (Brown) shared bottom tap\n→ P-02 (−X) · P-05 (+X, shirt riser)",
+               color=C_BROWNB, fs=4.2, ha=_ha("right"), va="center", arrow_style="-|>", font=FB)
+        # X4 waste pickup: IBC-4 bottom → up the spine → −X wrap → up past BV-06 → P-03 IN
+        run3d("X4 Waste (P-03) pickup", C_WASTEB, zorder=14)
+        note(cwp.SPINE_X_END - 380, 300, "from IBC-4 (bottom pickup)\n→ up the spine → BV-06 → P-03", C_WASTEB)
+        # ACC-01 OUT → Blue supply trunk → −X to the ribbon slot → spray bar / TAP-01
+        run3d("Blue supply trunk -> spray bar / TAP-01 (off-panel)", C_BLUEB, zorder=16, xmin=GAPX + 1)
+        _flowhead(GAPX + 1, 200, "left", C_BLUEB)
+        note(GAPX - 10, 250, "Blue supply → spray bar / TAP-01", C_BLUEB, ha="right")
+        for bv, col in (("BV-01", C_BLUEB), ("BV-03", C_BROWNB), ("BV-02", C_BROWNB), ("BV-06", C_WASTEB)):
+            c = W["checks"][bv]
+            valve_ball(axb, c[0], c[2], 16, col, vert=True, zorder=18)
+            if bv == "BV-01":               # BV-01 sits between the P-02 riser and the pump — label out on a leader
+                leader(axb, c[0], c[2], 4620, c[2] + 90, bv, color=col, fs=4.6, ha=_ha("right"), va="center",
+                       arrow_style="-|>", font=FB)
+            else:
+                axb.text(c[0] - 22, c[2], bv, fontsize=4.6, ha=_ha("right"), va="center", color=col, zorder=13, **FB)
+        leader(axb, cwp.MERGE4[0], 700, 6050, 880,
+               "FRONT of spine (−Yd face), P-clipped on blocks:\nX4 pickup riser (→ P-03), DV-01 waste\n(CV-2) + DV-02 waste (CV-3) merge risers",
                color="#555", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FB)
-        leader(axb, RX_BLUE, 900, 4720, 740, "BLUE-RECYCLE RISER\n(DV-01 → up the spine → X1 cross)",
-               color=C_BLUEB, fs=5.2, ha="right", va="top", arrow_style="-|>", font=FB)
+
+    gap_breaks() if _NEAR == '-Yd' else None
 
     # ════════════════════════════════════════════════════════════════════════
-    #  VIEW B ONLY — +Yd DISCHARGE face (pump discharges)
-    #  These are the NEAR face here, so each discharge is drawn FULL: pump →
-    #  along the spine → end-wall port (no spine occlusion).
+    #  VIEW B ONLY — +Yd DISCHARGE face (pump discharges + the DV-01 recycle)
     # ════════════════════════════════════════════════════════════════════════
     if _NEAR == '+Yd':
-        X4V, X3V = 5750, 5772
-        # X4 discharge (P-03 → X4 port): full run from the pump along the spine.
-        _pipe([PUMP_BACK_X, X4V, X4V, WALLX], [1902, 1902, X4_PORT_Z, X4_PORT_Z],
-              C_WASTEB, zorder=12)
-        # X3 discharge (P-05 → X3 port): full run from the pump along the spine.
-        _pipe([PUMP_BACK_X, X3V, X3V, WALLX], [1502, 1502, X3_PORT_Z, X3_PORT_Z],
-              C_BROWNB, zorder=13)
-        # P-01 discharge → ACC-01 (short drop into the accumulator below P-01).
-        _pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
-        # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02
-        # (the diverter itself is drawn on Spine View A).
-        _pipe([5046, 5046, DV02X, DV02X], [1113, 2025, 2025, 2110], C_WASTEB, zorder=9)
-        axb.annotate("", xy=(DV02X, 2140), xytext=(DV02X, 2098),
-                     arrowprops=dict(arrowstyle="-|>", lw=1.1, mutation_scale=7, color=C_WASTEB), zorder=12)
-        axb.text(DV02X + 22, 2088, "→ DV-02\n(Spine View A)", fontsize=4.0, ha="left",
-                 va="bottom", color="#999", zorder=13, **FB)
-        valve_ball(axb, 5046, 1150, 14, "#555", vert=True)
-        axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)
-        # → IBC-2 (X2) fill stub off the cross (water continues down to IBC-2, off-section).
-        _pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
-        _flowhead(X1X + 14, X1_PORT_Z - 140, "down", C_BLUEB)   # fill: → IBC-2 tote (below)
+        GAPX = cwp.GAPX
+        run3d("P-05 -> X3 end-wall port", C_BROWNB, zorder=12)
+        run3d("P-03 -> X4 end-wall port", C_WASTEB, zorder=14)
+        run3d("P-01 -> ACC-01 (in)", C_BLUEB, zorder=9)
+        # P-02 → down the far board → under-walkway ribbon → ACC-02 on the skid
+        run3d("P-02 -> ACC-02 (recycle spray)", C_BROWNB, zorder=10, xmin=GAPX + 1)
+        _flowhead(GAPX + 1, cwp.RIBBON_Z, "left", C_BROWNB)
+        note(GAPX - 10, cwp.RIBBON_Z + 40, "→ ACC-02 (skid)\nunder-walkway ribbon", C_BROWNB, ha="right")
+        # DV-01 RECYCLE → up the far board → −X → −Yd into IBC-3 (Brown buffer)
+        rc = run3d("DV-01 recycle -> IBC-3 (buffer) entry", C_BROWNB, zorder=11)
+        rx, rz = rc[0][0][-1], rc[0][1][-1]
+        endon(rx, rz, C_BROWNB, toward=False)
+        leader(axb, rx, rz, 5330, 960, "DV-01 RECYCLE → IBC-3 (Brown buffer)\n−Yd into the tote, flex jumper at the flange",
+               color=C_BROWNB, fs=4.6, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
         leader(axb, 5640, 1700, 6120, 1820,
                "+Yd DISCHARGE face (near):\nX3 / X4 pump discharges → end-wall ports",
                color=C_BROWNB, fs=5.2, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
+    gap_breaks() if _NEAR == '+Yd' else None
+
     # ── End-wall ports ───────────────────────────────────────────────────────
+    X3_PORT_Z = W["runs"]["P-05 -> X3 end-wall port"][-1][2]
+    X4_PORT_Z = W["runs"]["P-03 -> X4 end-wall port"][-1][2]
     for z, lab, col in [(X1_PORT_Z, "X1", C_BLUEB), (X3_PORT_Z, "X3", C_BROWNB),
                         (X4_PORT_Z, "X4", C_WASTEB)]:
         axb.add_patch(mpatches.Circle((WALLX, z), 22, facecolor="white",
@@ -1344,24 +1406,25 @@ def spine_view(side):
 
     # ── Notes (right margin) ─────────────────────────────────────────────────
     if _NEAR == '-Yd':
-        cross_note = ("Pump discharges + IBC-2 fill are on Spine View B "
+        cross_note = ("Pump discharges, the DV-01 recycle + the IBC-2 fill are on Spine View B "
                       "(+Yd face).")
     else:
-        cross_note = ("Suctions, recycle, fills + merge are on Spine View A "
+        cross_note = ("Suctions, waste legs, fills + merge are on Spine View A "
                       "(−Yd face).")
+    cv_dz = cwp.MERGE_CV_DZ
     draw_notes(axb, [
         "CORRIDOR PLUMBING PANEL — SPINE SIDE SECTION (looking along Yd):",
         cross_note,
-        f"1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a {SHIRTX1 - SHIRTX0:.0f}mm pump-mount shirt that backs the bodies (X={SHIRTX0:.0f}–{SHIRTX1:.0f}, Z={SHIRT_ZB:.0f}–{SHIRT_ZT:.0f}); the shirt top backs DV-02.",
+        f"1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a {SHIRTX1 - SHIRTX0:.0f}mm pump-mount shirt that backs the bodies (X={SHIRTX0:.0f}–{SHIRTX1:.0f}, Z={SHIRT_ZB:.0f}–{SHIRT_ZT:.0f}).",
         f"2. A ~{PANX - SHIRTX1:.0f}mm chase gap separates the shirt back (X={SHIRTX1:.0f}) and the rear-panel front (X={PANX:.0f}); six ply spacer blocks bridge it.",
         f"3. Rear panel: 18mm ply, X={PANX:.0f}–{PANX1:.0f}, Z={PAN_ZB:.0f}–{PAN_ZT:.0f}. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f}).",
-        "4. View A (−Yd intake face): X4 suction-pickup riser, blue-recycle riser onto the spine into the X1 fill cross, DV-01-waste → merge, suctions, fills.",
-        "5. View B (+Yd discharge face): the X3 brown (P-05 → Z=1700) and X4 waste/black (P-03 → Z=1620) pump discharges run full along the spine to the end-wall ports.",
-        "6. DV-02 → IBC-3 / IBC-4; the IBC-4 merge tee (DV-01 + DV-02 waste) is consolidated on the spine.",
-        "7. Circuit C powers all 5 pumps (one IP switch each, run one at a time); P-02 lives on the Pinhole Wall panel and shares Circuit C.",
-        "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
-        "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
-        "10. PIPE: 1\" PVC Sch-40 (IBC fill/drain + recycle) and 1/2\" PVC (pump runs), threaded at components; risers stainless P-clipped to the spine face.",
+        "4. View A (−Yd intake face): the four pump suctions (BV-01/03/02/06), the X4 pickup riser up the spine, DV-01 + DV-02 waste → IBC-4 merge, the IBC-1 fill and the Blue supply trunk.",
+        f"5. View B (+Yd discharge face): P-05 → X3 (Z={X3_PORT_Z:.0f}) and P-03 → X4 (Z={X4_PORT_Z:.0f}) along the spine to the end-wall ports, P-01 → ACC-01, P-02 → ACC-02 (skid), and the DV-01 recycle → IBC-3 (Brown buffer).",
+        f"6. IBC-4 merge tee on the spine: DV-01 waste rises into its branch through CV-2, DV-02 waste (from the skid, under the walkway) joins its run through CV-3 — each check {cv_dz:.0f}mm below the tee, so one leg can't back-feed the other.",
+        "7. Circuit C1 (15A, pole 1 of the 2-pole EP master pump switch) feeds the four corridor pumps from the rear-panel distribution block; they run one at a time by valve selection. The tray-drain P-04 (pinhole skid) is on its own fuse, C2 (pole 2).",
+        f"8. Spine riser X-lanes (3D): X4 pickup {W['runs']['X4 Waste (P-03) pickup'][0][0]:.0f}, DV-02 waste / CV-3 {W['checks']['CV-3'][0]:.0f}, DV-01 waste / CV-2 + merge {cwp.MERGE4[0]:.0f}, X1 tee {X1X:.0f}. End-wall ports: X1 fill Z{X1_PORT_Z:.0f}, X3 Z{X3_PORT_Z:.0f}, X4 Z{X4_PORT_Z:.0f}.",
+        "9. X1 fill is a TEE (X1 in → IBC-1 + IBC-2) with the CV-1 one-way valve + 2\" DC camlock at the end wall. The 1\" Blue equalization tie runs straight across IBC-1 ↔ IBC-2 with a flex jumper at each tote.",
+        f"10. PIPE: 1\" PVC Sch-40 (IBC fill/drain + recycle) and 1/2\" PVC (pump runs), threaded at components. Risers P-clip to the spine on {cwp.CLIP_SHIM:.0f}mm ply-offcut blocks (pipe {cwp.CLIP_SHIM:.0f}mm off the face). ⊙ = a leg along Yd toward you, ⊗ = away; gold = braided flex jumper.",
     ], mxa(6800), 2440, spacing=34, fs=9.3, ha="left", width=950, wrap=45, font=FB)
 
     # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,

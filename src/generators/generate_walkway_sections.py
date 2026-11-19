@@ -21,7 +21,7 @@ RIBBON_YD_UP, RIBBON_SUP_YD, ribbon_supports()).
 
     /usr/bin/python3 src/generators/generate_walkway_sections.py
 """
-import os, sys
+import os, re, sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -198,10 +198,12 @@ def _project_xz(way):
 def _capture_corridor_pipes():
     """Run the water.skp pipe builders with a capturing shim and return the corridor runs as
     (name, xz_pts, matplotlib_color), ordered BACK->FRONT (gray, brown, blue) for _draw_lanes."""
-    cap = []
+    cap, built = [], set()
     orig = cp.draw.ruby_pipe_run                                   # draw is shared by cp + pw
+    # each captured run returns a unique token; only runs whose token reaches the builder's OUTPUT are
+    # kept — a builder may construct a run it then drops (e.g. the wall-P-02 suction when P-02 is in the corridor)
     cp.draw.ruby_pipe_run = lambda nm, way, *a, **k: (
-        cap.append((nm, [tuple(c for c in p) for p in way], k.get("color"))) or "")
+        cap.append((nm, [tuple(c for c in p) for p in way], k.get("color"))) or f"#CAP{len(cap) - 1}#")
     try:
         for fn in (lambda: cp.plumbing(sump_on_skid=True),
                    lambda: cp.drains_ports(sump_on_skid=True),
@@ -209,11 +211,13 @@ def _capture_corridor_pipes():
                    pw.tap01_supply, lambda: pw.kit(p02_on_corridor=True),
                    pw.skid_row, pw.skid_plumbing, pw.other_equipment):
             try:
-                fn()
+                out = fn()
             except Exception:
-                pass                                              # a builder we don't need may need SU; skip it
+                continue                                          # a builder we don't need may need SU; skip it
+            built.update(int(t) for t in re.findall(r"#CAP(\d+)#", out if isinstance(out, str) else "\n".join(out)))
     finally:
         cp.draw.ruby_pipe_run = orig
+    cap = [c for i, c in enumerate(cap) if i in built]
     # IBC tote-top FILL + equalization lines belong to the IBC stack (ghosted here) and the
     # IBC-stacking diagram — they'd only float sparse tags in the upper band, so omit them from
     # the corridor pump-bay elevation.
@@ -619,11 +623,20 @@ def sheet4():
     for j, (nm, xz, col) in enumerate(runs):
         segs = sorted(zip(xz[:-1], xz[1:]),
                       key=lambda s: -((s[0][0] - s[1][0]) ** 2 + (s[0][1] - s[1][1]) ** 2))
-        mids = [((a[0] + b[0]) / 2, (a[1] + b[1]) / 2) for a, b in segs
-                if X_LO + 14 <= (a[0] + b[0]) / 2 <= X_HI - 14] or [xz[len(xz) // 2]]
+        mids = []
+        for a, b in segs:                                   # each segment CLIPPED to the window, then its midpoint
+            lo, hi = max(min(a[0], b[0]), X_LO + 14), min(max(a[0], b[0]), X_HI - 14)
+            if lo > hi:
+                continue
+            if abs(b[0] - a[0]) < 1e-6:
+                mids.append((a[0], (a[1] + b[1]) / 2))
+            else:
+                xm = (lo + hi) / 2
+                mids.append((xm, a[1] + (b[1] - a[1]) * (xm - a[0]) / (b[0] - a[0])))
+        mids = mids or [xz[len(xz) // 2]]
         anchor = next((m for m in mids if all((m[0] - q[0]) ** 2 + (m[1] - q[1]) ** 2 > 30 ** 2 for q in placed)), mids[0])
         placed.append(anchor)
-        ax.text(anchor[0], anchor[1], str(numof[j]), fontsize=5.0, ha="center", va="center", zorder=30,
+        ax.text(anchor[0], anchor[1], str(numof[j]), fontsize=5.0, ha="center", va="center", zorder=100,
                 color="white", fontweight="bold",
                 bbox=dict(boxstyle="circle,pad=0.16", fc=_CORRIDOR_COL.get(col, C_DIM), ec="white", lw=0.5), **FONT)
 
@@ -652,7 +665,7 @@ def sheet4():
         "• The pump column, uprights + rear panel are ghosted context; the",
         "  bottom Yd-rails float on the Z20 sub-plate + foot-plate stack.",
     ]:
-        bold = not line.startswith("•")
+        bold = not line.startswith(("•", " "))
         fig.text(lx, y, line, fontsize=7.2 if bold else 6.4, fontweight="bold" if bold else "normal",
                  color=C_OUT if bold else C_DIM, va="top", **FONT)
         y -= 0.019 if bold else 0.016

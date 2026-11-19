@@ -22,7 +22,7 @@ import generate_walkway_model as wm   # walkway builders (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
 import generate_corridor_water_panel as cp
 import generate_spraybar_model as sb        # owns spray_bar() (Phase 1)
-from tbs_constants import PRINTS_NO_RECYCLE, PRINTS_PER_RESUPPLY, RECYCLE_SUPPLY_GAIN_PCT
+from tbs_constants import PRINTS_NO_RECYCLE, PRINTS_PER_RESUPPLY, RECYCLE_SUPPLY_GAIN_PCT, PWP_SV02_Z
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)        # the new corridor plumbing panel (same connected system)
 
 # ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
@@ -508,7 +508,7 @@ SV01_ZB = SV01_CZ - 35                            # 1575 — sample-valve base (
 LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TIP = component CENTER
     # ── pinhole-wall FILTER sub-loop (leaders point +Yd, out toward the operator) ──
     (ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0 + 87, "ACC-02\n(recycle spray)", 0, 470, 330),   # relocated to panel center-bottom
-    (3300, _FILT_FCY, _FILT_CZ, "F1 (50um)",   0, 560, 215),
+    (3300, _FILT_FCY, _FILT_CZ, "F1 (5um)",   0, 560, 215),
     (3638, _FILT_FCY, _FILT_CZ, "F2 (KDF-55)", 0, 560, 215),
     (3976, _FILT_FCY, _FILT_CZ, "F3 (GAC)",    0, 560, 215),
     (SV01_X, 110, SV01_CZ, "SV-01\n(sample)", -430, 430, 250),   # relocated under DV-02, raised
@@ -685,14 +685,14 @@ def skid_row():
     #   hose (already a flexible connection), so only the discharge port needs a jumper here.
     _p4o = cp.pump_out(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, axis="x", face=+1)
     cp._flex_jumper(p, "P-04 discharge jumper", _p4o, (_p4o[0] + 40, _p4o[1], _p4o[2]), draw.C_IBC_BROWN, start=2, maxlen=24)
-    p.append(cp.sample_valve("SV-02 sample valve", ov.PWP_FILTER_X2, SROW_YD, SROW_Z0 + 132, h=60))   # IN-LINE: row line runs THROUGH the body (center Z1312 = P-04 OUT), red handwheel free above, spout below
+    p.append(cp.sample_valve("SV-02 sample valve", ov.PWP_FILTER_X2, SROW_YD, PWP_SV02_Z - 30, h=60))   # IN-LINE: row line runs THROUGH the body (center Z1312 = P-04 OUT), red handwheel free above, spout below
     p.append(cp.diverter("3W-DV-02", ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162,
                          run="x", branch="z+", handle="y+", color=draw.C_VALVE))   # IN −X (P-04) · waste +X (corridor) · feed z+ (F1); center Z1312 = P-04 OUT (straight run)
     # SV-02 + DV-02 sit proud of the ply in the filter lane — a ply-offcut MOUNTING BLOCK fills from the panel
     # face to the back of each valve body so it screws to the skid instead of hanging on its pipes.
     # (P-04 has its own integral mounting clip and surface-mounts — no block.)
     p.append(draw.ruby_box("SV-02 mounting block (ply offcut)", ov.PWP_FILTER_X2 - 25, SKID_FACE_YD,
-                           SROW_Z0 + 132, 50, (SROW_YD - 25) - SKID_FACE_YD, 60, color=draw.C_PLY))
+                           PWP_SV02_Z - 30, 50, (SROW_YD - 25) - SKID_FACE_YD, 60, color=draw.C_PLY))
     _dvb = 46                                          # = cp.diverter body cube
     p.append(draw.ruby_box("3W-DV-02 mounting block (ply offcut)", ov.PWP_FILTER_X3 - _dvb / 2, SKID_FACE_YD,
                            SROW_Z0 + 162 - _dvb / 2, _dvb, (SROW_YD - _dvb / 2) - SKID_FACE_YD, _dvb, color=draw.C_PLY))
@@ -815,10 +815,10 @@ def skid_plumbing(part="all"):
         [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)
          (acc2_out[0] - 55, ov.PWP_FILTER_YD, zb),          # −X lead-out off the OUT port
          (acc2_out[0] - 55, CLIPY, zb),                     # −Yd onto the ply clip plane — CLAMPED to the panel face
-         (3210, CLIPY, zb),                                 # −X toward BV-05, to just +X of the P-04 suction riser (X3180)
-         (3210, CLIPY + 40, zb),                            # +Yd HUMP out over the P-04 suction riser (now nudged to Yd35, #29) — passes in front
-         (3150, CLIPY + 40, zb),                            # −X across, clear of the riser
-         (3150, CLIPY, zb),                                 # −Yd back onto the ply clip plane
+         (p04_in[0] - 10, CLIPY, zb),                       # −X toward BV-05, to just +X of the P-04 suction riser (p04_in − 40)
+         (p04_in[0] - 10, CLIPY + 40, zb),                            # +Yd HUMP out over the P-04 suction riser (now nudged to Yd35, #29) — passes in front
+         (p04_in[0] - 70, CLIPY + 40, zb),                  # −X across, clear of the riser
+         (p04_in[0] - 70, CLIPY, zb),                                 # −Yd back onto the ply clip plane
          (b5rx + 40, CLIPY, zb),                            # −X along the panel bottom, HUGGING the ply, to BV-05
          (b5rx + 40, CLIPY, 700),                           # DROP to the BV-05 recycled-port height
          (b5rx + 40, 69, 700),                              # +Yd to the BV-05 lane (Yd69)

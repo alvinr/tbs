@@ -170,20 +170,21 @@ master switch is on the EP, clear of the wet zone.
 **Spine side-sections (corridor side section) — two sheets, opposite
 faces of the drain-riser spine** (18mm ply teed off the panel). Pumps mount on
 the front face; the drain runs hang on the spine in the corridor gap clear of
-both tote columns; the Circuit-C pump-power distribution feeds all five pumps.
-P-04 lives on the Pinhole Wall filter skid and shares Circuit C. The two views share
-all structure + fittings as landmarks; each face's own pipe runs appear on its
-own sheet. *(Spine views A/B still show the pre‑Phase‑2 corridor tray‑drain routing —
-pending the topology update; see §8.1.)*
+both tote columns, each P-clipped on an 18mm ply-offcut block. Circuit C1 feeds
+the four corridor pumps; P-04 lives on the Pinhole Wall filter skid on its own
+fuse, C2. The two views share all structure + fittings as landmarks; each face's
+own pipe runs appear on its own sheet, projected from the 3D model.
 
-**Spine View A — intake face:** suctions (BV-01 Blue, tray sump, IBC-3),
-the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
-DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
+**Spine View A — intake face:** the four pump suctions through BV-01/03/02/06
+(IBC-1 Blue, the shared IBC-3 bottom tap, the X4 waste pickup up the spine), the
+DV-01 and DV-02 waste legs into the IBC-4 merge tee through CV-2 / CV-3, the IBC-1
+fill off the X1 fill tee, and the Blue supply trunk.
 ![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
 
 **Spine View B — discharge face (a mirror of A):** the X3 brown (P-05) and X4
-gray (P-03) pump discharges running full along the spine to the sealed end-wall
-ports, the P-01 → ACC drop, the P-04 discharge through SV-02, and the IBC-2 fill.
+black (P-03) pump discharges running along the spine to the sealed end-wall
+ports, P-01 → ACC-01, P-02 → ACC-02 (down the far board to the under-walkway
+ribbon), the DV-01 recycle → IBC-3, and the IBC-2 fill.
 ![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
 ### 3.3 Accumulator

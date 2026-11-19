@@ -1,8 +1,6 @@
-routing-sources-sha: 47c274b6e7d7
+routing-sources-sha: b48dc61ca656
 model=water  pipes=581 solids=832  interferences=0
-pipe-on-pipe crossings=1
-  PIPE  ACC-02 -> BV-05 (recycled spray)            
-    x  PIPE  Tray sump -> P-04 suction                     cross (3206,49,948)  centerline 19mm < 26mm
+pipe-on-pipe crossings=0
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──
 grip-bolt orientation/grip flags: 12  (0 OPEN, 12 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)

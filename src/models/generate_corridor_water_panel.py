@@ -1205,7 +1205,8 @@ def drains_ports(sump_on_skid=False):
     grey_x = 5200                  # X4 grey pickup riser X (on the spine)
     # yface = YD_FAR so the pickup FLANGE sits on the corridor far face / IBC-4 (NOT the spine lane)
     _bottom_pickup(p, "X4 Waste (P-03)", grey_x, YD_FAR, +1, draw.C_PIPE_WASTE,
-                   [(grey_x, spine_yd, turn6),                      # ↑ grey spine riser (straight up the spine face) to the wrap level
+                   [(grey_x, spine_yd, ov.IBC_PALLET_H + 90),       # −Yd on to the spine lane at the pickup level (collinear with the tote exit)
+                    (grey_x, spine_yd, turn6),                      # ↑ grey spine riser (straight up the spine face) to the wrap level
                     (corr_x, spine_yd, turn6),                      # −X through panel+shirt (pump gap) into the corridor
                     (corr_x, BV02_YD, turn6),                       # −Yd to the BV-06 riser lane (in front of the pumps)
                     (rx6, BV02_YD, turn6),                          # +X back to the BV-06 riser (through the pump gap)

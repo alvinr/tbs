@@ -370,9 +370,9 @@ _bb_r, _bb_bot, _bb_top, _bb_head = BB_OD // 2, PWP_FILTER_BOT_Z, PWP_FILTER_TOP
 ax.add_patch(mpatches.Rectangle((sx(PWP_PANEL_X0), sz(PWP_PANEL_Z0)),
              sx(PWP_PANEL_X1) - sx(PWP_PANEL_X0), sz(PWP_PANEL_Z0 + PWP_PANEL_H) - sz(PWP_PANEL_Z0),
              facecolor="#EFE7D0", edgecolor="none", alpha=0.30, zorder=1))
-ax.text(sx(3677), sz(2372),
-        "PINHOLE-WALL FILTER SKID  (sump -> P-04 -> SV-02 -> DV-02 -> F-01/F-02/F-03 -> SV-01 -> DV-01   ·   recycle spray: P-02[corridor] -> ACC-02 -> BV-05)",
-        ha="center", va="bottom", fontsize=3.4, color="#8A7A4A", zorder=3, **FONT)
+ax.text(sx(PWP_PANEL_X1 - 30), sz(400),
+        "PINHOLE-WALL FILTER SKID (18mm ply) — flow path in note 3",
+        ha="left", va="bottom", fontsize=4.0, color="#8A7A4A", zorder=3, **FONT)
 # 3-stage Big Blue filter bank (heads near ceiling, sump bowls hanging)
 for _fid, _fcx, _media in [("F-01", PWP_FILTER_X1, "5um SED"), ("F-02", PWP_FILTER_X2, "KDF-55"), ("F-03", PWP_FILTER_X3, "CARBON")]:
     _x0, _x1 = sx(_fcx - _bb_r), sx(_fcx + _bb_r)
@@ -380,7 +380,7 @@ for _fid, _fcx, _media in [("F-01", PWP_FILTER_X1, "5um SED"), ("F-02", PWP_FILT
                  facecolor=C_FILT, edgecolor=C_FILT_EC, lw=1.0, zorder=7))
     ax.add_patch(mpatches.Rectangle((_x0, sz(_bb_head)), _x1 - _x0, sz(_bb_top) - sz(_bb_head),
                  facecolor="#8FA6BE", edgecolor=C_FILT_EC, lw=0.7, zorder=8))
-    ax.text(sx(_fcx), sz(2000), _fid + "\n" + _media, ha="center", va="center", fontsize=3.6, color="#2A4A6A", zorder=10, **FONT)
+    ax.text(sx(_fcx), sz(2000), _fid + "\n" + _media, ha="center", va="center", fontsize=4.0, color="#2A4A6A", zorder=10, **FONT)
 # ── tray-drain skid row UNDER the filters: P-04 (pump) -> SV-02 (sample) -> DV-02 (3-way), at the row line ──
 _p04x0, _p04x1 = sx(PWP_FILTER_X1 - 50), sx(PWP_FILTER_X1 + 50)
 ax.add_patch(mpatches.Rectangle((_p04x0, sz(PWP_SROW_Z0)), _p04x1 - _p04x0, sz(PWP_SROW_Z0 + 180) - sz(PWP_SROW_Z0),
@@ -390,13 +390,13 @@ _p04_tip = PUMP_YD_SPAN / 2
 for _a, _b in ((PWP_FILTER_X1 - _p04_tip, PWP_FILTER_X1 - 50), (PWP_FILTER_X1 + 50, PWP_FILTER_X1 + _p04_tip)):
     ax.add_patch(mpatches.Rectangle((sx(_a), sz(PWP_DV02_Z - OD_H / 2)), sx(_b) - sx(_a), sz(PWP_DV02_Z + OD_H / 2) - sz(PWP_DV02_Z - OD_H / 2),
                  facecolor=C_PIPE_FITTING, edgecolor=C_OUT, lw=0.6, zorder=9))
-ax.text(sx(PWP_FILTER_X1), sz(PWP_SROW_Z0 - 12), "P-04\nTRAY DRAIN", ha="center", va="top", fontsize=3.4, color="#3A5A7A", zorder=10, **FONT)
-ax.add_patch(plt.Circle((sx(PWP_FILTER_X2), sz(PWP_SV02_Z)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=9))
-ax.text(sx(PWP_FILTER_X2), sz(PWP_SV02_Z - 48), "SV-02\npH SAMPLE", ha="center", va="top", fontsize=3.4, color="#C0392B", zorder=10, **FONT)
+ax.text(sx(PWP_FILTER_X1), sz(PWP_SROW_Z0 - 12), "P-04\nTRAY DRAIN", ha="center", va="top", fontsize=4.0, color="#3A5A7A", zorder=10, **FONT)
+ax.add_patch(plt.Circle((sx(PWP_FILTER_X2), sz(PWP_SV02_Z)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=11))
+ax.text(sx(PWP_FILTER_X2), sz(PWP_SV02_Z - 48), "SV-02\npH SAMPLE", ha="center", va="top", fontsize=4.0, color="#C0392B", zorder=10, **FONT)
 _dvx0, _dvx1 = sx(PWP_FILTER_X3 - 23), sx(PWP_FILTER_X3 + 23)
 ax.add_patch(mpatches.Rectangle((_dvx0, sz(PWP_DV02_Z - 23)), _dvx1 - _dvx0, sz(PWP_DV02_Z + 23) - sz(PWP_DV02_Z - 23),
              facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=9))
-ax.text(sx(PWP_FILTER_X3), sz(PWP_DV02_Z - 48), "DV-02\n3-WAY", ha="center", va="top", fontsize=3.4, color="#8A7A2A", zorder=10, **FONT)
+ax.text(sx(PWP_FILTER_X3), sz(PWP_DV02_Z - 48), "DV-02\n3-WAY", ha="center", va="top", fontsize=4.0, color="#8A7A2A", zorder=10, **FONT)
 # ── Filter-skid flow drawn as PIPES (draw_pipe_path convention, matching the blue supply) + arrows ──
 def _bpipe(xs, zs):
     draw_pipe_path(ax, xs, zs, OD_H, WALL_H, fc=C_BROWN, ec="#5A3A20", bore_fc="white", zorder=6)
@@ -414,16 +414,16 @@ for _x0, _x1 in [(PWP_FILTER_X1 + _bb_r, PWP_FILTER_X2 - _bb_r), (PWP_FILTER_X2 
 # F-03 OUT → SV-01 (raised beside F-03) → drop → DV-01 exit to the corridor
 _bpipe([PWP_FILTER_X3 + _bb_r, PWP_SV01_X, PWP_SV01_X], [PWP_FILTER_CAP_Z, PWP_FILTER_CAP_Z, PWP_SV01_Z])
 ax.add_patch(plt.Circle((sx(PWP_SV01_X), sz(PWP_SV01_Z)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=11))
-ax.text(sx(PWP_SV01_X + 14), sz(PWP_SV01_Z), "SV-01\npH SAMPLE", ha="left", va="center", fontsize=3.4, color="#C0392B", zorder=10, **FONT)
+ax.text(sx(PWP_SV01_X + 14), sz(PWP_SV01_Z), "SV-01\npH SAMPLE", ha="right", va="center", fontsize=4.0, color="#C0392B", zorder=10, **FONT)
 _bpipe([PWP_SV01_X, PWP_SV01_X, 4575], [PWP_SV01_Z, PWP_SV01_Z - 70, PWP_SV01_Z - 70])
 ax.annotate("", xy=(sx(4520), sz(PWP_SV01_Z - 70)), xytext=(sx(4440), sz(PWP_SV01_Z - 70)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
-ax.text(sx(4585), sz(PWP_SV01_Z - 70), "-> DV-01\n(corridor)", ha="left", va="center", fontsize=3.4, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(4590), sz(PWP_SV01_Z - 70), "→ DV-01\n(corridor)", ha="right", va="center", fontsize=4.0, color=C_BROWN, zorder=10, **FONT)
 # ACC-02 recycle-spray damper — center-bottom cylinder (fed from P-02 in the corridor)
 _a2x0, _a2x1 = sx(PWP_ACC2_X - 63), sx(PWP_ACC2_X + 63)
 ax.add_patch(mpatches.Rectangle((_a2x0, sz(PWP_ACC2_Z0)), _a2x1 - _a2x0, sz(PWP_ACC2_Z0 + 200) - sz(PWP_ACC2_Z0),
              facecolor=C_ACC, edgecolor=C_FILT_EC, lw=0.9, zorder=8))
-ax.text(sx(PWP_ACC2_X), sz(PWP_ACC2_Z0 - 12), "ACC-02\nRECYCLE-SPRAY DAMPER", ha="center", va="top", fontsize=3.2, color="#3A5A7A", zorder=10, **FONT)
+ax.text(sx(PWP_ACC2_X), sz(PWP_ACC2_Z0 - 12), "ACC-02\nRECYCLE-SPRAY DAMPER", ha="center", va="top", fontsize=4.0, color="#3A5A7A", zorder=10, **FONT)
 # ── sump-pickup suction: tray sump (below) rises through the walkway → up the pinhole wall → P-04's −X IN port ──
 _p4in_z = PWP_DV02_Z                              # IN port shares the OUT port height (3D pump_unit)
 _riser_z = SUMP_SUCTION_WALL_RUN_Z               # 230 — along-wall run height, above the cantilever wall-plates (single-sourced with the 3D routing)
@@ -432,21 +432,20 @@ _bpipe([PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_X, _rise_x, _rise_x, PWP_FILTER_X1 - 
        [90, _riser_z, _riser_z, _p4in_z, _p4in_z])
 ax.annotate("", xy=(sx(PROC_TRAY_DRAIN_X), sz(360)), xytext=(sx(PROC_TRAY_DRAIN_X), sz(250)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
-ax.text(sx(PROC_TRAY_DRAIN_X), sz(50), "SUMP PICKUP\n(up through walkway → P-04)", ha="center", va="top", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(PH_X + 40), sz(165), "SUMP PICKUP\n(up through walkway → P-04)", ha="right", va="center", fontsize=4.0, color=C_BROWN, zorder=10, **FONT)
 # ── ACC-02 IN — fed from P-02 in the corridor (off-panel, +X) ──
 _bpipe([4575, PWP_ACC2_X + 63], [PWP_ACC2_Z0 + 120, PWP_ACC2_Z0 + 120])
-ax.text(sx(4585), sz(PWP_ACC2_Z0 + 120), "from P-02\n(corridor)", ha="left", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(4590), sz(PWP_ACC2_Z0 + 120), "from P-02\n(corridor)", ha="right", va="center", fontsize=4.0, color=C_BROWN, zorder=10, **FONT)
 # ── ACC-02 OUT — recycled spray → 3W-BV-05 spray selector → spray bar ──
-# The −X run crosses the P-04 sump-pickup riser (X=_rise_x, Z230-1240) at Z=ACC2+60; draw a
-# semicircle JUMP over it (crossover convention) so the two brown runs read as crossing, not joining.
+# The −X run crosses BEHIND the P-04 sump-pickup riser (X=_rise_x): the riser stays unbroken and this
+# run breaks flush against its outer wall (plumbing-skill crossing rule — no bridge arcs).
 _bv5x, _bv5z = BV05_X - 150, BV05_Z
 _zc = PWP_ACC2_Z0 + 60                             # 980 — the ACC-02 OUT run height
-_R = 20; _hd = _R * 0.707                          # hop radius / 45° offset
-_bpipe([PWP_ACC2_X - 63, _rise_x + _R, _rise_x + _hd, _rise_x, _rise_x - _hd, _rise_x - _R, _bv5x, _bv5x],
-       [_zc,             _zc,          _zc + _hd,     _zc + _R, _zc + _hd,     _zc,          _zc,   _bv5z + 20])
+_bpipe([PWP_ACC2_X - 63, _rise_x + OD_H / 2], [_zc, _zc])
+_bpipe([_rise_x - OD_H / 2, _bv5x, _bv5x], [_zc, _zc, _bv5z + 20])
 # 3W-BV-05a selector symbol (fresh Blue ↔ recycled Brown → spray bar)
 ax.add_patch(mpatches.Rectangle((sx(_bv5x) - 8, sz(_bv5z) - 8), 16, 16, facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=12))
-ax.text(sx(_bv5x), sz(_bv5z + 95), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(_bv5x), sz(_bv5z + 95), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=4.0, color=C_BROWN, zorder=10, **FONT)
 # BV-05 → down to the spray-bar supply line (where the Blue supply feeds in)
 _bpipe([_bv5x, _bv5x], [_bv5z - 20, SPRAY_BAR_FEED_Z])
 
@@ -501,9 +500,6 @@ ax.add_patch(plt.Polygon([(_bvx + _bs, _bvz - _bs),
                           (_bvx + _bs, _bvz + _bs),
                           (_bvx, _bvz)],
                          fc=C_BLUE, ec=C_BLUE, zorder=13))
-ax.text(_bvx, _bvz - BV05_R - 8, "BV-05b",
-        ha="center", va="top", fontsize=4, fontweight="bold",
-        color=C_BLUE, zorder=13, **FONT)
 
 leader(ax, sx(BV05_X), sz(BV05_Z + BV05_R + 5),
        sx(BV05_X + 190), sz(BV05_Z + 78),
@@ -516,9 +512,9 @@ ax.annotate("", xy=(sx(BV05_X - 100), sz(BV05_Z - 50)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=0.8,
                             connectionstyle="arc3,rad=0.3"),
             zorder=10)
-ax.text(sx(BV05_X - 80), sz(BV05_Z - 80),
+ax.text(sx(BV05_X - 175), sz(BV05_Z - 80),
         "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL ·\nBlue or Brown)",
-        ha="center", va="top", fontsize=4.0, color=C_BLUE,
+        ha="left", va="top", fontsize=4.0, color=C_BLUE,
         style="italic", zorder=10, **FONT)
 
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
@@ -581,7 +577,7 @@ equip_block(SHELF_X_L, SHELF_H, SHELF_X_R - SHELF_X_L, SHELF_STOW_TOP_Z - SHELF_
             "", C_SHELF_DK, ls="--", alpha=0.3, lw=1.0, zorder=4)
 ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_STOW_TOP_Z + 25),
         "(folds up for transport)", ha="center", va="bottom",
-        fontsize=3.5, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
+        fontsize=4.0, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 5. DIMENSION LINES — key clearances and positions
@@ -660,7 +656,7 @@ notes = [
     f"1. Blue supply pipe: ½\" PVC Sch-40 (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
     f" from IBC zone to spray bar. BV-05b riser at pinhole centerline to Z={BV05_Z} (waist height)."
     " Chemistry tap branch (¾\") rises to shelf.",
-    f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
+    f"2. Evap cooler is EXTERNAL — its only presence on this wall is the Ø{EVAP_DUCT_D}mm duct penetration at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
     "3. Pinhole wall carries the FILTER SKID: tray-drain P-04 + SV-02 + DV-02 (skid row under the filters),"
     " the 3-stage Big Blue bank (F-01/F-02/F-03) high under the ceiling, SV-01 (raised beside F-03), and the",
     " recycle-spray damper ACC-02 (center-bottom). Corridor pumps P-01/P-02/P-03/P-05 + ACC-01 + DV-01 are",

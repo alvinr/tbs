@@ -280,17 +280,19 @@ def draw_sheet1():
     ext_port(ax1, 37.5, 241.25, color=C_BLUE, label="X1")
     ax1.text(37.5, 249.5, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5, color=C_BLUE, style="italic")
     pipe(ax1, 37.5, 238.25, 37.5, 227, C_BLUE)
-    check_valve(ax1, 37.5, 234.5, 0, -25, color=C_BLUE); ax1.text(29.5, 234.5, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
+    check_valve(ax1, 37.5, 234.5, 0, -25, color=C_BLUE)
+    ax1.text(32, 234.5, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
     pipe(ax1, 37.5, 227, 72.5, 227, C_BLUE); ax1.plot([37.5], [227], "o", ms=4.5, color=C_BLUE, zorder=6)
     pipe(ax1, 37.5, 227, 37.5, 205, C_BLUE); arrow_pipe(ax1, 37.5, 210.5, 37.5, 207.5, color=C_BLUE)
     pipe(ax1, 72.5, 227, 72.5, 205, C_BLUE); arrow_pipe(ax1, 72.5, 210.5, 72.5, 207.5, color=C_BLUE)
-    ax1.text(55, 230.5, "X1 FILL TEE → IBC-1 & IBC-2\n(fill only — no recycle)", ha="center", fontsize=5.2, color=C_BLUE, style="italic")
+    ax1.text(58, 238, "X1 FILL TEE → IBC-1 & IBC-2\n(fill only — no recycle)", ha="center", fontsize=5.2, color=C_BLUE, style="italic")
 
     pipe(ax1, 55, 178.75, 65, 178.75, C_BLUE); ax1.plot([55, 65], [178.75, 178.75], "o", ms=3.5, color=C_BLUE, zorder=6)
     pipe(ax1, 37.5, 169.5, 37.5, 166.25, C_BLUE); pipe(ax1, 37.5, 166.25, 60 - VR, 166.25, C_BLUE)
     pipe(ax1, 82.5, 169.5, 82.5, 166.25, C_BLUE); pipe(ax1, 82.5, 166.25, 60 + VR, 166.25, C_BLUE)
     ax1.text(60, 175.5, 'IBC-1 & IBC-2 PARALLEL (shared BV-01 · 1" equalization tie)', ha="center", fontsize=5.2, color=C_BLUE, style="italic")
-    valve(ax1, 60, 166.25, color=C_BLUE); ax1.text(65.5, 166.25, "BV-01", ha="left", va="center", fontsize=6, color=C_BLUE)
+    valve(ax1, 60, 166.25, color=C_BLUE)
+    ax1.text(64, 164, "BV-01", ha="left", va="center", fontsize=6, color=C_BLUE)
     pipe(ax1, 60, 166.25 - VR, 60, 153.75 + PR, C_BLUE); arrow_pipe(ax1, 60, 162, 60, 159, color=C_BLUE)
     pump(ax1, 60, 153.75, color=C_PUMP); ax1.text(65.5, 152.5, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
     pipe(ax1, 60, 153.75 - PR, 60, 140.5 + 5.25, C_BLUE)
@@ -308,11 +310,12 @@ def draw_sheet1():
     # brown/black horizontal (chem prep needs clean water, so it stays high on the isolated blue line)
     TAP_X = 315
     pipe(ax1, TAP_X, L_FRESH, TAP_X, 122 + VR, C_BLUE)
-    valve(ax1, TAP_X, 122, color=C_BLUE); ax1.text(TAP_X + 7, 123.5, "BV-04", ha="left", va="center", fontsize=6, color=C_BLUE)
+    valve(ax1, TAP_X, 122, color=C_BLUE)
+    ax1.text(TAP_X + 5, 123.5, "BV-04", ha="left", va="center", fontsize=6, color=C_BLUE)
     pipe(ax1, TAP_X, 122 - VR, TAP_X, 117.5, C_BLUE)
     ax1.plot([TAP_X - 4.5, TAP_X + 4.5, TAP_X, TAP_X - 4.5], [117.5, 117.5, 114, 117.5], color=C_BLUE, lw=2.0, solid_capstyle="round", zorder=5)
     ax1.add_patch(plt.Circle((TAP_X, 112.25), 1.55, fc="white", ec=C_BLUE, lw=1.6, zorder=6))   # OPEN egress point
-    ax1.text(TAP_X + 7, 115, "TAP-01 (CHEM PREP)", ha="left", va="center", fontsize=5.6, color=C_BLUE)
+    ax1.text(TAP_X - 20, 115, "TAP-01\n(CHEM PREP)", ha="left", va="center", fontsize=5.6, color=C_BLUE)
 
     # ═══ BROWN SYSTEM — buffer + recycled-spray pump ═══════════════════════════════
     tank(ax1, 160, 205, 35, 35, fc="#D7CCC8", ec=C_BROWN_IBC, lw=2, label="IBC-3", sublabel="264 gal (1000L)\nUSED BUFFER")
@@ -328,11 +331,15 @@ def draw_sheet1():
 
     # P-02 recycled-spray leg: BV-03 → P-02 → ACC-02 → recycled-spray run → selector
     pipe(ax1, 160, TAP_Y, 160, 157.5 + VR, C_BROWN)
-    valve(ax1, 160, 157.5, color=C_BROWN); ax1.text(165.5, 157.5, "BV-03", ha="left", fontsize=6, color=C_BROWN)
-    pipe(ax1, 160, 157.5 - VR, 160, 143.75 + PR, C_BROWN); arrow_pipe(ax1, 160, 151.25, 160, 148, color=C_BROWN)
-    pump(ax1, 160, 143.75, color=C_PUMP); ax1.text(165, 142, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
+    valve(ax1, 160, 157.5, color=C_BROWN)
+    ax1.text(164, 157.5, "BV-03", ha="left", fontsize=6, color=C_BROWN)
+    pipe(ax1, 160, 157.5 - VR, 160, 143.75 + PR, C_BROWN)
+    arrow_pipe(ax1, 160, 151.25, 160, 148, color=C_BROWN)
+    pump(ax1, 160, 143.75, color=C_PUMP)
+    ax1.text(165, 142, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
     pipe(ax1, 160, 143.75 - PR, 160, 117.5 + 5.25, C_BROWN)
-    box(ax1, 160, 117.5, 20, 10.5, fc="#EFEBE9", ec=C_BROWN, lw=1.5); ax1.text(160, 117.5, "ACC-02\n1 GAL", ha="center", va="center", fontsize=6, color=C_BROWN)
+    box(ax1, 160, 118.5, 20, 10.5, fc="#EFEBE9", ec=C_BROWN, lw=1.5, zorder=3)
+    ax1.text(160, 118.5, "ACC-02\n1 GAL", ha="center", va="center", fontsize=6, color=C_BROWN)
     pipe(ax1, 160, 117.5 - 5.25, 160, L_RECY, C_BROWN)
     pipe(ax1, 160, L_RECY, SEL_X, L_RECY, C_BROWN)
     pipe_bridge(ax1, 242.5, L_RECY, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L)     # under DV-01 recycle riser
@@ -349,7 +356,7 @@ def draw_sheet1():
     pump(ax1, BD_X, 207.5, color=C_PUMP); ax1.text(BD_X - 3.75, 205, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
     pipe(ax1, BD_X, 207.5 + PR, BD_X, 237.5, C_BROWN); arrow_pipe(ax1, BD_X, 232.5, BD_X, 236.25, color=C_BROWN)
     ext_port(ax1, BD_X, 241.25, color=C_BROWN, label="X3")
-    ax1.text(BD_X, 249.5, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5, color=C_BROWN, style="italic", va="bottom")
+    ax1.text(BD_X + 2, 249.5, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5, color=C_BROWN, style="italic", va="bottom")
 
     # ═══ FILTER SKID (compact) — fed by DV-02 (P-04-driven); out via SV-01 → DV-01 ══
     ax1.add_patch(plt.Rectangle((130, 76.25), 95, 30, fc=C_FILT, ec="#F57F17", lw=1.5, alpha=0.8, zorder=1))
@@ -382,7 +389,7 @@ def draw_sheet1():
     ax1.text(217.5, L_DVREC + 4.5, "RECYCLE → IBC-3 BUFFER", ha="center", fontsize=5.6, color=C_BROWN, style="italic")
     pipe(ax1, 242.5 + DVR, 87.5, WRX, 87.5, C_BLACK)
     check_valve(ax1, 253, 87.5, 25, 0, color=C_BLACK)
-    ax1.text(253, 83.5, "CV-2", ha="center", fontsize=5.2, color=C_BLACK)
+    ax1.text(253, 82, "CV-2", ha="center", fontsize=5.2, color=C_BLACK)
     arrow_pipe(ax1, 260.5, 87.5, WRX - 1.5, 87.5, color=C_BLACK)
     ax1.text(262.5, 92.5, "REJECT → IBC-4", ha="center", fontsize=5.4, color=C_BLACK, style="italic")
 
@@ -441,8 +448,7 @@ def draw_sheet1():
     DV02_Y = 76.25
     pipe(ax1, 390, 91.25 - PR, 390, DV02_Y + DVR, C_BROWN)
     diverter(ax1, 390, DV02_Y, color="#777777", size=1.875, branch="left")
-    ax1.text(390, 68, "3W-DV-02", ha="center", fontsize=6, color="#444")
-    ax1.text(390, 63.25, "recycle→filters / waste→IBC-4 / off", ha="center", fontsize=5.0, color="#444", style="italic")
+    ax1.text(392, 68, "3W-DV-02\nrecycle→filters / waste→IBC-4 / off", ha="left", fontsize=6, color="#444")
     # recycle leg (brown) — straight THROUGH DV-02 (down) → filter-feed run → F1.  This run now
     # crosses nothing (TAP-01 raised, waste routed above it), so it carries NO bridges.
     pipe(ax1, 390, DV02_Y - DVR, 390, L_FEED, C_BROWN)
@@ -452,7 +458,7 @@ def draw_sheet1():
     # waste leg (black) — BRANCH off DV-02 (left) → STRAIGHT west to the waste riser (no dog-leg)
     pipe(ax1, 390 - DVR, DV02_Y, WRX, DV02_Y, C_BLACK)
     check_valve(ax1, 371.25, DV02_Y, -25, 0, color=C_BLACK)
-    ax1.text(371.25, DV02_Y - 4.25, "CV-3", ha="center", fontsize=5.2, color=C_BLACK)
+    ax1.text(371.25, DV02_Y - 5, "CV-3", ha="center", fontsize=5.2, color=C_BLACK)
     arrow_pipe(ax1, 332.5, DV02_Y, 312.5, DV02_Y, color=C_BLACK)
     ax1.text(333.75, DV02_Y + 4, "WASTE → IBC-4 (HEAVY CONTAM.)", ha="center", fontsize=5.8, color=C_BLACK, style="italic")
 

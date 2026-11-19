@@ -350,6 +350,7 @@ SPINE_Z0    = 280    # drain-riser spine bottom Z (clears the low waste pickup z
 X1_TEE_X, X1_TEE_Z = 5500, 2250                     # X1 fill tee — ON the spine top, centered in its thickness (X1_TEE_Y below)
 SPINE_Z1    = X1_TEE_Z - ov.PUMP_PIPE_OD / 2       # 2239.5 — drain-riser spine top: the X1 fill run + tee REST on its top edge
 SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the sealed end wall (X5893) so the two end-wall port runs (P-05→X3, P-03→X4) + their X5763 drops get a ply clip surface; still clears the wall
+X3_CROSS_X = SPINE_X_END - 100   # P-05→X3 crosses the spine here (100mm in from its X-edge), then runs the near-face clip lane to X3
 
 
 
@@ -412,6 +413,8 @@ def rear_panel():
         for frac in (0.30, 0.70):
             cz = max(300, min(int(zb + (zt - zb) * frac), int(SPINE_Z1 - 20)))
             p.append(clip_on_block("Spine riser P-clip", rx, cz, SPINE_FACE_NEAR, SPINE_RISER_YD, True))
+    p.append(clip_on_block("Spine near-side P-clip", (X3_CROSS_X + SPINE_X_END) / 2 + 10,
+                           _piz("P-05"), SPINE_FACE_NEAR, SPINE_RISER_YD, False))
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
     # P-05→X3 (brown, Z1502) and P-03→X4 (waste, Z1902), both on the COL_R lane. Clamps to the +Yd face.
     spine_far_face = SPINE_FACE_NEAR + EQT
@@ -832,7 +835,7 @@ REAR_HOLES = [(DV01_WASTE_YD, 235, RPH),      # DV-01 -> IBC-4 merge
               (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
 SPINE_HOLES = [(5500, 1376, 16 + 3),                 # Blue equalization (IBC-1 <-> IBC-2, 1" r16)  (X, Z) — cut along Y
                (ov.IBC_COL_X + 830, MERGE4[2], RPH),  # IBC-4 (Waste) tote entry (xe4) off the merge tee
-               (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
+               (X3_CROSS_X, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing
 
 
 def support_boards(sides=("far", "near", "near-upper")):
@@ -1194,16 +1197,15 @@ def drains_ports(sump_on_skid=False):
          draw.C_IBC_BROWN)
     port_jumper(p, "P-05 suction jumper", [p5i, (PXC, BV02_YD, z05), (rx, BV02_YD, z05), (rx, BV02_YD, zloop)])
     p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
-    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=draw.C_STEEL, axis="x"))
+    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, SPINE_RISER_YD, p5o[2], 22, 60, color=draw.C_STEEL, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
     # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
-    # to the end wall (extending the straight run), then −Yd onto the X3 port lane past the spine, and down.
+    # toward the end wall, then −Yd through the spine onto its near-face clip lane and +X to X3.
     x3lane = COL_R
-    x3cross = SPINE_X_END - 100   # 5680 — cross the spine 100mm IN from its new far edge (X5780), not at the weak X-edge
     _p05 = [p5o, (PXC, PORT_TURN_YD_OUT, p5o[2]), (5030, PORT_TURN_YD_OUT, p5o[2]), (5030, x3lane, p5o[2]),
-            (x3cross, x3lane, p5o[2]), (x3cross, COL_L, p5o[2]),     # +X along the lane to x3cross, then −Yd ACROSS the spine (100mm in)
-            (x3cross, COL_L, 1700), (ew - 60, COL_L, 1700)]          # drop, then +X to the X3 end-wall port
+            (X3_CROSS_X, x3lane, p5o[2]), (X3_CROSS_X, SPINE_RISER_YD, p5o[2]),
+            (ew - 60, SPINE_RISER_YD, p5o[2])]
     pipe("P-05 -> X3 end-wall port", _p05, draw.C_IBC_BROWN)   # OUT turns one elbow out of the port
     port_jumper(p, "P-05 discharge jumper", _p05)
 

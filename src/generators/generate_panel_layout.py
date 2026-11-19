@@ -1353,6 +1353,11 @@ def spine_view(side):
         # X4 waste pickup: IBC-4 bottom → up the spine → −X wrap → up past BV-06 → P-03 IN
         run3d("X4 Waste (P-03) pickup", C_WASTEB, zorder=14)
         note(cwp.SPINE_X_END - 380, 300, "from IBC-4 (bottom pickup)\n→ up the spine → BV-06 → P-03", C_WASTEB)
+        # P-05 → X3 tail: through the spine (end-on, toward you) → +X on the −Yd clip lane to X3
+        x3z = W["runs"]["P-05 -> X3 end-wall port"][-1][2]
+        run3d("P-05 -> X3 end-wall port", C_BROWNB, zorder=12, xmin=cwp.X3_CROSS_X)
+        endon(cwp.X3_CROSS_X, x3z, C_BROWNB, toward=True)
+        note(cwp.X3_CROSS_X - 20, x3z + 30, "P-05 → X3 (through\nthe spine from View B)", C_BROWNB, ha="right", va="bottom")
         # ACC-01 OUT → Blue supply trunk → −X to the ribbon slot → spray bar / TAP-01
         run3d("Blue supply trunk -> spray bar / TAP-01 (off-panel)", C_BLUEB, zorder=16, xmin=GAPX + 1)
         _flowhead(GAPX + 1, 200, "left", C_BLUEB)
@@ -1389,7 +1394,7 @@ def spine_view(side):
         endon(rx, rz, C_BROWNB, toward=False)
         leader(axb, rx, rz, 5330, 960, "DV-01 RECYCLE → IBC-3 (Brown buffer)\n−Yd into the tote, flex jumper at the flange",
                color=C_BROWNB, fs=4.6, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
-        leader(axb, 5640, 1700, 6120, 1820,
+        leader(axb, 5600, W["runs"]["P-05 -> X3 end-wall port"][-1][2], 6120, 1820,
                "+Yd DISCHARGE face (near):\nX3 / X4 pump discharges → end-wall ports",
                color=C_BROWNB, fs=5.2, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
@@ -1423,7 +1428,7 @@ def spine_view(side):
         f"1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a {SHIRTX1 - SHIRTX0:.0f}mm pump-mount shirt that backs the bodies (X={SHIRTX0:.0f}–{SHIRTX1:.0f}, Z={SHIRT_ZB:.0f}–{SHIRT_ZT:.0f}).",
         f"2. A ~{PANX - SHIRTX1:.0f}mm chase gap separates the shirt back (X={SHIRTX1:.0f}) and the rear-panel front (X={PANX:.0f}); six ply spacer blocks bridge it.",
         f"3. Rear panel: 18mm ply, X={PANX:.0f}–{PANX1:.0f}, Z={PAN_ZB:.0f}–{PAN_ZT:.0f}. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f}).",
-        "4. View A (−Yd intake face): the four pump suctions (BV-01/03/02/06), the X4 pickup riser up the spine, DV-01 + DV-02 waste → IBC-4 merge, the IBC-1 fill and the Blue supply trunk.",
+        "4. View A (−Yd intake face): the four pump suctions (BV-01/03/02/06), the X4 pickup riser up the spine, DV-01 + DV-02 waste → IBC-4 merge, the IBC-1 fill, the Blue supply trunk, and the P-05 → X3 tail on its spine clip lane.",
         f"5. View B (+Yd discharge face): P-05 → X3 (Z={X3_PORT_Z:.0f}) and P-03 → X4 (Z={X4_PORT_Z:.0f}) along the spine to the end-wall ports, P-01 → ACC-01, P-02 → ACC-02 (skid), and the DV-01 recycle → IBC-3 (Brown buffer).",
         f"6. IBC-4 merge tee on the spine: DV-01 waste rises into its branch through CV-2, DV-02 waste (from the skid, under the walkway) joins its run through CV-3 — each check {cv_dz:.0f}mm below the tee, so one leg can't back-feed the other.",
         "7. Circuit C1 (15A, pole 1 of the 2-pole EP master pump switch) feeds the four corridor pumps from the rear-panel distribution block; they run one at a time by valve selection. The tray-drain P-04 (pinhole skid) is on its own fuse, C2 (pole 2).",

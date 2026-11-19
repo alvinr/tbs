@@ -286,7 +286,7 @@ def draw_sheet1():
     pipe(ax1, 37.5, 227, 72.5, 227, C_BLUE); ax1.plot([37.5], [227], "o", ms=4.5, color=C_BLUE, zorder=6)
     pipe(ax1, 37.5, 227, 37.5, 205, C_BLUE); arrow_pipe(ax1, 37.5, 210.5, 37.5, 207.5, color=C_BLUE)
     pipe(ax1, 72.5, 227, 72.5, 205, C_BLUE); arrow_pipe(ax1, 72.5, 210.5, 72.5, 207.5, color=C_BLUE)
-    ax1.text(58, 238, "X1 FILL TEE → IBC-1 & IBC-2\n(fill only — no recycle)", ha="center", fontsize=5.2, color=C_BLUE, style="italic")
+    ax1.text(60, 238, "X1 FILL TEE → IBC-1 & IBC-2\n(fill only — no recycle)", ha="center", fontsize=5.2, color=C_BLUE, style="italic")
 
     pipe(ax1, 55, 178.75, 65, 178.75, C_BLUE); ax1.plot([55, 65], [178.75, 178.75], "o", ms=3.5, color=C_BLUE, zorder=6)
     pipe(ax1, 37.5, 169.5, 37.5, 166.25, C_BLUE); pipe(ax1, 37.5, 166.25, 60 - VR, 166.25, C_BLUE)
@@ -295,7 +295,8 @@ def draw_sheet1():
     valve(ax1, 60, 166.25, color=C_BLUE)
     ax1.text(64, 164, "BV-01", ha="left", va="center", fontsize=6, color=C_BLUE)
     pipe(ax1, 60, 166.25 - VR, 60, 153.75 + PR, C_BLUE); arrow_pipe(ax1, 60, 162, 60, 159, color=C_BLUE)
-    pump(ax1, 60, 153.75, color=C_PUMP); ax1.text(65.5, 152.5, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
+    pump(ax1, 60, 153.75, color=C_PUMP)
+    ax1.text(65.5, 150, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
     pipe(ax1, 60, 153.75 - PR, 60, 140.5 + 5.25, C_BLUE)
     box(ax1, 60, 140.5, 20, 10.5, fc="#E3F2FD", ec=C_BLUE, lw=1.5); ax1.text(60, 140.5, "ACC-01\n1 GAL", ha="center", va="center", fontsize=6, color=C_BLUE)
 
@@ -328,7 +329,7 @@ def draw_sheet1():
 
     TAP_Y = 172.5
     pipe(ax1, 160, 187.5, 160, TAP_Y, C_BROWN); ax1.plot([160], [TAP_Y], "o", ms=4.5, color=C_BROWN, zorder=6)
-    ax1.text(165.5, 178.75, "IBC-3 BOTTOM TAP (→ P-02 + P-05)", ha="left", va="center", fontsize=5.0, color=C_BROWN, style="italic")
+    ax1.text(165.5, 178.75, "IBC-3 BOTTOM TAP\n→ P-02 + P-05", ha="left", va="center", fontsize=5.0, color=C_BROWN, style="italic")
 
     # P-02 recycled-spray leg: BV-03 → P-02 → ACC-02 → recycled-spray run → selector
     pipe(ax1, 160, TAP_Y, 160, 157.5 + VR, C_BROWN)
@@ -337,7 +338,7 @@ def draw_sheet1():
     pipe(ax1, 160, 157.5 - VR, 160, 143.75 + PR, C_BROWN)
     arrow_pipe(ax1, 160, 151.25, 160, 148, color=C_BROWN)
     pump(ax1, 160, 143.75, color=C_PUMP)
-    ax1.text(165, 142, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
+    ax1.text(165, 140, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
     pipe(ax1, 160, 143.75 - PR, 160, 117.5 + 5.25, C_BROWN)
     box(ax1, 160, 118.5, 20, 10.5, fc="#EFEBE9", ec=C_BROWN, lw=1.5, zorder=3)
     ax1.text(160, 118.5, "ACC-02\n1 GAL", ha="center", va="center", fontsize=6, color=C_BROWN)
@@ -346,7 +347,7 @@ def draw_sheet1():
     pipe_bridge(ax1, 242.5, L_RECY, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L)     # under DV-01 recycle riser
     pipe_bridge(ax1, WRX, L_RECY, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L)     # over waste riser
     arrow_pipe(ax1, 322.5, L_RECY, 332.5, L_RECY, color=C_BROWN)
-    ax1.text(172.5, L_RECY + 4.25, '1" BROWN — RECYCLED SPRAY', ha="left", fontsize=6.2, color=C_BROWN)
+    ax1.text(180, L_RECY + 4.25, '1" BROWN — RECYCLED SPRAY', ha="left", fontsize=6.2, color=C_BROWN)
 
     # P-05 buffer drain-out → exterior port X3
     BD_X = 133.75
@@ -455,13 +456,13 @@ def draw_sheet1():
     pipe(ax1, 390, DV02_Y - DVR, 390, L_FEED, C_BROWN)
     pipe(ax1, 390, L_FEED, 150, L_FEED, C_BROWN)
     arrow_pipe(ax1, 257.5, L_FEED, 247.5, L_FEED, color=C_BROWN)
-    ax1.text(260, L_FEED - 5.5, "RECYCLE → FILTER SKID (P-04 drives F1→F3)", ha="center", fontsize=6, color=C_BROWN)
+    ax1.text(290, L_FEED - 5.5, "RECYCLE → FILTER SKID (P-04 drives F1→F3)", ha="center", fontsize=6, color=C_BROWN)
     # waste leg (black) — BRANCH off DV-02 (left) → STRAIGHT west to the waste riser (no dog-leg)
     pipe(ax1, 390 - DVR, DV02_Y, WRX, DV02_Y, C_BLACK)
     check_valve(ax1, 371.25, DV02_Y, -25, 0, color=C_BLACK)
     ax1.text(371.25, DV02_Y - 5, "CV-3", ha="center", fontsize=5.2, color=C_BLACK)
     arrow_pipe(ax1, 332.5, DV02_Y, 312.5, DV02_Y, color=C_BLACK)
-    ax1.text(333.75, DV02_Y + 4, "WASTE → IBC-4 (HEAVY CONTAM.)", ha="center", fontsize=5.8, color=C_BLACK, style="italic")
+    ax1.text(310, DV02_Y + 4, "WASTE → IBC-4 (HEAVY CONTAM.)", ha="center", fontsize=5.8, color=C_BLACK, style="italic")
 
     # ── 3-way SPRAY-SOURCE SELECTOR (replaces BV-05) ─────────────────────────────
     diverter(ax1, SEL_X, SEL_Y, color="#6A1B9A", size=2.125, branch="up")

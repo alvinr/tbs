@@ -11,7 +11,7 @@ on the rear panel facing the operator (added next).  Reuses generate_sketchup_mo
 
     python3 src/models/generate_corridor_water_panel.py --send --save   # build into the ACTIVE (blank) doc, save corridor-panel.skp
 """
-import sys, os, argparse
+import sys, os, argparse, math
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(os.path.dirname(_HERE))
 sys.path.insert(0, _HERE)
@@ -360,27 +360,12 @@ def rear_panel():
     # rather than fused into the slab (check_interference.py --pipes).  Centers = (Yd, Z) mirror the pipe
     # waypoints; radius is generous (RP+3 pipe / 7 cable) so a small routing shift stays in the hole —
     # --pipes remains the drift tripwire.  Both X-thin panels cut along X; the spine (Yd-thin) along Y.
-    RPH, CBH = RP + 3, 7
-    shirt_holes = [(BVY_REAR, 1210, RPH),    # Blue #1 -> P-01 suction entry
-                   (1245, 1502, RPH),    # P-05 -> X3 end-wall port
-                   (SPINE_RISER_YD, 1700, RPH),    # X4 Waste (P-03) pickup
-                   (CTR_Y, 1030, CBH),   # Cct-C branch -> P-02 (power cable)
-                   (CTR_Y, 1430, CBH)]   # Cct-C branch -> P-05 (power cable)
-    rear_holes = [(DV01_WASTE_YD, 235, RPH),      # DV-01 -> IBC-4 merge
-                  (ov.RWK_RIBBON_NOTCH_YDS[2], WASTE_PANEL_Z, RPH),   # DV-02 waste -> IBC-4
-                  (BVY_REAR, 1210, RPH),     # Blue #1 -> P-01 suction entry
-                  (1245, 1502, RPH),     # P-05 -> X3 end-wall port
-                  (SPINE_RISER_YD, 1700, RPH),     # X4 Waste (P-03) pickup
-                  (CTR_Y, 1030, CBH),    # Cct-C branch -> P-02
-                  (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
-    spine_holes = [(5500, 1376, RPH),                    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
-                   (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
     p = [draw.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
-                     EQT, YW_CUT, PH_CUT, color=draw.C_PLY, holes=rear_holes, hole_axis="x")]
+                     EQT, YW_CUT, PH_CUT, color=draw.C_PLY, holes=REAR_HOLES, hole_axis="x")]
     # 18mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the chase between the bodies and the rear frame.
     p.append(draw.ruby_box("Pump-mount ply shirt (18mm)", SHIRT_X, YD_NEAR + S, SHIRT_Z0,   # SHIRT_X: module constant
-                         EQT, YW_CUT, PANEL_TOP_Z - SHIRT_Z0, color=draw.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
+                         EQT, YW_CUT, PANEL_TOP_Z - SHIRT_Z0, color=draw.C_PLY, holes=SHIRT_HOLES, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
@@ -396,7 +381,7 @@ def rear_panel():
     # the X1 cross (x>5470).
     p.append(draw.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, SPINE_Z0,
                          SPINE_X_END - BACK_X, 18, (TOP_Z - S) - SPINE_Z0, color=draw.C_PLY,
-                         holes=spine_holes, hole_axis="y"))   # −Yd face at 1206 = the grey
+                         holes=SPINE_HOLES, hole_axis="y"))   # −Yd face at 1206 = the grey
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
     #   z247-268).  Extended +X to 5560 (past the X1 cross at 5530) and UP to the rear-panel top
     #   (z=TOP_Z−S=2246) to also back the X1 fill cross, Blue equalization tie, and the high fill/recycle runs.
@@ -411,9 +396,9 @@ def rear_panel():
             cz = max(300, min(int(zb + (zt - zb) * frac), int(TOP_Z - S - 20)))
             p.append(clip_on_block("Spine riser P-clip", rx, cz, SPINE_FACE_NEAR, SPINE_RISER_YD, True))
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
-    # P-05→X3 (brown, Z1502) and P-03→X4 (waste, Z1902), both on the Yd1245 lane. Clamps to the +Yd face.
+    # P-05→X3 (brown, Z1502) and P-03→X4 (waste, Z1902), both on the COL_R lane. Clamps to the +Yd face.
     spine_far_face = 1224
-    for px, pyd, pz in ((5250, 1245, 1502), (5450, 1245, 1502), (5650, 1245, 1502),                       # P-05 → X3 (brown) — run ends at the X5680 crossing
+    for px, pyd, pz in ((5250, COL_R, 1502), (5450, COL_R, 1502), (5650, COL_R, 1502),                       # P-05 → X3 (brown) — run ends at the X5680 crossing
                         (5250, COL_R, 1902), (5450, COL_R, 1902), (5650, COL_R, 1902), (5730, COL_R, 1902)):  # P-03 → X4 (grey) — +2 over the extended spine
         p.append(clip_on_block("Spine far-side P-clip", px, pz, spine_far_face, pyd, False, flush_ok=True))   # horizontal X-port line — DEFERRED: standoff pending the spine-relocation review
     # P-03→X4 end-wall DROP (vertical at X5763, on COL_R) — now backed by the extended spine; clamp to the +Yd face
@@ -425,7 +410,8 @@ def rear_panel():
 # ── corridor-panel equipment placement (equipment hangs −X off the rear panel) ──
 FACE_X = BACK_X                          # 5104 — rear-panel plane; equipment hangs −X toward the mouth
 COL_L  = YD_NEAR + 63                    # 1109 — left (Brown-side) pump column
-COL_R  = 1245                            # X4 waste run + port — on a 10.5mm block off the spine's +Yd face (1224), same lane offset as the Brown P-05→X3 (deferred: <18mm pending the spine review)
+COL_R  = 1241                            # far-face X-port lane (P-05→X3 Brown + P-03→X4 waste) = PORT_TURN_YD_OUT − 2 elbows, so the
+#   port-turn → lane jog gets two full elbow tangents; 6.5mm block off the spine +Yd face (deferred: <18mm, spine review)
 CTR_Y  = (YD_NEAR + YD_FAR) / 2          # 1181 — corridor center
 RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 # CLIP STANDOFF RULE: every pipe P-clip sits on a ply-offcut block and the pipe's surface stands at
@@ -434,8 +420,6 @@ RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 CLIP_SHIM = EQT
 SPINE_FACE_NEAR = 1206                   # drain-riser spine −Yd face
 SPINE_RISER_YD  = SPINE_FACE_NEAR - CLIP_SHIM - RP   # 1177.5 — the three waste risers + the IBC-4 merge
-BV02_YD = YD_NEAR + EQT + RP + 2.5          # 1077 — BV-02 brown-suction riser Yd (= the near-board riser plane, pump-clearance exception);
-#   single source for the geometry AND the 3D callout anchor, so the label can't drift off the valve.
 BVY_REAR = YD_NEAR + S + CLIP_SHIM + RP  # 1125.3 — Blue #1 return/behind-panel lane, clipped to the rear-near frame upright
 CDK    = "#3A3A42"                       # dark fittings / motor cans
 DVB    = 46                              # diverter body cube
@@ -745,13 +729,34 @@ YW_CUT = _r5dn((YD_FAR - S) - (YD_NEAR + S))   # 165 — rear-panel + shirt boar
 PH_CUT = _r5dn(PANEL_TOP_Z - S)                # 1845 — rear-panel board height (opening 1849)
 BW_CUT = _r5dn(SB_X1 - SB_X0)                  # 395 — pump-run board X length (opening 399)
 # Riser planes — the pipe back sits ~2.5mm off each board's corridor face (RP + gap), i.e. flush on it.
-# Side-board riser planes stay ~2.5mm off the board face: EXCEPTION to the clip standoff rule — the
-# corridor is 234mm between the two board faces and an upright pump + its two 30mm ports is 160mm, so an
-# 18mm block + a full-radius elbow on each side (135mm) leaves no room for the pump.  An 18mm shim
-# here collapses the port-to-elbow legs to ~8mm (the pumps stop connecting).  Pending a layout change.
-SB_RISER_YD_FAR  = YD_FAR - EQT - RP - 2.5    # 1285 — far risers
-SB_RISER_YD_NEAR = YD_NEAR + EQT + RP + 2.5   # 1077 — near risers
-SB_FLUSH_OK = True                            # side-board clips are exempt (see above)
+# PORT-TURN planes: every run off a corridor pump port turns ONE elbow radius out of the port tip (the
+# elbow sits right on the port; the flex jumper moves to the first straight leg AFTER the turn).  The
+# side-board riser planes ARE these planes — 5.5mm (near) / 4.5mm (far) off the board faces, the most the pump column allows
+# (board faces 234mm apart; pump + 2 ports 160mm).  EXCEPTION to the 18mm clip standoff: SB_FLUSH_OK.
+PORT_ELBOW       = 2 * RP                              # 21 — 90° elbow centerline radius = its tangent length
+PORT_TURN_YD_IN  = CTR_Y - (PVB_R + 30) - PORT_ELBOW   # 1080 — IN-side (−Yd) turn plane
+PORT_TURN_YD_OUT = CTR_Y + (PVB_R + 30) + PORT_ELBOW + 1   # 1283 — OUT-side (+Yd) turn plane (+1 so the DV-01
+#   recycle riser, which turns onto this plane from DV-01 at Yd1241, also gets two full elbow tangents)
+SB_RISER_YD_FAR  = PORT_TURN_YD_OUT    # far risers, 5.5mm off the far board
+SB_RISER_YD_NEAR = PORT_TURN_YD_IN     # near risers, 5.5mm off the near board
+SB_FLUSH_OK = True                     # side-board clips: 5.5mm block (pump-column limit), not 18mm
+BV02_YD = PORT_TURN_YD_IN              # BV-02/BV-06 suction risers — also the 3D callout anchor
+
+
+def port_jumper(p, nm, wps):
+    """Braided flex jumper on the first straight leg AFTER the port turn that is long enough to carry
+    one between its two elbows' tangent points.  `wps` = the run's waypoints ordered FROM the port."""
+    V = [tuple(map(float, q)) for q in wps]
+    for i in range(1, len(V) - 1):
+        a, b = V[i], V[i + 1]
+        L = math.dist(a, b)
+        tb = PORT_ELBOW if i + 1 < len(V) - 1 else 0.0       # the leg's far end turns again unless it's the run end
+        if L - PORT_ELBOW - tb >= 30:
+            u = [(b[k] - a[k]) / L for k in range(3)]
+            s0 = tuple(a[k] + u[k] * PORT_ELBOW for k in range(3))
+            s1 = tuple(b[k] - u[k] * tb for k in range(3))
+            _flex_jumper(p, nm, s0, s1, None, start=2, maxlen=24)
+            return
 SB_FAR_RISERS_X  = (4848, 4900, 4984)         # DV-01 recycle · P-02 discharge · P-01→ACC-01
 RISER_Z_SPAN = {4984: (ACC_PZ, PSTACK["P-01"] + PVB_H - 18)}   # P-01→ACC-01 riser runs DOWN from the P-01 OUT to ACC-01 IN
 #   NB index 0 MUST track the DV-01 recycle riser X (= DV01_CX + tipd + 40); update it if DV01_CX moves
@@ -780,6 +785,32 @@ def clip_on_block(nm, cx, cz, face_y, pipe_y, vertical, rp=RP, foot=40, flush_ok
     bx, bz = (28, 16) if vertical else (16, 28)
     out.append(draw.ruby_box(nm, cx - bx / 2, sy0, cz - bz / 2, bx, sy1 - sy0, bz, color=C_CLIP))
     return "\n".join(out)
+
+# Drilled clearance holes through the corridor ply (module-level so the cut sheet counts them).
+HOLE_R_PIPE, HOLE_R_CABLE = RP + 3, 7
+RPH, CBH = HOLE_R_PIPE, HOLE_R_CABLE
+SHIRT_HOLES = [(BVY_REAR, 1210, RPH),    # Blue #1 -> P-01 suction entry
+               (COL_R, 1502, RPH),    # P-05 -> X3 end-wall port
+               (SPINE_RISER_YD, 1700, RPH),    # X4 Waste (P-03) pickup
+               (CTR_Y, 1030, CBH),   # Cct-C branch -> P-02 (power cable)
+               (CTR_Y, 1430, CBH),   # Cct-C branch -> P-05 (power cable)
+               (CTR_Y, 1830, CBH),   # Cct-C pump bus
+               (CTR_Y, 705, CBH)]    # Cct-C pump bus (P-01 elbow tap)
+REAR_HOLES = [(DV01_WASTE_YD, 235, RPH),      # DV-01 -> IBC-4 merge
+              (ov.RWK_RIBBON_NOTCH_YDS[2], WASTE_PANEL_Z, RPH),   # DV-02 waste -> IBC-4
+              (BVY_REAR, 1210, RPH),     # Blue #1 -> P-01 suction entry
+              (COL_R, 1502, RPH),     # P-05 -> X3 end-wall port
+              (COL_R, 1902, RPH),     # P-03 -> X4 end-wall port
+              (CTR_Y, 1830, CBH),     # Cct-C pump bus
+              (CTR_Y, 705, CBH),      # Cct-C pump bus (P-01 elbow tap)
+              (SPINE_RISER_YD, 1700, RPH),     # X4 Waste (P-03) pickup
+              (CTR_Y, 1030, CBH),    # Cct-C branch -> P-02
+              (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
+SPINE_HOLES = [(5500, 1376, 16 + 3),                 # Blue equalization (IBC-1 <-> IBC-2, 1" r16)  (X, Z) — cut along Y
+               (5500, X1_TEE_Z, RPH),               # X1 fill -> Blue #2 (IBC-2) side entry
+               (ov.IBC_COL_X + 830, MERGE4[2], RPH),  # IBC-4 (Waste) tote entry (xe4) off the merge tee
+               (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
+
 
 def support_boards(sides=("far", "near", "near-upper")):
     """The side-wall ply run-support boards + welded L-brackets + riser P-clips (#29).
@@ -899,12 +930,7 @@ def plumbing(part="all", sump_on_skid=False):
     #    solvent-weld joint. IN leaves −Yd, OUT leaves +Yd (manifold convention); _flex_jumper caps it inside
     #    the first segment so it can't overshoot the turn. P-04's suction (1" tray hose) + its discharge
     #    jumper live on the skid (pinhole panel), so only the 4 corridor pumps are jumpered here.
-    _p4lbl = "P-02" if sump_on_skid else "P-04"
-    for _pk, _sk, _jc in (("P-01", "P-01", draw.C_BLUE), ("P-05", "P-05", draw.C_IBC_BROWN),
-                          ("P-03", "P-03", draw.C_PIPE_WASTE), (_p4lbl, "P-04", draw.C_IBC_BROWN)):
-        _jz = _piz(_sk)
-        _flex_jumper(p, f"{_pk} suction jumper",   (PXC, PIY, _jz), (PXC, PIY - 38, _jz), _jc, start=2, maxlen=24)
-        _flex_jumper(p, f"{_pk} discharge jumper", (PXC, POY, _jz), (PXC, POY + 38, _jz), _jc, start=2, maxlen=24)
+    # (pump flex jumpers are placed per run, AFTER each port turn — see port_jumper())
     tip = DVB / 2 + DVL                                  # 78 — diverter port-stub tip
     dvm, dvp = CTR_Y - tip, CTR_Y + tip                  # 1103 / 1259 — DV-02 run−/run+ Yd
     xe  = ov.IBC_COL_X + 300                             # 4974 — tote side-entry X
@@ -1020,13 +1046,14 @@ def plumbing(part="all", sump_on_skid=False):
     turnz = 1025                                 # 90° turn off the board face just above the top clamp (z1000) and BELOW the
     #   brown P-02-suction horizontal (z1098): the front vertical leaves Yd1077 here so it never crosses the brown
     _side_entry(p, "Blue #1 -> P-01 suction",   # flooded suction + P-01's integral check → no foot valve (check=False)
-                [pin("P-01"), (PXC, PIY - 30, z01), (bvx, PIY - 30, z01), (bvx, bvy, z01),
+                [pin("P-01"), (PXC, PORT_TURN_YD_IN, z01), (bvx, PORT_TURN_YD_IN, z01), (bvx, bvy, z01),
                  (bvx, bvy, turnz),                          # UP the FRONT vertical to just above the top clamp (BV-01 + clamps below)
                  (bvx, bvy_rear, turnz),                     # 90° turn +Yd into the corridor, BELOW the brown P-02-suction horizontal — clears the crossing
                  (bvx, bvy_rear, loopz),                     # rise to the loop top at the return lane (clear of the brown)
                  (beh_x, bvy_rear, loopz),                   # +X BACK through the shirt + panel (round holes), −Yd of the pumps
                  (beh_x, bvy_rear, blz)],                    # UP the BEHIND-panel riser to the tote-entry height
                 beh_x, YD_NEAR, blz, -1, draw.C_BLUE, check=False, drop=-50)   # then −Yd into Blue #1 + 50mm dip tube
+    port_jumper(p, "P-01 suction jumper", [pin("P-01"), (PXC, PORT_TURN_YD_IN, z01), (bvx, PORT_TURN_YD_IN, z01), (bvx, bvy, turnz)])
     p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 950, "z", hdir="-x", rot_deg=-45))   # on the near-board riser; dropped 50mm; whole valve rotated 45° CW so the handle swings into the IBC corridor
     # P-clips on the P-01 suction riser (now pushed onto the near board) — straddle BV-01 (z928-972),
     # one below + one above, since the valve body sits across the shared near-board clamp rows
@@ -1041,8 +1068,9 @@ def plumbing(part="all", sump_on_skid=False):
     # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
     # dropping to the P-01 OUT blue riser — NOT straight down over the pump.
     inby = SB_RISER_YD_FAR                                 # 1285 — #29: IN riser sits on the FAR support board (flush), still +Yd of the ACC-IN port (1274.5) for a clean drop-in and clear of the Blue #2 IBC near face (1316)
-    pipe("P-01 -> ACC-01 (in)",
-         [pout("P-01"), (PXC, inby, _piz("P-01")), (PXC, inby, ACC_PZ), acc_in()], draw.C_BLUE)
+    _p01 = [pout("P-01"), (PXC, inby, _piz("P-01")), (PXC, inby, ACC_PZ), acc_in()]
+    pipe("P-01 -> ACC-01 (in)", _p01, draw.C_BLUE)
+    port_jumper(p, "P-01 discharge jumper", _p01)
     # ACC-01 OUT → supply trunk → out to the gap past the tray right edge (GAPX), dropped to z60 ready
     # to cross to the outside-rim strip (tap01_supply continues it AROUND the tray to BV-05/TAP-01).
     # Leave the −Yd OUT port OUTWARD (−Yd), then run +Yd to the gap in the clear band BETWEEN the P-01 head
@@ -1122,6 +1150,7 @@ def drains_ports(sump_on_skid=False):
               (tx3 - 55, SB_RISER_YD_NEAR, p2i[2]), # UP the riser on the board
               (PXC, SB_RISER_YD_NEAR, p2i[2]),      # +X to the pump column
               p2i], draw.C_IBC_BROWN)            # +Yd INTO P-02's −Yd IN port (swept elbow at the +X→+Yd vertex)
+        port_jumper(p, "P-02 suction jumper", [p2i, (PXC, SB_RISER_YD_NEAR, p2i[2]), (tx3 - 55, SB_RISER_YD_NEAR, p2i[2]), (tx3 - 55, SB_RISER_YD_NEAR, tz3)])
         p.append(ball_valve("BV-03 (P-02 suction)", tx3 - 55, SB_RISER_YD_NEAR, 900, "z", hdir="-x", rot_deg=-45))   # isolation on the P-02 suction riser (near board); dropped 50mm to clear the 3rd clamp row (z960) above it; whole valve rotated 45° CW so the handle swings into the IBC corridor
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
@@ -1138,18 +1167,20 @@ def drains_ports(sump_on_skid=False):
          #   tee +X end → +X to SHIRT riser → −Yd → up the shirt → −X (forward) to the BV-02 riser → up through
          #   BV-02 → +X stub into the IN port
          draw.C_IBC_BROWN)
+    port_jumper(p, "P-05 suction jumper", [p5i, (PXC, BV02_YD, z05), (rx, BV02_YD, z05), (rx, BV02_YD, zloop)])
     p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
     p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=draw.C_STEEL, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
     # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
     # to the end wall (extending the straight run), then −Yd onto the X3 port lane past the spine, and down.
-    x3lane = 1245
+    x3lane = COL_R
     x3cross = SPINE_X_END - 100   # 5680 — cross the spine 100mm IN from its new far edge (X5780), not at the weak X-edge
-    pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
-         [p5o, (PXC, POY + 15, p5o[2]), (5030, POY + 15, p5o[2]), (5030, x3lane, p5o[2]),
-          (x3cross, x3lane, p5o[2]), (x3cross, COL_L, p5o[2]),     # +X along the lane to x3cross, then −Yd ACROSS the spine (100mm in)
-          (x3cross, COL_L, 1700), (ew - 60, COL_L, 1700)], draw.C_IBC_BROWN)   # drop, then +X to the X3 end-wall port
+    _p05 = [p5o, (PXC, PORT_TURN_YD_OUT, p5o[2]), (5030, PORT_TURN_YD_OUT, p5o[2]), (5030, x3lane, p5o[2]),
+            (x3cross, x3lane, p5o[2]), (x3cross, COL_L, p5o[2]),     # +X along the lane to x3cross, then −Yd ACROSS the spine (100mm in)
+            (x3cross, COL_L, 1700), (ew - 60, COL_L, 1700)]          # drop, then +X to the X3 end-wall port
+    pipe("P-05 -> X3 end-wall port", _p05, draw.C_IBC_BROWN)   # OUT turns one elbow out of the port
+    port_jumper(p, "P-05 discharge jumper", _p05)
 
     # ── IBC-4 WASTE: bottom pickup → grey SPINE riser → WRAP back through the panels → BV-06 → P-03 ──
     # BV-06 valve geometry copies BV-02 (riser at rx6/BV02_YD, valve 110 below the port, −X + +Yd stub
@@ -1174,11 +1205,13 @@ def drains_ports(sump_on_skid=False):
                     (rx6, BV02_YD, turn6),                          # +X back to the BV-06 riser (through the pump gap)
                     (rx6, BV02_YD, z03),                            # ↑ through BV-06 to the IN-port height
                     (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
+    port_jumper(p, "P-03 suction jumper", [p3i, (PXC, BV02_YD, z03), (rx6, BV02_YD, z03), (rx6, BV02_YD, turn6)])
     p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
     p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=draw.C_STEEL, axis="x"))
-    pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
-         [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),
-          (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], draw.C_PIPE_WASTE)
+    _p03 = [p3o, (PXC, PORT_TURN_YD_OUT, p3o[2]), (5090, PORT_TURN_YD_OUT, p3o[2]), (5090, COL_R, p3o[2]),
+            (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)]
+    pipe("P-03 -> X4 end-wall port", _p03, draw.C_PIPE_WASTE)   # OUT turns one elbow out of the port
+    port_jumper(p, "P-03 discharge jumper", _p03)
     return "\n".join(p)
 
 

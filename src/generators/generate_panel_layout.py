@@ -42,7 +42,7 @@ import matplotlib.patches as mpatches
 
 from tbs_constants import C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE, C_PIPE_FITTING
 from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI, FONT, C_WALL
-from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0
+from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_PANEL_H
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 import sys as _sys
 _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
@@ -680,7 +680,7 @@ def _corridor_cross_section():
 def draw_pinhole_panel():
     # Local X×Z scale (this elevation is wide, not the corridor panel-Yd strip).
     PW_XL, PW_XR = 2680, 5060          # view X bounds (mm)
-    PW_ZB, PW_ZT = 820, 2440           # view Z bounds (mm)
+    PW_ZB, PW_ZT = PWP_PANEL_Z0 - 100, 2440   # view Z bounds (mm) — follows the panel bottom
     PW_OX, PW_OZ = 90, 200             # drawing-unit origin offsets
     PW_KX = 0.62                       # X mm→unit (board ~1720mm → ~1066 units)
 
@@ -690,7 +690,7 @@ def draw_pinhole_panel():
     def pwx(x_mm): return PW_OX + (PW_XR - x_mm) * PW_KX
     def pwz(z_mm): return PW_OZ + (z_mm - PW_ZB)
 
-    fig, ax_p = plt.subplots(1, 1, figsize=(23, 13), dpi=DIAGRAM_DPI)
+    fig, ax_p = plt.subplots(1, 1, figsize=(23, 13 * ((PW_ZT - PW_ZB) + 2 * PW_OZ) / 2020), dpi=DIAGRAM_DPI)   # height scales with the Z window (2020 = the original 820–2440 view) so the Z scale holds
     # +750 units of right-hand room so the notes block (a border PATCH, which matplotlib clips to the
     # axes) fits inside the page instead of being cut at the xlim; figsize widened in step to keep the
     # board's X scale.
@@ -728,7 +728,7 @@ def draw_pinhole_panel():
             ha="center", va="bottom", fontsize=11, color=C_DIM,
             fontweight="bold")
 
-    # ── Backing board (18mm exterior ply) — X 2780–4500, Z 920–2360 ──────────
+    # ── Backing board (18mm exterior ply) — extents from PWP_PANEL_* ──────────
     BD_XL, BD_XR = PWP_PANEL_X0, PWP_PANEL_X1
     BD_ZB, BD_ZT = PWP_PANEL_Z0, 2360
     pw_rect(BD_XL, BD_ZB, BD_XR - BD_XL, BD_ZT - BD_ZB,
@@ -864,7 +864,7 @@ def draw_pinhole_panel():
     notes = [
         "PINHOLE WALL FILTER SKID — TRAY-DRAIN RECYCLE + FILTER TRAIN:",
         "1. Wide 18mm exterior-ply backing board on the pinhole wall (Yd≈0),"
-        " X=2780–4575, Z=920–2360mm AFF.",
+        f" X={PWP_PANEL_X0}–{PWP_PANEL_X1}, Z={PWP_PANEL_Z0}–{PWP_PANEL_Z0 + PWP_PANEL_H}mm AFF (extended down so the low runs clip to the ply).",
         "2. Tray-drain skid row UNDER the filters: P-04 (tray-sump pump) →"
         " SV-02 (pH sample) → 3W-DV-02, on the row line Z≈1312.",
         "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →"

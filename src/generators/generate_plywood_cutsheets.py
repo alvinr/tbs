@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
 from tbs_constants import (                                    # noqa: E402
     DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD,
     LT_CAGE_BOT,
-    PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, SHELF_W, SHELF_DEPTH,
+    PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR, SHELF_W, SHELF_DEPTH,
     FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W,
     EP_COL_W, EP_H_HI, BA_H_LO,
 )
@@ -92,18 +92,19 @@ GROUPS = [
     dict(gid="A", thick=18, grade='23/32" RTD Southern Yellow Pine exterior sheathing',
          sku="Home Depot 303564747", stock=STOCK_8x4, parts=[
         dict(key="corridor-panel-ply-18", stock=STOCK_8x4, pieces=[
-            ("Corridor rear backing board", _YW, BACK_H, 1, "IBC-corridor plumbing panel rear face"),
-            ("Drain-riser spine", SPINE_W, SPINE_H, 1, "waste-riser / X-port P-clip spine"),
+            ("Corridor rear backing board", _YW, BACK_H, 1, f"IBC-corridor plumbing panel rear face; {len(cwp.REAR_HOLES)} drilled clearance holes (pipe Ø{2 * cwp.HOLE_R_PIPE:.0f} / cable Ø{2 * cwp.HOLE_R_CABLE:.0f}, positions on the panel-layout spine views)"),
+            ("Drain-riser spine", SPINE_W, SPINE_H, 1, f"waste-riser / X-port P-clip spine; {len(cwp.SPINE_HOLES)} drilled clearance holes for the pipes crossing it (oversize to the pipe OD, positions on the panel-layout spine views)"),
             ("Pump-run side board (far)", _BW, PUMPRUN_FAR_H, 1, "#29 pump-run pipe support"),
             ("Pump-run side board (near-lo)", _BW, PUMPRUN_NEAR_H, 1, "#29 pump-run pipe support"),
             ("Pump-run side board (near-hi)", _BW, PUMPRUN_UP_H, 1, "#29 pump-run pipe support"),
         ]),
         dict(key="corridor-panel-shirt-ply", stock=STOCK_8x4, pieces=[
-            ("Pump-mount shirt", _YW, SHIRT_H, 1, "backs pumps P-01..P-05 on the corridor panel (vertical column)"),
+            ("Pump-mount shirt", _YW, SHIRT_H, 1, f"backs pumps P-01..P-05 on the corridor panel (vertical column); {len(cwp.SHIRT_HOLES)} drilled clearance holes"),
             ("Shirt standoff cleat strip", cwp.SHIRT_CLEAT_W, cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H, 1, f"one {cwp.SHIRT_CLEAT_W}×{cwp.SHIRT_CLEAT_N * cwp.SHIRT_CLEAT_H} strip, cut to {cwp.SHIRT_CLEAT_N}× {cwp.SHIRT_CLEAT_H}mm shirt-to-rear-panel standoff blocks"),
         ]),
         dict(key="pinhole-panel-ply-18", stock=STOCK_8x4, npieced=2, pieces=[
-            ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row; 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width)"),
+            ("Pinhole backing half", PINHOLE_HALF, PWP_PANEL_H, 2, f"3× Big Blue filters + P-04/SV-02/DV-02 skid row + the low runs (sump suction, corridor drops); 2 halves butt-jointed → the full {PINHOLE_W}×{PWP_PANEL_H} face (>1219 stock width); right half notched {PWP_PANEL_NOTCH_BR[0]}×{PWP_PANEL_NOTCH_BR[1]} bottom + {PWP_PANEL_NOTCH_TR[0]}×{PWP_PANEL_NOTCH_TR[1]} top corner (rail end flange / saddle plate)"),
+            ("Pipe-clip standoff blocks", 40, 40, 1, "one 40×40mm block under EVERY water-pipe P-clip (18mm, stacked or cut to depth for the wider standoffs) — cut from this group's OFFCUTS, no extra stock"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
             ("Apron fixed base (full width)", APR_BASE_W, APR_BASE_H, 1, "FIXED full-width base Z0–130, continuous across the door bottom — never moves; 18mm, flat-black interior; hingepanel Sheet 16"),

@@ -848,13 +848,16 @@ PWP_SV01_Z        = 1610                          # SV-01 valve-center Z — rai
 # ── Filter-skid panel layout (2026-08-04 reorg) — single-sourced so the 2D panel diagrams match water.skp ──
 PWP_PANEL_X0      = 2780                          # ply left edge (low X)
 PWP_PANEL_X1      = 4575                          # ply right edge (high X, walkway side)
-PWP_PANEL_Z0      = 920                           # ply bottom edge (Z AFF)
-PWP_PANEL_H       = 1440                          # ply backing height (Z 920→2360 AFF); full face, cut as 2 butt-jointed halves
+PWP_PANEL_Z0      = 200                           # ply bottom edge (Z AFF) — extended DOWN onto the near-walkway cantilever
+#   wall-plate tops (Z200) so the low runs (tray-sump suction Z230, the corridor drops) clip to the ply, not the bare wall
+PWP_PANEL_H       = 2360 - PWP_PANEL_Z0           # 2160 — ply backing height (Z 200→2360 AFF); full face, cut as 2 butt-jointed halves
+PWP_PANEL_NOTCH_BR = (10, 120)                    # (W, H) bottom-right corner notch — clears the film-plane right-rail end flange (X4569+, Z227–313)
+PWP_PANEL_NOTCH_TR = (30, 235)                    # (W, H) top-right corner notch — clears the right-rail saddle back-plate (X4549+, Z2132+)
 PWP_SROW_Z0       = 1150                          # skid-row base Z (P-04·SV-02·DV-02 under the filters)
 PWP_SV02_Z        = PWP_SROW_Z0 + 132             # 1282 — SV-02 valve-center Z (in-line on the P-04→DV-02 row)
 PWP_DV02_Z        = PWP_SROW_Z0 + 162             # 1312 — DV-02 valve-center Z (= P-04 OUT / row line)
 PWP_ACC2_X        = (PWP_PANEL_X0 + PWP_PANEL_X1) // 2 + 180   # 3857 — ACC-02 (recycle-spray damper) center X
-PWP_ACC2_Z0       = PWP_PANEL_Z0                  # 920 — ACC-02 base sits on the panel bottom
+PWP_ACC2_Z0       = 920                           # ACC-02 base Z (was the old panel bottom; the panel now extends below it)
 
 # Pump manifold pipe (1/2" PVC Sch-40)
 PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)

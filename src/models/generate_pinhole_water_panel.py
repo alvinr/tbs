@@ -434,11 +434,11 @@ def tap01_supply():
     # WALL-STANDOFF P-clips — the blue supply trunk + the TAP-01/BV-05 risers run below the ply panel
     # (Z<920) along the BARE pinhole wall at Yd69; they clamp to the wall (Yd0) on ~55mm standoff blocks.
     for tx in (1500, 2100, 2700, 3300, 3900, 4400):          # Blue Supply Trunk (horizontal, Z=fz): band ⊥ the pipe, ~600mm
-        p.append(cp.clip_on_block("Wall-standoff pipe P-clip", tx, int(fz), 0, yd, False, rp=pr))
+        p.append(wall_clip(tx, int(fz), yd, False, pr))
     for tz in (250, 550, 850, 1150):                         # TAP-01 riser (vertical, X=TAP_X): thin-Z band, ~300mm
-        p.append(cp.clip_on_block("Wall-standoff riser P-clip", ov.TAP_X, tz, 0, yd, True, rp=tr))
+        p.append(wall_clip(ov.TAP_X, tz, yd, True, tr))
     for bz in (250, 500, 850):                               # BV-05 fresh-supply riser (vertical, X=bvx)
-        p.append(cp.clip_on_block("Wall-standoff riser P-clip", bvx, bz, 0, yd, True, rp=pr))
+        p.append(wall_clip(bvx, bz, yd, True, pr))
     return "\n".join(p)
 
 
@@ -447,8 +447,16 @@ def backing():
     container wall; the pump, filters and valves mount on it and the pipes clamp to it for support
     (so the sub-loop installs as one panel, mirroring the corridor rear panel).  Dry mounting
     backboard — exterior grade, NOT marine (no water-immersion load)."""
-    return draw.ruby_box("Wall backing (18mm ply)", ov.PWP_PANEL_X0, 0, ov.PWP_PANEL_Z0,
-                         ov.PWP_PANEL_X1 - ov.PWP_PANEL_X0, ov.EQPANEL_T, ov.PWP_PANEL_H, color=draw.C_PLY)  # extents single-sourced from PWP_PANEL_* (= the plywood cut-sheet backing)
+    # extents single-sourced from PWP_PANEL_* (= the plywood cut-sheet backing); the right edge carries two
+    # corner notches (rail end flange low, rail saddle back-plate high), drawn as three abutting boxes.
+    from tbs_constants import PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR
+    x0, x1, z0, t = ov.PWP_PANEL_X0, ov.PWP_PANEL_X1, ov.PWP_PANEL_Z0, ov.EQPANEL_T
+    z1 = z0 + ov.PWP_PANEL_H
+    (bw, bh), (tw, th) = PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR
+    return "\n".join([
+        draw.ruby_box("Wall backing (18mm ply)", x0, 0, z0, (x1 - tw) - x0, t, z1 - z0, color=draw.C_PLY),
+        draw.ruby_box("Wall backing (18mm ply)", x1 - tw, 0, z0, tw - bw, t, (z1 - th) - z0, color=draw.C_PLY),
+        draw.ruby_box("Wall backing (18mm ply)", x1 - bw, 0, z0 + bh, bw, t, (z1 - th) - (z0 + bh), color=draw.C_PLY)])
 
 
 def person():
@@ -483,6 +491,15 @@ DROP_YD = SKID_CLIP_YD + 2 * cp.RP + 1.5     # 69 — the three corridor drops (
 # ── Panel reorg (2026-08-04): declutter the skid so the lane-1 brown rises up the wall and runs the panel
 #    bottom to ACC-02 (like lanes 3 & 4).  Component X/Z decoupled from the shared filter/pump constants. ──
 PANEL_X0, PANEL_X1, PANEL_Z0 = ov.PWP_PANEL_X0, ov.PWP_PANEL_X1, ov.PWP_PANEL_Z0   # 18mm-ply extents (single-sourced)
+
+
+def wall_clip(x, z, pipe_y, vertical, rp):
+    """A pinhole-wall P-clip: ONE rule — on the skid ply where the clip lands inside the panel, else on
+    the bare container wall (the few runs outside the panel: Blue trunk, TAP-01, BV-05, the sump start)."""
+    on_ply = PANEL_X0 + 20 <= x <= PANEL_X1 - 20 and PANEL_Z0 + 20 <= z <= PANEL_Z0 + ov.PWP_PANEL_H - 20
+    kind = ("Skid riser P-clip" if vertical else "Skid pipe P-clip") if on_ply else \
+           ("Wall-standoff riser P-clip" if vertical else "Wall-standoff pipe P-clip")
+    return cp.clip_on_block(kind, x, z, SKID_FACE_YD if on_ply else 0, pipe_y, vertical, rp=rp)
 ACC2_X  = ov.PWP_ACC2_X                          # 3857 — panel center + 180 toward the IBCs (clears SV-02)
 ACC2_Z0 = ov.PWP_ACC2_Z0                         # ACC-02 base on the panel bottom (Z920)
 SV01_X  = ov.PWP_SV01_X                            # 4250 — SV-01: 300mm left toward F-3, then 300mm back toward the IBC totes
@@ -784,6 +801,7 @@ def skid_plumbing(part="all"):
              (exitX, cpt[1], midz),                                     # −Yd to the ribbon-entry Yd (1123)
              cpt]                                                       # −X STRAIGHT back to the 90° ribbon-entry turn — no duck (the lowered blue trunk at z210 clears it)
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
+    cp.port_jumper(p, "P-02 discharge jumper", lead)
     tail  = [npt, (L0, DROP_YD, acc2_in[2]), (L0, CLIPY, acc2_in[2]),
              (acc2_in[0] + 55, CLIPY, acc2_in[2]),
              (acc2_in[0] + 55, ov.PWP_FILTER_YD, acc2_in[2]), acc2_in]
@@ -829,15 +847,13 @@ def skid_plumbing(part="all"):
     # (Yd0) left of the ply panel edge (PWP_PANEL_X0=2780), the ply face (Yd18) on the panel.
     # clips sit in the clear gaps BETWEEN the near-walkway cantilevers (Near 5 X2576-2696,
     # Near 6 X3033-3153) so no support bracket lands on a cantilever arm/plate.
-    for rx, face in ((2520, 0), (2760, 0), (2980, skid_face)):   # along-wall horizontal run (at wall_run_z)
-        p.append(cp.clip_on_block("Skid pipe P-clip", rx, wall_run_z, face, SKID_CLIP_YD, False, rp=rp))   # horizontal along-wall run
+    for rx in (2520, 2760, 2980):                         # along-wall horizontal run (at wall_run_z)
+        p.append(wall_clip(rx, wall_run_z, SKID_CLIP_YD, False, rp))
     p.append(cp.clip_on_block("Skid riser P-clip", p04_in[0] - 40, 340, skid_face, SKID_CLIP_YD, True, rp=rp))   # P-04 climb, low (joins the 600/1080 clips)
-    # WALL-STANDOFF riser clips — the DV-02-waste + P-02→ACC-02 corridor drops run BELOW the ply panel
-    # (Z<920) in front of the BARE pinhole wall (Yd0), ~65mm off it; they mount to the wall on a ~55mm
-    # standoff block (the box spans Yd0→pipe). Vertical pipe → band thin in Z (28×16).
+    # Corridor-drop riser clips (SV-01→DV-01, DV-02 waste, P-02→ACC-02) — on the extended skid ply.
     for rx, ryd in ((4400, DROP_YD), (4434, DROP_YD), (4503, DROP_YD)):   # SV-01→DV-01 (blue), DV-02 waste, P-02→ACC-02 — the 3 corridor-drop risers
         for cz in (300, 550, 800):                    # ~300mm down the drop, all below the panel bottom (Z920)
-            p.append(cp.clip_on_block("Wall-standoff riser P-clip", rx, cz, 0, ryd, True, rp=rp))
+            p.append(wall_clip(rx, cz, ryd, True, rp))
     if part == "all":
         return "\n".join(p)
     # Partition legs by the construction-model phase they install in, matched on each pipe's own

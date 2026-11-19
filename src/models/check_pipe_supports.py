@@ -2,10 +2,13 @@
 # © 2026 Alvin Richards
 """Pipe-support + connection audit for the water model (water.skp source, no SketchUp needed).
 
-Two checks, both run against an in-process build of generate_pinhole_water_panel:
+Three checks, all run against an in-process build of generate_pinhole_water_panel:
 
   floating_clips   — every P-clip strap must sit ON a pipe/tube centerline.  A clip whose pipe turned
                      away (an elbow/jog moved under it) is a support bracket holding nothing.
+  ply_penetrations — a pipe may cross a plywood panel only along its thin axis, through a drilled
+                     hole at least as big as the pipe; no hole, an undersized hole, or a pipe running
+                     inside the ply fails (the clash checker treats ply as passable, so it can't see this).
   collapsed_elbows — every elbow in a ruby_pipe_run needs straight leg on both sides (one tangent
                      length at a run end, two between elbows).  A shorter leg shrinks the swept elbow,
                      so the run no longer meets its port/fitting cleanly (how the pump connections broke
@@ -27,10 +30,22 @@ _NUM = r"(-?[\d.]+?)\.mm"
 
 
 def build_instrumented():
-    """Build water.rb in-process, recording every elbow whose legs are too short for it."""
+    """Build water.rb in-process, recording every elbow whose legs are too short for it, every
+    straight pipe segment, and every plywood part (with its drilled holes)."""
     import tbs_draw as d
     short = set()
+    segs, plies = [], []
     orig = d.ruby_pipe_run
+    orig_pipe, orig_box = d.ruby_pipe, d.ruby_box
+
+    def wrap_pipe(name, p1, p2, r, *a, **k):
+        segs.append((name, tuple(map(float, p1)), tuple(map(float, p2)), float(r)))
+        return orig_pipe(name, p1, p2, r, *a, **k)
+
+    def wrap_box(name, x, y, z, w, dd, h, color=None, *a, **k):
+        if color == d.C_PLY and "block" not in name:
+            plies.append((name, (x, y, z), (x + w, y + dd, z + h), k.get("holes") or [], k.get("hole_axis")))
+        return orig_box(name, x, y, z, w, dd, h, color, *a, **k)
 
     def wrap(name, waypoints, r, color=None, alpha=None, elbow_r=None, n=16, seg=8, mute=0.0):
         R = elbow_r if elbow_r is not None else 2.0 * r
@@ -54,13 +69,55 @@ def build_instrumented():
                 short.add(f"{name} @vertex {i}")
         return orig(name, waypoints, r, color, alpha, elbow_r, n, seg, mute)
 
-    d.ruby_pipe_run = wrap
+    d.ruby_pipe_run, d.ruby_pipe, d.ruby_box = wrap, wrap_pipe, wrap_box
     try:
         import generate_pinhole_water_panel as pw
         ruby = pw.build()
     finally:
-        d.ruby_pipe_run = orig
-    return ruby, short
+        d.ruby_pipe_run, d.ruby_pipe, d.ruby_box = orig, orig_pipe, orig_box
+    return ruby, short, segs, plies
+
+
+def ply_penetrations(segs, plies, bite=1.0):
+    """Pipes that enter a plywood part.  A pipe may pass THROUGH a ply panel only along its thin axis
+    and only through a drilled hole at least as big as the pipe; any other overlap (no hole, an
+    undersized hole, or a pipe running inside/along the panel) is reported."""
+    AX = {"x": 0, "y": 1, "z": 2}
+    PLANE = {"x": (1, 2), "y": (0, 2), "z": (0, 1)}
+    out = {}
+    for nm, a, b, r in segs:
+        if "stripe" in nm or r <= 0:
+            continue
+        L = math.dist(a, b)
+        if L < 1e-6:
+            continue
+        dirv = [(b[i] - a[i]) / L for i in range(3)]
+        n = max(2, int(L / 2.0))
+        for pn, lo, hi, holes, hax in plies:
+            if any(max(a[i], b[i]) + r < lo[i] or min(a[i], b[i]) - r > hi[i] for i in range(3)):
+                continue
+            for k in range(n + 1):
+                q = [a[i] + dirv[i] * L * k / n for i in range(3)]
+                inside = True
+                for i in range(3):
+                    if abs(dirv[i]) > 0.99:            # along the pipe axis: the centerline itself
+                        inside &= lo[i] < q[i] < hi[i]
+                    else:                              # across it: the pipe wall bites in by > `bite`
+                        inside &= lo[i] - (r - bite) < q[i] < hi[i] + (r - bite)
+                if not inside:
+                    continue
+                ok = False
+                if hax and abs(dirv[AX[hax]]) > 0.99:
+                    i0, i1 = PLANE[hax]
+                    ok = any(math.hypot(q[i0] - ha, q[i1] - hb) + r <= hr + 0.5 for ha, hb, hr in holes)
+                if not ok:
+                    key = (nm, pn)
+                    if key not in out:
+                        out[key] = f"{nm} → {pn} at ({q[0]:.0f},{q[1]:.0f},{q[2]:.0f})" + (
+                            " — passes through with no/undersized hole" if hax and abs(dirv[AX[hax]]) > 0.99
+                            else " — runs inside the ply")
+                    break
+    return sorted(out.values())
 
 
 def _axes(ruby):
@@ -109,16 +166,19 @@ def floating_clips(ruby, tol=3.0):
 
 
 def run(baseline=False):
-    ruby, short = build_instrumented()
+    ruby, short, segs, plies = build_instrumented()
     if baseline:
+        ply = [f"ply: {m.split(' at (')[0]}" for m in ply_penetrations(segs, plies)]
         with open(ALLOWLIST, "w") as f:
-            f.write("# Pre-existing short elbow legs (ratchet baseline — shrink this, never grow it)\n")
-            f.write("\n".join(sorted(short)) + "\n")
+            f.write("# Pre-existing short elbow legs + ply penetrations (ratchet baseline — shrink this, never grow it)\n")
+            f.write("\n".join(sorted(short) + sorted(ply)) + "\n")
         return []
     allowed = set()
     if os.path.exists(ALLOWLIST):
         allowed = {ln.strip() for ln in open(ALLOWLIST) if ln.strip() and not ln.startswith("#")}
     msgs = [f"floating clip: {m}" for m in floating_clips(ruby)]
+    msgs += [f"ply penetration: {m}" for m in ply_penetrations(segs, plies)
+             if f"ply: {m.split(' at (')[0]}" not in allowed]
     msgs += [f"collapsed elbow (leg shorter than its elbow — bad connection): {s}"
              for s in sorted(short - allowed)]
     return msgs

@@ -46,3 +46,11 @@ PV feed (array disconnect -> MPPT, top) @vertex 2
 PV feed (array disconnect -> MPPT, top) @vertex 3
 PV- feed (MC4 -> MPPT -) @vertex 3
 PV- feed (MC4 -> MPPT -) @vertex 4
+ply: Battery + cable (2/0 AWG, MRBF → main disconnect) → EP access panel (18mm ply, rebated to EP sides)
+ply: Cct C branch P-04 (filter skid) → Wall backing (18mm ply)
+ply: Cct C feed (EP master sw -> corridor dist block) → EP access panel (18mm ply, rebated to EP sides)
+ply: Main feed (disconnect → busbar +) → EP access panel (18mm ply, rebated to EP sides)
+ply: PV feed (MC4 -> array disconnect, top) → EP access panel (18mm ply, rebated to EP sides)
+ply: PV feed (array disconnect -> MPPT, top) → EP access panel (18mm ply, rebated to EP sides)
+ply: PV feed (array disconnect -> MPPT, top) → MPPT cross-member (18mm ply, spans EP sides, rebated)
+ply: PV- feed (MC4 -> MPPT -) → MPPT cross-member (18mm ply, spans EP sides, rebated)

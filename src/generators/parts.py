@@ -212,7 +212,7 @@ PARTS: list[Part] = [
     Part("pinhole-panel-ply-18", "Pinhole-wall filter-skid backing ply (23/32\" exterior)", "timber-ply",
          "water", 2, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
-         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1,795×1,440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1,795×1,440 face exceeds a single 4×8 sheet 1,219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
+         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1,795×2,160 — extended down to Z200 so the low runs clip to the ply; 2 corner notches) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1,795×2,160 face exceeds a single 4×8 sheet 1,219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
          panel="Pinhole Wall"),
     # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
     Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",

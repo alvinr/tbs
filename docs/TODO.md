@@ -34,12 +34,10 @@ is already filtered by system. New requirement:
 Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off its face
 (`clip_on_block()`, enforced in the generator + lint). Open:
 
-- [ ] **Corridor side boards — EXCEPTION (pump-port clearance).** The 18mm standoff cannot fit: the
-  board faces are 234mm apart, an upright pump + its two 30mm ports is 160mm, and an 18mm block + a
-  full-radius elbow each side needs 135mm. Shimming collapsed the port→riser legs to ~8mm (pumps stopped
-  connecting), so the side-board risers stay ~2.5mm off (`SB_FLUSH_OK`). Fix needs a layout change:
-  turn the pump ports to ±X, narrow/raise the side boards, or clamp the risers to the frame instead.
-- [x] SV-02 mounting block added; P-04 surface-mounts on its integral clip (no block) (2026-11-18).
+- [x] **Corridor side boards — option one done (2026-11-18).** Every run off a corridor pump port turns one
+  elbow radius out of the port (elbow on the port), the flex jumper moved to the first straight leg after
+  the turn (`port_jumper()`), and the side-board risers sit on that turn plane: 5.5mm (near) / 4.5mm (far)
+  blocks — the pump-column limit, accepted as enough (18mm is the default only where it fits).
 - [ ] **Spine +Yd face — DEFERRED for review.** P-05 → X3 (Brown, 10.5mm off) and P-03 → X4 (black,
   flush) are exempted (`flush_ok=True`): an 18mm standoff pushes both lines past the rear-panel board
   edge. Options: A — move the spine 18mm −Yd (big change); B — a cleat strip for just these two;
@@ -47,7 +45,11 @@ Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off
 - [ ] Add the offcut shim blocks (40×40mm, 18mm ply, 85 in water.skp; cut-to-depth for the wider
   standoffs) to `plywood-cut-sheets.md` as an offcut item.
 - [ ] 2D: panel-layout / pinhole-panel / spine views still draw the pipes flush on the ply (own lane
-  constants) — move them out with the shim (fold into the spine-view redraw).
+  constants) — move them out with the shim (fold into the spine-view redraw). pinhole-panel also needs the
+  extended board's LOW runs (sump suction Z230, the 3 corridor drops, their clips) and the 2 corner notches
+  drawn — the board is the right size now but its lower half is empty.
+- [ ] Electrical cables drawn INSIDE ply (EP access panel, MPPT cross-member, the Cct C branch on the skid)
+  — ratcheted in `pipe_elbow_allowlist.txt` (`ply:` lines); fix in the electrical pass.
 
 ---
 

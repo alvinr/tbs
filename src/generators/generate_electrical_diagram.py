@@ -2354,7 +2354,7 @@ def draw_sheet7():
 
     # ── legend of symbols ──
     lx, ly = 70, 150
-    ax.add_patch(R((lx - 20, ly - 130), 470, 150, fc="#FBFBFB", ec="#BBB", lw=1.0, zorder=2))
+    ax.add_patch(R((lx - 20, ly - 130), 500, 150, fc="#FBFBFB", ec="#BBB", lw=1.0, zorder=2))
     txt(lx - 10, ly + 2, "SYMBOLS:", fs=6.6, ha="left", w="bold")
     fuse(lx + 20, ly - 34, "", vert=True); txt(lx + 44, ly - 34, "fuse", fs=6, ha="left")
     disconnect(lx + 150, ly - 34); txt(lx + 172, ly - 34, "isolator", fs=6, ha="left")

@@ -699,8 +699,8 @@ EP_COL_W     = 340                         # EP column width (mm) — fits one s
 BA_STACK_Z2  = BA_H_HI + 16                # 380 — upper (2nd) pack bottom Z (stacked on the lower pack)
 BA_STACK_TOP = BA_STACK_Z2 + (BA_H_HI - BA_H_LO)  # 594 — battery stack top Z
 EP_POST_Z    = BA_STACK_TOP + 20           # 614 — contactor / MRBF sit above the battery stack
-EP_RISE_X_M  = EP_X + 140                  # 2050 — (−) 2/0 cable riser lane (inverter ↔ PV disconnect gap)
-PV_DISC_X    = EP_X + 165                  # 2075 — PV array-disconnect X (operator-reach switch)
+PV_DISC_X    = EP_X + 165                  # PV array-disconnect X (operator-reach switch)
+EP_RISE_X_M  = PV_DISC_X + 35              # (−) 2/0 cable riser lane: under the PV disconnect's center, between its two PV feed legs and past fuse F (fuse E sits at the old EP_X+140 lane)
 EP_DISC_Z    = 1045                        # disconnect cluster row Z — main + master + PV disconnects grouped, reachable (~chest)
 PV_DISC_Z    = EP_DISC_Z                    # PV array-disconnect — in the disconnect cluster row
 

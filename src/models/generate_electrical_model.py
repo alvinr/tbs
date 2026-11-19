@@ -11,8 +11,9 @@ coarse `ov.electrical()`: a ghosted enclosure + distinct internals, the (otherwi
 unmodeled) ground solar array, and color-coded circuit runs to ghosted loads.
 
 Tags / scenes:
-    Context        ghost container + faint ghost loads (fans, pumps, LED, safelight)
-                   + transport-stay locks (wall anchors) + chem-prep shelf (clearance refs)
+    Context        ghost container — on in every scene
+    Context Loads  faint ghost loads (Fan A, Fan B wall box) + chem-prep shelf + transport-stay locks (clearance refs) —
+                   off in the close-up Power Core / External Panel scenes
     Solar Array    3x 200W panels on a 30deg ground tilt frame + PV run
     Power Core     ghosted enclosure + MPPT / fuse block / busbars / disconnect
     Battery        100Ah pack (+ ghost 2nd) + contactor + MRBF main fuse
@@ -39,7 +40,7 @@ import generate_sketchup_model as ov   # helpers + conventions (Overview)
 import tbs_draw as draw                          # shared drawing/material primitives
 from tbs_constants import SOLAR_ARRAY_Z, SOLAR_GAP, SOLAR_N, SOLAR_PANEL_L, SOLAR_PANEL_T, SOLAR_PANEL_W, SOLAR_TILT_DEG, WALL_T, C_LEN, FAN_DIAM, EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PULL_CORD_BOTTOM_Z
 
-TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
+TAGS = ["Context", "Context Loads", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Lighting", "Labels"]
 
 WALL = ov.WALL_T
@@ -254,6 +255,13 @@ def context():
         draw.ruby_box("Pinhole Wall (context)", 0, -t, 0, ov.C_LEN, t, ov.C_HGT,
                     color=draw.C_SHELL, alpha=0.10),
     ]
+    return '\n'.join(p)
+
+
+def context_loads():
+    """Faint ghost LOADS at the far circuit ends (Fan A, the Fan B wall box) — on their own 'Context Loads'
+    tag with the chem shelf, so the close-up Power Core / External Panel scenes keep the container but drop them."""
+    p = []
     # Ghost loads (faint) — geometry identical to the overview's lighting_wiring().
     p.append(draw.ruby_box("Fan A ghost (exhaust)", _FAN_A_X - 60, FAN_A_YD - 75,
                          FAN_A_H - 75, 120, 150, 150, color=CCT["A"][0], alpha=0.18))
@@ -328,6 +336,7 @@ def power_core(external_links=True, links_only=False):
     # PV feed: MC4 (external) -> across ABOVE the chem shelf into the column -> down THROUGH the array
     # disconnect (now at operator height) -> up to the MPPT PV input.
     _pvx = PV_DISC_X + 35   # box center — the green cables land aligned in the disconnect box
+    PV_LEG_DX = 24          # each PV feed lands this far either side of center — the battery − riser (EP_RISE_X_M = center) passes between them
     _pvd_rz = PV_DISC_Z + 35                      # PV-disconnect REAR terminal Z = box MID-height (rear-wired)
     # The green PV feed + the grey E-stop link below are the two circuits that run OUT to the external
     # panel; collect them into ext_links so the overview can draw them on a SEPARATE tag.
@@ -339,13 +348,13 @@ def power_core(external_links=True, links_only=False):
     ext_links = []
     _pvp1 = _dedup([(MC4_PLUS_X, MC4_PLUS_Y, MC4_BOT_Z),
                     (MC4_PLUS_X, MC4_PLUS_Y, MC4_FEED_Z),        # drop to the feed-run height, on the shallow Yd lane
-                    (_pvx - 18, MC4_PLUS_Y, MC4_FEED_Z),         # run +x INSIDE the box, parallel to the grey feed, out the +x side toward the pinhole
-                    (_pvx - 18, MC4_PLUS_Y, _pvd_rz),
-                    (_pvx - 18, EP_CTRL_FACE_YD, _pvd_rz)])     # land LEFT of the box mid, on the REAR
+                    (_pvx - PV_LEG_DX, MC4_PLUS_Y, MC4_FEED_Z),         # run +x INSIDE the box, parallel to the grey feed, out the +x side toward the pinhole
+                    (_pvx - PV_LEG_DX, MC4_PLUS_Y, _pvd_rz),
+                    (_pvx - PV_LEG_DX, EP_CTRL_FACE_YD, _pvd_rz)])     # land LEFT of the box mid, on the REAR
     ext_links.append(draw.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)", _pvp1, 6, color="#2D7A2D"))
-    _pvp2 = _dedup([(_pvx + 18, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR, RIGHT of the box mid
-                    (_pvx + 18, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
-                    (_pvx + 18, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
+    _pvp2 = _dedup([(_pvx + PV_LEG_DX, EP_CTRL_FACE_YD, _pvd_rz),      # off the disconnect REAR, RIGHT of the box mid
+                    (_pvx + PV_LEG_DX, 45, _pvd_rz),                   # back BEHIND the panel (leaves the switch from the rear, like the MC4 feed)
+                    (_pvx + PV_LEG_DX, 45, EP_H_HI - MPPT_H + 40),     # up behind, to the MPPT height
                     (_pvx - 4, 45, EP_H_HI - MPPT_H + 40),      # −X behind, to the MPPT X
                     (_pvx - 4, EP_CTRL_FACE_YD, EP_H_HI - MPPT_H + 40)])   # forward into the MPPT back (single clean entry)
     ext_links.append(draw.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)", _pvp2, 6, color="#2D7A2D"))
@@ -527,12 +536,35 @@ def pv_disconnect():
     ])
 
 
-def external_panel(include_estop=True, include_disconnect=True):
+def pv_inner_terminals():
+    """INTERIOR half of the MC4 PV bulkheads (inside the pinhole wall): the inner stubs + the + / − pigtails
+    bending OUTWARD to each string's own-column collector bus (+ bus left, − bus right, on separate Yd lanes
+    MC4_PLUS_*/MC4_MINUS_*).  The PV +/− feeds take off from the bottom of each bus, so these must show
+    wherever the feeds do (the electrical Power Core scene), not only with the exterior panel."""
+    p = []
+    def px(uf): return PWR_PANEL_X + uf * PWR_PANEL_W
+    def pz(vf): return PWR_PANEL_Z + vf * PWR_PANEL_H
+    for i, vf in enumerate(MC4_PAIR_VF):
+        p.append(draw.ruby_cylinder(f"MC4 PV{i + 1} (+) inner", px(0.192), 0, pz(vf), 8, 18, color="#2D7A2D", axis="y"))
+        p.append(draw.ruby_cylinder(f"MC4 PV{i + 1} (-) inner", px(0.275), 0, pz(vf), 8, 18, color="#9AA0A6", axis="y"))
+        p.append(draw.ruby_pipe_run(f"PV+ pigtail {i + 1} (MC4 -> + bus)",
+                                  _dedup([(px(0.192), 18, pz(vf)), (px(0.192), MC4_PLUS_Y, pz(vf)), (MC4_PLUS_X, MC4_PLUS_Y, pz(vf))]),
+                                  CCT_WIRE_R, color="#2D7A2D"))
+        p.append(draw.ruby_pipe_run(f"PV- pigtail {i + 1} (MC4 -> - bus)",
+                                  _dedup([(px(0.275), 18, pz(vf)), (px(0.275), MC4_MINUS_Y, pz(vf)), (MC4_MINUS_X, MC4_MINUS_Y, pz(vf))]),
+                                  CCT_WIRE_R, color="#9AA0A6"))
+    p.append(draw.ruby_pipe_run("PV+ bus (3 strings)", _dedup([(MC4_PLUS_X, MC4_PLUS_Y, pz(MC4_PAIR_VF[0])), (MC4_PLUS_X, MC4_PLUS_Y, pz(MC4_PAIR_VF[-1]))]), CCT_WIRE_R, color="#2D7A2D"))
+    p.append(draw.ruby_pipe_run("PV- bus (3 strings)", _dedup([(MC4_MINUS_X, MC4_MINUS_Y, pz(MC4_PAIR_VF[0])), (MC4_MINUS_X, MC4_MINUS_Y, pz(MC4_PAIR_VF[-1]))]), CCT_WIRE_R, color="#9AA0A6"))
+    return '\n'.join(p)
+
+
+def external_panel(include_estop=True, include_disconnect=True, include_inner=True):
     """Fabricated wall-penetration box (exterior flange front face + shroud open to the
     interior) + MC4 PV bulkheads, NEMA weatherproof shore inlet, WR duplex cooler outlet
     (Circuit E) under an in-use cover, the exterior E-stop, and the PV disconnect.
     include_estop / include_disconnect = False omit those devices (the construction model
-    reveals them a step later, with the interior EP)."""
+    reveals them a step later, with the interior EP).  include_inner=False leaves out the INTERIOR
+    MC4 stubs + pigtails + PV buses (pv_inner_terminals()) so a model can tag them with the power core."""
     p = []
     face_y = -WALL - 25                       # exterior surface of the box front face (flange)
     # ── Fabricated penetration box: front-face flange (exterior, components mount to it)
@@ -556,27 +588,15 @@ def external_panel(include_estop=True, include_disconnect=True):
     def px(uf): return PWR_PANEL_X + uf * PWR_PANEL_W
     def pz(vf): return PWR_PANEL_Z + vf * PWR_PANEL_H
 
-    # MC4 PV bulkheads — 3 pairs (+ green, − gray), bare (no cover). Drawn on BOTH faces: the exterior
-    # stubs mate the array; the INTERIOR stubs carry the + / − pigtails that bundle to the PV feed.
-    # The two collector buses sit OUTBOARD of their own stub columns (+ bus left, − bus right) on
-    # separate Yd lanes (MC4_PLUS_*/MC4_MINUS_*), so green and grey never crowd at the bottom pair.
+    # MC4 PV bulkheads — 3 pairs (+ green, − gray), bare (no cover): the EXTERIOR stubs mate the array;
+    # the interior stubs + pigtails + collector buses are pv_inner_terminals().
     for i, vf in enumerate(MC4_PAIR_VF):
         p.append(draw.ruby_cylinder(f"MC4 PV{i + 1} (+)", px(0.192), face_y - 20, pz(vf),
                                   8, 20, color="#2D7A2D", axis="y"))
         p.append(draw.ruby_cylinder(f"MC4 PV{i + 1} (-)", px(0.275), face_y - 20, pz(vf),
                                   8, 20, color="#9AA0A6", axis="y"))
-        # interior stubs (inner face) + pigtails bending OUTWARD to each string's own-column bus
-        p.append(draw.ruby_cylinder(f"MC4 PV{i + 1} (+) inner", px(0.192), 0, pz(vf), 8, 18, color="#2D7A2D", axis="y"))
-        p.append(draw.ruby_cylinder(f"MC4 PV{i + 1} (-) inner", px(0.275), 0, pz(vf), 8, 18, color="#9AA0A6", axis="y"))
-        p.append(draw.ruby_pipe_run(f"PV+ pigtail {i + 1} (MC4 -> + bus)",
-                                  _dedup([(px(0.192), 18, pz(vf)), (px(0.192), MC4_PLUS_Y, pz(vf)), (MC4_PLUS_X, MC4_PLUS_Y, pz(vf))]),
-                                  CCT_WIRE_R, color="#2D7A2D"))
-        p.append(draw.ruby_pipe_run(f"PV- pigtail {i + 1} (MC4 -> - bus)",
-                                  _dedup([(px(0.275), 18, pz(vf)), (px(0.275), MC4_MINUS_Y, pz(vf)), (MC4_MINUS_X, MC4_MINUS_Y, pz(vf))]),
-                                  CCT_WIRE_R, color="#9AA0A6"))
-    # + / − bus bars collecting the 3 strings; the PV +/− feeds take off from the bottom of each bus
-    p.append(draw.ruby_pipe_run("PV+ bus (3 strings)", _dedup([(MC4_PLUS_X, MC4_PLUS_Y, pz(MC4_PAIR_VF[0])), (MC4_PLUS_X, MC4_PLUS_Y, pz(MC4_PAIR_VF[-1]))]), CCT_WIRE_R, color="#2D7A2D"))
-    p.append(draw.ruby_pipe_run("PV- bus (3 strings)", _dedup([(MC4_MINUS_X, MC4_MINUS_Y, pz(MC4_PAIR_VF[0])), (MC4_MINUS_X, MC4_MINUS_Y, pz(MC4_PAIR_VF[-1]))]), CCT_WIRE_R, color="#9AA0A6"))
+    if include_inner:
+        p.append(pv_inner_terminals())
     # NEMA 5-15 weatherproof shore inlet + its translucent flip-cover, mounted proud
     p.append(draw.ruby_box("NEMA 5-15 shore inlet", px(0.742) - 30, face_y - 30,
                          pz(0.878) - 22, 60, 30, 45, color="#FFF0CC"))
@@ -740,7 +760,7 @@ def cct_e_feed():
     busbar/disconnect cluster and fouled the Main feed + Battery+ cable). SINGLE OWNER — circuit_runs()
     and the overview's evap section both call this, so the Cct-E DC leg can't drift between models."""
     fex, fey, fez = FUSE_POS["E"]
-    invx = INVERTER_X + INVERTER_W / 2
+    invx = INVERTER_X + INVERTER_W / 2 + 30   # DC input 30mm +X of the inverter center — clear of the Battery + cable's drop to the disconnect (X1884)
     return draw.ruby_pipe_run("Cct E feed (fuse E -> inverter)",
                             _dedup([(fex, fey, fez), (fex, 55, fez),
                                     (fex, 55, INVERTER_Z + INVERTER_H + 10),
@@ -935,12 +955,14 @@ def generate_ruby():
     import generate_lighttrap_model as lt   # transport-stay wall anchors (the transport "locks")
     comps = [
         draw.component("Container (ghost)", "Context", context()),
-        draw.component("Transport Locks (context)", "Context", lt.wall_anchors()),
-        draw.component("Chem Prep Shelf (context)", "Context", ov.shelf()),
+        draw.component("Transport Locks (context)", "Context Loads", lt.wall_anchors()),
+        draw.component("Chem Prep Shelf (context)", "Context Loads", ov.shelf()),
+        draw.component("Circuit-end loads (context)", "Context Loads", context_loads()),
         draw.component("Solar Array", "Solar Array", solar_array()),
         draw.component("Power Core", "Power Core", power_core()),
         draw.component("Battery Bank", "Battery", battery()),
-        draw.component("External Power Panel", "External Panel", external_panel()),
+        draw.component("External Power Panel", "External Panel", external_panel(include_inner=False)),
+        draw.component("PV Interior Terminals", "Power Core", pv_inner_terminals()),
         draw.component("Circuit-E Inverter", "Inverter", inverter()),
         draw.component("Circuit Runs", "Circuit Runs", circuit_runs()),
         draw.component("Conduit Clips", "Clips", conduit_clips()),
@@ -955,7 +977,7 @@ def generate_ruby():
     scenes = [
         ("Overview", comp_tags),
         ("Power Core", ["Power Core", "Battery", "Inverter"]),
-        ("Distribution", ["Circuit Runs", "Power Core", "Battery"]),
+        ("Distribution", ["Circuit Runs", "Power Core", "Battery", "Context Loads"]),
         ("External Panel", ["External Panel", "Solar Array"]),
         ("Labeled", TAGS),
     ]

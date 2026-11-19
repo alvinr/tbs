@@ -18,6 +18,7 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
+from tbs_constants import PUMP_YD_SPAN
 
 # ── deep-box frame geometry (from the fork; one source) ──
 S       = ov.IBC_FRAME_RHS               # 50.8×50.8 RHS (2×2×0.120in)
@@ -429,6 +430,9 @@ C_CHECK = "#8A2BE2"                      # PURPLE — one-way / check valves (vs
 # UPRIGHT pump (filter-style): a vertical body + cap with BOTH ports out the TOP, exiting along
 # ±X (face dir), offset ±26 in Yd (OUT +Yd, IN −Yd).  All pumps (incl. the wall P-02) conform.
 PVB_R, PVB_H, PCAP_H = 50, 180, 30       # vertical body radius / height, head/cap height
+PORT_REACH = PUMP_YD_SPAN / 2            # 63.5 — center → port tip (Shurflo 2088-554-144: 5.00in/127mm across the
+                                         #   1/2in-14 NPSM male ports) → a 13.5mm port stub off the Ø100 body
+PORT_ADAPTER_L = 16.5                    # 1/2in FNPT×slip adapter threaded onto each port; the turn elbow seats on it
 PXC     = FACE_X - 120                    # 4984 — pump body center X (upright, in front of the panel)
 BV_FWD_X = 4770                           # BV-02/BV-06 forward-loop riser X — pulled toward the walkway edge (near the front post inner face 4704.8) for operator reach (#29)
 Z_ACC0  = 1780                            # ACC-01 BOTTOM — raised clear of the pipe runs below it
@@ -452,7 +456,7 @@ TRAY_STRIP_Y = 60                         # outside the tray near rim (Yd80): th
 GAP_CORR_Y = 1161                         # corridor-side approach Yd — MATCHED to the brown P-02 lead Yd (midy=1161) so the
                                           #   blue and brown corridor-entry runs share a center line (the blue run is at trz=235,
                                           #   the brown lead at RIBBON_Z, so they stack clear in Z); −Yd of the grey merge run (1165)
-BROWN_TAP = (4880, CTR_Y - (PVB_R + 30), ov.IBC_PALLET_H + 140)   # (4880,1101,308) — the SINGLE shared
+BROWN_TAP = (4880, CTR_Y - PORT_REACH - PORT_ADAPTER_L, ov.IBC_PALLET_H + 140)   # (4880,1101,308) — the SINGLE shared
 #   tap RAISED +50mm (was +90/z258) to lift the P-02/P-05 brown inlet runs clear of the blue supply trunk's
 #   low-lane crossing (z225-246); the dip tube below is extended +50mm to keep the same in-tote pickup depth
                                           # IBC-3 bottom tap T: run ALONG X (P-02 leaves −X to the
@@ -472,20 +476,20 @@ def pump_unit(nm, cx, cy, cz0, axis="x", face=1, color=None):
     pz = top - 18                                # ports near the top (like the filter cap ports)
     for tag, sd in (("in", -face), ("out", face)):
         if axis == "x":
-            x0 = (cx + PVB_R) if sd > 0 else (cx - PVB_R - 30)
-            p.append(draw.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, 30, color=draw.C_PIPE_FITTING, axis="x"))
+            x0 = (cx + PVB_R) if sd > 0 else (cx - PORT_REACH)
+            p.append(draw.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, PORT_REACH - PVB_R, color=draw.C_PIPE_FITTING, axis="x"))
         else:
-            y0 = (cy + PVB_R) if sd > 0 else (cy - PVB_R - 30)
-            p.append(draw.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, 30, color=draw.C_PIPE_FITTING, axis="y"))
+            y0 = (cy + PVB_R) if sd > 0 else (cy - PORT_REACH)
+            p.append(draw.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, PORT_REACH - PVB_R, color=draw.C_PIPE_FITTING, axis="y"))
     return p
 
 
 def pump_out(cx, cy, cz0, axis="x", face=1):
     pz = cz0 + PVB_H - 18
-    return (cx + face * (PVB_R + 30), cy, pz) if axis == "x" else (cx, cy + face * (PVB_R + 30), pz)
+    return (cx + face * PORT_REACH, cy, pz) if axis == "x" else (cx, cy + face * PORT_REACH, pz)
 def pump_in(cx, cy, cz0, axis="x", face=1):
     pz = cz0 + PVB_H - 18
-    return (cx - face * (PVB_R + 30), cy, pz) if axis == "x" else (cx, cy - face * (PVB_R + 30), pz)
+    return (cx - face * PORT_REACH, cy, pz) if axis == "x" else (cx, cy - face * PORT_REACH, pz)
 
 
 def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
@@ -606,7 +610,7 @@ def sample_valve(nm, cx, cy, cz, h=60, color=None, spout="z-"):
     return "\n".join(p)
 
 
-def _flex_jumper(p, nm, flange_pt, approach_pt, col, start=10.0, maxlen=90.0):
+def _flex_jumper(p, nm, flange_pt, approach_pt, col, start=10.0, maxlen=90.0, r=RP):
     """Draw a corrugated flex jumper on the corridor-side pipe segment between the tote
     flange and the point where the rigid run arrives/turns (approach_pt). The jumper is
     co-linear with that segment and CAPPED inside it (start offset + length ≤ segment),
@@ -621,7 +625,7 @@ def _flex_jumper(p, nm, flange_pt, approach_pt, col, start=10.0, maxlen=90.0):
     p1 = tuple(flange_pt[i] + u[i] * (start + seg) for i in range(3))
     # Flex connectors draw in BRIGHT yellow (draw.C_FLEX), NOT the pipe's fluid color, so a jumper
     # stands out from the same-color pipe it splices. `col` is kept for call-site intent but ignored.
-    p.append(draw.ruby_flex_run(nm + " flex jumper", [p0, p1], RP, color=draw.C_FLEX, elbow_r=6))
+    p.append(draw.ruby_flex_run(nm + " flex jumper", [p0, p1], r, color=draw.C_FLEX, elbow_r=6))
 
 
 def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):
@@ -663,7 +667,7 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
 # Order bottom → top: [ACC-01 dead-leg], P-01, P-04, P-05, P-03 (ACC sits BELOW P-01 — swapped to
 # drop the blue ACC knot to the column foot and lift the P-01 suction clear).
 PSTACK = {"P-01": 615, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z (P-01 raised +75mm)
-PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
+PIY, POY = CTR_Y - PORT_REACH, CTR_Y + PORT_REACH                # 1117.5 (IN) / 1244.5 (OUT) port-tip Yd
 def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
 
 # X1 fresh-fill distribution fitting (top of the corridor, near the sealed end): a TEE —
@@ -732,10 +736,10 @@ BW_CUT = _r5dn(SB_X1 - SB_X0)                  # 395 — pump-run board X length
 # PORT-TURN planes: every run off a corridor pump port turns ONE elbow radius out of the port tip (the
 # elbow sits right on the port; the flex jumper moves to the first straight leg AFTER the turn).  The
 # side-board riser planes ARE these planes — 5.5mm (near) / 4.5mm (far) off the board faces, the most the pump column allows
-# (board faces 234mm apart; pump + 2 ports 160mm).  EXCEPTION to the 18mm clip standoff: SB_FLUSH_OK.
+# (board faces 234mm apart; pump + 2 ports + adapters 160mm).  EXCEPTION to the 18mm clip standoff: SB_FLUSH_OK.
 PORT_ELBOW       = 2 * RP                              # 21 — 90° elbow centerline radius = its tangent length
-PORT_TURN_YD_IN  = CTR_Y - (PVB_R + 30) - PORT_ELBOW   # 1080 — IN-side (−Yd) turn plane
-PORT_TURN_YD_OUT = CTR_Y + (PVB_R + 30) + PORT_ELBOW + 1   # 1283 — OUT-side (+Yd) turn plane (+1 so the DV-01
+PORT_TURN_YD_IN  = PIY - PORT_ADAPTER_L - PORT_ELBOW   # 1080 — IN-side (−Yd) turn plane
+PORT_TURN_YD_OUT = POY + PORT_ADAPTER_L + PORT_ELBOW + 1   # 1283 — OUT-side (+Yd) turn plane (+1 so the DV-01
 #   recycle riser, which turns onto this plane from DV-01 at Yd1241, also gets two full elbow tangents)
 SB_RISER_YD_FAR  = PORT_TURN_YD_OUT    # far risers, 5.5mm off the far board
 SB_RISER_YD_NEAR = PORT_TURN_YD_IN     # near risers, 5.5mm off the near board
@@ -1127,6 +1131,8 @@ def drains_ports(sump_on_skid=False):
         [(beqx, YD_NEAR - 150, beqz), (beqx, YD_FAR + 150, beqz)], 16, color=draw.C_BLUE))   # 1" pipe
     p.append(draw.ruby_cylinder("Blue eq flange (IBC-1)", beqx, YD_NEAR - 8, beqz, 36, 16, color=draw.C_STEEL, axis="y"))
     p.append(draw.ruby_cylinder("Blue eq flange (IBC-2)", beqx, YD_FAR - 8, beqz, 36, 16, color=draw.C_STEEL, axis="y"))
+    for yface, into, nm in ((YD_NEAR, -1, "Blue equalization (IBC-1 end)"), (YD_FAR, +1, "Blue equalization (IBC-2 end)")):
+        _flex_jumper(p, nm, (beqx, yface - into * 8, beqz), (beqx, CTR_Y, beqz), None, r=16)   # each tote moves on its own
 
     # ── IBC-3 BROWN: ONE shared bottom tap (dip tube → floor) → T-junction (cp.BROWN_TAP) that
     #    feeds BOTH P-05 (drain) and P-02 (wall filter loop) — a single tote penetration. ──
@@ -1141,7 +1147,7 @@ def drains_ports(sump_on_skid=False):
     if sump_on_skid:
         # IBC-3 (Brown) tap → P-02 (recycle pump) suction: off the tap's −X port → riser → +X into
         # P-02's −Yd IN port.  P-02 sits in the P-04 column slot; its IN Yd == the tap Yd (both
-        # CTR_Y−(PVB_R+30)), so the run is co-planar in Yd — riser then a straight +X into the port.
+        # one adapter length −Yd of the IN tip), so the run is co-planar in Yd — riser then into the port.
         p2i = pump_in(PXC, CTR_Y, PSTACK["P-04"], "y", 1)
         pipe("IBC-3 tap -> P-02 suction",
              [(tx3 - 19, ty3, tz3),            # off the tap's −X run port (low, z308)

@@ -847,7 +847,7 @@ def skid_plumbing(part="all"):
     # (Yd0) left of the ply panel edge (PWP_PANEL_X0=2780), the ply face (Yd18) on the panel.
     # clips sit in the clear gaps BETWEEN the near-walkway cantilevers (Near 5 X2576-2696,
     # Near 6 X3033-3153) so no support bracket lands on a cantilever arm/plate.
-    for rx in (2520, 2760, 2980):                         # along-wall horizontal run (at wall_run_z)
+    for rx in (2520, 2830, 2980):                         # along-wall horizontal run (at wall_run_z)
         p.append(wall_clip(rx, wall_run_z, SKID_CLIP_YD, False, rp))
     p.append(cp.clip_on_block("Skid riser P-clip", p04_in[0] - 40, 340, skid_face, SKID_CLIP_YD, True, rp=rp))   # P-04 climb, low (joins the 600/1080 clips)
     # Corridor-drop riser clips (SV-01→DV-01, DV-02 waste, P-02→ACC-02) — on the extended skid ply.

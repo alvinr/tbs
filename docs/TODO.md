@@ -48,6 +48,9 @@ Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off
   constants) — move them out with the shim (fold into the spine-view redraw). pinhole-panel also needs the
   extended board's LOW runs (sump suction Z230, the 3 corridor drops, their clips) and the 2 corner notches
   drawn — the board is the right size now but its lower half is empty.
+- [ ] 2D: check every sheet that draws the Shurflo pumps against the 3D port reach (127mm across the
+  1/2"-14 NPSM port tips = `PUMP_YD_SPAN`; 13.5mm stubs + a 16.5mm ½" FNPT×slip adapter to the turn elbow)
+  and the new flex jumpers on both ends of the Blue equalization tie (water-system sheets, spine views).
 - [ ] Electrical cables drawn INSIDE ply (EP access panel, MPPT cross-member, the Cct C branch on the skid)
   — ratcheted in `pipe_elbow_allowlist.txt` (`ply:` lines); fix in the electrical pass.
 

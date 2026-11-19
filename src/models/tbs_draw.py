@@ -547,22 +547,32 @@ def ruby_elbow(name, A, O, Rc, normal, d_in, theta, r,
     swept along an arc (centerline radius Rc, center O, plane normal `normal`,
     sweep `theta` rad) — a real 90deg/45deg elbow body, not a butt corner."""
     xa = _vunit(_vsub(A, O))
+    yb = _vcross(normal, xa)
+    # Sweep path = the polygon CIRCUMSCRIBING the arc: its first/last legs are tangent at A and B, so
+    # both end rings sit square to the adjoining straight pipe.  (An inscribed chord path leaves the
+    # far ring tilted by half a chord angle — half of it buries inside the next pipe and the joint
+    # line vanishes.)
+    dl = theta / seg
+    ro = Rc / math.cos(dl / 2.0)
+    path = [A] + [_vadd(O, _vadd(_vscale(xa, ro * math.cos((k + 0.5) * dl)),
+                                 _vscale(yb, ro * math.sin((k + 0.5) * dl)))) for k in range(seg)]
+    path.append(_vadd(O, _vadd(_vscale(xa, Rc * math.cos(theta)), _vscale(yb, Rc * math.sin(theta)))))
+    pts = ", ".join(f"[{mm(p[0])},{mm(p[1])},{mm(p[2])}]" for p in path)
     out = [
         f'  # {name}',
         '  grp = ents.add_group',
         f'  grp.name = "{name}"',
         '  ge = grp.entities',
-        (f'  arc = ge.add_arc([{mm(O[0])},{mm(O[1])},{mm(O[2])}], '
-         f'[{xa[0]:.6f},{xa[1]:.6f},{xa[2]:.6f}], '
-         f'[{normal[0]:.6f},{normal[1]:.6f},{normal[2]:.6f}], '
-         f'{mm(Rc)}, 0.0, {theta:.6f}, {seg})'),
+        f'  arc = ge.add_edges({pts})',
         (f'  circle = ge.add_circle([{mm(A[0])},{mm(A[1])},{mm(A[2])}], '
          f'[{d_in[0]:.6f},{d_in[1]:.6f},{d_in[2]:.6f}], {mm(r)}, {n})'),
         '  f = ge.add_face(circle)',
         '  f.followme(arc)',
-        # followme leaves the arc CENTERLINE behind as loose edges (no face) — they render as stray
+        # followme leaves the path CENTERLINE behind as loose edges (no face) — they render as stray
         # dashed/"perspective" lines all over the model. Drop them (they're inside the swept tube).
         '  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }',
+        # mitre rings between sweep legs read as a smooth bend; only the two end rings stay hard
+        '  ge.grep(Sketchup::Edge).each { |e| fs = e.faces; if fs.size == 2 && fs[0].normal.angle_between(fs[1].normal) < 0.5 then e.soft = true; e.smooth = true end }',
     ]
     if color:
         color = mute_hex(color, mute)

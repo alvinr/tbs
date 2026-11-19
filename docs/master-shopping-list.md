@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,968 | $8,356 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,977 | $8,365 |
 | 6. Electrical — power, circuits, wiring | $3,429 | $3,515 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,780** | **~$36,670** |
+| **TOTAL (base build + 50-print run)** | **~$27,789** | **~$36,679** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -332,8 +332,8 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [1" brass foot valve with SS filter](https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html) (95953) | 1 ea | misterworker | tray | $14 |
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | 2 ea | US Plastic Corp | water | $25 |
-| [1" FNPT × 1" hose barb (Banjo)](https://www.usplastic.com/catalog/item.aspx?itemid=135154) (31544) | 8 ea | US Plastic Corp | water | $24 |
-| [1" MNPT × 1" hose barb (Banjo HB100)](https://www.usplastic.com/catalog/item.aspx?itemid=135135) (31527) | 8 ea | US Plastic Corp | water | $14 |
+| [1" FNPT × 1" hose barb (Banjo)](https://www.usplastic.com/catalog/item.aspx?itemid=135154) (31544) | 10 ea | US Plastic Corp | water | $30 |
+| [1" MNPT × 1" hose barb (Banjo HB100)](https://www.usplastic.com/catalog/item.aspx?itemid=135135) (31527) | 10 ea | US Plastic Corp | water | $18 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
 | [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | 4 stick | Home Depot | water | $35 |
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
@@ -368,7 +368,7 @@ indicative low–high estimates — get quotes before ordering.
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,316–$1,336** |
+| **plumbing-fittings subtotal** | | | | **$1,326–$1,346** |
 
 ### seals-gaskets
 
@@ -512,8 +512,8 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
 | Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |
+| US Plastic Corp | 14 | plastics-sheet, plumbing-fittings | $1,030–$1,050 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
-| US Plastic Corp | 14 | plastics-sheet, plumbing-fittings | $1,021–$1,041 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |

@@ -52,6 +52,8 @@ Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off
   1/2"-14 NPSM port tips = `PUMP_YD_SPAN`; 13.5mm stubs + a 16.5mm ½" FNPT×slip adapter to the turn elbow)
   and the new flex jumpers on both ends of the Blue equalization tie (water-system sheets, spine views).
 - [ ] `tbs_drawing.draw_pipe_path` reads a COLLINEAR middle waypoint as a 180° turn (turn = π − angle), drawing a bogus elbow; panel-layout works around it by dropping collinear points. Fix the helper (skip collinear vertices) and re-render every sheet that uses it.
+- [ ] Battery terminals (electrical.skp / overview / construction): the + link and the − 2/0 cable leave the battery top 15mm apart as Ø22 cables (EP_X+40, Yd45 / Yd60), so they overlap ~7mm at the terminals. check_interference excuses it (both are at their run ends). Check against the real battery's terminal spacing and re-lay the leads.
+- [ ] Spine-top X1 run (water.skp): the X1 tee + inlet now REST on the drain-riser spine's top edge with no hold-down. Decide whether to add strap clips either side of the tee, and whether the spine-top notches (tee 55.5 × 11mm, check-valve seat 52 × 9mm) go on the plywood cut sheet.
 - [ ] Electrical cables drawn INSIDE ply (EP access panel, MPPT cross-member, the Cct C branch on the skid)
   — ratcheted in `pipe_elbow_allowlist.txt` (`ply:` lines); fix in the electrical pass.
 

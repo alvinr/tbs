@@ -100,7 +100,7 @@ Because gravity does the bulk, the pump energy is **independent of how full the 
 got** and is **tiny — ~<!-- BEGIN energy:drain-wh -->36<!-- END energy:drain-wh --> Wh per dump run** (a fraction of a single operating day's ~<!-- BEGIN energy:daily-wh-3 -->2,310<!-- END energy:daily-wh-3 --> Wh,
 and incurred only once per resupply, not daily). *Worst case* — if a tote had to be pumped
 out entirely with no gravity assist (~600 L) — it would be ~<!-- BEGIN energy:drain-full-min -->45<!-- END energy:drain-full-min --> min each, ~<!-- BEGIN energy:drain-full-wh -->94<!-- END energy:drain-full-wh --> Wh for both;
-still minor. (Brown is normally *recycled* through the filter back to Blue rather than
+still minor. (Brown is normally *recycled* through the filter for the first wash rather than
 dumped; this line covers the case where it is drained off.)
 
 ---
@@ -175,7 +175,7 @@ event.
 ### 8.3 Watch the waste side too
 
 The endurance is bounded on **both ends of the water loop**. The **Black (waste) tote fills to ~600 L** (a 1,000 L tote at its working fill) — a *parallel* out-flow limit: in fully self-contained field use (no sewer, waste
-transported for disposal), the waste tank can fill before the Blue tank empties, so a
+pumped out to a hauler for disposal), the waste tank can fill before the Blue tank empties, so a
 resupply run must **empty Black as well as refill Blue**. If waste cannot be disposed at
 all, that — not power or fresh water — becomes the hard stop.
 

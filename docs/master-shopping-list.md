@@ -580,8 +580,8 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
 | Ferric ammonium oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg |
-| Potassium ferricyanide (3:1) | 130g | 6.5 kg |
-| Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
+| Potassium ferricyanide (3:1) | <!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard -->g | <!-- BEGIN costing:om-ferri-kg-standard -->5.6<!-- END costing:om-ferri-kg-standard --> kg |
+| Ammonium dichromate (contrast, 0.1–0.4% of the ~2.6 L working volume) | 2.6–10.4g | ~0.13–0.52 kg |
 | Distilled water | ~2.6 L | ~130 L |
 
 Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is

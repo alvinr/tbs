@@ -56,7 +56,7 @@ The sensitizer is Ware's AmFe : potassium ferricyanide (Part A / Part B) with an
 
 The **per-print masses are under trial** — two wet-on-wet coats at a diluted Ware strength, concentration-tier dependent — so they are not yet pinned; see [Sensitizer Trials](sensitizer-trials.md). The **per-tier order quantities and cost** (Lean / Standard / Rich) are in the shopping list below.
 
-> **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
+> **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities are small (0.1–0.4% of the working volume: 2.6–10.4 g per print, ~0.13–0.52 kg per 50-print run). It also puts chromium into the wash water, so the Brown and Waste totes go out as chromium-bearing waste ([Water System Report §4.3](water-system-report.md)). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
 
 ### Shopping list — Ware New Cyanotype (primary)
 

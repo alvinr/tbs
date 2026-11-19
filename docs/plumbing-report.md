@@ -421,7 +421,7 @@ IBC-4 → P-03 → external drain port X4 (gravity + pump assist)
 
 P-03 is dedicated to waste evacuation. IBC-4 gravity-drains through external
 port X4 down to approximately 120L residual; P-03 pumps the residual
-below the gravity drain height to a disposal tanker.
+below the gravity drain height to the waste hauler's tanker ([Water System Report §4.3](water-system-report.md)).
 
 ---
 

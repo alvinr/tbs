@@ -78,7 +78,7 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 - [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns bright orange-red.
 - [ ] 0.3.3 — Label the jug **PART B — KFe + AmDichr**.
 
-> **⚠ Ammonium dichromate** is a Category 1A carcinogen. Wear nitrile gloves when handling dry powder. Do not inhale dust. The small quantity used here (~10g per print) is well within safe handling range for a ventilated workspace.
+> **⚠ Ammonium dichromate** is a Category 1A carcinogen. Wear nitrile gloves when handling dry powder. Do not inhale dust. The quantity used here (2.6–10.4 g per print) is within safe handling range for a ventilated workspace. It also puts chromium into all the wash water, which sets how the Brown and Waste totes are disposed of (§5.1).
 
 > **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitizer), shelf life is 4–6 hours. Mix only what you need per session.
 
@@ -355,7 +355,7 @@ The two 3-way diverter valves serve different roles in the water triage chain. U
 
 DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:
 
-- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and reuse as the next print's first wash.
+- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate, potassium ferricyanide and the dichromate contrast agent) from the print surface. This water is suitable for filtering and reuse as the next print's first wash.
 - **Switch to Black:** Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.
 
 **Rule of thumb:** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.
@@ -392,7 +392,7 @@ required for a normal 1–2 print outing.
 
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
 - [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1 and disconnect.
-- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels: connect the liquid-waste hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Confirm beforehand that the hauler's receiving wastewater plant accepts cyanotype wash water. Close and re-cap the ports when done.
+- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book the hauler first: a **licensed hazardous-waste hauler** by default, or — only for a tote with a certified lab result below 5.0 mg/L total chromium — a liquid-waste hauler whose receiving wastewater plant has agreed to accept it (§5.1.1). Wearing nitrile gloves, connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done, and file the manifest or lab report.
 - [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
 > **Before transport:** return the totes to their validated fill states — Blue drained, Waste within
@@ -404,7 +404,7 @@ required for a normal 1–2 print outing.
 **Lighting: WHITE LIGHT.**
 
 ### 5.1 Chemistry Disposal
-- [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. IBC-4 is pumped out by P-03 through the external port X4 into a liquid-waste hauler's tanker, for a wastewater treatment plant that has agreed to accept it (TU.3). Never discharge it to a storm drain, soil or waterway. Keep the IBC-4 cap and valve closed between pump-outs.
+- [ ] 5.1.1 — Spent wash water (yellow-green): it carries chromium from the ammonium dichromate contrast agent, so neither Brown nor Waste is plain non-hazardous rinse water. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Both totes are pumped out through X3/X4 to a **licensed hazardous-waste hauler** by default; a tote whose certified lab test shows total chromium below 5.0 mg/L may instead go by liquid-waste hauler to a wastewater treatment plant that has agreed to accept it ([Water System Report §4.3](water-system-report.md)). Keep the lab report and the hauler's manifest. Never discharge either tote to a storm drain, soil or waterway. Keep the caps and valves closed between pump-outs.
 - [ ] 5.1.2 — Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
 - [ ] 5.1.3 — Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
 - [ ] 5.1.4 — Stow the spray bar at either end of its travel. Detach the telescoping pole and store alongside the bar or clip to the container wall. The flexible hose coils naturally at the pinhole wall.

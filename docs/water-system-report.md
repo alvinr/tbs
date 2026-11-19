@@ -35,14 +35,15 @@ When a cyanotype print is washed, the water picks up:
 
 | Compound | Source | Notes |
 |----------|--------|-------|
-| Ferric ammonium citrate (FAC) | Unexposed sensitizer | Water-soluble, pale yellow; low toxicity |
+| Ferric ammonium oxalate | Unexposed sensitizer | Water-soluble, pale yellow-green; low toxicity |
+| Ammonium dichromate | Contrast agent in Part B (0.1–0.4%) | Water-soluble, orange; **chromium(VI)** — a Category 1A carcinogen |
 | Potassium ferricyanide | Sensitizer component | Water-soluble, yellow-orange; low acute toxicity |
 | Prussian blue particles | Exposed image pigment wash-off | Fine blue solid particles, ~1–10 micron |
 | Iron(III) compounds | Oxidation products | Color the water blue-gray |
 
 **pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Avoid alkaline conditions (pH >8) — they accelerate the slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions.
 
-**Disposal:** Cyanotype wash water is low-toxicity and is generally accepted to the municipal sewer in dilute volumes. With no sewer access in the field, it must be contained and transported for disposal. Do not pour it on soil or into waterways.
+**Disposal:** Iron-only cyanotype wash water is low-toxicity, but this process adds ammonium dichromate for contrast, so **every print puts chromium into the wash water** — both the Brown and the Black streams carry it. Waste that leaches 5.0 mg/L or more total chromium is a characteristic hazardous waste (EPA code D007, [40 CFR 261.24](https://www.ecfr.gov/current/title-40/chapter-I/subchapter-I/part-261/subpart-C/section-261.24)). Both totes are therefore disposed of as chromium-bearing waste (§4.3). Never discharge either to a storm drain, soil or waterway.
 
 **Source:** [Photrio — Cyanotype wash water composition](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/) · [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
 
@@ -57,6 +58,7 @@ It will **not**:
 - Restore water to fresh-water quality
 - Remove dissolved iron salts fully
 - Make the water safe for discharge to ground
+- Remove the chromium from the dichromate — it is not credited to any stage, so Brown carries it through every recycle pass
 
 **Reuse rule:** Recycled Brown water is used only for the **first wash**, where the unexposed sensitizer leaches out and the bath is dirtiest regardless of what it starts as. Washes 2 and 3 use Blue, so the print finishes in clean water and iron compounds are not re-deposited. After 3 recycle passes, Brown water goes to Black.
 
@@ -182,12 +184,16 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
         │
    P-03 → X4 (end-wall camlock)
         │
-   Liquid-waste hauler's tanker → wastewater treatment plant
+   Licensed hazardous-waste hauler (default)
+   — or, if a lab test shows total chromium < 5.0 mg/L —
+   liquid-waste hauler → wastewater treatment plant
 ```
 
 - The DV-01 and DV-02 waste legs join at a tee just before IBC-4. Each leg carries a check valve below the tee — **CV-2** (DV-01) and **CV-3** (DV-02) — so one leg cannot back-feed the other and the IBC-4 riser cannot drain back through DV-01 into the filter train
-- IBC-4 stays in the stacking frame. It has a DN50 butterfly valve (S60×6 thread) and is pumped out by **P-03** through **X4** into a liquid-waste hauler's tanker, without opening the cargo doors
-- The contents are the same dilute cyanotype chemistry as the wash water (§2), non-hazardous but more concentrated than the Brown stream, so they go to a wastewater treatment plant rather than to a storm drain, soil or waterway. Confirm with the hauler that the receiving plant accepts it before the first pump-out
+- IBC-4 stays in the stacking frame. It has a DN50 butterfly valve (S60×6 thread) and is pumped out by **P-03** through **X4** into the hauler's tanker, without opening the cargo doors. Brown (IBC-3) leaves the same way through **X3** by **P-05**
+- **Both drained streams carry chromium** from the ammonium dichromate contrast agent (§2), and IBC-4 holds the most concentrated fraction. Treat each pump-out as hazardous waste — manifested to a licensed hazardous-waste hauler — by default
+- A batch may instead go by liquid-waste hauler to a wastewater treatment plant **only if** a certified lab test of a sample from that tote shows total chromium below the 5.0 mg/L D007 limit, **and** the receiving plant has agreed to accept it. Keep the lab report with the disposal record
+- Never discharge either tote to a storm drain, soil or waterway
 - Keep the IBC-4 cap and valve closed between pump-outs — evaporation and UV exposure can drive the ferricyanide chemistry
 
 ### 4.4 Processing Tray and Spray Bar
@@ -285,7 +291,7 @@ Filter cartridges, pipe joints, pumps, and the accumulator are maintained per th
 
 3. **Citric acid dosing:** Dissolve the acid in a separate container before adding it to a tank. Dry acid added to iron-rich water can briefly react exothermically and bubble.
 
-4. **IBC-4 waste transport:** Seal the cap, close the outlet valve, and label the contents before transport. The liquid is not DOT-hazardous at these concentrations, but keep it upright and clearly labeled.
+4. **Chromium in the waste:** The dichromate contrast agent puts chromium(VI) into both IBC-3 and IBC-4. Keep both caps and outlet valves closed, label the totes as chromium-bearing, and pump them out only to a licensed hazardous-waste hauler unless a lab test clears the batch (§4.3). Wear nitrile gloves when connecting or disconnecting the X3/X4 hoses.
 
 ---
 
@@ -293,6 +299,7 @@ Filter cartridges, pipe joints, pumps, and the accumulator are maintained per th
 
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)
 - [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
+- [EPA — 40 CFR 261.24, Toxicity Characteristic](https://www.ecfr.gov/current/title-40/chapter-I/subchapter-I/part-261/subpart-C/section-261.24) — chromium D007 limit 5.0 mg/L
 - [Shurflo 2088-554-144 pump datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf) — flow, pressure, integral check valve
 
 Suppliers and part links are in the [Master Shopping List](master-shopping-list.md?system=water).

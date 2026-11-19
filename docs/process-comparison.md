@@ -31,7 +31,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 **Why cyanotype:** it is both the cheapest process and the one whose non-cost properties best fit a long-lived public artwork:
 
 - **Archival permanence.** The Prussian-blue image is among the most lightfast and chemically stable of all iron-based prints — no silver to tarnish, no gum layer to crack or lift.
-- **Low hazard.** Cyanotype's primary sensitizers (ferric ammonium oxalate + potassium ferricyanide) are far less hazardous than gum's bulk ammonium dichromate — a Category-1A carcinogen and Class-5.1 oxidizer used at 8.4 kg per run — or the DEA-controlled silver nitrate of the Van Dyke and salt processes. Cyanotype uses only a trace of dichromate as an optional contrast agent.
+- **Low hazard.** Cyanotype's primary sensitizers (ferric ammonium oxalate + potassium ferricyanide) are far less hazardous than gum's bulk ammonium dichromate — a Category-1A carcinogen and Class-5.1 oxidizer used at 8.4 kg per run — or the DEA-controlled silver nitrate of the Van Dyke and salt processes. Cyanotype uses only a trace of dichromate as a contrast agent, though that trace still makes its waste water chromium-bearing.
 - **Process simplicity.** Development is in plain water: no toxic developer, stop, or fixer bath, no darkroom silver chemistry, and no multi-coat registration as gum requires for full density.
 
 ---

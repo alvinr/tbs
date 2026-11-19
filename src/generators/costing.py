@@ -832,7 +832,8 @@ def _inline_blocks() -> dict:
         "om-amfe-kg-standard": ([_OM, "master-shopping-list.md"], lambda: _kg_fmt(_tier('standard').amfe_kg)),
         "om-amfe-kg-rich": (_OM, lambda: _kg_fmt(_tier('rich').amfe_kg)),
         "om-ferri-g-lean": (_OM, lambda: f"{_ferri_g('lean')}"),
-        "om-ferri-g-standard": (_OM, lambda: f"{_ferri_g('standard')}"),
+        "om-ferri-g-standard": ([_OM, "master-shopping-list.md"], lambda: f"{_ferri_g('standard')}"),
+        "om-ferri-kg-standard": ("master-shopping-list.md", lambda: _kg_fmt(_tier('standard').ferri_kg)),
         "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).
         "ibc-frame-low": (_IBC, lambda: f"${_ibc_frame().low:,}"),

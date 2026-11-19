@@ -598,19 +598,26 @@ def sheet4():
     _FRW, _FRH = cp.ov.IBC_FRONT_RAIL_W, cp.ov.IBC_FRONT_RAIL_H
     _rect(ax, cp.FRONT_RAIL_CX - _FRW / 2, _BASE, _FRW, _FRH, C_STEEL, lw=0.9, z0=4)            # front bottom Yd-rail (top Z55)
     _rect(ax, cp.BACK_X, _BASE, _RHS, _RHS, C_STEEL, lw=0.9, z0=4)                              # back bottom Yd-rail (top Z70.8)
-    # frame uprights + rear panel + pump column, ghosted (just outside / behind the pipes)
+    # frame uprights + rear panel + pump-column envelope, ghosted (just outside / behind the pipes)
     for ux in (UP_X0, cp.BACK_X):
         _rect(ax, ux, _BASE, _RHS, Z_HI - 120 - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.14, ls="--")
     _ghost_top = Z_HI - 110
     _rect(ax, cp.BACK_X, _BASE, 18, _ghost_top - _BASE, C_GHOST, ec="none", z0=1, alpha=0.08)   # rear panel ply
     _rect(ax, 4934, _BASE, 100, _ghost_top - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.10, ls="--")  # pump column (P-01/02/05/03 + ACC)
-    ax.text(4984, _ghost_top - 70, "pump column\n(P-01·P-02·P-05·P-03\n+ ACC-01) ghost", fontsize=5.0,
-            ha="center", va="top", color=C_GHOST, zorder=2, **FONT)
     ax.text(UP_X0 - 4, _ghost_top, "front\nupright", fontsize=4.8, ha="right", va="top", color=C_GHOST, **FONT)
     ax.text(cp.BACK_X + 60, _ghost_top, "back upright\n+ rear panel", fontsize=4.8, ha="left", va="top", color=C_GHOST, **FONT)
 
     # ── the REAL corridor pipe routing, projected from the 3D (captured live) ──
     _draw_lanes(ax, [(xz, _CORRIDOR_COL.get(col, C_DIM)) for _nm, xz, col in runs])
+    # pumps + ACC-01 drawn solid: each one's IN/OUT ports sit at opposite Yd on the same Z, so in this
+    # projection the suction and discharge runs meet at a point that only reads as the unit
+    for key, zb in cp.PSTACK.items():
+        _rect(ax, cp.PXC - cp.PVB_R, zb, 2 * cp.PVB_R, cp.PVB_H + cp.PCAP_H, "#E0D0C0", ec="#806040", lw=0.9, z0=50)
+        ax.text(cp.PXC, zb + (cp.PVB_H + cp.PCAP_H) / 2, {"P-04": "P-02"}.get(key, key),
+                fontsize=5.0, ha="center", va="center", color=C_OUT, fontweight="bold", zorder=51, **FONT)
+    _rect(ax, cp.PXC - cp.ACC_R, cp.ACC_Z0, 2 * cp.ACC_R, 200, "#5A9ACC", ec="#2C5C8A", lw=0.9, z0=50)
+    ax.text(cp.PXC, cp.ACC_Z0 + 100, "ACC-01", fontsize=5.0, ha="center", va="center", color=C_OUT,
+            fontweight="bold", zorder=51, **FONT)
 
     # number runs in LEGEND order (blue → brown → gray) so both the tags and the legend read 1..N
     order = {C_BLUE: 0, C_BROWN: 1, C_WASTE: 2}
@@ -662,7 +669,9 @@ def sheet4():
         "  NOT a depth statement (true depth is the Yd the projection drops).",
         "• Captured live from the water.skp builders — this elevation tracks",
         "  the 3D model automatically and cannot drift from it.",
-        "• The pump column, uprights + rear panel are ghosted context; the",
+        "• Pumps + ACC-01 are drawn solid: a unit's IN and OUT ports sit at",
+        "  opposite Yd on the same Z, so its two runs meet at a point on it.",
+        "• The uprights + rear panel are ghosted context; the",
         "  bottom Yd-rails float on the Z20 sub-plate + foot-plate stack.",
     ]:
         bold = not line.startswith(("•", " "))

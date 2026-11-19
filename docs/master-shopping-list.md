@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,977 | $8,365 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,996 | $8,384 |
 | 6. Electrical — power, circuits, wiring | $3,429 | $3,515 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,789** | **~$36,679** |
+| **TOTAL (base build + 50-print run)** | **~$27,808** | **~$36,698** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -251,7 +251,7 @@ indicative low–high estimates — get quotes before ordering.
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
 | [1/8×3/4in 304 flat-bar axle saddles (skate) — 2 ft bar](https://www.mcmaster.com/8992K794-8992K797/) (8992K794) | 2 2 ft bar | McMaster-Carr | film | $20 |
 | [3/32" sq key stock, 12in bar — U-joint stub keys (×8 cut)](https://www.grainger.com/product/Key-Stock-5UY75) (5UY75) | 1 lot | Grainger | film | $2 |
-| [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 2 10-pack | Home Depot | water | $37 |
+| [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 3 10-pack | Home Depot | water | $56 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 12 ea | McMaster-Carr | ibc-frame | $16 |
 | [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 16 ea | McMaster-Carr | ibc-frame | $14 |
@@ -301,7 +301,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 20 ea | McMaster-Carr | walkway | $26 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
-| **fasteners-hardware subtotal** | | | | **$2,100–$2,404** |
+| **fasteners-hardware subtotal** | | | | **$2,119–$2,423** |
 
 ### optics
 
@@ -506,7 +506,7 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 24 | aluminum, ducting-ventilation, fasteners-hardware, steel-structural | $2,253–$3,113 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,001–$2,013 |
 | McMaster-Carr | 83 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,981–$1,989 |
-| Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,739–$1,941 |
+| Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,757–$1,959 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |

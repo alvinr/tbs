@@ -371,6 +371,8 @@ board face by **cushioned P-clips**.
   line is re-routed off IBC-3 and down the far board before turning into DV-01.
 - **Drain-riser spine** — the three gray/brown waste risers clamp to the spine's near face; the
   P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.
+  The far-face clips sit on 6.5mm shims rather than 18mm blocks: that lane is fixed by the
+  pump-port turn, and a clip every ~200mm holds the line firmly at that standoff.
 - **Filter skid** — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
   the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.
 

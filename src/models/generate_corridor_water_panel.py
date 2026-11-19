@@ -414,13 +414,13 @@ def rear_panel():
             p.append(clip_on_block("Spine riser P-clip", rx, cz, SPINE_FACE_NEAR, SPINE_RISER_YD, True))
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
     # P-05→X3 (brown, Z1502) and P-03→X4 (waste, Z1902), both on the COL_R lane. Clamps to the +Yd face.
-    spine_far_face = 1224
+    spine_far_face = SPINE_FACE_NEAR + EQT
     for px, pyd, pz in ((5250, COL_R, 1502), (5450, COL_R, 1502), (5650, COL_R, 1502),                       # P-05 → X3 (brown) — run ends at the X5680 crossing
                         (5250, COL_R, 1902), (5450, COL_R, 1902), (5650, COL_R, 1902), (5730, COL_R, 1902)):  # P-03 → X4 (grey) — +2 over the extended spine
-        p.append(clip_on_block("Spine far-side P-clip", px, pz, spine_far_face, pyd, False, flush_ok=True))   # horizontal X-port line — DEFERRED: standoff pending the spine-relocation review
+        p.append(clip_on_block("Spine far-side P-clip", px, pz, spine_far_face, pyd, False, flush_ok=SPINE_FAR_FLUSH_OK))
     # P-03→X4 end-wall DROP (vertical at X5763, on COL_R) — now backed by the extended spine; clamp to the +Yd face
     for dz in (1700, 1850):
-        p.append(clip_on_block("Spine far-side P-clip", 5763, dz, spine_far_face, COL_R, True, flush_ok=True))   # vertical drop — DEFERRED (spine review)
+        p.append(clip_on_block("Spine far-side P-clip", 5763, dz, spine_far_face, COL_R, True, flush_ok=SPINE_FAR_FLUSH_OK))
     return "\n".join(p)
 
 
@@ -763,6 +763,7 @@ PORT_TURN_YD_OUT = POY + PORT_ADAPTER_L + PORT_ELBOW + 1   # 1283 — OUT-side (
 SB_RISER_YD_FAR  = PORT_TURN_YD_OUT    # far risers, 5.5mm off the far board
 SB_RISER_YD_NEAR = PORT_TURN_YD_IN     # near risers, 5.5mm off the near board
 SB_FLUSH_OK = True                     # side-board clips: 5.5mm block (pump-column limit), not 18mm
+SPINE_FAR_FLUSH_OK = True              # spine +Yd face only: COL_R is fixed by the pump-port turn, so its clips get 6.5mm shims, not 18mm
 BV02_YD = PORT_TURN_YD_IN              # BV-02/BV-06 suction risers — also the 3D callout anchor
 
 

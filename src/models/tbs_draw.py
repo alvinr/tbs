@@ -195,7 +195,7 @@ def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None, holes=None, a
 
     `axis` picks the extrude direction + the plane the `pts` live in: 'z' (default) = profile is (x, y) at
     height z, pushpulled +h in Z; 'y' = profile is (x, zc) in the X-Z plane at depth y=z, pushpulled +h in Y;
-    'x' = profile is (y, zc) in the Y-Z plane at x=z, pushpulled +h in X. `holes` is Z-axis only.
+    'x' = profile is (y, zc) in the Y-Z plane at x=z, pushpulled +h in X. `holes`: Z-axis (round or slot) or Y-axis (round (x, z, r)).
 
     `holes` cuts real drilled clearance cutouts THROUGH the slab (along its Z thickness) so a pipe
     reads as passing through a hole/slot, not fused into the deck (see check_interference.py --pipes).
@@ -219,6 +219,12 @@ def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None, holes=None, a
         f'  face.pushpull({h_mm})',
     ]
     for hole in (holes or []):
+        if len(hole) == 3 and axis == "y":                   # round hole (cx, cz, r) through a profiled X-Z slab
+            cx, cz, r = hole
+            lines.append(f'  hc = grp.entities.add_circle([{mm(cx)},{z0},{mm(cz)}], [0,1,0], {mm(r)}, 24)')
+            lines.append('  hf = hc.map { |e| e.faces }.flatten.uniq.min_by { |ff| ff.area }')
+            lines.append('  if hf; hf.reverse! if hf.normal.y < 0; hf.pushpull(%s); end' % h_mm)
+            continue
         if len(hole) == 3:                                   # round hole (cx, cy, r)
             cx, cy, r = hole
             lines.append(f'  hc = grp.entities.add_circle([{mm(cx)},{mm(cy)},{z0}], [0,0,1], {mm(r)}, 24)')

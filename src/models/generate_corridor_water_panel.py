@@ -347,9 +347,29 @@ def tote_restraint():
 # generator derives the same piece sizes (single source; it can't drift from this model).
 SHIRT_Z0    = 325    # pump-shirt bottom Z (raised to clear the brown P-05 inlet elbow at z298-318)
 SPINE_Z0    = 280    # drain-riser spine bottom Z (clears the low waste pickup z247-268)
-SPINE_Z1    = TOP_Z - S - 50   # drain-riser spine top Z (2196) — 50mm under the frame top rail so the X1 fill cross (Z2250) passes OVER it
+X1_TEE_X, X1_TEE_Z = 5500, 2250                     # X1 fill tee — ON the spine top, centered in its thickness (X1_TEE_Y below)
+SPINE_Z1    = X1_TEE_Z - ov.PUMP_PIPE_OD / 2       # 2239.5 — drain-riser spine top: the X1 fill run + tee REST on its top edge
 SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the sealed end wall (X5893) so the two end-wall port runs (P-05→X3, P-03→X4) + their X5763 drops get a ply clip surface; still clears the wall
 
+
+
+def spine_profile():
+    """Spine outline in the X-Z plane: a rectangle whose top edge carries the X1 fill run, with a round
+    SADDLE cut under the X1 tee body and a flat seat under the in-line X1 check valve (both fatter than the pipe)."""
+    import math
+    zt = SPINE_Z1
+    tr = RP + 5 + 2                                        # tee body radius + 2mm clearance
+    dx = math.sqrt(tr ** 2 - (X1_TEE_Z - zt) ** 2)
+    arc = []
+    a0, a1 = math.atan2(zt - X1_TEE_Z, dx), math.atan2(zt - X1_TEE_Z, -dx)
+    for k in range(13):                                    # +X end of the saddle → down → −X end
+        a = a0 + (a1 - a0 - 2 * math.pi) * k / 12 if a1 > a0 else a0 + (a1 - a0) * k / 12
+        arc.append((X1_TEE_X + tr * math.cos(a), X1_TEE_Z + tr * math.sin(a)))
+    vx, vl, vr = X1_CV_X, 48 + 4, RP + 7 + 2              # check-valve barrel (+2mm each end / under)
+    vz = X1_TEE_Z - vr
+    return ([(BACK_X, SPINE_Z0), (SPINE_X_END, SPINE_Z0), (SPINE_X_END, zt),
+             (vx + vl / 2, zt), (vx + vl / 2, vz), (vx - vl / 2, vz), (vx - vl / 2, zt)]
+            + arc + [(BACK_X, zt)])
 
 def rear_panel():
     """The 18mm exterior-ply REAR panel (recessed into the back-wall opening, flush with the back
@@ -381,9 +401,8 @@ def rear_panel():
     # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).
-    p.append(draw.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, SPINE_Z0,
-                         SPINE_X_END - BACK_X, 18, SPINE_Z1 - SPINE_Z0, color=draw.C_PLY,
-                         holes=SPINE_HOLES, hole_axis="y"))   # −Yd face at 1206 = the grey
+    p.append(draw.ruby_prism("Drain-riser backing spine (18mm ply)", spine_profile(), SPINE_FACE_NEAR, EQT,
+                             color=draw.C_PLY, holes=SPINE_HOLES, axis="y"))   # −Yd face at 1206 = the grey
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
     #   z247-268).  Extended +X to 5560 (past the X1 cross at 5530) and UP to the rear-panel top
     #   SPINE_Z1 (50mm under the frame top rail, so the X1 fill cross clears over it) to back the Blue equalization tie and the high fill/recycle runs.
@@ -674,8 +693,8 @@ def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a
 
 # X1 fresh-fill distribution fitting (top of the corridor, near the sealed end): a TEE —
 # +X X1 inlet (branch), ±Yd run to both Blue totes (IBC-1/IBC-2).  Blue is fill-only fresh water.
-X1_TEE_X, X1_TEE_Z = 5500, 2250
-X1_TEE_Y = 1206 - ov.PUMP_PIPE_OD / 2   # on the spine face
+X1_CV_X  = ov.C_LEN - 200              # X1 in-line check valve, just after the end-wall camlock (seats in the spine top)
+X1_TEE_Y = SPINE_FACE_NEAR + EQT / 2   # 1215 — centered on the spine, so the run rides its top edge
 
 # Shared SURFACE perimeter lane for the two pipes that can't pass under the IBC tote / walkway grate
 # (the tray-sump→P-04 suction and the DV-01 blue recycle): both run ON the walkway surface along the
@@ -1117,7 +1136,7 @@ def drains_ports(sump_on_skid=False):
     #    (IBC-1 / IBC-2).  ONE check on the inlet; no per-branch checks. ──
     x1z, tx, ty = X1_TEE_Z, X1_TEE_X, X1_TEE_Y
     p.append(draw.ruby_cylinder("X1 fill camlock (end wall)", ew - 60, ty, x1z, 26, 60, color=draw.C_STEEL, axis="x"))
-    p.append(check_valve("X1 one-way valve", ew - 200, ty, x1z, "x"))   # in-line, just after the camlock
+    p.append(check_valve("X1 one-way valve", X1_CV_X, ty, x1z, "x"))   # in-line, just after the camlock
     pipe("X1 camlock -> one-way -> tee (straight)", [(ew - 60, ty, x1z), (tx, ty, x1z)], draw.C_BLUE)
     # TEE: +X X1 inlet on the branch, ±Yd run to the two Blue totes (IBC-1/IBC-2).
     p.append(tee("X1 fill tee", tx, ty, x1z, run="y", branch="x+"))

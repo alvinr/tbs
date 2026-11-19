@@ -1154,8 +1154,8 @@ def spine_view(side):
     # ── Drain-riser spine (18mm ply fin, teed off the rear panel into the corridor) ──
     # The spine plane separates the two faces: VIEW A draws the −Yd intake runs,
     # VIEW B (mirror) draws the +Yd discharge runs.
-    _rect(PANX, SPINE_ZB, SPX1 - PANX, SPINE_ZT - SPINE_ZB, C_PLYB, lw=1.2,
-          z0=8, alpha=0.55)
+    axb.add_patch(mpatches.Polygon(cwp.spine_profile(), closed=True, facecolor=C_PLYB, edgecolor=C_OUT,
+                                   lw=1.2, zorder=8, alpha=0.55))   # same outline as the 3D: X1 tee saddle + check-valve seat on the top edge
     leader(axb, (PANX + SPX1) / 2, 1180, 6050, 1140,
            f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
            f"panel (a T in plan) — X={PANX:.0f}–{SPX1:.0f}, Z={SPINE_ZB:.0f}–{SPINE_ZT:.0f};\n"

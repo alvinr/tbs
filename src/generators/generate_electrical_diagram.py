@@ -2010,7 +2010,7 @@ def draw_sheet6():
            crest_x + 34, sec_h + 40,
            "FLASHING + SILICONE\nover the corrugation crests\n(water- + light-tight)",
            fs=6, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
-    leader(ax_b, valley_x, cut_top - 8,
+    leader(ax_b, valley_x + 8, cut_top,
            wall_int + 26, cut_top + 24,
            "CORRUGATED WALL\n(box OPENS to interior;\nwired from inside)",
            fs=6, color=C_WALL, ha="left", arrow_style="-|>", font=FONT)

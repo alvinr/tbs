@@ -24,7 +24,7 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path, LBL_BG
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
-from tbs_constants import PUMP_YD_SPAN
+from tbs_constants import PUMP_YD_SPAN, PUMP_DRAW_W, PUMP_DRAW_A
 from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WALL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -277,16 +277,16 @@ def draw_sheet1():
             fontweight="bold", color=TITLE_COL)
     ax.plot([ex + 2.5, ex + ew - 2.5], [ey + eh - 13.75, ey + eh - 13.75],
             color=C_DIM, lw=0.7)
-    # NOTE: these values must match calculate_energy_budget.py and
-    # electrical-report.md §3.1.  Update all three when specs change.
+    import calculate_energy_budget as _eb
+    ev = _eb._energy_values()
     summary = [
-        ("Battery capacity",    "100Ah × 12V = 1,200Wh  (standard, 1 pack; +2nd → 2,400Wh)"),
-        ("Energy per session",  "867 Wh (0.87 kWh)  — continuous fans/cooler + pumps"),
-        ("Sessions per charge", "1.4 standard  (2.8 with the 2nd pack)"),
-        ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
-        ("Solar sessions/day",  "3.8 prints/day from solar alone"),
+        ("Battery capacity",    f"100Ah × 12V = {ev['battery-wh-1pack']}Wh  (standard, 1 pack; +2nd → {ev['battery-wh-2pack']}Wh)"),
+        ("Energy per session",  f"{ev['wh-session']} Wh  — continuous fans/cooler + pumps"),
+        ("Sessions per charge", f"{ev['sessions-1pack']} standard  ({ev['sessions-2pack']} with the 2nd pack)"),
+        ("Solar yield",         f"{_eb.SOLAR_W}W × {_eb.PEAK_SUN_HOURS}h = {ev['solar-wh-day']} Wh/day  (Palm Springs)"),
+        ("Solar sessions/day",  f"{ev['solar-sessions-day']} prints/day from solar alone"),
         ("Shore recharge",      "~7h standard  (~14h with the 2nd pack)"),
-        ("Peak load",           "543W peak  (all circuits on, not simultaneous)"),
+        ("Peak load",           f"{ev['peak-w']}W peak  (all circuits on, not simultaneous)"),
     ]
     for k, (param, val) in enumerate(summary):
         yk = ey + eh - 20 - k * 9.25
@@ -303,9 +303,9 @@ def draw_sheet1():
          "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
         ("B", f"VENTILATION FAN\nINTAKE  (Ø{FAN_DIAM}mm)",   "5A",  "12 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
-        ("C1", "WATER PUMPS\n(corridor)",       "15A", "12 AWG", "90W",
+        ("C1", "WATER PUMPS\n(corridor)",       "15A", "12 AWG", f"{PUMP_DRAW_W}W",
          "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time", C_PUMP_TINT),
-        ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "12 AWG", "90W",
+        ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "12 AWG", f"{PUMP_DRAW_W}W",
          "P-04, filter skid  |  own fuse  |  2-pole master switch gangs C1+C2", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "12 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
@@ -1524,7 +1524,7 @@ def draw_sheet4():
         "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05,",
         "P-03); P-04 (Tray drain) taps the switched feed on the pinhole-wall filter skid. No per-pump",
         "switches — the EP master switch is the single cutoff and each Shurflo 2088 runs on its internal",
-        "pressure switch. 15A fuse covers a single pump (7.5A) with margin. Conduit branches use curved",
+        f"pressure switch. 15A fuse covers a single pump ({PUMP_DRAW_A}A) with margin. Conduit branches use curved",
         "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",
         "See Plumbing Panel report §3.2 / Electrical §7.3.",
     ], -280, -80, spacing=44, fs=6.6, width=1600)
@@ -1560,8 +1560,8 @@ def draw_sheet5():
     CIRCUITS5 = [
         ("A", "Vent fan — exhaust",  "5A",  "12 AWG", "60 W",   "#C0392B"),
         ("B", "Vent fan — intake",   "5A",  "12 AWG", "60 W",   "#E67E22"),
-        ("C1", "Corridor pumps",     "15A", "12 AWG", "90 W",   "#2980B9"),
-        ("C2", "Tray-drain P-04",    "10A", "12 AWG", "90 W",   "#2980B9"),
+        ("C1", "Corridor pumps",     "15A", "12 AWG", f"{PUMP_DRAW_W} W",   "#2980B9"),
+        ("C2", "Tray-drain P-04",    "10A", "12 AWG", f"{PUMP_DRAW_W} W",   "#2980B9"),
         ("D", "Safelight",           "5A",  "12 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
         ("F", "White LED strip ×4",  "15A", "12 AWG", "106 W",  "#F1C40F"),

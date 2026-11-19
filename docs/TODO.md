@@ -128,7 +128,7 @@ Sheet 16 draws the **pull-out corner apron** (fixed full-width base + removable 
 
 ## 📐 electrical-sheet1 — ENERGY SUMMARY is hand-keyed (drifts) (2026-11-16)
 
-- [ ] The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.
+- [x] (2026-11-19 — wired to `calculate_energy_budget._energy_values()`; shore-recharge hours still a literal) The Sheet-1 ENERGY SUMMARY block (`summary = [...]` in `draw_sheet1`) hard-codes session Wh / sessions-per-charge / solar-sessions / peak-load with a "update when specs change" comment — it had gone stale (780 Wh / 492 W / 1.5) and was hand-reconciled to 837 Wh / 543 W / 1.4 on 2026-11-16. Wire these to the injected `energy:`/`fact:` values (or a small shared constant) so the diagram can't drift from the report.
 
 ## ⏳ Light-trap parts-quote — pending research (2026-08-24)
 

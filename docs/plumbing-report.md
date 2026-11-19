@@ -154,7 +154,7 @@ the rear of this panel; from it a short 16 AWG branch feeds each pump directly.
 | Feed | Circuit C, 14 AWG, 15A fuse (one feed for all five pumps) |
 | Master switch | 1 × IP-rated sealed rocker/disconnect (12V, 16A), **mounted on the EP** — single cutoff upstream of the whole circuit; no per-pump switches (each Shurflo runs on its internal pressure switch) |
 | Distribution | 12V DC + / − bus block on the rear of the plumbing panel, fed from the EP master switch |
-| Branches | 16 AWG, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A / 90W per pump) |
+| Branches | 16 AWG, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump) |
 
 The pumps are operated **one at a time**: with the EP master switch on, the operator
 opens the relevant ball valves for the current task (others closed), and that pump's

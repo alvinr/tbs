@@ -210,7 +210,7 @@ larger pipe is used only for the gravity fill/drain lines at the bulkhead ports 
 
 ## 6. Electrical — 12V DC Power
 
-All five pumps are Shurflo 2088s drawing <!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A at 12V on Circuit C
+All five pumps are Shurflo 2088s drawing <!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A at 12V on Circuit C
 ([Electrical Report §7.3](electrical-report.md)). Per-print pump energy is budgeted in the
 [Daily Energy Report](daily-energy-report.md).
 

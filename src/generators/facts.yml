@@ -231,11 +231,17 @@ blue_fill_per_tote_l:
   unit: L
   owner: water-system-report.md
 
-# Shurflo 2088 demand-pump current draw (= PUMP_DRAW_A, 90W / 12V). INJECTION-ONLY.
+# Shurflo 2088 demand-pump peak current draw (= PUMP_DRAW_A, datasheet 5.2A @ 30 PSI). INJECTION-ONLY.
 pump_current_a:
   constant: PUMP_DRAW_A
   unit: A
   owner: plumbing-report.md
+
+# Shurflo 2088 demand-pump draw in W (= PUMP_DRAW_W = PUMP_DRAW_A × 12V). INJECTION-ONLY.
+pump_draw_w:
+  constant: PUMP_DRAW_W
+  unit: W
+  owner: electrical-report.md
 
 # Battery usable energy per 100Ah pack (= BATTERY_WH). INJECTION-ONLY.
 battery_usable_wh:

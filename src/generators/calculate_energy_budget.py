@@ -22,7 +22,7 @@ from tbs_constants import (  # noqa: E402
 
 FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC Infinity S6)
 FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
-PUMP_W          = PUMP_DRAW_W    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time); source: tbs_constants
+PUMP_W          = PUMP_DRAW_W    # Circuit C — Shurflo 2088 datasheet peak current × 12V (one pump at a time); source: tbs_constants
 SAFELIGHT_W     = 40    # Circuit D — 12V red COB safelight strip (SBL, 1× 5m reel @ 2.4 W/ft ≈ 40W / 3.3A)
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
 WHITE_LIGHT_W   = 106   # Circuit F — 12V COB LED strip (HitLights 4000K): 3× 2.16m tray + 1× 1.18m corridor ≈ 7.7m @ 4.2 W/ft ≈ 106W / 8.8A (12 AWG / 15A)
@@ -64,7 +64,7 @@ CLEANUP_MIN         = 30    # Phase 5: ventilation flush + pack-down
 # CONCURRENTLY with them — continuous flow-through wash enabled by the Circuit-C C1/C2
 # split (operating-manual §4.2). So P-04's runtime ≈ the total supply time. Pump energy
 # is additive (the model sums these regardless of overlap); the concurrency shows up only
-# in the §3 peak (C1 + C2 = 180 W), not the per-pump Wh.
+# in the §3 peak (C1 + C2, peak_w()), not the per-pump Wh.
 
 P01_BLUE_MIN    = 15    # 3× wash fills at 3.5 GPM
 P02_BROWN_MIN   = 10    # recycled wash (if Brown stock available)
@@ -83,6 +83,7 @@ PRINTS_PER_DAY    = 3       # representative daylight field day (2 short / 4 pus
 # ~120L residual below the port (plumbing-report.md §4.3).
 PUMP_LPM          = 13.2    # 3.5 GPM Shurflo 2088
 DRAIN_RESIDUAL_L  = 120     # residual below the X3/X4 port, pumped per tote
+DRAIN_FULL_L      = 600     # worst case: a tote pumped out entirely, no gravity assist
 DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation
 
 # ── Water supply (clean-water autonomy) ───────────────────────────────────────
@@ -228,6 +229,11 @@ def compute():
 
 def _phase_wh(ph):
     return sum(ph["loads"].values()) * ph["minutes"] / 60.0
+
+
+def peak_w():
+    """§3 all-circuits-on peak: fans A+B, C1 + C2 pumps (P-04 may run with a supply pump), safelight, cooler, white LED."""
+    return FAN_EXHAUST_W + FAN_INTAKE_W + 2 * PUMP_W + SAFELIGHT_W + COOLER_W + WHITE_LIGHT_W
 
 
 def warmup_wh():
@@ -411,7 +417,26 @@ def _energy_values() -> dict:
     batt_2pack = 2 * BATTERY_AH_PER_PACK * BATTERY_V * DOD
     c = lambda v: f"{round(v):,}"                    # comma integer
     f1 = lambda v: f"{v:.1f}"                        # one decimal
+    pwh = lambda m: PUMP_W * m / 60.0
+    wash = pwh(P01_BLUE_MIN) + pwh(P02_BROWN_MIN)
+    pumps = wash + pwh(P04_DRAIN_MIN)
+    tote_min = DRAIN_RESIDUAL_L / PUMP_LPM
+    full_min = DRAIN_FULL_L / PUMP_LPM
     return {
+        "pump-w":             c(PUMP_W),
+        "peak-w":             c(peak_w()),
+        "pump-p01-wh":        f1(pwh(P01_BLUE_MIN)),
+        "pump-p02-wh":        f1(pwh(P02_BROWN_MIN)),
+        "pump-p04-wh":        f1(pwh(P04_DRAIN_MIN)),
+        "wash-wh-print":      f1(wash),
+        "wash-wh-3":          c(3 * wash),
+        "pump-pct-day":       c(100 * 3 * pumps / d3["daily_wh"]),
+        "prints-wh-3":        c(3 * per_print_wh()),
+        "drain-min-tote":     c(tote_min),
+        "drain-pump-wh-tote": c(pwh(tote_min)),
+        "drain-full-min":     c(full_min),
+        "drain-full-wh":      c(2 * pwh(full_min)),
+        "over-battery-4":     c(d4["daily_wh"] - batt_2pack),
         "wh-session":         c(s["total_wh"]),
         "battery-wh-1pack":   c(s["battery_wh"]),
         "battery-wh-2pack":   c(batt_2pack),

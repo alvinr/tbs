@@ -765,8 +765,8 @@ PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevati
 
 # ── 12V DC house bus — electrical power ratings (single home; energy-budget imports these) ──
 DC_BUS_V            = 12                                     # 12V DC house bus (pumps, lighting, cooler, battery)
-PUMP_DRAW_W         = 90                                     # Shurflo 2088 demand-pump electrical draw (W) — Circuit C, one pump at a time
-PUMP_DRAW_A         = round(PUMP_DRAW_W / DC_BUS_V, 1)       # = 7.5A @ 12V (datasheet: 7.5A × 12V = 90W)
+PUMP_DRAW_A         = 5.2                                    # Shurflo 2088-554-144 peak current (A), at 30 PSI — datasheet "Typical Performance" (4.2A open … 5.2A peak)
+PUMP_DRAW_W         = round(PUMP_DRAW_A * DC_BUS_V)          # = 62W — demand-pump draw, Circuit C, one pump at a time
 BATTERY_AH_PER_PACK = 100                                    # LiFePO4 pack Ah (standard build = 1 pack; busbar provisioned for a 2nd parallel pack)
 BATTERY_V           = DC_BUS_V                               # battery nominal = bus voltage
 BATTERY_WH          = BATTERY_AH_PER_PACK * BATTERY_V        # = 1200 Wh usable per pack (LiFePO4 ~100% usable)

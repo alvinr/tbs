@@ -2,7 +2,7 @@
 <!-- © 2026 Alvin Richards -->
 
 <div align="center">
-  <img src="assets/logo-final.png" alt="The Big Shoebox Project (TBS-001)" width="440">
+  <img src="docs/assets/logo-final.png" alt="The Big Shoebox Project (TBS-001)" width="440">
 </div>
 
 # The Big Shoebox Project (TBS-001) — Repository & Build Guide
@@ -14,7 +14,7 @@ shopping / weight figures, and the [MkDocs](https://www.mkdocs.org/) website.
 
 > **Looking for the camera itself?** This README is about running the **repo** (regenerating
 > drawings, building the site, the tooling). For the project overview see
-> **[`project-summary.md`](project-summary.md)** or the live site: **<https://thebigshoebox.org/>**.
+> **[`project-summary.md`](docs/project-summary.md)** or the live site: **<https://thebigshoebox.org/>**.
 
 ---
 
@@ -255,5 +255,5 @@ The full checklist is in `CLAUDE.md`.
 
 ---
 
-*© 2026 Alvin Richards — released under the [GNU AGPLv3](licensing.md). Live site:
+*© 2026 Alvin Richards — released under the [GNU AGPLv3](docs/licensing.md). Live site:
 <https://thebigshoebox.org/>*

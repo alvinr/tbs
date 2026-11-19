@@ -243,6 +243,12 @@ pump_draw_w:
   unit: W
   owner: electrical-report.md
 
+# Circuit D safelight draw in W (= SAFELIGHT_W, one 5m red COB reel @ 2.4 W/ft). INJECTION-ONLY.
+safelight_w:
+  constant: SAFELIGHT_W
+  unit: W
+  owner: electrical-report.md
+
 # Battery usable energy per 100Ah pack (= BATTERY_WH). INJECTION-ONLY.
 battery_usable_wh:
   constant: BATTERY_WH

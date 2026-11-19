@@ -14,7 +14,7 @@ Run:  python3 calculate_energy_budget.py
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 from tbs_constants import (  # noqa: E402
-    EVAP_COOLER_W_BUS, PUMP_DRAW_W, BATTERY_AH_PER_PACK as _BATTERY_AH_PER_PACK, DC_BUS_V,
+    EVAP_COOLER_W_BUS, PUMP_DRAW_W, SAFELIGHT_W, BATTERY_AH_PER_PACK as _BATTERY_AH_PER_PACK, DC_BUS_V,
 )
 
 # ── Circuit power ratings (watts) ─────────────────────────────────────────────
@@ -23,7 +23,6 @@ from tbs_constants import (  # noqa: E402
 FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC Infinity S6)
 FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
 PUMP_W          = PUMP_DRAW_W    # Circuit C — Shurflo 2088 datasheet peak current × 12V (one pump at a time); source: tbs_constants
-SAFELIGHT_W     = 40    # Circuit D — 12V red COB safelight strip (SBL, 1× 5m reel @ 2.4 W/ft ≈ 40W / 3.3A)
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
 WHITE_LIGHT_W   = 106   # Circuit F — 12V COB LED strip (HitLights 4000K): 3× 2.16m tray + 1× 1.18m corridor ≈ 7.7m @ 4.2 W/ft ≈ 106W / 8.8A (12 AWG / 15A)
 
@@ -425,6 +424,8 @@ def _energy_values() -> dict:
     return {
         "pump-w":             c(PUMP_W),
         "peak-w":             c(peak_w()),
+        **{f"phase{i}-w": c(sum(ph["loads"].values())) for i, ph in enumerate(phases)},
+        **{f"phase{i}-wh": c(_phase_wh(ph)) for i, ph in enumerate(phases)},
         "pump-p01-wh":        f1(pwh(P01_BLUE_MIN)),
         "pump-p02-wh":        f1(pwh(P02_BROWN_MIN)),
         "pump-p04-wh":        f1(pwh(P04_DRAIN_MIN)),

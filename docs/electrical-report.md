@@ -40,10 +40,10 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | B | Ventilation fan — intake (6") | 60W | Continuous during processing |
 | C1 | Water pumps — corridor **P-01/P-02/P-03/P-05** (12V DC; Shurflo 2088, one at a time) | <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W (one pump) | Intermittent (~30 min/print) |
 | C2 | Tray-drain pump **P-04** (12V DC Shurflo 2088) | <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W | Intermittent — **may run with C1** (continuous-wash option, §7.3) |
-| D | Safelight — interior + vestibule | 40W | Loading phase only (~45 min) |
+| D | Safelight — interior + vestibule | <!-- BEGIN fact:safelight_w -->39<!-- END fact:safelight_w -->W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | Continuous during operation |
 | F | White LED strip ×4 (general lighting) | ~106W | Non-operational periods only |
-| **Total peak (all on)** | | **<!-- BEGIN energy:peak-w -->487<!-- END energy:peak-w -->W** | Not all simultaneous |
+| **Total peak (all on)** | | **<!-- BEGIN energy:peak-w -->486<!-- END energy:peak-w -->W** | Not all simultaneous |
 
 > **Circuit E is the only AC load.** The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is **<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus** (÷0.88 inverter efficiency). See [§7.6 AC Isolation & Safety](#ac-safety) for the grounding/GFCI design.
 
@@ -51,7 +51,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 
 *Consumption — the per-session itemization, the daily model, and the disconnected-endurance analysis — is covered in full by the **[Daily Energy Report](daily-energy-report.md)**. This report sizes the hardware; the headline figures only:*
 
-- **Per session:** ~<!-- BEGIN energy:wh-session -->843<!-- END energy:wh-session --> Wh (0.87 kWh), dominated by the continuous fans + evaporative cooler (the tray drain now runs through the wash — see §7.3).
+- **Per session:** ~<!-- BEGIN energy:wh-session -->842<!-- END energy:wh-session --> Wh (0.87 kWh), dominated by the continuous fans + evaporative cooler (the tray drain now runs through the wash — see §7.3).
 - **Battery:** 1 × 100 Ah LiFePO4 = <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh usable (standard build); busbar provisioned for a 2nd parallel pack (→ 200 Ah, no rewiring).
 - **Solar:** 600 W array ≈ <!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day (Palm Springs) — **solar-positive** at the 3-print design duty.
 
@@ -156,7 +156,7 @@ Sheet 6 gives the box arrangement, the cross-section through the corrugated wall
 ### 6.1 Two-Circuit Lighting Design
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Red 12V **COB** LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, ~40W total (3.3A — within the 5A fuse; on the single 12 AWG distribution gauge), dimmable, always available.
+- **Safelight (Circuit D):** Red 12V **COB** LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, <!-- BEGIN fact:safelight_w -->39<!-- END fact:safelight_w -->W total (16.4ft × 2.4 W/ft per the [SBL COB2 cut sheet](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc); 3.3A — within the 5A fuse; on the single 12 AWG distribution gauge), dimmable, always available.
 - **White light (Circuit F):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray, plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit F is off during operational phases. The pull-cord switches are positioned side by side for easy identification.

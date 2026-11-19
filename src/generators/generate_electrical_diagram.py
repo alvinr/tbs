@@ -24,7 +24,7 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_panel, draw_rect, draw_circle, draw_pipe_path, LBL_BG
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
-from tbs_constants import PUMP_YD_SPAN, PUMP_DRAW_W, PUMP_DRAW_A
+from tbs_constants import PUMP_YD_SPAN, PUMP_DRAW_W, PUMP_DRAW_A, SAFELIGHT_W
 from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WALL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -307,7 +307,7 @@ def draw_sheet1():
          "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time", C_PUMP_TINT),
         ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "12 AWG", f"{PUMP_DRAW_W}W",
          "P-04, filter skid  |  own fuse  |  2-pole master switch gangs C1+C2", C_PUMP_TINT),
-        ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "12 AWG", "15W",
+        ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "12 AWG", f"{SAFELIGHT_W}W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
@@ -932,7 +932,7 @@ def draw_sheet2():
         ("C1/C2", C_PUMP,    "PUMPS — Cct C1 + C2",
          f"P-01/02/03/05 corridor (C1, 15A/12 AWG) + P-04 tray drain (C2, 10A/12 AWG)  |  12V DC  |  2-pole master switch"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
-         f"3× red LED strips  |  5A / 12 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
+         f"3× red LED strips  |  5A / 12 AWG / {SAFELIGHT_W}W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"120V AC {EVAP_COOLER_W_AC}W via inverter ({EVAP_COOLER_W_BUS}W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
         ("F",     C_LED,     "WHITE LED STRIPS — Cct F",

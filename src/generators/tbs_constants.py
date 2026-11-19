@@ -767,6 +767,9 @@ PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevati
 DC_BUS_V            = 12                                     # 12V DC house bus (pumps, lighting, cooler, battery)
 PUMP_DRAW_A         = 5.2                                    # Shurflo 2088-554-144 peak current (A), at 30 PSI — datasheet "Typical Performance" (4.2A open … 5.2A peak)
 PUMP_DRAW_W         = round(PUMP_DRAW_A * DC_BUS_V)          # = 62W — demand-pump draw, Circuit C, one pump at a time
+SAFELIGHT_W_PER_FT  = 2.4                                    # SBL Even-Glow COB 12V red (STN-B-BRED-O12A-08F5M-12V) — cut sheet COB2-IP20-Color-5m: 2.4 W/ft, 201 mA/ft
+SAFELIGHT_STRIP_M   = 5.0                                    # Circuit D: one 5m reel, all of it cut into the 3 ceiling runs
+SAFELIGHT_W         = round(SAFELIGHT_W_PER_FT * SAFELIGHT_STRIP_M / 0.3048)   # = 39W (3.3A) — Circuit D safelight draw
 BATTERY_AH_PER_PACK = 100                                    # LiFePO4 pack Ah (standard build = 1 pack; busbar provisioned for a 2nd parallel pack)
 BATTERY_V           = DC_BUS_V                               # battery nominal = bus voltage
 BATTERY_WH          = BATTERY_AH_PER_PACK * BATTERY_V        # = 1200 Wh usable per pack (LiFePO4 ~100% usable)

@@ -629,9 +629,15 @@ def panel_power(include_switch=True, part="all"):
     cx_clear = cp.BACK_X - 24                         # 5080 — drop lane −X of the rear uprights (5104+), in the corridor
     urz      = cp.TOP_Z - ov.IBC_FRAME_RHS - 60       # 2185 — under the top ring rail (bottom 2245), above the panel/pumps
     _rx = fx - 19                                                                           # riser X, clear LEFT of the battery − cable (X1958-1980) AND clear of the Cct-D feed at fuse D (X1926)
+    # The X4 waste pickup (P-03 suction) crosses the back of the panel at Z1700 on the spine lane (Yd1167-1188),
+    # right through the BKX/by cable drop: the feed + bus jog +Yd around it, between that pipe and the spine face (Yd1206).
+    x4z = cp.X4_WRAP_Z
+    jog_yd = cp.SPINE_RISER_YD + 20                   # 1197.5 — ~5mm clear of the pipe and of the spine face
+    def _jog(top, bot):                               # a vertical drop at (BKX, by) from top to bot, dog-legged around the X4 leg
+        return [(BKX, by, x4z + 40), (BKX, jog_yd, x4z + 40), (BKX, jog_yd, x4z - 40), (BKX, by, x4z - 40)] if bot < x4z < top else []
     feed = [(fx, fy, fz), (_rx, fy, fz), (_rx, 65, fz), (_rx, 65, TZ), (_rx, TY, TZ), (pwr_edge_x, TY, TZ),   # exit the switch REAR, jog −X clear of the battery − riser (at Yd100), tuck to Yd65 (front of fuses/busbar, behind the MPPT cross member), rise
             (cx_clear, TY, TZ), (cx_clear, by, TZ), (cx_clear, by, urz),   # ceiling to the clear drop lane, +Yd to the block Yd, DROP to under the rail
-            (BKX, by, urz), (BKX, by, zc + 48)]                            # +X under the rail into the pocket, then down onto the block
+            (BKX, by, urz)] + _jog(urz, zc + 48) + [(BKX, by, zc + 48)]    # +X under the rail into the pocket, then down onto the block
     if part == "all":
         p.append(draw.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)", feed, cr, color=PWR))
     else:
@@ -661,7 +667,7 @@ def panel_power(include_switch=True, part="all"):
         # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
         # pumps as one continuous run; the two middle pumps tee off the bus.
         xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
-        bus_pts = [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)]
+        bus_pts = [(xin, by, z_hi), (BKX, by, z_hi)] + _jog(z_hi, z_lo) + [(BKX, by, z_lo), (xin, by, z_lo)]
         p.append(draw.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)", bus_pts, cr, color=PWR))
         # P-clips carrying the pump-feed bus down the rear of the corridor plumbing panel.
         p.append(draw.ruby_clip_run("Cct C pump bus", bus_pts, spacing=380))

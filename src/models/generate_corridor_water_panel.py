@@ -422,6 +422,7 @@ RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 CLIP_SHIM = EQT
 SPINE_FACE_NEAR = 1206                   # drain-riser spine −Yd face
 SPINE_RISER_YD  = SPINE_FACE_NEAR - CLIP_SHIM - RP   # 1177.5 — the three waste risers + the IBC-4 merge
+X4_WRAP_Z       = 1700   # X4 pickup turns off the spine riser here, −X through panel + shirt in the pump gap (z1520–1740), below BV-06
 BVY_REAR = YD_NEAR + S + CLIP_SHIM + RP  # 1125.3 — Blue #1 return/behind-panel lane, clipped to the rear-near frame upright
 CDK    = "#3A3A42"                       # dark fittings / motor cans
 DVB    = 46                              # diverter body cube
@@ -1197,7 +1198,7 @@ def drains_ports(sump_on_skid=False):
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     z03 = _piz("P-03")
     rx6 = BV_FWD_X                 # BV-06 riser X — pulled to the walkway edge (operator reach), like BV-02
-    turn6 = 1700                   # turn partway down the riser below BV-06 — in the pump gap (z1520–1740)
+    turn6 = X4_WRAP_Z
     corr_x = 5020                  # −Yd-jog X — pulled IN close to the shirt face (5051.5), just −X of it, so the
     #   grey loop sits tight to the shirt instead of bulging toward the walkway (jog is in the P-05↔P-03 gap)
     spine_yd = SPINE_RISER_YD      # grey-riser lane, one clip block off the spine −Yd face; also the

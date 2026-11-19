@@ -120,8 +120,8 @@ def classify(name):
     # its DESTINATION name mentions a panel/ply/wall (e.g. '... -> panel GFCI', '... -> pinhole wall').
     # This must come BEFORE the solid-skip keywords below, or those swallow the conductor (the bug that
     # let the orange AC line cross the green PV feed unflagged).
-    if " ->" in name or " →" in name or "awg" in n or "pigtail" in n or n.startswith("circuit "):
-        return ("pipe", None)                 # routed conductor — incl. arrow-less ones (battery AWG cables, fuse pigtails, 'Circuit X ...' runs)
+    if " ->" in name or " →" in name or "awg" in n or "pigtail" in n or n.startswith(("circuit ", "cct ")):
+        return ("pipe", None)                 # routed conductor (a 'Cct X ...' bus/branch/feed is a conductor whatever it names) — incl. arrow-less ones (battery AWG cables, fuse pigtails, 'Circuit X ...' runs)
     # A Cct-* POWER cable often NAMES its destination ("... -> pump wireway") — it is a cable, not the
     # pump solid it feeds; let it keep its normal (pipe/skip) classification below, never "pump".
     if "pump " in n and not n.startswith("cct "):
@@ -306,6 +306,18 @@ def is_run(name):
     # routing arrow is space-flanked (NOT a '12->120V' spec); also catch arrow-less conductor runs
     # (battery AWG cables, fuse pigtails, 'Circuit X ...' circuit_runs conductors) that are still pipes.
     return (" ->" in name) or (" →" in name) or ("awg" in n) or ("pigtail" in n) or n.startswith("circuit ")
+
+
+_FITTING_KEYS = ("port", "flange", "stripe", "barb", "stub", "adapter", "union", "nipple", "socket", "coupling")
+
+
+def is_named_run(name):
+    """Any OTHER pipe-class leaf that is not a fitting — the arrow-less runs is_run misses (a bottom
+    pickup, a Cct-* bus/branch, a riser).  These are checked too, but an overlap at one of their ENDS is a
+    tee/abutment onto the other line (a branch landing on its bus, a jumper over its run), not a crossing.
+    (Caught the Cct C feed dropping through the X4 waste pickup, 2026-11-19.)"""
+    n = name.lower()
+    return classify(name)[0] == "pipe" and not any(k in n for k in _FITTING_KEYS)
 
 
 # ── readability seam audits (--solids / --pipes) ─────────────────────────────
@@ -820,9 +832,10 @@ def main():
     # (a clear over/under gap) does NOT share space and is NOT flagged — only pipes actually crossing
     # THROUGH each other are.  This replaces the old whole-box AABB overlap (flagged parallel
     # neighbours + joins, missed thin crossings).
-    leaves = [p for p in pipes if is_run(p["n"])]
+    leaves = [p for p in pipes if is_run(p["n"]) or is_named_run(p["n"])]
     for L in leaves:
         L["rep"] = rep_of(L)
+        L["arrowless"] = not is_run(L["n"])
     junctions = [g for g in data if is_junction(g["n"])]
     JTOL = 20.0   # mm — a run end "abuts" a junction if within this of its fitting body
     abut = defaultdict(set)
@@ -847,6 +860,8 @@ def main():
             nearA = min(_len(_sub(cA, e)) for e in _ends(repA))
             nearB = min(_len(_sub(cB, e)) for e in _ends(repB))
             if nearA <= JOINTOL and nearB <= JOINTOL:  # end-to-end JOIN, not a crossing
+                continue
+            if (A["arrowless"] or B["arrowless"]) and min(nearA, nearB) <= JOINTOL:   # tee/abutment onto the other line
                 continue
             # Shared junction: two runs that meet at a tee/valve are connected THERE — but only there.
             # Skip the overlap ONLY when the crossing point actually sits at a junction both runs abut;

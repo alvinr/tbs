@@ -382,7 +382,7 @@ def draw_corridor_panel():
             f"Ø{ACC_OD:.0f}", ha="center", va="center",
             fontsize=5, color="white", zorder=8, **FONT)
     for y0 in (ACC_YD - ACC_OD / 2 - ACC_PORT_L, ACC_YD + ACC_OD / 2):
-        rect(y0, ACC_PORT_Z - PIPE_OD / 2, ACC_PORT_L, PIPE_OD, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+        rect(y0, ACC_PORT_Z - PIPE_OD / 2, ACC_PORT_L, PIPE_OD, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=Z_DISCH + 2)
 
     # ── Zone label ────────────────────────────────────────────────────────
     ax.text(sx(PANEL_W + 8), sz((P01_Z + P03_Z + PUMP_H) / 2),

@@ -131,7 +131,7 @@ IBC-2 ──┘
 - The two Blue totes feed a 1" PVC manifold with isolation valves, and are tied at the base by a **1" equalization cross-tie** so their levels self-balance as P-01 draws and X1 refills. Like every tote connection, the tie lands on each tote through a short 1" flex jumper, so the rigid PVC run can't fatigue as the two totes settle independently
 - **P-01:** Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - **ACC-01:** 0.75L pressure accumulator — smooths pump cycling and holds pressure when the pump is off
-- **Check valves:** **CV-1** on the X1 gravity fill — the one flow path with no pump. The Shurflo 2088s carry an **integral check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so the pumped supply legs need no more. The two waste legs are the exception (§4.3)
+- **Check valves:** **CV-1** on the X1 gravity fill — the one flow path with no pump. The Shurflo 2088s carry an **integral check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so the pumped supply legs does not need an additional check value. The two waste legs are the exception (§4.3)
 - A low-level float switch on IBC-2 alerts the operator when Blue runs low
 - **Fill:** one external bulkhead (X1) gravity-feeds both Blue totes in parallel (§7)
 

@@ -29,6 +29,22 @@ is already filtered by system. New requirement:
 
 ---
 
+## 🪵 Pipe clips on standoff blocks — follow-ups (2026-11-18)
+
+Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off its face
+(`clip_on_block()`, enforced in the generator + lint). Open:
+
+- [ ] **Spine +Yd face — DEFERRED for review.** P-05 → X3 (Brown, 10.5mm off) and P-03 → X4 (black,
+  flush) are exempted (`flush_ok=True`): an 18mm standoff pushes both lines past the rear-panel board
+  edge. Options: A — move the spine 18mm −Yd (big change); B — a cleat strip for just these two;
+  C — keep as a logged exception.
+- [ ] Add the offcut shim blocks (40×40mm, 18mm ply, 85 in water.skp; cut-to-depth for the wider
+  standoffs) to `plywood-cut-sheets.md` as an offcut item.
+- [ ] 2D: panel-layout / pinhole-panel / spine views still draw the pipes flush on the ply (own lane
+  constants) — move them out with the shim (fold into the spine-view redraw).
+
+---
+
 ## 🎨 water.skp — DV-01 recycle leg drawn BLUE (should be Brown) (2026-11-18)
 
 The routing is correct (DV-01 → IBC-3 Brown buffer on a pH pass, → IBC-4 Black on a fail, per

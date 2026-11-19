@@ -581,7 +581,11 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
     centerline radius = 1x pipe diameter per skill_plumbing_drawing). Direction
     changes happen only at fittings — no diagonals, no butt corners."""
     R = elbow_r if elbow_r is not None else 2.0 * r
-    V = [tuple(float(c) for c in p) for p in waypoints]
+    V = []
+    for p in waypoints:                  # drop repeated waypoints (a zero-length leg has no direction)
+        q = tuple(float(c) for c in p)
+        if not V or _vlen(_vsub(q, V[-1])) > 1e-6:
+            V.append(q)
     out = []
     start = V[0]
     for i in range(1, len(V)):
@@ -635,7 +639,11 @@ def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
     (ruby_flex_duct); bends use the same swept-torus elbow fitting so the run
     stays orthogonal (per skill_plumbing_drawing) — right-angle connections."""
     R = elbow_r if elbow_r is not None else 2.0 * r
-    V = [tuple(float(c) for c in p) for p in waypoints]
+    V = []
+    for p in waypoints:                  # drop repeated waypoints (a zero-length leg has no direction)
+        q = tuple(float(c) for c in p)
+        if not V or _vlen(_vsub(q, V[-1])) > 1e-6:
+            V.append(q)
     out = []
     start = V[0]
     for i in range(1, len(V)):

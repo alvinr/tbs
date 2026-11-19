@@ -1103,12 +1103,16 @@ def gate_pipe_fluid_colors() -> tuple[bool, list[str]]:
                      and re.fullmatch(r"#[0-9A-Fa-f]{6}", a.value) else None)
                 if c and c not in ok:
                     msgs.append(f"{rel}:{n.lineno}  {fn}(…) color={c} — not a fluid/fitting color")
+    for rel in ("src/models/generate_corridor_water_panel.py", "src/models/generate_pinhole_water_panel.py"):
+        for i, line in enumerate(open(os.path.join(ROOT, rel)), 1):
+            if re.search(r'ruby_box\(\s*f?"[^"]*P-clip', line):
+                msgs.append(f"{rel}:{i}  raw P-clip box — use clip_on_block() (block + strap, >=18mm standoff)")
     return (not msgs, msgs)
 
 
 GATES = [
     ("diagrams authored in mm (no canvas scale factor)", gate_diagram_mm_native),
-    ("water pipes use the fluid color convention", gate_pipe_fluid_colors),
+    ("water pipes: fluid colors + clips on standoff blocks", gate_pipe_fluid_colors),
     ("license headers on every .py/.rb/.md", gate_license_headers),
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),

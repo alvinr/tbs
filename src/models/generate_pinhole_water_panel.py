@@ -226,7 +226,7 @@ def kit(part="all", p02_on_corridor=False):
     tie = cap_z                # ports are STRAIGHT/horizontal (in-line filter) — no down-elbow
     rp = ov.PUMP_PIPE_OD / 2   # 10.5
     yL, yS = 230, 295          # feed lane / suction+exit lane (clear of the bodies, Yd ≤ 196)
-    yW = 35                    # wall plane — pipes/valves mounted on the plywood backing
+    yW = SKID_CLIP_YD          # wall plane — pipes/valves one clip block off the plywood backing
     waist = ov.PWP_WAIST_Z     # SV-01 + DV-01 reach height
     cdk = "#222228"
 
@@ -335,8 +335,8 @@ def kit(part="all", p02_on_corridor=False):
          [(svx + 25, sv_y, svz),                                               # leave SV-01's +X face (in-line)
           (svx + 50, sv_y, svz),                                               # +X out (dog-leg)
           (blane, sv_y, svz),                                                  # +X at Z1010 OVER the inner beam to the lane X (over the walkway, not under)
-          (blane, 60, svz)]                                                     # −Yd to the ribbon near-rim Yd (still Z1010) — top of the drop
-         + cp.ribbon_run(3, (DCX - 100, DCY, cp.RIBBON_Z), (blane, 60, svz), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # FLUSH entry on the corridor end (no dip) + under-walkway ribbon (lane 3)
+          (blane, DROP_YD, svz)]                                                     # −Yd to the ribbon near-rim Yd (still Z1010) — top of the drop
+         + cp.ribbon_run(3, (DCX - 100, DCY, cp.RIBBON_Z), (blane, DROP_YD, svz), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # FLUSH entry on the corridor end (no dip) + under-walkway ribbon (lane 3)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          draw.C_IBC_BROWN)
@@ -360,11 +360,11 @@ def kit(part="all", p02_on_corridor=False):
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
     waste_pipe = draw.ruby_pipe_run("DV-01 -> IBC-4 merge",
-         [(DCX, DCY - tipd, DCZ), (DCX, 1165, DCZ),                   # SHORT −Yd exit off the branch → 90° elbow sooner
-          (mx, 1165, DCZ),                                            # +X across the corridor at Yd1165 — SHIFTED +Yd (toward the
+         [(DCX, DCY - tipd, DCZ), (DCX, cp.DV01_WASTE_YD, DCZ),       # SHORT −Yd exit off the branch → 90° elbow sooner
+          (mx, cp.DV01_WASTE_YD, DCZ),                                            # +X across the corridor at Yd1165 — SHIFTED +Yd (toward the
           #   film plane, was 1147) to open a lane for the blue supply trunk; still clears the brown P-02 riser below and
           #   the blue recycle elbow above (−Yd edge 1185)
-          (mx, my, DCZ),                                              # −Yd to the merge column at the far end
+          (mx, my, DCZ),                                              # +Yd jog onto the merge riser plane
           (mx, my, mz)], rp, color=draw.C_PIPE_WASTE)                    # rise into the merge tee's z− branch
     waste_pipe += "\n" + cp.check_valve("CV-2 (DV-01 reject, one-way into the IBC-4 merge)", mx, my, mz - cp.MERGE_CV_DZ, "z")
     p.append(waste_pipe)
@@ -433,13 +433,12 @@ def tap01_supply():
     p.append(cp.ball_valve("BV-04 (chem tap isolation)", ov.TAP_X, yd, 1010, "z"))
     # WALL-STANDOFF P-clips — the blue supply trunk + the TAP-01/BV-05 risers run below the ply panel
     # (Z<920) along the BARE pinhole wall at Yd69; they clamp to the wall (Yd0) on ~55mm standoff blocks.
-    wreach = yd + pr + 2                                      # Yd0 → just past the pipe (wall standoff)
     for tx in (1500, 2100, 2700, 3300, 3900, 4400):          # Blue Supply Trunk (horizontal, Z=fz): band ⊥ the pipe, ~600mm
-        p.append(draw.ruby_box("Wall-standoff pipe P-clip", tx - 8, 0, int(fz) - 14, 16, wreach, 28, color=cp.C_CLIP))
+        p.append(cp.clip_on_block("Wall-standoff pipe P-clip", tx, int(fz), 0, yd, False, rp=pr))
     for tz in (250, 550, 850, 1150):                         # TAP-01 riser (vertical, X=TAP_X): thin-Z band, ~300mm
-        p.append(draw.ruby_box("Wall-standoff riser P-clip", ov.TAP_X - 14, 0, tz - 8, 28, yd + tr + 2, 16, color=cp.C_CLIP))
+        p.append(cp.clip_on_block("Wall-standoff riser P-clip", ov.TAP_X, tz, 0, yd, True, rp=tr))
     for bz in (250, 500, 850):                               # BV-05 fresh-supply riser (vertical, X=bvx)
-        p.append(draw.ruby_box("Wall-standoff riser P-clip", bvx - 14, 0, bz - 8, 28, wreach, 16, color=cp.C_CLIP))
+        p.append(cp.clip_on_block("Wall-standoff riser P-clip", bvx, bz, 0, yd, True, rp=pr))
     return "\n".join(p)
 
 
@@ -477,7 +476,10 @@ _FILT_FCY = ov.BB_OD / 2 + 12              # 104 — filter / P-02 body center Y
 _FILT_CZ  = ov.C_HGT - 48 - ov.BB_H / 2    # 2170 — Big-Blue filter body center Z
 # Phase-2 skid row (P-04 · SV-02 · DV-02, under the filters) — single-sourced for skid_row/plumbing/labels
 SROW_YD, SROW_Z0 = 104, ov.PWP_SROW_Z0   # Yd104 = the filter/P-02 wall lane (surface-mounted on the ply, like the other kit)
-SKID_CLIP_YD = 35                          # #29: skid-panel riser plane — vertical runs sit flush on the ply (face Yd18) and P-clip to it (= the F3→SV-01 wall-lane Yd)
+SKID_FACE_YD = 18                          # skid-panel ply front face
+SKID_CLIP_YD = SKID_FACE_YD + cp.CLIP_SHIM + cp.RP   # 46.5 — skid riser/run plane: one clip block off the ply (= the F3→SV-01 wall lane)
+DROP_YD = SKID_CLIP_YD + 2 * cp.RP + 1.5     # 69 — the three corridor drops (SV-01→DV-01, DV-02 waste, P-02→ACC-02):
+#   just clear of the skid lane, still inside the tray near-rim strip (rim Yd80)
 # ── Panel reorg (2026-08-04): declutter the skid so the lane-1 brown rises up the wall and runs the panel
 #    bottom to ACC-02 (like lanes 3 & 4).  Component X/Z decoupled from the shared filter/pump constants. ──
 PANEL_X0, PANEL_X1, PANEL_Z0 = ov.PWP_PANEL_X0, ov.PWP_PANEL_X1, ov.PWP_PANEL_Z0   # 18mm-ply extents (single-sourced)
@@ -731,7 +733,7 @@ def skid_plumbing(part="all"):
     RZ, OVZ = cp.RIBBON_Z, cp.RIBBON_OVER_Z
     wlx   = cp.RIBBON_LANE_X[2]                           # lane 2 — freed now the sump goes direct to P-04
     gapyd = ov.RWK_RIBBON_NOTCH_YDS[2]                    # 1194 — lane-2 outer-beam notch Yd (single-sourced)
-    CLIPY = 35                                            # clip plane — flush to the ply (= the F3→SV-01 filtered-line Yd), so the grey clamps to the panel
+    CLIPY = SKID_CLIP_YD                                  # clip plane — one block off the ply (= the F3→SV-01 filtered-line Yd)
     dv_waste = (ov.PWP_FILTER_X3 + (cp.DVB / 2 + cp.DVL), SROW_YD, lz)   # DV-02 +X waste port (4054,104,1312)
     riseX = cp.MERGE4[0] - 115                            # 5289 — seat-approach X (= old DV-02→IBC-4 drop lane, −x of the tee)
     p.append(draw.ruby_pipe_run("DV-02 waste -> IBC-4",
@@ -740,8 +742,8 @@ def skid_plumbing(part="all"):
          (dv_waste[0] + 36, SROW_YD, 1050),               # DROP to the raised panel-bottom grey lane (Z1050 — 100mm above the brown bottom run Z948)
          (dv_waste[0] + 36, CLIPY, 1050),                 # −Yd onto the clip plane (clamped to the ply)
          (wlx, CLIPY, 1050),                              # +X along the ply to lane 2 (clear of the relocated SV-01 at X3976)
-         (wlx, 65, 1050),                                 # +Yd clear of the RWk end beam (Yd0) before dropping
-         (wlx, 65, RZ),                                   # DROP between the walkway beams into the ribbon (past the end beam, in front of the tray box)
+         (wlx, DROP_YD, 1050),                                 # +Yd clear of the RWk end beam (Yd0) before dropping
+         (wlx, DROP_YD, RZ),                                   # DROP between the walkway beams into the ribbon (past the end beam, in front of the tray box)
          (wlx, cp.RIBBON_YD_UP, RZ),                      # +Yd along the lane (under the grate) to before the cantilever
          (wlx, cp.RIBBON_YD_UP, OVZ),                     # UP over the cantilever (Rule 5)
          (wlx, cp.RIBBON_YD_DOWN, OVZ),                   # +Yd past the cantilever
@@ -765,7 +767,7 @@ def skid_plumbing(part="all"):
     acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3770.5,104,948)
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
     cpt = (4616, g0 + 13, RZ)                                           # ribbon entry at flush Z (flush branch); Yd1123 — nudged +Yd toward the film-plane wall so the flush run + hump-rise clear the cantilever +Yd edge (Yd1097) by ~15mm; X pulled −X to clear the CJ end-plate (−X face X4646)
-    npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
+    npt = (L0, DROP_YD, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
     rpy = cp.SB_RISER_YD_FAR                                            # 1285 — P-02 discharge riser on the FAR support board (flush)
     midz = RZ                                                          # flush ribbon Z
     lead  = [p2o, (p2o[0], rpy, p2o[2]),                                # +Yd OUT of the +Yd OUT port onto the board riser plane
@@ -774,7 +776,7 @@ def skid_plumbing(part="all"):
              (exitX, cpt[1], midz),                                     # −Yd to the ribbon-entry Yd (1123)
              cpt]                                                       # −X STRAIGHT back to the 90° ribbon-entry turn — no duck (the lowered blue trunk at z210 clears it)
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
-    tail  = [npt, (L0, 65, acc2_in[2]), (L0, CLIPY, acc2_in[2]),
+    tail  = [npt, (L0, DROP_YD, acc2_in[2]), (L0, CLIPY, acc2_in[2]),
              (acc2_in[0] + 55, CLIPY, acc2_in[2]),
              (acc2_in[0] + 55, ov.PWP_FILTER_YD, acc2_in[2]), acc2_in]
     p.append(draw.ruby_pipe_run("P-02 -> ACC-02 (recycle spray)",
@@ -796,25 +798,23 @@ def skid_plumbing(part="all"):
          (b5rx + 40, 69, 700),                              # +Yd to the BV-05 lane (Yd69)
          (b5rx, 69, 700)], rp, color=draw.C_IBC_BROWN))       # −X into the +X recycled port
     # ── #29: skid-panel riser P-clips — hold the nudged vertical runs flush to the ply (face Yd18) ──
-    skid_face = 18
+    skid_face = SKID_FACE_YD
     for rx, cz_lo, cz_hi in ((edge_x, 1520, 2120),               # DV-02 feed → F1 riser (X2830)
                              (p04_in[0] - 40, 600, 1080),        # tray sump → P-04 riser (X3180)
                              (ov.PWP_SV01_X - 60, 1780, 2160)):  # F3 → SV-01 wall drop (X4190)
         for cz in (cz_lo, cz_hi):
-            p.append(draw.ruby_box("Skid riser P-clip", rx - 14, skid_face, cz - 8,
-                                 28, (SKID_CLIP_YD + rp + 2) - skid_face, 16, color=cp.C_CLIP))
+            p.append(cp.clip_on_block("Skid riser P-clip", rx, cz, skid_face, SKID_CLIP_YD, True, rp=rp))
     # horizontal-run clamps flagged in review — brown ± ACC-02 (on the panel-bottom lane), blue ±
     # SV-01, and the brown row line → DV-02.  Same clip, bridging each run back to the ply face.
-    for rx, ryd, cz in ((3720, 35, 948),  (3970, 35, 948),     # brown ± ACC-02 (panel-bottom lane, flush)
-                        (2500, 35, 948), (2800, 35, 948), (3100, 35, 948),   # ACC-02→BV-05 recycle run (−X toward BV-05, ~300mm)
-                        (3370, 35, 948),                                      # ACC-02→BV-05 run (+X segment, past the P-04 riser hump)
-                        (4150, 35, 948), (4380, 35, 948),                     # P-02→ACC-02 recycle run (panel-bottom lane)
-                        (4150, 35, 1050), (4350, 35, 1050),                   # DV-02 waste → IBC-4 run (higher lane, Z1050)
+    for rx, ryd, cz in ((3720, SKID_CLIP_YD, 948),  (3970, SKID_CLIP_YD, 948),     # brown ± ACC-02 (panel-bottom lane, flush)
+                        (2500, SKID_CLIP_YD, 948), (2800, SKID_CLIP_YD, 948), (3100, SKID_CLIP_YD, 948),   # ACC-02→BV-05 recycle run (−X toward BV-05, ~300mm)
+                        (3370, SKID_CLIP_YD, 948),                                      # ACC-02→BV-05 run (+X segment, past the P-04 riser hump)
+                        (4150, SKID_CLIP_YD, 948), (4380, SKID_CLIP_YD, 948),                     # P-02→ACC-02 recycle run (panel-bottom lane)
+                        (4150, SKID_CLIP_YD, 1050), (4350, SKID_CLIP_YD, 1050),                   # DV-02 waste → IBC-4 run (higher lane, Z1050)
                         (3050, 104, 1450), (3350, 104, 1450), (3650, 104, 1450), (3900, 104, 1450),  # DV-02 feed → F1 recycle run (Z1450, filter lane — 1104mm, ~300mm)
                         (4230, 110, 1610), (4370, 110, 1610),  # blue ± SV-01 (forward valve lane — standoff)
                         (3560, 104, 1312), (3820, 104, 1312)): # brown row line → DV-02 (kit-row lane — standoff)
-        p.append(draw.ruby_box("Skid pipe P-clip", rx - 8, skid_face, cz - 14,
-                             16, (ryd + rp + 2) - skid_face, 28, color=cp.C_CLIP))   # horizontal run: band thin in X, wraps in Z (⊥ the pipe)
+        p.append(cp.clip_on_block("Skid pipe P-clip", rx, cz, skid_face, ryd, False, rp=rp))   # horizontal run
     # Tray-sump suction supports (relocated routing): standard P-clips on the new along-wall
     # horizontal (Yd35, at the walkway deck level) + a low clip on the X3180 panel climb (it now
     # starts at the deck).  Each bridges the run back to its backing face — the bare container wall
@@ -822,17 +822,14 @@ def skid_plumbing(part="all"):
     # clips sit in the clear gaps BETWEEN the near-walkway cantilevers (Near 5 X2576-2696,
     # Near 6 X3033-3153) so no support bracket lands on a cantilever arm/plate.
     for rx, face in ((2520, 0), (2760, 0), (2980, skid_face)):   # along-wall horizontal run (at wall_run_z)
-        p.append(draw.ruby_box("Skid pipe P-clip", rx - 8, face, wall_run_z - 14,
-                             16, (SKID_CLIP_YD + rp + 2) - face, 28, color=cp.C_CLIP))   # horizontal along-wall run: band ⊥ the pipe
-    p.append(draw.ruby_box("Skid riser P-clip", (p04_in[0] - 40) - 14, skid_face, 340 - 8,
-                         28, (SKID_CLIP_YD + rp + 2) - skid_face, 16, color=cp.C_CLIP))   # P-04 climb, low (joins the 600/1080 clips)
+        p.append(cp.clip_on_block("Skid pipe P-clip", rx, wall_run_z, face, SKID_CLIP_YD, False, rp=rp))   # horizontal along-wall run
+    p.append(cp.clip_on_block("Skid riser P-clip", p04_in[0] - 40, 340, skid_face, SKID_CLIP_YD, True, rp=rp))   # P-04 climb, low (joins the 600/1080 clips)
     # WALL-STANDOFF riser clips — the DV-02-waste + P-02→ACC-02 corridor drops run BELOW the ply panel
     # (Z<920) in front of the BARE pinhole wall (Yd0), ~65mm off it; they mount to the wall on a ~55mm
     # standoff block (the box spans Yd0→pipe). Vertical pipe → band thin in Z (28×16).
-    for rx, ryd in ((4400, 60), (4434, 65), (4503, 65)):   # SV-01→DV-01 (blue), DV-02 waste, P-02→ACC-02 — the 3 corridor-drop risers
+    for rx, ryd in ((4400, DROP_YD), (4434, DROP_YD), (4503, DROP_YD)):   # SV-01→DV-01 (blue), DV-02 waste, P-02→ACC-02 — the 3 corridor-drop risers
         for cz in (300, 550, 800):                    # ~300mm down the drop, all below the panel bottom (Z920)
-            p.append(draw.ruby_box("Wall-standoff riser P-clip", rx - 14, 0, cz - 8,
-                                 28, (ryd + rp + 2), 16, color=cp.C_CLIP))
+            p.append(cp.clip_on_block("Wall-standoff riser P-clip", rx, cz, 0, ryd, True, rp=rp))
     if part == "all":
         return "\n".join(p)
     # Partition legs by the construction-model phase they install in, matched on each pipe's own

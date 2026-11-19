@@ -66,6 +66,6 @@ models:
   # water = the combined wet-end + IBC plumbing corridor (both plumbing panels). generate_pinhole_water_panel.py
   # imports generate_corridor_water_panel.py; --save writes water.rb (byte-verifiable) + saves water.skp via --send.
   # corridor-panel.skp is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
-  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [docs/plumbing-report.md], source_hash: "sha256:2f995578a722a347640cdf692a8a791ad661199f62df2f4ae535edea7b2ea7e6"}
+  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb], uid: 1dae932430924e9b993e153a16f485fc, embed_files: [docs/plumbing-report.md], source_hash: "sha256:bb21257ef20ea51f96b916f1617f58d9cc9f18eba0331b3327df6f5486ae656e"}
   # pinhole-disc-holder = the pinhole-end quick-change front-board disc holder.
   pinhole-disc-holder: {script: src/models/generate_pinhole_disc_holder_model.py, outputs: [models/pinhole-disc-holder.skp, src/models/pinhole-disc-holder.rb], uid: "4ce663d3fe3e4a2e99c0643dad5bfffe", embed_files: [docs/pinhole-disc-holder-report.md], source_hash: "sha256:cb89c816b38e74aab94f3d4009804fc16fd8a7803cdc6661c5822d16ce13c198"}

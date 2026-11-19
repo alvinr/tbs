@@ -496,17 +496,35 @@ def draw_sheet1():
         ax1.text(lx + 15.5, yy, lbl, va="center", fontsize=6.2, color=C_TEXT, zorder=7)
 
     SYM_X = 127.5
-    ax1.add_patch(plt.Rectangle((SYM_X, BOX_Y), BOX_W, BOX_H, fc="white", ec=C_FRAME, lw=1, zorder=6))
-    ax1.text(SYM_X + BOX_W / 2, ly + 1.5, "SYMBOLS", ha="center", fontsize=7.5, fontweight="bold", color=C_TITLE, zorder=7)
+    SYM_W = 215       # wider than the legend: two symbol columns, into the free strip under the right-hand zones
+    ax1.add_patch(plt.Rectangle((SYM_X, BOX_Y), SYM_W, BOX_H, fc="white", ec=C_FRAME, lw=1, zorder=6))
+    ax1.text(SYM_X + SYM_W / 2, ly + 1.5, "SYMBOLS", ha="center", fontsize=7.5, fontweight="bold", color=C_TITLE, zorder=7)
+    # each row: the symbol AS DRAWN on the sheet + its meaning (two columns of five)
+    def _sv(x, y):
+        valve(ax1, x, y + 1.25, color="#F9A825", size=1.25, zorder=8)
+        ax1.add_patch(plt.Circle((x, y - 2.25), 1.0, fc="white", ec="#E65100", lw=1.2, zorder=8))
+    def _bridge(x, y):
+        ax1.plot([x - 5, x + 5], [y - 1.5, y - 1.5], color=C_BROWN, lw=2.0, zorder=7)
+        ax1.plot([x, x], [y - 5, y + 2], color=C_BLACK, lw=2.0, zorder=7)
+        pipe_bridge(ax1, x, y - 1.5, color=C_BROWN, lw=2.0, r=2.5, bg="white", zorder=9)
     syms = [
-        ("P-xx / BV-xx", "Pump (12V DC) / manual ball valve"),
-        ("3W-DV",        "3-way L-port diverter (3-pos: route A / route B / all-off)"),
-        ("3W-BV-05",     "3-way selector — spray source"),
-        ("SV-xx / ▷|",   "Sample tap · check valve (CV-1 fill; CV-2/3 anti-backflow)"),
-        ("F1/F2/F3 · ⬡ · ∿ · ○", "Filter · port · flex · open egress/draw point"),
+        (lambda x, y: pump(ax1, x, y, color=C_PUMP, r=2.4, zorder=8),                 "P-xx  Pump (12V DC)"),
+        (lambda x, y: valve(ax1, x, y, color=C_FRAME, size=1.4, zorder=8),            "BV-xx  Manual ball valve"),
+        (lambda x, y: diverter(ax1, x, y, color="#757575", size=1.4, zorder=8),       "3W-DV / 3W-BV-05  3-way diverter / selector"),
+        (lambda x, y: check_valve(ax1, x, y, 1, 0, color=C_BLACK, size=1.8, zorder=8), "CV-x  Check valve (arrow = permitted flow)"),
+        (lambda x, y: flex_conn(ax1, x, y, color=C_BLUE, horiz=True, amp=1.2, length=8, zorder=8), "Flex connector (1\" jumper at each tote)"),
+        (lambda x, y: filter_sym(ax1, x, y - 0.4, label="F", zorder=8),               "F1–F3  Filter housing"),
+        (lambda x, y: ext_port(ax1, x, y, color=C_FRAME, label="X", size=2.6, zorder=8), "X1/X3/X4  End-wall bulkhead port"),
+        (_sv,                                                                          "SV-xx  Sample tap (valve + open draw)"),
+        (lambda x, y: ax1.add_patch(plt.Circle((x, y), 1.3, fc="white", ec=C_BLUE, lw=1.5, zorder=8)), "Open egress / draw point"),
+        (_bridge,                                                                      "Pipe crossing (hump = the pipe in front)"),
     ]
-    for i, (sym, desc) in enumerate(syms):
-        ax1.text(SYM_X + 3.75, ly - 2.5 - i * 6.375, f"{sym} — {desc}", va="center", fontsize=5.8, color=C_TEXT, zorder=7)
+    for i, (draw_sym, desc) in enumerate(syms):
+        col, row = divmod(i, 5)
+        gx = SYM_X + 7.5 + col * SYM_W / 2
+        gy = ly - 3 - row * 6.4
+        draw_sym(gx, gy)
+        ax1.text(gx + 7, gy, desc, va="center", fontsize=5.4, color=C_TEXT, zorder=8)
 
     _save(fig1, "water-system-sheet1")
 

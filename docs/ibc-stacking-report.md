@@ -58,7 +58,7 @@ panel.
 | IBC-1 | Top tier, near column | Blue (clean supply) | Primary clean water supply for spray bar |
 | IBC-2 | Top tier, far column | Blue (clean supply) | Secondary supply, filled in parallel with IBC-1 from the X1 fill tee |
 | IBC-3 | Bottom tier, near column | Brown (recycled) | Wash water buffer — filtered and recycled back to Blue |
-| IBC-4 | Bottom tier, far column | Black (waste) | Contaminated water sealed for off-site disposal |
+| IBC-4 | Bottom tier, far column | Black (waste) | Contaminated water held for off-site disposal (pumped out through X4) |
 
 ### 2.3 Layout
 

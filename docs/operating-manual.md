@@ -392,7 +392,7 @@ required for a normal 1–2 print outing.
 
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
 - [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1 and disconnect.
-- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels: connect a disposal tanker or holding tank to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done.
+- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels: connect the liquid-waste hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Confirm beforehand that the hauler's receiving wastewater plant accepts cyanotype wash water. Close and re-cap the ports when done.
 - [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
 > **Before transport:** return the totes to their validated fill states — Blue drained, Waste within
@@ -404,7 +404,7 @@ required for a normal 1–2 print outing.
 **Lighting: WHITE LIGHT.**
 
 ### 5.1 Chemistry Disposal
-- [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Waste IBC-4 contents are drained via external port X4 to a disposal tanker. Do not dispose into storm drains without verification of local regulations.
+- [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. IBC-4 is pumped out by P-03 through the external port X4 into a liquid-waste hauler's tanker, for a wastewater treatment plant that has agreed to accept it (TU.3). Never discharge it to a storm drain, soil or waterway. Keep the IBC-4 cap and valve closed between pump-outs.
 - [ ] 5.1.2 — Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
 - [ ] 5.1.3 — Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
 - [ ] 5.1.4 — Stow the spray bar at either end of its travel. Detach the telescoping pole and store alongside the bar or clip to the container wall. The flexible hose coils naturally at the pinhole wall.

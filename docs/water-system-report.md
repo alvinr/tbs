@@ -8,7 +8,7 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 
 - Stores clean water for ~<!-- BEGIN fact:prints_no_recycle -->10<!-- END fact:prints_no_recycle --> full-size prints per resupply run on fresh Blue alone, or **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** with Brown wash-1 recycling (§3)
 - Recycles used wash water through a three-stage filter train, extending usable supply by ~<!-- BEGIN fact:recycle_supply_gain_pct -->50<!-- END fact:recycle_supply_gain_pct -->%
-- Contains all waste water in a closed, transportable IBC for off-site disposal
+- Holds all waste water in a closed IBC, pumped out through an end-wall port for off-site disposal
 - Runs entirely on 12V DC from the solar/battery system
 
 ![Water System — Sheet 2: Overview](assets/water-system-sheet2.png)
@@ -19,7 +19,7 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 |---------|---------|---------|
 | **Blue** — clean | Fresh water for processing | IBC-1 + IBC-2, top tier — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L working fill (<!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l -->L each) |
 | **Brown** — used | Collected wash water, filtered into a buffer and reused for wash 1 | IBC-3, bottom tier |
-| **Black** — waste | Rejected or heavily contaminated water, sealed for off-site disposal | IBC-4, bottom tier |
+| **Black** — waste | Rejected or heavily contaminated water, held for off-site disposal | IBC-4, bottom tier |
 
 All four totes are identical 1,000L caged IBCs; the fills above are working levels, not tote sizes.
 
@@ -180,15 +180,15 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
         │
    IBC-4 (waste)
         │
-   Sealed, labeled per GHS/OSHA
+   P-03 → X4 (end-wall camlock)
         │
-   TRANSPORT to licensed liquid-waste disposal facility
+   Liquid-waste hauler's tanker → wastewater treatment plant
 ```
 
 - The DV-01 and DV-02 waste legs join at a tee just before IBC-4. Each leg carries a check valve below the tee — **CV-2** (DV-01) and **CV-3** (DV-02) — so one leg cannot back-feed the other and the IBC-4 riser cannot drain back through DV-01 into the filter train
-- IBC-4 has a DN50 butterfly valve (S60×6 thread) and is drained remotely through **X4**, without opening the cargo doors
-- Seal the cap before transport; label contents, date, location, and UN numbers for the ferricyanide/iron compounds
-- **Do not leave the valve open** — evaporation and UV exposure can drive the ferricyanide chemistry
+- IBC-4 stays in the stacking frame. It has a DN50 butterfly valve (S60×6 thread) and is pumped out by **P-03** through **X4** into a liquid-waste hauler's tanker, without opening the cargo doors
+- The contents are the same dilute cyanotype chemistry as the wash water (§2), non-hazardous but more concentrated than the Brown stream, so they go to a wastewater treatment plant rather than to a storm drain, soil or waterway. Confirm with the hauler that the receiving plant accepts it before the first pump-out
+- Keep the IBC-4 cap and valve closed between pump-outs — evaporation and UV exposure can drive the ferricyanide chemistry
 
 ### 4.4 Processing Tray and Spray Bar
 

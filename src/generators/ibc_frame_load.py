@@ -186,7 +186,8 @@ def weld_schedule():
 # and the right-walkway cantilever arms (front uprights). These are STATIC/SERVICE loads, checked here
 # to confirm they are non-governing vs the transport restraint case. (Arm CONNECTION only — the arm's
 # own bending is the walkway blueprint's scope.)
-M_PANEL_KG   = 20.0    # plumbing panel ply + shirt + 5 pumps/ACC + fittings (est) on 6 rear-panel brackets
+from plumbing_panel_mass import corridor_panel_mass  # noqa: E402
+M_PANEL_KG   = corridor_panel_mass()["total"]   # corridor plumbing panel summed from its parts — all of it taken on the 6 rear-panel brackets (conservative: the spine and side boards also tie to the frame rings / side posts)
 N_PANEL_BRK  = 6
 M_WK_ARM_KG  = 22.0    # right-walkway dead per arm (44 kg / 2 center arms)
 P_PERSON_N   = 1000.0  # one-person point live load (worst case on one arm)

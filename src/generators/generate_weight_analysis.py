@@ -19,7 +19,9 @@ docs/assets/weight-analysis-sheet5.png  — Loaded Transport (full Blue IBCs)
 
 import os
 import math
+import dataclasses
 from dataclasses import dataclass
+from tbs_constants import BLUE_FILL_PER_TOTE_L, MAX_BLUE_FILL_PER_TOTE_L
 
 try:                                    # drawing deps are OPTIONAL so the value injector
     import matplotlib                   # (--inject / --check-blocks) runs dependency-free
@@ -38,6 +40,7 @@ try:                                    # drawing helper (imports numpy) — opt
     from tbs_drawing import leader
 except ImportError:
     leader = None
+from plumbing_panel_mass import corridor_panel_mass  # noqa: E402
 from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_W, FP_Y, FP_H, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_N_TOTAL, PH_X, PH_H, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, IBC_PALLET_H, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_OPEN_X_L, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_SPACING, WALKWAY_RIGHT_W, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_YD_NEAR, SHELF_STOW_TOP_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SKIN_T, PANEL_FAN_BAND_Z, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, DRUM_D, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_SHELL_ARC, LT_OPENING_DEG, BAY_FRONT_X, BAY_BACK_X, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, FAN_A_YD, FAN_B_YD, C_OUT, C_DIM, C_STEEL, C_ALUM, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_LT_DRUM, C_PROC_ZONE, C_WALL, C_FAN, DIAGRAMS_DIR
 try:                                    # drawing helper (imports matplotlib) — optional, see above
     from tbs_title_block import title_block
@@ -515,11 +518,11 @@ def build_components():
                   calc_note="MPPT charge controller"),
         # Plumbing equipment split across the two panels (the old single "Pump manifold" missed the
         # filter loop entirely, and pre-dated the P-05 add / P-02→wall move):
-        Component("Plumbing — Corridor panel", "equipment", 4.5,
+        Component("Plumbing — Corridor panel", "equipment", corridor_panel_mass()["total"],
                   PUMP_X, PUMP_X + PUMP_W,
                   CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + PUMP_D,
                   PUMP_H_LO, PUMP_H_HI, color=C_PUMP,
-                  calc_note="4× Shurflo 2088 pumps (P-01/P-02/P-03/P-05) + ACC-01 on the Corridor panel"),
+                  calc_note="Summed from its parts (plumbing_panel_mass.py): ply rear board + spine + shirt + side boards, 4× Shurflo 2088 (P-01/P-02/P-03/P-05), ACC-01, water-filled pipe, fittings, valves, P-clips"),
         Component("Plumbing — Pinhole Wall panel", "equipment", 8.0,
                   3300, 4016,                    # wet-end filter kit X span (F1–F3 + housing)
                   12, 196,                       # near the pinhole wall (low Yd)
@@ -1344,6 +1347,24 @@ def weight_values():
     v["wt-walkway-total"] = f"{wk:,}"
     v["wt-walkway-pct"]   = f"{100 * wk / total_dry:.1f}"
     v["wt-mass-drop"] = f"{int(v['wt-loadedtx-total'].replace(',', '')) - int(v['wt-exhausted-total'].replace(',', '')):,}"
+
+    # §6.x Blue max-fill study — standard vs topped-up (MAX_BLUE_FILL_PER_TOTE_L) loaded transport;
+    # static sideways tip threshold = atan(half the interior width / Z_cg)
+    def _tx(per_tote):
+        fs = []
+        for c in filter_state(comps, "loaded_transport"):
+            if c.name.startswith("Blue IBC-") and c.category == "liquid":
+                c = dataclasses.replace(c, weight_kg=per_tote,
+                                        z_max=c.z_min + per_tote * IBC_BOTTLE_FILL_PER_L)
+            fs.append(c)
+        tot, _, _, z = compute_cg(fs)
+        return sum(_rhu(c.weight_kg) for c in fs), z, math.degrees(math.atan((C_WID / 2) / z))
+    for k, per in (("std", BLUE_FILL_PER_TOTE_L), ("max", MAX_BLUE_FILL_PER_TOTE_L)):
+        tot, z, tip = _tx(per)
+        v[f"wt-fill-{k}-total"] = f"{tot:,}"
+        v[f"wt-fill-{k}-z"] = f"{_rhu(z):,}"
+        v[f"wt-fill-{k}-tip"] = f"{tip:.1f}"
+    v["wt-fill-dz"] = f"{int(v['wt-fill-max-z'].replace(',', '')) - int(v['wt-fill-std-z'].replace(',', ''))}"
     return v
 
 

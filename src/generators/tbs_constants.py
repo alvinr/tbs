@@ -758,6 +758,10 @@ EQPANEL_W       = EQPANEL_T + 130   # = 148mm — total X footprint (ply + max p
 
 # Pump zone — near side of panel face (Yd=1046–1173)
 # Pumps protrude from panel face toward open end (lower X).
+PUMP_KG      = 2.18    # Shurflo 2088-554-144 net weight (kg) — datasheet 4.8 lb
+ACC_KG       = 0.36    # SeaFlo SFAT-075-125-01 accumulator, empty (kg) — retailer item weight 360g
+ACC_L        = 0.75    # accumulator water volume (L)
+PLY_RHO_KG_M3 = 600    # exterior plywood density (kg/m³)
 PUMP_D       = 114     # pump protrusion from panel face in -X direction (mm) — real Shurflo 2088 height (4.5"); was 100
 PUMP_YD_SPAN = 127     # pump width across the 1/2"-14 NPSM port tips (mm) — Shurflo 2088-554-144 datasheet 5.00in
 PUMP_X       = EQPANEL_X - PUMP_D   # pump zone left edge X for elevation views
@@ -1087,6 +1091,7 @@ def tray_gutter_floor_z(x):
 L_PER_GAL             = 3.78541
 BLUE_SUPPLY_L         = 1800    # usable clean-water (Blue) volume — 2× 900L gravity fill (~476 gal)
 BLUE_FILL_PER_TOTE_L  = BLUE_SUPPLY_L // 2    # = 900L gravity fill per Blue tote (a FILL LEVEL, not the 1000L tote size)
+MAX_BLUE_FILL_PER_TOTE_L = 950                  # optional topped-up Blue fill per tote (~1,900L total) — weight report max-fill study
 TRAY_FLOOD_DEPTH_MM   = 6       # one process flood depth (¼") over the tray footprint
 BLUE_WASHES_PER_PRINT = 2       # wash 1 recycles Brown (the leaching wash); washes 2 & 3 draw Blue
 TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.2 → 15 (injected via facts.yml tray_flood_gal)

@@ -162,6 +162,7 @@ P03_Z = cwp.PSTACK["P-03"] - PANEL_Z_AFF   # P-03 Waste drain
 ACC_YD = PUMP_COL_C
 ACC_Z  = cwp.ACC_Z0 - PANEL_Z_AFF       # ACC bottom (3D ACC_Z0)
 ACC_PORT_Z = cwp.ACC_PZ - PANEL_Z_AFF   # ACC IN/OUT port centerline (3D ACC_PZ)
+ACC_PORT_L = 30                          # ACC IN/OUT port stub length (= the 3D port cylinders)
 
 # ── PINHOLE WALL PANEL layout ────────────────────────────────────────────
 # 3 filter housings stacked vertically (sump-down) at BOTTOM; P-02 above.
@@ -380,8 +381,8 @@ def draw_corridor_panel():
     ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 - 16),
             f"Ø{ACC_OD:.0f}", ha="center", va="center",
             fontsize=5, color="white", zorder=8, **FONT)
-    for y0 in (ACC_YD - ACC_OD / 2 - 30, ACC_YD + ACC_OD / 2):
-        rect(y0, ACC_PORT_Z - PIPE_OD / 2, 30, PIPE_OD, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+    for y0 in (ACC_YD - ACC_OD / 2 - ACC_PORT_L, ACC_YD + ACC_OD / 2):
+        rect(y0, ACC_PORT_Z - PIPE_OD / 2, ACC_PORT_L, PIPE_OD, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
 
     # ── Zone label ────────────────────────────────────────────────────────
     ax.text(sx(PANEL_W + 8), sz((P01_Z + P03_Z + PUMP_H) / 2),
@@ -432,8 +433,10 @@ def draw_corridor_panel():
                 endon(ys[-1], zs[-1], toward=b[0] < a[0])
                 break
             ys.append(py(b)[0]); zs.append(py(b)[1])
-        if len(ys) > 2 and math.hypot(ys[-1] - ys[-2], zs[-1] - zs[-2]) < PIPE_OD:
-            ys.pop(); zs.pop()           # a sub-OD last leg into a side port (3D allowlisted short leg)
+        leg = math.hypot(ys[-1] - ys[-2], zs[-1] - zs[-2]) if len(ys) > 2 else PIPE_OD
+        if leg < PIPE_OD:                # sub-OD last leg into a side port: socket it over the port stub so the elbow can form
+            k = (leg + ACC_PORT_L) / leg
+            ys[-1] = ys[-2] + (ys[-1] - ys[-2]) * k; zs[-1] = zs[-2] + (zs[-1] - zs[-2]) * k
         draw_pipe_path(ax, ys, zs, PIPE_OD, PIPE_WALL, fc=fc, zorder=Z_DISCH)
         if label:
             ex = EXIT_L if side == "left" else EXIT_R
@@ -776,8 +779,8 @@ def draw_pinhole_panel():
     pw_text(PWP_FILTER_X3, PWP_DV02_Z - 54, "DV-02\n3-WAY", ha="center", va="top", fontsize=6, color="#8A6D08", fontweight="bold", zorder=14)
     # ── ACC-02 (recycle-spray damper) — center-bottom cylinder, fed from P-02 in the corridor ──
     pw_rect(PWP_ACC2_X - 63, PWP_ACC2_Z0, 126, 200, C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.85)
-    for x0 in (PWP_ACC2_X - cwp.ACC_R - 30, PWP_ACC2_X + cwp.ACC_R):
-        pw_rect(x0, PWP_ACC2_Z0 + 28 - cwp.RP, 30, 2 * cwp.RP, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+    for x0 in (PWP_ACC2_X - cwp.ACC_R - ACC_PORT_L, PWP_ACC2_X + cwp.ACC_R):
+        pw_rect(x0, PWP_ACC2_Z0 + 28 - cwp.RP, ACC_PORT_L, 2 * cwp.RP, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BROWN_EC, fontweight="bold", zorder=8)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BROWN_EC, zorder=8)
     leader(ax_p, pwx(PWP_ACC2_X), pwz(PWP_ACC2_Z0), pwx(PWP_ACC2_X) + 40, pwz(460),

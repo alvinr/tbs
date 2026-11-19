@@ -179,9 +179,6 @@ PARTS: list[Part] = [
          "water", 3, "ea", 21.14, 21.14, "US Plastic Corp", part_no="32200", url="https://www.usplastic.com/catalog/item.aspx?itemid=32200",
          spec="X1/X3/X4 external fill/drain ports — 2\" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure.",
          note="Price verified 2026-07-12 (McMaster 4464K115, $136.70 ea)."),
-    Part("float-switch-ibc2", "Low-level float switch (IBC-2 Blue supply) — low-water operator alert", "water-equipment",
-         "water", 1, "ea", 8, 20, "Amazon",
-         spec="12V side- or vertical-mount float level switch on IBC-2 (Blue clean-water supply) — alerts the operator when the Blue supply runs low (water-system-report §4.1). SKU pending — source a 12V marine/RV float level switch; $8–20 est, confirm at order."),
     # — pumps (315–345) —
     Part("shurflo-2088", "Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)", "water-equipment",
          "water", 5, "ea", 100, 100, "Amazon", "Fresh Water Systems",

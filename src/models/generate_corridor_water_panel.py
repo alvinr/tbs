@@ -347,6 +347,7 @@ def tote_restraint():
 # generator derives the same piece sizes (single source; it can't drift from this model).
 SHIRT_Z0    = 325    # pump-shirt bottom Z (raised to clear the brown P-05 inlet elbow at z298-318)
 SPINE_Z0    = 280    # drain-riser spine bottom Z (clears the low waste pickup z247-268)
+SPINE_Z1    = TOP_Z - S - 50   # drain-riser spine top Z (2196) — 50mm under the frame top rail so the X1 fill cross (Z2250) passes OVER it
 SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the sealed end wall (X5893) so the two end-wall port runs (P-05→X3, P-03→X4) + their X5763 drops get a ply clip surface; still clears the wall
 
 
@@ -381,11 +382,11 @@ def rear_panel():
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).
     p.append(draw.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, SPINE_Z0,
-                         SPINE_X_END - BACK_X, 18, (TOP_Z - S) - SPINE_Z0, color=draw.C_PLY,
+                         SPINE_X_END - BACK_X, 18, SPINE_Z1 - SPINE_Z0, color=draw.C_PLY,
                          holes=SPINE_HOLES, hole_axis="y"))   # −Yd face at 1206 = the grey
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
     #   z247-268).  Extended +X to 5560 (past the X1 cross at 5530) and UP to the rear-panel top
-    #   (z=TOP_Z−S=2246) to also back the X1 fill cross, Blue equalization tie, and the high fill/recycle runs.
+    #   SPINE_Z1 (50mm under the frame top rail, so the X1 fill cross clears over it) to back the Blue equalization tie and the high fill/recycle runs.
     # (The X3 brown-pipe support shelf was removed — the P-05→X3 discharge now runs behind the panel on
     #  the Yd1245 lane, no longer crossing the rear corridor above the merge, so it needs no shelf.)
     # Spine riser P-clips (#29) — same cushioned-strap method as the side-board clips: hold the three
@@ -394,7 +395,7 @@ def rear_panel():
                        (5289, 65, 1209),       # DV-02 waste → IBC-4
                        (5404, 242, 1230)):     # DV-01 → IBC-4 merge
         for frac in (0.30, 0.70):
-            cz = max(300, min(int(zb + (zt - zb) * frac), int(TOP_Z - S - 20)))
+            cz = max(300, min(int(zb + (zt - zb) * frac), int(SPINE_Z1 - 20)))
             p.append(clip_on_block("Spine riser P-clip", rx, cz, SPINE_FACE_NEAR, SPINE_RISER_YD, True))
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
     # P-05→X3 (brown, Z1502) and P-03→X4 (waste, Z1902), both on the COL_R lane. Clamps to the +Yd face.
@@ -811,7 +812,6 @@ REAR_HOLES = [(DV01_WASTE_YD, 235, RPH),      # DV-01 -> IBC-4 merge
               (CTR_Y, 1030, CBH),    # Cct-C branch -> P-02
               (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
 SPINE_HOLES = [(5500, 1376, 16 + 3),                 # Blue equalization (IBC-1 <-> IBC-2, 1" r16)  (X, Z) — cut along Y
-               (5500, X1_TEE_Z, RPH),               # X1 fill -> Blue #2 (IBC-2) side entry
                (ov.IBC_COL_X + 830, MERGE4[2], RPH),  # IBC-4 (Waste) tote entry (xe4) off the merge tee
                (SPINE_X_END - 100, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing — 100mm in from the extended edge
 

@@ -1033,7 +1033,7 @@ PANX1  = cwp.BACK_X + cwp.EQT              # rear-panel rear face (18mm ply)
 SHIRTX0, SHIRTX1 = cwp.SHIRT_X, cwp.SHIRT_X + cwp.EQT   # 18mm pump-mount shirt (in FRONT of the panel)
 SHIRT_ZB, SHIRT_ZT = cwp.SHIRT_Z0, cwp.PANEL_TOP_Z      # shirt Z extent (bottom clears the raised P-05 elbow; top at the fan baffle)
 SPX1   = cwp.SPINE_X_END                   # drain-riser spine rear
-SPINE_ZB, SPINE_ZT = cwp.SPINE_Z0, cwp.TOP_Z - cwp.S    # spine Z extent
+SPINE_ZB, SPINE_ZT = cwp.SPINE_Z0, cwp.SPINE_Z1    # spine Z extent
 PAN_ZB, PAN_ZT = cwp.S, cwp.S + cwp.PH_CUT  # rear-panel BOARD Z extent (cut height PH_CUT=1845; the opening top is PANEL_TOP_Z 1900)
 WALLX  = C_LEN                    # 5893 — sealed end wall
 X1X    = cwp.X1_TEE_X                # X1 fill TEE X (on the spine face)

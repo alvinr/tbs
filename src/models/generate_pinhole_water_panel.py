@@ -417,12 +417,14 @@ def tap01_supply():
          (b5x, b5y, b5z - dvt)], pr, color=draw.C_BLUE))  # UP into the −Z fresh port
     # Spray delivery: BV-05a +Z selected port → BV-05b (2-way ON/OFF, WALL-MOUNTED just above the
     # selector — a fixed mount, not on the moving spray-bar pole) → coiled hose forward to the beam.
+    hose_out = (b5x, b5y + 4 * pr, 1000)              # elbow at the riser top turns +Yd (off the wall); the coiled hose barbs into its outlet
     p.append(draw.ruby_mixed_pipe_run("BV-05a -> BV-05b (up the pinhole wall)",
         [(b5x, b5y, b5z + dvt),                        # off the BV-05a +Z selected port
-         (b5x, b5y, 1000)], pr))      # MIXED (Blue or Brown per BV-05a) — UP the pinhole wall to BV-05b (stays below the pinhole Z1024)
+         (b5x, b5y, 1000),                             # MIXED (Blue or Brown per BV-05a) — UP the pinhole wall to BV-05b (stays below the pinhole Z1024)
+         hose_out], pr))
     p.append(cp.ball_valve("BV-05b (spray on/off)", b5x, b5y, 900, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
     p.append(draw.ruby_coil_cord("Spray-bar supply hose (BV-05b -> spray bar, coiled)",
-        [(b5x, b5y, 1000),                             # off the top of BV-05b
+        [hose_out,                                     # out of the riser-top elbow
          (2380, 480, 720),                             # FORWARD-low to the pole area (below the pinhole Z1024)
          (2410, 660, 440),                             # LONG service loop — droop down for slack (forward of the pinhole)
          (2420, 633, 1303)], r=7, color=draw.C_PIPE_FRESH, color2=draw.C_PIPE_RECYCLE))    # MIXED stripe — UP alongside the pole to the pole-top feed

@@ -378,7 +378,8 @@ def draw_sheet1():
     pipe(ax1, 9.7, L_DVREC, IBC3_RISER, L_DVREC, C_BROWN, style="--"); arrow_pipe(ax1, 8.6, L_DVREC, 8.2, L_DVREC, color=C_BROWN)
     ax1.text(8.7, L_DVREC + 0.18, "RECYCLE → IBC-3 BUFFER", ha="center", fontsize=5.6, color=C_BROWN, style="italic")
     pipe(ax1, 9.7 + DVR, 3.5, WRX, 3.5, C_BLACK)
-    check_valve(ax1, 10.12, 3.5, 1, 0, color=C_BLACK); ax1.text(10.12, 3.34, "CV-2", ha="center", fontsize=5.2, color=C_BLACK)
+    check_valve(ax1, 10.12, 3.5, 1, 0, color=C_BLACK)
+    ax1.text(10.12, 3.34, "CV-2", ha="center", fontsize=5.2, color=C_BLACK)
     arrow_pipe(ax1, 10.42, 3.5, WRX - 0.06, 3.5, color=C_BLACK)
     ax1.text(10.5, 3.70, "REJECT → IBC-4", ha="center", fontsize=5.4, color=C_BLACK, style="italic")
 
@@ -447,7 +448,8 @@ def draw_sheet1():
     ax1.text(10.4, L_FEED - 0.22, "RECYCLE → FILTER SKID (P-04 drives F1→F3)", ha="center", fontsize=6, color=C_BROWN)
     # waste leg (black) — BRANCH off DV-02 (left) → STRAIGHT west to the waste riser (no dog-leg)
     pipe(ax1, 15.6 - DVR, DV02_Y, WRX, DV02_Y, C_BLACK)
-    check_valve(ax1, 14.85, DV02_Y, -1, 0, color=C_BLACK); ax1.text(14.85, DV02_Y - 0.17, "CV-3", ha="center", fontsize=5.2, color=C_BLACK)
+    check_valve(ax1, 14.85, DV02_Y, -1, 0, color=C_BLACK)
+    ax1.text(14.85, DV02_Y - 0.17, "CV-3", ha="center", fontsize=5.2, color=C_BLACK)
     arrow_pipe(ax1, 13.3, DV02_Y, 12.5, DV02_Y, color=C_BLACK)
     ax1.text(13.35, DV02_Y + 0.16, "WASTE → IBC-4 (HEAVY CONTAM.)", ha="center", fontsize=5.8, color=C_BLACK, style="italic")
 

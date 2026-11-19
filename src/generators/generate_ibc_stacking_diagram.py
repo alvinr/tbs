@@ -400,9 +400,7 @@ def sheet2():
 #
 # View from outside the container, looking at the sealed end wall.
 # Shows 3 ports stacked vertically on the container centerline:
-#   Top:    Fill Blue IBC-1 (2250mm)
-#           Drain Brown IBC-3 (400mm)
-#   Bottom: Drain Waste IBC-4 (200mm)
+#   Fill Blue IBC-1 (EXT_FILL_1_H), Drain Waste IBC-4 (EXT_DRAIN_4_H), Drain Brown IBC-3 (EXT_DRAIN_3_H)
 # Reinforcing plate behind ports, camlock fittings, height dimensions.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
@@ -956,7 +954,7 @@ def sheet4():
     far_tote_c  = IBC_FAR_Y + IBC_D / 2        # 1824 — tote center (fill drop)
 
     # ── X4: IBC-4 (far, Waste) → bulkhead (lowest, drawn first) ───────────
-    # X4 (Z=200) is the lowest pipe. Drawn first so X3 covers it in corridor.
+    # X4 drawn first so X3 covers it in the corridor.
     draw_pipe_path(ax,
                    [drain_x, drain_x, bh_x],
                    [far_ibc_conn_yd, panel_yd, panel_yd],
@@ -970,7 +968,7 @@ def sheet4():
            "X4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
            fs=5.5, color=C_PIPE_BLACK, ha="right", font=FONT)
     # ── X3: IBC-3 (near, Brown) → bulkhead (above X4) ──────────────────────
-    # X3 (Z=400) sits above X4 (Z=200). Covers X4 in the corridor run.
+    # X3 covers X4 in the corridor run.
     draw_pipe_path(ax,
                    [drain_x, drain_x, bh_x],
                    [near_ibc_conn_yd, panel_yd, panel_yd],
@@ -1361,10 +1359,10 @@ def sheet5():
     bh_outer_r = 38   # camlock/union outer visual radius
 
     # tdir = leader direction for the tag: +1 above the circle, -1 below.
-    # X1 routes DOWN (the "PLUMBING CORRIDOR" label sits just above it); X3/X4 route up.
+    # X1 routes DOWN (the "PLUMBING CORRIDOR" label sits just above it); X3 (under X4) down, X4 up.
     ports = [
         ("X1", EXT_FILL_1_H, C_BLUE_IBC,   "FILL → IBC-1 (BLUE, TOP NEAR)", -1),
-        ("X3", EXT_DRAIN_3_H, C_BROWN_IBC, "DRAIN ← IBC-3 (BROWN, BOTTOM NEAR)", +1),
+        ("X3", EXT_DRAIN_3_H, C_BROWN_IBC, "DRAIN ← IBC-3 (BROWN, BOTTOM NEAR)", -1 if EXT_DRAIN_3_H < EXT_DRAIN_4_H else +1),
         ("X4", EXT_DRAIN_4_H, C_WASTE_IBC, "DRAIN ← IBC-4 (WASTE, BOTTOM FAR)", +1),
     ]
 
@@ -1459,8 +1457,7 @@ def sheet5():
             color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
     # ── X4: IBC-4 (far, bottom) → Bulkhead — WASTE drain ────────────────────
-    # NOTE: X4 at Z=200mm limits gravity drain — P-03 waste pump evacuates
-    # the residual ~120L below X4 height.
+    # X4 sits above the IBC-4 outlet, so P-03 pumps the whole drain.
     d4_yd = far_col_l  # corridor-facing edge of far IBC
     # L-shaped path: vertical rise → 90° elbow → horizontal to bulkhead
     draw_pipe_path(ax,
@@ -1694,7 +1691,7 @@ def sheet5():
         "5. Fill header + drains run in the clear corridor behind the panel support frame (clear of the uprights), matching the 3D model.",
         "6. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
-        "8. Drains are PUMPED: P-05 (Brown) → X3 (Z=400mm), P-03 (Waste) → X4 (Z=200mm) — gravity head is insufficient at these port heights.",
+        f"8. Drains are PUMPED: P-05 (Brown) → X3 (Z={EXT_DRAIN_3_H}mm), P-03 (Waste) → X4 (Z={EXT_DRAIN_4_H}mm) — both ports sit above the bottom-tier totes' outlets.",
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
         "10. Check valves: CV-1 (1\" NPT spring) on the X1 gravity fill; CV-2/CV-3 (½\") on the two waste legs into the IBC-4 merge tee, so",
         "    one leg can't back-feed the other. The X3/X4 drains are pump-driven (P-05/P-03); the Shurflo 2088 pumps have integral checks.",

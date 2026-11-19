@@ -1435,8 +1435,8 @@ SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 # X1 fill tees internally to BOTH Blue totes (parallel fill, no X2 port, no cross-connect)
 EXT_PANEL_YD = C_WID // 2   # = 1181mm — panel centered on container width
 EXT_FILL_1_H = 2250    # X1: Blue fill port height (mm) — feeds the Blue side-entry T near the top of both top-tier totes (~Z2150), gravity feed; gravity-linked across the corridor
-EXT_DRAIN_3_H = 400    # X3: drain Brown IBC-3 port height (mm) — bottom tier near
-EXT_DRAIN_4_H = 200    # X4: drain Waste IBC-4 port height (mm) — bottom tier far
+EXT_DRAIN_3_H = 1502   # X3: Brown drain port height (mm) — P-05 discharge level; the run goes straight out along the spine near face to the wall
+EXT_DRAIN_4_H = 1620   # X4: Waste drain port height (mm) — P-03 discharge drops to it at the end wall, on the spine far face
 # Legacy aliases for downstream code
 EXT_FILL_H   = EXT_FILL_1_H
 EXT_FILL_YD  = EXT_PANEL_YD

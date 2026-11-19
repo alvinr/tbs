@@ -18,7 +18,7 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
-from tbs_constants import PUMP_YD_SPAN
+from tbs_constants import PUMP_YD_SPAN, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H
 
 # ── deep-box frame geometry (from the fork; one source) ──
 S       = ov.IBC_FRAME_RHS               # 50.8×50.8 RHS (2×2×0.120in)
@@ -347,7 +347,7 @@ def tote_restraint():
 # generator derives the same piece sizes (single source; it can't drift from this model).
 SHIRT_Z0    = 325    # pump-shirt bottom Z (raised to clear the brown P-05 inlet elbow at z298-318)
 SPINE_Z0    = 280    # drain-riser spine bottom Z (clears the low waste pickup z247-268)
-X1_TEE_X, X1_TEE_Z = 5500, 2250                     # X1 fill tee — ON the spine top, centered in its thickness (X1_TEE_Y below)
+X1_TEE_X, X1_TEE_Z = 5500, EXT_FILL_1_H                    # X1 fill tee — ON the spine top, centered in its thickness (X1_TEE_Y below)
 SPINE_Z1    = X1_TEE_Z - ov.PUMP_PIPE_OD / 2       # 2239.5 — drain-riser spine top: the X1 fill run + tee REST on its top edge
 SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the sealed end wall (X5893) so the two end-wall port runs (P-05→X3, P-03→X4) + their X5763 drops get a ply clip surface; still clears the wall
 X3_CROSS_X = SPINE_X_END - 100   # P-05→X3 crosses the spine here (100mm in from its X-edge), then runs the near-face clip lane to X3
@@ -1197,7 +1197,9 @@ def drains_ports(sump_on_skid=False):
          draw.C_IBC_BROWN)
     port_jumper(p, "P-05 suction jumper", [p5i, (PXC, BV02_YD, z05), (rx, BV02_YD, z05), (rx, BV02_YD, zloop)])
     p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
-    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, SPINE_RISER_YD, p5o[2], 22, 60, color=draw.C_STEEL, axis="x"))
+    if abs(p5o[2] - EXT_DRAIN_3_H) > 0.5:
+        raise ValueError(f"X3 port Z{EXT_DRAIN_3_H} must equal the P-05 discharge Z{p5o[2]} (the X3 run is straight)")
+    p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, SPINE_RISER_YD, EXT_DRAIN_3_H, 22, 60, color=draw.C_STEEL, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
     # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
@@ -1235,9 +1237,9 @@ def drains_ports(sump_on_skid=False):
                     (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
     port_jumper(p, "P-03 suction jumper", [p3i, (PXC, BV02_YD, z03), (rx6, BV02_YD, z03), (rx6, BV02_YD, turn6)])
     p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
-    p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=draw.C_STEEL, axis="x"))
+    p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, EXT_DRAIN_4_H, 22, 60, color=draw.C_STEEL, axis="x"))
     _p03 = [p3o, (PXC, PORT_TURN_YD_OUT, p3o[2]), (5090, PORT_TURN_YD_OUT, p3o[2]), (5090, COL_R, p3o[2]),
-            (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)]
+            (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, EXT_DRAIN_4_H), (ew - 60, COL_R, EXT_DRAIN_4_H)]
     pipe("P-03 -> X4 end-wall port", _p03, draw.C_PIPE_WASTE)   # OUT turns one elbow out of the port
     port_jumper(p, "P-03 discharge jumper", _p03)
     return "\n".join(p)

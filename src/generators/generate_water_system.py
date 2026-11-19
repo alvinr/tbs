@@ -235,16 +235,17 @@ def _save(fig, stem):
 
 
 def draw_sheet1():
-    fig1, ax1 = plt.subplots(figsize=(18, 12))
+    Z_FOOT = -45      # sheet extended below the zones: legend/symbol boxes + the title block
+    fig1, ax1 = plt.subplots(figsize=(18, 12 * (300 - Z_FOOT) / 300))
     ax1.set_xlim(0, 450)
-    ax1.set_ylim(0, 300)
+    ax1.set_ylim(Z_FOOT, 300)
     ax1.set_aspect("equal")
     ax1.axis("off")
     ax1.set_facecolor("#F5F5F0")
     fig1.patch.set_facecolor("#F5F5F0")
 
     # ── Title block ───────────────────────────────────────────────────────────────
-    ax1.add_patch(plt.Rectangle((0, 0), 450, 300, fc="#F5F5F0", ec=C_FRAME, lw=2))
+    ax1.add_patch(plt.Rectangle((0, Z_FOOT), 450, 300 - Z_FOOT, fc="#F5F5F0", ec=C_FRAME, lw=2))
     title_block(ax1, f"SHEET 1 OF {TOTAL_SHEETS}",
                 drawing_title="WATER SYSTEM",
                 subtitle="System flow schematic (P&ID) — closed recycle loop",
@@ -475,7 +476,7 @@ def draw_sheet1():
     ax1.text(387.5, 205, "FLOOD/SPRAY BAR (3/4\" HDPE)", ha="center", fontsize=6.5, color=C_BLUE)
 
     # ═══ Legend + symbols (compact) ════════════════════════════════════════════════
-    BOX_W = 112.5; BOX_H = 40.5; BOX_X = 7.5; BOX_Y = 12.5
+    BOX_W = 112.5; BOX_H = 40.5; BOX_X = 7.5; BOX_Y = 32.5 - 4 - BOX_H   # just under the zone fills
     lx = BOX_X + 2.5; ly = BOX_Y + BOX_H - 5.5
     ax1.add_patch(plt.Rectangle((BOX_X, BOX_Y), BOX_W, BOX_H, fc="white", ec=C_FRAME, lw=1, zorder=6))
     ax1.text(BOX_X + BOX_W / 2, ly + 1.5, "LEGEND", ha="center", fontsize=7.5, fontweight="bold", color=C_TITLE, zorder=7)

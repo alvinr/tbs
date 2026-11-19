@@ -517,32 +517,28 @@ ax.text(sx(BV05_X - 175), sz(BV05_Z - 80),
         ha="left", va="top", fontsize=4.0, color=C_BLUE,
         style="italic", zorder=10, **FONT)
 
-# ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
+# ── Chemistry tap branch (TAP-01 / BV-04) ───────────────────────────────
 # The Blue trunk ENDS at TAP_X, so the riser is an ELBOW off the trunk end (not a tee), and it
 # rises RIGHT of the chem shelf (TAP_X=1130 < shelf X1180–1780, so clear of it). The spout then
 # goosenecks out over the shelf to dispense at TAP_Z. (Matches the 3D overview spray_supply().)
 TAP_OD = 25     # 3/4" branch pipe
 TAP_WALL = 3
 TAP_BRANCH_Z = SHELF_STOW_TOP_Z   # 1375 — riser top, above the stowed shelf
-BV06_Z = 1010                     # BV-06 on the riser (matches the 3D BV-06 box at Z1010)
+BV04_Z = 1010                     # BV-04 on the riser (matches the 3D BV-04 at Z1010)
 SPOUT_DX = 150                    # gooseneck reach over the shelf edge (display-left)
 
-# Riser up at TAP_X (right of the shelf) — elbow off the trunk's terminating end.
+# Riser up at TAP_X (right of the shelf), then the spout goosenecks out over the shelf edge
+# and dispenses down at TAP_Z.
 draw_pipe_path(ax,
-    [TAP_X, TAP_X],
-    [SUPPLY_Z, TAP_BRANCH_Z],
-    TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
-# Spout: goosenecks out over the shelf edge, then dispenses down at TAP_Z.
-draw_pipe_path(ax,
-    [TAP_X, TAP_X + SPOUT_DX, TAP_X + SPOUT_DX],
-    [TAP_BRANCH_Z, TAP_BRANCH_Z, TAP_Z],
+    [TAP_X, TAP_X, TAP_X + SPOUT_DX, TAP_X + SPOUT_DX],
+    [SUPPLY_Z, TAP_BRANCH_Z, TAP_BRANCH_Z, TAP_Z],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
 
-# BV-06 valve symbol (filled circle with label) on the riser
-ax.add_patch(plt.Circle((sx(TAP_X), sz(BV06_Z)), 25,
+# BV-04 valve symbol (filled circle with label) on the riser
+ax.add_patch(plt.Circle((sx(TAP_X), sz(BV04_Z)), 25,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=0.8, zorder=9))
-ax.text(sx(TAP_X), sz(BV06_Z), "BV\n06",
+ax.text(sx(TAP_X), sz(BV04_Z), "BV\n04",
         ha="center", va="center", fontsize=4, color=C_OUT,
         zorder=10, **FONT)
 

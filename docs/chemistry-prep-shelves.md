@@ -21,7 +21,7 @@ parked, it is **fully decoupled from the film-plane swing**.
 A dedicated water tap (TAP-01) on the pinhole wall provides filtered water from the blue
 supply line for chemistry mixing and wash-down. It is relocated to the **left of the
 shelf** (the battery bank is to the right); the branch riser tops at the stowed-shelf
-height and the spout reaches over the shelf to fill containers. Ball valve BV-06
+height and the spout reaches over the shelf to fill containers. Ball valve BV-04
 on the ¾" branch gives shut-off control from the prep position.
 
 ---
@@ -195,7 +195,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 
 See the **[Master Shopping List, filtered to the shelf system](master-shopping-list.md?system=shelf)** for the same parts with suppliers, current prices, and click-to-sort/filter.
 
-*The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system
+*The relocated TAP-01 + BV-04 hardware itself is unchanged (carried in the water-system
 BOM); only the ~1.3 m trunk extension is added here.*
 
 ---

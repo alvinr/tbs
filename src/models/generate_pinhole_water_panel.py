@@ -671,8 +671,11 @@ def skid_row():
     p.append(cp.sample_valve("SV-02 sample valve", ov.PWP_FILTER_X2, SROW_YD, SROW_Z0 + 132, h=60))   # IN-LINE: row line runs THROUGH the body (center Z1312 = P-04 OUT), red handwheel free above, spout below
     p.append(cp.diverter("3W-DV-02", ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162,
                          run="x", branch="z+", handle="y+", color=draw.C_VALVE))   # IN −X (P-04) · waste +X (corridor) · feed z+ (F1); center Z1312 = P-04 OUT (straight run)
-    # DV-02 sits proud of the ply in the filter lane — a ply-offcut MOUNTING BLOCK fills from the panel face
-    # to the back of the valve body so it screws to the skid instead of hanging on its pipes.
+    # SV-02 + DV-02 sit proud of the ply in the filter lane — a ply-offcut MOUNTING BLOCK fills from the panel
+    # face to the back of each valve body so it screws to the skid instead of hanging on its pipes.
+    # (P-04 has its own integral mounting clip and surface-mounts — no block.)
+    p.append(draw.ruby_box("SV-02 mounting block (ply offcut)", ov.PWP_FILTER_X2 - 25, SKID_FACE_YD,
+                           SROW_Z0 + 132, 50, (SROW_YD - 25) - SKID_FACE_YD, 60, color=draw.C_PLY))
     _dvb = 46                                          # = cp.diverter body cube
     p.append(draw.ruby_box("3W-DV-02 mounting block (ply offcut)", ov.PWP_FILTER_X3 - _dvb / 2, SKID_FACE_YD,
                            SROW_Z0 + 162 - _dvb / 2, _dvb, (SROW_YD - _dvb / 2) - SKID_FACE_YD, _dvb, color=draw.C_PLY))

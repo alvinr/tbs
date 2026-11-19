@@ -39,8 +39,7 @@ Every water-pipe P-clip now sits on a ply-offcut block with the pipe >= 18mm off
   full-radius elbow each side needs 135mm. Shimming collapsed the port→riser legs to ~8mm (pumps stopped
   connecting), so the side-board risers stay ~2.5mm off (`SB_FLUSH_OK`). Fix needs a layout change:
   turn the pump ports to ±X, narrow/raise the side boards, or clamp the risers to the frame instead.
-- [ ] P-04 and SV-02 on the skid row sit proud of the ply like DV-02 did (P-04 ~36mm) with no mounting
-  block — confirm whether they need one (DV-02 got its block 2026-11-18).
+- [x] SV-02 mounting block added; P-04 surface-mounts on its integral clip (no block) (2026-11-18).
 - [ ] **Spine +Yd face — DEFERRED for review.** P-05 → X3 (Brown, 10.5mm off) and P-03 → X4 (black,
   flush) are exempted (`flush_ok=True`): an 18mm standoff pushes both lines past the rear-panel board
   edge. Options: A — move the spine 18mm −Yd (big change); B — a cleat strip for just these two;

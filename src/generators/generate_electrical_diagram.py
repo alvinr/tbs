@@ -49,14 +49,14 @@ C_PUMP_TINT  = "#FFDEC8"   # pale orange tint for pump schematic boxes
 def rbox(ax, x, y, w, h, title, subtitle="", fc=C_ELEC_TINT, ec=C_OUT, lw=1.4,
          ts=9.0, ss=7.5, bold=True):
     """Rounded rectangle with title + optional subtitle."""
-    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.04",
+    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=1.0",
                                 fc=fc, ec=ec, lw=lw, zorder=3))
-    ty = y + h / 2 + (0.11 if subtitle else 0)
+    ty = y + h / 2 + (2.75 if subtitle else 0)
     ax.text(x + w / 2, ty, title, ha="center", va="center",
             fontsize=ts, fontweight="bold" if bold else "normal",
             color=C_OUT, zorder=4)
     if subtitle:
-        ax.text(x + w / 2, y + h / 2 - 0.13, subtitle,
+        ax.text(x + w / 2, y + h / 2 - 3.25, subtitle,
                 ha="center", va="center", fontsize=ss, color=C_DIM, zorder=4)
 
 
@@ -84,170 +84,170 @@ def wlabel(ax, x, y, text, ha="left", size=7.5):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet1():
-    FW, FH = 22.0, 15.0
-    fig, ax = plt.subplots(figsize=(FW, FH), dpi=DIAGRAM_DPI)
+    SW, SH = 550, 375          # sheet-mm (one-line schematic, not to scale; ≈ 1:1 on the 22×15in sheet)
+    fig, ax = plt.subplots(figsize=(22.0, 15.0), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
-    ax.set_xlim(0, FW)
-    ax.set_ylim(0, FH)
+    ax.set_xlim(0, SW)
+    ax.set_ylim(0, SH)
     ax.set_aspect("equal")
     ax.axis("off")
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
     # Page title
-    ax.text(FW / 2, FH - 0.38, "SYSTEM ONE-LINE DIAGRAM — 12V DC OFF-GRID",
+    ax.text(SW / 2, SH - 9.5, "SYSTEM ONE-LINE DIAGRAM — 12V DC OFF-GRID",
             ha="center", va="center", fontsize=15, fontweight="bold", color=TITLE_COL)
-    ax.text(FW / 2, FH - 0.72,
+    ax.text(SW / 2, SH - 18,
             "TBS-001  ·  The Big Shoebox Project  ·  "
             "All loads 12V DC  ·  Negative-grounded system",
             ha="center", va="center", fontsize=8.5, color=C_DIM)
 
     # ── LEFT COLUMN: power chain ──────────────────────────────────────────────
-    LX, LW = 0.7, 6.2
+    LX, LW = 17.5, 155
     CX = LX + LW / 2   # centerline
 
     # 1. Solar array  y=12.0–13.1
-    rbox(ax, LX, 12.78, LW, 0.95,
+    rbox(ax, LX, 319.5, LW, 23.75,
          "SOLAR ARRAY",
          "3 × 200W monocrystalline  |  12V nominal  |  Isc = 30A combined",
          fc=C_SOLAR, ts=9.5, ss=8.0)
 
     # 2. MPPT  y=10.3–11.2
-    rbox(ax, LX, 10.86, LW, 0.9,
+    rbox(ax, LX, 271.5, LW, 22.5,
          "MPPT CHARGE CONTROLLER",
          "Victron SmartSolar MPPT 100/50  |  Max PV: 100V OC / 50A charge",
          fc=C_ELEC_TINT, ts=9.5, ss=8.0)
     # 1b. PV array disconnect — load-break isolator between array and MPPT (NEC 690.13)
-    rbox(ax, LX + 1.2, 12.04, LW - 2.4, 0.46,
+    rbox(ax, LX + 30, 301, LW - 60, 11.5,
          "PV ARRAY DISCONNECT  (load-break)",
          "DC 50A / 150VDC  |  array → MPPT, on the EP interior (NEC 690.13)",
          fc=C_WARN, ts=8.3, ss=6.4)
-    varrow(ax, CX, 12.78, 12.50, col=C_SOLAR)
-    wlabel(ax, CX + 0.18, 12.64, "10 AWG PV  |  via power panel", size=6.8)
+    varrow(ax, CX, 319.5, 312.5, col=C_SOLAR)
+    wlabel(ax, CX + 4.5, 316, "10 AWG PV  |  via power panel", size=6.8)
 
     # 3. Battery bank  y=8.4–9.5
-    rbox(ax, LX, 8.93, LW, 0.95,
+    rbox(ax, LX, 223.25, LW, 23.75,
          "BATTERY — 100Ah / 1,200Wh (standard, 1 pack)",
          "1× 100Ah 12V LiFePO4  |  busbar wired for a 2nd pack (plug-in → 200Ah / 2,400Wh)  |  100% DoD",
          fc=C_BATT_TINT, ts=9.5, ss=8.0)
     # 2b. MPPT charge-line fuse — protects the MPPT→battery conductor (6 AWG)
-    rbox(ax, LX + 1.2, 10.16, LW - 2.4, 0.42,
+    rbox(ax, LX + 30, 254, LW - 60, 10.5,
          "60A CHARGE-LINE FUSE  (MPPT → battery)",
          "Close to the battery  |  6 AWG charge conductor",
          fc=C_WARN, ts=8.3, ss=6.4)
-    varrow(ax, CX, 10.86, 10.58, col=C_CL)
-    wlabel(ax, CX + 0.18, 10.72, "6 AWG  |  Charge +", size=6.8)
+    varrow(ax, CX, 271.5, 264.5, col=C_CL)
+    wlabel(ax, CX + 4.5, 268, "6 AWG  |  Charge +", size=6.8)
 
     # Negative busbar (dashed, right side of column)
-    nb_x = LX + LW - 0.35
-    ax.plot([nb_x, nb_x], [8.93, 5.6],
+    nb_x = LX + LW - 8.75
+    ax.plot([nb_x, nb_x], [223.25, 140],
             color=C_STEEL, lw=1.5, linestyle="--", zorder=3)
-    wlabel(ax, nb_x + 0.12, 7.0, "NEG busbar  2/0 AWG", size=7.0)
+    wlabel(ax, nb_x + 3, 175, "NEG busbar  2/0 AWG", size=7.0)
 
     # 4. MRBF terminal fuse — on the battery (+) post, ≤180mm  y=7.82–8.29
-    bx = LX + 1.2
-    bw = LW - 2.4
-    rbox(ax, bx, 8.18, bw, 0.47,
+    bx = LX + 30
+    bw = LW - 60
+    rbox(ax, bx, 204.5, bw, 11.75,
          "200A MRBF TERMINAL FUSE",
          "Terminal-mount on battery (+) post, ≤180mm (ABYC E-11)",
          fc=C_WARN, ts=9.0, ss=6.8)
-    varrow(ax, CX, 8.93, 8.65, col=C_OUT)
-    wlabel(ax, CX + 0.18, 8.79, "2/0 AWG  |  Battery positive")
+    varrow(ax, CX, 223.25, 216.25, col=C_OUT)
+    wlabel(ax, CX + 4.5, 219.75, "2/0 AWG  |  Battery positive")
 
     # 4b. Remote battery switch (contactor) — tripped by the external E-stop  y=7.24–7.71
-    rbox(ax, bx, 7.43, bw, 0.47,
+    rbox(ax, bx, 185.75, bw, 11.75,
          "REMOTE BATTERY SWITCH  (contactor)",
          "Blue Sea ML-RBS 500A magnetic-latch  |  trips OFF on either E-stop (in/out)",
          fc=C_WARN, ts=9.0, ss=6.8)
-    varrow(ax, CX, 8.18, 7.90, col=C_OUT)
+    varrow(ax, CX, 204.5, 197.5, col=C_OUT)
 
     # 4c. Internal main disconnect switch — maintenance/service  y=6.66–7.13
-    rbox(ax, bx, 6.68, bw, 0.47,
+    rbox(ax, bx, 167, bw, 11.75,
          "MAIN DISCONNECT SWITCH  (internal)",
          "Blue Sea m-Series 300A manual isolator  |  maintenance / service",
          fc=C_WARN, ts=9.0, ss=6.8)
-    varrow(ax, CX, 7.43, 7.15, col=C_OUT)
+    varrow(ax, CX, 185.75, 178.75, col=C_OUT)
 
     # 5. Fuse block  y=5.4–6.55
-    rbox(ax, LX, 5.4, LW, 1.0,
+    rbox(ax, LX, 135, LW, 25,
          "BLUE SEA 5026 FUSE BLOCK",
          "12-circuit ST-blade  |  Positive + negative busbars  |  In IP65 enclosure on the plywood",
          fc=C_WARN, ts=10.0, ss=8.0)
-    varrow(ax, CX, 6.68, 6.40, col=C_OUT)
-    wlabel(ax, CX + 0.18, 6.54, "2/0 AWG", size=6.8)
+    varrow(ax, CX, 167, 160, col=C_OUT)
+    wlabel(ax, CX + 4.5, 163.5, "2/0 AWG", size=6.8)
 
     # Ground symbol below fuse block
-    gx = LX + 0.7
-    gy0 = 5.1
-    ax.plot([gx, gx], [5.4, gy0], color=C_GND, lw=1.5, zorder=4)
-    for i, hw in enumerate([0.40, 0.28, 0.16]):
-        yg = gy0 - i * 0.14
+    gx = LX + 17.5
+    gy0 = 127.5
+    ax.plot([gx, gx], [135, gy0], color=C_GND, lw=1.5, zorder=4)
+    for i, hw in enumerate([10, 7, 4]):
+        yg = gy0 - i * 3.5
         ax.plot([gx - hw, gx + hw], [yg, yg],
                 color=C_GND, lw=1.6 - i * 0.3, zorder=4)
-    ax.text(gx + 0.55, gy0 - 0.25,
+    ax.text(gx + 13.75, gy0 - 6.25,
             "CHASSIS EARTH\n8ft copper ground stake\n+ container body bond",
             ha="left", va="center", fontsize=7.5, color=C_GND, zorder=5)
 
     # ── SHORE CHARGER BRANCH (center-top, same row as battery) ───────────────
-    SC_X = LX + LW + 1.0
-    SC_W = 5.8
-    SC_Y = 8.4
+    SC_X = LX + LW + 25
+    SC_W = 145
+    SC_Y = 210
 
-    rbox(ax, SC_X, SC_Y, SC_W, 1.1,
+    rbox(ax, SC_X, SC_Y, SC_W, 27.5,
          "SHORE CHARGER  (optional backup)",
          "Victron Blue Smart IP65 12/15  |  100–240V AC in  |  15A DC / 12V out",
          fc="#F5EDD0", ts=9.0, ss=8.0, bold=False)
 
     # Horizontal arrow: battery right → shore charger left
-    mid_y = SC_Y + 0.55
+    mid_y = SC_Y + 13.75
     ax.annotate("", xy=(SC_X, mid_y), xytext=(LX + LW, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color="#A07820", lw=2.0), zorder=5)
-    wlabel(ax, LX + LW + 0.15, mid_y + 0.20, "4 AWG  |  Charge return")
+    wlabel(ax, LX + LW + 3.75, mid_y + 5, "4 AWG  |  Charge return")
 
     # NEMA 5-15R inlet below shore charger
-    rbox(ax, SC_X, SC_Y - 1.35, SC_W, 0.80,
+    rbox(ax, SC_X, SC_Y - 33.75, SC_W, 20,
          "NEMA 5-15R INLET  (external penetration box — pinhole wall)",
          "Weatherproof  |  Shore power input when grid power available",
          fc="white", ec=C_OUT, lw=1.0, ts=8.5, ss=7.5, bold=False)
-    varrow(ax, SC_X + SC_W / 2, SC_Y - 0.55, SC_Y, col="#A07820")
-    wlabel(ax, SC_X + SC_W / 2 + 0.15, SC_Y - 0.28, "Shore AC →", size=7.0)
+    varrow(ax, SC_X + SC_W / 2, SC_Y - 13.75, SC_Y, col="#A07820")
+    wlabel(ax, SC_X + SC_W / 2 + 3.75, SC_Y - 7, "Shore AC →", size=7.0)
 
     # ── EXTERNAL EMERGENCY CUT-OFF (E-stop on the external power panel) ────────
     # Sits above the distribution bus (y≈5.98) and below the NEMA inlet (y=7.05).
-    es_y, es_h = 6.32, 0.60
+    es_y, es_h = 158, 15
     rbox(ax, SC_X, es_y, SC_W, es_h,
          "EMERGENCY CUT-OFF  (E-STOP) — external panel",
          "Red IP66 mushroom on power-panel face  →  trips contactor OFF (1 of 2)",
          fc=C_WARN, ts=9.0, ss=7.0)
     # low-current control loop: contactor (left chain) → external E-stop
-    ax.annotate("", xy=(SC_X, es_y + es_h / 2), xytext=(bx + bw, 7.72),
+    ax.annotate("", xy=(SC_X, es_y + es_h / 2), xytext=(bx + bw, 193),
                 arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
-    wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.52,
+    wlabel(ax, (bx + bw + SC_X) / 2 - 2.5, 188,
            "Control 2× 12 AWG  |  pinhole-wall gland", ha="center", size=7.0)
     # interior E-stop on the EP face — paralleled with the exterior one (kill from inside too).
     # Sits BELOW the distribution bus (y≈5.98) — the external E-stop is above it — so the bus runs
     # cleanly in the gap between the two E-stop boxes instead of straight through this one.
-    ies_y = 5.26
+    ies_y = 131.5
     rbox(ax, SC_X, ies_y, SC_W, es_h,
          "EMERGENCY CUT-OFF  (E-STOP) — interior EP",
          "Red IP65 mushroom on the EP face  →  also trips contactor OFF (2 of 2)",
          fc=C_WARN, ts=9.0, ss=7.0)
-    ax.annotate("", xy=(SC_X, ies_y + es_h / 2), xytext=(bx + bw, 7.50),
+    ax.annotate("", xy=(SC_X, ies_y + es_h / 2), xytext=(bx + bw, 187.5),
                 arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
-    wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 6.42,
+    wlabel(ax, (bx + bw + SC_X) / 2 - 2.5, 160.5,
            "parallel — either E-stop trips it", ha="center", size=6.6)
 
     # ── LEGEND ────────────────────────────────────────────────────────────────
-    lx, ly = SC_X, 1.4
-    LEG_H = 3.78
-    ax.add_patch(FancyBboxPatch((lx - 0.1, ly - 0.15), SC_W + 0.2, LEG_H,
-                 boxstyle="round,pad=0.05", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(lx + SC_W / 2, ly + LEG_H - 0.32, "LEGEND",
+    lx, ly = SC_X, 35
+    LEG_H = 94.5
+    ax.add_patch(FancyBboxPatch((lx - 2.5, ly - 3.75), SC_W + 5, LEG_H,
+                 boxstyle="round,pad=1.25", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
+    ax.text(lx + SC_W / 2, ly + LEG_H - 8, "LEGEND",
             ha="center", va="center", fontsize=9.5,
             fontweight="bold", color=C_OUT)
-    ax.plot([lx + 0.1, lx + SC_W - 0.1], [ly + LEG_H - 0.55, ly + LEG_H - 0.55],
+    ax.plot([lx + 2.5, lx + SC_W - 2.5], [ly + LEG_H - 13.75, ly + LEG_H - 13.75],
             color=C_DIM, lw=0.7)
     legend_items = [
         (C_SOLAR,      "Solar / generation"),
@@ -261,21 +261,21 @@ def draw_sheet1():
         (C_GND,        "Earth / chassis ground"),
     ]
     for j, (col, txt) in enumerate(legend_items):
-        yl = ly + LEG_H - 0.88 - j * 0.36
-        ax.add_patch(mpatches.Rectangle((lx + 0.15, yl - 0.11), 0.45, 0.28,
+        yl = ly + LEG_H - 22 - j * 9
+        ax.add_patch(mpatches.Rectangle((lx + 3.75, yl - 2.75), 11.25, 7,
                      fc=col, ec=C_OUT, lw=0.7, zorder=4))
-        ax.text(lx + 0.75, yl + 0.03, txt,
+        ax.text(lx + 18.75, yl + 0.75, txt,
                 ha="left", va="center", fontsize=8.0, color=C_DIM)
 
     # ── ENERGY SUMMARY ────────────────────────────────────────────────────────
-    ex = lx + SC_W + 0.8
-    ey, ew, eh = 1.4, 6.8, 3.78
-    ax.add_patch(FancyBboxPatch((ex - 0.1, ey - 0.15), ew + 0.2, eh,
-                 boxstyle="round,pad=0.05", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(ex + ew / 2, ey + eh - 0.28, "ENERGY SUMMARY",
+    ex = lx + SC_W + 20
+    ey, ew, eh = 35, 170, 94.5
+    ax.add_patch(FancyBboxPatch((ex - 2.5, ey - 3.75), ew + 5, eh,
+                 boxstyle="round,pad=1.25", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
+    ax.text(ex + ew / 2, ey + eh - 7, "ENERGY SUMMARY",
             ha="center", va="center", fontsize=9.5,
             fontweight="bold", color=TITLE_COL)
-    ax.plot([ex + 0.1, ex + ew - 0.1], [ey + eh - 0.55, ey + eh - 0.55],
+    ax.plot([ex + 2.5, ex + ew - 2.5], [ey + eh - 13.75, ey + eh - 13.75],
             color=C_DIM, lw=0.7)
     # NOTE: these values must match calculate_energy_budget.py and
     # electrical-report.md §3.1.  Update all three when specs change.
@@ -289,11 +289,11 @@ def draw_sheet1():
         ("Peak load",           "543W peak  (all circuits on, not simultaneous)"),
     ]
     for k, (param, val) in enumerate(summary):
-        yk = ey + eh - 0.80 - k * 0.37
-        ax.text(ex + 0.20, yk, param + ":",
+        yk = ey + eh - 20 - k * 9.25
+        ax.text(ex + 5, yk, param + ":",
                 ha="left", va="center", fontsize=7.8,
                 fontweight="bold", color=C_OUT)
-        ax.text(ex + ew - 0.20, yk, val,
+        ax.text(ex + ew - 5, yk, val,
                 ha="right", va="center", fontsize=7.8, color=C_DIM)
 
     # ── CIRCUITS — right column ───────────────────────────────────────────────
@@ -315,16 +315,16 @@ def draw_sheet1():
          "3 over tray (X=600/2350/2454) + 1 corridor COB strips  |  pull-cord switch  |  non-operational only", "#FFFFF0"),
     ]
 
-    SP_X  = ex - 0.5      # spine x
-    CB_X  = SP_X + 0.65   # circuit boxes left edge
-    CB_W  = FW - CB_X - 0.4
-    CB_H  = 0.78
-    CB_GAP = 1.05
-    CB_Y_TOP = 13.1       # top circuit box y
+    SP_X  = ex - 12.5      # spine x
+    CB_X  = SP_X + 16.25   # circuit boxes left edge
+    CB_W  = SW - CB_X - 10
+    CB_H  = 19.5
+    CB_GAP = 26.25
+    CB_Y_TOP = 327.5       # top circuit box y
 
     # Vertical distribution spine
-    spine_bot = 5.4 + 1.0 / 2   # mid-height of fuse block
-    spine_top = CB_Y_TOP + CB_H + 0.10
+    spine_bot = 135 + 25 / 2   # mid-height of fuse block
+    spine_top = CB_Y_TOP + CB_H + 2.5
     ax.plot([SP_X, SP_X], [spine_bot, spine_top],
             color=C_CL, lw=3.0, solid_capstyle="butt", zorder=3)
 
@@ -332,25 +332,25 @@ def draw_sheet1():
     bus_y = spine_bot
     ax.annotate("", xy=(SP_X, bus_y), xytext=(LX + LW, bus_y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=3.0), zorder=5)
-    wlabel(ax, (LX + LW + SP_X) / 2, bus_y + 0.22,
+    wlabel(ax, (LX + LW + SP_X) / 2, bus_y + 5.5,
            "Distribution bus  |  2 AWG", ha="center")
 
     # Column offsets — spec columns shrunk to give more room to LOCATION / NOTE
-    NOTE_OFF = 4.95   # note column starts at CB_X + NOTE_OFF
+    NOTE_OFF = 123.75   # note column starts at CB_X + NOTE_OFF
     col_defs = [
         # (x_start, width, header_text)
-        (CB_X,        2.2,             "CIRCUIT / DEVICE"),
-        (CB_X + 2.25, 0.70,            "FUSE"),
-        (CB_X + 3.05, 0.90,            "WIRE\nGAUGE"),
-        (CB_X + 4.05, 0.80,            "MAX\nLOAD"),
+        (CB_X,        55,             "CIRCUIT / DEVICE"),
+        (CB_X + 56.25, 17.5,            "FUSE"),
+        (CB_X + 76.25, 22.5,            "WIRE\nGAUGE"),
+        (CB_X + 101.25, 20,            "MAX\nLOAD"),
         (CB_X + NOTE_OFF, CB_W - NOTE_OFF, "LOCATION / NOTE"),
     ]
-    hdr_y = CB_Y_TOP + CB_H + 0.48
+    hdr_y = CB_Y_TOP + CB_H + 12
     for cx0, cw, htxt in col_defs:
         ax.text(cx0 + cw / 2, hdr_y, htxt,
                 ha="center", va="center", fontsize=8.5,
                 fontweight="bold", color=C_OUT)
-    ax.plot([CB_X, CB_X + CB_W], [hdr_y - 0.24, hdr_y - 0.24],
+    ax.plot([CB_X, CB_X + CB_W], [hdr_y - 6, hdr_y - 6],
             color=C_OUT, lw=1.0)
 
     for i, (letter, name, fuse, wire, load, note, fc_c) in enumerate(circuits):
@@ -358,38 +358,38 @@ def draw_sheet1():
         tap_y = cy + CB_H / 2
 
         # Tap line from spine to circuit
-        ax.plot([SP_X, CB_X - 0.05], [tap_y, tap_y],
+        ax.plot([SP_X, CB_X - 1.25], [tap_y, tap_y],
                 color=C_CL, lw=1.8, zorder=3)
 
         # Fuse symbol on tap line
-        fc_cx = SP_X + 0.33
+        fc_cx = SP_X + 8.25
         ax.add_patch(mpatches.Rectangle(
-            (fc_cx - 0.12, tap_y - 0.12), 0.24, 0.24,
+            (fc_cx - 3, tap_y - 3), 6, 6,
             fc=C_WARN, ec=C_OUT, lw=1.0, zorder=5))
         ax.text(fc_cx, tap_y, fuse,
                 ha="center", va="center", fontsize=7.0,
                 fontweight="bold", color=C_OUT, zorder=6)
 
         # Circuit letter badge
-        ax.add_patch(mpatches.Rectangle((CB_X, cy), 0.60, CB_H,
+        ax.add_patch(mpatches.Rectangle((CB_X, cy), 15, CB_H,
                      fc=fc_c, ec=C_OUT, lw=1.2, zorder=3))
-        ax.text(CB_X + 0.30, tap_y, letter,
+        ax.text(CB_X + 7.5, tap_y, letter,
                 ha="center", va="center", fontsize=13,
                 fontweight="bold", color=C_OUT, zorder=4)
 
         # Device name cell
-        ax.add_patch(FancyBboxPatch((CB_X + 0.60, cy), 1.60, CB_H,
-                     boxstyle="round,pad=0.02",
+        ax.add_patch(FancyBboxPatch((CB_X + 15, cy), 40, CB_H,
+                     boxstyle="round,pad=0.5",
                      fc=fc_c, ec=C_OUT, lw=1.0, zorder=3))
-        ax.text(CB_X + 0.60 + 0.80, tap_y, name,
+        ax.text(CB_X + 15 + 20, tap_y, name,
                 ha="center", va="center", fontsize=8.0,
                 fontweight="bold", color=C_OUT, zorder=4)
 
         # Spec cells: fuse, wire, load
         for xi, cw, txt in [
-            (CB_X + 2.25, 0.70, fuse),
-            (CB_X + 3.05, 0.90, wire),
-            (CB_X + 4.05, 0.80, load),
+            (CB_X + 56.25, 17.5, fuse),
+            (CB_X + 76.25, 22.5, wire),
+            (CB_X + 101.25, 20, load),
         ]:
             ax.add_patch(mpatches.Rectangle((xi, cy), cw, CB_H,
                          fc="white", ec=C_OUT, lw=0.8, zorder=3))
@@ -2025,21 +2025,21 @@ def draw_sheet6():
     ax_c = fig.add_subplot(gs[1, :])
     ax_c.set_aspect("equal")
     ax_c.axis("off")
-    ax_c.set_xlim(0, 22)
-    ax_c.set_ylim(-3.7, 4.5)
+    ax_c.set_xlim(0, 220)            # sheet-mm (schematic, not to scale)
+    ax_c.set_ylim(-37, 45)
 
-    ax_c.text(8.75, 4.6, "VIEW C — WIRING SCHEMATIC",
+    ax_c.text(87.5, 46, "VIEW C — WIRING SCHEMATIC",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)
 
     def sbox(ax, x, y, w, h, label, sublabel="", fc="white", tc=C_OUT):
         ax.add_patch(FancyBboxPatch((x, y), w, h,
-                     boxstyle="round,pad=0.06", fc=fc, ec=C_OUT, lw=1.2, zorder=3))
-        ax.text(x + w / 2, y + h / 2 + (0.12 if sublabel else 0), label,
+                     boxstyle="round,pad=0.6", fc=fc, ec=C_OUT, lw=1.2, zorder=3))
+        ax.text(x + w / 2, y + h / 2 + (1.2 if sublabel else 0), label,
                 ha="center", va="center", fontsize=7.5, fontweight="bold",
                 color=tc, **FONT, zorder=4)
         if sublabel:
-            ax.text(x + w / 2, y + h / 2 - 0.15, sublabel,
+            ax.text(x + w / 2, y + h / 2 - 1.5, sublabel,
                     ha="center", va="center", fontsize=6, color=C_DIM,
                     **FONT, zorder=4)
 
@@ -2047,78 +2047,78 @@ def draw_sheet6():
         ax.annotate("", xy=(x2, y), xytext=(x1, y),
                     arrowprops=dict(arrowstyle="-|>", color=col, lw=lw), zorder=3)
 
-    row_bot = 0.8
-    row_top = 2.8
+    row_bot = 8
+    row_top = 28
 
     # Solar path (top row)
-    sbox(ax_c, 0.5, row_top, 2.8, 0.9,
+    sbox(ax_c, 5, row_top, 28, 9,
          "SOLAR PANELS", "3×200W  12V", fc="#E8F5E8", tc=C_MC4)
-    sarrow(ax_c, 3.3, row_top + 0.45, 4.5, col=C_MC4)
-    ax_c.text(3.9, row_top + 0.65, "MC4", fontsize=6, color=C_MC4,
+    sarrow(ax_c, 33, row_top + 4.5, 45, col=C_MC4)
+    ax_c.text(39, row_top + 6.5, "MC4", fontsize=6, color=C_MC4,
               ha="center", **FONT)
-    ax_c.text(3.9, row_top + 1.02, "30A fuse + 3-way\ncombiner / string", fontsize=5.0,
+    ax_c.text(39, row_top + 10.2, "30A fuse + 3-way\ncombiner / string", fontsize=5.0,
               color=C_MC4, ha="center", va="bottom", **FONT)
 
-    sbox(ax_c, 4.5, row_top, 3.0, 0.9,
+    sbox(ax_c, 45, row_top, 30, 9,
          "PENETRATION BOX", "MC4 bulkhead ×3", fc=C_ALUM)
-    sarrow(ax_c, 7.5, row_top + 0.45, 10.0, col=C_MC4)
-    ax_c.text(8.75, row_top + 0.65, "10 AWG PV", fontsize=6, color=C_MC4,
+    sarrow(ax_c, 75, row_top + 4.5, 100, col=C_MC4)
+    ax_c.text(87.5, row_top + 6.5, "10 AWG PV", fontsize=6, color=C_MC4,
               ha="center", **FONT)
 
-    sbox(ax_c, 10.0, row_top, 3.2, 0.9,
+    sbox(ax_c, 100, row_top, 32, 9,
          "MPPT CONTROLLER", "Victron 100/50", fc="#FFF3CC")
-    sarrow(ax_c, 13.2, row_top + 0.45, 14.5, col=C_CL)
-    sbox(ax_c, 14.5, row_top - 0.3, 3.0, 1.5,
+    sarrow(ax_c, 132, row_top + 4.5, 145, col=C_CL)
+    sbox(ax_c, 145, row_top - 3, 30, 15,
          "BATTERY 1×100Ah", "std · 2nd pack: plug-in", fc="#E0E8F8")
 
     # Shore power path (bottom row)
-    sbox(ax_c, 0.5, row_bot, 2.8, 0.9,
+    sbox(ax_c, 5, row_bot, 28, 9,
          "SHORE POWER", "120V AC grid", fc=C_NEMA, tc=C_AC)
-    sarrow(ax_c, 3.3, row_bot + 0.45, 4.5, col=C_AC)
-    ax_c.text(3.9, row_bot + 0.65, "AC cord", fontsize=6, color=C_AC,
+    sarrow(ax_c, 33, row_bot + 4.5, 45, col=C_AC)
+    ax_c.text(39, row_bot + 6.5, "AC cord", fontsize=6, color=C_AC,
               ha="center", **FONT)
 
-    sbox(ax_c, 4.5, row_bot, 3.0, 0.9,
+    sbox(ax_c, 45, row_bot, 30, 9,
          "PENETRATION BOX", "NEMA 5-15R inlet", fc=C_ALUM)
-    sarrow(ax_c, 7.5, row_bot + 0.45, 10.0, col=C_AC)
+    sarrow(ax_c, 75, row_bot + 4.5, 100, col=C_AC)
 
-    sbox(ax_c, 10.0, row_bot, 3.2, 0.9,
+    sbox(ax_c, 100, row_bot, 32, 9,
          "SHORE CHARGER", "Victron IP65 12/15", fc="#F5EDD0", tc=C_AC)
     # Continuous line from shore charger to battery bank
-    bat_cx = 16.0
-    ax_c.plot([13.2, bat_cx], [row_bot + 0.45, row_bot + 0.45],
+    bat_cx = 160
+    ax_c.plot([132, bat_cx], [row_bot + 4.5, row_bot + 4.5],
               color=C_AC, lw=1.8, zorder=3)
-    ax_c.annotate("", xy=(bat_cx, row_top - 0.3), xytext=(bat_cx, row_bot + 0.45),
+    ax_c.annotate("", xy=(bat_cx, row_top - 3), xytext=(bat_cx, row_bot + 4.5),
                   arrowprops=dict(arrowstyle="-|>", color=C_AC, lw=1.8,
                                   connectionstyle="arc3,rad=0"), zorder=3)
-    ax_c.text(bat_cx + 0.15, (row_top + row_bot) / 2 + 0.3, "12V DC\ncharge",
+    ax_c.text(bat_cx + 1.5, (row_top + row_bot) / 2 + 3, "12V DC\ncharge",
               fontsize=6, color=C_AC, ha="left", va="center", **FONT)
 
     # Cooler AC output path (bottom row — reverse direction: interior → exterior)
-    row_cool = -0.4
-    sbox(ax_c, 0.5, row_cool, 2.8, 0.9,
+    row_cool = -4
+    sbox(ax_c, 5, row_cool, 28, 9,
          "EVAP COOLER", f"120V AC  {EVAP_COOLER_W_AC}W", fc="#FFE0C0", tc=C_DT)
-    sarrow(ax_c, 4.5, row_cool + 0.45, 3.3, col=C_DT)
-    ax_c.text(3.9, row_cool + 0.65, "AC cord", fontsize=6, color=C_DT,
+    sarrow(ax_c, 45, row_cool + 4.5, 33, col=C_DT)
+    ax_c.text(39, row_cool + 6.5, "AC cord", fontsize=6, color=C_DT,
               ha="center", **FONT)
 
-    sbox(ax_c, 4.5, row_cool, 3.0, 0.9,
+    sbox(ax_c, 45, row_cool, 30, 9,
          "PENETRATION BOX", "120V AC WR outlet", fc=C_ALUM)
-    sarrow(ax_c, 10.0, row_cool + 0.45, 7.5, col=C_DT)
-    ax_c.text(8.75, row_cool + 0.65, "from inverter", fontsize=6, color=C_DT,
+    sarrow(ax_c, 100, row_cool + 4.5, 75, col=C_DT)
+    ax_c.text(87.5, row_cool + 6.5, "from inverter", fontsize=6, color=C_DT,
               ha="center", **FONT)
 
-    sbox(ax_c, 10.0, row_cool, 3.2, 0.9,
+    sbox(ax_c, 100, row_cool, 32, 9,
          "INVERTER + FUSE", "12→120V · Cct E 40A DC", fc="#FFF3CC", tc=C_DT)
-    sarrow(ax_c, 14.5, row_cool + 0.45, 13.2, col=C_DT)
-    ax_c.plot([14.5, bat_cx], [row_cool + 0.45, row_cool + 0.45],
+    sarrow(ax_c, 145, row_cool + 4.5, 132, col=C_DT)
+    ax_c.plot([145, bat_cx], [row_cool + 4.5, row_cool + 4.5],
               color=C_DT, lw=1.8, zorder=3)
-    ax_c.annotate("", xy=(bat_cx, row_top - 0.3), xytext=(bat_cx, row_cool + 0.45),
+    ax_c.annotate("", xy=(bat_cx, row_top - 3), xytext=(bat_cx, row_cool + 4.5),
                   arrowprops=dict(arrowstyle="-|>", color=C_DT, lw=1.0,
                                   connectionstyle="arc3,rad=0"), zorder=2)
 
     # Emergency cut-off control path (E-stop → contactor at the battery)
-    row_es = -1.7
+    row_es = -17
     C_CTRL = "#6A3DA8"
 
     def carrow(ax, x1, y, x2, col=C_CTRL, lw=1.5):
@@ -2126,40 +2126,40 @@ def draw_sheet6():
                     arrowprops=dict(arrowstyle="-|>", color=col, lw=lw,
                                     linestyle=(0, (4, 2))), zorder=3)
 
-    sbox(ax_c, 0.5, row_es, 2.8, 0.9,
+    sbox(ax_c, 5, row_es, 28, 9,
          "EMERGENCY E-STOP", "red mushroom · IP66", fc="#F6D6D2", tc=C_ESTOP)
-    carrow(ax_c, 3.3, row_es + 0.45, 4.5)
-    sbox(ax_c, 4.5, row_es, 3.0, 0.9,
+    carrow(ax_c, 33, row_es + 4.5, 45)
+    sbox(ax_c, 45, row_es, 30, 9,
          "PENETRATION BOX", "E-stop button", fc=C_ALUM)
-    carrow(ax_c, 7.5, row_es + 0.45, 10.0)
-    ax_c.text(8.75, row_es + 0.65, "control 2×12 AWG", fontsize=6, color=C_CTRL,
+    carrow(ax_c, 75, row_es + 4.5, 100)
+    ax_c.text(87.5, row_es + 6.5, "control 2×12 AWG", fontsize=6, color=C_CTRL,
               ha="center", **FONT)
-    sbox(ax_c, 10.0, row_es, 3.2, 0.9,
+    sbox(ax_c, 100, row_es, 32, 9,
          "BATTERY CONTACTOR", "ML-RBS · in battery + feed", fc="#F6D6D2", tc=C_ESTOP)
     # contactor is in the main battery (+) feed — solid power link up to the bank
-    ax_c.plot([13.2, bat_cx + 0.3], [row_es + 0.45, row_es + 0.45],
+    ax_c.plot([132, bat_cx + 3], [row_es + 4.5, row_es + 4.5],
               color=C_OUT, lw=1.8, zorder=3)
-    ax_c.annotate("", xy=(bat_cx + 0.3, row_top - 0.3), xytext=(bat_cx + 0.3, row_es + 0.45),
+    ax_c.annotate("", xy=(bat_cx + 3, row_top - 3), xytext=(bat_cx + 3, row_es + 4.5),
                   arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=1.4), zorder=2)
-    ax_c.text(bat_cx + 0.45, row_es + 0.9, "main +", fontsize=5.5, color=C_OUT,
+    ax_c.text(bat_cx + 4.5, row_es + 9, "main +", fontsize=5.5, color=C_OUT,
               ha="left", va="center", **FONT)
 
     # Container wall indicator — the box opens to the interior
-    wall_x_sch = 7.45
+    wall_x_sch = 74.5
     ax_c.plot([wall_x_sch, wall_x_sch],
-              [row_es - 0.5, row_top + 1.0],
+              [row_es - 5, row_top + 10],
               color=C_WALL, lw=4, zorder=1)
-    ax_c.text(wall_x_sch, row_es - 0.7, "CONTAINER\nWALL",
+    ax_c.text(wall_x_sch, row_es - 7, "CONTAINER\nWALL",
               ha="center", va="top", fontsize=6, color=C_WALL,
               fontweight="bold", **FONT)
-    ax_c.text(wall_x_sch + 0.15, row_es - 0.45, "(penetration\n box)",
+    ax_c.text(wall_x_sch + 1.5, row_es - 4.5, "(penetration\n box)",
               ha="left", va="top", fontsize=5, color=C_DIM, **FONT)
 
     # Zone labels
-    ax_c.text(wall_x_sch / 2, row_top + 1.35, "EXTERIOR",
+    ax_c.text(wall_x_sch / 2, row_top + 13.5, "EXTERIOR",
               ha="center", va="bottom", fontsize=8, fontweight="bold",
               color=C_DIM, **FONT)
-    ax_c.text((wall_x_sch + 22) / 2, row_top + 1.35, "CONTAINER INTERIOR",
+    ax_c.text((wall_x_sch + 220) / 2, row_top + 13.5, "CONTAINER INTERIOR",
               ha="center", va="bottom", fontsize=8, fontweight="bold",
               color=C_DIM, **FONT)
 

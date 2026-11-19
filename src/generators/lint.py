@@ -1049,7 +1049,9 @@ def gate_diagram_mm_native() -> tuple[bool, list[str]]:
     into a small plot canvas via a sub-0.2 scale factor is the 'crammed-canvas' anti-pattern — draw in
     mm and, for a thin feature, exaggerate ONE axis with a NAMED factor (>1) instead. Exaggeration
     (mm*3) and mild compression (mm/1.35) are fine; only a >5× shrink of mm trips this.
-    (Caught a ventilation blueprint drawn with sc=0.019 in a 24-unit canvas, 2026-11-18.)"""
+    (Caught a ventilation blueprint drawn with sc=0.019 in a 24-unit canvas, 2026-11-18.) Also flags a
+    ratio-form "mm → drawing unit" constant (SX = 12.0 / 5893.0) and an axes whose limits equal the figure
+    size in inches (a schematic drawn in figure inches belongs in sheet mm). (Water System Sheets 1–2, 2026-11-19.)"""
     import re
     issues = []
     for path in _scan_files():
@@ -1072,6 +1074,29 @@ def gate_diagram_mm_native() -> tuple[bool, list[str]]:
             for var in re.finditer(r"mm\s*\*\s*([A-Za-z_]\w*)", body):
                 if var.group(1) in small:
                     issues.append(f"{os.path.relpath(path, ROOT)}:{ln} diagram not mm-native — `mm * {var.group(1)}` ({var.group(1)}={small[var.group(1)]}) shrinks mm into canvas units; author in mm")
+        rel = os.path.relpath(path, ROOT)
+        # a "mm → drawing unit" constant written as a ratio (SX = 12.0 / 5893.0) and then multiplied in
+        for m in re.finditer(r"(?m)^\s*([A-Za-z_]\w*)\s*=\s*([0-9]*\.?[0-9]+)\s*/\s*([0-9]*\.?[0-9]+)\s*(?:#.*)?$", src):
+            nm, a, b = m.group(1), float(m.group(2)), float(m.group(3))
+            if b >= 100 and a / b < 0.2 and re.search(rf"\*\s*{nm}\b|\b{nm}\s*\*", src):
+                ln = src.count("\n", 0, m.start()) + 1
+                issues.append(f"{rel}:{ln} diagram not mm-native — `{nm} = {m.group(2)} / {m.group(3)}` shrinks mm into canvas units; author in mm")
+        # an axes whose data limits ARE the figure size in inches (figsize=(18, 12) + set_xlim(0, 18))
+        fdefs = [(m.start(), m.group(1), m.group(2), m.group(3), m.group(4)) for m in
+                 re.finditer(r"(?m)^\s*(\w+)\s*,\s*(\w+)\s*=\s*([0-9.]+)\s*,\s*([0-9.]+)\s*$", src)]
+        for m in re.finditer(r"figsize\s*=\s*\(\s*([\w.]+)\s*,\s*([\w.]+)\s*\)", src):
+            w, h = m.group(1), m.group(2)
+            nxt = src[m.end():m.end() + 1500]
+            fvars = {}
+            for pos, a, b, va, vb in fdefs:          # the nearest preceding `FW, FH = 22.0, 15.0` wins
+                if pos < m.start():
+                    fvars[a], fvars[b] = va, vb
+            for k, v in list(fvars.items()):
+                nxt = re.sub(rf"\b{k}\b", v, nxt)
+            w, h = fvars.get(w, w), fvars.get(h, h)
+            if re.search(rf"set_xlim\(\s*0\s*,\s*{re.escape(w)}\s*\)", nxt) and re.search(rf"set_ylim\(\s*0\s*,\s*{re.escape(h)}\s*\)", nxt):
+                ln = src.count("\n", 0, m.start()) + 1
+                issues.append(f"{rel}:{ln} diagram not mm-native — axes limits are the figure size in inches ({w}×{h}); author in sheet mm")
     return (not issues), (issues or ["diagrams authored mm-native (no canvas scale factor)"])
 
 

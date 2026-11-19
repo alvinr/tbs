@@ -72,8 +72,11 @@ the project unit, produces decimal coordinates, and breaks the dimension/offset 
 `tbs_drawing.py` helpers. For a genuinely thin feature (a plate much wider than it is thick), exaggerate
 **one axis** with a **named factor > 1** (e.g. `T_EXAG = 9` → `sy(mm) = mm*T_EXAG`, or the `sx`/`sy`
 pattern below) and state it in the scale note (`… SECTION thickness ×9 · mm`); the base unit stays mm.
+**Not-to-scale schematics (P&ID, wiring) are authored in SHEET mm** — paper millimetres on the
+figure (an 18×12in sheet ≈ 450×300mm), never in figure inches or an arbitrary 0–N canvas.
 Enforced by `lint.py` (GATE *diagrams authored in mm (no canvas scale factor)* — flags a `def f(mm)`
-helper that shrinks mm by >5×).
+helper that shrinks mm by >5×, a ratio-form scale constant like `SX = 12.0 / 5893.0`, and axes whose
+limits equal the figure size in inches).
 
 Reuse all helpers from `tbs_drawing.py`:
 

@@ -1,0 +1,48 @@
+# Pre-existing short elbow legs (ratchet baseline — shrink this, never grow it)
+ACC-02 -> BV-05 (recycled spray) @vertex 3
+ACC-02 -> BV-05 (recycled spray) @vertex 4
+ACC-02 -> BV-05 (recycled spray) @vertex 5
+ACC-02 -> BV-05 (recycled spray) @vertex 6
+ACC-02 -> BV-05 (recycled spray) @vertex 8
+ACC-02 -> BV-05 (recycled spray) @vertex 9
+Battery + cable (2/0 AWG, MRBF → main disconnect) @vertex 1
+Battery + cable (2/0 AWG, MRBF → main disconnect) @vertex 2
+Battery − cable (2/0 AWG) @vertex 3
+Battery − cable (2/0 AWG) @vertex 4
+Blue #1 -> P-01 suction entry @vertex 2
+Blue #1 -> P-01 suction entry @vertex 3
+Blue #1 -> P-01 suction entry @vertex 4
+Blue #1 -> P-01 suction entry @vertex 5
+Blue supply trunk -> spray bar / TAP-01 (off-panel) @vertex 1
+Brown ribbon -> P-02 inlet (rise) @vertex 2
+Brown tap -> P-05 inlet @vertex 1
+Brown tap -> P-05 inlet @vertex 2
+DV-01 -> IBC-4 merge @vertex 2
+DV-01 -> IBC-4 merge @vertex 3
+DV-02 waste -> IBC-4 @vertex 12
+DV-02 waste -> IBC-4 @vertex 13
+DV-02 waste -> IBC-4 @vertex 14
+DV-02 waste -> IBC-4 @vertex 15
+DV-02 waste -> IBC-4 @vertex 16
+DV-02 waste -> IBC-4 @vertex 17
+DV-02 waste -> IBC-4 @vertex 4
+DV-02 waste -> IBC-4 @vertex 5
+E-stop parallel link (interior -> exterior E-stop) @vertex 2
+E-stop parallel link (interior -> exterior E-stop) @vertex 3
+IBC-3 (Brown) tap -> P-02 inlet @vertex 12
+IBC-3 (Brown) tap -> P-02 inlet @vertex 2
+IBC-3 (Brown) tap -> P-02 inlet @vertex 3
+IBC-3 (Brown) tap -> ribbon (under-grate, to P-02) @vertex 2
+IBC-3 (Brown) tap -> ribbon (under-grate, to P-02) @vertex 3
+IBC-3 tap -> P-02 suction @vertex 1
+IBC-3 tap -> P-02 suction @vertex 2
+P-01 -> ACC-01 (in) @vertex 2
+P-02 -> ACC-02 (recycle spray) @vertex 11
+P-02 -> ACC-02 (recycle spray) @vertex 12
+P-05 -> X3 end-wall port @vertex 1
+P-05 -> X3 end-wall port @vertex 2
+P-05 -> X3 end-wall port @vertex 3
+PV feed (array disconnect -> MPPT, top) @vertex 2
+PV feed (array disconnect -> MPPT, top) @vertex 3
+PV- feed (MC4 -> MPPT -) @vertex 3
+PV- feed (MC4 -> MPPT -) @vertex 4

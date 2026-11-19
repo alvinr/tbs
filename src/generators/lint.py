@@ -1110,9 +1110,21 @@ def gate_pipe_fluid_colors() -> tuple[bool, list[str]]:
     return (not msgs, msgs)
 
 
+def gate_pipe_supports() -> tuple[bool, list[str]]:
+    """Water-model pipes are SUPPORTED and CONNECTED: every P-clip strap sits on a pipe (no clip
+    left floating where a run jogged away), and no elbow has a leg too short for it (a collapsed
+    elbow = the run no longer meets its port/fitting — the pump connections broke this way when
+    the riser planes crowded the pump ports, 2026-11-18). Ratchet on pipe_elbow_allowlist.txt."""
+    sys.path.insert(0, os.path.join(ROOT, "src", "models"))
+    import check_pipe_supports
+    msgs = check_pipe_supports.run()
+    return (not msgs, msgs)
+
+
 GATES = [
     ("diagrams authored in mm (no canvas scale factor)", gate_diagram_mm_native),
     ("water pipes: fluid colors + clips on standoff blocks", gate_pipe_fluid_colors),
+    ("water pipes supported + connected (no floating clip, no collapsed elbow)", gate_pipe_supports),
     ("license headers on every .py/.rb/.md", gate_license_headers),
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),

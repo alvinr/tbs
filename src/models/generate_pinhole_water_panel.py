@@ -305,7 +305,7 @@ def kit(part="all", p02_on_corridor=False):
     #    so an elbow at f_out always eats ~one radius back into whatever precedes it — keeping that
     #    leg the same fitting-grey means nothing fluid-colored is intruded and the elbow sits at the
     #    grey extension's end (endpoints get no fitting, so f_out must be an interior vertex).
-    f3_hand = (f_out("F3")[0], fcy - 40, tie)          # handoff just past the grey elbow's -Y exit tangent
+    f3_hand = (f_out("F3")[0], yW + 25, tie)           # handoff on the -Y exit leg, leaving both elbows (port turn + wall turn) a full leg
     p.append(draw.ruby_pipe_run("Filter F3 out port",
              [(FX["F3"] + (fr - 6), fcy, tie), f_out("F3"), f3_hand], rp, color=draw.C_PIPE_FITTING))
     # F3 -> SV-01: drop down the wall, then dog-leg IN through SV-01's −X face — the filtered line runs
@@ -671,6 +671,11 @@ def skid_row():
     p.append(cp.sample_valve("SV-02 sample valve", ov.PWP_FILTER_X2, SROW_YD, SROW_Z0 + 132, h=60))   # IN-LINE: row line runs THROUGH the body (center Z1312 = P-04 OUT), red handwheel free above, spout below
     p.append(cp.diverter("3W-DV-02", ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162,
                          run="x", branch="z+", handle="y+", color=draw.C_VALVE))   # IN −X (P-04) · waste +X (corridor) · feed z+ (F1); center Z1312 = P-04 OUT (straight run)
+    # DV-02 sits proud of the ply in the filter lane — a ply-offcut MOUNTING BLOCK fills from the panel face
+    # to the back of the valve body so it screws to the skid instead of hanging on its pipes.
+    _dvb = 46                                          # = cp.diverter body cube
+    p.append(draw.ruby_box("3W-DV-02 mounting block (ply offcut)", ov.PWP_FILTER_X3 - _dvb / 2, SKID_FACE_YD,
+                           SROW_Z0 + 162 - _dvb / 2, _dvb, (SROW_YD - _dvb / 2) - SKID_FACE_YD, _dvb, color=draw.C_PLY))
     # ACC-02 (recycled-spray accumulator) — on the filter skid, in P-02's vacated spot (X=PWP_P02_X); Ø127 × 200 (= ACC-01)
     p.append(draw.ruby_cylinder("ACC-02 Accumulator", ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0, cp.ACC_R, 174, color=draw.C_ACC))
     p.append(draw.ruby_cylinder("ACC-02 head", ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0 + 174, cp.ACC_R + 2, 26, color="#222228", axis="z"))
@@ -764,7 +769,7 @@ def skid_plumbing(part="all"):
     p2o = cp.pump_out(cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"], "y", 1)      # P-02 OUT (+Yd) (4984,1261,1102)
     L0  = cp.RIBBON_LANE_X[0]                                           # lane 0
     g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd (1110)
-    acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3770.5,104,948)
+    acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3950.5,104,948)
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
     cpt = (4616, g0 + 13, RZ)                                           # ribbon entry at flush Z (flush branch); Yd1123 — nudged +Yd toward the film-plane wall so the flush run + hump-rise clear the cantilever +Yd edge (Yd1097) by ~15mm; X pulled −X to clear the CJ end-plate (−X face X4646)
     npt = (L0, DROP_YD, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
@@ -806,7 +811,7 @@ def skid_plumbing(part="all"):
             p.append(cp.clip_on_block("Skid riser P-clip", rx, cz, skid_face, SKID_CLIP_YD, True, rp=rp))
     # horizontal-run clamps flagged in review — brown ± ACC-02 (on the panel-bottom lane), blue ±
     # SV-01, and the brown row line → DV-02.  Same clip, bridging each run back to the ply face.
-    for rx, ryd, cz in ((3720, SKID_CLIP_YD, 948),  (3970, SKID_CLIP_YD, 948),     # brown ± ACC-02 (panel-bottom lane, flush)
+    for rx, ryd, cz in ((acc2_out[0] - 95, SKID_CLIP_YD, 948), (acc2_in[0] + 95, SKID_CLIP_YD, 948),   # brown ± ACC-02: PAST the 55mm port jog, on the clip-lane run (panel-bottom lane, flush)
                         (2500, SKID_CLIP_YD, 948), (2800, SKID_CLIP_YD, 948), (3100, SKID_CLIP_YD, 948),   # ACC-02→BV-05 recycle run (−X toward BV-05, ~300mm)
                         (3370, SKID_CLIP_YD, 948),                                      # ACC-02→BV-05 run (+X segment, past the P-04 riser hump)
                         (4150, SKID_CLIP_YD, 948), (4380, SKID_CLIP_YD, 948),                     # P-02→ACC-02 recycle run (panel-bottom lane)

@@ -411,22 +411,21 @@ def rear_panel():
             cz = max(300, min(int(zb + (zt - zb) * frac), int(TOP_Z - S - 20)))
             p.append(clip_on_block("Spine riser P-clip", rx, cz, SPINE_FACE_NEAR, SPINE_RISER_YD, True))
     # FAR (+Yd) side of the spine — the grey/brown X-port lines run along it toward the end wall:
-    # P-05→X3 (brown, Yd1245, Z1502) and P-03→X4 (grey, Yd1235, Z1902). 2 clamps each, to the +Yd face.
+    # P-05→X3 (brown, Z1502) and P-03→X4 (waste, Z1902), both on the Yd1245 lane. Clamps to the +Yd face.
     spine_far_face = 1224
     for px, pyd, pz in ((5250, 1245, 1502), (5450, 1245, 1502), (5650, 1245, 1502),                       # P-05 → X3 (brown) — run ends at the X5680 crossing
-                        (5250, 1235, 1902), (5450, 1235, 1902), (5650, 1235, 1902), (5730, 1235, 1902)):  # P-03 → X4 (grey) — +2 over the extended spine
+                        (5250, COL_R, 1902), (5450, COL_R, 1902), (5650, COL_R, 1902), (5730, COL_R, 1902)):  # P-03 → X4 (grey) — +2 over the extended spine
         p.append(clip_on_block("Spine far-side P-clip", px, pz, spine_far_face, pyd, False, flush_ok=True))   # horizontal X-port line — DEFERRED: standoff pending the spine-relocation review
-    # P-03→X4 end-wall DROP (vertical at X5763, Yd1235) — now backed by the extended spine; clamp to the +Yd face
+    # P-03→X4 end-wall DROP (vertical at X5763, on COL_R) — now backed by the extended spine; clamp to the +Yd face
     for dz in (1700, 1850):
-        p.append(clip_on_block("Spine far-side P-clip", 5763, dz, spine_far_face, 1235, True, flush_ok=True))   # vertical drop — DEFERRED (spine review)
+        p.append(clip_on_block("Spine far-side P-clip", 5763, dz, spine_far_face, COL_R, True, flush_ok=True))   # vertical drop — DEFERRED (spine review)
     return "\n".join(p)
 
 
 # ── corridor-panel equipment placement (equipment hangs −X off the rear panel) ──
 FACE_X = BACK_X                          # 5104 — rear-panel plane; equipment hangs −X toward the mouth
 COL_L  = YD_NEAR + 63                    # 1109 — left (Brown-side) pump column
-COL_R  = 1235                            # X4 grey waste run + port — clamps to the spine's +Yd face (1224 =
-#   spine Yd1206 + 18mm) plus a pipe radius, so the run mounts on the spine instead of floating beside it
+COL_R  = 1245                            # X4 waste run + port — on a 10.5mm block off the spine's +Yd face (1224), same lane offset as the Brown P-05→X3 (deferred: <18mm pending the spine review)
 CTR_Y  = (YD_NEAR + YD_FAR) / 2          # 1181 — corridor center
 RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 # CLIP STANDOFF RULE: every pipe P-clip sits on a ply-offcut block and the pipe's surface stands at
@@ -435,7 +434,7 @@ RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 CLIP_SHIM = EQT
 SPINE_FACE_NEAR = 1206                   # drain-riser spine −Yd face
 SPINE_RISER_YD  = SPINE_FACE_NEAR - CLIP_SHIM - RP   # 1177.5 — the three waste risers + the IBC-4 merge
-BV02_YD = YD_NEAR + EQT + CLIP_SHIM + RP    # 1092.5 — BV-02 brown-suction riser Yd (= the near-board riser plane);
+BV02_YD = YD_NEAR + EQT + RP + 2.5          # 1077 — BV-02 brown-suction riser Yd (= the near-board riser plane, pump-clearance exception);
 #   single source for the geometry AND the 3D callout anchor, so the label can't drift off the valve.
 BVY_REAR = YD_NEAR + S + CLIP_SHIM + RP  # 1125.3 — Blue #1 return/behind-panel lane, clipped to the rear-near frame upright
 CDK    = "#3A3A42"                       # dark fittings / motor cans
@@ -746,9 +745,15 @@ YW_CUT = _r5dn((YD_FAR - S) - (YD_NEAR + S))   # 165 — rear-panel + shirt boar
 PH_CUT = _r5dn(PANEL_TOP_Z - S)                # 1845 — rear-panel board height (opening 1849)
 BW_CUT = _r5dn(SB_X1 - SB_X0)                  # 395 — pump-run board X length (opening 399)
 # Riser planes — the pipe back sits ~2.5mm off each board's corridor face (RP + gap), i.e. flush on it.
-SB_RISER_YD_FAR  = YD_FAR - EQT - CLIP_SHIM - RP    # 1269.5 — far risers, one clip block off the board face
-SB_RISER_YD_NEAR = YD_NEAR + EQT + CLIP_SHIM + RP   # 1092.5 — near risers
+# Side-board riser planes stay ~2.5mm off the board face: EXCEPTION to the clip standoff rule — the
+# corridor is 234mm between the two board faces and an upright pump + its two 30mm ports is 160mm, so an
+# 18mm block + a full-radius elbow on each side (135mm) leaves no room for the pump.  An 18mm shim
+# here collapses the port-to-elbow legs to ~8mm (the pumps stop connecting).  Pending a layout change.
+SB_RISER_YD_FAR  = YD_FAR - EQT - RP - 2.5    # 1285 — far risers
+SB_RISER_YD_NEAR = YD_NEAR + EQT + RP + 2.5   # 1077 — near risers
+SB_FLUSH_OK = True                            # side-board clips are exempt (see above)
 SB_FAR_RISERS_X  = (4848, 4900, 4984)         # DV-01 recycle · P-02 discharge · P-01→ACC-01
+RISER_Z_SPAN = {4984: (ACC_PZ, PSTACK["P-01"] + PVB_H - 18)}   # P-01→ACC-01 riser runs DOWN from the P-01 OUT to ACC-01 IN
 #   NB index 0 MUST track the DV-01 recycle riser X (= DV01_CX + tipd + 40); update it if DV01_CX moves
 SB_NEAR_RISERS_X = (4825, 5070)               # P-02 suction · P-05 inlet
 SB_FAR_CLAMP_Z   = (480, 740, 960)            # 3 clamp rows (far) — 3rd added on the raised board section for more riser support
@@ -807,12 +812,14 @@ def support_boards(sides=("far", "near", "near-upper")):
                                      lxx, ly, bz - LH / 2, LL, LT, LH, color=draw.C_STEEL))
         # riser P-clips — one per riser at each clamp row, bridging the riser back to the board face
         for rx in risers_x:
+            z_lo, z_hi = RISER_Z_SPAN.get(rx, (-1e9, 1e9))
             for cz in clamp_z:
-                p.append(clip_on_block(f"Riser P-clip ({side})", rx, cz, face_yd, ryd, True))
+                if z_lo + 25 <= cz <= z_hi - 25:          # a clip lands only where its riser actually runs
+                    p.append(clip_on_block(f"Riser P-clip ({side})", rx, cz, face_yd, ryd, True, flush_ok=SB_FLUSH_OK))
     # near-upper board also backs two HORIZONTALS: P-05-inlet brown (Z1300) + P-03 grey (Z1902)
     if "near-upper" in sides:
         for hx, hz in ((4960, 1300), (5020, 1300), (4945, 1902)):
-            p.append(clip_on_block("Horizontal P-clip (near-upper)", hx, hz, YD_NEAR + EQT, SB_RISER_YD_NEAR, False))
+            p.append(clip_on_block("Horizontal P-clip (near-upper)", hx, hz, YD_NEAR + EQT, SB_RISER_YD_NEAR, False, flush_ok=SB_FLUSH_OK))
     return "\n".join(p)
 
 
@@ -1024,7 +1031,7 @@ def plumbing(part="all", sump_on_skid=False):
     # P-clips on the P-01 suction riser (now pushed onto the near board) — straddle BV-01 (z928-972),
     # one below + one above, since the valve body sits across the shared near-board clamp rows
     for _cz in (850, 1000):
-        p.append(clip_on_block("Riser P-clip (near)", bvx, _cz, YD_NEAR + EQT, bvy, True))
+        p.append(clip_on_block("Riser P-clip (near)", bvx, _cz, YD_NEAR + EQT, bvy, True, flush_ok=SB_FLUSH_OK))
     # Frame P-clip on the behind-panel loop-back (+X run at z=loopz, Yd=bvy_rear): clamp it to the
     # rear-near frame upright (X=BACK_X, Yd=YD_NEAR) just behind the panel — a positive support on the
     # steel frame beyond the panel penetration.  Strap thin-X (⊥ the run), standoff off the upright +Yd face.

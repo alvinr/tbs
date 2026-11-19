@@ -697,15 +697,18 @@ def ruby_clip_run(name, waypoints, spacing=450.0, band=30.0, thick=12.0,
     V = [tuple(float(c) for c in p) for p in waypoints]
     out = []
     carry = spacing * 0.5
-    for a, b in zip(V, V[1:]):
+    last = len(V) - 2
+    for k, (a, b) in enumerate(zip(V, V[1:])):
         d = _vsub(b, a)
         L = _vlen(d)
         if L < 1e-6:
             continue
         u = _vunit(d)
+        lo = band if k > 0 else 0.0               # keep a clip one band-width off an interior bend (never ON the elbow)
+        hi = L - band if k < last else L
         t = carry
         while t <= L:
-            c = _vadd(a, _vscale(u, t))
+            c = _vadd(a, _vscale(u, min(max(t, lo), hi) if lo <= hi else L / 2))
             ax = max(abs(u[0]), abs(u[1]), abs(u[2]))
             sx = thick if abs(u[0]) == ax else band
             sy = thick if abs(u[1]) == ax else band

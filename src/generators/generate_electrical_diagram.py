@@ -1509,7 +1509,7 @@ def draw_sheet4():
         "P-04 (Tray drain) is fed by a Circuit-C branch off this block, on the pinhole-wall filter skid.",
         "",
         "ACC-01 is a passive accumulator — unpowered.",
-    ], PW + 90, 1500, spacing=32, fs=6.2, width=700, wrap=44)
+    ], PW + 90, 1500, spacing=32, fs=6.2, width=740, wrap=44)
 
     # xlim encompasses ALL content — the CORRIDOR leader (left) and the notes block (right) — so the
     # transAxes title block spans the full page width (and its left cell is wide enough for the © line).

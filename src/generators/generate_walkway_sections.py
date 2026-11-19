@@ -599,8 +599,8 @@ def sheet4():
         _rect(ax, ux, _BASE, _RHS, Z_HI - 120 - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.14, ls="--")
     _ghost_top = Z_HI - 110
     _rect(ax, cp.BACK_X, _BASE, 18, _ghost_top - _BASE, C_GHOST, ec="none", z0=1, alpha=0.08)   # rear panel ply
-    _rect(ax, 4934, _BASE, 100, _ghost_top - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.10, ls="--")  # pump column (P-01/04/05/03 + ACC)
-    ax.text(4984, _ghost_top - 70, "pump column\n(P-01·P-04·P-05·P-03\n+ ACC-01) ghost", fontsize=5.0,
+    _rect(ax, 4934, _BASE, 100, _ghost_top - _BASE, C_GHOST, ec=C_GHOST, lw=0.8, z0=1, alpha=0.10, ls="--")  # pump column (P-01/02/05/03 + ACC)
+    ax.text(4984, _ghost_top - 70, "pump column\n(P-01·P-02·P-05·P-03\n+ ACC-01) ghost", fontsize=5.0,
             ha="center", va="top", color=C_GHOST, zorder=2, **FONT)
     ax.text(UP_X0 - 4, _ghost_top, "front\nupright", fontsize=4.8, ha="right", va="top", color=C_GHOST, **FONT)
     ax.text(cp.BACK_X + 60, _ghost_top, "back upright\n+ rear panel", fontsize=4.8, ha="left", va="top", color=C_GHOST, **FONT)

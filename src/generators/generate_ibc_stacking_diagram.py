@@ -829,9 +829,9 @@ def sheet4():
            (ep_face_x - 260), (ep_yd_near - 220),
            "CORRIDOR PLUMBING PANEL\n"
            "Backing Board (18mm exterior ply)\n"
-           "P-01/P-03/P-04/P-05 pumps (Shurflo 2088)\n"
-           "ACC-01 accumulator (125 PSI); DV-02 + SV-02\n"
-           "(3-stage filter bank → Pinhole Wall panel)",
+           "P-01/P-02/P-03/P-05 pumps (Shurflo 2088)\n"
+           "ACC-01 accumulator (125 PSI)\n"
+           "(filters, P-04, SV-02, DV-02 → Pinhole Wall panel)",
            fs=5.5, color="#A09060", ha="left", font=FONT)
 
     # ── Pipe fitting helpers (matching sheet 5 conventions) ────────────────
@@ -1028,7 +1028,7 @@ def sheet4():
 
     legend_items = [
         (C_PIPE_BLUE,  "BLUE CIRCUIT — Fill side-entry near top + supply (1\" HDPE SDR-11)"),
-        (C_PIPE_BROWN, "BROWN CIRCUIT — Recycle: P-04 sump → IBC-3, P-02 → filter; P-05 drain → X3 (1\" HDPE SDR-11)"),
+        (C_PIPE_BROWN, "BROWN CIRCUIT — Recycle: DV-01 filtrate → IBC-3; IBC-3 → P-02 spray, P-05 drain → X3 (1\" HDPE SDR-11)"),
         (C_PIPE_BLACK, "BLACK/WASTE — IBC-4 → P-03 drain pump → X4 (1\" HDPE SDR-11)"),
     ]
     ec_map = {C_PIPE_FRESH: "#1A4A90", C_PIPE_RECYCLE: "#3E2A1A", C_PIPE_WASTE: "#111111"}
@@ -1130,7 +1130,7 @@ def sheet4():
         "7. X1 fill tees to BOTH Blue totes (IBC-1 & IBC-2), each branch",
         "   SIDE-ENTERING the tote's corridor face near the top (no cap drop).",
         f"8. Corridor plumbing panel (18mm exterior ply) at X={EQPANEL_X}: pumps",
-        "   P-01/P-03/P-04/P-05 + ACC-01 (filters on the Pinhole Wall panel).",
+        "   P-01/P-02/P-03/P-05 + ACC-01 (filters + P-04 on the Pinhole Wall panel).",
         f"9. Deep 4-leg box frame: 4 uprights (front X{int(cp.FRONT_X)} + back X{int(cp.BACK_X)})",
         f"   + top/bottom rings + 4 flange feet. ~{FRAME_WEIGHT}kg.",
     ]
@@ -1389,7 +1389,6 @@ def sheet5():
     C_PIPE_BLUE   = C_PIPE_FRESH     # Blue circuit (clean supply)
     C_PIPE_BROWN  = C_PIPE_RECYCLE   # Brown circuit (recycled)
     C_PIPE_BLACK  = C_PIPE_WASTE     # Black/waste
-    C_PIPE_FILTER = C_PIPE_RECYCLE   # filtered return is filtered USED water → Brown circuit
     pipe_lw = 2.5
 
     # ── IBC connection heights ───────────────────────────────────────────────
@@ -1532,41 +1531,30 @@ def sheet5():
     pipe_stub_x(ax, corr_cx, vb3_z - 30, C_PIPE_BLUE,
                 "P-01 → SPRAY BAR", label_side="right", offset=225)
 
-    # ── Brown IBC-3 inlet ← tray sump (pumped via P-04 → 3W-DV-02) ───────────
-    # Water collects in the sump well at the tray low point. P-04 lifts it to
-    # IBC-3 via a SIDE-ENTRY near the tote top on its corridor face (no top-cap
-    # access — direct-stack leaves ~52mm headroom).
+    # ── Brown IBC-3 inlet ← DV-01 recycle (filtered, pH pass) ─────────────────
+    # The ONLY IBC-3 inflow: the filter train (fed by P-04 via DV-02 on the pinhole
+    # wall) exits SV-01 → 3W-DV-01, which sends pH-pass filtrate to the IBC-3 Brown
+    # buffer via a SIDE-ENTRY near the tote top on its corridor face (no top-cap
+    # access — direct-stack leaves ~52mm headroom).  pH fail → IBC-4 (below).
     brown_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC-3
     pipe_stub_x(ax, near_col_r, brown_in_z, C_PIPE_BROWN,
-                "P-04 ← TRAY SUMP\n→ IBC-3 SIDE-ENTRY", label_side="right")
+                "DV-01 RECYCLE (pH PASS)\n→ IBC-3 SIDE-ENTRY\n(Brown buffer)", label_side="right")
     draw_flange(ax, near_col_r, brown_in_z, 'v', C_PIPE_BROWN)
-    # P-04 tray drain transfer pump — on the brown inlet line
-    p04_z = brown_in_z + 60
-    _draw_pump_symbol(ax, near_col_r - 80, p04_z, C_PIPE_BROWN, "P-04")
-    ax.plot([(near_col_r - 80 + 22), (near_col_r - PIPE_OD / 2)],
-            [(brown_in_z), (brown_in_z)],
-            color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
-    # ── Brown IBC-3 outlet → P-02 pump → filter unit ────────────────────────
-    # Uses IBC-3's built-in DN50 butterfly valve at corridor-facing face.
-    # Offset below X3 horizontal run at Z=400 to avoid pipe crossing.
+    # ── Brown IBC-3 bottom tap → P-02 (recycle spray, wash 1) + P-05 ─────────
+    # One shared bottom tap (tee) feeds P-02 (recycled spray → ACC-02 → BV-05
+    # selector) and P-05 (drain → X3).  Offset below the X3 run to avoid a crossing.
     brown_out_z = 250
     pipe_stub_x(ax, near_col_r, brown_out_z, C_PIPE_BROWN,
-                "IBC-3 VALVE →\nP-02 → FILTER", label_side="right")
+                "IBC-3 BOTTOM TAP →\nP-02 (RECYCLE SPRAY)\n+ P-05", label_side="right")
 
-    # ── Filter unit return → IBC-2 (cleaned water recycled to supply) ────────
-    # 3W-DV-01 routes pH-OK filtrate back to Blue IBC-2 via a SIDE-ENTRY near the
-    # top (no top-cap access).
-    pipe_stub_x(ax, far_col_l, side_entry_z, C_PIPE_FILTER,
-                "FILTER RETURN →\nIBC-2 SIDE-ENTRY\n(recycle to Blue)", label_side="left")
-    draw_flange(ax, far_col_l, side_entry_z, 'v', C_PIPE_FILTER)
-
-    # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
-    # 3W-DV-01 (pH out of range) / 3W-DV-02 route reject into IBC-4 via a
-    # SIDE-ENTRY near the top (no top-cap access).
+    # ── Waste IBC-4 inlet ← the IBC-4 merge tee ──────────────────────────────
+    # DV-01 (pH fail) + DV-02 (heavy-contam waste) join at the merge tee on the
+    # drain-riser spine — each leg one-way into the tee (CV-2 / CV-3) — then ONE
+    # SIDE-ENTRY near the top of IBC-4 (no top-cap access).
     waste_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC-4
     pipe_stub_x(ax, far_col_l, waste_in_z, C_PIPE_BLACK,
-                "FILTER REJECT →\nIBC-4 SIDE-ENTRY", label_side="left")
+                "WASTE MERGE →\nIBC-4 SIDE-ENTRY\n(CV-2 / CV-3)", label_side="left", offset=70)
     draw_flange(ax, far_col_l, waste_in_z, 'v', C_PIPE_BLACK)
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
@@ -1606,8 +1594,8 @@ def sheet5():
 
     legend_items = [
         (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill side-entry near top, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3 side-entry, P-02 → filter unit, P-05 drain pump → X3)"),
-        (C_PIPE_BLACK,  "BLACK/WASTE — Reject → IBC-4 side-entry; P-03 drain pump → X4"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (DV-01 pH-pass filtrate → IBC-3 side-entry; IBC-3 tap → P-02 recycle spray + P-05 → X3)"),
+        (C_PIPE_BLACK,  "BLACK/WASTE — DV-01 fail + DV-02 waste → merge tee (CV-2/CV-3) → IBC-4 side-entry; P-03 drain pump → X4"),
     ]
     ec_map6 = {C_PIPE_FRESH: "#1A4A90", C_PIPE_RECYCLE: "#3E2A1A", C_PIPE_WASTE: "#111111"}
     for i, (color, desc) in enumerate(legend_items):
@@ -1672,7 +1660,7 @@ def sheet5():
             [y_cv - (cv_vs + 3), y_cv + (cv_vs + 3)],
             color=C_OUT, lw=1.8, zorder=16)
     ax.text(leg_x + (-10), y_cv,
-            "CHECK VALVE (1\" NPT spring — CV-1 only, on the X1 gravity-fill line)",
+            "CHECK VALVE (CV-1 1\" on the X1 gravity fill; CV-2/CV-3 ½\" on the waste legs into the IBC-4 merge)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
@@ -1700,18 +1688,19 @@ def sheet5():
         "   HDPE SDR-11 (2\" NPT at bulkhead unions).",
         "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
         "3. X1 fill: a corridor header tees to BOTH Blue totes; each branch SIDE-ENTERS the tote's corridor face near the top (Z=2156), penetrating",
-        "   150mm past a flange. NO top-cap access — the 1000L direct-stack leaves ~52mm headroom. Filled in parallel — no cross-connect.",
-        "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",
+        "   150mm past a flange. NO top-cap access — the 1000L direct-stack leaves ~52mm headroom. Filled in parallel; a low 1\" equalization",
+        "   tie (bulkhead + 1\" flex jumper at EACH tote, off this view at X5500) balances the two Blue levels.",
+        "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total), each with a 1\" flex jumper to the rigid run.",
         "5. Fill header + drains run in the clear corridor behind the panel support frame (clear of the uprights), matching the 3D model.",
         "6. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         "8. Drains are PUMPED: P-05 (Brown) → X3 (Z=400mm), P-03 (Waste) → X4 (Z=200mm) — gravity head is insufficient at these port heights.",
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
-        "10. Check valve CV-1 only (1\" NPT spring check) on the X1 gravity-fill line. The X3/X4 drains are pump-driven (P-05/P-03); the Shurflo",
-        "    2088 pumps have integral one-way checks, so no discrete CV is fitted there (CV-3/CV-4 dropped).",
-        "11. RECYCLE: P-04 draws from the tray sump and feeds IBC-3 (Brown) via a SIDE-ENTRY near the top (3W-DV-02 selects IBC-3 or IBC-4). Brown",
-        "    is then pumped (P-02) through the 3-stage filter; 3W-DV-01 recycles pH-OK filtrate to IBC-2 (Blue) via side-entry, else to IBC-4.",
-        "12. ALL tote-top connections are SIDE-ENTRY near the top (fill, recycle return, reject, sump) — no top-cap access anywhere (52mm headroom).",
+        "10. Check valves: CV-1 (1\" NPT spring) on the X1 gravity fill; CV-2/CV-3 (½\") on the two waste legs into the IBC-4 merge tee, so",
+        "    one leg can't back-feed the other. The X3/X4 drains are pump-driven (P-05/P-03); the Shurflo 2088 pumps have integral checks.",
+        "11. RECYCLE: P-04 draws from the tray sump → SV-02 → 3W-DV-02 (filter train F1→F3, or heavy-contam waste → IBC-4). The filter train",
+        "    exits SV-01 → 3W-DV-01: pH pass → IBC-3 (Brown buffer) via side-entry, pH fail → IBC-4. P-02 draws IBC-3 for the recycled (wash 1) spray.",
+        "12. ALL tote-top connections are SIDE-ENTRY near the top (X1 fill, DV-01 recycle, IBC-4 waste merge) — no top-cap access (52mm headroom).",
     ]
     draw_notes(ax, notes, (YD_LO + 1530), (-180), spacing=(22),
                fs=7, font=FONT, width=1500)

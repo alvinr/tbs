@@ -286,7 +286,7 @@ def draw_sheet1():
     pipe(ax1, 2.2, 7.15, 2.6, 7.15, C_BLUE); ax1.plot([2.2, 2.6], [7.15, 7.15], "o", ms=3.5, color=C_BLUE, zorder=6)
     pipe(ax1, 1.5, 6.78, 1.5, 6.65, C_BLUE); pipe(ax1, 1.5, 6.65, 2.4 - VR, 6.65, C_BLUE)
     pipe(ax1, 3.3, 6.78, 3.3, 6.65, C_BLUE); pipe(ax1, 3.3, 6.65, 2.4 + VR, 6.65, C_BLUE)
-    ax1.text(2.4, 7.02, 'IBC-1 & IBC-2 PARALLEL (shared BV-01 · equalized)', ha="center", fontsize=5.2, color=C_BLUE, style="italic")
+    ax1.text(2.4, 7.02, 'IBC-1 & IBC-2 PARALLEL (shared BV-01 · 1" equalization tie)', ha="center", fontsize=5.2, color=C_BLUE, style="italic")
     valve(ax1, 2.4, 6.65, color=C_BLUE); ax1.text(2.62, 6.65, "BV-01", ha="left", va="center", fontsize=6, color=C_BLUE)
     pipe(ax1, 2.4, 6.65 - VR, 2.4, 6.15 + PR, C_BLUE); arrow_pipe(ax1, 2.4, 6.48, 2.4, 6.36, color=C_BLUE)
     pump(ax1, 2.4, 6.15, color=C_PUMP); ax1.text(2.62, 6.1, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
@@ -399,6 +399,8 @@ def draw_sheet1():
     ax1.text(WD_X, 9.98, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5, color=C_BLACK, style="italic", va="bottom")
 
     flex_conn(ax1, 1.5, 8.62, color=C_BLUE); flex_conn(ax1, 2.9, 8.62, color=C_BLUE)
+    flex_conn(ax1, 2.29, 7.15, color=C_BLUE, horiz=True, n=2, amp=0.035, length=0.12)   # 1" equalization tie — flex jumper at EACH tote
+    flex_conn(ax1, 2.51, 7.15, color=C_BLUE, horiz=True, n=2, amp=0.035, length=0.12)
     flex_conn(ax1, 6.4, 7.25, color=C_BROWN); flex_conn(ax1, IBC3_RISER, 8.30, color=C_BROWN)
     flex_conn(ax1, WRX, 7.15, color=C_BLACK)                             # waste INFLOW flex — on the riser, OUTSIDE the wall
     flex_conn(ax1, W_X + W_W / 2 + 0.18, 7.80, color=C_BLACK, horiz=True)   # waste OUTLET flex — OUTSIDE the right wall

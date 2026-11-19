@@ -759,7 +759,7 @@ EQPANEL_W       = EQPANEL_T + 130   # = 148mm — total X footprint (ply + max p
 # Pump zone — near side of panel face (Yd=1046–1173)
 # Pumps protrude from panel face toward open end (lower X).
 PUMP_D       = 114     # pump protrusion from panel face in -X direction (mm) — real Shurflo 2088 height (4.5"); was 100
-PUMP_YD_SPAN = 127     # pump body width in Yd direction (mm) — Shurflo 2088 width
+PUMP_YD_SPAN = 127     # pump width across the 1/2"-14 NPSM port tips (mm) — Shurflo 2088-554-144 datasheet 5.00in
 PUMP_X       = EQPANEL_X - PUMP_D   # = 4900 — pump zone left edge X for elevation views
 PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevation views
 

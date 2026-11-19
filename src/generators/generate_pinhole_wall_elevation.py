@@ -21,7 +21,7 @@ from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EV
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes, draw_mixed_pipe,
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
-from tbs_constants import DIAGRAM_DPI, FONT, C_PIPE_FRESH, C_PIPE_RECYCLE
+from tbs_constants import DIAGRAM_DPI, FONT, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_FITTING, PUMP_YD_SPAN
 
 # ── Local constants (computed from tbs_constants) ────────────────────────────
 # Pipe colors for Blue circuit (only Blue supply remains on this wall)
@@ -385,6 +385,11 @@ for _fid, _fcx, _media in [("F-01", PWP_FILTER_X1, "5um SED"), ("F-02", PWP_FILT
 _p04x0, _p04x1 = sx(PWP_FILTER_X1 - 50), sx(PWP_FILTER_X1 + 50)
 ax.add_patch(mpatches.Rectangle((_p04x0, sz(PWP_SROW_Z0)), _p04x1 - _p04x0, sz(PWP_SROW_Z0 + 180) - sz(PWP_SROW_Z0),
              facecolor="#8FA6BE", edgecolor=C_OUT, lw=0.8, zorder=8))
+# P-04 port stubs (1/2"-14 NPSM male, 127mm across the tips = PUMP_YD_SPAN), at the port height = the row line
+_p04_tip = PUMP_YD_SPAN / 2
+for _a, _b in ((PWP_FILTER_X1 - _p04_tip, PWP_FILTER_X1 - 50), (PWP_FILTER_X1 + 50, PWP_FILTER_X1 + _p04_tip)):
+    ax.add_patch(mpatches.Rectangle((sx(_a), sz(PWP_DV02_Z - OD_H / 2)), sx(_b) - sx(_a), sz(PWP_DV02_Z + OD_H / 2) - sz(PWP_DV02_Z - OD_H / 2),
+                 facecolor=C_PIPE_FITTING, edgecolor=C_OUT, lw=0.6, zorder=9))
 ax.text(sx(PWP_FILTER_X1), sz(PWP_SROW_Z0 - 12), "P-04\nTRAY DRAIN", ha="center", va="top", fontsize=3.4, color="#3A5A7A", zorder=10, **FONT)
 ax.add_patch(plt.Circle((sx(PWP_FILTER_X2), sz(PWP_SV02_Z)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=9))
 ax.text(sx(PWP_FILTER_X2), sz(PWP_SV02_Z - 48), "SV-02\npH SAMPLE", ha="center", va="top", fontsize=3.4, color="#C0392B", zorder=10, **FONT)
@@ -396,7 +401,7 @@ ax.text(sx(PWP_FILTER_X3), sz(PWP_DV02_Z - 48), "DV-02\n3-WAY", ha="center", va=
 def _bpipe(xs, zs):
     draw_pipe_path(ax, xs, zs, OD_H, WALL_H, fc=C_BROWN, ec="#5A3A20", bore_fc="white", zorder=6)
 # P-04 OUT → SV-02 → DV-02 along the row line
-_bpipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3], [PWP_DV02_Z, PWP_DV02_Z])
+_bpipe([PWP_FILTER_X1 + _p04_tip, PWP_FILTER_X3], [PWP_DV02_Z, PWP_DV02_Z])
 ax.annotate("", xy=(sx(PWP_FILTER_X2 + 15), sz(PWP_DV02_Z)), xytext=(sx(PWP_FILTER_X2 + 90), sz(PWP_DV02_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
 # DV-02 recycle branch → up the panel edge → F-01 IN (matches the 3D DV-02 z+ → edge → F1)
@@ -420,10 +425,10 @@ ax.add_patch(mpatches.Rectangle((_a2x0, sz(PWP_ACC2_Z0)), _a2x1 - _a2x0, sz(PWP_
              facecolor=C_ACC, edgecolor=C_FILT_EC, lw=0.9, zorder=8))
 ax.text(sx(PWP_ACC2_X), sz(PWP_ACC2_Z0 - 12), "ACC-02\nRECYCLE-SPRAY DAMPER", ha="center", va="top", fontsize=3.2, color="#3A5A7A", zorder=10, **FONT)
 # ── sump-pickup suction: tray sump (below) rises through the walkway → up the pinhole wall → P-04's −X IN port ──
-_p4in_z = PWP_SROW_Z0 + 90
+_p4in_z = PWP_DV02_Z                              # IN port shares the OUT port height (3D pump_unit)
 _riser_z = SUMP_SUCTION_WALL_RUN_Z               # 230 — along-wall run height, above the cantilever wall-plates (single-sourced with the 3D routing)
-_rise_x  = PWP_FILTER_X1 - 120                    # ≈3180 — the final climb to P-04's IN height at the skid
-_bpipe([PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_X, _rise_x, _rise_x, PWP_FILTER_X1 - 50],
+_rise_x  = PWP_FILTER_X1 - _p04_tip - 40          # 3196.5 — the final climb, 40mm −X of P-04's IN tip (= the 3D riser)
+_bpipe([PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_X, _rise_x, _rise_x, PWP_FILTER_X1 - _p04_tip],
        [90, _riser_z, _riser_z, _p4in_z, _p4in_z])
 ax.annotate("", xy=(sx(PROC_TRAY_DRAIN_X), sz(360)), xytext=(sx(PROC_TRAY_DRAIN_X), sz(250)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)

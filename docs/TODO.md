@@ -9,6 +9,17 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## 🚰 X3/X4 drain ports vs gravity drain — energy budget (2026-11-19)
+
+- [ ] **Decide the X3/X4 end-wall port heights for a gravity drain.** X3 is at Z1502 and X4 at Z1620
+  (`EXT_DRAIN_3_H` / `EXT_DRAIN_4_H`, set by the P-05 / P-03 discharge runs). Both are above the
+  bottom-tier totes, so IBC-3 / IBC-4 can't gravity-drain through them. Options: drop the ports low
+  (near the tote outlets), or accept fully pumped drains.
+- [ ] **Energy budget follows that decision.** `calculate_energy_budget.py` models the end-of-day
+  Brown/Waste pump-out as gravity-assisted, pumping only `DRAIN_RESIDUAL_L` (120L per tote). At the
+  current port heights P-05 / P-03 pump the full volume. Re-cost the drain run (and its report
+  figures) once the port heights are settled.
+
 ## 🏷️ parts.py — tag each part with a layout ZONE, add a zone filter to the BOM page (2026-11-18)
 
 Surfaced by the `equipment-layout-report.md` editorial pass: the report assigns every system to a

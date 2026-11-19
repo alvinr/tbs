@@ -776,6 +776,8 @@ def draw_pinhole_panel():
     pw_text(PWP_FILTER_X3, PWP_DV02_Z - 54, "DV-02\n3-WAY", ha="center", va="top", fontsize=6, color="#8A6D08", fontweight="bold", zorder=14)
     # ── ACC-02 (recycle-spray damper) — center-bottom cylinder, fed from P-02 in the corridor ──
     pw_rect(PWP_ACC2_X - 63, PWP_ACC2_Z0, 126, 200, C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.85)
+    for x0 in (PWP_ACC2_X - cwp.ACC_R - 30, PWP_ACC2_X + cwp.ACC_R):
+        pw_rect(x0, PWP_ACC2_Z0 + 28 - cwp.RP, 30, 2 * cwp.RP, C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BROWN_EC, fontweight="bold", zorder=8)
     pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BROWN_EC, zorder=8)
     leader(ax_p, pwx(PWP_ACC2_X), pwz(PWP_ACC2_Z0), pwx(PWP_ACC2_X) + 40, pwz(460),

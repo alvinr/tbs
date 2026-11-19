@@ -354,22 +354,18 @@ SPINE_X_END = 5780   # drain-riser spine far X — extended ~220mm toward the se
 
 
 def spine_profile():
-    """Spine outline in the X-Z plane: a rectangle whose top edge carries the X1 fill run, with a round
-    SADDLE cut under the X1 tee body and a flat seat under the in-line X1 check valve (both fatter than the pipe)."""
-    import math
-    zt = SPINE_Z1
-    tr = RP + 5 + 2                                        # tee body radius + 2mm clearance
-    dx = math.sqrt(tr ** 2 - (X1_TEE_Z - zt) ** 2)
-    arc = []
-    a0, a1 = math.atan2(zt - X1_TEE_Z, dx), math.atan2(zt - X1_TEE_Z, -dx)
-    for k in range(13):                                    # +X end of the saddle → down → −X end
-        a = a0 + (a1 - a0 - 2 * math.pi) * k / 12 if a1 > a0 else a0 + (a1 - a0) * k / 12
-        arc.append((X1_TEE_X + tr * math.cos(a), X1_TEE_Z + tr * math.sin(a)))
-    vx, vl, vr = X1_CV_X, 48 + 4, RP + 7 + 2              # check-valve barrel (+2mm each end / under)
-    vz = X1_TEE_Z - vr
-    return ([(BACK_X, SPINE_Z0), (SPINE_X_END, SPINE_Z0), (SPINE_X_END, zt),
-             (vx + vl / 2, zt), (vx + vl / 2, vz), (vx - vl / 2, vz), (vx - vl / 2, zt)]
-            + arc + [(BACK_X, zt)])
+    """Spine outline in the X-Z plane: a rectangle whose top edge carries the X1 fill run, NOTCHED for the
+    two fittings fatter than the pipe — the X1 tee (its run body across the spine + its +X branch body and
+    socket cuff along it) and the in-line X1 check valve.  Notch sizes follow tee()/check_valve()."""
+    zt, clr = SPINE_Z1, 2
+    br, cr, bl = TEE_BR, TEE_CR, TEE_BL
+    tx0, tx1, tz = X1_TEE_X - br - clr, X1_TEE_X + bl + clr, X1_TEE_Z - cr - clr
+    vl, vr = CV_L, CV_R
+    vx0, vx1, vz = X1_CV_X - vl / 2 - clr, X1_CV_X + vl / 2 + clr, X1_TEE_Z - vr - clr
+    return [(BACK_X, SPINE_Z0), (SPINE_X_END, SPINE_Z0), (SPINE_X_END, zt),
+            (vx1, zt), (vx1, vz), (vx0, vz), (vx0, zt),
+            (tx1, zt), (tx1, tz), (tx0, tz), (tx0, zt),
+            (BACK_X, zt)]
 
 def rear_panel():
     """The 18mm exterior-ply REAR panel (recessed into the back-wall opening, flush with the back
@@ -435,6 +431,8 @@ COL_R  = 1241                            # far-face X-port lane (P-05→X3 Brown
 #   port-turn → lane jog gets two full elbow tangents; 6.5mm block off the spine +Yd face (deferred: <18mm, spine review)
 CTR_Y  = (YD_NEAR + YD_FAR) / 2          # 1181 — corridor center
 RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
+TEE_BR, TEE_CR, TEE_BL = RP + 5, RP + 9, 36   # tee(): body radius, socket-cuff radius, branch reach
+CV_L, CV_R = 48, RP + 7                       # check_valve(): barrel length, radius
 # CLIP STANDOFF RULE: every pipe P-clip sits on a ply-offcut block and the pipe's surface stands at
 # least CLIP_SHIM (one 18mm ply thickness) off its backing face, so in-line fittings / check valves /
 # couplings clear the face.  `clip_on_block()` draws block + strap; lanes below are set from it.
@@ -519,8 +517,8 @@ def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
     fitting body fatter than the pipe, with a raised SOCKET CUFF at each of the 3 ends.  Centered
     on the run/branch intersection (cx,cy,cz)."""
     color = color or "#9AA0A8"            # neutral fitting grey (PVC)
-    br, cr, cl = RP + 5, RP + 9, 12       # body radius, socket-cuff radius, cuff length
-    half, bl = 30, 36                     # run half-length, branch reach
+    br, cr, cl = TEE_BR, TEE_CR, 12       # body radius, socket-cuff radius, cuff length
+    half, bl = 30, TEE_BL                 # run half-length, branch reach
     ba, bs = branch[0], (1 if "+" in branch else -1)
     p = []
     # RUN body (centered, both ways) + BRANCH body (centre outward)
@@ -567,7 +565,7 @@ def check_valve(nm, px, py, pz, axis, color=None):
     centerline (px,py,pz) and oriented ALONG the run (`axis`).  Check valves are IN-LINE devices —
     they sit on a STRAIGHT length of pipe, never straddling an elbow."""
     color = color or C_CHECK
-    L, r = 48, RP + 7
+    L, r = CV_L, CV_R
     if axis == "x": return draw.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x")
     if axis == "y": return draw.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y")
     return draw.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z")

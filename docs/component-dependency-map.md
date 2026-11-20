@@ -247,7 +247,7 @@ two 0.75 L pressure accumulators — ACC-01 (corridor, damps the main filter loo
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
 Mounted on 18mm exterior ply plumbing panel (near IBC column face), in the IBC plumbing corridor.*
 
-*Reports: [Plumbing](plumbing-report.md) §3.2/§3.3/§4/§7 (corridor pump zone P-01/P-02/P-03/P-05, accumulator ACC-01, valves, panel mounting); [Processing System](water-system-report.md) §7 (equipment layout).*
+*Reports: [Plumbing](plumbing-report.md) §2.2/§2.3/§3/§6 (corridor pump zone P-01/P-02/P-03/P-05, accumulator ACC-01, valves, panel mounting); [Processing System](water-system-report.md) §7 (equipment layout).*
 
 *Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), electrical wiring (ES), water system (WS).*
 
@@ -273,7 +273,7 @@ NOT a load-bearing platform; the totes carry their own stack load. 1" PVC Sch-40
 Legacy `IBC_H_600`=1010 / `IBC_H_STK`=2020 constants are the superseded "600L fill-level" values — kept only
 for the few generators not yet repointed (overview Blue-trunk shelf, walkway/weight context imports).*
 
-*Reports: [Processing System](water-system-report.md) §3/§4.1 (storage capacity, Blue clean-water supply); [IBC Stacking System](ibc-stacking-report.md) §2/§3 (tote spec/layout, restraint deep 4-leg box); [Plumbing](plumbing-report.md) §6.1 (Blue supply flow path).*
+*Reports: [Processing System](water-system-report.md) §3/§4.1 (storage capacity, Blue clean-water supply); [IBC Stacking System](ibc-stacking-report.md) §2/§3 (tote spec/layout, restraint deep 4-leg box); [Plumbing](plumbing-report.md) §5.1 (Blue supply flow path).*
 
 *Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), water system (WS).*
 
@@ -290,7 +290,7 @@ DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, SV-01 pH sample tap.
 Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom).*
 
-*Reports: [Processing System](water-system-report.md) §4.2 (Brown used-water recycling); [Plumbing](plumbing-report.md) §3.1/§4.2/§4.4/§6.2 (filter skid + P-02, diverter valves, SV-01 pH sample tap, Brown flow path).*
+*Reports: [Processing System](water-system-report.md) §4.2 (Brown used-water recycling); [Plumbing](plumbing-report.md) §2.1/§3.2/§3.4/§5.2 (filter skid + P-02, diverter valves, SV-01 pH sample tap, Brown flow path).*
 
 *Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), water system (WS).*
 
@@ -307,7 +307,7 @@ DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 2" NPT bulkhead fittings for external drain/fill (X4), reinforcing plates for external ports,
 P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via side-entry near the top from the filter reject line (no top-cap access).*
 
-*Reports: [Processing System](water-system-report.md) §4.3 (Black waste containment); [Plumbing](plumbing-report.md) §3.2/§6.3 (P-03 corridor waste pump, Black flow path); [IBC Stacking System](ibc-stacking-report.md) §6 (external bulkhead ports, X4 drain/fill).*
+*Reports: [Processing System](water-system-report.md) §4.3 (Black waste containment); [Plumbing](plumbing-report.md) §2.2/§5.3 (P-03 corridor waste pump, Black flow path); [IBC Stacking System](ibc-stacking-report.md) §6 (external bulkhead ports, X4 drain/fill).*
 
 *Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), water system (WS).*
 

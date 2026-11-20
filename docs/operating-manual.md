@@ -525,7 +525,7 @@ Recurring upkeep between deployments. The design reason for each item is in the 
 Wear nitrile gloves and eye protection when handling the wash tray, liner or filter cartridges: the
 fine Prussian blue particles irritate skin and eyes.
 
-### Plumbing and filter skid ([Plumbing Report §10](plumbing-report.md))
+### Plumbing and filter skid ([Plumbing Report §9](plumbing-report.md))
 
 | Interval | Task |
 |----------|------|

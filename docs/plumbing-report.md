@@ -15,7 +15,7 @@
 
 The water-handling equipment mounts on **two plumbing panels**:
 
-- The **Corridor Plumbing Panel** — an 18mm exterior-grade plywood board mounted vertically at the
+- The **Corridor Plumbing Panel** — an 18mm exterior-grade plywood board (white face for visibility) mounted vertically at the
   front (cargo-door-facing) mouth of the IBC plumbing corridor on the front-portal frame
   (<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor width × 2,060mm tall). It carries the transfer pumps
   (P-01 Blue supply, P-02 Brown recycle, P-03 waste, P-05 Brown drain), the pressure
@@ -35,39 +35,19 @@ three functions:
    connections, and valve positions are organized on one face, minimizing pipe
    runs and simplifying maintenance.
 3. **Accessibility** — the panel faces the open end of the container. The operator approaches from the right walkway
-   and reaches into the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor to access the valves (the pumps are switched at the EP — §3.2).
+   and reaches into the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor to access the valves (the pumps are switched at the EP — §2.2).
 
 ---
 
-## 2. Panel Specifications
-
-| Parameter | Value |
-|-----------|-------|
-| Material | 18mm exterior-grade plywood (BC/ACX) — dry mounting board, not marine |
-| Face dimensions | <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm wide (Yd, the corridor width) × 2,060mm tall (Z) |
-| Orientation | Vertical, perpendicular to sealed end wall |
-| Bottom edge | Just above the walkway deck (clear of the spill line) |
-| Top edge | Just below the container ceiling |
-| Mounting | L-brackets to the front-portal frame uprights, 4 points |
-| Finish | Sealed cut edges (exterior grade); white face for visibility |
-
-The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Filter Skid** is the
-wet-end board mounted on the pinhole wall carrying the 3-stage filter train, the tray-drain skid
-row (P-04·SV-02·DV-02), the filter-output diverter DV-01 + the SV-01 sample tap, and the
-recycle-spray damper ACC-02 (§3.1); its place in the layout is in
-[Water System Report §7](water-system-report.md).
-
----
-
-## 3. Equipment Layout
+## 2. Equipment Layout
 
 The **Pinhole Wall Filter Skid** carries the
-3-stage filter train + the tray-drain skid row P-04·SV-02·DV-02 (§3.1); the **Corridor Plumbing
-Panel** carries the four corridor pumps (P-01/P-02/P-03/P-05) and the accumulator (§3.2–§3.3). Each panel has its
+3-stage filter train + the tray-drain skid row P-04·SV-02·DV-02 (§2.1); the **Corridor Plumbing
+Panel** carries the four corridor pumps (P-01/P-02/P-03/P-05) and the accumulator (§2.2–§2.3). Each panel has its
 own front-elevation drawing; the corridor backside (drain-riser spine + Circuit-C power) is a
 third sheet.
 
-### 3.1 Pinhole Wall Filter Skid — Filter Train + Tray-Drain Row
+### 2.1 Pinhole Wall Filter Skid — Filter Train + Tray-Drain Row
 
 Three 4.5"×20" Big Blue filter housings in a **horizontal bank mounted high on
 the pinhole wall** — the heads (with the 1" NPT ports) pinned just below the
@@ -114,10 +94,10 @@ iSpring WGB32B) with 4.5"×20" cartridges eliminates the inter-housing plumbing
 and the separate frame — one integrated bracket, 1" NPT inlet/outlet, a single
 1/2"→1" bushing at the DV-02 recycle feed.
 
-### 3.2 Corridor Plumbing Panel — Pump Zone
+### 2.2 Corridor Plumbing Panel — Pump Zone
 
 **Four** Shurflo 2088 pumps mount on the Corridor panel (P-04, the tray-drain pump, lives on
-the Pinhole Wall filter skid, §3.1). The accumulator ACC-01 sits at the column foot (§3.3).
+the Pinhole Wall filter skid, §2.1). The accumulator ACC-01 sits at the column foot (§2.3).
 
 | Pump | Circuit | Function |
 |------|---------|----------|
@@ -141,7 +121,7 @@ master pump switch on the Electrical Panel (EP)** ([Electrical Report §7.2–7.
 - **C1** (15A fuse, 12 AWG dry feed) runs the ceiling trunk to a **12V DC distribution block**
   (positive + shared negative bus) on the rear of this panel; from it a short 14 AWG
   marine-duplex branch feeds each of the four corridor pumps.
-- **C2** (10A fuse, 12 AWG) is P-04's own run to the Pinhole Wall filter skid (§3.1).
+- **C2** (10A fuse, 12 AWG) is P-04's own run to the Pinhole Wall filter skid (§2.1).
 
 | Item | Spec |
 |------|------|
@@ -182,7 +162,7 @@ ports, P-01 → ACC-01, P-02 → ACC-02 (down the far board to the under-walkway
 ribbon), the DV-01 recycle → IBC-3, and the IBC-2 fill.
 ![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
-### 3.3 Accumulator
+### 2.3 Accumulator
 
 | Parameter | Value |
 |-----------|-------|
@@ -198,9 +178,9 @@ pump, providing steady flow to the spray bar.
 
 ---
 
-## 4. Valves
+## 3. Valves
 
-### 4.1 Ball Valves (Isolation)
+### 3.1 Ball Valves (Isolation)
 
 | Valve | Size | Panel | Function |
 |-------|------|-------|----------|
@@ -231,7 +211,7 @@ detent, since some L-ports cross-connect the two inlets at the 4th quarter-turn.
 This keeps everything **1/2″ (no reducers)**, avoids the L-port OFF-detent risk, costs less than the
 3/4″ L-port, and puts the on/off where the operator's hand is.
 
-### 4.2 Diverter Valves (3-Way)
+### 3.2 Diverter Valves (3-Way)
 
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
@@ -247,7 +227,7 @@ Its settings are in the [Operating Manual §4.2](operating-manual.md).
 recycle (IBC-3 Brown buffer, which P-02 later sprays back); pH ><!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> or discolored routes to Black (IBC-4).
 Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
-### 4.3 Check Valves
+### 3.3 Check Valves
 
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
@@ -259,7 +239,7 @@ The Shurflo 2088 pumps carry integral check valves, but those sit upstream of th
 guards the one gravity (non-pumped) path, the X1 fresh fill. CV-2 and CV-3 make the two waste legs
 one-way where they share the IBC-4 merge tee. All three are in the IBC zone, not on a panel.
 
-### 4.4 Sample Taps (SV-01, SV-02)
+### 3.4 Sample Taps (SV-01, SV-02)
 
 | Valve | Size | Panel | Function |
 |-------|------|-------|----------|
@@ -278,7 +258,7 @@ procedure is in the [Operating Manual §4.2](operating-manual.md).
 
 ---
 
-## 5. Pipe Specifications
+## 4. Pipe Specifications
 
 | Run | Schedule | Nominal Size | OD (mm) | Material | Notes |
 |-----|----------|-------------|---------|----------|-------|
@@ -296,7 +276,7 @@ ports (1/2"-14 male parallel thread). This eliminates reducer fittings at pump
 connections. The only reducer is a single 1/2"→1" bushing at the filter skid
 inlet (DV-02 output to F-01 input).
 
-### 5.1 Joint Convention
+### 4.1 Joint Convention
 
 **Pipe joints are solvent-weld (slip socket) by default — the run is glued PVC.**
 **Threaded (NPT) is used *only* where a run lands on a hard component that must be
@@ -313,14 +293,14 @@ Classifying the BOM by this rule:
 | **Run joints — SLIP** | glued PVC socket | tees, elbows, cross, couplings, pipe |
 | **Component interfaces — THREADED** | NPT (via slip×NPT adapter) | ball/diverter/check valves, camlocks, tank bulkheads, pump & filter ports, sample taps, accumulator |
 
-### 5.2 Material: PVC Schedule 40 (justification)
+### 4.2 Material: PVC Schedule 40 (justification)
 
 The run pipe is **PVC Sch-40, solvent-welded**. PVC is chosen over HDPE because for this
 service the deciding factors are **buildability and cost**, not the toughness where HDPE leads:
 
 - **Joining — decisive for a hand-built system.** PVC solvent-welds with primer + cement and
   hand tools; HDPE *cannot be glued* — it needs heat-fusion equipment or bulkier, costlier
-  mechanical/barbed fittings. Solvent-weld is what makes the §5.1 slip convention practical.
+  mechanical/barbed fittings. Solvent-weld is what makes the §4.1 slip convention practical.
 - **Pressure.** At the 45 PSI Shurflo 2088 service, Sch-40 (½" ≈ 600 PSI @ 73 °F) carries a
   ~13× margin — a non-issue for either material.
 - **Chemistry.** Both are fully compatible with the dilute cyanotype wash (potassium
@@ -338,7 +318,7 @@ close intervals. Runs stay off the sunniest wall face — PVC softens near 60 °
 retains > 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
 conditions, PEX is the tougher DIY alternative.)
 
-### 5.3 Pump-run supports
+### 4.3 Pump-run supports
 
 The corridor pump risers and the back-of-panel drain runs cantilever off the pump ports and
 tote taps, so each is backed and clamped rather than left hanging on its solvent-weld joints.
@@ -369,13 +349,13 @@ The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-06 on th
 below the clamp row above them, rotated 45° so their handles swing into the open corridor on the
 diagonal — reachable while clear of the boards. Hardware: 3 side boards
 (cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 46 cushioned 3/4"
-P-clips (§9).
+P-clips (§8).
 
 ---
 
-## 6. Flow Paths
+## 5. Flow Paths
 
-### 6.1 Blue System — Clean Water Supply
+### 5.1 Blue System — Clean Water Supply
 
 ```
 IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-05 → spray bar
@@ -386,7 +366,7 @@ PVC manifold, through their DN50 tote valves), pressurizes through ACC-01 (0.75L
 and delivers to BV-05 on the spray-bar feed. A 4m flexible hose connects BV-05
 to the spray bar center feed bulkhead.
 
-### 6.2 Brown System — Used Water Recycling
+### 5.2 Brown System — Used Water Recycling
 
 ```
 Tray sump → P-04 → SV-02 sample → 3W-DV-02 → 1/2"→1" reducer → F-01 → F-02 → F-03
@@ -399,7 +379,7 @@ sends it into the 3-stage filter train. The SV-01 sample tap after the filters f
 pH check that sets 3W-DV-01: recycle (IBC-3 Brown buffer) or Waste (IBC-4). **P-02** then recirculates the clean IBC-3 buffer to the spray bar (via
 ACC-02 and BV-05) — the recycle-spray loop.
 
-### 6.3 Black System — Waste Containment
+### 5.3 Black System — Waste Containment
 
 ```
 3W-DV-01 reject → IBC-4
@@ -414,30 +394,22 @@ port carries a tethered camlock dust cap whenever no hose is connected.
 
 ---
 
-## 7. Mounting and Structure
+## 6. Mounting and Structure
 
-### 7.1 Plumbing Panel Mounting
+### 6.1 Panel Mounting
 
-The plywood panel is secured to the IBC restraint front-portal frame uprights
+The **Corridor Plumbing Panel** is secured to the IBC restraint front-portal frame uprights
 (at the corridor mouth) at four points using L-brackets with M10 bolts.
 The frame provides rigid lateral restraint — the panel does not contact the
 container walls directly.
 
-### 7.2 Filter Skid Mounting
-
-The filter skid uses no separate frame: each housing is carried on its own **Pentair 244718
-zinc single-housing bracket** machine-screwed to the 18mm plywood backing. The mount provides:
-
-- Rigid support for the ~5kg weight of each filled filter housing
-- 18mm plywood backing board with **back-face pronged tee-nuts** for the housing machine-screws
-  (a re-torqueable joint, serviceable without stripping the ply)
-
-Each bracket fixes with **two 1/4"-20 zinc machine screws** (+ a washer spanning the 5/16-sized ear
+The **Pinhole Wall Filter Skid** uses no separate frame: each housing is carried on its own **Pentair 244718
+zinc single-housing bracket** carrying the ~5kg filled housing. Each bracket fixes with **two 1/4"-20 zinc machine screws** (+ a washer spanning the 5/16-sized ear
 bore) through its ears into **back-face pronged tee-nuts in the 18mm plywood backing** — a
 re-torqueable joint, not wood or lag screws. 25mm plywood-offcut standoff blocks behind each ear
 space the housing off the ply so the sump bowl hangs free and clears for cartridge changes.
 
-### 7.3 Pump Mounting
+### 6.2 Pump Mounting
 
 Each Shurflo 2088 mounts on a stainless steel 4-bolt bracket (Shurflo OEM
 accessory). The bracket screws through the plywood panel. Pump body orientation
@@ -445,7 +417,7 @@ is vertical with ports at the head (top), facing left and
 right. This orientation minimizes the footprint on the 270mm-wide
 panel and allows gravity to assist with priming.
 
-### 7.4 Corridor Panel Protrusion Envelope
+### 6.3 Corridor Panel Protrusion Envelope
 
 | Component | Protrusion from panel face (-X) |
 |-----------|-------------------------------|
@@ -458,7 +430,7 @@ right rail at X<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_
 
 ---
 
-## 8. Pipe Routing Conventions
+## 7. Pipe Routing Conventions
 
 All piping on the plumbing panel follows the parallel-wall drawing convention
 used throughout TBS-001 engineering diagrams:
@@ -476,7 +448,7 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 - **Right edge** (far wall side) — Brown/Waste IBC connections,
   external drain routing
 
-### 8.1 Corridor ↔ pinhole-wall ribbon (under the right walkway)
+### 7.1 Corridor ↔ pinhole-wall ribbon (under the right walkway)
 
 The four lines that connect the corridor equipment to the pinhole-wall skid —
 P-02 → ACC-02 (recycle spray), the DV-02 waste → IBC-4, the filtered return
@@ -507,7 +479,7 @@ the grate).
 
 ---
 
-## 9. Parts List
+## 8. Parts List
 
 See the **[Master Shopping List, filtered to the water system](master-shopping-list.md?system=water)** for the full water BOM with suppliers, current prices, and click-to-sort/filter.
 
@@ -515,18 +487,18 @@ The panel-mounted equipment for both plumbing panels is part of the water system
 
 ---
 
-## 10. Maintenance
+## 9. Maintenance
 
 The serviceable parts are designed to be reached and replaced in place. The filter cartridges are
-the consumable: F-03 (carbon) lasts ~40 prints, F-01 (sediment) ~50 and F-02 (KDF-55) ~60 (§3.1).
-Every component that needs service lands on a threaded interface (§5.1), the Big Blue sumps hang
-clear of the backing ply for cartridge changes (§7.2), and ACC-01 holds a 30 PSI pre-charge. The
+the consumable: F-03 (carbon) lasts ~40 prints, F-01 (sediment) ~50 and F-02 (KDF-55) ~60 (§2.1).
+Every component that needs service lands on a threaded interface (§4.1), the Big Blue sumps hang
+clear of the backing ply for cartridge changes (§6.1), and ACC-01 holds a 30 PSI pre-charge. The
 inspection schedule and service procedures are in the
 [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 
-## 11. Source References
+## 10. Source References
 
 1. [Shurflo 2088-554-144 datasheet](https://www.shurflo.com/products/2088-series) — 12VDC diaphragm pump, 3.5 GPM, 45 PSI,
    self-priming. 127mm × 216mm × 114mm body dimensions, 1/2"-14 NPSM ports.
@@ -546,4 +518,4 @@ inspection schedule and service procedures are in the
    Tray sump, P-04 suction pickup, spray bar connection to BV-05.
 9. [Walkway Pipe Routing](walkway-routing-sections.md) — Cross-sections of the
    corridor↔pinhole-wall ribbon under the right walkway: routing envelope,
-   clearances, the open-bay corridor entry, and the spray-carriage clearance (§8.1).
+   clearances, the open-bay corridor entry, and the spray-carriage clearance (§7.1).

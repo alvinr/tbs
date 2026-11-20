@@ -78,7 +78,7 @@ It will **not**:
 
 **Reuse rule:** Recycled Brown water is used only for the **first wash**, where the unexposed sensitizer leaches out and the bath is dirtiest regardless of what it starts as. Washes 2 and 3 use Blue, so the print finishes in clean water and iron compounds are not re-deposited. After 3 recycle passes, Brown water goes to Black.
 
-Iron compounds in the wash water react with copper and galvanized steel — the plumbing is PVC throughout ([Plumbing Report §5](plumbing-report.md)).
+Iron compounds in the wash water react with copper and galvanized steel — the plumbing is PVC throughout ([Plumbing Report §4](plumbing-report.md)).
 
 ---
 
@@ -180,7 +180,7 @@ Processing tray sump (P-04 suction pickup)
        P-02 ──→ ACC-02 (pulsation damper) ──→ BV-05 ──→ spray bar   (wash 1)
 ```
 
-**Filter train:** three 4.5"×20" Big Blue housings in a bank high on the pinhole wall. Housings, plumbing, and cartridge replacement intervals are in [Plumbing Report §3.1](plumbing-report.md).
+**Filter train:** three 4.5"×20" Big Blue housings in a bank high on the pinhole wall. Housings, plumbing, and cartridge replacement intervals are in [Plumbing Report §2.1](plumbing-report.md).
 
 | Stage | Cartridge | Removes |
 |-------|-----------|---------|
@@ -230,7 +230,7 @@ The tray and the spray-bar gantry are specified in the [Processing Tray & Spray 
 ## 5. Plumbing Specification
 
 Pipe sizing, fittings, joints, and the PVC Sch-40 material choice are specified in the
-[Plumbing Report §5](plumbing-report.md). All pump-driven runs are 1/2", matching the Shurflo 2088 ports;
+[Plumbing Report §4](plumbing-report.md). All pump-driven runs are 1/2", matching the Shurflo 2088 ports;
 larger pipe is used only for the gravity fill/drain lines at the bulkhead ports and the filter outlet.
 
 ---
@@ -266,7 +266,7 @@ Plumbing Panel** at the IBC front, so pump-to-tote lines are short and stay insi
 filter bank, and the sample taps sit on the **Pinhole Wall filter skid**. The longest run is the Blue
 supply from P-01 along the pinhole wall to BV-05 and the spray bar. The lines between the corridor and the
 skid run as a flat ribbon under the right-walkway grate. Routing detail is in the
-[Plumbing Report](plumbing-report.md) §8 and [Walkway Pipe Routing](walkway-routing-sections.md).
+[Plumbing Report](plumbing-report.md) §7 and [Walkway Pipe Routing](walkway-routing-sections.md).
 
 **External ports.** Three 2" NPT bulkheads with camlocks, stacked on the end-wall centerline, let the
 system be filled and drained from a bowser or tanker without opening the cargo doors:
@@ -296,7 +296,7 @@ The water-system budget, including the processing tray, spray bar, and IBC stack
 
 ## 9. Maintenance
 
-The storage side needs little upkeep by design: the totes are closed, opaque vessels and the plumbing is PVC throughout. Three tasks recur: flushing sediment from the Brown buffer, rinsing the Blue totes against biofilm before long storage, and checking the IBC-4 valve and cap before transport. Filter cartridges, pipe joints, pumps and the accumulator are covered in the [Plumbing Report §10](plumbing-report.md). The intervals and procedures are in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The storage side needs little upkeep by design: the totes are closed, opaque vessels and the plumbing is PVC throughout. Three tasks recur: flushing sediment from the Brown buffer, rinsing the Blue totes against biofilm before long storage, and checking the IBC-4 valve and cap before transport. Filter cartridges, pipe joints, pumps and the accumulator are covered in the [Plumbing Report §9](plumbing-report.md). The intervals and procedures are in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

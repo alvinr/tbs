@@ -12,7 +12,7 @@ available if the question is reopened.
 ## 1. Why the tray was reviewed
 
 At ~$1,473–2,121 the processing tray is the **largest single reducible line** in
-the [water system](water-system-report.md) — stainless was chosen originally for
+the [water system](water-system-report.md) — stainless is there for
 **rigidity and finish, not chemistry** (the cyanotype wash — dilute ferric
 ammonium oxalate / potassium ferricyanide / citric acid, no chloride — is inert
 on almost any plastic). That made a cheaper material worth checking.

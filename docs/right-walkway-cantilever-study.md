@@ -2,17 +2,17 @@
 <!-- © 2026 Alvin Richards -->
 # Right Walkway — Cantilever Support Study
 
-**Status:** ADOPTED (rev12) — **decision record**. The right walkway is now the wall-/IBC-cantilevered design; the ceiling-hung scheme it replaced is retired. The as-built version (refined into a closed cantilever rectangle) is in [Walkway Report §4](walkway-report.md); this page records *why* the change was made and the first-order load check behind it.
+**Status:** ADOPTED — **design rationale**. The right walkway is cantilevered off the IBC frame and the side walls. The as-built version (a closed cantilever rectangle) is in [Walkway Report §4](walkway-report.md); this page records *why* a cantilever rather than a ceiling-hung walkway, and the first-order load check behind it.
 
 ## 1. Why
 
-The right walkway was originally **ceiling-hung** — five M10 rod-pairs from the deck up to the roof. The film-plane rework (wall-seat saddles, rails now running the full width) exposed a conflict: **those vertical rods sit in the film plane's X-footprint (X4329–4629 ⊂ X260–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing and Yd1575 at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, colliding with the hangers at Yd1828/1371 — plus the rods sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
+A **ceiling-hung** walkway — five M10 rod-pairs from the deck up to the roof — conflicts with the film plane, whose rails run the full width on wall-seat saddles: **the vertical rods would sit in the film plane's X-footprint (X4329–4629 ⊂ X260–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing and Yd1575 at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, colliding with the hangers at Yd1828/1371 — plus the rods would sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
 
-**Key insight:** the **deck itself was never the problem** — it sits at Z140, tucked *under* the film-frame bottom (Z160). Only the **vertical rods** intrude. Remove the rods and the film-plane conflict disappears, **with no reduction in film size and the same swing range on both sides**.
+**Key insight:** the **deck itself is not the problem** — it sits at Z140, tucked *under* the film-frame bottom (Z160). Only the **vertical rods** intrude. Remove the rods and the film-plane conflict disappears, **with no reduction in film size and the same swing range on both sides**.
 
-## 2. The clearance that makes this possible now
+## 2. The clearance that makes a cantilever possible
 
-The earlier design went ceiling-hung because there was thought to be no room for floor/wall support. That changed:
+A floor- or wall-supported deck needs room under the grate and beside the tray. Both exist:
 
 | Element | Z | Note |
 |---|---|---|
@@ -22,11 +22,11 @@ The earlier design went ceiling-hung because there was thought to be no room for
 | Walkway grate | 115–130 | |
 | Film-frame bottom rail | 150 | deck clears it by 20mm |
 
-Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC frame face. So there's now both vertical and horizontal room the old layout lacked.
+Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC frame face. So there is both vertical and horizontal room for the supports.
 
 ## 3. The design — hybrid anchor (IBC frame + side walls)
 
-*As-built (rev12): refined into a closed cantilever rectangle — see [Walkway Report §4](walkway-report.md). The support strategy below is what was built: cantilever off the IBC frame + wall anchors, no ceiling rods.*
+*The as-built closed cantilever rectangle is in [Walkway Report §4](walkway-report.md). The support strategy: cantilever off the IBC frame + wall anchors, no ceiling rods.*
 
 The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4654)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
 
@@ -45,7 +45,7 @@ The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X
 | Live load (one person) | 1.0 kN | ~100 kg |
 | Worst cantilever arm | 325mm | person at the far deck edge, over one arm |
 | **Worst single-arm moment** | **~0.33 kN·m** | 1.0 kN × 0.325 m (conservative; normally shared 2 arms) |
-| Arm bending stress (as-built **2×1×0.120in**, Z≈3.35 cm³) | ~98 MPa | vs 250 MPa yield → **SF ≈ 2.5** (single-arm, conservative; shared across the 2 mid-span arms in service). #26: the arm was shaved from 40×40 for spray-beam clearance; 2×1 is the shallowest stock section (2×⅞ non-stock) and, being deeper than 2×⅞, restores this margin |
+| Arm bending stress (as-built **2×1×0.120in**, Z≈3.35 cm³) | ~98 MPa | vs 250 MPa yield → **SF ≈ 2.5** (single-arm, conservative; shared across the 2 mid-span arms in service). 2×1 is the shallowest stock section that clears the spray beam (2×⅞ is non-stock) |
 | Added stress on IBC upright (2×2×0.120in, Z≈8.8 cm³) | ~37 MPa | small vs the frame's stack duty |
 | Anchor bolt force (2 bolts @ ~100mm) | ~3.3 kN/bolt | vs ~15–20 kN M12 capacity → **SF ≈ 5** |
 
@@ -55,24 +55,20 @@ The IBC frame already carries the 2×2 IBC stack and is anchored to floor + wall
 
 **Resolved:** the film-plane ↔ walkway conflict (no rods in the sweep or optical band); film plane keeps **full width (X260–4649)** and the **same tilt/swing range on both sides**; ceiling de-cluttered on the right.
 
-**Resolved as follow-ups (rev12):** the **chem prep shelf** was moved left of the tap (X3129–3729 / Yd300–600) to clear the film-plane swing envelope, and the **sump pickup + tray-drain plumbing** return riser was rerouted into the grate gap with a Yd twist to clear the new right-walkway beam.
+**Related clearances:** the **chem prep shelf** sits left of the tap (X3129–3729 / Yd300–600), clear of the film-plane swing envelope, and the **sump pickup + tray-drain plumbing** return riser runs in the grate gap with a Yd twist to clear the right-walkway beam.
 
 ## 6. Comparison
 
-| | Ceiling-hung (former) | **Cantilever off IBC frame (adopted, rev12)** |
+| | Ceiling-hung | **Cantilever off IBC frame (adopted)** |
 |---|---|---|
 | Rods in film-plane sweep / optics | **yes** (the conflict) | **none** |
-| Forces film-size reduction? | (else yes) | **no** — full width, symmetric swing |
+| Forces film-size reduction? | yes, unless the film plane narrows | **no** — full width, symmetric swing |
 | Tray / spray-bar intrusion | none | none (arms at Z70–115, above the gantry) |
 | Adds load to | roof ribs | IBC frame (2 inner arms) + near/far walls (2 ledgers); minor — needs connection sign-off |
 | Cost | 5 rod-pairs + 10 roof plates | 2 arms + 2 wall ledgers + clamps/bolts (≈ neutral) |
 
-## 7. Implementation (rev12 — complete)
+## 7. See Also
 
-Adopted and built per [Walkway Report §4](walkway-report.md): the cantilever rectangle replaced the ceiling hangers in the walkway + overview 3D models, the 2D walkway diagram + `component-dependency-map` were updated, and the BoM/cost and weight models were rebased (ceiling-hanger hardware → cantilever arms/gussets — roughly neutral). The chem-shelf shift and sump reroute followed (§5).
-
-## 8. See Also
-
-- [Walkway Report §4](walkway-report.md) — the as-built right-walkway cantilever rectangle (rev12).
-- [Film Plane Mechanism Report](film-plane-mechanism-report.md) — the film-plane rework that drove the change.
+- [Walkway Report §4](walkway-report.md) — the as-built right-walkway cantilever rectangle.
+- [Film Plane Mechanism Report](film-plane-mechanism-report.md) — the film-plane sweep the walkway must clear.
 - [Weight Distribution Report §3.2](weight-distribution-report.md) — the right-walkway mass used in the load check.

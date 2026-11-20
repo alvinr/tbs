@@ -195,7 +195,7 @@ ribbon), the DV-01 recycle → IBC-3, and the IBC-2 fill.
 |-----------|-------|
 | Model | SeaFlo SFAT-075-125-01, 0.75L (23.5 oz) |
 | Dimensions | 127mm OD × 200mm length |
-| Position | Corridor panel, at the column **foot** (below P-01 — the P-01/ACC order was swapped to drop the accumulator to the base) |
+| Position | Corridor panel, at the column **foot** (below P-01, so the accumulator sits at the base) |
 | Port | 1/2" NPT, bottom |
 | Function | Smooths P-01 pump cycling, maintains pressure when the pump is off |
 

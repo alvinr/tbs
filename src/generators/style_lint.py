@@ -63,9 +63,10 @@ HISTORY = [
     ("retired / superseded",     r"\b(?:was|were|been|is|are) (?:retired|superseded|dropped|abandoned|deprecated)\b|\bsuperseded\b"),
     ("replaced (by/with)",       r"\b(?:was|were|been|is|are)? ?replaced (?:by|with)\b|\breplaces the\b"),
     ("former / previously",      r"\bformer(?:ly)?\b|\bpreviously\b|\boriginally\b|\bused to be\b"),
-    ("no longer",                r"\bno longer\b"),
+    ("no longer",                r"\bno longer\b(?! (?:\w+[- ])?sensitive| sits| reaches)"),   # physical state, not history
     ("the old / the earlier",    r"\bthe (?:old|earlier|prior|previous|original) (?:design|version|plan|layout|spec|approach|plate|mount|route|routing|value)\b"),
     ("now (vs before)",          r"\bnow (?:live|lives|sits|sit|uses|carries|carry|replaces|does|do|is|are)\b"),
+    ("was changed (moved, …)",   r"\b(?:was|were) (?:moved|shaved|rerouted|rebased|resized|shifted|renamed|reworked|swapped|deleted)\b"),
     ("(was X) aside",            r"\((?:was|were|previously|formerly)\b"),
 ]
 HISTORY = [(label, re.compile(pat, re.IGNORECASE)) for label, pat in HISTORY]

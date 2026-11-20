@@ -248,7 +248,7 @@ design: equipment on the pinhole wall (near side) is lightweight (electrical
 panel, battery, and solar controller totaling ~<!-- BEGIN weight:wt-near-elec -->28<!-- END weight:wt-near-elec --> kg), the pump manifold is on the Corridor Plumbing Panel
 centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
 across the container width. The film plane carriage contributes ~<!-- BEGIN weight:wt-comp-film -->51<!-- END weight:wt-comp-film --> kg to
-the far side; the near (pinhole-wall) side now carries only the light pinhole disc
+the far side; the near (pinhole-wall) side carries only the light pinhole disc
 holder (~1.5 kg), so this lateral offset is taken up by the IBC stack and corridor
 plumbing rather than a near-side counterweight board.
 

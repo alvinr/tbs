@@ -465,8 +465,8 @@ budget in [Weight Distribution](weight-distribution-report.md).
 ### 3.8 Beam — Single Length, No Splice
 
 The beam is a **single 17 ft 4 in (5,283mm) length** of 1½×1½×0.062in 304-SS square tube — it
-spans the full 4,289mm width with margin, so there is **no butt weld and no splice**. This deletes
-the former mid-span joint, which sat at the point of maximum bending moment. The **~12mm pre-camber**
+spans the full 4,289mm width with margin, so there is **no butt weld and no splice**. A joint at
+mid-span would sit at the point of maximum bending moment. The **~12mm pre-camber**
 is set over the full length in the fabrication jig.
 
 ### 3.9 Flow Analysis

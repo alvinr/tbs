@@ -6,7 +6,7 @@
 
 The pinhole wall is the far (scene-facing) end wall of the container — the plane that carries the camera's aperture. This report covers the **wall interface**: the aperture cut through the container wall and the flat **wall-frame adapter** that the front board bolts to. The front board itself — the interchangeable pinhole/lens mount — is the [Pinhole Disc Holder](pinhole-disc-holder-report.md); the pinhole optics are in the [Pinhole Optics Report](pinhole-optics-report.md).
 
-> The former standard **Ø600 interchangeable pinhole/lens plate** (8× M12 on a Ø540 wall frame, with separate pinhole and lens plates) was **retired**. The compact Ø80-carrier disc holder now does both jobs — a pinhole board or a large-format lens board (Copal/Compur 0/1/3) — from one small mount, and focus for a lens is set at the **film plane** (the rear standard's depth rail), so no lens-plate focus tube is needed.
+> The compact Ø80-carrier disc holder takes either a pinhole board or a large-format lens board (Copal/Compur 0/1/3) from one small mount. Focus for a lens is set at the **film plane** (the rear standard's depth rail), so the front board needs no focus tube.
 
 ---
 

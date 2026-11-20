@@ -216,7 +216,7 @@ The sub-plate exists because the container floor cross-members are **not dimensi
 | W5 | Wall-hanger seat ↔ pocket back-plate (the hanger PLATE weldment — the bar is *bolted* to it via BC-W, not welded) | 4 mm | — | min fillet |
 | W6 | Ribbon cross-beam ↔ walkway bearer (×4 ends) | 4 mm | both ends | min fillet |
 
-The rear-panel bracket (**RP2**) and the side-panel pipe-run L-bracket (**SP2**) are **no longer welded** — they attach to the post with **#14 self-drilling TEK screws** (2 per bracket) so they can be added to a pre-finished, painted frame with no hot work and stay adjustable; both carry only light static loads (panel ~33 N/bracket; pipe runs lighter).
+The rear-panel bracket (**RP2**) and the side-panel pipe-run L-bracket (**SP2**) are **not welded** — they attach to the post with **#14 self-drilling TEK screws** (2 per bracket) so they can be added to a pre-finished, painted frame with no hot work and stay adjustable; both carry only light static loads (panel ~33 N/bracket; pipe runs lighter).
 
 **Sheet 6** maps where each weld lands on the frame (a schematic front elevation with W1–W6 ticked) alongside the schedule:
 
@@ -462,7 +462,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
 
-**Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket — each with weld (W) + fastener callouts. (The walkway arm→upright CJ connection is drawn in full on Sheet 5, so its former Detail F here was dropped as a duplicate.)**
+**Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket — each with weld (W) + fastener callouts. (The walkway arm→upright CJ connection is drawn in full on Sheet 5.)**
 ![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
 
 **Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 17 arm-steel + 8 end-plate = 325 reach, half-lap depth 20 of the 25.4; CJ bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8; the plate→post through-bolts shown at the upright end), and the END-PLATE / rear-backing-plate detail (65 × 190, 2× Ø13 for M12 **both above the arm** at 30 spacing — bearing-type; the corridor bottom frame rail is ghost-marked behind the plate's lower edge with no bolt near it — 5 mm fillet all round, arm weld footprint shadow-marked)**

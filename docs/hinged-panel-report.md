@@ -335,7 +335,7 @@ See the [Master Shopping List](master-shopping-list.md?system=panel) for the par
 **Sheet 5 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)**
 ![TBS-001 Hinged Panel — Sheet 5: Pull Handle Mounting Detail](assets/hingepanel-sheet5.png)
 
-**Sheet 12 — Door-Frame Hardware: cam-latch keeper + brush-strip holder (two details)** — the transport lock formerly here is now on its own focused sheet (Sheet 17).
+**Sheet 12 — Door-Frame Hardware: cam-latch keeper + brush-strip holder (two details)** — the transport lock is drawn on Sheet 17.
 ![TBS-001 Hinged Panel — Sheet 12: Frame Hardware Attachments](assets/hingepanel-sheet12.png)
 
 ### 4.4 Emergency Egress — Path Clearance

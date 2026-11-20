@@ -179,7 +179,7 @@ means that image-plane illuminance scales as:
 E ∝ 1/N²
 ```
 
-This is why photographers say "each stop is a factor of two in exposure." One stop = a factor of √2 change in diameter = a factor of 2 change in area = a factor of 2 change in exposure time. The system was originally standardized at f/1, f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11, f/16 — each value is √2 × the previous.
+This is why photographers say "each stop is a factor of two in exposure." One stop = a factor of √2 change in diameter = a factor of 2 change in area = a factor of 2 change in exposure time. The full-stop scale is f/1, f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11, f/16 — each value is √2 × the previous.
 
 The f/1088 pinhole sits 12.2 stops beyond f/16. Each of those 12.2 stops doubles the exposure time:
 

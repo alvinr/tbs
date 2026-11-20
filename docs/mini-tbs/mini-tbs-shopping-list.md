@@ -124,7 +124,7 @@ One developing tray for the wash baths (development, §13). Coating happens on t
 | Black contractor bag (3-mil, opaque) | 1 | Home Depot | $0.50/bag | Amazon | $18/20-ct | Cut two arm tubes; must be black/opaque, not translucent |
 | Extra-large rubber gloves | 1 pr | Grocery/drug store | $3.99 | Amazon | $6.99 | Taped to the inner tube end — these are the chemical PPE |
 
-**Alternative subtotal: $4–$7** (replaces the fabric-sleeve line, not additive)
+**Alternative subtotal: $4–$7** (instead of the fabric-sleeve line, not additive)
 
 ---
 

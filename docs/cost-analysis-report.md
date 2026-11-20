@@ -80,10 +80,10 @@ After the material decisions, the only still-**available** build-savings levers 
 > percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the
 > scenario layer, solar is a real 1-panel subtraction (drop 1× `solar-panel-200w`), and the roll-up
 > is the summed **still-available** levers over the capital build, so all cascade on any cost change.
-> Bucket-B finding (2026-07-05): modeling each option against the as-built BOM showed lever 3 (battery)
+> Modeling each option against the as-built BOM shows lever 3 (battery)
 > is moot — the standard is already 1×100 Ah, and its 2nd pack is a +$375 **upgrade**, not a saving — so
-> it was dropped from the roll-up. Lever 2 (tray) is **decided** too — 304 SS kept (over the 4.5 m span a
-> poly tray needs a support frame that erodes the saving, plus poly-weld fab) — so it also leaves the
+> it is not in the roll-up. Lever 2 (tray) is **decided** too — 304 SS kept (over the 4.5 m span a
+> poly tray needs a support frame that erodes the saving, plus poly-weld fab) — so it is also outside the
 > roll-up. The decided levers keep their saving as a declared estimate band by design: each describes a
 > path not taken, so pricing a full alternative would single-source a figure for an option that won't be
 > built. The roll-up and both still-available levers derive; nothing here is pending.

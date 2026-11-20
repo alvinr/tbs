@@ -6,8 +6,7 @@
 
 Plywood recurs across the build — the IBC-corridor plumbing panel and pump-mount shirt, the
 pinhole-wall filter-skid backing, the interior EP electrical backboard, the hinged light-trap
-panel's Fan-B mount band and pull-out corner apron (base + corner strips + lip cleats), and the chemistry-prep shelf. Each was
-previously cut ad hoc on its own subsystem drawing. This document is the **single cut sheet** the
+panel's Fan-B mount band and pull-out corner apron (base + corner strips + lip cleats), and the chemistry-prep shelf. This document is the **single cut sheet** the
 buyer and fabricator work from: every plywood part in one schedule, grouped by grade and thickness
 so same-stock parts nest on one sheet.
 
@@ -63,8 +62,8 @@ both the chem-prep work surface and the EP electrical backboard — the backboar
 wipeable face, which the UV coating already gives, so it rides the same sheet rather than buying its own.
 Sheet D is single-grade (a different finish from A–C), so it cannot cross-nest — that residual sheet is
 set by the grade split, not packing efficiency. Standard exterior grade throughout except the UV-coated
-sheet-D surface — no marine ply, and no pressure-treated (the former PT Fan-B sheet was over-spec for a
-dry, vented mount), since no plywood part carries a water-immersion load.
+sheet-D surface — no marine ply and no pressure-treated, since no plywood part carries a water-immersion load
+(the Fan-B mount is dry and vented).
 
 ## 5. Source references
 

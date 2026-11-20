@@ -39,7 +39,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 the *how* of operation lives only in the operating manual. **Describe the current design, not how we
 got here** (§D): no "was retired", "replaced by", "formerly", "no longer", "now lives", "(was $X)" —
 state what the design is and why; history goes in RELEASE.md. `style_lint.py <doc>` lists these as
-`history:` lines (2026-11-20 baseline: 32 hits across 25 docs). Notes from the earlier terseness pass
+`history:` lines (2026-11-20: 32 hits across 25 docs found and rewritten; now 0). Notes from the earlier terseness pass
 are kept after each entry.
 
 ### Costing

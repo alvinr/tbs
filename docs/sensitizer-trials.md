@@ -51,7 +51,7 @@ before the bulk order commits.
 - Mount a **1 m² test piece.** Weigh the sensitizer container before and after a single
   controlled brush/roller coat; mass ÷ density (~1.05 g/ml) = ml applied.
 - Repeat for the **second wet-on-wet coat** and record the combined ml/m².
-- **Output:** confirmed coverage (replaces the ~120 ml/m²/coat estimate).
+- **Output:** confirmed coverage (used in place of the ~120 ml/m²/coat estimate).
 
 ### T2 — Concentration vs density (the cost driver)
 **Goal:** find the **leanest** strength that still gives full shadow density, to avoid

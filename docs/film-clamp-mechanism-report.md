@@ -28,7 +28,7 @@ This report describes the **muslin clamp system** that secures the muslin to the
 
 Each clamp is an **off-the-shelf inert nylon spring clamp** (Pittsburgh 69289 — a fiberglass body with swivel pads) clipped over the frame edge. Because the clamp must open around the full 2″ angle leg to reach the muslin on the board (leg + ACM + muslin ≈ 55mm), a **≥3″ clamp** is used — a 2″ clamp is too tight. An inert **HDPE filler strip** packs the open L channel so the clamp closes on a solid full-depth sandwich (ALU upstand + HDPE + ACM + muslin) instead of collapsing into the void.
 
-The clamp is **fiberglass/nylon, not steel** — deliberately, for the cyanotype/ferricyanide splash zone where a steel spring would rust. It clips on and off by hand (squeeze the handle), giving clear tactile feedback for loading/unloading muslin under safelight, and its spring holds it closed at any tilt or swing angle. This replaces the earlier custom through-bolted bracket + torsion-spring + neoprene-jaw clip — no fabrication, and chemistry-safe.
+The clamp is **fiberglass/nylon, not steel** — deliberately, for the cyanotype/ferricyanide splash zone where a steel spring would rust. It clips on and off by hand (squeeze the handle), giving clear tactile feedback for loading/unloading muslin under safelight, and its spring holds it closed at any tilt or swing angle. It is an off-the-shelf part — no fabrication, and chemistry-safe.
 
 ![Muslin clamp detail — Sheet 6](assets/film-plane-sheet6.png)
 

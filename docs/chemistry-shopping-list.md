@@ -39,7 +39,7 @@ URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cott
 
 **50-print total (Standard ½-Ware default): ~$1,653 · ~$33/print** — the full Lean/Rich per-tier breakdown is in the shopping list below.
 
-Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitizer. This replaces the traditional Herschel ferric ammonium citrate (FAC) formula with ammonium iron(III) oxalate (AmFe) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
+Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitizer. It uses ammonium iron(III) oxalate (AmFe) in place of the traditional Herschel ferric ammonium citrate (FAC) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
 
 **Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. Formula and technical notes: [mikeware.co.uk/mikeware/New_Cyanotype_Process.html](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) (free).
 

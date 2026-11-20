@@ -58,6 +58,7 @@ MD_FILES = [
     ("pinhole-disc-holder-report.md",    (".",           "Pinhole Disc Holder")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
     ("sensitizer-trials.md",             (".",           "Sensitizer Trials")),
+    ("wash-water-classification.md",     (".",           "Wash-Water Classification")),
     ("operating-manual.md",             (".",           "Operating Manual")),
     ("electrical-report.md",            (".",           "Electrical & Systems")),
     ("electrical-safety-report.md",     (".",           "Electrical Safety")),
@@ -362,6 +363,7 @@ nav:
     - "Lens Options": lens-options.md
     - "Photosensitive Materials": photosensitive-plane-options.md
     - "Sensitizer Trials": sensitizer-trials.md
+    - "Wash-Water Classification": wash-water-classification.md
     - "Portrait Photography": portrait-photography.md
     - "Distortion Renders": distortion-renders.md
     - "Film Plane Distortion Analysis": film-plane-mechanism-analysis.md
@@ -463,13 +465,14 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Film Plane Distortion Analysis](film-plane-mechanism-analysis.md) | Optical-distortion physics of a tilted film plane — tilted-plane projection, keystone/foreshortening by configuration; the mechanism itself is the [Film Plane Mechanism](film-plane-mechanism-report.md) |
 | [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Muslin spring-clip system — 90 clips at 150mm spacing, parts list |
 | [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) | Quick-change pinhole disc holder — retaining ring, thumb screws, interchangeable discs/lens, drawings |
-| [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Pinhole Report](pinhole-report.md) | Pinhole wall interface — the wall aperture and the adapter the front board bolts to |
 | [Container Selection & Construction](container-report.md) | Container options, US transport compliance, interior conversion, light-sealing |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Cost Analysis](cost-analysis-report.md) | Where the cost sits by system, capital vs consumable, and the ranked savings levers |
 | [Tray Material Research](tray-research.md) | Why the processing tray stays 304 SS — welded-PP and liner options evaluated, cost + construction, and the 2B-finish trim |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Sensitizer Trials](sensitizer-trials.md) | OPEN cyanotype coating-solution trials — coverage, concentration, dichromate; impacts the chemistry order/print count |
+| [Wash-Water Classification](wash-water-classification.md) | Regulatory basis for disposing of the wash water — iron-only baseline non-hazardous, dichromate option hazardous (D007), generator category |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, lighting, wiring diagrams |

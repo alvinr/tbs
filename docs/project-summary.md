@@ -78,9 +78,10 @@ Getting it there is deliberately unremarkable: a commercial hire truck, no CDL, 
 | [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
+| [Wash-Water Classification](wash-water-classification.md) | Regulatory basis for disposing of the wash water, with and without the dichromate option |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
 | [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Nylon spring-clamp muslin system — 58 clamps at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm spacing, parts list |
-| [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Pinhole Report](pinhole-report.md) | Pinhole wall interface — the wall aperture and the adapter the front board bolts to |
 | [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) | Quick-change pinhole disc holder — retaining ring, thumb screws, interchangeable discs/lens, drawings |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
@@ -94,7 +95,7 @@ Getting it there is deliberately unremarkable: a commercial hire truck, no CDL, 
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every engineering diagram on a single page |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for the film-plane movement configurations |
-| [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
+| [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — where each piece of equipment sits, and the optical clearance proof |
 
 ## See Also
 

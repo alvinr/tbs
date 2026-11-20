@@ -91,6 +91,7 @@ are kept after each entry.
 - [ ] lens-options.md
 - [ ] photosensitive-plane-options.md
 - [ ] sensitizer-trials.md
+- [ ] wash-water-classification.md  — new 2026-11-20: water-system-report §2.3 classification analysis moved here (rules, baseline, D007 calculation, generator category); water report keeps the results + DV-02 separation.
 - [ ] portrait-photography.md
 - [ ] film-plane-mechanism-analysis.md
 - [ ] light-trap-selection.md

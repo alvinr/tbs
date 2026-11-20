@@ -24,7 +24,7 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes three procedures and the
-disposal of the wash water ([Water System Report §2](water-system-report.md)):
+disposal of the wash water ([Water System Report §2](water-system-report.md); the basis is in [Wash-Water Classification](wash-water-classification.md)):
 
 | | Baseline (no dichromate) | Dichromate option |
 |---|---|---|

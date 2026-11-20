@@ -77,7 +77,7 @@ wasting chemistry.
 
 ### T6 / T7 — Wash-water checks (one-time)
 
-[Water System Report §2.3](water-system-report.md) classifies the collected wash water by chemistry. Two
+[Wash-Water Classification](wash-water-classification.md) classifies the collected wash water by chemistry. Two
 results there rest on a one-time measurement: the baseline (iron-only) water is non-hazardous (T6),
 and Brown is hazardous under the dichromate option until measured (T7). Both run first as a
 **bench test alongside T1**, on 1 m² muslin pieces, so the disposal route is known before the
@@ -99,8 +99,8 @@ compare directly against the limits.
 
 #### T6 — Baseline (iron-only) wash water
 
-**Goal:** confirm the baseline wash water is not hazardous under the criteria §2.3 leaves
-unassessed.
+**Goal:** confirm the baseline wash water is not hazardous under the criteria the classification
+(§3 there) does not settle from composition alone.
 - **Sample:** combine baths 1–3 from a baseline piece in proportion. That mixture is the collected
   water (both totes, before any recycling).
 - **Analyses:**
@@ -119,12 +119,12 @@ unassessed.
 - **Confirmation:** after the first baseline prints in the container, sample IBC-4 (and IBC-3 if it
   is to be pumped out) once, for the same panel, before the first disposal.
 - **Output:** the non-hazardous classification on record for the liquid-waste hauler or wastewater
-  plant. A failure moves the baseline to the hazardous route, and §2.3 is revised.
+  plant. A failure moves the baseline to the hazardous route, and the classification is revised.
 
 #### T7 — Dichromate option: chromium split between washes
 
 **Goal:** find how much chromium washes 2 and 3 carry, which decides whether Brown can leave the
-hazardous route, and check §2.3's assumption that all the dichromate washes out.
+hazardous route, and check the classification's assumption that all the dichromate washes out.
 - **Sample:** one 1 m² piece coated with dichromate at the **highest level in use** (from T3). Bath 1
   goes to IBC-4 in operation, so it is analyzed on its own. Baths 2 and 3 are analyzed **separately
   and as a proportional mix**, since that mix is what reaches Brown.
@@ -138,7 +138,7 @@ hazardous route, and check §2.3's assumption that all the dichromate washes out
   That is <!-- BEGIN fact:brown_cr_max_pct_lo -->52<!-- END fact:brown_cr_max_pct_lo -->% of the chromium at a 0.1% dose, but only
   <!-- BEGIN fact:brown_cr_max_pct_hi -->13<!-- END fact:brown_cr_max_pct_hi -->% at 0.4%.
 - **Mass balance:** the chromium in baths 1–3 together, compared with the dichromate applied, gives
-  the washout fraction. The §2.3 classification holds as long as more than <!-- BEGIN fact:cr_washout_breakeven_pct -->45<!-- END fact:cr_washout_breakeven_pct -->% washes out.
+  the washout fraction. The D007 classification holds as long as more than <!-- BEGIN fact:cr_washout_breakeven_pct -->45<!-- END fact:cr_washout_breakeven_pct -->% washes out.
 - **Confirmation:** after a run of dichromate prints, sample IBC-3 once for total chromium. Re-test if
   the dichromate level or the wash sequence changes.
 - **Output:** the Brown route under the dichromate option, and the measured washout fraction.
@@ -167,7 +167,7 @@ operating-manual §0.2/§0.3/§2.1, the master shopping list, and the cost break
 mark this page **CLOSED** with the chosen values recorded.
 
 The wash-water checks close separately. T6 and T7 close on their bench results plus the one-time
-confirmation on the totes. Their results go into [Water System Report §2.3](water-system-report.md)
+confirmation on the totes. Their results go into the [Wash-Water Classification](wash-water-classification.md) report
 and the manual's disposal steps (§5.1.1).
 
 ---

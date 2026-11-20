@@ -65,6 +65,7 @@ MD_FILES=(
     "portrait-photography.md"
     "container-transport-options.md"
     "water-system-report.md"
+    "wash-water-classification.md"
     "film-plane-mechanism-report.md"
     "film-plane-mechanism-analysis.md"
     "film-clamp-mechanism-report.md"

@@ -508,27 +508,27 @@ clamp_spacing_mm:
     - 'clamps?\s+at\s+(\d+)\s?mm'
     - '(\d+)\s?mm\s+(?:centers|centres|spacing)\s*\(\d+\s+clamps'
 
-# Chromium waste classification (water-system-report §2.1)
+# Chromium waste classification (wash-water-classification.md)
 sensitizer_l_per_print:
   constant: SENSITIZER_L_PER_PRINT
   unit: L
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 dichromate_g_lo:
   constant: DICHROMATE_G_LO
   unit: g
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 dichromate_g_hi:
   constant: DICHROMATE_G_HI
   unit: g
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_g_lo:
   constant: CR_G_LO
   unit: g
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_g_hi:
   constant: CR_G_HI
   unit: g
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 recovered_per_print_l:
   constant: RECOVERED_PER_PRINT_L
   unit: L
@@ -536,39 +536,39 @@ recovered_per_print_l:
 cr_waste_mg_l_lo:
   constant: CR_WASTE_MG_L_LO
   unit: mg/L
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_waste_mg_l_hi:
   constant: CR_WASTE_MG_L_HI
   unit: mg/L
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_limit_x_lo:
   constant: CR_LIMIT_X_LO
   unit: x
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_limit_x_hi:
   constant: CR_LIMIT_X_HI
   unit: x
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_washout_breakeven_pct:
   constant: CR_WASHOUT_BREAKEVEN_PCT
   unit: '%'
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 first_print_recovered_l:
   constant: FIRST_PRINT_RECOVERED_L
   unit: L
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 cr_first_print_mg_l:
   constant: CR_FIRST_PRINT_MG_L
   unit: mg/L
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 prints_sqg_month:
   constant: PRINTS_SQG_MONTH
   unit: prints
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 prints_lqg_month:
   constant: PRINTS_LQG_MONTH
   unit: prints
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 wash1_to_waste_l:
   constant: WASH1_TO_WASTE_L
   unit: L
@@ -584,11 +584,11 @@ brown_fill_cr_l:
 prints_sqg_month_w1:
   constant: PRINTS_SQG_MONTH_W1
   unit: prints
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 prints_lqg_month_w1:
   constant: PRINTS_LQG_MONTH_W1
   unit: prints
-  owner: water-system-report.md
+  owner: wash-water-classification.md
 sensitizer_part_l:
   constant: SENSITIZER_PART_L
   unit: L

@@ -30,7 +30,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
-*Line 9 (printmaking chemistry) is the **Mike Ware New Cyanotype** recipe (ferric ammonium oxalate sensitizer) with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,250), High = Rich full-Ware (~$3,100)**, working default Standard ½-Ware (~$1,710). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans that Lean–Rich range ($1,250–$3,100), narrowing once a tier is locked.*
+*Line 9 (printmaking chemistry) is the **Mike Ware New Cyanotype** recipe (ferric ammonium oxalate sensitizer) with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean -->), High = Rich full-Ware (~<!-- BEGIN costing:run-rich -->$3,040<!-- END costing:run-rich -->)**, working default Standard ½-Ware (~<!-- BEGIN costing:run-standard -->$1,680<!-- END costing:run-standard -->). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans that Lean–Rich range (<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean -->–<!-- BEGIN costing:run-rich -->$3,040<!-- END costing:run-rich -->), narrowing once a tier is locked.*
 
 ---
 

@@ -11,10 +11,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 💲 Hand-typed money — worklist (2026-11-20)
 
-- [ ] Work the `lint.py` warning *hand-typed $ that equals a cost-model value* (~20 hits): each one
+- [x] Work the `lint.py` warning *hand-typed $ that equals a cost-model value* (~20 hits): each one
   is either a stale restatement (e.g. the $1,250 Lean run cost in process-comparison / master list,
   now $1,230) or a coincidence. Convert the real ones to costing placeholders, and lower
-  `_MONEY_RAW_BASELINE` as each doc's count drops.
+  `_MONEY_RAW_BASELINE` as each doc's count drops. Done 2026-11-20: stale ones placeholdered (tier run costs, Lean chemistry, per-print, tray, 2nd battery pack); coincidences listed in `lint.py` `_MONEY_COINCIDENCE`; warning clean.
 - [x] Cost breakdown §9: the summary row is now computed from all its lines (CDL + permits), 2026-11-20.
 
 ## 🚰 End-wall ports

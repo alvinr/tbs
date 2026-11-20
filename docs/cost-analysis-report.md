@@ -70,7 +70,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 |---|---|---|--:|---|---|
 | 1 | **Container grade CW → WWT** (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom) | Container | ~<!-- BEGIN costing:ca-lever-container -->$1,350<!-- END costing:ca-lever-container --> | Easy, low risk | Available |
 | 2 | **Processing tray: 304 SS → poly** (poly needs a support frame over the 4.5 m span + poly-weld fab) | Water | ~<!-- BEGIN costing:ca-lever-tray-low -->$600<!-- END costing:ca-lever-tray-low -->–<!-- BEGIN costing:ca-lever-tray-high -->$1,000<!-- END costing:ca-lever-tray-high --> | Medium | **Decided 2026-07-05 — keep 304 SS** (self-supporting + durable; not revisiting) |
-| 3 | **Battery — already 1×100 Ah** (the lean config; [Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge). A 2nd pack is a +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> optional **upgrade**, not a saving. | Power | +$375 (add) | — | **Not a saving** — 100 Ah is the standard |
+| 3 | **Battery — already 1×100 Ah** (the lean config; [Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge). A 2nd pack is a +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> optional **upgrade**, not a saving. | Power | +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> (add) | — | **Not a saving** — 100 Ah is the standard |
 | 4 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 5 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
@@ -81,7 +81,7 @@ After the material decisions, the only still-**available** build-savings levers 
 > scenario layer, solar is a real 1-panel subtraction (drop 1× `solar-panel-200w`), and the roll-up
 > is the summed **still-available** levers over the capital build, so all cascade on any cost change.
 > Modeling each option against the as-built BOM shows lever 3 (battery)
-> is moot — the standard is already 1×100 Ah, and its 2nd pack is a +$375 **upgrade**, not a saving — so
+> is moot — the standard is already 1×100 Ah, and its 2nd pack is a +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> **upgrade**, not a saving — so
 > it is not in the roll-up. Lever 2 (tray) is **decided** too — 304 SS kept (over the 4.5 m span a
 > poly tray needs a support frame that erodes the saving, plus poly-weld fab) — so it is also outside the
 > roll-up. The decided levers keep their saving as a declared estimate band by design: each describes a

@@ -11,14 +11,14 @@ size 50 prints; substrate as in the shopping list. Prices are April-2026 estimat
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype (Ware, lean)** | ~$951 | ~$300 | **~$1,250** | **~$25** |
+| **Cyanotype (Ware, lean)** | ~<!-- BEGIN costing:run-lean-chem -->$930<!-- END costing:run-lean-chem --> | ~$300 | **~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean -->** | **~<!-- BEGIN costing:pp-lean -->$25<!-- END costing:pp-lean -->** |
 | **Gum bichromate** | ~$1,292 | ~$300 | **~$1,592** | **~$32** |
 | **Van Dyke Brown** | ~$5,890 | ~$300 | **~$6,190** | **~$124** |
 | **Ilford RC paper** | ~$1,141 (chemistry) | ~$13,500 (paper) | **~$14,641** | **~$293** |
 | **Liquid Light** | ~$880 (chemistry) | ~$12,640 (emulsion+substrate) | **~$13,520** | **~$270** |
 | **Salt print** | ~$16,472 | ~$300 | **~$16,772** | **~$335** |
 
-Silver nitrate is the cost driver for salt print and Van Dyke Brown. Under the firm 2026 reagent prices (Artcraft Chemicals bulk: ferric ammonium oxalate $64/kg, potassium ferricyanide $51/kg), **cyanotype is the cheapest process (~$1,250 lean)** — below gum bichromate (~$1,592) and far below the silver-based processes. It is chosen on cost *and* on archival permanence, low hazard, and process simplicity (see Process 1).
+Silver nitrate is the cost driver for salt print and Van Dyke Brown. Under the firm 2026 reagent prices (Artcraft Chemicals bulk: ferric ammonium oxalate $64/kg, potassium ferricyanide $51/kg), **cyanotype is the cheapest process (~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean --> lean)** — below gum bichromate (~$1,592) and far below the silver-based processes. It is chosen on cost *and* on archival permanence, low hazard, and process simplicity (see Process 1).
 
 ---
 
@@ -26,7 +26,7 @@ Silver nitrate is the cost driver for salt print and Van Dyke Brown. Under the f
 
 Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full procurement, tiered recipe, and quantities live in the [Chemistry Shopping List](chemistry-shopping-list.md) and [Operating Manual](operating-manual.md). It appears here only as the cost baseline the rejected alternatives are measured against.
 
-**Cost basis:** this document compares each process at its economical single-application formulation — for cyanotype that is the **lean tier (~$25/print, ~$1,250 per 50-print batch)** at the firm 2026 Artcraft bulk reagent prices. The project's as-built consumable budget instead uses **Standard ½-Ware (~$34/print, ~$1,710 per 50-print batch)**, per the [Cost Breakdown](project-cost-breakdown.md); the ~$25 here is cyanotype's floor, not a conflicting figure.
+**Cost basis:** this document compares each process at its economical single-application formulation — for cyanotype that is the **lean tier (~<!-- BEGIN costing:pp-lean -->$25<!-- END costing:pp-lean -->/print, ~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean --> per 50-print batch)** at the firm 2026 Artcraft bulk reagent prices. The project's as-built consumable budget instead uses **Standard ½-Ware (~<!-- BEGIN costing:pp-standard -->$34<!-- END costing:pp-standard -->/print, ~<!-- BEGIN costing:run-standard -->$1,680<!-- END costing:run-standard --> per 50-print batch)**, per the [Cost Breakdown](project-cost-breakdown.md); the ~$25 here is cyanotype's floor, not a conflicting figure.
 
 **Why cyanotype:** it is both the cheapest process and the one whose non-cost properties best fit a long-lived public artwork:
 
@@ -214,7 +214,7 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 30 bottles × 25 L = 750 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware, lean) | 11.4 kg AmFe | 3.8 kg | — | 0.4 kg | — | — | ~399 yd muslin | ~$951 | **~$1,250** |
+| Cyanotype (Ware, lean) | 11.4 kg AmFe | 3.8 kg | — | 0.4 kg | — | — | ~399 yd muslin | ~<!-- BEGIN costing:run-lean-chem -->$930<!-- END costing:run-lean-chem --> | **~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean -->** |
 | Gum bichromate | — | — | — | 8.4 kg | 26.3 kg | — | ~399 yd muslin | ~$1,292 | **~$1,592** |
 | Van Dyke Brown | 5.3 kg FAC | — | 2.1 kg | — | — | 18.65 kg | ~399 yd muslin | ~$5,890 | **~$6,190** |
 | Salt print | — | — | 6.3 kg | — | — | 37.3 kg | ~399 yd muslin | ~$16,472 | **~$16,772** |

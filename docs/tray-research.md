@@ -11,7 +11,7 @@ available if the question is reopened.
 
 ## 1. Why the tray was reviewed
 
-At ~$1,473–2,121 the processing tray is the **largest single reducible line** in
+At ~<!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> the processing tray is the **largest single reducible line** in
 the [water system](water-system-report.md) — stainless is there for
 **rigidity and finish, not chemistry** (the cyanotype wash — dilute ferric
 ammonium oxalate / potassium ferricyanide / citric acid, no chloride — is inert
@@ -50,7 +50,7 @@ surface: a **welded-PP skin** or a **draped liner**.
 
 | Option | **Tray total** | vs SS | Note |
 |---|---|---|---|
-| **A. 304 SS** (retained) | **$1,473–2,121** | — | rigid, 2B mill finish; proven |
+| **A. 304 SS** (retained) | **<!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high -->** | — | rigid, 2B mill finish; proven |
 | **B. Welded PP** | **$935–1,263** (self-weld) / $1,335–1,963 (shop) | save ~$550–920 / ~$150–220 | PP sheet ($258/sheet, US Plastic) is *not* cheaper than SS; saving is fabrication only, and hinges on who welds |
 | **C. Liner** | **~$220–450** | save ~$1,150–1,850 | cheapest, but a flexible liner — not a rigid surface |
 

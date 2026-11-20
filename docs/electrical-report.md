@@ -377,7 +377,7 @@ hardware the electrical system feeds — evaporative cooler, 12V→120V inverter
 
 *The electrical system total is the **standard 1-pack build** and equals the
 [Master Shopping List §6](master-shopping-list.md?system=electrical) electrical subtotal (the authoritative
-electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). The total carries ~$450 of
+electrical BOM). The optional 2nd battery pack adds +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> (its own MRBF fuse). The total carries ~$450 of
 circuit-protection / wet-zone-sealing hardware per the [Electrical Safety Report](electrical-safety-report.md)
 §5 (interior **+** exterior emergency cut-offs, battery contactor, disconnect switch, terminal-mount fuse,
 PV array disconnect, MPPT charge-line + shore-charger fuses, **inverter DC fuse + disconnect**, sealed

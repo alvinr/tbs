@@ -1158,12 +1158,12 @@ _RAW_MONEY = re.compile(r"\$(\d[\d,]*)(?:\.\d+)?")
 # quote with no model home — be added here deliberately. Lower a count when a pass removes figures.
 _MONEY_RAW_BASELINE = {
     "chemistry-shopping-list.md": 10, "component-dimension-audit.md": 22, "container-report.md": 29,
-    "container-transport-options.md": 130, "cost-analysis-report.md": 6, "electrical-report.md": 19,
+    "container-transport-options.md": 130, "cost-analysis-report.md": 4, "electrical-report.md": 18,
     "film-plane-mechanism-report.md": 2, "funding-proposal.md": 15, "ibc-stacking-report.md": 4,
-    "lens-options.md": 41, "light-trap-selection.md": 15, "master-shopping-list.md": 30,
+    "lens-options.md": 41, "light-trap-selection.md": 15, "master-shopping-list.md": 25,
     "mini-tbs/mini-tbs-poc.md": 22, "mini-tbs/mini-tbs-shopping-list.md": 80,
-    "photosensitive-plane-options.md": 161, "process-comparison.md": 130,
-    "project-cost-breakdown.md": 62, "tray-research.md": 16, "ventilation-report.md": 3,
+    "photosensitive-plane-options.md": 161, "process-comparison.md": 120,
+    "project-cost-breakdown.md": 62, "tray-research.md": 14, "ventilation-report.md": 3,
     "weight-distribution-report.md": 2,
 }
 
@@ -1202,6 +1202,18 @@ def gate_money_ratchet() -> tuple[bool, list[str]]:
     return (not issues), (issues or [f"{total} hand-typed $ figures across published docs, none new"])
 
 
+# Hand-typed $ figures that equal a cost-model value BY COINCIDENCE (reviewed 2026-11-20) — they
+# price something the model doesn't own, so they stay hand-typed: (doc, amount) → why.
+_MONEY_COINCIDENCE = {
+    ("mini-tbs/mini-tbs-shopping-list.md", 165): "TBS-002 classroom kit total, not TBS-001",
+    ("photosensitive-plane-options.md", 242): "alternative-process chemistry range",
+    ("photosensitive-plane-options.md", 165): "alternative-process chemistry range",
+    ("process-comparison.md", 1282): "Chem-Impex dichromate quote (alternative process)",
+    ("process-comparison.md", 280): "Kodak Dektol quote (silver-gelatin alternative)",
+    ("chemistry-shopping-list.md", 930): "ferric ammonium citrate, 31 lb (traditional-formula reference)",
+}
+
+
 def warn_money_should_be_placeholder() -> tuple[bool, list[str]]:
     r = subprocess.run([sys.executable, os.path.join(HERE, "costing.py"), "--money-values"],
                        capture_output=True, text=True)
@@ -1209,7 +1221,8 @@ def warn_money_should_be_placeholder() -> tuple[bool, list[str]]:
         return False, [f"costing.py --money-values failed: {r.stderr.strip()}"]
     owned = {int(v) for v in r.stdout.split() if int(v) % 100}   # round figures ($300, $1,200) match by coincidence
     issues = [f"{rel}:{ln} ${amt:,} equals a cost-model value — make it a costing placeholder"
-              for rel in _published_docs() for ln, amt in _raw_money(rel) if amt in owned]
+              for rel in _published_docs() for ln, amt in _raw_money(rel)
+              if amt in owned and (rel, amt) not in _MONEY_COINCIDENCE]
     return (not issues), (issues or [f"no hand-typed $ figure restates a cost-model value ({len(owned)} checked)"])
 
 

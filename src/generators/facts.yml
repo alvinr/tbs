@@ -574,3 +574,7 @@ prints_lqg_month_w1:
   constant: PRINTS_LQG_MONTH_W1
   unit: prints
   owner: water-system-report.md
+sensitizer_part_l:
+  constant: SENSITIZER_PART_L
+  unit: L
+  owner: water-system-report.md

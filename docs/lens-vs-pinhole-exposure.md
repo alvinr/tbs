@@ -288,7 +288,7 @@ The two modes are not competing solutions to the same problem. They are differen
 
 - **Lens mode:** A sharp central medallion (Ø 300–600mm) at short exposure (seconds). Best for portraits and any subject that moves. The remainder of the image plane is dark.
 
-Building the camera with the **interchangeable plate system** (see fabrication drawings, sheets 1 and 2) costs nothing beyond a few hours of machining and preserves both modes indefinitely. The plate swap takes two minutes in the dark.
+Building the camera with the **interchangeable plate system** (see fabrication drawings, sheets 1 and 2) costs nothing beyond a few hours of machining and preserves both modes indefinitely. The plate swap takes about 30 seconds.
 
 ---
 

@@ -582,7 +582,7 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 | Ferric ammonium oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | <!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard -->g | <!-- BEGIN costing:om-ferri-kg-standard -->5.6<!-- END costing:om-ferri-kg-standard --> kg |
 | Ammonium dichromate (optional contrast, 0.1–0.4% of the ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L working volume) | <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi -->g | ~<!-- BEGIN costing:om-dichromate-kg-run -->0.11–0.44<!-- END costing:om-dichromate-kg-run --> kg |
-| Distilled water | ~2.6 L | ~130 L |
+| Distilled water | ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L | ~<!-- BEGIN costing:om-water-l-run -->110<!-- END costing:om-water-l-run --> L |
 
 Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
 pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,710 (Standard), range ~$1,250

@@ -140,26 +140,28 @@ self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
 through the plywood. They sit in a single vertical column in the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor;
 P-01 and P-02 draw from the near IBC column, P-03 and P-05 from the far column.
 
-#### Pump electrical — Circuit C (one at a time)
+#### Pump electrical — Circuit C1 (corridor) / C2 (tray drain)
 
-All five pumps run from the **single Circuit C feed** (12V DC, 15A fuse, 14 AWG
-from the Blue Sea fuse block — see [Electrical Report §7.2–7.3](electrical-report.md)).
-Circuit C is switched at a **master pump switch on the Electrical Panel (EP)** — one
-IP-rated cutoff for the whole pump circuit, upstream of everything — then runs the
-ceiling trunk to a **12V DC distribution block** (positive + shared negative bus) on
-the rear of this panel; from it a short 16 AWG branch feeds each pump directly.
+The pump circuit is **dual-fused** off the Blue Sea fuse block, both legs under one **2-pole
+master pump switch on the Electrical Panel (EP)** ([Electrical Report §7.2–7.3](electrical-report.md)):
+
+- **C1** (15A fuse, 12 AWG dry feed) runs the ceiling trunk to a **12V DC distribution block**
+  (positive + shared negative bus) on the rear of this panel; from it a short 14 AWG
+  marine-duplex branch feeds each of the four corridor pumps.
+- **C2** (10A fuse, 12 AWG) is P-04's own run to the Pinhole Wall filter skid (§3.1).
 
 | Item | Spec |
 |------|------|
-| Feed | Circuit C, 14 AWG, 15A fuse (one feed for all five pumps) |
-| Master switch | 1 × IP-rated sealed rocker/disconnect (12V, 16A), **mounted on the EP** — single cutoff upstream of the whole circuit; no per-pump switches (each Shurflo runs on its internal pressure switch) |
-| Distribution | 12V DC + / − bus block on the rear of the plumbing panel, fed from the EP master switch |
-| Branches | 16 AWG, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump) |
+| Feed | C1: 12 AWG, 15A fuse (four corridor pumps) · C2: 12 AWG, 10A fuse (P-04) |
+| Master switch | 1 × IP-rated 2-pole sealed switch, **mounted on the EP** — one cutoff for both legs; no per-pump switches (each Shurflo runs on its internal pressure switch) |
+| Distribution | 12V DC + / − bus block on the rear of the plumbing panel, fed from C1 |
+| Branches | 14 AWG marine duplex, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump) |
 
-The pumps run **one at a time**: with the EP master switch on, the open ball valves
-select the pump for the current task (others closed), and that pump's Shurflo
-**internal demand/pressure switch** runs it on demand. The 15A fuse
-covers a single pump with margin; simultaneous running is not intended.
+The four corridor pumps on C1 run **one at a time**: the open ball valves select the pump for
+the current task, and that pump's Shurflo **internal demand/pressure switch** runs it on demand.
+P-04 on C2 runs **concurrently** with the C1 supply pump, so the tray drains as fast as the spray
+bar fills it (the continuous flow-through wash, [Water System Report §6](water-system-report.md)).
+Each fuse carries a single pump with margin.
 The distribution block sits **above the spill line**, IP-rated and sealed, with drip
 loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md); the
 master switch is on the EP, clear of the wet zone.

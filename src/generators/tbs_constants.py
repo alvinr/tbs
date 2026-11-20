@@ -1121,6 +1121,7 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L
 # is run at the LOW dose (least chromium); evaporation, which would concentrate it, is not credited.
 SENSITIZER_ML_PER_M2     = 240                                           # two wet-on-wet coats (sensitizer-trials T1)
 SENSITIZER_L_PER_PRINT   = round(IMAGE_AREA_M2 * SENSITIZER_ML_PER_M2 / 1000, 1)   # = 2.2 L
+SENSITIZER_PART_L        = round(SENSITIZER_L_PER_PRINT / 2, 2)                    # = 1.1 L each of Part A / Part B (mixed 1:1)
 DICHROMATE_PCT_LO        = 0.1                                           # Ware baseline (0.1 g / 100 ml)
 DICHROMATE_PCT_HI        = 0.4                                           # trial T3 upper
 DICHROMATE_G_LO          = round(SENSITIZER_L_PER_PRINT * 10 * DICHROMATE_PCT_LO, 1)  # = 2.2 g/print

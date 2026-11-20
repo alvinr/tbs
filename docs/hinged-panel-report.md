@@ -22,7 +22,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (clears the closed-door inner face by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm -->mm) + hardware
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
-- Single-person mode conversion (~5 minutes)
+- Single-person mode conversion (~10 minutes)
 
 <!-- brochure:skip -->
 **Interactive 3D model** — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame, and Fan B. Drag to orbit, scroll to zoom.

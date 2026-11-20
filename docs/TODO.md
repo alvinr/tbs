@@ -20,9 +20,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   DTSC or a hauler.
 - [ ] **Full-mass counting.** That the whole collected water counts toward the generator category is
   an inference (no rule text found for dilute wastewater). Confirm with the hauler or DTSC.
-- [ ] **Sensitizer working volume is stated three ways:** 2.2 L computed (`SENSITIZER_L_PER_PRINT`,
-  240 ml/m² × 9.19 m²), ~2.3 L (manual §2.1: 1.15 L + 1.15 L) and ~2.6 L (master list distilled-water
-  row). Align on the computed value.
+- [x] **Sensitizer working volume aligned to the computed 2.2 L** (`SENSITIZER_L_PER_PRINT`; Part A/B 1.1 L each) across the manual and master list (2026-11-20).
 
 ## 🚰 X3/X4 drain ports vs gravity drain — energy budget (2026-11-19)
 

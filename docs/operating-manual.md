@@ -57,7 +57,7 @@ The water system has three circuits (Blue/Brown/Black), pumps on the plumbing pa
 > **⚠ RECIPE NOT YET LOCKED — see [Sensitizer Trials](sensitizer-trials.md).** Quantities use the
 > **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active
 > plane, TWO wet-on-wet coats** (§2.5), at the sourced muslin coverage **~120 ml/m²/coat →
-> ~2.3 L working sensitizer per print**. The **concentration tier is the open variable** — it
+> ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L working sensitizer per print**. The **concentration tier is the open variable** — it
 > swings chemistry cost and print count by **~3×** across the three tiers. Three alternatives are given for costing/trialling.
 > **Default: Standard (½-Ware)** until the trial decides.
 
@@ -66,9 +66,9 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 
 | Tier (per print) | AmFe (dry) | Part A water (warm) | mixed strength | AmFe for 50 prints |
 |---|---|---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->222<!-- END costing:om-amfe-g-lean --> g | ~1.15 L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->11.1<!-- END costing:om-amfe-kg-lean --> kg |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard --> g** | **~1.15 L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->668<!-- END costing:om-amfe-g-rich --> g | ~1.15 L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->33.4<!-- END costing:om-amfe-kg-rich --> kg |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->222<!-- END costing:om-amfe-g-lean --> g | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->11.1<!-- END costing:om-amfe-kg-lean --> kg |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard --> g** | **~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->668<!-- END costing:om-amfe-g-rich --> g | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->33.4<!-- END costing:om-amfe-kg-rich --> kg |
 
 - [ ] 0.2.1 — Heat water to 50–60°C (a kettle left to stand for 2 minutes after boiling is ideal).
 - [ ] 0.2.2 — Weigh AmFe into a mixing jug.
@@ -85,9 +85,9 @@ volume. For the dichromate option it also carries the dichromate (see
 
 | Tier (per print) | Potassium ferricyanide | Part B water |
 |---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->74<!-- END costing:om-ferri-g-lean --> g | ~1.15 L |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard --> g** | **~1.15 L** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->222<!-- END costing:om-ferri-g-rich --> g | ~1.15 L |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->74<!-- END costing:om-ferri-g-lean --> g | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard --> g** | **~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->222<!-- END costing:om-ferri-g-rich --> g | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
 
 **All prints:**
 
@@ -155,7 +155,7 @@ same across strength tiers: Ware's baseline is **0.1%**, raised for more contras
 - [ ] 1.2.3 — Open cargo doors and inspect interior (if not done in Phase 0.5).
 
 ### 1.3 Mode Conversion — Transport to Operational
-**Time: ~5 minutes. Single-person operation.**
+**Time: ~10 minutes. Single-person operation.**
 
 The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL), the left walkway, and the two pull-out apron strips have been struck/removed (the strips stow strapped inside). Convert to operational mode before proceeding.
 
@@ -179,7 +179,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.4.1 — Confirm the hinged drum panel is closed and both 1619A74 lift-and-turn cam latches are engaged (interior-face lever).
 - [ ] 1.4.2 — Check the EPDM perimeter gasket is seated with no gaps or folded sections.
 - [ ] 1.4.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
-- [ ] 1.4.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 2 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
+- [ ] 1.4.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 5 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
 
 > **Safety:** Do not attempt to reverse direction inside the drum — the baffles only clear forward rotation. If unsure of orientation, continue rotating forward until you exit on the intended side.
 
@@ -209,7 +209,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 ### 1.8 Light-Leak Inspection
 - [ ] 1.8.1 — Latch the drum panel (both 1619A74 lift-and-turn cam latches engaged).
 - [ ] 1.8.2 — Switch ON interior safelight (circuit D, **red LED only**). Enter through the revolving drum.
-- [ ] 1.8.3 — Switch OFF safelight. Stand still for **15 minutes** minimum — full dark adaptation.
+- [ ] 1.8.3 — Switch OFF safelight. Stand still for **5 minutes** minimum for dark adaptation.
 - [ ] 1.8.4 — Inspect all seams, door perimeters, and duct penetrations. Even a pinprick leak will be visible.
 - [ ] 1.8.5 — Exit. Seal any leaks found with black silicone sealant or gaffer tape. Repeat inspection.
 
@@ -235,9 +235,9 @@ Set the plane for the shot before loading. The corner-depth table is in the
 
 | For 1 print (<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane, **2 wet-on-wet coats**) | Volume |
 |------------------------|--------|
-| Part A | ~1.15 L |
-| Part B | ~1.15 L |
-| **Working sensitizer** | **~2.3 L** |
+| Part A | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
+| Part B | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
+| **Working sensitizer** | **~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L** |
 
 > **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
 
@@ -284,7 +284,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 - [ ] 2.5.1 — Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
 - [ ] 2.5.2 — **First coat:** roll horizontally from left to right across the full width of the muslin. Even strokes, 50% overlap. Work top to bottom.
-- [ ] 2.5.3 — **Second coat — wet-on-wet (apply while the first is still wet):** roll vertically, top to bottom. The cross-direction second coat lays down the remaining sensitizer and evens the coverage. *Two coats is why the working volume is ~2.3 L (§2.1), not ~1.15 L — budget for both.*
+- [ ] 2.5.3 — **Second coat — wet-on-wet (apply while the first is still wet):** roll vertically, top to bottom. The cross-direction second coat lays down the remaining sensitizer and evens the coverage. *Two coats is why the working volume is ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L (§2.1), not ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L — budget for both.*
 - [ ] 2.5.4 — Check edges — roller tends to undercoat at the far edges. Finish with a hand-held foam brush on the last 50mm of each edge.
 - [ ] 2.5.5 — Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.**
 
@@ -349,7 +349,8 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 ### 4.1 Entering and Removing the Muslin
 - [ ] 4.1.1 — Enter via light trap (same procedure as Phase 2.3). Switch safelight ON (**red light**).
 - [ ] 4.1.2 — Squeeze each spring clip open to release the muslin — work top-down, supporting the fabric weight as the upper clamps release. The image is latent at this point and may be barely visible as a pale yellow ghost.
-- [ ] 4.1.3 — Lay the muslin face-up on the LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails).
+- [ ] 4.1.3 — Roll the spray-bar gantry to the **near (pinhole-wall) end** of its travel and park it there.
+- [ ] 4.1.4 — Feed the exposed muslin face-up down through the **far muslin-drop slot** (image-plane side) and draw it across the tray toward the parked beam until it lies flat on the LDPE liner over the washable area. The beam then rolls back over the laid muslin to wash ([Processing Tray & Spray Bar §4.2](processing-tray-and-spray-bar.md)).
 
 ### 4.2 Development in Water
 **Lighting: switch to WHITE LIGHT (Circuit F — white LED, a SEPARATE circuit from the Circuit D red safelight) once the first wash begins — the image is no longer UV-sensitive after initial water contact. The two lighting circuits are independently switched (pull-cords labeled RED / WHITE), not interlocked.**
@@ -358,7 +359,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 **Spray bar setup:**
 
-- [ ] 4.2.1 — Position the spray bar at the far end of the tray (Yd≈2,280mm, film-plane side). Attach the telescoping pole to the arm tube.
+- [ ] 4.2.1 — With the spray bar parked at the pinhole-wall end (§4.1.3), attach the telescoping pole to the arm tube.
 
 **Continuous flow-through wash (supply + drain run together):**
 
@@ -483,7 +484,7 @@ If shore charger is connected, leave it running overnight to top up the battery 
 - [ ] 5.4.4 — Secure solar panels — if conditions allow, lay flat or fold to minimize wind load.
 
 ### 5.5 Transport Mode Conversion (Packing Up)
-**Time: ~5 minutes. Single-person operation.**
+**Time: ~10 minutes. Single-person operation.**
 
 The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot post for transport, riding the floor gap (clearing the processing tray rim). The two left film rails (TL + BL), the left walkway, and the two pull-out apron strips must be removed before the swing — the rails so the drum cage can transition the left film-plane rail plane, and the apron strips because they sit in the leaf's horizontal sweep at the floor-gap seal plane (they lift straight out — no floor hinge, nothing folds onto the tray). The processing tray and the near/far/right walkway sections remain in place during mode conversion.
 
@@ -493,8 +494,8 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.4 — Carry the cooler in through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb drained, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets and check the anti-slide cleats. Stow the flex duct alongside.
 - [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section — both sit inside the swing arc.
 - [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the left rail plane.*
-- [ ] 5.5.7 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.
-- [ ] 5.5.8 — Remove the two pull-out apron strips (near + far corner zones): at each strip, release its four draw latches (1590A13 — two bottom from inside + two span from the door side), then lift the strip up off its 45° chamfer seat and out; stow both strips strapped inside. *Required before the swing — the strips sit in the leaf's horizontal sweep; the empty corner lets the leaf sweep through (no floor hinge — nothing folds onto the tray).*
+- [ ] 5.5.7 — Remove the two pull-out apron strips (near + far corner zones): at each strip, release its four draw latches (1590A13 — two bottom from inside + two span from the door side), then lift the strip up off its 45° chamfer seat and out; stow both strips strapped inside. *Required before the swing — the strips sit in the leaf's horizontal sweep; the empty corner lets the leaf sweep through (no floor hinge — nothing folds onto the tray).*
+- [ ] 5.5.8 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.
 - [ ] 5.5.9 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
 - [ ] 5.5.10 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.
 - [ ] 5.5.11 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
@@ -502,7 +503,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.13 — Tighten all IBC tote ratchet straps ([IBC Stacking Report §4.2](ibc-stacking-report.md)). Re-check their tension after the first 50 km.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
-**Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
+**Time: ~10 minutes. Single-person operation. Reverse of 5.5.**
 
 Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the two pull-out apron strips (seat in the chamfer, butt the lip, throw the draw latches to lock) → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → re-deploy the chemistry prep shelf and re-check its level → check the walkway sections sit level → dark-adaptation check.
 
@@ -585,7 +586,7 @@ Deployment and stowing are in §1.7.3 and §5.5.1.
 
 | Interval | Task |
 |----------|------|
-| Every use | Dark-adaptation light seal check — mark any light points with gaffer tape (§1.8) |
+| Every use | Dark-adaptation light seal check (5 min) — mark any light points with gaffer tape (§1.8) |
 | Every 20 mode conversions | Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear |
 | Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
 | Every 6 months | Inspect neoprene drum seals (top/bottom) for wear and adhesion |

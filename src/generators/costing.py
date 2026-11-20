@@ -28,7 +28,7 @@ from dataclasses import dataclass
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI  # noqa: E402 — chemistry tiers derive from the active-plane area
+from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI, SENSITIZER_L_PER_PRINT  # noqa: E402 — chemistry tiers derive from the active-plane area
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
@@ -835,6 +835,7 @@ def _inline_blocks() -> dict:
         "om-ferri-g-standard": ([_OM, "master-shopping-list.md"], lambda: f"{_ferri_g('standard')}"),
         "om-ferri-kg-standard": ("master-shopping-list.md", lambda: _kg_fmt(_tier('standard').ferri_kg)),
         "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
+        "om-water-l-run": ("master-shopping-list.md", lambda: f"{round(SENSITIZER_L_PER_PRINT * PRINTS)}"),
         "om-dichromate-kg-run": ("master-shopping-list.md",
                                  lambda: f"{DICHROMATE_G_LO * PRINTS / 1000:.2f}–{DICHROMATE_G_HI * PRINTS / 1000:.2f}"),
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).

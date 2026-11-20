@@ -4,18 +4,15 @@
 """
 generate_line_of_sight.py
 
-Generates docs/assets/line-of-sight.png — two-panel optical clearance diagram
-for TBS-001 (redesigned film-plane-reduction layout).
+Generates docs/assets/line-of-sight.png — two-panel optical clearance diagram for TBS-001.
 
-Panel A — Plan view (top-down):
-  Shows the optical cone from the pinhole (X=2399, Yd=0) expanding to the
-  film plane edges (X=260–4649 at Yd=2262mm).
-  Equipment in shadow-free end zones (X<260 or X>4649) is always clear.
-  Equipment on the pinhole wall (Yd=0) is also always clear.
+Panel A — Plan view (top-down): the optical cone from the pinhole (PH_X, Yd=0) to the film
+  plane edges (FP_X_L–FP_X_R at FP_Y). Equipment in the end zones is always clear; equipment
+  near the pinhole wall is clear where it sits outside the cone's narrow end (e.g. the
+  chemistry prep shelf, checked by the same cone test as everything else).
 
-Panel B — Side elevation:
-  Shows the optical cone in the HEIGHT direction (pinhole at H=1194mm,
-  cone spreading to cover full image height H=0–2388mm at Yd=2262mm).
+Panel B — Side elevation: the cone in the HEIGHT direction (pinhole at PH_H, spreading to
+  the full image height at FP_Y).
 
 Container coordinate system:
   X  = 0–5893mm   (long axis; X=0 cargo door end, X=5893 far end)
@@ -33,7 +30,7 @@ import os
 
 from tbs_title_block import title_block
 from tbs_drawing import leader, draw_dim_h, draw_dim_v, draw_rect
-from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H, ZONE_L_END, ZONE_R_START, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D, CORRIDOR_YD_NEAR, IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, DIAGRAMS_DIR, cone_left, cone_right, C_OUT, C_CL, C_DIM, C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_BLUE_IBC, C_BROWN_IBC, C_WALL
+from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H, ZONE_L_END, ZONE_R_START, SHELF_X_L, SHELF_W, SHELF_YD_NEAR, SHELF_DEPTH, SHELF_H, SHELF_T, C_WOOD, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D, CORRIDOR_YD_NEAR, IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, DIAGRAMS_DIR, cone_left, cone_right, C_OUT, C_CL, C_DIM, C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_BLUE_IBC, C_BROWN_IBC, C_WALL
 from tbs_constants import DIAGRAM_DPI, BG
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -62,8 +59,6 @@ EQUIPMENT = [
          h_bot=0, h_top=DRUM_H_LT,
          color=C_LT_DRUM, zone="left"),
 
-    # (waste drums eliminated in rev 5 — left zone is light trap only)
-
     # PINHOLE WALL — Yd=0 face (always shadow-free)
     dict(name="Electrical panel",
          x=EP_X, yd=0, w=EP_W, d=80,
@@ -74,6 +69,11 @@ EQUIPMENT = [
          x=BA_X, yd=0, w=BA_W, d=80,
          h_bot=BA_H_LO, h_top=BA_H_HI,
          color=C_BATT, zone="wall"),
+
+    dict(name="Chemistry prep shelf (deployed)",
+         x=SHELF_X_L, yd=SHELF_YD_NEAR, w=SHELF_W, d=SHELF_DEPTH,
+         h_bot=SHELF_H - SHELF_T, h_top=SHELF_H,
+         color=C_WOOD, zone="wall"),
 
     dict(name="Pump manifold",
          x=PUMP_X, yd=CORRIDOR_YD_NEAR, w=PUMP_W, d=PUMP_D,

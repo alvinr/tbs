@@ -27,8 +27,8 @@
 | **6d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension)** | $268 | $275 | $280 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,230 | $1,680 | $3,040 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
-| **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$27,850** | **$32,719** | **$39,618** |
+| **9. Licenses & permits (CDL + per-deployment permits)** | $2,255 | $4,545 | $7,320 |
+| **TOTAL (excl. own transport, lens)** | **$29,885** | **$36,474** | **$45,318** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
@@ -39,7 +39,6 @@
 | Optional item | Low | Mid | High |
 |---------------|-----|-----|------|
 | Lens (Rodenstock / Nikkor, used) | $400 | $800 | $1,500 |
-| CDL training + DOT medical + DMV fees (budget school low → community college high) | $2,245 | $4,245 | $6,570 |
 | Own transport vehicle (QuickLoadz trailer) | $30,000 | $35,000 | $40,000 |
 <!-- END costing:optional-additions -->
 
@@ -422,18 +421,19 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 *For a non-commercial art/documentary deployment at a single location: budget <!-- BEGIN costing:pcb-permit-range -->$0–$500<!-- END costing:pcb-permit-range --> for permit costs. For regular commercial touring: budget $500–$2,000/deployment.*
 
-### 9.3 Permits summary (per deployment, non-commercial art use)
+### 9.3 Section total
 
-<!-- BEGIN costing:permits-per-deployment -->
+<!-- BEGIN costing:licenses-permits -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| Location permit | $0 | $200 | $500 |
+| CDL Class A — training + DOT medical + DMV (one-time, §9.1) | $2,245 | $4,245 | $6,570 |
+| Location permit (§9.2) | $0 | $200 | $500 |
 | Business license (annual, prorated) | $10 | $25 | $50 |
 | Misc. (insurance certificate, site access) | $0 | $75 | $200 |
-| **Licenses & permits per deployment** | **$10** | **$300** | **$750** |
-<!-- END costing:permits-per-deployment -->
+| **9. Licenses & permits total** | **$2,255** | **$4,545** | **$7,320** |
+<!-- END costing:licenses-permits -->
 
-*CDL costs are one-time and listed separately above. If CDL is obtained, add <!-- BEGIN costing:pcb-cdl-allin -->$4,245–$6,570<!-- END costing:pcb-cdl-allin --> to the project total.*
+*The CDL is a one-time cost and applies only to self-hauling (commercial hire, §8.1, needs none); the total carries it so §9 covers every line above. The permit lines recur per deployment (non-commercial art use).*
 
 ---
 
@@ -520,10 +520,10 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,129 |
-| CDL Class A training + medical + DMV | $4,500 |
+| CDL Class A training + medical + DMV | $4,245 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$121,629–$151,629** |
+| **Scenario C total** | **~$121,374–$151,374** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

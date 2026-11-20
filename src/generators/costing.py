@@ -469,7 +469,7 @@ def funding_combined() -> tuple[int, int]:
 # hand-maintained drifts: scenario-B light trap 1,800 -> the §6 Mid 1,802, and the derived C figures.)
 SCEN_A = {"container": 1800, "transport": 400, "permits": 50} # WWT grade, local deployment
 SCEN_B = {"container": 3150, "lens": 800, "transport": 900, "permits": 300}
-SCEN_C = {"cdl": 4500, "trailer": 35000, "truck_lo": 50000, "truck_hi": 80000}
+SCEN_C = {"trailer": 35000, "truck_lo": 50000, "truck_hi": 80000}
 
 
 def _scenario_a_rows() -> list:
@@ -531,10 +531,10 @@ def emit_scenario_b() -> str:
 
 def emit_scenario_c() -> str:
     b_less = sum(v for _, v in _scenario_b_rows()) - SCEN_B["transport"] # B build, owned transport
-    base = b_less + SCEN_C["cdl"] + SCEN_C["trailer"]
+    base = b_less + cdl_band()[1] + SCEN_C["trailer"]
     rows = [
         (f"Scenario B build (less the ${SCEN_B['transport']:,} commercial transport, replaced here by owned transport)", f"${b_less:,}"),
-        ("CDL Class A training + medical + DMV", f"${SCEN_C['cdl']:,}"),
+        ("CDL Class A training + medical + DMV", f"${cdl_band()[1]:,}"),
         ("QuickLoadz self-loading trailer", f"${SCEN_C['trailer']:,}"),
         ("Ford F-350+ pickup (if needed)", f"${SCEN_C['truck_lo']:,}–${SCEN_C['truck_hi']:,} (new)"),
     ]
@@ -693,17 +693,32 @@ def cdl_allin(school: tuple[int, int]) -> tuple[int, int]:
     return (school[0] + CDL_MEDICAL[0] + CDL_DMV[0], school[1] + CDL_MEDICAL[1] + CDL_DMV[1])
 
 
+def cdl_band() -> tuple[int, int, int]:
+    """Low = budget school all-in; Mid/High = community-college all-in range."""
+    return (cdl_allin(CDL_SCHOOL_BUDGET)[0], cdl_allin(CDL_SCHOOL_MID)[0], cdl_allin(CDL_SCHOOL_MID)[1])
+
+
+def licenses_permits_rows() -> list:
+    return [("CDL Class A — training + DOT medical + DMV (one-time, §9.1)", cdl_band()),
+            ("Location permit (§9.2)", PERMIT_LOCATION),
+            ("Business license (annual, prorated)", BUSINESS_LICENSE),
+            ("Misc. (insurance certificate, site access)", PERMIT_MISC)]
+
+
+def licenses_permits() -> tuple[int, int, int]:
+    rows = licenses_permits_rows()
+    return tuple(sum(t[i] for _, t in rows) for i in range(3))
+
+
 def _rng(t: tuple, sep: str = "–") -> str:
     return f"${t[0]:,}{sep}${t[-1]:,}"
 
 
 def emit_optional_additions() -> str:
     """Summary 'optional additions' — derived from the sourced quotes above."""
-    cdl = (cdl_allin(CDL_SCHOOL_BUDGET)[0], cdl_allin(CDL_SCHOOL_MID)[0], cdl_allin(CDL_SCHOOL_MID)[1])
     trailer = (TRAILER_QUICKLOADZ[0], (TRAILER_QUICKLOADZ[0] + TRAILER_QUICKLOADZ[1]) // 2, TRAILER_QUICKLOADZ[1])
     rows = ["| Optional item | Low | Mid | High |", "|---------------|-----|-----|------|"]
     for lbl, (lo, mid, hi) in (("Lens (Rodenstock / Nikkor, used)", LENS_OPT),
-                               ("CDL training + DOT medical + DMV fees (budget school low → community college high)", cdl),
                                ("Own transport vehicle (QuickLoadz trailer)", trailer)):
         rows.append(f"| {lbl} | ${lo:,} | ${mid:,} | ${hi:,} |")
     return "\n".join(rows)
@@ -719,13 +734,11 @@ def emit_cdl_table() -> str:
     return "\n".join(rows)
 
 
-def emit_permits_per_deployment() -> str:
-    rows = (("Location permit", PERMIT_LOCATION), ("Business license (annual, prorated)", BUSINESS_LICENSE),
-            ("Misc. (insurance certificate, site access)", PERMIT_MISC))
+def emit_licenses_permits() -> str:
     out = ["| Item | Low | Mid | High |", "|------|-----|-----|------|"]
-    out += [f"| {lbl} | ${t[0]:,} | ${t[1]:,} | ${t[2]:,} |" for lbl, t in rows]
-    tot = [sum(t[i] for _, t in rows) for i in range(3)]
-    out.append(f"| **Licenses & permits per deployment** | **${tot[0]:,}** | **${tot[1]:,}** | **${tot[2]:,}** |")
+    out += [f"| {lbl} | ${t[0]:,} | ${t[1]:,} | ${t[2]:,} |" for lbl, t in licenses_permits_rows()]
+    lo, mid, hi = licenses_permits()
+    out.append(f"| **9. Licenses & permits total** | **${lo:,}** | **${mid:,}** | **${hi:,}** |")
     return "\n".join(out)
 
 
@@ -797,7 +810,7 @@ SECTIONS = [
     Section("6d", "Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension)", *total(SHELF)),
     _printmaking_section(),
     Section("8", "Transportation (per deployment)", 300, 750, 2000),
-    Section("9", "Licenses & permits", 220, 790, 1620),
+    Section("9", "Licenses & permits (CDL + per-deployment permits)", *licenses_permits()),
 ]
 
 # Master-shopping-list-only sections (not in the cost-breakdown's 13). Low/Mid/High estimates.
@@ -840,7 +853,7 @@ def emit_scenario_table() -> str:
     for s in SECTIONS:
         rows.append(f"| **{s.sid}. {s.label}** | ${s.low:,} | ${s.mid:,} | ${s.high:,} |")
     lo, mid, hi = grand_total()
-    rows.append(f"| **TOTAL (excl. own transport, CDL, lens)** | **${lo:,}** | **${mid:,}** | **${hi:,}** |")
+    rows.append(f"| **TOTAL (excl. own transport, lens)** | **${lo:,}** | **${mid:,}** | **${hi:,}** |")
     return "\n".join(rows)
 
 
@@ -863,7 +876,7 @@ def _whole_blocks() -> dict:
             "funding-level1": ("funding-proposal.md", emit_funding_level1),
             "master-summary": ("master-shopping-list.md", emit_master_summary),
             "optional-additions": (_F, emit_optional_additions), "cdl": (_F, emit_cdl_table),
-            "permits-per-deployment": (_F, emit_permits_per_deployment),
+            "licenses-permits": (_F, emit_licenses_permits),
             "running-per-print": (_F, emit_running_per_print),
             "running-per-deployment": (_F, emit_running_per_deployment)}
 
@@ -944,7 +957,6 @@ def _inline_blocks() -> dict:
         "pcb-delivery-xc": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_XC)}†"),
         "pcb-trailer": ("project-cost-breakdown.md", lambda: f"{_rng(TRAILER_QUICKLOADZ)}†"),
         "pcb-lens-range": ("project-cost-breakdown.md", lambda: _rng((LENS_OPT[0], LENS_OPT[2]))),
-        "pcb-cdl-allin": ("project-cost-breakdown.md", lambda: _rng(cdl_allin(CDL_SCHOOL_MID))),
         "pcb-permit-range": ("project-cost-breakdown.md", lambda: _rng((PERMIT_LOCATION[0], PERMIT_LOCATION[2]))),
         "pcb-tier-x": ("project-cost-breakdown.md", lambda: f"{_TIER_SPEC[-1][2] / _TIER_SPEC[0][2]:g}"),
         "pcb-cov-range": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_LO}–{SENSITIZER_ML_PER_M2_COAT_HI}"),
@@ -1185,7 +1197,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "rich": {"chem": 2735, "total": 3040, "per_print": 61}, # 2026-10-22: 9.19 m² derived. Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     # 2026-10-22: chem tiers rescaled to the 9.19 m2 (99 sqft) active plane (now derived from IMAGE_AREA_M2) -> grand total -$20/$30/$60.
     # 2026-10-27: +$12/$16/$20 — beam-penetration EPDM foam light-seals (ll-beam-notch-seal, 4 notches).
-    "grand_total": (27850, 32719, 39618), # 2026-11-19c: −$8/$14/$20 — IBC-2 float switch dropped. 2026-11-19b: +$19 — flex-jumper SS clamps 2→3 10-packs. 2026-11-19: +$9 — flex jumpers on both ends of the Blue equalization tie (barbs 8→10). 2026-11-18d: +$20/$30/$40 — CV-2/CV-3. 2026-11-18c: −$4 — X1 fill cross → tee. 2026-11-18b: +$5 — Fan-A grille frame widened (320×5mm). 2026-11-18: +$15 — Fan-A grille mounting plate (3mm Al over the corrugation; §5b band derives from the ventilation low). 2026-11-17c: −$5 — walkway std-bracket count 13→11 propagated to its nuts/washers (pre-existing stale fastener count). 2026-11-17b: +$67/$108/$150 — report-reconciliation sweep backfilled 5 parts named in reports but absent from the registry: spray manifold clips + IBC-2 Blue float switch + IBC bar-end L-cleats (§5), fan louvre grilles ×2 (§5b), right-walkway grating-bearer L-angle (§6a). 2026-11-17: +$40 — inverter DC protection backfilled into the electrical registry (was in §8 BOM, missing from parts.py). 2026-11-16b: −$32 — AWG rationalization (single 12 AWG distribution). 2026-11-16: +$5 — Circuit-C split (B′): master pump switch → 2-pole DPST. 2026-11-13: +$9 — floor-anchor self-driller re-sourced (F14C325FDC → McMaster 90822A536, $1.30 ea was $1.02): walkway +$6, ibc-frame +$3. 2026-11-09: −$7 — M8 fastener standardization (film −$8 / shelf +$1): M8×25 304 SS onto one SKU 92314A711 (50-pack, retired steel dup 91310A535), M8 flat washer onto 98689A673 (retired dup 91166A270). 2026-11-07: +$12 — M12×30 foot/leg bolts (×36) firmed to McMaster 91280A716 ($0.85 ea, was ~$0.50): ibc-frame +$5, walkway +$7. # 2026-11-06b: apron draw latches 8 installed as ONE 10-pack = $9.85 total (10-pack price). 2026-11-06: −$83 panel apron latch 1619A74 cam → 1590A13 draw latch. 2026-11-06: −$83/$83/$83 panel apron latch 1619A74 cam → 1590A13 draw latch (4× $9.85). 2026-11-05b: +$74/$62/$50 panel apron latch → reuse 1619A74 (handle INSIDE, convention-matched; 2D+3D reconciled). 2026-11-05: −$11/$20/$26 panel apron fold-down → pull-out corner apron (Sheet 16 redesign). 2026-10 reconcile: −$79/$102/$125 (walkway std-bracket count 13→11 corrected to the 3D). 2026-10-12: +$138/$204/$270 — floor anchoring redesigned to self-tapped sub-plates (strongbacks) for the IBC feet (+$46/$68/$90) + the walkway floor-legs (+$113/$156/$199): container-floor cross-members aren't standardized, so feet/legs bolt to a plate that self-taps into whatever members it spans. 2026-10-10: +$21/$21/$20 — IBC J1 foot anchors reconciled to 4× M12/foot (owner-confirmed) + spray $1 rounding realign. 2026-10-07: +$20/$36 electrical conduit-support-clips. # 2026-10-07: +$27 led-channel 6→7 (Circuit-G 4th run over the tray center). 2026-10-04: +$1/$2/$2 — P-clips 85→87 (corridor blue frame clips). 2026-10-03c: +$3/$5/$6 — P-clips 80→86 (drain-riser spine extended toward the end wall). 2026-10-03b: +$19/$26/$32 — P-clips 46→80 (pinhole-panel audit). 2026-10-03: +$4/$5/$7 — P-clips 39→46 (3rd clamp rows on the raised corridor boards + P-01 straddle clamps). (earlier cost history, 2026-09 and before: RELEASE.md + git log).
+    "grand_total": (29885, 36474, 45318), # 2026-11-20: +$2,035/$3,755/$5,700 — §9 Licenses & permits computed from its lines (CDL + permits), was a fixed $220/$790/$1,620. 2026-11-19c: −$8/$14/$20 — IBC-2 float switch dropped. 2026-11-19b: +$19 — flex-jumper SS clamps 2→3 10-packs. 2026-11-19: +$9 — flex jumpers on both ends of the Blue equalization tie (barbs 8→10). 2026-11-18d: +$20/$30/$40 — CV-2/CV-3. 2026-11-18c: −$4 — X1 fill cross → tee. 2026-11-18b: +$5 — Fan-A grille frame widened (320×5mm). 2026-11-18: +$15 — Fan-A grille mounting plate (3mm Al over the corrugation; §5b band derives from the ventilation low). 2026-11-17c: −$5 — walkway std-bracket count 13→11 propagated to its nuts/washers (pre-existing stale fastener count). 2026-11-17b: +$67/$108/$150 — report-reconciliation sweep backfilled 5 parts named in reports but absent from the registry: spray manifold clips + IBC-2 Blue float switch + IBC bar-end L-cleats (§5), fan louvre grilles ×2 (§5b), right-walkway grating-bearer L-angle (§6a). 2026-11-17: +$40 — inverter DC protection backfilled into the electrical registry (was in §8 BOM, missing from parts.py). 2026-11-16b: −$32 — AWG rationalization (single 12 AWG distribution). 2026-11-16: +$5 — Circuit-C split (B′): master pump switch → 2-pole DPST. 2026-11-13: +$9 — floor-anchor self-driller re-sourced (F14C325FDC → McMaster 90822A536, $1.30 ea was $1.02): walkway +$6, ibc-frame +$3. 2026-11-09: −$7 — M8 fastener standardization (film −$8 / shelf +$1): M8×25 304 SS onto one SKU 92314A711 (50-pack, retired steel dup 91310A535), M8 flat washer onto 98689A673 (retired dup 91166A270). 2026-11-07: +$12 — M12×30 foot/leg bolts (×36) firmed to McMaster 91280A716 ($0.85 ea, was ~$0.50): ibc-frame +$5, walkway +$7. # 2026-11-06b: apron draw latches 8 installed as ONE 10-pack = $9.85 total (10-pack price). 2026-11-06: −$83 panel apron latch 1619A74 cam → 1590A13 draw latch. 2026-11-06: −$83/$83/$83 panel apron latch 1619A74 cam → 1590A13 draw latch (4× $9.85). 2026-11-05b: +$74/$62/$50 panel apron latch → reuse 1619A74 (handle INSIDE, convention-matched; 2D+3D reconciled). 2026-11-05: −$11/$20/$26 panel apron fold-down → pull-out corner apron (Sheet 16 redesign). 2026-10 reconcile: −$79/$102/$125 (walkway std-bracket count 13→11 corrected to the 3D). 2026-10-12: +$138/$204/$270 — floor anchoring redesigned to self-tapped sub-plates (strongbacks) for the IBC feet (+$46/$68/$90) + the walkway floor-legs (+$113/$156/$199): container-floor cross-members aren't standardized, so feet/legs bolt to a plate that self-taps into whatever members it spans. 2026-10-10: +$21/$21/$20 — IBC J1 foot anchors reconciled to 4× M12/foot (owner-confirmed) + spray $1 rounding realign. 2026-10-07: +$20/$36 electrical conduit-support-clips. # 2026-10-07: +$27 led-channel 6→7 (Circuit-G 4th run over the tray center). 2026-10-04: +$1/$2/$2 — P-clips 85→87 (corridor blue frame clips). 2026-10-03c: +$3/$5/$6 — P-clips 80→86 (drain-riser spine extended toward the end wall). 2026-10-03b: +$19/$26/$32 — P-clips 46→80 (pinhole-panel audit). 2026-10-03: +$4/$5/$7 — P-clips 39→46 (3rd clamp rows on the raised corridor boards + P-01 straddle clamps). (earlier cost history, 2026-09 and before: RELEASE.md + git log).
     "walkway": (2155, 2619, 3107), # 2026-11-17b: −$5 — std-bracket count 13→11 propagated to its nuts/washers (nuts/split 59→53, flat 236→212). 2026-11-17: +$25/$50/$75 — right-walkway grating-bearer L-angle (walkway-right-bearer; §8.1, absent from cut list + registry). 2026-11-13: +$6 — floor-anchor self-driller re-sourced (F14C325FDC → McMaster 90822A536, #14×3½ 410 SS $1.30 ea, was $1.02). 2026-11-07: +$7 — 20× M12×30 leg bolts firmed (91280A716 $0.85 ea). # 2026-10 reconcile: −$79/$102/$125 — std cantilever brackets corrected 13→11 (3 near + 8 far; the 5 near-wide bays are widened brackets) + reinf ×13→×11 + M12 ×59→53, matching the 3D station math. 2026-10-12: +$113/$156/$199 — floor-leg anchoring → one continuous self-tapped sub-plate (strongback) + self-drilling TEKs + leg→plate bolts (replaces 20× #14 floor screws; cross-member pitch not standardized). 2026-09-07: +$9 — M12 wall bolts standardized to ×70 (single zinc wall length). 2026-08-19: −$116/$125/$135 — IBC-owned center arms + J6 hardware + half-lap screws moved to ibc-frame (§5), per the ownership boundary. 2026-08-16d: +$55/+$43/+$31 — arm FIRM price (Metal Supermarkets $91.32/36in cut vs the $36-60 est). 2026-08-16c: −$10/−$13/−$15 — J6 4→2 bolts/arm (central column) less 4 M12×100 + 4 crush sleeves. 2026-08-16b: +$2/+$3/+$4 — 4× #14 TEK half-lap hold-down screws. 2026-08-16: +$62/+$85/+$108 — RWK center arms hollow tube → SOLID 2×1 flat bar (split out) + J6 end-plate hardware (8× M12×100 + 4 plates + 8 crush sleeves) less 4 arm-clamp M12×70. # 2026-08-07 (#26): +$107/+$123 — RWK frame 2×⅞ (non-stock) → 2×1×0.120 real MetalsDepot price + floor-leg arms 2×1. # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6988, 7673, 8364), # 2026-11-19c: −$8/$14/$20 — IBC-2 float switch dropped. 2026-11-19b: +$19 — flex-jumper SS clamps 2→3 10-packs. 2026-11-19: +$9 — Blue equalization tie flex jumpers (ibc-flex-barb-m/f 8→10). 2026-11-18b: +$20/$30/$40 — CV-2/CV-3 waste-leg checks. 2026-11-18: −$4 — X1 cross → tee. 2026-11-17: +$22/$38/$55 — spray manifold clips +$8/$11/$15, IBC-2 float switch +$8/$14/$20, IBC bar-end L-cleats +$6/$13/$20 (all named in-report, absent from the registry). 2026-11-13: +$3 — IBC floor-anchor self-driller re-sourced (F14C325FDC → McMaster 90822A536). 2026-11-07: +$5 — 16× M12×30 IBC foot bolts firmed (91280A716 $0.85 ea). # 2026-10-12: +$25/$48/$71 — IBC J1 floor anchoring → self-tapped sub-plate + self-drilling TEKs + foot→plate bolts (replaces the M12×70 floor thru-bolts; cross-member pitch not standardized). 2026-10-10: +$21/$21/$20 — IBC J1 foot anchors #14 self-driller → M12×70 thru-bolt + nuts/washers (owner-confirmed 4× M12/foot) + spray high $1 rounding realign. 2026-10-04: +$1/$2/$2 — pipe-support-clips 85→87 (corridor blue frame clips: suction loop-back + supply-trunk mouth crossing). 2026-10-03c: +$3/$5/$6 — pipe-support-clips 80→86 (spine extended toward the end wall → end-port clips). 2026-10-03b: +$19/$26/$32 — pipe-support-clips 46→80 (pinhole-panel audit). 2026-10-03: +$4/$5/$7 — pipe-support-clips 39→46 (far+near-lower each gained a 3rd clamp row on the raised corridor boards, +2 straddling the P-01 suction valve). 2026-09-07: +$2 ibc-frame — J3 wall-hanger bolts ×65→×70 (single zinc wall length). 2026-09-07: filter ply-mount 5/16→1/4 firmed (screw 90272A552 + washer 90850A100, −$10 net) + #14 TEK firmed (90822A620). 2026-08-19: +$116/$125/$135 ibc-frame — the IBC-owned walkway center arms + J6 connection reconciled from walkway §6a. 2026-08-18b: +$10/$15/$20 ibc-frame (16 L-cleat nut backing plates). 2026-08-18: −$16/$15/$16 ibc-frame (J2 corridor cleat → L-angle + 1 horizontal bolt). ... (earlier cost history: RELEASE.md + git log).
     "container": (2300, 3300, 4300),

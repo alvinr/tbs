@@ -15,9 +15,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   is either a stale restatement (e.g. the $1,250 Lean run cost in process-comparison / master list,
   now $1,230) or a coincidence. Convert the real ones to costing placeholders, and lower
   `_MONEY_RAW_BASELINE` as each doc's count drops.
-- [ ] Cost breakdown §9: the summary row "9. Licenses & permits" ($220 / $790 / $1,620, a literal in
-  `costing.py` SECTIONS) does not match the §9.3 per-deployment table ($10 / $300 / $750). Decide what
-  §9 contains and derive it.
+- [x] Cost breakdown §9: the summary row is now computed from all its lines (CDL + permits), 2026-11-20.
 
 ## 🧪 Wash-water classification — open checks (2026-11-20)
 

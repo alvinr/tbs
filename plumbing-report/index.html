@@ -866,10 +866,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pump-electrical-circuit-c-one-at-a-time" class="md-nav__link">
+  <a href="#pump-electrical-circuit-c1-corridor-c2-tray-drain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pump electrical — Circuit C (one at a time)
+        Pump electrical — Circuit C1 (corridor) / C2 (tray drain)
       
     </span>
   </a>
@@ -3154,8 +3154,7 @@ sumps, half the interval).</p>
 <p><strong>Alternative:</strong> A single 3-stage combo unit (e.g. Purcooflow WHF2045B302 or
 iSpring WGB32B) with 4.5"×20" cartridges eliminates the inter-housing plumbing
 and the separate frame — one integrated bracket, 1" NPT inlet/outlet, a single
-1/2"→1" bushing at the DV-02 recycle feed. See
-<a href="../water-system-report/">Water System Report</a> §3.2 for sizing rationale.</p>
+1/2"→1" bushing at the DV-02 recycle feed.</p>
 <h3 id="32-corridor-plumbing-panel-pump-zone">3.2 Corridor Plumbing Panel — Pump Zone<a class="headerlink" href="#32-corridor-plumbing-panel-pump-zone" title="Permanent link">&para;</a></h3>
 <p><strong>Four</strong> Shurflo 2088 pumps mount on the Corridor panel (P-04, the tray-drain pump, lives on
 the Pinhole Wall filter skid, §3.1). The accumulator ACC-01 sits at the column foot (§3.3).</p>
@@ -3195,13 +3194,15 @@ self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
 216mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
 through the plywood. They sit in a single vertical column in the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor;
 P-01 and P-02 draw from the near IBC column, P-03 and P-05 from the far column.</p>
-<h4 id="pump-electrical-circuit-c-one-at-a-time">Pump electrical — Circuit C (one at a time)<a class="headerlink" href="#pump-electrical-circuit-c-one-at-a-time" title="Permanent link">&para;</a></h4>
-<p>All five pumps run from the <strong>single Circuit C feed</strong> (12V DC, 15A fuse, 14 AWG
-from the Blue Sea fuse block — see <a href="../electrical-report/">Electrical Report §7.2–7.3</a>).
-Circuit C is switched at a <strong>master pump switch on the Electrical Panel (EP)</strong> — one
-IP-rated cutoff for the whole pump circuit, upstream of everything — then runs the
-ceiling trunk to a <strong>12V DC distribution block</strong> (positive + shared negative bus) on
-the rear of this panel; from it a short 16 AWG branch feeds each pump directly.</p>
+<h4 id="pump-electrical-circuit-c1-corridor-c2-tray-drain">Pump electrical — Circuit C1 (corridor) / C2 (tray drain)<a class="headerlink" href="#pump-electrical-circuit-c1-corridor-c2-tray-drain" title="Permanent link">&para;</a></h4>
+<p>The pump circuit is <strong>dual-fused</strong> off the Blue Sea fuse block, both legs under one <strong>2-pole
+master pump switch on the Electrical Panel (EP)</strong> (<a href="../electrical-report/">Electrical Report §7.2–7.3</a>):</p>
+<ul>
+<li><strong>C1</strong> (15A fuse, 12 AWG dry feed) runs the ceiling trunk to a <strong>12V DC distribution block</strong>
+  (positive + shared negative bus) on the rear of this panel; from it a short 14 AWG
+  marine-duplex branch feeds each of the four corridor pumps.</li>
+<li><strong>C2</strong> (10A fuse, 12 AWG) is P-04's own run to the Pinhole Wall filter skid (§3.1).</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -3212,26 +3213,27 @@ the rear of this panel; from it a short 16 AWG branch feeds each pump directly.<
 <tbody>
 <tr>
 <td>Feed</td>
-<td>Circuit C, 14 AWG, 15A fuse (one feed for all five pumps)</td>
+<td>C1: 12 AWG, 15A fuse (four corridor pumps) · C2: 12 AWG, 10A fuse (P-04)</td>
 </tr>
 <tr>
 <td>Master switch</td>
-<td>1 × IP-rated sealed rocker/disconnect (12V, 16A), <strong>mounted on the EP</strong> — single cutoff upstream of the whole circuit; no per-pump switches (each Shurflo runs on its internal pressure switch)</td>
+<td>1 × IP-rated 2-pole sealed switch, <strong>mounted on the EP</strong> — one cutoff for both legs; no per-pump switches (each Shurflo runs on its internal pressure switch)</td>
 </tr>
 <tr>
 <td>Distribution</td>
-<td>12V DC + / − bus block on the rear of the plumbing panel, fed from the EP master switch</td>
+<td>12V DC + / − bus block on the rear of the plumbing panel, fed from C1</td>
 </tr>
 <tr>
 <td>Branches</td>
-<td>16 AWG, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->7.5<!-- END fact:pump_current_a -->A / 90W per pump)</td>
+<td>14 AWG marine duplex, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump)</td>
 </tr>
 </tbody>
 </table>
-<p>The pumps are operated <strong>one at a time</strong>: with the EP master switch on, the operator
-opens the relevant ball valves for the current task (others closed), and that pump's
-Shurflo <strong>internal demand/pressure switch</strong> then runs it on demand. The 15A fuse
-covers a single pump with margin; simultaneous running is not intended.
+<p>The four corridor pumps on C1 run <strong>one at a time</strong>: the open ball valves select the pump for
+the current task, and that pump's Shurflo <strong>internal demand/pressure switch</strong> runs it on demand.
+P-04 on C2 runs <strong>concurrently</strong> with the C1 supply pump, so the tray drains as fast as the spray
+bar fills it (the continuous flow-through wash, <a href="../water-system-report/">Water System Report §6</a>).
+Each fuse carries a single pump with margin.
 The distribution block sits <strong>above the spill line</strong>, IP-rated and sealed, with drip
 loops, per the wet-zone rules in <a href="../electrical-report/">Electrical Report §7.5</a>; the
 master switch is on the EP, clear of the wet zone.</p>
@@ -3240,18 +3242,19 @@ master switch is on the EP, clear of the wet zone.</p>
 <p><strong>Spine side-sections (corridor side section) — two sheets, opposite
 faces of the drain-riser spine</strong> (18mm ply teed off the panel). Pumps mount on
 the front face; the drain runs hang on the spine in the corridor gap clear of
-both tote columns; the Circuit-C pump-power distribution feeds all five pumps.
-P-04 lives on the Pinhole Wall filter skid and shares Circuit C. The two views share
-all structure + fittings as landmarks; each face's own pipe runs appear on its
-own sheet. <em>(Spine views A/B still show the pre‑Phase‑2 corridor tray‑drain routing —
-pending the topology update; see §8.1.)</em></p>
-<p><strong>Spine View A — intake face:</strong> suctions (BV-01 Blue, tray sump, IBC-3),
-the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
-DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
+both tote columns, each P-clipped on an 18mm ply-offcut block. Circuit C1 feeds
+the four corridor pumps; P-04 lives on the Pinhole Wall filter skid on its own
+fuse, C2. The two views share all structure + fittings as landmarks; each face's
+own pipe runs appear on its own sheet, projected from the 3D model.</p>
+<p><strong>Spine View A — intake face:</strong> the four pump suctions through BV-01/03/02/06
+(IBC-1 Blue, the shared IBC-3 bottom tap, the X4 waste pickup up the spine), the
+DV-01 and DV-02 waste legs into the IBC-4 merge tee through CV-2 / CV-3, the IBC-1
+fill off the X1 fill tee, and the Blue supply trunk.
 <img alt="TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)" src="../assets/panel-spine-view-a.png" /></p>
 <p><strong>Spine View B — discharge face (a mirror of A):</strong> the X3 brown (P-05) and X4
-gray (P-03) pump discharges running full along the spine to the sealed end-wall
-ports, the P-01 → ACC drop, the P-04 discharge through SV-02, and the IBC-2 fill.
+black (P-03) pump discharges running along the spine to the sealed end-wall
+ports, P-01 → ACC-01, P-02 → ACC-02 (down the far board to the under-walkway
+ribbon), the DV-01 recycle → IBC-3, and the IBC-2 fill.
 <img alt="TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)" src="../assets/panel-spine-view-b.png" /></p>
 <h3 id="33-accumulator">3.3 Accumulator<a class="headerlink" href="#33-accumulator" title="Permanent link">&para;</a></h3>
 <table>
@@ -3272,7 +3275,7 @@ ports, the P-01 → ACC drop, the P-04 discharge through SV-02, and the IBC-2 fi
 </tr>
 <tr>
 <td>Position</td>
-<td>Corridor panel, at the column <strong>foot</strong> (below P-01 — the P-01/ACC order was swapped to drop the accumulator to the base)</td>
+<td>Corridor panel, at the column <strong>foot</strong> (below P-01, so the accumulator sits at the base)</td>
 </tr>
 <tr>
 <td>Port</td>
@@ -3383,15 +3386,17 @@ isolation valves also re-sourced to Grainger 803HZ1 at $24.14, down from $44.27.
 <td>3W-DV-02</td>
 <td>1/2" FNPT</td>
 <td>Skid row, after SV-02</td>
-<td>Routes the tray-drain water into the filters (F-01, recycle) or straight to Black (IBC-4 waste) based on operator judgment</td>
+<td>Routes the tray-drain water into the filters (F-01, recycle) or straight to Black (IBC-4 waste), ahead of the filter train</td>
 </tr>
 </tbody>
 </table>
-<p><strong>3W-DV-02</strong> is the operator judgment valve: set to recycle (default) — into the
-filters for cleaning — for normal rinse water, switch to Black for heavy
-contamination events.</p>
-<p><strong>3W-DV-01</strong> is the pH-gated valve: draw a sample at <strong>SV-01</strong> (below) and meter it — if filtered water reads pH 6–7, route to
-recycle (IBC-3 Brown buffer, which P-02 later sprays back); if pH &gt;7.5 or discolored, route to Black (IBC-4).</p>
+<p><strong>3W-DV-02</strong> sits ahead of the filters so any wash can bypass them and the recycle loop
+entirely: wash 1 under the dichromate option, which carries most of the chromium, and
+heavily contaminated drain water (<a href="../water-system-report/">Water System Report §2.3, §4.2</a>).
+Its settings are in the <a href="../operating-manual/">Operating Manual §4.2</a>.</p>
+<p><strong>3W-DV-01</strong> is the pH-gated valve, set from the <strong>SV-01</strong> sample (below): filtered water at pH 6–7 routes to
+recycle (IBC-3 Brown buffer, which P-02 later sprays back); pH &gt;7.5 or discolored routes to Black (IBC-4).
+Its settings are in the <a href="../operating-manual/">Operating Manual §4.2</a>.</p>
 <h3 id="43-check-valves">4.3 Check Valves<a class="headerlink" href="#43-check-valves" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3409,10 +3414,23 @@ recycle (IBC-3 Brown buffer, which P-02 later sprays back); if pH &gt;7.5 or dis
 <td>X1 bulkhead fill line</td>
 <td>Prevents backflow from the Blue totes to the external fill port</td>
 </tr>
+<tr>
+<td>CV-2</td>
+<td>1/2"</td>
+<td>DV-01 reject riser, just below the IBC-4 merge tee</td>
+<td>One-way into the merge — stops the IBC-4 riser draining back through DV-01 into the filter train</td>
+</tr>
+<tr>
+<td>CV-3</td>
+<td>1/2"</td>
+<td>DV-02 waste riser, just below the IBC-4 merge tee</td>
+<td>One-way into the merge — stops the DV-01 reject leg back-feeding the DV-02 leg</td>
+</tr>
 </tbody>
 </table>
-<p>** Check Value CV-1** The Shurflo 2088 pumps have integral check valves. CV-1 guards the single gravity (non-pumped) path, the
-X1 fresh-fill. Installed in the IBC zone, not on a panel.</p>
+<p>The Shurflo 2088 pumps carry integral check valves, but those sit upstream of the diverters. CV-1
+guards the one gravity (non-pumped) path, the X1 fresh fill. CV-2 and CV-3 make the two waste legs
+one-way where they share the IBC-4 merge tee. All three are in the IBC zone, not on a panel.</p>
 <h3 id="44-sample-tap-sv-01">4.4 Sample Tap (SV-01)<a class="headerlink" href="#44-sample-tap-sv-01" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3444,9 +3462,9 @@ family as the BV isolation valves) on a 1"×1/2" reducing branch tee, with a sho
 downturned hose-barb spout. It sits on the panel face <strong>above the spill line</strong>,
 spout pointing toward the operator so a cup fits beneath it from the right
 walkway.</p>
-<p><strong>Use:</strong> run P-04 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
-a cup, close it, read pH on the meter, then set 3W-DV-01 to recycle-return (pH 6–7)
-or Black-waste (pH drift / discolored).</p>
+<p>SV-01 draws while P-04 pressurizes the filtered line; a ~50 ml sample sets 3W-DV-01
+(recycle-return at pH 6–7, Black-waste on pH drift or discoloration). The sampling
+procedure is in the <a href="../operating-manual/">Operating Manual §4.2</a>.</p>
 <hr />
 <h2 id="5-pipe-specifications">5. Pipe Specifications<a class="headerlink" href="#5-pipe-specifications" title="Permanent link">&para;</a></h2>
 <table>
@@ -3586,7 +3604,7 @@ transport</strong> (no freeze-crack, less vibration mass) and every pump is de-c
 run on <strong>both ports</strong> — a <strong>braided ½" flex jumper on the suction <em>and</em> discharge of all five
 pumps</strong> (P-04's suction is the 1" tray-drain hose), barb-coupled and SS-clamped, so pump vibration
 can't fatigue-crack a solvent-weld joint; rigid runs are clipped at
-close intervals. Keep runs off the sunniest wall face — PVC softens near 60 °C, though it
+close intervals. Runs stay off the sunniest wall face — PVC softens near 60 °C, though it
 retains &gt; 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
 conditions, PEX is the tougher DIY alternative.)</p>
 <h3 id="53-pump-run-supports">5.3 Pump-run supports<a class="headerlink" href="#53-pump-run-supports" title="Permanent link">&para;</a></h3>
@@ -3607,7 +3625,9 @@ board face by <strong>cushioned P-clips</strong>.</p>
   (P-05 / P-03 suction). Each riser is pulled flush onto its board plane, and the DV-01 recycle
   line is re-routed off IBC-3 and down the far board before turning into DV-01.</li>
 <li><strong>Drain-riser spine</strong> — the three gray/brown waste risers clamp to the spine's near face; the
-  P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.</li>
+  P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.
+  The far-face clips sit on 6.5mm shims rather than 18mm blocks: that lane is fixed by the
+  pump-port turn, and a clip every ~200mm holds the line firmly at that standoff.</li>
 <li><strong>Filter skid</strong> — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
   the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.</li>
 </ul>
@@ -3631,18 +3651,17 @@ to the spray bar center feed bulkhead.</p>
 IBC-3 → P-02 → ACC-02 → BV-05 → spray bar   (recycle spray)
 </code></pre></div>
 <p>P-04 lifts drain water from the processing tray sump (~900mm head) and, via 3W-DV-02,
-sends it into the 3-stage filter train. After filtering, the operator draws a sample at
-SV-01, checks pH, and sets 3W-DV-01 to route either to recycle (IBC-3 Brown buffer) or to
-Waste (IBC-4). <strong>P-02</strong> then recirculates the clean IBC-3 buffer to the spray bar (via
+sends it into the 3-stage filter train. The SV-01 sample tap after the filters feeds the
+pH check that sets 3W-DV-01: recycle (IBC-3 Brown buffer) or Waste (IBC-4). <strong>P-02</strong> then recirculates the clean IBC-3 buffer to the spray bar (via
 ACC-02 and BV-05) — the recycle-spray loop.</p>
 <h3 id="63-black-system-waste-containment">6.3 Black System — Waste Containment<a class="headerlink" href="#63-black-system-waste-containment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>3W-DV-01 reject → IBC-4
-3W-DV-02 contaminated → IBC-4
+3W-DV-02 wash 1 (dichromate option) / contaminated → IBC-4
 IBC-4 → P-03 → external drain port X4 (gravity + pump assist)
 </code></pre></div>
 <p>P-03 is dedicated to waste evacuation. IBC-4 gravity-drains through external
 port X4 down to approximately 120L residual; P-03 pumps the residual
-below the gravity drain height to a disposal tanker.</p>
+below the gravity drain height to the waste hauler's tanker (<a href="../water-system-report/">Water System Report §4.3</a>).</p>
 <hr />
 <h2 id="7-mounting-and-structure">7. Mounting and Structure<a class="headerlink" href="#7-mounting-and-structure" title="Permanent link">&para;</a></h2>
 <h3 id="71-plumbing-panel-mounting">7.1 Plumbing Panel Mounting<a class="headerlink" href="#71-plumbing-panel-mounting" title="Permanent link">&para;</a></h3>
@@ -3749,73 +3768,12 @@ the grate).</p>
 <p>The panel-mounted equipment for both plumbing panels is part of the water system — see the filtered master BOM above (and the <a href="../water-system-report/">Water System Report</a> §8). The panel ply/backing and mounting hardware are sourced there and in the IBC stacking frame line.</p>
 <hr />
 <h2 id="10-maintenance">10. Maintenance<a class="headerlink" href="#10-maintenance" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Interval</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Before each session</td>
-<td>Verify all valve positions per valve matrix (see <a href="../water-system-report/">Water System Report</a> §4)</td>
-</tr>
-<tr>
-<td>Before each session</td>
-<td>Run P-04 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output</td>
-</tr>
-<tr>
-<td>Before each session</td>
-<td>Confirm P-04 suction pickup tube seated in sump well (visual check)</td>
-</tr>
-<tr>
-<td>After each session</td>
-<td>Run P-04 to evacuate residual tray water to Brown or Black as appropriate</td>
-</tr>
-<tr>
-<td>Monthly</td>
-<td>Inspect all pipe joints for leaks; tighten compression fittings if needed</td>
-</tr>
-<tr>
-<td>Monthly</td>
-<td>Check pump mounting bracket bolts for tightness</td>
-</tr>
-<tr>
-<td>Monthly</td>
-<td>Inspect filter housing clamp bands and mounting machine screws (tee-nut joints)</td>
-</tr>
-<tr>
-<td>Every ~40 prints</td>
-<td>Replace F-03 (CTO carbon block) cartridge</td>
-</tr>
-<tr>
-<td>Every ~50 prints</td>
-<td>Replace F-01 (5μm sediment) cartridge</td>
-</tr>
-<tr>
-<td>Every ~60 prints</td>
-<td>Replace F-02 (KDF-55) cartridge</td>
-</tr>
-<tr>
-<td>Quarterly</td>
-<td>Check accumulator pre-charge pressure (should hold 30 PSI)</td>
-</tr>
-<tr>
-<td>Quarterly</td>
-<td>Inspect check valve CV-1 (X1 fill line) for proper seating</td>
-</tr>
-<tr>
-<td>Annually</td>
-<td>Inspect plywood panel for delamination or moisture damage; reseal if needed</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Filter replacement procedure:</strong> Close P-02 supply valve. Place bucket under
-housing. Turn sump bowl counter-clockwise with Big Blue wrench (included with
-housing). Remove spent cartridge, inspect housing interior, insert new
-cartridge, re-seat sump bowl, hand-tighten plus 1/4 turn. Run P-02 for 1
-minute to flush; check for leaks.</p>
+<p>The serviceable parts are designed to be reached and replaced in place. The filter cartridges are
+the consumable: F-03 (carbon) lasts ~40 prints, F-01 (sediment) ~50 and F-02 (KDF-55) ~60 (§3.1).
+Every component that needs service lands on a threaded interface (§5.1), the Big Blue sumps hang
+clear of the backing ply for cartridge changes (§7.2), and ACC-01 holds a 30 PSI pre-charge. The
+inspection schedule and service procedures are in the
+<a href="../operating-manual/#maintenance">Operating Manual — Maintenance</a>.</p>
 <hr />
 <h2 id="11-source-references">11. Source References<a class="headerlink" href="#11-source-references" title="Permanent link">&para;</a></h2>
 <ol>

@@ -3070,7 +3070,7 @@ panel.</p>
 <td>IBC-4</td>
 <td>Bottom tier, far column</td>
 <td>Black (waste)</td>
-<td>Contaminated water sealed for off-site disposal</td>
+<td>Contaminated water held for off-site disposal (pumped out through X4)</td>
 </tr>
 </tbody>
 </table>
@@ -3266,7 +3266,7 @@ therefore designed for the loaded case, not just the drained one.</p>
 </ul>
 <p><strong>Service + walkway load cases</strong> (the same frame also carries the plumbing panel and the walkway — both <strong>non-governing</strong> vs the transport case):</p>
 <ul>
-<li><strong>Plumbing panel + pumps</strong> (~20 kg on the 6 rear-panel brackets) = ~33 N/bracket, static — trivial (SF ≫ 10).</li>
+<li><strong>Plumbing panel + pumps</strong> — the panel mass is summed from its parts (ply, pumps, ACC-01, water-filled pipe, valves and clips — <a href="https://github.com/alvinr/tbs/blob/main/src/generators/plumbing_panel_mass.py"><code>plumbing_panel_mass.py</code></a>, ~50 kg). Taken entirely on the 6 rear-panel brackets it is under 100 N per bracket, static — trivial (SF ≫ 10).</li>
 <li><strong>Right-walkway cantilever</strong> — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a <strong>395 N·m moment into the front upright</strong>: the 50.8 RHS upright bends at <strong>SF 6.9</strong>, and the arm→upright connection — a <strong>bolted end-plate</strong>, <strong>bearing-type</strong> (a plate welded to the arm end, then 2× M12 <strong>both above the arm</strong> through the upright into a <strong>rear backing plate</strong>, CJ): the top bolt group takes the tension while the plate bears compression at the bottom against the upright. At the ~65 mm lever the two bolts share <strong>~3.0 kN each</strong> (<strong>SF ≈ 20</strong> on the M12), and the backing plate spreads the reaction so the hollow RHS wall can't dish. <strong>Both bolts sit above the arm</strong> — this clears the 3-way corner congestion at the front upright: the corridor's bottom frame X-rail (Z12–63) runs behind the plate's lower edge (ghost-marked on Sheet 5) with <strong>no bolt near it</strong>, and neither bolt fouls the welded arm (Z90–115). A walkway support carries <strong>down-load only</strong> (deck + people; the grate lifts out without loading the arm up), so the asymmetric bearing-type joint is appropriate. The arm itself is a <strong>solid 2×1 flat bar</strong> (not a tube): each arm half-laps over <em>both</em> walkway long beams, and a notched hollow tube opens into a weak channel — a notched partial section has to be solid to keep its strength. The half-lap is <strong>rebalanced to the moment</strong>: a deep arm notch at the tip (M ≈ 30 N·m, arm keeps 5.4 mm), and at the post end (M ≈ 267 N·m) the <strong>outer beam</strong> takes the deep notch so the arm keeps 16 mm (<strong>SF ≈ 2.0</strong> on the solid bar). The outer beam's thin 9.4 mm notch sits at an arm support, but a thin channel can't carry that support's hogging — so the half-lap is a <strong>bearing seat</strong> (the beam's upper 9.4 mm rests on the arm's lower 16 at ~0.2 MPa), i.e. a pinned support. The beam therefore spans <strong>simply-supported on its full 25.4 mm section</strong> — <strong>SF ≈ 7</strong> and <strong>~2 mm</strong> deflection under a person (<code>ibc_frame_load.outer_beam_frame_check</code>; the light grate load and person-share are estimates to firm with the full walkway-frame model). Each half-lap is <strong>positively secured</strong> by one <strong>#14 self-drilling TEK screw</strong> (4 total) driven from the underside through a Ø7 <strong>clearance</strong> hole in the solid arm, threading into the hollow beam's <strong>solid bottom wall</strong> (which faces down onto the arm) — an anti-lift/anti-slide locator whose head clears the traveling spray beam. The arm's fabrication (including the hold-down section) is drawn on Sheet 5.</li>
 </ul>
 <p>The load path, the EN 12195-1 method, and the full demand/capacity/SF matrix (driven from <code>ibc_frame_load.py</code>) are drawn on the load-case sheet:</p>
@@ -3458,7 +3458,7 @@ are the standard values for the grade.</p>
 </tr>
 </tbody>
 </table>
-<p>The rear-panel bracket (<strong>RP2</strong>) and the side-panel pipe-run L-bracket (<strong>SP2</strong>) are <strong>no longer welded</strong> — they attach to the post with <strong>#14 self-drilling TEK screws</strong> (2 per bracket) so they can be added to a pre-finished, painted frame with no hot work and stay adjustable; both carry only light static loads (panel ~33 N/bracket; pipe runs lighter).</p>
+<p>The rear-panel bracket (<strong>RP2</strong>) and the side-panel pipe-run L-bracket (<strong>SP2</strong>) are <strong>not welded</strong> — they attach to the post with <strong>#14 self-drilling TEK screws</strong> (2 per bracket) so they can be added to a pre-finished, painted frame with no hot work and stay adjustable; both carry only light static loads (panel ~33 N/bracket; pipe runs lighter).</p>
 <p><strong>Sheet 6</strong> maps where each weld lands on the frame (a schematic front elevation with W1–W6 ticked) alongside the schedule:</p>
 <p><img alt="TBS-001 IBC Frame — Sheet 6: Weld Map" src="../assets/ibc-frame-sheet6.png" /></p>
 <p>The wall joist hangers are <strong>folded</strong> 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the <strong>plumbing-corridor metal</strong> that shares this frame; the walkway cantilever arms <strong>bolt</strong> to the front uprights (CJ, an end-plate welded to the arm + a rear backing plate, 4× M12 through-bolts — not a frame weld) and are fabricated per Sheet 5.</p>
@@ -3753,7 +3753,7 @@ Cut sizes are member-to-member butt lengths — add saw kerf per shop practice.<
 </tr>
 <tr>
 <td>Pre-transport</td>
-<td>Tighten all straps; re-check tension after 50 km</td>
+<td>Ratcheted tight for transport (<a href="../operating-manual/">Operating Manual §5.5</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -3807,7 +3807,7 @@ spreads its load into the corrugated wall (the same approach as the frame's
 exterior backing plates, <a href="#32-frame-specification">§3.2</a>).</p>
 <p>The port elevations are the diagram-of-record (see <a href="#8-engineering-drawings">§8 Sheet 3</a>).
 The bulkhead fittings, camlock, and seals are specified in the
-<a href="../water-system-report/">Water System Report</a> §5 and §7; the bulkhead BOM,
+<a href="../water-system-report/">Water System Report</a> §7; the bulkhead BOM,
 including the reinforcing plates, is in the
 <a href="../master-shopping-list/">master shopping list</a>. (These end-wall ports are
 distinct from the two equipment <strong>Plumbing Panels</strong> — Corridor and Pinhole Wall —
@@ -3820,7 +3820,7 @@ between the near and far IBC columns, reaching each tote's corridor-facing DN50
 butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
 (X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
 and the recycle returns), and the valve schedule are specified in the
-<a href="../water-system-report/">Water System Report</a> §4–§5 and §7. The pumps and
+<a href="../water-system-report/">Water System Report</a> §4 and §7. The pumps and
 diverter valves that drive those circuits — on the <strong>Corridor Plumbing Panel</strong>
 (plywood, at the front (cargo-door) mouth of the corridor, bolted to the
 deep-box frame, see <a href="#32-frame-specification">§3.2</a>) — together with the
@@ -3853,7 +3853,7 @@ relevant sections above; the full set is collected here and in <a href="../engin
 <img alt="TBS-001 IBC Frame — Sheet 2" src="../assets/ibc-frame-sheet2.png" /></p>
 <p><strong>Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms</strong>
 <img alt="TBS-001 IBC Frame — Sheet 3" src="../assets/ibc-frame-sheet3.png" /></p>
-<p><strong>Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket — each with weld (W) + fastener callouts. (The walkway arm→upright CJ connection is drawn in full on Sheet 5, so its former Detail F here was dropped as a duplicate.)</strong>
+<p><strong>Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket — each with weld (W) + fastener callouts. (The walkway arm→upright CJ connection is drawn in full on Sheet 5.)</strong>
 <img alt="TBS-001 IBC Frame — Sheet 4" src="../assets/ibc-frame-sheet4.png" /></p>
 <p><strong>Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 17 arm-steel + 8 end-plate = 325 reach, half-lap depth 20 of the 25.4; CJ bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8; the plate→post through-bolts shown at the upright end), and the END-PLATE / rear-backing-plate detail (65 × 190, 2× Ø13 for M12 </strong>both above the arm<strong> at 30 spacing — bearing-type; the corridor bottom frame rail is ghost-marked behind the plate's lower edge with no bolt near it — 5 mm fillet all round, arm weld footprint shadow-marked)</strong>
 <img alt="TBS-001 IBC Frame — Sheet 5" src="../assets/ibc-frame-sheet5.png" /></p>
@@ -3904,60 +3904,10 @@ the stacking structure and the totes it restrains.</p>
 </table>
 <hr />
 <h2 id="10-maintenance-schedule">10. Maintenance Schedule<a class="headerlink" href="#10-maintenance-schedule" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Interval</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Every use</td>
-<td>Visually inspect ratchet strap tension before transport</td>
-</tr>
-<tr>
-<td>Every 10 prints</td>
-<td>Inspect IBC valve seals (DN50 butterfly) for drips; tighten or replace O-ring</td>
-</tr>
-<tr>
-<td>Every 10 prints</td>
-<td>Check external camlock fittings for cross-threading; clean dust caps</td>
-</tr>
-<tr>
-<td>Every 6 months</td>
-<td>Inspect lashing-ring welds for cracking; load-test straps</td>
-</tr>
-<tr>
-<td>Every 6 months</td>
-<td>Inspect lashing rings + ratchet straps for wear; re-tension straps</td>
-</tr>
-<tr>
-<td>Annually</td>
-<td>Inspect frame welds (all joints) for fatigue cracking</td>
-</tr>
-<tr>
-<td>Annually</td>
-<td>Touch up paint on frame where chipped or rusted</td>
-</tr>
-<tr>
-<td>Annually</td>
-<td>Inspect front-bar/wall-hanger bolts and upright floor-anchor bolts for loosening; re-torque to spec</td>
-</tr>
-<tr>
-<td>Annually</td>
-<td>Flush all internal pipes with clean water; inspect for biofilm</td>
-</tr>
-<tr>
-<td>As needed</td>
-<td>Replace camlock gaskets if leaking</td>
-</tr>
-<tr>
-<td>As needed</td>
-<td>Clean IBC interiors between circuit changes (bleach rinse + water flush)</td>
-</tr>
-</tbody>
-</table>
+<p>The frame is a painted, shop-welded box whose field joints are all bolted (§3.7), so its upkeep is
+inspection and re-torque to the §3.5 schedule rather than rework. The wear items are the ratchet
+straps, the DN50 valve seals and the camlock gaskets. The inspection schedule and procedures are in
+the <a href="../operating-manual/#maintenance">Operating Manual — Maintenance</a>.</p>
 <hr />
 <h2 id="11-sources">11. Sources<a class="headerlink" href="#11-sources" title="Permanent link">&para;</a></h2>
 <table>
@@ -3982,11 +3932,11 @@ the stacking structure and the totes it restrains.</p>
 </tr>
 <tr>
 <td>Plumbing fittings, pipe, valves, camlock, pumps</td>
-<td>Specified and sourced in the <a href="../water-system-report/">Water System Report</a> §11 and <a href="../plumbing-report/">Plumbing Report</a> §11</td>
+<td>Specified in the <a href="../plumbing-report/">Plumbing Report</a>; sourced in the <a href="../master-shopping-list/?system=water">Master Shopping List</a></td>
 </tr>
 <tr>
 <td>Water system architecture</td>
-<td><a href="../water-system-report/">Water System Report</a> §3</td>
+<td><a href="../water-system-report/">Water System Report</a> §4</td>
 </tr>
 <tr>
 <td>IBC layout and placement</td>

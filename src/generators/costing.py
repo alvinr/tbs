@@ -531,10 +531,10 @@ def emit_scenario_b() -> str:
 
 def emit_scenario_c() -> str:
     b_less = sum(v for _, v in _scenario_b_rows()) - SCEN_B["transport"] # B build, owned transport
-    base = b_less + cdl_band()[1] + SCEN_C["trailer"]
+    base = b_less + cdl_band()[2] + SCEN_C["trailer"]
     rows = [
         (f"Scenario B build (less the ${SCEN_B['transport']:,} commercial transport, replaced here by owned transport)", f"${b_less:,}"),
-        ("CDL Class A training + medical + DMV", f"${cdl_band()[1]:,}"),
+        ("CDL Class A training + medical + DMV", f"${cdl_band()[2]:,}"),
         ("QuickLoadz self-loading trailer", f"${SCEN_C['trailer']:,}"),
         ("Ford F-350+ pickup (if needed)", f"${SCEN_C['truck_lo']:,}–${SCEN_C['truck_hi']:,} (new)"),
     ]

@@ -520,10 +520,10 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,129 |
-| CDL Class A training + medical + DMV | $4,245 |
+| CDL Class A training + medical + DMV | $6,570 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$121,374–$151,374** |
+| **Scenario C total** | **~$123,699–$153,699** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

@@ -28,7 +28,7 @@ from dataclasses import dataclass
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI, SENSITIZER_L_PER_PRINT  # noqa: E402 — chemistry tiers derive from the active-plane area
+from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI, SENSITIZER_L_PER_PRINT, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI  # noqa: E402 — chemistry tiers derive from the active-plane area
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
@@ -839,6 +839,10 @@ def _inline_blocks() -> dict:
         # project-cost-breakdown.md §7.1 tier masses + §7.2 per-print table (Standard tier).
         "msl-run-cost": ("master-shopping-list.md", lambda: f"~${_r(by_key('standard')['section_total'], 10):,} (Standard), range ~${_r(by_key('lean')['section_total'], 10):,} (Lean) – ~${_r(by_key('rich')['section_total'], 10):,} (Rich)"),
         "msl-perprint-range": ("master-shopping-list.md", lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
+        "pcb-tier-x": ("project-cost-breakdown.md", lambda: f"{_TIER_SPEC[-1][2] / _TIER_SPEC[0][2]:g}"),
+        "pcb-cov-range": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_LO}–{SENSITIZER_ML_PER_M2_COAT_HI}"),
+        "pcb-cov-x": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_HI / SENSITIZER_ML_PER_M2_COAT_LO:g}"),
+        "pcb-chem-x": ("project-cost-breakdown.md", lambda: f"{_TIER_SPEC[-1][2] / _TIER_SPEC[0][2] * SENSITIZER_ML_PER_M2_COAT_HI / SENSITIZER_ML_PER_M2_COAT_LO:.1f}"),
         "pcb-amfe-g-range": ("project-cost-breakdown.md", lambda: f"{_amfe_g('lean')}–{_amfe_g('rich')}"),
         "pcb-pp-amfe": ("project-cost-breakdown.md", lambda: f"${by_key('standard')['amfe'] / PRINTS:.0f}"),
         "pcb-pp-ferri": ("project-cost-breakdown.md", lambda: f"${by_key('standard')['ferri'] / PRINTS:.0f}"),

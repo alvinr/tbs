@@ -2,7 +2,6 @@
 <!-- © 2026 Alvin Richards -->
 # Complete Project Cost Breakdown
 
-**Date:** April 2026
 **Basis:** Ranges given where source documents provide them; midpoints used for totals. Costs marked † are from detailed procurement research in supporting documents; others are estimates.
 
 **Related:** [Master Shopping List](master-shopping-list.md) (per-item procurement with suppliers and URLs) · [Funding Proposal](funding-proposal.md) (grant-ready summary at three funding levels)
@@ -387,7 +386,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.*
 
-*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the corrected Ware-3:1 / two-coat figures swing the per-print AmFe (and the 50-print chemistry cost) by up to ~4.6×. Muslin is ~$300 / ~$6 per print (§7.1). The Standard (½-Ware) tier is the working default.*
+*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the per-print AmFe (and the 50-print chemistry cost) spans the concentration tier (Lean → Rich, <!-- BEGIN costing:pcb-tier-x -->3<!-- END costing:pcb-tier-x -->×) times the unmeasured muslin coverage (<!-- BEGIN costing:pcb-cov-range -->100–180<!-- END costing:pcb-cov-range --> ml/m²/coat, <!-- BEGIN costing:pcb-cov-x -->1.8<!-- END costing:pcb-cov-x -->×): up to ~<!-- BEGIN costing:pcb-chem-x -->5.4<!-- END costing:pcb-chem-x -->× end to end. Muslin is ~$300 / ~$6 per print (§7.1). The Standard (½-Ware) tier is the working default.*
 
 ---
 

@@ -1120,6 +1120,8 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L
 # the sourced muslin coverage (240 ml/m²/print, two coats) over the active plane. The classification
 # is run at the LOW dose (least chromium); evaporation, which would concentrate it, is not credited.
 SENSITIZER_ML_PER_M2     = 240                                           # two wet-on-wet coats (sensitizer-trials T1)
+SENSITIZER_ML_PER_M2_COAT_LO = 100                                       # plausible muslin coverage range per coat until T1
+SENSITIZER_ML_PER_M2_COAT_HI = 180                                       #   measures it (sensitizer-trials; 120 is the sourced estimate)
 SENSITIZER_L_PER_PRINT   = round(IMAGE_AREA_M2 * SENSITIZER_ML_PER_M2 / 1000, 1)   # = 2.2 L
 SENSITIZER_PART_L        = round(SENSITIZER_L_PER_PRINT / 2, 2)                    # = 1.1 L each of Part A / Part B (mixed 1:1)
 DICHROMATE_PCT_LO        = 0.1                                           # Ware baseline (0.1 g / 100 ml)

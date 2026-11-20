@@ -50,18 +50,19 @@ RP = cp.RP                                 # 10.5mm  (Ø21 riser)
 YD_NEAR, YD_FAR = cp.YD_NEAR, cp.YD_FAR    # 1046 / 1316 corridor side walls
 LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg length / bracket height
 
-# board face-on specs: (title, subtitle, (z0,z1), risers[(x,label,color)], clamp_zs, horizontals[(z,label,color)])
+# board face-on specs: (title, subtitle, (z0,z1), risers[(x,label,color)], clamp_zs, horizontals[(z,label,color)], switches[(label,z0)])
 BOARDS = [
     ("FAR BOARD", "film-plane wall (Yd 1298–1316)", cp.SB_FAR_Z,
      [(cp.SB_FAR_RISERS_X[0], "DV-01 recycle", C_BROWN), (cp.SB_FAR_RISERS_X[1], "P-02 discharge", C_BROWN), (cp.SB_FAR_RISERS_X[2], "P-01→ACC-01", C_BLUE)],
-     cp.SB_FAR_CLAMP_Z, []),
+     cp.SB_FAR_CLAMP_Z, [], []),
     ("NEAR BOARD", "walkway wall (Yd 1046–1064)", cp.SB_NEAR_Z,
      [(4825, "P-02 suction", C_BROWN), (5070, "P-05 inlet", C_BROWN)],
-     cp.SB_NEAR_CLAMP_Z, []),
-    ("NEAR-UPPER BOARD", "walkway wall — backs BV-02 / BV-06", cp.SB_NEAR_UP_Z,
+     cp.SB_NEAR_CLAMP_Z, [], []),
+    ("NEAR-UPPER BOARD", "walkway wall — backs BV-02 / BV-06 + drain-pump switches S-05 / S-03", cp.SB_NEAR_UP_Z,
      [(cp.BV_FWD_X, "BV-02 / BV-06 risers", C_BROWN)],
      (1370, 1440, 1770, 1840),
-     [(1300, "P-05-inlet brown", C_BROWN), (1902, "P-03 waste", C_WASTE)]),
+     [(1300, "P-05-inlet brown", C_BROWN), (1902, "P-03 waste", C_WASTE)],
+     [("S-05 (P-05 drain switch)", cp.DSW_Z0["P-05"]), ("S-03 (P-03 drain switch)", cp.DSW_Z0["P-03"])]),
 ]
 
 
@@ -80,7 +81,7 @@ def _rect(ax, x, y, w, h, fc, ec=C_OUT, lw=1.4, z=3, hatch=None):
 # ─────────────────────────────────────────────────────────────────────────────
 def draw_board(ax, spec):
     """One board, face-on (X across, Z up): ply + 4 L-brackets + risers + P-clips, dimensioned."""
-    title, subtitle, (z0, z1), risers, clamp_zs, horizontals = spec
+    title, subtitle, (z0, z1), risers, clamp_zs, horizontals, switches = spec
     h = z1 - z0
     mx, mz = 120, 95
     ax.set_xlim(X0 - mx, X1 + mx)
@@ -92,7 +93,7 @@ def draw_board(ax, spec):
     _rect(ax, X0, z0, BW, h, C_PLY, ec=C_PLY_E, lw=1.6, z=2)
     cx = (X0 + X1) / 2
     if not any(abs(r[0] - cx) < 60 for r in risers):   # skip the center label if a riser sits on it
-        ax.text(cx, z0 + h / 2, "18mm ply", ha="center", va="center",
+        ax.text(cx, z0 + h * (0.3 if switches else 0.5), "18mm ply", ha="center", va="center",
                 fontsize=7, color="#5C4A28", zorder=4, **FONT)
 
     # 4 L-brackets (steel tabs) at the post inner faces, top & bottom
@@ -120,6 +121,17 @@ def draw_board(ax, spec):
                                edgecolor=C_OUT, linewidth=0.9, zorder=6, alpha=0.92))
         leader(ax, X0 + 40, hz, X0 - 30, hz, hlabel, fs=6.0, color=hc,
                ha="right", va="center", font=FONT, bbox=LBL_BG)
+
+    # drain-pump switches (sealed rocker in a surface box), located by their −X / bottom edges
+    for i, (slabel, sz0) in enumerate(switches):
+        _rect(ax, cp.DSW_X, sz0, cp.DSW_W, cp.DSW_H, "#2C2C2C", ec=C_OUT, lw=1.0, z=7)
+        _rect(ax, cp.DSW_X + 12, sz0 + 20, cp.DSW_W - 24, cp.DSW_H - 40, "#C0392B", ec="none", lw=0, z=8)
+        leader(ax, cp.DSW_X + cp.DSW_W, sz0 + cp.DSW_H / 2, X1 + 80, sz0 + cp.DSW_H / 2 + (25 if i else -25), slabel,
+               fs=6.0, color=C_OUT, ha="left", va="center", font=FONT, bbox=LBL_BG)
+        draw_dim_v(ax, cp.DSW_X + cp.DSW_W + 20 + 40 * i, z0, sz0, f"{sz0 - z0:.0f}mm", offset=10, fs=6.0, right=True, font=FONT)
+    if switches:
+        draw_dim_h(ax, X0, cp.DSW_X, z0 - 30, f"{cp.DSW_X - X0:.0f}mm", offset=12, fs=6.0, above=False, font=FONT)
+        draw_dim_h(ax, cp.DSW_X, cp.DSW_X + cp.DSW_W, z0 - 30, f"{cp.DSW_W}mm", offset=12, fs=6.0, above=False, font=FONT)
 
     # dimensions
     draw_dim_h(ax, X0, X1, z1 + 40, f"{BW:.0f}mm", offset=15, fs=6.6, above=True, font=FONT)
@@ -161,6 +173,7 @@ def draw_sheet1():
         "2. Each board carried on 4 welded steel L-brackets (one per post inner face, top + bottom) — see Sheet 2.",
         "3. Risers clamped with cushioned 3/4\" P-clips at the marked rows (2 per riser; the near-upper board takes 4).",
         "4. Steel tab = L-bracket landing leg (face-on); brackets set 35mm in from each board edge.",
+        f"5. Near-upper board: drain-pump switches S-05 / S-03 — sealed IP67 rockers in {cp.DSW_W}×{cp.DSW_H}mm surface boxes, screwed to the ply in the pipe-free band between the P-05 suction and the X4 wrap.",
     ], 0.0, 1.0, 0.15, fs=7.2, title_fs=7.6, width=1.0, wrap=120, font=FONT)
 
     ax_tb = fig.add_axes([0.04, 0.008, 0.92, 0.045])

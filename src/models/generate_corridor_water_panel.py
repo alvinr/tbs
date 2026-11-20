@@ -768,6 +768,26 @@ SB_RISER_YD_NEAR = PORT_TURN_YD_IN     # near risers, 5.5mm off the near board
 SB_FLUSH_OK = True                     # side-board clips: 5.5mm block (pump-column limit), not 18mm
 SPINE_FAR_FLUSH_OK = True              # spine +Yd face only: COL_R is fixed by the pump-port turn, so its clips get 6.5mm shims, not 18mm
 BV02_YD = PORT_TURN_YD_IN              # BV-02/BV-06 suction risers — also the 3D callout anchor
+# Drain-pump switches S-05 (P-05) / S-03 (P-03) — sealed rockers on the near-upper board, in the pipe-free
+# band between the P-05 suction run (Z1502) and the X4 wrap (Z1700); S-05 sits over BV-02's run, S-03 under BV-06's.
+DSW_X, DSW_W, DSW_D, DSW_H = 4845, 50, 45, 75          # box −X edge · width (X) · depth off the board (Yd) · height (Z)
+DSW_Z0 = {"P-05": 1520, "P-03": 1605}                  # box bottom Z per pump
+DSW_LINE_DZ, DSW_LOAD_DZ = {"P-05": 60, "P-03": 10}, {"P-05": 15, "P-03": 60}   # cable entry heights in each box
+DSW_CABLE_YD = 1085                                   # switch-cable lane, in front of the board, clear of the Yd1080 risers' band here
+DSW_CABLE_X = 5040                                    # vertical lane between the pump backs (≤5034) and the shirt face (5051.5)
+DSW_LOAD_YD = 1165                                    # load-lead vertical lane behind the pumps
+DSW_LINE_YD = {"P-05": CTR_Y + 20, "P-03": CTR_Y + 32}   # line-lead lanes off the dist block, clear of the feed drop at CTR_Y
+
+
+def drain_pump_switches():
+    """S-05 / S-03 sealed rocker switches (surface box + red rocker) on the near-upper board."""
+    p = []
+    face = YD_NEAR + EQT
+    for pump, sw in (("P-05", "S-05"), ("P-03", "S-03")):
+        z0 = DSW_Z0[pump]
+        p.append(draw.ruby_box(f"{sw} drain-pump switch box ({pump})", DSW_X, face, z0, DSW_W, DSW_D, DSW_H, color="#2C2C2C"))
+        p.append(draw.ruby_box(f"{sw} rocker ({pump})", DSW_X + 12, face + DSW_D, z0 + 20, DSW_W - 24, 6, DSW_H - 40, color=draw.C_VALVE))
+    return p
 
 
 def port_jumper(p, nm, wps):
@@ -820,19 +840,19 @@ SHIRT_HOLES = [(BVY_REAR, 1210, RPH),    # Blue #1 -> P-01 suction entry
                (COL_R, 1502, RPH),    # P-05 -> X3 end-wall port
                (SPINE_RISER_YD, 1700, RPH),    # X4 Waste (P-03) pickup
                (CTR_Y, 1030, CBH),   # Cct-C branch -> P-02 (power cable)
-               (CTR_Y, 1430, CBH),   # Cct-C branch -> P-05 (power cable)
-               (CTR_Y, 1830, CBH),   # Cct-C pump bus
+               (DSW_LINE_YD["P-05"], DSW_Z0["P-05"] + DSW_LINE_DZ["P-05"], CBH),   # Cct-C line -> S-05
+               (DSW_LINE_YD["P-03"], DSW_Z0["P-03"] + DSW_LINE_DZ["P-03"], CBH),   # Cct-C line -> S-03
                (CTR_Y, 705, CBH)]    # Cct-C pump bus (P-01 elbow tap)
 REAR_HOLES = [(DV01_WASTE_YD, 235, RPH),      # DV-01 -> IBC-4 merge
               (ov.RWK_RIBBON_NOTCH_YDS[2], WASTE_PANEL_Z, RPH),   # DV-02 waste -> IBC-4
               (BVY_REAR, 1210, RPH),     # Blue #1 -> P-01 suction entry
               (COL_R, 1502, RPH),     # P-05 -> X3 end-wall port
               (COL_R, 1902, RPH),     # P-03 -> X4 end-wall port
-              (CTR_Y, 1830, CBH),     # Cct-C pump bus
+              (DSW_LINE_YD["P-05"], DSW_Z0["P-05"] + DSW_LINE_DZ["P-05"], CBH),   # Cct-C line -> S-05
+              (DSW_LINE_YD["P-03"], DSW_Z0["P-03"] + DSW_LINE_DZ["P-03"], CBH),   # Cct-C line -> S-03
               (CTR_Y, 705, CBH),      # Cct-C pump bus (P-01 elbow tap)
               (SPINE_RISER_YD, 1700, RPH),     # X4 Waste (P-03) pickup
-              (CTR_Y, 1030, CBH),    # Cct-C branch -> P-02
-              (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
+              (CTR_Y, 1030, CBH)]    # Cct-C branch -> P-02
 SPINE_HOLES = [(5500, 1376, 16 + 3),                 # Blue equalization (IBC-1 <-> IBC-2, 1" r16)  (X, Z) — cut along Y
                (ov.IBC_COL_X + 830, MERGE4[2], RPH),  # IBC-4 (Waste) tote entry (xe4) off the merge tee
                (X3_CROSS_X, _piz("P-05"), RPH)]   # P-05 → X3 brown crossing

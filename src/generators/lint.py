@@ -1158,7 +1158,7 @@ _RAW_MONEY = re.compile(r"\$(\d[\d,]*)(?:\.\d+)?")
 # quote with no model home — be added here deliberately. Lower a count when a pass removes figures.
 _MONEY_RAW_BASELINE = {
     "chemistry-shopping-list.md": 10, "component-dimension-audit.md": 22, "container-report.md": 29,
-    "container-transport-options.md": 130, "cost-analysis-report.md": 6, "electrical-report.md": 20,
+    "container-transport-options.md": 130, "cost-analysis-report.md": 6, "electrical-report.md": 19,
     "film-plane-mechanism-report.md": 2, "funding-proposal.md": 15, "ibc-stacking-report.md": 4,
     "lens-options.md": 41, "light-trap-selection.md": 15, "master-shopping-list.md": 30,
     "mini-tbs/mini-tbs-poc.md": 22, "mini-tbs/mini-tbs-shopping-list.md": 80,

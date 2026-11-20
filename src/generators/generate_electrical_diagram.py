@@ -304,7 +304,7 @@ def draw_sheet1():
         ("B", f"VENTILATION FAN\nINTAKE  (Ø{FAN_DIAM}mm)",   "5A",  "12 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
         ("C1", "WATER PUMPS\n(corridor)",       "15A", "12 AWG", f"{PUMP_DRAW_W}W",
-         "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time", C_PUMP_TINT),
+         "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time  |  P-03/05 local sw S-03/05", C_PUMP_TINT),
         ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "12 AWG", f"{PUMP_DRAW_W}W",
          "P-04, filter skid  |  own fuse  |  2-pole master switch gangs C1+C2", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "12 AWG", f"{SAFELIGHT_W}W",
@@ -1431,8 +1431,8 @@ def draw_sheet4():
     the single vertical pump column (ACC-01 + P-01/P-02/P-05/P-03) drawn to scale,
     powered from a 12V distribution block that is fed from the MASTER pump switch on
     the EP (electrical panel) via the ceiling trunk → curved-elbow branches to each
-    pump. No per-pump switches — each Shurflo runs on its internal pressure switch;
-    the EP master switch is the single manual cutoff. P-04 (Tray drain) is on
+    pump. The two drain pumps (P-05, P-03) are switched locally by S-05 / S-03 on the
+    near-upper side board, so they are off during a wash. P-04 (Tray drain) is on
     the pinhole-wall filter skid, shown as an off-panel branch. Routing follows pipe
     conventions (parallel-wall conduit + curved elbow fittings, never hard corners).
     """
@@ -1493,6 +1493,15 @@ def draw_sheet4():
         tx, tz = term[nm]
         draw_pipe_path(ax, [ln, ln, tx], [1866, tz, tz], 12, 1.8, fc=CC, ec=CDK, zorder=4)
 
+    # ── Drain-pump switches in the P-05 / P-03 branches (physically on the near-upper side board) ──
+    s05z = (pl.P05_Z + ph + pl.P03_Z) / 2                 # in the gap between the P-05 and P-03 bodies
+    for nm, sw, sz, lz, side in (("P-05", "S-05", s05z, s05z - 60, "BV-02"), ("P-03", "S-03", 1848, 1790, "BV-06")):
+        ln = lanes[nm]
+        ax.add_patch(R((ln - 8, sz - 9), 16, 18, fc="#2C2C2C", ec=C_OUT, lw=0.9, zorder=9))
+        ax.add_patch(R((ln - 4, sz - 5), 8, 10, fc="#C0392B", ec="none", zorder=10))
+        leader(ax, ln - 8, sz, -95, lz, f"{sw} — {nm} drain switch\n(near-upper side board,\nbeside {side})",
+               fs=5.6, color=C_OUT, ha="right")
+
     # ── P-04 branch leaving the panel toward the pinhole-wall filter skid (short tag; detail at right) ──
     draw_pipe_path(ax, [12, -60], [1907, 1907], 12, 1.8, fc=CC, ec=CDK, zorder=4)
     ax.text(-70, 1907, "→ P-04", ha="right", va="center", fontsize=6.4, color=CDK, fontweight="bold")
@@ -1501,8 +1510,9 @@ def draw_sheet4():
     draw_notes(ax, [
         "12V DIST. BLOCK",
         "The switched Circuit-C feed lands here. The MASTER pump switch (one manual cutoff for the whole "
-        "circuit) is on the EP — see Sheet 5. No per-pump switches; each Shurflo 2088 runs on its internal "
-        "pressure switch when its valves open.",
+        "circuit) is on the EP — see Sheet 5. P-01 / P-02 run on their internal pressure switches; the spray "
+        "selector BV-05a picks which one delivers. The drain pumps P-05 / P-03 are switched locally "
+        "(S-05 / S-03), ON only for a pump-out.",
         "",
         "14 AWG marine-duplex branches — curved elbow fittings (pipe convention), one per pump.",
         "",
@@ -1522,11 +1532,12 @@ def draw_sheet4():
         "The 12 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
         "runs the ceiling trunk to this panel's 12V distribution block, then a 14 AWG marine branch to each",
         "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05,",
-        "P-03); P-04 (Tray drain) taps the switched feed on the pinhole-wall filter skid. No per-pump",
-        "switches — the EP master switch is the single cutoff and each Shurflo 2088 runs on its internal",
-        f"pressure switch. 15A fuse covers a single pump ({PUMP_DRAW_A}A) with margin. Conduit branches use curved",
-        "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",
-        "See Plumbing Panel report §3.2 / Electrical §7.3.",
+        "P-03); P-04 (Tray drain) taps the switched feed on the pinhole-wall filter skid. The EP master",
+        "switch is the circuit cutoff; the drain pumps also have local switches S-05 / S-03 (sealed",
+        "rockers on the near-upper side board) so they stay off during a wash. C1 runs one pump at a",
+        f"time ({PUMP_DRAW_A}A) on its 15A fuse; C2 carries P-04 alone. Curved elbow fittings (pipe",
+        "convention). Wet zone: sealed, above the spill line.",
+        "See Plumbing Report §2.2 / Electrical §7.3.",
     ], -280, -80, spacing=44, fs=6.6, width=1600)
 
     title_block(ax, "SHEET 4 OF 9",
@@ -2328,7 +2339,7 @@ def draw_sheet7():
     circuits = [
         ("A", "5A", "12", "EXHAUST\nFAN", "M"),
         ("B", "5A", "12", "INTAKE\nFAN", "M"),
-        ("C1", "15A", "12", "CORRIDOR\nPUMPS", "M"),
+        ("C1", "15A", "12", "CORRIDOR\nPUMPS\n(S-03/05 on\ndrain pumps)", "M"),
         ("C2", "10A", "12", "TRAY\nDRAIN\nP-04", "M"),
         ("D", "5A", "12", "SAFELIGHT", "L"),
         ("E", "40A", "10", "EVAP\nCOOLER", "INV"),

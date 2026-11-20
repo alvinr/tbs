@@ -115,15 +115,21 @@ master pump switch on the Electrical Panel (EP)** ([Electrical Report §7.2–7.
 | Item | Spec |
 |------|------|
 | Feed | C1: 12 AWG, 15A fuse (four corridor pumps) · C2: 12 AWG, 10A fuse (P-04) |
-| Master switch | 1 × IP-rated 2-pole sealed switch, **mounted on the EP** — one cutoff for both legs; no per-pump switches (each Shurflo runs on its internal pressure switch) |
+| Master switch | 1 × IP-rated 2-pole sealed switch, **mounted on the EP** — one cutoff for both legs |
+| Drain-pump switches | **S-05** (P-05) and **S-03** (P-03) — 1-pole IP67 sealed rockers on the near-upper side board, beside BV-02 / BV-06; OFF except during a pump-out |
 | Distribution | 12V DC + / − bus block on the rear of the plumbing panel, fed from C1 |
 | Branches | 14 AWG marine duplex, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump) |
 
-The four corridor pumps on C1 run **one at a time**: the open ball valves select the pump for
-the current task, and that pump's Shurflo **internal demand/pressure switch** runs it on demand.
-P-04 on C2 runs **concurrently** with the C1 supply pump, so the tray drains as fast as the spray
-bar fills it (the continuous flow-through wash, [Water System Report §6](water-system-report.md)).
-Each fuse carries a single pump with margin.
+The master switch energizes all four corridor pumps; one at a time does the work. During a wash,
+the spray selector **BV-05a** chooses Blue (P-01) or Brown (P-02). The selected pump delivers,
+while the other's discharge is blocked, so it builds pressure and its Shurflo **internal
+demand/pressure switch** holds it off (ACC-01 holds P-01's side). The drain pumps are kept out of
+this by **S-05 / S-03**. With their suction valves (BV-02 / BV-06) closed they could not build
+pressure, so their pressure switches would never stop them; the local switches keep them dead
+until a pump-out, when the operator runs one at a time. P-04 on C2 runs **concurrently** with the
+C1 supply pump, so the tray drains as fast as the spray bar fills it (the continuous flow-through
+wash, [Water System Report §6](water-system-report.md)). C1's 15A fuse covers the one working
+pump with margin; C2 carries P-04 alone.
 The distribution block sits **above the spill line**, IP-rated and sealed, with drip
 loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md); the
 master switch is on the EP, clear of the wet zone.

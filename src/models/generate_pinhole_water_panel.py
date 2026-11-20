@@ -531,6 +531,8 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", -350, 0, 200),   # tip = BV-02 valve center (walkway-edge loop); text on the −X operator side
     (cp.BROWN_TAP[0] - 55, cp.SB_RISER_YD_NEAR, 900, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (on the near support board; dropped 50mm)
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-03") - 110, "BV-06", -350, 0, 150),    # tip = BV-06 valve center (walkway-edge loop); text on the −X operator side
+    (cp.DSW_X + cp.DSW_W / 2, cp.YD_NEAR + cp.EQT + cp.DSW_D, cp.DSW_Z0["P-05"] + cp.DSW_H / 2, "S-05\n(P-05 drain sw)", -450, 0, -150),
+    (cp.DSW_X + cp.DSW_W / 2, cp.YD_NEAR + cp.EQT + cp.DSW_D, cp.DSW_Z0["P-03"] + cp.DSW_H / 2, "S-03\n(P-03 drain sw)", -450, 0, 150),
     # ── per-tank anti-siphon check valves ──
     (ov.C_LEN - 200, cp.X1_TEE_Y, cp.X1_TEE_Z, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — pumps' integral checks cover the returns
     # ── end-wall bulkhead ports (tip at the port-body center, 30mm in from the wall) ──
@@ -667,12 +669,27 @@ def panel_power(include_switch=True, part="all"):
         # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
         # pumps as one continuous run; the two middle pumps tee off the bus.
         xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
-        bus_pts = [(xin, by, z_hi), (BKX, by, z_hi)] + _jog(z_hi, z_lo) + [(BKX, by, z_lo), (xin, by, z_lo)]
-        p.append(draw.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)", bus_pts, cr, color=PWR))
+        bus_pts = [(BKX, by, zc)] + [(BKX, by, z_lo), (xin, by, z_lo)]   # block → down to P-01 (P-02 tees off below)
+        p.append(draw.ruby_pipe_run("Cct C bus + P-01 elbow tap (rear)", bus_pts, cr, color=PWR))
         # P-clips carrying the pump-feed bus down the rear of the corridor plumbing panel.
         p.append(draw.ruby_clip_run("Cct C pump bus", bus_pts, spacing=380))
-        # corridor branch taps: P-05 + the pump now in P-04's vacated slot (P-02, Phase 2)
-        for label, key in (("P-02", "P-04"), ("P-05", "P-05")):
+        # Drain pumps P-05 / P-03 are switched locally: bus → through the panel + shirt → the S-05 / S-03
+        # switch on the near-upper board (line) → back behind the pump → pump tap (load).
+        p += cp.drain_pump_switches()
+        sw_x = cp.DSW_X + cp.DSW_W                        # switch box +X face — cables enter here
+        for pump in ("P-05", "P-03"):
+            ly = cp.DSW_LINE_YD[pump]                     # own riser lane off the block, clear of the feed drop (by)
+            zl = cp.DSW_Z0[pump] + cp.DSW_LINE_DZ[pump]
+            zd = cp.DSW_Z0[pump] + cp.DSW_LOAD_DZ[pump]
+            ztap = cp.PSTACK[pump] + 90
+            line = [(BKX, ly, zc + 45), (BKX, ly, zl), (cp.DSW_CABLE_X, ly, zl), (cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zl), (sw_x, cp.DSW_CABLE_YD, zl)]
+            load = [(sw_x, cp.DSW_CABLE_YD, zd), (cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zd), (cp.DSW_CABLE_X, cp.DSW_LOAD_YD, zd),
+                    (cp.DSW_CABLE_X, cp.DSW_LOAD_YD, ztap), (xin, cp.DSW_LOAD_YD, ztap)]
+            p.append(draw.ruby_pipe_run(f"Cct C {pump} switch line (bus -> {pump.replace('P', 'S')})", line, cr, color=PWR))
+            p.append(draw.ruby_pipe_run(f"Cct C {pump} switch load ({pump.replace('P', 'S')} -> {pump})", load, cr, color=PWR))
+            p.append(draw.ruby_clip_run(f"Cct C {pump} switch cables", [line[3], line[4]], spacing=60))
+        # corridor branch tap: P-02 (in P-04's vacated slot)
+        for label, key in (("P-02", "P-04"),):
             z = cp.PSTACK[key] + 90
             _br = [(BKX, by, z), (xin, by, z)]
             p.append(draw.ruby_pipe_run(f"Cct C branch {label}", _br, cr, color=PWR))

@@ -1,5 +1,5 @@
-routing-sources-sha: 065462203745
-model=water  pipes=613 solids=832  interferences=0
+routing-sources-sha: 372684e1ba18
+model=water  pipes=631 solids=834  interferences=0
 pipe-on-pipe crossings=0
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──

@@ -240,7 +240,7 @@ ax.text(PH_X + 80, FP_Y / 2 + 400, "Optical axis",
 
 # ── Equipment footprints ──────────────────────────────────────────────────────
 for eq in EQUIPMENT:
-    in_cone = equipment_in_plan_cone(eq)
+    in_cone = equipment_in_plan_cone(eq) and not eq.get("skip_cone_check")   # floor-level: under the cone
     edge_color = C_BLOCK if in_cone else C_CLEAR
     edge_lw = 2.2 if in_cone else 1.4
     alpha = 0.75 if in_cone else 0.55
@@ -332,7 +332,9 @@ ax.text(FP_Y / 2 + 600, PH_H + 55, "Optical axis",
 # ── Equipment in elevation ────────────────────────────────────────────────────
 # For overlapping drums in X (same Yd range), offset slightly so labels visible
 for eq in EQUIPMENT:
-    in_cone_h = equipment_in_elevation_cone(eq)
+    # An item shadows the film only if it is inside the cone in BOTH views; height alone isn't a clash.
+    in_cone_h = (equipment_in_elevation_cone(eq) and equipment_in_plan_cone(eq)
+                 and not eq.get("skip_cone_check"))
     edge_color = C_BLOCK if in_cone_h else C_CLEAR
     edge_lw = 2.2 if in_cone_h else 1.4
 

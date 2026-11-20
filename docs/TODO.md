@@ -19,7 +19,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 📐 Layout diagrams
 
-- [ ] `container-floorplan.png` doesn't draw (`line-of-sight.png` done 2026-11-20) the fold-down chemistry prep shelf on the pinhole wall (X≤1,780, Yd≤225 deployed); the Equipment Layout report now lists it in that zone. Needs a generator change (ask first).
+- [x] `container-floorplan.png` + `line-of-sight.png` draw the fold-down chemistry prep shelf on the pinhole wall (X≤1,780, Yd≤225 deployed); the Equipment Layout report now lists it in that zone. Needs a generator change (ask first).
 
 ## 🧪 Wash-water classification — open checks (2026-11-20)
 

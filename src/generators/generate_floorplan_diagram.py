@@ -196,8 +196,6 @@ def floor_plan():
                 label=f"EVAP DUCT\nØ{EVAP_DUCT_D}\n(EXT. COOLER)",
                 label_offset=(0, EVAP_DUCT_D / 2 + 60))
 
-    # (waste drums and dolly tracks eliminated in rev 5 — left zone now light trap only)
-
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
     # Electrical panel (thin strip at Y=0) — Z=1500–2100 (rev11: dropped 150 for brace-beam clearance)
     equip_rect(ax, EP_X, 0, EP_W, 80, C_ELEC,
@@ -205,6 +203,9 @@ def floor_plan():
     # Battery bank (slim profile, 120mm depth)
     equip_rect(ax, BA_X, 0, BA_W, BA_D, C_BATT,
                "BATT.", zorder=7, alpha=0.85)
+    # Chemistry prep shelf — fold-down, drawn deployed (stowed it is flat against the wall)
+    equip_rect(ax, SHELF_X_L, SHELF_YD_NEAR, SHELF_W, SHELF_DEPTH, C_WOOD,
+               "CHEM SHELF", label_color="#000000", zorder=7, alpha=0.85)
 
     # ── EQUIPMENT PANEL (IBC plumbing corridor, Yd=1046) ────────────────────
     equip_rect(ax, EQPANEL_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
@@ -442,6 +443,7 @@ def floor_plan():
         (C_EVAP,    "Evap duct penetration (cooler external)"),
         (C_ELEC,  "Electrical panel"),
         (C_BATT,  "Battery bank (slim 120mm)"),
+        (C_WOOD,  "Chemistry prep shelf (fold-down, shown deployed)"),
         (C_PUMP,  "Equipment panel (pumps+filters, IBC corridor)"),
         (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm)"),
         (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),

@@ -39,7 +39,6 @@ One thing up front. This isn't an installation that resembles a camera. It's a c
 | Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
 | Per-print cost | ~<!-- BEGIN costing:summary-perprint -->$34<!-- END costing:summary-perprint --> |
 | 50-print run | ~<!-- BEGIN costing:summary-50run -->$1,680<!-- END costing:summary-50run --> |
-| License | [GNU AGPLv3](licensing.md) — © 2026 Alvin Richards |
 
 ---
 

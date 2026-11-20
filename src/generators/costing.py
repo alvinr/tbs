@@ -28,7 +28,7 @@ from dataclasses import dataclass
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI, SENSITIZER_L_PER_PRINT, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI  # noqa: E402 — chemistry tiers derive from the active-plane area
+from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI, SENSITIZER_L_PER_PRINT, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI, BLUE_PER_PRINT_GAL  # noqa: E402 — chemistry tiers derive from the active-plane area
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
@@ -668,6 +668,85 @@ def emit_section_table(items: list[LineItem], total_label: str) -> str:
     return "\n".join(rows)
 
 
+# ── Sourced research quotes (project-cost-breakdown.md §1, §3.2, §8–§10) ──────────────────────
+# Not line items: market quotes the budget cites but does not buy. Each is restated more than once
+# in the cost breakdown, so it lives here once and is injected everywhere (low, high[, mid]).
+LENS_OPT = (400, 800, 1500)            # used large-format lens, low/mid/high — lens-options.md
+DELIVERY_LOCAL = (300, 500)            # commercial tilt-bed hire, <30 miles — container-transport-options.md
+DELIVERY_SHORT = (500, 1200)           # 30–100 miles
+DELIVERY_LONG = (1200, 2500)           # 100–300 miles, semi flatbed
+DELIVERY_XC = (3500, 6000)             # >1,000 miles
+TRAILER_QUICKLOADZ = (30000, 40000)    # QuickLoadz 20k self-loading trailer
+CDL_MEDICAL = (75, 150)                # DOT medical examination
+CDL_DMV = (170, 220)                   # CLP + CDL + test fees
+CDL_SCHOOL_BUDGET = (2000, 3000)       # budget private school, Class A
+CDL_SCHOOL_MID = (4000, 6200)          # mid-range / community college, Class A
+PERMIT_LOCATION = (0, 200, 500)        # location permit per deployment, low/mid/high (estimate)
+WATER_RESUPPLY = (25, 50)              # Blue resupply per deployment, tanker
+TANKER_PER_GAL = 0.01                  # tanker water, $/gal
+FILTER_PER_PRINT = 5                   # est. — F-1..F-3 cartridge wear amortized (~40–60 print lives)
+
+
+def cdl_allin(school: tuple[int, int]) -> tuple[int, int]:
+    return (school[0] + CDL_MEDICAL[0] + CDL_DMV[0], school[1] + CDL_MEDICAL[1] + CDL_DMV[1])
+
+
+def _rng(t: tuple, sep: str = "–") -> str:
+    return f"${t[0]:,}{sep}${t[-1]:,}"
+
+
+def emit_optional_additions() -> str:
+    """Summary 'optional additions' — derived from the sourced quotes above."""
+    cdl = (cdl_allin(CDL_SCHOOL_BUDGET)[0], cdl_allin(CDL_SCHOOL_MID)[0], cdl_allin(CDL_SCHOOL_MID)[1])
+    trailer = (TRAILER_QUICKLOADZ[0], (TRAILER_QUICKLOADZ[0] + TRAILER_QUICKLOADZ[1]) // 2, TRAILER_QUICKLOADZ[1])
+    rows = ["| Optional item | Low | Mid | High |", "|---------------|-----|-----|------|"]
+    for lbl, (lo, mid, hi) in (("Lens (Rodenstock / Nikkor, used)", LENS_OPT),
+                               ("CDL training + DOT medical + DMV fees (budget school low → community college high)", cdl),
+                               ("Own transport vehicle (QuickLoadz trailer)", trailer)):
+        rows.append(f"| {lbl} | ${lo:,} | ${mid:,} | ${hi:,} |")
+    return "\n".join(rows)
+
+
+def emit_cdl_table() -> str:
+    rows = ["| Item | Cost† |", "|------|-------|"]
+    for lbl, t in (("DOT medical examination", CDL_MEDICAL), ("DMV fees (CLP + CDL + tests)", CDL_DMV),
+                   ("CDL training — budget private school (Class A)", CDL_SCHOOL_BUDGET),
+                   ("CDL training — mid-range / community college (Class A)", CDL_SCHOOL_MID)):
+        rows.append(f"| {lbl} | {_rng(t)} |")
+    rows.append(f"| **CDL all-in (community college + medical + DMV)** | **~{_rng(cdl_allin(CDL_SCHOOL_MID))}** |")
+    return "\n".join(rows)
+
+
+def _std_chem_per_print() -> float:
+    c = by_key("standard")
+    return (c["amfe"] + c["ferri"] + c["dichromate"]) / PRINTS
+
+
+def emit_running_per_print() -> str:
+    water = BLUE_PER_PRINT_GAL * TANKER_PER_GAL
+    rows = [("Muslin substrate", muslin_cost() / PRINTS),
+            ("Sensitizer chemistry (Standard tier, incl. the optional dichromate allowance)", _std_chem_per_print()),
+            (f"Water ({BLUE_PER_PRINT_GAL} gal Blue, tanker at ~${TANKER_PER_GAL:.2f}/gal)", water),
+            ("Processing consumables (liner, gloves, citric acid, pH)", PER_PRINT_CONSUMABLES),
+            ("Filter cartridges, amortized (est.)", FILTER_PER_PRINT)]
+    out = ["| Item | Cost |", "|------|------|"]
+    out += [f"| {lbl} | ~${v:.2f} |" if v < 1 else f"| {lbl} | ~${v:.0f} |" for lbl, v in rows]
+    out.append(f"| **Per-print running cost** | **~${sum(v for _, v in rows):.0f}** |")
+    return "\n".join(out)
+
+
+def emit_running_per_deployment() -> str:
+    d = next(i for i in CONTAINER if i.label.startswith("Delivery"))
+    tr = (d.low, d.high)
+    rows = [("Transport (short haul, commercial hire — §1 delivery line)", tr),
+            ("Water resupply (tanker)", WATER_RESUPPLY),
+            ("Location permit (§9.3)", (PERMIT_LOCATION[0], PERMIT_LOCATION[-1]))]
+    out = ["| Item | Cost |", "|------|------|"]
+    out += [f"| {lbl} | {_rng(t)} |" for lbl, t in rows]
+    out.append(f"| **Per-deployment overhead** | **~{_rng((sum(t[0] for _, t in rows), sum(t[1] for _, t in rows)))}** |")
+    return "\n".join(out)
+
+
 # ── Whole-build scenario table (project-cost-breakdown.md "Executive Cost Summary") ──
 # Each section's (Low, Mid, High). §7 Printmaking is COMPUTED from the tiers above; the others
 # are section totals owned here as data (sub-line-item ownership migrates in section by section).
@@ -770,7 +849,10 @@ def _whole_blocks() -> dict:
             "scenario-c": (_F, emit_scenario_c),
             "ca-buckets": (_CA, emit_ca_buckets), "ca-ranking": (_CA, emit_ca_ranking),
             "funding-level1": ("funding-proposal.md", emit_funding_level1),
-            "master-summary": ("master-shopping-list.md", emit_master_summary)}
+            "master-summary": ("master-shopping-list.md", emit_master_summary),
+            "optional-additions": (_F, emit_optional_additions), "cdl": (_F, emit_cdl_table),
+            "running-per-print": (_F, emit_running_per_print),
+            "running-per-deployment": (_F, emit_running_per_deployment)}
 
 
 def _detail_blocks() -> dict:
@@ -839,6 +921,21 @@ def _inline_blocks() -> dict:
         # project-cost-breakdown.md §7.1 tier masses + §7.2 per-print table (Standard tier).
         "msl-run-cost": ("master-shopping-list.md", lambda: f"~${_r(by_key('standard')['section_total'], 10):,} (Standard), range ~${_r(by_key('lean')['section_total'], 10):,} (Lean) – ~${_r(by_key('rich')['section_total'], 10):,} (Rich)"),
         "msl-perprint-range": ("master-shopping-list.md", lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
+        "pcb-muslin-run": ("project-cost-breakdown.md", lambda: f"${muslin_cost():,.0f}"),
+        "pcb-muslin-rolls": ("project-cost-breakdown.md", lambda: f"{MUSLIN_ROLLS} × 150-yd rolls"),
+        "pcb-muslin-yd": ("project-cost-breakdown.md", lambda: f"{MUSLIN_YARDS}"),
+        "pcb-delivery-long": ("project-cost-breakdown.md", lambda: _rng(DELIVERY_LONG)),
+        "pcb-delivery-local": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_LOCAL)}†"),
+        "pcb-delivery-short": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_SHORT)}†"),
+        "pcb-delivery-long-row": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_LONG)}†"),
+        "pcb-delivery-xc": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_XC)}†"),
+        "pcb-trailer": ("project-cost-breakdown.md", lambda: f"{_rng(TRAILER_QUICKLOADZ)}†"),
+        "pcb-lens-range": ("project-cost-breakdown.md", lambda: _rng((LENS_OPT[0], LENS_OPT[2]))),
+        "pcb-cdl-allin": ("project-cost-breakdown.md", lambda: _rng(cdl_allin(CDL_SCHOOL_MID))),
+        "pcb-permit-range": ("project-cost-breakdown.md", lambda: _rng((PERMIT_LOCATION[0], PERMIT_LOCATION[2]))),
+        "pcb-permit-lo": ("project-cost-breakdown.md", lambda: f"${PERMIT_LOCATION[0]}"),
+        "pcb-permit-mid": ("project-cost-breakdown.md", lambda: f"${PERMIT_LOCATION[1]}"),
+        "pcb-permit-hi": ("project-cost-breakdown.md", lambda: f"${PERMIT_LOCATION[2]}"),
         "pcb-tier-x": ("project-cost-breakdown.md", lambda: f"{_TIER_SPEC[-1][2] / _TIER_SPEC[0][2]:g}"),
         "pcb-cov-range": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_LO}–{SENSITIZER_ML_PER_M2_COAT_HI}"),
         "pcb-cov-x": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_HI / SENSITIZER_ML_PER_M2_COAT_LO:g}"),

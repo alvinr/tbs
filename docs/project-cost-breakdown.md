@@ -31,15 +31,17 @@
 | **TOTAL (excl. own transport, CDL, lens)** | **$27,850** | **$32,719** | **$39,618** |
 <!-- END costing:scenario -->
 
-*Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~$300 muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
+*Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
 
 *Optional additions that may apply — see individual sections:*
 
+<!-- BEGIN costing:optional-additions -->
 | Optional item | Low | Mid | High |
 |---------------|-----|-----|------|
 | Lens (Rodenstock / Nikkor, used) | $400 | $800 | $1,500 |
-| CDL training + DOT medical + DMV fees | $2,345 | $4,570 | $6,870 |
+| CDL training + DOT medical + DMV fees (budget school low → community college high) | $2,245 | $4,245 | $6,570 |
 | Own transport vehicle (QuickLoadz trailer) | $30,000 | $35,000 | $40,000 |
+<!-- END costing:optional-additions -->
 
 ---
 
@@ -65,7 +67,7 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 | Cargo Worthy (recommended) | $2,000–$3,500 | CSC-certified; fewest surprises |
 | One-Trip (premium) | $3,500–$5,000 | Near-new condition; easiest light-sealing |
 
-**If a long-distance delivery is required** (100–300 miles, semi flatbed): add $1,200–$2,500.
+**If a long-distance delivery is required** (100–300 miles, semi flatbed): add <!-- BEGIN costing:pcb-delivery-long -->$1,200–$2,500<!-- END costing:pcb-delivery-long --> (§8.1).
 
 ---
 
@@ -75,43 +77,7 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 
 Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, and door upgrades.
 
-### 2.1 Light-sealing materials
-
-| Item | Qty | Unit | Total | Notes |
-|------|-----|------|-------|-------|
-| D-profile foam weatherstripping, 1"×⅜" | 50 ft | $0.50/ft | $25 | Door perimeter seals |
-| Black silicone sealant (11 oz cartridges) | 5 | $8 | $40 | Weld seam gaps, corner posts |
-| 6-mil black polyethylene sheeting (10'×100') | 1 roll | $65† | $65 | Interior lining over persistent seams |
-| 2" black Gorilla Tape (35 yd rolls) | 4 | $12† | $48 | Secondary sealing |
-| **Light-seal subtotal** | | | **$178** | |
-
-### 2.2 Interior paint
-
-| Item | Qty | Unit | Total | Notes |
-|------|-----|------|-------|-------|
-| Flat black latex paint (zero sheen) | 3 gal | $25 | $75 | Two long walls, two short walls, ceiling (~755 sq ft) |
-| Primer (if bare steel) | 1 gal | $30 | $30 | One coat on new welds/repairs |
-| Rollers, brushes, trays | 1 kit | $20 | $20 | |
-| **Paint subtotal** | | | **$125** | |
-
-### 2.3 Door & access upgrades
-
-| Item | Qty | Unit | Total | Notes |
-|------|-----|------|-------|-------|
-| Personnel-door hinges (heavy-duty) | 3 | $6 | $18 | Access-door hang |
-| Weatherproof door latch/lock set | 1 | $30 | $30 | Secure closure |
-| Door perimeter weatherstrip + threshold | 1 | $16 | $16 | Light + weather seal |
-| Door pull handle + mounting hardware | 1 | $39 | $39 | Firm quote |
-| **Door subtotal** | | | **$103** | |
-
-### 2.4 Miscellaneous conversion hardware
-
-| Item | Est. total |
-|------|-----------|
-| Fasteners, angles, misc. steel | $60 |
-| Black spray paint for touchup | $20 |
-| Weld repair (if needed, DIY) | $30 |
-| **Misc. subtotal** | **$110** |
+The itemized interior parts, with suppliers and prices, are in the [Master Shopping List](master-shopping-list.md?system=interior). The section roll-up:
 
 ### Section total
 
@@ -149,12 +115,7 @@ The pinhole/lens **mount** is the [pinhole disc holder](pinhole-disc-holder-repo
 
 The disc holder takes a Copal/Compur **lens board** (0/1/3) in place of a pinhole board — for portrait or shorter-exposure work. Focus is set at the film plane (depth rail).
 
-| Lens | f | Image circle | Used price | Notes |
-|------|---|-------------|-----------|-------|
-| Rodenstock Apo-Ronar 1,200mm | f/14 | ~400mm | $400–$1,200 | Primary recommendation — excellent on flat field |
-| Nikkor T 1,200mm f/11 | f/11 | ~450mm | $600–$1,500 | One stop faster than Rodenstock |
-| Schneider Apo-Symmar 800mm | f/14 | ~500mm | $300–$800 | Shorter focal length; needs separate focus board |
-| Acrylic Fresnel 600×600mm @ 1,400mm | f/2.3 | ~600mm | $40–$120 | Cheap artistic option; significant aberrations |
+Used process lenses that cover the plane run ~<!-- BEGIN costing:pcb-lens-range -->$400–$1,500<!-- END costing:pcb-lens-range -->; the candidates and their coverage are compared in [Lens Options](lens-options.md).
 
 *Lens is an optional upgrade — not required for pinhole operation. Not included in base total.*
 
@@ -194,7 +155,6 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$4,090** | **$4,316** | **$4,548** |
 <!-- END costing:film -->
 
-*Includes $145–243 for the muslin clamp system (58 Pittsburgh 69289 nylon spring clamps + HDPE filler). Range reflects generic vs quality.*
 
 ---
 
@@ -227,7 +187,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | **Water system total** | **$6,988** | **$8,364** |
 <!-- END costing:water -->
 
-*Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
+*The budget prices used IBC totes, sourced locally (Container Exchanger CA), well below new.*
 
 ---
 
@@ -268,7 +228,7 @@ Personnel enter through a **Ø800 fixed housing + single-opening C-shell drum** 
 | **Housing + drum total** | **$3,156** | **$3,667** | **$4,175** | |
 <!-- END costing:lightlock -->
 
-*Note: the hinged panel that the housing mounts into (2×2×0.120in steel frame, 1/8" HDPE plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
+*Note: the hinged panel that the housing mounts into (2×2×0.120in steel frame, 1/8" HDPE plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2.*
 
 ---
 
@@ -358,7 +318,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 
-*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**.*
+*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~<!-- BEGIN costing:pcb-muslin-yd -->360<!-- END costing:pcb-muslin-yd --> yd = **<!-- BEGIN costing:pcb-muslin-rolls -->3 × 150-yd rolls<!-- END costing:pcb-muslin-rolls --> ≈ <!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> (~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print)**.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -371,7 +331,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Water & consumables (6-mil liner, gloves) | ~<!-- BEGIN costing:pcb-pp-consumables -->$3<!-- END costing:pcb-pp-consumables --> |
 | **Total per print (Standard)** | **~<!-- BEGIN costing:pcb-pp-total -->$37<!-- END costing:pcb-pp-total -->** |
 
-*Across tiers, chemistry moves the per-print total to ~**<!-- BEGIN costing:pcb-pp-range -->$28 (Lean) – $64 (Rich)<!-- END costing:pcb-pp-range -->**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~$6/print (see §7.1), so the §7.1 totals = this per-print × 50 (± the $3/print consumables that §7.1 excludes).*
+*Across tiers, chemistry moves the per-print total to ~**<!-- BEGIN costing:pcb-pp-range -->$28 (Lean) – $64 (Rich)<!-- END costing:pcb-pp-range -->**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print (see §7.1), so the §7.1 totals = this per-print × 50, less the ~<!-- BEGIN costing:pcb-pp-consumables -->$3<!-- END costing:pcb-pp-consumables -->/print consumables that §7.1 excludes.*
 
 ### 7.3 Alternative process cost comparison
 
@@ -400,10 +360,10 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 | Move type | Option | Per-move cost |
 |-----------|--------|--------------|
-| Local (<30 miles) | Tilt-bed delivery truck | $300–$500† |
-| Short haul (30–100 miles) | Tilt-bed delivery truck | $500–$1,200† |
-| Long distance (100–300 miles) | Semi flatbed | $1,200–$2,500† |
-| Cross-country (>1,000 miles) | Semi flatbed | $3,500–$6,000† |
+| Local (<30 miles) | Tilt-bed delivery truck | <!-- BEGIN costing:pcb-delivery-local -->$300–$500†<!-- END costing:pcb-delivery-local --> |
+| Short haul (30–100 miles) | Tilt-bed delivery truck | <!-- BEGIN costing:pcb-delivery-short -->$500–$1,200†<!-- END costing:pcb-delivery-short --> |
+| Long distance (100–300 miles) | Semi flatbed | <!-- BEGIN costing:pcb-delivery-long-row -->$1,200–$2,500†<!-- END costing:pcb-delivery-long-row --> |
+| Cross-country (>1,000 miles) | Semi flatbed | <!-- BEGIN costing:pcb-delivery-xc -->$3,500–$6,000†<!-- END costing:pcb-delivery-xc --> |
 
 *If no forklift at destination: add $200–$1,200 for crane truck or forklift rental.*
 
@@ -411,7 +371,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 | Equipment | Purchase cost | Notes |
 |-----------|--------------|-------|
-| QuickLoadz 20k trailer (self-loading, no crane needed) | $30,000–$40,000† | F-250+ pickup required |
+| QuickLoadz 20k trailer (self-loading, no crane needed) | <!-- BEGIN costing:pcb-trailer -->$30,000–$40,000†<!-- END costing:pcb-trailer --> | F-250+ pickup required |
 | Container chassis 20 ft (used gooseneck) | $5,000–$15,000† | Requires crane/forklift at destination |
 | Used Class 7 tilt-bed truck | $65,000–$100,000† | Class B CDL required |
 
@@ -433,17 +393,19 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 ### 9.1 CDL (if self-hauling)
 
+<!-- BEGIN costing:cdl -->
 | Item | Cost† |
 |------|-------|
 | DOT medical examination | $75–$150 |
 | DMV fees (CLP + CDL + tests) | $170–$220 |
 | CDL training — budget private school (Class A) | $2,000–$3,000 |
 | CDL training — mid-range / community college (Class A) | $4,000–$6,200 |
-| **CDL all-in (mid-range + medical + DMV)** | **~$4,345–$6,570** |
+| **CDL all-in (community college + medical + DMV)** | **~$4,245–$6,570** |
+<!-- END costing:cdl -->
 
 *CDL Class A is recommended — covers both tilt-bed truck operation (Class B) and semi tractor operation (Class A). El Camino College Torrance: $5,995 all-inclusive including DMV fees. WIOA funding may cover full tuition for eligible applicants.*
 
-*CDL is only required if self-hauling. Commercial hire (Sections 7.1) requires no license from the customer.*
+*CDL is only required if self-hauling. Commercial hire (§8.1) requires no license from the customer.*
 
 ### 9.2 Location / filming permits
 
@@ -458,18 +420,18 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Federal land (BLM, Forest Service) | Special Use Permit | $50–$150 processing fee + $150–$1,500/day | Site-specific |
 | Commercial operation (selling prints) | Business license | $50–$200/year | City of operation |
 
-*For a non-commercial art/documentary deployment at a single location: budget $0–$500 for permit costs. For regular commercial touring: budget $500–$2,000/deployment.*
+*For a non-commercial art/documentary deployment at a single location: budget <!-- BEGIN costing:pcb-permit-range -->$0–$500<!-- END costing:pcb-permit-range --> for permit costs. For regular commercial touring: budget $500–$2,000/deployment.*
 
 ### 9.3 Permits summary (per deployment, non-commercial art use)
 
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| Location permit | $0 | $200 | $500 |
+| Location permit | <!-- BEGIN costing:pcb-permit-lo -->$0<!-- END costing:pcb-permit-lo --> | <!-- BEGIN costing:pcb-permit-mid -->$200<!-- END costing:pcb-permit-mid --> | <!-- BEGIN costing:pcb-permit-hi -->$500<!-- END costing:pcb-permit-hi --> |
 | Business license (annual, prorated) | $10 | $25 | $50 |
 | Misc. (insurance certificate, site access) | $0 | $75 | $200 |
 | **Licenses & permits per deployment** | **$10** | **$300** | **$750** |
 
-*CDL costs are one-time and listed separately above. If CDL is obtained, add $4,345–$6,570 to the project total.*
+*CDL costs are one-time and listed separately above. If CDL is obtained, add <!-- BEGIN costing:pcb-cdl-allin -->$4,245–$6,570<!-- END costing:pcb-cdl-allin --> to the project total.*
 
 ---
 
@@ -477,23 +439,27 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ### Per print (cyanotype, after initial capital spent)
 
+<!-- BEGIN costing:running-per-print -->
 | Item | Cost |
 |------|------|
-| Muslin substrate | ~$43 |
-| Sensitizer chemistry | ~$21 |
-| Water (<!-- BEGIN fact:blue_per_print_gal -->30<!-- END fact:blue_per_print_gal --> gal Blue circuit) | ~$0.30 (if resupplied by tanker at ~$0.01/gal) |
-| Containment poly & consumables | ~$2 |
-| Filter cartridge amortized (4.5×20; replace every ~40–60 prints) | ~$5 |
-| **Per-print running cost** | **~$71** |
+| Muslin substrate | ~$6 |
+| Sensitizer chemistry (Standard tier, incl. the optional dichromate allowance) | ~$28 |
+| Water (30 gal Blue, tanker at ~$0.01/gal) | ~$0.30 |
+| Processing consumables (liner, gloves, citric acid, pH) | ~$3 |
+| Filter cartridges, amortized (est.) | ~$5 |
+| **Per-print running cost** | **~$42** |
+<!-- END costing:running-per-print -->
 
 ### Per deployment
 
+<!-- BEGIN costing:running-per-deployment -->
 | Item | Cost |
 |------|------|
-| Transport (short haul, commercial hire) | $300–$800 |
-| Water resupply (~420 gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue ≈ <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) | $25–$50 |
-| Location permit | $0–$500 |
+| Transport (short haul, commercial hire — §1 delivery line) | $300–$800 |
+| Water resupply (tanker) | $25–$50 |
+| Location permit (§9.3) | $0–$500 |
 | **Per-deployment overhead** | **~$325–$1,350** |
+<!-- END costing:running-per-deployment -->
 
 ---
 

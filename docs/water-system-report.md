@@ -43,9 +43,34 @@ When a cyanotype print is washed, the water picks up:
 
 **pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Avoid alkaline conditions (pH >8) — they accelerate the slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions.
 
-**Disposal:** Iron-only cyanotype wash water is low-toxicity, but this process adds ammonium dichromate for contrast, so **every print puts chromium into the wash water** — both the Brown and the Black streams carry it. Chromium is a regulated hazardous-waste constituent (EPA code D007, [40 CFR 261.24](https://www.ecfr.gov/current/title-40/chapter-I/subchapter-I/part-261/subpart-C/section-261.24)), and California's rules are stricter than the federal limit. Both totes therefore always go to a licensed hazardous-waste hauler (§4.3). Never discharge either to a storm drain, soil or waterway.
+**Disposal:** The ammonium dichromate contrast agent puts chromium into every wash, so both the Brown and the Black streams are hazardous waste (EPA code D007) and always go to a licensed hazardous-waste hauler (§4.3). The basis is below. Never discharge either to a storm drain, soil or waterway.
 
 **Source:** [Photrio — Cyanotype wash water composition](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/) · [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
+
+### Waste classification — basis
+
+The classification follows from four facts: the dose, where it goes, the dilution, and the limit.
+
+**1. Dose.** The sensitizer is [Ware's New Cyanotype](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html): 30 g ammonium iron(III) oxalate, 10 g potassium ferricyanide and **0.1 g ammonium dichromate per 100 ml**. Ware raises the dichromate for more contrast, which trial T3 ([Sensitizer Trials](sensitizer-trials.md)) brackets at 0.1–0.4%. The working volume is the muslin coverage (two coats) over the active plane: ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L per print. That gives <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g of dichromate per print. Chromium is 41.3% of (NH₄)₂Cr₂O₇ by mass, so each print carries **<!-- BEGIN fact:cr_g_lo -->0.91<!-- END fact:cr_g_lo -->–<!-- BEGIN fact:cr_g_hi -->3.63<!-- END fact:cr_g_hi --> g of chromium**.
+
+**2. Where it goes.** The wash exists to remove the soluble, unexposed sensitizer, and dichromate is fully water-soluble, so the classification takes all of it into the wash water. Part of the chromium(VI) may be reduced to chromium(III) during exposure. That does not change the result: both limits below count chromium as the element, whatever its oxidation state.
+
+**3. Dilution.** Each print sends ~<!-- BEGIN fact:recovered_per_print_l -->83<!-- END fact:recovered_per_print_l --> L of recovered water to Brown and Waste (§3). Brown recycles the chromium rather than removing it (no filter stage is credited with it), and Brown ends in Waste, so the collected water settles at the per-print ratio whatever the print count: **<!-- BEGIN fact:cr_waste_mg_l_lo -->11<!-- END fact:cr_waste_mg_l_lo -->–<!-- BEGIN fact:cr_waste_mg_l_hi -->43.7<!-- END fact:cr_waste_mg_l_hi --> mg/L chromium**. A single all-Blue print on its own (~<!-- BEGIN fact:first_print_recovered_l -->139<!-- END fact:first_print_recovered_l --> L recovered) reaches <!-- BEGIN fact:cr_first_print_mg_l -->6.5<!-- END fact:cr_first_print_mg_l --> mg/L. Evaporation, which would concentrate it further, is not credited.
+
+**4. Limits.**
+
+| Rule | Chromium limit | How the wash water is tested |
+|------|----------------|------------------------------|
+| Federal toxicity characteristic, D007 ([40 CFR 261.24](https://www.law.cornell.edu/cfr/text/40/261.24)) | 5.0 mg/L | A waste with less than 0.5% filterable solids is its own extract after filtering, so the filtered wash water is compared directly |
+| California, same federal list ([22 CCR 66261.24(a)(1)](https://www.law.cornell.edu/regulations/california/22-CCR-66261.24)) | 5.0 mg/L | As federal |
+| California soluble limit, STLC (22 CCR 66261.24(a)(2)) | 5 mg/L, chromium(VI) and total chromium | Waste Extraction Test; values are for the element, not the compound |
+| California total limit, TTLC (22 CCR 66261.24(a)(2)) | 500 mg/kg chromium(VI); 2,500 mg/kg total | Not the controlling test for a dilute liquid |
+
+**Result.** The collected water is **<!-- BEGIN fact:cr_limit_x_lo -->2.2<!-- END fact:cr_limit_x_lo -->–<!-- BEGIN fact:cr_limit_x_hi -->8.7<!-- END fact:cr_limit_x_hi -->× the 5 mg/L limit**, so it is a federal D007 hazardous waste, and therefore a California hazardous waste too. For it to fall below the limit at the lowest dose, less than <!-- BEGIN fact:cr_washout_breakeven_pct -->45<!-- END fact:cr_washout_breakeven_pct -->% of the chromium would have to leave the print in the wash. No source supports that much retention on the print, so the classification rests on this generator knowledge, not on testing each batch.
+
+**What it means for the operator.** A D007 waste ships on a hazardous-waste manifest with a licensed transporter, and the generator needs an EPA ID number. The [federal generator category](https://www.epa.gov/hwgenerators/categories-hazardous-waste-generators) is set by the mass generated in a calendar month. At ~1 kg/L, <!-- BEGIN fact:prints_sqg_month -->2<!-- END fact:prints_sqg_month --> prints in a month exceed the 100 kg very-small-generator ceiling, and <!-- BEGIN fact:prints_lqg_month -->13<!-- END fact:prints_lqg_month --> prints reach the 1,000 kg large-quantity threshold. A full resupply run is 15 prints. Federal rules allow one planned "episodic event" per calendar year without changing category, with 30 days' notice and 60 days to ship ([40 CFR 262.232](https://www.law.cornell.edu/cfr/text/40/262.232)). California's adoption of that rule has not been confirmed.
+
+**Outside the chromium result.** Ferricyanide is an iron-cyanide complex, not free cyanide (§10). California's fish-toxicity criterion (96-hour LC50 below 500 mg/L, 22 CCR 66261.24(a)(6)) has not been assessed. Neither changes the result while the chromium alone makes the water hazardous. Both would need assessing if the dichromate were dropped.
 
 ### What filtration can and cannot do
 
@@ -296,7 +321,11 @@ Filter cartridges, pipe joints, pumps, and the accumulator are maintained per th
 
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)
 - [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
-- [EPA — 40 CFR 261.24, Toxicity Characteristic](https://www.ecfr.gov/current/title-40/chapter-I/subchapter-I/part-261/subpart-C/section-261.24) — chromium (D007) toxicity characteristic
+- [EPA — 40 CFR 261.24, Toxicity Characteristic](https://www.law.cornell.edu/cfr/text/40/261.24) — chromium (D007) 5.0 mg/L; a waste with under 0.5% solids is its own extract
+- [California — 22 CCR 66261.24, Characteristic of Toxicity](https://www.law.cornell.edu/regulations/california/22-CCR-66261.24) — STLC/TTLC for chromium(VI) and total chromium; aquatic toxicity criterion
+- [EPA — Categories of Hazardous Waste Generators](https://www.epa.gov/hwgenerators/categories-hazardous-waste-generators) — VSQG / SQG / LQG monthly thresholds
+- [EPA — 40 CFR 262.232, Episodic generation](https://www.law.cornell.edu/cfr/text/40/262.232) — one planned event per year, 60 days to ship
+- [Mike Ware — The New Cyanotype Process](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) — sensitizer recipe and dichromate dose
 - [Shurflo 2088-554-144 pump datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf) — flow, pressure, integral check valve
 
 Suppliers and part links are in the [Master Shopping List](master-shopping-list.md?system=water).

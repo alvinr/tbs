@@ -1115,6 +1115,31 @@ RECOVERED_L           = PRINTS_PER_RESUPPLY * RECOVERED_PER_PRINT_L    # = 1245 
 COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 622 L per collection tote (injected via facts.yml collection_fill_l)
 LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 465 L lost over a run (injected via facts.yml lost_l)
 
+# Chromium in the wash water — waste classification basis (water-system-report §2.1).
+# Ware New Cyanotype dichromate is dosed as % w/v of the working sensitizer; the working volume is
+# the sourced muslin coverage (240 ml/m²/print, two coats) over the active plane. The classification
+# is run at the LOW dose (least chromium); evaporation, which would concentrate it, is not credited.
+SENSITIZER_ML_PER_M2     = 240                                           # two wet-on-wet coats (sensitizer-trials T1)
+SENSITIZER_L_PER_PRINT   = round(IMAGE_AREA_M2 * SENSITIZER_ML_PER_M2 / 1000, 1)   # = 2.2 L
+DICHROMATE_PCT_LO        = 0.1                                           # Ware baseline (0.1 g / 100 ml)
+DICHROMATE_PCT_HI        = 0.4                                           # trial T3 upper
+DICHROMATE_G_LO          = round(SENSITIZER_L_PER_PRINT * 10 * DICHROMATE_PCT_LO, 1)  # = 2.2 g/print
+DICHROMATE_G_HI          = round(SENSITIZER_L_PER_PRINT * 10 * DICHROMATE_PCT_HI, 1)  # = 8.8 g/print
+CR_FRAC_DICHROMATE       = 2 * 51.996 / 252.07                           # Cr share of (NH4)2Cr2O7 by mass = 0.413
+CR_G_LO                  = round(DICHROMATE_G_LO * CR_FRAC_DICHROMATE, 2)            # = 0.91 g Cr/print
+CR_G_HI                  = round(DICHROMATE_G_HI * CR_FRAC_DICHROMATE, 2)            # = 3.63 g Cr/print
+CR_TC_LIMIT_MG_L         = 5.0                                           # D007 (40 CFR 261.24) = CA STLC, Cr and Cr(VI)
+CR_WASTE_MG_L_LO         = round(CR_G_LO * 1000 / RECOVERED_PER_PRINT_L, 1)          # = 11.0 mg/L
+CR_WASTE_MG_L_HI         = round(CR_G_HI * 1000 / RECOVERED_PER_PRINT_L, 1)          # = 43.7 mg/L
+CR_LIMIT_X_LO            = round(CR_WASTE_MG_L_LO / CR_TC_LIMIT_MG_L, 1)             # = 2.2× the limit
+CR_LIMIT_X_HI            = round(CR_WASTE_MG_L_HI / CR_TC_LIMIT_MG_L, 1)             # = 8.7× the limit
+CR_WASHOUT_BREAKEVEN_PCT = round(CR_TC_LIMIT_MG_L / CR_WASTE_MG_L_LO * 100)          # = 45 % washout reaches the limit
+FIRST_PRINT_RECOVERED_L  = round(WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL) - LOSS_PER_PRINT_L  # = 139 L (all-Blue first print)
+CR_FIRST_PRINT_MG_L      = round(CR_G_LO * 1000 / FIRST_PRINT_RECOVERED_L, 1)        # = 6.5 mg/L
+# RCRA generator category by prints processed in one calendar month (waste ≈ 1 kg/L; 40 CFR 262.13).
+PRINTS_SQG_MONTH         = math.floor(100 / RECOVERED_PER_PRINT_L) + 1               # = 2  (>100 kg)
+PRINTS_LQG_MONTH         = math.ceil(1000 / RECOVERED_PER_PRINT_L)                   # = 13 (≥1,000 kg)
+
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all
 # working parts (valves, electrical panel, film plane, tilt-swing adjusters)

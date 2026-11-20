@@ -78,6 +78,7 @@ BROCHURE_EXCLUDE = {
     "master-shopping-list.md", "chemistry-shopping-list.md",                  # procurement detail (cost-breakdown carries the money story)
     "distortion-renders.md",                                                  # covered in film-plane + tilt-swing reports
     "light-trap-selection.md", "tray-research.md",                            # material-selection research / decision record — web-only
+    "wash-water-classification.md",                                           # regulatory research — web-only
     "licensing.md",                                                           # full license is web-only; PDF carries the footer line
 }
 

@@ -395,7 +395,7 @@ def tap01_supply():
     Yd12-against-the-wall path ran straight through the bracket plates/bolts.  BV-04/BV-05 off-panel."""
     yd, fz = ov.PROC_TRAY_YD_NEAR - 11, ov.SPRAY_BAR_FEED_Z   # 69 — butt the tray near rim (Yd80), under the triangle
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
-    bvx = ov.BV05_X - 150   # BV-05 riser nudged 150mm −X (toward the EP) to clear the relocated tray-sump suction at PH_X
+    bvx = ov.BV05_X         # BV-05 / BV-06 riser — 150mm −X of the pinhole centerline, clear of the tray-sump suction
     p = []
     # UNDER-WALKWAY RIBBON (lane 1): the corridor blue trunk (dropped clear of the FP rail at X4670, Yd~1132,
     # z60) rises to FLUSH in the tray-edge slot, crosses the notched outer beam, runs −Yd along the ribbon to
@@ -408,7 +408,7 @@ def tap01_supply():
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off
     # the pinhole wall, close to the spray-bar pole-top feed (2420,633,1303) so the delivery coil is short.
     #   run = fresh (−Yd, up from the trunk) ↔ spray (+Yd, to the coil); branch = recycled IN (+X, from ACC-02).
-    b5x, b5y, b5z = bvx, yd, 700                       # ON the pinhole wall (Yd69); DROPPED so it + its routing clear the pinhole assembly (Z1024-1364, aperture Z1194)
+    b5x, b5y, b5z = bvx, yd, ov.BV05_Z                 # ON the pinhole wall (Yd69); DROPPED so it + its routing clear the pinhole assembly (Z1024-1364, aperture Z1194)
     dvt = cp.DVB / 2 + cp.DVL                          # diverter port-tip reach
     p.append(cp.diverter("3W-BV-05 (Blue/Brown selector)", b5x, b5y, b5z, run="z", branch="x+", handle="y+", color=draw.C_VALVE))
     # Fresh supply: tap the trunk, rise straight into the −Z fresh port
@@ -422,7 +422,7 @@ def tap01_supply():
         [(b5x, b5y, b5z + dvt),                        # off the BV-05 +Z selected port
          (b5x, b5y, 1000),                             # MIXED (Blue or Brown per BV-05) — UP the pinhole wall to BV-06 (stays below the pinhole Z1024)
          hose_out], pr))
-    p.append(cp.ball_valve("BV-06 (spray on/off)", b5x, b5y, 900, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
+    p.append(cp.ball_valve("BV-06 (spray on/off)", b5x, b5y, ov.BV06_Z, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
     p.append(draw.ruby_coil_cord("Spray-bar supply hose (BV-06 -> spray bar, coiled)",
         [hose_out,                                     # out of the riser-top elbow
          (2380, 480, 720),                             # FORWARD-low to the pole area (below the pinhole Z1024)
@@ -539,8 +539,8 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (ov.C_LEN - 30, cp.X1_TEE_Y, cp.X1_TEE_Z, "X1\n(fresh fill)", -550, 250, 0),
     (ov.C_LEN - 30, cp.COL_L, 1700, "X3\n(brown drain out)", -550, 0, 250),
     (ov.C_LEN - 30, cp.COL_R, 1620, "X4\n(waste drain out)", -550, 0, -250),
-    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
-    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 900, "BV-06\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
+    (ov.BV05_X, ov.PROC_TRAY_YD_NEAR - 11, ov.BV05_Z, "3W-BV-05\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
+    (ov.BV05_X, ov.PROC_TRAY_YD_NEAR - 11, ov.BV06_Z, "BV-06\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.
@@ -840,7 +840,7 @@ def skid_plumbing(part="all"):
         lead[:-1] + cross + tail[1:], rp, color=draw.C_IBC_BROWN))
     # ── Leg 5: ACC-02 OUT (−X) → 3W-BV-05 recycled port — closes the recycle-spray loop ──
     acc2_out = (ACC2_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 −X OUT tip (3583.5,104,948)
-    b5rx = (ov.BV05_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
+    b5rx = ov.BV05_X + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
     zb = acc2_out[2]                                        # 948 — panel-bottom run height (= ACC-02 OUT)
     p.append(draw.ruby_pipe_run("ACC-02 -> BV-05 (recycled spray)",
         [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)

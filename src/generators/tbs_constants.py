@@ -1011,9 +1011,10 @@ PROC_TRAY_DRAIN_X  = 2386       # FIXED (2026-08-12: kept at 2386 when FP_X_L→
 #                                 clear walkway grate bay, clearing the X2526 cantilever bracket by 50mm
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at the near rim (low edge of the Yd fall)
 
-BV05_X             = PH_X         # BV-05 spray selector X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
+BV05_X             = PH_X - 150   # BV-05 selector + BV-06 on/off riser X on the pinhole wall — 150mm toward the EP of the pinhole centerline, clear of the tray-sump suction riser
 BV05_YD            = 0           # BV-05 spray selector on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
-BV05_Z             = 950         # BV-05 spray selector height on pinhole wall (mm AFF) — waist height from the raised walkway deck [+50 raise; was 900]
+BV05_Z             = 700         # BV-05 spray selector (Blue/Brown) height on the pinhole wall (mm AFF) — below the pinhole assembly (Z1024+)
+BV06_Z             = 900         # BV-06 spray on/off height (mm AFF), directly above BV-05 on the same riser — waist height from the walkway deck
 PROC_TRAY_SUMP_W   = 180        # center pickup well width in X (mm) — a local well at the gutter low point
 #   (X=PROC_TRAY_DRAIN_X); hosts the brown P-04 suction strainer, well bottom on the container floor (Z0).
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
@@ -1410,11 +1411,10 @@ RWK_GRATE_SLOT_X   = (4388, 4516)                            # X0..X1 — all 4 
 RWK_GRATE_SLOT_YDS = [(52, 84), (980, 1012), (1098, 1136)]   # (Yd0,Yd1) per band: pinhole-end drop / loop-over rise / corridor drop
 # NEAR walkway: round holes for the 3 vertical risers that cross the deck near the pinhole wall — the
 # tray-sump→P-04 suction, the TAP-01 fresh-water branch, and the BV-05 fresh-supply trunk.  (cx, cy, r);
-# r = pipe OD/2 + ~6mm clearance.  X positions: tray-drain + TAP_X are constants; the BV-05 trunk crosses
-# ~150mm upstream of the BV05_X selector (diagram-of-record detail coord).
+# r = pipe OD/2 + ~6mm clearance.  X positions: tray-drain, TAP_X and the BV-05 riser (BV05_X) are constants.
 NEAR_GRATE_HOLES   = [(PROC_TRAY_DRAIN_X, 104, 16),          # tray-sump → P-04 suction riser (Ø21 → Ø32)
                       (TAP_X,             69, 18),           # TAP-01 fresh-water branch riser (Ø25, 3/4in → Ø36)
-                      (2304,              69, 16)]           # BV-05 fresh-supply trunk riser (Ø21 → Ø32)
+                      (BV05_X,            69, 16)]           # BV-05 fresh-supply trunk riser (Ø21 → Ø32)
 # Inner long beam is CRANKED outboard around the muslin-drop rod slot: the rigid muslin batten drops
 # straight down at the tray edge (X=RWK_X_L), which sits over the inner beam — so over the notch Yd the
 # beam is jogged outboard by the full notch depth (its inboard face moves R_X0→R_X1) with angled ramps,

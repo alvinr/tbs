@@ -491,9 +491,9 @@ A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tight
 
 ### 3.10 Water Connection
 
-BV-06 (1/2" ball valve, spray-bar on/off) is mounted on the pinhole wall (Yd=0) at
-X=<!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck, just above the
-Blue/Brown selector BV-05. A 1/2" PVC riser runs up from BV-05 to BV-06. A 4 m length of 1/2"
+BV-06 (1/2" ball valve, spray-bar on/off) is mounted on the pinhole wall (Yd=0), 150mm toward the EP of the
+pinhole centerline (clear of the tray-sump suction riser), at Z=900mm — waist height from the walkway deck,
+directly above the Blue/Brown selector BV-05 (Z=700mm). A 1/2" PVC riser runs up from BV-05 to BV-06. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-06 down to the manifold center inlet at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of

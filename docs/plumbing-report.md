@@ -350,7 +350,19 @@ P-clips (§8).
 ### 5.1 Blue System — Clean Water Supply
 
 ```
-IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-05 → BV-06 → spray bar
+IBC-1 + IBC-2 (Blue, in parallel)
+        │
+      BV-01  (P-01 suction)
+        │
+      P-01
+        │
+     ACC-01
+        │
+      BV-05  (selector: Blue)
+        │
+      BV-06  (spray on/off)
+        │
+   spray bar (4m flex hose)
 ```
 
 P-01 draws from the Blue IBC manifold (the two Blue totes in parallel on the 1"
@@ -361,22 +373,69 @@ connects BV-06 to the spray bar center feed bulkhead.
 ### 5.2 Brown System — Used Water Recycling
 
 ```
-Tray sump → P-04 → SV-02 sample → 3W-DV-02 → 1/2"→1" reducer → F-01 → F-02 → F-03
-  → SV-01 sample tap → 3W-DV-01 → IBC-3 recycle (if pH 6–7.5) or IBC-4 waste (if above pH 7.5)
-IBC-3 → P-02 → ACC-02 → BV-05 → BV-06 → spray bar   (recycle spray)
+Tray sump
+    │
+  P-04  (tray drain)
+    │
+  SV-02  (pH sample)
+    │
+ 3W-DV-02 ──────────────→ IBC-4 waste (wash 1 under the dichromate option; heavy contamination)
+    │
+ 1/2"→1" reducer
+    │
+  F-01  (5μm sediment)
+    │
+  F-02  (KDF-55)
+    │
+  F-03  (carbon)
+    │
+  SV-01  (pH sample)
+    │
+ 3W-DV-01 ──────────────→ IBC-4 waste (above pH 7.5, or discolored)
+    │
+ IBC-3  Brown buffer (pH 6–7.5)
+
+
+IBC-3  Brown buffer             (recycle spray, wash 1)
+    │
+  BV-03  (P-02 suction)
+    │
+  P-02
+    │
+ ACC-02
+    │
+  BV-05  (selector: Brown)
+    │
+  BV-06  (spray on/off)
+    │
+ spray bar
+
+
+IBC-3  Brown buffer             (drain-out at a pump-out)
+    │
+  BV-02  (P-05 suction)
+    │
+  P-05   (switched by S-05)
+    │
+ X3 end-wall port → hauler's tanker
 ```
 
 P-04 lifts drain water from the processing tray sump up to the filter bank and, via 3W-DV-02,
 sends it into the 3-stage filter train. The SV-01 sample tap after the filters feeds the
 pH check that sets 3W-DV-01: recycle (IBC-3 Brown buffer) or Waste (IBC-4). **P-02** then recirculates the clean IBC-3 buffer to the spray bar (via
-ACC-02 and BV-05) — the recycle-spray loop.
+ACC-02, BV-05 and BV-06) — the recycle-spray loop.
 
 ### 5.3 Black System — Waste Containment
 
 ```
-3W-DV-01 reject → IBC-4
-3W-DV-02 wash 1 (dichromate option) / contaminated → IBC-4
-IBC-4 → BV-07 → P-03 → external drain port X4
+3W-DV-01 reject ──────┐
+                      ├──→ IBC-4  (waste)
+3W-DV-02 waste ───────┘       │
+                            BV-07  (P-03 suction)
+                              │
+                            P-03   (switched by S-03)
+                              │
+                         X4 end-wall port → hauler's tanker
 ```
 
 P-03 is dedicated to waste evacuation. X4 sits above the top of IBC-4, so the tote cannot drain

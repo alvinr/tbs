@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle, Circle, Wedge, Polygon
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, SPRAY_BEAM_SPAN, BV05_X, BV05_Z, SPRAY_BAR_SLIT_W, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_GUTTER_W, PROC_TRAY_SHIM_N, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, SPRAY_BEAM_SPAN, BV05_X, BV06_Z, SPRAY_BAR_SLIT_W, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_GUTTER_W, PROC_TRAY_SHIM_N, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import DIAGRAM_DPI, FONT, C_WALL
@@ -314,8 +314,8 @@ def draw_sheet1():
            fs=4.5, color="#8B6914", font=FONT, zorder=15)
 
     # ── BV-06 on pinhole wall ────────────────────────────────────────────
-    bv_z_real = BV05_Z
-    bv_z = BV05_Z - PIPE_SKIP
+    bv_z_real = BV06_Z
+    bv_z = BV06_Z - PIPE_SKIP
     bv_size = 30
     pipe_w = 10
 
@@ -430,7 +430,7 @@ def draw_sheet1():
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
         f"1. {BEAM_SECT_LABEL} beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly SIDE-mounted.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
-        "3. BV-06 on pinhole wall at pinhole centerline, waist height → flex hose",
+        "3. BV-06 on pinhole wall above the BV-05 selector, 150mm toward the EP of the pinhole centerline, waist height → flex hose",
         "   → single center feed into the side poly manifold.",
         f"4. {N_NOZZLES}× 90° down-jets side-tapped into the poly, spray down-and-in.",
     ]

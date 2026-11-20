@@ -351,17 +351,17 @@ P-clips (§8).
 
 ```
 IBC-1 + IBC-2 (Blue, in parallel)
-        │
-      BV-01  (P-01 suction)
-        │
-      P-01
-        │
-     ACC-01
-        │
-      BV-05  (selector: Blue)
-        │
-      BV-06  (spray on/off)
-        │
+      │
+    BV-01  (P-01 suction)
+      │
+    P-01
+      │
+   ACC-01
+      │
+    BV-05  (selector: Blue)
+      │
+    BV-06  (spray on/off)
+      │
    spray bar (4m flex hose)
 ```
 

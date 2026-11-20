@@ -9,10 +9,9 @@ film plane. Any equipment standing inside the cone casts a shadow on the film pl
 unexposed void in the image. The layout follows one governing rule: **keep the cone clear,
 and put everything else outside of the cone.**
 
-Reducing the active film plane from the full
-<!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm
-container width to a <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm
-span opens two **provably shadow-free end zones**, one at each end of the container, where
+Holding the active film plane to a <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm
+span inside the <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm
+container width opens two **provably shadow-free end zones**, one at each end of the container, where
 equipment sits at any depth without entering the cone. The pinhole wall face is shadow-free
 too — the cone collapses to a point there. Those three surfaces, plus the floor beneath the
 cone, carry all the equipment; the optical zone itself holds only the film-plane rails.
@@ -21,10 +20,10 @@ cone, carry all the equipment; the optical zone itself holds only the film-plane
 
 | Zone | X range | Shadow-free? | What it holds — and why |
 |------|---------|--------------|--------------------------|
-| **Left end zone** | 0–260mm | Yes, at all depths | Hinged panel + revolving-drum light lock — the door-end entry, kept clear for egress |
-| **Pinhole wall face** | Y=0 surface | Yes (cone collapses to a point) | Electrical panel, battery, inverter, cable + pipe runs — the service wall, shortest runs |
-| **Optical zone** | 260–4,649mm | No | Film plane + its two depth rails; floor-level tray and walkway only, below the cone |
-| **Right end zone** | 4,649–5,893mm | Yes, at all depths | 2×2 IBC stack + plumbing corridor + pump/filter panel — the tall, heavy water plant, clear of the cone |
+| **Left end zone** | 0–<!-- BEGIN fact:film_plane_left_x_mm -->260<!-- END fact:film_plane_left_x_mm -->mm | Yes, at all depths | Hinged panel + revolving-drum light lock — the door-end entry, kept clear for egress |
+| **Pinhole wall face** | Y=0 surface | Yes (cone collapses to a point) | Electrical panel, battery, inverter, chemistry prep shelf, cable + pipe runs — the service wall, shortest runs |
+| **Optical zone** | <!-- BEGIN fact:film_plane_left_x_mm -->260<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->mm | No | Film plane + its two depth rails; floor-level tray and walkway only, below the cone |
+| **Right end zone** | <!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->–<!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm | Yes, at all depths | 2×2 IBC stack + plumbing corridor + pump/filter panel — the tall, heavy water plant, clear of the cone |
 
 ---
 
@@ -40,7 +39,7 @@ read the positions off the drawing.
 ### 2.1 Left End Zone — the door-end entry
 
 The cargo-door end holds the hinged light-trap panel and, in its center, the revolving drum
-that provides the camera's light-tight entry and exit. For transport the panel + drum swing ~56° inboard about the shared
+that provides the camera's light-tight entry and exit. For transport the panel + drum swing ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard about the shared
 film-plane pivot post, clearing the cargo door plane. The panel construction, swing pivot, seals,
 and the emergency-egress assessment are in the
 [Hinged Panel Report](hinged-panel-report.md); the drum light lock is in the
@@ -51,7 +50,8 @@ and the emergency-egress assessment are in the
 The pinhole wall carries the services: the electrical panel and battery bank, the cooler inverter, the full-length cable trunking, and the Blue
 supply pipe running to the spray-bar feed. Mounting them on this wall keeps every cable and
 pipe run short and out of the optical zone. The evaporative cooler sits on the ground
-outside, ducted through a wall stub. Circuit and wiring detail is in the
+outside, ducted through a wall stub. The fold-down chemistry prep shelf mounts here too; deployed,
+it stays outside the narrow end of the cone ([Chemistry Prep Shelves §2.1](chemistry-prep-shelves.md)). Circuit and wiring detail is in the
 [Electrical Report](electrical-report.md); the supply pipe in the
 [Plumbing Report](plumbing-report.md).
 
@@ -81,7 +81,7 @@ back uprights. The restraint frame, tote roles, stacking, and water balance are 
 ## 3. Line-of-Sight Verification
 
 **Optical line-of-sight**
-![TBS-001 Optical Line-of-Sight Clearance — New Layout](assets/line-of-sight.png)
+![TBS-001 Optical Line-of-Sight Clearance](assets/line-of-sight.png)
 
 The line-of-sight analysis confirms zero equipment intersects the optical cone in either the
 plan (top-down) or elevation (side) view. The shadow-free claim is geometry-limited — an
@@ -92,8 +92,10 @@ exact cone fit at the film-plane edges.
 ## 4. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
-2. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications and cage dimensions (~65 kg tare; a 600L caged tote does not exist).
+2. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications and cage dimensions (~65 kg tare).
 3. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and panel integration.
 4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction, swing pivot, and emergency-egress assessment.
-5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.
+5. [Water System Report](water-system-report.md) — tote roles and water balance.
 6. [Walkway System Report](walkway-report.md) — Perimeter walkway dimensions and cantilever bracket design.
+7. [Plumbing Report](plumbing-report.md) — Pumps, filters, and the Corridor Plumbing Panel.
+8. [Chemistry Prep Shelves](chemistry-prep-shelves.md) — Shelf position and cone clearance.

@@ -17,6 +17,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   `_MONEY_RAW_BASELINE` as each doc's count drops.
 - [x] Cost breakdown §9: the summary row is now computed from all its lines (CDL + permits), 2026-11-20.
 
+## 📐 Layout diagrams
+
+- [ ] `container-floorplan.png` / `line-of-sight.png` don't draw the fold-down chemistry prep shelf on the pinhole wall (X≤1,780, Yd≤225 deployed); the Equipment Layout report now lists it in that zone. Needs a generator change (ask first).
+
 ## 🧪 Wash-water classification — open checks (2026-11-20)
 
 - [ ] **T6 — baseline wash water, one-time check** (fish toxicity + cyanide) before the first

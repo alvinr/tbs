@@ -103,7 +103,7 @@ the brown SV‑01 → DV‑01 filtered‑return lane.
 
 These two sections make the tray's raised, sloped floor explicit (6× vertical exaggeration,
 since the fall is ~1:200). **G‑G** is a longitudinal cut at the sump column: the welded
-304‑SS pan sits on a **tapered HDPE shim ramp** with its low corner raised so the 20 mm
+304‑SS pan sits on a tapered HDPE shim ramp with its low corner raised so the 20 mm
 sump‑well bottom rests on the container floor, rising at the far rim. **H‑H** is an X–Z
 cut at the far rim (the high corner of the dual slope) showing the level walkway grates over the
 sloped pan and the shrunk spray‑carriage (Ø32 wheels + 1½in-square SS beam) with **~30 mm clearance**
@@ -124,20 +124,19 @@ Drawn 1:1 against `water.skp`, the sections show the clearances the plan views d
 3. **Open‑bay corridor entry** — a flush pipe cannot pass *under* the outer long beam (carriage
    crown to the beam soffit leaves only 14 mm, less than the 21 mm pipe), so rather than notch a
    primary bending member the **outer beam is run in two simply‑supported segments** (wall combined
-   plate → cantilever arm) and **omitted over the ~170 mm open bay between the two cantilever
-   arms** (the IBC‑corridor crossing). Each line crosses that open bay flush with no beam to clear, then **drops the tray‑edge
-   slot** — which sits **past the carriage travel** — into the corridor, where the existing routing
+   plate → cantilever arm) and omitted over the ~170 mm open bay between the two cantilever
+   arms (the IBC‑corridor crossing). Each line crosses that open bay flush with no beam to clear, then drops the tray‑edge
+   slot — which sits past the carriage travel — into the corridor, where the existing routing
    rises it to the pumps. The walkway grate is split at the two cantilever‑arm centers so its
-   **center section bridges the open bay**; the short span carries a little flex, accepted over the
+   center section bridges the open bay; the short span carries a little flex, accepted over the
    low‑traffic corridor. No pinch remains at the tray‑rim↔upright gap.
-4. **Front foot + M12 anchor under the tray basin** — the welded pan sits on the shim ramp
-   (floor bottom, at the corridor foot stations), so the 12 mm front foot clears **~11 mm**
+4. **Front foot + M12 anchor under the tray basin** — the welded pan sits on the shim ramp, so the 12 mm front foot clears **~11 mm**
    *under* the pan (see G‑G).
 5. **Cantilever‑arm reference** — the RWK cantilever arm clamps to the deep‑box front upright, so overview / ibc‑stack /
    walkway all reference the same upright.
 6. **DV‑02 waste hops the back ring‑rail (E‑E)** — the waste → IBC‑4 line crosses the corridor at the floor to reach the
-   rear merge. It stays low (Z65) past the P‑02 → ACC‑02 recycle crossing, then **lifts to Z90** just before the back
-   bottom Yd‑rail (full RHS, top Z70.8), clearing both. The ribbon lanes enter inboard of the rail.
+   rear merge. It stays low past the P‑02 → ACC‑02 recycle crossing, then lifts just before the back
+   bottom, clearing both. The ribbon lanes enter inboard of the rail.
 
 ## See Also
 

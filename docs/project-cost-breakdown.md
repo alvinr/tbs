@@ -27,8 +27,8 @@
 | **6d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension)** | $268 | $275 | $280 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,230 | $1,680 | $3,040 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
-| **9. Licenses & permits (CDL + per-deployment permits)** | $2,255 | $4,545 | $7,320 |
-| **TOTAL (excl. own transport, lens)** | **$29,885** | **$36,474** | **$45,318** |
+| **9. Licenses & permits (per-deployment permits; High adds CDL)** | $10 | $300 | $7,320 |
+| **TOTAL (excl. own transport, lens)** | **$27,640** | **$32,229** | **$45,318** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
@@ -426,14 +426,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:licenses-permits -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| CDL Class A — training + DOT medical + DMV (one-time, §9.1) | $2,245 | $4,245 | $6,570 |
+| CDL Class A — training + DOT medical + DMV (High only: self-haul; one-time, §9.1) | $0 | $0 | $6,570 |
 | Location permit (§9.2) | $0 | $200 | $500 |
 | Business license (annual, prorated) | $10 | $25 | $50 |
 | Misc. (insurance certificate, site access) | $0 | $75 | $200 |
-| **9. Licenses & permits total** | **$2,255** | **$4,545** | **$7,320** |
+| **9. Licenses & permits total** | **$10** | **$300** | **$7,320** |
 <!-- END costing:licenses-permits -->
 
-*The CDL is a one-time cost and applies only to self-hauling (commercial hire, §8.1, needs none); the total carries it so §9 covers every line above. The permit lines recur per deployment (non-commercial art use).*
+*The baseline is commercial hire (§8.1), which needs no CDL, so Low and Mid carry permits only. High carries the one-time CDL for self-hauling. The permit lines recur per deployment (non-commercial art use).*
 
 ---
 

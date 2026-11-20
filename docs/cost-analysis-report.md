@@ -11,7 +11,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$36,474<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$32,229<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -27,7 +27,7 @@ recurs or is consumed — savings strategy is different for each.
 | **Capital build** (one-time hardware) | **$29,499** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,680 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
-| Soft / regulatory | $4,545 | Licenses & permits |
+| Soft / regulatory | $300 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
 Build-savings work on the **<!-- BEGIN costing:ca-capital -->$29,499<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,680<!-- END costing:ca-consumable --> consumable is attacked

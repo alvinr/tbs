@@ -87,7 +87,7 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
 ### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,658<!-- END costing:fund-l1-total -->, Standard scenario)
-Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$30,000–$45,000<!-- END costing:fund-scenario-span -->.
+Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$28,000–$45,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
 | Item | Cost |

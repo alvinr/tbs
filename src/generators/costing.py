@@ -28,7 +28,7 @@ from dataclasses import dataclass
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from tbs_constants import IMAGE_AREA_M2  # noqa: E402 — active-plane area; chemistry tiers derive from it
+from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI  # noqa: E402 — chemistry tiers derive from the active-plane area
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
@@ -37,7 +37,7 @@ PER_PRINT_CONSUMABLES = 3 # §7.3 all-in basis: water/citric/pH per print BEYOND
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
 PRICE_AMFE_PER_KG = 64.20 # Artcraft Chemicals — ferric ammonium oxalate (AmFe), $29.12/1 lb (firm 2026-07-26) ÷ 0.4536 kg/lb (bulk alt-process source; was $218.16/kg at the retail 1-lb photo pack — a ~3.4× overcharge)
 PRICE_FERRI_PER_KG = 51.01 # Artcraft Chemicals — potassium ferricyanide, $104.12/4.5 lb (firm 2026-07-26) = $51.01/kg (was $60.80/kg Bostick — consolidated cyanotype chemistry to one supplier, Artcraft)
-DICHROMATE_RUN = 25.00 # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
+DICHROMATE_RUN = 25.00 # ammonium dichromate — OPTIONAL contrast agent (a creative choice; 0.1–0.4% w/v), per-run allowance kept so the option is funded. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
 MUSLIN_ROLL_PRICE = 100.00 # Fabric Direct — 60" x 150-yd unbleached muslin roll
 MUSLIN_ROLLS = 3 # ~360 yd / 150 -> 3 rolls (still 3 rolls after the muslin re-cut to fit the tray, 94 sqft)
 MUSLIN_YARDS = 360 # 2026-08-06: 50 prints × 94 sqft (muslin cut 4,359×2,000, MUSLIN_AREA_SQFT) × 1.15 waste = 5,405 sqft ÷ 5 ft = ~1,081 linear ft = 360 yd (was 388 at 101 sqft = full image plane)
@@ -113,7 +113,7 @@ def emit_cost_breakdown_7_1() -> str:
         f"| Potassium ferricyanide (3:1 ratio) | {TIERS[0].ferri_kg:g} kg / ~{dollars(L['ferri'])} "
         f"| **{TIERS[1].ferri_kg:g} kg / ~{dollars(S['ferri'])}** | {TIERS[2].ferri_kg:g} kg / ~{dollars(R['ferri'])} "
         f"| Artcraft Chemicals (${PRICE_FERRI_PER_KG:.0f}/kg) |",
-        f"| Ammonium dichromate (contrast, 0.1–0.4%) | ~{dollars(DICHROMATE_RUN)} | **~{dollars(DICHROMATE_RUN)}** "
+        f"| Ammonium dichromate (optional contrast, 0.1–0.4%) | ~{dollars(DICHROMATE_RUN)} | **~{dollars(DICHROMATE_RUN)}** "
         f"| ~{dollars(DICHROMATE_RUN)} | Artcraft Chemicals |",
         f"| Unbleached cotton muslin, 60″ — {MUSLIN_ROLLS} × 150-yd rolls (~{MUSLIN_YARDS} yd) "
         f"| ~{dollars(muslin_cost())} | **~{dollars(muslin_cost())}** | ~{dollars(muslin_cost())} | Fabric Direct (~$100/roll) |",
@@ -835,6 +835,8 @@ def _inline_blocks() -> dict:
         "om-ferri-g-standard": ([_OM, "master-shopping-list.md"], lambda: f"{_ferri_g('standard')}"),
         "om-ferri-kg-standard": ("master-shopping-list.md", lambda: _kg_fmt(_tier('standard').ferri_kg)),
         "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
+        "om-dichromate-kg-run": ("master-shopping-list.md",
+                                 lambda: f"{DICHROMATE_G_LO * PRINTS / 1000:.2f}–{DICHROMATE_G_HI * PRINTS / 1000:.2f}"),
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).
         "ibc-frame-low": (_IBC, lambda: f"${_ibc_frame().low:,}"),
         "ibc-frame-high": (_IBC, lambda: f"${_ibc_frame().high:,}"),

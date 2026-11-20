@@ -554,3 +554,23 @@ prints_lqg_month:
   constant: PRINTS_LQG_MONTH
   unit: prints
   owner: water-system-report.md
+wash1_to_waste_l:
+  constant: WASH1_TO_WASTE_L
+  unit: L
+  owner: water-system-report.md
+waste_fill_cr_l:
+  constant: WASTE_FILL_CR_L
+  unit: L
+  owner: water-system-report.md
+brown_fill_cr_l:
+  constant: BROWN_FILL_CR_L
+  unit: L
+  owner: water-system-report.md
+prints_sqg_month_w1:
+  constant: PRINTS_SQG_MONTH_W1
+  unit: prints
+  owner: water-system-report.md
+prints_lqg_month_w1:
+  constant: PRINTS_LQG_MONTH_W1
+  unit: prints
+  owner: water-system-report.md

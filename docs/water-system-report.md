@@ -27,52 +27,71 @@ All four totes are identical 1,000L caged IBCs; the fills above are working leve
 
 ---
 
-## 2. Cyanotype Wash Water — Chemistry and Constraints
+## 2. Cyanotype Chemistry, Wash Water and Waste
 
-### What is in the wash water?
+### 2.1 Sensitizer — baseline and the dichromate option
+
+The sensitizer is [Ware's New Cyanotype](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html): ammonium iron(III) oxalate and potassium ferricyanide at 3:1 by mass. This iron-only chemistry is the **baseline**.
+
+Ware adds **ammonium dichromate** (0.1 g per 100 ml, raised for more contrast) to steepen the print's contrast. Whether to use it is a **creative choice**, made by the artist for each print or session, not a design parameter. The water system is designed to handle both chemistries. The choice changes three things, all covered in this section: what the wash water carries, how DV-02 routes the first wash (§4.2), and how the collected water is disposed of (§4.3). The mixing, valve settings and disposal steps for each choice are in the [Operating Manual](operating-manual.md) (§0.3, §4.2, §5.1).
+
+### 2.2 What is in the wash water
 
 When a cyanotype print is washed, the water picks up:
 
 | Compound | Source | Notes |
 |----------|--------|-------|
-| Ferric ammonium oxalate | Unexposed sensitizer | Water-soluble, pale yellow-green; low toxicity |
-| Ammonium dichromate | Contrast agent in Part B (0.1–0.4%) | Water-soluble, orange; **chromium(VI)** — a Category 1A carcinogen |
-| Potassium ferricyanide | Sensitizer component | Water-soluble, yellow-orange; low acute toxicity |
-| Prussian blue particles | Exposed image pigment wash-off | Fine blue solid particles, ~1–10 micron |
+| Ammonium iron(III) oxalate | Unexposed sensitizer | Water-soluble, pale yellow-green; low toxicity |
+| Potassium ferricyanide | Unexposed sensitizer | Water-soluble, yellow-orange; an iron-cyanide complex, low acute toxicity |
+| Prussian blue particles | Image pigment wash-off | Fine blue solid particles, ~1–10 micron |
 | Iron(III) compounds | Oxidation products | Color the water blue-gray |
+| Ammonium dichromate | **Dichromate option only** (0.1–0.4% of the sensitizer) | Water-soluble, orange; **chromium(VI)**, a Category 1A carcinogen |
 
-**pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Avoid alkaline conditions (pH >8) — they accelerate the slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions.
+**pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Alkaline conditions (pH >8) accelerate the slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions, so the system holds the stored water below pH 7.5 (sample taps and a dosing port, §4.2).
 
-**Disposal:** The ammonium dichromate contrast agent puts chromium into every wash, so both the Brown and the Black streams are hazardous waste (EPA code D007) and always go to a licensed hazardous-waste hauler (§4.3). The basis is below. Never discharge either to a storm drain, soil or waterway.
+The wash-1 bath carries most of the dissolved sensitizer: it is the leaching wash, where the unexposed chemistry comes out of the muslin. Washes 2 and 3 rinse a print that has already been cleared.
 
 **Source:** [Photrio — Cyanotype wash water composition](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/) · [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
 
-### Waste classification — basis
+### 2.3 Waste classification
+
+Waste is classified against two sets of rules. The federal toxicity characteristic ([40 CFR 261.24](https://www.law.cornell.edu/cfr/text/40/261.24)) lists eight metals. A waste with less than 0.5% filterable solids is its own extract after filtering, so filtered wash water is compared directly against the limits. California ([22 CCR 66261.24](https://www.law.cornell.edu/regulations/california/22-CCR-66261.24)) applies the federal list plus its own soluble (STLC) and total (TTLC) limits for a longer list of metals, and a fish-toxicity criterion (96-hour LC50 below 500 mg/L).
+
+| Rule | Chromium limit | Test |
+|------|----------------|------|
+| Federal toxicity characteristic, D007 (40 CFR 261.24) | 5.0 mg/L | Filtered liquid compared directly |
+| California, federal list (22 CCR 66261.24(a)(1)) | 5.0 mg/L | As federal |
+| California soluble limit, STLC (22 CCR 66261.24(a)(2)) | 5 mg/L, chromium(VI) and total chromium | Waste Extraction Test; element basis |
+| California total limit, TTLC (22 CCR 66261.24(a)(2)) | 500 mg/kg chromium(VI); 2,500 mg/kg total | Not controlling for a dilute liquid |
+
+#### Baseline (iron-only) — non-hazardous, confirmed once
+
+None of the baseline chemistry's elements (iron, potassium, carbon, nitrogen, oxygen) is on the federal metal list or California's STLC/TTLC list. Two criteria have not been assessed: California's fish-toxicity criterion, and whether the ferricyanide's cyanide counts toward the reactivity characteristic. Ferricyanide is a tightly bound iron-cyanide complex, not free cyanide, and the stored water is held below the alkaline range that breaks it down (§2.2). The design treats the collected water as **non-hazardous**: both totes go to a liquid-waste hauler or a wastewater plant that accepts it. That classification is confirmed by a **one-time check** of the collected water (fish toxicity and cyanide) before the first disposal ([Sensitizer Trials](sensitizer-trials.md) T6).
+
+#### Dichromate option — hazardous (D007)
 
 The classification follows from four facts: the dose, where it goes, the dilution, and the limit.
 
-**1. Dose.** The sensitizer is [Ware's New Cyanotype](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html): 30 g ammonium iron(III) oxalate, 10 g potassium ferricyanide and **0.1 g ammonium dichromate per 100 ml**. Ware raises the dichromate for more contrast, which trial T3 ([Sensitizer Trials](sensitizer-trials.md)) brackets at 0.1–0.4%. The working volume is the muslin coverage (two coats) over the active plane: ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L per print. That gives <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g of dichromate per print. Chromium is 41.3% of (NH₄)₂Cr₂O₇ by mass, so each print carries **<!-- BEGIN fact:cr_g_lo -->0.91<!-- END fact:cr_g_lo -->–<!-- BEGIN fact:cr_g_hi -->3.63<!-- END fact:cr_g_hi --> g of chromium**.
+1. **Dose.** The working sensitizer is the muslin coverage (two coats) over the active plane: ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L per print. At 0.1–0.4% that is <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g of dichromate per print. Chromium is 41.3% of (NH₄)₂Cr₂O₇ by mass, so each print carries **<!-- BEGIN fact:cr_g_lo -->0.91<!-- END fact:cr_g_lo -->–<!-- BEGIN fact:cr_g_hi -->3.63<!-- END fact:cr_g_hi --> g of chromium**.
+2. **Where it goes.** The wash exists to remove the soluble, unexposed sensitizer, and dichromate is fully water-soluble, so the classification takes all of it into the wash water. Part of the chromium(VI) may be reduced to chromium(III) during exposure. That does not change the result: both limits count chromium as the element, whatever its oxidation state.
+3. **Dilution.** Each print sends ~<!-- BEGIN fact:recovered_per_print_l -->83<!-- END fact:recovered_per_print_l --> L of water to the collection totes (§3). Spread over all of it, the chromium is **<!-- BEGIN fact:cr_waste_mg_l_lo -->11<!-- END fact:cr_waste_mg_l_lo -->–<!-- BEGIN fact:cr_waste_mg_l_hi -->43.7<!-- END fact:cr_waste_mg_l_hi --> mg/L**. A single all-Blue print on its own (~<!-- BEGIN fact:first_print_recovered_l -->139<!-- END fact:first_print_recovered_l --> L recovered) reaches <!-- BEGIN fact:cr_first_print_mg_l -->6.5<!-- END fact:cr_first_print_mg_l --> mg/L. Evaporation, which would concentrate it further, is not credited.
+4. **Limit.** That is **<!-- BEGIN fact:cr_limit_x_lo -->2.2<!-- END fact:cr_limit_x_lo -->–<!-- BEGIN fact:cr_limit_x_hi -->8.7<!-- END fact:cr_limit_x_hi -->× the 5 mg/L limit**: a federal D007 hazardous waste, and so a California hazardous waste too. For it to pass at the lowest dose, less than <!-- BEGIN fact:cr_washout_breakeven_pct -->45<!-- END fact:cr_washout_breakeven_pct -->% of the chromium would have to leave the print in the wash. No source supports that much retention on the print, so the classification rests on this calculation, not on testing each batch.
 
-**2. Where it goes.** The wash exists to remove the soluble, unexposed sensitizer, and dichromate is fully water-soluble, so the classification takes all of it into the wash water. Part of the chromium(VI) may be reduced to chromium(III) during exposure. That does not change the result: both limits below count chromium as the element, whatever its oxidation state.
+**Separating wash 1.** Because wash 1 carries most of the chromium, DV-02 sends it straight to IBC-4 when the dichromate option is used (§4.2). Washes 2 and 3 go to Brown as usual. This keeps the most concentrated water out of the filter train and the recycle loop, and holds the hazardous fraction to ~<!-- BEGIN fact:wash1_to_waste_l -->46<!-- END fact:wash1_to_waste_l --> L per print. Over a resupply run the collected total is unchanged, but the split shifts toward Waste: ~<!-- BEGIN fact:waste_fill_cr_l -->690<!-- END fact:waste_fill_cr_l -->L in IBC-4 and ~<!-- BEGIN fact:brown_fill_cr_l -->555<!-- END fact:brown_fill_cr_l -->L in IBC-3, both within the 1,000L totes.
 
-**3. Dilution.** Each print sends ~<!-- BEGIN fact:recovered_per_print_l -->83<!-- END fact:recovered_per_print_l --> L of recovered water to Brown and Waste (§3). Brown recycles the chromium rather than removing it (no filter stage is credited with it), and Brown ends in Waste, so the collected water settles at the per-print ratio whatever the print count: **<!-- BEGIN fact:cr_waste_mg_l_lo -->11<!-- END fact:cr_waste_mg_l_lo -->–<!-- BEGIN fact:cr_waste_mg_l_hi -->43.7<!-- END fact:cr_waste_mg_l_hi --> mg/L chromium**. A single all-Blue print on its own (~<!-- BEGIN fact:first_print_recovered_l -->139<!-- END fact:first_print_recovered_l --> L recovered) reaches <!-- BEGIN fact:cr_first_print_mg_l -->6.5<!-- END fact:cr_first_print_mg_l --> mg/L. Evaporation, which would concentrate it further, is not credited.
+- **IBC-4 (Waste)** is hazardous (D007).
+- **IBC-3 (Brown)** is **hazardous until measured**. How much chromium washes 2 and 3 carry is not known. A one-time measurement of Brown under the dichromate option ([Sensitizer Trials](sensitizer-trials.md) T7) decides it. Below 5 mg/L, Brown takes the baseline non-hazardous route. At or above it, both totes are hazardous.
 
-**4. Limits.**
+**Generator category.** A hazardous waste ships on a manifest with a licensed transporter, and the generator needs an EPA ID number. The [federal generator category](https://www.epa.gov/hwgenerators/categories-hazardous-waste-generators) is set by the hazardous waste generated in a calendar month ([40 CFR 262.13](https://www.law.cornell.edu/cfr/text/40/262.13)). The whole collected water counts, not just the chromium in it. That is an inference: the hazardous waste is the liquid that fails the limit, and none of the 262.13(c) exclusions fits stored wastewater, but no rule text states it for a dilute wastewater. At ~1 kg/L:
 
-| Rule | Chromium limit | How the wash water is tested |
-|------|----------------|------------------------------|
-| Federal toxicity characteristic, D007 ([40 CFR 261.24](https://www.law.cornell.edu/cfr/text/40/261.24)) | 5.0 mg/L | A waste with less than 0.5% filterable solids is its own extract after filtering, so the filtered wash water is compared directly |
-| California, same federal list ([22 CCR 66261.24(a)(1)](https://www.law.cornell.edu/regulations/california/22-CCR-66261.24)) | 5.0 mg/L | As federal |
-| California soluble limit, STLC (22 CCR 66261.24(a)(2)) | 5 mg/L, chromium(VI) and total chromium | Waste Extraction Test; values are for the element, not the compound |
-| California total limit, TTLC (22 CCR 66261.24(a)(2)) | 500 mg/kg chromium(VI); 2,500 mg/kg total | Not the controlling test for a dilute liquid |
+| Hazardous fraction | kg per print | Over 100 kg (very-small ceiling) | 1,000 kg (large-quantity threshold) |
+|---|---|---|---|
+| IBC-4 only (Brown measured below the limit) | ~<!-- BEGIN fact:wash1_to_waste_l -->46<!-- END fact:wash1_to_waste_l --> | <!-- BEGIN fact:prints_sqg_month_w1 -->3<!-- END fact:prints_sqg_month_w1 --> prints a month | <!-- BEGIN fact:prints_lqg_month_w1 -->22<!-- END fact:prints_lqg_month_w1 --> prints a month |
+| Both totes (Brown not measured, or above the limit) | ~<!-- BEGIN fact:recovered_per_print_l -->83<!-- END fact:recovered_per_print_l --> | <!-- BEGIN fact:prints_sqg_month -->2<!-- END fact:prints_sqg_month --> prints a month | <!-- BEGIN fact:prints_lqg_month -->13<!-- END fact:prints_lqg_month --> prints a month |
 
-**Result.** The collected water is **<!-- BEGIN fact:cr_limit_x_lo -->2.2<!-- END fact:cr_limit_x_lo -->–<!-- BEGIN fact:cr_limit_x_hi -->8.7<!-- END fact:cr_limit_x_hi -->× the 5 mg/L limit**, so it is a federal D007 hazardous waste, and therefore a California hazardous waste too. For it to fall below the limit at the lowest dose, less than <!-- BEGIN fact:cr_washout_breakeven_pct -->45<!-- END fact:cr_washout_breakeven_pct -->% of the chromium would have to leave the print in the wash. No source supports that much retention on the print, so the classification rests on this generator knowledge, not on testing each batch.
+A full resupply run is ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints, so separating wash 1 keeps a run inside one month below the large-quantity threshold, provided Brown measures below the limit. Federal rules also allow one planned "episodic event" per calendar year without changing category, with 30 days' notice and 60 days to ship ([40 CFR 262.232](https://www.law.cornell.edu/cfr/text/40/262.232)). California's adoption of that rule has not been confirmed.
 
-**What it means for the operator.** A D007 waste ships on a hazardous-waste manifest with a licensed transporter, and the generator needs an EPA ID number. The [federal generator category](https://www.epa.gov/hwgenerators/categories-hazardous-waste-generators) is set by the mass generated in a calendar month. At ~1 kg/L, <!-- BEGIN fact:prints_sqg_month -->2<!-- END fact:prints_sqg_month --> prints in a month exceed the 100 kg very-small-generator ceiling, and <!-- BEGIN fact:prints_lqg_month -->13<!-- END fact:prints_lqg_month --> prints reach the 1,000 kg large-quantity threshold. A full resupply run is 15 prints. Federal rules allow one planned "episodic event" per calendar year without changing category, with 30 days' notice and 60 days to ship ([40 CFR 262.232](https://www.law.cornell.edu/cfr/text/40/262.232)). California's adoption of that rule has not been confirmed.
-
-**Outside the chromium result.** Ferricyanide is an iron-cyanide complex, not free cyanide (§10). California's fish-toxicity criterion (96-hour LC50 below 500 mg/L, 22 CCR 66261.24(a)(6)) has not been assessed. Neither changes the result while the chromium alone makes the water hazardous. Both would need assessing if the dichromate were dropped.
-
-### What filtration can and cannot do
+### 2.4 What filtration can and cannot do
 
 A sediment + heavy-metal + activated-carbon filter train will:
 - Remove the Prussian blue particle load (sediment stage)
@@ -83,7 +102,7 @@ It will **not**:
 - Restore water to fresh-water quality
 - Remove dissolved iron salts fully
 - Make the water safe for discharge to ground
-- Remove the chromium from the dichromate — it is not credited to any stage, so Brown carries it through every recycle pass
+- Remove chromium: no stage is credited with it, which is why wash 1 bypasses the filters under the dichromate option
 
 **Reuse rule:** Recycled Brown water is used only for the **first wash**, where the unexposed sensitizer leaches out and the bath is dirtiest regardless of what it starts as. Washes 2 and 3 use Blue, so the print finishes in clean water and iron compounds are not re-deposited. After 3 recycle passes, Brown water goes to Black.
 
@@ -170,7 +189,7 @@ Processing tray sump (P-04 suction pickup)
         │
      SV-02 SAMPLE TAP (meter incoming pH → set DV-02 routing)
         │
-   3W-DV-02 ────────────────────────────→ IBC-4 waste (if heavily loaded)
+   3W-DV-02 ────────────────────────────→ IBC-4 waste (wash 1 under the dichromate option; heavy contamination)
         │
        F-1 (5-micron MPP sediment)
         │
@@ -197,26 +216,34 @@ Processing tray sump (P-04 suction pickup)
 | F-2 | KDF-55 heavy-metal removal | Dissolved iron compounds from ferricyanide wash water |
 | F-3 | CTO coconut-shell activated carbon block | Residual organics, color |
 
-**pH management:** **SV-02** meters the incoming used water so the operator can choose the DV-02 route — filter train or straight to waste. **SV-01** meters the filtered water before DV-01 returns it. Slightly acidic (pH <6) is fine. If pH >7.5, dose citric acid solution (10g per liter of water) at the IBC-3 outlet dosing port, stir, and retest. Never return water above pH 8 to IBC-3.
+**DV-02 — separating the drain.** DV-02 sits ahead of the filters, so any wash can go straight to IBC-4 without passing through the filter train or entering the recycle loop. It serves two cases: wash 1 under the dichromate option, which carries most of the chromium (§2.3), and drain water heavily loaded by a failed coat or a spill.
+
+**pH management:** **SV-02** samples the incoming used water ahead of DV-02, and **SV-01** samples the filtered water before DV-01 returns it to IBC-3. The Brown buffer is held at pH 6–7.5 so the ferricyanide stays stable (§2.2). Slightly acidic water is acceptable. A citric-acid **dosing port** at the IBC-3 outlet corrects alkaline drift, and DV-01 sends out-of-range filtered water to IBC-4 instead of the buffer. The sampling and dosing procedure is in the [Operating Manual §4.2](operating-manual.md).
 
 ### 4.3 Black System — Waste Containment
 
 ```
 FROM 3W-DV-01 (filtered water out of pH range)
-FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
+FROM 3W-DV-02 (wash 1 under the dichromate option; heavily contaminated drain water)
         │
    IBC-4 (waste)
         │
    P-03 → X4 (end-wall camlock)
         │
-   Licensed hazardous-waste hauler (manifested)
+   Disposal route by chemistry (§2.3)
 ```
 
 - The DV-01 and DV-02 waste legs join at a tee just before IBC-4. Each leg carries a check valve below the tee — **CV-2** (DV-01) and **CV-3** (DV-02) — so one leg cannot back-feed the other and the IBC-4 riser cannot drain back through DV-01 into the filter train
 - IBC-4 stays in the stacking frame. It has a DN50 butterfly valve (S60×6 thread) and is pumped out by **P-03** through **X4** into the hauler's tanker, without opening the cargo doors. Brown (IBC-3) leaves the same way through **X3** by **P-05**
-- **Both drained streams carry chromium** from the ammonium dichromate contrast agent (§2), and IBC-4 holds the most concentrated fraction. Every pump-out is hazardous waste, manifested to a licensed hazardous-waste hauler. Keep the manifest with the disposal record
-- Never discharge either tote to a storm drain, soil or waterway
-- Keep the IBC-4 cap and valve closed between pump-outs — evaporation and UV exposure can drive the ferricyanide chemistry
+- **Disposal route** follows the chemistry choice (§2.3):
+
+| Chemistry | IBC-4 (Waste, via X4) | IBC-3 (Brown, via X3) |
+|---|---|---|
+| Baseline (iron-only) | Liquid-waste hauler or wastewater plant (non-hazardous, confirmed once) | Same |
+| Dichromate option | Licensed hazardous-waste hauler, manifested (D007) | Hazardous until measured; non-hazardous route once Brown is measured below 5 mg/L |
+
+- Neither tote is ever discharged to a storm drain, soil or waterway. The totes are closed vessels with the only outlets at the X3/X4 camlocks, so all collected water leaves through a hauler's hose
+- The IBC-4 cap and valve stay closed between pump-outs, because evaporation concentrates the waste and UV exposure drives the ferricyanide breakdown (§2.2)
 
 ### 4.4 Processing Tray and Spray Bar
 
@@ -294,26 +321,21 @@ The water-system budget, including the processing tray, spray bar, and IBC stack
 
 ## 9. Maintenance
 
-Filter cartridges, pipe joints, pumps, and the accumulator are maintained per the
-[Plumbing Report §10](plumbing-report.md). The storage-side tasks:
-
-| Task | Frequency | Notes |
-|------|-----------|-------|
-| Flush Brown IBC-3 | Every 5 prints | Rinse with clean water, inspect for sediment |
-| Drain and rinse Blue IBCs | Annually, or before long storage | Prevents biofilm |
-| Inspect IBC-4 valve and cap | Before every transport | Check for leaks |
+The storage side needs little upkeep by design: the totes are closed, opaque vessels and the plumbing is PVC throughout. Three tasks recur: flushing sediment from the Brown buffer, rinsing the Blue totes against biofilm before long storage, and checking the IBC-4 valve and cap before transport. Filter cartridges, pipe joints, pumps and the accumulator are covered in the [Plumbing Report §10](plumbing-report.md). The intervals and procedures are in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 
-## 10. Safety Notes
+## 10. Hazards Designed For
 
-1. **Ferricyanide in alkaline conditions:** Keep IBC-4 waste away from strong alkalis (sodium hydroxide, bleach). Under alkaline + UV conditions ferricyanide can release trace cyanide ions. Keep pH <7.5 in all containers. The risk is theoretical rather than acute at these concentrations, but worth managing.
+1. **Ferricyanide breakdown.** Alkaline conditions plus UV can release trace cyanide ions from ferricyanide. The design holds every container below pH 7.5 (sample taps SV-01/SV-02, the IBC-3 dosing port, DV-01's reject leg) and keeps the totes closed and opaque. The risk is theoretical rather than acute at wash-water concentrations.
 
-2. **Prussian blue is non-toxic** — it is an approved antidote medication — but the fine particles irritate skin and eyes. Wear nitrile gloves and eye protection when handling wash trays.
+2. **Prussian blue particles.** Prussian blue is non-toxic (it is an approved antidote medication), but the fine particles irritate skin and eyes. The F-1 sediment stage takes them out of the recycle loop.
 
-3. **Citric acid dosing:** Dissolve the acid in a separate container before adding it to a tank. Dry acid added to iron-rich water can briefly react exothermically and bubble.
+3. **Citric-acid dosing.** Dry acid added to iron-rich water can react exothermically and bubble, so the dosing port takes pre-dissolved solution, not dry acid.
 
-4. **Chromium in the waste:** The dichromate contrast agent puts chromium(VI) into both IBC-3 and IBC-4. Keep both caps and outlet valves closed, label the totes as chromium-bearing, and pump them out only to a licensed hazardous-waste hauler (§4.3). Wear nitrile gloves when connecting or disconnecting the X3/X4 hoses.
+4. **Chromium (dichromate option only).** IBC-4, and IBC-3 until measured, hold chromium(VI)-bearing water (§2.3). The only outlets are the X3/X4 camlocks, so the water is never handled open.
+
+Personal protection and handling steps for each hazard are in the [Operating Manual](operating-manual.md).
 
 ---
 

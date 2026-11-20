@@ -242,11 +242,12 @@ isolation valves also re-sourced to Grainger 803HZ1 at $24.14, down from $44.27.
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
 | 3W-DV-01 | 1" FNPT | After the filter train + SV-01 sample tap | Routes filtered water to recycle (IBC-3 Brown buffer) or Black (IBC-4 waste) based on the SV-01 pH reading |
-| 3W-DV-02 | 1/2" FNPT | Skid row, after SV-02 | Routes the tray-drain water into the filters (F-01, recycle) or straight to Black (IBC-4 waste) based on operator judgment |
+| 3W-DV-02 | 1/2" FNPT | Skid row, after SV-02 | Routes the tray-drain water into the filters (F-01, recycle) or straight to Black (IBC-4 waste), ahead of the filter train |
 
-**3W-DV-02** is the operator judgment valve: set to recycle (default) — into the
-filters for cleaning — for normal rinse water, switch to Black for heavy
-contamination events.
+**3W-DV-02** sits ahead of the filters so any wash can bypass them and the recycle loop
+entirely: wash 1 under the dichromate option, which carries most of the chromium, and
+heavily contaminated drain water ([Water System Report §2.3, §4.2](water-system-report.md)).
+Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
 **3W-DV-01** is the pH-gated valve: draw a sample at **SV-01** (below) and meter it — if filtered water reads pH 6–7, route to
 recycle (IBC-3 Brown buffer, which P-02 later sprays back); if pH >7.5 or discolored, route to Black (IBC-4).
@@ -406,16 +407,15 @@ IBC-3 → P-02 → ACC-02 → BV-05 → spray bar   (recycle spray)
 ```
 
 P-04 lifts drain water from the processing tray sump (~900mm head) and, via 3W-DV-02,
-sends it into the 3-stage filter train. After filtering, the operator draws a sample at
-SV-01, checks pH, and sets 3W-DV-01 to route either to recycle (IBC-3 Brown buffer) or to
-Waste (IBC-4). **P-02** then recirculates the clean IBC-3 buffer to the spray bar (via
+sends it into the 3-stage filter train. The SV-01 sample tap after the filters feeds the
+pH check that sets 3W-DV-01: recycle (IBC-3 Brown buffer) or Waste (IBC-4). **P-02** then recirculates the clean IBC-3 buffer to the spray bar (via
 ACC-02 and BV-05) — the recycle-spray loop.
 
 ### 6.3 Black System — Waste Containment
 
 ```
 3W-DV-01 reject → IBC-4
-3W-DV-02 contaminated → IBC-4
+3W-DV-02 wash 1 (dichromate option) / contaminated → IBC-4
 IBC-4 → P-03 → external drain port X4 (gravity + pump assist)
 ```
 

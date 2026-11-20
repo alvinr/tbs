@@ -1235,7 +1235,7 @@ def _chem_parts() -> list[Part]:
         out.append(Part(f"dichromate-{t.key}", "Ammonium dichromate", "chemistry-reagents",
                         "chemistry", 1, "run", costing.DICHROMATE_RUN, costing.DICHROMATE_RUN,
                         "Artcraft Chemicals", url="https://artcraftchemicals.com/products/ammonium-bi-dichromate-part-1022",
-                        spec="Part B additive; contrast enhancer (Cat-1A carcinogen — handle with care). $33.66/0.5 lb (Artcraft Chemicals, firm 2026-07-26); trace use, ~$25/run allowance (one 0.5-lb pack per run).", tier=t.key))
+                        spec="OPTIONAL Part B additive — contrast enhancer, a creative choice per print (Cat-1A carcinogen; makes the wash water D007 hazardous waste, water-system-report §2.3). $33.66/0.5 lb (Artcraft Chemicals, firm 2026-07-26); trace use, ~$25/run allowance (one 0.5-lb pack per run).", tier=t.key))
     out.append(Part("muslin", 'Unbleached muslin, 60" wide', "substrate-fabric",
                     "chemistry", costing.MUSLIN_ROLLS, "roll", costing.MUSLIN_ROLL_PRICE, costing.MUSLIN_ROLL_PRICE,
                     "Fabric Direct", url="https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/",

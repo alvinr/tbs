@@ -45,18 +45,18 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 
 ### Chemistry quantities — Ware New Cyanotype formula
 
-The sensitizer is Ware's AmFe : potassium ferricyanide (Part A / Part B) with an ammonium-dichromate contrast additive:
+The sensitizer is Ware's AmFe : potassium ferricyanide (Part A / Part B). Ammonium dichromate is an optional contrast additive, a creative choice made per print:
 
 | Reagent | Role | Notes |
 |---|---|---|
 | Ferric ammonium oxalate (AmFe) | Part A | requires warm water (50–60°C) to dissolve |
 | Potassium ferricyanide | Part B | mixed with AmFe at Ware's 3:1 ratio |
-| Ammonium dichromate | Part B additive | contrast enhancer — carcinogen, handle with care (see below) |
+| Ammonium dichromate | Optional Part B additive | contrast enhancer — carcinogen (see below) |
 | Distilled / DI water | solvent | tap water + DI filter adequate; warm for Part A |
 
 The **per-print masses are under trial** — two wet-on-wet coats at a diluted Ware strength, concentration-tier dependent — so they are not yet pinned; see [Sensitizer Trials](sensitizer-trials.md). The **per-tier order quantities and cost** (Lean / Standard / Rich) are in the shopping list below.
 
-> **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities are small (0.1–0.4% of the working volume: 2.6–10.4 g per print, ~0.13–0.52 kg per 50-print run). It also puts chromium into the wash water, so the Brown and Waste totes go out as chromium-bearing waste ([Water System Report §4.3](water-system-report.md)). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
+> **⚠ Ammonium dichromate (optional)** is a known carcinogen (Category 1A) and oxidizer. Quantities are small: 0.1–0.4% of the working volume, <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g per print. Using it makes the wash water a hazardous waste, which changes how the collection totes are disposed of ([Water System Report §2.3](water-system-report.md)). Handling is in the [Operating Manual §0.3](operating-manual.md). No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
 
 ### Shopping list — Ware New Cyanotype (primary)
 

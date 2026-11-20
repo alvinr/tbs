@@ -61,11 +61,11 @@ wasting chemistry.
 - Coat, expose identically (step wedge), develop, and read **Dmax / tonal separation.**
 - **Output:** the production concentration tier → fixes per-print AmFe/ferricyanide.
 
-### T3 — Ammonium dichromate contrast level
-**Goal:** set the contrast agent for the scene/negative contrast without excess fog/stain.
+### T3 — Ammonium dichromate contrast level (dichromate option)
+**Goal:** map the contrast range the optional dichromate gives, so the creative choice per print is an informed one. The baseline is iron-only.
 - Vary dichromate **0.1% (baseline) / 0.2% / 0.4%** of the working volume on otherwise
   identical coats; expose and develop a step wedge.
-- **Output:** the production dichromate % (Ware: "increase for more contrast").
+- **Output:** the contrast step per dichromate level (Ware: "increase for more contrast"), for the operator's choice.
 
 ### T4 — Single vs double coat
 **Goal:** confirm two wet-on-wet coats are needed (vs one) for even density on muslin.
@@ -75,11 +75,23 @@ wasting chemistry.
 ### T5 — Exposure calibration at the locked recipe
 **Goal:** baseline exposure time in full sun once T1–T4 fix the recipe (feeds operating-manual §3.1).
 
+### T6 — Baseline wash water: one-time disposal check
+**Goal:** confirm the iron-only wash water is non-hazardous, as [Water System Report §2.3](water-system-report.md) classifies it.
+- After the first baseline prints, sample the collected water in IBC-3 and IBC-4.
+- Have a certified lab test it against California's fish-toxicity criterion (96-hour LC50, 22 CCR 66261.24(a)(6)) and for total and free cyanide.
+- **Output:** the classification on record for the liquid-waste hauler or wastewater plant. A failure moves the baseline to the hazardous route.
+
+### T7 — Dichromate option: Brown chromium measurement
+**Goal:** decide whether IBC-3 (Brown) is hazardous under the dichromate option, with wash 1 sent to IBC-4 by DV-02.
+- Run a series of dichromate prints at the highest level in use, then sample IBC-3.
+- Have a certified lab measure total chromium on the filtered water (federal D007 / California STLC, 5 mg/L).
+- **Output:** below 5 mg/L with margin, Brown takes the baseline route; otherwise both totes go to the hazardous-waste hauler. Re-test if the dichromate level or the wash sequence changes.
+
 ---
 
 ## Acceptance / sign-off
 
-A tier and dichromate level are "locked" when T2/T3 show acceptable Dmax + contrast on the
+A tier is "locked" (and the dichromate contrast range mapped) when T2/T3 show acceptable Dmax + contrast on the
 production muslin, and T1 fixes the coverage. On sign-off, cascade the numbers into
 operating-manual §0.2/§0.3/§2.1, the master shopping list, and the cost breakdown, and
 mark this page **CLOSED** with the chosen values recorded.

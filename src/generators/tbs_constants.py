@@ -1136,9 +1136,17 @@ CR_LIMIT_X_HI            = round(CR_WASTE_MG_L_HI / CR_TC_LIMIT_MG_L, 1)        
 CR_WASHOUT_BREAKEVEN_PCT = round(CR_TC_LIMIT_MG_L / CR_WASTE_MG_L_LO * 100)          # = 45 % washout reaches the limit
 FIRST_PRINT_RECOVERED_L  = round(WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL) - LOSS_PER_PRINT_L  # = 139 L (all-Blue first print)
 CR_FIRST_PRINT_MG_L      = round(CR_G_LO * 1000 / FIRST_PRINT_RECOVERED_L, 1)        # = 6.5 mg/L
+# With dichromate, DV-02 sends wash 1 straight to IBC-4; washes 2–3 go to Brown. The open-process
+# loss is shared evenly across the three washes.
+WASH1_TO_WASTE_L         = round(TRAY_FLOOD_GAL * L_PER_GAL - LOSS_PER_PRINT_L / WASHES_PER_PRINT)  # = 46 L/print
+WASTE_FILL_CR_L          = PRINTS_PER_RESUPPLY * WASH1_TO_WASTE_L                    # = 690 L IBC-4 over a run
+BROWN_FILL_CR_L          = RECOVERED_L - WASTE_FILL_CR_L                             # = 555 L IBC-3 over a run
 # RCRA generator category by prints processed in one calendar month (waste ≈ 1 kg/L; 40 CFR 262.13).
+# Both totes hazardous (Brown not yet measured) vs. IBC-4 alone (Brown measured below the limit).
 PRINTS_SQG_MONTH         = math.floor(100 / RECOVERED_PER_PRINT_L) + 1               # = 2  (>100 kg)
 PRINTS_LQG_MONTH         = math.ceil(1000 / RECOVERED_PER_PRINT_L)                   # = 13 (≥1,000 kg)
+PRINTS_SQG_MONTH_W1      = math.floor(100 / WASH1_TO_WASTE_L) + 1                    # = 3
+PRINTS_LQG_MONTH_W1      = math.ceil(1000 / WASH1_TO_WASTE_L)                        # = 22
 
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all

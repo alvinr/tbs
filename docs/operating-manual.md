@@ -20,12 +20,28 @@ Single-operator workflow for cyanotype on cotton muslin.
 
 Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~2–4. See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
+## Chemistry Choice — With or Without Ammonium Dichromate
+
+Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
+steepens the print's contrast. It is a creative choice, but it changes three procedures and the
+disposal of the wash water ([Water System Report §2](water-system-report.md)):
+
+| | Baseline (no dichromate) | Dichromate option |
+|---|---|---|
+| Part B (§0.3) | Potassium ferricyanide only | Ferricyanide + ammonium dichromate (§0.3.4–0.3.6) |
+| First wash drain, 3W-DV-02 (§4.2) | Brown (IBC-3), like every pass | **Waste (IBC-4)** for pass 1; Brown for passes 2–3 |
+| Leftover sensitizer and roller rinse (§5.1) | Into the tray, drained to Waste | Same, and always to Waste |
+| Disposal of IBC-3/IBC-4 (§5.1.1, TU.3) | Liquid-waste hauler or wastewater plant | IBC-4: licensed hazardous-waste hauler, manifested. IBC-3: the same until Brown is measured below 5 mg/L chromium |
+
+Once a tote has received dichromate wash water, it stays on the dichromate disposal route until it is
+pumped out. Switching back to the baseline does not clean it.
+
 ## Phase 0 — Pre-Departure
 **Time: ~2 hours. Complete the day before or morning of shoot day at your workshop/home.**
 **Lighting: normal white light throughout this phase.**
 
 ### 0.1 Water System
-The water system has three circuits (Blue/Brown/Black), pumps on the plumbing panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1,000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. A check valve (CV-1) on the X1 fill line prevents backflow on the gravity fresh-fill; the pump-driven X3/X4 drains rely on the Shurflo pumps' integral check valves (CV-2/CV-3/CV-4 dropped as redundant). External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+The water system has three circuits (Blue/Brown/Black), pumps on the plumbing panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1,000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. A check valve (CV-1) on the X1 fill line prevents backflow on the gravity fresh-fill; the pump-driven X3/X4 drains rely on the Shurflo pumps' integral check valves, and CV-2/CV-3 stop the two diverter waste legs back-feeding each other at the IBC-4 tee. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
 - [ ] 0.1.1 — Fill the Blue totes via external bulkhead port X1 (minimum 400 liters total for one print). X1 tees internally to fill both IBC-1 and IBC-2 in parallel. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
 - [ ] 0.1.2 — Open isolation valve V1 (fill line) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
@@ -60,25 +76,36 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 - [ ] 0.2.4 — Allow to cool to room temperature.
 - [ ] 0.2.5 — Label the jug **PART A — AmFe (WARE)**. Store in a sealed dark bottle.
 
-### 0.3 Chemistry — Part B (Potassium Ferricyanide + Ammonium Dichromate)
+### 0.3 Chemistry — Part B (Potassium Ferricyanide, + Ammonium Dichromate if chosen)
 **Lighting: WHITE LIGHT — Part B is not light-sensitive on its own.**
 
-Part B holds the ferricyanide (at ⅓ of the AmFe mass — Ware's 3:1 ratio) plus the ammonium
-dichromate contrast agent, in ~half the working volume. Dichromate is dosed as a **% of the total
-working volume**, so it is the same across strength tiers — Ware's baseline is **0.1%**, increase
-for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
+Part B holds the ferricyanide, at ⅓ of the AmFe mass (Ware's 3:1 ratio), in ~half the working
+volume. For the dichromate option it also carries the dichromate (see
+[Chemistry Choice](#chemistry-choice-with-or-without-ammonium-dichromate)).
 
-| Tier (per print) | Potassium ferricyanide | Ammonium dichromate (0.1–0.4%, trial) | Part B water |
-|---|---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->74<!-- END costing:om-ferri-g-lean --> g | 2.6–10.4 g | ~1.15 L |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard --> g** | **2.6–10.4 g** | **~1.15 L** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->222<!-- END costing:om-ferri-g-rich --> g | 2.6–10.4 g | ~1.15 L |
+| Tier (per print) | Potassium ferricyanide | Part B water |
+|---|---|---|
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->74<!-- END costing:om-ferri-g-lean --> g | ~1.15 L |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard --> g** | **~1.15 L** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->222<!-- END costing:om-ferri-g-rich --> g | ~1.15 L |
 
-- [ ] 0.3.1 — Weigh potassium ferricyanide and ammonium dichromate into a second jug.
-- [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns bright orange-red.
-- [ ] 0.3.3 — Label the jug **PART B — KFe + AmDichr**.
+**All prints:**
 
-> **⚠ Ammonium dichromate** is a Category 1A carcinogen. Wear nitrile gloves when handling dry powder. Do not inhale dust. The quantity used here (2.6–10.4 g per print) is within safe handling range for a ventilated workspace. It also puts chromium into all the wash water, which sets how the Brown and Waste totes are disposed of (§5.1).
+- [ ] 0.3.1 — Weigh the potassium ferricyanide into a second jug.
+- [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns yellow-orange.
+- [ ] 0.3.3 — Label the jug **PART B — KFe**.
+
+**Dichromate option only.** Dichromate is dosed as a **% of the total working volume**, so it is the
+same across strength tiers: Ware's baseline is **0.1%**, raised for more contrast (trial **T3**: 0.1% /
+0.2% / 0.4%). That is <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g per print.
+
+> **⚠ Ammonium dichromate** is a Category 1A carcinogen and an oxidizer. Wear nitrile gloves and weigh
+> it in a ventilated space. Do not inhale the dust. Once it is in the sensitizer, the wash water from
+> every print carries chromium (§4.2, §5.1).
+
+- [ ] 0.3.4 — Wearing nitrile gloves, weigh the ammonium dichromate.
+- [ ] 0.3.5 — Add it to the Part B jug and stir until dissolved — the solution turns bright orange-red.
+- [ ] 0.3.6 — Relabel the jug **PART B — KFe + AmDichr** so it is never mistaken for baseline Part B.
 
 > **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitizer), shelf life is 4–6 hours. Mix only what you need per session.
 
@@ -322,8 +349,8 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump — instead of the old fill-dwell-drain cycle (water consumed per print is the same; see [Water System Report §6](water-system-report.md)).
 
 - [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm VB1, VB2, VB3 are open. *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05a to Blue, P-01 instead of P-02.)*
-- [ ] 4.2.3 — **Recycled first wash:** set BV-05a to Brown (recycled), 3W-DV-02 to Brown, and open BV-05b. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (normal, non-toxic). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(If the drain water is heavily contaminated, set 3W-DV-02 to IBC-4/Waste instead — see the diverter decisions below.)*
-- [ ] 4.2.4 — **Clean wash:** set BV-05a to Blue (fresh) and bring up **P-01**; P-02 idles. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
+- [ ] 4.2.3 — **Recycled first wash:** set BV-05a to Brown (recycled) and open BV-05b. Set 3W-DV-02 by the [chemistry choice](#chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
+- [ ] 4.2.4 — **Clean wash:** set BV-05a to Blue (fresh) and bring up **P-01**; P-02 idles. Dichromate option: return 3W-DV-02 to **Brown** now. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
 - [ ] 4.2.5 — **Final rinse:** keep BV-05a on Blue (P-01) for a final ~5-minute clean-Blue flush, P-04 still draining.
 - [ ] 4.2.6 — **Stop:** close BV-05b (spray off), let P-04 run ~30 seconds to clear the sump, then switch OFF the master pump switch. Total wash ~15 minutes (**3 passes**).
 
@@ -339,7 +366,7 @@ Flow-through, so there are no separate drain phases — **P-04 drains throughout
 | BV-05a (spray selector) | Blue | **Brown** | Blue | Blue | — |
 | BV-05b (spray on/off) | Closed | **Open** | **Open** | **Open** | **Closed** |
 | BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed |
-| 3W-DV-02 (tray drain) | Brown | Brown | Brown | Brown | Brown |
+| 3W-DV-02 (tray drain) | Brown | **Brown** (baseline) / **Waste** (dichromate) | Brown | Brown | Brown |
 | P-01 (Blue supply) | Off | Off | **On** | **On** | Off |
 | P-02 (Brown pump) | Off | **On** | Off | Off | Off |
 | P-04 (tray drain, C2) | Off | **On** | **On** | **On** | Off (after sump clear) |
@@ -355,21 +382,28 @@ The two 3-way diverter valves serve different roles in the water triage chain. U
 
 DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:
 
-- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate, potassium ferricyanide and the dichromate contrast agent) from the print surface. This water is suitable for filtering and reuse as the next print's first wash.
-- **Switch to Black:** Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.
+- **Dichromate option — pass 1 to Waste:** the first wash carries most of the chromium. Send it straight to IBC-4 so it never reaches the filters or the Brown buffer. Return DV-02 to Brown for passes 2 and 3.
+- **Set to Brown (default):** Normal processing rinse water: baseline washes, and passes 2–3 under the dichromate option. This water is filtered and reused as the next print's first wash.
+- **Switch to Waste:** Heavy contamination events — concentrated chemistry spills, a failed coat that washes off in bulk, or drain water visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 and never enters the filter/recycle path.
 
-**Rule of thumb:** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.
+**Rule of thumb (baseline):** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Waste.
 
 **3W-DV-01 — Filter output diverter (pH meter reading)**
 
 DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After brown water has been filtered, the operator draws a ~50 ml sample at SV-01 and checks the pH reading:
 
 - **Set to Brown buffer (default):** pH is 6–7 and the water looks clean, so it returns to IBC-3 (Brown buffer) for reuse as a first wash. The Blue supply only ever holds fresh water.
-- **Switch to Black:** pH is above 7.5, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the recycle buffer.
+- **Switch to Waste:** pH is above 7.5, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the recycle buffer.
+
+**Correcting the Brown buffer pH:** if SV-01 reads above pH 7.5 with DV-01 still on Brown:
+
+- [ ] 4.2.7 — Dissolve citric acid in a separate container (10 g per liter of water). Never add dry acid to the tote — in iron-rich water it can react exothermically and bubble.
+- [ ] 4.2.8 — Add the solution at the IBC-3 outlet dosing port, stir, and retest at SV-01.
+- [ ] 4.2.9 — Never return water above pH 8 to IBC-3; send it to Waste through DV-01.
 
 | Valve | Decision | Basis | Who decides |
 |-------|----------|-------|-------------|
-| 3W-DV-02 (tray drain) | Brown vs Black | Contamination severity at drain time | Operator — visual judgment |
+| 3W-DV-02 (tray drain) | Brown vs Waste | Chemistry choice (pass 1), then contamination at drain time | Operator — chemistry choice + visual judgment |
 | 3W-DV-01 (filter output) | Brown buffer vs Black | Water quality after filtering | Operator — pH meter reading |
 
 ### 4.3 Drying
@@ -392,7 +426,7 @@ required for a normal 1–2 print outing.
 
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
 - [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1 and disconnect.
-- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book a **licensed hazardous-waste hauler** first (§5.1.1). Wearing nitrile gloves, connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done, and file the manifest.
+- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book the hauler for the chemistry in use first (§5.1.1): a liquid-waste hauler for the baseline, a **licensed hazardous-waste hauler** for IBC-4 under the dichromate option (and IBC-3 until it is measured). Wearing nitrile gloves, connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done, and file the hauler's paperwork (the manifest, for hazardous loads).
 - [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
 > **Before transport:** return the totes to their validated fill states — Blue drained, Waste within
@@ -404,9 +438,11 @@ required for a normal 1–2 print outing.
 **Lighting: WHITE LIGHT.**
 
 ### 5.1 Chemistry Disposal
-- [ ] 5.1.1 — Spent wash water (yellow-green): it carries chromium from the ammonium dichromate contrast agent, so neither Brown nor Waste is plain non-hazardous rinse water. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Both totes are always pumped out through X3/X4 to a **licensed hazardous-waste hauler** ([Water System Report §4.3](water-system-report.md)). Keep the hauler's manifest. Never discharge either tote to a storm drain, soil or waterway. Keep the caps and valves closed between pump-outs.
-- [ ] 5.1.2 — Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
-- [ ] 5.1.3 — Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
+- [ ] 5.1.1 — **Spent wash water** is collected in IBC-3 (Brown) and IBC-4 (Waste) and leaves only through the X3/X4 end-wall ports (TU.3). Never discharge either tote to a storm drain, soil or waterway. Keep the caps and valves closed between pump-outs. Book disposal by chemistry ([Water System Report §2.3](water-system-report.md)):
+  - **Baseline:** a liquid-waste hauler or a wastewater plant that accepts it. Before the first disposal, the collected water needs its one-time check ([Sensitizer Trials T6](sensitizer-trials.md)).
+  - **Dichromate option:** IBC-4 always goes to a **licensed hazardous-waste hauler**, on a hazardous-waste manifest. IBC-3 goes the same way until Brown has been measured below 5 mg/L chromium ([Sensitizer Trials T7](sensitizer-trials.md)). Keep each manifest with the disposal record, and count the hazardous kilograms each month — they set the generator category.
+- [ ] 5.1.2 — **Unused stock solutions:** seal and store Part A and Part B in dark bottles (6–8 week shelf life). **Mixed working sensitizer** (4–6 hour life): pour what is left into the tray and drain it to **Waste** (3W-DV-02 to Waste, run P-04). Never pour it down a sink or onto the ground.
+- [ ] 5.1.3 — **Rinse the roller trays, rollers and brushes** in the processing tray right away (dried sensitizer is harder to remove), with 3W-DV-02 on **Waste**. Wear nitrile gloves; with the dichromate option this rinse carries chromium.
 - [ ] 5.1.4 — Stow the spray bar at either end of its travel. Detach the telescoping pole and store alongside the bar or clip to the container wall. The flexible hose coils naturally at the pinhole wall.
 
 ### 5.2 Container Ventilation
@@ -452,6 +488,21 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 
 Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the two pull-out apron strips (seat in the chamfer, butt the lip, throw the draw latches to lock) → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → dark-adaptation check.
 
+## Maintenance
+
+Recurring upkeep between deployments. The design reason for each item is in the subsystem report cited.
+
+### Water storage ([Water System Report §9](water-system-report.md))
+
+| Task | Frequency | Procedure |
+|------|-----------|-----------|
+| Flush Brown IBC-3 | Every 5 prints | Rinse with clean water and inspect for sediment. The rinse goes out with the Brown pump-out (X3), on the route for the chemistry in use. |
+| Drain and rinse the Blue IBCs | Annually, or before long storage | Prevents biofilm. |
+| Inspect the IBC-4 valve and cap | Before every transport | Check for leaks. |
+
+Wear nitrile gloves and eye protection when handling the wash tray, liner or filter cartridges: the
+fine Prussian blue particles irritate skin and eyes.
+
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*
 
@@ -474,6 +525,7 @@ Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-tran
 | Soft or blurred image | Muslin slack at coating or during exposure | Re-tension: re-seat the nylon clamps and check the bottom-edge securing; check frame is not vibrating in wind |
 | Blue haze (fogging) in shadows | Light leak or sensitizer exposed to UV before loading | Re-inspect light trap; check sensitizer storage |
 | Uneven color — cool/warm zones | Humidity variation across coating | Ensure even pre-misting if in dry climate |
+| Correct exposure but contrast too low | Iron-only sensitizer on a flat scene | Consider the [dichromate option](#chemistry-choice-with-or-without-ammonium-dichromate); it changes the wash and disposal steps |
 
 
 ## See Also

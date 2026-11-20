@@ -74,9 +74,7 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 
 **Source document:** `container-report.md`
 
-Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, and door upgrades.
-
-The itemized interior parts, with suppliers and prices, are in the [Master Shopping List](master-shopping-list.md?system=interior). The section roll-up:
+Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, and door upgrades. The itemized interior parts, with suppliers and prices, are in the [Master Shopping List](master-shopping-list.md?system=interior). The section roll-up:
 
 ### Section total
 

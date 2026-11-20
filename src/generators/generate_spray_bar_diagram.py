@@ -137,7 +137,7 @@ PANEL_W = (PROC_TRAY_W + SEAM_LAP) / 2.0        # each panel incl. lap = 2194.5m
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — Gantry Elevation
 # X-Z section viewed from film plane (along Yd).
-# Centered on beam centerline.  Shows walkway slit, pole, beam, BV-05.
+# Centered on beam centerline.  Shows walkway slit, pole, beam, BV-06.
 # Horizontal scale 1:18, Vertical scale 1:4.5 (4× vert exaggeration)
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -313,7 +313,7 @@ def draw_sheet1():
            "TELESCOPING POLE\n(THROUGH WALKWAY SLIT)",
            fs=4.5, color="#8B6914", font=FONT, zorder=15)
 
-    # ── BV-05 on pinhole wall ────────────────────────────────────────────
+    # ── BV-06 on pinhole wall ────────────────────────────────────────────
     bv_z_real = BV05_Z
     bv_z = BV05_Z - PIPE_SKIP
     bv_size = 30
@@ -335,7 +335,7 @@ def draw_sheet1():
                  pipe_w, bv_z,
                  fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.4, zorder=11))
 
-    # BV-05 ball-valve symbol (bowtie inside white circle).
+    # BV-06 ball-valve symbol (bowtie inside white circle).
     # Axis aspect is 4.0 (1 X data-unit renders 4x wider than 1 Z data-unit), so
     # to make the symbol appear round/symmetric ON SCREEN every X extent is divided
     # by AR. The P&ID bowtie is drawn spread HORIZONTALLY on screen (the two
@@ -366,10 +366,10 @@ def draw_sheet1():
 
     leader(ax, BV05_X - 30, bv_z + 35,
            BV05_X - 375, bv_z + 80,
-           f"BV-05 @ Z={int(bv_z_real)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
+           f"BV-06 @ Z={int(bv_z_real)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
            fs=5.5, color=C_BLUE, font=FONT, zorder=15)
 
-    # ── Flex hose from BV-05 to beam center feed ─────────────────────────
+    # ── Flex hose from BV-06 to beam center feed ─────────────────────────
     hose_start_x = BV05_X
     hose_start_z = bv_z - bv_size / 2
     hose_end_x = pole_x
@@ -422,7 +422,7 @@ def draw_sheet1():
                offset=8, fs=4.5, font=FONT, right=True)
 
     draw_dim_v(ax, BV05_X - 60, 0, bv_z,
-               f"{int(bv_z_real)}mm BV-05",
+               f"{int(bv_z_real)}mm BV-06",
                offset=8, fs=4.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────
@@ -430,7 +430,7 @@ def draw_sheet1():
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
         f"1. {BEAM_SECT_LABEL} beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly SIDE-mounted.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
-        "3. BV-05 on pinhole wall at pinhole centerline, waist height → flex hose",
+        "3. BV-06 on pinhole wall at pinhole centerline, waist height → flex hose",
         "   → single center feed into the side poly manifold.",
         f"4. {N_NOZZLES}× 90° down-jets side-tapped into the poly, spray down-and-in.",
     ]
@@ -1896,7 +1896,7 @@ def draw_sheet7():
            fs=5, color=C_BRASS, font=FONT, zorder=20)
     leader(ax_cf, HOSE_OD / 2, hose_top - 3,
            d_xr - 5, hose_top,
-           "FLEX SUPPLY HOSE\n(FROM BV-05)",
+           "FLEX SUPPLY HOSE\n(FROM BV-06)",
            fs=5, color=C_HOSE, font=FONT, zorder=20)
     ax_cf.text(d_xl + 15, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",

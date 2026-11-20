@@ -12,7 +12,7 @@ Carries the transfer pumps + the Blue-supply accumulator:
   Pump column (bottom→top): ACC-01 + P-01 (Blue supply) + P-02 (Brown recycle) +
   P-05 (Brown drain) + P-03 (Waste evac).
   Ball valves: BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),
-  BV-06 (P-03 suction).  P-02 discharges to ACC-02 on the pinhole-wall skid.
+  BV-07 (P-03 suction).  P-02 discharges to ACC-02 on the pinhole-wall skid.
 
 PINHOLE WALL PLUMBING PANEL (pinhole-panel.png) — the filter train + the
 tray-drain skid, mounted on the pinhole wall:
@@ -354,7 +354,7 @@ def draw_corridor_panel():
     # ── #29 pump-run SIDE SUPPORT BOARDS — edge-on at the near/far corridor walls (this
     #    front-elevation plane cuts through them); each is an 18mm ply board recessed flush on
     #    welded steel L-brackets, the risers P-clipped to it. NEAR wall = local Yd 0 (lower board
-    #    Z480-900 + upper board Z1260-1950, backing BV-02/BV-06); FAR wall = local Yd PANEL_W (Z400-820).
+    #    Z480-900 + upper board Z1260-1950, backing BV-02/BV-07); FAR wall = local Yd PANEL_W (Z400-820).
     SB_T = 18
     for xb, z0b, z1b in ((0, cwp.SB_NEAR_Z[0], cwp.SB_NEAR_Z[1]), (0, cwp.SB_NEAR_UP_Z[0], cwp.SB_NEAR_UP_Z[1]), (PANEL_W - SB_T, cwp.SB_FAR_Z[0], cwp.SB_FAR_Z[1])):
         rect(xb, z0b - PANEL_Z_AFF, SB_T, z1b - z0b, C_PLY, C_PLY_EC, lw=1.0, zorder=6, alpha=0.9)   # 3D AFF → panel Z
@@ -451,7 +451,7 @@ def draw_corridor_panel():
                "TO ACC-02 (skid)\n−X, down the far board,\nunder-walkway ribbon", None),
               ("P-05", C_BROWN, "FROM IBC-3 (BROWN)\n−X, down past BV-02,\nshirt riser to the tap", None,
                "TO X3 PORT\n+X behind the panel", None),
-              ("P-03", C_BLACK_SYS, "FROM IBC-4 (WASTE)\n−X, down past BV-06,\nspine pickup riser", None,
+              ("P-03", C_BLACK_SYS, "FROM IBC-4 (WASTE)\n−X, down past BV-07,\nspine pickup riser", None,
                "TO X4 PORT\n+X behind the panel", None)]
     for key, fc, lin, lzi, lout, lzo in stacks:
         zb = cwp.PSTACK[key]
@@ -465,7 +465,7 @@ def draw_corridor_panel():
              "TO SPRAY BAR / TAP-01\n−X, under-walkway ribbon", "left", ACC_Z - 60)
 
     # ── Isolation ball valves on the near-board suction risers (3D centers, Yd1080 lane) ──
-    for bv, fc in (("BV-01", C_BLUE), ("BV-03", C_BROWN), ("BV-02", C_BROWN), ("BV-06", C_BLACK_EC)):
+    for bv, fc in (("BV-01", C_BLUE), ("BV-03", C_BROWN), ("BV-02", C_BROWN), ("BV-07", C_BLACK_EC)):
         y, z = py(W["checks"][bv])
         draw_pipe_path(ax, [y, y], [z - BV_R - 8, z + BV_R + 8], PIPE_OD, PIPE_WALL, fc=fc, zorder=Z_DISCH)
         valve_ball(ax, sx(y), sz(z), BV_R, fc, vert=True)
@@ -542,7 +542,7 @@ def draw_corridor_panel():
         " Runs are drawn to their first leg along X: ⊙ = toward the walkway (−X), ⊗ = behind the panel (+X)."
         " The suction risers share the near lane at different X depths, so full routes are on Spine Views A/B.",
         "7. BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),"
-        " BV-06 (P-03 suction) — manual ball valves.",
+        " BV-07 (P-03 suction) — manual ball valves.",
         "8. P-02 pulls IBC-3 (Brown buffer) and discharges to ACC-02 (recycle-spray damper"
         " on the pinhole-wall skid) → BV-05 → spray bar.",
         "9. The tray-drain skid (P-04 · SV-02 · DV-02) is on the PINHOLE WALL panel, not here.",
@@ -1350,9 +1350,9 @@ def spine_view(side):
         run3d("Brown tap -> P-05 inlet", C_BROWNB, zorder=12)
         leader(axb, tx3 - 30, tz3, 4740, 470, "IBC-3 (Brown) shared bottom tap\n→ P-02 (−X) · P-05 (+X, shirt riser)",
                color=C_BROWNB, fs=4.2, ha=_ha("right"), va="center", arrow_style="-|>", font=FB)
-        # X4 waste pickup: IBC-4 bottom → up the spine → −X wrap → up past BV-06 → P-03 IN
+        # X4 waste pickup: IBC-4 bottom → up the spine → −X wrap → up past BV-07 → P-03 IN
         run3d("X4 Waste (P-03) pickup", C_WASTEB, zorder=14)
-        note(cwp.SPINE_X_END - 380, 300, "from IBC-4 (bottom pickup)\n→ up the spine → BV-06 → P-03", C_WASTEB)
+        note(cwp.SPINE_X_END - 380, 300, "from IBC-4 (bottom pickup)\n→ up the spine → BV-07 → P-03", C_WASTEB)
         # P-05 → X3 tail: through the spine (end-on, toward you) → +X on the −Yd clip lane to X3
         x3z = W["runs"]["P-05 -> X3 end-wall port"][-1][2]
         run3d("P-05 -> X3 end-wall port", C_BROWNB, zorder=12, xmin=cwp.X3_CROSS_X)
@@ -1362,7 +1362,7 @@ def spine_view(side):
         run3d("Blue supply trunk -> spray bar / TAP-01 (off-panel)", C_BLUEB, zorder=16, xmin=GAPX + 1)
         _flowhead(GAPX + 1, 200, "left", C_BLUEB)
         note(GAPX - 10, 250, "Blue supply → spray bar / TAP-01", C_BLUEB, ha="right")
-        for bv, col in (("BV-01", C_BLUEB), ("BV-03", C_BROWNB), ("BV-02", C_BROWNB), ("BV-06", C_WASTEB)):
+        for bv, col in (("BV-01", C_BLUEB), ("BV-03", C_BROWNB), ("BV-02", C_BROWNB), ("BV-07", C_WASTEB)):
             c = W["checks"][bv]
             valve_ball(axb, c[0], c[2], 16, col, vert=True, zorder=18)
             if bv == "BV-01":               # BV-01 sits between the P-02 riser and the pump — label out on a leader

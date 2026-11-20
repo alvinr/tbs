@@ -205,7 +205,7 @@ manifold and spray straight down, at 100mm pitch along the beam.
 | Arm adapter | Turned 6061-T6 AL: M12 female bore (onto the stud + M12 jam nut) → Ø21 male spigot | 1 | Reduces the M12 stud to the Ø21 tube bore |
 | Clamp collar | 25mm/1" bore clamp-style shaft collar (SS), integral clamp screw | 1 | Pinches the slit arm-tube bottom onto the adapter spigot |
 | Push pole | Telescoping aluminum pool pole, 1.2–2.4 m | 1 | Operator controls bar position from walkway |
-| Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-05 to the manifold center inlet |
+| Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-06 to the manifold center inlet |
 | Zip ties | Nylon, 200mm | ~6 | Secure flex hose to arm tube |
 
 ### 3.3 Beam / Spray Pipe
@@ -491,17 +491,17 @@ A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tight
 
 ### 3.10 Water Connection
 
-BV-05 (1/2" ball valve, spray-bar feed isolation) is mounted on the pinhole wall (Yd=0) at
-X=<!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
-1/2" PVC riser runs from the Blue supply trunk up to BV-05. A 4 m length of 1/2"
-reinforced braided PVC hose connects from BV-05 down to the manifold center inlet at the
+BV-06 (1/2" ball valve, spray-bar on/off) is mounted on the pinhole wall (Yd=0) at
+X=<!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck, just above the
+Blue/Brown selector BV-05. A 1/2" PVC riser runs up from BV-05 to BV-06. A 4 m length of 1/2"
+reinforced braided PVC hose connects from BV-06 down to the manifold center inlet at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
 the print surface.
 
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05a (Blue/Brown selector) → BV-05b (spray on/off) →
+**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05 (Blue/Brown selector) → BV-06 (spray on/off) →
 coiled flexible hose → manifold center inlet (single feed) → over-bored 3/4" manifold bore → 43× spray nozzles.
 
 ### 3.11 Walkway Slit
@@ -555,7 +555,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 
 | Sheet | Title | Content |
 |-------|-------|---------|
-| 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-05, pole, walkway slit, operator silhouette |
+| 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-06, pole, walkway slit, operator silhouette |
 | 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, beam clamp plates, saddle clamps, ball joint, arm, hose |
 | 3 | Plan View | Container floor plan — walkways, slit positions, beam travel range |
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |

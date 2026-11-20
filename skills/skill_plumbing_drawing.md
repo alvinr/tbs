@@ -32,7 +32,7 @@ originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
    `tbs_constants` fluid palette, never a local hex: **Blue `C_PIPE_FRESH`** = fresh water, **Brown
    `C_PIPE_RECYCLE`** = used / filtered-recycled water (the tray drain and the whole filter train are
    Brown), **near-black `C_PIPE_WASTE`** = waste (everything bound for IBC-4 or out X4). A line that
-   carries either Blue or Brown — everything downstream of the BV-05a selector (BV-05a→BV-05b, the
+   carries either Blue or Brown — everything downstream of the BV-05 selector (BV-05→BV-06, the
    spray-bar hose and feed) — is **striped**: 3D `ruby_mixed_pipe_run` / `ruby_coil_cord(color2=…)`,
    2D a blue line with a brown dash overlay. Fittings, port stubs and end-wall ports are neutral
    (`C_PIPE_FITTING` grey / `C_STEEL`), flex jumpers are `C_FLEX` yellow, valves keep their valve color —

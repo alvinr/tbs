@@ -1495,7 +1495,7 @@ def draw_sheet4():
 
     # ── Drain-pump switches in the P-05 / P-03 branches (physically on the near-upper side board) ──
     s05z = (pl.P05_Z + ph + pl.P03_Z) / 2                 # in the gap between the P-05 and P-03 bodies
-    for nm, sw, sz, lz, side in (("P-05", "S-05", s05z, s05z - 60, "BV-02"), ("P-03", "S-03", 1848, 1790, "BV-06")):
+    for nm, sw, sz, lz, side in (("P-05", "S-05", s05z, s05z - 60, "BV-02"), ("P-03", "S-03", 1848, 1790, "BV-07")):
         ln = lanes[nm]
         ax.add_patch(R((ln - 8, sz - 9), 16, 18, fc="#2C2C2C", ec=C_OUT, lw=0.9, zorder=9))
         ax.add_patch(R((ln - 4, sz - 5), 8, 10, fc="#C0392B", ec="none", zorder=10))
@@ -1511,7 +1511,7 @@ def draw_sheet4():
         "12V DIST. BLOCK",
         "The switched Circuit-C feed lands here. The MASTER pump switch (one manual cutoff for the whole "
         "circuit) is on the EP — see Sheet 5. P-01 / P-02 run on their internal pressure switches; the spray "
-        "selector BV-05a picks which one delivers. The drain pumps P-05 / P-03 are switched locally "
+        "selector BV-05 picks which one delivers. The drain pumps P-05 / P-03 are switched locally "
         "(S-05 / S-03), ON only for a pump-out.",
         "",
         "14 AWG marine-duplex branches — curved elbow fittings (pipe convention), one per pump.",

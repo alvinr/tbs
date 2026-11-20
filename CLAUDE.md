@@ -103,7 +103,7 @@ C_GASKT = "#5A3020"   # gasket/neoprene fill
 ```
 
 **Water pipe colors — one convention, 2D and 3D:** Blue = fresh, Brown = used/recycled, near-black =
-waste, blue/brown **stripe** = a Blue-or-Brown line (downstream of the BV-05a selector). Import the
+waste, blue/brown **stripe** = a Blue-or-Brown line (downstream of the BV-05 selector). Import the
 `C_PIPE_*` fluid palette from `tbs_constants.py`; fittings/ports are neutral grey, flex jumpers yellow, so
 black reads as waste only. See `skills/skill_plumbing_drawing.md` rule 8; enforced by `lint.py`.
 

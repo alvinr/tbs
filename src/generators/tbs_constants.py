@@ -1475,7 +1475,7 @@ SPRAY_BAR_Z_TOP      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE  # = 54mm
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
 SPRAY_BAR_NOZZLE_PITCH = 100       # nozzle center-to-center pitch along the beam (mm) — 90° down-jets: a 90° cone at the ~50mm nozzle height gives a ~100mm footprint, so 100mm pitch = edge-to-edge along-beam coverage (was 150 for 180° flat-fans)
 SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 43 @ 100mm (full 4,289mm beam width)
-SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-05b to bar (mm) — reserved (spec; shopping-list ref)
+SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-06 to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner
 SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 
@@ -1577,7 +1577,7 @@ C_PROC_ZONE    = "#E8F5E9"   # processing tray zone
 
 # ── Water pipe FLUID palette — one convention for every 2D diagram AND 3D model ──
 # A pipe's color says what it carries: Blue = fresh, Brown = recycled/used, near-black = waste.
-# A line that carries either Blue or Brown (downstream of the BV-05a selector) is STRIPED in both.
+# A line that carries either Blue or Brown (downstream of the BV-05 selector) is STRIPED in both.
 # Fittings, port stubs, valves and flex jumpers are NOT fluid colors (neutral / their own), so black
 # reads as waste only.  Enforced by lint.py (pipe runs in the water generators use only these).
 C_PIPE_FRESH   = "#2979B8"   # Blue circuit — fresh water

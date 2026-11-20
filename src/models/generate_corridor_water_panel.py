@@ -442,7 +442,7 @@ CV_L, CV_R = 48, RP + 7                       # check_valve(): barrel length, ra
 CLIP_SHIM = EQT
 SPINE_FACE_NEAR = 1206                   # drain-riser spine −Yd face
 SPINE_RISER_YD  = SPINE_FACE_NEAR - CLIP_SHIM - RP   # 1177.5 — the three waste risers + the IBC-4 merge
-X4_WRAP_Z       = 1700   # X4 pickup turns off the spine riser here, −X through panel + shirt in the pump gap (z1520–1740), below BV-06
+X4_WRAP_Z       = 1700   # X4 pickup turns off the spine riser here, −X through panel + shirt in the pump gap (z1520–1740), below BV-07
 BVY_REAR = YD_NEAR + S + CLIP_SHIM + RP  # 1125.3 — Blue #1 return/behind-panel lane, clipped to the rear-near frame upright
 CDK    = "#3A3A42"                       # dark fittings / motor cans
 DVB    = 46                              # diverter body cube
@@ -456,7 +456,7 @@ PORT_REACH = PUMP_YD_SPAN / 2            # 63.5 — center → port tip (Shurflo
                                          #   1/2in-14 NPSM male ports) → a 13.5mm port stub off the Ø100 body
 PORT_ADAPTER_L = 16.5                    # 1/2in FNPT×slip adapter threaded onto each port; the turn elbow seats on it
 PXC     = FACE_X - 120                    # 4984 — pump body center X (upright, in front of the panel)
-BV_FWD_X = 4770                           # BV-02/BV-06 forward-loop riser X — pulled toward the walkway edge (near the front post inner face 4704.8) for operator reach (#29)
+BV_FWD_X = 4770                           # BV-02/BV-07 forward-loop riser X — pulled toward the walkway edge (near the front post inner face 4704.8) for operator reach (#29)
 Z_ACC0  = 1780                            # ACC-01 BOTTOM — raised clear of the pipe runs below it
 MERGE4  = (ov.IBC_COL_X + 730, SPINE_RISER_YD, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5404,1177.5,1230)
 MERGE_CV_DZ = 150      # CV-2 / CV-3 sit on each inbound waste riser this far below the merge tee —
@@ -746,7 +746,7 @@ SHIRT_CLEAT_N = 2 * len(SHIRT_CLEAT_Z)  # 2 Yd edges × 3 stations = 6 blocks, c
 SB_X0, SB_X1 = FRONT_X + S, BACK_X           # board X span (front post inner +X face → back post inner −X face)
 SB_FAR_Z  = (400, 1020)                       # far board Z extent (620mm — raised 200mm to back more of the rising pipes; tabs auto-relocate to z0+35 / z1-35)
 SB_NEAR_Z = (480, 1020)                       # near board Z extent (540mm — raised 120mm to back more of the rising pipes; tabs auto-relocate to z0+35 / z1-35)
-SB_NEAR_UP_Z = (1260, 1950)                   # UPPER near board — backs BV-02 (P-05) + BV-06 (P-03) valves + risers; extended DOWN to the Z1300 P-05-inlet brown horizontal and UP to the Z1902 P-03 grey horizontal
+SB_NEAR_UP_Z = (1260, 1950)                   # UPPER near board — backs BV-02 (P-05) + BV-07 (P-03) valves + risers; extended DOWN to the Z1300 P-05-inlet brown horizontal and UP to the Z1902 P-03 grey horizontal
 
 # ── 5mm ply-board CUT sizes (single source for every consumer: this model, the cut sheet, panel_layout).
 #    The board shrinks DOWN into its opening (frame/openings unchanged); positions stay on the opening edge.
@@ -767,11 +767,11 @@ SB_RISER_YD_FAR  = PORT_TURN_YD_OUT    # far risers, 5.5mm off the far board
 SB_RISER_YD_NEAR = PORT_TURN_YD_IN     # near risers, 5.5mm off the near board
 SB_FLUSH_OK = True                     # side-board clips: 5.5mm block (pump-column limit), not 18mm
 SPINE_FAR_FLUSH_OK = True              # spine +Yd face only: COL_R is fixed by the pump-port turn, so its clips get 6.5mm shims, not 18mm
-BV02_YD = PORT_TURN_YD_IN              # BV-02/BV-06 suction risers — also the 3D callout anchor
+BV02_YD = PORT_TURN_YD_IN              # BV-02/BV-07 suction risers — also the 3D callout anchor
 # Drain-pump switches S-05 (P-05) / S-03 (P-03) — sealed rockers on the near-upper board, each beside its
-# suction valve (they operate together): +X of the BV riser, level with BV-02 / BV-06, clear of the 45° handles.
+# suction valve (they operate together): +X of the BV riser, level with BV-02 / BV-07, clear of the 45° handles.
 DSW_X, DSW_W, DSW_D, DSW_H = 4810, 50, 45, 75          # box −X edge · width (X) · depth off the board (Yd) · height (Z)
-DSW_Z0 = {"P-05": 1380, "P-03": 1765}                  # box bottom Z — level with BV-02 (Z1417) / BV-06 (Z1792); S-03's load lands level with the P-03 tap
+DSW_Z0 = {"P-05": 1380, "P-03": 1765}                  # box bottom Z — level with BV-02 (Z1417) / BV-07 (Z1792); S-03's load lands level with the P-03 tap
 DSW_LINE_DZ, DSW_LOAD_DZ = {"P-05": 65, "P-03": 10}, {"P-05": 10, "P-03": 65}   # cable entry heights in each box
 DSW_PANEL_Z = {"P-05": 1445, "P-03": 1615}             # where each line crosses the shirt + rear panel (S-03's runs under the X4 wrap at Z1700)
 DSW_CABLE_YD = 1085                                   # switch-cable lane, in front of the board
@@ -869,7 +869,7 @@ def support_boards(sides=("far", "near", "near-upper")):
     for side, wall_yd, ddir, (z0, z1), ryd, risers_x, clamp_z in (
             ("far",  YD_FAR,  -1, SB_FAR_Z,  SB_RISER_YD_FAR,  SB_FAR_RISERS_X,  SB_FAR_CLAMP_Z),
             ("near", YD_NEAR, +1, SB_NEAR_Z, SB_RISER_YD_NEAR, SB_NEAR_RISERS_X, SB_NEAR_CLAMP_Z),
-            # UPPER near board — two X4898 segments: BV-02 (P-05) Z1321-1481 + BV-06 (P-03) Z1721-1881.
+            # UPPER near board — two X4898 segments: BV-02 (P-05) Z1321-1481 + BV-07 (P-03) Z1721-1881.
             # 2 clip rows land on EACH segment (the 240mm gap between them carries no pipe).
             ("near-upper", YD_NEAR, +1, SB_NEAR_UP_Z, SB_RISER_YD_NEAR, (BV_FWD_X,), (1370, 1440, 1770, 1840))):
         if side not in sides:
@@ -1217,7 +1217,7 @@ def drains_ports(sump_on_skid=False):
          #   BV-02 → +X stub into the IN port
          draw.C_IBC_BROWN)
     port_jumper(p, "P-05 suction jumper", [p5i, (PXC, BV02_YD, z05), (rx, BV02_YD, z05), (rx, BV02_YD, zloop)])
-    p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-06
+    p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03/BV-07
     if abs(p5o[2] - EXT_DRAIN_3_H) > 0.5:
         raise ValueError(f"X3 port Z{EXT_DRAIN_3_H} must equal the P-05 discharge Z{p5o[2]} (the X3 run is straight)")
     p.append(draw.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, SPINE_RISER_YD, EXT_DRAIN_3_H, 22, 60, color=draw.C_STEEL, axis="x"))
@@ -1232,15 +1232,15 @@ def drains_ports(sump_on_skid=False):
     pipe("P-05 -> X3 end-wall port", _p05, draw.C_IBC_BROWN)   # OUT turns one elbow out of the port
     port_jumper(p, "P-05 discharge jumper", _p05)
 
-    # ── IBC-4 WASTE: bottom pickup → grey SPINE riser → WRAP back through the panels → BV-06 → P-03 ──
-    # BV-06 valve geometry copies BV-02 (riser at rx6/BV02_YD, valve 110 below the port, −X + +Yd stub
+    # ── IBC-4 WASTE: bottom pickup → grey SPINE riser → WRAP back through the panels → BV-07 → P-03 ──
+    # BV-07 valve geometry copies BV-02 (riser at rx6/BV02_YD, valve 110 below the port, −X + +Yd stub
     # into the IN port).  Its X4 feed can't cross the chase frame upright on the IN-port lane, so it WRAPS:
-    # down off BV-06, −X toward the walkway THROUGH the pump gap (P-05 top z1520 ↔ P-03 base z1740), +Yd
+    # down off BV-07, −X toward the walkway THROUGH the pump gap (P-05 top z1520 ↔ P-03 base z1740), +Yd
     # to the spine lane (1206, BETWEEN the two uprights 1096/1266), then +X back through the shirt + panel
     # (perpendicular round holes) to the grey X4 pickup riser on the spine.
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     z03 = _piz("P-03")
-    rx6 = BV_FWD_X                 # BV-06 riser X — pulled to the walkway edge (operator reach), like BV-02
+    rx6 = BV_FWD_X                 # BV-07 riser X — pulled to the walkway edge (operator reach), like BV-02
     turn6 = X4_WRAP_Z
     corr_x = 5020                  # −Yd-jog X — pulled IN close to the shirt face (5051.5), just −X of it, so the
     #   grey loop sits tight to the shirt instead of bulging toward the walkway (jog is in the P-05↔P-03 gap)
@@ -1252,12 +1252,12 @@ def drains_ports(sump_on_skid=False):
                    [(grey_x, spine_yd, ov.IBC_PALLET_H + 90),       # −Yd on to the spine lane at the pickup level (collinear with the tote exit)
                     (grey_x, spine_yd, turn6),                      # ↑ grey spine riser (straight up the spine face) to the wrap level
                     (corr_x, spine_yd, turn6),                      # −X through panel+shirt (pump gap) into the corridor
-                    (corr_x, BV02_YD, turn6),                       # −Yd to the BV-06 riser lane (in front of the pumps)
-                    (rx6, BV02_YD, turn6),                          # +X back to the BV-06 riser (through the pump gap)
-                    (rx6, BV02_YD, z03),                            # ↑ through BV-06 to the IN-port height
+                    (corr_x, BV02_YD, turn6),                       # −Yd to the BV-07 riser lane (in front of the pumps)
+                    (rx6, BV02_YD, turn6),                          # +X back to the BV-07 riser (through the pump gap)
+                    (rx6, BV02_YD, z03),                            # ↑ through BV-07 to the IN-port height
                     (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
     port_jumper(p, "P-03 suction jumper", [p3i, (PXC, BV02_YD, z03), (rx6, BV02_YD, z03), (rx6, BV02_YD, turn6)])
-    p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
+    p.append(ball_valve("BV-07 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="+y", rot_deg=45))   # whole valve rotated 45° so the handle swings into the corridor on the −X+Yd diagonal, matching BV-01/BV-03
     p.append(draw.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, EXT_DRAIN_4_H, 22, 60, color=draw.C_STEEL, axis="x"))
     _p03 = [p3o, (PXC, PORT_TURN_YD_OUT, p3o[2]), (5090, PORT_TURN_YD_OUT, p3o[2]), (5090, COL_R, p3o[2]),
             (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, EXT_DRAIN_4_H), (ew - 60, COL_R, EXT_DRAIN_4_H)]

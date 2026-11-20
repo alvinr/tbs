@@ -410,20 +410,20 @@ def tap01_supply():
     #   run = fresh (−Yd, up from the trunk) ↔ spray (+Yd, to the coil); branch = recycled IN (+X, from ACC-02).
     b5x, b5y, b5z = bvx, yd, 700                       # ON the pinhole wall (Yd69); DROPPED so it + its routing clear the pinhole assembly (Z1024-1364, aperture Z1194)
     dvt = cp.DVB / 2 + cp.DVL                          # diverter port-tip reach
-    p.append(cp.diverter("3W-BV-05a (Blue/Brown selector)", b5x, b5y, b5z, run="z", branch="x+", handle="y+", color=draw.C_VALVE))
+    p.append(cp.diverter("3W-BV-05 (Blue/Brown selector)", b5x, b5y, b5z, run="z", branch="x+", handle="y+", color=draw.C_VALVE))
     # Fresh supply: tap the trunk, rise straight into the −Z fresh port
     p.append(draw.ruby_pipe_run("BV-05 fresh supply (trunk -> selector)",
         [(b5x, b5y, fz),                              # tap the blue trunk (Yd69, Z41)
          (b5x, b5y, b5z - dvt)], pr, color=draw.C_BLUE))  # UP into the −Z fresh port
-    # Spray delivery: BV-05a +Z selected port → BV-05b (2-way ON/OFF, WALL-MOUNTED just above the
+    # Spray delivery: BV-05 +Z selected port → BV-06 (2-way ON/OFF, WALL-MOUNTED just above the
     # selector — a fixed mount, not on the moving spray-bar pole) → coiled hose forward to the beam.
     hose_out = (b5x, b5y + 4 * pr, 1000)              # elbow at the riser top turns +Yd (off the wall); the coiled hose barbs into its outlet
-    p.append(draw.ruby_mixed_pipe_run("BV-05a -> BV-05b (up the pinhole wall)",
-        [(b5x, b5y, b5z + dvt),                        # off the BV-05a +Z selected port
-         (b5x, b5y, 1000),                             # MIXED (Blue or Brown per BV-05a) — UP the pinhole wall to BV-05b (stays below the pinhole Z1024)
+    p.append(draw.ruby_mixed_pipe_run("BV-05 -> BV-06 (up the pinhole wall)",
+        [(b5x, b5y, b5z + dvt),                        # off the BV-05 +Z selected port
+         (b5x, b5y, 1000),                             # MIXED (Blue or Brown per BV-05) — UP the pinhole wall to BV-06 (stays below the pinhole Z1024)
          hose_out], pr))
-    p.append(cp.ball_valve("BV-05b (spray on/off)", b5x, b5y, 900, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
-    p.append(draw.ruby_coil_cord("Spray-bar supply hose (BV-05b -> spray bar, coiled)",
+    p.append(cp.ball_valve("BV-06 (spray on/off)", b5x, b5y, 900, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
+    p.append(draw.ruby_coil_cord("Spray-bar supply hose (BV-06 -> spray bar, coiled)",
         [hose_out,                                     # out of the riser-top elbow
          (2380, 480, 720),                             # FORWARD-low to the pole area (below the pinhole Z1024)
          (2410, 660, 440),                             # LONG service loop — droop down for slack (forward of the pinhole)
@@ -530,7 +530,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.FRONT_X + 221, cp.SB_RISER_YD_NEAR, 950, "BV-01", -600, 0, 250),   # on the near-board P-01 suction riser (dropped 50mm; pushed onto the board face)
     (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", -350, 0, 200),   # tip = BV-02 valve center (walkway-edge loop); text on the −X operator side
     (cp.BROWN_TAP[0] - 55, cp.SB_RISER_YD_NEAR, 900, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (on the near support board; dropped 50mm)
-    (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-03") - 110, "BV-06", -350, 0, 150),    # tip = BV-06 valve center (walkway-edge loop); text on the −X operator side
+    (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-03") - 110, "BV-07", -350, 0, 150),    # tip = BV-07 valve center (walkway-edge loop); text on the −X operator side
     (cp.DSW_X + cp.DSW_W / 2, cp.YD_NEAR + cp.EQT + cp.DSW_D, cp.DSW_Z0["P-05"] + cp.DSW_H / 2, "S-05\n(P-05 drain sw)", -450, 0, -150),
     (cp.DSW_X + cp.DSW_W / 2, cp.YD_NEAR + cp.EQT + cp.DSW_D, cp.DSW_Z0["P-03"] + cp.DSW_H / 2, "S-03\n(P-03 drain sw)", -450, 0, 150),
     # ── per-tank anti-siphon check valves ──
@@ -539,8 +539,8 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (ov.C_LEN - 30, cp.X1_TEE_Y, cp.X1_TEE_Z, "X1\n(fresh fill)", -550, 250, 0),
     (ov.C_LEN - 30, cp.COL_L, 1700, "X3\n(brown drain out)", -550, 0, 250),
     (ov.C_LEN - 30, cp.COL_R, 1620, "X4\n(waste drain out)", -550, 0, -250),
-    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05a\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
-    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 900, "BV-05b\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
+    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
+    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 900, "BV-06\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.

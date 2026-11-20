@@ -443,9 +443,9 @@ _bv5x, _bv5z = BV05_X - 150, BV05_Z
 _zc = PWP_ACC2_Z0 + 60                             # 980 — the ACC-02 OUT run height
 _bpipe([PWP_ACC2_X - 63, _rise_x + OD_H / 2], [_zc, _zc])
 _bpipe([_rise_x - OD_H / 2, _bv5x, _bv5x], [_zc, _zc, _bv5z + 20])
-# 3W-BV-05a selector symbol (fresh Blue ↔ recycled Brown → spray bar)
+# 3W-BV-05 selector symbol (fresh Blue ↔ recycled Brown → spray bar)
 ax.add_patch(mpatches.Rectangle((sx(_bv5x) - 8, sz(_bv5z) - 8), 16, 16, facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=12))
-ax.text(sx(_bv5x), sz(_bv5z + 95), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=4.0, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(_bv5x), sz(_bv5z + 95), "3W-BV-05\n(spray selector)", ha="center", va="bottom", fontsize=4.0, color=C_BROWN, zorder=10, **FONT)
 # BV-05 → down to the spray-bar supply line (where the Blue supply feeds in)
 _bpipe([_bv5x, _bv5x], [_bv5z - 20, SPRAY_BAR_FEED_Z])
 
@@ -475,19 +475,19 @@ ax.text(sx(_supply_mid_x + 500), sz(SUPPLY_Z + 5),
         f"BLUE SUPPLY → SPRAY BAR (Z={SUPPLY_Z}, BELOW GRATING)", ha="center", va="top",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# ── BV-05b — spray on/off valve (riser from supply to Z=900) ─────────────
+# ── BV-06 — spray on/off valve (riser from supply to Z=900) ─────────────
 
 
 BV05_R = 25              # valve body radius for symbol
 
-# Riser from supply pipe up to BV-05b — downstream of the BV-05a selector: Blue OR Brown (striped)
+# Riser from supply pipe up to BV-06 — downstream of the BV-05 selector: Blue OR Brown (striped)
 draw_pipe_path(ax,
     [BV05_X, BV05_X],
     [SUPPLY_Z, BV05_Z],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc=C_BLUE, zorder=8)
 draw_mixed_pipe(ax, [sx(BV05_X), sx(BV05_X)], [sz(SUPPLY_Z), sz(BV05_Z)], 2.0, base=False, zorder=10)
 
-# BV-05b ball-valve symbol (bowtie inside white circle)
+# BV-06 ball-valve symbol (bowtie inside white circle)
 _bvx, _bvz = sx(BV05_X), sz(BV05_Z)
 ax.add_patch(plt.Circle((_bvx, _bvz), BV05_R,
              fc="white", ec=C_BLUE_EC, lw=1.5, zorder=12))
@@ -503,10 +503,10 @@ ax.add_patch(plt.Polygon([(_bvx + _bs, _bvz - _bs),
 
 leader(ax, sx(BV05_X), sz(BV05_Z + BV05_R + 5),
        sx(BV05_X + 190), sz(BV05_Z + 78),
-       "BV-05b — SPRAY ON/OFF",
+       "BV-06 — SPRAY ON/OFF",
        fs=4, color=C_BLUE, font=FONT, zorder=15)
 
-# Flex hose stub from BV-05b (drops down to spray bar — off-wall)
+# Flex hose stub from BV-06 (drops down to spray bar — off-wall)
 ax.annotate("", xy=(sx(BV05_X - 100), sz(BV05_Z - 50)),
             xytext=(sx(BV05_X), sz(BV05_Z - BV05_R)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=0.8,
@@ -650,7 +650,7 @@ for ix_mm, ilabel in items:
 notes = [
     "NOTES",
     f"1. Blue supply pipe: ½\" PVC Sch-40 (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
-    f" from IBC zone to spray bar. BV-05b riser at pinhole centerline to Z={BV05_Z} (waist height)."
+    f" from IBC zone to spray bar. BV-06 riser at pinhole centerline to Z={BV05_Z} (waist height)."
     " Chemistry tap branch (¾\") rises to shelf.",
     f"2. Evap cooler is EXTERNAL — its only presence on this wall is the Ø{EVAP_DUCT_D}mm duct penetration at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
     "3. Pinhole wall carries the FILTER SKID: tray-drain P-04 + SV-02 + DV-02 (skid row under the filters),"

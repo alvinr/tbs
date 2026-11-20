@@ -91,7 +91,7 @@ the Pinhole Wall filter skid, §2.1). The accumulator ACC-01 sits at the column 
 | Pump | Circuit | Function |
 |------|---------|----------|
 | P-01 | Blue | Clean water supply to spray bar (via ACC-01) |
-| P-02 | Brown | Recycle spray — pulls the clean IBC-3 buffer → ACC-02 → BV-05 → spray bar |
+| P-02 | Brown | Recycle spray — pulls the clean IBC-3 buffer → ACC-02 → BV-05 → BV-06 → spray bar |
 | P-03 | Black | Waste evacuation (IBC-4 → external drain X4) |
 | P-05 | Brown | Brown drain-out (IBC-3 → external drain X3) |
 
@@ -116,15 +116,15 @@ master pump switch on the Electrical Panel (EP)** ([Electrical Report §7.2–7.
 |------|------|
 | Feed | C1: 12 AWG, 15A fuse (four corridor pumps) · C2: 12 AWG, 10A fuse (P-04) |
 | Master switch | 1 × IP-rated 2-pole sealed switch, **mounted on the EP** — one cutoff for both legs |
-| Drain-pump switches | **S-05** (P-05) and **S-03** (P-03) — 1-pole IP67 sealed rockers on the near-upper side board, beside BV-02 / BV-06; OFF except during a pump-out |
+| Drain-pump switches | **S-05** (P-05) and **S-03** (P-03) — 1-pole IP67 sealed rockers on the near-upper side board, beside BV-02 / BV-07; OFF except during a pump-out |
 | Distribution | 12V DC + / − bus block on the rear of the plumbing panel, fed from C1 |
 | Branches | 14 AWG marine duplex, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump) |
 
 The master switch energizes all four corridor pumps; one at a time does the work. During a wash,
-the spray selector **BV-05a** chooses Blue (P-01) or Brown (P-02). The selected pump delivers,
+the spray selector **BV-05** chooses Blue (P-01) or Brown (P-02). The selected pump delivers,
 while the other's discharge is blocked, so it builds pressure and its Shurflo **internal
 demand/pressure switch** holds it off (ACC-01 holds P-01's side). The drain pumps are kept out of
-this by **S-05 / S-03**. With their suction valves (BV-02 / BV-06) closed they could not build
+this by **S-05 / S-03**. With their suction valves (BV-02 / BV-07) closed they could not build
 pressure, so their pressure switches would never stop them; the local switches keep them dead
 until a pump-out, when the operator runs one at a time. P-04 on C2 runs **concurrently** with the
 C1 supply pump, so the tray drains as fast as the spray bar fills it (the continuous flow-through
@@ -167,7 +167,7 @@ ribbon), the DV-01 recycle → IBC-3, and the IBC-2 fill.
 | Port | 1/2" NPT, bottom |
 | Function | Smooths P-01 pump cycling, maintains pressure when the pump is off |
 
-ACC-01 sits inline on the Blue discharge path between the P-01 outlet and the spray-bar supply trunk (BV-05).
+ACC-01 sits inline on the Blue discharge path between the P-01 outlet and the spray-bar supply trunk (to the selector BV-05).
 The accumulator's air bladder absorbs pressure pulsations from the diaphragm
 pump, providing steady flow to the spray bar.
 
@@ -183,24 +183,24 @@ pump, providing steady flow to the spray bar.
 | BV-02 | 1/2" | Corridor | P-05 (Brown drain) suction isolation |
 | BV-03 | 1/2" | Corridor | P-02 (Brown recycle) suction isolation |
 | BV-04 | 1/2" | supply | TAP-01 chemistry-tap isolation |
-| BV-05a | 1/2" | supply | Spray Blue/Brown **SELECTOR** — 1/2″ 3-way divert (same valve as DV-01/02) |
-| BV-05b | 1/2" | spray bar | Spray-bar **ON/OFF** — 1/2″ 2-way ball valve |
-| BV-06 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
+| BV-05 | 1/2" | supply | Spray Blue/Brown **SELECTOR** — 1/2″ 3-way divert (same valve as DV-01/02) |
+| BV-06 | 1/2" | spray bar | Spray-bar **ON/OFF** — 1/2″ 2-way ball valve |
+| BV-07 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
 
-BV-01/BV-02/BV-03/BV-06 are the Corridor panel pump-suction isolation valves; **BV-04**
-isolates the TAP-01 chemistry tap. These five, and BV-05b, are 1/2" Banjo V050FP quarter-turn
+BV-01/BV-02/BV-03/BV-07 are the Corridor panel pump-suction isolation valves; **BV-04**
+isolates the TAP-01 chemistry tap. These five, and BV-06, are 1/2" Banjo V050FP quarter-turn
 **2-way** ball valves (Grainger 803HZ1).
 
-**BV-05 is the spray SELECTOR — split into two 1/2″ valves** rather than one 3-way L-port. Both the
+**Spray selection uses two 1/2″ valves, BV-05 and BV-06,** rather than one 3-way L-port. Both the
 Blue (fresh) and Brown (recycle) lines converge here, and the operator needs three states: Blue →
 spray, Brown → spray, and off. A single 3-way that both selects *and* shuts off is only available
 as an **L-port in 3/4″** (Banjo V075BL), which needs reducers to the 1/2″ lines and a verified OFF
 detent, since some L-ports cross-connect the two inlets at the 4th quarter-turn. The design uses
 **two plain 1/2″ valves** instead:
 
-- **BV-05a — Blue/Brown selector:** a 1/2″ 3-way divert valve (the same US Plastic #22365 used for
+- **BV-05 — Blue/Brown selector:** a 1/2″ 3-way divert valve (the same US Plastic #22365 used for
   the diverters), plumbed **2 inlets → 1 outlet**, set at the panel to pick Blue or Brown.
-- **BV-05b — spray on/off:** a 1/2″ 2-way ball valve at the **spray-bar feed**, where the operator
+- **BV-06 — spray on/off:** a 1/2″ 2-way ball valve at the **spray-bar feed**, where the operator
   controls flow during the wash pass.
 
 This keeps everything **1/2″ (no reducers)**, avoids the L-port OFF-detent risk, costs less than the
@@ -264,7 +264,7 @@ procedure is in the [Operating Manual §4.2](operating-manual.md).
 | Filter outlet → DV-01 | Sch 40 | 1" | 33 | PVC Sch 40 | Gravity flow, lower restriction |
 | IBC fill/drain (internal) | Sch 40 | 1" | 33 | PVC Sch 40 | IBC valve to corridor |
 | IBC fill/drain (external bulkhead) | Sch 40 | 2" | — | PP (EPDM gaskets) | Bulkhead unions with camlock |
-| Spray bar flex hose | — | 1/2" | — | Reinforced braided PVC | ~4m coiled, BV-05 to beam center feed |
+| Spray bar flex hose | — | 1/2" | — | Reinforced braided PVC | ~4m coiled, BV-06 to beam center feed |
 
 All pump-driven internal runs use 1/2" pipe, matching the Shurflo 2088 pump
 ports (1/2"-14 male parallel thread). This eliminates reducer fittings at pump
@@ -330,7 +330,7 @@ board face by **cushioned P-clips**.
   on its risers. The far (film-plane) side backs the DV-01
   recycle, P-02 discharge, and P-01→ACC-01 risers (3 clamp rows); the near-lower board carries the
   P-02 suction riser (BV-03) **and the P-01 suction riser (BV-01)** — the latter pushed onto the
-  board face with two clamps straddling the valve; the near-upper board carries BV-02 / BV-06
+  board face with two clamps straddling the valve; the near-upper board carries BV-02 / BV-07
   (P-05 / P-03 suction). Each riser is pulled flush onto its board plane, and the DV-01 recycle
   line runs down the far board between DV-01 and IBC-3.
 - **Drain-riser spine** — the three gray/brown waste risers clamp to the spine's near face; the
@@ -340,7 +340,7 @@ board face by **cushioned P-clips**.
 - **Filter skid** — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
   the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.
 
-The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-06 on the upper board) sit
+The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-07 on the upper board) sit
 below the clamp row above them, rotated 45° so their handles swing into the open corridor on the
 diagonal — reachable while clear of the boards. Hardware: 3 side boards
 (cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 46 cushioned 3/4"
@@ -353,20 +353,20 @@ P-clips (§8).
 ### 5.1 Blue System — Clean Water Supply
 
 ```
-IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-05 → spray bar
+IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-05 → BV-06 → spray bar
 ```
 
 P-01 draws from the Blue IBC manifold (the two Blue totes in parallel on the 1"
 PVC manifold, through their DN50 tote valves), pressurizes through ACC-01 (0.75L accumulator),
-and delivers to BV-05 on the spray-bar feed. A 4m flexible hose connects BV-05
-to the spray bar center feed bulkhead.
+and delivers through the selector BV-05 and the on/off BV-06 on the pinhole wall. A 4m flexible hose
+connects BV-06 to the spray bar center feed bulkhead.
 
 ### 5.2 Brown System — Used Water Recycling
 
 ```
 Tray sump → P-04 → SV-02 sample → 3W-DV-02 → 1/2"→1" reducer → F-01 → F-02 → F-03
   → SV-01 sample tap → 3W-DV-01 → IBC-3 recycle (if pH 6–7.5) or IBC-4 waste (if above pH 7.5)
-IBC-3 → P-02 → ACC-02 → BV-05 → spray bar   (recycle spray)
+IBC-3 → P-02 → ACC-02 → BV-05 → BV-06 → spray bar   (recycle spray)
 ```
 
 P-04 lifts drain water from the processing tray sump up to the filter bank and, via 3W-DV-02,
@@ -379,7 +379,7 @@ ACC-02 and BV-05) — the recycle-spray loop.
 ```
 3W-DV-01 reject → IBC-4
 3W-DV-02 wash 1 (dichromate option) / contaminated → IBC-4
-IBC-4 → BV-06 → P-03 → external drain port X4
+IBC-4 → BV-07 → P-03 → external drain port X4
 ```
 
 P-03 is dedicated to waste evacuation. X4 sits above the top of IBC-4, so the tote cannot drain
@@ -510,7 +510,7 @@ inspection schedule and service procedures are in the
 7. [IBC Stacking Report](ibc-stacking-report.md) — IBC arrangement, stacking
    frame, external bulkhead ports, internal pipe routing.
 8. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) —
-   Tray sump, P-04 suction pickup, spray bar connection to BV-05.
+   Tray sump, P-04 suction pickup, spray bar connection to BV-06.
 9. [Walkway Pipe Routing](walkway-routing-sections.md) — Cross-sections of the
    corridor↔pinhole-wall ribbon under the right walkway: routing envelope,
    clearances, the open-bay corridor entry, and the spray-carriage clearance (§7.1).

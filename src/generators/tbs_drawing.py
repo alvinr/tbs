@@ -669,7 +669,7 @@ def draw_legend(ax, items, x, y, *, row_h=46, swatch_w=32, swatch_h=28,
 # ═════════════════════════════════════════════════════════════════════════
 
 def draw_mixed_pipe(ax, xs, ys, lw, *, dash=(4, 4), zorder=3, capstyle="butt", base=True):
-    """A line that carries EITHER Blue or Brown (downstream of the BV-05a spray selector):
+    """A line that carries EITHER Blue or Brown (downstream of the BV-05 spray selector):
     a C_PIPE_FRESH line with a C_PIPE_RECYCLE dash overlay at the same width.  `dash` is the
     on/off pattern in line-width units (matplotlib scales it by lw).  base=False draws only the
     brown dashes — for overlaying the centerline of a double-wall pipe already filled Blue."""

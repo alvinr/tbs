@@ -404,7 +404,7 @@ def draw_sheet1():
 
     WD_X = 323.75
     pipe(ax1, W_X + W_W / 2, 195, WD_X - VR, 195, C_BLACK)
-    valve(ax1, WD_X, 195, color=C_BLACK); ax1.text(WD_X + 3.75, 193.75, "BV-06", ha="left", fontsize=6, color=C_BLACK)
+    valve(ax1, WD_X, 195, color=C_BLACK); ax1.text(WD_X + 3.75, 193.75, "BV-07", ha="left", fontsize=6, color=C_BLACK)
     pipe(ax1, WD_X, 195 + VR, WD_X, 217.5 - PR, C_BLACK)
     pump(ax1, WD_X, 217.5, color=C_PUMP); ax1.text(WD_X + 3.75, 216.25, "P-03\n12VDC", ha="left", fontsize=6, color=C_PUMP)
     pipe(ax1, WD_X, 217.5 + PR, WD_X, 237.5, C_BLACK); arrow_pipe(ax1, WD_X, 232.5, WD_X, 236.25, color=C_BLACK)
@@ -486,7 +486,7 @@ def draw_sheet1():
         (C_BROWN, "-",  "Brown — Used / recycled water"),
         (C_BLACK, "-",  "Black — Waste water"),
         (C_BROWN, "--", "Dashed — Recycle / fill / return"),
-        (None,    "mixed", "Blue or Brown (BV-05a selector)"),
+        (None,    "mixed", "Blue or Brown (BV-05 selector)"),
     ]
     for i, (col, ls, lbl) in enumerate(legend_items):
         yy = ly - 3 - i * 5
@@ -613,7 +613,7 @@ def draw_sheet2():
 
     # Spray bar — a full-width beam that slides in Yd over the tray depth (single center feed)
     SB_YD = PROC_TRAY_YD_FAR - 420
-    draw_mixed_pipe(ax2, [SPRAY_BEAM_X_L, SPRAY_BEAM_X_R], [SB_YD, SB_YD], 3)   # Blue OR Brown (BV-05a selector)
+    draw_mixed_pipe(ax2, [SPRAY_BEAM_X_L, SPRAY_BEAM_X_R], [SB_YD, SB_YD], 3)   # Blue OR Brown (BV-05 selector)
     ax2.text(tray_mid_x - PROC_TRAY_W / 4, SB_YD + 70,
              f"SPRAY BAR (3/4\" LDPE manifold on a {SPRAY_BEAM_SPAN}mm beam · single center feed)",
              ha="center", fontsize=7, color=C_BLUE)

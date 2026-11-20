@@ -142,7 +142,7 @@ print counts above cover processing water only.
 
 ```
 IBC-1 ──┐
-        ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-05 → Spray bar → Processing tray
+        ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-05 → BV-06 → Spray bar → Processing tray
 IBC-2 ──┘
 ```
 
@@ -177,7 +177,7 @@ Processing tray sump (P-04 suction pickup)
 
    IBC-3 (Brown buffer)
         │
-       P-02 ──→ ACC-02 (pulsation damper) ──→ BV-05 ──→ spray bar   (wash 1)
+       P-02 ──→ ACC-02 (pulsation damper) ──→ BV-05 ──→ BV-06 ──→ spray bar   (wash 1)
 ```
 
 **Filter train:** three 4.5"×20" Big Blue housings in a bank high on the pinhole wall. Housings, plumbing, and cartridge replacement intervals are in [Plumbing Report §2.1](plumbing-report.md).
@@ -222,7 +222,7 @@ FROM 3W-DV-02 (wash 1 under the dichromate option; heavily contaminated drain wa
 The tray and the spray-bar gantry are specified in the [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md). Their role in the water system:
 
 - **Tray** — a permanent stainless steel tray on the optical-zone floor, sloped to a center pickup well. P-04 draws from the well through a hose that rises through the walkway grate, so neither the tray floor nor the container floor is penetrated.
-- **Spray bar** — a rolling gantry fed from BV-05 by a flexible hose; its <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> down-jet nozzles deliver either Blue (P-01) or Brown (P-02).
+- **Spray bar** — a rolling gantry fed from BV-06 (spray on/off, above the selector BV-05) by a flexible hose; its <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> down-jet nozzles deliver either Blue (P-01) or Brown (P-02).
 - **Liner** — a fresh 6-mil black LDPE sheet covers the tray each session, keeping prints off the stainless and simplifying cleanup.
 
 ---

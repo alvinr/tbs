@@ -58,8 +58,8 @@ BOARDS = [
     ("NEAR BOARD", "walkway wall (Yd 1046–1064)", cp.SB_NEAR_Z,
      [(4825, "P-02 suction", C_BROWN), (5070, "P-05 inlet", C_BROWN)],
      cp.SB_NEAR_CLAMP_Z, [], []),
-    ("NEAR-UPPER BOARD", "walkway wall — backs BV-02 / BV-06 + drain-pump switches S-05 / S-03", cp.SB_NEAR_UP_Z,
-     [(cp.BV_FWD_X, "BV-02 / BV-06 risers", C_BROWN)],
+    ("NEAR-UPPER BOARD", "walkway wall — backs BV-02 / BV-07 + drain-pump switches S-05 / S-03", cp.SB_NEAR_UP_Z,
+     [(cp.BV_FWD_X, "BV-02 / BV-07 risers", C_BROWN)],
      (1370, 1440, 1770, 1840),
      [(1300, "P-05-inlet brown", C_BROWN), (1902, "P-03 waste", C_WASTE)],
      [("S-05 (P-05 drain switch)", cp.DSW_Z0["P-05"]), ("S-03 (P-03 drain switch)", cp.DSW_Z0["P-03"])]),
@@ -173,7 +173,7 @@ def draw_sheet1():
         "2. Each board carried on 4 welded steel L-brackets (one per post inner face, top + bottom) — see Sheet 2.",
         "3. Risers clamped with cushioned 3/4\" P-clips at the marked rows (2 per riser; the near-upper board takes 4).",
         "4. Steel tab = L-bracket landing leg (face-on); brackets set 35mm in from each board edge.",
-        f"5. Near-upper board: drain-pump switches S-05 / S-03 — sealed IP67 rockers in {cp.DSW_W}×{cp.DSW_H}mm surface boxes, screwed to the ply beside the valve each one works with (S-05 level with BV-02, S-03 level with BV-06).",
+        f"5. Near-upper board: drain-pump switches S-05 / S-03 — sealed IP67 rockers in {cp.DSW_W}×{cp.DSW_H}mm surface boxes, screwed to the ply beside the valve each one works with (S-05 level with BV-02, S-03 level with BV-07).",
     ], 0.0, 1.0, 0.15, fs=7.2, title_fs=7.6, width=1.0, wrap=120, font=FONT)
 
     ax_tb = fig.add_axes([0.04, 0.008, 0.92, 0.045])

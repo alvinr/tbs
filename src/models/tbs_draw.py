@@ -630,7 +630,7 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
         start = B
     return '\n'.join(out)
 def ruby_mixed_pipe_run(name, waypoints, r, band=60, pitch=120, **kw):
-    """A MIXED-fluid line (Blue OR Brown, downstream of the BV-05a selector): a fresh-blue
+    """A MIXED-fluid line (Blue OR Brown, downstream of the BV-05 selector): a fresh-blue
     ruby_pipe_run with recycle-brown sleeve bands every `pitch` mm along each straight leg —
     the 3D twin of the 2D blue-with-brown-dash stripe.  Bands stop short of the elbows."""
     out = [ruby_pipe_run(name, waypoints, r, color=C_PIPE_FRESH, **kw)]

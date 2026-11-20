@@ -2,13 +2,6 @@
 <!-- © 2026 Alvin Richards -->
 # Plumbing Report
 
-> **Two plumbing panels.** The water-handling equipment is split across two panels: the
-> **Corridor Plumbing Panel** (pumps P-01/P-02/P-03/P-05, accumulator ACC-01, pump-suction
-> isolation valves — mounted in the IBC plumbing corridor) and the **Pinhole Wall Filter Skid**
-> (the filter train + the tray-drain skid: tray-drain pump P-04, sample taps SV-01/SV-02,
-> diverters DV-01/DV-02, the 3-stage Big Blue filter, and the recycle-spray damper ACC-02 —
-> mounted on the pinhole wall). This report covers both.
-
 <!-- brochure:skip -->
 ## Interactive 3D model
 
@@ -51,19 +44,18 @@ three functions:
 | Parameter | Value |
 |-----------|-------|
 | Material | 18mm exterior-grade plywood (BC/ACX) — dry mounting board, not marine |
-| Face dimensions | 270mm wide (Yd) × 2,060mm tall (Z) |
+| Face dimensions | <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm wide (Yd, the corridor width) × 2,060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
 | Bottom edge | Just above the walkway deck (clear of the spill line) |
 | Top edge | Just below the container ceiling |
-| Corridor width | 270mm (between near and far IBC columns) |
 | Mounting | L-brackets to the front-portal frame uprights, 4 points |
 | Finish | Sealed cut edges (exterior grade); white face for visibility |
 
 The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Filter Skid** is the
 wet-end board mounted on the pinhole wall carrying the 3-stage filter train, the tray-drain skid
 row (P-04·SV-02·DV-02), the filter-output diverter DV-01 + the SV-01 sample tap, and the
-recycle-spray damper ACC-02 — see [Water System Report](water-system-report.md)
-§3 for its location and the spray-bar/chemistry-tap supply it feeds.
+recycle-spray damper ACC-02 (§3.1); its place in the layout is in
+[Water System Report §7](water-system-report.md).
 
 ---
 
@@ -96,11 +88,11 @@ panel's center-bottom.
 | F-03 (carbon) | CTO coconut-shell activated carbon | 4.5"×20" Big Blue |
 
 Each housing has 1" NPT inlet and outlet on the head; the heads sit on a common
-line and the sumps hang below, each housing carried on its own Pentair 150061 bracket.
+line and the sumps hang below, each housing carried on its own Pentair 244718 single-housing bracket.
 Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
 1" PVC pipe (threaded at the filter ports) with 90° elbows routed outside the housing
-bodies. Each housing machine-screws through its own mounting-hole ears (on 25mm plywood-offcut standoff blocks) into
-back-face pronged tee-nuts in the 18mm ply backing, giving sump-bowl clearance — no custom bracket (see the
+bodies. Each bracket machine-screws through 25mm plywood-offcut standoff blocks into back-face pronged
+tee-nuts in the 18mm ply backing, giving sump-bowl clearance — no fabricated bracket (see the
 **DETAIL — HOUSING MOUNT (section)** inset on the panel elevation above).
 
 **Head clearance:** the 20" sumps hang ~250mm lower than a 10" housing would —
@@ -131,14 +123,15 @@ the Pinhole Wall filter skid, §3.1). The accumulator ACC-01 sits at the column 
 |------|---------|----------|
 | P-01 | Blue | Clean water supply to spray bar (via ACC-01) |
 | P-02 | Brown | Recycle spray — pulls the clean IBC-3 buffer → ACC-02 → BV-05 → spray bar |
-| P-03 | Black | Waste evacuation (IBC-4 residual → external drain X4) |
+| P-03 | Black | Waste evacuation (IBC-4 → external drain X4) |
 | P-05 | Brown | Brown drain-out (IBC-3 → external drain X3) |
 
 All pumps are identical Shurflo 2088-554-144 units: 12VDC, 3.5 GPM, 45 PSI,
 self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
 216mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
 through the plywood. They sit in a single vertical column in the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor;
-P-01 and P-02 draw from the near IBC column, P-03 and P-05 from the far column.
+P-01 draws the Blue manifold (both top-tier totes), P-02 and P-05 share the IBC-3 bottom tap (near
+column), and P-03 draws IBC-4 (far column).
 
 #### Pump electrical — Circuit C1 (corridor) / C2 (tray drain)
 
@@ -220,24 +213,23 @@ pump, providing steady flow to the spray bar.
 | BV-06 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
 
 BV-01/BV-02/BV-03/BV-06 are the Corridor panel pump-suction isolation valves; **BV-04**
-isolates the TAP-01 chemistry tap. These five are 1/2" Banjo V050FP quarter-turn **2-way**
-ball valves.
+isolates the TAP-01 chemistry tap. These five, and BV-05b, are 1/2" Banjo V050FP quarter-turn
+**2-way** ball valves (Grainger 803HZ1).
 
 **BV-05 is the spray SELECTOR — split into two 1/2″ valves** rather than one 3-way L-port. Both the
 Blue (fresh) and Brown (recycle) lines converge here, and the operator needs three states: Blue →
 spray, Brown → spray, and off. A single 3-way that both selects *and* shuts off is only available
-as an **L-port in 3/4″** (Banjo V075BL, $72.88 — needing reducers to the 1/2″ lines and a verified
-OFF detent, since some L-ports cross-connect the two inlets at the 4th quarter-turn instead). So the
-design uses **two plain 1/2″ valves** instead:
+as an **L-port in 3/4″** (Banjo V075BL), which needs reducers to the 1/2″ lines and a verified OFF
+detent, since some L-ports cross-connect the two inlets at the 4th quarter-turn. The design uses
+**two plain 1/2″ valves** instead:
 
 - **BV-05a — Blue/Brown selector:** a 1/2″ 3-way divert valve (the same US Plastic #22365 used for
   the diverters), plumbed **2 inlets → 1 outlet**, set at the panel to pick Blue or Brown.
 - **BV-05b — spray on/off:** a 1/2″ 2-way ball valve at the **spray-bar feed**, where the operator
   controls flow during the wash pass.
 
-This keeps everything **1/2″ (no reducers)**, avoids the L-port OFF-detent risk, runs **~$37 cheaper**
-than the 3/4″ L-port, and puts the on/off where the operator's hand is. *(The five 1/2″ 2-way
-isolation valves also re-sourced to Grainger 803HZ1 at $24.14, down from $44.27.)*
+This keeps everything **1/2″ (no reducers)**, avoids the L-port OFF-detent risk, costs less than the
+3/4″ L-port, and puts the on/off where the operator's hand is.
 
 ### 4.2 Diverter Valves (3-Way)
 
@@ -267,19 +259,18 @@ The Shurflo 2088 pumps carry integral check valves, but those sit upstream of th
 guards the one gravity (non-pumped) path, the X1 fresh fill. CV-2 and CV-3 make the two waste legs
 one-way where they share the IBC-4 merge tee. All three are in the IBC zone, not on a panel.
 
-### 4.4 Sample Tap (SV-01)
+### 4.4 Sample Taps (SV-01, SV-02)
 
 | Valve | Size | Panel | Function |
 |-------|------|-------|----------|
 | SV-01 | 1/2" | Pinhole Wall | Filtered-Brown line (F-03 outlet → 3W-DV-01) — pH sample before the Blue/Black diversion |
 | SV-02 | 1/2" | Pinhole Wall (skid row) | P-04 tray-drain discharge (→ 3W-DV-02) — pH sample before the recycle/waste diversion |
 
-The filter output has no usable sampling point without SV-01 — a capped tee
-cannot be drawn from. **SV-01** is a 1/2" PP quarter-turn ball valve (same Banjo
+**SV-01** gives the filter output a sampling point. It is a 1/2" PP quarter-turn ball valve (same Banjo
 family as the BV isolation valves) on a 1"×1/2" reducing branch tee, with a short
 downturned hose-barb spout. It sits on the panel face **above the spill line**,
 spout pointing toward the operator so a cup fits beneath it from the right
-walkway.
+walkway. SV-02 is the same build on the P-04 discharge, ahead of 3W-DV-02.
 
 SV-01 draws while P-04 pressurizes the filtered line; a ~50 ml sample sets 3W-DV-01
 (recycle-return at pH <!-- BEGIN fact:brown_ph_lo -->6<!-- END fact:brown_ph_lo -->–<!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi -->, Black-waste above pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> or on discoloration). The sampling
@@ -293,7 +284,7 @@ procedure is in the [Operating Manual §4.2](operating-manual.md).
 |-----|----------|-------------|---------|----------|-------|
 | Pump suction/discharge | Sch 40 | 1/2" | 21 | PVC Sch 40 | Matches Shurflo 2088 port thread |
 | DV-02 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To F-01 (recycle) or IBC-4 (waste) |
-| DV-01 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To Blue IBC-2 or Black IBC-4 |
+| DV-01 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To Brown IBC-3 (recycle) or Black IBC-4 |
 | Filter inter-stage | Sch 40 | 1" | 33 | PVC Sch 40 | Matches Big Blue 1" NPT ports |
 | Filter outlet → DV-01 | Sch 40 | 1" | 33 | PVC Sch 40 | Gravity flow, lower restriction |
 | IBC fill/drain (internal) | Sch 40 | 1" | 33 | PVC Sch 40 | IBC valve to corridor |
@@ -303,7 +294,7 @@ procedure is in the [Operating Manual §4.2](operating-manual.md).
 All pump-driven internal runs use 1/2" pipe, matching the Shurflo 2088 pump
 ports (1/2"-14 male parallel thread). This eliminates reducer fittings at pump
 connections. The only reducer is a single 1/2"→1" bushing at the filter skid
-inlet (P-02 output to F-01 input).
+inlet (DV-02 output to F-01 input).
 
 ### 5.1 Joint Convention
 
@@ -313,20 +304,14 @@ removable for service:** pumps, filter housings, valves, check valves, tank
 bulkheads, sample taps, and the accumulator. Each such interface uses a **slip×NPT
 transition adapter** (a male adapter glued into the run, threaded into the
 component's port). This keeps the run cheap and leak-free while every component
-stays unthreadable for maintenance.
+can be unscrewed for maintenance.
 
-Classifying the current BOM by this rule:
+Classifying the BOM by this rule:
 
 | Category | Connection | Parts |
 |---|---|---|
 | **Run joints — SLIP** | glued PVC socket | tees, elbows, cross, couplings, pipe |
 | **Component interfaces — THREADED** | NPT (via slip×NPT adapter) | ball/diverter/check valves, camlocks, tank bulkheads, pump & filter ports, sample taps, accumulator |
-
-Applying this convention **(a) resolved 2026-07-27: the run material is PVC Sch-40**
-(see §5.2 — the §5 table is updated). **Still open (see [TODO](https://github.com/alvinr/tbs/blob/main/TODO.md)):** (b) the 1"
-run tees/elbows now carried as threaded **Banjo FRPP** move to PVC slip, and (c) a
-**slip×NPT male adapter** is added at each component interface (currently absent from
-the BOM). The valves, camlocks, bulkheads, check valve, and pump/filter ports stay threaded.
 
 ### 5.2 Material: PVC Schedule 40 (justification)
 
@@ -366,13 +351,13 @@ board face by **cushioned P-clips**.
 
 ![TBS-001 — Pump-Run Support Detail — Sheet 2: L-bracket flush-mount section, P-clip detail, and fabrication schedule](assets/support-detail-sheet2.png)
 
-- **Corridor side walls** — one board per wall, each **raised to back its risers higher** so an
-  added **third clamp row** lands on the taller board. The far (film-plane) side backs the DV-01
+- **Corridor side walls** — one board per wall, each tall enough to carry a **third clamp row**
+  on its risers. The far (film-plane) side backs the DV-01
   recycle, P-02 discharge, and P-01→ACC-01 risers (3 clamp rows); the near-lower board carries the
   P-02 suction riser (BV-03) **and the P-01 suction riser (BV-01)** — the latter pushed onto the
   board face with two clamps straddling the valve; the near-upper board carries BV-02 / BV-06
   (P-05 / P-03 suction). Each riser is pulled flush onto its board plane, and the DV-01 recycle
-  line is re-routed off IBC-3 and down the far board before turning into DV-01.
+  line runs down the far board between DV-01 and IBC-3.
 - **Drain-riser spine** — the three gray/brown waste risers clamp to the spine's near face; the
   P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.
   The far-face clips sit on 6.5mm shims rather than 18mm blocks: that lane is fixed by the
@@ -380,11 +365,11 @@ board face by **cushioned P-clips**.
 - **Filter skid** — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
   the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.
 
-The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-06 on the upper board) are
-dropped to clear the clamp row above them and rotated 45° so their handles swing into the open
-corridor on the diagonal — staying reachable while clear of the boards. Hardware: 3 side boards
+The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-06 on the upper board) sit
+below the clamp row above them, rotated 45° so their handles swing into the open corridor on the
+diagonal — reachable while clear of the boards. Hardware: 3 side boards
 (cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 46 cushioned 3/4"
-P-clips (§Parts).
+P-clips (§9).
 
 ---
 
@@ -396,8 +381,8 @@ P-clips (§Parts).
 IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-05 → spray bar
 ```
 
-P-01 draws from the Blue IBC manifold (two IBCs plumbed in parallel via 1"
-HDPE with isolation valves), pressurizes through ACC-01 (0.75L accumulator),
+P-01 draws from the Blue IBC manifold (the two Blue totes in parallel on the 1"
+PVC manifold, through their DN50 tote valves), pressurizes through ACC-01 (0.75L accumulator),
 and delivers to BV-05 on the spray-bar feed. A 4m flexible hose connects BV-05
 to the spray bar center feed bulkhead.
 
@@ -409,7 +394,7 @@ Tray sump → P-04 → SV-02 sample → 3W-DV-02 → 1/2"→1" reducer → F-01 
 IBC-3 → P-02 → ACC-02 → BV-05 → spray bar   (recycle spray)
 ```
 
-P-04 lifts drain water from the processing tray sump (~900mm head) and, via 3W-DV-02,
+P-04 lifts drain water from the processing tray sump up to the filter bank and, via 3W-DV-02,
 sends it into the 3-stage filter train. The SV-01 sample tap after the filters feeds the
 pH check that sets 3W-DV-01: recycle (IBC-3 Brown buffer) or Waste (IBC-4). **P-02** then recirculates the clean IBC-3 buffer to the spray bar (via
 ACC-02 and BV-05) — the recycle-spray loop.
@@ -440,20 +425,17 @@ container walls directly.
 
 ### 7.2 Filter Skid Mounting
 
-The filter skid uses no separate frame: each housing is carried on its own **Pentair 150061
-zinc single-housing bracket** machine-screwed to the 18mm plywood backing (this replaced the
-earlier welded slotted-angle frame — purpose-built, −$85). The mount provides:
+The filter skid uses no separate frame: each housing is carried on its own **Pentair 244718
+zinc single-housing bracket** machine-screwed to the 18mm plywood backing. The mount provides:
 
 - Rigid support for the ~5kg weight of each filled filter housing
 - 18mm plywood backing board with **back-face pronged tee-nuts** for the housing machine-screws
   (a re-torqueable joint, serviceable without stripping the ply)
 
-Each filter housing mounts through its own **mounting-hole ears** — Big Blue
-heads are pre-drilled for wall mounting — with **1/4"-20 zinc machine screws (+ a washer spanning the 5/16-sized ear bore) into
-back-face pronged tee-nuts in the 18mm plywood backing** (no custom bracket; #30 —
-a re-torqueable machine-screw joint, not wood/lag screws). 25mm plywood-offcut standoff blocks behind
-each ear space the housing off the ply so the sump bowl hangs free and clears for
-cartridge changes. Two machine screws per housing.
+Each bracket fixes with **two 1/4"-20 zinc machine screws** (+ a washer spanning the 5/16-sized ear
+bore) through its ears into **back-face pronged tee-nuts in the 18mm plywood backing** — a
+re-torqueable joint, not wood or lag screws. 25mm plywood-offcut standoff blocks behind each ear
+space the housing off the ply so the sump bowl hangs free and clears for cartridge changes.
 
 ### 7.3 Pump Mounting
 
@@ -463,18 +445,16 @@ is vertical with ports at the head (top), facing left and
 right. This orientation minimizes the footprint on the 270mm-wide
 panel and allows gravity to assist with priming.
 
-### 7.4 Panel Protrusion Envelope
+### 7.4 Corridor Panel Protrusion Envelope
 
 | Component | Protrusion from panel face (-X) |
 |-----------|-------------------------------|
 | Pump body (Shurflo 2088) | 114mm |
-| Filter housing (Big Blue 4.5"×20") | 130mm |
 | Accumulator (ACC-01) | 127mm |
 | Pipe fittings + valves | ~50mm |
 
-The maximum protrusion is 130mm (filter housings). Combined with the 18mm panel
-thickness, the total X footprint is 148mm. There is a 653mm clear between the walkway and the nearest protruding
-component.
+The deepest item stands ~130mm proud of the panel face (tip ≈ X4744), clear of the film-plane
+right rail at X<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->.
 
 ---
 
@@ -506,7 +486,7 @@ clear channel between the two walkway long beams (hugged to the outer/IBC edge,
 clear of the print zone). The lanes ride **flush against the grate underside** so
 the whole over-tray run clears the spray-bar carriage beneath it, and the two
 middle lanes alternate (Blue trunk / Brown sump) so the blue and brown lines never
-cross. This replaces routing them through the congested tray↔IBC gap.
+cross, and the ribbon stays out of the congested tray↔IBC gap.
 
 At the first cantilever (nearest the pinhole wall) each line **loops up over the
 cantilever** — then returns to the flush ribbon
@@ -556,8 +536,8 @@ inspection schedule and service procedures are in the
    port, 127mm OD × 200mm length.
 4. [Purcooflow WHF2045B302](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) — 3-stage whole-house filter, 4.5"×20" Big Blue
    cartridges, 1" NPT inlet/outlet, integrated mounting bracket.
-5. [Water System Report](water-system-report.md) — Flow circuits, valve matrix,
-   processing procedure, pipe specifications.
+5. [Water System Report](water-system-report.md) — Flow circuits, chemistry, and waste
+   handling.
 6. [Equipment Layout Report](equipment-layout-report.md) — Component positions,
    IBC corridor dimensions, line-of-sight clearance.
 7. [IBC Stacking Report](ibc-stacking-report.md) — IBC arrangement, stacking

@@ -1162,7 +1162,7 @@ _MONEY_RAW_BASELINE = {
     "film-plane-mechanism-report.md": 2, "funding-proposal.md": 15, "ibc-stacking-report.md": 4,
     "lens-options.md": 41, "light-trap-selection.md": 15, "master-shopping-list.md": 30,
     "mini-tbs/mini-tbs-poc.md": 22, "mini-tbs/mini-tbs-shopping-list.md": 80,
-    "photosensitive-plane-options.md": 161, "plumbing-report.md": 5, "process-comparison.md": 130,
+    "photosensitive-plane-options.md": 161, "process-comparison.md": 130,
     "project-cost-breakdown.md": 62, "tray-research.md": 16, "ventilation-report.md": 3,
     "weight-distribution-report.md": 2,
 }

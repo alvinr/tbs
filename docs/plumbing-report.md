@@ -49,8 +49,8 @@ third sheet.
 
 ### 2.1 Pinhole Wall Filter Skid — Filter Train + Tray-Drain Row
 
-Three 4.5"×20" Big Blue filter housings in a **horizontal bank mounted high on
-the pinhole wall** — the heads (with the 1" NPT ports) pinned just below the
+Three 4.5"×20" Big Blue filter housings in a horizontal bank mounted on
+the pinhole wall — the heads pinned just below the
 ceiling, the sump bowls hanging below — so the walkway stays clear and the
 operator reaches up to service them. The **tray drain** feeds the filters: tray sump
 → P-04 → SV-02 sample tap → 3W-DV-02 → F-01 (5μm sediment) → F-02 (KDF-55) →
@@ -58,7 +58,7 @@ F-03 (carbon) → SV-01 sample tap → 3W-DV-01. The tray-drain skid row (P-04·
 sits directly under the filters; ACC-02 (the recycle-spray damper for P-02) is at the
 panel's center-bottom.
 
-**Pinhole Wall Filter Skid — Front elevation: tray-drain skid row (P-04·SV-02·DV-02), 3-stage filter bank, SV-01 + DV-01, and ACC-02**
+**Pinhole Wall Filter Skid — Front elevation: **
 ![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
 
 | Stage | Media | Housing |
@@ -75,24 +75,13 @@ bodies. Each bracket machine-screws through 25mm plywood-offcut standoff blocks 
 tee-nuts in the 18mm ply backing, giving sump-bowl clearance — no fabricated bracket (see the
 **DETAIL — HOUSING MOUNT (section)** inset on the panel elevation above).
 
-**Head clearance:** the 20" sumps hang ~250mm lower than a 10" housing would —
-to roughly shoulder height for the 1.75m scale operator — in exchange for ~2× the
-interval between cartridge changes. If the lower bank proves an operational
-nuisance, the housings swap directly to 4.5"×10" (same heads and ports, shorter
-sumps, half the interval).
-
-**Replacement interval** (4.5"×20" cartridges — roughly 2× the 10" life):
+**Head clearance:** the 20" sumps hang at roughly shoulder height for the 1.75m scale operator. 10" cartiridges would proved head clearance, but a 50% of the change interval.
 
 | Stage | Cartridge | Removes | Replace every |
 |-------|-----------|---------|--------------|
 | F-01 | 5μm MPP sediment | Gross sediment, fiber lint, Prussian blue particles | ~50 prints |
 | F-02 | KDF-55 | Dissolved iron from ferricyanide wash water | ~60 prints |
 | F-03 | CTO carbon block | Residual organics, color | ~40 prints |
-
-**Alternative:** A single 3-stage combo unit (e.g. Purcooflow WHF2045B302 or
-iSpring WGB32B) with 4.5"×20" cartridges eliminates the inter-housing plumbing
-and the separate frame — one integrated bracket, 1" NPT inlet/outlet, a single
-1/2"→1" bushing at the DV-02 recycle feed.
 
 ### 2.2 Corridor Plumbing Panel — Pump Zone
 
@@ -119,7 +108,7 @@ The pump circuit is **dual-fused** off the Blue Sea fuse block, both legs under 
 master pump switch on the Electrical Panel (EP)** ([Electrical Report §7.2–7.3](electrical-report.md)):
 
 - **C1** (15A fuse, 12 AWG dry feed) runs the ceiling trunk to a **12V DC distribution block**
-  (positive + shared negative bus) on the rear of this panel; from it a short 14 AWG
+  (positive + shared negative bus) on the rear of the corridor panel; from it a short 14 AWG
   marine-duplex branch feeds each of the four corridor pumps.
 - **C2** (10A fuse, 12 AWG) is P-04's own run to the Pinhole Wall filter skid (§2.1).
 

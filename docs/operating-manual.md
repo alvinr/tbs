@@ -41,11 +41,11 @@ pumped out. Switching back to the baseline does not clean it.
 **Lighting: normal white light throughout this phase.**
 
 ### 0.1 Water System
-The water system has three circuits (Blue/Brown/Black), pumps on the plumbing panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1,000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. A check valve (CV-1) on the X1 fill line prevents backflow on the gravity fresh-fill; the pump-driven X3/X4 drains rely on the Shurflo pumps' integral check valves, and CV-2/CV-3 stop the two diverter waste legs back-feeding each other at the IBC-4 tee. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+The water system has three circuits (Blue/Brown/Black), pumps on the plumbing panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown recycle spray, P-05/P-03 Brown/Waste drain), plus P-04 on the pinhole-wall filter skid (tray drain, feeds the filter train), and four 1,000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. A check valve (CV-1) on the X1 fill line prevents backflow on the gravity fresh-fill; the pump-driven X3/X4 drains sit above the bottom-tier totes and are isolated by the drain-pump suction valves BV-02/BV-06, and CV-2/CV-3 stop the two diverter waste legs back-feeding each other at the IBC-4 tee. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
-- [ ] 0.1.1 — Fill the Blue totes via external bulkhead port X1 (minimum 400 liters total for one print). X1 tees internally to fill both IBC-1 and IBC-2 in parallel. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
-- [ ] 0.1.2 — Open isolation valve V1 (fill line) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
-- [ ] 0.1.3 — Switch on P-01 Blue pump (circuit C). Pressure should reach 2.5–3.5 bar within 30 seconds.
+- [ ] 0.1.1 — Fill the Blue totes via external bulkhead port X1 (minimum 400 liters total for one print): remove the X1 dust cap, connect the supply hose, fill, disconnect and re-cap. X1 tees internally to fill both IBC-1 and IBC-2 in parallel through check valve CV-1. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
+- [ ] 0.1.2 — Set the valves for operation: open the DN50 butterfly valves on IBC-1, IBC-2 (Blue) and IBC-3 (Brown); open **BV-01** (P-01 suction) and **BV-03** (P-02 suction). Keep closed: the IBC-4 butterfly valve, **BV-02** and **BV-06** (the P-05 / P-03 drain suctions), **BV-04** (TAP-01, opened only when drawing water), and **BV-05b** (spray on/off). P-01 is self-priming.
+- [ ] 0.1.3 — Set BV-05a to Blue and open BV-05b. Switch on P-01 (Blue supply, circuit C1).
 - [ ] 0.1.4 — Check all pipe joints for drips. Tighten any fittings that are weeping.
 - [ ] 0.1.5 — Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 - [ ] 0.1.6 — Switch P-01 OFF.
@@ -196,7 +196,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 
 ### 1.6 Ventilation and Cooling
 - [ ] 1.6.1 — Switch ON exhaust fan (circuit A) and intake fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
-- [ ] 1.6.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill cooler reservoir. Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
+- [ ] 1.6.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill the cooler reservoir from TAP-01 (open BV-04, then close it). Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
 - [ ] 1.6.3 — If using shade canopy: erect before solar noon. A 70% shade cloth over the container reduces interior temperature by 15–20°C.
 
 > **Heat safety:** Do not enter the container if the interior temperature exceeds 40°C. A digital thermometer hung inside is standard practice. In Palm Springs summer without shade, the steel container body can reach 75°C — **shade and pre-cooling are not optional in these conditions.**
@@ -213,7 +213,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.8.4 — Inspect all seams, door perimeters, and duct penetrations. Even a pinprick leak will be visible.
 - [ ] 1.8.5 — Exit. Seal any leaks found with black silicone sealant or gaffer tape. Repeat inspection.
 
-**GO/NO-GO checkpoint:** All leaks sealed. Interior temperature below 35°C. Battery bank above 12.4V. Water system pressure confirmed.
+**GO/NO-GO checkpoint:** All leaks sealed. Interior temperature below 35°C. Battery bank above 12.4V. Blue supply flows evenly at the spray bar (0.1.5).
 
 ### 1.9 Film Plane — Tilt, Swing and Focus
 Set the plane for the shot before loading. The corner-depth table is in the
@@ -365,7 +365,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump — instead of the old fill-dwell-drain cycle (water consumed per print is the same; see [Water System Report §6](water-system-report.md)).
 
-- [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm VB1, VB2, VB3 are open. *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05a to Blue, P-01 instead of P-02.)*
+- [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm BV-01 and BV-03 are open (0.1.2). *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05a to Blue, P-01 instead of P-02.)*
 - [ ] 4.2.3 — **Recycled first wash:** set BV-05a to Brown (recycled) and open BV-05b. Set 3W-DV-02 by the [chemistry choice](#chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
 - [ ] 4.2.4 — **Clean wash:** set BV-05a to Blue (fresh) and bring up **P-01**; P-02 idles. Dichromate option: return 3W-DV-02 to **Brown** now. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
 - [ ] 4.2.5 — **Final rinse:** keep BV-05a on Blue (P-01) for a final ~5-minute clean-Blue flush, P-04 still draining.
@@ -379,10 +379,12 @@ Flow-through, so there are no separate drain phases — **P-04 drains throughout
 
 | Valve / pump | Default | Pass 1 (Brown recycle) | Pass 2 (Blue) | Pass 3 (Blue final) | Stop |
 |---|---|---|---|---|---|
-| BV-01 (Blue manifold) | Open | Open | Open | Open | Open |
+| BV-01 (P-01 suction) | Open | Open | Open | Open | Open |
+| BV-03 (P-02 suction) | Open | Open | Open | Open | Open |
 | BV-05a (spray selector) | Blue | **Brown** | Blue | Blue | — |
 | BV-05b (spray on/off) | Closed | **Open** | **Open** | **Open** | **Closed** |
-| BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed |
+| BV-04 (TAP-01 chemistry tap) | Closed | Closed | Closed | Closed | Closed |
+| BV-02 / BV-06 (P-05 / P-03 drain suctions) | Closed | Closed | Closed | Closed | Closed |
 | 3W-DV-02 (tray drain) | Brown | **Brown** (baseline) / **Waste** (dichromate) | Brown | Brown | Brown |
 | P-01 (Blue supply) | Off | Off | **On** | **On** | Off |
 | P-02 (Brown pump) | Off | **On** | Off | Off | Off |
@@ -442,8 +444,8 @@ a longer stay, resupply Blue and discharge waste through the **external end-wall
 required for a normal 1–2 print outing.
 
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
-- [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1, disconnect, and re-cap X1.
-- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book the hauler for the chemistry in use first (§5.1.1): a liquid-waste hauler for the baseline, a **licensed hazardous-waste hauler** for IBC-4 under the dichromate option (and IBC-3 until it is measured). Wearing nitrile gloves, connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done, and file the hauler's paperwork (the manifest, for hazardous loads).
+- [ ] TU.2 — **Resupply Blue:** remove the X1 dust cap and connect the water bowser/tanker hose to the **X1** camlock inlet on the sealed end wall. X1 gravity-feeds through check valve CV-1 and tees to both Blue totes in parallel (side-entry near the top); the fill is controlled at the bowser. Confirm the level, then shut off at the bowser, disconnect, and re-cap X1.
+- [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book the hauler for the chemistry in use first (§5.1.1): a liquid-waste hauler for the baseline, a **licensed hazardous-waste hauler** for IBC-4 under the dichromate option (and IBC-3 until it is measured). Wearing nitrile gloves, remove the dust cap and connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock port. Open the drain suction — **BV-02** for P-05 (X3), or the IBC-4 butterfly valve and **BV-06** for P-03 (X4) — and run the pump to empty the tote. Then close BV-02 / BV-06 (and the IBC-4 butterfly valve), disconnect and re-cap, and file the hauler's paperwork (the manifest, for hazardous loads).
 - [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
 > **Before transport:** return the totes to their validated fill states — Blue drained, Waste within
@@ -540,10 +542,10 @@ fine Prussian blue particles irritate skin and eyes.
 | Quarterly | Inspect check valves CV-1 (X1 fill line) and CV-2 / CV-3 (IBC-4 merge risers) for proper seating |
 | Annually | Inspect plywood panel for delamination or moisture damage; reseal if needed |
 
-**Filter replacement:** close the P-02 supply valve. Place a bucket under the housing. Turn the sump
+**Filter replacement:** with the master pump switch off (P-04 stopped), set 3W-DV-02 to Waste so nothing flows to the filters. Place a bucket under the housing. Turn the sump
 bowl counter-clockwise with the Big Blue wrench (included with the housing). Remove the spent
 cartridge, inspect the housing interior, insert the new cartridge, re-seat the sump bowl and
-hand-tighten plus ¼ turn. Run P-02 for 1 minute to flush and check for leaks. Bag spent cartridges
+hand-tighten plus ¼ turn. Return 3W-DV-02 to Brown; at the next wash, check the housing for leaks while P-04 runs. Bag spent cartridges
 with the disposal for the chemistry in use.
 
 ### Processing tray and spray bar ([Processing Tray & Spray Bar §7](processing-tray-and-spray-bar.md))

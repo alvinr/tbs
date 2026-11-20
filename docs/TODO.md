@@ -17,6 +17,11 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   `_MONEY_RAW_BASELINE` as each doc's count drops.
 - [x] Cost breakdown §9: the summary row is now computed from all its lines (CDL + permits), 2026-11-20.
 
+## 🚰 End-wall ports
+
+- [ ] Lockable steel cover box over the X1/X3/X4 end-wall ports — shields the dust caps from weather, tampering and transport knocks without putting a valve outside (decided 2026-11-20: no external ball valves; X3/X4 isolation is BV-02/BV-06 + caps). Design (stays inside the end-frame/corner-casting envelope), parts, cost.
+- [ ] Confirm the 2" camlock dust-cap SKU (registry `camlock-dust-cap-2in`, SKU pending, $6–15 ea est).
+
 ## 📐 Layout diagrams
 
 - [x] `container-floorplan.png` + `line-of-sight.png` draw the fold-down chemistry prep shelf on the pinhole wall (X≤1,780, Yd≤225 deployed); the Equipment Layout report now lists it in that zone. Needs a generator change (ask first).

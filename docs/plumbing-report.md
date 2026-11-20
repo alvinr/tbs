@@ -310,8 +310,7 @@ run on **both ports** — a **braided ½" flex jumper on the suction *and* disch
 pumps** (P-04's suction is the 1" tray-drain hose), barb-coupled and SS-clamped, so pump vibration
 can't fatigue-crack a solvent-weld joint; rigid runs are clipped at
 close intervals. Runs stay off the sunniest wall face — PVC softens near 60 °C, though it
-retains > 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
-conditions, PEX is the tougher DIY alternative.)
+retains > 200 PSI hot, far above service.
 
 ### 4.3 Pump-run supports
 
@@ -335,15 +334,13 @@ board face by **cushioned P-clips**.
   line runs down the far board between DV-01 and IBC-3.
 - **Drain-riser spine** — the three gray/brown waste risers clamp to the spine's near face; the
   P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.
-  The far-face clips sit on 6.5mm shims rather than 18mm blocks: that lane is fixed by the
-  pump-port turn, and a clip every ~200mm holds the line firmly at that standoff.
 - **Filter skid** — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
   the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.
 
 The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-07 on the upper board) sit
 below the clamp row above them, rotated 45° so their handles swing into the open corridor on the
 diagonal — reachable while clear of the boards. Hardware: 3 side boards
-(cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 46 cushioned 3/4"
+(cut from the corridor ply sheet), 12 welded L-brackets, and 46 cushioned 3/4"
 P-clips (§8).
 
 ---

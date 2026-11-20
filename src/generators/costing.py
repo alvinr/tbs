@@ -682,6 +682,8 @@ CDL_DMV = (170, 220)                   # CLP + CDL + test fees
 CDL_SCHOOL_BUDGET = (2000, 3000)       # budget private school, Class A
 CDL_SCHOOL_MID = (4000, 6200)          # mid-range / community college, Class A
 PERMIT_LOCATION = (0, 200, 500)        # location permit per deployment, low/mid/high (estimate)
+BUSINESS_LICENSE = (10, 25, 50)        # annual business license, prorated per deployment
+PERMIT_MISC = (0, 75, 200)             # insurance certificate, site access
 WATER_RESUPPLY = (25, 50)              # Blue resupply per deployment, tanker
 TANKER_PER_GAL = 0.01                  # tanker water, $/gal
 FILTER_PER_PRINT = 5                   # est. — F-1..F-3 cartridge wear amortized (~40–60 print lives)
@@ -715,6 +717,16 @@ def emit_cdl_table() -> str:
         rows.append(f"| {lbl} | {_rng(t)} |")
     rows.append(f"| **CDL all-in (community college + medical + DMV)** | **~{_rng(cdl_allin(CDL_SCHOOL_MID))}** |")
     return "\n".join(rows)
+
+
+def emit_permits_per_deployment() -> str:
+    rows = (("Location permit", PERMIT_LOCATION), ("Business license (annual, prorated)", BUSINESS_LICENSE),
+            ("Misc. (insurance certificate, site access)", PERMIT_MISC))
+    out = ["| Item | Low | Mid | High |", "|------|-----|-----|------|"]
+    out += [f"| {lbl} | ${t[0]:,} | ${t[1]:,} | ${t[2]:,} |" for lbl, t in rows]
+    tot = [sum(t[i] for _, t in rows) for i in range(3)]
+    out.append(f"| **Licenses & permits per deployment** | **${tot[0]:,}** | **${tot[1]:,}** | **${tot[2]:,}** |")
+    return "\n".join(out)
 
 
 def _std_chem_per_print() -> float:
@@ -851,6 +863,7 @@ def _whole_blocks() -> dict:
             "funding-level1": ("funding-proposal.md", emit_funding_level1),
             "master-summary": ("master-shopping-list.md", emit_master_summary),
             "optional-additions": (_F, emit_optional_additions), "cdl": (_F, emit_cdl_table),
+            "permits-per-deployment": (_F, emit_permits_per_deployment),
             "running-per-print": (_F, emit_running_per_print),
             "running-per-deployment": (_F, emit_running_per_deployment)}
 
@@ -933,9 +946,6 @@ def _inline_blocks() -> dict:
         "pcb-lens-range": ("project-cost-breakdown.md", lambda: _rng((LENS_OPT[0], LENS_OPT[2]))),
         "pcb-cdl-allin": ("project-cost-breakdown.md", lambda: _rng(cdl_allin(CDL_SCHOOL_MID))),
         "pcb-permit-range": ("project-cost-breakdown.md", lambda: _rng((PERMIT_LOCATION[0], PERMIT_LOCATION[2]))),
-        "pcb-permit-lo": ("project-cost-breakdown.md", lambda: f"${PERMIT_LOCATION[0]}"),
-        "pcb-permit-mid": ("project-cost-breakdown.md", lambda: f"${PERMIT_LOCATION[1]}"),
-        "pcb-permit-hi": ("project-cost-breakdown.md", lambda: f"${PERMIT_LOCATION[2]}"),
         "pcb-tier-x": ("project-cost-breakdown.md", lambda: f"{_TIER_SPEC[-1][2] / _TIER_SPEC[0][2]:g}"),
         "pcb-cov-range": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_LO}–{SENSITIZER_ML_PER_M2_COAT_HI}"),
         "pcb-cov-x": ("project-cost-breakdown.md", lambda: f"{SENSITIZER_ML_PER_M2_COAT_HI / SENSITIZER_ML_PER_M2_COAT_LO:g}"),
@@ -1225,7 +1235,27 @@ def check() -> list[str]:
     return errs
 
 
+def money_values(floor: int = 100) -> set[int]:
+    """Every dollar figure the cost model owns, for lint's 'hand-typed money' check: section and
+    grand totals, the tier run costs, and every generated inline figure. Values below `floor` are
+    dropped — small amounts recur by coincidence and would only add noise."""
+    vals: set[int] = set()
+    for sec in SECTIONS:
+        vals |= {sec.low, sec.mid, sec.high}
+    vals |= set(grand_total())
+    for t in TIERS:
+        c = tier_costs(t)
+        vals |= {_r(c["section_total"], 10), _r(c["section_total"], 1)}
+    for _key, (_file, fn) in _inline_blocks().items():
+        for m in re.findall(r"\$(\d[\d,]*)", fn()):
+            vals.add(int(m.replace(",", "")))
+    return {v for v in vals if v >= floor}
+
+
 def main(argv: list[str]) -> int:
+    if "--money-values" in argv:
+        print("\n".join(str(v) for v in sorted(money_values())))
+        return 0
     if "--inject" in argv:
         for rel, key, st in inject(write=True):
             print(f" [{st:>7}] {rel} costing:{key}")

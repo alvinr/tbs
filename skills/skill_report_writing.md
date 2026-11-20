@@ -276,5 +276,14 @@ paragraph with zero contractions in Track 2; a sentence that only restates its t
   `docs/editorial-review-todo.md`. It flags; it never rewrites an engineering value. Run it before
   ticking a doc. (`style_lint.py <doc>` = line-level; no arg = ranked roster.)
 
+- `lint.py` **money checks.** A dollar figure outside a generated block is invisible to every
+  other check (costs are never in `facts.yml`, and `costing.py` only checks its own blocks), so:
+  - GATE *hand-typed money only goes down*: a per-doc ratchet on raw `$` figures
+    (`_MONEY_RAW_BASELINE`). A new figure must be a costing placeholder. A sourced research quote
+    with no model home raises the baseline deliberately, and a quote restated anywhere else moves
+    into `costing.py` as named data and is injected in both places.
+  - WARNING *hand-typed $ that equals a cost-model value*: a raw figure matching a model value that
+    is not a round number. Convert it to a placeholder.
+
 Both are advisory (not in the commit hook) — judgment-heavy checks shouldn't block a commit.
 The skill is enforced by reading it before each editorial pass.

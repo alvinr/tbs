@@ -1146,6 +1146,73 @@ def gate_pipe_supports() -> tuple[bool, list[str]]:
     return (not msgs, msgs)
 
 
+# ── Hand-typed money: a dollar figure outside a generated block is invisible to every other check
+# (costs are deliberately not in facts.yml, and costing.py only checks the blocks it writes). Two
+# layers: a GATE ratchet on the per-doc count, and a WARNING when a raw figure equals a value the
+# cost model owns (it should be a costing placeholder). ──
+_GEN_BLOCK = re.compile(r"<!-- BEGIN (\w+):([\w.-]+) -->.*?<!-- END \1:\2 -->", re.S)
+_RAW_MONEY = re.compile(r"\$(\d[\d,]*)(?:\.\d+)?")
+
+# Raw $ figures per published doc (outside generated blocks), 2026-11-20. RATCHET: a doc may only go
+# DOWN. A new hand-typed figure must become a costing placeholder, or — if it is a sourced research
+# quote with no model home — be added here deliberately. Lower a count when a pass removes figures.
+_MONEY_RAW_BASELINE = {
+    "chemistry-shopping-list.md": 10, "component-dimension-audit.md": 22, "container-report.md": 29,
+    "container-transport-options.md": 130, "cost-analysis-report.md": 6, "electrical-report.md": 20,
+    "film-plane-mechanism-report.md": 2, "funding-proposal.md": 15, "ibc-stacking-report.md": 4,
+    "lens-options.md": 41, "light-trap-selection.md": 15, "master-shopping-list.md": 30,
+    "mini-tbs/mini-tbs-poc.md": 22, "mini-tbs/mini-tbs-shopping-list.md": 80,
+    "photosensitive-plane-options.md": 161, "plumbing-report.md": 5, "process-comparison.md": 130,
+    "project-cost-breakdown.md": 62, "tray-research.md": 16, "ventilation-report.md": 3,
+    "weight-distribution-report.md": 2,
+}
+
+
+def _published_docs() -> list[str]:
+    pub = open(os.path.join(ROOT, "scripts", "publish.sh"), encoding="utf-8").read()
+    m = re.search(r"MD_FILES=\((.*?)\)", pub, re.DOTALL)
+    files = set(re.findall(r'"([^"]+\.md)"', m.group(1))) if m else set()
+    files.add("project-summary.md")
+    return sorted(f for f in files if os.path.exists(os.path.join(ROOT, "docs", f)))
+
+
+def _raw_money(rel: str) -> list[tuple[int, int]]:
+    """(line, amount) for each $ figure outside generated blocks; block text is blanked, not
+    removed, so line numbers stay true."""
+    text = open(os.path.join(ROOT, "docs", rel), encoding="utf-8").read()
+    text = _GEN_BLOCK.sub(lambda m: re.sub(r"[^\n]", " ", m.group(0)), text)
+    out = []
+    for i, line in enumerate(text.split("\n"), 1):
+        out += [(i, int(a.replace(",", ""))) for a in _RAW_MONEY.findall(line)]
+    return out
+
+
+def gate_money_ratchet() -> tuple[bool, list[str]]:
+    issues = []
+    for rel in _published_docs():
+        n = len(_raw_money(rel))
+        base = _MONEY_RAW_BASELINE.get(rel, 0)
+        if n > base:
+            issues.append(f"{rel}: {n} hand-typed $ figures (baseline {base}) — use a costing placeholder, "
+                          f"or if it is a sourced quote with no model home raise _MONEY_RAW_BASELINE")
+        elif n < base:
+            issues.append(f"{rel}: {n} hand-typed $ figures, baseline {base} — lower _MONEY_RAW_BASELINE "
+                          f"to {n} (ratchet down)")
+    total = sum(len(_raw_money(r)) for r in _published_docs())
+    return (not issues), (issues or [f"{total} hand-typed $ figures across published docs, none new"])
+
+
+def warn_money_should_be_placeholder() -> tuple[bool, list[str]]:
+    r = subprocess.run([sys.executable, os.path.join(HERE, "costing.py"), "--money-values"],
+                       capture_output=True, text=True)
+    if r.returncode:
+        return False, [f"costing.py --money-values failed: {r.stderr.strip()}"]
+    owned = {int(v) for v in r.stdout.split() if int(v) % 100}   # round figures ($300, $1,200) match by coincidence
+    issues = [f"{rel}:{ln} ${amt:,} equals a cost-model value — make it a costing placeholder"
+              for rel in _published_docs() for ln, amt in _raw_money(rel) if amt in owned]
+    return (not issues), (issues or [f"no hand-typed $ figure restates a cost-model value ({len(owned)} checked)"])
+
+
 GATES = [
     ("diagrams authored in mm (no canvas scale factor)", gate_diagram_mm_native),
     ("water pipes: fluid colors + clips on standoff blocks", gate_pipe_fluid_colors),
@@ -1163,9 +1230,11 @@ GATES = [
     ("plumbing routing change ships a refreshed interference report", gate_interference_report),
     ("no NEW cross-file duplicate geometry emitter (ratchet)", gate_emitter_dups),
     ("overview defines no re-grown owned builder (aggregation ratchet)", gate_overview_aggregation),
+    ("hand-typed money only goes down (raw $ ratchet)", gate_money_ratchet),
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),
+    ("hand-typed $ that equals a cost-model value (should be a placeholder)", warn_money_should_be_placeholder),
     ("editorial-review list covers every published doc", warn_editorial_list),
     ("all-diagrams gallery covers every generated diagram PNG", warn_gallery_coverage),
     ("parts registry reconciles with costing (migrated systems)", warn_parts_reconcile),

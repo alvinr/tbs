@@ -424,12 +424,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ### 9.3 Permits summary (per deployment, non-commercial art use)
 
+<!-- BEGIN costing:permits-per-deployment -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| Location permit | <!-- BEGIN costing:pcb-permit-lo -->$0<!-- END costing:pcb-permit-lo --> | <!-- BEGIN costing:pcb-permit-mid -->$200<!-- END costing:pcb-permit-mid --> | <!-- BEGIN costing:pcb-permit-hi -->$500<!-- END costing:pcb-permit-hi --> |
+| Location permit | $0 | $200 | $500 |
 | Business license (annual, prorated) | $10 | $25 | $50 |
 | Misc. (insurance certificate, site access) | $0 | $75 | $200 |
 | **Licenses & permits per deployment** | **$10** | **$300** | **$750** |
+<!-- END costing:permits-per-deployment -->
 
 *CDL costs are one-time and listed separately above. If CDL is obtained, add <!-- BEGIN costing:pcb-cdl-allin -->$4,245–$6,570<!-- END costing:pcb-cdl-allin --> to the project total.*
 

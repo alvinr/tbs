@@ -93,7 +93,7 @@ def draw_board(ax, spec):
     _rect(ax, X0, z0, BW, h, C_PLY, ec=C_PLY_E, lw=1.6, z=2)
     cx = (X0 + X1) / 2
     if not any(abs(r[0] - cx) < 60 for r in risers):   # skip the center label if a riser sits on it
-        ax.text(cx, z0 + h * (0.3 if switches else 0.5), "18mm ply", ha="center", va="center",
+        ax.text(cx, z0 + h / 2, "18mm ply", ha="center", va="center",
                 fontsize=7, color="#5C4A28", zorder=4, **FONT)
 
     # 4 L-brackets (steel tabs) at the post inner faces, top & bottom
@@ -173,7 +173,7 @@ def draw_sheet1():
         "2. Each board carried on 4 welded steel L-brackets (one per post inner face, top + bottom) — see Sheet 2.",
         "3. Risers clamped with cushioned 3/4\" P-clips at the marked rows (2 per riser; the near-upper board takes 4).",
         "4. Steel tab = L-bracket landing leg (face-on); brackets set 35mm in from each board edge.",
-        f"5. Near-upper board: drain-pump switches S-05 / S-03 — sealed IP67 rockers in {cp.DSW_W}×{cp.DSW_H}mm surface boxes, screwed to the ply in the pipe-free band between the P-05 suction and the X4 wrap.",
+        f"5. Near-upper board: drain-pump switches S-05 / S-03 — sealed IP67 rockers in {cp.DSW_W}×{cp.DSW_H}mm surface boxes, screwed to the ply beside the valve each one works with (S-05 level with BV-02, S-03 level with BV-06).",
     ], 0.0, 1.0, 0.15, fs=7.2, title_fs=7.6, width=1.0, wrap=120, font=FONT)
 
     ax_tb = fig.add_axes([0.04, 0.008, 0.92, 0.045])

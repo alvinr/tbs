@@ -682,12 +682,18 @@ def panel_power(include_switch=True, part="all"):
             zl = cp.DSW_Z0[pump] + cp.DSW_LINE_DZ[pump]
             zd = cp.DSW_Z0[pump] + cp.DSW_LOAD_DZ[pump]
             ztap = cp.PSTACK[pump] + 90
-            line = [(BKX, ly, zc + 45), (BKX, ly, zl), (cp.DSW_CABLE_X, ly, zl), (cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zl), (sw_x, cp.DSW_CABLE_YD, zl)]
-            load = [(sw_x, cp.DSW_CABLE_YD, zd), (cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zd), (cp.DSW_CABLE_X, cp.DSW_LOAD_YD, zd),
-                    (cp.DSW_CABLE_X, cp.DSW_LOAD_YD, ztap), (xin, cp.DSW_LOAD_YD, ztap)]
+            zp = cp.DSW_PANEL_Z[pump]
+            line = [(BKX, ly, zc + 45), (BKX, ly, zp), (cp.DSW_CABLE_X, ly, zp), (cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zp)]
+            if zl != zp:
+                line.append((cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zl))
+            line.append((sw_x, cp.DSW_CABLE_YD, zl))
+            load = [(sw_x, cp.DSW_CABLE_YD, zd), (cp.DSW_CABLE_X, cp.DSW_CABLE_YD, zd), (cp.DSW_CABLE_X, cp.DSW_LOAD_YD, zd)]
+            if ztap != zd:
+                load.append((cp.DSW_CABLE_X, cp.DSW_LOAD_YD, ztap))
+            load.append((xin, cp.DSW_LOAD_YD, ztap))
             p.append(draw.ruby_pipe_run(f"Cct C {pump} switch line (bus -> {pump.replace('P', 'S')})", line, cr, color=PWR))
             p.append(draw.ruby_pipe_run(f"Cct C {pump} switch load ({pump.replace('P', 'S')} -> {pump})", load, cr, color=PWR))
-            p.append(draw.ruby_clip_run(f"Cct C {pump} switch cables", [line[3], line[4]], spacing=60))
+            p.append(draw.ruby_clip_run(f"Cct C {pump} switch cables", line[-2:], spacing=60))
         # corridor branch tap: P-02 (in P-04's vacated slot)
         for label, key in (("P-02", "P-04"),):
             z = cp.PSTACK[key] + 90

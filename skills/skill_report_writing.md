@@ -178,6 +178,21 @@ tells below (advisory, per-track thresholds) — run it before ticking a doc.
 - **Short sentences.** Lead with the subject and the point. An occasional one-line beat is
   fine; wit, anecdote, and first person are not.
 
+### Design reports are the WHAT and WHY; the Operating Manual is the HOW
+- A design report says **what** the system is, **how it is built** (fabrication, assembly,
+  installation and commissioning are design), and **why** each choice was made.
+- **Operating instructions belong in `operating-manual.md` only**: deployment, operation, cleanup,
+  transport, maintenance procedures and schedules, PPE, troubleshooting. Tell-tales are imperatives
+  addressed to an operator ("set / open / check / inspect / wear / keep / never / avoid …", "the
+  operator should …") and checklists or maintenance tables in a report.
+- **Convert, don't delete:** restate the requirement as a declarative design fact with its reason
+  ("IBC-4's cap stays closed between pump-outs, because UV drives the ferricyanide breakdown"), and
+  link to the manual section that holds the steps. If the manual lacks the procedure, add it there
+  in the same work (CLAUDE.md: an operation-affecting change updates the manual).
+- **Creative choices are not design parameters.** Where the artist chooses (e.g. the optional
+  ammonium dichromate), the report states the baseline, the option, and what the system does for
+  each. The manual carries the per-choice steps.
+
 ### Track 2 — personal & engaging (Home + Proposal only)
 Outward-facing, for audience-building / fundraising / the MFA proposal. It must *sound like the
 author* — the voice of the vector-database and road-trip essays, not a brochure:

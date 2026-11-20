@@ -585,8 +585,7 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 | Distilled water | ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L | ~<!-- BEGIN costing:om-water-l-run -->110<!-- END costing:om-water-l-run --> L |
 
 Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
-pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,710 (Standard), range ~$1,250
-(Lean) – ~$3,100 (Rich)** per 50-print run (~$25–62/print), incl. ~$300 muslin substrate — ~399 linear
+pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost <!-- BEGIN costing:msl-run-cost -->~$1,680 (Standard), range ~$1,230 (Lean) – ~$3,040 (Rich)<!-- END costing:msl-run-cost -->** per 50-print run (~<!-- BEGIN costing:msl-perprint-range -->$25–61<!-- END costing:msl-perprint-range -->/print), incl. ~$300 muslin substrate — ~399 linear
 yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
 summary table maps Low = Lean, High = Rich.
 

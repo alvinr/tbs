@@ -836,6 +836,17 @@ def _inline_blocks() -> dict:
         "om-ferri-kg-standard": ("master-shopping-list.md", lambda: _kg_fmt(_tier('standard').ferri_kg)),
         "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
         "om-water-l-run": ("master-shopping-list.md", lambda: f"{round(SENSITIZER_L_PER_PRINT * PRINTS)}"),
+        # project-cost-breakdown.md §7.1 tier masses + §7.2 per-print table (Standard tier).
+        "msl-run-cost": ("master-shopping-list.md", lambda: f"~${_r(by_key('standard')['section_total'], 10):,} (Standard), range ~${_r(by_key('lean')['section_total'], 10):,} (Lean) – ~${_r(by_key('rich')['section_total'], 10):,} (Rich)"),
+        "msl-perprint-range": ("master-shopping-list.md", lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
+        "pcb-amfe-g-range": ("project-cost-breakdown.md", lambda: f"{_amfe_g('lean')}–{_amfe_g('rich')}"),
+        "pcb-pp-amfe": ("project-cost-breakdown.md", lambda: f"${by_key('standard')['amfe'] / PRINTS:.0f}"),
+        "pcb-pp-ferri": ("project-cost-breakdown.md", lambda: f"${by_key('standard')['ferri'] / PRINTS:.0f}"),
+        "pcb-pp-dichromate": ("project-cost-breakdown.md", lambda: f"${DICHROMATE_RUN / PRINTS:.2f}"),
+        "pcb-pp-muslin": ("project-cost-breakdown.md", lambda: f"${muslin_cost() / PRINTS:.0f}"),
+        "pcb-pp-consumables": ("project-cost-breakdown.md", lambda: f"${PER_PRINT_CONSUMABLES}"),
+        "pcb-pp-total": ("project-cost-breakdown.md", lambda: f"${_pp('standard')}"),
+        "pcb-pp-range": ("project-cost-breakdown.md", lambda: f"${_pp('lean')} (Lean) – ${_pp('rich')} (Rich)"),
         "om-dichromate-kg-run": ("master-shopping-list.md",
                                  lambda: f"{DICHROMATE_G_LO * PRINTS / 1000:.2f}–{DICHROMATE_G_HI * PRINTS / 1000:.2f}"),
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).

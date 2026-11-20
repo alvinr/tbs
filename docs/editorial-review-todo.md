@@ -33,11 +33,16 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 
 ## Track 1 — Terse engineering (everything else reader-facing)
 
+**Reset 2026-11-20 for the what/why pass.** Every Track 1 doc is re-reviewed against the rule in
+`skills/skill_report_writing.md` §F: a design report is the *what* and *why* (and how it's built);
+the *how* of operation lives only in the operating manual. Notes from the earlier terseness pass
+are kept after each entry.
+
 ### Costing
-- [x] project-cost-breakdown.md  — confirmed complete (owner). Verified it is a section/subsystem cost rollup (not a part-by-part BOM) — same totals as the master BOM, every major component named, no SKU/supplier/qty; decided it is the brochure PDF's parts/cost coverage (the itemized BOM stays web-only).
+- [~] project-cost-breakdown.md  — what/why pass 2026-11-20 (awaiting owner review): §12 "Research Gaps" to-do list → §12 Cost Confidence (stale rows dropped: tube saddle clamps, ball-lock pins, Grimco ACM, 8-saddle count); §4 saddle anchoring corrected (4 saddles + 2 pivot-post plates + 2 shared BR plates); §4 tilt/swing placeholders; §6/§6a broken sentences fixed; §7.2 per-print table generated from costing.py (was AmFe $75 → $21, rows didn't sum); §7.1 AmFe 260–780 g → 222–668 g; summary line-7 note de-archaeologized (hand-keyed $1,250/$1,710/$3,100 drifted from the generated $1,230/$1,680/$3,040). Prior pass: confirmed complete (owner). Verified it is a section/subsystem cost rollup (not a part-by-part BOM) — same totals as the master BOM, every major component named, no SKU/supplier/qty; decided it is the brochure PDF's parts/cost coverage (the itemized BOM stays web-only).
 
 ### Construction — Equipment & Water
-- [x] equipment-layout-report.md
+- [ ] equipment-layout-report.md
 - [ ] water-system-report.md
 - [ ] plumbing-report.md
 - [ ] walkway-routing-sections.md
@@ -45,9 +50,9 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 - [ ] processing-tray-and-spray-bar.md
 
 ### Construction — Electrical & Ventilation
-- [x] electrical-report.md  — confirmed complete (owner). §8 de-duplicated (hand-keyed parts table → filtered-BOM link + injected cost summary); inverter DC protection backfilled (§7.6 rule 4); weather/lightning pre-step + corner-casting earth note added; prose already terse.
-- [x] electrical-safety-report.md  — confirmed complete (owner). §7.3 corner-casting earth note + §7.6 DC-protection rule (drove the inverter-DC-protection backfill); prose already terse.
-- [x] ventilation-report.md  — confirmed complete (owner). §9 consolidated to the filtered-master-BOM reference; §5.1 Fan-B wiring verified (silicone-jacketed descriptor dropped); louvre-grille part added; prose terse.
+- [ ] electrical-report.md  — confirmed complete (owner). §8 de-duplicated (hand-keyed parts table → filtered-BOM link + injected cost summary); inverter DC protection backfilled (§7.6 rule 4); weather/lightning pre-step + corner-casting earth note added; prose already terse.
+- [ ] electrical-safety-report.md  — confirmed complete (owner). §7.3 corner-casting earth note + §7.6 DC-protection rule (drove the inverter-DC-protection backfill); prose already terse.
+- [ ] ventilation-report.md  — confirmed complete (owner). §9 consolidated to the filtered-master-BOM reference; §5.1 Fan-B wiring verified (silicone-jacketed descriptor dropped); louvre-grille part added; prose terse.
 
 ### Construction — Film Plane & Pinhole
 - [ ] pinhole-report.md
@@ -56,7 +61,7 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 - [ ] pinhole-disc-holder-report.md
 
 ### Construction — Misc & Sequence
-- [x] walkway-report.md  — terseness pass (4,138 → ~3,700 words): fixed 3 broken sentences, collapsed duplicate bolt-"Attachment" + load-path paragraphs, dropped the "winged" label (unnecessary over self-tapping) + diagram-restated dims. Author editorial folded in.
+- [ ] walkway-report.md  — terseness pass (4,138 → ~3,700 words): fixed 3 broken sentences, collapsed duplicate bolt-"Attachment" + load-path paragraphs, dropped the "winged" label (unnecessary over self-tapping) + diagram-restated dims. Author editorial folded in.
 - [ ] hinged-panel-report.md
 - [ ] chemistry-prep-shelves.md
 - [ ] construction-report.md

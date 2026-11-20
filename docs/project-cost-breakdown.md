@@ -32,7 +32,7 @@
 | **TOTAL (excl. own transport, CDL, lens)** | **$27,850** | **$32,719** | **$39,618** |
 <!-- END costing:scenario -->
 
-*Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware New Cyanotype** chemistry (ferric ammonium oxalate) + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,250), Mid = Standard ½-Ware ($1,710), High = Rich full-Ware ($3,100)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
+*Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~$300 muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
 
 *Optional additions that may apply — see individual sections:*
 
@@ -165,11 +165,11 @@ The disc holder takes a Copal/Compur **lens board** (0/1/3) in place of a pinhol
 
 **Source document:** `film-plane-mechanism-report.md`
 
-View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a U-channel depth rail, coupled to a 2-axis cross-slide through a single universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
+A view-camera-style movable film plane: a **fixed-size rigid** plane with four independently set corners (TL, TR, BL, BR). Each corner rides an acetal skate in a U-channel depth rail, coupled to a 2-axis cross-slide through one universal joint. That gives tilt (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->°), swing (±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°) and limited compound movements.
 
 The full itemized parts list is the [Film Plane Mechanism report Parts List](film-plane-mechanism-report.md), held in the parts registry. The cost roll-up is the [Section total](#section-total) below.
 
-**Wall-seat saddles** — each of the 8 rail ends anchors to the container: **6 with a standalone wall-seat saddle**; the **2 bottom-right (BR) ends share a combined corner plate with the right walkway**. The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
+**Wall-seat saddles** — each of the 8 rail ends anchors to the container: **4 on a standalone wall-seat saddle**, the **2 far-left ends on the pivot-post floor/roof mount plates**, and the **2 bottom-right (BR) ends on a corner plate shared with the right walkway**. The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
 ### Section total
 
@@ -236,7 +236,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 **Source document:** `light-trap-selection.md`
 
-Personnel access during operation is via a **Ø800 fixed housing + single-opening C-shell drum** built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. The drum and housing from a all-HDPE plastic skin — 5mm (3/16in) UV-HDPE housing + 1/8" HDPE drum. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
+Personnel enter through a **Ø800 fixed housing + single-opening C-shell drum** in the hinged cargo-door panel. It is light-tight by geometry: the housing's two 80° openings sit 180° apart, so the drum opening can never bridge both. The drum turns on two SKF 6215 bearings; housing and drum are HDPE skins (5mm UV-HDPE housing, 1/8" drum). It is custom-built because commercial darkroom doors (~$2,500–$4,500) are not weatherproof, transport-rated, or adaptable to a removable panel.
 
 <!-- BEGIN costing:lightlock -->
 | Item | Low | Mid | High | Notes |
@@ -277,13 +277,13 @@ Personnel access during operation is via a **Ø800 fixed housing + single-openin
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm -->mm at EP/battery/slit zone. 140mm deck height to clear the processing tray and spray bar. No tray contact on any section — entire tray interior completely clear for film loading.
+Four removable grated walkway sections surround the processing tray. The near walkway widens to <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm -->mm at the EP/battery/slit zone. The 140mm deck clears the tray and spray bar, and no section touches the tray, so its whole interior stays clear for loading the muslin.
 
 Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (13 standard 8mm + 5 widened 10mm).
 
 Right walkway: cantilever rectangle — a closed 2×1×0.120in steel frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail.
 
-Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray. Arms are extened in the middle punch out section to ease operator egress. Grate lifts out for transport. Butt joints at all corners.
+Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray. The arms extend further in the middle punch-out section to ease egress. Grate lifts out for transport. Butt joints at all corners.
 
 <!-- BEGIN costing:walkway -->
 | Item | Low | Mid | High | Notes |
@@ -343,7 +343,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 > **⚠ Chemistry is a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** The
 > **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe**),
 > **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane.
-> Per-print AmFe is **260–780 g** by concentration tier (Lean ⅓-Ware / Standard ½-Ware / Rich full-Ware —
+> Per-print AmFe is **<!-- BEGIN costing:pcb-amfe-g-range -->222–668<!-- END costing:pcb-amfe-g-range --> g** by concentration tier (Lean ⅓-Ware / Standard ½-Ware / Rich full-Ware —
 > operating-manual §0.2), so the chemistry cost spans a wide band until a tier is trialled. **Standard
 > (½-Ware) is the working default.**
 
@@ -365,14 +365,14 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 | Component | Cost per print (Standard) |
 |-----------|---------------|
-| Ferric ammonium oxalate (AmFe, Part A) | ~$75 |
-| Potassium ferricyanide (Part B) | ~$3 |
-| Ammonium dichromate (contrast) | ~$0.50 |
-| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
-| Water & consumables (6-mil liner, gloves) | ~$3 |
-| **Total per print (Standard)** | **~$36** |
+| Ferric ammonium oxalate (AmFe, Part A) | ~<!-- BEGIN costing:pcb-pp-amfe -->$21<!-- END costing:pcb-pp-amfe --> |
+| Potassium ferricyanide (Part B) | ~<!-- BEGIN costing:pcb-pp-ferri -->$6<!-- END costing:pcb-pp-ferri --> |
+| Ammonium dichromate (optional contrast) | ~<!-- BEGIN costing:pcb-pp-dichromate -->$0.50<!-- END costing:pcb-pp-dichromate --> |
+| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin --> |
+| Water & consumables (6-mil liner, gloves) | ~<!-- BEGIN costing:pcb-pp-consumables -->$3<!-- END costing:pcb-pp-consumables --> |
+| **Total per print (Standard)** | **~<!-- BEGIN costing:pcb-pp-total -->$37<!-- END costing:pcb-pp-total -->** |
 
-*Across tiers, chemistry moves the per-print total to ~**$27 (Lean) – ~$63 (Rich)**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~$6/print (see §7.1), so the §7.1 totals = this per-print × 50 (± the $3/print consumables that §7.1 excludes).*
+*Across tiers, chemistry moves the per-print total to ~**<!-- BEGIN costing:pcb-pp-range -->$28 (Lean) – $64 (Rich)<!-- END costing:pcb-pp-range -->**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~$6/print (see §7.1), so the §7.1 totals = this per-print × 50 (± the $3/print consumables that §7.1 excludes).*
 
 ### 7.3 Alternative process cost comparison
 
@@ -563,23 +563,21 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ---
 
-## 12. Research Gaps & Cost Verification Required
+## 12. Cost Confidence
 
-The following costs are not covered by existing research documents and should be verified before committing:
+Most lines are firm registry prices ([Master Shopping List](master-shopping-list.md)). These remain
+estimates, and the scenario bands in §11 carry them:
 
-| Item | Status | Action |
-|------|--------|--------|
-| Wall-seat saddle plate steel (ICP-11) | Estimated ~$3–5/kg | Confirm at Metal Supermarkets SoCal (walk-in) or Online Metals for 8mm mild-steel plate; ~28 kg needed (8 saddles, laser/plasma cut) |
-| Saddle clamps for 2in (50.8mm) steel tube (ICP-12) | Estimated ~$10 ea. | Confirm at McMaster-Carr (steel tube clamps category) — verify fit for 2×2in (50.8mm) square section |
-| M8 thumbscrews DIN 464 SS (ICP-13) | Estimated ~$2–5 ea. | Amazon multi-packs typical; Maedler NA PN 65499225 confirmed at ~$15–17 ea. (May 2026) |
-| Ball-lock pins Ø10mm SS (ICP-14) | Estimated ~$6–10 ea. | Confirm at McMaster-Carr ball lock pins category; verify 50mm usable length fits joint |
-| Lenox Laser pinhole fabrication price | Estimated | Request quote at lenoxlaser.com — specify 2.17mm ±0.025mm in SS-302 shim, 75mm × 75mm |
-| Grimco ACM panel pricing | Listed at ~$85† | Confirm current price; Grimco City of Industry: 626-912-9600 |
-| Rockland Liquid Light bulk pricing | Unconfirmed | Contact rockaloid.com before committing to that process |
-| Silver nitrate bulk pricing | Volatile | Get quote within 2 weeks of ordering — AgNO₃ price can shift 20–30%/month |
-| Location permit fees | Estimated | Check specific jurisdiction's film permit office before site selection |
-| Commercial photography insurance | Not researched | General liability + inland marine for equipment; estimate $800–$2,000/year |
-| Site preparation (levelling, power, fencing) | Not researched | Highly site-specific; budget $0–$5,000 depending on location |
+| Item | Basis | Status |
+|------|-------|--------|
+| Wall-seat saddle plate (ICP-11, 4 saddles) | 8mm + 10mm A36 plate, cut; welded by the owner | Estimate; firmed by a fab quote once the blueprints are final |
+| Pinhole carrier set (Lenox Laser) | Laser-drilled SS-302 shim on 6061 discs, $20–40 each | Quote pending |
+| Location permit fees (§9) | Typical jurisdiction fees | Varies by jurisdiction |
+| Commercial photography insurance | General liability + inland marine, ~$800–$2,000/year | Not in the budget; not researched |
+| Site preparation (leveling, power, fencing) | $0–$5,000 | Not in the budget; site-specific |
+
+The alternative-process figures in §7.3 (Liquid Light and the silver-nitrate processes) are
+comparison estimates only. They are not part of the budget.
 
 ## See Also
 

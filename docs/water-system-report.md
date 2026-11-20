@@ -302,9 +302,9 @@ The storage side needs little upkeep by design: the totes are closed, opaque ves
 
 ## 10. Hazards Designed For
 
-1. **Ferricyanide breakdown.** Alkaline conditions plus UV can release trace cyanide ions from ferricyanide. The design holds every container below pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> (sample taps SV-01/SV-02, the IBC-3 dosing port, DV-01's reject leg) and keeps the totes closed and opaque. The risk is theoretical rather than acute at wash-water concentrations.
+1. **Ferricyanide breakdown.** Alkaline conditions plus UV can release trace cyanide ions from ferricyanide. The design holds every container below pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> and keeps the totes closed and opaque. The risk is theoretical rather than acute at wash-water concentrations.
 
-2. **Prussian blue particles.** Prussian blue is non-toxic (it is an approved antidote medication), but the fine particles irritate skin and eyes. The F-1 sediment stage takes them out of the recycle loop.
+2. **Prussian blue particles.** Prussian blue is non-toxic, but the fine particles irritate skin and eyes. The F-1 sediment stage takes them out of the recycle loop.
 
 3. **Citric-acid dosing.** Dry acid added to iron-rich water can react exothermically and bubble, so the dosing port takes pre-dissolved solution, not dry acid.
 

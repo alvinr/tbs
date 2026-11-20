@@ -251,7 +251,7 @@ entirely: wash 1 under the dichromate option, which carries most of the chromium
 heavily contaminated drain water ([Water System Report §2.3, §4.2](water-system-report.md)).
 Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
-**3W-DV-01** is the pH-gated valve, set from the **SV-01** sample (below): filtered water at pH 6–7 routes to
+**3W-DV-01** is the pH-gated valve, set from the **SV-01** sample (below): filtered water at pH 6–7.5 routes to
 recycle (IBC-3 Brown buffer, which P-02 later sprays back); pH >7.5 or discolored routes to Black (IBC-4).
 Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
@@ -282,7 +282,7 @@ spout pointing toward the operator so a cup fits beneath it from the right
 walkway.
 
 SV-01 draws while P-04 pressurizes the filtered line; a ~50 ml sample sets 3W-DV-01
-(recycle-return at pH 6–7, Black-waste on pH drift or discoloration). The sampling
+(recycle-return at pH 6–7.5, Black-waste above pH 7.5 or on discoloration). The sampling
 procedure is in the [Operating Manual §4.2](operating-manual.md).
 
 ---
@@ -405,7 +405,7 @@ to the spray bar center feed bulkhead.
 
 ```
 Tray sump → P-04 → SV-02 sample → 3W-DV-02 → 1/2"→1" reducer → F-01 → F-02 → F-03
-  → SV-01 sample tap → 3W-DV-01 → IBC-3 recycle (if pH 6–7) or IBC-4 waste (if pH drift)
+  → SV-01 sample tap → 3W-DV-01 → IBC-3 recycle (if pH 6–7.5) or IBC-4 waste (if above pH 7.5)
 IBC-3 → P-02 → ACC-02 → BV-05 → spray bar   (recycle spray)
 ```
 

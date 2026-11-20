@@ -409,7 +409,7 @@ DV-02 sits on the P-04 pump discharge and controls whether drain water from the 
 
 DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After brown water has been filtered, the operator draws a ~50 ml sample at SV-01 and checks the pH reading:
 
-- **Set to Brown buffer (default):** pH is 6–7 and the water looks clean, so it returns to IBC-3 (Brown buffer) for reuse as a first wash. The Blue supply only ever holds fresh water.
+- **Set to Brown buffer (default):** pH is 6–7.5 and the water looks clean, so it returns to IBC-3 (Brown buffer) for reuse as a first wash. The Blue supply only ever holds fresh water.
 - **Switch to Waste:** pH is above 7.5, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the recycle buffer.
 
 **Correcting the Brown buffer pH:** if SV-01 reads above pH 7.5 with DV-01 still on Brown:

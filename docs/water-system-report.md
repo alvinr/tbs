@@ -114,7 +114,7 @@ Iron compounds in the wash water react with copper and galvanized steel — the 
 
 ### Per-print water requirement
 
-One wash floods the processing tray (~103 sq ft) to 6mm (¼") depth — **<!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal per wash**.
+One wash floods the processing tray to <!-- BEGIN fact:tray_flood_depth_mm -->6<!-- END fact:tray_flood_depth_mm -->mm (¼") depth — **<!-- BEGIN fact:tray_flood_gal -->15<!-- END fact:tray_flood_gal --> gal per wash**.
 
 | Wash cycle | Water source | Volume | Drains to |
 |-----------|-------------|--------|---------|
@@ -174,7 +174,7 @@ IBC-1 ──┐
 IBC-2 ──┘
 ```
 
-- The two Blue totes feed a 1" PVC manifold with isolation valves, and are tied at the base by a **1" equalization cross-tie** so their levels self-balance as P-01 draws and X1 refills. Like every tote connection, the tie lands on each tote through a short 1" flex jumper, so the rigid PVC run can't fatigue as the two totes settle independently
+- The two Blue totes feed a 1" PVC manifold with isolation valves. A **1" equalization cross-tie** at the base keeps their levels balanced as P-01 draws and X1 refills. Like every tote connection, the tie lands on each tote through a short 1" flex jumper, so the rigid PVC can't fatigue as the totes settle independently
 - **P-01:** Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - **ACC-01:** 0.75L pressure accumulator — smooths pump cycling and holds pressure when the pump is off
 - **Check valves:** **CV-1** on the X1 gravity fill — the one flow path with no pump. The Shurflo 2088s carry an **integral check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so the pumped supply legs do not need an additional check valve. The two waste legs are the exception (§4.3)
@@ -199,9 +199,9 @@ Processing tray sump (P-04 suction pickup)
         │
      SV-01 SAMPLE TAP (meter filtered pH)
         │
-   3W-DV-01 ──→ pH 6–7, visually acceptable: IBC-3 (Brown buffer)
+   3W-DV-01 ──→ pH 6–7.5, visually acceptable: IBC-3 (Brown buffer)
         │
-        └──→ pH drift / discolored: IBC-4 (waste)
+        └──→ above pH 7.5 / discolored: IBC-4 (waste)
 
    IBC-3 (Brown buffer)
         │
@@ -271,9 +271,8 @@ All five pumps are Shurflo 2088s drawing <!-- BEGIN fact:pump_current_a -->5.2<!
 
 **Continuous flow-through wash.** The supply pump (P-01 Blue or P-02 Brown) and the tray-drain pump P-04
 run **concurrently** at the same 3.5 GPM, so the drain keeps pace with the spray bar and the tray holds a
-**shallow, stable flowing film** instead of filling and dwelling. The two pumps are on separate fuses
-(Circuit C1/C2) under one 2-pole master switch. Water per print is unchanged (§3); only P-04's runtime
-rises.
+**shallow, stable flowing film** rather than a standing bath. The two pumps are on separate fuses
+(Circuit C1/C2) under one 2-pole master switch. Water per print is set by the flood volume (§3).
 
 ---
 

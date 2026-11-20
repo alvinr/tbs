@@ -1135,6 +1135,11 @@ CR_WASTE_MG_L_HI         = round(CR_G_HI * 1000 / RECOVERED_PER_PRINT_L, 1)     
 CR_LIMIT_X_LO            = round(CR_WASTE_MG_L_LO / CR_TC_LIMIT_MG_L, 1)             # = 2.2× the limit
 CR_LIMIT_X_HI            = round(CR_WASTE_MG_L_HI / CR_TC_LIMIT_MG_L, 1)             # = 8.7× the limit
 CR_WASHOUT_BREAKEVEN_PCT = round(CR_TC_LIMIT_MG_L / CR_WASTE_MG_L_LO * 100)          # = 45 % washout reaches the limit
+WASH_L_PER_M2            = round(TRAY_FLOOD_GAL * L_PER_GAL / IMAGE_AREA_M2, 1)        # = 6.2 L/m² per wash — bench-test bath scale (T6/T7)
+BROWN_IN_L_PER_PRINT     = round(2 * TRAY_FLOOD_GAL * L_PER_GAL - 2 * LOSS_PER_PRINT_L / WASHES_PER_PRINT)  # = 93 L washes 2–3 into Brown
+BROWN_CR_MAX_G           = round(CR_TC_LIMIT_MG_L * BROWN_IN_L_PER_PRINT / 1000, 2)   # = 0.47 g Cr/print washes 2–3 may carry
+BROWN_CR_MAX_PCT_LO      = round(BROWN_CR_MAX_G / CR_G_LO * 100)                       # = 52 % of the chromium at 0.1%
+BROWN_CR_MAX_PCT_HI      = round(BROWN_CR_MAX_G / CR_G_HI * 100)                       # = 13 % at 0.4%
 FIRST_PRINT_RECOVERED_L  = round(WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL) - LOSS_PER_PRINT_L  # = 139 L (all-Blue first print)
 CR_FIRST_PRINT_MG_L      = round(CR_G_LO * 1000 / FIRST_PRINT_RECOVERED_L, 1)        # = 6.5 mg/L
 # With dichromate, DV-02 sends wash 1 straight to IBC-4; washes 2–3 go to Brown. The open-process

@@ -15,6 +15,9 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   disposal ([Sensitizer Trials](sensitizer-trials.md); water-system-report §2.3).
 - [ ] **T7 — Brown chromium under the dichromate option.** Decides whether IBC-3 leaves the
   hazardous route.
+- [ ] **Lab quotes for T6/T7.** Get quotes from a California ELAP-accredited lab for the fish
+  bioassay, total/free cyanide, Title 22 metals, total chromium and Cr(VI). Confirm the sample volume
+  each test needs, which sets the bench-test area. Once quoted, add the cost to `costing.py`.
 - [ ] **California episodic-generation rule.** 40 CFR 262.232 allows one planned episodic event per
   year; California's adoption is unconfirmed (DTSC's site blocks automated fetches). Confirm with
   DTSC or a hauler.

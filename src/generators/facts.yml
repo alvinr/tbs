@@ -578,3 +578,23 @@ sensitizer_part_l:
   constant: SENSITIZER_PART_L
   unit: L
   owner: water-system-report.md
+wash_l_per_m2:
+  constant: WASH_L_PER_M2
+  unit: L/m2
+  owner: sensitizer-trials.md
+brown_in_l_per_print:
+  constant: BROWN_IN_L_PER_PRINT
+  unit: L
+  owner: sensitizer-trials.md
+brown_cr_max_g:
+  constant: BROWN_CR_MAX_G
+  unit: g
+  owner: sensitizer-trials.md
+brown_cr_max_pct_lo:
+  constant: BROWN_CR_MAX_PCT_LO
+  unit: '%'
+  owner: sensitizer-trials.md
+brown_cr_max_pct_hi:
+  constant: BROWN_CR_MAX_PCT_HI
+  unit: '%'
+  owner: sensitizer-trials.md

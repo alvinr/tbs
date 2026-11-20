@@ -33,7 +33,7 @@ The following federal limits govern load dimensions on US Interstate highways wi
 
 **Source:** Federal Highway Administration, "Federal Size Regulations for Commercial Motor Vehicles," FHWA Freight Management and Operations. [ops.fhwa.dot.gov/freight/publications/size_regs_final_rpt/](https://ops.fhwa.dot.gov/freight/publications/size_regs_final_rpt/)
 
-> **Important:** Individual states may set lower limits on non-Interstate roads. Routes should be confirmed against state DOT databases before transport. The limits above apply to Interstate highways.
+> **Important:** The limits above apply to Interstate highways. Individual states may set lower limits on non-Interstate roads, published in the state DOT databases.
 
 ### Container Compliance with Legal Limits
 

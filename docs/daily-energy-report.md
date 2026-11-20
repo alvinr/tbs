@@ -126,7 +126,7 @@ dumped; this line covers the case where it is drained off.)
   (1,200 Wh)** — good for ~1.5 prints battery-alone, relying on daytime solar for the rest; the
   2nd pack is the optional config analyzed in §8.
 - A **4-print day relies on the panels topping up during the day** (the loads run in
-  daylight, so this is normally fine); on a fully overcast day, cap at ~3 prints. The
+  daylight, so this is normally fine); a fully overcast day supports ~3 prints. The
   higher-draw AC cooler (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W) puts the 4-print battery
   shortfall at ~521 Wh — still solar-covered, but battery-only 4-print days are off the table.
 - The dominant load is **climate control (fans + evaporative cooler, ~2,050 Wh/day)**, not
@@ -172,7 +172,7 @@ A disconnected deployment therefore runs **~<!-- BEGIN fact:prints_per_resupply 
 a **resupply run** — which is fundamentally a *water* event (refill Blue), not a charging
 event.
 
-### 8.3 Watch the waste side too
+### 8.3 The waste side is a second limit
 
 The endurance is bounded on **both ends of the water loop**. The **Black (waste) tote fills to ~600 L** (a 1,000 L tote at its working fill) — a *parallel* out-flow limit: in fully self-contained field use (no sewer, waste
 pumped out to a hauler for disposal), the waste tank can fill before the Blue tank empties, so a

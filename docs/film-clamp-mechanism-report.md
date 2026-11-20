@@ -52,12 +52,7 @@ See the **[Master Shopping List, filtered to the clamp system](master-shopping-l
 
 ## 5. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Inspect muslin clamp engagement — all 58 clamps clipped on the three edges |
-| Monthly | Check each nylon clamp still springs firmly closed; swap out any weak or cracked clamp (inexpensive, off-the-shelf) |
-| Every 6 months | Verify the clamps hold the muslin taut under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt; re-seat any that have crept |
-| Annually | Inspect the HDPE filler strip for damage; wipe the clamps + filler clean of chemistry residue |
+The clamps are inexpensive off-the-shelf consumables: a clamp whose spring has weakened or whose body has cracked is replaced rather than repaired. The HDPE filler strip is a long-life part. Mounting the muslin is [Operating Manual §2.4](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

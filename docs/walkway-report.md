@@ -434,7 +434,7 @@ arms.
 **Left walkway** uses gravity retention only. The grate rests on the 5 floor-leg
 cantilever arms (Yd 250/800/1180/1560/2110) and is located laterally by butting the
 near/far grate edges. No fasteners are used because the left walkway must be removed
-quickly for hinged panel transport mode — lift straight up and carry out; the
+quickly for hinged panel transport mode — it lifts straight up and out; the
 floor-bolted posts stay put.
 
 ---
@@ -628,18 +628,7 @@ See the **[Master Shopping List, filtered to the walkway system](master-shopping
 
 ## 12. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
-| Before each session | Check the 5 floor-leg foot-plate anchors are tight; posts standing square |
-| Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
-| Monthly | Check the right-walkway cantilever-arm CJ end-plate bolts (M12×100) to the IBC uprights and the combined-plate bolts for tightness |
-| Monthly | Inspect GRP grating panels for cracks, delamination, or a worn grit top |
-| Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
-| Quarterly | Inspect the right walkway cantilever-rectangle welds + wall cleats for corrosion and bolt tightness |
-| Before transport | Remove left walkway: lift the grate straight out (the 5 floor-leg posts stay bolted to the floor) |
-| Before transport | Verify evap cooler ratchet straps to bracket arms; check anti-slide cleats |
-| After transport | Reinstall left walkway in reverse order; check all sections for level deck |
+The walkway is a bolted steel structure with GRP grating, so its upkeep is fastener tightness (bracket, CJ end-plate, combined-plate and floor-anchor bolts), corrosion on the exterior reinforcing plates and the right-walkway welds and cleats, and wear of the GRP grit top. The left-walkway lift-out and re-fit for transport are [Operating Manual §1.3 and §5.5](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

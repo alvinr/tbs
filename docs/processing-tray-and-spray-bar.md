@@ -100,8 +100,8 @@ skid — no penetration of the tray or container floor.
 
 A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The
 liner prevents direct stainless-to-print contact (avoiding metallic marks on wet
-cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or
-fold the liner around the sump pickup tube.
+cyanotype) and simplifies cleanup. The liner overlaps the tray rims by 50mm and is cut or
+folded around the sump pickup tube ([Operating Manual §0.5](operating-manual.md)).
 
 ### 2.5 Clearance Verification
 
@@ -539,15 +539,13 @@ The muslin is cut to fit the **washable area of the tray**, not the full image p
 
 ### 4.2 Loading the Muslin — Park-and-Roll (no beam lift)
 
-Loading needs **no lift mechanism**. The beam parks out of the way and the muslin is laid up to it:
+Loading needs **no lift mechanism**. The gantry parks at the **near (pinhole-wall) end** of its Yd travel, and the exposed muslin enters through the **far muslin-drop slot** (image-plane side) and is drawn across the tray toward the parked beam until it lies flat over the washable area.
 
-1. Roll the spray-bar gantry to the **near (pinhole-wall) end** of its Yd travel and park it there.
-2. Feed the exposed muslin down through the **far muslin-drop slot** (image-plane side) and pull it across the tray toward the parked beam until it lies flat over the washable area.
-3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈310/4,599, ~20mm outboard of the muslin's X≈330/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
+The beam then **rolls back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈310/4,599, ~20mm outboard of the muslin's X≈330/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
 
 ### 4.3 Beam Removal for Maintenance
 
-For deep cleaning or nozzle service, **lift out the right walkway grate** and extract the beam through that opening. No in-tray lift-out or quick-release is built into the gantry — the removable walkway grate *is* the access path.
+Deep cleaning and nozzle service reach the beam through the **right walkway grate**: the grate lifts out and the beam extracts through that opening. No in-tray lift-out or quick-release is built into the gantry — the removable walkway grate *is* the access path.
 
 ---
 
@@ -601,14 +599,10 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 
 ## 7. Maintenance
 
-| Task | Interval | Procedure |
-|------|----------|-----------|
-| Tray wipe-down | After each session | Remove LDPE liner, wipe tray with damp cloth, inspect sump for debris |
-| Sump pickup clean | Monthly | Lift pickup tube, rinse strainer screen, check foot valve seal |
-| Spray nozzles | Monthly | Flush beam bore with clean water; remove and soak nozzles in vinegar to clear mineral deposits |
-| Wheel inspection | Quarterly | Check for flat spots, debris in tread, axle pin retention |
-| Hose inspection | Quarterly | Check for kinks, abrasion, fitting tightness |
-| Tray panel flange | Annually | Inspect silicone gasket, retighten flange bolts if needed |
+The assembly is built for tool-free cleaning: the liner is replaced each session (§2.4), the sump
+pickup tube lifts out of its well (§2.3), and the beam extracts through the right walkway grate (§4.3).
+The cleaning and inspection schedule is in the
+[Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

@@ -452,24 +452,15 @@ be struck regardless — the fragile screen cannot travel mounted. The swing **c
 door-end floor-leg posts**: the cage underside passes over the post tops (they stay bolted),
 so **no floor-leg post is demounted**.
 
-Order of operations (single person, ~10 min) — see the [Operating Manual](operating-manual.md) §5.5:
-
-1. Park the revolving drum and pin its rotation.
-2. Remove the muslin screen from its frame and stow it (rolled); knock down the
-   demountable brace cage (saddle/thumbscrew portals).
-3. Lift out the left walkway + door-end near-deck section.
-4. **Strike the two left film rails (TL + BL)** — release each clamp bar, lift the rail
-   out of its saddles, and stow.
-5. **Remove the two pull-out apron strips (near + far)** — release the 4 draw latches on each,
-   lift it off its 45° chamfer seat, and stow it strapped inside (the strips sit in the leaf's
-   horizontal sweep, so they must be out before the swing).
-6. Release the two lift-and-turn cam latches (releases the perimeter + cut seals).
-7. **Swing the frame ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard** about the pivot, assisted (balanced about the
-   vertical axis — no gravity torque; control momentum at the stop).
-8. Engage the top + bottom wall stays (the transport lock).
-9. Close the ISO cargo doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm).
-
-Re-deployment reverses the sequence.
+The conversion is a single-person operation. Every part that sits in the swing path is
+designed to be removed by hand without tools: the left walkway + door-end near-deck lift out,
+the left film rails release from their clamp bars and saddles, and the two pull-out apron
+strips release from their draw latches and chamfer seats. The drum is pinned against rotation
+for the move, and the muslin screen and its demountable brace cage (saddle/thumbscrew portals)
+come down because the screen cannot travel mounted. The swing itself is assisted and balanced
+about the vertical axis (no gravity torque), and the swung frame clears the closed ISO cargo
+doors by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm. The step sequence is in the
+[Operating Manual §5.5](operating-manual.md) (to transport) and §1.3 (to operational).
 
 ### 5.5 Pivot-Post Assembly
 
@@ -507,9 +498,9 @@ position. Five light ingress paths are sealed:
 | 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
 | 5 | Housing surround → door frame | The Ø800 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
-**Seal verification:** After mode conversion, the operator performs a 5-minute
-dark-adaptation check inside the container with all seals engaged. Any visible light
-points are marked with gaffer tape for re-sealing.
+**Seal verification:** The five seals are verified light-tight by a dark-adaptation check
+inside the container with all seals engaged, after every mode conversion
+([Operating Manual §1.4 and §1.8](operating-manual.md)).
 
 **Sheet 16 — Pull-Out Corner Apron: fixed full-width base + removable corner strips closing the floor gap (Section A + Details D–F: chamfer, leaf lip register, 1590A13 draw latch)**
 ![TBS-001 Hinged Panel — Sheet 16: Pull-Out Corner Apron](assets/hingepanel-sheet16.png)
@@ -551,19 +542,13 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 
 ## 9. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Every use | Dark-adaptation light seal check (5 min) — mark any light points with gaffer tape |
-| Every 20 mode conversions | Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear |
-| Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
-| Every 6 months | Inspect neoprene drum seals (top/bottom) for wear and adhesion |
-| Annually | Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle |
-| Annually | Grease the 51118 pivot thrust bearing; the iglide journal bushings run dry — do **not** oil/grease them — wipe the post journal bands clean and check for free, smooth rotation |
-| Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
-| Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
-| Annually | Inspect the cam latches for clamp force; adjust the latching distance or replace the keeper |
-| Every 2 years | Re-seal drum top/bottom neoprene wiper strips and silicone bead |
-| As needed | Re-apply flat black interior paint where scuffed or worn |
+The panel's wear items are its elastomer seals (the EPDM perimeter gasket and the cut seals at
+the swing boundaries, which flex on every mode conversion; the neoprene drum wipers and their
+silicone bead), the wall-stay turnbuckles and anchors, the cam-latch keepers (adjustable for
+clamp force), and the flat-black interior paint. The 51118 pivot thrust bearing is a greased
+bearing; the iglide J journal bushings are self-lubricating and run dry (no oil or grease on
+the post journal bands); the SKF 6215 drum bearings are sealed for life.
+The inspection and service schedule is in the [Operating Manual — Maintenance](operating-manual.md).
 
 ---
 

@@ -31,7 +31,7 @@ URL: [fabricdirect.com](https://www.fabricdirect.com/shop/craft-fabric/broadclot
 **Fabric Wholesale Direct** — 60" wide unbleached cotton muslin, sold by the yard or bolt  
 URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cotton-muslin-fabric-60-inches)
 
-**Preparation required:** Pre-wash all fabric twice in hot water, no detergent. This removes sizing (starch filler) that repels sensitizer. Dry fully before coating.
+**Preparation required:** the fabric is pre-washed twice in hot water without detergent and dried fully before coating, to remove the sizing (starch filler) that repels sensitizer.
 
 ---
 

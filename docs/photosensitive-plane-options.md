@@ -95,7 +95,7 @@ Invented by Sir John Herschel in 1842 and documented in *Philosophical Transacti
 
 **Mike Ware New Cyanotype formula (primary — recommended for TBS-001):**
 - Part A: 200 g ammonium iron(III) oxalate (AmFe) dissolved in 300 ml warm water (50–60°C) — stir until clear
-- Part B: 100 g potassium ferricyanide + 10 g ammonium dichromate dissolved in 1,150 ml water
+- Part B: 100 g potassium ferricyanide dissolved in 1,150 ml water (the iron-only baseline); optionally + 10 g ammonium dichromate, a creative choice that steepens contrast and changes how the wash water is disposed of ([Water System Report §2.1](water-system-report.md))
 - Mix equal volumes of A and B immediately before coating
 - Apply to substrate in subdued light; allow to dry completely before exposure
 - Develop: soak in plain cold water 5–10 minutes, agitating gently; image clears in highlights
@@ -117,7 +117,7 @@ Coverage on **muslin (cotton)** is **~120 ml/m²/coat** (sourced: AlternativePho
 |---|---|---|---|
 | Ferric ammonium oxalate (AmFe) — Ware | ~334 g | ~$29/454 g | **~$21** |
 | Potassium ferricyanide | ~111 g | ~$5.10/100 g | ~$6 |
-| Ammonium dichromate | ~2.5 g | ~$14.80/100 g | ~$0.35 |
+| Ammonium dichromate (optional) | ~2.5 g | ~$14.80/100 g | ~$0.35 |
 | Distilled water | 2–3 liters | Negligible | — |
 | **Chemistry total (Ware, Standard ½-Ware)** | | | **~$28/print** |
 
@@ -151,7 +151,7 @@ _Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware =
 
 - **UV sensitivity:** Cyanotype requires UV light (300–400 nm range). Direct sunlight provides adequate UV. The long exposure times this camera produces (30–60+ minutes at f/1088) are well within the range needed for cyanotype in full outdoor sunlight — this is actually the **most compatible process** with the camera's exposure characteristics.
 - **Color:** Result is Prussian blue only. Cannot be converted to neutral or warm tone without toning chemistry (tannin toning produces a warm olive/black).
-- **Moisture sensitivity when wet:** During processing, avoid excessive agitation which can lift sensitizer from poorly prepared fabric.
+- **Moisture sensitivity when wet:** During processing, excessive agitation can lift sensitizer from poorly prepared fabric.
 
 ### Total Per-Image Cost (cyanotype on muslin)
 | Item | Cost |
@@ -782,7 +782,7 @@ The trade-off is product specificity: **not all X-ray film is the same**. Medica
 
 The critical additions beyond the earlier analysis:
 
-- **Double emulsion halation** is most visible in natural light against bright backgrounds — window frames, sky at horizon, sun-lit white walls. Plan compositions to avoid sharp bright/dark transitions.
+- **Double emulsion halation** is most visible in natural light against bright backgrounds — window frames, sky at horizon, sun-lit white walls. It shows most at sharp bright/dark transitions.
 - **High inherent contrast** (gamma ~2.5–3.5) means highlights compress quickly. For portraiture in direct sun, the face will be two-dimensional unless the light is soft and diffuse (overcast, open shade, or north-facing light).
 - **The speed advantage** (ISO 400–800) significantly outweighs the spectral and contrast disadvantages for practical operation: 5–10 minute exposures vs. 40+ minutes mean far lower risk of subject movement blur and camera vibration during exposure.
 

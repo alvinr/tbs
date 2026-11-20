@@ -71,7 +71,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | Wall entry | Via the external power-panel enclosure (§5.4) — the PV cables join the single sealed wall-bundle penetration |
 | Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) + ~$34 (PV disconnect — Blue Sea 6006) |
 
-**Siting:** deploy panels on south-facing ground adjacent the container. For example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
+**Siting:** the panels are ground-mounted on south-facing ground adjacent the container ([Operating Manual §1.5](operating-manual.md)). A 30° tilt is optimal at Palm Springs latitude (33°N) for the year-round average; a summer-only deployment gets higher peak output at 20°.
 
 ## 5. Charge Controller and Battery Bank
 
@@ -124,7 +124,7 @@ The MPPT delivers up to 50A to the battery, so its battery lead carries far more
 | **Output protection** | **20 A fuse on the charger's DC output lead, close to the battery** |
 | Approximate cost | ~$150 + ~$5 (output fuse) |
 
-Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.
+The charger is a top-up input: wherever shore power is available at a deployment site (campground hookup, venue power, generator) it recharges the battery bank overnight ([Operating Manual §1.5](operating-manual.md)).
 
 ### 5.4 External Power Panel
 The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC output** are carried on a **fabricated flanged penetration box** let into the pinhole wall, close to the electrical panel and battery bank inside.
@@ -157,9 +157,9 @@ Sheet 6 gives the box arrangement, the cross-section through the corrugated wall
 TBS-001 requires two mutually exclusive lighting modes:
 
 - **Safelight (Circuit D):** Red 12V **COB** LED strip (Super Bright LEDs, in 981 channels + frosted diffuser), ceiling-mounted running near→far wall (X=520 / 2270 / 4170) plus the inner drum face, each shortened to clear the optical cone. Used during loading and development when photosensitive material is present. Red is cyanotype-safe (the process responds only to UV/blue). One 5m reel cut across the runs, <!-- BEGIN fact:safelight_w -->39<!-- END fact:safelight_w -->W total (16.4ft × 2.4 W/ft per the [SBL COB2 cut sheet](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc); 3.3A — within the 5A fuse; on the single 12 AWG distribution gauge), dimmable, always available.
-- **White light (Circuit F):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray, plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. Must be switched off before any photosensitive material is exposed.
+- **White light (Circuit F):** Four 12V COB LED strips (in aluminum channels + frosted diffusers) — three over the tray, plus one running the length of the IBC/plumbing corridor to light the plumbing panel — for setup, maintenance, cleaning, and any non-operational work. ~106W total. White light fogs the sensitizer, so Circuit F is off whenever photosensitive material is exposed.
 
-The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit F is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
+The two circuits are independently switched — they are **not** interlocked, so keeping Circuit F off during the light-sensitive phases is a procedural control ([Operating Manual Phases 2–4](operating-manual.md)). The pull-cord switches are positioned side by side for easy identification.
 
 ### 6.2 White LED Strip Specification
 | Parameter | Specification |
@@ -251,9 +251,9 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 
 **Grounding:** the protective ground is **equipotential bonding, not a site earth electrode**. The container steel shell, the inverter and cooler chassis, the AC equipment-ground, and the DC negative are all **permanently bonded to one point** at the main panel (4 AWG green/yellow to the battery-negative busbar). This bonding is what clears a fault — any positive-to-metal or AC-line-to-metal fault becomes a low-impedance short back to that point that opens the fuse or trips the GFCI — and it works **on any surface**, so the system does not depend on a ground driven into the earth (the same way an RV, boat, or portable generator is grounded; see §7.6).
 
-An **8-foot copper earth stake is optional, not a requirement** — its one practical benefit is **static dissipation**: a sun-baked steel box in a dry desert can build a static charge, and bleeding it to earth cuts nuisance zaps and settles less dust on drying prints. It is **not** lightning protection, and it is **not** part of the electrical-safety design (that's the bonding above). So: **on soil**, drive it beside the power panel and clamp it to the main-panel earth terminal if you want the static benefit; **on a hard surface (concrete, asphalt), or any deployment where static isn't a concern, skip it entirely** — the bonding provides the full fault protection regardless. If a convenient earth is handy (building ground, grounded metal water pipe), bond to that instead. When the container is set **directly on bare soil** its own steel corner castings are in contact with earth and bleed static on their own — so even on soil the stake is only worth driving if the container is leveled up on **timber sleepers** ([Operating Manual §1.2.2](operating-manual.md)), which insulate the castings from the ground. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.
+An **8-foot copper earth stake is optional, not a requirement** — its one practical benefit is **static dissipation**: a sun-baked steel box in a dry desert can build a static charge, and bleeding it to earth cuts nuisance zaps and settles less dust on drying prints. It is **not** lightning protection, and it is **not** part of the electrical-safety design (that's the bonding above). It is therefore a **soil-site option**: driven beside the power panel and clamped to the main-panel earth terminal; **on a hard surface (concrete, asphalt), or any deployment where static isn't a concern, it is omitted** — the bonding provides the full fault protection regardless. A convenient existing earth (building ground, grounded metal water pipe) serves in its place ([Operating Manual §1.5.7](operating-manual.md)). When the container is set **directly on bare soil** its own steel corner castings are in contact with earth and bleed static on their own — so even on soil the stake is only worth driving if the container is leveled up on **timber sleepers** ([Operating Manual §1.2.2](operating-manual.md)), which insulate the castings from the ground. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.
 
-**Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F; the pump circuit is dual-fused **C1**/**C2**) plus device description. Re-label after any wiring change.
+**Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F; the pump circuit is dual-fused **C1**/**C2**) plus device description, and are part of the as-built record — they change with the wiring.
 
 ### 7.4 Electrical Diagrams
 **Sheet 1 — System One-Line Diagram**
@@ -305,7 +305,7 @@ isolation/GFCI/bonding design in §7.6. The following protective measures are pa
   the battery protects the charge conductor, which the 200 A main fuse is too large to cover.
 - **Main fuse at the battery terminal** — a terminal-mount MRBF fuse on the battery + post
   (≤180 mm, per ABYC E-11) protects the main cable along its whole length.
-- **Battery terminal covers** over both posts/busbar; use insulated tools at the busbar.
+- **Battery terminal covers** over both posts/busbar, so a dropped tool cannot bridge them.
 - **Sealed wet-zone connections** — pump circuits in the IBC corridor / tray end use
   IP-rated connectors (Deutsch DT or adhesive-lined heat-shrink), tinned marine-grade wire,
   and dielectric grease on terminals exposed to chemistry vapor. Anderson Powerpole is
@@ -351,10 +351,11 @@ code-anchored rules:
 
 **No site earth required.** The shock protection above comes from the inverter's single neutral-ground bond + the GFCI + the equipotential bonding — the fault current returns through the *bonding* (rule 3), not through the earth — so the system is fully protected **on any surface, soil or concrete**, with no ground rod driven. The optional 8-ft earth stake (§7.3) only adds a supplementary site earth when the container sits on soil.
 
-**Operationally:** the cooler is plugged into the panel's in-use-covered GFCI outlet only
-during sessions; for transport the cord is unplugged and stowed and the inverter DC
-disconnect is opened. The [Electrical Safety Report](electrical-safety-report.md) carries
-the full hazard assessment including this AC branch.
+The AC branch is energized only during sessions: the inverter DC disconnect isolates it
+otherwise, and the cooler cord unplugs from the in-use-covered GFCI outlet and stows inside
+for transport ([Operating Manual §5.3, §5.5](operating-manual.md)). The
+[Electrical Safety Report](electrical-safety-report.md) carries the full hazard assessment
+including this AC branch.
 
 ## 8. Parts List
 
@@ -385,21 +386,7 @@ distribution block).*
 
 ## 9. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Check battery state of charge via Victron Connect app |
-| Before each session | Verify all circuit fuses are intact on Blue Sea 5026 fuse block |
-| Before each session | Test safelight (Circuit D) and white light (Circuit F) switches |
-| Monthly | Inspect Anderson Powerpole connections for corrosion or looseness |
-| Monthly | Check cable trunking clips and conduit routing for chafe |
-| Monthly | Inspect Deutsch DT weatherproof connectors at fan penetrations; test the Circuit-E GFCI (cooler AC outlet) trip/reset |
-| Every 6 months | Clean solar panel surfaces; check MC4 connector seals |
-| Every 6 months | Inspect EPDM gasket on external power panel for compression set |
-| Annually | Test battery BMS function (charge/discharge cycle under monitoring) |
-| Annually | Inspect the ground-stake connection and measure earth resistance *(only if the optional earth stake is deployed — see §7.3)* |
-| Annually | Check pull-cord switch mechanisms for wear |
-| Before transport | Disconnect evaporative cooler and stow per [Equipment Layout](equipment-layout-report.md) §4 |
-| Before transport | Verify all circuit breakers/fuses are off except safelight standby |
+The system is built for inspection rather than routine intervention: every connection is labeled and reachable from the EP or the trunking, the battery state of charge reads remotely over Bluetooth (Victron Connect), and the wear items are the connectors (Anderson Powerpole, Deutsch DT, MC4), the power-panel gasket, the pull-cord switches and the solar panel surfaces. The Circuit-E GFCI carries a periodic trip test ([Electrical Safety Report §7](electrical-safety-report.md)). The power-down order is [Operating Manual §5.3](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

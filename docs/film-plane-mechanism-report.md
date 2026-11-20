@@ -78,7 +78,7 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 - **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 304 axles**, carrying the corner's carriage plate.
 - **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
 - **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **304 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~345mm) and X slide (~365mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈257mm in X at max swing — the bar length = that travel + the carriage, so it can reach the full ±40°/±28°), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
-- **Film plane frame** — welded 2"×2"×1/8" plain-6061 aluminum angle, kept as an **expendable part** (bare 6061 corrodes slowly in the splash-not-immersed cyanotype zone — inspect annually, replace on pitting; the ACM backing carries the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm** (rail span × film-plane height). Each corner connects to its cross-slide stack through a **single universal joint** (Belden SSNBUJ750x3/8KB, stainless, factory-booted (integral)): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through a **304 stainless corner gusset** (a flat ¼" L-plate, detailed below) and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **Film plane frame** — welded 2"×2"×1/8" plain-6061 aluminum angle, kept as an **expendable part** (bare 6061 corrodes slowly in the splash-not-immersed cyanotype zone, so the angle is replaced when it pits; the ACM backing carries the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm** (rail span × film-plane height). Each corner connects to its cross-slide stack through a **single universal joint** (Belden SSNBUJ750x3/8KB, stainless, factory-booted (integral)): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through a **304 stainless corner gusset** (a flat ¼" L-plate, detailed below) and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -120,13 +120,15 @@ The cross-slide travel and load were firmed against the rotation geometry and th
 
 ### Positioning
 
-Each corner is set by hand: roll the acetal skate along its U-channel to the target depth, slide the Z and X cross-slides to take up the rotation arc, then throw the **cam clamp** to lock the skate to the rail. The gib drag holds the vertical (Z) axis while the clamp is set, and the U-joint's twist-lock holds the angle.
+Each corner is positioned by hand: the acetal skate rolls along its U-channel to the target depth, the Z and X cross-slides take up the rotation arc, and the **cam clamp** locks the skate to the rail. The gib drag holds the vertical (Z) axis while the clamp is set, and the U-joint's twist-lock holds the angle.
+
+The setting procedure is in [Operating Manual §1.9](operating-manual.md#19-film-plane-tilt-swing-and-focus).
 
 **Named movement modes:**
-- **Pure tilt**: slide the two top corners (TL + TR) together to one depth; slide the two bottom corners (BL + BR) together to another.
-- **Pure swing**: slide TL and BL together; slide TR and BR together.
-- **Back focus**: slide all four corners by the same amount.
-- **Compound (limited)**: set all four to a coordinated set of depths — the rigid plane stays flat (no twist).
+- **Pure tilt**: the two top corners (TL + TR) move together to one depth; the two bottom corners (BL + BR) together to another.
+- **Pure swing**: TL and BL move together; TR and BR move together.
+- **Back focus**: all four corners move by the same amount.
+- **Compound (limited)**: all four sit at a coordinated set of depths — the rigid plane stays flat (no twist).
 
 All four corners lock independently on their own cam clamps, so a set position holds through the exposure and through transport.
 
@@ -138,7 +140,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical dimensions n
 
 ### Light Sealing
 
-A tilted or swung plane opens gaps at its edges where the frame no longer sits flush against the wall. Two measures close them, both on the maintenance schedule (§8):
+A tilted or swung plane opens gaps at its edges where the frame no longer sits flush against the wall. Two measures close them:
 
 - **Primary seal** — a 1"×½" black EPDM foam strip bonded to all four frame edges, compressing to seal at the low angles.
 - **Secondary seal** — Impact 9oz Duvetyne blackout curtains hung from the frame perimeter and weighted, draping to seal at the larger tilt/swing angles where the foam no longer reaches.
@@ -244,18 +246,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 ## 8. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Inspect muslin clamp engagement — see [Clamp System](film-clamp-mechanism-report.md) |
-| Before each session | Verify all four cam clamps are locked after repositioning |
-| Before each session | Check EPDM foam edge seal for tears or compression set |
-| Monthly | Wipe the U-channel rails clean of grit — the acetal skate and UHMW pads run **dry** (no lubricant) |
-| Monthly | Inspect the acetal rollers and UHMW slide pads for wear or embedded grit |
-| Every 6 months | Check each U-joint for play and its nitrile boot for tears — replace the boot if split |
-| Every 6 months | Inspect Duvetyne blackout curtains for light leaks (pinholes, fraying) |
-| Annually | Inspect the plain-6061 frame angle and corner L-brackets for pitting; replace on pitting (expendable — bare 6061 pits sooner than anodized) |
-| Annually | Verify rail mounting bolts for torque at all four rail positions |
-| Before transport | Lock all four corners at matching depth; set all four cam clamps |
+The mechanism runs **dry**: the acetal skates and UHMW slide pads take no lubricant, so grit on the rails — not lubrication — is the wear driver. The wear and expendable parts are the acetal rollers, the UHMW pads, the U-joint boots, the EPDM edge seal, the Duvetyne curtains and the plain-6061 frame angle (bare 6061 pits sooner than anodized); the cam clamps hold a set position through transport. The recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

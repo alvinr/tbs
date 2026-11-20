@@ -116,7 +116,7 @@ same across strength tiers: Ware's baseline is **0.1%**, raised for more contras
 - [ ] 0.4.4 — Funnel and stirring rod
 - [ ] 0.4.5 — Digital scale (1g resolution)
 - [ ] 0.4.6 — Digital hygrometer
-- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — cut to fit the washable tray area, clear of the rims + near-rim sump; clamped inboard on the ACM, no hem)
+- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — cut to fit the washable tray area, clear of the rims + near-rim sump; clamped inboard on the ACM, no hem). Pre-wash it twice in hot water with no detergent to remove the sizing (starch filler), which repels the sensitizer, and dry it fully before coating.
 - [ ] 0.4.8 — Part A bottle (sealed, labeled)
 - [ ] 0.4.9 — Part B bottle (sealed, labeled)
 - [ ] 0.4.10 — Timer (phone or dedicated)
@@ -129,6 +129,10 @@ same across strength tiers: Ware's baseline is **0.1%**, raised for more contras
 - [ ] 0.5.3 — Film plane mechanism moves freely on all four corners.
 - [ ] 0.5.4 — Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — it rests on 5 floor-leg cantilever brackets bolted to the bare floor outside the tray (the three brackets at the drum-exit punch-out reach further inboard than the rest; the hinged panel occupies this end wall). Left corners use butt joints (no miter) so near/far walkways start clear of the door-end panel swing sweep. The left walkway grate must be removed before the panel swings to its transport position; the floor brackets stay bolted. No contact with the tray (brackets sit on bare floor outside it).
 - [ ] 0.5.5 — Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
+
+### 0.6 Transport Booking (when the container moves)
+- [ ] 0.6.1 — Confirm the route against the state DOT databases for size and weight limits ([Container Report Part 2](container-report.md)).
+- [ ] 0.6.2 — Ask the hauler to place the container with the rear (sealed) end over or near the trailer axle(s), which balances the load ([Weight Distribution Report §6.3](weight-distribution-report.md)).
 
 **GO/NO-GO checkpoint:** Water system tested and IBCs filled. Part A and Part B prepared and sealed. All equipment packed. Container interior inspected (if accessible).
 
@@ -188,7 +192,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C1 (corridor pumps P-01/02/03/05, one at a time), C2 (tray-drain pump P-04), D (red safelight), E (evap cooler inverter), F (white LED lighting). Both pump fuses are gated by the single 2-pole master pump switch.
 - [ ] 1.5.7 — **Grounding.** The protective bond (container shell + inverter/cooler/equipment → battery-negative, 4 AWG) is **permanent** — just confirm the main-panel bond lug is tight. It protects on any surface; **no site earth needs to be driven.** The 8-ft copper earth stake is **optional supplementary earthing**: **on soil**, drive it beside the power panel and clamp it to the main-panel earth terminal (it dissipates static — good in a dry darkroom); **on concrete, asphalt, or any hard surface, skip it** — the bonding provides full fault protection regardless ([Electrical Report §7.3](electrical-report.md)). If a convenient earth is at hand (building ground, grounded metal water pipe), bond to that instead of driving the stake. (Set **directly on bare soil**, the container's steel corner castings already earth it enough to bleed static — so the stake only matters if it is leveled up on **timber sleepers**, §1.2.2, which insulate the castings.)
 
-> **Shore power backup:** If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
+> **Shore power backup:** First confirm the site's AC supply is on an RCD/GFCI-protected circuit. Never run an AC extension cord or generator output into the wet interior. If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
 ### 1.6 Ventilation and Cooling
 - [ ] 1.6.1 — Switch ON exhaust fan (circuit A) and intake fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
@@ -200,6 +204,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 ### 1.7 Walkway and Tray (if not done in Phase 0.5)
 - [ ] 1.7.1 — Install perimeter walkway grating sections (see 0.5.4 for full procedure).
 - [ ] 1.7.2 — Lay fresh LDPE containment liner (see 0.5.5).
+- [ ] 1.7.3 — Deploy the chemistry prep shelf: confirm the stays lock positively and the hinge swings freely, check it is level, wipe the surface and clear any residue from the spill lip ([Chemistry Prep Shelves](chemistry-prep-shelves.md)).
 
 ### 1.8 Light-Leak Inspection
 - [ ] 1.8.1 — Latch the drum panel (both 1619A74 lift-and-turn cam latches engaged).
@@ -209,6 +214,17 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.8.5 — Exit. Seal any leaks found with black silicone sealant or gaffer tape. Repeat inspection.
 
 **GO/NO-GO checkpoint:** All leaks sealed. Interior temperature below 35°C. Battery bank above 12.4V. Water system pressure confirmed.
+
+### 1.9 Film Plane — Tilt, Swing and Focus
+Set the plane for the shot before loading. The corner-depth table is in the
+[Film Plane Mechanism Report §5](film-plane-mechanism-report.md).
+
+- [ ] 1.9.1 — At each corner, roll the acetal skate along its U-channel to the target depth, slide the Z and X cross-slides to take up the rotation arc, then throw the **cam clamp** to lock the skate to the rail.
+  - **Pure tilt:** slide the two top corners (TL + TR) together to one depth and the two bottom corners (BL + BR) together to another.
+  - **Pure swing:** slide TL and BL together, and TR and BR together.
+  - **Back focus:** slide all four corners by the same amount.
+  - **Compound (limited):** set all four to a coordinated set of depths.
+- [ ] 1.9.2 — Confirm all four cam clamps are locked.
 
 ## Phase 2 — Loading the Image Plane
 **Time: ~45 minutes. Entire phase performed under RED LIGHT only (circuit D).**
@@ -471,10 +487,10 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot post for transport, riding the floor gap (clearing the processing tray rim). The two left film rails (TL + BL), the left walkway, and the two pull-out apron strips must be removed before the swing — the rails so the drum cage can transition the left film-plane rail plane, and the apron strips because they sit in the leaf's horizontal sweep at the floor-gap seal plane (they lift straight out — no floor hinge, nothing folds onto the tray). The processing tray and the near/far/right walkway sections remain in place during mode conversion.
 
-- [ ] 5.5.1 — End camera use: power off Fan B, finish any darkroom access. Stow all interior items; return the film-plane cross-slides to their datum.
+- [ ] 5.5.1 — End camera use: power off Fan B, finish any darkroom access. Stow all interior items; return the film-plane cross-slides to their datum, lock all four corners at matching depth and set all four cam clamps. Remove the muslin screen from its frame and stow it rolled; knock down the demountable brace cage (saddle/thumbscrew portals). Fold up and latch the chemistry prep shelf, clear of the cooler stow and the walkway.
 - [ ] 5.5.2 — Park the revolving drum in its closed/aligned position and pin its rotation (detent) so it cannot flop during the move.
-- [ ] 5.5.3 — Disconnect the flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain the cooler reservoir completely.
-- [ ] 5.5.4 — Carry the cooler in through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb drained, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
+- [ ] 5.5.3 — Disconnect the flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain the cooler reservoir completely. Unplug and stow the cooler's SJOOW cord and open the inverter DC disconnect.
+- [ ] 5.5.4 — Carry the cooler in through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb drained, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets and check the anti-slide cleats. Stow the flex duct alongside.
 - [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section — both sit inside the swing arc.
 - [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the left rail plane.*
 - [ ] 5.5.7 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.
@@ -482,11 +498,13 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.9 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
 - [ ] 5.5.10 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.
 - [ ] 5.5.11 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
+- [ ] 5.5.12 — Set all circuit fuses/breakers off except safelight standby.
+- [ ] 5.5.13 — Tighten all IBC tote ratchet straps ([IBC Stacking Report §4.2](ibc-stacking-report.md)). Re-check their tension after the first 50 km.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
-Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the two pull-out apron strips (seat in the chamfer, butt the lip, throw the draw latches to lock) → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → dark-adaptation check.
+Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the two pull-out apron strips (seat in the chamfer, butt the lip, throw the draw latches to lock) → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → re-deploy the chemistry prep shelf and re-check its level → check the walkway sections sit level → dark-adaptation check.
 
 ## Maintenance
 
@@ -502,6 +520,166 @@ Recurring upkeep between deployments. The design reason for each item is in the 
 
 Wear nitrile gloves and eye protection when handling the wash tray, liner or filter cartridges: the
 fine Prussian blue particles irritate skin and eyes.
+
+### Plumbing and filter skid ([Plumbing Report §10](plumbing-report.md))
+
+| Interval | Task |
+|----------|------|
+| Before each session | Verify all valve positions per §4.2 |
+| Before each session | Run P-04 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output |
+| After each session | Run P-04 to evacuate residual tray water, with 3W-DV-02 set for the chemistry in use |
+| Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |
+| Monthly | Check pump mounting bracket bolts for tightness |
+| Monthly | Inspect filter housing clamp bands and mounting machine screws (tee-nut joints) |
+| Every ~40 prints | Replace F-03 (CTO carbon block) cartridge |
+| Every ~50 prints | Replace F-01 (5μm sediment) cartridge |
+| Every ~60 prints | Replace F-02 (KDF-55) cartridge |
+| Quarterly | Check accumulator pre-charge pressure (should hold 30 PSI) |
+| Quarterly | Inspect check valves CV-1 (X1 fill line) and CV-2 / CV-3 (IBC-4 merge risers) for proper seating |
+| Annually | Inspect plywood panel for delamination or moisture damage; reseal if needed |
+
+**Filter replacement:** close the P-02 supply valve. Place a bucket under the housing. Turn the sump
+bowl counter-clockwise with the Big Blue wrench (included with the housing). Remove the spent
+cartridge, inspect the housing interior, insert the new cartridge, re-seat the sump bowl and
+hand-tighten plus ¼ turn. Run P-02 for 1 minute to flush and check for leaks. Bag spent cartridges
+with the disposal for the chemistry in use.
+
+### Processing tray and spray bar ([Processing Tray & Spray Bar §7](processing-tray-and-spray-bar.md))
+
+| Task | Frequency | Procedure |
+|------|-----------|-----------|
+| Tray wipe-down | After each session | Remove LDPE liner, wipe tray with damp cloth, inspect sump for debris |
+| Sump pickup clean | Monthly | Lift pickup tube, rinse strainer screen, check foot valve seal |
+| Spray nozzles | Monthly | Flush beam bore with clean water; remove and soak nozzles in vinegar to clear mineral deposits |
+| Wheel inspection | Quarterly | Check for flat spots, debris in tread, axle pin retention |
+| Hose inspection | Quarterly | Check for kinks, abrasion, fitting tightness |
+| Tray panel flange | Annually | Inspect silicone gasket, retighten flange bolts if needed |
+
+For deep cleaning or nozzle service, lift out the right walkway grate and extract the beam through that opening.
+
+### IBC frame and totes ([IBC Stacking Report §10](ibc-stacking-report.md))
+
+| Interval | Task |
+|----------|------|
+| Every use | Visually inspect ratchet strap tension before transport |
+| Every 10 prints | Inspect IBC valve seals (DN50 butterfly) for drips; tighten or replace O-ring |
+| Every 10 prints | Check external camlock fittings for cross-threading; clean dust caps |
+| Every 6 months | Inspect lashing-ring welds for cracking; load-test straps |
+| Every 6 months | Inspect lashing rings + ratchet straps for wear; re-tension straps |
+| Annually | Inspect frame welds (all joints) for fatigue cracking |
+| Annually | Touch up paint on frame where chipped or rusted |
+| Annually | Inspect front-bar/wall-hanger bolts and upright floor-anchor bolts for loosening; re-torque to spec |
+| Annually | Flush all internal pipes with clean water; inspect for biofilm |
+| As needed | Replace camlock gaskets if leaking |
+| As needed | Clean IBC interiors between circuit changes: flush with clean water first, then bleach rinse + water flush. Never put bleach into a tote that still holds wash-water residue — alkali breaks down ferricyanide ([Water System Report §10](water-system-report.md)) |
+
+### Chemistry prep shelf ([Chemistry Prep Shelves §8](chemistry-prep-shelves.md))
+
+| Interval | Task |
+|----------|------|
+| Monthly | Inspect the hinge, stays, and wall bolts for corrosion/tightness |
+
+Deployment and stowing are in §1.7.3 and §5.5.1.
+
+### Hinged panel and light trap ([Hinged Panel Report §9](hinged-panel-report.md))
+
+| Interval | Task |
+|----------|------|
+| Every use | Dark-adaptation light seal check — mark any light points with gaffer tape (§1.8) |
+| Every 20 mode conversions | Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear |
+| Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
+| Every 6 months | Inspect neoprene drum seals (top/bottom) for wear and adhesion |
+| Annually | Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle |
+| Annually | Grease the 51118 pivot thrust bearing; the iglide journal bushings run dry — do **not** oil/grease them — wipe the post journal bands clean and check for free, smooth rotation |
+| Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
+| Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
+| Annually | Inspect the cam latches for clamp force; adjust the latching distance or replace the keeper |
+| Every 2 years | Re-seal drum top/bottom neoprene wiper strips and silicone bead |
+| As needed | Re-apply flat black interior paint where scuffed or worn |
+
+### Ventilation and cooling ([Ventilation Report §10](ventilation-report.md))
+
+| Interval | Task |
+|----------|------|
+| Before each session | Inspect shade canopy for tears or collapsed frame sections |
+| Monthly | Clean fan blades and baffle duct interiors (dust accumulation reduces airflow) |
+| Monthly | Inspect Deutsch DT connectors at Fan B flex cable for corrosion |
+| Every 6 months | Check cooler pad condition — replace if mineral buildup reduces airflow |
+| Every 6 months | Inspect baffle duct welds for cracking or corrosion |
+| Annually | Replace evaporative cooler pads regardless of condition |
+| Annually | Inspect shade cloth for UV degradation; replace if shade factor drops below 70% |
+
+### Film plane mechanism ([Film Plane Mechanism Report §8](film-plane-mechanism-report.md))
+
+| Interval | Task |
+|----------|------|
+| Before each session | Verify all four cam clamps are locked after repositioning |
+| Before each session | Check EPDM foam edge seal for tears or compression set |
+| Monthly | Wipe the U-channel rails clean of grit — the acetal skate and UHMW pads run **dry** (no lubricant) |
+| Monthly | Inspect the acetal rollers and UHMW slide pads for wear or embedded grit |
+| Every 6 months | Check each U-joint for play and its nitrile boot for tears — replace the boot if split |
+| Every 6 months | Inspect Duvetyne blackout curtains for light leaks (pinholes, fraying) |
+| Annually | Inspect the plain-6061 frame angle and corner L-brackets for pitting; replace on pitting |
+| Annually | Verify rail mounting bolts for torque at all four rail positions |
+
+### Muslin clamps ([Film Clamp Mechanism Report §5](film-clamp-mechanism-report.md))
+
+| Interval | Task |
+|----------|------|
+| Before each session | Inspect muslin clamp engagement — all 58 clamps clipped on the three edges |
+| Monthly | Check each nylon clamp still springs firmly closed; swap out any weak or cracked clamp (inexpensive, off-the-shelf) |
+| Every 6 months | Verify the clamps hold the muslin taut under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt; re-seat any that have crept |
+| Annually | Inspect the HDPE filler strip for damage; wipe the clamps + filler clean of chemistry residue |
+
+### Electrical ([Electrical Report §9](electrical-report.md), [Electrical Safety Report §7](electrical-safety-report.md))
+
+| Interval | Task |
+|----------|------|
+| Before each session | Check battery state of charge via Victron Connect app |
+| Before each session | Verify all circuit fuses are intact on Blue Sea 5026 fuse block |
+| Before each session | Test safelight (Circuit D) and white light (Circuit F) switches |
+| Before each session | Wet-zone connectors seated and dry; no liquid pooling at any connection |
+| Before each cooling session | Trip-test the Circuit-E cooler-outlet GFCI; cord and outlet undamaged |
+| Monthly | Inspect Anderson Powerpole connections for corrosion or looseness |
+| Monthly | Check cable trunking clips and conduit routing for chafe |
+| Monthly | Inspect Deutsch DT weatherproof connectors at fan penetrations |
+| Monthly | Terminals for corrosion/discoloration (heat); re-grease as needed; fuse and disconnect tight |
+| Every 6 months | Clean solar panel surfaces; check MC4 connector seals |
+| Every 6 months | Inspect EPDM gasket on external power panel for compression set |
+| Annually | Test battery BMS function (charge/discharge cycle under monitoring) |
+| Annually | Inspect the ground-stake connection and measure earth resistance *(only if the optional earth stake is deployed — §1.5.7)* |
+| Annually | Check pull-cord switch mechanisms for wear |
+
+Use insulated tools at the busbar.
+
+### Walkway ([Walkway Report §12](walkway-report.md))
+
+| Interval | Task |
+|----------|------|
+| Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
+| Before each session | Check the 5 floor-leg foot-plate anchors are tight; posts standing square |
+| Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
+| Monthly | Check the right-walkway cantilever-arm CJ end-plate bolts (M12×100) to the IBC uprights and the combined-plate bolts for tightness |
+| Monthly | Inspect GRP grating panels for cracks, delamination, or a worn grit top |
+| Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
+| Quarterly | Inspect the right walkway cantilever-rectangle welds + wall cleats for corrosion and bolt tightness |
+
+### Pinhole disc holder ([Pinhole Disc Holder Report §10](pinhole-disc-holder-report.md))
+
+| Interval | Task |
+|----------|------|
+| Each disc change | Inspect the neoprene washer for a clean, unbroken seat; replace if nicked or set |
+| Every 6 months | Check the thumb screws are finger-tight and the retaining ring seats flat |
+| As needed | Store spare pinhole boards flat in a protective sleeve — the SS-302 shim is easily creased |
+
+## Changing the Front-Board Carrier (Pinhole ↔ Lens)
+No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinhole-disc-holder-report.md)).
+
+- [ ] FB.1 — Loosen the four M6 knurled thumb screws.
+- [ ] FB.2 — Lift the circular retaining ring off.
+- [ ] FB.3 — Remove the carrier from the Ø82 counterbore seat.
+- [ ] FB.4 — Fit the new carrier (a pinhole board, or a lens board) into the seat, against the washer.
+- [ ] FB.5 — Replace the retaining ring and finger-tighten the four thumb screws evenly. Swap time: about 30 seconds.
 
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*

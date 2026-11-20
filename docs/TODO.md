@@ -9,6 +9,21 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ---
 
+## 🧪 Wash-water classification — open checks (2026-11-20)
+
+- [ ] **T6 — baseline wash water, one-time check** (fish toxicity + cyanide) before the first
+  disposal ([Sensitizer Trials](sensitizer-trials.md); water-system-report §2.3).
+- [ ] **T7 — Brown chromium under the dichromate option.** Decides whether IBC-3 leaves the
+  hazardous route.
+- [ ] **California episodic-generation rule.** 40 CFR 262.232 allows one planned episodic event per
+  year; California's adoption is unconfirmed (DTSC's site blocks automated fetches). Confirm with
+  DTSC or a hauler.
+- [ ] **Full-mass counting.** That the whole collected water counts toward the generator category is
+  an inference (no rule text found for dilute wastewater). Confirm with the hauler or DTSC.
+- [ ] **Sensitizer working volume is stated three ways:** 2.2 L computed (`SENSITIZER_L_PER_PRINT`,
+  240 ml/m² × 9.19 m²), ~2.3 L (manual §2.1: 1.15 L + 1.15 L) and ~2.6 L (master list distilled-water
+  row). Align on the computed value.
+
 ## 🚰 X3/X4 drain ports vs gravity drain — energy budget (2026-11-19)
 
 - [ ] **Decide the X3/X4 end-wall port heights for a gravity drain.** X3 is at Z1502 and X4 at Z1620

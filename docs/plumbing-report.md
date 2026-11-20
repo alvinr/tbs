@@ -156,9 +156,9 @@ the rear of this panel; from it a short 16 AWG branch feeds each pump directly.
 | Distribution | 12V DC + / − bus block on the rear of the plumbing panel, fed from the EP master switch |
 | Branches | 16 AWG, ~0.5–1m, block → pump, curved-elbow conduit (<!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A / <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W per pump) |
 
-The pumps are operated **one at a time**: with the EP master switch on, the operator
-opens the relevant ball valves for the current task (others closed), and that pump's
-Shurflo **internal demand/pressure switch** then runs it on demand. The 15A fuse
+The pumps run **one at a time**: with the EP master switch on, the open ball valves
+select the pump for the current task (others closed), and that pump's Shurflo
+**internal demand/pressure switch** runs it on demand. The 15A fuse
 covers a single pump with margin; simultaneous running is not intended.
 The distribution block sits **above the spill line**, IP-rated and sealed, with drip
 loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md); the
@@ -249,8 +249,9 @@ entirely: wash 1 under the dichromate option, which carries most of the chromium
 heavily contaminated drain water ([Water System Report §2.3, §4.2](water-system-report.md)).
 Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
-**3W-DV-01** is the pH-gated valve: draw a sample at **SV-01** (below) and meter it — if filtered water reads pH 6–7, route to
-recycle (IBC-3 Brown buffer, which P-02 later sprays back); if pH >7.5 or discolored, route to Black (IBC-4).
+**3W-DV-01** is the pH-gated valve, set from the **SV-01** sample (below): filtered water at pH 6–7 routes to
+recycle (IBC-3 Brown buffer, which P-02 later sprays back); pH >7.5 or discolored routes to Black (IBC-4).
+Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
 ### 4.3 Check Valves
 
@@ -278,9 +279,9 @@ downturned hose-barb spout. It sits on the panel face **above the spill line**,
 spout pointing toward the operator so a cup fits beneath it from the right
 walkway.
 
-**Use:** run P-04 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
-a cup, close it, read pH on the meter, then set 3W-DV-01 to recycle-return (pH 6–7)
-or Black-waste (pH drift / discolored).
+SV-01 draws while P-04 pressurizes the filtered line; a ~50 ml sample sets 3W-DV-01
+(recycle-return at pH 6–7, Black-waste on pH drift or discoloration). The sampling
+procedure is in the [Operating Manual §4.2](operating-manual.md).
 
 ---
 
@@ -346,7 +347,7 @@ transport** (no freeze-crack, less vibration mass) and every pump is de-coupled 
 run on **both ports** — a **braided ½" flex jumper on the suction *and* discharge of all five
 pumps** (P-04's suction is the 1" tray-drain hose), barb-coupled and SS-clamped, so pump vibration
 can't fatigue-crack a solvent-weld joint; rigid runs are clipped at
-close intervals. Keep runs off the sunniest wall face — PVC softens near 60 °C, though it
+close intervals. Runs stay off the sunniest wall face — PVC softens near 60 °C, though it
 retains > 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
 conditions, PEX is the tougher DIY alternative.)
 
@@ -533,27 +534,12 @@ The panel-mounted equipment for both plumbing panels is part of the water system
 
 ## 10. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Verify all valve positions per §4 |
-| Before each session | Run P-04 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output |
-| Before each session | Confirm P-04 suction pickup tube seated in sump well (visual check) |
-| After each session | Run P-04 to evacuate residual tray water to Brown or Black as appropriate |
-| Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |
-| Monthly | Check pump mounting bracket bolts for tightness |
-| Monthly | Inspect filter housing clamp bands and mounting machine screws (tee-nut joints) |
-| Every ~40 prints | Replace F-03 (CTO carbon block) cartridge |
-| Every ~50 prints | Replace F-01 (5μm sediment) cartridge |
-| Every ~60 prints | Replace F-02 (KDF-55) cartridge |
-| Quarterly | Check accumulator pre-charge pressure (should hold 30 PSI) |
-| Quarterly | Inspect check valves CV-1 (X1 fill line) and CV-2 / CV-3 (IBC-4 merge risers) for proper seating |
-| Annually | Inspect plywood panel for delamination or moisture damage; reseal if needed |
-
-**Filter replacement procedure:** Close P-02 supply valve. Place bucket under
-housing. Turn sump bowl counter-clockwise with Big Blue wrench (included with
-housing). Remove spent cartridge, inspect housing interior, insert new
-cartridge, re-seat sump bowl, hand-tighten plus 1/4 turn. Run P-02 for 1
-minute to flush; check for leaks.
+The serviceable parts are designed to be reached and replaced in place. The filter cartridges are
+the consumable: F-03 (carbon) lasts ~40 prints, F-01 (sediment) ~50 and F-02 (KDF-55) ~60 (§3.1).
+Every component that needs service lands on a threaded interface (§5.1), the Big Blue sumps hang
+clear of the backing ply for cartridge changes (§7.2), and ACC-01 holds a 30 PSI pre-charge. The
+inspection schedule and service procedures are in the
+[Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

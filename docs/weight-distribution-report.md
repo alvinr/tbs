@@ -269,9 +269,8 @@ zone (X=4,674–5,893mm). This creates a <!-- BEGIN weight:wt-ready-fr -->33.8<!
 
 **Transport implication:** When loaded for transport (materials exhausted,
 doors closed), the container's CG is at <!-- BEGIN weight:wt-cg-lengthpct -->58.9<!-- END weight:wt-cg-lengthpct -->% of the length from the cargo
-door end. For trailer placement, the container
-should be positioned so the rear (sealed) end sits over or near the trailer
-axle(s) to balance the load.
+door end, so the load balances on a trailer with the rear (sealed) end over or
+near the trailer axle(s).
 
 ### 6.4 Vertical CG and Self-Stabilizing Design
 

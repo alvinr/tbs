@@ -20,7 +20,7 @@ The holder is a compact front board mounted to the wall-frame adapter with a sma
 - **Circular retaining ring (ICP-03)** — Ø120 OD × Ø70 bore × 6mm 6061-T6. The Ø70 bore is smaller than the carrier so the ring clamps its rim; it clears the light path.
 - **Four thumb screws** — M6 knurled, on the Ø100 circle, into the plate.
 
-**Quick-change:** loosen the four thumb screws → lift the retaining ring → swap the carrier → replace the ring → finger-tighten the thumb screws. About 30 seconds, no tools.
+**Quick-change:** the carrier is retained only by the ring and four finger-operated thumb screws, so a carrier swap takes about 30 seconds with no tools (§7).
 
 **Interactive 3D model** — the Ø180 front plate, neoprene washer, interchangeable carrier, retaining ring and thumb screws. Drag to orbit, scroll to zoom; **click the ring** to pull the retaining ring + thumb screws out along the optical axis and reveal the interchangeable carrier and the plate's four tapped holes (click again to re-seat).
 
@@ -99,17 +99,9 @@ The pinhole (nose) end wall of the container is corrugated steel, so the front p
 
 ---
 
-## 7. Quick-Change Procedure
+## 7. Quick-Change
 
-No special tooling — finger-operated thumb screws.
-
-1. **Loosen** the four M6 knurled thumb screws (fingers).
-2. **Lift** the circular retaining ring off.
-3. **Remove** the carrier from the Ø82 counterbore seat.
-4. **Fit** the new carrier (a pinhole board, or a lens board) into the seat, against the washer.
-5. **Replace** the retaining ring and **finger-tighten** the four thumb screws evenly.
-
-Swap time: about 30 seconds. The whole front board can also be unbolted from the wall-frame adapter (4× M6) if the plate itself ever needs service.
+The holder is designed for a tool-free carrier swap. The four M6 knurled thumb screws are the only fasteners between the carrier and the outside world: releasing them frees the retaining ring, and the carrier (pinhole board or lens board) lifts straight out of the Ø82 counterbore seat. The new carrier drops onto the washer in the same seat, and the ring, drawn down evenly by the thumb screws, re-clamps it. A swap takes about 30 seconds; the carrier-swap steps are an operating task ([Operating Manual — Changing the Front-Board Carrier](operating-manual.md#changing-the-front-board-carrier-pinhole-lens)). The whole front board can also be unbolted from the wall-frame adapter (4× M6) if the plate itself needs service.
 
 ---
 
@@ -134,13 +126,9 @@ See the **[Master Shopping List, filtered to the front-board system](master-shop
 
 ---
 
-## 10. Maintenance
+## 10. Service Items
 
-| Interval | Action |
-|----------|--------|
-| Each disc change | Inspect the neoprene washer for a clean, unbroken seat; replace if nicked or set |
-| Every 6 months | Check the thumb screws are finger-tight and the retaining ring seats flat |
-| As needed | Store spare pinhole boards flat in a protective sleeve — the SS-302 shim is easily creased |
+The neoprene washer is the holder's only wearing part: it seals only while its seat is clean and unbroken, and it is a replaceable consumable once nicked or compression-set. The light seal also depends on the thumb screws holding the retaining ring flat. The SS-302 shim on a pinhole board is easily creased, so spare boards need flat, sleeved storage. The inspection schedule is an operating task ([Operating Manual — Maintenance](operating-manual.md)).
 
 ---
 

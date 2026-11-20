@@ -173,6 +173,8 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 
 ## 7. Operating Modes
 
+The table sets the fan, cooler and shade duty for each phase of a session; the switching steps are in [Operating Manual §1.6 and §5.2](operating-manual.md).
+
 | Mode | Intake (Fan B) | Exhaust (Fan A) | Evap cooler | Shade |
 |------|---------------|----------------|-------------|-------|
 | Pre-cooling (before entry) | Full speed | Full speed | ON (30 min minimum) | Erected |
@@ -208,19 +210,14 @@ inverter · light-safe baffle-duct fab · shade canopy) is the [Project Cost Bre
 
 ## 10. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Confirm Fan A and Fan B airflow (tissue deflection test at duct stubs) |
-| Before each session | Check evaporative cooler reservoir level; refill from Blue circuit |
-| Before each session | Inspect shade canopy for tears or collapsed frame sections |
-| Monthly | Clean fan blades and baffle duct interiors (dust accumulation reduces airflow) |
-| Monthly | Inspect Deutsch DT connectors at Fan B flex cable for corrosion |
-| Every 6 months | Check cooler pad condition — replace if mineral buildup reduces airflow |
-| Every 6 months | Inspect baffle duct welds for cracking or corrosion |
-| Annually | Replace evaporative cooler pads regardless of condition |
-| Annually | Inspect shade cloth for UV degradation; replace if shade factor drops below 70% |
-| Before transport | Drain cooler reservoir completely; stow cooler per §5.3 |
-| Before transport | Cap all exterior duct stubs to prevent rain ingress |
+The system's wear items are the evaporative cooler pads (mineral buildup reduces airflow), the
+fan blades and baffle-duct interiors (dust reduces airflow), the Deutsch DT connectors on the
+Fan B flex cable (exposed to corrosion), the baffle-duct welds, and the shade cloth (UV
+degradation lowers its shade factor below the 70% the thermal analysis assumes). The cooler
+reservoir drains and the exterior duct stubs take weatherproof caps for transport, so no water
+travels in the cooler and no rain enters the ducts. Session checks are in
+[Operating Manual §1.6](operating-manual.md), transport preparation in §5.4–5.5, and the
+recurring schedule in the Maintenance section.
 
 ---
 
@@ -232,5 +229,5 @@ inverter · light-safe baffle-duct fab · shade canopy) is the [Project Cost Bre
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.
 5. [Hinged Panel Report](hinged-panel-report.md) — Panel corner zone construction and Fan B mounting.
 6. [Equipment Layout Report](equipment-layout-report.md) — Evaporative cooler position and transport stowage specification.
-7. [Operating Manual](operating-manual.md) — Ventilation and cooling operational procedures (Phase 1.6).
+7. [Operating Manual](operating-manual.md) — Ventilation and cooling operational procedures (Phase 1.6) and maintenance schedule.
 8. [Darkroom ventilation safety](https://nontoxic-print.com/safety-of-darkroom-photography/) — Kodak's recommended darkroom dilution-ventilation rate: ≥10 air changes per hour, or 170 CFM per processor/work station.

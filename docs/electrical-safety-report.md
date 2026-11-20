@@ -92,7 +92,7 @@ gap is now **closed** by the §5 controls.
 | 2 | **Corroded wet-zone connections** | Developer/fixer vapor + condensation attacks unsealed terminals → high-resistance joints (heating) or intermittent faults. The 5 Shurflo pumps live in the wet IBC corridor / tray end | Med | High | IP65 enclosure (clean side only) | **Anderson Powerpole — not sealed**; wire not tinned → **closed (§5 #2):** sealed IP-rated connectors + tinned wire + dielectric grease |
 | 3 | **Battery busbar arc-flash** | 200 A+ available; a dropped wrench arcs, throws molten metal, burns | High | Low | Fusing limits duration | **No terminal covers**; no insulated-tool note → **closed (§5 #3):** terminal covers + insulated-tool rule |
 | 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C, and the BMS blocks charging above ~45 °C (mid-day charge lock-out) | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Charge lock-out > 45 °C → **closed (§5 #4):** thermal siting — low/shaded/cooled-air (§5.2); confirm < 45 °C at commissioning |
-| 5 | **Shore-power AC** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on site RCD/GFCI + the operational rule → **managed (§5 #5 / §6):** exterior-only AC, site-RCD rule, commissioning check |
+| 5 | **Shore-power AC** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on site RCD/GFCI + the ELV-boundary rule → **managed (§5 #5 / §6):** exterior-only AC, site-RCD rule, commissioning check |
 | 6 | **Circuit-E cooler inverter (120 V AC)** | The only interior-derived AC: a 12 V→120 V inverter feeds an outdoor, water-wetted cooler beside the grounded steel box — a line-to-metal shock path | High | Low | Separately-derived source, single-point neutral-ground bond; **GFCI** on the cooler outlet; shell/chassis/cooler equipotential bond; DC-side fuse + dedicated disconnect; transformer galvanic isolation ([electrical §7.6](electrical-report.md#ac-safety)) | → **managed (§6 / §7.6):** cooler unplugged + inverter DC-disconnect for transport; periodic GFCI trip test |
 
 ---
@@ -119,24 +119,32 @@ and cascaded into the electrical BOM.
 
 ---
 
-## 6. The Operational Rule That Matters Most
+## 6. The ELV Boundary — the Rule That Matters Most
 
-Keep the **12 V ELV boundary intact: no grid AC distributed inside the container, ever.**
+The design holds the **12 V ELV boundary intact: no grid AC is distributed inside the container.**
 The one designed-in AC branch — the Circuit-E cooler inverter — is deliberately isolated
 and GFCI-protected (§7.6); apart from it, everything inside is 12 V ELV and this is a
 fire-risk-management problem (fusing, isolation, sealing, bonding), not a life-safety
 electrocution one.
 
-- The shore-power AC input terminates at the **exterior** Victron charger only — never
-  run an AC extension cord or generator output into the wet interior.
-- Confirm the deployment **site's AC supply is on an RCD/GFCI-protected circuit** before
-  connecting the shore charger.
-- Plug the cooler into the Circuit-E GFCI outlet **only during sessions**; for transport,
-  unplug it and open the inverter DC-disconnect (§7.6). Trip-test that GFCI periodically.
+- The shore-power AC input terminates at the **exterior** Victron charger only — no AC
+  extension cord or generator output enters the wet interior.
+- The shore charger relies on the deployment **site's AC supply being on an RCD/GFCI-protected
+  circuit**; the container adds no shore-side RCD of its own.
+- The Circuit-E AC branch is energized **only during sessions** and isolated at the inverter
+  DC-disconnect otherwise (§7.6); its GFCI carries a periodic trip test.
+
+The operator-side steps for these rules — the site-supply check, the cooler cord and
+disconnect, the GFCI trip test — are in the [Operating Manual](operating-manual.md) (§1.5,
+§5.3, §5.5, Maintenance).
 
 ---
 
-## 7. Commissioning & Periodic Checks
+## 7. Commissioning Checks
+
+Each protective measure is verified once at commissioning, before first use. The recurring
+in-service checks (wet-zone connectors, GFCI trip test, terminal condition, site supply) are
+operating tasks and live in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 | When | Check |
 |---|---|
@@ -144,10 +152,6 @@ electrocution one.
 | At commissioning | **Both E-stops** (interior + exterior) each trip the contactor; PV array disconnect operates; MPPT charge-line fuse present (60 A); each parallel pack has its own MRBF fuse |
 | At commissioning | **Battery bay < 45 °C** under peak-sun load (thermal siting, §5.2); insulation check: positive-bus-to-shell resistance high with loads off |
 | At commissioning | Circuit E: neutral-ground bonded at the inverter only; cooler-outlet GFCI trips on test; inverter chassis/cooler/shell bonded; DC disconnect operates |
-| Before each session | Wet-zone connectors seated and dry; no liquid pooling at any connection |
-| Before each cooling session | Trip-test the Circuit-E cooler-outlet GFCI; cord and outlet undamaged |
-| Monthly | Terminals for corrosion/discoloration (heat); re-grease as needed; fuse and disconnect tight |
-| Before shore connect | Site supply is RCD/GFCI-protected |
 
 ---
 

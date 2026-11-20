@@ -353,7 +353,7 @@ The fabricated (non-stick) parts — the foot plate, the exterior wall backing p
 | Working load limit | 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) |
 | Routing | ring to ring, over IBC top, 1 strap per tier per side |
 | Total straps | 4 (2 per tier) |
-| Pre-transport | Tighten all straps; re-check tension after 50 km |
+| Pre-transport | Ratcheted tight for transport ([Operating Manual §5.5](operating-manual.md)) |
 
 ### 4.3 Wall Trapping
 
@@ -506,19 +506,10 @@ the stacking structure and the totes it restrains.
 
 ## 10. Maintenance Schedule
 
-| Interval | Task |
-|----------|------|
-| Every use | Visually inspect ratchet strap tension before transport |
-| Every 10 prints | Inspect IBC valve seals (DN50 butterfly) for drips; tighten or replace O-ring |
-| Every 10 prints | Check external camlock fittings for cross-threading; clean dust caps |
-| Every 6 months | Inspect lashing-ring welds for cracking; load-test straps |
-| Every 6 months | Inspect lashing rings + ratchet straps for wear; re-tension straps |
-| Annually | Inspect frame welds (all joints) for fatigue cracking |
-| Annually | Touch up paint on frame where chipped or rusted |
-| Annually | Inspect front-bar/wall-hanger bolts and upright floor-anchor bolts for loosening; re-torque to spec |
-| Annually | Flush all internal pipes with clean water; inspect for biofilm |
-| As needed | Replace camlock gaskets if leaking |
-| As needed | Clean IBC interiors between circuit changes (bleach rinse + water flush) |
+The frame is a painted, shop-welded box whose field joints are all bolted (§3.7), so its upkeep is
+inspection and re-torque to the §3.5 schedule rather than rework. The wear items are the ratchet
+straps, the DN50 valve seals and the camlock gaskets. The inspection schedule and procedures are in
+the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

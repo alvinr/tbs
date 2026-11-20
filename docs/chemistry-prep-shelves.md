@@ -202,13 +202,9 @@ BOM); only the ~1.3 m trunk extension is added here.*
 
 ## 8. Maintenance
 
-| Interval | Task |
-|----------|------|
-| Before each session | Deploy + check level; wipe the surface; inspect the spill lip for residue |
-| Before each session | Confirm the stays lock positively and the hinge swings freely |
-| Monthly | Inspect the hinge, stays, and wall bolts for corrosion/tightness |
-| Before transport | Fold up + latch; confirm clear of the evap stow and walkway |
-| After transport | Re-deploy and re-check level |
+The shelf has no consumables: the ply surface wipes clean, the hinge, chains and fasteners are
+stainless, and the chain links set the level (§3.4). The deploy, stow and inspection steps are in
+the [Operating Manual](operating-manual.md).
 
 ---
 

@@ -419,12 +419,13 @@ ACC-02 and BV-05) — the recycle-spray loop.
 ```
 3W-DV-01 reject → IBC-4
 3W-DV-02 wash 1 (dichromate option) / contaminated → IBC-4
-IBC-4 → P-03 → external drain port X4 (gravity + pump assist)
+IBC-4 → BV-06 → P-03 → external drain port X4
 ```
 
-P-03 is dedicated to waste evacuation. IBC-4 gravity-drains through external
-port X4 down to approximately 120L residual; P-03 pumps the residual
-below the gravity drain height to the waste hauler's tanker ([Water System Report §4.3](water-system-report.md)).
+P-03 is dedicated to waste evacuation. X4 sits above the top of IBC-4, so the tote cannot drain
+through it by gravity: P-03 pumps the waste up and out to the hauler's tanker
+([Water System Report §4.3](water-system-report.md)). The same holds for X3 and P-05 on IBC-3. Each
+port carries a tethered camlock dust cap whenever no hose is connected.
 
 ---
 

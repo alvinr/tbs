@@ -277,6 +277,10 @@ system be filled and drained from a bowser or tanker without opening the cargo d
 | X3 — Drain Brown | Used-water drain (P-05) | IBC-3 |
 | X4 — Drain Waste | Waste drain (P-03) | IBC-4 |
 
+X3 and X4 sit above the bottom-tier totes, so Brown and Waste cannot drain out by gravity — they leave
+only when P-05 / P-03 pump them. CV-1 stops backflow out of X1. Each port takes a tethered camlock dust
+cap whenever no hose is connected.
+
 The fill side-enters each Blue tote because the stacked totes leave only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm
 of ceiling headroom — no top-cap access.
 

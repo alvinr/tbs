@@ -442,7 +442,7 @@ a longer stay, resupply Blue and discharge waste through the **external end-wall
 required for a normal 1–2 print outing.
 
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
-- [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1 and disconnect.
+- [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1, disconnect, and re-cap X1.
 - [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book the hauler for the chemistry in use first (§5.1.1): a liquid-waste hauler for the baseline, a **licensed hazardous-waste hauler** for IBC-4 under the dichromate option (and IBC-3 until it is measured). Wearing nitrile gloves, connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done, and file the hauler's paperwork (the manifest, for hazardous loads).
 - [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
@@ -501,6 +501,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.11 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
 - [ ] 5.5.12 — Set all circuit fuses/breakers off except safelight standby.
 - [ ] 5.5.13 — Tighten all IBC tote ratchet straps ([IBC Stacking Report §4.2](ibc-stacking-report.md)). Re-check their tension after the first 50 km.
+- [ ] 5.5.14 — Check the dust caps are on all three end-wall ports (X1, X3, X4) and that BV-02 and BV-06 (the P-05 / P-03 suctions) are closed.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~10 minutes. Single-person operation. Reverse of 5.5.**

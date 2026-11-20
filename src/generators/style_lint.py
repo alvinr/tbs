@@ -3,7 +3,8 @@
 """style_lint.py — TBS-001 voice & terseness checker (manual, advisory).
 
 The §F "Voice" pass from skills/skill_report_writing.md, made checkable. It flags the
-robotic tells (hedging, filler, stock-marketing phrasing) and reports prose word count /
+robotic tells (hedging, filler, stock-marketing phrasing), design-history language (§D:
+retired / replaced / formerly / no longer / "(was X)"), and reports prose word count /
 bloat so a terseness pass has a worklist. It NEVER rewrites an engineering value — it points.
 
 Two tracks (the split is read from docs/editorial-review-todo.md, the single source):
@@ -56,6 +57,18 @@ TELLS = [
     ("market: leverage (verb)",  r"\bleverag(e|es|ed|ing)\b"),
 ]
 TELLS = [(label, re.compile(pat, re.IGNORECASE)) for label, pat in TELLS]
+# ── design-history tells (skill §D: describe the current design, not how we got here) ──
+# The paper trail belongs in RELEASE.md / the tbs_constants rev-history, never in a report body.
+HISTORY = [
+    ("retired / superseded",     r"\b(?:was|were|been|is|are) (?:retired|superseded|dropped|abandoned|deprecated)\b|\bsuperseded\b"),
+    ("replaced (by/with)",       r"\b(?:was|were|been|is|are)? ?replaced (?:by|with)\b|\breplaces the\b"),
+    ("former / previously",      r"\bformer(?:ly)?\b|\bpreviously\b|\boriginally\b|\bused to be\b"),
+    ("no longer",                r"\bno longer\b"),
+    ("the old / the earlier",    r"\bthe (?:old|earlier|prior|previous|original) (?:design|version|plan|layout|spec|approach|plate|mount|route|routing|value)\b"),
+    ("now (vs before)",          r"\bnow (?:live|lives|sits|sit|uses|carries|carry|replaces|does|do|is|are)\b"),
+    ("(was X) aside",            r"\((?:was|were|previously|formerly)\b"),
+]
+HISTORY = [(label, re.compile(pat, re.IGNORECASE)) for label, pat in HISTORY]
 CONTRACTION = re.compile(r"\b\w+'(?:s|t|re|ve|ll|d|m)\b", re.IGNORECASE)
 FIRST_PERSON = re.compile(r"\b(?:I|I'm|I've|I'd|my|we|we're|we've|our)\b")
 
@@ -112,16 +125,19 @@ def _words(prose: str) -> int:
 
 
 def scan(path: str, track: int):
-    """Return (word_count, hits, stiff, long_sentences, dim_parens)."""
+    """Return (word_count, hits, stiff, long_sentences, dim_parens, history)."""
     full = open(path, encoding="utf-8").read()
     prose = _prose(full)
-    hits, dim_parens = [], []
+    hits, dim_parens, history = [], [], []
     for i, ln in enumerate(full.splitlines(), 1):
         if ln.strip().startswith(("|", "#", "<!--")):
             continue
         for label, rx in TELLS:
             for m in rx.finditer(ln):
                 hits.append((i, label, m.group(0)))
+        for label, rx in HISTORY:
+            for m in rx.finditer(ln):
+                history.append((i, label, m.group(0)))
         for m in PAREN.finditer(ln):                      # dim-dump parentheticals
             inner = m.group(1)
             if "http" in inner or "](" in inner:          # skip markdown links / URLs
@@ -146,7 +162,7 @@ def scan(path: str, track: int):
             sents = [s for s in re.split(r"(?<=[.!?])\s+", para.strip()) if len(s.split()) > 3]
             if len(sents) >= 4 and not CONTRACTION.search(para) and not FIRST_PERSON.search(para):
                 stiff += 1
-    return _words(prose), hits, stiff, long_sents, dim_parens
+    return _words(prose), hits, stiff, long_sents, dim_parens, history
 
 
 def main() -> int:
@@ -170,37 +186,40 @@ def main() -> int:
             continue
         if single and os.path.basename(rel) != os.path.basename(single) and rel != single:
             continue
-        words, hits, stiff, longs, dims = scan(path, track)
-        rows.append((rel, track, words, hits, stiff, longs, dims))
+        words, hits, stiff, longs, dims, hist = scan(path, track)
+        rows.append((rel, track, words, hits, stiff, longs, dims, hist))
 
     if single and rows:
-        rel, track, words, hits, stiff, longs, dims = rows[0]
+        rel, track, words, hits, stiff, longs, dims, hist = rows[0]
         print(f"\n{rel}  (Track {track})  ·  {words} prose words  ·  {len(hits)} tells"
               + (f"  ·  {stiff} stiff para(s)" if track == 2 else "")
-              + f"  ·  {len(longs)} long sent · {len(dims)} dim-dump paren")
+              + f"  ·  {len(longs)} long sent · {len(dims)} dim-dump paren · {len(hist)} history")
+        for ln, label, txt in hist:
+            print(f"  L{ln:<4} {'history: ' + label:<26} “{txt}”")
         for ln, label, txt in hits:
             print(f"  L{ln:<4} {label:<26} “{txt}”")
         for ln, snip in dims:
             print(f"  L{ln:<4} {'dim-dump paren':<26} {snip}")
         for wc, snip in sorted(longs, reverse=True):
             print(f"  {'':<6}{'long sentence (' + str(wc) + 'w)':<26} “{snip}”")
-        if not (hits or stiff or longs or dims):
-            print("  clean — no tells, long sentences, or dim-dump parens.")
+        if not (hits or stiff or longs or dims or hist):
+            print("  clean — no tells, history, long sentences, or dim-dump parens.")
         return 0
 
     # roster view, ranked by tell count
     print("TBS-001 style_lint — voice & terseness (advisory; never blocks)\n")
-    print(f"  {'doc':<42} {'trk':>3} {'words':>6} {'tells':>5} {'long':>5} {'dims':>5} {'stiff':>5}")
-    print(f"  {'-'*42} {'-'*3} {'-'*6} {'-'*5} {'-'*5} {'-'*5} {'-'*5}")
-    for rel, track, words, hits, stiff, longs, dims in sorted(
-            rows, key=lambda r: (-(len(r[3]) + len(r[5]) + len(r[6])), -r[2])):
-        flag = "  ⚠" if (len(hits) >= 5 or len(longs) >= 8 or len(dims) >= 4) else ""
-        print(f"  {rel:<42} {track:>3} {words:>6} {len(hits):>5} {len(longs):>5} {len(dims):>5} {stiff:>5}{flag}")
+    print(f"  {'doc':<42} {'trk':>3} {'words':>6} {'tells':>5} {'hist':>5} {'long':>5} {'dims':>5} {'stiff':>5}")
+    print(f"  {'-'*42} {'-'*3} {'-'*6} {'-'*5} {'-'*5} {'-'*5} {'-'*5} {'-'*5}")
+    for rel, track, words, hits, stiff, longs, dims, hist in sorted(
+            rows, key=lambda r: (-(len(r[3]) + len(r[5]) + len(r[6]) + len(r[7])), -r[2])):
+        flag = "  ⚠" if (len(hits) >= 5 or len(longs) >= 8 or len(dims) >= 4 or hist) else ""
+        print(f"  {rel:<42} {track:>3} {words:>6} {len(hits):>5} {len(hist):>5} {len(longs):>5} {len(dims):>5} {stiff:>5}{flag}")
     tot_w = sum(r[2] for r in rows)
     tot_t = sum(len(r[3]) for r in rows)
     tot_l = sum(len(r[5]) for r in rows)
     tot_d = sum(len(r[6]) for r in rows)
-    print(f"\n  {len(rows)} docs · {tot_w:,} prose words · {tot_t} tells · {tot_l} long sentences"
+    tot_h = sum(len(r[7]) for r in rows)
+    print(f"\n  {len(rows)} docs · {tot_w:,} prose words · {tot_t} tells · {tot_h} history · {tot_l} long sentences"
           f" · {tot_d} dim-dump parens. Run `style_lint.py <doc>` for line-level. ⚠ = dense.")
     return 0
 

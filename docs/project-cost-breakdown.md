@@ -96,7 +96,7 @@ The itemized interior parts, with suppliers and prices, are in the [Master Shopp
 
 **Source document:** `pinhole-report.md`, `pinhole-disc-holder-report.md`
 
-The pinhole/lens **mount** is the [pinhole disc holder](pinhole-disc-holder-report.md) (in the front-board system); this section is the **wall interface** it bolts to. The standard Ø600 interchangeable pinhole/lens plate was retired — the Ø80-carrier disc holder does both jobs, so the pinhole element + retaining ring + mount bolts now live once, in the front board.
+The pinhole/lens **mount** is the [pinhole disc holder](pinhole-disc-holder-report.md) in the front-board system. Its Ø80 carrier takes either the pinhole or a lens, and it carries the pinhole element, retaining ring and mount bolts. This section is the **wall interface** the front board bolts to.
 
 ### 3.1 Pinhole wall interface
 

@@ -108,6 +108,9 @@ Comparison tables that carry an **Old** column silently accumulate stale design
 history — `55-gal drums`, `colonnade`, the old pinhole X, `Portacool Jetstream`. A
 living report describes the **current** design only.
 
+- **Checked by `style_lint.py`** (the `hist` column / `history:` lines): retired, superseded, replaced
+  by/with, formerly, previously, originally, no longer, "the old/earlier design", "now lives", "(was X)".
+  Every hit is rewritten to state the current design, or the history moves to `RELEASE.md`.
 - Put history in a **changelog**, not the body (the `tbs_constants.py` header
   rev-history block is the pattern — keep it; it's the design's paper trail).
 - `equipment-layout §10` is the model: it was reduced from an Old-vs-New table to a

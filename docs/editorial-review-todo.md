@@ -16,8 +16,9 @@ People don't read. Two tracks, one mandate (be terse):
   moments. Still terse — personal ≠ flowery.
 
 **Mechanism:** the house-style rules live in `skills/skill_report_writing.md` (§Voice). `python3
-src/generators/style_lint.py` is an advisory checker (robotic tells + word-count/bloat, thresholds per
-track) — it never rewrites engineering values. Run it per doc before ticking.
+src/generators/style_lint.py` is an advisory checker (robotic tells, design-history language,
+word-count/bloat, thresholds per track) — it never rewrites engineering values. Run it per doc before
+ticking; a doc is not done while its **hist** column is non-zero.
 
 **How to use:** `[ ]` = not started · `[~]` = in progress · `[x]` = done. Put a one-line note after each
 doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told (per CLAUDE.md).
@@ -35,7 +36,10 @@ doc as it's reviewed (what was cut / what changed). Don't mark `[x]` unless told
 
 **Reset 2026-11-20 for the what/why pass.** Every Track 1 doc is re-reviewed against the rule in
 `skills/skill_report_writing.md` §F: a design report is the *what* and *why* (and how it's built);
-the *how* of operation lives only in the operating manual. Notes from the earlier terseness pass
+the *how* of operation lives only in the operating manual. **Describe the current design, not how we
+got here** (§D): no "was retired", "replaced by", "formerly", "no longer", "now lives", "(was $X)" —
+state what the design is and why; history goes in RELEASE.md. `style_lint.py <doc>` lists these as
+`history:` lines (2026-11-20 baseline: 32 hits across 25 docs). Notes from the earlier terseness pass
 are kept after each entry.
 
 ### Costing

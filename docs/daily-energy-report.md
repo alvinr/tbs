@@ -86,22 +86,22 @@ service interval is set by the Blue water (~<!-- BEGIN fact:prints_per_resupply 
 totes are emptied roughly **every ~5 days, not every evening** — the camera can sit on
 site for several days between dump runs.
 
-This is **gravity-assisted**: each tote gravity-drains through its low port,
-and the pump only lifts the **~120 L residual** below the port:
+X3 and X4 sit above the bottom-tier totes, so each tote is **pumped out entirely** — nothing
+drains by gravity. Over a resupply run each collection tote holds ~<!-- BEGIN energy:drain-l-tote -->622<!-- END energy:drain-l-tote --> L:
 
 | Pump | Tank | Volume pumped | Min @ 3.5 GPM | Wh @ <!-- BEGIN energy:pump-w -->62<!-- END energy:pump-w --> W |
 |---|---|--:|--:|--:|
-| P-05 | Brown IBC-3 → X3 | ~120 L residual | ~<!-- BEGIN energy:drain-min-tote -->9<!-- END energy:drain-min-tote --> | ~<!-- BEGIN energy:drain-pump-wh-tote -->9<!-- END energy:drain-pump-wh-tote --> |
-| P-03 | Waste IBC-4 → X4 | ~120 L residual | ~<!-- BEGIN energy:drain-min-tote -->9<!-- END energy:drain-min-tote --> | ~<!-- BEGIN energy:drain-pump-wh-tote -->9<!-- END energy:drain-pump-wh-tote --> |
-| | + white light for the ~20 min operation | | | ~10 |
-| **Per-dump-run drain total** | | | | **~<!-- BEGIN energy:drain-wh -->36<!-- END energy:drain-wh --> Wh** |
+| P-05 | Brown IBC-3 → X3 | ~<!-- BEGIN energy:drain-l-tote -->622<!-- END energy:drain-l-tote --> L | ~<!-- BEGIN energy:drain-min-tote -->47<!-- END energy:drain-min-tote --> | ~<!-- BEGIN energy:drain-pump-wh-tote -->49<!-- END energy:drain-pump-wh-tote --> |
+| P-03 | Waste IBC-4 → X4 | ~<!-- BEGIN energy:drain-l-tote -->622<!-- END energy:drain-l-tote --> L | ~<!-- BEGIN energy:drain-min-tote -->47<!-- END energy:drain-min-tote --> | ~<!-- BEGIN energy:drain-pump-wh-tote -->49<!-- END energy:drain-pump-wh-tote --> |
+| | + white light while setting the valves inside (~10 min) | | | ~<!-- BEGIN energy:drain-light-wh -->18<!-- END energy:drain-light-wh --> |
+| **Per-dump-run drain total** | | | | **~<!-- BEGIN energy:drain-wh -->115<!-- END energy:drain-wh --> Wh** |
 
-Because gravity does the bulk, the pump energy is **independent of how full the totes
-got** and is **tiny — ~<!-- BEGIN energy:drain-wh -->36<!-- END energy:drain-wh --> Wh per dump run** (a fraction of a single operating day's ~<!-- BEGIN energy:daily-wh-3 -->2,310<!-- END energy:daily-wh-3 --> Wh,
-and incurred only once per resupply, not daily). *Worst case* — if a tote had to be pumped
-out entirely with no gravity assist (~600 L) — it would be ~<!-- BEGIN energy:drain-full-min -->45<!-- END energy:drain-full-min --> min each, ~<!-- BEGIN energy:drain-full-wh -->94<!-- END energy:drain-full-wh --> Wh for both;
-still minor. (Brown is normally *recycled* through the filter for the first wash rather than
-dumped; this line covers the case where it is drained off.)
+The dichromate option shifts water from Brown to Waste but leaves the run's total unchanged, so the
+pump-out energy is the same. It is **small — ~<!-- BEGIN energy:drain-wh -->115<!-- END energy:drain-wh --> Wh per dump run**, about <!-- BEGIN energy:drain-pct-day -->5<!-- END energy:drain-pct-day -->% of a single
+operating day's ~<!-- BEGIN energy:daily-wh-3 -->2,310<!-- END energy:daily-wh-3 --> Wh, and incurred once per resupply, not daily. The ceiling is two
+full <!-- BEGIN energy:drain-full-l -->1,000<!-- END energy:drain-full-l --> L totes: ~<!-- BEGIN energy:drain-full-min -->76<!-- END energy:drain-full-min --> min each, ~<!-- BEGIN energy:drain-full-wh -->157<!-- END energy:drain-full-wh --> Wh for both. (Brown is normally
+*recycled* through the filter for the first wash rather than dumped; this line covers the case where
+it is drained off.)
 
 ---
 
@@ -194,5 +194,5 @@ all, that — not power or fresh water — becomes the hard stop.
 
 1. [Electrical Report §3](electrical-report.md) — power budget and the per-session itemized energy.
 2. [Water System Report §3, §6–7](water-system-report.md) — wash cycles, the flow-through wash, and the Brown/Waste drain-out ports.
-3. [Plumbing Report §5.3](plumbing-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
+3. [Plumbing Report §5.3](plumbing-report.md) — P-03 (Waste evac) and P-05 (Brown drain); the ports sit above the totes, so both are pumped out entirely.
 4. [Cost Analysis](cost-analysis-report.md) — the capital build cost and savings levers.

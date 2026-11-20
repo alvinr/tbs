@@ -77,13 +77,12 @@ P04_DRAIN_MIN   = 25    # continuous drain across the wash (concurrent with P-01
 
 PRINTS_PER_DAY    = 3       # representative daylight field day (2 short / 4 pushed)
 
-# End-of-day Brown + Waste pump-out (P-05 Brown→X3, P-03 Waste→X4). Gravity-assisted:
-# each tote gravity-drains through its low Z=200mm port; the pump lifts only the
-# ~120L residual below the port (plumbing-report.md §4.3).
+# Per-resupply Brown + Waste pump-out (P-05 Brown→X3, P-03 Waste→X4). X3/X4 sit above the
+# bottom-tier totes, so each tote is pumped out entirely — no gravity drain. The run's collected
+# water (RECOVERED_L) is the same with or without the dichromate option; only the IBC-3/IBC-4
+# split moves, so the pump-out energy depends on the total, not the split.
 PUMP_LPM          = 13.2    # 3.5 GPM Shurflo 2088
-DRAIN_RESIDUAL_L  = 120     # residual below the X3/X4 port, pumped per tote
-DRAIN_FULL_L      = 600     # worst case: a tote pumped out entirely, no gravity assist
-DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation
+DRAIN_LIGHT_MIN   = 10      # white light while the operator sets the valves inside
 
 # ── Water supply (clean-water autonomy) ───────────────────────────────────────
 # The binding endurance constraint for a disconnected (solar-only) deployment is
@@ -92,7 +91,7 @@ DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation
 # wash model) rather than re-declaring the literals — see water-system-report.md §3-4.
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
-from tbs_constants import BLUE_SUPPLY_L, BLUE_PER_PRINT_L  # noqa: E402
+from tbs_constants import BLUE_SUPPLY_L, BLUE_PER_PRINT_L, RECOVERED_L, COLLECTION_FILL_L, IBC_CAPACITY_L  # noqa: E402
 WASTE_CAP_L = 600   # 1× Black (waste) tote — parallel out-flow constraint
 
 # ── Phase-by-phase load matrix ────────────────────────────────────────────────
@@ -248,11 +247,10 @@ def per_print_wh():
 
 
 def resupply_drain_wh():
-    """Per-RESUPPLY Brown (P-05→X3) + Waste (P-03→X4) dump run — gravity-assisted residual.
-    This runs at the ~14-print / ~4.7-day resupply service (when clean water is replenished
+    """Per-RESUPPLY Brown (P-05→X3) + Waste (P-03→X4) dump run — both totes pumped out entirely.
+    This runs at the resupply service (when clean water is replenished
     and the totes are emptied), NOT every operating day — so it is NOT part of compute_daily."""
-    pump_min_per_tote = DRAIN_RESIDUAL_L / PUMP_LPM
-    pump_wh = 2 * PUMP_W * pump_min_per_tote / 60.0
+    pump_wh = PUMP_W * (RECOVERED_L / PUMP_LPM) / 60.0
     light_wh = WHITE_LIGHT_W * DRAIN_LIGHT_MIN / 60.0
     return pump_wh + light_wh
 
@@ -294,7 +292,7 @@ def print_daily_report():
     print(f"  ── Daily total                  : {d['daily_wh']:6.0f} Wh")
     print(f"\n  2 prints: {compute_daily(2)['daily_wh']:.0f} Wh   "
           f"4 prints: {compute_daily(4)['daily_wh']:.0f} Wh")
-    print(f"  Resupply Brown+Waste dump run (per ~14-print service): "
+    print(f"  Resupply Brown+Waste dump run (per resupply): "
           f"{resupply_drain_wh():.0f} Wh")
 
     print("\n" + "=" * 72)
@@ -419,8 +417,8 @@ def _energy_values() -> dict:
     pwh = lambda m: PUMP_W * m / 60.0
     wash = pwh(P01_BLUE_MIN) + pwh(P02_BROWN_MIN)
     pumps = wash + pwh(P04_DRAIN_MIN)
-    tote_min = DRAIN_RESIDUAL_L / PUMP_LPM
-    full_min = DRAIN_FULL_L / PUMP_LPM
+    tote_min = COLLECTION_FILL_L / PUMP_LPM
+    full_min = IBC_CAPACITY_L / PUMP_LPM
     return {
         "pump-w":             c(PUMP_W),
         "peak-w":             c(peak_w()),
@@ -433,6 +431,8 @@ def _energy_values() -> dict:
         "wash-wh-3":          c(3 * wash),
         "pump-pct-day":       c(100 * 3 * pumps / d3["daily_wh"]),
         "prints-wh-3":        c(3 * per_print_wh()),
+        "drain-l-tote":       c(COLLECTION_FILL_L),
+        "drain-full-l":       c(IBC_CAPACITY_L),
         "drain-min-tote":     c(tote_min),
         "drain-pump-wh-tote": c(pwh(tote_min)),
         "drain-full-min":     c(full_min),
@@ -449,6 +449,8 @@ def _energy_values() -> dict:
         "daily-wh-2":         c(d2["daily_wh"]),
         "daily-wh-4":         c(d4["daily_wh"]),
         "drain-wh":           c(resupply_drain_wh()),
+        "drain-light-wh":     c(WHITE_LIGHT_W * DRAIN_LIGHT_MIN / 60.0),
+        "drain-pct-day":      c(100 * resupply_drain_wh() / d3["daily_wh"]),
         "per-print-wh":       c(per_print_wh()),
         "warmup-wh":          c(warmup_wh()),
         "solar-net-2":        c(s["solar_wh_day"] - d2["daily_wh"]),

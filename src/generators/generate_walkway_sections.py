@@ -6,7 +6,7 @@ pinhole-wall pipes thread BELOW the right walkway (IBC end) as the under-walkway
 
 Companion to the across-width sections: this cut is at 90° to those — an X–Z elevation
 looking along +Yd, taken at increasing Yd depths.  The four corridor↔pinhole-wall lines
-(IBC-3→P-02, tray-sump→P-04, Blue trunk→TAP-01, filtered return SV-01→DV-01) run TOGETHER
+(P-02→ACC-02, Blue trunk→TAP-01, DV-02 waste→IBC-4, filtered return SV-01→DV-01) run TOGETHER
 as a flat RIBBON in the dead space UNDER the right-walkway grate, in the clear channel
 BETWEEN the two walkway long beams (above the tray rim).  The sections show the ribbon in-
 plane over the tray, its loop UP over the first cantilever, and its drop into the corridor
@@ -61,13 +61,12 @@ GAPX    = PROC_TRAY_X_R + 12                  # 4641 — under-beam crossing in 
 # ── Under-walkway pipe RIBBON (single-sourced from generate_corridor_water_panel `cp`) ──
 # Four lanes side-by-side in X (26mm pitch) in the clear channel BETWEEN the two long beams,
 # at Z=cp.RIBBON_Z (104.5 — FLUSH: pipe crown at the deck underside) under the grate (Z115-130),
-# above the tray rim (Z50).  The middle two lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump)
-# so the blue/brown lines alternate and no longer cross on the way into the corridor.  Lane order
-# (from the outer/IBC beam inward) + which line each carries + its color.
+# above the tray rim (Z50).  Lane order (from the outer/IBC beam inward) + which line each carries +
+# its color, matching the water.skp ribbon_run() lanes.
 RIBBON_LANES = [   # (X, color, tag)  — index-matched to cp.RIBBON_LANE_X
-    (cp.RIBBON_LANE_X[0], C_BROWN, "IBC-3 → P-02"),
+    (cp.RIBBON_LANE_X[0], C_BROWN, "P-02 → ACC-02"),
     (cp.RIBBON_LANE_X[1], C_BLUE,  "Blue trunk → TAP-01"),
-    (cp.RIBBON_LANE_X[2], C_BROWN, "tray sump → P-04"),
+    (cp.RIBBON_LANE_X[2], C_WASTE, "DV-02 waste → IBC-4"),
     (cp.RIBBON_LANE_X[3], C_BROWN, "SV-01 → DV-01 (filtered)"),
 ]
 RIBBON_Z      = cp.RIBBON_Z            # 104.5 — FLUSH under the grate (pipe crown at deck underside Z115)
@@ -323,8 +322,8 @@ def sheet1():
         "1. X–Z elevation looking +Yd near the pinhole-wall END of the ribbon (Yd≈62), where the four corridor↔pinhole-wall lines run TOGETHER as a flat ribbon under the right-walkway grate.",
         "2. The four lanes (26mm pitch, Z104.5 — FLUSH, pipe crown at the deck underside Z115) sit in the clear channel BETWEEN the two 2×1×0.120in long beams (X4380–4523), above the tray rim (Z50), tucked under the grate.",
         "3. A welded 25×3 flat-bar cross-brace between the beams (top ~Z96) carries the ribbon at each support station.",
-        "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump) so blue/brown alternate and no longer cross into the corridor.",
-        "5. Off-section (−Yd) each lane drops to its wall feature: the two blue lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on toward the near-rim taps.",
+        "4. Lane order (outer → inner): brown P-02 → ACC-02, blue trunk → TAP-01, gray DV-02 waste → IBC-4, brown SV-01 → DV-01 filtered return.",
+        "5. Off-section (−Yd) each lane turns up the pinhole wall to its skid connection: ACC-02, TAP-01 + the spray valves, DV-02, SV-01.",
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 6.6, fs=6.2,
                font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)

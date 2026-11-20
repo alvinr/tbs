@@ -5,12 +5,12 @@
 The corridor plumbing threads a tight zone at the IBC end of the container, where the
 **right walkway**, the **processing tray**, the **IBC restraint frame** and the **pump
 column** all compete for space. The four lines that connect the plumbing corridor to the
-pinhole‑wall panel — IBC‑3 → P‑02, the filtered return SV‑01 → DV‑01, the tray‑sump → P‑04
-pickup, and the Blue supply trunk → TAP‑01 — run together as a flat **ribbon** in the dead
-space **under the right‑walkway grate**, in the clear channel between the two walkway long
-beams. This document is a set of **cross‑sections** that walk from the pinhole wall across to
-the plumbing corridor, so the clear routing envelope the ribbon actually has at each depth is
-legible — and so the points where it shares space with structure are visible.
+pinhole‑wall filter skid — P‑02 → ACC‑02 (recycle spray), the Blue supply trunk → TAP‑01 and the
+spray valves, the DV‑02 waste → IBC‑4, and the filtered return SV‑01 → DV‑01 — run together as a
+flat **ribbon** in the dead space **under the right‑walkway grate**, in the clear channel between
+the two walkway long beams. These **cross‑sections** walk from the pinhole wall across to the
+plumbing corridor, so the routing envelope at each depth, and where the ribbon shares space with
+structure, are visible.
 
 These sections are the companion to the [Plumbing](plumbing-report.md) report; the pipe
 positions are read off the 3D water model (`water.skp`) and drawn 1:1.
@@ -20,7 +20,7 @@ positions are read off the 3D water model (`water.skp`) and drawn 1:1.
 The five sections **B‑B through F‑F** are **longitudinal along the walkway**
 (down the length of the container), cut at increasing depth — so together they scan
 from the pinhole wall across to the plumbing corridor. (Sections
-**G‑G / H‑H** below add the tray‑slope views)
+**G‑G / H‑H** below add the tray‑slope views.)
 
 | Section | Cut (Yd) | What it shows |
 |--------|---------|---------------|
@@ -38,8 +38,9 @@ Cut near the **pinhole‑wall end of the ribbon (Yd ≈ 62)**. The four lanes ru
 a 26 mm pitch at **Z104.5 — flush**, their crowns at the grate underside, in the clear
 channel between the two 2×1×0.120in (50.8 × 25.4mm) long beams, sitting **above the tray rim**.
 A welded 25 × 3mm flat-bar cross‑brace between the beams carries the ribbon at each support station.
-Off‑section each lane drops to its wall feature — the two blue lanes to TAP‑01 and the
-SV‑01 filtered return, the two brown lanes on toward the near‑rim taps.
+Off‑section each lane turns up the pinhole wall to its skid connection — the brown P‑02 line to
+ACC‑02, the blue trunk to TAP‑01 and the spray valves, the gray waste from DV‑02, and the brown
+filtered return from SV‑01.
 
 ## Section C‑C — midway (pinhole wall ↔ corridor)
 
@@ -61,7 +62,7 @@ its **front upright** and its **front foot (150 × 150) — extending
 bearers) carries the deck.
 
 The ribbon **loops up over the cantilever** here. It rises through the grate, crests,
-then passing over the arm top and the grate, clearing the arm by ≈ 16 mm
+then passes over the arm top and the grate, clearing the arm by ≈ 16 mm
 — and drops back to the **flush ribbon height**, so it never passes through the
 cantilever steel and never dips toward the tray. No line threads the tray‑rim↔upright gap at this
 plane. Past the cantilever each lane stays flush, crosses the **open corridor bay** (the outer
@@ -94,7 +95,7 @@ top Z70.8). The IBC tote‑fill and equalization lines, which belong to the IBC 
 The mirror of D‑D on the far side of the corridor: the far cantilever arm and far
 foot (again extending under the tray). The ribbon loops over the **near** cantilever only and has
 dropped into the corridor, so no line crosses this far cantilever; the nearest line is
-the blue SV‑01 → DV‑01 return lane.
+the brown SV‑01 → DV‑01 filtered‑return lane.
 
 ## Sections G‑G / H‑H — tray slope, support & spray‑carriage clearance
 
@@ -108,10 +109,9 @@ cut at the far rim (the high corner of the dual slope) showing the level walkway
 sloped pan and the shrunk spray‑carriage (Ø32 wheels + 1½in-square SS beam) with **~30 mm clearance**
 under the left grate.
 
-## Interference & clearance findings
+## Clearances
 
-Drawing these sections at 1:1 against `water.skp` confirms the ribbon's key clearances and the
-two remaining structural items the plan views do not reveal:
+Drawn 1:1 against `water.skp`, the sections show the clearances the plan views do not:
 
 1. **Ribbon flush under the grate, clear of the carriage** — the four lanes ride **flush**
    (pipe crown at the grate underside) and 54 mm above the tray rim. Flush is what keeps
@@ -130,19 +130,18 @@ two remaining structural items the plan views do not reveal:
    rises it to the pumps. The walkway grate is split at the two cantilever‑arm centers so its
    **center section bridges the open bay**; the short span carries a little flex, accepted over the
    low‑traffic corridor. No pinch remains at the tray‑rim↔upright gap.
-4. **Front foot + M12 anchor under the tray basin** — the tray‑datum correction raises the welded
-   pan onto the shim ramp (floor bottom, at the corridor foot stations), so the 12 mm front
-   foot clears **~11 mm** *under* the pan (see G‑G).
+4. **Front foot + M12 anchor under the tray basin** — the welded pan sits on the shim ramp
+   (floor bottom, at the corridor foot stations), so the 12 mm front foot clears **~11 mm**
+   *under* the pan (see G‑G).
 5. **Cantilever‑arm reference** — the RWK cantilever arm clamps to the deep‑box front upright, so overview / ibc‑stack /
    walkway all reference the same upright.
 6. **DV‑02 waste hops the back ring‑rail (E‑E)** — the waste → IBC‑4 line crosses the corridor at the floor to reach the
-   rear merge, and the back bottom Yd‑rail is the full 50 RHS (top Z65), so a flat Z65 run clipped its top. The line now
-   **lifts to Z90 over the rail** — staying low (Z65) past the P‑02 → ACC‑02 recycle crossing, then hopping just before the
-   rail — clearing both the rail and the recycle line. The ribbon lanes are unaffected (they enter inboard of the rail).
+   rear merge. It stays low (Z65) past the P‑02 → ACC‑02 recycle crossing, then **lifts to Z90** just before the back
+   bottom Yd‑rail (full RHS, top Z70.8), clearing both. The ribbon lanes enter inboard of the rail.
 
 ## See Also
 
-- [Plumbing](plumbing-report.md) — the corridor plumbing panel and the four-line topology these sections cut through.
+- [Plumbing](plumbing-report.md) §7.1 — the corridor plumbing panel and the four-line ribbon these sections cut through.
 - [Walkway Report](walkway-report.md) §4 — the right-walkway cantilever rectangle the sections pass over.
 - [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) — the tray slope + spray-carriage clearance (G‑G / H‑H).
 - [Water System Report](water-system-report.md) — the Blue / Brown / Black circuit topology of the four ribbon lines.

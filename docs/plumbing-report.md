@@ -251,8 +251,8 @@ entirely: wash 1 under the dichromate option, which carries most of the chromium
 heavily contaminated drain water ([Water System Report §2.3, §4.2](water-system-report.md)).
 Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
-**3W-DV-01** is the pH-gated valve, set from the **SV-01** sample (below): filtered water at pH 6–7.5 routes to
-recycle (IBC-3 Brown buffer, which P-02 later sprays back); pH >7.5 or discolored routes to Black (IBC-4).
+**3W-DV-01** is the pH-gated valve, set from the **SV-01** sample (below): filtered water at pH <!-- BEGIN fact:brown_ph_lo -->6<!-- END fact:brown_ph_lo -->–<!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> routes to
+recycle (IBC-3 Brown buffer, which P-02 later sprays back); pH ><!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> or discolored routes to Black (IBC-4).
 Its settings are in the [Operating Manual §4.2](operating-manual.md).
 
 ### 4.3 Check Valves
@@ -282,7 +282,7 @@ spout pointing toward the operator so a cup fits beneath it from the right
 walkway.
 
 SV-01 draws while P-04 pressurizes the filtered line; a ~50 ml sample sets 3W-DV-01
-(recycle-return at pH 6–7.5, Black-waste above pH 7.5 or on discoloration). The sampling
+(recycle-return at pH <!-- BEGIN fact:brown_ph_lo -->6<!-- END fact:brown_ph_lo -->–<!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi -->, Black-waste above pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> or on discoloration). The sampling
 procedure is in the [Operating Manual §4.2](operating-manual.md).
 
 ---

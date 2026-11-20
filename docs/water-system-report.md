@@ -47,7 +47,7 @@ When a cyanotype print is washed, the water picks up:
 | Iron(III) compounds | Oxidation products | Color the water blue-gray |
 | Ammonium dichromate | **Dichromate option only** (0.1–0.4% of the sensitizer) | Water-soluble, orange; **chromium(VI)**, a Category 1A carcinogen |
 
-**pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Alkaline conditions (pH >8) accelerate the slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions, so the system holds the stored water below pH 7.5 (sample taps and a dosing port, §4.2).
+**pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Alkaline conditions (pH >8) accelerate the slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions, so the system holds the stored water below pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> (sample taps and a dosing port, §4.2).
 
 The wash-1 bath carries most of the dissolved sensitizer: it is the leaching wash, where the unexposed chemistry comes out of the muslin. Washes 2 and 3 rinse a print that has already been cleared.
 
@@ -218,7 +218,7 @@ Processing tray sump (P-04 suction pickup)
 
 **DV-02 — separating the drain.** DV-02 sits ahead of the filters, so any wash can go straight to IBC-4 without passing through the filter train or entering the recycle loop. It serves two cases: wash 1 under the dichromate option, which carries most of the chromium (§2.3), and drain water heavily loaded by a failed coat or a spill.
 
-**pH management:** **SV-02** samples the incoming used water ahead of DV-02, and **SV-01** samples the filtered water before DV-01 returns it to IBC-3. The Brown buffer is held at pH 6–7.5 so the ferricyanide stays stable (§2.2). Slightly acidic water is acceptable. A citric-acid **dosing port** at the IBC-3 outlet corrects alkaline drift, and DV-01 sends out-of-range filtered water to IBC-4 instead of the buffer. The sampling and dosing procedure is in the [Operating Manual §4.2](operating-manual.md).
+**pH management:** **SV-02** samples the incoming used water ahead of DV-02, and **SV-01** samples the filtered water before DV-01 returns it to IBC-3. The Brown buffer is held at pH <!-- BEGIN fact:brown_ph_lo -->6<!-- END fact:brown_ph_lo -->–<!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> so the ferricyanide stays stable (§2.2). Slightly acidic water is acceptable. A citric-acid **dosing port** at the IBC-3 outlet corrects alkaline drift, and DV-01 sends out-of-range filtered water to IBC-4 instead of the buffer. The sampling and dosing procedure is in the [Operating Manual §4.2](operating-manual.md).
 
 ### 4.3 Black System — Waste Containment
 
@@ -326,7 +326,7 @@ The storage side needs little upkeep by design: the totes are closed, opaque ves
 
 ## 10. Hazards Designed For
 
-1. **Ferricyanide breakdown.** Alkaline conditions plus UV can release trace cyanide ions from ferricyanide. The design holds every container below pH 7.5 (sample taps SV-01/SV-02, the IBC-3 dosing port, DV-01's reject leg) and keeps the totes closed and opaque. The risk is theoretical rather than acute at wash-water concentrations.
+1. **Ferricyanide breakdown.** Alkaline conditions plus UV can release trace cyanide ions from ferricyanide. The design holds every container below pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> (sample taps SV-01/SV-02, the IBC-3 dosing port, DV-01's reject leg) and keeps the totes closed and opaque. The risk is theoretical rather than acute at wash-water concentrations.
 
 2. **Prussian blue particles.** Prussian blue is non-toxic (it is an approved antidote medication), but the fine particles irritate skin and eyes. The F-1 sediment stage takes them out of the recycle loop.
 

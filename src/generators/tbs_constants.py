@@ -1137,6 +1137,8 @@ CR_WASTE_MG_L_HI         = round(CR_G_HI * 1000 / RECOVERED_PER_PRINT_L, 1)     
 CR_LIMIT_X_LO            = round(CR_WASTE_MG_L_LO / CR_TC_LIMIT_MG_L, 1)             # = 2.2× the limit
 CR_LIMIT_X_HI            = round(CR_WASTE_MG_L_HI / CR_TC_LIMIT_MG_L, 1)             # = 8.7× the limit
 CR_WASHOUT_BREAKEVEN_PCT = round(CR_TC_LIMIT_MG_L / CR_WASTE_MG_L_LO * 100)          # = 45 % washout reaches the limit
+BROWN_PH_LO              = 6      # DV-01 accept band, low — filtered water at or above returns to the Brown buffer
+BROWN_PH_HI              = 7.5    # DV-01 accept band, high — above it, filtered water goes to Waste; ferricyanide breaks down in alkaline water
 WASH_L_PER_M2            = round(TRAY_FLOOD_GAL * L_PER_GAL / IMAGE_AREA_M2, 1)        # = 6.2 L/m² per wash — bench-test bath scale (T6/T7)
 BROWN_IN_L_PER_PRINT     = round(2 * TRAY_FLOOD_GAL * L_PER_GAL - 2 * LOSS_PER_PRINT_L / WASHES_PER_PRINT)  # = 93 L washes 2–3 into Brown
 BROWN_CR_MAX_G           = round(CR_TC_LIMIT_MG_L * BROWN_IN_L_PER_PRINT / 1000, 2)   # = 0.47 g Cr/print washes 2–3 may carry

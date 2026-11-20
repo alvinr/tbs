@@ -8,8 +8,8 @@ TBS-001's three-circuit water system requires four 1,000 L caged composite totes
 2×2 stack in the right end zone of the container. Two Blue supply
 totes (IBC-1 and IBC-2) sit on top; one Brown recycle tote (IBC-3) and one Waste tote
 (IBC-4) sit on the bottom. A welded mild steel **restraint-only** frame restrains all four direct-stacked totes for transport, and maintains a <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor
-between the near and far columns for internal pipe routing, valves, and the equipment
-panel.
+between the near and far columns for internal pipe routing, valves, and the Corridor
+Plumbing Panel.
 
 **Design goals:**
 
@@ -39,7 +39,7 @@ panel.
 | Parameter | Value |
 |-----------|-------|
 | Model | Schütz Ecobulk MX 1000L (or equivalent US 48×40 caged composite tote) |
-| Capacity | 1,000 L (~264 US gal) per tote. **"600 L" / "1,000 L" are fill levels, not tote sizes** — all four totes are identical |
+| Capacity | 1,000 L (~264 US gal) per tote — all four totes are identical; working fills are set in the [Water System Report](water-system-report.md) §1 |
 | Overall dimensions | 1,219 × 1,016 × 1,168mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
@@ -55,9 +55,9 @@ panel.
 
 | Tote | Position | Circuit | Function |
 |------|----------|---------|----------|
-| IBC-1 | Top tier, near column | Blue (clean supply) | Primary clean water supply for spray bar |
-| IBC-2 | Top tier, far column | Blue (clean supply) | Secondary supply, filled in parallel with IBC-1 from the X1 fill tee |
-| IBC-3 | Bottom tier, near column | Brown (recycled) | Wash water buffer — filtered and recycled back to Blue |
+| IBC-1 | Top tier, near column | Blue (clean supply) | Clean water for the spray bar, level-balanced with IBC-2 by the equalization cross-tie |
+| IBC-2 | Top tier, far column | Blue (clean supply) | Clean water, filled in parallel with IBC-1 from the X1 fill tee |
+| IBC-3 | Bottom tier, near column | Brown (recycled) | Filtered wash-water buffer, reused for the first wash (pumped out through X3) |
 | IBC-4 | Bottom tier, far column | Black (waste) | Contaminated water held for off-site disposal (pumped out through X4) |
 
 ### 2.3 Layout
@@ -67,10 +67,10 @@ panel.
 | Near column Yd | 30–1,046mm (pushed to near/pinhole wall, 30mm clearance) |
 | Far column Yd | 1,316–2,332mm (pushed to far wall, 30mm clearance) |
 | Column X range | 4,674–5,893mm (right-justified to sealed end wall) |
-| Plumbing corridor | Yd=1,046–1,316mm (270mm gap between columns) |
+| Plumbing corridor | Yd=1,046–1,316mm (<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm gap between columns) |
 | Single IBC height | 1,168mm |
 | Stacked height (2 totes, direct-stack cage-on-cage) | <!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm (2 × 1,168mm — no deck/mat between tiers) |
-| Ceiling clearance | <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm (2388 − 2,336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
+| Ceiling clearance | <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm (<!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm --> − <!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
 
 ---
 
@@ -99,7 +99,7 @@ The box carries the **Corridor Plumbing Panel** (pumps) and its **drain-riser ba
 on the back uprights, and gives the right-walkway cantilever arms their bolt-on point on the
 front uprights — so it is the **shared metal structure of the IBC plumbing corridor**, not just a
 tote-restraint frame. The panel brackets, the 12 side-panel pipe-run L-brackets, the ribbon cross-beams,
-and the walkway-arm connection are validated and scheduled in §3.4–3.6 alongside the tote restraint.
+and the walkway-arm connection are validated and scheduled in §3.4–3.5 alongside the tote restraint.
 
 ![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
 
@@ -111,10 +111,10 @@ and the walkway-arm connection are validated and scheduled in §3.4–3.6 alongs
 |-----------|-------|
 | Material | 2×2×0.120in RHS mild steel (A500 Grade B) |
 | Uprights | 4 full-height (deep 4-leg box: front pair at the corridor mouth + back pair ~450mm behind), tied by butt-jointed top + bottom rings |
-| Floor anchorage | 4 × 150 × 150 × 12mm flange-plate feet, each bolting (4 × M12) to a shared steel **floor-anchor sub-plate** that self-taps into the container's cross-members (§3.4a; front feet reach ~25mm under the tray) |
-| Front retaining bars | **8 × 50×20×3 RHS** — **two per tote face** (upper + lower), both seated in the 25mm gap to the film rail, wall → upright per column. Doubled from one to carry the loaded-transport case (§3.4) |
+| Floor anchorage | 4 × 150 × 150 × 12mm flange-plate feet, each bolting (4 × M12) to a shared steel **floor-anchor sub-plate** that self-taps into the container's cross-members (§3.6; front feet reach ~25mm under the tray) |
+| Front retaining bars | **8 × 50×20×3 RHS** — **two per tote face** (upper + lower), both seated in the 25mm gap to the film rail, wall → upright per column. Two per face so the loaded-transport case passes (§3.4) |
 | Anti-slip matting | **4 × certified anti-slip mat (μ ≥ 0.6)** under the tote interfaces (2 on the floor + 2 on the lower-tote cage tops) — raises the sliding friction that credits against the forward thrust (§3.4) |
-| Wall joist hangers | **8 × identical 2-bolt Simpson-style U-pocket** — one per bar (the pair uses identical hangers for fab simplicity), each **through-bolted (2 × M12×70) to an exterior backing plate** (M12×70 spans the 8mm plate + corrugation + 4mm hanger grip). Wall penetrations unchanged at 16 |
+| Wall joist hangers | **8 × identical 2-bolt Simpson-style U-pocket** — one per bar (the pair uses identical hangers for fab simplicity), each **through-bolted (2 × M12×70) to an exterior backing plate** (M12×70 spans the 8mm plate + corrugation + 4mm hanger grip); 16 wall penetrations in all |
 | Exterior backing plates | 8 × 60 × 205 × 8mm steel (one per hanger), on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | Weld-on lashing rings | 8 on the front bars (4 per tier); 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL (2" strap-limited), 2 straps per stack |
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
@@ -154,10 +154,10 @@ The forward thrust is blocked by the **front retaining bars**, seated in the 25m
 The two bars give **defense in depth**: as positive blocking they pass on their own (**SF 1.59**, mat degraded or absent); with the anti-slip mat the friction credit lifts the margin to **SF 4.77**. Everything downstream of the bars is comfortably strong — the wall-hanger bolts, the corrugated-wall bearing (backing-plate-spread), the cleat bolts, and the tie-down straps all clear SF ≥ 8. In the **drained** transport state (site-filled water, totes empty) every element clears SF ≥ 12.
 
 - **Front retaining bars** (two per tote face, 50×20×3 RHS, ~1,046mm span) share each tote's forward (−X) thrust into the floor feet + wall hangers.
-- **Wall joist hangers** — **one identical 2-bolt hanger per bar** (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each **through-bolted (2 × M12×70) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. Total wall penetrations stay at 16 (8 hangers × 2 bolts = the old 4 × 4). M12×70 (partial thread, the single standardized zinc wall length) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger). **Both ends of the bar now use the SAME L-cleat** — the corridor-end **BC-C** and the wall-end **BC-W** each drop the bar into an L-angle and run a single horizontal M12×65 through the L's vertical leg + the bar's 50mm web, with a small nut-side **backing plate** spreading the load into the bar's far web.
+- **Wall joist hangers** — **one identical 2-bolt hanger per bar** (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each **through-bolted (2 × M12×70) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. That is 16 wall penetrations in all (8 hangers × 2 bolts). M12×70 (partial thread, the single standardized zinc wall length) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger). **Both ends of the bar use the same L-cleat** — the corridor-end **BC-C** and the wall-end **BC-W** each drop the bar into an L-angle and run a single horizontal M12×65 through the L's vertical leg + the bar's 50mm web, with a small nut-side **backing plate** spreading the load into the bar's far web.
 - **Anti-slip matting** (certified μ ≥ 0.6) under each tote interface is the primary friction lever — it triples the effective margin and directly answers the "totes must not shift" requirement.
 - **Weld-on lashing rings + 2 straps/stack** (3,333 lb / ~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.
-- **Floor feet** (150×150×12, 4 × M12 each) bolt to a shared floor-anchor sub-plate (§3.4a) that self-taps into the steel cross-members, anchoring the uprights against uplift and transferring loads into the container structure.
+- **Floor feet** (150×150×12, 4 × M12 each) bolt to a shared floor-anchor sub-plate (§3.6) that self-taps into the steel cross-members, anchoring the uprights against uplift and transferring loads into the container structure.
 
 **Service + walkway load cases** (the same frame also carries the plumbing panel and the walkway — both **non-governing** vs the transport case):
 
@@ -178,12 +178,12 @@ are the standard values for the grade.
 
 | ID | Joint | Fastener | Grade | Qty | Torque | Washers | Locking |
 |----|-------|----------|-------|-----|--------|---------|---------|
-| FA1 | Floor-anchor sub-plate → cross-members (self-tap) — a shared steel plate (§3.4a) spanning the members the 4 feet cross; self-drillers fix it down through the plate + ply into each member flange, driven from above | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~12; 2–3 per member spanned) | driven to seat — no torque (self-drilling) | bonded washer | thread-forming, self-locking |
+| FA1 | Floor-anchor sub-plate → cross-members (self-tap) — a shared steel plate (§3.6) spanning the members the 4 feet cross; self-drillers fix it down through the plate + ply into each member flange, driven from above | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~12; 2–3 per member spanned) | driven to seat — no torque (self-drilling) | bonded washer | thread-forming, self-locking |
 | FA2 | Foot-plate → sub-plate (tapped boss) — each 150×150×12 welded foot bolts down into tapped bosses on the sub-plate (drive from above, no underside access) | M12×30 into tapped boss | Gr.8.8 zinc | 4 per foot × 4 = 16 | snug + locker (near-zero uplift demand) | split-lock under head | thread-locker (tapped boss) |
 | BC-C | Front-bar corridor end → upright **L-cleat** — the bar drops into the L, **1 HORIZONTAL** bolt through the vertical leg + the bar's tall 50 mm web (the L-corner carries the load; the bolt secures the unsupported direction) | M12×65 hex (92800A481, 18-8 SS) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize (stainless galls → torqued lower than 8.8; no impact driver) | flat | nyloc nut |
 | WH | Wall hanger → side wall → exterior backing plate | M12×70 through-bolt (91280A732) | Gr.8.8 zinc | 16 | **~90 N·m** (85–95 band) | flat (head, outside) + flat + split-lock (nut, inside) | plain nut + split-lock washer |
 | RP1 | Rear panel → L-bracket upstand (off the back upright) | M8 hex into captive 5/16 tee-nut set from the ply BACK face (tension pulls the flange against the wood) | zinc | 6 brackets | snug + locker (light static load) | flat washer under head | thread-locker |
-| SP1 | Side-panel pipe-run boards → L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
+| SP1 | Side-panel pipe-run boards → L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
 | CJ | Walkway cantilever arm → front upright (arm end-plate → **rear backing plate**, bolted through the upright; **bearing-type — both bolts above the arm**, clear of the corridor bottom rail + the welded arm; internal crush sleeve per bolt) | M12×100 hex through-bolt | Gr.8.8 zinc | 2 arms × 2 bolts = 4 | **~90 N·m** (85–95 band) | flat both ends | nyloc nut |
 | BC-W | Front-bar wall end → wall-hanger **L-cleat** — the SAME joint as the post end: the bar drops into the L, **1 HORIZONTAL** M12×65 through the vertical leg + the bar's 50mm web (nut on a far-web backing plate). The L is welded to the inside wall plate; the inside + outside plates clamp the container wall via WH | M12×65 hex (92800A481, 18-8 SS) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
 | RP2 | Rear-panel L-bracket → back upright (post leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 6 = 12 | driven to seat — no torque spec (self-drilling; light static panel load) | bonded washer | thread-forming, self-locking |
@@ -194,16 +194,6 @@ are the standard values for the grade.
 Straps: 2 × 2″ ratchet strap per stack, ratcheted to the 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL — no torque.
 
 Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20](https://crafter.fastenal.com/static-assets/pdfs/technical-resources/Torque-Tension-Relationship-for-Metric-Fasteners-Property-Class-4.6-8.8-10.9-12.9.pdf)) to 93 N·m ([Bossard preload/torque, µ = 0.14](https://assets.eu.ctfassets.net/0vp0u5uh75zd/3S40LEUM235Qk3rJk2phR1/c715f9f45232756c12b59aa681c7fede/060_074_Preload_tightening_torques_Fastening_EN_01_2025.pdf)); M12 A2-70 ≈ 51 N·m (µ = 0.10, [Bossard austenitic-stainless table](https://assets.eu.ctfassets.net/0vp0u5uh75zd/3S40LEUM235Qk3rJk2phR1/c715f9f45232756c12b59aa681c7fede/060_074_Preload_tightening_torques_Fastening_EN_01_2025.pdf)); #14 self-drillers are driven to seat, not torqued ([ITW Buildex TEKS technical guide](https://www.tannerbolt.com/media/akeneo_connector/media_files/T/e/Teks_Select_Technical_Guide_Steel_to_Steel_4_5_56b0.pdf)).
-
-### 3.4a Floor anchoring — sub-plate (strongback) standard
-
-The four feet do **not** bolt straight to the container floor. They bolt to a shared steel **floor-anchor sub-plate** (a strongback) that lies flat on the floor, self-taps down into the steel cross-members it spans (FA1), and carries tapped bosses the feet bolt up into (FA2). This is the project-wide standard for every floor-fastened component (the walkway floor-legs use the same approach).
-
-The sub-plate exists because the container floor cross-members are **not dimensionally standardized**. [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) — the series-1 freight-container standard — fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container has a flat underside); it never prescribes a pitch or station. In practice the largest builder, [CIMC](https://www.cimc-equilink.com/media/3659.html), uses a stamped C-section SPA-H Corten member ~4–4.5mm thick with a ~45mm top flange at ~300mm pitch, but [the pitch, count, and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) and any forklift pockets interrupt the pattern. Bolting a fixed 4-bolt foot pattern (Ø100mm PCD) straight down therefore cannot guarantee a member under each bolt — mapped on Sheet 1, the feet land in the gaps. The strongback decouples the foot pattern from the unknown pitch: a plate ≥1,000mm long is geometrically certain to cross a member, and self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) — the point drills the ~4mm member flange) fix it down wherever the members fall. Each screw develops ~5.3 kN pull-out in 4mm steel, far above the near-zero FA uplift demand.
-
-> **Plate dimensions are container-dependent.** The ~650×450×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed members. The feet and their Ø100mm PCD bolt pattern do **not** change — only the plate adapts to the box.
-
-![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
 
 **Weld schedule** (fillet, E70xx electrode; frame welds carry small restraint loads → set by the AWS D1.1 minimum practical fillet for ≤6 mm plate, except the load-checked W3/W4)
 
@@ -232,7 +222,17 @@ The walkway cantilever arms — how each arm is cut (the **two half-laps** where
 
 ![TBS-001 IBC Frame — Sheet 5: Walkway Cantilever Arm Fabrication](assets/ibc-frame-sheet5.png)
 
-### 3.6 Datum + Tolerance Scheme
+### 3.6 Floor Anchoring — Sub-Plate (Strongback) Standard
+
+The four feet do **not** bolt straight to the container floor. They bolt to a shared steel **floor-anchor sub-plate** (a strongback) that lies flat on the floor, self-taps down into the steel cross-members it spans (FA1), and carries tapped bosses the feet bolt up into (FA2). This is the project-wide standard for every floor-fastened component (the walkway floor-legs use the same approach).
+
+The sub-plate exists because the container floor cross-members are **not dimensionally standardized**. [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) — the series-1 freight-container standard — fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container has a flat underside); it never prescribes a pitch or station. In practice the largest builder, [CIMC](https://www.cimc-equilink.com/media/3659.html), uses a stamped C-section SPA-H Corten member ~4–4.5mm thick with a ~45mm top flange at ~300mm pitch, but [the pitch, count, and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) and any forklift pockets interrupt the pattern. Bolting a fixed 4-bolt foot pattern (Ø100mm PCD) straight down therefore cannot guarantee a member under each bolt — mapped on Sheet 1, the feet land in the gaps. The strongback decouples the foot pattern from the unknown pitch: a plate ≥1,000mm long is geometrically certain to cross a member, and self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) — the point drills the ~4mm member flange) fix it down wherever the members fall. Each screw develops ~5.3 kN pull-out in 4mm steel, far above the near-zero FA uplift demand.
+
+> **Plate dimensions are container-dependent.** The ~650×450×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed members. The feet and their Ø100mm PCD bolt pattern do **not** change — only the plate adapts to the box.
+
+![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
+
+### 3.7 Datum + Tolerance Scheme
 
 The frame is a welded structure, so tolerances follow **ISO 13920 Class B** (general tolerances for welded
 constructions) for linear/angular, and **AWS D1.1** for the welds; the values below are the functional
@@ -262,7 +262,7 @@ General (unspecified) dimensions: ISO 13920 Class B. Break sharp edges; deburr a
 
 ---
 
-### 3.7 Assembly + Weld Sequence
+### 3.8 Assembly + Weld Sequence
 
 The frame is a **shop-welded box that bolts out in the field** — deliberately, so the only hot work is the
 deep 4-leg weldment (§3.5, W1–W6). Everything hung on it afterward — the wall hangers, the retaining bars,
@@ -271,11 +271,11 @@ loading happen on a **finished, painted frame with no welding on-site.** Build i
 
 **Phase 1 — Shop-weld the deep 4-leg box (the only weldment).**
 
-1. **Fit-up in a jig** referencing the datums (§3.6): the four foot undersides on the flat table = datum A, the
+1. **Fit-up in a jig** referencing the datums (§3.7): the four foot undersides on the flat table = datum A, the
    front-upright faces = B, the corridor centerline = C. Clamp the four uprights + the top/bottom rings; set
    the box square.
 2. **Tack, then check square before finish-welding** — verify the diagonals and upright plumb are inside the
-   §3.6 tolerances while the joints are still only tacked and correctable. A weldment pulls toward each bead,
+   §3.7 tolerances while the joints are still only tacked and correctable. A weldment pulls toward each bead,
    so distortion is controlled by *balanced, symmetric* welding, not by fixing it afterward
    ([TWI — distortion control](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-control-prevention-by-fabrication-035)).
 3. **Finish-weld in a balanced order:** ring-to-upright joints in a back-step / alternate-corner pattern so heat
@@ -283,13 +283,13 @@ loading happen on a **finished, painted frame with no welding on-site.** Build i
    undersides stay coplanar to A (the frame's seat). Then add the smaller weldments — the bar-end cleats (W3),
    the weld-on lash-ring bases (W4), and the ribbon cross-beams (W6).
 4. **Grind the zinc back at every weld zone** (galvanized/primed stock burns dirty), welds per §3.5 (E70xx).
-5. **Post-weld: re-check the §3.6 tolerances**, then coat (surface-finish spec is set at the fab/quoting stage).
+5. **Post-weld: re-check the §3.7 tolerances**, then coat (surface-finish spec is set at the fab/quoting stage).
 
 **Phase 2 — Bolt-on fit-out (no hot work, on the finished frame).** TEK-screw the corridor-panel and pipe-run
 L-brackets to the posts (RP2/SP2), then hang their ply boards (RP1/SP1). Because these are self-drillers into the
 post wall, the brackets can be located, adjusted, or replaced on the painted frame without touching a welder.
 
-**Phase 3 — Install + anchor in the container.** Survey the floor cross-member stations (§3.4a), lay the floor-anchor
+**Phase 3 — Install + anchor in the container.** Survey the floor cross-member stations (§3.6), lay the floor-anchor
 sub-plate, drill its TEK clearance holes to the located members, and self-tap it down (FA1). Set the box on the
 plate, shim to datum A, and bolt the four feet into the plate's tapped bosses (FA2). Through-bolt each wall hanger
 to the side wall via its exterior backing plate (WH) — the backing plate spreads the load into the thin
@@ -300,7 +300,7 @@ hangers, and bolt each bar down — the corridor end to its cleat (BC-C) and the
 retention bolt (BC-W). Fit the anti-slip mats under the tote interfaces, then lash down per §4. Transport
 removes nothing from the frame; only the tote straps are released at the destination.
 
-### 3.7 Member Cut List
+### 3.9 Member Cut List
 
 Every cut member of the restraint frame, with its fabrication cut size and quantity. Computed from the
 geometry constants by `src/generators/ibc_frame_cutlist.py` (the same math the 3D model builds from, so
@@ -319,7 +319,7 @@ Cut sizes are member-to-member butt lengths — add saw kerf per shop practice.
 | Wall joist hanger | 4 mm folded plate | A36 plate | back 205 + seat 70, ×60 wide | 8 | Simpson-style U-pocket; folded, not welded |
 | Front-bar cleat (BC-C/W3) | 8 mm angle | A36 plate | leg 90 + upstand 59, ×20 wide | 8 | L-angle: horizontal leg (bar sits on it) + upstand fillet-welded to the upright |
 | Rear-panel bracket (D) | 5 mm angle | A36 plate | base 40 + upstand, ×60 tall × 30 wide | 6 | L-bracket TEK-screwed to the back uprights (RP2) + panel bolts (RP1) |
-| Weld-on lashing ring | forged ring + base | — | purchased | 8 | not a cut member — 2 per tier on the lower front bars (W4) |
+| Weld-on lashing ring | forged ring + base | — | purchased | 8 | not a cut member — 2 per lower front bar (4 per tier), W4 |
 
 **Stock (buy sticks; add saw kerf + ~10% drop):**
 
@@ -378,8 +378,8 @@ provide vertical tie-down. Together these restrain both tiers in all six DOF.
 ## 5. Drain Valve Access
 
 The bottom-tier drain valves (DN50 butterfly, corridor-facing) are reached
-directly from the **open corridor front** — with the Corridor Plumbing Panel moved forward and
-no load-bearing base frame, there are no removable access gates. The operator reaches in
+directly from the **open corridor front**: the Corridor Plumbing Panel sits at the corridor mouth
+and there is no load-bearing base frame, so no access gates are needed. The operator reaches in
 from the right walkway.
 
 ---
@@ -390,9 +390,10 @@ Three 2" NPT bulkhead ports penetrate the sealed end wall on the container
 centerline — **X1** (Blue fill), **X3** (Brown drain), and **X4** (Waste drain) —
 so all four totes fill and drain without opening the cargo doors. X1 gravity-feeds
 an internal tee that side-enters both Blue totes near the top, so one external hose
-fills both. Each penetration is backed by a welded wall reinforcing plate that
-spreads its load into the corrugated wall (the same approach as the frame's
-exterior backing plates, [§3.2](#32-frame-specification)).
+fills both. Each bulkhead clamps through the end wall over a flat steel backing doubler that
+bridges the corrugation and spreads its load (clamped, not welded — the same idea as the frame's
+exterior backing plates, [§3.2](#32-frame-specification)). Each port takes a tethered dust cap
+when no hose is connected.
 
 The port elevations are the diagram-of-record (see [§8 Sheet 3](#8-engineering-drawings)).
 The bulkhead fittings, camlock, and seals are specified in the
@@ -413,12 +414,10 @@ between the near and far IBC columns, reaching each tote's corridor-facing DN50
 butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
 (X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
 and the recycle returns), and the valve schedule are specified in the
-[Water System Report](water-system-report.md) §4 and §7. The pumps and
-diverter valves that drive those circuits — on the **Corridor Plumbing Panel**
-(plywood, at the front (cargo-door) mouth of the corridor, bolted to the
-deep-box frame, see [§3.2](#32-frame-specification)) — together with the
-3-stage filter bank on the **Pinhole Wall Plumbing Panel** are specified in the
-[Plumbing Report](plumbing-report.md). This report treats the corridor plumbing
+[Water System Report](water-system-report.md) §4 and §7. The corridor pumps on the
+**Corridor Plumbing Panel** (plywood, at the cargo-door mouth of the corridor, bolted to the
+deep-box frame, see [§3.2](#32-frame-specification)) and the filter train on the
+**Pinhole Wall Filter Skid** are specified in the [Plumbing Report](plumbing-report.md). This report treats the corridor plumbing
 and both panels only as loads the stacking frame carries.
 
 ![TBS-001 IBC Stacking — Sheet 4: Internal Plumbing Plan View](assets/ibc-stacking-sheet4.png)
@@ -499,14 +498,14 @@ the stacking structure and the totes it restrains.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,380<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,997<!-- END costing:ibc-frame-high --> |
-| IBC totes (4×) | $300 | $900 |
-| **Total** | **$1,280** | **$2,405** |
+| IBC totes (4×) | <!-- BEGIN costing:ibc-totes -->$600<!-- END costing:ibc-totes --> | <!-- BEGIN costing:ibc-totes -->$600<!-- END costing:ibc-totes --> |
+| **Total** | **<!-- BEGIN costing:ibc-total-low -->$1,980<!-- END costing:ibc-total-low -->** | **<!-- BEGIN costing:ibc-total-high -->$2,597<!-- END costing:ibc-total-high -->** |
 
 ---
 
 ## 10. Maintenance Schedule
 
-The frame is a painted, shop-welded box whose field joints are all bolted (§3.7), so its upkeep is
+The frame is a painted, shop-welded box whose field joints are all bolted (§3.8), so its upkeep is
 inspection and re-torque to the §3.5 schedule rather than rework. The wear items are the ratchet
 straps, the DN50 valve seals and the camlock gaskets. The inspection schedule and procedures are in
 the [Operating Manual — Maintenance](operating-manual.md#maintenance).
@@ -517,9 +516,9 @@ the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 | Item | Source |
 |------|--------|
-| Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y (all four totes are this size; "600 L"/"640 L" are fill levels, not tote sizes) |
+| Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y |
 | Weld-on lashing ring | [McMaster-Carr #3028T31](https://www.mcmaster.com/3028t31/) — 1½" ID, ½" thick, 6,600 lb WLL |
-| Floor cross-member structure + non-standardization (§3.4a) | [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) (intermediate members ≤1,000mm, or flat underside) · [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) (box/C/Z/I members) · [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html) (C-section SPA-H Corten ~4–4.5mm, ~45mm flange) · [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/) (spacing not standardized, varies by maker) |
+| Floor cross-member structure + non-standardization (§3.6) | [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) (intermediate members ≤1,000mm, or flat underside) · [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) (box/C/Z/I members) · [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html) (C-section SPA-H Corten ~4–4.5mm, ~45mm flange) · [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/) (spacing not standardized, varies by maker) |
 | Plumbing fittings, pipe, valves, camlock, pumps | Specified in the [Plumbing Report](plumbing-report.md); sourced in the [Master Shopping List](master-shopping-list.md?system=water) |
 | Water system architecture | [Water System Report](water-system-report.md) §4 |
 | IBC layout and placement | [Equipment Layout Report](equipment-layout-report.md) §2.4 (right end zone) |

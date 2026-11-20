@@ -61,7 +61,7 @@ def cut_list():
         ("Wall joist hanger", "4 mm folded plate", A36, f"back {ext_ph:.0f} + seat 70, ×60 wide", 8, "Simpson-style U-pocket; folded, not welded"),
         ("Front-bar cleat (BC-C/W3)", "8 mm angle", A36, f"leg 90 + upstand {S + 8:.0f}, ×{bar_d} wide", 8, "L-angle: horizontal leg (bar sits on it) + upstand fillet-welded to the upright"),
         ("Rear-panel bracket (D)", "5 mm angle", A36, "base 40 + upstand, ×60 tall × 30 wide", 6, "L-bracket TEK-screwed to the back uprights (RP2) + panel bolts (RP1)"),
-        ("Weld-on lashing ring", "forged ring + base", "—", "purchased", 8, "not a cut member — 2 per tier on the lower front bars (W4)"),
+        ("Weld-on lashing ring", "forged ring + base", "—", "purchased", 8, "not a cut member — 2 per lower front bar (4 per tier), W4"),
     ]
     return rows
 

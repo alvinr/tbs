@@ -12,7 +12,7 @@ The pinhole wall is the scene-facing long side wall of the container — the pla
 
 ## 2. Wall Aperture
 
-The pinhole wall is corrugated ISO container steel. A **Ø150 aperture** is cut through the corrugation on the optical axis (pinhole center: X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on the long axis). It clears the front board's Ø110 scene-side taper bore with margin. The cut is not a precision feature: the adapter over it sets every alignment datum.
+The pinhole wall is corrugated ISO container steel. A **Ø150 aperture** is cut through the corrugation on the optical axis (pinhole center: X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on the long axis). It clears the front board's Ø110 scene-side taper bore with margin.
 
 ---
 
@@ -44,7 +44,7 @@ Three joints keep light out:
 - **Front plate → adapter:** a 2.5mm black nitrile **O-ring** in the **Ø171 face groove** on the plate's adapter face, outside the bolt circle so it also blocks light along the tapped holes, compressed by the 4× M6 mount bolts.
 - **Carrier → front plate:** the neoprene washer under the carrier ([Disc Holder §5](pinhole-disc-holder-report.md)).
 
-The carrier (pinhole or lens) is the only intended opening. Between exposures and during loading, a light-tight **dark slide** covers the aperture.
+The carrier is the only intended opening. Between exposures and during loading, a light-tight **dark slide** covers the aperture.
 
 ---
 

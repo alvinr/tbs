@@ -383,7 +383,7 @@ indicative low–high estimates — get quotes before ordering.
 | Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
-| O-ring, black NBR 70A, 2.5mm section × ~163.5mm ID (plate → adapter seal) | 1 ea | McMaster-Carr | front-board | $3–$8 |
+| O-ring, black NBR 70A, 170mm ID × 2.5mm section (plate → adapter seal) | 1 ea | McMaster-Carr | front-board | $3–$8 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | Rubber cargo friction matting | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |

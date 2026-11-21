@@ -41,7 +41,7 @@ The interchangeable pinhole/lens mount is the **[Pinhole Disc Holder](pinhole-di
 Three joints keep light out:
 
 - **Adapter → container wall:** a continuous weld around the adapter, so there is no light path past it.
-- **Front plate → adapter:** a 2.5mm black nitrile **O-ring** in the **Ø166 face groove** on the plate's adapter face, outside the bolt circle so it also blocks light along the tapped holes, compressed by the 4× M6 mount bolts.
+- **Front plate → adapter:** a 2.5mm black nitrile **O-ring** in the **Ø171 face groove** on the plate's adapter face, outside the bolt circle so it also blocks light along the tapped holes, compressed by the 4× M6 mount bolts.
 - **Carrier → front plate:** the neoprene washer under the carrier ([Disc Holder §5](pinhole-disc-holder-report.md)).
 
 The carrier (pinhole or lens) is the only intended opening. Between exposures and during loading, a light-tight **dark slide** covers the aperture.

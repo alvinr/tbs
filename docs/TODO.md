@@ -45,7 +45,7 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 
 ## 🔩 Front plate → wall adapter (2026-11-21) — O-ring SKU + bolt-model follow-up open
 - ~~Source the mount bolts~~ — DONE 2026-11-21: McMaster 92314A669 M6×25, $11.11/50.
-- **Source the O-ring** (`pdh-oring`, SKU pending): metric, 2.5mm section, ID ≈163.5mm (stock 162–165), black NBR 70A; groove Ø166 CL × 3.4 wide × 1.9 deep (Sheet 2).
+- **Source the O-ring** (`pdh-oring`, SKU pending): metric, 2.5mm section, 170mm ID, black NBR 70A; groove Ø171 CL × 3.4 wide × 1.9 deep (Sheet 2).
 - ~~3D vs 2D mounting side~~ — DONE 2026-11-21: interior (adapter welded to the interior crests); overview `pinhole_assembly()` moved inside, stale 100×100 mount plate removed. Re-send overview + construction (water done).
 - **Why the bolt gap went unnoticed:** the bolt length lived in two hand-typed places (parts.py "M6×20", Sheet 3 `PDH_PLATE_T + 6`) with no shared constant, and the 3D draws the bolts as plain cylinders, not `ruby_bolt`, so the `--bolts` grip check never saw them. Fix: one `PDH_MOUNT_BOLT_L` constant read by the drawing, the parts spec and a `ruby_bolt` in the model.
 

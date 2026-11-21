@@ -43,6 +43,10 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 ## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)
 - The .skp files carry an Author field that is currently unset. Set it on all 11 models from the generators (the same place name/description are force-stamped on `--send`), so it survives a regen. Check whether SketchUp persists it across save → reopen (name/description do not; see the Sketchfab notes) before relying on it.
 
+## 🔩 Front plate → wall adapter: bolt length + seal (2026-11-21)
+- Mount bolts disagree: parts.py `pdh-mount-bolts` is **M6×20** (McMaster 95263A546); the disc-holder report §6 and Sheet 3 say **M6×24** (`PDH_PLATE_T + 6`). Through the 18mm plate, ×20 leaves only 2mm of thread in the 6mm tapped adapter; ×24 (or ×25 stock) engages the full 6mm. Needs a SKU + price for M6×25 SHCS 18-8.
+- The plate's rear face has a Ø160 perimeter seal groove (`PDH_SEAL_D`, drawn on Sheets 1–2), but no O-ring is in the BOM and the groove section isn't dimensioned. Choose the O-ring (cross-section + material), dimension the groove, add the part.
+
 ## 🚰 End-wall ports
 
 - [x] **Energy model: tote pump-out assumes gravity drain that the design doesn't have.** `calculate_energy_budget.py` (`DRAIN_RESIDUAL_L = 120`, "gravity-drains through its low Z=200mm port") and Daily Energy §6 assume each tote gravity-drains and the pump lifts only ~120 L. X3/X4 sit at 1,502/1,620mm, above the bottom-tier totes, so P-05/P-03 pump the whole contents (~622 L per tote over a run; 555/690 L with the dichromate option). The report's own "worst case" (~45 min/tote, ~94 Wh) is the real case. Fix: drive the volume from `COLLECTION_FILL_L` (and the dichromate split), drop the gravity wording, re-inject the energy blocks. Done 2026-11-20: pumped volume = RECOVERED_L (622 L per tote), 115 Wh per dump run.

@@ -6,46 +6,55 @@
 
 The pinhole wall is the far (scene-facing) end wall of the container — the plane that carries the camera's aperture. This report covers the **wall interface**: the aperture cut through the container wall and the flat **wall-frame adapter** that the front board bolts to. The front board itself — the interchangeable pinhole/lens mount — is the [Pinhole Disc Holder](pinhole-disc-holder-report.md); the pinhole optics are in the [Pinhole Optics Report](pinhole-optics-report.md).
 
-> The compact Ø80-carrier disc holder takes either a pinhole board or a large-format lens board (Copal/Compur 0/1/3) from one small mount. Focus for a lens is set at the **film plane** (the rear standard's depth rail), so the front board needs no focus tube.
+> The disc holder takes either a pinhole board or a large-format lens board (Copal/Compur 0/1/3). Focus for a lens is set at the **film plane** (the rear standard's depth rail), so the front board needs no focus tube.
 
 ---
 
 ## 2. Wall Aperture
 
-The far end wall is corrugated ISO container steel. A circular aperture is cut through the corrugation on the optical axis (pinhole center: X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on the long axis). The cut clears the front board's Ø110 scene-side taper bore with margin; it is not a precision feature — the flat adapter over it provides all the alignment datum.
+The far end wall is corrugated ISO container steel. A **Ø150 aperture** is cut through the corrugation on the optical axis (pinhole center: X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on the long axis). It clears the front board's Ø110 scene-side taper bore with margin. The cut is not a precision feature: the adapter over it sets every alignment datum.
 
 ---
 
 ## 3. Wall-Frame Adapter
 
-Because corrugated steel cannot seat a machined plate, a flat steel **adapter plate** is welded (or bolted) over the corrugation to present a flat, machined datum face concentric with the aperture. It carries:
+Corrugated steel cannot seat a machined plate, so a flat **Ø240 × 6mm S275 steel adapter** is welded to the interior crests of the corrugation, concentric with the aperture. Its machined face is the optical datum. It carries:
 
-- the **4× M6 tapped holes on a Ø150 circle** that the Ø180 front plate bolts to (matching the disc holder — see its report),
-- a flat sealing face for the front-board gasket / O-ring, and
-- an opening larger than the Ø110 taper bore.
+- **4× M6 tapped holes on a Ø150 circle** for the Ø180 front plate (the disc holder's mount pattern),
+- a **Ø120 aperture**, clearing the Ø110 taper bore, and
+- the flat face the front plate seals against.
 
-The adapter is the only component welded to the container; every optical-alignment reference originates from its machined face. Its bolt pattern and aperture are single-sourced from the [Pinhole Disc Holder](pinhole-disc-holder-report.md) (§2/§6).
+The adapter is drawn with the through-wall section on Disc Holder Sheet 3:
+
+![Pinhole Disc Holder — Sheet 3: Wall-Frame Adapter & Container-Wall Section](assets/pinhole-disc-holder-sheet3.png)
 
 ---
 
 ## 4. Front Board (the mount)
 
-The interchangeable pinhole/lens mount is the **[Pinhole Disc Holder](pinhole-disc-holder-report.md)** — a compact Ø180 front plate that bolts to the adapter and clamps an interchangeable **Ø80 carrier** (a pinhole board, or a Copal/Compur lens board) with a retaining ring and four thumb screws. Changeover between pinhole and lens is a seconds-long carrier swap; see that report for the mechanism, drawings, tolerances and BOM.
+The interchangeable pinhole/lens mount is the **[Pinhole Disc Holder](pinhole-disc-holder-report.md)**: a Ø180 front plate that bolts to the adapter and clamps an interchangeable **Ø80 carrier** (a pinhole board, or a Copal/Compur lens board) with a retaining ring and four thumb screws. A carrier swap takes about 30 seconds without tools. The mechanism, drawings, tolerances and parts are in that report.
 
 ---
 
 ## 5. Sealing & Light Integrity
 
-Two joints seal the wall:
+Three joints keep light out:
 
-- **Adapter → container wall:** continuous weld (or a bead of sealant under a bolted adapter) around the aperture — no light path around the adapter.
-- **Front board → adapter:** a thin gasket (or an O-ring in the adapter face) compressed by the 4× M6 mount bolts, backed by a perimeter light-trap step, so any light passing the gasket must navigate a labyrinth before reaching the interior.
+- **Adapter → container wall:** a continuous weld around the adapter, so there is no light path past it.
+- **Front plate → adapter:** a seal in the **Ø160 perimeter groove** on the plate's rear face, compressed by the 4× M6 mount bolts.
+- **Carrier → front plate:** the neoprene washer under the carrier ([Disc Holder §5](pinhole-disc-holder-report.md)).
 
-The carrier itself (pinhole or lens) is the only intended opening; its seal against the front plate is covered in the disc-holder report §5.
+The carrier (pinhole or lens) is the only intended opening. Between exposures and during loading, a light-tight **dark slide** covers the aperture.
 
 ---
 
-## 6. See Also
+## 6. Parts
+
+The adapter plate and the aperture dark slide are in the **[Master Shopping List, filtered to the optics system](master-shopping-list.md?system=optics)**; the front board's parts are under the [front-board system](master-shopping-list.md?system=front-board).
+
+---
+
+## 7. See Also
 
 - [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) — the interchangeable pinhole/lens mount (Ø80 carrier, retaining ring, thumb screws) that bolts to the adapter.
 - [Pinhole Optics Report](pinhole-optics-report.md) — pinhole diameter, f-number, exposure.
@@ -54,8 +63,6 @@ The carrier itself (pinhole or lens) is the only intended opening; its seal agai
 
 ---
 
-## 7. Source References
+## 8. Source References
 
-1. [Rayleigh Criterion for Pinhole Cameras](https://en.wikipedia.org/wiki/Pinhole_camera#Selection_of_pinhole_size) — optimal aperture formula d = 1.9√(fλ).
-2. [Intrepid Camera — Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) — Copal/Compur lens-board hole diameters for the carrier.
-3. [McMaster-Carr](https://www.mcmaster.com) — mount bolts, gasket / O-ring cord, weld consumables.
+1. [Intrepid Camera — Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) — Copal/Compur lens-board hole sizes for the carrier.

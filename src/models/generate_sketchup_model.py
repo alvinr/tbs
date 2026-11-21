@@ -20,7 +20,7 @@ Subsystems / tags:
   Container Shell      → Shell            (ceiling ghosted)
   Walkways             → Walkways
   Processing Tray      → Processing Tray
-  Pinhole Assembly     → Pinhole          (mount plate + Ø2.17 aperture)
+  Pinhole Assembly     → Pinhole          (wall adapter + O-ring + disc-holder plate + ring + aperture)
   Optical Axis         → Optical Axis     (pinhole → film-plane center)
   Film Plane Mechanism → Film Plane       (rails + framed muslin screen)
 
@@ -37,7 +37,8 @@ import math
 import argparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, BV05_Z, BV06_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, SPRAY_BAR_TRAY_FLOOR, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_PANEL_H, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_BEARER_W, RWK_X_UP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, EQPANEL_T, IBC_COL_X, IBC_H_1000, IBC_PALLET_H, BLUE_IBC_Y, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FRONT_FOOT_DX, IBC_FRONT_RAIL_H, IBC_FRONT_RAIL_W, FP_CORNER_SEAT_PLATE_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, BV05_Z, BV06_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, SPRAY_BAR_TRAY_FLOOR, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_Z, SUMP_SUCTION_WALL_RUN_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_PANEL_H, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0, RWK_X_L, RWK_X_R, RWK_ARM_BOT, RWK_ARM_TOP, RWK_AH, RWK_ARM_W, RWK_BEARER_W, RWK_X_UP, RWK_J6_BOLT_ZS, RWK_J6_EP_H, RWK_RIBBON_NOTCH_YDS, PDH_PLATE_OD, PDH_RING_OD, PDH_PLATE_T, PDH_RING_T, PDH_ADAPT_OD, PDH_ADAPT_T, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_SEAL_D, PDH_SEAL_GROOVE_W, PDH_SEAL_GROOVE_DEP, PH_INBOARD
+from generate_pinhole_disc_holder_model import ruby_annulus  # noqa: E402
 
 from tbs_draw import *            # shared drawing/material primitives (Phase 0 extraction)
 
@@ -57,7 +58,7 @@ TAGS = ["Shell", "Shell Far", "Walkways", "Processing Tray",
 # (component name, text, leader Δx, Δy, Δz mm). Δy pulls the label OUT of a wall
 # toward the viewer (the camera looks from the −Y / pinhole-wall side).
 OVERVIEW_LABELS = [
-    ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                 -140, -1120,  630),
+    ("Pinhole Assembly",      f"PINHOLE  Ø{PH_D}mm",                 -140, -1120,  630),
     ("Processing Tray",       "PROCESSING TRAY",                  -250,     0,  650),
     ("Corridor Equipment",    "CORRIDOR PLUMBING PANEL",          520,     0,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
@@ -268,7 +269,7 @@ def far_wall():
 def pinhole_assembly():
     """Pinhole disc holder on the wall's INTERIOR face: a Ø240 steel wall-frame adapter welded to the
     interior crests, the Ø180 disc-holder plate bolted to it (4× M6 @ Ø150), the retaining ring on the
-    plate's camera face, and a true-size Ø2.17 aperture marker in the carrier."""
+    plate's camera face, and a true-size pinhole marker at the shim (PH_INBOARD)."""
     parts = []
     adapt_in = PDH_ADAPT_T                     # adapter interior face — the plate seats here
     plate_in = adapt_in + PDH_PLATE_T          # plate camera face — the ring clamps here
@@ -276,11 +277,15 @@ def pinhole_assembly():
                                PDH_ADAPT_OD / 2, PDH_ADAPT_T, axis="y", color=C_STEEL))
     parts.append(ruby_cylinder("Pinhole disc-holder plate", PH_X, adapt_in, PH_H,
                                PDH_PLATE_OD / 2, PDH_PLATE_T, axis="y", color=C_ALUM))
+    # plate → adapter O-ring, compressed into the plate's face groove (held just clear of both faces)
+    parts.append(ruby_annulus("Plate O-ring (170 × 2.5 NBR)", PH_X, adapt_in + 0.05, PH_H,
+                              (PDH_SEAL_D + PDH_SEAL_GROOVE_W) / 2, (PDH_SEAL_D - PDH_SEAL_GROOVE_W) / 2,
+                              PDH_SEAL_GROOVE_DEP - 0.1, axis="y", color="#141414", n=96))
     parts.append(ruby_cylinder("Disc-holder retaining ring", PH_X, plate_in, PH_H,
                                PDH_RING_OD / 2, PDH_RING_T, axis="y", color=C_STEEL))
     a = PH_D
-    parts.append(ruby_box("Pinhole Aperture (Ø2.17)",
-                          PH_X - a / 2, plate_in, PH_H - a / 2,
+    parts.append(ruby_box(f"Pinhole Aperture (Ø{PH_D})",
+                          PH_X - a / 2, PH_INBOARD, PH_H - a / 2,
                           a, 1, a,
                           color=C_PINHOLE))
     # 4× M6 mount bolts through the plate into the adapter (heads proud on the plate camera face)
@@ -299,11 +304,11 @@ def pinhole_assembly():
 def optical_cone():
     """Ghosted projection cone: pinhole apex → full film-plane rectangle.
 
-    The rectangular pyramid from the pinhole (Yd=0) expanding to the film plane
+    The rectangular pyramid from the pinhole (Yd=PH_INBOARD) expanding to the film plane
     (Yd=FP_Y) shows the light cone filling the container interior. Kept very
     faint — it is guidance geometry, not a hard system.
     """
-    apex = (PH_X, 0, PH_H)
+    apex = (PH_X, PH_INBOARD, PH_H)
     base = [(FP_X_L, FP_Y, 0), (FP_X_R, FP_Y, 0),
             (FP_X_R, FP_Y, FP_H), (FP_X_L, FP_Y, FP_H)]
     return ruby_cone_wire("Optical Cone", apex, base, "Optical Cone")

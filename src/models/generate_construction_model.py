@@ -116,7 +116,7 @@ STEPS = [
         lambda: _join(em.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
-    (5, "5.1", "P5 Pinhole",           "Pinhole mechanism (plate + aperture)",    # shown by default = the click target (the minimal element)
+    (5, "5.1", "P5 Pinhole",           "Pinhole mechanism (wall adapter + O-ring + plate + ring + aperture)",    # shown by default = the click target (the minimal element)
         lambda: ov.pinhole_assembly()),
     (5, "5.2", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # beams already in 3.6
         lambda: fp.film_plane_mechanism(part="plane")),

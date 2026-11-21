@@ -296,7 +296,7 @@ walkway; GRP is specified for corrosion immunity in the wet photo-chemistry
 environment. The GRP is vinyl-ester resin with a grit
 top for slip resistance; the 25mm (1") grate sets the 140mm deck height (the
 spray-bar carriage clearance beneath it is set by the Ø32-wheel /
-40×25-SS-beam shrink — see the [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) report).
+1½in-square SS beam — see the [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) report).
 
 ---
 

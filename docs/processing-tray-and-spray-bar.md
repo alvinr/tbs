@@ -86,7 +86,7 @@ skid — no penetration of the tray or container floor.
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75 L residual) |
 | Suction line | 1" flexible reinforced hose — rises through the walkway grate, turns to the pinhole wall, up the wall clear of the cantilever brackets, then along the wall → P-04 on the filter skid |
 | Pump | P-04 (Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI, self-priming) |
-| Discharge | P-04 → 3W-DV-02 diverter → IBC-3 (Brown recycling) or IBC-4 (Waste) |
+| Discharge | P-04 → SV-02 → 3W-DV-02 → filter train → IBC-3 (Brown buffer), or straight to IBC-4 (Waste) ([Water System Report §4.2](water-system-report.md)) |
 
 **Why sump pickup instead of a through-floor drain:**
 
@@ -140,7 +140,7 @@ The drainage geometry is set by one requirement chain:
 3. **Lateral drainage is handled off the surface.** A Yd-only surface would strand water along the
    near rim, so a **near-rim gutter** collects it and **falls 1:200 inward to a single center
    pickup** — self-draining (no squeegee), with gravity running toward the operator on the wash
-   sweep. It reuses the same 20mm vertical budget the old corner sump used.
+   sweep, within the same 20mm vertical budget as the sump well.
 
 The result is edge-to-edge direct spray, effortless single-pickup drainage, and a walkway whose
 support arms the beam clears — see the sections below.
@@ -159,8 +159,8 @@ support arms the beam clears — see the sections below.
 
 ### 3.1 Design Concept
 
-The spray bar delivers Blue (clean) water evenly across the processing tray during print
-washing. The operator slides the bar along the tray (Yd direction, from film-plane side
+The spray bar delivers wash water evenly across the processing tray — recycled Brown for the
+first wash, clean Blue for the rest. The operator slides the bar along the tray (Yd direction, from film-plane side
 toward the pinhole wall), flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
@@ -170,7 +170,7 @@ two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4
 spray manifold — the supply hose feeds it at its center through a single barbed inlet tee by
 the ball joint. The 3/4" bore is far larger than the 3.5 GPM flow demands, so pressure holds
 uniform end-to-end (~0.1 PSI drop across the full span) from that one feed — no multi-point
-distribution is needed. Water exits through forty-three barbed 90° down-jets that side-tap the
+distribution is needed. Water exits through <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> barbed 90° down-jets that side-tap the
 manifold and spray straight down, at 100mm pitch along the beam.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
@@ -190,17 +190,17 @@ manifold and spray straight down, at 100mm pitch along the beam.
 |-----------|--------------|-----|---------|
 | Beam | 304 SS 1½×1½×0.062in square tube, <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm long (single 17ft4in length, no weld); ~12mm pre-camber | 1 | Full-width structural beam; carries the side manifold |
 | Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
-| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 43 | Side-tapped into the manifold, spray straight down (100mm pitch) |
+| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> | Side-tapped into the manifold, spray straight down (100mm pitch) |
 | Center-feed inlet | 1/2" PVC barbed tee (DripDepot 1084), flex hose → manifold center | 1 | Single feed point at the beam center (the over-bored manifold needs no multi-point distribution) |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Acetal (Delrin) roller wheels](https://www.mcmaster.com/products/acetal-round-stock/) | Ø32 × 20mm wide, Ø10 plain bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
-| Beam clamp plates | SS, top + bottom plate (**1/4″ / 6.35mm**, 304) sandwiching the 25mm RHS; countersunk underside bolts | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically — stiff enough that the bolts grip the beam, not bend the plates |
+| Beam clamp plates | SS, top + bottom plate (**1/4″ / 6.35mm**, 304) sandwiching the 38mm (1½in) square beam; countersunk underside bolts | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically — stiff enough that the bolts grip the beam, not bend the plates |
 | Spacer blocks | 6061-T6 AL, between top & bottom clamp plates, one each side of beam | 4 | Set clamp gap to beam height so bolts grip the beam rather than bend the plates |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange base | 1 | Multi-axis arm articulation on beam top face |
-| Self-tapping screws | SS thread-forming, into 3mm SHS top wall (no internal access for nuts) | 4 | Fasten the ball-joint flange to the beam |
+| Self-tapping screws | SS thread-forming, into the 1.6mm (0.062in) beam top wall (no internal access for nuts) | 4 | Fasten the ball-joint flange to the beam |
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
 | Arm adapter | Turned 6061-T6 AL: M12 female bore (onto the stud + M12 jam nut) → Ø21 male spigot | 1 | Reduces the M12 stud to the Ø21 tube bore |
 | Clamp collar | 25mm/1" bore clamp-style shaft collar (SS), integral clamp screw | 1 | Pinches the slit arm-tube bottom onto the adapter spigot |
@@ -228,20 +228,20 @@ square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,28
 | Bending stiffness (EI) | 9.9×10⁹ N·mm² |
 | Pre-camber | ~12mm up at mid-span (offsets the wet self-weight sag, L/378, so the beam runs flat under load) |
 
-**Sourcing:** A **single 17 ft 4 in (5,283mm)** length of 304-SS 1½×1½×0.062in square tube (Metals Depot) spans the full-width <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam with margin — **no butt weld, no splice** (the old mid-span splice sat where the moment peaks; deleting it removes the weak point). *(Metric 40×25/40×40 nominals are not stock — see the beam re-source item in TODO.md.)*
+**Sourcing:** A **single 17 ft 4 in (5,283mm)** length of 304-SS 1½×1½×0.062in square tube (Metals Depot) spans the full-width <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam with margin — **no butt weld, no splice** (§3.8).
 
 **Spray nozzles:**
 
 | Property | Value |
 |----------|-------|
 | Nozzle type | 90° down-jet, barbed inlet (DIG 110B) |
-| Number of nozzles | 43 |
+| Number of nozzles | <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> |
 | Nozzle spacing | 100mm center-to-center |
 | Spray pattern | 90° cone, directed straight down |
 | Manifold OD / ID | 25mm / 19mm (3/4" LDPE) |
 | Manifold mounting | Clipped to the beam's inboard side face (cushioned pipe clips + the nozzle saddle-tees) |
 
-The forty-three nozzle saddle-tees plus the single center feed tee tap directly into the side
+The <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> nozzle saddle-tees plus the single center feed tee tap directly into the side
 manifold and grip it by their barb ridges. Because the manifold is external, no beam-wall
 drilling is needed; the tees plus cushioned pipe clips locate the manifold along the beam.
 
@@ -275,7 +275,7 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Diameter | 32mm |
 | Width | 20mm |
 | Bore | 10mm |
-| Load rating | Light-duty — actual load ~2.6 kg per wheel wet (a solid acetal wheel carries this easily) |
+| Load rating | Light-duty — actual load ~3.0 kg per wheel wet (a solid acetal wheel carries this easily) |
 | Tread profile | Flat (rolls on the stainless tray floor, raised on the shim ramp) |
 | Material | Solid acetal (Delrin), plain bore — corrosion-immune, self-lubricating on the 304 SS axle (no carbon-steel bearings for the wet wash) |
 
@@ -374,7 +374,7 @@ carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearanc
 
 | Step | Operation |
 |------|-----------|
-| 1 | Place nylon wheel (32mm × 20mm, 10mm bore) in position under the carriage plate |
+| 1 | Place the acetal wheel (32mm × 20mm, 10mm bore) in position under the carriage plate |
 | 2 | Insert 10mm SS axle pin through wheel bore |
 | 3 | Position the saddle clamp over the axle, feet against the plate underside |
 | 4 | Insert 2× M5 bolts up through the saddle feet and carriage plate; secure with nyloc nuts on top |
@@ -450,17 +450,16 @@ clearance at the supports and the camber applied, the beam runs level under load
 |-----------|-----------|
 | Beam (1½×1½×0.062in 304 SS × <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm) | 8.5 |
 | LDPE manifold (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
-| Water in manifold | 1.09 |
+| Water in manifold | 1.22 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× Ø32 wheel + axle + 8 saddle clamps) | 0.45 |
 | Nozzles (43×) + feed manifold/fittings | 0.50 |
 | Hardware (bolts, clips, clamp plates) | 0.35 |
-| **Dry total** | **~13.3 kg** |
-| **Wet total (operating)** | **~14.4 kg** |
+| **Dry total** | **~10.9 kg** |
+| **Wet total (operating)** | **~12.1 kg** |
 
-Per wheel load (wet): 10.6 / 4 = 2.65 kg — well within any small nylon wheel's rating.
-The beam+manifold+water mass (~10.6 kg wet) is carried into the walkway/CG
-budget in [Weight Distribution](weight-distribution-report.md).
+Per wheel load (wet): 12.1 / 4 ≈ 3.0 kg — well within a small solid acetal wheel's rating.
+The assembly mass is carried into the walkway/CG budget in [Weight Distribution](weight-distribution-report.md).
 
 ### 3.8 Beam — Single Length, No Splice
 
@@ -473,21 +472,21 @@ is set over the full length in the fabrication jig.
 
 | Parameter | Value |
 |-----------|-------|
-| Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
+| Supply pump | P-01 (Blue) or P-02 (Brown) — Shurflo 2088, 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
 | Feed point (manifold) | 1 (beam center) — single center feed into the over-bored manifold |
-| Spray nozzles | 43 × 90° down-jets (DIG 110B) |
-| Flow per nozzle | 0.09 GPM (0.34 L/min) |
+| Spray nozzles | <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> × 90° down-jets (DIG 110B) |
+| Flow per nozzle | 0.08 GPM (0.31 L/min) |
 
 Feeding the over-bored 3/4" manifold at a single center point from the ball joint keeps the
 supply pressure uniform along the pipe: the manifold bore is over-sized relative to the nozzle
-saddle-tees, so it acts as a low-loss plenum and each of the 43 nozzles sees nearly the same
+saddle-tees, so it acts as a low-loss plenum and each of the <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> nozzles sees nearly the same
 flow regardless of its distance from the inlet, with no multi-point feeding needed. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each jet delivers a **90° cone directed
 straight down** — chosen over a flat-fan/180° pattern so the wash lands on the print rather
 than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
-A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
-(now 43 at full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
+A 90° cone at the ~50mm nozzle height footprints ~100mm, so the nozzles sit at 100mm pitch
+(<!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count --> across the full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
 
 ### 3.10 Water Connection
 
@@ -501,8 +500,9 @@ the print surface.
 
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05 (Blue/Brown selector) → BV-06 (spray on/off) →
-coiled flexible hose → manifold center inlet (single feed) → over-bored 3/4" manifold bore → 43× spray nozzles.
+**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along the pinhole wall (Blue), or P-02 → ACC-02 (Brown) → BV-05
+(Blue/Brown selector) → BV-06 (spray on/off) → coiled flexible hose → manifold center inlet (single feed) → over-bored 3/4"
+manifold bore → <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count -->× spray nozzles.
 
 ### 3.11 Walkway Slit
 
@@ -519,7 +519,7 @@ walkway grating at the same X position. The slit positions are shown on the
 A Ø20mm stainless steel ball joint on the beam top face provides multi-axis
 articulation between the beam and the operator's pole. The ball sits in a zinc socket
 housing on a 50mm flange base. The flange is fastened to the beam top with four
-self-tapping (thread-forming) stainless screws driven into the 3mm SHS top wall — the
+self-tapping (thread-forming) stainless screws driven into the 1.6mm beam top wall — the
 beam is sealed, so there is no internal access to tighten nuts. Nothing overhangs the
 ball, so the arm articulates freely in every direction.
 
@@ -551,7 +551,7 @@ Deep cleaning and nozzle service reach the beam through the **right walkway grat
 
 ## 5. Engineering Drawings
 
-Seven detail sheets cover the spray bar assembly and processing tray:
+Eleven sheets cover the spray bar assembly and processing tray:
 
 | Sheet | Title | Content |
 |-------|-------|---------|
@@ -559,9 +559,13 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 | 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, beam clamp plates, saddle clamps, ball joint, arm, hose |
 | 3 | Plan View | Container floor plan — walkways, slit positions, beam travel range |
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
-| 5 | Detail C — Wheel Attachment | Section along axle at 4:1 — carriage plate, nylon wheel, axle pin, saddle clamp |
+| 5 | Detail C — Wheel Attachment | Section along axle at 4:1 — carriage plate, acetal wheel, axle pin, saddle clamp |
 | 6 | Detail D — Wheel Plan | Plan view of carriage — beam, carriage plate, beam clamp plate, saddle clamps, wheels |
 | 7 | Detail B — Manifold Feed | Longitudinal section at 2:1 — single center-feed barbed connection and nozzle connection details |
+| 8 | Center-seam lap joint | Shingle-oriented lap joint of the two tray panels (§2.6) |
+| 9 | Beam + manifold stations | Full-length station layout — cut length, nozzle + feed-tee pitch, carriage-clamp + ball-joint stations (§3.3) |
+| 10 | Wheel-carriage plate | Carriage plate fabrication — notch + drilling (§3.6.1) |
+| 11 | Processing-tray pan | Pan fabrication — rim fold, pressed sump, seam-bolt pattern (§2.1) |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 

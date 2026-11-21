@@ -605,7 +605,7 @@ def draw_sheet2():
     ax2.plot([0, wk_yd_r], [GRATE_Z_BOT - brk_depth_r, GRATE_Z_BOT],
              color=C_FRAME, lw=0.5, ls="--", alpha=0.25, zorder=5)
 
-    # ── Wheels (2× Ø50mm nylon) ────────────────────────────────────────
+    # ── Wheels (2× acetal) ────────────────────────────────────────────
     for w_yd in [wheel1_yd, wheel2_yd]:
         ax2.add_patch(Circle((w_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2,
                      fc=C_NYLON, ec=C_WHEEL, lw=2.0, zorder=6))
@@ -636,7 +636,7 @@ def draw_sheet2():
     # labels get a white backing (LBL_BG).
     leader(ax2, wheel1_yd - WHEEL_DIA * 0.2, WHEEL_AXLE_Z + 12,
            wheel1_yd - WHEEL_DIA * 0.4, WHEEL_AXLE_Z + WHEEL_DIA * 0.8,
-           f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",
+           f"Ø{WHEEL_DIA}mm\nACETAL WHEEL",
            fs=6, color=C_WHEEL, ha="right", font=FONT, zorder=15)
 
     # ── Carriage plate 2mm above wheel axle ──────────────────────────
@@ -1019,7 +1019,7 @@ def draw_sheet2():
     # ── Notes ────────────────────────────────────────────────────────────
     cs_notes = [
         "CROSS SECTION (COMPOSITE):",
-        f"1. Beam rides on Ø{SPRAY_BAR_WHEEL_DIA}mm nylon wheels; saddle clamps each side retain axle.",
+        f"1. Beam rides on Ø{SPRAY_BAR_WHEEL_DIA}mm acetal wheels; saddle clamps each side retain axle.",
         "2. Clamp plates sandwich beam; underside bolts COUNTERSUNK flush for clearance.",
         "3. Ball joint on plate wing → arm → pole through walkway slit.",
         "4. Water: SIDE poly manifold → side-tap barb → 90° down-jet → spray down-and-in.",

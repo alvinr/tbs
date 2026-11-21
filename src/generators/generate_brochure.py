@@ -55,6 +55,7 @@ NAV_SOURCE_OVERRIDE = {"index.md": "project-summary.md"}
 
 # Released version — single source: RELEASE.md via tbs_version (no stored copy).
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tbs_constants import PH_F, PH_D, PH_FNO  # noqa: E402
 try:
     from tbs_version import current_version
     BROCHURE_VERSION = current_version()
@@ -95,7 +96,7 @@ EDITIONS = {
     "tbs001": {
         "output":       "tbs-brochure.pdf",
         "subtitle":     "TBS-001  —  Research & Build Documentation",
-        "spec":         "20 ft ISO Container  ·  Ø2.17mm Pinhole  ·  f/1088  ·  2362mm Focal Length",
+        "spec":         f"20 ft ISO Container  ·  Ø{PH_D}mm Pinhole  ·  f/{PH_FNO}  ·  {PH_F:,.0f}mm Focal Length",
         "source":       "nav",
         "exclude":      {"mini-tbs/mini-tbs-poc.md", "mini-tbs/mini-tbs-shopping-list.md"},
         "teacher_page": False,

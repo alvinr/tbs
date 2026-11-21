@@ -20,12 +20,12 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 ## 2. Project Overview
 
 ### What
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (about <!-- BEGIN fact:pinhole_diameter_in -->0.085<!-- END fact:pinhole_diameter_in --> in / <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one face of the container. The image plane — a stretched cotton muslin surface spanning roughly <!-- BEGIN fact:film_plane_width_feet -->14<!-- END fact:film_plane_width_feet --> × <!-- BEGIN fact:film_plane_height_feet -->7<!-- END fact:film_plane_height_feet --> feet (the active <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone) — sits on the other face. Every exposure produces a latent cyanotype image on approximately <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (about <!-- BEGIN fact:pinhole_diameter_in -->0.085<!-- END fact:pinhole_diameter_in --> in / <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one face of the container. The image plane — a stretched cotton muslin surface spanning roughly <!-- BEGIN fact:film_plane_width_feet -->14<!-- END fact:film_plane_width_feet --> × <!-- BEGIN fact:film_plane_height_feet -->7<!-- END fact:film_plane_height_feet --> feet (the active <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone) — sits on the other face. Every exposure produces a latent cyanotype image on approximately <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
 ### How
-The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [thebigshoebox.org](https://thebigshoebox.org/).
+The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [thebigshoebox.org](https://thebigshoebox.org/).
 
 It travels on a commercial hire truck (no CDL required) and runs off-grid: a self-contained water system good for ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, powered on 12V DC by one or two 100Ah LiFePO4 battery and a 600W solar array — solar-positive in sun, so it keeps running indefinitely.
 
@@ -36,7 +36,7 @@ The history of large-format photography is a history of increasing precision in 
 The project pairs a fixed, quick-change pinhole front board with a fully articulated film plane — the rear standard of a view camera, operating at pinhole focal lengths. No camera of this type is known to exist.
 
 ### Front Board: Quick-Change Pinhole Disc Holder
-The interchangeable pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring on four knurled thumb screws, so a disc swaps in about 30 seconds with no tools — a different pinhole diameter (from the Rayleigh optimum Ø2.17mm to sharper or brighter apertures), or a large-format **lens board** (Copal/Compur 0/1/3) on the same Ø80 carrier to run the instrument as a lens optic.
+The interchangeable pinhole disc is clamped against a neoprene light-seal washer by a circular retaining ring on four knurled thumb screws, so a disc swaps in about 30 seconds with no tools — a different pinhole diameter (from the Rayleigh optimum Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm to sharper or brighter apertures), or a large-format **lens board** (Copal/Compur 0/1/3) on the same Ø80 carrier to run the instrument as a lens optic.
 
 **Why the board is fixed:** a pinhole is a point aperture. The image is a central projection *through the pinhole point*, determined only by the pinhole's position and the film plane — it is completely independent of the orientation of the plate that holds it. Tilting a pinhole board therefore does nothing to the image. All perspective and geometric control is provided by the film plane.
 
@@ -65,7 +65,7 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 
 The final aspect of creative control, is a function of the design choice and processes chosen. The expousre time will be between 35-40 minyates in full daylight. In a landscape scene, the clouds will move, leaves will flutter. That will give a glassy or mily appearance to those scene. In a downtown setting, moving vehicles or peoples will simply not register and will disappear. Ghost fragments will exist across the image.
 
-The last layer of control is the exposure itself. At f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> a
+The last layer of control is the exposure itself. At f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> a
 frame takes 30 to 45 minutes in full sun. In a landscape, clouds drift and leaves flutter across the exposure, so moving water and sky go glassy and milky, smeared smooth. A city is stranger still: traffic and pedestrians move too fast to register and simply vanish, leaving the street deserted — only what holds still records sharply, and where someone paused, a faint ghost remains. It is the same effect that placed the first human being in a photograph: the man who stood long enough to have his boots shined on Daguerre's otherwise-empty Boulevard du Temple in 1838.
 
 ## 5. Process and Sustainability
@@ -184,13 +184,13 @@ My practice since has moved between classical portraiture and abstract color in 
 | Parameter | Value |
 |-----------|-------|
 | Container | 20ft ISO standard (6,058 × 2,438 × 2,591mm exterior) |
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm |
 | Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:film_plane_width_ftin -->14'5"<!-- END fact:film_plane_width_ftin --> × <!-- BEGIN fact:film_plane_height_ftin -->6'10"<!-- END fact:film_plane_height_ftin -->) |
 | Container interior | 5,893 × 2,388mm (~19'4" × 7'10") |
 | Image area | ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft |
-| Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Rayleigh formula, λ=550nm) |
-| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
-| Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
+| Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm (Rayleigh formula, λ=550nm) |
+| f-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> |
+| Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->, full sun — no reciprocity correction) |
 | Film plane movement | ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing, 4-corner independent (Option A rigid plane) |
 | Front board | Fixed quick-change disc holder — interchangeable Ø80 carrier (pinhole board or Copal/Compur lens board) |
 | Process | Cyanotype (Ware formula) on cotton muslin |

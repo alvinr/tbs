@@ -3,11 +3,11 @@
 # Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
-**Camera:** Option B, f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->)
+**Camera:** Option B, f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm (f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->)
 **Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes
 **Lens comparison:** Process lens or telescope objective at f/8–f/128
 
-> **Note:** TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is 30-45 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,624×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.
+> **Note:** TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is 30-45 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,616×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.
 
 ---
 
@@ -33,13 +33,13 @@ The amount of light arriving at P per unit time is therefore proportional to the
 
 where d is the pinhole diameter.
 
-For d = 2.17mm:
+For d = 2.15mm:
 
 ```
-A_pinhole = π × (1.085)² = 3.70mm²
+A_pinhole = π × (1.075)² = 3.63mm²
 ```
 
-This is the collecting area. Every photon contributing to the image at any point on the <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft image plane has passed through this 3.70mm² opening. No others.
+This is the collecting area. Every photon contributing to the image at any point on the <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft image plane has passed through this 3.63mm² opening. No others.
 
 **Source:** Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge University Press, 1999, §8.6.1. The treatment of the pinhole as a geometric aperture stop, passing only rays within the solid angle subtended by the opening, is the foundational model for pinhole imaging. The proportionality of image irradiance to aperture area follows directly from basic radiometric principles (see also Hecht, E., *Optics*, 5th ed., Pearson, 2017, §5.1).
 
@@ -57,14 +57,14 @@ A_lens = π(D/2)²
 
 For a lens of focal length f_L at f-number N, the aperture diameter D = f_L / N.
 
-For a lens at f/16 installed in this camera (f_L = 2,362mm):
+For a lens at f/16 installed in this camera (f_L = 2,338mm, the pinhole-plane-to-far-wall distance):
 
 ```
-D = 2,362 / 16 = 147.6mm
-A_lens = π × (73.8)² = 17,094mm²
+D = 2,338 / 16 = 146.1mm
+A_lens = π × (73.05)² = 16,764mm²
 ```
 
-Every ray intercepted across this 147.6mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70mm². The lens at f/16 collects 17,094mm².
+Every ray intercepted across this 146.1mm diameter disc is redirected toward the correct image point. The pinhole collects 3.63mm². The lens at f/16 collects 16,764mm².
 
 **Source:** Smith, W.J., *Modern Optical Engineering*, 4th ed., McGraw-Hill, 2008, §2.1 (Radiometry and Photometry of Optical Systems). The derivation of image plane irradiance as a function of aperture area and f-number is standard: E = (π/4) × L × (1/N²) × cos⁴θ, where L is scene luminance and θ is the off-axis angle.
 
@@ -79,34 +79,34 @@ Ratio = A_lens / A_pinhole = (D_lens / d_pinhole)²
 This equals the inverse square of the f-number ratio:
 
 ```
-Ratio = (N_pinhole / N_lens)² = (1088 / 16)² = 68² = 4,624
+Ratio = (N_pinhole / N_lens)² = (1087 / 16)² = 67.94² = 4,616
 ```
 
-The lens at f/16 delivers **4,624 times more light per second** to each point on the image plane than the f/1088 pinhole. Exposure time scales in inverse proportion:
+The lens at f/16 delivers **4,616 times more light per second** to each point on the image plane than the f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> pinhole. Exposure time scales in inverse proportion:
 
 ```
-t_lens = t_pinhole_base / 4,624
+t_lens = t_pinhole_base / 4,616
 ```
 
-This is the f-number squared law that every photographer encounters when changing aperture. Each full stop (a factor of √2 change in diameter) doubles or halves the exposure time. Moving from f/1088 to f/16 is a shift of log₂(1088/16)² = log₂(4,624) = **12.2 stops**.
+This is the f-number squared law that every photographer encounters when changing aperture. Each full stop (a factor of √2 change in diameter) doubles or halves the exposure time. Moving from f/1087 to f/16 is a shift of log₂(1087/16)² = log₂(4,616) = **12.2 stops**.
 
 **Source:** Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999, Chapter 6 (Exposure Determination). The derivation and application of the f-number squared relationship for exposure time is given in full.
 
 ---
 
-## Part 2: Why the Practical Factor is Larger Than 4,624
+## Part 2: Why the Practical Factor is Larger Than 4,616
 
-The aperture ratio alone predicts that a lens at f/16 needs 1/4,624 of the pinhole's *calculated* exposure. The pinhole's 43-minute working time, however, is not its calculated time: at f/1088 and ISO 6 the calculated exposure is about **12.8 minutes**, which Schwarzschild reciprocity failure (Part 2.1) inflates to 43 minutes. The lens exposure of **0.47 sec** is far too brief to incur that penalty, so it carries no such inflation.
+The aperture ratio alone predicts that a lens at f/16 needs 1/4,616 of the pinhole's *calculated* exposure. The pinhole's 43-minute working time, however, is not its calculated time: at f/1087 and ISO 6 the calculated exposure is about **12.7 minutes**, which Schwarzschild reciprocity failure (Part 2.1) inflates to 43 minutes. The lens exposure of **0.47 sec** is far too brief to incur that penalty, so it carries no such inflation.
 
 The true comparison is therefore:
 
 | | Calculated (no correction) | Schwarzschild corrected |
 |---|---|---|
-| Pinhole f/1088, ISO 6 | 12.8 min | **43 min** |
+| Pinhole f/1087, ISO 6 | 12.7 min | **43 min** |
 | Lens f/16, ISO 6 | 0.47 sec | **0.47 sec** (unchanged) |
-| Ratio | 1,632:1 | **5,489:1** |
+| Ratio | 1,621:1 | **5,489:1** |
 
-The lens is not just 4,624× faster. It is ~5,500× faster in practice because it also sidesteps the reciprocity failure that penalizes the pinhole.
+The lens is not just 4,616× faster. It is ~5,500× faster in practice because it also sidesteps the reciprocity failure that penalizes the pinhole.
 
 ### 2.1 Schwarzschild Reciprocity Failure — What It Is
 
@@ -131,8 +131,8 @@ For p = 0.85: t_actual = t_calculated^(1/0.85) = t_calculated^1.176
 Applied to the pinhole case:
 
 ```
-t_calculated = 770 sec (12.8 min)
-t_actual = 770^1.176 = 2,488 sec ≈ 41.5 min ≈ 43 min ✓
+t_calculated = 762 sec (12.7 min)
+t_actual = 762^1.176 = 2,458 sec ≈ 41 min ≈ 43 min ✓
 ```
 
 The Schwarzschild correction adds **28 minutes** to the calculated time — more than doubling it. This penalty applies to every exposure over approximately 10 seconds. A lens at f/32 (2.1 sec exposure) just begins to enter the Schwarzschild regime; at f/16 (0.5 sec) it is entirely exempt.
@@ -143,25 +143,25 @@ The Schwarzschild correction adds **28 minutes** to the calculated time — more
 
 The practical 5,489× advantage is the product of two independent factors, each applied exactly once and only to the quantity it governs:
 
-| Factor | Pinhole f/1088 | Lens f/16 |
+| Factor | Pinhole f/1087 | Lens f/16 |
 |--------|---------------|-----------|
-| Calculated exposure (ISO 6, full sun, 3.4 m) | 12.8 min | 0.47 sec |
-| Schwarzschild reciprocity penalty | ×3.36 (long exposure) | none — too brief |
+| Calculated exposure (ISO 6, full sun, 3.4 m) | 12.7 min | 0.47 sec |
+| Schwarzschild reciprocity penalty | ×3.39 (long exposure) | none — too brief |
 | Working exposure | **43 min** | **0.47 sec** |
 
-**Factor 1 — aperture (light collection).** Comparing the two *calculated* times, the pinhole needs 12.8 min where the lens needs 0.47 sec: a ratio of **1,632×**. This is the f-number area advantage as it lands at the portrait working distance.
+**Factor 1 — aperture (light collection).** Comparing the two *calculated* times, the pinhole needs 12.7 min where the lens needs 0.47 sec: a ratio of **1,621×**. This is the f-number area advantage as it lands at the portrait working distance.
 
-**Factor 2 — reciprocity.** The pinhole's 12.8-minute calculated time is long enough to trigger Schwarzschild failure, which inflates it to 43 min — a further **×3.36**. The lens exposure of 0.47 sec is far too brief for any reciprocity penalty.
+**Factor 2 — reciprocity.** The pinhole's 12.7-minute calculated time is long enough to trigger Schwarzschild failure, which inflates it to 43 min — a further **×3.39**. The lens exposure of 0.47 sec is far too brief for any reciprocity penalty.
 
 Because the two factors are independent, they multiply:
 
 ```
-Practical ratio = 1,632 (aperture) × 3.36 (reciprocity) = 5,484 ≈ 43 min ÷ 0.47 sec = 5,489
+Practical ratio = 1,621 (aperture) × 3.39 (reciprocity) = 5,495 ≈ 43 min ÷ 0.47 sec = 5,489
 ```
 
 The reciprocity factor attaches to the pinhole's own calculated time, not to the f-number area ratio — it is counted once, never compounded onto the aperture term. Only the pinhole pays both penalties; the lens removes the aperture penalty and the reciprocity penalty in a single stroke.
 
-> **For the camera as built:** Factor 2 applies only to silver-gelatin paper. TBS-001's cyanotype image plane is iron-based and exhibits no Schwarzschild reciprocity failure (see the Note at the top), so its ~30–45 min pinhole baseline is not inflated. Only Factor 1 applies, and the lens advantage over the cyanotype pinhole is the aperture ratio alone — ~4,624×, with no reciprocity term.
+> **For the camera as built:** Factor 2 applies only to silver-gelatin paper. TBS-001's cyanotype image plane is iron-based and exhibits no Schwarzschild reciprocity failure (see the Note at the top), so its ~30–45 min pinhole baseline is not inflated. Only Factor 1 applies, and the lens advantage over the cyanotype pinhole is the aperture ratio alone — ~4,616×, with no reciprocity term.
 
 ---
 
@@ -181,10 +181,10 @@ E ∝ 1/N²
 
 This is why photographers say "each stop is a factor of two in exposure." One stop = a factor of √2 change in diameter = a factor of 2 change in area = a factor of 2 change in exposure time. The full-stop scale is f/1, f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11, f/16 — each value is √2 × the previous.
 
-The f/1088 pinhole sits 12.2 stops beyond f/16. Each of those 12.2 stops doubles the exposure time:
+The f/1087 pinhole sits 12.2 stops beyond f/16. Each of those 12.2 stops doubles the exposure time:
 
 ```
-2^12.2 = 4,716 ≈ 4,624 ✓
+2^12.2 = 4,705 ≈ 4,616 ✓
 ```
 
 (The small discrepancy is rounding in the stop count.)
@@ -221,25 +221,25 @@ The pinhole's immunity to chromatic aberration follows directly from the geometr
 
 ## Part 5: Quantified Exposure Table for This Camera
 
-The following table gives corrected exposure times across all apertures from f/8 to f/1088, for ISO 6 silver gelatin paper, in full sun (Sunny-16 baseline), at the portrait working distance of 3.4 m. The bellows extension correction for M = 0.695 at 3.4 m (factor 2.87×) is included. Schwarzschild correction (p = 0.85) is applied where t_calculated > 1 second.
+The following table gives corrected exposure times across all apertures from f/8 to f/1087, for ISO 6 silver gelatin paper, in full sun (Sunny-16 baseline), at the portrait working distance of 3.4 m. The bellows extension correction for M = 0.688 at 3.4 m (factor 2.85×) is included. Schwarzschild correction (p = 0.85) is applied where t_calculated > 1 second.
 
-| Aperture | Light vs f/1088 | Calculated t | Corrected t | Subject movement feasibility |
+| Aperture | Light vs f/1087 | Calculated t | Corrected t | Subject movement feasibility |
 |---|---|---|---|---|
-| f/8 | 18,496× more | 0.04 sec | **0.04 sec** | Requires mechanical shutter |
-| f/11 | 9,792× more | 0.08 sec | **0.08 sec** | Requires mechanical shutter |
-| f/16 | 4,624× more | 0.47 sec | **0.47 sec** | Requires mechanical shutter |
-| f/22 | 2,446× more | 0.90 sec | **0.90 sec** | Hand-operated shutter (card/hat) |
-| f/32 | 1,156× more | 1.90 sec | **2.1 sec** | Hand-operated shutter |
-| f/45 | 584× more | 3.75 sec | **4.7 sec** | Comfortable hand operation |
-| f/64 | 289× more | 7.6 sec | **10.8 sec** | Subject can hold still reliably |
-| f/90 | 146× more | 15.0 sec | **24.2 sec** | Subject can hold still |
-| f/128 | 72× more | 30.4 sec | **55 sec** | Manageable; subject briefed |
-| f/180 | 36× more | 60 sec | **2.1 min** | Challenging; needs stillness aid |
-| f/256 | 18× more | 121 sec | **4.7 min** | Borderline practical |
-| f/512 | 4.5× more | 486 sec | **24 min** | Near-pinhole conditions |
-| **f/1088** | **1× (baseline)** | **2,193 sec** | **~43 min** | **Pinhole — no subject movement possible** |
+| f/8 | 18,462× more | 0.04 sec | **0.04 sec** | Requires mechanical shutter |
+| f/11 | 9,765× more | 0.08 sec | **0.08 sec** | Requires mechanical shutter |
+| f/16 | 4,616× more | 0.47 sec | **0.47 sec** | Requires mechanical shutter |
+| f/22 | 2,441× more | 0.89 sec | **0.89 sec** | Hand-operated shutter (card/hat) |
+| f/32 | 1,154× more | 1.88 sec | **2.1 sec** | Hand-operated shutter |
+| f/45 | 583× more | 3.72 sec | **4.7 sec** | Comfortable hand operation |
+| f/64 | 288× more | 7.5 sec | **10.8 sec** | Subject can hold still reliably |
+| f/90 | 146× more | 14.9 sec | **24.0 sec** | Subject can hold still |
+| f/128 | 72× more | 30.1 sec | **55 sec** | Manageable; subject briefed |
+| f/180 | 36× more | 59 sec | **2.0 min** | Challenging; needs stillness aid |
+| f/256 | 18× more | 120 sec | **4.7 min** | Borderline practical |
+| f/512 | 4.5× more | 482 sec | **24 min** | Near-pinhole conditions |
+| **f/1087** | **1× (baseline)** | **2,170 sec** | **~43 min** | **Pinhole — no subject movement possible** |
 
-*All times for ISO 6 paper, Sunny-16 full sun, 3.4 m subject distance (M = 0.695), bellows factor 2.87×. Schwarzschild p = 0.85.*
+*All times for ISO 6 paper, Sunny-16 full sun, 3.4 m subject distance (M = 0.688), bellows factor 2.85×. Schwarzschild p = 0.85.*
 
 ### For faster photosensitive materials
 
@@ -252,7 +252,7 @@ The table scales linearly with ISO. For orthochromatic X-ray film at ISO 400 (67
 | f/64 | ~162 ms | Hand shutter adequate |
 | f/128 | ~820 ms | 1 second — very comfortable |
 | f/256 | ~4.2 sec | Excellent for portraits |
-| f/1088 (pinhole) | ~38 sec | 38 seconds vs 43 minutes — dramatic improvement from speed alone |
+| f/1087 (pinhole) | ~38 sec | 38 seconds vs 43 minutes — dramatic improvement from speed alone |
 
 Even using the pinhole alone with X-ray film (no lens required) reduces the 43-minute paper exposure to 38 seconds — a direct consequence of the 67× ISO advantage.
 

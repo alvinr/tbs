@@ -37,6 +37,7 @@ os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 # ── Constants shared with previous session ────────────────────────────────────
 from tbs_constants import RAIL_OFF   # floor offset for all floor-standing equipment (mm)
+from tbs_constants import PH_F  # noqa: E402
 from tbs_constants import DIAGRAM_DPI, BG
 DRUM_H_ELV = DRUM_H_LT   # 2100mm — revolving drum height in elevation view
 
@@ -281,7 +282,7 @@ ax.plot([PH_X, PH_X], [PH_H - 160, PH_H + 160], color=C_PINHOLE, lw=0.8, zorder=
 leader(ax, PH_X + PINHOLE_SYM_R + 40, PH_H, PH_X + 600, PH_H + 450,
        f"Pinhole  O{PH_D}mm\n(X={PH_X}, H={PH_H}mm)\nf/{PH_FNO}",
        ha="left", fs=FS_SM, color=C_PINHOLE)
-ax.text(PH_X, PH_H - 300, f"Optical axis (into page)\nFocal length {C_WID}mm",
+ax.text(PH_X, PH_H - 300, f"Optical axis (into page)\nFocal length {PH_F:,.0f}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CL, style="italic")
 
 
@@ -347,7 +348,7 @@ legend_items = [
     (C_ELEC,      "Electrical panel"),
     (C_BATT,      "Battery bank"),
     (C_FILM_PLN,  "Film plane (symbolic band)"),
-    (C_PINHOLE,   "Pinhole O2.17mm"),
+    (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
     (C_HINGE_PANEL,      "Hinged panel + drum"),
     (C_FAN,       "Ventilation fan"),
     (C_ALUM,      "Ext power panel  [ghost = exterior]"),
@@ -486,7 +487,7 @@ for fx in [FP_X_L, FP_X_R]:
                 color=C_CONE, lw=0.8, ls="--", dashes=(6, 4), alpha=0.7, zorder=2)
 
 ax2.text(mx(PH_X + (FP_X_R - PH_X) * 0.55), PH_H + 300,
-        f"Optical cone — f={C_WID}mm,  f/1088",
+        f"Optical cone — f={PH_F:,.0f}mm,  f/{PH_FNO}",
         ha="center", va="bottom", fontsize=FS_SM, color=C_CONE, style="italic", zorder=6)
 
 # ── FILM PLANE RAILS — the dominant structural feature ───────────────────────
@@ -537,10 +538,10 @@ ax2.plot([mx(PH_X) - 120, mx(PH_X) + 120], [PH_H, PH_H],
 ax2.plot([mx(PH_X), mx(PH_X)], [PH_H - 120, PH_H + 120],
         color=C_PINHOLE, lw=0.7, alpha=0.55, zorder=4)
 ldr2(PH_X, PH_H, PH_X - 225, PH_H + 500,
-    f"Pinhole  Ø2.17mm\n(X={PH_X}, H={PH_H}mm)\n[on far wall — ghost]",
+    f"Pinhole  Ø{PH_D}mm\n(X={PH_X}, H={PH_H}mm)\n[on far wall — ghost]",
     ha="right", fs=FS_SM, color=C_PINHOLE)
 ax2.text(mx(PH_X), PH_H - 320,
-        "Optical axis (out of page)\nFocal length 2362mm",
+        f"Optical axis (out of page)\nFocal length {PH_F:,.0f}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CL, style="italic")
 
 # Rail labels
@@ -698,7 +699,7 @@ legend2 = [
     (C_LT_DRUM,  "Revolving light-trap drum"),
     (C_HINGE_PANEL,     "Hinged panel"),
     (C_FAN,      "Ventilation fan (IN / OUT)"),
-    (C_PINHOLE,  "Pinhole Ø2.17mm  [ghost = far wall]"),
+    (C_PINHOLE,  f"Pinhole Ø{PH_D}mm  [ghost = far wall]"),
     (C_ALUM,     "Ext power panel  [ghost = exterior]"),
     (C_WALL,     "Processing tray (304 SS, 50mm rim)"),
 ]

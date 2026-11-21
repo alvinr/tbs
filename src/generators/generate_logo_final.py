@@ -22,6 +22,7 @@ from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse
 from matplotlib.colors import LinearSegmentedColormap
 from tbs_constants import C_WID, PROJECT_ROOT
 from tbs_constants import DIAGRAM_DPI
+from tbs_constants import PH_F, PH_D, PH_FNO  # noqa: E402
 
 # ── Vibrant cyanotype palette ─────────────────────────────────────────────────
 PRU_INK   = "#081A32"
@@ -162,7 +163,7 @@ for ddx, ddy in [(0,2.5),(0,-2.5),(2.5,0),(-2.5,0)]:
     ax.plot([PH_X, PH_X+ddx*0.5], [CY, CY+ddy*0.5],
             color=PAPER, lw=0.8, alpha=0.6, zorder=9)
 
-ax.text(PH_X, C_B-1.5, "Ø 2.17mm",
+ax.text(PH_X, C_B-1.5, f"Ø {PH_D}mm",
         color=CYAN_LITE, fontsize=4.8, ha="center", va="top",
         fontfamily="monospace", zorder=7)
 
@@ -336,7 +337,7 @@ ax.add_patch(Rectangle((12,5.5),76,7.5, fc=PRU_INK,ec=PAPER,lw=1.8,zorder=8))
 ax.add_patch(Rectangle((12,12.8),76,0.6, fc=PAPER,ec="none",zorder=9))
 ax.add_patch(Rectangle((12,12.1),76,0.4, fc=CYAN_MID,ec="none",zorder=9))
 ax.text(50, 10.6,
-        "f = 2362mm   ·   d = 2.17mm   ·   f/1088   ·   λ = 550 nm",
+        f"f = {PH_F:,.0f}mm   ·   d = {PH_D}mm   ·   f/{PH_FNO}   ·   λ = 550 nm",
         color=PAPER, fontsize=5.8, ha="center", va="center",
         fontfamily="monospace", fontweight="bold", zorder=9)
 ax.text(50, 7.5,

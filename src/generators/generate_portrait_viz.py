@@ -4,7 +4,7 @@
 """
 Pinhole Camera — Portrait Scale Visualization
 Option B: 20-ft container, side-to-side
-f = 2362mm | d = 2.17mm | f/1088 | ~86° horizontal FOV (active 4389mm film plane)
+f ≈ 2,338mm | d = 2.15mm | f/1087 | ~86° horizontal FOV (active 4389mm film plane)
 """
 import matplotlib
 matplotlib.use('Agg')
@@ -14,13 +14,14 @@ import numpy as np
 import math
 import os
 from tbs_constants import DISTORTION_DPI, DIAGRAMS_DIR, RAIL_X_L, RAIL_X_R, FP_H, C_LEN, C_WID
+from tbs_constants import PH_F, PH_D, PH_FNO  # noqa: E402
 from tbs_drawing import draw_rect
 
 # ─────────────────────────────────────────
 # Camera constants — the IMAGE PLANE is the ACTIVE FILM PLANE (not the full container wall)
 # ─────────────────────────────────────────
-F    = float(C_WID)                 # 2362 — focal length = container interior depth, mm
-D    =  2.17                        # Rayleigh pinhole Ø, mm
+F    = float(PH_F)                  # focal length (pinhole → far wall), mm
+D    = PH_D                         # Rayleigh pinhole Ø, mm
 FP_W = float(RAIL_X_R - RAIL_X_L)   # 4389 — active film-plane (image-plane) width, mm
 IW   = FP_W                         # image-plane width used for the scale charts
 IH   = float(FP_H)                  # 2094 — active film-plane height, mm
@@ -231,7 +232,7 @@ ax.text(IW/2, IH + IH*0.60,
         'OPTION B PINHOLE CAMERA  —  PORTRAIT RENDERING AT SCALE',
         ha='center', fontsize=14, color='#FFFFFF', fontweight='bold', zorder=10)
 ax.text(IW/2, IH + IH*0.48,
-        f'Subject: 5′ 10″  (1780mm)  ·  f = 2362mm  ·  Pinhole d = 2.17mm  ·  f/1088  ·  {H_FOV:.0f}° H-FOV × {V_FOV:.0f}° V-FOV',
+        f'Subject: 5′ 10″  (1780mm)  ·  f = {F:,.0f}mm  ·  Pinhole d = {D}mm  ·  f/{PH_FNO}  ·  {H_FOV:.0f}° H-FOV × {V_FOV:.0f}° V-FOV',
         ha='center', fontsize=9.5, color='#888', zorder=10)
 
 # ── Inversion note ───────────────────────
@@ -264,7 +265,7 @@ ax2.set_facecolor('#0D0D0D')
 # Camera container footprint (20 ft × 8 ft)
 # Orient so image plane faces "up" in the diagram
 CONT_L_MM = float(C_LEN)   # 5893 — container interior length
-CONT_W_MM = float(C_WID)   # 2362 — container interior depth = focal length
+CONT_W_MM = float(C_WID)   # container interior width (wall to wall)
 
 # Container rectangle (left edge at x=0, bottom at y=0)
 draw_rect(ax2, 0, 0, CONT_L_MM, CONT_W_MM, color='#777', fc='#1A1A1A', lw=2, zorder=2)

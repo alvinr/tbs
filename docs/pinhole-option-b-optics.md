@@ -14,9 +14,9 @@ All calculations on this page use these fixed values, derived from the 20-foot s
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Focal length (f) | **<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in)** | ISO 668 interior width |
-| Rayleigh optimal pinhole (d) | **<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
-| F-number (N) | **f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->** | N = f/d |
+| Focal length (f) | **<!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (7 ft 8 in)** | ISO 668 interior width, less the 24.5mm pinhole inset from the wall |
+| Rayleigh optimal pinhole (d) | **<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
+| F-number (N) | **f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->** | N = f/d |
 | Image plane width | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Container interior length |
 | Image plane height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | Container interior height |
 | Wavelength (λ) | 0.00055mm (550 nm) | Green light reference |
@@ -64,26 +64,26 @@ B = d × (1 + f/u)
 
 ### Key Observations from the Formula
 
-1. **As u → ∞:** B → d. The blur circle never gets smaller than the pinhole diameter itself. The minimum possible blur is 2.17mm (at infinity).
+1. **As u → ∞:** B → d. The blur circle never gets smaller than the pinhole diameter itself. The minimum possible blur is 2.15mm (at infinity).
 
 2. **As u → 0:** B → ∞. Very close subjects produce extremely large blur circles.
 
 3. **At u = f:** B = d × (f + f)/f = **2d** — exactly twice the pinhole diameter.
 
-4. **The pinhole is always "soft"** by the standards of lens-based photography. A 2.17mm blur circle at f/1088 would be unacceptable on a 4×5 inch print. On a 19-foot print viewed from 6 meters, it is invisible.
+4. **The pinhole is always "soft"** by the standards of lens-based photography. A 2.15mm blur circle at f/1087 would be unacceptable on a 4×5 inch print. On a 19-foot print viewed from 6 meters, it is invisible.
 
 ### Diffraction Added to Geometric Blur
 
-At infinity, the geometric blur = d = 2.17mm. But diffraction also contributes a spread of:
+At infinity, the geometric blur = d = 2.15mm. But diffraction also contributes a spread of:
 
 ```
-B_diffraction = 2.44 × λ × f / d = 2.44 × 0.00055 × 2362 / 2.17 = 1.47mm
+B_diffraction = 2.44 × λ × f / d = 2.44 × 0.00055 × 2338 / 2.15 = 1.46mm
 ```
 
 The Rayleigh optimal pinhole was chosen precisely so that these two contributions are balanced. The total blur at infinity is approximately:
 
 ```
-B_total = √(d² + B_diffraction²) = √(2.17² + 1.47²) = √(4.71 + 2.16) = √6.87 = 2.62mm
+B_total = √(d² + B_diffraction²) = √(2.15² + 1.46²) = √(4.62 + 2.13) = √6.75 = 2.60mm
 ```
 
 This is the **absolute minimum blur** for this camera — occurring at infinity.
@@ -96,18 +96,18 @@ At finite distances, geometric blur dominates over diffraction blur, so the form
 
 | Subject Distance (u) | Blur Circle (B) | B / d ratio | Equivalent in Subject Space at 5 m viewing |
 |---------------------|----------------|-------------|---------------------------------------------|
-| 0.5 m | **12.4mm** | 5.7× | Visible smear at all viewing distances |
-| 1.0 m | **7.3mm** | 3.4× | Visible softness at any viewing distance |
+| 0.5 m | **12.2mm** | 5.7× | Visible smear at all viewing distances |
+| 1.0 m | **7.2mm** | 3.3× | Visible softness at any viewing distance |
 | 2.0 m | **4.7mm** | 2.2× | Soft; visible from 3 m viewing distance |
-| 3.0 m | **3.9mm** | 1.8× | Marginally visible from 5 m |
+| 3.0 m | **3.8mm** | 1.8× | Marginally visible from 5 m |
 | 5.0 m | **3.2mm** | 1.5× | Essentially invisible from 10 m |
 | 10.0 m | **2.7mm** | 1.2× | Invisible from 10+ m |
 | 20.0 m | **2.4mm** | 1.1× | Invisible from any normal viewing distance |
-| 50.0 m | **2.3mm** | 1.06× | Indistinguishable from infinity |
+| 50.0 m | **2.3mm** | 1.05× | Indistinguishable from infinity |
 | 100.0 m | **2.2mm** | 1.02× | Indistinguishable from infinity |
-| ∞ | **2.17mm** | 1.00× | Theoretical minimum |
+| ∞ | **2.15mm** | 1.00× | Theoretical minimum |
 
-**Formula applied:** B = 2.17 × (1 + 2362/u), where u is in mm.
+**Formula applied:** B = 2.15 × (1 + 2338/u), where u is in mm.
 
 ---
 
@@ -141,20 +141,20 @@ Minimum resolvable feature at distance D = D / 3438
 | 1 m | 0.29mm | 0.29mm | c < d — **never sharp at this CoC** |
 | 3 m | 0.87mm | 0.87mm | c < d — **never sharp at this CoC** |
 | 5 m | 1.45mm | 1.45mm | c < d — **never sharp at this CoC** |
-| 8 m | 2.33mm | 2.33mm | u_near = 2.17×2362/(2.33−2.17) = **31.9 m** |
-| 10 m | 2.91mm | 2.91mm | u_near = 2.17×2362/(2.91−2.17) = **6.9 m** |
-| 15 m | 4.37mm | 4.37mm | u_near = 2.17×2362/(4.37−2.17) = **2.3 m** |
-| 20 m | 5.82mm | 5.82mm | u_near = 2.17×2362/(5.82−2.17) = **1.4 m** |
+| 8 m | 2.33mm | 2.33mm | u_near = 2.15×2338/(2.33−2.15) = **27.9 m** |
+| 10 m | 2.91mm | 2.91mm | u_near = 2.15×2338/(2.91−2.15) = **6.6 m** |
+| 15 m | 4.37mm | 4.37mm | u_near = 2.15×2338/(4.37−2.15) = **2.3 m** |
+| 20 m | 5.82mm | 5.82mm | u_near = 2.15×2338/(5.82−2.15) = **1.4 m** |
 
-**Reading this table:** A viewer standing 10 meters from the finished 19-foot print can resolve features down to 2.91mm on the print surface. Since our minimum blur is 2.17mm (at ∞), subjects must be at least 6.9 meters from the camera for their image to be indistinguishable from infinity by this viewer. Subjects closer than 6.9 meters appear measurably softer.
+**Reading this table:** A viewer standing 10 meters from the finished 19-foot print can resolve features down to 2.91mm on the print surface. Since our minimum blur is 2.15mm (at ∞), subjects must be at least 6.6 meters from the camera for their image to be indistinguishable from infinity by this viewer. Subjects closer than 6.6 meters appear measurably softer.
 
 ### The Practical Rule of Thumb
 
 A commonly cited rule for pinhole cameras is: **subjects closer than 3–10× the focal length show noticeable softness.**
 
-For our focal length of <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm:
-- **3× f = 7.1 m (23 ft)** — softness starts to become apparent
-- **10× f = 23.6 m (77 ft)** — essentially indistinguishable from infinity
+For our focal length of <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm:
+- **3× f = 7.0 m (23 ft)** — softness starts to become apparent
+- **10× f = 23.4 m (77 ft)** — essentially indistinguishable from infinity
 
 **Source:** Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/)
 
@@ -164,10 +164,10 @@ For our focal length of <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:fo
 |------|---------------|-----------|
 | Zone 1 | 0 – 2 m | Severe blur; soft, impressionistic |
 | Zone 2 | 2 – 7 m | Noticeable softness; painterly quality |
-| Zone 3 | 7 – 24 m | Slight softness; detail present |
-| Zone 4 | 24 m – ∞ | **Effectively sharp**; blur within visual noise of the emulsion |
+| Zone 3 | 7 – 23 m | Slight softness; detail present |
+| Zone 4 | 23 m – ∞ | **Effectively sharp**; blur within visual noise of the emulsion |
 
-> **For this project:** Any subject more than ~24 meters from the camera can be considered "in focus." At the scale of landscape or architectural photography — the natural subject matter for a fixed outdoor camera — virtually everything of interest (buildings, horizons, skylines) falls into Zone 4. The "infinite depth of field" characterization is valid for the vast majority of practical use cases.
+> **For this project:** Any subject more than ~23 meters from the camera can be considered "in focus." At the scale of landscape or architectural photography — the natural subject matter for a fixed outdoor camera — virtually everything of interest (buildings, horizons, skylines) falls into Zone 4. The "infinite depth of field" characterization is valid for the vast majority of practical use cases.
 
 ---
 
@@ -183,23 +183,23 @@ M = f / u
 
 **Where:**
 - `M` = lateral magnification (dimensionless)
-- `f` = focal length = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm
+- `f` = focal length = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm
 - `u` = subject distance from pinhole (mm)
 
 The image is **inverted** (upside down and mirror-reversed). The magnitude |M| gives the size ratio.
 
 | Subject Distance (u) | Magnification (M) | Image / Subject Relationship |
 |---------------------|-------------------|-----------------------------|
-| 0.5 m | **4.72×** | Image is 4.72× larger than subject |
-| 1.0 m | **2.36×** | Image is 2.36× larger |
-| **2.36 m (= 1×f)** | **1.00×** | **1:1 — image equals subject size** |
-| 3.0 m | 0.787× | Image is 79% of subject size |
-| 5.0 m | **0.472×** | Image is 47% of subject size |
-| 7.75 m (= focal length in ft) | 0.305× | — |
-| 10.0 m | **0.236×** | Image is 24% of subject size |
+| 0.5 m | **4.68×** | Image is 4.68× larger than subject |
+| 1.0 m | **2.34×** | Image is 2.34× larger |
+| **2.34 m (= 1×f)** | **1.00×** | **1:1 — image equals subject size** |
+| 3.0 m | 0.779× | Image is 78% of subject size |
+| 5.0 m | **0.468×** | Image is 47% of subject size |
+| 7.75 m | 0.302× | — |
+| 10.0 m | **0.234×** | Image is 23% of subject size |
 | 20.0 m | 0.118× | Image is 12% of subject size |
 | 50.0 m | 0.047× | Image is 4.7% of subject size |
-| 100.0 m | 0.024× | Image is 2.4% of subject size |
+| 100.0 m | 0.023× | Image is 2.3% of subject size |
 
 ### What Magnification Means for Subject Framing
 
@@ -212,26 +212,26 @@ Scene height captured = image height × (u / f)
 
 | Subject Distance | Scene Width in Frame | Scene Height in Frame |
 |-----------------|---------------------|----------------------|
-| 2 m | 5.0 m (16 ft) | 2.0 m (6.6 ft) |
-| 5 m | 12.5 m (41 ft) | 5.1 m (16.7 ft) |
-| 10 m | 24.9 m (82 ft) | 10.1 m (33 ft) |
-| 20 m | 49.9 m (164 ft) | 20.2 m (66 ft) |
-| 50 m | 124.7 m (409 ft) | 50.6 m (166 ft) |
-| 100 m | 249.4 m (818 ft) | 101.1 m (331 ft) |
+| 2 m | 5.0 m (17 ft) | 1.8 m (5.9 ft) |
+| 5 m | 12.6 m (41 ft) | 4.5 m (14.7 ft) |
+| 10 m | 25.2 m (83 ft) | 9.0 m (29 ft) |
+| 20 m | 50.4 m (165 ft) | 17.9 m (59 ft) |
+| 50 m | 126.1 m (414 ft) | 44.8 m (147 ft) |
+| 100 m | 252.1 m (827 ft) | 89.6 m (294 ft) |
 
 **Example:** A building 15 meters tall at 50 meters from the camera:
-- Image height = 15,000mm × (2362/50000) = 15,000 × 0.0472 = **708mm (2.3 ft)** on the image plane
-- This building fills 708/2094 = **34% of the image height**
+- Image height = 15,000mm × (2338/50000) = 15,000 × 0.0468 = **701mm (2.3 ft)** on the image plane
+- This building fills 701/2094 = **33% of the image height**
 
 **Example:** A person 1.8 m tall at 5 meters:
-- Image height = 1,800mm × (2362/5000) = 1,800 × 0.4724 = **850mm (2.8 ft)**
-- Fills 850/2094 = **41% of the image height**
+- Image height = 1,800mm × (2338/5000) = 1,800 × 0.4675 = **842mm (2.8 ft)**
+- Fills 842/2094 = **40% of the image height**
 
 ### The 1:1 Point — Where Subjects Are Life-Size in the Image
 
-At u = f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (approximately **7 ft 9 in**), subjects project at exactly life-size onto the image plane. A person standing 7'9" from the outside of the container wall appears life-size on the opposite interior wall.
+At u = f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (approximately **7 ft 8 in**), subjects project at exactly life-size onto the image plane. A person standing 7'8" from the pinhole appears life-size on the opposite interior wall.
 
-This has creative implications: subjects between 0.5 m and 2.36 m from the camera project at **larger than life scale** on the image plane — they are magnified. Objects directly pressed against the outside of the container wall approach macro photography scales.
+This has creative implications: subjects between 0.5 m and 2.34 m from the camera project at **larger than life scale** on the image plane — they are magnified. Objects directly pressed against the outside of the container wall approach macro photography scales.
 
 ---
 
@@ -251,8 +251,8 @@ The pinhole is in the container wall. The subject is outside. The minimum physic
 
 The subject must be far enough that some identifiable image structure exists — not just a wash of light. Based on the blur table in Part 3:
 
-- At **2 m:** B = 4.7mm, M = 1.18×. A recognizable if soft image of a person or object forms.
-- At **1 m:** B = 7.3mm, M = 2.36×. Heavy softness; impressionistic but not unrecognizable.
+- At **2 m:** B = 4.7mm, M = 1.17×. A recognizable if soft image of a person or object forms.
+- At **1 m:** B = 7.2mm, M = 2.34×. Heavy softness; impressionistic but not unrecognizable.
 
 **Practical minimum for a recognizable image: ~1–2 m** from the pinhole.
 
@@ -263,8 +263,8 @@ This is the classical DoF near limit from Part 4. It depends on the viewing dist
 | Intended Viewing Distance | Max Acceptable CoC | Min Focal Distance |
 |--------------------------|-------------------|--------------------|
 | 5 m (casual gallery) | 1.45mm | c < d; **no minimum satisfies this** |
-| 8 m (large gallery) | 2.33mm | **31.9 m (105 ft)** |
-| 10 m (outdoor/billboard) | 2.91mm | **6.9 m (22.7 ft)** |
+| 8 m (large gallery) | 2.33mm | **27.9 m (92 ft)** |
+| 10 m (outdoor/billboard) | 2.91mm | **6.6 m (21.7 ft)** |
 | 15 m (across a plaza) | 4.37mm | **2.3 m (7.5 ft)** |
 
 **Reading this table:** If the final print is intended to be examined closely (5 m), no subject is ever "acceptably sharp" by lens-camera standards — the pinhole always produces a blur larger than what a close viewer can resolve. If the print hangs in a large outdoor space and viewers approach no closer than 15 m, subjects 2.3 m or farther from the camera are within the acceptable sharpness range.
@@ -277,37 +277,37 @@ For a person 1.8 m (71 inches) tall to fit within the 2,094mm image height:
 
 ```
 1,800 × M ≤ 2,094
-1,800 × (2362/u) ≤ 2,094
-u ≥ 1,800 × 2362 / 2094
-u ≥ 2030mm ≈ 2.03 m (6.7 ft)
+1,800 × (2338/u) ≤ 2,094
+u ≥ 1,800 × 2338 / 2094
+u ≥ 2010mm ≈ 2.01 m (6.6 ft)
 ```
 
 For a vehicle 4.5 m tall (truck/bus) to fit in frame:
 
 ```
-u ≥ 4,500 × 2362/2094 ≈ 5076mm ≈ 5.08 m (16.6 ft)
+u ≥ 4,500 × 2338/2094 ≈ 5024mm ≈ 5.02 m (16.5 ft)
 ```
 
 For a building 10 m tall to fit in frame:
 
 ```
-u ≥ 10,000 × 2362/2094 ≈ 11279mm ≈ 11.28 m (37.0 ft)
+u ≥ 10,000 × 2338/2094 ≈ 11165mm ≈ 11.17 m (36.6 ft)
 ```
 
 ---
 
 ## Part 7: Consolidated Minimum Focal Distance Table
 
-Combining all four definitions for Option B (20-ft container, f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, d = 2.17mm):
+Combining all four definitions for Option B (20-ft container, f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm, d = <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm):
 
 | Criterion | Minimum Distance | Notes |
 |-----------|-----------------|-------|
 | Physical (absolute) | ~50mm (2 in) | Subject touching exterior wall |
 | Recognizable image | **~1 m (3.3 ft)** | Heavily blurred but identifiable |
-| Person fits in frame (1.8 m tall) | **1.8 m (5.9 ft)** | Magnification ≤ image height |
-| Acceptable sharpness at 10 m viewing | **6.9 m (22.7 ft)** | B ≤ 2.91mm |
-| Acceptable sharpness at 8 m viewing | **31.9 m (104.7 ft)** | B ≤ 2.33mm |
-| Sharp by any standard (B ≤ 1.1d) | **~24 m (78 ft)** | B within 10% of minimum |
+| Person fits in frame (1.8 m tall) | **2.0 m (6.6 ft)** | Magnification ≤ image height |
+| Acceptable sharpness at 10 m viewing | **6.6 m (21.7 ft)** | B ≤ 2.91mm |
+| Acceptable sharpness at 8 m viewing | **27.9 m (91.5 ft)** | B ≤ 2.33mm |
+| Sharp by any standard (B ≤ 1.1d) | **~23 m (77 ft)** | B within 10% of minimum |
 
 **Recommended operating minimum:** For subjects intended to appear sharp in the final print (viewed from a normal gallery distance of 5–10 m), position the primary subject at **a minimum of 7–10 meters from the container wall** where the pinhole is located.
 
@@ -319,16 +319,16 @@ For deliberate soft/blurred foreground elements — a creative technique — sub
 
 The container width is the same for both 20-ft and 40-ft standard containers (7'9" = <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm). Therefore **Proposals 1, 2, and 4 all have identical depth of field, magnification, and minimum focal distance.** Only Proposal 3 (end-to-end, f = 12,013mm) differs.
 
-| Parameter | Proposals 1, 2, 4 (f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | Proposal 3 (f = 12,013mm) |
+| Parameter | Proposals 1, 2, 4 (f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm) | Proposal 3 (f = 12,013mm) |
 |-----------|----------------------------------|---------------------------|
-| Pinhole diameter | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | 4.87mm |
-| F-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | f/2467 |
-| Minimum blur (at ∞) | **2.17mm** | **4.87mm** |
-| 1:1 magnification distance | **2.36 m** | **12.0 m** |
-| Near DoF (c=3mm) | **6.2 m** | Not achievable (3 < 4.87) |
-| Near DoF (c=10mm) | **0.65 m** | **11.4 m** |
+| Pinhole diameter | <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm | 4.87mm |
+| F-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | f/2467 |
+| Minimum blur (at ∞) | **2.15mm** | **4.87mm** |
+| 1:1 magnification distance | **2.34 m** | **12.0 m** |
+| Near DoF (c=3mm) | **5.9 m** | Not achievable (3 < 4.87) |
+| Near DoF (c=10mm) | **0.64 m** | **11.4 m** |
 | Near DoF (c=6mm) | **1.3 m** | **51.8 m** |
-| Practical "all sharp" distance | **~24 m** | **~120 m** |
+| Practical "all sharp" distance | **~23 m** | **~120 m** |
 
 **Key takeaway on Proposal 3 (end-to-end):** With a 4.87mm minimum blur, subjects must be over 120 meters from the camera for the blur to drop within 10% of its minimum value. The depth of field is effectively the middle distance and beyond. Close and mid-range subjects appear dramatically softer than in Proposals 1/2.
 
@@ -337,7 +337,7 @@ The container width is the same for both 20-ft and 40-ft standard containers (7'
 ## Part 9: Visual Summary
 
 ```
-OPTION B — DEPTH OF FIELD ZONES (f = 2362mm, d = 2.17mm)
+OPTION B — DEPTH OF FIELD ZONES (f = 2338mm, d = 2.15mm)
 
 Distance from pinhole:
 │
@@ -345,22 +345,22 @@ Distance from pinhole:
 │         Blur: extreme; Magnification: extreme
 │
 1 m ─── Recognizable image minimum
-│         Blur: 7.3mm; Magnification: 2.4×
+│         Blur: 7.2mm; Magnification: 2.3×
 │
-2.36 m ─ 1:1 MAGNIFICATION (life-size image)
-│         Blur: 4.7mm; Magnification: 1.0×
+2.34 m ─ 1:1 MAGNIFICATION (life-size image)
+│         Blur: 4.3mm; Magnification: 1.0×
 │
-5 m ───  Person fits in frame (1.8m tall person = 36% frame height)
+5 m ───  Person fits in frame (1.8m tall person = 40% frame height)
 │         Blur: 3.2mm; Magnification: 0.47×
 │
 7 m ───  MINIMUM FOCAL DISTANCE (10m viewing, 2.91mm CoC)
-│         Blur: 2.9mm; Magnification: 0.34×
+│         Blur: 2.9mm; Magnification: 0.33×
 │
-24 m ──  "EFFECTIVELY SHARP" BEGINS
+23 m ──  "EFFECTIVELY SHARP" BEGINS
 │         Blur: 2.4mm (10% above minimum)
 │
 ∞  ────  Maximum sharpness
-          Blur: 2.17mm (minimum possible)
+          Blur: 2.15mm (minimum possible)
 ```
 
 ---
@@ -369,9 +369,9 @@ Distance from pinhole:
 
 | Source | Application |
 |--------|-------------|
-| Rayleigh, J.W.S., *Philosophical Magazine* Ser. 5, Vol. 31, 1891. [Taylor & Francis](https://www.tandfonline.com/loi/tphm18) | Pinhole diameter formula; basis for d = 2.17mm |
+| Rayleigh, J.W.S., *Philosophical Magazine* Ser. 5, Vol. 31, 1891. [Taylor & Francis](https://www.tandfonline.com/loi/tphm18) | Pinhole diameter formula; basis for d = 2.15mm |
 | Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6. [Library catalog](https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics) | Geometric derivation of blur circle from similar triangles |
 | Young, M., *Applied Optics*, Vol. 10, No. 12, 1971. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763) | Depth of field behavior in pinhole cameras |
 | Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/) | 3–10× focal length rule of thumb for DoF |
 | [Photrio.com — CoC and hyperfocal distance for pinhole cameras](https://www.photrio.com/forum/threads/circle-of-confusion-and-hyperfocal-distance-of-a-pinhole-camera.15715/) | Practical CoC discussion; minimum focus distance concepts |
-| [ISO 668:2020](https://chs-containergroup.com/us/shipping-container-dimensions/) | Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |
+| [ISO 668:2020](https://chs-containergroup.com/us/shipping-container-dimensions/) | Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm) |

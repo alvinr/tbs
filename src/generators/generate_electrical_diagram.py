@@ -25,6 +25,7 @@ from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_notes_p
 from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
                               draw_wr_duplex_outlet, draw_estop_22mm)
 from tbs_constants import PUMP_YD_SPAN, PUMP_DRAW_W, PUMP_DRAW_A, SAFELIGHT_W
+from tbs_constants import PH_FNO  # noqa: E402
 from tbs_constants import DIAGRAM_DPI, FONT, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_WALL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -959,7 +960,7 @@ def draw_sheet2():
     notes = [
         "DRAWING NOTES:",
         f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentered on new film plane). "
-        f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2262mm. f/1088.",
+        f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2262mm. f/{PH_FNO}.",
         f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap), ",
         f"Right X={FP_X_R}\u20135893mm (IBCs only). Evap cooler external via "
         f"\u00d8{EVAP_DUCT_D}mm duct at X={EVAP_DUCT_X}mm. Amber cone \u2014 keep entirely clear.",

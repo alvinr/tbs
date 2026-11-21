@@ -94,10 +94,10 @@ TOP VIEW:
 Container doors (for loading) are on the SHORT ENDS — completely separate from the optical path.
 ```
 
-- Focal length = container interior width (7'9" = <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm for both 20 ft and 40 ft)
+- Focal length ≈ container interior width (7'9" = <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm for both 20 ft and 40 ft); the pinhole sits 24.5mm inboard of the wall, so f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm
 - Image plane = entire interior of one long wall
 - Image width = container interior length (~19'4" for 20 ft; ~39'5" for 40 ft)
-- Field of view = 102° horizontal for 20 ft container; 137° for 40 ft container
+- Field of view = 103° horizontal for 20 ft container; 138° for 40 ft container
 - Result: large panoramic image, practical exposure times
 
 **Orientation B is the approach used in this document.** It produces images in the 20'+ range, uses the container length as image width, and keeps the access doors operationally separate from the camera.
@@ -122,7 +122,7 @@ right — leaving the central span (the active film-plane width) as the clear op
 | Pinhole wall | Full-length wall: electrical panel, battery bank, evap duct penetration (cooler external) |
 | Optical zone | Clear — no equipment; optical cone from pinhole traverses this central span unobstructed |
 | Cargo door end | Hinged panel with integrated revolving light-trap drum |
-| Pinhole aperture | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |
+| Pinhole aperture | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |
 | Film plane | Muslin sensitized surface, spanning the active 4,389mm × 2,094mm (X=260–4,649mm) |
 
 See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
@@ -139,10 +139,10 @@ and §13 for the optical line-of-sight clearance analysis.
 | Container | 20 ft standard | 40 ft standard | 40 ft standard | Two 20 ft |
 | Orientation | Side-to-side | Side-to-side | End-to-end | Side-to-side + darkroom |
 | Image plane | 19'4" × 7'10" | Up to 39'5" × 7'10" | 7'9" × 7'10" | 19'4" × 7'10" |
-| Focal length | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | 39'5" (12,013mm) | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |
-| Optimal pinhole | 2.17mm | 2.17mm | 4.87mm | 2.17mm |
-| F-number | f/1088 | f/1088 | f/2467 | f/1088 |
-| Horizontal FOV | 102° | 102°–137° | 11° | 102° |
+| Focal length | 7'8" (<!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm) | 7'8" (<!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm) | 39'5" (12,013mm) | 7'8" (<!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm) |
+| Optimal pinhole | <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm | 4.87mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm |
+| F-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | f/2467 | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> |
+| Horizontal FOV | 103° | 103°–138° | 11° | 103° |
 | RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
 | Cyanotype on muslin exp. (Ware New Cyanotype, no correction) | **~30–45 min** | **~30–45 min** | ~2.5–4 hr | **~30–45 min** |
 | Transport permit | None | None | None | None (2 loads) |
@@ -180,13 +180,13 @@ and §13 for the optical line-of-sight clearance analysis.
 | Parameter | Value | Formula |
 |-----------|-------|---------|
 | Image plane dimensions | 19 ft 4 in × 7 ft 10 in (5,893mm × 2,388mm) | Interior long wall |
-| Focal length | 7 ft 9 in = **<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm** | Interior width |
-| Rayleigh optimal pinhole | **2.17mm** | d = 1.9 × √(2362 × 0.00055) |
-| Petzval optimal pinhole | 1.78mm | d = 1.56 × √(2362 × 0.00055) |
+| Focal length | 7 ft 8 in = **<!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm** | Interior width less the 24.5mm pinhole inset |
+| Rayleigh optimal pinhole | **<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm** | d = 1.9 × √(2338 × 0.00055) |
+| Petzval optimal pinhole | 1.77mm | d = 1.56 × √(2338 × 0.00055) |
 | Design pinhole range | **1.8–2.2mm** | Sweet spot |
-| F-number (at 2.17mm) | **f/1088** | f/d |
-| Horizontal field of view | **102°** | 2 × arctan(19.3 / (2 × 7.75)) |
-| Vertical field of view | **53°** | 2 × arctan(7.83 / (2 × 7.75)) |
+| F-number (at <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm) | **f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->** | f/d |
+| Horizontal field of view | **103°** | 2 × arctan(19.3 / (2 × 7.67)) |
+| Vertical field of view | **54°** | 2 × arctan(7.83 / (2 × 7.67)) |
 | Resolution (lp/mm) | **0.69 lp/mm** | d / (2 × 1.22 × λ × f) |
 
 #### Exposure Times (Bright Sunlight, Sunny-16 conditions)
@@ -197,7 +197,7 @@ and §13 for the optical line-of-sight clearance analysis.
 | Silver gelatin RC paper | ~6 | **12.8 min** | **~43 min** |
 | Cyanotype on muslin (Ware New Cyanotype) — **selected process** | ~2–4 | **~30–45 min** | no reciprocity failure (iron process) |
 
-> Reciprocity corrections for film and silver-gelatin paper per Schwarzschild law, p = 0.85; actual correction must be verified empirically with the specific lot used. **Cyanotype — the selected TBS-001 process — is iron-based and exhibits no Schwarzschild reciprocity failure, so its ~30–45 min baseline (Mike Ware New Cyanotype on muslin, f/1088, full sun) needs no correction** (see [Pinhole Optics Report](pinhole-optics-report.md)). Sources: Stroebel et al., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009; Schwarzschild, K., *The Astrophysical Journal*, Vol. 11, 1900.
+> Reciprocity corrections for film and silver-gelatin paper per Schwarzschild law, p = 0.85; actual correction must be verified empirically with the specific lot used. **Cyanotype — the selected TBS-001 process — is iron-based and exhibits no Schwarzschild reciprocity failure, so its ~30–45 min baseline (Mike Ware New Cyanotype on muslin, f/1087, full sun) needs no correction** (see [Pinhole Optics Report](pinhole-optics-report.md)). Sources: Stroebel et al., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009; Schwarzschild, K., *The Astrophysical Journal*, Vol. 11, 1900.
 
 #### Transport Compliance
 
@@ -244,14 +244,14 @@ The 40-foot container uses the same width (same focal length, same f-number, sam
 |-----------|-------|
 | Image plane dimensions (full) | 39 ft 5 in × 7 ft 10 in |
 | Image plane (masked to target) | **20 ft × 7 ft** (mask the rest) |
-| Focal length | **<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm** (same interior width as 20 ft container) |
-| Rayleigh optimal pinhole | **<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm** (identical to Proposal 1) |
-| F-number | **f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->** (identical) |
-| Horizontal FOV (full 39' width) | **137°** — extreme panoramic |
-| Horizontal FOV (masked to 20') | **102°** — same as Proposal 1 |
+| Focal length | **<!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm** (same interior width as 20 ft container) |
+| Rayleigh optimal pinhole | **<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm** (identical to Proposal 1) |
+| F-number | **f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->** (identical) |
+| Horizontal FOV (full 39' width) | **138°** — extreme panoramic |
+| Horizontal FOV (masked to 20') | **103°** — same as Proposal 1 |
 | Exposure times | **Identical to Proposal 1** |
 
-> **Creative note on 137° FOV:** At full 39' width, the horizontal angle of view is 137°. Images at this angle exhibit barrel distortion at the edges — straight lines curve. This is a physical property of flat-plane projection at extreme angles, not a defect. Some photographers prize this quality. At 102° (masked to 20'), distortion is present but moderate. At 70° (masked to ~14' width), the image appears visually "normal."
+> **Creative note on 138° FOV:** At full 39' width, the horizontal angle of view is 138°. Images at this angle exhibit barrel distortion at the edges — straight lines curve. This is a physical property of flat-plane projection at extreme angles, not a defect. Some photographers prize this quality. At 102° (masked to 20'), distortion is present but moderate. At 70° (masked to ~14' width), the image appears visually "normal."
 
 #### Transport Compliance
 
@@ -278,7 +278,7 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 | Corrected paper exposure (p=0.85) | **~4 hr 52 min** |
 | Cyanotype exposure (Ware New Cyanotype, no correction) | **~2.5–4 hr** |
 
-**Verdict:** At f/2467 with a ~5-hour corrected paper exposure — or a ~2.5–4 hr cyanotype exposure (the selected process, scaled from the f/1088 baseline; no reciprocity correction, as it is iron-based) — this orientation is not practical in a single outdoor session. It becomes viable with digital capture (CMOS sensor, which has no reciprocity failure) or with very fast emulsions. Noted here for completeness.
+**Verdict:** At f/2467 with a ~5-hour corrected paper exposure — or a ~2.5–4 hr cyanotype exposure (the selected process, scaled from the f/1087 baseline; no reciprocity correction, as it is iron-based) — this orientation is not practical in a single outdoor session. It becomes viable with digital capture (CMOS sensor, which has no reciprocity failure) or with very fast emulsions. Noted here for completeness.
 
 ---
 
@@ -288,7 +288,7 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 
 Two 20-foot standard containers are positioned end-to-end or side-by-side on site:
 
-- **Container A (Camera):** Configured exactly as Proposal 1 — pinhole camera with <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm focal length and ~19' × 7.8' image plane.
+- **Container A (Camera):** Configured exactly as Proposal 1 — pinhole camera with <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm focal length and ~19' × 7.8' image plane.
 - **Container B (Darkroom):** Outfitted as a field darkroom for developing and fixing the large-format prints on-site. Equipped with processing trays/tanks, chemistry storage, ventilation, safelighting, and wash station with plumbed water.
 
 #### Advantages

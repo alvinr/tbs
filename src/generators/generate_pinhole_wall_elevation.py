@@ -22,6 +22,7 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes, dr
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
 from tbs_constants import DIAGRAM_DPI, FONT, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_FITTING, PUMP_YD_SPAN
+from tbs_constants import PH_D  # noqa: E402
 
 # ── Local constants (computed from tbs_constants) ────────────────────────────
 # Pipe colors for Blue circuit (only Blue supply remains on this wall)
@@ -354,7 +355,7 @@ draw_cl(ax, sx(PH_X), sz(PH_H), ph_r,
 ax.add_patch(plt.Circle((sx(PH_X), sz(PH_H)), ph_r,
              fill=True, facecolor=C_PINHOLE_EQ, edgecolor=C_OUT,
              linewidth=1.2, zorder=8))
-ax.text(sx(PH_X), sz(PH_H - 80), "PINHOLE\nØ2.17mm",
+ax.text(sx(PH_X), sz(PH_H - 80), f"PINHOLE\nØ{PH_D}mm",
         ha="center", va="top", fontsize=5, color=C_PINHOLE_EQ,
         zorder=10, **FONT)
 

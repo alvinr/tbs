@@ -447,7 +447,7 @@ def floor_plan():
         (C_PUMP,  "Equipment panel (pumps+filters, IBC corridor)"),
         (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm)"),
         (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
-        (C_OPT,       "Optical axis (2362mm focal length)"),
+        (C_OPT,       f"Optical axis ({PH_F:,.0f}mm focal length)"),
         (C_PINHOLE,   "Revolving light-trap drum"),
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
         ("#D0C8B8",   f"Perimeter walkway ({WALKWAY_W}mm, removable grated)"),

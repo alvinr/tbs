@@ -28,6 +28,7 @@ from matplotlib.patches import Rectangle, Circle, Arc, Ellipse, Polygon
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_PLATE_KEEPER_EDGE, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
+from tbs_constants import PH_D, PH_FNO  # noqa: E402
 from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_constants import FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN, FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N, SKATE_ROLLER_W, SKATE_AXLE_LEN, XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE, UJOINT_STUB_OD, DIBOND_T
@@ -216,7 +217,7 @@ def sheet1():
     ph_x = PH_X_C
     ax.add_patch(Circle((ph_x, 0), 60, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
-    ax.text(ph_x + 130, 75, f"PINHOLE  X={ph_x}mm  Ø2.17mm", color=PINHOLE, fontsize=7, **FONT)
+    ax.text(ph_x + 130, 75, f"PINHOLE  X={ph_x}mm  Ø{PH_D}mm", color=PINHOLE, fontsize=7, **FONT)
 
     # ── 4 RAILS — one at each corner (Option A: rigid plane, coordinated pairs) ──────────────────────────────
     # Left rails: at X=RAIL_X_L (ceiling = label TL/BL, floor = label TL/BL)
@@ -543,7 +544,7 @@ def sheet2():
     # Pinhole
     ax.add_patch(Circle((0, PH_Y), 38, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=12))
     ax.add_patch(Circle((0, PH_Y), 13, fc=BG, ec=WHITE, lw=0.8, zorder=13))
-    ax.text(+150, PH_Y, "PINHOLE\nØ2.17mm", color=PINHOLE,
+    ax.text(+150, PH_Y, f"PINHOLE\nØ{PH_D}mm", color=PINHOLE,
             fontsize=7, ha="center", va="center", **FONT)
 
     # Focal-length arrow
@@ -2239,7 +2240,7 @@ def sheet13():
         "4. RIGHT rails (BR/TR, X=C_WID side) are permanently flanged to their wall seats (Sheet 18). LEFT rails "
         "(BL/TL) are transport drop-ins — the near length lifts out at the cut (Sheet 4).",
         "5. 6061-T6 yield (~276 MPa) exceeds annealed 304 (~215 MPa); ~1mm sag over the 2.36m span is optically "
-        "irrelevant at f/1088 and flatness is carried by the ACM backing.",
+        f"irrelevant at f/{PH_FNO} and flatness is carried by the ACM backing.",
     ], 10, 98, 3.6, fs=6.2, title_fs=6.8, color=DIM, width=55, wrap=140, font=FONT)
 
     ax_tb = fig.add_axes([0.06, 0.012, 0.88, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")

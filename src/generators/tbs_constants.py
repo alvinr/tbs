@@ -131,9 +131,7 @@ CLAMP_N_TOTAL = CLAMP_N_HORIZ + 2 * CLAMP_N_VERT   # top edge + 2 sides; bottom 
 # ── Pinhole (recenterd on new film plane) ─────────────────────────────────────
 PH_X   = FP_X_L + FP_W // 2   # = 2454mm  [rev6: was 2637]
 PH_H   = 1194                  # height (mm) [unchanged]
-PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [unchanged]
-PH_F   = C_WID                 # focal length = container width [unchanged]
-PH_FNO = round(PH_F / PH_D)   # f/1088 [unchanged]
+# PH_F / PH_D / PH_FNO are derived from the disc-holder stack below (the pinhole sits inboard of the wall).
 
 # (The standard Ø600 pinhole wall frame + interchangeable pinhole/lens plate — PLATE_OD/PLATE_THK/
 # WALL_FRAME_T/PINHOLE_DISC_* — is retired: the Ø80-carrier PINHOLE DISC HOLDER (PDH_* above) now
@@ -285,14 +283,26 @@ PDH_RING_T        = 6     # ring thickness (stiffened for the lens clamp)
 PDH_TS_N          = 4     # 4 thumb screws hold the ring down
 PDH_TS_PCD        = 100   # thumb-screw bolt circle — taps 9mm clear of the Ø82 counterbore wall (≥1.5×M6 edge distance)
 PDH_TS_D          = 6     # M6 knurled thumb screws (clamp force for a lens board)
-PDH_PINHOLE_D     = 2.17  # standard pinhole Ø (Rayleigh optimum at the 2362mm focal length, f/1088)
-PDH_CARRIER_BORE  = 6     # Ø light bore THRU the 6061 carrier — the SS-302 pinhole shim bonds over it; sized well clear of the Ø2.17 pinhole cone over the 5mm carrier, inside the shim footprint
+# Pinhole carrier light bore: the SS-302 shim bonds over the bore on the carrier's CAMERA face; the bore is
+# a countersink opening toward the scene, so the converging cone from the film-plane corners is never
+# clipped by the 5mm carrier (a straight Ø6 bore cut off everything beyond ~21° off-axis).
+PDH_CARRIER_BORE  = 3     # Ø bore at the shim (camera) face — > the pinhole, inside the shim footprint
+PDH_CARRIER_CSK   = 100   # countersink included angle (°) — 50° half-angle > the ~47° film-corner ray at nominal depth
+PDH_CARRIER_CSK_D = round(PDH_CARRIER_BORE + 2 * PDH_DISC_T * math.tan(math.radians(PDH_CARRIER_CSK / 2)), 1)  # = 14.9 at the scene face
 # Wall-frame adapter — the flat steel plate welded over the corrugated end wall; the Ø180 front plate
 # bolts to it (4× M6 @ PDH_MOUNT_BC). It presents the machined flat datum; every alignment starts here.
 PDH_ADAPT_OD      = 240   # adapter plate Ø (S275 steel, welded to the wall crests)
 PDH_ADAPT_T       = 6     # adapter steel thickness
 PDH_ADAPT_APT     = 120   # adapter aperture Ø — clears the Ø110 taper bore
 PDH_WALL_APT      = 150   # aperture cut through the corrugated container wall (> the adapter aperture)
+
+# Pinhole optics — the pinhole sits in the shim on the carrier's camera face, inboard of the wall's interior
+# face by the adapter + plate (to the seat floor) + washer + carrier stack.
+PH_INBOARD = PDH_ADAPT_T + PDH_PLATE_T - PDH_DISC_SEAT_DEP + PDH_WASHER_T + PDH_DISC_T   # = 24.5mm
+PH_F   = C_WID - PH_INBOARD                       # focal length = pinhole → far (film) wall = 2337.5mm
+PH_D   = round(1.9 * math.sqrt(PH_F * 550e-6), 2) # pinhole Ø (mm) — Rayleigh d = 1.9√(fλ), λ=550nm → 2.15
+PH_FNO = round(PH_F / PH_D)                       # f/1087
+PDH_PINHOLE_D = PH_D                              # standard carrier pinhole Ø
 # Copal/Compur lens-board hole diameters (drilled in the Ø80 carrier for a large-format shutter)
 PDH_LENS_COPAL0   = 34.6  # Copal / Compur 0 board hole
 PDH_LENS_COPAL1   = 41.6  # Copal / Compur 1 board hole
@@ -311,12 +321,12 @@ ZONE_R_START = FP_X_R    # right zone left boundary X  (= 4649mm) [was 4019]
 
 # ── Optical cone helper ───────────────────────────────────────────────────────
 def cone_left(y):
-    """X coordinate of cone left boundary at depth y from pinhole wall."""
-    return PH_X - (PH_X - FP_X_L) * y / FP_Y
+    """X coordinate of cone left boundary at depth y from the pinhole wall (apex at the pinhole, PH_INBOARD)."""
+    return PH_X - (PH_X - FP_X_L) * max(y - PH_INBOARD, 0) / (FP_Y - PH_INBOARD)
 
 def cone_right(y):
-    """X coordinate of cone right boundary at depth y from pinhole wall."""
-    return PH_X + (FP_X_R - PH_X) * y / FP_Y
+    """X coordinate of cone right boundary at depth y from the pinhole wall (apex at the pinhole, PH_INBOARD)."""
+    return PH_X + (FP_X_R - PH_X) * max(y - PH_INBOARD, 0) / (FP_Y - PH_INBOARD)
 
 # ── Hinged panel — stepped profile (rev 8: housed revolving-door light lock) ──
 # rev 8.1: drum, housing, and corner core plates switched from steel to 3mm

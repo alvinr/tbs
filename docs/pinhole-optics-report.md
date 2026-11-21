@@ -146,7 +146,7 @@ Using ISO 100 film at f/16, 1/100 sec as the reference:
 t_pinhole (seconds) = (1/100) × (f-number / 16)²
 ```
 
-**Worked example — f/1000 (an indicative pinhole aperture, close to TBS-001's f/1088), ISO 100 film, bright sun:**
+**Worked example — f/1000 (an indicative pinhole aperture, close to TBS-001's f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->), ISO 100 film, bright sun:**
 
 ```
 t_film = (1/100) × (1000 / 16)² = (1/100) × 62.5² = (1/100) × 3,906 ≈ 39 seconds
@@ -186,7 +186,7 @@ t_cyanotype = t_film × (100 / ISO_cyanotype)   [ISO 2–4 → ×25 to ×50; no 
 t_cyanotype = 39 sec × (25 to 50) ≈ 980–1,950 sec ≈ 16 to 33 minutes   (no reciprocity correction)
 ```
 
-In the field the baseline runs **~30–45 minutes** in full sun (TBS-001 at f/1088), the longer end reflecting real UV and sky conditions below ideal Sunny-16. Because there is no reciprocity penalty to amplify it, this real exposure stays comparable to silver-gelatin paper despite paper's higher nominal ISO — paper's ~2.3× reciprocity multiplier erases its speed advantage. This is the property that makes the giant-camera exposure practical (see the TBS-001 as-built summary in Part 11).
+In the field the baseline runs **~30–45 minutes** in full sun (TBS-001 at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->), the longer end reflecting real UV and sky conditions below ideal Sunny-16. Because there is no reciprocity penalty to amplify it, this real exposure stays comparable to silver-gelatin paper despite paper's higher nominal ISO — paper's ~2.3× reciprocity multiplier erases its speed advantage. This is the property that makes the giant-camera exposure practical (see the TBS-001 as-built summary in Part 11).
 
 **Source:** Ware, M., *Cyanotype: the History, Science and Art of Photographic Printing in Prussian Blue*, 1999 (New Cyanotype process); see Part 12.
 
@@ -475,13 +475,13 @@ The summary above sizes a generic 20' × 7' camera from the image *diagonal*. TB
 
 | Parameter | TBS-001 value | Formula / Source |
 |-----------|--------------|-----------------|
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | Container interior width (Orientation B) |
-| Optimal pinhole (Rayleigh) | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | d = 1.9√(fλ); Rayleigh (1891) |
-| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | f / d |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm | Container interior width (Orientation B), less the 24.5mm the pinhole sits inboard of the wall |
+| Optimal pinhole (Rayleigh) | <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm | d = 1.9√(fλ); Rayleigh (1891) |
+| f-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | f / d |
 | Image plane (full interior long wall) | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm | One long wall |
 | Active film zone (shadow-free) | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~99 sq ft) | Within the long wall |
-| Field of view (active film zone) | ~86° H × ~48° V | 2·arctan(4,389 / (2 × 2,362)) · 2·arctan(2,094 / (2 × 2,362)) |
-| Resolution at f/1088 | 0.69 lp/mm | d / (2 × 1.22 × λ × f) |
+| Field of view (active film zone) | ~86° H × ~48° V | 2·arctan(4,389 / (2 × 2,338)) · 2·arctan(2,094 / (2 × 2,338)) |
+| Resolution at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | 0.69 lp/mm | d / (2 × 1.22 × λ × f) |
 | Baseline exposure (cyanotype) | ~30–45 min | Ware New Cyanotype on muslin, full sun; iron-based — no Schwarzschild correction (Part 6) |
 
 ---

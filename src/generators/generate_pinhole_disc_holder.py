@@ -23,7 +23,7 @@ from tbs_constants import (
     DIAGRAMS_DIR, DIAGRAM_DPI,
     PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_TAPER_BORE, PDH_DISC_OD, PDH_DISC_T,
     PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T,
-    PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D, PDH_CARRIER_BORE,
+    PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D, PDH_CARRIER_CSK, PDH_CARRIER_CSK_D, PDH_CARRIER_BORE,
     PDH_MOUNT_BC as BOLT_BC, PDH_MOUNT_D as BOLT_D, PDH_MOUNT_N as BOLT_N,
     PDH_SEAL_D as SEAL_D, PDH_MOUNT_BOLT_L, PDH_SEAL_CS, PDH_SEAL_GROOVE_W, PDH_SEAL_GROOVE_DEP,
     PDH_ADAPT_OD, PDH_ADAPT_T, PDH_ADAPT_APT, PDH_WALL_APT,
@@ -98,7 +98,7 @@ def draw_sheet1():
     draw_dim_v(axf, cx + r + 18, cy - r, cy + r, f'Ø{PDH_PLATE_OD}', right=True, fs=5, offset=12)
     leader(axf, cx + s(PDH_TS_PCD / 2) * 0.71, cy + s(PDH_TS_PCD / 2) * 0.71, cx + r - 100, cy + r * 1.1,
            f'{PDH_TS_N}× M{PDH_TS_D} KNURLED\nTHUMB SCREW @ Ø{PDH_TS_PCD}', fs=4.6, color=C_DIM, arrow_style='->', ha='left')
-    leader(axf, cx - s(PDH_RING_ID / 2) + 1, cy + 2, cx - r - 6, cy + 95, 'Ø2.17 PINHOLE\n(in the disc)', fs=4.6, color=C_DIM, arrow_style='->', ha='right')
+    leader(axf, cx - s(PDH_RING_ID / 2) + 1, cy + 2, cx - r - 6, cy + 95, f'Ø{PDH_PINHOLE_D} PINHOLE\n(in the disc)', fs=4.6, color=C_DIM, arrow_style='->', ha='right')
     axf.text(cx, cy - r - 182, 'FRONT VIEW — SCENE SIDE (2:1)\nSection through the mount is on Sheet 3', ha='center', fontsize=6.5, style='italic', color='#333')
 
     tb = fig.add_axes([0.04, 0.02, 0.92, 0.10]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)
@@ -175,15 +175,16 @@ def draw_sheet2():
     axd.set_xlim(0, 220); axd.set_ylim(0, 300)
     dx, dy = 110, 175
     draw_circle(axd, dx, dy, s3(PDH_DISC_OD / 2), lw=LW_THICK, color=C_OUT, fill=True, fc='#EDEDED')
-    draw_circle(axd, dx, dy, s3(PDH_CARRIER_BORE / 2), lw=LW_MED, color=C_OUT)   # Ø6 light bore THRU — shim bonds over it
+    draw_circle(axd, dx, dy, s3(PDH_CARRIER_CSK_D / 2), lw=LW_MED, color=C_OUT)   # countersink rim (scene face)
+    draw_circle(axd, dx, dy, s3(PDH_CARRIER_BORE / 2), lw=LW_THIN, color=C_OUT)   # bore at the shim (camera) face
     draw_circle(axd, dx, dy, 4.0, lw=0.8, color=C_OUT, fill=True, fc=C_PIN)   # pinhole (enlarged to read)
     draw_cl(axd, dx, dy, s3(PDH_DISC_OD / 2) * 1.15)
     draw_dim_v(axd, dx + s3(PDH_DISC_OD / 2) + 14, dy - s3(PDH_DISC_OD / 2), dy + s3(PDH_DISC_OD / 2),
                f'Ø{PDH_DISC_OD}', right=True, fs=5, offset=12)
-    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 shim over the bore)', fs=5, color=C_DIM, arrow_style='->', ha='left')
-    leader(axd, dx - s3(PDH_CARRIER_BORE / 2), dy, dx - s3(PDH_DISC_OD * 0.42), dy + 96, f'Ø{PDH_CARRIER_BORE} LIGHT BORE THRU\n(carrier; shim bonds over)', fs=5, color=C_DIM, arrow_style='->', ha='left')
+    leader(axd, dx, dy, dx + s3(PDH_DISC_OD * 0.4), dy - 120, f'Ø{PDH_PINHOLE_D} PINHOLE\n(SS-302 shim, camera face)', fs=5, color=C_DIM, arrow_style='->', ha='left')
+    leader(axd, dx - s3(PDH_CARRIER_CSK_D / 2), dy, dx - s3(PDH_DISC_OD * 0.42), dy + 96, f'Ø{PDH_CARRIER_BORE} BORE · {PDH_CARRIER_CSK}° CSK TO Ø{PDH_CARRIER_CSK_D}\n(scene face; shim bonds on the camera face)', fs=5, color=C_DIM, arrow_style='->', ha='left')
     axd.text(dx, dy - s3(PDH_DISC_OD / 2) - 70,
-             f'PANEL C — ICP-02 CARRIER (2:1) · 6061-T6 Ø{PDH_DISC_OD} × {PDH_DISC_T:.0f}mm\nInterchangeable: Ø2.17 (std) · Ø1.5 (sharper) · Ø3.0 (brighter) · or a Copal/Compur lens board (Sheet 4)',
+             f'PANEL C — ICP-02 CARRIER (2:1) · 6061-T6 Ø{PDH_DISC_OD} × {PDH_DISC_T:.0f}mm\nInterchangeable: Ø{PDH_PINHOLE_D} (std) · Ø1.5 (sharper) · Ø3.0 (brighter) · or a Copal/Compur lens board (Sheet 4)',
              ha='center', fontsize=5, style='italic', color='#333')
 
     tb = fig.add_axes([0.03, 0.02, 0.94, 0.13]); tb.axis('off'); tb.set_xlim(0, 1); tb.set_ylim(0, 1)

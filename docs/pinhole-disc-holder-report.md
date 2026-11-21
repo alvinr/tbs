@@ -53,11 +53,11 @@ Every carrier is a **Ø80 × 5mm** disc (fills the seat), clamped by the retaini
 
 | Board | Aperture | Effect |
 |-------|----------|--------|
-| **Standard pinhole** | Ø2.17mm | Rayleigh optimum for the 2,362mm focal length — sharpest pinhole image (f/1088) |
+| **Standard pinhole** | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm | Rayleigh optimum for the <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm focal length — sharpest pinhole image (f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->) |
 | **Sharper pinhole** | Ø1.5mm | Finer detail, ~2× dimmer (longer exposure) |
 | **Brighter pinhole** | Ø3.0mm | ~2× brighter (shorter exposure), softer image |
 
-The Rayleigh-optimum pinhole diameter is d = 1.9·√(f·λ) = **Ø2.17mm** at λ = 550nm, giving f/1088.
+The Rayleigh-optimum pinhole diameter is d = 1.9·√(f·λ) = **Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm** at λ = 550nm, giving f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->. The focal length runs from the pinhole, in the shim on the carrier's camera face 24.5mm inboard of the wall, to the far wall. The carrier bore behind the shim is a 100° countersink opening to Ø14.9 on the scene face, so it does not clip the light reaching the film-plane corners (about 47° off-axis).
 
 ### Large-format lens boards
 
@@ -79,9 +79,9 @@ Board-hole diameters per [lensnotes.com](https://lensnotes.com/photography/lens-
 
 | Parameter | Value | Note |
 |-----------|-------|------|
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | Container interior depth |
-| Standard pinhole Ø | 2.17mm | Rayleigh optimum, λ=550nm |
-| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | f / d |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm | Pinhole (24.5mm inboard of the wall) to the far wall |
+| Standard pinhole Ø | <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm | Rayleigh optimum, λ=550nm |
+| f-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | f / d |
 
 The image is a central projection through the pinhole point. Tilt, swing, rise/fall and other perspective movements are provided by the **film-plane (rear standard) mechanism** — see the [Film Plane Mechanism Report](film-plane-mechanism-report.md), which also holds the (correct) distortion renders.
 
@@ -134,7 +134,7 @@ The neoprene washer is the holder's only wearing part: it seals only while its s
 
 ## 11. Source References
 
-1. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole board fabrication (Ø2.17mm and alternates, SS-302 shim).
+1. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole board fabrication (the standard Rayleigh pinhole and alternates, SS-302 shim).
 2. [Intrepid Camera — Large-Format Lens Explorer](https://intrepidcamera.co.uk/blogs/guides/the-large-format-lens-explorer) — Large-format lens data and the Copal/Compur 0/1 lens-board hole diameters (34.6 / 41.6mm).
 3. [lensnotes.com — Lens Boards](https://lensnotes.com/photography/lens-board/) — Standard board sizes + the full Copal/Compur shutter-hole set; Copal 3 = 65.0mm (matching Compur 3), the value adopted here over Intrepid's 61.5.
 4. [S.K. Grimes — Lens Board Mountings](https://skgrimes.com/lens-board-mountings/) — how a Copal/Compur shutter mounts to a lens board (front flange + rear retaining ring); the Sheet 4 mount.

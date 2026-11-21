@@ -19,7 +19,7 @@ The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight b
 | Dimension | Value | Notes |
 |-----------|-------|-------|
 | Interior length | 5,893mm (19 ft 4 in) | Film plane spans this direction |
-| Interior width | 2,362mm (7 ft 9 in) | **Optical axis = focal length** |
+| Interior width | 2,362mm (7 ft 9 in) | **Optical axis**; focal length 2,338mm (the pinhole sits 24.5mm inboard) |
 | Interior height | 2,388mm (7 ft 10 in) | Container height; the active film plane is 2,094mm (mechanism-limited by the corner slides + walkway clearance) |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
@@ -137,7 +137,7 @@ The inverse of C3. Ground plane is compressed, sky dominates. Standing subjects 
 ![C4 reverse tilt](assets/film-plane-distortion-c4.png)
 
 **C5 — Both edges near (uniform close):**
-The entire film plane is 100mm from the pinhole. Effective focal length drops from 2,362mm to ~100mm — a 23.6× reduction. Field of view becomes enormous.
+The entire film plane is 100mm from the pinhole. Effective focal length drops from 2,338mm to ~100mm — a 23.4× reduction. Field of view becomes enormous.
 
 ![C5 both near](assets/film-plane-distortion-c5.png)
 

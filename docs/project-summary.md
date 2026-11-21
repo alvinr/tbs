@@ -32,10 +32,10 @@ One thing up front. This isn't an installation that resembles a camera. It's a c
 | Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:film_plane_width_ftin -->14'5"<!-- END fact:film_plane_width_ftin --> × <!-- BEGIN fact:film_plane_height_ftin -->6'10"<!-- END fact:film_plane_height_ftin -->) |
 | Container interior | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm (~19'4" × 7'10") |
 | Image area | ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft |
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (container interior depth) |
-| Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Lord Rayleigh formula, λ = 550 nm) |
-| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
-| Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (container interior depth) |
+| Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm (Lord Rayleigh formula, λ = 550 nm) |
+| f-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> |
+| Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->, full sun — no reciprocity correction) |
 | Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
 | Per-print cost | ~<!-- BEGIN costing:summary-perprint -->$34<!-- END costing:summary-perprint --> |
 | 50-print run | ~<!-- BEGIN costing:summary-50run -->$1,680<!-- END costing:summary-50run --> |
@@ -61,7 +61,7 @@ Every number here traces to a peer-reviewed source or a datasheet. The optics ar
 
 ## The Process
 
-Cyanotype on cotton muslin, using **Mike Ware's New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). About 30–45 minutes in full sun at f/1088 — 4–8× faster than the old Herschel recipe — then developed in plain cold water. No silver, no darkroom, nothing toxic.
+Cyanotype on cotton muslin, using **Mike Ware's New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). About 30–45 minutes in full sun at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> — 4–8× faster than the old Herschel recipe — then developed in plain cold water. No silver, no darkroom, nothing toxic.
 
 Getting it there is deliberately unremarkable: a commercial hire truck, no CDL, no oversize permits — it's an empty 20-foot container on the Interstate.
 

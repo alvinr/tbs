@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 _PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse, Arc
 from tbs_constants import C_WID, PH_FNO
+from tbs_constants import PH_F, PH_D  # noqa: E402
 from tbs_constants import DIAGRAM_DPI
 
 # ── Shared helpers ────────────────────────────────────────────────────────────
@@ -67,7 +68,7 @@ def make_logo1():
     PH_Y = CAM_Y + CAM_H / 2
     ph = Circle((PH_X, PH_Y), 0.9, fc=CYAN, ec=WHITE, lw=1.2, zorder=6)
     ax.add_patch(ph)
-    ax.text(PH_X - 1.5, PH_Y + 3, "Ø 2.17mm", color=CYAN, fontsize=6,
+    ax.text(PH_X - 1.5, PH_Y + 3, f"Ø {PH_D}mm", color=CYAN, fontsize=6,
             ha="right", va="bottom", fontfamily="monospace", zorder=7)
     # Leader line
     ax.plot([PH_X - 1.5, PH_X - 0.5], [PH_Y + 2.5, PH_Y + 0.5],
@@ -140,7 +141,7 @@ def make_logo1():
             color=AMBER, fontsize=14, ha="center", va="center",
             fontfamily="monospace", zorder=5)
     ax.text(50, 10.5,
-            r"$d = 2.17\,\mathrm{mm}$   $f\!/\!1088$   $\lambda = 550\,\mathrm{nm}$",
+            rf"$d = {PH_D}\,\mathrm{{mm}}$   $f\!/\!{PH_FNO}$   $\lambda = 550\,\mathrm{{nm}}$",
             color=WHITE, fontsize=8.5, ha="center", va="center",
             fontfamily="monospace", zorder=5)
 
@@ -284,7 +285,7 @@ def make_logo2():
     # Pinhole plate
     ax.add_patch(Circle((CX - 9, CY), 3.5, fc=IBM_BLUE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((CX - 9, CY), 0.6, fc=WHITE, ec=WHITE, lw=0.5, zorder=7))
-    ax.text(CX - 9, CY - 5.5, "PINHOLE\nØ2.17mm",
+    ax.text(CX - 9, CY - 5.5, f"PINHOLE\nØ{PH_D}mm",
             color=IBM_BLUE, fontsize=5, ha="center", fontfamily="monospace")
     # Lens plate
     ax.add_patch(Circle((CX + 9, CY), 3.5, fc="#1A5276", ec=WHITE, lw=1.5, zorder=6))
@@ -293,7 +294,7 @@ def make_logo2():
     ax.add_patch(Circle((CX, CY + 3), 4, fc=IBM_RED, ec=WHITE, lw=1, zorder=7))
     ax.text(CX, CY + 3.4, "f/", color=WHITE, fontsize=6, ha="center",
             va="center", fontweight="bold", zorder=8)
-    ax.text(CX, CY + 1.8, "1088", color=WHITE, fontsize=5.5, ha="center",
+    ax.text(CX, CY + 1.8, str(PH_FNO), color=WHITE, fontsize=5.5, ha="center",
             va="center", fontweight="bold", fontfamily="monospace", zorder=8)
     # Tripod legs
     for tx, ty in [(CX - 6, CY - 14), (CX, CY - 15), (CX + 6, CY - 14)]:
@@ -354,7 +355,7 @@ def make_logo2():
     ax.add_patch(FancyBboxPatch((8, 19), 84, 7,
                                 boxstyle="round,pad=0.4",
                                 fc=IBM_BLUE, ec=IBM_MID, lw=1, zorder=5, alpha=0.15))
-    specs = "f = 2362mm   ·   d = 2.17mm   ·   f/1088   ·   λ = 550 nm   ·   IMAGE PLANE 5893 × 2388mm"
+    specs = f"f = {PH_F:,.0f}mm   ·   d = {PH_D}mm   ·   f/{PH_FNO}   ·   λ = 550 nm   ·   IMAGE PLANE 5893 × 2388mm"
     ax.text(50, 22.5, specs, color=IBM_BLUE, fontsize=6.2, ha="center", va="center",
             fontfamily="monospace", fontweight="bold", zorder=6)
 
@@ -505,7 +506,7 @@ def make_logo3():
     ax.text(19.5, 15, "GPC", color=KODAK_Y, fontsize=14, ha="center", va="center",
             fontweight="bold", zorder=6)
 
-    ax.text(32, 15, "f/1088  ·  2.17mm  ·  101 sq ft",
+    ax.text(32, 15, f"f/{PH_FNO}  ·  {PH_D}mm  ·  101 sq ft",
             color=BLACK, fontsize=7.5, ha="left", va="center",
             fontweight="bold", fontfamily="monospace", zorder=6)
 

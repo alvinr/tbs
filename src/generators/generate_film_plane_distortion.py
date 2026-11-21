@@ -22,11 +22,12 @@ import os
 from tbs_constants import FP_W, FP_H, C_WID, FP_Y_MIN, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_constants import DISTORTION_DPI
+from tbs_constants import PH_F  # noqa: E402
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
 FILM_L = FP_W    # film plane width (mm) — from tbs_constants (4499mm rev 6)
 FILM_H = FP_H    # film plane height (container height)
-F_NOM  = C_WID   # = 2362mm — focal length (container interior depth)
+F_NOM  = PH_F    # focal length (pinhole → far wall)
 D_NEAR = FP_Y_MIN       # = 100mm — closest carriage position
 D_FAR  = F_NOM - D_NEAR # = 2262mm
 

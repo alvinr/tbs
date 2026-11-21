@@ -48,15 +48,15 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 |-----------|-------|----------|
 | Pinhole X position (long axis) | <!-- BEGIN cdm:PH_X -->2,454<!-- END cdm:PH_X -->mm | `PH_X` |
 | Pinhole center height | <!-- BEGIN cdm:PH_H -->1,194<!-- END cdm:PH_H -->mm | `PH_H` |
-| Pinhole diameter | Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D -->mm | `PH_D` |
-| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | `PH_FNO` |
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | `PH_F` (= `C_WID`) |
+| Pinhole diameter | Ø<!-- BEGIN cdm:PH_D -->2.15<!-- END cdm:PH_D -->mm | `PH_D` |
+| f-number | f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> | `PH_FNO` |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm | `PH_F` (= `C_WID`) |
 
 *Component: the pinhole is carried by the [pinhole disc holder](pinhole-disc-holder-report.md) front board
 (§1.4 — Ø80 carrier, pinhole board or Copal lens board), which supersedes the retired standard Ø600
 interchangeable pinhole/lens plate.*
 
-*Reports: [Pinhole Report](pinhole-report.md) §3/§4/§5/§7 (wall frame, pinhole plate, lens plate, light sealing); [Optics Report](pinhole-optics-report.md) Part 3/11 (optimal-diameter formulas, as-built f/1088 numbers).*
+*Reports: [Pinhole Report](pinhole-report.md) §3/§4/§5/§7 (wall frame, pinhole plate, lens plate, light sealing); [Optics Report](pinhole-optics-report.md) Part 3/11 (optimal-diameter formulas, as-built f-number).*
 
 *Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), pinhole disc holder (PDH), plate drawing (PD), schematic (SC).*
 
@@ -101,7 +101,7 @@ stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 |-----------|-------|----------|
 | Pinhole X (holder centers here) | <!-- BEGIN cdm:PH_X -->2,454<!-- END cdm:PH_X -->mm | `PH_X` |
 | Front plate Ø | Ø<!-- BEGIN cdm:PDH_PLATE_OD -->180<!-- END cdm:PDH_PLATE_OD --> | `PDH_PLATE_OD` |
-| Standard pinhole Ø | Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D --> | `PH_D` (Rayleigh optimum) |
+| Standard pinhole Ø | Ø<!-- BEGIN cdm:PH_D -->2.15<!-- END cdm:PH_D --> | `PH_D` (Rayleigh optimum) |
 
 *Components: ICP-01 Ø180×18mm 6061-T6 front plate (4× M6 mount @ Ø150; Ø90 scene taper
 → Ø40 aperture; Ø52 disc counterbore; 4× M5 taps @ Ø74), neoprene light-seal washer (Ø56×Ø40×1.5),

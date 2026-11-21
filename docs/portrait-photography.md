@@ -7,8 +7,8 @@ projected — inverted and reversed — onto the photosensitive film plane insid
 page collects the geometry of that capture: how wide a scene the camera takes in, how large a subject
 renders at a given distance, and where a portrait sits best.
 
-The optics are the fixed pinhole — focal length **f = 2,362mm** (the container's interior depth),
-pinhole **Ø2.17mm**, **f/1088** (the [Rayleigh optimum](pinhole-optics-report.md)). The image forms
+The optics are the fixed pinhole — focal length **f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm** (pinhole to the far wall),
+pinhole **Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm**, **f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->** (the [Rayleigh optimum](pinhole-optics-report.md)). The image forms
 on the **active film plane, 4,389 × 2,094mm**, with the pinhole centered on the long wall at
 X ≈ 2,454mm — see the [Film Plane Mechanism](film-plane-mechanism-report.md).
 
@@ -19,8 +19,8 @@ X ≈ 2,454mm — see the [Film Plane Mechanism](film-plane-mechanism-report.md)
 The field of view is set by how much of the film plane the pinhole "sees" — the active plane's extent
 relative to the focal length:
 
-- **Horizontal FOV ≈ 86°** — 2·atan((4,389 ÷ 2) ÷ 2,362)
-- **Vertical FOV ≈ 48°** — 2·atan((2,094 ÷ 2) ÷ 2,362)
+- **Horizontal FOV ≈ 86°** — 2·atan((4,389 ÷ 2) ÷ 2,338)
+- **Vertical FOV ≈ 48°** — 2·atan((2,094 ÷ 2) ÷ 2,338)
 
 ![Portrait camera schematic — top-down, with subject distances](assets/portrait-camera-schematic.png)
 
@@ -30,7 +30,7 @@ vertically at modest range; farther back, the figure shrinks and more of the sur
 ## 2. Subject size vs distance
 
 For a pinhole the projected image scales linearly: **magnification M = f ÷ u** (image size ÷ subject
-size, for a subject at distance *u*). A 1,780mm (5′10″) subject therefore projects to 1,780 · (2,362 ÷ u)
+size, for a subject at distance *u*). A 1,780mm (5′10″) subject therefore projects to 1,780 · (2,338 ÷ u)
 mm on the film:
 
 ![Portrait scale comparison — one subject at several distances](assets/portrait-scale-comparison.png)
@@ -40,14 +40,14 @@ render smaller with more context around them.
 
 ## 3. The optimal portrait distance
 
-Sharpness is limited by the pinhole's geometric blur circle, **B = 2.17 · (1 + f ÷ u)** mm on the
+Sharpness is limited by the pinhole's geometric blur circle, **B = 2.15 · (1 + f ÷ u)** mm on the
 film — larger for nearer subjects, since the cone of light from each point of the subject spreads more
 on the way in. Trading framing against blur puts a comfortable full-figure portrait at roughly **3m**:
 
 ![Optimal portrait at 3m — magnification and blur circle](assets/portrait-optimal-3m.png)
 
-At 3m the image is **M = 2,362 ÷ 3,000 ≈ 0.79×** of the subject (a 1,780mm person → ~1,400mm image,
-inside the 2,094mm plane height) with a blur circle of **B ≈ 2.17 · (1 + 2,362 ÷ 3,000) ≈ 3.9mm** —
+At 3m the image is **M = 2,338 ÷ 3,000 ≈ 0.78×** of the subject (a 1,780mm person → ~1,390mm image,
+inside the 2,094mm plane height) with a blur circle of **B ≈ 2.15 · (1 + 2,338 ÷ 3,000) ≈ 3.8mm** —
 soft by lens standards, and characteristic of the pinhole look.
 
 ---

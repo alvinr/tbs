@@ -29,7 +29,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 | Dimension | Value | Notes |
 |-----------|-------|-------|
 | Interior length | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Film plane spans this direction |
-| Interior width | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in) | **Optical axis = focal length** |
+| Interior width | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (7 ft 9 in) | **Optical axis = focal length** |
 | Interior height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | Film plane height |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
@@ -74,7 +74,7 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 
 ![Sheet 7 — Four-Corner Frame Front Elevation](assets/film-plane-sheet7.png)
 
-- **4 depth rails** — 3×1½" (76×38mm) **6061-T6 aluminum U-channel** — its yield exceeds annealed 304 so strength holds, the ~1mm sag over 2.36m is optically irrelevant at f/1088, and flatness is carried by the ACM backing — one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=260mm) are transport drop-ins that lift out.
+- **4 depth rails** — 3×1½" (76×38mm) **6061-T6 aluminum U-channel** — its yield exceeds annealed 304 so strength holds, the ~1mm sag over 2.36m is optically irrelevant at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->, and flatness is carried by the ACM backing — one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=260mm) are transport drop-ins that lift out.
 - **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 304 axles**, carrying the corner's carriage plate.
 - **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
 - **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **304 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~345mm) and X slide (~365mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈257mm in X at max swing — the bar length = that travel + the carriage, so it can reach the full ±40°/±28°), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.

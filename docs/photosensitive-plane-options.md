@@ -6,19 +6,19 @@
 **Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 0″)
 **Container interior:** <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment
 **Image plane area:** ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft (9.19 m²)
-**Camera configuration:** Option B (side-to-side), f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm
+**Camera configuration:** Option B (side-to-side), f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm, f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm
 
 ---
 
 ## Summary
 
-Eight photosensitive processes were evaluated for a ~99 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
+Eight photosensitive processes were evaluated for a ~99 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) active image plane at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --> in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
 ### The ISO problem
 
-At f/1088, even the fastest non-film material (ISO 6 silver gelatin paper) requires a **corrected exposure of ~43 minutes** in full sun after Schwarzschild reciprocity correction. The slower historic processes extend this to hours or, in the case of gum bichromate, beyond a full day. The ISO spread across these materials is enormous — **3,200:1 from slowest (ISO 0.25) to fastest practical option (ISO 800 orthochromatic X-ray film)**. Material selection is therefore primarily a decision about how long the subject must hold still, and how long the camera must remain vibration-free and weather-stable.
+At f/1087, even the fastest non-film material (ISO 6 silver gelatin paper) requires a **corrected exposure of ~43 minutes** in full sun after Schwarzschild reciprocity correction. The slower historic processes extend this to hours or, in the case of gum bichromate, beyond a full day. The ISO spread across these materials is enormous — **3,200:1 from slowest (ISO 0.25) to fastest practical option (ISO 800 orthochromatic X-ray film)**. Material selection is therefore primarily a decision about how long the subject must hold still, and how long the camera must remain vibration-free and weather-stable.
 
-| Process | ISO equiv. | Corrected exposure at f/1088 (full sun) | Per-image cost |
+| Process | ISO equiv. | Corrected exposure at f/1087 (full sun) | Per-image cost |
 |---|---|---|---|
 | Gum bichromate | **~0.25–0.5** | ~8–17 hours | $55–73 |
 | Cyanotype (Herschel) | **~1–2** | ~2–4 hours | $30–40 |
@@ -43,12 +43,12 @@ For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrad
 
 | Goal | Process | Reason |
 |---|---|---|
-| **TBS-001 selected process** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$37<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$28–64<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
+| **TBS-001 selected process** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$37<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$28–64<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1087; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
 | **Best all-round portrait result** | Ilford Multigrade RC paper | ISO 6; ~43 min; best tonal fidelity of non-film options; proven at scale |
 | **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$37<!-- END costing:s73-pp-std -->/image; no fixer; no darkroom for processing; home chemistry; archival |
 | **Shortest exposures, practical subject movement** | Orthochromatic X-ray film | ISO 200–800; sub-2-minute exposures; operationally complex at scale |
 | **Most distinctive physical artifact** | Liquid Light on reclaimed wood/concrete | Surface texture visible through image; unrepeatable object |
-| **Ruled out at f/1088** | Gum bichromate (solo) | ISO 0.25–0.5; 8–17 hour exposures are not practical for in-camera capture |
+| **Ruled out at f/1087** | Gum bichromate (solo) | ISO 0.25–0.5; 8–17 hour exposures are not practical for in-camera capture |
 
 The one-time infrastructure cost — ACM backing panels on timber battens bolted to container ribs — is approximately **$900–1,500** and is shared across all processes.
 
@@ -100,14 +100,14 @@ Invented by Sir John Herschel in 1842 and documented in *Philosophical Transacti
 - Apply to substrate in subdued light; allow to dry completely before exposure
 - Develop: soak in plain cold water 5–10 minutes, agitating gently; image clears in highlights
 - No fixer required
-- **4–8× faster than Herschel formula** — baseline exposure ~30–45 min vs 2–3 hr at f/1088
+- **4–8× faster than Herschel formula** — baseline exposure ~30–45 min vs 2–3 hr at f/1087
 
 **Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. ISBN: 0901805831. Full formula and technical notes freely available at mikeware.co.uk.
 
 **Traditional Herschel formula (alternative — simpler preparation, slower):**
 - Solution A: 20 g ferric ammonium citrate (FAC, green grade) dissolved in 100 ml distilled water (room temp)
 - Solution B: 8.1 g potassium ferricyanide dissolved in 100 ml distilled water
-- Mix equal volumes A and B immediately before use; baseline exposure ~2–3 hr at f/1088
+- Mix equal volumes A and B immediately before use; baseline exposure ~2–3 hr at f/1087
 
 ### Chemistry Quantities for 99 sq ft
 
@@ -149,7 +149,7 @@ _Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware =
 
 ### Important Constraints
 
-- **UV sensitivity:** Cyanotype requires UV light (300–400 nm range). Direct sunlight provides adequate UV. The long exposure times this camera produces (30–60+ minutes at f/1088) are well within the range needed for cyanotype in full outdoor sunlight — this is actually the **most compatible process** with the camera's exposure characteristics.
+- **UV sensitivity:** Cyanotype requires UV light (300–400 nm range). Direct sunlight provides adequate UV. The long exposure times this camera produces (30–60+ minutes at f/1087) are well within the range needed for cyanotype in full outdoor sunlight — this is actually the **most compatible process** with the camera's exposure characteristics.
 - **Color:** Result is Prussian blue only. Cannot be converted to neutral or warm tone without toning chemistry (tannin toning produces a warm olive/black).
 - **Moisture sensitivity when wet:** During processing, excessive agitation can lift sensitizer from poorly prepared fabric.
 
@@ -190,7 +190,7 @@ Developed in the 1850s–1890s as a pictorialist alternative to silver processes
 
 Gum bichromate is a **pigment process** — the image is formed by watercolor pigment embedded in hardened gum. It is **not a silver process** and requires no darkroom for development. It is, however, significantly lower in contrast than silver processes and requires multiple coats (4–8 passes) to build density and shadow detail.
 
-For in-camera capture at f/1088 and the exposure times this camera produces, gum bichromate is viable — ammonium dichromate is approximately 2–3× more UV-sensitive than the standard potassium version.
+For in-camera capture at f/1087 and the exposure times this camera produces, gum bichromate is viable — ammonium dichromate is approximately 2–3× more UV-sensitive than the standard potassium version.
 
 **Multiple-coat implication:** Each coat requires drying, recoating, and re-exposure to a precise registration. For a 13-foot image, registration between coats is an engineering problem — mechanical pin registration or projection registration will be needed.
 
@@ -479,7 +479,7 @@ Industrial and medical X-ray film is available in very large sheet formats, unli
 
 At approximately $5–8 per 14"×17" sheet, covering 99 sq ft would require roughly 131–175 sheets depending on layout, at a material cost of $654–$1,393. Large-format industrial X-ray film in continuous rolls is available from medical/NDT suppliers, but ordering in custom widths is typical.
 
-The significantly higher ISO rating means exposure times at f/1088 would be 5–8× shorter than with paper — approximately 5–10 minutes versus 40+ minutes for paper in full sun. This is an operationally significant advantage.
+The significantly higher ISO rating means exposure times at f/1087 would be 5–8× shorter than with paper — approximately 5–10 minutes versus 40+ minutes for paper in full sun. This is an operationally significant advantage.
 
 ### Processing
 
@@ -569,7 +569,7 @@ The central variable is the **spectral sensitivity** of each photosensitive mate
 **Blind to:** Green (500–565 nm), yellow, orange, red.
 **Safelight:** Yellow-green (Wratten OC or equivalent) is safe; red is safe.
 **ISO equivalent:** ~1–2 (Herschel standard formula); ~2–4 (Ware improved formula).
-**Corrected exposure at f/1088, full sun:** ~30–45 min (Ware formula, selected) to ~2–4 hours (Herschel).
+**Corrected exposure at f/1087, full sun:** ~30–45 min (Ware formula, selected) to ~2–4 hours (Herschel).
 
 **Source for ISO figures:** Practitioner consensus documented across pinhole photography literature, including Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009, and Ware, M., *Cyanotype*, 1999. Cyanotype ISO is highly UV-condition-dependent — hazy sky, low sun angle, or high latitude dramatically increases actual exposure time beyond calculated values. ISO figures assume direct overhead summer sun.
 
@@ -608,9 +608,9 @@ Cyanotype has a relatively compressed tonal range (short scale). It produces str
 **Blind to:** Green, yellow, orange, red.
 **Safelight:** Red safelight is safe; yellow-green safe at low intensity.
 **ISO equivalent:** ~0.25–0.5 (potassium dichromate); ~0.5–1 (ammonium dichromate, which is 2–3× more sensitive).
-**Corrected exposure at f/1088, full sun:** ~8–17 hours (potassium dichromate); ~4–8 hours (ammonium dichromate).
+**Corrected exposure at f/1087, full sun:** ~8–17 hours (potassium dichromate); ~4–8 hours (ammonium dichromate).
 
-**Practical implication: gum bichromate is not viable as a primary in-camera process at f/1088.** At 8–17 hours, a single exposure spans daylight, sunset, and astronomical darkness — the illumination changes are uncontrollable and the accumulated exposure across the full period would be chaotic. Gum bichromate is retained in this report because it is an excellent option for contact printing from a negative made on one of the faster materials, and because a larger pinhole (reducing the f-number) could bring exposure times into range. At f/300 (achievable with a ~8mm pinhole), ISO 0.5 gum bichromate would require ~40 minutes — fully workable, though at the cost of a larger blur circle.
+**Practical implication: gum bichromate is not viable as a primary in-camera process at f/1087.** At 8–17 hours, a single exposure spans daylight, sunset, and astronomical darkness — the illumination changes are uncontrollable and the accumulated exposure across the full period would be chaotic. Gum bichromate is retained in this report because it is an excellent option for contact printing from a negative made on one of the faster materials, and because a larger pinhole (reducing the f-number) could bring exposure times into range. At f/300 (achievable with a ~8mm pinhole), ISO 0.5 gum bichromate would require ~40 minutes — fully workable, though at the cost of a larger blur circle.
 
 **Source for ISO figures:** Crawford, W., *The Keepers of Light*, 1979; practitioner documentation at alternativephotography.com. Ammonium dichromate speed advantage: Ware, M., *Cyanotype*, 1999, Appendix (comparative sensitizer analysis).
 
@@ -632,7 +632,7 @@ Lower inherent contrast than most silver processes. A single coat of gum bichrom
 **Blind to:** Green, yellow, orange, red.
 **Safelight:** Red safelight is safe.
 **ISO equivalent:** ~1–3.
-**Corrected exposure at f/1088, full sun:** ~1.5–4 hours.
+**Corrected exposure at f/1087, full sun:** ~1.5–4 hours.
 
 Salt print is a printing-out process — the image forms during exposure without a developer. This absence of development amplification keeps the effective speed low despite silver being the active compound. Speed varies with silver nitrate concentration at coating: higher concentration (15% vs. 10%) yields a modest speed increase at the cost of more AgNO₃ consumption.
 
@@ -656,7 +656,7 @@ Salt print is a printing-out process — the image forms during exposure without
 
 Salt prints of people made in the 1840s–1860s have a characteristic look that is often described as "ghostly" — subjects with warm complexions appear much darker than we would expect, and the subtlety of facial modeling (warm highlights vs. cooler shadows) is compressed. This was the era's technical reality; it is now a historical aesthetic. For this project, whether this quality is desirable depends on the artistic intent.
 
-**Critical practical issue:** Subjects must remain absolutely still during exposure. Salt prints are slower than cyanotype (silver chloride is marginally faster than the iron process but both require minutes at f/1088). At 30–60 minutes exposure time, any movement will produce blur. This is not a process for candid portraiture.
+**Critical practical issue:** Subjects must remain absolutely still during exposure. Salt prints are slower than cyanotype (silver chloride is marginally faster than the iron process but both require minutes at f/1087). At 30–60 minutes exposure time, any movement will produce blur. This is not a process for candid portraiture.
 
 #### Contrast and Tone
 
@@ -670,7 +670,7 @@ Salt prints have a characteristic warm red-brown image tone (silver image color 
 **Blind to:** Green, yellow, orange, red.
 **Safelight:** Red safelight is safe.
 **ISO equivalent:** ~2–6.
-**Corrected exposure at f/1088, full sun:** ~45 min–2 hours.
+**Corrected exposure at f/1087, full sun:** ~45 min–2 hours.
 
 Van Dyke Brown is the fastest of the iron/silver UV processes. The two-stage mechanism (iron absorbs UV → reduces silver ion to silver metal) benefits from development amplification unlike the printing-out salt print: unexposed areas are washed away in water, so the image is formed by developed-out silver, not just printed-out silver. This gives it a meaningful speed advantage — roughly 2–3× faster than salt print and faster than standard cyanotype, putting it within practical range of the camera at its slower end.
 
@@ -698,7 +698,7 @@ The image color is warm red-brown (similar to, and named after, Van Dyck paintin
 **Blind to:** Orange (>580 nm) and red.
 **Safelight:** Red/amber (Ilford 902 or equivalent) is safe.
 **ISO equivalent:** ~6.
-**Corrected exposure at f/1088, full sun:** ~43 minutes (Schwarzschild corrected, p = 0.85).
+**Corrected exposure at f/1087, full sun:** ~43 minutes (Schwarzschild corrected, p = 0.85).
 
 ISO 6 is the well-established community standard for silver gelatin enlarging paper used in pinhole cameras and is consistent with the exposure calculations in the main body of this report. Ilford does not publish an in-camera ISO for their paper (it is designed for enlarger use), but ISO 6 is reproduced across Renner (2009), and practitioner tests on Photrio and the Large Format Photography Forum. Development time and developer dilution affect effective speed by approximately ±½ stop; Dektol 1:2 at 68°F/20°C for 90 seconds is the reference condition.
 
@@ -726,7 +726,7 @@ For outdoor portraiture, Ilford Multigrade paper is markedly better than cyanoty
 
 The practical effect in a portrait: faces look natural in shade or overcast light where the illumination is cool/neutral. In warm directional sunlight (golden hour), the image will flatten — the warmth that makes the scene beautiful to the eye does not register.
 
-**Blue sky overexposure** is the most consistent practical problem. For a portrait with sky in the frame at f/1088 with a 40-minute exposure, the sky will likely be a pure white field. A deep yellow or orange filter (Wratten 8 or 15) placed over the pinhole would balance sky/skin by reducing blue transmission — but this also cuts overall exposure, lengthening times further. More practical: position subjects against non-sky backgrounds, or use the sky's blown-out quality as an intentional design element.
+**Blue sky overexposure** is the most consistent practical problem. For a portrait with sky in the frame at f/1087 with a 40-minute exposure, the sky will likely be a pure white field. A deep yellow or orange filter (Wratten 8 or 15) placed over the pinhole would balance sky/skin by reducing blue transmission — but this also cuts overall exposure, lengthening times further. More practical: position subjects against non-sky backgrounds, or use the sky's blown-out quality as an intentional design element.
 
 #### Contrast
 
@@ -740,7 +740,7 @@ Grade 2 in-camera (both emulsion layers exposing together). Good shadow/highligh
 **Blind to:** Green (limited response), yellow, orange, red.
 **Safelight:** Red/amber safelight is safe.
 **ISO equivalent:** ~6–12.
-**Corrected exposure at f/1088, full sun:** ~20–43 minutes.
+**Corrected exposure at f/1087, full sun:** ~20–43 minutes.
 
 The speed range reflects variation by substrate — porous substrates (wood, unprimed canvas) absorb part of the emulsion layer, effectively reducing silver density and therefore speed. A properly sealed, primed surface achieves the upper end of the range (~ISO 12). Applying two coats increases silver density and pushes speed slightly higher; it also improves maximum black density and shadow detail. The manufacturer specifies comparable speed to photographic paper (ISO 6), which is the conservative baseline.
 
@@ -772,9 +772,9 @@ Equivalent to approximately Grade 3 (manufacturer specification). Higher inheren
 **Sensitive wavelengths:** UV and blue (blue-sensitive type) or UV, blue, and green (orthochromatic/green-sensitive type).
 **Blind to:** Red (and orange in blue-sensitive type).
 **ISO equivalent:** ~50–200 (blue-sensitive, direct exposure); ~200–800 (orthochromatic/green-sensitive screen-type).
-**Corrected exposure at f/1088, full sun:** ~2–10 min (blue-sensitive); ~20 sec–2 min (orthochromatic).
+**Corrected exposure at f/1087, full sun:** ~2–10 min (blue-sensitive); ~20 sec–2 min (orthochromatic).
 
-The speed range within X-ray film is wider than across all the other materials combined. Screen-type orthochromatic X-ray film is designed to expose via the light emitted by a rare-earth intensifying screen (which fluoresces green) and is therefore optimized for that narrow spectral band — but it still responds to broadband daylight. At ISO 200–800, exposures at f/1088 drop below 2 minutes, which transforms the operational challenge entirely: a subject can hold still for 90 seconds far more reliably than for 43 minutes, and camera vibration from wind is not a meaningful concern over that duration.
+The speed range within X-ray film is wider than across all the other materials combined. Screen-type orthochromatic X-ray film is designed to expose via the light emitted by a rare-earth intensifying screen (which fluoresces green) and is therefore optimized for that narrow spectral band — but it still responds to broadband daylight. At ISO 200–800, exposures at f/1087 drop below 2 minutes, which transforms the operational challenge entirely: a subject can hold still for 90 seconds far more reliably than for 43 minutes, and camera vibration from wind is not a meaningful concern over that duration.
 
 The trade-off is product specificity: **not all X-ray film is the same**. Medical green-sensitive film (e.g. Fujifilm HR-T, Agfa Curix Ortho) is orthochromatic and fast. Medical blue-sensitive film (older type, some still available as NDT/industrial film) is slower. Direct-exposure X-ray film (no screen required, used for dental or industrial NDT) is slower still (~ISO 25–100) and better suited to this application because it is designed for direct light exposure rather than screen fluorescence.
 
@@ -792,7 +792,7 @@ The critical additions beyond the earlier analysis:
 
 ### Appendix A Summary: Spectral Sensitivity and Speed Comparison
 
-| Process | ISO equiv. | Exposure at f/1088 (full sun, corrected) | UV | Blue | Green | Red | Portrait skin rendering |
+| Process | ISO equiv. | Exposure at f/1087 (full sun, corrected) | UV | Blue | Green | Red | Portrait skin rendering |
 |---|---|---|---|---|---|---|---|
 | Gum bichromate | ~0.25–0.5 | **8–17 hours — impractical** | ✓ | ✓ (short) | ✗ | ✗ | Flat — mitigated by warm pigment |
 | Cyanotype (Herschel) | ~1–2 | 2–4 hours | ✓ | ✓ (short) | ✗ | ✗ | Flat, dark, pallid |
@@ -817,7 +817,7 @@ The critical additions beyond the earlier analysis:
 6. Cyanotype — UV/blue, flat; well-loved aesthetic quality
 7. Gum bichromate — UV/blue, flat; partially offset by warm pigment choice
 
-**By practical operability at f/1088 (shorter exposure = more reliable result):**
+**By practical operability at f/1087 (shorter exposure = more reliable result):**
 
 1. Orthochromatic X-ray film (ISO 200–800) — 20 sec–2 min; subject can hold still; vibration not an issue
 2. Ilford Multigrade RC paper (ISO 6) — 43 min; borderline for a standing subject in still air
@@ -826,7 +826,7 @@ The critical additions beyond the earlier analysis:
 5. **Cyanotype Ware formula (ISO 2–4) — 30–45 min; viable across most seasons in good sun ★ selected**
 6. Cyanotype Herschel (ISO 1–2) — 2–4 hours; requires exceptional UV conditions
 7. Salt print (ISO 1–3) — 1.5–4 hours; at limit of practical outdoor portraiture
-8. Gum bichromate (ISO 0.25–0.5) — 8–17 hours; **not viable for in-camera portraiture at f/1088**
+8. Gum bichromate (ISO 0.25–0.5) — 8–17 hours; **not viable for in-camera portraiture at f/1087**
 
 **Practical recommendation:** The intersection of tonal quality and practical operability points clearly to **Ilford Multigrade RC paper** as the primary medium. At ISO 6, 43-minute exposures are achievable in practice with a cooperative subject and calm conditions. For situations where exposure time is the binding constraint (wind, moving subjects, overcast days reducing available UV), **orthochromatic X-ray film** is the correct solution — the spectral response is equivalent to Ilford paper, the tonal rendering is similar, and the 30:1 speed advantage transforms the operational logistics entirely.
 

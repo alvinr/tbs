@@ -6,7 +6,7 @@ generate_line_of_sight.py
 
 Generates docs/assets/line-of-sight.png — two-panel optical clearance diagram for TBS-001.
 
-Panel A — Plan view (top-down): the optical cone from the pinhole (PH_X, Yd=0) to the film
+Panel A — Plan view (top-down): the optical cone from the pinhole (PH_X, Yd=PH_INBOARD) to the film
   plane edges (FP_X_L–FP_X_R at FP_Y). Equipment in the end zones is always clear; equipment
   near the pinhole wall is clear where it sits outside the cone's narrow end (e.g. the
   chemistry prep shelf, checked by the same cone test as everything else).
@@ -16,7 +16,7 @@ Panel B — Side elevation: the cone in the HEIGHT direction (pinhole at PH_H, s
 
 Container coordinate system:
   X  = 0–5893mm   (long axis; X=0 cargo door end, X=5893 far end)
-  Yd = 0–2362mm   (optical depth; Yd=0 pinhole wall, Yd=2362 far wall)
+  Yd = 0–2362mm   (optical depth; Yd=0 pinhole-wall interior face, pinhole at Yd=PH_INBOARD, Yd=2362 far wall)
   H  = 0–2388mm   (height)
 
 ASPECT RATIO RULE: figsize derived from data limits. set_aspect("equal") always.
@@ -31,6 +31,7 @@ import os
 from tbs_title_block import title_block
 from tbs_drawing import leader, draw_dim_h, draw_dim_v, draw_rect
 from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H, ZONE_L_END, ZONE_R_START, SHELF_X_L, SHELF_W, SHELF_YD_NEAR, SHELF_DEPTH, SHELF_H, SHELF_T, C_WOOD, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D, CORRIDOR_YD_NEAR, IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, DIAGRAMS_DIR, cone_left, cone_right, C_OUT, C_CL, C_DIM, C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_BLUE_IBC, C_BROWN_IBC, C_WALL
+from tbs_constants import PH_INBOARD  # noqa: E402
 from tbs_constants import DIAGRAM_DPI, BG
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -123,10 +124,10 @@ def equipment_in_plan_cone(eq):
     return False
 
 def cone_h_bottom(yd):
-    return PH_H - PH_H * (yd / FP_Y)
+    return PH_H - PH_H * (max(yd - PH_INBOARD, 0) / (FP_Y - PH_INBOARD))
 
 def cone_h_top(yd):
-    return PH_H + (C_HGT - PH_H) * (yd / FP_Y)
+    return PH_H + (C_HGT - PH_H) * (max(yd - PH_INBOARD, 0) / (FP_Y - PH_INBOARD))
 
 def equipment_in_elevation_cone(eq):
     """True if ANY part of the equipment height intersects the cone at its depth."""
@@ -211,7 +212,7 @@ ax.text((ZONE_R_START + C_LEN) / 2, C_WID + 120,
         fontweight="bold", zorder=10)
 
 # ── Optical cone (plan view) ──────────────────────────────────────────────────
-yd_vals = np.linspace(0, FP_Y, 300)
+yd_vals = np.linspace(PH_INBOARD, FP_Y, 300)
 xl_vals = np.array([cone_left(yd) for yd in yd_vals])
 xr_vals = np.array([cone_right(yd) for yd in yd_vals])
 
@@ -228,8 +229,8 @@ ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 115,
         ha="center", va="bottom", fontsize=FS_SM, color=C_CL, zorder=10)
 
 # Pinhole
-ax.plot(PH_X, 0, "o", color=C_BLOCK, ms=9, zorder=6)
-leader(ax, PH_X, 0, PH_X - 650, -150, f"Pinhole  X={PH_X}mm",
+ax.plot(PH_X, PH_INBOARD, "o", color=C_BLOCK, ms=9, zorder=6)
+leader(ax, PH_X, PH_INBOARD, PH_X - 650, -150, f"Pinhole  X={PH_X}mm",
        fs=FS_SM, color=C_BLOCK, ha="left", va="center", arrow_style="->", lw=0.8)
 
 # Optical axis
@@ -276,7 +277,7 @@ for eq in EQUIPMENT:
 ax.text(C_LEN / 2, -150, "PLAN VIEW — TOP-DOWN (Z axis)",
         ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold", zorder=10)
 ax.text(C_LEN / 2, -350,
-        f"Optical cone: Pinhole (X={PH_X}, Yd=0) → Film plane edges "
+        f"Optical cone: Pinhole (X={PH_X}, Yd={PH_INBOARD}) → Film plane edges "
         f"(X={FP_X_L} & X={FP_X_R}, Yd={FP_Y}mm)",
         ha="center", va="top", fontsize=FS_SM, color=C_DIM, zorder=10)
 
@@ -303,7 +304,7 @@ ax = ax_b
 draw_rect(ax, 0, 0, C_WID, C_HGT, color=C_OUT, fc="#F4F4F4", lw=1.8, zorder=1)
 
 # ── Optical cone (elevation) ──────────────────────────────────────────────────
-yd_e = np.linspace(0, FP_Y, 300)
+yd_e = np.linspace(PH_INBOARD, FP_Y, 300)
 hb   = np.array([cone_h_bottom(y) for y in yd_e])
 ht   = np.array([cone_h_top(y) for y in yd_e])
 
@@ -319,12 +320,12 @@ ax.text(FP_Y + 125, C_HGT / 2, f"Film plane\nYd={FP_Y}mm",
         ha="left", va="center", fontsize=FS_SM, color=C_CL, zorder=10)
 
 # Pinhole
-ax.plot(0, PH_H, "o", color=C_BLOCK, ms=9, zorder=6)
+ax.plot(PH_INBOARD, PH_H, "o", color=C_BLOCK, ms=9, zorder=6)
 ax.text(-250, PH_H + 70, f"Pinhole\nH={PH_H}mm",
         ha="left", va="bottom", fontsize=FS_SM, color=C_BLOCK, zorder=10)
 
 # Optical axis
-ax.plot([0, FP_Y], [PH_H, PH_H], color=C_CL, lw=0.8, ls="--",
+ax.plot([PH_INBOARD, FP_Y], [PH_H, PH_H], color=C_CL, lw=0.8, ls="--",
         dashes=(8, 4), zorder=3)
 ax.text(FP_Y / 2 + 600, PH_H + 55, "Optical axis",
         ha="center", va="bottom", fontsize=FS_SM - 1, color=C_CL, zorder=10)

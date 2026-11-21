@@ -413,9 +413,9 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 |-----------|-------|
 | Image plane | 5893 × 2388mm (~19'4" × 7'10") |
 | Image area | ~101 sq ft |
-| Focal length | 2362mm (container interior depth) |
-| Optimal pinhole | Ø2.17mm (Lord Rayleigh formula, λ = 550 nm) |
-| f-number | f/1088 |
+| Focal length | 2,338mm (pinhole to the far wall) |
+| Optimal pinhole | Ø2.15mm (Lord Rayleigh formula, λ = 550 nm) |
+| f-number | f/1087 |
 | Baseline exposure | ~43 min (ISO 6 paper, full sun, Schwarzschild-corrected) |
 | Process | Cyanotype — water-based, non-toxic, no silver |
 | Per-print cost | ~$57 |

@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four corner carriages** (TL, TR, BL, BR) driven in **coordinated pairs**, carrying a **fixed-size rigid** plane that changes only its angle — allowing tilt, swing, and limited combined movements comparable to a large-format view camera's rear standard.
+The photosensitive film plane sits against one of the container's 20ft long-side walls, opposite the pinhole wall. This report describes a **view-camera-style moveable film plane** — a mechanism with **four corner carriages** (TL, TR, BL, BR) driven in **coordinated pairs**, carrying a **fixed-size rigid** plane that changes only its angle — allowing tilt, swing, and limited combined movements comparable to a large-format view camera's rear standard.
 
 **System context — container floor plan:**
 The floor plan below shows the film plane rail positions in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold on the Corridor Plumbing Panel and the filter skid on the Pinhole Wall Plumbing Panel).
@@ -29,9 +29,11 @@ The floor plan below shows the film plane rail positions in the context of the c
 | Dimension | Value | Notes |
 |-----------|-------|-------|
 | Interior length | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Film plane spans this direction |
-| Interior width | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (7 ft 9 in) | **Optical axis = focal length** |
-| Interior height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | Film plane height |
-| Pinhole position | Center of one 20ft long-side wall | |
+| Interior width | <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm (7 ft 9 in) | Optical axis runs across it |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm | Pinhole (24.5mm inboard of the pinhole wall) to the far wall |
+| Interior height | <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm (7 ft 10 in) | |
+| Film plane height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | |
+| Pinhole position | X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on one 20ft long-side wall, centered on the active film plane | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every <!-- BEGIN fact:container_rib_spacing_mm -->457<!-- END fact:container_rib_spacing_mm -->mm (18 in) along length | Rail mounting points |
 
@@ -39,7 +41,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 
 ## 3. Movement Axes
 
-The four-corner mechanism supports all view-camera movements. Corners are labeled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the 7 ft 10 in height direction.
+The four-corner mechanism supports all view-camera movements. Corners are labeled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the height direction.
 
 | Axis | Corners Controlled | Max Travel | Effect |
 |------|--------------------|-----------|--------|
@@ -52,7 +54,7 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 | **Rise / Fall** | All 4 together, offset vertically | ±200mm | Horizon shift |
 | **Shift** | All 4 together, offset horizontally | ±300mm | Left/right perspective offset |
 
-**Maximum tilt angle** (single-axis): **<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->°** — set by the cross-slide Z travel (~250mm); the depth rails alone would allow ~65°.
+**Maximum tilt angle** (single-axis): **<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->°** — set by the cross-slide Z travel (245mm); the depth rails alone would allow ~65°.
 
 **Maximum swing angle** (single-axis): **<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°** — rail-depth limited ≈ 28.7°.
 
@@ -66,7 +68,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical height stays
 
 ## 4. Mechanism Design
 
-> **Note:** The drawings (Sheets 1–8) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane-mechanism.skp` also reflects this.
+> **Note:** The drawings and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane-mechanism.skp` also reflects this.
 
 ### Four-Corner Frame
 
@@ -74,22 +76,22 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 
 ![Sheet 7 — Four-Corner Frame Front Elevation](assets/film-plane-sheet7.png)
 
-- **4 depth rails** — 3×1½" (76×38mm) **6061-T6 aluminum U-channel** — its yield exceeds annealed 304 so strength holds, the ~1mm sag over 2.36m is optically irrelevant at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->, and flatness is carried by the ACM backing — one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=260mm) are transport drop-ins that lift out.
+- **4 depth rails** — 3×1½" (76×38mm) **6061-T6 aluminum U-channel** — its yield exceeds annealed 304 so strength holds, the ~1mm sag over 2.36m is optically irrelevant at f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number -->, and flatness is carried by the ACM backing — one at each corner, running wall-to-wall (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) along the optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=260mm) are transport drop-ins that lift out.
 - **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 304 axles**, carrying the corner's carriage plate.
 - **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
 - **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **304 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~345mm) and X slide (~365mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈257mm in X at max swing — the bar length = that travel + the carriage, so it can reach the full ±40°/±28°), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
-- **Film plane frame** — welded 2"×2"×1/8" plain-6061 aluminum angle, kept as an **expendable part** (bare 6061 corrodes slowly in the splash-not-immersed cyanotype zone, so the angle is replaced when it pits; the ACM backing carries the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm** (rail span × film-plane height). Each corner connects to its cross-slide stack through a **single universal joint** (Belden SSNBUJ750x3/8KB, stainless, factory-booted (integral)): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through a **304 stainless corner gusset** (a flat ¼" L-plate, detailed below) and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **Film plane frame** — welded 2"×2"×1/8" plain-6061 aluminum angle, kept as an **expendable part** (bare 6061 corrodes slowly in the splash-not-immersed cyanotype zone, so the angle is replaced when it pits; the ACM backing carries the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm** (rail span × film-plane height). Each corner connects to its cross-slide stack through a **single universal joint** (Belden SSNBUJ750x3/8KB, stainless, with an integral factory boot). The U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through a **304 stainless corner gusset** (a flat ¼" L-plate, detailed below) and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
-Viewed from above, the full range of swing movement can be seen above. Since both side rails allow the same range of movements, it allows the maximum range of creative control.
+The plan view shows the full swing range. Both side rails give the same range, so the plane can swing equally either way.
 
 ![Sheet 2 — Elevations](assets/film-plane-sheet2.png)
 
-View from the side, the full range of tilt movement can be seen above. Since both the top and bottom rails allow the same range of movements, it allows the maximum range of creative control.
+The side elevation shows the full tilt range. The top and bottom rails give the same range, so the plane can tilt equally either way.
 
 ### Mechanism Components
-The master diagram for the components can be see in the diagram below. The following section discuss the details.
+Sheet 3 is the master hardware drawing; the sections below cover each part.
 
 ![Sheet 3 — Hardware detail](assets/film-plane-sheet3.png)
 
@@ -97,7 +99,7 @@ The master diagram for the components can be see in the diagram below. The follo
 
 The film plane is a **fixed-size rigid rectangle**; tilt and swing are a true **rigid-body rotation** of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the acetal skate) and partly *across* it (in X and Z). The **2-axis cross-slide** absorbs that across-rail travel, and the **single universal joint** (Belden SSNBUJ750x3/8KB, 45° per axis) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt and swing **without stretching**, and keeps the plane a single flat rectangle at every angle.
 
-Each corner connects to that mechanism through a **304 stainless corner gusset** — a flat ¼" L-plate lying on the frame back, bolted to both 6061 frame members; it carries the U-joint, whose other yoke mounts on the **X (swing) slide** — so the corner is *carried by* the slide **through** the U-joint, never bolted to it directly. The gusset is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. It is a flat laser-cut plate (both legs coplanar in the frame plane), not a bent angle — the angle's second leg fouled the cross-slide/carriage packaging. Sheet 9 details this connection square-on and in section.
+Each corner connects to that mechanism through a **304 stainless corner gusset** — a flat ¼" L-plate lying on the frame back, bolted to both 6061 frame members; it carries the U-joint, whose other yoke mounts on the **X (swing) slide** — so the corner is *carried by* the slide **through** the U-joint, never bolted to it directly. The gusset is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. It is a flat laser-cut plate with both legs in the frame plane, so nothing projects into the cross-slide and carriage space. Sheet 9 details this connection square-on and in section.
 
 ![Sheet 9 — Frame + ACM ↔ U-joint ↔ X-slide connection detail](assets/film-plane-sheet9.png)
 
@@ -107,7 +109,7 @@ Sheet 4 sections the universal joint itself — the yokes, the cross/trunnion, a
 
 ### Cross-Slide Load Case
 
-The cross-slide travel and load were firmed against the rotation geometry and the moving mass (Sheet 10):
+The cross-slide travel and load follow from the rotation geometry and the moving mass (Sheet 10):
 
 - **Travel** — the Z (tilt) and X (swing) strokes = (half-dimension) × (1 − cos angle), rotating about the plane center: Z = (FP_H/2)(1 − cos 40°) = **245 mm** and X = (FP_W/2)(1 − cos 28°) = **257 mm**, matching `XSLIDE_Z_TRAVEL` / `XSLIDE_X_TRAVEL` exactly.
 - **Load** — the ~51 kg moving plane puts ~W/4 = **124 N** on each corner. The governing case is the horizontal X (swing) slide in bending at full extension (the Z slide takes gravity axially). **The cross-slide bars are mounted deep** — the 38.1 mm dimension in the load direction — giving σ ≈ 21 MPa, **safety factor ≈ 10**, deflection ≈ 0.1 mm. Mounted flat the bar is marginal (SF ≈ 1.7, failing under a 2× dynamic/asymmetry factor), so **deep mounting is specified**.
@@ -184,14 +186,14 @@ The plane stays flat at all times, so it is always a single tilt **or** swing (o
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
 | C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2,094mm |
-| C1 | Mild tilt | 977 | 977 | 1385 | 1385 | 11.0° | 0° | 2,094mm |
-| C2 | Strong tilt | 622 | 622 | 1740 | 1740 | 31.5° | 0° | 2,094mm |
-| C3 | Max tilt | 494 | 494 | 1868 | 1868 | 40.0° | 0° | 2,094mm |
-| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2,094mm |
-| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,094mm |
-| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,094mm |
+| C1 | Mild tilt | 981 | 981 | 1381 | 1381 | 11.0° | 0° | 2,094mm |
+| C2 | Strong tilt | 634 | 634 | 1728 | 1728 | 31.5° | 0° | 2,094mm |
+| C3 | Max tilt | 508 | 508 | 1854 | 1854 | 40.0° | 0° | 2,094mm |
+| C4 | Mild swing | 929 | 1433 | 929 | 1433 | 0° | 6.6° | 2,094mm |
+| C5 | Strong swing | 430 | 1932 | 430 | 1932 | 0° | 20.0° | 2,094mm |
+| C6 | Max swing | 151 | 2211 | 151 | 2211 | 0° | 28.0° | 2,094mm |
 
-*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4389). Rail positions: left X=260mm, right X=4,649mm.*
+*Depths measured from the pinhole wall about the mid-rail center. Each corner sits at 1,181 ∓ (FP_H/2)·sin(tilt) for tilt, or 1,181 ∓ (FP_W/2)·sin(swing) for swing (FP_H = 2,094, FP_W = 4,389) — a rigid rotation about the plane center. Rail positions: left X=260mm, right X=4,649mm.*
 
 **Combined tilt+swing is limited** — the corners must all stay on the rails, so the full single-axis maxima cannot be used together.
 
@@ -215,32 +217,31 @@ See the **[Master Shopping List, filtered to the film-plane system](master-shopp
 
 ### Wall-Seat Saddles
 
-Each of the **8 rail ends** anchors to the container — **6 of them** with a standalone **IBC-style wall-seat saddle** (a back-plate + horizontal seat the rail end rests on + triangular gusset, dims reused from the IBC frame wall seats, **through-bolted with a 4-bolt pattern to an exterior wall plate**), and **the 2 bottom-right ends (BR, near + far)** with a **combined corner plate shared with the right walkway** (see below). The container shell carries the lateral rigidity, so no cross-cage is needed; this also frees the near/far Yd footprint and removes the near-wall equipment clash. Costs ~110mm of carriage travel at each end (immaterial to the design). The rails now run the full width **saddle-to-saddle** (Yd 0 → C_WID).
+Each of the **8 rail ends** anchors to the container — **4 of them** with a standalone **IBC-style wall-seat saddle** (a back-plate + horizontal seat the rail end rests on + triangular gusset, dims reused from the IBC frame wall seats, **through-bolted with a 4-bolt pattern to an exterior wall plate**), and **the 2 bottom-right ends (BR, near + far)** with a **combined corner plate shared with the right walkway** (see below), and **the 2 far-left ends** on the pivot post (the rear-corner attachment, §4). The container shell carries the lateral rigidity, so no cross-cage is needed. The saddles cost ~110mm of carriage travel at each end, which the design does not need. The rails run the full width **saddle-to-saddle** (Yd 0 → C_WID).
 
-**Right vs left.** The **right** rails (X 4649, TR + BR) are **permanently bolted** into place. The **left** rails (X 260, TL + BL) drop into their saddles on **knurled thumb screws** so they lift out for transport.
+**Right vs left.** The **right** rails (X 4649, TR + BR) are **permanently bolted** into place. The **left** rails (X 260, TL + BL) drop into their near-wall saddles on **knurled thumb screws** and sit on the pivot post at the far wall, so they lift out for transport.
 
 **Combined corner plate.** At each bottom-right corner (near and far) the film plane and the right walkway terminate at the same wall station, so a single **10mm combined corner plate** seats both — the **bottom film rail (BR) on a 150mm seat** and the **right walkway long beam on a 70mm seat** — bolted through the wall with a shared interior/exterior plate pair. The BR rail has **no separate wall-seat saddle** at these corners. The plate is single-sourced in the overview generator (`fp_combined_corner_plate`) and reused by both the film-plane and walkway 3D models; the film-plane model draws the combined plate at the BR corners. See [Walkway Report](walkway-report.md) §4.3.
 
-**Transport mode.** The film-plane left rail is **continuous** (no demountable center segment): the light lock (Ø800 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage transitions X=260, so the **two left film rails (TL + BL) and the muslin screen are struck first** — the left rails lift out of their thumb-screw saddles and re-seat to the film datum on re-deployment — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
+**Transport mode.** Each film-plane left rail is one continuous piece: the light lock (Ø800 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage sweeps through X = 260, so the **two left film rails (TL + BL) and the muslin screen are struck first** — the left rails lift out of their thumb-screw saddles and re-seat to the film datum on re-deployment — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
 
-*Quantities: 6 standalone saddles + 2 combined corner plates = 4 rail corners × near + far wall. The 2 bottom-right (BR) ends use the combined corner plate (carried in the walkway BoM), leaving 6 standalone saddles here. Each saddle: 1 back-plate + 1 exterior plate + 1 seat + 1 gusset (8mm plate) + 4× M12 through-bolts. Hold-downs: thumb screws on the 4 left saddles (8), hex fixing bolts on the 2 TR saddles (4). Subtotal ~$440 (6 saddles) — roughly cost-neutral with the retired brace cage (the combined plates shift ~$130 of plate/bolt cost into the walkway BoM).*
+*Quantities: 8 rail ends = 4 standalone saddles (BL-near, TL-near, TR-near, TR-far) + 2 combined corner plates (BR, carried in the walkway BoM) + 2 far-left flange brackets on the pivot post. Each saddle: 1 back-plate + 1 exterior plate + 1 seat + 1 gusset (8mm plate) + 4× M12 through-bolts. Hold-downs: thumb screws on the 2 left saddles, hex fixing bolts on the 2 TR saddles.*
 
 ### Muslin Clamp System
 
-The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm) — **smaller than this 4,389 × 2,094mm frame** — so its edge sits ~70mm inside the frame's L-channel and is clamped **inboard on the ACM face** rather than captured in the channel (a field detail). The tray, not the frame, sets the muslin size — see [Processing Tray report §4.1](processing-tray-and-spray-bar.md).
+The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm) — **smaller than this 4,389 × 2,094mm frame** — so its edge sits ~70mm inside the frame's L-channel and is clamped **inboard on the ACM face** rather than captured in the channel (a field detail). The tray, not the frame, sets the muslin size — see [Processing Tray report §2.8](processing-tray-and-spray-bar.md).
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,090<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,090<!-- END costing:film-total -->**
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing
 
-- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 304 flat bar and aluminum angle on-site, no minimum order. (The U-channel depth rails now ship as Grainger 795M51 8 ft sticks — one uncut per rail, no cutting needed.)
+- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 304 flat bar and aluminum angle on-site, no minimum order.
 - **Grimco** — City of Industry, CA. Sign-industry ACM panel supplier, large sheet stock.
-- **McMaster-Carr** — aluminum U-channel, 304 shaft supports, acetal rollers, 304 axle rod, and cam clamps; ships nationally.
-- **Ruland** — CL-16-ST clamp-style shaft collar (spray arm); ships nationally.
-- **Grainger** — branches throughout LA, Orange County, San Diego. Same-day local pickup.
+- **McMaster-Carr** — 304 shaft supports, acetal rollers, 304 axle rod and cam clamps; ships nationally.
+- **Grainger** — the 3×1½" 6061-T6 U-channel depth rails (795M51, 8 ft sticks cut to the wall-to-wall length) and the Belden U-joints; branches throughout LA, Orange County and San Diego, same-day pickup.
 
 ---
 
@@ -252,7 +253,7 @@ The mechanism runs **dry**: the acetal skates and UHMW slide pads take no lubric
 
 ## 9. Source References
 
-1. [McMaster-Carr Aluminum U-Channel](https://www.mcmaster.com/aluminum-u-channels) — 3×1½" (76×38mm) 6061-T6 Al U-channel, the depth rail the acetal skate runs in.
+1. [Grainger 795M51 Aluminum U-Channel](https://www.grainger.com/product/795M51) — 3×1½" (76×38mm) 6061-T6 Al U-channel, the depth rail the acetal skate runs in.
 2. [Belden SSNBUJ750x3/8KB Universal Joint](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816) — single universal joint, 3/8" bore, stainless needle-bearing, 45° per axis — the per-corner tilt+swing joint (factory-booted, integral bellows).
-3. [Pinhole Disc Holder (Front Board) Report](pinhole-disc-holder-report.md) — Quick-change pinhole disc holder at the scene end (fixed board; all movement is in the film plane).
+3. [Pinhole Disc Holder (Front Board) Report](pinhole-disc-holder-report.md) — Quick-change pinhole disc holder in the pinhole wall (fixed board; all movement is in the film plane).
 4. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.

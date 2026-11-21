@@ -59,7 +59,7 @@ are kept after each entry.
 - [ ] ventilation-report.md  — confirmed complete (owner). §9 consolidated to the filtered-master-BOM reference; §5.1 Fan-B wiring verified (silicone-jacketed descriptor dropped); louvre-grille part added; prose terse.
 
 ### Construction — Film Plane & Pinhole
-- [ ] pinhole-report.md  — IN PROGRESS: what/why pass 2026-11-21 (awaiting owner review): "welded (or bolted)" adapter → welded (Ø240 × 6 S275, Ø120 aperture, wall aperture Ø150 — as Sheet 3 + parts); the "perimeter light-trap step / labyrinth" isn't in the design → removed; plate→adapter seal is the Ø160 groove in the plate's rear face (said gasket or O-ring in the adapter); carrier washer + dark slide added to §5; Sheet 3 embedded in §3; new §6 Parts pointer (optics + front-board systems); unused Rayleigh / McMaster sources dropped. Open: mount-bolt length + plate seal not in the BOM (TODO).
+- [x] pinhole-report.md  — what/why pass 2026-11-21, confirmed complete (owner) 2026-11-21: "welded (or bolted)" adapter → welded (Ø240 × 6 S275, Ø120 aperture, wall aperture Ø150 — as Sheet 3 + parts); the "perimeter light-trap step / labyrinth" isn't in the design → removed; plate→adapter seal is the Ø160 groove in the plate's rear face (said gasket or O-ring in the adapter); carrier washer + dark slide added to §5; Sheet 3 embedded in §3; new §6 Parts pointer (optics + front-board systems); unused Rayleigh / McMaster sources dropped. Open: mount-bolt length + plate seal not in the BOM (TODO).
 - [ ] film-plane-mechanism-report.md
 - [ ] film-clamp-mechanism-report.md
 - [ ] pinhole-disc-holder-report.md

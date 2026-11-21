@@ -249,7 +249,7 @@ def generate_ruby():
 
     sf_meta = draw.sketchfab_meta_ruby(
         "TBS-001 Pinhole Disc Holder",
-        "The pinhole-end front board of The Big Shoebox Project — a compact quick-change disc holder: "
+        "The pinhole-wall front board of The Big Shoebox Project — a compact quick-change disc holder: "
         "an interchangeable pinhole disc (or lens cell) clamped against a light-seal washer by a "
         "circular retaining ring with four thumb screws.",
         draw.model_uid("pinhole-disc-holder"), "tbs sketchup pinhole", force_name=True)

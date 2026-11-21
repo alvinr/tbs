@@ -756,7 +756,7 @@ PARTS: list[Part] = [
     # the flat wall-frame adapter the disc holder bolts to, and a dark slide over the aperture. ═══
     Part("wall-frame-adapter", "Wall-frame adapter plate + weld", "steel-structural",
          "optics", 1, "ea", 20, 40, "Metal Supermarkets", "local fab",
-         spec="Ø240 × 6mm S275 flat steel adapter welded over the corrugated end wall to present a machined flat datum; 4× M6 tapped @ Ø150 (matches the disc holder) + Ø120 aperture (clears the Ø110 taper); sits over a Ø150 aperture cut through the corrugation. Sheet 3. SKU pending — fab."),
+         spec="Ø240 × 6mm S275 flat steel adapter welded to the interior crests of the corrugated pinhole wall (long side wall) to present a machined flat datum; 4× M6 tapped @ Ø150 (matches the disc holder) + Ø120 aperture (clears the Ø110 taper); sits over a Ø150 aperture cut through the corrugation. Sheet 3. SKU pending — fab."),
     Part("aperture-dark-slide", "Aperture dark slide / cap", "steel-structural",
          "optics", 1, "ea", 15, 30, "local fab",
          spec="A light-tight slide/cap over the front-board aperture to cover the pinhole (or lens) between exposures and during loading. SKU pending — fab."),

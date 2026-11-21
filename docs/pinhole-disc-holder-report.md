@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The front board carries the pinhole at the scene-facing end of the container. This report specifies a simple **quick-change disc/lens-board holder**: an interchangeable **Ø80 carrier** is clamped against a neoprene light-seal washer by a circular retaining ring held with four thumb screws. Carriers swap in seconds — a pinhole board (any diameter), or a **large-format lens board** taking a Copal/Compur 0, 1 or 3 shutter — with no tools beyond fingers. It supersedes the standard Ø600 interchangeable pinhole/lens plate: one compact holder does both jobs.
+The front board carries the pinhole in the scene-facing long side wall of the container. This report specifies a simple **quick-change disc/lens-board holder**: an interchangeable **Ø80 carrier** is clamped against a neoprene light-seal washer by a circular retaining ring held with four thumb screws. Carriers swap in seconds — a pinhole board (any diameter), or a **large-format lens board** taking a Copal/Compur 0, 1 or 3 shutter — with no tools beyond fingers. It supersedes the standard Ø600 interchangeable pinhole/lens plate: one compact holder does both jobs.
 
 There is **no tilt or swing**. A pinhole is a point aperture: the image is a central projection *through the pinhole point*, determined only by the pinhole's position and the film plane, and is completely independent of the orientation of the plate that holds it. Tilting a pinhole board therefore does nothing to the image (it only moves the pinhole point by the small pivot offset). All perspective and keystone control lives in the **film-plane mechanism** (the rear standard), where tilting the *film* plane genuinely changes the projection.
 
@@ -95,7 +95,7 @@ The neoprene washer, seated on the floor of the Ø82 counterbore, seals the carr
 
 ## 6. Wall Mounting
 
-The pinhole (nose) end wall of the container is corrugated steel, so the front plate cannot seat on it directly. A flat steel **wall-frame adapter** — **Ø240 × 6mm S275**, welded over the corrugation — presents the machined flat datum; every alignment reference starts from its face. It carries **4× M6 tapped holes on the Ø150 circle** (matching the plate), a **Ø120 aperture** (clearing the Ø110 taper bore), and sits over a **Ø150 aperture** cut through the corrugation. The Ø180 front plate bolts to it with **4× M6×25 SHCS** at Ø150, each with a flat washer under the head. Fabrication and the full through-wall stack (weld, bolts, apertures, light path) are on **Sheet 3**.
+The pinhole wall (the scene-facing long side wall) is corrugated steel, so the front plate cannot seat on it directly. A flat steel **wall-frame adapter** — **Ø240 × 6mm S275**, welded over the corrugation — presents the machined flat datum; every alignment reference starts from its face. It carries **4× M6 tapped holes on the Ø150 circle** (matching the plate), a **Ø120 aperture** (clearing the Ø110 taper bore), and sits over a **Ø150 aperture** cut through the corrugation. The Ø180 front plate bolts to it with **4× M6×25 SHCS** at Ø150, each with a flat washer under the head. Fabrication and the full through-wall stack (weld, bolts, apertures, light path) are on **Sheet 3**.
 
 ---
 

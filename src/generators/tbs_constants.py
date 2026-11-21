@@ -293,7 +293,7 @@ PDH_TS_D          = 6     # M6 knurled thumb screws (clamp force for a lens boar
 PDH_CARRIER_BORE  = 3     # Ø bore at the shim (camera) face — > the pinhole, inside the shim footprint
 PDH_CARRIER_CSK   = 100   # countersink included angle (°) — 50° half-angle > the ~47° film-corner ray at nominal depth
 PDH_CARRIER_CSK_D = round(PDH_CARRIER_BORE + 2 * PDH_DISC_T * math.tan(math.radians(PDH_CARRIER_CSK / 2)), 1)  # = 14.9 at the scene face
-# Wall-frame adapter — the flat steel plate welded over the corrugated end wall; the Ø180 front plate
+# Wall-frame adapter — the flat steel plate welded to the interior crests of the corrugated pinhole wall (a long side wall); the Ø180 front plate
 # bolts to it (4× M6 @ PDH_MOUNT_BC). It presents the machined flat datum; every alignment starts here.
 PDH_ADAPT_OD      = 240   # adapter plate Ø (S275 steel, welded to the wall crests)
 PDH_ADAPT_T       = 6     # adapter steel thickness

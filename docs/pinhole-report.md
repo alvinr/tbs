@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The pinhole wall is the far (scene-facing) end wall of the container — the plane that carries the camera's aperture. This report covers the **wall interface**: the aperture cut through the container wall and the flat **wall-frame adapter** that the front board bolts to. The front board itself — the interchangeable pinhole/lens mount — is the [Pinhole Disc Holder](pinhole-disc-holder-report.md); the pinhole optics are in the [Pinhole Optics Report](pinhole-optics-report.md).
+The pinhole wall is the scene-facing long side wall of the container — the plane that carries the camera's aperture. The optical axis runs across the container's width to the film plane on the opposite long wall. This report covers the **wall interface**: the aperture cut through the container wall and the flat **wall-frame adapter** that the front board bolts to. The front board itself — the interchangeable pinhole/lens mount — is the [Pinhole Disc Holder](pinhole-disc-holder-report.md); the pinhole optics are in the [Pinhole Optics Report](pinhole-optics-report.md).
 
 > The disc holder takes either a pinhole board or a large-format lens board (Copal/Compur 0/1/3). Focus for a lens is set at the **film plane** (the rear standard's depth rail), so the front board needs no focus tube.
 
@@ -12,7 +12,7 @@ The pinhole wall is the far (scene-facing) end wall of the container — the pla
 
 ## 2. Wall Aperture
 
-The far end wall is corrugated ISO container steel. A **Ø150 aperture** is cut through the corrugation on the optical axis (pinhole center: X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on the long axis). It clears the front board's Ø110 scene-side taper bore with margin. The cut is not a precision feature: the adapter over it sets every alignment datum.
+The pinhole wall is corrugated ISO container steel. A **Ø150 aperture** is cut through the corrugation on the optical axis (pinhole center: X = <!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm on the long axis). It clears the front board's Ø110 scene-side taper bore with margin. The cut is not a precision feature: the adapter over it sets every alignment datum.
 
 ---
 

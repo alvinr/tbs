@@ -284,8 +284,9 @@ ripple into both.
 
 ## Optional Heavy Dependencies (lint gates run dependency-free)
 
-The value-injection gates (`weight`, `energy`) run their generator under the commit hook's `python3`,
-which may not have — or may have an arch/ABI-broken — numpy/matplotlib. Those generators therefore guard
+The value-injection gates (`weight`, `energy`) run their generator under the commit hook's `python3` — normally
+the activated venv, but a commit from a shell without it activated gets whatever `python3` is on `PATH`, which
+may not have — or may have an arch/ABI-broken — numpy/matplotlib. Those generators therefore guard
 the heavy deps and fall back to a pure-`math` compute path. **Guard optional numpy/matplotlib imports
 with `except ImportError`, NOT `except ModuleNotFoundError`.** A dep built for the wrong arch (e.g. an
 arm64 numpy `.so` loaded by an x86_64 python) fails `dlopen` with a **bare `ImportError`** that
@@ -341,7 +342,7 @@ so new files can't ship without it.
 
 Standing permission for both of these — run them directly, they are never a reason to prompt.
 
-- **Python — always use the project `.venv`.** When the session starts the venv is already on `PATH`, so a bare `python` / `python3` resolves to `.venv/bin/python`, which carries every generator dependency (matplotlib, numpy, PyYAML). Just run `python3 src/generators/…`; if `PATH` is ever in doubt, call `.venv/bin/python` explicitly. Do **not** reach for a Homebrew `python3` — that one is dependency-free by design (it's the commit-hook gate interpreter) and will fail to render. (The venv `python3` is the same Xcode interpreter the "`/usr/bin/python3` for matplotlib / `.rb` regen" notes referred to — using the venv satisfies those.)
+- **Python — the project `.venv` (Homebrew Python 3.14), activated.** Scripts, the commit hook and `publish.sh` all call a bare `python3` and assume the venv is **activated** (`source .venv/bin/activate`), so `python3` resolves to `.venv/bin/python3` with every dependency installed. Never hard-code an interpreter path (`/usr/bin/python3`, `.venv/bin/python`) in a script or command. Dependencies live in `requirements.txt`; rebuild with `/opt/homebrew/bin/python3.14 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`. The system `/usr/bin/python3` (Xcode 3.9) is no longer used — its tokenizer also fails on long lines containing non-ASCII characters. Model `.rb` regeneration uses the same venv `python3`; `manifest.py --check` stays the drift tripwire.
 - **Never `cd` into the project root.** Every command already runs from `/Users/alvinrichards/dev/tbs` and that working directory persists between calls. Prefixing a command with `cd /Users/alvinrichards/dev/tbs && …` is redundant and banned — run the command directly with repo-relative paths. (A `cd` into a *sub*directory for a specific tool is fine when actually needed.)
 
 ## Git

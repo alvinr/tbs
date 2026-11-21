@@ -17,6 +17,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   `_MONEY_RAW_BASELINE` as each doc's count drops. Done 2026-11-20: stale ones placeholdered (tier run costs, Lean chemistry, per-print, tray, 2nd battery pack); coincidences listed in `lint.py` `_MONEY_COINCIDENCE`; warning clean.
 - [x] Cost breakdown §9: the summary row is now computed from all its lines (CDL + permits), 2026-11-20.
 
+## 🐍 Python environment (switched to Homebrew 3.14 venv, 2026-11-20)
+
+- [ ] Brochure: fix the dangling internal link to `#section-total` (cost breakdown has three "Section total" headings), then unpin `fpdf2==2.8.4` in `requirements.txt` — fpdf2 ≥2.8.5 rejects the unresolved named destination.
+- [ ] `generate_grp_cutplan.py`, `generate_joint_options.py`, `generate_joint_study.py` save to a retired `diagrams/` path (fail under both 3.9 and 3.14) — point them at `DIAGRAMS_DIR` or retire them if their sheets are gone.
+- [ ] Delete the fallback `.venv-py39` once the 3.14 venv has run a few sessions cleanly.
+
 ## 🛒 Parts to source (SKU + price)
 
 Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generators/parts-worklist.csv` (fill `new_*`, then `apply_parts_csv.py`):

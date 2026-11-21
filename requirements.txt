@@ -1,0 +1,10 @@
+# TBS-001 project Python dependencies (generators, models, docs build).
+# Set up:  python3.14 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+matplotlib>=3.10
+numpy>=2.3
+pillow>=11.3
+PyYAML>=6.0
+Markdown>=3.9
+fpdf2==2.8.4   # later fpdf2 rejects the brochure's dangling #section-total link — fix the link, then unpin (TODO)
+mkdocs>=1.6
+mkdocs-material>=9.7

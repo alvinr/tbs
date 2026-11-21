@@ -30,7 +30,7 @@ models/corridor-panel.skp
 .superpowers/
 
 # Python Virtual Environment
-.venv/
+.venv*/
 
 # Generated SketchUp Ruby build scripts — the .rb are a build artifact of their .py generator
 # (--save), not a source. The dependencies.yml source_hash (manifest) is their staleness tripwire,

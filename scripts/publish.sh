@@ -29,7 +29,7 @@ error()   { echo -e "${RED}[✗]${NC} $*"; exit 1; }
 info "Preflight checks..."
 
 if ! python3 -m mkdocs --version &>/dev/null; then
-    error "mkdocs not found. Run: /usr/bin/python3 -m pip install mkdocs mkdocs-material"
+    error "mkdocs not found. Run: pip install -r requirements.txt (with the .venv activated)"
 fi
 
 if [[ ! -f "$SCRIPT_DIR/mkdocs.yml" ]]; then
@@ -45,7 +45,7 @@ fi
 #    (the film-plane-model slip). Regenerates IN PLACE, so a stale .rb is left fresh — commit + re-send. ──
 if [[ "$MODE" == "deploy" ]]; then
     info "Publish gate: verifying no stale model outputs (lint --verify-all)..."
-    if ! /usr/bin/python3 "$SCRIPT_DIR/src/generators/lint.py" --verify-all; then
+    if ! python3 "$SCRIPT_DIR/src/generators/lint.py" --verify-all; then
         error "Stale model outputs (regenerated in place above) — commit them + re-send the affected .skp, then re-run."
     fi
 fi

@@ -261,7 +261,11 @@ PDH_MOUNT_BC      = 150   # mount bolt circle to the wall-frame adapter
 PDH_MOUNT_N       = 4     # 4× M6 mount bolts
 PDH_MOUNT_D       = 7     # M6 clearance hole
 PDH_SEAL_D        = 171   # O-ring groove centerline Ø on the plate's adapter face — sized for a stock 170 ID × 2.5 O-ring (free CL Ø172.5, ~0.9% circumferential squeeze, so it presses on the outer wall and stays put); outside the Ø150 bolt circle so it also blocks light along the tapped holes; 5.3mm wall to the Ø7 mount holes, 2.8mm to the plate edge
-PDH_MOUNT_BOLT_L  = 25    # M6 SHCS length, plate → adapter: + 1.6 washer + 18 plate leaves 5.4mm in the 6mm adapter, tip clear of the wall cut
+PDH_MOUNT_BOLT_L  = 25    # M6 SHCS length, plate → adapter (McMaster 92314A669)
+PDH_MOUNT_WASHER_T = 1.6  # M6 flat washer under each head (McMaster 91455A120)
+PDH_MOUNT_WASHER_OD = 12
+PDH_MOUNT_HEAD_D  = 10    # M6 socket-head cap screw head Ø × height (ISO 4762)
+PDH_MOUNT_HEAD_H  = 6
 PDH_SEAL_CS       = 2.5   # O-ring cross-section (black NBR)
 PDH_SEAL_GROOVE_W = 3.4   # face-seal groove width
 PDH_SEAL_GROOVE_DEP = 1.9 # face-seal groove depth — ~25% squeeze on the 2.5mm section
@@ -295,6 +299,10 @@ PDH_ADAPT_OD      = 240   # adapter plate Ø (S275 steel, welded to the wall cre
 PDH_ADAPT_T       = 6     # adapter steel thickness
 PDH_ADAPT_APT     = 120   # adapter aperture Ø — clears the Ø110 taper bore
 PDH_WALL_APT      = 150   # aperture cut through the corrugated container wall (> the adapter aperture)
+# Mount-bolt grip: thread in the tapped adapter = length − washer − plate. It must reach ≥0.8·D (4.8mm for M6)
+# and must not pass the adapter's wall-side face, where the Ø150 wall cut runs along the bolt circle.
+PDH_MOUNT_ENGAGE  = round(PDH_MOUNT_BOLT_L - PDH_MOUNT_WASHER_T - PDH_PLATE_T, 2)   # = 5.4
+assert 0.8 * 6 <= PDH_MOUNT_ENGAGE <= PDH_ADAPT_T, f"M6×{PDH_MOUNT_BOLT_L} mount bolt: {PDH_MOUNT_ENGAGE}mm of thread in the {PDH_ADAPT_T}mm adapter"
 
 # Pinhole optics — the pinhole sits in the shim on the carrier's camera face, inboard of the wall's interior
 # face by the adapter + plate (to the seat floor) + washer + carrier stack.

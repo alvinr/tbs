@@ -42,6 +42,7 @@ from dataclasses import dataclass
 
 import costing # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
 from tbs_constants import CLAMP_N_TOTAL, CLAMP_FILLER_D # muslin clamp count (3 edges) + L-channel filler depth
+from tbs_constants import PDH_MOUNT_BOLT_L, PDH_MOUNT_WASHER_T, PDH_PLATE_T, PDH_ADAPT_T, PDH_MOUNT_ENGAGE  # front-plate mount bolt
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -1211,9 +1212,9 @@ PARTS: list[Part] = [
     Part("pdh-thumb-screws", "M6 knurled thumb screws, 4× (retaining ring)", "fasteners-hardware",
          "front-board", 4, "ea", 8.64, 8.64, "McMaster-Carr", "Bolt Depot", part_no="99607A293", url="https://www.mcmaster.com/99607A293/",
          spec="M6 knurled-head thumb screws — clamp the retaining ring (lens-board clamp force), finger-tightened for quick carrier change. 4 off. McMaster 99607A293 $8.64 ea firm (2026-10-01)."),
-    Part("pdh-mount-bolts", "M6×25 SHCS 18-8 SS, 4× (plate → adapter)", "fasteners-hardware",
+    Part("pdh-mount-bolts", f"M6×{PDH_MOUNT_BOLT_L} SHCS 18-8 SS, 4× (plate → adapter)", "fasteners-hardware",
          "front-board", 4, "ea", 11.11 / 50, 11.11 / 50, "McMaster-Carr", "Bolt Depot", part_no="92314A669", url="https://www.mcmaster.com/92314A669/",
-         spec="4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×1.0 × 25 socket-head cap screw, 18-8 SS, full or partial thread with ≥7mm of thread at the tip, with one M6 flat washer under each head (pdh-mount-washers). Grip: 1.6 washer + 18 plate leaves 5.4mm in the 6mm tapped adapter; the tip stops 0.6mm short of the wall, whose Ø150 cut edge lies on the bolt circle. Do not use ×20 (2mm of thread) or ×30 (hits the wall). McMaster 92314A669 $11.11/50-pack (checked 2026-11-21)."),
+         spec=f"4 off — mount the Ø180 plate to the wall-frame adapter at Ø150. M6×1.0 × {PDH_MOUNT_BOLT_L} socket-head cap screw, 18-8 SS, with one M6 flat washer under each head (pdh-mount-washers). Grip: {PDH_MOUNT_WASHER_T} washer + {PDH_PLATE_T} plate leaves {PDH_MOUNT_ENGAGE}mm of thread in the {PDH_ADAPT_T}mm tapped adapter; the tip stops short of the wall, whose Ø150 cut edge lies on the bolt circle (length checked in tbs_constants). McMaster 92314A669 $11.11/50-pack (checked 2026-11-21)."),
     Part("pdh-mount-washers", "M6 flat washer, 18-8 SS, 4× (under the mount-bolt heads)", "fasteners-hardware",
          "front-board", 4, "ea", 4.51 / 100, 4.51 / 100, "McMaster-Carr", part_no="91455A120", url="https://www.mcmaster.com/91455a120/",
          spec="One under each M6×25 mount-bolt head (sets the thread engagement; see pdh-mount-bolts). Same washer as the electrical panel mount. $4.51/pack of 100."),

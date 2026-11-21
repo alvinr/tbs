@@ -43,11 +43,11 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 ## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)
 - The .skp files carry an Author field that is currently unset. Set it on all 11 models from the generators (the same place name/description are force-stamped on `--send`), so it survives a regen. Check whether SketchUp persists it across save → reopen (name/description do not; see the Sketchfab notes) before relying on it.
 
-## 🔩 Front plate → wall adapter (2026-11-21) — bolt-model follow-up open
+## 🔩 Front plate → wall adapter (2026-11-21) — closed
 - ~~Source the mount bolts~~ — DONE 2026-11-21: McMaster 92314A669 M6×25, $11.11/50.
 - ~~Source the O-ring~~ — DONE 2026-11-21: McMaster 93125K132, 170 ID × 2.5mm 70A, $10.56/5.
 - ~~3D vs 2D mounting side~~ — DONE 2026-11-21: interior (adapter welded to the interior crests); overview `pinhole_assembly()` moved inside, stale 100×100 mount plate removed. Re-send overview + construction (water done).
-- **Why the bolt gap went unnoticed:** the bolt length lived in two hand-typed places (parts.py "M6×20", Sheet 3 `PDH_PLATE_T + 6`) with no shared constant, and the 3D draws the bolts as plain cylinders, not `ruby_bolt`, so the `--bolts` grip check never saw them. Fix: one `PDH_MOUNT_BOLT_L` constant read by the drawing, the parts spec and a `ruby_bolt` in the model.
+- ~~Bolt length single-sourced~~ — DONE 2026-11-21: `PDH_MOUNT_BOLT_L` / `PDH_MOUNT_WASHER_T` / `PDH_MOUNT_ENGAGE` in tbs_constants (an assert fails the build if the thread in the adapter drops below 0.8·D or passes the wall face); the Sheet 3 label, the parts spec and the 3D bolts (`ruby_bolt` shank + socket head + washer) all read them, so `--bolts` now audits the grip.
 
 ## 🚰 End-wall ports
 

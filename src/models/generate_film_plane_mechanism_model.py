@@ -82,8 +82,6 @@ PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-
 CD_BOT, CW_BOT = ov.FP_RAIL_WEB, ov.FP_RAIL_FLANGE  # 76 × 38 — 3×1.5 web-vertical section (single-sourced from tbs_constants)
 CD_TOP, CW_TOP = CD_BOT, CW_BOT      # top = the SAME web-vertical section as the bottom
 HB_T = 5                             # web/flange wall = 0.188" (4.78mm)
-SPLICE_YD = 260                      # removable = 6ft (1830) + 260mm; the length-splice sits at the PINHOLE end
-                                     # (Yd~260, shortest-throw = least-travelled) → least chance the skate rolls it
 
 # ── FILM-PLANE WIDTH INSET — the ghost panel edges land on the CARRIAGE line (inb), NOT the rail line.
 # At the rail line (X_L/X_R) the full-height panel skewers the bottom weight beam (which straddles cx by
@@ -110,7 +108,7 @@ CZ_F, CZ_C = 15, ov.C_HGT - 15       # (retained only for the faint floor/ceilin
 # by a retaining screw; no floor post at the cut). RIGHT (BR/TR) = flanged wall-to-wall (shares the IBC
 # combined corner plate). LEFT_CUT_YD ≈ the panel-swing-envelope edge. ──
 LEFT_CUT_YD = 2090                   # cut Yd = the panel-swing envelope edge on the X150 rail (computed); stub = C_WID-2090 = 272mm.
-                                     # NB: removable = 0..2090 = 6.86 ft EXCEEDS the 6 ft stock — needs a longer length or a splice.
+                                     # The removable (0..2090) and the stub are cut from one 8 ft (2,438mm) stick — no length splice.
 
 
 def channel_v(name, cx, zc, y0, ylen, tag, cin, alpha=None):
@@ -294,11 +292,8 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # leaving a bare gusset/seat block with no wall fixing. Single-sourced from film_plane_saddles
         # (draws near Yd0 + far C_WID walls); the web-vertical rail bears on the seat's container-facing
         # projection (336), and the through-bolted interior+exterior plates are the standard wall fixing
-        # (330). BOM unchanged — parts.py already carries these ends in the 6-saddle wall-seat-saddle line.
+        # (330). BOM unchanged — parts.py already carries these ends in the 4-saddle wall-seat-saddle line.
         P.append(film_plane_saddles({tag: (cx, zc)}, walls=(0,)))   # NEAR (pinhole-wall) only — the far end is the pivot post
-        # length splice (removable = 6ft + 260mm) at the PINHOLE end — shortest-throw, least-travelled;
-        # same outboard-web placement so it's clear of the carriage
-        P.append(draw.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
 
     # ── SKATE + CAM RAIL-BRAKE — captured Ø32 rollers / Ø10 axles / Ø20 keepers / carriage plate +
     # retainer bolts + cam-clamp (5128A63). SINGLE source shared with the Movement scene. ──
@@ -332,9 +327,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
         # the standalone fpm model) is untouched + byte-identical. (Regressed once to just "REMOVABLE"
         # — see commit 24754abd; restored.)
         _REM = ("REMOVABLE", "EXT plate", "far-left bolt", "far flange",
-                "Locating pin", "Bottom support bridge",
-                "Length splice")   # drop-in cut-joint hardware — out with the beam; the pinhole-end
-                                   # length splice is bolted to the REMOVABLE section and lifts out with it
+                "Locating pin", "Bottom support bridge")   # drop-in cut-joint hardware — out with the beam
         is_rem = lambda s: any(any(k in n for k in _REM) for n in name_rx.findall(s))
         P = [p for p in P if (is_rem(p) if keep == "removable" else not is_rem(p))]
     return "\n".join(P)

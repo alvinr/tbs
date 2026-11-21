@@ -985,8 +985,7 @@ def film_plane_left():
     """LEFT (cargo-door) end of the film-plane corner mechanism — the STATIC parts that STAY, reused
     verbatim from the dedicated model (fpm.corner(..., keep='fixed')): the fixed parking STUB + the
     detailed skate/rollers + carriage plate + cam-brake + green-Z/purple-X cross-slides + U-joint + 304
-    corner plate + pinhole-wall gusset. The REMOVABLE rail section + its welded bridge + the pinhole-end
-    length splice (bolted to the removable beam) are the LIFT-OUT — built by liftout_film_rail()
+    corner plate + pinhole-wall gusset. The REMOVABLE rail section + its welded bridge are the LIFT-OUT — built by liftout_film_rail()
     (keep='removable') as a Panel-Swing DC child that
     HIDES when swung, so the swinging drum surround can transition the X=150 rail plane in transport.
     One source with overview (fpm.corner emits ov.ruby_* at the shared coords; late import breaks the cycle)."""

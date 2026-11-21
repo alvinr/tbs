@@ -100,7 +100,6 @@ RAIL_W   = 60           # rail width in plan view
 # both to tbs_constants at the FP_W/FP_H cascade so 2D + 3D single-source them (see TODO). ──
 from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF_TOP, RAIL_OFF_BOT, WALKWAY_H
 LEFT_CUT_YD = 2090      # cut Yd on the left rail (X=RAIL_X_L) = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm
-SPLICE_YD   = 260       # length splice at the PINHOLE end (removable = 6 ft stock + 260mm)
 
 # ── Option A rigid-plane geometry ────────────────────────────────────────────
 # The film plane is a FIXED-SIZE rigid rectangle that rotates about its CENTRE
@@ -1123,7 +1122,7 @@ def transport_elev(ax):
     For transport the hinge panel folds about the pivot post (Yd PIVOT_YD) and sweeps the left-rail line, so
     the LEFT rail is SPLIT: a fixed STUB (parks the corner, anchored at the pivot post + far wall) and a
     REMOVABLE section that lifts out. A welded BRIDGE (on top, welded to the removable) laps the cut; a
-    locating PIN + a short bottom support bridge secure it. A length SPLICE at the pinhole end makes 6 ft stock reach; a pinhole-wall GUSSET seats
+    locating PIN + a short bottom support bridge secure it. A pinhole-wall GUSSET seats
     that end. (RIGHT rail = flanged wall-to-wall, panel at lower right.)"""
     ax.set_xlim(-320, 2660); ax.set_ylim(-235, 185); ax.axis("off")
     rz0, rz1 = 74, 118
@@ -1152,8 +1151,6 @@ def transport_elev(ax):
     _rect(ax, LEFT_CUT_YD - 32, rz0 - 12, 64, 12, C_CAR, z=8)
     for wx in (LEFT_CUT_YD + 6, LEFT_CUT_YD + 20):                              # fillet weld beads (stub side, underneath)
         ax.plot([wx, wx + 10], [rz0 - 1, rz0 - 1], color=OUT, lw=2.0, zorder=10)
-    # length SPLICE at the pinhole end — on the OUTBOARD WEB-BACK (far side), so shown as a GHOST outline
-    ax.add_patch(plt.Rectangle((SPLICE_YD - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
     # pinhole-wall SADDLE — interior seat/gusset (Yd 0) + EXTERIOR plate + 2 M12 through-bolts (heads OUTSIDE, nuts inside)
     _rect(ax, 0, rz0 - 36, 44, (rz1 - rz0) + 42, C_STEEL, z=3)
     ax.add_patch(plt.Rectangle((-24, rz0 - 30), 8, (rz1 - rz0) + 52, fc=C_STEEL, ec=OUT, lw=0.9, zorder=4))
@@ -1179,8 +1176,6 @@ def transport_elev(ax):
     draw_dim_h(ax, 0, LEFT_CUT_YD, -70, f"REMOVABLE = {LEFT_CUT_YD}mm (lifts out)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     draw_dim_h(ax, LEFT_CUT_YD, C_WID, -130, f"STUB = {C_WID - LEFT_CUT_YD}mm\n(parks corner)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     # ── leaders (spread above / below the rail to keep the crowded cut region legible) ──
-    leader(ax, SPLICE_YD, (rz0 + rz1) / 2, 270, -55, "length SPLICE (web-back, GHOST — far side) — 6 ft stock + reach",
-           ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, -20, rz0 + 6, -30, -108, "pinhole-wall SADDLE — seat + gusset + EXTERIOR plate + 4× M12\n(hex heads OUTSIDE, nuts inside)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, LEFT_CUT_YD + 44, rz1 + 12, 1380, 150, "welded BRIDGE (ON TOP) — welded to the REMOVABLE; GRAVITY bears it on the STUB;\na locating PIN (flush to the inner-rail top) stops it lifting (weight on the bridge, not the pin)",
@@ -1218,11 +1213,6 @@ def right_flanged(ax):
             ax.add_patch(plt.Rectangle((ynt - 2.5, bz - 4.5), 5, 9, fc="#6A6A72", ec=OUT, lw=0.6, zorder=10))  # NUT — inside
     draw_dim_v(ax, -52, rz0 + 6, rz1 - 6, f"{(rz1 - 6) - (rz0 + 6):.0f}mm", offset=8, fs=5.2, color=DIM, font=FONT)   # bolt vertical spacing
     draw_dim_h(ax, 0, 40, rz1 + 20, "40mm", offset=6, fs=5.2, color=DIM, above=True, font=FONT)                       # flange width
-    # length SPLICE (GHOST) — the 2362 mm wall-to-wall rail also exceeds 6 ft stock, so it too takes one splice
-    sx = 900
-    ax.add_patch(plt.Rectangle((sx - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
-    leader(ax, sx, rz1, sx + 40, 132, "length SPLICE (web-back, GHOST) — rail > 6 ft stock",
-           ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
     leader(ax, -20, rz1, 180, 138, "end bracket → wall — EXTERIOR plate + 4× M12 (hex heads OUTSIDE);\nBR = IBC combined corner plate · TR = wall-seat saddle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, C_WID - 20, rz0 - 4, C_WID - 260, -44, "outboard end plate trimmed 35mm (IBC clearance);\nshares the IBC combined corner plate",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
@@ -1253,10 +1243,9 @@ def sheet4():
         "to stop it lifting (hand-releasable): the removable drops straight in and the pin stays unloaded. A "
         "short BOTTOM support bridge (~64mm), welded to the stub, laps under to carry the removable's end. No "
         f"floor post at the cut — the stub cantilevers only ~{PIVOT_YD - LEFT_CUT_YD}mm from the pivot post, so nothing fouls the sliding carriage.",
-        "4. Each removable exceeds 6 ft stock, so a length SPLICE sits at the PINHOLE end (Yd ~"
-        f"{SPLICE_YD}) — the shortest-throw, least-travelled zone, least likely for the skate to roll over it.",
-        "5. The length-SPLICE fishplate sits on the OUTBOARD WEB-BACK (far side, ghosted), clear of the rollers; "
-        "the cut BRIDGE sits on top (gravity-held) with a short bottom support bridge under. U-joint stub→carrier clamp (4040N12) + U-joint body: Sheet 3.",
+        f"4. Each left rail (removable + stub) and each right rail is cut from one {FP_RAIL_STOCK_LEN}mm (8 ft) Grainger "
+        "795M51 stick — no length splice, so the skate rolls on an unbroken channel. U-joint stub→carrier clamp "
+        "(4040N12) + U-joint body: Sheet 3.",
     ], 2, 99, 4.1, fs=6.2, title_fs=6.8, color=DIM, width=48, wrap=132, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)

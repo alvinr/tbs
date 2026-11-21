@@ -19,7 +19,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import os
-from tbs_constants import FP_W, FP_H, C_WID, FP_Y_MIN, DIAGRAMS_DIR
+from tbs_constants import FP_W, FP_H, FP_Y_MIN, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_constants import DISTORTION_DPI
 from tbs_constants import PH_F  # noqa: E402

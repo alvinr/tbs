@@ -98,10 +98,10 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Film plane mechanism (4-corner U-channel + acetal skate + Belden U-joint) | $4,316 |
 | Pinhole disc holder (front board) | $329 |
 | Housed revolving-door light trap (plastic-skin Ø800 housing + C-shell drum, bearings, seals, fabrication) | $3,667 |
-| Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $7,705 |
+| Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $7,661 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $3,502 |
 | Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $848 |
-| Perimeter walkway (4 sections + drum-exit punch-out) | $2,619 |
+| Perimeter walkway (4 sections + drum-exit punch-out) | $2,663 |
 | Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,490 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,282 |
 | Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + tap trunk extension) | $275 |

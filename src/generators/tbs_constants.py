@@ -1011,6 +1011,8 @@ PROC_TRAY_DRAIN_X  = 2386       # FIXED (2026-08-12: kept at 2386 when FP_X_L→
 #                                 clear walkway grate bay, clearing the X2526 cantilever bracket by 50mm
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at the near rim (low edge of the Yd fall)
 
+STEEL_ANGLE_LEG    = 25.4         # 1×1×3/16in steel equal-leg angle — leg (mm); one stock for the right-walkway grating bearer + the plywood mounting brackets
+STEEL_ANGLE_T      = 4.8          # 1×1×3/16in steel angle — leg thickness (mm)
 BV05_X             = PH_X - 150   # BV-05 selector + BV-06 on/off riser X on the pinhole wall — 150mm toward the EP of the pinhole centerline, clear of the tray-sump suction riser
 BV05_YD            = 0           # BV-05 spray selector on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
 BV05_Z             = 700         # BV-05 spray selector (Blue/Brown) height on the pinhole wall (mm AFF) — below the pinhole assembly (Z1024+)

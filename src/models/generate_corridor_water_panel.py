@@ -18,7 +18,7 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
-from tbs_constants import PUMP_YD_SPAN, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H
+from tbs_constants import PUMP_YD_SPAN, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H, STEEL_ANGLE_LEG, STEEL_ANGLE_T
 
 # ── deep-box frame geometry (from the fork; one source) ──
 S       = ov.IBC_FRAME_RHS               # 50.8×50.8 RHS (2×2×0.120in)
@@ -243,19 +243,16 @@ def frame(part="all"):
                 for dx in (-bpx, bpx):
                     for dy in (-bpc, bpc):
                         p.append(draw.ruby_bolt("Foot→plate bolt M12", pcx + dx, cy + dy, pt, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # FA2 into the sub-plate boss
-        # REAR-panel mount brackets only (on the back uprights, set back behind the inside face).
-        # Drawn as an L-ANGLE (5mm legs, per Plate 5 / Detail D): a horizontal base leg TEK-screwed to the
-        # post (RP2) + a vertical upstand the rear panel bolts to (RP1) — NOT a solid block.
-        bw, bproj, bwid, blt = 60, 40, 30, 5      # upstand height, projection, bracket width (X), leg thickness
-        for py, pdir in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
-            # top pair dropped from TOP_Z-120 (2176) to sit under the new lowered panel top
+        # REAR-panel mount brackets (on the back uprights, behind the panel): ONE piece of 1×1×3/16 angle
+        # (the walkway bearer stock) — a leg flat on the upright's inboard face, TEK-screwed (RP2), and an
+        # upstand behind the ply that the rear panel bolts through (RP1).
+        bw, L, T = 60, STEEL_ANGLE_LEG, STEEL_ANGLE_T     # bracket height (Z) · leg · thickness
+        xc = BACK_X + EQT + T                              # outer corner X — upstand directly behind the ply
+        for py, sy in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
             for bz in (120, TOP_Z / 2, PANEL_TOP_Z - 120):
-                by0 = py if pdir > 0 else py - bproj
-                post_y = by0 if pdir > 0 else by0 + bproj - blt   # thin leg sits flat on the upright INBOARD face
-                p.append(draw.ruby_box("Rear-panel bracket post leg", BACK_X, post_y, bz - bw / 2,
-                                     EQT + blt, blt, bw, color=draw.C_STEEL))        # vertical leg FLAT on the upright's Yd face — TEK-screwed to the post (RP2)
-                p.append(draw.ruby_box("Rear-panel bracket upstand", BACK_X + EQT, by0, bz - bw / 2,
-                                     blt, bproj, bw, color=draw.C_STEEL))            # vertical upstand parallel to the ply (Yd-Z plane) — the panel bolts THROUGH it (RP1)
+                prof = [(xc, py), (xc - L, py), (xc - L, py + sy * T), (xc - T, py + sy * T),
+                        (xc - T, py + sy * L), (xc, py + sy * L)]
+                p.append(draw.ruby_prism("Rear-panel bracket (1×1×3/16 angle)", prof, bz - bw / 2, bw, color=draw.C_STEEL))
     return "\n".join(p)
 
 
@@ -865,7 +862,7 @@ def support_boards(sides=("far", "near", "near-upper")):
     `sides` selects which boards to emit (far / near / near-upper) so the construction
     sequence can stage the FAR board on a later click; defaults to all (overview/water)."""
     p = []
-    LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg length / bracket height
+    L, T, LH = STEEL_ANGLE_LEG, STEEL_ANGLE_T, 50   # 1×1×3/16 angle leg · thickness · bracket height
     for side, wall_yd, ddir, (z0, z1), ryd, risers_x, clamp_z in (
             ("far",  YD_FAR,  -1, SB_FAR_Z,  SB_RISER_YD_FAR,  SB_FAR_RISERS_X,  SB_FAR_CLAMP_Z),
             ("near", YD_NEAR, +1, SB_NEAR_Z, SB_RISER_YD_NEAR, SB_NEAR_RISERS_X, SB_NEAR_CLAMP_Z),
@@ -881,13 +878,13 @@ def support_boards(sides=("far", "near", "near-upper")):
                              SB_X0, by, z0, BW_CUT, EQT, z1 - z0, color=draw.C_PLY))
         for px, xdir in ((SB_X0, +1), (SB_X1, -1)):        # front / back post inner face
             for bz in (z0 + 35, z1 - 35):
-                lx = px if xdir > 0 else px - LT           # welded leg — flat on the post inner face
-                p.append(draw.ruby_box(f"Support L-bracket weld leg ({side})",
-                                     lx, by, bz - LH / 2, LT, EQT, LH, color=draw.C_STEEL))
-                ly = back_yd if ddir < 0 else back_yd - LT  # landing leg — behind the ply back face
-                lxx = px if xdir > 0 else px - LL
-                p.append(draw.ruby_box(f"Support L-bracket landing leg ({side})",
-                                     lxx, ly, bz - LH / 2, LL, LT, LH, color=draw.C_STEEL))
+                # ONE piece of 1×1×3/16 angle: a leg flat on the post inner face (TEK-screwed, SP2) and a
+                # landing leg behind the ply back face (the ply bolts to it, SP1).
+                yc = back_yd + (T if ddir < 0 else -T)      # landing leg's outer face
+                sy = ddir                                    # from the corner toward the ply
+                prof = [(px, yc), (px + xdir * L, yc), (px + xdir * L, yc + sy * T), (px + xdir * T, yc + sy * T),
+                        (px + xdir * T, yc + sy * L), (px, yc + sy * L)]
+                p.append(draw.ruby_prism(f"Support L-bracket ({side}, 1×1×3/16 angle)", prof, bz - LH / 2, LH, color=draw.C_STEEL))
         # riser P-clips — one per riser at each clamp row, bridging the riser back to the board face
         for rx in risers_x:
             z_lo, z_hi = RISER_Z_SPAN.get(rx, (-1e9, 1e9))

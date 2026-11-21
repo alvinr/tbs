@@ -43,12 +43,12 @@ Capital systems ranked by mid cost:
 <!-- BEGIN costing:ca-ranking -->
 | System | Mid | % of capital | Notes |
 |---|--:|--:|---|
-| **Processing water system** | $7,705 | 26% | Tray (304 SS) + IBC frame dominate |
+| **Processing water system** | $7,661 | 26% | Tray (304 SS) + IBC frame dominate |
 | **Film-plane mechanism** | $4,316 | 15% | Carriages, Option-A 304 cross-slides, muslin spring clips, wall-seat saddles |
 | **Light lock** | $3,667 | 12% | Plastic-skin custom fabrication |
 | **Power & electrical** | $3,502 | 12% | Battery + solar + distribution + protection |
 | **Container + delivery** | $3,300 | 11% | Grade-dependent (CW vs WWT) |
-| **Perimeter walkway** | $2,619 | 9% | GRP grating + steel cantilevers |
+| **Perimeter walkway** | $2,663 | 9% | GRP grating + steel cantilevers |
 | **Swing pivot** | $1,490 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
 | **Hinged panel structure** | $1,282 | 4% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
 | **Ventilation & cooling** | $848 | 3% | Fans + cooler + inverter + baffle-duct fab + canopy |

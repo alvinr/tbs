@@ -317,8 +317,8 @@ retains > 200 PSI hot, far above service.
 The corridor pump risers and the back-of-panel drain runs cantilever off the pump ports and
 tote taps, so each is backed and clamped rather than left hanging on its solvent-weld joints.
 The method mirrors the rear panel: **18mm exterior-ply boards recessed flush** into the window
-between the IBC-frame front and rear side-posts, carried on **welded steel L-brackets** (one leg
-welded to each post inner face, the ply bolted to the landing leg), with the runs held to the
+between the IBC-frame front and rear side-posts, carried on **steel L-brackets** — each one piece of
+1×1×3/16 angle, one leg TEK-screwed to the post inner face, the ply bolted to the other — with the runs held to the
 board face by **cushioned P-clips**.
 
 ![TBS-001 — Pump-Run Support Detail — Sheet 1: Board Elevations (far / near / near-upper)](assets/support-detail-sheet1.png)
@@ -340,7 +340,7 @@ board face by **cushioned P-clips**.
 The corridor ball valves (BV-01 / BV-03 on the lower boards, BV-02 / BV-07 on the upper board) sit
 below the clamp row above them, rotated 45° so their handles swing into the open corridor on the
 diagonal — reachable while clear of the boards. Hardware: 3 side boards
-(cut from the corridor ply sheet), 12 welded L-brackets, and 46 cushioned 3/4"
+(cut from the corridor ply sheet), 12 angle L-brackets, and 46 cushioned 3/4"
 P-clips (§8).
 
 ---

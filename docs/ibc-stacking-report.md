@@ -114,7 +114,7 @@ and the walkway-arm connection are validated and scheduled in §3.4–3.5 alongs
 | Floor anchorage | 4 × 150 × 150 × 12mm flange-plate feet, each bolting (4 × M12) to a shared steel **floor-anchor sub-plate** that self-taps into the container's cross-members (§3.6; front feet reach ~25mm under the tray) |
 | Front retaining bars | **8 × 50×20×3 RHS** — **two per tote face** (upper + lower), both seated in the 25mm gap to the film rail, wall → upright per column. Two per face so the loaded-transport case passes (§3.4) |
 | Anti-slip matting | **4 × certified anti-slip mat (μ ≥ 0.6)** under the tote interfaces (2 on the floor + 2 on the lower-tote cage tops) — raises the sliding friction that credits against the forward thrust (§3.4) |
-| Wall joist hangers | **8 × identical 2-bolt Simpson-style U-pocket** — one per bar (the pair uses identical hangers for fab simplicity), each **through-bolted (2 × M12×70) to an exterior backing plate** (M12×70 spans the 8mm plate + corrugation + 4mm hanger grip); 16 wall penetrations in all |
+| Wall joist hangers | **8 × identical 2-bolt Simpson-style U-pocket** (4 mm plate, seat welded to the back-plate — W5) — one per bar (the pair uses identical hangers for fab simplicity), each **through-bolted (2 × M12×70) to an exterior backing plate** (M12×70 spans the 8mm plate + corrugation + 4mm hanger grip); 16 wall penetrations in all |
 | Exterior backing plates | 8 × 60 × 205 × 8mm steel (one per hanger), on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | Weld-on lashing rings | 8 on the front bars (4 per tier); 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL (2" strap-limited), 2 straps per stack |
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
@@ -187,7 +187,7 @@ are the standard values for the grade.
 | CJ | Walkway cantilever arm → front upright (arm end-plate → **rear backing plate**, bolted through the upright; **bearing-type — both bolts above the arm**, clear of the corridor bottom rail + the welded arm; internal crush sleeve per bolt) | M12×100 hex through-bolt | Gr.8.8 zinc | 2 arms × 2 bolts = 4 | **~90 N·m** (85–95 band) | flat both ends | nyloc nut |
 | BC-W | Front-bar wall end → wall-hanger **L-cleat** — the SAME joint as the post end: the bar drops into the L, **1 HORIZONTAL** M12×65 through the vertical leg + the bar's 50mm web (nut on a far-web backing plate). The L is welded to the inside wall plate; the inside + outside plates clamp the container wall via WH | M12×65 hex (92800A481, 18-8 SS) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
 | RP2 | Rear-panel L-bracket → back upright (post leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 6 = 12 | driven to seat — no torque spec (self-drilling; light static panel load) | bonded washer | thread-forming, self-locking |
-| SP2 | Side-panel pipe-run L-bracket → side post (weld leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 12 = 24 | driven to seat — no torque spec (self-drilling; light pipe load) | bonded washer | thread-forming, self-locking |
+| SP2 | Side-panel pipe-run L-bracket → side post (screw leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 12 = 24 | driven to seat — no torque spec (self-drilling; light pipe load) | bonded washer | thread-forming, self-locking |
 
 **Marks** (grouped by the part each joint belongs to): **FA** floor-anchor (1 sub-plate self-tap · 2 foot→boss) · **BC** front bar-cleat (**-C** corridor end · **-W** wall end, same detail) · **WH** wall-hanger · **CJ** cantilever-arm joint (walkway arm → upright, IBC-owned) · **RP** rear panel (1 panel→bracket · 2 bracket→post) · **SP** side-panel pipe-run (1 panel→bracket · 2 bracket→post). Welds carry their own **W1–W6** marks (below).
 
@@ -212,7 +212,7 @@ The rear-panel bracket (**RP2**) and the side-panel pipe-run L-bracket (**SP2**)
 
 ![TBS-001 IBC Frame — Sheet 6: Weld Map](assets/ibc-frame-sheet6.png)
 
-The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **bolt** to the front uprights (CJ, an end-plate welded to the arm + a rear backing plate, 4× M12 through-bolts — not a frame weld) and are fabricated per Sheet 5.
+The wall joist hangers are 4 mm plate weldments (seat welded to the back-plate, W5); the exterior backing plates are loose (bolted, not welded). The corridor-panel and side-board brackets are single pieces of 1×1×3/16 angle — the same stock as the right-walkway grating bearer — TEK-screwed, not welded. The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **bolt** to the front uprights (CJ, an end-plate welded to the arm + a rear backing plate, 4× M12 through-bolts — not a frame weld) and are fabricated per Sheet 5.
 
 These joints are drawn on **Sheet 4** (each with its weld + fastener callout):
 
@@ -264,12 +264,14 @@ General (unspecified) dimensions: ISO 13920 Class B. Break sharp edges; deburr a
 
 ### 3.8 Assembly + Weld Sequence
 
-The frame is a **shop-welded box that bolts out in the field** — deliberately, so the only hot work is the
-deep 4-leg weldment (§3.5, W1–W6). Everything hung on it afterward — the wall hangers, the retaining bars,
-the corridor-panel and pipe-run brackets — attaches with fasteners (FA–SP2), so the fit-out and the tote
-loading happen on a **finished, painted frame with no welding on-site.** Build in four phases:
+The frame is **shop-welded and bolts out in the field**. All hot work is done in the shop (§3.5, W1–W6): the
+deep 4-leg box itself, plus the welded sub-parts — the bar-end cleats on the uprights (W3), the lashing rings on
+the front bars (W4), the wall-hanger weldments (W5) and the ribbon cross-beams on the walkway bearers (W6).
+Everything is then joined with fasteners (FA–SP2) — the wall hangers to the walls, the retaining bars, the
+corridor-panel and pipe-run brackets — so the fit-out and the tote loading happen on a **finished, painted frame
+with no welding on-site.** Build in four phases:
 
-**Phase 1 — Shop-weld the deep 4-leg box (the only weldment).**
+**Phase 1 — Shop-weld the deep 4-leg box and the welded sub-parts.**
 
 1. **Fit-up in a jig** referencing the datums (§3.7): the four foot undersides on the flat table = datum A, the
    front-upright faces = B, the corridor centerline = C. Clamp the four uprights + the top/bottom rings; set
@@ -316,9 +318,9 @@ Cut sizes are member-to-member butt lengths — add saw kerf per shop practice.
 | Front retaining bar | 50×20×3 RHS | A500 Gr.B | 1,042 mm | 8 | 2 per tote face (near+far columns identical length) |
 | Foot plate | 150×150×12 plate | A36 plate | 150×150×12 mm | 4 | 4× Ø12mm anchor holes on Ø100 PCD |
 | Exterior wall backing plate | 8 mm plate | A36 plate | 60×204.8×8 mm | 8 | one per wall hanger; spreads the M12×70 load into the corrugated wall |
-| Wall joist hanger | 4 mm folded plate | A36 plate | back 205 + seat 70, ×60 wide | 8 | Simpson-style U-pocket; folded, not welded |
+| Wall joist hanger | 4 mm plate | A36 plate | back 205 + seat 70, ×60 wide | 8 | Simpson-style U-pocket; seat fillet-welded to the back-plate (W5) |
 | Front-bar cleat (BC-C/W3) | 8 mm angle | A36 plate | leg 90 + upstand 59, ×20 wide | 8 | L-angle: horizontal leg (bar sits on it) + upstand fillet-welded to the upright |
-| Rear-panel bracket (D) | 5 mm angle | A36 plate | base 40 + upstand, ×60 tall × 30 wide | 6 | L-bracket TEK-screwed to the back uprights (RP2) + panel bolts (RP1) |
+| Rear-panel bracket (D) | 1×1×3/16 angle (25.4×25.4×4.8) | A36 plate | 60 mm length | 6 | one piece of angle — walkway-bearer stock; TEK-screwed to the back uprights (RP2) + panel bolts (RP1) |
 | Weld-on lashing ring | forged ring + base | — | purchased | 8 | not a cut member — 2 per lower front bar (4 per tier), W4 |
 
 **Stock (buy sticks; add saw kerf + ~10% drop):**

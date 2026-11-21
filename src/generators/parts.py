@@ -212,9 +212,9 @@ PARTS: list[Part] = [
          spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1,795×2,160 — extended down to Z200 so the low runs clip to the ply; 2 corner notches) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter, #30). PIECED from 2 sheets (butt-jointed): the 1,795×2,160 face exceeds a single 4×8 sheet 1,219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
          panel="Pinhole Wall"),
     # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
-    Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",
-         "water", 6, "ea", 2.5, 6.5, "Home Depot",
-         spec="L-brackets fixing the corridor plumbing panel to the IBC-frame back uprights — TEK-screwed to the post (RP2, 2× #14 self-drillers per bracket — no weld, bolt-on to the pre-painted frame), rear panel fastened RP1 (M8 into captive tee-nut), per ibc-stacking-report §3.5. Price est.",
+    Part("corridor-panel-brackets", "6× rear-panel brackets, 60mm lengths of 1×1×3/16 steel angle (corridor panel → IBC uprights)", "fasteners-hardware",
+         "water", 6, "ea", 0, 0, "(cut from walkway-right-bearer)",
+         spec="L-brackets fixing the corridor plumbing panel to the IBC-frame back uprights — TEK-screwed to the post (RP2, 2× #14 self-drillers per bracket — no weld, bolt-on to the pre-painted frame), rear panel fastened RP1 (M8 into captive tee-nut), per ibc-stacking-report §3.5. Cut from the walkway-right-bearer 20 ft angle — its cost is carried there.",
          panel="Corridor"),
     Part("corridor-panel-fasteners", "Corridor panel mount fasteners (shirt-to-panel screws + lag bolts)", "fasteners-hardware",
          "water", 1, "lot", 10, 11, "Home Depot",
@@ -224,10 +224,10 @@ PARTS: list[Part] = [
          "water", 36, "ea", 12.88 / 25, 12.88 / 25, "McMaster-Carr", part_no="90822A620", url="https://www.mcmaster.com/90822A620/",
          spec="#14 × 1in HWH self-drilling TEK screw, #4/5 point (drills the ~6–8mm steel-to-steel: angle leg + the 3mm RHS post wall), 410 SS for the damp container. Attach the corridor-panel L-brackets (RP2, 2×6=12) + the side-panel pipe-run L-brackets (SP2, 2×12=24) to the IBC posts — NO weld, so the brackets bolt onto a pre-painted frame with no hot work. McMaster 90822A620 $12.88/pack of 25 firm (2026-09-07) — the ONE #14×1 HWH 410-SS TEK SKU, shared with the walkway half-lap hold-down (walkway-arm-holddown).",
          panel="Corridor"),
-    # — #29 pump-run supports: 2 side ply boards (cut from corridor-panel-ply-18) + welded L-brackets + cushioned P-clips —
+    # — #29 pump-run supports: side ply boards (cut from corridor-panel-ply-18) + TEK-screwed angle L-brackets + cushioned P-clips —
     Part("pump-support-brackets", "12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps", "fasteners-hardware",
-         "water", 1, "lot", 12, 24, "Metal Supermarkets", supplier_alt="Home Depot",
-         spec="12× steel L-brackets TEK-screwed to the IBC side-post inner faces (2 per post × 3 side-panel boards: far, near-lower, near-upper) — the side-wall boards carry the PIPE runs (P-clips), NOT pumps; the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut from 1×1×1/8 steel angle offcuts — attached SP2 (2× #14 self-drillers per bracket, no weld), boards fastened SP1 (¼-20 into captive tee-nut), per ibc-stacking-report §3.5. MATERIAL est.; FAB (cut) = shop quote (material-now rule). (Registry key kept as 'pump-support-brackets' for cost continuity; they support the pump-run PIPING.)",
+         "water", 1, "lot", 0, 0, "(cut from walkway-right-bearer)",
+         spec="12× steel L-brackets TEK-screwed to the IBC side-post inner faces (2 per post × 3 side-panel boards: far, near-lower, near-upper) — the side-wall boards carry the PIPE runs (P-clips), NOT pumps; the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut (50mm lengths) from the same 1×1×3/16 steel angle stock as walkway-right-bearer — attached SP2 (2× #14 self-drillers per bracket, no weld), boards fastened SP1 (¼-20 into captive tee-nut), per ibc-stacking-report §3.5. MATERIAL est.; FAB (cut) = shop quote (material-now rule). (Registry key kept as 'pump-support-brackets' for cost continuity; they support the pump-run PIPING.)",
          panel="Corridor"),
     Part("pipe-support-clips", "87× cushioned pipe P-clips (3/4\" + 1/2\" pipe)", "fasteners-hardware",
          "water", 87, "ea", 0.55, 0.95, "Home Depot", supplier_alt="McMaster-Carr",
@@ -381,8 +381,8 @@ PARTS: list[Part] = [
          "ibc-frame", 4, "ea", 30, 45, "Metal Supermarkets", spec="Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~24 m; front retaining bars DOUBLED to 8 (2/tote face, 50×20×3, ~8.8 m) after the EN 12195-1 loaded-transport case — ibc_frame_load.py; the 50×20×3 bars are a separate section from the 2×2 uprights, lumped here as bulk steel pending the Phase-D split). MATERIAL = 2×2×⅛in A500 square tube (US equiv, confirmed 2026-08-01). SOURCING: full 6m/20-24ft sticks minimize splices but ship only by freight — online cut-to-size shops cap at 96in (UPS max: AllMetals/InchOfMetal 96in, Speedy $7.27/ft cut-retail ≤90in). So the ~$120-180 (4×$30-45) est is realistic BULK full-length pricing (~$1.50-2.50/ft); firm it from a local steel-yard / MetalsDepot 24ft freight quote — NOT an online cut-to-size lookup (which overprices bulk ~3×)."),
     Part("ibcf-feet", "12mm steel plate, 150 × 150 cut", "steel-structural",
          "ibc-frame", 4, "ea", 5, 10, "Metal Supermarkets", spec="Deep-box upright floor flange feet (one per leg; front feet reach under the tray)"),
-    Part("ibcf-hangers", "4mm folded plate", "steel-structural",
-         "ibc-frame", 8, "ea", 7.5, 12.5, "local fab", spec="Simpson-style U-pocket wall joist hangers — 8 IDENTICAL 2-bolt hangers, one per front retaining bar (the pair uses identical hangers for fab simplicity — 2026-08-14). Each through-bolted (2× M12×70) to its own exterior 60×205×8 backing plate on the outside of the container side wall. Wall penetrations unchanged at 16 (8 hangers × 2 = old 4 × 4)."),
+    Part("ibcf-hangers", "Wall joist hanger — 4mm plate weldment (back-plate + seat, W5)", "steel-structural",
+         "ibc-frame", 8, "ea", 7.5, 12.5, "local fab", spec="Simpson-style U-pocket wall joist hangers — 8 IDENTICAL 2-bolt hangers, one per front retaining bar (the pair uses identical hangers for fab simplicity — 2026-08-14). Each through-bolted (2× M12×70) to its own exterior 60×205×8 backing plate on the outside of the container side wall; 16 wall penetrations in all (8 hangers × 2). Seat fillet-welded to the back-plate (W5)."),
     Part("ibcf-dring", "Weld-on lashing ring, 1½\" ID", "fasteners-hardware",
          "ibc-frame", 8, "ea", 4.95, 4.95, "McMaster-Carr", part_no="3028T31",
          url="https://www.mcmaster.com/3028t31/",
@@ -1185,9 +1185,9 @@ PARTS: list[Part] = [
          note="firmed 2026-11-07 — McMaster 91280A716 (M12×30 class 8.8 zinc); thread-locker in lieu of a nut (tapped boss). Foot anchor holes open up #14→M12 clearance (foot plate re-drilled at fab)."),
     Part("walkway-holddown-clips", "Grating clips", "fasteners-hardware",
          "walkway", 30, "ea", 1, 1.6667, "McNichols", "McMaster-Carr", spec="Removable spring clips, stainless"),
-    Part("walkway-right-bearer", "Right-walkway grating-bearer L-angle 1×1×3/16in", "steel-structural",
-         "walkway", 1, "lot", 25, 75, "Metal Supermarkets", "MetalsDepot",
-         spec="1×1×3/16in (25.4×25.4×4.8mm) steel equal-leg L-angle, ~2 runs along the right-walkway grating bearing edges — the horizontal leg is the WF5 grating-clip landing + grate bearing for the right deck (walkway-report §8.1). Not part of the cantilever-frame tube. ~4–5 m total at ~$8–10/ft. SKU pending — source 1×1×3/16 angle; $25–75 est, confirm at fab."),
+    Part("walkway-right-bearer", "Steel angle 1×1×3/16in, 20 ft — right-walkway grating bearer + plywood mounting brackets", "steel-structural",
+         "walkway", 1, "20ft length", 93.56, 93.56, "Metal Supermarkets", "MetalsDepot",
+         spec="1×1×3/16in (25.4×25.4×4.8mm) steel equal-leg L-angle, ~2 runs along the right-walkway grating bearing edges — the horizontal leg is the WF5 grating-clip landing + grate bearing for the right deck (walkway-report §8.1). Not part of the cantilever-frame tube. ~4–5 m total at ~$8–10/ft, plus ~1 m for the plywood mounting brackets (6× 60mm rear-panel + 12× 50mm side-board, corridor-panel-brackets / pump-support-brackets) — one 20 ft (6.1 m) length covers both. Metal Supermarkets 1×1×3/16in A36 angle, 20 ft, $93.56 firm (2026-11-20)."),
 
     # ═══ front-board (pinhole-disc-holder-report.md) — the quick-change PINHOLE DISC HOLDER (Ø180 plate +
     # Standalone module (not one of the numbered SECTIONS); reconciles to EXPECTED['front-board']. Shop/

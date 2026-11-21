@@ -4,7 +4,7 @@
 """generate_support_detail.py — pump-run support-board fabrication detail (#29).
 
 The corridor pump risers, drain-riser spine, and filter-skid runs land on three flush
-18mm-ply support boards, each recessed in a post window on welded steel L-brackets and
+18mm-ply support boards, each recessed in a post window on TEK-screwed steel L-brackets and
 clamped with cushioned P-clips.  The panel-layout elevation shows the boards EDGE-ON only;
 this is the dedicated fabrication sheet a shop builds from:
 
@@ -22,7 +22,7 @@ from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models"))
 
-from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_STEEL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
+from tbs_constants import STEEL_ANGLE_LEG, STEEL_ANGLE_T, DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_STEEL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_title_block import title_block
 import generate_corridor_water_panel as cp
@@ -48,7 +48,7 @@ EQT = cp.EQT                               # 18mm ply
 S = cp.S                                   # 50.8mm post (2×2×0.120 RHS)
 RP = cp.RP                                 # 10.5mm  (Ø21 riser)
 YD_NEAR, YD_FAR = cp.YD_NEAR, cp.YD_FAR    # 1046 / 1316 corridor side walls
-LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg length / bracket height
+LT, LL, LH = STEEL_ANGLE_T, STEEL_ANGLE_LEG, 50   # 1×1×3/16 angle thickness / leg / bracket height
 
 # board face-on specs: (title, subtitle, (z0,z1), risers[(x,label,color)], clamp_zs, horizontals[(z,label,color)], switches[(label,z0)])
 BOARDS = [
@@ -170,7 +170,7 @@ def draw_sheet1():
     draw_notes(ax_n, [
         "NOTES:",
         "1. Board = 18mm exterior BC/ACX plywood, cut 399mm wide to fill the post window (X4705–5104); back face flush with the post wall-side face.",
-        "2. Each board carried on 4 welded steel L-brackets (one per post inner face, top + bottom) — see Sheet 2.",
+        "2. Each board carried on 4 steel L-brackets — one-piece 1×1×3/16 angle, TEK-screwed to the post inner faces (top + bottom) — see Sheet 2.",
         "3. Risers clamped with cushioned 3/4\" P-clips at the marked rows (2 per riser; the near-upper board takes 4).",
         "4. Steel tab = L-bracket landing leg (face-on); brackets set 35mm in from each board edge.",
         f"5. Near-upper board: drain-pump switches S-05 / S-03 — sealed IP67 rockers in {cp.DSW_W}×{cp.DSW_H}mm surface boxes, screwed to the ply beside the valve each one works with (S-05 level with BV-02, S-03 level with BV-07).",
@@ -190,7 +190,7 @@ def draw_sheet1():
 def draw_flush_section(ax):
     """L-bracket flush-mount PLAN SECTION (X–Yd, looking down) at one bracket — near-wall corner.
 
-    Shows: post square → weld leg on the post inner X-face → landing leg → 18mm ply seated
+    Shows: post square → screw leg on the post inner X-face → landing leg → 18mm ply seated
     flush with the post wall-side face, with the through-bolt into a back-face tee-nut."""
     # near wall: post inner face (corridor side) at X0; post spans X4654-4704.8 in X, Yd 1046-1096.8.
     # ply back face flush at YD_NEAR (1046); ply corridor face at 1064.
@@ -215,10 +215,10 @@ def draw_flush_section(ax):
     ax.text(px1 + 92, yd_back + EQT / 2, "18mm ply", ha="center", va="center",
             fontsize=6.6, color="#5C4A28", zorder=6, **FONT)
 
-    # L-bracket: weld leg (6mm) on the post inner X-face, spanning the ply depth in Yd
-    _rect(ax, px1, yd_back, LT, EQT, C_STEEL_D, ec=C_OUT, lw=1.2, z=5)
-    # landing leg (45mm long in X, 6mm thick in Yd) behind the ply back face
-    _rect(ax, px1, yd_back - LT, LL, LT, C_STEEL_D, ec=C_OUT, lw=1.2, z=5)
+    # L-bracket: ONE piece of 1×1×3/16 angle — screw leg on the post inner X-face + landing leg behind the ply
+    ax.add_patch(Polygon([(px1, yd_back - LT), (px1 + LL, yd_back - LT), (px1 + LL, yd_back), (px1 + LT, yd_back),
+                          (px1 + LT, yd_back - LT + LL), (px1, yd_back - LT + LL)], closed=True,
+                         facecolor=C_STEEL_D, edgecolor=C_OUT, linewidth=1.2, zorder=5))
 
     # fastener (our conventional #30 ply-mount joint): M6 FLAT-HEAD machine screw from the
     # landing-leg side → captive pronged TEE-NUT in the ply corridor face.  Screw clamps leg→ply.
@@ -236,14 +236,12 @@ def draw_flush_section(ax):
         ax.add_patch(Polygon([(pxp - 1.6, yd_face), (pxp + 1.6, yd_face), (pxp, yd_face - 4.5)],
                              closed=True, facecolor=C_STEEL_D, edgecolor="none", zorder=8))
 
-    # weld symbol at the post/weld-leg join
-    ax.plot([px1, px1], [yd_back, yd_back + EQT], color=C_BLUE, lw=3.0, zorder=9, solid_capstyle="round")
 
     # callouts
     leader(ax, px1 + 3, yd_back + EQT - 3, X0 + 120, yd_post_far + 20,
-           "weld leg 6mm\n(fillet-welded to post face)", fs=6.0, color=C_OUT, ha="left", va="center", font=FONT, bbox=LBL_BG)
+           f"screw leg {LT}mm thick\n(2× #14 TEK to post, SP2)", fs=6.0, color=C_OUT, ha="left", va="center", font=FONT, bbox=LBL_BG)
     leader(ax, px1 + LL - 4, yd_back - LT + 3, X0 + 120, yd_back - 40,
-           f"landing leg {LL}mm\n(ply bolts here)", fs=6.0, color=C_OUT, ha="left", va="top", font=FONT, bbox=LBL_BG)
+           f"landing leg {LL}mm\n(ply bolts here, SP1)", fs=6.0, color=C_OUT, ha="left", va="top", font=FONT, bbox=LBL_BG)
     leader(ax, bx, yd_back - LT + 1, px0 - 10, yd_back - 34,
            "M6 flat-head screw\n(countersunk in leg)", fs=6.0, color=C_CUSH, ha="right", va="center", font=FONT, bbox=LBL_BG)
     leader(ax, bx + 9, yd_face + 1.3, X0 + 132, yd_face + 30,

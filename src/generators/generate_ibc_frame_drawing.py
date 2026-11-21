@@ -396,10 +396,10 @@ def _cut_list(ax, x, y):
         f"  4   floor foot plate      12mm A36       150×150",
         f"  1   floor-anchor sub-plate {FLOOR_PLATE_T:.0f}mm A36       container-dep.",
         f"  8   wall backing plate    8mm A36        60×205",
-        f"  8   wall joist hanger     4mm folded     per detail",
+        f"  8   wall joist hanger     4mm weldment   per detail",
         f"  8   bar→upright cleat     6mm angle      per detail",
-        f"  6   rear-panel bracket    6mm angle      per detail",
-        f" 12   pump-support L-brkt   1×1×⅛ angle    per detail",
+        f"  6   rear-panel bracket    1×1×3/16 angle per detail",
+        f" 12   pump-support L-brkt   1×1×3/16 angle per detail",
         f"  4   ribbon cross-beam     25×3 flat bar  ~300",
     ]
     draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(700))

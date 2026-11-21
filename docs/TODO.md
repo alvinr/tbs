@@ -17,6 +17,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   `_MONEY_RAW_BASELINE` as each doc's count drops. Done 2026-11-20: stale ones placeholdered (tier run costs, Lean chemistry, per-print, tray, 2nd battery pack); coincidences listed in `lint.py` `_MONEY_COINCIDENCE`; warning clean.
 - [x] Cost breakdown §9: the summary row is now computed from all its lines (CDL + permits), 2026-11-20.
 
+## 🛒 Parts to source (SKU + price)
+
+Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generators/parts-worklist.csv` (fill `new_*`, then `apply_parts_csv.py`):
+
+- [ ] `drain-pump-switches` — S-05 / S-03: 1-pole (SPST) IP67 sealed rocker, 12V ≥10A, in a ~50×75mm surface box (×2; $10–20 ea est)
+- [ ] `pump-switches` — master pump switch: 2-pole (DPST) IP67 sealed rocker/disconnect, 12V ≥10A/pole (×1; ~$13 est)
+- [ ] `camlock-dust-cap-2in` — 2" PP camlock dust cap for the 2" male adapter (Banjo 200CAP style), tethered (×3; $6–15 ea est)
+- [ ] `check-valve-half` — CV-2 / CV-3: 1/2" PVC spring check valve on the waste legs into the IBC-4 merge (×2)
+- [ ] `spray-manifold-clips` — cushioned 3/4" pipe clips for the spray manifold mount (10-pack)
+
 ## 🚰 End-wall ports
 
 - [x] **Energy model: tote pump-out assumes gravity drain that the design doesn't have.** `calculate_energy_budget.py` (`DRAIN_RESIDUAL_L = 120`, "gravity-drains through its low Z=200mm port") and Daily Energy §6 assume each tote gravity-drains and the pump lifts only ~120 L. X3/X4 sit at 1,502/1,620mm, above the bottom-tier totes, so P-05/P-03 pump the whole contents (~622 L per tote over a run; 555/690 L with the dichromate option). The report's own "worst case" (~45 min/tote, ~94 Wh) is the real case. Fix: drive the volume from `COLLECTION_FILL_L` (and the dichromate split), drop the gravity wording, re-inject the energy blocks. Done 2026-11-20: pumped volume = RECOVERED_L (622 L per tote), 115 Wh per dump run.

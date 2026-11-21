@@ -41,7 +41,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 
 ## 3. Movement Axes
 
-The four-corner mechanism supports all view-camera movements. Corners are labeled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the height direction.
+The four-corner mechanism provides tilt, swing and back focus. Corners are labeled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the height direction.
 
 | Axis | Corners Controlled | Max Travel | Effect |
 |------|--------------------|-----------|--------|
@@ -51,8 +51,6 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 | **Swing (right)** | TR + BR together | 100–2,262mm | Left-right perspective skew |
 | **Compound (limited)** | Tilt + swing together | 100–2,262mm | Combined tilt+swing — limited range; plane stays **flat** (no twist) |
 | **Back focus** | All 4 together | 100–2,262mm | Uniform magnification change |
-| **Rise / Fall** | All 4 together, offset vertically | ±200mm | Horizon shift |
-| **Shift** | All 4 together, offset horizontally | ±300mm | Left/right perspective offset |
 
 **Maximum tilt angle** (single-axis): **<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->°** — set by the cross-slide Z travel (245mm); the depth rails alone would allow ~65°.
 

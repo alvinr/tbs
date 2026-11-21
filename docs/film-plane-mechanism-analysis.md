@@ -39,8 +39,6 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 | **Swing (right)** | TR + BR together | 100–2,262mm | Left-right perspective skew |
 | **Combined** | All 4, kept coplanar | ≤±40° tilt + ≤±28° swing | Limited simultaneous tilt+swing — the plane stays a **flat rectangle** (no twist) |
 | **Back focus** | All 4 together | 100–2,262mm | Uniform magnification change |
-| **Rise / Fall** | All 4 together, offset vertically | ±200mm | Horizon shift |
-| **Shift** | All 4 together, offset horizontally | ±300mm | Left/right perspective offset |
 
 **Maximum tilt angle** (single-axis): **±40°** — set by the corner cross-slide Z travel (~250mm); the depth rails alone would allow a steeper angle.
 

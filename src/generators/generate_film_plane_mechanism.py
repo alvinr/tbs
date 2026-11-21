@@ -1021,8 +1021,8 @@ def sheet3():
     draw_notes(ax_n, [
         "CORNER MECHANISM — ONE OF FOUR:",
         "1. A pinhole has infinite depth of field, so the plane is positioned for scene control "
-        "(tilt / swing / rise), not focus — hence slide-and-clamp, not leadscrews.",
-        "2. Three axes per corner: DEPTH (Y) is the traverse — a 4-wheel acetal skate in a 3x1.5 304 "
+        "(tilt / swing), not focus — hence slide-and-clamp, not leadscrews.",
+        "2. Three axes per corner: DEPTH (Y) is the traverse — a 4-wheel acetal skate in a 3x1.5 6061-T6 "
         "U-channel (Grainger 795M51; top-bottom depth = tilt, left-right = swing); VERTICAL (Z, green, "
         "~250mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (304 flat bar + UHMW pad + gib) absorb the "
         "tilt/swing foreshortening.",
@@ -1322,6 +1322,8 @@ def sheet5():
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
+    _tmax = rigid_corners3d(MAX_TILT_DEG, 0.0, D_CTR)
+    _smax = rigid_corners3d(0.0, MAX_SWING_DEG, D_CTR)
     axes_rows = [
         ["TILT (top)",    "Both top corners move equally",      "TL + TR together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
         ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
@@ -1329,8 +1331,8 @@ def sheet5():
         ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
         ["COMBINED",      "Limited tilt+swing — rigid, stays FLAT", "TL, TR, BL, BR", f"0–{FP_Y}mm", "4 depth slides, coordinated","4 cam clamps"],
         ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y}mm","All 4 depth slides together", "All 4 clamps"],
-        ["MAX TILT",      "Top=414mm, Bot=1948mm (axis tilt)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.0f}deg (Z-slide-lim.)",  "Top+top / Bot+bot",        "All 4 clamps"],
-        ["MAX SWING",     "Left=125mm, Right=2237mm (axis swing)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.0f}deg (rail-lim.)", "Left+left / Right+right",  "All 4 clamps"],
+        ["MAX TILT",      f"Top={_tmax['TL'][1]:.0f}mm, Bot={_tmax['BL'][1]:.0f}mm (axis tilt)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.0f}deg (Z-slide-lim.)",  "Top+top / Bot+bot",        "All 4 clamps"],
+        ["MAX SWING",     f"Left={_smax['TL'][1]:.0f}mm, Right={_smax['TR'][1]:.0f}mm (axis swing)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.0f}deg (rail-lim.)", "Left+left / Right+right",  "All 4 clamps"],
     ]
     # y0=0.895; header top=0.895+0.026=0.921; bottom=0.895-8×0.022=0.719
     draw_table(ax, 0.05, 0.895, axes_headers, axes_rows,

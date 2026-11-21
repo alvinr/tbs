@@ -45,8 +45,8 @@ TIEDOWN_FRAC = 0.5 # aggregate tiedown WLL >= 1/2 the cargo weight (393.106(d))
 # ── Design masses (kg) — the frame restrains the TOTES ───────────────────────
 TOTE_TARE   = 65      # 1000L caged composite tare (weight-distribution-report.md)
 TOTE_FILL_L = 900     # camera-ready standard Blue fill per top tote (L) -> kg at 1000 kg/m^3
-M_DRAINED   = TOTE_TARE                    # nominal transport: totes empty (site-filled)
-M_LOADED    = TOTE_TARE + TOTE_FILL_L      # over-spec bound: a full top-tier Blue tote (965 kg)
+M_DRAINED   = TOTE_TARE                    # return trip: Blue totes drained
+M_LOADED    = TOTE_TARE + TOTE_FILL_L      # deployment trip: a full top-tier Blue tote (965 kg) — governs
 
 # ── Member / fastener properties ─────────────────────────────────────────────
 # Front retaining bar 50x20x3 RHS, oriented 20mm-deep in the -X (forward) load direction
@@ -400,11 +400,11 @@ def render_png(path=None):
         axM.text(0, 88 - i*6.2, a, fontsize=8.4, family="monospace",
                  fontweight="bold" if a.endswith(":") or a[0].isupper() and "≥" not in a else "normal")
     axM.text(0, 32, "DESIGN STATES (per top-tier tote):", fontsize=8.6, fontweight="bold")
-    axM.text(0, 24, f"   DRAINED (nominal, site-filled): tare {M_DRAINED:.0f} kg  → every element SF ≥ {int(_min_sf(rD))}",
+    axM.text(0, 24, f"   DRAINED (return trip): tare {M_DRAINED:.0f} kg  → every element SF ≥ {int(_min_sf(rD))}",
              fontsize=8.2, family="monospace", color=C_OK)
-    axM.text(0, 17, f"   LOADED (over-spec bound): full Blue {M_LOADED:.0f} kg  → the governing case",
+    axM.text(0, 17, f"   LOADED (deployment trip, Blue full): {M_LOADED:.0f} kg  → the governing case",
              fontsize=8.2, family="monospace", color=C_WARN)
-    axM.text(0, 7, "The camera runs disconnected from water; totes ship EMPTY. LOADED is the\nover-spec margin, not the ship state.",
+    axM.text(0, 7, "The camera deploys with the Blue totes full (LOADED) and returns\nwith them drained (DRAINED).",
              fontsize=7.2, color="#555")
 
     # ── axT — SF matrix (governing LOADED case) ──
@@ -446,7 +446,7 @@ def render_png(path=None):
              fontsize=7.6, color="#333")
     axT.text(cols[0], y-9, f"the friction mat lifts it to SF {rLm['bar'][2]:.2f}. Everything downstream clears SF ≥ {int(_min_down(rL))};",
              fontsize=7.6, color="#333")
-    axT.text(cols[0], y-15, f"in the DRAINED ship state every element clears SF ≥ {int(_min_sf(rD))}. Service loads non-governing.",
+    axT.text(cols[0], y-15, f"on the DRAINED return trip every element clears SF ≥ {int(_min_sf(rD))}. Service loads non-governing.",
              fontsize=7.6, color="#333")
 
     fig.suptitle("IBC STACKING FRAME — TRANSPORT RESTRAINT LOAD CASE  ·  FMCSA 49 CFR 393.102",
@@ -473,7 +473,7 @@ def main():
     print(f"\n########## AS-DESIGNED — {n} x 50x20x3 bars/tote + friction mat + 2 straps/stack ##########")
     # Bar-alone (mat degraded/absent, no friction credit) is the positive-blocking floor;
     # the friction mat credits 50% of the tote weight against the forward thrust.
-    print(_fmt(compute(M_DRAINED, "DRAINED (nominal — totes empty), bar-alone",
+    print(_fmt(compute(M_DRAINED, "DRAINED (return trip — Blue drained), bar-alone",
                        n_bars_per_tote=n, n_straps=2)))
     print(_fmt(compute(M_LOADED,  "LOADED — bar-alone, 0.8 g breaking-strength case (no mat)",
                        n_bars_per_tote=n, n_straps=2)))

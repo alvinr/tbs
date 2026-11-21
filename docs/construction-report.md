@@ -124,6 +124,38 @@ plumbing, the film-plane support, and the walkway.
 
 **Exit gate:** plane travels through its full tilt/swing envelope; spray bar movement is free; camera confirmed light-tight.
 
+### 8.1 Spray-Bar Carriage Build (step 5.6)
+
+Two identical carriages, one at each end of the beam. Parts, sheets and the acceptance requirements
+are in [Processing Tray & Spray Bar §3.6](processing-tray-and-spray-bar.md).
+
+**Carriage plate (×2), Sheet 10**
+
+1. Scribe the central notch so the wings butt the 38mm beam faces, outer edge flush with the beam end.
+2. Jigsaw or bandsaw the notch from one long edge.
+3. Mark the axle-saddle holes (two per saddle on each wing) and the beam-clamp holes (two each side of the beam, matching the clamp plates).
+4. Drill all 12 holes on a drill press, then deburr the edges, notch and holes.
+
+**Wheel units (×4), Sheet 5**
+
+1. Place the acetal wheel under the carriage plate and push the 10mm SS axle pin through its bore.
+2. Set the saddle clamp over the axle, feet against the plate underside.
+3. Pass 2× M5 bolts up through the saddle feet and plate; fit nyloc nuts on top, finger-tight.
+4. Spin the wheel by hand: it should turn freely with no side wobble.
+
+**Carriage assembly (×2), Sheet 6**
+
+1. Lay the plate flat on the bench, notch centered, and fit the near and far wheel units finger-tight.
+2. Check the 200mm wheel spacing, then tighten the nyloc nuts to 4 N·m.
+3. Stand the carriage on a flat surface and check both wheels touch; shim before final torque if not.
+
+**Beam attachment, Sheet 2**
+
+1. Set the bottom clamp plate under the beam, outer edge flush with the beam end.
+2. Lower the carriage plate over the beam so the wings butt the beam faces, and place a spacer block against each face between the wings.
+3. Lay the top clamp plate on, pass the four bolts down through top plate, spacer, wing and bottom plate, and tighten the nuts evenly until the beam is gripped.
+4. Set the bar on the tray floor and push it through its full travel: the top clamp plate must clear the grating, every wheel must roll, and the bar must track straight without binding.
+
 ---
 
 ## 9. Construction Model (3D, phased)

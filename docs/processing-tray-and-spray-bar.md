@@ -350,70 +350,34 @@ required (left end and right end of beam).
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
-#### 3.6.1 Carriage Plate Fabrication (2 required)
-
-Each carriage plate is a flat 5mm 6061-T6 aluminum plate whose wings meet the beam
-faces. The plate sits 2mm above the wheel axle; the beam clamp bolts pass
-through it, capturing the plate between the top and bottom clamp plates.
-
-**Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
-
-| Step | Operation | Detail |
-|------|-----------|--------|
-| 1 | Mark notch | Scribe the central notch so the wings butt the 38mm beam faces (outer edge flush with beam end) |
-| 2 | Cut notch | Jigsaw or bandsaw the center notch from one long edge |
-| 3 | Mark axle saddle positions | On each wing, mark two Ø5.5mm clearance holes (M5) per saddle clamp for axle retention |
-| 4 | Mark beam clamp bolt positions | Two Ø5.5mm holes on each side of the beam, aligning with the top/bottom clamp plate bolts |
-| 5 | Drill all holes | Drill press for accuracy — 8 axle saddle holes + 4 beam clamp holes per plate |
-| 6 | Deburr | Remove all burrs from edges, notch, and holes |
+**Carriage plate (2 required).** A flat 5mm 6061-T6 aluminum plate, cut from a 280 × 60mm blank, whose
+wings meet the beam faces. It sits 2mm above the wheel axle; the beam clamp bolts pass through it,
+capturing it between the top and bottom clamp plates. Each plate takes 12 Ø5.5mm holes: 8 for the
+axle saddles and 4 for the beam clamp.
 
 ![Wheel-Carriage Plate — Sheet 10: fabrication (5mm 6061-T6, 2 req; notch + 12-hole drilling)](assets/spray-bar-sheet10.png)
 
-#### 3.6.2 Wheel Assembly (2 per carriage, 4 total)
+**Wheel units (2 per carriage, 4 total).** Each axle is retained by a curved 3.18mm (1/8") 304 SS
+saddle strap (formed), bolted to the carriage plate underside with 2× M5 and nyloc nuts. The saddle
+cradles the 10mm axle pin with 1mm clearance.
 
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
 
-Each wheel axle is retained by a curved 3.18mm (1/8") 304 SS saddle strap (formed) bolted to the
-carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearance.
-
-| Step | Operation |
-|------|-----------|
-| 1 | Place the acetal wheel (32mm × 20mm, 10mm bore) in position under the carriage plate |
-| 2 | Insert 10mm SS axle pin through wheel bore |
-| 3 | Position the saddle clamp over the axle, feet against the plate underside |
-| 4 | Insert 2× M5 bolts up through the saddle feet and carriage plate; secure with nyloc nuts on top |
-| 5 | Tighten finger-tight only until all wheels are installed |
-| 6 | Spin wheel by hand — confirm free rotation with no lateral wobble |
-
-#### 3.6.3 Carriage Assembly (2 required)
-
 ![Sheet 6 — Detail D: Wheel Plan](assets/spray-bar-sheet6.png)
 
-| Step | Operation |
-|------|-----------|
-| 1 | Place carriage plate flat on bench, notch centered |
-| 2 | Install the near wheel-and-saddle unit (wheel hanging below bench edge) — finger-tight |
-| 3 | Install the far wheel-and-saddle unit (200mm Yd spacing) |
-| 4 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
-| 5 | Tighten all nyloc nuts to 4 Nm |
-| 6 | Stand the carriage on a flat surface — both wheels must contact simultaneously. Shim if needed before final torque |
+**Beam attachment.** A top and bottom clamp plate sandwich the SHS vertically, with a solid aluminum
+spacer block beside each beam face so the bolts grip the beam rather than bending the plates. Four
+bolts per carriage pass through the top plate, spacer, carriage-plate wing and bottom plate, with nuts
+top and bottom.
 
-#### 3.6.4 Beam Attachment
+**Fabrication and acceptance requirements:**
 
-The carriages attach to the beam with a top + bottom clamp plate that sandwich the SHS
-vertically. The bottom plate sits under the beam and the top plate over it; a solid aluminum spacer block beside each beam face fills the gap so the
-bolts grip the beam rather than bending the plates. Four bolts per carriage pass through
-the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and bottom.
+1. **Wheel spacing** — 200mm center-to-center in Yd on each carriage.
+2. **Saddle nuts** — nyloc, tightened to 4 N·m.
+3. **Flat stance** — standing on a flat surface, both wheels of a carriage touch at once; shim before final torque if not.
+4. **Clearance and tracking** — on the tray floor, the top clamp plate clears the walkway grating, every wheel rolls freely, and the bar runs its full travel straight between the rim walls without binding.
 
-| Step | Operation |
-|------|-----------|
-| 1 | Position the bottom clamp plate under the beam SHS, with its outer edge flush with the beam end |
-| 2 | Set the carriage plate over the beam so the wings butt the beam faces |
-| 3 | Place a spacer block against each beam face, between the plate wings |
-| 4 | Lay the top clamp plate over the beam, aligning the bolt holes with the bottom plate |
-| 5 | Pass four bolts down through top plate + spacer + carriage wing + bottom plate; thread nuts top and bottom and tighten evenly until the beam is gripped |
-| 6 | Set the assembled spray bar on the processing tray floor. Confirm the top clamp plate clears the walkway grating bottom. Confirm all wheels roll freely on the tray floor |
-| 7 | Push the bar through its full travel to verify it tracks straight between the tray rim walls without binding |
+The build steps are in the [Construction Report §8.1](construction-report.md).
 
 ### 3.7 Structural Analysis
 
@@ -563,7 +527,7 @@ Eleven sheets cover the spray bar assembly and processing tray:
 | 7 | Detail B — Manifold Feed | Longitudinal section at 2:1 — single center-feed barbed connection and nozzle connection details |
 | 8 | Center-seam lap joint | Shingle-oriented lap joint of the two tray panels (§2.6) |
 | 9 | Beam + manifold stations | Full-length station layout — cut length, nozzle + feed-tee pitch, carriage-clamp + ball-joint stations (§3.3) |
-| 10 | Wheel-carriage plate | Carriage plate fabrication — notch + drilling (§3.6.1) |
+| 10 | Wheel-carriage plate | Carriage plate fabrication — notch + drilling (§3.6) |
 | 11 | Processing-tray pan | Pan fabrication — rim fold, pressed sump, seam-bolt pattern (§2.1) |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)

@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import tbs_draw as draw                          # shared drawing/material primitives
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_T, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D, PDH_SEAL_D, PDH_SEAL_CS, PDH_SEAL_GROOVE_DEP
+from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_T, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D, PDH_SEAL_D, PDH_SEAL_CS, PDH_SEAL_GROOVE_DEP, PDH_PINHOLE_D
 
 mm = draw.mm
 TAGS = ["Plate", "O-ring", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]
@@ -152,7 +152,7 @@ def disc():
     the disc rather than proud."""
     return '\n'.join([
         draw.ruby_cylinder("ICP-02 Disc (pinhole / lens)", 0, DISC_Y0, 0, PDH_DISC_OD / 2, DISC_T, axis="y", color=C_DISC, n=48),
-        draw.ruby_cylinder("Pinhole aperture (Ø2.17)", 0, DISC_Y0 + 0.2, 0, 1.3, DISC_T - 0.4, axis="y", color=C_PIN, n=20),
+        draw.ruby_cylinder(f"Pinhole aperture (Ø{PDH_PINHOLE_D})", 0, DISC_Y0 + 0.2, 0, 1.3, DISC_T - 0.4, axis="y", color=C_PIN, n=20),
     ])
 
 

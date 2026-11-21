@@ -25,7 +25,7 @@ from tbs_constants import (
     PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T,
     PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_PINHOLE_D, PDH_CARRIER_BORE,
     PDH_MOUNT_BC as BOLT_BC, PDH_MOUNT_D as BOLT_D, PDH_MOUNT_N as BOLT_N,
-    PDH_SEAL_D as SEAL_D,
+    PDH_SEAL_D as SEAL_D, PDH_MOUNT_BOLT_L, PDH_SEAL_CS, PDH_SEAL_GROOVE_W, PDH_SEAL_GROOVE_DEP,
     PDH_ADAPT_OD, PDH_ADAPT_T, PDH_ADAPT_APT, PDH_WALL_APT,
     PDH_LENS_COPAL0, PDH_LENS_COPAL1, PDH_LENS_COPAL3,
 )
@@ -144,6 +144,7 @@ def draw_sheet2():
         (s(PDH_APERTURE),    f'Ø{PDH_APERTURE} LIGHT APERTURE (THRU)'),
         (s(PDH_DISC_SEAT_D), f'Ø{PDH_DISC_SEAT_D} × {PDH_DISC_SEAT_DEP} DISC SEAT (CAMERA FACE)'),
         (s(PDH_TS_PCD),      f'Ø{PDH_TS_PCD} B.C. · {PDH_TS_N}× M{PDH_TS_D} TAP (THUMB SCREWS)'),
+        (s(SEAL_D),          f'Ø{SEAL_D} SEAL GROOVE CL · {PDH_SEAL_GROOVE_W}mm WIDE × {PDH_SEAL_GROOVE_DEP}mm DEEP (ADAPTER FACE) · {PDH_SEAL_CS}mm O-RING'),
     ], dirn=-1, step=s(20), fs=4.4)
     draw_dim_v(axp, cx + r + 16, cy - r, cy + r, f'Ø{PDH_PLATE_OD} OD', right=True, fs=5, offset=12)
     draw_dim_v(axp, cx + r + 44, cy - s(BOLT_BC / 2), cy + s(BOLT_BC / 2), f'Ø{BOLT_BC} ({BOLT_N}× M6 MOUNT)', right=True, fs=4.6, offset=12)
@@ -307,7 +308,7 @@ def draw_sheet3():
     axsec.text(xw0 - 86, ry + 24, 'LIGHT\n(scene)', fontsize=5, color='#8a5a00', ha='left')
     leader(axsec, xw0 + wt / 2, ry + sy(PDH_WALL_APT / 2) + 8, xw0 - 30, ry + rad + 8, f'CORRUGATED WALL\nØ{PDH_WALL_APT} CUT', fs=4.8, color=C_DIM, arrow_style='->', ha='right')
     leader(axsec, xa0 + at / 2, ry + sy(PDH_ADAPT_OD / 2) - 8, xa0 + 46, ry + rad + 22, f'WALL-FRAME ADAPTER (welded)\nØ{PDH_ADAPT_APT} apt · 4× M6 TAP @ Ø{BOLT_BC}', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
-    leader(axsec, xp0 + pt, ry - sy(BOLT_BC / 2), xp0 + pt + 120, ry - rad - 6, f'{BOLT_N}× M6×{PDH_PLATE_T + 6} SHCS\n(plate → adapter)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
+    leader(axsec, xp0 + pt, ry - sy(BOLT_BC / 2), xp0 + pt + 120, ry - rad - 6, f'{BOLT_N}× M6×{PDH_MOUNT_BOLT_L} SHCS + WASHER\n(plate → adapter)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, xp0 + pt + sx(PDH_RING_T), ry + sy(PDH_RING_ID / 2), xp0 + pt + 140, ry + rad - 80, 'RETAINING RING + CARRIER\n(pinhole / lens · swapped from inside)', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     leader(axsec, xp0 + pt + sx(PDH_RING_T) + sx(4), ry - sy(PDH_TS_PCD / 2), xp0 + pt + 150, ry - rad + 34, f'{PDH_TS_N}× M{PDH_TS_D} THUMB SCREW\n(ring → plate tap @ Ø{PDH_TS_PCD})', fs=4.8, color=C_DIM, arrow_style='->', ha='left')
     axsec.text((xw0 + xp0) / 2 + 30, ry - rad - 46, 'PANEL B — SECTION THROUGH THE PINHOLE WALL\n(axial scale exaggerated · scene left → interior right)', ha='center', fontsize=5.5, style='italic', color='#333')

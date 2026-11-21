@@ -43,9 +43,11 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 ## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)
 - The .skp files carry an Author field that is currently unset. Set it on all 11 models from the generators (the same place name/description are force-stamped on `--send`), so it survives a regen. Check whether SketchUp persists it across save → reopen (name/description do not; see the Sketchfab notes) before relying on it.
 
-## 🔩 Front plate → wall adapter: bolt length + seal (2026-11-21)
-- Mount bolts disagree: parts.py `pdh-mount-bolts` is **M6×20** (McMaster 95263A546); the disc-holder report §6 and Sheet 3 say **M6×24** (`PDH_PLATE_T + 6`). Through the 18mm plate, ×20 leaves only 2mm of thread in the 6mm tapped adapter; ×24 (or ×25 stock) engages the full 6mm. Needs a SKU + price for M6×25 SHCS 18-8.
-- The plate's rear face has a Ø160 perimeter seal groove (`PDH_SEAL_D`, drawn on Sheets 1–2), but no O-ring is in the BOM and the groove section isn't dimensioned. Choose the O-ring (cross-section + material), dimension the groove, add the part.
+## 🔩 Front plate → wall adapter: bolts + 3D/2D mounting side (2026-11-21)
+- **Source the mount bolts** (`pdh-mount-bolts`, SKU pending): 4× M6×1.0 × 25 socket-head cap screw, 18-8 SS, ≥7mm thread at the tip, + one M6 flat washer under each head (`pdh-mount-washers`, McMaster 91455A120, already stocked). ×20 leaves 2mm of thread in the 6mm adapter; ×30 hits the wall.
+- **Source the O-ring** (`pdh-oring`, SKU pending): metric, 2.5mm section, ID ≈163.5mm (stock 162–165), black NBR 70A; groove Ø166 CL × 3.4 wide × 1.9 deep (Sheet 2).
+- **3D vs 2D disagree on which side of the wall the mount sits.** `generate_sketchup_model.py` (overview) puts the adapter + plate + ring on the EXTERIOR face; disc-holder Sheet 3 and the reports put the adapter welded to the INTERIOR crests. Decide the side, then fix the other.
+- **Why the bolt gap went unnoticed:** the bolt length lived in two hand-typed places (parts.py "M6×20", Sheet 3 `PDH_PLATE_T + 6`) with no shared constant, and the 3D draws the bolts as plain cylinders, not `ruby_bolt`, so the `--bolts` grip check never saw them. Fix: one `PDH_MOUNT_BOLT_L` constant read by the drawing, the parts spec and a `ruby_bolt` in the model.
 
 ## 🚰 End-wall ports
 

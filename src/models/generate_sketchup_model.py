@@ -266,41 +266,29 @@ def far_wall():
 # ── Pinhole assembly ─────────────────────────────────────────────────────────
 
 def pinhole_assembly():
-    """Pinhole mount plate on the wall inner face + the Ø2.17 aperture marker.
-
-    The aperture is true-scale (2.17mm) so it is dimensionally honest; the
-    orange optical-axis tube makes its location findable at overview scale.
-    """
+    """Pinhole disc holder on the wall's INTERIOR face: a Ø240 steel wall-frame adapter welded to the
+    interior crests, the Ø180 disc-holder plate bolted to it (4× M6 @ Ø150), the retaining ring on the
+    plate's camera face, and a true-size Ø2.17 aperture marker in the carrier."""
     parts = []
-    plate, t = 100, 3  # 100×100mm SS mount plate, 3mm proud of the wall
-
-    parts.append(ruby_box("Pinhole Mount Plate",
-                          PH_X - plate / 2, 0, PH_H - plate / 2,
-                          plate, t, plate,
-                          color=C_STEEL))
-
-    a = PH_D  # 2.17mm aperture, shown as a true-size orange nub on the plate face
+    adapt_in = PDH_ADAPT_T                     # adapter interior face — the plate seats here
+    plate_in = adapt_in + PDH_PLATE_T          # plate camera face — the ring clamps here
+    parts.append(ruby_cylinder("Wall-frame adapter (welded)", PH_X, 0, PH_H,
+                               PDH_ADAPT_OD / 2, PDH_ADAPT_T, axis="y", color=C_STEEL))
+    parts.append(ruby_cylinder("Pinhole disc-holder plate", PH_X, adapt_in, PH_H,
+                               PDH_PLATE_OD / 2, PDH_PLATE_T, axis="y", color=C_ALUM))
+    parts.append(ruby_cylinder("Disc-holder retaining ring", PH_X, plate_in, PH_H,
+                               PDH_RING_OD / 2, PDH_RING_T, axis="y", color=C_STEEL))
+    a = PH_D
     parts.append(ruby_box("Pinhole Aperture (Ø2.17)",
-                          PH_X - a / 2, t, PH_H - a / 2,
+                          PH_X - a / 2, plate_in, PH_H - a / 2,
                           a, 1, a,
                           color=C_PINHOLE))
-
-    # Exterior pinhole disc holder (front board): a Ø240 steel wall-frame ADAPTER welded over the
-    # corrugation, the Ø180 disc-holder plate BOLTED to it (4× M6 @ Ø150), and the retaining ring.
-    ext = -WALL_T                      # exterior wall face
-    parts.append(ruby_cylinder("Wall-frame adapter (welded)", PH_X, ext - PDH_ADAPT_T, PH_H,
-                               PDH_ADAPT_OD / 2, PDH_ADAPT_T, axis="y", color=C_STEEL))
-    plate_out = ext - PDH_ADAPT_T      # adapter outer face — the plate seats here
-    parts.append(ruby_cylinder("Pinhole disc-holder plate", PH_X, plate_out - PDH_PLATE_T, PH_H,
-                               PDH_PLATE_OD / 2, PDH_PLATE_T, axis="y", color=C_ALUM))
-    parts.append(ruby_cylinder("Disc-holder retaining ring", PH_X, plate_out - PDH_PLATE_T - PDH_RING_T, PH_H,
-                               PDH_RING_OD / 2, PDH_RING_T, axis="y", color=C_STEEL))
-    # 4× M6 mount bolts through the plate into the adapter (heads proud on the plate outer face)
+    # 4× M6 mount bolts through the plate into the adapter (heads proud on the plate camera face)
     for i in range(PDH_MOUNT_N):
         a = math.radians(45 + i * 360.0 / PDH_MOUNT_N)
         bx = PH_X + (PDH_MOUNT_BC / 2) * math.cos(a)
         bz = PH_H + (PDH_MOUNT_BC / 2) * math.sin(a)
-        parts.append(ruby_cylinder(f"M6 mount bolt {i+1}", bx, plate_out - PDH_PLATE_T - 3, bz,
+        parts.append(ruby_cylinder(f"M6 mount bolt {i+1}", bx, 0, bz,
                                    5, PDH_PLATE_T + PDH_ADAPT_T + 3, axis="y", color="#3B3B42"))
 
     return '\n'.join(parts)

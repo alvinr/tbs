@@ -272,7 +272,7 @@ indicative low–high estimates — get quotes before ordering.
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | panel | $6 |
 | [1/4"-20 zinc machine screws (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-x-1-in-Combo-Truss-Head-Zinc-Plated-Machine-Screw-4-Pack-826771/317479749) (826771) | 10 4-pack | Home Depot | water | $16 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | 2 pack | McMaster-Carr | panel | $29 |
-| M6×25 SHCS 18-8 SS, 4× (plate → adapter) | 4 ea | McMaster-Carr | front-board | $1–$2 |
+| [M6×25 SHCS 18-8 SS, 4× (plate → adapter)](https://www.mcmaster.com/92314A669/) (92314A669) | 4 ea | McMaster-Carr | front-board | $1 |
 | [M6 flat washer, 18-8 SS, 4× (under the mount-bolt heads)](https://www.mcmaster.com/91455a120/) (91455A120) | 4 ea | McMaster-Carr | front-board | $0 |
 | [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/99607A293/) (99607A293) | 4 ea | McMaster-Carr | front-board | $35 |
 | 87× cushioned pipe P-clips (3/4" + 1/2" pipe) | 87 ea | Home Depot | water | $48–$83 |
@@ -303,7 +303,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 20 ea | McMaster-Carr | walkway | $26 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
-| **fasteners-hardware subtotal** | | | | **$2,092–$2,361** |
+| **fasteners-hardware subtotal** | | | | **$2,092–$2,360** |
 
 ### optics
 
@@ -507,7 +507,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
-| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,984–$1,998 |
+| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,983–$1,996 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,742–$1,920 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |

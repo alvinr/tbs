@@ -383,12 +383,12 @@ indicative low–high estimates — get quotes before ordering.
 | Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
-| O-ring, black NBR 70A, 170mm ID × 2.5mm section (plate → adapter seal) | 1 ea | McMaster-Carr | front-board | $3–$8 |
+| [O-ring, black NBR 70A, 170mm ID × 2.5mm section (plate → adapter seal)](https://www.mcmaster.com/93125K132/) (93125K132) | 2 ea | McMaster-Carr | front-board | $4 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | Rubber cargo friction matting | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$560–$776** |
+| **seals-gaskets subtotal** | | | | **$561–$772** |
 
 ### stainless-sheet
 
@@ -507,7 +507,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
-| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,983–$1,996 |
+| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,985–$1,993 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,742–$1,920 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |

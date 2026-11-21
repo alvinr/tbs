@@ -369,7 +369,7 @@ pressed sump well (150x100x20mm), 5x tapered HDPE shim strips (50mm wide, 0-10mm
 M6x16 SS fasteners. No penetration of tray or container floor.
 Permanently installed — no removal for transport mode conversion.*
 
-*Reports: [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) §2/§6.1 (tray specification, HDPE shim slope, sump well, permanent installation, parts); [Processing System](water-system-report.md) §4.4 (processing tray & spray bar).*
+*Reports: [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) §2/§5 (tray specification, HDPE shim slope, sump well, permanent installation, parts); [Processing System](water-system-report.md) §4.4 (processing tray & spray bar).*
 
 *Diagrams: water system sheets 3-4 (WS), container floor plan (FP), assembly overview (AO), walkway sheet 2 (WK).*
 

@@ -152,6 +152,10 @@ support arms the beam clears — see the sections below.
 
 ![Tray drainage — Details: near-rim fall-off + gutter inward slope](assets/tray-slope-sheet4.png)
 
+### 2.8 Muslin Fit — Cut to the Washable Tray Area
+
+The muslin is cut to fit the **washable area of the tray**, not the full image plane: <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — **narrower and shorter** than the film-plane ACM+frame (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). It is inset 50mm from each side rim and from the far rim, and its near edge clears the near-rim **sump well** (Yd 80–180). It therefore lies dead flat with no edge draping a rim or sagging into the sump, and mounts inside the frame (~70mm/side of bare ACM), clamped **inboard on the ACM face** (a field detail). The tray — not the optics — is the size constraint here.
+
 ---
 
 ## 3. Spray Bar Assembly — Gantry Design
@@ -309,6 +313,8 @@ from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, bolted to the underside of th
 The saddle cradles the axle pin with 1mm clearance; two M5 bolts pass up through the ~12mm saddle
 feet and carriage plate to lock the axle in position. All eight saddles are cut from one 18"
 (457mm) length of flat bar (~48mm developed each).
+
+**Clearance over the laid muslin.** The wheels run on the bare tray floor at the X-edges (centers X≈310 / 4,599), about 20mm outboard of the muslin's X≈330 / 4,579 edges. The beam body sits 9mm above the floor (wheel radius 16 − bracket drop 7, constant across the traverse), so it clears the 0.5mm muslin by about 8.5mm. The beam therefore parks at the pinhole-wall end while the muslin is drawn in through the far drop slot, then rolls back over it to wash, with no lift mechanism. The loading steps are in the [Operating Manual §4.1](operating-manual.md).
 
 ### 3.5 Carriage Plate Design
 
@@ -497,9 +503,25 @@ the print surface.
 
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along the pinhole wall (Blue), or P-02 → ACC-02 (Brown) → BV-05
-(Blue/Brown selector) → BV-06 (spray on/off) → coiled flexible hose → manifold center inlet (single feed) → over-bored 3/4"
-manifold bore → <!-- BEGIN fact:spray_bar_nozzle_count -->43<!-- END fact:spray_bar_nozzle_count -->× spray nozzles.
+**Supply path:**
+
+```
+P-01 → ACC-01 (Blue)      P-02 → ACC-02 (Brown)
+        │                         │
+        └──────────┬──────────────┘
+                   │  rigid 1/2" PVC along the pinhole wall
+                 BV-05  (Blue/Brown selector)
+                   │
+                 BV-06  (spray on/off)
+                   │
+          coiled flexible hose (4 m)
+                   │
+       manifold center inlet (single feed)
+                   │
+      over-bored 3/4" manifold bore
+                   │
+           43 × spray nozzles
+```
 
 ### 3.11 Walkway Slit
 
@@ -526,27 +548,7 @@ stud to the telescoping pole. Because the M12 stud is too small to pinch inside 
 
 ---
 
-## 4. Operation
-
-The step-by-step spray bar setup, wash pass procedure, Brown water recycling passes, and storage are documented in the [Operating Manual — Phase 4: Development](operating-manual.md#42-development-in-water).
-
-### 4.1 Muslin Fit — Cut to the Washable Tray Area
-
-The muslin is cut to fit the **washable area of the tray**, not the full image plane: <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — **narrower and shorter** than the film-plane ACM+frame (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). It is inset 50mm from each side rim and from the far rim, and its near edge clears the near-rim **sump well** (Yd 80–180). It therefore lies dead flat with no edge draping a rim or sagging into the sump, and mounts inside the frame (~70mm/side of bare ACM), clamped **inboard on the ACM face** (a field detail). The tray — not the optics — is the size constraint here.
-
-### 4.2 Loading the Muslin — Park-and-Roll (no beam lift)
-
-Loading needs **no lift mechanism**. The gantry parks at the **near (pinhole-wall) end** of its Yd travel, and the exposed muslin enters through the **far muslin-drop slot** (image-plane side) and is drawn across the tray toward the parked beam until it lies flat over the washable area.
-
-The beam then **rolls back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈310/4,599, ~20mm outboard of the muslin's X≈330/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
-
-### 4.3 Beam Removal for Maintenance
-
-Deep cleaning and nozzle service reach the beam through the **right walkway grate**: the grate lifts out and the beam extracts through that opening. No in-tray lift-out or quick-release is built into the gantry — the removable walkway grate *is* the access path.
-
----
-
-## 5. Engineering Drawings
+## 4. Engineering Drawings
 
 Eleven sheets cover the spray bar assembly and processing tray:
 
@@ -584,7 +586,7 @@ tray drainage plan and sump cross-section).
 
 ---
 
-## 6. Parts List
+## 5. Parts List
 
 See the **[Master Shopping List, filtered to this report's systems](master-shopping-list.md?system=tray,spray)** for the same parts with suppliers, current prices, and click-to-sort/filter.
 
@@ -598,16 +600,18 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 
 ---
 
-## 7. Maintenance
+## 6. Maintenance
 
 The assembly is built for tool-free cleaning: the liner is replaced each session (§2.4), the sump
-pickup tube lifts out of its well (§2.3), and the beam extracts through the right walkway grate (§4.3).
-The cleaning and inspection schedule is in the
-[Operating Manual — Maintenance](operating-manual.md#maintenance).
+pickup tube lifts out of its well (§2.3), and the beam extracts through the right walkway grate:
+the grate lifts out and the beam comes up through that opening, so the gantry needs no in-tray
+lift-out or quick-release. The spray setup, wash passes and Brown recycling passes are in the
+[Operating Manual — Phase 4](operating-manual.md#42-development-in-water); the cleaning and inspection
+schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 
-## 8. Source References
+## 7. Source References
 
 - [Shurflo 2088 Series datasheet](https://www.shurflo.com/products/2088-series) — SHURflo / Pentair. Performance curves, priming capability, electrical specifications.
 - [304 stainless steel rectangular tube](https://www.onlinemetals.com/en/buy/stainless-steel/stainless-steel-rectangle-tube-304) — Online Metals / Metal Supermarkets catalog (spray-bar beam). Mechanical properties per [ASTM A554](https://www.astm.org/a0554-21.html). Aluminum plate/pole per [6061-T6](https://www.onlinemetals.com/en/buy/aluminum) ([ASTM B221](https://www.astm.org/b0221-21.html)).

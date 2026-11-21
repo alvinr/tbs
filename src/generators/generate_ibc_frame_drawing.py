@@ -480,7 +480,7 @@ def sheet1():
         ax.plot([(col_l), (col_r)], [(PLATFORM_Z)] * 2,
                 color=C_OUT, lw=2.0, zorder=8)
 
-    # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (EN 12195-1 loaded case).
+    # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (loaded-transport case).
     # Each bar covers its column, ends (cleated) at the upright's OUTSIDE edge (NEAR_COL_R / FAR_COL_L), and
     # its wall end runs to the INSIDE of the container wall, resting on the hanger SHELF.
     WALL_T, BPT, SHELF_D = 14, 8, 55                   # container-wall thickness (exaggerated) / backing-plate thickness / shelf projection
@@ -680,7 +680,7 @@ def sheet1():
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers)."
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, FA2) to the floor-anchor sub-plate (FA1 → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
-        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into"
+        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — two per face for the loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into"
          "   a Simpson-style wall joist"
         f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
@@ -689,7 +689,7 @@ def sheet1():
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
         f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
-        f"10. Total frame weight: ~123 kg (incl. 4 feet + rings + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 anti-slip mats).",
+        f"10. Total frame weight: ~123 kg (incl. 4 feet + rings + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 friction mats).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=23,
                fs=7, font=FONT, wrap=150, width=2200)

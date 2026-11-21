@@ -400,6 +400,24 @@ blue_per_print_l:
   aliases:
     - '\((\d+) L\) of net Blue'
 
+ibc_nominal_gal:
+  constant: IBC_NOMINAL_GAL
+  unit: gal
+  owner: ibc-stacking-report.md
+ibc_nominal_l:
+  constant: IBC_NOMINAL_L
+  unit: L
+  display: comma
+  owner: ibc-stacking-report.md
+ibc_capacity_l:
+  constant: IBC_CAPACITY_L
+  unit: L
+  display: comma
+  owner: ibc-stacking-report.md
+ibc_capacity_margin_l:
+  constant: IBC_CAPACITY_MARGIN_L
+  unit: L
+  owner: ibc-stacking-report.md
 prints_max_fill:
   constant: PRINTS_MAX_FILL
   unit: prints

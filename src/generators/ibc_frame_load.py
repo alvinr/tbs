@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
-"""ibc_frame_load.py — IBC stacking-frame transport-restraint load case (EN 12195-1:2010).
+"""ibc_frame_load.py — IBC stacking-frame transport-restraint load case (FMCSA 49 CFR 393.102).
 
-Phase A of the IBC-frame blueprint (see ibc-frame-blueprint-spec.md). Computes the EN 12195-1
+Phase A of the IBC-frame blueprint (see ibc-frame-blueprint-spec.md). Computes the US cargo-securement
 design forces on the restraint frame for BOTH transport fill states (drained = tare only, and
 loaded = top-tier Blue totes full) and checks each restraint element demand-vs-capacity with a
 safety factor. Driftproof: reads member/geometry constants from tbs_constants.
 
-EN 12195-1:2010 method (researched + cited in ibc-frame-blueprint-spec.md §Load basis):
-  • acceleration coefficients: c_x = 0.8 g forward / 0.5 g rearward; c_y = 0.5 g lateral
-    (0.6 g sideways-tipping); c_z = 1.0 g down (friction-credit term).
-  • blocking / positive restraint (sliding balance):  BC >= f_s * m * g * (c - mu * c_z)
-  • safety factor f_s = 1.25 forward, 1.1 sideways/rearward.
-  • friction mu = 0.2 (conservative: plastic tote pallet on steel cage / unlisted-pair fallback;
-    the standard caps unlisted / not-broom-clean pairs at 0.2; plastic-pallet-on-plywood = 0.25).
+FMCSA 49 CFR 393.102 method (https://www.law.cornell.edu/cfr/text/49/393.102):
+  • (a)(1) breaking strength: 0.8 g forward / 0.5 g rearward / 0.5 g lateral, applied separately,
+    must not exceed the device's breaking strength (checked here against YIELD for steel members and
+    ultimate shear for bolts — conservative for a breaking-strength criterion).
+  • (a)(2) working load limit: 0.435 g forward / 0.5 g rearward / 0.25 g lateral must not exceed WLL.
+  • no safety factor is applied on top — the margin is the capacity/demand ratio reported.
+  • friction: Part 393 credits none, except a friction mat, which resists 50% of the weight on it
+    when unrated (393.108(g)).  Bare = mu 0; with mat = 0.5.
+  • tiedowns: aggregate WLL >= one-half the cargo weight (393.106(d)).
 
 Run:  python3 src/generators/ibc_frame_load.py           # print the validation table
 """
@@ -29,15 +31,16 @@ from tbs_constants import (DIAGRAM_DPI, C_STEEL, IBC_FRAME_RHS, IBC_FRAME_T, IBC
                            RWK_ARM_W, RWK_AH, RWK_X_UP, RWK_X_L, RWK_BEARER_W,
                            RWK_BEARER_XS, RWK_UP_YDS)
 
-# ── EN 12195-1:2010 load basis ───────────────────────────────────────────────
+# ── FMCSA 49 CFR 393.102 load basis ──────────────────────────────────────────
 G       = 9.81
-CX_FWD  = 0.8      # forward / braking
+CX_FWD  = 0.8      # forward / braking — breaking-strength criterion (a)(1)
 CX_REAR = 0.5      # rearward
-CY_LAT  = 0.5      # lateral / cornering (sliding)
-CZ      = 1.0      # vertical down (friction-credit)
-FS_FWD  = 1.25     # safety factor, forward
-FS_OTH  = 1.10     # safety factor, sideways / rearward
-MU      = 0.20     # sliding friction (conservative, plastic/steel unlisted-pair fallback)
+CY_LAT  = 0.5      # lateral
+CX_FWD_WLL = 0.435 # forward — working-load-limit criterion (a)(2)
+CY_LAT_WLL = 0.25  # lateral — WLL criterion
+MU      = 0.0      # bare: Part 393 credits no friction
+MU_MAT  = 0.5      # unrated friction mat: resists 50% of the weight on it (393.108(g))
+TIEDOWN_FRAC = 0.5 # aggregate tiedown WLL >= 1/2 the cargo weight (393.106(d))
 
 # ── Design masses (kg) — the frame restrains the TOTES ───────────────────────
 TOTE_TARE   = 65      # 1000L caged composite tare (weight-distribution-report.md)
@@ -75,59 +78,56 @@ def z_rhs(h_load, w, t):
     return i / (h_load / 2.0)
 
 
-def blocking_force(m, c, fs):
-    """EN 12195-1 net horizontal design force a blocking device must resist (N)."""
-    return fs * m * G * (c - MU * CZ)
-
-
 def bolt_shear_cap(fub, n):
     """Ultimate shear capacity of n M12 bolts through the threads (N)."""
     return n * 0.6 * fub * AS_M12
 
 
-def blocking_force_mu(m, c, fs, mu):
-    return fs * m * G * (c - mu * CZ)
+def blocking_force_mu(m, c, mu):
+    """Net horizontal force a blocking device must resist (N): inertia less the friction-mat credit."""
+    return m * G * max(c - mu, 0.0)
 
 
-def compute(m, label, mu=MU, bar=(BAR_H_LOAD, BAR_W, BAR_T), n_bars_per_tote=1, n_straps=1):
+def compute(m, label, mu=MU, bar=(BAR_H_LOAD, BAR_W, BAR_T), n_bars_per_tote=1, n_straps=1, cx=CX_FWD):
     """All element checks for one per-tote design mass m.
 
-    mu               friction credit (0.20 bare plastic/steel; 0.60 certified anti-slip mat)
+    mu               friction credit (0 bare; 0.5 unrated friction mat, 393.108(g))
+    cx               forward acceleration (0.8 g breaking-strength case; 0.435 g WLL case)
     bar              (depth-in-load, width, wall) mm of the front retaining bar section
     n_bars_per_tote  bars sharing one tote face (2 = upper+lower, each takes half the face load)
     n_straps         ratchet straps per stack (vertical tie-down share)
     """
-    bc_fwd = blocking_force_mu(m, CX_FWD, FS_FWD, mu)   # forward thrust the front bar must block
-    bc_lat = blocking_force_mu(m, CY_LAT, FS_OTH, mu)   # lateral (side-wall-trapped; hanger secondary)
+    bc_fwd = blocking_force_mu(m, cx, mu)               # forward thrust the front bar must block
+    bc_lat = blocking_force_mu(m, CY_LAT, mu)           # lateral (side-wall-trapped; hanger secondary)
 
     # 1. Front retaining bar(s) — UDL bending; load shared across n_bars_per_tote, weak axis
     z = z_rhs(bar[0], bar[1], bar[2])
     m_cap = z * FY_A500B / 1e3                       # N.m per bar
     m_dem = (bc_fwd / n_bars_per_tote) * (BAR_SPAN / 1e3) / 8.0   # UDL: BC*L/8 per bar (N.m)
-    sf_bar = m_cap / m_dem
+    sf_bar = m_cap / m_dem if m_dem else float("inf")
 
     # 2. Wall-hanger bolt group — PER-BAR reaction: each bar carries BC/n_bars and is simply
     # supported (wall + upright ends), so each bar's wall-end = BC/(2*n_bars), into a 2-bolt hanger
     r_wall = bc_fwd / (2.0 * n_bars_per_tote)
-    sf_hanger_bolt = bolt_shear_cap(FUB_88, N_HANGER_BOLTS) / r_wall
+    sf_hanger_bolt = bolt_shear_cap(FUB_88, N_HANGER_BOLTS) / r_wall if r_wall else float("inf")
     # wall bearing / tear-out at the 2 holes in the 1.6mm corrugated wall (backing plate spreads it)
     bear_cap = N_HANGER_BOLTS * FU_MILD * 12.0 * WALL_T
-    sf_wall_bear = bear_cap / r_wall
+    sf_wall_bear = bear_cap / r_wall if r_wall else float("inf")
 
     # 3. Front-bar -> upright cleat, 1x M12x65 A2-70 in shear (per-bar upright-end reaction)
     r_upr = bc_fwd / (2.0 * n_bars_per_tote)
-    sf_cleat = bolt_shear_cap(FUB_A2, N_CLEAT_BOLTS) / r_upr
+    sf_cleat = bolt_shear_cap(FUB_A2, N_CLEAT_BOLTS) / r_upr if r_upr else float("inf")
 
-    # 4. Lashing strap vertical tie-down (n_straps/stack) vs the tote weight it must hold seated
-    sf_strap = (n_straps * STRAP_WLL_N) / (m * G)
+    # 4. Tiedown straps over the stack, side to side: aggregate WLL vs 1/2 the tote weight (393.106(d))
+    sf_strap = (n_straps * STRAP_WLL_N) / (TIEDOWN_FRAC * m * G)
 
     return {
-        "label": label, "m": m, "bc_fwd": bc_fwd, "bc_lat": bc_lat, "mu": mu, "bar_sec": bar,
+        "label": label, "m": m, "cx": cx, "bc_fwd": bc_fwd, "bc_lat": bc_lat, "mu": mu, "bar_sec": bar,
         "bar": (m_dem, m_cap, sf_bar),
         "hanger_bolt": (r_wall, bolt_shear_cap(FUB_88, N_HANGER_BOLTS), sf_hanger_bolt),
         "wall_bear": (r_wall, bear_cap, sf_wall_bear),
         "cleat": (r_upr, bolt_shear_cap(FUB_A2, N_CLEAT_BOLTS), sf_cleat),
-        "strap": (m * G, STRAP_WLL_N, sf_strap),
+        "strap": (TIEDOWN_FRAC * m * G, n_straps * STRAP_WLL_N, sf_strap),
     }
 
 
@@ -137,8 +137,8 @@ def _fmt(r):
     lines = [
         f"\n=== {r['label']}  (per-tote m = {r['m']:.0f} kg) ===",
         f"  bar {bs[1]:.0f}x{bs[0]:.0f}x{bs[2]:.0f} RHS  mu={r['mu']:.2f}",
-        f"  EN 12195-1 forward blocking force BC = f_s*m*g*(c_x - mu*c_z)"
-        f" = 1.25*{r['m']:.0f}*9.81*(0.8-{r['mu']:.2f}) = {r['bc_fwd']:.0f} N",
+        f"  49 CFR 393.102 forward blocking force BC = m*g*(c_x - mu_mat)"
+        f" = {r['m']:.0f}*9.81*({r['cx']:.3g}-{r['mu']:.2f}) = {r['bc_fwd']:.0f} N",
         f"  {'element':<34}{'demand':>12}{'capacity':>12}{'SF':>8}",
         f"  {'-'*66}",
     ]
@@ -150,7 +150,7 @@ def _fmt(r):
     row("wall-hanger bolts (2x M12x70 8.8)", r["hanger_bolt"], "N")
     row("wall bearing (1.6mm, 2 holes)", r["wall_bear"], "N")
     row("bar->upright cleat (1x M12x65 A2)", r["cleat"], "N")
-    row("lashing strap (vert tie-down)", r["strap"], "N")
+    row("tiedown straps (393.106(d))", r["strap"], "N")
     return "\n".join(lines)
 
 
@@ -173,7 +173,7 @@ def weld_schedule():
     ring_cap = fillet_cap(6, 110)
     lines.append(f"  {'W4 lashing ring->bar (6mm, all-around)':<40}{'6mm':>6}{ring_dem:>9.0f}{ring_cap:>9.0f}{ring_cap/ring_dem:>7.1f}")
     # W3 — bar-end cleat -> upright: per-bar reaction BC/4 (loaded, bare); ~80mm fillet.
-    cleat_dem = blocking_force_mu(M_LOADED, CX_FWD, FS_FWD, MU) / (2.0 * IBC_FRONT_BAR_N_PER_TIER)
+    cleat_dem = blocking_force_mu(M_LOADED, CX_FWD, MU) / (2.0 * IBC_FRONT_BAR_N_PER_TIER)
     cleat_cap = fillet_cap(4, 80)
     lines.append(f"  {'W3 cleat->upright (4mm)':<40}{'4mm':>6}{cleat_dem:>9.0f}{cleat_cap:>9.0f}{cleat_cap/cleat_dem:>7.1f}")
     lines.append("  W1 upright<->ring (5mm all-around), W2 foot-plate<->upright (6mm all-around),")
@@ -218,7 +218,8 @@ def service_loads():
     lines.append(f"  front upright bending (50.8 RHS): cap {m_cap_upr:.0f} N.m  SF {m_cap_upr/m_conn:.1f}")
     lines.append(f"  arm->upright END-PLATE (2x M12 ABOVE arm, bearing-type, {lever*1000:.0f}mm lever): {f_bolt:.0f} N/bolt tension,"
                  f" cap {bolt_cap:.0f} N  SF {bolt_cap/f_bolt:.1f}")
-    lines.append("  Both non-governing vs the EN 12195-1 transport case (bar SF 1.59). Arm NOTCH check below; fab on Sheet 5.")
+    gov = compute(M_LOADED, "loaded", n_bars_per_tote=IBC_FRONT_BAR_N_PER_TIER, n_straps=2)["bar"][2]
+    lines.append(f"  Both non-governing vs the 49 CFR 393.102 transport case (bar SF {gov:.2f}). Arm NOTCH check below; fab on Sheet 5.")
     return "\n".join(lines)
 
 
@@ -317,7 +318,7 @@ def outer_beam_frame_check():
 
 
 def render_png(path=None):
-    """Blueprint load-case SHEET (ibc-frame-load-case.png): frame elevation with the EN 12195-1
+    """Blueprint load-case SHEET (ibc-frame-load-case.png): frame elevation with the 49 CFR 393.102
     load arrows + a demand/capacity/SF matrix for every restraint element, driven from the same
     compute() the validation table uses. Matplotlib guarded (except ImportError) so the module stays
     import-safe for the dependency-free gates."""
@@ -333,9 +334,14 @@ def render_png(path=None):
         path = os.path.join(DIAGRAMS_DIR, "ibc-frame-load-case.png")
 
     n = IBC_FRONT_BAR_N_PER_TIER
-    rL  = compute(M_LOADED,  "loaded",     mu=0.20, n_bars_per_tote=n, n_straps=2)   # governing: no mat
-    rLm = compute(M_LOADED,  "loaded+mat", mu=0.60, n_bars_per_tote=n, n_straps=2)   # anti-slip credited
-    rD  = compute(M_DRAINED, "drained",    mu=0.20, n_bars_per_tote=n, n_straps=2)
+    rL  = compute(M_LOADED,  "loaded",     n_bars_per_tote=n, n_straps=2)                 # governing: 0.8 g, no mat
+    rLm = compute(M_LOADED,  "loaded+mat", mu=MU_MAT, n_bars_per_tote=n, n_straps=2)     # friction mat credited
+    rLw = compute(M_LOADED,  "loaded WLL", n_bars_per_tote=n, n_straps=2, cx=CX_FWD_WLL) # 0.435 g WLL case
+    rD  = compute(M_DRAINED, "drained",    n_bars_per_tote=n, n_straps=2)
+    def _min_sf(r):
+        return min(r[k][2] for k in ("bar", "hanger_bolt", "wall_bear", "cleat", "strap"))
+    def _min_down(r):
+        return min(r[k][2] for k in ("hanger_bolt", "wall_bear", "cleat", "strap"))
     # service (walkway arm + upright), recomputed from the same constants
     p_arm  = M_WK_ARM_KG * G + P_PERSON_N
     m_conn = p_arm * ARM_REACH_M
@@ -360,41 +366,41 @@ def render_png(path=None):
     axE.add_patch(Rectangle((26, 10), 52, 62, fc=C_TOTE, ec="#333"))          # tote stack (2 high)
     axE.plot([26, 78], [41, 41], color="#333", lw=0.7, ls=(0, (4, 2)))
     axE.text(52, 40, "direct-stack junction", ha="center", va="center", fontsize=6.5, color="#555")
-    axE.text(52, 60, "4× 1000 L totes\n(2×2, restraint-only)", ha="center", va="center", fontsize=8)
+    axE.text(52, 60, "4× 275-gal totes\n(2×2, restraint-only)", ha="center", va="center", fontsize=8)
     axE.add_patch(Rectangle((22, 12), 4, 58, fc=C_STEEL, ec="#333"))          # front retaining bars (at the −X face)
     axE.text(16, 55, "front\nbars", ha="center", fontsize=7); axE.plot([20,24],[45,45],color="#333",lw=0.5)
     axE.add_patch(Rectangle((10, 12), 4, 58, fc="#5a6270", ec="#333"))        # wall hanger / side wall
     axE.text(9, 34, "wall\nhanger", ha="right", fontsize=7)
     axE.add_patch(Rectangle((80, 10), 5, 64, fc="#5a6270", ec="#333"))        # corridor upright (cleat end)
     axE.text(86, 40, "upright\n+ cleat", ha="left", fontsize=7)
-    # EN arrows on the tote CG
+    # load arrows on the tote CG
     axE.add_patch(FancyArrow(52, 46, -20, 0, width=1.3, head_width=4, head_length=4, fc=C_LOAD, ec=C_LOAD))
     axE.text(40, 51, "0.8 g fwd", color=C_LOAD, fontsize=8, ha="center", fontweight="bold")
     axE.add_patch(FancyArrow(52, 46, 0, -20, width=1.3, head_width=4, head_length=4, fc=C_LOAD, ec=C_LOAD))
-    axE.text(58, 34, "1.0 g ↓", color=C_LOAD, fontsize=8, ha="left", fontweight="bold")
+    axE.text(58, 34, "1 g ↓ (weight)", color=C_LOAD, fontsize=8, ha="left", fontweight="bold")
     axE.add_patch(FancyArrow(52, 68, 14, 0, width=0.9, head_width=3, head_length=3, fc="#e08e0b", ec="#e08e0b"))
     axE.text(60, 72, "0.5 g lat", color="#b8860b", fontsize=7.5, ha="center")
     axE.text(50, 0.5, "forward thrust → front bars → (wall hanger WH  +  corridor cleat BC-C) → frame → floor anchors",
              ha="center", fontsize=6.6, color="#333")
 
-    # ── axM — EN 12195-1 method + states ──
+    # ── axM — 49 CFR 393.102 method + states ──
     axM.set_xlim(0, 100); axM.set_ylim(0, 100)
-    axM.text(0, 96, "EN 12195-1:2010 — METHOD", fontsize=10, fontweight="bold")
+    axM.text(0, 96, "FMCSA 49 CFR 393.102 — METHOD", fontsize=10, fontweight="bold")
     method = [
-        ("Acceleration coefficients", ""),
-        ("   c_x = 0.8 g fwd / 0.5 g rear", ""),
-        ("   c_y = 0.5 g lateral · c_z = 1.0 g down", ""),
-        ("Safety factor  f_s = 1.25 fwd / 1.10 else", ""),
-        ("Friction  μ = 0.20 bare (plastic/steel)", ""),
-        ("            μ = 0.60 with certified anti-slip mat", ""),
-        ("Positive blocking (sliding balance):", ""),
-        ("   BC ≥ f_s · m · g · (c − μ·c_z)", ""),
+        ("Breaking strength (a)(1)", ""),
+        (f"   {CX_FWD} g fwd / {CX_REAR} g rear / {CY_LAT} g lateral", ""),
+        ("Working load limit (a)(2)", ""),
+        (f"   {CX_FWD_WLL} g fwd / {CX_REAR} g rear / {CY_LAT_WLL} g lateral", ""),
+        (f"Friction  none credited bare; mat = {MU_MAT:.0%} of weight", ""),
+        (f"Tiedowns  aggregate WLL ≥ {TIEDOWN_FRAC:.0%} of weight", ""),
+        ("Positive blocking:", ""),
+        ("   BC ≥ m · g · (c − mat credit)", ""),
     ]
     for i, (a, _) in enumerate(method):
         axM.text(0, 88 - i*6.2, a, fontsize=8.4, family="monospace",
                  fontweight="bold" if a.endswith(":") or a[0].isupper() and "≥" not in a else "normal")
     axM.text(0, 32, "DESIGN STATES (per top-tier tote):", fontsize=8.6, fontweight="bold")
-    axM.text(0, 24, f"   DRAINED (nominal, site-filled): tare {M_DRAINED:.0f} kg  → every element SF ≥ 12",
+    axM.text(0, 24, f"   DRAINED (nominal, site-filled): tare {M_DRAINED:.0f} kg  → every element SF ≥ {int(_min_sf(rD))}",
              fontsize=8.2, family="monospace", color=C_OK)
     axM.text(0, 17, f"   LOADED (over-spec bound): full Blue {M_LOADED:.0f} kg  → the governing case",
              fontsize=8.2, family="monospace", color=C_WARN)
@@ -413,12 +419,13 @@ def render_png(path=None):
     axT.plot([0, 100], [87.5, 87.5], color="#333", lw=1)
 
     rows = [
-        ("Front retaining bars ×2/face (μ0.20, no mat)", f"{rL['bar'][0]:,.0f} N·m", f"{rL['bar'][1]:,.0f} N·m", rL['bar'][2], "gov"),
-        ("   … same bars + anti-slip mat (μ0.60)",       f"{rLm['bar'][0]:,.0f} N·m", f"{rLm['bar'][1]:,.0f} N·m", rLm['bar'][2], ""),
+        (f"Front retaining bars ×2/face ({CX_FWD} g, no mat)", f"{rL['bar'][0]:,.0f} N·m", f"{rL['bar'][1]:,.0f} N·m", rL['bar'][2], "gov"),
+        (f"   … same bars + friction mat ({MU_MAT:.0%} credit)", f"{rLm['bar'][0]:,.0f} N·m", f"{rLm['bar'][1]:,.0f} N·m", rLm['bar'][2], ""),
+        (f"   … same bars, WLL case ({CX_FWD_WLL} g, no mat)", f"{rLw['bar'][0]:,.0f} N·m", f"{rLw['bar'][1]:,.0f} N·m", rLw['bar'][2], ""),
         ("Wall-hanger bolts WH (2× M12×70, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
         ("Corrugated-wall bearing (backing plate)",      f"{rL['wall_bear'][0]:,.0f} N", f"{rL['wall_bear'][1]:,.0f} N", rL['wall_bear'][2], ""),
         ("Corridor cleat bolts BC-C (1× M12×65, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
-        ("Lash ring + 2\" strap (vertical, per stack)",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),
+        ("2× 2\" straps vs ½ tote weight (393.106(d))",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),
         ("Walkway-arm end-plate CJ (service, +1 kN)",    f"{m_conn:,.0f} N·m", f"{endplate_cap:,.0f} N", sf_endplate, "svc"),
         ("Front upright bending (service)",              f"{m_conn:,.0f} N·m", "—", sf_upr, "svc"),
     ]
@@ -435,16 +442,16 @@ def render_png(path=None):
             axT.text(cols[3]+1.5, y, "svc", fontsize=6.2, color="#888", ha="left", va="center")
         y -= 6.6
     axT.plot([0, 100], [y+3, y+3], color="#333", lw=1)
-    axT.text(cols[0], y-3, "Defense in depth: the bars pass on positive blocking ALONE (SF 1.59, mat absent);",
+    axT.text(cols[0], y-3, f"Defense in depth: the bars pass on positive blocking ALONE (SF {rL['bar'][2]:.2f}, mat absent);",
              fontsize=7.6, color="#333")
-    axT.text(cols[0], y-9, "the certified anti-slip mat lifts it to SF 4.77. Everything downstream clears SF ≥ 8;",
+    axT.text(cols[0], y-9, f"the friction mat lifts it to SF {rLm['bar'][2]:.2f}. Everything downstream clears SF ≥ {int(_min_down(rL))};",
              fontsize=7.6, color="#333")
-    axT.text(cols[0], y-15, "in the DRAINED ship state every element clears SF ≥ 12. Service loads non-governing.",
+    axT.text(cols[0], y-15, f"in the DRAINED ship state every element clears SF ≥ {int(_min_sf(rD))}. Service loads non-governing.",
              fontsize=7.6, color="#333")
 
-    fig.suptitle("IBC STACKING FRAME — TRANSPORT RESTRAINT LOAD CASE  ·  EN 12195-1:2010",
+    fig.suptitle("IBC STACKING FRAME — TRANSPORT RESTRAINT LOAD CASE  ·  FMCSA 49 CFR 393.102",
                  fontsize=14, fontweight="bold", y=0.965)
-    fig.text(0.5, 0.925, "driven from tbs_constants + ibc_frame_load.py  ·  restraint-only deep 4-leg box  ·  2× 50×20×3 bars/tote + anti-slip mat + 2 straps/stack",
+    fig.text(0.5, 0.925, "driven from tbs_constants + ibc_frame_load.py  ·  restraint-only deep 4-leg box  ·  2× 50×20×3 bars/tote + friction mat + 2 straps/stack",
              ha="center", fontsize=9, color="#555")
     fig.text(0.5, 0.018, "IBC FRAME — LOAD CASE  ·  TBS-001  ·  see report §3.4  ·  © 2026 Alvin Richards",
              ha="center", fontsize=8, color="#777")
@@ -458,20 +465,22 @@ def main():
     if "--png" in sys.argv:
         render_png()
         return
-    print("IBC STACKING-FRAME TRANSPORT RESTRAINT — EN 12195-1:2010")
+    print("IBC STACKING-FRAME TRANSPORT RESTRAINT — FMCSA 49 CFR 393.102")
     print(f"  corrugation={CONTAINER_CORRUGATION_DEPTH}mm  "
           f"frame RHS={IBC_FRAME_RHS}mm  foot={IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T}")
 
     n = IBC_FRONT_BAR_N_PER_TIER   # 2 — adopted design (R5)
-    print(f"\n########## AS-DESIGNED — {n} x 50x20x3 bars/tote + anti-slip mat + 2 straps/stack ##########")
-    # Bar-alone (mat degraded/absent, mu=0.20) is the defense-in-depth positive-blocking floor;
-    # with the certified anti-slip mat (mu=0.60) the margins lift ~3x.
+    print(f"\n########## AS-DESIGNED — {n} x 50x20x3 bars/tote + friction mat + 2 straps/stack ##########")
+    # Bar-alone (mat degraded/absent, no friction credit) is the positive-blocking floor;
+    # the friction mat credits 50% of the tote weight against the forward thrust.
     print(_fmt(compute(M_DRAINED, "DRAINED (nominal — totes empty), bar-alone",
                        n_bars_per_tote=n, n_straps=2)))
-    print(_fmt(compute(M_LOADED,  "LOADED — bar-alone (mat absent, mu=0.20)",
+    print(_fmt(compute(M_LOADED,  "LOADED — bar-alone, 0.8 g breaking-strength case (no mat)",
                        n_bars_per_tote=n, n_straps=2)))
-    print(_fmt(compute(M_LOADED,  "LOADED — with anti-slip mat (mu=0.60)",
-                       mu=0.60, n_bars_per_tote=n, n_straps=2)))
+    print(_fmt(compute(M_LOADED,  "LOADED — with friction mat (50% credit), 0.8 g",
+                       mu=MU_MAT, n_bars_per_tote=n, n_straps=2)))
+    print(_fmt(compute(M_LOADED,  "LOADED — bar-alone, 0.435 g working-load-limit case",
+                       n_bars_per_tote=n, n_straps=2, cx=CX_FWD_WLL)))
 
     print("\n########## WHY DOUBLED — single 50x20x3 bar fails the loaded case ##########")
     print(_fmt(compute(M_LOADED,  "LOADED — as-was 1 bar/tote, no mat (SUPERSEDED)",

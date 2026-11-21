@@ -242,7 +242,7 @@
 
 ![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
 
-![TBS-001 IBC Stacking — Sheet 2: Fastening Details](assets/ibc-stacking-sheet2.png)
+![TBS-001 IBC Stacking — Sheet 2: Securing Arrangement](assets/ibc-stacking-sheet2.png)
 
 ![TBS-001 IBC Stacking — Sheet 3: External Bulkhead Ports Elevation](assets/ibc-stacking-sheet3.png)
 
@@ -272,7 +272,7 @@
 
 ![TBS-001 IBC Frame — Plate Schedule Sheet 2: Angle Brackets](assets/ibc-plate-schedule-sheet2.png)
 
-![TBS-001 IBC Frame — Load Case (EN 12195-1)](assets/ibc-frame-load-case.png)
+![TBS-001 IBC Frame — Load Case (49 CFR 393.102)](assets/ibc-frame-load-case.png)
 
 ---
 

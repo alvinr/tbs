@@ -67,7 +67,7 @@ GATE_BOLT_D    = 12     # M12 bolts
 GATE_BOLT_N    = 4      # bolts per gate
 
 # Rubber mat
-MAT_T          = 12     # anti-slip rubber mat thickness (mm)
+MAT_T          = 12     # rubber friction mat thickness (mm)
 
 # IBC cage post visual width
 CAGE_POST_W    = 40     # visual representation of cage uprights
@@ -292,7 +292,7 @@ def sheet1():
         f"3. RESTRAINT-ONLY frame: a DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet",
         f"   ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
-        "5. Front retaining bars (8x, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
+        "5. Front retaining bars (8x, 2/tote face, Z500/950 + Z1500/1950 — two per face for the loaded-transport case) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
         f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",
         f"7. Corridor Plumbing Panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
     ]
@@ -382,7 +382,7 @@ def sheet2():
         "   see IBC SUPPORT FRAME fabrication set, Sheet 4.",
         "2. The 8 weld-on lash rings sit on the lower retaining bar of each tier (4 per tier).",
         "3. Two 2\" ratchet straps per stack pass over the tote top and ratchet down to the lash rings;",
-        "   re-check tension after 50 km. Anti-slip mats (μ≥0.6) sit under each tote.",
+        "   re-check tension after 50 km. Friction mats sit under each tote.",
         "4. The totes are otherwise trapped by the side walls (30mm gap) + the sealed end wall.",
     ], -240, -150, spacing=66, fs=7, font=FONT, width=3000)
 

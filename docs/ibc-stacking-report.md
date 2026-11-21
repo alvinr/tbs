@@ -38,8 +38,8 @@ Plumbing Panel.
 
 | Parameter | Value |
 |-----------|-------|
-| Model | Schütz Ecobulk MX 1000L (or equivalent US 48×40 caged composite tote) |
-| Capacity | 1,000 L (~264 US gal) per tote — all four totes are identical; working fills are set in the [Water System Report](water-system-report.md) §1 |
+| Model | Schütz Ecobulk MX 1000, sold in the US as **<!-- BEGIN fact:ibc_nominal_gal -->275<!-- END fact:ibc_nominal_gal --> gal** (or an equivalent US 48×40 caged composite 275-gal tote) |
+| Capacity | <!-- BEGIN fact:ibc_nominal_gal -->275<!-- END fact:ibc_nominal_gal --> US gal = <!-- BEGIN fact:ibc_nominal_l -->1,041<!-- END fact:ibc_nominal_l --> L brim per tote, about 4% more than the European 1,000 L size. The design caps each fill at <!-- BEGIN fact:ibc_capacity_l -->1,000<!-- END fact:ibc_capacity_l --> L, leaving <!-- BEGIN fact:ibc_capacity_margin_l -->41<!-- END fact:ibc_capacity_margin_l --> L of headspace. All four totes are identical; working fills are set in the [Water System Report](water-system-report.md) §1 |
 | Overall dimensions | 1,219 × 1,016 × 1,168mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
@@ -48,7 +48,7 @@ Plumbing Panel.
 | Drain valve | DN50 butterfly valve, S60×6 thread |
 | Fill | **side entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom stacked) |
 | Tare weight | ~65 kg per tote |
-| Full weight (1,000 L) | ~1,065 kg per tote |
+| Full weight (at the <!-- BEGIN fact:ibc_capacity_l -->1,000<!-- END fact:ibc_capacity_l --> L design ceiling) | ~1,065 kg per tote |
 | Total tare (4 totes) | ~260 kg; water load see [weight-distribution report](weight-distribution-report.md) |
 
 ### 2.2 Tote Assignments
@@ -113,7 +113,7 @@ and the walkway-arm connection are validated and scheduled in §3.4–3.5 alongs
 | Uprights | 4 full-height (deep 4-leg box: front pair at the corridor mouth + back pair ~450mm behind), tied by butt-jointed top + bottom rings |
 | Floor anchorage | 4 × 150 × 150 × 12mm flange-plate feet, each bolting (4 × M12) to a shared steel **floor-anchor sub-plate** that self-taps into the container's cross-members (§3.6; front feet reach ~25mm under the tray) |
 | Front retaining bars | **8 × 50×20×3 RHS** — **two per tote face** (upper + lower), both seated in the 25mm gap to the film rail, wall → upright per column. Two per face so the loaded-transport case passes (§3.4) |
-| Anti-slip matting | **4 × certified anti-slip mat (μ ≥ 0.6)** under the tote interfaces (2 on the floor + 2 on the lower-tote cage tops) — raises the sliding friction that credits against the forward thrust (§3.4) |
+| Friction matting | **4 × rubber friction mat** under the tote interfaces (2 on the floor + 2 on the lower-tote cage tops) — resists half the tote weight against the forward thrust (§3.4) |
 | Wall joist hangers | **8 × identical 2-bolt Simpson-style U-pocket** (4 mm plate, seat welded to the back-plate — W5) — one per bar (the pair uses identical hangers for fab simplicity), each **through-bolted (2 × M12×70) to an exterior backing plate** (M12×70 spans the 8mm plate + corrugation + 4mm hanger grip); 16 wall penetrations in all |
 | Exterior backing plates | 8 × 60 × 205 × 8mm steel (one per hanger), on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | Weld-on lashing rings | 8 on the front bars (4 per tier); 3,333 lb (~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg) assembly WLL (2" strap-limited), 2 straps per stack |
@@ -131,30 +131,31 @@ The upper tote bears directly on the lower tote's galvanized cage top rail
 (no platform, mat or lip) — the totes' normal warehouse cage-on-cage stacking interface,
 rated for a full upper tote.
 
-### 3.4 Structural Validation (transport restraint) — EN 12195-1:2010
+### 3.4 Structural Validation (transport restraint) — FMCSA 49 CFR 393.102
 
 The frame carries **no vertical service load** (the totes stack on themselves), so there is no
 platform-beam bending case. The governing case is **transport restraint**: the totes must not shift
 when the container is moved by road — and, because the camera is designed to run **self-contained**, it is transported with **water aboard**. The restraint is
 therefore designed for the loaded case, not just the drained one.
 
-**Load basis — [EN 12195-1:2010](https://cdn.standards.iteh.ai/samples/32961/4592590bcf194f1a8ffa917a5db7d258/SIST-EN-12195-1-2011.pdf)** (the European cargo-securing standard for road transport). Design accelerations: **0.8 g forward** (braking), 0.5 g rearward, 0.5 g lateral, with **1.0 g vertical** in the friction term; safety factor **f_s = 1.25 forward / 1.1 otherwise** ([Table 2 + §5](https://hvttforum.org/wp-content/uploads/2019/11/Johansson-International-guidelines-on-safe-load-securing-for-road-transport.pdf)). A blocking (positive-restraint) device must carry **BC ≥ f_s · m · g · (c − μ·c_z)** — the inertia demand less the friction credit. Sliding friction **μ = 0.20** bare (the conservative fallback for an unlisted plastic-pallet-on-steel pairing), rising to **μ = 0.60** with certified anti-slip matting ([EN 12195-1 Annex B](https://res.jedermann.de/data/downloads/KB029-2_Gesamtdokument.pdf)). Forward (0.8 g) governs: it is the only direction with no wall to trap the totes (the side walls trap laterally, the sealed end wall rearward). The design mass is a full top-tier Blue tote, **965 kg** (65 kg tare + <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L). Computed in [`ibc_frame_load.py`](https://github.com/alvinr/tbs/blob/main/src/generators/ibc_frame_load.py).
+**Load basis — [FMCSA 49 CFR 393.102](https://www.law.cornell.edu/cfr/text/49/393.102)** (the US federal cargo-securement performance criteria for commercial road transport). Two criteria, each applied separately: the **breaking-strength** case, **0.8 g forward** (braking), 0.5 g rearward and 0.5 g lateral, must not exceed the restraint's breaking strength; the **working-load-limit** case, 0.435 g forward, 0.5 g rearward and 0.25 g lateral, must not exceed its working load limit. Steel members are checked against **yield** in both cases, which is conservative for a breaking-strength criterion; no further safety factor is applied, so the reported SF is capacity over demand. A blocking (positive-restraint) device must carry **BC ≥ m · g · (c − mat credit)**. Part 393 credits **no friction** for bare surfaces; an unrated friction mat resists **50% of the weight** on it ([49 CFR 393.108(g)](https://www.law.cornell.edu/cfr/text/49/393.108)). Tiedowns must have an aggregate working load limit of at least **half the cargo weight** ([49 CFR 393.106(d)](https://www.law.cornell.edu/cfr/text/49/393.106)). Forward (0.8 g) governs: it is the only direction with no wall to trap the totes (the side walls trap laterally, the sealed end wall rearward). The design mass is a full top-tier Blue tote, **965 kg** (65 kg tare + <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L). Computed in [`ibc_frame_load.py`](https://github.com/alvinr/tbs/blob/main/src/generators/ibc_frame_load.py).
 
-The forward thrust is blocked by the **front retaining bars**, seated in the 25mm film-rail slot — which limits each bar to a **20mm depth in the load direction** (weak-axis bending). A single bar per tote face fails this case (bending SF **0.79**). The design therefore uses **two bars per tote face** sharing the thrust, plus certified anti-slip matting to cut the demand:
+The forward thrust is blocked by the **front retaining bars**, seated in the 25mm film-rail slot — which limits each bar to a **20mm depth in the load direction** (weak-axis bending). A single bar per tote face fails this case (bending SF **0.75**). The design therefore uses **two bars per tote face** sharing the thrust, plus friction matting to cut the demand:
 
-| Element | Demand (loaded) | Capacity | SF (bar-alone) | SF (+ anti-slip mat) |
+| Element | Demand (loaded, 0.8 g) | Capacity | SF (bar-alone) | SF (+ friction mat) |
 |---|---|---|---|---|
-| Front retaining bar — bending (2 × 50×20×3, weak-axis) | 464 N·m | 738 N·m | **1.59** | **4.77** |
-| Wall-hanger bolts (2 × M12×70 Gr.8.8 per bar) | 1,775 N | 80,900 N | 46 | — |
-| Wall bearing (60×205×8 plate, 1.6mm wall, 2 holes) | 1,775 N | 15,400 N | 8.7 | — |
-| Bar → upright cleat (1 × M12×65 A2, shear) | 1,775 N | 35,400 N | 20 | — |
-| Lashing strap — vertical tie-down (2 straps/stack) | 9,467 N | 29,650 N | 3.1 | — |
+| Front retaining bar — bending (2 × 50×20×3, weak-axis) | 495 N·m | 738 N·m | **1.49** | **3.97** |
+| Front retaining bar — WLL case (0.435 g) | 269 N·m | 738 N·m | 2.74 | — |
+| Wall-hanger bolts (2 × M12×70 Gr.8.8 per bar) | 1,893 N | 80,900 N | 43 | — |
+| Wall bearing (60×205×8 plate, 1.6mm wall, 2 holes) | 1,893 N | 15,400 N | 8.1 | — |
+| Bar → upright cleat (1 × M12×65 A2, shear) | 1,893 N | 35,400 N | 19 | — |
+| Tiedown straps — aggregate WLL vs ½ tote weight (2 straps/stack) | 4,733 N | 29,650 N | 6.3 | — |
 
-The two bars give **defense in depth**: as positive blocking they pass on their own (**SF 1.59**, mat degraded or absent); with the anti-slip mat the friction credit lifts the margin to **SF 4.77**. Everything downstream of the bars is comfortably strong — the wall-hanger bolts, the corrugated-wall bearing (backing-plate-spread), the cleat bolts, and the tie-down straps all clear SF ≥ 8. In the **drained** transport state (site-filled water, totes empty) every element clears SF ≥ 12.
+The two bars give **defense in depth**: as positive blocking they pass on their own (**SF 1.49**, mat degraded or absent); the friction mat's 50% credit lifts the margin to **SF 3.97**. Everything downstream of the bars is comfortably strong — the wall-hanger bolts, the corrugated-wall bearing (backing-plate-spread), the cleat bolts, and the tiedown straps all clear SF ≥ 6. In the **drained** transport state (site-filled water, totes empty) every element clears SF ≥ 22.
 
 - **Front retaining bars** (two per tote face, 50×20×3 RHS, ~1,046mm span) share each tote's forward thrust into the floor feet + wall hangers.
 - **Wall joist hangers** — **one identical 2-bolt hanger per bar**, each **through-bolted (2 × M12×70) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. That is 16 wall penetrations in all (8 hangers × 2 bolts). M12×70 (partial thread, the single standardized zinc wall length) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger). **Both ends of the bar use the same L-cleat** — the corridor-end **BC-C** and the wall-end **BC-W** each drop the bar into an L-angle and run a single horizontal M12×65 through the L's vertical leg + the bar's 50mm web, with a small nut-side **backing plate** spreading the load into the bar's far web.
-- **Anti-slip matting** (certified μ ≥ 0.6) under each tote interface is the primary friction lever — it triples the effective margin and directly answers the "totes must not shift" requirement.
+- **Friction matting** under each tote interface is the primary friction lever — it resists half the tote weight, lifting the bar margin about 2.7× and directly answering the "totes must not shift" requirement.
 - **Weld-on lashing rings + 2 straps/stack** (3,333 lb / ~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.
 - **Floor feet** (150×150×12, 4 × M12 each) bolt to a shared floor-anchor sub-plate (§3.6) that self-taps into the steel cross-members, anchoring the uprights against uplift and transferring loads into the container structure.
 
@@ -163,9 +164,9 @@ The two bars give **defense in depth**: as positive blocking they pass on their 
 - **Plumbing panel + pumps** — the panel mass is summed from its parts (ply, pumps, ACC-01, water-filled pipe, valves and clips — [`plumbing_panel_mass.py`](https://github.com/alvinr/tbs/blob/main/src/generators/plumbing_panel_mass.py), ~50 kg). Taken entirely on the 6 rear-panel brackets it is under 100 N per bracket, static — trivial (SF ≫ 10).
 - **Right-walkway cantilever** — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a **395 N·m moment into the front upright**: the 50.8 RHS upright bends at **SF 6.9**, and the arm→upright connection — a **bolted end-plate**, **bearing-type** (a plate welded to the arm end, then 2× M12 **both above the arm** through the upright into a **rear backing plate**, CJ): the top bolt group takes the tension while the plate bears compression at the bottom against the upright. At the ~65 mm lever the two bolts share **~3.0 kN each** (**SF ≈ 20** on the M12), and the backing plate spreads the reaction so the hollow RHS wall can't dish. **Both bolts sit above the arm** — this clears the 3-way corner congestion at the front upright: the corridor's bottom frame X-rail (Z12–63) runs behind the plate's lower edge (ghost-marked on Sheet 5) with **no bolt near it**, and neither bolt fouls the welded arm. A walkway support carries **down-load only** (deck + people; the grate lifts out without loading the arm up), so the asymmetric bearing-type joint is appropriate. The arm itself is a **solid 2×1 flat bar** : each arm half-laps over *both* walkway long beams, and a notched hollow tube opens into a weak channel — a notched partial section has to be solid to keep its strength. The half-lap is **rebalanced to the moment**: a deep arm notch at the tip (M ≈ 30 N·m, arm keeps 5.4 mm), and at the post end (M ≈ 267 N·m) the **outer beam** takes the deep notch so the arm keeps 16 mm (**SF ≈ 2.0** on the solid bar). The outer beam's thin 9.4 mm notch sits at an arm support, but a thin channel can't carry that support's hogging — so the half-lap is a **bearing seat** (the beam's upper 9.4 mm rests on the arm's lower 16 at ~0.2 MPa), i.e. a pinned support. The beam therefore spans **simply-supported on its full 25.4 mm section** — **SF ≈ 7** and **~2 mm** deflection under a person (`ibc_frame_load.outer_beam_frame_check`; the light grate load and person-share are estimates to firm with the full walkway-frame model). Each half-lap is **positively secured** by one **#14 self-drilling TEK screw** (4 total) driven from the underside through a Ø7 **clearance** hole in the solid arm, threading into the hollow beam's **solid bottom wall** (which faces down onto the arm) — an anti-lift/anti-slide locator whose head clears the traveling spray beam. The arm's fabrication (including the hold-down section) is drawn on Sheet 5.
 
-The load path, the EN 12195-1 method, and the full demand/capacity/SF matrix (driven from `ibc_frame_load.py`) are drawn on the load-case sheet:
+The load path, the 49 CFR 393.102 method, and the full demand/capacity/SF matrix (driven from `ibc_frame_load.py`) are drawn on the load-case sheet:
 
-![TBS-001 IBC Frame — Load Case (EN 12195-1)](assets/ibc-frame-load-case.png)
+![TBS-001 IBC Frame — Load Case (49 CFR 393.102)](assets/ibc-frame-load-case.png)
 
 ### 3.5 Fastener + Weld Schedule (fabrication)
 
@@ -298,7 +299,7 @@ corrugated wall.
 
 **Phase 4 — Load the totes + secure.** Direct-stack the four totes, drop the front retaining bars into the wall
 hangers, and bolt each bar down — the corridor end to its cleat (BC-C) and the wall end with its centered
-retention bolt (BC-W). Fit the anti-slip mats under the tote interfaces, then lash down per §4. Transport
+retention bolt (BC-W). Fit the friction mats under the tote interfaces, then lash down per §4. Transport
 removes nothing from the frame; only the tote straps are released at the destination.
 
 ### 3.9 Member Cut List
@@ -362,14 +363,14 @@ laterally by the container side walls (30mm gap each side) and the sealed end wa
 the front retaining bars + lashing-ring ratchet straps restrain the open front and
 provide vertical tie-down. Together these restrain both tiers in all six DOF.
 
-### 4.4 Anti-Slip Matting
+### 4.4 Friction Matting
 
 | Parameter | Value |
 |-----------|-------|
 | Quantity | 4 (one under each tote: 2 on the container floor, 2 on the lower-tote cage tops) |
-| Type | Certified anti-slip cargo matting, **μ ≥ 0.6** ([EN 12195-1 Annex B](https://res.jedermann.de/data/downloads/KB029-2_Gesamtdokument.pdf)) — cut to the tote pallet footprint |
-| Purpose | Raises the sliding friction that credits against the forward thrust (μ 0.2→0.6), tripling the front-bar margin (SF 1.59→4.77, §3.4) — the primary "totes don't shift" lever |
-| Note | Must be a **tested/certified** μ ≥ 0.6 product; untested rubber caps at μ 0.2 |
+| Type | Rubber cargo friction matting — cut to the tote pallet footprint |
+| Purpose | An unrated friction mat resists 50% of the weight on it ([49 CFR 393.108(g)](https://www.law.cornell.edu/cfr/text/49/393.108)), which lifts the front-bar margin from SF 1.49 to 3.97 (§3.4) — the primary "totes don't shift" lever |
+| Note | A manufacturer-rated mat may be credited at its rating; the design takes only the 50% unrated value |
 
 ![TBS-001 IBC Stacking — Sheet 2: Securing Arrangement](assets/ibc-stacking-sheet2.png)
 
@@ -429,7 +430,7 @@ and both panels only as loads the stacking frame carries.
 ## 8. Engineering Drawings
 
 The construction drawings cover the IBC system across two drawing sets. They are shown inline in the
-relevant sections above; the full set is collected here and in [Engineering Diagrams](engineering-diagrams.md).
+relevant sections above; the full set is collected here and in the [diagram gallery](all-diagrams.md).
 
 <!-- brochure:skip -->
 
@@ -450,7 +451,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 5 — Internal plumbing elevation: Pipe routing from IBCs to bulkhead unions**
 ![TBS-001 IBC Stacking — Sheet 5](assets/ibc-stacking-sheet5.png)
 
-### IBC Support Frame Fabrication (6 sheets + 2 plate-schedule sheets)
+### IBC Support Frame Fabrication (6 sheets + 2 plate-schedule sheets + load case + floor anchoring)
 
 **Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars with their BC-C corridor-end L-cleats (1 horizontal bolt) and WH/BC-W wall-hanger bolts, weld-on lashing rings, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
@@ -476,10 +477,16 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Plate Schedule Sheet 2 — Bar-end L-cleat + welded angle brackets drawn 1:1: PLATE 4 bar-end L-cleat (8 mm L-angle, 90 long; the bar drops into the corner, 1 horizontal Ø14 for M12×65 through the vertical leg + the bar's 50 mm web, BC-C/W3), PLATE 5 rear-panel tab (50×50×5, Ø9/M8, RP1), PLATE 6 side-panel pipe-run L-bracket (1×1×⅛, Ø7/¼-20, SP1) — L-section end + drilled-leg face for each**
 ![TBS-001 IBC Frame — Plate Schedule Sheet 2](assets/ibc-plate-schedule-sheet2.png)
 
+**Load Case — transport restraint: load path, the 49 CFR 393.102 method, and the demand / capacity / SF matrix for every restraint element (§3.4)**
+![TBS-001 IBC Frame — Load Case](assets/ibc-frame-load-case.png)
+
+**Floor Anchoring — sub-plate (strongback) standard: container cross-member map, plate footprints and the anchor stack (§3.6)**
+![TBS-001 Floor Anchoring — Sub-Plate Standard](assets/floor-anchor-map.png)
+
 <!-- brochure:endskip -->
 
-Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §15
-(stacking) and §17 (frame fabrication).
+Full drawings also appear in the [diagram gallery](all-diagrams.md) §14
+(stacking) and §15 (frame fabrication).
 
 ---
 
@@ -516,7 +523,7 @@ the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 | Item | Source |
 |------|--------|
-| Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y |
+| Schütz Ecobulk MX 1000 (275 gal) IBC | [Schütz USA — Ecobulk MX](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US sizes 275 / 330 gal, DN50 butterfly outlet, DN150 screw-cap fill opening, UN31HA1/Y |
 | Weld-on lashing ring | [McMaster-Carr #3028T31](https://www.mcmaster.com/3028t31/) — 1½" ID, ½" thick, 6,600 lb WLL |
 | Floor cross-member structure + non-standardization (§3.6) | [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) (intermediate members ≤1,000mm, or flat underside) · [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) (box/C/Z/I members) · [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html) (C-section SPA-H Corten ~4–4.5mm, ~45mm flange) · [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/) (spacing not standardized, varies by maker) |
 | Plumbing fittings, pipe, valves, camlock, pumps | Specified in the [Plumbing Report](plumbing-report.md); sourced in the [Master Shopping List](master-shopping-list.md?system=water) |

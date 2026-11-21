@@ -925,9 +925,9 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 IBC_FRAME_RHS      = 50.8  # 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
 IBC_FRAME_T        = 3     # RHS wall thickness (mm) ≈ 0.120in — reserved (spec; not yet drawn)
 # Front transport-restraint bars (50×20×3 RHS) — TWO per tote face (upper + lower), both in the
-# ~25mm film-rail slot at X4654. Doubled from 1/tier after the EN 12195-1 load case (ibc_frame_load.py):
-# a single weak-axis bar fails the loaded-transport case (SF 0.79); two bars share the face load →
-# SF 1.59 bar-alone / 4.77 with anti-slip mat. See ibc-frame-blueprint-spec.md §Phase A.
+# ~25mm film-rail slot at X4654. Two per face because a single weak-axis bar fails the loaded-transport
+# case (49 CFR 393.102, SF 0.75); two bars share the face load → SF 1.49 bar-alone / 3.97 with the
+# friction mat (ibc_frame_load.py).
 IBC_FRONT_BAR_D    = 20    # bar depth in the -X (forward) load direction (mm) — slot-constrained
 IBC_FRONT_BAR_W    = 50    # bar width, vertical (mm)
 IBC_FRONT_BAR_T    = 3     # bar wall thickness (mm)
@@ -1105,7 +1105,10 @@ PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 15
 WASHES_PER_PRINT      = 3       # three wash baths per print (1 Brown-recycled, 2 & 3 Blue)
 PRINTS_NO_RECYCLE     = int(BLUE_SUPPLY_L / (WASHES_PER_PRINT * TRAY_FLOOD_GAL * L_PER_GAL))  # = 10 (injected via facts.yml prints_no_recycle)
 RECYCLE_SUPPLY_GAIN_PCT = round((WASHES_PER_PRINT / BLUE_WASHES_PER_PRINT - 1) * 100)      # = 50 (injected via facts.yml recycle_supply_gain_pct)
-IBC_CAPACITY_L        = 1000    # tote vessel volume — the hard per-tote fill ceiling
+IBC_NOMINAL_GAL       = 275     # US 48×40 caged tote nominal size (Schütz Ecobulk MX 1000 is sold in the US as "275 gal")
+IBC_NOMINAL_L         = round(IBC_NOMINAL_GAL * L_PER_GAL)   # = 1041 L brim volume
+IBC_CAPACITY_L        = 1000    # design per-tote fill ceiling — held 41 L under the 275-gal brim
+IBC_CAPACITY_MARGIN_L = IBC_NOMINAL_L - IBC_CAPACITY_L       # = 41 L
 PRINTS_MAX_FILL       = int(2 * IBC_CAPACITY_L / BLUE_PER_PRINT_L)   # = 17 — both Blue totes filled to the brim (injected via facts.yml prints_max_fill)
 BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons) (injected via facts.yml blue_supply_gal)
 

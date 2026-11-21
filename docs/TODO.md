@@ -35,6 +35,10 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 - [ ] `check-valve-half` — CV-2 / CV-3: 1/2" PVC spring check valve on the waste legs into the IBC-4 merge (×2)
 - [ ] `spray-manifold-clips` — cushioned 3/4" pipe clips for the spray manifold mount (10-pack)
 
+## 🛢️ Tote connections through the DN50 valve, not the tote wall (2026-11-21) — DECISION PENDING
+- The reports say every tote connects through its DN50 butterfly valve (S60×6), but `water.skp` (`generate_corridor_water_panel.py` `_side_entry` / `_bottom_pickup`) cuts flanged penetrations through the tote walls: X1 fill → IBC-1/IBC-2 side-entries, DV-02 → IBC-3, merge → IBC-4, Blue #1 → P-01 suction, plus bottom pickups. The 3D model and the docs disagree.
+- Proposal: one S60×6 → 2" NPT adapter + tee on each valve, with fill and draw both through it; no tote-wall cuts. Needs a go-ahead (generator + 2D + docs + 3D re-send).
+
 ## 🚰 End-wall ports
 
 - [x] **Energy model: tote pump-out assumes gravity drain that the design doesn't have.** `calculate_energy_budget.py` (`DRAIN_RESIDUAL_L = 120`, "gravity-drains through its low Z=200mm port") and Daily Energy §6 assume each tote gravity-drains and the pump lifts only ~120 L. X3/X4 sit at 1,502/1,620mm, above the bottom-tier totes, so P-05/P-03 pump the whole contents (~622 L per tote over a run; 555/690 L with the dichromate option). The report's own "worst case" (~45 min/tote, ~94 Wh) is the real case. Fix: drive the volume from `COLLECTION_FILL_L` (and the dichromate split), drop the gravity wording, re-inject the energy blocks. Done 2026-11-20: pumped volume = RECOVERED_L (622 L per tote), 115 Wh per dump run.

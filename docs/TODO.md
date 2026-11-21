@@ -49,6 +49,10 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 - ~~3D vs 2D mounting side~~ — DONE 2026-11-21: interior (adapter welded to the interior crests); overview `pinhole_assembly()` moved inside, stale 100×100 mount plate removed. Re-send overview + construction (water done).
 - ~~Bolt length single-sourced~~ — DONE 2026-11-21: `PDH_MOUNT_BOLT_L` / `PDH_MOUNT_WASHER_T` / `PDH_MOUNT_ENGAGE` in tbs_constants (an assert fails the build if the thread in the adapter drops below 0.8·D or passes the wall face); the Sheet 3 label, the parts spec and the 3D bolts (`ruby_bolt` shank + socket head + washer) all read them, so `--bolts` now audits the grip.
 
+## 🧹 Generated .rb files are transitory — clear out what's left (2026-11-21)
+- Generated SketchUp `.rb` scripts are build artifacts: `src/models/*.rb` is gitignored and `dependencies.yml` `source_hash` is the drift tripwire. One `.rb` is still tracked: `src/models/archive/right-cantilever-study.rb` (a frozen historical study with no generator). Decide: delete it (git history keeps it) or keep it as an archived record; if deleted, drop the `archive/*.rb` exception note in `.gitignore`.
+- The working tree also accumulates the untracked regenerated `src/models/*.rb` (several MB each); consider writing them to the scratch/temp area instead of `src/models/` so they never sit in the repo tree.
+
 ## 🚰 End-wall ports
 
 - [x] **Energy model: tote pump-out assumes gravity drain that the design doesn't have.** `calculate_energy_budget.py` (`DRAIN_RESIDUAL_L = 120`, "gravity-drains through its low Z=200mm port") and Daily Energy §6 assume each tote gravity-drains and the pump lifts only ~120 L. X3/X4 sit at 1,502/1,620mm, above the bottom-tier totes, so P-05/P-03 pump the whole contents (~622 L per tote over a run; 555/690 L with the dichromate option). The report's own "worst case" (~45 min/tote, ~94 Wh) is the real case. Fix: drive the volume from `COLLECTION_FILL_L` (and the dichromate split), drop the gravity wording, re-inject the energy blocks. Done 2026-11-20: pumped volume = RECOVERED_L (622 L per tote), 115 Wh per dump run.

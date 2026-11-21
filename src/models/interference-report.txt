@@ -1,4 +1,4 @@
-routing-sources-sha: 51d90a9c6885
+routing-sources-sha: 61466aad38c2
 model=water  pipes=633 solids=828  interferences=0
 pipe-on-pipe crossings=0
 
@@ -6,10 +6,10 @@ pipe-on-pipe crossings=0
 grip-bolt orientation/grip flags: 12  (0 OPEN, 12 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)
   EDGE      Flange Self-Tapping Screw                axis Z  D4  edge 3.0mm < 5mm  in Spray Beam 38×38×1.6 304-SS   [OK] self-tapping flange screw into the thin 1.6mm RHS wall — a thread-former, not an edge-distance grip bolt
   EDGE      Foot→plate bolt M12                      axis X  D12  edge 6.0mm < 18mm  in Foot plate                    [OK] short vertical anchor bolt — AABB axis/edge artifact; nominal edge = (IBC_FOOT_PLATE−PCD)/2 = 25mm ≥ 1.5·D
-  EDGE      M6 mount bolt 1                          axis Yd D10  edge 7.0mm < 15mm  in Disc-holder retaining ring    [OK] pinhole disc-holder retaining-ring bolt circle — precision optical sub-assembly, ring-radius edge by design
-  EDGE      M6 mount bolt 2                          axis Yd D10  edge 7.0mm < 15mm  in Disc-holder retaining ring    [OK] pinhole disc-holder retaining-ring bolt circle — precision optical sub-assembly, ring-radius edge by design
-  EDGE      M6 mount bolt 3                          axis Yd D10  edge 7.0mm < 15mm  in Disc-holder retaining ring    [OK] pinhole disc-holder retaining-ring bolt circle — precision optical sub-assembly, ring-radius edge by design
-  EDGE      M6 mount bolt 4                          axis Yd D10  edge 7.0mm < 15mm  in Disc-holder retaining ring    [OK] pinhole disc-holder retaining-ring bolt circle — precision optical sub-assembly, ring-radius edge by design
+  EDGE      M6×25 mount bolt 3                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
+  EDGE      M6×25 mount bolt 4                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
+  EDGE      M6×25 mount bolt 1                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
+  EDGE      M6×25 mount bolt 2                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
   EDGE      IBC Wall Through-Bolt M12                axis Yd D14  edge 18.0mm < 21mm  in Wall Hanger Plate             [OK] drawn-D14 conservative; at nominal M12 the 18mm edge = 1.5·D exactly — OK
   FLOATING  Frame-corner bolt (angle frame → bracket axis Yd  pierces no structural member @ (4591,2240,160)  [OK] film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating
   FLOATING  Frame-corner bolt (angle frame → bracket axis Yd  pierces no structural member @ (4591,2240,2252)  [OK] film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating

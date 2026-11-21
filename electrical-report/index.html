@@ -2349,6 +2349,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../wash-water-classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wash-Water Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../portrait-photography/" class="md-nav__link">
         
   
@@ -3432,9 +3460,9 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 - <strong>Circuit B flex connector (panel-mounted intake fan):</strong> Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
 - <strong>Circuit E (evaporative cooler, via inverter):</strong> The cooler is a 120V AC unit operating outside the container during sessions. The <strong>DC side</strong> is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The <strong>AC side</strong> runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
 - <strong>Circuit C (water pumps P-01–P-05) — dual-fused, one 2-pole master switch.</strong> The pump circuit splits into two independently-fused branches, both gated by a single <strong>2-pole (DPST) master pump switch on the EP</strong> — one throw kills every pump (the single IP-rated cutoff, upstream of everything), but each pole carries only one pump, so nothing is uprated:
-    - <strong>C1 — corridor pumps</strong> (15A fuse, 12 AWG dry feed): runs along the ceiling trunking to a <strong>12V DC distribution block</strong> (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, feeding each corridor pump via a short <strong>14 AWG marine-duplex</strong> branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: <strong>ACC-01</strong> accumulator, <strong>P-01</strong> Blue fresh → spray bar, <strong>P-02</strong> Brown recycle → spray bar, <strong>P-05</strong> Brown drain-out → X3, <strong>P-03</strong> Waste drain-out → X4), sequenced one at a time by opening the relevant valves.
+    - <strong>C1 — corridor pumps</strong> (15A fuse, 12 AWG dry feed): runs along the ceiling trunking to a <strong>12V DC distribution block</strong> (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, feeding each corridor pump via a short <strong>14 AWG marine-duplex</strong> branch (~0.5–1m; <!-- BEGIN fact:pump_current_a -->5.2<!-- END fact:pump_current_a -->A per pump). The four corridor pumps stack in a single column (bottom→top: <strong>ACC-01</strong> accumulator, <strong>P-01</strong> Blue fresh → spray bar, <strong>P-02</strong> Brown recycle → spray bar, <strong>P-05</strong> Brown drain-out → X3, <strong>P-03</strong> Waste drain-out → X4), one working at a time: the spray selector BV-05 picks P-01 or P-02 during a wash (the other dead-heads and its pressure switch holds it off), and the drain pumps P-05 / P-03 run only through their local switches <strong>S-05 / S-03</strong> (sealed 1-pole rockers on the corridor near-upper side board, beside BV-02 / BV-07), OFF except during a pump-out.
     - <strong>C2 — tray-drain pump P-04</strong> (10A fuse, 12 AWG feed): its own run from the EP to <strong>P-04</strong> on the Pinhole-Wall filter skid (tray-sump drain → filter skid).</p>
-<pre><code>Putting P-04 on its own fuse (each branch ≤&lt;!-- BEGIN fact:pump_current_a --&gt;5.2&lt;!-- END fact:pump_current_a --&gt;A) removes the single-fuse limit, so the tray drain (C2) can run **concurrently** with a supply pump (C1) — headroom for a continuous flow-through wash — with no fuse at 100% of rating. The wash is run this way — a **continuous flow-through** cycle (supply + drain together, [Operating Manual §4.2](operating-manual.md)); P-04 then drains across the whole wash, which is the ~30 Wh/session the energy budget reflects. There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
+<pre><code>Putting P-04 on its own fuse (each branch ≤&lt;!-- BEGIN fact:pump_current_a --&gt;5.2&lt;!-- END fact:pump_current_a --&gt;A) removes the single-fuse limit, so the tray drain (C2) can run **concurrently** with a supply pump (C1) — headroom for a continuous flow-through wash — with no fuse at 100% of rating. The wash is run this way — a **continuous flow-through** cycle (supply + drain together, [Operating Manual §4.2](operating-manual.md)); P-04 then drains across the whole wash, which is the ~30 Wh/session the energy budget reflects. The supply pumps run on their **internal demand/pressure switches**. The drain pumps also have the local switches S-05 / S-03: with their suction valves closed during a wash they could not build pressure, so their pressure switches would never stop them, and the C1 fuse would carry three running pumps. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
 </code></pre>
 <p><strong>Grounding:</strong> the protective ground is <strong>equipotential bonding, not a site earth electrode</strong>. The container steel shell, the inverter and cooler chassis, the AC equipment-ground, and the DC negative are all <strong>permanently bonded to one point</strong> at the main panel (4 AWG green/yellow to the battery-negative busbar). This bonding is what clears a fault — any positive-to-metal or AC-line-to-metal fault becomes a low-impedance short back to that point that opens the fuse or trips the GFCI — and it works <strong>on any surface</strong>, so the system does not depend on a ground driven into the earth (the same way an RV, boat, or portable generator is grounded; see §7.6).</p>
 <p>An <strong>8-foot copper earth stake is optional, not a requirement</strong> — its one practical benefit is <strong>static dissipation</strong>: a sun-baked steel box in a dry desert can build a static charge, and bleeding it to earth cuts nuisance zaps and settles less dust on drying prints. It is <strong>not</strong> lightning protection, and it is <strong>not</strong> part of the electrical-safety design (that's the bonding above). It is therefore a <strong>soil-site option</strong>: driven beside the power panel and clamped to the main-panel earth terminal; <strong>on a hard surface (concrete, asphalt), or any deployment where static isn't a concern, it is omitted</strong> — the bonding provides the full fault protection regardless. A convenient existing earth (building ground, grounded metal water pipe) serves in its place (<a href="../operating-manual/">Operating Manual §1.5.7</a>). When the container is set <strong>directly on bare soil</strong> its own steel corner castings are in contact with earth and bleed static on their own — so even on soil the stake is only worth driving if the container is leveled up on <strong>timber sleepers</strong> (<a href="../operating-manual/">Operating Manual §1.2.2</a>), which insulate the castings from the ground. Either way the inverter chassis, AC equipment-ground, and cooler ground tie to the same single point.</p>
@@ -3447,7 +3475,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 Interior elevation of the pinhole wall face, looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.</p>
 <p><img alt="TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation" src="../assets/electrical-sheet3.png" /></p>
 <p><strong>Sheet 4 — Plumbing-Panel Pump Power (Circuit C1 — corridor)</strong>
-Scale engineering elevation of the corridor-pump (C1) distribution on the plumbing panel (matches the panel-layout elevation in the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>): the switched 12 AWG / 15A C1 feed (from pole 1 of the <strong>2-pole master pump switch on the EP</strong> — Sheet 5) → 12V distribution block → a 14 AWG marine-duplex <strong>curved-elbow</strong> branch to each of the four column pumps (bottom→top ACC-01, P-01, P-02, P-05, P-03). The tray-drain P-04 is <strong>not</strong> on this panel — it is on its own fuse C2, fed separately from pole 2 of the master switch to the Pinhole-Wall filter skid. No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>.</p>
+Scale engineering elevation of the corridor-pump (C1) distribution on the plumbing panel (matches the panel-layout elevation in the <a href="../plumbing-report/">Plumbing Panel report §2.2</a>): the switched 12 AWG / 15A C1 feed (from pole 1 of the <strong>2-pole master pump switch on the EP</strong> — Sheet 5) → 12V distribution block → a 14 AWG marine-duplex <strong>curved-elbow</strong> branch to each of the four column pumps (bottom→top ACC-01, P-01, P-02, P-05, P-03). The tray-drain P-04 is <strong>not</strong> on this panel — it is on its own fuse C2, fed separately from pole 2 of the master switch to the Pinhole-Wall filter skid. The EP master switch is the circuit cutoff; the drain-pump branches (P-05, P-03) also pass through the local switches S-05 / S-03 on the near-upper side board. See §7.3 (Circuit C) and the <a href="../plumbing-report/">Plumbing Panel report §2.2</a>.</p>
 <p><img alt="TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C1 — corridor)" src="../assets/electrical-sheet4.png" /></p>
 <p><strong>Sheet 5 — Main Panel Layout</strong> — the reach-optimized EP panel elevation + fuse schedule (fully described in §7.1).</p>
 <p><img alt="TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule" src="../assets/electrical-sheet5.png" /></p>
@@ -3547,7 +3575,7 @@ hardware the electrical system feeds — evaporative cooler, 12V→120V inverter
 <tbody>
 <tr>
 <td><strong>Electrical system total</strong> (standard 1-pack build)</td>
-<td><strong>~<!-- BEGIN costing:elec-system-total -->$3,472<!-- END costing:elec-system-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-system-total -->$3,502<!-- END costing:elec-system-total --></strong></td>
 </tr>
 <tr>
 <td><strong>Shade canopy</strong></td>
@@ -3559,18 +3587,18 @@ hardware the electrical system feeds — evaporative cooler, 12V→120V inverter
 </tr>
 <tr>
 <td><strong>Systems grand total</strong></td>
-<td><strong>~<!-- BEGIN costing:elec-grand-total -->$3,970<!-- END costing:elec-grand-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-grand-total -->$4,000<!-- END costing:elec-grand-total --></strong></td>
 </tr>
 </tbody>
 </table>
 <p><em>The electrical system total is the </em><em>standard 1-pack build</em><em> and equals the
 <a href="../master-shopping-list/?system=electrical">Master Shopping List §6</a> electrical subtotal (the authoritative
-electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). The total carries ~$450 of
+electrical BOM). The optional 2nd battery pack adds +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> (its own MRBF fuse). The total carries ~$450 of
 circuit-protection / wet-zone-sealing hardware per the <a href="../electrical-safety-report/">Electrical Safety Report</a>
 §5 (interior </em><em>+</em><em> exterior emergency cut-offs, battery contactor, disconnect switch, terminal-mount fuse,
 PV array disconnect, MPPT charge-line + shore-charger fuses, </em><em>inverter DC fuse + disconnect</em><em>, sealed
-connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (master pump switch +
-distribution block).</em></p>
+connectors, bonding, grommets), plus Circuit-C pump-control hardware (master pump switch, drain-pump
+switches S-05 / S-03, distribution block).</em></p>
 <h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
 <p>The system is built for inspection rather than routine intervention: every connection is labeled and reachable from the EP or the trunking, the battery state of charge reads remotely over Bluetooth (Victron Connect), and the wear items are the connectors (Anderson Powerpole, Deutsch DT, MC4), the power-panel gasket, the pull-cord switches and the solar panel surfaces. The Circuit-E GFCI carries a periodic trip test (<a href="../electrical-safety-report/">Electrical Safety Report §7</a>). The power-down order is <a href="../operating-manual/">Operating Manual §5.3</a>; the recurring inspection schedule is in the <a href="../operating-manual/#maintenance">Operating Manual — Maintenance</a>.</p>
 <hr />

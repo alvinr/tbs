@@ -23,10 +23,10 @@ sys.path.insert(0, os.path.dirname(__file__))
 import tbs_draw as draw                          # shared drawing/material primitives
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_T, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D
+from tbs_constants import PDH_PLATE_OD, PDH_PLATE_T, PDH_APERTURE, PDH_DISC_OD, PDH_DISC_T, PDH_DISC_SEAT_D, PDH_DISC_SEAT_DEP, PDH_WASHER_OD, PDH_WASHER_ID, PDH_WASHER_T, PDH_RING_OD, PDH_RING_ID, PDH_RING_T, PDH_TS_N, PDH_TS_PCD, PDH_TS_D, PDH_MOUNT_BC, PDH_MOUNT_N, PDH_MOUNT_D, PDH_SEAL_D, PDH_SEAL_CS, PDH_SEAL_GROOVE_DEP
 
 mm = draw.mm
-TAGS = ["Plate", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]
+TAGS = ["Plate", "O-ring", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]
 
 # ── Convention: the plate lies in the X-Z plane; the optical axis is +Y. Scene (exterior) at Y=0,
 #    camera/interior toward +Y. ────────────────────────────────────────────────────────────────
@@ -131,6 +131,15 @@ def plate():
     return '\n'.join(out)
 
 
+def oring():
+    """Plate → adapter O-ring (170 ID × 2.5, black NBR) in the Ø171-centerline face groove on the
+    plate's scene/adapter face — uncompressed here (no adapter in this model), so it stands
+    PDH_SEAL_CS − PDH_SEAL_GROOVE_DEP proud of the face."""
+    return ruby_annulus("Plate O-ring (170 × 2.5 NBR)", 0, PLATE_Y0 - (PDH_SEAL_CS - PDH_SEAL_GROOVE_DEP), 0,
+                        PDH_SEAL_D / 2 + PDH_SEAL_CS / 2, PDH_SEAL_D / 2 - PDH_SEAL_CS / 2,
+                        PDH_SEAL_CS, axis="y", color="#141414", n=96)
+
+
 def washer():
     """Neoprene light-seal washer — Ø82/Ø72 × 1.5, in the disc-seat counterbore floor."""
     return ruby_annulus("Neoprene light-seal washer", 0, SEAT_Y, 0, PDH_WASHER_OD / 2, PDH_WASHER_ID / 2,
@@ -214,6 +223,7 @@ def labels_ruby():
         ("ICP-03 RETAINING RING\n+ 4 thumb screws", (PDH_RING_OD / 2, PLATE_Y1 + PDH_RING_T, 0), (60, 30, 40)),
         ("ICP-02 DISC — pinhole / lens\n(quick-change)", (0, PLATE_Y1 + PDH_RING_T, PDH_RING_ID / 2 - 4), (0, 45, 70)),
         ("Ø72 LIGHT APERTURE", (0, PLATE_Y0, -PDH_APERTURE / 2), (-70, -20, -50)),
+        ("O-RING 170 × 2.5 NBR\n(seals the plate to the wall adapter)", (0, PLATE_Y0, -PDH_SEAL_D / 2), (-60, -30, -60)),
     ]
     return '\n'.join(lab(*r) for r in rows)
 
@@ -221,6 +231,7 @@ def labels_ruby():
 def generate_ruby():
     body = '\n'.join([
         draw.component("ICP-01 Front plate", "Plate", plate()),
+        draw.component("Plate O-ring", "O-ring", oring()),
         draw.component("Neoprene washer", "Washer", washer()),
         draw.component("ICP-02 Disc", "Disc", disc()),
         retainer_dc(),   # retaining ring + thumb screws — click-to-pull-out DC (reveals the tapped holes)
@@ -228,8 +239,8 @@ def generate_ruby():
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
     scenes = [
-        ("Assembled", ["Plate", "Washer", "Disc", "Ring", "Thumb screws"]),
-        ("Labeled", ["Plate", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]),
+        ("Assembled", ["Plate", "O-ring", "Washer", "Disc", "Ring", "Thumb screws"]),
+        ("Labeled", ["Plate", "O-ring", "Washer", "Disc", "Ring", "Thumb screws", "Labels"]),
     ]
     def slit(s):
         name, tags = s

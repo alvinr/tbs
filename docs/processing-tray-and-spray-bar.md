@@ -115,8 +115,7 @@ folded around the sump pickup tube ([Operating Manual §0.5](operating-manual.md
 
 ### 2.6 Permanent Installation
 
-The processing tray is permanently installed — it remains in place during both
-operational and transport modes. The two panels are positioned between the film plane
+The processing tray is permanently installed. The two panels are positioned between the film plane
 rails and joined at the center seam by a **~40mm lap** — the uphill panel laps *over* the
 downhill one (shingle-oriented) so water sheets down over the step without damming on the
 sloped floor — bedded in silicone and bolted with 12× M6×16 + serrated flange nuts on the
@@ -160,8 +159,7 @@ support arms the beam clears — see the sections below.
 ### 3.1 Design Concept
 
 The spray bar delivers wash water evenly across the processing tray — recycled Brown for the
-first wash, clean Blue for the rest. The operator slides the bar along the tray (Yd direction, from film-plane side
-toward the pinhole wall), flooding the print surface progressively.
+first wash, clean Blue for the rest. The operator slides the bar along the tray, flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
@@ -490,9 +488,8 @@ A 90° cone at the ~50mm nozzle height footprints ~100mm, so the nozzles sit at 
 
 ### 3.10 Water Connection
 
-BV-06 (1/2" ball valve, spray-bar on/off) is mounted on the pinhole wall (Yd=0), 150mm toward the EP of the
-pinhole centerline (clear of the tray-sump suction riser), at Z=900mm — waist height from the walkway deck,
-directly above the Blue/Brown selector BV-05 (Z=700mm). A 1/2" PVC riser runs up from BV-05 to BV-06. A 4 m length of 1/2"
+BV-06 (1/2" ball valve, spray-bar on/off) is mounted on the pinhole wall, at waist height from the walkway deck,
+directly above the Blue/Brown selector BV-05. A 1/2" PVC riser runs up from BV-05 to BV-06. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-06 down to the manifold center inlet at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
@@ -519,7 +516,7 @@ walkway grating at the same X position. The slit positions are shown on the
 A Ø20mm stainless steel ball joint on the beam top face provides multi-axis
 articulation between the beam and the operator's pole. The ball sits in a zinc socket
 housing on a 50mm flange base. The flange is fastened to the beam top with four
-self-tapping (thread-forming) stainless screws driven into the 1.6mm beam top wall — the
+self-tapping stainless screws driven into the 1.6mm beam top wall — the
 beam is sealed, so there is no internal access to tighten nuts. Nothing overhangs the
 ball, so the arm articulates freely in every direction.
 

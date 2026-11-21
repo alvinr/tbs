@@ -1112,8 +1112,6 @@ PARTS: list[Part] = [
          spec="1\" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48\"×144\" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md."),
     Part("walkway-grp-sealant", "GRP grating edge-seal kit", "adhesives-finishes",
          "walkway", 1, "kit", 40, 60, "Fibergrate", spec="Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge."),
-    Part("walkway-drum-exit-grp", "Drum-exit punch-out grating", "plastics-sheet",
-         "walkway", 1, "lot", 50, 65, "McNichols", spec="Extra GRP landing (~0.23 m²) at the light-lock exit"),
     Part("walkway-std-brackets", "Cantilever bracket — standard (near/far)", "steel-structural",
          "walkway", 11, "ea", 30, 50, "Local fab",
          spec="8mm steel plate (200mm vert leg + 70mm gusset) + a 300mm 2×1×0.120in steel tube arm, welded — REDESIGNED to US IBC/OSHA (60 psf + 300 lbf concentrated, IBC Table 1607.1): the old 8mm plate arm yielded at ~25 lbf; the 2×1 tube arm carries the 300 lbf tip load at SF 2.10 (walkway_load.py). 3 near + 8 far at 457mm centers (5 near bays are widened brackets). ~0.3 m of 2×1 tube/bracket (same stock as the floor-leg + RWK arms)."),

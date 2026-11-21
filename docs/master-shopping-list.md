@@ -18,14 +18,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,224 | $3,125 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,174 | $3,060 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $788 | $938 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,880** | **~$36,718** |
+| **TOTAL (base build + 50-print run)** | **~$27,830** | **~$36,653** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -321,11 +321,10 @@ indicative low–high estimates — get quotes before ordering.
 | [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 3 sheet | US Plastics | lightlock | $370 |
 | [3/16" UV-stab HDPE sheet, black — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705) (46685) | 3 sheet | US Plastics | lightlock | $555 |
 | Dibond ACM panel 3mm (black), 4×8 sheet | 4 sheet | Central Coast Plastics | film | $380 |
-| Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 1 lot | US Plastic Corp | tray | $296 |
 | Molded GRP grating (American Grating, cut-to-size) | 1 lot | American Grating | walkway | $830–$1,050 |
-| **plastics-sheet subtotal** | | | | **$3,251–$3,526** |
+| **plastics-sheet subtotal** | | | | **$3,201–$3,461** |
 
 ### plumbing-fittings
 
@@ -540,7 +539,6 @@ indicative low–high estimates — get quotes before ordering.
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
 | Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Lenox Laser | 1 | optics | $60–$120 |
-| McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Blue Sea | 3 | electrical-distribution | $101 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
@@ -552,6 +550,7 @@ indicative low–high estimates — get quotes before ordering.
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $27–$59 |
 | AutomationDirect | 1 | electrical-distribution | $52 |
+| McNichols | 1 | fasteners-hardware | $30–$50 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |

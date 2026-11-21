@@ -168,7 +168,6 @@ WALKWAY = [
     LineItem("Combined corner plates, 10mm steel (×2)", 50, 65, 80, "Right corners — shared with the bottom film rail"),
     LineItem("M12×70 partial-thread bolts + nuts/washers (~20)", 53, 53, 53, "91280A732 $1.736 + plain nut + 4 flat + split /bolt; wall cleats + combined plates (the 2 center arms bolt via the CJ end-plate — now in the IBC-frame §5 aggregate, −4 bolts)"),
     LineItem("316 SS hold-down clips (FRP M/G-clip, ×20)", 25, 32, 40, "Near/far/right walkway GRP grating retention"),
-    LineItem("Drum-exit punch-out — extra GRP grating (~0.23 m²)", 50, 57, 65, "600mm-deep landing at the light-lock exit"),
     LineItem("Left floor-leg cantilever brackets (×5)", 65, 80, 105, "#26: 2×2×0.120in SHS posts + 2×1×0.120in arms (was 50×50×3 + 40×40×3) + foot plates; material firm MetalsDepot, fab deferred"),
     LineItem("Floor-anchor sub-plate (strongback) + self-drilling TEKs + leg bolts", 133, 178, 223, "2026-11-13: +$6 — floor-anchor self-driller re-sourced F14C325FDC → McMaster 90822A536 (#14×3½″ 410 SS, $12.97/pack of 10 = $1.30 ea, was $1.02; ×20 ≈ $26). 2026-11-07: +$7 — 20× M12×30 leg→plate bolts firmed to McMaster 91280A716 ($21.12/pack of 25 = $0.85 ea, was ~$0.50 est). 2026-10-12: #14 floor screws → one continuous self-tapped sub-plate. The 5 legs sit at ~one X (parallel to the members), so direct floor screws are a single coin-flip; the plate (~1,900×350×8 steel, material est $90–180) spans the door-end sill + first cross-members, #14×3½ TEKs (90822A536, ×20 ≈ $26) fix it down, 20× M12×30 leg→plate bolts into tapped bosses (≈ $10). Plate size/TEK count finalized on the acquired container (cross-member pitch not standardized — ISO 1496-1 caps ≤1,000mm)"),
     LineItem("Fabrication (brackets, cantilever frame, install)", 345, 488, 625, "11 std + 5 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed to reconcile with the parts registry after the std-bracket count corrected 13→11 (3 near + 8 far) + M12 bolts firmed to real flat prices"),
@@ -1207,7 +1206,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "rich": {"chem": 2735, "total": 3040, "per_print": 61}, # 2026-10-22: 9.19 m² derived. Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     # 2026-10-22: chem tiers rescaled to the 9.19 m2 (99 sqft) active plane (now derived from IMAGE_AREA_M2) -> grand total -$20/$30/$60.
     # 2026-10-27: +$12/$16/$20 — beam-penetration EPDM foam light-seals (ll-beam-notch-seal, 4 notches).
-    "grand_total": (27720, 32291, 45358), # 2026-11-20d: walkway angle firm + plywood brackets from it. 2026-11-20c: +$20/$30/$40 — drain-pump switches S-05/S-03. 2026-11-20b:
+    "grand_total": (27670, 32234, 45293), # 2026-11-21: drum-exit GRP grating dropped. 2026-11-20d: walkway angle firm + plywood brackets from it. 2026-11-20c: +$20/$30/$40 — drain-pump switches S-05/S-03. 2026-11-20b:
     # +$18/$32/$45 — X-port camlock dust caps. 2026-11-20: −$210/−$490/+$5,700 — §9 Licenses & permits computed from its lines (permits; CDL in
     # High only, baseline is commercial hire), was a fixed $220/$790/$1,620. 2026-11-19c: −$8/$14/$20 — IBC-2 float switch dropped. 2026-11-19b:
     # +$19 — flex-jumper SS clamps 2→3 10-packs. 2026-11-19: +$9 — flex jumpers on both ends of the Blue equalization tie (barbs 8→10).
@@ -1232,7 +1231,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     # 2026-10-04: +$1/$2/$2 — P-clips 85→87 (corridor blue frame clips). 2026-10-03c: +$3/$5/$6 — P-clips 80→86 (drain-riser spine extended toward
     # the end wall). 2026-10-03b: +$19/$26/$32 — P-clips 46→80 (pinhole-panel audit). 2026-10-03: +$4/$5/$7 — P-clips 39→46 (3rd clamp rows on the
     # raised corridor boards + P-01 straddle clamps). (earlier cost history, 2026-09 and before: RELEASE.md + git log).
-    "walkway": (2224, 2663, 3125), # 2026-11-20: +$69/$44/$18 — 1×1×3/16 angle firm $93.56 (20 ft; also the plywood brackets). 2026-11-17b: −$5 — std-bracket count 13→11
+    "walkway": (2174, 2606, 3060), # 2026-11-21: −$50/$57/$65 — separate drum-exit GRP grating dropped (the punch-out is integral to the left lift-out and nests on the 2 stock panels). 2026-11-20: +$69/$44/$18 — 1×1×3/16 angle firm $93.56 (20 ft; also the plywood brackets). 2026-11-17b: −$5 — std-bracket count 13→11
     # propagated to its nuts/washers (nuts/split 59→53, flat 236→212). 2026-11-17: +$25/$50/$75 — right-walkway grating-bearer L-angle
     # (walkway-right-bearer; §8.1, absent from cut list + registry). 2026-11-13: +$6 — floor-anchor self-driller re-sourced (F14C325FDC → McMaster
     # 90822A536, #14×3½ 410 SS $1.30 ea, was $1.02). 2026-11-07: +$7 — 20× M12×30 leg bolts firmed (91280A716 $0.85 ea). # 2026-10 reconcile:

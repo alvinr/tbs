@@ -25,7 +25,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛒 Parts to source (SKU + price)
 
-- [ ] Decide: drop the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.
+- [x] Dropped 2026-11-21: the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.
 
 Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generators/parts-worklist.csv` (fill `new_*`, then `apply_parts_csv.py`):
 

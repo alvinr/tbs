@@ -38,6 +38,7 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 ## 🛢️ Tote connections through the DN50 valve, not the tote wall (2026-11-21) — DECISION PENDING
 - The reports say every tote connects through its DN50 butterfly valve (S60×6), but `water.skp` (`generate_corridor_water_panel.py` `_side_entry` / `_bottom_pickup`) cuts flanged penetrations through the tote walls: X1 fill → IBC-1/IBC-2 side-entries, DV-02 → IBC-3, merge → IBC-4, Blue #1 → P-01 suction, plus bottom pickups. The 3D model and the docs disagree.
 - Proposal: one S60×6 → 2" NPT adapter + tee on each valve, with fill and draw both through it; no tote-wall cuts. Needs a go-ahead (generator + 2D + docs + 3D re-send).
+- The fill/draw split is a tee just outside each valve. Blue: X1 joins the existing Blue manifold, so no new tee. IBC-3: tee to the DV-01 return + the P-02/P-05 suction. IBC-4: tee to the waste merge + the P-03 suction. Watch: with fill and draw running at once, the return can short-circuit across the tee to the pump without mixing in the tote (matters for IBC-3 pH buffering).
 
 ## 🚰 End-wall ports
 

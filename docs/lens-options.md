@@ -305,16 +305,16 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 
 This is the fundamental optical constraint of this camera that no lens choice can fully resolve.
 
-The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole — giving half-width 2,250mm and half-height 1,047mm. The distance from the lens to the center of the image plane is 2,338mm. The distance from the lens to the active image plane corners and edges:
+The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole — giving half-width 2,195mm and half-height 1,047mm. The distance from the lens to the center of the image plane is 2,338mm. The distance from the lens to the active image plane corners and edges:
 
 ```
-d_mid-width = √(2,338² + 2,250²) = 3,244mm   [half-width of active plane]
-d_corner    = √(2,338² + 2,250² + 1,047²) = 3,409mm   [half-diagonal of active plane]
+d_mid-width = √(2,338² + 2,195²) = 3,207mm   [half-width of active plane]
+d_corner    = √(2,338² + 2,195² + 1,047²) = 3,374mm   [half-diagonal of active plane]
 ```
 
-The corner is **1,071mm further from the lens than the center.** The left/right mid-edge point is 3,244mm from the lens (906mm further than center). This means:
+The corner is **1,036mm further from the lens than the center.** The left/right mid-edge point is 3,207mm from the lens (869mm further than center). This means:
 
-**A lens focused on the center (d_i = 2,338mm) is focused on a subject at ~3.4 m. At the left/right edges of the active image plane, the equivalent focused subject distance would be ~3.4 × (3,244/2,338) = 4.7 m. At the corners, ~3.4 × (3,409/2,338) = 5.0 m.**
+**A lens focused on the center (d_i = 2,338mm) is focused on a subject at ~3.4 m. At the left/right edges of the active image plane, the equivalent focused subject distance would be ~3.4 × (3,207/2,338) = 4.7 m. At the corners, ~3.4 × (3,374/2,338) = 4.9 m.**
 
 This is not a focus error in the traditional sense — it is the geometric consequence of projecting a wide-angle perspective onto a flat plane. A person standing 3.4 m in front of the center of the camera would be rendered sharply in the center and soft in the corners, because at the corners the image plane is optically further from the lens. The only way to have the full image plane in sharp focus simultaneously would be:
 
@@ -322,7 +322,7 @@ This is not a focus error in the traditional sense — it is the geometric conse
 2. Curve the image plane to match the focal surface (discussed below)
 3. Use a telephoto lens design that manages field curvature over this extreme angular range
 
-**This is not a problem unique to adding a lens.** The cos⁴ illumination falloff and field geometry are intrinsic to the camera's 102° × 45° field of view. The pinhole avoids the focus problem entirely because its resolution is low enough that the field geometry doesn't create a *visible* focus variation — the center and corners are both equally soft. A lens makes the focus variation visible precisely because it is sharp in the first place.
+**This is not a problem unique to adding a lens.** The cos⁴ illumination falloff and field geometry are intrinsic to the camera's 86° × 48° field of view. The pinhole avoids the focus problem entirely because its resolution is low enough that the field geometry doesn't create a *visible* focus variation — the center and corners are both equally soft. A lens makes the focus variation visible precisely because it is sharp in the first place.
 
 ### 6.1 Illumination Falloff — cos⁴ Law
 
@@ -331,24 +331,24 @@ Both the pinhole and any lens suffer the same physical law: illumination falls a
 | Image position | Angle from axis | cos⁴ factor | Illumination vs. center | Stops darker |
 |---|---|---|---|---|
 | Center | 0° | 1.000 | 100% | 0 |
-| Mid-height edge | 27.1° | 0.629 | 63% | 0.7 stops |
-| Mid-width edge | 43.9° | 0.269 | 27% | 1.9 stops |
-| Corner | 46.7° | 0.221 | 22% | 2.2 stops |
+| Mid-height edge | 24.1° | 0.694 | 69% | 0.5 stops |
+| Mid-width edge | 43.2° | 0.283 | 28% | 1.8 stops |
+| Corner | 46.1° | 0.231 | 23% | 2.1 stops |
 
-The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,389mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 30–45 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
+The corners of the active image plane receive 23% of the light falling on the center — approximately **2.1 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,389mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.1 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 30–45 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
 
-On silver gelatin paper, 2.2 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed center. Exposure must account for this — either the center will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centered in the frame, may be desirable — a natural vignette framing the subject).
+On silver gelatin paper, 2.1 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed center. Exposure must account for this — either the center will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centered in the frame, may be desirable — a natural vignette framing the subject).
 
 ### 6.2 The Curved Image Plane Option
 
 If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm centered on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
 
 ```
-Δz at mid-width edge = 3,244 − 2,338 = 906mm
-Δz at corner = 3,409 − 2,338 = 1,071mm
+Δz at mid-width edge = 3,207 − 2,338 = 869mm
+Δz at corner = 3,374 − 2,338 = 1,036mm
 ```
 
-This is still substantial curvature — the active image plane would bow forward at the sides by ~906mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,414mm of forward bow at the mid-width edge).
+This is still substantial curvature — the active image plane would bow forward at the sides by ~869mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,423mm of forward bow at the mid-width edge).
 
 For a process lens or telescope objective (covering only a 300–600mm circle in the center), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.
 

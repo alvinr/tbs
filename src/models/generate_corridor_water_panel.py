@@ -264,8 +264,8 @@ def tote_restraint():
     p = []
     front_x = ov.IBC_COL_X - 20            # 4654 — bars in the gap just in front of the tote face
     bar_d = ov.IBC_FRONT_BAR_D             # 20 — 50×20×3 RHS, slot-constrained depth in -X
-    # TWO bars per tote face (upper + lower), both in the slot → share the forward thrust (EN 12195-1
-    # loaded case: 1/tier fails SF 0.79, 2/tier gives SF 1.59 bar-alone / 4.77 with anti-slip mat).
+    # TWO bars per tote face (upper + lower), both in the slot → share the forward thrust (49 CFR 393.102
+    # loaded case: 1/tier fails SF 0.75, 2/tier gives SF 1.49 bar-alone / 3.97 with the friction mat).
     bar_zs = (500, 950, 1500, 1950)        # bottom tier (500,950) + top tier (1500,1950); each bar has its
     #   OWN hanger, so the pair is spread ~450mm to give each hanger's straddling bolts wrench clearance
     tier_zs = (500, 1500)                  # lower bar of each tier — D-ring reference

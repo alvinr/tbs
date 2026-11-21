@@ -40,6 +40,9 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 - Proposal: one S60×6 → 2" NPT adapter + tee on each valve, with fill and draw both through it; no tote-wall cuts. Needs a go-ahead (generator + 2D + docs + 3D re-send).
 - The fill/draw split is a tee just outside each valve. Blue: X1 joins the existing Blue manifold, so no new tee. IBC-3: tee to the DV-01 return + the P-02/P-05 suction. IBC-4: tee to the waste merge + the P-03 suction. Watch: with fill and draw running at once, the return can short-circuit across the tee to the pump without mixing in the tote (matters for IBC-3 pH buffering).
 
+## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)
+- The .skp files carry an Author field that is currently unset. Set it on all 11 models from the generators (the same place name/description are force-stamped on `--send`), so it survives a regen. Check whether SketchUp persists it across save → reopen (name/description do not; see the Sketchfab notes) before relying on it.
+
 ## 🚰 End-wall ports
 
 - [x] **Energy model: tote pump-out assumes gravity drain that the design doesn't have.** `calculate_energy_budget.py` (`DRAIN_RESIDUAL_L = 120`, "gravity-drains through its low Z=200mm port") and Daily Energy §6 assume each tote gravity-drains and the pump lifts only ~120 L. X3/X4 sit at 1,502/1,620mm, above the bottom-tier totes, so P-05/P-03 pump the whole contents (~622 L per tote over a run; 555/690 L with the dichromate option). The report's own "worst case" (~45 min/tote, ~94 Wh) is the real case. Fix: drive the volume from `COLLECTION_FILL_L` (and the dichromate split), drop the gravity wording, re-inject the energy blocks. Done 2026-11-20: pumped volume = RECOVERED_L (622 L per tote), 115 Wh per dump run.

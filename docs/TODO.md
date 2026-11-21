@@ -20,10 +20,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 ## 🐍 Python environment (switched to Homebrew 3.14 venv, 2026-11-20)
 
 - [ ] Brochure: fix the dangling internal link to `#section-total` (cost breakdown has three "Section total" headings), then unpin `fpdf2==2.8.4` in `requirements.txt` — fpdf2 ≥2.8.5 rejects the unresolved named destination.
-- [ ] `generate_grp_cutplan.py`, `generate_joint_options.py`, `generate_joint_study.py` save to a retired `diagrams/` path (fail under both 3.9 and 3.14) — point them at `DIAGRAMS_DIR` or retire them if their sheets are gone.
+- [x] `generate_grp_cutplan.py`, `generate_joint_options.py`, `generate_joint_study.py` fixed 2026-11-21: write to `DIAGRAMS_DIR`; the GRP cut plan now takes its piece outlines from the walkway 3D model and nests them automatically (still 2 panels).
 - [ ] Delete the fallback `.venv-py39` once the 3.14 venv has run a few sessions cleanly.
 
 ## 🛒 Parts to source (SKU + price)
+
+- [ ] Decide: drop the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.
 
 Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generators/parts-worklist.csv` (fill `new_*`, then `apply_parts_csv.py`):
 

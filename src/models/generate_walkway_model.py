@@ -170,21 +170,32 @@ def container_ghost():
 
 # ── Walkway grated decks (the removable "gates") ─────────────────────────────
 
+def far_deck_rect():
+    """(x, yd, length, depth) of the FAR deck grate — shared by the 3D and the GRP cut plan."""
+    near_x_l = WK_LEFT_X + WK_W
+    return near_x_l, WK_FAR_YD, WK_RIGHT_X - near_x_l, WK_W - BRK_T
+
+
+def near_removable_rect():
+    """(x, yd, length, depth) of the near deck's door-end removable band."""
+    near_x_l = WK_LEFT_X + WK_W
+    liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
+    return near_x_l, BRK_T, liftout_x - near_x_l, WK_W - BRK_T
+
+
 def far_deck(alpha=None):
     """The FAR walkway deck grate (WALL edge inset by the bracket plate thickness). SINGLE OWNER —
     the overview model calls this so the far deck can't drift from the walkway model."""
-    near_x_l = WK_LEFT_X + WK_W
-    return ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
-                    WK_RIGHT_X - near_x_l, WK_W - BRK_T, GRATE_T, color=C_WALKWAY, alpha=alpha)
+    x, y, l, d = far_deck_rect()
+    return ruby_box("Walkway Far", x, y, GRATE_Z, l, d, GRATE_T, color=C_WALKWAY, alpha=alpha)
 
 
 def near_removable_deck(alpha=None):
     """The door-end REMOVABLE band of the NEAR walkway (lifts out for transport, distinct color).
     SINGLE OWNER — the light-trap model draws it (ghosted) as door-end context."""
-    near_x_l = WK_LEFT_X + WK_W
-    liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
-    return ruby_box("Walkway Near (door-end, removable)", near_x_l, BRK_T, GRATE_Z,
-                    liftout_x - near_x_l, WK_W - BRK_T, GRATE_T, color=C_REMOVABLE, alpha=alpha)
+    x, y, l, d = near_removable_rect()
+    return ruby_box("Walkway Near (door-end, removable)", x, y, GRATE_Z,
+                    l, d, GRATE_T, color=C_REMOVABLE, alpha=alpha)
 
 
 def walkway_decks():
@@ -708,6 +719,15 @@ def fp_combined_corner_plates():
     return '\n'.join(parts)
 
 
+def near_fixed_deck_pts(x0):
+    """Outline (x, yd) of the fixed near deck with its integral bump-out — shared by the 3D and the GRP cut plan."""
+    xr = WALKWAY_RIGHT_X
+    wxl, wxr, ww = WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W
+    return [(x0, PLATE_BUTT), (xr, PLATE_BUTT), (xr, WALKWAY_W),
+            (wxr, WALKWAY_W), (wxr, ww), (wxl, ww), (wxl, WALKWAY_W),
+            (x0, WALKWAY_W)]
+
+
 def near_fixed_deck_grate(name, x0, z, t, color, alpha=None):
     """The FIXED near-walkway deck as ONE continuous piece: a WALKWAY_W-deep strip from x0 to
     WALKWAY_RIGHT_X with the EP/battery bump-out (WALKWAY_NEAR_WIDE_W deep, over
@@ -715,15 +735,25 @@ def near_fixed_deck_grate(name, x0, z, t, color, alpha=None):
     section. The wall edge is inset one standard bracket-plate thickness (the 2mm-heavier wide
     plate is absorbed under the tab). The removable door-end lift-out band (near_x_l..X950) is a
     SEPARATE piece by design (it lifts out for transport) and is drawn by the caller."""
-    bt = WALKWAY_BRACKET_T
-    xr = WALKWAY_RIGHT_X
-    wxl, wxr, ww = WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W
-    # Wall edge held off at Yd=PLATE_BUTT (butts the wall plates — widened brackets are 10mm, not bt=8);
-    # inboard edge at Yd=WALKWAY_W, stepping out to Yd=ww over the bump span.
-    pts = [(x0, PLATE_BUTT), (xr, PLATE_BUTT), (xr, WALKWAY_W),
-           (wxr, WALKWAY_W), (wxr, ww), (wxl, ww), (wxl, WALKWAY_W),
-           (x0, WALKWAY_W)]
-    return ruby_prism(name, pts, z, t, color=color, alpha=alpha, holes=NEAR_GRATE_HOLES)   # sump / TAP-01 / BV-05 riser clearances
+    # Wall edge held off at Yd=PLATE_BUTT (butts the wall plates — widened brackets are 10mm, not 8);
+    # inboard edge at Yd=WALKWAY_W, stepping out to Yd=WALKWAY_NEAR_WIDE_W over the bump span.
+    return ruby_prism(name, near_fixed_deck_pts(x0), z, t, color=color, alpha=alpha, holes=NEAR_GRATE_HOLES)   # sump / TAP-01 / BV-05 riser clearances
+
+
+def left_liftout_pts():
+    """Outline (x, yd) of the left lift-out deck (punch-out tab + muslin notch integral) — shared with the GRP cut plan."""
+    lx0 = WALKWAY_LEFT_X
+    lx1 = lx0 + WALKWAY_W
+    tab_x1 = lx1 + (WALKWAY_LEFT_WIDE_W - WALKWAY_W)
+    pyl, pyr = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R
+    nyd0 = WALKWAY_MUSLIN_NOTCH_YD0
+    nyd1 = nyd0 + WALKWAY_MUSLIN_NOTCH_DY
+    nx0 = WALKWAY_MUSLIN_NOTCH_L_X0
+    y0, y1 = PLATE_BUTT, C_WID - PLATE_BUTT
+    return [(lx0, y0), (lx0, y1), (lx1, y1),
+            (lx1, nyd1), (nx0, nyd1), (nx0, nyd0), (lx1, nyd0),   # muslin notch (in)
+            (lx1, pyr), (tab_x1, pyr), (tab_x1, pyl), (lx1, pyl),  # drum-exit punch-out (out)
+            (lx1, y0)]
 
 
 def left_liftout_grate(name, z, t, color, alpha=None):
@@ -732,19 +762,21 @@ def left_liftout_grate(name, z, t, color, alpha=None):
     punch-out tab (out to WALKWAY_LEFT_WIDE_W over Yd [_YD_L.._YD_R]) and the muslin-drop notch
     (bitten IN to WALKWAY_MUSLIN_NOTCH_L_X0 over Yd [_YD0 .. +_DY]) — so no butt joint or extra
     support is introduced at either feature. Both sit on the same inboard (tray-facing) edge."""
-    lx0 = WALKWAY_LEFT_X
-    lx1 = lx0 + WALKWAY_W                                   # inboard edge
-    tab_x1 = lx1 + (WALKWAY_LEFT_WIDE_W - WALKWAY_W)        # punch-out tab outer edge
-    pyl, pyr = WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R
-    nyd0 = WALKWAY_MUSLIN_NOTCH_YD0
-    nyd1 = nyd0 + WALKWAY_MUSLIN_NOTCH_DY
-    nx0 = WALKWAY_MUSLIN_NOTCH_L_X0                         # notch bites in to here
-    y0, y1 = PLATE_BUTT, C_WID - PLATE_BUTT          # Yd ends held off the pinhole-/film-wall plates
-    pts = [(lx0, y0), (lx0, y1), (lx1, y1),
-           (lx1, nyd1), (nx0, nyd1), (nx0, nyd0), (lx1, nyd0),   # muslin notch (in)
-           (lx1, pyr), (tab_x1, pyr), (tab_x1, pyl), (lx1, pyl),  # drum-exit punch-out (out)
-           (lx1, y0)]
-    return ruby_prism(name, pts, z, t, color=color, alpha=alpha)
+    return ruby_prism(name, left_liftout_pts(), z, t, color=color, alpha=alpha)
+
+
+def right_grate_sections_pts():
+    """[(suffix, outline)] of the right deck's three sections (split at the cantilever-arm centers) — shared with the GRP cut plan."""
+    gx0, gx1 = RWK_X_L, RWK_X_L + WALKWAY_RIGHT_W
+    jn = RWK_UP_YDS[0] + RWK_ARM_W / 2.0
+    jf = RWK_UP_YDS[1] + RWK_ARM_W / 2.0
+    ny0 = WALKWAY_MUSLIN_NOTCH_YD0
+    ny1 = ny0 + WALKWAY_MUSLIN_NOTCH_DY
+    nx1 = WALKWAY_MUSLIN_NOTCH_R_X1
+    return [("near", [(gx0, PLATE_BUTT), (gx1, PLATE_BUTT), (gx1, jn), (gx0, jn)]),
+            ("center (corridor bridge)", [(gx0, jn), (gx1, jn), (gx1, jf), (gx0, jf)]),
+            ("far", [(gx0, jf), (gx1, jf), (gx1, C_WID - PLATE_BUTT), (gx0, C_WID - PLATE_BUTT),
+                     (gx0, ny1), (nx1, ny1), (nx1, ny0), (gx0, ny0)])]
 
 
 def right_walkway_grate(name="Right walkway grate (cantilevered)"):
@@ -754,25 +786,16 @@ def right_walkway_grate(name="Right walkway grate (cantilevered)"):
     center→wall) carrying the muslin-drop notch. Each joint lands on a cantilever arm, so the
     center section's own rigidity spans the ~170mm open bay where the outer beam is omitted (the
     ribbon pipes cross clear beneath it). Factored out so it can sit on the Walkways tag."""
-    gx0, gx1 = RWK_X_L, RWK_X_L + WALKWAY_RIGHT_W
     z, t = RWK_GRATE_Z, WALKWAY_GRATE_T
     jn = RWK_UP_YDS[0] + RWK_ARM_W / 2.0                  # near-arm center — joint 1
     jf = RWK_UP_YDS[1] + RWK_ARM_W / 2.0                  # far-arm center  — joint 2
-    ny0 = WALKWAY_MUSLIN_NOTCH_YD0                        # muslin-drop notch (far section)
-    ny1 = ny0 + WALKWAY_MUSLIN_NOTCH_DY
-    nx1 = WALKWAY_MUSLIN_NOTCH_R_X1                       # notch bites IN from the inboard (left/tray) edge x=gx0
     # Ribbon pipe-clearance SLOTS (ruby_prism holes=) drilled into whichever section contains each band:
     sx0, sx1 = RWK_GRATE_SLOT_X
     def _slots_in(y_lo, y_hi):
         return [(sx0, b0, sx1, b1) for (b0, b1) in RWK_GRATE_SLOT_YDS if y_lo <= b0 and b1 <= y_hi]
-    out = []
-    out.append(ruby_prism(f"{name} near", [(gx0, PLATE_BUTT), (gx1, PLATE_BUTT), (gx1, jn), (gx0, jn)], z, t, color=C_WALKWAY,
-                          holes=_slots_in(0, jn)))
-    out.append(ruby_prism(f"{name} center (corridor bridge)", [(gx0, jn), (gx1, jn), (gx1, jf), (gx0, jf)], z, t, color=C_WALKWAY,
-                          holes=_slots_in(jn, jf)))
-    out.append(ruby_prism(f"{name} far", [(gx0, jf), (gx1, jf), (gx1, C_WID - PLATE_BUTT), (gx0, C_WID - PLATE_BUTT),
-                                          (gx0, ny1), (nx1, ny1), (nx1, ny0), (gx0, ny0)], z, t, color=C_WALKWAY,
-                          holes=_slots_in(jf, C_WID)))
+    bands = {"near": (0, jn), "center (corridor bridge)": (jn, jf), "far": (jf, C_WID)}
+    out = [ruby_prism(f"{name} {sfx}", pts, z, t, color=C_WALKWAY, holes=_slots_in(*bands[sfx]))
+           for sfx, pts in right_grate_sections_pts()]
     return '\n'.join(out)
 
 

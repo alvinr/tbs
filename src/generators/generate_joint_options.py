@@ -13,10 +13,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Arc
-from tbs_constants import DIAGRAM_DPI, FONT, BG
+from tbs_constants import DIAGRAM_DPI, FONT, BG, DIAGRAMS_DIR
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))
 
 OUT = "#1A1A1A"
 STEEL = "#B0B0B8"      # cross-slide (fixed side)

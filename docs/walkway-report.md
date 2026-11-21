@@ -50,11 +50,11 @@ tray's watertight seal.
 | Bracket arm height | 115mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
-| Near walkway widened section | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm -->mm at X≈1,055–3,083mm (5 widened brackets) |
+| Near walkway widened section | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm -->mm at X≈<!-- BEGIN fact:walkway_near_wide_x_l_mm -->1,165<!-- END fact:walkway_near_wide_x_l_mm -->–<!-- BEGIN fact:walkway_near_wide_x_r_mm -->3,193<!-- END fact:walkway_near_wide_x_r_mm -->mm (5 widened brackets) |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
 
-The four removable sections are cut from two molded GRP stock panels per the cut plan below, nesting the pieces to minimize offcut from the 2× 36″×120″ sheets.
+The grating is cut as nine pieces from two molded GRP stock panels (2× 36″×120″). The cut plan below takes each piece outline from the walkway 3D model and nests them; the near and far decks each carry one seam at the 10 ft panel length, landed over a support bracket.
 
 ![GRP grating cut plan — 2× 36×120 panels](assets/grp-cutplan.png)
 

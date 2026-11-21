@@ -490,6 +490,16 @@ ibc_stack_height_mm:
     - '(\d,?\d{3})\s?mm\s*\(2\s?[×x]\s?1,?168'
     - 'totes reach\s+(\d,?\d{3})\s?mm'
 
+walkway_near_wide_x_l_mm:
+  constant: WALKWAY_NEAR_WIDE_X_L
+  unit: mm
+  owner: walkway-report.md
+  display: comma
+walkway_near_wide_x_r_mm:
+  constant: WALKWAY_NEAR_WIDE_X_R
+  unit: mm
+  owner: walkway-report.md
+  display: comma
 walkway_near_wide_w_mm:
   constant: WALKWAY_NEAR_WIDE_W
   unit: mm

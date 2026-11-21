@@ -17,69 +17,16 @@ Working doc (unpublished) to send a vendor for a molded-FRP grating quote. Not a
 | Open area | ~70% |
 | Reference SKU | McNichols **MS-S-100** (vinyl-ester = SVF/XVE) · American Grating equivalent |
 
-## Pieces needed (inches)
+## Pieces and panels — **2× 36″×120″** ($415 ea = **$830**)
 
-Walkway = 11.8″ (300mm) wide base strips + two "landing" add-on strips where it widens.
+Nine pieces. Each outline comes from the walkway 3D model, with the integral features kept in one piece (near-deck bump-out, left drum-exit punch-out, muslin notches). The near fixed deck and the far deck are longer than a 10 ft panel, so each has one seam at 120″, landed over a support bracket. The cut plan nests all nine on two panels; its key lists every piece size in mm and inches.
 
-| # | Piece | W × L (in) | ft² | Note |
-|---|-------|------------|-----|------|
-| 1 | Near walkway | 11.8 × 163.7 | 13.4 | **>144″ — must splice (120 + 43.7)** |
-| 2 | Far walkway | 11.8 × 163.7 | 13.4 | **>144″ — must splice (120 + 43.7)** |
-| 3 | Right walkway | 11.8 × 93.0 | 7.6 | |
-| 4 | Left walkway (removable) | 11.8 × 93.0 | 7.6 | lift-out |
-| 5 | Near-wide add | 7.9 × 61.8 | 3.4 | extra width, EP/battery/slit + spray-bar bump (rev 2026-07-23) |
-| 6 | Left-wide add | 11.8 × 29.9 | 2.5 | extra width, left landing |
-| | **Total** | | **47.9** | excl. drum-exit |
-
-## Panels to order — **2× 36″×120″** ($415 ea = **$830**, min sheets)
-
-1× 48×144 can't do it (163.7″ runs splice anyway, and 47 ft² in 48 ft² = no cutting margin). 2× 36×120 nests with room to spare and is cheaper than 1×48×144 + a second panel.
-
-**Panel A (36×120)** — 3 strips @ 11.8″ × 120″:
-- Near-A `11.8 × 120`
-- Far-A `11.8 × 120`
-- Right `11.8 × 93` (27″ offcut)
-
-**Panel B (36×120)** — 3 strips @ 11.8″ × 120″:
-- Left `11.8 × 93` (27″ offcut)
-- Near-B `11.8 × 43.7` ┐ splice onto the -A halves → 163.7″
-- Far-B `11.8 × 43.7` ┘
-- Left-wide `11.8 × 29.9`
-- Near-wide `7.9 × 61.8`
-
-![GRP grating cut plan — 2× 36×120 panels](diagrams/grp-cutplan.png)
-
-## Cut coordinates (each panel 36″ W × 120″ L)
-
-**Panel A** — rip at **11.8, 23.6, 35.4″**; crosscut strip 3 at **93″**:
-
-| Piece | Width span (in) | Length span (in) | Size |
-|---|---|---|---|
-| Near-A | 0 – 11.8 | 0 – 120 | 11.8 × 120 |
-| Far-A | 11.8 – 23.6 | 0 – 120 | 11.8 × 120 |
-| Right | 23.6 – 35.4 | 0 – 93 | 11.8 × 93 |
-| (offcut) | 23.6 – 35.4 | 93 – 120 | 11.8 × 27 |
-| (waste edge) | 35.4 – 36 | 0 – 120 | 0.6 × 120 |
-
-**Panel B** — rip at **11.8, 23.6, 35.4″**; crosscuts as noted:
-
-| Piece | Width span (in) | Length span (in) | Size |
-|---|---|---|---|
-| Left | 0 – 11.8 | 0 – 93 | 11.8 × 93 |
-| (offcut) | 0 – 11.8 | 93 – 120 | 11.8 × 27 |
-| Near-B | 11.8 – 23.6 | 0 – 43.7 | 11.8 × 43.7 |
-| Far-B | 11.8 – 23.6 | 43.7 – 87.4 | 11.8 × 43.7 |
-| (offcut) | 11.8 – 23.6 | 87.4 – 120 | 11.8 × 32.6 |
-| Left-wide | 23.6 – 35.4 | 0 – 29.9 | 11.8 × 29.9 |
-| Near-wide | 23.6 – 31.5 | 29.9 – 91.7 | 7.9 × 61.8 |
-| (waste edge) | 35.4 – 36 | 0 – 120 | 0.6 × 120 |
-
-Crosscuts: Panel B strip 1 at 93″; strip 2 at 43.7″ and 87.4″; strip 3 at 29.9″, then rip Near-wide at 31.5″ (width) over length 29.9–91.7 and crosscut at 91.7″.
+![GRP grating cut plan — 2× 36×120 panels](assets/grp-cutplan.png)
 
 ## Also
 - Edge treatment: **Fibergrate Sealing & Bonding Kit** (~$50) — molded FRP cut edges are field-sealed with epoxy, not snap-trimmed.
 - Hold-down: 30× SS grating clips (`walkway-holddown-clips`, separate).
-- Drum-exit landing (~2.5 ft²): separate line `walkway-drum-exit-grp` (won't nest in the ≤11.8″ offcuts).
+- Drum-exit punch-out: integral to the left lift-out piece, nested on Panel B.
 - **Pipe-clearance cutouts (field-cut + edge-sealed):** the right-walkway deck carries **3 ribbon slots** (~128 × 32 mm, across the 4 lanes, at the pinhole-end drop / loop-over rise / corridor drop); the near-walkway deck carries **3 round riser holes** (Ø32–Ø36 — tray-sump→P-04, TAP-01 fresh-water branch, BV-05 fresh-supply trunk) — see walkway Sheet 3 + Sheet 9 for locations. These are small clearance cuts within already-nested pieces (no effect on the sheet count); seal their cut edges with the same kit.
 
 ## Vendors

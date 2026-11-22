@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,090 | $4,548 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,977 | $4,435 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,979 | $8,346 |
 | 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,830** | **~$36,653** |
+| **TOTAL (base build + 50-print run)** | **~$27,717** | **~$36,540** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -197,9 +197,8 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [Impact 9oz Duvetyne 57" × 10yd (B&H)](https://www.bhphotovideo.com/c/product/1775270-REG/impact_dr9_10_9_oz_duvetyne_10.html) (1775270) | 1 ea | B&H Photo | film | $69 |
 | [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | 1 ea | Amazon | ventilation | $30 |
-| **fabric-textile subtotal** | | | | **$100** |
+| **fabric-textile subtotal** | | | | **$30** |
 
 ### fabrication-labor
 
@@ -379,7 +378,6 @@ indicative low–high estimates — get quotes before ordering.
 | [#4 (3/16") black-nylon strip brush — running-gap light-seal wiper (×4 lines)](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) | 4 8ft | Gordon Brush | lightlock | $88–$160 |
 | 12mm closed-cell neoprene — top/bottom cap wiper seals | 1 lot | Canal Rubber | lightlock | $25–$40 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 24 m | Amazon (OKAYASU) | panel | $27–$59 |
-| [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
@@ -388,7 +386,7 @@ indicative low–high estimates — get quotes before ordering.
 | Rubber cargo friction matting | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$561–$772** |
+| **seals-gaskets subtotal** | | | | **$516–$727** |
 
 ### stainless-sheet
 
@@ -507,7 +505,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
-| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,985–$1,993 |
+| McMaster-Carr | 84 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,940–$1,948 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Home Depot | 56 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,742–$1,920 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
@@ -547,7 +545,6 @@ indicative low–high estimates — get quotes before ordering.
 | Uline / cargo-securing supplier | 1 | seals-gaskets | $40–$80 |
 | Pac-Nor Anodizing | 1 | adhesives-finishes | $40–$80 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
-| B&H Photo | 1 | fabric-textile | $69 |
 | Canal Rubber | 2 | seals-gaskets | $37–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $27–$59 |

@@ -87,7 +87,7 @@ aluminum** angle frame (expendable) + corner L-brackets, 4× **3×1.5 6061 Al U-
 on Ø10 304 axle pins), **8× 304 flat-bar cross-slides (Z tilt + X swing) on UHMW self-lube pads +
 adjustable gibs** (the 2-axis corner stage that absorbs the rigid-rotation arc travel), 4× **Belden
 SSNBUJ750x3/8KB U-joints** (stainless, factory-booted (integral)), 12× cam-lever rail clamps, **single rigid ACM
-backing panel**, Duvetyne curtain seals, rail felt light-trap strips, 58× nylon spring clamps
+backing panel**, 58× nylon spring clamps
 at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (muslin attachment). The plane stays a fixed-size flat rectangle — it does not
 stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 

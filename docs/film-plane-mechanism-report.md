@@ -138,16 +138,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical dimensions n
 
 **Single rigid backing panel:** the backing is **one flat ACM (aluminum composite) sheet, <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm**, bonded to the rear of the angle frame — the panel simply rotates with the rigid plane.
 
-### 4.7 Light Sealing
-
-A tilted or swung plane opens gaps at its edges where the frame no longer sits flush against the wall. Two measures close them:
-
-- **Primary seal** — a 1"×½" black EPDM foam strip bonded to all four frame edges, compressing to seal at the low angles.
-- **Secondary seal** — Impact 9oz Duvetyne blackout curtains hung from the frame perimeter and weighted, draping to seal at the larger tilt/swing angles where the foam no longer reaches.
-
-The EPDM foam tape and Duvetyne curtains are itemized in the §7 parts list.
-
-### 4.8 Fabrication Detail Sheets
+### 4.7 Fabrication Detail Sheets
 
 Sheets 12–18 take each corner-mechanism part to shop-buildable detail — cut lengths, section profiles, hole coordinates, weld schedules, and the corner fastener schedule. (The cam rail-brake and the U-joint are purchased parts already detailed in-assembly on Sheets 3 and 9, so they get no standalone sheet.)
 
@@ -231,7 +222,7 @@ The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_widt
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,090<!-- END costing:film-total -->**
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,977<!-- END costing:film-total -->**
 *Excludes fasteners and fabrication labor.*
 
 ### 7.3 Local SoCal Metal Sourcing
@@ -245,7 +236,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 ## 8. Maintenance
 
-The mechanism runs **dry**: the acetal skates and UHMW slide pads take no lubricant, so grit on the rails — not lubrication — is the wear driver. The wear and expendable parts are the acetal rollers, the UHMW pads, the U-joint boots, the EPDM edge seal, the Duvetyne curtains and the plain-6061 frame angle (bare 6061 pits sooner than anodized); the cam clamps hold a set position through transport. The recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The mechanism runs **dry**: the acetal skates and UHMW slide pads take no lubricant, so grit on the rails — not lubrication — is the wear driver. The wear and expendable parts are the acetal rollers, the UHMW pads, the U-joint boots and the plain-6061 frame angle (bare 6061 pits sooner than anodized); the cam clamps hold a set position through transport. The recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
 
 ---
 

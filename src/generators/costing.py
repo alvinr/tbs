@@ -330,7 +330,7 @@ FILM = [
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×1/8 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 528, "Metal Supermarkets 192\" @ $176.06; 2 horizontals + 1 for both verticals; 1 frame"),
     LineItem("Dibond ACM 3mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 3mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
-    LineItem("Light-seal set — EPDM tape (×2) + Impact duvetyne (57\" 9oz, B&H $69) + 4-mil poly + Gorilla tape (×6)", 214, 214, 214, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6; blackout poly → Film-Gard 10ft×100ft 4-mil $40.12 (opaque enough for a light-seal, was 6-mil $66–70)"),
+    LineItem("Blackout set — 4-mil black poly + Gorilla tape (×6)", 101, 101, 101, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6; blackout poly → Film-Gard 10ft×100ft 4-mil $40.12 (opaque enough for a light-seal, was 6-mil $66–70)"),
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
@@ -1206,7 +1206,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "rich": {"chem": 2735, "total": 3040, "per_print": 61}, # 2026-10-22: 9.19 m² derived. Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     # 2026-10-22: chem tiers rescaled to the 9.19 m2 (99 sqft) active plane (now derived from IMAGE_AREA_M2) -> grand total -$20/$30/$60.
     # 2026-10-27: +$12/$16/$20 — beam-penetration EPDM foam light-seals (ll-beam-notch-seal, 4 notches).
-    "grand_total": (27670, 32234, 45293), # 2026-11-21: drum-exit GRP grating dropped. 2026-11-20d: walkway angle firm + plywood brackets from it. 2026-11-20c: +$20/$30/$40 — drain-pump switches S-05/S-03. 2026-11-20b:
+    "grand_total": (27557, 32121, 45180), # 2026-11-21b: −$113 film-plane edge seal removed. 2026-11-21: drum-exit GRP grating dropped. 2026-11-20d: walkway angle firm + plywood brackets from it. 2026-11-20c: +$20/$30/$40 — drain-pump switches S-05/S-03. 2026-11-20b:
     # +$18/$32/$45 — X-port camlock dust caps. 2026-11-20: −$210/−$490/+$5,700 — §9 Licenses & permits computed from its lines (permits; CDL in
     # High only, baseline is commercial hire), was a fixed $220/$790/$1,620. 2026-11-19c: −$8/$14/$20 — IBC-2 float switch dropped. 2026-11-19b:
     # +$19 — flex-jumper SS clamps 2→3 10-packs. 2026-11-19: +$9 — flex jumpers on both ends of the Blue equalization tie (barbs 8→10).
@@ -1305,7 +1305,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     # latch in. 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
     "interior": (446, 505, 563), # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (35, 52, 70), # 2026-09-23: retired the standard Ø600 pinhole/lens plate (superseded by the Ø80-carrier disc holder). §3 Optics is now the pinhole-WALL interface only (wall-frame adapter + dark slide); the pinhole element + retaining ring + mount bolts moved to front-board (fixes the pinhole double-count).
-    "film": (4090, 4316, 4548), # 2026-11-09: −$8 — M8×25 fastener standardization: SS SKU 92314A711 pack 25→50 (per-each halves, −$7) + the ×8 right-rail fixing merged onto
+    "film": (3977, 4203, 4435), # 2026-11-21: −$113 — film-plane EPDM edge strip + Duvetyne curtains removed (no light path to seal). 2026-11-09: −$8 — M8×25 fastener standardization: SS SKU 92314A711 pack 25→50 (per-each halves, −$7) + the ×8 right-rail fixing merged onto
     # it (retired dup steel 91310A535, −$1). 2026-09-07: +$4 — wall-sandwich bolts ×65→×70 (single zinc wall length). 2026-09-06: −$1 — M8 J1/J2
     # bolt firmed M8×20→M8×25 (92314A711, cheaper pack). 2026-09-06: +$2 — M8 J1/J2 → through-bolt + nut (32 M8 nuts added). 2026-09-06: +$11 — M4
     # nut/M8 bolt/M8 flat washer SKUs firmed (up from est). 2026-09-06: +$40 — corner mechanism fasteners itemized (M4 cam-clamp ×24 + M8 J1/J2

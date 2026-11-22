@@ -619,11 +619,9 @@ Deployment and stowing are in §1.7.3 and §5.5.1.
 | Interval | Task |
 |----------|------|
 | Before each session | Verify all four cam clamps are locked after repositioning |
-| Before each session | Check EPDM foam edge seal for tears or compression set |
 | Monthly | Wipe the U-channel rails clean of grit — the acetal skate and UHMW pads run **dry** (no lubricant) |
 | Monthly | Inspect the acetal rollers and UHMW slide pads for wear or embedded grit |
 | Every 6 months | Check each U-joint for play and its nitrile boot for tears — replace the boot if split |
-| Every 6 months | Inspect Duvetyne blackout curtains for light leaks (pinholes, fraying) |
 | Annually | Inspect the plain-6061 frame angle and corner L-brackets for pitting; replace on pitting |
 | Annually | Verify rail mounting bolts for torque at all four rail positions |
 

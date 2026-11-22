@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,877 | $4,335 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,907 | $4,400 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,999 | $8,386 |
 | 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,717** | **~$36,638** |
+| **TOTAL (base build + 50-print run)** | **~$27,747** | **~$36,703** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -223,7 +223,8 @@ indicative low–high estimates — get quotes before ordering.
 | [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — cross-slide joints J1/J2 + right-rail fixing](https://www.mcmaster.com/92314A711/) (92314A711) | 32 ea | McMaster-Carr | film | $7 |
 | [M12×100 hex through-bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A770/) (91280A770) | 4 ea | McMaster-Carr | ibc-frame | $15 |
 | [M12×65 hex bolt, 18-8 SS (partial thread)](https://www.mcmaster.com/92800A481/) (92800A481) | 16 ea | McMaster-Carr | ibc-frame | $32 |
-| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 117 ea | McMaster-Carr | film, ibc-frame, walkway | $203 |
+| [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 109 ea | McMaster-Carr | film, ibc-frame, walkway | $189 |
+| M12×75 hex through-bolt, Grade 8.8 zinc, partial-thread | 8 ea | McMaster-Carr | film | $14–$20 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
 | [M8 flat washer, 304 SS](https://www.mcmaster.com/98689A673/) (98689A673) | 32 ea | McMaster-Carr | film | $9 |
 | [M8 flat washer, SS](https://www.mcmaster.com/98689A673/) (98689A673) | 4 ea | McMaster-Carr | shelf | $1 |
@@ -243,6 +244,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Door pull handle + misc mounting hardware](https://www.mcmaster.com/3570N12/) (3570N12) | 1 ea | McMaster-Carr | interior | $39 |
 | Personnel-door hinges (heavy-duty, ×3) | 3 ea | Home Depot | interior | $15–$24 |
 | Weatherproof door latch/lock set | 1 ea | Home Depot | interior | $20–$45 |
+| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 3 ft | OnlineMetals (via Zoro) | film | $30–$59 |
 | [Machine screws — filter housings to ply tee-nuts (1/4-20)](https://www.mcmaster.com/90272A552/) (90272A552) | 8 ea | McMaster-Carr | water | $1 |
 | [1/4" flat washer — filter-housing machine screws](https://www.mcmaster.com/90850A100/) (90850A100) | 8 ea | McMaster-Carr | water | $1 |
 | [Stainless self-drilling (TEK) screw — ACM → 6061 frame](https://www.mcmaster.com/90599A716/) (90599A716) | 30 ea | McMaster-Carr | film | $19 |
@@ -303,7 +305,7 @@ indicative low–high estimates — get quotes before ordering.
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 8 ft | OnlineMetals (via Zoro) | walkway | $80–$157 |
-| **fasteners-hardware subtotal** | | | | **$2,192–$2,556** |
+| **fasteners-hardware subtotal** | | | | **$2,222–$2,621** |
 
 ### optics
 
@@ -505,7 +507,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
-| McMaster-Carr | 84 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,940–$1,948 |
+| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,940–$1,954 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,642–$1,821 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
@@ -525,11 +527,11 @@ indicative low–high estimates — get quotes before ordering.
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
 | MetalsDepot | 2 | steel-structural | $190–$258 |
+| OnlineMetals (via Zoro) | 3 | fasteners-hardware | $130–$255 |
 | Metals Depot | 2 | aluminum, steel-structural | $252 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Waytek Wire | 9 | electrical-distribution, electrical-power | $197 |
-| OnlineMetals (via Zoro) | 2 | fasteners-hardware | $100–$196 |
 | LED Profiles | 1 | electrical-distribution | $189 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |

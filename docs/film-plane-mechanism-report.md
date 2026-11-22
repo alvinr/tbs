@@ -114,7 +114,7 @@ The cross-slide travel and load follow from the rotation geometry and the moving
 
 ![Sheet 10 — Corner load case: cross-slide travel + bending safety factor](assets/film-plane-sheet10.png)
 
-- **Rear-corner attachment** — the two far-left (rear) rail ends land at the Ø89 pivot post, which carries their weight (the stub is anchored to it). Each is tied to the far wall by a **flange + exterior backing plate + 4× M12** — the rail END butts the flange's inner face — with the bolt gauge narrowed so the bolts clear the post, and the bracket kept below the roof-mount plate (a full saddle would foul it). No seat/gusset: it's a lateral tie, not a load-bearing seat.
+- **Rear-corner attachment** — the two far-left (rear) rail ends land at the Ø89 pivot post, which carries their weight (the stub is anchored to it). Each is tied to the far wall by a **flange + exterior backing plate + 4× M12×75** (the 50mm grip is too long for the M12×70 used elsewhere) — the rail END butts the flange's inner face — with the bolt gauge narrowed so the bolts clear the post, and the bracket kept below the roof-mount plate (a full saddle would foul it). No seat/gusset: it's a lateral tie, not a load-bearing seat.
 
 ![Sheet 11 — Far-left (rear) rail bracket → pivot-post + far-wall attachment](assets/film-plane-sheet11.png)
 
@@ -206,7 +206,7 @@ See the **[Master Shopping List, filtered to the film-plane system](master-shopp
 
 ### 7.1 Wall-Seat Saddles
 
-Each of the **8 rail ends** anchors to the container — **4 of them** with a standalone **IBC-style wall-seat saddle** (a back-plate + horizontal seat the rail end rests on + triangular gusset, dims reused from the IBC frame wall seats, **through-bolted with a 4-bolt pattern to an exterior wall plate**), and **the 2 bottom-right ends (BR, near + far)** with a **combined corner plate shared with the right walkway** (see below), and **the 2 far-left ends** on the pivot post (the rear-corner attachment, §4.4). The container shell carries the lateral rigidity, so no cross-cage is needed. The saddles cost ~110mm of carriage travel at each end, which the design does not need. The rails run the full width **saddle-to-saddle** (Yd 0 → C_WID).
+Each of the **8 rail ends** anchors to the container — **4 of them** with a standalone **IBC-style wall-seat saddle** (a back-plate + horizontal seat the rail end rests on + triangular gusset, dims reused from the IBC frame wall seats, **through-bolted with a 4-bolt pattern to an exterior wall plate**), and **the 2 bottom-right ends (BR, near + far)** with a **combined corner plate shared with the right walkway** (see below), and **the 2 far-left ends** on the pivot post (the rear-corner attachment, §4.4). The container shell carries the lateral rigidity, so no cross-cage is needed. The wall is one 1.6mm corrugated sheet, so every wall through-bolt (M12×70 on the saddles, M12×75 on the far-left flanges) carries a steel **crush sleeve** (1in OD × 0.188in wall) that fills the corrugation hollow behind the exterior plate; without it the bolt preload would collapse the corrugation. Each sleeve is cut to the hollow measured on the purchased container (the shared detail and check are in [Walkway §3.1](walkway-report.md#31-cantilever-bracket-design)). The saddles cost ~110mm of carriage travel at each end, which the design does not need. The rails run the full width **saddle-to-saddle** (Yd 0 → C_WID).
 
 **Right vs left.** The **right** rails (TR + BR) are **permanently bolted** into place. Each **left** rail (TL + BL) is split near the pivot post: a fixed **stub** (about 272mm) stays anchored at the pivot post and far wall, and the **removable section** (about 2,090mm) drops into its near-wall saddle on **knurled thumb screws** and onto the stub through a welded bridge and locating pin (Sheet 4). The removal section is to allow the hinge panel to swing for transportation.
 
@@ -222,7 +222,7 @@ The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_widt
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,877<!-- END costing:film-total -->**
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,907<!-- END costing:film-total -->**
 *Excludes fasteners and fabrication labor.*
 
 ### 7.3 Local SoCal Metal Sourcing

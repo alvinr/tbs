@@ -73,6 +73,7 @@ L = C_LEN   # interior length (film plane spans this direction)
 W = C_WID   # interior width = optical axis = focal length
 H = C_HGT   # interior height
 from tbs_constants import WALL_T
+from tbs_constants import CONTAINER_WALL_SHEET_T, WALL_SLEEVE_OD, WALL_SLEEVE_ID
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_STEEL
 
 # Carriage travel limits (100mm clearance each end)
@@ -1985,10 +1986,13 @@ def sheet11():
     axA.add_patch(Rectangle((cx - bw / 2, C_WID - fl_t), bw, fl_t, fc=C_PL, ec=OUT, lw=1.2, zorder=4))       # flange (interior)
     axA.add_patch(Rectangle((cx - bw / 2, C_WID + WALL_T), bw, ext_t, fc=C_PL, ec=OUT, lw=1.2, zorder=4))    # exterior plate
     for bx in (cx - 38, cx + 38):
+        axA.add_patch(Rectangle((bx - WALL_SLEEVE_OD / 2, C_WID + CONTAINER_WALL_SHEET_T), WALL_SLEEVE_OD, WALL_T - CONTAINER_WALL_SHEET_T,
+                                fc="#D0D0D8", ec=OUT, lw=0.6, zorder=4.5))                                                        # crush sleeve
         axA.add_patch(Rectangle((bx - 2.5, C_WID - fl_t - 6), 5, WALL_T + fl_t + ext_t + 12, fc=C_BOLT, ec="none", zorder=5))  # shank
         axA.add_patch(Rectangle((bx - 5.5, C_WID + WALL_T + ext_t), 11, 5.5, fc=C_BOLT, ec=OUT, lw=0.5, zorder=6))            # HEX HEAD — OUTSIDE
         axA.add_patch(Rectangle((bx - 5, C_WID - fl_t - 5.5), 10, 5.5, fc="#6A6A72", ec=OUT, lw=0.6, zorder=6))               # NUT — INSIDE
     leader(axA, cx + 38, C_WID - fl_t - 5.5, cx + 78, C_WID - fl_t - 30, "M12 NUTS inside (container)", ha="left", fs=5.0, color=OUT, font=FONT)
+    leader(axA, cx - 38 - WALL_SLEEVE_OD / 2, C_WID + WALL_T / 2, 150, C_WID + WALL_T / 2, f"M12×75 · CRUSH SLEEVE\nØ{WALL_SLEEVE_OD}/Ø{WALL_SLEEVE_ID}, cut to depth", ha="center", fs=5.0, color=OUT, font=FONT)
     draw_dim_h(axA, cx - bw / 2, cx + bw / 2, C_WID + fl_t + 44, f"{bw}mm", offset=7, fs=5.5, font=FONT, above=False)
     draw_dim_h(axA, cx - 38, cx + 38, 2250, f"{FP_RAIL_WEB}mm gauge", fs=5, font=FONT)
     leader(axA, cx + 18, C_WID - fl_t, cx + 82, C_WID - fl_t - 7, "rail END butts the flange INNER face", ha="left", fs=5.2, color=OUT, font=FONT)
@@ -2067,7 +2071,8 @@ def sheet11():
         "floor-to-ceiling and CARRIES the rail's vertical weight (the ~272mm stub is anchored to it). So the bracket "
         "here is a LATERAL WALL TIE, not a load-bearing seat — no seat/gusset (unlike the pinhole-wall saddles).",
         "ATTACHMENT:  the rail END butts the INNER face of a 12mm flange plate; the flange + an 8mm EXTERIOR backing "
-        "plate sandwich the corrugated far wall, drawn up by 4× M12×70 through-bolts (hex heads outside). The bolt "
+        "plate sandwich the corrugated far wall, drawn up by 4× M12×75 through-bolts (hex heads outside; the 50mm grip "
+        "is too long for the M12×70), each with a steel crush sleeve in the corrugation hollow. The bolt "
         "gauge is narrowed to 76mm (X222 / X298) so the bolts CLEAR the Ø89 post (X131–220).",
         "CLEARANCES:  the TL (top) bracket sits just BELOW the Z2368 roof-mount plate; the BL (bottom) bracket sits "
         "ABOVE the Z0–20 floor-mount plate. A full 150-tall saddle would foul the roof-mount plate — which is why "
@@ -2129,7 +2134,8 @@ def sheet12():
         ("M8", "J1 carriage → Z-slide", "4", "304", "Sheet 14/15"),
         ("3/8 key + set screw", "U-joint stub → bore", "2+1", "304", "Sheet 9"),
         ("M6 (4040N12)", "U-joint input → X-slide", "2", "304", "Sheet 9"),
-        ("M12", "wall-seat saddle → wall", "4/seat", "galv", "Sheet 18"),
+        ("M12×70 + sleeve", "wall-seat saddle → wall", "4/seat", "8.8 zinc", "Sheet 18"),
+        ("M12×75 + sleeve", "far-left flange → wall", "4/brkt", "8.8 zinc", "Sheet 11"),
     ]
     ry = hdr_y - 8
     for fastener, joint, qty, grade, ref in rows:
@@ -2620,6 +2626,8 @@ def sheet18():
     # M12 through-bolts drawn per convention: HEX HEAD outside (right), NUT inside the container (left),
     # shank gripping back-plate + corrugated wall + exterior spreader plate
     def _wall_bolt(bz):
+        axA.add_patch(Rectangle((CONTAINER_WALL_SHEET_T, bz - WALL_SLEEVE_OD / 2), WALL_T - CONTAINER_WALL_SHEET_T, WALL_SLEEVE_OD,
+                                fc="#D0D0D8", ec=OUT, lw=0.6, zorder=5))                                  # crush sleeve in the corrugation hollow
         axA.add_patch(Rectangle((-bt, bz - 2), WALL_T + 8 + bt, 4, fc=C_BOLT, ec="none", zorder=6))   # shank (grip)
         axA.add_patch(Rectangle((-bt - 7, bz - 4), 7, 8, fc="#6A6A72", ec=OUT, lw=0.6, zorder=7))      # NUT — inside (container)
         axA.add_patch(Rectangle((WALL_T + 8, bz - 4.5), 6, 9, fc=C_BOLT, ec=OUT, lw=0.6, zorder=7))    # HEX HEAD — outside
@@ -2631,6 +2639,7 @@ def sheet18():
     leader(axA, -bt / 2, gh, -proj - 30, gh - 10, f"gusset (8mm) braces\nseat → back-plate", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(axA, -bt - 6, bz_hi, -proj - 30, bz_hi - 4, f"M{FP_CORNER_SEAT_BOLT_D}×{FP_CORNER_SEAT_BOLT_N} — NUT inside (container);\nboth rows clear BELOW the seat", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
     leader(axA, WALL_T + 11, bz_lo, 30, bz_lo - 18, "HEX HEAD outside, on the\nexterior spreader plate", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
+    leader(axA, WALL_T / 2, bz_hi + WALL_SLEEVE_OD / 2, 30, bz_hi + 46, f"M12×70 · CRUSH SLEEVE Ø{WALL_SLEEVE_OD}/Ø{WALL_SLEEVE_ID}\nin the corrugation hollow, cut to\nthe measured depth", ha="left", fs=5.6, color=C_BOLT, font=FONT, bbox=LBL_BG)
     axA.text(-proj - 68, bph + 50, "A — SADDLE ELEVATION  (load-bearing seat; wall at right)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", **FONT)
 
     # ── View B — flat-pattern cut pieces (nesting) ─────────────────────────────

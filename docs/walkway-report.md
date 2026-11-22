@@ -17,9 +17,8 @@ access functions:
 - **Right walkway** (IBC end) — access to the IBC valves and the corridor
   plumbing panel (pumps + filters). Carried on a cantilever frame off the IBC frame to clear the IBC stack below.
 
-All four sections share a common 140mm deck height (arm top at 115mm + 25mm grating),
-creating a level perimeter walking surface. The standard width is 300mm (the right walkway is
-245mm). Two sections _punch out_ wider for easier access: the left walkway at the light-trap
+All four sections share a common 140mm deck height,
+creating a level perimeter walking surface. The standard width is 300mm. Two sections _punch out_ wider for easier access: the left walkway at the light-trap
 exit and the near walkway in front of the electrical panel and battery bank.
 
 The design enforces **zero processing tray contact** — all walkway supports are

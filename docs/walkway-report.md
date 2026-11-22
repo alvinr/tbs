@@ -325,7 +325,7 @@ The punch-out is shown on **Sheet 5 (Detail C)** with the rest of the left-walkw
 | Panel transport motion | SWING ~56° about the Ø89 pivot |
 | Swing sweep reach (near-walkway zone) | X≈1,395mm |
 | Butt joint / near-far walkway start | X=580mm |
-| Drum-cage underside | Z=130mm (10mm below the Z140 grate top) |
+| Drum-cage underside | Z=140mm (level with the grate top) |
 | Panel bottom edge | Z=217mm (panel floor gap) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
@@ -335,8 +335,8 @@ section — must be lifted out before the panel can swing — the 5 floor-leg po
 bolted to the floor. As the panel + drum swing ~56° about the pivot, the cage sweeps past
 the butt joint into the vacated zone, its **cage underside passing over the
 door-end floor-leg posts** — so no floor-leg post is struck.
-The relevant standing clearance is vertical: the drum-cage underside sits at Z130 —
-15mm over the Z115 posts and well clear of the tray rim (the panel bottom rides higher
+The relevant standing clearance is vertical: the drum-cage underside sits at Z140 —
+25mm over the Z115 posts and at least 59mm over the tray rim (the panel bottom rides higher
 still, at the 217mm floor gap). See hinged-panel Sheet 16.
 
 ---

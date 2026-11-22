@@ -16,7 +16,7 @@ The holder is a compact front board mounted to the wall-frame adapter with a sma
 
 - **ICP-01 Front plate** — **Ø180 round × 18mm** 6061-T6. Mounts to the wall-frame adapter (**4× M6 @ Ø150**); a Ø110 scene-side taper bore converging to a Ø72 light-aperture clearance bore; a Ø82 × 6mm counterbore that seats the carrier and reacts the weight of a lens; four M6 taps on a Ø100 circle (9mm clear of the counterbore wall) for the thumb screws.
 - **Light-seal washer** — Ø82 OD × Ø72 ID × 1.5mm neoprene. The carrier presses against it, sealing the aperture under the clamp.
-- **Interchangeable carrier (ICP-02)** — **Ø80 × 5mm** 6061 disc (fills the seat): either a pinhole carrier (SS-302 shim over a central bore, pinhole Ø per selection) or a **large-format lens board** drilled for a Copal/Compur 0, 1 or 3 shutter (see §3). Every carrier shares this one envelope, so the retaining ring seats them all identically.
+- **Interchangeable carrier (ICP-02)** — **Ø80 × 5mm** 6061 disc: either a pinhole carrier or a **large-format lens board** drilled for a Copal/Compur 0, 1 or 3 shutter (see §3). Every carrier shares this one envelope, so the retaining ring seats them all identically.
 - **Circular retaining ring (ICP-03)** — Ø120 OD × Ø70 bore × 6mm 6061-T6. The Ø70 bore is smaller than the carrier so the ring clamps its rim; it clears the light path.
 - **Four thumb screws** — M6 knurled, on the Ø100 circle, into the plate.
 
@@ -33,7 +33,7 @@ The holder is a compact front board mounted to the wall-frame adapter with a sma
 </div>
 <!-- brochure:endskip -->
 
-The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — general arrangement (front view: plate, retaining ring, thumb-screw + mount circles; the section through the mount is on Sheet 3); **Sheet 2** — fabrication blueprints (front plate + retaining ring + carrier); **Sheet 3** — wall-frame adapter + a section through the container wall (the mount interface, weld, bolts and the carrier/ring/seal stack); **Sheet 4** — the Copal/Compur lens board (the three shutter‑hole options and how the shutter mounts). Sheets 2–4 carry the CNC‑shop tolerance block (§8).
+The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — general arrangement; **Sheet 2** — fabrication blueprints; **Sheet 3** — wall-frame adapter + a section through the container wall; **Sheet 4** — the Copal/Compur lens board. Sheets 2–4 carry the CNC‑shop tolerance block (§8).
 
 ![Pinhole Disc Holder — Sheet 1: General Arrangement](assets/pinhole-disc-holder-sheet1.png)
 
@@ -47,7 +47,7 @@ The drawing set (TBS-PDH, 4 sheets): **Sheet 1** — general arrangement (front 
 
 ## 3. Interchangeable Carriers — Pinhole & Large-Format Lens
 
-Every carrier is a **Ø80 × 5mm** disc (fills the seat), clamped by the retaining ring, so the camera's front optic changes in seconds.
+Every carrier is a **Ø80 × 5mm** disc, clamped by the retaining ring, so the camera's front optic changes in seconds.
 
 ### Pinhole boards
 
@@ -89,7 +89,7 @@ The image is a central projection through the pinhole point. Tilt and swing are 
 
 ## 5. Light Sealing
 
-The neoprene washer, seated on the floor of the Ø82 counterbore, seals the carrier-to-plate joint. Without it, light through the aperture could leak around the carrier's perimeter — the Ø80 carrier sits in the Ø82 seat with a ~1mm radial gap all round — into the camera. Every carrier is a **Ø80 × 5mm** disc (§3), so it fills the 6mm seat and stands ~0.5mm proud on the 1.5mm washer; tightening the thumb screws draws the retaining ring flat, pressing the carrier rim and compressing the washer against the seat floor to block the perimeter path. It is a single static compression seal — no moving parts, no bellows. The Ø110 taper bore on the scene side and the Ø72 clearance bore behind the carrier form the light path; the carrier (pinhole or lens) is the only opening. The plate-to-adapter joint is light-sealed by a 2.5mm black nitrile O-ring in a Ø171 face groove (3.4mm wide × 1.9mm deep) on the plate's adapter face, outside the Ø150 bolt circle (Sheet 2).
+The neoprene washer, seated on the floor of the Ø82 counterbore, seals the carrier-to-plate joint. Without it, light through the aperture could leak around the carrier's perimeter — the Ø80 carrier sits in the Ø82 seat with a ~1mm radial gap all round — into the camera. Every carrier is a **Ø80 × 5mm** disc (§3), so it fills the 6mm seat and stands ~0.5mm proud on the 1.5mm washer; tightening the thumb screws draws the retaining ring flat, pressing the carrier rim and compressing the washer against the seat floor to block the perimeter path. It is a single static compression seal. The Ø110 taper bore on the scene side and the Ø72 clearance bore behind the carrier form the light path; the carrier is the only opening. The plate-to-adapter joint is light-sealed by a 2.5mm black nitrile O-ring in a Ø171 face groove on the plate's adapter face, outside the Ø150 bolt circle (Sheet 2).
 
 ---
 
@@ -128,7 +128,7 @@ See the **[Master Shopping List, filtered to the front-board system](master-shop
 
 ## 10. Service Items
 
-The neoprene washer is the holder's main wearing part: it seals only while its seat is clean and unbroken, and it is a replaceable consumable once nicked or compression-set. The plate-to-adapter O-ring is static and long-lived; replace it (a spare is stocked) whenever the plate is unbolted and the ring is nicked or flattened. The light seal also depends on the thumb screws holding the retaining ring flat. The SS-302 shim on a pinhole board is easily creased, so spare boards need flat, sleeved storage. The inspection schedule is an operating task ([Operating Manual — Maintenance](operating-manual.md)).
+The neoprene washer is the holder's main wearing part: it seals only while its seat is clean and unbroken, and it is a replaceable consumable once nicked or compression-set. The plate-to-adapter O-ring is static and long-lived; replace it whenever the plate is unbolted and the ring is nicked or flattened. The light seal also depends on the thumb screws holding the retaining ring flat. The SS-302 shim on a pinhole board is easily creased, so spare boards need flat, sleeved storage. The inspection schedule is an operating task ([Operating Manual — Maintenance](operating-manual.md)).
 
 ---
 

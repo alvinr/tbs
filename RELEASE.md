@@ -26,6 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
+- **Walkway report: what/why pass.** The access lists now match the equipment layout. Corrected against the constants and parts: the right walkway's 245mm width and its grating clips on the frame beams; the widened-zone X range (1,165–3,193); the cooler size (it fits the deck, no overhang); grating open area ~70%; the post position; and the spray-bar clearance. The duplicate left-walkway tables are merged and the redesign history removed.
 - **IBC transport restraint re-checked on the US standard (FMCSA 49 CFR 393.102).** The load case uses the 0.8 g breaking-strength and 0.435 g working-load-limit criteria, credits no bare friction and credits the friction mats at the unrated 50% (393.108(g)). Front bars: SF 1.49 alone and 3.97 with the mats; straps are checked on the 393.106(d) half-weight rule. Load-case sheet, report §3.4/§4.4, parts and drawing notes updated.
 - **Pinhole Disc Holder report: what/why pass.** History asides removed, the element count corrected, rise/fall removed from the optics section, the adapter described as welded to the interior crests, and the plate O-ring added to the service items.
 - **Film-plane edge seal removed.** The EPDM edge strip and the Duvetyne curtains had no light path to seal: the emulsion faces the pinhole and nothing lights the space behind the plane. Report §4.7, both parts, the two manual inspection rows and the dependency-map mention are gone (−$213 with the black poly + Gorilla tape that went with it).

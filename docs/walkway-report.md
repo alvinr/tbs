@@ -8,18 +8,19 @@ The perimeter walkway provides dry-foot operator access around all four sides of
 the processing tray without wading through chemical solution. It serves four
 access functions:
 
-- **Near walkway** (pinhole wall side) — access to electrical panel, battery
-  bank, spray-bar, tilt-swing adjusters, and valve manifold.
+- **Near walkway** (pinhole wall side) — access to the electrical panel, battery
+  bank, inverter, chemistry prep shelf, spray-bar slit, and the pinhole carrier.
 - **Far walkway** (film plane wall side) — access to film plane carriage clamps,
   rail end-stops, and far-side spray bar pole slot.
 - **Left walkway** (cargo door end) — access to hinged light-trap panel latches
   and revolving drum. Removable for panel transport.
-- **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
-  manifold. Carried on a cantilever frame off the IBC frame to clear the IBC stack below.
+- **Right walkway** (IBC end) — access to the IBC valves and the corridor
+  plumbing panel (pumps + filters). Carried on a cantilever frame off the IBC frame to clear the IBC stack below.
 
-All four sections share a common 140mm deck height (115mm bracket arm, L-angle, or
-floor-leg arm + 25mm grating) and 300mm standard width, creating a level perimeter walking
-surface. Two sections _punch out_ wider — at the light trap and the battery stack — for easier access.
+All four sections share a common 140mm deck height (arm top at 115mm + 25mm grating),
+creating a level perimeter walking surface. The standard width is 300mm (the right walkway is
+245mm). Two sections _punch out_ wider for easier access: the left walkway at the light-trap
+exit and the near walkway in front of the electrical panel and battery bank.
 
 The design enforces **zero processing tray contact** — all walkway supports are
 either wall-mounted, carried on the cantilever frame off the IBC frame, or placed outside the tray footprint. This
@@ -44,9 +45,8 @@ tray's watertight seal.
 | Parameter | Value |
 |-----------|-------|
 | Standard walkway width | 300mm |
-| Deck height (floor to grate top) | 140mm (raised to clear the floor-level spray bar) |
-| Grating | 1" (25mm) molded GRP (fiberglass), vinyl-ester, grit top — McNichols MS-S-100, the thinnest molded FRP made; corrosion-proof in the chemistry zone |
-| Grating bearing bars | 15×3mm at 34.2mm pitch |
+| Deck height (floor to grate top) | 140mm (sets the arm underside at Z89.6, clear of the floor-level spray bar) |
+| Grating | 1" (25mm) molded GRP, vinyl-ester, grit top (§8) |
 | Bracket arm height | 115mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
@@ -62,14 +62,15 @@ The grating is cut as nine pieces from two molded GRP stock panels (2× 36″×1
 
 ## 3. Near and Far Walkways — Wall-Cantilevered
 
+![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
+
 The near (pinhole wall) and far (film plane wall) walkways run the full length of
 the processing tray, butting the left and right walkways at each end.
 
 ### 3.1 Cantilever Bracket Design
 
 Each bracket is a welded assembly — an 8mm steel plate (vertical mounting leg + gusset) with a
-**steel tube arm** welded on. The arm was designed to the US IBC/OSHA basis (§9): the arm is a **2×1×0.120in tube** (standard) that carries
-the 300 lbf tip load at SF 2.1.
+**2×1×0.120in steel tube arm** welded on, which carries the US IBC/OSHA 300 lbf tip load at SF 2.1 (§9).
 
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
@@ -99,7 +100,7 @@ Five heavier brackets carry the 500mm arm. The zone runs past the slit so a 500m
 bracket supports the grating on both sides of it — no unsupported overhang.
 
 **Sheet 9 — Detail F: Near-Walkway Bump-Out (pinhole wall, plan).** The 500mm-deep standing
-band over X1,055–3,083, its 5 widened wall-cantilever brackets on the ribs, the 100mm deck
+band over X<!-- BEGIN fact:walkway_near_wide_x_l_mm -->1,165<!-- END fact:walkway_near_wide_x_l_mm -->–<!-- BEGIN fact:walkway_near_wide_x_r_mm -->3,193<!-- END fact:walkway_near_wide_x_r_mm -->, its 5 widened wall-cantilever brackets on the ribs, the 100mm deck
 overhang past each end bracket, and the spray-bar pole slit at the pinhole (X2,454) — the
 pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 
@@ -157,26 +158,26 @@ continuity across the slit.
 See [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
 assembly details.
 
-![TBS-001 Walkway —Positions of walkway slits](assets/spray-bar-sheet3.png)
+![TBS-001 Walkway — Positions of walkway slits](assets/spray-bar-sheet3.png)
 
 ---
 
 ## 4. Right Walkway — Cantilever Rectangle
 
-The right walkway is supported by cantilevers from the IBC frame istself; there is no nearby wall so an alternate fixing mechanism is required.
+The right walkway is supported by cantilevers off the IBC frame: the IBC stack fills the floor below it and there is no end wall within reach to bracket from.
 
 ![TBS-001 Walkway — Sheet 3: Cantilever Support](assets/walkway-sheet3.png)
 
 ### 4.1 The Cantilever Rectangle
 
-A closed rectangular frame sits directly under the deck,
+A rectangular frame sits directly under the deck,
 its 1in dimension the depth so the full-width 1½in spray beam — which rides the Yd-sloped tray floor —
 clears the soffit (Z89.6) by **11.6mm** at every travel position. A shallow section is less stiff on its
 own, so the rectangle is **picked up at mid-span by two center cantilever arms** (§4.2); with them the
 deflection stays well under 1mm. The frame:
 
 - **Two long beams** run the container width, with the 245mm grating spanning between them
-  (the right deck is shortened to land on the shared combined corner plate). The **inner** beam
+  (the deck's outer edge lands on the shared combined corner plate). The **inner** beam
   is continuous; the **outer** beam is run in **two simply‑supported segments** (combined corner
   plate → cantilever arm) with an **open bay over the IBC corridor** (see below).
 - **Two short end beams** (≈245mm) close the near and far ends, joining the beams into a
@@ -206,23 +207,21 @@ such treatment — it falls between floor-leg brackets, with no beam beneath it.
 
 ### 4.2 Center Cantilever Arms
 
-Two **solid bar arms** cantilever inward off the **IBC corridor uprights**
-and pick the rectangle up at
-mid-span. Each arm is **half-lapped (cross-halved)** where the long beams cross
-it, so the beams seat down into the arm and the two members share a flush top
-face. The arms carry the central span that the corner supports alone would leave
-to sag. With the section shaved for spray-beam clearance, an **added
-mid-span support** keeps the deflection in check — see the [cantilever study](right-walkway-cantilever-study.md)).
+Two **solid 2×1 bar arms** cantilever inward off the **IBC corridor uprights**
+and pick the rectangle up at mid-span. Each arm is **half-lapped (cross-halved)** where
+the long beams cross it, so the beams seat down into the arm and the two members share
+a flush top face. The arms carry the central span that the 1in-deep beams could not
+carry stiffly on the corner supports alone — see the [cantilever study](right-walkway-cantilever-study.md).
 
 ### 4.3 Corner Supports
 
 | Corner | Support | Fixing |
 |--------|---------|--------|
 | Left, near + far | **Wall cleat** — 8mm steel back-plate + exterior reinforcing plate + a shelf the long beam lands on | M12 through-bolts (sandwich the wall, sealed) |
-| Right, near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom film rail (BR/TR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
+| Right, near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom-right film rail (BR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
 
 The **combined corner plate** is the key coupling: the walkway's right long beam
-and the film plane's bottom (and top) rail terminate at the same position, so a
+and the film plane's bottom-right rail terminate at the same position, so a
 single plate seats both — the walkway beam on a 70mm seat, the film
 rail on a 150mm seat.
 
@@ -250,91 +249,61 @@ sits over the processing tray**, so it cannot be supported from below
 either. The left walkway is therefore a removable lift-out grate carried by **5
 floor-leg cantilever brackets** — each a post standing on the bare floor *outside*
 the tray with an arm that cantilevers over the tray to the grate inner
-edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
+edge. The 140mm deck height puts these arms clear of the floor-level spray bar.
 
-![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
 
 ### 5.1 Support System
-
-| Component | Specification | Position |
-|-----------|--------------|----------|
-| Floor-leg cantilever bracket (×5) | 2×2×0.120in steel SHS post (~115mm, floor to grate bottom) + arm (2×1×0.120in standard / **4×1×0.120in** on the 3 punch-out legs, §9) + 165×60×8mm foot plate (inboard outrigger — the post sits on its outboard end, the plate reaches inboard so the 4 floor anchors clear the post footprint) | 5 brackets (outside the tray) |
-| Floor anchoring | One continuous steel **sub-plate** (strongback) under all 5 legs, self-tapped into the door-end sill + cross-members (#14×3½″ 410 SS); each leg foot bolts to the plate's tapped bosses (4× M12×30, 20 total) | §5.1a — plate is container-dependent |
-| Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
-| Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
-
-The grate rests on the cantilever arms and lifts straight out — no fasteners, no kerb —
-with **zero tray contact**: the posts stand on bare floor outside the tray, the arms
-cantilever over it. The arm bottom clears the floor-level spray bar by 15mm and the tray
-rim by 25mm. The brackets sit entirely outside the panel's transport-swing footprint, so
-the grate lifts out before the panel swings and the floor-bolted posts stay put.
-
-**Load path.** The operator load travels grate → cantilever arm → 2×2×0.120in post → foot plate → sub-plate
-→ cross-members. The longest cantilever is the drum-exit punch-out arm (605mm). Under the US IBC/OSHA 300 lbf tip
-load this needs a **4×1×0.120in tube** (SF 1.99) — while the standard
-305mm arms stay 2×1 (SF 2.06); the post carries SF 2.68 (all computed in §9, `walkway_load.py`). Each leg's
-~2.4 kN overturning uplift is reacted through the foot into the continuous sub-plate (§5.1a),
-self-drillers engage the door-end sill and the steel cross-members — the plate spreads the reaction across
-several fixings, each good for ~5.3 kN in 4mm steel. This floor-leg cantilever supersedes the earlier
-full-width edge-beam scheme — simpler, lighter, and needs no through-wall seats.
-
-### 5.1a Floor anchoring — sub-plate (strongback)
-
-The five floor-legs do **not** screw straight into the floor. They bolt to one continuous steel **sub-plate** (a strongback) that lies flat on the floor, self-taps down into the door-end sill and the cross-members it spans (WF4a), and carries tapped bosses the leg feet bolt up into (WF4b). This is the project-wide floor-anchoring standard, shared with the IBC frame feet (see [IBC Stacking Report §3.6](ibc-stacking-report.md#36-floor-anchoring-sub-plate-strongback-standard)).
-
-Because the containers cross-members are **not dimensionally standardized**: [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container is flat-bottomed), and [the pitch and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) — [CIMC](https://www.cimc-equilink.com/media/3659.html) uses a ~45mm-flange C-section at ~300mm, but it is not guaranteed. The continuous plate removes the lottery: it runs from the door-end sill (guaranteed bottom-end-rail steel) across the first cross-members, and self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)) fix it down wherever the steel actually is. The map and the standard are drawn on the floor-anchoring sheets:
-
-![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
-
-> **Plate dimensions are container-dependent.** The ~1,900×350×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the sill and cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed steel. The leg positions and their foot bolt pattern do **not** change — only the plate adapts to the box.
-
-### 5.2 Drum-Exit Punch-Out
-
-The operator steps out of the revolving-door light lock at its interior face, but the standard 300mm walkway
-ends — leaving only ~20mm of
-landing in front of the drum opening, with the processing-tray basin immediately
-beyond. The left walkway is therefore **deepened to 600mm over the
-drum-opening span** — a ~600 × 760mm landing centered on the exit
-(the same approach as the near-walkway widened section on the pinhole side).
-
-**Optical clearance.** The punch-out sits inside the active image zone (X≥150mm), so it
-was checked against the optical cone: every pinhole sight line through it lands ~113mm
-clear of the image edge, entirely **left of the cone** (confirmed by
-`generate_line_of_sight.py` — no equipment intersects the cone).
-
-**Support.** The 600mm punch-out is carried by the **3 middle
-floor-leg brackets** — the same posts that carry the
-standard left walkway, but with their arms **extended to X=880mm** on the heavier
-**4×1×0.120in tube** section (IBC/OSHA — see §9).
-Each arm cantilevers ~605mm over the tray from its
-post on bare floor, with **zero tray contact**, and lifts out with the rest
-of the left walkway for transport. No separate sub-frame, edge beam, or bearing
-strip is needed.
-
-The drum-exit punch-out and its support are shown on **Sheet 5 (Detail C)** — the deeper
-landing on the 3 middle floor-leg brackets with 4×1 arms extended to X880, cantilevering over
-the tray with zero tray contact — alongside the rest of the left-walkway floor-leg system.
-See also **Sheet 6 (Detail D)** for the floor-leg bracket itself.
-
-### 5.3 Floor-Leg Cantilever Bracket Detail
-
-Each of the 5 brackets is a post standing on the bare floor outside the tray, with
-an arm cantilevering over the tray to carry the grate. No wall seats and no tray
-contact.
 
 ![TBS-001 Walkway — Sheet 6: Floor-Leg Cantilever Bracket Detail](assets/walkway-sheet6.png)
 
 | Component | Specification |
 |-----------|--------------|
-| Post | 2×2×0.120in steel SHS, ~115mm tall (floor to grate bottom), on the sub-plate at X=140mm (post trimmed by the plate thickness so deck level + tray clearances are preserved) |
-| Foot plate | 165×60×8mm steel plate (inboard outrigger — F3), bolting **4× M12×30** into the floor-anchor sub-plate's tapped bosses (§5.1a) |
-| Arm | 2×1×0.120in (50.8×25.4mm) steel reaching X=580mm (2 standard brackets, SF 2.06); **4×1×0.120in** extended to X=880mm (3 punch-out brackets, SF 1.99 — IBC/OSHA, §9) |
-| Overturning reaction | reacted through the foot into the continuous sub-plate, whose self-drillers carry the ~2.4 kN/leg uplift into the sill + steel cross-members (§5.1a); 300 lbf tip point load governs (§9) |
+| Post (×5) | 2×2×0.120in steel SHS, ~115mm tall, on the floor-anchor sub-plate at X≈250 (outside the tray; trimmed by the plate thickness so deck level and clearances hold) |
+| Foot plate | 165×60×8mm steel plate, bolted with **4× M12×30** into the sub-plate's tapped bosses (§5.2) |
+| Arm — standard (×2) | 2×1×0.120in steel tube reaching X=580mm, the grate inner edge (SF 2.06) |
+| Arm — punch-out (×3) | **4×1×0.120in** steel tube extended to X=880mm under the drum-exit punch-out (SF 1.99) |
+| Positions | Yd 250 / 800 / 1,180 / 1,560 / 2,110 |
 
-The grate simply rests on the cantilever arms — located laterally by butting the
-near/far grate edges, free to lift straight out (no fasteners, no kerb).
-**Demountable for transport:** the grate lifts out before the panel swings; the
-floor-bolted posts stay in place. No through-wall hardware at all.
+The grate rests on the arms, located laterally by butting the near/far grate edges, and lifts
+straight out — no fasteners, no kerb — with **zero tray contact**: the posts stand on bare floor
+outside the tray and the arms cantilever over it. The arm underside (Z89.6) clears the
+floor-level spray bar (top Z67) by ~22mm. The brackets sit outside the panel's transport-swing
+footprint, so the grate lifts out before the panel swings and the floor-bolted posts stay put. No
+through-wall hardware is needed.
+
+**Load path.** Operator load travels grate → arm → post → foot plate → sub-plate → sill and
+cross-members. The longest cantilever is the punch-out arm (605mm); under the US IBC/OSHA 300 lbf
+tip load it needs the 4×1 tube, while the standard 305mm arms stay 2×1 and the post carries SF 2.68
+(§9, `walkway_load.py`). Each leg's ~2.4 kN overturning uplift goes through the foot into the
+continuous sub-plate (§5.2), whose self-drillers spread it across several fixings in the door-end
+sill and steel cross-members, each good for ~5.3 kN in 4mm steel.
+
+### 5.2 Floor Anchoring — Sub-Plate (Strongback)
+
+The five floor-legs do **not** screw straight into the floor. They bolt to one continuous steel **sub-plate** (a strongback) that lies flat on the floor, self-taps down into the door-end sill and the cross-members it spans (WF4a), and carries tapped bosses the leg feet bolt up into (WF4b). This is the project-wide floor-anchoring standard, shared with the IBC frame feet (see [IBC Stacking Report §3.6](ibc-stacking-report.md#36-floor-anchoring-sub-plate-strongback-standard)).
+
+A plate is needed because container cross-members are **not dimensionally standardized**: [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container is flat-bottomed), and [the pitch and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) — [CIMC](https://www.cimc-equilink.com/media/3659.html) uses a ~45mm-flange C-section at ~300mm, but it is not guaranteed. The continuous plate removes the lottery: it runs from the door-end sill (guaranteed bottom-end-rail steel) across the first cross-members, and self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)) fix it down wherever the steel actually is. The map and the standard are drawn on the floor-anchoring sheets:
+
+![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
+
+> **Plate dimensions are container-dependent.** The ~1,900×350×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the sill and cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed steel. The leg positions and their foot bolt pattern do **not** change — only the plate adapts to the box.
+
+### 5.3 Drum-Exit Punch-Out
+
+The operator steps out of the revolving-door light lock at its interior face, where a standard
+300mm walkway would leave only ~20mm of landing before the processing-tray basin. The left
+walkway is therefore **deepened to 600mm over the drum opening** (Yd 800–1,560) — a ~600 × 760mm
+landing centered on the exit, the counterpart of the near-walkway widened section (§3.2). It is
+carried by the 3 middle floor-leg brackets on their extended 4×1 arms (§5.1) and lifts out with the
+rest of the left walkway; no separate sub-frame or edge beam is needed.
+
+**Optical clearance.** The punch-out lies within the film plane's X span, but its deck (Z140) sits
+below the film's bottom edge (Z160), so every pinhole sight line to the film passes above it
+(`generate_line_of_sight.py` — no equipment intersects the cone).
+
+The punch-out is shown on **Sheet 5 (Detail C)** with the rest of the left-walkway floor-leg system:
+
+![TBS-001 Walkway — Sheet 5: Left Walkway Floor-Leg System + Drum-Exit Punch-Out](assets/walkway-sheet5.png)
 
 ### 5.4 Panel Transport Clearance
 
@@ -343,7 +312,8 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 | Panel transport motion | SWING ~56° about the Ø89 pivot |
 | Swing sweep reach (near-walkway zone) | X≈1,395mm |
 | Butt joint / near-far walkway start | X=580mm |
-| Panel / cage bottom edge | Z=130mm (panel floor gap; 10mm below the Z140 grate top) |
+| Drum-cage underside | Z=130mm (10mm below the Z140 grate top) |
+| Panel bottom edge | Z=217mm (panel floor gap) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
@@ -353,7 +323,7 @@ bolted to the floor. As the panel + drum swing ~56° about the pivot, the cage s
 the butt joint into the vacated zone, its **cage underside passing over the
 door-end floor-leg posts** — so no floor-leg post is struck.
 The relevant standing clearance is vertical: the drum-cage underside sits at Z130 —
-15mm over the Z115 posts and 60mm over the Z70 tray rim (the panel bottom rides higher
+15mm over the Z115 posts and well clear of the tray rim (the panel bottom rides higher
 still, at the 217mm floor gap). See hinged-panel Sheet 16.
 
 ---
@@ -382,15 +352,12 @@ Butt joints are used rather than miters for two reasons:
 
 ## 7. Evaporative Cooler Transport Stowage
 
-During transport, the evaporative cooler (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb dry, Hessaire MC18M) is stowed on the
+During transport, the evaporative cooler (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb dry, Hessaire MC18M, 508 × 254 × 711mm) is stowed on the
 near walkway grating — in the widened section, so it clears the panel swing sweep. The cooler sits on a
 12mm plywood base plate that distributes
 load across the grating and prevents the housing from catching in grate openings.
 Two 25mm ratchet straps loop over the cooler and hook to near walkway cantilever
-bracket arms.
-
-The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler
-overhangs 50mm into the processing tray zone. This is acceptable — the tray is drained and empty in transport.
+bracket arms. Its 254mm depth sits within the 500mm-wide deck, so nothing overhangs the tray.
 
 ---
 
@@ -401,10 +368,10 @@ All four walkway sections use the same grating:
 | Parameter | Value |
 |-----------|-------|
 | Type | Molded GRP (fiberglass) grating |
-| Thickness | 1" (25mm) — McNichols MS-S-100 (thinnest molded FRP); deck raised to 140mm to suit |
-| Resin | Vinyl-ester (resists both alkaline developer and acidic fixer splash) |
+| Thickness | 1" (25mm) — McNichols MS-S-100, the thinnest molded FRP made |
+| Resin | Vinyl-ester ([corrosion-resistant](https://www.fibergrate.com/products/molded-gratings/) against the cyanotype chemistry and wash water) |
 | Mesh | ~38×38mm square, molded |
-| Open area | ~40% |
+| Open area | ~70% |
 | Surface finish | Grit top (slip-resistant) |
 
 The four sections' overall sizes, cut features, GRP panel seams, and
@@ -419,23 +386,19 @@ hold-down-clip positions are dimensioned on the **Sheet 10 grate cut-plan**
 |---------|-----------------|------------------|---------|
 | Near (pinhole wall) | 316 SS hold-down clips | Bracket arm top surface | Release clips, lift grating |
 | Far (film plane wall) | 316 SS hold-down clips | Bracket arm top surface | Release clips, lift grating |
-| Right (IBC end) | 316 SS hold-down clips | L-angle bearer horizontal leg | Release clips, lift grating |
+| Right (IBC end) | 316 SS hold-down clips | Rectangle long beams | Release clips, lift grating |
 | Left (cargo door) | Gravity (floor-leg arms) | Floor-leg cantilever arms | Lift straight up — no fasteners |
 
 **Near and far walkways** use 316 SS hold-down clips that clamp the GRP panel
 down onto the bracket arm (a stainless clamp clip — not a TEK screw driven into a
-steel bearing bar, since FRP isn't screwed through). Clips are spaced at every other bracket
-(~914mm centers).
+steel bearing bar, since FRP isn't screwed through). Clips are spaced at 610mm (24in) along the
+bearing edges, plus one at each panel corner (WF5).
 
-**Right walkway** uses the same stainless hold-down clips, but they clamp to
-the horizontal leg of the 1×1×3/16in (25.4×25.4×4.8mm) steel L-angle bearers rather than the bracket
-arms.
+**Right walkway** uses the same stainless hold-down clips, clamped to the 2×1 long beams of the
+cantilever rectangle (§4.1).
 
-**Left walkway** uses gravity retention only. The grate rests on the 5 floor-leg
-cantilever arms (Yd 250/800/1180/1560/2110) and is located laterally by butting the
-near/far grate edges. No fasteners are used because the left walkway must be removed
-quickly for hinged panel transport mode — it lifts straight up and out; the
-floor-bolted posts stay put.
+**Left walkway** uses gravity retention only (§5.1), so it can be removed quickly
+before the hinged panel swings for transport.
 
 ---
 
@@ -470,16 +433,15 @@ so they cannot drift from the geometry.
 <!-- END load:validation -->
 
 **Reading the table.** The grate is far over-capacity (SF ≈ 39 on the 245–300mm span — well below the
-manufacturer's shortest tabulated 12" span). The **wall-cantilever bracket arms were redesigned** to this
-basis: the as-drawn 8×10mm plate arm yielded at ~25 lbf, so the arm is now a **2×1×0.120in tube** (standard,
-SF 2.1) / **3×1×0.120in tube** (widened, SF 1.83). The widened bracket is **deflection-governed** — at the
+manufacturer's shortest tabulated 12" span). The wall-cantilever bracket arms are a **2×1×0.120in tube**
+(standard, SF 2.1) and a **3×1×0.120in tube** (widened, SF 1.83). The widened bracket is **deflection-governed** — at the
 25.4mm depth the spray bar allows, its 500mm reach gives L/112 tip deflection under the worst-case corner point
-load (a rare position; distributed standing deflects far less). The **left-walkway floor-leg** punch-out arm was
-likewise upgraded to a **4×1×0.120in tube** (SF 1.99; the 2×1 was only SF 1.04 at the 605mm reach). Two items
-carry fabrication conditions rather than a clean margin: the **corrugated-rib pull-through** (SF 7) depends on the
+load (a rare position; distributed standing deflects far less). The **left-walkway floor-leg** punch-out arm
+is a **4×1×0.120in tube** (SF 1.99) for its 605mm reach. Two items
+carry fabrication conditions rather than a clean margin: the **corrugated-rib pull-through** (SF 8) depends on the
 ≥30mm corrugation confirmation for bolt grip, and the **floor-leg overturning uplift** (~2.4 kN/leg) is carried
-into the continuous floor-anchor sub-plate (§5.1a), whose self-drillers engage the door-end sill and the
-steel cross-members (~5.3 kN each) rather than the plywood alone.
+into the continuous floor-anchor sub-plate (§5.2), whose self-drillers engage the door-end sill and the
+steel cross-members (~5.3 kN each).
 
 The **right walkway** is a **2×1×0.120in cantilever frame** — a continuous inner beam, two outer-beam
 segments, and two end beams, with an **open bay in the outer rail over the corridor** — picked up at mid-span
@@ -537,8 +499,8 @@ practical fillets for the plate thickness.
 All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame WH/CJ wall bolts) with a
 flat washer each end, a plain nut, and a split-lock washer. The floor-anchor sub-plate's self-drillers
 (WF4a) are driven to seat (no torque spec — thread-forming); each leg foot bolts to the plate's tapped bosses
-(WF4b, M12×30, snug + thread-locker). The grating hold-down clip pitch is fixed in Phase D against
-the McNichols clip datasheet.
+(WF4b, M12×30, snug + thread-locker). Grating hold-down clips sit at 610mm (24in) pitch along the bearing
+edges (WF5).
 
 ### 10.3 Datums & Tolerances
 
@@ -652,7 +614,7 @@ The walkway is a bolted steel structure with GRP grating, so its upkeep is faste
    floor zone clearance requirements.
 10. [Walkway Routing Sections](walkway-routing-sections.md) — Under-walkway
     pipe-routing cross-sections and clearances at each junction.
-11. Floor cross-member structure + non-standardization (§5.1a): [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf)
+11. Floor cross-member structure + non-standardization (§5.2): [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf)
     (intermediate transverse members ≤1,000mm apart, or a flat underside); [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)
     (box/C/Z/I cross-member sections); [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html)
     (C-section SPA-H Corten ~4–4.5mm, ~45mm flange, ~122mm high); [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/)

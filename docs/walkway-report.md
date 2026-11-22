@@ -266,8 +266,9 @@ edge. The 140mm deck height puts these arms clear of the floor-level spray bar.
 
 The grate rests on the arms, located laterally by butting the near/far grate edges, and lifts
 straight out — no fasteners, no kerb — with **zero tray contact**: the posts stand on bare floor
-outside the tray and the arms cantilever over it. The arm underside (Z89.6) clears the
-floor-level spray bar (top Z67) by ~22mm. The brackets sit outside the panel's transport-swing
+outside the tray and the arms cantilever over it. Every arm and right-rectangle beam has its
+underside at Z89.6; across the 1:200 tray profile that clears the traveling spray beam by at
+least 11.5mm and the tray rim by at least 8.6mm, both at the far (high) rim (§9). The brackets sit outside the panel's transport-swing
 footprint, so the grate lifts out before the panel swings and the floor-bolted posts stay put. No
 through-wall hardware is needed.
 
@@ -423,10 +424,12 @@ so they cannot drift from the geometry.
 | Wall bolt tension (M12 8.8) | 3010 N | 60696 N | 20 | root-moment couple, 133 mm lever |
 | Corrugated-rib pull-through | 3010 N | 25334 N | 8 | 1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip |
 | Floor-leg STD arm | 406 N·m | 838 N·m | 2.06 | 2×1×0.120, 305 mm cant. |
-| Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. (redesign; 2×1 was SF 1.04) |
+| Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. |
 | Floor-leg post | 807 N·m | 2158 N·m | 2.68 | 2×2×0.120 SHS |
-| Floor-leg uplift → sub-plate | 2445 N/fixing | 5300 N | 2.17 | leg bolts to the sub-plate (§5.1a); self-drilling TEKs carry the couple into the sill/members, 2 outboard over the 165 mm foot |
+| Floor-leg uplift → sub-plate | 2445 N/fixing | 5300 N | 2.17 | leg bolts to the sub-plate (§5.2); self-drilling TEKs carry the couple into the sill/members, 2 outboard over the 165 mm foot |
 | Combined corner plate | 1612 N | 161856 N | 100 | 10 mm plate, 4× M12; shared with the BR film rail |
+| Soffit clearance — tray rim | rim Z70–81 | soffit Z89.6 | — | min 8.6 mm at the far rim (Yd2280); 19.6 mm at the near rim |
+| Soffit clearance — spray beam | beam top Z67–78 | soffit Z89.6 | — | min 11.5 mm at the far end of travel (Yd2280) |
 | RWK long beam (cross-ref) | person + grate | SF 7.1 | 7.1 | ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section |
 | RWK arm half-lap notch (cross-ref) | 334 N·m | SF 2.03 | 2.03 | ibc_frame_load.arm_notch_check — solid-bar rebalanced split |
 | Arm→upright CJ (IBC-owned) | 395 N·m | SF 20 | 20 | ibc_frame_load.service_loads — drawn on IBC-frame Sheet 5, cross-ref only |
@@ -468,7 +471,7 @@ practical fillets for the plate thickness.
 | WF1 | Standard bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 3/brkt × 11 = 33 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF2 | Widened bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 4/brkt × 5 = 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF3 | Right-walkway wall cleat + combined corner plate → wall | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 20 | ~90 N·m | flat both ends | plain nut + split-lock |
-| WF4a | Floor-anchor sub-plate → sill + cross-members (§5.1a) | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~20) | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
+| WF4a | Floor-anchor sub-plate → sill + cross-members (§5.2) | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~20) | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
 | WF4b | Floor-leg foot plate → sub-plate (tapped boss) | M12×30 into tapped boss | Gr.8.8 zinc | 4/foot × 5 = 20 | snug + locker | split-lock under head | thread-locker (tapped boss) |
 | WF5 | Grating hold-down clip → bracket arm / long beam | M-type FRP grating clip + bolt | 316 SS | 610 mm (24") along bearing edges + corners | snug | — | — |
 | CJ (IBC-owned) | Center-arm end-plate → IBC upright + half-lap hold-down | M12×100 + #14 TEK | Gr.8.8 / 410 SS | cross-ref | — | — | see IBC-frame Sheet 5 |
@@ -526,7 +529,7 @@ tolerances because a fit or a clearance depends on them:
 | Deck coplanarity — grate-bearing tops, all 4 sections | A | ±2 mm | level walking surface |
 | Bracket arm reach (tip X) | B | ±2 mm | grate-edge bearing only |
 | Wall-bolt pattern (±27/±32 X, Z42/Z175) | B | ±0.5 mm | must align reinf-plate + wall holes |
-| Foot-anchor pattern (X +20/+60, ±18 Yd) | A | ±1 mm | self-drillers are forgiving |
+| Foot-anchor pattern (X +20/+60, ±18 Yd) | A | ±1 mm | M12 in Ø13 holes over the sub-plate's tapped bosses |
 | Spray-bar slit position (X2454) | C | ±2 mm | align to the traveling spray bar |
 | Muslin notch / drum-exit punch-out position | B/C | ±3 mm | clearance features |
 | Combined corner-plate seat Z (walkway beam + film rail) | A+C | ±1 mm | shared level interface with the film plane |
@@ -568,7 +571,7 @@ Flat-plate parts with their hole sizes and positions (the bolt patterns are refe
 <!-- BEGIN load:plates -->
 | Plate | Blank (mm) | Thk (mm) | Holes | Positions / PCD | Qty |
 |-------|-----------|----------|-------|-----------------|-----|
-| Foot plate | 165×60 | 8 | 4× Ø5.5 (#14) | X +20/+60 from left edge × Yd ±18 | 5 |
+| Foot plate | 165×60 | 8 | 4× Ø13 (M12) | X +20/+60 from left edge × Yd ±18 | 5 |
 | Reinforcing plate — std | 100×200 | 6 | 3× Ø13 (M12) | ±27 X @ Z42; 0 @ Z175 (triangular) | 11 |
 | Reinforcing plate — widened | 120×200 | 6 | 4× Ø13 (M12) | ±32 X @ Z35 & Z175 (rectangular) | 5 |
 | Bracket vertical leg — std / widened | 100×200 / 120×200 | 8 / 10 | matches reinf plate | same bolt pattern; arm + gusset welded on | 11 / 5 |

@@ -112,10 +112,9 @@ def wall_bracket_check():
          f"2×1×0.120 tube, {k.WALKWAY_W} mm; tip defl {ds:.1f} mm (L/{k.WALKWAY_W/ds:.0f})")
     _row("Wall bracket WIDE arm", f"{mw:.0f} N·m", f"{mcw:.0f} N·m", f"{sfw:.2f}",
          f"3×1×0.120 tube, {k.WALKWAY_NEAR_WIDE_W} mm; deflection-governed, tip L/{k.WALKWAY_NEAR_WIDE_W/dw:.0f}")
-    return ("\n## 2-3. WALL-CANTILEVER BRACKET ARMS (redesigned; arm depth spray-bar-capped at 25.4 mm) ##\n"
+    return ("\n## 2-3. WALL-CANTILEVER BRACKET ARMS (arm depth spray-bar-capped at 25.4 mm) ##\n"
             f"  {ls}: 300 lbf tip -> M {ms:.0f} N·m  cap {mcs:.0f} N·m  SF {sfs:.2f}  |  tip defl {ds:.1f} mm (L/{k.WALKWAY_W/ds:.0f})\n"
-            f"  {lw}: 300 lbf tip -> M {mw:.0f} N·m  cap {mcw:.0f} N·m  SF {sfw:.2f}  |  tip defl {dw:.1f} mm (L/{k.WALKWAY_NEAR_WIDE_W/dw:.0f} — governs the widened bracket)\n"
-            "  (the as-drawn 8×10 plate arm yielded at ~25 lbf; the tube arm is the redesign.)")
+            f"  {lw}: 300 lbf tip -> M {mw:.0f} N·m  cap {mcw:.0f} N·m  SF {sfw:.2f}  |  tip defl {dw:.1f} mm (L/{k.WALKWAY_NEAR_WIDE_W/dw:.0f} — governs the widened bracket)")
 
 
 # ── 4-5. Wall bolt group + corrugated-wall pull-through ──────────────────────
@@ -161,15 +160,15 @@ def floor_leg_check():
     _row("Floor-leg STD arm", f"{ms:.0f} N·m", f"{mcs:.0f} N·m", f"{sfs:.2f}",
          f"2×1×0.120, {l_std:.0f} mm cant.")
     _row("Floor-leg punch-out arm", f"{mw:.0f} N·m", f"{mcw:.0f} N·m", f"{sfw:.2f}",
-         f"4×1×0.120, {l_wide:.0f} mm cant. (redesign; 2×1 was SF 1.04)")
+         f"4×1×0.120, {l_wide:.0f} mm cant.")
     _row("Floor-leg post", f"{m_post:.0f} N·m", f"{zp * FY / 1e3:.0f} N·m", f"{sf_post:.2f}",
          "2×2×0.120 SHS")
     tek_pullout = 5300.0   # #14×3½ 410-SS self-driller, ~5.3 kN pull-out in 4mm steel
     _row("Floor-leg uplift → sub-plate", f"{t_anchor:.0f} N/fixing", f"{tek_pullout:.0f} N", f"{tek_pullout / t_anchor:.2f}",
-         f"leg bolts to the sub-plate (§5.1a); self-drilling TEKs carry the couple into the sill/members, 2 outboard over the {foot_l:.0f} mm foot")
+         f"leg bolts to the sub-plate (§5.2); self-drilling TEKs carry the couple into the sill/members, 2 outboard over the {foot_l:.0f} mm foot")
     return ("\n## 6-9. LEFT-WALKWAY FLOOR-LEG CANTILEVER (arm + post + foot anchors) ##\n"
             f"  STD arm 2×1 {l_std:.0f} mm: M {ms:.0f} N·m cap {mcs:.0f} SF {sfs:.2f}\n"
-            f"  PUNCH-OUT arm 4×1 {l_wide:.0f} mm: M {mw:.0f} N·m cap {mcw:.0f} SF {sfw:.2f}  (redesigned; the 2×1 was SF 1.04)\n"
+            f"  PUNCH-OUT arm 4×1 {l_wide:.0f} mm: M {mw:.0f} N·m cap {mcw:.0f} SF {sfw:.2f}\n"
             f"  post 2×2×0.120: M_base {m_post:.0f} N·m cap {zp * FY / 1e3:.0f} SF {sf_post:.2f}\n"
             f"  floor-leg uplift: ~{t_anchor:.0f} N/fixing — reacted through the foot into the continuous sub-plate, whose self-drilling TEKs engage the sill/cross-members (~{tek_pullout:.0f} N each, SF {tek_pullout / t_anchor:.2f}).")
 
@@ -191,6 +190,27 @@ def corner_plate_check():
 
 
 # ── 11-12. Right cantilever rectangle + arm->upright CJ (cross-referenced) ────
+def soffit_clearance_check():
+    """Arm / beam soffit vs the tray rim and the traveling spray beam over the whole 1:200 tray
+    profile. Every walkway arm and right-rectangle beam shares the Z soffit; the rim and the beam
+    both ride the Yd-sloped floor, so the minimum is at the far (high) rim."""
+    soffit = k.WALKWAY_BRACKET_ARM_Z0
+    yds = [k.PROC_TRAY_YD_NEAR + i for i in range(0, k.PROC_TRAY_D + 1, 10)]
+    rim = {yd: k.tray_rim_top_z(0, yd) for yd in yds}
+    beam = {yd: k.spray_beam_top_z(0, yd) for yd in yds}
+    rim_yd = max(rim, key=rim.get)
+    beam_yd = max(beam, key=beam.get)
+    c_rim, c_beam = soffit - rim[rim_yd], soffit - beam[beam_yd]
+    c_near = soffit - rim[k.PROC_TRAY_YD_NEAR]
+    _row("Soffit clearance — tray rim", f"rim Z{rim[k.PROC_TRAY_YD_NEAR]:.0f}–{rim[rim_yd]:.0f}", f"soffit Z{soffit:.1f}",
+         "—", f"min {c_rim:.1f} mm at the far rim (Yd{rim_yd}); {c_near:.1f} mm at the near rim")
+    _row("Soffit clearance — spray beam", f"beam top Z{beam[k.PROC_TRAY_YD_NEAR]:.0f}–{beam[beam_yd]:.0f}", f"soffit Z{soffit:.1f}",
+         "—", f"min {c_beam:.1f} mm at the far end of travel (Yd{beam_yd})")
+    return ("\n## SOFFIT CLEARANCE over the 1:200 tray profile ##\n"
+            f"  tray rim: min {c_rim:.1f} mm (far rim Yd{rim_yd}), {c_near:.1f} mm at the near rim\n"
+            f"  spray beam: min {c_beam:.1f} mm (Yd{beam_yd})")
+
+
 def cross_refs():
     _row("RWK long beam (cross-ref)", "person + grate", "SF 7.1", "7.1",
          "ibc_frame_load.outer_beam_frame_check — two SS segments (open corridor bay), full section")
@@ -215,7 +235,7 @@ FASTENERS = [
      "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
-    ("WF4a", "Floor-anchor sub-plate → sill + cross-members (§5.1a)", "#14×3½″ self-driller (90822A536)",
+    ("WF4a", "Floor-anchor sub-plate → sill + cross-members (§5.2)", "#14×3½″ self-driller (90822A536)",
      "410 SS", "container-dependent (~20)", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
     ("WF4b", "Floor-leg foot plate → sub-plate (tapped boss)", "M12×30 into tapped boss",
      "Gr.8.8 zinc", "4/foot × 5 = 20", "snug + locker", "split-lock under head", "thread-locker (tapped boss)"),
@@ -301,7 +321,7 @@ def tolerances_md():
         ("Deck coplanarity — grate-bearing tops, all 4 sections", "A", "±2 mm", "level walking surface"),
         ("Bracket arm reach (tip X)", "B", "±2 mm", "grate-edge bearing only"),
         (f"Wall-bolt pattern (±{dx}/±{k.WALKWAY_BRACKET_BOLT_DX_WIDE} X, Z{k.WALKWAY_BRACKET_BOLT_Z_LO}/Z{k.WALKWAY_BRACKET_UPPER_BOLT_Z})", "B", "±0.5 mm", "must align reinf-plate + wall holes"),
-        (f"Foot-anchor pattern (X +{k.LEFT_WK_CANT_FOOT_BOLT_DX[0]}/+{k.LEFT_WK_CANT_FOOT_BOLT_DX[1]}, ±{k.LEFT_WK_CANT_FOOT_BOLT_DY} Yd)", "A", "±1 mm", "self-drillers are forgiving"),
+        (f"Foot-anchor pattern (X +{k.LEFT_WK_CANT_FOOT_BOLT_DX[0]}/+{k.LEFT_WK_CANT_FOOT_BOLT_DX[1]}, ±{k.LEFT_WK_CANT_FOOT_BOLT_DY} Yd)", "A", "±1 mm", "M12 in Ø13 holes over the sub-plate's tapped bosses"),
         (f"Spray-bar slit position (X{int(k.PH_X) if hasattr(k,'PH_X') else 2454})", "C", "±2 mm", "align to the traveling spray bar"),
         ("Muslin notch / drum-exit punch-out position", "B/C", "±3 mm", "clearance features"),
         ("Combined corner-plate seat Z (walkway beam + film rail)", "A+C", "±1 mm", "shared level interface with the film plane"),
@@ -362,7 +382,7 @@ def plate_schedule_md():
     fdy = k.LEFT_WK_CANT_FOOT_BOLT_DY
     fl, fw, ft = k.LEFT_WK_CANT_FOOT
     rows = [
-        ("Foot plate", f"{fl:.0f}×{fw:.0f}", f"{ft:.0f}", "4× Ø5.5 (#14)",
+        ("Foot plate", f"{fl:.0f}×{fw:.0f}", f"{ft:.0f}", "4× Ø13 (M12)",
          f"X +{fdx[0]}/+{fdx[1]} from left edge × Yd ±{fdy}", "5"),
         ("Reinforcing plate — std", f"{k.WALKWAY_REINF_W}×{k.WALKWAY_REINF_H}", f"{k.WALKWAY_REINF_T:.0f}", "3× Ø13 (M12)",
          f"±{dx} X @ Z{zlo}; 0 @ Z{zhi} (triangular)", "11"),
@@ -421,6 +441,7 @@ def full_report():
         wall_bolt_check(),
         floor_leg_check(),
         corner_plate_check(),
+        soffit_clearance_check(),
         cross_refs(),
         # reuse the detailed IBC-frame blocks verbatim (single source):
         arm_notch_check(),

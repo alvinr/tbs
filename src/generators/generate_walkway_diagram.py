@@ -62,6 +62,10 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, FLOOR_PLATE_T, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL
+from tbs_constants import tray_rim_top_z, spray_beam_top_z
+
+_SOFFIT_RIM_MIN = WALKWAY_BRACKET_ARM_Z0 - tray_rim_top_z(0, PROC_TRAY_YD_FAR)
+_SOFFIT_BEAM_MIN = WALKWAY_BRACKET_ARM_Z0 - spray_beam_top_z(0, PROC_TRAY_YD_FAR)
 
 # ── Palette (C_OUT/C_CL/C_DIM/C_STEEL from tbs_constants) ───────────────────────
 C_BOLT  = "#505058"     # bolt/TEK heads + shanks (module default; some sheets re-bind it locally)
@@ -493,7 +497,7 @@ def sheet1():
         f"   Start at X={LXR} (butt joint), clear of the door-end panel swing sweep.",
         f"4. Right: CANTILEVER RECTANGLE \u2014 closed 2\u00d71in-tube frame on 2 arms off the IBC uprights + combined corner plates.",
         f"5. Left: REMOVABLE LIFT-OUT \u2014 5 FLOOR-LEG CANTILEVER brackets on bare floor (X140, outside tray),",
-        f"   arms reach the grate inner edge (X={LXR}); 3 extend to X770 on the drum-exit punch-out. See sheets 5/6.",
+        f"   arms reach the grate inner edge (X={LXR}); 3 extend to X{LEFT_WK_CANT_WIDE_REACH} on the drum-exit punch-out. See sheets 5/6.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"7. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
         f"8. SPRAY BAR SLIT: {SPRAY_BAR_SLIT_W}mm slot at beam center X={int((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2)} in near + far walkway"
@@ -689,7 +693,7 @@ def sheet2():
     #      Vertices: wall/floor (0,0), wall/arm-bottom (0, arm_bot), (70, arm_bot).
 
     brkt_arm_z = BRKT_ARM_H  # top of horizontal arm = grate support (Z115)
-    ARM_DEPTH  = WALKWAY_BRACKET_ARM_H  # 25.4 — arm is a 2×1×0.120 tube (redesign; was an 8mm plate edge)
+    ARM_DEPTH  = WALKWAY_BRACKET_ARM_H  # 25.4 — arm is a 2×1×0.120 tube
     arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm (Z89.6)
     GUSSET_REACH = WALKWAY_GUSSET_REACH  # gusset extends 70mm from wall (< 80mm tray rim position)
 
@@ -1547,9 +1551,9 @@ def sheet4():
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         f"1. NO wall brackets \u2014 panel occupies end wall.",
-        f"2. Inner edge (X={LEFT_WK_R}): carried by FLOOR-LEG CANTILEVER arms (5 brackets; 3 extend to X770 on the punch-out). See sheets 5/6.",
+        f"2. Inner edge (X={LEFT_WK_R}): carried by FLOOR-LEG CANTILEVER arms (5 brackets; 3 extend to X{LEFT_WK_CANT_WIDE_REACH} on the punch-out). See sheets 5/6.",
         f"3. Brackets bolted to BARE FLOOR outboard of the tray (X<{LEFT_WK_L}) \u2014 zero tray/wall contact.",
-        f"4. The arms pass 15mm OVER the floor-level spray bar (Z60); the +50mm walkway raise enables it.",
+        f"4. The arm soffit (Z{LEFT_WK_CANT_ARM_Z0}) clears the spray beam by >={_SOFFIT_BEAM_MIN:.0f}mm and the tray rim by >={_SOFFIT_RIM_MIN:.0f}mm over the sloped tray.",
         f"5. Panel + drum swing {SWING_LOCK_DEG}\u00b0 about the pivot; the cage sweeps ~{SWEEP_OVER}mm past the X={LEFT_WK_R} butt joint (rides Z{PANEL_FLOOR_GAP}, clears the Z115 brackets).",
         f"6. The grate lifts out before the swing; the floor brackets stay bolted (permanent). No kerb.",
     ]
@@ -1661,7 +1665,7 @@ def sheet5():
         "1. 5 brackets bolted to BARE FLOOR (X<170) - zero tray/wall contact.",
         f"2. foot plate + 2×2×0.120 post + 2×1×0.120 arm (Z{int(LEFT_WK_CANT_ARM_Z0)}-115) to grate edge X{int(std)}.",
         f"3. 3 punch-out brackets EXTEND to X{int(wide)} on 4×1×0.120 arms (IBC/OSHA SF 1.99).",
-        "4. arms clear the traveling spray bar (top Z67) by ~22mm; zero tray contact.",
+        f"4. arms clear the traveling spray beam by >={_SOFFIT_BEAM_MIN:.0f}mm and the tray rim by >={_SOFFIT_RIM_MIN:.0f}mm; zero tray contact.",
         f"5. DRUM-EXIT PUNCH-OUT: deck deepened to 600mm over Yd800-1560 — landing at the",
         f"   light-lock exit, on the 3 extended (X{int(wide)}) brackets.",
         "6. grate + punch-out lift out together before panel transport; brackets stay floor-bolted.",
@@ -1837,7 +1841,7 @@ def sheet6():
     notes = [
         "FLOOR-LEG CANTILEVER BRACKET (x5, at Yd 250/800/1180/1560/2110):",
         "1. Bolted to BARE FLOOR outboard of the tray (X<170) — ZERO tray contact, ZERO wall fixings.",
-        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x M12 per foot into the floor-anchor SUB-PLATE's tapped bosses (WF4b); the plate self-taps to the cross-members (WF4a; §5.1a).",
+        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x M12 per foot into the floor-anchor SUB-PLATE's tapped bosses (WF4b); the plate self-taps to the cross-members (WF4a; §5.2).",
         f"3. Arm Z{int(arm_z0)}-{int(grate_bot)} (2×1×0.120, 25.4 deep) carries the grate inner edge (X{int(LEFT_WK_CANT_STD_REACH)}); the 3 punch-out brackets EXTEND to X{int(LEFT_WK_CANT_WIDE_REACH)} on a 4×1×0.120 arm (IBC/OSHA SF 1.99).",
         "4. The arm clears the traveling spray bar (top Z67) by ~22mm — enabled by the raised Z140 deck.",
         "5. The grate lifts out for transport; the brackets stay bolted (permanent). Replaces the former edge-beam-on-wall-seats.",
@@ -1885,7 +1889,7 @@ def sheet7():
     W_BRKT_T    = WALKWAY_WIDE_BRACKET_T        # 10mm plate
     W_BRKT_VERT = WALKWAY_WIDE_BRACKET_H        # 200mm vertical leg
     W_ARM_W     = WALKWAY_NEAR_WIDE_W           # 500mm arm reach
-    W_ARM_DEPTH = WALKWAY_BRACKET_ARM_H         # 25.4 — arm is a 3×1×0.120 tube (redesign; was a 12mm plate edge)
+    W_ARM_DEPTH = WALKWAY_BRACKET_ARM_H         # 25.4 — arm is a 3×1×0.120 tube
     w_arm_bot   = BRKT_ARM_H - W_ARM_DEPTH       # Z89.6
     W_GUSSET    = 70
     W_REINF_W   = WALKWAY_REINF_W_WIDE   # 120

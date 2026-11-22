@@ -504,9 +504,9 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,400<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$2,037<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,419<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$2,036<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | <!-- BEGIN costing:ibc-totes -->$600<!-- END costing:ibc-totes --> | <!-- BEGIN costing:ibc-totes -->$600<!-- END costing:ibc-totes --> |
-| **Total** | **<!-- BEGIN costing:ibc-total-low -->$2,000<!-- END costing:ibc-total-low -->** | **<!-- BEGIN costing:ibc-total-high -->$2,637<!-- END costing:ibc-total-high -->** |
+| **Total** | **<!-- BEGIN costing:ibc-total-low -->$2,019<!-- END costing:ibc-total-low -->** | **<!-- BEGIN costing:ibc-total-high -->$2,636<!-- END costing:ibc-total-high -->** |
 
 ---
 

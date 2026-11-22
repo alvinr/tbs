@@ -13,19 +13,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,911 | $4,398 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,999 | $8,386 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $7,018 | $8,385 |
 | 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,254 | $3,218 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,290 | $3,177 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $788 | $938 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,751** | **~$36,701** |
+| **TOTAL (base build + 50-print run)** | **~$27,828** | **~$36,652** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -244,7 +244,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Door pull handle + misc mounting hardware](https://www.mcmaster.com/3570N12/) (3570N12) | 1 ea | McMaster-Carr | interior | $39 |
 | Personnel-door hinges (heavy-duty, ×3) | 3 ea | Home Depot | interior | $15–$24 |
 | Weatherproof door latch/lock set | 1 ea | Home Depot | interior | $20–$45 |
-| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 3 ft | OnlineMetals (via Zoro) | film | $30–$59 |
+| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 4 ft | McMaster-Carr | film | $52 |
 | [Machine screws — filter housings to ply tee-nuts (1/4-20)](https://www.mcmaster.com/90272A552/) (90272A552) | 8 ea | McMaster-Carr | water | $1 |
 | [1/4" flat washer — filter-housing machine screws](https://www.mcmaster.com/90850A100/) (90850A100) | 8 ea | McMaster-Carr | water | $1 |
 | [Stainless self-drilling (TEK) screw — ACM → 6061 frame](https://www.mcmaster.com/90599A716/) (90599A716) | 30 ea | McMaster-Carr | film | $19 |
@@ -253,7 +253,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/8×3/4in 304 flat-bar axle saddles (skate) — 2 ft bar](https://www.mcmaster.com/8992K794-8992K797/) (8992K794) | 2 2 ft bar | McMaster-Carr | film | $20 |
 | [3/32" sq key stock, 12in bar — U-joint stub keys (×8 cut)](https://www.grainger.com/product/Key-Stock-5UY75) (5UY75) | 1 lot | Grainger | film | $2 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 3 10-pack | Home Depot | water | $56 |
-| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 2 ft | OnlineMetals (via Zoro) | ibc-frame | $20–$39 |
+| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 3 ft | McMaster-Carr | ibc-frame | $39 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 12 ea | McMaster-Carr | ibc-frame | $16 |
 | [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 16 ea | McMaster-Carr | ibc-frame | $14 |
@@ -304,8 +304,8 @@ indicative low–high estimates — get quotes before ordering.
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 20 ea | McMaster-Carr | walkway | $26 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
-| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 8 ft | OnlineMetals (via Zoro) | walkway | $80–$157 |
-| **fasteners-hardware subtotal** | | | | **$2,226–$2,619** |
+| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 9 ft | McMaster-Carr | walkway | $116 |
+| **fasteners-hardware subtotal** | | | | **$2,303–$2,571** |
 
 ### optics
 
@@ -506,8 +506,8 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
+| McMaster-Carr | 88 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,151–$2,159 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
-| McMaster-Carr | 85 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,944–$1,952 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,642–$1,821 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
@@ -527,7 +527,6 @@ indicative low–high estimates — get quotes before ordering.
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
 | MetalsDepot | 2 | steel-structural | $190–$258 |
-| OnlineMetals (via Zoro) | 3 | fasteners-hardware | $130–$255 |
 | Metals Depot | 2 | aluminum, steel-structural | $252 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |

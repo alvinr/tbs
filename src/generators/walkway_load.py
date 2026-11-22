@@ -46,6 +46,8 @@ P_CONC = 300.0 * LBF      # concentrated live load -> 1334 N
 SPACING = float(k.WALKWAY_BRACKET_SPACING)   # 457 mm — bracket tributary width
 
 FY = 250.0                # A36 / A500B mild-steel yield (MPa)
+FY_CORTEN = 345.0         # Corten A (ASTM A606-4) yield (MPa)
+TORQUE_WALL = 90.0        # M12 8.8 wall-bolt torque (N·m), dry
 E = 200000.0              # steel modulus (MPa)
 SF_TARGET = 2.0           # design target on yield (conservative vs code ASD Ω=1.67)
 
@@ -126,19 +128,28 @@ def wall_bolt_check():
     t_up = m_std * 1e3 / lever                       # 1 upper bolt (std triangular pattern)
     t_cap = 0.9 * FUB_88 * AS_M12                     # M12 8.8 tensile (proof) capacity, N
     sf_bolt = t_cap / t_up
-    # Corrugated-rib pull-through: the tension punches the 1.6 mm Corten rib around the M12 washer
-    # (OD ~24 mm).  Punching-shear perimeter × thickness × 0.6·Fu (Corten Fu ~450 MPa, use 350 shear-safe).
-    wall_t, wsh_od, fu_shear = 1.6, 24.0, 0.6 * 350.0
-    cap_pt = 3.14159 * wsh_od * wall_t * fu_shear
-    sf_pt = cap_pt / t_up
+    # With the exterior plate bridging the corrugation, the bolt tension does not punch the sheet:
+    # the plate carries it into the outer crests through its WW4 stitch welds. The crush sleeve
+    # carries the bolt preload across the hollow, bearing on the 1.6 mm sheet.
+    ww4_len = 4 * 50.0                                  # 2 stitches × 50 mm on each of the 2 bridged crests
+    cap_ww4 = _fillet_cap_permm(5) * ww4_len
+    sf_ww4 = cap_ww4 / t_up
+    preload = TORQUE_WALL * 1e3 / (0.2 * 12.0)          # T = K·F·d, K≈0.2 (dry zinc)
+    a_sleeve = 3.14159 / 4 * (k.WALL_SLEEVE_OD ** 2 - k.WALL_SLEEVE_ID ** 2)
+    s_sleeve = preload / a_sleeve
+    sf_sleeve = FY / s_sleeve
+    sf_sheet = FY_CORTEN / s_sleeve
     _row("Wall bolt tension (M12 8.8)", f"{t_up:.0f} N", f"{t_cap:.0f} N", f"{sf_bolt:.0f}",
          f"root-moment couple, {lever:.0f} mm lever")
-    _row("Corrugated-rib pull-through", f"{t_up:.0f} N", f"{cap_pt:.0f} N", f"{sf_pt:.0f}",
-         "1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip")
-    return ("\n## 4-5. WALL BOLT GROUP + CORRUGATED-RIB PULL-THROUGH ##\n"
+    _row("Reinforcing plate → outer crests (WW4)", f"{t_up:.0f} N", f"{cap_ww4:.0f} N", f"{sf_ww4:.0f}",
+         f"5 mm stitch welds, {ww4_len:.0f} mm (2 × 50 mm on each bridged crest)")
+    _row("Crush sleeve under preload", f"{s_sleeve:.0f} MPa", f"{FY:.0f} MPa", f"{sf_sleeve:.2f}",
+         f"Ø{k.WALL_SLEEVE_OD}/Ø{k.WALL_SLEEVE_ID} tube, {preload / 1e3:.1f} kN at {TORQUE_WALL:.0f} N·m; "
+         f"bears on the 1.6 mm sheet at SF {sf_sheet:.2f} (Corten {FY_CORTEN:.0f} MPa)")
+    return ("\n## 4-5. WALL BOLT GROUP + PLATE WELDS + CRUSH SLEEVE ##\n"
             f"  root moment {m_std:.0f} N·m -> upper-bolt tension {t_up:.0f} N (lever {lever:.0f} mm)\n"
-            f"  M12 8.8 tension cap {t_cap:.0f} N  SF {sf_bolt:.0f}   |   1.6 mm-rib pull-through cap {cap_pt:.0f} N  SF {sf_pt:.0f}\n"
-            f"  (pull-through is contingent on the {k.CONTAINER_CORRUGATION_DEPTH} mm corrugation for bolt grip — the parked procurement gate.)")
+            f"  M12 8.8 tension cap {t_cap:.0f} N  SF {sf_bolt:.0f}   |   WW4 plate→crest welds cap {cap_ww4:.0f} N  SF {sf_ww4:.0f}\n"
+            f"  crush sleeve {s_sleeve:.0f} MPa under {preload / 1e3:.1f} kN preload: SF {sf_sleeve:.2f} (sleeve), {sf_sheet:.2f} (sheet bearing)")
 
 
 # ── Wall-bolt length: grip through ONE corrugated sheet ──────────────────────
@@ -259,6 +270,8 @@ FASTENERS = [
      "Gr.8.8 zinc", "4/brkt × 5 = 20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
     ("WF3", "Right-walkway wall cleat + combined corner plate → wall", "M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/)",
      "Gr.8.8 zinc", "20", "~90 N·m", "flat both ends", "plain nut + split-lock"),
+    ("WF6", "Crush sleeve in the corrugation, every wall bolt (WF1–WF3)", f"Ø{k.WALL_SLEEVE_OD}/Ø{k.WALL_SLEEVE_ID} DOM steel tube × {k.WALL_SLEEVE_L} mm, cut to measured depth",
+     "1020 DOM", "73", "—", "—", "—"),
     ("WF4a", "Floor-anchor sub-plate → sill + cross-members (§5.2)", "#14×3½″ self-driller (90822A536)",
      "410 SS", "container-dependent (~20)", "driven to seat (no torque spec)", "bonded washer", "thread-forming (self-locking)"),
     ("WF4b", "Floor-leg foot plate → sub-plate (tapped boss)", "M12×30 into tapped boss",
@@ -313,7 +326,7 @@ def weld_rows():
         ("WW2", "Widened 3×1 arm → 10mm leg (GOVERNING)", "5mm all-round",
          f"root M {P_CONC*k.WALKWAY_NEAR_WIDE_W/1e3:.0f} N·m → SF {sf2:.1f}"),
         ("WW3", "Gusset → leg + gusset → arm", "5mm", "braces the arm root; AWS D1.1 min for 8/10mm plate"),
-        ("WW4", "Reinforcing plate → exterior wall panel", "5mm stitched", "bearing plate; nominal load, AWS D1.1 min"),
+        ("WW4", "Reinforcing plate → outer corrugation crests", "5mm stitched, 2 × 50mm per crest", "carries the wall-bolt tension into the wall (§9)"),
         ("WW5", "Rectangle long ↔ end-beam corners (right walkway)", "5mm", "closed-frame corners; AWS D1.1 min (tube ≤6mm)"),
         ("WW6", "Floor-leg 4×1 arm → 2×2 post (GOVERNING)", "5mm all-round",
          f"root M {m_fl:.0f} N·m → {d6:.0f} N/mm vs {c6:.0f} N/mm, SF {sf6:.1f}"),

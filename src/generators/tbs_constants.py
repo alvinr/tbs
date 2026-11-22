@@ -365,6 +365,13 @@ WALL_T            = 40    # container wall envelope depth (mm) — nominal solid
 # through-bolts pass the long SIDE walls → design for the 30mm worst case and pad with flat washers
 # if the actual container measures shallower. MEASURE the real container to confirm before ordering.
 CONTAINER_CORRUGATION_DEPTH = 30   # mm — side-wall corrugation, conservative max of the 25–30mm ISO range
+CONTAINER_WALL_SHEET_T = 1.6      # mm — side-wall Corten sheet; ONE sheet, folded into the corrugation
+# Wall through-bolts cross the corrugation's hollow between the wall sheet and the exterior plate that
+# bridges it. A steel crush sleeve fills that gap so the bolt preload clamps plate-sleeve-sheet-leg
+# instead of collapsing the corrugation. Cut each sleeve to the MEASURED depth on install.
+WALL_SLEEVE_OD = 25.4   # mm — 1in OD DOM steel tube
+WALL_SLEEVE_ID = 15.9   # mm — 0.188in wall (SF ≥2 on the 90 N·m preload at mild-steel yield); clears the M12 shank
+WALL_SLEEVE_L  = round(CONTAINER_CORRUGATION_DEPTH - CONTAINER_WALL_SHEET_T, 1)   # 28.4
 
 # ── Rotating cargo-door panel — transport mode (rev 10: supersedes the B2 slide) ──
 # The panel + drum + drum-cage assembly ROTATES ~56° about a VERTICAL pivot — the

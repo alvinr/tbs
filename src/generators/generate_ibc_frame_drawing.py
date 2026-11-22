@@ -41,6 +41,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
+from tbs_constants import WALL_SLEEVE_OD, WALL_SLEEVE_ID
 from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
@@ -682,7 +683,7 @@ def sheet1():
         f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, FA2) to the floor-anchor sub-plate (FA1 → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
         f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — two per face for the loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into"
          "   a Simpson-style wall joist"
-        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
+        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall; a steel crush sleeve on each bolt fills the corrugation hollow so the preload cannot collapse it.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage."
@@ -1209,7 +1210,10 @@ def sheet4():
     ax.add_patch(Rectangle((jbx - 9/2, zc - 34), 9, 56, fc=C_SHANK, ec=C_OUT, lw=0.8, zorder=10))                 # shank down through bar + seat
     ax.add_patch(Rectangle((jbx - _hh7/2, zc - 34 - _hl7), _hh7, _hl7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))   # nut UNDER the seat
     for dz in (75, -75):
+        ax.add_patch(Rectangle((wy - 14, zc + dz - 9), 8, 18, fc="#D0D0D8", ec=C_OUT, lw=0.8, zorder=7))   # crush sleeve across the corrugation hollow
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # 2 wall through-bolts: fix HANGER to wall — NOT the bar
+    leader(ax, wy - 10, zc - 82, wy + 40, zc - 108,
+           f"CRUSH SLEEVE ×2\nØ{WALL_SLEEVE_OD}/Ø{WALL_SLEEVE_ID}, cut to\nmeasured depth", fs=6, font=FONT, ha="left")
     draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150mm")
     leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×70 (WH)\nHANGER→wall", fs=6, font=FONT, ha="left")
     leader(ax, jbx, zc + 28, wy + 60, zc + 85, "M12 (BC-W)\nbar→seat, centered", fs=6, font=FONT, ha="left")

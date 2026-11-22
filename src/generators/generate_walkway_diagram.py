@@ -62,7 +62,7 @@ from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_GRATE_CLIP_PITCH, WALKWAY_BRACKET_H, WALKWAY_BRACKET_UPPER_BOLT_Z, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, WALKWAY_REINF_W, WALKWAY_REINF_H, WALKWAY_REINF_T, WALKWAY_REINF_W_WIDE, WALKWAY_REINF_H_WIDE, WALKWAY_GUSSET_REACH, WALKWAY_BRACKET_BOLT_DX, WALKWAY_BRACKET_BOLT_DX_WIDE, WALKWAY_BRACKET_BOLT_Z_LO, WALKWAY_BRACKET_ARM_H, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_L, RAIL_X_R, PH_X, WALKWAY_BRACKET_ARM_Z0, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, RWK_X_L, RWK_X_R, RWK_X_UP, RWK_BEARER_W, RWK_GRATE_SLOT_X, RWK_GRATE_SLOT_YDS, NEAR_GRATE_HOLES, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_FOOT_BOLT_DX, LEFT_WK_CANT_FOOT_BOLT_DY, FLOOR_PLATE_T, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL
-from tbs_constants import tray_rim_top_z, spray_beam_top_z
+from tbs_constants import tray_rim_top_z, spray_beam_top_z, CONTAINER_CORRUGATION_DEPTH, CONTAINER_WALL_SHEET_T, WALL_SLEEVE_OD, WALL_SLEEVE_ID, WALL_SLEEVE_L
 
 _SOFFIT_RIM_MIN = WALKWAY_BRACKET_ARM_Z0 - tray_rim_top_z(0, PROC_TRAY_YD_FAR)
 _SOFFIT_BEAM_MIN = WALKWAY_BRACKET_ARM_Z0 - spray_beam_top_z(0, PROC_TRAY_YD_FAR)
@@ -559,8 +559,8 @@ def sheet2():
     # ── Structural dimensions (mm real) ──────────────────────────────────────
     TRAY_WALL  = 3     # tray wall thickness (SS)
     TRAY_FLOOR = 2     # tray floor thickness (SS)
-    CORR_DEPTH = 38    # corrugation depth (mm)
-    WALL_T     = 1.6   # wall steel thickness (mm)
+    CORR_DEPTH = CONTAINER_CORRUGATION_DEPTH
+    WALL_T     = CONTAINER_WALL_SHEET_T
     BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 65mm (bracket arm top Z)
     BRKT_T     = WALKWAY_BRACKET_T  # 8mm plate thickness
     BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm vertical leg on wall
@@ -599,47 +599,28 @@ def sheet2():
     ax.add_patch(Rectangle(((YD_LO), (-15)), (YD_HI - YD_LO), (15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Corrugated wall (cross-section through rib — HOLLOW profile) ─────────
-    # Matching sheet 3 convention: exterior panel, air gap, rib side walls, rib face
+    # ── Corrugated wall: ONE 1.6mm sheet; the section cuts an inward rib, so the outer
+    # crests the reinforcing plate is welded to lie out of plane. Crush sleeves fill the gap. ──
     wall_z_top = Z_HI
-    ext_panel_yd = -CORR_DEPTH - WALL_T
-
-    # Exterior wall steel panel (full height)
-    ax.add_patch(Rectangle(((ext_panel_yd), (0)),
-                            (WALL_T), (wall_z_top),
-                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
-                            hatch="///"))
-    # Rib side wall (connecting exterior panel to rib face)
-    ax.add_patch(Rectangle(((-CORR_DEPTH), (0)),
-                            (WALL_T), (wall_z_top),
-                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3,
-                            hatch="///"))
-    # Rib interior face (flange — where bracket bolts on)
     ax.add_patch(Rectangle(((-WALL_T), (0)),
                             (WALL_T), (wall_z_top),
-                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
-                            hatch="///"))
-    # Air gap inside the rib (light fill to show it's hollow)
-    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
-                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
+    ax.add_patch(Rectangle(((-CORR_DEPTH), (0)),
+                            (CORR_DEPTH - WALL_T), (wall_z_top),
                             fc="#F0F0F0", ec="none", lw=0, zorder=2))
-    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
-                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
-                            fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
-    ax.text((-CORR_DEPTH / 2), (wall_z_top * 0.45),
-            "AIR\nGAP",
-            ha="center", va="center", fontsize=6, color=C_DIM,
-            **FONT, zorder=15, style="italic")
-    # Rib face (interior surface at Yd=0)
+    ax.plot([(-CORR_DEPTH), (-CORR_DEPTH)], [(0), (wall_z_top)],
+            color=C_DIM, lw=0.6, ls="--", zorder=3)
     ax.plot([(0), (0)], [(0), (wall_z_top)],
             color=C_OUT, lw=2.0, zorder=4)
-    ax.text((-CORR_DEPTH / 2), (wall_z_top - 8),
-            "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
-            ha="center", va="top", fontsize=5.5, color=C_DIM,
-            fontweight="bold", **FONT, zorder=15)
+    leader(ax, (-WALL_T / 2), (wall_z_top - 12), (-CORR_DEPTH - 45), (wall_z_top - 12),
+           f"CORRUGATED WALL — ONE {CONTAINER_WALL_SHEET_T}mm\nCORTEN SHEET (OUTER CRESTS\nOUT OF PLANE)",
+           color=C_DIM, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, (-CORR_DEPTH / 2), (WALKWAY_BRACKET_UPPER_BOLT_Z + WALL_SLEEVE_OD / 2), (-CORR_DEPTH - 45), (wall_z_top - 45),
+           f"CRUSH SLEEVE Ø{WALL_SLEEVE_OD}/Ø{WALL_SLEEVE_ID}\n×{WALL_SLEEVE_L}mm — CUT TO\nMEASURED DEPTH",
+           color=C_DIM, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Reinforcing plate (bonded to exterior wall face) ─────────────────────
-    reinf_yd = ext_panel_yd - REINF_T
+    # ── Reinforcing plate (welded across the outer crests) ───────────────────
+    reinf_yd = -CORR_DEPTH - REINF_T
     ax.add_patch(Rectangle(((reinf_yd), (0)),
                             (REINF_T), (REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
@@ -750,6 +731,10 @@ def sheet2():
         ax.add_patch(Rectangle(((reinf_yd), (bz - shank_hw)),
                                 (BRKT_T - reinf_yd), (shank_hw * 2),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
+        # Crush sleeve across the corrugation gap
+        ax.add_patch(Rectangle(((-CORR_DEPTH), (bz - WALL_SLEEVE_OD / 2)),
+                                (CORR_DEPTH - WALL_T), (WALL_SLEEVE_OD),
+                                fc="#D0D0D8", ec=C_OUT, lw=0.8, zorder=9))
         # Hex head on exterior side (left of reinforcing plate)
         ax.add_patch(Rectangle(((reinf_yd - BOLT_HEAD), (bz - BOLT_R)),
                                 (BOLT_HEAD), (BOLT_D),
@@ -933,13 +918,13 @@ def sheet2():
         f"2. Cantilever brackets: {BRKT_T}mm plate (vert leg +",
         f"   gusset) + 2×1×0.120 tube arm, bolted to wall",
         f"   ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
-        f"3. Rib is HOLLOW — bolt bridges the air gap.",
-        f"   Path: head \u2192 reinf plate \u2192 ext panel",
-        f"   \u2192 air gap \u2192 rib face \u2192 bracket",
-         "   \u2192 nut.",
-        f"4. Reinforcing plate welded to exterior panel",
-        f"   face. Bearing surface for bolt head + ",
-         "   washer.",
+        f"3. Wall is ONE {CONTAINER_WALL_SHEET_T}mm corrugated sheet. Path: head",
+        f"   \u2192 reinf plate \u2192 crush sleeve (\u00d8{WALL_SLEEVE_OD}/",
+        f"   \u00d8{WALL_SLEEVE_ID} \u00d7 {WALL_SLEEVE_L}, cut to measured depth)",
+         "   \u2192 wall sheet \u2192 bracket \u2192 nut.",
+        f"4. Reinforcing plate stitch-welded across the",
+        f"   outer crests (WW4). Bearing surface for",
+         "   bolt head + washer.",
         f"5. Gusset reach stops before tray rim at",
         f"   {PROC_TRAY_YD_NEAR}mm.",
         f"6. NO legs, NO beam — entire tray floor clear",
@@ -1878,8 +1863,8 @@ def sheet7():
     # ── Structural dimensions ────────────────────────────────────────────────
     TRAY_WALL  = 3
     TRAY_FLOOR = 2
-    CORR_DEPTH = 38
-    WALL_T     = 1.6
+    CORR_DEPTH = CONTAINER_CORRUGATION_DEPTH
+    WALL_T     = CONTAINER_WALL_SHEET_T
     BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T   # 65mm
     BRKT_T     = WALKWAY_BRACKET_T              # 8mm (standard, for reference)
     BRKT_VERT  = WALKWAY_BRACKET_H              # 150mm (standard, for reference)
@@ -1925,38 +1910,27 @@ def sheet7():
     ax.add_patch(Rectangle(((YD_LO), (-15)), (YD_HI - YD_LO), (15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Corrugated wall ──────────────────────────────────────────────────────
+    # ── Corrugated wall: ONE 1.6mm sheet; the section cuts an inward rib, so the outer
+    # crests the reinforcing plate is welded to lie out of plane. Crush sleeves fill the gap. ──
     wall_z_top = Z_HI
-    ext_panel_yd = -CORR_DEPTH - WALL_T
-
-    ax.add_patch(Rectangle(((ext_panel_yd), (0)),
-                            (WALL_T), (wall_z_top),
-                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
-    ax.add_patch(Rectangle(((-CORR_DEPTH), (0)),
-                            (WALL_T), (wall_z_top),
-                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3, hatch="///"))
     ax.add_patch(Rectangle(((-WALL_T), (0)),
                             (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
-    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
-                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH), (0)),
+                            (CORR_DEPTH - WALL_T), (wall_z_top),
                             fc="#F0F0F0", ec="none", lw=0, zorder=2))
-    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
-                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
-                            fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
-    ax.text((-CORR_DEPTH / 2), (wall_z_top * 0.45),
-            "AIR\nGAP",
-            ha="center", va="center", fontsize=6, color=C_DIM,
-            **FONT, zorder=15, style="italic")
+    ax.plot([(-CORR_DEPTH), (-CORR_DEPTH)], [(0), (wall_z_top)],
+            color=C_DIM, lw=0.6, ls="--", zorder=3)
     ax.plot([(0), (0)], [(0), (wall_z_top)],
             color=C_OUT, lw=2.0, zorder=4)
-    ax.text((-CORR_DEPTH / 2), (wall_z_top - 8),
-            "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
-            ha="center", va="top", fontsize=5.5, color=C_DIM,
-            fontweight="bold", **FONT, zorder=15)
+    leader(ax, (-WALL_T / 2), (wall_z_top - 12), (-CORR_DEPTH - 45), (wall_z_top - 12),
+           f"CORRUGATED WALL — ONE {CONTAINER_WALL_SHEET_T}mm\nCORTEN SHEET (OUTER CRESTS\nOUT OF PLANE)",
+           color=C_DIM, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, (-CORR_DEPTH / 2), (WALKWAY_BRACKET_UPPER_BOLT_Z + WALL_SLEEVE_OD / 2), (-CORR_DEPTH - 45), (wall_z_top - 45),
+           f"CRUSH SLEEVE Ø{WALL_SLEEVE_OD}/Ø{WALL_SLEEVE_ID}\n×{WALL_SLEEVE_L}mm — CUT TO\nMEASURED DEPTH",
+           color=C_DIM, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Reinforcing plate ────────────────────────────────────────────────────
-    reinf_yd = ext_panel_yd - REINF_T
+    reinf_yd = -CORR_DEPTH - REINF_T
     ax.add_patch(Rectangle(((reinf_yd), (0)),
                             (REINF_T), (W_REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
@@ -2036,6 +2010,10 @@ def sheet7():
         ax.add_patch(Rectangle(((reinf_yd), (bz - shank_hw)),
                                 (W_BRKT_T - reinf_yd), (shank_hw * 2),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
+        # Crush sleeve across the corrugation gap
+        ax.add_patch(Rectangle(((-CORR_DEPTH), (bz - WALL_SLEEVE_OD / 2)),
+                                (CORR_DEPTH - WALL_T), (WALL_SLEEVE_OD),
+                                fc="#D0D0D8", ec=C_OUT, lw=0.8, zorder=9))
         ax.add_patch(Rectangle(((reinf_yd - BOLT_HEAD), (bz - BOLT_R)),
                                 (BOLT_HEAD), (BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))

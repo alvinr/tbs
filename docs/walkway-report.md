@@ -93,7 +93,10 @@ inner face of a corrugation, and a 6mm exterior reinforcing plate (100×200mm), 
 the corrugation on the outside, gives the bolt heads a bearing face. Each bolt therefore passes
 through the leg, the wall sheet and the ~30mm corrugation depth to the plate: a 44mm grip (46mm
 on the widened bracket), which the M12×70 covers with a flat washer each end, a split-lock and
-the nut, with 6–8mm protruding (§9). The two lower bolts straddle the gusset at ±27mm X; the
+the nut, with 6–8mm protruding (§9). A steel **crush sleeve** (1in OD × 0.188in wall DOM tube,
+WF6) on each bolt fills the corrugation hollow between the sheet and the plate, so the 90 N·m
+preload clamps plate, sleeve, sheet and leg instead of collapsing the corrugation. Each sleeve
+is cut to the hollow measured on the purchased container (~28.4mm at the assumed 30mm depth). The two lower bolts straddle the gusset at ±27mm X; the
 upper bolt sits just above the arm on the gusset centerline. See View B.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") nominal centers. Neither ISO 668 nor a US standard fixes the corrugation pitch, so the bracket stations and the reinforcing-plate width are confirmed against the purchased container's wall profile before fabrication.
@@ -431,7 +434,8 @@ so they cannot drift from the geometry.
 | Wall bracket STD arm | 400 N·m | 838 N·m | 2.09 | 2×1×0.120 tube, 300 mm; tip defl 1.4 mm (L/213) |
 | Wall bracket WIDE arm | 667 N·m | 1222 N·m | 1.83 | 3×1×0.120 tube, 500 mm; deflection-governed, tip L/112 |
 | Wall bolt tension (M12 8.8) | 3010 N | 60696 N | 20 | root-moment couple, 133 mm lever |
-| Corrugated-rib pull-through | 3010 N | 25334 N | 8 | 1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip |
+| Reinforcing plate → outer crests (WW4) | 3010 N | 203616 N | 68 | 5 mm stitch welds, 200 mm (2 × 50 mm on each bridged crest) |
+| Crush sleeve under preload | 122 MPa | 250 MPa | 2.05 | Ø25.4/Ø15.9 tube, 37.5 kN at 90 N·m; bears on the 1.6 mm sheet at SF 2.83 (Corten 345 MPa) |
 | Wall-bolt length (M12×70) | needs 68 mm | 70 mm | — | grip 44 mm std / 46 mm widened = 6 plate + 30 corrugation (one 1.6 mm sheet) + 8/10 leg; protrudes 5.7–7.7 mm past the nut |
 | Floor-leg STD arm | 406 N·m | 838 N·m | 2.06 | 2×1×0.120, 305 mm cant. |
 | Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. |
@@ -450,9 +454,11 @@ manufacturer's shortest tabulated 12" span). The wall-cantilever bracket arms ar
 (standard, SF 2.1) and a **3×1×0.120in tube** (widened, SF 1.83). The widened bracket is **deflection-governed** — at the
 25.4mm depth the spray bar allows, its 500mm reach gives L/112 tip deflection under the worst-case corner point
 load (a rare position; distributed standing deflects far less). The **left-walkway floor-leg** punch-out arm
-is a **4×1×0.120in tube** (SF 1.99) for its 605mm reach. Two items
-carry fabrication conditions rather than a clean margin: the **corrugated-rib pull-through** (SF 8) depends on the
-≥30mm corrugation confirmation for bolt grip, and the **floor-leg overturning uplift** (~2.4 kN/leg) is carried
+is a **4×1×0.120in tube** (SF 1.99) for its 605mm reach. The wall-bolt tension
+does not punch the 1.6mm sheet: the exterior plate carries it into the outer crests through its WW4 stitch welds
+(SF 68), and the crush sleeve carries the bolt preload across the corrugation hollow (SF 2.05; the sheet bears on it
+at SF 2.83). Two items carry fabrication conditions rather than a clean margin: the wall-bolt grip and sleeve length
+depend on the corrugation depth measured on the purchased container, and the **floor-leg overturning uplift** (~2.4 kN/leg) is carried
 into the continuous floor-anchor sub-plate (§5.2), whose self-drillers engage the door-end sill and the
 steel cross-members (~5.3 kN each).
 
@@ -481,6 +487,7 @@ practical fillets for the plate thickness.
 | WF1 | Standard bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 3/brkt × 11 = 33 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF2 | Widened bracket → wall rib | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 4/brkt × 5 = 20 | ~90 N·m | flat both ends | plain nut + split-lock |
 | WF3 | Right-walkway wall cleat + combined corner plate → wall | M12×70 hex, [91280A732](https://www.mcmaster.com/91280A732/) | Gr.8.8 zinc | 20 | ~90 N·m | flat both ends | plain nut + split-lock |
+| WF6 | Crush sleeve in the corrugation, every wall bolt (WF1–WF3) | Ø25.4/Ø15.9 DOM steel tube × 28.4 mm, cut to measured depth | 1020 DOM | 73 | — | — | — |
 | WF4a | Floor-anchor sub-plate → sill + cross-members (§5.2) | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~20) | driven to seat (no torque spec) | bonded washer | thread-forming (self-locking) |
 | WF4b | Floor-leg foot plate → sub-plate (tapped boss) | M12×30 into tapped boss | Gr.8.8 zinc | 4/foot × 5 = 20 | snug + locker | split-lock under head | thread-locker (tapped boss) |
 | WF5 | Grating hold-down clip → bracket arm / long beam | M-type FRP grating clip + bolt | 316 SS | 610 mm (24") along bearing edges + corners | snug | — | — |
@@ -495,7 +502,7 @@ practical fillets for the plate thickness.
 | WW1 | Std bracket 2×1 arm → 8mm leg (GOVERNING) | 5mm all-round | root M 400 N·m → 310 N/mm vs 1018 N/mm, SF 3.3 |
 | WW2 | Widened 3×1 arm → 10mm leg (GOVERNING) | 5mm all-round | root M 667 N·m → SF 3.0 |
 | WW3 | Gusset → leg + gusset → arm | 5mm | braces the arm root; AWS D1.1 min for 8/10mm plate |
-| WW4 | Reinforcing plate → exterior wall panel | 5mm stitched | bearing plate; nominal load, AWS D1.1 min |
+| WW4 | Reinforcing plate → outer corrugation crests | 5mm stitched, 2 × 50mm per crest | carries the wall-bolt tension into the wall (§9) |
 | WW5 | Rectangle long ↔ end-beam corners (right walkway) | 5mm | closed-frame corners; AWS D1.1 min (tube ≤6mm) |
 | WW6 | Floor-leg 4×1 arm → 2×2 post (GOVERNING) | 5mm all-round | root M 807 N·m → 313 N/mm vs 1018 N/mm, SF 3.3 |
 | WW7 | Floor-leg post → foot plate (GOVERNING) | 5mm all-round | base M 807 N·m → SF 3.3; also carries the 1334 N vertical in shear |

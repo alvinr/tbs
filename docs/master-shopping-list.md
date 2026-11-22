@@ -14,18 +14,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,877 | $4,335 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,979 | $8,346 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,999 | $8,386 |
 | 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,250 | $1,730 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,174 | $3,060 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,254 | $3,218 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $788 | $938 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,617** | **~$36,440** |
+| **TOTAL (base build + 50-print run)** | **~$27,717** | **~$36,638** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -251,6 +251,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/8×3/4in 304 flat-bar axle saddles (skate) — 2 ft bar](https://www.mcmaster.com/8992K794-8992K797/) (8992K794) | 2 2 ft bar | McMaster-Carr | film | $20 |
 | [3/32" sq key stock, 12in bar — U-joint stub keys (×8 cut)](https://www.grainger.com/product/Key-Stock-5UY75) (5UY75) | 1 lot | Grainger | film | $2 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 3 10-pack | Home Depot | water | $56 |
+| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 2 ft | OnlineMetals (via Zoro) | ibc-frame | $20–$39 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 12 ea | McMaster-Carr | ibc-frame | $16 |
 | [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 16 ea | McMaster-Carr | ibc-frame | $14 |
@@ -301,7 +302,8 @@ indicative low–high estimates — get quotes before ordering.
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 20 ea | McMaster-Carr | walkway | $26 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
-| **fasteners-hardware subtotal** | | | | **$2,092–$2,360** |
+| [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://zoro.com/onlinemetals-1-od-x-0188-wall-x-063-id-carbon-steel-round-tube-a513-type-5-dom-7777/i/G507153909) | 8 ft | OnlineMetals (via Zoro) | walkway | $80–$157 |
+| **fasteners-hardware subtotal** | | | | **$2,192–$2,556** |
 
 ### optics
 
@@ -527,6 +529,7 @@ indicative low–high estimates — get quotes before ordering.
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Waytek Wire | 9 | electrical-distribution, electrical-power | $197 |
+| OnlineMetals (via Zoro) | 2 | fasteners-hardware | $100–$196 |
 | LED Profiles | 1 | electrical-distribution | $189 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |

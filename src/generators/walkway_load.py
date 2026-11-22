@@ -141,6 +141,30 @@ def wall_bolt_check():
             f"  (pull-through is contingent on the {k.CONTAINER_CORRUGATION_DEPTH} mm corrugation for bolt grip — the parked procurement gate.)")
 
 
+# ── Wall-bolt length: grip through ONE corrugated sheet ──────────────────────
+M12_WASHER_T, M12_SPLIT_T, M12_NUT_M, M12_PITCH = 2.5, 2.5, 10.8, 1.75   # ISO 7089 / DIN 127 / ISO 4032
+WALL_BOLT_L = 70
+
+
+def wall_bolt_grip_check():
+    """Grip = exterior reinforcing plate + the corrugation depth (the single 1.6 mm wall sheet lies
+    inside it, the bolt bridging the trough) + the bracket leg. Length must also take a flat washer
+    each end, the split-lock, the nut and ≥2 pitches of protrusion."""
+    out = []
+    for label, leg in (("std", k.WALKWAY_BRACKET_T), ("widened", k.WALKWAY_WIDE_BRACKET_T)):
+        grip = k.WALKWAY_REINF_T + k.CONTAINER_CORRUGATION_DEPTH + leg
+        need = grip + 2 * M12_WASHER_T + M12_SPLIT_T + M12_NUT_M + 2 * M12_PITCH
+        out.append((label, leg, grip, need, WALL_BOLT_L - (grip + 2 * M12_WASHER_T + M12_SPLIT_T + M12_NUT_M)))
+    worst = max(out, key=lambda r: r[3])
+    _row("Wall-bolt length (M12×70)", f"needs {worst[3]:.0f} mm", f"{WALL_BOLT_L} mm", "—",
+         f"grip {out[0][2]:.0f} mm std / {out[1][2]:.0f} mm widened = {k.WALKWAY_REINF_T} plate + "
+         f"{k.CONTAINER_CORRUGATION_DEPTH} corrugation (one 1.6 mm sheet) + {out[0][1]}/{out[1][1]} leg; "
+         f"protrudes {out[1][4]:.1f}–{out[0][4]:.1f} mm past the nut")
+    return ("\n## WALL-BOLT LENGTH (single corrugated sheet) ##\n" + "\n".join(
+        f"  {lab}: grip {g:.0f} mm -> needs {n:.1f} mm of M12×{WALL_BOLT_L}; protrusion {pr:.1f} mm"
+        for lab, _, g, n, pr in out))
+
+
 # ── 6-9. Left-walkway FLOOR-LEG cantilever (arm + post + foot anchors) ────────
 def floor_leg_check():
     arm_x0 = k.LEFT_WK_CANT_LEG_X + k.LEFT_WK_CANT_POST / 2
@@ -439,6 +463,7 @@ def full_report():
         grate_check(),
         wall_bracket_check(),
         wall_bolt_check(),
+        wall_bolt_grip_check(),
         floor_leg_check(),
         corner_plate_check(),
         soffit_clearance_check(),

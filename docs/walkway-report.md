@@ -47,11 +47,19 @@ tray's watertight seal.
 | Deck height (floor to grate top) | 140mm (sets the arm underside at Z89.6, clear of the floor-level spray bar) |
 | Grating | 1" (25mm) molded GRP, vinyl-ester, grit top (§8) |
 | Bracket arm height | 115mm above finished floor |
-| Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
-| Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
+| Bracket spacing (near/far) | 457mm (18") — one bracket per corrugation rib |
+| Container rib spacing | 457mm (18") nominal — not set by ISO; measured on the purchased container |
 | Near walkway widened section | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm -->mm at X≈<!-- BEGIN fact:walkway_near_wide_x_l_mm -->1,165<!-- END fact:walkway_near_wide_x_l_mm -->–<!-- BEGIN fact:walkway_near_wide_x_r_mm -->3,193<!-- END fact:walkway_near_wide_x_r_mm -->mm (5 widened brackets) |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
+
+**Width.** The 300mm standard width follows the AS 1657 minimum (Australian). US guidance is wider:
+an [OSHA interpretation](https://www.osha.gov/laws-regs/standardinterpretations/1995-05-26-0) accepts
+18in (457mm) for a walkway used for maintenance and equipment access, and stair-served walkways
+follow the 22in [stair width](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.25).
+The 300mm width is kept for now. Widening to 457mm would cover more of the open tray and lengthen
+every wall-bracket arm (the 500mm widened arm already needs the 3×1 tube at SF 1.83), so it would
+mean re-sizing the brackets and re-checking tray access.
 
 The grating is cut as nine pieces from two molded GRP stock panels (2× 36″×120″). The cut plan below takes each piece outline from the walkway 3D model and nests them; the near and far decks each carry one seam at the 10 ft panel length, landed over a support bracket.
 
@@ -79,14 +87,16 @@ Each bracket is a welded assembly — an 8mm steel plate (vertical mounting leg 
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
-**Attachment:** 3× M12 through-bolts per bracket, triangular pattern, sandwiching
-the full wall: reinforcing plate (6mm) → exterior panel (1.6mm Corten) → hollow rib
-(1.6mm) → bracket leg (8mm) → nut. The two lower bolts straddle the gusset at ±27mm X;
-the upper bolt sits just above the arm on the gusset centerline. Each bolt bridges the
-air gap inside the hollow rib; a welded 6mm reinforcing plate (100×200mm) gives the
-heads a bearing face. See View B.
+**Attachment:** 3× M12×70 through-bolts per bracket, in a triangular pattern. The container
+side wall is a single 1.6mm corrugated Corten sheet. The bracket leg (8mm) bolts against the
+inner face of a corrugation, and a 6mm exterior reinforcing plate (100×200mm), welded across
+the corrugation on the outside, gives the bolt heads a bearing face. Each bolt therefore passes
+through the leg, the wall sheet and the ~30mm corrugation depth to the plate: a 44mm grip (46mm
+on the widened bracket), which the M12×70 covers with a flat washer each end, a split-lock and
+the nut, with 6–8mm protruding (§9). The two lower bolts straddle the gusset at ±27mm X; the
+upper bolt sits just above the arm on the gusset centerline. See View B.
 
-**Spacing:** Brackets mount at every container rib — 457mm (18") centers.
+**Spacing:** Brackets mount at every container rib — 457mm (18") nominal centers. Neither ISO 668 nor a US standard fixes the corrugation pitch, so the bracket stations and the reinforcing-plate width are confirmed against the purchased container's wall profile before fabrication.
 
 ### 3.2 Near Walkway Widened Section
 
@@ -422,6 +432,7 @@ so they cannot drift from the geometry.
 | Wall bracket WIDE arm | 667 N·m | 1222 N·m | 1.83 | 3×1×0.120 tube, 500 mm; deflection-governed, tip L/112 |
 | Wall bolt tension (M12 8.8) | 3010 N | 60696 N | 20 | root-moment couple, 133 mm lever |
 | Corrugated-rib pull-through | 3010 N | 25334 N | 8 | 1.6 mm rib punch over M12 washer; needs ≥30 mm corrugation for grip |
+| Wall-bolt length (M12×70) | needs 68 mm | 70 mm | — | grip 44 mm std / 46 mm widened = 6 plate + 30 corrugation (one 1.6 mm sheet) + 8/10 leg; protrudes 5.7–7.7 mm past the nut |
 | Floor-leg STD arm | 406 N·m | 838 N·m | 2.06 | 2×1×0.120, 305 mm cant. |
 | Floor-leg punch-out arm | 807 N·m | 1605 N·m | 1.99 | 4×1×0.120, 605 mm cant. |
 | Floor-leg post | 807 N·m | 2158 N·m | 2.68 | 2×2×0.120 SHS |
@@ -599,24 +610,25 @@ The walkway is a bolted steel structure with GRP grating, so its upkeep is faste
 ## 13. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
-   Container rib spacing 457mm (18").
+   Sets external dimensions and ratings only; the 457mm (18") rib spacing is a nominal value to be measured on the purchased container.
 2. [Fibergrate — Molded Grating load/engineering data](https://www.fibergrate.com/products/molded-gratings/) — molded FRP grating load tables + chemical-resistance guide (vinyl-ester resin selection)
 3. [AS 1657-2018](https://www.standards.org.au/standards-catalogue/sa-snz/building/sf-013/as--1657-colon-2018) — Fixed platforms, walkways, stairways and ladders: Design,
-   construction and installation. 300mm minimum clear width for walkways.
-4. [Shurflo 2088 Series datasheet](https://www.shurflo.com/products/2088-series) — Pump dimensions for manifold access clearance.
-5. [Equipment Layout Report](equipment-layout-report.md) — Component positions
+   construction and installation (Australian). 300mm minimum clear width for walkways.
+4. [OSHA interpretation letter, 1995-05-26](https://www.osha.gov/laws-regs/standardinterpretations/1995-05-26-0) and [OSHA 29 CFR 1910.25](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.25) — US guidance on walkway width (18in for maintenance access; 22in for stairs).
+5. [Shurflo 2088 Series datasheet](https://www.shurflo.com/products/2088-series) — Pump dimensions for manifold access clearance.
+6. [Equipment Layout Report](equipment-layout-report.md) — Component positions
    and access requirements.
-6. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) — Tray
+7. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) — Tray
    dimensions, rim height, spray bar slit requirements.
-7. [Hinged Panel Report](hinged-panel-report.md) — Panel swing sweep, transport
+8. [Hinged Panel Report](hinged-panel-report.md) — Panel swing sweep, transport
    swing, floor gap.
-8. [Light Trap Selection Report](light-trap-selection.md) — Panel and drum
+9. [Light Trap Selection Report](light-trap-selection.md) — Panel and drum
    dimensions at cargo door end.
-9. [IBC Stacking Report](ibc-stacking-report.md) — IBC stack dimensions and
+10. [IBC Stacking Report](ibc-stacking-report.md) — IBC stack dimensions and
    floor zone clearance requirements.
-10. [Walkway Routing Sections](walkway-routing-sections.md) — Under-walkway
+11. [Walkway Routing Sections](walkway-routing-sections.md) — Under-walkway
     pipe-routing cross-sections and clearances at each junction.
-11. Floor cross-member structure + non-standardization (§5.2): [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf)
+12. Floor cross-member structure + non-standardization (§5.2): [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf)
     (intermediate transverse members ≤1,000mm apart, or a flat underside); [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf)
     (box/C/Z/I cross-member sections); [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html)
     (C-section SPA-H Corten ~4–4.5mm, ~45mm flange, ~122mm high); [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/)

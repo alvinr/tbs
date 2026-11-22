@@ -398,6 +398,9 @@ LT_STAY_PLATE_HW = 75   # anchor plate half-width (mm) → 150×150 A36 plate (s
 LT_STAY_PLATE_T  = 12   # anchor plate thickness (mm)
 LT_STAY_BOLT_OFF = 45   # M16 through-bolt offset from plate center (mm) → 90 square pattern (30mm edge dist kept)
 LT_STAY_BOLT_D   = 16   # M16 through-bolt (mm)
+LT_STAY_BOLT_L   = 90   # M16×90 — grip = 2 plates + sheet + crush sleeve; extra length absorbs corrugation-depth variation
+LT_STAY_SLEEVE_OD = 34.9   # mm — 1-3/8in OD DOM steel tube (crush sleeve in the corrugation hollow)
+LT_STAY_SLEEVE_ID = 22.2   # mm — 1/4in wall (SF ≥2 on the M16 preload at mild-steel yield); clears the M16 shank
 # Panel-side receiver: a welded steel eye lug on the swinging frame's left 2×2×0.120 RHS stile
 # — the turnbuckle jaw clevis-pins to it (the mate of the wall anchor above). Shared by the 3D
 # frame_hooks() and hingepanel Sheet 17.

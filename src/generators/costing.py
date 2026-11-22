@@ -244,8 +244,9 @@ SWINGPIVOT = [
     LineItem("Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets", 70, 95, 120, "2026-08-28: Ø220×20 plates + 12× M12 anchors + 3 welded hub brackets (previously uncosted); local fab / McMaster — Sheet 10"),
     LineItem("Thrust ball bearing, 51118 (Ø90 bore, single-direction)", 80, 80, 80, "Bearings Direct $80.03 firm; SF>50 on the 3.24 kN axial"),
     LineItem("iglide J flange bushings, Ø90 bore (×2)", 261, 261, 261, "igus JFM-9095-100 $130.53 ea, ships in days (replaced the $211/ea 3-mo-lead GGB DU)"),
-    LineItem("Drum support cage, 1.5×1.5×0.120in steel SHS", 70, 95, 120, "Local fab"),
+    LineItem("Drum support cage, 2×2×0.120in steel SHS", 70, 95, 120, "Local fab"),
     LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 105, 120, "5/8\" turnbuckle (JETBGV58X6) + eye rods + fab plates"),
+    LineItem("Stay-anchor crush sleeves, 1-3/8in OD × 1/4in DOM tube (1 ft → 8 sleeves)", 20, 30, 40, "2026-11-22: one per M16 stay-anchor wall bolt, cut to the measured corrugation hollow; SKU pending"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
     # §8.4 fixed door frame
     LineItem("Fixed door frame — 50×20×3 RHS members (×3)", 90, 105, 120, "Metal Supermarkets — reuses the IBC retaining-bar section; lighter (frame no longer weight-bearing, only seal + latch load)"),
@@ -1209,7 +1210,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "rich": {"chem": 2735, "total": 3040, "per_print": 61}, # 2026-10-22: 9.19 m² derived. Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     # 2026-10-22: chem tiers rescaled to the 9.19 m2 (99 sqft) active plane (now derived from IMAGE_AREA_M2) -> grand total -$20/$30/$60.
     # 2026-10-27: +$12/$16/$20 — beam-penetration EPDM foam light-seals (ll-beam-notch-seal, 4 notches).
-    "grand_total": (27668, 32232, 45292), # 2026-11-22d: crush-sleeve tube firmed (McMaster 7767T62, 2× 8 ft). 2026-11-22c: M12×75 firmed.2026-11-22b: +$30/$47/$65 — film crush sleeves + M12×75. 2026-11-22: +$100/$149/$198 — wall-bolt crush sleeves (walkway + IBC hangers). 2026-11-21c: −$100 blackout poly + tape removed. 2026-11-21b: −$113 film-plane edge seal removed. 2026-11-21: drum-exit GRP grating dropped. 2026-11-20d: walkway angle firm + plywood brackets from it. 2026-11-20c: +$20/$30/$40 — drain-pump switches S-05/S-03. 2026-11-20b:
+    "grand_total": (27688, 32262, 45332), # 2026-11-22e: +$20/$30/$40 — stay-anchor M16 crush sleeves. 2026-11-22d: crush-sleeve tube firmed (McMaster 7767T62, 2× 8 ft). 2026-11-22c: M12×75 firmed.2026-11-22b: +$30/$47/$65 — film crush sleeves + M12×75. 2026-11-22: +$100/$149/$198 — wall-bolt crush sleeves (walkway + IBC hangers). 2026-11-21c: −$100 blackout poly + tape removed. 2026-11-21b: −$113 film-plane edge seal removed. 2026-11-21: drum-exit GRP grating dropped. 2026-11-20d: walkway angle firm + plywood brackets from it. 2026-11-20c: +$20/$30/$40 — drain-pump switches S-05/S-03. 2026-11-20b:
     # +$18/$32/$45 — X-port camlock dust caps. 2026-11-20: −$210/−$490/+$5,700 — §9 Licenses & permits computed from its lines (permits; CDL in
     # High only, baseline is commercial hire), was a fixed $220/$790/$1,620. 2026-11-19c: −$8/$14/$20 — IBC-2 float switch dropped. 2026-11-19b:
     # +$19 — flex-jumper SS clamps 2→3 10-packs. 2026-11-19: +$9 — flex jumpers on both ends of the Blue equalization tie (barbs 8→10).
@@ -1288,7 +1289,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     # 40×40×3→×5. Was (2818, 3363, 3902); before that (2761, 3223, 3681). Earlier 2026-08-24: metal-cap / lap-joint / edge-channel / drum-brush /
     # stile batch — added Al caps (est $400–700), rim-angle (est $45–90), SS rivets, DP8010, Al edge channels, handle stile; caps HDPE→Al, wiper
     # felt→brush. Al-plate/rim-angle/DP8010/edge/stile/brush/holder prices are ESTIMATES (firm at the Aug-2026 re-price). Was (2046, 2280, 2516)
-    "swingpivot": (1250, 1490, 1730), # 2026-08-28: +$70/$95/$120 pivot mount plates + anchor bolts + 3 hinge brackets (hingepanel-bp, previously uncosted). 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
+    "swingpivot": (1270, 1520, 1770), # 2026-11-22: +$20/$30/$40 — stay-anchor crush sleeves. 2026-08-28: +$70/$95/$120 pivot mount plates + anchor bolts + 3 hinge brackets (hingepanel-bp, previously uncosted). 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1195, 1282, 1368), # 2026-11-06b: apron draw latches = 8 installed (2 top + 2 bottom per strip), bought as ONE 10-pack = $9.85 total (10-pack price). 2026-11-06:
     # −$83 apron latch 1619A74 cam ($122) → 1590A13 draw latch. 2026-11-06: −$83/$83/$83 apron latch 1619A74 cam ($122) → 1590A13 draw latch.
     # 2026-11-05b: +$74/$62/$50 apron latch → reuse 1619A74 (4× $30.57 firm, handle INSIDE; was est $48–72 allen-key — 2D Sheet 16 + 3D

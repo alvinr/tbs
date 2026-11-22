@@ -22,13 +22,13 @@
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $788 | $848 | $938 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $3,156 | $3,667 | $4,175 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,290 | $2,722 | $3,177 |
-| **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,250 | $1,490 | $1,730 |
+| **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,270 | $1,520 | $1,770 |
 | **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,195 | $1,282 | $1,368 |
 | **6d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension)** | $268 | $275 | $280 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,230 | $1,680 | $3,040 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits (per-deployment permits; High adds CDL)** | $10 | $300 | $7,320 |
-| **TOTAL (excl. own transport, lens)** | **$27,668** | **$32,232** | **$45,292** |
+| **TOTAL (excl. own transport, lens)** | **$27,688** | **$32,262** | **$45,332** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
@@ -279,9 +279,9 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying
 | Drum support cage, 1.5×1.5×0.120in steel SHS | $261 | $261 | $261 | Local fab |
 | Top + bottom wall stays + 4-bolt anchor plates | $70 | $95 | $120 | turnbuckles + rods + plates |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $90 | $105 | $120 | Local fab / McMaster |
-| Fixed door frame — 50×20×3 RHS members (×3) | $80 | $105 | $130 | Metal Supermarkets |
+| Fixed door frame — 50×20×3 RHS members (×3) | $20 | $30 | $40 | Metal Supermarkets |
 | Fixed door frame — top/bottom seal lips (3mm steel ~110×4m) | $128.5 | $128.5 | $128.5 | seal paths #3–#4 |
-| Fixed door frame — welding/fabrication + wall attachment | $90 | $105 | $120 | Local fab |
+| Fixed door frame — welding/fabrication + wall attachment | $80 | $105 | $130 | Local fab |
 | **Panel swing pivot + door frame total** | **$938.5** | **$1,208.5** | **$1,478.5** | |
 <!-- END costing:swingpivot -->
 
@@ -478,13 +478,13 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $788 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $3,156 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,290 |
-| Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,250 |
+| Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,270 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,195 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $268 |
 | Cyanotype chemistry + substrate (50 prints) | $1,230 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$27,308** |
+| **Scenario A total** | **~$27,328** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -501,14 +501,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $848 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $3,667 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,722 |
-| Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,490 |
+| Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,520 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,282 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $275 |
 | Cyanotype chemistry + substrate (50 prints) | $1,680 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$33,032** |
+| **Scenario B total (excl. CDL)** | **~$33,062** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -516,11 +516,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,132 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,162 |
 | CDL Class A training + medical + DMV | $6,570 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$123,702–$153,702** |
+| **Scenario C total** | **~$123,732–$153,732** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

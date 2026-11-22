@@ -2854,7 +2854,8 @@ def sheet17():
     from tbs_constants import (LT_STAY_PLATE_HW, LT_STAY_PLATE_T, LT_STAY_BOLT_OFF,
                                LT_STAY_BOLT_D, LT_STAY_LUG_T, LT_STAY_LUG_PROJ,
                                LT_STAY_LUG_H, LT_STAY_LUG_HOLE, LT_STAY_LUG_EDGE,
-                               LT_STAY_Z, PANEL_FLOOR_GAP, BRACE_Z_TOP)
+                               LT_STAY_Z, PANEL_FLOOR_GAP, BRACE_Z_TOP, LT_STAY_BOLT_L,
+                               LT_STAY_SLEEVE_OD, LT_STAY_SLEEVE_ID, WALL_SLEEVE_L)
     fig, ax = plt.subplots(figsize=(27, 8.5))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
@@ -2981,7 +2982,9 @@ def sheet17():
         f"1. Two stays (top Z{LT_STAY_Z[1]}, bottom Z{LT_STAY_Z[0]} AFF — located in Detail D), each a couple: swing-stile lug ↔ M16 turnbuckle ↔ near-wall anchor.",
         f"2. Turnbuckle: 5/8in jaw-eye galvanized (JETBGV58X6), 2 sets — the jaw pins to the panel lug, the eye to the wall anchor.",
         f"3. Panel lug (Detail B): {LT_STAY_LUG_T}mm steel eye plate, Ø{LT_STAY_LUG_HOLE} pin hole, 6mm fillet-welded all-round to the left 2×2×0.120in RHS stile.",
-        f"4. Wall anchor (Detail C): 2× {2*LT_STAY_PLATE_HW}×{2*LT_STAY_PLATE_HW}×{LT_STAY_PLATE_T}mm A36 plate pair, 4× M16 through the near wall @ {2*LT_STAY_BOLT_OFF}mm gauge, welded eye.",
+        f"4. Wall anchor (Detail C): 2× {2*LT_STAY_PLATE_HW}×{2*LT_STAY_PLATE_HW}×{LT_STAY_PLATE_T}mm A36 plate pair, 4× M16×{LT_STAY_BOLT_L} Gr.8.8 through the near wall @ {2*LT_STAY_BOLT_OFF}mm gauge, welded eye.",
+        f"   Each bolt carries a CRUSH SLEEVE (Ø{LT_STAY_SLEEVE_OD}×Ø{LT_STAY_SLEEVE_ID} DOM, L={WALL_SLEEVE_L}mm, cut to the measured",
+        "   corrugation hollow) so the 225 N·m preload cannot fold the single wall sheet.",
         "5. ENGAGE the stays only after the panel is swung + latched at the transport angle; RELEASE both before swinging back.",
     ], 15, -56, spacing=8, fs=6, title_fs=7.0, color=C_OUT, title_color=C_OUT, width=400, wrap=150, border_color=C_DIM, font=FONT)
 

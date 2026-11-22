@@ -222,7 +222,7 @@ The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_widt
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,907<!-- END costing:film-total -->**
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,911<!-- END costing:film-total -->**
 *Excludes fasteners and fabrication labor.*
 
 ### 7.3 Local SoCal Metal Sourcing

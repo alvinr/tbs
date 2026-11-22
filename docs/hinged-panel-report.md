@@ -103,33 +103,54 @@ below is first-principles from the geometry constants (reproducible via
 is slightly lower than the whole-panel figure carried in the
 [Weight Distribution Report §3.2](weight-distribution-report.md).
 
+<!-- BEGIN movable:table -->
 | Group | Component | Construction | kg |
 |-------|-----------|-------------|---:|
-| **A · Skins + frame** | Fan B mount band | 18mm ply, 0.47m × 0.99m, 2 faces | 10.2 |
-| | HDPE corner skins | 1/8" HDPE (near above band + far) | 12.3 |
-| | Corner Al stiffener grid | 1×1×1/8 6061 angle | 2.8 |
-| | Center RHS frame | 2×2×0.120in steel SHS, 11.1m | 49.2 |
-| | HDPE center skins | 1/8" HDPE, Ø800 aperture deducted | 11.4 |
-| | **A subtotal** | | **85.9** |
-| **B · Housing** | HDPE shell + steel flange/hub | Ø800×3/16", two 80° openings | 21.8 |
-| **C · Drum** | HDPE C-shell (1/8") + 8mm Al caps + Ø75 shafts + 2× SKF 6215 + stiffeners + pull handle | Ø764 | 35.9 |
-| **D · Bay** | B2 punch-out bay walls | 1/8" HDPE, 4-wall tube 0.89m deep | 20.8 |
-| **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
-| **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
+| **A · Skins + frame** | Fan ply band (18mm) | Fan B corner, 0.473m × 1.01m, 2 faces | 10.3 |
+|  | HDPE corner skins (1/8") | near above band + far, 2 faces | 12.3 |
+|  | Corner Al stiffener grid | 1×1×1/8 6061 angle, 6.88m | 2.8 |
+|  | Center RHS frame | 2×2×0.120in SHS, 11.1m total | 50.8 |
+|  | HDPE center skins (1/8") | 2×1/8" HDPE, Ø800 aperture deducted | 12.2 |
+| | **A subtotal** | | **88.4** |
+| **B · Housing** | HDPE housing shell | Ø800×3/16", two 80° openings | 12.5 |
+|  | Steel flange/hub inserts | bolt inserts, isolation | 6.0 |
+| | **B subtotal** | | **18.5** |
+| **C · Drum** | HDPE C-shell | Ø764×1/8", one 80° opening | 10.6 |
+|  | Al end caps (2) | Ø755×8mm 6061-T6 (bolted hubs) | 19.3 |
+|  | Rim-angle arcs (2) | 25×25×3 rolled R378, 6061-T6 Al, 280° arc | 1.4 |
+|  | Steel stub shafts (2) | Ø75×75 | 5.2 |
+|  | SKF 6215 bearings (2) | sealed deep-groove | 2.6 |
+|  | HDPE edge stiffeners (2) | ~0.30 kg/m | 1.1 |
+|  | Grab rail + misc | interior pull rail, fasteners | 4.0 |
+| | **C subtotal** | | **44.3** |
+| **D · Bay** | Punch-out bay walls | 1/8" HDPE, 6.37m² (0.89m deep) | 19.3 |
+| **E · Cage** | Cage posts + rails + top axle beam | 2×2×0.120in steel SHS, 16.9m | 77.2 |
+|  | Bottom axle beam | 50×40×3 RHS, 0.96m | 3.8 |
+|  | Bearing mount plates (2) | Ø240×12 steel | 8.5 |
+| | **E subtotal** | | **89.5** |
+| **F · Seals** | Perimeter EPDM gasket | 20mm, 9.0m | 0.5 |
+|  | Housing-surround EPDM ring | 20mm, Ø800 | 0.1 |
+|  | Drum wipers + felt/brush | top/bottom + opening edges | 2.0 |
+| | **F subtotal** | | **2.6** |
 | **G · Latches** | Cam latches (2) | ~0.5 kg each | 1.0 |
-| **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
-| | **MOVABLE TOTAL (carried-rotating)** | | **≈197** |
+| **H · Pivot (rotating)** | Thrust + journal bearings | carry leaf at pivot | 8.0 |
+|  | Pivot collar / hub | clamps to leaf | 5.0 |
+| | **H subtotal** | | **13.0** |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈277** |
 | | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
 
-**By material:** steel 103 kg (52%), HDPE 79 kg (40%), aluminum 3 kg (1.4%),
-plywood 10 kg (5%, Fan B band only), EPDM/other 3 kg. All light-lock plastic — skins,
-drum, bay, housing — is one weld-compatible HDPE.
+**By material:** steel 193 kg (70%), HDPE 68 kg (25%), plywood 10 kg (4%), aluminum 3 kg (1%), EPDM/other 3 kg (1%).
 
-**Findings.** The largest single item is the **steel center RHS frame (49 kg)** — the
-structural spine carrying the drum. Because the swing axis is **vertical**, this mass
-produces **no gravity overturning torque** at any swing angle; it matters for the
-thrust-bearing/pivot-post sizing, for handling during assembly (still beyond a
-two-person lift — an engine crane or gantry hoist is required), and for total
+**Pivot loads.** The movable mass sits 1.16m from the swing axis (mass-weighted plan centroid), so it puts **3.1 kN·m** on the pivot post against the 3.6 kN·m the post is sized for, and **277 kg** on the thrust bearing against its 330 kg design load (§5.5).
+<!-- END movable:table -->
+
+All light-lock plastic — skins, drum, bay, housing — is one weld-compatible HDPE.
+
+**Findings.** The two steel frames dominate: the **drum support cage** (group E) and the
+**center RHS frame** that carries it are together about two-thirds of the movable mass.
+Because the swing axis is **vertical**, this mass produces **no gravity overturning torque**
+about the swing — it sets the pivot-post moment and thrust load above, the handling during
+assembly (beyond a two-person lift — an engine crane or gantry hoist is required), and total
 container payload.
 
 ### 2.5 Skin Material
@@ -203,7 +224,7 @@ interface stays single-sourced.
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
 | Clear walking height | 1,883mm clear interior |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
-| Weight | housing ~22 kg + rotating drum ~36 kg = **~58 kg** (§2.4) |
+| Weight | §2.4 groups B (fixed housing) + C (rotating drum) |
 
 ### 3.2 Bearings
 
@@ -306,7 +327,7 @@ the Ø89 pivot, clearing the door plane so the operator can step out. (The panel
 
 A grab/pull handle is **screwed to the panel's steel frame on the interior face** — the
 **left jamb of the drum aperture**, at waist height — so a single operator can grip it and
-swing the heavy (~200 kg movable, §2.4) panel open from **inside** the container,
+swing the heavy panel (movable mass, §2.4) open from **inside** the container,
 both for the emergency-egress swing (§4.2) and to initiate the transport rotation (§5). It
 bolts to the steel frame, not the HDPE skin. This is the **panel-swing** handle — distinct
 from the drum-rotation pull handle inside the revolving light lock (owned by the

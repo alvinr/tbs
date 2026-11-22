@@ -849,10 +849,6 @@ PARTS: list[Part] = [
          "film", 30, "ea", 6.46 / 10, 6.46 / 10, "McMaster-Carr", part_no="90599A716",
          url="https://www.mcmaster.com/90599A716/",
          spec="Secures the ACM backing to the 6061 perimeter frame leg, driven ABOVE the frame's inside fillet ridge (Sheet 17 View C). Stainless self-drilling — drills the 3.2mm 6061 leg + the 3mm Dibond, no pilot. ~300mm pitch along the top + 2 side edges (~8.6 m; bottom edge = walkway/swing clearance) → ~29 + spares. Stainless for the wet cyanotype splash zone; the head sits on the frame BACK (not the image face). McMaster 90599A716 $6.46/pack of 10 (sourced 2026-09-06) → 3 packs = 30."),
-    Part("poly-sheeting-film", "4-mil black poly sheeting", "tools-safety",
-         "film", 1, "roll", 40.12, 40.12, "Home Depot", part_no="51982", url="https://www.homedepot.com/p/332820356", spec="Film-Gard 10 ft × 100 ft × 4-mil black poly (film-plane blackout). 4-mil is fully opaque for a light-seal (opacity is the black pigment, not the gauge) — 6-mil was over-spec for a non-structural curtain."),
-    Part("gorilla-tape", '2" black Gorilla Tape', "adhesives-finishes",
-         "film", 6, "roll", 9.94, 9.94, "Home Depot", "Amazon", part_no="106718", url="https://www.homedepot.com/p/316372144", spec='Gorilla 30 yd × 1.88" black tape'),
     # — Wall-Seat Saddles (ICP-11; ×4 = BL-near + TL-near [left, thumb-screw drop-in] + TR-near + TR-far
     #   [right, permanent bolt]. The 2 BR ends are the walkway COMBINED plates; the 2 far-LEFT ends land on
     #   the pivot-post floor/roof mount plates → NO saddle. Count firmed 6→4 (2026-08-19).) —

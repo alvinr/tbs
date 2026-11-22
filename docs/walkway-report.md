@@ -184,7 +184,7 @@ The right walkway is supported by cantilevers off the IBC frame: the IBC stack f
 
 A rectangular frame sits directly under the deck,
 its 1in dimension the depth so the full-width 1½in spray beam — which rides the Yd-sloped tray floor —
-clears the soffit (Z89.6) by **11.6mm** at every travel position. A shallow section is less stiff on its
+clears the soffit by **11.6mm** at every travel position. A shallow section is less stiff on its
 own, so the rectangle is **picked up at mid-span by two center cantilever arms** (§4.2); with them the
 deflection stays well under 1mm. The frame:
 
@@ -192,7 +192,7 @@ deflection stays well under 1mm. The frame:
   (the deck's outer edge lands on the shared combined corner plate). The **inner** beam
   is continuous; the **outer** beam is run in **two simply‑supported segments** (combined corner
   plate → cantilever arm) with an **open bay over the IBC corridor** (see below).
-- **Two short end beams** (≈245mm) close the near and far ends, joining the beams into a
+- **Two short end beams** close the near and far ends, joining the beams into a
   torsionally stiff frame (no free bearer ends to droop).
 
 **Open corridor bay in the outer beam.** The four under‑walkway ribbon pipes cross the outer
@@ -256,7 +256,7 @@ and the cantilever arms — is detailed in the [Walkway Routing Sections](walkwa
 
 The left walkway at the cargo door end cannot use wall-cantilevered
 brackets because the hinged light-trap panel occupies the end wall and swings ~56°
-about the pivot for transport (its sweep passes over this zone). Its **inner edge
+about the pivot for transport. Its **inner edge
 sits over the processing tray**, so it cannot be supported from below
 either. The left walkway is therefore a removable lift-out grate carried by **5
 floor-leg cantilever brackets** — each a post standing on the bare floor *outside*
@@ -270,7 +270,7 @@ edge. The 140mm deck height puts these arms clear of the floor-level spray bar.
 
 | Component | Specification |
 |-----------|--------------|
-| Post (×5) | 2×2×0.120in steel SHS, ~115mm tall, on the floor-anchor sub-plate at X≈250 (outside the tray; trimmed by the plate thickness so deck level and clearances hold) |
+| Post (×5) | 2×2×0.120in steel SHS, ~115mm tall, on the floor-anchor sub-plate (outside the tray; trimmed by the plate thickness so deck level and clearances hold) |
 | Foot plate | 165×60×8mm steel plate, bolted with **4× M12×30** into the sub-plate's tapped bosses (§5.2) |
 | Arm — standard (×2) | 2×1×0.120in steel tube reaching X=580mm, the grate inner edge (SF 2.06) |
 | Arm — punch-out (×3) | **4×1×0.120in** steel tube extended to X=880mm under the drum-exit punch-out (SF 1.99) |
@@ -279,7 +279,7 @@ edge. The 140mm deck height puts these arms clear of the floor-level spray bar.
 The grate rests on the arms, located laterally by butting the near/far grate edges, and lifts
 straight out — no fasteners, no kerb — with **zero tray contact**: the posts stand on bare floor
 outside the tray and the arms cantilever over it. Every arm and right-rectangle beam has its
-underside at Z89.6; across the 1:200 tray profile that clears the traveling spray beam by at
+underside; across the 1:200 tray profile that clears the traveling spray beam by at
 least 11.5mm and the tray rim by at least 8.6mm, both at the far (high) rim (§9). The brackets sit outside the panel's transport-swing
 footprint, so the grate lifts out before the panel swings and the floor-bolted posts stay put. No
 through-wall hardware is needed.
@@ -310,8 +310,8 @@ landing centered on the exit, the counterpart of the near-walkway widened sectio
 carried by the 3 middle floor-leg brackets on their extended 4×1 arms (§5.1) and lifts out with the
 rest of the left walkway; no separate sub-frame or edge beam is needed.
 
-**Optical clearance.** The punch-out lies within the film plane's X span, but its deck (Z140) sits
-below the film's bottom edge (Z160), so every pinhole sight line to the film passes above it
+**Optical clearance.** The punch-out lies within the film plane's X span, but its deck sits
+below the film's bottom edge, so every pinhole sight line to the film passes above it
 (`generate_line_of_sight.py` — no equipment intersects the cone).
 
 The punch-out is shown on **Sheet 5 (Detail C)** with the rest of the left-walkway floor-leg system:
@@ -516,10 +516,9 @@ practical fillets for the plate thickness.
 **WW5/WW8/WW9** on Sheet 3 (right cantilever rectangle). **WF1–WF5** land on the same sheets; **WF5**
 (grating clips) is dimensioned on the Sheet 10 cut-plan.
 
-All M12 Gr.8.8 wall bolts torque to **~90 N·m** (dry, matching the IBC-frame WH/CJ wall bolts) with a
+All M12 Gr.8.8 wall bolts torque to **~90 N·m** with a
 flat washer each end, a plain nut, and a split-lock washer. The floor-anchor sub-plate's self-drillers
-(WF4a) are driven to seat (no torque spec — thread-forming); each leg foot bolts to the plate's tapped bosses
-(WF4b, M12×30, snug + thread-locker). Grating hold-down clips sit at 610mm (24in) pitch along the bearing
+(WF4a) are driven to seat; each leg foot bolts to the plate's tapped bosses. Grating hold-down clips sit at 610mm (24in) pitch along the bearing
 edges (WF5).
 
 ### 10.3 Datums & Tolerances

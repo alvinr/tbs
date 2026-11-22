@@ -58,6 +58,6 @@ The clamps are inexpensive off-the-shelf consumables: a clamp whose spring has w
 
 ## 6. Source References
 
-1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Parent report: four-corner independent actuation mechanism that the clamp system attaches to.
+1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Parent report: the rigid four-corner film plane (slide-and-clamp corners moved in coordinated pairs) that the clamp system attaches to.
 2. [Harbor Freight 69289 — 3½″ nylon spring clamp](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) — inert fiberglass spring clamp with swivel pads (the muslin clamp).
 3. [HDPE sheet — TAP Plastics](https://www.tapplastics.com/product/plastics/cut_to_size_plastic/hdpe_sheet/155) — inert, chemistry-safe L-channel filler material.

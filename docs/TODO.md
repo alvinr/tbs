@@ -34,7 +34,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - [x] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T426 (2026-11-23; running gap widened to 16mm)
   - [~] Blue Sea → Powerwerx: MRBF 5187+5191 and busbar 2312 done (2026-11-23); inverter ANL fuse + disconnect still to source
   - [x] Inverter Service Center → Powerwerx BPC121531104R $175.95 (2026-11-23)
-  - [ ] buyDeutsch (DT06-2S pairs) + AutomationDirect (4 AWG ground wire) → Waytek Wire — $79
+  - [~] buyDeutsch → Waytek Amphenol AT set done (2026-11-23, $42.07); AutomationDirect 4 AWG ground wire → Waytek still to source
   - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30
   - [ ] McNichols (grating clips) + Fibergrate (edge-seal kit) → American Grating, with the grating — $70–110
   - [ ] Harfington (2× uxcell e-stop) → Amazon (same uxcell part) — $26

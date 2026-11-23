@@ -15,7 +15,7 @@ All prices USD.
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,989 | $8,355 |
-| 6. Electrical — power, circuits, wiring | $3,507 | $3,612 |
+| 6. Electrical — power, circuits, wiring | $3,522 | $3,627 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,290 | $3,177 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,053** | **~$36,482** |
+| **TOTAL (base build + 50-print run)** | **~$28,068** | **~$36,497** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -175,9 +175,9 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [PV cable 10 AWG + MC4 connectors (11 ft extension pair)](https://signaturesolar.com/11ft-10awg-pv-wire-extension-black-red/) (1534034) | 1 lot | Signature Solar | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
-| [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
+| [Sealed wet-zone connectors — 6× Amphenol AT (Deutsch DT-compatible) 2-pin pairs (pump circuits)](https://www.waytekwire.com/product/amphenol-sine-systems-at04-2p-blu-2-way-connector) (AT04-2P-BLU / AT06-2S-BLU) | 1 lot | Waytek Wire | electrical | $42 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,152–$2,182** |
+| **electrical-distribution subtotal** | | | | **$2,167–$2,197** |
 
 ### electrical-power
 
@@ -543,8 +543,8 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
+| Waytek Wire | 10 | electrical-distribution, electrical-power | $239 |
 | Bearings Direct | 2 | bearings-motion | $201 |
-| Waytek Wire | 9 | electrical-distribution, electrical-power | $197 |
 | LED Profiles | 1 | electrical-distribution | $189 |
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |
 | Eagle Aluminum | 1 | aluminum | $152 |
@@ -565,7 +565,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Fresh Water Systems | 1 | water-equipment | $32 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | SK Grimes | 1 | optics | $10–$30 |
-| buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | misterworker | 1 | plumbing-fittings | $14 |

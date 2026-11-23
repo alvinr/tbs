@@ -171,7 +171,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 | Rockland Liquid Light | 141 oz (double coat) | **7,050 oz** | 221 × 32oz OR contact Rockland for bulk |
 | Developer (Dektol) | 11.1 L | 555 L | As above |
 | Fixer | 15 L working | 750 L | As above |
-| Substrate (muslin) | ~99 sq ft | ~4,950 sq ft | ~360 yd of 60" muslin |
+| Substrate (muslin) | ~<!-- BEGIN costing:csl-muslin-sqft-print -->91<!-- END costing:csl-muslin-sqft-print --> sq ft | ~<!-- BEGIN costing:csl-muslin-sqft -->5,232<!-- END costing:csl-muslin-sqft --> sq ft (incl. 15% waste) | ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd of 60" muslin |
 
 ### Shopping list
 
@@ -214,12 +214,12 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 30 bottles × 25 L = 750 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware, lean) | 11.4 kg AmFe | 3.8 kg | — | 0.4 kg | — | — | ~399 yd muslin | ~<!-- BEGIN costing:run-lean-chem -->$930<!-- END costing:run-lean-chem --> | **~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean -->** |
-| Gum bichromate | — | — | — | 8.4 kg | 26.3 kg | — | ~399 yd muslin | ~$1,292 | **~$1,592** |
-| Van Dyke Brown | 5.3 kg FAC | — | 2.1 kg | — | — | 18.65 kg | ~399 yd muslin | ~$5,890 | **~$6,190** |
-| Salt print | — | — | 6.3 kg | — | — | 37.3 kg | ~399 yd muslin | ~$16,472 | **~$16,772** |
+| Cyanotype (Ware, lean) | 11.4 kg AmFe | 3.8 kg | — | 0.4 kg | — | — | ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd muslin | ~<!-- BEGIN costing:run-lean-chem -->$930<!-- END costing:run-lean-chem --> | **~<!-- BEGIN costing:run-lean -->$1,230<!-- END costing:run-lean -->** |
+| Gum bichromate | — | — | — | 8.4 kg | 26.3 kg | — | ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd muslin | ~$1,292 | **~$1,592** |
+| Van Dyke Brown | 5.3 kg FAC | — | 2.1 kg | — | — | 18.65 kg | ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd muslin | ~$5,890 | **~$6,190** |
+| Salt print | — | — | 6.3 kg | — | — | 37.3 kg | ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd muslin | ~$16,472 | **~$16,772** |
 | Ilford RC paper | — | — | — | — | — | — | 18 rolls paper | ~$1,141 (chem) | **~$14,641** |
-| Liquid Light | — | — | — | — | — | — | ~399 yd + emulsion | ~$880 (chem) | **~$13,520** |
+| Liquid Light | — | — | — | — | — | — | ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd + emulsion | ~$880 (chem) | **~$13,520** |
 
 ---
 

@@ -26,6 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
+- **Inverter DC protection specified.** The Circuit-E inverter feed now uses the same hardware as the MPPT charge fuse and the main battery switch: a Blue Sea 5005 ANL fuse block with a 40A ANL fuse, and a Blue Sea 6006 on/off switch ($79.64, was a $40 estimate). Grand total +$40.
 - **Spray center-feed tee corrected; filter brackets to Amazon.** The center feed was listed as a ½in barbed tee, which cannot barb into the 3/4in manifold; it is now DripDepot 14683, a 3/4 × 3/4 × 1/2in reducing tee ($1.52). The bracket-only Pentair 244718 is no longer listed, so the three Big Blue brackets are now FM25W-KIT bracket kits from Fresh Water Systems ($11.95 each; the kit screws go unused), and the manifold pipe, end clamps and tray silicone stay with their current suppliers.
 - **Spray-bar self-drillers firmed:** McMaster 90415A129 (#10 × 1in 18-8 SS, $6.23/25) replaces the Lowe's estimate. Grand total +$4 / +$4 / +$3.
 - **Wet-zone pump connectors moved to Waytek.** The 6 sealed 2-pin pairs are now Amphenol AT (DT-compatible): AT04-2P / AT06-2S housings, AW2P / AW2S wedges, and size-16 AT60-202-16141 pins / AT62-201-16141 sockets for the 14 AWG wet-zone run, $42.07 in all (was $27.42 from buyDeutsch). Grand total +$15.

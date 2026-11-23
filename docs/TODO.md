@@ -32,7 +32,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - [x] Bearings Direct (SKF 6215-2RS1, 51118 thrust) — KEEP with Bearings Direct (owner, 2026-11-23)
   - [x] Canal Rubber → McMaster: EPDM foam 8694K88; drum-end seal 93375K29 + 93375K27 stacked (2026-11-23)
   - [x] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T426 (2026-11-23; running gap widened to 16mm)
-  - [~] Blue Sea → Powerwerx: MRBF 5187+5191 and busbar 2312 done (2026-11-23); inverter ANL fuse + disconnect still to source
+  - [x] Blue Sea → Powerwerx: MRBF 5187+5191, busbar 2312; inverter DC protection = Blue Sea 5005 + 40A ANL + 6006 (2026-11-23; ANL-40 ASIN pending)
   - [x] Inverter Service Center → Powerwerx BPC121531104R $175.95 (2026-11-23)
   - [~] buyDeutsch → Waytek Amphenol AT set done (2026-11-23, $42.07); AutomationDirect 4 AWG ground wire → Waytek still to source
   - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30

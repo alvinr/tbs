@@ -15,7 +15,7 @@ All prices USD.
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,996 | $8,362 |
-| 6. Electrical — power, circuits, wiring | $3,522 | $3,627 |
+| 6. Electrical — power, circuits, wiring | $3,562 | $3,667 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,290 | $3,177 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,075** | **~$36,504** |
+| **TOTAL (base build + 50-print run)** | **~$28,115** | **~$36,544** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -162,7 +162,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit F, ×2)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) (L2712V-40D3-1630-U) | 2 reel | HitLights | electrical | $75–$85 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
-| Inverter DC protection — 40A ANL fuse + holder + dedicated DC disconnect (Circuit-E inverter feed) | 1 set | Blue Sea | electrical | $40 |
+| [Inverter DC protection — 40A ANL fuse + Blue Sea 5005 holder + Blue Sea 6006 disconnect (Circuit-E inverter feed)](https://powerwerx.com/blue-sea-5005-anl-fuse-block-cover) (5005-BSS + 6006) | 1 set | Powerwerx | electrical | $80 |
 | [IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)](https://www.polycase.com/zh-080804) (ZH-080804) | 1 ea | Polycase | electrical | $47 |
 | [LED Profiles 981 slimline channel + diffuser, 8 ft (×7)](https://ledprofiles.com/collections/all-led-channels/products/slimline-ultra-low-profile-led-channel-981-series) (981ASL) | 7 8ft length | LED Profiles | electrical | $189 |
 | [LED strip connectors + 12V PWM dimmers (Circuits G + D)](https://www.superbrightleds.com/ldk-8a-12-24-volt-dc-single-color-led-dimmer) (LDK-8A) | 1 lot | Super Bright LEDs | electrical | $32 |
@@ -177,7 +177,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Amphenol AT (Deutsch DT-compatible) 2-pin pairs (pump circuits)](https://www.waytekwire.com/product/amphenol-sine-systems-at04-2p-blu-2-way-connector) (AT04-2P-BLU / AT06-2S-BLU) | 1 lot | Waytek Wire | electrical | $42 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,167–$2,197** |
+| **electrical-distribution subtotal** | | | | **$2,206–$2,236** |
 
 ### electrical-power
 
@@ -534,8 +534,8 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
+| Powerwerx | 9 | electrical-distribution, electrical-power | $657 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
-| Powerwerx | 8 | electrical-distribution, electrical-power | $578 |
 | Metals Depot | 4 | aluminum, steel-structural | $442–$510 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Central Coast Plastics | 1 | plastics-sheet | $380 |
@@ -559,7 +559,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | AutomationDirect | 1 | electrical-distribution | $52 |
 | McNichols | 1 | fasteners-hardware | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
-| Blue Sea | 1 | electrical-distribution | $40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $37 |
 | Fresh Water Systems | 1 | water-equipment | $36 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |

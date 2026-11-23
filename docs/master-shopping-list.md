@@ -2,9 +2,9 @@
 <!-- © 2026 Alvin Richards -->
 # TBS-001 — Master Shopping List (BoM)
 
-**Basis:** April 2026, with catalog SKUs re-checked against supplier listings July 2026 (branded/identifiable items updated with citations; quote/fabrication/commodity items remain indicative pending real quotes). All prices USD.
-
-Items are grouped by build area. Source documents are cross-referenced in each section header.
+Every purchasable item for TBS-001, generated from the parts registry. Branded and catalog items
+carry a cited SKU and price; fabrication, quote and commodity items are indicative until quoted.
+All prices USD.
 
 ## Summary — Estimated Total
 <!-- BEGIN costing:master-summary -->
@@ -36,7 +36,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ## Procurement BOM — by material type & supplier
 
-*This is the consolidated **Bill of Materials** for the whole build: every purchasable item grouped
+This is the consolidated **Bill of Materials** for the whole build: every purchasable item grouped
 by **material type**, with quantities summed across all systems, followed by a **supplier
 consolidation** table so you can place the fewest, largest orders. The *Systems* column shows where
 each item is used; the full engineering detail for any item lives in that system's report. Costs are
@@ -106,7 +106,7 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Ammonium dichromate](https://artcraftchemicals.com/products/ammonium-bi-dichromate-part-1022) | 1 run | Artcraft Chemicals | chemistry | $25 |
-| [Ferric ammonium oxalate (AmFe)](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527) | 16.7 kg | Artcraft Chemicals | chemistry | $1,072 |
+| [Ferric ammonium oxalate](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527) | 16.7 kg | Artcraft Chemicals | chemistry | $1,072 |
 | [Potassium ferricyanide](https://artcraftchemicals.com/products/potassium-ferricyanide-part-1275) | 5.6 kg | Artcraft Chemicals | chemistry | $286 |
 | **chemistry-reagents subtotal** | | | | **$1,383** |
 
@@ -578,12 +578,12 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 `substrate-fabric`) and the [Cyanotype Shopping List](chemistry-shopping-list.md). This section is the
 **recipe + per-print basis** only.*
 
-**Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
+**Mike Ware New Cyanotype** — 3:1 ferric ammonium oxalate : potassium ferricyanide by weight
 + optional ammonium dichromate for contrast (a creative choice), applied as **two wet-on-wet coats** over the <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane.
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
-| Ferric ammonium oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg |
+| Ferric ammonium oxalate | <!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | <!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard -->g | <!-- BEGIN costing:om-ferri-kg-standard -->5.6<!-- END costing:om-ferri-kg-standard --> kg |
 | Ammonium dichromate (optional contrast, 0.1–0.4% of the ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L working volume) | <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi -->g | ~<!-- BEGIN costing:om-dichromate-kg-run -->0.11–0.44<!-- END costing:om-dichromate-kg-run --> kg |
 | Distilled water | ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L | ~<!-- BEGIN costing:om-water-l-run -->110<!-- END costing:om-water-l-run --> L |
@@ -604,9 +604,9 @@ in the [water BOM](water-system-report.md), and the Circuit-D red safelight stri
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Foam roller 18" wide | For sensitiser application | 3 | Home Depot / art supply | ~$30 |
+| Foam roller 18" wide | For sensitizer application | 3 | Home Depot / art supply | ~$30 |
 | Foam brush 4" wide | Detail/edge work | 6 | Home Depot / art supply | ~$15 |
-| UV-blocking safety glasses | Mandatory during sensitiser handling | 2 pairs | Amazon / safety supply | ~$20 |
+| UV-blocking safety glasses | Mandatory during sensitizer handling | 2 pairs | Amazon / safety supply | ~$20 |
 | Chemical-resistant apron | Full-length | 2 | Amazon / safety supply | ~$30 |
 | Red LED safelight headlamp | Loading operations inside container (wearable; not the Circuit-D strips) | 2 | Amazon | ~$30 |
 | Digital timer | Exposure timing | 1 | Amazon / camera store | ~$15 |
@@ -636,45 +636,31 @@ in the electrical BOM and the [Electrical Safety Report](electrical-safety-repor
 
 ## Supplier Directory
 
-*Contact reference (URL / location) for the suppliers used in the build. The **full** supplier list
-with order quantities and $ totals is the **Supplier consolidation** table in the Procurement BOM
-above — this directory adds where-to-buy detail and omits alternative/optional-only sources.*
+*Where to buy, for the suppliers that carry the most items in the Procurement BOM. Each BOM row links
+its own product page; the **Supplier consolidation** table above gives every supplier's order total.*
 
-| Supplier | Category | URL / Location |
-|---------|---------|----------------|
-| **[Photographers' Formulary](https://stores.photoformulary.com)** | Ferric ammonium oxalate (AmFe), ammonium dichromate | Condon, MT |
-| **[Bostick & Sullivan](https://bostick-sullivan.com)** | Potassium ferricyanide + AmFe (cyanotype reagents) | Santa Fe, NM |
-| **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 150-yd rolls | Online |
-| **[Fabric Wholesale Direct](https://www.fabricwholesaledirect.com)** | Unbleached muslin by yard or bolt | Online |
-| **[Metal Supermarkets](https://www.metalsupermarkets.com)** | Steel, aluminum, cut-to-length | Anaheim · Van Nuys · San Diego |
-| **[Grimco](https://www.grimco.com)** | Dibond ACM panels (sign industry) | City of Industry CA |
-| **Automation Overstock** | Linear guides, carriages, surplus motion components | Gardena CA (walk-in) |
-| **[Ruland](https://www.ruland.com)** | CL-16-ST clamp-style shaft collar (spray arm) | Ships nationally |
-| **[Renogy](https://www.renogy.com)** | Solar panels, LiFePO4 battery, tilt mount | Online |
-| **[altE Store](https://www.altestore.com)** | Victron MPPT, Victron chargers, off-grid power | Online |
-| **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole connectors and tools | Online |
-| **[Waytek Wire](https://www.waytekwire.com)** | Deutsch DT connectors, automotive wire | Online |
-| **[West Marine](https://www.westmarine.com)** | Blue Sea fuse blocks, marine DC wiring | Torrance CA |
-| **[Container Exchanger](https://containerexchanger.com)** | Used IBC totes, food-grade — CA listings | Online |
-| **[Ferguson Plumbing](https://www.ferguson.com)** | PVC pipe, valves, fittings | Multiple SoCal branches |
-| **Pacific Coast Steel** | Hot-rolled A36 sheet, round bar, structural steel | Santa Fe Springs CA |
-| **[TAP Plastics](https://www.tapplastics.com)** | UV-HDPE / PP / acrylic sheet + plastic fabrication | Multiple SoCal stores |
-| **[Curbell Plastics](https://www.curbellplastics.com)** | PP / engineering plastic sheet | Online / SoCal |
-| **[AutomationDirect](https://www.automationdirect.com)** | DC load-break isolators, E-stop push-buttons | Online |
-| **[B&H Photo](https://www.bhphotovideo.com)** | Impact Duvetyne, photographic supplies | Online / NYC |
-| **[Amazon](https://www.amazon.com)** | Pumps, filters, valves, fittings, electrical, consumables | Online |
-| **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, bearings, seals, neoprene, cable trunking | Online / Ships from LA |
-| **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle, steel, Dibond ACM | Online |
-| **[McNichols](https://www.mcnichols.com)** | Molded GRP (fiberglass) grating, FRP hold-down clips | Online / Multiple branches |
-| **[Grating Pacific](https://gratingpacific.com)** | Molded FRP grating (vinyl-ester, grit top) | Los Angeles CA (SoCal) |
-| **[Grainger](https://www.grainger.com)** | Industrial supply — local branches throughout SoCal | Multiple SoCal branches |
-| **[Lenox Laser](https://www.lenoxlaser.com)** | Custom precision laser-drilled pinholes | Glen Arm, MD |
-| **[Hessaire](https://hessaire.com)** | 120V AC evaporative (swamp) coolers | Online |
-| **[Victron / Amazon](https://www.victronenergy.com)** | Phoenix pure-sine inverters (Circuit E) | Online |
+| Supplier | Category | URL |
+|---------|---------|-----|
+| **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, hinges, latches, bearings, seals, stock tube and bar | Online, ships from LA |
+| **[Home Depot](https://www.homedepot.com)** | Plywood, EMT, PVC, tee-nuts, cooler, general hardware | SoCal stores |
+| **[Metal Supermarkets](https://www.metalsupermarkets.com)** | Structural steel and aluminum, cut to length | Anaheim · Van Nuys · San Diego |
+| **[US Plastic Corp](https://www.usplastic.com)** | Ball and diverter valves, bulkheads, HDPE sheet | Online |
+| **[Amazon](https://www.amazon.com)** | Pumps, filters, fittings, electrical, consumables | Online |
+| **[Grainger](https://www.grainger.com)** | Banjo valves, bonding kit, U-joints, industrial supply | SoCal branches |
+| **[Artcraft Chemicals](https://artcraftchemicals.com)** | Ferric ammonium oxalate, potassium ferricyanide, ammonium dichromate | Online |
+| **[Waytek Wire](https://www.waytekwire.com)** | Deutsch DT connectors, marine wire, PV disconnect | Online |
+| **[Online Metals](https://www.onlinemetals.com)** | Stainless sheet, aluminum plate, angle and channel | Online |
+| **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole, Victron MPPT, MC4 passthroughs, ANL fuses | Online |
+| **[Off Grid Stores](https://offgridstores.com)** | Solar panels, LiFePO4 battery, Blue Sea fuse block and disconnect | Online |
+| **[Inverter Supply](https://www.invertersupply.com)** | Victron Phoenix inverter, Blue Sea ML-RBS battery switch | Online |
+| **[Metals Depot](https://www.metalsdepot.com)** | Stainless square tube, aluminum angle | Online |
+| **[Super Bright LEDs](https://www.superbrightleds.com)** | COB LED strip, connectors, dimmers | Online |
+| **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 60in | Online |
+| **[Lenox Laser](https://lenoxlaser.com)** | Laser-drilled precision pinholes | Glen Arm, MD |
 
 ## See Also
 - [Electrical & Systems Report](electrical-report.md) — full wiring specification, circuit fuse ratings, solar architecture
-- [Chemistry Shopping List](chemistry-shopping-list.md) — detailed chemistry quantities for all alternative processes (gum bichromate, Van Dyke Brown, salt print)
+- [Chemistry Shopping List](chemistry-shopping-list.md) — cyanotype reagent quantities, tiers and suppliers
 - [Film Plane Mechanism Report](film-plane-mechanism-report.md) — engineering drawings for the 4-corner actuation system
 - [Processing Water System](water-system-report.md) — three-circuit water system with filter skid design
 - [Cost Breakdown](project-cost-breakdown.md) — full itemized build cost across three deployment scenarios

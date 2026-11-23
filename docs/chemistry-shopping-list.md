@@ -65,7 +65,7 @@ The **per-print masses are under trial** — two wet-on-wet coats at a diluted W
 <!-- BEGIN parts:chemistry -->
 | Reagent | Supplier | Lean ⅓-Ware | Standard ½-Ware (default) | Rich full-Ware |
 |---|---|---|---|---|
-| Ferric ammonium oxalate (AmFe) | Artcraft Chemicals | 11.1 kg / $713 | 16.7 kg / $1,072 | 33.4 kg / $2,144 |
+| Ferric ammonium oxalate | Artcraft Chemicals | 11.1 kg / $713 | 16.7 kg / $1,072 | 33.4 kg / $2,144 |
 | Potassium ferricyanide | Artcraft Chemicals | 3.7 kg / $189 | 5.6 kg / $286 | 11.1 kg / $566 |
 | Ammonium dichromate | Artcraft Chemicals | $25 | $25 | $25 |
 | **Chemistry subtotal** | | **$926** | **$1,383** | **$2,735** |

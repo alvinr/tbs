@@ -1242,7 +1242,7 @@ PARTS: list[Part] = [
 def _chem_parts() -> list[Part]:
     out = []
     for t in costing.TIERS:
-        out.append(Part(f"amfe-{t.key}", "Ferric ammonium oxalate (AmFe)", "chemistry-reagents",
+        out.append(Part(f"amfe-{t.key}", "Ferric ammonium oxalate", "chemistry-reagents",
                         "chemistry", t.amfe_kg, "kg", costing.PRICE_AMFE_PER_KG, costing.PRICE_AMFE_PER_KG,
                         "Artcraft Chemicals", "Photographers' Formulary",
                         url="https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527",
@@ -1332,7 +1332,7 @@ def emit_chemistry() -> str:
     hdr = "| Reagent | Supplier | " + " | ".join(
         f"{t.label}{' (default)' if t.key == costing.DEFAULT_TIER else ''}" for t in tiers) + " |"
     rows = [hdr, "|" + "---|" * (len(tiers) + 2)]
-    for desc, sup in (("Ferric ammonium oxalate (AmFe)", "Artcraft Chemicals"),
+    for desc, sup in (("Ferric ammonium oxalate", "Artcraft Chemicals"),
                       ("Potassium ferricyanide", "Artcraft Chemicals"),
                       ("Ammonium dichromate", "Artcraft Chemicals")):
         cells = []

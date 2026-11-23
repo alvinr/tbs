@@ -819,7 +819,7 @@ SECTIONS = [
 
 # Master-shopping-list-only sections (not in the cost-breakdown's 13). Low/Mid/High estimates.
 # Both reconcile to the parts registry (systems print-tools / safety); their SKUs are still pending.
-TOOLS_ITEMS = [LineItem("Printmaking tools — foam rollers + brushes, UV glasses, aprons, red headlamps, timer, step stool, spray bottles, pH strips", 190, 190, 190, "2026-11-23: registry-backed (print-tools), estimates pending SKUs; was a $350–500 band incl. a consumables contingency")]
+TOOLS_ITEMS = [LineItem("Printmaking tools — foam rollers + brushes, UV glasses, aprons, red headlamps, timer, step stool, spray bottles, pH strips + one session's consumables restock", 240, 240, 240, "2026-11-23: registry-backed (print-tools), estimates pending SKUs; +$50 consumables restock (one session); was a $350–500 band incl. a consumables contingency")]
 SAFETY_ITEMS = [LineItem("Safety & PPE — first aid kit, ABC extinguisher, GFCI + voltage testers, sunscreen, water jugs", 162, 162, 162, "2026-11-23: registry-backed (safety), estimates pending SKUs; was a $120–180 band")]
 TOOLS = Section("10", "Printmaking tools & consumables", *total(TOOLS_ITEMS))
 SAFETY = Section("11", "Safety & PPE", *total(SAFETY_ITEMS))
@@ -1297,7 +1297,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     # handle). +$47/$33/$19 cam latch Southco C2-33 → McMaster 1619A74 ($30.57 ea ×4). +$29 surround→frame blind rivets (2× 100-pack 97525A435;
     # hingepanel-bp surround round). 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12
     # retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2. §6c = hinged-panel §8.1
-    "print-tools": (190, 190, 190), # 2026-11-23: registry-backed tools (SKUs pending).
+    "print-tools": (240, 240, 240), # 2026-11-23: registry-backed tools (SKUs pending) + $50 consumables restock.
     "safety": (162, 162, 162), # 2026-11-23: registry-backed safety & PPE (SKUs pending).
     "shelf": (268, 275, 280), # 2026-11-09: +$1 — M8 hinge-cleat washer merged onto the film SS M8-flat pack 98689A673 (retired dup 91166A270). 2026-09-08: piano hinge
     # upsized 1582A457→14835A77 extra-clearance (3in open) so the ply tee-nut row gets 25mm edge distance — +$50 ($6→$56). 2026-09-08: hinge

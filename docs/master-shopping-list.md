@@ -23,9 +23,9 @@ All prices USD.
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $788 | $938 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
-| 10. Printmaking tools & consumables | $190 | $190 |
+| 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$27,717** | **~$36,330** |
+| **TOTAL (base build + 50-print run)** | **~$27,767** | **~$36,380** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -483,6 +483,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Chemical-resistant apron, full length | 2 ea | Amazon | print-tools | $30 |
 | [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | 1 pack | Amazon | water | $24 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
+| Consumables restock — foam rollers, brushes, gloves | 1 session | Home Depot | print-tools | $50 |
 | Digital timer | 1 ea | Amazon | print-tools | $15 |
 | Fire extinguisher, ABC, 5 lb | 1 ea | Home Depot | safety | $40 |
 | First aid kit, ANSI Class A | 1 ea | Amazon | safety | $35 |
@@ -499,7 +500,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Spray bottle, 1 liter | 2 ea | Amazon | print-tools | $15 |
 | Sunscreen SPF 50+, pump bottle | 2 ea | Costco | safety | $20 |
 | UV-blocking safety glasses | 2 pair | Amazon | print-tools | $20 |
-| **tools-safety subtotal** | | | | **$609** |
+| **tools-safety subtotal** | | | | **$659** |
 
 ### water-equipment
 
@@ -525,8 +526,8 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
 | Amazon | 40 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,223–$2,243 |
 | McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,187–$2,195 |
+| Home Depot | 59 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,785–$1,963 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| Home Depot | 58 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,735–$1,913 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |

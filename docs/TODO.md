@@ -41,8 +41,8 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - [ ] Polycase (ZH-080804 enclosure) → Amazon (listed alt); Central Coast Plastics (Dibond) → TAP Plastics (listed alt)
   - [~] Lowe's Hillman self-drillers → McMaster 90415A129 done (2026-11-23); misterworker foot valve — KEEP (owner).
         DripDepot pipe + end clamps + tee — KEEP (2026-11-23): Home Depot irrigation stops at 1/2in; the manifold is 3/4in.
-        Open: confirm the DripDepot center-feed tee is a 3/4 × 3/4 × 1/2in reducing barbed tee (1084 is listed as a ½in tee).
-        CountryMax silicone, Fresh Water Systems brackets still open.
+        Center-feed tee now DripDepot 14683 (3/4 × 3/4 × 1/2 reducing). CountryMax silicone — KEEP (owner).
+        Big Blue brackets → Amazon $33.95 (2026-11-23) — confirm the listing covers 3; ASIN pending.
   - [ ] HitLights strip + LED Profiles channel → Super Bright LEDs (already the safelight order) — only if an
         equivalent 4000K COB strip keeps the electrical-report lux basis
   - [ ] Fasteners Plus (5/8in jaw-eye turnbuckle JETBGV58X6) → McMaster

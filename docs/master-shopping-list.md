@@ -14,7 +14,7 @@ All prices USD.
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,993 | $8,358 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,994 | $8,360 |
 | 6. Electrical — power, circuits, wiring | $3,522 | $3,627 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,072** | **~$36,500** |
+| **TOTAL (base build + 50-print run)** | **~$28,073** | **~$36,502** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -346,7 +346,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | 1 25ft coil | Local fab | tray | $66 |
 | [1/2" barbed coupling (pump flex jumpers)](https://www.homedepot.com/p/Rain-Bird-1-2-in-Barbed-Couplings-for-Drip-Tubing-Brown-20-Pack-BC50-20/318470443) (318470443) | 1 20-pack | Local fab | water | $12 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | 3 length | US Plastic Corp | water | $18 |
-| [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | 1 5-pack | DripDepot | spray | $3 |
 | [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | 8 stick | Local fab | water | $38 |
 | [1/2" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Local fab | water | $10 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Local fab | water | $3 |
@@ -361,6 +360,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)](https://www.homedepot.com/p/203811533) (PVC021071300HD) | 8 ea | Local fab | water | $26 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 2 ea | US Plastic Corp | water | $48 |
+| 3/4 × 3/4 × 1/2in reducing barbed tee (flex hose → manifold center feed) (14683) | 1 ea | DripDepot | spray | $2 |
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | 1 100ft roll | DripDepot | spray | $31 |
 | [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Local fab | water | $12 |
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 5 10-pack | Local fab | spray | $17 |
@@ -373,7 +373,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Local fab | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,344–$1,391** |
+| **plumbing-fittings subtotal** | | | | **$1,342–$1,389** |
 
 ### seals-gaskets
 
@@ -508,7 +508,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B0137680E6) (B0137680E6) | 3 ea | Amazon | water | $250 |
-| [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (244718) | 3 ea | Fresh Water Systems | water | $32 |
+| Big Blue housing mounting brackets (×3) (244718) | 1 purchase | Amazon | water | $34 |
 | [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/dp/B07ZHPB6MB) (B07ZHPB6MB) | 2 ea | Amazon | water | $80 |
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | 4 ea | SoCal reconditioner | water | $600 |
 | [KDF-55 heavy-metal cartridge 4.5"×20"](https://www.amazon.com/dp/B0DY1ZK47Z) (B0DY1ZK47Z) | 1 ea | Amazon | water | $80 |
@@ -516,7 +516,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 2 ea | Amazon | water | $72 |
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 5 ea | Amazon | water | $500 |
-| **water-equipment subtotal** | | | | **$1,675** |
+| **water-equipment subtotal** | | | | **$1,677** |
 
 ### Supplier consolidation (largest orders first)
 
@@ -527,7 +527,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
 | McMaster-Carr | 95 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,618–$2,626 |
-| Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
+| Amazon | 45 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,477–$2,556 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
@@ -560,9 +560,8 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | McNichols | 1 | fasteners-hardware | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | Blue Sea | 1 | electrical-distribution | $40 |
-| DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
+| DripDepot | 3 | fasteners-hardware, plumbing-fittings | $37 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
-| Fresh Water Systems | 1 | water-equipment | $32 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | SK Grimes | 1 | optics | $10–$30 |
 | Harfington | 2 | electrical-distribution | $25 |

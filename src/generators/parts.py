@@ -240,8 +240,10 @@ PARTS: list[Part] = [
          spec='Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets',
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
          audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
-    Part("filter-skid-frame", "Big Blue housing mounting brackets (×3)", "water-equipment",
-         "water", 1, "purchase", 33.95, 33.95, "Amazon", "Fresh Water Systems", part_no="244718", url="", spec="Pentair 244718 zinc single-housing mounting bracket (BRACKET ONLY), one per 4.5×20 Big Blue (×3), machine-screwed to the 18mm ply backing via back-face pronged tee-nuts (#30, re-torqueable). Purpose-built — replaces the welded slotted-angle frame (2026-07-27). Switched 2026-09-07 from the 150061 KIT to the bracket-only 244718 — we supply our own 1/4-20 machine screws + tee-nuts, so the kit's hardware was redundant. Firm $10.50 (Fresh Water Systems 2026-09-07).", panel="Pinhole Wall Amazon $33.95 (owner-sourced 2026-11-23) — CONFIRM the listing covers all 3 brackets; ASIN pending."),
+    Part("filter-skid-frame", "Big Blue housing mounting bracket kits (×3)", "water-equipment",
+         "water", 3, "ea", 11.95, 11.95, "Fresh Water Systems", "Amazon", part_no="FM25W-KIT",
+         url="https://www.freshwatersystems.com/products/mounting-bracket-with-hardware-for-10-20-large-diameter-filter-housing?variant=13249745158187",
+         spec="FM25W-KIT single-housing mounting bracket with hardware for 10/20in large-diameter (4.5in Big Blue) housings, one per 4.5×20 Big Blue (×3), machine-screwed to the 18mm ply backing via back-face pronged tee-nuts (#30, re-torqueable) — the kit's own screws are not used (we supply 1/4-20 machine screws). Replaces the bracket-only Pentair 244718, no longer listed. Fresh Water Systems $11.95 each, firm (owner-sourced 2026-11-23)."),
     # filter-ubracket RETIRED 2026-07-22 — Big Blue housings have mounting-hole ears; lag-screw straight to the ply backing
     # ── #30 captive-tee-nut conversion (2026-08-07): every REMOVABLE ply-mount joint moves from a
     #    wood/lag screw to a machine screw into a back-face 4-prong tee-nut (re-torqueable, no thread-strip).

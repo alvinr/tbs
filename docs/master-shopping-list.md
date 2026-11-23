@@ -14,7 +14,7 @@ All prices USD.
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,994 | $8,360 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,996 | $8,362 |
 | 6. Electrical — power, circuits, wiring | $3,522 | $3,627 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,073** | **~$36,502** |
+| **TOTAL (base build + 50-print run)** | **~$28,075** | **~$36,504** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -508,7 +508,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B0137680E6) (B0137680E6) | 3 ea | Amazon | water | $250 |
-| Big Blue housing mounting brackets (×3) (244718) | 1 purchase | Amazon | water | $34 |
+| [Big Blue housing mounting bracket kits (×3)](https://www.freshwatersystems.com/products/mounting-bracket-with-hardware-for-10-20-large-diameter-filter-housing?variant=13249745158187) (FM25W-KIT) | 3 ea | Fresh Water Systems | water | $36 |
 | [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/dp/B07ZHPB6MB) (B07ZHPB6MB) | 2 ea | Amazon | water | $80 |
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | 4 ea | SoCal reconditioner | water | $600 |
 | [KDF-55 heavy-metal cartridge 4.5"×20"](https://www.amazon.com/dp/B0DY1ZK47Z) (B0DY1ZK47Z) | 1 ea | Amazon | water | $80 |
@@ -516,7 +516,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 2 ea | Amazon | water | $72 |
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 5 ea | Amazon | water | $500 |
-| **water-equipment subtotal** | | | | **$1,677** |
+| **water-equipment subtotal** | | | | **$1,679** |
 
 ### Supplier consolidation (largest orders first)
 
@@ -527,7 +527,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
 | McMaster-Carr | 95 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,618–$2,626 |
-| Amazon | 45 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,477–$2,556 |
+| Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
@@ -561,6 +561,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Polycase | 1 | electrical-distribution | $47 |
 | Blue Sea | 1 | electrical-distribution | $40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $37 |
+| Fresh Water Systems | 1 | water-equipment | $36 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | SK Grimes | 1 | optics | $10–$30 |

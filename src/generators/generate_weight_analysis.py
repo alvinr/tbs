@@ -1258,9 +1258,10 @@ def sheet_summary(components):
 import re as _re
 from tbs_constants import DIAGRAM_DPI
 
-_REPORT = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "docs", "weight-distribution-report.md")
+_DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "docs")
+_REPORT = os.path.join(_DOCS, "weight-distribution-report.md")
+_REPORTS = [_REPORT, os.path.join(_DOCS, "container-transport-options.md")]
+_LB_PER_KG = 2.20462
 
 _STATES = {"dry": "dry", "loaded_transport": "loadedtx",
            "ready": "ready", "exhausted": "exhausted"}
@@ -1288,6 +1289,13 @@ def weight_values():
     v["wt-cat-structure"] = f"{cat['structure']:,}"
     v["wt-cat-equipment"] = f"{cat['equipment']:,}"
     v["wt-total-dry"]     = f"{total_dry:,}"
+    # container-transport-options.md — the haul weight in lb (nearest 10), split container vs fit-out
+    lb = lambda kg: f"{int(round(kg * _LB_PER_KG, -1)):,}"
+    v["wt-tx-container-kg"] = f"{cat['container']:,}"
+    v["wt-tx-container-lb"] = lb(cat["container"])
+    v["wt-tx-fitout-kg"]    = f"{total_dry - cat['container']:,}"
+    v["wt-tx-fitout-lb"]    = lb(total_dry - cat["container"])
+    v["wt-tx-dry-lb"]       = lb(total_dry)
     v["wt-pct-container"] = f"{100 * cat['container'] / total_dry:.1f}"
     v["wt-pct-structure"] = f"{100 * cat['structure'] / total_dry:.1f}"
     v["wt-pct-equipment"] = f"{100 * cat['equipment'] / total_dry:.1f}"
@@ -1314,6 +1322,7 @@ def weight_values():
     # §4.1/§4.2 liquid + loaded/exhausted totals; §6.4 CG migration
     v["wt-liquid-loaded"]   = f"{int(v['wt-loadedtx-total'].replace(',', '')) - total_dry:,}"
     v["wt-total-loaded"]    = v["wt-loadedtx-total"]
+    v["wt-tx-loaded-lb"]    = f"{int(round(int(v['wt-loadedtx-total'].replace(',', '')) * _LB_PER_KG, -1)):,}"
     v["wt-total-exhausted"] = v["wt-exhausted-total"]
     v["wt-mig-dz"] = f"{z_of['loaded_transport'] - z_of['exhausted']:,}"
 
@@ -1373,17 +1382,19 @@ def _wt_pat(key):
 
 
 def inject_blocks(write=True):
-    """Fill every weight marker in the report. Returns [(key, 'ok'|'STALE'), …]."""
+    """Fill every weight marker in the reports. Returns [(key, 'ok'|'STALE'), …]."""
     vals = weight_values()
-    text = open(_REPORT, encoding="utf-8").read()
-    new, results = text, []
-    for key, val in vals.items():
-        pat = _wt_pat(key)
-        for m in pat.finditer(text):
-            results.append((key, "ok" if m.group(2) == val else "STALE"))
-        new = pat.sub(lambda m, val=val: m.group(1) + val + m.group(3), new)
-    if write and new != text:
-        open(_REPORT, "w", encoding="utf-8").write(new)
+    results = []
+    for path in _REPORTS:
+        text = open(path, encoding="utf-8").read()
+        new = text
+        for key, val in vals.items():
+            pat = _wt_pat(key)
+            for m in pat.finditer(text):
+                results.append((key, "ok" if m.group(2) == val else "STALE"))
+            new = pat.sub(lambda m, val=val: m.group(1) + val + m.group(3), new)
+        if write and new != text:
+            open(path, "w", encoding="utf-8").write(new)
     return results
 
 

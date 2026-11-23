@@ -1,39 +1,43 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Transportation Options
-## 20 ft and 40 ft — Hauling Methods, Trailer Requirements, License Requirements, and Pricing
 
-*For The Big Shoebox Project (TBS-001). Containers in this context are used as the camera body and transported empty or with lightweight interior fittings.*
+How to move TBS-001, a fitted 20 ft container: hauling methods, trailers, licenses and pricing. The
+project budget assumes commercial hire (Option A, [Project Cost Breakdown §11](project-cost-breakdown.md));
+the other options are for self-haul or frequent repositioning.
 
 ---
 
-## 1. Container Specifications (Empty)
+## 1. What Gets Moved
 
-Understanding the base weights is critical for selecting a legal and practical transport method.
+| Specification | TBS-001 (20 ft standard) |
+|---------------|--------------------------|
+| Container tare (empty) | <!-- BEGIN weight:wt-tx-container-kg -->2,200<!-- END weight:wt-tx-container-kg --> kg (<!-- BEGIN weight:wt-tx-container-lb -->4,850<!-- END weight:wt-tx-container-lb --> lb) |
+| Camera fit-out (structure + equipment) | <!-- BEGIN weight:wt-tx-fitout-kg -->1,190<!-- END weight:wt-tx-fitout-kg --> kg (<!-- BEGIN weight:wt-tx-fitout-lb -->2,620<!-- END weight:wt-tx-fitout-lb --> lb) |
+| **Dry (drained) transport weight** | **<!-- BEGIN weight:wt-dry-total -->3,390<!-- END weight:wt-dry-total --> kg (<!-- BEGIN weight:wt-tx-dry-lb -->7,470<!-- END weight:wt-tx-dry-lb --> lb)** |
+| **Loaded transport weight** (Blue water in the top-tier totes) | **<!-- BEGIN weight:wt-loadedtx-total -->5,190<!-- END weight:wt-loadedtx-total --> kg (<!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lb)** |
+| External length × width × height | 20 ft 0 in × 8 ft 0 in × 8 ft 6 in |
+| Width with fittings | 8 ft 6 in |
 
-| Specification | 20 ft Standard | 40 ft Standard | 40 ft High Cube |
-|---------------|---------------|----------------|-----------------|
-| Tare weight (empty) | 4,850 lbs (2,200 kg) | 8,380 lbs (3,800 kg) | 8,598 lbs (3,900 kg) |
-| External length | 20 ft 0 in | 40 ft 0 in | 40 ft 0 in |
-| External width | 8 ft 0 in | 8 ft 0 in | 8 ft 0 in |
-| External height | 8 ft 6 in | 8 ft 6 in | 9 ft 6 in |
-| Width with fittings | 8 ft 6 in (standard) | 8 ft 6 in | 8 ft 6 in |
+Weights are from the [Weight Distribution Report](weight-distribution-report.md) §4.3, which also
+gives the center of gravity for each transport case. A standard lane is 12 ft wide, so no wide-load
+permit is needed on a flatbed, and 8 ft 6 in is well under the 13 ft 6 in US height limit.
 
-A standard lane width is 12 ft — no wide-load permit is required for either container size when centered on a flatbed. Height of 8 ft 6 in–9 ft 6 in is within the US legal limit of 13 ft 6 in.
-
-**For this project:** The container is transported empty. The 20 ft empty weight of ~4,850 lbs is the governing figure for self-haul calculations. The 40 ft at ~8,380 lbs empty requires professional transport.
+**For this project:** the camera is never moved empty. The haul weight is the dry
+<!-- BEGIN weight:wt-tx-dry-lb -->7,470<!-- END weight:wt-tx-dry-lb --> lb, or <!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lb with the Blue water aboard, and every
+trailer, truck and license calculation below uses those figures.
 
 ---
 
 ## 2. Transport Method Comparison
 
-| Method | 20 ft | 40 ft | CDL Required | Best For |
-|--------|-------|-------|-------------|---------|
-| A. Commercial hire — tilt-bed | Yes | No | No (customer) | Local moves <100 miles |
-| B. Commercial hire — semi flatbed | Yes | Yes | No (customer) | Long distance >100 miles |
-| C. Semi tractor + rented container chassis | Yes | Yes | **Yes — Class A** | Regular repositioning |
-| D. HD pickup + gooseneck trailer (empty 20 ft only) | Yes | **No** | Depends on state | Occasional short haul |
-| E. Specialty container trailer (QuickLoadz/DynaDolly) | Yes | No | No (if under 26,001 lbs GVWR) | Frequent moves, single container |
+| Method | CDL Required | Best For |
+|--------|-------------|---------|
+| A. Commercial hire — tilt-bed | No (customer) | Local moves <100 miles |
+| B. Commercial hire — semi flatbed | No (customer) | Long distance >100 miles |
+| C. Semi tractor + rented container chassis | **Yes — Class A** | Regular repositioning |
+| D. HD pickup + gooseneck trailer (dry camera only) | Likely Class A (rig GVWR) | Occasional short haul |
+| E. Specialty container trailer (QuickLoadz / DynaDolly / ContainGo) | No, if the rig stays ≤26,000 lbs GVWR | Frequent moves, single container |
 
 ---
 
@@ -41,8 +45,6 @@ A standard lane width is 12 ft — no wide-load permit is required for either co
 
 ### What it is
 A truck with a hydraulically tilting bed delivers the container and slides it off onto the ground. Fully turn-key — driver, truck, and offloading are included. The customer does nothing except prepare the site (level ground, adequate clearance).
-
-**Limitation:** 20 ft containers only. A standard tilt-bed truck cannot handle a 40 ft container.
 
 ### Pricing (2026)
 
@@ -104,16 +106,16 @@ Owning and operating a tilt-bed truck requires **CDL Class B or Class A** depend
 ## 4. Option B — Commercial Hire: Semi Flatbed (Long Distance)
 
 ### What it is
-A Class 8 semi-tractor with a 48 ft or 53 ft flatbed trailer hauls the container. Standard for distances over 100–200 miles or for 40 ft containers. The container is secured with twist-locks or chain binders. **A crane, forklift, or reach-stacker is required at the destination to lift the container off the flatbed** — it cannot be slid off.
+A Class 8 semi-tractor with a 48 ft or 53 ft flatbed trailer hauls the container. Standard for distances over 100–200 miles. The container is secured with twist-locks or chain binders. **A crane, forklift, or reach-stacker is required at the destination to lift the container off the flatbed** — it cannot be slid off.
 
 ### Pricing (2026)
 
-| Distance | 20 ft container | 40 ft container |
-|----------|----------------|----------------|
-| <100 miles | $600–$1,200 | $900–$1,800 |
-| 100–300 miles | $1,200–$2,500 | $1,800–$3,500 |
-| 300–600 miles | $2,200–$4,000 | $3,200–$5,500 |
-| Cross-country (>1,000 miles) | $3,500–$6,000 | $5,000–$10,000 |
+| Distance | 20 ft container |
+|----------|----------------|
+| <100 miles | $600–$1,200 |
+| 100–300 miles | $1,200–$2,500 |
+| 300–600 miles | $2,200–$4,000 |
+| Cross-country (>1,000 miles) | $3,500–$6,000 |
 
 *National spot flatbed rate: **$2.95/mile** as of March 2026 (up 8.5% month-on-month). Contract rates average **$3.32/mile**. Most carriers apply a minimum charge of $400–$800 regardless of distance.*
 
@@ -143,9 +145,9 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 
 | Provider | Type | Day rate | Week rate | Notes |
 |----------|------|----------|-----------|-------|
-| [XTRA Lease](https://www.xtralease.com/get-trailer/trailer-rental/chassis-rental) | 20 ft / 40 ft chassis | Quote required | Quote required | National footprint |
-| [FlexiVan FlexiDay](https://flexivan.com/daily-rentals/) | 20 ft / 40 ft chassis | ~$30–$60/day | ~$175–$350/wk | Day rental program |
-| [COOP by Ryder](https://www.coop.com/trailer-rentals/chassis) | 20 ft / 40 ft chassis | Quote required | Quote required | P2P chassis marketplace |
+| [XTRA Lease](https://www.xtralease.com/get-trailer/trailer-rental/chassis-rental) | 20 ft chassis | Quote required | Quote required | National footprint |
+| [FlexiVan FlexiDay](https://flexivan.com/daily-rentals/) | 20 ft chassis | ~$30–$60/day | ~$175–$350/wk | Day rental program |
+| [COOP by Ryder](https://www.coop.com/trailer-rentals/chassis) | 20 ft chassis | Quote required | Quote required | P2P chassis marketplace |
 | [Metro Trailer Leasing](https://metrotrailer.com/road-cartage-trailers/specialty-trailers/) | Specialty/container | Quote required | Quote required | Regional |
 | [River-Roads](https://www.river-roads.com/trailer-and-chassis-rental.htm) | Flatbed & chassis | Quote required | Quote required | St. Louis / Midwest |
 
@@ -163,7 +165,7 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 **CDL Class A is required** — no exceptions.
 
 - Combination vehicle GVWR over 26,001 lbs with towed unit over 10,000 lbs triggers mandatory CDL Class A under FMCSA 49 CFR §383.
-- A 20 ft container (4,850 lbs) + chassis (~6,000 lbs) + tractor (~20,000 lbs) = ~31,000 lbs total — well over the threshold.
+- The loaded camera (<!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lbs) on a ~6,000 lb chassis behind a ~20,000 lb tractor is well over the threshold.
 - **Interstate: must be 21+.** Intrastate: 18+ in most states.
 - ELDT (Entry Level Driver Training) mandatory for first-time CDL applicants in 2026.
 - DOT medical certificate required and must be submitted electronically (paper waiver expired January 10, 2026).
@@ -172,21 +174,25 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 
 ---
 
-## 6. Option D — Heavy-Duty Pickup Truck + Gooseneck Trailer (20 ft Empty Only)
+## 6. Option D — Heavy-Duty Pickup Truck + Gooseneck Trailer (Dry Camera Only)
 
 ### Feasibility
-This option is only viable for an **empty 20 ft container (~4,850 lbs)**. A loaded container or any 40 ft container is not safe or legal on a pickup-based rig.
+This option suits only the **dry, drained camera (<!-- BEGIN weight:wt-tx-dry-lb -->7,470<!-- END weight:wt-tx-dry-lb --> lbs)**, which is already well past an
+empty container (~<!-- BEGIN weight:wt-tx-container-lb -->4,850<!-- END weight:wt-tx-container-lb --> lbs). On a ~5,000–6,000 lb gooseneck the trailer load is about
+13,000 lbs, and the gooseneck pin weight lands on the truck bed, so check both the truck's gooseneck
+towing capacity and its bed payload against the loaded trailer. With the Blue water aboard (<!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lbs) the
+trailer load rises to ~17,000 lbs, beyond a pickup-based rig.
 
 ### Minimum truck requirements
 
 | Spec | Minimum | Recommended |
 |------|---------|-------------|
-| Towing capacity | 18,000 lbs | 30,000+ lbs |
-| Payload rating | 3,000 lbs | 4,000+ lb |
+| Towing capacity (gooseneck) | 18,000 lbs | 30,000+ lbs |
+| Payload rating | 3,000 lbs | 4,000+ lbs |
 | Hitch receiver | 2½" or gooseneck ball | Gooseneck ball (2⁵⁄₁₆") |
 | Example vehicle | Ford F-450 Super Duty | Ford F-550, Ram 5500 |
 
-*A standard F-150 or F-250 cannot safely tow a 20 ft container — tare weight alone (~4,850 lbs) exceeds their container-on-trailer capacity when the trailer weight (~5,000–6,000 lbs for a gooseneck) is added.*
+*A standard F-150 or F-250 cannot tow the camera: even the empty container (~<!-- BEGIN weight:wt-tx-container-lb -->4,850<!-- END weight:wt-tx-container-lb --> lbs) on a ~5,000–6,000 lb gooseneck exceeds their capacity, before the <!-- BEGIN weight:wt-tx-fitout-lb -->2,620<!-- END weight:wt-tx-fitout-lb --> lb fit-out is added.*
 
 ### Trailer options for 20 ft containers
 
@@ -206,7 +212,7 @@ This option is only viable for an **empty 20 ft container (~4,850 lbs)**. A load
 | Pickup + container chassis, total rig GVWR >26,001 lbs | **CDL Class A** |
 | Any commercial use (hired to haul for others) | **CDL Class A + operating authority** |
 
-**Calculating your GVWR:** Add truck GVWR (e.g. F-550 = 19,500 lbs) + trailer GVWR (typically 20,000–25,000 lbs for a container chassis). Most combinations will **exceed 26,001 lbs** even empty — CDL likely required. Verify with your state DMV.
+**Calculating your GVWR:** Add truck GVWR (e.g. F-550 = 19,500 lbs) + trailer GVWR (typically 20,000–25,000 lbs for a container chassis). Most combinations **exceed 26,001 lbs**, so a CDL is likely required. Verify with your state DMV.
 
 *For non-commercial, private use on a short trip, some states allow an exemption below a certain weight — but this varies. Check with your state DMV before assuming no CDL is needed.*
 
@@ -216,7 +222,7 @@ This option is only viable for an **empty 20 ft container (~4,850 lbs)**. A load
 
 ## 7. Option E — Specialty Container Trailers (Self-Loading)
 
-These products eliminate the crane/forklift requirement by using hydraulics or a dolly-under system. Designed specifically for pickup trucks or semi tractors.
+These products eliminate the crane/forklift requirement by using hydraulics or a dolly-under system. Designed specifically for pickup trucks or semi tractors. Each must be rated for the camera's haul weight (<!-- BEGIN weight:wt-tx-dry-lb -->7,470<!-- END weight:wt-tx-dry-lb --> lbs dry, <!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lbs loaded), not an empty container.
 
 ### QuickLoadz 20 ft
 - **Price:** ~$30,000–$40,000 new
@@ -249,7 +255,7 @@ These products eliminate the crane/forklift requirement by using hydraulics or a
 | Tandem axle | 34,000 lbs |
 | Gross vehicle weight | **80,000 lbs** |
 
-An empty container on a flatbed trailer is well within federal limits. No oversize/overweight permit is required for an empty standard container.
+The loaded camera (<!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lbs) on a flatbed trailer is well within federal limits; no oversize/overweight permit is needed.
 
 ### CDL trigger thresholds (FMCSA 49 CFR §383)
 | Situation | CDL required? |
@@ -261,8 +267,8 @@ An empty container on a flatbed trailer is well within federal limits. No oversi
 | Hazardous materials requiring placards | Hazmat endorsement |
 
 ### Width and height (no permit needed within these limits)
-- Width: ≤8 ft 6 in — both 20 ft and 40 ft standard containers comply
-- Height: ≤13 ft 6 in — both comply (even 9 ft 6 in high cube is within limit)
+- Width: ≤8 ft 6 in — the 20 ft container complies
+- Height: ≤13 ft 6 in — complies (8 ft 6 in, plus the trailer deck height)
 
 ---
 
@@ -274,7 +280,7 @@ An empty container on a flatbed trailer is well within federal limits. No oversi
 |---------|---------------|----------------|
 | **Class A** | Combination vehicles with GVWR >26,001 lbs AND the towed unit weighs >10,000 lbs | Semi-tractor + container chassis; tractor-trailer |
 | **Class B** | Single vehicle GVWR >26,001 lbs, OR towing a unit ≤10,000 lbs | Straight truck, tilt-bed container truck (Class 7–8), large bus, dump truck |
-| No CDL | Total rig GVWR ≤26,001 lbs (personal, non-commercial use) | HD pickup + empty container on light trailer (if weight allows) |
+| No CDL | Total rig GVWR ≤26,000 lbs (personal, non-commercial use) | Rarely achievable with the camera — see Option D |
 
 For this project: **Class B** covers owning and operating a Class 7–8 tilt-bed truck. **Class A** is required if you also want to tow a container chassis behind a semi tractor.
 
@@ -466,10 +472,9 @@ Scored on observation, lane control, intersections, turns, and speed management:
 | Use case | Recommended option | Estimated cost |
 |----------|--------------------|---------------|
 | One-off delivery, 20 ft, <100 miles | **Option A — tilt-bed commercial hire** | $300–$1,200 |
-| One-off delivery, 40 ft, any distance | **Option B — semi flatbed commercial hire** | $900–$5,000+ |
-| Long-distance move, either size | **Option B — semi flatbed commercial hire** | $2.95–$3.32/mile |
+| Long-distance move | **Option B — semi flatbed commercial hire** | $2.95–$3.32/mile |
 | Frequent repositioning, have CDL | **Option C — semi tractor + chassis rental** | $400–$800/day |
-| Occasional self-haul, 20 ft empty, have HD truck | **Option D — gooseneck + container chassis** | $30–$150/day trailer rental |
+| Occasional self-haul, dry camera, have HD truck | **Option D — gooseneck + container chassis** | $30–$150/day trailer rental |
 | Self-haul with no crane needed, budget available | **Option E — QuickLoadz** | $30,000–$40,000 purchase |
 
 ---

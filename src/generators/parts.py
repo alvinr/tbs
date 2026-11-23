@@ -395,7 +395,7 @@ PARTS: list[Part] = [
     Part("print-spray-bottle", "Spray bottle, 1 liter", "tools-safety",
          "print-tools", 2, "ea", 7.5, 7.5, "Amazon", supplier_alt="garden supply", spec="Misting in low-humidity conditions.", note="SKU pending — estimate (2026-11-23), source at build"),
     Part("print-consumables-restock", "Consumables restock — foam rollers, brushes, gloves", "tools-safety",
-         "print-tools", 1, "session", 50, 50, "Home Depot", supplier_alt="Amazon", spec="Replacement rollers, brushes and gloves worn out in a printing session; recurs each session — the build budget carries one.", note="Estimate (2026-11-23), per session"),
+         "print-tools", 1, "session", costing.CONSUMABLES_RESTOCK_PER_SESSION, costing.CONSUMABLES_RESTOCK_PER_SESSION, "Home Depot", supplier_alt="Amazon", spec="Replacement rollers, brushes and gloves worn out in a printing session; recurs each session — the build budget carries one; the recurring cost is in project-cost-breakdown §13 (per print).", note="Estimate (2026-11-23), per session"),
     Part("print-ph-strips", "pH test strips", "tools-safety",
          "print-tools", 1, "pack", 10, 10, "Amazon", supplier_alt="", spec="Quick wash-water check between pH-meter readings.", note="SKU pending — estimate (2026-11-23), source at build"),
     Part("safety-first-aid", "First aid kit, ANSI Class A", "tools-safety",

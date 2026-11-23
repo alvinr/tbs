@@ -32,6 +32,7 @@ from tbs_constants import IMAGE_AREA_M2, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZE
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
+CONSUMABLES_RESTOCK_PER_SESSION = 50  # rollers, brushes, gloves worn out per printing session (= one print); parts.py print-consumables-restock
 PER_PRINT_CONSUMABLES = 3 # §7.3 all-in basis: water/citric/pH per print BEYOND §7.1 chem+substrate
 
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
@@ -757,7 +758,8 @@ def emit_running_per_print() -> str:
             ("Sensitizer chemistry (Standard tier, incl. the optional dichromate allowance)", _std_chem_per_print()),
             (f"Water ({BLUE_PER_PRINT_GAL} gal Blue, tanker at ~${TANKER_PER_GAL:.2f}/gal)", water),
             ("Processing consumables (liner, gloves, citric acid, pH)", PER_PRINT_CONSUMABLES),
-            ("Filter cartridges, amortized (est.)", FILTER_PER_PRINT)]
+            ("Filter cartridges, amortized (est.)", FILTER_PER_PRINT),
+            ("Roller, brush and glove restock (one printing session)", CONSUMABLES_RESTOCK_PER_SESSION)]
     out = ["| Item | Cost |", "|------|------|"]
     out += [f"| {lbl} | ~${v:.2f} |" if v < 1 else f"| {lbl} | ~${v:.0f} |" for lbl, v in rows]
     out.append(f"| **Per-print running cost** | **~${sum(v for _, v in rows):.0f}** |")

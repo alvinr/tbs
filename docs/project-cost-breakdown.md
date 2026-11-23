@@ -446,7 +446,8 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Water (30 gal Blue, tanker at ~$0.01/gal) | ~$0.30 |
 | Processing consumables (liner, gloves, citric acid, pH) | ~$3 |
 | Filter cartridges, amortized (est.) | ~$5 |
-| **Per-print running cost** | **~$42** |
+| Roller, brush and glove restock (one printing session) | ~$50 |
+| **Per-print running cost** | **~$92** |
 <!-- END costing:running-per-print -->
 
 ### Per deployment

@@ -29,18 +29,20 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   US Plastic Corp, Amazon sellers, all local fabrication → "Local fab", generic hardware → Home Depot,
   stub-shaft stock → Metal Supermarkets). Remaining moves need a re-sourced SKU + price (each lands on
   an order we already place):
-  - [ ] Bearings Direct (SKF 6215-2RS1, 51118 thrust) → McMaster-Carr — $201
+  - [x] Bearings Direct (SKF 6215-2RS1, 51118 thrust) — KEEP with Bearings Direct (owner, 2026-11-23)
   - [x] Canal Rubber → McMaster: EPDM foam 8694K88; drum-end seal 93375K29 + 93375K27 stacked (2026-11-23)
   - [x] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T426 (2026-11-23; running gap widened to 16mm)
   - [~] Blue Sea → Powerwerx: MRBF 5187+5191 and busbar 2312 done (2026-11-23); inverter ANL fuse + disconnect still to source
   - [x] Inverter Service Center → Powerwerx BPC121531104R $175.95 (2026-11-23)
   - [~] buyDeutsch → Waytek Amphenol AT set done (2026-11-23, $42.07); AutomationDirect 4 AWG ground wire → Waytek still to source
   - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30
-  - [ ] McNichols (grating clips) + Fibergrate (edge-seal kit) → American Grating, with the grating — $70–110
+  - [~] McNichols grating clips — KEEP (owner, 2026-11-23); Fibergrate edge-seal kit → American Grating still open
   - [ ] Harfington (2× uxcell e-stop) → Amazon (same uxcell part) — $26
   - [ ] Polycase (ZH-080804 enclosure) → Amazon (listed alt); Central Coast Plastics (Dibond) → TAP Plastics (listed alt)
-  - [ ] DripDepot (LDPE pipe, clamps, barb tee), Lowe's (Hillman self-drillers), misterworker (foot valve),
-        CountryMax (aquarium silicone), Fresh Water Systems (Big Blue brackets) → Home Depot / Amazon equivalents — ~$100
+  - [~] Lowe's Hillman self-drillers → McMaster 90415A129 done (2026-11-23); misterworker foot valve — KEEP (owner).
+        DripDepot pipe + barb tee HELD: Home Depot X2-75160100 is IPS pipe (OD ≈1.0in) and SWGT1/2TEE is a swing-pipe tee,
+        neither fits the 0.940in-OD tube the saddle tees / end clamps / manifold clips are sized to. CountryMax silicone,
+        Fresh Water Systems brackets still open.
   - [ ] HitLights strip + LED Profiles channel → Super Bright LEDs (already the safelight order) — only if an
         equivalent 4000K COB strip keeps the electrical-report lux basis
   - [ ] Fasteners Plus (5/8in jaw-eye turnbuckle JETBGV58X6) → McMaster

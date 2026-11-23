@@ -14,7 +14,7 @@ All prices USD.
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,989 | $8,355 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,993 | $8,358 |
 | 6. Electrical — power, circuits, wiring | $3,522 | $3,627 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,068** | **~$36,497** |
+| **TOTAL (base build + 50-print run)** | **~$28,072** | **~$36,500** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -298,7 +298,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Cushioned pipe clips, 3/4in — spray manifold mount | 1 10-pack | McMaster-Carr | spray | $8–$15 |
 | [Figure-8 end clamps, 3/4in poly](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) (1533) | 1 10-pack | DripDepot | spray | $4 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
-| [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
+| [#10 × 1in 18-8 SS self-drilling screws (25-pack)](https://www.mcmaster.com/90415A129/) (90415A129) | 1 25-pack | McMaster-Carr | spray | $6 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Local fab | water | $19 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
@@ -306,7 +306,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 9 ft | McMaster-Carr | walkway | $116 |
-| **fasteners-hardware subtotal** | | | | **$2,339–$2,607** |
+| **fasteners-hardware subtotal** | | | | **$2,343–$2,611** |
 
 ### optics
 
@@ -526,7 +526,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
-| McMaster-Carr | 94 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,612–$2,620 |
+| McMaster-Carr | 95 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,618–$2,626 |
 | Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
@@ -568,7 +568,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | misterworker | 1 | plumbing-fittings | $14 |
-| Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
 | shared (Plywood Cut Sheets) | 3 | timber-ply | $0 |
 | (cut from walkway-right-bearer) | 2 | fasteners-hardware | $0 |
 | offcuts | 1 | water-equipment | $0 |

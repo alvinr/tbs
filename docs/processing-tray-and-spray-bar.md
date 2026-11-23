@@ -586,8 +586,8 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$595<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$615<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,068<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,736<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$599<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$618<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,072<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,739<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

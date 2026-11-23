@@ -1495,7 +1495,7 @@
   <a href="#3-nesting-layout" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Nesting layout
+        3. Nesting Layout
       
     </span>
   </a>
@@ -1506,7 +1506,7 @@
   <a href="#4-stock-sheets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Stock sheets
+        4. Stock Sheets
       
     </span>
   </a>
@@ -1517,7 +1517,7 @@
   <a href="#5-source-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Source references
+        5. Source References
       
     </span>
   </a>
@@ -2675,41 +2675,27 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="plywood-cut-sheets-tbs-001">Plywood Cut Sheets — TBS-001<a class="headerlink" href="#plywood-cut-sheets-tbs-001" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>Plywood recurs across the build — the IBC-corridor plumbing panel and pump-mount shirt, the
-pinhole-wall filter-skid backing, the interior EP electrical backboard, the hinged light-trap
-panel's Fan-B mount band and pull-out corner apron (base + corner strips + lip cleats), and the chemistry-prep shelf. This document is the <strong>single cut sheet</strong> the
-buyer and fabricator work from: every plywood part in one schedule, grouped by grade and thickness
-so same-stock parts nest on one sheet.</p>
-<p>The cut dimensions are <strong>single-sourced</strong>. Geometry-driven pieces — the pinhole-wall panel width,
-the pull-out apron base + strip sizes, the chem-shelf board — derive from <code>tbs_constants</code> and
-cannot drift from the model (marked with a ᴰ on the schedule); the rest are spec/report literals.
-Cost, supplier, and SKU stay in <code>parts.py</code>, keyed on each part's registry entry, so the money can't
-drift from the procurement record. Fabrication detail for a given piece — hole positions, edge seal,
-hinge line — stays on its owning subsystem sheet; this document is the stock and cut index, not the
-fab detail.</p>
+<p>This document is the <strong>single cut sheet</strong> the buyer and fabricator work
+from: every plywood part in one schedule, grouped by grade and thickness so same-stock parts nest on
+one sheet.</p>
+<p>Geometry-driven dimensions derive from <code>tbs_constants</code> and are marked ᴰ on the schedule; the rest
+are spec literals. Cost, supplier and SKU live in <code>parts.py</code>, keyed on each part's registry entry.
+Fabrication detail for a piece (hole positions, edge seal, hinge line) stays on its owning
+subsystem sheet; this document is the stock and cut index.</p>
 <h2 id="2-schedule">2. Schedule<a class="headerlink" href="#2-schedule" title="Permanent link">&para;</a></h2>
-<p>Every plywood cut piece, grouped by stock. The ᴰ marker flags a dimension derived from a
-<code>tbs_constants</code> value; the <code>parts.py</code> key under each part is where its cost and supplier live.</p>
+<p>Every plywood cut piece, grouped by stock. The <code>parts.py</code> key under each part is where its cost and
+supplier live.</p>
 <p><img alt="Plywood schedule" src="../assets/plywood-cutsheets-sheet1.png" /></p>
-<h2 id="3-nesting-layout">3. Nesting layout<a class="headerlink" href="#3-nesting-layout" title="Permanent link">&para;</a></h2>
-<p>A bin-packer nests all pieces of one grade+thickness onto the fewest 4×8 sheets, <strong>mixing pieces across
-subsystems</strong> (e.g. the corridor panel, pump-mount shirt, pinhole-wall backing, the pull-out apron pieces, and
-the Fan-B mount band all share the Southern-Yellow-Pine sheets A–C). Every layout is <strong>guillotine-cuttable
-— each cut is a straight 90° edge-to-edge pass, the only cut a panel saw / sawmill makes</strong> — and the
-drawing shows the cut lines (dashed red), <strong>numbered in cutting order</strong>, with the cut count per sheet. The packer works to a <strong>5mm cut
-tolerance</strong>: a piece may overhang a sheet edge by up to 5mm and still nest, so a near-full-width piece cuts
-clean to the edge rather than forcing a new sheet. It minimizes the sheet count first, then the number of
-cuts (the current nest is <strong>4 sheets, 50 cuts</strong>). This packs the whole job into <strong>4 stock sheets, lettered A–D</strong> — down from 8 if
-each part were cut on its own sheet. Standardizing the timber plywood on 18mm drove the consolidation: the
-pull-out apron ply (fixed base + corner strips + lip cleats) nests into the SYP offcut (sheets A–C); the EP electrical
-backboard — a finish-agnostic backing surface — now shares the chem-shelf UV-white sheet (sheet D); and
-the Fan-B band + cooler base re-graded from a dedicated ¾" pressure-treated sheet into the same SYP offcut,
-retiring the PT sheet. So the whole job settles into <strong>two grades</strong> (SYP, UV-white). Pieces are drawn to
-scale; ↻ marks a piece rotated 90° to fit, dashed red lines are saw cuts, and shaded pieces are fixed. The layout is a nesting + cut guide — the shop rips each sheet along the shown guillotine cuts.</p>
+<h2 id="3-nesting-layout">3. Nesting Layout<a class="headerlink" href="#3-nesting-layout" title="Permanent link">&para;</a></h2>
+<p>A bin-packer nests all pieces of one grade and thickness onto the fewest 4×8 sheets, <strong>mixing
+pieces across subsystems</strong>. Every layout is <strong>guillotine-cuttable</strong>: each cut is a straight 90°
+edge-to-edge pass. The drawing numbers the cuts (dashed red) in
+cutting order and gives the sheet and cut counts. The packer works to a <strong>5mm cut tolerance</strong>, so a
+near-full-width piece may overhang a sheet edge by up to 5mm rather than forcing a new sheet. It
+minimizes the sheet count first, then the number of cuts. ↻ marks a piece rotated 90° to fit, and
+shaded pieces are fixed.</p>
 <p><img alt="Plywood nesting" src="../assets/plywood-cutsheets-sheet2.png" /></p>
-<h2 id="4-stock-sheets">4. Stock sheets<a class="headerlink" href="#4-stock-sheets" title="Permanent link">&para;</a></h2>
-<p>The four sheets are lettered <strong>A–D</strong> in the nesting layout; the schedule's SHEET column maps each cut
-piece to the same letters.</p>
+<h2 id="4-stock-sheets">4. Stock Sheets<a class="headerlink" href="#4-stock-sheets" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2723,14 +2709,14 @@ piece to the same letters.</p>
 <tr>
 <td>A–C</td>
 <td>18mm (23/32")</td>
-<td>RTD Southern Yellow Pine exterior sheathing</td>
-<td>corridor plumbing panel, pump-mount shirt, pinhole-wall backing, pull-out corner apron (fixed base + corner strips + lip cleats), Fan-B mount band + cooler stowage base</td>
+<td>RTD Southern Yellow Pine exterior sheathing (<a href="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747">Home Depot 303564747</a>)</td>
+<td>corridor plumbing panel, pump-mount shirt, pipe-clip standoff blocks, pinhole-wall backing, pull-out corner apron (fixed base, corner strips, lip battens), Fan-B mount band</td>
 </tr>
 <tr>
 <td>D</td>
 <td>18mm</td>
-<td>UV-coated white hardwood (Swaner)</td>
-<td>chem-prep shelf board + EP electrical backboard</td>
+<td>UV-coated white hardwood, Swaner (<a href="https://www.homedepot.com/p/302874373">Home Depot 302874373</a>)</td>
+<td>chem-prep shelf board, EP backboard, cooler stowage base</td>
 </tr>
 <tr>
 <td></td>
@@ -2740,16 +2726,14 @@ piece to the same letters.</p>
 </tr>
 </tbody>
 </table>
-<p>Sheets A–C are one SKU, so the packer nests their parts together across subsystems (the pinhole-wall
-backing exceeds a single sheet's width, so it is cut as two butt-jointed halves; the pull-out apron pieces,
-the Fan-B band, and the cooler base all drop into the offcut). Sheet D's UV-white stock yields
-both the chem-prep work surface and the EP electrical backboard — the backboard needs only a sealed,
-wipeable face, which the UV coating already gives, so it rides the same sheet rather than buying its own.
-Sheet D is single-grade (a different finish from A–C), so it cannot cross-nest — that residual sheet is
-set by the grade split, not packing efficiency. Standard exterior grade throughout except the UV-coated
-sheet-D surface — no marine ply and no pressure-treated, since no plywood part carries a water-immersion load
-(the Fan-B mount is dry and vented).</p>
-<h2 id="5-source-references">5. Source references<a class="headerlink" href="#5-source-references" title="Permanent link">&para;</a></h2>
+<p>Sheets A–C are one SKU, so their parts nest together across subsystems. The pinhole-wall backing is
+wider than a sheet, so it is cut as two butt-jointed halves. Sheet D's UV-white stock yields the
+chem-prep work surface, the EP backboard and the cooler stowage base: the backboard and base need
+only a sealed, wipeable face, which the UV coating gives, and moving the base here lets the pine pack
+onto three sheets. Sheet D is a different finish from A–C, so it cannot cross-nest. All plywood is
+standard exterior grade; no part carries a water-immersion load, so none is marine or
+pressure-treated.</p>
+<h2 id="5-source-references">5. Source References<a class="headerlink" href="#5-source-references" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Cut geometry — <a href="https://github.com/alvinr/tbs/blob/main/src/generators/tbs_constants.py"><code>tbs_constants.py</code></a> (single source), drawn by
   <a href="https://github.com/alvinr/tbs/blob/main/src/generators/generate_plywood_cutsheets.py"><code>generate_plywood_cutsheets.py</code></a>.</li>

@@ -1374,10 +1374,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-why-fold-down-film-plane-swing-optical-cone" class="md-nav__link">
+  <a href="#21-film-plane-swing-and-optical-cone" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Why fold-down (film-plane swing) + optical cone
+        2.1 Film-Plane Swing and Optical Cone
       
     </span>
   </a>
@@ -1416,7 +1416,7 @@
   <a href="#31-shelf-board" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 Shelf board
+        3.1 Shelf Board
       
     </span>
   </a>
@@ -1427,7 +1427,7 @@
   <a href="#32-fold-down-mechanism" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Fold-down mechanism
+        3.2 Fold-Down Mechanism
       
     </span>
   </a>
@@ -1460,7 +1460,7 @@
   <a href="#35-fabrication-detail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 Fabrication detail
+        3.5 Fabrication Detail
       
     </span>
   </a>
@@ -2810,41 +2810,31 @@
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
 <p>Cyanotype processing requires a clean, stable work surface for:</p>
 <ul>
-<li>Mixing sensitizer chemistry (ammonium iron(III) oxalate + potassium ferricyanide)</li>
+<li>Mixing sensitizer chemistry (ferric ammonium oxalate + potassium ferricyanide)</li>
 <li>Measuring and dispensing solutions (graduated cylinders, digital scale)</li>
-<li>Coating muslin substrate with sensitizer (roller tray, foam roller)</li>
 <li>Staging materials (bottles, pH meter, gloves, timer)</li>
 <li>Post-exposure citric acid wash preparation</li>
 </ul>
-<p>Chemistry is mixed <strong>before exposure</strong>, so the shelf does not need to be permanently
-deployed. It is a <strong>wall-hinged fold-down</strong> in the widened near walkway: folded DOWN to
-a counter-height work surface while mixing, and folded UP flat against the pinhole wall
-for transport and during exposure. Because it is only deployed while the film plane is
-parked, it is <strong>fully decoupled from the film-plane swing</strong>.</p>
-<p>A dedicated water tap (TAP-01) on the pinhole wall provides filtered water from the blue
-supply line for chemistry mixing and wash-down. It is relocated to the <strong>left of the
-shelf</strong> (the battery bank is to the right); the branch riser tops at the stowed-shelf
-height and the spout reaches over the shelf to fill containers. Ball valve BV-04
-on the ¾" branch gives shut-off control from the prep position.</p>
+<p>The chemistry shelves provides a counter height place to mix chemistry before appliying. It is folded up for transport and during exposures. Water tap TAP-01, on the pinhole wall left of the shelf,
+supplies filtered Blue water for mixing and wash-down. Its riser tops at the stowed-shelf height
+and the spout reaches over the board; ball valve BV-04 on the ¾" branch shuts it off from the
+prep position.</p>
 <hr />
 <h2 id="2-location-and-spatial-constraints">2. Location and Spatial Constraints<a class="headerlink" href="#2-location-and-spatial-constraints" title="Permanent link">&para;</a></h2>
-<p>The shelf is in the <strong>widened near walkway</strong> (<!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep), hinged on the
-pinhole wall <strong>left of the battery bank</strong>. Deployed, it
-projects 225 mm into the walkway. The operator stands on the widened walkway and works
-facing the wall. When folded up, the full walkway is clear.</p>
+<p>The shelf is in the <strong>widened near walkway</strong>, hinged on the
+pinhole wall left of the battery bank. Deployed, it projects 225 mm into the walkway; folded
+up, the walkway is clear.</p>
 <p><img alt="Chemistry Prep Shelf — Sheet 1: Plan View" src="../assets/shelf-sheet1.png" /></p>
-<h3 id="21-why-fold-down-film-plane-swing-optical-cone">2.1 Why fold-down (film-plane swing) + optical cone<a class="headerlink" href="#21-why-fold-down-film-plane-swing-optical-cone" title="Permanent link">&para;</a></h3>
-<p><strong>Film-plane swing.</strong> The fold-down removes the
-conflict with the film plane mechanism: the shelf is only deployed while mixing (film plane parked), and is
-folded flat against the wall whenever the plane tilts/swings during exposure. No swing
-restriction is imposed.</p>
+<h3 id="21-film-plane-swing-and-optical-cone">2.1 Film-Plane Swing and Optical Cone<a class="headerlink" href="#21-film-plane-swing-and-optical-cone" title="Permanent link">&para;</a></h3>
+<p><strong>Film-plane swing.</strong> The shelf is down only while mixing, with the film plane parked, and
+folded flat whenever the plane tilts or swings, so it places no limit on the swing.</p>
 <p><strong>Optical cone.</strong> Even deployed, the shelf is clear of the optical cone. Its right edge
-sits left of the cone's left boundary at the shelf's deepest point (Yd=225):</p>
+sits left of the cone's left boundary at the shelf's deepest point (Yd 225):</p>
 <pre><code>cone_left(225) = PH_X + (FP_X_L − PH_X) × 225 / FP_Y
                = 2,454 + (260 − 2,454) × 225 / 2,262
                = 2,454 − 218 = 2,236 mm
 </code></pre>
-<p>→ the shelf right edge (X=1,780) is ~<strong>456 mm</strong> outside (left of) the cone. No vignetting at any
+<p>The shelf right edge (X 1,780) is <strong>456 mm</strong> left of the cone, so it cannot vignette at any
 film-plane position.</p>
 <h3 id="22-spatial-constraints">2.2 Spatial Constraints<a class="headerlink" href="#22-spatial-constraints" title="Permanent link">&para;</a></h3>
 <table>
@@ -2877,13 +2867,13 @@ film-plane position.</p>
 </tr>
 <tr>
 <td>Optical cone</td>
-<td>~456 mm clear</td>
+<td>456 mm clear</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="3-design-specification">3. Design Specification<a class="headerlink" href="#3-design-specification" title="Permanent link">&para;</a></h2>
-<h3 id="31-shelf-board">3.1 Shelf board<a class="headerlink" href="#31-shelf-board" title="Permanent link">&para;</a></h3>
+<h3 id="31-shelf-board">3.1 Shelf Board<a class="headerlink" href="#31-shelf-board" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2914,36 +2904,30 @@ film-plane position.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Work surface:</strong> 18 mm UV-coated white plywood (<code>BPI6WUV2I</code>) — chemical-resistant to cyanotype
-solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean, and white for chemistry visibility. The plywood is the <strong>primary
-structure</strong> — the earlier welded 25×25×3 steel perimeter frame is removed (see
-<a href="https://github.com/alvinr/tbs/blob/main/chem-shelf-blueprint-spec.md"><code>chem-shelf-blueprint-spec.md</code></a>); all attachments land in <strong>pronged
-tee-nuts in the ply underside</strong> (the 1/4-20 ply-mount standard), which is why the M5 CSK ply screws
-are gone.</p>
-<p><strong>Spill lip:</strong> a 15 mm <strong>HDPE</strong> lip on all four edges retains bottles/items — front and two sides at
-the board edge, plus a fourth lip on the back that butts up to the hinge leaf (~38 mm in), so the tray is
-closed on every side. HDPE (an offcut of the light-trap stock) is inert in the splash zone; cut edges sealed.</p>
-<h3 id="32-fold-down-mechanism">3.2 Fold-down mechanism<a class="headerlink" href="#32-fold-down-mechanism" title="Permanent link">&para;</a></h3>
+<p><strong>Work surface:</strong> 18 mm UV-coated white plywood (<a href="https://www.homedepot.com/p/302874373">Home Depot BPI6WUV2I</a>):
+resistant to cyanotype solutions and pH 3–4 citric acid, non-absorbent, wipe-clean, and white so the
+chemistry is easy to see. The plywood is the whole structure (no frame); every attachment lands in a
+<strong>pronged 1/4-20 tee-nut in the ply underside</strong>, the project's ply-mount standard.</p>
+<p><strong>Spill lip:</strong> a 15 mm <strong>HDPE</strong> lip closes all four sides: front and both ends at the board edge,
+and the back lip against the hinge leaf (~38 mm in). HDPE, an offcut of the light-trap stock, is
+inert in the splash zone.</p>
+<h3 id="32-fold-down-mechanism">3.2 Fold-Down Mechanism<a class="headerlink" href="#32-fold-down-mechanism" title="Permanent link">&para;</a></h3>
 <p><img alt="Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)" src="../assets/shelf-sheet2.png" /></p>
-<p><strong>Piano hinge:</strong> a <strong>bolt-on extra-clearance</strong> 304 SS continuous piano hinge (14835A77, 3 in / 76.2 mm
-open) runs the full 600 mm back edge — its shelf leaf machine-screwed (1/4-20 SS) into a row of ply
-tee-nuts, its wall leaf tapped 1/4-20 into a 6 mm mounting cleat. The wide 38.1 mm leaf is what lets the
-tee-nut row sit a full <strong>25 mm</strong> from the board edge (flange fully on-board, real plywood edge distance) —
-a 1 in-open hinge would force the row to ~7 mm, too shallow for the ply. Because the pinhole wall is corrugated, the cleat and each chain wall anchor bolt to
-<strong>flat 8 mm steel backing plates welded to the wall crests</strong> (M8×25 into the tapped 8 mm plate — no weld-nut, no loose nut behind the wall-welded plate) —
-flat, solid load anchors rather than bridging the corrugation. The shelf swings between horizontal
-(deployed) and vertical-up (stowed) about this hinge; the chains slacken as it folds up.</p>
-<p><strong>Stays:</strong> two <strong>304 SS chains</strong> run from wall anchors (M8 eye bolts) ~230 mm above the hinge down to
-a <strong>1/4-20 SS eye bolt</strong> in each shelf front corner. Deployed, they carry the front-edge load in
-tension and hold the board level; the length is set by the chosen link (quick-links at the ends) —
-simple and adjustable.</p>
-<p><strong>Transport latch:</strong> the folded-up board is secured for transport by a <strong>cam latch</strong> (the same
-1619A74 as the hinged panel — a standard-part reuse) at the top against the wall.</p>
+<p><strong>Piano hinge:</strong> a 304 SS extra-clearance continuous hinge runs the full 600 mm back edge. The shelf leaf screws (1/4-20 SS) into a row of ply
+tee-nuts; the wall leaf is tapped 1/4-20 into a 6 mm cleat. The wide hinge leaf puts the tee-nut row
+<strong>25 mm</strong> in from the board edge; a 1 in-open hinge would leave only ~7 mm of ply. The pinhole wall is
+corrugated, so the cleat and both chain anchors bolt (M8×25) into <strong>flat 8 mm steel backing plates
+welded to the wall crests and tapped M8</strong>, giving flat anchors with nothing loose behind the wall.
+The board swings between horizontal (deployed) and vertical (stowed); the chains slacken as it folds up.</p>
+<p><strong>Stays:</strong> two <strong>304 SS chains</strong> run from M8 eye bolts above the hinge to a <strong>1/4-20 steel shoulder eye
+bolt</strong> in each front corner. Deployed, they carry the front edge in tension; quick-links at the ends
+set the length, and with it the level.</p>
+<p><strong>Transport latch:</strong> a <strong>cam latch</strong> at the top holds the folded board against the wall.</p>
 <p><img alt="Chemistry Prep Shelf — Sheet 3: Hinge + stay detail" src="../assets/shelf-sheet3.png" /></p>
 <h3 id="33-load-rating">3.3 Load Rating<a class="headerlink" href="#33-load-rating" title="Permanent link">&para;</a></h3>
-<p>Design load <strong>25 kg</strong> (bottles, cylinders, roller tray, scale, staging), deployed horizontal —
-carried by the <strong>2 chain stays</strong> (front-edge tension) + the <strong>piano hinge</strong> (back-edge reaction).
-Validated in <a href="https://github.com/alvinr/tbs/blob/main/src/generators/chem_shelf_load.py"><code>chem_shelf_load.py</code></a>:</p>
+<p>Design load <strong>25 kg</strong> (bottles, cylinders, roller tray, scale), carried by the <strong>2 chain stays</strong>
+(front edge, tension) and the <strong>piano hinge</strong> (back edge). Computed in
+<a href="https://github.com/alvinr/tbs/blob/main/src/generators/chem_shelf_load.py"><code>chem_shelf_load.py</code></a>:</p>
 <!-- BEGIN chem-shelf-load -->
 <table>
 <thead>
@@ -2958,7 +2942,7 @@ Validated in <a href="https://github.com/alvinr/tbs/blob/main/src/generators/che
 <tr>
 <td>Board bending (18mm ply, 600 wide, 225mm span, 25kg UDL)</td>
 <td>7.3 N·m</td>
-<td>324 N·m</td>
+<td>324 N·m (assumed 10 MPa)</td>
 <td><strong>44</strong></td>
 </tr>
 <tr>
@@ -2970,32 +2954,36 @@ Validated in <a href="https://github.com/alvinr/tbs/blob/main/src/generators/che
 <tr>
 <td>Chain stay tension (per chain, 46° from horizontal)</td>
 <td>91 N</td>
-<td>490 N (WLL)</td>
-<td><strong>5</strong></td>
+<td>5,338 N (WLL)</td>
+<td><strong>59</strong></td>
+</tr>
+<tr>
+<td>Front-corner eyebolt (1/4-20 shoulder, ~45° off-axis, 30% of in-line rating)</td>
+<td>91 N</td>
+<td>667 N</td>
+<td><strong>7</strong></td>
 </tr>
 <tr>
 <td>Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply)</td>
 <td>65 N</td>
-<td>1300 N</td>
+<td>1,300 N (assumed)</td>
 <td><strong>20</strong></td>
 </tr>
 </tbody>
 </table>
 <!-- END chem-shelf-load -->
 
-<p>Every element clears with a large margin — the 18 mm ply board and the 2 SS chain stays carry the
-mixing load comfortably, confirming the steel perimeter frame is not structurally required.</p>
+<p>Every element clears with a large margin; the front-corner eyebolts (SF 7) are the governing element.
+The chain and eyebolt capacities are McMaster ratings. The plywood bending allowance (10 MPa) and the
+tee-nut pull-out (1,300 N) are conservative assumptions: the shelf carries only a mixing load, and at
+margins of 44 and 20 a capacity several times lower would still clear.</p>
 <h3 id="34-leveling">3.4 Leveling<a class="headerlink" href="#34-leveling" title="Permanent link">&para;</a></h3>
-<p>The chain length sets the deployed level — pick the link (via the end quick-links) that lands the
-board level on a spirit level at first install; the two chains give independent ±adjust at each front
-corner.</p>
-<h3 id="35-fabrication-detail">3.5 Fabrication detail<a class="headerlink" href="#35-fabrication-detail" title="Permanent link">&para;</a></h3>
-<p>Dimensioned fabrication sheets: the board cut + tee-nut drill positions (Sheet 4), and the wall plates +
-hinge cleat + piano-hinge drilling (Sheet 5). The hinge is supplied <strong>blank</strong>; both its leaves are drilled
-4× at the same 150 mm pitch (25 mm gauge off the pin line, mid-leaf of the 38.1 mm leaf) — the <strong>shelf
-leaf</strong> into the board tee-nut row, the <strong>wall leaf</strong> into the tapped 6 mm cleat — so hinge, tee-nuts, and
-cleat all align. That is 8 hinge screws in all (4 per leaf). The full fastener list is in the parts table
-below.</p>
+<p>Each chain sets its own front corner, so the board is leveled at install by choosing the link each
+quick-link engages.</p>
+<h3 id="35-fabrication-detail">3.5 Fabrication Detail<a class="headerlink" href="#35-fabrication-detail" title="Permanent link">&para;</a></h3>
+<p>Sheet 4 gives the board cut and tee-nut positions; Sheet 5 the wall plates, hinge cleat and hinge
+drilling. The hinge is supplied <strong>blank</strong>: both leaves are drilled 4× at the same 150 mm pitch (25 mm
+off the pin line), so hinge, tee-nuts and cleat align, 8 screws in all.</p>
 <p><img alt="Chemistry Prep Shelf — Sheet 4: Board fabrication (cut + tee-nut drill)" src="../assets/shelf-sheet4.png" /></p>
 <p><img alt="Chemistry Prep Shelf — Sheet 5: Wall plates + hinge cleat + piano hinge drilling" src="../assets/shelf-sheet5.png" /></p>
 <hr />
@@ -3019,7 +3007,7 @@ below.</p>
 </tr>
 <tr>
 <td>Overhead clearance</td>
-<td>425mm below the cable trunking ✓</td>
+<td>Stowed top at Z1,300 — well below the ceiling-corner cable trunking ✓</td>
 </tr>
 <tr>
 <td>Evap stow</td>
@@ -3033,13 +3021,13 @@ below.</p>
 </table>
 <hr />
 <h2 id="5-operator-access">5. Operator Access<a class="headerlink" href="#5-operator-access" title="Permanent link">&para;</a></h2>
-<p>The operator stands on the widened near walkway at about the shelf
-midpoint, facing the wall. The deployed surface (935 mm above the deck) is
-ergonomic counter height; the full depth is reachable. The tap (left of the shelf)
-fills containers staged on the board.</p>
-<p>When deployed, the 225 mm board leaves ~275 mm of the 500 mm walkway behind it — enough
-for the operator to work but not for through-traffic; this is acceptable because the
-shelf is only down while mixing. Folded up, the walkway is fully clear in both directions.</p>
+<p>The operator stands on the widened walkway at the shelf midpoint, facing the wall. The surface,
+935 mm above the deck, sits 21 mm above the 36in (914 mm) US kitchen-counter standard
+(<a href="https://www.bobvila.com/articles/standard-countertop-height/">Bob Vila</a>), a
+comfortable standing height for bench work, and its full depth is in reach; the tap, left of the shelf,
+fills containers on the board.</p>
+<p>Deployed, the board leaves ~275 mm of the 500 mm walkway: room to work but not to pass. That is
+acceptable because the shelf is down only while mixing.</p>
 <hr />
 <h2 id="6-assembly-sequence">6. Assembly Sequence<a class="headerlink" href="#6-assembly-sequence" title="Permanent link">&para;</a></h2>
 <ol>
@@ -3047,28 +3035,31 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 <li>Set the pronged tee-nuts into the ply underside — the hinge screw row along the back edge + one at each front corner.</li>
 <li>Weld the 8 mm backing plates to the pinhole-wall crests (behind the hinge cleat + one per chain anchor); tap them M8; bolt the 6 mm hinge cleat on (M8×25 into the tapped plate).</li>
 <li>Bolt on the piano hinge: wall leaf to the cleat, shelf leaf into the back-edge tee-nut row (1/4-20 SS screws).</li>
-<li>Thread a 1/4-20 SS eye bolt into each front-corner tee-nut; cap/grind the ~7 mm protruding tip.</li>
+<li>Thread a 1/4-20 steel shoulder eye bolt into each front-corner tee-nut; cap/grind the ~7 mm protruding tip.</li>
 <li>Fit an M8 eye bolt into each chain wall anchor ~230 mm above the hinge; hang a chain (quick-links) from each wall eye to the shelf eye.</li>
-<li>Deploy; set each chain link so the board sits level on a spirit level, then lock.</li>
+<li>Deploy; choose the chain link each quick-link engages so the board sits level on a spirit level, then close the quick-links.</li>
 <li>Fit the cam latch (1619A74) + keeper; verify the board folds up flat and latches clear of the wall equipment.</li>
 <li>Verify: deployed level + rigid under load; folded-up clear of the evap stow and walkway.</li>
 </ol>
 <hr />
 <h2 id="7-parts-list">7. Parts List<a class="headerlink" href="#7-parts-list" title="Permanent link">&para;</a></h2>
 <p>See the <strong><a href="../master-shopping-list/?system=shelf">Master Shopping List, filtered to the shelf system</a></strong> for the same parts with suppliers, current prices, and click-to-sort/filter.</p>
-<p><em>The relocated TAP-01 + BV-04 hardware itself is unchanged (carried in the water-system
-BOM); only the ~1.3 m trunk extension is added here.</em></p>
+<p><em>TAP-01 and BV-04 are carried in the water-system BOM; the shelf system adds only the ~1.3 m
+blue-trunk extension that reaches them.</em></p>
 <hr />
 <h2 id="8-maintenance">8. Maintenance<a class="headerlink" href="#8-maintenance" title="Permanent link">&para;</a></h2>
-<p>The shelf has no consumables: the ply surface wipes clean, the hinge, chains and fasteners are
-stainless, and the chain links set the level (§3.4). The deploy, stow and inspection steps are in
+<p>The shelf has no consumables: the ply surface wipes clean, the hinge, chains and quick-links are
+stainless (the eyebolts are plain and galvanized steel, acceptable for splash exposure), and the chain links set the level (§3.4). The deploy, stow and inspection steps are in
 the <a href="../operating-manual/">Operating Manual</a>.</p>
 <hr />
 <h2 id="9-source-references">9. Source References<a class="headerlink" href="#9-source-references" title="Permanent link">&para;</a></h2>
 <ol>
-<li><a href="https://www.iso.org/standard/76912.html">ISO 668:2020</a> — Series 1 freight containers: dimensions and ratings.</li>
-<li><a href="../walkway-report/">Walkway System Report</a> — Walkway deck height and the widened near-walkway section.</li>
-<li><a href="../equipment-layout-report/">Equipment Layout Report</a> — Optical cone clearance and pinhole-wall zone definitions.</li>
+<li><a href="https://www.mcmaster.com/14835A77-14835A33/">McMaster-Carr 14835A77</a> — 304 SS extra-clearance continuous hinge, 76.2 mm open, 38.1 mm leaf.</li>
+<li><a href="https://www.mcmaster.com/1619A74/">McMaster-Carr 1619A74</a> — lift-and-turn cam latch (transport latch).</li>
+<li><a href="https://www.homedepot.com/p/302874373">Home Depot BPI6WUV2I</a> — 18 mm UV-coated white plywood (work surface).</li>
+<li><a href="../walkway-report/">Walkway System Report</a> — walkway deck height and the widened near-walkway section.</li>
+<li><a href="../equipment-layout-report/">Equipment Layout Report</a> — optical cone clearance and pinhole-wall zones.</li>
+<li><a href="https://www.bobvila.com/articles/standard-countertop-height/">Bob Vila — Standard Countertop Height</a> — 36in standard (34.5in base cabinet + 1.5in top).</li>
 </ol>
 
 

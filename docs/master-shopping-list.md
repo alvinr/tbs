@@ -17,7 +17,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $7,018 | $8,385 |
 | 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
-| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,270 | $1,770 |
+| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,290 | $3,177 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,848** | **~$36,692** |
+| **TOTAL (base build + 50-print run)** | **~$27,864** | **~$36,688** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -289,7 +289,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 2 4-pack | Home Depot | shelf | $3 |
 | [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 1 ea | McMaster-Carr | shelf | $31 |
 | [M8 SS eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 2 ea | McMaster-Carr | shelf | $16 |
-| Stay-anchor crush sleeve stock — 1-3/8in OD × 1/4in wall DOM steel tube | 1 ft | McMaster-Carr | swing | $20–$40 |
+| [Stay-anchor crush sleeve stock — 1-3/8in OD × 1/4in wall DOM steel tube](https://www.mcmaster.com/7767T76-7767T761/) (7767T76) | 1 ft | McMaster-Carr | swing | $36 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |
@@ -306,7 +306,7 @@ indicative low–high estimates — get quotes before ordering.
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 9 ft | McMaster-Carr | walkway | $116 |
-| **fasteners-hardware subtotal** | | | | **$2,323–$2,611** |
+| **fasteners-hardware subtotal** | | | | **$2,339–$2,607** |
 
 ### optics
 
@@ -507,7 +507,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
-| McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,171–$2,199 |
+| McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,187–$2,195 |
 | Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Home Depot | 54 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,642–$1,821 |

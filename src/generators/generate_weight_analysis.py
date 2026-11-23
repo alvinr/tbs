@@ -324,15 +324,13 @@ def _bay_weight():
 
 
 def _swing_hardware_weight():
-    """rev10 rotation transport hardware — replaces the retired HGR20 ceiling-rail
-    slide (the pivot reuses the film far-left Ø89 upright, so no new post). Reconciled
-    against the firmed Stage-4 BOM (master-shopping-list.md §7a, 2026-06-10):
-      bearings ~4 kg (12in turntable thrust ~2 + 2× 89mm bronze sleeve ~1),
-      pivot hub + thrust collar (machined steel block) ~10 kg, drum support cage
-      (40×40×3 SHS, ~4m) ~15 kg, top+bottom wall stays + 4-bolt anchor plates ~5 kg,
-      4× drop-in rail saddles ~4 kg. Sum ≈ 38 kg (unchanged from the prior estimate —
-      bearings lighter, machined hub heavier, net wash)."""
-    return 4 + 10 + 15 + 5 + 4   # ≈ 38 kg, concentrated at the cargo-door end
+    """rev10 rotation transport hardware at the cargo-door end: bearings ~4 kg (51118 thrust + 2×
+    iglide J bushings), pivot hub + thrust collar ~10 kg, top + bottom wall stays + anchor plates
+    ~5 kg, 4× drop-in rail saddles ~4 kg, plus the drum support cage — the welded 2×2×0.120in RHS
+    box taken member-by-member from generate_movable_panel_weight (single source)."""
+    import generate_movable_panel_weight as mpw
+    cage = sum(kg for g, _, _, kg, _ in mpw._rows() if g.startswith("E "))
+    return 4 + 10 + 5 + 4 + cage
 
 
 def _ibc_stacking_frame_weight():
@@ -476,7 +474,7 @@ def build_components():
         Component("Swing pivot + cage hardware", "structure", _swing_hardware_weight(),
                   0, 400, 700, 2287,
                   0, C_HGT, color=C_ALUM,
-                  calc_note="rev10 rotation transport hardware (replaces retired HGR20 ceiling rails): pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs Stage-4 BOM"),
+                  calc_note="rev10 rotation transport hardware: pivot bearings + collar + wall stays + rail saddles (estimates) + the drum support cage (2×2×0.120in RHS box, from generate_movable_panel_weight), at the cargo-door end"),
         Component("Container mods", "structure", 65.0,
                   0, C_LEN, 0, C_WID, 0, C_HGT, color=C_WALL,
                   calc_note="Light seal foam + reinforcement plates (estimate)"),
@@ -1334,6 +1332,7 @@ def weight_values():
         return sum(_rhu(c.weight_kg) for c in comps if c.name == name)
     v["wt-near-elec"] = f"{_cw('Electrical panel') + _cw('Battery bank') + _cw('Solar controller')}"
     v["wt-comp-film"] = f"{_cw('Film plane carriage')}"
+    v["wt-comp-swing"] = f"{_cw('Swing pivot + cage hardware')}"
 
     # §5/§6.3 CG-shift deltas (rounded to 5mm — descriptive), §6.3 length ratio + door total,
     # §6.5 walkway subsystem total + % of dry

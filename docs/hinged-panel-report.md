@@ -141,7 +141,7 @@ is slightly lower than the whole-panel figure carried in the
 
 **By material:** steel 193 kg (70%), HDPE 68 kg (25%), plywood 10 kg (4%), aluminum 3 kg (1%), EPDM/other 3 kg (1%).
 
-**Pivot loads.** The movable mass sits 1.16m from the swing axis (mass-weighted plan centroid), so it puts **3.1 kN·m** on the pivot post against the 3.6 kN·m the post is sized for, and **277 kg** on the thrust bearing against its 330 kg design load (§5.5).
+**Pivot loads.** The movable mass sits 1.16m from the swing axis (mass-weighted plan centroid), so it puts **3.1 kN·m** on the pivot post against the 3.6 kN·m the post is sized for, and **277 kg** on the thrust bearing against its 330 kg design load (§5.5). The hub reacts that moment through its two bushings as a 1.7 kN force pair. With the post held at floor and roof, the floor end sees 1.6 kN shear and 0.27 kN·m, which loads each floor-plate M12 to 1.5 kN (M12 Gr.8.8 proof load 50.6 kN).
 <!-- END movable:table -->
 
 All light-lock plastic — skins, drum, bay, housing — is one weld-compatible HDPE.
@@ -473,9 +473,13 @@ doors by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_
 
 The whole movable assembly swings on a **fixed Ø89×8 CHS post** (3" NPS Sch-80, S355 —
 shared with the film plane's far-left rail ends), running floor→roof and **bolted at both ends**
-to Ø220×20 mount plates: the floor plate takes the vertical + moment on a 6× M12 anchor-bolt
-circle into the container floor cross-member, the roof plate is bolted to the roof rail. The
-post is a **structural positioning member** carrying the ~3.6 kN·m swing cantilever (SF 3.7).
+to 200 × 140 × 20mm mount plates. The post axis is only 75mm off the far wall, so the plates are
+rectangular to stay clear of it. The floor plate bolts down with 4× M12 into tapped bosses on the
+**left floor-anchor sub-plate** — the same self-tapped strongback the five walkway legs use, run on
+to the far wall (§5.2 of the [Walkway Report](walkway-report.md#52-floor-anchoring-sub-plate-strongback)),
+because the container's cross-member stations aren't standardized. The roof plate is bolted to the
+roof rail. The post is a **structural positioning member** carrying the ~3.6 kN·m swing cantilever
+(SF 3.7); the floor-anchor loads are in §2.4.
 
 The **moving hub** rides the post and swings with the frame: a **51118 single-direction
 thrust bearing** at the base carries the ~330 kg vertical load, and **two iglide J journal

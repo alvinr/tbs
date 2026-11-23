@@ -42,7 +42,8 @@ BBEAM_KG_PER_M = (k.LT_AXLE_BEAM_W * k.LT_BBEAM_H
                   - (k.LT_AXLE_BEAM_W - 2 * k.LT_AXLE_BEAM_T) * (k.LT_BBEAM_H - 2 * k.LT_AXLE_BEAM_T)) * 1e-6 * RHO_STEEL
 G = 9.81
 PIVOT_MOMENT_DESIGN_KNM = 3.6     # Ø89×8 CHS post sized at SF 3.7 for this moment (report §5.5)
-THRUST_DESIGN_KG = 330            # 51118 thrust-bearing design load (report §5.5)
+THRUST_DESIGN_KG = 330
+M12_PROOF_KN = 84.3 * 600 / 1000  # tensile stress area × 8.8 proof stress            # 51118 thrust-bearing design load (report §5.5)
 
 _REPORT = os.path.join(os.path.dirname(__file__), "..", "..", "docs", "hinged-panel-report.md")
 
@@ -166,8 +167,20 @@ def summary(rows):
     my = sum(kg * (at[1] - k.PIVOT_YD) for *_, kg, at in rows)
     lever_mm = math.hypot(mx, my) / total
     moment_knm = total * G * lever_mm / 1e6
+    # Post held at floor AND roof (fixed-fixed, the stiffer case for the floor end): the hub's two
+    # bushings put an opposing force pair F = M / bushing spacing on it; superpose the end reactions.
+    L = k.C_HGT - k.FLOOR_PLATE_T
+    zb = [z + 55 / 2 - k.FLOOR_PLATE_T for z in k.PIVOT_BUSH_Z]          # 55mm bushing width
+    F = moment_knm * 1e6 / (zb[1] - zb[0])                              # N
+    base_m = base_v = 0.0
+    for P, a in ((F, zb[0]), (-F, zb[1])):
+        b = L - a
+        base_m += P * a * b * b / L ** 2
+        base_v += P * b * b * (3 * a + b) / L ** 3
+    bolt_t = abs(base_m) / (2 * k.PIVOT_PLATE_BOLT_DY) / 2                # 2 bolts per row, weak axis
     return dict(total=total, locks=sum(v for _, v in LOCKS), mats=mats,
-                lever_mm=lever_mm, moment_knm=moment_knm)
+                lever_mm=lever_mm, moment_knm=moment_knm, bush_f_kn=F / 1e3,
+                base_m_knm=abs(base_m) / 1e6, base_v_kn=abs(base_v) / 1e3, bolt_t_kn=bolt_t / 1e3)
 
 
 def table_md():
@@ -194,7 +207,11 @@ def table_md():
             f"**Pivot loads.** The movable mass sits {sm['lever_mm'] / 1000:.2f}m from the swing axis "
             f"(mass-weighted plan centroid), so it puts **{sm['moment_knm']:.1f} kN·m** on the pivot post "
             f"against the {PIVOT_MOMENT_DESIGN_KNM} kN·m the post is sized for, and "
-            f"**{t:.0f} kg** on the thrust bearing against its {THRUST_DESIGN_KG} kg design load (§5.5)."]
+            f"**{t:.0f} kg** on the thrust bearing against its {THRUST_DESIGN_KG} kg design load (§5.5). "
+            f"The hub reacts that moment through its two bushings as a {sm['bush_f_kn']:.1f} kN force pair. "
+            f"With the post held at floor and roof, the floor end sees {sm['base_v_kn']:.1f} kN shear and "
+            f"{sm['base_m_knm']:.2f} kN·m, which loads each floor-plate M12 to {sm['bolt_t_kn']:.1f} kN "
+            f"(M12 Gr.8.8 proof load {M12_PROOF_KN:.1f} kN)."]
     return "\n".join(out)
 
 

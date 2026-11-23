@@ -491,8 +491,8 @@ def left_floor_cantilevers(part="all"):
         # cargo-door sill (X0, guaranteed bottom-end-rail steel) and BUTTS the processing-tray near edge
         # (X=PROC_TRAY_X_L) — it cannot pass under the tray. The legs bolt into it (WF4b); it self-taps into
         # the sill + cross-members (WF4a — container-dependent winged TEKs, drawn on the floor-anchor 2D sheet).
-        _y0 = min(LC_YDS) - foot_w / 2 - 30
-        _y1 = max(LC_YDS) + foot_w / 2 + 30
+        # ... and runs on to the far wall so the pivot post's floor plate bolts into it too.
+        _y0, _y1 = k.LEFT_SUBPLATE_YD0, k.LEFT_SUBPLATE_YD1
         parts.append(ruby_box("Left floor-anchor sub-plate", 0, _y0, 0, k.PROC_TRAY_X_L, _y1 - _y0, pt, color=C_STEEL))
     if part == "plate":
         return parts

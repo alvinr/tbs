@@ -241,7 +241,7 @@ LIGHTLOCK = [
 SWINGPIVOT = [
     # §8.3 swing pivot hardware
     LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 240, 300, "carries ~3.6 kN·m swing cantilever; Metal Supermarkets / local fab"),
-    LineItem("Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets", 70, 95, 120, "2026-08-28: Ø220×20 plates + 12× M12 anchors + 3 welded hub brackets (previously uncosted); local fab / McMaster — Sheet 10"),
+    LineItem("Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets", 70, 95, 120, "2026-11-22: 200×140×20 rectangular plates (post 75mm off the wall), floor plate into the left floor-anchor sub-plate, 8× M12; 2026-08-28: + 3 welded hub brackets (previously uncosted); local fab / McMaster — Sheet 10"),
     LineItem("Thrust ball bearing, 51118 (Ø90 bore, single-direction)", 80, 80, 80, "Bearings Direct $80.03 firm; SF>50 on the 3.24 kN axial"),
     LineItem("iglide J flange bushings, Ø90 bore (×2)", 261, 261, 261, "igus JFM-9095-100 $130.53 ea, ships in days (replaced the $211/ea 3-mo-lead GGB DU)"),
     LineItem("Drum support cage, 2×2×0.120in steel SHS", 70, 95, 120, "Local fab"),

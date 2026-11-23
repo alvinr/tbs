@@ -552,7 +552,7 @@ DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
 DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
 DRUM_CAGE_YD_L = 700    # cage near side — FIXED (walkway/transport envelope); decoupled from the drum Ø on the Ø900→Ø800 shrink. Clears the Ø800 housing (near edge 781) by 31mm at the rail inner face (750).
 DRUM_CAGE_YD_R = 1662   # cage far side — FIXED (see YD_L); clears the Ø800 housing (far edge 1581) by 31mm.
-APRON_FIX_W    = 200    # far-pivot FIXED region width (Yd): the pull-out strips stop here — a strip at the pivot would foul the Ø89 pivot post + its Ø220 floor mount plate; the far-pivot bottom is the full-height far_leaf strip. (The far pull-out strip spans Yd PANEL_CORNER_YD_R..C_WID−APRON_FIX_W.)
+APRON_FIX_W    = 200    # far-pivot FIXED region width (Yd): the pull-out strips stop here — a strip at the pivot would foul the Ø89 pivot post + its floor mount plate; the far-pivot bottom is the full-height far_leaf strip. (The far pull-out strip spans Yd PANEL_CORNER_YD_R..C_WID−APRON_FIX_W.)
 # APRON_CAGE_GAP / APRON_IN_L / APRON_IN_R retired 2026-11-05 — the fold-down apron's cage-side brush gap +
 # center baffle are gone (pull-out redesign, hingepanel Sheet 16): the fixed full-width base (Z0–130)
 # spans the whole door bottom and the drum's own vertical cage seals the center; the corner strips end at
@@ -1358,6 +1358,21 @@ LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×
 LEFT_WK_CANT_ARM_W_WIDE = 101.6  # widened (drum-exit punch-out) arm — 4×1×0.120in tube (4in face in Yd × 25.4 Z). REDESIGNED to US IBC/OSHA: the 605mm punch-out cantilever at 2×1 was only SF 1.04 under the 300 lbf tip load; 4×1 → SF 1.99 (walkway_load.py). Depth spray-bar-capped, so wider not deeper (2026-08-19).
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 580 — standard arm tip (grate inner edge)
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 880 — widened arm tip (punch-out inner edge)
+# Left floor-anchor sub-plate (strongback): X0 → the tray near edge, Yd from just short of the first
+# leg foot to just short of the far wall, so the pivot post bolts into the same plate as the 5 legs.
+FLOOR_SUBPLATE_WALL_GAP = 5
+LEFT_SUBPLATE_YD0 = min(LEFT_WK_CANT_LEG_YDS) - LEFT_WK_CANT_FOOT[1] // 2 - 30      # 190
+LEFT_SUBPLATE_YD1 = C_WID - FLOOR_SUBPLATE_WALL_GAP                                  # 2357
+# Pivot-post floor/roof mount plates: rectangular, since the post axis is only 75mm off the far wall
+# (a round plate would run into it) and the floor plate must stay off the tray (X ≤ PROC_TRAY_X_L).
+PIVOT_PLATE_W  = 200    # X (mm)
+PIVOT_PLATE_D  = 140    # Yd (mm) — wall-side edge at PIVOT_YD + 70 = 2357
+PIVOT_PLATE_T  = 20
+PIVOT_PLATE_BOLT_DX = 70   # 4× M12 at ±70 X / ±45 Yd (140×90 pattern; edge 30 / 25mm)
+PIVOT_PLATE_BOLT_DY = 45
+PIVOT_BUSH_Z   = (220, 2050)   # bottom / top iglide journal-bushing Z (mm) — the hub's overturning couple
+assert PIVOT_YD + PIVOT_PLATE_D / 2 <= C_WID - FLOOR_SUBPLATE_WALL_GAP
+assert PIVOT_X + PIVOT_PLATE_W / 2 <= PROC_TRAY_X_L
 # Right walkway (IBC end): the deck's INNER (tray-facing) edge is anchored to the tray module
 # (X4329); its OUTER edge lands on the shared COMBINED-CORNER-PLATE FACE (F1, 2026-08-18) —
 # RAIL_X_R − FP_CORNER_SEAT_PLATE_W/2 = 4574 — so the cantilever rectangle no longer overruns the

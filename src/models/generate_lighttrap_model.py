@@ -607,26 +607,37 @@ def axle():
     """FIXED pivot: a Ø89×8 CHS post (the film far-left upright reused), floor-to-roof,
     bolted at both ends + a thrust collar the assembly rests on. Carries the swing
     cantilever (σ~95 MPa, SF~3.7 on S355)."""
+    from tbs_constants import (PIVOT_PLATE_W as PW, PIVOT_PLATE_D as PD, PIVOT_PLATE_T as PT,
+                               PIVOT_PLATE_BOLT_DX as BDX, PIVOT_PLATE_BOLT_DY as BDY, FLOOR_PLATE_T)
     c = C_STEEL
     r = ov.PIVOT_POST_OD / 2.0                       # 44.5
-    return '\n'.join([
-        ruby_cylinder("Pivot post (Ø89 CHS)", PIVOT_X, PIVOT_YD, 0, r, C_HGT, color=c, axis="z"),
-        ruby_cylinder("Pivot floor mount plate", PIVOT_X, PIVOT_YD, 0, 110, 20, color=c, axis="z"),
-        ruby_cylinder("Pivot roof mount plate", PIVOT_X, PIVOT_YD, C_HGT - 20, 110, 20, color=c, axis="z"),
+    z0 = FLOOR_PLATE_T                               # post + floor plate stand ON the left floor-anchor sub-plate
+    x0, y0 = PIVOT_X - PW / 2, PIVOT_YD - PD / 2
+    p = [
+        ruby_cylinder("Pivot post (Ø89 CHS)", PIVOT_X, PIVOT_YD, z0, r, C_HGT - z0, color=c, axis="z"),
+        ruby_box("Pivot floor mount plate", x0, y0, z0, PW, PD, PT, color=c),
+        ruby_box("Pivot roof mount plate", x0, y0, C_HGT - PT, PW, PD, PT, color=c),
         ruby_cylinder("Pivot thrust collar", PIVOT_X, PIVOT_YD, 130, 75, 25, color=c, axis="z"),
-    ])
+    ]
+    for dx in (-BDX, BDX):                           # 4× M12 down into the sub-plate's tapped bosses
+        for dy in (-BDY, BDY):
+            p.append(draw.ruby_bolt("Pivot plate → sub-plate bolt M12", PIVOT_X + dx, PIVOT_YD + dy, z0, PT,
+                                    radius=6, axis="z", color="#3A3A42", head="far", nut=None))
+    return '\n'.join(p)
 
 
 def pivot_link():
     """MOVING hub riding the fixed post: thrust bearing (assembly weight ~330 kg) +
     top/bottom radial bearings (react the overturning couple) + 3 hinge brackets tying
     the hub to the panel. Swings with the frame."""
+    from tbs_constants import PIVOT_BUSH_Z
+    zb, zt = PIVOT_BUSH_Z
     cbear = "#5A5AA0"
     p = [
-        ruby_cylinder("Hub tube", PIVOT_X, PIVOT_YD, 180, 58, 2050 - 180, color=C_STEEL, alpha=0.4, axis="z"),
+        ruby_cylinder("Hub tube", PIVOT_X, PIVOT_YD, 180, 58, zt - 180, color=C_STEEL, alpha=0.4, axis="z"),
         ruby_cylinder("Hub thrust bearing", PIVOT_X, PIVOT_YD, 155, 70, 25, color=cbear, axis="z"),
-        ruby_cylinder("Hub radial bearing (bottom)", PIVOT_X, PIVOT_YD, 220, 60, 55, color=cbear, axis="z"),
-        ruby_cylinder("Hub radial bearing (top)", PIVOT_X, PIVOT_YD, 2050, 60, 55, color=cbear, axis="z"),
+        ruby_cylinder("Hub radial bearing (bottom)", PIVOT_X, PIVOT_YD, zb, 60, 55, color=cbear, axis="z"),
+        ruby_cylinder("Hub radial bearing (top)", PIVOT_X, PIVOT_YD, zt, 60, 55, color=cbear, axis="z"),
     ]
     # brackets ALIGNED with the leaf pivot-edge stile (Yd PIVOT_YD−50..PIVOT_YD, 50 RHS) so they weld flush
     # to it — matches Sheet 14 (was offset ±35 straddling the pivot).

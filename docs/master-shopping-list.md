@@ -427,7 +427,7 @@ indicative low–high estimates — get quotes before ordering.
 | [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | 4 ea | Home Depot | ventilation | $47 |
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Home Depot | ventilation | $12 |
 | Fabricated flanged wall-penetration box (front face + flange) | 1 lot | Local fab | electrical | $60–$100 |
-| Floor-anchor sub-plate (strongback) — steel ~1,900×350×8mm A36 | 1 ea | Metal Supermarkets | walkway | $90–$180 |
+| Floor-anchor sub-plate (strongback) — steel ~2,170×280×8mm A36 | 1 ea | Metal Supermarkets | walkway | $90–$180 |
 | Floor-anchor sub-plate (strongback) — steel ~650×450×8mm A36 | 1 ea | Metal Supermarkets | ibc-frame | $40–$85 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | MetalsDepot | walkway | $65–$105 |
 | Front-bar L-cleat angle 8mm A36 (bar seat, BC-C/BC-W) | 8 ea | Metal Supermarkets | ibc-frame | $6–$20 |

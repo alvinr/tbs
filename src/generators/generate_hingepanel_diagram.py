@@ -2041,7 +2041,11 @@ def sheet9(): _frame_ga(mirror=True)    # Sheet 9 — steel frame GA, exterior m
 #   bracket (bolt pattern) + Detail B floor anchor-plate plan.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet10():
+    from tbs_constants import (PIVOT_PLATE_W, PIVOT_PLATE_D, PIVOT_PLATE_T, PIVOT_PLATE_BOLT_DX,
+                               PIVOT_PLATE_BOLT_DY, PIVOT_BUSH_Z, FLOOR_PLATE_T, FLOOR_SUBPLATE_WALL_GAP)
     R = PIVOT_POST_OD / 2                   # 44.5 — post radius
+    PW, PD, PT, ST = PIVOT_PLATE_W, PIVOT_PLATE_D, PIVOT_PLATE_T, FLOOR_PLATE_T
+    BUSH_H = 55
     cx = 250                                # post-axis canvas X
     HGT = C_HGT                             # 2388 — floor→roof
     LX = -250                               # left-label column (text center X)
@@ -2055,26 +2059,34 @@ def sheet10():
     # ── pivot section (true scale) ────────────────────────────────────────────
     ax.plot([cx, cx], [-40, HGT + 40], color=C_CL, lw=0.8, ls=(0, (8, 4)), zorder=2)   # axis
     # fixed post (Ø89×8 CHS)
-    ax.add_patch(Rectangle((cx - R, 0), 2 * R, HGT, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=4))
-    ax.add_patch(Rectangle((cx - R + 8, 0), 2 * R - 16, HGT, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
+    ax.add_patch(Rectangle((cx - R, ST), 2 * R, HGT - ST, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=4))
+    ax.add_patch(Rectangle((cx - R + 8, ST), 2 * R - 16, HGT - ST, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
     leader(ax, (cx - R, 1620), (LX, 1620), "FIXED Ø89×8 CHS POST (S355)\n3\" NPS Sch-80, floor→roof —\ncarries the 3.6 kN·m swing\ncantilever (SF 3.7)", col=C_OUT, fw="bold")
-    # floor + roof mount plates (Ø220 × 20)
-    ax.add_patch(Rectangle((cx - 110, 0), 220, 20, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
-    ax.add_patch(Rectangle((cx - 110, HGT - 20), 220, 20, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
-    leader(ax, (cx - 100, 10), (LX, 180), "FLOOR MOUNT PLATE Ø220×20\n— bolted to the container floor\n(Detail B)", col=C_OUT)
-    leader(ax, (cx - 100, HGT - 10), (LX, HGT - 120), "ROOF MOUNT PLATE Ø220×20\n— bolted to the roof rail", col=C_OUT)
+    # floor-anchor sub-plate (on the floor) + floor/roof mount plates (section across X)
+    ax.add_patch(Rectangle((cx - PW / 2 - 60, 0), PW + 120, ST, fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="////", zorder=5))
+    ax.add_patch(Rectangle((cx - PW / 2, ST), PW, PT, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
+    ax.add_patch(Rectangle((cx - PW / 2, HGT - PT), PW, PT, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))
+    for sgn in (-1, 1):                     # 2 of the 4 M12 (section through one bolt row)
+        bx = cx + sgn * PIVOT_PLATE_BOLT_DX
+        ax.add_patch(Rectangle((bx - 6, 0), 12, ST + PT, fc="#3A3A42", ec=C_OUT, lw=0.8, zorder=6))
+        ax.add_patch(Rectangle((bx - 10, ST + PT), 20, 8, fc="#3A3A42", ec=C_OUT, lw=0.8, zorder=6))
+    leader(ax, (cx - PW / 2 + 10, ST + PT / 2), (LX, 260),
+           f"FLOOR MOUNT PLATE {PW}×{PD}×{PT}mm\n— 4× M12 into tapped bosses on the\nfloor-anchor sub-plate (Detail B)", col=C_OUT)
+    leader(ax, (cx - PW / 2 - 40, ST / 2), (LX, 60),
+           f"LEFT FLOOR-ANCHOR SUB-PLATE ({ST}mm)\nshared with the walkway legs —\nself-tapped to the cross-members", col=C_OUT)
+    leader(ax, (cx - PW / 2 + 10, HGT - PT / 2), (LX, HGT - 120), f"ROOF MOUNT PLATE {PW}×{PD}×{PT}mm\n— bolted to the roof rail", col=C_OUT)
     # thrust bearing 51118 + collar
     ax.add_patch(Rectangle((cx - 60, 130), 120, 22, fc="#5A5AA0", ec=C_OUT, lw=1.1, zorder=6))
     ax.add_patch(Rectangle((cx - 75, 152), 150, 25, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=6))
     leader(ax, (cx - 60, 141), (LX, 500), "51118 THRUST BEARING (Ø90×120×22)\ncarries ~330 kg vertical\n— single-direction", col=C_OUT)
     # moving hub tube (Ø116)
     for sgn in (-1, 1):
-        ax.add_patch(Rectangle((cx + sgn * R, 180), sgn * 14, 2050 - 180, fc=C_ALUM, ec=C_OUT, lw=1.1, zorder=3))
+        ax.add_patch(Rectangle((cx + sgn * R, 180), sgn * 14, PIVOT_BUSH_Z[1] - 180, fc=C_ALUM, ec=C_OUT, lw=1.1, zorder=3))
     leader(ax, (cx - R - 14, 1150), (LX, 1150), "MOVING HUB TUBE (Ø116)\nswings with the frame", col=C_OUT)
     # iglide journal bushings (radial) — react the overturning couple
-    for z in (220, 2000):
+    for z in PIVOT_BUSH_Z:
         for sgn in (-1, 1):
-            ax.add_patch(Rectangle((cx + sgn * R, z), sgn * 14, 60, fc="#C08040", ec=C_OUT, lw=1.0, zorder=6))
+            ax.add_patch(Rectangle((cx + sgn * R, z), sgn * 14, BUSH_H, fc="#C08040", ec=C_OUT, lw=1.0, zorder=6))
     leader(ax, (cx - R - 14, 2030), (LX, 2020), "iglide J journal bushing (×2,\ntop + bottom) JFM-9095-100\n— radial + overturning couple", col=C_OUT)
     # 3 frame→hub hinge brackets (on the +X side, toward the frame)
     for z in (300, 1180, 2000):
@@ -2083,9 +2095,10 @@ def sheet10():
     draw_dim_v(ax, cx - 180, 0, HGT, f"{HGT}mm floor→roof", offset=16, fs=6.6, font=FONT)
     # diameters (dim_h) + component lengths (dim_v) on the pivot post
     draw_dim_h(ax, cx - R, cx + R, HGT + 60, f"Ø{PIVOT_POST_OD:.0f} CHS post", offset=14, fs=6.4, font=FONT)
-    draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116mm hub tube", offset=14, fs=6.2, font=FONT)  # Ø220 plate OD is dimensioned in Detail B
-    draw_dim_v(ax, cx + 300, 180, 2050, f"{2050 - 180}mm hub tube", offset=16, fs=6.2, font=FONT, right=True)
-    draw_dim_v(ax, cx + 240, 220, 2000, f"{2000 - 220}mm bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
+    draw_dim_h(ax, cx - R - 14, cx + R + 14, 1000, "Ø116mm hub tube", offset=14, fs=6.2, font=FONT)  # plate size is dimensioned in Detail B
+    draw_dim_v(ax, cx + 300, 180, PIVOT_BUSH_Z[1], f"{PIVOT_BUSH_Z[1] - 180}mm hub tube", offset=16, fs=6.2, font=FONT, right=True)
+    _bc = [z + BUSH_H / 2 for z in PIVOT_BUSH_Z]
+    draw_dim_v(ax, cx + 240, _bc[0], _bc[1], f"{_bc[1] - _bc[0]:.0f}mm bushing ctrs", offset=16, fs=6.0, font=FONT, right=True)
     # dim_v — the 3 hinge-bracket (leaf) connection heights, ordinate from the floor (Z0)
     _bkr = cx + R + 164                                          # right edge of the brackets
     ax.plot([cx - R, _bkr + 200], [0, 0], color=C_OUT, lw=1.0, zorder=2)          # floor baseline
@@ -2102,22 +2115,29 @@ def sheet10():
        color=C_OUT, title_color=C_OUT, width=540, wrap=36,
        border_color=C_DIM, font=FONT)
 
-    # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged) ────────────────────
+    # ── RIGHT DETAIL B: floor anchor-plate plan (enlarged; X across, Yd up — far wall at top) ──
     bx0, by0, sB = 1200, 470, 1.9
-    ax.text(bx0, by0 + 165 * sB, "DETAIL B — FLOOR ANCHOR PLATE (plan)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
-    ax.add_patch(Circle((bx0, by0), 110 * sB, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
-    ax.add_patch(Circle((bx0, by0), R * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))    # post bore
-    for k in range(6):
-        a = math.radians(30 + k * 60)
-        ax.add_patch(Circle((bx0 + 85 * sB * math.cos(a), by0 + 85 * sB * math.sin(a)), 7 * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))
-    # dimensions: plate OD, bolt PCD, post bore, hole size
-    draw_dim_h(ax, bx0 - 110 * sB, bx0 + 110 * sB, by0 + 120 * sB, "Ø220mm plate OD", offset=12, fs=6.2, font=FONT)
-    draw_dim_h(ax, bx0 - 85 * sB, bx0 + 85 * sB, by0 - 120 * sB, "Ø170mm bolt PCD", offset=12, fs=6.2, font=FONT, above=False)
-    leader(ax, (bx0 + R * sB, by0), (bx0 + 165 * sB, by0 + 40 * sB), "Ø90 post bore", col=C_OUT, fs=6)
-    leader(ax, (bx0 + 85 * sB * math.cos(math.radians(30)), by0 + 85 * sB * math.sin(math.radians(30))),
-           (bx0 + 150 * sB, by0 + 85 * sB), "6× Ø14 (M12)", col=C_OUT, fs=6)
-    ax.text(bx0, by0 - 170 * sB, "Ø220×20 A36 plate · into the container floor cross-member",
-            ha="center", fontsize=6.4, color=C_OUT, **FONT)
+    hw, hd = PW / 2 * sB, PD / 2 * sB
+    bdx, bdy = PIVOT_PLATE_BOLT_DX * sB, PIVOT_PLATE_BOLT_DY * sB
+    ax.text(bx0, by0 + 225 * sB, "DETAIL B — FLOOR ANCHOR PLATE (plan)", ha="center", fontsize=8.5, fontweight="bold", color=C_OUT, **FONT)
+    wall_y = by0 + hd + FLOOR_SUBPLATE_WALL_GAP * sB                         # far-wall inner face
+    ax.add_patch(Rectangle((bx0 - hw - 40 * sB, wall_y), 2 * hw + 80 * sB, 14 * sB, fc="#D8D8D8", ec=C_OUT, lw=1.0, hatch="xx", zorder=4))
+    ax.text(bx0, wall_y + 20 * sB, "FAR SIDE WALL (inner face)", ha="center", fontsize=6, color=C_DIM, **FONT)
+    ax.add_patch(Rectangle((bx0 - hw, by0 - hd), 2 * hw, 2 * hd, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
+    ax.add_patch(Circle((bx0, by0), R * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))    # post (welded into the plate)
+    for ddx in (-bdx, bdx):
+        for ddy in (-bdy, bdy):
+            ax.add_patch(Circle((bx0 + ddx, by0 + ddy), 7 * sB, fc=BG, ec=C_OUT, lw=1.0, zorder=6))
+    draw_dim_h(ax, bx0 - hw, bx0 + hw, by0 - hd - 40 * sB, f"{PW}mm", offset=12, fs=6.2, font=FONT, above=False)
+    draw_dim_h(ax, bx0 - bdx, bx0 + bdx, by0 - hd - 14 * sB, f"{2 * PIVOT_PLATE_BOLT_DX}mm", offset=10, fs=6.0, font=FONT, above=False)
+    draw_dim_v(ax, bx0 - hw - 30 * sB, by0 - hd, by0 + hd, f"{PD}mm", offset=10, fs=6.2, font=FONT, right=False)
+    draw_dim_v(ax, bx0 + hw + 14 * sB, by0 - bdy, by0 + bdy, f"{2 * PIVOT_PLATE_BOLT_DY}mm", offset=10, fs=6.0, font=FONT, right=True)
+    draw_dim_v(ax, bx0 + hw + 46 * sB, by0 + hd, wall_y, f"{FLOOR_SUBPLATE_WALL_GAP}mm", offset=10, fs=5.6, font=FONT, right=True)
+    leader(ax, (bx0 + R * sB * 0.7, by0 - R * sB * 0.7), (bx0 + hw + 60 * sB, by0 - hd - 10 * sB), f"Ø{PIVOT_POST_OD:.0f} post, fillet-welded", col=C_OUT, fs=6, ha="left")
+    leader(ax, (bx0 + bdx, by0 + bdy), (bx0 + hw + 60 * sB, by0 + hd - 10 * sB), "4× Ø14 (M12) →\nsub-plate tapped boss", col=C_OUT, fs=6, ha="left")
+    ax.text(bx0, by0 - hd - 95 * sB, f"{PW}×{PD}×{PT} A36 plate · bolts DOWN into the left floor-anchor sub-plate\n"
+            f"(the post axis is {C_WID - PIVOT_YD:.0f}mm off the wall, so the plate is rectangular)",
+            ha="center", fontsize=6.2, color=C_OUT, **FONT)
 
     ax.text(280, HGT + 150, "PIVOT-POST ASSEMBLY — SECTION ON THE SWING AXIS",
             ha="center", fontsize=11, fontweight="bold", color=C_OUT, **FONT)

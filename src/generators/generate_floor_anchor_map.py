@@ -15,7 +15,6 @@ Sheet 2 — the standard: a self-tapped SUB-PLATE (strongback) spanning several
 members, with the feet/legs bolting UP into tapped bosses on the plate. Plate
 dimensions + TEK count are container-dependent (finalized on the acquired box).
 """
-import math
 import os
 
 import matplotlib
@@ -67,10 +66,10 @@ def wk_feet():
 
 
 def pivot_feet():
-    cx, cy, pcd = k.PIVOT_X, k.PIVOT_YD, 170.0
-    holes = [(cx + pcd/2 * math.cos(math.radians(a)), cy + pcd/2 * math.sin(math.radians(a)))
-             for a in range(0, 360, 60)]
-    return [(cx, cy, 220, 220, holes, True)]
+    cx, cy = k.PIVOT_X, k.PIVOT_YD
+    holes = [(cx + dx, cy + dy) for dx in (-k.PIVOT_PLATE_BOLT_DX, k.PIVOT_PLATE_BOLT_DX)
+             for dy in (-k.PIVOT_PLATE_BOLT_DY, k.PIVOT_PLATE_BOLT_DY)]
+    return [(cx, cy, k.PIVOT_PLATE_W, k.PIVOT_PLATE_D, holes, True)]
 
 
 ALL = [ibc_feet(), wk_feet(), pivot_feet()]
@@ -90,11 +89,8 @@ def draw_foot(ax, f, holes_on=True, hole_r=9):
     cx, cy, w, h, holes = f[0], f[1], f[2], f[3], f[4]
     rnd = len(f) > 5 and f[5]
     col = C_PIV if rnd else (C_IBC if cx > 3000 else C_WK)
-    if rnd:
-        ax.add_patch(Circle((cx, cy), w/2, facecolor=col, alpha=0.22, edgecolor=col, lw=1.4, zorder=4))
-    else:
-        ax.add_patch(Rectangle((cx-w/2, cy-h/2), w, h, facecolor=col, alpha=0.22,
-                               edgecolor=col, lw=1.4, zorder=4))
+    ax.add_patch(Rectangle((cx-w/2, cy-h/2), w, h, facecolor=col, alpha=0.22,
+                           edgecolor=col, lw=1.4, zorder=4))
     if not holes_on:
         return
     for hx, hy in holes:
@@ -129,8 +125,8 @@ def _draw_plates(ax):
     ax.add_patch(Rectangle((min(ibc_fx) - 110, min(ibc_fy) - 110),
                            (max(ibc_fx) - min(ibc_fx)) + 220, (max(ibc_fy) - min(ibc_fy)) + 220,
                            facecolor=C_PLATE, alpha=0.30, edgecolor=C_IBC, lw=1.8, ls=(0, (6, 3)), zorder=3))
-    wy = k.LEFT_WK_CANT_LEG_YDS                                   # walkway plate: cargo-door sill (X0) → tray edge
-    ax.add_patch(Rectangle((0, min(wy) - 90), k.PROC_TRAY_X_L, (max(wy) - min(wy)) + 180,
+    # left plate: cargo-door sill (X0) → tray edge, under the 5 walkway legs + the pivot post
+    ax.add_patch(Rectangle((0, k.LEFT_SUBPLATE_YD0), k.PROC_TRAY_X_L, k.LEFT_SUBPLATE_YD1 - k.LEFT_SUBPLATE_YD0,
                            facecolor=C_PLATE, alpha=0.30, edgecolor=C_WK, lw=1.8, ls=(0, (6, 3)), zorder=3))
 
 

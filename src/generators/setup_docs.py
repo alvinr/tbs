@@ -387,7 +387,7 @@ hooks:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourusername/tbs
+      link: https://github.com/alvinr/tbs
 
 copyright: "© 2026 Alvin Richards — Released under <a href=\\"../licensing/\\">GNU AGPLv3</a>"
 """

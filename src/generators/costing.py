@@ -28,7 +28,7 @@ from dataclasses import dataclass
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from tbs_constants import IMAGE_AREA_M2, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI, BLUE_PER_PRINT_GAL  # noqa: E402 — chemistry tiers derive from the active-plane area
+from tbs_constants import IMAGE_AREA_M2, MUSLIN_AREA_SQFT, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI, BLUE_PER_PRINT_GAL  # noqa: E402 — chemistry tiers derive from the active-plane area
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
@@ -40,8 +40,10 @@ PRICE_AMFE_PER_KG = 64.20 # Artcraft Chemicals — ferric ammonium oxalate (AmFe
 PRICE_FERRI_PER_KG = 51.01 # Artcraft Chemicals — potassium ferricyanide, $104.12/4.5 lb (firm 2026-07-26) = $51.01/kg (was $60.80/kg Bostick — consolidated cyanotype chemistry to one supplier, Artcraft)
 DICHROMATE_RUN = 25.00 # ammonium dichromate — OPTIONAL contrast agent (a creative choice; 0.1–0.4% w/v), per-run allowance kept so the option is funded. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
 MUSLIN_ROLL_PRICE = 100.00 # Fabric Direct — 60" x 150-yd unbleached muslin roll
-MUSLIN_ROLLS = 3 # ~360 yd / 150 -> 3 rolls (still 3 rolls after the muslin re-cut to fit the tray, 94 sqft)
-MUSLIN_YARDS = 360 # 2026-08-06: 50 prints × 94 sqft (muslin cut 4,359×2,000, MUSLIN_AREA_SQFT) × 1.15 waste = 5,405 sqft ÷ 5 ft = ~1,081 linear ft = 360 yd (was 388 at 101 sqft = full image plane)
+MUSLIN_WASTE = 1.15 # cutting + handling allowance on the run's muslin
+MUSLIN_SQFT_RUN = round(PRINTS * MUSLIN_AREA_SQFT * MUSLIN_WASTE)   # muslin cut to the washable tray area, × waste
+MUSLIN_YARDS = round(MUSLIN_SQFT_RUN / 5 / 3)                      # 60in (5 ft) wide roll
+MUSLIN_ROLLS = -(-MUSLIN_YARDS // 150)                             # 150-yd rolls
 
 
 # ── Ware New Cyanotype concentration tiers (per 50-print run) ────────────────
@@ -960,7 +962,10 @@ def _inline_blocks() -> dict:
         "pp-lean":        ("process-comparison.md", lambda: f"${int(by_key('lean')['section_total'] / PRINTS + 0.5)}"),
         "pp-standard":    ("process-comparison.md", lambda: f"${int(by_key('standard')['section_total'] / PRINTS + 0.5)}"),
         "pcb-muslin-rolls": ("project-cost-breakdown.md", lambda: f"{MUSLIN_ROLLS} × 150-yd rolls"),
-        "pcb-muslin-yd": ("project-cost-breakdown.md", lambda: f"{MUSLIN_YARDS}"),
+        "pcb-muslin-yd": (["project-cost-breakdown.md", "chemistry-shopping-list.md"], lambda: f"{MUSLIN_YARDS}"),
+        "csl-muslin-sqft": ("chemistry-shopping-list.md", lambda: f"{MUSLIN_SQFT_RUN:,}"),
+        "csl-muslin-sqft-print": ("chemistry-shopping-list.md", lambda: f"{MUSLIN_AREA_SQFT}"),
+        "csl-muslin-rolls": ("chemistry-shopping-list.md", lambda: f"{MUSLIN_ROLLS}"),
         "pcb-delivery-long": ("project-cost-breakdown.md", lambda: _rng(DELIVERY_LONG)),
         "pcb-delivery-local": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_LOCAL)}†"),
         "pcb-delivery-short": ("project-cost-breakdown.md", lambda: f"{_rng(DELIVERY_SHORT)}†"),

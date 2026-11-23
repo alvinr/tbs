@@ -308,13 +308,13 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Ferric ammonium oxalate (AmFe) | 11.1 kg / ~$710 | **16.7 kg / ~$1,070** | 33.4 kg / ~$2,140 | Artcraft Chemicals (~$64/kg) |
 | Potassium ferricyanide (3:1 ratio) | 3.7 kg / ~$189 | **5.6 kg / ~$286** | 11.1 kg / ~$566 | Artcraft Chemicals ($51/kg) |
 | Ammonium dichromate (optional contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Artcraft Chemicals |
-| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~360 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
+| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~349 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
 | **Cyanotype total — 50 prints** | **~$1,230** | **~$1,680** | **~$3,040** | |
 <!-- END costing:chemistry-7-1 -->
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §6 water system provides all wash water.*
 
-*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~<!-- BEGIN costing:pcb-muslin-yd -->360<!-- END costing:pcb-muslin-yd --> yd = **<!-- BEGIN costing:pcb-muslin-rolls -->3 × 150-yd rolls<!-- END costing:pcb-muslin-rolls --> ≈ <!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> (~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print)**.*
+*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~<!-- BEGIN costing:pcb-muslin-yd -->349<!-- END costing:pcb-muslin-yd --> yd = **<!-- BEGIN costing:pcb-muslin-rolls -->3 × 150-yd rolls<!-- END costing:pcb-muslin-rolls --> ≈ <!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> (~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print)**.*
 
 ### 10.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 

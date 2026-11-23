@@ -1164,7 +1164,7 @@ _RAW_MONEY = re.compile(r"\$(\d[\d,]*)(?:\.\d+)?")
 # DOWN. A new hand-typed figure must become a costing placeholder, or — if it is a sourced research
 # quote with no model home — be added here deliberately. Lower a count when a pass removes figures.
 _MONEY_RAW_BASELINE = {
-    "chemistry-shopping-list.md": 10, "component-dimension-audit.md": 22, "container-report.md": 29,
+    "chemistry-shopping-list.md": 5, "component-dimension-audit.md": 22, "container-report.md": 29,
     "container-transport-options.md": 130, "cost-analysis-report.md": 4, "electrical-report.md": 18,
     "film-plane-mechanism-report.md": 0, "funding-proposal.md": 15, 
     "lens-options.md": 41, "light-trap-selection.md": 15, "master-shopping-list.md": 5,

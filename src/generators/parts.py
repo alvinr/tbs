@@ -527,7 +527,7 @@ PARTS: list[Part] = [
          dims="Ø31.75 rod → 4× Ø32×20, Ø10.5 bore",
          note="One 1 ft (305mm) 1-1/4in Delrin rod (McMaster 8576K23) makes all 4 wheels; price verified 2026-07-12."),
     Part("spray-brass-barb", "3/4 × 3/4 × 1/2in reducing barbed tee (flex hose → manifold center feed)", "plumbing-fittings",
-         "spray", 1, "ea", 1.52, 1.52, "DripDepot", part_no="14683",
+         "spray", 1, "ea", 1.52, 1.52, "DripDepot", part_no="14683", url="https://www.dripdepot.com/pvc-barbed-reducing-tee-left-three-quarter-inch-right-three-quarter-inch-center-half-inch",
          spec="The SINGLE center-feed inlet: 3/4in run barbs into the 0.820in-ID poly manifold, ½in branch barb into the ½in-ID braided supply hose. DripDepot 14683, $1.52 firm (owner-sourced 2026-11-23)."),
     Part("spray-pool-pole", "Telescoping aluminum pool pole, 4–8 ft", "aluminum",
          "spray", 1, "ea", 15, 15, "Amazon", part_no="B0FHPSPD4T", url="https://www.amazon.com/dp/B0FHPSPD4T",

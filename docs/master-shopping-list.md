@@ -360,7 +360,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)](https://www.homedepot.com/p/203811533) (PVC021071300HD) | 8 ea | Local fab | water | $26 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 2 ea | US Plastic Corp | water | $48 |
-| 3/4 × 3/4 × 1/2in reducing barbed tee (flex hose → manifold center feed) (14683) | 1 ea | DripDepot | spray | $2 |
+| [3/4 × 3/4 × 1/2in reducing barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/pvc-barbed-reducing-tee-left-three-quarter-inch-right-three-quarter-inch-center-half-inch) (14683) | 1 ea | DripDepot | spray | $2 |
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | 1 100ft roll | DripDepot | spray | $31 |
 | [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Local fab | water | $12 |
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 5 10-pack | Local fab | spray | $17 |

@@ -204,7 +204,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 ### 1.7 Walkway and Tray (if not done in Phase 0.5)
 - [ ] 1.7.1 — Install perimeter walkway grating sections (see 0.5.4 for full procedure).
 - [ ] 1.7.2 — Lay fresh LDPE containment liner (see 0.5.5).
-- [ ] 1.7.3 — Deploy the chemistry prep shelf: confirm the stays lock positively and the hinge swings freely, check it is level, wipe the surface and clear any residue from the spill lip ([Chemistry Prep Shelves](chemistry-prep-shelves.md)).
+- [ ] 1.7.3 — Deploy the chemistry prep shelf: release the cam latch, lower the board onto its two chain stays (both taut, quick-links closed), confirm the hinge swings freely and the board is level, wipe the surface and clear any residue from the spill lip ([Chemistry Prep Shelves](chemistry-prep-shelves.md)).
 
 ### 1.8 Light-Leak Inspection
 - [ ] 1.8.1 — Latch the drum panel (both 1619A74 lift-and-turn cam latches engaged).
@@ -582,7 +582,7 @@ For deep cleaning or nozzle service, lift out the right walkway grate and extrac
 
 | Interval | Task |
 |----------|------|
-| Monthly | Inspect the hinge, stays, and wall bolts for corrosion/tightness |
+| Monthly | Inspect the hinge, chain stays and quick-links, and the wall-plate bolts for corrosion and tightness |
 
 Deployment and stowing are in §1.7.3 and §5.5.1.
 

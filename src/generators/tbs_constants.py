@@ -846,7 +846,7 @@ PULL_CORD_BOTTOM_Z = SHELF_H + 105   # 1180 — pull-cord bottom Z (clears the s
 
 # ── Chemistry prep tap (pinhole wall, tees off blue supply line) ─────────────
 TAP_X          = 1130    # tap X (mm) — relocated LEFT of the shelf (battery bank is to the right) [rev13; was 3729]
-TAP_Z          = 1150    # spout outlet height AFF (mm) — ~75mm above the shelf; the riser tops at SHELF_STOW_TOP_Z (1375)
+TAP_Z          = 1150    # spout outlet height AFF (mm) — ~75mm above the shelf; the riser tops at SHELF_STOW_TOP_Z
 TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" PVC Sch-40
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; not yet drawn)
 

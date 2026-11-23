@@ -94,7 +94,7 @@ water 1,000 kg/m³.
 **Grating weight assumption:** 1" (25mm) molded GRP (fiberglass) grating,
 vinyl-ester resin with grit top, weighs ≈12.7 kg/m² (McNichols MS-S-100, 2.60 lb/sf)
 over the 4.14 m² of deck. GRP is specified for corrosion immunity in the wet
-photo-chemistry environment, at a cost premium of ~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)).
+photo-chemistry environment, at a cost premium of ~$720–$890 (see [cost breakdown §8](project-cost-breakdown.md)).
 1" is the thinnest molded FRP made (15mm molded GRP doesn't exist), so the deck
 sits at 140mm (115mm support arm + 25mm grate) — raised to keep the spray-bar
 carriage clearance under the left cantilever arms.

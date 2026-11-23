@@ -204,7 +204,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 The ventilation & cooling **Bill of Materials** lives in the single-source parts registry, rendered as the
 [**Master Shopping List, filtered to the ventilation system**](master-shopping-list.md?system=ventilation) —
 suppliers, current prices, and click-to-sort/filter. The strategy-level cost band (fans · evaporative cooler +
-inverter · light-safe baffle-duct fab · shade canopy) is the [Project Cost Breakdown §5b](project-cost-breakdown.md).
+inverter · light-safe baffle-duct fab · shade canopy) is line 5b of the [Project Cost Breakdown](project-cost-breakdown.md) summary.
 
 ---
 

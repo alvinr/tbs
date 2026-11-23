@@ -8,7 +8,7 @@
 
 ---
 
-## Summary — Total Project Cost
+## 1. Summary — Total Project Cost
 
 <!-- BEGIN costing:scenario -->
 | Category | Low | Mid | High |
@@ -31,7 +31,7 @@
 | **TOTAL (excl. own transport, lens)** | **$27,675** | **$32,238** | **$45,298** |
 <!-- END costing:scenario -->
 
-*Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§7.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
+*Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§10.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
 
 *Optional additions that may apply — see individual sections:*
 
@@ -44,7 +44,7 @@
 
 ---
 
-## 1. Container Purchase & Delivery
+## 2. Container Purchase & Delivery
 
 **Source document:** `container-report.md`
 
@@ -66,11 +66,11 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 | Cargo Worthy (recommended) | $2,000–$3,500 | CSC-certified; fewest surprises |
 | One-Trip (premium) | $3,500–$5,000 | Near-new condition; easiest light-sealing |
 
-**If a long-distance delivery is required** (100–300 miles, semi flatbed): add <!-- BEGIN costing:pcb-delivery-long -->$1,200–$2,500<!-- END costing:pcb-delivery-long --> (§8.1).
+**If a long-distance delivery is required** (100–300 miles, semi flatbed): add <!-- BEGIN costing:pcb-delivery-long -->$1,200–$2,500<!-- END costing:pcb-delivery-long --> (§11.1).
 
 ---
 
-## 2. Interior Conversion
+## 3. Interior Conversion
 
 **Source document:** `container-report.md`
 
@@ -90,13 +90,13 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 
 ---
 
-## 3. Optics — Pinhole Wall Interface
+## 4. Optics — Pinhole Wall Interface
 
 **Source document:** `pinhole-report.md`, `pinhole-disc-holder-report.md`
 
 The pinhole/lens **mount** is the [pinhole disc holder](pinhole-disc-holder-report.md) in the front-board system. Its Ø80 carrier takes either the pinhole or a lens, and it carries the pinhole element, retaining ring and mount bolts. This section is the **wall interface** the front board bolts to.
 
-### 3.1 Pinhole wall interface
+### 4.1 Pinhole wall interface
 
 <!-- BEGIN costing:optics -->
 | Item | Low | Mid | High | Notes |
@@ -106,7 +106,7 @@ The pinhole/lens **mount** is the [pinhole disc holder](pinhole-disc-holder-repo
 | **Wall-interface total** | **$35** | **$52** | **$70** | |
 <!-- END costing:optics -->
 
-### 3.2 Optional large-format lens
+### 4.2 Optional large-format lens
 
 **Source document:** `lens-options.md`
 
@@ -118,7 +118,7 @@ Used process lenses that cover the plane run ~<!-- BEGIN costing:pcb-lens-range 
 
 ---
 
-## 4. Film Plane Mechanism (4-Corner Independent)
+## 5. Film Plane Mechanism (4-Corner Independent)
 
 **Source document:** `film-plane-mechanism-report.md`
 
@@ -155,7 +155,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 ---
 
-## 5. Processing Water System
+## 6. Processing Water System
 
 **Source document:** `water-system-report.md`
 
@@ -188,7 +188,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 ---
 
-## 6. Housed Revolving-Door Light Lock — Custom Fabrication
+## 7. Housed Revolving-Door Light Lock — Custom Fabrication
 
 **Source document:** `light-trap-selection.md`
 
@@ -229,7 +229,7 @@ Personnel enter through a **Ø800 fixed housing + single-opening C-shell drum** 
 
 ---
 
-## 6a. Perimeter Walkway
+## 8. Perimeter Walkway
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
@@ -264,11 +264,11 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 
 ---
 
-## 6b. Panel Swing Pivot
+## 9. Panel Swing Pivot
 
 **Source documents:** `hinged-panel-report.md` §4–5
 
-The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying the punch-out bay inboard of the door plane so the cargo doors close. See the rotation-hardware detail in [master-shopping-list.md](master-shopping-list.md) §7a.
+The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying the punch-out bay inboard of the door plane so the cargo doors close. See the rotation-hardware detail in [Master Shopping List](master-shopping-list.md?system=swing).
 
 <!-- BEGIN costing:swingpivot -->
 | Item | Low | Mid | High | Notes |
@@ -287,13 +287,13 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying
 
 ---
 
-## 7. Printmaking — 50 Prints (Cyanotype)
+## 10. Printmaking — 50 Prints (Cyanotype)
 
 **Source document:** `chemistry-shopping-list.md`
 
 Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipping, processing in plain water. Cost is lowest of all processes evaluated at this scale.
 
-### 7.1 Chemistry and substrate (50 prints)
+### 10.1 Chemistry and substrate (50 prints)
 
 > **⚠ Chemistry is a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** The
 > **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe**),
@@ -312,11 +312,11 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | **Cyanotype total — 50 prints** | **~$1,230** | **~$1,680** | **~$3,040** | |
 <!-- END costing:chemistry-7-1 -->
 
-*Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
+*Note: development requires only plain cold water — no darkroom chemistry. The §6 water system provides all wash water.*
 
 *Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~<!-- BEGIN costing:pcb-muslin-yd -->360<!-- END costing:pcb-muslin-yd --> yd = **<!-- BEGIN costing:pcb-muslin-rolls -->3 × 150-yd rolls<!-- END costing:pcb-muslin-rolls --> ≈ <!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> (~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print)**.*
 
-### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
+### 10.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
 | Component | Cost per print (Standard) |
 |-----------|---------------|
@@ -327,9 +327,9 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Water & consumables (6-mil liner, gloves) | ~<!-- BEGIN costing:pcb-pp-consumables -->$3<!-- END costing:pcb-pp-consumables --> |
 | **Total per print (Standard)** | **~<!-- BEGIN costing:pcb-pp-total -->$37<!-- END costing:pcb-pp-total -->** |
 
-*Across tiers, chemistry moves the per-print total to ~**<!-- BEGIN costing:pcb-pp-range -->$28 (Lean) – $64 (Rich)<!-- END costing:pcb-pp-range -->**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print (see §7.1), so the §7.1 totals = this per-print × 50, less the ~<!-- BEGIN costing:pcb-pp-consumables -->$3<!-- END costing:pcb-pp-consumables -->/print consumables that §7.1 excludes.*
+*Across tiers, chemistry moves the per-print total to ~**<!-- BEGIN costing:pcb-pp-range -->$28 (Lean) – $64 (Rich)<!-- END costing:pcb-pp-range -->**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~<!-- BEGIN costing:pcb-pp-muslin -->$6<!-- END costing:pcb-pp-muslin -->/print (see §10.1), so the §10.1 totals = this per-print × 50, less the ~<!-- BEGIN costing:pcb-pp-consumables -->$3<!-- END costing:pcb-pp-consumables -->/print consumables that §10.1 excludes.*
 
-### 7.3 Alternative process cost comparison
+### 10.3 Alternative process cost comparison
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
@@ -342,17 +342,17 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.*
 
-*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the per-print AmFe (and the 50-print chemistry cost) spans the concentration tier (Lean → Rich, <!-- BEGIN costing:pcb-tier-x -->3<!-- END costing:pcb-tier-x -->×) times the unmeasured muslin coverage (<!-- BEGIN costing:pcb-cov-range -->100–180<!-- END costing:pcb-cov-range --> ml/m²/coat, <!-- BEGIN costing:pcb-cov-x -->1.8<!-- END costing:pcb-cov-x -->×): up to ~<!-- BEGIN costing:pcb-chem-x -->5.4<!-- END costing:pcb-chem-x -->× end to end. Muslin is ~$300 / ~$6 per print (§7.1). The Standard (½-Ware) tier is the working default.*
+*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the per-print AmFe (and the 50-print chemistry cost) spans the concentration tier (Lean → Rich, <!-- BEGIN costing:pcb-tier-x -->3<!-- END costing:pcb-tier-x -->×) times the unmeasured muslin coverage (<!-- BEGIN costing:pcb-cov-range -->100–180<!-- END costing:pcb-cov-range --> ml/m²/coat, <!-- BEGIN costing:pcb-cov-x -->1.8<!-- END costing:pcb-cov-x -->×): up to ~<!-- BEGIN costing:pcb-chem-x -->5.4<!-- END costing:pcb-chem-x -->× end to end. Muslin is ~$300 / ~$6 per print (§10.1). The Standard (½-Ware) tier is the working default.*
 
 ---
 
-## 8. Transportation
+## 11. Transportation
 
 **Source document:** `container-transport-options.md`
 
 Costs are **per deployment** (one move). The container requires no oversize/overweight permit when empty on Interstate highways.
 
-### 8.1 Commercial hire (no CDL required)
+### 11.1 Commercial hire (no CDL required)
 
 | Move type | Option | Per-move cost |
 |-----------|--------|--------------|
@@ -363,7 +363,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 *If no forklift at destination: add $200–$1,200 for crane truck or forklift rental.*
 
-### 8.2 Self-haul (capital investment, requires CDL)
+### 11.2 Self-haul (capital investment, requires CDL)
 
 | Equipment | Purchase cost | Notes |
 |-----------|--------------|-------|
@@ -373,7 +373,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 *Self-haul only makes economic sense if the container will be moved 60–80+ times (break-even vs. hire at ~$600/move).*
 
-### 8.3 Chassis + semi rental (frequent repositioning, CDL required)
+### 11.3 Chassis + semi rental (frequent repositioning, CDL required)
 
 | Item | Day rate† | Week rate† |
 |------|----------|-----------|
@@ -383,11 +383,11 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 ---
 
-## 9. Licenses & Permits
+## 12. Licenses & Permits
 
 **Source document:** `container-transport-options.md`; location permit costs are estimates not covered by existing research.
 
-### 9.1 CDL (if self-hauling)
+### 12.1 CDL (if self-hauling)
 
 <!-- BEGIN costing:cdl -->
 | Item | Cost† |
@@ -401,9 +401,9 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 *CDL Class A is recommended — covers both tilt-bed truck operation (Class B) and semi tractor operation (Class A). El Camino College Torrance: $5,995 all-inclusive including DMV fees. WIOA funding may cover full tuition for eligible applicants.*
 
-*CDL is only required if self-hauling. Commercial hire (§8.1) requires no license from the customer.*
+*CDL is only required if self-hauling. Commercial hire (§11.1) requires no license from the customer.*
 
-### 9.2 Location / filming permits
+### 12.2 Location / filming permits
 
 Permit requirements vary by jurisdiction. Estimates below are based on general knowledge — no specific research document covers this.
 
@@ -418,23 +418,23 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 *For a non-commercial art/documentary deployment at a single location: budget <!-- BEGIN costing:pcb-permit-range -->$0–$500<!-- END costing:pcb-permit-range --> for permit costs. For regular commercial touring: budget $500–$2,000/deployment.*
 
-### 9.3 Section total
+### 12.3 Section total
 
 <!-- BEGIN costing:licenses-permits -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| CDL Class A — training + DOT medical + DMV (High only: self-haul; one-time, §9.1) | $0 | $0 | $6,570 |
-| Location permit (§9.2) | $0 | $200 | $500 |
+| CDL Class A — training + DOT medical + DMV (High only: self-haul; one-time, §12.1) | $0 | $0 | $6,570 |
+| Location permit (§12.2) | $0 | $200 | $500 |
 | Business license (annual, prorated) | $10 | $25 | $50 |
 | Misc. (insurance certificate, site access) | $0 | $75 | $200 |
 | **9. Licenses & permits total** | **$10** | **$300** | **$7,320** |
 <!-- END costing:licenses-permits -->
 
-*The baseline is commercial hire (§8.1), which needs no CDL, so Low and Mid carry permits only. High carries the one-time CDL for self-hauling. The permit lines recur per deployment (non-commercial art use).*
+*The baseline is commercial hire (§11.1), which needs no CDL, so Low and Mid carry permits only. High carries the one-time CDL for self-hauling. The permit lines recur per deployment (non-commercial art use).*
 
 ---
 
-## 10. Ongoing Operating Costs (After Build)
+## 13. Ongoing Operating Costs (After Build)
 
 ### Per print (cyanotype, after initial capital spent)
 
@@ -454,15 +454,15 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:running-per-deployment -->
 | Item | Cost |
 |------|------|
-| Transport (short haul, commercial hire — §1 delivery line) | $300–$800 |
+| Transport (short haul, commercial hire — §2 delivery line) | $300–$800 |
 | Water resupply (tanker) | $25–$50 |
-| Location permit (§9.3) | $0–$500 |
+| Location permit (§12.3) | $0–$500 |
 | **Per-deployment overhead** | **~$325–$1,350** |
 <!-- END costing:running-per-deployment -->
 
 ---
 
-## 11. Complete Budget Scenarios
+## 14. Complete Budget Scenarios
 
 ### Scenario A — Minimum viable build, local use, commercial hire transport
 
@@ -527,23 +527,23 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ---
 
-## 12. Cost Confidence
+## 15. Cost Confidence
 
 Most lines are firm registry prices ([Master Shopping List](master-shopping-list.md)). These remain
-estimates, and the scenario bands in §11 carry them:
+estimates, and the scenario bands in §14 carry them:
 
 | Item | Basis | Status |
 |------|-------|--------|
 | Wall-seat saddle plate (ICP-11, 4 saddles) | 8mm + 10mm A36 plate, cut; welded by the owner | Estimate; firmed by a fab quote once the blueprints are final |
 | Pinhole carrier set (Lenox Laser) | Laser-drilled SS-302 shim on 6061 discs, $20–40 each | Quote pending |
-| Location permit fees (§9) | Typical jurisdiction fees | Varies by jurisdiction |
+| Location permit fees (§12) | Typical jurisdiction fees | Varies by jurisdiction |
 | Commercial photography insurance | General liability + inland marine, ~$800–$2,000/year | Not in the budget; not researched |
 | Site preparation (leveling, power, fencing) | $0–$5,000 | Not in the budget; site-specific |
 
-The alternative-process figures in §7.3 (Liquid Light and the silver-nitrate processes) are
+The alternative-process figures in §10.3 (Liquid Light and the silver-nitrate processes) are
 comparison estimates only. They are not part of the budget.
 
-## See Also
+## 16. See Also
 
 - [Master Shopping List](master-shopping-list.md) — the itemized by-type BOM
 - [Cost Analysis](cost-analysis-report.md) — scenario cost modeling and levers

@@ -101,7 +101,7 @@ def by_key(key: str) -> dict:
 
 # ── Emitters (markdown the docs should contain — never hand-typed) ───────────
 def emit_cost_breakdown_7_1() -> str:
-    """The project-cost-breakdown.md §7.1 three-tier 'Chemistry and substrate' table."""
+    """The project-cost-breakdown.md §10.1 three-tier 'Chemistry and substrate' table."""
     c = {t.key: tier_costs(t) for t in TIERS}
     L, S, R = c["lean"], c["standard"], c["rich"]
     rows = [
@@ -124,7 +124,7 @@ def emit_cost_breakdown_7_1() -> str:
 
 
 def printmaking_scenario() -> tuple[int, int, int]:
-    """The cost-breakdown §7 scenario row + master §9 headline: Low=Lean / Mid=Std / High=Rich."""
+    """The cost-breakdown line-7 scenario row + master §9 headline: Low=Lean / Mid=Std / High=Rich."""
     return (_r(by_key("lean")["section_total"], 10),
             _r(by_key("standard")["section_total"], 10),
             _r(by_key("rich")["section_total"], 10))
@@ -150,7 +150,7 @@ def point(label: str, cost: int, note: str = "") -> LineItem:
 
 
 # §6a Perimeter walkway — line items own the truth; the section total sums them (was hand-typed
-# at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §6a / generate_walkway_diagram.
+# at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §8 / generate_walkway_diagram.
 WALKWAY = [
     LineItem("Molded GRP grating (American Grating cut-to-size)", 835, 945, 1060, "2026-07-23: PRIMARY American Grating public list ~$830 (2×3'×10' @ $415) + freight/cut band to $1,050; McNichols $1,700.51 held as secondary ceiling. +$5/$10 walkway reconcile rounding"),
     LineItem("GRP grating edge-seal kit (Fibergrate)", 40, 50, 60, "field-seal molded FRP cut edges (epoxy, not snap-trim)"),
@@ -178,7 +178,7 @@ WALKWAY = [
 # §5 Processing water system — the §5 sub-table is Low/High only; the scenario column needs Mid,
 # computed here as the per-item midpoint. Line items own the truth (the hand-typed sub-table total
 # $4,128/$6,201 and scenario $4,143/$5,180/$6,216 both drifted from the items, which sum to
-# $4,063/$6,104). Source: project-cost-breakdown.md §5.
+# $4,063/$6,104). Source: project-cost-breakdown.md §6.
 IBC_TOTES_COST = 4 * 150   # 4× reconditioned food-grade 1,000 L totes @ $150 firm (parts.py ibc-tote) — inside the Water storage line below
 WATER = [
     LineItem("Water storage (4× IBC totes @ $150, 3× PP bulkhead fittings @ $21.14 ea, X1 fill tee)", 664, 664, 664, "2026-11-19: −$8/$14/$20 — IBC-2 low-level float switch dropped (not part of the design). 2026-11-17: +$8/$14/$20 — IBC-2 Blue-supply low-level float switch (float-switch-ibc2; named in §4.1, absent from the registry). 2026-07-23: IBC totes firm ~$150/ea (reconditioned food-grade SoCal). 2026-07-29 SS audit: 2\" bulkheads 304 SS $136.70 → PP ~$18-35 (plain water port, SS over-spec) −$330."),
@@ -318,7 +318,7 @@ OPTICS = [
 # Line items own the truth; the section total sums them. The U-joint ($276×4), 4040N12 supports,
 # and 6061 Al U-channel rails are firm-priced; the Low/High spread comes from the muslin spring clips
 # ($3/$5.50/$8 ea) + the estimated skate / cross-slide / cam-clamp fab lines + the wall-seat saddle
-# plate. Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
+# plate. Source: project-cost-breakdown.md §5 / film-plane-mechanism-report.md.
 FILM = [
     # 4.1 Structural & rails (6061 Al U-channel + acetal skate + 304 cross-slides + Belden U-joint)
     LineItem("6061 Al U-channel depth rails 3×1½\" (×4 wall-to-wall)", 327, 328, 327, "SS audit 2026-07-29: 304 @ McMaster $362/6ft×6 = $2,172 → 6061-T6 Al same 76×38 section. Grainger 795M51 8ft stick spans the 2,362mm rail uncut (no splice); 4× $81.99 = $328 firm (−~$1,845 + ~34 kg). 6061-T6 yield > annealed 304; ~1mm sag optically irrelevant at f/1088, flatness via ACM"),
@@ -672,7 +672,7 @@ def emit_section_table(items: list[LineItem], total_label: str) -> str:
     return "\n".join(rows)
 
 
-# ── Sourced research quotes (project-cost-breakdown.md §1, §3.2, §8–§10) ──────────────────────
+# ── Sourced research quotes (project-cost-breakdown.md §2, §4.2, §11–§13) ──────────────────────
 # Not line items: market quotes the budget cites but does not buy. Each is restated more than once
 # in the cost breakdown, so it lives here once and is injected everywhere (low, high[, mid]).
 LENS_OPT = (400, 800, 1500)            # used large-format lens, low/mid/high — lens-options.md
@@ -703,8 +703,8 @@ def cdl_band() -> tuple[int, int, int]:
 
 
 def licenses_permits_rows() -> list:
-    return [("CDL Class A — training + DOT medical + DMV (High only: self-haul; one-time, §9.1)", (0, 0, cdl_band()[2])),
-            ("Location permit (§9.2)", PERMIT_LOCATION),
+    return [("CDL Class A — training + DOT medical + DMV (High only: self-haul; one-time, §12.1)", (0, 0, cdl_band()[2])),
+            ("Location permit (§12.2)", PERMIT_LOCATION),
             ("Business license (annual, prorated)", BUSINESS_LICENSE),
             ("Misc. (insurance certificate, site access)", PERMIT_MISC)]
 
@@ -767,9 +767,9 @@ def emit_running_per_print() -> str:
 def emit_running_per_deployment() -> str:
     d = next(i for i in CONTAINER if i.label.startswith("Delivery"))
     tr = (d.low, d.high)
-    rows = [("Transport (short haul, commercial hire — §1 delivery line)", tr),
+    rows = [("Transport (short haul, commercial hire — §2 delivery line)", tr),
             ("Water resupply (tanker)", WATER_RESUPPLY),
-            ("Location permit (§9.3)", (PERMIT_LOCATION[0], PERMIT_LOCATION[-1]))]
+            ("Location permit (§12.3)", (PERMIT_LOCATION[0], PERMIT_LOCATION[-1]))]
     out = ["| Item | Cost |", "|------|------|"]
     out += [f"| {lbl} | {_rng(t)} |" for lbl, t in rows]
     out.append(f"| **Per-deployment overhead** | **~{_rng((sum(t[0] for _, t in rows), sum(t[1] for _, t in rows)))}** |")
@@ -925,7 +925,7 @@ def _inline_blocks() -> dict:
         # project-summary.md (the home page) spec table — was a stale $38 / $1,900 pair.
         "summary-perprint": ("project-summary.md", lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
         "summary-50run": ("project-summary.md", lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
-        # project-cost-breakdown §7.3 process comparison — Cyanotype ALL-IN row (§7.1 per-print +
+        # project-cost-breakdown §10.3 process comparison — Cyanotype ALL-IN row (§10.1 per-print +
         # PER_PRINT_CONSUMABLES), so it stays tied to §7.1 instead of drifting.
         "s73-pp-std": ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('standard')}"),
         "s73-pp-range": ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('lean')}–{_pp('rich')}"),
@@ -948,7 +948,7 @@ def _inline_blocks() -> dict:
         "om-ferri-kg-standard": ("master-shopping-list.md", lambda: _kg_fmt(_tier('standard').ferri_kg)),
         "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
         "om-water-l-run": ("master-shopping-list.md", lambda: f"{round(SENSITIZER_L_PER_PRINT * PRINTS)}"),
-        # project-cost-breakdown.md §7.1 tier masses + §7.2 per-print table (Standard tier).
+        # project-cost-breakdown.md §10.1 tier masses + §10.2 per-print table (Standard tier).
         "msl-run-cost": ("master-shopping-list.md", lambda: f"~${_r(by_key('standard')['section_total'], 10):,} (Standard), range ~${_r(by_key('lean')['section_total'], 10):,} (Lean) – ~${_r(by_key('rich')['section_total'], 10):,} (Rich)"),
         "msl-perprint-range": ("master-shopping-list.md", lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
         "pcb-muslin-run": ("project-cost-breakdown.md", lambda: f"${muslin_cost():,.0f}"),

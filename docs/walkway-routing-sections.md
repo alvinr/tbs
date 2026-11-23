@@ -15,7 +15,7 @@ structure, are visible.
 These sections are the companion to the [Plumbing](plumbing-report.md) report; the pipe
 positions are read off the 3D water model (`water.skp`) and drawn 1:1.
 
-## How to read these
+## 1. How to Read These
 
 The five sections **B‑B through F‑F** are **longitudinal along the walkway**
 (down the length of the container), cut at increasing depth — so together they scan
@@ -30,7 +30,7 @@ from the pinhole wall across to the plumbing corridor. (Sections
 | **E‑E** | corridor pump‑column bay | a faithful X–Z *elevation* of the whole corridor plumbing — every real pipe run, projected from the 3D model (captured live, so it can't drift) |
 | **F‑F** | ≈ 1286 (far cantilever) | the far cantilever, mirroring D‑D (no line crosses it) |
 
-## Section B‑B — near end of the ribbon
+## 2. Section B‑B — Near End of the Ribbon
 
 ![TBS-001 — Walkway Routing Section B-B: near-end ribbon under the right walkway](assets/walkway-sections-sheet1.png)
 
@@ -42,7 +42,7 @@ Off‑section each lane turns up the pinhole wall to its skid connection — the
 ACC‑02, the blue trunk to TAP‑01 and the spray valves, the gray waste from DV‑02, and the brown
 filtered return from SV‑01.
 
-## Section C‑C — midway (pinhole wall ↔ corridor)
+## 3. Section C‑C — Midway (Pinhole Wall ↔ Corridor)
 
 ![TBS-001 — Walkway Routing Section C-C: midway, mid-tray](assets/walkway-sections-sheet2.png)
 
@@ -52,7 +52,7 @@ pass over the tray exclusion zone**: the ribbon runs above the tray rim, under t
 of the print and wash water, and never sits in the basin. The welded cross‑brace
 carries it at this position.
 
-## Section D‑D — through the near cantilever
+## 4. Section D‑D — Through the Near Cantilever
 
 ![TBS-001 — Walkway Routing Section D-D: through the near cantilever](assets/walkway-sections-sheet3.png)
 
@@ -69,7 +69,7 @@ plane. Past the cantilever each lane stays flush, crosses the **open corridor ba
 beam is omitted between the two cantilever arms, so there is no beam to cross), and only then
 drops the tray‑edge slot into the corridor to run into the pumps — they appear in‑plane in E‑E.
 
-## Section E‑E — corridor plumbing elevation
+## 5. Section E‑E — Corridor Plumbing Elevation
 
 ![TBS-001 — Walkway Routing Elevation E-E: corridor plumbing, pump-column bay](assets/walkway-sections-sheet4.png)
 
@@ -88,7 +88,7 @@ float on the **Z20 sub‑plate + foot‑plate stack** (front rail narrowed, top 
 top Z70.8). The IBC tote‑fill and equalization lines, which belong to the IBC stack, are omitted here
 — they are drawn in the [IBC‑stacking](ibc-stacking-report.md) plumbing views. The legend numbers every run.
 
-## Section F‑F — through the far cantilever
+## 6. Section F‑F — Through the Far Cantilever
 
 ![TBS-001 — Walkway Routing Section F-F: through the far cantilever](assets/walkway-sections-sheet5.png)
 
@@ -97,7 +97,7 @@ foot (again extending under the tray). The ribbon loops over the **near** cantil
 dropped into the corridor, so no line crosses this far cantilever; the nearest line is
 the brown SV‑01 → DV‑01 filtered‑return lane.
 
-## Sections G‑G / H‑H — tray slope, support & spray‑carriage clearance
+## 7. Sections G‑G / H‑H — Tray Slope, Support & Spray‑Carriage Clearance
 
 ![TBS-001 — Walkway Routing Section G-G/H-H: tray drainage slope, welded-pan support, and spray-carriage clearance](assets/walkway-sections-sheet6.png)
 
@@ -109,7 +109,7 @@ cut at the far rim (the high corner of the dual slope) showing the level walkway
 sloped pan and the shrunk spray‑carriage (Ø32 wheels + 1½in-square SS beam) with **~30 mm clearance**
 under the left grate.
 
-## Clearances
+## 8. Clearances
 
 Drawn 1:1 against `water.skp`, the sections show the clearances the plan views do not:
 
@@ -138,7 +138,7 @@ Drawn 1:1 against `water.skp`, the sections show the clearances the plan views d
    rear merge. It stays low past the P‑02 → ACC‑02 recycle crossing, then lifts just before the back
    bottom, clearing both. The ribbon lanes enter inboard of the rail.
 
-## See Also
+## 9. See Also
 
 - [Plumbing](plumbing-report.md) §7.1 — the corridor plumbing panel and the four-line ribbon these sections cut through.
 - [Walkway Report](walkway-report.md) §4 — the right-walkway cantilever rectangle the sections pass over.

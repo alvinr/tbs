@@ -89,7 +89,7 @@ because they are computed.
 
 - **Created:** `src/generators/costing.py` — Printmaking / cyanotype vertical slice (the most-drifted
   section). Owns the Ware tiers + unit prices + muslin; computes chem subtotals, section totals,
-  per-print, the Low/Mid/High scenario row; emits the `project-cost-breakdown.md §7.1` table; `check()`
+  per-print, the Low/Mid/High scenario row; emits the `project-cost-breakdown.md §10.1` table; `check()`
   is a regression guard. *It already surfaced a $1 published rounding inconsistency (Lean ferricyanide).*
 - **Next (this phase, section by section):**
   1. Extend the data model to every cost section (container, interior, optics, film plane, water,

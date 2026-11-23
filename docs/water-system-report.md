@@ -290,7 +290,7 @@ of ceiling headroom — no top-cap access.
 
 Parts, suppliers, and current prices: the **[Master Shopping List, filtered to the water system](master-shopping-list.md?system=water)**.
 The water-system budget, including the processing tray, spray bar, and IBC stacking frame, is in the
-[Project Cost Breakdown §5](project-cost-breakdown.md).
+[Project Cost Breakdown §6](project-cost-breakdown.md).
 
 ---
 

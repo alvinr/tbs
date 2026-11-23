@@ -60,7 +60,7 @@ Covering a 99 sq ft photosensitive plane is not a solved problem in commercial p
 
 Processes are ordered roughly by per-image cost (historic processes first, then commercial products). Film is included at the end as the documented outlier.
 
-**Substrate cost basis:** muslin/cotton-fabric lines use the project's **bulk-roll basis — ~$6 per 99 sq ft print** (three 60″ × 150-yd rolls ≈ $300 ÷ a 50-print run; see [Project Cost Breakdown §7.1](project-cost-breakdown.md)). Buying muslin retail for a single image would add ~$75–95. The cyanotype per-print figure is single-sourced to the cost model (Ware New Cyanotype tier).
+**Substrate cost basis:** muslin/cotton-fabric lines use the project's **bulk-roll basis — ~$6 per 99 sq ft print** (three 60″ × 150-yd rolls ≈ $300 ÷ a 50-print run; see [Project Cost Breakdown §10.1](project-cost-breakdown.md)). Buying muslin retail for a single image would add ~$75–95. The cyanotype per-print figure is single-sourced to the cost model (Ware New Cyanotype tier).
 
 ---
 

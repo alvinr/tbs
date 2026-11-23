@@ -6,8 +6,7 @@
 
 TBS-001 requires a light-tight seal at the cargo door end of the container that
 simultaneously allows personnel access during operation without admitting daylight.
-The hinged light-trap panel fills both roles: it seals the full <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm
-cargo door opening as a rigid structural panel, and incorporates a revolving drum
+The hinged light-trap panel fills both roles: it seals the full cargo door opening as a rigid structural panel, and incorporates a revolving drum
 light trap that permits operators to enter and exit the darkened interior at any
 time without opening the panel or breaking the light seal. For emergency egress, or to load and unload equipment, the whole panel unlatches from the inside and swings open.
 
@@ -353,8 +352,7 @@ See the [Master Shopping List](master-shopping-list.md?system=panel) for the par
 ### 4.4 Emergency Egress — Path Clearance
 
 The panel is the camera's egress route, and the left end zone it fronts is kept clear at
-floor level. No fixed equipment stands in the path, so the open panel yields the **full container-width passage**
-(<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm, 93") —
+floor level. No fixed equipment stands in the path, so the open panel yields the **full container-width passage** —
 several times any walk-through or emergency-egress minimum. All fixed interior equipment —
 the electrical panel, battery, pumps, and water lines — sits inboard of the door-end swing
 sweep, so nothing fouls the panel's inward swing or narrows the clear floor (the
@@ -368,7 +366,7 @@ the backup (§4.2).
 
 For transport the entire swinging assembly — the panel center section, the B2
 punch-out bay, and the housing + revolving drum — **revolves ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about a vertical Ø89mm CHS
-pivot post** at the far panel edge (shared with the film plane's far-left rail ends). The swing carries
+pivot post** at the far panel edge. The swing carries
 the bay's ~890mm exterior overhang from outside the cargo-door plane to inboard of it, so the ISO
 doors close.
 
@@ -399,7 +397,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 > **Stay lugs land on steel, not the skin.** The transport-stay couple carries real tension, so both lugs weld to the **left perimeter RHS stile** of the swinging frame — *not* the 1/8" HDPE plastic skin. The perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
-The complete transport lock is detailed on **Sheet 17** — the general arrangement, the **panel-side receiver lug** (a 12mm steel eye plate with a Ø17 clevis-pin hole, 6mm fillet-welded all round to the stile — the turnbuckle jaw clevis-pins here), and the **near-wall anchor** (a 150 × 150 × 12mm A36 plate pair bolted through the near wall with 4 × M16×90 Gr.8.8 on a 90mm square — the interior + exterior backing-plate pattern of the wall-hanger / cantilever joints, since the wall can't be welded to). The wall is a single 1.6mm corrugated sheet, so each bolt crosses a ~28mm hollow; a **crush sleeve** (1-3/8in OD × 1/4in wall DOM steel tube, cut to the measured hollow) fills it so the 225 N·m preload (70.7 kN at 75% of proof load, K = 0.2) clamps plate, sleeve and sheet instead of folding the corrugation. The sleeve runs at 124 MPa (SF 2.02 on 250 MPa mild-steel yield) and bears on the sheet at SF 2.78 (Corten, 345 MPa yield). The 90mm length covers the 54mm grip plus washers, split-lock, nut and two threads, with spare length for corrugation-depth variation. The turnbuckle is a 5/8in jaw-eye galvanized unit (JETBGV58X6). Both ends are modeled in 3D.
+The complete transport lock is detailed on **Sheet 17** — the general arrangement, the **panel-side receiver lug**, and the **near-wall anchor**. The wall is a single 1.6mm corrugated sheet, so each bolt crosses a ~28mm hollow; a **crush sleeve** (1-3/8in OD × 1/4in wall DOM steel tube, cut to the measured hollow) fills it so the 225 N·m preload (70.7 kN at 75% of proof load, K = 0.2) clamps plate, sleeve and sheet instead of folding the corrugation. The sleeve runs at 124 MPa (SF 2.02 on 250 MPa mild-steel yield) and bears on the sheet at SF 2.78 (Corten, 345 MPa yield). The 90mm length covers the 54mm grip plus washers, split-lock, nut and two threads, with spare length for corrugation-depth variation. The turnbuckle is a 5/8in jaw-eye galvanized unit (JETBGV58X6). Both ends are modeled in 3D.
 
 **Sheet 17 — Transport Lock: general arrangement + panel-side receiver lug + near-wall anchor**
 ![TBS-001 Hinged Panel — Sheet 17: Transport Lock](assets/hingepanel-sheet17.png)

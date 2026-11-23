@@ -652,9 +652,9 @@ PARTS: list[Part] = [
          "electrical", 1, "ea", 95.79, 95.79, "Grainger", part_no="21WJ56",
          url="https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56",
          spec="Panduit grounding jumper kit — 6 AWG, 60in, 45deg bent ring lugs (factory irreversible-compression terminals). Equipotential bond: container body -> battery-neg busbar (§7.6). $95.79 firm (2026-07-31)."),
-    Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2,000mm)", "timber-ply",
+    Part("ep-backing-panel", "EP plywood backing panel (18mm, ~365×1,425mm)", "timber-ply",
          "electrical", 1, "cut from the shelf sheet", 0.0, 0.0, "shared (Plywood Cut Sheets)", part_no="302874373", url="https://www.homedepot.com/p/302874373",
-         spec='18mm UV-coated white hardwood ply, ~700×2,000mm backboard — the wall-mounted surface every EP '
+         spec='18mm UV-coated white hardwood ply, ~365×1,425mm backboard — the wall-mounted surface every EP '
               'component fixes to (MPPT on its forward sub-panel, battery bank, inverter, main + PV disconnects); '
               'the DC-distribution terminals (fuse block + busbars) sit in a small IP65 enclosure bolted to it. '
               'Add DIN rail + standoffs for the DIN gear. A backboard is finish-agnostic, so it is CUT FROM THE '
@@ -1077,7 +1077,7 @@ PARTS: list[Part] = [
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",
          "shelf", 1, '4\'×8\' 18mm sheet', 73.28, 73.28, "Home Depot", part_no="BPI6WUV2I", url="https://www.homedepot.com/p/302874373",
-         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1,220×2,440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~700×2,000mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, sheet D), so no separate backboard sheet is bought.'),
+         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1,220×2,440mm), cut to 600×225 (W×deployed depth). UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). This ONE sheet ALSO yields the EP electrical backboard (ep-backing-panel, ~365×1,425mm) — the two nest on the single UV-white sheet (Plywood Cut Sheets, sheet D), so no separate backboard sheet is bought.'),
     # Steel perimeter frame, folding stays, M5 CSK + corner gussets REMOVED — ply-primary redesign
     # (2026-09-07, chem-shelf-blueprint-spec.md): the plywood is the structure; attachments land in
     # ply tee-nuts (1/4-20 ply-mount standard); stays are SS chain. M5 family eliminated.

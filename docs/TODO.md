@@ -23,6 +23,17 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [x] `generate_grp_cutplan.py`, `generate_joint_options.py`, `generate_joint_study.py` fixed 2026-11-21: write to `DIAGRAMS_DIR`; the GRP cut plan now takes its piece outlines from the walkway 3D model and nests them automatically (still 2 panels).
 - [ ] Delete the fallback `.venv-py39` once the 3.14 venv has run a few sessions cleanly.
 
+## 🌀 Light-trap drum running gap (2026-11-23)
+
+- [ ] Widen the drum↔housing running gap from 13mm to fit the strip-brush holder. McMaster 8813T426
+  (center-channel holder for a 0.313in backing, $35.15/8 ft, ×4; datasheet in eng-specs) is 0.480in
+  (12.2mm) tall — the only height offered — leaving 0.8mm in the current 13mm gap; target ≥3mm
+  clearance → gap ≈16mm. Brush: McMaster 74405T126 (5/16in backing, 1in overall, 0.010in BLACK
+  nylon, $28.88/8 ft, ×4). Update LT_WIPER_BACKING (7.94), LT_WIPER_BRISTLE_D (0.25), the gap
+  (housing R or drum OR), then cascade: light-trap + hinged-panel drawings, lighttrap + overview
+  models, parts (ll-wiper-brush / ll-wiper-holder), reports. Re-check the drum-end seal thickness
+  against the new gap.
+
 ## 🛒 Parts to source (SKU + price)
 
 - [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,

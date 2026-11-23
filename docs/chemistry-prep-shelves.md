@@ -110,14 +110,17 @@ Design load **25 kg** (bottles, cylinders, roller tray, scale), carried by the *
 <!-- BEGIN chem-shelf-load -->
 | Element | Demand | Capacity | SF |
 |---|---|---|---|
-| Board bending (18mm ply, 600 wide, 225mm span, 25kg UDL) | 7.3 N·m | 324 N·m | **44** |
+| Board bending (18mm ply, 600 wide, 225mm span, 25kg UDL) | 7.3 N·m | 324 N·m (assumed 10 MPa) | **44** |
 | Board midspan deflection | 0.02 mm (L/11930) | — | — |
 | Chain stay tension (per chain, 46° from horizontal) | 91 N | 5,338 N (WLL) | **59** |
 | Front-corner eyebolt (1/4-20 shoulder, ~45° off-axis, 30% of in-line rating) | 91 N | 667 N | **7** |
-| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | 65 N | 1,300 N | **20** |
+| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | 65 N | 1,300 N (assumed) | **20** |
 <!-- END chem-shelf-load -->
 
 Every element clears with a large margin; the front-corner eyebolts (SF 7) are the governing element.
+The chain and eyebolt capacities are McMaster ratings. The plywood bending allowance (10 MPa) and the
+tee-nut pull-out (1,300 N) are conservative assumptions: the shelf carries only a mixing load, and at
+margins of 44 and 20 a capacity several times lower would still clear.
 
 ### 3.4 Leveling
 

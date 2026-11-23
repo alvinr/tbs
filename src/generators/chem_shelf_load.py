@@ -138,11 +138,11 @@ def table_md():
     rows = [
         "| Element | Demand | Capacity | SF |",
         "|---|---|---|---|",
-        f"| Board bending (18mm ply, 600 wide, {SHELF_DEPTH:.0f}mm span, 25kg UDL) | {md:.1f} N·m | {mc:.0f} N·m | **{sfb:.0f}** |",
+        f"| Board bending (18mm ply, 600 wide, {SHELF_DEPTH:.0f}mm span, 25kg UDL) | {md:.1f} N·m | {mc:.0f} N·m (assumed {PLY_FB:.0f} MPa) | **{sfb:.0f}** |",
         f"| Board midspan deflection | {defl:.2f} mm (L/{SHELF_DEPTH/defl:.0f}) | — | — |",
         f"| Chain stay tension (per chain, {r['chain_ang']:.0f}° from horizontal) | {t_dem:.0f} N | {t_cap:,.0f} N (WLL) | **{t_sf:.0f}** |",
         f"| Front-corner eyebolt (1/4-20 shoulder, ~45° off-axis, 30% of in-line rating) | {e_dem:.0f} N | {e_cap:.0f} N | **{e_sf:.0f}** |",
-        f"| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | {n_dem:.0f} N | {n_cap:,.0f} N | **{n_sf:.0f}** |",
+        f"| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | {n_dem:.0f} N | {n_cap:,.0f} N (assumed) | **{n_sf:.0f}** |",
     ]
     return "\n".join(rows)
 

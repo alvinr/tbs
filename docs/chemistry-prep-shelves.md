@@ -167,7 +167,7 @@ acceptable because the shelf is down only while mixing.
 4. Bolt on the piano hinge: wall leaf to the cleat, shelf leaf into the back-edge tee-nut row (1/4-20 SS screws).
 5. Thread a 1/4-20 steel shoulder eye bolt into each front-corner tee-nut; cap/grind the ~7 mm protruding tip.
 6. Fit an M8 eye bolt into each chain wall anchor ~230 mm above the hinge; hang a chain (quick-links) from each wall eye to the shelf eye.
-7. Deploy; set each chain link so the board sits level on a spirit level, then lock.
+7. Deploy; choose the chain link each quick-link engages so the board sits level on a spirit level, then close the quick-links.
 8. Fit the cam latch (1619A74) + keeper; verify the board folds up flat and latches clear of the wall equipment.
 9. Verify: deployed level + rigid under load; folded-up clear of the evap stow and walkway.
 
@@ -184,8 +184,8 @@ blue-trunk extension that reaches them.*
 
 ## 8. Maintenance
 
-The shelf has no consumables: the ply surface wipes clean, the hinge, chains and fasteners are
-stainless, and the chain links set the level (§3.4). The deploy, stow and inspection steps are in
+The shelf has no consumables: the ply surface wipes clean, the hinge, chains and quick-links are
+stainless (the eyebolts are plain and galvanized steel, acceptable for splash exposure), and the chain links set the level (§3.4). The deploy, stow and inspection steps are in
 the [Operating Manual](operating-manual.md).
 
 ---

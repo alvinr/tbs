@@ -96,6 +96,16 @@ Owning and operating a tilt-bed truck requires **CDL Class B or Class A** depend
 ### License requirement (hire)
 **None** for the customer. The carrier holds the CDL. You need only to be present to direct placement.
 
+### Haul weight and bed tilt
+The outbound leg runs with the Blue totes full, so the truck carries the loaded camera,
+**<!-- BEGIN weight:wt-tx-loaded-lb -->11,440<!-- END weight:wt-tx-loaded-lb --> lbs (<!-- BEGIN weight:wt-loadedtx-total -->5,190<!-- END weight:wt-loadedtx-total --> kg)**, not an empty container. Quote that weight when booking and confirm the
+tilt-bed is rated for it.
+
+Tilting the bed puts a steady g·sin(θ) along the container's length on the full totes. The IBC
+restraint frame is sized to the 49 CFR 393.102 working-load cases of 0.435 g forward and 0.5 g
+rearward ([IBC Stacking Report §3.4](ibc-stacking-report.md)); 0.435 g corresponds to a 25.8° tilt, so
+the bed angle must stay under ~25° whichever end goes down first.
+
 ### Site requirements
 - Level, firm ground (the container slides off the tilted bed — if the ground is soft it may sink)
 - Minimum 40 ft of clear overhead approach space for the tilted truck

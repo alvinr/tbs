@@ -133,6 +133,7 @@ same across strength tiers: Ware's baseline is **0.1%**, raised for more contras
 ### 0.6 Transport Booking (when the container moves)
 - [ ] 0.6.1 — Confirm the route against the state DOT databases for size and weight limits ([Container Report Part 2](container-report.md)).
 - [ ] 0.6.2 — Ask the hauler to place the container with the rear (sealed) end over or near the trailer axle(s), which balances the load ([Weight Distribution Report §6.3](weight-distribution-report.md)).
+- [ ] 0.6.3 — Give the hauler the loaded haul weight (Blue full outbound, [Transportation Options §1](container-transport-options.md)) and confirm the truck is rated for it. For a tilt-bed, confirm the bed tilt stays under ~25° while loading and unloading, the limit of the IBC restraint frame ([Transportation Options §3](container-transport-options.md)).
 
 **GO/NO-GO checkpoint:** Water system tested and IBCs filled. Part A and Part B prepared and sealed. All equipment packed. Container interior inspected (if accessible).
 

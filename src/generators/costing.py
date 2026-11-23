@@ -28,7 +28,7 @@ from dataclasses import dataclass
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from tbs_constants import IMAGE_AREA_M2, DICHROMATE_G_LO, DICHROMATE_G_HI, SENSITIZER_L_PER_PRINT, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI, BLUE_PER_PRINT_GAL  # noqa: E402 — chemistry tiers derive from the active-plane area
+from tbs_constants import IMAGE_AREA_M2, SENSITIZER_ML_PER_M2_COAT_LO, SENSITIZER_ML_PER_M2_COAT_HI, BLUE_PER_PRINT_GAL  # noqa: E402 — chemistry tiers derive from the active-plane area
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50 # edition size every per-run figure is based on
@@ -818,8 +818,11 @@ SECTIONS = [
 ]
 
 # Master-shopping-list-only sections (not in the cost-breakdown's 13). Low/Mid/High estimates.
-TOOLS = Section("10", "Printmaking tools & consumables", 350, 425, 500)
-SAFETY = Section("11", "Safety & PPE", 120, 150, 180)
+# Both reconcile to the parts registry (systems print-tools / safety); their SKUs are still pending.
+TOOLS_ITEMS = [LineItem("Printmaking tools — foam rollers + brushes, UV glasses, aprons, red headlamps, timer, step stool, spray bottles, pH strips", 190, 190, 190, "2026-11-23: registry-backed (print-tools), estimates pending SKUs; was a $350–500 band incl. a consumables contingency")]
+SAFETY_ITEMS = [LineItem("Safety & PPE — first aid kit, ABC extinguisher, GFCI + voltage testers, sunscreen, water jugs", 162, 162, 162, "2026-11-23: registry-backed (safety), estimates pending SKUs; was a $120–180 band")]
+TOOLS = Section("10", "Printmaking tools & consumables", *total(TOOLS_ITEMS))
+SAFETY = Section("11", "Safety & PPE", *total(SAFETY_ITEMS))
 
 
 def grand_total() -> tuple[int, int, int]:
@@ -938,19 +941,15 @@ def _inline_blocks() -> dict:
         "ca-water-pct": (_CA, lambda: f"{round(_sec('5').mid / capital_mid() * 100)}"),
         # operating-manual.md §0.2/§0.3 chemistry tier masses (from the TIERS).
         "om-amfe-g-lean": (_OM, lambda: f"{_amfe_g('lean')}"),
-        "om-amfe-g-standard": ([_OM, "master-shopping-list.md"], lambda: f"{_amfe_g('standard')}"),
+        "om-amfe-g-standard": (_OM, lambda: f"{_amfe_g('standard')}"),
         "om-amfe-g-rich": (_OM, lambda: f"{_amfe_g('rich')}"),
         "om-amfe-kg-lean": (_OM, lambda: _kg_fmt(_tier('lean').amfe_kg)),
-        "om-amfe-kg-standard": ([_OM, "master-shopping-list.md"], lambda: _kg_fmt(_tier('standard').amfe_kg)),
+        "om-amfe-kg-standard": (_OM, lambda: _kg_fmt(_tier('standard').amfe_kg)),
         "om-amfe-kg-rich": (_OM, lambda: _kg_fmt(_tier('rich').amfe_kg)),
         "om-ferri-g-lean": (_OM, lambda: f"{_ferri_g('lean')}"),
-        "om-ferri-g-standard": ([_OM, "master-shopping-list.md"], lambda: f"{_ferri_g('standard')}"),
-        "om-ferri-kg-standard": ("master-shopping-list.md", lambda: _kg_fmt(_tier('standard').ferri_kg)),
+        "om-ferri-g-standard": (_OM, lambda: f"{_ferri_g('standard')}"),
         "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
-        "om-water-l-run": ("master-shopping-list.md", lambda: f"{round(SENSITIZER_L_PER_PRINT * PRINTS)}"),
         # project-cost-breakdown.md §10.1 tier masses + §10.2 per-print table (Standard tier).
-        "msl-run-cost": ("master-shopping-list.md", lambda: f"~${_r(by_key('standard')['section_total'], 10):,} (Standard), range ~${_r(by_key('lean')['section_total'], 10):,} (Lean) – ~${_r(by_key('rich')['section_total'], 10):,} (Rich)"),
-        "msl-perprint-range": ("master-shopping-list.md", lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
         "pcb-muslin-run": ("project-cost-breakdown.md", lambda: f"${muslin_cost():,.0f}"),
         "run-lean":       (["process-comparison.md", "master-shopping-list.md"], lambda: f"${_r(by_key('lean')['section_total'], 10):,}"),
         "run-standard":   (["process-comparison.md", "master-shopping-list.md"], lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
@@ -980,8 +979,6 @@ def _inline_blocks() -> dict:
         "pcb-pp-consumables": ("project-cost-breakdown.md", lambda: f"${PER_PRINT_CONSUMABLES}"),
         "pcb-pp-total": ("project-cost-breakdown.md", lambda: f"${_pp('standard')}"),
         "pcb-pp-range": ("project-cost-breakdown.md", lambda: f"${_pp('lean')} (Lean) – ${_pp('rich')} (Rich)"),
-        "om-dichromate-kg-run": ("master-shopping-list.md",
-                                 lambda: f"{DICHROMATE_G_LO * PRINTS / 1000:.2f}–{DICHROMATE_G_HI * PRINTS / 1000:.2f}"),
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).
         "ibc-frame-low": (_IBC, lambda: f"${_ibc_frame().low:,}"),
         "ibc-frame-high": (_IBC, lambda: f"${_ibc_frame().high:,}"),
@@ -1300,6 +1297,8 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     # handle). +$47/$33/$19 cam latch Southco C2-33 → McMaster 1619A74 ($30.57 ea ×4). +$29 surround→frame blind rivets (2× 100-pack 97525A435;
     # hingepanel-bp surround round). 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12
     # retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2. §6c = hinged-panel §8.1
+    "print-tools": (190, 190, 190), # 2026-11-23: registry-backed tools (SKUs pending).
+    "safety": (162, 162, 162), # 2026-11-23: registry-backed safety & PPE (SKUs pending).
     "shelf": (268, 275, 280), # 2026-11-09: +$1 — M8 hinge-cleat washer merged onto the film SS M8-flat pack 98689A673 (retired dup 91166A270). 2026-09-08: piano hinge
     # upsized 1582A457→14835A77 extra-clearance (3in open) so the ply tee-nut row gets 25mm edge distance — +$50 ($6→$56). 2026-09-08: hinge
     # screws 4→8 (both leaves drilled 4× — Sheet 6; +4 wall-leaf → tapped cleat) +$1/$2/$3. 2026-09-08: tapped backing plate — loose M8 nut
@@ -1356,7 +1355,8 @@ def check() -> list[str]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
     for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT),
                        ("panel", PANEL), ("shelf", SHELF), ("interior", INTERIOR), ("optics", OPTICS), ("film", FILM),
-                       ("ventilation", VENTILATION), ("power", POWER)):
+                       ("ventilation", VENTILATION), ("power", POWER),
+                       ("print-tools", TOOLS_ITEMS), ("safety", SAFETY_ITEMS)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")
     # §5a is a hardcoded Section that grand_total() sums (NOT the POWER line items); it must mirror

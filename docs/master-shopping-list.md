@@ -23,9 +23,9 @@ All prices USD.
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $788 | $938 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
-| 10. Printmaking tools & consumables | $350 | $500 |
-| 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,835** | **~$36,658** |
+| 10. Printmaking tools & consumables | $190 | $190 |
+| 11. Safety & PPE | $162 | $162 |
+| **TOTAL (base build + 50-print run)** | **~$27,717** | **~$36,330** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -40,7 +40,10 @@ This is the consolidated **Bill of Materials** for the whole build: every purcha
 by **material type**, with quantities summed across all systems, followed by a **supplier
 consolidation** table so you can place the fewest, largest orders. The *Systems* column shows where
 each item is used; the full engineering detail for any item lives in that system's report. Costs are
-indicative low–high estimates — get quotes before ordering.
+indicative low–high estimates — get quotes before ordering. Printmaking tools (system
+`print-tools`) and operator safety gear (`safety`) are under **tools-safety**; their SKUs are still
+pending. The cyanotype recipe and per-print reagent basis are in the
+[Chemistry Shopping List](chemistry-shopping-list.md).
 
 <!-- BEGIN parts:master -->
 ### adhesives-finishes
@@ -477,11 +480,26 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | 1 roll | Home Depot | water | $55 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/dp/B01ENFOIQE) (B01ENFOIQE) | 1 ea | Amazon | water | $80 |
+| Chemical-resistant apron, full length | 2 ea | Amazon | print-tools | $30 |
 | [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | 1 pack | Amazon | water | $24 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
+| Digital timer | 1 ea | Amazon | print-tools | $15 |
+| Fire extinguisher, ABC, 5 lb | 1 ea | Home Depot | safety | $40 |
+| First aid kit, ANSI Class A | 1 ea | Amazon | safety | $35 |
+| Foam brush, 4in wide | 6 ea | Home Depot | print-tools | $15 |
+| Foam roller, 18in wide | 3 ea | Home Depot | print-tools | $30 |
+| Folding step stool | 1 ea | Home Depot | print-tools | $25 |
+| GFCI outlet tester | 1 ea | Home Depot | safety | $12 |
+| Insulated drinking water jug, 1 gal | 2 ea | Amazon | safety | $30 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | 2 box | Amazon | water | $30 |
+| Non-contact voltage tester | 1 ea | Amazon | safety | $25 |
 | [pH calibration solution set](https://www.amazon.com/dp/B09DCP4HNH) (B09DCP4HNH) | 1 set | Amazon | water | $8 |
-| **tools-safety subtotal** | | | | **$257** |
+| pH test strips | 1 pack | Amazon | print-tools | $10 |
+| Red LED safelight headlamp | 2 ea | Amazon | print-tools | $30 |
+| Spray bottle, 1 liter | 2 ea | Amazon | print-tools | $15 |
+| Sunscreen SPF 50+, pump bottle | 2 ea | Costco | safety | $20 |
+| UV-blocking safety glasses | 2 pair | Amazon | print-tools | $20 |
+| **tools-safety subtotal** | | | | **$609** |
 
 ### water-equipment
 
@@ -505,10 +523,10 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
+| Amazon | 40 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,223–$2,243 |
 | McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,187–$2,195 |
-| Amazon | 31 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,013–$2,033 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
-| Home Depot | 53 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,613–$1,791 |
+| Home Depot | 58 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,735–$1,913 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
@@ -562,6 +580,7 @@ indicative low–high estimates — get quotes before ordering.
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Amazon / hardware | 1 | fasteners-hardware | $16–$22 |
+| Costco | 1 | tools-safety | $20 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | misterworker | 1 | plumbing-fittings | $14 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
@@ -570,69 +589,7 @@ indicative low–high estimates — get quotes before ordering.
 | offcuts | 1 | water-equipment | $0 |
 <!-- END parts:master -->
 
-## 3. Printmaking Chemistry — Cyanotype (50 Prints)
-*Source: `chemistry-shopping-list.md`. **Procurement** — reagent order quantities, per-tier costs,
-suppliers, and the muslin substrate — is in the Procurement BOM above (`chemistry-reagents` +
-`substrate-fabric`) and the [Cyanotype Shopping List](chemistry-shopping-list.md). This section is the
-**recipe + per-print basis** only.*
-
-**Mike Ware New Cyanotype** — 3:1 ferric ammonium oxalate : potassium ferricyanide by weight
-+ optional ammonium dichromate for contrast (a creative choice), applied as **two wet-on-wet coats** over the <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active plane.
-
-| Reagent | Per print (Standard ½-Ware) | × 50 prints |
-|---------|-----------------------------|-------------|
-| Ferric ammonium oxalate | <!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg |
-| Potassium ferricyanide (3:1) | <!-- BEGIN costing:om-ferri-g-standard -->112<!-- END costing:om-ferri-g-standard -->g | <!-- BEGIN costing:om-ferri-kg-standard -->5.6<!-- END costing:om-ferri-kg-standard --> kg |
-| Ammonium dichromate (optional contrast, 0.1–0.4% of the ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L working volume) | <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi -->g | ~<!-- BEGIN costing:om-dichromate-kg-run -->0.11–0.44<!-- END costing:om-dichromate-kg-run --> kg |
-| Distilled water | ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L | ~<!-- BEGIN costing:om-water-l-run -->110<!-- END costing:om-water-l-run --> L |
-
-Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
-pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost <!-- BEGIN costing:msl-run-cost -->~$1,680 (Standard), range ~$1,230 (Lean) – ~$3,040 (Rich)<!-- END costing:msl-run-cost -->** per 50-print run (~<!-- BEGIN costing:msl-perprint-range -->$25–61<!-- END costing:msl-perprint-range -->/print), incl. ~$300 muslin substrate — ~399 linear
-yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
-summary table maps Low = Lean, High = Rich.
-
-## 4. Printmaking Tools & Consumables
-*Source: `operating-manual.md`, `chemistry-shopping-list.md`*
-
-*Printmaking-specific tools only. Items shared with other systems are **not** repeated here — they
-roll up in the Procurement BOM above and are itemized in their owning system: the muslin clamps +
-mounting in the [film-clamp BOM](film-clamp-mechanism-report.md), nitrile gloves + 6-mil floor poly
-in the [water BOM](water-system-report.md), and the Circuit-D red safelight strips in the
-[electrical BOM](electrical-report.md).*
-
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| Foam roller 18" wide | For sensitizer application | 3 | Home Depot / art supply | ~$30 |
-| Foam brush 4" wide | Detail/edge work | 6 | Home Depot / art supply | ~$15 |
-| UV-blocking safety glasses | Mandatory during sensitizer handling | 2 pairs | Amazon / safety supply | ~$20 |
-| Chemical-resistant apron | Full-length | 2 | Amazon / safety supply | ~$30 |
-| Red LED safelight headlamp | Loading operations inside container (wearable; not the Circuit-D strips) | 2 | Amazon | ~$30 |
-| Digital timer | Exposure timing | 1 | Amazon / camera store | ~$15 |
-| Folding step stool | Reaching top of image plane | 1 | Home Depot | ~$25 |
-| Spray bottle (1 liter) | Humidity/misting in low-RH conditions | 2 | Amazon / garden supply | ~$15 |
-| pH test strips | Quick wash water check | 1 pack | Amazon | ~$10 |
-**Listed tools total: ~$190.** *(The tools line (10) in the summary above — $350–$500 — adds consumable-replacement contingency for rollers/brushes/gloves used up each session.)*
-
-## 5. Safety & PPE
-*Source: `operating-manual.md`, `electrical-report.md`*
-
-*General / operator safety + electrical-work tools — none of these belong to a system BOM, so nothing
-here is repeated above. Related safety items live with their use: chemistry-handling PPE (nitrile
-gloves in the [water BOM](water-system-report.md), UV glasses + apron in §4); the **built-in**
-electrical-safety hardware (terminal-mount fuse, disconnect, two E-stops, terminal covers, bonding) is
-in the electrical BOM and the [Electrical Safety Report](electrical-safety-report.md) §5.*
-
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| First aid kit | ANSI Class A, for remote deployment | 1 | Amazon / Safety supply | ~$35 |
-| Fire extinguisher (ABC) | 5 lb, for electrical and general fire | 1 | Home Depot / Costco | ~$40 |
-| GFCI outlet tester | Verify GFCI protection on any shore power | 1 | Home Depot / Amazon | ~$12 |
-| Non-contact voltage tester | Before any electrical work | 1 | Fluke / Amazon | ~$25 |
-| Sunscreen SPF50+, pump bottle | Exterior deployment, hot climate | 2 | Pharmacy / Costco | ~$20 |
-| Insulated drinking water jug (1 gal) | Palm Springs heat — operator hydration | 2 | REI / Amazon | ~$30 |
-**Section total: ~$162**
-
-## 6. Supplier Directory
+## 3. Supplier Directory
 
 *Where to buy, for the suppliers that carry the most items in the Procurement BOM. Each BOM row links
 its own product page; the **Supplier consolidation** table above gives every supplier's order total.*
@@ -656,7 +613,7 @@ its own product page; the **Supplier consolidation** table above gives every sup
 | **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 60in | Online |
 | **[Lenox Laser](https://lenoxlaser.com)** | Laser-drilled precision pinholes | Glen Arm, MD |
 
-## 7. See Also
+## 4. See Also
 - [Electrical & Systems Report](electrical-report.md) — full wiring specification, circuit fuse ratings, solar architecture
 - [Chemistry Shopping List](chemistry-shopping-list.md) — cyanotype reagent quantities, tiers and suppliers
 - [Film Plane Mechanism Report](film-plane-mechanism-report.md) — engineering drawings for the 4-corner actuation system

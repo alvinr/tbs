@@ -11,12 +11,7 @@ Cyanotype processing requires a clean, stable work surface for:
 - Staging materials (bottles, pH meter, gloves, timer)
 - Post-exposure citric acid wash preparation
 
-Chemistry is mixed **before exposure**, so the shelf is a **wall-hinged fold-down** in the
-widened near walkway: down to counter height while mixing, up flat against the pinhole wall
-for exposure and transport. It is only down while the film plane is parked, so it never
-meets the film-plane swing.
-
-Water tap TAP-01, on the pinhole wall **left of the shelf** (the battery bank is to the right),
+The chemistry shelves provides a counter height place to mix chemistry before appliying. It is folded up for transport and during exposures. Water tap TAP-01, on the pinhole wall left of the shelf,
 supplies filtered Blue water for mixing and wash-down. Its riser tops at the stowed-shelf height
 and the spout reaches over the board; ball valve BV-04 on the ¾" branch shuts it off from the
 prep position.
@@ -25,7 +20,7 @@ prep position.
 
 ## 2. Location and Spatial Constraints
 
-The shelf is in the **widened near walkway** (<!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep), hinged on the
+The shelf is in the **widened near walkway**, hinged on the
 pinhole wall left of the battery bank. Deployed, it projects 225 mm into the walkway; folded
 up, the walkway is clear.
 
@@ -84,20 +79,18 @@ inert in the splash zone.
 
 ![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
-**Piano hinge:** a 304 SS extra-clearance continuous hinge ([McMaster 14835A77](https://www.mcmaster.com/14835A77-14835A33/),
-76.2 mm open) runs the full 600 mm back edge. The shelf leaf screws (1/4-20 SS) into a row of ply
-tee-nuts; the wall leaf is tapped 1/4-20 into a 6 mm cleat. The wide 38.1 mm leaf puts the tee-nut row
+**Piano hinge:** a 304 SS extra-clearance continuous hinge runs the full 600 mm back edge. The shelf leaf screws (1/4-20 SS) into a row of ply
+tee-nuts; the wall leaf is tapped 1/4-20 into a 6 mm cleat. The wide hinge leaf puts the tee-nut row
 **25 mm** in from the board edge; a 1 in-open hinge would leave only ~7 mm of ply. The pinhole wall is
 corrugated, so the cleat and both chain anchors bolt (M8×25) into **flat 8 mm steel backing plates
 welded to the wall crests and tapped M8**, giving flat anchors with nothing loose behind the wall.
 The board swings between horizontal (deployed) and vertical (stowed); the chains slacken as it folds up.
 
-**Stays:** two **304 SS chains** run from M8 eye bolts ~230 mm above the hinge to a **1/4-20 steel shoulder eye
+**Stays:** two **304 SS chains** run from M8 eye bolts above the hinge to a **1/4-20 steel shoulder eye
 bolt** in each front corner. Deployed, they carry the front edge in tension; quick-links at the ends
 set the length, and with it the level.
 
-**Transport latch:** a **cam latch** at the top holds the folded board against the wall: the
-hinged panel's [McMaster 1619A74](https://www.mcmaster.com/1619A74/), reused as a standard part.
+**Transport latch:** a **cam latch** at the top holds the folded board against the wall.
 
 ![Chemistry Prep Shelf — Sheet 3: Hinge + stay detail](assets/shelf-sheet3.png)
 

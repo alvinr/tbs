@@ -85,7 +85,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 
 | Parameter | Value |
 |-----------|-------|
-| Housing outer diameter | Ø800mm (fixed) + Ø764mm rotating drum, ~Ø758mm bore |
+| Housing outer diameter | Ø800mm (fixed) + Ø<!-- BEGIN fact:lt_drum_od_mm -->758<!-- END fact:lt_drum_od_mm -->mm rotating drum, ~Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm bore |
 | Height | 1,883mm clear interior (cap top 2,100mm AFF; cage/beam top 2,217mm, 171mm under the ceiling) |
 | Wall thickness | 5mm (3/16in) UV-HDPE housing (two arc panels + Al H-mullions, no welded seam) + 1/8" HDPE drum (rolled, extrusion-welded C-shell) |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$3,173<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,184<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -122,7 +122,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Fixed housing shell | 5mm (3/16in) UV-HDPE (LT_HOUSING_T), Ø800mm OD, built as **two 100° arc panels that slide into 4 opening-edge Al H-mullions** ([Eagle SGN-113 H-divider](https://eagle-aluminum.com/product/aluminum-h-divider-1-38-for-316-material/)) + glued/riveted sill/header band pieces — **no welded seam**. The panels extend to the beam OUTER faces and **blind-rivet directly to the integrated support frame** (SS blind rivets @ ~150mm — no rim-angle, no bond; see §9 Sheet 9), set in the punch-out bay. The two axle beams cross at 90°/270°, so each panel is notched at its center (Sheet 2) |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
-| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø764mm OD** (~Ø758mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a ≈13mm running gap |
+| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø<!-- BEGIN fact:lt_drum_od_mm -->758<!-- END fact:lt_drum_od_mm -->mm OD** (~Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a <!-- BEGIN fact:lt_run_gap_mm -->16<!-- END fact:lt_run_gap_mm -->mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
 | Drum/housing height | 1,883mm interior clear (2,100mm to cap top AFF; cage/beam top 2,217mm) |
 | Top cap | 8mm 6061-T6 aluminum disc (LT_CAP_TOP_T), bolted stub-shaft hub (4×M10 flange); the HDPE shell laps + SS-rivets + DP8010 to a rolled rim-angle on the cap (see §9 Sheet 4) |
@@ -143,10 +143,9 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Top seal | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against the frame top plate |
-| Bottom seal | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against the frame bottom plate |
+| Top + bottom end seals | 3/4in (19mm) black closed-cell foam band, 1in wide, PSA-bonded to the fixed housing bore at the drum's top and bottom (4 arcs) + silicone bead; the rotating drum OD compresses it ~16%, closing the ends of the running gap (Sheet 12; part `ll-wiper-seal`) |
 | Axle-beam notch penetration (×4) | Closed-cell EPDM foam gasket wrapping each axle beam where it passes through the notched fixed housing skin, bedded with a DP8010/silicone bead — a **static** beam↔skin light-seal at the 4 penetrations (Sheets 2/9/10; part `ll-beam-notch-seal`) |
-| Drum-to-housing running gap | ≈13mm radial clearance, closed by **4 vertical #4 (3/16″) nylon strip brushes** ([Gordon Brush](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) / Tanis — metal channel backing, 0.008″ black nylon, 0.687″/17.5mm trim), each snapped into an **anodized-Al straight-flange holder** ([Tanis](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders)) whose offset flange is **DP8010-bonded + flange-riveted** (backup washers on the inside face) to the rotating drum OD at 93° spacing — the bond is the primary attachment (spreads the load over the whole flange so nothing pulls through the soft HDPE), the rivets clamp during cure + back it up, and the fasteners land in the aluminum flange, clear of the brush (a 3/16″ channel is too small to rivet through); bristles lay over onto the fixed housing bore. One continuous 8 ft piece per line over the full drum height. Strip count set by the Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a strip always seals each arc between the openings at every rotation) — see §9 Sheets 4 & 7 |
+| Drum-to-housing running gap | <!-- BEGIN fact:lt_run_gap_mm -->16<!-- END fact:lt_run_gap_mm -->mm radial clearance, closed by **4 vertical strip brushes** ([McMaster 74405T126](https://www.mcmaster.com/74405T12-74405T126/) — 5/16″ metal backing, 0.010″ black nylon, 17.5mm bristle), each in a **center-channel aluminum holder** ([McMaster 8813T426](https://www.mcmaster.com/8813T42-8813T426/), 0.480″ / 12.2mm tall, 1.25″ flange) whose flange is **DP8010-bonded + blind-riveted** either side of the channel (backup washers on the inside face) to the rotating drum OD at 93° spacing. The bond is the primary attachment (it spreads the load so nothing pulls through the soft HDPE); the rivets clamp during cure and back it up. The channel hangs into the gap, 3.8mm clear of the bore, and the bristles lay over onto the fixed housing bore. One continuous 8 ft piece per line, stopping short of the end-seal bands. Strip count set by the Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a strip always seals each arc between the openings at every rotation) — see §9 Sheets 4 & 7 |
 
 ### 4.4 Hardware
 
@@ -166,14 +165,14 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | 1/8" 18-8 SS blind rivets — [97525A425](https://www.mcmaster.com/97525A425/) (shell→cap, $13.83/100) + [97525A435](https://www.mcmaster.com/97525A435/) (housing→frame, $14.59/100) — + 3M Scotch-Weld DP8010 adhesive | [McMaster-Carr](https://www.mcmaster.com/); [3M DP8010](https://www.3m.com/3M/en_US/p/d/b40071180/) | ~35/cap + ~26/edge @ ~60mm pitch, drill Ø3.3 (#30); DP8010 is the structural bond + light seal for HDPE (low surface energy) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 75mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
-| Running-gap wiper — #4 (3/16″) nylon strip brush (4 lines × 8 ft) + anodized-Al straight-flange holders (4 × 8 ft) | [Gordon Brush](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) / [Tanis](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) | Metal channel backing, 0.008″ black nylon, 0.687″/17.5mm trim; brush snaps into the holder, holder DP8010-bonded + riveted (backup washers) to the drum OD (rivets clear of the brush); one 8 ft piece per line |
-| Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
+| Running-gap wiper — strip brush (4 lines × 8 ft) + center-channel Al holders (4 × 8 ft) | [McMaster 74405T126](https://www.mcmaster.com/74405T12-74405T126/) / [McMaster 8813T426](https://www.mcmaster.com/8813T42-8813T426/) | 5/16″ backing, 0.010″ black nylon, 17.5mm bristle; brush slides into the holder, holder DP8010-bonded + riveted (backup washers) to the drum OD; one 8 ft piece per line |
+| Drum-end foam seal, 3/4″ × 1″ (~2.8m) | McMaster-Carr (SKU pending) | Black closed-cell, pressure-sensitive adhesive back |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
 | Round pull handle — 12″ (×1) | [McMaster-Carr 1871A65](https://www.mcmaster.com/1871A65/) ($6.43) | Off-the-shelf Ø0.5″ bar, 12.13″, 1/4″ through-hole feet; bolts to the stile (interior face only) |
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$3,173<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,184<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §7 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §7 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -192,8 +191,8 @@ interior opening. **Enter:** exterior open, interior covered → light into the 
 no exit. **Transit:** both housing openings covered → fully sealed. **Exit:**
 exterior covered → no daylight enters.
 
-**Access.** The whole **~Ø758mm bore** is clear standing
-space and the 80° opening gives a **~487mm passage** (sideways entry). The Ø758 bore
+**Access.** The whole **~Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm bore** is clear standing
+space and the 80° opening gives a **~<!-- BEGIN fact:lt_passage_mm -->483<!-- END fact:lt_passage_mm -->mm passage** (sideways entry). The Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm --> bore
 meets the §2 standing-space intent; the opening itself is tighter than the nominal
 ≥700mm and was accepted for occasional single-operator field use. Emergency egress remains the
 whole panel swinging open.
@@ -207,9 +206,9 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
-| Clear bore / passage | 800mm | 750–900mm | **Ø758mm bore / ~487mm passage** |
+| Clear bore / passage | 800mm | 750–900mm | **Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm bore / ~<!-- BEGIN fact:lt_passage_mm -->483<!-- END fact:lt_passage_mm -->mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **1,883mm clear** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$3,173<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,184<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -300,8 +299,8 @@ scheme (cap→flange countersunk in the cap, Ø11 clearance, threading into the 
 ![TBS-001 Light-Trap — Sheet 6: Machined Components — Bearing Seats & Stub-Shaft](assets/lighttrap-sheet6.png)
 
 **Sheet 7 — Seals & light-path verification.** The running-gap wiper (4 drum-mounted
-#4 strip brushes in Al flange holders — see the Sheet 4 holder-profile inset for the
-flange-riveted mount) and top/bottom seals, and the three-position proof (open-to-exterior,
+strip brushes in center-channel Al holders — see the Sheet 4 holder-profile inset for the
+bonded + riveted mount) and the top/bottom foam end seals, and the three-position proof (open-to-exterior,
 open-to-interior, mid-rotation) that no straight-through light path exists at any rotation.
 The plans also carry the strip-count study — the 93°-spaced strips keep at least one wiper
 in each 100° housing material arc at every rotation, so the annular gap can never carry
@@ -342,9 +341,9 @@ running gap between them — how the rotating and fixed halves coexist at one le
 
 **Sheet 12 — Top-end seal detail (enlarged from Sheet 7).** The top-end axial seal cross-section
 pulled off the light-path sheet and drawn large — **schematic**, with the radial gap exaggerated so
-the seal path reads clearly (a true 13mm gap would be a hairline): the rotating drum cap ↔ fixed frame
-plate neoprene wiper caps the running gap, killing a ray that tries to travel up and over the brushes.
-This seals the gap axially; the running-gap brush section (the circumferential seal) is the to-scale
+the seal path reads clearly (a true <!-- BEGIN fact:lt_run_gap_mm -->16<!-- END fact:lt_run_gap_mm -->mm gap would be a hairline): a black foam band on the fixed
+housing bore, compressed by the drum OD, closes the end of the running gap, killing a ray that tries to
+travel up and over the brushes. This seals the ends of the gap; the running-gap brush section (the circumferential seal) is the to-scale
 7:1 holder-profile inset on Sheet 4, so it is not duplicated here.
 
 ![TBS-001 Light-Trap — Sheet 12: Top-End Seal Detail (enlarged)](assets/lighttrap-sheet12.png)

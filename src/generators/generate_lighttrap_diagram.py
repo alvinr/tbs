@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 import math
 import os
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_LEG, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_HBAR_N, LT_HBAR_RIVET_PITCH, LT_HBAR_END_BOLT, LT_STRIP_LEG, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, DIAGRAM_DPI, DIAGRAMS_DIR, FONT, BG
+from tbs_constants import C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT, C_LT_DRUM, DRUM_CX, DRUM_CY, DRUM_D, DRUM_H_LT, PANEL_FLOOR_GAP, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, LT_CAP_TOP_T, LT_CAP_BOT_T, LT_CAP_OD, LT_LAP_H, LT_RIVET_D, LT_RIVET_HOLE, LT_RIVET_PITCH, LT_RIVET_N, LT_RIM_LEG, LT_RIM_T, LT_RIM_RIVET_PITCH, LT_SHELL_ARC, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, LT_FRAME_RHS, LT_FRAME_T, LT_FRAME_PLATE_T, LT_TOPRING_OD, LT_COLLAR_OD, LT_RING_BOLT_PCD, LT_FRAME_MOUNT_BOLT_TOP, LT_FRAME_MOUNT_BOLT_BOT, LT_AXLE_BEAM_H, LT_AXLE_BEAM_W, LT_AXLE_BEAM_T, LT_AXLE_BEAM_SPAN, LT_STUB_SHAFT_L, LT_BRG_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_TBEAM_Z0, LT_BBEAM_Z1, LT_EDGE_CHAN_LEG, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_HBAR_N, LT_HBAR_RIVET_PITCH, LT_HBAR_END_BOLT, LT_STRIP_LEG, LT_DRUM_CHAN_W, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_DRUM_CHAN_N, LT_DRUM_CHAN_RIVET_PITCH, LT_HOUSING_ARC, LT_HOUSING_RIVET_N, LT_WIPER_N, LT_WIPER_TRIM, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, LT_WIPER_HOLDER_H, LT_WIPER_HOLDER_FL, LT_WIPER_HOLDER_CH, LT_END_SEAL_T, LT_END_SEAL_W, DIAGRAM_DPI, DIAGRAMS_DIR, FONT, BG
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, draw_cl_v, draw_cl_h,
     leader, draw_notes,
@@ -661,18 +661,18 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     rz = LIP * 0.5
     blind_rivet(ax, (DPT + SHT - LEGT) / 2, rz, 0, S * (LT_DRUM_T + 1 + LT_RIM_T), d=RVD)  # shell → lip rivet (radial)
     blind_rivet(ax, -RIML / 2, (LEGT - CAPT) / 2, 90, CAPT + LEGT, d=RVD * 0.8)             # one leg → cap rivet (vertical)
-    # ── Running-gap brush wiper on the drum OD — a #4 (3/16") strip brush snapped into a Tanis
+    # ── Running-gap brush wiper on the drum OD — a 74405T126 strip brush slid into an 8813T426
     # anodized-aluminum STRAIGHT-FLANGE holder. This is a LONGITUDINAL cut along the brush, so the
     # holder flange + its blind rivets run PARALLEL to the brush, circumferentially offset (behind
     # the cut plane) — the true mount + the rivet-clear-of-brush is the HOLDER PROFILE inset below.
     # The run starts BELOW the cap lap so its flange rivets stagger clear of the shell→cap rivets.
     odx  = DPT + SHT                              # drum OD (shell outer face)
     HW   = S * LT_WIPER_HOLDER_W                   # holder flange wall (0.050")
-    CHAN = S * LT_WIPER_BACKING                    # #4 channel backing (3/16")
+    CHAN = S * (LT_WIPER_HOLDER_H - LT_WIPER_HOLDER_W)   # holder channel + 5/16in brush backing (radial)
     br_bot, br_top = -128, -18                     # brush run on the shell body (below the lap)
     draw_rect(ax, odx, br_bot, HW, br_top - br_bot, fc=C_ALUM, lw=1.0, zorder=7)             # Al holder (on the OD)
     ax.plot([odx, odx], [br_bot, br_top], color=C_GASKT, lw=2.6, zorder=8)                   # DP8010 bond: holder flange → HDPE shell
-    draw_rect(ax, odx + HW, br_bot, CHAN, br_top - br_bot, fc="#8A8F98", lw=1.0, zorder=8)   # #4 channel backing
+    draw_rect(ax, odx + HW, br_bot, CHAN, br_top - br_bot, fc="#8A8F98", lw=1.0, zorder=8)   # holder channel + brush backing
     for zz in range(int(br_bot) + 8, int(br_top), 8):                                        # bristles lay over into the gap
         ax.plot([odx + HW + CHAN, odx + HW + CHAN + S * 15], [zz, zz + 11], color="#333", lw=0.5, zorder=8)
     for zc in (-90,):                                                                        # holder → shell blind rivet — SINGLE (a 2nd upper rivet would foul the rim-angle L)
@@ -680,7 +680,7 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
     for zz in (-134, -126):                                                                  # break (shell + brush continue down)
         ax.plot([DPT - 3, odx + HW + CHAN + 3], [zz - 3, zz + 3], color=C_OUT, lw=0.6, zorder=9)
     leader(ax, odx + HW + CHAN + S * 6, br_top - 22, 250, -CAPT - 150,
-           f"RUNNING-GAP BRUSH — #4 strip brush in an Al flange holder ({LT_WIPER_N} strips,\nSheet 7): the holder is DP8010-BONDED to the HDPE shell (brown, PRIMARY) + a SINGLE\nbackup blind rivet (washer inside) — a 2nd/upper rivet would foul the rim-angle L; see\nHOLDER PROFILE inset →; runs clear BELOW the cap lap",
+           f"RUNNING-GAP BRUSH — 74405T126 strip brush in an 8813T426 Al holder ({LT_WIPER_N} strips,\nSheet 7): the holder is DP8010-BONDED to the HDPE shell (brown, PRIMARY) + a SINGLE\nbackup blind rivet (washer inside) — a 2nd/upper rivet would foul the rim-angle L; see\nHOLDER PROFILE inset →; runs clear BELOW the cap lap",
            fs=6.0, color=C_OUT, ha="left", arrow_style="->", font=FONT)
 
     # ── Section dimensions + callouts (all to the 7:1 geometry) ──────────────
@@ -752,47 +752,50 @@ def draw_sheet4():                           # Sheet 4 — drum secure (shell→
 
     # ── HOLDER PROFILE inset — TRUE cross-section ⊥ to the brush length (scale 7:1) ─
     # Dedicated right column. Radial = UP, circumferential = across. Shows the flange riveted to
-    # the shell CLEAR of the brush, the #4 channel in the track, bristles laying over the fixed bore.
+    # the shell CLEAR of the brush, the brush backing in the channel, bristles laying over the fixed bore.
     IS = 7                                                   # inset scale (real mm × 7)
     ox, oz = 1300, 150                                       # drum OD baseline (circumferential center)
     def ix(mm): return ox + IS * mm
     def iz(mm): return oz + IS * mm
     HWmm, CHmm, GAPmm, HTmm = LT_WIPER_HOLDER_W, LT_WIPER_BACKING, RUN_GAP, LT_HOUSING_T
-    ax.text(ox, iz(GAPmm + HTmm) + 44, "HOLDER PROFILE — section ⊥ brush  (7:1)",
+    ax.text(ox, iz(GAPmm + HTmm) + 110, "HOLDER PROFILE — section ⊥ brush  (7:1)",
             ha="center", va="bottom", fontsize=8, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     draw_rect(ax, ix(-32), iz(-LT_DRUM_T), IS * 64, IS * LT_DRUM_T, fc=C_LT_DRUM, lw=1.2, zorder=5)   # rotating drum shell
     draw_rect(ax, ix(-32), iz(GAPmm), IS * 64, IS * HTmm, fc="#DDE4EC", lw=1.2, zorder=5)             # fixed housing wall (bore face)
     # Al straight-flange holder — ONE continuous extrusion (single piece): a flat mounting flange
     # (left, riveted to the shell) integral with the U-track (right) that grips the #4 brush channel.
-    w, cav, wH, fL = HWmm, CHmm, CHmm, -28              # wall · channel cavity · wall-height · flange-left (mm)
+    # McMaster 8813T426 center-channel holder — ONE extrusion: a flat 1.25in flange (on the drum OD)
+    # with the brush channel centered BELOW it, slot facing the bore so the bristles exit at 90°.
+    w, fl, ch, hh = HWmm, LT_WIPER_HOLDER_FL / 2, LT_WIPER_HOLDER_CH / 2, LT_WIPER_HOLDER_H
     ax.add_patch(mpatches.Polygon([
-        (ix(fL), iz(0)), (ix(2 * w + cav), iz(0)),                      # flange + track base (bottom, on the OD)
-        (ix(2 * w + cav), iz(w + wH)), (ix(w + cav), iz(w + wH)),       # right (outer) track wall
-        (ix(w + cav), iz(w)), (ix(w), iz(w)),                           # cavity floor (U bottom)
-        (ix(w), iz(w + wH)), (ix(0), iz(w + wH)),                       # left (inner) track wall
-        (ix(0), iz(w)), (ix(fL), iz(w))],                              # flange top
-        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=6))            # flanged-U holder (one piece)
-    draw_rect(ax, ix(w), iz(w), IS * cav, IS * wH, fc="#8A8F98", lw=0.9, zorder=7)   # #4 channel seated in the U-track
-    # bristles project radially up from the channel (seated on the U-track base), lay over the bore
-    for k in range(9):
-        bx = ix(w + 0.4 + k * (cav - 0.8) / 8)
-        ax.plot([bx, bx], [iz(w + wH), iz(GAPmm)], color="#222", lw=0.6, zorder=7)
-        ax.plot([bx, bx + IS * 6], [iz(GAPmm), iz(GAPmm)], color="#222", lw=0.6, zorder=7)            # lay-over on the bore
-    # flange → shell securing: the flange is BONDED to the soft HDPE shell with DP8010 (spreads the load
-    # over the whole flange so nothing point-loads / pulls through the 3mm plastic) — this is the PRIMARY
-    # attachment; the blind rivet clamps during cure + is the mechanical backup, with a backup washer on
-    # the blind (inside) face so its bulb can't pull through the HDPE.
-    ax.plot([ix(fL), ix(2 * w + cav)], [iz(0), iz(0)], color=C_GASKT, lw=3.2, zorder=6)                    # DP8010 bond line (flange → shell)
-    blind_rivet(ax, ix(-17), iz((HWmm - LT_DRUM_T) / 2), 90, IS * (LT_DRUM_T + HWmm), d=IS * LT_RIVET_D)
-    draw_rect(ax, ix(-17) - IS * 7, iz(-LT_DRUM_T) - IS * 1.4, IS * 14, IS * 1.4, fc=C_STEEL, lw=0.6, zorder=6)  # backup washer (blind side, spreads the bulb load in the HDPE)
-    draw_dim_v(ax, ix(-36), iz(0), iz(GAPmm), f"{GAPmm}mm GAP", offset=30, fs=6.2, font=FONT)
-    leader(ax, ix(-17), iz(HWmm), ix(-20), iz(-LT_DRUM_T) - 44,
-           "Al STRAIGHT-FLANGE HOLDER (anodized, 0.050\" wall — Tanis/Gordon AH400436):\nflange DP8010-BONDED to the HDPE shell (brown — spreads the load, no pull-through)\n+ Ø3.18 blind rivet w/ a backup washer (inside face); rivet clear of the brush",
+        (ix(-fl), iz(0)), (ix(fl), iz(0)), (ix(fl), iz(w)), (ix(ch), iz(w)),        # flange (bottom on the OD)
+        (ix(ch), iz(hh)), (ix(ch - w - 1.5), iz(hh)), (ix(ch - w - 1.5), iz(hh - w)),  # right channel wall + lip
+        (ix(ch - w), iz(hh - w)), (ix(ch - w), iz(2 * w)), (ix(-ch + w), iz(2 * w)),  # channel cavity
+        (ix(-ch + w), iz(hh - w)), (ix(-ch + w + 1.5), iz(hh - w)), (ix(-ch + w + 1.5), iz(hh)),
+        (ix(-ch), iz(hh)), (ix(-ch), iz(w)), (ix(-fl), iz(w))],                     # left channel wall + flange
+        closed=True, fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=6))
+    bk = LT_WIPER_BACKING
+    draw_rect(ax, ix(-bk / 2), iz(2 * w), IS * bk, IS * bk, fc="#8A8F98", lw=0.9, zorder=7)   # 5/16in brush backing in the channel
+    # black bristles exit the slot radially, cross the gap and lay over on the bore
+    for k in range(7):
+        bx = ix(-1.6 + k * 3.2 / 6)
+        ax.plot([bx, bx], [iz(2 * w + bk), iz(GAPmm)], color="#111", lw=0.6, zorder=7)
+        ax.plot([bx, bx + IS * 6], [iz(GAPmm), iz(GAPmm)], color="#111", lw=0.6, zorder=7)
+    # flange → shell securing: DP8010 bond (PRIMARY, spreads the load over the soft HDPE) + one blind
+    # rivet each side of the channel, with a backup washer on the blind (inside) face.
+    ax.plot([ix(-fl), ix(fl)], [iz(0), iz(0)], color=C_GASKT, lw=3.2, zorder=6)                    # DP8010 bond line (flange → shell)
+    for rx in (-(ch + fl) / 2, (ch + fl) / 2):
+        blind_rivet(ax, ix(rx), iz((HWmm - LT_DRUM_T) / 2), 90, IS * (LT_DRUM_T + HWmm), d=IS * LT_RIVET_D)
+        draw_rect(ax, ix(rx) - IS * 3, iz(-LT_DRUM_T) - IS * 1.4, IS * 6, IS * 1.4, fc=C_STEEL, lw=0.6, zorder=6)  # backup washer
+    draw_dim_v(ax, ix(-fl - 4), iz(0), iz(GAPmm), f"{GAPmm}mm GAP", offset=30, fs=6.2, font=FONT)
+    draw_dim_v(ax, ix(fl + 4), iz(0), iz(hh), f"{hh:.1f}mm HOLDER", offset=30, fs=6.2, right=True, font=FONT)
+    leader(ax, ix(-(ch + fl) / 2), iz(HWmm), ix(-4), iz(-LT_DRUM_T) - 120,
+           "8813T426 CENTER-CHANNEL HOLDER (Al, 0.050\" wall, 1.25\" flange):\nflange DP8010-BONDED to the HDPE shell (brown — spreads the load, no pull-through)\n+ one Ø3.18 blind rivet each side of the channel, backup washer inside",
            fs=6.0, color=C_OUT, ha="center", arrow_style="->", font=FONT)
-    leader(ax, ix(HWmm + CHmm / 2), iz(GAPmm), ix(22), iz(GAPmm) + 60,
-           f"#4 (3/16\") STRIP BRUSH\n0.008\" black nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
-           ha="left", arrow_style="->", font=FONT)
-    ax.text(ox, iz(GAPmm + HTmm) + 8, "FIXED HOUSING (bore)", ha="center", va="bottom",
+    leader(ax, ix(0), iz(GAPmm), ox, iz(GAPmm + HTmm) + 16,
+           f"74405T126 STRIP BRUSH (5/16\" backing) · 0.010\" black nylon, {LT_WIPER_TRIM:.1f}mm trim", fs=6.0, color=C_OUT,
+           ha="center", va="bottom", arrow_style="->", font=FONT)
+    ax.text(ix(18), iz(GAPmm + HTmm / 2), "FIXED HOUSING (bore)", ha="center", va="center",
             fontsize=6.2, color=C_DIM, **FONT, zorder=8)
     ax.text(ox, iz(-LT_DRUM_T) - 70, "ROTATING DRUM OD", ha="center", va="top",
             fontsize=6.2, color=C_DIM, **FONT, zorder=8)
@@ -1308,7 +1311,7 @@ def draw_sheet6():
 # SHEET 7 — Light-lock verification (access + light-path + seals)
 # Panel A: an operator fits the open drum bore. Panel B: three drum rotations prove
 # no straight-through EXT↔INT light path (the drum's opaque wall always blocks one
-# side). Panel C: the running-gap brush + axial-end neoprene seal details.
+# side). Panel C: the running-gap brush + end foam seal details.
 # ═════════════════════════════════════════════════════════════════════════════
 def draw_sheet7():
     HR, DR = LT_HOUSING_R, LT_DRUM_OR
@@ -1426,7 +1429,7 @@ def draw_sheet7():
         lx += 560
 
     ax.text(1815, -640,
-            "SEAL CROSS-SECTIONS\n\nrunning-gap brush (radial)\n→ SHEET 4 HOLDER PROFILE\n\ntop-end neoprene (axial)\n→ SHEET 12 (drawn 1.5:1)",
+            "SEAL CROSS-SECTIONS\n\nrunning-gap brush (radial)\n→ SHEET 4 HOLDER PROFILE\n\ntop-end foam seal\n→ SHEET 12 (drawn 1.5:1)",
             ha="center", va="center", fontsize=9, color=TITLE_COL, fontweight="bold",
             **FONT, zorder=9,
             bbox=dict(boxstyle="round,pad=0.9", fc="#EEF3F8", ec=C_OUT, lw=1.4))
@@ -1434,9 +1437,9 @@ def draw_sheet7():
     notes = [
         "SEALS & LIGHT-PATH",
         "Amber rays = the light path — daylight enters an aligned opening and is stopped by the drum's opaque wall before it can reach the far opening; at mid-rotation both openings are blocked at entry.",
-        f"Running-gap wiper: {LT_WIPER_N}× vertical #4 (3/16\") strip brushes (0.008\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) snapped into anodized-Al straight-flange holders FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015) — the rivets land in the aluminum flange, clear of the brush; bristles lay over onto the fixed housing bore across the {RUN_GAP:.0f}mm gap. 96\" stock → each line is ONE continuous piece over the full drum height (no joint).",
+        f"Running-gap wiper: {LT_WIPER_N}× vertical McMaster 74405T126 strip brushes (5/16\" backing, 0.010\" BLACK nylon, {LT_WIPER_TRIM:.1f}mm trim) slid into 8813T426 center-channel Al holders bonded + FLANGE-RIVETED to the rotating drum OD at {LT_WIPER_SPACING:.0f}° spacing (Ø{LT_RIVET_D} blind rivets, McMaster 97447A015, either side of the channel); the {LT_WIPER_HOLDER_H:.1f}mm holder clears the bore by {RUN_GAP - LT_WIPER_HOLDER_H:.1f}mm and the bristles lay over onto it across the {RUN_GAP:.0f}mm gap. 8 ft stock → each line is ONE continuous piece, stopping short of the end-seal bands.",
         f"Strip count: {LT_WIPER_SPACING:.0f}° spacing ≤ the {int(round(180 - LT_OPENING_DEG))}° housing material arc, so ≥1 strip always sits in each arc between the openings at every rotation → the annular gap can never carry light EXT↔INT.",
-        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips (rotating drum cap ↔ fixed frame plate) + silicone bead CAP the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12 for the enlarged top-end seal cross-section. The brushes seal the gap circumferentially; the neoprene seals it axially.",
+        f"Top + bottom ends: a {LT_END_SEAL_T:.0f}mm (3/4in) black closed-cell foam band bonded to the fixed housing bore and compressed by the drum OD closes the running gap so a ray can't bypass the brushes over the top/bottom — SEE SHEET 12. The brushes seal the gap circumferentially; the foam bands seal its ends.",
         f"Light-tight by geometry: each opening {LT_OPENING_DEG}° (<90°); the drum's {LT_SHELL_ARC}° wall bridges the two 180°-apart housing openings at every rotation. Interior flat-black; residual scatter killed at the matte wall. ALL DIMS IN mm.",
     ]
     draw_notes(ax, notes, -80, -280, 34, fs=7, font=FONT, width=1200, wrap=120,
@@ -2021,7 +2024,7 @@ def draw_sheet10():
     leader(ax, 30, 8, -20, -20, "Al CAP + BOLTED\nSTUB HUB (4×M10)", fs=6.5, color=C_OUT,
            ha="right", arrow_style="->", font=FONT)
     leader(ax, DOR_ + RUN_GAP / 2, LT_LAP_H / 2, 575, 55,
-           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× #4 strip brushes in Al\nflange holders FLANGE-RIVETED to the ROTATING\ndrum OD, bristles wiping the fixed bore\n(Sheets 4/7)",
+           f"RUNNING GAP {RUN_GAP}mm — {LT_WIPER_N}× 74405T126 strip brushes in\n8813T426 holders FLANGE-RIVETED to the ROTATING\ndrum OD, bristles wiping the fixed bore\n(Sheets 4/7)",
            fs=6.5, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, LT_AXLE_BEAM_SPAN / 2 - 60, Z_BEAM0 + LT_AXLE_BEAM_H / 2, 575, Z_BEAM0 + 120,
            f"AXLE BEAM {LT_AXLE_BEAM_H}×{LT_AXLE_BEAM_W} steel RHS — carries the central\nbearing + the fixed housing;\nswing-panel weldment (Sheet 8)",
@@ -2034,7 +2037,7 @@ def draw_sheet10():
 
     notes = [
         "COMBINED TOP-END ASSEMBLY  (drawn to scale — see 100mm bar)",
-        "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a brush-sealed running gap separates them (4× vertical #4 strip brushes on the drum OD, Sheets 4 & 7).",
+        "The rotating drum (cap + shell on the stub shaft) hangs from the central bearing and turns inside the fixed housing; the two never touch — a brush-sealed running gap separates them (4× vertical 74405T126 strip brushes on the drum OD, Sheets 4 & 7).",
         "INNER joint (rotating), DETAIL A: drum shell laps the cap rim-angle — SS blind rivets + DP8010; full detail on Sheet 4.",
         "OUTER joint (fixed), DETAIL B: the housing skin extends to the beam OUTER face and blind-rivets DIRECTLY to the axle beam (no rim-angle — dropped 2026-09-08); full detail on Sheet 9.",
         "The two joints sit at different heights (drum joint at the cap, housing joint at the beam) and on opposite walls of the running gap, so the rotating rivets always clear the fixed ones.",
@@ -2162,7 +2165,7 @@ def draw_sheet11():
 
 def draw_sheet12():
     # Top-end seal cross-section pulled off Sheet 7 and drawn large + schematic (radial gap
-    # exaggerated) so the neoprene/brush seal path is easy to read; not a true single scale.
+    # exaggerated) so the foam/brush seal path is easy to read; not a true single scale.
     X_LO, X_HI, Z_LO, Z_HI = 120, 1500, -360, 1000
     FIG_W = 10.0
     FIG_H = FIG_W * (Z_HI - Z_LO) / (X_HI - X_LO)
@@ -2181,44 +2184,43 @@ def draw_sheet12():
     otx, otz = 700, 560
     def TX(mm): return otx + S * mm
     def TZ(mm): return otz + S * mm
-    ax.text(TX(0), TZ(230), "TOP-END LIGHT PATH  (axial section · schematic — radial gap exaggerated)\ngap CAPPED at top · cap ↔ frame neoprene seal · bottom identical",
+    ax.text(TX(0), TZ(230), "TOP-END LIGHT PATH  (axial section · schematic — radial gap exaggerated)\ngap CLOSED at the top by a foam seal on the housing bore · bottom identical",
             ha="center", va="bottom", fontsize=8.5, color=TITLE_COL, fontweight="bold", **FONT, zorder=15)
     draw_rect(ax, TX(-22), TZ(-175), S * 12, S * 205, fc=C_LT_DRUM, lw=1.2, zorder=5)   # drum shell (rotating)
     draw_rect(ax, TX(36), TZ(-175), S * 14, S * 235, fc="#DDE4EC", lw=1.2, zorder=5)    # housing wall (fixed)
     draw_rect(ax, TX(-120), TZ(6), S * 110, S * 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
-    draw_rect(ax, TX(-120), TZ(48), S * 196, S * 18, fc=C_STEEL, lw=1.4, zorder=6)      # frame top plate (fixed)
-    draw_rect(ax, TX(-88), TZ(28), S * 122, S * 18, fc=C_GASKT, lw=1.0, zorder=7)       # neoprene wiper — caps the gap
-    ax.plot([TX(-88), TX(34)], [TZ(28), TZ(28)], color="#8A5A2B", lw=2.6, zorder=8)     # PSA adhesive bond: neoprene → rotating drum cap
-    ax.plot([TX(-40), TX(34)], [TZ(46), TZ(46)], color="#B03030", lw=1.4, ls=(0, (2, 2)), zorder=8)  # wiping contact: free edge sweeps the fixed frame plate
-    # running-gap brush: holder BONDED to the drum's OUTER (gap-facing) surface and protruding INTO the
-    # gap; bristles lay across the gap onto the fixed housing bore (circumferential seal — see Sheet 4).
-    draw_rect(ax, TX(-10), TZ(-132), S * 6, S * 70, fc="#A8763A", lw=0.5, zorder=6)     # brush holder (bronze) on the drum OD
-    for zz in range(-120, -66, 8):                                                      # bristles → fixed housing
-        ax.plot([TX(-4), TX(32)], [TZ(zz), TZ(zz + 5)], color="#222", lw=0.6, zorder=6)
-    ax.annotate("", xy=(TX(13), TZ(24)), xytext=(TX(13), TZ(-165)),                     # daylight ray UP the gap …
+    draw_rect(ax, TX(-10), TZ(-40), S * 46, S * 34, fc="#1A1A1A", lw=1.0, zorder=7)     # foam end seal (fixed, compressed on the drum OD)
+    ax.plot([TX(36), TX(36)], [TZ(-40), TZ(-6)], color="#8A5A2B", lw=2.6, zorder=8)     # PSA bond: foam → fixed housing bore
+    ax.plot([TX(-10), TX(-10)], [TZ(-40), TZ(-6)], color="#B03030", lw=1.4, ls=(0, (2, 2)), zorder=8)  # wiping contact: drum OD sweeps the foam
+    # running-gap brush: 8813T426 holder flange bonded to the drum OD, the channel hanging into the gap,
+    # bristles across to the fixed housing bore (circumferential seal — see Sheet 4); stops below the foam.
+    draw_rect(ax, TX(-10), TZ(-132), S * 2, S * 70, fc=C_ALUM, lw=0.5, zorder=6)        # holder flange on the drum OD
+    draw_rect(ax, TX(-8), TZ(-132), S * 8, S * 70, fc="#8A8F98", lw=0.5, zorder=6)      # holder channel + brush backing
+    for zz in range(-120, -66, 8):                                                      # black bristles → fixed housing
+        ax.plot([TX(0), TX(36)], [TZ(zz), TZ(zz + 5)], color="#222", lw=0.6, zorder=6)
+    ax.annotate("", xy=(TX(13), TZ(-42)), xytext=(TX(13), TZ(-165)),                    # daylight ray UP the gap …
                 arrowprops=dict(arrowstyle="-|>", color="#E8A800", lw=1.8), zorder=8)
-    for s1, s2 in (((-11, 26), (11, 40)), ((-11, 40), (11, 26))):                       # … killed at the seal (red ✗)
+    for s1, s2 in (((-11, -50), (11, -36)), ((-11, -36), (11, -50))):                   # … killed at the seal (red ✗)
         ax.plot([TX(13 + s1[0]), TX(13 + s2[0])], [TZ(s1[1]), TZ(s2[1])], color="#D33", lw=2.2, zorder=9)
-    leader(ax, TX(4), TZ(37), TX(44), TZ(150),
-           "NEOPRENE WIPER — PSA-backed strip BONDED to the\nrotating drum cap (brown) + silicone bead; its free\nedge sweeps the fixed frame plate — caps the gap",
+    leader(ax, TX(30), TZ(-20), TX(80), TZ(150),
+           f"FOAM END SEAL — {LT_END_SEAL_T * 0.03937:.2f}in ({LT_END_SEAL_T:.0f}mm) black closed-cell foam,\n{LT_END_SEAL_W * 0.03937:.0f}in wide, PSA-BONDED to the fixed housing bore (brown)\n+ silicone bead; compressed by the rotating drum OD (red)",
            fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
-    ax.text(TX(82), TZ(57), "FRAME TOP PLATE (fixed)", ha="left", va="center", fontsize=6.5, color=C_DIM, **FONT, zorder=9)
     leader(ax, TX(-70), TZ(17), TX(-128), TZ(50), "DRUM CAP (rotating)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
     leader(ax, TX(43), TZ(-90), TX(120), TZ(-70), "HOUSING (fixed)", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
     leader(ax, TX(-7), TZ(-95), TX(-55), TZ(-160), f"BRUSH + {RUN_GAP}mm gap\n(circumferential seal)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
-    ax.text(TX(13), TZ(-195), "daylight ↑ the gap →\nBLOCKED at the top seal", ha="center", va="top",
+    ax.text(TX(13), TZ(-195), "daylight ↑ the gap →\nBLOCKED at the end seal", ha="center", va="top",
             fontsize=6.5, color=C_OUT, **FONT, zorder=9)
 
     notes = [
         "TOP-END SEAL DETAIL  (enlarged from Sheet 7)",
-        "Top + bottom axial ends: 12mm closed-cell neoprene wiper strips secured by their own PSA adhesive back (McMaster 93855K6) BONDED to the rotating drum cap face + a silicone bead along the seam; the strip's free edge sweeps the fixed frame plate. This CAPS the running gap so a ray can't bypass the brushes over the top/bottom. The neoprene seals the gap AXIALLY; together with the brushes (circumferential) there is no straight-through or over-the-top light path.",
-        f"The running-gap brush radial section (the {LT_WIPER_N}× #4 strip brushes flange-riveted to the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
-        "NOT TO SCALE — the radial running gap is exaggerated so the seal path reads clearly (a true 13mm gap would be a hairline here); vertical members ≈ 1.5×. See Sheet 4 for the to-scale (7:1) holder profile and Sheet 7 for the rotation/light-path plans A–C.",
+        f"Top + bottom ends of the running gap: a {LT_END_SEAL_T:.0f}mm (3/4in) black closed-cell foam band, {LT_END_SEAL_W:.0f}mm (1in) wide, PSA-bonded to the FIXED housing bore at the drum's top and bottom (one band per 100° housing arc, 4 in all) + a silicone bead along its edges. The rotating drum OD compresses it ~{100 * (LT_END_SEAL_T - RUN_GAP) / LT_END_SEAL_T:.0f}% as it turns, closing the gap so a ray can't bypass the brushes over the top or under the bottom.",
+        f"The {LT_WIPER_N}× strip brushes stop short of the foam bands; their radial section (8813T426 holder on the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
+        f"NOT TO SCALE — the radial running gap is exaggerated so the seal path reads clearly (a true {RUN_GAP}mm gap would be a hairline here); vertical members ≈ 1.5×. See Sheet 4 for the to-scale (7:1) holder profile and Sheet 7 for the rotation/light-path plans A–C.",
     ]
     draw_notes(ax, notes, X_LO + 40, 150, 20, fs=7, font=FONT, width=1250, wrap=118, title_color=TITLE_COL)
 
     title_block(ax, "SHEET 12 OF 12", drawing_title="REVOLVING LIGHT-TRAP",
-                subtitle="SEAL DETAIL — TOP-END NEOPRENE (enlarged)",
+                subtitle="SEAL DETAIL — TOP-END FOAM SEAL (enlarged)",
                 scale_note="SCHEMATIC (gap exaggerated) · ALL DIMS IN mm",
                 doc_id="TBS-001 · Revolving Light-Trap", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet12.png"),

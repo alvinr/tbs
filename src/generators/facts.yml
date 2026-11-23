@@ -641,3 +641,24 @@ brown_cr_max_pct_hi:
   constant: BROWN_CR_MAX_PCT_HI
   unit: '%'
   owner: sensitizer-trials.md
+
+# Light-trap drum — derived from LT_DRUM_OR (running gap LT_RUN_GAP); injection-only.
+lt_drum_od_mm:
+  constant: LT_DRUM_OD
+  unit: mm
+  owner: light-trap-selection.md
+
+lt_drum_bore_mm:
+  constant: LT_DRUM_BORE
+  unit: mm
+  owner: light-trap-selection.md
+
+lt_passage_mm:
+  constant: LT_PASSAGE_W
+  unit: mm
+  owner: light-trap-selection.md
+
+lt_run_gap_mm:
+  constant: LT_RUN_GAP
+  unit: mm
+  owner: light-trap-selection.md

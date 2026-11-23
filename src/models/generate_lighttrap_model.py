@@ -40,7 +40,7 @@ import tbs_draw as draw                          # shared drawing/material primi
 # metal-cap / rim-angle constants imported directly (ov re-exports the rest); keeps this
 # model self-contained so a lighttrap re-send doesn't force an edit to the plumbing-bearing
 # generate_sketchup_model.py (which would trip the interference-report gate).
-from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM, FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT
+from tbs_constants import LT_CAP_TOP_T, LT_CAP_OD, LT_RIM_LEG, LT_RIM_T, LT_HBAR_SLOT, LT_HBAR_LEG, LT_HBAR_T, LT_STRIP_LEG, LT_STRIP_T, LT_DRUM_CHAN_LEG, LT_DRUM_CHAN_T, LT_WIPER_N, LT_WIPER_SPACING, LT_WIPER_BACKING, LT_WIPER_HOLDER_W, LT_WIPER_HOLDER_H, LT_WIPER_HOLDER_FL, LT_WIPER_HOLDER_CH, LT_RUN_GAP, LT_END_SEAL_W, LT_AXLE_BEAM_W, LT_AXLE_BEAM_H, LT_BBEAM_H, LT_BRG_STANDOFF, LT_BEAM_STANDOFF, LT_CAGE_TOP, LT_CAGE_BOT, LT_HOUSING_Z_BOT, LT_HOUSING_Z_TOP, LT_BRG_PLATE_OD, LT_BRG_PLATE_T, LT_BBEAM_Z1, LT_LBRG_Z0, LT_TOPRING_OD, LT_COLLAR_OD, LT_RIVET_PITCH, C_LT_DRUM, FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT
 
 # ── pull in shared helpers + constants ───────────────────────────────────────
 ruby_box, ruby_cylinder = draw.ruby_box, draw.ruby_cylinder
@@ -453,6 +453,14 @@ def drum_housing(cx, cy):
             pts = [(cx + R * cr - Sc * sr, cy + R * sr + Sc * cr) for R, Sc in hv]
             parts.append(draw.ruby_prism(f"LT Housing H-mullion ({e:.0f}deg)", pts, BEAM_BOT,
                                        BEAM_TOP - BEAM_BOT, color=C_ALUM))
+    # DRUM-END LIGHT SEALS — black closed-cell foam bands bonded to the housing bore at the drum's
+    # top and bottom, wiped by the drum OD; they close the ends of the running gap. One band per
+    # 100° housing arc (the openings carry none), modeled compressed to the gap.
+    for zs in (PANEL_Z_BOT, DRUM_H - LT_END_SEAL_W):
+        for ac in (90, 270):
+            parts.append(draw.ruby_arc_wall("LT Drum-end light seal (foam)", cx, cy, HOUSING_R - HOUSING_T,
+                                          LT_RUN_GAP, LT_END_SEAL_W, gap_center_deg=(ac + 180) % 360,
+                                          gap_deg=360 - (180 - od), color="#1A1A1A", z0=zs))
     # SKIN EXTENSION (2026-09-08) — extend the fixed skin from the beam INNER faces out to
     # their OUTER faces to close the top/bottom gap: top HZT(2167)→top-beam-top(2217),
     # bottom HZB(180)→bottom-beam-bottom(140). The skin fixes directly to the beams here (no
@@ -512,7 +520,6 @@ def drum_rotor(cx=0, cy=0):
     (origin on the drum axis); drum() passes the absolute drum center for the
     static overview build. Shown at the ENTER position (opening at exterior 180°)."""
     H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
-    felt = "#7E7E76"
     parts = []
     parts.append(draw.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
@@ -568,25 +575,26 @@ def drum_rotor(cx=0, cy=0):
     for bz in (g0, g1):                                      # 2 feet → arm to the stile, BOLTED (1/4", no welds)
         parts.append(ruby_box("LT Pull-handle arm", gx, cy - 6.35, bz - 6.35,
                               stile_x - gx, 12.7, 12.7, color=C_STEEL))
-    # Running-gap light-seal WIPER — N vertical #4 (3/16") nylon strip brushes, each snapped into
-    # an anodized-Al straight-flange holder whose flange rivets to the drum OD (rivets clear of the
-    # brush). Bristles reach across the gap to the fixed housing bore. Spaced 93° on the 280° wall
+    # Running-gap light-seal WIPER — N vertical 74405T126 strip brushes, each in an 8813T426
+    # center-channel holder: the flat flange bonds + rivets to the drum OD, the channel hangs below
+    # it and the bristles cross the gap to the fixed housing bore. Spaced 93° on the 280° wall
     # (from the opening edge) so ≥1 always sits in each 100° housing arc at every rotation → the
-    # annular gap can never carry light (see 2D Sheets 4 & 7).
+    # annular gap can never carry light (see 2D Sheets 4 & 7). The strips stop short of the
+    # drum-end seal bands on the housing bore.
     brz = HOUSING_R - HOUSING_T                  # housing bore — bristle tips reach here
-    hw = 3.0                                     # tangential half-width of a strip
-    hold_d = 6.0                                 # Al holder radial depth at the drum OD
+    r0, rw, rh = DRUM_OR, DRUM_OR + LT_WIPER_HOLDER_W, DRUM_OR + LT_WIPER_HOLDER_H
+    fl, ch, hb = LT_WIPER_HOLDER_FL / 2, LT_WIPER_HOLDER_CH / 2, LT_WIPER_BACKING / 2
+    zb0, zb1 = ZB + LT_END_SEAL_W + 5, H - LT_END_SEAL_W - 5
     for k in range(LT_WIPER_N):
         sa = math.radians(180 + od / 2 + k * LT_WIPER_SPACING)
         cr, sr = math.cos(sa), math.sin(sa)
-        huv = [(DRUM_OR, -hw * 1.6), (DRUM_OR + hold_d, -hw * 1.6),
-               (DRUM_OR + hold_d, hw * 1.6), (DRUM_OR, hw * 1.6)]        # Al flange holder on the OD
+        huv = [(r0, -fl), (rw, -fl), (rw, -ch), (rh, -ch), (rh, ch), (rw, ch), (rw, fl), (r0, fl)]  # T holder
         hpts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in huv]
-        parts.append(draw.ruby_prism("LT Drum wiper holder (Al flange)", hpts, ZB, H - ZB, color="#C8D8E8"))
-        uv = [(DRUM_OR + hold_d, -hw), (brz, -hw), (brz, hw), (DRUM_OR + hold_d, hw)]  # nylon bristles → bore
+        parts.append(draw.ruby_prism("LT Drum wiper holder (8813T426)", hpts, zb0, zb1 - zb0, color="#C8D8E8"))
+        uv = [(rh, -hb), (brz, -hb), (brz, hb), (rh, hb)]                  # black nylon bristles → bore
         pts = [(cx + R * cr - S * sr, cy + R * sr + S * cr) for R, S in uv]
         parts.append(draw.ruby_prism(f"LT Drum wiper brush ({math.degrees(sa) % 360:.0f}°)",
-                                   pts, ZB, H - ZB, color=felt))
+                                   pts, zb0, zb1 - zb0, color="#202020"))
     return '\n'.join(parts)
 
 

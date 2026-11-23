@@ -114,14 +114,14 @@ is slightly lower than the whole-panel figure carried in the
 | **B · Housing** | HDPE housing shell | Ø800×3/16", two 80° openings | 12.5 |
 |  | Steel flange/hub inserts | bolt inserts, isolation | 6.0 |
 | | **B subtotal** | | **18.5** |
-| **C · Drum** | HDPE C-shell | Ø764×1/8", one 80° opening | 10.6 |
-|  | Al end caps (2) | Ø755×8mm 6061-T6 (bolted hubs) | 19.3 |
-|  | Rim-angle arcs (2) | 25×25×3 rolled R378, 6061-T6 Al, 280° arc | 1.4 |
+| **C · Drum** | HDPE C-shell | Ø758×1/8", one 80° opening | 10.5 |
+|  | Al end caps (2) | Ø749×8mm 6061-T6 (bolted hubs) | 19.0 |
+|  | Rim-angle arcs (2) | 25×25×3 rolled R374, 6061-T6 Al, 280° arc | 1.4 |
 |  | Steel stub shafts (2) | Ø75×75 | 5.2 |
 |  | SKF 6215 bearings (2) | sealed deep-groove | 2.6 |
 |  | HDPE edge stiffeners (2) | ~0.30 kg/m | 1.1 |
 |  | Grab rail + misc | interior pull rail, fasteners | 4.0 |
-| | **C subtotal** | | **44.3** |
+| | **C subtotal** | | **43.9** |
 | **D · Bay** | Punch-out bay walls | 1/8" HDPE, 6.37m² (0.89m deep) | 19.3 |
 | **E · Cage** | Cage posts + rails + top axle beam | 2×2×0.120in steel SHS, 16.9m | 77.2 |
 |  | Bottom axle beam | 50×40×3 RHS, 0.96m | 3.8 |
@@ -135,12 +135,12 @@ is slightly lower than the whole-panel figure carried in the
 | **H · Pivot (rotating)** | Thrust + journal bearings | carry leaf at pivot | 8.0 |
 |  | Pivot collar / hub | clamps to leaf | 5.0 |
 | | **H subtotal** | | **13.0** |
-| | **MOVABLE TOTAL (carried-rotating)** | | **≈277** |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈276** |
 | | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
 
 **By material:** steel 193 kg (70%), HDPE 68 kg (25%), plywood 10 kg (4%), aluminum 3 kg (1%), EPDM/other 3 kg (1%).
 
-**Pivot loads.** The movable mass sits 1.16m from the swing axis (mass-weighted plan centroid), so it puts **3.1 kN·m** on the pivot post against the 3.6 kN·m the post is sized for, and **277 kg** on the thrust bearing against its 330 kg design load (§5.5). The hub reacts that moment through its two bushings as a 1.7 kN force pair. With the post held at floor and roof, the floor end sees 1.6 kN shear and 0.27 kN·m, which loads each floor-plate M12 to 1.5 kN (M12 Gr.8.8 proof load 50.6 kN).
+**Pivot loads.** The movable mass sits 1.16m from the swing axis (mass-weighted plan centroid), so it puts **3.1 kN·m** on the pivot post against the 3.6 kN·m the post is sized for, and **276 kg** on the thrust bearing against its 330 kg design load (§5.5). The hub reacts that moment through its two bushings as a 1.7 kN force pair. With the post held at floor and roof, the floor end sees 1.6 kN shear and 0.27 kN·m, which loads each floor-plate M12 to 1.5 kN (M12 Gr.8.8 proof load 50.6 kN).
 <!-- END movable:table -->
 
 All light-lock plastic — skins, drum, bay, housing — is one weld-compatible HDPE.
@@ -214,8 +214,8 @@ interface stays single-sourced.
 | Type | Fixed cylindrical housing + single-opening C-shell revolving drum (no internal fins) |
 | Housing outer diameter | Ø800mm (fixed, built into the panel center zone) |
 | Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
-| Drum (rotating) | Ø764mm C-shell, single 80° opening, **~Ø758mm clear bore** |
-| Passage width | **~487mm** (the 80° opening) — single operator, sideways entry |
+| Drum (rotating) | Ø<!-- BEGIN fact:lt_drum_od_mm -->758<!-- END fact:lt_drum_od_mm -->mm C-shell, single 80° opening, **~Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm clear bore** |
+| Passage width | **~<!-- BEGIN fact:lt_passage_mm -->483<!-- END fact:lt_passage_mm -->mm** (the 80° opening) — single operator, sideways entry |
 | Height | Cap top at 2,100mm AFF (cage/beam top 2,217mm); see [Light Trap Selection](light-trap-selection.md) §3 |
 | Mounting | **Carried with the panel** — panel bottom rides at the 217mm floor gap; the drum-cage underside hangs clear of the fixed floor-leg walkway posts + tray rim as it swings. Operator steps up from the walkway deck into the drum. |
 | Wall thickness | 5mm (3/16in) UV-HDPE housing + 1/8" HDPE drum — rolled and extrusion-welded plastic skin; opening edge-stiffened |
@@ -259,9 +259,8 @@ See [Light Trap Selection](light-trap-selection.md) §5 and **Light-Trap Sheet 7
 
 | Location | Seal method |
 |----------|------------|
-| Top | 12mm closed-cell neoprene wiper ring bonded to drum top cap + silicone bead against the frame top plate |
-| Bottom | 12mm closed-cell neoprene wiper ring bonded to drum bottom cap + silicone bead against the frame bottom plate |
-| **Drum↔housing rotating seal** | Felt/brush wiper strips on the two vertical edges of the drum opening sweep against the housing inner wall as the drum turns, blocking light leaking around the opening; top + bottom felt wiper rings close the ~15mm annular running gap |
+| Top + bottom | 3/4in black closed-cell foam band on the fixed housing bore, compressed by the rotating drum OD, closes each end of the running gap ([Light-Trap Selection](light-trap-selection.md), Sheet 12) |
+| **Drum↔housing rotating seal** | Four vertical strip brushes on the drum OD (93° apart) sweep the housing bore as the drum turns, so the <!-- BEGIN fact:lt_run_gap_mm -->16<!-- END fact:lt_run_gap_mm -->mm running gap never carries light; the top and bottom foam end seals close its ends ([Light-Trap Selection](light-trap-selection.md), Sheets 4, 7 and 12) |
 | Housing-to-panel gap (top/bottom caps) | The floor/roof caps are **plain plates** riveted to the **outside** of the top/bottom frame beams; the housing **outer skin** extends to the beam outer faces and its top/bottom edge **butts the cap underside**, closed by a **silicone caulk bead** — no weld, no neoprene (Sheet 7 Detail A) |
 | Weather rating | IP44 (splash and rain protection) |
 
@@ -280,8 +279,8 @@ exterior drum wall, then uses the interior pull handle to pull the drum closed a
 ![TBS-001 Light-Trap — Sheet 7: Light-Lock Verification](assets/lighttrap-sheet7.png)
 
 **1. Does a person fit? — Yes.** The drum is a
-single-opening C-shell, so the whole **~Ø758mm bore** is clear standing space. The
-80° opening gives a **~487mm passage** (sideways entry), enough for a single operator to enter and
+single-opening C-shell, so the whole **~Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm bore** is clear standing space. The
+80° opening gives a **~<!-- BEGIN fact:lt_passage_mm -->483<!-- END fact:lt_passage_mm -->mm passage** (sideways entry), enough for a single operator to enter and
 turn inside. Emergency egress remains the whole panel swinging open.
 
 **2. As the drum rotates, can daylight enter? — No** (§3.3): at **enter** the interior
@@ -542,17 +541,17 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,195<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,368<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,173<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,184<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$867<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,167<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,654<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,318<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,750<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,254<!-- END costing:hp-total-high -->** |
 
 ---
 
 ## 9. Maintenance
 
 The panel's wear items are its elastomer seals (the EPDM perimeter gasket and the cut seals at
-the swing boundaries, which flex on every mode conversion; the neoprene drum wipers and their
+the swing boundaries, which flex on every mode conversion; the drum strip brushes and foam end seals, and their
 silicone bead), the wall-stay turnbuckles and anchors, the cam-latch keepers (adjustable for
 clamp force), and the flat-black interior paint. The 51118 pivot thrust bearing is a greased
 bearing; the iglide J journal bushings are self-lubricating and run dry (no oil or grease on
@@ -571,5 +570,5 @@ The inspection and service schedule is in the [Operating Manual — Maintenance]
 | Pivot thrust bearing (51118) | [Motion — SKF 51118](https://www.motion.com/products/sku/00132858) — single-direction thrust ball bearing, Ø90 × 120 × 22mm, static Cₒ ≈190 kN, for the pivot base |
 | Pivot journal bushings (JFM-9095-100) | [igus — iglide J JFM-9095-100](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) — iglide J self-lubricating flange bushing, Ø90 ID × 95 OD × Ø103 flange × 100L, top + bottom post radial location |
 | EPDM gasket material | [McMaster-Carr](https://www.mcmaster.com/epdm-rubber-sheets) — closed-cell EPDM, UV-stable |
-| Neoprene wiper strip | [McMaster-Carr #93855K6](https://www.mcmaster.com/93855K6) — closed-cell, pressure-sensitive adhesive |
+| Drum-end foam seal | 3/4in × 1in black closed-cell foam, pressure-sensitive adhesive (McMaster, SKU pending) |
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |

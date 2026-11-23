@@ -594,13 +594,13 @@ Deployment and stowing are in §1.7.3 and §5.5.1.
 | Every use | Dark-adaptation light seal check (5 min) — mark any light points with gaffer tape (§1.8) |
 | Every 20 mode conversions | Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear |
 | Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
-| Every 6 months | Inspect neoprene drum seals (top/bottom) for wear and adhesion |
+| Every 6 months | Inspect the drum foam end seals (top/bottom) for wear and adhesion, and the four strip brushes for flattened or missing bristles |
 | Annually | Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle |
 | Annually | Grease the 51118 pivot thrust bearing; the iglide journal bushings run dry — do **not** oil/grease them — wipe the post journal bands clean and check for free, smooth rotation |
 | Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
 | Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
 | Annually | Inspect the cam latches for clamp force; adjust the latching distance or replace the keeper |
-| Every 2 years | Re-seal drum top/bottom neoprene wiper strips and silicone bead |
+| Every 2 years | Replace the drum foam end seals and renew their silicone bead |
 | As needed | Re-apply flat black interior paint where scuffed or worn |
 
 ### Ventilation and cooling ([Ventilation Report §10](ventilation-report.md))

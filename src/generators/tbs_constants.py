@@ -456,9 +456,13 @@ DRUM_H_LT  = 2100    # drum CAP-TOP Z (mm) — LOWERED (was 2250) so the top hub
                      # bottom clearance over the fixed floor-leg posts + tray — see light-trap-selection §3.3).
 LT_HOUSING_R   = DRUM_R   # 400 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) — 3/16" UV-HDPE (US Plastics 46685, ≈5mm; modeled as 5) [rev9 B2: 3mm Al → 3/16" UV-HDPE plastic skin]
-LT_DRUM_OR     = LT_HOUSING_R - LT_HOUSING_T - 13   # 382 — drum outer radius, 13mm running gap inside the housing bore (derived so it tracks the housing Ø)
+LT_RUN_GAP     = 16       # drum↔housing running gap (mm) — the 0.480in (12.2mm) 8813T426 brush holder + ≥3mm clearance
+LT_DRUM_OR     = LT_HOUSING_R - LT_HOUSING_T - LT_RUN_GAP   # 379 — drum outer radius inside the housing bore (derived so it tracks the housing Ø)
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
+LT_DRUM_OD     = 2 * LT_DRUM_OR                                   # 758 — drum outer diameter
+LT_DRUM_BORE   = round(2 * (LT_DRUM_OR - LT_DRUM_T))              # 752 — clear standing bore
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness). Drum = single 80° opening → a 280° C-shell (not a full cylinder).
+LT_PASSAGE_W   = round(LT_DRUM_BORE * math.sin(math.radians(LT_OPENING_DEG / 2)))   # 483 — chord of the 80° opening
 LT_SHELL_ARC   = 360 - LT_OPENING_DEG   # 280 — drum shell / rim-angle / rivet arc (the 80° egress slot has no shell there)
 # (LT_CAP_T retired 2026-08-26 — the deprecated pre-split alias; all consumers migrated to LT_CAP_TOP_T / LT_CAP_BOT_T.)
 # ── End caps — STRUCTURAL hub discs (carry the steel stub shafts into the SKF
@@ -489,19 +493,26 @@ LT_HOUSING_RIVET_N = round((LT_HOUSING_ARC / 360) * math.pi * 2 * LT_HOUSING_R /
 # Vertical brush strips on the drum OD, bristles wiping the FIXED housing bore.
 # Spaced ≤100° (the housing material-arc width) so a strip always sits in each 100° arc at
 # every drum rotation → guaranteed gap-light block (light-trap-selection §9 Sheet 7 study).
-# #4 staple-set strip brush — 3/16" (4.76mm) metal channel backing, 0.008" (0.20mm) BLACK
-# nylon, 0.687" (17.5mm) trim; black bristles absorb stray light, the fine dense fill blocks it.
-# Each strip snaps into a Tanis anodized-aluminum STRAIGHT-FLANGE holder whose offset flat
-# flange is blind-riveted to the drum OD — the rivets land in the aluminum flange, CLEAR of
-# the brush (a 3/16" channel is too small to rivet through). The holder body is low-profile
-# (< the 13mm gap); bristles lay over onto the bore, tolerant of HDPE out-of-roundness.
-# 96" (2.44m) stock → ONE continuous piece over the full drum height (no butt joint).
-# Anodized aluminum (not SS) suits the damp container. Gordon Brush / Tanis; sizes #2.5–#12.
+# McMaster 74405T126 tight-seal strip brush — 5/16in (7.94mm) square metal backing, 1in overall,
+# 0.010in BLACK nylon; black bristles absorb stray light, the dense fill blocks it. Each strip
+# slides into a McMaster 8813T426 center-channel aluminum holder: a 1.25in flat flange BONDED
+# (DP8010) + blind-riveted to the drum OD either side of the channel, the channel hanging below
+# it so the bristles exit at 90° to the flange, across the gap; bristles lay over onto the bore.
+# 8 ft (2.44m) stock → ONE continuous piece per strip. The strips stop short of the end-seal
+# bands (LT_END_SEAL_W) at the drum's top and bottom.
 LT_WIPER_N         = 4      # brush strips around the drum (280° wall / 3 gaps = 93.3° spacing ≤ 100°)
-LT_WIPER_TRIM      = 17.5   # bristle trim / free length (mm) — 0.687" #4 strip brush (bridges the 13mm gap, lays over)
-LT_WIPER_BRISTLE_D = 0.20   # reserved — bristle Ø (mm); labels state the 0.008" catalog spec directly (dense = light block, black = absorb)
-LT_WIPER_BACKING   = 4.76   # brush channel backing (mm) — 3/16" #4 metal channel (snaps into the Al holder track)
-LT_WIPER_HOLDER_W  = 1.27   # holder flange wall (mm) — 0.050" anodized-Al Tanis straight-flange holder
+LT_WIPER_TRIM      = 17.5   # bristle free length (mm) — 1in overall − 5/16in backing = 0.6875in
+LT_WIPER_BRISTLE_D = 0.25   # bristle Ø (mm) — 0.010in (74405T126 datasheet)
+LT_WIPER_BACKING   = 7.94   # brush backing (mm) — 5/16in square metal backing (74405T126)
+LT_WIPER_HOLDER_W  = 1.27   # holder wall (mm) — 0.050in (8813T426)
+LT_WIPER_HOLDER_H  = 12.19  # holder overall height, flange face → slot face (mm) — 0.480in (8813T426)
+LT_WIPER_HOLDER_FL = 31.75  # holder flange width (mm) — 1.250in (8813T426)
+LT_WIPER_HOLDER_CH = 11.43  # holder channel outer width (mm) — 0.450in (8813T426)
+# Drum-end light seal — a black closed-cell foam band bonded to the housing bore at the top and
+# bottom of the drum, wiped by the drum OD; closes the ends of the running gap. Thicker than
+# the gap so it stays compressed. Four arcs (the housing's two 100° arcs, top + bottom).
+LT_END_SEAL_T      = 19.05  # 3/4in foam (compressed ≈16% of its thickness in the 16mm gap)
+LT_END_SEAL_W      = 25.4   # 1in band (along Z)
 LT_WIPER_SPACING   = LT_SHELL_ARC / (LT_WIPER_N - 1)   # 93.3° between strips on the 280° drum wall
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,

@@ -25,14 +25,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🌀 Light-trap drum running gap (2026-11-23)
 
-- [ ] Widen the drum↔housing running gap from 13mm to fit the strip-brush holder. McMaster 8813T426
-  (center-channel holder for a 0.313in backing, $35.15/8 ft, ×4; datasheet in eng-specs) is 0.480in
-  (12.2mm) tall — the only height offered — leaving 0.8mm in the current 13mm gap; target ≥3mm
-  clearance → gap ≈16mm. Brush: McMaster 74405T126 (5/16in backing, 1in overall, 0.010in BLACK
-  nylon, $28.88/8 ft, ×4). Update LT_WIPER_BACKING (7.94), LT_WIPER_BRISTLE_D (0.25), the gap
-  (housing R or drum OR), then cascade: light-trap + hinged-panel drawings, lighttrap + overview
-  models, parts (ll-wiper-brush / ll-wiper-holder), reports. Re-check the drum-end seal thickness
-  against the new gap.
+- [~] Running gap 13 → 16mm (drum OR 382 → 379) for the 8813T426 holder (12.2mm, 3.8mm clear) +
+  74405T126 brush; drum-end seal moved to a 3/4in foam band on the housing bore. Source, drawings,
+  parts, costing, reports and manual done 2026-11-23; remaining: re-send lighttrap, overview and
+  construction .skp, and source the 3/4in × 1in black closed-cell adhesive foam (ll-wiper-seal).
 
 ## 🛒 Parts to source (SKU + price)
 
@@ -41,8 +37,8 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   stub-shaft stock → Metal Supermarkets). Remaining moves need a re-sourced SKU + price (each lands on
   an order we already place):
   - [ ] Bearings Direct (SKF 6215-2RS1, 51118 thrust) → McMaster-Carr — $201
-  - [~] Canal Rubber → McMaster: EPDM foam done (8694K88, 2026-11-23). Neoprene ON HOLD — 4568N128 is solid 3/16in × 1in × 36in; the cap wiper spec is 12mm closed-cell PSA around both drum caps
-  - [~] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T536 ON HOLD (2026-11-23): 5/16in backing vs the modeled 3/16in (LT_WIPER_BACKING cascade); bristle color must be black
+  - [~] Canal Rubber → McMaster: EPDM foam done (8694K88, 2026-11-23); the drum-end seal is now a 3/4in × 1in black closed-cell adhesive foam band — SKU pending
+  - [x] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T426 (2026-11-23; running gap widened to 16mm)
   - [~] Blue Sea → Powerwerx: MRBF 5187+5191 and busbar 2312 done (2026-11-23); inverter ANL fuse + disconnect still to source
   - [x] Inverter Service Center → Powerwerx BPC121531104R $175.95 (2026-11-23)
   - [ ] buyDeutsch (DT06-2S pairs) + AutomationDirect (4 AWG ground wire) → Waytek Wire — $79

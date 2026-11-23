@@ -119,14 +119,14 @@ interchangeable ICP-02 Ø80 carrier (SS-302 pinhole board or a Copal/Compur 0/1/
 | Light-lock center X (cargo door end wall) | <!-- BEGIN cdm:DRUM_CX -->-420<!-- END cdm:DRUM_CX -->mm | `DRUM_CX` |
 | Fixed housing outer diameter | <!-- BEGIN cdm:DRUM_D -->800<!-- END cdm:DRUM_D -->mm | `DRUM_D` |
 | Housing radius | 450mm | `DRUM_R` / `LT_HOUSING_R` |
-| Drum outer radius (rotating) | <!-- BEGIN cdm:LT_DRUM_OR -->382<!-- END cdm:LT_DRUM_OR -->mm | `LT_DRUM_OR` |
+| Drum outer radius (rotating) | <!-- BEGIN cdm:LT_DRUM_OR -->379<!-- END cdm:LT_DRUM_OR -->mm | `LT_DRUM_OR` |
 | Opening arc (each) | <!-- BEGIN cdm:LT_OPENING_DEG -->80<!-- END cdm:LT_OPENING_DEG -->° | `LT_OPENING_DEG` |
 | Top Z (walkway-lifted) | <!-- BEGIN cdm:DRUM_H_LT -->2,100<!-- END cdm:DRUM_H_LT -->mm | `DRUM_H_LT` |
 
 *Components: fixed Ø800 aluminum housing with two 80° openings (exterior + interior-onto-walkway,
-180° apart); single-opening C-shell rotating drum (Ø764, ~Ø850 bore, NO internal fins) — light-tight
+180° apart); single-opening C-shell rotating drum (Ø<!-- BEGIN fact:lt_drum_od_mm -->758<!-- END fact:lt_drum_od_mm -->, ~Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm --> bore, NO internal fins) — light-tight
 by geometry; 8mm Al top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed bearings, drum↔housing
-running-gap #4 strip brushes in Al flange holders + top/bottom neoprene cap seals, off-the-shelf 12″ round
+running-gap strip brushes (74405T126) in center-channel holders (8813T426) + top/bottom foam end seals on the housing bore, off-the-shelf 12″ round
 pull handle (McMaster 1871A65), housing-to-panel neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
 
 *Reports: [Light Trap Selection](light-trap-selection.md) §4/§5 (housed revolving-door specification, light-path verification); [Hinged Light-Trap Panel](hinged-panel-report.md) §3 (as-integrated light lock: spec, bearings, drum seals).*

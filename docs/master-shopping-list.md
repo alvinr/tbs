@@ -15,8 +15,8 @@ All prices USD.
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,989 | $8,355 |
-| 6. Electrical — power, circuits, wiring | $3,449 | $3,555 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,156 | $4,175 |
+| 6. Electrical — power, circuits, wiring | $3,507 | $3,612 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,173 | $4,184 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,290 | $3,177 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$27,767** | **~$36,380** |
+| **TOTAL (base build + 50-print run)** | **~$27,842** | **~$36,446** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -142,7 +142,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [14 AWG duplex marine wire](https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2) (MCB14-2) | 25 ft | Waytek Wire | water | $17 |
 | [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B0GYFNXM9Z) (B0GYFNXM9Z) | 1 ea | Amazon | ventilation | $26 |
 | [2/0 AWG battery cable, 3ft (battery–fuse–busbar)](https://www.amazon.com/dp/B0B3HD7CWP) (B0B3HD7CWP) | 1 lot | Amazon | electrical | $26 |
-| [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
+| [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://powerwerx.com/blue-sea-5187-mrbf-terminal-fuse-200a) (5187-BSS + 5191-BSS) | 1 ea | Powerwerx | electrical | $65 |
 | [4 AWG ground wire, green/yellow, 20ft](https://www.automationdirect.com/adc/shopping/catalog/bulk_wire_-a-_cable/single_conductor_wire_-a-_cable/mtw4gyl-1) (MTW4GYL-1) | 1 lot | AutomationDirect | electrical | $52 |
 | [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $74 |
 | [Anderson Powerpole 30A connectors, 50 pairs (unassembled)](https://powerwerx.com/1327bk-anderson-powerpole-housing-red) (1327) | 1 kit | Powerwerx | electrical | $55 |
@@ -172,13 +172,13 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [MPPT charge-line fuse — 60A ANL + holder](https://powerwerx.com/blue-sea-5005-anl-fuse-block-cover) (5005-BSS) | 1 ea | Powerwerx | electrical | $43 |
 | [NEMA 5-15R weatherproof inlet (flush power panel)](https://www.amazon.com/dp/B0CLDC8X5J) (B0CLDC8X5J) | 1 ea | Amazon | electrical | $10 |
 | [Pull-cord ceiling switch, 12V 6A SPST](https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam) (CPM-1) | 2 ea | americandoorsupply | electrical | $244 |
-| [Pump distribution block — 12V DC common busbar, 10-gang](https://www.bluesea.com/products/2300) (2300) | 1 ea | Blue Sea | electrical | $15 |
+| [Pump distribution block — Blue Sea 2312 Common 150A BusBar](https://powerwerx.com/blue-sea-2312-common-150a-busbar) (2312-BSS) | 1 ea | Powerwerx | electrical | $29 |
 | [PV cable 10 AWG + MC4 connectors (11 ft extension pair)](https://signaturesolar.com/11ft-10awg-pv-wire-extension-black-red/) (1534034) | 1 lot | Signature Solar | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,119–$2,149** |
+| **electrical-distribution subtotal** | | | | **$2,152–$2,182** |
 
 ### electrical-power
 
@@ -189,9 +189,9 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [PV array disconnect — Blue Sea 6006 DC battery switch (NEC 690.13)](https://www.waytekwire.com/product/blue-sea-systems-6006-m-series-battery-switch) (6006) | 1 ea | Waytek Wire | electrical | $34 |
 | [Solar panel adjustable tilt mount set (per panel)](https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7) (RNG-MTS-TMB-G1-US) | 3 ea | Amazon | electrical | $108 |
 | [Solar panel, 200W monocrystalline 12V (Renogy RSP200D)](https://offgridstores.com/products/renogy-200-watt-12-volt-monocrystalline-solar-panel) (RSP200D-US) | 3 ea | Off Grid Stores | electrical | $510 |
-| [Victron Blue Smart IP65 12/15 shore backup charger](https://inverterservicecenter.com/blue-smart-ip65-charger-12-15-1-victron-bpc121531104r) (BPC121531104R) | 1 ea | Inverter Service Center | electrical | $152 |
+| [Victron Blue Smart IP65 12/15 shore backup charger](https://powerwerx.com/victron-bpc121531104r-bluesmart-ip65-1215) (BPC121531104R) | 1 ea | Powerwerx | electrical | $176 |
 | [Victron SmartSolar MPPT 100/50 charge controller](https://powerwerx.com/victron-scc110050210-smartsolar-mppt-10050) (SCC110050210) | 1 ea | Powerwerx | electrical | $194 |
-| **electrical-power subtotal** | | | | **$1,437** |
+| **electrical-power subtotal** | | | | **$1,460** |
 
 ### fabric-textile
 
@@ -383,7 +383,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [#4 (3/16") black-nylon strip brush — running-gap light-seal wiper (×4 lines)](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) | 4 8ft | Gordon Brush | lightlock | $88–$160 |
 | 12mm closed-cell neoprene — top/bottom cap wiper seals | 1 lot | Canal Rubber | lightlock | $25–$40 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 24 m | Amazon | panel | $27–$59 |
-| Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
+| [Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4)](https://www.mcmaster.com/8694K88/) (8694K88) | 1 25 ft roll | McMaster-Carr | lightlock | $29 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon | interior | $157–$178 |
 | [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
 | [O-ring, black NBR 70A, 170mm ID × 2.5mm section (plate → adapter seal)](https://www.mcmaster.com/93125K132/) (93125K132) | 2 ea | McMaster-Carr | front-board | $4 |
@@ -391,7 +391,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Rubber cargo friction matting | 4 ea | Uline | ibc-frame | $40–$80 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$516–$727** |
+| **seals-gaskets subtotal** | | | | **$534–$737** |
 
 ### stainless-sheet
 
@@ -526,7 +526,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
 | Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
-| McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,187–$2,195 |
+| McMaster-Carr | 90 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,217–$2,225 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
@@ -534,11 +534,11 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
+| Powerwerx | 8 | electrical-distribution, electrical-power | $578 |
 | Metals Depot | 4 | aluminum, steel-structural | $442–$510 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Central Coast Plastics | 1 | plastics-sheet | $380 |
 | Fictiv | 1 | fabrication-labor | $150–$350 |
-| Powerwerx | 5 | electrical-distribution, electrical-power | $308 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
@@ -548,21 +548,20 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |
 | Gordon Brush | 1 | seals-gaskets | $88–$160 |
 | Tanis Brush | 1 | aluminum | $72–$160 |
-| Inverter Service Center | 1 | electrical-power | $152 |
 | Eagle Aluminum | 1 | aluminum | $152 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
 | Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Lenox Laser | 1 | optics | $60–$120 |
-| Blue Sea | 3 | electrical-distribution | $101 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
 | Uline | 1 | seals-gaskets | $40–$80 |
 | Pac-Nor Anodizing | 1 | adhesives-finishes | $40–$80 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
-| Canal Rubber | 2 | seals-gaskets | $37–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
 | AutomationDirect | 1 | electrical-distribution | $52 |
 | McNichols | 1 | fasteners-hardware | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
+| Blue Sea | 1 | electrical-distribution | $40 |
+| Canal Rubber | 1 | seals-gaskets | $25–$40 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Fresh Water Systems | 1 | water-equipment | $32 |

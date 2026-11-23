@@ -370,10 +370,10 @@ hardware the electrical system feeds — evaporative cooler, 12V→120V inverter
 
 | Subtotal | Est. cost |
 |----------|-----------|
-| **Electrical system total** (standard 1-pack build) | **~<!-- BEGIN costing:elec-system-total -->$3,502<!-- END costing:elec-system-total -->** |
+| **Electrical system total** (standard 1-pack build) | **~<!-- BEGIN costing:elec-system-total -->$3,559<!-- END costing:elec-system-total -->** |
 | **Shade canopy** | **~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total -->** |
 | **Cooling** (evap cooler + inverter + external cord) | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | **~<!-- BEGIN costing:elec-grand-total -->$4,000<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | **~<!-- BEGIN costing:elec-grand-total -->$4,057<!-- END costing:elec-grand-total -->** |
 
 *The electrical system total is the **standard 1-pack build** and equals the
 [Master Shopping List](master-shopping-list.md?system=electrical) electrical subtotal (the authoritative

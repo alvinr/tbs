@@ -542,10 +542,10 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,195<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,368<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,156<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,175<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,173<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,184<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$867<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,167<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,637<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,309<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,654<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,318<!-- END costing:hp-total-high -->** |
 
 ---
 

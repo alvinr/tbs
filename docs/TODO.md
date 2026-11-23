@@ -30,10 +30,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   stub-shaft stock → Metal Supermarkets). Remaining moves need a re-sourced SKU + price (each lands on
   an order we already place):
   - [ ] Bearings Direct (SKF 6215-2RS1, 51118 thrust) → McMaster-Carr — $201
-  - [ ] Canal Rubber (12mm neoprene, EPDM foam) → McMaster (8694K88 / 4568N128 datasheets already in eng-specs) — $37–60
-  - [ ] Gordon Brush + Tanis Brush (strip brush + holder) → McMaster (74405T126 / 8813T536 datasheets in eng-specs) — $160–320
-  - [ ] Blue Sea direct/Defender (MRBF 5187+5191, inverter ANL, 2300 block) → Off Grid Stores or Powerwerx — $101
-  - [ ] Inverter Service Center (Victron IP65 12/15 charger) → Powerwerx (listed alt) or Inverter Supply — $152
+  - [~] Canal Rubber → McMaster: EPDM foam done (8694K88, 2026-11-23). Neoprene ON HOLD — 4568N128 is solid 3/16in × 1in × 36in; the cap wiper spec is 12mm closed-cell PSA around both drum caps
+  - [~] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T536 ON HOLD (2026-11-23): 5/16in backing vs the modeled 3/16in (LT_WIPER_BACKING cascade); bristle color must be black
+  - [~] Blue Sea → Powerwerx: MRBF 5187+5191 and busbar 2312 done (2026-11-23); inverter ANL fuse + disconnect still to source
+  - [x] Inverter Service Center → Powerwerx BPC121531104R $175.95 (2026-11-23)
   - [ ] buyDeutsch (DT06-2S pairs) + AutomationDirect (4 AWG ground wire) → Waytek Wire — $79
   - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30
   - [ ] McNichols (grating clips) + Fibergrate (edge-seal kit) → American Grating, with the grating — $70–110

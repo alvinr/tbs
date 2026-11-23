@@ -826,14 +826,14 @@ PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of 
 # it is FULLY DECOUPLED from the film-plane swing — retiring the old ceiling-hung
 # shelf and its swing/optics constraints.  Located in the WIDENED near walkway,
 # LEFT of the battery bank (BA_X=1810); the evap cooler (stow top Z950) slides under
-# the deployed shelf (underside Z1050).
+# the deployed shelf (underside Z1057).
 SHELF_X_L      = 1180    # shelf left edge X (mm) — widened walkway, left of the batteries
 SHELF_X_R      = 1780    # shelf right edge X (mm)
 SHELF_W        = 600     # shelf width along X (mm)
 SHELF_YD_NEAR  = 0       # back edge — hinged on the pinhole wall (Yd0)
 SHELF_DEPTH    = 225     # shelf depth in Yd (deployed projection) — reduced 300→225 for more walk-around clearance at the chem shelf (275mm past the shelf back to the widened deck edge)
 SHELF_YD_FAR   = SHELF_YD_NEAR + SHELF_DEPTH   # front edge when deployed (= 225; derived so it can't drift from SHELF_DEPTH)
-SHELF_H        = 1075    # deployed work-surface height AFF (mm) — 945mm above the walkway deck
+SHELF_H        = 1075    # deployed work-surface (board top) height AFF (mm) — 935mm above the Z140 walkway deck; ~36.8in, just over the 36in US counter standard
 SHELF_T        = 18      # shelf board thickness (mm) — 18mm ply, ply-primary (steel frame removed 2026-09-07, chem-shelf-blueprint-spec.md)
 SHELF_STAY_N   = 2       # support stays (wall-above to front corners; carry the load)
 SHELF_STOW_TOP_Z = SHELF_H + SHELF_DEPTH  # 1375 — folded-up (transport) top; the tap top aligns here

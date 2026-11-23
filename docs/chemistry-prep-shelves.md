@@ -149,7 +149,9 @@ The shelf folds UP flat against the pinhole wall and latches.
 ## 5. Operator Access
 
 The operator stands on the widened walkway at the shelf midpoint, facing the wall. The surface,
-935 mm above the deck, is counter height and its full depth is in reach; the tap, left of the shelf,
+935 mm above the deck, sits 21 mm above the 36in (914 mm) US kitchen-counter standard
+([Bob Vila](https://www.bobvila.com/articles/standard-countertop-height/)), a
+comfortable standing height for bench work, and its full depth is in reach; the tap, left of the shelf,
 fills containers on the board.
 
 Deployed, the board leaves ~275 mm of the 500 mm walkway: room to work but not to pass. That is
@@ -195,3 +197,4 @@ the [Operating Manual](operating-manual.md).
 3. [Home Depot BPI6WUV2I](https://www.homedepot.com/p/302874373) — 18 mm UV-coated white plywood (work surface).
 4. [Walkway System Report](walkway-report.md) — walkway deck height and the widened near-walkway section.
 5. [Equipment Layout Report](equipment-layout-report.md) — optical cone clearance and pinhole-wall zones.
+6. [Bob Vila — Standard Countertop Height](https://www.bobvila.com/articles/standard-countertop-height/) — 36in standard (34.5in base cabinet + 1.5in top).

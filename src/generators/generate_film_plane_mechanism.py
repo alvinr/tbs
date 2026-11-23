@@ -29,7 +29,7 @@ from matplotlib.patches import Rectangle, Circle, Arc, Ellipse, Polygon
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, C_LEN, C_HGT, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, FP_CORNER_SEAT_GUSSET_H, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL, XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W, UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_LEG, CORNER_PLATE_CUT, CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP, CARRIAGE_PLATE_KEEPER_EDGE, CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z
 from tbs_constants import PH_D, PH_FNO  # noqa: E402
-from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, FP_RAIL_WEB,
+from tbs_constants import (RAIL_X_L, PIVOT_X, PIVOT_YD, PIVOT_POST_OD, PIVOT_PLATE_D, PIVOT_PLATE_T, FLOOR_PLATE_T, FLOOR_SUBPLATE_WALL_GAP, FP_RAIL_WEB,
                           FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_CORNER_SEAT_PLATE_T, C_HGT)
 from tbs_constants import FP_RAIL_FLANGE, FP_RAIL_WALL_T, FP_RAIL_STOCK_LEN, RAIL_LEN, FP_CORNER_SEAT_BOLT_D, FP_CORNER_SEAT_BOLT_N, SKATE_ROLLER_W, SKATE_AXLE_LEN, XSLIDE_GIB_T, XSLIDE_CARR_WALL, XSLIDE_STROKE, UJOINT_STUB_OD, DIBOND_T
 from tbs_title_block import title_block
@@ -2007,10 +2007,12 @@ def sheet11():
         ax.add_patch(Rectangle((C_WID, zlo), WALL_T, zhi - zlo, fc="#EAEAEE", ec=OUT, lw=0.8, zorder=2))
         ax.add_patch(Rectangle((PIVOT_YD - PIVOT_POST_OD / 2, zlo), PIVOT_POST_OD, zhi - zlo, fc="none", ec=C_POST, lw=1.0, ls=(0, (4, 3)), zorder=3))
         ax.text(PIVOT_YD, (zlo + zhi) / 2, "Ø89 post\n(behind, X175)", fontsize=4.8, ha="center", va="center", color=DIM, **FONT, zorder=6)
-        ax.add_patch(Rectangle((2177, mnt_z0), 220, mnt_z1 - mnt_z0, fc=C_MNT, ec=OUT, lw=0.8, zorder=4))
-        ax.text(2250, (mnt_z0 + mnt_z1) / 2 + (14 if edge_lbl == "FLOOR" else -14), mnt_lbl, fontsize=5.0, ha="center", va="center", color=DIM, **FONT, zorder=6)
+        ax.add_patch(Rectangle((PIVOT_YD - PIVOT_PLATE_D / 2, mnt_z0), PIVOT_PLATE_D, mnt_z1 - mnt_z0, fc=C_MNT, ec=OUT, lw=0.8, zorder=4))
+        if edge_lbl == "FLOOR":                                                   # left floor-anchor sub-plate under it
+            ax.add_patch(Rectangle((2150, 0), C_WID - FLOOR_SUBPLATE_WALL_GAP - 2150, FLOOR_PLATE_T, fc=C_MNT, ec=OUT, lw=0.6, hatch="////", zorder=4))
+        ax.text(PIVOT_YD - 30, (mnt_z0 + mnt_z1) / 2 + (14 if edge_lbl == "FLOOR" else -14), mnt_lbl, fontsize=5.0, ha="center", va="center", color=DIM, **FONT, zorder=6)
         ax.plot([2150, 2436], [edge_z, edge_z], color=OUT, lw=1.2, ls=(0, (6, 3)) if edge_lbl == "CEILING" else "-")
-        ax.text(2185, edge_z + (-18 if edge_lbl == "CEILING" else 14), edge_lbl, fontsize=5.2, ha="left", color=DIM, **FONT)
+        ax.text(2155, edge_z + (-18 if edge_lbl == "CEILING" else 14), edge_lbl, fontsize=5.2, ha="left", color=DIM, **FONT)
         fz0, fh = botf - 10, web + 20
         ax.add_patch(Rectangle((2168, botf), (C_WID - fl_t) - 2168, web, fc=STRUCT2, ec=OUT, lw=1.0, zorder=5))   # 6061 Al rail — aluminum tint (broken off left)
         ax.add_patch(Rectangle((C_WID - fl_t, fz0), fl_t, fh, fc=C_PL, ec=OUT, lw=1.1, zorder=6))                 # flange (interior)
@@ -2027,9 +2029,10 @@ def sheet11():
         ax.text(2300, botf + web / 2, "M12 bolts straddle the\nchannel in X (clear · View C)", fontsize=4.4, ha="center", va="center", color=DIM, style="italic", **FONT, zorder=9)
         draw_dim_v(ax, 2424, clr_a, clr_b, f"{int(round(clr_b - clr_a))}mm clr", fs=5.0, font=FONT)
     axBt = fig.add_axes([0.52, 0.685, 0.46, 0.27])
-    _sec(axBt, 2175, 2405, botf_top, "TL", C_HGT - 20, C_HGT, "roof mount plate", C_HGT, "CEILING", botf_top + web + 5, C_HGT - 20)
+    _sec(axBt, 2175, 2405, botf_top, "TL", C_HGT - PIVOT_PLATE_T, C_HGT, "roof mount plate", C_HGT, "CEILING", botf_top + web + 5, C_HGT - PIVOT_PLATE_T)
     axBb = fig.add_axes([0.52, 0.395, 0.46, 0.27])
-    _sec(axBb, -45, 385, botf_bot, "BL", 0, 20, "floor mount plate", 0, "FLOOR", 20, botf_bot - 5)
+    _pz1 = FLOOR_PLATE_T + PIVOT_PLATE_T
+    _sec(axBb, -45, 385, botf_bot, "BL", FLOOR_PLATE_T, _pz1, "floor mount plate", 0, "FLOOR", _pz1, botf_bot - 5)
     fig.text(0.75, 0.668, "⋮   Ø89 pivot post continuous  floor → ceiling   ⋮", fontsize=6, ha="center", color=DIM, **FONT)
     fig.text(0.75, 0.965, "VIEW B — SECTION (broken; looking along the rail axis)", fontsize=7, ha="center", fontweight="bold", color=ANNO, **FONT)
 
@@ -2074,8 +2077,8 @@ def sheet11():
         "plate sandwich the corrugated far wall, drawn up by 4× M12×75 through-bolts (hex heads outside; the 50mm grip "
         "is too long for the M12×70), each with a steel crush sleeve in the corrugation hollow. The bolt "
         "gauge is narrowed to 76mm (X222 / X298) so the bolts CLEAR the Ø89 post (X131–220).",
-        "CLEARANCES:  the TL (top) bracket sits just BELOW the Z2368 roof-mount plate; the BL (bottom) bracket sits "
-        "ABOVE the Z0–20 floor-mount plate. A full 150-tall saddle would foul the roof-mount plate — which is why "
+        f"CLEARANCES:  the TL (top) bracket sits just BELOW the Z{C_HGT - PIVOT_PLATE_T} roof-mount plate; the BL (bottom) bracket sits "
+        f"ABOVE the Z{FLOOR_PLATE_T}–{FLOOR_PLATE_T + PIVOT_PLATE_T} floor-mount plate (on the floor-anchor sub-plate). A full 150-tall saddle would foul the roof-mount plate — which is why "
         "the rear ends carry the shallower flange bracket, not a saddle.",
     ], 10, 97, spacing=4.6, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=60, wrap=125)
 

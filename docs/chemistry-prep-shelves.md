@@ -8,7 +8,6 @@ Cyanotype processing requires a clean, stable work surface for:
 
 - Mixing sensitizer chemistry (ferric ammonium oxalate + potassium ferricyanide)
 - Measuring and dispensing solutions (graduated cylinders, digital scale)
-- Coating muslin substrate with sensitizer (roller tray, foam roller)
 - Staging materials (bottles, pH meter, gloves, timer)
 - Post-exposure citric acid wash preparation
 

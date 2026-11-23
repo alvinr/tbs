@@ -203,9 +203,9 @@ PARTS: list[Part] = [
          spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + 3× pump-run side support boards (far ~399×620, near-lower ~399×540, near-upper ~399×690, #29 — raised to back the risers higher for the added clamp rows; cut from the sheet leftover — ~0.74 m² of a 2.97 m² sheet) + spacer offcuts. STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
          panel="Corridor"),
     Part("corridor-panel-shirt-ply", "Pump-mount shirt ply (23/32\" exterior)", "timber-ply",
-         "water", 1, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
+         "water", 1, "cut from the shared SYP sheets", 0.0, 0.0, "shared (Plywood Cut Sheets)", part_no="303564747",
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
-         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~168×1,575 cut, a tall vertical column in the 168mm-clear corridor) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (2.18 kg each per the 2088-554-144 datasheet, ~10.9 kg total) need no more than 3/4\". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted.',
+         spec='23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing, cut from the shared SYP sheets A–C (the cooler base moved to the UV-white sheet, so all SYP pieces nest on 3 sheets: corridor-panel-ply-18 + pinhole-panel-ply-18 ×2) — pump-mount shirt (~168×1,575 cut, a tall vertical column in the 168mm-clear corridor) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (2.18 kg each per the 2088-554-144 datasheet, ~10.9 kg total) need no more than 3/4\". STANDARD exterior per project rule. No sheet of its own. Double-layer locally if extra pump-rail stiffness wanted.',
          panel="Corridor"),
     Part("pinhole-panel-ply-18", "Pinhole-wall filter-skid backing ply (23/32\" exterior)", "timber-ply",
          "water", 2, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
@@ -1030,13 +1030,13 @@ PARTS: list[Part] = [
          "panel", 4, "sheet", 123.34, 123.34, "US Plastics", "TAP Plastics", part_no="46684",
          url="https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705",
          spec="Panel skins, both faces (~12 m², 4× 4×8 ft sheets). 1/8\" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet."),
-    Part("panel-fanb-ply", "Fan B near-corner ply (swinging mount panel + fixed side part + cooler base, 23/32\" exterior SYP, from the sheets A–C offcut)", "timber-ply",
+    Part("panel-fanb-ply", "Fan B near-corner ply (swinging mount panel + fixed side part from the SYP sheets A–C offcut; cooler base from the UV-white sheet D)", "timber-ply",
          "panel", 1, "cut from the SYP sheets A–C", 0.0, 0.0, "shared (Plywood Cut Sheets)", part_no="303564747", url="https://www.homedepot.com/p/303564747",
          spec='23/32" (18mm) RTD Southern Yellow Pine exterior sheathing. The Fan B near corner is THREE ply pieces: '
               'the SWINGING fan-mount panel (473×943, Yd180→653, carries the Ø150 fan CENTERED, travels with the hinge '
               'leaf), the FIXED side part (180×943, Yd0→180, stays on the pinhole side), and the pull-out corner apron '
-              '(base + strips + lip cleats, billed separately as panel-bottom-apron). Those two upright pieces PLUS the cooler stowage base plate '
-              '(600×350) all NEST INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C), so no separate sheet is bought '
+              '(base + strips + lip cleats, billed separately as panel-bottom-apron). Those two upright pieces NEST INTO THE SYP OFFCUT (Plywood Cut Sheets, sheets A–C) and the cooler stowage '
+              'base plate (600×350) is cut from the UV-white sheet D, so no separate sheet is bought '
               '(was a dedicated ¾" PT sheet, retired 2026-09-30). STANDARD exterior per the project rule — PT was '
               'over-spec for a dry, vented mount. Seal cut edges.'),
     Part("panel-corner-stiffener", '1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid', "aluminum",

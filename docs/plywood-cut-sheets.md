@@ -4,10 +4,7 @@
 
 ## 1. Purpose
 
-Plywood recurs across the build: the IBC-corridor plumbing panel, pump-mount shirt and pipe-clip
-standoff blocks, the pinhole-wall filter-skid backing, the interior electrical panel (EP) backboard,
-the hinged light-trap panel's Fan-B mount band, cooler stowage base and pull-out corner apron, and
-the chemistry-prep shelf. This document is the **single cut sheet** the buyer and fabricator work
+This document is the **single cut sheet** the buyer and fabricator work
 from: every plywood part in one schedule, grouped by grade and thickness so same-stock parts nest on
 one sheet.
 
@@ -27,7 +24,7 @@ supplier live.
 
 A bin-packer nests all pieces of one grade and thickness onto the fewest 4×8 sheets, **mixing
 pieces across subsystems**. Every layout is **guillotine-cuttable**: each cut is a straight 90°
-edge-to-edge pass, the only cut a panel saw makes. The drawing numbers the cuts (dashed red) in
+edge-to-edge pass. The drawing numbers the cuts (dashed red) in
 cutting order and gives the sheet and cut counts. The packer works to a **5mm cut tolerance**, so a
 near-full-width piece may overhang a sheet edge by up to 5mm rather than forcing a new sheet. It
 minimizes the sheet count first, then the number of cuts. ↻ marks a piece rotated 90° to fit, and
@@ -39,14 +36,15 @@ shaded pieces are fixed.
 
 | Sheets | Thickness | Grade | Parts |
 |---|---|---|---|
-| A–D | 18mm (23/32") | RTD Southern Yellow Pine exterior sheathing ([Home Depot 303564747](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747)) | corridor plumbing panel, pump-mount shirt, pipe-clip standoff blocks, pinhole-wall backing, pull-out corner apron (fixed base, corner strips, lip battens), Fan-B mount band, cooler stowage base |
-| E | 18mm | UV-coated white hardwood, Swaner ([Home Depot 302874373](https://www.homedepot.com/p/302874373)) | chem-prep shelf board, EP backboard |
-| | | **Total** | **5 sheets** |
+| A–C | 18mm (23/32") | RTD Southern Yellow Pine exterior sheathing ([Home Depot 303564747](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747)) | corridor plumbing panel, pump-mount shirt, pipe-clip standoff blocks, pinhole-wall backing, pull-out corner apron (fixed base, corner strips, lip battens), Fan-B mount band |
+| D | 18mm | UV-coated white hardwood, Swaner ([Home Depot 302874373](https://www.homedepot.com/p/302874373)) | chem-prep shelf board, EP backboard, cooler stowage base |
+| | | **Total** | **4 sheets** |
 
-Sheets A–D are one SKU, so their parts nest together across subsystems. The pinhole-wall backing is
-wider than a sheet, so it is cut as two butt-jointed halves. Sheet E's UV-white stock yields both the
-chem-prep work surface and the EP backboard: the backboard needs only a sealed, wipeable face, which
-the UV coating gives. Sheet E is a different finish from A–D, so it cannot cross-nest. All plywood is
+Sheets A–C are one SKU, so their parts nest together across subsystems. The pinhole-wall backing is
+wider than a sheet, so it is cut as two butt-jointed halves. Sheet D's UV-white stock yields the
+chem-prep work surface, the EP backboard and the cooler stowage base: the backboard and base need
+only a sealed, wipeable face, which the UV coating gives, and moving the base here lets the pine pack
+onto three sheets. Sheet D is a different finish from A–C, so it cannot cross-nest. All plywood is
 standard exterior grade; no part carries a water-immersion load, so none is marine or
 pressure-treated.
 

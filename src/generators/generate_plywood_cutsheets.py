@@ -118,13 +118,15 @@ GROUPS = [
         dict(key="panel-fanb-ply", stock=STOCK_8x4, pieces=[
             ("Fan-B swinging mount panel", FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, 1, "swinging near-corner panel carrying the fan (travels with the hinge leaf; fan centered)"),
             ("Fan-B fixed side part", FAN_B_FIXED_W, FAN_B_BAND_H_CUT, 1, "fixed near-corner side part (stays on the pinhole side)"),
-            ("Cooler stowage base", 600, 350, 1, "evap-cooler transit stow base — sits on the near walkway at the pinhole wall (X1450), 2× ratchet straps (walkway Sheet 1)"),
         ]),
     ]),
     dict(gid="B", thick=18, grade="18mm UV-coated white hardwood (Swaner)",
          sku="Home Depot 302874373", stock=STOCK_HD, parts=[
         dict(key="shelf-phenolic-ply", stock=STOCK_HD, pieces=[
             ("Chem-prep shelf board", SHELF_W, SHELF_DEPTH, 1, "fold-down chemistry-prep work surface (pinhole wall)"),
+        ]),
+        dict(key="panel-fanb-ply", stock=STOCK_HD, pieces=[
+            ("Cooler stowage base", 600, 350, 1, "evap-cooler transit stow base — sits on the near walkway at the pinhole wall (X1450), 2× ratchet straps (walkway Sheet 1); on the UV-white sheet so the SYP packs onto 3 sheets"),
         ]),
         dict(key="ep-backing-panel", stock=STOCK_HD, pieces=[
             ("EP electrical backboard", EP_BACK_W, EP_BACK_H, 1, "interior wall electrical backboard — MPPT / battery / inverter / disconnects / IP65 box (gear-column ply from the electrical model; finish-agnostic → shares the chem-shelf UV-white sheet)"),
@@ -368,7 +370,6 @@ def cut_plan(bin_w, bin_h, placed):
 # pack every group once (module-level, so Sheet 1's count and Sheet 2's layout agree)
 PACKED = [(g, pack_group(_group_pieces(g), g["stock"][0], g["stock"][1])) for g in GROUPS]
 _BINS = {g["gid"]: bins for g, bins in PACKED}
-NAIVE_TOTAL = sum(sum(p.get("npieced", 1) for p in g["parts"]) for g in GROUPS)
 OPT_TOTAL = sum(len(bins) for _g, bins in PACKED)
 
 # every physical stock sheet gets ONE sequential letter A, B, C… across all groups (the buyer's
@@ -439,12 +440,10 @@ def draw_sheet1():
         span = _letter_span(g["gid"])
         ax.text(CX["grp"], y, span, fontsize=9, fontweight="bold", color=C_OUT, **FONT)
         opt = len(_BINS[g["gid"]])
-        naive = sum(p.get("npieced", 1) for p in g["parts"])
         npieces = len(_group_pieces(g))
-        saved = f"  (was {naive})" if opt < naive else ""
         ax.text(CX["piece"], y, f"{g['grade']}  ·  {g['sku']}  ·  "
                 f"{npieces} pieces → sheet{'s' if opt != 1 else ''} {span} "
-                f"({opt}× {g['stock'][0]}×{g['stock'][1]}){saved}",
+                f"({opt}× {g['stock'][0]}×{g['stock'][1]})",
                 fontsize=7.4, fontweight="bold", color=C_DIM, **FONT)
         y -= ROW
         for p in g["parts"]:
@@ -463,10 +462,10 @@ def draw_sheet1():
 
     draw_notes(ax, [
         "READ THIS SHEET:",
-        f"• Buy the sheet count in each group band — {OPT_TOTAL} stock sheets total (bin-packed from {NAIVE_TOTAL} if each part were cut on its own sheet). Pieces from different subsystems share a sheet within one grade+thickness; you can't cut across grades.",
+        f"• Buy the sheet count in each group band — {OPT_TOTAL} stock sheets total. Pieces from different subsystems share a sheet within one grade+thickness; you can't cut across grades.",
         "• ᴰ dims derive from tbs_constants and update with the geometry; plain dims are spec/report literals. Cost, supplier and SKU live in parts.py (the key on each part's └ line).",
         "• The optimized cut LAYOUT (which pieces nest on each sheet) is Sheet 2. Fabrication detail for a piece (hole positions, edge seal, hinge line) stays on its owning subsystem sheet.",
-    ], 2, 14.5, spacing=2.6, fs=7.2, title_fs=8.0, width=96, wrap=150,
+    ], 2, 27, spacing=2.6, fs=7.2, title_fs=8.0, width=96, wrap=150,
        color=C_OUT, title_color=C_OUT, border_color=C_DIM, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.012, 0.94, 0.055])
@@ -480,6 +479,8 @@ def draw_sheet1():
 
 # ── Sheet-2 label helpers (measure real text extents so a label wraps to fit its box, else leads out) ──
 _LBL_FS = 5.4
+LEAD_STEP = 170            # min vertical spacing between leader labels in a sheet's label column (mm)
+BADGE_R = 40               # cut-order badge radius (mm on the sheet)
 _PX_PAD = 12               # px breathing room inside a box before a label is deemed not to fit
 
 
@@ -560,14 +561,15 @@ def draw_sheet2():
                     ls=(0, (5, 2)), zorder=6)
             vert = abs(sx1 - sx0) < 1                            # slide the badge ALONG its own cut (stays on-sheet)
             lo, hi = (min(sy0, sy1), max(sy0, sy1)) if vert else (min(sx0, sx1), max(sx0, sx1))
-            cands = [lo + f * (hi - lo) for f in (0.5, 0.35, 0.65, 0.22, 0.78)]
+            cands = [lo + f * (hi - lo) for f in (0.5, 0.35, 0.65, 0.22, 0.78, 0.1, 0.9, 0.04, 0.96)]
             spots = [(ox + sx0, oy + c) if vert else (ox + c, oy + sy0) for c in cands]
-            bx, by = next((s for s in spots
-                           if all((s[0] - px) ** 2 + (s[1] - py) ** 2 > (2 * 56) ** 2 for px, py in placed_badges)),
-                          spots[0])
+            off = 2 * BADGE_R + 6                                # second tier: just beside the cut, still on its line's side
+            spots += [(sx + d, sy) if vert else (sx, sy + d) for sx, sy in spots[:3] for d in (off, -off)]
+            gap = lambda s: min(((s[0] - px) ** 2 + (s[1] - py) ** 2 for px, py in placed_badges), default=INF)
+            bx, by = next((s for s in spots if gap(s) > (2 * BADGE_R + 8) ** 2), max(spots, key=gap))
             placed_badges.append((bx, by))
-            ax.add_patch(Circle((bx, by), 56, fc="white", ec=C_CUT, lw=0.9, zorder=7))
-            ax.text(bx, by, str(n), ha="center", va="center", fontsize=5.0,
+            ax.add_patch(Circle((bx, by), BADGE_R, fc="white", ec=C_CUT, lw=0.8, zorder=7))
+            ax.text(bx, by, str(n), ha="center", va="center", fontsize=4.4,
                     fontweight="bold", color=C_CUT, zorder=8, **FONT)
         ax.text(ox + w0 / 2, oy + h0 + 120, f"SHEET {letter}", ha="center", fontsize=9.0,
                 fontweight="bold", color=C_OUT, **FONT)
@@ -616,16 +618,19 @@ def draw_sheet2():
                         fontsize=_LBL_FS - 0.6, color=C_DIM, **FONT)
         # leader column down the sheet's right gap
         lx = ox + w0 + 80
+        leads.sort(key=lambda t: -t[1])
+        prev = INF
         for i, (tipx, tipy, txt) in enumerate(leads):
-            ly = oy + h0 - 60 - (i + 0.5) * ((h0 - 120) / max(len(leads), 1))
+            ly = min(tipy, prev - LEAD_STEP)                    # level with its piece where it can be → short, near-horizontal leaders
+            prev = ly
             leader(ax, tipx, tipy, lx, ly, txt, fs=5.0, color=C_OUT, ha="left",
                    va="center", arrow_style="-", lw=0.6, font=FONT)
 
     fig.text(0.5, 0.975, "PLYWOOD NESTING — OPTIMIZED CUT LAYOUT",
              ha="center", fontsize=14, fontweight="bold", color=C_OUT, **FONT)
     fig.text(0.5, 0.952, f"guillotine nest (every cut is a 90° edge-to-edge panel-saw cut) · "
-             f"{OPT_TOTAL} stock sheets (from {NAIVE_TOTAL} part-by-part) · {total_cuts} cuts total · "
-             f"↻ = rotated · ‑ ‑ ⓝ = saw cuts numbered in cutting order · shaded = FIXED piece",
+             f"{OPT_TOTAL} stock sheets · {total_cuts} cuts total · ↻ = rotated · "
+             f"dashed red = saw cut, circled number = cutting order · shaded = FIXED piece",
              ha="center", fontsize=8.5, color=C_DIM, **FONT)
 
     ax_tb = fig.add_axes([0.035, 0.02, 0.93, 0.08])

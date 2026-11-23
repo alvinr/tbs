@@ -23,13 +23,6 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [x] `generate_grp_cutplan.py`, `generate_joint_options.py`, `generate_joint_study.py` fixed 2026-11-21: write to `DIAGRAMS_DIR`; the GRP cut plan now takes its piece outlines from the walkway 3D model and nests them automatically (still 2 panels).
 - [ ] Delete the fallback `.venv-py39` once the 3.14 venv has run a few sessions cleanly.
 
-## 🌀 Light-trap drum running gap (2026-11-23)
-
-- [~] Running gap 13 → 16mm (drum OR 382 → 379) for the 8813T426 holder (12.2mm, 3.8mm clear) +
-  74405T126 brush; drum-end seal moved to a 3/4in foam band on the housing bore. Source, drawings,
-  parts, costing, reports and manual done 2026-11-23; remaining: re-send lighttrap, overview and
-  construction .skp. End-seal foam sourced: 93375K29 (1/2in) + 93375K27 (1/4in) stacked.
-
 ## 🛒 Parts to source (SKU + price)
 
 - [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,

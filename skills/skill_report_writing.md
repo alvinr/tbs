@@ -219,8 +219,13 @@ paragraph with zero contractions in Track 2; a sentence that only restates its t
 
 ## F2. Structure, tables
 
-- **Structure:** numbered `##` sections; a short Purpose/Executive Summary up top;
-  Source References at the end. Match the section pattern of sibling reports.
+- **Structure:** a short Purpose/Executive Summary up top; Source References at the end. Match the
+  section pattern of sibling reports.
+- **Every `##` section is numbered** — `## 1. Purpose`, `## 2. …`, consecutive from 1, no gaps, no
+  repeats, no unnumbered `##` (Source References and See Also are numbered too). Generated blocks
+  emit `###` or lower so they nest under a hand-numbered `##`. Renumbering moves every `§N`
+  cross-reference to that doc, in the doc and in the docs that point at it. Checked by
+  `editorial_lint.py` (*`##` sections numbered 1…N*).
 - **Tables over paragraphs** for parameter lists; one row per item; bold the
   value, not the whole row. A two-state table ("Camera ready / Supply exhausted")
   beats an ambiguous single "Capacity" column.

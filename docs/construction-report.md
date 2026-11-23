@@ -152,7 +152,7 @@ next in install order (drag to orbit, scroll to zoom). Model-generation internal
 <!-- brochure:endskip -->
 
 
-## See Also
+## 10. See Also
 
 - [Water System](water-system-report.md) · [Electrical](electrical-report.md) — the systems installed across the phases
 - [IBC Stacking System](ibc-stacking-report.md) — the frame erected in Phase 1

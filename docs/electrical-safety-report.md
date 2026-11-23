@@ -102,7 +102,7 @@ gap is now **closed** by the §5 controls.
 Each §4 residual gap is closed by a measure now part of the design — **specified in full**
 in [electrical §7.5 (Circuit Protection & Electrical Safety)](electrical-report.md) and
 [§7.6 (Circuit-E AC Isolation)](electrical-report.md#ac-safety), and priced in
-[electrical §8](electrical-report.md) / [Master Shopping List §6](master-shopping-list.md).
+[electrical §8](electrical-report.md) / [Master Shopping List](master-shopping-list.md?system=electrical).
 This report maps each gap to its control; it does not re-specify the hardware.
 
 | Gap (Hazard #) | Control | Specified in |

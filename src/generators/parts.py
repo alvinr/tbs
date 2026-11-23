@@ -1414,7 +1414,7 @@ def emit_master() -> str:
     within each are ordered ALPHABETICALLY (the table cuts across systems, so name is easiest to scan;
     the published tables are also click-sortable by any column)."""
     bt = by_type()
-    out = ["## Procurement BOM — by material type\n"]
+    out = []
     for t in sorted(bt): # type sections A–Z
         items = bt[t]
         out.append(f"### {t}\n")
@@ -1447,7 +1447,7 @@ def emit_master() -> str:
         st = _money(sub_lo) if round(sub_lo) == round(sub_hi) else f"{_money(sub_lo)}–{_money(sub_hi)}"
         out.append(f"| **{t} subtotal** | | | | **{st}** |\n")
     # supplier consolidation
-    out.append("## Supplier consolidation (largest orders first)\n")
+    out.append("### Supplier consolidation (largest orders first)\n")
     out.append("| Supplier | Line items | Types | Est. cost |")
     out.append("|----------|-----------|-------|-----------|")
     sup_rows = []

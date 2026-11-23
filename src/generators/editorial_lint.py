@@ -35,7 +35,7 @@ def _published_docs() -> list[str]:
     m = re.search(r"MD_FILES=\((.*?)\)", pub, re.DOTALL)
     docs = [os.path.basename(f) for f in re.findall(r'"([^"]+\.md)"', m.group(1))] if m else []
     docs.append("project-summary.md")                       # the home page (synced separately)
-    return sorted({d for d in docs if os.path.exists(os.path.join(ROOT, d))})
+    return sorted({os.path.join("docs", d) for d in docs if os.path.exists(os.path.join(ROOT, "docs", d))})
 
 
 def _blank(m: re.Match) -> str:
@@ -208,6 +208,24 @@ def warn_source_refs_section() -> list[str]:
     return issues
 
 
+def warn_section_numbering() -> list[str]:
+    """Every `##` heading is `## N. Title`, N consecutive from 1 (skill_report_writing.md §F2)."""
+    issues = []
+    for fn in _published_docs():
+        text = re.sub(r"```.*?```", _blank, open(os.path.join(ROOT, fn), encoding="utf-8").read(), flags=re.DOTALL)
+        want = 1
+        for m in re.finditer(r"^## (.*)$", text, re.MULTILINE):
+            n = re.match(r"(\d+)\.\s", m.group(1))
+            if not n:
+                issues.append(f"{fn}:{_loc(text, m.start())}  unnumbered '## {m.group(1)[:50]}'")
+            elif int(n.group(1)) != want:
+                issues.append(f"{fn}:{_loc(text, m.start())}  '## {m.group(1)[:50]}' — expected {want}.")
+                want = int(n.group(1)) + 1
+            else:
+                want += 1
+    return issues
+
+
 # ═════════════════════════════════ runner ═══════════════════════════════════
 GATES = [
     ("American spelling", gate_american_spelling),
@@ -218,6 +236,7 @@ ADVISORY = [
     ("restated value should be a fact placeholder", warn_should_be_placeholder),
     ("thousands-separator consistency", warn_thousands_sep),
     ("report has a Source References section", warn_source_refs_section),
+    ("## sections numbered 1…N", warn_section_numbering),
 ]
 
 

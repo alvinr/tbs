@@ -6,7 +6,7 @@ Every purchasable item for TBS-001, generated from the parts registry. Branded a
 carry a cited SKU and price; fabrication, quote and commodity items are indicative until quoted.
 All prices USD.
 
-## Summary — Estimated Total
+## 1. Summary — Estimated Total
 <!-- BEGIN costing:master-summary -->
 | Area | Low | High |
 |------|-----|------|
@@ -34,7 +34,7 @@ All prices USD.
 
 ---
 
-## Procurement BOM — by material type & supplier
+## 2. Procurement BOM — by Material Type & Supplier
 
 This is the consolidated **Bill of Materials** for the whole build: every purchasable item grouped
 by **material type**, with quantities summed across all systems, followed by a **supplier
@@ -43,8 +43,6 @@ each item is used; the full engineering detail for any item lives in that system
 indicative low–high estimates — get quotes before ordering.
 
 <!-- BEGIN parts:master -->
-## Procurement BOM — by material type
-
 ### adhesives-finishes
 
 | Item | Qty | Supplier | Systems | Est. cost |
@@ -500,7 +498,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 5 ea | Amazon | water | $500 |
 | **water-equipment subtotal** | | | | **$1,675** |
 
-## Supplier consolidation (largest orders first)
+### Supplier consolidation (largest orders first)
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
@@ -572,7 +570,7 @@ indicative low–high estimates — get quotes before ordering.
 | offcuts | 1 | water-equipment | $0 |
 <!-- END parts:master -->
 
-## 9. Printmaking Chemistry — Cyanotype (50 prints)
+## 3. Printmaking Chemistry — Cyanotype (50 Prints)
 *Source: `chemistry-shopping-list.md`. **Procurement** — reagent order quantities, per-tier costs,
 suppliers, and the muslin substrate — is in the Procurement BOM above (`chemistry-reagents` +
 `substrate-fabric`) and the [Cyanotype Shopping List](chemistry-shopping-list.md). This section is the
@@ -593,7 +591,7 @@ pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost <!-- BEGIN c
 yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
 summary table maps Low = Lean, High = Rich.
 
-## 10. Printmaking Tools & Consumables
+## 4. Printmaking Tools & Consumables
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*
 
 *Printmaking-specific tools only. Items shared with other systems are **not** repeated here — they
@@ -613,14 +611,14 @@ in the [water BOM](water-system-report.md), and the Circuit-D red safelight stri
 | Folding step stool | Reaching top of image plane | 1 | Home Depot | ~$25 |
 | Spray bottle (1 liter) | Humidity/misting in low-RH conditions | 2 | Amazon / garden supply | ~$15 |
 | pH test strips | Quick wash water check | 1 pack | Amazon | ~$10 |
-**Listed tools total: ~$190.** *(The Section 10 budget in the summary above — $350–$500 — adds consumable-replacement contingency for rollers/brushes/gloves used up each session.)*
+**Listed tools total: ~$190.** *(The tools line (10) in the summary above — $350–$500 — adds consumable-replacement contingency for rollers/brushes/gloves used up each session.)*
 
-## 11. Safety & PPE
+## 5. Safety & PPE
 *Source: `operating-manual.md`, `electrical-report.md`*
 
 *General / operator safety + electrical-work tools — none of these belong to a system BOM, so nothing
 here is repeated above. Related safety items live with their use: chemistry-handling PPE (nitrile
-gloves in the [water BOM](water-system-report.md), UV glasses + apron in §10); the **built-in**
+gloves in the [water BOM](water-system-report.md), UV glasses + apron in §4); the **built-in**
 electrical-safety hardware (terminal-mount fuse, disconnect, two E-stops, terminal covers, bonding) is
 in the electrical BOM and the [Electrical Safety Report](electrical-safety-report.md) §5.*
 
@@ -634,7 +632,7 @@ in the electrical BOM and the [Electrical Safety Report](electrical-safety-repor
 | Insulated drinking water jug (1 gal) | Palm Springs heat — operator hydration | 2 | REI / Amazon | ~$30 |
 **Section total: ~$162**
 
-## Supplier Directory
+## 6. Supplier Directory
 
 *Where to buy, for the suppliers that carry the most items in the Procurement BOM. Each BOM row links
 its own product page; the **Supplier consolidation** table above gives every supplier's order total.*
@@ -658,7 +656,7 @@ its own product page; the **Supplier consolidation** table above gives every sup
 | **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 60in | Online |
 | **[Lenox Laser](https://lenoxlaser.com)** | Laser-drilled precision pinholes | Glen Arm, MD |
 
-## See Also
+## 7. See Also
 - [Electrical & Systems Report](electrical-report.md) — full wiring specification, circuit fuse ratings, solar architecture
 - [Chemistry Shopping List](chemistry-shopping-list.md) — cyanotype reagent quantities, tiers and suppliers
 - [Film Plane Mechanism Report](film-plane-mechanism-report.md) — engineering drawings for the 4-corner actuation system

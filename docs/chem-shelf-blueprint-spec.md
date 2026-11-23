@@ -46,7 +46,7 @@ crest welds. Elements to check (each demand → capacity → SF), in a driftproo
 
 - **Board bending / deflection** — 18 mm ply, 600 × 225, 25 kg UDL over the ~225 mm hinge-to-front span (SF 44).
 - **Chain + shelf-corner tee-nut** — chain angle ≈ 46° (front corner → anchor 230 mm up over 225 mm) →
-  tension **~91 N/chain** (chem_shelf_load.py, chain SF 5.4; tee-nut pull-out SF 20).
+  tension **~91 N/chain** (chem_shelf_load.py, chain SF 59; eyebolt SF 7; tee-nut pull-out SF 20).
 - **Piano-hinge back-edge reaction** — ~12.5 kg spread over 600 mm; per-tee-nut screw shear/pull-out.
 - **Wall backing-plate group** — M8×25 into weld-nuts + crest-weld throat vs the hinge + chain reactions.
 

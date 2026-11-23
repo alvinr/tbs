@@ -31,7 +31,11 @@ TNUT_N_STAY  = 1                    # tee-nuts carrying each stay eye bolt
 # Material allowables
 PLY_FB       = 10.0                 # plywood allowable bending stress (MPa) — conservative for exterior ply
 PLY_E        = 7000.0              # plywood modulus of elasticity (MPa) — conservative
-CHAIN_WLL_N  = 490.0              # 4mm 304 SS chain WLL (N, ~50kg) — conservative for 4mm 304 SS; confirm at sourcing (demand is only ~91N, so any adequately-rated chain clears)
+LBF_N        = 4.44822
+CHAIN_WLL_N  = 1200 * LBF_N        # McMaster 3392T51, 3/16in (5mm) trade size: 1,200 lb WLL
+EYEBOLT_CAP_N = 500 * LBF_N        # McMaster 3014T45 shoulder eyebolt: 500 lb vertical capacity
+# The stay pulls ~45° off the eyebolt axis; a shoulder eyebolt keeps 30% of its in-line rating at 45°.
+EYEBOLT_ANGLE_FACTOR = 0.30
 # 1/4"-20 4-prong tee-nut pull-out in 18mm plywood — conservative published/testable floor.
 TNUT_PULLOUT_N = 1300.0            # N (a 4-prong tee-nut in 18mm ply pulls out well above 1kN)
 
@@ -81,6 +85,8 @@ def compute():
     r_corner = r_front / STAY_N                          # vertical reaction at each front corner
     t_chain  = r_corner / sin_a                          # chain tension (N)
     sf_chain = CHAIN_WLL_N / t_chain
+    eye_cap  = EYEBOLT_CAP_N * EYEBOLT_ANGLE_FACTOR
+    sf_eye   = eye_cap / t_chain
 
     # 3. Front-corner tee-nut pull-out — the pull-out (board-normal) component is the vertical r_corner.
     sf_tnut  = TNUT_PULLOUT_N / r_corner
@@ -93,6 +99,7 @@ def compute():
         "chain_ang": ang, "chain_len": clen, "r_corner": r_corner,
         "bend": (m_dem, m_cap, sf_bend, defl),
         "chain": (t_chain, CHAIN_WLL_N, sf_chain),
+        "eye": (t_chain, eye_cap, sf_eye),
         "tnut": (r_corner, TNUT_PULLOUT_N, sf_tnut),
     }
 
@@ -114,6 +121,7 @@ def _fmt(r):
     row("board bending (18mm ply, 600 wide)", md, mc, sfb, "Nm")
     lines.append(f"  {'board midspan deflection':<40}{defl:>7.2f}mm   (L/{SHELF_DEPTH/defl:.0f})")
     row("chain stay tension (per chain)", *r["chain"], "N")
+    row("front-corner eyebolt (45 deg derated)", *r["eye"], "N")
     row("front-corner tee-nut pull-out", *r["tnut"], "N")
     lines.append("  Every element clears with large margin — the 18mm ply + 2 chain stays carry the 25kg")
     lines.append("  mixing load comfortably; the steel perimeter frame is not structurally required.")
@@ -125,14 +133,16 @@ def table_md():
     r = compute()
     md, mc, sfb, defl = r["bend"]
     t_dem, t_cap, t_sf = r["chain"]
+    e_dem, e_cap, e_sf = r["eye"]
     n_dem, n_cap, n_sf = r["tnut"]
     rows = [
         "| Element | Demand | Capacity | SF |",
         "|---|---|---|---|",
         f"| Board bending (18mm ply, 600 wide, {SHELF_DEPTH:.0f}mm span, 25kg UDL) | {md:.1f} N·m | {mc:.0f} N·m | **{sfb:.0f}** |",
         f"| Board midspan deflection | {defl:.2f} mm (L/{SHELF_DEPTH/defl:.0f}) | — | — |",
-        f"| Chain stay tension (per chain, {r['chain_ang']:.0f}° from horizontal) | {t_dem:.0f} N | {t_cap:.0f} N (WLL) | **{t_sf:.0f}** |",
-        f"| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | {n_dem:.0f} N | {n_cap:.0f} N | **{n_sf:.0f}** |",
+        f"| Chain stay tension (per chain, {r['chain_ang']:.0f}° from horizontal) | {t_dem:.0f} N | {t_cap:,.0f} N (WLL) | **{t_sf:.0f}** |",
+        f"| Front-corner eyebolt (1/4-20 shoulder, ~45° off-axis, 30% of in-line rating) | {e_dem:.0f} N | {e_cap:.0f} N | **{e_sf:.0f}** |",
+        f"| Front-corner tee-nut pull-out (1/4-20 4-prong, 18mm ply) | {n_dem:.0f} N | {n_cap:,.0f} N | **{n_sf:.0f}** |",
     ]
     return "\n".join(rows)
 
@@ -141,7 +151,7 @@ def main():
     if "--inject" in sys.argv:
         import re
         path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-                            "chemistry-prep-shelves.md")
+                            "docs", "chemistry-prep-shelves.md")
         txt = open(path).read()
         block = f"<!-- BEGIN chem-shelf-load -->\n{table_md()}\n<!-- END chem-shelf-load -->"
         if "<!-- BEGIN chem-shelf-load -->" not in txt:

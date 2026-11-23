@@ -282,13 +282,13 @@ indicative low–high estimates — get quotes before ordering.
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
 | [304 SS chain — 2 tension stays](https://www.mcmaster.com/3392T51-3392T512/) (3392T51) | 1 3ft | McMaster-Carr | shelf | $24 |
-| [1/4"-20 SS eye bolt — shelf front-corner chain anchor](https://www.mcmaster.com/3014T45/) (3014T45) | 2 ea | McMaster-Carr | shelf | $8 |
+| [1/4"-20 steel shoulder eye bolt — shelf front-corner chain anchor](https://www.mcmaster.com/3014T45/) (3014T45) | 2 ea | McMaster-Carr | shelf | $8 |
 | [1/4"-20 SS machine screws — hinge leaves (both)](https://www.mcmaster.com/90272A540/) (90272A540) | 8 ea | McMaster-Carr | shelf | $1 |
 | [Extra-clearance continuous (piano) hinge, 600 mm, SS](https://www.mcmaster.com/14835A77-14835A33/) (14835A77) | 1 ea | McMaster-Carr | shelf | $56 |
 | [304 SS quick-links](https://www.mcmaster.com/8947T25/) (8947T25) | 4 ea | McMaster-Carr | shelf | $12 |
 | [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 2 4-pack | Home Depot | shelf | $3 |
 | [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 1 ea | McMaster-Carr | shelf | $31 |
-| [M8 SS eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 2 ea | McMaster-Carr | shelf | $16 |
+| [M8 galvanized steel eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 2 ea | McMaster-Carr | shelf | $16 |
 | [Stay-anchor crush sleeve stock — 1-3/8in OD × 1/4in wall DOM steel tube](https://www.mcmaster.com/7767T76-7767T761/) (7767T76) | 1 ft | McMaster-Carr | swing | $36 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |

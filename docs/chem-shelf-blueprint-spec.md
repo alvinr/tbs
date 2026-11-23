@@ -32,7 +32,7 @@ the shelf on the same 1/4″-20 tee-nut family used everywhere else.
 | **Spill lip** | **15 mm HDPE lip on all 4 edges** (closed tray; the back lip butts the hinge leaf). HDPE is inert in the splash zone — plywood would violate the dry/backing-only rule. Offcut of the light-trap HDPE stock (no new SKU). |
 | **Ply attachment** | **Pronged tee-nuts in the ply underside** (1/4″-20, `tnut-quarter` standard). No M5 CSK. Wet-zone → 1/4″-20 hardware in **SS** (a documented splash-zone exception, like the M8 film-plane SS exception). |
 | **Piano hinge** | 600 mm **bolt-on** SS piano hinge, supplied **blank** (drill leaves to the tee-nut pitch) — **shelf leaf** machine-screwed (1/4″-20 SS into the ply tee-nut row); **wall leaf** to the 8 mm wall backing plate. *(Was weld-on; bolt-on because the ply attaches by tee-nut, not weld.)* |
-| **Stays** | **2 × 304 SS chain** — a **1/4″-20 SS eye bolt** threaded into a ply tee-nut at each front corner ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. The shortest eye-bolt shank (1″/25 mm) threads through the tee-nut and **protrudes ~7 mm past the 18 mm top** — acceptable (the tee-nut carries the thread); cap/grind the tip flush at the corner for a clean work surface. Length-adjustable by link + quick-link. Tension-only. |
+| **Stays** | **2 × 304 SS chain** — a **1/4″-20 steel shoulder eye bolt** threaded into a ply tee-nut at each front corner ↔ an **M8 eye bolt** in the wall backing-plate weld-nut ~230 mm above the hinge. The shortest eye-bolt shank (1″/25 mm) threads through the tee-nut and **protrudes ~7 mm past the 18 mm top** — acceptable (the tee-nut carries the thread); cap/grind the tip flush at the corner for a clean work surface. Length-adjustable by link + quick-link. Tension-only. |
 | **Wall side** | Piano-hinge cleat + 2 chain-anchor points bolt to **flat 8 mm steel backing plates welded to the corrugated-wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) — unchanged from the schematic. |
 | **Transport latch** | Over-center / barrel latch at the top secures the folded-up board. |
 | **M5×16 CSK** | **ELIMINATED** — the M5 family retires with this round (`fastener-standardization.md`). |
@@ -83,7 +83,7 @@ tee-nut decision. Only the chain stays + the bolt-on hinge variant are genuinely
 
 **New — SOURCED (2026-09-07):**
 1. **Bolt-on piano hinge, 600 mm** — McMaster **1582A457** ($6.23/2 ft), 304 SS bolt-on, supplied BLANK (drill leaves to the tee-nut pitch). *(Cheaper than the retired weld-on LSN8-32-600 $23.56.)*
-2. **1/4″-20 SS eye bolt ×2** — McMaster **3014T45** ($4.16 ea) — front-corner chain anchors, into the ply tee-nuts.
+2. **1/4″-20 steel shoulder eye bolt ×2** — McMaster **3014T45** ($4.16 ea) — front-corner chain anchors, into the ply tee-nuts.
 3. **M8 eye bolt ×2** — McMaster **4843T13** ($7.80 ea) — chain wall anchors into the backing-plate weld-nuts.
 4. **304 SS chain** — McMaster **3392T51** ($23.79/3 ft) — ~1 m used.
 5. **304 SS quick-links ×4** — McMaster **8947T25** ($2.90 ea).

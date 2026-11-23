@@ -93,7 +93,7 @@ corrugated, so the cleat and both chain anchors bolt (M8×25) into **flat 8 mm s
 welded to the wall crests and tapped M8**, giving flat anchors with nothing loose behind the wall.
 The board swings between horizontal (deployed) and vertical (stowed); the chains slacken as it folds up.
 
-**Stays:** two **304 SS chains** run from M8 eye bolts ~230 mm above the hinge to a **1/4-20 SS eye
+**Stays:** two **304 SS chains** run from M8 eye bolts ~230 mm above the hinge to a **1/4-20 steel shoulder eye
 bolt** in each front corner. Deployed, they carry the front edge in tension; quick-links at the ends
 set the length, and with it the level.
 
@@ -168,7 +168,7 @@ acceptable because the shelf is down only while mixing.
 2. Set the pronged tee-nuts into the ply underside — the hinge screw row along the back edge + one at each front corner.
 3. Weld the 8 mm backing plates to the pinhole-wall crests (behind the hinge cleat + one per chain anchor); tap them M8; bolt the 6 mm hinge cleat on (M8×25 into the tapped plate).
 4. Bolt on the piano hinge: wall leaf to the cleat, shelf leaf into the back-edge tee-nut row (1/4-20 SS screws).
-5. Thread a 1/4-20 SS eye bolt into each front-corner tee-nut; cap/grind the ~7 mm protruding tip.
+5. Thread a 1/4-20 steel shoulder eye bolt into each front-corner tee-nut; cap/grind the ~7 mm protruding tip.
 6. Fit an M8 eye bolt into each chain wall anchor ~230 mm above the hinge; hang a chain (quick-links) from each wall eye to the shelf eye.
 7. Deploy; set each chain link so the board sits level on a spirit level, then lock.
 8. Fit the cam latch (1619A74) + keeper; verify the board folds up flat and latches clear of the wall equipment.

@@ -28,7 +28,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [~] Running gap 13 → 16mm (drum OR 382 → 379) for the 8813T426 holder (12.2mm, 3.8mm clear) +
   74405T126 brush; drum-end seal moved to a 3/4in foam band on the housing bore. Source, drawings,
   parts, costing, reports and manual done 2026-11-23; remaining: re-send lighttrap, overview and
-  construction .skp, and source the 3/4in × 1in black closed-cell adhesive foam (ll-wiper-seal).
+  construction .skp. End-seal foam sourced: 93375K29 (1/2in) + 93375K27 (1/4in) stacked.
 
 ## 🛒 Parts to source (SKU + price)
 
@@ -37,7 +37,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   stub-shaft stock → Metal Supermarkets). Remaining moves need a re-sourced SKU + price (each lands on
   an order we already place):
   - [ ] Bearings Direct (SKF 6215-2RS1, 51118 thrust) → McMaster-Carr — $201
-  - [~] Canal Rubber → McMaster: EPDM foam done (8694K88, 2026-11-23); the drum-end seal is now a 3/4in × 1in black closed-cell adhesive foam band — SKU pending
+  - [x] Canal Rubber → McMaster: EPDM foam 8694K88; drum-end seal 93375K29 + 93375K27 stacked (2026-11-23)
   - [x] Gordon Brush + Tanis Brush → McMaster 74405T126 + 8813T426 (2026-11-23; running gap widened to 16mm)
   - [~] Blue Sea → Powerwerx: MRBF 5187+5191 and busbar 2312 done (2026-11-23); inverter ANL fuse + disconnect still to source
   - [x] Inverter Service Center → Powerwerx BPC121531104R $175.95 (2026-11-23)

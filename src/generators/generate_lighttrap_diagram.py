@@ -2189,7 +2189,8 @@ def draw_sheet12():
     draw_rect(ax, TX(-22), TZ(-175), S * 12, S * 205, fc=C_LT_DRUM, lw=1.2, zorder=5)   # drum shell (rotating)
     draw_rect(ax, TX(36), TZ(-175), S * 14, S * 235, fc="#DDE4EC", lw=1.2, zorder=5)    # housing wall (fixed)
     draw_rect(ax, TX(-120), TZ(6), S * 110, S * 22, fc=C_ALUM, lw=1.2, zorder=6)        # drum cap (rotating)
-    draw_rect(ax, TX(-10), TZ(-40), S * 46, S * 34, fc="#1A1A1A", lw=1.0, zorder=7)     # foam end seal (fixed, compressed on the drum OD)
+    draw_rect(ax, TX(12), TZ(-40), S * 24, S * 34, fc="#1A1A1A", lw=1.0, zorder=7)      # 1/2in base foam layer (on the housing bore)
+    draw_rect(ax, TX(-10), TZ(-40), S * 22, S * 34, fc="#3A3A3A", lw=1.0, zorder=7)     # 1/4in face layer (wiped by the drum OD)
     ax.plot([TX(36), TX(36)], [TZ(-40), TZ(-6)], color="#8A5A2B", lw=2.6, zorder=8)     # PSA bond: foam → fixed housing bore
     ax.plot([TX(-10), TX(-10)], [TZ(-40), TZ(-6)], color="#B03030", lw=1.4, ls=(0, (2, 2)), zorder=8)  # wiping contact: drum OD sweeps the foam
     # running-gap brush: 8813T426 holder flange bonded to the drum OD, the channel hanging into the gap,
@@ -2203,7 +2204,7 @@ def draw_sheet12():
     for s1, s2 in (((-11, -50), (11, -36)), ((-11, -36), (11, -50))):                   # … killed at the seal (red ✗)
         ax.plot([TX(13 + s1[0]), TX(13 + s2[0])], [TZ(s1[1]), TZ(s2[1])], color="#D33", lw=2.2, zorder=9)
     leader(ax, TX(30), TZ(-20), TX(80), TZ(150),
-           f"FOAM END SEAL — {LT_END_SEAL_T * 0.03937:.2f}in ({LT_END_SEAL_T:.0f}mm) black closed-cell foam,\n{LT_END_SEAL_W * 0.03937:.0f}in wide, PSA-BONDED to the fixed housing bore (brown)\n+ silicone bead; compressed by the rotating drum OD (red)",
+           f"FOAM END SEAL — 1/2in (93375K29) + 1/4in (93375K27) black closed-cell\nfoam stacked to {LT_END_SEAL_T:.0f}mm, {LT_END_SEAL_W * 0.03937:.0f}in wide, PSA-BONDED to the fixed housing\nbore (brown) + silicone bead; compressed by the rotating drum OD (red)",
            fs=6.3, color=C_OUT, ha="left", arrow_style="->", font=FONT)
     leader(ax, TX(-70), TZ(17), TX(-128), TZ(50), "DRUM CAP (rotating)", fs=6.5, color=C_DIM, ha="right", arrow_style="->", font=FONT)
     leader(ax, TX(43), TZ(-90), TX(120), TZ(-70), "HOUSING (fixed)", fs=6.5, color=C_DIM, ha="left", arrow_style="->", font=FONT)
@@ -2213,7 +2214,7 @@ def draw_sheet12():
 
     notes = [
         "TOP-END SEAL DETAIL  (enlarged from Sheet 7)",
-        f"Top + bottom ends of the running gap: a {LT_END_SEAL_T:.0f}mm (3/4in) black closed-cell foam band, {LT_END_SEAL_W:.0f}mm (1in) wide, PSA-bonded to the FIXED housing bore at the drum's top and bottom (one band per 100° housing arc, 4 in all) + a silicone bead along its edges. The rotating drum OD compresses it ~{100 * (LT_END_SEAL_T - RUN_GAP) / LT_END_SEAL_T:.0f}% as it turns, closing the gap so a ray can't bypass the brushes over the top or under the bottom.",
+        f"Top + bottom ends of the running gap: a {LT_END_SEAL_T:.0f}mm (3/4in) black closed-cell foam band — McMaster 93375K29 (1/2in) with 93375K27 (1/4in) adhered on top — {LT_END_SEAL_W:.0f}mm (1in) wide, PSA-bonded to the FIXED housing bore at the drum's top and bottom (one band per 100° housing arc, 4 in all) + a silicone bead along its edges. The rotating drum OD compresses it ~{100 * (LT_END_SEAL_T - RUN_GAP) / LT_END_SEAL_T:.0f}% as it turns, closing the gap so a ray can't bypass the brushes over the top or under the bottom.",
         f"The {LT_WIPER_N}× strip brushes stop short of the foam bands; their radial section (8813T426 holder on the drum OD) is the HOLDER PROFILE inset on Sheet 4 — not duplicated here.",
         f"NOT TO SCALE — the radial running gap is exaggerated so the seal path reads clearly (a true {RUN_GAP}mm gap would be a hairline here); vertical members ≈ 1.5×. See Sheet 4 for the to-scale (7:1) holder profile and Sheet 7 for the rotation/light-path plans A–C.",
     ]

@@ -511,7 +511,7 @@ LT_WIPER_HOLDER_CH = 11.43  # holder channel outer width (mm) — 0.450in (8813T
 # Drum-end light seal — a black closed-cell foam band bonded to the housing bore at the top and
 # bottom of the drum, wiped by the drum OD; closes the ends of the running gap. Thicker than
 # the gap so it stays compressed. Four arcs (the housing's two 100° arcs, top + bottom).
-LT_END_SEAL_T      = 19.05  # 3/4in foam (compressed ≈16% of its thickness in the 16mm gap)
+LT_END_SEAL_T      = 12.7 + 6.35   # 3/4in = 1/2in + 1/4in stacked foam (McMaster 93375K29 + 93375K27); compressed ≈16% in the 16mm gap
 LT_END_SEAL_W      = 25.4   # 1in band (along Z)
 LT_WIPER_SPACING   = LT_SHELL_ARC / (LT_WIPER_N - 1)   # 93.3° between strips on the 280° drum wall
 

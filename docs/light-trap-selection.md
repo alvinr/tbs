@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | Off-the-shelf 12″ round pull handle ([McMaster 1871A65](https://www.mcmaster.com/1871A65/), Ø0.5″ bar), interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$3,384<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,220<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -143,7 +143,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Specification |
 |------|--------------|
-| Top + bottom end seals | 3/4in (19mm) black closed-cell foam band, 1in wide, PSA-bonded to the fixed housing bore at the drum's top and bottom (4 arcs) + silicone bead; the rotating drum OD compresses it ~16%, closing the ends of the running gap (Sheet 12; part `ll-wiper-seal`) |
+| Top + bottom end seals | 3/4in (19mm) black closed-cell foam band — 1/2in + 1/4in strips stacked — 1in wide, PSA-bonded to the fixed housing bore at the drum's top and bottom (4 arcs) + silicone bead; the rotating drum OD compresses it ~16%, closing the ends of the running gap (Sheet 12; part `ll-wiper-seal`) |
 | Axle-beam notch penetration (×4) | Closed-cell EPDM foam gasket wrapping each axle beam where it passes through the notched fixed housing skin, bedded with a DP8010/silicone bead — a **static** beam↔skin light-seal at the 4 penetrations (Sheets 2/9/10; part `ll-beam-notch-seal`) |
 | Drum-to-housing running gap | <!-- BEGIN fact:lt_run_gap_mm -->16<!-- END fact:lt_run_gap_mm -->mm radial clearance, closed by **4 vertical strip brushes** ([McMaster 74405T126](https://www.mcmaster.com/74405T12-74405T126/) — 5/16″ metal backing, 0.010″ black nylon, 17.5mm bristle), each in a **center-channel aluminum holder** ([McMaster 8813T426](https://www.mcmaster.com/8813T42-8813T426/), 0.480″ / 12.2mm tall, 1.25″ flange) whose flange is **DP8010-bonded + blind-riveted** either side of the channel (backup washers on the inside face) to the rotating drum OD at 93° spacing. The bond is the primary attachment (it spreads the load so nothing pulls through the soft HDPE); the rivets clamp during cure and back it up. The channel hangs into the gap, 3.8mm clear of the bore, and the bristles lay over onto the fixed housing bore. One continuous 8 ft piece per line, stopping short of the end-seal bands. Strip count set by the Sheet 7 light-path study (93° ≤ the 100° housing material arc, so a strip always seals each arc between the openings at every rotation) — see §9 Sheets 4 & 7 |
 
@@ -166,13 +166,13 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 75mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
 | Running-gap wiper — strip brush (4 lines × 8 ft) + center-channel Al holders (4 × 8 ft) | [McMaster 74405T126](https://www.mcmaster.com/74405T12-74405T126/) / [McMaster 8813T426](https://www.mcmaster.com/8813T42-8813T426/) | 5/16″ backing, 0.010″ black nylon, 17.5mm bristle; brush slides into the holder, holder DP8010-bonded + riveted (backup washers) to the drum OD; one 8 ft piece per line |
-| Drum-end foam seal, 3/4″ × 1″ (~2.8m) | McMaster-Carr (SKU pending) | Black closed-cell, pressure-sensitive adhesive back |
+| Drum-end foam seal, 1/2″ + 1/4″ stacked × 1″ (~2.8m) | [McMaster 93375K29](https://www.mcmaster.com/93375K29/) + [93375K27](https://www.mcmaster.com/93375K27/) | Black closed-cell, soft, acrylic adhesive back, −70 to 200°F; 10 ft each |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
 | Round pull handle — 12″ (×1) | [McMaster-Carr 1871A65](https://www.mcmaster.com/1871A65/) ($6.43) | Off-the-shelf Ø0.5″ bar, 12.13″, 1/4″ through-hole feet; bolts to the stile (interior face only) |
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §7 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$3,384<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,220<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §7 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -208,7 +208,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø<!-- BEGIN fact:lt_drum_bore_mm -->752<!-- END fact:lt_drum_bore_mm -->mm bore / ~<!-- BEGIN fact:lt_passage_mm -->483<!-- END fact:lt_passage_mm -->mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **1,883mm clear** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$3,269<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,120<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$3,384<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$4,220<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |

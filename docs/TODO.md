@@ -25,6 +25,12 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛒 Parts to source (SKU + price)
 
+- [ ] Consolidate suppliers (2026-11-23): the registry buys from ~70 suppliers, many for one or two
+  items (e.g. Metals Depot vs "MetalsDepot", US Plastic Corp vs "US Plastics", local fab spelled four
+  ways). Merge duplicate names, then move single-item buys onto the big orders (McMaster-Carr, Home
+  Depot, Metal Supermarkets, US Plastic Corp, Amazon) where an equivalent part exists, so the
+  Master Shopping List's supplier-consolidation table shrinks to a few large orders.
+- [ ] Source SKUs for the 16 tool and safety parts added 2026-11-23 (`print-*`, `safety-*`, SKU pending).
 - [x] Dropped 2026-11-21: the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.
 
 Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generators/parts-worklist.csv` (fill `new_*`, then `apply_parts_csv.py`):
